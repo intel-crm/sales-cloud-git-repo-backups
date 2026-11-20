@@ -1,0 +1,7 @@
+.THIS .POP_Header {
+    font-size: var(--lwc-inputStaticFontSize,0.875rem);
+}
+
+.THIS.proof_Of_Documents {
+    margin-top: 10px !important;
+}

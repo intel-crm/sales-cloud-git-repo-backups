@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>sp1Notify_BO_BM_Delegated_Approver</name>
+        <label>sbaa__Approver__c.Notify_BO_BM_Delegated_Approver</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>sbaa__Approver__c.Notify_BO_BM_Delegated_Approver</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>sbaa__Approver__c.Notify_BO_BM_Delegated_Approver</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Notify Delegated Approver 3 Days Before workflow rule
+Workflow rule description: &quot;</description>
+    <label>Notify Delegated Approver 3 Days Before</label>
+    <migratedFromWorkflowRuleName>Notify Delegated Approver 3 Days Before</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>sbaa__DelegatedUserId__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>sbaa__Approver__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>ScheduledPath1</name>
+            <connector>
+                <targetReference>sp1Notify_BO_BM_Delegated_Approver</targetReference>
+            </connector>
+            <label>ScheduledPath1</label>
+            <offsetNumber>-3</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>sbaa__DelegationEnd__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

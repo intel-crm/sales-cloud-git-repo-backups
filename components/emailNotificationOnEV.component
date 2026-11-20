@@ -1,0 +1,42 @@
+<apex:component controller="Core_internalUserNotificationOnEV" access="global">
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+        th, td {
+        padding: 5px;
+        text-align: left;    
+        }
+    </style>
+    
+    <!-- Attribute Definition 
+    <apex:attribute name="contactId" description="Contact provided grant access to entitlement" type="Id" assignTo="{!conObj}"/>
+    <apex:attribute name="reqId" description="Contact provided grant access to entitlement" type="Id" assignTo="{!requestorId}"/>-->
+    
+    <apex:attribute name="contactId" description="Contact provided grant access to entitlement" type="Id" />
+    <apex:attribute name="reqId" description="Contact provided grant access to entitlement" type="Id" />
+     
+    
+    <!--<b>Below are the entitlement(s) associated with this request:</b>-->
+    <br/>
+    <br/>
+    
+    <!-- <table style="width:100%">
+       <tr>
+            <th>Entitlement Name</th>
+            <th>Action Taken</th> 
+        </tr>-->
+        
+        <apex:repeat value="{!entitlementList}" var="ent">
+            <tr> 
+                
+                <p>{!IF(AND(ent.Core_Entitlement_Requester_Id__c == reqId, ent.Core_Contact_Id__r.Id == contactId), ent.Core_Entitlement_Id__r.name,null)}</p>
+                <!--<td>{!IF(lstContactEntitlementNames[requestorId][ent] ==true, "Assigned", "Removed")} </td> -->
+                    
+            </tr>
+        </apex:repeat>
+        
+   <!-- </table> -->
+    
+</apex:component>

@@ -1,0 +1,37 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+    access="global" controller="Core_MDF_ClaimReviewChecklist">
+
+    <aura:attribute name="checklistResults" access="private" type="Core_MDF_Claim_Case_Checklist__c" />
+    <aura:attribute name="headerStyleStr" access="private" type="String" default="" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+
+
+    <table class="slds-table slds-table--bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th scope="col" style="{!v.headerStyleStr}">
+                    <div> {!$Label.c.Core_MDF_Case_Review_Findings}
+                    </div>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <aura:iteration items="{!v.checklistResults}" var="item" indexVar="index">
+                <tr>
+                    <td>
+                        <div class="slds-grow slds-cell-wrap">
+                                <ul class="slds-list--dotted">
+                                <li> {#item.Core_MDF_Claim_Case_Review_Findings__c} </li> 
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>
+                </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

@@ -1,0 +1,215 @@
+<template>
+        <lightning-layout class="slds-page-header slds-page-header--object-home">
+                <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+                    <div class="page-section page-header">
+                        <h1 class="slds-text-heading_label">
+                            {Account_Percentage_Allocation}
+                        </h1>
+                    </div>
+                </lightning-layout-item>
+        </lightning-layout>
+    <div class="slds-m-around_medium">
+        <div class="scrollable-table">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr>
+                        <th class="col-account header-bg">{Account}</th>
+                        <th class="col-percent header-bg">{Percentage}</th>
+                        <th class="col-allocated header-bg">{AllocatedAmt}</th>
+                        <template if:false={isReadOnly}>
+                            <th class="col-action header-bg"></th>
+                        </template>
+                    </tr>
+                </thead>
+
+                <!-- Editable Mode -->
+                <template if:false={isReadOnly}>
+                    <tbody>
+                        <template for:each={rows} for:item="row" for:index="index">
+                            <tr key={row.id} class={row.rowClass}>
+
+                                <!-- Account -->
+                                <td class="col-account compact-input">
+                                    <div class="lookup-container">
+                                        <div class="input-with-errors">
+                                            <lightning-input
+                                                type="search"
+                                                variant="label-hidden"
+                                                data-index={index}
+                                                value={row.accountName}
+                                                onchange={handleAccountSearch}
+                                                onfocus={handleInputFocus}
+                                                onblur={handleInputBlur}>
+                                            </lightning-input>
+
+                                            <!-- Simplified dropdown -->
+                                            <template if:true={row.showDropdown}>
+                                                <ul class="dropdown-list">
+                                                    <template for:each={row.searchResults} for:item="result">
+                                                        <li key={result.Id} class="dropdown-item">
+                                                            <lightning-button 
+                                                                variant="base"
+                                                                label={result.Name}
+                                                                title={result.Name}
+                                                                data-id={result.Id}
+                                                                data-index={index}
+                                                                onclick={selectAccount}>
+                                                            </lightning-button>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+
+                                        <!-- Account Errors -->
+                                        <div class="error-container">
+                                            <template if:true={row.errorAccount}>
+                                                <div class="custom-error">{SelectAccountError}</div>
+                                            </template>
+                                            <template if:false={row.errorAccount}>
+                                                <template if:true={row.errorDuplicate}>
+                                                    <div class="custom-error">{DuplicateAccountError}</div>
+                                                </template>
+                                                <template if:false={row.errorDuplicate}>
+                                                    <template if:true={row.errorNoAllocation}>
+                                                        <div class="custom-error">{NoAllocationError}</div>
+                                                    </template>
+                                                    <template if:false={row.errorNoAllocation}>
+                                                        <template if:true={row.errorExceedsAvailable}>
+                                                            <div class="custom-error">{AmountExceedsError}</div>
+                                                        </template>
+                                                        <template if:false={row.errorExceedsAvailable}>
+                                                            <template if:true={row.errorZeroAmount}>
+                                                                <div class="custom-error">{NoAvialbleAllocationError}</div>
+                                                            </template>
+                                                        </template>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Percentage -->
+                                <td class="col-percent compact-input">
+                                    <div class="input-with-errors">
+                                        <lightning-input
+                                            type="number"
+                                            formatter="percent-fixed"
+                                            variant="label-hidden"
+                                            min="0"
+                                            max="100"
+                                            step="0.01"
+                                            data-index={index}
+                                            value={row.percent}
+                                            onchange={handlePercentChange}>
+                                        </lightning-input>
+                                    </div>
+
+                                    <div class="error-container">
+                                        <template if:true={row.errorPercent}>
+                                            <div class="custom-error">{PercentageRequiredError}</div>
+                                        </template>
+                                        <template if:false={row.errorPercent}>
+                                            <template if:true={row.errorOverPercent}>
+                                                <div class="custom-error">{PercentageEqualHundredError}</div>
+                                            </template>
+                                            <template if:false={row.errorOverPercent}>
+                                                <template if:true={row.errorTotalPercent}>
+                                                    <div class="custom-error">{PercentageEqualHundredError}</div>
+                                                </template>
+                                            </template>
+                                        </template>
+                                    </div>
+                                </td>
+
+                                <!-- Editable Amount -->
+                                <td class="col-allocated compact-input">
+                                    <div class="input-with-errors">
+                                        <lightning-input
+                                            type="number"
+                                            formatter="currency"
+                                            variant="label-hidden"
+                                            min="0"
+                                            step="0.01"
+                                            data-index={index}
+                                            value={row.amount}
+                                            onchange={handleAmountChange}>
+                                        </lightning-input>
+                                    </div>
+
+                                    <div class="error-container">
+                                        <template if:true={row.errorAmount}>
+                                            <div class="custom-error">{AmountRequiredError}</div>
+                                        </template>
+                                        <template if:false={row.errorAmount}>
+                                            <template if:true={row.errorOverAmount}>
+                                                <div class="custom-error">{AmountEqualHundredError}</div>
+                                            </template>
+                                            <template if:false={row.errorOverAmount}>
+                                                <template if:true={row.errorTotalAmount}>
+                                                    <div class="custom-error">{AmountEqualHundredError}</div>
+                                                </template>
+                                            </template>
+                                        </template>
+                                    </div>
+                                </td>
+
+                                <!-- Delete -->
+                                <td class="col-action">
+                                    <lightning-button-icon 
+                                        icon-name="utility:delete"
+                                        alternative-text="Remove"
+                                        variant="bare"
+                                        class="delete-icon"
+                                        data-index={index}
+                                        onclick={removeRow}
+                                        disabled={isDeleteDisabled}>
+                                    </lightning-button-icon>
+                                </td>
+
+                            </tr>
+                        </template>
+                    </tbody>
+                </template>
+
+                <!-- Read-Only Mode -->
+                <template if:true={isReadOnly}>
+                    <tbody>
+                        <template for:each={rows} for:item="row">
+                            <tr key={row.id}>
+                                <td>
+                                    <template if:true={row.accountId}>
+                                        <lightning-button
+                                            variant="base"
+                                            label={row.accountName}
+                                            class="account-link"
+                                            onclick={navigateToAccount}
+                                            data-account-id={row.accountId}>
+                                        </lightning-button>
+                                    </template>
+                                    <template if:false={row.accountId}>
+                                        {row.accountName}
+                                    </template>
+                                </td>
+                                <td>{row.formattedPercent}</td>
+                                <td>{row.formattedAmount}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </template>
+            </table>
+        </div>
+
+        <template if:false={isReadOnly}>
+            <div class="button-container">
+            <lightning-button 
+                class="slds-m-top_small"
+                label={AddAccountPercentageLabel}
+                onclick={addRow}
+                disabled={isAddButtonDisabled}>
+            </lightning-button>
+            </div>
+        </template>
+    </div>
+</template>

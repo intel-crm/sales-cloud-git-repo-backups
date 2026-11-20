@@ -1,0 +1,51 @@
+.search-results-container {
+  min-height: 80vh;
+}
+
+.card-results-group[data-count="0"] {
+  display: none;
+}
+
+.search-results-pagination {
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 2.5rem;
+  padding-top: 1rem;
+}
+
+.search-results-text {
+  padding: 1rem 0;
+}
+
+.search-results-page-numbers[data-page-count="1"] {
+  display: none;
+}
+
+.search-results-page-numbers span {
+  margin: 0 .5rem;
+}
+
+.mobile-padding {
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .mobile-padding {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-results-pagination {
+    align-items: normal;
+    flex-direction: row;
+  }
+
+  .search-results-text {
+    padding: 0;
+  }
+
+  .search-results-page-numbers span {
+    margin: 0 .5rem;
+  }
+}

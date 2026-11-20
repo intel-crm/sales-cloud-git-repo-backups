@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>To store the new values of Activity Category based on program</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Category_Name_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Category Name</label>
+        <length>50</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Program</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Core_MDF_ActivityCategoryMapping</label>
+    <visibility>Public</visibility>
+</CustomObject>

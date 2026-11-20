@@ -1,0 +1,510 @@
+<apex:page standardController="case" docType="html-5.0" extensions="Core_IPS_GlobalCaseSearchController">
+<apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+<apex:includeScript value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery.dataTables.js')}"/>
+<apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery.dataTables.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+<script >
+
+
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+//$.noConflict();
+    $("#DivCaseResult").hide();
+    $("#DivProjectResult").hide();
+    $("#DivProductResult").hide();
+    $("#DivAttachmentResult").hide();
+    
+    $("#tblAdvanceSearch").hide();
+    
+    $("#tblCase").hide();
+    $("#tblAttachment").hide();
+    $("#tblProject").hide();
+    $("#tblProduct").hide();
+    $("#tblProduct").hide();
+    $("#spanPleaseWait").hide();
+    $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+    var FlagAdvanceSearch = true;
+    if("{!JSENCODE($CurrentPage.parameters.A)}"=="1")
+    {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>');
+    //FlagAdvanceSearch = false;
+     ToggleMoreOption(FlagAdvanceSearch);
+    }
+    $("#spanAdvanceSearch").click(function(){
+    ToggleMoreOption(FlagAdvanceSearch);
+    });
+    
+    
+     var Search = "{!JSENCODE($CurrentPage.parameters.search)}";
+    
+    if(Search.length > 1)
+    {
+       $("#spanPleaseWait").show();
+       $("#CaseSubject").val(Search);
+       getRemoteCase(Search,'','');
+    }
+    
+    
+});
+function ToggleMoreOption(FlagAdvanceSearch)
+     {
+         $("#tblAdvanceSearch").toggle(FlagAdvanceSearch);   
+         console.log($("#tblAdvanceSearch"));
+         
+         if(FlagAdvanceSearch)     {
+        
+         $(this).html('Collapse');
+         FlagAdvanceSearch = false;
+         } 
+         else
+         {
+         $(this).html('Expand');
+         FlagAdvanceSearch = true;
+         }
+     }   
+    function createTable(TableID,cols,result,divId)
+    {
+               $("#"+TableID).show();
+               $("#"+divId).show();
+               
+               $("#"+TableID).DataTable({
+               "bDestroy": true,
+               "responsive": true,
+               "aaData": result,
+               "bFilter" :false,
+                "aoColumns": cols
+               
+               });
+                $("#spanPleaseWait").hide();
+    }
+
+    function getRemoteCase(SearchText,FilterText,subStatus) {
+        //$("#tblCase").fnDestroy();
+        Visualforce.remoting.Manager.invokeAction(
+        /// By Varun for US60963:- added one more filter for fetching subStatus./////
+            '{!$RemoteAction.Core_IPS_GlobalCaseSearchController.getCaseList}',SearchText,FilterText,subStatus,function(result, event){
+                console.log(JSON.stringify(result));
+              var cols = [ {!CaseColumnsName}];
+                          console.log(JSON.stringify(cols));
+                         createTable("tblCase",cols,result,"DivCaseResult");
+              
+            }, 
+            {escape: true}
+        );
+        
+    }
+    
+    
+  function DoAdvanceSearch()
+  {
+  
+   var  SearchStr =  '';
+   var  strStatus ='';
+    $("#spanPleaseWait").show();
+   $("input[type='checkbox'").each(function(itm){
+   
+   if($(this).is(":checked"))
+   {
+     
+     strStatus = strStatus + '\'' + $(this).val() + '\',';
+     console.log(strStatus);
+   }
+   
+   });
+   strStatus = strStatus.substring(0,strStatus.length-1);
+   $(".AdvanceSearch").each(function(item,value){
+  
+       if($(this).val()!='')
+       {    
+         SearchStr = SearchStr + (this).getAttribute('id') + '=' + $(this).val() + '#%#';
+       }
+      
+   });
+  
+   if(strStatus!='')
+   {
+    SearchStr = SearchStr +  'status=' + strStatus + '#%#';
+   }
+   console.log(SearchStr);
+   var Search = "{!JSENCODE($CurrentPage.parameters.search)}";
+   if($("#CaseSubject") !=null && $("#CaseSubject").val()!=null && $("#CaseSubject").val()!='')
+   {
+     Search = $("#CaseSubject").val();
+   }
+   else
+   {
+    Search ='';
+   }
+   /// added below lines by Varun for US60963 for searching and filtering subStatus values from controller.///
+    var substatus= getSelectValues(document.getElementById("subStatusID"));
+    getRemoteCase(Search,SearchStr,substatus);
+    
+   
+  }
+    function dtConvFromJSON(data)
+    {
+        /*if (data == null) return '1/1/1950';
+        var r = /\/Date\(([0-9]+)\)\//gi
+        var matches = data.match(r);    
+        if (matches == null) return '1/1/1950';
+        var result = matches.toString().substring(6,19);
+        var epochMilliseconds = result.replace(
+        /^\/Date\(([0-9]+)([+-][0-9]{4})?\)\/$/,
+        '$1');
+        var b = new Date(parseInt(epochMilliseconds));
+        var c = new Date(b.toString());
+        var curr_date = c.getDate();
+        var curr_month = c.getMonth() + 1;
+        var curr_year = c.getFullYear();
+        var curr_h = c.getHours();
+        var curr_m = c.getMinutes();
+        var curr_s = c.getSeconds();
+        var curr_offset = c.getTimezoneOffset()/60
+        var d = curr_month.toString() + '/' + curr_date + '/' + curr_year + " " + curr_h + ':' + curr_m + ':' + curr_s;*/
+        var myDate = new Date(data);
+        
+    return myDate.getMonth() + 1 + "-" + myDate.getDate() + "-" + myDate.getFullYear();
+         //d;
+    }
+    
+   //// For US60963 :- Added below javascript function to get Sub Status selected values.////
+    function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+    var str=''
+
+    for (var i=0, iLen=options.length; i<iLen; i++) {
+        opt = options[i];
+            if (opt.selected) 
+            {
+                str=str+opt.text+',';
+            }
+    }
+    return str;
+}
+    
+    
+    </script>
+
+    
+<style type="text/css">
+.headerDiv {
+    margin:0px;padding:0px;
+    width:100%;    
+    border:1px solid #f7f7f7;
+    
+}.headerDiv table .result{
+    border-collapse: collapse;
+        border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;padding:0px;
+}
+.headerDivBar {
+    height:25px;
+    background:#f4f3f1;
+    
+}
+.headerDivBarResult {
+    height:25px;    
+    background: #003c71;
+    
+}
+.ui-datepicker {
+    width: 17em;
+    padding: .2em .2em 0;
+    display: none;
+}
+
+.Header4
+{
+float:left;
+margin-top:5px;
+color:white;
+margin-left:8px;
+}
+.datagrid tbody td {
+color: #333435; 
+ border-left: 1px solid #f7f7f7;
+border-bottom: .5px solid  #f7f7f7;
+font-size: 12px;
+font-family: Arial,Helvetica,sans-serif;
+font-weight: normal; 
+ padding-top:10px;
+}
+.datagrid  thead th {
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
+background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+background-color:#f2f3f3; 
+color:#000000; 
+font-size:  0.9em; 
+font-weight: normal; 
+font-family: Arial,Helvetica,sans-serif;
+border-left: 1px solid #f7f7f7; 
+padding: 5px;
+} 
+.ASearch
+{
+   font-size: 12px;
+   color:black;  
+   font-weight:normal;
+   text-align:left;
+   font-family:Arial,Helvetica,sans-serif;
+   line-height:1;
+   padding:5px;
+   
+}
+table.dataTable thead th{
+    padding: 5px 18px;
+    border-bottom: 0px solid #ffffff;
+}
+table.dataTable tbody td{
+padding: 5px 18px;
+    border-bottom: 0px solid #ffffff;
+}
+table.dataTable.no-footer {
+    border-bottom: 0px solid #ffffff;
+    }
+</style>
+
+<!--///Added below script for US60963 :- for populating Sub Status values based on selected checkbox as open and closed./////-->
+<script type="text/javascript">
+function render(test)
+ {
+ var open= document.getElementById("openid");
+ var close= document.getElementById("closedid");
+ 
+ if(open.checked == true && close.checked == false)
+ {
+ 
+  document.getElementById('subid').style.display = 'block';
+  document.getElementById('subStatusID').style.display = 'block';
+  document.getElementById('spn1').style.display = 'block';
+  document.getElementById('spn2').style.display = 'block';
+  document.getElementById('spn3').style.display = 'block';
+  document.getElementById('spn4').style.display = 'block';
+  document.getElementById('spn5').style.display = 'block';
+  document.getElementById('spn6').style.display = 'block';
+  document.getElementById('spn7').style.display = 'block';
+  document.getElementById('spn8').style.display = 'block';
+  document.getElementById('spn9').style.display = 'block';
+  document.getElementById('spn10').style.display = 'none';
+  document.getElementById('spn11').style.display = 'none';
+  document.getElementById('spn12').style.display = 'none';
+  
+  
+  }   
+  
+   if(close.checked == true && open.checked == false)
+  {
+  
+  document.getElementById('subid').style.display = 'block';
+  document.getElementById('subStatusID').style.display = 'block';
+  document.getElementById('spn10').style.display = 'block';
+  document.getElementById('spn11').style.display = 'block';
+  document.getElementById('spn12').style.display = 'block';
+  document.getElementById('spn1').style.display = 'none';
+  document.getElementById('spn2').style.display = 'none';
+  document.getElementById('spn3').style.display = 'none';
+  document.getElementById('spn4').style.display = 'none';
+  document.getElementById('spn5').style.display = 'none';
+  document.getElementById('spn6').style.display = 'none';
+  document.getElementById('spn7').style.display = 'none';
+  document.getElementById('spn8').style.display = 'none';
+  document.getElementById('spn9').style.display = 'none';
+  }
+  
+  if(close.checked == true && open.checked == true)
+  {
+  
+  document.getElementById('subid').style.display = 'block';
+  document.getElementById('subStatusID').style.display = 'block';
+  document.getElementById('spn10').style.display = 'block';
+  document.getElementById('spn11').style.display = 'block';
+  document.getElementById('spn12').style.display = 'block';
+  document.getElementById('spn1').style.display = 'block';
+  document.getElementById('spn2').style.display = 'block';
+  document.getElementById('spn3').style.display = 'block';
+  document.getElementById('spn4').style.display = 'block';
+  document.getElementById('spn5').style.display = 'block';
+  document.getElementById('spn6').style.display = 'block';
+  document.getElementById('spn7').style.display = 'block';
+  document.getElementById('spn8').style.display = 'block';
+  document.getElementById('spn9').style.display = 'block';
+  }  
+  
+
+  if(close.checked == false && open.checked == false)
+  {
+  document.getElementById('subid').style.display = 'none';
+  document.getElementById('subStatusID').style.display = 'none';
+   
+    var dropDown = document.getElementById("subStatusID");
+        dropDown.selectedIndex = -1;
+        
+  }
+}  
+</script>
+<!--// End Script for US60963.//-->
+
+<apex:form >
+<div class="headerDiv">
+<div class="headerDivBar">
+<span><h4 style="float:left;margin-top:5px;">Search My Cases</h4></span></div>  <br/>
+<span id="spanPleaseWait"><img src="{!URLFOR($Resource.Core_IPS_GlobalCaseSearch,'progress.gif')}" width="25px" height="25px" /> Please Wait...</span>
+<br/>
+
+<div style="width:100%;">
+<span class="ASearch">  Search Text </span><input class="AdvanceSearch" id="CaseSubject" type="text" value=""/>&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#tblAdvanceSearch').toggle();" >More Options</a>
+
+<hr/>
+
+            <br/>
+            <table width="100%"  cellspacing="0" cellpadding="0" border="1" id="tblAdvanceSearch" >
+            <tr>
+            <td>
+            <br/>
+            <table width="100%"  cellspacing="0" cellpadding="0" id="tblAdvanceSearchOuter"  >
+            <col width="35%"/>
+            <col width="35%"/>
+            <col width="30%"/>
+                    <tr>
+                      <td>
+                                
+                     <table width="100%"  cellspacing="0" cellpadding="5" id="tblAdvanceSearch_setcion1">
+                     <col width="40%"/>
+                     <col width="60%"/>
+                      <tr >
+                       <td>&nbsp;</td>
+                      <td><span class="ASearch">Case Number</span><br/>
+                           <input class="AdvanceSearch" id="CaseNumber" type="text" value=""/><br/>
+                      </td>
+                    
+                      </tr>
+                      
+                       <tr>
+                       <td>&nbsp;</td>
+                      <td>
+                              <span class="ASearch"> Customer Reference Id  </span> <br/>
+                            <input class="AdvanceSearch" id="Core_Customer_Reference_ID__c" type="text" value=""/><br/>
+                      </td>
+                       
+                       
+                      
+                      </tr>
+                       
+                      <tr>
+                       <td>&nbsp;</td>
+                       
+                       <td>
+                             <span class="ASearch">Product Name</span><br/>
+                            <input class="AdvanceSearch" id="ProductName" type="text" value=""/><br/>
+                      </td>
+                       
+                      
+                      </tr>
+                       
+                      </table>            
+                           
+                      </td >
+                      <td>
+                    <table width="100%" cellspacing="0" cellpadding="5"   id="tblAdvanceSearch_setcion2">
+                      <tr>
+                      <td>
+                             <span class="ASearch">  Status  </span>
+                            <input type="checkbox" name="Status" id="newid" value="New" /> <span class="ASearch">New</span>
+                            <input type="checkbox" name="Status2" id="openid" value="Open"  onChange="render();"/> <span class="ASearch">Open</span>          
+                            <input type="checkbox" name="Status" id= "closedid"  value="Closed" onChange="render();"/> <span class="ASearch">Closed</span>
+                            
+                      </td>
+                     <!--// For US60963 added new sub status values.//-->
+                      <tr>
+                      <td>
+                                 
+                                <span class="ASearch" style=" display: none" id="subid" >Sub Status</span>
+                                <select id="subStatusID" name="sub status" multiple="multiple" style=" display: none">
+                                <span class="ASearch"><option id="spn1" value="1" style=" display: none">{!$Label.IPS_SubStatus_Open_value1}</option></span> 
+                                <span class="ASearch"><option id="spn2" value="2" style=" display: none">{!$Label.IPS_SubStatus_Open_value2}</option></span>
+                                <span class="ASearch"><option id="spn3" value="3" style=" display: none">{!$Label.IPS_SubStatus_Open_value3}</option></span>
+                                <span class="ASearch"><option id="spn4" value="4" style=" display: none">{!$Label.IPS_SubStatus_Open_value4}</option></span>
+                                <span class="ASearch"><option id="spn5" value="5" style=" display: none">{!$Label.IPS_SubStatus_Open_value5}</option></span>
+                                <span class="ASearch"><option id="spn6" value="6" style=" display: none">{!$Label.IPS_SubStatus_Open_value6}</option></span>
+                                <span class="ASearch"><option id="spn7" value="7" style=" display: none">{!$Label.IPS_SubStatus_Open_value7}</option></span>
+                                <span class="ASearch"><option id="spn8" value="8" style=" display: none">{!$Label.IPS_SubStatus_Open_value8}</option></span>
+                                <span class="ASearch"><option id="spn9" value="9" style=" display: none">{!$Label.IPS_SubStatus_Open_value9}</option></span>
+                                <span class="ASearch"><option id="spn10" value="10" style=" display: none">{!$Label.IPS_SubStatus_Closed_value10}</option></span>
+                                <span class="ASearch"><option id="spn11" value="11" style=" display: none">{!$Label.IPS_SubStatus_Closed_value11}</option></span>
+                                <span class="ASearch"><option id="spn12" value="12" style=" display: none">{!$Label.IPS_SubStatus_Closed_value12}</option></span>
+                               </select>
+                     
+                      </td>
+                      </tr>
+                       
+                       
+                      </tr>
+                    <tr>
+                         <td >
+                         <table width="100%" cellspacing="0" cellpadding="0" id="tblAdvanceSearch_setcion3">
+                        
+                         <tr class="spacer">
+                         <td style="mergin-top:50px;">  <span class="ASearch"> Case Created Date</span> <br/>
+                            
+                            <input class="AdvanceSearch datepicker"  value="" id="CreatingDateFrom"  /><br/><span class="ASearch">From</span></td>
+                         <td style="mergin-top:5px;">  <span class="ASearch">  &nbsp;  </span> <br/>
+                           
+                           <input class="AdvanceSearch datepicker" value="" id="CreatingDateTo"  /><br/><span class="ASearch">To</span> </td>
+                          
+                         </tr>
+                         </table>
+                           
+                            
+                            
+                            
+                        </td>
+                        
+                        
+                    </tr>
+                     
+                    </table>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                   
+                   
+                   
+                   
+                   
+                </table>
+                <br/>
+                
+                </td>
+                        
+                        
+             </tr>
+                     
+             </table><br/>
+                    &nbsp;&nbsp;&nbsp;<input onclick="DoAdvanceSearch();return false;" type="button" class="ASearch" value="Search"/>
+                    </div><br/>
+
+
+            
+            <table id="tblCase" width="100%" class="datagrid result">
+             <thead>
+               <tr>                
+                   
+                </tr>
+             </thead>
+             <tbody>
+             
+             </tbody>
+            </table>
+           
+ 
+        
+</div>
+</apex:form>
+</apex:page>

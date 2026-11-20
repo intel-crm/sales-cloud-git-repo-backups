@@ -1,0 +1,193 @@
+:host {
+    width: 100%;
+}
+
+.isRequired label.topLabel::before {
+    color: var(--redError);
+    content: '*';
+    margin-right: 4px;
+}
+
+.errorMessage {
+    color: var(--redError);
+    font-size: 0.75em;
+}
+
+.headingCheckbox {
+    position: absolute;
+    left: 0.5em;
+    top: 0;
+}
+
+input[type=search] {
+    color: var(--darkGray);
+}
+
+.highlight,
+.textHighlight > .slds-form-element,
+.radioHighlight .label {
+    background-color: var(--green);
+}
+
+button.slds-button_icon {
+    height: 100%;
+}
+
+.theme-light .tree-container {
+    background-color: var(--white);
+}
+
+.theme-dark .tree-container {
+    background-color: var(--charcoal);
+}
+
+/*Child section css*/
+.child.topLevel {
+    padding: 0;
+}
+
+.child.topLevel .checkboxPadding {
+    padding: 0 0 0 1.5em;
+}
+
+.child.topLevel .child .checkboxPadding {
+    padding: 0 0 0 3em;
+}
+
+.child.topLevel .child .child .checkboxPadding {
+    padding: 0 0 0 4.5em;
+}
+
+.child.topLevel .child .child .child .checkboxPadding {
+    padding: 0 0 0 6em;
+}
+
+.child.topLevel .child .child .child .child .checkboxPadding {
+    padding: 0 0 0 7.5em;
+}
+
+.child.type-filter.topLevel .checkboxPadding {
+    padding-bottom: .25rem;
+}
+
+.child .slds-form-element__label {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.child.topLevel > .checkboxPadding {
+    padding-right: 2rem;
+}
+
+.child.clearFilters,
+.child.collapsible {
+    position: relative;
+}
+
+.child a.toggle {
+    position: absolute;
+    margin-left: -24px;
+}
+
+.child .filterOptions {
+    display: inline-block;
+    margin-left: 24px;
+}
+
+.child .collapsible-input {
+    display: inline-block;
+}
+
+.child .cursor {
+    cursor: pointer;
+}
+
+.child .toggleIcon {
+    opacity: 0.8;
+}
+
+.child .toggleIcon .slds-icon_container {
+    border: 1px solid var(--lightGray);
+    border-radius: 0;
+    line-height: 0.6rem;
+    padding: 1px;
+}
+
+.child .toggleIcon .slds-icon_container .slds-icon,
+.child .toggleIcon .slds-icon_container svg {
+    color: var(--lightGray);
+    height: 0.65rem;
+    width: 0.65rem;
+}
+
+.child .collapsible-input .slds-form-element__control.slds-grow .slds-checkbox .slds-checkbox__label {
+    display: inline-block;
+    padding-left: 20px;
+}
+.slds-checkbox .slds-checkbox__label .slds-form-element__label {
+    padding: 0;
+}
+
+.child .collapsible-input .slds-form-element__control.slds-grow .slds-checkbox .slds-checkbox_faux {
+    margin-left: -24px;
+}
+
+.child .slds-checkbox_faux {
+    margin-right: 0.5rem;
+}
+.child .child-hidden {
+    display: none;
+}
+
+.child .count {
+    border: 1px solid #d7d7d7;
+    border-radius: 2.6px;
+    padding: 0 3px;
+    position: absolute;
+    right: 0;
+    font-size: .750em;
+    color: #959595;
+}
+
+.child .highlight {
+    background-color: var(--green);
+}
+
+.type-filter .filter,
+.type-filter .filerOptions a {
+    font-size: .875rem;
+}
+
+.theme-dark a,
+.theme-dark .slds-form-element__label {
+    color: var(--white);
+}
+
+.theme-dark .highlight a,
+.theme-dark .highlight .slds-form-element__label {
+    color: var(--darkGray);
+}
+
+
+.theme-light .slds-form-element__label {
+    color: var(--darkGray);
+}
+
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox_faux::after,
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox--faux::after,
+.theme-light .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox_faux::after,
+.theme-light .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux::after,
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox__label .slds-checkbox_faux::after,
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox__label .slds-checkbox--faux::after {
+    border-bottom-color: var(--white);
+    border-left-color: var(--white);
+}
+
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox_faux,
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox--faux,
+.theme-light .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox_faux,
+.theme-light .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux,
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox__label .slds-checkbox_faux,
+.theme-light .slds-checkbox [type="checkbox"]:checked + .slds-checkbox__label .slds-checkbox--faux {
+    background: var(--link);
+}

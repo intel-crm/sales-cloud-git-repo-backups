@@ -1,0 +1,13 @@
+.header {
+    background: #1a315b;
+    color: white;
+    padding: 15px;
+}
+.textbox{
+    font-size: medium;
+    padding-left: 10px;
+}
+.moveBottom{
+    bottom: 18px;
+    position: relative;
+}

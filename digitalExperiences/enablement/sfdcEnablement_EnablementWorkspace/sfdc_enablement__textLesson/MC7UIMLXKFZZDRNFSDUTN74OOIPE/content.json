@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Learn how to tag an AI opportunity",
+  "contentBody" : {
+    "description" : "Learn how to tag an AI opportunity so that you can request support and so that it will appear in the AI pipeline.",
+    "sections" : [ {
+      "content" : "<div><span style=\"font-size: 13px;\">For more details on how to tag a deal so that it shows up in the AI pipeline, go here: </span><a style=\"font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(0, 102, 204);\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://intel.sharepoint.com/:p:/s/saleskpidocs/EQw98pKENJBJhjZB_O57qzkB-ySh8ZOMTFklXjpErpXh-Q?e&#61;hwfBj8\">https://intel.sharepoint.com/:p:/s/saleskpidocs/EQw98pKENJBJhjZB_O57qzkB-ySh8ZOMTFklXjpErpXh-Q?e&#61;hwfBj8</a></div>",
+      "keyConcept" : "Salesforce AI Tags",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1
+  },
+  "urlName" : "learn-how-to-tag-an-ai-opportunity"
+}

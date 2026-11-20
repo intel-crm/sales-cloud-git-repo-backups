@@ -1,0 +1,127 @@
+/*div[data-is-loading="true"] .filters-main-container .filter-grouping-container {
+  border-bottom: none;
+}
+
+.mobile-padding {
+  padding: 0 1rem;
+}
+
+div[data-expanded="false"] {
+  display: none;
+}
+
+div[data-expanded="true"] {
+  display: block;
+}
+
+input.search-keyword {
+  border: 1px solid var(--lightGray);
+  padding: .4rem .5rem .4rem 2rem;
+  width: 100%;
+}
+
+input.search-keyword::placeholder {
+  color: var(--gray);
+}
+
+input.search-keyword::-ms-input-placeholder {*/
+  /* Microsoft Edge */
+ /* color: var(--gray);
+}
+
+input:focus {
+  color: var(--charcoal) !important;
+}
+
+input:focus + .search-icon::before {
+  color: var(--darkBlue) !important;
+}
+
+.filter-grouping {
+  cursor: pointer;
+}
+
+.filter-grouping-icon {
+  font-size: 1.5rem;
+  line-height: 1rem;
+  margin-right: -.5rem;*/ /* pull to edge */
+ /* padding-left: 1rem;
+}
+
+.grouping-categories {
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+.filters-main-container {
+  padding: 0 1rem;
+}
+
+.mobile-filters-button {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid var(--lightGray);
+  border-radius: 0;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  margin: 8px 0;
+  min-height: 3.125rem;
+  width: 100%;
+}
+
+.mobile-filters-buttons {
+  flex-direction: column;
+}
+
+.mobile-filters-button .text-button-small {
+  font-size: .6875rem;
+}
+
+.recommended-results-container {
+  padding-bottom: 2.5rem;
+}
+
+.fill-modal-height {
+  min-height: 100vh;
+}
+
+c-ipa-link {
+  margin-bottom: .5rem;
+}
+
+c-core-intc-modal[data-id="country-warning"] label {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .filters-main-container {
+    padding: 0;
+  }
+
+  c-core-intc-modal[data-id="country-warning"] label {
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-padding {
+    padding: 0;
+  }
+
+  .filter-grouping-container {
+    border-bottom: 1px solid var(--lightGray);
+  }
+
+  .filters-main-container {
+    padding: 0 2rem 0 0;
+  }
+
+  input.search-keyword {
+    margin-bottom: .25rem;
+  }
+
+  .recommended-results-container h2 {
+    padding: 0;
+  }
+}*/

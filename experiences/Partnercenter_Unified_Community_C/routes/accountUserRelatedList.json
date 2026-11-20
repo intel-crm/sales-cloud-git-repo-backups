@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "04601551-bb40-4c34-837a-80fa52ee3e0b",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Account_User_Related_List__c",
+  "id" : "28d6bd86-cbd3-47fa-8522-5eac8bb44279",
+  "label" : "Account User Related List",
+  "objectApiName" : "Core_MDF_Partner_Node_User_Mapping__c",
+  "routeType" : "relatedlist-a3n",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-partner-node-user-mapping"
+}

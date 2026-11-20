@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>PSG Licensing</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_PSG_JPN</name>
+    <style>none</style>
+    <subject>Welcome to PSG Licensing</subject>
+    <textOnly>インテル® FPGA セルフサービス・ライセンス・センターへようこそ
+
+{!Contact.FirstName} 様、
+
+インテル® FPGA セルフサービス・ライセンス・センター (SSLC) へようこそ。これで、インテル® PSG ソフトウェアおよび IP に関するライセンス資格を表示、管理し、必要に応じて有効化できます。
+SSLC は、ライセンス資格の基本的な機能の実行を支援するガイド付きアプローチを使用しています。参照としてビデオや文書も提供されております。
+
+今後必要になる場合がありますので、ログイン情報は保存しておいてください。
+
+メールアドレス: {!Contact.Email}
+
+パスワードは秘密情報として保護してください。インテルのウェブサイトでこのパスワードを使用する際は、各サイトのウェブページ下部からリンクされているインテルの利用規約が適用されます。
+
+
+インテル® PSG ソフトウェアおよび IP ライセンス資格を表示および管理する場合は、 licensing.intel.com  にログインしてください。
+
+
+何卒よろしくお願いいたします。
+インテル® PSG SSLC チーム
+
+
+このメッセージは、インテル® プログラマブル・ソリューション・グループと FPGA ソフトウェアおよび/または IP ライセンス資格に関連する重要なコミュニケーションとしてお客様に送信されました。
+© 2021 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.co.jp
+プライバシー &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

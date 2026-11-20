@@ -1,0 +1,23 @@
+<messaging:emailTemplate subject="URGENT: Record Update Failure Notification" recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c">
+ <messaging:htmlEmailBody >
+      <html>
+         <body>
+            <p>
+            Hi Team, <br/><br/>
+            We encountered an issue while attempting to update a record in the system. The update process has failed, and as a result, the record was not updated as intended. <br/>
+            <br/>
+            <b>Details of the Failure:</b><br/>
+
+            Record ID: [Insert Record ID]<br/>
+            Error Message: [Insert Error Message]<br/>
+            Timestamp of Failure: [Insert Timestamp]<br/><br/>
+            <p style="color:red">Action Required:</p>
+            Please investigate the issue at your earliest convenience.<br/><br/>
+            Thank you for your assistance.
+            </p>
+            Best regards,<br/>
+            Intel Corporation
+         </body>
+      </html>
+   </messaging:htmlEmailBody>
+</messaging:emailTemplate>

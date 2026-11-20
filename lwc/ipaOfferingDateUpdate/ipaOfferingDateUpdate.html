@@ -1,0 +1,44 @@
+<template>
+    <!-- <c-core-intc-modal is-open has-header has-body has-footer onclose={handleClose}>
+        <div slot="header">
+            <h3 class="color-white">{label.offeringValidityPeriod}</h3>
+        </div>
+        <div slot="body" class="slds-p-around_large slds-is-relative">
+            <template if:true={showSpinner}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </template>
+            <div class="slds-grid slds-wrap">
+                <lightning-input
+                    type="date"
+                    required
+                    class="slds-p-horizontal_medium slds-size_12-of-12 slds-medium-size_6-of-12"
+                    label={label.validFrom}
+                    data-id="startDate"
+                    value={startDate}
+                    onchange={handleChange}
+                    min={minStartDate}
+                    name="startDate">
+                </lightning-input>
+
+                <lightning-input
+                    type="date"
+                    required
+                    class="slds-p-horizontal_medium slds-size_12-of-12 slds-medium-size_6-of-12"
+                    label={label.validTo}
+                    data-id="endDate"
+                    value={endDate}
+                    disabled={endDateDisabled}
+                    onchange={handleChange}
+                    min={minEndDate}
+                    name="endDate">
+                </lightning-input>
+            </div>
+        </div>
+        <footer slot="footer" class="slds-p-around_medium slds-text-align_right">
+            <lightning-button variant="neutral" class="slds-m-right_medium" label={label.cancel} onclick={handleCancel}></lightning-button>
+            <lightning-button variant="brand" disabled={saveDisabled} label={label.submit} onclick={handleSave}></lightning-button>
+        </footer>
+    </c-core-intc-modal> -->
+</template>

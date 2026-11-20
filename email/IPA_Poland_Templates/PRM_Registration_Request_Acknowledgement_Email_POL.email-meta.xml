@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Registration_Request_Acknowledgement_Email_POL</name>
+    <style>none</style>
+    <subject>Otrzymano: Twój wniosek o uczestnictwo w programie Intel® Partner Alliance</subject>
+    <textOnly>Twój wniosek jest rozpatrywany
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+
+Dziękujemy za złożenie wniosku. Jego rozpatrzenie może potrwać do trzech dni roboczych.
+W przypadku jakichkolwiek pytań prosimy o kontakt z nami poprzez https://signin.intel.com/ContactUs?Culture=pl-pl.
+
+
+Dziękujemy.
+Twój zespół Intel® Partner Alliance
+
+Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Ochrona danych | Pliki cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

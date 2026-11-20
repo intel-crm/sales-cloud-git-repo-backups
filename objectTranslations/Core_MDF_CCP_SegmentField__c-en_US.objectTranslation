@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_CCP_SegmentField</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_CCP_SegmentField</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Type --></label>
+        <name>Core_MDF_Data_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Core_MDF_Field_API_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Label Name --></label>
+        <name>Core_MDF_Field_Label_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum Length --></label>
+        <name>Core_MDF_Maximum_Length_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Core_MDF_Order_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

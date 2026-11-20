@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>myRule_1_A1</name>
+        <label>External Email Notification</label>
+        <locationX>518</locationX>
+        <locationY>479</locationY>
+        <actionName>Core_IPS_Case_Interested_Party__c.Core_IPS_External_Email_Notification_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IPS_Case_Interested_Party__c.Core_IPS_External_Email_Notification_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_3_A1</name>
+        <label>Internal Email Notification</label>
+        <locationX>782</locationX>
+        <locationY>587</locationY>
+        <actionName>Core_IPS_Case_Interested_Party__c.Core_IPS_Internal_Email_Notification_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IPS_Case_Interested_Party__c.Core_IPS_Internal_Email_Notification_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>myRule_1</name>
+        <label>External Type</label>
+        <locationX>716</locationX>
+        <locationY>371</locationY>
+        <defaultConnector>
+            <targetReference>myRule_3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External Type</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>TRUE_External Type</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_3</name>
+        <label>Internal Type</label>
+        <locationX>914</locationX>
+        <locationY>479</locationY>
+        <defaultConnectorLabel>FALSE_Internal Type</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>TRUE_Internal Type</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the IPS Email Notification For Interested Party New EA process using multiple criteria.
+While interested party member add in case team mail will send to Recently Added Member.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_TRUE_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+	ISPICKVAL({!$Record.Type__c} ,&apos;External&apos;),
+
+	NOT(ISBLANK( {!$Record.User__c})),
+	
+	{!$Record.Case__r.Core_IPS_Is_Notification_Active__c} = TRUE,
+
+	{!$Record.Case__r.Core_IPS_Customer_Visible__c} = TRUE,
+
+	{!$Record.Case__r.RecordType.DeveloperName} = $Label.Core_IPS_CaseCreateRecordType_Name,
+
+	OR( ISPICKVAL({!$Record.Case__r.Status}, &apos;New&apos;) ,
+		ISPICKVAL({!$Record.Case__r.Status}, &apos;Open&apos;) 
+	),
+  
+	IF( ISBLANK({!$Record.Contact__c}), FALSE, 
+		AND( {!$Record.Contact__r.Core_IPS_Active__c} = TRUE,
+			 {!$Record.Contact__r.Core_IPS_Email_Opt_Out__c} = FALSE
+		)
+	),
+	
+	{!$Record.Core_IPS_Project_Interested_Party__c} = FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+	ISPICKVAL({!$Record.Type__c} ,&apos;Internal&apos;),
+
+	NOT(ISBLANK({!$Record.User__c})),
+	
+	{!$Record.Case__r.Core_IPS_Is_Notification_Active__c} = TRUE,
+
+	OR({!$Record.Case__r.RecordType.DeveloperName} = $Label.Core_IPS_CaseCreateRecordType_Name,
+	   {!$Record.Case__r.RecordType.DeveloperName} = $Label.Core_IPS_NoAssignedContactRecordType_Name,
+	   {!$Record.Case__r.RecordType.DeveloperName} = $Label.Core_IPS_GECRecordTypeName
+	),
+
+	OR( ISPICKVAL({!$Record.Case__r.Status}, &apos;New&apos;),
+		ISPICKVAL({!$Record.Case__r.Status}, &apos;Open&apos;),
+		ISPICKVAL({!$Record.Case__r.Status}, &apos;On Hold&apos;) 
+	),
+
+	{!$Record.Core_IPS_Project_Interested_Party__c} = FALSE
+)</expression>
+    </formulas>
+    <label>IPS Email Notification For Interested Party New EA</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>590</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>myRule_1</targetReference>
+        </connector>
+        <object>Core_IPS_Case_Interested_Party__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

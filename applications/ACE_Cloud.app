@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Salesforce</label>
+    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
+    <tabs>standard-Lead</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>Core_Opportunity_Search</tabs>
+    <tabs>Core_Sales_Support</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>Core_Tab_Newsfeeds</tabs>
+    <tabs>Core_Ask_A_Question__c</tabs>
+    <tabs>Core_Ask_a_Question_Grid_Mgt</tabs>
+    <tabs>Core_Capability_Matrix__c</tabs>
+    <tabs>Core_Customer_Financials__c</tabs>
+    <tabs>Core_Intel_Business_Summary__c</tabs>
+    <tabs>Core_Value_Chain__c</tabs>
+    <tabs>Core_Value_Map__c</tabs>
+    <tabs>Core_CCV__c</tabs>
+    <tabs>Core_Channel_Data_Search_Tab</tabs>
+    <tabs>Core_Channel_Sales_Analysis</tabs>
+    <tabs>Core_Pipeline_Analysis</tabs>
+    <tabs>Core_Pipeline_Management</tabs>
+    <tabs>Ask_a_Question</tabs>
+    <tabs>Core_Prospect__c</tabs>
+    <tabs>Account_Create_Request__c</tabs>
+</CustomApplication>

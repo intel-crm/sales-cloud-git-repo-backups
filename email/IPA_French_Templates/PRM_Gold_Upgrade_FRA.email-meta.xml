@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_FRA</name>
+    <style>none</style>
+    <subject>Bienvenue dans le niveau Gold de l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Niveau Gold de l&apos;Alliance partenaire Intel®
+
+
+
+{!Contact.FirstName},
+
+Nous avons apporté des changements intéressants aux critères du programme Alliance partenaire Intel® et amélioré les avantages qui répondent aux besoins de votre entreprise. Par conséquent, votre entreprise a été promue au niveau Gold de l&apos;Alliance partenaire Intel®. Félicitations !
+
+Voici quelques avantages supplémentaires que vous recevrez en tant que membre de niveau Gold :
+
+Badge Gold
+Remplacement anticipé des pièces sous garantie
+Plus de possibilités de gagner de d&apos;échanger des points
+Accès à la vitrine de la plateforme de solutions
+Accès à la Developer Zone - Documents Premier et sécurisés (sur demande)
+
+
+La nouvelle Université partenaire Intel® a beaucoup à offrir, notamment :
+
+Une mise à niveau complète de l&apos;expérience numérique
+Des parcours de formation personnalisés
+Et un nouveau système d&apos;évaluation du contenu pour aider les partenaires à trouver le contenu le mieux évalué par leurs pairs.
+
+
+De plus, nous proposons désormais à nos partenaires des tendances et des informations sur l&apos;industrie, fournies par les data scientists de l&apos;équipe Dimensionnement et prévisions de marché d&apos;Intel.
+
+Profitez d&apos;une expérience utilisateur améliorée de la Plateforme de solutions Intel® :
+
+Un nouveau look et une navigation plus facile sur le site
+Une expérience améliorée pour générer des connexions et des prospects entre les partenaires
+Une amélioration de la fonctionnalité de recherche globale
+
+
+L&apos;Alliance partenaire Intel® s&apos;efforce de fournir constamment plus de valeur et d&apos;avantages pour que votre entreprise puisse prospérer dans le contexte actuel. Découvrez les services offerts par l&apos;Alliance partenaire Intel® pour vous aider à faire progresser votre entreprise.
+
+
+Lancez-vous dès aujourd&apos;hui
+
+
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
+Confidentialité &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

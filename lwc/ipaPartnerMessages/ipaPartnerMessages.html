@@ -1,0 +1,35 @@
+<template>
+    <h2 class="slds-m-bottom_medium">{title}</h2>
+    <div class="message-list" role="table"  >
+        <div role="rowgroup">
+            <div role="row">       
+        <div class="message-header">         
+            <div class="subject"  role="columnheader"  >{label.subject}</div>
+            <!-- <div class="type mobile-hide">{label.type}</div> -->
+            <div class="date mobile-hide"  role="columnheader" >{label.date}</div>
+        
+            <div class="toggle"></div>
+       
+        </div>
+    </div>
+    </div> 
+
+        <template for:each={messages} for:item="message"   >
+            
+            <c-ipa-partner-message message={message} role="cell"   key={message.messageId}></c-ipa-partner-message>
+        </template>  
+    
+    </div>   
+ 
+  
+
+
+    <div class="footer-actions">
+        <template if:true={ifs.isViewAllLinkValid}>
+            <c-ipa-link external-url={viewAllLink.externalUrl} community-page={viewAllLink.communityPage}  object-page={viewAllLink.objectPage} record-id={viewAllLink.recordId} hide-icon="true">
+                <button type="button" class="button button-secondary button-arrow view-all-button" tabindex="-1">{viewAllLink.label}</button>
+            </c-ipa-link>
+        </template>
+    </div>
+
+</template>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CaseMilestoneCompare</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CaseMilestoneCompare</value>
+    </caseValues>
+    <fields>
+        <label><!-- Case Id --></label>
+        <name>Core_CaseId__c</name>
+    </fields>
+    <fields>
+        <label><!-- LastModifiedBy_Name --></label>
+        <name>Core_LastModifiedBy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- LastModifiedDate --></label>
+        <name>Core_LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- MilestoneType_Name --></label>
+        <name>Core_MilestoneType_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone_Id --></label>
+        <name>Core_Milestone_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Negative Elapsed Time --></label>
+        <name>Core_Negative_Elapsed_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Next Response Due Date --></label>
+        <name>Core_Next_Response_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed --></label>
+        <name>Core_Processed__c</name>
+    </fields>
+    <fields>
+        <label><!-- StartDate --></label>
+        <name>Core_StartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- TargetDate --></label>
+        <name>Core_TargetDate__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

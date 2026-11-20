@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Opportunity.Core_Opportunity_Count__c:SUM/PARENTGROUPVAL(Opportunity.Core_Opportunity_Count__c:SUM, GRAND_SUMMARY)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>BucketField_53589758</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion %</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_53589758</developerName>
+        <masterLabel>Disposition</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Design Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Cancelled</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>Not Won</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_87957012</developerName>
+        <masterLabel>SDR Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>GMP Americas Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <value>Americas</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>US Sales Group</sourceValue>
+            </sourceValues>
+            <value>US</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>GMP APJ Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>GMP EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP France Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP UK Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Created_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Opportunity_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Opportunity.Core_Push_Counter__c</field>
+    </columns>
+    <columns>
+        <field>LAST_STAGE_CHANGE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Last_Activity_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <description>RT: Opportunities  Filtered on Opty Created by SDR and dispositioned</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Created_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>sdr</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_53589758</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_87957012</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SDR Opty Created and Dispositioned</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>AMOUNT</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_PREVCUR2FY</interval>
+    </timeFrameFilter>
+</Report>

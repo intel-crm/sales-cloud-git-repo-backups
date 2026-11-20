@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader">
+    <aura:attribute name="actionName" type="String" default="AcceptLowTouch" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:DDR_ChildToParentCmmn" action="{!c.handleChildEvent}" />
+    <c:Core_DDR_Accept lowTouchORHighTouch="{!v.actionName}" recordId="{!v.recordId}"></c:Core_DDR_Accept>	
+    <div style="float: right;padding-top: 2%;">
+        <lightning:button label="Close" variant="brand" onclick="{!c.cancelPopup}"/>
+    </div>
+</aura:component>

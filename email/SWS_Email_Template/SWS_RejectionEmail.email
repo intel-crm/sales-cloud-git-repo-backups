@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="Intel® Tiber™ AI Cloud: Credit Request Rejection " recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c">
+   <messaging:htmlEmailBody >
+      <html>
+         <body>
+            <p>
+               Dear {!relatedTo.SWS_Submitter_Name__c}, <br></br>
+               <br></br> 
+               Thanks for your interest in <a href="https://cloud.intel.com" style="color:#0563C1">Intel® Tiber™ AI Cloud</a>. After careful consideration and review of your credit request, we regret to inform you that your request for coupons could not be approved based on our current criteria and policies.<br></br>
+               <br></br>
+               Thank you for your understanding.
+               <br></br><br></br> 
+               Intel® Tiber™ AI Cloud
+
+            </p>
+         </body>
+      </html>
+   </messaging:htmlEmailBody>
+</messaging:emailTemplate>

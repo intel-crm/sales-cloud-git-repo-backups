@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Registration Tracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Registration_Trackers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Database Query --></label>
+        <name>Database_Query__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsAdminReg --></label>
+        <name>IsAdminReg__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsBulkInvite --></label>
+        <name>IsBulkInvite__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsEPUMReg --></label>
+        <name>IsEPUMReg__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsPartnerInvite --></label>
+        <name>IsPartnerInvite__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsSelfReg --></label>
+        <name>IsSelfReg__c</name>
+    </fields>
+    <fields>
+        <label><!-- MilestoneOrder_Admin --></label>
+        <name>MilestoneOrder_Admin__c</name>
+    </fields>
+    <fields>
+        <label><!-- MilestoneOrder_Self --></label>
+        <name>MilestoneOrder_Self__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Object --></label>
+        <name>Related_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- isCidaas --></label>
+        <name>isCidaas__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

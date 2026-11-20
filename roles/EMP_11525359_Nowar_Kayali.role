@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Brandon Goodyear</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11525359_Nowar_Kayali</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10658783_Brandon_Goodyear</parentRole>
+</Role>

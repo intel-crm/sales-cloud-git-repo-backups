@@ -1,0 +1,219 @@
+<!-- This apex page is used to display charts on Contact Page 
+    Last Modified By: Nakul C (5-Dec-2016) Updated charts with slider and new charts for KM 3,4 & 5.
+-->
+<apex:page standardController="Contact" extensions="MaritzCX.VisualizationsController" sidebar="false" showHeader="false" id="pageId">
+
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/Highcharts_Library/api/js/jquery-1.11.3.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/Highcharts_Library/js/highcharts.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/Highcharts_Library/js/highcharts-more.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/Highcharts_Library/js/modules/solid-gauge.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__ManageHighcharts, '/MCX_JSPlugins/ManageHighcharts.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__ManageHighcharts, '/MCX_JSPlugins/ManageDatePicker.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.MaritzCX__ManageHighcharts, '/MCX_JSPlugins/ManageHighcharts.css')}"/>
+<!-- Jquery Datepicker Files-->
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/jqueryDatePicker/jquery-ui-1.11.4/jquery-ui.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/jqueryDatePicker/jquery-ui-themes-1.9.2/themes/ui-lightness/jquery-ui.css')}" />
+<!-- End of Jquery Datepicker-->
+
+    <script type="text/javascript">
+    	var charts;
+            /**
+            * @desc Render the charts when the page is ready
+            */
+            $(document).ready(function(){    
+                MCX_HIGHCHARTS.initSlider('desktop');
+                charts = JSON.parse('{!JSENCODE(chartsJSON)}');
+                MCX_HIGHCHARTS.mainController(charts,'desktop');
+                initMCX_DatePicker({!JSENCODE(Text(startYear))},{!JSENCODE(Text(startMonth))},{!JSENCODE(Text(startDay))});
+                MCX_DatePicker.renderDateRangepicker();                                    
+            });
+            
+            /**
+            * @desc Render the charts again adjusting to height and width on resize event
+            */          
+        window.onresize = function(event) {
+            var size = [1000,400];
+        	window.resizeTo(size[0],size[1]);
+            MCX_HIGHCHARTS.resizeSlider();
+        	MCX_HIGHCHARTS.mainController(charts,'desktop');
+        }  
+        
+        //Method that block the page when loading
+        function showSpinner()
+        {            
+            document.getElementById('opaque').style.display='block';          
+           var popUp = document.getElementById('spinner');
+          
+           popUp.style.display = 'block';
+        }
+        //Method that removes the block after load
+        function hideSpinner()
+        {                     
+             document.getElementById('opaque').style.display='none';
+             var popUp = document.getElementById('spinner');              
+             popUp.style.display = 'none';
+        }
+        
+        function initDatepicker(year,month,day){
+            var charts = JSON.parse('{!JSENCODE(chartsJSON)}');
+            //MCX_HIGHCHARTS.mainController(charts,'desktop');
+            initMCX_DatePicker(year,month,day);
+            MCX_DatePicker.renderDateRangepicker(); 
+        }  
+        
+        function reInitCharts(chartsStr){
+        	charts = JSON.parse(chartsStr);
+        	MCX_HIGHCHARTS.initSlider('desktop');
+        	MCX_HIGHCHARTS.mainController(charts,'desktop');
+        	hideSpinner();
+        }                                           
+        </script>
+
+    <!-- Filter Panel Component -->
+    <div id="filterDiv">
+    <apex:outputPanel id="messages">
+        <apex:pageMessages />
+    </apex:outputPanel>
+    <!-- Filter Panel -->
+    <apex:pageBlock id="filterBlock">
+        <apex:form >
+            <apex:panelGrid id="filterGrid" border="0" columns="4" columnClasses="col1,col2,col1,col1">
+                <apex:panelGroup >
+                    <apex:outputLabel style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" value="{!$Label.maritzcx__survey}: " escape="true"/>
+                    <apex:selectList id="surveyFilter" required="true" value="{!surveyId}" size="1"  disabled="{!surveyId == 'none'}">
+                        <apex:selectOptions value="{!surveyList}"/>
+                        <apex:actionSupport event="onchange" action="{!getSurveyConfig}" rerender="timeTrendFilter,startDate,endDate" status="actStatusId" oncomplete="initDatepicker({!JSENCODE(Text(startYear))},{!JSENCODE(Text(startMonth))},{!JSENCODE(Text(startDay))})"/>
+                    </apex:selectList>                    
+                </apex:panelGroup>
+                 <apex:panelgroup style="padding-bottom:1%;">
+                    <fieldset style="border:1;">
+                                <legend><apex:outputLabel style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" value="{!$Label.maritzcx__select_date_range}" escape="true"/></legend>                       
+                                <apex:panelGrid columns="1">                                                                                                                                           
+                                    <apex:panelGroup id="dateRange">
+                                        <div style="display:inline-block;padding-top:2px;"> 
+                                        <apex:outputLabel value="{!$Label.maritzcx__start_date}:" for="startdate" style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" escape="true"/>&nbsp;
+                                        <apex:inputText id="startDate" value="{!startDate}" size="8" disabled="{!surveyId == 'none'}">
+                                        	<apex:actionSupport event="onchange" action="{!identifyAvailableTrends}" rerender="timeTrendFilter,messages" status="actStatusId"/>
+                                        </apex:inputText>
+                                        </div>
+                                         
+                                        <div style="display:inline-block;padding-top:2px;">
+	                                        <apex:outputLabel value="{!$Label.maritzcx__end_date}:" for="enddate" style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" escape="true"/>&nbsp;
+	                                        <apex:inputText id="endDate" value="{!endDate}" size="8" disabled="{!surveyId == 'none'}">
+	                                        	<apex:actionSupport event="onchange" action="{!identifyAvailableTrends}" rerender="timeTrendFilter,messages" status="actStatusId"/>
+	                                    	</apex:inputText>
+                                    	</div>
+                                    </apex:panelGroup>                                    
+                                </apex:panelGrid>                                        
+                        </fieldset>             
+                </apex:panelgroup>
+                <apex:panelGroup >
+                    <apex:outputLabel value="{!$Label.maritzcx__trend}:" style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" escape="true"/>&nbsp;
+                     <apex:selectList id="timeTrendFilter" value="{!timeTrendParam}" size="1" disabled="{!IF((disableTimeTrend || surveyId == 'none'),True,False)}">
+                        <apex:selectOptions value="{!TimeTrendOptions}"/>
+                    </apex:selectList>
+                    <apex:actionStatus id="actStatusId" >
+                        <apex:facet name="start" >
+                            <img src="/img/loading.gif" />                    
+                        </apex:facet>
+                    </apex:actionStatus>
+                    &nbsp;&nbsp;&nbsp;   
+                </apex:panelGroup>            
+                <apex:commandButton value="{!$Label.maritzcx__apply}"  action="{!applyFilters}" reRender="messages,chartRenderBlock,timeTrendFilter,ChartText" disabled="{!surveyId == 'none'}" oncomplete="reInitCharts('{!JSENCODE(chartsJSON)}')" onclick="showSpinner()"/>
+            </apex:panelGrid>            
+        </apex:form>
+    </apex:pageBlock>
+    </div>
+    
+    <!-- Charts Section -->   
+   <div id="chartDiv"> 
+       <apex:pageBlock id="chartRenderBlock">
+           <apex:pageBlockSection columns="1" rendered="{!flscheck}">
+                <apex:pageMessages id="msg" />
+           </apex:pageBlockSection>
+           
+           <div id="slider">
+           <div class="control" ><div id="prev" class="centerIcon"></div></div>
+           <div id="panel" class="panel">
+           <ul>
+           <apex:repeat value="{!keyMetricModelList}" var="list">
+                    <li class="chartLi">
+                    <apex:pageBlockSection columns="2" rendered="{!NOT(flscheck)}" >
+                        <apex:repeat value="{!list}" var="chart">
+                             <!-- this pageblocksection renders when the configurations for offset Metric are not Provided -->
+                               <apex:pageblocksectionItem rendered="{!surveyId != 'none' && NOT(chart.isKM) && NOT(chart.noData)}">
+                                    <apex:outputPanel >
+                                        <div class="container textContainer">
+                                            <apex:outputText title="{!$Label.maritzcx__please_provide_valid} {!chart.label} {!$Label.maritzcx__configuration_settings}." value="{!$Label.maritzcx__please_provide_valid} {!if(len(chart.label) > 20, LEFT(chart.label, 20)+'...', chart.label)} {!$Label.maritzcx__configuration_settings}." escape="true"><br/><br/></apex:outputText>
+                                        </div>
+                                    </apex:outputPanel>
+                               </apex:pageblocksectionItem>
+                               
+                               <!-- This PageBlockSection renders when the chart Selected is Gauge for offset Metric  -->
+                               <apex:pageblocksectionItem rendered="{!IF(chart.chartType == 'gauge' && chart.isKM && NOT(chart.outOfRange) && NOT(chart.noData), true, false)}">
+                                        <apex:outputPanel >
+                                                <div id="km{!JSENCODE(TEXT(chart.keyMetricType))}-gauge" class="container" align="center"></div>
+                                        </apex:outputPanel>
+                               </apex:pageblocksectionItem>
+                               
+                                <apex:pageblocksectionItem rendered="{!IF(chart.outOfRange && chart.isKM,true,false)}" >
+                                    <apex:outputPanel >
+                                        <div class="container textContainer">
+                                            <apex:outputText title="{!$Label.maritzcx__out_of_range} {!chart.Label} ({!chart.outOfRangeVal})." value="{!$Label.maritzcx__out_of_range} {!if(len(chart.label) > 20, LEFT(chart.label, 20)+'...', chart.label)} ({!chart.outOfRangeVal})." escape="true"><br/><br/></apex:outputText>
+                                        </div>
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                
+                                <!-- This PageBlockSection renders when the chart Selected is Bar for offset Metric  -->
+                                 <apex:pageBlockSectionItem rendered="{!IF((chart.chartType == 'bar' && chart.isKM && NOT(chart.outOfRange) && NOT(chart.noData)), true, false)}" >
+                                    <apex:outputPanel >
+                                        <div id="km{!JSENCODE(TEXT(chart.keyMetricType))}-bar" class="container" align="center"></div>
+                                    </apex:outputPanel>        
+                                 </apex:pageBlockSectionItem>
+                                 
+                                  <!-- This PageBlockSection renders when the chart Selected is Bar for offset Metric  without any data -->
+                                 <apex:pageBlockSectionItem rendered="{!IF(surveyId != 'none' && chart.noData, true, false)}" >
+                                    <apex:outputPanel >
+                                        <div class="container textContainer">
+                                            <apex:outputText rendered="{!chart.noData}" title="{!$Label.maritzcx__no} {!chart.label} {!$Label.maritzcx__data_available}." value="{!$Label.maritzcx__no} {!if(len(chart.label) > 20, LEFT(chart.label, 20)+'...', chart.label)} {!$Label.maritzcx__data_available}." escape="true"><br/><br/></apex:outputText>
+                                        </div>
+                                    </apex:outputPanel>        
+                                 </apex:pageBlockSectionItem>
+                                 
+                                  <!-- This PageBlockSection renders when the chart Selected is None for offset Metric -->
+                                 <apex:pageblocksectionItem rendered="{!IF((chart.chartType == 'none' && chart.isKM && NOT(chart.outOfRange) && surveyId != 'none' && NOT(chart.noData)), true, false)}">
+                                    <apex:outputPanel >
+                                        <div class="container textContainer">
+                                            <apex:outputText value="{!$Label.maritzcx__no_chart_type_selected}." escape="true"><br/><br/></apex:outputText>
+                                        </div>
+                                    </apex:outputPanel>
+                                 </apex:pageBlockSectionItem>
+                                 
+                                  <!-- This PageBlockSection renders when the No Surveys-->
+                                 <apex:pageblocksectionItem rendered="{!IF(surveyId == 'none' && chart.chartType == 'none', true, false)}">
+                                    <apex:outputPanel >
+                                        <div class="container textContainer">
+                                            <apex:outputText title="{!$Label.maritzcx__no} {!chart.label} {!$Label.maritzcx__data_available}." value="{!$Label.maritzcx__no} {!if(len(chart.label) > 20, LEFT(chart.label, 20)+'...', chart.label)} {!$Label.maritzcx__data_available}." escape="true"><br/><br/></apex:outputText>
+                                        </div>
+                                    </apex:outputPanel>
+                                 </apex:pageBlockSectionItem>       
+                        </apex:repeat>
+                    </apex:pageBlockSection>
+                    </li>
+           </apex:repeat>
+           </ul>
+           </div>
+           <div class="control"><div id="next" class="centerIcon"></div></div>
+           </div>
+           <!-- this Section is used to display the information about surveys and responses -->
+			<div style="text-align:center;">
+				<apex:outputText id="ChartText" rendered="{!IF(flsCheck, false, true)}" style="font-weight:bold"  value="{!$Label.maritzcx__average_of_survey} {!numberOfResponses} {!$Label.maritzcx__average_survey_responses}" escape="true"> </apex:outputText>      
+			</div>
+       </apex:pageBlock>
+   </div>
+   
+   <div id="opaque"/>
+   <div id="spinner">
+        <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;<apex:outputLabel value="{!$Label.maritzcx__please_wait}" escape="true"/></p>
+   </div> 
+</apex:page>

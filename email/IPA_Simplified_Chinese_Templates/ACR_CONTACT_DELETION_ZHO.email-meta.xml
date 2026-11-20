@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_DELETION_ZHO</name>
+    <style>none</style>
+    <subject>英特尔® 合作伙伴联盟帐户更新</subject>
+    <textOnly>用户已删除
+
+尊敬的{!UserName}：
+
+
+已对您的英特尔® 合作伙伴联盟帐户进行了更改。{!ContactEmail}已从贵公司的帐户中移除。
+
+公司名称：{!Account.Name}
+公司 ID：{!Account.AccountNumber}
+移除的联系人：电子邮件 {!ContactEmail}
+关系（职位）：{!AcrRoles}
+
+如果此项更改未经授权，请 登录 以更新您的帐户。
+如有任何问题，请通过 支持人员 与我们联系。
+
+
+
+谢谢！
+英特尔® 合作伙伴联盟团队
+
+发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隐私 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

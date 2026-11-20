@@ -1,0 +1,33 @@
+<template>
+    <div class="ipa-file-card slds-m-top_medium slds-m-bottom_xx-small">
+        <div class="slds-file slds-file_card slds-has-title">
+            <figure class="ipa-file-card__figure">
+                <template if:true={brightcoveThumbnail}>
+                    <img src={brightcoveThumbnail} alt={altText} />
+                </template>
+                <template if:false={brightcoveThumbnail}>
+                    <img src={videoPlaceholderThumbnail} alt={altTextPlaceholder}/>
+                </template>
+                <figcaption class="ipa-file__title slds-file__title slds-file__title_card slds-file-has-actions">
+                    <div class="slds-media slds-media_small slds-media_center">
+                        <div class="ipa-file-card__icon slds-media__figure slds-line-height_reset">
+                            <svg focusable="false" data-key="" aria-hidden="true" class="ipa-file__icon slds-icon slds-icon_x-small"><use xlink:href="/_slds/icons/doctype-sprite/svg/symbols.svg?cache=9.40.4#video"></use></svg>
+                        </div>
+                        <div class="ipa-file-card__body slds-media__body">
+                            <span 
+                                class="slds-file__text slds-truncate" 
+                                title={fileName}>
+                                {fileName}</span>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <div class="ipa-file-card__actions-menu slds-file__actions-menu">
+                <div class="slds-button-group" role="group">
+                    <slot name="actionButtons"></slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

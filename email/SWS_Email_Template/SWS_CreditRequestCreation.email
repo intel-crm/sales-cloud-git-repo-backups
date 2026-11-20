@@ -1,0 +1,181 @@
+<messaging:emailTemplate subject="Confirmation - Cloud Credits Request" recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                 <center>
+                    <img src="{!$Label.Intel_Tiber_Developer_Cloud}"  alt="Intel® Tiber™ AI Cloud" width="900" height="150"/>     
+                  </center>
+                <br></br>
+                <center>
+                    <p>Thank you for submitting your request for <a href="https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html" style="color:#0563C1;">Intel® Tiber™ AI Cloud</a> credits. A copy is included below for your records.</p>
+                </center>
+                <h3>Cloud Credits Request</h3>
+                <table style="width: 100%; border-collapse: separate;  padding-bottom: 10px;">
+                    <tr>
+                        <td style="padding: 5px;"><b>Credit Request #:</b></td>
+                        <td style="padding: 5px;">{!relatedTo.Name}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;"><b>Request Type:</b></td>
+                        <td style="padding: 5px;">{!relatedTo.SWS_Request_Type_fm__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;"><b>First Name:</b></td>
+                        <td style="padding: 5px;">{!relatedTo.SWS_First_Name__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;"><b>Last Name:</b></td>
+                        <td style="padding: 5px;">{!relatedTo.SWS_Last_Name__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;"><b>Customer Email Address:</b></td>
+                        <td style="padding: 5px;">{!relatedTo.SWS_Email__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px;"><b>Is Giveaway Coupon?</b></td>
+                        <td style="padding: 5px;">{!relatedTo.SWS_Is_Giveaway__c}</td>
+                    </tr>
+                    <apex:outputText rendered="{!relatedTo.SWS_Request_Type__c == 'External_Customer'}">
+                        <tr>
+                            <td style="padding: 5px;"><b>Customer Country:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Country__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Job Title:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Job_Title__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Intel BU/Field/Sales Contact:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Intel_BU_Field_Sales_Contact__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Salesforce Opportunity ID:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Salesforce_Opportunity_ID__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Company Name:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Company_Name__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>HW Compute Platform:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_HW_Compute_Platform_PL__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Additional HW compute platform details, including quantity:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_HW_Compute_Quantity__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Use Case:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Use_Case__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Use Case Details:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Use_Case_Details__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Cloud Coupon Type:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Coupon_Type__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Custom Coupon Request:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Custom_Coupon_Request__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Compute/Service Requirements:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Compute_Service_Requirements__c}</td>
+                        </tr>
+                    </apex:outputText>
+                    
+                    <apex:outputText rendered="{!relatedTo.SWS_Request_Type__c == 'Intel_Internal_Use'}">
+                        <tr>
+                            <td style="padding: 5px;"><b>Customer Country:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Country__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Job Title:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Job_Title__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>HW Compute Platform:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_HW_Compute_Platform_PL__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Additional HW compute platform details, including quantity:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_HW_Compute_Quantity__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Cloud Coupon Type:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Coupon_Type__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Compute/Service Requirements:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Compute_Service_Requirements__c}</td>
+                        </tr>
+                    </apex:outputText>
+                    
+                    <apex:outputText rendered="{!relatedTo.SWS_Request_Type__c == 'Research_and_education'}">
+                        <tr>
+                            <td style="padding: 5px;"><b>Compute/Service Requirements:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Compute_Service_Requirements__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Community Program Name:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Community_Program_Name__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Community Program – Coupon Type:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Community_Program_Coupon_Type__c}</td>
+                        </tr>
+                    </apex:outputText>
+                    
+                    <apex:outputText rendered="{!relatedTo.SWS_Request_Type__c == 'One_time_external_event'}">
+                        <tr>
+                            <td style="padding: 5px;"><b>Customer Country:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Country__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Event Name:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Event_Name__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Number of Participants:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Number_of_Participants__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Event Start Date:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Event_Start_Date__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Event End Date:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Event_End_Date__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Event Country:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Event_Country_Name__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Intel BU/Field/Sales Contact:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Intel_BU_Field_Sales_Contact__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>HW Compute Platform:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_HW_Compute_Platform_PL__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Additional HW compute platform details, including quantity:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_HW_Compute_Quantity__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Compute/Service Requirements:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Compute_Service_Requirements__c}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 5px;"><b>Event Compute Environment Details:</b></td>
+                            <td style="padding: 5px;">{!relatedTo.SWS_Event_Compute_Environment_Details__c}</td>
+                        </tr>
+                    </apex:outputText>
+                </table>
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

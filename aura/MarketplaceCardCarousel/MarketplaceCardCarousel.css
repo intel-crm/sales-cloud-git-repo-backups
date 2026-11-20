@@ -1,0 +1,171 @@
+.THIS {
+  overflow: hidden;
+}
+
+.THIS h4 {
+  color: t(darkGray);
+}
+
+.THIS .riseAbove {
+  z-index: 2;
+}
+
+.THIS #carouselPosition {
+  transition: transform 0.4s linear;
+}
+
+.THIS .carouselCardContainer {
+  display: flex;
+}
+
+.THIS .carouselCard {
+  width: calc(100% - 24px);
+}
+
+.THIS .carouselCard .productItem.card,
+.THIS .carouselCard .partnerItem.card,
+.THIS .carouselCard {
+  background-color: t(white);
+}
+
+.THIS .carouselCard .mediaWrap {
+  border-bottom: 1px solid t(lightGray);
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.THIS .carouselCard .mediaWrap img {
+  max-height: 150px;
+}
+.THIS .paging {
+  position: relative;
+}
+.THIS .cta {
+  display: block;
+}
+
+/*ToolTip Overrides for Carousel*/
+.THIS .carouselCard .cMarketplaceProductCard .tooltip .tooltip-content {
+  font-size: 13px;
+}
+
+.THIS .carouselCard .cMarketplaceProductCard .tooltip .tooltip-container {
+  position: absolute;
+  top: 29px;
+  bottom: auto;
+  left: -32px;
+  width: 6em;
+}
+
+.THIS .carouselCard .cMarketplaceProductCard .tooltip .tooltip-content:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: t(blue);
+  top: -12px;
+  left: 22px;
+  border-top: 0;
+  border-width: 16px;
+}
+
+/*Intel Only Footer overrides for carousel*/
+.THIS .productItem .intelOnlyFooter,
+.THIS .partnerItem .intelOnlyFooter,
+.THIS .intelOnlyFooter {     
+  background-color: t(lightestGray);
+  padding-top: 5px;
+  width: 100%;
+}
+
+.THIS .cardAttributes {
+  padding-bottom: 10px;
+  box-sizing: unset;
+}
+.THIS .spinnerContainer {
+  height: 550px;
+  width: 100%;
+  position: relative;
+}
+.THIS .cardSpinnerContainer {
+  height: 500px;
+  width: 100%;
+  position: relative;
+}
+
+/* Custom breakpoint for carousel */
+@media (min-width: 768px) {
+    .THIS .hideOverflow {
+        width: 100vw;
+        transform: translateX(calc((750px - 100vw) / 2));
+    }
+    .THIS .carouselCard .mediaWrap img {
+      max-height: none;
+    }
+    .THIS .cta {
+      position: absolute;
+      right: 0;
+      top: 22px;
+        
+    }
+
+    .THIS .carouselCardContainer:nth-child(2n + 1) .carouselCard {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+    .THIS .carouselCardContainer:nth-child(2n) .carouselCard {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+}
+@media (min-width: 992px) {
+    .THIS .hideOverflow {
+        width: 100vw;
+        transform: translateX(calc((970px - 100vw) / 2));
+    }
+}
+
+@media (min-width: 1024px) {
+  .THIS .hideOverflow {
+    width: calc(100% + 24px);
+    transform: translateX(-12px);
+  }
+  .THIS .carouselCard .mediaWrap img {
+    max-height: none;
+  }
+  .THIS .carouselCardContainer:nth-child(4n + 1) .carouselCard {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  .THIS .carouselCardContainer:nth-child(4n + 2) .carouselCard {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  .THIS .carouselCardContainer:nth-child(4n + 3) .carouselCard {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  .THIS .carouselCardContainer:nth-child(4n) .carouselCard {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1255px) {
+  .THIS .carouselCardContainer.slds-large-size_3-of-12 {
+    width: 30%;
+  }
+}
+/* Added by Ashish DE61701 */
+.THIS .viewMoreStyle{
+     font-size: 1vw;
+}
+@media (max-width: 767px){
+    .THIS .viewMoreStyle{
+     font-size: 1em;
+}
+}

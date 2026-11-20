@@ -1,0 +1,3852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>Core_Custom_Object_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Milestones tied to a given opportunity</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_Approved_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Approved_Milestone_Commissionable__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Milestone Commissionable?</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_As_Measured_By__c</fullName>
+        <description>Field to capture how the Milestone is measured.</description>
+        <label>As Measured By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Deployment_Quantity__c</fullName>
+        <description>Required for ISG client utilization milestone goal tracking. Please specify the deployment/utilization (activation) quantities associated to “AMT, Unite, ProWIdi, Widoc, Authenticate” Milestone Focus</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required for ISG client utilization milestone goal tracking. Please specify the deployment/utilization (activation) quantities associated to “AMT, Unite, ProWIdi, Widoc, Authenticate” Milestone Focus</inlineHelpText>
+        <label>Deployment Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_KPI_Milestone_Date__c</fullName>
+        <description>Sets to &apos;Milestone Claim Date&apos; if available, otherwise sets to &apos;Milestone Date&apos;.</description>
+        <formula>IF( ISNULL(Core_Milestone_Claim_Date__c) , Core_Milestone_Date__c,  Core_Milestone_Claim_Date__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>KPI - Milestone Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Approved_Date__c</fullName>
+        <label>Milestone Approved Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Area__c</fullName>
+        <description>Calculated field to provide the Milestone Area, based on common agreement used for Milestone Focus field.</description>
+        <externalId>false</externalId>
+        <formula>IF(FIND( &quot;:&quot;, TEXT(Core_Milestone_Focus__c))&gt;0,
+   LEFT(TEXT(Core_Milestone_Focus__c), (FIND( &quot;:&quot;, TEXT(Core_Milestone_Focus__c))-1)),
+   &quot;Other&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calculated field to provide the Milestone Area, based on common agreement used for Milestone Focus field.</inlineHelpText>
+        <label>Milestone Area (Do Not Use)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Claim_Date__c</fullName>
+        <label>Milestone Claim Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Commissionable__c</fullName>
+        <label>Milestone Commissionable?</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Date__c</fullName>
+        <description>Due Date for the milestone</description>
+        <inlineHelpText>Date when the Milestone Owner expects the specific milestone focus work to be complete. It should be updated if the forecast changes prior to claiming a win. Upon milestone completion (win claim or cancel), the owner must update the date.</inlineHelpText>
+        <label>Milestone Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Description__c</fullName>
+        <description>Description of the milestone</description>
+        <label>Milestone Description</label>
+        <length>750</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Focus_Area__c</fullName>
+        <description>Field to limit the Milestone Focus to a shorter list so it is easier to navigate and select.</description>
+        <label>Milestone Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Deal - CCG</fullName>
+                    <default>false</default>
+                    <label>Deal - CCG</label>
+                </value>
+                <value>
+                    <fullName>Deal - DCG</fullName>
+                    <default>false</default>
+                    <label>Deal - DCG</label>
+                </value>
+                <value>
+                    <fullName>Deal - IOTG</fullName>
+                    <default>false</default>
+                    <label>Deal - IOTG</label>
+                </value>
+                <value>
+                    <fullName>Deal - NSG</fullName>
+                    <default>false</default>
+                    <label>Deal - NSG</label>
+                </value>
+                <value>
+                    <fullName>Deal - NTG</fullName>
+                    <default>false</default>
+                    <label>Deal - NTG</label>
+                </value>
+                <value>
+                    <fullName>Design - CCG</fullName>
+                    <default>false</default>
+                    <label>Design - CCG</label>
+                </value>
+                <value>
+                    <fullName>Design - DCG</fullName>
+                    <default>false</default>
+                    <label>Design - DCG</label>
+                </value>
+                <value>
+                    <fullName>Design - IOTG</fullName>
+                    <default>false</default>
+                    <label>Design - IOTG</label>
+                </value>
+                <value>
+                    <fullName>Design - NSG</fullName>
+                    <default>false</default>
+                    <label>Design - NSG</label>
+                </value>
+                <value>
+                    <fullName>Design - NTG</fullName>
+                    <default>false</default>
+                    <label>Design - NTG</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Focus__c</fullName>
+        <label>Milestone Focus</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_Milestone_Focus_Area__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>3D NAND PCIe Data Center Wins</fullName>
+                    <default>false</default>
+                    <label>3D NAND PCIe Data Center Wins</label>
+                </value>
+                <value>
+                    <fullName>Add-On Software and Services</fullName>
+                    <default>false</default>
+                    <label>Add-On Software and Services</label>
+                </value>
+                <value>
+                    <fullName>AMT Activation</fullName>
+                    <default>false</default>
+                    <label>AMT Activation</label>
+                </value>
+                <value>
+                    <fullName>Architecture Conversion</fullName>
+                    <default>false</default>
+                    <label>Architecture Conversion</label>
+                </value>
+                <value>
+                    <fullName>Authenticate</fullName>
+                    <default>false</default>
+                    <label>Authenticate</label>
+                </value>
+                <value>
+                    <fullName>Big Data Analytics</fullName>
+                    <default>false</default>
+                    <label>Big Data Analytics</label>
+                </value>
+                <value>
+                    <fullName>Connected Platform</fullName>
+                    <default>false</default>
+                    <label>Connected Platform</label>
+                </value>
+                <value>
+                    <fullName>Connectivity / 5G</fullName>
+                    <default>false</default>
+                    <label>Connectivity / 5G</label>
+                </value>
+                <value>
+                    <fullName>Data Center All Flash SSD Storage</fullName>
+                    <default>false</default>
+                    <label>Data Center All Flash SSD Storage</label>
+                </value>
+                <value>
+                    <fullName>Data Guard</fullName>
+                    <default>false</default>
+                    <label>Data Guard</label>
+                </value>
+                <value>
+                    <fullName>Deep Learning</fullName>
+                    <default>false</default>
+                    <label>Deep Learning</label>
+                </value>
+                <value>
+                    <fullName>Design</fullName>
+                    <default>false</default>
+                    <label>Design</label>
+                </value>
+                <value>
+                    <fullName>Design - 3D NAND Conversion</fullName>
+                    <default>false</default>
+                    <label>Design - 3D NAND Conversion</label>
+                </value>
+                <value>
+                    <fullName>Design - Client</fullName>
+                    <default>false</default>
+                    <label>Design - Client</label>
+                </value>
+                <value>
+                    <fullName>Design - Data Center</fullName>
+                    <default>false</default>
+                    <label>Design - Data Center</label>
+                </value>
+                <value>
+                    <fullName>Design - Embedded</fullName>
+                    <default>false</default>
+                    <label>Design - Embedded</label>
+                </value>
+                <value>
+                    <fullName>Design - Optane</fullName>
+                    <default>false</default>
+                    <label>Design - Optane</label>
+                </value>
+                <value>
+                    <fullName>Docking</fullName>
+                    <default>false</default>
+                    <label>Docking</label>
+                </value>
+                <value>
+                    <fullName>Drones (Deal)</fullName>
+                    <default>false</default>
+                    <label>Drones (Deal)</label>
+                </value>
+                <value>
+                    <fullName>Drones (Design)</fullName>
+                    <default>false</default>
+                    <label>Drones (Design)</label>
+                </value>
+                <value>
+                    <fullName>DSS/Video</fullName>
+                    <default>false</default>
+                    <label>DSS/Video</label>
+                </value>
+                <value>
+                    <fullName>Energy:  Connect the Unconnected</fullName>
+                    <default>false</default>
+                    <label>Energy:  Connect the Unconnected</label>
+                </value>
+                <value>
+                    <fullName>Environmental Monitoring</fullName>
+                    <default>false</default>
+                    <label>Environmental Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Industrial: Connect the Unconnected</fullName>
+                    <default>false</default>
+                    <label>Industrial: Connect the Unconnected</label>
+                </value>
+                <value>
+                    <fullName>K-12 Transformation Project</fullName>
+                    <default>false</default>
+                    <label>K-12 Transformation Project</label>
+                </value>
+                <value>
+                    <fullName>Logistics &amp; Asset Mgmt</fullName>
+                    <default>false</default>
+                    <label>Logistics &amp; Asset Mgmt</label>
+                </value>
+                <value>
+                    <fullName>Movidius (Deal)</fullName>
+                    <default>false</default>
+                    <label>Movidius (Deal)</label>
+                </value>
+                <value>
+                    <fullName>Movidius (Design)</fullName>
+                    <default>false</default>
+                    <label>Movidius (Design)</label>
+                </value>
+                <value>
+                    <fullName>Network Transformation</fullName>
+                    <default>false</default>
+                    <label>Network Transformation</label>
+                </value>
+                <value>
+                    <fullName>New Form Factor Adoption</fullName>
+                    <default>false</default>
+                    <label>New Form Factor Adoption</label>
+                </value>
+                <value>
+                    <fullName>Next Gen Connectivity</fullName>
+                    <default>false</default>
+                    <label>Next Gen Connectivity</label>
+                </value>
+                <value>
+                    <fullName>NFV/SDN</fullName>
+                    <default>false</default>
+                    <label>NFV/SDN</label>
+                </value>
+                <value>
+                    <fullName>Optane</fullName>
+                    <default>false</default>
+                    <label>Optane</label>
+                </value>
+                <value>
+                    <fullName>Private Cloud</fullName>
+                    <default>false</default>
+                    <label>Private Cloud</label>
+                </value>
+                <value>
+                    <fullName>Public Cloud</fullName>
+                    <default>false</default>
+                    <label>Public Cloud</label>
+                </value>
+                <value>
+                    <fullName>Purley</fullName>
+                    <default>false</default>
+                    <label>Purley</label>
+                </value>
+                <value>
+                    <fullName>Qualified Horiz. IoT Cloud Platforms</fullName>
+                    <default>false</default>
+                    <label>Qualified Horiz. IoT Cloud Platforms</label>
+                </value>
+                <value>
+                    <fullName>Rack Scale Design (RSD)</fullName>
+                    <default>false</default>
+                    <label>Rack Scale Design (RSD)</label>
+                </value>
+                <value>
+                    <fullName>Realsense (Deal)</fullName>
+                    <default>false</default>
+                    <label>Realsense (Deal)</label>
+                </value>
+                <value>
+                    <fullName>RealSense (Design)</fullName>
+                    <default>false</default>
+                    <label>RealSense (Design)</label>
+                </value>
+                <value>
+                    <fullName>Realtime Health FOG</fullName>
+                    <default>false</default>
+                    <label>Realtime Health FOG</label>
+                </value>
+                <value>
+                    <fullName>Retail Inventory Management</fullName>
+                    <default>false</default>
+                    <label>Retail Inventory Management</label>
+                </value>
+                <value>
+                    <fullName>Retail POS</fullName>
+                    <default>false</default>
+                    <label>Retail POS</label>
+                </value>
+                <value>
+                    <fullName>Saffron Technology (Deal)</fullName>
+                    <default>false</default>
+                    <label>Saffron Technology (Deal)</label>
+                </value>
+                <value>
+                    <fullName>Saffron Technology (Design)</fullName>
+                    <default>false</default>
+                    <label>Saffron Technology (Design)</label>
+                </value>
+                <value>
+                    <fullName>Smart &amp; Connected Home</fullName>
+                    <default>false</default>
+                    <label>Smart &amp; Connected Home</label>
+                </value>
+                <value>
+                    <fullName>Smart Building</fullName>
+                    <default>false</default>
+                    <label>Smart Building</label>
+                </value>
+                <value>
+                    <fullName>Smart City</fullName>
+                    <default>false</default>
+                    <label>Smart City</label>
+                </value>
+                <value>
+                    <fullName>Software Defined Storage</fullName>
+                    <default>false</default>
+                    <label>Software Defined Storage</label>
+                </value>
+                <value>
+                    <fullName>Strategic Account Initiative SDM/MDM</fullName>
+                    <default>false</default>
+                    <label>Strategic Account Initiative SDM/MDM</label>
+                </value>
+                <value>
+                    <fullName>Transformation:  AR/VR</fullName>
+                    <default>false</default>
+                    <label>Transformation:  AR/VR</label>
+                </value>
+                <value>
+                    <fullName>Transformation: Connected Home</fullName>
+                    <default>false</default>
+                    <label>Transformation: Connected Home</label>
+                </value>
+                <value>
+                    <fullName>Transformation:  Connectivity / 5G</fullName>
+                    <default>false</default>
+                    <label>Transformation:  Connectivity / 5G</label>
+                </value>
+                <value>
+                    <fullName>Transformation: Deep Learning</fullName>
+                    <default>false</default>
+                    <label>Transformation: Deep Learning</label>
+                </value>
+                <value>
+                    <fullName>Transformation: Next Gen Connectivity</fullName>
+                    <default>false</default>
+                    <label>Transformation: Next Gen Connectivity</label>
+                </value>
+                <value>
+                    <fullName>Transformation: Rack Scale Design</fullName>
+                    <default>false</default>
+                    <label>Transformation: Rack Scale Design</label>
+                </value>
+                <value>
+                    <fullName>Transformation: Workload Acceleration</fullName>
+                    <default>false</default>
+                    <label>Transformation: Workload Acceleration</label>
+                </value>
+                <value>
+                    <fullName>Transformational: Automated Driving (Deal)</fullName>
+                    <default>false</default>
+                    <label>Transformational: Automated Driving (Deal)</label>
+                </value>
+                <value>
+                    <fullName>Transformational: Automated Driving (Design)</fullName>
+                    <default>false</default>
+                    <label>Transformational: Automated Driving (Design)</label>
+                </value>
+                <value>
+                    <fullName>Transformational:  DSS/Video</fullName>
+                    <default>false</default>
+                    <label>Transformational:  DSS/Video</label>
+                </value>
+                <value>
+                    <fullName>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</fullName>
+                    <default>false</default>
+                    <label>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</label>
+                </value>
+                <value>
+                    <fullName>Transformational: SW Defined Industrial Systems - Fog Server (Design)</fullName>
+                    <default>false</default>
+                    <label>Transformational: SW Defined Industrial Systems - Fog Server (Design)</label>
+                </value>
+                <value>
+                    <fullName>Unite</fullName>
+                    <default>false</default>
+                    <label>Unite</label>
+                </value>
+                <value>
+                    <fullName>Visual Retail</fullName>
+                    <default>false</default>
+                    <label>Visual Retail</label>
+                </value>
+                <value>
+                    <fullName>Windows 10 &amp; Kaby Lake</fullName>
+                    <default>false</default>
+                    <label>Windows 10 &amp; Kaby Lake</label>
+                </value>
+                <value>
+                    <fullName>Workload Acceleration</fullName>
+                    <default>false</default>
+                    <label>Workload Acceleration</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>AMT Activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Authenticate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Connectivity / 5G</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Data Guard</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Docking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>K-12 Transformation Project</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>New Form Factor Adoption</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Smart &amp; Connected Home</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Strategic Account Initiative SDM/MDM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Unite</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - CCG</controllingFieldValue>
+                <valueName>Windows 10 &amp; Kaby Lake</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Add-On Software and Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Big Data Analytics</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Deep Learning</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Network Transformation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Next Gen Connectivity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>NFV/SDN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Private Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Purley</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Rack Scale Design (RSD)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Software Defined Storage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - DCG</controllingFieldValue>
+                <valueName>Workload Acceleration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>DSS/Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Energy:  Connect the Unconnected</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Environmental Monitoring</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Industrial: Connect the Unconnected</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Logistics &amp; Asset Mgmt</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Qualified Horiz. IoT Cloud Platforms</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Realtime Health FOG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Retail Inventory Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Retail POS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Smart Building</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Smart City</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Transformational: Automated Driving (Deal)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - IOTG</controllingFieldValue>
+                <valueName>Visual Retail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NSG</controllingFieldValue>
+                <valueName>3D NAND PCIe Data Center Wins</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NSG</controllingFieldValue>
+                <valueName>Connected Platform</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NSG</controllingFieldValue>
+                <valueName>Data Center All Flash SSD Storage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NSG</controllingFieldValue>
+                <valueName>Optane</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NTG</controllingFieldValue>
+                <valueName>Drones (Deal)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NTG</controllingFieldValue>
+                <valueName>Movidius (Deal)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NTG</controllingFieldValue>
+                <valueName>Realsense (Deal)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deal - NTG</controllingFieldValue>
+                <valueName>Saffron Technology (Deal)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - CCG</controllingFieldValue>
+                <controllingFieldValue>Design - DCG</controllingFieldValue>
+                <controllingFieldValue>Design - IOTG</controllingFieldValue>
+                <valueName>Architecture Conversion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - CCG</controllingFieldValue>
+                <controllingFieldValue>Design - DCG</controllingFieldValue>
+                <controllingFieldValue>Design - IOTG</controllingFieldValue>
+                <controllingFieldValue>Design - NTG</controllingFieldValue>
+                <valueName>Design</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - CCG</controllingFieldValue>
+                <valueName>Transformation:  AR/VR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - CCG</controllingFieldValue>
+                <valueName>Transformation: Connected Home</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - CCG</controllingFieldValue>
+                <valueName>Transformation:  Connectivity / 5G</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - DCG</controllingFieldValue>
+                <valueName>Transformation: Deep Learning</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - DCG</controllingFieldValue>
+                <valueName>Transformation: Next Gen Connectivity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - DCG</controllingFieldValue>
+                <valueName>Transformation: Rack Scale Design</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - DCG</controllingFieldValue>
+                <valueName>Transformation: Workload Acceleration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - IOTG</controllingFieldValue>
+                <valueName>Transformational: Automated Driving (Design)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - IOTG</controllingFieldValue>
+                <valueName>Transformational:  DSS/Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - IOTG</controllingFieldValue>
+                <valueName>Transformational: SW Defined Industrial Systems - Fog Server (Design)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NSG</controllingFieldValue>
+                <valueName>Design - 3D NAND Conversion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NSG</controllingFieldValue>
+                <valueName>Design - Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NSG</controllingFieldValue>
+                <valueName>Design - Data Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NSG</controllingFieldValue>
+                <valueName>Design - Embedded</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NSG</controllingFieldValue>
+                <valueName>Design - Optane</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NTG</controllingFieldValue>
+                <valueName>Drones (Design)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NTG</controllingFieldValue>
+                <valueName>Movidius (Design)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NTG</controllingFieldValue>
+                <valueName>RealSense (Design)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Design - NTG</controllingFieldValue>
+                <valueName>Saffron Technology (Design)</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Oppty__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>[DO NOT DELETE] This Field is created to fix the Missing Report Type (Opportunity with Milestone and Opportunity.</description>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Milestones (Opportunity)</relationshipLabel>
+        <relationshipName>Milestones</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(CONTAINS(TEXT(Core_Milestone__c),&quot;Marketing&quot;),CONTAINS(TEXT(Core_Milestone__c),&quot;Cust Ref Prog&quot;)),&quot;Marketing&quot;,&quot;Solution Adoption&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Milestone Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone__c</fullName>
+        <label>Milestone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_Milestone_Focus__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Concept/Program Solidification</fullName>
+                    <default>false</default>
+                    <label>Concept/Program Solidification</label>
+                </value>
+                <value>
+                    <fullName>Definition</fullName>
+                    <default>false</default>
+                    <label>Definition</label>
+                </value>
+                <value>
+                    <fullName>Deployment / Delivery</fullName>
+                    <default>false</default>
+                    <label>Deployment / Delivery</label>
+                </value>
+                <value>
+                    <fullName>Enabled SW Production GA</fullName>
+                    <default>false</default>
+                    <label>Enabled SW Production GA</label>
+                </value>
+                <value>
+                    <fullName>Execution</fullName>
+                    <default>false</default>
+                    <label>Execution</label>
+                </value>
+                <value>
+                    <fullName>Govt. Policy / RFx Influenced</fullName>
+                    <default>false</default>
+                    <label>Govt. Policy / RFx Influenced</label>
+                </value>
+                <value>
+                    <fullName>MDM / SDM - Other</fullName>
+                    <default>false</default>
+                    <label>MDM / SDM - Other</label>
+                </value>
+                <value>
+                    <fullName>New Tech Adoption</fullName>
+                    <default>false</default>
+                    <label>New Tech Adoption</label>
+                </value>
+                <value>
+                    <fullName>Pilot / Live Trial</fullName>
+                    <default>false</default>
+                    <label>Pilot / Live Trial</label>
+                </value>
+                <value>
+                    <fullName>POC / POT / Lab Trial</fullName>
+                    <default>false</default>
+                    <label>POC / POT / Lab Trial</label>
+                </value>
+                <value>
+                    <fullName>Standard Offering / Units Comm Available</fullName>
+                    <default>false</default>
+                    <label>Standard Offering / Units Comm Available</label>
+                </value>
+                <value>
+                    <fullName>Win</fullName>
+                    <default>false</default>
+                    <label>Win</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>Concept/Program Solidification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>Deployment / Delivery</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>Enabled SW Production GA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>Govt. Policy / RFx Influenced</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>Pilot / Live Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>POC / POT / Lab Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>3D NAND PCIe Data Center Wins</controllingFieldValue>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Data Center All Flash SSD Storage</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Realsense (Deal)</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Deal)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <controllingFieldValue>Movidius (Deal)</controllingFieldValue>
+                <valueName>Standard Offering / Units Comm Available</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AMT Activation</controllingFieldValue>
+                <controllingFieldValue>Authenticate</controllingFieldValue>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Docking</controllingFieldValue>
+                <controllingFieldValue>K-12 Transformation Project</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>Strategic Account Initiative SDM/MDM</controllingFieldValue>
+                <controllingFieldValue>Unite</controllingFieldValue>
+                <controllingFieldValue>Windows 10 &amp; Kaby Lake</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Data Guard</controllingFieldValue>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <valueName>MDM / SDM - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Architecture Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - 3D NAND Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - Client</controllingFieldValue>
+                <controllingFieldValue>Design - Data Center</controllingFieldValue>
+                <controllingFieldValue>Design - Embedded</controllingFieldValue>
+                <controllingFieldValue>Design - Optane</controllingFieldValue>
+                <controllingFieldValue>Drones (Design)</controllingFieldValue>
+                <controllingFieldValue>Movidius (Design)</controllingFieldValue>
+                <controllingFieldValue>RealSense (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformation:  AR/VR</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <controllingFieldValue>Transformation:  Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformational:  DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Design)</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Design)</controllingFieldValue>
+                <valueName>Definition</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Architecture Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - 3D NAND Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - Client</controllingFieldValue>
+                <controllingFieldValue>Design - Data Center</controllingFieldValue>
+                <controllingFieldValue>Design - Embedded</controllingFieldValue>
+                <controllingFieldValue>Design - Optane</controllingFieldValue>
+                <controllingFieldValue>Drones (Design)</controllingFieldValue>
+                <controllingFieldValue>Movidius (Design)</controllingFieldValue>
+                <controllingFieldValue>RealSense (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformation:  AR/VR</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <controllingFieldValue>Transformation:  Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformational:  DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Design)</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Design)</controllingFieldValue>
+                <valueName>Execution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Architecture Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - 3D NAND Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - Client</controllingFieldValue>
+                <controllingFieldValue>Design - Data Center</controllingFieldValue>
+                <controllingFieldValue>Design - Embedded</controllingFieldValue>
+                <controllingFieldValue>Design - Optane</controllingFieldValue>
+                <controllingFieldValue>Drones (Design)</controllingFieldValue>
+                <controllingFieldValue>Movidius (Design)</controllingFieldValue>
+                <controllingFieldValue>RealSense (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformation:  AR/VR</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <controllingFieldValue>Transformation:  Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformational:  DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Design)</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Design)</controllingFieldValue>
+                <valueName>New Tech Adoption</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Architecture Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - 3D NAND Conversion</controllingFieldValue>
+                <controllingFieldValue>Design - Client</controllingFieldValue>
+                <controllingFieldValue>Design - Data Center</controllingFieldValue>
+                <controllingFieldValue>Design - Embedded</controllingFieldValue>
+                <controllingFieldValue>Design - Optane</controllingFieldValue>
+                <controllingFieldValue>Drones (Design)</controllingFieldValue>
+                <controllingFieldValue>Movidius (Design)</controllingFieldValue>
+                <controllingFieldValue>RealSense (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformation:  AR/VR</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <controllingFieldValue>Design</controllingFieldValue>
+                <controllingFieldValue>Transformation:  Connectivity / 5G</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Design)</controllingFieldValue>
+                <controllingFieldValue>Transformational:  DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Design)</controllingFieldValue>
+                <controllingFieldValue>Saffron Technology (Design)</controllingFieldValue>
+                <valueName>Win</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity__c</fullName>
+        <description>Opportunity the Solution Milestone is associated with</description>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Milestones</relationshipLabel>
+        <relationshipName>Solution_Milestones</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_Original_Milestone_Date__c</fullName>
+        <description>Milestone Date at the time it was submitted for approval</description>
+        <inlineHelpText>Milestone Date at the time it was submitted for approval</inlineHelpText>
+        <label>x Original Milestone Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Owner_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Owner__r.UserRole.RollupDescription</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Solution Owner. Use the default value of &quot;User&quot; when entering the milestone owner.</description>
+        <inlineHelpText>Use the default value of &quot;User&quot; when entering the milestone owner.</inlineHelpText>
+        <label>Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Solution_Milestones</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Results_Key_Learnings__c</fullName>
+        <description>Results and Key Learning from the MIlestone</description>
+        <inlineHelpText>You must enter a Result/Loss Key Learning prior to submitting for approval. You will not be able to submit the milestone for approval until this field has been populated.</inlineHelpText>
+        <label>Result/Loss Key Learning</label>
+        <length>750</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Area__c</fullName>
+        <label>Solution Area/Focus</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Big Data/Analytics</fullName>
+                    <default>false</default>
+                    <label>Big Data/Analytics</label>
+                </value>
+                <value>
+                    <fullName>Client: vPro/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Client: vPro/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Client: New Mobility Use Cases</fullName>
+                    <default>false</default>
+                    <label>Client: New Mobility Use Cases</label>
+                </value>
+                <value>
+                    <fullName>Client: Touch Appl Dev</fullName>
+                    <default>false</default>
+                    <label>Client: Touch Appl Dev</label>
+                </value>
+                <value>
+                    <fullName>Education: K12</fullName>
+                    <default>false</default>
+                    <label>Education: K12</label>
+                </value>
+                <value>
+                    <fullName>Education: Post Secondary</fullName>
+                    <default>false</default>
+                    <label>Education: Post Secondary</label>
+                </value>
+                <value>
+                    <fullName>HPC</fullName>
+                    <default>false</default>
+                    <label>HPC</label>
+                </value>
+                <value>
+                    <fullName>Networking: Ethernet</fullName>
+                    <default>false</default>
+                    <label>Networking: Ethernet</label>
+                </value>
+                <value>
+                    <fullName>Networking: SDN/NFV</fullName>
+                    <default>false</default>
+                    <label>Networking: SDN/NFV</label>
+                </value>
+                <value>
+                    <fullName>Private Cloud: VMware</fullName>
+                    <default>false</default>
+                    <label>Private Cloud: VMware</label>
+                </value>
+                <value>
+                    <fullName>Private Cloud: Microsoft</fullName>
+                    <default>false</default>
+                    <label>Private Cloud: Microsoft</label>
+                </value>
+                <value>
+                    <fullName>Private Cloud: OpenStack</fullName>
+                    <default>false</default>
+                    <label>Private Cloud: OpenStack</label>
+                </value>
+                <value>
+                    <fullName>Public Cloud: Sell with CSPs</fullName>
+                    <default>false</default>
+                    <label>Public Cloud: Sell with CSPs</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Storage: NVM/CR</fullName>
+                    <default>false</default>
+                    <label>Storage: NVM/CR</label>
+                </value>
+                <value>
+                    <fullName>Storage: Legacy</fullName>
+                    <default>false</default>
+                    <label>Storage: Legacy</label>
+                </value>
+                <value>
+                    <fullName>Storage: SDS</fullName>
+                    <default>false</default>
+                    <label>Storage: SDS</label>
+                </value>
+                <value>
+                    <fullName>SW &amp; Svcs</fullName>
+                    <default>false</default>
+                    <label>SW &amp; Svcs</label>
+                </value>
+                <value>
+                    <fullName>IoT</fullName>
+                    <default>false</default>
+                    <label>IoT</label>
+                </value>
+                <value>
+                    <fullName>Refresh/Ramp/TAM Expansion</fullName>
+                    <default>false</default>
+                    <label>Refresh/Ramp/TAM Expansion</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Focus__c</fullName>
+        <label>d_Solution Focus</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2 in 1s</fullName>
+                    <default>false</default>
+                    <label>2 in 1s</label>
+                </value>
+                <value>
+                    <fullName>Aepona Services</fullName>
+                    <default>false</default>
+                    <label>Aepona Services</label>
+                </value>
+                <value>
+                    <fullName>Alternate Compute Model</fullName>
+                    <default>false</default>
+                    <label>Alternate Compute Model</label>
+                </value>
+                <value>
+                    <fullName>Big Data Analytics and Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Big Data Analytics and Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Client Refresh/Ramp/Other</fullName>
+                    <default>false</default>
+                    <label>Client Refresh/Ramp/Other</label>
+                </value>
+                <value>
+                    <fullName>Cloudera</fullName>
+                    <default>false</default>
+                    <label>Cloudera</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco Comms Cloud – Sell Thru</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco Comms Cloud – Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco Comms Devices – Sell Thru</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco Comms Devices – Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco Comms Devices – Sell With</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco Comms Devices – Sell With</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco Network Infra/DC/Cloud</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco Network Infra/DC/Cloud</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco PC/Tablet/Devices</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco PC/Tablet/Devices</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco PC/Tablet – Sell Thru</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco PC/Tablet – Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco PC/Tablet – Sell With</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco PC/Tablet – Sell With</label>
+                </value>
+                <value>
+                    <fullName>Comms SP/Telco Services on IA - Sell Thru</fullName>
+                    <default>false</default>
+                    <label>Comms SP/Telco Services on IA - Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>Data Center Manager SW</fullName>
+                    <default>false</default>
+                    <label>Data Center Manager SW</label>
+                </value>
+                <value>
+                    <fullName>Driving New Embedded Business</fullName>
+                    <default>false</default>
+                    <label>Driving New Embedded Business</label>
+                </value>
+                <value>
+                    <fullName>Expressway Services Gateway or Tokenization</fullName>
+                    <default>false</default>
+                    <label>Expressway Services Gateway or Tokenization</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Big Data and Analytics</fullName>
+                    <default>false</default>
+                    <label>Healthcare Big Data and Analytics</label>
+                </value>
+                <value>
+                    <fullName>Healthcare IT Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Healthcare IT Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Higher Education</fullName>
+                    <default>false</default>
+                    <label>Higher Education</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing</fullName>
+                    <default>false</default>
+                    <label>High Performance Computing</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing - Sell Thru</fullName>
+                    <default>false</default>
+                    <label>High Performance Computing - Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>Intel CAS (Cache Accl. SW)</fullName>
+                    <default>false</default>
+                    <label>Intel CAS (Cache Accl. SW)</label>
+                </value>
+                <value>
+                    <fullName>Intel Hadoop SW and Services</fullName>
+                    <default>false</default>
+                    <label>Intel Hadoop SW and Services</label>
+                </value>
+                <value>
+                    <fullName>Intel SSDs for Business Clients</fullName>
+                    <default>false</default>
+                    <label>Intel SSDs for Business Clients</label>
+                </value>
+                <value>
+                    <fullName>Intel SSDs for Data Center</fullName>
+                    <default>false</default>
+                    <label>Intel SSDs for Data Center</label>
+                </value>
+                <value>
+                    <fullName>IoT: Aggregation</fullName>
+                    <default>false</default>
+                    <label>IoT: Aggregation</label>
+                </value>
+                <value>
+                    <fullName>IoT: Embedded</fullName>
+                    <default>false</default>
+                    <label>IoT: Embedded</label>
+                </value>
+                <value>
+                    <fullName>IoT: Gateway</fullName>
+                    <default>false</default>
+                    <label>IoT: Gateway</label>
+                </value>
+                <value>
+                    <fullName>IoT: Sensor</fullName>
+                    <default>false</default>
+                    <label>IoT: Sensor</label>
+                </value>
+                <value>
+                    <fullName>ISV Design Win - Sell Thru</fullName>
+                    <default>false</default>
+                    <label>ISV Design Win - Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>K12</fullName>
+                    <default>false</default>
+                    <label>K12</label>
+                </value>
+                <value>
+                    <fullName>Lustre or Intel Manager for Lustre</fullName>
+                    <default>false</default>
+                    <label>Lustre or Intel Manager for Lustre</label>
+                </value>
+                <value>
+                    <fullName>Mashery Services</fullName>
+                    <default>false</default>
+                    <label>Mashery Services</label>
+                </value>
+                <value>
+                    <fullName>McAfee Influence</fullName>
+                    <default>false</default>
+                    <label>McAfee Influence</label>
+                </value>
+                <value>
+                    <fullName>MIC Technology</fullName>
+                    <default>false</default>
+                    <label>MIC Technology</label>
+                </value>
+                <value>
+                    <fullName>Mission Critical</fullName>
+                    <default>false</default>
+                    <label>Mission Critical</label>
+                </value>
+                <value>
+                    <fullName>Mobile Point of Care</fullName>
+                    <default>false</default>
+                    <label>Mobile Point of Care</label>
+                </value>
+                <value>
+                    <fullName>Multicore Performance - SSG</fullName>
+                    <default>false</default>
+                    <label>Multicore Performance - SSG</label>
+                </value>
+                <value>
+                    <fullName>Orchestration</fullName>
+                    <default>false</default>
+                    <label>Orchestration</label>
+                </value>
+                <value>
+                    <fullName>Private Cloud</fullName>
+                    <default>false</default>
+                    <label>Private Cloud</label>
+                </value>
+                <value>
+                    <fullName>Public Cloud</fullName>
+                    <default>false</default>
+                    <label>Public Cloud</label>
+                </value>
+                <value>
+                    <fullName>RCM/AIM Suite and Retail-related Software</fullName>
+                    <default>false</default>
+                    <label>RCM/AIM Suite and Retail-related Software</label>
+                </value>
+                <value>
+                    <fullName>Security and Intel Technologies</fullName>
+                    <default>false</default>
+                    <label>Security and Intel Technologies</label>
+                </value>
+                <value>
+                    <fullName>Sell Up</fullName>
+                    <default>false</default>
+                    <label>Sell Up</label>
+                </value>
+                <value>
+                    <fullName>Sell with Cloud Providers</fullName>
+                    <default>false</default>
+                    <label>Sell with Cloud Providers</label>
+                </value>
+                <value>
+                    <fullName>Server Refresh/Ramp/Other</fullName>
+                    <default>false</default>
+                    <label>Server Refresh/Ramp/Other</label>
+                </value>
+                <value>
+                    <fullName>Service Assurance Administrator</fullName>
+                    <default>false</default>
+                    <label>Service Assurance Administrator</label>
+                </value>
+                <value>
+                    <fullName>Software Defined Networking / NFV</fullName>
+                    <default>false</default>
+                    <label>Software Defined Networking / NFV</label>
+                </value>
+                <value>
+                    <fullName>Software Defined Storage</fullName>
+                    <default>false</default>
+                    <label>Software Defined Storage</label>
+                </value>
+                <value>
+                    <fullName>Solution Provider / Integrator Enablement - Sell Thru</fullName>
+                    <default>false</default>
+                    <label>Solution Provider / Integrator Enablement - Sell Thru</label>
+                </value>
+                <value>
+                    <fullName>Storage and IA Technology</fullName>
+                    <default>false</default>
+                    <label>Storage and IA Technology</label>
+                </value>
+                <value>
+                    <fullName>Tablets</fullName>
+                    <default>false</default>
+                    <label>Tablets</label>
+                </value>
+                <value>
+                    <fullName>TAM expansion thru 1Mx2015</fullName>
+                    <default>false</default>
+                    <label>TAM expansion thru 1Mx2015</label>
+                </value>
+                <value>
+                    <fullName>Touch Application Development</fullName>
+                    <default>false</default>
+                    <label>Touch Application Development</label>
+                </value>
+                <value>
+                    <fullName>True Scale Influence</fullName>
+                    <default>false</default>
+                    <label>True Scale Influence</label>
+                </value>
+                <value>
+                    <fullName>Ultrabook/Other Client TAM Expansion</fullName>
+                    <default>false</default>
+                    <label>Ultrabook/Other Client TAM Expansion</label>
+                </value>
+                <value>
+                    <fullName>Vocational/Lifelong Learning</fullName>
+                    <default>false</default>
+                    <label>Vocational/Lifelong Learning</label>
+                </value>
+                <value>
+                    <fullName>vPro Implementation</fullName>
+                    <default>false</default>
+                    <label>vPro Implementation</label>
+                </value>
+                <value>
+                    <fullName>Win vs. RISC</fullName>
+                    <default>false</default>
+                    <label>Win vs. RISC</label>
+                </value>
+                <value>
+                    <fullName>Workstation Solutions</fullName>
+                    <default>false</default>
+                    <label>Workstation Solutions</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Status__c</fullName>
+        <description>The status of this solution milestone</description>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Submitted for Approval</fullName>
+                    <default>false</default>
+                    <label>Submitted for Approval</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Use_Case__c</fullName>
+        <label>Use Case or Key Technology</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_Milestone_Focus__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>25 G Ethernet</fullName>
+                    <default>false</default>
+                    <label>25 G Ethernet</label>
+                </value>
+                <value>
+                    <fullName>40 G Ethernet</fullName>
+                    <default>false</default>
+                    <label>40 G Ethernet</label>
+                </value>
+                <value>
+                    <fullName>5G</fullName>
+                    <default>false</default>
+                    <label>5G</label>
+                </value>
+                <value>
+                    <fullName>ADLINK - Connect the Unconnected for Smart Manufacturing</fullName>
+                    <default>false</default>
+                    <label>ADLINK - Connect the Unconnected for Smart Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Bosch MCMS air quality monitoring solution</fullName>
+                    <default>false</default>
+                    <label>Bosch MCMS air quality monitoring solution</label>
+                </value>
+                <value>
+                    <fullName>Broadband Gateway</fullName>
+                    <default>false</default>
+                    <label>Broadband Gateway</label>
+                </value>
+                <value>
+                    <fullName>Cable Network vCPE/vCCAP</fullName>
+                    <default>false</default>
+                    <label>Cable Network vCPE/vCCAP</label>
+                </value>
+                <value>
+                    <fullName>Cisco/Davra Connected Roadways</fullName>
+                    <default>false</default>
+                    <label>Cisco/Davra Connected Roadways</label>
+                </value>
+                <value>
+                    <fullName>City beacon Smart City Solution</fullName>
+                    <default>false</default>
+                    <label>City beacon Smart City Solution</label>
+                </value>
+                <value>
+                    <fullName>Client SSD</fullName>
+                    <default>false</default>
+                    <label>Client SSD</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Commercial Drone (Falcon 8/8+)</fullName>
+                    <default>false</default>
+                    <label>Commercial Drone (Falcon 8/8+)</label>
+                </value>
+                <value>
+                    <fullName>Comms</fullName>
+                    <default>false</default>
+                    <label>Comms</label>
+                </value>
+                <value>
+                    <fullName>Compute Sticks / Compute Cards</fullName>
+                    <default>false</default>
+                    <label>Compute Sticks / Compute Cards</label>
+                </value>
+                <value>
+                    <fullName>Consumer SaaS</fullName>
+                    <default>false</default>
+                    <label>Consumer SaaS</label>
+                </value>
+                <value>
+                    <fullName>CoSP</fullName>
+                    <default>false</default>
+                    <label>CoSP</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Manager</fullName>
+                    <default>false</default>
+                    <label>Datacenter Manager</label>
+                </value>
+                <value>
+                    <fullName>Data Center SSD</fullName>
+                    <default>false</default>
+                    <label>Data Center SSD</label>
+                </value>
+                <value>
+                    <fullName>Davra_Cisco Mass Transit Solution</fullName>
+                    <default>false</default>
+                    <label>Davra_Cisco Mass Transit Solution</label>
+                </value>
+                <value>
+                    <fullName>Dell ELM - FieldSight (Café)</fullName>
+                    <default>false</default>
+                    <label>Dell ELM - FieldSight (Café)</label>
+                </value>
+                <value>
+                    <fullName>Dell ELM - FieldSight (Genset Series E, Microgrid)</fullName>
+                    <default>false</default>
+                    <label>Dell ELM - FieldSight (Genset Series E, Microgrid)</label>
+                </value>
+                <value>
+                    <fullName>Dell IMS Evolve</fullName>
+                    <default>false</default>
+                    <label>Dell IMS Evolve</label>
+                </value>
+                <value>
+                    <fullName>Dell V5</fullName>
+                    <default>false</default>
+                    <label>Dell V5</label>
+                </value>
+                <value>
+                    <fullName>Discrete FPGAs</fullName>
+                    <default>false</default>
+                    <label>Discrete FPGAs</label>
+                </value>
+                <value>
+                    <fullName>Distribution Points</fullName>
+                    <default>false</default>
+                    <label>Distribution Points</label>
+                </value>
+                <value>
+                    <fullName>Drone Light Shows</fullName>
+                    <default>false</default>
+                    <label>Drone Light Shows</label>
+                </value>
+                <value>
+                    <fullName>Enterprise</fullName>
+                    <default>false</default>
+                    <label>Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Enterprise IT Off-Premise</fullName>
+                    <default>false</default>
+                    <label>Enterprise IT Off-Premise</label>
+                </value>
+                <value>
+                    <fullName>Enterprise IT On-Premise</fullName>
+                    <default>false</default>
+                    <label>Enterprise IT On-Premise</label>
+                </value>
+                <value>
+                    <fullName>Flowserve Pump Predictive Maintenance</fullName>
+                    <default>false</default>
+                    <label>Flowserve Pump Predictive Maintenance</label>
+                </value>
+                <value>
+                    <fullName>GE CityIQ Smart Outdoor Lighting</fullName>
+                    <default>false</default>
+                    <label>GE CityIQ Smart Outdoor Lighting</label>
+                </value>
+                <value>
+                    <fullName>Green Ideas Smart Outdoor Lighting</fullName>
+                    <default>false</default>
+                    <label>Green Ideas Smart Outdoor Lighting</label>
+                </value>
+                <value>
+                    <fullName>Hitachi Visualization Platform</fullName>
+                    <default>false</default>
+                    <label>Hitachi Visualization Platform</label>
+                </value>
+                <value>
+                    <fullName>Honeywell Connected Freight</fullName>
+                    <default>false</default>
+                    <label>Honeywell Connected Freight</label>
+                </value>
+                <value>
+                    <fullName>Industry SFA</fullName>
+                    <default>false</default>
+                    <label>Industry SFA</label>
+                </value>
+                <value>
+                    <fullName>Integrated FPGAs</fullName>
+                    <default>false</default>
+                    <label>Integrated FPGAs</label>
+                </value>
+                <value>
+                    <fullName>Integrated Graphics</fullName>
+                    <default>false</default>
+                    <label>Integrated Graphics</label>
+                </value>
+                <value>
+                    <fullName>KMC Commander</fullName>
+                    <default>false</default>
+                    <label>KMC Commander</label>
+                </value>
+                <value>
+                    <fullName>Machine Learning/AI</fullName>
+                    <default>false</default>
+                    <label>Machine Learning/AI</label>
+                </value>
+                <value>
+                    <fullName>MANO/CIM/Service Assurance</fullName>
+                    <default>false</default>
+                    <label>MANO/CIM/Service Assurance</label>
+                </value>
+                <value>
+                    <fullName>Movidius (Deal)</fullName>
+                    <default>false</default>
+                    <label>Movidius (Deal)</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+                <value>
+                    <fullName>Non-MRS Exception</fullName>
+                    <default>false</default>
+                    <label>Non-MRS Exception</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>NUCs</fullName>
+                    <default>false</default>
+                    <label>NUCs</label>
+                </value>
+                <value>
+                    <fullName>Omni-Path</fullName>
+                    <default>false</default>
+                    <label>Omni-Path</label>
+                </value>
+                <value>
+                    <fullName>Phi</fullName>
+                    <default>false</default>
+                    <label>Phi</label>
+                </value>
+                <value>
+                    <fullName>Prescriptive Data NANTUM</fullName>
+                    <default>false</default>
+                    <label>Prescriptive Data NANTUM</label>
+                </value>
+                <value>
+                    <fullName>PrismTech Vortex Edge PMQ (Pred Maintenance)</fullName>
+                    <default>false</default>
+                    <label>PrismTech Vortex Edge PMQ (Pred Maintenance)</label>
+                </value>
+                <value>
+                    <fullName>Purley without Quick Assist Technology (QAT)</fullName>
+                    <default>false</default>
+                    <label>Purley without Quick Assist Technology (QAT)</label>
+                </value>
+                <value>
+                    <fullName>Purley with Quick Assist Technology (QAT)</fullName>
+                    <default>false</default>
+                    <label>Purley with Quick Assist Technology (QAT)</label>
+                </value>
+                <value>
+                    <fullName>Retail - Shutuo/Giada Digital Signage</fullName>
+                    <default>false</default>
+                    <label>Retail - Shutuo/Giada Digital Signage</label>
+                </value>
+                <value>
+                    <fullName>Rice Electronics Connected Worker Solution</fullName>
+                    <default>false</default>
+                    <label>Rice Electronics Connected Worker Solution</label>
+                </value>
+                <value>
+                    <fullName>RRS - BT</fullName>
+                    <default>false</default>
+                    <label>RRS - BT</label>
+                </value>
+                <value>
+                    <fullName>RRS - Detego</fullName>
+                    <default>false</default>
+                    <label>RRS - Detego</label>
+                </value>
+                <value>
+                    <fullName>RRS - Fujitsu</fullName>
+                    <default>false</default>
+                    <label>RRS - Fujitsu</label>
+                </value>
+                <value>
+                    <fullName>RSD Manager</fullName>
+                    <default>false</default>
+                    <label>RSD Manager</label>
+                </value>
+                <value>
+                    <fullName>Saffron Technology (Design)</fullName>
+                    <default>false</default>
+                    <label>Saffron Technology (Design)</label>
+                </value>
+                <value>
+                    <fullName>Scale Out</fullName>
+                    <default>false</default>
+                    <label>Scale Out</label>
+                </value>
+                <value>
+                    <fullName>Scale Partner</fullName>
+                    <default>false</default>
+                    <label>Scale Partner</label>
+                </value>
+                <value>
+                    <fullName>Scale Up</fullName>
+                    <default>false</default>
+                    <label>Scale Up</label>
+                </value>
+                <value>
+                    <fullName>Scanalytics People Behavior (Smart Flooring)</fullName>
+                    <default>false</default>
+                    <label>Scanalytics People Behavior (Smart Flooring)</label>
+                </value>
+                <value>
+                    <fullName>Silicon Photonics</fullName>
+                    <default>false</default>
+                    <label>Silicon Photonics</label>
+                </value>
+                <value>
+                    <fullName>Snap</fullName>
+                    <default>false</default>
+                    <label>Snap</label>
+                </value>
+                <value>
+                    <fullName>uCPE New Platforms</fullName>
+                    <default>false</default>
+                    <label>uCPE New Platforms</label>
+                </value>
+                <value>
+                    <fullName>vBNG/vBRAS</fullName>
+                    <default>false</default>
+                    <label>vBNG/vBRAS</label>
+                </value>
+                <value>
+                    <fullName>Verizon Digital Kiosk</fullName>
+                    <default>false</default>
+                    <label>Verizon Digital Kiosk</label>
+                </value>
+                <value>
+                    <fullName>vPro Activation</fullName>
+                    <default>false</default>
+                    <label>vPro Activation</label>
+                </value>
+                <value>
+                    <fullName>vRAN/MEC</fullName>
+                    <default>false</default>
+                    <label>vRAN/MEC</label>
+                </value>
+                <value>
+                    <fullName>WiFi Attach</fullName>
+                    <default>false</default>
+                    <label>WiFi Attach</label>
+                </value>
+                <value>
+                    <fullName>WiFi Extenders</fullName>
+                    <default>false</default>
+                    <label>WiFi Extenders</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <valueName>Scale Out</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Big Data Analytics</controllingFieldValue>
+                <valueName>Scale Up</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <valueName>Client SSD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Connected Platform</controllingFieldValue>
+                <controllingFieldValue>Optane</controllingFieldValue>
+                <valueName>Data Center SSD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <valueName>Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <valueName>CoSP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Deep Learning</controllingFieldValue>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <valueName>Enterprise</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <valueName>Commercial Drone (Falcon 8/8+)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Drones (Deal)</controllingFieldValue>
+                <valueName>Drone Light Shows</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <valueName>Dell V5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>Hitachi Visualization Platform</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DSS/Video</controllingFieldValue>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <controllingFieldValue>Qualified Horiz. IoT Cloud Platforms</controllingFieldValue>
+                <controllingFieldValue>Realtime Health FOG</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <controllingFieldValue>Transformational: Automated Driving (Deal)</controllingFieldValue>
+                <controllingFieldValue>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</controllingFieldValue>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <valueName>Non-MRS Exception</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Energy:  Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <valueName>Dell ELM - FieldSight (Café)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Environmental Monitoring</controllingFieldValue>
+                <valueName>Bosch MCMS air quality monitoring solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <valueName>ADLINK - Connect the Unconnected for Smart Manufacturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <valueName>Dell IMS Evolve</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <valueName>PrismTech Vortex Edge PMQ (Pred Maintenance)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <valueName>Rice Electronics Connected Worker Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Logistics &amp; Asset Mgmt</controllingFieldValue>
+                <valueName>Honeywell Connected Freight</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NFV/SDN</controllingFieldValue>
+                <valueName>Scale Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>5G</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>Cable Network vCPE/vCCAP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>Machine Learning/AI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>MANO/CIM/Service Assurance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>uCPE New Platforms</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>vBNG/vBRAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation</controllingFieldValue>
+                <valueName>vRAN/MEC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <valueName>Compute Sticks / Compute Cards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <valueName>Industry SFA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New Form Factor Adoption</controllingFieldValue>
+                <valueName>NUCs</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <valueName>25 G Ethernet</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <valueName>40 G Ethernet</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <valueName>Omni-Path</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Next Gen Connectivity</controllingFieldValue>
+                <controllingFieldValue>Transformation: Next Gen Connectivity</controllingFieldValue>
+                <valueName>Silicon Photonics</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <valueName>Consumer SaaS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <valueName>Enterprise IT Off-Premise</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <valueName>Enterprise IT On-Premise</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <valueName>Snap</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Public Cloud</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <valueName>Not Applicable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <valueName>Purley without Quick Assist Technology (QAT)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Purley</controllingFieldValue>
+                <valueName>Purley with Quick Assist Technology (QAT)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rack Scale Design (RSD)</controllingFieldValue>
+                <controllingFieldValue>Transformation: Deep Learning</controllingFieldValue>
+                <controllingFieldValue>Transformation: Rack Scale Design</controllingFieldValue>
+                <valueName>Comms</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <valueName>RRS - BT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <valueName>RRS - Detego</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Inventory Management</controllingFieldValue>
+                <valueName>RRS - Fujitsu</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail POS</controllingFieldValue>
+                <valueName>vPro Activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <valueName>Broadband Gateway</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <valueName>Distribution Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <valueName>WiFi Attach</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart &amp; Connected Home</controllingFieldValue>
+                <controllingFieldValue>Transformation: Connected Home</controllingFieldValue>
+                <valueName>WiFi Extenders</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <valueName>KMC Commander</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <valueName>Prescriptive Data NANTUM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart Building</controllingFieldValue>
+                <valueName>Scanalytics People Behavior (Smart Flooring)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>Cisco/Davra Connected Roadways</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>City beacon Smart City Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>Davra_Cisco Mass Transit Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>GE CityIQ Smart Outdoor Lighting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>Green Ideas Smart Outdoor Lighting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Smart City</controllingFieldValue>
+                <valueName>Verizon Digital Kiosk</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <valueName>Discrete FPGAs</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <valueName>Integrated FPGAs</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <valueName>Integrated Graphics</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transformation: Workload Acceleration</controllingFieldValue>
+                <controllingFieldValue>Workload Acceleration</controllingFieldValue>
+                <valueName>Phi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Visual Retail</controllingFieldValue>
+                <valueName>Retail - Shutuo/Giada Digital Signage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <valueName>Datacenter Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On Software and Services</controllingFieldValue>
+                <valueName>RSD Manager</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <label>Milestone</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>SM-{0000000}</displayFormat>
+        <label>Milestone ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Milestones</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_Solution_Milestone</fullName>
+        <active>true</active>
+        <description>Standard Solution Milestone Record Type</description>
+        <label>Solution Milestone</label>
+        <picklistValues>
+            <picklist>Core_Milestone_Commissionable__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Milestone_Focus_Area__c</picklist>
+            <values>
+                <fullName>Deal - CCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal - DCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal - IOTG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal - NSG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal - NTG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - CCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - DCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - IOTG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - NSG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - NTG</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Milestone_Focus__c</picklist>
+            <values>
+                <fullName>3D NAND PCIe Data Center Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMT Activation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add-On Software and Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Architecture Conversion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Authenticate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Big Data Analytics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Connected Platform</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Connectivity %2F 5G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DSS%2FVideo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center All Flash SSD Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Guard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deep Learning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - 3D NAND Conversion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - Embedded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design - Optane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Docking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drones %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drones %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Energy%3A  Connect the Unconnected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Environmental Monitoring</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industrial%3A Connect the Unconnected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K-12 Transformation Project</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Logistics %26 Asset Mgmt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Movidius %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Movidius %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NFV%2FSDN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Form Factor Adoption</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Next Gen Connectivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purley</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Qualified Horiz%2E IoT Cloud Platforms</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rack Scale Design %28RSD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RealSense %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Realsense %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Realtime Health FOG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail Inventory Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail POS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saffron Technology %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saffron Technology %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smart %26 Connected Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smart Building</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smart City</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software Defined Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Account Initiative SDM%2FMDM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A  AR%2FVR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A  Connectivity %2F 5G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A Connected Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A Deep Learning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A Next Gen Connectivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A Rack Scale Design</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformation%3A Workload Acceleration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformational%3A  DSS%2FVideo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformational%3A Automated Driving %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformational%3A Automated Driving %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformational%3A SW Defined Industrial Systems - Fog Server %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformational%3A SW Defined Industrial Systems - Fog Server %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Visual Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Windows 10 %26 Kaby Lake</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Workload Acceleration</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Milestone__c</picklist>
+            <values>
+                <fullName>Concept%2FProgram Solidification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Definition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deployment %2F Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enabled SW Production GA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Execution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Govt%2E Policy %2F RFx Influenced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDM %2F SDM - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Tech Adoption</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POC %2F POT %2F Lab Trial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pilot %2F Live Trial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard Offering %2F Units Comm Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Win</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Solution_Area__c</picklist>
+            <values>
+                <fullName>Big Data%2FAnalytics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client%3A New Mobility Use Cases</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client%3A Touch Appl Dev</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client%3A vPro%2FVirtualization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Education%3A K12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Education%3A Post Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HPC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking%3A Ethernet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking%3A SDN%2FNFV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud%3A Microsoft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud%3A OpenStack</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud%3A VMware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Cloud%3A Sell with CSPs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refresh%2FRamp%2FTAM Expansion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SW %26 Svcs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage%3A Legacy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage%3A NVM%2FCR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage%3A SDS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Solution_Focus__c</picklist>
+            <values>
+                <fullName>2 in 1s</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Aepona Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Alternate Compute Model</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Big Data Analytics and Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Refresh%2FRamp%2FOther</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloudera</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco Comms Cloud %E2%80%93 Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco Comms Devices %E2%80%93 Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco Comms Devices %E2%80%93 Sell With</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco Network Infra%2FDC%2FCloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco PC%2FTablet %E2%80%93 Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco PC%2FTablet %E2%80%93 Sell With</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco PC%2FTablet%2FDevices</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms SP%2FTelco Services on IA - Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Manager SW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Driving New Embedded Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expressway Services Gateway or Tokenization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Big Data and Analytics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare IT Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High Performance Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High Performance Computing - Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Higher Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISV Design Win - Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel CAS %28Cache Accl%2E SW%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Hadoop SW and Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel SSDs for Business Clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel SSDs for Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT%3A Aggregation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT%3A Embedded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT%3A Gateway</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT%3A Sensor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lustre or Intel Manager for Lustre</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MIC Technology</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mashery Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>McAfee Influence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mission Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile Point of Care</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multicore Performance - SSG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Orchestration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RCM%2FAIM Suite and Retail-related Software</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Security and Intel Technologies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sell Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sell with Cloud Providers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Server Refresh%2FRamp%2FOther</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Assurance Administrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software Defined Networking %2F NFV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software Defined Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Provider %2F Integrator Enablement - Sell Thru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage and IA Technology</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TAM expansion thru 1Mx2015</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tablets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Touch Application Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>True Scale Influence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ultrabook%2FOther Client TAM Expansion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vocational%2FLifelong Learning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Win vs%2E RISC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Workstation Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>vPro Implementation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Use_Case__c</picklist>
+            <values>
+                <fullName>25 G Ethernet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40 G Ethernet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADLINK - Connect the Unconnected for Smart Manufacturing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bosch MCMS air quality monitoring solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broadband Gateway</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cable Network vCPE%2FvCCAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco%2FDavra Connected Roadways</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>City beacon Smart City Solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client SSD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CoSP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial Drone %28Falcon 8%2F8%2B%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comms</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compute Sticks %2F Compute Cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consumer SaaS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center SSD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Datacenter Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Davra_Cisco Mass Transit Solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dell ELM - FieldSight %28Café%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dell ELM - FieldSight %28Genset Series E%2C Microgrid%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dell IMS Evolve</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dell V5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discrete FPGAs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distribution Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drone Light Shows</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise IT Off-Premise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise IT On-Premise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flowserve Pump Predictive Maintenance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GE CityIQ Smart Outdoor Lighting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green Ideas Smart Outdoor Lighting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hitachi Visualization Platform</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Honeywell Connected Freight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry SFA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integrated FPGAs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integrated Graphics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KMC Commander</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MANO%2FCIM%2FService Assurance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Machine Learning%2FAI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Movidius %28Deal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NUCs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-MRS Exception</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omni-Path</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prescriptive Data NANTUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PrismTech Vortex Edge PMQ %28Pred Maintenance%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purley with Quick Assist Technology %28QAT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purley without Quick Assist Technology %28QAT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RRS - BT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RRS - Detego</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RRS - Fujitsu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSD Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail - Shutuo%2FGiada Digital Signage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rice Electronics Connected Worker Solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saffron Technology %28Design%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scale Out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scale Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scale Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scanalytics People Behavior %28Smart Flooring%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silicon Photonics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Snap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Verizon Digital Kiosk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WiFi Attach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WiFi Extenders</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>uCPE New Platforms</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>vBNG%2FvBRAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>vPro Activation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>vRAN%2FMEC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_MileStone_SubAppr_To_Pend</fullName>
+        <active>true</active>
+        <description>Prevent users from changing milestone Status from &quot;Submitted for Approval&quot; to &quot;Pending&quot;</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND( 
+ISCHANGED(Core_Status__c), 
+text(PRIORVALUE(Core_Status__c)) = &quot;Submitted for Approval&quot;, 
+TEXT(Core_Status__c) = &quot;Pending&quot;
+)
+
+)</errorConditionFormula>
+        <errorMessage>To set the milestone back to pending, submitter can use the Recall Approval Request button in the Approval History section or the approving manager can reject the approval request.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Milestone_Deployment_Qty</fullName>
+        <active>true</active>
+        <description>•[Deployment Quantity] should become required if the [Milestone] = &quot;Deployment / Delivery&quot; AND [Use Case or Key Technology] = one of the following:
+◦Client: AMT
+◦Client: Prowidi
+◦Client: Unite
+◦Client: Widock
+◦Client: Authenticate</description>
+        <errorConditionFormula>And(
+ isnull(Core_Deployment_Quantity__c),
+AND(
+ ISPICKVAL(Core_Milestone__c, &quot;Deployment / Delivery&quot;),
+OR(
+ ISPICKVAL(Core_Use_Case__c, &quot;Client: AMT Activation&quot;),
+ ISPICKVAL(Core_Use_Case__c, &quot;Client: ProWidi&quot;),
+ ISPICKVAL(Core_Use_Case__c, &quot;Client: Unite&quot;),
+ ISPICKVAL(Core_Use_Case__c, &quot;Client: WiDock&quot;),
+ ISPICKVAL(Core_Use_Case__c, &quot;Client: Authenticate&quot;)
+)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Core_Deployment_Quantity__c</errorDisplayField>
+        <errorMessage>Deployment Quantity is required for the Milestone and Use Case or Key Technology selected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Milestone_Prevent_Owner_Change</fullName>
+        <active>true</active>
+        <description>Prevent the user from changing the owner if the milestone is in &apos;Submitted for Approval&apos; status.</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND
+(
+ISCHANGED(Core_Owner__c),
+ISPICKVAL(Core_Status__c , &apos;Submitted for Approval&apos;)
+)
+
+)</errorConditionFormula>
+        <errorDisplayField>Core_Owner__c</errorDisplayField>
+        <errorMessage>The milestone owner cannot be changed while the milestone is in submitted
+status. Please recall the approval request to change the owner.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_Milestone_Credit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Milestone Credit</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!URLFOR(&apos;/apex/Core_Milestone_Credit?Id=&apos;&amp;Opportunity.Id, null)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Recall_Approval</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Recall Approval</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/connection.js&quot;)} 
+    {!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+    var x;
+    if (confirm(&quot;Are you Sure?&quot;) == true) {
+        x = &quot;Ok&quot;;
+    } else {
+        x = &quot;Cancel&quot;;
+    }
+    if(x == &apos;Cancel&apos;){ 
+      window.location.replace(&apos;/{!Core_Solution_Milestone__c.Id}&apos;)
+    } 
+
+else { 
+window.location.replace(&apos;/apex/Core_Milestone_Unlock_Record?id={!Core_Solution_Milestone__c.Id}&apos;)
+}</url>
+    </webLinks>
+</CustomObject>

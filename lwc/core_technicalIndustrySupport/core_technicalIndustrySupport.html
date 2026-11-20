@@ -1,0 +1,254 @@
+<template>
+
+    <template if:true={isLoading}>
+        <div class="slds-m-around_medium">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </template>
+    <template if:true={showForm}> 
+        <div class="slds-card slds-m-around_xx-small">
+            <lightning-layout horizontal-align="center" multiple-rows="true">
+                <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
+                    medium-device-size="10" large-device-size="10" padding="around-small">
+                    <div style="text-align: center;font-size: large;">Opportunity Support Request</div> <!--{pageHeaderTxt}-->
+                </lightning-layout-item>
+            </lightning-layout></div>  
+        <!--<h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Opportunity Information</span>           
+        </h3>-->
+    </template>
+       
+
+<template if:false={MSRecordType}>
+<template if:true={showForm}> 
+
+    <lightning-accordion allow-multiple-sections-open active-section-name="A">
+        <lightning-accordion-section label="Opportunity Information" >   
+         
+    <template if:true={opportunityData}>
+        <lightning-layout multiple-rows="true">
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="AccountName"                        
+                                value={opportunityData.Account.Name} label= "Account Name"                        
+                                disabled
+                        ></lightning-input> <!-- old:opportunityData.Account.displayValue-->
+                </lightning-layout-item>                       
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="OpportunityName"
+                                value={opportunityData.Name} label= "Opportunity Name"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+            <!--</lightning-layout>
+
+            <lightning-layout multiple-rows="true">-->                
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="OpportunityID"
+                                value={opportunityData.Id} label= "Opportunity ID"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Sales Stage"                        
+                                value={opportunityData.StageName} label= "Sales Stage"                       
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+            <!--</lightning-layout>
+
+            <lightning-layout multiple-rows="true">-->               
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Amount"
+                                value={opportunityData.Amount} label= "Amount"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Decision Date"                        
+                                value={opportunityData.CloseDate} label= "Decision Date"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+            <!--</lightning-layout>
+
+            <lightning-layout multiple-rows="true">-->                
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Sales Group"
+                                value={opportunityData.Core_Sales_Groups__c} label= "Sales Group"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Product Segment"                        
+                                value={opportunityData.Core_Product_Segment__c} label= "Product Segment"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+            <!--</lightning-layout>
+
+            <lightning-layout multiple-rows="true">-->              
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Vertical Market"
+                                value={opportunityData.Core_Consumption_Market__c} label= "Vertical Market"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Product Application"                        
+                                value={opportunityData.Core_Product_Application__c} label= "Product Application"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+             <!--</lightning-layout>
+
+            <lightning-layout multiple-rows="true">-->                
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Opportunity Owner"
+                                value={opportunityData.Owner.Name} label= "Opportunity Owner"                        
+                                disabled
+                        ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Technical Owner"                        
+                                value={techOwner}  label= "Technical Owner"                        
+                                disabled></lightning-input>
+                </lightning-layout-item>               
+            
+        </lightning-layout>
+        </template> 
+</lightning-accordion-section></lightning-accordion>
+</template> 
+</template>
+<template if:true={showForm}>   
+    <lightning-accordion allow-multiple-sections-open active-section-name="A">
+        <lightning-accordion-section name="A" label="Details" >
+    <!--<div class="slds-card slds-m-around_xx-small">
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Details</span>
+        </h3>
+    </div> -->       
+    <lightning-record-edit-form object-api-name="Core_Opportunity_Support__c"  onsubmit={handleSubmit} > 
+        <lightning-messages></lightning-messages>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                        medium-device-size="6" large-device-size="6" padding="around-small">
+                            <lightning-input type="text" maxlength="80" name="Record Type"
+                                value={recortypName} label= "Record type"                        
+                                disabled
+                        ></lightning-input> 
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <label class="slds-form-element__label" for="textarea-id-01">Opportunity Description</label>
+                    <div class="custom-textarea-container">
+                        <textarea class="custom-textarea"  disabled>{opp_diesc}</textarea>
+                    </div>
+                </lightning-layout-item>
+            <template if:true={checkRecordType}>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">                   
+                    <lightning-combobox label="TSS Support Type" data-id="TSS_Support_Type"
+                    name="TSS Support Type"
+                    options={picklistValues} 
+                    field-name={TSS_SUPPORT}                           
+                    value={tss_Supp}     
+                    required = "true"
+                    title ={tsshelptext}
+                    onchange={handleInputChange}>
+                    </lightning-combobox>             
+                </lightning-layout-item>
+             </template>
+
+             <template if:true={COERecordType}>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-combobox  data-id="Center_of_Excellence" label="Center of Excellence"
+                    name="Center of Excellence"
+                    options={coePicklistValues} 
+                    field-name={COE_SUPPORT}                           
+                    value={coe_Supp}     
+                    required = "true"         
+                    onchange={handleInputChange}>
+                    </lightning-combobox>                       
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-textarea name="CoE Request Detail" maxlength="2050" onchange={handleInputChange} field-level-help="CoE Request Detail" 
+                    value="" placeholder="CoE Request Detail" field-name={CoEReqDETAIL} label="CoE Request Detail" required="true"></lightning-textarea>
+                </lightning-layout-item>
+             </template>
+            <!--TWC4767-2678 - Start-->
+             <template if:true={MSRecordType}>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-textarea name="Business Challenge" maxlength="2050" onchange={handleInputChange} field-level-help="Summarize the customer's challenges in two to three sentences. Outline business objectives, pain points, competitive threats, and digital transformation or sustainability goals." 
+                    value="" placeholder="Business Challenge" field-name={CORE_BUSINESS_CHALLENGE} label="Customer’s Business Challenge" required="true"></lightning-textarea>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-textarea name="Solution Summary" maxlength="2050" onchange={handleInputChange} field-level-help="Summarize the customer's solution in context with their pain points in two to three sentences. Provide details of the solution, including the use case/workload and any significant partner involvement." 
+                    value="" placeholder="Solution Summary" field-name={CORE_SOLUTION_SUMMARY} label="Solution Summary" required="true"></lightning-textarea>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-textarea name="Customers Business Results/ Outcomes" maxlength="2050" onchange={handleInputChange} field-level-help="Summarize the tangible business value the customer achieved in two to three sentences.Please provide quantifiable, measurable, and meaningful business results and key customer benefits if available" 
+                    value="" placeholder="Customers Business Results/ Outcomes" field-name={CORE_BUSINESS_RES_OUTCOME} label="Customer's Business Results/ Outcomes" required="true"></lightning-textarea>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-textarea name="Why Intel" maxlength="2050" onchange={handleInputChange} field-level-help="List the major factors around why the customer chose Intel." 
+                    value="" placeholder="Why Intel" field-name={CORE_WHY_INTEL} label="Why Intel" required="true"></lightning-textarea>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-textarea name="Sales Insights" maxlength="2050" onchange={handleInputChange} field-level-help="During this win, what did you learn that your peers would benefit most from?" 
+                    value="" placeholder="Sales Insights" field-name={CORE_SALES_INSIGHTS} label="Sales Insights" required="true"></lightning-textarea>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-combobox  data-id="Customer_Willingness" label="Customer Willingness"
+                    name="Customer Willingness"
+                    options={customWillPicklistValues} 
+                    field-name={CORE_CUSTOMER_WILLINGNESS}                           
+                    value={cus_Will}     
+                    required = "true"         
+                    onchange={handleInputChange}>
+                    </lightning-combobox>                       
+                </lightning-layout-item>
+                
+             </template>
+            <!--TWC4767-2678 - End-->
+            <template if:false={COERecordType}>
+                <template if:false={MSRecordType}><!--TWC4767-2678-->
+                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                        <lightning-textarea name="Primary Blockers" maxlength="2050" onchange={handleInputChange} field-level-help="Please provide any primary blockers for this opportunity or concerns for the planned initiative" 
+                        value="" placeholder="Primary Blockers" field-name={PRIMARYBLOCKERS} label="Primary Blockers" required="true"></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                        <lightning-textarea name="Additional Support Needed" maxlength="2050" onchange={handleInputChange} field-level-help="Please describe the need for additional support and how it will enhance the opportunity" 
+                        value="" placeholder="Additional Support Needed" field-name={ADDITIONAL_SUPPORT} label="Additional Support Needed" required="true"></lightning-textarea>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                        <lightning-textarea name="Background Information" maxlength="2050" onchange={handleInputChange} field-level-help="Please provide the background information on the customers  current architecture" 
+                        value="" placeholder="Background Information On Current Architecture" field-name={BACKGROUND_ARCHITCT_INFO} label="Background Information On Current Architecture" required="true"></lightning-textarea>
+                    </lightning-layout-item>              
+            <!--<lightning-button class="slds-var-m-left_x-small" type="submit" variant="brand" label="Save" ></lightning-button>
+            -->
+                </template>
+            </template>
+            <lightning-layout-item class ="slds-align_absolute-center" flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                
+                    <lightning-button class="slds-m-right_xx-small" disabled={onSave} label="Save" variant="brand" type="submit" onclick={handleConfirmClick}></lightning-button>
+                    <lightning-button label="Cancel" variant="neutral" type="cancel" onclick={handleCancelNew}></lightning-button>   
+                
+            </lightning-layout-item>
+        </lightning-layout>      
+       
+    </lightning-record-edit-form>
+    </lightning-accordion-section></lightning-accordion>
+
+</template>    
+</template>

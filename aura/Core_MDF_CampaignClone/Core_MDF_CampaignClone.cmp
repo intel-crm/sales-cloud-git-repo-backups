@@ -1,0 +1,198 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride,lightning:isUrlAddressable" access="global" controller="Core_MDF_Campaign_QuickActionController" >
+    <ltng:require styles="{!$Resource.Core_MDF_ModalWidthCSS}"/>
+    <aura:html tag="style">.toastMessage.forceActionsText{
+	white-space : pre-line !important;
+	}</aura:html>
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="recordId" type="Id" default="" />
+    <aura:attribute name="recordTypeId" type="Id" default="" />
+    <aura:attribute name="recordTypeName" type="String" default="" />
+    <aura:attribute name="recordTypeDeveloperName" type="String" default="" />
+    <aura:attribute name="campaignStatus" type="String" default="" />
+    <aura:attribute name="mode" type="String" default="" />
+    <aura:attribute name="fieldSetName" type="String" default="" />    
+    <aura:attribute name="recordInfoLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="fieldSetLoaded" type="Boolean" default="false"/>
+         <aura:attribute name="proposalBasedIndicator" type="Boolean" default="false"/>
+    <aura:attribute name="ActivityTypes" type="Map" description="to store activity types"/>
+    <!--     //US1082871: [IPA MDF] - Campaign - Clone a Proposal -->
+    <aura:attribute name="clonePFRComponent" type="Boolean" default="false"/>
+    <aura:attribute name="callCampaignComp" type="Boolean" default="false"/>
+    <aura:attribute name="activityRec" type="PartnerFundRequest" default="{}"/>
+    <aura:attribute name="pfrEditRecord" type="PartnerFundRequest" default="{}"/>
+    <aura:attribute name="pfrList" type="PartnerFundRequest[]" default="[]"/>
+    <aura:attribute name="fieldSetList" type="String[]" default="[]"/>
+    <aura:attribute name="Core_MDF_ResponseHandler" type="object" default="{}"/>
+    <aura:handler name="ipaActRecClone" event="c:Core_MDF_IPAActivityClone" action="{!c.getActivityRecEditted}" />
+    <aura:attribute name="campaignObject" type="Campaign" />
+    <aura:attribute name="showPFRModal" type="Boolean" default="false"/>
+    <aura:attribute name="isIPAExtUsr" type="Boolean" default="false"/>
+    
+    <aura:attribute name="isIpaActEdited" type="Boolean" default="false" description="Set to true once if the IPA Activity is edited on clone"/>
+    <!-- IPA Clone Activity end-->
+    <aura:attribute name="isCommunity" type="Boolean" default="false"/>
+    <aura:attribute name="hasCloneAccess" type="Boolean" default=""/>
+    <aura:attribute name="message" type="String" default=""/>
+    <aura:attribute name="campaignCustomClone" type="Boolean" default="false" />
+    <aura:attribute name="updatedCampPicklistValues" type="object" default= "{}" />
+    <aura:attribute name="updatedCampaignObj" type="object" default= "{}" />
+    <aura:attribute name="updatedCampBudgetType" type="String" />
+    <aura:attribute name="updatedBuSplitFormula" type="String" />
+    <aura:attribute name="oldPfrList" type="Array" default="[]"/>
+    <aura:attribute name="activityToAttributeList" type="Array" default="[]"/>
+    <aura:attribute name="outcomeBasedOptInInd" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:handler name="change" value="{!v.recordInfoLoaded}" action="{!c.fetchFieldSetInfo}" />
+
+    <aura:method name="getCountryUpdatedValues" action="{!c.getCountryUpdatedValues}" access="public">
+    <aura:attribute name="campCountry" type="string[]" /> 
+    </aura:method>
+    <!--Register Event-->
+    <aura:registerEvent name="closeModalAndLogErrorMessageEvent" type="c:Core_MDF_CloseModalAndLogErrorMessageEvent"/>
+
+    <aura:if isTrue="{!!v.campaignCustomClone}">
+    <aura:if isTrue="{!v.hasCloneAccess}">
+        <aura:if isTrue="{!v.fieldSetLoaded}">            
+            <c:core_MDF_Create_Campaign aura:id="childCampaignCmp" recordId="{!v.recordId}" mode="{!v.mode}" 
+	    recordTypeId="{!v.recordTypeId}" 
+	    recordTypeName="{!v.recordTypeName}" 
+	    recordTypeDeveloperName="{!v.recordTypeDeveloperName}" 
+	    objectApiName="Campaign" 
+	    fieldSetName="{!v.fieldSetName}" 
+	    status="{!v.campaignStatus}" 
+	    isCommunity="{!v.isCommunity}" 
+	    onrecSelectedAct="{!c.recActDetails}" 
+	    activityListClone ="{!v.pfrList}" activityToAttributeList="{!v.activityToAttributeList}"
+        onoutcomechange="{!c.handleOutcomeChange}"
+	    onbudgetTypeChangeEvent="{!c.budgetTypeChangeEvent}" 
+	    onactivityValidationEvent="{!c.activityValidationEvent}" 
+	    onapplicationerror="{!c.closeModalAndDisplayErrorMsg}" 
+	    onpicklistValueChangeEvent="{!c.picklistValueChangeEvent}"
+        oncampaignAttributeChangeEvt="{!c.campaignAttributeChangeEvt}"
+	    onactivityBlankFieldsCheckoxValidation="{!c.activityBlankFieldsCheckoxValidation}"></c:core_MDF_Create_Campaign>
+        </aura:if>
+        <aura:set attribute="else">
+            <aura:if isTrue="{!not(empty(v.message))}">
+      <div class="slds-box slds-theme--error">
+          
+                <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.message}</h5>
+        
+    </div>
+            </aura:if>
+    </aura:set>
+    </aura:if>
+    <!--     //US1082871: [IPA MDF] - Campaign - Clone a Proposal  -->
+    <aura:if isTrue="{!v.clonePFRComponent}">
+        <div class="slds-m-around_xx-large">
+            <lightning:button variant="brand"
+                              label="What is Modal/PopUp Box?"
+                              title="What is Modal/PopUp Box?"
+                              onclick="{! c.openModel }" />
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare"
+                                              size="small"
+                                              class="slds-button slds-button_icon slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
+                    </header>
+                    <aura:if isTrue="{!v.showPFRModal}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                            
+                            <aura:if isTrue="{!(v.recordTypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                            	<c:Core_MDF_CreateEditActivity clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}" updatedCampBudgetType="{!v.updatedCampBudgetType}" updatedCampPicklistValues="{!v.updatedCampPicklistValues}" updatedCampaignObj ="{!v.updatedCampaignObj}" outcomeBasedOptInInd="{!v.outcomeBasedOptInInd}"/>  
+                                <aura:set attribute="else">
+                                	<c:Core_Intel_createEditPFR clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}" ipaCloneRecd="{!v.isIpaActEdited}"/>  
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </aura:if>
+                    <footer class="slds-modal__footer">
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>
+   </aura:if>
+     <aura:if isTrue="{!v.campaignCustomClone}">
+     <div aura:id="modalIdForCommuntityRecord" role="dialog"
+             aria-labelledby="header43" class="slds-modal slds-slide-up-saving">
+            <div class="slds-modal__container">
+                <!-- Heading (Header of the Modal) -->
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.closeModalFormCampaign}">
+                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    </button>
+                </div>
+                  <div class="slds-modal__content slds-p-around--medium">
+                   <aura:if isTrue="{!v.hasCloneAccess}">
+                        <aura:if isTrue="{!v.fieldSetLoaded}">            
+                            <c:core_MDF_Create_Campaign aura:id="childCampaignCmp" recordId="{!v.recordId}"
+                                                        mode="{!v.mode}" recordTypeId="{!v.recordTypeId}"
+                                                        recordTypeName="{!v.recordTypeName}"
+							recordTypeDeveloperName="{!v.recordTypeDeveloperName}" 
+                                                        objectApiName="Campaign" fieldSetName="{!v.fieldSetName}" status="{!v.campaignStatus}" 
+                                                        isCommunity="{!v.isCommunity}"
+							onrecSelectedAct="{!c.recActDetails}" 
+                                                        activityListClone ="{!v.pfrList}" activityToAttributeList="{!v.activityToAttributeList}"
+                            onoutcomechange="{!c.handleOutcomeChange}"
+							onbudgetTypeChangeEvent="{!c.budgetTypeChangeEvent}"
+							onactivityValidationEvent="{!c.activityValidationEvent}"
+							onapplicationerror="{!c.closeModalAndDisplayErrorMsg}"
+							onpicklistValueChangeEvent="{!c.picklistValueChangeEvent}"
+							oncampaignAttributeChangeEvt ="{!c.campaignAttributeChangeEvt}">
+							</c:core_MDF_Create_Campaign>
+                             
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!not(empty(v.message))}">
+                                <div class="slds-box slds-theme--error">
+                                    <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.message}</h5>
+                                </div>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+         </div>
+         </div>
+         </div>
+         <aura:if isTrue="{!v.clonePFRComponent}">
+        <div class="slds-m-around_xx-large">
+            <lightning:button variant="brand"
+                              label="What is Modal/PopUp Box?"
+                              title="What is Modal/PopUp Box?"
+                              onclick="{! c.openModel }" />
+              <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                      <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare"
+                                              size="small"
+                                              class="slds-button slds-button_icon slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
+                    </header>
+                    <aura:if isTrue="{!v.showPFRModal}">
+                        <div class="slds-p-around_medium" id="modal-content-id-1">
+                            <aura:if isTrue="{!(v.recordTypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                            		<c:Core_MDF_CreateEditActivity clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}" updatedCampBudgetType="{!v.updatedCampBudgetType}" outcomeBasedOptInInd="{!v.outcomeBasedOptInInd}"/>  
+                                <aura:set attribute="else">
+                                	<c:Core_Intel_createEditPFR clonedCampaignRecord="{!v.campaignObject}" pfrCloneCheck="true"  checkCloneAttribute="true"  recordTypeDeveloperName="{!v.recordTypeDeveloperName}"  checkCloneRecordId="{!v.activityRec.Id}" pfrCloneOnCampaign ="{!v.activityRec}"/>  
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </aura:if>
+                    <footer class="slds-modal__footer">
+                    </footer>
+
+            <div class="slds-backdrop slds-backdrop_open"></div>
+                </div>
+            </section>
+         </div>
+    </aura:if>
+    </aura:if>
+ </aura:component>

@@ -1,0 +1,32 @@
+<aura:documentation>
+	<aura:description>
+    <p>Article List Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 6/10/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>Structure of Article List items:</p>
+		<pre>
+[
+{
+	title: 'Dummy article', // Section Title
+	link: '#', // Link URL
+	publishedDate: 'Mar 21, 2019'
+},
+{
+	title: 'Dummy article 2', // Section Title
+	link: '#', // Link URL
+	publishedDate: 'Mar 22, 2019'
+}
+]
+</pre>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

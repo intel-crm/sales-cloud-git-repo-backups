@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_Dashboard_Tab</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_Dashboard_Tabs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Benefit Code --></label>
+        <name>PMP_Benefit_Code_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PMP_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permission Set Name --></label>
+        <name>PMP_Permission_Set_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement --></label>
+        <name>PRM_Entitlement_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile --></label>
+        <name>PRM_Profile_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

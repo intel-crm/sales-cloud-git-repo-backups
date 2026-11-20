@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRUS</name>
+    <style>none</style>
+    <subject>Поздравляем! Вы получили новый статус в программе Intel® Cloud Insider</subject>
+    <textOnly>Одобрено!
+
+Добро пожаловать! Теперь {!Account.Name} является участником программы Intel® Cloud Insider! На веб-странице intel.com/cloudinsider вы найдете маркетинговые материалы и инструменты продаж, а также информацию о своих преимуществах. Чтобы добавить коллегу к своей учетной записи, откройте профиль своей компании в разделе Моя учетная запись. {!$Label.PRM_MyIntelProfileURL}
+
+
+Есть вопросы? Обратитесь в службу поддержки программы Intel® Cloud Insider по адресу programs@intel.com Вот
+
+Корпорация Intel, {!$Label.PRM_CurrentYear} г. Все права защищены. Intel, логотип Intel являются товарными знаками корпорации Intel в США и/или других странах.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Вы можете отказаться от подписки в любое время, обновив настройки своего профиля по адресу:  {!$Label.PRM_MyIntelProfileURL}
+Политика конфиденциальности | Файлы Cookie | *Товарные знаки</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

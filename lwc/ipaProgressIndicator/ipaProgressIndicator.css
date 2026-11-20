@@ -1,0 +1,164 @@
+li .progress-icon {
+  color: var(--progressBarBlue);
+  font-size: 1.25rem;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -.25rem);
+}
+
+li.lock .progress-icon {
+  color: var(--redLock);
+}
+
+.slds-progress-wrapper {
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0 3rem 0;
+}
+
+.progressbar {
+  display: flex;
+  padding-top: 3rem;
+}
+
+.progressbar li {
+  flex: 1 0 0;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  list-style-type: none;
+  position: relative;
+  text-align: center;
+}
+
+.progressbar li p {
+  color: var(--darkGray);
+  padding: .3125rem .875rem;
+}
+
+.progressbar li.active p {
+  padding-top: 0;
+}
+
+.progressbar li.lock::before,
+.progressbar li.checked::before {
+  border: .1875rem solid transparent;
+}
+
+.progressbar li::before {
+  background-color: var(--lightGray); /* rebrand */
+  border: .1875rem solid var(--lightGray);
+  border-radius: 50%;
+  content: " \25CF";
+  display: block;
+  font-size: 0;
+  height: .875rem;
+  line-height: .875rem;
+  margin: 0 auto .625rem auto;
+  text-align: center;
+  width: .875rem;
+}
+
+.progressbar li::after {
+  background-color: var(--progressBarBlue);
+  content: "";
+  height: .25rem;
+  left: -40%;
+  position: absolute;
+  top: .375rem;
+  width: 80%;
+}
+
+.progressbar li::after,
+.progressbar li::after .progress-icon {
+  opacity: .5;
+}
+
+.progressbar li:first-child::after {
+  content: none;
+}
+
+.progressbar li.active ~ li::after,
+.progressbar li.active ~ li::after .progress-icon {
+  opacity: 1;
+}
+
+.progressbar li.active ~ li::after {
+  background-color: var(--lightGray);
+}
+
+.progressbar li.active::before {
+  background-color: var(--white);
+  border: .3125rem solid var(--progressBarBlue);
+  height: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: -.3125rem;
+  width: 1.5rem;
+}
+
+.slds-progress_vertical .slds-progress__item_content {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.storefront-submit-disclaimer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  li.active .slds-progress__marker {
+    background: var(--white);
+    border: .3125rem solid var(--progressBarBlue);
+    box-shadow: none;
+  }
+
+  li:not(.active) .slds-progress__marker {
+    background: var(--lightGray);
+    border-width: .1875rem;
+  }
+
+  li.checked .slds-progress__marker {
+    margin-top: .3125rem;
+  }
+
+  li.checked::after {
+    background-color: var(--progressBarBlue);
+  }
+
+  li.lock .slds-progress__marker,
+  li.checked .slds-progress__marker {
+    background: transparent;
+    border-color: transparent;
+    height: auto;
+  }
+
+  li .progress-icon {
+    font-size: 1rem;
+    padding: .125rem;
+    transform: translate(-50%, -.875rem);
+  }
+
+  .slds-progress_vertical li.active::before {
+    background-color: var(--progressBarBlue);
+  }
+
+  .slds-progress_vertical li::before,
+  .slds-progress_vertical li::after {
+    opacity: .5;
+  }
+
+  .slds-progress_vertical li::before {
+    bottom: 80%;
+  }
+
+  .slds-progress_vertical li::after {
+    top: 80%;
+  }
+
+  .slds-progress_vertical li.active::after,
+  .slds-progress_vertical li.active ~ li::before,
+  .slds-progress_vertical li.active ~ li::after {
+    opacity: 1;
+  }
+}

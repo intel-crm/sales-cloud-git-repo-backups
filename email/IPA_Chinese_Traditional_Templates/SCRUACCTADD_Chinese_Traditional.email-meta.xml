@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUACCTADD_Chinese_Traditional</name>
+    <style>none</style>
+    <subject>敬請處理：完成 Intel® 夥伴聯盟註冊</subject>
+    <textOnly>敬請處理：完成 Intel® 夥伴聯盟註冊
+
+
+
+
+{!Contact.FirstName}，
+
+恭喜，您的公司管理員或 Intel 代表已將您新增至 Intel® 夥伴聯盟帳戶！您只要再幾個步驟，就能完成註冊程序。
+
+系統已為您建立以下個人檔案資訊：
+
+電子郵件地址： {!Contact.Email}
+公司名稱： {{ACCOUNTNAME}}
+Intel® 夥伴聯盟商業 ID： {{ACCOUNTNUMBER}}
+
+
+請按一下底下的連結，以完成註冊
+
+
+{{ButtonText}}
+
+
+無法存取上方的連結？
+{{EVLINK}}
+如有任何問題，請前往 {{SUPPORTLINK}} 與我們聯絡。
+我們期待您加入此計畫！
+敬祝順心如意
+您的 Intel® 夥伴聯盟團隊
+
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+隱私權 | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

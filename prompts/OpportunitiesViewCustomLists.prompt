@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities View Custom Lists</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/basic-functionality/list-views-and-display-types/#customList</actionButtonLink>
+        <body>&lt;p&gt;When opening a record tab, a list of records is provided based on the list view type (commonly, &lt;strong&gt;Recently Viewed&lt;/strong&gt;). Most record types offer pre-programmed, unique, filtered lists to sort and display records.&amp;nbsp;Clicking the drop down arrow, located next to the list name, will provide a list of different view types.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You can create new list views or clone an existing list view and edit.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Navigate to the desired tab (Accounts, Opportunities, Contacts, etc.) and&lt;strong&gt; &lt;/strong&gt;click the &lt;strong&gt;Gear &lt;/strong&gt;icon.&amp;nbsp;The drop down menu provides &lt;strong&gt;New&lt;/strong&gt; and &lt;strong&gt;Clone&lt;/strong&gt; options. [Use the gear icon WITHIN THE TAB, not the global gear icon by your icon.]&lt;/li&gt;&lt;li&gt;Choose &lt;strong&gt;New &lt;/strong&gt;or &lt;strong&gt;Clone&lt;/strong&gt;,&lt;strong&gt; &lt;/strong&gt;create a recognizable new name for your view and click &lt;strong&gt;Save&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Identify the specific filter criteria. Regardless of whether you are cloning or creating a new view, you can choose and edit multiple value types for each filter field.&lt;/li&gt;&lt;li&gt;Select the fields to be displayed, and the order in which you&apos;d like them. Click the&lt;strong&gt; Gear &lt;/strong&gt;icon again and click&lt;strong&gt; Select Fields to Display&lt;/strong&gt;, then use the arrows to add, remove, and re-order the &lt;strong&gt;Visible Fields&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save &lt;/strong&gt;when completed.&amp;nbsp;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Sharing Settings&lt;/strong&gt;: Decide if you want to keep this list view private or if you want to share it with others.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Setting Default Views&lt;/strong&gt;: Open the list you prefer and&amp;nbsp;click the thumbtack button to pin.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Opportunities View Custom Lists</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities View Custom Lists</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Create Custom Lists Views</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327834756112</videoLink>
+    </promptVersions>
+</Prompt>

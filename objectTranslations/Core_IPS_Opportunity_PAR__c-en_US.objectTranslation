@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity PAR</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core IPS Opportunity PAR</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>Approved_By__c</name>
+        <relationshipLabel><!-- Core IPS Opportunity PAR --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_IPS_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Region --></label>
+        <name>Core_IPS_Account_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Sub Region --></label>
+        <name>Core_IPS_Account_Sub_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Add New Project --></label>
+        <name>Core_IPS_AddNewProject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>Core_IPS_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please select the existing Approved project else check the below checkbox for creation of new project. --></help>
+        <label><!-- Premier Support Project --></label>
+        <name>Core_IPS_Premier_Support_Project__c</name>
+        <relationshipLabel><!-- Core_IPS_Opportunity_PAR --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Request Justification --></label>
+        <name>Core_IPS_Request_Justification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org --></label>
+        <name>Core_IPS_Support_Org__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Products --></label>
+        <name>Core_IPS_Supported_ProductsName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Template Approved By --></label>
+        <name>Email_Template_Approved_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Core_IPS_Opportunity_PAR --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

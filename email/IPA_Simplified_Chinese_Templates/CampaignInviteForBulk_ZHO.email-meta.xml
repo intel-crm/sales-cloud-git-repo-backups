@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CampaignInviteForBulk_ZHO</name>
+    <style>none</style>
+    <subject>立即激活账户|欢迎加入英特尔® 合作伙伴联盟计划！</subject>
+    <textOnly>We invite you to join our Intel Partner Alliance Program!
+
+Get started with Intel® Partner Alliance to access training, technical and sales resources, and more.
+
+只需一步：立即完成您的注册
+
+激活账户
+
+名: {!Contact.FirstName}
+姓: {!Contact.LastName}
+用户名 (电子邮件地址): {!Contact.Email}
+请注意，您的电子邮件地址是您的用户名。如45 天内未完账户激活，您将失去本地成为英特尔® 合作伙伴联盟会员的机会
+
+您的申请已经通过审核，请完成用户名和密码设置，即可激活您的账户！
+
+成为会员后，您便可立即加入专属的生态系统合作伙伴网络。
+
+加入英特尔® 合作伙伴联盟，获得丰厚奖励。合作伙伴可以获得高级培训、开发人员和营销资源、解决方案市场、支持以及合作伙伴对合作伙伴的社区奖励。
+
+该计划提供不同的会员等级，可帮助您推动业务发展并促进合作。在下方了解该计划的权益、要求和会员角色。加入英特尔® 合作伙伴联盟，接触更多受众，加速创新并结识新的合作伙伴。
+
+请完成注册，立即加入我们。
+
+激活账户
+
+此链接将在 24 小时后过期 — 点击现有的“点击加入”链接以获取更新后的链接
+
+注册加入英特尔® 合作伙伴联盟便可获得 1000 积分¹和诸多权益
+
+英特尔® 合作伙伴联盟不仅提供了多种工具来帮助您发展业务，而且还提供积分权益，您可以通过多种机会赚取和兑换积分，这些积分可用于符合条件的采购、培训和其他活动。如果您尚未注册，赶快行动吧。查看积分条款和条件。
+
+需要我们帮助您注册？
+联系支持人员
+关注英特尔® 合作伙伴联盟公众号
+
+¹Must be Points eligible to qualify. See eligibility requirements.
+
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

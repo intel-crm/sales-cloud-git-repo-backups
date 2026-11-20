@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>PRM_Contact_Group_Id__c</fullName>
+        <label>Contact Group</label>
+        <referenceTo>PRM_Contact_Group__c</referenceTo>
+        <relationshipLabel>Contact Group Contact Associations</relationshipLabel>
+        <relationshipName>Contact_Group_Contact_Associations</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>PRM_Contact_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contact Group Contact Associations</relationshipLabel>
+        <relationshipName>Contact_Group_Contact_Associations</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_End_Date_Dt__c</fullName>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PRM_InActive_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Inactive Indicator</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Not Applicable&quot;),&quot;Not Applicable&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Distributor&quot;),&quot;Distributor&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;FPGA Designer&quot;),&quot;FPGA Design Services&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Independent Software Vendor&quot;),&quot;Independent Software Vendor&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Manufacturer&quot;),&quot;Manufacturer&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Seller&quot;),&quot;Solution Provider&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Service Provider&quot;),&quot;Cloud &amp; Comms Service Provider&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Solution Integrator&quot;),&quot;Service Integrator&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Sponsor&quot;),&quot;Sponsor&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Original Equipment Manufacturer (OEM)&quot;),&quot;Original Equipment Manufacturer (OEM)&quot;,null)+
+IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;Guest&quot;,null)</formula>
+        <label>Partner Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Record_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; &amp; Id, &apos;Record Link&apos;, &quot;_self&quot; )</formula>
+        <label>Record Link</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Start_Date_Dt__c</fullName>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Contact Group Contact Association</label>
+    <nameField>
+        <displayFormat>CGCA-{0000}</displayFormat>
+        <label>Contact Group Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Contact Group Contact Associations</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

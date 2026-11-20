@@ -1,0 +1,197 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "f3d6a2ad-cc4d-439e-a649-ea191b7d7e2f",
+  "label" : "offering edit",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"OfferingDetailPage\",\"title\":\"Offering Edit\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Edit Offering"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "029071e9-4b46-4ef8-857f-ad5b4a57d4b2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "3cdcc1e1-27e6-4c25-9677-a500376f5389",
+        "zh_cn" : "3883e0aa-41c2-4580-b8e5-820a06aae2f2"
+      },
+      "renditions" : [ {
+        "id" : "3883e0aa-41c2-4580-b8e5-820a06aae2f2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "编辑产品/产品解决方案"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3cdcc1e1-27e6-4c25-9677-a500376f5389",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "オファリングを編集"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "6d2e986e-2a44-46f4-8f31-c3f94677df12",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "2fe7e63f-4996-4fdb-91ad-cf3992803648",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cancelButtonText" : "Cancel",
+        "changesSavedText" : "Changes saved",
+        "debugMode" : true,
+        "recordId" : "{!recordId}",
+        "recordListViewId" : "",
+        "saveButtonText" : "Save"
+      },
+      "componentName" : "c:MarketplaceCreateProductsForm",
+      "id" : "3578bb83-ca9f-4e7f-bab0-ecb080d3ab1b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "2107ca88-d263-4928-9e5d-c863eb8ba356",
+        "zh_cn" : "ff66cecc-44de-4835-a088-22a9a6363845"
+      },
+      "renditions" : [ {
+        "id" : "2107ca88-d263-4928-9e5d-c863eb8ba356",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "cancelButtonText" : "キャンセル",
+            "saveButtonText" : "保存"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ff66cecc-44de-4835-a088-22a9a6363845",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "cancelButtonText" : "取消",
+            "saveButtonText" : "保存"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "7b115070-dedb-4881-bdf8-2a89c7b33416",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "34a80092-2845-47f6-94af-6aa031f8a1c5",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "9ee8abd8-d847-4001-8add-128e6f755ec6",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "7c054821-0ed3-48ac-bf13-87c5bae6460a",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "aa245064-3997-4680-a162-80bd6fb4934e",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "851ef872-4f28-46cf-b925-1ed742db901c",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "99b584c2-1215-41fc-ad5c-a29f4d4b4d43",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "823b89b4-e42e-4e0a-a79e-22212a0308ee",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "38623e1c-c9e9-4c18-8da3-2138a88c7692",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9900b597-bf1d-478e-9079-bf60a79204cb",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "faqTitle" : "Offerings",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "4691fba3-5d5d-4ea8-8624-492f3b2a7ba2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "e73e6105-5ad3-409c-aa3f-301d30b4fb1e",
+        "zh_cn" : "25157c6e-5aa6-4d3e-b04d-dd6fbebeea1a"
+      },
+      "renditions" : [ {
+        "id" : "25157c6e-5aa6-4d3e-b04d-dd6fbebeea1a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "常见问题解答"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e73e6105-5ad3-409c-aa3f-301d30b4fb1e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "よくある質問"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "64074f3a-904c-4013-bf46-271acb5afa2e",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "94dd2e83-65d3-4398-a5ad-4062b72d412e",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Offering Edit\"/> \n<meta name=\"keywords\" content=\"sf,mp,offering edit\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Edit your products and solution offerings on Intel® Solutions Marketplace.",
+        "title" : "Offering Edit -  Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "da873e53-1f6c-4978-a6f4-5b49e034c602",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "87052c66-1d01-423c-8639-1ae60b3e06a8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offering-edit"
+}

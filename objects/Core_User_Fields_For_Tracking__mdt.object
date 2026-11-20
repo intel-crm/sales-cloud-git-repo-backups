@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata used for capturing fields for an object against which tracking is enabled</description>
+    <fields>
+        <fullName>Core_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates whether the current field is to be tracked or not</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_User_Field_API_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Contains the API name of the user field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>User Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Core User Fields For Tracking</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Core_User_Field_API_Name__c</columns>
+        <columns>Core_Active_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Core User Fields For Trackings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

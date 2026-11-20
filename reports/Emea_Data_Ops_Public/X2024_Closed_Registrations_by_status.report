@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount/PARENTGROUPVAL(RowCount, GRAND_SUMMARY)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>BucketField_63127621</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>% of A&amp;E Approved</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_63127621</developerName>
+        <masterLabel>A&amp;E / other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>PRM_Registration_Request__c.Current_Status__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>A&amp;E Approved</sourceValue>
+            </sourceValues>
+            <value>A&amp;E Approved</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Open</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>A&amp;E Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>A&amp;E Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Insides Sales Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Insides Sales Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Insides Sales Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Auto-Approval Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Auto-Approval Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IPA Admin Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IPA Admin Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IPA Admin Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RPM Admin Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RPM Admin Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RPM Admin Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed</sourceValue>
+            </sourceValues>
+            <value>Other statuses</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Email_ID__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Status_Reason__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.Assigned_To__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Review_Note_txt__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.Geo_Code__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.Entitlement_Details__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Resource &amp; Design Center for Secure Content</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.Current_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>A&amp;E Approved,A&amp;E Rejected,Auto-Approval Approved,Auto-Approval Rejected,IPA Admin Approved,IPA Admin Rejected,RPM Admin Approved,RPM Admin Rejected,Insides Sales Approved,Insides Sales Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.Created_Date_Time__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2024 12:00 AM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_63127621</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2024 Closed DZP Registrations EMEA</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$PRM_Registration_Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PRM_Registration_Request__c.Approved_Timestamp__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

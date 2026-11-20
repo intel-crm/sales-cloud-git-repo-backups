@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object stores all backend system database or project definition to which IPS Case is promoted or can be promoted.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Core_IPS_BKSys_No_Restricted_Secret_Cont__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Check if it does not support restricted content sync requirement</inlineHelpText>
+        <label>No Restricted Secret Content</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Backend_Connection_String__c</fullName>
+        <externalId>false</externalId>
+        <label>Backend Connection String</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Backend_System_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Backend System Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Backend_System_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Backend System URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Cloud_Internal_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>IPS Cloud Internal URL</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Consider_Field_Mapping__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag is set only when the bridge requires only the set of fields maintained in field mapping table as part of the environmental details.</description>
+        <label>Consider Field Mapping</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Deactivated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Deactivated</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Ignore_Attachement_Type__c</fullName>
+        <label>Ignore Attachement Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Private to Intel</fullName>
+                    <default>false</default>
+                    <label>Private to Intel</label>
+                </value>
+                <value>
+                    <fullName>Public to Customers</fullName>
+                    <default>false</default>
+                    <label>Public to Customers</label>
+                </value>
+                <value>
+                    <fullName>Private to Partner</fullName>
+                    <default>false</default>
+                    <label>Private to Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Ignore_Comment__c</fullName>
+        <label>Ignore Comment Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Private to Intel</fullName>
+                    <default>false</default>
+                    <label>Private to Intel</label>
+                </value>
+                <value>
+                    <fullName>Private to Agents</fullName>
+                    <default>false</default>
+                    <label>Private to Agents</label>
+                </value>
+                <value>
+                    <fullName>Public to Customers</fullName>
+                    <default>false</default>
+                    <label>Public to Customers</label>
+                </value>
+                <value>
+                    <fullName>Private to Partner</fullName>
+                    <default>false</default>
+                    <label>Private to Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Mandate_Case_Owner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check if the case owner is mandate for the case promotion</description>
+        <label>Mandate Case Owner for Promotion</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_RTF_Support__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>RTF Support</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Routing_Technique__c</fullName>
+        <label>Routing Technique</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Queue</fullName>
+                    <default>false</default>
+                    <label>Queue</label>
+                </value>
+                <value>
+                    <fullName>Product</fullName>
+                    <default>false</default>
+                    <label>Product</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Case_Field_Update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag indicates whether the target system supports case fields update or not</description>
+        <label>Support Case Field Update</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Org_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_IPS_Support_Org__r.Core_IPS_Support_Org_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Support Organization Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Org__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Support Org</label>
+        <referenceTo>Core_IPS_Product_Organization__c</referenceTo>
+        <relationshipLabel>Backend Systems</relationshipLabel>
+        <relationshipName>Backend_Systems</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Physical_File_Sync__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Support Physical File Sync</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_async_flow_support__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Async Flow Support</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Support Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <label>Backend System</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_System_Name__c</columns>
+        <columns>Core_IPS_Backend_Connection_String__c</columns>
+        <columns>Core_IPS_Backend_System_URL__c</columns>
+        <columns>Core_IPS_Deactivated__c</columns>
+        <columns>Core_IPS_Support_Org__c</columns>
+        <columns>Core_IPS_Support_Org_Name__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Core_IPS_Routing_Technique__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>HSD_BESs</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_System_Name__c</columns>
+        <columns>Core_IPS_Backend_Connection_String__c</columns>
+        <columns>Core_IPS_Backend_System_URL__c</columns>
+        <columns>Core_IPS_Deactivated__c</columns>
+        <columns>Core_IPS_Support_Org__c</columns>
+        <columns>Core_IPS_Support_Org_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Backend_System_URL__c</field>
+            <operation>contains</operation>
+            <value>hsd</value>
+        </filters>
+        <label>HSD BESs</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>JIRA_URL_upgrade_System</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_System_Name__c</columns>
+        <columns>Core_IPS_Backend_Connection_String__c</columns>
+        <columns>Core_IPS_Backend_System_URL__c</columns>
+        <columns>Core_IPS_Deactivated__c</columns>
+        <columns>Core_IPS_Support_Org__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Backend_System_URL__c</field>
+            <operation>contains</operation>
+            <value>jira</value>
+        </filters>
+        <label>JIRA BESs</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>RTC_BESs</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_System_Name__c</columns>
+        <columns>Core_IPS_Backend_Connection_String__c</columns>
+        <columns>Core_IPS_Backend_System_URL__c</columns>
+        <columns>Core_IPS_Deactivated__c</columns>
+        <columns>Core_IPS_Support_Org__c</columns>
+        <columns>Core_IPS_Support_Org_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Backend_System_URL__c</field>
+            <operation>contains</operation>
+            <value>rtc</value>
+        </filters>
+        <label>RTC BESs</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Backend System</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Backend Systems</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_IPS_Backend_Connection_String__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Backend_System_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Backend_System_URL__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Consider_Field_Mapping__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Deactivated__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Backend_Connection_String__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Backend_System_Name__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Backend_Connection_String__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Backend_System_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Consider_Field_Mapping__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Deactivated__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Support_Org__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Core_IPS_Backend_Connection_String__c</searchFilterFields>
+        <searchFilterFields>Core_IPS_Backend_System_Name__c</searchFilterFields>
+        <searchFilterFields>Core_IPS_Consider_Field_Mapping__c</searchFilterFields>
+        <searchFilterFields>Core_IPS_Deactivated__c</searchFilterFields>
+        <searchFilterFields>Core_IPS_Support_Org__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_IPS_Backend_Connection_String__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Backend_System_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Consider_Field_Mapping__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Core_IPS_BackendSystem_Def_Dup_Check</fullName>
+        <active>true</active>
+        <description>This validation rule checks whether the backend System definition is duplicate or not by comparing the name field</description>
+        <errorConditionFormula>(Name =  VLOOKUP( $ObjectType.Core_IPS_Backend_System__c.Fields.Name , $ObjectType.Core_IPS_Backend_System__c.Fields.Name, Name) ) &amp;&amp;  ISNEW()</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Duplicate Backend System Definition. Please choose another name.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Reprocess_Failed_IPSCasePromotes</fullName>
+        <availability>online</availability>
+        <description>This button upon click will reprocess the failed promotes/updates case/Comments/attachment related to corresponding Backend System</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Reprocess Failed IPSCasePromotes</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+var backEndId = &apos;{!Core_IPS_Backend_System__c.Id}&apos;;
+var res;
+
+if(backEndId !=null)
+{
+res=confirm(&quot;Are you sure to continue?&quot;);
+}
+if(res==true){
+var ressrting=sforce.apex.execute(&quot;Core_IPS_Reprocess_Backend_FailedRecords&quot;, &quot;reProcessRecordsFromBackSystem&quot;,{backEndSystemId:backEndId}); alert(&apos;Processing Completed&apos;);
+}
+sforce.debug.trace=true;</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,13 @@
+p.THIS {
+    color:red;
+    font-size: 15px;
+}
+.THIS.blackClr{
+    color:black;
+    font-size:14px;
+}
+.THIS.redClr{
+    color:red;
+    font-weight: bold;
+    font-size:16px;
+}

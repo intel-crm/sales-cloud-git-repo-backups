@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Contains API Key Value</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>PMP_API_KEY__c</fullName>
+        <externalId>false</externalId>
+        <label>PMP_API_KEY</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_Product_API_Key</label>
+    <visibility>Public</visibility>
+</CustomObject>

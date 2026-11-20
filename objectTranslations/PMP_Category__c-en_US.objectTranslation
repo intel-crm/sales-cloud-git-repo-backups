@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Category</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Categories</value>
+    </caseValues>
+    <fields>
+        <help><!-- Helps segregate the Categories and display based on user locale --></help>
+        <label><!-- Locale --></label>
+        <name>Core_PMP_Locale__c</name>
+    </fields>
+    <fields>
+        <help><!-- Category Active (or) Inactive indicator --></help>
+        <label><!-- Is Active --></label>
+        <name>PMP_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Gives the hierarchical display of Ancestor PIM Category Ids with &apos;|&apos; separator --></help>
+        <label><!-- Ancestor Category Id --></label>
+        <name>PMP_Ancestor_Category_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator --></help>
+        <label><!-- Ancestor Category Name (Chinese) --></label>
+        <name>PMP_Ancestor_Category_Chinese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator --></help>
+        <label><!-- Ancestor Category Name (Japanese) --></label>
+        <name>PMP_Ancestor_Category_Japanese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator --></help>
+        <label><!-- Ancestor Category Name --></label>
+        <name>PMP_Ancestor_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- A set of business segments that the offering can belong to. --></help>
+        <label><!-- Business Segments --></label>
+        <name>PMP_Business_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Programmable Gate Array</masterLabel>
+            <translation><!-- Field Programmable Gate Array --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- description of category in Chinese language --></help>
+        <label><!-- Description (Chinese) --></label>
+        <name>PMP_Category_Chinese_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of Category in Chinese language --></help>
+        <label><!-- Category Name (Chinese) --></label>
+        <name>PMP_Category_Chinese_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category Display Sequence --></label>
+        <name>PMP_Category_Display_Sequence_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- URL for Category Image --></help>
+        <label><!-- Category Image URL --></label>
+        <name>PMP_Category_Image_URL_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- description of a category in Japanese language --></help>
+        <label><!-- Description (Japanese) --></label>
+        <name>PMP_Category_Japanese_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of Category in Japanese language --></help>
+        <label><!-- Category Name (Japanese) --></label>
+        <name>PMP_Category_Japanese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if the child for this category is mandatory or not --></help>
+        <label><!-- Is Child Mandatory --></label>
+        <name>PMP_ChildMandatory_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type of control to be displayed for the category selection (Radio/Checkbox) --></help>
+        <label><!-- Display Type --></label>
+        <name>PMP_Display_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Self lookup to Category object --></help>
+        <label><!-- Parent Category --></label>
+        <name>PMP_Parent_Category_Id__c</name>
+        <relationshipLabel><!-- Categories --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Description of the category --></help>
+        <label><!-- Partner Offering Category Description --></label>
+        <name>PMP_Partner_Offering_Category_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- Category Id from PIM --></help>
+        <label><!-- PIM Category Id --></label>
+        <name>PMP_Partner_Product_Category_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- A unique Id with combination of PIM Category Id and Locale --></help>
+        <label><!-- PIM External Key --></label>
+        <name>PMP_Partner_Product_Category_Key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Parent Category Id from PIM. --></help>
+        <label><!-- PIM Parent Category Id --></label>
+        <name>PMP_Partner_Product_Parent_Category_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tool Tip for category in chinese --></help>
+        <label><!-- Tool Tip Chinese --></label>
+        <name>PMP_Tool_Tip_Chinese_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tool Tip about the category --></help>
+        <label><!-- Tool Tip English --></label>
+        <name>PMP_Tool_Tip_English_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tool Tip  for category in Japanese --></help>
+        <label><!-- Tool Tip Japanese --></label>
+        <name>PMP_Tool_Tip_Japanese_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

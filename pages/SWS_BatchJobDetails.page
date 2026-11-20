@@ -1,0 +1,20 @@
+<apex:page standardController="SWS_Cloud_Credit_Request__c">
+    <apex:slds />
+    <div class="slds-scope">
+        <div class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <span>Coupon Redemption Activity</span>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner"> <p> <b> Last coupon details fetched time : </b> 
+            		<apex:outputText value="{!(SWS_Cloud_Credit_Request__c.SWS_Last_Redeem_Run_Date__c)}"/>
+            	</p>
+            </div>
+        </div>
+    </div>
+</apex:page>

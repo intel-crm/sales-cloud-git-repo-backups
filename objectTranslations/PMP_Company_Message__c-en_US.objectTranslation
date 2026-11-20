@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Profile Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Profile Messages</value>
+    </caseValues>
+    <fields>
+        <help><!-- Company Information Id --></help>
+        <label><!-- Marketing Profile ID --></label>
+        <name>PMP_Company_Id__c</name>
+        <relationshipLabel><!-- Marketing  Profile Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Company Information Status --></help>
+        <label><!-- Marketing  Profile Information Lifecycle --></label>
+        <name>PMP_Company_Lifecycle_Status_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Message --></label>
+        <name>PMP_Internal_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- User --></help>
+        <label><!-- Message By User Id --></label>
+        <name>PMP_Message_By_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message By User Name --></label>
+        <name>PMP_Message_By_User_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner Message Date --></help>
+        <label><!-- Message Date --></label>
+        <name>PMP_Message_Dtm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner Message --></help>
+        <label><!-- Message --></label>
+        <name>PMP_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Message Type --></help>
+        <label><!-- Message Type --></label>
+        <name>PMP_Message_Type__c</name>
+        <picklistValues>
+            <masterLabel>Message</masterLabel>
+            <translation><!-- Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Status</masterLabel>
+            <translation><!-- Status --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

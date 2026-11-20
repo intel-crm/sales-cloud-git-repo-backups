@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>◦User with this permission set can set opportunity products approved by any manager back to pending. ◦User with this permission set can use the Recall Approval button on approved Deal Win Goals to set the Status back to &quot;Accepted&quot; and remove the Claim Date and Approval information.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Recall_Access__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Recall Access</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Approval Recall on Opp Product and DWG</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities Overview</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/</actionButtonLink>
+        <body>&lt;p&gt;Opportunity management is the process of taking your business to a win, and all the stages in between. Whether you are starting from a lead, or are working with an established business contact, keeping your opportunities current is the key to a well-managed pipeline.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=CreateanOpportunityBasicOpportunityQualify&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Create an Opportunity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesEditUpdateanOpportunity&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Edit/Update an Opportunity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesAddorEditProducts&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Add Products&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesCloneanOpportunity&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Clone an Opportunity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesViewCustomLists&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Create Custom List Views&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesEditinginGridView&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Editing in Grid View&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=Opportunities6QPS&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;6QPS&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesAddOpportunityTeamMembers&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Add Opportunity Team Members&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesOpportunitySolution&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Opportunity Solutions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=CSATSSOpportunitySupport&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;CSA/TSS Support&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=webquotes&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Linking Webquotes to Opportunities&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Also, see&amp;nbsp;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesIntroductiontoPOP&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Introduction to POP&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>3</delayDays>
+        <description>Opportunities Overview and Help</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities Overview</masterLabel>
+        <publishedDate>2024-02-02</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Opportunities Overview and Help</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

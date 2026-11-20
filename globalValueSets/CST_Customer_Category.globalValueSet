@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>B2B End-user</fullName>
+        <default>false</default>
+        <label>B2B End-user</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributors</fullName>
+        <default>false</default>
+        <label>Distributors</label>
+    </customValue>
+    <customValue>
+        <fullName>Indirect Billings</fullName>
+        <default>false</default>
+        <label>Indirect Billings</label>
+    </customValue>
+    <customValue>
+        <fullName>Regional GSI ISV MSP</fullName>
+        <default>false</default>
+        <label>Regional GSI ISV MSP</label>
+    </customValue>
+    <customValue>
+        <fullName>Regional Retailer</fullName>
+        <default>false</default>
+        <label>Regional Retailer</label>
+    </customValue>
+    <customValue>
+        <fullName>Region Branded Disti</fullName>
+        <default>false</default>
+        <label>Region Branded Disti</label>
+    </customValue>
+    <customValue>
+        <fullName>Region Direct OxMs</fullName>
+        <default>false</default>
+        <label>Region Direct OxMs</label>
+    </customValue>
+    <customValue>
+        <fullName>Top Global</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Top Global</label>
+    </customValue>
+    <customValue>
+        <fullName>Regional Co-Sell Partners</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Regional Co-Sell Partners</label>
+    </customValue>
+    <masterLabel>CST Customer Category</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

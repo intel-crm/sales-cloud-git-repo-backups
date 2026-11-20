@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "b4d3e157-e371-45c8-b2b5-f2a15383af06",
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "configurationTags" : [ ],
+  "devName" : "IQR_AccessDenied__c",
+  "id" : "9d2a6bdb-663e-428a-9bca-29cdf2b05dfe",
+  "label" : "AccessDenied",
+  "pageAccess" : "Public",
+  "routeType" : "custom-accessdenied",
+  "type" : "route",
+  "urlPrefix" : "accessdenied"
+}

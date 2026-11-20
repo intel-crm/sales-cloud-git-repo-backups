@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>PCC_Deal_Reg_Financial_Incentive_Custom</name>
+    </customPermissions>
+    <description>This permission set is used for Deal Reg Financial Incentive</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Deal Reg Financial Incentive</label>
+    <license>Partner Community</license>
+</PermissionSet>

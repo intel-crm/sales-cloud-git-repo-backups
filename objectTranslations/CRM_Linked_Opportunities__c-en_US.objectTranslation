@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Linked Opportunities</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Linked Opportunities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Link Description --></label>
+        <name>CRM_Link_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Link Reason --></label>
+        <name>CRM_Link_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Design HW component to Design SW component</masterLabel>
+            <translation><!-- Design HW component to Design SW component --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Original (ODM Board) to Design Secondary (OEM System)</masterLabel>
+            <translation><!-- Design Original (ODM Board) to Design Secondary (OEM System) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITE opportunities to Actual deployment</masterLabel>
+            <translation><!-- ITE opportunities to Actual deployment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VBS Silicon pull-through</masterLabel>
+            <translation><!-- VBS Silicon pull-through --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VBS original to VBS Consumption only</masterLabel>
+            <translation><!-- VBS original to VBS Consumption only --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Displayed list of opportunities are linked TO current opportunity --></help>
+        <label><!-- Opportunity Linked To --></label>
+        <name>CRM_Linked_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunities Linked From --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Current opportunity is linked FROM displayed list of opportunities --></help>
+        <label><!-- Opportunity Linked From --></label>
+        <name>CRM_Primary_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunities Linked To --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- UniqueLinkedOppty --></label>
+        <name>CRM_UniqueLinkedOppty__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot modify this record since it is created through Renewal. --></errorMessage>
+        <name>CRM_Restrict_Deletion_for_Renewed_Opp</name>
+    </validationRules>
+</CustomObjectTranslation>

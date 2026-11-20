@@ -1,0 +1,73 @@
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: .5rem;
+}
+.icon {
+    display: flex;
+    flex: 0 0 4.25rem;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.content {
+    flex: 1 1 auto;
+    padding: .75rem;
+}
+.completed .content,
+.inactive .content {
+    opacity: 0.8;
+}
+.content h2 {
+    font-weight: bold;
+}
+.content p {
+    font-size: 0.875rem;
+}
+.container .icon .current {
+    border-radius: 50%;
+}
+.container.active .icon .current {
+    width: 1.875rem;
+    height: 1.875rem;
+    border: 5px solid var(--white);
+}
+.container.inactive .icon .current {
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--lightGray);
+}
+
+.icon:after,
+.icon:before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 2px);
+    width: 4px;
+    background-color: var(--white);
+}
+.icon:before {
+    top: 0;
+    bottom: calc(50% + 1.25rem);
+}
+.icon:after {
+    top:  calc(50% + 1.25rem);
+    bottom: -1rem;
+}
+.container.inactive .icon:before {
+    bottom: calc(50% + 1rem);
+}
+.container.inactive .icon:after {
+    top:  calc(50% + 1rem);
+}
+.is-first .icon:before {
+    display: none;
+}
+.is-last .icon:after {
+    display: none;
+}
+
+.icon lightning-icon {
+    --iconColor: var(--white);
+}

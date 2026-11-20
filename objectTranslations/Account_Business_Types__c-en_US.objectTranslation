@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Business Types</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Business Types</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Staging Id --></label>
+        <name>Account_Staging_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Account Business Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business Types --></label>
+        <name>Business_Types__c</name>
+        <relationshipLabel><!-- Account Business Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Effective End Date --></label>
+        <name>Effective_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Start Date --></label>
+        <name>Effective_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason --></label>
+        <name>Status_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Removed</masterLabel>
+            <translation><!-- Removed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- skipValidation --></label>
+        <name>skipValidation__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- ABT cannot be approved due one or more validations errors.
+
+•	Account&apos;s &apos;CNDA number&apos; should have value.
+
+•	Account&apos;s &apos;Covered Account&apos; should be checked.
+
+•	Account&apos;s &apos;English Only Name&apos; should have a Name. --></errorMessage>
+        <name>ABT_Validations</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- DPE CPE Can not be added to Intel Accounts --></errorMessage>
+        <name>ECD_Only_CPE</name>
+    </validationRules>
+</CustomObjectTranslation>

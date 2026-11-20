@@ -1,0 +1,801 @@
+<template>
+  <!--Seeds Logic Starts Here-->
+  <div class="slds-truncate strong-text" style="font-size:18px;">Seeds</div>
+  <div
+    class="slds-scrollable"
+    style="width: auto;height:auto;max-height:600px;"
+  >
+    <template if:true={seedRecordsflag}>
+      <div
+        class="HeaderBar slds-border_top slds-border_bottom slds-p-top_xx-small slds-p-bottom_small slds-p-left_xx-small" style="width:1720px;"
+      >
+        Order Detail
+      </div>
+
+      <div class="slds-grid slds-gutters" style="max-width:100%;">
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Order No"
+            data-id="orderNo"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Product Name"
+            data-id="prodName"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Estimated Ship Date"
+            data-id="estShipdate"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Delivery Date"
+            data-id="deliverydate"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Delivery Status"
+            data-id="deliveryStat"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Pickup Date"
+            data-id="pickUpDate"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Requester"
+            data-id="requester"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Req. Qty"
+            data-id="reqQty"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Account Name"
+            data-id="accName"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+      
+      </div>
+
+      <br />
+      <div class="slds-align_absolute-center">
+        <button
+          onclick={handleSeedFilter}
+          data-id="Seeds"
+          class="slds-button slds-button_neutral"
+        >
+          Apply Filters
+        </button>
+      </div>
+      <br />
+    </template>
+    <table
+      data-table-id="Seeds"
+      name="Seeds"
+      class="slds-table slds-table_cell-buffer slds-table_bordered slds-scrollable_x"
+      style="width:auto"
+    >
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col"></th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Demo Deport Order #</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Product Name</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Estimated Ship Date</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Requested Delivery Date</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Delivery Status</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Pickup Date</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Requestor</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Requested Quantity</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Account Name</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template if:true={isLoading}>
+          <tr>
+            <td colspan="11" style="margin: -0.75rem;">
+              <div style="height: 80px; position:relative">
+                <lightning-spinner alternative-text="Loading" size="medium">
+                </lightning-spinner>
+              </div>
+            </td>
+          </tr>
+        </template>
+
+        <template if:true={bSeedsErrorFlag}>
+          <tr>
+            <td colspan="11" style="margin: -0.75rem;">
+              <br />
+              <div
+                class="slds-notify slds-notify_alert slds-alert_error"
+                style="--slds-c-alert-color-background: #cc0000;"
+                role="alert"
+              >
+                <lightning-icon
+                  icon-name="utility:error"
+                  alternative-text="Error"
+                  title="Error"
+                  size="small"
+                  style="--slds-c-icon-color-foreground: white;"
+                ></lightning-icon>
+                &nbsp;
+                <h2 style="text-align: left;">
+                  <p class="strong-text">Error :</p>
+                  {bSeedsErrorMessage}
+                </h2>
+                <br />
+              </div>
+              <br /><br />
+            </td>
+          </tr>
+        </template>
+        <template if:true={SeedsDataEmpty}>
+          <template if:false={bSeedsErrorFlag}>
+            <tr>
+              <td colspan="11" style="margin: -0.75rem;">
+                <div class="slds-align_absolute-center" style="height:5rem">
+                  No records to display
+                </div>
+              </td>
+            </tr>
+          </template>
+        </template>
+        <template if:true={seedsRecords}>
+          <template iterator:it={seedsRecords}>
+            <tr
+              class="slds-hint-parent"
+              key={it.value.OrderNumber}
+              style="cursor: pointer;"
+            >
+              <td data-label="">
+                <div class="focusEffect slds-truncate">
+                  <lightning-button-icon
+                    icon-name={it.value.chevronChange}
+                    onclick={hideAndShow}
+                    data-record-id={it.index}
+                    data-id="Seeds"
+                    variant="bare"
+                  ></lightning-button-icon>
+                </div>
+              </td>
+              <td data-label="DEMO DEPORT ORDER #">
+                <div class="slds-truncate">{it.value.OrderNumber}</div>
+              </td>
+              <td data-label="PRODUCT NAME">
+                <div class="slds-truncate">{it.value.ProductName}</div>
+              </td>
+              <td data-label="ESTIMATED SHIP DATE">
+                <div class="slds-truncate">{it.value.EstimatedShipDate}</div>
+              </td>
+              <td data-label="REQUESTED DELIVERY DATE">
+                <div class="slds-truncate">
+                  {it.value.RequestedDeliveryDate}
+                </div>
+              </td>
+
+              <td data-label="DELIVERY STATUS">
+                <div class="slds-truncate">{it.value.lineItemStatus}</div>
+              </td>
+
+              <td data-label="PICKUP DATE">
+                <div class="slds-truncate">{it.value.returnPickupDate}</div>
+              </td>
+
+              <td data-label="REQUESTOR">
+                <div class="slds-truncate">{it.value.Requestor}</div>
+              </td>
+
+              <td data-label="REQUESTED QUANTITY">
+                <div class="slds-truncate">{it.value.RequestedQty}</div>
+              </td>
+
+              <td data-label="ACCOUNT NAME">
+                <div class="slds-truncate">{it.value.AccountName}</div>
+              </td>
+
+            </tr>
+            <template if:true={it.value.hideBool} key={it.value.Id}>
+              <tr key={it.value.Id}>
+                <td colspan="11" style="margin: -0.75rem;">
+                  <div
+                    class="slds-grid slds-gutters slds-scrollable"
+                    style="max-height:100% !important;max-width:100% !important;"
+                  >
+                    <div
+                      class="slds-col slds-size_1-of-3"
+                      style="max-height:100% !important;max-width:100%;"
+                    >
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-top_medium slds-p-bottom_large"
+                        style="height:30px;border-top: 4px solid white;border-bottom: 4px solid white;background-color:#ececec;"
+                      >
+                        Seed Details
+                      </div>
+                      <div class="strong-text" style="height:30px;">
+                        Items Sent
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <div style="white-space:normal;">{it.value.ProductName}</div>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Quantity Sent
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <div style="white-space:normal;"> {it.value.ShippedQty}</div>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Product Detail
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                        <div style="white-space:normal;">
+                          <lightning-formatted-rich-text
+                            value={it.value.ProductDesc}
+                          ></lightning-formatted-rich-text
+                          ><lightning-formatted-rich-text
+                            value={it.value.ProductListDesc}
+                          ></lightning-formatted-rich-text>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-top_medium slds-p-bottom_large"
+                        style="height:30px;border-top: 4px solid white;border-bottom: 4px solid white;background-color:#ececec;"
+                      >
+                        Shipping Information
+                      </div>
+                      <div class="strong-text" style="height:30px;">
+                        Shipping To
+                      </div>
+                      <div class="slds-border_top">
+                        <div
+                          class="slds-border_bottom slds-p-bottom_small"
+                          style="white-space:normal;"
+                        >
+                          <br />{it.value.AttentionName}<br />
+                          {it.value.CompanyName}<br />{it.value.StreetAddress1}<br />{it.value.StreetAddress2}
+                          <br />{it.value.City}<br />{it.value.State}<br />{it.value.ZipCode}<br />{it.value.Country}<br /><br />
+                        </div>
+                        <br />
+                        <div class="strong-text" style="height:30px;">
+                          Date Shipped
+                        </div>
+                        <div
+                          class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                        >
+                        <div style="white-space:normal;">{it.value.actualShipDate}</div>
+                      </div>
+                        <br />
+                        <div class="strong-text" style="height:30px;">
+                          Order Status
+                        </div>
+                        <div
+                          class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                        >
+                          <div style="white-space:normal;"> {it.value.OrderStatus}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-top_medium slds-p-bottom_large"
+                        style="height:30px;border-top: 4px solid white;border-bottom: 4px solid white;background-color:#ececec;"
+                      >
+                        Notes
+                      </div>
+                      <div class="strong-text" style="height:30px;">Notes</div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <div style="white-space:normal;">{it.value.notes}</div>
+                    </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Submitter
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                        <div style="white-space:normal;">{it.value.Submitter}</div>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Account ID
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                        <div style="white-space:normal;">
+                          {it.value.AccountID}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </template>
+          </template>
+        </template>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <!--Seeds Logic Ends Here-->
+
+
+  <!--Sample Logic Starts here-->
+  <div class="slds-truncate strong-text" style="font-size:18px;">Samples</div>
+  <div
+    class="slds-scrollable"
+    style="width: auto;height:auto;max-height:600px;"
+  >
+    <template if:true={sampleRecordsflag}>
+      <div
+        class="HeaderBar slds-border_top x slds-border_bottom slds-p-top_xx-small slds-p-bottom_small slds-p-left_xx-small" style="width:1920px;"
+      >
+        Request Detail
+      </div>
+      <div class="slds-grid slds-gutters" style="max-width:100%;">
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Req. ID#"
+            data-id="reqIDSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Line #"
+            data-id="lineSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Product Name"
+            data-id="prodNameSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Delivery Date"
+            data-id="deliveryDateSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Status"
+            data-id="statusSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Requester"
+            data-id="requesterSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Req. Qty"
+            data-id="reqQtySample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Appr. Qty"
+            data-id="appQtySample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Account Name"
+            data-id="accNameSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4" style="max-width:100%;">
+          <lightning-input
+            type="text"
+            placeholder="Approver"
+            data-id="approverSample"
+            onchange={handleInputChange}
+          ></lightning-input>
+        </div>
+      </div>
+      <br />
+      <div class="slds-align_absolute-center">
+        <lightning-button
+          label="Apply Filters"
+          data-id="Samples"
+          onclick={handleSampleFilter}
+          class="btn slds-m-left_x-small"
+        ></lightning-button>
+      </div>
+      <br />
+    </template>
+    <table
+      class="slds-table slds-table_cell-buffer slds-table_bordered slds-scrollable_x"
+      style="width:auto"
+    >
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col"></th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Request Id #</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Line</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Product Name</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Request Delivery Date</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Delivery Status</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Pickup Date</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Requestor</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Requested Quantity</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Account Name</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate">Approver</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template if:true={isLoading}>
+          <tr>
+            <td colspan="11" style="margin: -0.75rem;">
+              <div style="height: 80px; position:relative">
+                <lightning-spinner alternative-text="Loading" size="medium">
+                </lightning-spinner>
+              </div>
+            </td>
+          </tr>
+        </template>
+        <template if:true={bSamplesErrorFlag}>
+          <tr>
+            <td colspan="11" style="margin: -0.75rem;">
+              <br />
+              <div class="slds-align_absolute-center">
+                <div
+                  class="slds-notify slds-notify_alert slds-alert_error"
+                  style="--slds-c-alert-color-background: #cc0000;"
+                  role="alert"
+                >
+                  <lightning-icon
+                    icon-name="utility:error"
+                    alternative-text="Error"
+                    title="Error"
+                    size="small"
+                    style="--slds-c-icon-color-foreground: white;"
+                  ></lightning-icon>
+                  &nbsp;
+                  <h2 style="text-align: left;">
+                    <p class="strong-text">Error :</p>
+                    {bSamplesErrorMessage}
+                  </h2>
+                  <br />
+                </div>
+                <br /><br />
+              </div>
+              <br />
+            </td>
+          </tr>
+        </template>
+        <template if:true={SamplesDataEmpty}>
+          <template if:false={bSamplesErrorFlag}>
+            <tr>
+              <td colspan="11" style="margin: -0.75rem;">
+                <div class="slds-align_absolute-center" style="height:5rem">
+                  No records to display
+                </div>
+              </td>
+            </tr>
+          </template>
+        </template>
+        <template if:true={sampleRecords}>
+          <template iterator:it={sampleRecords}>
+            <tr
+              class="slds-hint-parent"
+              key={it.value.RequestID}
+              style="cursor: pointer;"
+            >
+              <td data-label="">
+                <div class="focusEffect slds-truncate">
+                  <lightning-button-icon
+                    icon-name={it.value.chevronChange}
+                    onclick={hideAndShow}
+                    data-record-id={it.index}
+                    data-id="Samples"
+                    alternative-text="Settings"
+                    variant="bare"
+                  ></lightning-button-icon>
+                </div>
+              </td>
+              <td data-label="REQUEST ID #">
+                <div class="slds-truncate">{it.value.RequestID}</div>
+              </td>
+              <td data-label="LINE">
+                <div class="slds-truncate">{it.value.Line}</div>
+              </td>
+              <td data-label="PRODUCT NAME">
+                <div class="slds-truncate">
+                  {it.value.RequestedMM} {it.value.RequestedEPMName}
+                </div>
+              </td>
+              <td data-label="REQUESTED DELIVERY DATE">
+                <div class="slds-truncate">{it.value.RDD}</div>
+              </td>
+
+              <td data-label="REQUEST STATUS">
+                <div class="slds-truncate">{it.value.Status}</div>
+              </td>
+
+              <td data-label="REQUESTER">
+                <div class="slds-truncate">{it.value.Requester}</div>
+              </td>
+
+              <td data-label="REQUESTED QUANTITY">
+                <div class="slds-truncate">{it.value.RequestQty}</div>
+              </td>
+
+              <td data-label="APPROVED QUANTITY">
+                <div class="slds-truncate">{it.value.ApprovedQty}</div>
+              </td>
+
+              <td data-label="ACCOUNT NAME">
+                <div class="slds-truncate">{it.value.GridViewAccountName}</div>
+              </td>
+
+              <td data-label="APPROVER">
+                <div class="slds-truncate">{it.value.ApproverName}</div>
+              </td>
+            </tr>
+            <template if:true={it.value.hideBool} key={it.value.Id}>
+              <tr key={it.value.Id}>
+                <td colspan="11" style="margin: -0.75rem;">
+                  <div
+                    class="slds-grid slds-gutters slds-scrollable"
+                    style="max-height:100% !important;max-width:100% !important;"
+                  >
+                    <div
+                      class="slds-col slds-size_1-of-3"
+                      style="max-height:100% !important;max-width:100%;"
+                    >
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-top_medium slds-p-bottom_large"
+                        style="height:30px;border-top: 4px solid white;border-bottom: 4px solid white;background-color:#ececec;"
+                      >
+                        Product Detail
+                      </div>
+                      <div class="strong-text" style="height:30px;">
+                        Approved Product
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <!--check-->
+                        <template lwc:if={it.value.ApprovedMM}>
+                          <template lwc:if={it.value.ApprovedEPMName}>
+                            <div style="white-space:normal;">{it.value.ApprovedMM},{it.value.ApprovedEPMName}</div>
+                          </template>
+                        </template>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Approved Qty
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <p style="white-space:normal;"> {it.value.ApprovedQty}</p>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Approver Email
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <div style="white-space:normal;">{it.value.ApproverEmail}</div>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Product Detail
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                        <div style="white-space:normal;">
+                          <template lwc:if={it.value.ApprovedEPMName}>
+                            {it.value.ApprovedEPMName}
+                          </template>
+                          <template lwc:else>
+                            {it.value.RequestedEPMName}
+                          </template>
+                          <br />
+                          Socket: {it.value.Socket}<br />
+                          Media: {it.value.Media}<br />
+                          Stepping: {it.value.Stepping}<br />
+                          MM:
+                          <template lwc:if={it.value.ApprovedMM}>
+                            {it.value.ApprovedMM}
+                          </template>
+                          <template lwc:else> {it.value.RequestedMM} </template>
+                          <br />
+                          QDF# {it.value.QDF}<br />
+                          Ships in Boxes of {it.value.BoxQuantity}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-top_medium slds-p-bottom_large"
+                        style="height:30px;border-top: 4px solid white;border-bottom: 4px solid white;background-color:#ececec;"
+                      >
+                        Shipping Information
+                      </div>
+                      <div class="strong-text" style="height:30px;">
+                        Shipping To
+                      </div>
+                      <div class="slds-border_top">
+                        <div
+                          class="slds-border_bottom slds-p-bottom_small"
+                          style="white-space:normal;"
+                        >
+                          {it.value.Contact}<br />{it.value.ShiptoCustomerName}<br />{it.value.StreetAddress1}<br />{it.value.StreetAddress2}<br />
+                          {it.value.City}<br />{it.value.StateName}<br />{it.value.ZipCode}<br />{it.value.Country}<br /><br />
+                        </div>
+                        <br />
+                        <div class="strong-text" style="height:30px;">
+                          Date Shipped
+                        </div>
+                        <div
+                          class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                        >
+                        <div style="white-space:normal;">{it.value.ActualShipDtm}</div>
+                        </div>
+                        <br />
+                        <div class="strong-text" style="height:30px;">
+                          Shipment Tracking #
+                        </div>
+                        <div
+                          class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                        >
+                          <div style="white-space:normal;">
+                            {it.value.TrackingIdForCarrier1Txt}
+                            {it.value.TrackingIdForCarrier2Txt}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-top_medium slds-p-bottom_large"
+                        style="height:30px;border-top: 4px solid white;border-bottom: 4px solid white;background-color:#ececec;"
+                      >
+                        Notes
+                      </div>
+                      <div class="strong-text" style="height:30px;">
+                        On Behalf Of
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                      <div style="white-space:normal;">{it.value.OBO}</div>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        {unifiedOrCimLabelSample}
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                        <div style="white-space:normal;">{it.value.DetailViewCIMIDs}</div>
+                      </div>
+                      <br />
+                      <div class="strong-text" style="height:30px;">
+                        Opportunity ID
+                      </div>
+                      <div
+                        class="slds-border_top slds-border_bottom slds-p-bottom_small"
+                      >
+                        <div style="white-space:normal;">
+                          {it.value.DetailViewOppIDs}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </template>
+          </template>
+        </template>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Samples Logic Ends Here-->
+</template>

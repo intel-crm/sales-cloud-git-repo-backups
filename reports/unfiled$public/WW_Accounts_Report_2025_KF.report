@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Level__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Americas Brazil Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Mexico Sales Group,Americas US Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,EMEA Sales Group,India Sales Group,PRC Sales Group,Americas Hosted Sales Group,APJ Hosted Sales Group,EMEA Hosted Sales Group,PRC Hosted Sales Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Sales_Groups__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>WW Accounts Report 2025_KF</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,16 @@
+<template>
+    <template for:each={fields} for:item='field'>
+        <div key={field.id}>
+            <template if:false={field.hasChild}>
+                <c-core_-i-p-s_dynamicfield commcheck={iscommunity} type={field.type} fieldlabel={field.label} lovs={field.lovs}
+                     isrequiredfield={field.required} placeholdertext={field.palceholderText}
+                    fieldid={field.id} value={field.value} mvalue ={field.mValue} fielditself = {field} mode={mode}></c-core_-i-p-s_dynamicfield>
+            </template>
+            <template if:true={field.hasChild}>
+                <c-core_-i-p-s_dynamicdependentfield  type={field.type} fieldlabel={field.label} lovs={field.lovs}
+                    isrequiredfield={field.required} placeholdertext={field.palceholderText} 
+                    fieldid ={field.id}  value={field.value} execute-mode={executionMode} cs-id={caseId} product-id={supportedProductId}></c-core_-i-p-s_dynamicdependentfield>
+            </template>
+        </div>
+    </template>
+</template>

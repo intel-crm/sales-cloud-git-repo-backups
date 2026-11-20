@@ -1,0 +1,26 @@
+<aura:documentation>
+	<aura:description>
+    <p>L2 Search Tree Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/29/2019</p>
+    <p>CurrentVersion: 1.5</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.5 - Fix refine cancel so it only applies once</p>
+
+		<p>1.4 - adds defaultPageSize design attribute</p>
+		<p> 1.31</p>
+		<p>Bug fixes, Added Filter Count</p>
+		<p> 1.21</p>
+		<p>Updated css and JS bug fixes</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

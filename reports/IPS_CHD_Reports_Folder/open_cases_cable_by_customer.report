@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_18717099</developerName>
+        <masterLabel>BU</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Cable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-WW</sourceValue>
+            </sourceValues>
+            <value>Cable</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Comp-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Convergate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-ETH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-SHDSL</sourceValue>
+            </sourceValues>
+            <value>Comp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Telco-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-Unassigned</sourceValue>
+            </sourceValues>
+            <value>Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Retail-WW</sourceValue>
+            </sourceValues>
+            <value>Retail</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Cable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Telco</sourceValue>
+            </sourceValues>
+            <value>WiFi</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_40879221</developerName>
+        <masterLabel>become Jira</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Domain Expert</sourceValue>
+            </sourceValues>
+            <value>by CAE</value>
+        </values>
+        <values>
+            <value>Moved to Eng</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>BucketField_18717099</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>OPEN</field>
+    </columns>
+    <columns>
+        <field>CLOSED</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case.Core_CaseType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Feature Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_18717099</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Cable</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>open cases cable by customer</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Case.Core_IPS_Case_Escalated_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

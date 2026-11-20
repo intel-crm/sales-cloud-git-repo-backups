@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>REGISTRATION_REQUEST_REJECTED_EV_ZHO</name>
+    <style>none</style>
+    <subject>注册申请被驳回</subject>
+    <textOnly>注册申请被驳回
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c}，您好！
+
+我们收到了您最近的英特尔® 合作伙伴联盟计划注册请求。经过验证，您的请求被拒绝，原因如下：
+
+{!PRM_Registration_Request__c.PRM_Reject_Reason__c}
+
+如果您认为此决定是错误的，或者想向我们提供更多信息，请通过 programs@intel.com 联系我们。
+
+
+谢谢合作！
+英特尔® 合作伙伴联盟团队
+
+
+本邮件是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} 英特尔公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com.cn
+隐私 | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

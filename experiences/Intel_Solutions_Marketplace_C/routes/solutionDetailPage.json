@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "configurationTags" : [ ],
+  "devName" : "Solution_Detail_Page__c",
+  "id" : "bb3d5087-ccec-4931-8ed4-87e45be14e96",
+  "label" : "Solution Detail Page",
+  "pageAccess" : "RequiresLogin",
+  "routeType" : "custom-solution-detail-page",
+  "type" : "route",
+  "urlPrefix" : "solution-detail-page"
+}

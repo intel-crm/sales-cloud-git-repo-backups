@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Request Rejection Email for DZP Contacts - Simplified Chinese</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTORJTDNEW_DZP_ZHO</name>
+    <style>none</style>
+    <subject>开发者专区的高级访问权限请求被拒绝</subject>
+    <textOnly>英特尔注册确认
+
+
+尊敬的 {!PRM_Registration_Request__c.PRM_Last_Name__c}{!PRM_Registration_Request__c.PRM_First_Name__c} ，
+
+感谢您对英特尔开发人员专区的关注。但是，在审核您的申请后，我们很遗憾地通知您，您的高级帐户请求已被拒绝。拒绝您的请求的部分原因可能包括：
+
+申请不符合开发人员专区高级计划的标准。
+对英特尔的开发者专区的高级访问权限需要提供贵公司与英特尔® 之间的公司保密协议 (CNDA)。
+请求开发人员专区高级帐户访问权限需要帐户具有帐户所有者​。
+
+您可以继续使用标准帐户访问开发人员专区的公开内容。如果您认为您的请求被错误地拒绝，请通过电话或电子邮件联系帐户帮助人员，以获取更多信息。
+
+此致，
+注册管理员
+开发人员专区
+
+请勿回复此邮件。这是一封自动回复邮件。为了确保能继续收到我们的邮件，请将我们添加至您的地址簿。
+
+此外，我们有多个经销商，您可能希望与他们合作为您的项目提供资源帮助。  
+
+英特尔解决方案文档库：https://builders.intel.com/solutionslibrary
+对于产品和定价相关问题，请联系您的主板 OEM、英特尔授权分销商 (IAD) 或英特尔授权供应商 (IAS)。您可以在以下位置找到 IAD 或 IAS 列表：https://www.intel.cn/content/www/cn/zh/partner/where-to-buy/overview.html
+有关英特尔计划的信息和支持：https://www.intel.cn/partner-alliance
+有关产品信息：https://ark.intel.com/zh-cn/
+软件和驱动程序下载中心：https://downloadcenter.intel.com/zh-cn/
+英特尔社区：https://community.intel.com/?profile.language=zh-CN
+英特尔解决方案市场目录： https://marketplace.intel.com/s/?language=zh_CN
+英特尔客户支持：https://www.intel.com/support/cn
+
+英特尔承诺会保护您的个人隐私。如欲了解更多信息，
+请参阅“英特尔隐私声明”。英特尔 Cookie 声明。
+法律信息 &amp;verbar; 商标 &amp;verbar; © 英特尔公司。</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

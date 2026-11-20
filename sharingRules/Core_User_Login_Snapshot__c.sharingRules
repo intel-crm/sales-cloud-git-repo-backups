@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_User_Snapshot_APJ</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read access to all users records in the User Snapshot object  that are from APJ Geo</description>
+        <label>User Snapshot APJ</label>
+        <sharedTo>
+            <group>Core_User_Snapshot_APJ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_User_Snapshot_ASMO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read only access to all users records in the User Snapshot object  that are from ASMO Geo</description>
+        <label>User Snapshot-ASMO</label>
+        <sharedTo>
+            <group>Core_User_Snapshot_ASMO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_User_Snapshot_EMEA</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read only access to all users records in the User Snapshot object  that are from ASMO EMEA</description>
+        <label>User Snapshot-EMEA</label>
+        <sharedTo>
+            <group>Core_User_Snapshot_EMEA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_User_Snapshot_PRC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read access to all users records in the User Snapshot object  that are from PRC Geo</description>
+        <label>User Snapshot-PRC</label>
+        <sharedTo>
+            <group>Core_User_Snapshot_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

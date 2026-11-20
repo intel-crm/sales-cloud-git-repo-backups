@@ -1,0 +1,89 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "9fe07cf2-8c2d-4405-9d31-b4e6e8b24ad6",
+  "label" : "scratch",
+  "regions" : [ {
+    "id" : "92a82286-0411-4327-abdd-8edcb2775bc2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "8c2c1ab8-d7c8-414d-95be-2f5b999973d0",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "853860c3-e441-4eda-a950-8bc34cffb37a",
+    "regionName" : "sidebarAlt",
+    "type" : "region"
+  }, {
+    "id" : "d56dbfd8-9a35-4ae2-9a03-46479769e1e3",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e631003a-4a5e-414a-9905-955f08b59ebd",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "scratch"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c9ffe273-e8b9-4a52-860c-2363f179f722",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "df4a086a-e695-40a0-a84b-74945473b00f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "44b3176e-7b67-4ea0-8fc4-1890d12fac7c",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "e49a1fb5-bbd9-4719-83fa-c7ba540b4813",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "cea9fdc2-1f48-47b4-9d54-6562c774e626",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "b20fc4ea-9053-4acd-a430-c27e012c2ad9",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "8c3948af-1bb6-438c-93eb-13f190868ac3",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "d556ad0c-ab9b-4474-8a84-d0db42fc0420",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "30fad825-5c5e-4b63-a74d-c1d4fa19f4d6",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "heading" : "Testing",
+        "subheading" : "WAVE"
+      },
+      "componentName" : "c:ipaHeading",
+      "id" : "9bdb8815-d1a8-4701-a5bb-9ee83c6a0ebd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "45a22f0c-5782-4e36-b224-0c42d72041ef",
+    "regionName" : "blade0",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-scratch"
+}

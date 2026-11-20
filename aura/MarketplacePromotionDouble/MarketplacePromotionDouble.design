@@ -1,0 +1,18 @@
+<design:component>
+
+	<design:attribute name="heading" label="Heading" />
+
+	<design:attribute name="p1ImageUrl" label="Promotion 1 - Image Url" />
+  <design:attribute name="p1Title" label="Promotion 1 - Title" />
+  <design:attribute name="p1SubTitle" label="Promotion 1 - Text" />
+  <design:attribute name="p1CtaLink" label="Promotion 1 - Link Url" />
+  <design:attribute name="p1CtaLabel" label="Promotion 1 - Link Label" />
+
+
+	<design:attribute name="p2ImageUrl" label="Promotion 2 - Image Url" />
+  <design:attribute name="p2Title" label="Promotion 2 - Title" />
+  <design:attribute name="p2SubTitle" label="Promotion 2 - Text" />
+  <design:attribute name="p2CtaLink" label="Promotion 2 - Link Url" />
+  <design:attribute name="p2CtaLabel" label="Promotion 2 - Link Label" />
+
+</design:component>

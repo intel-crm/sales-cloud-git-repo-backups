@@ -1,0 +1,30 @@
+<aura:documentation>
+	<aura:description>
+    <p>Marquee Combined Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 7/1/2019</p>
+    <p>CurrentVersion: 1</p>
+
+		<p>
+				Marquee Component that replaces almost all marquees on the styleguide. Except for Marquee_L3 that has different set of data altogether.
+		</p>
+		<p>
+				Sizes: Choose from 4 sizes: x-short, short, medium, tall
+		</p>
+		<p>
+				Types determine which breadcrumb data to use on which page. There is only 1 special page which is l2search that changes the heading/subheading based on redux search type and category
+				l0, l1, l2search, compare, myoffering, editlead, generic
+		</p>
+	
+		<hr/>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

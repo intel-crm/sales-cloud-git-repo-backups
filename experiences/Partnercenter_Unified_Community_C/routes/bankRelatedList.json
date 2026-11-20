@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "01a5b72d-f8c6-40ef-a684-d7b8745dc90d",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Bank_Related_List__c",
+  "id" : "e1558432-4b27-439c-bf81-67f6e91ea20b",
+  "label" : "Bank Related List",
+  "objectApiName" : "Core_MDF_Bank__c",
+  "routeType" : "relatedlist-a40",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-bank"
+}

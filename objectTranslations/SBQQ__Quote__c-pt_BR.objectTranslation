@@ -1,0 +1,4149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cotação</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cotações</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- CPQ_Lookup --></label>
+        <name>CPQ_Lookup</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Pricing_SW Line Editor --></label>
+        <name>Pricing_SW_Line_Editor</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Calculating Fields --></label>
+        <name>SBQQ__CalculatingFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Line Editor --></label>
+        <name>SBQQ__LineEditor</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Non-Current Quote Locked Fields --></label>
+        <name>SBQQ__NonCurrentQuoteLockedFields</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>ApprovalStatus__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation><!-- Recalled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Default Sales Rep --></label>
+        <name>DefaultSalesRepID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line View --></label>
+        <name>EditLinesFieldSetName__c</name>
+    </fields>
+    <fields>
+        <label><!-- HeaderFieldSetName --></label>
+        <name>HeaderFieldSetName__c</name>
+        <picklistValues>
+            <masterLabel>Pricing_SW Line Editor</masterLabel>
+            <translation><!-- Pricing_SW Line Editor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PSG_Active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI RFP Scraping Status --></label>
+        <name>Pricing_AI_RFP_Scraping_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field holds the AI Recommendation that will be reviewed by the RPM before performing the Create Deal action --></help>
+        <label><!-- AI Scraping Recommendation --></label>
+        <name>Pricing_AI_Scraping_Recommendation_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Selecting an Account Division limits the billings that can be used for this quote to those of the account divisions selected. Leaving Account Divisions blank means all billings are eligible for this quote. --></help>
+        <label><!-- Account Division --></label>
+        <name>Pricing_Account_Division_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the person entered into the Intel Account Executive Email field had the Account Executive role for this tool when his/her email was entered, the person&apos;s name is populated in this read-only field. --></help>
+        <label><!-- Intel Account Executive --></label>
+        <name>Pricing_Account_Executive_Nm__c</name>
+        <relationshipLabel><!-- Quotes (Intel Account Executive) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Pricing_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Simplified Name --></label>
+        <name>Pricing_Account_Simplified_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account template --></label>
+        <name>Pricing_Account_Template__c</name>
+    </fields>
+    <fields>
+        <help><!-- List of OEM email addresses who should receive quote letter notification in addition to Primary Contact and Submitter (ex. Finance contact at OEM), such as abc@company.com;ab45@company.com. --></help>
+        <label><!-- Additional Quote Letter Recipients --></label>
+        <name>Pricing_AdditionalRecipients__c</name>
+    </fields>
+    <fields>
+        <help><!-- Any additional product lines that are part of the project, but that are not included in this quote. --></help>
+        <label><!-- Other Intel Product Lines for Project --></label>
+        <name>Pricing_Additional_Components_Nm__c</name>
+        <picklistValues>
+            <masterLabel>NIC</masterLabel>
+            <translation><!-- NIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPA</masterLabel>
+            <translation><!-- OPA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PMEM</masterLabel>
+            <translation><!-- PMEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSD</masterLabel>
+            <translation><!-- SSD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- When checked, quote letter will be automatically generated when all quote lines are dispositioned. Quote letter will also be emailed after automated or manual creation. --></help>
+        <label><!-- Auto-generate/email Quote Letter --></label>
+        <name>Pricing_Auto_generate_Quote_Letter__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date requestors&apos; proposal is due to the end customer. --></help>
+        <label><!-- Proposal Due Date --></label>
+        <name>Pricing_Bid_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request Summary --></label>
+        <name>Pricing_ChangeRequest_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request --></label>
+        <name>Pricing_Change_Request_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- Competition Assumptions (i.e. rationale for pricing request, etc.) --></help>
+        <label><!-- Competition Assumptions --></label>
+        <name>Pricing_Competition_Assumptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumption Countries --></label>
+        <name>Pricing_Consumption_Countries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>Pricing_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current End Customer Product Provider --></label>
+        <name>Pricing_Current_EndCustomer_Product_Prvd__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &apos;Write In End Customer&apos; is selected in the End Customer field, please enter the name of the unlisted end customer. If &apos;Write In End Customer&apos; is not selected, leave this field blank. Name can be maximum of 60 characters. --></help>
+        <label><!-- Write In End Customer --></label>
+        <name>Pricing_Customer_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- An internal reference number (e.g. ARR, rebate request ID, pricing request ID, internal reference). --></help>
+        <label><!-- Reference Request ID --></label>
+        <name>Pricing_Customer_Reference_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Registration --></label>
+        <name>Pricing_Deal_Registration_Id__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deal Type --></label>
+        <name>Pricing_Deal_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>ECAP</masterLabel>
+            <translation><!-- ECAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KIT</masterLabel>
+            <translation><!-- KIT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- (i.e. end-customer background/context, explanation of project, future business opportunities, etc.). Please include any tender documents, if available, by uploading via Post. --></help>
+        <label><!-- Deal description --></label>
+        <name>Pricing_Deal_description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>Pricing_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Account --></label>
+        <name>Pricing_End_Customer_Account__c</name>
+        <relationshipLabel><!-- Quotes (End Customer Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Country/Region in which end customer is located. If multi-country/region or worldwide, select the primary country/region. --></help>
+        <label><!-- End Customer Country/Region --></label>
+        <name>Pricing_End_Customer_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>Pricing_End_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Opportunity --></label>
+        <name>Pricing_End_Customer_Opportunity_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- ID for the Salesforce opportunity for this tender (ex. 0062i000006xTK9AAM). Entering this ID enables linkage between the quote and opportunity. --></help>
+        <label><!-- End Customer Opportunity ID --></label>
+        <name>Pricing_End_Customer_Opportunity_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- URL for the selected end customer. If the end customer has multiple URLs, URL should be for the selected End Customer Sales Geography. --></help>
+        <label><!-- End Customer URL --></label>
+        <name>Pricing_End_Customer_URL__c</name>
+    </fields>
+    <fields>
+        <help><!-- Begin typing name of end customer/company to receive fully configured system. Click on magnifying glass for more options. If end customer is not listed, select &apos;Write In End Customer&apos; option and type name of end customer in &apos;Write In End Customer&apos; field. --></help>
+        <label><!-- End Customer --></label>
+        <name>Pricing_End_Customer__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Exclude from Volume Exception Quota --></label>
+        <name>Pricing_Exclude_from_Volume_Excep_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Type --></label>
+        <name>Pricing_FI_Partner_Type__c</name>
+        <picklistValues>
+            <masterLabel>Partner Deal Incentive–NSI_CCG partner</masterLabel>
+            <translation><!-- Partner Deal Incentive–NSI_CCG partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Deal Incentive–NSP_CCG partner</masterLabel>
+            <translation><!-- Partner Deal Incentive–NSP_CCG partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- My Deals Folio ID --></label>
+        <name>Pricing_Folio_ID_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- My Deals Folio ID --></label>
+        <name>Pricing_Folio_ID_link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Name --></label>
+        <name>Pricing_Group_Nm__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Email address for the Intel employee who is covering this end customer. If unknown, please leave this field blank. To add additional Account Executives or to add an ITS to the quote, click the Sharing button at the top of the quote. --></help>
+        <label><!-- Intel Account Executive Email --></label>
+        <name>Pricing_Intel_Account_Exec_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date by which Intel should respond to the quote line. --></help>
+        <label><!-- Intel Response Requested By Date --></label>
+        <name>Pricing_Intel_Response_Requested_By_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Sales rep (ex. Sales Dev Mgr (SDM) or Field Sales Engineer (FSE)) at Intel to whom Excel request form was emailed. This rep will review the request prior to forwarding to Pricing team. A valid sales rep email is required before submission to Intel. --></help>
+        <label><!-- Intel Sales Rep Email --></label>
+        <name>Pricing_Intel_Sales_Rep_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is Intel currently used by the end-customer? If not, who is the vendor/provider? --></help>
+        <label><!-- Is Intel currently uses the endcustomer? --></label>
+        <name>Pricing_Intel_Uses_End_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invalid End Customer --></label>
+        <name>Pricing_Invalid_End_Customer_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Unified and Global End Customer values have been successfully determined. --></help>
+        <label><!-- Is Unified Customer --></label>
+        <name>Pricing_IsUnifiedCustomer__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked, this end customer is covered by an Intel Account Executive. If not checked, the end customer is uncovered. --></help>
+        <label><!-- Is Covered Account --></label>
+        <name>Pricing_Is_Covered_Account_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked - This quote is denied because the End Customer has been identified as a Restricted Party by the US Government and you may not proceed with a transaction with this customer involving Intel products. --></help>
+        <label><!-- On Restricted Party List --></label>
+        <name>Pricing_Is_Sanctioned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Segment of the market the end customer is categorized by. --></help>
+        <label><!-- Market Segment --></label>
+        <name>Pricing_Market_Segment_values_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Consumer Retail Pull</masterLabel>
+            <translation><!-- Consumer Retail Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corp</masterLabel>
+            <translation><!-- Corp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:DSS</masterLabel>
+            <translation><!-- Embedded:DSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:EBM (Embedded Board Manufacturer)</masterLabel>
+            <translation><!-- Embedded:EBM (Embedded Board Manufacturer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Energy</masterLabel>
+            <translation><!-- Embedded:Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Gaming</masterLabel>
+            <translation><!-- Embedded:Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Industrial</masterLabel>
+            <translation><!-- Embedded:Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:MAG (Military Aerospace Govt)</masterLabel>
+            <translation><!-- Embedded:MAG (Military Aerospace Govt) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Medical</masterLabel>
+            <translation><!-- Embedded:Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Other</masterLabel>
+            <translation><!-- Embedded:Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Print Imaging</masterLabel>
+            <translation><!-- Embedded:Print Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Thin Client</masterLabel>
+            <translation><!-- Embedded:Thin Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transactional Retail</masterLabel>
+            <translation><!-- Embedded:Transactional Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transportation</masterLabel>
+            <translation><!-- Embedded:Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Visual Retail</masterLabel>
+            <translation><!-- Embedded:Visual Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB</masterLabel>
+            <translation><!-- SMB --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Maximum Approved Rejected Date --></label>
+        <name>Pricing_Maximum_Approved_Rejected_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name to be used when creating the folio in My Deals. --></help>
+        <label><!-- My Deals Folio Name --></label>
+        <name>Pricing_My_Deals_Folio_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- On Hold --></label>
+        <name>Pricing_On_Hold_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hold Comments --></label>
+        <name>Pricing_On_Hold_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Status --></label>
+        <name>Pricing_Opportunity_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- If there are other product lines that are not in &quot;Other Product Lines for Project,&quot; select Other and provide in the field below. --></help>
+        <label><!-- Other Product Lines --></label>
+        <name>Pricing_Other_Component_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Requested Quantity CPU --></label>
+        <name>Pricing_Overall_Quote_Quantity_CPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Requested Quantity --></label>
+        <name>Pricing_Overall_Quote_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- The name of the Channel partner on the deal; i.e. CDW, WWT, Insight, etc. --></help>
+        <label><!-- Partner Name --></label>
+        <name>Pricing_Partner_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Group Label --></label>
+        <name>Pricing_Pricing_Manager_Group_Label_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Group Name --></label>
+        <name>Pricing_Pricing_Manager_Group_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Group --></label>
+        <name>Pricing_Pricing_Manager_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager --></label>
+        <name>Pricing_Pricing_Manager__c</name>
+        <relationshipLabel><!-- Quotes (Pricing Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Contact Email --></label>
+        <name>Pricing_Primary_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Type --></label>
+        <name>Pricing_Program_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Incentive</masterLabel>
+            <translation><!-- Financial Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Volume Quotes - Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Small Volume Quotes - Data Center Xeon® CPU --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Name of the project with which this quote is associated. If there is no project name, enter a quote name. Note that pricing will be offered only for use with this project. --></help>
+        <label><!-- Project Name --></label>
+        <name>Pricing_Project_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reason quote is being requested to exclude from volume exception quota. --></help>
+        <label><!-- Quota Exclusion Reason --></label>
+        <name>Pricing_Quota_Exclusion_Reason__c</name>
+        <picklistValues>
+            <masterLabel>AI Host Usage</masterLabel>
+            <translation><!-- AI Host Usage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>Pricing_QuoteField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote ID --></label>
+        <name>Pricing_Quote_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Program --></label>
+        <name>Pricing_Quote_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Segmentation --></label>
+        <name>Pricing_Quote_Routing_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>High Touch</masterLabel>
+            <translation><!-- High Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Touch</masterLabel>
+            <translation><!-- Low Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Touch</masterLabel>
+            <translation><!-- No Touch --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote To Mark As Won --></label>
+        <name>Pricing_Quote_To_Mark_As_Won__c</name>
+    </fields>
+    <fields>
+        <label><!-- Re-Routing Reason --></label>
+        <name>Pricing_ReRouting_Reason_Nm__c</name>
+        <picklistValues>
+            <masterLabel>2nd Review</masterLabel>
+            <translation><!-- 2nd Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CR Re-Route</masterLabel>
+            <translation><!-- CR Re-Route --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Routing</masterLabel>
+            <translation><!-- Incorrect Routing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Owner Exception</masterLabel>
+            <translation><!-- Owner Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RPM Coverage</masterLabel>
+            <translation><!-- RPM Coverage --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Dependent on the End Customer Country/Region selected. --></help>
+        <label><!-- End Customer Sales Geography --></label>
+        <name>Pricing_Region_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Route Rule Id --></label>
+        <name>Pricing_Route_Rule_Id_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Route Rule Name --></label>
+        <name>Pricing_Route_Rule_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Route Rule Name --></label>
+        <name>Pricing_Route_Rule_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Pricing_SW_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Comments --></label>
+        <name>Pricing_SW_Approval_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved/Rejected Date --></label>
+        <name>Pricing_SW_Approved_Rejected_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Action --></label>
+        <name>Pricing_SW_Custom_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Product --></label>
+        <name>Pricing_SW_Custom_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days in In Review --></label>
+        <name>Pricing_SW_Days_in_In_Review__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Pricing_SW_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Expiry date should be &gt; 14 days from today&apos;s date. --></help>
+        <label><!-- Expiry Date --></label>
+        <name>Pricing_SW_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiry Less Than 14 days --></label>
+        <name>Pricing_SW_Expiry_Less_Than_14_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Approver --></label>
+        <name>Pricing_SW_Manager_Approver__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity_Submit_Or_Approved --></label>
+        <name>Pricing_SW_Opportunity_Submit_Or_Approve__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted Date --></label>
+        <name>Pricing_SW_Submitted_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account Manager or sales rep that is involved with this quote at the OEM. --></help>
+        <label><!-- Secondary Contact --></label>
+        <name>Pricing_SecondaryContact_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type of workload into which the products included in the quote will be integrated. --></help>
+        <label><!-- Application --></label>
+        <name>Pricing_Server_Deal_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP</masterLabel>
+            <translation><!-- CoSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstations</masterLabel>
+            <translation><!-- Workstations --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Requested end date of the tender pricing and last date consumption can happen. --></help>
+        <label><!-- Pricing End Date --></label>
+        <name>Pricing_ShipmentEndDate_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Requested date on which the tender pricing goes into effect and consumption of the product begins. --></help>
+        <label><!-- Pricing Start Date --></label>
+        <name>Pricing_ShipmentStDate_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Precedence Number --></label>
+        <name>Pricing_Status_Precedence_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Opportunity Rebate --></label>
+        <name>Pricing_Total_Opportunity_Rebate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Highest level name representing ultimate purchaser and end customer of the products. --></help>
+        <label><!-- Unified Global End Customer Name --></label>
+        <name>Pricing_Unified_Global_End_Customer_Nm__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether quote falls below volume threshold and is counted against the volume exception quota. --></help>
+        <label><!-- Volume Exception Quote --></label>
+        <name>Pricing_Volume_Exception_Quota_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Owner(SW) --></label>
+        <name>Pricing_sw_Quote_Owner__c</name>
+        <relationshipLabel><!-- Quotes (Quote Owner(SW)) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote to create DPA --></label>
+        <name>Quote_to_create_DPA__c</name>
+        <relationshipLabel><!-- Quotes (Quote to create DPA) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>A conta do cliente para essa cotação. A conta é assumida como padrão para a oportunidade ao criar uma cotação.</help>
+        <label><!-- Account --></label>
+        <name>SBQQ__Account__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Insira o valor com desconto adicional nessa cotação.</help>
+        <label><!-- Addl. Disc. Amount --></label>
+        <name>SBQQ__AdditionalDiscountAmount__c</name>
+    </fields>
+    <fields>
+        <help>Desconto médio do cliente (em percentual) para essa cotação.</help>
+        <label><!-- Avg. Customer Disc. (%) --></label>
+        <name>SBQQ__AverageCustomerDiscount__c</name>
+    </fields>
+    <fields>
+        <help>Desconto médio do parceiro (em percentual) para essa cotação.</help>
+        <label><!-- Avg. Partner Disc. (%) --></label>
+        <name>SBQQ__AveragePartnerDiscount__c</name>
+    </fields>
+    <fields>
+        <help>Cidade do endereço a faturar para essa cotação.</help>
+        <label><!-- Bill To City --></label>
+        <name>SBQQ__BillingCity__c</name>
+    </fields>
+    <fields>
+        <help>País do endereço a faturar para essa cotação.</help>
+        <label><!-- Bill To Country --></label>
+        <name>SBQQ__BillingCountry__c</name>
+    </fields>
+    <fields>
+        <help>Define a frequência de faturamento.</help>
+        <label><!-- Billing Frequency --></label>
+        <name>SBQQ__BillingFrequency__c</name>
+    </fields>
+    <fields>
+        <help>Nome para o endereço ao qual faturar.</help>
+        <label><!-- Bill To Name --></label>
+        <name>SBQQ__BillingName__c</name>
+    </fields>
+    <fields>
+        <help>Código postal do endereço a faturar para essa cotação.</help>
+        <label><!-- Bill To Postal Code --></label>
+        <name>SBQQ__BillingPostalCode__c</name>
+    </fields>
+    <fields>
+        <help>Estado/província do endereço a faturar para essa cotação.</help>
+        <label><!-- Bill To State --></label>
+        <name>SBQQ__BillingState__c</name>
+    </fields>
+    <fields>
+        <help>Parte da rua do endereço a faturar para essa cotação.</help>
+        <label><!-- Bill To Street --></label>
+        <name>SBQQ__BillingStreet__c</name>
+    </fields>
+    <fields>
+        <help>Indicador somente leitura para mostrar se uma cotação contém taxas de consumo de substituição.</help>
+        <label><!-- Consumption Rate Override --></label>
+        <name>SBQQ__ConsumptionRateOverride__c</name>
+    </fields>
+    <fields>
+        <help>&quot;Por data final da assinatura&quot; cria um Contrato separado para cada Data final da assinatura única contendo apenas aquelas Assinaturas. &quot;Contrato único&quot; cria um Contrato contendo todas as Assinaturas, independentemente de quais sejam as Datas finais.</help>
+        <label><!-- Contracting Method --></label>
+        <name>SBQQ__ContractingMethod__c</name>
+        <picklistValues>
+            <masterLabel>By Subscription End Date</masterLabel>
+            <translation>Por data final da assinatura</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Contract</masterLabel>
+            <translation>Contrato único</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Esse é um campo de Resumo de acúmulo.</help>
+        <label><!-- Customer Amount --></label>
+        <name>SBQQ__CustomerAmount__c</name>
+    </fields>
+    <fields>
+        <help>Desconto adicional oferecido ao cliente nessa cotação. Esse valor pode ser substituído no nível do item de linha individual. Quaisquer itens de linha que não tenham desconto adicional especificado de modo explícito assumirão esse valor como padrão.</help>
+        <label><!-- Additional Disc. (%) --></label>
+        <name>SBQQ__CustomerDiscount__c</name>
+    </fields>
+    <fields>
+        <help>Número de dias em que a cotação está aberta.</help>
+        <label><!-- Days Quote Open --></label>
+        <name>SBQQ__DaysQuoteOpen__c</name>
+    </fields>
+    <fields>
+        <help>Modelo que deve ser usado com essa cotação. O Salesforce CPQ seleciona automaticamente o modelo especificado aqui quando você clica em &quot;Gerar documento&quot;</help>
+        <label><!-- Default Template --></label>
+        <name>SBQQ__DefaultTemplate__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Método usado para entregar produtos nessa cotação.</help>
+        <label><!-- Delivery Method --></label>
+        <name>SBQQ__DeliveryMethod__c</name>
+        <picklistValues>
+            <masterLabel>Download</masterLabel>
+            <translation>Download</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ship</masterLabel>
+            <translation>Enviar</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Desconto de distribuidor que se aplica a essa cotação, a menos que substituído no nível do item de linha.</help>
+        <label><!-- Distributor Discount --></label>
+        <name>SBQQ__DistributorDiscount__c</name>
+    </fields>
+    <fields>
+        <help>Distribuidor para essa cotação. Assumido como padrão na oportunidade com o papel de &quot;Distribuidor&quot;.</help>
+        <label><!-- Distributor --></label>
+        <name>SBQQ__Distributor__c</name>
+        <relationshipLabel><!-- Distributor Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Indica o status do documento: pendente, enviado ou falhou.</help>
+        <label><!-- Document Status --></label>
+        <name>SBQQ__DocumentStatus__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation>Falhou</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation>Pendente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent</masterLabel>
+            <translation>Enviado</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Se você tiver um modelo de email específico a ser usado para documentos gerados e enviados por email dessa cotação, insira o ID do modelo de email aqui.</help>
+        <label><!-- Email Template Id --></label>
+        <name>SBQQ__EmailTemplateId__c</name>
+    </fields>
+    <fields>
+        <help>Data final para assinaturas nesse grupo.</help>
+        <label><!-- End Date --></label>
+        <name>SBQQ__EndDate__c</name>
+    </fields>
+    <fields>
+        <help>Data após a qual a cotação não é mais válida</help>
+        <label><!-- Expires On --></label>
+        <name>SBQQ__ExpirationDate__c</name>
+    </fields>
+    <fields>
+        <help>Para produtos multissegmentados, insira a data final no pedido para dividir o primeiro segmento proporcionalmente.</help>
+        <label><!-- First Segment Term End Date --></label>
+        <name>SBQQ__FirstSegmentTermEndDate__c</name>
+    </fields>
+    <fields>
+        <help>Gerará um preço contratado com base em todas as linhas de cotação ajustadas na cotação, se sinalizado.</help>
+        <label><!-- Generate Contracted Price --></label>
+        <name>SBQQ__GenerateContractedPrice__c</name>
+        <picklistValues>
+            <masterLabel>Discount Schedule</masterLabel>
+            <translation>Cronograma de descontos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do Not Generate</masterLabel>
+            <translation>Não gerar</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price</masterLabel>
+            <translation>Preço</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Introdução que pode ser impressa no documento PDF gerado.</help>
+        <label><!-- Introduction --></label>
+        <name>SBQQ__Introduction__c</name>
+    </fields>
+    <fields>
+        <help>Chave única interna usada para identificar cotações de &quot;carrinho de compras&quot; sem depender de IDs internos</help>
+        <label><!-- Key --></label>
+        <name>SBQQ__Key__c</name>
+    </fields>
+    <fields>
+        <help>Data e hora em que essa cotação foi calculada pela última vez.</help>
+        <label><!-- Last Calculated On --></label>
+        <name>SBQQ__LastCalculatedOn__c</name>
+    </fields>
+    <fields>
+        <help>Data e hora em que essa cotação foi salva pela última vez.</help>
+        <label><!-- Last Saved On --></label>
+        <name>SBQQ__LastSavedOn__c</name>
+    </fields>
+    <fields>
+        <help>Número de itens de linha nessa cotação.</help>
+        <label><!-- Line Item Count --></label>
+        <name>SBQQ__LineItemCount__c</name>
+    </fields>
+    <fields>
+        <help>Selecione essa opção para usar SolutionGroups(TM) ou adicionar seus próprios grupos na página Editar linhas para classificar e subtotalizar itens de linha de cotação.</help>
+        <label><!-- Group Line Items --></label>
+        <name>SBQQ__LineItemsGrouped__c</name>
+    </fields>
+    <fields>
+        <help>Selecione a caixa de seleção para imprimir itens de linha individuais no documento de cotação PDF gerado para cotações de grupo.</help>
+        <label><!-- Print Line Items --></label>
+        <name>SBQQ__LineItemsPrinted__c</name>
+    </fields>
+    <fields>
+        <help>Valor de lista total para cada item de linha não opcional na cotação.</help>
+        <label><!-- List Amount --></label>
+        <name>SBQQ__ListAmount__c</name>
+    </fields>
+    <fields>
+        <help>Taxa de aumento padrão aplicada aos itens de linha nessa cotação. Você poderá substituir esse valor no nível de item de grupo e linha.</help>
+        <label><!-- Markup (%) --></label>
+        <name>SBQQ__MarkupRate__c</name>
+    </fields>
+    <fields>
+        <help>Contrato mestre com o qual produtos de assinatura nessa cotação devem ser encerrados de modo combinado.</help>
+        <label><!-- Master Contract --></label>
+        <name>SBQQ__MasterContract__c</name>
+        <relationshipLabel><!-- Co-Terminated Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Designa este contrato como o contrato perene mestre para a cotação.</help>
+        <label><!-- Master Evergreen Contract --></label>
+        <name>SBQQ__MasterEvergreenContract__c</name>
+        <relationshipLabel><!-- Co-Terminated Quotes (Master Evergreen Contract) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Valor líquido total para cada item de linha não opcional na cotação.</help>
+        <label><!-- Net Amount --></label>
+        <name>SBQQ__NetAmount__c</name>
+    </fields>
+    <fields>
+        <help>Observações impressas no documento PDF gerado.</help>
+        <label><!-- Notes --></label>
+        <name>SBQQ__Notes__c</name>
+    </fields>
+    <fields>
+        <help>Oportunidade associada a essa Cotação.</help>
+        <label><!-- Opportunity --></label>
+        <name>SBQQ__Opportunity2__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Se sinalizado ao configurar a Cotação para &quot;Pedido&quot;, um Pedido será criado para cada Grupo de linhas de cotação com suas Linhas de cotação associadas.</help>
+        <label><!-- Order By Quote Line Group --></label>
+        <name>SBQQ__OrderByQuoteLineGroup__c</name>
+    </fields>
+    <fields>
+        <help>O Campo de linha de cotação usado para determinar o agrupamento do pedido.</help>
+        <label><!-- Order By --></label>
+        <name>SBQQ__OrderBy__c</name>
+        <picklistValues>
+            <masterLabel>ProductFamily__c</masterLabel>
+            <translation>ProductFamily__c</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QuantityBasedFormulaField__c</masterLabel>
+            <translation>QuantityBasedFormulaField__c</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>O identificador exclusivo para a transação Alteração: nova cotação, que é o ID da cotação primária original.</help>
+        <label><!-- Order Group ID --></label>
+        <name>SBQQ__OrderGroupID__c</name>
+    </fields>
+    <fields>
+        <help>Marque esta caixa de seleção para criar automaticamente um pedido a partir da cotação, se ela for uma cotação primária.</help>
+        <label><!-- Ordered --></label>
+        <name>SBQQ__Ordered__c</name>
+    </fields>
+    <fields>
+        <help>Se esse registro de Cotação representar uma Alteração: nova cotação, use este campo para vincular de volta à cotação original.</help>
+        <label><!-- Original Quote --></label>
+        <name>SBQQ__OriginalQuote__c</name>
+        <relationshipLabel><!-- Amend: Re-Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Escolha o tamanho do papel para este documento.</help>
+        <label><!-- Paper Size --></label>
+        <name>SBQQ__PaperSize__c</name>
+    </fields>
+    <fields>
+        <help>Desconto oferecido ao parceiro nessa oportunidade.</help>
+        <label><!-- Partner Discount --></label>
+        <name>SBQQ__PartnerDiscount__c</name>
+    </fields>
+    <fields>
+        <help>Parceiro primário nesse negócio (se houver). Esse campo assume como padrão o parceiro marcado como primário na lista relacionada de Parceiros na oportunidade.</help>
+        <label><!-- Partner --></label>
+        <name>SBQQ__Partner__c</name>
+        <relationshipLabel><!-- Partner Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Condições que determinam o pagamento dos itens nessa cotação.</help>
+        <label><!-- Payment Terms --></label>
+        <name>SBQQ__PaymentTerms__c</name>
+        <picklistValues>
+            <masterLabel>Due on receipt</masterLabel>
+            <translation>Vence ao receber</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net 15</masterLabel>
+            <translation>15 dias corridos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net 30</masterLabel>
+            <translation>30 dias corridos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net 45</masterLabel>
+            <translation>45 dias corridos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net 60</masterLabel>
+            <translation>60 dias corridos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net 90</masterLabel>
+            <translation>90 dias corridos</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Catálogo de preços associado a essa cotação.</help>
+        <label><!-- Price Book --></label>
+        <name>SBQQ__PriceBook__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>ID do catálogo de preços usado por essa cotação.</help>
+        <label><!-- Pricebook ID --></label>
+        <name>SBQQ__PricebookId__c</name>
+    </fields>
+    <fields>
+        <help>Contato primário para a cotação. O nome dessa pessoa aparecerá no documento de cotação gerado.</help>
+        <label><!-- Primary Contact --></label>
+        <name>SBQQ__PrimaryContact__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Selecione essa caixa de seleção para designar essa cotação como a primária na oportunidade e sincronizar os itens de linha de cotação com itens de linha de oportunidade.</help>
+        <label><!-- Primary --></label>
+        <name>SBQQ__Primary__c</name>
+    </fields>
+    <fields>
+        <help>Indica o Dia do mês rateado que se alinha ao Dia do mês de faturamento</help>
+        <label><!-- Proration Day Of Month --></label>
+        <name>SBQQ__ProrationDayOfMonth__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation>1</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation>10</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation>11</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation>12</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation>13</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation>14</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation>15</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>16</masterLabel>
+            <translation>16</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17</masterLabel>
+            <translation>17</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18</masterLabel>
+            <translation>18</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>19</masterLabel>
+            <translation>19</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation>2</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation>20</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21</masterLabel>
+            <translation>21</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>22</masterLabel>
+            <translation>22</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>23</masterLabel>
+            <translation>23</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24</masterLabel>
+            <translation>24</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25</masterLabel>
+            <translation>25</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26</masterLabel>
+            <translation>26</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>27</masterLabel>
+            <translation>27</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>28</masterLabel>
+            <translation>28</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>29</masterLabel>
+            <translation>29</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation>3</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30</masterLabel>
+            <translation>30</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>31</masterLabel>
+            <translation>31</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation>4</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation>5</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation>6</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation>7</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation>8</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation>9</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Idioma usado para essa cotação ao gerar Documentos de cotação em massa</help>
+        <label><!-- Quote Language --></label>
+        <name>SBQQ__QuoteLanguage__c</name>
+        <picklistValues>
+            <masterLabel>Chinese (Simplified)</masterLabel>
+            <translation>Chinês (simplificado)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Traditional)</masterLabel>
+            <translation>Chinês (tradicional)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Danish</masterLabel>
+            <translation>Dinamarquês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch</masterLabel>
+            <translation>Holandês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation>Inglês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finnish</masterLabel>
+            <translation>Finlandês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation>Francês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation>Alemão</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian</masterLabel>
+            <translation>Italiano</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation>Japonês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation>Coreano</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian</masterLabel>
+            <translation>Norueguês</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Brazilian)</masterLabel>
+            <translation>Português (brasileiro)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian</masterLabel>
+            <translation>Russo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation>Espanhol</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Mexican)</masterLabel>
+            <translation>Espanhol (mexicano)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish</masterLabel>
+            <translation>Sueco</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai</masterLabel>
+            <translation>Tailandês</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>ID do processo de venda guiado a ser usado com essa cotação, se houver.</help>
+        <label><!-- Quote Process Id --></label>
+        <name>SBQQ__QuoteProcessId__c</name>
+    </fields>
+    <fields>
+        <help>Armazena um ID de modelo de cotação se um tiver sido especificado ao gerar documentos PDF de cotação.</help>
+        <label><!-- Quote Template Id --></label>
+        <name>SBQQ__QuoteTemplateId__c</name>
+    </fields>
+    <fields>
+        <help>Valor total em tempos de linha não opcionais antes da aplicação de descontos adicionais.</help>
+        <label><!-- Regular Amount --></label>
+        <name>SBQQ__RegularAmount__c</name>
+    </fields>
+    <fields>
+        <help>Especifique o termo da renovação. Por padrão, ele corresponde ao termo do contrato original.</help>
+        <label><!-- Renewal Term --></label>
+        <name>SBQQ__RenewalTerm__c</name>
+    </fields>
+    <fields>
+        <help>Taxa de aumentos de preço de renovação.</help>
+        <label><!-- Renewal Uplift (%) --></label>
+        <name>SBQQ__RenewalUpliftRate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Rep --></label>
+        <name>SBQQ__SalesRep__c</name>
+        <relationshipLabel><!-- Quotes (Sales Rep) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Cidade no endereço A enviar para essa cotação.</help>
+        <label><!-- Ship To City --></label>
+        <name>SBQQ__ShippingCity__c</name>
+    </fields>
+    <fields>
+        <help>País no endereço A enviar para essa cotação.</help>
+        <label><!-- Ship To Country --></label>
+        <name>SBQQ__ShippingCountry__c</name>
+    </fields>
+    <fields>
+        <help>Nome no endereço A enviar para essa cotação.</help>
+        <label><!-- Ship To Name --></label>
+        <name>SBQQ__ShippingName__c</name>
+    </fields>
+    <fields>
+        <help>Código postal no endereço A enviar para essa cotação.</help>
+        <label><!-- Ship To Postal Code --></label>
+        <name>SBQQ__ShippingPostalCode__c</name>
+    </fields>
+    <fields>
+        <help>Estado/província no endereço A enviar para essa cotação.</help>
+        <label><!-- Ship To State --></label>
+        <name>SBQQ__ShippingState__c</name>
+    </fields>
+    <fields>
+        <help>Rua no endereço A enviar para essa cotação.</help>
+        <label><!-- Ship To Street --></label>
+        <name>SBQQ__ShippingStreet__c</name>
+    </fields>
+    <fields>
+        <help>Origem da cotação clonada. Se clonada, faz referência à cotação original clonada.</help>
+        <label><!-- Source --></label>
+        <name>SBQQ__Source__c</name>
+        <relationshipLabel><!-- Quotes (Source) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Data inicial para assinaturas nessa cotação.</help>
+        <label><!-- Start Date --></label>
+        <name>SBQQ__StartDate__c</name>
+    </fields>
+    <fields>
+        <help>Status indicando onde a cotação está em seu ciclo de vida.</help>
+        <label><!-- Status --></label>
+        <name>SBQQ__Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation>Aceito</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Aprovado</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>Negado</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation>Rascunho</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Review</masterLabel>
+            <translation>Em revisão</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Yet Approved</masterLabel>
+            <translation><!-- Not Yet Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Presented</masterLabel>
+            <translation>Apresentado</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation><!-- Recalled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation>Rejeitado</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Won</masterLabel>
+            <translation><!-- Won --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Termo de assinatura usado para dividir proporcionalmente os produtos elegíveis por dia ou mês. Isso foi definido pelo seu administrador.</help>
+        <label><!-- Subscription Term --></label>
+        <name>SBQQ__SubscriptionTerm__c</name>
+    </fields>
+    <fields>
+        <help>Insira o valor do cliente desejado para calcular automaticamente o desconto adicional nos itens de linha descontáveis.</help>
+        <label><!-- Target Customer Amount --></label>
+        <name>SBQQ__TargetCustomerAmount__c</name>
+    </fields>
+    <fields>
+        <help>Valor total do desconto do cliente. Essa opção inclui quaisquer descontos contratados, por volume, de taxa composta e adicionais.</help>
+        <label><!-- Total Customer Disc. Amount --></label>
+        <name>SBQQ__TotalCustomerDiscountAmount__c</name>
+    </fields>
+    <fields>
+        <help>Indica o tipo de cotação.</help>
+        <label><!-- Type --></label>
+        <name>SBQQ__Type__c</name>
+        <picklistValues>
+            <masterLabel>Amendment</masterLabel>
+            <translation>Alteração</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote</masterLabel>
+            <translation>Cotação</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Re-Quote</masterLabel>
+            <translation>Nova cotação</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation>Renovação</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Se selecionada, a cotação ainda não foi calculada.</help>
+        <label><!-- Uncalculated --></label>
+        <name>SBQQ__Uncalculated__c</name>
+    </fields>
+    <fields>
+        <help>Indica se a cotação já foi aberta para determinar se é uma nova cotação.</help>
+        <label><!-- Unopened --></label>
+        <name>SBQQ__Unopened__c</name>
+    </fields>
+    <fields>
+        <help>Selecione a caixa de seleção para exibir a marca d&apos;água no Documento de cotação.</help>
+        <label><!-- Watermark Shown --></label>
+        <name>SBQQ__WatermarkShown__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewed from Contract --></label>
+        <name>Sales_Renewed_from_Contract_Id__c</name>
+        <relationshipLabel><!-- Renewed Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submitted Date --></label>
+        <name>SubmittedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted User --></label>
+        <name>SubmittedUser__c</name>
+        <relationshipLabel><!-- Quotes (Submitted User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Predicts the BM level required for approval of the Quote threshold. --></help>
+        <label><!-- Approval Level --></label>
+        <name>core_cpq_Approval_Level_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Region check --></label>
+        <name>core_cpq_Disty_Region_check__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Restricted Product Check --></label>
+        <name>core_cpq_PSG_Restricted_Product_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process flag --></label>
+        <name>core_cpq_Process_flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revised Quote # --></label>
+        <name>core_cpq_Revised_Quote__c</name>
+        <relationshipLabel><!-- Quotes (Revised Quote) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User Check --></label>
+        <name>core_cpq_User_Check_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Program Match --></label>
+        <name>core_cpq_acc_program_match__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name_t --></label>
+        <name>core_cpq_account_name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Program --></label>
+        <name>core_cpq_account_program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Tier --></label>
+        <name>core_cpq_account_tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>core_cpq_active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address --></label>
+        <name>core_cpq_address_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Comments --></label>
+        <name>core_cpq_altera_internal_comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status_t --></label>
+        <name>core_cpq_approval_status_txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Review</masterLabel>
+            <translation><!-- In Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Yet Approved</masterLabel>
+            <translation><!-- Not Yet Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>core_cpq_approved_by_nm__c</name>
+        <relationshipLabel><!-- Quotes (Approved By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approved On --></label>
+        <name>core_cpq_approved_on_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved/Rejected Duration --></label>
+        <name>core_cpq_approved_rejected_duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned By --></label>
+        <name>core_cpq_assigned_by_nm__c</name>
+        <relationshipLabel><!-- Quotes (Assigned By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Assigned on --></label>
+        <name>core_cpq_assigned_on__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>core_cpq_assigned_to_nm__c</name>
+        <relationshipLabel><!-- Quotes (Assigned To) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Broken Cost --></label>
+        <name>core_cpq_broken_cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>core_cpq_business_unit_nm__c</name>
+        <picklistValues>
+            <masterLabel>ASIC Proto</masterLabel>
+            <translation><!-- ASIC Proto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Access</masterLabel>
+            <translation><!-- Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application</masterLabel>
+            <translation><!-- Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcast</masterLabel>
+            <translation><!-- Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial</masterLabel>
+            <translation><!-- Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure</masterLabel>
+            <translation><!-- Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical</masterLabel>
+            <translation><!-- Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military</masterLabel>
+            <translation><!-- Military --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test</masterLabel>
+            <translation><!-- Test --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline</masterLabel>
+            <translation><!-- Wireline --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Change/Revision Requested --></label>
+        <name>core_cpq_change_revision_requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class --></label>
+        <name>core_cpq_class_cat__c</name>
+        <picklistValues>
+            <masterLabel>CAT0</masterLabel>
+            <translation><!-- CAT0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAT1</masterLabel>
+            <translation><!-- CAT1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAT2</masterLabel>
+            <translation><!-- CAT2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAT3</masterLabel>
+            <translation><!-- CAT3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAT4</masterLabel>
+            <translation><!-- CAT4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Category 1</masterLabel>
+            <translation><!-- Category 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Category 2</masterLabel>
+            <translation><!-- Category 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Category 3</masterLabel>
+            <translation><!-- Category 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Category 4</masterLabel>
+            <translation><!-- Category 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Clear Bulk Field Values --></label>
+        <name>core_cpq_clear_bulk_field_values__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer City --></label>
+        <name>core_cpq_cm_city_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer Country/Region --></label>
+        <name>core_cpq_cm_country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer Country/Region --></label>
+        <name>core_cpq_cm_country_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- CM Country --></label>
+        <name>core_cpq_cm_country_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- CM Country --></label>
+        <name>core_cpq_cm_country_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer --></label>
+        <name>core_cpq_cm_name_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- CM Name --></label>
+        <name>core_cpq_cm_name_disty_view_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer Name --></label>
+        <name>core_cpq_cm_name_nm__c</name>
+        <relationshipLabel><!-- Quotes (CM Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer State --></label>
+        <name>core_cpq_cm_state_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Pricing Parent --></label>
+        <name>core_cpq_cmf_pricing_parent__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Pricing Parent ID --></label>
+        <name>core_cpq_cmf_pricing_parent_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments from Disty --></label>
+        <name>core_cpq_comments_by_disty_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments to Customer --></label>
+        <name>core_cpq_comments_to_customer_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments to Disty --></label>
+        <name>core_cpq_comments_to_disty_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Confirmed --></label>
+        <name>core_cpq_confirmed_order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract End Date --></label>
+        <name>core_cpq_contract_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer_t --></label>
+        <name>core_cpq_contract_manufacturer_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Manufacturer --></label>
+        <name>core_cpq_contract_manufacturer_nm__c</name>
+        <relationshipLabel><!-- Quotes (Contract Manufacturer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Corporate Flag --></label>
+        <name>core_cpq_corporate_flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Submitted Date --></label>
+        <name>core_cpq_date_submitted_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DDR# --></label>
+        <name>core_cpq_ddr_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>core_cpq_decision_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Margin % --></label>
+        <name>core_cpq_disti_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor --></label>
+        <name>core_cpq_distributor_disty_view_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter Email Address --></label>
+        <name>core_cpq_disty_email_address_for_dpa__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor Group Name --></label>
+        <name>core_cpq_disty_group_name__c</name>
+        <picklistValues>
+            <masterLabel>PSG_ALTIMA</masterLabel>
+            <translation><!-- PSG_ALTIMA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_EU</masterLabel>
+            <translation><!-- PSG_ARROW_EU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_IND</masterLabel>
+            <translation><!-- PSG_ARROW_IND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_KOR</masterLabel>
+            <translation><!-- PSG_ARROW_KOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_NA</masterLabel>
+            <translation><!-- PSG_ARROW_NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_PD</masterLabel>
+            <translation><!-- PSG_ARROW_PD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_PRC</masterLabel>
+            <translation><!-- PSG_ARROW_PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_SGP</masterLabel>
+            <translation><!-- PSG_ARROW_SGP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_ARROW_TW</masterLabel>
+            <translation><!-- PSG_ARROW_TW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_BRAEMAC</masterLabel>
+            <translation><!-- PSG_BRAEMAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_DIGI_KEY</masterLabel>
+            <translation><!-- PSG_DIGI_KEY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_EASTRONICS</masterLabel>
+            <translation><!-- PSG_EASTRONICS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_GALAXY</masterLabel>
+            <translation><!-- PSG_GALAXY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_MACNICA_IND</masterLabel>
+            <translation><!-- PSG_MACNICA_IND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_MACNICA_NA</masterLabel>
+            <translation><!-- PSG_MACNICA_NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_MACNICA_PRC</masterLabel>
+            <translation><!-- PSG_MACNICA_PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_MACNICA_SGP</masterLabel>
+            <translation><!-- PSG_MACNICA_SGP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_MOUSER</masterLabel>
+            <translation><!-- PSG_MOUSER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_NEWTRONIX</masterLabel>
+            <translation><!-- PSG_NEWTRONIX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_OCS_RUSSIA</masterLabel>
+            <translation><!-- PSG_OCS_RUSSIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_UNIQUEST</masterLabel>
+            <translation><!-- PSG_UNIQUEST --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Margin Exception --></label>
+        <name>core_cpq_disty_margin_exception__c</name>
+        <picklistValues>
+            <masterLabel>Budgetary</masterLabel>
+            <translation><!-- Budgetary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Exception</masterLabel>
+            <translation><!-- Channel Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Supply Program</masterLabel>
+            <translation><!-- Direct Supply Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Margin Plan Compliance</masterLabel>
+            <translation><!-- Margin Plan Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TQ DDR Transfer</masterLabel>
+            <translation><!-- TQ DDR Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submitter Name --></label>
+        <name>core_cpq_disty_name_for_dpa__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Region --></label>
+        <name>core_cpq_disty_region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>core_cpq_distystatus_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Generation Date --></label>
+        <name>core_cpq_doc_generation_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>core_cpq_dpa_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- OPNs exist already in Design Win Quote with same Opportunity. --></help>
+        <label><!-- Duplicate DWin Quote OPN&apos;s --></label>
+        <name>core_cpq_dup_designwin_opns__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays the OPNs which are dropped from the quote, which could be due to Pre-Release product not allowed OR Products are Inactive OR Non orderable. Please check the OPN attributes and add the correct one. --></help>
+        <label><!-- Invalid OPNs --></label>
+        <name>core_cpq_dup_invalid_OPNs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duration (in months) --></label>
+        <name>core_cpq_duration_disty_view__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Annual Usage Qty --></label>
+        <name>core_cpq_eau_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country/Region --></label>
+        <name>core_cpq_ec_country__c</name>
+    </fields>
+    <fields>
+        <label><!-- EC Region --></label>
+        <name>core_cpq_ec_region_txt__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ECP ID --></label>
+        <name>core_cpq_ecp_id_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- ECP --></label>
+        <name>core_cpq_ecp_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer State --></label>
+        <name>core_cpq_end_customer_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer City_t --></label>
+        <name>core_cpq_end_customer_city__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer City --></label>
+        <name>core_cpq_end_customer_city_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer City --></label>
+        <name>core_cpq_end_customer_city_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country/Region --></label>
+        <name>core_cpq_end_customer_country__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country/Region --></label>
+        <name>core_cpq_end_customer_country_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country --></label>
+        <name>core_cpq_end_customer_country_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer --></label>
+        <name>core_cpq_end_customer_disty_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer --></label>
+        <name>core_cpq_end_customer_disty_view_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer --></label>
+        <name>core_cpq_end_customer_list_view__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer --></label>
+        <lookupFilter>
+            <errorMessage><!-- End Customer Account selected is invalid. Account must be active with Legal/Pricing Parent assigned. --></errorMessage>
+        </lookupFilter>
+        <name>core_cpq_end_customer_nm__c</name>
+        <relationshipLabel><!-- Quotes (End Customer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Customer State --></label>
+        <name>core_cpq_end_customer_state_disty_txt__c</name>
+        <picklistValues>
+            <masterLabel>Alabama</masterLabel>
+            <translation><!-- Alabama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alaska</masterLabel>
+            <translation><!-- Alaska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alberta</masterLabel>
+            <translation><!-- Alberta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arizona</masterLabel>
+            <translation><!-- Arizona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arkansas</masterLabel>
+            <translation><!-- Arkansas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>British Columbia</masterLabel>
+            <translation><!-- British Columbia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>California</masterLabel>
+            <translation><!-- California --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colorado</masterLabel>
+            <translation><!-- Colorado --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connecticut</masterLabel>
+            <translation><!-- Connecticut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delaware</masterLabel>
+            <translation><!-- Delaware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Florida</masterLabel>
+            <translation><!-- Florida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgia</masterLabel>
+            <translation><!-- Georgia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hawaii</masterLabel>
+            <translation><!-- Hawaii --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Idaho</masterLabel>
+            <translation><!-- Idaho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Illinois</masterLabel>
+            <translation><!-- Illinois --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indiana</masterLabel>
+            <translation><!-- Indiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iowa</masterLabel>
+            <translation><!-- Iowa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kansas</masterLabel>
+            <translation><!-- Kansas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kentucky</masterLabel>
+            <translation><!-- Kentucky --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Louisiana</masterLabel>
+            <translation><!-- Louisiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maine</masterLabel>
+            <translation><!-- Maine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manitoba</masterLabel>
+            <translation><!-- Manitoba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maryland</masterLabel>
+            <translation><!-- Maryland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Massachusetts</masterLabel>
+            <translation><!-- Massachusetts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Michigan</masterLabel>
+            <translation><!-- Michigan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minnesota</masterLabel>
+            <translation><!-- Minnesota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mississippi</masterLabel>
+            <translation><!-- Mississippi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missouri</masterLabel>
+            <translation><!-- Missouri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montana</masterLabel>
+            <translation><!-- Montana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nebraska</masterLabel>
+            <translation><!-- Nebraska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nevada</masterLabel>
+            <translation><!-- Nevada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Brunswick</masterLabel>
+            <translation><!-- New Brunswick --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Hampshire</masterLabel>
+            <translation><!-- New Hampshire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Jersey</masterLabel>
+            <translation><!-- New Jersey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Mexico</masterLabel>
+            <translation><!-- New Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York</masterLabel>
+            <translation><!-- New York --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newfoundland and Labrador</masterLabel>
+            <translation><!-- Newfoundland and Labrador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Carolina</masterLabel>
+            <translation><!-- North Carolina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Dakota</masterLabel>
+            <translation><!-- North Dakota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northwest Territories</masterLabel>
+            <translation><!-- Northwest Territories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nova Scotia</masterLabel>
+            <translation><!-- Nova Scotia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nunavut</masterLabel>
+            <translation><!-- Nunavut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ohio</masterLabel>
+            <translation><!-- Ohio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oklahoma</masterLabel>
+            <translation><!-- Oklahoma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ontario</masterLabel>
+            <translation><!-- Ontario --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oregon</masterLabel>
+            <translation><!-- Oregon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pennsylvania</masterLabel>
+            <translation><!-- Pennsylvania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prince Edward Island</masterLabel>
+            <translation><!-- Prince Edward Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Puerto Rico</masterLabel>
+            <translation><!-- Puerto Rico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quebec</masterLabel>
+            <translation><!-- Quebec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rhode Island</masterLabel>
+            <translation><!-- Rhode Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saskatchewan</masterLabel>
+            <translation><!-- Saskatchewan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Carolina</masterLabel>
+            <translation><!-- South Carolina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Dakota</masterLabel>
+            <translation><!-- South Dakota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tennessee</masterLabel>
+            <translation><!-- Tennessee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Texas</masterLabel>
+            <translation><!-- Texas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utah</masterLabel>
+            <translation><!-- Utah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vermont</masterLabel>
+            <translation><!-- Vermont --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virginia</masterLabel>
+            <translation><!-- Virginia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Washington</masterLabel>
+            <translation><!-- Washington --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Virginia</masterLabel>
+            <translation><!-- West Virginia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wisconsin</masterLabel>
+            <translation><!-- Wisconsin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wyoming</masterLabel>
+            <translation><!-- Wyoming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yukon</masterLabel>
+            <translation><!-- Yukon --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Extended CP Quote --></label>
+        <name>core_cpq_extended_cp_quote_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Ship To Country/Region --></label>
+        <name>core_cpq_final_ship_to_country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Ship To Customer --></label>
+        <name>core_cpq_final_ship_to_customer_dpa__c</name>
+    </fields>
+    <fields>
+        <label><!-- First BM Approver --></label>
+        <name>core_cpq_first_bm_approver__c</name>
+        <relationshipLabel><!-- Quotes (First BM Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- First Ship Date --></label>
+        <name>core_cpq_first_ship_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days in InProgress --></label>
+        <name>core_cpq_inprogress_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days in InReview --></label>
+        <name>core_cpq_inreview_days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays the OPNs which are dropped from the quote, which could be due to Pre-Release product not allowed OR Products are Inactive OR Non orderable. Please check the OPN attributes and add the correct one. --></help>
+        <label><!-- Invalid OPNs --></label>
+        <name>core_cpq_invalid_opn__c</name>
+    </fields>
+    <fields>
+        <help><!-- Inactive OPNs with no replacement &amp; OPNs that aren&apos;t Quotable/Orderable. --></help>
+        <label><!-- Invalid OPNs --></label>
+        <name>core_cpq_invalid_opn_ta__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please refer to the Invalid OPNs&apos; in the Misc Info section of Quote header to view the Invalid OPNs --></help>
+        <label><!-- Invalid OPNs --></label>
+        <name>core_cpq_invalid_opns_dup__c</name>
+    </fields>
+    <fields>
+        <label><!-- is Budgetary --></label>
+        <name>core_cpq_is_Budgetary_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- is Dwin --></label>
+        <name>core_cpq_is_Dwin_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- is Tools --></label>
+        <name>core_cpq_is_Tools_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- is Transfer Pricing --></label>
+        <name>core_cpq_is_Transfer_Pricing_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- isCloned_revised? --></label>
+        <name>core_cpq_iscloned_revised__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Account Program --></label>
+        <name>core_cpq_latest_account_program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Life Time Annual Peak Sum --></label>
+        <name>core_cpq_life_time_annual_peak_sum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory Field --></label>
+        <name>core_cpq_mandatory_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory Fields Check --></label>
+        <name>core_cpq_mandatory_fields_check_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory Fields For Tools --></label>
+        <name>core_cpq_mandatory_fields_for_tools_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Margin Geo --></label>
+        <name>core_cpq_margin_geo_txt__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- My PSG Quote --></label>
+        <name>core_cpq_mypsgquote_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Name --></label>
+        <name>core_cpq_name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Number --></label>
+        <name>core_cpq_navigate_to_iqr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Negative Intel Margin --></label>
+        <name>core_cpq_negative_margin_quote_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Approver --></label>
+        <name>core_cpq_next_approver_nm__c</name>
+        <relationshipLabel><!-- Quotes (Next Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- No of Years --></label>
+        <name>core_cpq_no_of_years__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>core_cpq_opportunity_disty_view_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Region --></label>
+        <name>core_cpq_opportunity_region__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity ID --></label>
+        <name>core_cpq_opprtunity_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>core_cpq_origin_txt__c</name>
+        <picklistValues>
+            <masterLabel>BulkUpload</masterLabel>
+            <translation><!-- BulkUpload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dataload</masterLabel>
+            <translation><!-- Dataload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct</masterLabel>
+            <translation><!-- Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disty</masterLabel>
+            <translation><!-- Disty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oppty</masterLabel>
+            <translation><!-- Oppty --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Parent Quote --></label>
+        <name>core_cpq_original_quote__c</name>
+        <relationshipLabel><!-- Quotes (PSG Original Quote) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>core_cpq_owner_disty_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Manager --></label>
+        <name>core_cpq_owner_mgr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Name --></label>
+        <name>core_cpq_owner_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Account --></label>
+        <name>core_cpq_parent_account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Account ID --></label>
+        <name>core_cpq_parent_account_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Account --></label>
+        <name>core_cpq_parentaccount__c</name>
+        <relationshipLabel><!-- Quotes (Parent Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Post Approval Comment --></label>
+        <name>core_cpq_post_approval_comment_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Select QL --></label>
+        <name>core_cpq_previous_select_ql__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Book --></label>
+        <name>core_cpq_price_book_nm__c</name>
+        <relationshipLabel><!-- Quotes (Price Book) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Price Eligibility Date --></label>
+        <name>core_cpq_price_eligibility_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price End Date --></label>
+        <name>core_cpq_pricing_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Pricing Parent Active --></label>
+        <name>core_cpq_pricing_parent_active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Start Date --></label>
+        <name>core_cpq_pricing_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Application --></label>
+        <name>core_cpq_product_application_nm__c</name>
+        <picklistValues>
+            <masterLabel>AR/VR/MR - Commercial</masterLabel>
+            <translation><!-- AR/VR/MR - Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AR/VR/MR - Consumer</masterLabel>
+            <translation><!-- AR/VR/MR - Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AR/VR/MR - other</masterLabel>
+            <translation><!-- AR/VR/MR - other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Emulation</masterLabel>
+            <translation><!-- ASIC Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Prototyping</masterLabel>
+            <translation><!-- ASIC Prototyping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATM</masterLabel>
+            <translation><!-- ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerospace/Avionics</masterLabel>
+            <translation><!-- Aerospace/Avionics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive - Other</masterLabel>
+            <translation><!-- Automotive - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driver Assistance Systems</masterLabel>
+            <translation><!-- Autonomous Driver Assistance Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driving - Other</masterLabel>
+            <translation><!-- Autonomous Driving - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blade SBC (Single Board Computer)</masterLabel>
+            <translation><!-- Blade SBC (Single Board Computer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Desktop</masterLabel>
+            <translation><!-- Business Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Mobility</masterLabel>
+            <translation><!-- Business Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CE - Camera</masterLabel>
+            <translation><!-- CE - Camera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CE - other</masterLabel>
+            <translation><!-- CE - other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Test &amp; Measuring Equipment</masterLabel>
+            <translation><!-- Comms Test &amp; Measuring Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Home</masterLabel>
+            <translation><!-- Connected Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Desktop</masterLabel>
+            <translation><!-- Consumer Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Mobility</masterLabel>
+            <translation><!-- Consumer Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Signage</masterLabel>
+            <translation><!-- Digital Signage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drives, Motor Control, Encoders</masterLabel>
+            <translation><!-- Drives, Motor Control, Encoders --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drone</masterLabel>
+            <translation><!-- Drone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronic Gaming Machines</masterLabel>
+            <translation><!-- Electronic Gaming Machines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded Modules</masterLabel>
+            <translation><!-- Embedded Modules --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy - Gateways</masterLabel>
+            <translation><!-- Energy - Gateways --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy - Industrial PCs</masterLabel>
+            <translation><!-- Energy - Industrial PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy - Other</masterLabel>
+            <translation><!-- Energy - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy - Ruggedized Servers</masterLabel>
+            <translation><!-- Energy - Ruggedized Servers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy - Smart Meters</masterLabel>
+            <translation><!-- Energy - Smart Meters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy Smart Appliances - RTU, SCADA, Protection Relays</masterLabel>
+            <translation><!-- Energy Smart Appliances - RTU, SCADA, Protection Relays --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment Devices</masterLabel>
+            <translation><!-- Entertainment Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental Monitoring</masterLabel>
+            <translation><!-- Environmental Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Federal Civil / Emergency Response / Public Safety</masterLabel>
+            <translation><!-- Federal Civil / Emergency Response / Public Safety --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fleet Management - Buses, Shuttle, Trucks, Heavy Machinery, Agriculture</masterLabel>
+            <translation><!-- Fleet Management - Buses, Shuttle, Trucks, Heavy Machinery, Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming - Other</masterLabel>
+            <translation><!-- Gaming - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HMI</masterLabel>
+            <translation><!-- HMI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Head-End (Encoder/Decoder)</masterLabel>
+            <translation><!-- Head-End (Encoder/Decoder) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Diagnostic/Therapeutic/Remote/Clinical Equipment</masterLabel>
+            <translation><!-- Health: Diagnostic/Therapeutic/Remote/Clinical Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Health IT</masterLabel>
+            <translation><!-- Health: Health IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Health Sector - Other</masterLabel>
+            <translation><!-- Health: Health Sector - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Life/Bio &amp; Lab Sciences</masterLabel>
+            <translation><!-- Health: Life/Bio &amp; Lab Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Medical Imaging/CT.MRI.XRAY.PET etc.</masterLabel>
+            <translation><!-- Health: Medical Imaging/CT.MRI.XRAY.PET etc. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Medical Ultrasound Imaging</masterLabel>
+            <translation><!-- Health: Medical Ultrasound Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imaging / EOIR</masterLabel>
+            <translation><!-- Imaging / EOIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial - Other</masterLabel>
+            <translation><!-- Industrial - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial - Test &amp; Measuring Equipment</masterLabel>
+            <translation><!-- Industrial - Test &amp; Measuring Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Gateways</masterLabel>
+            <translation><!-- Industrial Gateways --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial PCs</masterLabel>
+            <translation><!-- Industrial PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Ruggedized Servers</masterLabel>
+            <translation><!-- Industrial Ruggedized Servers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Smart Camera</masterLabel>
+            <translation><!-- Industrial Smart Camera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intelligence / Cybersecurity</masterLabel>
+            <translation><!-- Intelligence / Cybersecurity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intelligent Vending &amp; Dispensing</masterLabel>
+            <translation><!-- Intelligent Vending &amp; Dispensing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Flatpanel Displays / Whiteboards</masterLabel>
+            <translation><!-- Interactive Flatpanel Displays / Whiteboards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Karaoke Machines</masterLabel>
+            <translation><!-- Karaoke Machines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kiosk</masterLabel>
+            <translation><!-- Kiosk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics and Asset Management</masterLabel>
+            <translation><!-- Logistics and Asset Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lottery</masterLabel>
+            <translation><!-- Lottery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>M2M</masterLabel>
+            <translation><!-- M2M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEC/Edge Cloud</masterLabel>
+            <translation><!-- MEC/Edge Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military/Defense</masterLabel>
+            <translation><!-- Military/Defense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motion Controllers &amp; CNC&apos;s</masterLabel>
+            <translation><!-- Motion Controllers &amp; CNC&apos;s --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAS System</masterLabel>
+            <translation><!-- NAS System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFVi / OssBss / Mano</masterLabel>
+            <translation><!-- NFVi / OssBss / Mano --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance: Other</masterLabel>
+            <translation><!-- Network Appliance: Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance: Security</masterLabel>
+            <translation><!-- Network Appliance: Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Demarcation CPE</masterLabel>
+            <translation><!-- Network Demarcation CPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Media</masterLabel>
+            <translation><!-- Network Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office Automation - Other</masterLabel>
+            <translation><!-- Office Automation - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLC &amp; PAC</masterLabel>
+            <translation><!-- PLC &amp; PAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Point of Sale</masterLabel>
+            <translation><!-- Point of Sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ports, Passenger Terminals, Passenger Infotainment, Displays, Ticketing</masterLabel>
+            <translation><!-- Ports, Passenger Terminals, Passenger Infotainment, Displays, Ticketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Printers/Scanners</masterLabel>
+            <translation><!-- Printers/Scanners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Projectors</masterLabel>
+            <translation><!-- Projectors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Sector - Other</masterLabel>
+            <translation><!-- Public Sector - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Sector - Ruggedized PCs</masterLabel>
+            <translation><!-- Public Sector - Ruggedized PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAN/Edge</masterLabel>
+            <translation><!-- RAN/Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFID Sensor Platform</masterLabel>
+            <translation><!-- RFID Sensor Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar/ Electronic Warfare</masterLabel>
+            <translation><!-- Radar/ Electronic Warfare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Railways -Track Side Units, Rolling Stock, In vehicle, Locomotive</masterLabel>
+            <translation><!-- Railways -Track Side Units, Rolling Stock, In vehicle, Locomotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC</masterLabel>
+            <translation><!-- Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics</masterLabel>
+            <translation><!-- Robotics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics - Commercial</masterLabel>
+            <translation><!-- Robotics - Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics - other</masterLabel>
+            <translation><!-- Robotics - other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Routers</masterLabel>
+            <translation><!-- Routers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB Gateway</masterLabel>
+            <translation><!-- SMB Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Safety and Security</masterLabel>
+            <translation><!-- Safety and Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secure Communications</masterLabel>
+            <translation><!-- Secure Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sensor Platform</masterLabel>
+            <translation><!-- Sensor Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server</masterLabel>
+            <translation><!-- Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server - HPC</masterLabel>
+            <translation><!-- Server - HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping - In vessel computers, Displays, Gateways &amp; Autonomous</masterLabel>
+            <translation><!-- Shipping - In vessel computers, Displays, Gateways &amp; Autonomous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Building</masterLabel>
+            <translation><!-- Smart Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart City - Other</masterLabel>
+            <translation><!-- Smart City - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Home</masterLabel>
+            <translation><!-- Smart Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Lighting</masterLabel>
+            <translation><!-- Smart Lighting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Parking</masterLabel>
+            <translation><!-- Smart Parking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Defined Cockpit</masterLabel>
+            <translation><!-- Software Defined Cockpit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage - HPC</masterLabel>
+            <translation><!-- Storage - HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Studio Cameras, Multi-viewers, Editors</masterLabel>
+            <translation><!-- Studio Cameras, Multi-viewers, Editors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Studio Router/Switcher</masterLabel>
+            <translation><!-- Studio Router/Switcher --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switches</masterLabel>
+            <translation><!-- Switches --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thin Client, Cloud Client, Edge Client</masterLabel>
+            <translation><!-- Thin Client, Cloud Client, Edge Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transactional Retail - Other</masterLabel>
+            <translation><!-- Transactional Retail - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation - Electric Vehicle</masterLabel>
+            <translation><!-- Transportation - Electric Vehicle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation - Other</masterLabel>
+            <translation><!-- Transportation - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video - AI Box</masterLabel>
+            <translation><!-- Video - AI Box --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video - Other</masterLabel>
+            <translation><!-- Video - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Conferencing</masterLabel>
+            <translation><!-- Video Conferencing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video IP Cameras</masterLabel>
+            <translation><!-- Video IP Cameras --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video NVR / Recorder / Gateway / Server</masterLabel>
+            <translation><!-- Video NVR / Recorder / Gateway / Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud Media</masterLabel>
+            <translation><!-- Visual Cloud Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Retail - Other</masterLabel>
+            <translation><!-- Visual Retail - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Retail - Visual Data Device (VDD)/Smart Edge Module (SEM)</masterLabel>
+            <translation><!-- Visual Retail - Visual Data Device (VDD)/Smart Edge Module (SEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Solutions (Displays) - Other</masterLabel>
+            <translation><!-- Visual Solutions (Displays) - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Solutions - Interactive Whiteboards (IWB) - Corporate</masterLabel>
+            <translation><!-- Visual Solutions - Interactive Whiteboards (IWB) - Corporate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voting Machines</masterLabel>
+            <translation><!-- Voting Machines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless &amp; Wireline Core</masterLabel>
+            <translation><!-- Wireless &amp; Wireline Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Access CRAN/VRAN</masterLabel>
+            <translation><!-- Wireless Access CRAN/VRAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Access Macro/Micro BTS/Small</masterLabel>
+            <translation><!-- Wireless Access Macro/Micro BTS/Small --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Backhaul/Transport</masterLabel>
+            <translation><!-- Wireless Backhaul/Transport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Baseband</masterLabel>
+            <translation><!-- Wireless Baseband --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Fronthaul</masterLabel>
+            <translation><!-- Wireless Fronthaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Radio</masterLabel>
+            <translation><!-- Wireless Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Remote Radio Head</masterLabel>
+            <translation><!-- Wireless Remote Radio Head --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline &amp; Broadband Access</masterLabel>
+            <translation><!-- Wireline &amp; Broadband Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation</masterLabel>
+            <translation><!-- Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vCPE/uCPE/SD-WAN premises</masterLabel>
+            <translation><!-- vCPE/uCPE/SD-WAN premises --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Segment --></label>
+        <name>core_cpq_product_segment_nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Infra. / Networking</masterLabel>
+            <translation><!-- Comms Infra. / Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Home</masterLabel>
+            <translation><!-- Connected Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Computing</masterLabel>
+            <translation><!-- Data Center Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - AR/VR/MR - Augmen./Virtual/Mixed Reality</masterLabel>
+            <translation><!-- Embedded - AR/VR/MR - Augmen./Virtual/Mixed Reality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - ASIC Proto</masterLabel>
+            <translation><!-- Embedded - ASIC Proto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Automotive</masterLabel>
+            <translation><!-- Embedded - Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Autonomous Driving</masterLabel>
+            <translation><!-- Embedded - Autonomous Driving --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Broadcast</masterLabel>
+            <translation><!-- Embedded - Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Consumer Electronics</masterLabel>
+            <translation><!-- Embedded - Consumer Electronics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Drones</masterLabel>
+            <translation><!-- Embedded - Drones --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Energy</masterLabel>
+            <translation><!-- Embedded - Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Gaming &amp; Entertainment</masterLabel>
+            <translation><!-- Embedded - Gaming &amp; Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Health Sector</masterLabel>
+            <translation><!-- Embedded - Health Sector --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Industrial</masterLabel>
+            <translation><!-- Embedded - Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Intelligent Transportation</masterLabel>
+            <translation><!-- Embedded - Intelligent Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Office Automation</masterLabel>
+            <translation><!-- Embedded - Office Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Public Sector</masterLabel>
+            <translation><!-- Embedded - Public Sector --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Robotics</masterLabel>
+            <translation><!-- Embedded - Robotics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Sensors</masterLabel>
+            <translation><!-- Embedded - Sensors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Smart Building</masterLabel>
+            <translation><!-- Embedded - Smart Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Smart City</masterLabel>
+            <translation><!-- Embedded - Smart City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Smart Home</masterLabel>
+            <translation><!-- Embedded - Smart Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Transactional Retail</masterLabel>
+            <translation><!-- Embedded - Transactional Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Video</masterLabel>
+            <translation><!-- Embedded - Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - Visual Retail</masterLabel>
+            <translation><!-- Embedded - Visual Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded - eODM</masterLabel>
+            <translation><!-- Embedded - eODM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless &amp; Connectivity</masterLabel>
+            <translation><!-- Wireless &amp; Connectivity --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Production End Date --></label>
+        <name>core_cpq_production_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- QL With PRID Deactivation --></label>
+        <name>core_cpq_ql_with_prid_deactivation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Approved Date --></label>
+        <name>core_cpq_quote_approved_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Created date --></label>
+        <name>core_cpq_quote_created_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date the user can decide when the quote gets expired, --></help>
+        <label><!-- Quote Expiry Date --></label>
+        <name>core_cpq_quote_expiry_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Type --></label>
+        <name>core_cpq_quote_line_type_txt__c</name>
+        <picklistValues>
+            <masterLabel>Flat</masterLabel>
+            <translation><!-- Flat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prototype</masterLabel>
+            <translation><!-- Prototype --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qty Limited</masterLabel>
+            <translation><!-- Qty Limited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Step</masterLabel>
+            <translation><!-- Step --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Time Limited</masterLabel>
+            <translation><!-- Time Limited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VTP</masterLabel>
+            <translation><!-- VTP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote # --></label>
+        <name>core_cpq_quote_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Owner --></label>
+        <name>core_cpq_quote_owner_disty_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Owner --></label>
+        <name>core_cpq_quote_owner_name__c</name>
+        <relationshipLabel><!-- Quotes (Quote Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote ref --></label>
+        <name>core_cpq_quote_ref__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Rejected Date --></label>
+        <name>core_cpq_quote_rejected_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Helps to identify whether the quote has been revised or not at least once --></help>
+        <label><!-- Quote Revised --></label>
+        <name>core_cpq_quote_revised_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Type --></label>
+        <name>core_cpq_quote_type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Budgetary</masterLabel>
+            <translation><!-- Budgetary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Pricing</masterLabel>
+            <translation><!-- Contract Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Win</masterLabel>
+            <translation><!-- Design Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tools</masterLabel>
+            <translation><!-- Tools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer Pricing</masterLabel>
+            <translation><!-- Transfer Pricing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select the checkbox and click Quick Save/Save button prior to Quote submission --></help>
+        <label><!-- Ready for Submission --></label>
+        <name>core_cpq_ready_for_submission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>core_cpq_record_type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Req Email --></label>
+        <name>core_cpq_req_email_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor --></label>
+        <name>core_cpq_requestor_disty_view_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor --></label>
+        <name>core_cpq_requestor_nm__c</name>
+        <relationshipLabel><!-- Quotes (Requestor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Review Date --></label>
+        <name>core_cpq_review_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reviewer --></label>
+        <name>core_cpq_reviewer__c</name>
+        <relationshipLabel><!-- Quotes (Reviewer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Reviewer Manager --></label>
+        <name>core_cpq_reviewer_mgr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision # --></label>
+        <name>core_cpq_revision_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Pricing Parent --></label>
+        <name>core_cpq_sap_ecp_nm__c</name>
+        <relationshipLabel><!-- Quotes (SAP ECP) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>core_cpq_segment_nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Inference</masterLabel>
+            <translation><!-- AI Inference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Training</masterLabel>
+            <translation><!-- AI Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Prototyping</masterLabel>
+            <translation><!-- ASIC Prototyping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Prototyping &amp; Emulation</masterLabel>
+            <translation><!-- ASIC Prototyping &amp; Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATE &amp; Semiconductor Tester</masterLabel>
+            <translation><!-- ATE &amp; Semiconductor Tester --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Access</masterLabel>
+            <translation><!-- Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application-Other</masterLabel>
+            <translation><!-- Application-Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive (Passenger Vehicles)</masterLabel>
+            <translation><!-- Automotive (Passenger Vehicles) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Backhaul</masterLabel>
+            <translation><!-- Backhaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baseband</masterLabel>
+            <translation><!-- Baseband --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blockchain</masterLabel>
+            <translation><!-- Blockchain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMM Test Equipment</masterLabel>
+            <translation><!-- COMM Test Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cable Access</masterLabel>
+            <translation><!-- Cable Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Carrier Access</masterLabel>
+            <translation><!-- Carrier Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coherent</masterLabel>
+            <translation><!-- Coherent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comp Storage</masterLabel>
+            <translation><!-- Comp Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core</masterLabel>
+            <translation><!-- Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Analytics</masterLabel>
+            <translation><!-- Data Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diagnostic Imaging</masterLabel>
+            <translation><!-- Diagnostic Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Gaming</masterLabel>
+            <translation><!-- Digital Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver Assistance</masterLabel>
+            <translation><!-- Driver Assistance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-Vehicle</masterLabel>
+            <translation><!-- E-Vehicle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-vehicle / Under the Hood</masterLabel>
+            <translation><!-- E-vehicle / Under the Hood --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ElectroMedical</masterLabel>
+            <translation><!-- ElectroMedical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emulation</masterLabel>
+            <translation><!-- Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FSI</masterLabel>
+            <translation><!-- FSI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fronthaul</masterLabel>
+            <translation><!-- Fronthaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Analytics</masterLabel>
+            <translation><!-- Government Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guidance &amp; Control</masterLabel>
+            <translation><!-- Guidance &amp; Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Appliance</masterLabel>
+            <translation><!-- Home Appliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Audio/Video</masterLabel>
+            <translation><!-- Home Audio/Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IO Modules</masterLabel>
+            <translation><!-- IO Modules --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imaging/EOIR</masterLabel>
+            <translation><!-- Imaging/EOIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Networking</masterLabel>
+            <translation><!-- Industrial Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Other</masterLabel>
+            <translation><!-- Industrial Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infotainment</masterLabel>
+            <translation><!-- Infotainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy</masterLabel>
+            <translation><!-- Legacy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing/Control</masterLabel>
+            <translation><!-- Manufacturing/Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Devices</masterLabel>
+            <translation><!-- Mobile Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Robotics</masterLabel>
+            <translation><!-- Mobile Robotics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFV</masterLabel>
+            <translation><!-- NFV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking</masterLabel>
+            <translation><!-- Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Automotive Transportation</masterLabel>
+            <translation><!-- Non-Automotive Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Access</masterLabel>
+            <translation><!-- Other Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Broadcast</masterLabel>
+            <translation><!-- Other Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Consumer</masterLabel>
+            <translation><!-- Other Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Medical Products</masterLabel>
+            <translation><!-- Other Medical Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Military/Aero/Defense/Gov</masterLabel>
+            <translation><!-- Other Military/Aero/Defense/Gov --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Test Equipment</masterLabel>
+            <translation><!-- Other Test Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Wireless</masterLabel>
+            <translation><!-- Other Wireless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Wireline</masterLabel>
+            <translation><!-- Other Wireline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform Mgmt</masterLabel>
+            <translation><!-- Platform Mgmt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ProAV</masterLabel>
+            <translation><!-- ProAV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar/EW</masterLabel>
+            <translation><!-- Radar/EW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation><!-- Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMARTNIC</masterLabel>
+            <translation><!-- SMARTNIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secure Communications</masterLabel>
+            <translation><!-- Secure Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Studio</masterLabel>
+            <translation><!-- Studio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surveillance</masterLabel>
+            <translation><!-- Surveillance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transmission</masterLabel>
+            <translation><!-- Transmission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation Data Center</masterLabel>
+            <translation><!-- Transportation Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation Infrastructure</masterLabel>
+            <translation><!-- Transportation Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation Other</masterLabel>
+            <translation><!-- Transportation Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation as a Service</masterLabel>
+            <translation><!-- Transportation as a Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Display</masterLabel>
+            <translation><!-- Video Display --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vision Fog Server</masterLabel>
+            <translation><!-- Vision Fog Server --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Select QL --></label>
+        <name>core_cpq_select_ql__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>core_cpq_send_email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship End Date --></label>
+        <name>core_cpq_ship_end_date_disty_view__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Start Date --></label>
+        <name>core_cpq_ship_start_date_disty_view__c</name>
+    </fields>
+    <fields>
+        <label><!-- Siebel Quote # --></label>
+        <name>core_cpq_siebel_quote_no_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Siebel RFQ # --></label>
+        <name>core_cpq_siebel_rfq_num_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Site --></label>
+        <name>core_cpq_site_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status change Reason --></label>
+        <name>core_cpq_status_change_reason_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>core_cpq_status_txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Review</masterLabel>
+            <translation><!-- In Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation><!-- Recalled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>core_cpq_tool_type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Parent Quote --></label>
+        <name>core_cpq_ultimate_parent_quote__c</name>
+        <relationshipLabel><!-- Quotes (Quote) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Parent Quote Number --></label>
+        <name>core_cpq_ultimate_quote_number_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volume --></label>
+        <name>core_cpq_volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Years --></label>
+        <name>core_cpq_years_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip --></label>
+        <name>core_cpq_zip_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Life Time Quote Value --></label>
+        <name>price_lifetime_quote_value_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System Name --></label>
+        <name>source_system_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System Id --></label>
+        <name>src_sys_id__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Número da cotação</nameFieldLabel>
+    <recordTypes>
+        <label><!-- PSG Cancel --></label>
+        <name>PSG_Cancel</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Approved Quote --></description>
+        <label><!-- PSG Quote - Approved --></label>
+        <name>PSG_Quote_Approved</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- PSG Quote Cancelled --></label>
+        <name>PSG_Quote_Cancelled</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents the Contract Pricing Quotes --></description>
+        <label><!-- PSG Quote - Contract Pricing --></label>
+        <name>PSG_Quote_Contract_Pricing</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents deactivated quotes --></description>
+        <label><!-- PSG Quote - Inactive Quotes --></label>
+        <name>PSG_Quote_Inactive_Quotes</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- PSG Quote - New --></label>
+        <name>PSG_Quote_New</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents PSG Quotes in Cancelled state --></description>
+        <label><!-- PSG Quote - Read Only --></label>
+        <name>PSG_Quote_ReadOnly</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- PSG Quote - Submitted --></label>
+        <name>PSG_Quote_Submitted</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Financial Incentive Tender Quote in ReadOnly Status. --></description>
+        <label><!-- Pricing Financial Incentive Quote - Read Only --></label>
+        <name>Pricing_Financial_Incentive_Quote_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Financial Incentive Tender Quote in Submitted Status. --></description>
+        <label><!-- Pricing Financial Incentive Quote - Submitted --></label>
+        <name>Pricing_Financial_Incentive_Quote_Submitted</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Ethernet Quote in Create Status --></description>
+        <label><!-- Ethernet --></label>
+        <name>Pricing_NIC_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Optane™ PMem Quote in Create Status --></description>
+        <label><!-- Optane™ PMem --></label>
+        <name>Pricing_PMem_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Optane™ SSD Quote in Create Status. --></description>
+        <label><!-- Optane™ SSD --></label>
+        <name>Pricing_SSD_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Small Volume Quotes - Data Center Xeon® CPU Quote in Create Status --></description>
+        <label><!-- Small Volume Quotes - Data Center Xeon® CPU --></label>
+        <name>Pricing_Small_Volume_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Software &amp; Services Quote in Create Status. --></description>
+        <label><!-- Software &amp; Services --></label>
+        <name>Pricing_Software_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Software &amp; Services Quote in Edit Status. --></description>
+        <label><!-- Pricing Software Quote - Edit --></label>
+        <name>Pricing_Software_Quote_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Software &amp; Services Quote in Readonly Status. --></description>
+        <label><!-- Pricing Software Quote - Readonly --></label>
+        <name>Pricing_Software_Quote_Readonly</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Software &amp; Services Quote in Submit Status. --></description>
+        <label><!-- Pricing Software Quote - Submit --></label>
+        <name>Pricing_Software_Quote_Submit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Client Quote in Create Status. --></description>
+        <label><!-- Client --></label>
+        <name>Pricing_Tender_Client_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Client Tender Quote in Edit Status. --></description>
+        <label><!-- Pricing Tender Client Quote - Edit --></label>
+        <name>Pricing_Tender_Client_Quote_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Client Tender Quote in ReadOnly Status. --></description>
+        <label><!-- Pricing Tender Client Quote - ReadOnly --></label>
+        <name>Pricing_Tender_Client_Quote_ReadOnly</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Client Tender Quote in Submitted Status. --></description>
+        <label><!-- Pricing Tender Client Quote - Submitted --></label>
+        <name>Pricing_Tender_Client_Quote_Submitted</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Data Center Quote in Create Status. --></description>
+        <label><!-- Data Center --></label>
+        <name>Pricing_Tender_Quote_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote in Edit Status. --></description>
+        <label><!-- Pricing Tender Quote - Edit --></label>
+        <name>Pricing_Tender_Quote_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote in Rejected Status. --></description>
+        <label><!-- Pricing Tender Quote - ReadOnly --></label>
+        <name>Pricing_Tender_Quote_ReadOnly</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote in Submitted Status. --></description>
+        <label><!-- Pricing Tender Quote - Submitted --></label>
+        <name>Pricing_Tender_Quote_Submitted</name>
+    </recordTypes>
+    <sharingReasons>
+        <label><!-- PSG PGM Mapping --></label>
+        <name>PSG_PGM_Mapping</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Account Team Group --></label>
+        <name>Pricing_Account_Team_Group</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Opportunity Sharing --></label>
+        <name>Pricing_Opportunity_Sharing</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Partner Group Mapping --></label>
+        <name>Pricing_Partner_Group_Mapping</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Opportunity SW Sharing --></label>
+        <name>Pricing_SW_Opportunity_Sharing</name>
+    </sharingReasons>
+    <validationRules>
+        <errorMessage><!-- Editing is not permitted by Account Executives or ITS&apos;s after quote or quote line is submitted for approval. --></errorMessage>
+        <name>Block_AE_to_Edit_For_Submitted_Quotes</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter the email address for the Intel employee who is the Account Executive. If no Account Executive is covering this end customer, please leave this field blank. --></errorMessage>
+        <name>Email_Validation_Intel_Dot_Com_For_AE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter the email address for the Sales Rep at Intel for your account. --></errorMessage>
+        <name>Email_Validation_for_INTEL_COM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Contract Manufacturer Account selected is invalid.
+Please verify and re-select the appropriate Contract Manufacturer Account or contact your system admin. --></errorMessage>
+        <name>PSG_CM_Name_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SOS can&apos;t Create/Modify a Contract Pricing Quote. --></errorMessage>
+        <name>PSG_CP_Quote_Edit_Blocked_For_SOS</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Distributor Account selected is invalid.
+Please verify and re-select the appropriate Distributor Account or contact your system admin. --></errorMessage>
+        <name>PSG_Distributor_Account_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Selected account is not a valid End Customer --></errorMessage>
+        <name>PSG_End_Customer_Account_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry date cannot be less than the Quote created date. --></errorMessage>
+        <name>PSG_Expiry_Date_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote has been updated. Please refresh. --></errorMessage>
+        <name>PSG_In_Progress_Disable_Edit_For_Disty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You Don&apos;t Have Edit Permission for Quotes in &apos;In Review&apos; Status. Recall the Quote to proceed. --></errorMessage>
+        <name>PSG_In_Review_Blocked_For_SOS</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- please do not use this screen. --></errorMessage>
+        <name>PSG_Prevent_Creating_Quote_DistyList</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Types should have equivalent Design Win Quotes as Parent Quotes. --></errorMessage>
+        <name>PSG_Quote_Type_Equivalent_To_Parent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Record cannot be created or edited during Freeze Period! --></errorMessage>
+        <name>PSG_Restrict_Quote_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date and End Date is mandatory for Corporate Tools Quote --></errorMessage>
+        <name>PSG_Start_Date_End_Date_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Proposal Due Date has already passed. Please enter a Proposal Due Date more than one day in the future. --></errorMessage>
+        <name>Pricing_Bid_Date_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Customer URL field is not editable when quote is in Won/Lost/Approved Status. --></errorMessage>
+        <name>Pricing_EndCustomerURLEditonReadOnlyPage</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quota Exclusion Reason cannot be blank or changed when Exclude from Volume Exception Quota is checked or Exclude from Volume Exception Quota cannot be unchecked when Quota Exclusion Reason is not blank. --></errorMessage>
+        <name>Pricing_ExcludeRes_QuotaExclude_ChgCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote cannot be edited while On Hold. --></errorMessage>
+        <name>Pricing_HoldStatus_RestrictUpdate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Intel Response Requested By Date cannot be later than Proposal Due Date. --></errorMessage>
+        <name>Pricing_IntelResponseDtProposalDt_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Intel Response Requested By Date has already passed. Please enter a Intel Response Requested By Date more than one day in the future. --></errorMessage>
+        <name>Pricing_IntelResponseReqByDate_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide a reason for re-routing the quote. --></errorMessage>
+        <name>Pricing_MandateReason_OnPricingMgrEdit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Market Segment cannot be edited after deal is created in My Deals. --></errorMessage>
+        <name>Pricing_MarketSegment_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Value must be one or multiple email addresses separated by semi-colons. Intel email addresses are not allowed. --></errorMessage>
+        <name>Pricing_MultipleEmailCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pricing Manager and Re-Routing Reason is not editable for your role. --></errorMessage>
+        <name>Pricing_PricingMgrEdit_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Exclude from Volume Exception Quota cannot be checked and Quota Exclusion Reason cannot have value when Volume Exception Quota is unchecked. --></errorMessage>
+        <name>Pricing_QuotaExclude_ExcludeReason_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Your entry is too short! Minimum 10 characters required for &quot;Deal description&quot; and &quot;Competition Assumptions&quot; and 2 characters required for &quot;Current End Customer Product Provider&quot; and &quot;Consumption Countries&quot; --></errorMessage>
+        <name>Pricing_QuoteComments_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Editing is not permitted for Rejected quote once the folio has been created in My Deals. --></errorMessage>
+        <name>Pricing_QuoteRestrict_AfterRejection_RPM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have permission to edit at this Quote stage. --></errorMessage>
+        <name>Pricing_Restrict_AE_Edit_Primary_Contact</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Small Volume Quote creation is no longer supported. --></errorMessage>
+        <name>Pricing_Restrict_New_SVD_Quotes</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Your role does not allow editing Reference Request ID after the quote has been submitted to Intel. --></errorMessage>
+        <name>Pricing_Restrict_Reference_Request_ID</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Small Volume Quotes - Data Center Xeon® CPU is not allowed for PRC region. --></errorMessage>
+        <name>Pricing_SVD_EndCustomeRegion_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please update Primary checkbox as True to change Status as Accepted. --></errorMessage>
+        <name>Pricing_SW_Accepted_but_not_Primary</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Additional Discount % should be in between 0 - 100 --></errorMessage>
+        <name>Pricing_SW_Additional_Discount_0_to_100</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Price required for Custom workload. Contact SWDealDesk@intel.com for price entry --></errorMessage>
+        <name>Pricing_SW_Custom_Product_Flag_Price_0</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry Date Should be 14 days greater than today --></errorMessage>
+        <name>Pricing_SW_Expiry_Date_14_days_or_less</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No changes allowed on Quote when Quote Status is Accepted/Denied/Rejected --></errorMessage>
+        <name>Pricing_SW_FinalStatus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot create Software &amp; Services Quote directly from Quote tab, Please create Software &amp; Services Quote from Opportunity. --></errorMessage>
+        <name>Pricing_SW_Restrict_DirectQuote_creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Submit Quote for Approval, as no Quote Lines are added to Quote. --></errorMessage>
+        <name>Pricing_SW_Restrict_QuoteSubmission_0QL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date and Subscription Term are required to save the quote --></errorMessage>
+        <name>Pricing_SW_StartDate_SubscriptionTerm</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date cannot be less than Today --></errorMessage>
+        <name>Pricing_SW_Start_Date_less_than_Today</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot submit the Quote, as the Opportunity has already been Submitted/Approved. --></errorMessage>
+        <name>Pricing_SW_Status_Changed_Opportunity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status can be updated only from Approved to Accepted or Denied. --></errorMessage>
+        <name>Pricing_SW_Status_Transition_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry Date must be more than 14 days in the future before quote can be submitted. --></errorMessage>
+        <name>Pricing_SW_Submit_For_ApprovalExpiryDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a contact who belongs to the account and is authorized to use Intel Quote Request. --></errorMessage>
+        <name>Pricing_Tender_ContactValidator</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In End Customer&apos; is selected in the End Customer field, the name of the end customer must be provided. --></errorMessage>
+        <name>Pricing_Tender_Write_In_End_Customer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;ANY&apos; is not a valid End Customer. Please update the Write In End Customer value. --></errorMessage>
+        <name>Pricing_Tender_Write_In_End_Customer_Any</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In End Customer field is used to provide the name of an end customer missing from the End Customer field. It must be blank unless the &apos;Write In End Customer&apos; option is selected in the End Customer field. --></errorMessage>
+        <name>Pricing_Tender_Write_In_End_Customer_Res</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quota Exclusion Reason is required whenever Exclude from Volume Exception Quota is checked. --></errorMessage>
+        <name>Pricing_Volume_Exclude_Reason_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The pipe (|) character is not allowed in the Write In End Customer field; Please enter a valid value. --></errorMessage>
+        <name>Pricing_WriteInEndCustomer_NoPipeCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity you are trying to select is software related opportunity --></errorMessage>
+        <name>Pricing_opportunity_Lookup_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The End Date must come after the Start Date. --></errorMessage>
+        <name>SBQQ__End_Date_Before_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- First Segment Term End Date must fall between Quote Start Date and Quote End Date --></errorMessage>
+        <name>SBQQ__Invalid_First_Segment_Term_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The subscription term must be a positive number. --></errorMessage>
+        <name>SBQQ__Invalid_Subscription_Term</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pricing End Date is before Pricing Start Date. Please enter a Pricing End Date that is after the Pricing Start Date. --></errorMessage>
+        <name>Shipment_End_Dt_Before_Shipment_Start_Dt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Selected Opportunity is not Valid for this End Customer --></errorMessage>
+        <name>Validate_Oppty_Account_with_End_Customer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Either Pricing Start Date or Pricing End Date has already passed. Please ensure both fields are in the future. --></errorMessage>
+        <name>shipment_date_check</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Preview_Approval --></label>
+        <name>Preview_Approval</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Pricing_Create_Quote_Letter --></label>
+        <name>Pricing_Create_Quote_Letter</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Pricing_Export_List_View --></label>
+        <name>Pricing_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Recall_Approval --></label>
+        <name>Recall_Approval</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CalculateQuote --></label>
+        <name>SBQQ__CalculateQuote</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CloneWithRelated --></label>
+        <name>SBQQ__CloneWithRelated</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CloneWithRelatedClassic --></label>
+        <name>SBQQ__CloneWithRelatedClassic</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateOrderFromQuote --></label>
+        <name>SBQQ__CreateOrderFromQuote</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EditLines --></label>
+        <name>SBQQ__EditLines</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GenerateDocument --></label>
+        <name>SBQQ__GenerateDocument</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ImportLines --></label>
+        <name>SBQQ__ImportLines</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- IncludeDocument --></label>
+        <name>SBQQ__IncludeDocument</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ModifyQuoteTerms --></label>
+        <name>SBQQ__ModifyQuoteTerms</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewDocument --></label>
+        <name>SBQQ__PreviewDocument</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RefreshMultiplePrices --></label>
+        <name>SBQQ__RefreshMultiplePrices</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RefreshPrices --></label>
+        <name>SBQQ__RefreshPrices</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Submit_for_Approval --></label>
+        <name>Submit_for_Approval</name>
+    </webLinks>
+</CustomObjectTranslation>

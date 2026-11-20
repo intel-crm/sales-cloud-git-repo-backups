@@ -1,0 +1,45 @@
+<aura:documentation>
+	<aura:description>
+		<p>Partner Card Component</p>
+		<!-- IPA2.0 + US TWC4497-1631 -->
+		<!-- <a
+			href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/product-and-offering-card-variations?language=en_US">
+			Card Variation Listing
+		</a>
+		<br />
+		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l0-marketplace?language=en_US">
+			Preview in L0 page - Featured Offering Cards - Partner
+		</a> -->
+		<br />
+		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l2?language=en_US">
+			Preview in L2 Search - Search Results Partner
+		</a>
+		<br />
+		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l3-partner-detail?language=en_US">
+			Preview in L3 Partner - Company information right rail
+		</a>
+		<br />
+		<!-- LAST UPDATED DATE / VERSION -->
+		<p>Last Updated: 8/8/2019</p>
+		<p>CurrentVersion: 1.5</p>
+		<hr />
+		<!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+		<!-- CHANGELOG ADD ANY UPDATES HERE -->
+		<hr />
+		<p>Change Log</p>
+		<p>1.44</p>
+		<p>Css updates</p>
+		<p>1.31</p>
+		<p>Made Title and Image a link</p>
+		<p>1.2</p>
+		<p>Added option to display descriptions on card display</p>
+		<p>1.1</p>
+		<p>Added option to not display attributes</p>
+
+
+
+
+		<!-- CHANGELOG -->
+	</aura:description>
+</aura:documentation>

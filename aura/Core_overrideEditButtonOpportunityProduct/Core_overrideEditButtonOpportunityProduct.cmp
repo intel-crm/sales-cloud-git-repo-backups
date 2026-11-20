@@ -1,0 +1,41 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader,force:hasRecordId,force:hasSObjectName" access="global" 
+                controller="core_updateOpptyLineItemLWC">
+    <aura:attribute name="recordId" type="Id"/>  
+    <aura:attribute name="objectApiName" type="String" default="OpportunityLineItem"/>
+    <aura:attribute name="showEditField" type="Boolean" default="true"/>
+    <aura:attribute name="invokedFromAura" type="Boolean" default="true"/>
+    <aura:attribute name="isModalOpen" type="Boolean" default="false"/>
+    
+    <aura:attribute name="isPartnerProfile" type="Boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <aura:if isTrue="{! and(not(v.isPartnerProfile),v.isModalOpen)}">
+        <div class="slds-modal__container slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__header"> 
+                <h2 class="slds-text-heading--medium" align="center">
+                    Edit Opportunity Product
+                </h2>
+                <button class="slds-button slds-modal__close slds-button--icon" title="Close" onclick="{!c.fireCancelEvent}">
+                    <lightning:icon iconName="utility:close" size = "small" alternativeText="Close"/>
+                </button>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <c:core_ReadOnly_FieldSet_Form                         
+                                                   recordId="{!v.recordId}"
+                                                   aura:id="leadForm"                           
+                                                   objectApiName = "{!v.objectApiName}"
+                                                   showEditField = "{!v.showEditField}"                          
+                                                   invokedFromAura = "{!v.invokedFromAura}">                       
+                    </c:core_ReadOnly_FieldSet_Form>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <div class="slds-grid slds-grid_align-center">
+                    <button class="slds-button slds-button--neutral" onclick="{!c.fireCancelEvent}">Cancel</button>
+                    <button class="slds-button slds-button--brand" onclick="{!c.fireSaveEvent}">Save</button>
+                </div>
+            </div>
+        </div>
+    </aura:if>   
+</aura:component>

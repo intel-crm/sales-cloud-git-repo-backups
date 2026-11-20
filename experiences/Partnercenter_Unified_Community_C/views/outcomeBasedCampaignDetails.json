@@ -1,0 +1,50 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "8ef358a0-c728-4883-8b51-2d30e7f272af",
+  "label" : "Outcome-based Campaign Details",
+  "regions" : [ {
+    "id" : "715f94f7-ec0f-4d0d-a379-e2431f1a769e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_OutcomeBasedCampDetail",
+      "id" : "a88b9309-36b4-4801-b34e-83b6b1146f25",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "46ee2236-7227-4c5c-8cdd-587c470e0457",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "9f215b95-8e56-4506-a943-db14967fbc9e",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "fc4e6714-f23b-47c7-8d40-32fcfb1a176c",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Outcome-based Campaign Details"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "37838ab5-1701-4f7b-b510-7d50a25f46e7",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "98352149-de93-43ae-891b-773b2de14ca4",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-outcome-based-campaign-details"
+}

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Account Onboarding --></value>
+    </caseValues>
+    <fields>
+        <help><!-- Intel/Agency Account to be onboarded. --></help>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Core_MDF_Account Onboarding (Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Program for which Intel/Agency Account to be onboarded. --></help>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program__c</name>
+        <relationshipLabel><!-- Core_MDF_Account Onboarding --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Multiple Domain values can be entered separated by semicolon(&apos;;&apos;), Example : intel.com --></help>
+        <label><!-- Domains --></label>
+        <name>Core_MDF_Domains_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host Region --></label>
+        <name>Core_MDF_Host_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label>パートナータイプ</label>
+        <name>Core_MDF_Partner_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Activating Partner</masterLabel>
+            <translation><!-- Activating Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Primary Partner</masterLabel>
+            <translation><!-- Primary Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Payment Type --></label>
+        <name>Core_MDF_Payment_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer (Credit Memo)</masterLabel>
+            <translation><!-- Customer (Credit Memo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer (Pass Through)</masterLabel>
+            <translation><!-- Customer (Pass Through) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer-NonPO</masterLabel>
+            <translation><!-- Customer-NonPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor (Cash)</masterLabel>
+            <translation><!-- Distributor (Cash) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor (Credit Memo)</masterLabel>
+            <translation><!-- Distributor (Credit Memo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Customer</masterLabel>
+            <translation><!-- Non-Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vistex (Cash)</masterLabel>
+            <translation><!-- Vistex (Cash) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vistex (Credit Memo)</masterLabel>
+            <translation><!-- Vistex (Credit Memo) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select the checkbox ,if Virtual Account needs to be created. --></help>
+        <label><!-- Virtual Account to be Created --></label>
+        <name>Core_MDF_SubParent_Account_to_be_Created__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Program Name --></label>
+        <name>Core_MDF_Technical_Program_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the Type of Account to be onboarded. --></help>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type__c</name>
+        <picklistValues>
+            <masterLabel>Agency Account</masterLabel>
+            <translation><!-- Agency Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal Account</masterLabel>
+            <translation><!-- Normal Account --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Enter the Virtual Account Name to be created. --></help>
+        <label><!-- Virtual Account Name --></label>
+        <name>Core_MDF_Virtual_Account_Name_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account for which Agency is Working. --></help>
+        <label><!-- Works For --></label>
+        <name>Core_MDF_Works_For__c</name>
+        <relationshipLabel><!-- Core_MDF_Account Onboarding (Works For) --></relationshipLabel>
+    </fields>
+    <nameFieldLabel><!-- Name --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- Client --></label>
+        <name>Core_MDF_Client_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client Co-Marketing Fund Boost --></label>
+        <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Co-GTM --></label>
+        <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Datacenter --></label>
+        <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Intel Partner Alliance --></label>
+        <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Service Provider Co-Marketing Fund --></label>
+        <name>Core_MDF_Service_Provider_Co_Marketing_Fund</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Host Region is not applicable for Agency Accounts --></errorMessage>
+        <name>Core_MDF_HostRegionVal_ForAgencyAcounts</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Host Region is only applicable for Intel Partner Alliance Program. --></errorMessage>
+        <name>Core_MDF_HostRegionVal_OtherPrograms</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Domains are not applicable for the selected program. --></errorMessage>
+        <name>Core_MDF_IPA_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Host Region is mandatory for Intel Partner Alliance Program. --></errorMessage>
+        <name>Core_MDF_IPA_HostRegionCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment Type is only applicable for Intel Partner Alliance Program and Ecosystem Extension Fund. --></errorMessage>
+        <name>Core_MDF_IPA_PaymentTypeCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Agency account type is not applicable for the selected program. --></errorMessage>
+        <name>Core_MDF_IPA_RetailValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account onboarding record cannot be edited --></errorMessage>
+        <name>Core_MDF_RestrictAccountOnboardEdit</name>
+    </validationRules>
+</CustomObjectTranslation>

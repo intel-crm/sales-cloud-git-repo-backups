@@ -1,0 +1,74 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "51cbd970-19ea-4bed-8bdf-15144dfe6876",
+  "label" : "MP Maintenance-Partner Category Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "9ca5eab6-c86c-4e15-97bf-8505303a9389",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "e7476ded-395a-4ef3-b7d0-050fc66dd9a2",
+        "zh_cn" : "51f6365a-f379-4457-8c5f-218b6d4c6fa4"
+      },
+      "renditions" : [ {
+        "id" : "51f6365a-f379-4457-8c5f-218b6d4c6fa4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e7476ded-395a-4ef3-b7d0-050fc66dd9a2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "bd14d39d-f81c-40e1-8eef-f9d351090311",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "96de32c3-993f-4462-832e-1202c0752454",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "7caeded6-a1a7-45b1-a372-42bf79f88463",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title} Partner"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "84108b3b-0b0b-42da-879a-9b5433aab5d0",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "73cd1e02-3e60-4b2c-9977-c4d1350674a0",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a94"
+}

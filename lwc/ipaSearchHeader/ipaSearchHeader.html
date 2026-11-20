@@ -1,0 +1,53 @@
+<template>
+    <div class="container slds-p-vertical_large search-header-container">
+        <div class="filters-applied-container">
+            <template if:true={filterTags.length}>
+                <div class="slds-p-right_medium filter-label">
+                    <p>{labels.filtersApplied}</p>
+                </div>
+            </template>
+            <template for:each={filterTags} for:item="tag">
+                <div class="pill"
+                    key={tag.id}
+                    data-count={tag.count}>
+                    {tag.label}<span class="pill-count">&nbsp;+{tag.count}</span>
+                    <div role="button" tabindex="0" class="pill-cancel"
+                        aria-label={tag.clearAriaLabel}
+                        data-id={tag.id}
+                        data-filter-name={tag.filterName}
+                        onclick={handleClearFilter}
+                        onkeydown={handleClearFilterAccessibility}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" title="close" class="cursor" size="xx-small"></lightning-icon>
+                    </div>
+                </div>
+            </template>
+            <template if:true={filterTags.length}>
+                <div class="clear filter-label">
+                    <div role="button" tabindex="0" onkeydown={handleClearAllFiltersAccessibility} onclick={handleClearAllFilters} class="text-upcase clear-all link-text text-bold slds-show_large">{labels.clearAllFilters}</div>
+                </div>
+            </template>
+        </div>
+        <div class="filters-count-sort-share-container">
+            <div class="total-results-container">
+                <template if:false={searching}>
+                    <p>{searchResponse.totalResults} {labels.results}</p>
+                </template>
+                <template if:true={filterTags.length}>
+                    <div onclick={handleClearAllFilters} class="text-upcase clear-all link-text text-bold slds-hide_large">{labels.clearAllFilters}</div>
+                </template>
+            </div>
+            <div class="select sort-by-select slds-show_large">
+                <template if:false={searchResponse.sortByOptions.length}>
+                    <lightning-spinner size="small"></lightning-spinner>
+                </template>
+                <select name="searchFilterSort" onchange={handleSelectFilter}>
+                    <template for:each={searchResponse.sortByOptions} for:item="option">
+                        <option key={option.label} value={option.value} selected={option.selected}>{option.label}</option>
+                    </template>
+                </select>
+            </div>
+            <c-ipa-share email-link={urlValueToCopy} email-body={categoryRecordLabel}></c-ipa-share>
+        </div>
+    </div>
+
+</template>

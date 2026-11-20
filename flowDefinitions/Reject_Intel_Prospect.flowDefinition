@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>1</activeVersionNumber>
+    <description>Flow to Reject Intel Prospects. It asks for Rejection Reason, Rejection Comments. Updates Lead State to &apos;Rejected&apos;, Rejection Reason, Rejection Comments on the Lead record.</description>
+    <masterLabel>Reject Intel Prospect</masterLabel>
+</FlowDefinition>

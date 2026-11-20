@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION_SPA</name>
+    <style>none</style>
+    <subject>Nuevo usuario añadido a la cuenta de Intel® Partner Alliance</subject>
+    <textOnly>Confirmar información de la cuenta
+
+{!UserName},
+
+Una persona ha sido agregada a la cuenta de Intel® Partner Alliance de {!Account.Name} por un representante de Intel u otro contacto de su empresa.
+
+Nombre de empresa: {!Account.Name}
+Identificación de la empresa: {!Account.AccountNumber}
+Contacto agregado: correo electrónico {!ContactEmail}
+Relación (función): {!AcrRoles}
+
+Si usted no aprobó esta actualización, inicie sesión para eliminar el contacto.
+
+Si tiene alguna duda, tenga a bien ponerse en contacto con nosotros a través de https://signin.intel.com/ContactUs?Culture=es-xl
+
+
+Atentamente,
+Su equipo de Intel® Partner Alliance
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 EE. UU. www.intel.com
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

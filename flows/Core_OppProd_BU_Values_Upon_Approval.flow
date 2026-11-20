@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>If_Not_Low_Touch</name>
+        <label>If Not Low Touch</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IF_not_Low_Touch_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.CRM_IsLowTouchAdmin_Chk__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>mainUpdate</targetReference>
+            </connector>
+            <label>IF not Low Touch Admin</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_OppProd_BU_Values_Upon_Approval workflow rule
+Workflow rule description: When a product status is set to &quot;Win Approved&quot;, stamp the current BU Short Name and BU Segment on the product.&quot;</description>
+    <environments>Default</environments>
+    <label>Core_OppProd_BU_Values_Upon_Approval</label>
+    <migratedFromWorkflowRuleName>Core_OppProd_BU_Values_Upon_Approval</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Stamp the current BU Product Segment
+Stamp the current BU Short Name</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Approved_BU_Product_Segment__c</field>
+            <value>
+                <elementReference>$Record.Core_BU_Product_Segment__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_BU_Short_Name__c</field>
+            <value>
+                <elementReference>$Record.Core_BU_Short_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_Not_Low_Touch</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Win Approved</stringValue>
+            </value>
+        </filters>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

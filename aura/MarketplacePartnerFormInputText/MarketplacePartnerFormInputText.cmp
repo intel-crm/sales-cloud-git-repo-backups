@@ -1,0 +1,35 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase">
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:attribute name="label" type="string" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="subType" type="string" default="text" description="Attribute corresponds to 'type' attribute of lightning:input."/>
+  <aura:attribute name="textValue" type="String" description="An initial value for the text input" />
+
+  <aura:attribute name="valueType" type="String" default="default" description="If set to 'complex' data binding will include input ID and any other related info"/>
+  <aura:attribute name="additionalValues" type="Object" />
+  <aura:attribute name="_value" type="Object" description="Internal tracking" />
+
+  <aura:attribute name="formatter" type="string" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="pattern" type="string" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="maxLength" type="integer" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="minLength" type="integer" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="max" type="object" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="min" type="object" description="Attribute corresponds to same on lightning:input."/>
+    
+  <!-- https://developer.salesforce.com/docs/component-library/bundle/lightning:input -->
+  <lightning:input aura:id="input"
+    type="{!v.subType}"
+    label="{!v.label}"
+    value="{!v._value}"
+    required="{!v.required}"
+    disabled="{!v.disabled}"
+    onblur="{!c.handleBlur}"
+    onchange="{!c.handleChange}"
+    formatter="{!v.formatter}"
+    pattern="{!v.pattern}"
+    max="{!v.max}"
+    min="{!v.min}"
+    />
+
+</aura:component>

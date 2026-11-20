@@ -1,0 +1,124 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "0fcae5d6-d8dc-49c7-bba2-e1313c399c17",
+  "label" : "Opportunity Product Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "d7b7cb81-acb7-473e-a1a2-cbbae2c4e5f4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "81202905-da7e-41a6-8936-77c3147ed8e2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "6be44b2e-1e9b-42b4-804e-07bf7ca89547",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d3520655-ffe3-4489-8574-8dacae4eda8a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "94db4e7e-4822-4fd6-b33d-8c097c784b21",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "eedd34fc-d959-4bd4-bd0c-c44758b4f3d1",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "937994be-cdf9-4f69-ab41-0e4971bd9df9",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2c0b1",
+            "tabName" : "Related"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "94db4e7e-4822-4fd6-b33d-8c097c784b21",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "81cc414a-2ea3-4558-97cf-1fb964a28d40",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "eedd34fc-d959-4bd4-bd0c-c44758b4f3d1",
+        "regionLabel" : "Details",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "customTitle" : "",
+            "parentRecordId" : "{!recordId}",
+            "relatedListName" : "DDR_L5_Product_Mappings__r",
+            "showBreadCrumbs" : true,
+            "showCustomTitle" : false,
+            "showManualRefreshButton" : true,
+            "showRowNumbers" : true
+          },
+          "componentName" : "forceCommunity:relatedList",
+          "id" : "8bd66ebb-29d8-46d9-b03b-42e8b5a4e27b",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "937994be-cdf9-4f69-ab41-0e4971bd9df9",
+        "regionLabel" : "Related",
+        "regionName" : "2c0b1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9a6c9d99-4858-4754-bed0-8b7d57749af1",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c094f7d0-5c49-4617-a21e-2021f67696b6",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "46c4ed12-2e72-46d5-80cd-407ac454832c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "type" : "view",
+  "viewType" : "detail-00k"
+}

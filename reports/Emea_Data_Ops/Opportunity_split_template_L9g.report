@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunitySplits$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunitySplits$Id</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunitySplits$SplitOwner</field>
+    </columns>
+    <columns>
+        <field>Opportunity.OpportunitySplits$SplitType</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001FRjKgAAL</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Opportunity split template</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Opportunity_Split__c</reportType>
+    <roleHierarchyFilter>Admin</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Core_Approved_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

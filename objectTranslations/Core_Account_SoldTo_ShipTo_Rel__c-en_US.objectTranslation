@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account SoldTo ShipTo Relationship</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account SoldTo ShipTo Relationships</value>
+    </caseValues>
+    <fields>
+        <label><!-- Ship To CMF BackEnd Account --></label>
+        <name>Core_Intel_BackEnd_ShipTo_Acc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Deactivated --></label>
+        <name>Core_Is_Deactivated_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- ShipTo CMF ID --></label>
+        <name>Core_ShipTo_CMF_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship To Account --></label>
+        <name>Core_Ship_To_Account__c</name>
+        <relationshipLabel><!-- Account SoldTo ShipTo Relationships (Ship To Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sold To CMF ID --></label>
+        <name>Core_SolTo_CMF_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sold To Account --></label>
+        <name>Core_Sold_To_Account__c</name>
+        <relationshipLabel><!-- Account SoldTo ShipTo Relationships (Sold To Account) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

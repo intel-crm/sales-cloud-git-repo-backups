@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Conversion - Contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Conversion - Contacts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Core_IPS_Account_Id__c</name>
+        <relationshipLabel><!-- Partner Conversion - Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Batch Id --></label>
+        <name>Core_IPS_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Id --></label>
+        <name>Core_IPS_Contact_Id__c</name>
+        <relationshipLabel><!-- Partner Conversion - Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer User Group Id --></label>
+        <name>Core_IPS_Customer_User_Group_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer User Id --></label>
+        <name>Core_IPS_Customer_User_Id__c</name>
+        <relationshipLabel><!-- Partner Conversion - Contacts (Customer User Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer User Role Id --></label>
+        <name>Core_IPS_Customer_User_Role_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enterprise Id --></label>
+        <name>Core_IPS_Enterprise_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field1 --></label>
+        <name>Core_IPS_Generic_Field1_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field2 --></label>
+        <name>Core_IPS_Generic_Field2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field3 --></label>
+        <name>Core_IPS_Generic_Field3_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner User Group Id --></label>
+        <name>Core_IPS_Partner_User_Group_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner User Id --></label>
+        <name>Core_IPS_Partner_User_Id__c</name>
+        <relationshipLabel><!-- Partner Conversion - Contacts (Partner User Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner User Role Id --></label>
+        <name>Core_IPS_Partner_User_Role_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

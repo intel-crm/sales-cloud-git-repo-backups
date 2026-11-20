@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Country Geo Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Country Geo Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- All Other APJ --></label>
+        <name>Core_MDF_All_Other_APJ_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- All Other ASMO --></label>
+        <name>Core_MDF_All_Other_ASMO_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- All Other EMEA --></label>
+        <name>Core_MDF_All_Other_EMEA_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blocked in UI --></label>
+        <name>Core_MDF_Blocked_in_UI_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code 2 Digits --></label>
+        <name>Core_MDF_Code_2_Digits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo Code --></label>
+        <name>Core_MDF_Geo_Code_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org Code --></label>
+        <name>Core_MDF_Geo_Sales_Org_Code_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_MDF_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Geo --></label>
+        <name>Core_MDF_Sub_Geo__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,471 @@
+{
+  "version" : "66.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "RecordTypeId", "Pricing_Server_Deal_Type_Nm__c", "Pricing_Program_Type_Nm__c", "Id", "IsDeleted", "Name", "CreatedDate", "CreatedById", "SBQQ__Account__c", "SBQQ__PriceBook__c", "SBQQ__PrimaryContact__c", "SBQQ__SalesRep__c", "SBQQ__Status__c", "Pricing_Account_Executive_Nm__c", "Pricing_Bid_Dt__c", "Pricing_Customer_Nm__c", "Pricing_End_Customer_Country_Nm__c", "Pricing_End_Customer_Opportunity_Txt__c", "Pricing_Folio_ID_Nm__c", "Pricing_Intel_Account_Exec_Email_Txt__c", "Pricing_Intel_Sales_Rep_Email_Txt__c", "Pricing_Project_Name_Nm__c", "Pricing_Region_Nm__c", "Pricing_ShipmentEndDate_Dt__c", "Pricing_ShipmentStDate_Dt__c", "Pricing_Quote_Program_Nm__c", "Pricing_Exclude_from_Volume_Excep_Quota__c", "Pricing_Volume_Exception_Quota_Cb__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "SBQQ__Quote__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "SBQQ__Quote__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "FILTER1" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Pricing_Quote_Program_Nm__c",
+          "operator" : "EQUAL",
+          "operands" : [ "Tender" ]
+        } ]
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ParentId", "UserOrGroupId" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "SBQQ__Quote__Share",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "SBQQ__Quote__Share"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Name", "Username", "Id", "UserRoleId", "UserType" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "ParentRoleId", "DeveloperName" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "UserRole",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "UserRole"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "FILTER3" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET4" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "UserType",
+          "operator" : "EQUAL",
+          "operands" : [ "Standard" ]
+        } ]
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "FILTER3", "FLATTEN0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "UserRoleId" ],
+        "rightQualifier" : "UserRolesFlattened",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "GroupId", "UserOrGroupId" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "GroupMember",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "GroupMember"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "OUTPUT2" : {
+      "action" : "save",
+      "sources" : [ "JOIN5" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Quote_WithSharing",
+          "name" : "QuoteWithQuotSharewithGMandUserRoleFlattenedRecipie",
+          "folderName" : "IQR_Pricing_Analytics"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FLATTEN0" : {
+      "action" : "flatten",
+      "sources" : [ "LOAD_DATASET5" ],
+      "parameters" : {
+        "selfField" : "Id",
+        "parentField" : "ParentRoleId",
+        "multiField" : {
+          "name" : "Id_flatten_multiField",
+          "label" : "Role",
+          "isSystemField" : false
+        },
+        "pathField" : {
+          "name" : "Id_flatten",
+          "label" : "Role ID Path",
+          "isSystemField" : false
+        },
+        "includeSelfId" : false
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET3", "FILTER1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "ParentId" ],
+        "rightQualifier" : "Quote",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "JOIN7", "JOIN6" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "UserOrGroupId" ],
+        "rightQualifier" : "GroupMember",
+        "rightKeys" : [ "GroupId" ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "JOIN4", "JOIN2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "GroupMember.UserOrGroupId" ],
+        "rightQualifier" : "GroupMemberRoles",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "DeveloperName", "Type" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Group",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Group"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET6", "LOAD_DATASET7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "GroupId" ],
+        "rightQualifier" : "Group",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "JOIN2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "MULTI_VALUE_LOOKUP",
+        "leftKeys" : [ "UserOrGroupId" ],
+        "rightQualifier" : "ShareRoles",
+        "rightKeys" : [ "Id" ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "SBQQ__Quote__c",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 251.89999999999998,
+        "parameters" : {
+          "sampleSize" : 10000
+        }
+      },
+      "FILTER1" : {
+        "label" : "Quote Program from Q",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 112.1,
+        "left" : 392
+      },
+      "LOAD_DATASET3" : {
+        "label" : "SBQQ__Quote__Share",
+        "type" : "LOAD_DATASET",
+        "top" : 251.60000000000002,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 10000
+        }
+      },
+      "LOAD_DATASET4" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 111.9,
+        "parameters" : {
+          "sampleSize" : 10000
+        }
+      },
+      "LOAD_DATASET5" : {
+        "label" : "UserRole",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 10000
+        }
+      },
+      "FILTER3" : {
+        "label" : "UType Standard",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 391.7,
+        "left" : 252
+      },
+      "JOIN2" : {
+        "label" : "UsersRolesFlattened",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 394.1,
+        "left" : 531.6
+      },
+      "LOAD_DATASET6" : {
+        "label" : "GroupMember",
+        "type" : "LOAD_DATASET",
+        "top" : 252.10000000000002,
+        "left" : 532,
+        "parameters" : {
+          "sampleSize" : 10000
+        }
+      },
+      "OUTPUT2" : {
+        "label" : "Quote_WithSharing",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 112,
+        "left" : 1232
+      },
+      "TRANSFORM0" : {
+        "label" : "Role Flatten",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 531.5,
+        "left" : 252,
+        "graph" : {
+          "FLATTEN0" : {
+            "label" : "Flatten"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "JOIN3" : {
+        "label" : "QuoteWithQuoteShare",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 672
+      },
+      "JOIN4" : {
+        "label" : "QuotewithQuoteShareandGroupMember",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 952.1
+      },
+      "JOIN5" : {
+        "label" : "QuoteWithQuotSharewithGMandUserRoleFlattened",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 1091.4
+      },
+      "LOAD_DATASET7" : {
+        "label" : "Group",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 252,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN6" : {
+        "label" : "GroupwithGroupMember",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 672
+      },
+      "JOIN7" : {
+        "label" : "QuoteWithShare and Roles",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 112.19999999999999,
+        "left" : 812.1
+      }
+    },
+    "connectors" : [ {
+      "source" : "JOIN3",
+      "target" : "JOIN7"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "FILTER3"
+    }, {
+      "source" : "FILTER3",
+      "target" : "JOIN2"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN7",
+      "target" : "JOIN4"
+    }, {
+      "source" : "JOIN6",
+      "target" : "JOIN4"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN5"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "JOIN6"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN7"
+    }, {
+      "source" : "JOIN5",
+      "target" : "OUTPUT2"
+    }, {
+      "source" : "LOAD_DATASET0",
+      "target" : "FILTER1"
+    }, {
+      "source" : "FILTER1",
+      "target" : "JOIN3"
+    } ],
+    "hiddenColumns" : [ {
+      "fieldName" : "Id",
+      "objectType" : "connectedDataset",
+      "objectName" : "SFDC_LOCAL$SBQQ__Quote__c"
+    }, {
+      "fieldName" : "SBQQ__Account__c",
+      "objectType" : "connectedDataset",
+      "objectName" : "SFDC_LOCAL$SBQQ__Quote__c"
+    } ]
+  },
+  "runMode" : "full"
+}

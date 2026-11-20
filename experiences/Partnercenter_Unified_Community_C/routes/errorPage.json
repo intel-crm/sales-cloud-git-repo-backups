@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "4a5b316e-49d4-4a76-9024-1d1a8699f96a",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "errorpage__c",
+  "id" : "9d11acef-3ff3-4b1b-ac2b-db0c81db327c",
+  "label" : "ErrorPage",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-errorpage",
+  "type" : "route",
+  "urlPrefix" : "errorpage"
+}

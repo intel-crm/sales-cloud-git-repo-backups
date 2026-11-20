@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_96423432</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.core_2023_Sales_Group__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Partner Holding</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Partner Holding</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Partner Holding</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Partner Holding</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Accounts Sales Group</sourceValue>
+            </sourceValues>
+            <value>.Global</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_MDF_Active_Ind__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Contributor (33.3%),Contributor (50%),Customer A&amp;E (0%),Team Member (100%),Team member (100% commitment over the lifetime of the opportunity),Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity),Viewer (0%)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Technical_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Megan McDonald</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Megan McDonald</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_96423432</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.core_2023_Sales_Group__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MM Accounts with me as team member</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

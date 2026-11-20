@@ -1,0 +1,42 @@
+<aura:documentation>
+	<aura:description>
+    <p>Redux API Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/22/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+    <p>This component is used in c:ISGRedux as an api accessible directly to Redux Actions.</p>
+    <p>Since Redux Actions can exist and be called anywhere, this component is created dynamically,
+      and destroys itself after performing a call to the server.</p>
+      <br/>
+    <p>Example Usage:</p>
+
+<pre>$A.createComponent("c:ISGReduxApi", { debug: false },
+  function(api, status, errorMessage) {
+    if (status === "SUCCESS") {
+      api.callServerFromReduxAction(null, 'apexauramethod1', { param1: 'something' }))
+        .then(function(response) {
+          dosomethingwithresponse...
+      });
+    } else if (status === "INCOMPLETE") {
+      console.log("No response from server or client is offline.")
+
+    } else if (status === "ERROR") {
+      console.log("Error: " + errorMessage);
+
+    }
+  }
+);</pre>
+
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+
+    <!-- CHANGELOG -->
+
+  </aura:description>
+</aura:documentation>

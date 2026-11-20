@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <submitter>Core_MDF_CCP_CCF_Boost_Finance_User</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Core_MDF_CCP_CCF_Finance_User</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Core_MDF_CCP_DCF_Finance_User</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Core_MDF_CCP_SPCF_Finance_User</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Core_MDF_Budget_Name_id__c</field>
+        <field>Core_MDF_Requested_Cap_amt__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Finance_Manager_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step For Client Budget Cap</label>
+        <name>Step_For_CCF_Budget_Cap</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Finance_Manager_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Data Center CoMarketing Fund&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step For Datacenter Budget Cap</label>
+        <name>Step_For_DCF_Budget_Cap</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Finance_Manager_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Client CoMarketing Fund Boost&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step For CCF Boost Budget Cap</label>
+        <name>Step_For_CCF_Boost_Budget_Cap</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Finance_Manager_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Budget_Name_id__r.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;Service Provider CoMarketing Fund&apos;)</formula>
+        </entryCriteria>
+        <label>Step For SPCF Budget Cap</label>
+        <name>Step_For_SPCF_Budget_Cap</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval process for Budget CAP requested amount to Finance Managers</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Core_MDF_Budget_Cap__c.Core_MDF_Cap_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Core_MDF_Approved_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Core_MDF_Update_Approve_Cap_Amount</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Core_MDF_Rejected_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Budget CAP Approval Process V1</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

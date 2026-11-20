@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload Email_ZHT</name>
+    <style>none</style>
+    <subject>Intel® 夥伴聯盟：需要商業授權</subject>
+    <textOnly>感謝您申請 Intel® 夥伴聯盟計畫！
+
+
+感謝您申請 Intel® 夥伴聯盟計畫。
+
+在處理您的申請時，我們無法根據您提供的輸入內容驗證貴公司資訊。因此，請您回覆此郵件，並以PDF、JPEG或PNG格式的附件上傳以下文件之一，以完成此驗證：
+
+企業憑證（表明貴公司地址與申請內容相符）
+稅務憑證（表明貴公司地址與申請內容相符）
+公司網站（顯示貴公司地址與申請內容相符）
+
+為避免申請遭系統自動駁回，請於 7 日內回覆此電子郵件並附上相關文件。 一旦收到您的回覆，我們會建議團隊重新審查您的申請。
+
+感謝您合作解決此問題，
+
+
+
+
+Intel® 夥伴聯盟團隊
+
+請注意，此郵箱由系統自動處理和監控。
+
+此訊息作為您目前與Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© 2026 Intel公司
+Intel Corporation,2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+隱私權&amp;verbar;Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

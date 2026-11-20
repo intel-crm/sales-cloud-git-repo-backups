@@ -1,0 +1,45 @@
+<template>
+
+	<div class="quick-search-container" data-border-top={separatorAbove} data-border-bottom={separatorBelow} data-padding-top={paddingAbove} data-padding-bottom={paddingBelow}>
+
+		<h3 class="h4">{labels.heading}</h3>
+
+		<div class="slds-grid slds-wrap quick-search-inner-container slds-is-relative">
+
+            <template for:each={filters} for:item="filter">
+                <div key={filter.key} class="quick-search-select">
+                <label aria-label={filter.label} for={filter.name}></label>
+                    <div class="select slds-m-bottom_medium" data-disabled={filter.disabled}>
+                            <template if:true={loading}>
+                                <div>
+                                    <lightning-spinner class="zIndexStandardPageHigher" alternative-text={labels.searchLoading} size="small"></lightning-spinner>
+                                </div>
+                            </template>
+                            <select
+                                name={filter.name}
+                                disabled={filter.disabled}
+                                onchange={handleSelectFilter}>
+                                <template if:false={loading}>
+                                    <option value="">{filter.label}</option>
+                                    <template for:each={filter.options} for:item="option">
+                                        <option key={option.id} value={option.id} title={option.label} selected={option.selected}>{option.label}</option>
+                                    </template>
+                                </template>
+                            </select>
+                    </div>
+                </div>
+            </template>
+
+			<div class="search-button-container">
+				<div onclick={handleSearch}>
+                    <lightning-button class="button-full-width button-arrow" variant="brand"
+                        disabled={isButtonDisabled}
+                        label={labels.searchButton}></lightning-button>
+				</div>
+			</div>
+
+		</div>
+
+    </div>
+
+</template>

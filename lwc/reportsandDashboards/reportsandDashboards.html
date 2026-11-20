@@ -1,0 +1,52 @@
+<template>
+    <div class="slds-large-size--1-of-1">
+        <lightning-card title="If you have questions or suggestions for this tab contact, please log an AAQ and  reference 'KEY RESOURCES' Feedback as your subject" >
+        
+            
+       
+    </lightning-card>
+    </div>
+    <div class="slds-large-size--1-of-1">
+        <lightning-card title="Seller Resources" icon-name="standard:opportunity">
+        
+            
+                <lightning-datatable data={sellerResourcesdata} columns={columns} key-field="Id" hide-checkbox-column="true"></lightning-datatable>
+            
+       
+    </lightning-card>
+</div>
+</br>
+<div class="slds-large-size--1-of-1">
+    <lightning-card title="FLM (First Line Manager) Resources" icon-name="standard:opportunity">
+    
+        <div if:true={flmResourcesdata}>
+            <lightning-datatable data={flmResourcesdata} columns={columns} key-field="Id" hide-checkbox-column="true" ></lightning-datatable>
+        
+    </div>
+</lightning-card>
+</div>
+
+</br>
+<div class="slds-large-size--1-of-1" slds-p-around_small>
+    <lightning-card title="Regional and Category and Planning Sales Operations" icon-name="standard:opportunity" >
+    
+        <div if:true={rcpSalesOperation}>
+            <lightning-datatable data={rcpSalesOperation} columns={columns} key-field="Id" hide-checkbox-column="true"></lightning-datatable>
+        
+    </div>
+</lightning-card>
+</div>
+</br>
+<div class="slds-large-size--1-of-1" slds-p-around_small>
+    <lightning-card title="All Resources from above - alpha sort by Name" icon-name="standard:opportunity" >
+    
+        
+            <lightning-datatable data={data} columns={columns} key-field="Id" hide-checkbox-column="true" show-row-number-column="true" sorted-direction={sortDirection} sorted-by={sortedBy} onsort={onHandleSort}  ></lightning-datatable>
+        
+</lightning-card>
+</div>
+
+
+
+
+</template>

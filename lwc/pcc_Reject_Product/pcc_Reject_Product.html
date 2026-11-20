@@ -1,0 +1,18 @@
+<template>
+    <lightning-quick-action-panel header="Reject Product">
+        <lightning-spinner if:true={isLoading} alternative-text="Loading"></lightning-spinner>       
+       <template if:false={alertMsg}>
+                                        <lightning-textarea name="comment" class="slds-align_absolute-center" label="Please enter the rejection comments" value={commentText} onchange={handleReasonChange} label-class="custom-label-class"></lightning-textarea>
+       </br>
+       <div class="slds-align_absolute-center">
+        <lightning-button  class="slds-button slds-button_brand" label ="Save" variant="brand" onclick ={handleSaveButton}></lightning-button> 
+        <lightning-button class="slds-button slds-button_brand"  label="Cancel" variant="brand" onclick={closeQuickAction}></lightning-button>
+         </div>                             
+                                        </template>                                  
+                <template if:true={alertMsg}>
+                    <p class="slds-align_absolute-center">{alertMsg}</p></br></br>
+                    <lightning-button class="slds-align_absolute-center"  label="Close" variant="brand" onclick={closeQuickAction}></lightning-button>
+                </template>
+    </lightning-quick-action-panel>
+    
+</template>

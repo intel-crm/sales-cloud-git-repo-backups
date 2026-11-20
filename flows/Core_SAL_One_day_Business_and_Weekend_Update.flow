@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>One Business Day SAL SLA</description>
+        <name>One_Business_Day_SAL_SLA_Check</name>
+        <label>One Business Day SAL SLA Check</label>
+        <locationX>610</locationX>
+        <locationY>383</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Business_Day_SAL_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Days__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SAL_Email_Trigger_date_update</targetReference>
+            </connector>
+            <label>One Business Day SAL Check Outcome</label>
+        </rules>
+        <rules>
+            <name>One_Business_weekend_SAL_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Days__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SAL_Weekend_Email_Trigger_date_update</targetReference>
+            </connector>
+            <label>One Business  weekend  SAL Check Outcome</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>Four Buisness Day weekend record TAL SLA</description>
+        <name>FormulaFourBuisnessDayweekendrecordTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified &apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Four Business Day MQL SLA</description>
+        <name>FormulaFourBusinessDayMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;),
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Four Business Days TAL SLA</description>
+        <name>FormulaFourBusinessDaysTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified &apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Four Business Day weekend record MQL SLA</description>
+        <name>FormulaFourBusinessDayweekendrecordMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;, 
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+
+{!$Record.Days__c} =false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day TAL SLA</description>
+        <name>FormulaOneBuisnessDayTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+		{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+		{!$Record.Days__c} =true,
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+			OR(
+				AND ( 
+					ISCHANGED({!$Record.Status} ), 
+					ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+					ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;)
+					),
+				ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;)),
+		{!$Record.Core_Having_Tasks__c}=false,
+		{!$Record.Core_SLA_Listed_User__c}  =True,
+		{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+		NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+		OR(
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+			)
+	)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day weekend record SAL SLA</description>
+        <name>FormulaOneBuisnessDayweekendrecordSALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+OR(
+{!$Record.Core_Having_Tasks__c}=false,
+AND(
+ISCHANGED({!$Record.Status} ),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Qualified Lead&quot;))
+),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+{!$Record.Core_SLA_Listed_User__c} =True,
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+NOT (ISPICKVAL({!$Record.Core_Lead_Status__c}, &quot;Converted&quot;)),
+NOT (ISPICKVAL({!$Record.Status}, &quot;Sales Qualified Lead&quot;))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day weekend record TAL SLA</description>
+        <name>FormulaOneBuisnessDayweekendrecordTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day weekend record TQL SLA</description>
+        <name>FormulaOneBuisnessDayweekendrecordTQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+{!$Record.Core_Having_Tasks_in_TQL__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;), AND(ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Accepted Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Tele Qualified Lead&quot;))),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day MQL SLA</description>
+        <name>FormulaOneBusinessDayMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day SAL SLA</description>
+        <name>FormulaOneBusinessDaySALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =true,
+OR(
+{!$Record.Core_Having_Tasks__c}=false,
+AND(
+ISCHANGED({!$Record.Status} ),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Qualified Lead&quot;))
+),
+{!$Record.Core_SLA_Listed_User__c} = True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+NOT (ISPICKVAL({!$Record.Core_Lead_Status__c}, &quot;Converted&quot;)),
+NOT (ISPICKVAL({!$Record.Status}, &quot;Sales Qualified Lead&quot;)))</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day TQL SLA</description>
+        <name>FormulaOneBusinessDayTQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+AND(
+{!$Record.Core_Having_Tasks_in_TQL__c}=false,
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =true,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;)
+)
+),
+AND(
+{!$Record.Days__c} =true,
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+ISCHANGED({!$Record.Status}),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Accepted Lead&quot;),
+ISPICKVAL({!$Record.Status}, &quot;Tele Qualified Lead&quot;),
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;)
+))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day weekend record MQL SLA</description>
+        <name>FormulaOneBusinessDayweekendrecordMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+
+{!$Record.Days__c} =false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>SAL Email Trigger Date</description>
+        <name>FormulaSALEmailTriggerDate</name>
+        <dataType>DateTime</dataType>
+        <expression>DATETIMEVALUE({!$Record.Core_Business_Day_Calculation__c})-1</expression>
+    </formulas>
+    <formulas>
+        <description>SAL Weekend Email Trigger date update</description>
+        <name>FormulaSALWeekendEmailTriggerdateupdate</name>
+        <dataType>DateTime</dataType>
+        <expression>DATETIMEVALUE({!$Record.Core_WeekEnd_SLA_Calculation__c}) -1</expression>
+    </formulas>
+    <formulas>
+        <description>Two Buisness Day weekend record TAL SLA</description>
+        <name>FormulaTwoBuisnessDayweekendrecordTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Days__c} =false,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified &apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Two Business Day MQL SLA</description>
+        <name>FormulaTwoBusinessDayMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Two Business Day TAL SLA</description>
+        <name>FormulaTwoBusinessDayTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+		{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+		{!$Record.Days__c} =true,
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+		OR( AND (
+				ISCHANGED({!$Record.Status} ), 
+				ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+				ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;)
+			),			
+			ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;)
+		),
+		{!$Record.Core_Having_Tasks__c}=false,
+		{!$Record.Core_SLA_Listed_User__c}  =True,
+		{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+		NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+		OR(
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+		)
+	)</expression>
+    </formulas>
+    <formulas>
+        <description>Two Business Day weekend record MQL SLA</description>
+        <name>FormulaTwoBusinessDayweekendrecordMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;)
+)</expression>
+    </formulas>
+    <interviewLabel>Core TQL One day Business and Weekend Notify {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core SAL One day Business and Weekend Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update SAL One day SLA Date</description>
+        <name>SAL_Email_Trigger_date_update</name>
+        <label>SAL Email Trigger date update</label>
+        <locationX>503</locationX>
+        <locationY>507</locationY>
+        <inputAssignments>
+            <field>Core_SAL_Email_Trigger_Date__c</field>
+            <value>
+                <elementReference>FormulaSALEmailTriggerDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>SAL Weekend Email Trigger date update</description>
+        <name>SAL_Weekend_Email_Trigger_date_update</name>
+        <label>SAL Weekend Email Trigger date update</label>
+        <locationX>749</locationX>
+        <locationY>513</locationY>
+        <inputAssignments>
+            <field>Core_SAL_Weekend_Email_Trigger_Date__c</field>
+            <value>
+                <elementReference>FormulaSALWeekendEmailTriggerdateupdate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>One_Business_Day_SAL_SLA_Check</targetReference>
+        </connector>
+        <filterFormula> AND(ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+OR(
+{!$Record.Core_Having_Tasks__c}=false,
+AND(
+ISCHANGED({!$Record.Status} ),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Qualified Lead&quot;))
+),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+{!$Record.Core_SLA_Listed_User__c} =True,
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+NOT (ISPICKVAL({!$Record.Core_Lead_Status__c}, &quot;Converted&quot;)),
+NOT (ISPICKVAL({!$Record.Status}, &quot;Sales Qualified Lead&quot;))
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_72157818</developerName>
+        <masterLabel>Account rollup</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>HEWLETT PACKARD COMPANY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett-Packard Brasil Ltda.</sourceValue>
+            </sourceValues>
+            <value>HP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lenovo (Beijing) Limited</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Brazil</sourceValue>
+            </sourceValues>
+            <value>LENOVO</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_30185135</developerName>
+        <masterLabel>OEM-ODM</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Solution_Group__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>[OEM-ODM] Berkeley 20</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>[OEM-ODM] Zoro_BA</sourceValue>
+            </sourceValues>
+            <value>Paired</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Group__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Role_on_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Relationship_on_Opportunity__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>hewlett,dell,cisco,apple,ibm,oracle,acer,asus,fujitsu,huawei,lenovo,panasonic,samsung,toshiba,lg elec</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>includes</operator>
+            <value>Compute</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Role_on_Opportunity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Original Equipment Manufacturer (OEM)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Relationship_on_Opportunity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>odm</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_30185135</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_72157818</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>OEM-ODM DW Report - OEM perspective</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

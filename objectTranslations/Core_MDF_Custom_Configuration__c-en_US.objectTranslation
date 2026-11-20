@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applicable for Past/Future --></label>
+        <name>Core_MDF_Applicable_for_Past_Future__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Stage --></label>
+        <name>Core_MDF_Approval_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Core_MDF_Category__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Execution Order --></label>
+        <name>Core_MDF_Execution_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field ReadOnly Attributes --></label>
+        <name>Core_MDF_Field_ReadOnly_Attributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Read/Write Attributes --></label>
+        <name>Core_MDF_Field_Read_Write_Attributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Confiquration --></label>
+        <name>Core_MDF_Parent_Confiquration__c</name>
+        <relationshipLabel><!-- Custom Configurations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Permission Set Api Name --></label>
+        <name>Core_MDF_Permission_Set_Api_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Developer Name --></label>
+        <name>Core_MDF_Record_Type_Developer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type__c</name>
+        <picklistValues>
+            <masterLabel>Field Editability</masterLabel>
+            <translation><!-- Field Editability --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

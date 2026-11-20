@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+    <certificate>MIIFhTCCA22gAwIBAgIUWjSitsUGyzyzTEyW4xCQtd5gEZ4wDQYJKoZIhvcNAQEL
+BQAwUjELMAkGA1UEBhMCSU4xCzAJBgNVBAgMAkhSMQ4wDAYDVQQKDAVJbnRlbDEm
+MCQGCSqGSIb3DQEJARYXYW51angudy5ndXB0YUBpbnRlbC5jb20wHhcNMjUxMjAy
+MTUxODU3WhcNMzUxMTMwMTUxODU3WjBSMQswCQYDVQQGEwJJTjELMAkGA1UECAwC
+SFIxDjAMBgNVBAoMBUludGVsMSYwJAYJKoZIhvcNAQkBFhdhbnVqeC53Lmd1cHRh
+QGludGVsLmNvbTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALFMW+fP
+zWegqGvF3FNZ4uv45wkRxCR+LjzohAFG8rkU0+UnHnIzQvPHiTNuoVrmTs9qgFm+
+bRwySZeUlEdPwJyIsHiY5LSDtklwOcXvALLN4mineds1Pked40vZoJueSQWgoUXp
+767atw7+9WBqMbH2BMi+7C9MD0g61dAycRoGj7CKyXIFpEFd9NOhNs6RZuaNh/8S
+SvOkXdPxplpV0bBeFE2+J4eeLANIvszjdvbp9+YNrQdgIkLt6vAyoAnV8CPEzt0f
+oAHaKBmNcr+VnXPNcz67suShQhP4yfRzzTzAAlXouihMjj2S+zpB+lYcFhXxp9GC
+8ZWbOw3yHukj1tZ/NfJiczYHeNQNrJ2zBY7cWlpD/18a6IoTEBzmjfDPeo6PUrh0
+438feXyp1Ek06A+BleyZ4sqBTCYj2jEaz4eunBysBWjx7bXgHxgPxW7s0VT2/DST
+axikpmzuGqNoAFjWLMMSUk/IeqV9YT0dUw7Kr2W9MBBNINGyo1Z9FEENckXV2qVs
+6shc5jM7RQOlEbGG8W6C6rPQ3gNNjXLAOvEZXsO1FRrAFvOSCkfm5rHsXdVuiG8E
+IJr1qiL9geP1/duwmIP2JdpgE8YxlZcTowPmH0Zt4mC8T9RNRlt54Lwndh5H72pP
+A8xxJojSNDUe3BPdc0s1hYuN7zke4igWEzcFAgMBAAGjUzBRMB0GA1UdDgQWBBT+
+nu6rJ8fz88tsOZ6SiuMhJntXADAfBgNVHSMEGDAWgBT+nu6rJ8fz88tsOZ6SiuMh
+JntXADAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4ICAQCvz3KnO7V4
+Qqyj39dTBMiY3bEcj79oc7qfG7hN4nn19kh2WZ5sttnynrm6VoPxr7bMQY5BwyeO
+O6r3jx+9yXv+DT0QtRA/5Qu6dvS4RvGLe3ebzl892bl9uICsnaPN1fnnuBgDvR6d
+fSe62rJGUG1CE9OqtNMPvnTlsF7apF3pLAQvwM5Tb06iBWzv9aHnQ07NoltYoZ+I
+dUOCX2o855hNl41RNk0l6o3SiG9pZURfkTbmGIGhMk7B9poIqYdJ+xCkY3COV735
+yhup9p5lXdMERCJ4VJLy+SSyS9WC0W9NkkXG8AbY+R1DUmSO5a6UbVYIsnQiJ893
+6OWXJuQJHYZacQ3kmnwu4d5HWe8+NY2UgSnbRTYTGavP3OfJy4/dz+f5HscNCC7d
+s/PoHg+uZVmpMu1XX+Ncn+8VDwY70uaIhFipASIE1S0Gp8CJUnkwqky1qbur1LbD
+mH7/O3xmLCgSMYmrhJ7cU/F/ZszUyJELpYib876a2NRKRAYuYGurktNlP1TGDIuP
+hL4VrzkzBGN5pMWW+v+SGVgI5JGK/Pe+pnMDPjRo+ZeT8vi0tBVDxzKn2piOzWOG
+5Jn/PYe01IkB1kFqwyD2jncVsg5gup6RIubWV08NAXEOJg4k1pp9cI5kniuSs/jN
+urErV4Si4XJXeUDIiONyKQgTv6bU28D6Dw==</certificate>
+    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6jrGT6CMWwzifY92iwDDs5WSG0s89O31wRXjijmdMuvGwm1H1KiCqG5ntzEf</consumerKey>
+    <externalClientApplication>CDB_Agent_Connected_App</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>false</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>CDB_Agent_Connected_App_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

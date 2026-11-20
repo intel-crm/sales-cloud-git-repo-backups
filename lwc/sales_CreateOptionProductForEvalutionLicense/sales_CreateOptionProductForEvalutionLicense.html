@@ -1,0 +1,40 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-layout>
+                <lightning-layout-item>
+                    <template if:true={prodAvailable}>
+                        <lightning-datatable data={result} columns={columnsList} key-field="Id"
+                            onrowaction={callRowAction} max-column-width=50px>
+                        </lightning-datatable>
+                    </template>
+                    <template if:true={noOptionAvailable}>
+                        <div class="slds-text-color_error">{label.Sales_Optional}</div>
+                    </template>
+                    <template if:true={allOptionProcessed}>
+                        <div class="slds-text-color_error">{label.SalesOptionalConfigurationHtml}</div>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+            <hr>
+         <lightning-layout >
+             <lightning-layout-item size='9'></lightning-layout-item>
+                <template if:true={Sfdc}> 
+                    <template if:false={buttonClicked}>
+                 <lightning-layout-item size='3' style="height: 50%;">
+                    <lightning-button class="slds-float_right" variant="brand" label={label.Sales_createLic_HTML} onclick={handleNext} disabled={buttonClicked}>
+                </lightning-button>
+            </lightning-layout-item>
+        </template>
+             </template>
+                <template if:false={Sfdc}> 
+                   <lightning-layout-item padding="horizontal-small" size='3' style="height: 70%;">
+                      <lightning-button class="slds-float_right" variant="brand" label={label.Sales_nextmsg} onclick={handleNext} disabled={buttonClicked}>
+                      </lightning-button>
+                 </lightning-layout-item>
+                </template>
+         </lightning-layout>
+     
+         </div>
+    </lightning-card>
+</template>

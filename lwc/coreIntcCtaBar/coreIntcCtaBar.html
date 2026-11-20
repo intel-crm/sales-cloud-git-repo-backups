@@ -1,0 +1,23 @@
+<template>
+  <div class="mobile-padding" data-color-scheme={variation}>
+    <div class="container slds-text-align_center slds-p-top_xx-large slds-p-bottom_xx-large">
+      <template if:true={labels.title}>
+        <div class="slds-m-bottom_large slds-size_12-of-12">
+          <h2>{labels.title}</h2>
+        </div>
+      </template>
+      <template if:true={labels.subtitle}>
+        <div class="slds-m-bottom_large slds-size_12-of-12">
+          <lightning-formatted-rich-text value={labels.subtitle}></lightning-formatted-rich-text>
+        </div>
+      </template>
+      <template if:true={labels.ctaLabel}>
+        <div class="slds-size_12-of-12">
+          <c-core-intc-link class-name="button" label={labels.ctaLabel} aria-label={labels.ctaLabelAria} community-page={ctaCommPage} external-url={ctaExternalUrl} hide-icon>
+            <div class={buttonClasses}>{labels.ctaLabel}</div>
+          </c-core-intc-link>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

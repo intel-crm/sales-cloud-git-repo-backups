@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Request a New Account</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/request-a-new-account/</actionButtonLink>
+        <body>&lt;ol&gt;&lt;li&gt;From the &lt;strong&gt;Accounts &lt;/strong&gt;tab, click &lt;strong&gt;New&lt;/strong&gt;. The &lt;em&gt;New Account Request &lt;/em&gt;window will open.&lt;/li&gt;&lt;li&gt;The &lt;em&gt;New Account Request&lt;/em&gt; popup is provided. Choose &lt;strong&gt;Opportunity Management&lt;/strong&gt; and click &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;&lt;em&gt;Search Before Request&lt;/em&gt; is provided as a guided search of existing accounts. Enter the &lt;strong&gt;Customer Name&lt;/strong&gt; (Required) and at least 1 other search variable (&lt;strong&gt;Primary Country/Region&lt;/strong&gt;, &lt;strong&gt;State&lt;/strong&gt;, or &lt;strong&gt;Website&lt;/strong&gt;). Click &lt;strong&gt;Search&lt;/strong&gt; after completing the form.&lt;/li&gt;&lt;li&gt;The results are provided beneath the Search form. &lt;strong&gt;&lt;em&gt;Note&lt;/em&gt;&lt;/strong&gt;&lt;em&gt;: If you provided Customer Name and Country as search criteria, and more than 20 accounts are listed matching Country, enter a State/Province to further refine the results.&lt;/em&gt;&lt;/li&gt;&lt;li&gt;If you initiated a New Account Request, a &lt;em&gt;New Account&lt;/em&gt; tab opens and the form is displayed. Provide information for the following REQUIRED fields: &lt;strong&gt;Customer Name&lt;/strong&gt;, &lt;strong&gt;Digital Identifier/customer website&lt;/strong&gt;, &lt;strong&gt;Industry&lt;/strong&gt;, &lt;strong&gt;Sales Group&lt;/strong&gt;, &lt;strong&gt;Primary Address&lt;/strong&gt;, and &lt;strong&gt;Justification for request&lt;/strong&gt;.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Provide any other account details to help the Data Operations team to process your request quickly. When complete, click &lt;strong&gt;Submit&lt;/strong&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Request a New Account</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Request a New Account</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Request a New Account</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

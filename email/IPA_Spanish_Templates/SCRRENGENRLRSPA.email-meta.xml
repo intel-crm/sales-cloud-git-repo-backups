@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLRSPA</name>
+    <style>none</style>
+    <subject>Su solicitud de Intel®Cloud Insider</subject>
+    <textOnly>Verificar su dirección de correo electrónico
+
+Gracias por enviar su solicitud para Intel® Cloud Insider. Antes de que podamos procesarla, tenemos que asegurarnos de que esta sea su dirección de correo electrónico. Si no valida su dirección de correo electrónico antes de 30 días, se eliminará su solicitud de nuestro sistema y se le pedirá que presente una nueva solicitud para ser considerado.
+
+
+Verificar ahora
+
+¿Preguntas? Comuníquese con la Asistencia de Intel® Cloud Insider en el correo programas@intel.com o aquí
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. Todos los derechos reservados. Intel y el logotipo de Intel son marcas comerciales de Intel Corporation en EE. UU. o en otros países.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, Estados Unidos. Intel.com
+Puede cancelar la suscripción en cualquier momento mediante la actualización de su configuración de perfil  {!$Label.PRM_MyIntelProfileURL}
+Privacidad | Cookies | *Marcas comerciales</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

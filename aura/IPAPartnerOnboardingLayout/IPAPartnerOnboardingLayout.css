@@ -1,0 +1,59 @@
+.THIS {
+  background-color: var(--lightestGray);
+  color: var(--darkGray);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.THIS .marquee {
+    background: radial-gradient(circle at 50% 400%, #1C80Ca 20%, #002b63 100%);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.THIS .container {
+    width: 100%;
+}
+
+
+/*END STYLES FOR RECORD LIST*/
+
+@media (min-width: 768px)
+    {
+    .THIS .padding-medium {
+      padding: 1em;
+    }
+    .THIS .container {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 992px)
+    {
+    .THIS .container {
+        width: 970px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1200px)
+{
+    .THIS .container {
+        width: 1170px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1650px)
+    {
+    .THIS .container {
+        width: 1610px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}

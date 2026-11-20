@@ -1,0 +1,49 @@
+<template>
+	<template lwc:if={isSpinner}>
+		<div class="exampleHolder">
+			<lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+		</div>
+	</template>
+	<template if:false={hasAccessForAccount}>
+		<lightning-card>
+			<div style="display:flex;justify-content:center;align-items:center;padding: 10%;">
+				<p> {noAccessOnAccount} </p>
+			</div>
+		</lightning-card>
+	</template>
+	<template if:false={isSpinner}>
+		<lightning-card>
+			<template if:true={reportData}>
+				<div class="slds-page-header">
+					<div class="slds-page-header__row">
+						<div class="slds-page-header__col-title">
+							<div class="slds-media">
+								<div class="slds-media__figure">
+									<lightning-icon icon-name="standard:case" alternative-text="Case" title="Cases">
+									</lightning-icon>
+								</div>
+								<div class="slds-media__body">
+									<div class="slds-page-header__name">
+										<div class="slds-page-header__name-title">
+											<h1>
+												<span class="slds-page-header__title slds-truncate" title="Rohde Corp - 80,000 Widgets">{accountName} {reportDataLenght} Cases</span>
+											</h1>
+										</div>
+									</div>
+									<p class="slds-page-header__name-meta">Last Updated • {fetchTime}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div style="height:500px">
+				<lightning-datatable key-field="id" data={reportData} columns={columns} hide-checkbox-column="true"
+					show-row-number-column="true" enable-infinite-loading  onloadmore={loadMoreData} load-more-offset></lightning-datatable>
+                </div>
+			</template>
+			<template if:true={error}>
+				<p class="slds-text-color_error">{error}</p>
+			</template>
+		</lightning-card>
+	</template>
+</template>

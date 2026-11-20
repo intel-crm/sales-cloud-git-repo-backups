@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Processing</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Processings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Header --></label>
+        <name>Batch_Header__c</name>
+        <relationshipLabel><!-- Batch Processings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Batch Query --></label>
+        <name>Core_Batch_Query__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>Core_Batch_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Distribution List --></label>
+        <name>Core_Email_Distribution_List__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date Time --></label>
+        <name>Core_End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Log --></label>
+        <name>Core_Exception_Log__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Run Date --></label>
+        <name>Core_Last_Run_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salesforce Job Id --></label>
+        <name>Core_Salesforce_Job_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>Core_Send_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date Time --></label>
+        <name>Core_Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number of Batches --></label>
+        <name>Core_Total_Number_of_Batches__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number of Records Deleted --></label>
+        <name>Core_Total_Number_of_Records_Deleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number of Records Updated --></label>
+        <name>Core_Total_Number_of_Records_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number of Records --></label>
+        <name>Core_Total_Number_of_Records__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Number of Records Created --></label>
+        <name>Total_Number_of_Records_Created__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

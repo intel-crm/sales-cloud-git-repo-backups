@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Territory Assignment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Territory Assignments</value>
+    </caseValues>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - All Target --></label>
+        <name>CPT_BR_All_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - All --></label>
+        <name>CPT_BR_All__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - CCG Target --></label>
+        <name>CPT_BR_CCG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - CCG --></label>
+        <name>CPT_BR_CCG__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - DCAI Accelerator Target --></label>
+        <name>CPT_BR_DCAI_DAIS_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - DCAI Accelerator --></label>
+        <name>CPT_BR_DCAI_DAIS__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - DCG Target --></label>
+        <name>CPT_BR_DCAI_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - DCG --></label>
+        <name>CPT_BR_DCAI__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - Intel AI PC Target --></label>
+        <name>CPT_BR_Intel_AI_PC_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - Intel AI PC --></label>
+        <name>CPT_BR_Intel_AI_PC__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR - DCAI Ethernet Target --></label>
+        <name>CPT_BR_NEX_Ethernet_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - DCAI Ethernet --></label>
+        <name>CPT_BR_NEX_Ethernet__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR - CCG Consumer Target --></label>
+        <name>CPT_CR_CCG_Consumer_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - CCG Consumer --></label>
+        <name>CPT_CR_CCG_Consumer__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR - One Intel OEM Target --></label>
+        <name>CPT_CR_CCG_One_Intel_OEM_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - One Intel OEM --></label>
+        <name>CPT_CR_CCG_One_Intel_OEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - CCG Target --></label>
+        <name>CPT_CR_CCG_Target_V2__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - DCAI Target --></label>
+        <name>CPT_CR_DCAI_Target_V2__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - NEX Target --></label>
+        <name>CPT_CR_NEX_Target_V2__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - OEM Target --></label>
+        <name>CPT_CR_OEM_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - OEM --></label>
+        <name>CPT_CR_OEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Partner Target --></label>
+        <name>CPT_CR_Partner_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Partner --></label>
+        <name>CPT_CR_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Retail Target --></label>
+        <name>CPT_CR_Retail_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Retail --></label>
+        <name>CPT_CR_Retail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee Name --></label>
+        <name>CPT_Employee_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee WWID --></label>
+        <name>CPT_Employee_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>CPT_Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locked Status --></label>
+        <name>CPT_Locked_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Name --></label>
+        <name>CPT_Manager_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager WWID --></label>
+        <name>CPT_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin CCG Target --></label>
+        <name>CPT_MarVol_Margin_CCG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin CCG --></label>
+        <name>CPT_MarVol_Margin_CCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin DCG Target --></label>
+        <name>CPT_MarVol_Margin_DCG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin DCG --></label>
+        <name>CPT_MarVol_Margin_DCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG LNL Target --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG LNL --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_LNL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG PTL Target --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG PTL --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_PTL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG WCL Target --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG WCL --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_WCL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen DCG GNR Target --></label>
+        <name>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen DCG GNR --></label>
+        <name>CPT_MarVol_Next_Gen_DCG_GNR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Period --></label>
+        <name>CPT_Quota_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Setup --></label>
+        <name>CPT_Quota_Setup__c</name>
+        <relationshipLabel><!-- Territory Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Territory Name --></label>
+        <name>CPT_Territory_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory Target --></label>
+        <name>CPT_Territory_Target__c</name>
+        <relationshipLabel><!-- Territory Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Unique Identifier --></label>
+        <name>CPT_Unique_Identifier__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The Billings Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
+        <name>CPT_Prevent_BR_Territory_BU_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- To assign a CR-KPI to an employee, the Consumption Revenue Target for the CR-KPI must be greater than $0. --></errorMessage>
+        <name>CPT_Prevent_CR_Territory_BU_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have permission to make updates to the Target field. --></errorMessage>
+        <name>CPT_Prevent_Territory_Target_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This record is locked. Please contact the Commissions Admin if you have any questions. --></errorMessage>
+        <name>CPT_Restrict_Update_OnLockedRecord</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Volume CCG (LNL/PTL/WCL) and Margin CCG must be selected together - if one is selected, the other is required. --></errorMessage>
+        <name>TA_Pair_CCG_Volume_and_Margin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Volume DCG and Margin DCG must both be selected together. --></errorMessage>
+        <name>TA_Pair_DCG_Volume_and_Margin</name>
+    </validationRules>
+</CustomObjectTranslation>

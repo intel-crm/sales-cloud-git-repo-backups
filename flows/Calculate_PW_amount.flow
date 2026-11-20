@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Not_Approved_PW_Amount</name>
+        <label>Not Approved PW Amount</label>
+        <locationX>264</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>TotalPWAmount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_All_Sales_Price_and_Quanitity.Core_Production_Win_Total_Price__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_All_Sales_Price_and_Quanitity</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Product_price_and_Quantity</name>
+        <label>Check Product price and Quantity</label>
+        <locationX>396</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Get_All_Sales_Price_and_Quanitity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>if_not_Blank_and_Not_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_All_Sales_Price_and_Quanitity.Core_PW_Quantity__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_All_Sales_Price_and_Quanitity.Core_PW_Sales_Price__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_All_Sales_Price_and_Quanitity.Core_PW_Quantity__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_All_Sales_Price_and_Quanitity.Core_PW_Sales_Price__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Not_Approved_PW_Amount</targetReference>
+            </connector>
+            <label>if not Blank and Not Approved</label>
+        </rules>
+    </decisions>
+    <description>This flow is used to calculate PW amount for PW approval.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ApprovedPriced</name>
+        <dataType>Currency</dataType>
+        <expression>{!Get_All_Sales_Price_and_Quanitity.Core_PW_Approved_Quantity__c} *{!Get_All_Sales_Price_and_Quanitity.Core_PW_Approved_Sales_Price__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>PriceXQuanitity</name>
+        <dataType>Currency</dataType>
+        <expression>{!Get_All_Sales_Price_and_Quanitity.Core_PW_Sales_Price__c}*{!Get_All_Sales_Price_and_Quanitity.Core_PW_Quantity__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Calculate PW amount {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Calculate PW amount</label>
+    <loops>
+        <name>Get_All_Sales_Price_and_Quanitity</name>
+        <label>Get All Sales Price and Quanitity</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <collectionReference>Get_Related_All_PW_Submitted_Product</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_Product_price_and_Quantity</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Parent_Opps_with_PW_Amount</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Related_All_PW_Submitted_Product</name>
+        <label>Get Related All PW Submitted Product</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_All_Sales_Price_and_Quanitity</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OpportunityId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Production Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Production Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Delete In Progress (&lt;15 min)</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>OpportunityLineItem</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Core_PW_Quantity__c</queriedFields>
+        <queriedFields>Core_PW_Sales_Price__c</queriedFields>
+        <queriedFields>Core_PW_Approved_Quantity__c</queriedFields>
+        <queriedFields>Core_PW_Approved_Sales_Price__c</queriedFields>
+        <queriedFields>Core_Status__c</queriedFields>
+        <queriedFields>Core_Production_Win_Total_Price__c</queriedFields>
+        <queriedFields>Core_PW_Approved_Total_Price__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Parent_Opps_with_PW_Amount</name>
+        <label>Update Parent Opps with PW Amount</label>
+        <locationX>176</locationX>
+        <locationY>923</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OpportunityId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_PW_Approval_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_PW_Amount__c</field>
+            <value>
+                <elementReference>TotalPWAmount</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Related_All_PW_Submitted_Product</targetReference>
+        </connector>
+        <filterFormula>(( !ISNULL({!$Record.Core_PW_Quantity__c}) &amp;&amp;  !ISNULL({!$Record.Core_PW_Sales_Price__c}) ) || 
+( !ISNULL({!$Record.Core_PW_Quantity__c}) &amp;&amp; ISCHANGED({!$Record.Core_PW_Quantity__c})) ||
+( !ISNULL({!$Record.Core_PW_Sales_Price__c}) &amp;&amp; ISCHANGED({!$Record.Core_PW_Sales_Price__c})))
+ &amp;&amp;
+ ( {!$Record.Opportunity.RecordType.DeveloperName} = &apos;Core_Design_Opportunity&apos;)
+&amp;&amp;
+({!$Record.Opportunity.Account.RecordType.DeveloperName} = &apos;Mastered_Account&apos;)</filterFormula>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1500</triggerOrder>
+    <variables>
+        <name>OppsProducts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>OpportunityLineItem</objectType>
+    </variables>
+    <variables>
+        <name>TotalPWAmount</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>2</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+</Flow>

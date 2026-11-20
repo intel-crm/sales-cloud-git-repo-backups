@@ -1,0 +1,329 @@
+<template>
+    <div>
+        <!--Page 1 starts here-->
+        <template if:true={showpage1}>
+            <div class="slds-p-around_medium">
+                <lightning-button onclick={handleNavigateBacktoDashboard} label="< Back" title="Back to dashboard"
+                    class="noBorder"></lightning-button>
+            </div>
+            <div class="ProjectContainer">
+                <div class="divclass">
+                    <H1 class="selectpjthead">Project Details</H1>
+                    <div class="slds-m-horizontal_x-large" style="margin-top: 29px; ">
+                        <div class="slds-progress barSize">
+                            <ol class="slds-progress__list">
+                                <li class="slds-progress__item slds-is-active">
+                                    <div class="slds-progress__marker"></div>
+                                </li>
+                                <li class="slds-progress__item">
+                                    <div class="slds-progress__marker"></div>
+                                </li>
+                                <li class="slds-progress__item">
+                                    <div class="slds-progress__marker"></div>
+                                </li>
+                            </ol>
+                            <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="0" role="progressbar">
+                                <span class="slds-progress-bar__value barProgress"></span>
+                            </div>
+                        </div>
+                        <lightning-layout-item size=8>
+                            <div class="progressText slds-grid slds-grid_align-spread">
+                                <div class="slds-col firstLabel">
+                                    <p class="progressActiveText">1: Project Details</p>
+                                </div>
+                                <div class="slds-col middleLabel">2: Add Members</div>
+                                <div class="slds-col lastLabel">3: Add Products</div>
+                            </div>
+                        </lightning-layout-item>
+                    </div>
+                </div>
+                <div class="productBg">
+                    <h2 class="selectpjthead1"
+                        style="text-align: left; font-size: 18px; margin-top: 30px; margin-bottom: 20px;">New Premier
+                        Support Project</h2>
+                    <div class="slds-grid projectCreation">
+                        <div class="slds-col   slds-large-size_1-of-3" style="margin-top: 1rem; text-align:left; ">
+                            <span style="margin-left:35px;font-weight:bold;font-size: 14px;">Premier Support Project Name</span>
+                            <lightning-helptext content="The Maximum Charecter Limit for Project Name is 80">
+                            </lightning-helptext>
+                        </div>
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <span style="width: 100%; margin-bottom: -5px">
+                                <lightning-input type="text" data-id="ProjectName" value={projectName} class="inputs validateProject"
+                                    onchange={handleChange}
+                                     max-length="80">
+                                </lightning-input>
+                                 <template if:true={isProjectRequired}>
+                                <span class="requiredField"> {label.Core_IPS_Required} </span>
+
+                                </template>
+                            </span>
+                            <p class="helptext">Max Character Limit for Project Name is 80 </p>
+                        </div>
+                    </div>
+                    <div class="slds-grid projectCreation">
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <p class="subHeadline">Project Description <span style="font-size:12px; font-weight:500;">(Optional)</span></p>
+                        </div>
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <lightning-textarea value={projDescription} data-id="descriptionFeild" class="inputs"
+                                onchange={handleChange} max-length="255"></lightning-textarea>
+                            <p class="helptext">Max Character Limit for Project Description is 255 </p>
+                        </div>
+                    </div>
+                    <div class="slds-grid projectCreation">
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <p class="subHeadline"> Enable Members as Interested Parties <span style="font-size:12px; font-weight:500;">(Optional)</span>
+                                 <lightning-helptext
+                                    content="Note: If you have opted out of email notifications, this checkbox will be disabled">
+                                </lightning-helptext>
+                            </p>
+                        </div>
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <div class="Notificationalign">
+                                <lightning-input type="checkbox" class="checkBox" label="Yes" name="enableIntParty"
+                                    onchange={handleChangeParties} checked={enableMembers} disabled={grade}>
+                                </lightning-input>
+                            </div>
+                            &emsp;
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid projectCreation">
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <p class="subHeadline"> Remove Notification Details <span style="font-size:12px; font-weight:500;">(Optional)</span>
+                                <lightning-helptext
+                                    content="If Case Subject, Case Description, or any Case Comment contains Restricted Secret Content, please check this box.">
+                                </lightning-helptext>
+                            </p>
+                        </div>
+                        <div class="slds-col   slds-large-size_1-of-3">
+                            <div class="Notificationalign">
+                                <lightning-input type="checkbox" label="Yes" name="removeNotif" class="checkBox"
+                                    onchange={handleChangeParties} checked={removeNotification}>
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <template if:true={isPartnerORpartnerFAE}>
+                        <div class="slds-grid projectCreation">
+                            <div class="slds-col   slds-large-size_1-of-3">
+                                <p class="subHeadline">Project Partner Supported Owner <span style="font-size:12px; font-weight:500;">(Optional)</span></p>
+                            </div>
+                            <div class="slds-col   slds-large-size_1-of-3">
+                                <lightning-combobox name="progress" value={value} onchange={handleSupportedOwnerChange}
+                                    placeholder="" class="inputs" options={options}>
+                                </lightning-combobox>
+                            </div>
+                        </div>
+                    </template>
+<div class="pageBkGD">
+    <template if:true={hideButton}>
+                            <lightning-button
+                                class="slds-m-bottom_large slds-m-top_large slds-m-right_medium addMem-button"
+                                variant="brand" name='Continue to Add Members' label='Continue to Add Members'
+                                onclick={handleContinuetoAddMembers}></lightning-button>
+                        </template>
+</div>
+</div>
+</div>
+<div>
+    <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+</div>
+</template>
+<!--Page 1 ends here-->
+<!--Page 2 starts here-->
+<template if:true={showpage2}>
+            <div class="slds-p-around_medium">
+                <lightning-button onclick={handleNavigateBacktoDashboard} label="< Back" title="Back to dashboard"
+                    class="noBorder"></lightning-button>
+            </div>
+            <div class="ProjectContainer">
+                <div class="divclass">
+                    &nbsp; &nbsp;
+                    <div class="slds-m-horizontal_x-large">
+                        <div class="slds-progress barSize1">
+                            <ol class="slds-progress__list">
+                                <li class="slds-progress__item slds-is-completed">
+                                    <span
+                                        class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon"
+                                        title="Complete">
+                                        <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                            <img class="progressbarIcon" src={progressbarImg} />
+                                            <!-- <lightning-icon icon-name="utility:success" size="x-small">
+                                            </lightning-icon> -->
+                                        </div>
+                                    </span>
+                                </li>
+                                <li class="slds-progress__item slds-is-active">
+                                    <div class="slds-progress__marker"></div>
+                                </li>
+                                <li class="slds-progress__item">
+                                    <div class="slds-progress__marker"></div>
+                                </li>
+                            </ol>
+                            <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="25" role="progressbar">
+                                <span class="slds-progress-bar__value barProgress1"></span>
+                            </div>
+                        </div>
+                        <lightning-layout-item size=8>
+                            <div class="progressText slds-grid slds-grid_align-spread">
+                                <div class="slds-col firstLabel">1: Project Details</div>
+                                <div class="slds-col middleLabel">
+                                    <p class="progressActiveText">2: Add Members</p>
+                                </div>
+                                <div class="slds-col lastLabel">3: Add Products</div>
+                            </div>
+                        </lightning-layout-item>
+                    </div>
+                    &nbsp; &nbsp;
+                </div>
+                <div class="productBg">
+                    <lightning-layout>
+                        <div class="inputsearchProj">
+                            <lightning-layout-item>
+                                <lightning-input placeholder="Filter Members" id='projSearchs' type="search"
+                                    onchange={projSearchChangeHandler}></lightning-input>
+                            </lightning-layout-item>
+                        </div>
+                    </lightning-layout>
+                     <div class="slds-grid">
+                        <div class="slds-col slds-align_absolute-left">
+                        <lightning-dual-listbox 
+                            name="Select Options" 
+                            source-label="Available Premier Support Project Members to Add to Project (optional)"
+                            options={tempProjMembersOptions}
+                            selected-label="Selected Premier Support Project Members to Add to Project"
+                            onchange={handleChangeProjectmembers} class="selectProjOptions" value={projectsMembersArray}
+                            size=5 disable-reordering>
+                        </lightning-dual-listbox>  
+                        </div>                   
+                        </div>
+                    <div class="slds-p-bottom_x-large slds-p-top_x-large productpagebuttons">
+                        <button
+                            class="slds-m-bottom_large slds-m-top_large slds-m-right_medium  back-button slds-button slds-button_brand customprodbutton"
+                            variant="brand" name='Back' onclick={handleContinuetoAddMembersback}>Back
+                        </button>
+                        <button
+                            class="slds-m-bottom_large slds-m-top_large slds-m-right_medium  back-button slds-button slds-button_brand customprodbutton"
+                            variant="brand" name='Continue to Add Products'
+                            onclick={handleContinuetoAddProducts}>Continue to Add Products</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+            </div>
+        </template>
+<!--Page 2 Ends here-->
+<!--Page 3 starts here-->
+<template if:true={showpage3}>
+            <div class="slds-p-around_medium">
+                <lightning-button onclick={handleNavigateBacktoDashboard} label="< Back" title="Back to dashboard"
+                    class="noBorder"></lightning-button>
+            </div>
+            <div class="ProjectContainer">
+                <div class="divclass">
+                    &nbsp; &nbsp;
+                    <div class="slds-m-horizontal_x-large">
+                        <div class="slds-progress barSize2">
+                            <ol class="slds-progress__list">
+                                <li class="slds-progress__item slds-is-completed">
+                                    <span
+                                        class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon"
+                                        title="Complete">
+                                        <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                            <img class="progressbarIcon" src={progressbarImg} />
+                                            <!-- <lightning-icon icon-name="utility:success" size="x-small">
+                                            </lightning-icon> -->
+                                        </div>
+                                    </span>
+                                </li>
+                                <li class="slds-progress__item slds-is-completed">
+                                    <span
+                                        class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon"
+                                        title="Complete">
+                                        <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                            <img class="progressbarIcon" src={progressbarImg} />
+                                            <!-- <lightning-icon icon-name="utility:success" size="x-small">
+                                            </lightning-icon> -->
+                                        </div>
+                                    </span>
+                                </li>
+                                <li class="slds-progress__item slds-is-active">
+                                    <div class="slds-progress__marker"></div>
+                                </li>
+                            </ol>
+                            <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="0" role="progressbar">
+                                <span class="slds-progress-bar__value barProgress2"></span>
+                            </div>
+                        </div>
+                        <lightning-layout-item size=8>
+                            <div class="progressText slds-grid slds-grid_align-spread">
+                                <div class="slds-col firstLabel">1: Project Details</div>
+                                <div class="slds-col middleLabel">2: Add Members</div>
+                                <div class="slds-col lastLabel">
+                                    <p class="progressActiveText">3: Add Products</p>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                    </div>
+                    &nbsp; &nbsp;
+                </div>
+                <div class="productBg">
+                    <lightning-layout>
+                        <div class="inputsearchProd">
+                            <lightning-layout-item>
+                                <lightning-input placeholder="Filter Products" id='projSearch' type="search"
+                                    onchange={prodSearchChangeHandler}></lightning-input>
+                            </lightning-layout-item>
+                        </div>
+                    </lightning-layout>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-align_absolute-left"> 
+                            <lightning-dual-listbox class="selectProdOptions validateDualProject" name="Select Options" data-id="prodlistbox"
+                                source-label="Available Premier Support Products to Add to Project"
+                                options={availableProductOptions}
+                                selected-label="Selected Premier Support Products to Add to Project"
+                                onchange={handleChangeProducts} value={productsArray}  size=10 disable-reordering>
+                            </lightning-dual-listbox>
+                            <div>
+                                <template if:true={isProjectRequired}>
+                                    <span style="color: #cc0000; position: absolute; padding-left: 28.5%;width: 38% ;padding-top: 0.5%;"> {label.Core_IPS_Required} </span>
+                                </template>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="slds-p-bottom_xx-large" style="text-align:left; padding-left:10%;margin-top: 20px;">
+                        <button
+                            class="slds-m-bottom_large slds-m-top_large slds-m-bottom_large slds-m-right_medium addMem-button customprodbutton buttonpadding"
+                            variant="brand" name='Back' onclick={handleContinuetoAddProductsback}>Back
+                        </button>
+                        <button
+                            class="slds-m-bottom_large slds-m-top_large slds-m-bottom_large slds-m-right_medium  addMem-button customprodbutton buttonpadding"
+                            variant="brand" name='Create Project' onclick={handleCreateProject}>Create Project
+                        </button>
+                        <button
+                            class="slds-m-bottom_large slds-m-top_large slds-m-bottom_large slds-m-right_medium addMem-button customprodbutton buttonpadding"
+                            variant="brand" name='Cancel' onclick={handleNavigationToHome}>Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+            </div>
+        </template>
+<template if:true={showspinner}>
+            <div class="exampleHolder">
+            </div>
+        </template>
+</div>
+<template if:true={isSpinner}>
+        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+    </template>
+</template>

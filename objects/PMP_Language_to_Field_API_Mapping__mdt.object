@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata to store mapping of different object and their field name based on user language</description>
+    <fields>
+        <fullName>PMP_Field_APINm__c</fullName>
+        <description>To store field API name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter Field API name here</inlineHelpText>
+        <label>Field API Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Field_Nm__c</fullName>
+        <description>To store field name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter Field Name here</inlineHelpText>
+        <label>Field Name</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Language_Cd__c</fullName>
+        <description>To store language code</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter Language code here</inlineHelpText>
+        <label>Language Code</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Object_Nm__c</fullName>
+        <description>Object Name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter Object Name here</inlineHelpText>
+        <label>Object Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP Language to Field API Mapping</label>
+    <pluralLabel>PMP Language to Field API Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

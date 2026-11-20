@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing_EmailNotificationTemplate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing_EmailNotificationTemplates</value>
+    </caseValues>
+    <fields>
+        <help><!-- Permission set to whome this notification will appear. --></help>
+        <label><!-- Permission Set Name --></label>
+        <name>Permission_Set_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Pricing_Type__c</name>
+        <picklistValues>
+            <masterLabel>Financial Incentive</masterLabel>
+            <translation><!-- Financial Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tenders</masterLabel>
+            <translation><!-- Tenders --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Template API Name --></label>
+        <name>Template_API_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

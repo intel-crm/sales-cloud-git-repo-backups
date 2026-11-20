@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Alex Cheng,alex t wang,Brian Lin,Carrie Hsu,Chi-Jen Yuan,David His,Debbie Chiu,Dennis Niu,Dino Lin,Dora Chiang,Jason K Liu,Jeremy Lee,Jerry Kuo,Joseph Chiu,Joseph Shih,Josh Chen,Julie Sung,Kenny Hsiao,Kevin S Lin,Martha Su,Marvin Pai,Neil Lin,Nina Chen,Ponny Lu,Sherry An,sherry h chen,Steven K Lang,Szu-ju Chen,Vincent Liu,Vincent Sw Chang,Wei-li Feng,Wesley Pan,William Goh</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ATE Taiwan Account Owner</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,53 @@
+.advancedSerachBtn {
+    padding-top: 26px;
+}
+
+.advancedSerachBtn .slds-accordion__summary-action {
+    font-weight: bold;
+}
+
+.advancedLabel {
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.backgrnd {
+    background-color: #653171;
+}
+
+.projectSearch {
+    padding-top: 8px;
+}
+
+.advancedSearchContainer {
+    display: flex;
+    margin-left: 20px;
+}
+
+.advanceMainSearch {
+    margin: 0 15px;
+}
+
+.AdvancedCaseDetails {
+    background-color: #fff;
+    padding: 30px 25px 0 25px;
+}
+
+.AdvancedCaseDetailstext {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+
+}
+
+@media(max-width:767px) {
+    .advancedSearchContainer {
+        display: block;
+        margin-left: 0;
+    }
+
+    .advancedSerachBtn {
+        margin-bottom: 20px;
+    }
+}

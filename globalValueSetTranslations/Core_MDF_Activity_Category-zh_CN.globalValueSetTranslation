@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Audio</masterLabel>
+        <translation>音频</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Audio 2025</masterLabel>
+        <translation>音频 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadcast</masterLabel>
+        <translation>广播</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadcast (Pre-2025)</masterLabel>
+        <translation>广播（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer Incentive</masterLabel>
+        <translation>购买者激励</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer Incentive 2025</masterLabel>
+        <translation>购买者激励 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital</masterLabel>
+        <translation>数字化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital 2025</masterLabel>
+        <translation>数字 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Media</masterLabel>
+        <translation>数字媒体</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Media (Pre-2025)</masterLabel>
+        <translation>数字媒体（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event</masterLabel>
+        <translation>会展/活动</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event (Pre-2025)</masterLabel>
+        <translation>会展/活动（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event 2025</masterLabel>
+        <translation>活动 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Incentive</masterLabel>
+        <translation>激励选项</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Innovation</masterLabel>
+        <translation><!-- Innovation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Management</masterLabel>
+        <translation>管理销售线索</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Management (Pre-2025)</masterLabel>
+        <translation>销售线索管理（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Ad</masterLabel>
+        <translation><!-- Online Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home</masterLabel>
+        <translation>户外</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home (Pre-2025)</masterLabel>
+        <translation>户外（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home 2025</masterLabel>
+        <translation>户外 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home Media</masterLabel>
+        <translation>户外媒体</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
+        <translation>户外媒体（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Outcome-Based</masterLabel>
+        <translation>基于结果</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Paid Social Media</masterLabel>
+        <translation>付费社交媒体</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
+        <translation>付费社交媒体（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print</masterLabel>
+        <translation>打印</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print (Pre-2025)</masterLabel>
+        <translation>打印（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print 2025</masterLabel>
+        <translation>印刷 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print Media</masterLabel>
+        <translation>平面广告媒体</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print Media (Pre-2025)</masterLabel>
+        <translation>平面广告媒体（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production</masterLabel>
+        <translation>生产</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production 2025</masterLabel>
+        <translation>生产 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Incentive</masterLabel>
+        <translation>购买激励</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
+        <translation>购买激励（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Incentive</masterLabel>
+        <translation>销售激励</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
+        <translation>销售激励（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness</masterLabel>
+        <translation>销售准备</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
+        <translation>销售准备（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness 2025</masterLabel>
+        <translation>销售就绪 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+        <translation>搜索引擎营销 (SEM)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
+        <translation>搜索引擎营销 (SEM)（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Performance</masterLabel>
+        <translation><!-- Search Performance --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller Incentive</masterLabel>
+        <translation>销售者激励</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller Incentive 2025</masterLabel>
+        <translation>销售者激励 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tech Exploration</masterLabel>
+        <translation>技术探索</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
+        <translation>技术探索（2025 年之前）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Sales</masterLabel>
+        <translation>技术销售人员</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Sales 2025</masterLabel>
+        <translation>技术销售 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training</masterLabel>
+        <translation><!-- Training --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video</masterLabel>
+        <translation>视频</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video 2025</masterLabel>
+        <translation>视频 2025</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Partnerschaftswertung</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_Id__c</name>
+        <relationshipLabel><!-- Partnership Score --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Aggregate Claim Score --></label>
+        <name>Core_MDF_AggregateClaimScore_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Aggregierte Schadenbewertung</label>
+        <name>Core_MDF_Aggregate_Claim_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Final Recovery Amount - Recovered Amount --></help>
+        <label>Nicht zurückgeforderter Saldo</label>
+        <name>Core_MDF_Balance_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Endgültiger Rückforderungsbetrag – zurückgeforderter Betrag</help>
+        <label>Nicht zurückgeforderter Saldo</label>
+        <name>Core_MDF_Balance_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Carry Over Amount --></label>
+        <name>Core_MDF_CarryOver_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Übertragsbetrag</label>
+        <name>Core_MDF_Carry_Over_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Channel Program Display only field --></help>
+        <label><!-- Channel Program Display --></label>
+        <name>Core_MDF_Channel_Program_Display__c</name>
+    </fields>
+    <fields>
+        <label>Channel-Programm</label>
+        <name>Core_MDF_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Partnership Score --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Channel Program Display only field --></help>
+        <label>Channel-Programm</label>
+        <name>Core_MDF_Channel_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label>Externe Id</label>
+        <name>Core_MDF_External_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters --></help>
+        <label>Endgültiger Rückforderungsbetrag</label>
+        <name>Core_MDF_Final_Recovery_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Gesamter Rückforderungsbetrag für das Quartal + aus vorangegangenen Quartalen übertragene Beträge</help>
+        <label>Endgültiger Rückforderungsbetrag</label>
+        <name>Core_MDF_Final_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsRecordShared --></label>
+        <name>Core_MDF_IsRecordShared_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manual Recovery Amount --></label>
+        <name>Core_MDF_Manual_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PV1 Percentage --></label>
+        <name>Core_MDF_PV1_Percentage_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- PV2 Percentage --></label>
+        <name>Core_MDF_PV2_Percentage_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partial Value Score --></label>
+        <name>Core_MDF_PartialValueScore_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Partieller Wert Score</label>
+        <name>Core_MDF_Partial_Value_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partnership Score --></label>
+        <name>Core_MDF_PartnershipScore_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Partnerschaftsgrad</label>
+        <name>Core_MDF_Partnership_Grade_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Vorquartal Partnerschaftsergebnis</label>
+        <name>Core_MDF_Partnership_Score_Id__c</name>
+        <relationshipLabel><!-- Partnership Score (Partnership Score) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Partnerschaftswertung</label>
+        <name>Core_MDF_Partnership_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Petty Rule Applied? --></label>
+        <name>Core_MDF_Petty_Rule_Applied_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Programm</label>
+        <name>Core_MDF_Program_nm__c</name>
+    </fields>
+    <fields>
+        <label>Quartaljahr</label>
+        <name>Core_MDF_Quarter_Year_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Quartal</label>
+        <name>Core_MDF_Quarter_nm__c</name>
+    </fields>
+    <fields>
+        <label>Rückzahlungsbetrag</label>
+        <name>Core_MDF_Recovered_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovery Amount --></label>
+        <name>Core_MDF_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Payment Admin can set Recovery Offset for PRC RSA MD Recoveries only --></help>
+        <label><!-- Recovery Offset Amount (USD) --></label>
+        <name>Core_MDF_Recovery_Offset_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Claim Amount --></label>
+        <name>Core_MDF_Total_Claim_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Manual Recovery Amount --></label>
+        <name>Core_MDF_Total_Manual_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Max Possible Amount --></label>
+        <name>Core_MDF_Total_Max_Possible_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV0 Amount --></label>
+        <name>Core_MDF_Total_PV0_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV1 Amount --></label>
+        <name>Core_MDF_Total_PV1_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV2 Amount --></label>
+        <name>Core_MDF_Total_PV2_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV4 Amount --></label>
+        <name>Core_MDF_Total_PV4_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV8 Amount --></label>
+        <name>Core_MDF_Total_PV8_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Recovery Amount for the Quarter + Manual Recovery Amount for the Quarter. Applies Petty Rule logic to reduce nonmaterial recoveries on Partial Value claims. --></help>
+        <label>Gesamter Rückforderungsbetrag</label>
+        <name>Core_MDF_Total_Recovery_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Rückforderungsbetrag für das Quartal + manueller Rückforderungsbetrag für das Quartal. Wendet Kleinbetragsregel an, um die nicht materiellen Rückstellungen bei Teilforderungen zu reduzieren</help>
+        <label>Gesamter Rückforderungsbetrag</label>
+        <name>Core_MDF_Total_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Weighted PV Amount --></label>
+        <name>Core_MDF_Total_Weighted_PV_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Trend-Differenzwert</label>
+        <name>Core_MDF_Trend_Difference_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Trendwert</label>
+        <name>Core_MDF_Trend_Value_Nm__c</name>
+        <picklistValues>
+            <masterLabel>A(&gt;-5%)</masterLabel>
+            <translation><!-- A(&gt;-5%) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B(+-5)</masterLabel>
+            <translation><!-- B(+-5) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C (&gt;+5)</masterLabel>
+            <translation><!-- C (&gt;+5) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Virtual Corp Account --></label>
+        <name>Core_MDF_Virtual_Corp_Account_Id__c</name>
+        <relationshipLabel><!-- Partnership Score (Virtual Corp Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Jahr</label>
+        <name>Core_MDF_Year_nm__c</name>
+        <picklistValues>
+            <masterLabel>2021</masterLabel>
+            <translation><!-- 2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2022</masterLabel>
+            <translation><!-- 2022 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2023</masterLabel>
+            <translation><!-- 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024</masterLabel>
+            <translation><!-- 2024 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Zone --></label>
+        <name>Core_MDF_Zone_nm__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel><!-- Partnership Score Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Fields cannot be Updated (Account, program, Quarter Year) --></errorMessage>
+        <name>Core_MDF_Non_Editable_Fields_on_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Program cannot be updated --></errorMessage>
+        <name>Core_MDF_Program_cannot_be_updated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quarter Year value cannot be updated --></errorMessage>
+        <name>Core_MDF_Quarter_Year_Not_Editable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quarter value cannot be updated --></errorMessage>
+        <name>Core_MDF_Quarter_value_cannot_be_updated</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Mandatory Fields (Account, Program, Quarter Year ) --></errorMessage>
+        <name>Core_MDF_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Score cannot exceed 8 and should not be less than zero --></errorMessage>
+        <name>Core_MDF_Score_value_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- External Id is Invalid --></errorMessage>
+        <name>Core_MDF_Validate_External_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Year cannot be updated --></errorMessage>
+        <name>Core_MDF_Year_cannot_be_updated</name>
+    </validationRules>
+</CustomObjectTranslation>

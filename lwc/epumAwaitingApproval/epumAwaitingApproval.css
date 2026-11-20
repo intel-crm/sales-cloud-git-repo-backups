@@ -1,0 +1,141 @@
+.mainDiv {
+	font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, "sans-serif";
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.cardHeading {
+	/* font-weight: 200;
+	font-style: normal; */
+	color: #555555;
+	font-size: 28px;
+}
+
+.cardBody {
+	margin: 2rem 2rem 2rem 2rem;
+}
+
+.sectionHeading {
+	color: #555555;
+	font-size: 22px;
+}
+.subHeading {
+	font-size: 22px;
+	margin-top: 1rem;
+}
+.subHeadingComp {
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.inviteUserButton {
+	background: rgba(0, 113, 197, 1);
+	cursor: pointer;
+	width: 126px;
+	height: 32px;
+	border-radius: 3px;
+	color: white;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.inviteUserText {
+	padding-left: 8px;
+	font-size: 16px;
+}
+
+.contactClass {
+	font-size: 16px;
+	color: #555555;
+	font-weight: 900;
+	/* margin-top: 1rem; */
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 2em;
+}
+
+.descClass {
+	font-style: normal;
+	font-size: 16px;
+	color: #555555;
+}
+
+.descInfo {
+	margin-top: 1rem;
+}
+
+.firstRow {
+	font-size: 16px;
+	letter-spacing: normal;
+	color: #555555;
+	border-bottom: 0.7px solid #cac5c5;
+}
+
+.restRow {
+	/* font-weight: 400; */
+	font-style: normal;
+	color: #0071c5;
+	font-size: 16px;
+}
+
+.headRow {
+	/* font-weight: 600; */
+	font-style: normal;
+	font-size: 16px;
+	color: #555555;
+}
+
+ul:not(.browser-default) li {
+	list-style-type: "- ";
+	list-style-position: inside;
+}
+.helptext {
+	margin-left: 0.5rem;
+}
+
+.dataTableScale {
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 200; */
+	height: 300px;
+}
+
+/* .scrollerSize {
+	height: 450px;
+} */
+.button {
+	display: inline-block;
+	padding: 0.35em 1.2em;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 0.12em;
+	box-sizing: border-box;
+	text-decoration: none;
+	text-align: center;
+	transition: all 0.2s;
+	font-size: 16px;
+}
+.showButton {
+	display: none !important;
+}
+
+lightning-button.hideButton button {
+	font-size: 16px !important;
+}
+
+@media all and (max-width: 30em) {
+	.button {
+		display: block;
+	}
+}
+@media (max-width: 767px) {
+	.hideButton {
+		display: none !important;
+	}
+	.showButton {
+		display: block !important;
+		width: 100%;
+		margin-top: 10px;
+		font-size: 16px;
+	}
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREUNARUS</name>
+    <style>none</style>
+    <subject>Подтверждение регистрации в Intel</subject>
+    <textOnly>Программа Intel® Cloud Insider — заявка получена
+
+Здравствуйте, 	{!PRM_Registration_Request__c.PRM_First_Name__c}  {!PRM_Registration_Request__c.PRM_Last_Name__c}
+
+Благодарим вас за подачу заявки на участие в программе Intel® Cloud Insider. Мы рассмотрим вашу заявку в течение 5 рабочих дней. Если у вас возникли вопросы, свяжитесь с нами по адресу: programs@intel.com.
+
+
+Благодарим за интерес, проявленный к программе Intel® Cloud Insider.
+
+
+С уважением,
+Администратор, программа Intel® Cloud Insider.
+Ваши решения. Наши технологии. Вместе мы умнее.
+
+© Корпорация Intel, {!$Label.PRM_CurrentYear} г. Все права защищены. Intel и логотип Intel являются товарными знаками корпорации Intel и ее подразделений в США и/или других странах.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.Intel.com
+Вы можете отказаться от подписки в любое время, обновив настройки своего профиля на странице: {!$Label.PRM_MyIntelProfileURL}
+Конфиденциальность | Файлы Cookie | *Товарные знаки</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

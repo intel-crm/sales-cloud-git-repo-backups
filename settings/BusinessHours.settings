@@ -1,0 +1,2946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-EET-MonFri-8-5-Romania-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/Bucharest</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>Mon-Fri, 8am to 5pm (IPS-SP-US-PST)</name>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
+        <sundayStartTime>17:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Pacific/Pitcairn</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>true</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Default</name>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
+        <sundayStartTime>17:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>IPS-CCG-ASMO-PST</name>
+        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
+        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
+        <sundayStartTime>00:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-CCG-CISD-PST1</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-CET-MonFri-8-5-Germany-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/Berlin</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-CHD-APAC-BH1</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Shanghai</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-CHD-ASMO-BH1</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-CST-MonFri-8-5-China-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Shanghai</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>IPS-CST-MonFri-9-6-CR-Holidays</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Mexico_City</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>IPS-CST-MonFri-9-6-Mexico-Holidays</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Mexico_City</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>IPS-CST-MonFri-9-6-RU-Holidays</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/Moscow</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-GMT-MonFri-8-5-UK-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/London</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>IPS-IST-MonFri-9-6-India-Holidays</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Colombo</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-IST-SunThur-8-5-Israel-Holidays</name>
+        <sundayEndTime>17:00:00.000Z</sundayEndTime>
+        <sundayStartTime>08:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Jerusalem</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-JST-MonFri-8-5-Japan-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Tokyo</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-MST-MonFri-8-5-US-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Phoenix</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-MT-MonFri-8-5-Malaysia-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Kuala_Lumpur</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>IPS-PRC-ADC-IDT1</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Bangkok</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>IPS-PST-MonFri-24hr-No-Holidays</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-PST-MonFri-8-5-US-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>16:00:00.000Z</fridayEndTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
+        <mondayEndTime>16:00:00.000Z</mondayEndTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Org27 ASMO Hours1</name>
+        <thursdayEndTime>16:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>16:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>16:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>IPS Business Hours</name>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
+        <sundayStartTime>17:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Taipei</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>false</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>NO LONGER USED</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/Moscow</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <holidays>
+        <activityDate>2016-06-06</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Agong&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-03</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Agong&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-09</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Agong&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-01</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>All Saint&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-01</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>All Saint&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-01</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>All Saint&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-02</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>All Saints Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>All Saints Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>All Saints Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-07-25</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Annexation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-07-25</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Annexation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-25</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Annexation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-25</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Ascension Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-05</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Ascension Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-10</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Ascension Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-15</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Assumption Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-15</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Assumption Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-15</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Assumption Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-22</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Autumnal Equinox Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Autumnal Equinox Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Autumnal Equinox Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-11</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Awal Muharam</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-22</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Awal Muharam</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-03</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Awal Muharam</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ayudha Pooja</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-29</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ayudha Pooja</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-18</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ayudha Pooja</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-11</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Battle of Rivas</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-11</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Battle of Rivas</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-11</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Battle of Rivas</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-18</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Benito Juarez Anniversary</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-21</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Benito Juarez Anniversary</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-03-20</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Benito Juarez Anniversary</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-26</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Boxing Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-26</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Boxing Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-12-26</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Boxing Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-18</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Chandramana Ugadi (Gudi Padva)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-08</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Chandramana Ugadi (Gudi Padva)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-03-29</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Chandramana Ugadi (Gudi Padva)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-05</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Children&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-20</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Children&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-05</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Children&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-04</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Children’s Day (Replacement Day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-05</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Children’s Day (Replacement Day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-08</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year (Day 1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-27</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year (Day 1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-02-16</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year (Day 1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-30</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year (Day 2)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-09</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year (Day 2)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-02-17</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year (Day 2)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-27</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas (Replacement Day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-27</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas (Replacement Day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-12-25</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas (Replacement Day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-26</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day (observed)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-26</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day (observed)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-12-26</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day (observed)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-26</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day/Boxing Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-26</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day/Boxing Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-12-25</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day/Boxing Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-09</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Coming of Age Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Coming of Age Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-08</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Coming of Age Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-03</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Constituion Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-03</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Constituion Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-03</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Constituion Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Constitution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-02-06</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Constitution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-02-05</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Constitution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-15</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Corpus Christi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-31</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Corpus Christi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-26</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Corpus Christi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-03</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Culture Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-03</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Culture Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-07-05</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Day after Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-05</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Day after Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-24</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Day after Thanksgiving</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-23</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Day after Thanksgiving</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-25</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Day after Thanksgiving</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Day of Cultures</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Day of Cultures</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Day of Cultures</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-03</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Day of German Unity</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-03</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Day of German Unity</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-03</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Day of German Unity</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-18</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Deepavali</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-06</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Deepavali</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-31</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Deepavali</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>Defender of the Fatherland Day</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2018-02-24</recurrenceEndDate>
+        <recurrenceStartDate>2018-02-23</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-23</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Defender of the Fatherland Day</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>Defender of the Fatherland Day</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2017-02-24</recurrenceEndDate>
+        <recurrenceStartDate>2017-02-23</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-31</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Diwali (Balipadyami)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-07</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Diwali (Balipadyami)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-20</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Diwali (Balipadyami)</name>
+    </holidays>
+    <holidays>
+        <description>China, TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Dragon Boat Festival</name>
+        <recurrenceEndDate>2018-06-18</recurrenceEndDate>
+        <recurrenceInterval>3</recurrenceInterval>
+        <recurrenceStartDate>2018-06-16</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Dragon Boat Festival</name>
+        <recurrenceEndDate>2016-06-10</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-06-09</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <description>China, TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Dragon Boat Festival</name>
+        <recurrenceEndDate>2017-05-30</recurrenceEndDate>
+        <recurrenceInterval>3</recurrenceInterval>
+        <recurrenceStartDate>2017-05-28</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-28</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK, GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Easter Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-17</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK, GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Easter Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-02</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK, GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Easter Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Emperor&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Emperor&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-12-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Emperor&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-06</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Epiphany</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-06</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Epiphany</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-06</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Epiphany</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-23</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Eve of Second Succot (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-30</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Eve of Second Succot (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-11</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Eve of Second Succot (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-16</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Eve of Succot (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-04</activityDate>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Eve of Succot (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-23</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Eve of Succot (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-01</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Founding Day of R.O.C.</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-01</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Founding Day of R.O.C.</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-01</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Founding Day of R.O.C.</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-25</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ganesh Chathurthi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-05</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ganesh Chathurthi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-12</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ganesh Chathurthi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-14</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>UK, India, CR, MX, GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Good Friday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-25</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>UK, India, CR, MX, GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Good Friday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-30</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>UK, India, CR, MX, GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Good Friday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-04</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Greenery Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-04</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Greenery Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-04</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Greenery Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-12-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Guadalupe Virgin (All)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Guadalupe Virgin (All)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Guadalupe Virgin (All)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-12</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raja Haji</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-22</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raja Haji</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-01</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raja Haji</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-06</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa (Day 1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-06-14</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa (Day 1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-25</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa (Day 1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-06-15</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa (Day 2)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-07</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa (Day 2)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-26</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa (Day 2)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-08</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Health and Sports Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-09</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Health and Sports Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Health and Sports Day</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>true</isRecurring>
+        <name>Independence Day</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2017-07-04</recurrenceEndDate>
+        <recurrenceStartDate>2017-07-03</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-12</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-04</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-16</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-02</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-16</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-19</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-07-04</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-16</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Night</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Night</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Night</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>International Women&apos;s Day</name>
+        <recurrenceEndDate>2016-03-08</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-03-07</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2017-03-08</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>International Women&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-08</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>International Women&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-04</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-01</activityDate>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-05</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-03</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-01</activityDate>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-02</activityDate>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-23</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <description>TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Lunar New Year</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2017-02-01</recurrenceEndDate>
+        <recurrenceStartDate>2017-01-27</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <description>TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Lunar New Year</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2018-02-19</recurrenceEndDate>
+        <recurrenceStartDate>2018-02-16</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Lunar New Year</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2016-02-12</recurrenceEndDate>
+        <recurrenceStartDate>2016-02-08</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-16</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Malaysia Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-16</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Malaysia Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-16</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Malaysia Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-18</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Marine Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-07-16</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Marine Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-07-17</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Marine Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-16</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Martin Luther King Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-15</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Martin Luther King Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-18</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Martin Luther King Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-29</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>CR, MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Maundy Thursday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-13</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>CR, MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Maundy Thursday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-24</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>CR, MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Maundy Thursday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-28</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>May Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-29</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>May Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-02</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>May Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-30</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-29</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-28</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-11</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-01</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-18</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day (half day)</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Mid-Autumn Festival</name>
+        <recurrenceEndDate>2017-10-05</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-10-04</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Mid-Autumn Festival</name>
+        <recurrenceEndDate>2018-09-25</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2018-09-24</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China, TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Mid-Autumn Festival</name>
+        <recurrenceEndDate>2016-09-16</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-09-15</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-10</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Mother&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Mother&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-10</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Mother&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Mother&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-10</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Mother&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-15</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Mother&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Mountain Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Mountain Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Mountain Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-10</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-10</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-02-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>National Foundation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>National Foundation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-02-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>National Foundation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-31</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>National Holiday</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>true</isRecurring>
+        <name>National Holiday</name>
+        <recurrenceEndDate>2018-10-02</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2018-10-01</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-31</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>National Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-31</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>National Holiday</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>true</isRecurring>
+        <name>National Holiday</name>
+        <recurrenceEndDate>2016-10-07</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-10-03</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>true</isRecurring>
+        <name>National Holiday</name>
+        <recurrenceEndDate>2017-10-02</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2017-10-01</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>true</isRecurring>
+        <name>New Year&apos;s Day</name>
+        <recurrenceEndDate>2016-10-04</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-10-03</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-01</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day (Observed)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-30</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day (Observed)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-30</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day (Observed)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-22</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day (Rosh Hashanah)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-10</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day (Rosh Hashanah)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-02</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Eve (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-10</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Eve (half day)</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>New Year&apos;s Holiday</name>
+        <recurrenceDayOfMonth>1</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>January</recurrenceMonthOfYear>
+        <recurrenceStartDate>2016-01-01</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>New Year&apos;s and Orthodox Christmas Holidays</name>
+        <recurrenceEndDate>2018-01-07</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2018-01-01</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>New Year&apos;s and Orthodox Christmas Holidays</name>
+        <recurrenceEndDate>2017-01-07</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2017-01-01</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>New Year&apos;s and Orthodox Christmas Holidays</name>
+        <recurrenceEndDate>2016-01-08</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-01-04</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-02</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Our Lady of Los Angeles</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-02</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Our Lady of Los Angeles</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-02</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-CR-Holidays</businessHours>
+        <description>CR</description>
+        <isRecurring>false</isRecurring>
+        <name>Our Lady of Los Angeles</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-30</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Passover</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-17</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Passover</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-29</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Peace Memorial Day (Replacement Day)</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Peace Memorial Day (Replacement Day)</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2018-02-28</recurrenceEndDate>
+        <recurrenceStartDate>2018-02-27</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <description>TW</description>
+        <isRecurring>true</isRecurring>
+        <name>Peace Memorial Day (Replacement Day)</name>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceEndDate>2017-02-28</recurrenceEndDate>
+        <recurrenceStartDate>2017-02-27</recurrenceStartDate>
+        <recurrenceType>RecursEveryWeekday</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-11</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Penang Governor’s Birthday (Intel PG only)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-07-08</activityDate>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Penang Governor’s Birthday (Intel PG only)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-07-28</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Penang Governor’s Birthday (Intel PG only)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-02-19</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>President&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-15</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>President&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-02-20</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>President&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-20</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Prophet Mohammad&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-12</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Prophet Mohammad&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-12-01</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Prophet Mohammad&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-04</activityDate>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>false</isRecurring>
+        <name>Qing Ming Festival</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-05</activityDate>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>false</isRecurring>
+        <name>Qing Ming Festival</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-05</activityDate>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>false</isRecurring>
+        <name>Qing Ming Festival</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-01</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Rajyotsava Day (Bhai Duj)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-01</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Rajyotsava Day (Bhai Duj)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-01</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Rajyotsava Day (Bhai Duj)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-06-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ramzan (Id-Il-Fitra)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-26</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ramzan (Id-Il-Fitra)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-06</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Ramzan (Id-Il-Fitra)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-15</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Replacement Holiday, Kedah Sultan’s Birthday (Intel KM Only)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-16</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Replacement Holiday, Kedah Sultan’s Birthday (Intel KM Only)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-18</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Replacement Holiday, Kedah Sultan’s Birthday (Intel KM Only)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-26</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Republic Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-26</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Republic Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-26</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Republic Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-18</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Respect for the Aged Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-17</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Respect for the Aged Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-11</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Respect for the Aged Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-21</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Revolution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-20</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Revolution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-20</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Revolution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-13</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Russia Day observed</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-06-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Russia Day observed</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Russia Day observed</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-01-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Sankranti (Pongal)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Sankranti (Pongal)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-15</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Sankranti (Pongal)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-28</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Second Passover Eve (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-24</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Second Succot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-12</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Second Succot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-01</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Second Succot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-19</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Shavuot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-31</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Shavuot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-12</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Shavuot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-29</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Showa Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-29</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Showa Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-29</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Showa Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-29</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Spring Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-28</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Spring Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-30</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Spring Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>true</isRecurring>
+        <name>Spring Festival (Chinese New Year)</name>
+        <recurrenceEndDate>2017-02-01</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2017-01-27</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>true</isRecurring>
+        <name>Spring Festival (Chinese New Year)</name>
+        <recurrenceEndDate>2016-02-12</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-02-08</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-8-5-China-Holidays</businessHours>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>China</description>
+        <isRecurring>true</isRecurring>
+        <name>Spring Festival (Chinese New Year)</name>
+        <recurrenceEndDate>2018-02-21</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2018-02-15</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>Spring and Labor Day</name>
+        <recurrenceEndDate>2018-05-02</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2018-05-01</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>true</isRecurring>
+        <name>Spring and Labor Day</name>
+        <recurrenceEndDate>2016-05-03</recurrenceEndDate>
+        <recurrenceInterval>1</recurrenceInterval>
+        <recurrenceStartDate>2016-05-02</recurrenceStartDate>
+        <recurrenceType>RecursDaily</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-01</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Spring and Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-05</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Succot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-17</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Succot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-23</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Succot</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-29</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Summer Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-08-28</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Summer Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-08-27</activityDate>
+        <businessHours>IPS-GMT-MonFri-8-5-UK-Holidays</businessHours>
+        <description>UK</description>
+        <isRecurring>false</isRecurring>
+        <name>Summer Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-01-31</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Thaipusam</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-25</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Thaipusam</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-02-09</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Thaipusam</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-24</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-23</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-22</activityDate>
+        <businessHours>IPS-MST-MonFri-8-5-US-Holidays</businessHours>
+        <businessHours>IPS-PST-MonFri-8-5-US-Holidays</businessHours>
+        <description>US</description>
+        <isRecurring>false</isRecurring>
+        <name>Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-05</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Tomb Sweeping Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-04</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Tomb Sweeping Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-04-05</activityDate>
+        <businessHours>IPS-NSG-CST-MonFri-8-5-China/Malaysia-Holidays</businessHours>
+        <description>TW</description>
+        <isRecurring>false</isRecurring>
+        <name>Tomb Sweeping Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-04</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <businessHours>NO LONGER USED</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Unity Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-11-04</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Unity Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-11-04</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Unity Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-21</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Vernal Equinox Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-03-21</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Vernal Equinox Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-03-20</activityDate>
+        <businessHours>IPS-JST-MonFri-8-5-Japan-Holidays</businessHours>
+        <description>JP</description>
+        <isRecurring>false</isRecurring>
+        <name>Vernal Equinox Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-09</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Victory Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-09</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Victory Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-09</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-RU-Holidays</businessHours>
+        <description>Russia</description>
+        <isRecurring>false</isRecurring>
+        <name>Victory Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-30</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Vijaya Dasami</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-19</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Vijaya Dasami</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-11</activityDate>
+        <businessHours>IPS-IST-MonFri-9-6-India-Holidays</businessHours>
+        <description>India</description>
+        <isRecurring>false</isRecurring>
+        <name>Vijaya Dasami</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-23</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Wesak Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-05-10</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Wesak Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-29</activityDate>
+        <businessHours>IPS-MT-MonFri-8-5-Malaysia-Holidays</businessHours>
+        <description>Malaysia</description>
+        <isRecurring>false</isRecurring>
+        <name>Wesak Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-06-05</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Whit Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-05-21</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Whit Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-16</activityDate>
+        <businessHours>IPS-CET-MonFri-8-5-Germany-Holidays</businessHours>
+        <description>GER</description>
+        <isRecurring>false</isRecurring>
+        <name>Whit Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-30</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Yom Kippur</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-12</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Yom Kippur</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-18</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Yom Kippur</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-09-29</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Yom Kippur Eve (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-11</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Yom Kippur Eve (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-09-17</activityDate>
+        <businessHours>IPS-IST-SunThur-8-5-Israel-Holidays</businessHours>
+        <description>Israel</description>
+        <isRecurring>false</isRecurring>
+        <name>Yom Kippur Eve (half day)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2018-10-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Zapopan Virgin (All)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Zapopan Virgin (All)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-10-12</activityDate>
+        <businessHours>IPS-CST-MonFri-9-6-Mexico-Holidays</businessHours>
+        <description>MX</description>
+        <isRecurring>false</isRecurring>
+        <name>Zapopan Virgin (All)</name>
+    </holidays>
+</BusinessHoursSettings>

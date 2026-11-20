@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Account Plans</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/account-360/#Creating_an_Account_Plan</actionButtonLink>
+        <body>&lt;p&gt;An Account Plan is a collaborative document, created by the account owner and collaborated on with the account team. It is used to create a strategic plan and capture information about your customer, including their business goals, challenges, priorities, competitors, and help needed to win the business. In Account Plans section, you:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;Create an Account Plan record&lt;/strong&gt;: Sales CRM record that will house the Account Plan document and make it trackable.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Create an Account Plan document&lt;/strong&gt;: A templated document that needs to be created by Account team members. Multiple templates are available on the Account Planning guidance page.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Upload the completed Account Plan into the created Account Plan record.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-practices-policies/account-planning/#How_Do_I_Start&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click here for templates and examples of Account Plans&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Create/manage account plan.</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Account Plans</masterLabel>
+        <publishedDate>2024-04-11</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Account Plans</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

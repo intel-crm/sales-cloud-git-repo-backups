@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22549973</developerName>
+        <masterLabel>Account grouped</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT.NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>QUANTA COMPUTER INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GALAXY FAR EAST CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC PLATFORMS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC PLATFORMS,LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALTIOSTAR NETWORKS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALTIOSTAR NETWORKS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEMS LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEMS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEM LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEM</sourceValue>
+            </sourceValues>
+            <value>Rakuten</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SAMSUNG DISPLAY CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAMSUNG ELECTRONICS CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAMSUNG SSI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Samsung Electronics Co. Ltd. (Network R&amp;D Division)</sourceValue>
+            </sourceValues>
+            <value>Verison</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NOKIA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NOKIA CORP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia Networks</sourceValue>
+            </sourceValues>
+            <value>Nokia</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FUJITSU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU LIMITED</sourceValue>
+            </sourceValues>
+            <value>Fujitsu</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>H3C</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>New H3C Information Technologies Co., Ltd</sourceValue>
+            </sourceValues>
+            <value>H3C</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NIPPON TELEGRAPH AND TELEPHONE EAST CORPORATION</sourceValue>
+            </sourceValues>
+            <value>NTT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>HCL TECHNOLOGIES</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HCL TECHNOLOGIES LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HCL TECHNOLOGIES LIMITED (EMBEDDED)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HCL TECHNOLOGIES LTD</sourceValue>
+            </sourceValues>
+            <value>HCL Tech</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ZT GROUP INTL, INC.</sourceValue>
+            </sourceValues>
+            <value>ZT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Arrive Technologies</sourceValue>
+            </sourceValues>
+            <value>Arrive</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FUJISOFT</sourceValue>
+            </sourceValues>
+            <value>Fujisoft</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Organization__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Intel_Sup_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_End_Customer__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Project_Case__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>ASSET.NAME</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>OPEN</field>
+    </columns>
+    <columns>
+        <field>CLOSED</field>
+    </columns>
+    <columns>
+        <field>SERIAL_NUMBER</field>
+    </columns>
+    <columns>
+        <field>INSTALL_DATE</field>
+    </columns>
+    <columns>
+        <field>PURCHASE_DATE</field>
+    </columns>
+    <columns>
+        <field>USAGE_END_DATE</field>
+    </columns>
+    <columns>
+        <field>PRICE</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>ASSET.DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ASSET_ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ASSET_CONTACT.SALUTATION</field>
+    </columns>
+    <columns>
+        <field>ASSET_CONTACT.FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>ASSET_CONTACT.LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>ASSET_CONTACT.TITLE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT.NAME</field>
+    </columns>
+    <columns>
+        <field>ACTIVE</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 OR 3 OR 4 ) AND 2</booleanFilter>
+        <criteriaItems>
+            <column>ASSET.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>N3000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Programmable Solutions Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SUBJECT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>N3000,Vista Creek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Issue_Description__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>N3000,Vista Creek</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22549973</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Vista Creek Cases -parent</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseAsset@Case.Core_IPS_Case_Owner_Groups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-12-01</startDate>
+    </timeFrameFilter>
+</Report>

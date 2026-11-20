@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57</apiVersion>
+	<isExposed>true</isExposed>
+	<masterLabel>core_MDF_Campaign_Related_List</masterLabel>
+	<description>To display Related objects details on a detail page</description>
+	<targets>
+		<target>lightning__HomePage</target>
+		<target>lightning__RecordPage</target>
+		<target>lightning__AppPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Default</target>
+	</targets>
+	<targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <property name="relatedobjectApiName" label="Related Object API Name" type="String" default="Core_MDF_Camp_to_ActPartner__c"/>
+            <property name="strFields" label="Fields" type="String" default="Core_MDF_Activating_Partner_Account_id__c"/>
+            <!--TWC3117-17837-->
+            <property name="strLabels" label="Field Labels" type="String" default="Title"/>
+            <!--TWC3117-17837-->
+            <property name="criteriaFieldAPIName" label="Reference FieldAPIName" type="String" default="Core_MDF_Campaign_Id__c"
+                            description="The field on which query to be performed. 
+                            e.g. it can be AccountId from which Case records will be fetched."/>
+            <property name="additionalCriteria" label="Additional Criteria" type="String" default=" Core_MDF_Active_Ind__c=true "/> 
+            <property name="tableHeader" label="Table Header" type="String" default=""/>
+            <property name="sharingFlag" label="Sharing Flag" type="String" default="true"/> 
+            <property name="restrictFieldVisiblityFieldAPIName" label="Restrict Field Visiblity" type="String"  /> 
+            <property name="restrictFieldVisiblityCriteriaFieldAPIName" label= "Restrict Field Visiblity Criteria" type="String"  />
+            <property name="hideColumnIfNoData" label= "Hide Column If No Data" type="String"
+                            description="Comma separated field API names. A column is hidden when none of the displayed rows have a value for that field. Example: Core_MDF_Comments__c,Core_MDF_Notes__c"/>
+            <property name="componentVisibilityCriteria" label= "Component Visibility Criteria" type="String"
+                            description="Semicolon separated SOQL conditions evaluated against the current record. The component is hidden unless the record matches. Example: Core_MDF_Program_Type__c = 'IPA';Core_MDF_Program_Type__c = 'CoGTM';Core_MDF_Active_Ind__c = true"/>
+            <property name="componentVisibilityCriteriaLogic" label= "Component Visibility Criteria Logic" type="String"
+                            description="Combines the conditions above by their position number (1-based). Supports AND, OR and parentheses for grouping. Leave blank to AND all conditions. Example: 1 AND (2 OR 3)"/>
+            <property name="messageBelowTable" label= "Message Below Table" type="String"
+                            description="Optional. Field API name whose distinct values across all rows are consolidated and shown as text below the table. Example: Core_MDF_Footer_Message__c"/>
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" label="recordId" type="String" default="{!recordId}"/> 
+            <property name="relatedobjectApiName" label="Related Object API Name" type="String" default="Core_MDF_Camp_to_ActPartner__c"/>
+            <property name="strFields" label="Fields" type="String" default="Core_MDF_Activating_Partner_Account_id__c"/>
+            <!--TWC3117-17837-->
+            <property name="strLabels" label="Field Labels" type="String" default="Title"/>
+            <!--TWC3117-17837-->
+            <property name="criteriaFieldAPIName" label="Reference FieldAPIName" type="String" default="Core_MDF_Campaign_Id__c"
+                            description="The field on which query to be performed. 
+                            e.g. it can be AccountId from which Case records will be fetched."/>
+            <property name="additionalCriteria" label="Additional Criteria" type="String" default=" Core_MDF_Active_Ind__c=true "/>
+            <property name="tableHeader" label="Table Header" type="String" default=""/>
+            <property name="sharingFlag" label="Sharing Flag" type="String" default="true"/>   
+            <property name="restrictFieldVisiblityFieldAPIName" label="Restrict Field Visiblity" type="String"  /> 
+            <property name="restrictFieldVisiblityCriteriaFieldAPIName " label="Restrict Field Visiblity Criteria " type="String" /> 
+            <property name="hideColumnIfNoData" label= "Hide Column If No Data" type="String"
+                            description="Comma separated field API names. A column is hidden when none of the displayed rows have a value for that field. Example: Core_MDF_Comments__c,Core_MDF_Notes__c"/>
+            <property name="componentVisibilityCriteria" label= "Component Visibility Criteria" type="String"
+                            description="Semicolon separated SOQL conditions evaluated against the current record. The component is hidden unless the record matches. Example: Core_MDF_Program_Type__c = 'IPA';Core_MDF_Program_Type__c = 'CoGTM';Core_MDF_Active_Ind__c = true"/>
+            <property name="componentVisibilityCriteriaLogic" label= "Component Visibility Criteria Logic" type="String"
+                            description="Optional. Combines the conditions above by their position number (1-based). Supports AND, OR and parentheses for grouping. Leave blank to AND all conditions. Example: 1 AND (2 OR 3)"/>
+            <property name="messageBelowTable" label= "Message Below Table" type="String"
+                            description="Optional. Field API name whose distinct values across all rows are consolidated and shown as text below the table. Example: Core_MDF_Footer_Message__c"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

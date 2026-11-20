@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AGS_Role_Filter_Txt__c</fullName>
+        <description>AGS Role filter to be embedded in Email Notification</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>AGS Role Filter</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Permission_Set_API_Nm__c</fullName>
+        <description>Permission set API name to check if the user has the selected Role</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Permission Set API Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Access_Level_Nm__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Access Level</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Read</fullName>
+                    <default>true</default>
+                    <label>Read</label>
+                </value>
+                <value>
+                    <fullName>Edit</fullName>
+                    <default>false</default>
+                    <label>Read/Write</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_IsActive_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Is Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Role_Nm__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Role</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Executive</fullName>
+                    <default>true</default>
+                    <label>Account Executive</label>
+                </value>
+                <value>
+                    <fullName>ITS</fullName>
+                    <default>false</default>
+                    <label>ITS</label>
+                </value>
+                <value>
+                    <fullName>FSE/SDM</fullName>
+                    <default>false</default>
+                    <label>FSE/SDM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Pricing Quote Team Role Access Mapping</label>
+    <pluralLabel>Pricing Quote Team Role Access Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

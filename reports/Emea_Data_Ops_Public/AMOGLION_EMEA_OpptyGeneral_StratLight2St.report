@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Core_Opp_Strategic_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermediate_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Product_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_has_Solution__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF (
+OR(
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVJ9dAAH&quot;, 
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVJAvAAP&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001JTXaaAAH&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KL5UtAAL&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001JTGwRAAX&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001Im4s5AAB&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001JTOTDAA5&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001JT4r0AAD&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVIllAAH&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVImeAAH&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVFlOAAX&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0061J00000W99EmQAJ&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVI14AAH&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001KVJkMAAX&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001IFjsbAAD&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001IFjYVAA1&quot;,
+Opportunity.Core_Opportunity_ID__c = &quot;0063b00001Im5o9AAB&quot;
+), 
+&quot;Shortlist&quot;, &quot;&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Shortlist from Rach</description>
+        <developerName>CDF1</developerName>
+        <label>Shortlist</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>AMOGLION_EMEA_OpptyGeneral_StratLight2St - Same as lighthouse but by Stage</description>
+    <filter>
+        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Hosted Sales Group,EMEA Partner Holding,EMEA Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opp_Strategic_Opportunity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Lighthouse,Regional Strategic</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001KL9o7AAD,0063b00001KLZkKAAX,0063b00001JTYUoAAP,0063b00001KVJkMAAX,0063b00001IFjsbAAD,0063b00001KVJAvAAP,0063b00001KVJ9dAAH</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>INDUSTRY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>AMOGLION_EMEA_OpptyGeneral_StratLight2St</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2023-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,105 @@
+<template>
+    <template if:true={showPicklistError}>  
+        <div class="opidParentClass picklistValueErrorMessage">
+        <p>Creation of LOB 1PID from a Global account and Global 1PID from a LOB account is not allowed.<br>LOB 1PIDs cannot be made for intermediate accounts below level 2.</p>
+        </div>
+    </template> 
+    <template if:false={showPicklistError}>
+        <template if:false={showNewAcreComponent}>
+            <div class="opidParentClass">
+                <div class="opidCreation">
+                    <lightning-combobox
+                            name="picklist"
+                            label="Partner Grouping Method"
+                            value={value}
+                            placeholder="Select an Option"
+                            options={options}
+                            required
+                            onchange={handleChange}
+                            variant="label-inline"
+                            message-when-value-missing="Please provide a partner grouping method">
+                        </lightning-combobox>
+                    <div class="opidCreationButton">    
+                    <lightning-button variant="brand" label="Submit" onclick={handleSave}></lightning-button>
+                    </div>
+                </div>
+                <div class="opidAccounts">
+                    <template if:true={accounts}>
+                        <table class="slds-table_bordered slds-table_cell-buffer slds-table_striped opidAccountsTable">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col">
+                                        <div class="slds-truncate" ></div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" >Intel Account</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate">Unified ID</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" >UCD Hierarchy</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" >IPA Account</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={accounts} for:item="account">
+                                    <tr key={account.Id}>
+                                        <td>
+                                            <input type="radio" checked value={account.Id} onclick={handleRadioChange} name="account_id"/>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" >{account.Name}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">{account.Core_Business_Party_Id__c}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">{account.Unified_Hierarchy_View__c}</div>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" disabled checked={account.Core_Intel_Partner_Alliance_PartnerGroup__c} class="slds-truncate" />
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                        <template if:true={showErrorMessage}>
+                            <div class="errorMessageClass">
+                                * Please select a record from table to proceed further.
+                            </div>
+                        </template>
+                        <!--<template if:true={showOpidNameInput}>
+                            <div class="opidNameClass">
+                                <lightning-input>
+                                    label="OPID Name"
+                                    value={opidName}
+                                    message-when-value-missing="Please provide an OPID name"
+                                    onchange={handleOpidNameInput}
+                                    required
+                                </lightning-input>
+                            </div>
+                        </template>-->
+                        <div class="buttonClass">
+                            <div class="submitButton">
+                                <lightning-button label="Next" onclick={handleClick} variant="brand"></lightning-button>
+                            </div>
+                                <lightning-button label="Cancel" onclick={closePopUp} variant="brand"></lightning-button>
+                        </div>
+                    </template>
+                    <template if:true={error}>
+                        <p>Error: {error}</p>
+                    </template>
+                </div>
+            </div>
+        </template>
+        <template if:true={showNewAcreComponent}>
+            <div class="opidParentClass">
+                <c-u-c-d-Hierarchy picklist-value={value} record-id={recordId} childrecords={childAccounts} showopidname={showOpidNameInput} selectedparentaccountid={selectedAccountId} childerror={error} handleback={handleBackClick} showaccounthierarchy={showNewAcreComponent}></c-u-c-d-Hierarchy>
+            </div>
+        </template>
+    </template> 
+</template>

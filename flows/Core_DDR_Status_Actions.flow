@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Notify_Owners_On_Open_Design</name>
+        <label>Notify Owners On Open Design</label>
+        <locationX>578</locationX>
+        <locationY>492</locationY>
+        <actionName>Core_Design_Registration__c.Core_DDR_Send_Open_Design_Notification</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Design_Registration__c.Core_DDR_Send_Open_Design_Notification</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>DealRegistrationRecordtype</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Deal Registration - Partner</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>Deal_Check</name>
+        <label>Deal Check</label>
+        <locationX>182</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Registration_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Design Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Record_Type_and_Status</targetReference>
+            </connector>
+            <label>Check for Registration Type</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Deal_Registration_Check</name>
+        <label>Deal Registration Check</label>
+        <locationX>710</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Registration_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Design Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Partner_Account_Owner_Email</targetReference>
+            </connector>
+            <label>Check Registration Type</label>
+        </rules>
+    </decisions>
+    <description>Schedules record Abandonment and Email Alert for open designs</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_DDR_Status_Actions {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_DDR_Status_Actions</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update Partner Account Owner Email to Core_Partner_Account_Id__r.Owner.Email</description>
+        <name>Update_Partner_Account_Owner_Email</name>
+        <label>Update_Partner_Account_Owner_Email</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>Notify_Owners_On_Open_Design</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Partner_Account_Owner_Email_Txt__c</field>
+            <value>
+                <elementReference>$Record.Core_Partner_Account_Id__r.Owner.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Changes record type id to Design Registration - Locked
+And Status to Abandoned</description>
+        <name>Update_Record_Type_and_Status</name>
+        <label>Update_Record_Type_and_Status</label>
+        <locationX>50</locationX>
+        <locationY>384</locationY>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Abandoned</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Design_Registration_Locked_Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND( NOT(ISPICKVAL({!$Record.Core_Design_Registration_Status_Nm__c}, &apos;Approved&apos;)) ,NOT(ISPICKVAL({!$Record.Core_Design_Registration_Status_Nm__c}, &apos;Cancelled&apos;)) , NOT(ISPICKVAL({!$Record.Core_Design_Registration_Status_Nm__c}, &apos;Rejected&apos;)) , 
+NOT(ISPICKVAL({!$Record.Core_Design_Registration_Status_Nm__c}, &apos;Expired&apos;)) , 
+NOT(ISPICKVAL({!$Record.Core_Design_Registration_Status_Nm__c}, &apos;Re-Submitted&apos;)) , ({!$Permission.PCC_Bypass_Automation}= False))</filterFormula>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Schedule_Abandon_Process</name>
+            <connector>
+                <targetReference>Deal_Check</targetReference>
+            </connector>
+            <label>Schedule_Abandon_Process</label>
+            <offsetNumber>180</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Open_Design_Remainder</name>
+            <connector>
+                <targetReference>Deal_Registration_Check</targetReference>
+            </connector>
+            <label>Open_Design_Remainder</label>
+            <offsetNumber>150</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>contains record Type Id of Design Registration - Locked</description>
+        <name>Design_Registration_Locked_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>0121J000000qpEUQAY</stringValue>
+        </value>
+    </variables>
+</Flow>

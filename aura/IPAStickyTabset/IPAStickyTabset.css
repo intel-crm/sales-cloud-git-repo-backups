@@ -1,0 +1,107 @@
+.THIS .tabNavContainer {
+  position: relative;
+  background-color: t(darkestGray);
+}
+.THIS.fixed .tabNavContainer {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1033;
+  transform: translate3d(0, 0, 0);
+}
+
+.THIS .placeHolder {
+  display: none;
+  height: 60px;
+}
+
+.THIS.fixed .placeHolder {
+  display: block;
+}
+.THIS .linkList {
+  width: 100%;
+  overflow-x: hidden;
+}
+.THIS .innerLinkList {
+  background-color: t(darkestGray);
+  display: flex;
+  height: 60px;
+}
+
+.THIS .innerLinkList button {
+  cursor: pointer;
+  align-items: center;
+  color: t(white);
+  display: flex;
+  /* flex: 1 0 0; */
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  height: 60px;
+  justify-content: center;
+  text-align: center;
+  border: 0;
+  border-bottom: 4px transparent solid;
+  background-color: t(darkestGray);
+  white-space: nowrap;
+}
+
+.THIS .innerLinkList button.active {
+  border-bottom: 4px t(digitalBlue) solid;
+}
+.THIS .innerLinkList button:focus {
+  /*background-color: #003366 !important;*/
+  outline: none !important;
+  border:2px solid white;
+  box-shadow: 0 0 10px #3b3a3a;
+}
+
+.THIS .innerLinkList button:hover {
+background-color: #454343 !important;
+
+}
+/* Slider Buttons */
+.THIS .sliderButton {
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  width: 40px;
+  z-index: 1;
+}
+
+.THIS .sliderButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.THIS .sliderButton:first-child {
+  left: 0;
+}
+
+.THIS .sliderButton:last-child {
+  right: 0;
+}
+
+.THIS .sliderButton .slds-icon {
+  height: 1em;
+  transform: translateY(1.1rem);
+  width: 1em;
+}
+
+.THIS .sliderButton .slds-icon use {
+  fill: t(white);
+}
+
+@media (max-width: 767px) {
+  .THIS.fixed .tabNavContainer {
+    top: 0;
+  }
+
+  .THIS .innerLinkList button {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    padding: 0.063rem 0.688rem;
+  }
+}

@@ -1,0 +1,38 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_AAQC_Landing Page 
+Created Date: Aug 24 2017
+Function    : Visualforce Page For Landing Page
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Imran                   08/24/2017               Created
+------------------------------------------------------------------------------------------------------------>
+<apex:page id="page"> 
+<style>
+     
+     .piped li:nth-child(2) input{
+      display:none;
+     }
+     
+     .piped li:nth-child(2) input[name="accept"]{ 
+     display:block;
+     }
+     
+ </style>
+<!-- Added integrity and cross origin attributes as suggested by semgrep tool as part of TWC4767-3971: KIIT: Semgrep Scan Results>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+ 
+       
+     <div style="text-align:center;font-size: 21px;color: #00BFFF;margin-top: 27px">
+      <apex:outputText value="{!$Label.Core_AAQC_Welcome_Message}" >
+      <apex:param value="{!$User.FirstName}"/></apex:outputText> 
+      </div>
+      <div style="text-align:center;font-size: 14px;color: black">
+      <br>The Ask Sales Incentives capability is to allow Intel sales employees to ask questions regarding Sales Incentives and obtain answers. All Ask Sales Incentives information is stored on Salesforce servers located in the United States for a minimum of 24 months. Access to Ask Sales Incentives information is strictly controlled and limited to the Sales Incentives Office team.</br></div>
+       <div style="text-align:center;font-size:14px;color:black">
+      <br>For your protection, please do not enter any personal information such as passwords, PINs, Bank details, address, User IDs, security words or any part of your social security/Identification number. If this information is required, a Sales Incentives Office team member will securely collect the sensitive personal information from you later.</br></div>
+      <div style="text-align:center;font-size:14px;color:black">
+      <br>Click <a href="{!$Label.Core_AAQC_Welcome_Message_Link}" style="font-size:14px;color:blue" target="_blank">here</a> to read about Intel’s Global Employee and Contingent Worker Privacy Notice</br></div>
+      <br>
+      <apex:enhancedList type="Case" height="600" customizable="true" rendered="true"/></br>
+</apex:page>

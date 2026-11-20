@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to store the tactics metrics</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Co_Marketing_Activity__c</fullName>
+        <label>Co-Marketing Activity</label>
+        <referenceTo>PartnerFundRequest</referenceTo>
+        <relationshipLabel>Activity Attributes</relationshipLabel>
+        <relationshipName>Activity_Attributes</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_nm__c</fullName>
+        <label>Field Name</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Digital Media - # of Impressions</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Impressions</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Clicks</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Clicks</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Conversions</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Conversions</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Social Media Likes/Shares</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Social Media Likes/Shares</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Page Views</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Page Views</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Unique Visitors</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Unique Visitors</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - Average time on Page (Seconds)</fullName>
+                    <default>false</default>
+                    <label>Digital Media - Average time on Page (Seconds)</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Downloads</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Downloads</label>
+                </value>
+                <value>
+                    <fullName>Digital Media - # of Leads</fullName>
+                    <default>false</default>
+                    <label>Digital Media - # of Leads</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media - # of Impressions</fullName>
+                    <default>false</default>
+                    <label>Legacy Media - # of Impressions</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media - Runs per hour</fullName>
+                    <default>false</default>
+                    <label>Legacy Media - Runs per hour</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media - # of Conversions</fullName>
+                    <default>false</default>
+                    <label>Legacy Media - # of Conversions</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media - # of Recipients</fullName>
+                    <default>false</default>
+                    <label>Legacy Media - # of Recipients</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media - # of Downloads</fullName>
+                    <default>false</default>
+                    <label>Legacy Media - # of Downloads</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media - # of Leads</fullName>
+                    <default>false</default>
+                    <label>Legacy Media - # of Leads</label>
+                </value>
+                <value>
+                    <fullName>Event - # of Sales Qualified Leads</fullName>
+                    <default>false</default>
+                    <label>Event - # of Sales Qualified Leads</label>
+                </value>
+                <value>
+                    <fullName>Event - Revenue of Units Sold (USD)</fullName>
+                    <default>false</default>
+                    <label>Event - Revenue of Units Sold (USD)</label>
+                </value>
+                <value>
+                    <fullName>Event  - # of Seller Attendees</fullName>
+                    <default>false</default>
+                    <label>Event  - # of Seller Attendees</label>
+                </value>
+                <value>
+                    <fullName>Event  - # of End Customer Attendees</fullName>
+                    <default>false</default>
+                    <label>Event  - # of End Customer Attendees</label>
+                </value>
+                <value>
+                    <fullName>Event  - # of Deal Wins</fullName>
+                    <default>false</default>
+                    <label>Event  - # of Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>Lead Cultivation - # of Sales Qualified Leads</fullName>
+                    <default>false</default>
+                    <label>Lead Cultivation - # of Sales Qualified Leads</label>
+                </value>
+                <value>
+                    <fullName>Lead Cultivation - # of Leads</fullName>
+                    <default>false</default>
+                    <label>Lead Cultivation - # of Leads</label>
+                </value>
+                <value>
+                    <fullName>Training - # of Partner Trainees</fullName>
+                    <default>false</default>
+                    <label>Training - # of Partner Trainees</label>
+                </value>
+                <value>
+                    <fullName>Training - # of End Customer Trainees</fullName>
+                    <default>false</default>
+                    <label>Training - # of End Customer Trainees</label>
+                </value>
+                <value>
+                    <fullName>Funded Headcount - # of Days</fullName>
+                    <default>false</default>
+                    <label>Funded Headcount - # of Days</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation - # of Sales Qualified Leads</fullName>
+                    <default>false</default>
+                    <label>Technical Activation - # of Sales Qualified Leads</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation - # of Deployments</fullName>
+                    <default>false</default>
+                    <label>Technical Activation - # of Deployments</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation - # of Downloads</fullName>
+                    <default>false</default>
+                    <label>Technical Activation - # of Downloads</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation - # of Instances</fullName>
+                    <default>false</default>
+                    <label>Technical Activation - # of Instances</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation - # of Deal Wins</fullName>
+                    <default>false</default>
+                    <label>Technical Activation - # of Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation - # of Design Wins</fullName>
+                    <default>false</default>
+                    <label>Technical Activation - # of Design Wins</label>
+                </value>
+                <value>
+                    <fullName>Incentive - # of Units Sold</fullName>
+                    <default>false</default>
+                    <label>Incentive - # of Units Sold</label>
+                </value>
+                <value>
+                    <fullName>Incentive - Revenue of Units Sold (USD)</fullName>
+                    <default>false</default>
+                    <label>Incentive - Revenue of Units Sold (USD)</label>
+                </value>
+                <value>
+                    <fullName>Incentive - # of Deal Wins</fullName>
+                    <default>false</default>
+                    <label>Incentive - # of Deal Wins</label>
+                </value>
+                <value>
+                    <fullName>Incentive - # of Deals Registered</fullName>
+                    <default>false</default>
+                    <label>Incentive - # of Deals Registered</label>
+                </value>
+                <value>
+                    <fullName>Incentive - # of Design Wins</fullName>
+                    <default>false</default>
+                    <label>Incentive - # of Design Wins</label>
+                </value>
+                <value>
+                    <fullName>Digital Media Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Digital Media Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Event Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Event Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Funded Headcount Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Funded Headcount Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Incentive Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Incentive Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Lead Cultivation Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Lead Cultivation Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Legacy Media Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Technical Activation Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Training Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Training Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Retail Activation - # of Person Days</fullName>
+                    <default>false</default>
+                    <label>Retail Activation - # of Person Days</label>
+                </value>
+                <value>
+                    <fullName>Retail Activation Percentage Spend</fullName>
+                    <default>false</default>
+                    <label>Retail Activation Percentage Spend</label>
+                </value>
+                <value>
+                    <fullName>Technical Services - # of Deployments</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Technical Services - # of Deployments</label>
+                </value>
+                <value>
+                    <fullName>Technical Services - # of Downloads</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Technical Services - # of Downloads</label>
+                </value>
+                <value>
+                    <fullName>Technical Services - # of Instances</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Technical Services - # of Instances</label>
+                </value>
+                <value>
+                    <fullName>Technical Services - # of Sales Qualified Leads</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Technical Services - # of Sales Qualified Leads</label>
+                </value>
+                <value>
+                    <fullName>Technical Services Percentage Spend</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Technical Services Percentage Spend</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Value_nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Value</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Spending_Amount_amt__c</fullName>
+        <label>Spending Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Tactics_nm__c</fullName>
+        <label>Tactics</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Digital Media</fullName>
+                    <default>false</default>
+                    <label>Digital Media</label>
+                </value>
+                <value>
+                    <fullName>Legacy Media</fullName>
+                    <default>false</default>
+                    <label>Legacy Media</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>Lead Cultivation</fullName>
+                    <default>false</default>
+                    <label>Lead Cultivation</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Technical Activation</fullName>
+                    <default>false</default>
+                    <label>Technical Activation</label>
+                </value>
+                <value>
+                    <fullName>Funded Headcount</fullName>
+                    <default>false</default>
+                    <label>Funded Headcount</label>
+                </value>
+                <value>
+                    <fullName>Incentive</fullName>
+                    <default>false</default>
+                    <label>Incentive</label>
+                </value>
+                <value>
+                    <fullName>Retail Activation</fullName>
+                    <default>false</default>
+                    <label>Retail Activation</label>
+                </value>
+                <value>
+                    <fullName>Technical Services</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Technical Services</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Type_nm__c</fullName>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>KPI</fullName>
+                    <default>false</default>
+                    <label>KPI</label>
+                </value>
+                <value>
+                    <fullName>Percentage</fullName>
+                    <default>false</default>
+                    <label>Percentage</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Activity Attributes</label>
+    <nameField>
+        <displayFormat>Attribute-{00000}</displayFormat>
+        <label>Activity Attributes Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Activity Attributes</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

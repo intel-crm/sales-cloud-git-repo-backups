@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <available>true</available>
+    <description>Notification for Claim Closed Status - Internal</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core MDF Claim Closed_Int</name>
+    <style>none</style>
+    <subject>Claim Resubmission Window Closed</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

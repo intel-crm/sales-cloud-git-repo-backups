@@ -1,0 +1,1991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>PCC_Send_Email_Rejection_to_Approver</name>
+        <label>Send Email Rejection to Approver</label>
+        <locationX>1282</locationX>
+        <locationY>1595</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>get_external_record_link</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Core_Intel_Technical_Owner_Id__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Has Been Rejected</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>PCC_EmailBodyforDealRejectionApprover</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email</name>
+        <label>Send Email</label>
+        <locationX>50</locationX>
+        <locationY>1271</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Create_Log_Entry_Info</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>ddr.admin@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Design Registration {!$Record.Name} Approved</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <elementReference>$Record.Core_Accepted_By_Id__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_Rejection_to_Approver_Account_Owner</name>
+        <label>Send Email Rejection to Approver : Account Owner</label>
+        <locationX>1546</locationX>
+        <locationY>1595</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>get_external_record_link</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Core_Partner_Account_Id__r.Owner.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Has Been Rejected</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>PCC_EmailBodyforDealRejectionApprover</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Partner_Rejection_Mail</name>
+        <label>Send Partner Rejection Mail</label>
+        <locationX>1612</locationX>
+        <locationY>1979</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>PCC_Deal_Partner_Email_Log</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Has been Rejected</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>PCC_EmailBodyForDealRejectionPartner</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmailOnExpiry</name>
+        <label>SendEmailOnExpiry</label>
+        <locationX>754</locationX>
+        <locationY>1271</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Create_Log_Entry_Info</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>ddr.admin@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Design Registration {!$Record.Name} Expired</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBodyforExpiry</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <elementReference>$Record.Core_Intel_Technical_Owner_Id__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmailOnRejection</name>
+        <label>SendEmailOnRejection</label>
+        <locationX>402</locationX>
+        <locationY>1271</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Create_Log_Entry_Info</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>ddr.admin@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Design Registration {!$Record.Name} Rejected</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBodyForRejection</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <elementReference>$Record.Core_Accepted_By_Id__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Column_to_Table</name>
+        <label>Add Column to Table</label>
+        <locationX>402</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tableColumns</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Add_Columns_to_Table</name>
+        <label>Add Columns to Table</label>
+        <locationX>754</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tableColumns</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDRPS</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Add_tableRow_to_table_markup</name>
+        <label>Add tableRow to table markup</label>
+        <locationX>138</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tableRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_DRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AddColumnToTable</name>
+        <label>Add columns to table markup</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tableColumns</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_DRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AddTableRowsToTableMarkup</name>
+        <label>AddTableRowsToTableMarkup</label>
+        <locationX>842</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>TableRowforExpiry</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDRPS</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AddTableRowToTableMarkup</name>
+        <label>AddTableRowToTableMarkup</label>
+        <locationX>490</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>TableRowForRejection</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Close_table_markup</name>
+        <label>Close table markup</label>
+        <locationX>50</locationX>
+        <locationY>1055</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_external_link</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Close_Table_Markup_For_Expiry</name>
+        <label>Close Table Markup For Expiry</label>
+        <locationX>754</locationX>
+        <locationY>1055</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>get_link_external</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Close_Table_Markup_For_Rejection</name>
+        <label>Close Table Markup For Rejection</label>
+        <locationX>402</locationX>
+        <locationY>1055</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>get_external_link_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>PCC_Add_column_to_email_table</name>
+        <label>Add column to email table</label>
+        <locationX>1612</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>tabledeal</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EmailTableColumns</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PCC_IterateOverDealDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>PCC_Add_Email_Table_row_to_table_markup</name>
+        <label>Add Email Table row to table markup</label>
+        <locationX>1700</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>tabledeal</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EmailTableRowForRejection</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PCC_IterateOverDealDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>PCC_Close_Email_Table_Row_for_markup</name>
+        <label>Close Email Table Row for markup</label>
+        <locationX>1612</locationX>
+        <locationY>1163</locationY>
+        <assignmentItems>
+            <assignToReference>tabledeal</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PCC_Is_Partner_Account_Covered</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Message</name>
+        <label>Update Message</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Message</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Record : Design Registration and Status= Approved</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_DRPS</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Message_Approved_Deal</name>
+        <label>Update Message = Approved Deal</label>
+        <locationX>1018</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Message</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Record : Deal Registration and Status = New Deal Approved</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Publish_platform_event_for_opportunity_creation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Message_Deal_Rejected</name>
+        <label>Update Message = Deal Rejected</label>
+        <locationX>1612</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Message</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Record : Deal Registration and Status = Rejected</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PCC_GetDealRegProductRecords</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Message_Deal_Resubmitted</name>
+        <label>Update Message = Deal Resubmitted</label>
+        <locationX>1986</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Message</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Record : Deal Registration and Status = Resubmitted</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Publish_Platform_event_for_Opportunity_Update</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Message_Expired</name>
+        <label>Update Message = Expired</label>
+        <locationX>754</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Message</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Record : Design Registration and Status= Expired</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>GetChildDRPS</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Message_Rejected</name>
+        <label>Update Message = Rejected</label>
+        <locationX>402</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>Message</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Record : Design Registration and Status= Rejected</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>GetChildDRP</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>PCC_Is_Partner_Account_Covered</name>
+        <label>Is Partner Account Covered</label>
+        <locationX>1612</locationX>
+        <locationY>1271</locationY>
+        <defaultConnector>
+            <targetReference>get_external_record_link</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PCC_Covered_Partner_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Account.Core_Covered_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_internal_record_link</targetReference>
+            </connector>
+            <label>Covered Partner Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Email_Alert_for_Approve_Or_Reject</name>
+        <label>Send Email Alert for Approve Or Reject</label>
+        <locationX>1282</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Status_is_Approved</name>
+            <conditionLogic>1 AND 2 AND 4 AND (3 OR 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Id__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message</targetReference>
+            </connector>
+            <label>If Status is Approved</label>
+        </rules>
+        <rules>
+            <name>If_Status_is_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Design</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_Rejected</targetReference>
+            </connector>
+            <label>If Status is Rejected</label>
+        </rules>
+        <rules>
+            <name>If_Status_is_Expired</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Expired</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Design</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_Expired</targetReference>
+            </connector>
+            <label>If Status is Expired</label>
+        </rules>
+        <rules>
+            <name>Deal_Status_is_approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_Approved_Deal</targetReference>
+            </connector>
+            <label>Deal Status is approved</label>
+        </rules>
+        <rules>
+            <name>PCC_If_Deal_Status_is_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_Deal_Rejected</targetReference>
+            </connector>
+            <label>If Deal Status is Rejected</label>
+        </rules>
+        <rules>
+            <name>If_Last_status_was_Resubmitted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Re-Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_Deal_Resubmitted</targetReference>
+            </connector>
+            <label>If Last status was Resubmitted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Email_to_PSAM_or_Alternate_Approver</name>
+        <label>Send Email to PSAM or Alternate Approver</label>
+        <locationX>1414</locationX>
+        <locationY>1487</locationY>
+        <defaultConnector>
+            <targetReference>Send_Email_Rejection_to_Approver_Account_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PCC_Send_Email_Rejection_to_Approver</targetReference>
+            </connector>
+            <label>Check Status</label>
+        </rules>
+    </decisions>
+    <description>Runs when status is changed to  Approved or Rejected</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>currentyear</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR(TODAY()))</expression>
+    </formulas>
+    <formulas>
+        <name>DRPComment</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!$Record.Core_Rejection_Comment_Txt__c}), {!IterateOverDRPS.Core_Comment_Txt__c}, {!$Record.Core_Rejection_Comment_Txt__c})</expression>
+    </formulas>
+    <formulas>
+        <name>EmailTableRowForRejection</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!PCC_IterateOverDealDRP.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!PCC_IterateOverDealDRP.Core_Product_Id__r.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!PCC_IterateOverDealDRP.Core_Design_Product_Status_Nm__c})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!PCC_IterateOverDealDRP.Core_Comment_Txt__c}+
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>EndCustomerName</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISBLANK({!$Record.Core_End_Customer_Account_Id__c})), {!$Record.Core_End_Customer_Account_Id__r.Name},{!$Record.Core_End_Customer_Nm__c})</expression>
+    </formulas>
+    <formulas>
+        <name>tableRow</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!Iterate_Over_DRP.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!Iterate_Over_DRP.Core_Product_Id__r.Name}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px; text-align: center;&quot;&gt;&apos; + {!Iterate_Over_DRP.Core_Partner_Tracking_Cd__c}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.Core_Design_Product_Status_Nm__c})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!Iterate_Over_DRP.Core_Comment_Txt__c}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.CreatedDate})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>TableRowforExpiry</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Product_Id__r.Name}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px; text-align: center;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Partner_Tracking_Cd__c}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.Core_Design_Product_Status_Nm__c})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Comment_Txt__c}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.CreatedDate})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRPS.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>TableRowForRejection</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRP.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRP.Core_Product_Id__r.Name}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px; text-align: center;&quot;&gt;&apos; + {!IterateOverDRP.Core_Partner_Tracking_Cd__c}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.Core_Design_Product_Status_Nm__c})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRP.Core_Comment_Txt__c}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.CreatedDate})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>TemplateBody</name>
+        <dataType>String</dataType>
+        <expression>NULL</expression>
+    </formulas>
+    <interviewLabel>Design Registration Status Actions for Approved and Rejected {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Design Registration Status Actions for Approved and Rejected</label>
+    <loops>
+        <name>Iterate_Over_DRP</name>
+        <label>Iterate Over DRP</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <collectionReference>Get_DRPS</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_tableRow_to_table_markup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Close_table_markup</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>IterateOverDRP</name>
+        <label>IterateOverDRP</label>
+        <locationX>402</locationX>
+        <locationY>755</locationY>
+        <collectionReference>GetChildDRP</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AddTableRowToTableMarkup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Close_Table_Markup_For_Rejection</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>IterateOverDRPS</name>
+        <label>IterateOverDRPS</label>
+        <locationX>754</locationX>
+        <locationY>755</locationY>
+        <collectionReference>GetChildDRPS</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AddTableRowsToTableMarkup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Close_Table_Markup_For_Expiry</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>PCC_IterateOverDealDRP</name>
+        <label>IterateOverDealDRP</label>
+        <locationX>1612</locationX>
+        <locationY>863</locationY>
+        <collectionReference>PCC_GetDealRegProductRecords</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>PCC_Add_Email_Table_row_to_table_markup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>PCC_Close_Email_Table_Row_for_markup</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Log_Entry_Error</name>
+        <label>Create Log Entry : Error</label>
+        <locationX>2250</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Core Design Registration Status Actions for Approved and Rejected : Error Occurred.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Core Design Registration Status Actions for Approved and Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Deal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_Info</name>
+        <label>Create Log Entry : Info</label>
+        <locationX>1282</locationX>
+        <locationY>2279</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>Message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Core Design Registration Status Actions for Approved and Rejected : Information</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Core Design Registration Status Actions for Approved and Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Deal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>PCC_Deal_Partner_Email_Log</name>
+        <label>Deal Partner Email Log</label>
+        <locationX>1612</locationX>
+        <locationY>2087</locationY>
+        <connector>
+            <targetReference>Create_Log_Entry_Info</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Email_Template_Name__c</field>
+            <value>
+                <stringValue>Rejected Deal Notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Language__c</field>
+            <value>
+                <stringValue>English</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Contact__c</field>
+            <value>
+                <elementReference>$Record.Owner:User.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_EmailContent__c</field>
+            <value>
+                <elementReference>PCC_EmailBodyForDealRejectionPartner</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_EmailDeliverabilityStatus__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Email_API_Response__c</field>
+            <value>
+                <stringValue>Mail sent successfully !!</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Subject__c</field>
+            <value>
+                <stringValue>Deal Has Been Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Timestamp__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_ToEmailID__c</field>
+            <value>
+                <elementReference>$Record.Owner:User.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_User__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PRM_EmailLog__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Publish_platform_event_for_opportunity_creation</name>
+        <label>Publish platform event for opportunity creation</label>
+        <locationX>1018</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Create_Log_Entry_Info</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>PCC_Object__c</field>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Record_ID__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Type__c</field>
+            <value>
+                <stringValue>Create</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>This will publish the platform event for Opportunity Update for Deal Resubmission - added by Dinesh</description>
+        <name>Publish_Platform_event_for_Opportunity_Update</name>
+        <label>Publish Platform event for Opportunity Update</label>
+        <locationX>1986</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Create_Log_Entry_Info</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_Error</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>PCC_Error_Message__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Object__c</field>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Record_ID__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Retry__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Type__c</field>
+            <value>
+                <stringValue>Resubmitted</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_DRPS</name>
+        <label>Get DRPS</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AddColumnToTable</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_external_link</name>
+        <label>Get external link</label>
+        <locationX>50</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_External_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_external_link_record</name>
+        <label>get external link record</label>
+        <locationX>402</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendEmailOnRejection</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_External_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_external_record_link</name>
+        <label>get external record link</label>
+        <locationX>1612</locationX>
+        <locationY>1871</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Partner_Rejection_Mail</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_External_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_intel_logo_link</name>
+        <label>get intel logo link</label>
+        <locationX>1612</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>PCC_Add_column_to_email_table</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Intel_Logo_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_internal_record_link</name>
+        <label>get internal record link</label>
+        <locationX>1414</locationX>
+        <locationY>1379</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_to_PSAM_or_Alternate_Approver</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Internal_Record_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_link_external</name>
+        <label>get link external</label>
+        <locationX>754</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendEmailOnExpiry</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_External_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetChildDRP</name>
+        <label>GetChildDRP</label>
+        <locationX>402</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Add_Column_to_Table</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetChildDRPS</name>
+        <label>GetChildDRPS</label>
+        <locationX>754</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Add_Columns_to_Table</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>PCC_GetDealRegProductRecords</name>
+        <label>GetDealRegProductRecords</label>
+        <locationX>1612</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_intel_logo_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>1156</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Email_Alert_for_Approve_Or_Reject</targetReference>
+        </connector>
+        <filterFormula>{!$Permission.PCC_Bypass_Automation} = False</filterFormula>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>emailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Approved&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;Opportunity:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Click&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!Get_external_link.Value__c}opportunity/{!$Record.Core_Opportunity_Id__c}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; font-family: Arial, sans-serif;&quot;&gt;to view&lt;/span&gt;.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!Get_external_link.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>EmailBodyforExpiry</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Expired&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!get_link_external.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>EmailBodyForRejection</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Rejected&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!get_external_link_record.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PCC_EmailBodyforDealRejectionApprover</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;Deal Registration Rejected&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ Hello {!$Record.Core_Partner_Account_Id__r.Owner.FirstName},
+&lt;br&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
+The following Deal Registration has been &lt;b&gt;Rejected.&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!$Record.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!$Record.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;External ID: &lt;/b&gt;{!$Record.PCC_Partner_Reference_ID__c}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!$Record.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;b&gt;Rejection Reason: &lt;/b&gt;{!$Record.Core_Rejection_Reason_Nm__c} 
+&lt;br&gt;
+&lt;b&gt;Rejection Comments: &lt;/b&gt;{!$Record.Core_Rejection_Comment_Txt__c} 
+&lt;br&gt;
+&lt;br&gt;
+{!tabledeal}
+&lt;br&gt;
+For more details, you can access the deal registration record &lt;a href={!get_internal_record_link.Value__c}{!$Record.Id}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager.
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+
+
+
+
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PCC_EmailBodyForDealRejectionPartner</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;Deal Registration Rejected&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt; 
+Hello {!$Record.Owner:User.FirstName},
+&lt;br&gt;
+&lt;br&gt; 
+The following Deal Registration has been &lt;b&gt;Rejected.&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!$Record.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!$Record.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;External ID: &lt;/b&gt;{!$Record.PCC_Partner_Reference_ID__c}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!$Record.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;b&gt;Rejection Reason: &lt;/b&gt;{!$Record.Core_Rejection_Reason_Nm__c} 
+&lt;br&gt;
+&lt;b&gt;Rejection Comments: &lt;/b&gt;{!$Record.Core_Rejection_Comment_Txt__c} 
+&lt;br&gt;
+&lt;br&gt;
+{!tabledeal}
+&lt;br&gt;
+For more details, you can access the deal registration record &lt;a href={!get_external_record_link.Value__c}core-design-registration/{!$Record.Id}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager.
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+
+
+
+
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Template</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;{!Iterate_Over_DRP.Name}&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>childDRPRecords</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_Design_Registration_Product__c</objectType>
+    </variables>
+    <variables>
+        <name>collectionDRP</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_Design_Registration_Product__c</objectType>
+    </variables>
+    <variables>
+        <name>currentItem_FilterRecipientEmailAddress</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>currentItemFromSourceCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Design_Registration_Product__c</objectType>
+    </variables>
+    <variables>
+        <name>EmailTableColumns</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;tr&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Id&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Product Name&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Status&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Comment&lt;/th&gt;  &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Expired</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Expired</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Message</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>parentDR</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_Design_Registration__c</objectType>
+    </variables>
+    <variables>
+        <name>RecipientEmailAddress</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>table</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table border=&quot;1&quot; style=&quot;border-collapse: collapse; width:900px&quot;&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>tablecloumnForRejection</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;tr&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Id&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Product Name&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Partner Tracking Number&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Status&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Comment&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Created Date&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Link&lt;/th&gt; &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>tableColumns</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;tr&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Id&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Product Name&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Partner Tracking Number&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Status&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Comment&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Created Date&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Link&lt;/th&gt; &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>tabledeal</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table border=&quot;1&quot; style=&quot;border-collapse: collapse; width:600px&quot;&gt;</stringValue>
+        </value>
+    </variables>
+</Flow>

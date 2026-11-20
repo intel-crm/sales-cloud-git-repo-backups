@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Specialty Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Specialty Data</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Specialty Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Number --></label>
+        <name>PRM_Account_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Date --></label>
+        <name>PRM_Change_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- Specialty Data (One Partner ID) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Nbr Employees Competency --></label>
+        <name>PRM_Specialty_Employees_Competency_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty --></label>
+        <name>PRM_Specialty_Id__c</name>
+        <relationshipLabel><!-- Specialty Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Specialty Nbr Employees Trained --></label>
+        <name>PRM_Specialty_Nbr_Employees_Trained_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Training Credits --></label>
+        <name>PRM_Specialty_Training_Credits_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty External Id --></label>
+        <name>PRM_Specialty_ext_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>PRM_Tier_Id__c</name>
+        <relationshipLabel><!-- Specialty Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Value Exchange End Date --></label>
+        <name>PRM_Value_Exchange_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value Exchange Start Date --></label>
+        <name>PRM_Value_Exchange_Start_Date_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

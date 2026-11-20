@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Objet de la campagne</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Objet de la campagne</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- IPA Campaign Purpose FieldSet --></label>
+        <name>Core_MDF_IPA_Campaign_Purpose_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help>La Période de Référence décrit un moment dans le temps avant cette campagne où la Valeur de Référence a été capturée ou estimée. Exemple : si cette campagne se termine en août et que la Valeur de Base a été capturée en août précédent, choisissez la première option. Si la valeur de référence est nulle, choisissez la première option.</help>
+        <label>Période de référence</label>
+        <name>Core_MDF_Baseline_Period_nm__c</name>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one half before</masterLabel>
+            <translation>Même période que cette campagne, une demi-période avant</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
+            <translation>Même période que cette campagne, un quart plus tôt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one year before</masterLabel>
+            <translation>Même période que cette campagne, un an avant</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign Purpose Description --></label>
+        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
+    </fields>
+    <fields>
+        <help>La valeur post-campagne de la mesure de résultat que nous définissons comme succès. Entré avant l’exécution.</help>
+        <label>Valeur de l&apos;objectif</label>
+        <name>Core_MDF_Goal_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>Valeur attendue de la mesure des résultats sans cette campagne. Entré avant l’exécution.</help>
+        <label>Valeur de référence</label>
+        <name>Core_MDF_Initial_Baseline_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>Des détails qui ajoutent de la spécificité à la mesure des résultats (par exemple, « par rapport au même semestre de l’année dernière pour les produits pour serveurs basés sur des processeurs Intel Xeon de 4e, 5e et 6e génération »). Entré avant l’exécution.</help>
+        <label>Critères de résultat</label>
+        <name>Core_MDF_Outcome_Criteria_txt__c</name>
+    </fields>
+    <fields>
+        <label>Mesure des résultats</label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
+        <help>Valeur post-campagne de la mesure des résultats. À mettre à jour une fois la campagne terminée.</help>
+        <label>Valeur du résultat</label>
+        <name>Core_MDF_Quantity_nbr__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel><!-- Campaign Outcome Name --></nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

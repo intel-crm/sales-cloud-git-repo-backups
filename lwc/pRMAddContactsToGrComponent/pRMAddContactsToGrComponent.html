@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Contact Data" icon-name="custom:custom63">
+        <!--div class="slds-m-around_medium"-->
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6"
+                padding="around-small">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <!--lightning-input type="text" label="Search for Contact" value={contactSearchStr}
+                            onchange={handleContactDetails}>
+                        </lightning-input-->
+                        <lightning-input aura:id="emailForm" label="Search for Contact " type="text"
+                            name="contactSearchStr" value={contactSearchStr} onchange={handleContactDetails}>
+                        </lightning-input>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2"
+                padding="around-small">
+                <lightning-button label="Search" variant="brand" onclick={handleSearch}>
+                </lightning-button> &nbsp;
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <template if:true={isSearchData}>
+        <lightning-datatable data={searchData} columns={columns} key-field="id">
+        </lightning-datatable>
+
+    </template>
+
+    <div class="c-container slds-align_absolute-center">
+        <lightning-layout horizontal-align="spread">
+            <template if:true={isSearchData}>
+                <lightning-layout-item padding="around-small">
+                    <lightning-button label="Add" variant="brand" onclick={handleSelContacts}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </div>
+    </br>
+
+</template>

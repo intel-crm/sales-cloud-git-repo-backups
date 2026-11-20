@@ -1,0 +1,50 @@
+<template>
+    <div class="slds-m-top_x-small slds-m-bottom_x-small"> <!-- slds-m-top_medium slds-m-bottom_x-large --> 
+        <div class="slds-p-around_x-small"> <!-- slds-p-around_medium -->
+            <!--Render Parent and child question lgc-bg -->
+            <div class="main" data-id={fieldid}>
+                <template if:true={piclistcheck}>
+                    <template if:false={commcheck}>
+                        <lightning-combobox class="inputdat" name={fieldid} required={isrequiredfield}
+                          label={fieldlabel} value={value} options={lovs}
+                          placeholder="-Select Options-" onchange={loadDependentFields}>
+                         </lightning-combobox>
+                    </template>
+                </template>
+                    <template if:true={piclistcheck}>
+                       <template if:true={commcheck}> 
+                        <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                            <template if:false={isrequiredfield}>
+                                   <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                             </template>
+                             <lightning-combobox class="inputdat" name={fieldid} 
+                                 value={value} options={lovs} required={isrequiredfield} variant="label-hidden"
+                                placeholder="-Select Options-" onchange={loadDependentFields}>
+                            </lightning-combobox>  
+                        </template> 
+                     </template>
+                <div if:true={isLoaded}>
+                    <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+                    <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+                </div>
+                <template if:true={renderChildQuestions}>    
+                    <template for:each={dependetQuestions} for:item="chi">
+                       <template if:true={chi.isVisible}>
+                            <div key={chi.Id} title={chi.type}>
+                                <div aria-labelledby={chi.label} aria-placeholder={chi.lwcplaceholder}
+                                    data-id={chi.fieldid}>
+                                    <c-dynamic-field  type={chi.type} 
+                                        fieldlabel={chi.label} isrequiredfield={chi.required}
+                                        lovs={chi.lwcplaceholder} placeholdertext={chi.splaceholder}
+                                            fieldid={chi.questionId}
+                                            value ={chi.selectedValue} fielditself = {chi}>
+                                    </c-dynamic-field>
+                                </div>
+                            </div>
+                        </template>
+                    </template>         
+                </template>
+            </div>
+        </div>   
+    </div>
+</template>

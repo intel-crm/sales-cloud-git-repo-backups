@@ -1,0 +1,29 @@
+table, th, td {
+    border: 1px solid black;
+    padding: 15px;
+}
+.slds-accordion{
+	--slds-c-accordion-color-border:#1a315b;
+	--slds-c-accordion-heading-text-color:white;
+	--slds-c-accordion-heading-hover-text-color:white;
+	--slds-c-accordion-summary-color-background:#41619B;
+	--slds-c-accordion-heading-font-size:17px;
+	--slds-c-accordion-section-spacing-block-start:2px;
+	--slds-c-accordion-section-spacing-block-end:2px;
+	padding: 10px;
+	width:100%;
+}
+.error{
+	color:red;
+	font-weight:bold;
+}
+.accessMsg{
+	margin-left:30px;
+	margin-right:20px;
+	font-size: 15px;
+}
+.privilegeMsg{
+	margin-left:30px;
+	font-size: 22px;
+	font-weight:bold;
+}

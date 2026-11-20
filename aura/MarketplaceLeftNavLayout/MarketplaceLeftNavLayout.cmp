@@ -1,0 +1,100 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:layout"
+    description="Marquee w/ right sidebar content area" access="global">
+    <!-- IPA2.0 + US TWC4497-1631 
+    <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute> -->
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="header" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="footer" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1white" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="sidebar" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="ctabar" type="Aura.Component[]" required="false" />
+    <aura:attribute name="faq" type="Aura.Component[]" required="false" />
+    <aura:attribute name="faqWhite" type="Aura.Component[]" required="false" />
+
+    <aura:attribute name="compareTray" type="Aura.Component[]" required="false"></aura:attribute>
+
+    <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div>
+        <!-- IPA2.0 + US TWC4497-1631 
+        <div class="manageOfferingBar">
+            {!v.manageOfferingBar}
+        </div> -->
+        <div class="marquee">
+            {!v.marquee}
+        </div>
+        <div>
+            {!v.header}
+        </div>
+        <!-- medium-large size l2 converted to mobile view. Currently only the l2 is supposed to use this layout -->
+        <div class="container l2-override">
+            <div class="contentPanel">
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem class="padding-x-large slds-x-large-size_3-of-12" size="12">
+                        <div class="left">
+                            {!v.sidebar}
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="padding-x-large slds-x-large-size_9-of-12 " size="12">
+                        <div class="right">
+                            {!v.main}
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+        </div>
+        
+        <div class="bg-blade-even">
+                {!v.mainFullWidth}
+            </div>
+            <div class="bg-blade-odd">
+              <div class="container">
+                {!v.blade1}
+              </div>
+            </div>
+            <div class="bg-white">
+                <div class="container">
+                  {!v.blade1white}
+                </div>
+              </div>
+            <div class="bg-blade-even">
+              <div class="container">
+                  {!v.blade2}
+              </div>
+            </div>
+            <div class="bg-blade-odd">
+              <div class="container">
+                {!v.blade3}
+              </div>
+            </div>
+            <div class="bg-blade-even">
+              <div class="container">
+                  {!v.blade4}
+              </div>
+            </div>
+        <div>
+            {!v.ctabar}
+        </div>
+        <!--  Container class is to avoid full width content-->
+        <div class="bg-white">
+            <div class="container">
+                {!v.faqWhite}
+            </div>
+        </div>
+        <div class="container">
+            {!v.faq}
+        </div>
+        <!-- Sticky Component visible only when items are available in tray-->
+        <div class="compareTray">
+            {!v.compareTray}
+        </div>
+    </div>
+</aura:component>

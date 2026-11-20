@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Business Review</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Business Reviews</value>
+    </caseValues>
+    <fields>
+        <label><!-- Escalation Review? --></label>
+        <name>Escalation_Review__c</name>
+    </fields>
+    <fields>
+        <label><!-- Help Needed --></label>
+        <name>Help_Needed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Insights/Trends --></label>
+        <name>Insights_Trends__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lost --></label>
+        <name>Lost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Date --></label>
+        <name>Meeting_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- New/Increased --></label>
+        <name>New_Increased__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pushed --></label>
+        <name>Pushed__c</name>
+    </fields>
+    <fields>
+        <label><!-- User&apos;s Manager --></label>
+        <name>User_s_Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- Won --></label>
+        <name>Won__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

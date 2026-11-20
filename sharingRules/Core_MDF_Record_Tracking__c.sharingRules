@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Record_Tracking_ATF_Report</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share the records of record tracking for scope - ATF Report</description>
+        <label>Record Tracking - ATF Report</label>
+        <sharedTo>
+            <group>Core_MDF_ATF_Report_Recipients_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Scope_nm__c</field>
+            <operation>equals</operation>
+            <value>ATF Report</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Record_Tracking_IUPGM_Discrepancy_Monitor</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share the records of record tracking for scope - IUPGM Discrepancy Monitor.</description>
+        <label>Record Tracking - IUPGM Discrepancy Monitor</label>
+        <sharedTo>
+            <group>Core_MDF_IUPGM_Discrepancy_Monitor_Group</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Core_MDF_Scope_nm__c</field>
+            <operation>equals</operation>
+            <value>IUPGM Discrepancy Monitor</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Scope_nm__c</field>
+            <operation>equals</operation>
+            <value>AGS IUPGM Sync</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Record_Tracking_IUPGM_Monitor</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share the records of- record tracking for scope -MonitorIUPGM</description>
+        <label>Record Tracking - IUPGM Monitor</label>
+        <sharedTo>
+            <group>Core_MDF_IUPGM_Monitor_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Scope_nm__c</field>
+            <operation>equals</operation>
+            <value>MonitorIUPGM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Record_Tracking_Power_BI_SF_Report</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Record Tracking -Power BI SF Report</label>
+        <sharedTo>
+            <group>Core_MDF_SF_PowerBIReport_NotifyGroup</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Scope_nm__c</field>
+            <operation>equals</operation>
+            <value>SF Power BI Report</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Record_Tracking_RMF_Mobile_Tracking</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule is used to share the record tracking records where scope is Activity Approval By Mobile</description>
+        <label>Record Tracking - RMF Mobile Tracking</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Scope_nm__c</field>
+            <operation>equals</operation>
+            <value>Activity Approval By Mobile</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

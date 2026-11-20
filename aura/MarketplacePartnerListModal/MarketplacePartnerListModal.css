@@ -1,0 +1,74 @@
+.THIS .close {
+  position: absolute;
+  top: 25px;
+  right: 16px;
+  transform: translateY(-50%);
+}
+
+.THIS .close .slds-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.THIS .modalTitle {
+  height: 80px;
+}
+
+.THIS .modalTitle {
+  background-color: t(darkBlue);
+  background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v3.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 2.500rem;
+  font-weight: 200;
+  text-align: center;
+  padding: 1rem ;
+}
+.THIS  .modalTitle a:hover .slds-icon use,
+.THIS .modalTitle a .slds-icon use {
+  fill: t(white);
+}
+
+
+.THIS .modalNav {
+  height: 66px;
+  background: t(lightestGray);
+  z-index: 1;
+  padding: 36px 0 10px 0;
+  text-align: center;
+}
+.THIS .modalNav .jumpLinks,
+.THIS .modalNav a {
+  margin: 0 8px;
+}
+
+.THIS .modalBody {
+  position: relative;
+  scroll-behavior: smooth;
+  height: calc(80vh - 200px);
+  overflow: auto;
+  padding: 2rem 10rem;
+}
+
+.THIS .heading {
+  border-bottom: 1px solid #dddbda;
+  margin-bottom: 2rem;
+}
+.THIS .sectionBody {
+  margin-bottom: 2rem;
+}
+.THIS .modalFooter {
+  height: 60px;
+  padding: 10px 20px;
+  bottom: 0;
+  background: t(lightestGray);
+  z-index: 1;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .THIS .modalTitle{
+    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v3.jpg');    
+  }
+}

@@ -1,0 +1,28 @@
+.THIS .isRequired .label::before {
+  color: red;
+  content: '*';
+  margin-right: 4px;
+}
+
+.THIS input[disabled] + label {
+  cursor: not-allowed;
+}
+
+.THIS .slds-form-element__label {
+  font-size: 1em !important;
+  font-weight: normal;
+}
+
+.THIS .highlight {
+  background-color: t(green);
+}
+
+.THIS .errorMessage {
+  color: t(redError);
+  font-size: 0.875em;
+}
+
+.THIS .additionalLabel {
+  font-size: 0.875em;
+  padding-left: 11px;  
+}

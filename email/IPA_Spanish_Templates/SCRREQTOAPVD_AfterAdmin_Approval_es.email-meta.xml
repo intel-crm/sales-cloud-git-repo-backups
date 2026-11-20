@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVD_AfterAdmin_Approval_es</name>
+    <style>none</style>
+    <subject>Spanish- Congratulations! Your request got Approved</subject>
+    <textOnly>Your Request has been Approved !
+
+
+Congratulations {!Account.Name} on getting enrolled to Intel® Cloud Insider Program member! After 30 minutes, please log in at intel.com/cloudinsider for marketing materials, sales tools and other information about your benefits. If you would like to add a colleague to your account, please visit your business profile under My Account. {!$Label.PRM_MyIntelProfileURL}
+
+
+Questions? Contact Intel® Cloud Insider Support at programs@intel.com or here
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

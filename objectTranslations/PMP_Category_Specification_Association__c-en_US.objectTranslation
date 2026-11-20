@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Category Spec Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Category Spec Associations</value>
+    </caseValues>
+    <fields>
+        <help><!-- Active (or) Inactive Indicator --></help>
+        <label><!-- Is Active --></label>
+        <name>PMP_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lookup to Category Object --></help>
+        <label><!-- Category --></label>
+        <name>PMP_Category_Id__c</name>
+        <relationshipLabel><!-- Category Spec Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- External Key --></help>
+        <label><!-- Cat Spec Ass External Key --></label>
+        <name>PMP_Category_Specification_External_Key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lookup to Specification object --></help>
+        <label><!-- Specification --></label>
+        <name>PMP_Specification_Id__c</name>
+        <relationshipLabel><!-- Category Spec Associations --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,26 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "AI on Intel Overview",
+  "contentBody" : {
+    "description" : "There are many options for running AI on Intel ranging from Xeon to Gaudi and others. Dive into some of the below content to learn more about the different types of AI and how each of them run best on specific Intel products",
+    "sections" : [ {
+      "content" : "<div>Ask the below questions and start think which of our Intel technologies would be the best product for this use case and customer. </div><div><br /></div><ol><li>Discuss our enterprise strength in Intel Xeon and Core Processors. Most AI Inference has deployed on a CPU. Assess with questions of what opportunities or business challenges do they face? </li><li>Are they interest in LLM / Gen AI? What use case? Customer service, summarization or other? Are they using large AI applications requiring heavy duty training or iterative training of model(s)? Gaudi can be a great performant in Deep Learning and Generative AI applications </li><li>Identify Visual Computing Workloads: Media streaming / Transcoding and Media Analytics / AI Inference at your customer. Flex GPU is competitive and could be a better price and TCO over competition</li></ol><div><br /></div><div>Link to detailed ADDS AI COE Primer: <a style=\"font-size: 14px; font-family: &#34;Source Sans Pro&#34;, &#34;Segoe UI&#34;, Frutiger, Helvetica, Arial; color: rgb(51, 51, 51);\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DC9fBCGP2fgDmGMW76JBGphfcF98\">https://intel.seismic.com/Link/Content/DC9fBCGP2fgDmGMW76JBGphfcF98</a></div>",
+      "keyConcept" : "Assess ADDS Primer for AI on Intel",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Link to our public presentation around all things AI on Intel.</div><div><br /></div><div><a style=\"color: rgb(51, 51, 51); font-family: &#34;Source Sans Pro&#34;, &#34;Segoe UI&#34;, Frutiger, Helvetica, Arial; font-size: 14px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DCVRDMjbccBfbGc23fdXBjhH996P\">https://intel.seismic.com/Link/Content/DCVRDMjbccBfbGc23fdXBjhH996P</a></div>",
+      "keyConcept" : "Intel AI Public Gold Deck",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Are you interested in making yourself smart on all things AI on Intel and AI in general? Linked here is a collection of all internal training for SMG field personnel.</div><div><br /></div><div><a style=\"color: rgb(51, 51, 51); font-family: &#34;Source Sans Pro&#34;, &#34;Segoe UI&#34;, Frutiger, Helvetica, Arial; font-size: 14px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DC6jMXF3PCRdHGFGRgJT3hVCCTHj\">https://intel.seismic.com/Link/Content/DC6jMXF3PCRdHGFGRgJT3hVCCTHj</a></div>",
+      "keyConcept" : "AI Training Guide",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div><span style=\"font-size: 12px; font-family: &#34;Source Sans Pro&#34;; color: rgb(83, 91, 100);\">This guide is meant to be the cross-company, single source of AI product positioning and messaging to align the best Intel technologies to our customers&#39; specific workload needs, regardless of our business group or product affiliation.</span></div><div><br /></div><div><a style=\"font-size: 12px; font-family: &#34;Source Sans Pro&#34;; color: rgb(83, 91, 100);\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DCWGHjWbmXbV3G2CTC43gf6DJBDP\">Link to Deck</a></div>",
+      "keyConcept" : "Intel AI Product Positioning Guide",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1.0
+  },
+  "urlName" : "ai-on-intel-overview"
+}

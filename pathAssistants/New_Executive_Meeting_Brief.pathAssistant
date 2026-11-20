@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Executive_Meeting_Brief__c</entityName>
+    <fieldName>Brief_Status__c</fieldName>
+    <masterLabel>New Executive Meeting Brief</masterLabel>
+    <recordTypeName>CRM_New_Executive_Meeting_Brief</recordTypeName>
+</PathAssistant>

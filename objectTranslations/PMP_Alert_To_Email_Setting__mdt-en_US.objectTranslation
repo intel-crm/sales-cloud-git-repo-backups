@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP Alert To Email Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP Alert To Email Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- NumberOfDays --></label>
+        <name>NumberOfDays__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP_Allowed_Permission_Set --></label>
+        <name>PMP_Allowed_Permission_Set__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP Email Template Name --></label>
+        <name>PMP_Email_Template_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP Object Subtype --></label>
+        <name>PMP_Object_Subtype__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Video_Specialty_SPA</name>
+    <style>none</style>
+    <subject>Especialización en video de Intel® Partner Alliance</subject>
+    <textOnly>¡Felicitaciones por calificar!
+
+
+{!Contact.FirstName},
+
+¡Bienvenido a la Especialización en video de Intel® Partner Alliance! Como especialista en IoT calificado, usted reúne las condiciones para acceder a los beneficios* por especialización diseñados para ayudarlo a hacer crecer su negocio de video de Internet de las cosas, que incluyen:
+
+Una insignia de programa exclusiva
+Fondos para desarrollo de mercados designados
+Oportunidad de comercialización de contenido
+Invitaciones a eventos especiales y oportunidades para establecer contactos
+
+Acceder a los beneficios
+
+
+*Los beneficios pueden variar según la región geográfica.
+
+Los socios de Intel tienen una larga historia de innovación y, gracias a Intel® Partner Alliance, lo ayudaremos a acelerar la creación de soluciones para la economía centrada en los datos. En conjunto, podemos conectarnos, innovar y crecer, lo que plantea oportunidades extraordinarias.
+
+Visite https://www.intel.com/content/www/xl/es/partner-alliance/help/overview.html para obtener ayuda y orientación para optimizar su membresía.
+
+
+Atentamente,
+Su equipo de Intel® Partner Alliance
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

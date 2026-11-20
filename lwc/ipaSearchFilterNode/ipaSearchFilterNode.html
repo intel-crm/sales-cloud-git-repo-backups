@@ -1,0 +1,39 @@
+<template>
+    
+    <template for:each={childFilters} for:item="filter">
+        <div class="search-filter-node" key={filter.id} data-count={filter.count}>
+            <div class="slds-p-vertical_xx-small">
+                <label class="search-filter-node-checkbox-container" aria-label={filter.label}>
+                    <lightning-input type="checkbox" data-variant="dark"
+                        class={checkboxClasses}
+                        checked={filter.selected}
+                        value={filter.value}
+                        onchange={handleFilterChange}>
+                    </lightning-input>
+                    <div class="search-filter-node-text">
+                        {filter.label}&nbsp;({filter.count})
+                    </div>
+                    <template if:true={filter.prerelease}>
+                        <div class="search-filter-prerelease">
+                            {labels.prerelease}
+                        </div>
+                    </template>
+                </label>
+            </div>
+            <template if:true={filter.hasVisibleChildren}>
+                <div class="slds-m-left_small">
+                    <c-ipa-search-filter-node
+                        filter={filter}
+                        role={filter.ariaRole}
+                        aria-label={filter.label}
+                        is-draft={isDraft}
+                        show-pre-release={showPreRelease}
+                        search-params={searchParams}
+                        search-response-filters={searchResponseFilters}>
+                    </c-ipa-search-filter-node>
+                </div>
+            </template>
+        </div>
+    </template>
+
+</template>

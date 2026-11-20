@@ -1,0 +1,49 @@
+.combobox {
+    overflow: visible;
+}
+
+.tableContentHide {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.errorClass {
+    background: red;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.THIS table td lightning-calendar td {
+    padding: 0 !important;
+    border-top: none !important;
+}
+
+.sldsspinnercontainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .2s ease, visibility 0s;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.slds-modal__container {
+    width: min-content;
+}
+
+.revisionSection {
+    text-align: left;
+}
+
+.revisionHelpText {
+    position: absolute;
+    left: 7rem;
+}

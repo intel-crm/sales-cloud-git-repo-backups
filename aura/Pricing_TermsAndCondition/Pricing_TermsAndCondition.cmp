@@ -1,0 +1,21 @@
+<aura:component controller="Pricing_QuoteLineController"
+  implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
+  access="global">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="url" access="private" type="string" default="" />
+  <lightning:card>
+    <aura:set attribute="title">
+      <lightning:icon iconName="standard:record" size="small" />
+      Terms and Conditions
+    </aura:set>
+    <div class="slds-m-around_small">
+      <p class="slds-m-around_small">
+        For the purpose of the End Customer and Project specified in this quote, any approved quote line below is offered 
+          subject to your acceptance of the Terms and Conditions in the
+        <a href="{!v.url}" target="_blank"> IQR Quote Letter</a>
+        delivered to you.
+      </p>
+    </div>
+    <aura:set attribute="footer"></aura:set>
+  </lightning:card>
+</aura:component>

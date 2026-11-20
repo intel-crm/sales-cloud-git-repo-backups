@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Backend Value Map</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Backend Value Map</value>
+    </caseValues>
+    <fields>
+        <help><!-- BES Field Mapping that this Value Mapping is associated with --></help>
+        <label><!-- Backend Field Mapping --></label>
+        <name>Backend_Field_Mapping_HSD__c</name>
+        <relationshipLabel><!-- Backend Value Map --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Core_IPS_Deactivated__c</name>
+    </fields>
+    <fields>
+        <help><!-- The SFDC value
+in IPS or ISVC --></help>
+        <label><!-- Source Value --></label>
+        <name>Core_IPS_Source_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- The BES value
+in HSD, Jira, RTC, ... --></help>
+        <label><!-- Target Value --></label>
+        <name>Core_IPS_Target_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

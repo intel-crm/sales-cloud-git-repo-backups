@@ -1,0 +1,127 @@
+<template>
+
+    <div class="mobile-modal-buttons-container bg-white slds-grid slds-p-around_medium slds-p-horizontal_medium">
+        <lightning-button class="button-full-width slds-size_1-of-2 slds-p-right_medium" label={labels.modalCancelButton} onclick={handleCancelModalMobile}></lightning-button>
+        <button data-enabled={draftFiltersModified} class="slds-size_1-of-2 button button-primary ipaSearchFilters-apply-button">
+            <div onclick={handleApplyFiltersMobile}>
+                {labels.modalApplyButton}
+            </div>
+            <div class="selected-filters-count text-small" data-count={allSelectedFiltersCount}>{allSelectedFiltersCount}</div>
+        </button>
+    </div>
+
+    <div class="mobile-filters-container bg-lightest-gray slds-p-around_medium">
+        <div class="select sort-by-select">
+            <select name="searchFilterSort" onchange={handleSelectSortByMobile}>
+                <template for:each={sortByOptionsForMobile} for:item="option">
+                    <option key={option.label} value={option.value} selected={option.selected}>{option.label}</option>
+                </template>
+            </select>
+        </div>
+        <template if:true={includesPreRelease}>
+            <lightning-input type="checkbox" class="slds-p-vertical_small" checked={preReleaseValue}
+                label={labels.includesPreRelease}
+                onchange={handleTogglePreRelease}>
+            </lightning-input>
+        </template>
+        <template for:each={filterGroupings} for:item="grouping">
+            <template if:true={grouping.hasFiltersWithResults}>
+                <div key={grouping.key} class="filter-grouping-container slds-is-relative">
+                    <template if:true={loading}>
+                        <lightning-spinner alternative-text="Searching..."></lightning-spinner>
+                    </template>
+                    <div role="button" tabindex="0" class="filter-grouping cursor-pointer slds-grid slds-grid_vertical-align-center"
+                        data-key={grouping.key} onclick={handleToggleGrouping}
+                        aria-expanded={grouping.expanded} aria-controls={grouping.key}>
+                        <div>
+                            <h4 class="slds-m-vertical_medium truncate-3">{grouping.label}</h4>
+                        </div>
+                        <div class="filter-grouping-right-container">
+                            <span class="selected-filters-count color-medium-gray text-bold"
+                                data-count={grouping.selectedFiltersCount}>
+                                {grouping.selectedFiltersCount}</span>
+                            <template if:false={grouping.expanded}>
+                                <span class="fa-angle-down"></span>
+                            </template>
+                            <template if:true={grouping.expanded}>
+                                <span class="fa-angle-up"></span>
+                            </template>
+                        </div>
+                    </div>
+                    <div role="tablist" id={grouping.key} aria-label={grouping.label} class="search-filters-container" data-expanded={grouping.expanded}>
+                        <template for:each={grouping.filters} for:item="filter">
+                            <template if:true={filter.hasResults}>
+                                <div key={filter.key} class="search-filter-container slds-p-bottom_x-small" data-selected={filter.selected}>
+                                    <c-core-intc-hub-spoke headline={filter.label} color-scheme="blue">
+                                        <div slot="link" class="search-filter cursor-pointer bg-lightest-gray" data-key={filter.key}
+                                            onclick={handleSelectFilterInModal} tabindex="0">
+                                            <div class="filter-label-container slds-is-relative">
+                                                <span class="truncate-2 link-text">{filter.label}</span>
+                                                <span class="selected-filters-count color-medium-gray text-bold"
+                                                    data-count={filter.selectedFiltersCount}>
+                                                    {filter.selectedFiltersCount}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div slot="content">
+                                            <template if:true={filter.selected}>
+                                                <div class="search-filter-nodes bg-lightest-gray">
+                                                    <div class="mobile-modal-buttons-container bg-white slds-grid slds-p-around_medium slds-p-horizontal_medium">
+                                                        <lightning-button class="button-full-width slds-size_1-of-2 slds-p-right_medium" label={labels.modalCancelButton} onclick={handleCancelModalMobile}></lightning-button>
+                                                        <div data-enabled={draftFiltersModified} tabindex={modalApplyTabIndex} class="slds-size_1-of-2 button button-primary ipaSearchFilters-apply-button">
+                                                            <div onclick={handleApplyFiltersMobile}>
+                                                                {labels.modalApplyButton}
+                                                            </div>
+                                                            <div class="selected-filters-count text-small" data-count={allSelectedFiltersCount}>{allSelectedFiltersCount}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-p-around_medium">
+                                                        <template if:false={selectedFilter.hideSelectAllLinks}>
+                                                            <div class="slds-p-top_xx-small slds-p-bottom_small">
+                                                                <span class="link-text text-upcase text-bold filters-small-text"
+                                                                    data-filter-name={selectedFilter.name}
+                                                                    data-is-draft="true"
+                                                                    onclick={handleSelectAll}>
+                                                                    {labels.selectAll}
+                                                                </span>
+                                                                <span class="slds-m-horizontal_small">|</span>
+                                                                <span class="link-text text-upcase text-bold filters-small-text"
+                                                                    data-filter-name={selectedFilter.name}
+                                                                    data-is-draft="true"
+                                                                    onclick={handleDeSelectAll}>
+                                                                    {labels.deselectAll}
+                                                                </span>
+                                                            </div>
+                                                        </template>
+                                                        <template if:true={selectedFilter.hasSearch}>
+                                                            <div class="search-container slds-m-bottom_large slds-is-relative">
+                                                                <c-core-intc-search show-filter-search-input-spinner-icon={showFilterSearchInputSpinnerIcon}
+                                                                onfinishedtyping={handleFilterSearchInputChange} 
+                                                                onclearkeyword={handleFilterSearchInputChange} 
+                                                                placeholder={labels.filterSearchInputPlaceholder} 
+                                                                keyword-value={searchKeywordValue} ></c-core-intc-search>
+                                                            </div>
+                                                        </template>
+                                                        <c-ipa-search-filter-node
+                                                            filter={selectedFilter}
+                                                            is-draft
+                                                            show-pre-release={preReleaseValue}
+                                                            search-params={searchParams}
+                                                            search-response-filters={searchResponseFilters}
+                                                            onsetrendering={handleSetRendering}>
+                                                        </c-ipa-search-filter-node>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </c-core-intc-hub-spoke>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+
+</template>

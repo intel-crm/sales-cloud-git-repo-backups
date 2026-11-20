@@ -1,0 +1,51 @@
+<apex:page showHeader="True" sidebar="false" title="Opportunity Review" lightningStylesheets="true">
+    <GBLite:TabbedPageComponent pageAPIName="Core_Grid_Opportunity_Review" customJsIds="" customCssIds="">
+    <GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+        <script>
+            var pageDefinition = {
+    "name": "Opportunity Review",
+    "tabs": [
+        {
+            "name": "All Opportunities",
+            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&sfname=default",
+            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&sfname=default",
+            "id": 1527699440823
+        },
+        {
+            "name": "This Month",
+            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities This Month&sh=0&sfname=default",
+            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities This Month&sh=0&sfname=default",
+            "id": 1527699481167
+        },
+        {
+            "name": "Next Month",
+            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities Next Month&sh=0&sfname=default",
+            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities Next Month&sh=0&sfname=default",
+            "id": 1527699492083
+        },
+        {
+            "name": "This Quarter",
+            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities This Quarter&sh=0&sfname=default",
+            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities This Quarter&sh=0&sfname=default",
+            "id": 1527699499976
+        },
+        {
+            "name": "Next Quarter",
+            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities Next Quarter&sh=0&sfname=default",
+            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities Next Quarter&sh=0&sfname=default",
+            "id": 1527699527687
+        }
+    ],
+    "id": 1527699440823,
+    "selectedCustomCSSIds": [],
+    "selectedCustomJSIds": [],
+    "description": "",
+    "globalButtons": false,
+    "object": "Opportunity",
+    "height": "800",
+    "showHeader": true,
+    "showSidebar": false
+};
+        </script>
+    </GBLite:TabbedPageComponent>
+</apex:page>

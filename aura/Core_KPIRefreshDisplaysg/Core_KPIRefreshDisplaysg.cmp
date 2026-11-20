@@ -1,0 +1,21 @@
+<aura:component controller="Core_RefreshKPI" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="getMsg" type="String"/>
+    <aura:attribute name="lastRefresh" type="String"/>
+    <aura:attribute name="classname" type="String" />
+    <aura:attribute name="showDate" type="Boolean" />
+    <aura:if isTrue="{!v.showDate}">
+    	<b>Last KPI Update: {!v.lastRefresh}</b>
+    </aura:if>
+    <aura:if isTrue="{!v.getMsg != ''}">
+        <aura:if isTrue="{!v.showDate}">
+            <br>/</br>
+        </aura:if>  
+        <h2 class="{!v.classname}" >
+            <!--<aura:unescapedHtml value="{!v.getMsg}"/>-->
+            <ui:outputRichText value="{!v.getMsg}"/>
+           
+        </h2>
+    </aura:if>
+</aura:component>

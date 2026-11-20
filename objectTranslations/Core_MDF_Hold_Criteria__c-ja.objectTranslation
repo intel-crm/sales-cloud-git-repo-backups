@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Hold Criteria List --></value>
+    </caseValues>
+    <fields>
+        <help><!-- The activity category on the rule. Select either activity category or activity type(s). Selecting activity category will apply the rule to all activity types that are part of the activity category --></help>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_Activity_Category_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The activity type(s) the rule should apply to. Select either activity category or activity type(s) --></help>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Category_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date when the rule comes into effect --></help>
+        <label><!-- Effective Date --></label>
+        <name>Core_MDF_Effective_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Geo, the rule should apply  to; Select either Geo or Region/Country. Selecting a geo will apply the rule to all countries that are part of the geo. --></help>
+        <label><!-- Geo --></label>
+        <name>Core_MDF_Geo_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date when the rule becomes ineffective --></help>
+        <label><!-- Ineffective Date --></label>
+        <name>Core_MDF_Ineffective_Dt__c</name>
+    </fields>
+    <fields>
+        <help>プログラム、適用すべき規則。</help>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_id__c</name>
+        <relationshipLabel><!-- Hold Criteria List --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The country or countries the rule applies to. Select either Geo or Region/Country. --></help>
+        <label><!-- Country/Region --></label>
+        <name>Core_MDF_Region_Country_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The &quot;higher than&quot; claim amount (USD)  that the rule should apply to --></help>
+        <label><!-- Threshold Amount --></label>
+        <name>Core_MDF_Threshold_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The company, the rule should apply to. --></help>
+        <label><!-- Account --></label>
+        <name>Core_MDF_UltimateAccount_Id__c</name>
+        <relationshipLabel><!-- Hold Criteria List (Company) --></relationshipLabel>
+    </fields>
+    <nameFieldLabel><!-- Hold Criteria ID --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Effective date cannot be earlier than today --></errorMessage>
+        <name>Core_MDF_EffectiveDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ineffective date cannot be earlier than effective date --></errorMessage>
+        <name>Core_MDF_Ineff_dt_Greaterthan_Eff_dt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Threshold amount must be greater than 0 --></errorMessage>
+        <name>Core_MDF_Negative_Amt_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Criteria Rule cannot be edited --></errorMessage>
+        <name>Core_MDF_PreventHoldListCriteriaFromEdit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one rule condition must be entered to create a hold criteria --></errorMessage>
+        <name>Core_MDF_SelectMinOneField_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

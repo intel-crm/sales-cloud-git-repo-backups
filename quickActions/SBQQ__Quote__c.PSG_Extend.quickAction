@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Helps to extend a CP Quote</description>
+    <fieldOverrides>
+        <field>core_cpq_extended_cp_quote_cb__c</field>
+        <formula>true</formula>
+    </fieldOverrides>
+    <label>Extend</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>core_cpq_pricing_end_date_dt__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Quote Successfully Extended</successMessage>
+    <type>Update</type>
+</QuickAction>

@@ -1,0 +1,922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_IT_Date_of_Meeting__c</fullName>
+        <description>Date of the meeting</description>
+        <inlineHelpText>Date of the meeting</inlineHelpText>
+        <label>Date of Meeting</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_IT_Intel_Meeting_Topic_Name__c</fullName>
+        <label>Request Topic</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Agile</fullName>
+                    <default>false</default>
+                    <label>Agile</label>
+                </value>
+                <value>
+                    <fullName>Application Security</fullName>
+                    <default>false</default>
+                    <label>Application Security</label>
+                </value>
+                <value>
+                    <fullName>Auditing</fullName>
+                    <default>false</default>
+                    <label>Auditing</label>
+                </value>
+                <value>
+                    <fullName>Augmented Reality</fullName>
+                    <default>false</default>
+                    <label>Augmented Reality</label>
+                </value>
+                <value>
+                    <fullName>BI Overview or Indepth</fullName>
+                    <default>false</default>
+                    <label>BI Overview or Indepth</label>
+                </value>
+                <value>
+                    <fullName>Big Data/BI case study</fullName>
+                    <default>false</default>
+                    <label>Big Data/BI case study</label>
+                </value>
+                <value>
+                    <fullName>BYOD - Bring Your Own Device</fullName>
+                    <default>false</default>
+                    <label>BYOD - Bring Your Own Device</label>
+                </value>
+                <value>
+                    <fullName>Client Cloud Computing</fullName>
+                    <default>false</default>
+                    <label>Client Cloud Computing</label>
+                </value>
+                <value>
+                    <fullName>Client Management</fullName>
+                    <default>false</default>
+                    <label>Client Management</label>
+                </value>
+                <value>
+                    <fullName>Client Platform</fullName>
+                    <default>false</default>
+                    <label>Client Platform</label>
+                </value>
+                <value>
+                    <fullName>Client Refresh</fullName>
+                    <default>false</default>
+                    <label>Client Refresh</label>
+                </value>
+                <value>
+                    <fullName>Client SSD</fullName>
+                    <default>false</default>
+                    <label>Client SSD</label>
+                </value>
+                <value>
+                    <fullName>Client Virtualization</fullName>
+                    <default>false</default>
+                    <label>Client Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Cloud Client</fullName>
+                    <default>false</default>
+                    <label>Cloud Client</label>
+                </value>
+                <value>
+                    <fullName>Cloud Computing</fullName>
+                    <default>false</default>
+                    <label>Cloud Computing</label>
+                </value>
+                <value>
+                    <fullName>Cloud Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Cloud Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Cloud Operations</fullName>
+                    <default>false</default>
+                    <label>Cloud Operations</label>
+                </value>
+                <value>
+                    <fullName>Cloud Overview/Strategy</fullName>
+                    <default>false</default>
+                    <label>Cloud Overview/Strategy</label>
+                </value>
+                <value>
+                    <fullName>Cloud Security</fullName>
+                    <default>false</default>
+                    <label>Cloud Security</label>
+                </value>
+                <value>
+                    <fullName>CMMI</fullName>
+                    <default>false</default>
+                    <label>CMMI</label>
+                </value>
+                <value>
+                    <fullName>Consumerization</fullName>
+                    <default>false</default>
+                    <label>Consumerization</label>
+                </value>
+                <value>
+                    <fullName>CRM</fullName>
+                    <default>false</default>
+                    <label>CRM</label>
+                </value>
+                <value>
+                    <fullName>Data Protection</fullName>
+                    <default>false</default>
+                    <label>Data Protection</label>
+                </value>
+                <value>
+                    <fullName>Database</fullName>
+                    <default>false</default>
+                    <label>Database</label>
+                </value>
+                <value>
+                    <fullName>DC Design</fullName>
+                    <default>false</default>
+                    <label>DC Design</label>
+                </value>
+                <value>
+                    <fullName>DC Management &amp; Operation</fullName>
+                    <default>false</default>
+                    <label>DC Management &amp; Operation</label>
+                </value>
+                <value>
+                    <fullName>DC Strategy &amp; Consolidation</fullName>
+                    <default>false</default>
+                    <label>DC Strategy &amp; Consolidation</label>
+                </value>
+                <value>
+                    <fullName>DC Tour</fullName>
+                    <default>false</default>
+                    <label>DC Tour</label>
+                </value>
+                <value>
+                    <fullName>DevOps</fullName>
+                    <default>false</default>
+                    <label>DevOps</label>
+                </value>
+                <value>
+                    <fullName>Disaster Recovery</fullName>
+                    <default>false</default>
+                    <label>Disaster Recovery</label>
+                </value>
+                <value>
+                    <fullName>EAI/B2Bi/B2E</fullName>
+                    <default>false</default>
+                    <label>EAI/B2Bi/B2E</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Security</fullName>
+                    <default>false</default>
+                    <label>Enterprise Security</label>
+                </value>
+                <value>
+                    <fullName>Ergo health employee safety</fullName>
+                    <default>false</default>
+                    <label>Ergo health employee safety</label>
+                </value>
+                <value>
+                    <fullName>Five Star</fullName>
+                    <default>false</default>
+                    <label>Five Star</label>
+                </value>
+                <value>
+                    <fullName>GEO fencing</fullName>
+                    <default>false</default>
+                    <label>GEO fencing</label>
+                </value>
+                <value>
+                    <fullName>Global Systems Management or NOC</fullName>
+                    <default>false</default>
+                    <label>Global Systems Management or NOC</label>
+                </value>
+                <value>
+                    <fullName>Hackathon Cloud</fullName>
+                    <default>false</default>
+                    <label>Hackathon Cloud</label>
+                </value>
+                <value>
+                    <fullName>Hadoop(IDH) sharing</fullName>
+                    <default>false</default>
+                    <label>Hadoop(IDH) sharing</label>
+                </value>
+                <value>
+                    <fullName>HFE</fullName>
+                    <default>false</default>
+                    <label>HFE</label>
+                </value>
+                <value>
+                    <fullName>HPC</fullName>
+                    <default>false</default>
+                    <label>HPC</label>
+                </value>
+                <value>
+                    <fullName>html5</fullName>
+                    <default>false</default>
+                    <label>html5</label>
+                </value>
+                <value>
+                    <fullName>Hybrid cloud</fullName>
+                    <default>false</default>
+                    <label>Hybrid cloud</label>
+                </value>
+                <value>
+                    <fullName>IA Phone</fullName>
+                    <default>false</default>
+                    <label>IA Phone</label>
+                </value>
+                <value>
+                    <fullName>IA Tablet</fullName>
+                    <default>false</default>
+                    <label>IA Tablet</label>
+                </value>
+                <value>
+                    <fullName>IaaS</fullName>
+                    <default>false</default>
+                    <label>IaaS</label>
+                </value>
+                <value>
+                    <fullName>Identity and Access Management</fullName>
+                    <default>false</default>
+                    <label>Identity and Access Management</label>
+                </value>
+                <value>
+                    <fullName>Incident Response</fullName>
+                    <default>false</default>
+                    <label>Incident Response</label>
+                </value>
+                <value>
+                    <fullName>Information/Knowledge Management</fullName>
+                    <default>false</default>
+                    <label>Information/Knowledge Management</label>
+                </value>
+                <value>
+                    <fullName>Instant Messaging</fullName>
+                    <default>false</default>
+                    <label>Instant Messaging</label>
+                </value>
+                <value>
+                    <fullName>Intel IT Benchmarking</fullName>
+                    <default>false</default>
+                    <label>Intel IT Benchmarking</label>
+                </value>
+                <value>
+                    <fullName>Intel IT Multi Year Planning</fullName>
+                    <default>false</default>
+                    <label>Intel IT Multi Year Planning</label>
+                </value>
+                <value>
+                    <fullName>Intel IT Overview / IT APR Briefing</fullName>
+                    <default>false</default>
+                    <label>Intel IT Overview / IT APR Briefing</label>
+                </value>
+                <value>
+                    <fullName>Intel IT Strategy</fullName>
+                    <default>false</default>
+                    <label>Intel IT Strategy</label>
+                </value>
+                <value>
+                    <fullName>IOT in Manufacturing</fullName>
+                    <default>false</default>
+                    <label>IOT in Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>IOT overview</fullName>
+                    <default>false</default>
+                    <label>IOT overview</label>
+                </value>
+                <value>
+                    <fullName>IT Business Value</fullName>
+                    <default>false</default>
+                    <label>IT Business Value</label>
+                </value>
+                <value>
+                    <fullName>IT Business Value (not workshop)</fullName>
+                    <default>false</default>
+                    <label>IT Business Value (not workshop)</label>
+                </value>
+                <value>
+                    <fullName>IT Factory Automation</fullName>
+                    <default>false</default>
+                    <label>IT Factory Automation</label>
+                </value>
+                <value>
+                    <fullName>IT Innovation</fullName>
+                    <default>false</default>
+                    <label>IT Innovation</label>
+                </value>
+                <value>
+                    <fullName>IT Sustainability</fullName>
+                    <default>false</default>
+                    <label>IT Sustainability</label>
+                </value>
+                <value>
+                    <fullName>ITFA Discussion</fullName>
+                    <default>false</default>
+                    <label>ITFA Discussion</label>
+                </value>
+                <value>
+                    <fullName>ITSP Compreshenive Planning</fullName>
+                    <default>false</default>
+                    <label>ITSP Compreshenive Planning</label>
+                </value>
+                <value>
+                    <fullName>ITSP Overview</fullName>
+                    <default>false</default>
+                    <label>ITSP Overview</label>
+                </value>
+                <value>
+                    <fullName>LBS Location Based Systems</fullName>
+                    <default>false</default>
+                    <label>LBS Location Based Systems</label>
+                </value>
+                <value>
+                    <fullName>Lean</fullName>
+                    <default>false</default>
+                    <label>Lean</label>
+                </value>
+                <value>
+                    <fullName>Localization globalization translation</fullName>
+                    <default>false</default>
+                    <label>Localization globalization translation</label>
+                </value>
+                <value>
+                    <fullName>Master Data</fullName>
+                    <default>false</default>
+                    <label>Master Data</label>
+                </value>
+                <value>
+                    <fullName>MDM or MAM</fullName>
+                    <default>false</default>
+                    <label>MDM or MAM</label>
+                </value>
+                <value>
+                    <fullName>MITBV Workshop</fullName>
+                    <default>false</default>
+                    <label>MITBV Workshop</label>
+                </value>
+                <value>
+                    <fullName>mobile app dev and strategy</fullName>
+                    <default>false</default>
+                    <label>mobile app dev and strategy</label>
+                </value>
+                <value>
+                    <fullName>Mobile devices</fullName>
+                    <default>false</default>
+                    <label>Mobile devices</label>
+                </value>
+                <value>
+                    <fullName>Network</fullName>
+                    <default>false</default>
+                    <label>Network</label>
+                </value>
+                <value>
+                    <fullName>Non-IA tablet or smartphone</fullName>
+                    <default>false</default>
+                    <label>Non-IA tablet or smartphone</label>
+                </value>
+                <value>
+                    <fullName>ODCA</fullName>
+                    <default>false</default>
+                    <label>ODCA</label>
+                </value>
+                <value>
+                    <fullName>Online Collaboration Systems (such as MS SharePoint)</fullName>
+                    <default>false</default>
+                    <label>Online Collaboration Systems (such as MS SharePoint)</label>
+                </value>
+                <value>
+                    <fullName>Openstack or open source in the cloud</fullName>
+                    <default>false</default>
+                    <label>Openstack or open source in the cloud</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Other rare topic and misc.</fullName>
+                    <default>false</default>
+                    <label>Other rare topic and misc.</label>
+                </value>
+                <value>
+                    <fullName>Overview</fullName>
+                    <default>false</default>
+                    <label>Overview</label>
+                </value>
+                <value>
+                    <fullName>PaaS</fullName>
+                    <default>false</default>
+                    <label>PaaS</label>
+                </value>
+                <value>
+                    <fullName>Patching</fullName>
+                    <default>false</default>
+                    <label>Patching</label>
+                </value>
+                <value>
+                    <fullName>Peoplesoft</fullName>
+                    <default>false</default>
+                    <label>Peoplesoft</label>
+                </value>
+                <value>
+                    <fullName>Productivity Measurement &amp; Enhancement</fullName>
+                    <default>false</default>
+                    <label>Productivity Measurement &amp; Enhancement</label>
+                </value>
+                <value>
+                    <fullName>Project Management</fullName>
+                    <default>false</default>
+                    <label>Project Management</label>
+                </value>
+                <value>
+                    <fullName>RFID</fullName>
+                    <default>false</default>
+                    <label>RFID</label>
+                </value>
+                <value>
+                    <fullName>RISC to IA</fullName>
+                    <default>false</default>
+                    <label>RISC to IA</label>
+                </value>
+                <value>
+                    <fullName>Risk Management</fullName>
+                    <default>false</default>
+                    <label>Risk Management</label>
+                </value>
+                <value>
+                    <fullName>Risk Management &amp; Information Security</fullName>
+                    <default>false</default>
+                    <label>Risk Management &amp; Information Security</label>
+                </value>
+                <value>
+                    <fullName>Robotics</fullName>
+                    <default>false</default>
+                    <label>Robotics</label>
+                </value>
+                <value>
+                    <fullName>SaaS</fullName>
+                    <default>false</default>
+                    <label>SaaS</label>
+                </value>
+                <value>
+                    <fullName>SAP Business</fullName>
+                    <default>false</default>
+                    <label>SAP Business</label>
+                </value>
+                <value>
+                    <fullName>SAP HANA</fullName>
+                    <default>false</default>
+                    <label>SAP HANA</label>
+                </value>
+                <value>
+                    <fullName>SAP Technical</fullName>
+                    <default>false</default>
+                    <label>SAP Technical</label>
+                </value>
+                <value>
+                    <fullName>SDN</fullName>
+                    <default>false</default>
+                    <label>SDN</label>
+                </value>
+                <value>
+                    <fullName>SDX</fullName>
+                    <default>false</default>
+                    <label>SDX</label>
+                </value>
+                <value>
+                    <fullName>Self Serve BI</fullName>
+                    <default>false</default>
+                    <label>Self Serve BI</label>
+                </value>
+                <value>
+                    <fullName>Server Consolidation</fullName>
+                    <default>false</default>
+                    <label>Server Consolidation</label>
+                </value>
+                <value>
+                    <fullName>Server Hardware and Performance</fullName>
+                    <default>false</default>
+                    <label>Server Hardware and Performance</label>
+                </value>
+                <value>
+                    <fullName>Server Management</fullName>
+                    <default>false</default>
+                    <label>Server Management</label>
+                </value>
+                <value>
+                    <fullName>Server Refresh</fullName>
+                    <default>false</default>
+                    <label>Server Refresh</label>
+                </value>
+                <value>
+                    <fullName>Server SSD</fullName>
+                    <default>false</default>
+                    <label>Server SSD</label>
+                </value>
+                <value>
+                    <fullName>Server Virtualization</fullName>
+                    <default>false</default>
+                    <label>Server Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Server/OS Security</fullName>
+                    <default>false</default>
+                    <label>Server/OS Security</label>
+                </value>
+                <value>
+                    <fullName>Service Desk or TAC or Help Desk</fullName>
+                    <default>false</default>
+                    <label>Service Desk or TAC or Help Desk</label>
+                </value>
+                <value>
+                    <fullName>Service Management and Portfolio</fullName>
+                    <default>false</default>
+                    <label>Service Management and Portfolio</label>
+                </value>
+                <value>
+                    <fullName>Six Sigma</fullName>
+                    <default>false</default>
+                    <label>Six Sigma</label>
+                </value>
+                <value>
+                    <fullName>SOA</fullName>
+                    <default>false</default>
+                    <label>SOA</label>
+                </value>
+                <value>
+                    <fullName>SOC/Security BI</fullName>
+                    <default>false</default>
+                    <label>SOC/Security BI</label>
+                </value>
+                <value>
+                    <fullName>Social Computing</fullName>
+                    <default>false</default>
+                    <label>Social Computing</label>
+                </value>
+                <value>
+                    <fullName>Software general topic</fullName>
+                    <default>false</default>
+                    <label>Software general topic</label>
+                </value>
+                <value>
+                    <fullName>Speech recognition &amp; human machine interface</fullName>
+                    <default>false</default>
+                    <label>Speech recognition &amp; human machine interface</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Supply Chain Management</fullName>
+                    <default>false</default>
+                    <label>Supply Chain Management</label>
+                </value>
+                <value>
+                    <fullName>Systemic Innovation</fullName>
+                    <default>false</default>
+                    <label>Systemic Innovation</label>
+                </value>
+                <value>
+                    <fullName>Thermal management</fullName>
+                    <default>false</default>
+                    <label>Thermal management</label>
+                </value>
+                <value>
+                    <fullName>Touch</fullName>
+                    <default>false</default>
+                    <label>Touch</label>
+                </value>
+                <value>
+                    <fullName>Ultrabook</fullName>
+                    <default>false</default>
+                    <label>Ultrabook</label>
+                </value>
+                <value>
+                    <fullName>Unified Communications &amp; Messaging</fullName>
+                    <default>false</default>
+                    <label>Unified Communications &amp; Messaging</label>
+                </value>
+                <value>
+                    <fullName>UX general</fullName>
+                    <default>false</default>
+                    <label>UX general</label>
+                </value>
+                <value>
+                    <fullName>Visualization</fullName>
+                    <default>false</default>
+                    <label>Visualization</label>
+                </value>
+                <value>
+                    <fullName>vPro</fullName>
+                    <default>false</default>
+                    <label>vPro</label>
+                </value>
+                <value>
+                    <fullName>Win 8</fullName>
+                    <default>false</default>
+                    <label>Win 8</label>
+                </value>
+                <value>
+                    <fullName>Wireless technology</fullName>
+                    <default>false</default>
+                    <label>Wireless technology</label>
+                </value>
+                <value>
+                    <fullName>Wireless/Mobile Security</fullName>
+                    <default>false</default>
+                    <label>Wireless/Mobile Security</label>
+                </value>
+                <value>
+                    <fullName>XaaS</fullName>
+                    <default>false</default>
+                    <label>XaaS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IT_Intel_Meeting_Topic__c</fullName>
+        <label>Topic</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business Intelligence (Big Data)</fullName>
+                    <default>false</default>
+                    <label>Business Intelligence (Big Data)</label>
+                </value>
+                <value>
+                    <fullName>Client</fullName>
+                    <default>false</default>
+                    <label>Client</label>
+                </value>
+                <value>
+                    <fullName>Cloud Computing</fullName>
+                    <default>false</default>
+                    <label>Cloud Computing</label>
+                </value>
+                <value>
+                    <fullName>Collaboration &amp; Productivity</fullName>
+                    <default>false</default>
+                    <label>Collaboration &amp; Productivity</label>
+                </value>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Database</fullName>
+                    <default>false</default>
+                    <label>Database</label>
+                </value>
+                <value>
+                    <fullName>Enterprise</fullName>
+                    <default>false</default>
+                    <label>Enterprise</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IT_Venue_Type__c</fullName>
+        <label>Venue Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FTF at Account location</fullName>
+                    <default>false</default>
+                    <label>FTF at Account location</label>
+                </value>
+                <value>
+                    <fullName>FTF at Intel location</fullName>
+                    <default>false</default>
+                    <label>FTF at Intel location</label>
+                </value>
+                <value>
+                    <fullName>Teleconference</fullName>
+                    <default>false</default>
+                    <label>Teleconference</label>
+                </value>
+                <value>
+                    <fullName>Video conference</fullName>
+                    <default>false</default>
+                    <label>Video conference</label>
+                </value>
+                <value>
+                    <fullName>Online Sales</fullName>
+                    <default>false</default>
+                    <label>Online Sales</label>
+                </value>
+                <value>
+                    <fullName>Off-line (like email)</fullName>
+                    <default>false</default>
+                    <label>Off-line (like email)</label>
+                </value>
+                <value>
+                    <fullName>FTF at other offsite location</fullName>
+                    <default>false</default>
+                    <label>FTF at other offsite location</label>
+                </value>
+                <value>
+                    <fullName>Social Media</fullName>
+                    <default>false</default>
+                    <label>Social Media</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Sales_Support_Request__c</fullName>
+        <label>Sales Support Request</label>
+        <referenceTo>Core_Sales_Support_Request__c</referenceTo>
+        <relationshipName>Meeting_Topics</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Request Topics</label>
+    <nameField>
+        <displayFormat>MT-{0000000}</displayFormat>
+        <label>Meeting Topic ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Request Topics</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

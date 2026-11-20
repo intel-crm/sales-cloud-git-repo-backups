@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_73500085</developerName>
+        <masterLabel>Business Unit</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Cable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-WW</sourceValue>
+            </sourceValues>
+            <value>Cable</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Comp-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Convergate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-ETH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-NAS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-SHDSL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Media</sourceValue>
+            </sourceValues>
+            <value>Components</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Telco-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-Unassigned</sourceValue>
+            </sourceValues>
+            <value>Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Retail-WW</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Cable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Telco</sourceValue>
+            </sourceValues>
+            <value>WiFi</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - APAC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - US</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Unassigned</sourceValue>
+            </sourceValues>
+            <value>CHD-Other</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_26960540</developerName>
+        <masterLabel>Escalated Level</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Level 1 / Front Line</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult Level 1 / Front Line</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult Level 2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult Domain Expert</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult Level 3</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consult Engineering</sourceValue>
+            </sourceValues>
+            <value>Level 1 - Front Line Support</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Domain Expert</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Level 2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Domain Expert (Direct)</sourceValue>
+            </sourceValues>
+            <value>Level 2 - Domain Expert Support</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Level 3</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Engineering</sourceValue>
+            </sourceValues>
+            <value>Level 3 - Engineering Support</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>REASON</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_73500085</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Supported_Account__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_End_Customer__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Project_Case__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Country_Region__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Account_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Account_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Owner_2nd_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Co_Owner__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_CaseType__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Last_Update__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Private_Case_Comment_Timestamp__c</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Next_Response_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Escalated_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Backend_Promote_DT__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_26960540</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Escalated_Level__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Promote_Status__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Backend_ID__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CASE_ID</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Core_IPS_Supported_Product__c.Core_Support_Org_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Connected Home Division</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>CHD-BI-Open All</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList@Case.Core_IPS_Supported_Product__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>BucketField_26960540</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

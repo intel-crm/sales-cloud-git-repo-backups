@@ -1,0 +1,32 @@
+<messaging:emailTemplate subject="Detail for Failed/Aborted Batch in {!$Organization.Name}
+: {!relatedTo.ApexClassName__c}" recipientType="User" relatedToType="espy__Batch_Monitoring__c">
+<messaging:htmlEmailBody >
+    <html>
+        <body>
+            <p>Dear {!recipient.name},</p>
+            <p>Below is the detail of {!relatedTo.ApexClassName__c} Batch .</p>
+             <table border="0" >
+                <tr>     
+                    Class Name: {!relatedTo.ApexClassName__c}
+                </tr>
+                <tr>
+                    Created By: {!relatedTo.CreatedBy__r.Name}
+                </tr>
+                <tr>
+                    Created Date: {!relatedTo.CreatedDate__c}
+                </tr>
+                <tr>
+                    Status : {!relatedTo.Status__c}
+                </tr>               
+            </table>
+            <p>Kindly Approve to rerun the batch ,link to related record : <!--<a href=System.URL.getSalesforceBaseURL().toExternalForm()/{!relatedTo.Id}'"> Batch Record</a> -->
+                <apex:outputlink value="/{!relatedTo.Id}" >Batch Record </apex:outputlink>
+            </p><br />   
+           <!-- <center>
+                <p>Kindly Approve to rerun the batch</p><br/>
+                <c:BatchMonitoring batchRecid="{!relatedTo.Id}"/> 
+            </center>-->
+        </body>
+    </html>   
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

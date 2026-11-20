@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lead Administration Grid for Ops to process updates</description>
+    <label>Lead Administration - Grid</label>
+    <motif>Custom19: Wrench</motif>
+    <page>Core_Lead_Administration_Grid</page>
+</CustomTab>

@@ -1,0 +1,72 @@
+<template>
+  <div class="search__container " onregisterresulttemplates={handleResultTemplateRegistration} > 
+    <lightning-layout style="text-align: center; display: block;">
+      <lightning-layout-item>
+        <div>
+          <h3 class="helpfulArtical"> Helpful articles
+            relating to "{searchText}"</h3>
+        </div>
+      </lightning-layout-item>
+    </lightning-layout>
+    <c-quantic-search-interface engine-id={engineId} search-hub={searchHub} pipeline={pipeline}
+      disable-state-in-url={disableStateInUrl} skip-first-search={skipFirstSearch}>
+      <div class="slds-grid slds-grid_vertical slds-grid_align-center">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-align-middle searchBarAlign">
+          <div class="slds-m-vertical_small">
+            <c-quantic-search-box engine-id={engineId} subject={caseData.Subject}></c-quantic-search-box>
+          </div>
+        </div>
+        <div class="slds-col">
+          <div class="slds-grid slds-gutters_direct slds-wrap main slds-grid_align-right">
+            
+              <template if:false={noresults}>
+                  <div class="slds-col slds-order_2 slds-large-order_1 slds-size_1-of-1 slds-large-size_3-of-12">
+                    <template if:true={hasValues}>
+                      <div style="font-weight: normal;font-size: 20px; color: #262626; padding-bottom: 14px;"> Filter by</div>
+                    </template>
+              
+                    <c-quantic-facet-manager engine-id={engineId}>
+                      <c-quantic-facet display-values-as="link" field="tabfilter" label="Category" engine-id={engineId}
+                        no-filter-facet-count="noFilterFacetCount" onhasvalues={handleHasValues}></c-quantic-facet>
+                      <!-- <c-quantic-facet display-values-as="link" field="datasource" label="Source" engine-id={engineId}
+                                                  facet-id="datasource" no-filter-facet-count="noFilterFacetCount"  onhasvalues={handleHasValues}></c-quantic-facet> -->
+                      <!-- <c-quantic-facet display-values-as="link" field="objecttype" label="Category" engine-id={engineId}
+                                                  no-filter-facet-count="noFilterFacetCount"></c-quantic-facet> -->
+                    </c-quantic-facet-manager>
+                  </div>
+              </template>            
+             
+            <div class="slds-col slds-order_1 slds-large-order_2 slds-size_1-of-1 slds-large-size_9-of-12">
+                  <template if:false={noresults}>
+                    <!-- <div class="slds-grid slds-var-m-top_small"> -->
+                      <div> 
+                        <c-quantic-summary class="slds-var-m-vertical_x-small slds-medium-size_7-of-12"
+                          onqueryevent={handleQueryEvent} engine-id={engineId}>
+                        </c-quantic-summary>
+                      </div>
+                  </template>
+
+                  <div class="searchResults">
+                    <c-quantic-query-error engine-id={engineId}></c-quantic-query-error>
+                    <c-quantic-did-you-mean engine-id={engineId}></c-quantic-did-you-mean>
+                  </div>
+
+                  <div style="background-color: white; margin-top: 25px;">
+                    <c-quantic-result-list engine-id={engineId}></c-quantic-result-list>
+                  </div>
+
+                  <div class="slds-var-m-vertical_medium">
+                    <c-quantic-pager engine-id={engineId} number-of-pages="1"></c-quantic-pager>
+                  </div>
+
+            </div>
+          </div>
+            <div style="background-color: white; margin-top: 10px;">
+              <c-quantic-no-results onnoresult={handlenoResults} engine-id={engineId}></c-quantic-no-results>
+            </div>
+        </div>
+      </div>
+    </c-quantic-search-interface>
+  </div>
+  
+</template>

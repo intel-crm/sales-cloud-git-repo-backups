@@ -1,0 +1,86 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "3039422f-a6b4-4600-bfa3-2f944585a215",
+  "label" : "Get Help",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "44456d28-840f-4572-9092-17742dd475fe",
+          "columns" : [ {
+            "UUID" : "fefb9a29-7f69-4ae1-ab38-63dffb9b9e1b",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "44456d28-840f-4572-9092-17742dd475fe",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "richTextValue" : "<h1><b style=\"background-color: inherit; color: rgb(68, 68, 68);\">Need Help?</b><b style=\"color: rgb(68, 68, 68);\">&nbsp;</b></h1><p><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYGAAAAAFAAGKM+MAAAAAAElFTkSuQmCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==\" alt=\"Shape\">&nbsp;</p><p><span style=\"background-color: inherit;\">Answers to many of your questions may be found in the FAQ below. If your question isn’t answered, please feel free to contact your Intel representative or to contact the&nbsp;Intel Quote Request Support&nbsp;team </span>using the Contact Intel link below<span style=\"background-color: inherit;\">.</span>&nbsp;</p>"
+          },
+          "componentName" : "forceCommunity:richTextInline",
+          "id" : "6e47d336-60d7-4d2d-83bf-1b118fc1a281",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "richTextValue" : "<h1><strong style=\"color: rgb(68, 68, 68);\">Contact Intel</strong></h1><p><br></p><p><span style=\"color: rgb(23, 43, 77);\">If you are unable to reach your Intel sales rep, you may direct 'how do I' and process-related questions to the Tenders IQR Team by emailing </span><a href=\"mailto:intelquoterequest@intel.com\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(0, 82, 204);\"><ins>intelquoterequest@intel.com</ins></a><a href=\"mailto:intelquoterequest@intel.com\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(0, 82, 204); font-size: 12px;\"><strong><ins><img src=\"https://jira.devtools.intel.com/images/icons/mail_small.gif\" alt=\"\" height=\"12\" width=\"13\"></ins></strong></a><span style=\"color: rgb(23, 43, 77);\">. If you are experiencing a technical issue, such as getting an unexplained error, you may submit a ticket by going to&nbsp;</span><a href=\"https://intelinside.intel.com/support?appgroup=IQR\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(0, 82, 204); background-color: rgb(255, 255, 255);\">https://intelinside.intel.com/support?appgroup=IQR</a></p><p><strong style=\"color: rgb(68, 68, 68);\">&nbsp;</strong></p>"
+          },
+          "componentName" : "forceCommunity:richTextInline",
+          "id" : "1ee64ab1-e476-489c-a9c7-f30529f466e0",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : { },
+          "componentName" : "c:pricing_IntelFAQ",
+          "id" : "37908f07-1d77-44de-ac6a-a91b7168006d",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "fefb9a29-7f69-4ae1-ab38-63dffb9b9e1b",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f3cb98fa-7f51-47b5-8022-cfd58b0d1781",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Get Help"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b6263d97-80d2-4706-8085-cf9805fb6006",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5210c585-c660-4ea4-94a5-eddd2c35671e",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-get-help"
+}

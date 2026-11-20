@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template to send email when  partner edits the storefront and submit</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_Company_Submit_Template_for_Admin</name>
+    <style>none</style>
+    <subject>You have a new Storefront to review</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

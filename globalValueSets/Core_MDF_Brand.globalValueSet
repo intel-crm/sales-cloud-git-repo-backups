@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>10ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>10ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>10ᵗʰ Gen Core</fullName>
+        <default>false</default>
+        <label>10ᵗʰ Gen Core</label>
+    </customValue>
+    <customValue>
+        <fullName>10ᵗʰ Gen Core i5 processors</fullName>
+        <default>false</default>
+        <label>10ᵗʰ Gen Core i5 processors</label>
+    </customValue>
+    <customValue>
+        <fullName>11ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>11ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>6ᵗʰ – 7ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>6ᵗʰ – 7ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>8ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>8ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>9ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>9ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Altera®</fullName>
+        <default>false</default>
+        <label>Altera®</label>
+    </customValue>
+    <customValue>
+        <fullName>Athena</fullName>
+        <default>false</default>
+        <label>Athena</label>
+    </customValue>
+    <customValue>
+        <fullName>Core on Chrome OS*</fullName>
+        <default>false</default>
+        <label>Core on Chrome OS*</label>
+    </customValue>
+    <customValue>
+        <fullName>EVO</fullName>
+        <default>false</default>
+        <label>EVO</label>
+    </customValue>
+    <customValue>
+        <fullName>FlexRAN™</fullName>
+        <default>false</default>
+        <label>FlexRAN™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 10ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>Intel® 10ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 11ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>Intel® 11ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 12ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>Intel® 12ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 13th Gen</fullName>
+        <default>false</default>
+        <label>Intel® 13ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 7ᵗʰ Gen Core™ or older</fullName>
+        <default>false</default>
+        <label>Intel® 7ᵗʰ Gen Core™ or older</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 8ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>Intel® 8ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® 9ᵗʰ Gen</fullName>
+        <default>false</default>
+        <label>Intel® 9ᵗʰ Gen</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Agilex™</fullName>
+        <default>false</default>
+        <label>Intel® Agilex™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Agilex™ FPGA</fullName>
+        <default>false</default>
+        <label>Intel® Agilex™ FPGA</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Arc™</fullName>
+        <default>false</default>
+        <label>Intel® Arc™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Arc™ GPU</fullName>
+        <default>false</default>
+        <label>Intel® Arc™ GPU</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Arria®</fullName>
+        <default>false</default>
+        <label>Intel® Arria®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Atom® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Atom® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Celeron ®</fullName>
+        <default>false</default>
+        <label>Intel® Celeron ®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i3</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i3</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i3 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i3 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i3 processor with Intel® Hybrid Technology</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i3 processor with Intel® Hybrid Technology</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5+ Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5+ Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5+ vPro® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5+ vPro® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 processor with Intel® Hybrid Technology</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 processor with Intel® Hybrid Technology</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 Processor with Radeon™ RX Vega M graphics</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 Processor with Radeon™ RX Vega M graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 vPro® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 vPro® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 vPro® Processor with Radeon™ RX Vega M graphics</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 vPro® Processor with Radeon™ RX Vega M graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 X-Series Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 X-Series Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7+ Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7+ Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7+ vPro® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7+ vPro® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 Processor Extreme Edition</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 Processor Extreme Edition</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 Processor with Radeon™ RX Vega M graphics</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 Processor with Radeon™ RX Vega M graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 vPro® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 vPro® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 vPro® Processor with Radeon™ RX Vega M graphics</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 vPro® Processor with Radeon™ RX Vega M graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 X-Series Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 X-Series Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i9</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i9</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i9+ Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i9+ Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i9 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i9 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i9 vPro® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i9 vPro® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i9 X-Series Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i9 X-Series Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ m3 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ m3 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ m5 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ m5 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ m7 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ m7 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ M Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ M Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Processor Family</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Processor Family</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ X-Series Processor Family</fullName>
+        <default>false</default>
+        <label>Intel® Core™ X-Series Processor Family</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Corporate Logo</fullName>
+        <default>false</default>
+        <label>Intel® Corporate Logo</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Cyclone®</fullName>
+        <default>false</default>
+        <label>Intel® Cyclone®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Evo™ platform</fullName>
+        <default>false</default>
+        <label>Intel® Evo™ platform</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Evo™ platform powered by Intel® Core™ vPro® processor</fullName>
+        <default>false</default>
+        <label>Intel® Evo™ platform powered by Intel® Core™ vPro® processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Evo™ powered by Core™ i5 processor</fullName>
+        <default>false</default>
+        <label>Intel® Evo™ powered by Core™ i5 processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Evo™ powered by Core™ i7 processor</fullName>
+        <default>false</default>
+        <label>Intel® Evo™ powered by Core™ i7 processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Evo™ vPro® platform</fullName>
+        <default>false</default>
+        <label>Intel® Evo™ vPro® platform</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Iris® Graphics</fullName>
+        <default>false</default>
+        <label>Intel® Iris® Graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Iris® Xe Graphics</fullName>
+        <default>false</default>
+        <label>Intel® Iris® Xe Graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Iris® Xe Max Graphics</fullName>
+        <default>false</default>
+        <label>Intel® Iris® Xe Max Graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Market Ready Solutions</fullName>
+        <default>false</default>
+        <label>Intel® Market Ready Solutions</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® MAX®</fullName>
+        <default>false</default>
+        <label>Intel® MAX®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Movidius™</fullName>
+        <default>false</default>
+        <label>Intel® Movidius™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Nervana™</fullName>
+        <default>false</default>
+        <label>Intel® Nervana™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® NUC</fullName>
+        <default>false</default>
+        <label>Intel® NUC</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ DC Persistent Memory</fullName>
+        <default>false</default>
+        <label>Intel® Optane™ DC Persistent Memory</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ Memory</fullName>
+        <default>false</default>
+        <label>Intel® Optane™ Memory</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ PMem</fullName>
+        <default>false</default>
+        <label>Intel® Optane™ PMem</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ Solid State Drives</fullName>
+        <default>false</default>
+        <label>Intel® Optane™ Solid State Drives</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Pentium ®</fullName>
+        <default>false</default>
+        <label>Intel® Pentium ®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Pentium® Gold Processor</fullName>
+        <default>false</default>
+        <label>Intel® Pentium® Gold Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Processor (N/U Series)</fullName>
+        <default>false</default>
+        <label>Intel® Processor (N/U Series)</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® RealSense™</fullName>
+        <default>false</default>
+        <label>Intel® RealSense™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® RFP Ready Kits</fullName>
+        <default>false</default>
+        <label>Intel® RFP Ready Kits</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Select Solution</fullName>
+        <default>false</default>
+        <label>Intel® Select Solution</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Select Solutions</fullName>
+        <default>false</default>
+        <label>Intel® Select Solutions</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Stratix®</fullName>
+        <default>false</default>
+        <label>Intel® Stratix®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Stratix® FPGA</fullName>
+        <default>false</default>
+        <label>Intel® Stratix® FPGA</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Tofino™</fullName>
+        <default>false</default>
+        <label>Intel® Tofino™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Unison™</fullName>
+        <default>false</default>
+        <label>Intel® Unison™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon®</fullName>
+        <default>false</default>
+        <label>Intel® Xeon®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® Bronze Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® Bronze Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® D Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® D Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® E Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® E Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® Gold Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® Gold Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® Platinum Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® Platinum Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® Silver Processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® Silver Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® W processor</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® W processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Atom®</fullName>
+        <default>false</default>
+        <label>Intel Atom®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Atom Processor</fullName>
+        <default>false</default>
+        <label>Intel Atom Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Unite®</fullName>
+        <default>false</default>
+        <label>Intel Unite®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel vPro®</fullName>
+        <default>false</default>
+        <label>Intel vPro®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel vPro®, An Intel® Evo™ Design</fullName>
+        <default>false</default>
+        <label>Intel vPro®, An Intel® Evo™ Design</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel vPro® platform</fullName>
+        <default>false</default>
+        <label>Intel vPro® platform</label>
+    </customValue>
+    <customValue>
+        <fullName>OpenVINO™</fullName>
+        <default>false</default>
+        <label>OpenVINO™</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Pentium® Gold/Silver &amp; Celeron®</fullName>
+        <default>false</default>
+        <label>Pentium® Gold/Silver &amp; Celeron®</label>
+    </customValue>
+    <customValue>
+        <fullName>Teton Glacier</fullName>
+        <default>false</default>
+        <label>Teton Glacier</label>
+    </customValue>
+    <customValue>
+        <fullName>vPRO™</fullName>
+        <default>false</default>
+        <label>vPRO™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® IoT Market Ready Solutions</fullName>
+        <default>false</default>
+        <label>Intel® IoT Market Ready Solutions</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® IoT RFP Ready Kit</fullName>
+        <default>false</default>
+        <label>Intel® IoT RFP Ready Kit</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Partner Alliance</fullName>
+        <default>false</default>
+        <label>Intel® Partner Alliance</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Partner Alliance (IoT version)</fullName>
+        <default>false</default>
+        <label>Intel® Partner Alliance (IoT version)</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i5 vPro® Essentials</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i5 vPro® Essentials</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i7 vPro® Essentials</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i7 vPro® Essentials</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ i9 vPro® Essentials</fullName>
+        <default>false</default>
+        <label>Intel® Core™ i9 vPro® Essentials</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaudi</fullName>
+        <default>false</default>
+        <label>Gaudi</label>
+    </customValue>
+    <customValue>
+        <fullName>Ponte Vecchio</fullName>
+        <default>false</default>
+        <label>Ponte Vecchio</label>
+    </customValue>
+    <customValue>
+        <fullName>Xeon HBM</fullName>
+        <default>false</default>
+        <label>Xeon HBM</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Silicon Photonics</fullName>
+        <default>false</default>
+        <label>Intel® Silicon Photonics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Ethernet</fullName>
+        <default>false</default>
+        <label>Intel® Ethernet</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Data Center GPU Flex Series</fullName>
+        <default>false</default>
+        <label>Intel® Data Center GPU Flex Series</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Infrastructure Power Manager</fullName>
+        <default>false</default>
+        <label>Intel® Infrastructure Power Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Gaudi®</fullName>
+        <default>false</default>
+        <label>Intel® Gaudi®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® SGX</fullName>
+        <default>false</default>
+        <label>Intel® SGX</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Data Center GPU</fullName>
+        <default>false</default>
+        <label>Intel® Data Center GPU</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Data Center GPU Max Series</fullName>
+        <default>false</default>
+        <label>Intel® Data Center GPU Max Series</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Server GPU</fullName>
+        <default>false</default>
+        <label>Intel® Server GPU</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® eASIC</fullName>
+        <default>false</default>
+        <label>Intel® eASIC</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Evo™ Edition</fullName>
+        <default>false</default>
+        <label>Intel® Evo™ Edition</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ 3 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ 3 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ 5 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ 5 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ 7 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ 7 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra 5 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra 5 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra 7 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra 7 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra 9 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra 9 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra Processor Family</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra Processor Family</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Arc™ graphics</fullName>
+        <default>false</default>
+        <label>Intel® Arc™ graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Celeron</fullName>
+        <default>false</default>
+        <label>Intel Celeron</label>
+    </customValue>
+    <customValue>
+        <fullName>Accelerated by Intel®</fullName>
+        <default>false</default>
+        <label>Accelerated by Intel®</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Tiber™</fullName>
+        <default>false</default>
+        <label>Intel® Tiber™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ 9 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Core™ 9 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Xeon 6 Processor</fullName>
+        <default>false</default>
+        <label>Intel Xeon 6 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra X9</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra X9</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Core™ Ultra X7</fullName>
+        <default>false</default>
+        <label>Intel® Core™ Ultra X7</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Arc™ G3 Processor</fullName>
+        <default>false</default>
+        <label>Intel® Arc™ G3 Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Arc™ G3 Extreme Processor</fullName>
+        <default>false</default>
+        <label>Intel® Arc™ G3 Extreme Processor</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Infrastructure Processing Unit (Intel® IPU)</fullName>
+        <default>false</default>
+        <label>Intel® Infrastructure Processing Unit (Intel® IPU)</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® 6 system‑on‑chip (SoC)</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® 6 system‑on‑chip (SoC)</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Xeon® 6 processors with Performance‑cores (P‑cores), 6700/6500 Series</fullName>
+        <default>false</default>
+        <label>Intel® Xeon® 6 processors with Performance‑cores (P‑cores), 6700/6500 Series</label>
+    </customValue>
+    <customValue>
+        <fullName>4th Gen Intel® Xeon® Scalable processors with Intel® vRAN Boost</fullName>
+        <default>false</default>
+        <label>4th Gen Intel® Xeon® Scalable processors with Intel® vRAN Boost</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® AI</fullName>
+        <default>false</default>
+        <label>Intel® AI</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Robotics</fullName>
+        <default>false</default>
+        <label>Intel® Robotics</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® vPro® platform</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel® vPro® platform</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ DC Persistent Memory </fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel® Optane™ DC Persistent Memory </label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ Solid State Drives  </fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel® Optane™ Solid State Drives  </label>
+    </customValue>
+    <description>Store Brand Values</description>
+    <masterLabel>Brand</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

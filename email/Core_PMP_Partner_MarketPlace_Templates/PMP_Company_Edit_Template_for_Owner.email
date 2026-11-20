@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Edit Required: Your {!relatedTo.Name} Storefront" recipientType="User" relatedToType="PMP_Company__c">
+
+    <messaging:htmlEmailBody >
+    
+        <c:PMP_PartnerEditRequired partnerRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

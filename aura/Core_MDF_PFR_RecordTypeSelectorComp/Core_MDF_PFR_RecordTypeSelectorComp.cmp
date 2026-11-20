@@ -1,0 +1,372 @@
+<!-- This Component Overwrites the New button for the PFR Object and used for the selection of the recordtype -->
+<!-- Parent Component for the Core_Intel_createEditPFR Component -->
+<aura:component
+    implements="lightning:availableForFlowScreens,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride,lightning:isUrlAddressable"
+    access="global" controller="Core_MDF_PFR_RecordTypeSelector">
+    <!--<aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="createActivityFromCampaign" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+    <!--To hold batch stage record ID-->
+    <aura:attribute name="isActivityCreationOnCampaign" type="Boolean" default="false" />
+    <aura:attribute name="campaignRecordTypeName" type="Boolean" default="false" />
+
+    <aura:attribute name="batchRecordId" type="Id" />
+
+    <aura:if isTrue="{!v.batchRecordId}">
+        <aura:html tag="style">
+            <!--To increase modal size when called from claim batch record-->
+            .slds-modal__container{
+            width: 100%;
+            }
+        </aura:html>
+    </aura:if>
+
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .slds-fade-in-open{
+        outline:none;
+        }
+    </aura:html>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.onPageReferenceChanged}" />   
+    <!-- Handler function for fetching value on the load of the component -->
+    <aura:handler name="init" value="{!this}" action="{!c.fetchListOfRecordTypes}" />
+    <aura:attribute name="checkCommunityAttribute" type="Boolean" default="false" />
+    <aura:attribute name="checkSaveandNew" type="Boolean" default="false"
+        description="Stores the value of save and new attribute coming from Core_Intel_Create_Edit_PFR component" />
+    <!-- Attribute Initialization -->
+    <aura:attribute type="Boolean" name="hasCreatePermission" Default="false"
+        description="Checks the permission for the CRUD user" />
+    <aura:attribute type="Boolean" name="checkIPAerror" Default="false" description="Checks IPA activity error" />
+    <aura:attribute type="Boolean" name="checkCMDFerror" Default="false" description="Checks CMDF activity error" />
+    <aura:attribute type="Boolean" name="isLegacyBudgetType" Default="false"
+        description="Checks Legacy activity error" />
+    <aura:attribute type="Boolean" name="hasNoCampRecordType" Default="false" description="" />
+    <aura:attribute name="campaignObject" type="Campaign" />
+    <aura:attribute name="campaignRecord" type="Campaign" />
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="lstOfRecordType" type="String[]"
+        description="This attribute holds the list of record type which is used for the option iteration" />
+    <aura:attribute name="mapOfRecordType" type="Map"
+        description="This attribute holds the Map of record types(String recordTypeDevelopername , ID recordTypeId) from the server side method" />
+    <aura:attribute name="mapOfRecordTypeDevName" type="Map"
+        description="This attribute holds the Map of record types(String recordTypeDevelopername , String recordTypelabelname) from the server side method" />
+    <aura:attribute name="recTypeWrapperList" type="Object"
+        description="This attributes holds the value returned from server call " />
+    <aura:attribute name="selrecordtype" type="string" default=""
+        description="This attribute holds the selected record type id to be passed to child component" />
+    <aura:attribute name="selrecordtypeName" type="string" default=""
+        description="This attribute holds the selected record type name to be passed to child component" />
+    <aura:attribute name="selrecordtypeDeveloperName" type="string" default=""
+        description="This attribute holds the selected record type name to be passed to child component" />
+    <aura:attribute name="checkForMultiRecordTypeAccess" type="Boolean" default="false" />
+    <aura:attribute name="restrictActivityCreation" type="Boolean" default="false"
+        description="This attribute holds the boolean value which determines the creation of IPA activity in different campaign statuses" />
+
+    <!-- Changes for Create Claim-->
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/-->
+    <aura:attribute name="isPfrUrl" type="Boolean" default="false" />
+    <aura:attribute name="isPfrUrlNew" type="Boolean" default="false" />
+    <aura:attribute name="isCampaignUrl" type="Boolean" default="false" />
+    <!-- Changes for Create Campaign-->
+    <aura:attribute name="isCampaignPage" type="Boolean" default="false"/>
+    <aura:attribute name="isPaymentRunPage" type="Boolean" default="false"/>
+    <aura:attribute name="isFromScreenFlow" type="Boolean" default="false"
+        description="True when rendered inside the Payment Run screen flow, to avoid re-launching that flow"/>
+    <aura:attribute name="isAdjustmentPage" type="Boolean" default="false"/>
+    <aura:attribute name="showScreenFlow" type="Boolean" default="false"
+        description="Controls visibility of the generic inline screen flow modal"/>
+    <aura:attribute name="activeFlowName" type="String" default=""
+        description="API name of the flow to launch"/>
+    <aura:attribute name="activeFlowHeader" type="String" default=""
+        description="Optional modal header for the generic screen flow launcher"/>
+    <aura:attribute name="activeFlowNavigateTo" type="String" default=""
+        description="Object API name to navigate to after flow completes or is closed"/>
+    <aura:attribute name="activeFlowInputVariables" type="Object"
+        description="Input variables array passed to the screen flow"/>
+    <aura:attribute name="fieldsetname" type="string" default="" />
+    <aura:attribute type="Core_MDF_RecordType_FieldSet_Mapping__mdt[]" name="metadataList" default="" description="">
+    </aura:attribute>
+    <aura:attribute name="isActivityCreatedFromCamp" type="Boolean" default="false" />
+    <aura:attribute name="isNewClaimCreate" type="Boolean" default="false"
+        description="Indicates claim creation using standard new button" />
+    <aura:attribute name="selrecordTypeSize" type="Integer" default="" />
+    <aura:attribute name="IsOutComeBasedCampaignComp" type="Boolean" default="false" /><!--Rishabh-->
+    <!-- Generic Screen Flow modal: delegate to reusable LWC component -->
+    <aura:if isTrue="{!v.showScreenFlow}">
+        <c:core_MDF_ScreenFlowLauncher
+            flowApiName="{!v.activeFlowName}"
+            headerTitle="{!v.activeFlowHeader}"
+            navigateTo="{!v.activeFlowNavigateTo}"
+            flowInputVariables="{!v.activeFlowInputVariables}"
+            onclose="{!c.handleScreenFlowDismiss}"
+            onfinished="{!c.handleScreenFlowDismiss}"
+            onerror="{!c.handleScreenFlowError}"/>
+    </aura:if>
+
+    <!-- Checks if record type is selected or not to render the child component -->
+    <!-- Hidden entirely when Screen Flow modal is active -->
+    <aura:if isTrue="{!not(v.showScreenFlow)}">
+    <!--<aura:if isTrue="{!or(empty(v.selrecordtype) , v.checkForSingleRecordType == false)}">-->
+
+    <!-- <aura:if isTrue="{!and((empty(v.selrecordtype)),(v.selrecordtype.length gt 1))}">-->
+    <aura:if isTrue="{!(empty(v.selrecordtype))}">
+        <!-- Model Box Start -->
+        <!-- Modal to show record type picklist -->
+
+
+        <aura:if isTrue="{!v.checkForMultiRecordTypeAccess == true}">
+
+            <div aura:id="modalIdForNewRecord" role="dialog" tabindex="-1" aria-labelledby="header43"
+                class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Heading (Header of the Modal) -->
+                    <div class="slds-modal__header">
+                       <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{!c.closeModal}" alternativeText="Close" /> -->
+                        <button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeModal}">
+                            <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                            <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                        </button>
+                        <!--Start: Changes for Create Claim if-else-->
+                        <aura:if isTrue="{!v.isPfrUrl}">
+                            <h2 id="header43" class="slds-text-heading--medium">
+                                {!$Label.c.Core_MDF_NewPartnerFundRequest}</h2>
+                            <aura:set attribute="else">
+                                <!-- Changes done for Create Campaign-->
+                                <aura:if isTrue="{!v.isCampaignPage}">
+                                    <h2 id="header43" class="slds-text-heading--medium">
+                                        {!$Label.c.Core_MDF_CreateCampaign}</h2>
+                                    <aura:set attribute="else">
+                                        <!-- Payment Run -->
+                                        <aura:if isTrue="{!v.isPaymentRunPage}">                        
+                                            <h2 id="header43" class="slds-text-heading--medium">Create Payment Run</h2>
+                                            <aura:set attribute="else">
+                                                <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_CreateClaim}</h2>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+                        <!--End: Changes for Create Claim -->
+                    </div>
+                    <!-- Recordtype selection (Body of the Modal) -->
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <div class="slds-grid slds-wrap">
+                            <lightning:layout horizontalAlign="center" verticalAlign="center">
+                                <lightning:layoutItem flexibility="auto" padding="around-small">
+                                    <!-- select to hold all available record type names list -->
+                                    <lightning:select aura:id="recordTypePickList" name="selectRecordType"
+                                        label="{!$Label.c.Core_MDF_Select_a_Record_Type}">
+                                        <option value="" text="{!$Label.c.Core_MDF_PFR_None_Translation}" />
+                                        <aura:iteration items="{!v.lstOfRecordType}" var="item">
+                                            <!--<option value="{!item}" text="{!item}"/>-->
+                                            <option value="{!item.value}" text="{!item.label}" />
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                    </div>
+                    <!-- SAVE AND CANCEL (Footer of the Modal) -->
+                    <div class="slds-modal__footer">
+                        <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">
+                            {!$Label.c.Core_MDF_Cancel}</lightning:button>
+                        <lightning:button class="slds-button slds-button--brand" onclick="{!c.createRecord}">
+                            {!$Label.c.Core_MDF_Next}</lightning:button>
+                    </div>
+                </div>
+            </div>
+        </aura:if>
+        <!--To Prevent BackDrop, If coming from Batch Stage Record Detail Page-->
+        <aura:if isTrue="{!!v.batchRecordId}">
+            <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+        </aura:if>
+        <aura:set attribute="else">
+            <aura:if isTrue="{! v.isPfrUrl}"> <!-- This is for Activity Create -->
+                <aura:if isTrue="{!v.checkCommunityAttribute}"> <!-- This is for Activity Create from Community -->
+                    <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43"
+                        class="slds-modal slds-modal_large slds-slide-up-saving">
+                        <div class="slds-modal__container">
+                            <!-- Heading (Header of the Modal) -->
+                            <div class="slds-modal__header">
+                                <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{!c.closeModal}" alternativeText="Close" /> -->
+                                <button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeModal}">
+                                    <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                                    <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                                </button>
+                            </div>
+                            <div class="slds-modal__content slds-p-around--medium">
+                                <aura:if isTrue="{!(v.selrecordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                                    <!-- IF Outcome Based Campaign = TRUE -->
+                                    <aura:if isTrue="{!v.IsOutComeBasedCampaignComp}">
+                                        <c:Core_MDF_CreateEditOutcomeBasedActivity recordId="{!v.recordId}"
+                                            recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}"
+                                            recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                            checkNewCommunityAttribute="{!v.checkCommunityAttribute}" />
+
+                                        <!-- ELSE -->
+                                        <aura:set attribute="else">
+                                            <c:Core_MDF_CreateEditActivity recordId="{!v.recordId}"
+                                                recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}"
+                                                recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                                checkNewCommunityAttribute="{!v.checkCommunityAttribute}" />
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:if>
+                                <aura:if
+                                    isTrue="{!(and(v.selrecordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType, v.selrecordtypeDeveloperName != $Label.c.Core_MDF_Co_GTM_RecordType))}">
+                                    <c:Core_Intel_createEditPFR recordId="{!v.recordId}" recordtype="{!v.selrecordtype}"
+                                        recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                        checkNewCommunityAttribute="{!v.checkCommunityAttribute}" />
+                                </aura:if>
+                                <aura:if
+                                    isTrue="{!(v.selrecordtypeDeveloperName == $Label.c.Core_MDF_Co_GTM_RecordType)}">
+                                    <c:Core_MDF_Create_Activity recordId="{!v.recordId}" recordtype="{!v.selrecordtype}"
+                                        recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                        checkNewCommunityAttribute="{!v.checkCommunityAttribute}" />
+                                </aura:if>
+                            </div>
+                            <div class="slds-modal__footer"></div>
+                        </div>
+                    </div>
+                    <!--To Prevent BackDrop, If coming from Batch Stage Record Detail Page-->
+                    <aura:if isTrue="{!!v.batchRecordId}">
+                        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+                    </aura:if>
+                    <aura:set attribute="else">
+                        <!-- This is for Activity Create from Create Activity from Campaign or New button on Activity List View -->
+                        <aura:if isTrue="{!v.isCampaignUrl}">
+                            <!-- This is for Activity Create from Create Activity from Campaign -->
+                            <aura:if isTrue="{!(and(!v.restrictActivityCreation, v.hasCreatePermission))}">
+                                <!-- This is for restricting activity creation for certain campaign status's -->
+                                <aura:if isTrue="{!(v.selrecordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                                    <c:Core_MDF_CreateEditActivity selectedLookUpRecord="{!v.campaignObject}"
+                                        recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                        isActivityLayout="{!v.isActivityCreatedFromCamp}"
+                                        isActivityCreationOnCampaign="{!v.isActivityCreationOnCampaign}" />
+                                </aura:if>
+                                <aura:if
+                                    isTrue="{!(and(v.selrecordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType, v.selrecordtypeDeveloperName != $Label.c.Core_MDF_Co_GTM_RecordType))}">
+                                    <c:Core_Intel_createEditPFR selectedLookUpRecord="{!v.campaignObject}"
+                                        recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                        isActivityLayout="{!v.isActivityCreatedFromCamp}"
+                                        isActivityCreationOnCampaign="{!v.isActivityCreationOnCampaign}" />
+                                </aura:if>
+                                <aura:if
+                                    isTrue="{!(v.selrecordtypeDeveloperName == $Label.c.Core_MDF_Co_GTM_RecordType)}">
+                                    <c:Core_MDF_Create_Activity recordId="{!v.recordId}" recordtype="{!v.selrecordtype}"
+                                        recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                        checkNewCommunityAttribute="{!v.checkCommunityAttribute}" />
+                                </aura:if>
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!!v.hasCreatePermission}">
+                                        <div align="center">
+                                            <c:Core_MDF_ErrorMessage type="error"
+                                                message="{!$Label.c.Core_MDF_CloneAccessError}" />
+                                        </div>
+                                        <aura:set attribute="else">
+                                            <div align="center">
+                                                <aura:if isTrue="{!v.checkIPAerror}">
+                                                    <c:Core_MDF_ErrorMessage type="error"
+                                                        message="{!$Label.c.Core_MDF_IPA_Activity_Creation_Error}" />
+                                                </aura:if>
+                                                <!-- <aura:if isTrue="{!v.checkCMDFerror}">
+                                                        
+                                                        <c:Core_MDF_ErrorMessage type="error" message="{!$Label.c.Core_MDF_CMDF_Activity_Creation_Error}" />
+                                                    </aura:if> -->
+                                            </div>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+
+                            </aura:if>
+                            <aura:set attribute="else">
+                                <!-- This is for Activity Create from New button on Activity List View -->
+                                <!-- <aura:if isTrue="{! not(and(v.isPfrUrlNew,  (v.selrecordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)))}"> -->
+                                <aura:if isTrue="{!(v.selrecordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">
+                                    <!-- IF Outcome Based Campaign = TRUE -->
+                                    <aura:if isTrue="{!v.IsOutComeBasedCampaignComp}">
+                                        <c:Core_MDF_CreateEditOutcomeBasedActivity recordId="{!v.recordId}"
+                                            recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}"
+                                            recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}" />
+                                        <!-- ELSE -->
+                                        <aura:set attribute="else">
+                                            <c:Core_MDF_CreateEditActivity recordId="{!v.recordId}"
+                                                recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}"
+                                                recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}" />
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:if>
+                                <aura:if
+                                    isTrue="{!(and(v.selrecordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType, v.selrecordtypeDeveloperName != $Label.c.Core_MDF_Co_GTM_RecordType))}">
+                                    <c:Core_Intel_createEditPFR recordtype="{!v.selrecordtype}"
+                                        recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}" />
+                                </aura:if>
+                                <aura:if
+                                    isTrue="{!(v.selrecordtypeDeveloperName == $Label.c.Core_MDF_Co_GTM_RecordType)}">
+                                    <c:Core_MDF_Create_Activity recordId="{!v.recordId}" recordtype="{!v.selrecordtype}"
+                                        recordtypeName="{!v.selrecordtypeName}"
+                                        recordtypeDeveloperName="{!v.selrecordtypeDeveloperName}"
+                                        checkNewCommunityAttribute="{!v.checkCommunityAttribute}" />
+                                </aura:if>
+                                <!-- </aura:if>  -->
+                            </aura:set>
+                        </aura:if>
+                    </aura:set>
+                </aura:if>
+                <aura:set attribute="else">
+                    <!-- Payment Run -->
+                    <aura:if isTrue="{!v.isPaymentRunPage}">
+                        <!-- Handled through createRecord navigation -->                                   
+                        <aura:set attribute="else"> <!-- This is for Claim Create -->
+                            <aura:if isTrue="{!v.isCampaignPage}"> <!-- Changes for Create Campaign -->
+                                <aura:if isTrue="{!or( v.selrecordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,or(v.selrecordtypeDeveloperName == 'Core_MDF_Retail_Marketing_Funds',or(v.selrecordtypeDeveloperName == 'Core_MDF_Client_CoMarketing_Fund',or(v.selrecordtypeDeveloperName == 'Core_MDF_Data_Center_CoMarketing_Fund', or(v.selrecordtypeDeveloperName == 'Core_MDF_Ecosystem_Extension_Fund', or(v.selrecordtypeDeveloperName == 'Core_MDF_Co_GTM'))))))}">
+                                    <aura:if isTrue="{!v.checkCommunityAttribute}" >
+                                        <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-modal_large slds-slide-up-saving">
+                                            <div class="slds-modal__container">
+                                                <!-- Heading (Header of the Modal) -->
+                                                <div class="slds-modal__header">
+                                                    <!--<lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{!c.closeModal}" alternativeText="Close" /> -->
+                                                    <button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeModal}">
+                                                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                                                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                                                    </button>
+                                                </div>
+                                                <div class="slds-modal__content slds-p-around--medium">
+                                                    <c:core_MDF_Create_Campaign recordTypeId="{!v.selrecordtype}" recordTypeName="{!v.selrecordtypeName}" recordTypeDeveloperName="{!v.selrecordtypeDeveloperName}" objectApiName="Campaign" fieldSetName="{!v.fieldsetname}" mode="create" />
+                                                </div>
+                                                <div class="slds-modal__footer"></div>
+                                            </div>
+                                        </div>
+                                        <aura:if isTrue="{!!v.batchRecordId}">
+                                            <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+                                        </aura:if>
+                                        <aura:set attribute="else">
+                                            <c:core_MDF_Create_Campaign recordTypeId="{!v.selrecordtype}" recordTypeName="{!v.selrecordtypeName}" recordTypeDeveloperName="{!v.selrecordtypeDeveloperName}" objectApiName="Campaign" fieldSetName="{!v.fieldsetname}" />
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:if>
+                                <aura:set attribute="else">
+                                    <c:Core_MDF_PFC_Create recordtype="{!v.selrecordtype}" recordtypeName="{!v.selrecordtypeName}" 
+                                                           recordtypeDeveloperName = "{!v.selrecordtypeDeveloperName}" batchRecordId = "{!v.batchRecordId}" isNewClaimCreate="true"/> 
+                                    <!--To Prevent BackDrop, If coming from Batch Stage Record Detail Page-->
+                                    <aura:if isTrue="{!!v.batchRecordId}">
+                                        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </aura:if>
+    </aura:if><!-- end not(showScreenFlow) -->
+</aura:component>

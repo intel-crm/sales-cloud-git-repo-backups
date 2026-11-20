@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of June Son</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11731347_Denise_Buliga</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10451913_June_Son</parentRole>
+</Role>

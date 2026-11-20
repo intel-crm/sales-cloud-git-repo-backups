@@ -1,0 +1,49 @@
+/* .messagebox {
+  width: 30%;
+}
+
+.messageContainer {
+  padding: 0 0 15px 0;
+}
+
+.container {
+  margin-left: 35px;
+}
+
+.main {
+  margin-left: 5.8%;
+  margin-top: 35px;
+  overflow: hidden;
+}
+
+.messageText {
+  font-size: .8rem;
+  font-weight: normal;
+}
+
+.messageAlign {
+  padding-left: 5.5%;
+}
+
+@media (min-width: 768px) {
+  :host {
+    padding: 0 0 2rem 0;
+  }
+
+  .action-button-wrapper {
+    display: flex;
+    margin-left: 55%;
+  }
+
+  .create-button-wrapper {
+    margin-right: 1rem;
+  }
+
+  .clone-button-wrapper {
+    margin-right: 1rem;
+  }
+
+  .main-details {
+    padding: 0 2rem 0 0;
+  }
+} */

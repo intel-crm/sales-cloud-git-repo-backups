@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Ecosystem Partner Allocation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Ecosystem Partner Allocations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Activity_Id__c</name>
+        <relationshipLabel><!-- Ecosystem Partner Allocations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ecosystem Partner --></label>
+        <name>Core_MDF_Ecosystem_Partner_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percentage --></label>
+        <name>Core_MDF_Percentage_pct__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

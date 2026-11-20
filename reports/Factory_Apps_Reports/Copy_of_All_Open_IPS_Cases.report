@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_34782821</developerName>
+        <masterLabel>Age in Days</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>7</to>
+            </sourceValues>
+            <value>0-7</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>7</from>
+                <to>14</to>
+            </sourceValues>
+            <value>7-14</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>14</from>
+                <to>28</to>
+            </sourceValues>
+            <value>14-28</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>28</from>
+                <to>56</to>
+            </sourceValues>
+            <value>28-56</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>56</from>
+                <to>180</to>
+            </sourceValues>
+            <value>56-180</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>180</from>
+            </sourceValues>
+            <value>&gt;180</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_9253579</developerName>
+        <masterLabel>CEG Owner Groups 1</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-AP-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-EMIF</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-HSIO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-SOCO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-PG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-CAT2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-GUAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
+            </sourceValues>
+            <value>WWRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EU-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-EU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-US</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-US-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-MAG</sourceValue>
+            </sourceValues>
+            <value>MAG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-SJ-DLA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Software!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HLD!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SH-Board-Design</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Config!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-EMIF!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-FPGA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Software!</sourceValue>
+            </sourceValues>
+            <value>Factory APPS</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_73295762</developerName>
+        <masterLabel>CEG Owner Groups 1&apos;</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Owner_Manager__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Mario Bolanos</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jeff Xia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robin Luo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ewan Grassick</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kazuyuki Kaibara</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Seshan Sekariapuram</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tom Kendzulak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GY Ooi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hazlina Ramly</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Keen Yew Loke</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Melvin Swee Leng Teh</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fernando Rodas Gomez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liang Zeng (Leon)</sourceValue>
+            </sourceValues>
+            <value>WWRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Chiang Mei Teo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chin Yong Yong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Khai Liang Aw</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kong Yew Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Siew Weng Sin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wee Sun Teow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Aniket Shah</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Austin Tavares</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Balaji Natarajan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Daniel Cao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Greg Moore</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Janmejay Adhyaru</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jaydev Shelat</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jim Whitehead</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Josh Gold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nirmal Kari</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Patrick Riffault</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shayan Sengupta</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sue Cozart</sourceValue>
+            </sourceValues>
+            <value>Factory APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Mike Lupinacci</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Staci Plopan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>William Brown</sourceValue>
+            </sourceValues>
+            <value>MAG</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_57505999</developerName>
+        <masterLabel>CEG Owner Groups 2</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-unassigned</sourceValue>
+            </sourceValues>
+            <value>APRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-IP/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Manager</sourceValue>
+            </sourceValues>
+            <value>EURAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-JP-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-Manager</sourceValue>
+            </sourceValues>
+            <value>JPRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-EMIF</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-GUAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-HSIO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-SOCO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-unassigned</sourceValue>
+            </sourceValues>
+            <value>NARAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-PG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <value>PGGAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-SJ-CQE!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-DLA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HLD!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Software!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SH-Board-Design</sourceValue>
+            </sourceValues>
+            <value>SJ APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-PG-Config!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-EMIF!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-FPGA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Software!</sourceValue>
+            </sourceValues>
+            <value>PG APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EU-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-EU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-US</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-US-MAG</sourceValue>
+            </sourceValues>
+            <value>MAG</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_34924917</developerName>
+        <masterLabel>CEG Owner Groups 2&apos;</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Owner_Manager__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Jeff Xia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robin Luo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liang Zeng (Leon)</sourceValue>
+            </sourceValues>
+            <value>APRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ewan Grassick</sourceValue>
+            </sourceValues>
+            <value>EURAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Kazuyuki Kaibara</sourceValue>
+            </sourceValues>
+            <value>JPRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Fer Rodas Gomez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Seshan Sekariapuram</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tom Kendzulak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fernando Rodas Gomez</sourceValue>
+            </sourceValues>
+            <value>NARAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>GY Ooi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hazlina Ramly</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Keen Yew Loke</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Melvin Swee Leng Teh</sourceValue>
+            </sourceValues>
+            <value>PGGAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Mario Bolanos</sourceValue>
+            </sourceValues>
+            <value>RAE Managers</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Chiang Mei Teo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chin Yong Yong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Khai Liang Aw</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kong Yew Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Siew Weng Sin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wee Sun Teow</sourceValue>
+            </sourceValues>
+            <value>PG APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Aniket Shah</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Austin Tavares</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Balaji Natarajan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Daniel Cao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Greg Moore</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Janmejay Adhyaru</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jaydev Shelat</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jim Whitehead</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Josh Gold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nirmal Kari</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Patrick Riffault</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shayan Sengupta</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sue Cozart</sourceValue>
+            </sourceValues>
+            <value>SJ APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Mike Lupinacci</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Staci Plopan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>William Brown</sourceValue>
+            </sourceValues>
+            <value>MAG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eric Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jean-Pierre Guerre</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Koji Matsumoto</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rocky Supangan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yutaka Endo</sourceValue>
+            </sourceValues>
+            <value>CQE</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Co_Owner__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Escalated_Date__c</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Escalated_Level__c</field>
+    </columns>
+    <columns>
+        <field>CONTACT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_ConEmail__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_End_Customer__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Support_Level__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Customer_Visible__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Closure__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Resolution_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Bug_Doc_Fix_ID__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Account_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Account_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Legacy_IPS_ID__c</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE_BY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Owner_Email__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>BucketField_9253579</field>
+    </columns>
+    <columns>
+        <field>BucketField_73295762</field>
+    </columns>
+    <columns>
+        <field>BucketField_57505999</field>
+    </columns>
+    <columns>
+        <field>BucketField_34924917</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Programmable Solutions Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Manjunath B K,Deepak D N,Lakshmi Eduru,Sahil Patni,Shubha U,R V D Manikanta Reddy .,SHEIK ABDULLAH,Sai Prakash Alli,Ashish Suresh Khachane,Ashish Prashar,Kian Guan Tan,How Liang Lim,Mohammad Shakir Abdul Aziz,Yoong Yoong Lai,Chin Min Hoo,YAN HARN NG,Mohd Azrul Hafiz Muhamad Jamil</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Case_Co_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Manjunath B K,Deepak D N,Lakshmi Eduru,Sahil Patni,Shubha U,R V D Manikanta Reddy .,SHEIK ABDULLAH,Sai Prakash Alli,Ashish Suresh Khachane,Ashish Prashar,Kian Guan Tan,How Liang Lim,Mohammad Shakir Abdul Aziz,Yoong Yoong Lai,Chin Min Hoo,YAN HARN NG,Mohd Azrul Hafiz Muhamad Jamil</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Copy of All-Open-IPS-Cases</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

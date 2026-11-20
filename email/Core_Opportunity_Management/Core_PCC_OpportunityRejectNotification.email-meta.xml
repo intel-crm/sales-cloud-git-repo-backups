@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <available>true</available>
+    <description>Opportunity Has Been Rejected</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Core_PCC_OpportunityRejectNotification</name>
+    <style>none</style>
+    <subject>Opportunity Has Been Rejected</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

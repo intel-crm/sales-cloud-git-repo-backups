@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>IQR Release Notification WW25 2022</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>What&apos;s New</actionButtonLabel>
+        <actionButtonLink>https://salescrm.intel.com/ww25-2022-release-update/</actionButtonLink>
+        <body>&lt;ul&gt;&lt;li&gt;Customers can now create and submit one quote for multiple data center product types&lt;/li&gt;&lt;li&gt;We have implemented data validation checks for overlapping and duplicate deals&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To learn more click the &lt;strong&gt;What&apos;s New&lt;/strong&gt; button.&lt;/p&gt;</body>
+        <customApplication>Pricing_Intel_Quote_Request</customApplication>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2022-09-01</endDate>
+        <header>Welcome to Intel Quote Request</header>
+        <isPublished>false</isPublished>
+        <masterLabel>IQR Release Notification WW25 2022</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2022-06-15</startDate>
+        <targetPageKey1>SBQQ__Quote__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Did you know…</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

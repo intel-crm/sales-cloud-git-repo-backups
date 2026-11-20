@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>Intel® Solutions Marketplace</container>
+    <containerType>Network</containerType>
+    <label>Default Navigation</label>
+    <navigationMenuItem>
+        <label>Pages</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Search</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/search</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Offering Catalog</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/offerings</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Partner Directory</label>
+                <position>2</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/partners</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <defaultListViewId>All_Offerings</defaultListViewId>
+                <label>Manage Offering</label>
+                <position>3</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>PMP_Partner_Offering__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Offering Category</label>
+                <position>4</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>PMP_Partner_Offering_Category__c</target>
+                <type>SalesforceObject</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Dashboard</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/dashboard</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Help</label>
+        <position>3</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/help</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+</NavigationMenu>

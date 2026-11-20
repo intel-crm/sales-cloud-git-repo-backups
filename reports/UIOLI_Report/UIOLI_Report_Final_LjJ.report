@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CONTACT_ID</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>Core_Contact_Entitlement__c.Core_Entitlement_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Contact_Entitlement__c.Core_Update_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Login_Status__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Enterprise_Id__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_User_Status__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Is_FederationId_Valid_Ind__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Email_Domain__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(NOT(ISPICKVAL(Contact.Core_Login_Status__c,&apos;Deleted&apos;)),&apos;Identity Attribute (Login status) not in sync with AGS&apos;,
+IF(NOT(ISBLANK(Contact.Core_Enterprise_Id__c)),&apos; Identity Attribute (Enterprise ID) not in sync with AGS&apos;,
+IF(Contact.Core_User_Status__c=&apos;Active&apos;, &apos;User is active.Only inactive users will be considered for UIOLI batch&apos;,
+IF(ISPICKVAL(Contact.Core_Is_FederationId_Valid_Ind__c,&apos;false&apos;),    &apos;Federation ID and Enetrprise ID are not in sync&apos;,
+IF(CONTAINS(Contact.Core_Email_Domain__c,&apos;@intel.com&apos;),&apos;Internal user; This record will not be considered for UIOLI batch&apos;,&apos;Yet to be picked up by the UIOLI batch&apos;)
+))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>This Field shows contact&apos;s deletion status</description>
+        <developerName>CDF1</developerName>
+        <label>Status of Deletion</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>This report displays the contacts impacted by UIOLI policy, resulting in incorrect user setup.</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_Contact_Entitlement__c.Core_Entitlement_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Partner Portal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Contact_Entitlement__c.Core_Update_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>portal user already exists for contact</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>UIOLI Contacts Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactCustomEntity$Core_Contact_Entitlement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>LAST_ACTIVITY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

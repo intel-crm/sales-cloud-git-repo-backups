@@ -1,0 +1,118 @@
+.THIS.topLevel .checkboxPadding {
+    padding: 0;
+}
+
+.THIS.topLevel .THIS .checkboxPadding,
+.THIS:not(.topLevel) .checkboxPadding {
+    padding: 0 0 0 1.5em;
+}
+
+.THIS.topLevel .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel) .THIS .checkboxPadding {
+    padding: 0 0 0 3em;
+}
+
+.THIS.topLevel .THIS .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel) .THIS .THIS .checkboxPadding {
+    padding: 0 0 0 4.5em;
+}
+
+.THIS.topLevel .THIS .THIS .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel) .THIS .THIS .THIS .checkboxPadding {
+    padding: 0 0 0 6em;
+}
+
+.THIS.theme-filter.topLevel .THIS .checkboxPadding,
+.THIS:not(.topLevel).theme-filter .checkboxPadding {
+    padding: 0 0 .25rem 4.5em;
+}
+
+.THIS.topLevel.theme-filter .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel).theme-filter .THIS .checkboxPadding {
+    padding: 0 0 .25rem 6em;
+}
+
+.THIS.topLevel.theme-filter .THIS .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel).theme-filter .THIS .THIS .checkboxPadding {
+    padding: 0 0 .25rem 7.5em;
+}
+
+.THIS.topLevel.theme-filter .THIS .THIS .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel).theme-filter .THIS .THIS .THIS .checkboxPadding {
+    padding: 0 0 .25rem 9em;
+}
+
+
+.THIS .childTextInputPadding {
+    padding-left: 1.5em;
+}
+.THIS .childTextInputPadding > div > div {
+    padding-bottom: 0.5em;
+}
+
+.THIS .childRadioInputPadding {
+    padding-left: 1.5em;
+}
+.THIS .childRadioInputPadding > div > div {
+    padding-bottom: 0;
+}
+.THIS .prereleaseLabel {
+    display: inline-block;
+    background: t(blue);
+    color: t(white);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1rem;
+    padding: 0 0.2rem;
+}
+
+.THIS .prerelease > [lightning-input_input-host],
+.THIS .prerelease .slds-form-element__control,
+.THIS .prerelease .slds-form-element__control .slds-checkbox {
+    display: inline;
+}
+
+.THIS.clearFilters,
+.THIS.collapsible {
+    position: relative;
+}
+.THIS a.toggle {
+    position: absolute;
+    margin-left: -24px;
+}
+.THIS .filterOptions {
+    display: inline-block;
+    margin-left: 24px;
+}
+.THIS .collapsible-input {
+    display: inline-block;
+}
+
+.THIS .cursor {
+    cursor: pointer;
+}
+.THIS .toggleIcon {
+    opacity: 0.8;
+}
+.THIS .toggleIcon .slds-icon_container {
+    border: 1px solid t(lightGray);
+    border-radius: 0;
+    line-height: 0.6rem;
+    padding: 1px;
+}
+
+.THIS .slds-icon_container .slds-icon {
+    color: t(lightGray);
+    opacity: 1;
+    height: 0.65rem;
+    width: 0.65rem;
+}
+
+
+.THIS .collapsible-input .slds-form-element__control.slds-grow .slds-checkbox .slds-checkbox__label {
+    display: inline-block;
+    padding-left: 20px;
+}
+.THIS .collapsible-input .slds-form-element__control.slds-grow .slds-checkbox .slds-checkbox_faux {
+    margin-left: -24px;
+}

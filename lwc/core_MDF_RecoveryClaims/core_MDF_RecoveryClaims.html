@@ -1,0 +1,446 @@
+<template>
+    <div class="slds-box slds-theme_default">
+
+        <div if:true={showMessage} style="width: 100%;font-weight:bold;font-size:15px;">{msgToShow}</div>
+        
+        <div style="width: 100%;">
+
+            <template if:true={hasData}>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_8-of-12">
+                        <h2 if:false={showMessage} style="font-size: 16px;font-weight:bold;padding-top:10px;padding-right:10px;display: inline-block;">{claimsToRecoverFrom}</h2>
+                        <p style="display: inline-block;padding-top:10px;font-weight:bold;font-size:15px;text-align:center;position: absolute;">
+                            ({totalClaimsSelected} <span class="slds-text-color_success">{totalSelectedRowsCount}</span>, {totalRecoveryAmountLabel} <span class="slds-text-color_success">  <lightning-formatted-number value={totalSelectedRecoveryAmount} format-style="currency"
+                                currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span>)</p>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12">
+                        <lightning-button if:false={isDisabled} variant="brand" label={holdClaimsForRecoveryLabel}
+                            style="position: absolute;padding-top:10px" onclick={showHoldClaimsPopUp}>
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12">
+                        <lightning-button variant="brand" label={exportToCSVLabel}
+                            style="position: absolute;padding-top:10px" onclick={exportToCSV}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <template if:true={hasData}>
+        <h2 style="font-size: 15px;padding:10px;display: inline-block;color:green">{source}</h2>
+        <div><h2 style="font-size: 15px;padding:10px;display: inline-block;color:red">{readyToRecoverMessage}</h2></div>
+        <h2 style="font-size: 15px;padding:10px;display: inline-block;color:black">{processingPrefMessage}</h2>
+        </template>
+
+        <template if:true={hasData}>
+            <div style="padding-left: 250px;padding-bottom:10px">
+                <p style="display: inline-block;font-weight:bold;padding-right:10px;font-size:15px;font-variant:small-caps">{budgetTypeLabel}</p>
+                <lightning-combobox name="Budget Type" style="display: inline-block" value={selectedBudgetType} class="budgetFilter"
+                    placeholder="Select BudgetType" options={budgetOptions} onchange={handleBudgetChange} disabled={disableBudgetFilter}> 
+                </lightning-combobox>
+                <template if:true={disableBudgetFilter}>
+                    <lightning-helptext style="display: inline-block;font-weight:bold;padding-left:10px;" content={recoveryErrorMsg}></lightning-helptext>
+                </template>
+                <p style="display: inline-block;font-weight:bold;padding-left:30px;font-size:15px;font-variant:small-caps">{recoverySelected} <span class="slds-text-color_success" style="font-variant:small-caps">{totalSelectedBasedOnBudgetCount}</span></p>
+                <p style="display: inline-block;font-weight:bold;padding-left:30px;font-size:15px;font-variant:small-caps">{recoveryAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
+                    <lightning-formatted-number value={totalRecoveryAmount} format-style="currency"
+                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                </span></p>
+            </div>
+
+            <div class="slds-scrollable" style="height:500px;">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Row"></div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Processing Preferrence">{processingPrefLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={selectedForRecHelpTxt}>{selectedForRecovery}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={recoveryHoldLabel}>{recoveryHoldLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={readyForRecHelpTxt}>{readytoRecover}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Claim #">{claimNumber}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Budget Type">{budgetTypeLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Geo">{geoLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Country">{countryLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Claim Amount">{claimAmtLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Settle, then get paid recovery amount">{surePayRecoveryAmtLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={recoveryAmtHelpTxt}>{recoveryAmtLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={balanceAmtHelpTxt}>{balanceAmtLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={recoveryBudAmtHelpTxt}>{recoveryBudAmountLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title={recoveryBudTypeHelpTxt}>{recoveryBudTypeLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Comments">{commentsLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Claim Status">{claimStatus}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Activity Category">{actCatLabel}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Activity Type">{actTypeLabel}</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={resultList} for:item="con" for:index="index">
+                            <tr key={con.Id} class={con.cssClassName}>
+                                <td>
+                                    <div></div>
+                                </td>
+                                <td>
+                                    <div>{con.processingPref}</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <lightning-input type="checkbox" onchange={checkboxActions}
+                                            value={con.claimID} data-id={con.Id} checked={con.selected} disabled={con.isSelectedDisabled}>
+                                        </lightning-input>
+                                    </div>
+                                </td>
+                                <td>
+                                    <lightning-input type="checkbox"  data-id={con.Id} disabled checked={con.recoveryHold}>
+                                    </lightning-input>                  
+                                </td>
+                                <td>                                    
+                                    <div>
+                                        <lightning-input type="checkbox" onchange={rightToRecoverActions}  data-id={con.Id} disabled={con.isRowDisabled} checked={con.righttoRecover}>
+                                        </lightning-input>
+                                    </div>                                    
+                                </td>
+                                <td>
+                                    <div>{con.claimID}</div>
+                                </td>
+                                <td>
+                                    <div>{con.budgetType}</div>
+                                </td>
+                                <td>
+                                    <div>{con.geo}</div>
+                                </td>
+                                <td>
+                                    <div>{con.country}</div>
+                                </td>
+                                <td>
+                                    <lightning-formatted-number value={con.claimAmt} format-style="currency"
+                                        currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                                </td>
+                                <td>
+                                    <lightning-formatted-number value={con.surePayRecAmt} format-style="currency"
+                                        currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                                </td>
+                                <td>
+                                    <template if:true={con.recoveryAmount}>
+                                        <lightning-formatted-number value={con.recoveryAmount} format-style="currency"
+                                            currency-code="USD" currency-display-as="symbol">
+                                        </lightning-formatted-number>
+                                    </template>
+                                </td>
+                                <td>
+                                    <template if:true={con.balanceAmt}>
+                                        <lightning-formatted-number value={con.balanceAmt} format-style="currency"
+                                            currency-code="USD" currency-display-as="symbol">
+                                        </lightning-formatted-number>
+                                    </template>
+                                </td>                                
+                                <td>                                    
+                                    <div class="slds-cell-wrap">{con.recoveryBudAmt}</div>
+                                </td>
+                                <td>
+                                    <lightning-button label={recoveryLabel}
+                                        title={recoveryLabel} onclick={showModalBox} data-name={con.recoveryBudAmtMap} data-id={con.Id}
+                                        disabled={con.isRowDisabled} class="recoveryCmp">
+                                    </lightning-button>
+                                    <template if:true={con.showCustomValidation}>
+                                        <div>{recoveryAmtError}</div>
+                                    </template>                        
+                                </td>
+                                <td>
+                                    <lightning-input data-id={con.Id} name="input1" title={con.comments} label="Name"
+                                        value={con.comments} variant="label-hidden" onchange={commentActions}
+                                        disabled={con.isRowDisabled} maxlength="255"></lightning-input>
+                                </td>
+                                <td>
+                                    <div>{con.clmStatus}</div>
+                                </td>
+                                <td>
+                                    <div>{con.actCategory}</div>
+                                </td>
+                                <td>
+                                    <div>{con.actType}</div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+        <template if:true={isShowModal}>            
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+                <template if:true={showSpinner}>
+                    <div class="spinner">
+                        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                    </div>
+                </template>
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={hideModalBox}>
+                            <lightning-icon icon-name="utility:close"
+                               alternative-text="close"
+                               size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">{closeLabel}</span>
+                         </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            {recoveryAmtLabel}</h2>                            
+                    </header>                                                                                                                    
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <template if:true={showError}>
+                            <div class="slds-box slds-theme--error slds-var-m-bottom_medium">{recoveryUIError}
+                                <span class="slds-m-left_xx-small"><lightning-formatted-number value={availableBalance} format-style="currency"
+                                currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span>
+                            </div>
+                        </template>
+                        <div class="slds-grid slds-gutters slds-var-m-bottom_medium">
+                            <div class="slds-col">
+                                <span class="recovery-amount">{claimAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
+                                    <lightning-formatted-number value={claimAmount} format-style="currency"
+                                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span></span>
+                            </div>
+                            <div class="slds-col">
+                                <span class="recovery-amount">{surePayRecoveryAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
+                                    <lightning-formatted-number value={surePayRecAmt} format-style="currency"
+                                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span></span>
+                            </div>
+                            <div class="slds-col">
+                                <span class="recovery-amount">{recoveryAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
+                                    <lightning-formatted-number value={claimRecoveryAmount} format-style="currency"
+                                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span></span>
+                            </div>
+                            <div class="slds-col">
+                                <span class="recovery-amount">{balanceAmtLabel} <span class="slds-text-color_success" style="font-variant:small-caps">
+                                    <lightning-formatted-number value={claimBalanceAmount} format-style="currency"
+                                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number></span></span>
+                            </div>
+                        </div>                  
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Budget Type">{budgetTypeLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Geo">{geoLabel}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Recovery Amount">{recoveryAmtLabel}</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={mapData} for:item="con">
+                                    <tr key={con.key} class={con.cssClassName}>
+                                        <td>                                            
+                                            <div></div>
+                                        </td>
+                                        <td>
+                                            <div>{con.budgetType}</div>
+                                        </td>
+                                        <td>
+                                            <div>{con.geo}</div>
+                                        </td>
+                                        <td>
+                                            <lightning-input type="number" data-id={con.Id}
+                                            name="input1" label="Name" onchange={crossRecoveryInputActions} data-name={con.key}
+                                            value={con.value} variant="label-hidden" step="0.01" min="0.0"></lightning-input>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>                        
+                        <lightning-button type="Save" label={saveLabel} class="slds-float_right slds-var-p-top_medium"
+                            variant="brand" disabled={disableSave} onclick={saveRecoveryInputs}></lightning-button>                        
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!-- modal start -->
+        <template if:true={showHoldClaimsScreen}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container custom-width">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeHoldClaimPopup}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">{closeLabel}</span>
+                    </button>
+                    <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">{holdClaimsForRecoveryLabel}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                    <template if:true={hasData}>
+                        <div style="text-align:center" class="slds-p-around_small">
+                            <p style="display: inline-block;font-weight:bold;padding-right:10px;font-size:15px;font-variant:small-caps">{budgetTypeLabel}</p>
+                            <lightning-combobox name="Budget Type" style="display: inline-block" value={selectedBudgetTypeValue} class="budgetFilter"
+                                placeholder="Select BudgetType" options={budgetOptions} onchange={handleRecoveryHoldFilter} data-id="budgetType"> 
+                            </lightning-combobox>
+                            
+                            <p style="display: inline-block;font-weight:bold;padding-right:10px;padding-left:20px;font-size:15px;font-variant:small-caps">{geoLabel}</p>
+                            <lightning-combobox name="Geo" style="display: inline-block" value={selectedGeo} class="budgetFilter"
+                                placeholder="Select Geo" options={geoOptions} onchange={handleRecoveryHoldFilter} data-id="geo"> 
+                            </lightning-combobox>
+
+                            <p style="display: inline-block;font-weight:bold;padding-right:10px;padding-left:20px;font-size:15px;font-variant:small-caps">{countryLabel}</p>
+                            <lightning-combobox name="Country" style="display: inline-block" value={selectedCountry} class="budgetFilter"
+                                placeholder="Select Country" options={countryOptions} onchange={handleRecoveryHoldFilter} data-id="country"> 
+                            </lightning-combobox>
+                           
+                        </div>
+            
+                        <div class="slds-scrollable">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Row"></div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title={recoveryHoldLabel}>{recoveryHoldLabel}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Claim #">{claimNumber}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Budget Type">{budgetTypeLabel}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Geo">{geoLabel}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Country">{countryLabel}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Claim Amount">{claimAmtLabel}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Claim Status">{claimStatus}</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={recoveryHoldResultList} for:item="claim" for:index="index">
+                                        <tr key={claim.Id} class={claim.className}>
+                                            <td>
+                                                <div></div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <lightning-input type="checkbox" onchange={handleRecoveryHoldChange} data-id={claim.Id} checked={claim.recoveryHold}>
+                                                    </lightning-input>
+                                                </div>                                 
+                                            </td>
+                                            <td>
+                                                <div>{claim.claimID}</div>
+                                            </td>
+                                            <td>
+                                                <div>{claim.budgetType}</div>
+                                            </td>
+                                            <td>
+                                                <div>{claim.geo}</div>
+                                            </td>
+                                            <td>
+                                                <div>{claim.country}</div>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-number value={claim.claimAmt} format-style="currency"
+                                                    currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                                            </td>
+                                            <td>
+                                                <div>{claim.clmStatus}</div>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <div>
+                        <footer class="slds-modal__footer slds-align_absolute-center slds-m-top_medium">
+                            <lightning-button variant="brand" label={saveLabel} title={saveLabel} disabled={enableRecoveryHoldSave} onclick={handleRecoveryHoldSave}></lightning-button>
+                            <lightning-button variant="Neutral" label={cancelButtonLabel} title={cancelButtonLabel} onclick={closeHoldClaimPopup} class="slds-m-left_small"></lightning-button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <!-- modal end -->
+
+        <!-- modal start -->
+        <template if:true={showRecoveryHoldConfirmationModel}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header modal-heading-04">
+                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeRecoveryHoldConfirmationModel}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">{closeLabel}</span>
+                    </button>
+                    <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate" >{holdClaimsForRecoveryLabel}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-4">
+                    <template if:true={isLoading}>
+                        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                    </template>
+                    <div class="slds-p-bottom_small">{holdClaimsPopupConfirm}</div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label={noButtonLabel} title={noButtonLabel} onclick={closeRecoveryHoldConfirmationModel} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button label={yesButtonLabel} title={yesButtonLabel} onclick={handleRecoveryHoldSaveConfirm} class="slds-float_right slds-m-left_x-small" variant="brand"></lightning-button>
+                    </footer>
+                </div>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+        </template>
+        <!-- modal end -->
+    </div>
+</template>

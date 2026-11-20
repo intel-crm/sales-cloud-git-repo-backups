@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used to store the specialty url</description>
+    <fields>
+        <fullName>Grey_Image_URL__c</fullName>
+        <description>Used in L3 storefront page</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Grey Image URL</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Specialty_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PMP Account Specialty Name</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specialty_Name_Chinese__c</fullName>
+        <description>To save chinese translation</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter chinese value</inlineHelpText>
+        <label>PMP Specialty Name Chinese</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specialty_Name_Japanese__c</fullName>
+        <description>To save Japanese translation</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter Japanese value</inlineHelpText>
+        <label>PMP Specialty Name Japanese</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>URL__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>URL</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <label>PMP_Specialty_Images</label>
+    <pluralLabel>PMP_Specialty_Images</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

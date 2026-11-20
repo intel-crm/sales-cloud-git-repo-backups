@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Survey Question</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Survey Questions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Core_MDF_Category_nm__c</name>
+        <picklistValues>
+            <masterLabel>CCP</masterLabel>
+            <translation><!-- CCP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Question Expiration Date --></label>
+        <name>Core_MDF_Question_Expiration_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Start Date --></label>
+        <name>Core_MDF_Question_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Core_MDF_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Order --></label>
+        <name>Core_MDF_Sort_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visible To --></label>
+        <name>Core_MDF_Visible_To_nm__c</name>
+        <picklistValues>
+            <masterLabel>External</masterLabel>
+            <translation><!-- External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- German Trans --></label>
+        <name>Core_MDF_de_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Mex Trans --></label>
+        <name>Core_MDF_es_MX_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Trans --></label>
+        <name>Core_MDF_es_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- French Trans --></label>
+        <name>Core_MDF_fr_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Italian Trans --></label>
+        <name>Core_MDF_it_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japanese Trans --></label>
+        <name>Core_MDF_ja_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Korean Trans --></label>
+        <name>Core_MDF_ko_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portuguese Trans --></label>
+        <name>Core_MDF_pt_BR_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russian Trans --></label>
+        <name>Core_MDF_ru_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Sim Trans --></label>
+        <name>Core_MDF_zh_CN_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Trad Trans --></label>
+        <name>Core_MDF_zh_TW_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

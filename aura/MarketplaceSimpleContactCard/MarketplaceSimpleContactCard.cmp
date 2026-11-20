@@ -1,0 +1,34 @@
+<aura:component  extends="c:MarketplaceRedux" >
+        <aura:set attribute="storeName" value="Settings"/>
+        <aura:attribute name="data" type="object"/>
+        <aura:attribute name="label" type="string" />
+        <aura:attribute name="copy" type="string" />
+        <aura:attribute name="imgUrl" type="string" />
+        <aura:attribute name="ctaUrl" type="string"  />
+        <aura:attribute name="ctaCopy" type="string" />
+
+        <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+    	<!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+        <lightning:layout>
+              <lightning:layoutItem class="slds-col slds-p-horizontal_medium simple-card-list-card">
+                    <div aura:id="simple-contact-card" class="simple-contact-card">
+                        <lightning:layout>
+                                <lightning:layoutItem class="simple-card-list-image-wrapper slds-show_medium">
+                                    <img src="{!v.imgUrl}" alt=""/>
+                                    
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="7" class="product-category-name">
+                                <div>
+                                    <h5 class="color-black">{!v.label}</h5>
+                                    <p>{!v.copy}</p>
+                                  
+                                    <a href="{!v.ctaUrl}">{!v.ctaCopy}<lightning:icon iconName="utility:chevronright"
+                                        class="slds-m-left_xxx-small cursor link-caret"
+                                        size="x-small"/></a>
+                                </div>
+                                </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>
+              </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

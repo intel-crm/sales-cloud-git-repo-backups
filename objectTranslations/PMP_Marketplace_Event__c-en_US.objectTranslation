@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Event</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Events</value>
+    </caseValues>
+    <fields>
+        <label><!-- Event Banner Language Mapping --></label>
+        <name>PMP_Event_Banner_Language_Mapping__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Banner Language --></label>
+        <name>PMP_Event_Banner_Language__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation><!-- Simplified Chinese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Event Learn More Link --></label>
+        <name>PMP_Event_Learn_More_Link_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Marquee Description --></label>
+        <name>PMP_Event_Marquee_Desc_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Screen Reader Text --></label>
+        <name>PMP_Event_Screen_Reader_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for Event Description. --></help>
+        <label><!-- Marketplace Event Description --></label>
+        <name>PMP_Marketplace_Desc__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for event end date. --></help>
+        <label><!-- Marketplace Event End Date --></label>
+        <name>PMP_Marketplace_Event_End_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for event start date. --></help>
+        <label><!-- Marketplace Event Start Date --></label>
+        <name>PMP_Marketplace_Event_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Event Status --></label>
+        <name>PMP_Marketplace_Event_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for Event Tagline. --></help>
+        <label><!-- Marketplace Event Tagline --></label>
+        <name>PMP_Marketplace_Event_Tagline__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be before Start Date --></errorMessage>
+        <name>End_Date_cannot_be_before_Start_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

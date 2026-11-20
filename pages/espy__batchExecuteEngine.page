@@ -1,0 +1,288 @@
+<apex:page showHeader="false" sidebar="false">
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" />
+
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"/>
+
+    <apex:includeScript value="https://www.google.com/jsapi"/>
+    <apex:includeScript value="https://www.gstatic.com/charts/loader.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css"/>  
+    
+    
+    <body >
+        <div id="wrapper" class="active">
+            <div class ="tour1 "></div>
+            <!-- Sidebar 
+            <c:BM_sidepane />   -->         
+            <!-- Page content -->
+            <c:BM_header />
+            <div id="LightningComponentid" /> 
+            <!--<img src="/resource/batchExecuteEngineLoader.gif" />-->
+            <div class="overlayDiv">
+                <img src="{!$resource.batchExecuteEngineLoader}" style="display:none;margin-left: 30%;margin-top: 10%;" id="loaderImage"></img>
+            </div>
+        <script>
+            $("#loaderImage").show();
+            $Lightning.use("c:BatchClassExecutionEngine", function() {
+                
+                $Lightning.createComponent("c:batchExecuteWebComponent",
+                { 
+                },
+                "LightningComponentid",
+                function(cmp) {
+                    $("#loaderImage").hide();
+                });
+            });
+        </script>    
+          <!-- </apex:pageBlock>-->
+        <apex:includeLightning />    
+    </div>
+    </body>
+
+
+
+    <style>
+      
+      html{
+          font-size: 15px;
+      }
+        .shadow-me{
+            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+        }
+        #wrapper {
+          padding-left: 250px;
+          transition: all 0.4s ease 0s;
+          background-color: #fff;
+        }
+
+        #wrapper.active {
+          padding-left: 0;
+        }
+
+        #wrapper.active #sidebar-wrapper {
+          left: 0;
+        }
+
+        .content-header h1 {
+          margin: 0;
+          margin-left: 20px;
+          /*line-height: 65px;*/
+          display: inline-block;
+        }
+
+        #menu-toggle {
+            text-decoration: none;
+        }
+
+        .btn-menu {
+          color: #000;
+        } 
+
+        .inset {
+          padding: 1px 5px 5px 5px;
+        }
+
+        @media (max-width:767px) {
+
+        #wrapper {
+          padding-left: 0;
+        }
+
+        #sidebar-wrapper {
+          left: 0;
+        }
+
+        #wrapper.active {
+          position: relative;
+          left: 250px;
+        }
+
+        #wrapper.active #sidebar-wrapper {
+          left: 250px;
+          width: 250px;
+          transition: all 0.4s ease 0s;
+        }
+
+        #menu-toggle {
+          display: inline-block;
+        }
+
+        .inset {
+          padding: 15px;
+        }
+
+        }
+        /*custom*/
+        .sidebar-seffect{
+            background-color: #444444;
+            -moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            -webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+            zoom: 1;
+        }
+        
+        
+        /*override-bootstrap*/
+        .panel-body{
+                min-height: 234px;
+        }
+
+        /* completed status trend up-down*/
+
+        .up-arrow-active{
+            color: #13be13 !important;
+            font-weight: bolder;
+
+        }
+        .down-arrow-active{
+            content:"\21C2";
+            color: red;
+            font-weight: bolder;
+        }
+        .up-arrow-inactive{
+            content: "\21BF";
+            color: #ccc;
+            font-weight: bolder;
+        }
+        .down-arrow-inactive{
+            content:"\21C2";
+            color: #ccc;
+            font-weight: bolder;
+        }
+        .panel-header{
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 20px ;
+            color: #6b6b6b !important;
+        }
+        /*reset*/
+        ul li {
+            margin:0px;
+        }
+        
+        .slds-table_header-fixed_container{
+            margin: 15px;
+            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2) !important;
+        }
+        .slds-cell-fixed {
+            color: #fff;
+        }
+        .slds-has-button-menu, .slds-th__action{
+            color: #0c0577;
+            background-color: #ccd3ff !important;
+        }
+        .slds-grid .slds-grid_align-spread .slds-truncate{
+            color: #3b85f7;
+            font-weight: 600;
+        }
+        .dt-width-observer div{
+            margin: 20px !important;
+        }
+        .slds-scope .slds-modal__header{
+            color: #fff;
+            background-color: #2260c2;
+        }
+        .slds-scope .slds-modal__header h2{
+            font-weight: 500;
+        }
+        .slds-scope .slds-gutters{ 
+           margin:20px !important;
+        }
+        .slds-input{
+            border: 1.3px solid #2260c2 !important;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 1px 3px -1px rgba(0,0,0,0.2) !important
+        }
+        #LightningComponentid button.slds-button_neutral{
+            background-color: #2260c2;
+            color: #fff;
+        }
+        #LightningComponentid button.slds-button_neutral[disabled]{
+            background-color: #f3efef;
+            color: #a09797;
+        }
+        .slds-scope .slds-table{
+            font-size:13px;
+        }
+        .slds-table{
+            line-height: 2.5;
+        }
+        .slds-scope{
+            line-height: 1.5;
+        }
+        #input-2{
+            border-radius: 20px;
+            border: 1.5px solid #2260c2 !important;
+        }
+        #wrapper .slds-scope body, #wrapper .slds-scope{
+            font-size: 12px !important;
+        }
+        #LightningComponentid{
+            background: linear-gradient(to right bottom,#f4effe 50%,#fff 50%);
+        }
+        .slds-scope .slds-button__icon{
+            fill: #0c0577;
+        }
+        .slds-button[title='Download CSV File']{
+            height: 30px;
+            width: 30px;
+        }
+        .slds-button[title='Download CSV File'] svg.slds-button__icon{
+            fill: #fff !important;
+            margin-right: 0px;
+        }
+        .slds-button[title='Download CSV File'] .slds-scope .slds-button__icon_left, .slds-scope .slds-button__icon--left{
+            margin-right: 0px;
+        }
+        #LightningComponentid .slds-size_1-of-12 {
+            width: 5%;
+        }
+        .navIcons{
+            height: 1.7rem;
+            width:1.7rem;
+        }
+        .navbar-brand img{
+             height: 74px;
+             width: 130px;
+        }
+    </style>
+    <script>    
+    // Instance the tour
+        var tour = new Tour({
+        steps: [
+          {
+            element: ".tour1",
+            placement: 'bottom',
+            backdrop:   false,
+            title: "Flex Queue Page",
+            content: "Information about Flex Queue Page."
+          },
+          {
+            element: ".tour2",
+            placement: 'right',
+            title: "Flex Queue (Holding Status)",
+            content: "Information about Flex Queue (Holding Status)."
+          },
+          {
+            element: ".tour3",
+            placement: 'left',
+            title: "Re-Prioritize Flex Queue",
+            content: "Information about Re-Prioritize Flex Queue."
+          }
+        ],
+          backdrop: true,
+          backdropPadding: 1,
+          storage: true // change it to false to always display the tour
+        });
+        
+        tour.init();
+        
+        tour.start();
+    </script>
+</apex:page>

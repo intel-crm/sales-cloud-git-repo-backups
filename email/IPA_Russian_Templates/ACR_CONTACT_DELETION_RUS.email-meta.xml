@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_DELETION_RUS</name>
+    <style>none</style>
+    <subject>Обновление учетной записи Intel® Partner Alliance</subject>
+    <textOnly>Пользователь удален
+
+{!UserName},
+
+
+В вашу учетную запись Intel® Partner Alliance внесено изменение. Пользователь {!ContactEmail} был удален из учетной записи вашей компании.
+
+Название компании: {!Account.Name}
+Идентификатор компании: {!Account.AccountNumber}
+Удаленный контакт: Эл. адрес {!ContactEmail}
+Отношения (роль): {!AcrRoles}
+
+Если это изменение является несанкционированным, войдите на сайт, чтобы обновить учетную запись.
+Если у вас есть вопросы, свяжитесь с нами по адресу https://signin.intel.com/ContactUs?Culture=ru-ru.
+
+
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, -{!$Label.PRM_CurrentYear} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

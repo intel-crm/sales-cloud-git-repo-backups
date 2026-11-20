@@ -1,0 +1,14 @@
+.modal-container {
+    text-align: center;
+    font-weight: 10;
+    font-size: 0.8rem;
+    justify-content: center; /* Centers horizontally */
+  align-items: center;
+}
+.slds-checkbox_align {
+    margin-top: 1.7rem; /* adjust this to match your label alignment */
+}
+.delete-icon {
+    align-self: flex-end; /* aligns icon nicely with checkbox label line */
+    margin-top: 0.1rem;   /* small tweak for visual centering */
+}

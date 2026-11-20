@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Ipa Marquee (Default)</masterLabel>
+    <description>Generic Marquee Component</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="backgroundColor" type="String" default="classic-blue-gradient" label="Background Color" datasource="blue-steel-solid" />
+            <property name="backgroundVariant" type="String" default="classic-blue-gradient" label="Background Variant" datasource="mosaic-l0,mosaic-l1,mosaic-l2,classic-blue-gradient" />
+            <property name="title" type="String" default="Lorem Ipsum Title" label="Title"/>
+            <property name="alignment" type="String" default="left" label="Marquee Alignment" datasource="left,center"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

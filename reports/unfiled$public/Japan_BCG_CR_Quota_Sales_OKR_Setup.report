@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>FK_$CPT_Territory_Target__c.CPT_Account_Territory__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>CPT_Quota_Setup__c.CPT_Complete__c</field>
+        </columns>
+        <columns>
+            <field>CPT_Quota_Setup__c.CPT_CR_Assigned__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>CPT_Quota_Setup__c.CPT_Manager__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Akinori Kojihara,Ray Zhang,Shinsaku Shimada,Masato Hotta</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Quota Setup with Territory Assig block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$CPT_Quota_Setup__c$CPT_Territory_Assignment__c@CPT_Territory_Assignment__c.CPT_Territory_Target__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>CUST_CREATED_DATE</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CPT_Quota_Setup__c.CPT_Sales_OKR_Assigned__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Quota Setup with Employee block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntity$CPT_Quota_Setup__c@CPT_Quota_Setup__c.CPT_Employee__c</reportType>
+        <scope>user</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>CUST_CREATED_DATE</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>x</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CPT_Quota_Setup__c.CPT_Employee_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Japan BCG CR Quota &amp; Sales OKR Setup</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$CPT_Quota_Setup__c$CPT_Territory_Assignment__c@CPT_Territory_Assignment__c.CPT_Territory_Target__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

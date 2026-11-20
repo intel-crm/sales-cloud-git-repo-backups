@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPS_Case_Attachment_Field_Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPS_Case_Attachment_Field_Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Name --></label>
+        <name>Attachment_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Type --></label>
+        <name>Attachment_Field_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- JSON Field Name --></label>
+        <name>JSON_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Object_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

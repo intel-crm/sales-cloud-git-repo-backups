@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EPS Rejection email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>EPS_Rejection_email</name>
+    <style>none</style>
+    <subject>Intel(R) Software Development Platform engagement denied</subject>
+    <textOnly>Intel Registration Confirmation
+
+INTEL® ON DEMAND WEB SERVICES
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+
+Thank you for your interest in Intel® On Demand web services testing environment (SBX).
+You did not qualify at this time and your request has been rejected.
+
+
+
+Please retain this email for future reference
+
+
+If you feel you have received this e-mail in error, please contact us.
+
+
+To manage your profile, including available marketing subscriptions, please visit My Intel.
+
+
+Sincerely,
+
+Registration Administrator
+
+Intel® On Demand Team
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+
+Intel is committed to protecting your privacy. For more information,
+please see the Intel Privacy Notice.
+
+Legal Information | Trademarks Intel Corporation. All rights reserved.
+*Other names and brands may be claimed as the property of others.
+**Intel is not responsible for content of sites outside our intranet sites.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

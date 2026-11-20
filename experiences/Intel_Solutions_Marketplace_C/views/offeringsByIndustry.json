@@ -1,0 +1,208 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "9dcceb24-dea7-482a-bf43-e8772aae11fe",
+  "label" : "Offerings by Industry",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"OfferingsByIndustry\",\"title\":\"Offerings By Industry\"}",
+        "backgroundVariant" : "mosaic-l1",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Discover Intel® partner offerings by industry sector",
+        "title" : "Offerings by Industry"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "a14c36b8-08f5-434d-9640-f955fd80fd98",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "a09107b4-c108-4cb5-b3a1-efdef88510de",
+        "zh_cn" : "bcf525d7-72fb-4b2e-8008-200b15116ffb"
+      },
+      "renditions" : [ {
+        "id" : "a09107b4-c108-4cb5-b3a1-efdef88510de",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "業種部門別のインテル®のパートナーオファリングを理解する ",
+            "title" : "業種別のオファリング"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bcf525d7-72fb-4b2e-8008-200b15116ffb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "按行业部门探索英特尔® 合作伙伴产品",
+            "title" : "按行业分类的产品"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "09e229b7-84d5-414f-b431-209e8f66a969",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "All",
+        "listOfLists" : false,
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorAbove" : false,
+        "separatorBelow" : false,
+        "showFeaturedOnly" : false,
+        "showHeading" : false,
+        "showIcon" : false,
+        "showViewAllLink" : false,
+        "taxonomy" : "OfferingIndustries",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "a4cfa3b8-fc23-4ec0-957c-5c8f2b0542bf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e05973cd-b12b-4395-beb5-da0e732f07d4",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "d13f65bc-17f5-4d9f-a04e-3b9406f0b7dd",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "faqTitle" : "Offerings",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "fcdc8e68-1fab-4d82-bafe-877028efcddf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c20a7101-6341-43f8-b870-2aef517d65ee",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaCommPage" : "",
+        "ctaExternalURL" : "",
+        "ctaLabel" : "Learn More",
+        "subtitle" : "Gain expertise, take advantage of special promotions, marketing tools, and other valuable benefits of being a member.",
+        "theme" : "dark",
+        "title" : "Join the Intel® Partner Alliance"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "1c7d445b-d52f-4f35-9361-6cf24ba68de0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "53f816a9-2dba-4570-b34e-5716130c349a",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareTray",
+      "id" : "d88736c0-c3b0-478e-a7e6-924a586d7a46",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f872fe31-7f76-4375-b2a6-065644fc01d9",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Offerings By Industry\"/> \n<meta name=\"keywords\" content=\"offerings by industry, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingsByIndustry\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace offerings by industry on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "title" : "Offerings by Industry - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "8b4bb3a6-bb0b-414a-8a56-a45e608bb9e8",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "501775f0-27e3-44b4-966a-ffdee5665d21",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "bee8ba0d-f423-44a9-9b07-3926051db6db",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "72112aa2-b976-452e-a45e-2809c07a3184",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "98b6e1b7-e1e1-486b-bf7a-a446b763e1a2",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "812c9380-2e95-4ff5-b65e-f2a20a51cba6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a404528f-4782-42e7-8fae-a8c569853ce0",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "012e0449-f04b-4ed5-bdc7-fe21907fcf83",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "cde74c4c-3b05-42c2-b474-f11562a31f01",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "184517e2-df1f-4185-9828-13e7f0f720b8",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "39d81810-3333-4a3c-975f-d9de053985b5",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "896cc50b-485d-4dba-a950-1aba3aa4cb99",
+    "regionName" : "blade10",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-offerings-by-industry"
+}

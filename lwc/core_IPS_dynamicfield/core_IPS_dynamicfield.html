@@ -1,0 +1,85 @@
+<template>
+    <!--text-->
+    <div class="slds-m-top_x-small slds-m-bottom_x-small"> <!-- slds-m-bottom_x-large -->
+        <!-- <h2 class="slds-text-heading_medium slds-m-bottom_medium"></h2>-->
+        <div class="slds-p-around_x-small" if:false={commcheck}> <!-- slds-p-around_medium lgc-bg -->
+            <div class="main" data-id={fieldid}>
+                <template if:true={textcheck}>
+                    <lightning-input type="text" class="inputdat" value={value} name={fieldid}
+                        required={isrequiredfield} label={fieldlabel} >
+                    </lightning-input>
+                </template>
+                <template if:true={piclistcheck}>
+                    <!-- <lightning-combobox class="inputdat" required={isrequiredfield} name={fieldid}
+                        label={fieldlabel} value={value} placeholder="-Select Options-" options={lovs}>
+                    </lightning-combobox> -->
+                    <div if:true={fromDependentField}>
+                        <lightning-combobox class="inputdat" required={fielditself.required} name={fielditself.questionId}
+                            label={fielditself.label} value={fielditself.selectedValue} placeholder="-Select Options-" options={fielditself.lwcplaceholder}>
+                        </lightning-combobox>
+                    </div>
+                    <div if:false={fromDependentField}>
+                        <lightning-combobox class="inputdat" required={fielditself.required} name={fielditself.id}
+                            label={fielditself.label} value={picklistValue} placeholder="-Select Options-" options={fielditself.lovs}>
+                        </lightning-combobox>   
+                    </div>
+                </template>
+                <template if:true={multiselectpiclistcheck}>
+                    <!--MultiSelect-->
+                    <lightning-dual-listbox name={fieldid} required={isrequiredfield} class="inputdat"
+                        label={fieldlabel} source-label="Available" selected-label="Selected" value={mvalue}
+                        field-level-help="" options={lovs}>
+                    </lightning-dual-listbox>
+                </template>
+                <template if:true={textareacheck}>
+                
+                    <!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
+                     <template if:true={isrequiredfield}>
+                            <span class="required-asterisk">* </span>
+                    </template>
+                    <span style="display: inline-block;font-color: #444444;font-size: 0.75rem">{fieldlabel}</span>
+                    <!--  sowmya end -->
+                       
+                    <lightning-textarea name={fieldid} value={value} class="inputdat"
+                        placeholder={placeholdertext} required={isrequiredfield} variant="label-hidden" onchange={handletextchange}>
+                    </lightning-textarea>
+                </template>
+                 <!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
+                        <template if:true={islengtherr}>
+                        <span class="lengtherr"> {label.Core_IPS_Exceeding_the_char_length}</span>
+                     </template>
+                <!-- sowmya end-->
+                
+            </div> 
+        </div>
+
+        <div class="slds-p-around_x-small" if:true={commcheck}> 
+            <div class="main dynamicField" data-id={fieldid}>
+                <template if:true={textcheck}>
+                    <lightning-input variant="label-inline" type="text" class="inputdat" value={value} name={fieldid}
+                        required={isrequiredfield} label={fieldlabel} >
+                    </lightning-input>
+                </template>
+                <template if:true={piclistcheck}>
+                    <lightning-combobox variant="label-inline" class="inputdat" required={fielditself.required} name={fielditself.id}
+                        label={fielditself.label} value={picklistValue}  placeholder="-Select Options-" options={fielditself.lovs}>
+                    </lightning-combobox>
+                </template>
+                <template if:true={multiselectpiclistcheck}>
+                    
+                    <lightning-dual-listbox name={fieldid} required={isrequiredfield} class="inputdat"
+                        label={fieldlabel} source-label="Available" selected-label="Selected" value={value}
+                        field-level-help="" options={lovs}>
+                    </lightning-dual-listbox>
+                </template>
+                <template if:true={textareacheck}>
+                    <lightning-textarea variant="label-inline" name={fieldid} value={value} class="inputdat"
+                        placeholder={placeholdertext} required={isrequiredfield} label={fieldlabel}>
+                    </lightning-textarea>
+                </template>
+            </div> 
+        </div>
+       
+
+    </div>
+</template>

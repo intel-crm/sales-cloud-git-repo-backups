@@ -1,0 +1,88 @@
+<!--
+  @description       : 
+  @author            : Balaji M
+  @group             : 
+  @last modified on  : 09-04-2020
+  @last modified by  : Balaji M
+  Modifications Log 
+  Ver   Date         Author     Modification
+  1.0   09-03-2020   Balaji M   Initial Version
+-->
+<aura:component extends="c:MarketplaceCreateProductFormInputBase">
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:method name="focus" action="{!c.focus}" />
+  <aura:attribute name="label" type="string" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="subType" type="string" default="text" description="Attribute corresponds to 'type' attribute of lightning:input."/>
+  <aura:attribute name="currentStepTouched" type="boolean" default="false" description="Internal"/>
+ <aura:attribute name="textValue" type="String" description="An initial value for the text input" />
+
+  <aura:attribute name="valueType" type="String" default="default" description="If set to 'complex' data binding will include input ID and any other related info"/>
+  <aura:attribute name="additionalValues" type="Object" />
+  <aura:attribute name="_value" type="Object" description="Internal tracking" />
+  <aura:attribute name="formatter" type="string" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="pattern" type="string" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="maxlength" type="integer" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="minLength" type="integer" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="max" type="object" description="Attribute corresponds to same on lightning:input."/>
+  <aura:attribute name="min" type="object" description="Attribute corresponds to same on lightning:input."/>
+    <!---US406710- Added by manasa-->
+    <!-- IPA2.0 + US TWC4497-1631 -->
+  <!-- <aura:attribute name="offeringNameDisclaimerMsg" type="String" default="{!$Label.c.PMP_OfferingNameLengthDisclaimerMsg}" /> -->
+  <aura:attribute name="onChange" type="object" />
+    <aura:attribute name="testType" type="string"/>   
+  <!--Added By Shahrukh (ONYX) US357417-->
+  <aura:attribute name="error" type="string"/>
+  <aura:attribute name="hasError" type="boolean" default="false"/>
+  <aura:attribute name="touched" type="boolean" default="false" description="Internal" />
+    
+  <!--<aura:registerEvent name="OfferingNameTest" type="c:OfferingNameTest"/>-->
+  <!-- IPA2.0 + US TWC4497-1631 -->
+  <!-- <aura:registerEvent name="PMP_OfferingNameEvent" type="c:PMP_OfferingNameEvent"/> -->
+  <!-- https://developer.salesforce.com/docs/component-library/bundle/lightning:input -->
+  <!--Added by Manasa  US356458: to display Offering name under the Input language-->
+  <aura:attribute name="originallyRequired" type= "boolean" description="to toggle the mandatory behavior"	/>              
+  <aura:if isTrue="{!v.label}">
+      <lightning:input aura:id="input"
+        type="{!v.subType}"
+        label="{!v.label}"
+        value="{!v._value}"
+        required="{!v.required}"
+        disabled="{!v.disabled}"
+        onblur="{!c.handleBlur}"
+        onchange="{!c.handleChange}"
+        formatter="{!v.formatter}"
+        pattern="{!v.pattern}"
+        max="{!v.max}"
+        min="{!v.min}"              
+		maxlength="{!v.maxlength}"
+    	messageWhenValueMissing="{!$Label.c.PMP_CTA_Complete_The_Field}"
+                       
+    />
+   </aura:if>
+    <!---US406710 - START - Added by manasa-->
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:if isTrue="{!v.fieldName == 'PMP_Partner_Offering_Nm__c'}">
+      <p class="disclaimer-text slds-p slds-text-body_small">{!v.offeringNameDisclaimerMsg}</p>
+   </aura:if> -->
+    
+   <!--Added by Priyanka to add the disclaimer message for the below fields-->
+   <!-- IPA2.0 + US TWC4497-1631 -->
+   <!-- <aura:if isTrue="{!and(v.fieldName == 'PMP_Partner_Offering_Tag_Line_Txt__c', v.value.length lt 101)}">
+      <p class="disclaimer-text slds-p slds-text-body_small"><b>{!format($Label.c.PMP_Description_Characters_Remaining,100-v._value.length)}</b></p>
+   </aura:if> -->
+   <aura:if isTrue="{!and(v.fieldName == 'Name', v.apiName == 'productWebPageData')}">
+      <p class="disclaimer-text slds-p slds-text-body_small">{!$Label.c.PMP_ResourceTitleLengthDisclaimerMsg}</p>
+   </aura:if>
+   <aura:if isTrue="{!and(v.fieldName == 'Url', v.apiName == 'productWebPageData')}">
+        <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
+   </aura:if>
+   <!--Added by Priyanka -->
+
+    <!-- Added By Shahrukh (ONYX) US357417-->
+    <aura:if isTrue="{!v.hasError}">
+        <div class="slds-text-color_error slds-p-left_x-small">
+             {!v.error}
+        </div>
+    </aura:if>    
+</aura:component>

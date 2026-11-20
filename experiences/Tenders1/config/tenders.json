@@ -1,0 +1,30 @@
+{
+  "forgotPasswordRouteId" : "129218d4-b34e-444c-b23e-7c333d6448fa",
+  "isAvailableToGuests" : false,
+  "isFilteredComponentsView" : false,
+  "isProgressiveRenderingEnabled" : true,
+  "loginAppPageId" : "d036b5b5-dee0-4602-901c-42232208e211",
+  "mainAppPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "preferredDomain" : "none",
+  "selfRegistrationRouteId" : "db8ac738-08a3-4e8c-97c9-02da660babe5",
+  "trustedSitesForScript" : [ {
+    "id" : "179863bc-54d5-4a25-b6cd-fdcf81a7b06a",
+    "isActive" : true,
+    "trustedSiteName" : "www.intel.com",
+    "trustedSiteUrl" : "https://www.intel.com/",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "faafad06-bc20-4362-b704-24fec5028d12",
+    "isActive" : true,
+    "trustedSiteName" : "ajax.googleapis.com",
+    "trustedSiteUrl" : "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "4224544d-d6b8-43fe-a68c-a3cb314c1fb9",
+    "isActive" : true,
+    "trustedSiteName" : "LiveAgent",
+    "trustedSiteUrl" : "https://d.la4-c1cs-dfw.salesforceliveagent.com/chat/rest/",
+    "type" : "trustedSitesForScripts"
+  } ],
+  "type" : "site"
+}

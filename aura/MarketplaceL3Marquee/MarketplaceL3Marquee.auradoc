@@ -1,0 +1,23 @@
+<aura:documentation>
+	<aura:description>
+    <p>L3 Marquee Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 5/9/2019</p>
+    <p>CurrentVersion: 2.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.2 - bug fix</p>
+    <p>1.1 - custom labels</p>
+    <br/>
+    <p>2.0</p>
+    <p>Added 'displayType' and mods/additions for partner detail page</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+
+</aura:documentation>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Description_of_Contribution__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Date_Added__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Sarah Musick,Gopal Kandhasamy,Brian Caddell,Kiran Agrahara,Vijay Bandari,Sumesh Sukumar,Nishikant Singh,Steve Fowler,Vivek Kulkarni,Keith Sundberg,Rajiv Mandal,Ibett Acarapi,Samantha Cabrera Moscofian,Miguel Soto,Volga Simsek,Bhavani Salunkhe,Farid El Chalouhi,Marcel Brueckner,Ali Can Yurtseven,Marco Righini,Pedro Benito Mendoza,Swapnil Shah,Jimin Cai,Qingfeng Zhang,Marty Liang,Lianghou Xu,Emily Zhou,Tong Chen,Xingxian Luo,Xiaolei Ren,Myles Hu,John Kim,Abhishek Kumar Singh,Beny Ibrani,Mousumi Dash,Prabhas Harlapur,Jackie Lee,Seva Semouchin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2024 12:00 AM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CSAs added to opportunities in 2024</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>OpportunityTeamMember.Core_Description_of_Contribution__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

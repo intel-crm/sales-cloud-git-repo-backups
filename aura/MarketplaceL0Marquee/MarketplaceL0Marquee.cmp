@@ -1,0 +1,50 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="type" type="string" />
+  <aura:attribute name="headingLabel" type="string" />
+  <aura:attribute name="textLabel" type="string" />
+  <aura:attribute name="breadcrumbData" type="object[]" />
+  <aura:attribute name="showBreadcrumbs" type="boolean" default="true" />
+  <aura:attribute name="showSignIn" type="boolean" default="false" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div>
+    <div class="container fill-height">
+      <lightning:layout class="fill-height" multipleRows="true">
+        <aura:if isTrue="{!v.showBreadcrumbs}">
+          <lightning:layoutItem size="12">
+            <!-- <div class="slds-show_medium position-absolute-center breadCrumb">
+              <c:ISG_Breadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" />
+            </div>
+            <div class="slds-hide_medium slds-m-top_medium">
+              <c:ISG_Breadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" />
+            </div> -->
+          </lightning:layoutItem>
+        </aura:if>
+
+				<!-- DISABLED / BACK LOG -->
+        <aura:if isTrue="{!v.showSignIn}">
+          <div class="slds-show_large slds-text-align_right signIn">
+            {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}<br/>
+            <a class="color-pale-blue" 
+               href="{!$Label.c.PMP_SSO_MP_Login_URL}">{!$Label.c.PMP_Sign_In}</a> | <a class="color-pale-blue">{!$Label.c.PMP_Learn_More}</a>
+          </div>
+            <div class="slds-hide_large slds-m-left_large signIn slds-m-top_x-small" >Shelby Li
+            <lightning:icon class="icon-white slds-m-left_small pointer" iconName="utility:switch" size="x-small"/>
+          </div>
+        </aura:if>
+
+        <lightning:layoutItem size="12" class=" slds-p-horizontal_large slds-text-align_left">
+          <lightning:layout class="" verticalAlign="center" multipleRows="true">
+            <lightning:layoutItem size="12" class="slds-text-align_center">
+              <h1>{!v.headingLabel}</h1>
+              <p class="slds-m-top_medium slds-show_medium">{!v.textLabel}</p>
+            </lightning:layoutItem>
+          </lightning:layout>
+        </lightning:layoutItem>
+      </lightning:layout>
+    </div>
+  </div>
+
+</aura:component>

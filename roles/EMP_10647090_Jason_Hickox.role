@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Bebago Lugogo</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_10647090_Jason_Hickox</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10658972_Bebago_Lugogo</parentRole>
+</Role>

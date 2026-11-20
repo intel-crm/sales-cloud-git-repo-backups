@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template to send CEP Case Assignment notification.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_CEP_Email</letterhead>
+    <name>CEP Case Assignment - New</name>
+    <style>freeForm</style>
+    <subject>ALERT: Case {!Case.CaseNumber} has been created for your customer issue</subject>
+    <textOnly>A case was created because your customer has raised an issue in the Customer Excellence Survey.
+
+Case Number:{!Case.CaseNumber}
+Contact Name:{!Case.00No000000DVoQ2}
+Account:{!Case.00No000000DVoPz}
+Reason:{!Case.Subject}
+
+Steps to be taken:
+
+1. Click Hereto open the case and view responses from your customer.  Please note that cases can be created for more than one reason.  Review the CEP responses section of the case for a summary of the key indicator scores (Delight, Velocity, Account Management,Partnership,Technical Expertise orOperations Support).
+
+2. Make customer contact within 3 business days to gather more information.  Update case status appropriately and add notes from discussion.
+
+3. Within 10 business days, document your Action Plan in the internal comments. Please note that all low key indicator scores should be addressed in the Action Plan.  Be sure to include the following:
+
+a. Restatement of Customer Issue
+
+b. Document Measurable Action Plan
+
+c. Expected Delivery Date
+
+Click Here for additional training on how to process your case.
+
+
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

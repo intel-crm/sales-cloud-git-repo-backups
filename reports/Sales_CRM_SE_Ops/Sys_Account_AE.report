@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User$Profile</field>
+    </columns>
+    <columns>
+        <field>User$Department</field>
+    </columns>
+    <columns>
+        <field>User*User$Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>User$Email</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User$IsActive</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>User$Email</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>adam1.wu@lcfuturecenter.com,aksharax.kalakonda@intel.com,alexia.zhang@intel.com,alice.uyen.nguyen@intel.com,americascbo@intel.com,andy_cui@wistron.com,anny.yh.zhou@foxconn.com,ariel.zhang@intel.com,b2b.l2.support@intel.com,b2b.tech.support@intel.com,bettina.biro@emea.foxconn.com,bga_ccg_reporting@intel.com,bmg.operation.desk@intel.com,brian.liao@acer.com,bseymour@arrow.com,chenhyb@lenovo.com,chinx.mei.ng@intel.com,chris.esser@altera.com</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Sys Account AE</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Users_with_Territory_Assignments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

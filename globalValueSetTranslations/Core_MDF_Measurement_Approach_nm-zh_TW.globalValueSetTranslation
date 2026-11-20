@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Analyst Reports</masterLabel>
+        <translation>分析師報告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel/Partner-reported Sell-through/Consumption Data</masterLabel>
+        <translation>英特爾/夥伴報告的銷售/消費數據</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Market Research/Brand Tracking</masterLabel>
+        <translation>市場調查/品牌追蹤</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Specify)</masterLabel>
+        <translation>其他（請說明）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Partner CRM/Sales Reporting</masterLabel>
+        <translation>夥伴CRM/銷售報告</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

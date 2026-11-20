@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Werbekampagnenzweck</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- IPA Campaign Purpose FieldSet --></label>
+        <name>Core_MDF_IPA_Campaign_Purpose_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help>Der Baseline-Zeitraum beschreibt einen Zeitpunkt vor dieser Kampagne, in dem der Baseline-Wert erfasst oder geschätzt wurde. Beispiel: Wenn diese Kampagne im August endet und der Basiswert im vorherigen August erfasst wurde, wähle die erste Option. Wenn der Basiswert null ist, wählen Sie die erste Option.</help>
+        <label>Basiszeitraum</label>
+        <name>Core_MDF_Baseline_Period_nm__c</name>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one half before</masterLabel>
+            <translation>Gleiche Zeit wie diese Kampagne, eine Hälfte davor</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
+            <translation>Im gleichen Zeitraum wie diese Kampagne, ein Quartal davor</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one year before</masterLabel>
+            <translation>Gleiche Zeit wie diese Kampagne, ein Jahr zuvor</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign Purpose Description --></label>
+        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
+    </fields>
+    <fields>
+        <help>Wert der Ergebnismetrik nach der Werbekampagnen, die wir als Erfolg definieren. Vor der Ausführung eingegeben.</help>
+        <label>Zielwert</label>
+        <name>Core_MDF_Goal_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>Erwarteter Wert der Ergebnismetrik ohne diese Werbekampagnen. Vor der Ausführung eingegeben.</help>
+        <label>Ausgangswert</label>
+        <name>Core_MDF_Initial_Baseline_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>Details, die die Ergebnismetrik genauer beeinflussen (z. B. &quot;im Vergleich zum Vorjahreshalbjahr für Serverprodukte, die auf Intel Xeon Prozessoren der 4., 5. und 6. Generation&quot; basieren). Vor der Ausführung eingegeben.</help>
+        <label>Ergebniskriterien</label>
+        <name>Core_MDF_Outcome_Criteria_txt__c</name>
+    </fields>
+    <fields>
+        <label>Ergebnis-Metrik</label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
+        <help>Wert der Ergebnismetrik nach der Werbekampagnen. Wird aktualisiert, sobald die Werbekampagne abgeschlossen ist.</help>
+        <label>Ergebniswert</label>
+        <name>Core_MDF_Quantity_nbr__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel><!-- Campaign Outcome Name --></nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,47 @@
+<aura:documentation>
+	<aura:description>
+    <p>Search -- reducer subcomponent</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 5/5/2019</p>
+    <p>CurrentVersion: 2.3</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>Store structure:</p>
+
+<pre>{
+  searchType: 'all', // 'all', 'product', 'partner'
+  selectedCategoryId: null,
+  categories: {
+    allMarketplaceCount: 0,
+    allProductCount: 0,
+    allPartnerCount: 0,
+    partnerCategories: [],
+    productCategories: [],
+    expanded: ['all', 'product', 'partner']
+  },
+  currentPage: 1,
+  pageSize: 10,
+  searchResultsCount: 10,
+  sortByField: '',
+  sortDirection: '',
+
+}</pre>
+
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+    <p>1.01 - small bug fix</p>
+    <p>1.1 - changes the way the categories search tree works</p>
+    <p>2.0 - new structure to match ISGRedux v. 3.0</p>
+		<p>2.2 - Adding Actions for PartnerList</p>
+		<p>2.3 - Adding Actions for Apply to Draft Select</p>
+
+    <!-- CHANGELOG -->
+
+  </aura:description>
+</aura:documentation>

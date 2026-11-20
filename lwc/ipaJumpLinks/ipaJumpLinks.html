@@ -1,0 +1,16 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:false={isMobileScreen}>
+        <nav aria-label={navAriaLabel}>
+            <template iterator:it={jumplinks}>
+                    <h3 key={it.value.label}>
+                        <button class={it.value.classList} onclick={handleClick} data-id={it.index}>
+                            <p class="slds-p-vertical_xx-small padding-top-link padding-bottom-link">
+                                {it.value.label}
+                            </p>
+                        </button>
+                    </h3>
+            </template>
+        </nav>
+    </template>
+</template>

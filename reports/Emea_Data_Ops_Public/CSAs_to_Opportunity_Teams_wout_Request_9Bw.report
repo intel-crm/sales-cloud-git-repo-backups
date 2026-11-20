@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_42835502</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Opportunity.Core_Opportunity_Count__c</column>
+        </chartSummaries>
+        <chartType>HorizontalBarGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OWNER_FULL_NAME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>OpportunityTeamMember.Core_Date_Added__c</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Description_of_Contribution__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Team_Member_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_Opportunity_Support__c.Core_CSA_RecordType</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>Core_Opportunity_Support__c</relatedTable>
+        <relatedTableJoinColumn>Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    OWNER_MANAGER=&quot;Maurits Tichelman&quot;,
+    OWNER_MANAGER=&quot;Torsten Kahrmann&quot;,
+    OWNER_MANAGER=&quot;Tal Elgar&quot;,
+    OWNER_MANAGER=&quot;Simon Wilyman&quot;,
+    OWNER_MANAGER=&quot;Elizabeth Collett&quot;,
+    OWNER_MANAGER=&quot;Richard Peel&quot;,
+    OWNER_MANAGER=&quot;Patricia Pozuelo Real&quot;,
+    OWNER_MANAGER=&quot;Georgios Kardaras&quot;,
+    OWNER_MANAGER=&quot;Norberto Carrascal&quot;,
+    OWNER_MANAGER=&quot;Jost Henning Eid&quot;,
+    OWNER_MANAGER=&quot;Christine Harrison&quot;,
+    OWNER_MANAGER=&quot;Paolo Righi&quot;,
+    OWNER_MANAGER=&quot;Tatiana Mingazova&quot;),
+    &quot;Partners&quot;, 
+IF(OR(
+    OWNER_MANAGER=&quot;Sonja Pierer&quot;,
+    OWNER_MANAGER=&quot;Stephanie Loock&quot;,
+    OWNER_MANAGER=&quot;Simon Windsor&quot;,
+    OWNER_MANAGER=&quot;Gosia Dzul&quot;,
+    OWNER_MANAGER=&quot;Katarzyna Bielak&quot;,
+    OWNER_MANAGER=&quot;GALIN DIMOV&quot;,
+    OWNER_MANAGER=&quot;Edwin Peters&quot;,
+    OWNER_MANAGER=&quot;Kareem Eletreby&quot;),
+    &quot;Digital Sales&quot;,
+IF(OR(
+    OWNER_MANAGER=&quot;Javier Galiana&quot;,
+    OWNER_MANAGER=&quot;Stephanie GOHIER&quot;,
+    OWNER_MANAGER=&quot;Jesus Sanchez Paniagua&quot;),
+    &quot;Consumer&quot;,
+IF(OR(
+    OWNER_MANAGER=&quot;Steve Shakespeare&quot;,
+    OWNER_MANAGER=&quot;Ivana Jordanova&quot;,
+    OWNER_MANAGER=&quot;Andreas Timm&quot;,
+    OWNER_MANAGER=&quot;Dieter Hoffend&quot;,
+    OWNER_MANAGER=&quot;ERWAN MONTAUX&quot;,
+    OWNER_MANAGER=&quot;Iain Beckingham&quot;,
+    OWNER_MANAGER=&quot;Sven Beckmann&quot;),
+    &quot;EPS&quot;, &quot;Other&quot;))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Check Justin&apos;s dashboard for CSA&apos;s by name filter updates
+https://intel.lightning.force.com/lightning/r/Dashboard/01Z3b000001fMyPEAU/view?queryScope=userFolders</description>
+    <filter>
+        <booleanFilter>(1 AND 2 AND 3 AND (4 OR 5) AND 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityTeamMember.Core_Date_Added__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>6/20/2023 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Steve Stavros Stavropoulos,Marcelo Bertolami,Rafael Escalante Alfonso,Sarah Musick,Keith Sundberg,Gopal Kandhasamy,Brian Caddell,Kiran Agrahara,Vijay Bandari,Nishikant Singh,Vivek Kulkarni,Miguel Soto Cortes,David Rhoades,Antonino Albarran,Volga Simsek,Bhavani Salunkhe,Vsevolod Semouchin,Marcel Brueckner,Ali Can Yurtseven,Marco Righini,Pedro Benito Mendoza,Swapnil Shah,Xiaojun Zhang,Feng Gao,Jimin Cai,Qingfeng Zhang,Marty Liang,Lianghou Xu,Emily Zhou,Tong Chen,Xingxian Luo,Yuan Xu,Xiaobao Gu,Myles Hu,Taka Matsuda,Mousumi Dash,Prabhas Harlapur,Beny Ibrani,Jackie Lee,Naoyuki Mori</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Hosted Sales Group,EMEA Partner Led,EMEA Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityTeamMember.Core_Team_Member_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityTeamMember.Core_Date_Added__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER_MANAGER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER_FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>OpportunityTeamMember.Core_Date_Added__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CSAs to Opportunity Teams w/out Request</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

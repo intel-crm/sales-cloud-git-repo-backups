@@ -1,0 +1,79 @@
+<aura:component
+    extends="c:MarketplaceRedux"
+    implements="forceCommunity:availableForAllPageTypes"
+    description="Mutil Level contextual filter Modal, that appears on desktop only"
+>
+    <aura:set attribute="storeName" value="Settings" />
+
+    <aura:attribute name="headerTitle" type="string" default="Missing title" description="Label for the modal header" />
+    <aura:attribute name="filterId" type="string" default="" description="Filter ID for contextual filter" />
+    <aura:attribute name="initialState" type="object[]" default="" description="initial state of hierarchy" />
+    <aura:attribute name="initialSelectedList" type="string[]" default="" description="initial state of selected subfilters" />
+    <aura:attribute name="onclose" type="object" default="" description="On close Callback" />
+
+    <!-- Above attributes are passed in, below are internal -->
+    <aura:attribute name="checkboxes" type="object[]" default="" description="Internal" />
+    <aura:attribute name="selectedListSet" type="object" default="" description="Internal" />
+    <aura:attribute name="onchangelwc" type="object" default="" description="Internal" />
+    <aura:attribute name="onchange" type="object" default="" description="Internal" />
+    <aura:attribute name="isMobile" type="boolean" default="" description="Internal" />
+    <aura:attribute name="_parentSelectedList" type="string[]" default="" description="initial state of parent subfilters to be merged on apply" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div>
+        <aura:if isTrue="{!!v.isMobile}">
+            <div class="modalTitle marquee">
+                <h3 class="color-white">{!v.headerTitle}</h3>
+                <a class="close" href="#" aria-label="{!$Label.c.Core_PMP_Close}" onclick="{!c.handleCancel}">
+                    <lightning:icon class="icn" iconName="utility:close" size="medium" />
+                </a>
+            </div>
+        </aura:if>
+        <div class="modalBody" aura:id="modalBody">
+            <!--<aura:if isTrue="{!!empty(v.checkboxes)}">-->
+            <aura:if isTrue="{!v.checkboxes.length > 0}">
+                <c:psMpDynamicFormCheckboxTree	
+                                               updateFormCallback="{!v.onchangelwc}"	
+                                               label=""	
+                                               options="{!v.checkboxes}"	
+                                               interactionType="recursiveselect"	
+                                               accordionType="collapsible"	
+                                               valueType="default"	
+                                               collapsible="true"	
+                                               clearFilters="true"	
+                                               theme="{! !v.isMobile ? 'light': 'dark'}"	
+                                               ></c:psMpDynamicFormCheckboxTree>
+                <!--<c:MarketplaceFormCheckboxMultilevel
+                    aura:id="options"
+                    updateFormCallback="{!v.onchange}"
+                    options="{!v.checkboxes}"
+                    interactionType="recursiveselect"
+                    accordionType="search"
+                    valueType="default"
+                    collapsible="true"
+                    clearFilters="true"
+                    theme="filter"
+                />-->
+            </aura:if>
+        </div>
+        <div class="modalFooter">
+            <lightning:layout multipleRows="true" horizontalAlign="end">
+                <lightning:layoutItem size="6" largeDeviceSize="2">
+                    <span onclick="{!c.handleCancel}">
+                        <c:IntelButton class="gray slds-m-left_medium">
+                            {!$Label.c.Core_PMP_Cancel}
+                        </c:IntelButton>
+                    </span>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="6"  largeDeviceSize="2">
+                    <span onclick="{!c.handleApply}">
+                        <c:IntelButton class="slds-m-right_medium">
+                            {!$Label.c.PMP_Apply}
+                        </c:IntelButton>
+                    </span>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Offering Specification</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Offering Specifications</value>
+    </caseValues>
+    <fields>
+        <help><!-- Ancestor Specification Id --></help>
+        <label><!-- Ancestor Specification Id --></label>
+        <name>PMP_Ancestor_Specification_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Boolean Indicator --></label>
+        <name>PMP_Boolean_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Display Type --></help>
+        <label><!-- Display Type --></label>
+        <name>PMP_Display_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Pre Release Item --></label>
+        <name>PMP_Is_Pre_Release_Item_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Combination of translation spec name seperated by &apos;|&apos; Symbol --></help>
+        <label><!-- Localized Specification Name --></label>
+        <name>PMP_Localized_Specification_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Combination of translation spec value name seperated by &apos;|&apos; Symbol --></help>
+        <label><!-- Localized Specification Value Name --></label>
+        <name>PMP_Localized_Specification_Value_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering --></label>
+        <name>PMP_Offering_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Specifications --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Specification Id --></help>
+        <label><!-- Specification PIM Id --></label>
+        <name>PMP_Product_Specification_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lookup to Specification --></help>
+        <label><!-- Specification --></label>
+        <name>PMP_Specification_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Specifications --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Specification Name --></help>
+        <label><!-- Specification Name --></label>
+        <name>PMP_Specification_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specification Value --></help>
+        <label><!-- Specification Value --></label>
+        <name>PMP_Specification_Value_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Value Chinese --></label>
+        <name>PMP_Specification_Value_Chinese_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Value --></label>
+        <name>PMP_Specification_Value_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Specifications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Specification Value Image URL --></label>
+        <name>PMP_Specification_Value_Image_URL_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Value Japanese --></label>
+        <name>PMP_Specification_Value_Japanese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specification Value Id --></help>
+        <label><!-- Specification Value PIM Id --></label>
+        <name>PMP_Specification_Value_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Value PIM Id --></label>
+        <name>PMP_Specification_Value_PIM_Id_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Value Product URL --></label>
+        <name>PMP_Specification_Value_Product_URL_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

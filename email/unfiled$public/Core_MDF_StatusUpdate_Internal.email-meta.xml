@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>To Notify Account Managers if activity status changes , Applicable for CCF/DCF/IPA Acc Based</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_StatusUpdate_Internal</name>
+    <style>none</style>
+    <subject>Activity status updated for Outcome-Based Campaign #.</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

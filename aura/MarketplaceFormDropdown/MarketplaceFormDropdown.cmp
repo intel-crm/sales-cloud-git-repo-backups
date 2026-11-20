@@ -1,0 +1,126 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase" >
+
+    <aura:attribute name="options" type="string[]" description="List of option values."/>
+
+
+    <aura:attribute name="isLeadGen" type="Boolean" description="Attrbute to differentiate Dropdown on Lead Gen from others" />
+    <aura:attribute name="label" type="string" description="Attribute corresponds to same on lightning:select."/>
+    <aura:attribute name="placeholder" type="string" default="Choose one..." />
+    <aura:attribute name="hidePlaceholder" type="boolean" default="false" />
+    <aura:attribute name="isPicklist" type="Boolean" default="true" />
+	<aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="_value" type="string" description="Internal"/>
+
+    <aura:attribute name="allowMultipleOptions" type="boolean" default="false" />
+    <aura:attribute name="multiValues" type="string[]" description="Internal" />
+    <aura:attribute name="multipleDropdownOpen" type="boolean" default="false" />
+    <aura:attribute name="readOnly" type="boolean" default="false"/>  <!-- Added by Nikhil to make dropdown option read only in storefront-->
+    <aura:attribute name="solutionOffering" type="boolean" default="false"/>
+    <aura:attribute name="forceShowError" type="boolean" default="false" />
+    <!--<aura:attribute name="isLeadGenFromSetup" type="Boolean" description="Attrbute to differentiate Dropdown on Lead Gen from profile setup from others" />-->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+     <!--Gireesh:US378991: edit offering visibility -->
+    <aura:handler name="change" value="{!v._value}" action="{!c.selectedValuesChange}"/>
+
+    <aura:method
+      name="update"
+      action="{!c.handleUpdate}">
+    </aura:method>
+
+    <aura:if isTrue="{!!v.allowMultipleOptions}">
+      <div onclick="{!c.handleClick}">
+        <lightning:select
+            aura:id="dropdown"
+            class="slds-form-element"
+            disabled="{!v.disabled}"
+            label="{!v.label}"
+            value="{!v._value}"
+            variant="{!v.label ? 'standard' : 'label-hidden'}"
+            required="{!v.required}"
+            messageWhenValueMissing="{!v.errorMessage}"
+            onchange="{!c.handleChange}">
+            <aura:if isTrue="{!or(v.allowMultipleOptions, and(!v.value, !v.hidePlaceholder))}">
+                <option value="">{!v.placeholder}</option>
+            </aura:if>
+            <aura:iteration items="{!v.options}" var="opt" indexVar="i">
+                <option value="{!opt.value}">
+                  {!opt.label}
+                </option>
+            </aura:iteration>
+        </lightning:select>
+      </div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.allowMultipleOptions}">
+      <div class="{!join(' ', 'slds-form-element', v.required ? 'isRequired' : 'isNotRequired')}">
+        <aura:if isTrue="{!v.label}">
+            <label class="slds-form-element__label" for="combobox-id">{!v.label}</label>
+        </aura:if>
+        <div class="slds-form-element__control">
+          <div class="slds-combobox_container">
+            <div class="{!join(' ', 'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click', v.multipleDropdownOpen ? 'slds-is-open' : '', and(v.required, and(v.touched, v.multiValues.length == 0)) ? 'slds-has-error': '')}" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"
+                onclick="{!c.handleToggleMultipleDropdown}">
+                <input type="text"
+                  onblur="{!c.handleCloseMultipleDropdown}"
+                  onkeydown="{!c.handleMultipleDropdownKeydown}"
+                  class="{!'slds-input slds-combobox__input' + (v.multipleDropdownOpen ? ' slds-has-focus' : '')}"
+                  id="combobox-id"
+                  aria-controls="listbox-id-1"
+                  autoComplete="off"
+                  role="textbox"
+                  placeholder="{!v.placeholder}"
+                  readonly="{!v.readOnly}"
+                       disabled="{!v.disabled}"/>
+                <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                  <lightning:icon iconName="utility:down" />
+                </span>
+              </div>
+              <aura:if isTrue="{!or(and(v.required, and(v.touched, v.multiValues.length == 0)), v.forceShowError)}">
+                <div class="errorMessage slds-p-vertical_xxx-small">{!v.errorMessage}</div>
+              </aura:if>
+              <div id="listbox-id" class="{!join(' ', 'slds-dropdown slds-dropdown_length-with-icon-' + v.options.length, 'slds-dropdown_fluid')}" role="listbox">
+                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+
+                  <aura:iteration items="{!v.options}" var="option" indexVar="i">
+                    <li role="presentation" class="slds-listbox__item" data-idx="{!i}" onmousedown="{!c.preventBlur}" onclick="{!c.handleSelectMultipleOption}">
+                      <div id="{!'option' + i}" class="{!join(' ', 'slds-media slds-listbox__option slds-listbox__option_plain slds-media_small', option.highlight ? 'highlight' : '')}" role="option">
+                        <span class="slds-media__figure slds-listbox__option-icon">
+                          <aura:if isTrue="{!option.selected}"><lightning:icon iconName="utility:check" /></aura:if>
+                        </span>
+                        <span class="slds-media__body">
+                          <span class="slds-truncate" title="{!option.label}">
+                             {!option.label}
+                           </span>
+                        </span>
+                      </div>
+                    </li>
+                  </aura:iteration>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <lightning:layout class="slds-p-bottom_small" multipleRows="true">
+          <aura:iteration items="{!v.options}" var="opt">
+            <aura:if isTrue="{!opt.selected}">
+              <lightning:layoutItem class="pillContainer">
+                  <span class="pill slds-p-vertical_xx-small slds-p-horizontal_small">
+                    <span>{!opt.label}</span>
+                    <span class="slds-m-left_medium" data-val="{!opt.value}" onclick="{!c.handleRemovePill}">
+                      <lightning:icon iconName="utility:clear" />
+                    </span>
+                  </span>
+                </lightning:layoutItem>
+            </aura:if>
+          </aura:iteration>
+        </lightning:layout>
+
+      </div>
+
+    </aura:if>
+
+</aura:component>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Bulk_Campaign_Invitation_KOR</name>
+    <style>none</style>
+    <subject>Developer Zone Premier 사용자로서 이제 인텔 파트너 얼라이언스에 가입할 수 있습니다!</subject>
+    <textOnly>Developer Zone Premier 사용자로서 이제 인텔® 파트너 얼라이언스에 가입할 수 있습니다!
+
+Developer Zone Premier의 가치와 더불어 추가 혜택을 누려 보십시오!
+
+인텔® 파트너 얼라이언스 가입하기
+
+이름: {!Contact.FirstName}
+
+성: {!Contact.LastName}
+
+사용자 이름(이메일 주소):  {!Contact.Email}
+
+
+인텔 기밀 리소스와 보안 콘텐츠에 액세스할 수 있는 Developer Zone Premier 자격이 인텔® 파트너 얼라이언스의 혜택으로 제공됩니다. 소중한 Developer Zone Premier 사용자로서 인텔® 파트너 얼라이언스 프로그램에 즉시 가입할 수 있습니다.
+
+귀하의 회사는 이미 인텔® 파트너 얼라이언스의 귀중한 회원입니다. 이미 프로그램에 참여 중인 동료들과 함께 높은 가치의 [독점=&gt; 특별한] 혜택에 액세스할 수 있는 기회입니다. 몇 가지 예는 다음과 같습니다.
+
+인텔® 파트너 유니버시티를 통해 800개가 넘는 세계적 수준의 교육 과정과 30개 이상의 역량 및 인증, 업계 인사이트, 비즈니스 전망 등 중요 지식에 액세스할 수 있습니다.
+해당 인텔제품 구매와 비지니스 구축 활동을 통해 포인트를 적립할 수 있습니다. 비지니스에 가치있는 사용을 위해 포인트를 교환하실 수 있습니다.
+인텔® 기술 기반의 제품 및 솔루션을 구축, 마케팅, 판매하는 데 필요한 리소스를 제공하는 선별된 산업 주제 및 작업 중심의 활성화 존에 액세스할 수 있습니다.
+개인화된 상점을 통해 인텔® Partner Showcase에서 솔루션을 홍보하여 생태계 전반에서 수천 명의 파트너 및 최종 고객과 연결할 수 있습니다.
+
+지금 담당자로 가입하면 귀사에 100포인트*가 적립되며, 인텔® 파트너 얼라이언스와 Developer Zone Premier가 제공하는 모든 것을 경험할 수 있습니다.
+
+빠르고 쉬운 다음 단계를 따르십시오.
+
+지금 가입을 클릭하고 프롬프트**를 따라 본인을 회사 계정에 연결합니다.
+확인 절차가 완료되면 인텔® 파트너 얼라이언스에 로그인하라는 이메일을 받게 됩니다.
+
+프로그램이 제공하는 모든 혜택을 알아보고 지금 인텔® 파트너 얼라이언스에 가입하십시오.
+
+지금 가입
+
+
+가입하여 파트너가 되는 데 도움이 필요하십니까? 지원팀에 문의하십시오.
+
+
+*요건을 충족하는 경우 제공되는 포인트입니다. 자격 요구 사항을 참조하십시오.
+
+*Azure 다중 인증(MFA) 도움말
+
+LinkedIn에서 인텔® 파트너 얼라이언스 그룹에 가입하십시오.
+
+© 2024 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보처리방침 &amp;verbar; 쿠키 &amp;verbar; *상표 &amp;verbar; 수신 거부</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

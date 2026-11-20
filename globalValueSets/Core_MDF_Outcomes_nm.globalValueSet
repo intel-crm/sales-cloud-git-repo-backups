@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Revenue - Billings</fullName>
+        <default>false</default>
+        <label>Revenue - Billings</label>
+    </customValue>
+    <customValue>
+        <fullName>Revenue - Pipelines/Opportunities</fullName>
+        <default>false</default>
+        <label>Revenue - Pipelines/Opportunities</label>
+    </customValue>
+    <customValue>
+        <fullName>Revenue - Deal Wins</fullName>
+        <default>false</default>
+        <label>Revenue - Deal Wins</label>
+    </customValue>
+    <customValue>
+        <fullName>Revenue - Consumption / ARR</fullName>
+        <default>false</default>
+        <label>Revenue - Consumption / ARR</label>
+    </customValue>
+    <customValue>
+        <fullName>Volume - Units</fullName>
+        <default>false</default>
+        <label>Volume - Units</label>
+    </customValue>
+    <customValue>
+        <fullName>Volume - Leads</fullName>
+        <default>false</default>
+        <label>Volume - Leads</label>
+    </customValue>
+    <customValue>
+        <fullName>Volume - Pipeline/Opportunities</fullName>
+        <default>false</default>
+        <label>Volume - Pipeline/Opportunities</label>
+    </customValue>
+    <customValue>
+        <fullName>Volume - Deal Wins</fullName>
+        <default>false</default>
+        <label>Volume - Deal Wins</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Design Wins</fullName>
+        <default>false</default>
+        <label>Design Wins</label>
+    </customValue>
+    <customValue>
+        <fullName>Brand Awareness</fullName>
+        <default>false</default>
+        <label>Brand Awareness</label>
+    </customValue>
+    <customValue>
+        <fullName>Consideration</fullName>
+        <default>false</default>
+        <label>Consideration</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase Intent</fullName>
+        <default>false</default>
+        <label>Purchase Intent</label>
+    </customValue>
+    <customValue>
+        <fullName>Preference</fullName>
+        <default>false</default>
+        <label>Preference</label>
+    </customValue>
+    <customValue>
+        <fullName>Share of Voice</fullName>
+        <default>false</default>
+        <label>Share of Voice</label>
+    </customValue>
+    <masterLabel>Outcomes</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

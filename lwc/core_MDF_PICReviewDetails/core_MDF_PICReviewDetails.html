@@ -1,0 +1,85 @@
+<!-- PIC Review Details Screen in LWC -->
+<template>
+    <div class="slds-card">
+        <!-- Spinner Container -->
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text={label.loadingLabel}></lightning-spinner>
+        </template>
+        <!--/ Spinner Container -->
+        <template if:true={displayPICReviewContainer}>
+            <!-- Page Header -->
+            <div class="slds-grid slds-page-header">
+                <header class="slds-media slds-media--center">
+                    <!-- Page Icon -->
+                    <div class="slds-var-m-right_medium">
+                        <lightning-icon size="small" icon-name="standard:partner_fund_claim"></lightning-icon>
+                    </div>
+                    <!--/ Page Icon -->
+                    <!-- Page Header Name -->
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <!-- Roshan - Final Outcome Based New Status -->
+                            <span title="PIC Reviews" class="slds-truncate slds-m-right--xx-small">{picReviewHeaderLabel}</span>
+                            <template if:true={displayPICReviewAccordion}>
+                                <span class="slds-shrink-none slds-m-right--xx-small">({countOfPICReview})</span>
+                            </template>
+                        </h2>
+                    </div>
+                    <!--/ Page Header Name -->
+                </header>
+            </div>
+            <!--/ Page Header -->
+            <!-- Error Container -->
+            <template if:true={displayError}>
+                <div class="picreview-error">
+                    {label.applicationError}
+                </div>
+            </template>
+            <!--/ Error Container -->
+            <template if:false={displayError}>
+                <template if:true={displayPICReviewAccordion}>
+                    <!-- Accordion to display PIC Review Cycles -->
+                    <lightning-accordion allow-multiple-sections-open>
+                        <template for:each={picReviewResultDetailsData} for:item="PICReviewRecord">
+                            <lightning-accordion-section label={PICReviewRecord.picReviewLabel}
+                                key={PICReviewRecord.picReviewId} for:index="AccIndex" class={PICReviewRecord.disableClickOfAccordionCSS}>
+                                <div slot="actions">
+                                    <div class="slds-grid slds-m-left_medium">
+                                        <template if:true={isCCRMUserOrPICReviewer}>
+                                            <span class=" slds-var-m-right_xx-small picreview-grid">
+                                                <span class="picreview-bold">{label.picReviewedby}</span>
+                                                <span class="picreview-reviewedbytextwrap">{PICReviewRecord.picReviewedBy}</span>
+                                            </span>
+                                        </template>
+                                        <span class="slds-var-m-right_xx-small picreview-grid"><span
+                                                class="picreview-bold">{label.reviewDate}
+                                            </span>
+                                            {PICReviewRecord.picReviewedDate}</span>
+                                        <span class="picreview-status-grid margin-right">
+                                            <span class="picreview-bold">{label.picStatus} </span>
+                                            <span class={PICReviewRecord.picCSS}>{PICReviewRecord.picReviewStatus}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- List box to display Issues & Files Affected list-->
+                                <template if:false={PICReviewRecord.isPICCompleted}>
+                                    <lightning-datatable key-field="id" data={PICReviewRecord.picReviewResults}
+                                    columns={picReviewColumns} hide-checkbox-column="true">
+                                    </lightning-datatable>
+                                </template>
+                                <template if:true={PICReviewRecord.hasInternalComments}>
+                                    <br><div class="picreview-textwrap"><b>{label.internalComments} </b>{PICReviewRecord.internalComments}</div>
+                                </template>
+                                <!--/ List box to display Issues & Files Affected list-->
+                            </lightning-accordion-section>
+                        </template>
+                    </lightning-accordion>
+                    <!--/ Accordion to display PIC Review Cycles -->
+                </template>
+            </template>
+        </template>
+
+    </div>
+
+</template>
+<!--/ PIC Review Details Screen in LWC -->

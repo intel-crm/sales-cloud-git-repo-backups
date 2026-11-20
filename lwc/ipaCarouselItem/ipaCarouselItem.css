@@ -1,0 +1,6 @@
+.carousel-item {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+}

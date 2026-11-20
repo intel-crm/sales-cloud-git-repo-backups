@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Claudia Vassallo</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11030042_Ian_Freitas</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_12188686_Claudia_Vassallo</parentRole>
+</Role>

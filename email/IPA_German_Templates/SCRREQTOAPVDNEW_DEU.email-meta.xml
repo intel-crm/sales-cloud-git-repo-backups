@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_DEU</name>
+    <style>none</style>
+    <subject>Wichtig: Aktivieren Sie Ihren Zugang zum Partnerprogramm innerhalb von 45 Tagen</subject>
+    <textOnly>Herzlichen Glückwunsch, Ihre Mitgliedschaftsanfrage wurde genehmigt und verarbeitet!
+
+
+Willkommen im Programm der Intel® Partner Alliance
+
+Wir freuen uns, Sie in einem einheitlich organisierten Technologieumfeld begrüßen zu dürfen, das Partnern den Zugang zum vernetzten Intel-Ökosystem ermöglicht, um innovative Lösungen, die geschäftliche Ergebnisse liefern und das Wachstum fördern, schneller zu realisieren.
+
+Melden Sie sich bitte innerhalb von 45 Tagen nach Erhalt dieser E-Mail an, um einen ununterbrochenen Zugriff auf Ihren Account sicherzustellen. Durch das Anmelden bleibt Ihr Profil aktiv und an Ihr Unternehmen gekoppelt.
+
+Die auf Ihr Unternehmen zugeschnittenen Leistungen bieten folgende Vorteile:
+
+Förderung neuer Geschäftsmöglichkeiten mit den neuesten Tools, Schulungen und Ressourcen
+Sammeln und Einlösen von Prämienpunkten für qualifizierte Käufe und Aktivitäten
+Beschleunigter Marketing- und Verkaufserfolg mit Market Development Funds
+Lernen, Prototypen entwickeln und Testen von Workloads mit der neuesten Intel® Software
+Kenntnisse erweitern mit erstklassigen Schulungen der Intel® Partner University
+Entwickeln innovativer Produkte mithilfe von NDA-Inhalten, Roadmaps und Entwicklertools
+Werbekampagnen schnell starten mit Co-Marketing-Material im Intel® Marketing Studio
+Mit Ihrer Partner-Präsenz im Intel® Partner Showcase qualifizierte Leads gewinnen
+
+Einloggen und loslegen
+
+Klicken Sie bitte  hier, wenn Sie Hilfe beim Log-in-Prozess von Intel benötigen.
+
+
+
+Viele Grüße,
+Ihr Intel® Partner Alliance Team
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+Datenschutz&amp;verbar;Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

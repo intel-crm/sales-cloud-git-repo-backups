@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_OpptyTeamAccess_Rejection</name>
+    <style>none</style>
+    <subject>Opportunity Team Request has been Rejected</subject>
+    <textOnly>Hi {!Core_Oppty_Team_Access__c.OwnerFirstName},
+
+{!Core_Oppty_Team_Access__c.User__c} has rejected your request for the following item.
+{!Core_Oppty_Team_Access__c.Link}
+
+Thank you!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

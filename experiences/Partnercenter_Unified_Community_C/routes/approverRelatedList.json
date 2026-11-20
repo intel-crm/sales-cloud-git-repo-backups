@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "8089cac6-cfe0-4aa1-889a-b34f7d7ea839",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Approver_Related_List__c",
+  "id" : "e7967296-236e-4a73-b438-9b055a6292af",
+  "label" : "Approver Related List",
+  "objectApiName" : "Core_MDF_Approver__c",
+  "routeType" : "relatedlist-a3f",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-approver"
+}

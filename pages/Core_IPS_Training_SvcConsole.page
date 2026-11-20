@@ -1,0 +1,12 @@
+<apex:page showHeader="false" controller="Core_IPS_TrainingListContr_SvcConsole">
+    <apex:repeat value="{!topicList}" var="topic">
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!topicList[topic]}" var="trng">
+                <apex:column >
+                    <a href="{!trng.Training_Link__c}" target="_blank">{!trng.Training_Topic__c}</a>
+                    
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:repeat>    
+</apex:page>

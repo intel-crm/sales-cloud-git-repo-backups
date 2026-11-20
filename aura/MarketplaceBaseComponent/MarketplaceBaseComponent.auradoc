@@ -1,0 +1,34 @@
+<aura:documentation>
+	<aura:description>
+    <p>ISG Base Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/22/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>This is the base component for ISG Lightning Components.</p>
+    <p>It extends <code>c:ISGRedux</code>, giving its subcomponents access to Redux attributes and the dispatch function.</p>
+    <p>State attributes:</p>
+<pre>
+  v.appState
+  v.state (if v.storeName is set -- see c:ISGRedux docs for more)
+</pre>
+    <br/>
+    <p>Redux Dispatch function:</p>
+<pre>helper.dispatch(component, 'reduxAction', params).then(...)</pre>
+
+    <hr/>
+    <p>It also has its own utility helper functions for subcomponents to use.</p>
+    <br/>
+    <p><code>callServer</code> Helper Function:</p>
+<pre>helper.callServer(component, 'auraMethodName', params, returnSFObject).then(...)</pre>
+    <p>NOTE: Subcomponent must have an APEX controller set on the component to use this method.</p>
+
+    <br/>
+    <hr/>
+    <p>CHANGELOG</p>
+
+  </aura:description>
+</aura:documentation>

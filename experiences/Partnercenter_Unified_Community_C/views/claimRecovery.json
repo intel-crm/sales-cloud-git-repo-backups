@@ -1,0 +1,68 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "9e3f7fd3-6dd9-4b43-87e2-5d0904c3b015",
+  "label" : "Claim Recovery",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "c9e99dcf-77aa-494e-b34e-34723da81779",
+          "columns" : [ {
+            "UUID" : "370ffb75-c390-41fd-a10d-06f8c5ef1d4e",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "c9e99dcf-77aa-494e-b34e-34723da81779",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:core_MDF_RecoveryLayout",
+          "id" : "ea6d891d-cf46-44a9-905e-3d3385df498a",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "370ffb75-c390-41fd-a10d-06f8c5ef1d4e",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "59c7362d-29f4-468f-81ea-d5f85fa40105",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Claim Recovery"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "72f8eb7a-2931-4490-b58a-b5db887b9950",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dc447c99-ec92-4d5f-91a2-17042cf0e614",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-claim-recovery"
+}

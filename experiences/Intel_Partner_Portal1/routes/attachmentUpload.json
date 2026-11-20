@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "745627e6-764e-48af-8ca5-91b9099bcc64",
+  "appPageId" : "5a305cf4-135f-47a4-84a6-71d8c5d04ae1",
+  "configurationTags" : [ ],
+  "devName" : "Attachment_Upload__c",
+  "id" : "f12a0a8b-e6cc-4379-8f80-af8de0fcae8e",
+  "label" : "Attachment Upload",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-attachment-upload",
+  "type" : "route",
+  "urlPrefix" : "attachment-upload"
+}

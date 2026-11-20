@@ -1,0 +1,47 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "50744213-b298-4630-846e-9c5c9e72156b",
+  "label" : "Claim Batch List",
+  "regions" : [ {
+    "id" : "d558e74f-9e46-4316-8c2e-10d4518774ce",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_BulkClaim",
+      "id" : "b32c4c4e-f184-47ce-8b2a-fa190eae5ec9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showDisplay" : "showall",
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "33c2ba53-38a1-448e-9762-abe481c34fae",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d4bfe620-e8f9-41a5-9bb0-36316e732acd",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "cf45f16e-c765-497c-b6a6-658847aac786",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a4O"
+}

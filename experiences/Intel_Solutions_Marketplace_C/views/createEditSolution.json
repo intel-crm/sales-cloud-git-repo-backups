@@ -1,0 +1,132 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceSolutionsLayout",
+  "dataProviders" : [ ],
+  "id" : "11bc17af-22b9-421c-a190-06f82aaf0c60",
+  "label" : "Create Edit Solution",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"SolutionCreateEdit\",\"title\":\"Submit a Solution\"}",
+        "backgroundVariant" : "blue-steel-solid",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : true,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Submit a Solution"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "e69bd510-dbdd-470d-8bec-b5fff124121f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "25af31af-f649-4a8c-812f-5b32f9ddbe0f",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "d8760ac6-31a8-496c-a5b6-081961eb5bf9",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "ea583696-bd36-447b-82e7-b6bac8bb0225",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "1e87492b-720c-4958-8983-c47cc89c5467",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "87a453b2-0625-4595-809e-9a88c6e15f98",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "69e713ba-9ab2-4b92-b0f0-dfc606742e0a",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "f76accff-f230-4721-8420-6e315a5815d3",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "d65dc226-5aea-4101-93bd-06a7607c00a3",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "2144cd61-1731-43d8-86c8-089ba7ee6195",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "bb6ac23f-4470-4686-bc95-672c3f78a698",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "398f533f-c2fd-4878-b851-83ea7cbf3779",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "8bce2696-a166-4947-ac93-14cde9ff62e5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5ff28207-61aa-4539-b2b1-a459c1572679",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "c1ea48fc-5e60-4eb3-918b-9eb7c0fda0fa",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Submit a Solution\"/> \n<meta name=\"keywords\" content=\"sf,mp,submit a solution\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"SolutionCreateEdit\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "",
+        "title" : "Submit a Solution - - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "51dfbe2e-aa7e-4ad5-96d5-952576f929be",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "75273571-44db-4e01-b93b-338aeed9402f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "c4859bed-53d7-44b6-be8d-f79b23e52f26",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a4ee38f4-ae9f-4c64-b6db-d6b604d5a182",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-create-edit-solution"
+}

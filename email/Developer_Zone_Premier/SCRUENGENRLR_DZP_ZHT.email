@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Intel 註冊確認：開發者專區 Premier 帳戶</title>
+		<meta charset="utf-8">
+	</head>
+
+
+		<body style="-webkit-text-size-adjust: none;background-color: #f9f9f9;background: url(https://tstcqcontent-ssl.cps.intel.com/etc/designs/intel/us/en/images/gradiantbg-body.png) repeat-x scroll left top #f9f9f9;height: 100%;outline: medium none;font-family: &quot;Intel Clear&quot;, Verdana, Helvetica, sans-serif;font-weight: normal;font-size: 10pt;color: #666666;">
+			<div id="container" style="width: 600px;margin-top: 10px;margin-right: auto;margin-bottom: 10px;margin-left: auto;position: relative;background-color: #FFFFFF;border-color: #E5E5E5;border-style: solid;padding: 25px 50px 0px 50px;border-width: 1px;overflow: hidden;line-height: 1.5em;">
+				<header style="display: block;font-family: &quot;Intel Clear Pro&quot;, Verdana, Helvetica, sans-serif;font-weight: normal;font-size: 1.1em;color: #003C71;line-height: 2em;">
+					<h1><img src="https://messagecenter-cons.intel.com/v1/images/uploads/5104bda0-0fc2-11ec-901e-3750230d5760.png" alt="" title="devzone-premier-header_720x160@2x.png" width="700" height="156"></h1>
+						<hr style="background-color: #E5E5E5;color: #E5E5E5;border: 0 none;height: 1px;"><span style="font-family: 'intel clear', sans-serif;"/></header>
+						<main style="display: block;">
+						</main>
+						<p class="subjectTextStyle" style="font-size: 1.2em;font-weight: bold;color: #086DB6;line-height: 1.4em;"><span face="intel clear, sans-serif" style="font-family: 'intel clear', sans-serif; font-size: 18pt;">您的申請待核准</span></p>
+						<p>
+							<br><span style="font-family: 'intel clear', sans-serif;">歡迎 {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c}，</span></p>
+							<p><span>感謝您要求建立開發者專區高級帳戶。如果您尚未與 Intel 簽訂企業保密協議（CNDA），審核申請最多可能需要 10 個工作天。您會在三個工作天內收到狀態更新。</span></p>
+							<p><span>申請等待期間，您可以透過以下方式與開發者專區互動：</span></p>
+
+							<ol>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">利用您的開發者專區標準存取權探索<a href="https://www.intel.com/content/www/us/en/resources-documentation/developer.html#gs.4qikvp" class="external-link" rel="nofollow" style="color: #086DB6;">資源和說明文件中心</a>的內容。</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">向我們的社群論壇發布問題或評論：<a href="https://communities.intel.com/" class="external-link" rel="nofollow" style="color: #086DB6;">communities.intel.com</a></li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">將感興趣的內容加上書籤並追蹤。存取<a href="https://www.intel.com/content/www/us/en/secure/my-intel/content.html/" class="external-link" rel="nofollow" style="color: #086DB6;">我的 Intel 中的書籤清單</a>。</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">開發軟體下載。</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">使用 License and Entitlement Manager 管理您的 Intel&reg; 軟體授權與註冊。</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">存取開發者可共享專案的協作平台：Intel&reg; DevMesh</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">參加競賽。</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">註冊活動：<a href="https://www.intel.com/content/www/us/en/developer/community/overview.html" class="external-link" rel="nofollow" style="color: #086DB6;">開發者社群與活動</a></li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">存取效能測試應用程式。</li>
+								<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">在 <a href="https://learning.intel.com/developer/learn" class="external-link" rel="nofollow" style="color: #086DB6;">Intel Learn</a> 存取開發者訓練。</li>
+							</ol>
+							<p><span style="font-family: 'intel clear', sans-serif;">請保留這封電子郵件以供未來參考，而且請注意，高級存取權僅與 {!PRM_Registration_Request__c.PRM_Email_ID__c} 這個電子郵件地址相關聯。</span></p>
+							<p><span style="font-family: 'intel clear', sans-serif;">如果您有任何問題，請聯絡 <a href="https://www.intel.com/content/www/us/en/support/contact-intel.html#support-intel-programs" class="external-link" rel="nofollow" style="color: #086DB6;">Intel&reg; 客戶支援</a>。</span></p>
+							<tr id="salutationDiv" style="padding-bottom: 5px; height: 52px;">
+								<td colspan="2" style="font-family: 'Intel Clear', TAHOMA; font-size: 10pt; color: #666666; padding-left: 50px; padding-top: 14px; line-height: 18px; height: 52px;">敬祝順心如意<br>開發者專區註冊管理員</td>
+								</tr>
+								<main style="display: block;">
+								</main>
+								<p><span style="font-family: 'intel clear', sans-serif;">請勿回覆此電子郵件訊息。此郵件為系統自動傳送。為確保您可以繼續收到我們的電子郵件，請將我們加進您的通訊錄。</span></p>
+
+								<section style="display: block;font-size: 0.8em;font-style: italic;color: black;line-height: 1.4em;">
+								</section>
+								<p style="text-align: right;"/>
+
+								<hr style="background-color: #E5E5E5;color: #E5E5E5;border: 0 none;height: 1px;">
+									<footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"><img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png" alt="Intel 圖誌" height="42" width="64" style="float: right;padding: 4px 0px 0px 50px;">Intel 承諾保護您的隱私權。如需更多資訊，請參閱<span></span> <a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" style="color: #086DB6;text-decoration: none;">Intel 隱私權聲明</a>。<span></span><a href="https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html" style="color: #086DB6;text-decoration: none;">Intel Cookie 注意事項</a>。</span><br>
+												<br><span style="font-family: 'intel clear', sans-serif;"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" style="color: #086DB6;text-decoration: none;">法律資訊</a> <span></span>&verbar;<span></span> <a href="https://www.intel.com/content/www/us/en/legal/trademarks.html" style="color: #086DB6;text-decoration: none;">商標</a> <span></span>&verbar;<span></span> <span style="font-size: 1em;">&copy;<span></span></span>Intel 公司。</span></footer>
+												<footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"/></footer>
+												<footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"/></footer>
+												<footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"/></footer>
+												<footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"/></footer>
+												<footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"/></footer>
+											</div>
+										</body>
+									</html>

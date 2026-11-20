@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Engage with Category Teams with Defined Business Case",
+  "contentBody" : {
+    "description" : "Now that you have key information from your customer on the business problem, desired outcome, and roadblocks, its time to engage the experts.",
+    "sections" : [ {
+      "content" : "<div>The next step is connecting with the experts on who to engage and bring into you team to help you build you customer&#39;s solution on Gaudi. Send an email to below to Megan Gawlik to discuss ecosystem routes to market with Gaudi. Use the below as a guide to send your email and begin the conversation on the best route to solution and eventually POC and deployment. </div><div><br /></div><div>To: Megan Gawlik</div><div>CC: Category Teams engaged after your Gaudi Fit Questionnaire Qualified</div><div>Subject: Gaudi Opportunity with [Customer Name]</div><div><br /></div><div>Information to Include: </div><ul><li>Customer Name </li><li>Customer Business Challenge </li><li>Customer&#39;s solution requirements </li><li>Customer&#39;s preferred OEM if on-prem / hybrid </li><li>Any additional details on the opportunity that are important to understand</li></ul>",
+      "keyConcept" : "Connect with the Category Teams",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1
+  },
+  "urlName" : "engage-with-category-teams-with-defined-business-case"
+}

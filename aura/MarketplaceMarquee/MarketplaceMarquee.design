@@ -1,0 +1,7 @@
+<design:component>
+	<design:attribute name="headingLabel" label="Heading"/>
+	<design:attribute name="textLabel" label="Sub-Heading" />
+	<design:attribute name="showSignIn" label="Show Sign In" />
+	<design:attribute name="type" label="Page Type" datasource="compare,myoffering,editlead" default="compare"/>
+
+</design:component>

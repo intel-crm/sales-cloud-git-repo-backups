@@ -1,0 +1,157 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "10af861a-eab1-45b9-9041-1fbf8a58bb32",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "bannerText" : "The place to create and track quote requests.",
+        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "pageType" : "",
+        "showSubTopics" : true,
+        "title" : "Intel Quote Request",
+        "uniqueNameOrId" : ""
+      },
+      "componentName" : "forceCommunity:headline",
+      "id" : "06dc6b96-f989-4c59-8399-36f72afb954a",
+      "renderPriority" : "HIGHEST",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"font-size: 12px; color: rgb(230, 0, 0);\">Important Note for Altera/PSG Distributors Only : There is a planned system upgrade starting Jul 17-28. During this time, you will be able to view your open transactions but will not be able to create or modify transactions. The new system will be available to you on July 28 and you will receive an email with the new URL and instructions. Our apologies for any inconvenience and thank you for your patience.</strong></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "1f3dd10f-2d42-40ec-a219-082a17fb62ca",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "33d96db2-2dfd-49df-bdda-15989c4937cc",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:psg_quoteRequestButtonCmp",
+      "id" : "65f968f3-0064-4905-8237-89606720f7e1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "00B2D00000374XFUAY",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "SBQQ__Quote__c",
+        "showActionBar" : false,
+        "showChartsPanel" : true,
+        "showDisplay" : "grid",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "874e4cba-b1ee-4ce6-b39e-d54b3862ba5a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "419954d7-9c27-4069-92ad-b81c3639fbc9",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "59388e7c-6399-4694-8f1a-e81ce42f6ae8",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "1017fc65-76a7-488d-81f7-42baa812ee67",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4932863d-68b4-4cbf-8fa8-65289d75837b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8a132ac3-cc77-4d01-8b68-f23cfcec9b8c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "7745a732-031f-45d4-bd22-94c20d773140",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "7bdecf21-0f70-4fbe-94d8-6d115f4e128d",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "8414cb19-3e07-4529-85fa-52f4dd798c2b",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "1f164915-1c70-4930-9f50-0614ee74d1aa",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "f0fb3d42-b6d7-4fab-beb6-f100323e8b4d",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "f478d63e-63a7-430c-bdf9-4ac1923ecd2b",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "29d2334b-ef29-4d54-b485-8ea840452e8f",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "dce644f4-a572-41fb-9eca-7a1483ef0e61",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "dd970fd8-5905-4c59-885b-9213bd5ab5e7",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "4c49fa78-421c-41c9-87a6-d6b64af5e25b",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "6d75b210-55c1-4297-a774-35a885f71db4",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "007f0eae-0115-4594-afaa-c176e6a150b1",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "2fb45b14-a43e-4422-8f45-d1e5af99bade",
+    "regionName" : "navbar",
+    "type" : "region"
+  }, {
+    "id" : "cb844f39-af95-4a91-852c-e35a28d6e4e8",
+    "regionName" : "column1",
+    "type" : "region"
+  }, {
+    "id" : "64679028-e8d6-4e7b-91d7-ecb5f001eb98",
+    "regionName" : "column2",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

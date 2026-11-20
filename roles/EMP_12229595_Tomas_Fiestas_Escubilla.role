@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Santi Garcia Vitores</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_12229595_Tomas_Fiestas_Escubilla</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11529797_Santi_Garcia_Vitores</parentRole>
+</Role>

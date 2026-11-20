@@ -1,0 +1,109 @@
+<aura:component>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="checkbox" type="object" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="topLevel" type="boolean" default="false" />
+    <aura:attribute name="onchange" type="object" />
+    <aura:attribute name="additionalValues" type="Object" />
+    
+    <aura:attribute name="touched" type="Boolean" default="false" description="Internal" />
+    
+    
+    <div class="{!join(' ' , 'childCheckbox', (v.topLevel ? 'topLevel' : ''))}" data-uniqid="{!v.checkbox.uniqId}">
+        
+        <aura:if isTrue="{!v.checkbox.subType == 'text'}">
+            <c:MarketplaceFormInputText
+                                        aura:id="textInput"
+                                        class="{!join(' ', 'checkboxPadding', 'slds-m-vertical_xx-small', v.checkbox.highlight ? 'highlight slds-p-vertical_xx-small' : '', v.checkbox.firstResult ? 'firstResult' : '')}"
+                                        label="{!v.checkbox.label}"
+                                        refId="{!v.checkbox.value}"
+                                        subType="{!v.checkbox.textSubType}"
+                                        value="{!v.checkbox.textValue}"                                   
+                                        disabled="{!v.disabled}"
+                                        valueType="complex"
+                                        updateFormCallback="{!c.handleChange}"
+                                        />
+            
+        </aura:if>
+        
+        <aura:if isTrue="{!v.checkbox.subType == 'radio'}">
+            <c:MarketplaceFormRadio
+                                    aura:id="RadioInput"
+                                    class="{!join(' ', 'checkboxPadding', 'slds-m-vertical_xx-small', v.checkbox.highlight ? 'highlight slds-p-vertical_xx-small' : '', v.checkbox.firstResult ? 'firstResult' : '')}"
+                                    label="{!v.checkbox.label}"
+                                    refId="{!v.checkbox.value}"
+                                    options="{!v.checkbox.radioOptions}"
+                                    value="{!v.checkbox.radioValue}"
+                                    disabled="{!v.disabled}"
+                                    valueType="picklist"                      
+                                    updateFormCallback="{!c.handleChange}" />
+        </aura:if>
+        <aura:if isTrue="{!or(v.checkbox.subType == 'checkbox', !v.checkbox.subType) }">
+            <div class="{!join(' ', 'checkboxPadding', 'slds-m-vertical_xx-small', v.checkbox.highlight ? 'highlight slds-p-vertical_xx-small' : '', v.checkbox.firstResult ? 'firstResult' : '', v.checkbox.prerelease ? 'prerelease': '')}">
+                <lightning:input
+                                 aura:id="checkboxInput"
+                                 name="{!v.checkbox.uniqId}"
+                                 class="{!join(' ', v.checkbox.firstResult ? 'firstResult' : '')}"
+                                 type="checkbox"
+                                 disabled="{!v.disabled}"
+                                 checked="{!v.checkbox.checked}"
+                                 label="{!v.checkbox.label}"
+                                 onchange="{!c.handleChange}" />
+                <aura:if isTrue="{!v.checkbox.prerelease}">
+                    <span class="prereleaseLabel">{!$Label.c.PMP_Create_Offering_Prerelease_Label}</span>
+                </aura:if>
+            </div>
+        </aura:if>
+        
+        <aura:iteration items="{!v.checkbox.children}" var="child">
+            
+            <aura:if isTrue="{!child.subType == 'text'}">
+                <div class="childTextInputPadding">
+                    
+                    <c:MarketplaceFormInputText
+                                                aura:id="childTextInput"
+                                                class="{!join(' ', 'checkboxPadding', child.highlight ? 'textHighlight' : '', child.firstResult ? 'firstResult' : '')}"
+                                                label="{!child.label}" 
+                                                refId="{!child.value}"
+                                                subType="{!child.textSubType}"
+                                                value="{!child.textValue}"
+                                                
+                                                disabled="{!v.disabled}"
+                                                updateFormCallback="{!v.onchange}"
+                                                
+                                                
+                                                />
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{!child.subType == 'radio'}">
+                <div class="childRadioInputPadding">
+                    <c:MarketplaceFormRadio
+                                            aura:id="childRadio"
+                                            class="{!join(' ', 'checkboxPadding', child.highlight ? 'radioHighlight' : '', child.firstResult ? 'firstResult' : '')}"
+                                            label="{!child.label}"
+                                            refId="{!child.value}"
+                                            options="{!child.radioOptions}"
+                                            value="{!child.radioValue}"
+                                            disabled="{!v.disabled}"
+                                            updateFormCallback="{!v.onchange}"
+                                            valueType="picklist"
+                                            
+                                            />
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{!!child.subType}">
+                <c:MarketplaceFormCheckboxChild
+                                                aura:id="checkbox"
+                                                checkbox="{!child}"
+                                                disabled="{!v.disabled}"
+                                                onchange="{!v.onchange}" />
+            </aura:if>
+            
+        </aura:iteration>
+    </div>
+    
+</aura:component>

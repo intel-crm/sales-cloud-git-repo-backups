@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplicationComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buttonText>IPS Training</buttonText>
+    <buttonWidth>200</buttonWidth>
+    <height>300</height>
+    <isHeightFixed>false</isHeightFixed>
+    <isHidden>false</isHidden>
+    <isWidthFixed>false</isWidthFixed>
+    <visualforcePage>Core_IPS_Training_SvcConsole</visualforcePage>
+    <width>300</width>
+</CustomApplicationComponent>

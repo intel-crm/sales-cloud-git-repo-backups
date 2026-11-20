@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Notes__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Status__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <description>UK BNZSA CCG Commercial Fujitsu Leads</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Conversion_Point__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>BNZUK_UK_Fjtsu</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Unclaimed,In Pursuit,Terminated,Converted,Open,Engaged,On Hold,Accepted,Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,New,Accepted,Rejected,Contacted,Qualified,Disqualified,Passed to Partner,Unreachable,Opportunity</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>UK BNZSA CCG Commercial Fujitsu Leads</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2022-02-08</startDate>
+    </timeFrameFilter>
+</Report>

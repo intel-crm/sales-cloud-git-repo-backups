@@ -1,0 +1,52 @@
+<aura:component implements="forceCommunity:layout" access="global" description="Offering List Layout">
+	<!-- IPA2.0 + US TWC4497-1631 -->
+	<!-- <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute> -->
+	<aura:attribute name="marquee" type="Aura.Component[]" />
+	<aura:attribute name="recordList" type="Aura.Component[]" required="false" />
+	<!-- IPA2.0 + US TWC4497-1631 -->
+	<!-- <aura:attribute name="createOfferingButton" type="Aura.Component[]" required="false" /> -->
+	<aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+
+
+	<div>
+		<!-- IPA2.0 + US TWC4497-1631 -->
+		<!-- <div class="manageOfferingBar">
+				{!v.manageOfferingBar}
+		</div> -->
+		<div class="marquee">{!v.marquee}</div>
+<!-- IPA2.0 + US TWC4497-1631 -->
+		<!-- <div class="padding-button slds-text-align_center"> 
+			{!v.createOfferingButton}
+		</div> -->
+
+		<div class="slds-p-horizontal_large">
+			{!v.recordList}
+		</div>
+	</div>
+	<!--  Container class is to avoid full width content (OPTIONAL) -->
+	<div class="bg-blade-odd">
+		<div class="container">
+			{!v.blade1}
+		</div>
+	</div>
+	<div class="bg-blade-even">
+		<div class="container">
+			{!v.blade2}
+		</div>
+	</div>
+	<div class="bg-white">
+		<div class="container">
+			{!v.blade3}
+		</div>
+	</div>
+    
+    <div class="bg-blade-even">
+		<div class="container">
+			{!v.blade4}
+		</div>
+	</div>
+
+</aura:component>

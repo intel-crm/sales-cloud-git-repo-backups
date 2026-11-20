@@ -1,0 +1,65 @@
+<template>
+
+    <span id="backToTop"></span>
+    <a href="#backToTop" class="backToTop" title="Go to Top"><span class="intel-icon fa-carret-up"></span></a>
+
+    <template if:false={isDraft}>
+        <button class="link-text" onclick={handleOpenModal}>{labels.parternAZViewAll}</button>
+    </template>
+
+    <template if:true={isDraft}>
+        <div class="customNode-partners jump-navigation-container">
+            <ul>
+                <template for:each={tagGroup} for:item="tag">
+                    <li key={tag.key}>
+                        <a href={tag.href} class="text-link text-bold" data-target-id={tag.id}>
+                            {tag.label}
+                        </a>
+                    </li>
+                </template>
+            </ul>
+        </div>
+
+        <template for:each={filterListForPartnerAZ} for:item="partnerFilterList">
+            <div class="customNode-partners-container" key={partnerFilterList.key}>
+                <h5 id={partnerFilterList.label}>{partnerFilterList.label}</h5>
+                <hr>
+                <div class="search-filter-node-container">
+                    <template for:each={partnerFilterList.filterList} for:item="filter">
+                        <div class="search-filter-node" key={filter.id} data-count={filter.count}>
+                            <div class="search-filter-node-checkbox-container slds-p-vertical_xx-small">
+                                <label class="search-filter-node-checkbox-container" aria-label={filter.label}>
+                                    <lightning-input type="checkbox"
+                                        data-variant="dark"
+                                        class={checkboxClasses}
+                                        checked={filter.selected}
+                                        value={filter.value}
+                                        onchange={handleFilterChange}>
+                                    </lightning-input>
+                                    <span class="slds-p-left_small">
+                                        {filter.label}&nbsp;({filter.count})
+                                    </span>
+                                </label>
+                            </div>
+                            <template if:true={filter.hasChildren}>
+                                <div class="slds-m-left_small">
+                                    <c-ipa-search-filter-node
+                                        filter={filter}
+                                        role={filter.ariaRole}
+                                        aria-label={filter.label}
+                                        is-draft={isDraft}
+                                        search-params={searchParams}
+                                        search-response-filters={searchResponseFilters}
+                                        onsetrendering={handleSetRendering}
+                                        draft-filters={draftFilters}>
+                                    </c-ipa-search-filter-node>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+    </template>
+</template>

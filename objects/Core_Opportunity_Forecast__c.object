@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_Days_Remains__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+OR( 
+AND(
+Core_Opportunity__r.CloseDate &gt;=  Core_Quarter_Start_Date__c , 
+Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
+),
+ Core_Opportunity__r.CloseDate &gt; Core_Quarter_End_Date__c
+),
+ Core_Quarter_First_Weekend_Date__c - (TODAY()-1) , 0
+)</formula>
+        <inlineHelpText>Days remain to complete first week of Quarter</inlineHelpText>
+        <label>Days Remains</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Forecast_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Forecast Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Forecast_Quarter__c</fullName>
+        <label>Forecast Quarter</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Q1 2024</fullName>
+                    <default>false</default>
+                    <label>Q1 2024</label>
+                </value>
+                <value>
+                    <fullName>Q2 2024</fullName>
+                    <default>false</default>
+                    <label>Q2 2024</label>
+                </value>
+                <value>
+                    <fullName>Q3 2024</fullName>
+                    <default>false</default>
+                    <label>Q3 2024</label>
+                </value>
+                <value>
+                    <fullName>Q4 2024</fullName>
+                    <default>false</default>
+                    <label>Q4 2024</label>
+                </value>
+                <value>
+                    <fullName>Q1 2025</fullName>
+                    <default>false</default>
+                    <label>Q1 2025</label>
+                </value>
+                <value>
+                    <fullName>Q2 2025</fullName>
+                    <default>false</default>
+                    <label>Q2 2025</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Forecast__c</fullName>
+        <label>Forecast</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Commit</fullName>
+                    <default>false</default>
+                    <label>Commit</label>
+                </value>
+                <value>
+                    <fullName>Best Case</fullName>
+                    <default>false</default>
+                    <label>Best Case</label>
+                </value>
+                <value>
+                    <fullName>Low Certainty</fullName>
+                    <default>false</default>
+                    <label>Low Certainty</label>
+                </value>
+                <value>
+                    <fullName>Cancel</fullName>
+                    <default>false</default>
+                    <label>Cancel</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity__c</fullName>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunity Forecasts</relationshipLabel>
+        <relationshipName>Opportunity_Forecasts</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_Quarter_End_Date__c</fullName>
+        <label>Quarter End Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Quarter_First_Weekend_Date__c</fullName>
+        <label>Quarter First Weekend Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Quarter_Start_Date__c</fullName>
+        <label>Quarter Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Read_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Read Only</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Opportunity Forecast</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Forecast_Quarter__c</columns>
+        <columns>Core_Opportunity__c</columns>
+        <columns>Core_Read_Only__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Core_Forecast__c</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Forecast-{0000}</displayFormat>
+        <label>Opportunity Forecast Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Opportunity Forecasts</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_OppForecastNew</fullName>
+        <active>true</active>
+        <label>New</label>
+        <picklistValues>
+            <picklist>Core_Forecast_Quarter__c</picklist>
+            <values>
+                <fullName>Q1 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2024</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Forecast__c</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low Certainty</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_ReadOnly</fullName>
+        <active>true</active>
+        <label>ReadOnly</label>
+        <picklistValues>
+            <picklist>Core_Forecast_Quarter__c</picklist>
+            <values>
+                <fullName>Q1 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2024</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Forecast__c</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low Certainty</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_Opp_Prevent_Cancelled_Forecast_Recs</fullName>
+        <active>true</active>
+        <description>Do not allow creation of forecast records with Cancelled status</description>
+        <errorConditionFormula>ISNEW() &amp;&amp;  ISPICKVAL(Core_Forecast__c , &apos;Cancel&apos;)</errorConditionFormula>
+        <errorMessage>Cancelled Forecast records cannot be created.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

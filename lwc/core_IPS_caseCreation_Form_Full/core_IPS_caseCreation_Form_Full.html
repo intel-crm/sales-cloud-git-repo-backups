@@ -1,0 +1,49 @@
+<template>
+  <div class="divclass">
+    <H1 class="selectpjthead">IPS Case</H1>
+    <div class="slds-m-horizontal_x-large">
+      <div class="slds-progress barSize1">
+        <ol class="slds-progress__list">
+          <li class="slds-progress__item slds-is-completed">
+            <span class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon"
+              title="Complete">
+              <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                
+                <img class="progressbarIcon" src={progressbarImg}   />
+              </div>
+            </span>
+          </li>
+          <li class="slds-progress__item slds-is-active">
+            <div class="slds-progress__marker"></div>
+          </li>
+          <li class="slds-progress__item">
+            <div class="slds-progress__marker"></div>
+          </li>
+        </ol>
+        <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100"
+          aria-valuenow="25" role="progressbar">
+          <span class="slds-progress-bar__value barProgress1"></span>
+        </div>
+      </div>
+      <lightning-layout-item size=8>
+        <div class="progressText slds-grid slds-grid_align-spread">
+          <div class="slds-col firstLabel">
+            Case Details
+          </div>
+          <div class="slds-col middleLabel">
+            <p class="progressActiveText">Check for Answers</p>
+          </div>
+          <div class="slds-col lastLabel">Case Creation</div>
+        </div>
+      </lightning-layout-item>
+    </div>
+    &nbsp; &nbsp;
+  </div>
+  <div style="background: #f7f7f7; padding-left: 70px;">
+    <div>
+     <!-- <c-example-search rdc-user-roles={userGroupRoles} caseinfo={caseinfodata}></c-example-search> -->
+     <c-core_-i-p-s_-search-before-submit_-lex rdc-user-roles={userGroupRoles} caseinfo={caseinfodata}></c-core_-i-p-s_-search-before-submit_-lex>
+    </div>
+  </div>
+
+</template>

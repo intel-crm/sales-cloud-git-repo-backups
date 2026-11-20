@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assetIcon>/analytics/wave/web/proto/images/app/icons/15.png</assetIcon>
+    <folder>Manager_ToolsUsage_Metrics_Snapshot</folder>
+    <masterLabel>Manager ToolsUsage Metrics Snapshot</masterLabel>
+    <templateOrigin>sfdc_internal__SnapshotApp</templateOrigin>
+    <templateVersion>1.0</templateVersion>
+</WaveApplication>

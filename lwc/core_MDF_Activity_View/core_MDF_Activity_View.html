@@ -1,0 +1,76 @@
+<template>
+    <div class="" data-id={rec.Id} id={rec.Id} >
+    <lightning-badge label={rec.Title}>{rec.Title}</lightning-badge>
+                                    <div class="slds-p-left_xx-small">
+                                        <lightning-layout multiple-rows key={rec.Core_MDF_Start_Date_End_Date__c}>
+                                            <div class="slds-grid slds-wrap">
+                                                <div class="slds-col">
+                                                    <lightning-layout-item padding="around-large" size="12"
+                                                        medium-device-size="4">
+                                                        <div
+                                                            class="header-column slds-size_1-of-1 slds-max-small-size_1-of-4">
+                                                            <span class="slds-form-element__label"> {startDate} & {endDate} </span> 
+                                                            <p class="field-label"> {rec.Core_MDF_Start_Date__c} -
+                                                                {rec.Core_MDF_End_Date__c} </p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </div>
+                                            </div>
+
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            <div class="slds-grid">
+                                                <div class="slds-col">
+                                                    <lightning-layout-item padding="around-large" size="12"
+                                                        medium-device-size="4">
+                                                        <div
+                                                            class="header-column slds-size_1-of-1 slds-max-small-size_1-of-4">
+                                                            <span class="slds-form-element__label">{activityType}</span> 
+                                                            <p class="field-label"> {accordionHeaderObj.Core_MDF_Activity_Types__c}
+                                                            </p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </div>
+                                            </div>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="slds-grid">
+                                                <div class="slds-col">
+                                                    <lightning-layout-item padding="around-large" size="12"
+                                                        medium-device-size="4">
+                                                        <div
+                                                            class="header-column slds-size_1-of-1 slds-max-small-size_1-of-4">
+                                                            <span class="slds-form-element__label">{requestedAmount}</span>
+                                                            <p class="field-label"> {rec.RequestedAmount} </p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                               
+                                   
+    <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+    active-section-name={activeSections} key={rec.Name} >
+        <lightning-accordion-section name="A" label={details} class="accordionClass">
+        
+            <lightning-layout multiple-rows="true" size="12">
+                <template for:each={showActivityDetailFlds} for:item="flds" >
+                <lightning-layout-item size="6" padding="around-small" key = {flds}>
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <div class="header-column slds-size_1-of-1 slds-max-small-size_1-of-4">
+                         <span class="slds-form-element__label"> {flds.label}</span>
+                            <div class="slds-form-element__control">
+                                <p class="field-label">{flds.value}</p>
+                                </div>
+                            </div>
+                    </div>
+                </lightning-layout-item>
+            </template>
+            </lightning-layout>
+        
+          
+        </lightning-accordion-section>
+  
+</lightning-accordion>
+</div>
+</template>

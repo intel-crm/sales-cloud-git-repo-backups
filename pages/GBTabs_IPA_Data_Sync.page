@@ -1,0 +1,32 @@
+<apex:page showHeader="true" sidebar="false" title="IPA Data Sync">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_IPA_Data_Sync" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"name": "IPA Data Sync",
+	"tabs": [
+		{
+			"name": "IPA Data Overview",
+			"content": "{!gridPage}gname=IPA Data&amp;sh=0&amp;sfname=default",
+			"id": 1616073881999
+		},
+		{
+			"name": "IPA OPID Contact Relationship",
+			"content": "{!gridPage}gname=IPA OPID Contact Relationship&amp;sh=0&amp;sfname=default",
+			"id": 1616074024765
+		}
+	],
+	"id": 1616073881999,
+	"selectedCustomCSSIds": [],
+	"selectedCustomJSIds": [],
+	"description": "",
+	"globalButtons": false,
+	"object": "0",
+	"height": "950",
+	"showHeader": true,
+	"showSidebar": false,
+	"pageAPIName": "GBTabs_IPA_Data_Sync"
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>

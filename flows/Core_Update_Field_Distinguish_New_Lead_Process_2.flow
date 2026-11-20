@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>update for Partner Lead</description>
+        <name>Partner_Lead</name>
+        <label>Partner Lead</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Partner_Lead_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Partner_Lead_Update</targetReference>
+            </connector>
+            <label>Partner Lead outcome</label>
+        </rules>
+        <rules>
+            <name>Lead</name>
+            <conditionLogic>(1 OR 2 )</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sales_Lead_and_Lead_Update</targetReference>
+            </connector>
+            <label>Lead and Sales Lead outcome</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_Update_Field_Distinguish_New_Lead_Process workflow rule
+Workflow rule description: US203595: New Lead Process : New hidden field to distinguish old records from new&quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Salesforce 15 digit ID</description>
+        <name>getIDinFormated</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.Id}, 14)</expression>
+    </formulas>
+    <formulas>
+        <name>Isnew_PartnerLead</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()=true</expression>
+    </formulas>
+    <formulas>
+        <name>IsNewLeadRecord</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Core_Update_Field_Distinguish_New_Lead_Process_2_test {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Update_Field_Distinguish_New_Lead</label>
+    <migratedFromWorkflowRuleName>Core_Update_Field_Distinguish_New_Lead_Process</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Partner Lead Update</description>
+        <name>Partner_Lead_Update</name>
+        <label>Partner Lead Update</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Created_Post_NewPartnerLead_Process__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_lead_Id__c</field>
+            <value>
+                <elementReference>getIDinFormated</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sales Lead and Lead Update</description>
+        <name>Sales_Lead_and_Lead_Update</name>
+        <label>Sales Lead and Lead Update</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Created_Post_NewLead_Process__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_lead_Id__c</field>
+            <value>
+                <elementReference>getIDinFormated</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Partner_Lead</targetReference>
+        </connector>
+        <filterFormula>AND( (ISNULL({!$Record.Core_lead_Id__c}) || ISBLANK({!$Record.Core_lead_Id__c})),OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;, {!$Record.RecordType.Name} = &quot;Partner Lead&quot;))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

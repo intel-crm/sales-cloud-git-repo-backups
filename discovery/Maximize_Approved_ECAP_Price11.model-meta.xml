@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <label>Maximize Approved ECAP Price</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account</label>
+        <name>Pricing_OEM_Account_Nm__c</name>
+        <type>Text</type>
+        <values>DELL U S A CORPORATION</values>
+        <values>Lenovo (Beijing) Limited</values>
+        <values>Hewlett Packard Enterprise Company</values>
+        <values>HP Inc</values>
+        <values>SUPER MICRO COMPUTER, INC.</values>
+        <values>xFusion Digital Technologies Co., Ltd.</values>
+        <values>CISCO SYSTEMS INC.</values>
+        <values>INSPUR (BEIJING) ELECTRONIC INFORMATIONINDUSTRY CO., LTD.</values>
+        <values>New H3C Information Technologies Co., Ltd</values>
+        <values>Fujitsu Client Computing Limited (Lenovo/FCCL)</values>
+        <values>ACER INCORPORATED</values>
+        <values>Dynabook Inc.</values>
+        <values>ZTE CORPORATION</values>
+        <values>Nettrix Information Industry Co., Ltd</values>
+        <values>ASUSTEK COMPUTER INCORPORATION</values>
+        <values>FUJITSU LIMITED</values>
+        <values>GIGA-BYTE TECHNOLOGY CO., LTD.</values>
+        <values>QUANTA COMPUTER INC.</values>
+        <values>Positivo Tecnologia SA</values>
+        <values>BULL</values>
+        <values>TSINGHUA TONGFANG ARTIFICIAL ENVIRONMENTCO., LTD</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>IncreasedECAPPrice</label>
+        <name>IncreasedECAPPrice</name>
+        <type>Number</type>
+        <values>15.3___144.26</values>
+        <values>144.26___168.07</values>
+        <values>168.07___190.8</values>
+        <values>190.8___270.36</values>
+        <values>270.36___353.73</values>
+        <values>353.73___778.77</values>
+        <values>778.77___1283.1</values>
+        <values>1283.1___1962.24</values>
+        <values>1962.24___2580.3</values>
+        <values>2580.3___13250.82</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Pricing End Date</label>
+        <name>Pricing_Approved_End_Date_Dt__c</name>
+        <type>Date</type>
+        <values>December</values>
+        <values>June</values>
+        <values>May</values>
+        <values>July</values>
+        <values>April</values>
+        <values>March</values>
+        <values>August</values>
+        <values>September</values>
+        <values>October</values>
+        <values>January</values>
+        <values>February</values>
+        <values>November</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Quantity</label>
+        <name>Pricing_Approved_Unit_Qty__c</name>
+        <type>Number</type>
+        <values>1.0___51.0</values>
+        <values>51.0___120.0</values>
+        <values>120.0___231.0</values>
+        <values>231.0___456.0</values>
+        <values>456.0___651.0</values>
+        <values>651.0___1000.0</values>
+        <values>1000.0___1957.0</values>
+        <values>1957.0___3071.0</values>
+        <values>3071.0___7539.0</values>
+        <values>7539.0___600000.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Product Name</label>
+        <name>SBQQ__ProductName__c</name>
+        <type>Text</type>
+        <values>Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-13500 Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i5-1245U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Core™ i5-12500 Processor (18M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-13500T Processor (24M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i7-13700 Processor (30M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6342 Processor (36M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i7-12700 Processor (25M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6326 Processor (24M Cache, 2.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6348 Processor (42M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Platinum 8462Y+ Processor (60M Cache, 2.80 GHz)</values>
+        <values>Intel® Xeon® Silver 4314 Processor (24M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i7-1370P Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5318Y Processor (36M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6338 Processor (48M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i5-12500T Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6442Y Processor (60M Cache, 2.60 GHz)</values>
+        <values>Intel® Core™ i3-12100 Processor (12M Cache, up to 4.30 GHz)</values>
+        <values>Intel® Core™ i7-1265U Processor (12M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i5-12400 Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8358 Processor (48M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6346 Processor (36M Cache, 3.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6444Y Processor (45M Cache, 3.60 GHz)</values>
+        <values>Intel® Xeon® Platinum 8480+ Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6354 Processor (39M Cache, 3.00 GHz)</values>
+        <values>Intel® Core™ i5-1350P Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Core™ i7-1355U Processor (12M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Xeon® Silver 4310 Processor (18M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i7-13800H Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6430 Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6330 Processor (42M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i3-13100 Processor (12M Cache, up to 4.50 GHz)</values>
+        <values>Intel® Xeon® Gold 5317 Processor (18M Cache, 3.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6426Y Processor (37.5M Cache, 2.50 GHz)</values>
+        <values>Intel® Xeon® Gold 6334 Processor (18M Cache, 3.60 GHz)</values>
+        <values>Intel® Core™ i5-1235U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8468 Processor (105M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6336Y Processor (36M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i3-1215U Processor (10M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 5320 Processor (39M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6448Y Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5-1145G7 Processor (8M Cache, up to 4.40 GHz, with IPU)</values>
+        <values>Intel® Xeon® Platinum 8362 Processor (48M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i7-13700T Processor (30M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz)</values>
+        <values>Intel® Xeon® Gold 6338N Processor (48M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i3-13100T Processor (12M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Xeon® Silver 4309Y Processor (12M Cache, 2.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6434 Processor (22.5M Cache, 3.70 GHz)</values>
+        <values>Intel® Core™ i7-12700T Processor (25M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6448H Processor (60M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Silver 4316 Processor (30M Cache, 2.30 GHz)</values>
+        <values>Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz, with IPU)</values>
+        <values>Intel® Xeon® Gold 5418Y Processor (45M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i3-12100T Processor (12M Cache, up to 4.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6330N Processor (42M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5315Y Processor (12M Cache, 3.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6438Y+ Processor (60M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i5-12400T Processor (18M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Core™ i5-13400 Processor (20M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6248R Processor (35.75M Cache, 3.00 GHz)</values>
+        <values>Intel® Xeon® Gold 5415+ Processor (22.5M Cache, 2.90 GHz)</values>
+        <values>Intel® Core™ i5-1140G7 Processor (8M Cache, up to 4.20 GHz, with IPU)</values>
+        <values>Intel® Xeon® Platinum 8358P Processor (48M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 5416S Processor (30M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i7-1270P Processor (18M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i7-1255U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Xeon® Platinum 8380 Processor (60M Cache, 2.30 GHz)</values>
+        <values>Intel® Xeon® Platinum 8468V Processor (97.5M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8458P Processor (82.5M Cache, 2.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6454S Processor (60M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i5-13600 Processor (24M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Xeon® Platinum 8352Y Processor (48M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i7-12800H Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i5-13400T Processor (20M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6226R Processor (22M Cache, 2.90 GHz)</values>
+        <values>Intel® Xeon® Silver 4416+ Processor (37.5M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6458Q Processor (60M Cache, 3.10 GHz)</values>
+        <values>Intel® Core™ i7-13700H Processor (24M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Core™ i5-1340P Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-1250P Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 5420+ Processor (52.5M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Platinum 8460Y+ Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Platinum 8470 Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 5218 Processor (22M Cache, 2.30 GHz)</values>
+        <values>Intel® Xeon® Gold 5218R Processor (27.5M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5-12600 Processor (18M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6438N Processor (60M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i5-1135G7 Processor (8M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6418H Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5-1235U Processor (12M Cache, up to 4.40 GHz, with IPU)</values>
+        <values>Intel® Xeon® Gold 6438M Processor (60M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i5-13600T Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Platinum 8490H Processor (112.5M Cache, 1.90 GHz)</values>
+        <values>Intel® Xeon® Silver 4210 Processor (13.75M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5220R Processor (35.75M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5318N Processor (36M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Silver 4216 Processor (22M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i7-1185G7 Processor (12M Cache, up to 4.80 GHz, with IPU)</values>
+        <values>Intel® Core™ i7-1360P Processor (18M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Core™ i7-13850HX Processor (30M Cache, up to 5.30 GHz)</values>
+        <values>Intel® Xeon® Gold 6240 Processor (24.75M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Silver 4214 Processor (16.5M Cache, 2.20 GHz)</values>
+        <values>Intel® Processor N200 (6M Cache, up to 3.70 GHz)</values>
+        <values>Intel® Xeon® Platinum 8260 Processor (35.75M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8268 Processor (35.75M Cache, 2.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6230 Processor (27.5M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6240R Processor (35.75M Cache, 2.40 GHz)</values>
+        <values>Intel® Processor N100 (6M Cache, up to 3.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8368 Processor (57M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8360Y Processor (54M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i3-1115G4 Processor (6M Cache,  up to 4.10 GHz, with IPU)</values>
+        <values>Intel® Xeon® Silver 4214R Processor (16.5M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6248 Processor (27.5M Cache, 2.50 GHz)</values>
+        <values>Intel® Xeon® Silver 4410Y Processor (30M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6254 Processor (24.75M Cache, 3.10 GHz)</values>
+        <values>Intel® Core™ i7-1180G7 Processor (12M Cache, up to 4.60 GHz, with IPU)</values>
+        <values>Intel® Xeon® Silver 4208 Processor (11M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Platinum 8452Y Processor (67.5M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i3-1215U Processor (10M Cache, up to 4.40 GHz, with IPU)</values>
+        <values>Intel® Xeon® Silver 4210R Processor (13.75M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8280L Processor (38.5M Cache, 2.70 GHz)</values>
+        <values>Intel® Pentium® Gold G7400 Processor (6M Cache, 3.70 GHz)</values>
+        <values>Intel® Xeon® CPU Max 9462 Processor (75M Cache, 2.70 GHz)</values>
+        <values>Intel® Xeon® Platinum 8352V Processor (54M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Platinum 8280 Processor (38.5M Cache, 2.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6230R Processor (35.75M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Platinum 8360H Processor (33M Cache, 3.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6242 Processor (22M Cache, 2.80 GHz)</values>
+        <values>Intel® Celeron® Processor N4500 (4M Cache, up to 2.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6348H Processor (33M Cache, 2.30 GHz)</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Last Submitted Date</label>
+        <name>Pricing_Last_Submitted_Date_dt__c</name>
+        <type>Date</type>
+        <values>June</values>
+        <values>May</values>
+        <values>July</values>
+        <values>April</values>
+        <values>March</values>
+        <values>August</values>
+        <values>February</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Pricing Start Date</label>
+        <name>Pricing_Approved_Start_Date_Dt__c</name>
+        <type>Date</type>
+        <values>June</values>
+        <values>May</values>
+        <values>July</values>
+        <values>April</values>
+        <values>August</values>
+        <values>March</values>
+        <values>September</values>
+        <values>October</values>
+        <values>February</values>
+        <values>January</values>
+        <values>November</values>
+        <values>December</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Quote Line Status</label>
+        <name>Pricing_Status_Nm__c</name>
+        <type>Text</type>
+        <values>Approved</values>
+        <values>Won</values>
+        <values>Lost</values>
+        <values>Pending Further Intel Review</values>
+        <values>Cancelled</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved ECAP Price</label>
+        <name>Pricing_ECAP_Price_Amt__c</name>
+        <type>Number</type>
+        <values>15.0___12991.0</values>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Pricing_ECAP_Price_Amt__c</predictedField>
+    <predictionType>Regression</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Last_Submitted_Date_dt__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Last_Submitted_Date_dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Last_Submitted_Date_dt__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Last_Submitted_Date_dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Approved_Start_Date_Dt__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Approved_Start_Date_Dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Approved_Start_Date_Dt__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Approved_Start_Date_Dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Approved_End_Date_Dt__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Approved_End_Date_Dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Approved_End_Date_Dt__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Approved_End_Date_Dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+</DiscoveryAIModel>

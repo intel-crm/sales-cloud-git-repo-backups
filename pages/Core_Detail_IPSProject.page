@@ -1,0 +1,11 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------
+* Page Name  : Core_Edit_IPSProject 
+* Version     : 1.0
+* Created Date: 6 Dec 2018 
+* Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* vamsi                   6 Dec 2018               Page for detail button redirects based on profiles
+---------------------------------------------------------------------------------------------------------------------------------------->
+<apex:page standardController="Core_IPS_Project__c" action="{!IF(AND(($Profile.Name != 'IPS External Customer'),($Profile.Name != $Label.Core_IPS_Partner_AE_ProfileName),($Profile.Name != 'Partner' )),URLFOR('/apex/Core_IPS_Project_Detail?id='+$CurrentPage.parameters.id,null,[retURL=$CurrentPage.parameters.retURL],true),URLFOR('/apex/Core_IPS_Project_Detail_Page?id='+$CurrentPage.parameters.id,null,[retURL=$CurrentPage.parameters.retURL]))}" >
+</apex:page>

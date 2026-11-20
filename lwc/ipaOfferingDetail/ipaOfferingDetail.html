@@ -1,0 +1,308 @@
+<template></template>
+    
+  <!-- <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    
+    <template if:true={showDateUpdateModal}>
+        <c-ipa-offering-date-update offering-id={recordId} onclose={handleCloseDateUpdateModal}></c-ipa-offering-date-update>
+    </template>
+
+    <template if:false={previewMode}>
+        <c-ipa-contact-partner-form></c-ipa-contact-partner-form>
+    </template>
+
+    <div class="offering-detail-container slds-grid slds-wrap" data-is-preview={previewMode}>
+        <template if:true={data.showDisclaimer}>
+            <div class="slds-col slds-size_12-of-12 disclaimer-container">
+                <p class="disclaimer slds-p-top_xxx-small">{labels.disclaimer}</p>
+                <p class="disclaimer slds-p-top_xxx-small">
+                    {labels.disclaimer2}&nbsp;
+                    <c-ipa-link class="disclaimer slds-p-top_xxx-small" external-url={labels.disclaimerUrl} preview={previewMode}>
+                        {labels.disclaimerUrl}
+                    </c-ipa-link>
+                </p>
+            </div>
+        </template>
+
+        <template if:true={data.notificationBanners.length}>
+            <div class="slds-col slds-size_12-of-12">
+                <template for:each={data.notificationBanners} for:item="notificationBanner">
+                    <div class="notification-banner slds-p-vertical_small" key={notificationBanner.message}>
+                        <c-ipa-storefront-notifications-banner 
+                            theme={notificationBanner.theme}
+                            banner-message={notificationBanner.message} 
+                            icon-type={notificationBanner.iconType}>
+                        </c-ipa-storefront-notifications-banner>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <div class="slds-col slds-size_12-of-12 admin-button-container slds-wrap">
+            <template if:true={data.showClearCacheButton}>
+                <div class="admin-button-wrapper">
+                    <lightning-button
+                        class="button-full-width"
+                        variant="neutral"
+                        label={labels.clearCacheButton}
+                        onclick={handleClearCacheOffering}
+                        disabled={data.disableCacheButton}>
+                    </lightning-button>
+                </div>
+            </template> 
+            <template if:true={data.showCloneButton}>
+                <div class="admin-button-wrapper">
+                    <lightning-button
+                        class="button-full-width"
+                        variant="neutral"
+                        label={labels.cloneOfferingButton}
+                        onclick={handleCloneOffering}>
+                    </lightning-button>
+                </div>
+            </template>
+            <template if:true={data.showEditButton}>
+                <div class="admin-button-wrapper">
+                    <template if:false={data.editButtonDisabled}>
+                        <c-ipa-link class-name="button button-secondary button-full-width"
+                            label={labels.editOfferingButton}
+                            page-reference={editOfferingPageReference}
+                            preview={previewMode}>
+                        </c-ipa-link>
+                    </template>
+                    <template if:true={data.editButtonDisabled}>
+                        <a aria-disabled="true" class="button button-secondary button-full-width button-disabled">
+                            {labels.editOfferingButton}
+                        </a>
+                    </template>
+                </div>
+            </template>
+            <span class="slds-show_medium slds-hide_large slds-size_12-of-12"></span>
+            <template if:true={data.showDateChangeButton}>
+                <div class="admin-button-wrapper">
+                    <lightning-button
+                        class="button-full-width"
+                        variant="neutral"
+                        label={labels.updateDateButton}
+                        onclick={handleDateUpdate}>
+                    </lightning-button>
+                </div>
+            </template>
+        </div>
+
+        <template if:true={data.showEventBanner}>
+            <div class="slds-col slds-size_12-of-12">
+                <div class="event-banners">
+                    <c-ipa-banner-carousel></c-ipa-banner-carousel>
+                </div>
+            </div>
+        </template>
+        <template if:false={data.showEventBanner}>
+            <div class="slds-col slds-size_12-of-12 slds-p-top_small"></div>
+        </template>
+    </div>
+
+    <main class="offering-detail-container slds-grid slds-wrap" data-is-preview={previewMode}>
+        <div class="slds-col slds-size_12-of-12 header-container">
+            <c-ipa-detail-header
+                logo-url={data.partnerLogo}
+                logo-alt={data.partnerLogoAlt}
+                headline={data.title}
+                preview-mode={previewMode}
+                tagline={data.tagline}
+                header-type="offering"
+                contact-partner-analytics-details
+                contact-partner-modal-data={data.contactPartnerModalData}
+                contact-partner-visible={showContactPartnerButton}
+                cache-time={data.cacheTime}
+                is-admin={data.isAdmin}
+                internal-admin={data.internalAdmin}                 
+                last-modified={data.publishedDate}
+                offering-owner={data.partnerName}
+                offering-owner-id={data.partnerId}
+                is-mobile={currentScreen.isMobile}>
+            </c-ipa-detail-header>
+        </div>
+
+        <template if:false={currentScreen.isMobile}>
+            <c-ipa-jump-links onselectsection={handleSelectedSection} 
+                preview-mode={previewMode}
+                links={jumplinks}
+                is-mobile={currentScreen.isMobile}
+                nav-aria-label={labels.tableOfContents}
+                class="jumplink slds-col slds-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12 slds-p-top_large slds-p-around_medium">
+            </c-ipa-jump-links>
+        </template>
+
+        <div class={detailsContainerClass}>
+            <div class="gallery">
+                <c-core-intc-gallery thumbnail-on-cover="true" images={data.images} fixed-height onopen={handleModalOpen}></c-core-intc-gallery>
+            </div>
+           <div class="offering-detail-section overview-container">
+                <h2 class="h4 text-normal slds-m-bottom_x-small">{labels.overviewHeadline}</h2>
+                <div class="overview_desc">
+                    <template if:true={data.hasShortDescription}>
+                        <c-core-intc-text-block variant="lightGray" described-by={labels.overviewHeadline}>
+                            <lightning-formatted-rich-text slot="intro" disable-linkify value={data.descriptionShort}></lightning-formatted-rich-text>
+                            <lightning-formatted-rich-text disable-linkify value={data.descriptionLong}></lightning-formatted-rich-text>
+                        </c-core-intc-text-block>
+                    </template>
+                    <template if:false={data.hasShortDescription}>
+                        <lightning-formatted-rich-text disable-linkify value={data.descriptionLong}></lightning-formatted-rich-text>
+                    </template>
+                </div>
+            </div>
+
+            <div class="offering-detail-section">
+                <c-core-intc-hub-spoke  headline={labels.techSpecsHeadline} no-border-top expanded no-accordion>
+                    <div slot="content" class="bg-white spoke-content">
+                        <template for:each={data.techSpecs} for:item="techSpec">
+                            <section class="tech-spec-section slds-p-bottom_medium slds-grid" key={techSpec.key}>
+                                <div class="tech-spec-label slds-p-vertical_xx-small slds-size_4-of-12 slds-medium-size_5-of-12">
+                                    {techSpec.label}:
+                                </div>
+                                <div key={techSpec.label} class="tech-spec-values slds-size_8-of-12 slds-medium-size_7-of-12">
+                                    <template for:each={techSpec.attributesList} for:item="attrlist">
+                                        <c-ipa-attributes
+                                            key={attrlist.key}
+                                            values={attrlist.values}
+                                            separator={attrlist.separator}
+                                            show-links-as-preview={previewMode}
+                                            attribute-class="slds-p-vertical_xx-small">
+                                        </c-ipa-attributes>
+                                    </template>
+                                </div>
+                            </section>
+                        </template>
+                    </div>
+                </c-core-intc-hub-spoke>
+            </div>
+            <template if:true={data.qualityMetrics.length}>
+                <div class="offering-detail-section">
+                    <c-core-intc-hub-spoke headline={data.qualityMetricsLabel} no-border-top expanded no-accordion>
+                        <div slot="content" class="bg-white spoke-content offering-table-container">
+                            <table class="offering-spec-table">
+                                <tbody>
+                                    <template for:each={data.qualityMetrics} for:item="qualityMetric">
+                                        <template for:each={qualityMetric.values} for:item='values'>
+                                            <tr class="tech-spec-section" key={values.key}>
+                                                <th class="tech-spec-label" scope="row">
+                                                    {values.label}
+                                                </th>
+                                                <td class="tech-spec-values">
+                                                    <template if:false={values.showCheckmark}>
+                                                        <c-ipa-attributes
+                                                            key={values.key}
+                                                            values={values.value}
+                                                            separator={values.separator}
+                                                            show-links-as-preview={previewMode}>
+                                                        </c-ipa-attributes>
+                                                    </template>
+                                                    <template if:true={values.showCheckmark}>
+                                                        <lightning-icon class="check-icon" icon-name="utility:check" size="small" alternative-text={labels.yes}></lightning-icon>
+                                                    </template>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </template>                             
+                                </tbody>
+                            </table>
+                        </div>
+                    </c-core-intc-hub-spoke>
+                </div>
+            </template>
+            <template if:true={data.intelTechnology.length}>
+                <div class="offering-detail-section">
+                    <c-core-intc-hub-spoke headline={labels.includedIntelTechHeadline} no-border-top expanded no-accordion>
+                        <div slot="content" class="bg-white spoke-content">
+                            <template for:each={data.intelTechnology} for:item="techCard">
+                                <section class="tech-card-section slds-grid" key={techCard.heading}>
+                                    <div class="tech-card-image slds-size_3-of-12">
+                                        <template if:true={techCard.imageLink}>
+                                            <c-ipa-link external-url={techCard.imageLink} hide-icon
+                                                aria-label={techCard.heading}
+                                                preview={previewMode}
+                                                class-name="link-no-style">
+                                                <img src={techCard.image} alt={techCard.imageAlt}>
+                                            </c-ipa-link>
+                                        </template>
+                                        <template if:false={techCard.imageLink}>
+                                            <img src={techCard.image} alt={techCard.imageAlt}>
+                                        </template>
+                                    </div>
+                                    <div class="slds-size_9-of-12">
+                                        <c-ipa-attributes values={techCard.values}
+                                            show-links-as-preview={previewMode}
+                                            attribute-class="slds-p-vertical_xx-small">
+                                        </c-ipa-attributes>
+                                    </div>
+                                </section>
+                            </template>
+                        </div>
+                    </c-core-intc-hub-spoke>
+                </div>
+            </template>
+            
+            <template if:true={data.resources.length}>
+                <div class="offering-detail-section">
+                    <c-core-intc-hub-spoke headline={labels.tabResources} class="sect" no-border-top no-accordion expanded>
+                        <div slot="content" class="bg-white spoke-content">
+                            <template for:each={data.resources} for:item="resource">
+                                <div key={resource.title} class="offering-detail-resource">
+                                    <div>
+                                        <section class="resource-card" key={resource.title}>
+                                            <c-ipa-offering-resource
+                                                title={resource.title}
+                                                description={resource.description}
+                                                url={resource.url}
+                                                preview={previewMode}
+                                                resource-type={resource.resourceType}
+                                                file-type={resource.fileType}
+                                                file-size={resource.fileSize}   
+                                                content-type={resource.contentType}
+                                                download-url={resource.downloadUrl}
+                                                video-type={resource.videoType}
+                                                publish-date={resource.publishDate}
+                                                alt-text={resource.altText}
+                                                >
+                                            </c-ipa-offering-resource>
+                                        </section>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </c-core-intc-hub-spoke>
+                </div>
+          </template>
+      </div>
+
+        <div class="market-info-container slds-col slds-size_12-of-12 slds-large-size_3-of-12 slds-medium-size_8-of-12">
+            <template if:true={currentScreen.isTablet}>
+                <div class="offering-detail-section"></div>
+            </template>
+            <template if:true={showMessagingComponent}>
+                <c-ipa-messaging channel="offering" record-id={recordId}></c-ipa-messaging>
+            </template>
+            <c-core-intc-hub-spoke headline={labels.marketingInfo} no-border-top expanded no-accordion>
+                <div slot="content" class="bg-white spoke-content">
+                    <div class="market-border"></div>
+                    <template for:each={data.marketingInfo} for:item="info">
+                        <div key={info.headline} class="slds-p-bottom_xx-small">
+                            <h3 class="p text-bold truncate-2">{info.headline}</h3>
+                            <template for:each={info.items} for:item="item">
+                                <div key={item.section} class="slds-p-bottom_small">
+                                    <p>{item.section}
+                                        <template if:true={item.subsection}>:</template>
+                                    </p>
+                                    <template for:each={item.subsection} for:item='subsection'>
+                                        <p class="offering-region-subsection" key={subsection}>{subsection}</p>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </c-core-intc-hub-spoke>
+        </div>
+
+    </main>
+
+</template> -->

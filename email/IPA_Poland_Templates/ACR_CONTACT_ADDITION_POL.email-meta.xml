@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION_POL</name>
+    <style>none</style>
+    <subject>Nowy użytkownik dodany do konta w programie Intel® Partner Alliance</subject>
+    <textOnly>Potwierdź szczegóły dotyczące konta
+
+{!UserName},
+
+Do konta firmy {!Account.Name} w programie Intel® Partner Alliance został dodany użytkownik. Czynność tę wykonał przedstawiciel firmy Intel lub inna osoba kontaktowa w Twojej firmie.
+
+Nazwa firmy: {!Account.Name}
+Identyfikator firmy: {!Account.AccountNumber}
+Dodany użytkownik: E-mail {!ContactEmail}
+Relacja (rola): {!AcrRoles}
+
+Jeśli ta aktualizacja nie była zatwierdzona, zaloguj się w celu usunięcia użytkownika.
+
+W przypadku jakichkolwiek pytań skontaktuj się z nami https://signin.intel.com/ContactUs?Culture=pl-pl
+
+
+Dziękujemy.
+Twój zespół Intel® Partner Alliance
+
+Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.pl
+Prywatność | Pliki cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

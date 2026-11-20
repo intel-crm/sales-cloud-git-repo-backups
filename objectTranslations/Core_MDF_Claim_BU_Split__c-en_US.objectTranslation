@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Amount Split by BU</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Amount Split by BU</value>
+    </caseValues>
+    <fields>
+        <label><!-- Amount (USD) --></label>
+        <name>Core_MDF_BU_Amount_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Split % --></label>
+        <name>Core_MDF_BU_Split_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Unit (BU) --></label>
+        <name>Core_MDF_BU_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim__c</name>
+        <relationshipLabel><!-- Amount Split by BU --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,51 @@
+<aura:component ></aura:component>
+<!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="strength" type="Integer" default="3" description="1 - Could be better, 2 - Room to improve, 3 - Good to go" />
+    <aura:attribute name="waysToImprove" type="Object[]" description="{ label: '', formDataApiName: '' }  (TODO) use formDataApiName to link to a field in the form" /> -->
+    
+    <!-- these are set with custom labels based on the current strength setting -->
+    <!-- <aura:attribute name="headingPhrase" type="String" />
+    <aura:attribute name="description" type="String" />
+    <aura:attribute name="subheading" type="String" />
+
+    <aura:attribute name="separator" type="String" default="," />
+    <aura:attribute name="andSeparator" type="String" default="and" />
+    <aura:attribute name="deepLinkingEnabled" type="Boolean" default="true" description="TODO" />
+    
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="slds-p-vertical_large slds-m-bottom_large">
+        <div class="{!join(' ', 'container', 'flexCenter', 'strength-' + v.strength)}">
+            <div class="strengthIconContainer slds-text-align_center slds-m-right_large">
+                <div class="strengthIcon">
+                    <img src="{!$Resource.PMP_Resources + '/images/gauge/Gauge0' + v.strength + '_Isolated_2x.png'}"/>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="h4 heading-24">{!$Label.c.PMP_Offering_Strength_Heading}: 
+                    <br class="slds-hide_medium"/><span class="strengthPhrase">{!v.headingPhrase}</span>
+                </h2>
+                <p>{!v.description}</p>
+                <br class="slds-hide_medium"/>
+                <p>
+                    <b>{!v.subheading}: </b>
+                    <aura:iteration items="{!v.waysToImprove}" var="way" indexVar="i">
+                        <aura:if isTrue="{!v.deepLinkingEnabled}">
+                            <a data-deeplink="{!way.formDataApiName}" href="javascript:void(0);" onclick="{!c.handleDeepLink}">{!way.label}</a>
+                            <aura:set attribute="else">
+                                <span>{!way.label}</span>
+                            </aura:set>
+                        </aura:if>
+                            
+                        {! and(v.waysToImprove.length > 2, i != v.waysToImprove.length - 1) ? (i == v.waysToImprove.length - 2 ? (v.separator + ' ' + v.andSeparator + ' ') : v.separator + ' ') : ''}
+                        {! and(v.waysToImprove.length == 2, i == 0) ? ' ' + v.andSeparator + ' ' : ''}
+                        {! i == v.waysToImprove.length -1 ? '.' : ''}
+                    </aura:iteration>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</aura:component> -->

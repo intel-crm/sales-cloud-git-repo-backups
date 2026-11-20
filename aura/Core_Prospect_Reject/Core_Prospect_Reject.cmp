@@ -1,0 +1,48 @@
+<aura:component controller="Core_Reject_Prospect" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="public">
+    <aura:attribute name="alertMessage" type="String" /> 
+    <aura:attribute name="Spinner" type="Boolean" default ="false"/> 
+    <aura:attribute name="alreadyRejected" type="String"/>
+    <aura:attribute name="disquaReason" type="String" default =""/>
+     <aura:attribute name="disquaDetails" type="String" default =""/>
+    <aura:attribute name="status" type="String" default ="Disqualified"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <div class= "slds-spinner_container slds-is-relative">
+        <aura:if isTrue="{!v.Spinner}">    	   
+            <lightning:spinner alternativeText="Loading" size="medium"/>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!(v.alreadyRejected == '')}">
+                <aura:if isTrue="{!(v.alertMessage == null)}">
+                    <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+                    <lightning:recordEditForm recordId="{!v.recordId}"  objectApiName="Core_Prospect__c">
+                        <lightning:inputfield label="Status" fieldName="Core_Status_Pkt__c" value="{!v.status}" disabled = "true"/>
+                        <lightning:inputfield label="Disqualification Reason" fieldName="Core_Disqualification_Reason_Pkt__c" value="{!v.disquaReason}"/>  
+                        
+                        <lightning:inputfield label="Disqualification Details" fieldName="Core_Disqualification_Details__c" value="{!v.disquaDetails}"/>        				
+                        
+                        <lightning:button variant="brand" label="Save" onclick="{!c.handleSave}"/>
+                        <lightning:button variant="brand" label="Cancel" onclick="{!c.handleCancel}" />
+                    </lightning:recordEditForm>
+                    </div>
+                </aura:if>  
+                </aura:if>
+            </aura:set>        
+        </aura:if>
+        
+        <aura:if isTrue="{!(v.alreadyRejected != '')}">
+            <div class="slds-text-heading_small" style="height: 120px;">
+        		{!v.alreadyRejected}
+            </div>
+            <div style="float: right;margin-bottom: -246px;">
+                <lightning:button label="Ok" variant="brand" onclick="{!c.handleCancel}"/>
+            </div>
+        </aura:if>
+        <aura:if isTrue="{!(v.alertMessage != null)}">
+            <div class="slds-text-heading_small" style="height: 120px;">
+                {!v.alertMessage}
+            </div>
+            <div style="float: right;margin-bottom: -246px;">
+                <lightning:button label="Ok" variant="brand" onclick="{!c.handleCancel}"/>
+            </div>
+        </aura:if>    
+	</div>
+</aura:component>

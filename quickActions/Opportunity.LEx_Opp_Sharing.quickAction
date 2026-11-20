@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Introducing a new action for Manual Sharing</description>
+    <height>250</height>
+    <label>Sharing</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <page>Lex_Opp_Manual_Share</page>
+    <type>VisualforcePage</type>
+    <width>-100</width>
+</QuickAction>

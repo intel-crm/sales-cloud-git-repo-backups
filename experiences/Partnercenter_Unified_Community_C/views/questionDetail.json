@@ -1,0 +1,664 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "decb534b-710c-40fc-a51f-264a7ca5d3d4",
+  "label" : "Question Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "bannerText" : "",
+        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "pageType" : "discussion",
+        "showSubTopics" : true,
+        "title" : "Welcome!",
+        "uniqueNameOrId" : "{!feedItemId}"
+      },
+      "componentName" : "forceCommunity:headline",
+      "id" : "89508aa3-b8c4-40e3-aac1-448d003b75f6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "2a6e9f1d-133b-4034-8d90-b57d842342c6",
+        "es" : "e8ee523a-0139-4aca-bda4-552864d0f643",
+        "es_mx" : "4677559d-4af5-406e-90a9-46f06ac9fc73",
+        "fr" : "2d08023b-9c83-439f-a627-d26bec352199",
+        "it" : "ea2ba420-e039-4ede-b2d7-0ef948cb0562",
+        "ja" : "709b7ecf-a87b-418e-a013-48df59a4dfbd",
+        "ko" : "9ac96d9a-d6d4-4ee5-afdd-63ab4d4ddd19",
+        "pt_br" : "4ac41cf4-1bc1-4c0a-bf6a-fa0ac28d1353",
+        "pt_pt" : "486a1b7a-4ac1-48f1-9bc6-2c5f8394f80a",
+        "ru" : "64f813b2-b830-46fb-9406-9b6f505efcfb",
+        "zh_cn" : "30635121-3195-46a0-873f-fd4c9735d53f",
+        "zh_tw" : "5361294b-38c0-441f-8e8d-6cb4bb9dcc3c"
+      },
+      "renditions" : [ {
+        "id" : "30635121-3195-46a0-873f-fd4c9735d53f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "探索有关此主题的其他<a href=\"javascript:void(0)\" class=\"headlineArticles\">文章</a>和<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">讨论</a>。",
+            "bannerTextWithoutKnowledge" : "探索有关此主题的其他<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">讨论</a>。",
+            "title" : "欢迎！"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "64f813b2-b830-46fb-9406-9b6f505efcfb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Ознакомьтесь с другими <a href=\"javascript:void(0)\" class=\"headlineArticles\">статьями</a> и <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">обсуждениями</a> по этой теме.",
+            "bannerTextWithoutKnowledge" : "Ознакомьтесь с другими <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">обсуждениями </a> по этой теме.",
+            "title" : "Приветствуем вас!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "486a1b7a-4ac1-48f1-9bc6-2c5f8394f80a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Veja outros <a href=\"javascript:void(0)\" class=\"headlineArticles\">artigos</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+            "bannerTextWithoutKnowledge" : "Veja outras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+            "title" : "Bem-vindo!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "709b7ecf-a87b-418e-a013-48df59a4dfbd",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "このトピックに関するほかの<a href=\"javascript:void(0)\" class=\"headlineArticles\">記事</a>と<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">ディスカッション</a>を見る。",
+            "bannerTextWithoutKnowledge" : "このトピックに関するほかの<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">ディスカッション</a>を見る。",
+            "title" : "ようこそ"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ea2ba420-e039-4ede-b2d7-0ef948cb0562",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Esplorate altri <a href=\"javascript:void(0)\" class=\"headlineArticles\">articoli</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussioni</a> su questo argomento.",
+            "bannerTextWithoutKnowledge" : "Esplorate altre <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussioni</a> su questo argomento.",
+            "title" : "Benvenuti!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2d08023b-9c83-439f-a627-d26bec352199",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Consultez d&apos;autres <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> et <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> &agrave; ce sujet.",
+            "bannerTextWithoutKnowledge" : "Consultez d&apos;autres <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> &agrave; ce sujet.",
+            "title" : "Bienvenue&nbsp;!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4677559d-4af5-406e-90a9-46f06ac9fc73",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineArticles\">art&iacute;culos</a> y <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">debates</a> sobre este tema.",
+            "bannerTextWithoutKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">debates</a> sobre este tema.",
+            "title" : "Bienvenido"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2a6e9f1d-133b-4034-8d90-b57d842342c6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Informieren Sie sich anhand weiterer <a href=\"javascript:void(0)\" class=\"headlineArticles\">Artikel</a> und <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">Diskussionen</a> zu diesem Thema.",
+            "bannerTextWithoutKnowledge" : "Hier finden Sie weitere <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">Diskussionen</a> zu diesem Thema.",
+            "title" : "Willkommen!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9ac96d9a-d6d4-4ee5-afdd-63ab4d4ddd19",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "이 주제에 대한 다른 <a href=\"javascript:void(0)\" class=\"headlineArticles\">문서</a>와 <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">토론</a>을 탐색합니다.",
+            "bannerTextWithoutKnowledge" : "이 주제에 대한 다른 <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">토론</a>을 탐색합니다.",
+            "title" : "환영합니다!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e8ee523a-0139-4aca-bda4-552864d0f643",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineArticles\">art&iacute;culos</a> y <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">conversaciones</a> sobre este tema.",
+            "bannerTextWithoutKnowledge" : "Explore otras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">conversaciones</a> sobre este tema.",
+            "title" : "¡Bienvenido/a!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4ac41cf4-1bc1-4c0a-bf6a-fa0ac28d1353",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "Veja outros <a href=\"javascript:void(0)\" class=\"headlineArticles\">artigos</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+            "bannerTextWithoutKnowledge" : "Veja outras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+            "title" : "Bem-vindo!"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5361294b-38c0-441f-8e8d-6cb4bb9dcc3c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "",
+            "bannerTextWithKnowledge" : "探索與這個主題有關的其它<a href=\"javascript:void(0)\" class=\"headlineArticles\">文章</a>和<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">討論</a>。",
+            "bannerTextWithoutKnowledge" : "探索與這個主題有關的其它<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">討論</a>。",
+            "title" : "歡迎！"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "e0fc7a50-ebb5-4080-8db1-fb1a2c544feb",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "id" : "{!feedItemId}"
+      },
+      "componentName" : "forceCommunity:feedItemDetail",
+      "id" : "de84a4b8-f06e-4bba-a506-865f5f483a32",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "2c629f14-d8fc-4fd1-9525-21de13e9a69e",
+        "es" : "b8cf9a7d-3e0a-4f13-9fcd-3f01c54bc672",
+        "es_mx" : "2d45b85f-7cef-412d-a4cd-93306855e09a",
+        "fr" : "e629f060-d969-4d93-a2b8-cc9f267ec8da",
+        "it" : "b59d00de-fb24-409f-a49d-53da79cd415e",
+        "ja" : "8497ae42-8552-49ae-b9e3-ef11bb7c2d78",
+        "ko" : "50a481a5-1d22-4971-839a-073b90e51255",
+        "pt_br" : "d9181724-545e-4d93-b018-5217aa4ae648",
+        "pt_pt" : "a1b3a683-3b53-4b85-ab51-9613e0cd21da",
+        "ru" : "ae4523eb-c9d6-47e3-987a-2df8368f96be",
+        "zh_cn" : "e0373ef5-2da0-4b8e-9920-2fbce6f7c96c",
+        "zh_tw" : "9f07126a-d43b-42cd-8b5d-93c7a68dd28f"
+      },
+      "renditions" : [ {
+        "id" : "e0373ef5-2da0-4b8e-9920-2fbce6f7c96c",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ae4523eb-c9d6-47e3-987a-2df8368f96be",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a1b3a683-3b53-4b85-ab51-9613e0cd21da",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8497ae42-8552-49ae-b9e3-ef11bb7c2d78",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b59d00de-fb24-409f-a49d-53da79cd415e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e629f060-d969-4d93-a2b8-cc9f267ec8da",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2d45b85f-7cef-412d-a4cd-93306855e09a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2c629f14-d8fc-4fd1-9525-21de13e9a69e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "50a481a5-1d22-4971-839a-073b90e51255",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b8cf9a7d-3e0a-4f13-9fcd-3f01c54bc672",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d9181724-545e-4d93-b018-5217aa4ae648",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9f07126a-d43b-42cd-8b5d-93c7a68dd28f",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "03b1b40f-a5ca-4002-9c67-5a89b4df4d8f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "numberOfItems" : 5,
+        "showViewCounts" : true,
+        "title" : "Related Questions"
+      },
+      "componentName" : "selfService:similarQuestions",
+      "id" : "34b3d845-6633-4f8f-b0c7-9c0ce1a09839",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "09529b33-6b30-4bff-a7cd-0eeee296bd81",
+        "es" : "f3214ba3-eda3-40e4-9c93-e9a4ed70e1c2",
+        "es_mx" : "90ddb3f3-cf36-4c6d-98e7-2949cb5c7852",
+        "fr" : "8d0f7499-96aa-4784-9823-933c4d5445ac",
+        "it" : "e3ec5c4a-69a0-464f-a2ee-2543dfbe28f9",
+        "ja" : "9671dd3b-22f7-4171-9bd6-7b030b3959b7",
+        "ko" : "4cfcc40c-b62c-4adf-9aad-6344c716b6cc",
+        "pt_br" : "2f6ab5eb-a28e-443b-a4da-a9721acec551",
+        "pt_pt" : "1fb9f3c6-ba6d-4324-89a0-7e710d353ccc",
+        "ru" : "c1fff1b8-58a5-41b6-b95b-a350df01f327",
+        "zh_cn" : "5610f228-b45f-47c1-bf3e-bbee5c31e70f",
+        "zh_tw" : "bfbbeaee-8080-4519-b65c-91bca95a60d1"
+      },
+      "renditions" : [ {
+        "id" : "5610f228-b45f-47c1-bf3e-bbee5c31e70f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "相关问题"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c1fff1b8-58a5-41b6-b95b-a350df01f327",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Связанные вопросы"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1fb9f3c6-ba6d-4324-89a0-7e710d353ccc",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Perguntas relacionadas"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9671dd3b-22f7-4171-9bd6-7b030b3959b7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "関連する質問"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e3ec5c4a-69a0-464f-a2ee-2543dfbe28f9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Domande correlate"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8d0f7499-96aa-4784-9823-933c4d5445ac",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Questions connexes"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "90ddb3f3-cf36-4c6d-98e7-2949cb5c7852",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Preguntas relacionadas"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "09529b33-6b30-4bff-a7cd-0eeee296bd81",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Zugeh&ouml;rige Fragen"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4cfcc40c-b62c-4adf-9aad-6344c716b6cc",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "관련 질문"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f3214ba3-eda3-40e4-9c93-e9a4ed70e1c2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Preguntas relacionadas"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2f6ab5eb-a28e-443b-a4da-a9721acec551",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Perguntas relacionadas"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bfbbeaee-8080-4519-b65c-91bca95a60d1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "相關問題"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "channel" : "DefaultChannel",
+        "title" : ""
+      },
+      "componentName" : "forceCommunity:recommendations",
+      "id" : "9cf1649c-cf6b-4d36-97e8-c5ea93e43bce",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "37c9183b-0fda-4cad-a1fb-6d8816ca7d94",
+        "es" : "3c7239b1-72c4-452e-bedd-08de94251a60",
+        "es_mx" : "9824b3a4-217e-4e32-b84c-49667d45431f",
+        "fr" : "46cdb10f-6b06-43b4-b33b-3c04d53f1b8b",
+        "it" : "5105fbdf-e11a-4967-8fff-fae2786c7d33",
+        "ja" : "debb08c0-1560-4a1d-b3d5-15f80b488760",
+        "ko" : "9abaa48f-ef5c-4839-b0f1-ea26ee796458",
+        "pt_br" : "79289a8c-1d05-4c12-b30f-92ab6796e6bb",
+        "pt_pt" : "17720b17-bb43-4f3b-9417-96154b410090",
+        "ru" : "c26ddc63-6b56-4b5a-af44-0c41fbb7e2f6",
+        "zh_cn" : "555c2177-c3a0-4480-9ab3-c15f936cf73e",
+        "zh_tw" : "e9f2b8b8-d108-47ef-8b69-c8f0cd8c6bef"
+      },
+      "renditions" : [ {
+        "id" : "555c2177-c3a0-4480-9ab3-c15f936cf73e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c26ddc63-6b56-4b5a-af44-0c41fbb7e2f6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "17720b17-bb43-4f3b-9417-96154b410090",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "debb08c0-1560-4a1d-b3d5-15f80b488760",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5105fbdf-e11a-4967-8fff-fae2786c7d33",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "46cdb10f-6b06-43b4-b33b-3c04d53f1b8b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9824b3a4-217e-4e32-b84c-49667d45431f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "37c9183b-0fda-4cad-a1fb-6d8816ca7d94",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9abaa48f-ef5c-4839-b0f1-ea26ee796458",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3c7239b1-72c4-452e-bedd-08de94251a60",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "79289a8c-1d05-4c12-b30f-92ab6796e6bb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e9f2b8b8-d108-47ef-8b69-c8f0cd8c6bef",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "1d17d6ac-a221-46af-b37f-e54e9f523fc9",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "0fe207e9-d705-4b19-ad5a-0425f55a6e3d",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record.Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f1f70f8b-b15f-4a5e-9e82-6d9195814fff",
+      "renditionMap" : {
+        "de" : "5775dff1-4561-4f51-90bb-aaaaa51a8a36",
+        "es" : "29ded4ff-df44-40ab-b74f-e8a93bda992b",
+        "es_mx" : "e403b79f-7abf-4bbe-8558-5af92df8365d",
+        "fr" : "5699a568-01ae-46d4-b3f7-c219a02b2228",
+        "it" : "b9484aa3-9f16-4ac5-8b50-9bd1e63a2c96",
+        "ja" : "f9613861-ffd0-4efd-a905-859e21d456e9",
+        "ko" : "fef2baa0-f57f-4cbb-a96f-b563d3501f6e",
+        "pt_br" : "bc2e2222-c5c1-46ee-8b9f-872006a0bccf",
+        "pt_pt" : "f10e2464-96e5-4a40-ada5-b1c0649d6d53",
+        "ru" : "8bfa866d-848e-4232-a6d1-48b65daae8cb",
+        "zh_cn" : "743f72fb-4025-45fc-bf33-f14883da8e00",
+        "zh_tw" : "c235caf8-1ae1-439e-a568-f5ef692dc6d6"
+      },
+      "renditions" : [ {
+        "id" : "743f72fb-4025-45fc-bf33-f14883da8e00",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8bfa866d-848e-4232-a6d1-48b65daae8cb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f10e2464-96e5-4a40-ada5-b1c0649d6d53",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f9613861-ffd0-4efd-a905-859e21d456e9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b9484aa3-9f16-4ac5-8b50-9bd1e63a2c96",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5699a568-01ae-46d4-b3f7-c219a02b2228",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e403b79f-7abf-4bbe-8558-5af92df8365d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5775dff1-4561-4f51-90bb-aaaaa51a8a36",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fef2baa0-f57f-4cbb-a96f-b563d3501f6e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "29ded4ff-df44-40ab-b74f-e8a93bda992b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bc2e2222-c5c1-46ee-8b9f-872006a0bccf",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c235caf8-1ae1-439e-a568-f5ef692dc6d6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "",
+            "title" : ""
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "d520d00f-65a5-4c6e-a95f-f4d5ba3a7ada",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "feeditem"
+}

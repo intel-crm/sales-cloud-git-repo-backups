@@ -1,0 +1,99 @@
+.THIS {
+  position: relative;
+  display: inline-block;
+}
+
+.THIS .darkButton {
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid t(darkGray);
+  padding: 5px 7px;
+  margin-right: 5px;
+  /* margin-top: 10px; */
+}
+.THIS .darkButton .slds-icon-text-default {
+  fill:  t(darkIconFill);
+}
+
+
+.THIS a {
+  color: t(blue);
+  display: block;
+  padding: 6px 0;
+}
+.THIS .close {
+  border-bottom: 1px solid t(darkGray);
+  text-align: right;
+}
+.THIS .close a {
+  font-size: .875em;
+  padding: 8px 0;
+}
+.THIS .shareUrl {
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+  left:0;
+  width:100%;
+}
+
+
+
+.THIS .share-overlay {
+  position: absolute;
+  top: 33px;
+  left: 32px;
+  min-width: 204px;
+  background: t(white);
+  transition: 0.3s ease-out;
+  padding: .3em 0 0 0;
+  z-index: 3001;
+  background: t(charcoal);
+  transform: translateX(-100%);
+  text-align: left;
+}
+
+.THIS.theme-right .share-overlay {
+  transform: none;
+  left: 0;
+}
+.THIS .share-overlay a {
+  color: t(white);
+}
+
+.THIS .share-overlay a .slds-icon use {
+  fill: t(white);
+}
+.THIS .share-links a .slds-icon {
+    height: 2em;
+    width: 2em;
+}
+.THIS .email .slds-icon,
+.THIS .copy .slds-icon {
+    background: t(white);
+    padding: 5px;
+    border-radius: 50%;
+}
+.THIS a.email .slds-icon use,
+.THIS a.copy .slds-icon use {
+    fill: t(charcoal);
+}
+.THIS .black-circle,
+.THIS .white-circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+}
+.THIS .share-links img {
+  width: 32px;
+  height: 32px;
+}
+/* Large Theme mainly on offering detail */
+/*
+@media (min-width: 768px) {
+
+}
+@media (min-width: 1280px) {
+
+} */

@@ -1,0 +1,23 @@
+<apex:page standardController="SBQQ__Quote__c" extensions="QuoteExtController">
+    <script>
+    window.onload = function () {
+        var showWar = {!showWarning};
+        var warMsg='{!warningMsg}';
+        if(showWar){
+            var con=confirm(warMsg);
+            if(con){
+                onSubmit();
+            }else{
+                goToRecord();
+            }
+        }else{
+            onSubmit();
+        }
+    }
+    </script>   
+    <apex:form >
+        <apex:pageMessages />
+        <apex:actionFunction name="onSubmit" action="{!onSubmit}"/>
+        <apex:actionFunction name="goToRecord" action="{!goToRecord}"/>
+    </apex:form>
+</apex:page>

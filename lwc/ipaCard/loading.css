@@ -1,0 +1,47 @@
+:host {
+  width: 100%;
+  --avatar-size: 78px 78px;
+  --avatar-position: 0 0;
+  --avatar-skeleton:
+    linear-gradient(
+      45deg,
+      var(--veryLightGray),
+      var(--lightestGray)
+    );
+  --title-size: calc(100% - 2rem - 78px) 2rem;
+  --title-position: calc(78px + 1rem) 1rem;
+  --title-skeleton: linear-gradient(5deg, var(--lightestGray), #fdfdfd);
+}
+
+@media (max-width: 767px) {
+  :host {
+    --avatar-position: 1rem 1rem;
+    --title-position: calc(78px + 2rem) 2rem;
+    --title-size: calc(100% - 3rem - 78px) 2rem;
+  }
+}
+
+.card {
+  height: 22rem;
+  width: 100%;
+}
+
+.card[data-hide-add-to-compare="true"] {
+  height: 18rem;
+}
+
+.card:empty::after {
+  background-image: var(--avatar-skeleton), var(--title-skeleton);
+  background-position: var(--avatar-position), var(--title-position);
+  background-repeat: no-repeat;
+  background-size: var(--avatar-size), var(--title-size);
+  border-radius: 0;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+lightning-spinner {
+  opacity: .3;
+}

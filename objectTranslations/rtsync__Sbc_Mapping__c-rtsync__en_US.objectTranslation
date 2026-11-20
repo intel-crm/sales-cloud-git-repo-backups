@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sbc Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sbc Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Based On Default --></label>
+        <name>rtsync__Based_On_Default__c</name>
+    </fields>
+    <fields>
+        <label><!-- Input Fields --></label>
+        <name>rtsync__Input_Fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Id --></label>
+        <name>rtsync__Record_Type_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reltio Entity Type --></label>
+        <name>rtsync__Reltio_Entity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selected Output Fields --></label>
+        <name>rtsync__Selected_Output_Fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Tuple --></label>
+        <name>rtsync__Unique_Tuple__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectType --></label>
+        <name>rtsync__sObjectType__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Input Fields are required --></errorMessage>
+        <name>rtsync__Input_Fields_Are_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Output Fields are required --></errorMessage>
+        <name>rtsync__Output_Fields_Are_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

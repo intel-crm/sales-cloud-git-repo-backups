@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Run the bacth which calls the PIM service in order to fetch the IQR Records</description>
+        <name>Core_IQR_IntelProductDataScheduler</name>
+        <label>Core_IQR_IntelProductDataScheduler</label>
+        <locationX>652</locationX>
+        <locationY>408</locationY>
+        <actionName>Core_IQR_IntelProductDataScheduler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Core_IQR_IntelProductDataScheduler</nameSegment>
+    </actionCalls>
+    <apiVersion>54.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Run the Core_IQR_IntelProductDataScheduler batch to call the PIM service in order to fetch the IQR records</description>
+    <interviewLabel>Core_IQR_IntelProductDataScheduler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_IQR_IntelProductDataScheduler_2:00</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Core_IQR_IntelProductDataScheduler</targetReference>
+        </connector>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2022-01-29</startDate>
+            <startTime>02:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

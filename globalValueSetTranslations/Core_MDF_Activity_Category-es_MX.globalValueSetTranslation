@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Audio</masterLabel>
+        <translation>Sonido</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Audio 2025</masterLabel>
+        <translation><!-- Audio 2025 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadcast</masterLabel>
+        <translation>Difusión</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadcast (Pre-2025)</masterLabel>
+        <translation>Comunicación (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer Incentive</masterLabel>
+        <translation>Incentivo para compradores</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer Incentive 2025</masterLabel>
+        <translation>Incentivo al comprador 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital</masterLabel>
+        <translation><!-- Digital --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital 2025</masterLabel>
+        <translation><!-- Digital 2025 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Media</masterLabel>
+        <translation>Medios digitales</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Media (Pre-2025)</masterLabel>
+        <translation>Medios digitales (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event</masterLabel>
+        <translation>Evento</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event (Pre-2025)</masterLabel>
+        <translation>Evento (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event 2025</masterLabel>
+        <translation>Evento 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Incentive</masterLabel>
+        <translation>Incentivo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Innovation</masterLabel>
+        <translation><!-- Innovation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Management</masterLabel>
+        <translation>Administración de clientes potenciales</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Management (Pre-2025)</masterLabel>
+        <translation>Administración de clientes potenciales (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Ad</masterLabel>
+        <translation><!-- Online Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home</masterLabel>
+        <translation>Exteriores</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home (Pre-2025)</masterLabel>
+        <translation>Exteriores (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home 2025</masterLabel>
+        <translation>Fuera de casa 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home Media</masterLabel>
+        <translation>Medios en exteriores</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
+        <translation>Medios en exteriores (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Outcome-Based</masterLabel>
+        <translation>Basado en resultados</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Paid Social Media</masterLabel>
+        <translation>Medios sociales pagos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
+        <translation>Medios sociales pagos (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print</masterLabel>
+        <translation>Impresión</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print (Pre-2025)</masterLabel>
+        <translation>Impresión (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print 2025</masterLabel>
+        <translation>Imprimir 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print Media</masterLabel>
+        <translation>Medios impresos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print Media (Pre-2025)</masterLabel>
+        <translation>Medios impresos (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production</masterLabel>
+        <translation>Producción</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production 2025</masterLabel>
+        <translation>Producción 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Incentive</masterLabel>
+        <translation>Incentivo para la compra</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
+        <translation>Incentivo para la compra (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Incentive</masterLabel>
+        <translation>Incentivo para ventas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
+        <translation>Incentivo para ventas (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness</masterLabel>
+        <translation>Preparación de ventas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
+        <translation>Preparación de ventas (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness 2025</masterLabel>
+        <translation>Preparación para las ventas 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+        <translation>Mercadeo en motores de búsqueda (SEM)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
+        <translation>Mercadeo en motores de búsqueda (SEM) (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Performance</masterLabel>
+        <translation><!-- Search Performance --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller Incentive</masterLabel>
+        <translation>Incentivo para vendedores</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller Incentive 2025</masterLabel>
+        <translation>Incentivo al vendedor 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tech Exploration</masterLabel>
+        <translation>Exploración técnica</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
+        <translation>Exploración técnica (Antes de 2025)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Sales</masterLabel>
+        <translation>Ventas técnicas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Sales 2025</masterLabel>
+        <translation>Ventas técnicas 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training</masterLabel>
+        <translation><!-- Training --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video</masterLabel>
+        <translation><!-- Video --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video 2025</masterLabel>
+        <translation><!-- Video 2025 --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

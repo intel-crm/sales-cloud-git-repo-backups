@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Account_Create_Request__c.Process_Type__c</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_PSG_Account__c</field>
+    </columns>
+    <columns>
+        <field>FK_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Sales_Group_Preview__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Unified_Hierarchy_View__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner_Department__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_Is_Opportunity_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_Open_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Delegate_Approver__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(FK_Account.Core_Account_Owner_Manager__c = &quot;Malhar Thakkar&quot;, &quot;ISV Strategy Partner&quot;,
+ IF(FK_Account.Core_Account_Owner_Manager__c = &quot;Ryan Olson&quot;, &quot;INB Intel Network Builder&quot;,
+ IF(OR(FK_Account.Core_Account_Owner_Manager__c = &quot;Gosia Dzul&quot;, FK_Account.Core_Account_Owner_Manager__c = &quot;Christine Harrison&quot;), &quot;DR&quot;,
+ IF(FK_Account.Core_Account_Owner_Manager__c = &quot;Simon Windsor&quot;, &quot;EMEA Inside Scale program&quot;,
+ IF(OR(FK_Account.Core_Account_Owner_Manager__c = &quot;Simon Wilyman&quot;, FK_Account.Core_Account_Owner_Manager__c = &quot;Paolo Righi&quot;), &quot;EMEA NEX Longtail&quot;,
+ IF(CONTAINS(FK_Account.Core_Account_Owner_Department__c, &quot;PSG&quot;), &quot;PSG&quot;, 
+ IF(CONTAINS(FK_Account.Core_Account_Owner_Department__c, &quot;RealSense&quot;), &quot;RealSense&quot;,
+ IF(FK_ACC_OWNER_NAME = &quot;Alexey Ivanov&quot;, &quot;Alexey Ivanov&quot;,
+ IF(FK_ACC_OWNER_NAME = &quot;Uncovered Account&quot;, &quot;Uncovered&quot;, 
+ IF(FK_ACC_OWNER_NAME = &quot;A&amp;E Account Owner&quot;, &quot;A&amp;E Account Owner&quot;,
+ IF(TEXT(FK_Account.Core_Account_Primary_Coverage__c)=&quot;Partner-led Account&quot;, &quot;Other Partner-led&quot;, 
+ IF(TEXT(FK_Account.Core_Account_Primary_Coverage__c)=&quot;Other-led Account&quot;, &quot;Other Other-led&quot;,
+ IF(TEXT(FK_Account.Core_Account_Primary_Coverage__c)=&quot;Not Covered Account&quot;, &quot;Other Not Covered&quot;, &quot;Other&quot;)))))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Explanation</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>New account requests - last 90 days</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>9/1/2023 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>EMEA Partner Led</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account_Create_Request__c.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>EMEA Partner Holding,EMEA Partner Led</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account_Create_Request__c.Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CUST_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account_Create_Request__c.Process_Type__c</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>EMEA Partner Hold requested then removed</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Create_Request__c@Account_Create_Request__c.Requested_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST120</interval>
+    </timeFrameFilter>
+</Report>

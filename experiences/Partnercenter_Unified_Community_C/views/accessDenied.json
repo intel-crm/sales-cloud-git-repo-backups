@@ -1,0 +1,391 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "75b6b5f3-56fb-4d52-8a19-67adcb248f43",
+  "label" : "AccessDenied",
+  "regions" : [ {
+    "id" : "48c96f11-cf2b-4049-b76a-35a0e0c77fa8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><strong style=\"font-size: 48px; color: rgb(102, 163, 224);\">ACCESS DENIED</strong></p><p><br></p><p><strong style=\"font-size: 18px;\">Reason</strong><span style=\"font-size: 18px;\">: </span>Your account does not have appropriate access rights to https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"color: rgb(102, 163, 224); font-size: 36px;\">Suggestions</span></p><p style=\"text-align: center;\"><br></p><p><strong style=\"font-size: 18px;\">External Users:</strong></p><ul><li>Please contact your Account Manager or Sales Rep to get access</li></ul><p><br></p><p><br></p><p><strong style=\"font-size: 18px;\">Internal Users:</strong></p><ul><li>Please use <a href=\"http://goto/partnercenter\" rel=\"noopener noreferrer\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "c99c064b-3aad-4cb9-b342-cfc59e558163",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "b08f8866-2d46-472f-9e13-883c6511da32",
+        "es" : "f60c1364-94a7-4679-883c-52d0f8233be8",
+        "es_mx" : "30da243f-f54e-40a1-9c52-e3053b0c9576",
+        "fr" : "be668590-f03d-472c-851f-d759f4f054f1",
+        "it" : "4e5acce1-d219-4661-b54d-019544ecd423",
+        "ja" : "1ac3ecc7-bc5a-4aca-9a30-fce30ddc0626",
+        "ko" : "5703d660-7397-4560-822a-003f4453220c",
+        "pt_br" : "7479a15b-5d41-4ebc-83a7-b75d87aa60e4",
+        "pt_pt" : "89de95ef-a9ae-4153-8c66-d679f756e587",
+        "ru" : "757c2e56-cb6a-4346-885e-7e40be40fbbf",
+        "zh_cn" : "173412ad-cf5c-40f8-9174-18d7c61c6e5e",
+        "zh_tw" : "ba6c092b-3365-471c-8b6a-f7af1b631e7a"
+      },
+      "renditions" : [ {
+        "id" : "173412ad-cf5c-40f8-9174-18d7c61c6e5e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">访问被拒绝</b></p><p><br></p><p><b style=\"font-size: 18px;\">原因</b><span style=\"font-size: 18px;\">：</span>您的帐户没有适当的权限访问 https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">建议</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">外部用户：</b></p><ul><li>请联系您的客户经理或销售代表以获得访问权</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">内部用户：</b></p><ul><li>请使用 <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "757c2e56-cb6a-4346-885e-7e40be40fbbf",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ДОСТУП ЗАПРЕЩЕН</b></p><p><br></p><p><b style=\"font-size: 18px;\">Причина</b><span style=\"font-size: 18px;\">: </span>Ваша учетная запись не имеет прав доступа к https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Предложения</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Внешние пользователи:</b></p><ul><li>Пожалуйста, обратитесь к своему менеджеру или торговому представителю, чтобы получить доступ</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Сотрудники:</b></p><ul><li>Пожалуйста, используйте <a href=\"http://goto/partnercenter\" target=\"_self\">перейти/партнерский центр</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "89de95ef-a9ae-4153-8c66-d679f756e587",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACESSO NEGADO</b></p><p><br></p><p><b style=\"font-size: 18px;\">Raz&atilde;o</b><span style=\"font-size: 18px;\">: sua conta n&atilde;o tem direitos de acesso apropriados para usar INTEL DATA CENTER BLOCKS</span></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Sugest&otilde;es</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Usu&aacute;rios internos:</b></p><ul><li><span style=\"font-size: 18px;\">V&aacute; para </span><a href=\"http://ags.intel.com\" target=\"null\" style=\"font-size: 18px;\">http://ags.intel.com</a><span style=\"font-size: 18px;\">e solicite acesso</span></li><li><span style=\"font-size: 18px;\">Pesquise fun&ccedil;&otilde;es de CTO e solicite acesso para a fun&ccedil;&atilde;o apropriado</span></li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Usu&aacute;rios externos:</b></p><ul><li><span style=\"font-size: 18px;\">Contate seu gerente de conta ou representante de vendas</span></li></ul><p><br></p><p><br></p><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1ac3ecc7-bc5a-4aca-9a30-fce30ddc0626",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">アクセスが拒否されました</b></p><p><br></p><p><b style=\"font-size: 18px;\">理由</b><span style=\"font-size: 18px;\">: </span>このアカウントには https://partnercenter.intel.com のアクセスに必要な権限がありません。</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">提案</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">外部ユーザー:</b></p><ul><li>アクセスするには、アカウント・マネージャーまたは販売担当者までお問い合わせください。</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">内部ユーザー:</b></p><ul><li><a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a> をご活用ください</li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4e5acce1-d219-4661-b54d-019544ecd423",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACCESSO NEGATO</b></p><p><br></p><p><b style=\"font-size: 18px;\">Motivo</b><span style=\"font-size: 18px;\">: </span>l&apos;account non dispone dei diritti di accesso appropriati per https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Suggerimenti</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Utenti esterni:</b></p><ul><li>Contattare il proprio Account Manager o Responsabile vendite per ottenere l&rsquo;accesso</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Utenti interni:</b></p><ul><li>utilizzare <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "be668590-f03d-472c-851f-d759f4f054f1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACC&Egrave;S REFUS&Eacute;</b></p><p><br></p><p><b style=\"font-size: 18px;\">Raison</b><span style=\"font-size: 18px;\">&nbsp;: </span>votre compte ne poss&egrave;de pas les droits n&eacute;cessaires pour acc&eacute;der &agrave; https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Suggestions</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Utilisateurs externes&nbsp;:</b></p><ul><li>Veuillez contacter votre interlocuteur commercial ou votre repr&eacute;sentant commercial pour obtenir un acc&egrave;s</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Utilisateurs internes&nbsp;:</b></p><ul><li>Veuillez utiliser <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "30da243f-f54e-40a1-9c52-e3053b0c9576",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACCESO DENEGADO</b></p><p><br></p><p><b style=\"font-size: 18px;\">Motivo</b><span style=\"font-size: 18px;\">: </span>Su cuenta no tiene los derechos de acceso apropiados para https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Sugerencias</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Usuarios externos:</b></p><ul><li>Comun&iacute;quese con su Gerente de cuenta o su Representante de ventas para obtener acceso</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Usuarios internos:</b></p><ul><li>Utilice <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b08f8866-2d46-472f-9e13-883c6511da32",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ZUGRIFF VERWEIGERT</b></p><p><br></p><p><b style=\"font-size: 18px;\">Grund</b><span style=\"font-size: 18px;\">: </span>Ihr Konto verf&uuml;gt nicht &uuml;ber ausreichende Zugriffsrechte f&uuml;r https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Vorschl&auml;ge</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Externe Benutzer:</b></p><ul><li>Wenden Sie sich bitte an Ihren Accountmanager oder Vertriebsbeauftragten, um Zugang zu erhalten.</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Interne Benutzer:</b></p><ul><li>Verwenden Sie bitte <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5703d660-7397-4560-822a-003f4453220c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">액세스가 거부되었습니다</b></p><p><br></p><p><b style=\"font-size: 18px;\">이유</b><span style=\"font-size: 18px;\">: </span>https://partnercenter.intel.com에 대한 액세스 권한이 없는 계정입니다</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">제안</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">외부 사용자:</b></p><ul><li>계정 관리자나 판매 담당자에게 연락하여 액세스 권한을 받으십시오</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">내부 사용자:</b></p><ul><li><a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a>를 사용하십시오</li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f60c1364-94a7-4679-883c-52d0f8233be8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACCESO DENEGADO</b></p><p><br></p><p><b style=\"font-size: 18px;\">Raz&oacute;n</b><span style=\"font-size: 18px;\">: </span>Su cuenta no tiene los derechos de acceso apropiados a https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Sugerencias</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Usuarios externos:</b></p><ul><li>P&oacute;ngase en contacto con su gestor de cuentas o su representante de ventas para obtener acceso.</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Usuarios internos:</b></p><ul><li>Utilice <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7479a15b-5d41-4ebc-83a7-b75d87aa60e4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACESSO NEGADO</b></p><p><br></p><p><b style=\"font-size: 18px;\">Raz&atilde;o</b><span style=\"font-size: 18px;\">: </span>sua conta n&atilde;o tem direitos de acesso apropriados para https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Sugest&otilde;es</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">Usu&aacute;rios externos:</b></p><ul><li>Entre em contato com o gerente da sua conta ou seu representante de vendas para obter acesso</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Usu&aacute;rios internos:</b></p><ul><li>Favor usar <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ba6c092b-3365-471c-8b6a-f7af1b631e7a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">存取遭拒</b></p><p><br></p><p><b style=\"font-size: 18px;\">原因</b><span style=\"font-size: 18px;\">：</span>您的帳戶沒有權限可以存取 https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">建議</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">外部使用者：</b></p><ul><li>請聯絡您的「帳戶經理」或「銷售代表」以取得存取權</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">內部使用者：</b></p><ul><li>請使用 <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "1459e67d-4ca6-4013-9c31-a53e76f3e0b0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"height:4em;\"></div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "f6b9d4d6-1409-4d32-92f3-c66d6ce35e91",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "ebee41a6-5be7-4a5e-aeea-eff565895381",
+        "es" : "1b4dabb3-750c-44cc-a483-e41c0d127eb6",
+        "es_mx" : "b451a635-b12b-4a84-a211-340e5e89cbf9",
+        "fr" : "c6f8afaa-4cfc-43ff-a135-5c638743f6be",
+        "it" : "d30f3565-53d1-4048-b089-70e5c874c2ce",
+        "ja" : "c3d645b8-8bde-4c71-9420-895a2a801e86",
+        "ko" : "606e3243-542a-4c62-90df-aa59e0fd83a1",
+        "pt_br" : "d603c803-4597-4fb8-8a57-ed4cae2db42a",
+        "ru" : "f9c5c69d-c50d-4f9b-baeb-0af78000b9e9",
+        "zh_cn" : "3c41384f-b8ac-4faa-bdba-a097ec070880",
+        "zh_tw" : "77eacd13-656f-474c-9155-4d24fa75e6f2"
+      },
+      "renditions" : [ {
+        "id" : "ebee41a6-5be7-4a5e-aeea-eff565895381",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1b4dabb3-750c-44cc-a483-e41c0d127eb6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b451a635-b12b-4a84-a211-340e5e89cbf9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c6f8afaa-4cfc-43ff-a135-5c638743f6be",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d30f3565-53d1-4048-b089-70e5c874c2ce",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c3d645b8-8bde-4c71-9420-895a2a801e86",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "606e3243-542a-4c62-90df-aa59e0fd83a1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d603c803-4597-4fb8-8a57-ed4cae2db42a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f9c5c69d-c50d-4f9b-baeb-0af78000b9e9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3c41384f-b8ac-4faa-bdba-a097ec070880",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "77eacd13-656f-474c-9155-4d24fa75e6f2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "b09a10a3-1a53-4d9b-99c5-def1eb0155fb",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "AccessDenied"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ef74ac12-3504-47b3-8307-e0c7d5509f41",
+      "renditionMap" : {
+        "de" : "0a2dbf55-40b8-4f0f-9985-7555e7dd96e5",
+        "es" : "85b853f2-38d7-4a44-bf70-6c8207bfa981",
+        "es_mx" : "208e51d8-705a-47f9-a460-de47e75e144a",
+        "fr" : "9d8f2f90-c3e8-4f66-9f83-c08c4dc49053",
+        "it" : "7cfad2c3-b2d9-4d51-be74-6e2c425c4b50",
+        "ja" : "6a04fff7-7ab5-4ef5-acaa-87db6855f575",
+        "ko" : "118fe06e-eedd-4206-8286-3b12d5a57562",
+        "pt_br" : "f9cc4ab5-afd6-429c-97e5-c1b9e23ec5e9",
+        "pt_pt" : "ccd174d4-fccf-4ac4-8fe5-432f96926ece",
+        "ru" : "5fdb0600-d2ec-46fb-8dc0-cba272d05787",
+        "zh_cn" : "83f80552-9633-4a0d-8688-d59185f742b4",
+        "zh_tw" : "32f8449b-910f-4d2d-9fe3-1cf2faf42351"
+      },
+      "renditions" : [ {
+        "id" : "83f80552-9633-4a0d-8688-d59185f742b4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5fdb0600-d2ec-46fb-8dc0-cba272d05787",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ccd174d4-fccf-4ac4-8fe5-432f96926ece",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6a04fff7-7ab5-4ef5-acaa-87db6855f575",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7cfad2c3-b2d9-4d51-be74-6e2c425c4b50",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9d8f2f90-c3e8-4f66-9f83-c08c4dc49053",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "208e51d8-705a-47f9-a460-de47e75e144a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0a2dbf55-40b8-4f0f-9985-7555e7dd96e5",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "118fe06e-eedd-4206-8286-3b12d5a57562",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "85b853f2-38d7-4a44-bf70-6c8207bfa981",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f9cc4ab5-afd6-429c-97e5-c1b9e23ec5e9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "32f8449b-910f-4d2d-9fe3-1cf2faf42351",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccessDenied",
+            "title" : "AccessDenied"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "c7e08e48-d354-4059-912e-691e7c23072c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "DobmlYmiN84caZOB8BHMgJAbJ4nFxo",
+  "type" : "view",
+  "viewType" : "custom-accessdenied"
+}

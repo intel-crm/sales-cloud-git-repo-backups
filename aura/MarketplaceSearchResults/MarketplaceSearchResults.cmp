@@ -1,0 +1,164 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"  access="global">
+
+  <aura:attribute name="storeName" type="string" default="Search" />
+  <aura:attribute name="showTabs" type="boolean" default="true" description="Internal Component"/>
+  <aura:attribute name="showPaging" type="boolean" default="false" description="Internal Component" />
+
+  <aura:attribute name="resultsProducts" type="Object[]" default="[]" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="resultsPartners" type="Object[]" default="[]" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="totalResultsPartners" type="integer" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="totalResultsProducts" type="integer" description="Internal Component - set by Redux settings in Controller" />
+  
+
+  <aura:attribute name="searchType" type="String" default="" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="searchLoading" type="String" default="" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="sortByField" type="string" description="Internal Component - set by Redux settings in Controller" />
+
+  <aura:attribute name="rangeFirst" type="integer" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="rangeLast" type="integer" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="currentPage" type="integer" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="totalPages" type="integer" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="totalResults" type="integer" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="sortField" type="string" default="" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="currentTab" type="string" default="1" description="Internal Component - set by Redux settings in Controller" />
+  <aura:attribute name="onPageChange" type="object" description="Internal Component" />
+    
+    
+  <aura:handler name="change" value="{!v.totalResults}" action="{!c.triggerSearchAnalytics}"/>
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+  <c:MarketplaceAnalyticsData aura:id="analyticsData" /><!-- component having the Web analytics logic -->
+	
+  <div class="padding-xs-l-horizontal-medium slds-p-bottom_medium">
+
+    <aura:if isTrue="{!v.searchLoading}">
+      <div class="loadingContainer slds-m-top_medium">
+        <div class="spinnerContainer">
+          <lightning:spinner alternativeText="Loading"/>
+        </div>
+      </div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.searchType == 'all'}">
+      <lightning:layout class="slds-p-top_small slds-m-bottom_small tabsHeader">
+        <lightning:layoutItem size="6">
+          <a href="javascript:void(0);" class="{!'slds-text-align_center tab' + (v.currentTab == '1' ? ' activeTab' : '')}"
+            data-tabid="1" onclick="{!c.handleTabChange}">
+            {!$Label.c.PMP_L2_Tab_Products}
+          </a>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="6">
+          <a href="javascript:void(0);" class="{!'slds-text-align_center tab' + (v.currentTab == '2'? ' activeTab' : '')}"
+            data-tabid="2" onclick="{!c.handleTabChange}">
+            {!$Label.c.PMP_L2_Tab_Partners}
+          </a>
+        </lightning:layoutItem>
+      </lightning:layout>
+      <aura:if isTrue="{!v.currentTab == '1'}">
+          <div class="padding-xs-l-horizontal-medium">
+              <!--[10/7]Commented as part of DE56139
+              <h4 class="slds-p-bottom_medium">{!$Label.c.PMP_L2_Tab_Products}</h4>-->
+              <aura:if isTrue="{! v.resultsProducts.length}">
+
+                <c:MarketplaceCardList displayCardDescription="false" displayCardType="true" results="{!v.resultsProducts}"  displayType="{! v.appState.Settings.currentScreenSize == 'mobile' ? 'card' : v.state.listDisplayType }" cardType="product"/>
+
+                <div class="{! v.appState.Settings.currentScreenSize == 'desktop' ? 'slds-text-align_right' : 'slds-p-bottom_medium' }">
+                  <a href="javascript:void(0);" onclick="{!c.handleSelectAllProductCategory}">{!format($Label.c.PMP_Results_See_All_Products, v.totalResultsProducts)} <lightning:icon iconName="utility:chevronright"
+		              class="cursor icon-xx-small slds-m-left_xxx-small link-caret"
+		              size="x-small"/></a>
+                </div>
+
+              </aura:if>
+              <aura:if isTrue="{!and(!v.searchLoading , v.resultsProducts.length == 0)}">
+                <div class="slds-p-around_large">
+                  {!format($Label.c.PMP_Results_No_Results_For,v.state.searchString)}
+                  <!--{!$Label.c.PMP_Results_Did_You_Mean}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="lorem">Lorem</a>&nbsp;{!$Label.c.CORE_PMP_or}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="ipsum">Ipsum</a> ?-->
+                </div>
+              </aura:if>
+          </div>
+        </aura:if>
+        <aura:if isTrue="{!v.currentTab == '2'}">
+          <div class="padding-xs-l-horizontal-medium">
+              <!--Commented as part of DE56139
+              <h4 class="slds-p-bottom_medium">{!$Label.c.PMP_L2_Tab_Partners	}</h4>-->
+              <aura:if isTrue="{!v.resultsPartners.length}">
+                <c:MarketplaceCardList displayCardDescription="false" results="{!v.resultsPartners}" displayType="{! v.appState.Settings.currentScreenSize == 'mobile' ? 'card' : v.state.listDisplayType }" cardType="partner" />
+                <div class="{! v.appState.Settings.currentScreenSize == 'desktop' ? 'slds-text-align_right' : 'slds-p-bottom_medium' }">
+                  <a href="javascript:void(0);" onclick="{!c.handleSelectAllPartnerCategory}">{!format($Label.c.PMP_Results_See_All_Partners,v.totalResultsPartners)}<lightning:icon iconName="utility:chevronright"
+		              class="cursor icon-xx-small slds-m-left_xxx-small link-caret"
+		              size="x-small"/></a>
+                </div>
+
+              </aura:if>
+              <aura:if isTrue="{!and(!v.searchLoading , v.resultsPartners.length == 0)}">
+                <div class="slds-p-around_large">
+                  {!format($Label.c.PMP_Results_No_Results_For,v.state.searchString)}
+                  <!--{!$Label.c.PMP_Results_Did_You_Mean}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="lorem">Lorem</a>&nbsp;{!$Label.c.CORE_PMP_or}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="ipsum">Ipsum</a> ?-->
+                </div>
+              </aura:if>
+          </div>
+        </aura:if>
+    </aura:if>
+
+    <aura:if isTrue="{!v.searchType == 'product'}">
+      <aura:if isTrue="{! v.resultsProducts.length}">
+        <c:MarketplaceCardList displayCardDescription="false" displayCardType="true" results="{!v.resultsProducts}" displayType="{! v.appState.Settings.currentScreenSize == 'mobile' ? 'card' : v.state.listDisplayType }"  cardType="product"/>
+        
+      </aura:if>
+      <aura:if isTrue="{!and(!v.searchLoading , v.resultsProducts.length == 0)}">
+        <aura:if isTrue="{!v.state.searchString.length}">  
+            <div class="slds-p-around_large">
+              {!format($Label.c.PMP_Results_No_Results_For,v.state.searchString)} 
+              <!--{!$Label.c.PMP_Results_Did_You_Mean}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="lorem">Lorem</a>&nbsp;{!$Label.c.CORE_PMP_or}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="ipsum">Ipsum</a> ?-->
+            </div>
+        
+        <aura:set attribute="else">
+          	<div class="slds-p-around_large">
+              {!$Label.c.PMP_Results_No_Results_Found}  
+            </div>
+        </aura:set>
+      	</aura:if>      
+      </aura:if>
+    </aura:if>
+
+    <aura:if isTrue="{!v.searchType == 'partner'}">
+      <aura:if isTrue="{!v.resultsPartners.length}">
+        <c:MarketplaceCardList displayCardDescription="false" results="{!v.resultsPartners}" displayType="{! v.appState.Settings.currentScreenSize == 'mobile' ? 'card' : v.state.listDisplayType }" cardType="partner" />
+        
+      </aura:if>
+      <aura:if isTrue="{!and(!v.searchLoading , v.resultsPartners.length == 0)}">
+        <aura:if isTrue="{!v.state.searchString.length}">  
+            <div class="slds-p-around_large">
+              {!format($Label.c.PMP_Results_No_Results_For,v.state.searchString)} 
+              <!--{!$Label.c.PMP_Results_Did_You_Mean}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="lorem">Lorem</a>&nbsp;{!$Label.c.CORE_PMP_or}&nbsp;<a href="#" onclick="{!c.handleSearchSuggestion}" data-search-term="ipsum">Ipsum</a> ?-->
+            </div>
+        
+        <aura:set attribute="else">
+          	<div class="slds-p-around_large">
+              {!$Label.c.PMP_Results_No_Results_Found}  
+            </div>
+        </aura:set>
+      	</aura:if>  
+      </aura:if>
+    </aura:if>
+
+    <aura:if isTrue="{!v.searchType != 'all'}">
+      <!-- Paging Logic -->
+      <aura:if isTrue="{!and(!v.searchLoading, v.showPaging)}">
+          <c:MarketplacePagination
+              aura:id="pagination"
+              rangeFirst="{!v.rangeFirst}"
+              rangeLast="{!v.rangeLast}"
+              currentPage="{!v.currentPage}"
+              totalPages="{!v.totalPages}"
+              totalResults="{!v.totalResults}"
+              onPageChange="{!v.onPageChange}"
+            />
+      </aura:if>
+    </aura:if>
+
+
+  </div>
+
+</aura:component>

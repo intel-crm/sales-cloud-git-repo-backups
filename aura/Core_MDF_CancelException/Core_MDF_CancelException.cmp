@@ -1,0 +1,35 @@
+<aura:component controller="Core_MDF_CancelExceptionRecord" implements="force:hasRecordId,force:lightningQuickAction" access="global">
+    <aura:attribute name = "isUserEligible" type = "Boolean" default="false"/>
+    <aura:attribute name = "exceptionNotAvailableForCancellation" type = "Boolean" default="false"/>
+    <aura:attribute name = "errorMsg" type = "String"/>
+    <aura:attribute name = "wrapperClassVar"  type = "Core_MDF_CancelExceptionRecord"/> 
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+          <aura:if isTrue = "{!v.showSpinner}" >
+        <lightning:spinner alternativeText="Loading" size="large" class = "slds-is-fixed"></lightning:spinner>
+        </aura:if>
+    <aura:if isTrue="{!v.isUserEligible}">
+        <lightning:layout verticalAlign="center" class="x-large">
+            <lightning:layoutItem flexibility="auto" padding="around-small" size ="12" class="slds-align_absolute-center">
+                <lightning:icon iconName="utility:warning" variant="warning"/>
+                <p class="slds-p-around_medium ">{!$Label.c.Core_MDF_ExceptionCancellingWarning}</p>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout>
+            <lightning:layoutItem flexibility="auto" padding="around-small" size ="12" class="slds-align_absolute-center">
+                <lightning:button variant="brand" label="{!$Label.c.Core_MDF_DQYes}" 
+                                  title="{!$Label.c.Core_MDF_DQYes}" 
+                                  onclick="{!c.checkExceptionEligibilityCriteria}"/>
+                <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_DQNo}" 
+                                  title="{!$Label.c.Core_MDF_DQNo}" 
+                                  onclick="{!c.closeModal}"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+    <aura:if isTrue="{!v.exceptionNotAvailableForCancellation}">
+        <div align="center">
+            <c:Core_MDF_ErrorMessage type="error" message="{!v.errorMsg}" />
+        </div>
+    </aura:if>
+</aura:component>

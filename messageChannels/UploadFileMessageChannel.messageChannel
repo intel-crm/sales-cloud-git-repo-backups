@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Use to pass refresh message from upload case</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>messagefromonelightningcomponent</description>
+        <fieldName>message</fieldName>
+    </lightningMessageFields>
+    <masterLabel>UploadFileMessageChannel</masterLabel>
+</LightningMessageChannel>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Co_Marketing_Activity__c</name>
+        <relationshipLabel><!-- Activity Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_Field_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Clicks</masterLabel>
+            <translation>디지털 미디어 - 클릭 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Conversions</masterLabel>
+            <translation>디지털 미디어 - 변환 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Downloads</masterLabel>
+            <translation>디지털 미디어 - 다운로드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Impressions</masterLabel>
+            <translation>디지털 미디어 - 노출 횟수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Leads</masterLabel>
+            <translation>디지털 미디어 - 리드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Page Views</masterLabel>
+            <translation>디지털 미디어 - 페이지 뷰 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Social Media Likes/Shares</masterLabel>
+            <translation>디지털 미디어 - 소셜 미디어 좋아요/공유 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Unique Visitors</masterLabel>
+            <translation>디지털 미디어 - 고유 방문자 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - Average time on Page (Seconds)</masterLabel>
+            <translation>디지털 미디어 - 페이지 평균 체류 시간(초)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media Percentage Spend</masterLabel>
+            <translation>디지털 미디어 비율 지출</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Deal Wins</masterLabel>
+            <translation>이벤트 - 거래 성사 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of End Customer Attendees</masterLabel>
+            <translation>이벤트 - 최종 고객 참석자 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Seller Attendees</masterLabel>
+            <translation>이벤트 - 판매자 참석자 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - # of Sales Qualified Leads</masterLabel>
+            <translation>이벤트 - 판매 적격 리드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - Revenue of Units Sold (USD)</masterLabel>
+            <translation>이벤트 - 판매 단위 매출(USD)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Percentage Spend</masterLabel>
+            <translation>이벤트 비율 지출</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount - # of Days</masterLabel>
+            <translation>기금 인원수 - 일 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount Percentage Spend</masterLabel>
+            <translation>기금 인원수 비율 지출</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deal Wins</masterLabel>
+            <translation>인센티브 - 거래 성사 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deals Registered</masterLabel>
+            <translation>인센티브 - 등록된 거래 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Design Wins</masterLabel>
+            <translation>인센티브 - 설계 승리 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Units Sold</masterLabel>
+            <translation>인센티브 - 판매된 단위 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - Revenue of Units Sold (USD)</masterLabel>
+            <translation>인센티브 - 판매 단위 매출(USD)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Percentage Spend</masterLabel>
+            <translation>인센티브 비율 지출</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Leads</masterLabel>
+            <translation>리드 육성 - 리드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Sales Qualified Leads</masterLabel>
+            <translation>리드 육성 - 판매 적격 리드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation Percentage Spend</masterLabel>
+            <translation>리드 육성 비율 지출</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Conversions</masterLabel>
+            <translation>레거시 미디어 - 변환 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Downloads</masterLabel>
+            <translation>레거시 미디어 - 다운로드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Impressions</masterLabel>
+            <translation>레거시 미디어 - 노출 횟수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Leads</masterLabel>
+            <translation>레거시 미디어 - 리드 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Recipients</masterLabel>
+            <translation>레거시 미디어 - 수신자 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - Runs per hour</masterLabel>
+            <translation>레거시 미디어 - 시간당 운영</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media Percentage Spend</masterLabel>
+            <translation>레거시 미디어 비율 지출</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation - # of Person Days</masterLabel>
+            <translation>소매 제품 활성화 - # 인원일수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation Percentage Spend</masterLabel>
+            <translation><!-- Retail Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
+            <translation>기술 활성화 - 거래 승리 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deployments</masterLabel>
+            <translation>기술 활성화 - 배포 번호</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
+            <translation>기술 활성화 - 설계 승리 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Downloads</masterLabel>
+            <translation>기술 활성화 - 다운로드 번호</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Instances</masterLabel>
+            <translation>기술 활성화 - 인스턴스 번호</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Sales Qualified Leads</masterLabel>
+            <translation>기술 활성화 - 판매 자격 리드 번호</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation Percentage Spend</masterLabel>
+            <translation><!-- Technical Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of End Customer Trainees</masterLabel>
+            <translation>교육 - 최종 고객 연수생 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of Partner Trainees</masterLabel>
+            <translation>교육 - 파트너 연수생 수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Percentage Spend</masterLabel>
+            <translation>교육 비율 지출</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Core_MDF_Field_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Amount --></label>
+        <name>Core_MDF_Spending_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation>디지털 미디어</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation>이벤트</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount</masterLabel>
+            <translation>기금 인원수</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive</masterLabel>
+            <translation>인센티브</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation</masterLabel>
+            <translation>리드 육성</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media</masterLabel>
+            <translation>레거시 미디어</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation</masterLabel>
+            <translation>리테일 활성화</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation</masterLabel>
+            <translation>기술 활성화</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation>교육</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>KPI</masterLabel>
+            <translation><!-- KPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percentage</masterLabel>
+            <translation><!-- Percentage --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Activity Attributes Name --></nameFieldLabel>
+</CustomObjectTranslation>

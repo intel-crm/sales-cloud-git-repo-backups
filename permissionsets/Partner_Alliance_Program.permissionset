@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Partner Alliance Program field on Accounts is only editable by a select few users</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Core_Partner_Alliance_Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Partner Alliance Program</label>
+    <license>Salesforce</license>
+</PermissionSet>

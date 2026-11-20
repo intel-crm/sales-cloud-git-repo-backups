@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDSPA</name>
+    <style>none</style>
+    <subject>Felicitaciones por su nuevo estado de Intel® Cloud Insider</subject>
+    <textOnly>¡Su solicitud ha sido aprobada!
+
+Bienvenido. {!Account.Name} ahora es miembro de Intel® Cloud Insider! Puede visitar intel.com/cloudinsider para obtener materiales de marketing, herramientas de ventas y otra información acerca de sus beneficios. Si desea agregar un colega a su cuenta, visite su perfil empresarial en Mi cuenta. {!$Label.PRM_MyIntelProfileURL}
+
+
+¿Preguntas? Comuníquese con la Asistencia de Intel® Cloud Insider en el correo programas@intel.com o aquí
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. Todos los derechos reservados. Intel y el logotipo de Intel son marcas comerciales de Intel Corporation en EE. UU. o en otros países.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, Estados Unidos. Intel.com
+Puede cancelar la suscripción en cualquier momento mediante la actualización de su configuración de perfil  {!$Label.PRM_MyIntelProfileURL}
+Privacidad | Cookies | *Marcas comerciales</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

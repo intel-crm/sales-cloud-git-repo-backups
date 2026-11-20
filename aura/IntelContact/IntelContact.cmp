@@ -1,0 +1,27 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+<aura:attribute name="title" type="string" />
+<aura:attribute name="listing" type="Object[]" default="[]" />
+<aura:attribute name="label" type="string" />
+<aura:attribute name="copy" type="string" />
+<aura:attribute name="imgUrl" type="string" />
+<aura:attribute name="ctaUrl" type="string" />
+<aura:attribute name="ctaCopy" type="string" />
+<aura:attribute name="isPhone" type="boolean" default="false" />
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:if isTrue="{!not(empty(v.listing))}"> <!-- IF condition added by MGDANIES 10-29 -->
+    <lightning:layout horizontalAlign="spread" multipleRows="true" class="slds-p-vertical_x-large padding-mobile-horizontal-medium list-card-parent">
+        <lightning:layoutItem size="12" mediumDeviceSize="12" class="list-card-parent-title">
+                <h4>{!v.title}</h4>
+        </lightning:layoutItem>
+        
+        <lightning:layout multipleRows="true" class="slds-m-top_medium slds-gutters slds-wrap">
+            <aura:iteration items="{!v.listing}" var="item" indexVar="i">
+                <lightning:layoutItem size="12" mediumDeviceSize="4">
+                   <c:MarketplaceSimpleContactCard  data="{!v.listing}" label="{!item.label}" copy="{!item.copy}" imgUrl="{!item.imgUrl}" ctaUrl="{!item.ctaUrl}" ctaCopy="{!item.ctaCopy}"/>
+                </lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+    </lightning:layout>
+</aura:if>
+</aura:component>

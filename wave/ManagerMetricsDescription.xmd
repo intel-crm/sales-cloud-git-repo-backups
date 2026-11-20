@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataset>ManagerMetricsDescription</dataset>
+    <dimensions>
+        <field>Color</field>
+        <isDerived>false</isDerived>
+        <members>
+            <label>Green</label>
+            <member>1 - Green</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <label>Yellow</label>
+            <member>2 - Yellow</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <label>Red</label>
+            <member>3 - Red</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+</WaveXmd>

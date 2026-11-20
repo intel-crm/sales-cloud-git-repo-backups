@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>Core_Custom_Object_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_Account__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_CCV__r.Core_Account__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CCV__c</fullName>
+        <label>CCV</label>
+        <referenceTo>Core_CCV__c</referenceTo>
+        <relationshipLabel>Value Maps</relationshipLabel>
+        <relationshipName>Value_Maps</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_Customer_Value__c</fullName>
+        <description>Customer perceived value for the metric</description>
+        <inlineHelpText>Customer perceived performance for the metric</inlineHelpText>
+        <label>Customer Value</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - High</fullName>
+                    <default>false</default>
+                    <label>1 - High</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium</fullName>
+                    <default>false</default>
+                    <label>2 - Medium</label>
+                </value>
+                <value>
+                    <fullName>3 - Low</fullName>
+                    <default>false</default>
+                    <label>3 - Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_Performance_HIGH__c</fullName>
+        <description>Intel perceived performance HIGH value metric</description>
+        <inlineHelpText>Intel perceived performance HIGH value metric (rightmost column in Value Map)</inlineHelpText>
+        <label>HIGH - Intel Performance</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_Performance_LOW__c</fullName>
+        <description>Intel perceived performance LOW value metric</description>
+        <inlineHelpText>Intel perceived performance LOW value metric (leftmost column in Value Map)</inlineHelpText>
+        <label>LOW - Intel Performance</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_Performance_MED__c</fullName>
+        <description>Intel perceived performance MEDIUM value metric</description>
+        <inlineHelpText>Intel perceived performance MEDIUM value metric (middle column in Value Map)</inlineHelpText>
+        <label>MED - Intel Performance</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity_Assigned__c</fullName>
+        <formula>ISBLANK(Core_CCV__r.Core_Opportunity__c) = FALSE</formula>
+        <label>Opportunity Assigned</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Value Map</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Core_Account__c</columns>
+        <columns>Core_Opportunity_Assigned__c</columns>
+        <columns>Core_CCV__c</columns>
+        <columns>Core_Customer_Value__c</columns>
+        <columns>Core_Intel_Performance_LOW__c</columns>
+        <columns>Core_Intel_Performance_MED__c</columns>
+        <columns>Core_Intel_Performance_HIGH__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>{0}</displayFormat>
+        <label>Value Map ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Value Maps</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Opportunity_Assigned__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_CCV__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Customer_Value__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Intel_Performance_LOW__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Intel_Performance_MED__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Intel_Performance_HIGH__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Opportunity_Assigned__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_CCV__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Customer_Value__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Intel_Performance_LOW__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Intel_Performance_MED__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Intel_Performance_HIGH__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Opportunity_Assigned__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_CCV__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Customer_Value__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Intel_Performance_LOW__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Intel_Performance_MED__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Intel_Performance_HIGH__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>UPDATEDBY_USER</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Core_Account__c</searchFilterFields>
+        <searchFilterFields>Core_Opportunity_Assigned__c</searchFilterFields>
+        <searchFilterFields>Core_CCV__c</searchFilterFields>
+        <searchFilterFields>Core_Customer_Value__c</searchFilterFields>
+        <searchFilterFields>Core_Intel_Performance_LOW__c</searchFilterFields>
+        <searchFilterFields>Core_Intel_Performance_MED__c</searchFilterFields>
+        <searchFilterFields>Core_Intel_Performance_HIGH__c</searchFilterFields>
+        <searchFilterFields>UPDATEDBY_USER</searchFilterFields>
+        <searchResultsAdditionalFields>Core_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Opportunity_Assigned__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_CCV__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Customer_Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Intel_Performance_LOW__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Intel_Performance_MED__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Intel_Performance_HIGH__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_Customer_Value</fullName>
+        <active>true</active>
+        <description>Non-blank value</description>
+        <errorConditionFormula>AND (
+ISBLANK(TEXT(Core_Customer_Value__c))
+)</errorConditionFormula>
+        <errorMessage>Make edits to existing Value Map records:  1 - High; 2 - Medium; 3 - Low.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

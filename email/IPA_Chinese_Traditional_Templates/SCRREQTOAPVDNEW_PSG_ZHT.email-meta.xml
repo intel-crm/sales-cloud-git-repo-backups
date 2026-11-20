@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>PSG Licensing</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_PSG_ZHT</name>
+    <style>none</style>
+    <subject>Welcome to PSG Licensing</subject>
+    <textOnly>歡迎來到 Intel® FPGA 自助服務授權中心
+
+{!Contact.FirstName}，
+
+歡迎來到 Intel® FPGA 自助服務授權中心（SSLC）。您現在可以查看、管理，並於必要時啟動您的 Intel PSG 軟體和 IP 授權權利。
+SSLC 會以引導的方式，協助您執行基本授權權利功能。我們也提供了影片和文件供您參考。
+
+請儲存您的登入資訊以供日後參考：
+
+電子郵件地址：{!Contact.Email}
+
+請確實保護您的密碼，不要外洩。在 Intel 網站上使用此密碼必須遵守 Intel 的使用條款與細則，您可透過個別網站網頁最下方的連結進入閱覽。
+
+
+請登入  licensing.intel.com  查看與管理您的 Intel® PSG 軟體和 IP 授權權利。
+
+
+謝謝您，
+您的 Intel® PSG SSLC 團隊
+
+
+此訊息為業務訊息，對於您與 Intel® 可程式化解決方案事業群的 FPGA 軟體和/或 IP 授權權利關係密切。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。www.intel.com.tw
+隱私權&amp;verbar;Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

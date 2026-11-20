@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPS Survey Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPS Survey Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Custom Label Name for footer --></help>
+        <label><!-- Footer Label --></label>
+        <name>Core_IPS_Footer_Label__c</name>
+    </fields>
+    <fields>
+        <help><!-- Custom Label Name for Header --></help>
+        <label><!-- Header Label --></label>
+        <name>Core_IPS_Header_Label__c</name>
+    </fields>
+    <fields>
+        <help><!-- Static Resource Name for IPS Logo Image --></help>
+        <label><!-- Image Logo Name --></label>
+        <name>Core_IPS_Image_Resource__c</name>
+    </fields>
+    <fields>
+        <help><!-- custom css styles can be put here --></help>
+        <label><!-- container CSS --></label>
+        <name>Core_IPS_container_CSS__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

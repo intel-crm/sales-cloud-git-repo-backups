@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Business Types</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Business Types</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Types --></label>
+        <name>Business_Types__c</name>
+        <relationshipLabel><!-- Contact Business Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Contact Business Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Pending Registration --></label>
+        <name>Pending_Registration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason --></label>
+        <name>Status_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Approval - Pending</masterLabel>
+            <translation><!-- Approval - Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Removal - Pending</masterLabel>
+            <translation><!-- Removal - Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Removed</masterLabel>
+            <translation><!-- Removed --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- CBT cannot be approved due one or more validations errors.
+• Contact&apos;s &apos;English Only First Name&apos; is Blank
+• Contact&apos;s &apos;English Only Last Name&apos; is Blank --></errorMessage>
+        <name>CBT_Validations</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- DZP Registration Request for the given email ID is in Open/Pending/Rejected status. --></errorMessage>
+        <name>Registration_Record_is_still_Pending</name>
+    </validationRules>
+</CustomObjectTranslation>

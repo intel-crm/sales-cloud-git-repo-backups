@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>REGISTRATION_REQUEST_REJECTED_EV_VIE</name>
+    <style>none</style>
+    <subject>Yêu cầu đăng ký bị từ chối</subject>
+    <textOnly>Yêu cầu đăng ký bị từ chối
+
+
+
+Xin chào {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+Chúng tôi nhận được yêu cầu đăng ký cho Chương trình Liên minh Đối tác Intel® gần đây của bạn. Sau khi xác minh, yêu cầu đã bị từ chối vì những lý do sau:
+
+{!PRM_Registration_Request__c.PRM_Reject_Reason__c}
+
+Nếu bạn cảm thấy quyết định này được đưa ra do nhầm lẫn hoặc muốn cung cấp thêm thông tin cho chúng tôi, vui lòng liên hệ với chúng tôi qua Programs@intel.com.
+
+
+Trân trọng!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to opportunity owner when GEC requires more information</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MINDS Opportunity Clarifying Questions AR</name>
+    <style>none</style>
+    <subject>Additional questions for  your SFDC Opportunity ID {!Opportunity.Id} Account Name {!Account.Name}</subject>
+    <textOnly>Hello {!Opportunity.OwnerFullName},
+
+Thank you for completing the MAG Questionnaire for your MAG opportunity referenced in the subject line.  GEC (Global Export Compliance) has completed the initial review and has additional questions.  Please provide your response in SFDC: {!Opportunity.Core_Org_URL__c}apex/Core_MAGQuestionnaire?OpportunityID={!Opportunity.Id}.
+
+Global Export Compliance / GTT
+Export.customer@intel.com</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

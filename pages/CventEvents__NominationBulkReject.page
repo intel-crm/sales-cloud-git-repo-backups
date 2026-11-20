@@ -1,0 +1,53 @@
+<apex:page standardController="CventEvents__Nomination__c" recordSetvar="nominations" extensions="CventEvents.NominationBulkApproveRejectController">
+    <apex:stylesheet value="{!URLFOR($Resource.CventEvents__cssStyles, '_colors.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CventEvents__cssStyles, 'components/_toast.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CventEvents__cssStyles, 'tachyons/_spacing.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CventEvents__cssStyles, 'tachyons/_flexbox.css')}" />
+
+    <apex:slds />
+    <apex:includeLightning />
+
+    <div class="slds-scope slds-p-horizontal_medium">
+        <div class="slds-grid slds-p-vertical_x-small">
+            <div class="slds-col slds-align-middle">
+                <a href="javascript:history.back()" class="slds-text-link slds-text-heading_small">&#10229; Back</a>
+            </div>
+            <div class="slds-col slds-align-middle">
+                <span id="lcNominationBulkRejectHeader" class="slds-text-heading_medium"></span>
+            </div>
+        </div>
+        <div id="lcNominationBulkRejectBody">
+            <div id="lcNominationBulkRejectSpinner" class="slds-spinner_container">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner--neutral">
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const namespace = '{!JSENCODE(namespace)}';
+
+        document.getElementById('lcNominationBulkRejectHeader').innerText = '{!JSENCODE($Label.NominationsBulkReject)}';
+
+        const nominationIds = [];
+        <apex:repeat value="{!selectedNominations}" var="nomination">
+            nominationIds.push('{!JSENCODE(nomination.Id)}');
+        </apex:repeat>
+
+            $Lightning.use(namespace + ":ltngDependencyApp",
+                function () {
+                    $Lightning.createComponent(namespace + ":bulkApproveRejectNomination",
+                        {
+                            'nominationIds': nominationIds,
+                            'action': 'rejectNominations'
+                        },
+                        "lcNominationBulkRejectBody",
+                        function () {
+                            document.getElementById('lcNominationBulkRejectSpinner').className += ' slds-hide';
+                        });
+                });
+    </script>
+</apex:page>

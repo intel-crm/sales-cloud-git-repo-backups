@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Recovery Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Recovery Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_Id__c</name>
+        <relationshipLabel><!-- Recovery Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active Indicator --></label>
+        <name>Core_MDF_Active_RO_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim ID External --></label>
+        <name>Core_MDF_Claim_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Id --></label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Recovery Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Number --></label>
+        <name>Core_MDF_Claim_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_MDF_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is System Created? --></label>
+        <name>Core_MDF_Is_System_Created_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partnership Grade Maintenance --></label>
+        <name>Core_MDF_Partnership_Grade_Maint_Id__c</name>
+        <relationshipLabel><!-- Recovery Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter Year --></label>
+        <name>Core_MDF_Quarter_Year_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ready to Recover --></label>
+        <name>Core_MDF_Ready_to_Recover_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ready to Recover Indicator --></label>
+        <name>Core_MDF_Ready_to_Recover_RO_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovered Partnership Score Detail --></label>
+        <name>Core_MDF_RecoveredPartnershipScoreDetail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovered Budget --></label>
+        <name>Core_MDF_Recovered_Budget_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovery Amount --></label>
+        <name>Core_MDF_Recovery_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovery --></label>
+        <name>Core_MDF_Recovery__c</name>
+        <relationshipLabel><!-- Recovery Requests --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

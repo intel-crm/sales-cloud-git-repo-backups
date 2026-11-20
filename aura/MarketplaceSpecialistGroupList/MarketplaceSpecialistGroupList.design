@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="pageType" label="Page" datasource="all,partner,offering" default="all" />
+    <design:attribute name="viewAll" label="Show View All" />
+</design:component>

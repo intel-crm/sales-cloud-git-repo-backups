@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Job Function Reference</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Job Function Reference</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Function Code --></label>
+        <name>Core_Job_Function_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Function Name --></label>
+        <name>Core_Job_Function_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

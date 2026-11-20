@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>HP 240R G9,Code name,RPL R U15,14.0&quot; Clamshell,Windows,ACP for VMware SDS - Greylock - based onR760,Hypertec UTO Scinet GNR Tender,400 GE single port tester,2025 Medion S-Series SPRCHRGD LNL MX,Private Cloud AI-HPC System - AMII (Alberta),2025 Medion NUC Mini PC (0,5l),SDR processing COTs board replacement,#SC23Existing JHU MARCC - new cluster 2024 deployment,DOT HPI IT Modernization Q4 2023,PSG - CDN Security Key Offload,2025 Medion Erazer Deputy P70 ARL H,STD_PC_Refresh2024,Juniper EHL Antman Entry ACX for Cloud Metro 2024,Commerce - Client BPA 1H 2024,CIOT Faraday,2H&apos;24 Rakuten - Q4 AI Server (LLM/Training),UPDATE to NEC 5G Sub6 RIU 2020 UK 20% Split,1H&apos;25 NextWave - Q2 LYC AI infra,HTB-210-Q670 - MCQ1 - ADL,Autonomous Box AutraTech #EMR,ARAMCO Engineered System for HPC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Shell - 2024 - Client framework RFP,2023-24 Telenor TRUE/DTAC 5G Core Phase 1 (Thailand),SRG 2024 - JUNTA DE ANDALUCÍA - Regional Ministry of Education - OPS for IWB in ClassRooms,ARAMCO Engineered System for HPC,2024 Server Tender TS5 - Lot 4 Rack 2 Socket Server – “Performance”,H2 2023 Volume of Desktop outsourcing 3  - &quot;DTO3&quot; - Frame Contract - Batch 3,SI-Program-TCS-EMEA-CCG-JLR Intel EMA-2024 - 6QPS,Egypt:MOE:2024:STEMSCHOOLS:PHASEII,2024 PC Framework - 2H,Q2&apos;24 ByteDance One Intel SW Enablement PW #9(DSA+Soft RDMA),Nexus Azure digital twin and industrial metaverse,AWS Telco Private Networks managed service</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Copy of Opportunity Name of X Look Up</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>AMOUNT</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

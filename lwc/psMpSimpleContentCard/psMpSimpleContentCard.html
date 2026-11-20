@@ -1,0 +1,16 @@
+<template>
+    <div class="simple-content-card-wrapper">
+            <template if:true={ifs.showHeading}>
+                <h3 class="simple-content-card-header heading-16">{heading}</h3>
+            </template>
+          <div class="slds-text-align_center">
+                <template if:true={ifs.showImage}>
+                    <img src='{imageUrl}' alt="image"/>
+                </template>
+                <p class="simple-content-card-tagline slds-m-around_medium">{tagline}</p>
+                <template if:true={ifs.showButton}>
+                    <lightning-button label={buttonLabel} aria-label={buttonAccessibilityLabel} variant="brand" title={buttonLabel} onclick={handleClick}></lightning-button>
+                </template>
+            </div>
+    </div>
+</template>

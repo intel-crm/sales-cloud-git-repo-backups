@@ -1,0 +1,43 @@
+<template>
+    <template if:false={isRequiredField}>
+        <template  if:true={label}>
+            <lightning-input 
+                label={label} 
+                value={searchKey} 
+                type="search"
+                onchange={handleChange} 
+                placeholder={placeholder}
+                disabled={isDisabledField}>
+            </lightning-input>
+        </template>
+        <template if:false={label}>
+            <lightning-input 
+                variant="label-hidden" 
+                label="Search Record" 
+                value={searchKey} 
+                type="search"
+                onchange={handleChange} 
+                placeholder={placeholder}
+                disabled={isDisabledField}>
+            </lightning-input>
+        </template>
+        <template if:true={searchKeyLenMsg}>
+            <div style="font-size: smaller;">{searchKeyCharlenErrMsg}</div> 
+         </template>
+    </template>
+    <template if:true={isRequiredField}>
+        <lightning-input 
+            label={label} 
+            value={searchKey} 
+            type="search"
+            onchange={handleChange} 
+            placeholder={placeholder}
+            required
+            onfocusout={handleFocusOut}
+            disabled={isDisabledField}>
+        </lightning-input>
+        <template if:true={searchKeyLenMsg}>
+           <div style="font-size: smaller;">{searchKeyCharlenErrMsg}</div> 
+        </template>
+    </template>
+</template>

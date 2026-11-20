@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_30338995</developerName>
+        <masterLabel>Campaign Short</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>CAMPAIGN_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Embedded Manual Lead Entry Forms</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Embedded Manual Entry Form</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Embedded Design Center</sourceValue>
+            </sourceValues>
+            <value>EDC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ITDM.WA.AU.EN.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.BR.PT.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.DE.DE.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.FR.FR.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.KR.KO.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.IN.EN.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.UK.EN.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.US.EN.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.XL.ES.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM.WA.ZA.EN.NAR Intel Education AAE.1323</sourceValue>
+            </sourceValues>
+            <value>ITDM Education</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>OSG Lead Bounty Eastronics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>OSG Lead Bounty Avnet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>OSG Lead Bounty Arrow</sourceValue>
+            </sourceValues>
+            <value>Bounty</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ITDM ESS Manual Entry Form</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ITDM WA Manual Entry Form</sourceValue>
+            </sourceValues>
+            <value>RYH</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_49816628</developerName>
+        <masterLabel>Lead Nurture Stage</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Lead.Core_Lead_State__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>New</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Rejected</sourceValue>
+            </sourceValues>
+            <value>Rejected</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Engaged</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>On Hold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Accepted</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Open</sourceValue>
+            </sourceValues>
+            <value>Open</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>LEAD_ID</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Existing_Covered_Account__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Covered_account_owner__c</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Notes__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY_ACCT</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>CONVERTED_DATE</field>
+    </columns>
+    <columns>
+        <field>OPP_NAME</field>
+    </columns>
+    <columns>
+        <field>OPP_ACCT_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>12/26/2015 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ISS EMEA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_49816628</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Campaign - Leads ISS</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLeadLifetime</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+</Report>

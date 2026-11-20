@@ -1,0 +1,78 @@
+<template>
+    <template if:true={isActive}>
+        <div>
+            <footer role="contentinfo" class="slds-p-around_large" style="background:#e7e7e7;">
+                <!-- LAYOUT GRID -->
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col  slds-size_12-of-12 slds-medium-size_2-of-12 footerLogo">
+                        <span><img style="width:80px;" alt="Intel Footer Logo" src={intelLogoUrl}
+                                title="Intel Footer Logo" /> </span>
+                    </div>
+                    <div
+                        class="slds-col slds-size_12-of-12 slds-medium-size_10-of-12 slds-p-top_large slds-p-bottom_large">
+                        <div style="font-size:15px;">
+                            <a class="colorback" href={label.FooterCompanyInfo} target="_blank">Company
+                                Information</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="colorback" href={label.FooterOurCommitment} target="_blank">Our
+                                Commitment</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="colorback" href={label.IntelDiversity} target="_blank">Diversity
+                                &amp; Inclusion</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="colorback" href={label.FooterCommunities} target="_blank">Communities</a>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="colorback" href={label.IntelInvestorRelations} target="_blank">Investor
+                                Relations</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="colorback" href={label.IntelContactUs} target="_blank">Contact
+                                Us</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="colorback" href={label.IntelNewsRoom} target="_blank">Newsroom</a>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <div><a class="colorback" href={label.IntelJobs} target="_blank">Jobs</a>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </div>
+                        </div><br />
+                        <div class="socialFooter">
+                            <a href={label.LinkdinIcon} class="socialLink" target="_blank">
+                                <img src="/sfsites/c/resource/FooterIcons/FooterIcons/LinkedIn.svg" sizes="xx-small"
+                                    class="slds-p-right_medium" style="height: 30px;" />
+                            </a>
+                            <a href={label.FacebookIcon} class="socialLink" target="_blank">
+                                <img src="/sfsites/c/resource/FooterIcons/FooterIcons/Facebook.svg"
+                                    class="slds-p-right_medium" style="height: 30px;" />
+                            </a>
+                            <a href={label.TwitterIcon} class="socialLink" target="_blank">
+                                <img src="/sfsites/c/resource/FooterIcons/FooterIcons/Twitter.svg"
+                                    class="slds-p-right_medium" style="height: 30px;" />
+                            </a>
+                            <a href={label.YoutubeIcon} class="socialLink" target="_blank">
+                                <img src="/sfsites/c/resource/FooterIcons/FooterIcons/Youtube.svg"
+                                    class="slds-p-right_medium" style="height: 30px;" />
+                            </a>
+                            <a href={label.InstagramIcon} class="socialLink" target="_blank">
+                                <img src="/sfsites/c/resource/FooterIcons/FooterIcons/Instagram.svg"
+                                    class="slds-p-right_medium" style="height: 30px;" />
+                            </a>
+                        </div>
+                        <div class="slds-p-top_medium">
+                            <span class="socialMediaLink"> &copy; Intel Corporation </span> <span
+                                class="mhide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="socialMediaLink" href={label.IntelTermsofUse} target="_blank">Terms of Use</a>
+                            <span class="mhide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="socialMediaLink" href={label.IntelTrademarks} target="_blank">*Trademarks</a>
+                            <span class="mhide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="socialMediaLink" href={label.IntelCookies} target="_blank" data-cookie-notice="true">Cookies</a>
+                            <span class="mhide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="socialMediaLink" href={label.IntelPrivacy} target="_blank" data-cookie-notice="true">Privacy</a>
+                            <span class="mhide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="socialMediaLink" href={label.IntelSupplyChainTransparency} target="_blank">Supply
+                                Chain Transparency</a> <span
+                                class="mhide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <a class="socialMediaLink" href={label.IntelSiteMap} target="_blank">Site Map</a>
+                        </div>
+                        <br />
+
+                    </div>
+                </div>
+                <!-- / LAYOUT GRID -->
+            </footer>
+        </div>
+    </template>
+</template>

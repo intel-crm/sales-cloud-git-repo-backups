@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Cap_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Cap Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Channel Led Activity</fullName>
+                    <default>true</default>
+                    <label>Channel Led Activity</label>
+                </value>
+                <value>
+                    <fullName>Event Led Activity</fullName>
+                    <default>false</default>
+                    <label>Event Led Activity</label>
+                </value>
+                <value>
+                    <fullName>Variable Reimbursement Incentive Applied</fullName>
+                    <default>false</default>
+                    <label>Variable Reimbursement Incentive Applied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Active_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program Name</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client CoMarketing Fund</fullName>
+                    <default>true</default>
+                    <label>Client CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Data Center CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Data Center CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CoMarketing Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider CoMarketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Client CoMarketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client CoMarketing Fund Boost</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_1_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 1</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_2_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Name 2</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_1_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 1</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_2_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Operator 2</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>true</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_1_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 1</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_2_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value 2</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CCP Activity Budget Cap Window</label>
+    <pluralLabel>CCP Activity Budget Cap Window</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,237 @@
+/* /*
+ * .THIS .checkbox-text-float-left{
+    float:left;
+}*/
+
+
+
+
+
+/*.THIS .h4 {
+  color: t(blue);
+}
+
+.THIS .highlight {
+  background-color: rgb(213, 239, 235);
+}
+
+.THIS .whiteBg {
+  background-color: t(white);
+}
+
+.THIS .fullHeight {
+  height: 100%;
+}
+
+.THIS .fullWidth {
+  width: 100%;
+}
+.THIS .deleteCard {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+}
+.THIS .deleteCard .slds-icon {
+  height: 1rem;
+  width: 1rem;
+}
+.THIS .deleteCard:active .slds-icon use,
+.THIS .deleteCard:hover .slds-icon use,
+.THIS .deleteCard .slds-icon use {
+  fill: t(gray);
+}
+
+/* Mobile Cards */
+
+/*.THIS .mobileCard {
+  background-color: t(white);
+  border: 1px solid t(lightGray);
+  height: 60px;
+  margin-right: 0.5em;
+  width: 60px;
+  width: 20%;
+  height: auto;
+  margin-right: .25rem;
+}
+
+.THIS .mobileCard.detailed {
+  height: 90px;
+  width: 100%;
+  margin-right: 0;
+  position: relative;
+}
+.THIS .mobileImage {
+  flex: 0 0 100px;
+}
+.THIS .mobileCardText {
+  width: calc(100% - 100px);
+  flex: 0 0 auto;
+}
+
+.THIS .mobileCard.detailed .mobileImage:after {
+  content: "";
+  border: 1px solid t(lightGray);
+  border-width: 0 2px 0 0;
+  position:absolute;
+  left: 100px;
+  top: 0;
+  height: 100%;
+  bottom: 0;
+}
+
+
+/* Desktop Card*/
+/*.THIS .col {
+  flex: 1 0 150px;
+  width: 20%;
+}
+.THIS .hideTextOverflow {
+  display: block;
+  overflow: hidden;
+}
+.THIS .innerCard {
+  background-color: t(white);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.THIS .innerCard .top {
+  flex: 0 0 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+.THIS .innerCard .content {
+  border-top: 1px solid t(lightGray);
+  flex: 1 0 auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+.THIS .innerCard .footer {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.THIS .compareCard .iconMediumTransparent {
+  opacity: 0.2;
+}
+
+.THIS .compareCard img {
+  width: 100px;
+}
+
+.THIS .sectionContent .col {
+  border: 1px solid t(lightestGray);
+  color: t(darkGray);
+}
+.THIS .tooltip {
+  position: relative;
+  display: inline-block;
+}
+.THIS .tooltip .tooltip-container {
+  display: none;
+  position: absolute;
+  bottom: 27px;
+  left: -32px;
+  width: 40em;
+}
+.THIS .addCard {
+  display:block;
+  height: 100%;
+}
+
+.THIS .addCard .slds-icon {
+  width: 4rem;
+  height: 4rem;
+}
+.THIS .addCard.addCardSmall .slds-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.THIS .addCard .slds-icon use{
+  fill: t(lightGray);
+}
+.THIS .tooltip .tooltip-content {
+  background-color: t(blue);
+  border-radius: 4px;
+  color: t(white);
+}
+.THIS .tooltip .slds-icon-text-default {
+  fill: t(blue);
+}
+.THIS .tooltip .tooltip-content::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom: 0;
+  bottom: -15px;
+  left: 24px;
+  border-top-color: t(blue);
+  border-width: 16px;
+}
+
+.THIS .tooltip:hover .tooltip-container {
+  display: flex;
+}
+.THIS .sectionGroupLabel {
+  background: t(lightGray);
+  padding: .5rem;
+  text-align: center;
+}
+.THIS .sectionGroupNoLabel {
+  min-height: 5px;
+  background: t(lightGray);
+}
+
+@media (max-width: 767px) {
+  .THIS .sectionGroupLabel,
+  .THIS .sectionGroupNoLabel {
+    margin-top: -1px;
+  }
+}
+@media (max-width: 1279px) {
+  .THIS .h4.heading-24 {
+    font-size: 1.250em;
+  }
+  
+}
+@media (max-width: 1279px) {
+  .THIS .h4.heading-24 {
+    font-size: 1.250em;
+  }
+
+}
+@media (min-width: 768px) {
+  .THIS .deleteCard {
+    top: .2rem;
+    right: .2rem;
+  }
+  .THIS .innerCard .top {
+    padding: 1.5rem 1rem 1rem;
+  }
+    .THIS .col {/*Added for DE94519 fix*/
+ /*   flex: 1 1 150px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .THIS .deleteCard {
+    top: .5rem;
+    right: .5rem;
+  }
+  .THIS .innerCard .top {
+    padding: 1.5rem;
+  }
+}
+.THIS .wordWrapOneLine{
+    word-break: break-word;
+     
+    
+    
+} */

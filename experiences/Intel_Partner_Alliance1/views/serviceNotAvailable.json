@@ -1,0 +1,25 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e01b367a-d68c-4aff-ac7c-684952f57f88",
+  "label" : "Service Not Available",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div class=\"storypar intelparsys\"><div class=\"introtext section\"><div  class=\"component\" data-component=\"introText\" data-component-id=\"1\">   <div  class=\"blade intro-text-component intel-ws solid white theme-light-default link-default  text-align-left ws-comp-standard-padding more-less-component\">      <div class=\"container\">         <div class=\"row\">            <div class=\"text-container col-xs-12 \">               <h2 class=\"margin-btm-1x\">Today, we are making Intel.com more amazing!</h2>               <p>&nbsp;</p>               <p>We are improving Intel.com to provide you a better experience.&nbsp; &nbsp;</p>               <p>&nbsp;</p>               <p>Maintenance begins <b>Feb 10, 2023, 5 p.m. PST</b>, and we invite you to return when we complete our new login experience <b>Feb 12, 2023, 9 a.m. PST</b>.</p>               <p>&nbsp;</p>            </div>         </div>      </div>   </div></div></div></div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "fffbe8f0-4576-4d8e-8482-bc8718485cdc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1d527b5a-07ea-4e41-8860-59343f6a29e6",
+    "regionName" : "content",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "ServiceNotAvailable",
+  "type" : "view",
+  "viewType" : "service-not-available"
+}

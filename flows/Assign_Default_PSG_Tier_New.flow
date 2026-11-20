@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>This assignment will assign Account PSG Tier value to PSG-Tier 4 whenever the account record is triggered and Account PSG Tier field is blank</description>
+        <name>Assign_PSG_Account_tier</name>
+        <label>Assign PSG Account tier</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Account_PSG_Tier__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>PSG-Tier 4</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateAccountTier</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>UpdateAccountTier</name>
+        <label>Assign Account Tier</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Account_Tier__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AccountTierformula</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>check if PSG Downstream is true or not and if it is true then it will check PSG Account tier is blank or not</description>
+        <name>check_PSG_Downstream</name>
+        <label>check PSG Downstream</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>UpdateAccountTier</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>else</defaultConnectorLabel>
+        <rules>
+            <name>if_true</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>AccountPsgTierFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_PSG_Account_tier</targetReference>
+            </connector>
+            <label>if true</label>
+        </rules>
+    </decisions>
+    <description>This flow will check if PSG downstream checkbox is true and Account PSG tier is blank then it will assign PSG tier 4 to it and then update the changes in Account tier.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>AccountPsgTierFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (   ISBLANK(TEXT({!$Record.Core_Account_PSG_Tier__c})),{!$Record.Core_PSG_Account__c} = true)</expression>
+    </formulas>
+    <formulas>
+        <name>AccountTierformula</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Record.Core_Account_PSG_Tier__c} )+
+IF(ISPICKVAL({!$Record.Core_Account_ISG_Tier__c}, &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_ISG_Tier__c} )) + 
+IF(ISPICKVAL({!$Record.Core_Account_CCG_Tier__c} , &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_CCG_Tier__c} )) + 
+IF(ISPICKVAL({!$Record.Core_Account_DCG_Tier__c} , &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_DCG_Tier__c} )) + 
+IF(ISPICKVAL({!$Record.Core_Account_GA_Tier__c}, &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_GA_Tier__c})) + 
+IF(ISPICKVAL({!$Record.Core_Account_IOTG_Tier__c} , &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_IOTG_Tier__c} )) + 
+IF(ISPICKVAL({!$Record.Core_Account_NTG_Tier__c} , &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_NTG_Tier__c} )) + 
+IF(ISPICKVAL({!$Record.Core_Account_RSG_Tier__c} , &quot;&quot;), NULL,&quot;;&quot;+TEXT({!$Record.Core_Account_RSG_Tier__c} ))</expression>
+    </formulas>
+    <interviewLabel>Assign Default PSG Tier {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Assign Account tier and Default PSG Tier</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>check_PSG_Downstream</targetReference>
+        </connector>
+        <filterFormula>AND(
+OR(
+ISNEW(),
+ISCHANGED({!$Record.Core_Account_CCG_Tier__c} ),
+ISCHANGED({!$Record.Core_Account_DCG_Tier__c} ),
+ISCHANGED({!$Record.Core_Account_GA_Tier__c}  ),
+ISCHANGED({!$Record.Core_Account_IOTG_Tier__c}  ),
+ISCHANGED({!$Record.Core_Account_ISG_Tier__c} ),
+ISCHANGED({!$Record.Core_Account_NTG_Tier__c} ),
+ISCHANGED({!$Record.Core_Account_PSG_Tier__c}),
+ISCHANGED({!$Record.Core_Account_RSG_Tier__c} ),
+ISCHANGED({!$Record.Core_PSG_Account__c}) 
+),
+{!$Record.RecordType.DeveloperName} == &quot;Mastered_Account&quot;
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

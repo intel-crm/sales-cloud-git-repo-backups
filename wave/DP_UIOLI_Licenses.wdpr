@@ -1,0 +1,2511 @@
+{
+  "version" : "56.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "IsAvailableForIntegrations", "Status", "LastModifiedDate", "ExpirationDate", "CreatedDate", "Id", "IsProvisioned", "Column1", "NamespacePrefix", "SystemModstamp", "AllowedLicenses", "UsedLicenses" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "PackageLicense",
+          "name" : "PackageLicense"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "LastModifiedDate", "PackageLicense", "CreatedById", "UserId", "PackageLicenseId", "CreatedDate", "Id", "PackageLicense_NamespacePrefix", "LastModifiedById", "Column1", "SystemModstamp", "PackageLicense_UsedLicenses" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UserPackageLicenses",
+          "name" : "UserPackageLicenses"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Available_Licenses",
+          "label" : "Available Licenses",
+          "formulaExpression" : "case \r\n    when AllowedLicenses = -1\r\n    then 'NA'\r\n    else\r\n    AllowedLicenses - UsedLicenses\r\nend\r\n\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET1", "FORMULA0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "PackageLicenseId" ],
+        "rightQualifier" : "Transform0",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA76" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_31_60",
+          "label" : "31-60 Days",
+          "formulaExpression" : "case \r\n    when  \"UserPackageWithUser.InActive_Days\" > 30  and \"UserPackageWithUser.InActive_Days\" < 61 and \"UserLogin.IsFrozen\" = false \r\n    then 1\r\nend\r\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_61_90",
+          "label" : "61-90 Days",
+          "formulaExpression" : "case \r\n    when  \"UserPackageWithUser.InActive_Days\" > 60  and \"UserPackageWithUser.InActive_Days\" < 91 and \"UserLogin.IsFrozen\" = false \r\n    then 1\r\nend\r\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_91_180",
+          "label" : "91-180 Days",
+          "formulaExpression" : "case \r\n    when  \"UserPackageWithUser.InActive_Days\" > 90  and \"UserPackageWithUser.InActive_Days\" < 181 and \"UserLogin.IsFrozen\" = false \r\n    then 1\r\nend\r\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA6" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Greater_Than_180_Days",
+          "label" : "Greater Than 180 Days",
+          "formulaExpression" : "case \r\n    when  \"UserPackageWithUser.InActive_Days\" > 180  and \"UserLogin.IsFrozen\" = false \r\n    then 1\r\nend\r\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA7" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "NeverLogin",
+          "label" : "Never Login",
+          "formulaExpression" : "\r\ncase \r\n    when  \"UserPackageWithUser.InActive_Days\" = 0 and  datediff(now(), \"UserPackageWithUser.CreatedDate\") > 30 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n    then 1\r\nend\r\n\r\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA8" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UserCreatedinLast30DaysandNeverLogin",
+          "label" : "User Created in Last 30 Days and Never Login",
+          "formulaExpression" : "case \r\n    when  \"UserPackageWithUser.InActive_Days\" = 0  and datediff(now(), \"UserPackageWithUser.CreatedDate\") < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n    then 1\r\nend\r\n",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA10" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA8" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "FrozenUser",
+          "label" : "Frozen User",
+          "formulaExpression" : "case \r\n    when \"UserLogin.IsFrozen\" = true\r\n    then 1    \r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA11" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UserCategory",
+          "label" : " User Category",
+          "formulaExpression" : "case \r\n    when \"UserPackageWithUser.InActive_Days\" >= 0 and \"UserPackageWithUser.InActive_Days\" < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date != 'null'\r\n    then '0-30 Days' \r\n when  \"UserPackageWithUser.InActive_Days\" > 30 and \"UserPackageWithUser.InActive_Days\" < 61 and \"UserLogin.IsFrozen\" = false\r\n    then '31-60 Days' \r\n   when  \"UserPackageWithUser.InActive_Days\" > 60 and \"UserPackageWithUser.InActive_Days\" < 91 and \"UserLogin.IsFrozen\" = false\r\n    then '61-90 Days' \r\n  when \"UserPackageWithUser.InActive_Days\" > 90 and \"UserPackageWithUser.InActive_Days\" < 181 and \"UserLogin.IsFrozen\" = false\r\n    then '91-180 Days' \r\n   when  \"UserPackageWithUser.InActive_Days\" = 0 and  datediff(now(), \"UserPackageWithUser.CreatedDate\") > 30 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null' \r\n    then 'Never logged in and user not created in last 30 days'\r\n    when  \"UserPackageWithUser.InActive_Days\" = 0 and  datediff(now(), \"UserPackageWithUser.CreatedDate\") < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n    then 'User created in last 30 days and never login' \r\n    when \"UserLogin.IsFrozen\" = true\r\n    then 'Frozen user'\r\n    when  \"UserPackageWithUser.InActive_Days\" > 180  and \"UserLogin.IsFrozen\" = false \r\n    then 'Potential Licenses that can be repurposed'\r\nend\r\n\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA12" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "InactiveUsers",
+          "label" : "Inactive Users",
+          "formulaExpression" : "case \r\n    when \"UserPackageWithUser.IsActive\" = false and \"UserLogin.IsFrozen\" = false \r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA56" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA71" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "LicensesUsedinLast180Days",
+          "label" : "Licenses Used In Last  180 Days",
+          "formulaExpression" : "case \r\n    when Days_0_30 = 1 \r\n    then 1\r\n    when Days_31_60 = 1 \r\n    then 1\r\n    when  Days_61_90 = 1\r\n    then 1 \r\n    when Days_91_180 = 1\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA57" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA56" ],
+      "parameters" : {
+        "partitionBy" : [ "PackageLicense_NamespacePrefix" ],
+        "orderBy" : [ {
+          "fieldName" : "PackageLicense_NamespacePrefix",
+          "direction" : "ASC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "LicensesCanBeReleased",
+          "label" : "Licenses Can Be Released",
+          "formulaExpression" : "PackageLicense_UsedLicenses - sum(LicensesUsedinLast180Days)-sum(FrozenUser)- sum(UserCreatedinLast30DaysandNeverLogin)-sum(NeverLogin)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES2" : {
+      "action" : "schema",
+      "sources" : [ "FORMULA57" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "UserPackageWithUser.LastLoginDate",
+          "newProperties" : {
+            "label" : "UserPackageWithUser.Last Login",
+            "name" : "UserPackageWithUser.LastLoginDate",
+            "typeProperties" : {
+              "type" : "DATETIME",
+              "format" : "yyyy-MM-dd"
+            }
+          }
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES3" : {
+      "action" : "schema",
+      "sources" : [ "EDIT_ATTRIBUTES2" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "UserLogin.IsFrozen",
+          "newProperties" : {
+            "label" : "IsFrozen",
+            "name" : "UserLogin.IsFrozen",
+            "typeProperties" : {
+              "type" : "TEXT",
+              "length" : 255
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA71" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "InactiveUser",
+          "label" : "Inactive Users",
+          "formulaExpression" : "case \r\n    when \"UserPackageWithUser.IsActive\" = false\r\n    then 1    \r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA75" : {
+      "action" : "formula",
+      "sources" : [ "JOIN2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Formula_Last_Login_Date",
+          "label" : "Last Login Date",
+          "formulaExpression" : "case \r\n    when \"UserPackageWithUser.LastLoginDate\" is null\r\n    then 'null'   \r\n    else \"UserPackageWithUser.LastLoginDate\"  \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA76" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA75" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_0_30",
+          "label" : "0-30 Days",
+          "formulaExpression" : "case \r\n    when  \"UserPackageWithUser.InActive_Days\" >= 0  and \"UserPackageWithUser.InActive_Days\" < 31 and \"UserLogin.IsFrozen\" = false  and Formula_Last_Login_Date != 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_User_Profile_Name__c", "Id", "Username", "Name", "Email", "IsActive", "LastLoginDate", "CreatedDate" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "JOIN0", "EDIT_ATTRIBUTES0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "UserId" ],
+        "rightQualifier" : "UserPackageWithUser",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "InActive_Days",
+          "label" : "InActive Days",
+          "formulaExpression" : "datediff(now(), LastLoginDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES0" : {
+      "action" : "schema",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "LastLoginDate",
+          "newProperties" : {
+            "label" : "Last Login",
+            "name" : "LastLoginDate",
+            "typeProperties" : {
+              "type" : "DATETIME",
+              "format" : "yyyy-MM-dd"
+            }
+          }
+        } ]
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "LastModifiedDate", "UserId", "IsPasswordLocked", "IsFrozen", "Id", "LastModifiedById", "Column1" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UserLogin",
+          "name" : "UserLogin"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "JOIN1", "LOAD_DATASET5" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "UserId" ],
+        "rightQualifier" : "UserLogin",
+        "rightKeys" : [ "UserId" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "EDIT_ATTRIBUTES3" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DP_UserPackageLicense_Dataset",
+          "name" : "UserPackageLicenseDataset",
+          "folderName" : "UIOLI_License"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ProfileId", "Core_User_Profile_Name__c", "Id", "Username", "LastName", "FirstName", "Name", "Email", "IsActive", "UserType", "LastLoginDate", "CreatedDate", "UserPermissionsMarketingUser", "UserPermissionsOfflineUser", "UserPermissionsAvantgoUser", "UserPermissionsCallCenterAutoLogin", "UserPermissionsSFContentUser", "UserPermissionsKnowledgeUser", "UserPermissionsInteractionUser", "UserPermissionsSupportUser", "UserPermissionsLiveAgentUser", "UserPermissionsChatterAnswersUser", "FullPhotoUrl", "SmallPhotoUrl", "Core_User_Geo__c", "Core_WWID__c", "Core_User_Sub_Geo__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "FeatureType", "Id", "Column1", "MetricsDate", "SystemModstamp", "ActiveUserCount", "TotalLicenseCount", "AssignedUserCount" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "FeatureLicenses",
+          "name" : "FeatureLicenses"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA35" : {
+      "action" : "formula",
+      "sources" : [ "JOIN4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "LastLoginDate_formula",
+          "label" : "Inactive Days",
+          "formulaExpression" : "datediff(now(),LastLoginDate )",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "LOAD_DATASET8" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "UserId", "IsFrozen", "IsPasswordLocked" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UserLogin",
+          "name" : "UserLogin"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET6", "LOAD_DATASET8" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "UserLogin",
+        "rightKeys" : [ "UserId" ]
+      }
+    },
+    "OUTPUT1" : {
+      "action" : "save",
+      "sources" : [ "FORMULA70" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DP_Feature_License_Dataset",
+          "name" : "FeatureLicenseDataset",
+          "folderName" : "UIOLI_License"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA70" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "AvailableLicenses",
+          "label" : "Available Licenses",
+          "formulaExpression" : "TotalLicenseCount- AssignedUserCount",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "LOAD_DATASET9" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "PermissionSetLicenseId", "AssigneeId" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "PermissionSetLicenseAssign",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "PermissionSetLicenseAssign"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "DeveloperName", "MasterLabel", "CreatedDate", "LastModifiedDate", "PermissionSetLicenseKey", "TotalLicenses", "Status", "ExpirationDate", "UsedLicenses" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "PermissionSetLicense",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "PermissionSetLicense"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA36" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "AvailableLicenses",
+          "label" : "Available Licenses",
+          "formulaExpression" : "TotalLicenses - UsedLicenses",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET9", "FORMULA36" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "PermissionSetLicenseId" ],
+        "rightQualifier" : "AvailableL",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET11" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ProfileId", "Core_User_Profile_Name__c", "Id", "Username", "LastName", "FirstName", "Name", "Email", "IsActive", "LastLoginDate", "CreatedDate", "LastModifiedDate", "Core_WWID__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET12" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "LastModifiedDate", "UserId", "IsPasswordLocked", "IsFrozen", "Id", "LastModifiedById", "Column1" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UserLogin",
+          "name" : "UserLogin"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET11", "LOAD_DATASET12" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "UserLogin",
+        "rightKeys" : [ "UserId" ]
+      }
+    },
+    "JOIN8" : {
+      "action" : "join",
+      "sources" : [ "JOIN6", "JOIN7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "AssigneeId" ],
+        "rightQualifier" : "UserwithUs",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FORMULA37" : {
+      "action" : "formula",
+      "sources" : [ "JOIN8" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "InactiveDays",
+          "label" : "Inactive Days",
+          "formulaExpression" : "datediff(now(), \"UserwithUs.LastLoginDate\")",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA38" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA73" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_0_30",
+          "label" : "0-30 Days",
+          "formulaExpression" : "case \r\n    when  InactiveDays >= 0  and InactiveDays < 31 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true and Formula_Last_Login_Date != 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA39" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA38" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_31_60",
+          "label" : "31- 60 Days ",
+          "formulaExpression" : "case \r\n    when  InactiveDays > 30  and InactiveDays < 61 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA40" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA39" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_61_90",
+          "label" : "61-90 Days",
+          "formulaExpression" : "case \r\n    when  InactiveDays > 60  and InactiveDays < 91 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA41" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA40" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_91_180",
+          "label" : "91-180 Days",
+          "formulaExpression" : "case \r\n    when  InactiveDays > 90  and InactiveDays < 181 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA42" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA41" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "NeverLogin",
+          "label" : "Never Login",
+          "formulaExpression" : "case \r\n    when  InactiveDays = 0  and datediff(now(), \"UserwithUs.CreatedDate\") > 30 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true and Formula_Last_Login_Date = 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA43" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA42" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UserCreatedInLast30DaysAndNeverLogin",
+          "label" : "User created in last 30 days and never login",
+          "formulaExpression" : "case \r\n    when  InactiveDays = 0  and datediff(now(), \"UserwithUs.CreatedDate\") < 31 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true and Formula_Last_Login_Date = 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA44" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA43" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "FrozenUser",
+          "label" : "Frozen User",
+          "formulaExpression" : "case \r\n   when \"UserwithUs.UserLogin.IsFrozen\" = true and \"UserwithUs.IsActive\" = true \r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA45" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA44" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UserCategory",
+          "label" : "User Category",
+          "formulaExpression" : "case \r\n    when InactiveDays >= 0 and InactiveDays < 31 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true and Formula_Last_Login_Date != 'null'\r\n    then '0-30 Days' \r\n    when  InactiveDays > 30 and InactiveDays < 61 and \"UserwithUs.UserLogin.IsFrozen\" = false and \"UserwithUs.IsActive\" = true\r\n    then '31-60 Days' \r\n    when  InactiveDays> 60 and InactiveDays < 91 and \"UserwithUs.UserLogin.IsFrozen\" = false\r\n    and \"UserwithUs.IsActive\" = true \r\n    then '61-90 Days' \r\n    when InactiveDays > 90 and InactiveDays < 181 and \"UserwithUs.UserLogin.IsFrozen\" = false\r\n       and \"UserwithUs.IsActive\" = true \r\n then '91-180 Days'\r\n    when  InactiveDays = 0  and datediff(now(), \"UserwithUs.CreatedDate\") >30 and \"UserwithUs.UserLogin.IsFrozen\" = false \r\n       and \"UserwithUs.IsActive\" = true and Formula_Last_Login_Date = 'null'\r\n then 'Never logged in and user not created in last 30 days'\r\n    when  InactiveDays = 0  and datediff(now(), \"UserwithUs.CreatedDate\") < 31 and \"UserwithUs.UserLogin.IsFrozen\" = false \r\n        and \"UserwithUs.IsActive\" = true and Formula_Last_Login_Date = 'null' \r\nthen 'User created in last 30 days and never login'\r\n    when \"UserwithUs.UserLogin.IsFrozen\" = true\r\n        and \"UserwithUs.IsActive\" = true \r\nthen 'Frozen user'\r\n    when  InactiveDays >  180 and \"UserwithUs.UserLogin.IsFrozen\" = false \r\n        and \"UserwithUs.IsActive\" = true \r\n    then 'Potential Licenses that can be repurposed'\r\nend\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA58" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA45" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "GreaterThan180Days",
+          "label" : "Greater than 180 Days",
+          "formulaExpression" : "case \r\nwhen  InactiveDays > 180  and \"UserwithUs.UserLogin.IsFrozen\" = false     and \"UserwithUs.IsActive\" = true \r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA73" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA37" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Formula_Last_Login_Date",
+          "label" : "Last Login Date",
+          "formulaExpression" : "case \r\n    when \"UserwithUs.LastLoginDate\" is null\r\n    then 'null'   \r\n    else \"UserwithUs.LastLoginDate\"  \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "OUTPUT3" : {
+      "action" : "save",
+      "sources" : [ "FORMULA58" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DP_PSLA_Dataset",
+          "name" : "PSLADataset",
+          "folderName" : "UIOLI_License"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET13" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "TotalLicenses", "Status", "UsedLicenses", "Name", "MasterLabel", "LastModifiedDate", "UsedLicensesLastUpdated" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "UserLicense",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "UserLicense"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA46" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "AvailableLicenses",
+          "label" : "Available Licenses",
+          "formulaExpression" : "TotalLicenses - UsedLicenses",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "LOAD_DATASET14" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "PermissionsManageUsers", "UserLicenseId", "UserType", "Id", "Name", "PermissionsModifyAllData", "PermissionsCustomizeApplication", "PermissionsViewSetup", "PermissionsViewAllData" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Profile",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Profile"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN9" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET14", "FORMULA46" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "UserLicenseId" ],
+        "rightQualifier" : "AvailableL",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET15" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ProfileId", "Core_User_Profile_Name__c", "Id", "Username", "LastName", "FirstName", "Name", "Email", "Alias", "IsActive", "UserRoleId", "ReceivesInfoEmails", "UserType", "ManagerId", "LastLoginDate", "CreatedDate", "Core_WWID__c", "Core_User_License__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET12_copy0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "LastModifiedDate", "UserId", "IsPasswordLocked", "IsFrozen", "Id", "LastModifiedById", "Column1" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UserLogin",
+          "name" : "UserLogin"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN10" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET15", "LOAD_DATASET12_copy0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "UserLogin",
+        "rightKeys" : [ "UserId" ]
+      }
+    },
+    "JOIN11" : {
+      "action" : "join",
+      "sources" : [ "JOIN10", "JOIN9" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "ProfileId" ],
+        "rightQualifier" : "Profilewit",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FORMULA47" : {
+      "action" : "formula",
+      "sources" : [ "JOIN11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "FrozenUser",
+          "label" : "Frozen User",
+          "formulaExpression" : "case \r\n   when \"UserLogin.IsFrozen\" = true and IsActive = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA48" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA47" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "InactiveDays",
+          "label" : "Inactive Days",
+          "formulaExpression" : "datediff(now(), LastLoginDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA49" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA72" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_0_30",
+          "label" : "0-30 Days",
+          "formulaExpression" : "case \r\n   when InactiveDays >= 0 and InactiveDays < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date != 'null'\r\n        and IsActive = true \r\n    then 1\r\n    \r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA50" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA49" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_31_60",
+          "label" : "31-60 Days",
+          "formulaExpression" : "case \r\n    when InactiveDays > 30  and InactiveDays < 61 and \"UserLogin.IsFrozen\" = false     and IsActive = true\r\n\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA51" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA50" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_61_90",
+          "label" : "61-90 Days",
+          "formulaExpression" : "case \r\n    when InactiveDays >60  and InactiveDays < 91 and \"UserLogin.IsFrozen\" = false  and IsActive = true\r\n\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA52" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA51" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_91_180",
+          "label" : "91-180 Days",
+          "formulaExpression" : "case \r\n    when InactiveDays > 90  and InactiveDays < 181 and \"UserLogin.IsFrozen\" = false \r\n     and IsActive = true\r\n   then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA53" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA52" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "NeverLogin",
+          "label" : "Never Login",
+          "formulaExpression" : "case \r\n    when  InactiveDays = 0  and datediff(now(), CreatedDate) > 30 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n       and IsActive = true\r\n then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA54" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA53" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UserCreatedInLast30DaysAndNeverLogin",
+          "label" : "User created in last 30 days and never login",
+          "formulaExpression" : "case \r\n    when  InactiveDays = 0  and datediff(now(), CreatedDate) < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n     and IsActive = true\r\n   then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA55" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA54" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UserCategory",
+          "label" : "User Category",
+          "formulaExpression" : "case \r\n   when InactiveDays >= 0 and InactiveDays < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date != 'null'\r\n        and IsActive = true \r\nthen '0-30 Days' \r\n    when  InactiveDays > 30 and InactiveDays < 61 and \"UserLogin.IsFrozen\" = false\r\n        and IsActive = true\r\nthen '31-60 Days' \r\n    when  InactiveDays> 60 and InactiveDays < 91 and \"UserLogin.IsFrozen\" = false\r\n        and IsActive = true\r\nthen '61-90 Days' \r\n    when InactiveDays > 90 and InactiveDays < 181 and \"UserLogin.IsFrozen\" = false\r\n       and IsActive = true\r\n then '91-180 Days' \r\n     when  InactiveDays = 0  and datediff(now(), CreatedDate) > 30 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n      and IsActive = true\r\n  then 'Never logged in and user not created in last 30 days'\r\n     when  InactiveDays = 0  and datediff(now(), CreatedDate) < 31 and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n        and IsActive = true\r\n then 'User created in last 30 days and never login'\r\n    when \"UserLogin.IsFrozen\" = true\r\n        and IsActive = true\r\nthen 'Frozen user'\r\n     when  InactiveDays > 180 and \"UserLogin.IsFrozen\" = false \r\n       and IsActive = true\r\n then 'Potential Licenses that can be repurposed'\r\nend\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA59" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA55" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "GreaterThan180Days",
+          "label" : "Greater than 180 Days",
+          "formulaExpression" : "case \r\nwhen  InactiveDays > 180 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\nthen 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA72" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA48" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Formula_Last_Login_Date",
+          "label" : "Last Login Date",
+          "formulaExpression" : "case \r\n    when LastLoginDate is null\r\n    then 'null'   \r\n    else LastLoginDate  \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "OUTPUT4" : {
+      "action" : "save",
+      "sources" : [ "FORMULA59" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DP_User_Licenses_Dataset",
+          "name" : "UserLicensesDataset",
+          "folderName" : "UIOLI_License"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA16_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA35" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "MarketingUser",
+          "label" : "Marketing User",
+          "formulaExpression" : "case\r\n    when UserPermissionsMarketingUser= true \r\n    then 1\r\nend ",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA17_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA23_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "ChatterAnswersUser",
+          "label" : "ChatterAnswersUser",
+          "formulaExpression" : "case \r\n    when UserPermissionsChatterAnswersUser = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA18_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA17_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "InteractionUser",
+          "label" : "InteractionUser",
+          "formulaExpression" : "case \r\n    when  UserPermissionsInteractionUser= true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA19_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA68" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "KnowledgeUser",
+          "label" : "KnowledgeUser",
+          "formulaExpression" : "case \r\n    when UserPermissionsKnowledgeUser = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA20_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA19_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "LiveAgentUser",
+          "label" : "LiveAgentUser",
+          "formulaExpression" : "case \r\n    when UserPermissionsLiveAgentUser = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA21_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA20_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "OfflineUser",
+          "label" : "Offline User",
+          "formulaExpression" : "case \r\n    when UserPermissionsOfflineUser= true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA22_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA21_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "SFContentUser",
+          "label" : "SFContentUser",
+          "formulaExpression" : "case \r\n    when UserPermissionsSFContentUser = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA23_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA22_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "SupportUser",
+          "label" : "SupportUser",
+          "formulaExpression" : "case \r\n    when UserPermissionsSupportUser = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA24_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA74" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_0_30",
+          "label" : "0-30 Days",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula >= 0  and  LastLoginDate_formula < 31 and \"UserLogin.IsFrozen\" = false and IsActive = true and Formula_Last_Login_Date != 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA25_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA24_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_31_60",
+          "label" : "31-60 Days",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula > 30  and  LastLoginDate_formula < 61 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA26_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA25_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_61_90",
+          "label" : "61-90 Days",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula > 60  and  LastLoginDate_formula < 91 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA27_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA26_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Days_91_180",
+          "label" : "91-180 Days",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula > 90  and  LastLoginDate_formula < 181 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA28_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA27_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "NeverLogin",
+          "label" : "Never Login",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula = 0 and  datediff(now(), CreatedDate)>30\r\n    and \"UserLogin.IsFrozen\" = false and IsActive = true and Formula_Last_Login_Date = 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA29_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA28_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "userCreatedInLast30DaysAndNeverLogin",
+          "label" : "User Created in last 30 days and never login",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula = 0 and  datediff(now(), CreatedDate)<31 and \"UserLogin.IsFrozen\" = false and IsActive = true and Formula_Last_Login_Date = 'null'\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA30_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA29_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "FrozenUser",
+          "label" : "Frozen User",
+          "formulaExpression" : "case \r\n    when \"UserLogin.IsFrozen\" = true and IsActive = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA31_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA30_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "GreaterThan180Days",
+          "label" : "Greater than 180 Days",
+          "formulaExpression" : "case \r\n    when  LastLoginDate_formula > 180 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then 1\r\nend",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA34_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA31_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UserCategory",
+          "label" : "User Category",
+          "formulaExpression" : "case \r\n    when LastLoginDate_formula >= 0 and LastLoginDate_formula < 31 and \"UserLogin.IsFrozen\" = false and IsActive = true and Formula_Last_Login_Date != 'null'\r\n    then '0-30 Days' \r\n    when  LastLoginDate_formula > 30 and LastLoginDate_formula < 61 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then '31-60 Days' \r\n    when  LastLoginDate_formula > 60 and LastLoginDate_formula < 91 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then '61-90 Days' \r\n    when LastLoginDate_formula > 90 and LastLoginDate_formula < 181 and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then '91-180 Days' \r\n     when  LastLoginDate_formula = 0 and  datediff(now(), CreatedDate)>30\r\n    and \"UserLogin.IsFrozen\" = false and IsActive = true and Formula_Last_Login_Date = 'null'\r\n    then 'Never logged in and user not created in last 30 days'\r\n     when  LastLoginDate_formula = 0 and  datediff(now(), CreatedDate)<31 and IsActive = true\r\n    and \"UserLogin.IsFrozen\" = false and Formula_Last_Login_Date = 'null'\r\n    then 'User created in last 30 days and never login'\r\n    when \"UserLogin.IsFrozen\" = true and IsActive = true\r\n    then 'Frozen User'\r\n    when  LastLoginDate_formula> 180  and \"UserLogin.IsFrozen\" = false and IsActive = true\r\n    then 'Potential Licenses that can be repurposed- Users not logged in last 180 days (excluding frozen,never login and recently created user)'\r\nend\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA68" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA16_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "FeatureLicense",
+          "label" : "Feature License",
+          "formulaExpression" : "case \r\n    when UserPermissionsMarketingUser= true \r\n    then  'Marketing User'\r\n    when UserPermissionsOfflineUser= true \r\n    then 'Offline User'\r\n    when UserPermissionsSFContentUser= true \r\n    then  'Salesforce CRM Content User'\r\n    when UserPermissionsKnowledgeUser= true \r\n    then 'Knowledge User'\r\n    when UserPermissionsInteractionUser= true \r\n    then 'Flow User'\r\n    when UserPermissionsSupportUser= true \r\n    then 'Service Cloud User'\r\n    when UserPermissionsLiveAgentUser= true \r\n    then 'Chat User'\r\n     when UserPermissionsChatterAnswersUser= true \r\n    then 'Chatter Answers User'\r\n\r\nend ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA74" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA18_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Formula_Last_Login_Date",
+          "label" : "Last Login Date",
+          "formulaExpression" : "case \r\n    when LastLoginDate is null\r\n    then 'null'   \r\n    else LastLoginDate  \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "OUTPUT5" : {
+      "action" : "save",
+      "sources" : [ "FORMULA34_copy0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DP_Feature_License_User_details_dataset",
+          "name" : "FeatureLicenseUser_details",
+          "folderName" : "UIOLI_License"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "PackageLicense",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET1" : {
+        "label" : "UserPackageLicenses",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM0" : {
+        "label" : "Available Licenses",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 252,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "JOIN0" : {
+        "label" : "PackageLicense with UserPackageLicense",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 252.2
+      },
+      "TRANSFORM2" : {
+        "label" : "User Package with user details",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 672,
+        "graph" : {
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA6" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA7" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA8" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA10" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA11" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "User Category"
+          },
+          "FORMULA12" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA56" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA57" : {
+            "label" : "Formula"
+          },
+          "EDIT_ATTRIBUTES2" : {
+            "label" : "last login default value"
+          },
+          "EDIT_ATTRIBUTES3" : {
+            "label" : "Isfrozen Default value"
+          },
+          "FORMULA71" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Inactive Users"
+          },
+          "FORMULA75" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula Last Login Date"
+          },
+          "FORMULA76" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA3",
+          "target" : "FORMULA4"
+        }, {
+          "source" : "FORMULA4",
+          "target" : "FORMULA5"
+        }, {
+          "source" : "FORMULA5",
+          "target" : "FORMULA6"
+        }, {
+          "source" : "FORMULA7",
+          "target" : "FORMULA8"
+        }, {
+          "source" : "FORMULA6",
+          "target" : "FORMULA11"
+        }, {
+          "source" : "FORMULA12",
+          "target" : "FORMULA7"
+        }, {
+          "source" : "FORMULA11",
+          "target" : "FORMULA12"
+        }, {
+          "source" : "FORMULA56",
+          "target" : "FORMULA57"
+        }, {
+          "source" : "FORMULA57",
+          "target" : "EDIT_ATTRIBUTES2"
+        }, {
+          "source" : "EDIT_ATTRIBUTES2",
+          "target" : "EDIT_ATTRIBUTES3"
+        }, {
+          "source" : "FORMULA71",
+          "target" : "FORMULA56"
+        }, {
+          "source" : "FORMULA10",
+          "target" : "FORMULA71"
+        }, {
+          "source" : "FORMULA8",
+          "target" : "FORMULA10"
+        }, {
+          "source" : "FORMULA76",
+          "target" : "FORMULA3"
+        }, {
+          "source" : "FORMULA75",
+          "target" : "FORMULA76"
+        } ]
+      },
+      "LOAD_DATASET4" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 392.1,
+        "left" : 111.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN1" : {
+        "label" : "UserPackageWithUser",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 392
+      },
+      "TRANSFORM3" : {
+        "label" : "InActive Days",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 392,
+        "left" : 392,
+        "graph" : {
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "EDIT_ATTRIBUTES0" : {
+            "label" : "Last Login default Value"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA1",
+          "target" : "EDIT_ATTRIBUTES0"
+        } ]
+      },
+      "LOAD_DATASET5" : {
+        "label" : "UserLogin",
+        "type" : "LOAD_DATASET",
+        "top" : 392.1,
+        "left" : 532.2,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN2" : {
+        "label" : "UserpAckageWithUserLogin",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 251.8,
+        "left" : 532
+      },
+      "OUTPUT0" : {
+        "label" : "UserPackageLicense Dataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252,
+        "left" : 812
+      },
+      "LOAD_DATASET6" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 812.3,
+        "left" : 111.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET7" : {
+        "label" : "FeatureLicenses",
+        "type" : "LOAD_DATASET",
+        "top" : 672,
+        "left" : 111.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM4" : {
+        "label" : "Inactive Days",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 812,
+        "left" : 392.1,
+        "graph" : {
+          "FORMULA35" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "LOAD_DATASET8" : {
+        "label" : "UserLogin",
+        "type" : "LOAD_DATASET",
+        "top" : 952.2,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN4" : {
+        "label" : "User with UserLogin",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 812.1,
+        "left" : 251.60000000000002
+      },
+      "OUTPUT1" : {
+        "label" : "Feature License Dataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 672,
+        "left" : 672
+      },
+      "TRANSFORM6" : {
+        "label" : "feature license details",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 671.9,
+        "left" : 392,
+        "graph" : {
+          "FORMULA70" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "LOAD_DATASET9" : {
+        "label" : "PermissionSetLicenseAssign",
+        "type" : "LOAD_DATASET",
+        "top" : 1231.9,
+        "left" : 112.19999999999999,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET10" : {
+        "label" : "PermissionSetLicense",
+        "type" : "LOAD_DATASET",
+        "top" : 1092.1,
+        "left" : 112.80000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM7" : {
+        "label" : "Available Licenses",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 1092,
+        "left" : 252,
+        "graph" : {
+          "FORMULA36" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "JOIN6" : {
+        "label" : "PSLA with PSL",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 1232,
+        "left" : 252.3
+      },
+      "LOAD_DATASET11" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 1372,
+        "left" : 112.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET12" : {
+        "label" : "UserLogin",
+        "type" : "LOAD_DATASET",
+        "top" : 1511.8,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN7" : {
+        "label" : "User with UserLogin",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 1372.1,
+        "left" : 392
+      },
+      "JOIN8" : {
+        "label" : "PSLA with User",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 1232,
+        "left" : 392
+      },
+      "TRANSFORM8" : {
+        "label" : "PSLA with User Details",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 1232,
+        "left" : 532,
+        "graph" : {
+          "FORMULA37" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA38" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA39" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA40" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA41" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA42" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA43" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA44" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA45" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "User Category"
+          },
+          "FORMULA58" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Greater than 180 Days"
+          },
+          "FORMULA73" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula Last Login Date"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA38",
+          "target" : "FORMULA39"
+        }, {
+          "source" : "FORMULA39",
+          "target" : "FORMULA40"
+        }, {
+          "source" : "FORMULA40",
+          "target" : "FORMULA41"
+        }, {
+          "source" : "FORMULA41",
+          "target" : "FORMULA42"
+        }, {
+          "source" : "FORMULA42",
+          "target" : "FORMULA43"
+        }, {
+          "source" : "FORMULA43",
+          "target" : "FORMULA44"
+        }, {
+          "source" : "FORMULA44",
+          "target" : "FORMULA45"
+        }, {
+          "source" : "FORMULA45",
+          "target" : "FORMULA58"
+        }, {
+          "source" : "FORMULA73",
+          "target" : "FORMULA38"
+        }, {
+          "source" : "FORMULA37",
+          "target" : "FORMULA73"
+        } ]
+      },
+      "OUTPUT3" : {
+        "label" : "PSLA Dataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 1232,
+        "left" : 672
+      },
+      "LOAD_DATASET13" : {
+        "label" : "UserLicense",
+        "type" : "LOAD_DATASET",
+        "top" : 1652.1,
+        "left" : 111.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM9" : {
+        "label" : "Available Licenses",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 1652,
+        "left" : 252,
+        "graph" : {
+          "FORMULA46" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "LOAD_DATASET14" : {
+        "label" : "Profile",
+        "type" : "LOAD_DATASET",
+        "top" : 1792,
+        "left" : 111.80000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN9" : {
+        "label" : "Profile with UserLicense",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 1792,
+        "left" : 252.10000000000002
+      },
+      "LOAD_DATASET15" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 1931.9,
+        "left" : 111.80000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET12_copy0" : {
+        "label" : "UserLogin",
+        "description" : "",
+        "type" : "LOAD_DATASET",
+        "top" : 2072,
+        "left" : 112.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN10" : {
+        "label" : "User with UserLogin",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 1932,
+        "left" : 252
+      },
+      "JOIN11" : {
+        "label" : "User with Profile",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 1792,
+        "left" : 392.2
+      },
+      "TRANSFORM10" : {
+        "label" : "User Licenses",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 1792,
+        "left" : 532,
+        "graph" : {
+          "FORMULA47" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA48" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA49" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA50" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA51" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA52" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA53" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA54" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA55" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "User Category"
+          },
+          "FORMULA59" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Greater than 180 Days"
+          },
+          "FORMULA72" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula Last Login Date"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA47",
+          "target" : "FORMULA48"
+        }, {
+          "source" : "FORMULA49",
+          "target" : "FORMULA50"
+        }, {
+          "source" : "FORMULA50",
+          "target" : "FORMULA51"
+        }, {
+          "source" : "FORMULA51",
+          "target" : "FORMULA52"
+        }, {
+          "source" : "FORMULA52",
+          "target" : "FORMULA53"
+        }, {
+          "source" : "FORMULA53",
+          "target" : "FORMULA54"
+        }, {
+          "source" : "FORMULA54",
+          "target" : "FORMULA55"
+        }, {
+          "source" : "FORMULA55",
+          "target" : "FORMULA59"
+        }, {
+          "source" : "FORMULA72",
+          "target" : "FORMULA49"
+        }, {
+          "source" : "FORMULA48",
+          "target" : "FORMULA72"
+        } ]
+      },
+      "OUTPUT4" : {
+        "label" : "User Licenses Dataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 1792,
+        "left" : 672
+      },
+      "TRANSFORM5_copy0" : {
+        "label" : "Feature License User Details",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 812,
+        "left" : 532,
+        "graph" : {
+          "FORMULA16_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA17_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA18_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA19_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA20_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA21_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA22_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA23_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA24_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA25_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA26_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA27_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA28_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA29_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA30_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA31_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA34_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "User Category"
+          },
+          "FORMULA68" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Feature License"
+          },
+          "FORMULA74" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula Last Login Date"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA17_copy0",
+          "target" : "FORMULA18_copy0"
+        }, {
+          "source" : "FORMULA19_copy0",
+          "target" : "FORMULA20_copy0"
+        }, {
+          "source" : "FORMULA20_copy0",
+          "target" : "FORMULA21_copy0"
+        }, {
+          "source" : "FORMULA21_copy0",
+          "target" : "FORMULA22_copy0"
+        }, {
+          "source" : "FORMULA23_copy0",
+          "target" : "FORMULA17_copy0"
+        }, {
+          "source" : "FORMULA22_copy0",
+          "target" : "FORMULA23_copy0"
+        }, {
+          "source" : "FORMULA24_copy0",
+          "target" : "FORMULA25_copy0"
+        }, {
+          "source" : "FORMULA25_copy0",
+          "target" : "FORMULA26_copy0"
+        }, {
+          "source" : "FORMULA26_copy0",
+          "target" : "FORMULA27_copy0"
+        }, {
+          "source" : "FORMULA27_copy0",
+          "target" : "FORMULA28_copy0"
+        }, {
+          "source" : "FORMULA28_copy0",
+          "target" : "FORMULA29_copy0"
+        }, {
+          "source" : "FORMULA29_copy0",
+          "target" : "FORMULA30_copy0"
+        }, {
+          "source" : "FORMULA30_copy0",
+          "target" : "FORMULA31_copy0"
+        }, {
+          "source" : "FORMULA31_copy0",
+          "target" : "FORMULA34_copy0"
+        }, {
+          "source" : "FORMULA68",
+          "target" : "FORMULA19_copy0"
+        }, {
+          "source" : "FORMULA16_copy0",
+          "target" : "FORMULA68"
+        }, {
+          "source" : "FORMULA74",
+          "target" : "FORMULA24_copy0"
+        }, {
+          "source" : "FORMULA18_copy0",
+          "target" : "FORMULA74"
+        } ]
+      },
+      "OUTPUT5" : {
+        "label" : "Feature License User details",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 812,
+        "left" : 672
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET0",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN1"
+    }, {
+      "source" : "TRANSFORM3",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "TRANSFORM3"
+    }, {
+      "source" : "JOIN1",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN2",
+      "target" : "TRANSFORM2"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "JOIN4",
+      "target" : "TRANSFORM4"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET8",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "TRANSFORM6"
+    }, {
+      "source" : "LOAD_DATASET10",
+      "target" : "TRANSFORM7"
+    }, {
+      "source" : "LOAD_DATASET9",
+      "target" : "JOIN6"
+    }, {
+      "source" : "TRANSFORM7",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "JOIN7"
+    }, {
+      "source" : "LOAD_DATASET12",
+      "target" : "JOIN7"
+    }, {
+      "source" : "JOIN6",
+      "target" : "JOIN8"
+    }, {
+      "source" : "JOIN7",
+      "target" : "JOIN8"
+    }, {
+      "source" : "JOIN8",
+      "target" : "TRANSFORM8"
+    }, {
+      "source" : "TRANSFORM8",
+      "target" : "OUTPUT3"
+    }, {
+      "source" : "LOAD_DATASET13",
+      "target" : "TRANSFORM9"
+    }, {
+      "source" : "LOAD_DATASET14",
+      "target" : "JOIN9"
+    }, {
+      "source" : "TRANSFORM9",
+      "target" : "JOIN9"
+    }, {
+      "source" : "LOAD_DATASET15",
+      "target" : "JOIN10"
+    }, {
+      "source" : "LOAD_DATASET12_copy0",
+      "target" : "JOIN10"
+    }, {
+      "source" : "JOIN10",
+      "target" : "JOIN11"
+    }, {
+      "source" : "JOIN9",
+      "target" : "JOIN11"
+    }, {
+      "source" : "JOIN11",
+      "target" : "TRANSFORM10"
+    }, {
+      "source" : "TRANSFORM10",
+      "target" : "OUTPUT4"
+    }, {
+      "source" : "TRANSFORM4",
+      "target" : "TRANSFORM5_copy0"
+    }, {
+      "source" : "TRANSFORM5_copy0",
+      "target" : "OUTPUT5"
+    }, {
+      "source" : "TRANSFORM6",
+      "target" : "OUTPUT1"
+    } ],
+    "hiddenColumns" : [ ]
+  }
+}

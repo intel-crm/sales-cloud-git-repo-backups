@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <description>Report for Calfin</description>
+    <filter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Anthony Davis,Gary Dunkin,Francois Germain,Jim Hajjar,Bill Kelley,Donald Lewis,Kevin Meyer,Tara Nacca,Douglas Steudler,Jim Treveloni,Bill Carlson,Walter Gilmore,Jeffery Casazza,Eric Lange,Schultzie Schultz,Ed Whitney,Kent Ritchie,Burnie Legette,Andre Beauchamp,Sam Saif Saif,David Fisher,Gary I Interdonato,Matthew Beasley,Rick Walther,Peter Duong,Rajiv Gupta,Oscar Ham,Damion Desai,Johnny Liu,Warren Ellis,Kia Agahdel,Jason Arnold,Adam Barrett,Larry Feetham,David Gee,Brian Landi,Michelle Luo,Joel Madrigal,John Rinehimer,Desmond Yuen,Radhika Kunte,Rob Antle,Jay Cayton,Steve Conn,Stefanie Lemon,David Long,Chris Simonson,Hatem Suleiman,Kit Hoang,Hui Li,Peter Bevan,Erik Lorhammer,Prabha Ganapathy,Andrea Carbajal,Inna Obolsky,Steve Stratton,Cliff Marc,Dane Nelson,Jason A Frese,David Albano,Piush Gupta,Juan Roche,Mary Chang,Naresh Angi,Judy Liang-Mach,Daniel Mackey,William Wood,John Peracchi,David Lourie,Michael Maruca,Chris Blevins,Jennifer Arnold,Ming Yeung,Alex Silva</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Approved_By__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Old CESG DW Data 2</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREVFY</interval>
+    </timeFrameFilter>
+</Report>

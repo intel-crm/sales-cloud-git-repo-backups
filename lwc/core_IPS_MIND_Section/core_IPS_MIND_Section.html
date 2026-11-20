@@ -1,0 +1,36 @@
+<template>
+    <!-- <lightning-card> -->
+        <h3>
+            The contact on this case indicates the following default settings. Please edit as appropriate for THIS case.
+        </h3>
+        <h3>Is This case related to the use of Intel Products in regards to military, intelligence,
+            nuclear/biochemical, defense, or space (MINDS) items?</h3>
+
+        <template for:each={radioOptions} for:item="item">
+            <fieldset key={item.value} style="display: block; float: left;">
+                <div class="slds-form-element__control">
+                    <span class="slds-radio">
+
+                        <input checked={item.checked} name="radiogroup" id={item.value} type="radio" value={item.value}
+                            onchange={handleSelected} />
+                        <label class="slds-radio__label" for={item.value}>
+                            <span class="slds-radio_faux"></span>
+                            <span class="slds-form-element__label">{item.label}</span>
+                        </label>
+
+                    </span>
+                </div>
+            </fieldset>
+        </template><br /><br />
+        <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+        <div class="slds-size_12-of-12">
+        <lightning-combobox name="progress" label="This contact is located in Country/Region" value={countrydefaultvalue} placeholder="-None-"
+            options={countryList} onchange={handleChangeforContact} required></lightning-combobox>
+            <template if:true={showState}>
+            <lightning-combobox name="State" label="This contact is located in State" value={statedefaultvalue} placeholder="-None-"
+            options={stateList} onchange={handleStateChange} required></lightning-combobox>
+            </template>
+</div>
+</div>
+    <!-- </lightning-card> -->
+</template>

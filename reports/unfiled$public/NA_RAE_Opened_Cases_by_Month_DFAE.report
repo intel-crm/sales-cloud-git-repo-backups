@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_7980020</developerName>
+        <masterLabel>Account</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT.NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ARROW CENTRAL EUROPE GMBH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW CENTRAL EUROPE GmbH c/o ARROW ELECTRONICS (UK) LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW COMPONENTS SWEDEN AB</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS ASIA (S) PTE LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS RUS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS TAIWAN LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS, INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Asia Pacific (HK)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Central Europe GmbH_E</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Electronics Canada Ltd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Electronics India Pvt. Ltd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Electronics Korea Ltd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Enterprise Computing Solutions Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Rapac</sourceValue>
+            </sourceValues>
+            <value>Arrow</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>MACNICA CYTECH LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MACNICA CYTECH PTE. LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MACNICA DHW LTDA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Macnica Americas, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Macnica Cytech Pte Ltd.</sourceValue>
+            </sourceValues>
+            <value>Macnica</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DIGI-KEY CORPORATION</sourceValue>
+            </sourceValues>
+            <value>Digi-key</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Mouser Electronics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mouser Electronics, Inc.</sourceValue>
+            </sourceValues>
+            <value>Mouser</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATEONLY</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_7980020</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Opened Cases by Month</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>ARROW,Arrow,DIGI-KEY CORPORATION,Macnica Americas,Mouser Electronics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>United States,Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>PSG-GAE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_7980020</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>NA RAE - Opened Cases by Month - DFAE</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CURY</interval>
+    </timeFrameFilter>
+</Report>

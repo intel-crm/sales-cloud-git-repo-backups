@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PMP_Company__c.Company_Resources__r$Name</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.Company_Resources__r$Id</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c$PMP_Company_Lifecycle_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c$PMP_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c.Company_Resources__r$PMP_Company_Resource_Type_Nm__c</field>
+    </columns>
+    <description>This Report is used for identifying the Partners With Out Logo</description>
+    <filter>
+        <criteriaItems>
+            <column>PMP_Company__c$PMP_Is_Published_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PMP_Company__c.Company_Resources__r$PMP_Company_Resource_Type_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Image,Thumbnail Image</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PMP_Company__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Partners Without Logo</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Comp_Info_With_Resources__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PMP_Company__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

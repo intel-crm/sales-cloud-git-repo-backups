@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Email notification sent to User who has been added as a Quote Team member on a Quote</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Pricing_QuoteTeam_EmailNotification</name>
+    <style>none</style>
+    <subject>You have been added to IQR quote</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

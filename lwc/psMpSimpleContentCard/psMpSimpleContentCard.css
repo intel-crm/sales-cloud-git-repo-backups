@@ -1,0 +1,40 @@
+:host {
+    --white: #FFF;
+}
+
+p {
+    color: #252525; /* --lwc-charcoal */
+}
+
+.simple-content-card-wrapper {
+    background: var(--white);
+    padding-bottom: 30px;
+}
+
+h3.simple-content-card-header {
+    padding-left: 20px;
+    padding-top: 25px;
+}
+
+img {
+    max-width: 425px;
+    padding-top: 30px;
+    width: 50%;
+}
+
+p.simple-content-card-tagline {
+    font-size: 20px;
+    /* margin: 10px 0; */
+}
+
+:host .button {
+    display: block;
+}
+
+:host .button button {
+    background: #0071C5; /* --lwc-buttonPrimary */
+}
+
+:host .button button:hover {
+    background: #005A9D; /* --lwc-buttonPrimaryHover mediumBlue? */
+}

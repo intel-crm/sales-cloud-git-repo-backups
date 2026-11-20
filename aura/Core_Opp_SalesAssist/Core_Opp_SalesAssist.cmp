@@ -1,0 +1,74 @@
+<aura:component controller= "Core_Opp_SalesAssistController" implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="urlParams" type="String" />
+    <aura:attribute name="EOLCount" type="String"/>
+    <!--<aura:attribute name="SACheckBox" type="Boolean" default= "false"/>-->
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="prodList" type="Map"/>
+    <aura:attribute name="spinner" type="boolean" default="false"/>
+    <aura:attribute name="source" type="String" default="opportunity_page"/>
+    <aura:attribute name="userWWID" type="String" />
+	<aura:attribute name="userEmail" type="String" />
+    <aura:attribute name="cimId" type="String" />
+	<aura:attribute name="orgId" type="String" />
+	<aura:attribute name="sessionId" type="String" />
+    <aura:attribute name="butnmsg" type="String" />
+    <aura:attribute name="showPopUp" type="boolean" default="false"/>
+    <aura:attribute name="data" type="object"/>
+    <aura:attribute name="isLoaded" type="boolean" default="false" />
+    <!--<ltng:require styles="{!$Resource.popUpSize}" />-->
+    <!--<aura:handler event="force:showToast" action="{!c.doInit}"/>-->
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <!--<lightning:card  class="concern">-->
+    <article class="slds-card slds-card_boundary forceRelatedListCardDesktop">
+        <div class="slds-grid slds-page-header forceRelatedListCardHeader">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                    <div class="extraSmall forceEntityIcon" style="background-color: #FCB95B">
+                        <span class="uiImage" data-aura-class="uiImage">
+                        	<img aura:id="TotalAssistsIcon" class="icon " alt="{!$Label.c.Core_SA_ShowNewAssistsTitle}" title="{!$Label.c.Core_SA_ShowNewAssistsTitle}" src="{!$Resource.Core_Opp_SA_Icon}"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <!--<lightning:button class="slds-card__header-link slds-truncate" variant="base" label="{!v.butnmsg}" onclick="{!c.openPopUp}"/>-->
+                        <div aura:id="TotalAssists" data-source="unread_indicator" class="" onclick="{!c.openPopUp}">
+                            <a href="javascript:void(0)" class="slds-card__header-link slds-truncate" title="{!v.butnmsg}">
+                                <span>{!v.butnmsg}</span>
+                            </a>
+                        </div>  
+                    </h2>
+                </div>
+            </header>
+        </div>
+    </article>   
+    <!--</lightning:card>-->
+    <aura:if isTrue="{!v.isModalOpen}">
+        <div class = "slds-align_absolute-center">
+            <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <aura:if isTrue="{!!v.isLoaded}">
+                    <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large"/>
+                </aura:if>
+                <div class="slds-modal__container" style="align-items: center">
+                    <header class="slds-modal__header" style="width:180%;background-color:transparent" >
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    </header>
+                    <iframe src="{!v.urlParams}" style="width: 180%;height: 75%; min-height:450px"/>
+                </div>
+            </div>
+        </div>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+       
+    </aura:if>
+        
+    <!--<aura:if isTrue="{!v.spinner}">
+        <div class="slds-spinner_container slds-is-relative">
+            <lightning:spinner aura:id="mySpinner" variant="brand" alternativeText="Loading" size="small" />
+        </div>
+    </aura:if>  --> 
+</aura:component>

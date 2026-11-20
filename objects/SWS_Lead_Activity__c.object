@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>SWS_Lead_Activity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>SWS_Activity_Completed_Date__c</fullName>
+        <label>Activity Completed Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Activity__c</fullName>
+        <label>Activity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Demo</fullName>
+                    <default>false</default>
+                    <label>Demo</label>
+                </value>
+                <value>
+                    <fullName>SDR Call</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SDR Call</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Activity_is_Completed__c</fullName>
+        <formula>ISPICKVAL( SWS_Status__c , &quot;Completed&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Activity is Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Campaign__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Campaign</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>SW Demo Activities</relationshipLabel>
+        <relationshipName>SWS_Lead_Activities</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Description__c</fullName>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead_Converted__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(SWS_Lead__r.IsConverted== TRUE, &apos;Lead Demo to Opportunity Converted&apos;, &apos;Lead Demo to Opportunity yet to Convert&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lead Converted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead_Source__c</fullName>
+        <label>Lead Source</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IDC Credit Request</fullName>
+                    <default>false</default>
+                    <label>IDC Credit Request</label>
+                </value>
+                <value>
+                    <fullName>Intel Customer Support</fullName>
+                    <default>false</default>
+                    <label>Intel Customer Support</label>
+                </value>
+                <value>
+                    <fullName>Outbound Call</fullName>
+                    <default>false</default>
+                    <label>Outbound Call</label>
+                </value>
+                <value>
+                    <fullName>Partner Program</fullName>
+                    <default>false</default>
+                    <label>Partner Program</label>
+                </value>
+                <value>
+                    <fullName>Prospecting - Existing Account</fullName>
+                    <default>false</default>
+                    <label>Prospecting - Existing Account</label>
+                </value>
+                <value>
+                    <fullName>Prospecting - New Account</fullName>
+                    <default>false</default>
+                    <label>Prospecting - New Account</label>
+                </value>
+                <value>
+                    <fullName>Referral - Employee</fullName>
+                    <default>false</default>
+                    <label>Referral - Employee</label>
+                </value>
+                <value>
+                    <fullName>Webinar</fullName>
+                    <default>false</default>
+                    <label>Webinar</label>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                    <label>Website</label>
+                </value>
+                <value>
+                    <fullName>Intel Website</fullName>
+                    <default>false</default>
+                    <label>Intel Website</label>
+                </value>
+                <value>
+                    <fullName>Eloqua Scoring Model</fullName>
+                    <default>false</default>
+                    <label>Eloqua Scoring Model</label>
+                </value>
+                <value>
+                    <fullName>Referral – Partner/Disti/Third Party</fullName>
+                    <default>false</default>
+                    <label>Referral – Partner/Disti/Third Party</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>Social Selling</fullName>
+                    <default>false</default>
+                    <label>Social Selling</label>
+                </value>
+                <value>
+                    <fullName>Scoring Model</fullName>
+                    <default>false</default>
+                    <label>Scoring Model</label>
+                </value>
+                <value>
+                    <fullName>Inbound Email Inquiry</fullName>
+                    <default>false</default>
+                    <label>Inbound Email Inquiry</label>
+                </value>
+                <value>
+                    <fullName>List Purchase</fullName>
+                    <default>false</default>
+                    <label>List Purchase</label>
+                </value>
+                <value>
+                    <fullName>Media</fullName>
+                    <default>false</default>
+                    <label>Media</label>
+                </value>
+                <value>
+                    <fullName>Sales AI</fullName>
+                    <default>false</default>
+                    <label>Sales AI</label>
+                </value>
+                <value>
+                    <fullName>Web</fullName>
+                    <default>false</default>
+                    <label>Web</label>
+                </value>
+                <value>
+                    <fullName>Portal</fullName>
+                    <default>false</default>
+                    <label>Portal</label>
+                </value>
+                <value>
+                    <fullName>Conference</fullName>
+                    <default>false</default>
+                    <label>Conference</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead_Stage__c</fullName>
+        <inlineHelpText>Lead stage when the activity was booked.</inlineHelpText>
+        <label>Activity Creation Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Marketing Qualified Lead</fullName>
+                    <default>false</default>
+                    <label>Marketing Qualified Lead</label>
+                </value>
+                <value>
+                    <fullName>Sales Accepted Lead</fullName>
+                    <default>false</default>
+                    <label>Sales Accepted Lead</label>
+                </value>
+                <value>
+                    <fullName>Sales Qualified Lead</fullName>
+                    <default>false</default>
+                    <label>Sales Qualified Lead</label>
+                </value>
+                <value>
+                    <fullName>Contact - No Opportunity</fullName>
+                    <default>false</default>
+                    <label>Contact - No Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Tele Accepted Lead</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Tele Accepted Lead</label>
+                </value>
+                <value>
+                    <fullName>Tele Qualified Lead</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Tele Qualified Lead</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead_Stage_when_Closed__c</fullName>
+        <inlineHelpText>Lead stage when the activity is either &apos;Completed&apos; or &apos;Cancelled&apos;.</inlineHelpText>
+        <label>Activity Closed Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Marketing Qualified Lead</fullName>
+                    <default>false</default>
+                    <label>Marketing Qualified Lead</label>
+                </value>
+                <value>
+                    <fullName>Sales Accepted Lead</fullName>
+                    <default>false</default>
+                    <label>Sales Accepted Lead</label>
+                </value>
+                <value>
+                    <fullName>Sales Qualified Lead</fullName>
+                    <default>false</default>
+                    <label>Sales Qualified Lead</label>
+                </value>
+                <value>
+                    <fullName>Contact - No Opportunity</fullName>
+                    <default>false</default>
+                    <label>Contact - No Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Tele Accepted Lead</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Tele Accepted Lead</label>
+                </value>
+                <value>
+                    <fullName>Tele Qualified Lead</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Tele Qualified Lead</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>SW Demo Activities</relationshipLabel>
+        <relationshipName>SWS_Lead_Metrics</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>SW Demo Activities</relationshipLabel>
+        <relationshipName>SWS_Lead_Activities</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Product_Interest__c</fullName>
+        <inlineHelpText>Ensure the selected product matches one of the values from the lead’s Product Interest.</inlineHelpText>
+        <label>Product Interest</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Ethernet Controllers</fullName>
+                    <default>false</default>
+                    <label>Ethernet Controllers</label>
+                </value>
+                <value>
+                    <fullName>Intel® Atom™ Processors</fullName>
+                    <default>false</default>
+                    <label>Intel® Atom™ Processors</label>
+                </value>
+                <value>
+                    <fullName>Intel® Core™ Processors</fullName>
+                    <default>false</default>
+                    <label>Intel® Core™ Processors</label>
+                </value>
+                <value>
+                    <fullName>Intel® EP80579 Integrated Processor</fullName>
+                    <default>false</default>
+                    <label>Intel® EP80579 Integrated Processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Quark SoC</fullName>
+                    <default>false</default>
+                    <label>Intel® Quark SoC</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Processors</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Processors</label>
+                </value>
+                <value>
+                    <fullName>Power Products</fullName>
+                    <default>false</default>
+                    <label>Power Products</label>
+                </value>
+                <value>
+                    <fullName>Programmable Logic</fullName>
+                    <default>false</default>
+                    <label>Programmable Logic</label>
+                </value>
+                <value>
+                    <fullName>Solid State Drives (SSD)</fullName>
+                    <default>false</default>
+                    <label>Solid State Drives (SSD)</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+                <value>
+                    <fullName>Intel® Max Series GPU</fullName>
+                    <default>false</default>
+                    <label>Intel® Max Series GPU</label>
+                </value>
+                <value>
+                    <fullName>Multiple platforms</fullName>
+                    <default>false</default>
+                    <label>Multiple platforms</label>
+                </value>
+                <value>
+                    <fullName>Intel Tiber Developer Cloud</fullName>
+                    <default>false</default>
+                    <label>Intel Tiber Developer Cloud</label>
+                </value>
+                <value>
+                    <fullName>Intel Tiber Trust Services</fullName>
+                    <default>false</default>
+                    <label>Intel Tiber Trust Services</label>
+                </value>
+                <value>
+                    <fullName>Intel Tiber App-Level Optimization</fullName>
+                    <default>false</default>
+                    <label>Intel Tiber App-Level Optimization</label>
+                </value>
+                <value>
+                    <fullName>Intel Tiber AI Studio</fullName>
+                    <default>false</default>
+                    <label>Intel Tiber AI Studio</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® Scalable processor</fullName>
+                    <default>false</default>
+                    <label>Intel® Xeon® Scalable processor</label>
+                </value>
+                <value>
+                    <fullName>Intel® Gaudi Learning Server</fullName>
+                    <default>false</default>
+                    <label>Intel® Gaudi Learning Server</label>
+                </value>
+                <value>
+                    <fullName>Jupyter Notebook</fullName>
+                    <default>false</default>
+                    <label>Jupyter Notebook</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+                <value>
+                    <fullName>4th Generation Intel® Xeon® Scalable processors</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>4th Generation Intel® Xeon® Scalable processors</label>
+                </value>
+                <value>
+                    <fullName>Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors</label>
+                </value>
+                <value>
+                    <fullName>Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC)</label>
+                </value>
+                <value>
+                    <fullName>Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Scheduled_Date__c</fullName>
+        <label>Scheduled Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Status__c</fullName>
+        <label>Demo Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>In Progress</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Task_Closed_by__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Task Closed by</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>User.ContactId</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>User</referenceTo>
+        <relationshipName>SWS_Lead_Activities</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>SW Demo Activity</label>
+    <nameField>
+        <displayFormat>ACT-{0000}</displayFormat>
+        <label>Demo Activity Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>SW Demo Activities</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

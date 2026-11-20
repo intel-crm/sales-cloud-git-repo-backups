@@ -1,0 +1,92 @@
+<aura:component implements="force:appHostable,lightning:isUrlAddressable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global"
+                controller="PMP_ExportListView">
+    
+    <!-- call doInit js function on component load to fetch list view details-->   
+    <aura:handler name="init" value="this" action="{!c.doInit}" 
+                  description="This calls loads the custom list views on the object."/>
+     
+    <!-- aura attributes -->   
+     <aura:attribute name="urlFields" type="string[]"/>
+    <aura:attribute name="sObjectList" type="string[]"/>
+    <aura:attribute name="sObjectName" type="string"/>
+    <aura:attribute name="listViewResult" type="string[]"/>
+    <aura:attribute name="ColKeys" type="Map"/>
+    <aura:attribute name="fetchedsObjectList" type="Object[]" default=""/>
+    <aura:attribute name="currentListViewId" type="Id" />
+    <aura:attribute name="currentListViewName" type="String" />
+    <aura:attribute name="showModal" type="Boolean" default ="false"/>
+    <aura:attribute name="exportType" type="String" />
+    <aura:attribute name="errorMsg" type="String"/>   
+    <aura:attribute name="isLoading" type="Boolean"/>
+    <aura:attribute name="accessErrorMsg" type="String"/>
+    <aura:attribute name="maxRecordWarning" type="String"/>
+    <aura:attribute name="buttonList" type="List"/>
+    <aura:attribute name="selectedButton" type="String" default="{!$Label.c.Core_Lead_ExportButton}"/>
+    <aura:attribute name="showSearchButton" type="Boolean" default="false"/>
+    <!-- Added by Divya for Search List View-->
+    
+    <div style="text-align: right;padding-top: 30px;padding-bottom: 30px;">
+        <aura:if isTrue="{!v.showSearchButton}">
+                <c:pmp_createSearchDatatable />                
+         </aura:if>
+        <lightning:button class="searchauracss" label="{!$Label.c.PMP_ExportListView}" title="Export" onclick="{!c.handleShowModal}"/>
+    </div>
+        
+    <!-- custom dropdown to display available list view options-->
+    <aura:if isTrue = "{!v.showModal}">
+        <div class="demo-only" style="height: 300px;">
+            <section role="dialog" tabindex="-1" aura:id="Modalbox" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">           
+                <div class="slds-modal__container" style="width: 50%;">
+                    <header class="slds-modal__header">                        
+                        <div class="{!if(v.maxRecordWarning != '' ,'slds-show slds-notify slds-notify_toast slds-theme_warning','slds-hide')}">                            
+                             {!v.maxRecordWarning}
+                        </div>
+                        <div class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-color_error','slds-hide')}">                            
+                             {!v.accessErrorMsg}
+                        </div>
+                        <h2 id="modal-heading-01" class="slds-text-heading_large slds-hyphenate">{!$Label.c.PMP_ExportModalHeading}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-form-element">
+                            <!--<div class="CustomCss">
+                                <lightning:radioGroup name="radioGroup" options="{!v.buttonList}" value="{!v.selectedButton}" type="radio"/>
+                            </div> -->
+                            <div class="CustomCss1">
+                            <aura:if isTrue="{!v.selectedButton == $Label.c.PMP_ExportButton}">
+                                <lightning:select name="selectListView" label="{!$Label.c.PMP_ExportDropDownHeading}" aura:id="selectedViewId" onchange="{!c.onPicklistChange}">
+                                    <aura:iteration items="{!v.listViewResult}" var="option">
+                                        <option value="{!option.listViewId}" label="{!option.label}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </aura:if>
+                            </div>   
+                        </div>
+                        <aura:if isTrue="{!v.selectedButton == $Label.c.PMP_ExportButton}">
+                            <div class="{!if(v.errorMsg != '' ,'slds-show slds-text-color_error','slds-hide')}"> {!v.errorMsg}</div>
+                        </aura:if>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <aura:if isTrue="{!v.selectedButton == $Label.c.PMP_ExportButton}">
+                            <lightning:button label="{!$Label.c.PMP_ExportExcelButton}" title="{!$Label.c.PMP_ExportExcelButton}" onclick="{!c.exportRecords}"/>
+                            <lightning:button label="{!$Label.c.PMP_ExportCSVButton}" title="{!$Label.c.PMP_ExportCSVButton}" onclick="{!c.exportRecords}"/>
+                            
+                        </aura:if>
+                        <lightning:button label="{!$Label.c.PMP_ExportClose}" title="Close" onclick="{!c.handleHideModal}"/>
+                    </footer>
+                </div> 
+                
+				 <aura:if isTrue = "{!v.isLoading}">
+                     
+                    <div class="slds-spinner_container" aura:id="uploadSpinner">
+                        <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand" aria-hidden="false">                            
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </aura:if>             
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>
+</aura:component>

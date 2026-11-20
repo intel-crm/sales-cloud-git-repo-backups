@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Customer</fullName>
+        <default>false</default>
+        <label>Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer (Pass Through)</fullName>
+        <default>false</default>
+        <label>Customer (Pass Through)</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributor (Cash)</fullName>
+        <default>false</default>
+        <label>Distributor (Cash)</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributor (Credit Memo)</fullName>
+        <default>false</default>
+        <label>Distributor (Credit Memo)</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Customer</fullName>
+        <default>false</default>
+        <label>Non-Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer-NonPO</fullName>
+        <default>false</default>
+        <label>Customer-NonPO</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer (Credit Memo)</fullName>
+        <default>false</default>
+        <label>Customer (Credit Memo)</label>
+    </customValue>
+    <customValue>
+        <fullName>Vistex (Cash)</fullName>
+        <default>false</default>
+        <label>Vistex (Cash)</label>
+    </customValue>
+    <customValue>
+        <fullName>Vistex (Credit Memo)</fullName>
+        <default>false</default>
+        <label>Vistex (Credit Memo)</label>
+    </customValue>
+    <masterLabel>Payment Type</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

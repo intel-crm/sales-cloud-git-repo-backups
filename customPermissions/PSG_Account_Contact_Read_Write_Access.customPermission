@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Edit  Access to Accounts, Account Sold To Ship To  and Read access to Products, Product Extended Attributes</description>
+    <isLicensed>false</isLicensed>
+    <label>PSG Account Contact Read Write Access</label>
+</CustomPermission>

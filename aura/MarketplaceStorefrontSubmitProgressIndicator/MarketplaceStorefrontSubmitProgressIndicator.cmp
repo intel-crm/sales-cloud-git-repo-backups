@@ -1,0 +1,138 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+    
+    <aura:attribute name="isLocked" type="Boolean" default="false" description="Set this to true to show the 'already under reviwe' locked screen" />
+    <aura:attribute name="isOffering" type="Boolean" default="false" description="Set this to true for the Edit Offering modal popup - locked screen only" /><!--9/25 Merge Changes-->
+    <aura:attribute name="isIntelAdmin" type="Boolean" default="false" description="Set this to true for the intel admin - locked screen only" /><!--As Part of copydeck changes- onboarding screens-->
+    
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+        <div class="slds-progress-wrapper">
+            <aura:if isTrue="{!v.isLocked}">
+                <div class="lockNotification slds-text-align_center">
+                    <lightning:icon class="slds-m-right_small" iconName="utility:lock" size="x-small" />
+                    <span>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer1}</span>
+                </div>
+            </aura:if>
+            <ul class="progressbar">
+                
+                <aura:if isTrue="{!v.isLocked}">
+                    <li class="checked"><lightning:icon iconName="utility:check" size="x-small" /><!--{!$Label.c.PMP_Edit_Storefront_Heading}-->
+                        <p>{!v.isOffering ? $Label.c.PMP_Edit_Offering_Information_Heading : $Label.c.PMP_Edit_Storefront_Heading }</p> <!-- 9/25 Merge Changes-->
+                    </li>
+                </aura:if>
+                
+                <li class="{!v.isLocked ? 'checked' : 'active'}"><lightning:icon class="{!v.isLocked ? '' : 'slds-hide'}" iconName="utility:check" size="x-small" />
+                    <p>
+                        <aura:if isTrue="{!v.isIntelAdmin}">
+                            {!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer2}
+                            <aura:set attribute="else">
+                                {!$Label.c.PMP_Storefront_ProfileSubmit_Step1}
+                            </aura:set>
+                        </aura:if>
+                    </p>
+                </li>
+                <li class="lock"><lightning:icon iconName="utility:lock" size="x-small" /><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer3}</p></li>
+                <li>
+                    <p>
+                        <aura:if isTrue="{!v.isIntelAdmin}">
+                            {!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer4}
+                            <aura:set attribute="else">
+                                {!$Label.c.PMP_Storefront_ProfileSubmit_Step3}
+                            </aura:set>
+                        </aura:if>
+                    </p></li>
+                <!--<li><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer5}</p></li>--><!---9/25 Merge Changes-->
+                <li><p>
+                    <aura:if isTrue="{!v.isIntelAdmin}">
+                        {!v.isOffering ? $Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer10 : $Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer5 }
+                        <aura:set attribute="else">
+                            {!v.isOffering ? $Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer10 : $Label.c.PMP_Storefront_ProfileSubmit_Step4 }
+                        </aura:set>
+                    </aura:if>
+                    </p>
+                </li>
+                <aura:if isTrue="{!!v.isOffering}">
+<!--TranslationEOL<li class="lock"><lightning:icon iconName="utility:lock" size="x-small" /><p>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer6}</p></li>-->
+			<!--As part of defect fix(DE53264) - Removing the final node--><!--US514657 uncommented-->
+                </aura:if>
+            </ul>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'medium' || v.appState.Settings.currentSldsBreakPoint == 'small'}">
+        <div class="slds-progress slds-p-horizontal_medium slds-progress_vertical">
+            <aura:if isTrue="{!v.isLocked}">
+                <div class="lockNotification slds-text-align_center slds-p-top_medium">
+                    <lightning:icon class="slds-m-right_small" iconName="utility:lock" size="x-small" />
+                    <span>{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer1}</span>
+                </div>
+            </aura:if>
+            <ol class="slds-progress__list">
+                <aura:if isTrue="{!v.isLocked}">
+                    <li class="slds-progress__item checked">
+                        
+                        
+                        <div class="slds-progress__marker">
+                            <lightning:icon iconName="utility:check" size="x-small" />
+                        </div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_Edit_Storefront_Heading}</div>
+                    </li>
+                </aura:if>
+                
+                <li class="{!join(' ', 'slds-progress__item', v.isLocked ? 'checked' : 'slds-is-active')}">
+                    <div class="slds-progress__marker">
+                        <aura:if isTrue="{!v.isLocked}">
+                            <lightning:icon iconName="utility:check" size="x-small" />
+                        </aura:if>
+                    </div>
+                    
+                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer7}</div>
+                    
+                    
+                </li>
+                
+                
+                <li class="slds-progress__item lock">
+                    <div class="slds-progress__marker">
+                        <lightning:icon iconName="utility:lock" size="x-small" />
+                    </div>
+                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer3}</div>
+                </li>
+                
+                <li class="slds-progress__item">
+                    <div class="slds-progress__marker"></div>
+                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer4}</div>
+                </li>
+                
+                
+                
+                <li class="slds-progress__item">
+                    <div class="slds-progress__marker"></div>
+                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_Edit_Storefront_Under_Review_Disclaimer5}</div>
+                </li>
+                
+                <aura:if isTrue="{!!v.isOffering}">
+                    <li class="slds-progress__item lock">
+                        <div class="slds-progress__marker">
+                            <lightning:icon iconName="utility:lock" size="x-small" />
+                        </div>
+                        <!--removed PMP_Edit_Storefront_Under_Review_Disclaimer6 label for deployment-->
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_OfferingTranslation}</div>
+                    </li>
+                </aura:if>
+            </ol>
+            <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" role="progressbar">
+                <span class="slds-assistive-text">Progress: 25%</span>
+            </div>
+        </div>
+    </aura:if>
+    <!-- <p class="storefront-submit-disclaimer">{!$Label.c.PMP_Edit_Storefront_Under_Review_Help1}&nbsp;-->
+    <p class="{!join(' ', 'storefront-submit-disclaimer', v.isOffering ? 'slds-p-bottom_large' : '')}">{!$Label.c.PMP_LeadGen_Questions1}&nbsp; <!-- 9/25 Merge Changes-->
+        
+        <c:IntelLink url="{!$Label.c.PMP_IPA_HelpLink}">
+            <!--removed PMP_Edit_Storefront_Under_Review_Help2 label for deployment-->
+            <!--replaced PMP_LeadGen_MarketplaceHelp with PMP_Edit_Storefront_Under_Review_Help2 as per styleguide value-->
+            {!$Label.c.PMP_LeadGen_HelpLink} <lightning:icon iconName="utility:chevronright"
+                                                             class="cursor icon-xx-small slds-m-left_xxx-small link-caret"
+                                                             size="x-small"/>
+        </c:IntelLink>        
+    </p>
+</aura:component>

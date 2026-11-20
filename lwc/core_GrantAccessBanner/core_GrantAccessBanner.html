@@ -1,0 +1,47 @@
+<template>
+    <template if:true={isGec}>
+    <template if:true={wiredDetails.data}>
+        <template if:true={isVisible}>
+            <article class="slds-card">
+                <div class=" slds-m-right_large" >
+                    <lightning-button-icon icon-name="utility:close" title="Close" onclick={handleCancel} class="slds-float_right"></lightning-button-icon>
+                </div>
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <b>Notice!!!</b>
+                               
+                               
+                            </h2>
+                        </div>
+                       
+                    </header>
+                </div>
+    
+                
+                <div class="slds-card__body slds-card__body_inner">
+                    <ul class="slds-m-around_medium">
+                        <template for:each={wiredDetails.data} for:item="ban">
+                        
+                          <li key={ban.id}><lightning-formatted-rich-text key={ban.id} value={ban.Core_Message__c}></lightning-formatted-rich-text></li>  
+                           
+                        </template> 
+                    </ul>
+                         
+                </div>
+               
+                
+                    
+                
+                
+           
+            </article>
+            <!--<h5>New Updates</h5>-->
+        </template>
+        
+    </template>
+   
+</template>
+</template>

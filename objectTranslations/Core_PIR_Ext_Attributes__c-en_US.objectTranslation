@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PIR Extended Attributes Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PIR Extended Attributes Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Component Product Class --></label>
+        <name>Core_Component_Product_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Description --></label>
+        <name>Core_Error_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package --></label>
+        <name>Core_Package__c</name>
+    </fields>
+    <fields>
+        <label><!-- Part --></label>
+        <name>Core_Part__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processing Status --></label>
+        <name>Core_Processing_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Architecture --></label>
+        <name>Core_Product_Architeture__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Class --></label>
+        <name>Core_Product_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Core_Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Line --></label>
+        <name>Core_Product_Line__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registerable --></label>
+        <name>Core_Registerable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signal Code --></label>
+        <name>Core_Signal_code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Cost Altera --></label>
+        <name>Core_Standard_Cost_Altera__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

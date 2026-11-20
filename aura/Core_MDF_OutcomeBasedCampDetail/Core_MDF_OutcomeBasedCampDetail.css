@@ -1,0 +1,108 @@
+.THIS {
+}
+
+.THIS .slds-required {
+    color: #c23030;
+    margin-right: 2px;
+}
+
+.THIS .note-row {
+    border-left: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    background-color: #ffffff;
+}
+
+.THIS .note-list {
+    margin: 0;
+}
+
+.THIS .note-title {
+    font-family: "Salesforce Sans", Arial, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #181818;
+    line-height: 1.25;
+}
+
+.THIS .note-comments {
+    font-family: "Salesforce Sans", Arial, sans-serif;
+    font-size: 0.8125rem;
+    line-height: 1.375;
+    color: #3e3e3c;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.THIS .comments-label,
+.THIS .slds-form-element__label {
+    font-family: "Salesforce Sans", Arial, sans-serif;
+    font-size: 0.75rem;
+    color: #3e3e3c;
+}
+
+.THIS .note-title-label {
+    margin-bottom: 0.125rem;
+}
+
+.THIS .internal-notes-container {
+    background-color: #f3f2f2;
+    border: 1px solid #dddbda;
+}
+
+.THIS .internal-notes-container .slds-card {
+    background-color: #f3f2f2;
+}
+
+.THIS .internal-note-action-cell {
+    text-align: right;
+    white-space: nowrap;
+    width: 2.5rem;
+}
+
+.THIS .internal-note-action-header {
+    width: 2.5rem;
+    text-align: right;
+}
+
+.THIS .internal-note-action-menu {
+    margin-right: 0;
+}
+
+.THIS .note-link-row {
+    cursor: pointer;
+}
+
+.THIS .note-link-row:hover td {
+    background-color: #f3f3f3;
+}
+
+.THIS .note-link-title {
+    font-weight: 600;
+}
+
+.THIS .note-name-link {
+    text-decoration: underline dotted;
+}
+
+.THIS .internal-notes-standard-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    padding: 0.125rem;
+    background-color: #747E96;
+    border-radius: 0.25rem;
+}
+
+.THIS .required-info-note {
+    color: #c23934;
+}
+
+.THIS .slds-modal__header .slds-modal__close {
+    background-color: #16325c;
+    border-radius: 50%;
+}
+
+.THIS .slds-modal__header .slds-modal__close .slds-button__icon {
+    fill: #ffffff;
+}

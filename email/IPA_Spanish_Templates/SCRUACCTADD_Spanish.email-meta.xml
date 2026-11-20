@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SCRUACCTADD_Spanish</name>
+    <style>none</style>
+    <subject>Debe realizar una acción para finalizar su inscripción en Intel® Partner Alliance</subject>
+    <textOnly>Debe realizar una acción para finalizar su inscripción en Intel® Partner Alliance
+
+
+
+
+{!Contact.FirstName}:
+
+¡Felicitaciones! Su administrador de empresas o un representante de Intel lo agregó a una cuenta Intel® Partner Alliance. Está tan solo a unos pasos de finalizar su inscripción.
+
+La siguiente información de perfil se creó para usted:
+
+Dirección de correo electrónico: {!Contact.Email}
+Nombre de empresa: {{ACCOUNTNAME}}
+ID empresarial de Intel® Partner Alliance: {{ACCOUNTNUMBER}}
+
+
+Haga clic en el siguiente enlace para completar su inscripción
+
+
+{{ButtonText}}
+
+
+¿No puede acceder al enlace anterior?
+{{EVLINK}}
+Si tiene alguna pregunta, comuníquese con nosotros a {{SUPPORTLINK}}.
+¡Esperamos contar con usted en el programa!
+Atentamente,
+Su equipo de Intel® Partner Alliance
+
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 Estados Unidos. www.intel.com
+Privacidad | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

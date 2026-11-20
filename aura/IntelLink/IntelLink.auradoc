@@ -1,0 +1,50 @@
+<aura:documentation>
+	<aura:description>
+
+    <p>Link Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 5/15/2019</p>
+    <p>CurrentVersion: 1.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>Uses native Salesforce utilities to build a link to a community page.</p>
+<pre>&lt;c:ISGLink label="Product Catalog" page="l1-offerings" /&gt;</pre>
+    <br/>
+    <p>This is also built specifically for the L2 Search... v.searchParams should match the search format:</p>
+    <p>Params Object Structure:</p>
+    <p>(This is then parsed in <code>ISGSearchParams</code> on the L2 Page)</p>
+<pre>
+   cat:      category
+   q:        search term
+   page:     current page
+   type:     search type ('all', 'product', 'partner')
+   dir:      sort direction ('asc' / 'desc')
+   field:    sort field
+   filters:  filters object</pre>
+
+  <br/>
+  <p>Example:</p>
+
+<pre>&lt;c:ISGLink label="Search All Products" page="l2" searchParams="{!v.params}"/&gt;
+
+  controller...
+
+  component.set('v.params', {
+    type: 'product'
+  });</pre>
+
+    <p>Resulting url:</p>
+
+    <pre>https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l2?search=%7B%22type%22%3A%22product%22%7D</pre>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+
+    <!-- CHANGELOG -->
+
+  </aura:description>
+</aura:documentation>

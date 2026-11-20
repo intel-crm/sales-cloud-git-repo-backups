@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ReportLinks</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ReportLinks</value>
+    </caseValues>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refresh Cadence --></label>
+        <name>Refresh_Cadence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Report or Dashboard Link --></label>
+        <name>Report_or_Dashboard_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resource Name/Link --></label>
+        <name>Resource_Name_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Resources --></label>
+        <name>Training_Resources__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Text --></label>
+        <name>Training_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Use Case --></label>
+        <name>Use_Case__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Exception__c.Core_MDF_Exception_Status_nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Exception__c.Core_MDF_Program_nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Exception__c.Core_MDF_Budget_Type_nm__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Exception__c.Core_MDF_Total_Dollar_Impact_amt__c</field>
+    </columns>
+    <description>For Operation Metrics data update</description>
+    <format>Tabular</format>
+    <name>Exceptions Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_MDF_Exception__c@Core_MDF_Exception__c.Core_MDF_Account_id__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CUST_CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

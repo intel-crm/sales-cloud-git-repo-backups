@@ -1,0 +1,65 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+    <!-- <div slot="content">
+        <template if:true={ansFlag}>
+            <table class="tableAlignment">
+                <tr class="alignment">
+                    <th>{labels.questionLabel}</th>
+                    <th>{labels.answerLabel}</th>
+                </tr>
+                <template for:each={answerobj} for:item="object">
+                    <tr key={object.key} class="tralignment">
+                        <td class="tdalignment">{object.key}</td>
+                        <td class="ansalign">
+                            <template if:true={object.isLink}>
+                            <lightning-formatted-rich-text value={object.value}></lightning-formatted-rich-text>
+                            </template>
+                            <template if:false={object.isLink}>
+                                <lightning-formatted-rich-text disable-linkify value={object.value}>
+                                </lightning-formatted-rich-text>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
+            </table>
+        </template>
+        <template if:true={intelProduct}>
+            <h5><b>{labels.intelProductsLabel}</b></h5>
+            <div class="slds-p-top_x-small slds-p-bottom_xx-small">
+                <table
+                    class="slds-table slds-cell-wrap slds-table_bordered slds-table_header-hidden slds-table_fixed-layout">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="intelProduct slds-cell-wrap" scope="col">
+                                {labels.intelProductsLabel}
+                            </th>
+                            <th class="productQuantity slds-cell-wrap" scope="col">
+                                {labels.projectedQuantityLabel}
+                            </th>
+                            <th class="productComments slds-cell-wrap" scope="col">
+                                {labels.commentsLabel}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template if:true={intelProduct}>
+                            <template for:each={intelProductList} for:item="product" for:index="index">
+                                <tr key={product.ans} class="slds-hint-parent">
+                                    <td class="slds-cell-wrap" data-label={labels.intelProductsLabel} scope="row">
+                                        {product.ques}
+                                    </td>
+                                    <td class="slds-cell-wrap" data-label={labels.projectedQuantityLabel} scope="row">
+                                        {product.ans}
+                                    </td>
+                                    <td class="slds-cell-wrap" data-label={labels.commentsLabel} scope="row">
+                                        {product.comm}
+                                    </td>
+                                </tr>
+                            </template>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+    </div> -->
+</template>

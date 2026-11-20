@@ -1,0 +1,128 @@
+<!-- Component which loads on Save of Exception Records -->
+<aura:component controller="Core_MDF_ExceptionAccountsController" access="global"
+    implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes">
+
+    <!-- Handler function for fetching value on the load of the component -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"
+        description="Call doInit function on component load to get picklist values" />
+
+    <!-- Attribute Initialization -->
+    <aura:attribute type="Boolean" name="loadExceptionsAccountLayout" Default="false"
+        description="Controls the Account Selection Component on the Exception Record" />
+    <aura:attribute type="Boolean" name="exceptionsQucikActionIndicator" Default="false"
+        description="Tells whether the component is fired from Quick Action or Lightning Page " />
+    <aura:attribute type="Boolean" name="exceptionsStatusErrorCheck" Default="false"
+        description="To show error message if the user edits the record in uneditable status" />
+    <aura:attribute type="String" name="exceptionStatus" Default="" description="Stores the status of the Exception" />
+    <aura:attribute type="String" name="exceptionStatusErrorMessage" Default=""
+        description="Error for different statuses of the Exception" />
+    <aura:attribute name="AccountList" type="List" default="[]" description="Account Picklist Values" />
+    <!--<aura:attribute name="storeAccountList" type="List" 
+                    default="[]" description="Account Picklist Values which is stored for key search" />-->
+    <aura:attribute name="selectedAccountList" type="List" default="[]"
+        description="Selected account Picklist Values" />
+    <aura:attribute name="key" type="string" default="" description="Search String" />
+    <aura:attribute type="Boolean" name="allaccts" Default="false"
+        description="Will be true if all accounts applicable for the exception" />
+
+
+    <aura:if isTrue="{!v.loadExceptionsAccountLayout}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Heading (Header of the Modal) -->
+                <!--<div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-buttonicon-inverse" title="Close"
+                        onclick="{!c.closeModel}">
+                        <span style="color:#FFFFFF;">X</span><span
+                            class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    </button>
+                </div>-->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <!-- Accounts Popup for the the Exception -->
+                    <aura:if isTrue="{!v.exceptionsStatusErrorCheck}">
+                        <div align="center">
+                            <c:Core_MDF_ErrorMessage type="error" message="{!v.exceptionStatusErrorMessage}" />
+                        </div>
+                    </aura:if>
+                    <lightning:layout>
+                        <lightning:layoutItem size="5" padding="around-small" class="slds-align_absolute-left">
+                            <lightning:input name="search" type="search" value="{!v.key}"></lightning:input><br></br>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="2" padding="around-small" class="slds-align_absolute-center">
+                            <lightning:button label="{!$Label.c.Core_MDF_Search_Accounts}" title="Search"
+                                onclick="{! c.onkeychange }" />
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="5">
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" padding="around-small" class="slds-align_absolute-left">
+                            <lightning:input type="checkbox" label="{!$Label.c.Core_MDF_Select_All_Accounts}"
+                                name="allaccounts" checked="{!v.allaccts}" onchange="{! c.onselect }" />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-small" size="12">
+                            <lightning:dualListbox aura:id="selectAccount" name="Account" label=""
+                                sourceLabel="{!$Label.c.Core_MDF_Avbl_Accounts}"
+                                selectedLabel="{!$Label.c.Core_MDF_Select_Accounts}" options="{!v.AccountList }"
+                                value="{!v.selectedAccountList}" disableReordering="true" />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <br />
+                    <lightning:layout>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-small" size="6"
+                            class="slds-align_absolute-center">
+                            <lightning:button aura:id="saveButton" variant="brand" label="{!$Label.c.Core_MDF_Save}"
+                                title="{!$Label.c.Core_MDF_Save}" onclick="{!c.saveAccounts}" />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.exceptionsQucikActionIndicator}">
+        <!-- Accounts Popup for the the Exception -->
+        <aura:if isTrue="{!v.exceptionsStatusErrorCheck}">
+            <div align="center">
+                <c:Core_MDF_ErrorMessage type="error" message="{!v.exceptionStatusErrorMessage}" />
+            </div>
+        </aura:if>
+        <lightning:layout>
+            <lightning:layoutItem size="5" padding="around-small" class="slds-align_absolute-left">
+                <lightning:input name="search" type="search" value="{!v.key}"></lightning:input><br></br>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2" padding="around-small" class="slds-align_absolute-center">
+                <lightning:button label="{!$Label.c.Core_MDF_Search_Accounts}" title="Search"
+                    onclick="{! c.onkeychange }" />
+            </lightning:layoutItem>
+            <lightning:layoutItem size="5">
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout>
+            <lightning:layoutItem size="12" padding="around-small" class="slds-align_absolute-left">
+                <lightning:input type="checkbox" label="{!$Label.c.Core_MDF_Select_All_Accounts}" name="allaccounts"
+                    checked="{!v.allaccts}" onchange="{! c.onselect }" />
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout>
+            <lightning:layoutItem flexibility="auto" padding="horizontal-small" size="12">
+                <lightning:dualListbox aura:id="selectAccount" name="Account" label=""
+                    sourceLabel="{!$Label.c.Core_MDF_Avbl_Accounts}"
+                    selectedLabel="{!$Label.c.Core_MDF_Select_Accounts}" options="{!v.AccountList }"
+                    value="{!v.selectedAccountList}" disableReordering="true" />
+            </lightning:layoutItem>
+        </lightning:layout>
+        <br />
+        <lightning:layout>
+            <lightning:layoutItem flexibility="auto" padding="horizontal-small" size="6"
+                class="slds-align_absolute-center">
+                <lightning:button aura:id="saveButton" variant="brand" label="{!$Label.c.Core_MDF_Save}" title="Save"
+                    onclick="{!c.saveAccounts}" />
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+
+</aura:component>

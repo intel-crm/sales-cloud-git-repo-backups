@@ -1,0 +1,60 @@
+<template>
+	<template if:true={brandContent}>
+		<div style="float: left;width: 100%;">
+
+			<div style="float: left;width: 80%;">
+				<table border="1" style="border: 1px solid #000;">
+					<tbody>
+						<tr style="background-color:#e2e2e2;">
+                        <th  style="color:#0071c5;text-align:center;font-size: 16px;">{BRAND_TABLE_HEADER_1}</th>
+                        <th  style="color:#0071c5;text-align:center;font-size: 16px;">{BRAND_TABLE_HEADER_2}</th> 
+                        <th  style="color:#0071c5;text-align:center;font-size: 16px;">{BRAND_TABLE_HEADER_3}</th>
+		                <th  style="color:#0071c5;text-align:center;font-size: 16px;">{BRAND_TABLE_HEADER_4}</th>
+						</tr>
+						
+						<template for:each={brandContent} for:item="content">
+							<template iterator:subsection={content.tableSectionList}>
+								
+								<tr key={subsection.value.sortOrder}>
+								        <td key={content.rowHeader} if:true={subsection.first} rowspan={content.rowSpan} style="text-align:center;font-size: 16px;">{content.rowHeader}</td>
+								
+
+									 	<td key={subsection.value.sortOrder} style="padding: 10px;text-align:left;font-size: 16px;">
+										
+											 <template for:each={subsection.value.firstColContentList} for:item="firstColContent">
+											   <lightning-formatted-rich-text    key={firstColContent.Id}    value={firstColContent}   ></lightning-formatted-rich-text>
+											   <br key={firstColContent.Id} />
+											 </template>
+											
+											  
+										 </td>
+										 <td key={subsection.value.sortOrder} style="text-align:center;font-size: 16px;">
+											
+											 <template for:each={subsection.value.secondColContentList} for:item="secondColContent">
+											   <lightning-formatted-rich-text    key={secondColContent.Id}    value={secondColContent}   ></lightning-formatted-rich-text>
+                                               <br key={secondColContent.Id} />
+											 </template>
+										
+										 </td>
+										 <td key={subsection.value.sortOrder} style="text-align:center;font-size: 16px;">
+											
+											 <template for:each={subsection.value.thirdColContentList} for:item="thirdColContent">
+												<lightning-formatted-rich-text    key={thirdColContent.Id}    value={thirdColContent}   ></lightning-formatted-rich-text>
+                                                <br key={thirdColContent.Id} />
+											 </template>
+										 </td>
+									   
+						        </tr>
+						 </template>
+						</template>
+
+					</tbody>
+
+				</table>
+				<br/><br/>
+			</div>
+		</div>
+		<div style="float: left;width: 20%;">
+    </div>
+	</template>
+</template>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>This is to populate the Group Id in the PGM record.</description>
+    <interviewLabel>AccountShare for Partner Group Mapping {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_AccountShare_for_Partner_Group_Mapping</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Core_MDF_Fetch_the_Group_Id</name>
+        <label>Fetch the Group Id</label>
+        <locationX>262</locationX>
+        <locationY>116</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Core_MDF_Update_the_PGM_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>vGroupName</elementReference>
+            </value>
+        </filters>
+        <object>Group</object>
+        <outputAssignments>
+            <assignToReference>vGroupId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Core_MDF_Update_the_PGM_record</name>
+        <label>Update the PGM record</label>
+        <locationX>424</locationX>
+        <locationY>116</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>vPGMId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_MDF_Group_Id__c</field>
+            <value>
+                <elementReference>vGroupId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_MDF_Partner_Group_Mapping__c</object>
+    </recordUpdates>
+    <startElementReference>Core_MDF_Fetch_the_Group_Id</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>vAccessType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>vAccId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>This will contain the Group Id fetched from the Group to associate with the Partner Group Mapping record.</description>
+        <name>vGroupId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>This will contain the Group Name from the Partner Group Mapping record.</description>
+        <name>vGroupName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>This will contain the Id of the Partner Group Mapping record we have to update.</description>
+        <name>vPGMId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

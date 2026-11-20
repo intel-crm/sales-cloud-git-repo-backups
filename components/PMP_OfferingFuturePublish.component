@@ -1,0 +1,121 @@
+<apex:component access="global"><!-- controller="PMP_OfferingEmailAlertsController"> -->
+<!--    <html>
+        <style>
+/* Regular */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: normal;
+font-weight: 400;
+font-style: normal;
+}
+
+/* Light */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: 200;
+font-style: normal;
+}
+    
+/* Bold */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: bold;
+font-weight: 700;
+font-style: normal;
+}
+    
+table {
+  font-family:  sans-serif; /*arial, sans-serif,Intel Clear;*/
+  border-collapse: collapse;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 0px;
+  border-bottom: 1px solid #dddddd;
+}
+
+td, th {
+  padding: 8px;
+}
+
+.intelBlue{
+  color:#0071c5;
+}
+
+h1{
+  font-family: sans-serif !important;  
+}
+</style>
+        <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
+        <body>-->
+            <!-- Header Banner -->
+<!--                <c:PMP_Global_Header message="Your Showcase offering is now approved and set to publish"/>-->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+<!--            <table width="75%">  -->  
+                <!-- Email Body -->
+<!--               <tr>
+            <td style="padding-left:50px;">
+                <br/>Hello <br/><br/>
+                <apex:outputText rendered="{!IF(AND(offeringData.PMP_Offering_Submitter_UserId__c != null, offeringData.PMP_Offering_Submitter_UserId__r.IsActive==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
+                Congratulations! Your Intel® Partner Showcase offering, {!offeringData.PMP_Partner_Offering_Nm__c}, has been approved and will be published on the date you’ve specified:
+                {!offeringStartDate}. <b>NOTE: </b>The publishing process can take up to two hours to complete from the time this email was sent.
+                <br/><br/>
+                Thank you,<br/><br/>
+                <b>The Intel® Partner Showcase Team</b> 
+            </td>
+          </tr>-->
+                <!-- Email Body -->
+           <!-- CTA -->
+<!--          <tr>
+            <td style="padding-left:50px;">      
+                <p><apex:outputLink value="{!communityURL}{!publishedOfferingId}" styleClass="intelBlue">View offering preview</apex:outputLink></p>
+            </td>
+         </tr>-->
+        <!-- CTA -->
+        <!-- Progress Indication 
+        <tr>
+            <td style="height:50; text-align:center;">
+                <apex:image id="bodyImageId" url="{!bodyURL}"/>
+            </td>
+        </tr>-->
+        <!-- Progress Indication -->
+         <!-- Next Best Step -->
+<!--        <tr>    
+            <td style="padding-left:50px;">
+                Would you like to create another offering ?<br/>
+                <apex:outputLink value="{!createOfferingURL}" styleClass="intelBlue">
+                Create another offering
+                </apex:outputLink><br/>
+            </td>
+        </tr>-->
+        <!-- Next Best Step -->
+        <!-- Questions/Contact -->
+<!--        <tr>
+            <td style="padding-left:50px;">  
+                Questions? Reach out to Showcase Admin Team at:<br/>
+                <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                 {!$Label.PMP_MailTo}
+                </apex:outputLink><br/><br/>
+            </td>
+         </tr>-->
+         <!-- Questions/Contact -->
+<!--        </table>     -->            
+            <!-- Email content -->
+            
+            <!-- Global Footer -->
+<!--                <c:PMP_Global_Footer />-->
+            <!-- Global Footer -->
+            
+<!--        </body>
+    </html>-->
+</apex:component>

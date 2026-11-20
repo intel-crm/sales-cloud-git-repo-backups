@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>OPID Recommendation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>OPID Recommendation</value>
+    </caseValues>
+    <fields>
+        <label><!-- Error Description --></label>
+        <name>Error_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account(ACM) --></label>
+        <name>PRM_Account_ACM_Id__c</name>
+        <relationshipLabel><!-- OPID Recommendation --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Coverage Indicator --></label>
+        <name>PRM_Account_Coverage_Nm__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- OPID Recommendation (Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>PRM_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Number --></label>
+        <name>PRM_Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Plan Indicator --></label>
+        <name>PRM_Account_Plan_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- CNDA Indicator --></label>
+        <name>PRM_CNDA_Indicator_Nm__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Count --></label>
+        <name>PRM_Design_Registration_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duration (In Days) --></label>
+        <name>PRM_Duration_In_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eligibility Tier --></label>
+        <name>PRM_Eligibility_Tier__c</name>
+        <relationshipLabel><!-- OPID Recommendation (Eligibility Tier) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Grouping Method --></label>
+        <name>PRM_Grouping_Method_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Type --></label>
+        <name>PRM_Market_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Employees Done Training --></label>
+        <name>PRM_No_Of_Employees_Done_Training_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>PRM_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of MP Solutions --></label>
+        <name>PRM_Number_Of_MP_Solutions_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner Id --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- OPID Recommendation (One Partner Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rank --></label>
+        <name>PRM_Rank_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Recommendation_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Process</masterLabel>
+            <translation><!-- In Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Created</masterLabel>
+            <translation><!-- OPID Created --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID association- Failed in CIM</masterLabel>
+            <translation><!-- OPID association- Failed in CIM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID association- WIP in CIM</masterLabel>
+            <translation><!-- OPID association- WIP in CIM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prime- Completed</masterLabel>
+            <translation><!-- Prime- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prime- Failed</masterLabel>
+            <translation><!-- Prime- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prime- In Progress</masterLabel>
+            <translation><!-- Prime- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Processed</masterLabel>
+            <translation><!-- Processed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted for OPID</masterLabel>
+            <translation><!-- Submitted for OPID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for CIM response</masterLabel>
+            <translation><!-- Waiting for CIM response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>failed to Submit for OPID</masterLabel>
+            <translation><!-- failed to Submit for OPID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>request captured in CIM</masterLabel>
+            <translation><!-- request captured in CIM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Recommendation Type --></label>
+        <name>PRM_Recommendation_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Downgrade</masterLabel>
+            <translation><!-- Downgrade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID</masterLabel>
+            <translation><!-- OPID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upgrade</masterLabel>
+            <translation><!-- Upgrade --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Source --></label>
+        <name>PRM_Revenue_Source_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Sales --></label>
+        <name>PRM_Sales_Amount_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Calculation Group --></label>
+        <name>PRM_Sales_Calculation_Group_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Select Benefit --></label>
+        <name>PRM_Select_Benefit_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Present --></label>
+        <name>PRM_Specialty_Present_Nm__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submitted Integration Report Indicator --></label>
+        <name>PRM_Submitted_Integration_Report_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>PRM_Tier_Id__c</name>
+        <relationshipLabel><!-- OPID Recommendation (Tier) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Total Nbr Achieved Competency --></label>
+        <name>PRM_Total_Achieved_Competency_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Credit Points Count --></label>
+        <name>PRM_Training_Credit_Points_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type Of Solutions --></label>
+        <name>PRM_Type_Of_Solutions_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>PRM_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason For Downgrade --></label>
+        <name>Reason_For_Downgrade__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- OPID Recommendation --></label>
+        <name>PRM_OPID_Recommendation</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Upgrade/Downgrade --></label>
+        <name>PRM_Upgrade_Downgrade</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Once record is Submitted for OPID, cannot be edited by user. --></errorMessage>
+        <name>PRM_Lock_Record</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not edit any other field except Grouping Method --></errorMessage>
+        <name>PRM_Restrict_Field_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Upgrade or Downgrade Recommendations cannot be created --></errorMessage>
+        <name>PRM_Restrict_UpgradeORDowngrade_Records</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- OPID Recommendation can only be created in a new status. --></errorMessage>
+        <name>PRM_new_record_status_error</name>
+    </validationRules>
+</CustomObjectTranslation>

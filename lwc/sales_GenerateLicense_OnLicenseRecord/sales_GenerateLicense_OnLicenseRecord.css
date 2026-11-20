@@ -1,0 +1,19 @@
+.THIS.dots-here:after {
+    border-bottom: 1px dotted;
+    border-top : 1px dotted;
+    content: '';
+    flex: 1;
+}
+
+.THIS.dots-here{
+    display: flex;
+    width: 300px;
+}
+
+.THIS.modelContentClass{
+    overflow-y: hidden !important;
+}
+
+.THIS .slds-listbox {
+    overflow-y: auto !important;
+}

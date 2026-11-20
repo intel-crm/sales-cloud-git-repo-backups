@@ -1,0 +1,749 @@
+<!--
+  @description       : LWC for Bulk Approve/Reject For FI QuoteLines FI-RPM.
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : Accenture
+  @last modified on  : 12-01-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+	<lightning-button data-name="bulkApprove" label="Bulk Approve" onclick={openApproveDataTable} style="margin-right: 5px;">
+	</lightning-button>
+
+	<lightning-button data-name="bulkReject" label="Bulk Reject" onclick={openRejectDataTable}>
+	</lightning-button>
+
+	<template lwc:if={openBulkApproveModal}>
+
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+
+			<div class="slds-modal__container"> <!-- Close button -->
+
+				<div class="slds-modal__header">
+					<h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate"> Bulk Approve </h1>
+				</div>
+
+				<div class="slds-modal__content" id="modal-content-id-1" style="overflow-x: scroll">
+					<!-- Spinner -->
+
+					<template if:true={isSpinner}>
+						<div class="sldsspinnercontainer">
+							<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+								<span class="slds-assistive-text">Loading..</span>
+								<div class="slds-spinner__dot-a"></div>
+								<div class="slds-spinner__dot-b"></div>
+							</div>
+						</div>
+					</template>
+
+					<!-- table -->
+					<template if:false={isSpinner}>
+
+						<template lwc:if={noRecords}>
+							<div class="slds-table_edit_container" style="text-align: center; color: red"> {msg}</div>
+						</template>
+						<template lwc:elseif={displayData}>							
+							<div class="slds-table_edit_container table-responsive" >
+								<table aria-multiselectable="true"
+									class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_resizable-cols"
+									role="grid">
+
+									<thead>
+										<tr style="height: 30px">
+											<th scope="col" style="width:3rem; padding-left: 15px">
+													<lightning-input onchange={allSelected} type="checkbox" variant="label-hidden"
+														data-id="selectAllCheckBox"></lightning-input>
+											</th>
+
+											<th scope="col" class="tableContentHide"
+												style="width: 3rem; padding-left: 15px">
+												<lightning-icon icon-name="utility:shield" alternative-text="shield"
+													variant="success" size="x-small" title="Validation">
+												</lightning-icon>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col"
+												style="width: 8rem;">
+												<span title="Quote Line Number">Quote Line Number</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span title="Product">Product</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Partner Type">Partner Type</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="SIPP">SIPP</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Vertical Segment">Vertical Segment</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Competitor Product">Competitor Product</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Rebate Per Unit">Rebate Per Unit</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Approved Quantity">Approved Quantity</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Approved Pricing Start Date">Approved Pricing Start Date</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Approved Pricing End Date">Approved Pricing End Date</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Additional Comments">Additional Comments</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span class="" title="Additional T's &amp; C's">Additional T&apos;s
+													&amp; C&apos;s</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col"
+												style=" width: 12rem;">
+												<span class="" title="Approval Comments">Approval Comments</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col"
+												style=" width: 12rem;">
+												<span class="" title="Pricing Manager">Pricing Manager</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text" tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+										</tr>
+									</thead>
+
+									<tbody>
+										<template for:each={quoteLineDataToDisaplay} for:item="qli">
+											<tr key={qli.Id} aria-selected="false" class="slds-hint-parent"
+												style="height: 1rem">
+												<!-- checkbox -->
+												<td scope="qli" role="gridcell" style="padding-left: 1rem">
+													<lightning-input class="checkBoxForUpdate" type="checkbox"
+														value={qli.Id} checked={qli.isSelected} data-id={qli.Id} onchange={handleCheckBox} 
+														variant="label-hidden">
+													</lightning-input>
+												</td>
+
+												<!-- Error Box -->
+												<td scope="qli" class="tableContentHide centerText">
+													<template if:true={qli.isError}>
+														<lightning-icon icon-name="utility:error" variant="error"
+															size="x-small" title={qli.errorMsg}></lightning-icon>
+													</template>
+												</td>
+
+												<!-- Read-Only STRAT -->
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-formatted-text title={qli.Pricing_Quote_Line_Number__c}
+														data-id={qli.Id} value={qli.Pricing_Quote_Line_Number__c}>
+													</lightning-formatted-text>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText trimLength">
+													<lightning-formatted-text title={qli.Pricing_Product_Nm__r.Name}
+														value={qli.Pricing_Product_Nm__r.Name}>
+													</lightning-formatted-text>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText trimLength">
+													<lightning-formatted-text title={qli.partnerType}
+														value={qli.partnerType}>
+													</lightning-formatted-text>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input title={qli.Pricing_SIPP_Cb__c} type="checkbox" checked={qli.Pricing_SIPP_Cb__c} value={qli.Pricing_SIPP_Cb__c} variant="label-hidden" disabled>
+													</lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-formatted-text
+														title={qli.Pricing_Product_VerticalSegment__c}
+														value={qli.Pricing_Product_VerticalSegment__c}>
+													</lightning-formatted-text>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText trimLength">
+													<lightning-formatted-text title={qli.CompetetorProduct}
+														value={qli.CompetetorProduct}>
+													</lightning-formatted-text>
+												</td>
+												<!-- Read-Only END  -->
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input formatter="currency" step="any" maxlength="16" type="number" onchange={handleRebatePerUnit}
+														onfocusout={onFocusOutRebate} value={qli.Pricing_FI_Net_RPU_Amt__c} variant="label-hidden"
+														data-id={qli.Id}></lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="number" onchange={handleApprovedQuantity} maxlength="18"
+														value={qli.Pricing_Approved_Unit_Qty__c} variant="label-hidden"
+														data-id={qli.Id}></lightning-input>
+												</td>
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="date" variant="label-hidden" data-id={qli.Id}
+														value={qli.Pricing_Approved_Start_Date_Dt__c} date-style="short"
+														onchange={handleApprovedStartDate} class="slds-form-element"
+														style="width: 100%">
+													</lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="date" variant="label-hidden" data-id={qli.Id}
+														value={qli.Pricing_Approved_End_Date_Dt__c} date-style="short"
+														onchange={handleApprovedEndDate} class="slds-form-element"
+														style="width: 100%">
+													</lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="text"
+														value={qli.Pricing_Additional_Comments_Txt__c} data-id={qli.Id}
+														maxlength="20000" onchange={handleAdditionalComments}
+														variant="label-hidden">
+													</lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="text"
+														value={qli.Pricing_Additional_T_C_s_Txt__c} data-id={qli.Id}
+														maxlength="1000" onchange={handleAdditionalTnC}
+														variant="label-hidden">
+													</lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="text" title={qli.Pricing_pm_approval_comments_nm__c}
+														value={qli.Pricing_pm_approval_comments_nm__c} data-id={qli.Id}
+														maxlength="20000" onchange={handleApproveComments}
+														variant="label-hidden">
+													</lightning-input>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10">
+													<div class="slds-form-element">
+														<div class="slds-form-element__control">
+															<div class="slds-combobox_container">
+																<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+																	aria-expanded="true" aria-haspopup="listbox" role="combobox">
+
+																	<template lwc:if={qli.pricingManager}>
+																		<div data-key="pilldiv" class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right"
+																			role="none">
+																			<span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+																				title="object">
+																				<div class="slds-icon slds-icon_small" aria-hidden="true">
+																					<lightning-icon icon-name="standard:user" size="small"> </lightning-icon>
+																				</div>
+																				<span class="slds-assistive-text">Record</span>
+																			</span>
+																			<input type="text"
+																				class="slds-input slds-combobox__input slds-combobox__input-value"
+																				data-id={qli.Id} aria-controls="listbox-id-5"
+																				role="textbox" placeholder="Select an Option" readonly
+																				value={qli.pricingManager} />
+																			<button
+																				class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+																				onclick={removeRecordOnLookup}
+																				data-id={qli.Id}
+																				title="Remove selected option">
+																				<span class="slds-button__icon"
+																					aria-hidden="true">
+																					<lightning-icon
+																						icon-name="utility:close"
+																						size="xx-Small"
+																						class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+																						aria-hidden="true">
+																					</lightning-icon>
+																				</span>
+																				<span class="slds-assistive-text">Remove selected record</span>
+																			</button>
+																		</div>
+
+																	</template>
+																	<template lwc:else>
+																		<div data-key="searchdiv"
+																			class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+																			role="none">
+																			<input type="text" onfocusout={onLeave}
+																				onfocus={onfocusPricingmanager}
+																				value={qli.searchKey}
+																				onkeyup={handleKeyChange}
+																				onkeydown={handleKeyDown}
+																				data-id={qli.Id}
+																				class="slds-input slds-combobox__input"
+																				aria-autocomplete="list"
+																				aria-controls="listbox-id-2"
+																				role="textbox"
+																				placeholder="Search..." />
+
+																			<span
+																				class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+																				<lightning-icon
+																					icon-name="utility:search"
+																					size="xx-Small"
+																					class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+																					aria-hidden="true">
+																				</lightning-icon>
+																			</span>
+
+																		</div>
+
+																		<template if:true={qli.recordsList}>
+
+																			<div data-key="dropdownresult"
+																				class="slds-show slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid dropDownClass"
+																				role="listbox">
+																				<ul class="slds-listbox slds-listbox_vertical"
+																					role="presentation">
+																					<template if:true={qli.message}>
+																						<center> {qli.message}</center>
+																					</template>
+																					<template for:each={qli.recordsList}
+																						for:item="record">
+																						<li id={record.Id}
+																							key={record.Id}
+																							data-id={qli.Id}
+																							onclick={onRecordSelection}
+																							role="presentation"
+																							class="slds-listbox__item">
+																							<div data-key={record.Id}
+																								data-name={record.Name}
+																								class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+																								role="option">
+																								<span
+																									class="slds-media__figure slds-listbox__option-icon">
+																									<span
+																										class="slds-icon_container">
+																										<lightning-icon
+																											icon-name="standard:user"
+																											size="small">
+																										</lightning-icon>
+																									</span>
+																								</span>
+																								<span
+																									class="slds-media__body">
+																									<span
+																										data-key={record.Id}
+																										data-name={record.Name}
+																										class="slds-listbox__option-text_entity">{record.Name}
+																									</span>
+																								</span>
+																							</div>
+																						</li>
+																					</template>
+																				</ul>
+																			</div>
+																		</template>
+
+																	</template>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+
+											</tr>
+										</template>
+									</tbody>
+
+								</table>
+							</div>
+						</template>
+
+					</template>					
+				</div>
+
+				<template if:false={noRecords}>
+					<div slot="footer" class="slds-var-p-vertical_x-small slds-modal__content" style="overflow: hidden" >
+						<!-- pagination added -->
+						<div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="margin: 0px;padding-bottom: 10px;height: 20px;">
+							<div class="slds-col"><!--RECORDS PER PAGE-->
+								<div style={controlPagination} class="slds-list_inline customSelect">
+									<label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Records per page : {recordPerPageCount} of {totalRecords}</label>
+									
+								</div>
+							</div>
+							<div class="slds-col"><!--PAGE NAVIGATION-->
+								<div style={controlPagination}>
+									<div class="slds-col slds-p-bottom_xx-small">
+										<span style={controlPrevious}>
+											<lightning-button-icon icon-name="utility:left" variant="bare" size="medium"
+												alternative-text="Previous Page" onclick={previousPage}></lightning-button-icon>
+										</span>
+										<label class="slds-text-color_weak slds-p-horizontal_x-small" for="pageNum">Page:</label>
+										<input type="number" id="pageNum" value={pageNumber} maxlength="4"
+											onchange={handlePageNumberChange} class="customInput" title="Go to a Page"></input>
+										<span>&nbsp;of&nbsp;<b id="totalPages">{totalPages}</b></span>
+										<span style={controlNext}>
+											<lightning-button-icon icon-name="utility:right" variant="bare" size="medium"
+												alternative-text="Next Page" onclick={nextPage}
+												class="slds-p-horizontal_x-small"></lightning-button-icon>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+
+				<div class="slds-modal__footer">
+					<template if:false={noRecords}>						
+						<button class="slds-button slds-button_brand" type="submit" onclick={handleAction}
+							data-name="Approved" disabled={disabledBtn}> Approve
+						</button>
+					</template>
+					<button class="slds-button slds-button_neutral" onclick={closeModal} data-name="Cancel"> Cancel
+					</button>
+				</div>
+
+			</div>
+
+		</section>
+
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+	</template>
+
+	<template lwc:if={openBulkRejectModal}>
+
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true"
+			aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open slds-modal_medium">
+
+			<div class="slds-modal__container"> <!-- Close button -->
+
+				<div class="slds-modal__header">
+					<h1 id="modal-heading-04" class="slds-modal__title slds-hyphenate"> Bulk Reject </h1>
+				</div>
+
+				<div class="slds-modal__content" id="modal-content-id-2" style="overflow-x: scroll">
+					<!-- Spinner -->
+
+					<template if:true={isSpinner}>
+						<div class="sldsspinnercontainer">
+							<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+								<span class="slds-assistive-text">Loading..</span>
+								<div class="slds-spinner__dot-a"></div>
+								<div class="slds-spinner__dot-b"></div>
+							</div>
+						</div>
+					</template>
+
+					<!-- table -->
+					<template if:false={isSpinner}>
+
+						<template lwc:if={noRecords}>
+							<div class="slds-table_edit_container" style="text-align: center; color: red"> {msg}</div>
+						</template>
+						<template lwc:elseif={displayData}>
+							<div class="slds-table_edit_container table-responsive" >
+								<table aria-multiselectable="true"
+									class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_resizable-cols"
+									role="grid">
+
+									<thead>
+										<tr style="height: 30px">
+											<th scope="col" style="width:3rem; padding-left: 15px">
+													<lightning-input onchange={allSelected} type="checkbox" variant="label-hidden"
+														data-id="selectAllCheckBox"></lightning-input>
+											</th>
+
+											<th scope="col" class="tableContentHide"
+												style="width: 3rem; padding-left: 15px">
+												<lightning-icon icon-name="utility:shield" alternative-text="shield"
+													variant="success" size="x-small" title="Validation">
+												</lightning-icon>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col"
+												style="width: 8rem;">
+												<span title="Quote Line Number">Quote Line Number</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col">
+												<span title="Product">Product</span>
+												<div class="slds-resizable p-left-1rem">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col"
+												style="width: 12rem; ">
+												<span class="" title="Rejection Reason">Rejection Reason</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+											<th class="slds-is-resizable tableContentHide field" scope="col"
+												style=" width: 12rem;">
+												<span class="" title="Rejection Comments">Rejection Comments</span>
+												<div class="slds-resizable">
+													<input type="text" class="slds-resizable__input slds-assistive-text"
+														tabindex="0" />
+													<span class="slds-resizable__handle" onmousedown={calculateWidth}
+														ondrag={setNewWidth} draggable="true">
+														<span class="slds-resizable__divider"></span>
+													</span>
+												</div>
+											</th>
+
+										</tr>
+									</thead>
+
+									<tbody>
+										<template for:each={quoteLineDataToDisaplay} for:item="qli">
+											<tr key={qli.Id} aria-selected="false" class="slds-hint-parent"
+												style="height: 1rem">
+												<!-- checkbox -->
+												<td scope="qli" role="gridcell" style="padding-left: 1rem">
+													<lightning-input class="checkBoxForUpdate" type="checkbox" checked={qli.isSelected}
+														value={qli.Id} data-id={qli.Id} onchange={handleCheckBox} 
+														variant="label-hidden">
+													</lightning-input>
+												</td>
+
+												<!-- Error Box -->
+												<td scope="qli" class="tableContentHide centerText">
+													<template if:true={qli.isError}>
+														<lightning-icon icon-name="utility:error" variant="error"
+															size="x-small" title={qli.errorMsg}></lightning-icon>
+													</template>
+												</td>
+
+												<!-- Read-Only STRAT -->
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-formatted-text title={qli.Pricing_Quote_Line_Number__c}
+														data-id={qli.Id} value={qli.Pricing_Quote_Line_Number__c}>
+													</lightning-formatted-text>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText trimLength">
+													<lightning-formatted-text title={qli.Pricing_Product_Nm__r.Name}
+														value={qli.Pricing_Product_Nm__r.Name}>
+													</lightning-formatted-text>
+												</td>
+
+												<td scope="col" class="">
+													<div style="overflow: overlay;">
+														<lightning-combobox title={qli.Pricing_Rejection_Reason__c}
+															dropdown-alignment="auto"
+															value={qli.Pricing_Rejection_Reason__c}
+															placeholder="Select Rejection Reason"
+															options={picklistOptions} data-id={qli.Id}
+															variant="label-hidden" onchange={rejectionReasonsChange}>
+														</lightning-combobox>
+													</div>
+												</td>
+
+												<td scope="col" class="slds-size_3-of-10 centerText">
+													<lightning-input type="text" title={qli.Pricing_Rejection_Comments_nm__c}
+														value={qli.Pricing_Rejection_Comments_nm__c} data-id={qli.Id}
+														maxlength="1000" onchange={handleRejectComments}
+														variant="label-hidden">
+													</lightning-input>
+												</td>
+											</tr>
+										</template>
+									</tbody>
+
+								</table>
+							</div>
+						</template>
+					</template>
+
+				</div>
+
+				<template if:false={noRecords}>
+					<div slot="footer" class="slds-var-p-vertical_x-small slds-modal__content" style="overflow: hidden" >
+						<!-- pagination added -->
+						<div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="margin: 0px;padding-bottom: 10px;height: 20px;">
+							<div class="slds-col"><!--RECORDS PER PAGE-->
+								<div style={controlPagination} class="slds-list_inline customSelect">
+									<label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Records per page : {recordPerPageCount} of {totalRecords}</label>									
+								</div>
+							</div>
+							<div class="slds-col"><!--PAGE NAVIGATION-->
+								<div style={controlPagination}>
+									<div class="slds-col slds-p-bottom_xx-small">
+										<span style={controlPrevious}>
+											<lightning-button-icon icon-name="utility:left" variant="bare" size="medium"
+												alternative-text="Previous Page" onclick={previousPage}></lightning-button-icon>
+										</span>
+										<label class="slds-text-color_weak slds-p-horizontal_x-small" for="pageNum">Page:</label>
+										<input type="number" id="pageNum2" value={pageNumber} maxlength="4"
+											onchange={handlePageNumberChange} class="customInput" title="Go to a Page"></input>
+										<span>&nbsp;of&nbsp;<b id="totalPages2">{totalPages}</b></span>
+										<span style={controlNext}>
+											<lightning-button-icon icon-name="utility:right" variant="bare" size="medium"
+												alternative-text="Next Page" onclick={nextPage}
+												class="slds-p-horizontal_x-small"></lightning-button-icon>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+
+				<div class="slds-modal__footer">
+					<template if:false={noRecords}>
+						<button class="slds-button slds-button_brand" type="submit" onclick={handleAction}
+							data-name="Rejected" disabled={disabledBtn}> Reject
+						</button>
+					</template>
+					<button class="slds-button slds-button_neutral" onclick={closeModal} data-name="Cancel"> Cancel
+					</button>
+				</div>
+
+			</div>
+
+		</section>
+
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+	</template>
+</template>

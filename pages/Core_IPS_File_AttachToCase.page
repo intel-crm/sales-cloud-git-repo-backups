@@ -1,0 +1,106 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_File_AttachToCase
+Version     : 1.0 
+Created Date: 24 Sept 2015
+Function    : Visualforce Page to Attach IPS File to case
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Johri, Sagar                09/24/2015             Created
+* Abhishek Rajput             06/06/2017             Modified- Added Case Information section as part of US64655
+* Aparna                      22/11/2017             Modified- Added the CSS styling and output text for US79603(Iteration 3 and 4)
+* Aparna                      10/1/2017              Modified- Rearranged the case details section related fields in sync to DE34720
+* Aparna                      19/4/2018             Modified- Added logic for US104151-R4.3
+* Aparna                      23/1/2019             Modified- Changed Account name field for private projects-US230559
+------------------------------------------------------------------------------------------------------------>
+
+<apex:page sidebar="false" standardController="Case" extensions="Core_IPS_File_AttachToCase_Controller" >
+ 
+ <script>
+ <!--FLS Check Added- Madhuri -->
+     var url = {JSENCODE(location.href)};
+     var match = url.match(/&inline=1/);
+    if (match != null) { 
+        var newUrl = url.replace(/&inline=1/, '');
+        window.top.location=newUrl;
+    }
+    </script>
+ 
+  
+<style>
+    .center{ 
+        margin-left:150px;
+    }   
+.bPageBlock .pbTitle {font-size: 70%;font-style: italic} 
+<!--added by aparna on 22/11/2017-->
+.displayStyle{
+    font-weight: bold;
+    font-size: 26px;
+    font-style: italic;
+    color:green;
+    margin-left:450px;
+    font-family:times new roman;
+<!--end by aparna-->
+     }
+    .messageStyle {font-size: 90%;font-style: italic; font-weight: bold} 
+    </style>
+
+<apex:form >
+        <apex:pageBlock title="{!$Label.Core_IPS_File_CSAttachPgMsg}" mode="maindetail" >
+            <apex:pageBlockButtons location="top" >
+                <div class="center">
+                    <apex:commandButton value="{!$Label.Core_IPS_File_CSAttachPgRetBtnTxt}" action="{!saveAndReturn}" onclick="alert('{!$Label.Core_IPS_File_CSAttachPgRetBtnMsg}')" />
+                </div>
+            </apex:pageBlockButtons> 
+          </apex:pageBlock>
+           
+            
+            <!--start added by Orion--vamsi on 09/10/2018 for US182118 --->
+            <apex:outputPanel rendered="{!IF(profileName != 'IPS External Customer',true,false)}">
+                <!--added by aparna on 22/11/2017 for US79603 : Iteration 3 and 4--->
+                <apex:outputText value="{!$Label.Core_IPS_Public_Attachment_Message}"  rendered="{!IF(AND(OR(not(externalUser),AND(profileName == 'Partner',partnerFAE)),publicFiles),true,false)}" styleClass="displayStyle"></apex:outputText>
+               <!--<apex:outputText value="{!$Label.Core_IPS_Public_Attachment_Message}"  rendered="{!publicFiles}" styleClass="displayStyle"></apex:outputText>-->
+                <apex:outputText value="{!$Label.Core_IPS_Private_Attachment_Message}" rendered="{!privateFiles}" styleClass="displayStyle"></apex:outputText>
+                <!--end by aparna-->
+                <!--added by Aparna on 19/4/2017 for partner changes for US104151 R4.3-->
+                <apex:outputText value="{!$Label.Core_IPS_Partner_Attachment_Message}" rendered="{!partnerFiles}" styleClass="displayStyle"></apex:outputText>
+                <!--end by Aparna for US104151-->
+           </apex:outputPanel>     
+            <!--End --- Orion--vamsi on 09/10/2018 for US182118 ---> 
+           <div align="center">
+               <apex:outputText value="<br/>{!$Label.Core_IPS_File_CSAttachPtoCMsg}" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"/>
+               <a href="mailto:export.customer@intel.com"><font color="blue"><apex:outputText value="{!$Label.Core_IPS_File_CSAttachPtoCMsg1}<br/><br/>" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"></apex:outputText></font></a>
+           </div>
+           
+            <!-- Added by Abhishek as part of US64655 - 06/06/2017 -->
+           
+            <apex:pageblock rendered="{!IF(!not(externalUser) || ($Profile.Name ==$Label.Core_IPS_Agent_Profile)|| ($Profile.Name ==$Label.Core_IPS_Agent_Enhanced_Profile) || ($Profile.Name ==$Label.Core_IPS_Support_Org_Admin_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Rep_BB_Dual_IPS_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Rep_BB_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Rep_CW_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Manager_Profile)|| ($Profile.Name ==$Label.Core_IPS_Production_Support_IPS_Profile) || ($Profile.Name ==$Label.Core_IPS_IT_Admin_Profile) , true , false)}">
+                 <apex:pageBlockSection title="{!$Label.Core_IPS_Case_Information}">
+                    <!--start added by Aayushi 12/18/2017 US72183--->
+                    <apex:outputfield value="{!case.Core_IPS_Classification__c}"/>
+                    <!-- end--> 
+                    <!--Rearranged the fields below by Aparna for DE34720 on 10th Jan,2017-->
+                    <apex:outputfield value="{!case.Status}"/>
+                    <apex:outputfield value="{!case.CaseNumber}"/>
+                    <apex:outputfield value="{!case.Core_Sub_Status__c}"/>
+                    <apex:outputfield value="{!case.Subject}"/>
+                    <apex:outputfield value="{!case.Core_IPS_Project_Case__r.Name}"/>
+                     <!--end by Aparna on 10th Jan,2017 for DE34720-->
+                    
+                    <!--Raj Kommera reverted back the Case field Name from Core_Contact_ID__C to case.Core_Contact_Name__c -->
+                    <!--<apex:outputfield value="{!case.Core_Contact_Name__c}" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile}"/>-->
+                    <!-- <apex:outputfield value="{!case.Core_Contact_Name__c}" rendered="{!not(externalUser)}"/>-->
+                  
+                    
+                     <!--<apex:outputfield value="{!case.account.Name}" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile}"/> -->
+                    <apex:outputfield value="{!case.core_Account_Name__c}" rendered="{!not(externalUser)}"/> <!--Changed the case account name field for private project for US230559-->
+                                 
+                    <apex:outputfield value="{!case.Product.Name}"/>
+                </apex:pageBlockSection>                   
+            </apex:pageblock>     
+            <!-- END ---------> 
+                            
+    <apex:iframe width="100%" height="600px" frameborder="true" scrolling="false" src="{!URL}"/>
+   
+</apex:form>
+</apex:page>

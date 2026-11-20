@@ -1,0 +1,32 @@
+/* .THIS .cursorPointer {
+  cursor: pointer;
+}
+
+.THIS .toggleOpenIcon {
+  float: right;
+  transform: translateY(-1px);
+}
+
+.THIS .toggleOpenIcon .slds-icon {
+  height: 0.6em;
+  width: 0.6em;
+}
+
+.THIS .toggleOpenIcon .slds-icon use {
+  fill: t(black);
+}
+.THIS .uppercase {
+  text-transform: uppercase;
+}
+.THIS .progressBar {
+  background-color: t(lightGray);
+  height: 5px;
+}
+.THIS .widthLimit {
+  overflow-wrap: break-word;
+  width: 100%;
+}
+.THIS .progressBar .bar {
+  background-color: t(progressBarBlue);
+  height: 5px;
+} */

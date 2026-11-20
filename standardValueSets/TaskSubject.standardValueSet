@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>type_the_subject_of_your_call_or_task_here</fullName>
+        <default>true</default>
+        <label>Type the subject of your call or task here...</label>
+    </standardValue>
+</StandardValueSet>

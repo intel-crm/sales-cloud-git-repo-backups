@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Rest Api URI and API Names</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>API_Order</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Search_URI__c</fullName>
+        <externalId>false</externalId>
+        <label>Search URI</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_URI__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub URI</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>RestAPI Name</label>
+    <listViews>
+        <fullName>all_values</fullName>
+        <columns>NAME</columns>
+        <columns>API_Order__c</columns>
+        <columns>Search_URI__c</columns>
+        <columns>Sub_URI__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>SETUP_OWNER_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>all values</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

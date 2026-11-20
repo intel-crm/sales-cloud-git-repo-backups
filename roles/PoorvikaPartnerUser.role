@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Poorvika Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Poorvika Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11934598_Sunanda_Yadav</parentRole>
+</Role>

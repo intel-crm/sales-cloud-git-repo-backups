@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_87346983</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Opportunity_Supports__r$Sales_Group__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Partner Led</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Partner Led</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Partner Led</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Partner Led</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Accounts Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Solutions &amp; Services Sales Group</sourceValue>
+            </sourceValues>
+            <value>GSS</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_87346983</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Opportunity.Core_Opportunity_Supports__r$RecordType</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>CSA Opp Support Assigned This Month</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Opportunity_Support_Team_Member__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$Core_Opportunity_Owner__c</field>
+    </columns>
+    <description>CSAs/TSSs accepting Opportunity Support requests last month by Sales Group</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$LastModifiedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_Opportunity_Support__c.Core_CSA_RecordType,Core_Opportunity_Support__c.Core_TSS_Request</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_87346983</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Supports__r$RecordType</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CSA/TSS Accepting Requests last Month</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Opportunity_Supports_with_Opportunity_Support_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Opportunity_Support_Team_Member__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_Opportunity_Supports__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

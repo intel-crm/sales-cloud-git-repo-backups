@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Owner_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign.StartDate</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign.EndDate</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign.Status</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundRequest$RequestedAmount</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Reimbursement_Rate__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Channel_Partner__c</field>
+    </columns>
+    <description>Co-Marketing Campaign and Activity Report</description>
+    <filter>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_CreatedBy__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Michelle Leavitt</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Status</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Draft,In Progress,Pending Approval,Pending Review,Planned,Proposal Accepted,Revision Required</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Campaign and Activity Details - PanAM</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Co_Marketing_Activities_with_Campaign__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest$Core_MDF_Start_Date__c</dateColumn>
+        <endDate>2026-06-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-03-31</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Integration Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Integration Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Password --></label>
+        <name>Core_Password__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Name --></label>
+        <name>Core_User_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

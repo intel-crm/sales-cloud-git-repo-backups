@@ -1,0 +1,173 @@
+<template>
+</template>
+    <!-- <c-ipa-contact-partner-form></c-ipa-contact-partner-form>
+
+    <template if:true={showWarning}>
+        <h4 class="slds-p-around_x-large slds-text-align_center">
+            {labels.PMP_TwoProductsToCompare}
+        </h4>
+    </template> -->
+
+    <!-- cards to compare -->
+    <!-- <div>
+        <div class="slds-grid cards-container" data-show-more={showMoreCards}>
+             space 
+            <div class="slds-col slds-size_1-of-4 spacer-card">
+                <div class="back-button">
+                    <button class="button button-secondary"
+                        onclick={handleBackButton}>
+                        <span class="slds-col slds-text-align_center">{labels.PMP_Create_Offering_Form_Back_Button}</span>
+                    </button>
+                </div>
+            </div> -->
+            <!-- cards 
+            <template for:each={formatCards} for:item="card">
+                <div class="slds-col card" data-show-more={showMoreCards} key={card.id}>
+                   product cards -->
+                    <!-- <template if:true={card.title}>
+                        <div class="header slds-text-align_center">
+                            <template if:false={showWarning}>
+                                <div class="remove-icon-container" 
+                                    data-id={card.id} 
+                                    aria-label={card.removeAriaLabel} 
+                                    role="button" 
+                                    tabindex="0" 
+                                    onclick={handleRemoveCard}
+                                    onkeydown={handleRemoveCardAccessibility}>
+                                    <lightning-icon class="remove-icon" icon-name={closeIconName}></lightning-icon>
+                                </div>
+                            </template>
+                            <div class="card-image-container">
+                                <c-ipa-link class-name="link-no-style" object-page="PMP_Partner_Offering__c" record-id={card.id} label={card.title} aria-skip>
+                                    <img class="card-image" src={card.imageUrl}>
+                                </c-ipa-link>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <template if:false={showWarning}>
+                                <div class="remove-icon-container slds-float_right" 
+                                    data-id={card.id} 
+                                    aria-label={card.removeAriaLabel} 
+                                    role="button" 
+                                    tabindex="0" 
+                                    onclick={handleRemoveCard}
+                                    onkeydown={handleRemoveCardAccessibility}>
+                                    <lightning-icon class="remove-icon" icon-name={closeIconName}></lightning-icon>
+                                </div>
+                            </template>
+                            <c-ipa-link object-page="PMP_Partner_Offering__c" record-id={card.id} label={card.title}></c-ipa-link>
+                        </div>
+                        <template if:true={card.contactPartnerData.contactPartnerVisible}>
+                            <div class="footer slds-is-relative">
+                                <div class="slds-hidden">
+                                    <c-ipa-contact-partner-button modal-data={card.contactPartnerData} auto-scroll ></c-ipa-contact-partner-button>
+                                </div>
+                                <div class="contact-partner">
+                                    <c-ipa-contact-partner-button modal-data={card.contactPartnerData} auto-scroll ></c-ipa-contact-partner-button>
+                                </div>
+                            </div>
+                        </template>
+                    </template> -->
+                    <!-- placeholder cards -->
+                    <!-- <template if:false={card.title}>
+                        <div class="add-card">
+                            <template if:true={card.compareCategoryId}>
+                                <c-ipa-link class-name="link-no-style" object-page="PMP_Partner_Offering__c" record-id={card.compareCategoryId} label={card.removeAriaLabel}>
+                                    <lightning-icon icon-name={addIconName}></lightning-icon>
+                                </c-ipa-link>
+                            </template>
+                            <template if:false={card.compareCategoryId}>
+                                <c-ipa-link class-name="link-no-style" community-page="Home" label={labels.PMP_Title_Home}>
+                                    <lightning-icon icon-name={addIconName}></lightning-icon>
+                                </c-ipa-link>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <div class="cursor slds-text-align_center show-more-container">
+        <button type="button" role="switch" onclick={handleShowMoreCards} aria-checked={showMoreCards}>
+            <span class="link-text">
+                <template if:true={showMoreCards}>{labels.PMP_HideDetails}</template>
+                <template if:false={showMoreCards}>{labels.PMP_ShowDetails}</template>
+            </span>
+            <span data-open={showMoreCards} class="show-more-icon fa-angle-right"></span>
+        </button>
+    </div>
+
+    <template if:true={loading}>
+            <lightning-spinner size="large" alternative-text="Loading..."></lightning-spinner>
+    </template>
+     -->
+    <!--compare table-->
+    <!-- <template if:true={cards.length}>
+        <div class="compare-table"> -->
+            <!--highlight differences-->
+            <!-- <div class="highlight-checkbox-container">
+                <div class="highlight-checkbox">
+                    <label class="highlight-checkbox" aria-label={labels.PMP_Highlight_Differences}>
+                        <lightning-input
+                            class="checkbox checkbox-size-default"
+                            type="checkbox"
+                            checked={checked}
+                            onchange={handleHighlight}
+                            onkeydown={handleHighlightAccessibility}>
+                        </lightning-input>
+                        <span class="highlight-label"  data-highlight={checked}>{labels.PMP_Highlight_Differences}</span>
+                    </label>
+                </div>
+            </div> -->
+            <!-- actual compare table-->
+            <!-- <div class="compare-table-container">
+                <template for:each={data} for:item="section"> -->
+                    <!--optional subheader per section-->
+                    <!-- <template if:true={section.sectionLabel}>
+                        <div key={section.sectionLabel}>
+                            <h3 class="section-label h5">{section.sectionLabel}</h3>
+                        </div>
+                    </template>
+                    <template for:each={section.children} for:item="subsection">
+                        <div class="accordion-container" key={subsection.label} >
+                            <c-core-intc-hub-spoke headline={subsection.label} expanded={subsection.expanded} variant="inverse" desktop-heading-size="small" aria-controls={subsection.ariaControls} id={subsection.ariaLabelledBy} key={subsection.label} no-border-top> -->
+                                <!--categories within section to compare-->
+                                <!-- <div slot="content" id={subsection.ariaControls}>
+                                    <div role="table" aria-labelledby={subsection.ariaLabelledBy}>
+                                        <div role="rowgroup" class="table-header-container">
+                                            <div role="row" class="row slds-grid slds-wrap">
+                                                <div role="columnheader" class="slds-col slds-size_1-of-5 table-header">{labels.PMP_CompareProducts_ColumnHeader}</div>
+                                                <template for:each={cards} for:item="card">
+                                                    <div role="columnheader" class="slds-col slds-size_1-of-5 table-cell h5" key={card.id}>{card.title}</div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <template for:each={subsection.data} for:item="data">
+                                            <div class="row-container" role="row-group" data-highlight-diff={checked} key={data}>
+                                                <section role="row" class="slds-grid slds-wrap row" data-highlight={data.highlight}>
+                                                    <div class="slds-col slds-size_1-of-5 row-header" role="presentation">
+                                                        <div class="highlight-icon" data-highlight={data.highlight} role="presentation">
+                                                            <span class="fa-check-circle" aria-label={labels.PMP_CompareProducts_Highlighted}></span>
+                                                        </div>
+                                                        <lightning-formatted-rich-text role="rowheader" value={data.label}></lightning-formatted-rich-text>
+                                                    </div>
+                                                    <template for:each={data.data} for:item="attributes">
+                                                        <div class="slds-col slds-size_1-of-5 table-cell" key={attributes} role="cell">
+                                                            <lightning-formatted-rich-text value={attributes}></lightning-formatted-rich-text>
+                                                        </div>
+                                                    </template>
+                                                </section>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </c-core-intc-hub-spoke>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </template>
+    <div class="page-footer"></div>
+</template> -->

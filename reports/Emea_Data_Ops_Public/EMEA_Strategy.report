@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Donut</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>true</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Account_Create_Request__c.Process_Type__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Delegate_Approver__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Requestor_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Global_Account__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_Is_Opportunity_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_Opportunity_Revenue_for_Account__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    OR(
+        FK_Account.Core_Account_Owner_Manager__c=&quot;Malhar Thakkar&quot;,
+        FK_Account.Core_Account_Owner_Manager__c=&quot;Tonya Degance&quot;,
+        FK_Account.Core_Account_Owner_Manager__c=&quot;Ryan Olson&quot;,
+        Account_Create_Request__c.Requestor_Name__c=&quot;Sameera Kandewatte&quot;,
+        Account_Create_Request__c.Requestor_Name__c=&quot;Daniel Alcazar&quot;,
+        Account_Create_Request__c.Requestor_Name__c=&quot;AVEEN BABU&quot;,
+        Account_Create_Request__c.Requestor_Name__c=&quot;Viktor Dekanj&quot;),
+    &quot;ISV Strategy Part&quot;,
+        IF(OR(
+            Account_Create_Request__c.Process_Type__c=&quot;Partner&quot;,
+            FK_Account.Core_Account_Owner_Manager__c=&quot;Daisy Chau&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Adam Van Cauwenberge&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Julie Hurst&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Maria Jose Gaidelon&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Laoise Grennan&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Nathan Fowles&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Kharla Amara&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Prakash Kumar&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Daisy Chau&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Hannah Hadley&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Jacoria Jones&quot;,
+            Account_Create_Request__c.Requestor_Name__c=&quot;Ose Edeawe&quot;),
+            &quot;IPA&quot;,
+    IF(OR(
+            FK_Account.Core_Account_Owner_Manager__c=&quot;Gosia Dzul&quot;,
+            FK_Account.Core_Account_Owner_Manager__c=&quot;Christine Harrison&quot;),
+        &quot;EMEA Digital Sales&quot;,
+        IF(OR(
+                FK_Account.Core_Account_Owner_Manager__c=&quot;Simon Wilyman&quot;,
+                FK_Account.Core_Account_Owner_Manager__c=&quot;Paolo Righi&quot;),
+            &quot;NEX Scale through Part&quot;,
+            IF(OR(
+                    FK_Account.Core_Account_Owner_Manager__c=&quot;Galin Dimov&quot;,
+                    FK_Account.Core_Account_Owner_Manager__c=&quot;Stephanie Loock&quot;),
+                &quot;EMEA Digital Sales/Oppty AE&quot;,
+                IF(
+                    FK_Account.Core_Account_Owner_Manager__c=&quot;Torsten Kahrmann&quot;,
+                    &quot;CCG Scale through Part&quot;,
+                    IF(OR(
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Teck Goh&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Gabriel Quesada&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Margaret Laffan&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Rebeca Asi Cartin&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Laura Hubbard&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Maria Odio&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Boulos Aoun&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Anirban Mukherjee&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Daniel Hidalgo&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Andrea Kowalski&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Victor Mena&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Christine Sullivan&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Cormack Glass&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Lea Nichols&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Alonso Lios&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Paul Aoun&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Yasir Aziz&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Christian Staudinger&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Greg Anderson&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Gil Weitzman&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Michal Moran Roche&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Alaa Badr&quot;),
+    &quot;SW Sales&quot;,
+                        IF(
+                            FK_Account.Core_Account_Owner_Manager__c=&quot;Simon Windsor&quot;,
+                            &quot;EMEA Inside Scale BB support MNC opps&quot;,
+                            IF(OR(
+                                FK_Account.Core_Account_Owner_Manager__c=&quot;Lena Engdahl&quot;,
+                                FK_Account.Core_Account_Owner_Manager__c=&quot;Robert Blake&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Beatrice Ducamp&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Lena Engdahl&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Dariusz Adamczyk&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Diana Barth&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Lena Wennerstad&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Teik Chuen Teoh&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;Yun Soon Soh&quot;,
+                                Account_Create_Request__c.Requestor_Name__c=&quot;MARTA GARSKA&quot;),
+                                &quot;PSG&quot;,
+                                &quot;&quot; 
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>EMEA Sales team</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Account_Create_Request__c.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account_Create_Request__c.Process_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>CoMarketing,Access &amp; Entitlement,Other</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Account Consolidation SystemUser,Sales.CRM.WW. Data.Operations</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Partner Led,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,Americas Brazil Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group,Americas Mexico Sales Group,Americas Partner Led,Americas US Sales Group,Global Solutions &amp; Services Sales Group,PRC Hosted Sales Group,PRC Partner Led,PRC Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account_Create_Request__c.Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>FK_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA Strategy</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Create_Request__c@Account_Create_Request__c.Requested_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>FK_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

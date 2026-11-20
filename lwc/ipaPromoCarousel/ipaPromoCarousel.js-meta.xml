@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Promotional Carousel</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="heading" type="string" default="" label="Heading" />
+            <property name="promoListType" type="string" default="Featured Events" label="Promo List Type" datasource="Featured Events,Event Pillars" description="If event pillars are selected, campaign record id is required."/>
+            <property name="recordId" type="string" default="{!recordId}" label="Record Id" description="If this is on a record detail page, value is required. {!recordId}"/>
+            <property name="perPageDesktop" type="integer" default="1" label="Promos per page (desktop)" description="Number of events per slide (defaults to 1 event per carousel page)" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

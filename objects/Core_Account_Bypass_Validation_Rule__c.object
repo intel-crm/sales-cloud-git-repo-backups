@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Custom Setting to Bypass UCD related Validation Rules</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ByPass__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>ByPass</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Bypass_Flow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to bypass validation rules via flows</description>
+        <inlineHelpText>This field is used to bypass validation rules via flows</inlineHelpText>
+        <label>Bypass Flow</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core Account Bypass Validation Rule</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Participant</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Participants</value>
+    </caseValues>
+    <fields>
+        <label><!-- Company participants --></label>
+        <name>SWS_Company_participant__c</name>
+        <relationshipLabel><!-- Participants (Company participants) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Intel Participants --></label>
+        <name>SWS_Intel_Participants__c</name>
+        <relationshipLabel><!-- Participants (Intel Participants) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Lead Activity --></label>
+        <name>SWS_Lead_Activity__c</name>
+        <relationshipLabel><!-- Participants --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- Company Participant --></label>
+        <name>SWS_Company_Participant</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Intel Participant --></label>
+        <name>SWS_Intel_Participant</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

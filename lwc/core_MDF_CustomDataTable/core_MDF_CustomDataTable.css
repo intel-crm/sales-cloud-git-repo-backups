@@ -1,0 +1,25 @@
+.input-wrapper {
+    min-height: 5rem;
+}
+
+/* While a cell is focused, allow the wrapper to overflow so picklist dropdowns
+   are not clipped by the horizontal scroll container (e.g. on the Create page) */
+.table-overflow-visible {
+    overflow: visible !important;
+}
+
+.col-sm {
+    min-width: 8rem;
+}
+
+.col-md {
+    min-width: 12rem;
+}
+
+.col-lg {
+    min-width: 16rem;
+}
+.select-column {
+    width: 2.5rem;
+    text-align: center;
+}

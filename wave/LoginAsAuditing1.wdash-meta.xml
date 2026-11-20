@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <application>Event_Monitoring_ELO_Analytics</application>
+    <dateVersion>1</dateVersion>
+    <description>Audit actions taken by admins when they impersonate other users with the Login-As feature.</description>
+    <masterLabel>Login-As Auditing (Beta)</masterLabel>
+    <templateAssetSourceName>LoginAsAuditing</templateAssetSourceName>
+</WaveDashboard>

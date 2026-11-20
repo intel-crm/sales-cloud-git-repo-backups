@@ -1,0 +1,127 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+    <!--Loading Spinner-->
+    <!-- <div class="spinner">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+            </lightning-spinner>
+        </template>
+    </div>
+    <template if:true={openModal}>
+        <c-core-intc-modal is-open no-close-on-click onclose={closeActivationModal}>
+            <div key={heading} slot="header">
+                <h3 class="color-white">{labels.activationCallDetails}</h3>
+            </div>
+            <div slot="body">
+                <template if:false={isLink}>
+                    <div
+                        class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-small-size_10-of-12">
+                        <lightning-input class="inputDate" type="date" name={labels.activationCallDateLabel}
+                            value={defaultDate} onchange={handleDateChange} label={labels.activationCallDateLabel}>
+                        </lightning-input>
+                    </div>
+                    <div
+                        class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_10-of-12">
+                        <c-core-intc-select name={labels.activationCallStatusLabel} label={labels.activationCallStatusLabel}
+                            required-option-label={labels.chooseOneLabel}
+                            options={statusOptions} onchange={handleChange}>
+                        </c-core-intc-select>
+                    </div>
+                    <div
+                        class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_10-of-12">
+                        <lightning-textarea class="inputText" name={labels.activationCallComments}
+                            label={labels.activationCallComments} value={textValue} onchange={handletextChange}>
+                        </lightning-textarea>
+                    </div>
+                </template>
+                <template if:true={isLink}>
+                    <template if:true={isActivationEditable}>
+                        <div
+                            class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-small-size_10-of-12">
+                            <lightning-input class="inputDate" type="date" name={labels.activationCallDateLabel}
+                                value={storedActivationDate} onchange={handleDateChange} label={labels.activationCallDateLabel} required>
+                            </lightning-input>
+                        </div>
+                        <div
+                            class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_10-of-12">
+                            <c-core-intc-select name={labels.activationCallStatusLabel} label={labels.activationCallStatusLabel}
+                                required-option-label={defalutOptionSelected}
+                                options={statusOptions} onchange={handleChange} value={storedActivationStatus}>
+                            </c-core-intc-select>
+                        </div>
+                        <div
+                            class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_10-of-12">
+                            <lightning-textarea class="inputText" name={labels.activationCallComments}
+                                label={labels.activationCallComments} value={storedActivationComments} onchange={handletextChange} placeholder={defalutTextSelected} required>
+                            </lightning-textarea>
+                        </div>
+                    </template>
+                    <template if:false={isActivationEditable}>
+                        <div class="tablestyle">
+                            <table class="slds-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="widthtd">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">{labels.activationCallDateLabel}</label>
+                                            </div>
+                                        </td>
+                                        <td class="widthtdValue">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">{storedActivationDate}</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td  class="widthtd">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">{labels.activationCallStatusLabel}</label>
+                                            </div>
+                                        </td>
+                                        <td class="widthtdValue">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">{storedActivationStatus}</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td  class="widthtd">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">{labels.activationCallComments}</label>
+                                            </div>
+                                        </td>
+                                        <td class="widthtdValue">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">{storedActivationComments}</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <div slot="footer" class="slds-p-around_medium slds-text-align_right">
+                <template if:false={isLink}>
+                    <lightning-button class="slds-m-right_medium" label={labels.cancelLabel} onclick={closeModalOnCancel}>
+                    </lightning-button>
+                    <lightning-button class="slds-m-right_x-small" variant="brand" label={labels.submitLabel}
+                        onclick={onSubmit}></lightning-button>
+                </template>
+                <template if:true={isLink}>
+                    <template if:true={isActivationEditable}>
+                        <lightning-button class="slds-m-right_medium" label={labels.cancelLabel} onclick={closeModalOnCancel}>
+                        </lightning-button>
+                        <lightning-button class="slds-m-right_x-small" variant="brand" label={labels.submitLabel}
+                            onclick={onSubmit}></lightning-button>
+                    </template>
+                    <template if:false={isActivationEditable}>
+                        <lightning-button class="slds-m-right_medium" label={labels.cancelLabel} onclick={closeModalOnCancel}>
+                        </lightning-button>
+                    </template>
+                </template>
+            </div>
+        </c-core-intc-modal>
+    </template> -->
+</template>

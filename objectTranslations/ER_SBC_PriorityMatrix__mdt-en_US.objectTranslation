@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ER_SBC_PriorityMatrix</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ER_SBC_PriorityMatrixs</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountType --></label>
+        <name>AccountType__c</name>
+    </fields>
+    <fields>
+        <label><!-- PriorityField --></label>
+        <name>PriorityField__c</name>
+    </fields>
+    <fields>
+        <label><!-- PriorityNumber --></label>
+        <name>PriorityNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- PriorityValue --></label>
+        <name>PriorityValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- isObjectField --></label>
+        <name>isObjectField__c</name>
+    </fields>
+    <fields>
+        <label><!-- isSearchScore --></label>
+        <name>isSearchScore__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

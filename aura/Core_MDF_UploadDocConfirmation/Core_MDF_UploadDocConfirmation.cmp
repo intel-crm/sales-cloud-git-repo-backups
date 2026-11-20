@@ -1,0 +1,82 @@
+<aura:component >
+    <aura:attribute name="isThirdParty" type="Boolean" default="false"/>
+    <aura:attribute name="isCoGtm" type="Boolean" default="false"/>
+    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false"/>
+    <aura:attribute name="actionType" type="String"/>
+    <aura:attribute name="componentId" type="String" default="confirmation-modal"/>
+    <aura:registerEvent name="popSubmitEvent" type="c:popSubmitEvent" />
+    <aura:registerEvent name="popCloseEvent" type="c:popCloseEvent" />
+    <aura:attribute name="claimStatus" type="String"/>
+        <div>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" id="{!v.componentId}">
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_center">
+                    <!-- If Save as Draft mode -->
+                    <aura:if isTrue="{!v.actionType == 'saveAsDraftClaim'}">
+                        <lightning:formattedRichText value='{!$Label.c.Core_MDF_ClaimSaveAsDraftInformation}' />
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.isCoGtm}">
+                                <!--TWC3117-18501-->
+                                <aura:if isTrue="{!v.actionType == 'submitFinalOutcomeBasedClaim'}">
+                                    <aura:unescapedHtml value="{!$Label.c.Core_MDF_Confirm_Modal_Popup_Content5}"></aura:unescapedHtml>
+                                    <aura:set attribute="else">
+                                        <aura:unescapedHtml value="{!$Label.c.Core_MDF_ClaimSaveButtonInformationMessage}"></aura:unescapedHtml>
+                                    </aura:set>
+                                </aura:if>
+                                <!--TWC3117-18501-->
+                               <aura:set attribute="else">
+                                <aura:if isTrue="{!v.isThirdParty}">
+                                    <aura:unescapedHtml value="{!$Label.c.Core_MDF_Confirm_Modal_Popup_Content1}"></aura:unescapedHtml>
+                                   <aura:set attribute="else">
+                                        <!-- Id Submit button is clicked -->
+                                       <aura:if isTrue="{!v.actionType == 'submitFinalOutcomeBasedClaim'}">
+                                            <aura:unescapedHtml value="{!v.isOutcomeBasedAccountBasedAct ? $Label.c.Core_MDF_Confirm_Modal_Popup_Content5 : $Label.c.Core_MDF_Confirm_Modal_Popup_Content2}"></aura:unescapedHtml>
+                                           <aura:set attribute="else">
+                                                <!-- Save Button: Outcome-based custom message for 'Payment Clearance Processing' -->
+                                                <aura:if isTrue="{!and(v.isOutcomeBasedAccountBasedAct, v.claimStatus == 'Payment Clearance Processing')}">
+                                                    <aura:unescapedHtml value="{!$Label.c.Core_MDF_Confirm_Modal_Popup_Content5_Outcome_Based}"></aura:unescapedHtml>
+                                                    <aura:set attribute="else">
+                                                        <!-- Other specific statuses custom message -->
+                                                        <aura:if isTrue="{!and(v.isOutcomeBasedAccountBasedAct, or(v.claimStatus == 'Draft', or(v.claimStatus == 'Resubmission Required', v.claimStatus == 'Pending Clarification')))}">
+                                                            <aura:unescapedHtml value="{!$Label.c.Core_MDF_ClaimSaveButtonInformationMessage}"></aura:unescapedHtml>
+                                                            <aura:set attribute="else">
+                                                                <aura:unescapedHtml value="{!v.isOutcomeBasedAccountBasedAct ? $Label.c.Core_MDF_Confirm_Modal_Popup_Content5 : $Label.c.Core_MDF_Confirm_Modal_Popup_Content2}"></aura:unescapedHtml>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                           </aura:set>
+                                       </aura:if>
+                                    </aura:set>
+                                 </aura:if>
+                              </aura:set>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <footer class="slds-modal__footer">
+                    <!-- If Save as Draft mode, render a single OK button -->
+                    <aura:if isTrue="{!v.actionType == 'saveAsDraftClaim'}">
+                        <lightning:button variant="neutral" label="{!$Label.c.Core_Cancel_Button}" onclick="{!c.firePopCloseEvent}"/>
+                        <lightning:button variant="brand" class="slds-m-right_small" label="{!$Label.c.Core_MDF_Ok_Button}" onclick="{!c.firePopSubmitEvent}"/>
+                        <aura:set attribute="else">
+                            <!-- Final Outcome-based claim scenario -->
+                            <aura:if isTrue="{!or(v.isOutcomeBasedAccountBasedAct, v.isCoGtm)}"> <!--TWC3117-18501-->
+                                <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel_Claim_No}" onclick="{!c.firePopCloseEvent}"/>
+                                <lightning:button variant="brand" class="slds-m-right_small" label="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" onclick="{!c.firePopSubmitEvent}"/>
+                                <aura:set attribute="else">
+                                    <!-- Non-outcome-based claim scenario -->
+                                    <lightning:button variant="neutral" label="{!$Label.c.Core_Cancel_Button}"
+                                        onclick="{!c.firePopCloseEvent}"/>
+                                    <lightning:button variant="brand" class="slds-m-right_small"
+                                        label="{!$Label.c.Core_MDF_Submit_Button_Label}" onclick="{!c.firePopSubmitEvent}"/>
+                                </aura:set>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </footer>
+            </div>
+        </section>
+            <div class="slds-backdrop slds-backdrop_open" aura:id="backdropForConfirmationPopup"></div>
+        </div>
+</aura:component>

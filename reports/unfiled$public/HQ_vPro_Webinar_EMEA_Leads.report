@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Notes__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Status__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_BANT_Sub_Status__c</field>
+    </columns>
+    <description>EMEA Leads from HQ vPro Webinar &apos;Unleash remote manageability with Intel vPro and Workspace ONE&apos;
+https://webinar.intel.com/remote-manageability-reg</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Conversion_Point__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ccg_EMEA_ccgcvitos_LL_2022_EMEA-VPRO-WEB-Q222-HQ-L_C-MKA-29971_T-MKA-30504</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,New,Accepted,Rejected,Contacted,Qualified,Disqualified,Passed to Partner,Unreachable,Opportunity</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Marketing Qualified Lead,Tele Accepted Lead,Tele Qualified Lead,Sales Accepted Lead,Sales Qualified Lead,Contact - No Opportunity,Tele Accepted Prospect,Tele Qualified Prospect,Partner Qualified Lead,PRL,PAL,PQL,Rejected</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>HQ vPro Webinar - EMEA Leads</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2022-02-08</startDate>
+    </timeFrameFilter>
+</Report>

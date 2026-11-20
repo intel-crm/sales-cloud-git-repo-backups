@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>IPS_Letterhead</letterhead>
+    <name>Core IPS Case Internal GEC</name>
+    <style>freeForm</style>
+    <subject>IPS - Identified GEC Case {!Case.CaseNumber} - {!Case.Account} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot;)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Subject)}</subject>
+    <textOnly>Intel® Premier Support 
+
+GEC Case #{!Case.CaseNumber}, has been identified.
+
+To view the case please go here: {!$Label.Core_IPS_Notification_Internal_URL}/{!Case.Id} 
+
+{!Case(Case.Core_IPS_Notif_Case_Comment__c,1, &quot;This message was designed such that it contains no information which may be considered confidential.&quot;,2, &quot;No comments have been added to this case.&quot;,3, &quot;Latest Public Comment*&quot;,4, &quot;Latest Private Comment*&quot;,&quot;&quot;)}
+{!Case(Case.Core_IPS_Notif_Case_Comment__c,1, &quot;&quot;,2, &quot;&quot;,3, Case.Core_Last_Case_Comment__c,4, Case.Core_Last_Private_Case_Comment__c,&quot;&quot;)}
+{!Case(Case.Core_IPS_Notif_Case_Comment__c,1, &quot;&quot;,2, &quot;&quot;,3, &quot;Submitted by: &quot;,4, &quot;Submitted by: &quot;,&quot;&quot;)}{!Case(Case.Core_IPS_Notif_Case_Comment__c,1, &quot;&quot;,2, &quot;&quot;,3, Case.Core_Last_Case_Comment_Submitter__c,4, Case.Core_Last_Private_Case_Comment_Submitter__c,&quot;&quot;)}
+
+_______________________________________________________________
+
+Case Details
+
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Subject:&quot;)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Subject)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; &quot;)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Description: &quot;)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Issue_Description__c)}
+
+Case Number: {!Case.CaseNumber}
+Status{!if(ispickval(Case.Core_Sub_Status__c,&quot;&quot;),&quot;: &quot;,&quot; - Sub Status: &quot;)}{!Case.Status}{!if(ispickval(Case.Core_Sub_Status__c,&quot;&quot;),&quot;&quot;,&quot; - &quot;)}{!Case.Core_Sub_Status__c}
+Case Owner: {!Case.OwnerFullName}
+Last Assigned Queue: {!Case.Core_IPS_Assigned_Queue__c}
+Priority - Severity: {!Case.Priority} - {!Case.Core_Severity__c}
+Product - Organization: {!Case.Core_IPS_Product_name__c} - {!Case.Core_Product_Organization__c}
+Contact - Account: {!Case.Contact} - {!Case.Account}
+{!if(isblank(Case.Core_Case_Issue_Category__c),&quot;&quot;,if(isblank(Case.Core_External_Issue_Subcategory__c),&quot;Category: &quot;,&quot;Category - Sub Category: &quot;))}{!if(isblank(Case.Core_Case_Issue_Category__c),&quot;&quot;,Case.Core_External_Issue_Category__c)}{!if(isblank(Case.Core_Case_Issue_Sub_Category__c),&quot;&quot;,&quot;  - &quot;)}{!if(isblank(Case.Core_Case_Issue_Sub_Category__c),&quot;&quot;,Case.Core_External_Issue_Subcategory__c)}
+{!if(isblank(Case.Core_IPS_Project_Case__c),&quot;&quot;,&quot;Project: &quot;)}{!Case.Core_IPS_Project_Case__c}
+
+_______________________________________________________________
+* Inline images have been removed from this email.  Please open in Intel® Premier Support to view all images.
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

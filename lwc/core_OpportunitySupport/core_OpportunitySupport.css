@@ -1,0 +1,115 @@
+.custom-combobox{
+    display: inline-block;
+    cursor: pointer;
+    background-color: white;
+}
+
+/*
+.inputWidth{
+    width: 750px;
+    cursor: pointer;
+}*/
+
+/*.pointercursor{
+    cursor: pointer;
+    border: 1px solid #d8dde6;
+    padding: 0.5rem;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 4px;
+
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0.5rem;
+
+}*/
+
+/*.iconMargin{
+    margin-right: 0.5rem;
+}*/
+
+/*.pointercursor:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(21, 96, 189, 0.3);
+}*/
+
+.input-wrapper{
+    position: relative;
+    cursor: pointer;
+}
+
+.input-field{
+    display:flex;
+    align-items: center;
+    border: 1px solid #d8dde6;
+    padding: 0.5rem;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 4px;
+    transition: box-shadow 0.3s;
+}
+
+.input-value{
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0.5rem;
+}
+
+.input-field:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(21, 96, 189, 0.3);
+}
+
+.headerfont{
+    font-size: 14px;
+
+}
+.strong-text {
+    font-weight: bold;
+}
+
+.chevronIcon {
+    float: right;
+    /*width: 300px;*/
+    padding-top: 1px;
+    cursor: pointer;
+  }
+
+.pointercursor{
+    cursor: pointer;
+  }
+
+.highlightdropDown{
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #dddddd;
+    box-shadow: 
+    0px 2px 5px rgb(30, 162, 32);
+}
+.dropDown{
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.custom-box{
+    border: 1px solid #d3d3d3;
+    border-radius: 0;
+    padding: 10px;
+    height:40px
+}
+
+.closeButton{
+    --slds-c-button-color-border:bare-inverse
+}
+
+:host {
+    --slds-c-textarea-sizing-min-height: 150px;
+}
+
+.indent{
+    text-indent: 15em;
+}

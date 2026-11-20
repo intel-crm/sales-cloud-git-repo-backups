@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Error_for_Owner</name>
+        <label>Error for Owner</label>
+        <locationX>842</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>You do not have the access to delete this Record.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Show error restricting the user on deleting the deal in Reset to Draft Status</description>
+        <name>Error_on_Deletion_of_Deal</name>
+        <label>Error on Deletion of Deal</label>
+        <locationX>1106</locationX>
+        <locationY>395</locationY>
+        <customErrorMessages>
+            <errorMessage>Deal Registration {!$Record.Name}  can&apos;t be deleted.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Status_is_not_draft</name>
+        <label>Status is not draft</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>The Design Registration is in {!$Record.Core_Design_Registration_Status_Nm__c} and cannot be deleted.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_for_any_DDR_Mappings_are_present</name>
+        <label>Check for any DDR Mappings are present</label>
+        <locationX>446</locationX>
+        <locationY>719</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_DDR_Mappings_are_present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_if_any_Associated_DDR_product_mappings_are_present</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_any_DDR_Mappings_associated</targetReference>
+            </connector>
+            <label>If DDR Mappings are present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_for_Status</name>
+        <label>Check for Status</label>
+        <locationX>248</locationX>
+        <locationY>503</locationY>
+        <defaultConnector>
+            <targetReference>Get_if_any_Associated_DDR_product_mappings_are_present</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_status_is_not_draft</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Status_is_not_draft</targetReference>
+            </connector>
+            <label>If status is not draft</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Owner</name>
+        <label>Check Owner</label>
+        <locationX>545</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Error_for_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_owner_is_the_user</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CreatedById</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <elementReference>$User.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <elementReference>$User.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_for_Status</targetReference>
+            </connector>
+            <label>If owner is the user</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Verify if the record is Design or Deal</description>
+        <name>Is_Design_or_Deal_Registration</name>
+        <label>Is Design or Deal  Registration?</label>
+        <locationX>957</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Design_Reg</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Design Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Owner</targetReference>
+            </connector>
+            <label>Design Reg</label>
+        </rules>
+        <rules>
+            <name>Deal_Reg</name>
+            <conditionLogic>1 AND(4 OR(2 AND 3))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Accepted_By_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_on_Deletion_of_Deal</targetReference>
+            </connector>
+            <label>Deal Reg</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>PCC_DeleteDraftDesign {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PCC_DeleteDraftDesignDealReg</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>Delete_any_DDR_Mappings_associated</name>
+        <label>Delete any DDR Mappings associated</label>
+        <locationX>314</locationX>
+        <locationY>827</locationY>
+        <inputReference>Get_if_any_Associated_DDR_product_mappings_are_present</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_if_any_Associated_DDR_product_mappings_are_present</name>
+        <label>Get if any Associated DDR product mappings are present</label>
+        <locationX>446</locationX>
+        <locationY>611</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_for_any_DDR_Mappings_are_present</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PCC_Design_Registration__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PCC_DDR_L5_Product_Mapping__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>831</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Design_or_Deal_Registration</targetReference>
+        </connector>
+        <filterFormula>{!$Permission.PCC_Bypass_Automation} = False</filterFormula>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

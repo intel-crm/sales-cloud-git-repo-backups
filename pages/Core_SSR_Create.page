@@ -1,0 +1,114 @@
+<!--
+**************************************************************************************
+* VF Page Name      : Core_SSR_Create
+* Created Date      : July 27th, 2017
+* Description       : Form display for DRD Sales Support Request
+* Modification Log  :
+* Developer           Date               Description
+* ----------------------------------------------------------------------------    
+* Rangesh Kona    : Version 1:  Aug 22nd, 2017  Initial Deployed Version
+*************************************************************************************
+-->
+<apex:page controller="Core_SSR_Controller" id="Core_SSR_Controller" lightningStylesheets="True">
+    <apex:pageMessages id="validationErrors"></apex:pageMessages>
+    <apex:outputPanel rendered="{!hasWebserviceCallFailed}" id="showmsg">
+         <apex:pageMessage severity="INFO" title="{!$Label.Core_SSR_Creation_Error}" summary="{!$Label.Core_SSR_Integration_Issue}" strength="2"></apex:pageMessage>
+    </apex:outputPanel>
+    <apex:form id="createddr">
+        <apex:pageblock title="{!$Label.Core_SSR_Create_Request}">        
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem > 
+                    <apex:outputLabel value="{!$Label.Core_SSR_Opportunity_Name}"></apex:outputLabel>
+                    <apex:outputLink value="/{!opportunity_id}" id="theLink">{!opportunity_name}</apex:outputLink>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$Label.Core_SSR_Request_Type_Help}" >
+                    <apex:outputLabel value="{!$Label.Core_SSR_Support_Request_Type}"></apex:outputLabel>
+                    <apex:selectList id="requestType" value="{!Support_Request_Type}" size="1">
+                        <apex:selectOptions value="{!Support_Request_Type_Picklist_Values}">
+                        </apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$Label.Core_SSR_Subject_Help}" > 
+                    <apex:outputLabel value="{!$Label.Core_SSR_Subject}" ></apex:outputLabel>
+                    <apex:inputText value="{!subject}" ></apex:inputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$Label.Core_SSR_Description_Help}" > 
+                    <apex:outputLabel value="{!$Label.Core_SSR_Description}"></apex:outputLabel>
+                    <apex:inputTextArea value="{!Description}"  rows="10" cols="100"></apex:inputTextArea>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$Label.Core_SSR_Deadline_for_Results_Help}">
+                    <apex:outputLabel value="{!$Label.Core_SSR_Deadline_for_Results}"></apex:outputLabel>
+                    <apex:inputField value="{!dummy_obj_for_date.Core_DRD_Deadline_for_Results__c}" />    
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$Label.Core_SSR_Opty_Share_Checkbox_help_text}">
+                    <apex:outputLabel value="{!$Label.Core_SSR_Opty_Share_Checkbox}"></apex:outputLabel>
+                    <apex:inputCheckbox value="{!User_Agreed_to_Share_Opty}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem > 
+                    <apex:outputLabel value=""></apex:outputLabel>
+                    <div><input name="DoAction" class="btn" type="button" value="{!$Label.Core_SSR_Create_Request}" id="save" onclick="InsertRecord_JS();"/></div>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:actionFunction action="{!pre_webservice_call_save}" id="pre_call"  name="InsertRecord_JS" status="Status1" oncomplete="callOrNoCallCallout();" rerender="validationErrors,showmsg,runscript"/>
+            <apex:actionFunction action="{!Create_SSR_In_DRD_via_REST_Call}" name="CallWebService_JS" status="Status2" oncomplete="Update_Inbound();"   rerender="validationErrors,status2,runscript"/>
+            <apex:actionFunction action="{!InsertInboundMessage}" name="Update_Inbound" status="Status3" oncomplete="checkProcessFailorSuccess();" rerender="status3"/>
+            <apex:actionFunction action="{!FinalPageRedirect}" name="allGoodRedirectToDetailPage" status="Status4" rerender="status4"/> 
+            <apex:outputPanel id="runscript">
+                <script>    
+                // Final check before redirecting user to a failed page
+                function checkProcessFailorSuccess() {
+                    if ({!runAction}) {
+                        allGoodRedirectToDetailPage();
+                    }
+                    else {
+                        EnableAllButtons ("{!$Label.Core_SSR_Create_Request}");
+                    }
+
+                }
+                // Enable button to resubmit if anything fails
+                 function EnableAllButtons (actionText) {
+                    var buttons = document.getElementsByClassName("btn");
+                    for (var i = 0; i < buttons.length; i++) {
+                        var button = buttons[i];
+                        button.disabled = false;
+                        button.classList.add("btnDisabled");
+                        if ( actionText != null && actionText != "" ) button.value = actionText;
+                    }
+                }
+                // if runAction is false then no further action is performed, validation error check?
+                function callOrNoCallCallout(){       
+                    if({!runAction}) {  
+                        //  window.alert("Whats runAction " + {!runAction});
+                        SaveOnClick();              
+                    }
+                }   
+                // Disable button as and when system validates all user entries, to make sure no duplicates occur
+                function DisableAllButtons (actionText) {
+                    var buttons = document.getElementsByClassName("btn");
+                    for (var i = 0; i < buttons.length; i++) {
+                        var button = buttons[i];
+                        button.disabled = true;
+                        button.classList.add("btnDisabled");
+                        if ( actionText != null && actionText != "" ) button.value = actionText;
+                    }
+                    CallWebService_JS();  
+                }
+                // Disable label
+                function SaveOnClick () {
+                    try {
+                        DisableAllButtons ("{!$Label.Core_SSR_Creating_Sales_Support_Request}");
+                    } catch(err) { }
+                    doSave();
+                }               
+                </script>               
+            </apex:outputPanel>   
+            <!-- Add text into startText if you are debugging any issue --> 
+            <apex:outputPanel id="statuses">
+                <apex:actionStatus id="Status1" startText="" />
+                <apex:actionStatus id="Status2" startText="" />
+                <apex:actionStatus id="Status3" startText="" />
+                <apex:actionStatus id="Status4" startText="" />
+            </apex:outputPanel>
+         </apex:pageblock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,300 @@
+{
+  "forgotPasswordRouteId" : "aab66538-103d-49ec-a4d6-89242d806700",
+  "isAvailableToGuests" : false,
+  "isFilteredComponentsView" : true,
+  "isProgressiveRenderingEnabled" : true,
+  "loginAppPageId" : "b07655c6-5db9-45fd-a716-3b9f516c8e28",
+  "mainAppPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "preferredDomain" : "partner.intel.com",
+  "selfRegistrationRouteId" : "8bac6354-05e0-48cd-a9ac-a976f080b779",
+  "trustedSitesForScript" : [ {
+    "id" : "e5236f42-2b85-4417-a80e-b8804b410178",
+    "isActive" : true,
+    "trustedSiteName" : "Intel.com",
+    "trustedSiteUrl" : "https://*.intel.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "777c179a-7a20-4122-82a5-61c39ba10c26",
+    "isActive" : true,
+    "trustedSiteName" : "Brightcove",
+    "trustedSiteUrl" : "https://*.brightcove.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "8057d27e-ec56-4f39-95c9-b3339c09e660",
+    "isActive" : true,
+    "trustedSiteName" : "https://tags.tiqcdn.cn",
+    "trustedSiteUrl" : "https://tags.tiqcdn.cn",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "c34e1e4e-2862-48e5-80ff-9d44987bfb9e",
+    "isActive" : true,
+    "trustedSiteName" : "https://dpm.demdex.net",
+    "trustedSiteUrl" : "https://dpm.demdex.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "5f2a1939-da88-4703-ba9b-11262c0154ed",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.eloqua.com",
+    "trustedSiteUrl" : "https://*.eloqua.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "e648e4ea-b7e0-45f2-82fd-1e1bbaee2973",
+    "isActive" : true,
+    "trustedSiteName" : "https://a.idio.co/",
+    "trustedSiteUrl" : "https://a.idio.co/",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "776c6a8c-2d4b-4785-a866-1ef9be61b4e3",
+    "isActive" : true,
+    "trustedSiteName" : "https://lasteventf-tm.everesttech.net",
+    "trustedSiteUrl" : "https://lasteventf-tm.everesttech.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "3b7c6ef0-7365-4ccc-a629-5f586258732c",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.clicktale.net",
+    "trustedSiteUrl" : "https://*.clicktale.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "726a7de7-9f92-4281-b114-a365262c7c8a",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.researchintel.com",
+    "trustedSiteUrl" : "https://*.researchintel.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "3aac6c2f-6769-471b-b953-b4696b103bae",
+    "isActive" : true,
+    "trustedSiteName" : "https://cdn.tt.omtrdc.net",
+    "trustedSiteUrl" : "https://cdn.tt.omtrdc.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "719d6f29-0c7b-46ec-9c4d-f2cedf6cbac2",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.adobe.com",
+    "trustedSiteUrl" : "https://*.adobe.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "b95eb416-11d0-4103-b06b-daf83c4b43e5",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.d41.co",
+    "trustedSiteUrl" : "https://*.d41.co",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "1c789f2d-e37d-4007-8303-be8940e0bdca",
+    "isActive" : true,
+    "trustedSiteName" : "https://so.rlcdn.com",
+    "trustedSiteUrl" : "https://so.rlcdn.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "a9360d4b-c2ff-453c-8724-7fa5b99a6d2a",
+    "isActive" : true,
+    "trustedSiteName" : "https://ecf.d41.co",
+    "trustedSiteUrl" : "https://ecf.d41.co",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "e99c12b0-7e3b-47ae-afe9-3cbd7c016783",
+    "isActive" : true,
+    "trustedSiteName" : "https://aa.agkn.com",
+    "trustedSiteUrl" : "https://aa.agkn.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "e175c7e0-6350-4c2d-9ebc-f78c2bcb5016",
+    "isActive" : true,
+    "trustedSiteName" : "https://api.idio.co/",
+    "trustedSiteUrl" : "https://api.idio.co/",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "4758276c-0ca9-4b3d-8b1f-5fd5a10b8591",
+    "isActive" : true,
+    "trustedSiteName" : "https://fast.intelcorp.demdex.net",
+    "trustedSiteUrl" : "https://fast.intelcorp.demdex.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "2688e57b-9970-463b-83ce-1b8b7eb70fec",
+    "isActive" : true,
+    "trustedSiteName" : "https://fls.doubleclick.net",
+    "trustedSiteUrl" : "https://fls.doubleclick.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "261f8648-8fc4-4ff8-ab92-3719fe6ccfff",
+    "isActive" : true,
+    "trustedSiteName" : "https://ve-cec-na1.app.clicktale.com",
+    "trustedSiteUrl" : "https://ve-cec-na1.app.clicktale.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "fb78da23-e062-4859-a2fa-9ebc044ce067",
+    "isActive" : true,
+    "trustedSiteName" : "https://img.en25.com",
+    "trustedSiteUrl" : "https://img.en25.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "9abd0828-6698-4834-bef2-eb8abd291c4f",
+    "isActive" : true,
+    "trustedSiteName" : "https://api.at.getsocial.io",
+    "trustedSiteUrl" : "https://api.at.getsocial.io",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "89e2c047-eb28-4874-a166-18404ad22e33",
+    "isActive" : true,
+    "trustedSiteName" : "https://getsocial.io",
+    "trustedSiteUrl" : "https://getsocial.io",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "235de0e3-88ba-4fdd-b8d7-23759207496a",
+    "isActive" : true,
+    "trustedSiteName" : "https://s.share.baidu.com",
+    "trustedSiteUrl" : "https://s.share.baidu.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "36340fe2-d024-41d6-a6e2-82cf4fb06538",
+    "isActive" : true,
+    "trustedSiteName" : "https://service.weibo.com",
+    "trustedSiteUrl" : "https://service.weibo.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "27bc1413-84f2-4f30-bb2a-234cd6fb1172",
+    "isActive" : true,
+    "trustedSiteName" : "https://www.draugiem.lv",
+    "trustedSiteUrl" : "https://www.draugiem.lv",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "1dd0cfc5-befa-4330-b6bb-81ad4cb3e264",
+    "isActive" : true,
+    "trustedSiteName" : "https://line.me",
+    "trustedSiteUrl" : "https://line.me",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "1f40f5a8-a6e9-48eb-a702-34d6ea39af78",
+    "isActive" : true,
+    "trustedSiteName" : "https://cdn.kik.com",
+    "trustedSiteUrl" : "https://cdn.kik.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "64d11071-965d-4d6d-85d5-2bb58acd9821",
+    "isActive" : true,
+    "trustedSiteName" : "https://c.betrad.com",
+    "trustedSiteUrl" : "https://c.betrad.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "5f7cccaf-058d-4f75-b3cf-dc0300dcf064",
+    "isActive" : true,
+    "trustedSiteName" : "https://stats.g.doubleclick.net",
+    "trustedSiteUrl" : "https://stats.g.doubleclick.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "35286926-2932-4414-bf6c-19b65d027fc7",
+    "isActive" : true,
+    "trustedSiteName" : "https://player.vimeo.com",
+    "trustedSiteUrl" : "https://player.vimeo.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "68592b69-cadf-4192-98af-3e56526e1841",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.go-mpulse.net",
+    "trustedSiteUrl" : "https://*.go-mpulse.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "d3da0dec-ca24-4b2b-b3d1-0a4172de3e00",
+    "isActive" : true,
+    "trustedSiteName" : "https://p.adsymptotic.com",
+    "trustedSiteUrl" : "https://p.adsymptotic.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "ab25307f-2af3-4b21-a3b5-d6adc1aca007",
+    "isActive" : true,
+    "trustedSiteName" : "https://connect.facebook.net",
+    "trustedSiteUrl" : "https://connect.facebook.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "d20f606f-f75d-4f6f-9f05-bd17daa1ec90",
+    "isActive" : true,
+    "trustedSiteName" : "https://www.google-analytics.com",
+    "trustedSiteUrl" : "https://www.google-analytics.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "70c55bf6-b971-43ed-8e24-67fdb3ea426c",
+    "isActive" : true,
+    "trustedSiteName" : "https://www.googletagmanager.com",
+    "trustedSiteUrl" : "https://www.googletagmanager.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "3d63364e-dead-430b-a151-18788cb87bd9",
+    "isActive" : true,
+    "trustedSiteName" : "https://tags.tiqcdn.com",
+    "trustedSiteUrl" : "https://tags.tiqcdn.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "c2ebda13-51fb-4eb6-8ed0-b74b4d18faf9",
+    "isActive" : true,
+    "trustedSiteName" : "Intel icon",
+    "trustedSiteUrl" : "https://img03.en25.com/EloquaImages/clients/IntelCorporation/%7B1a814392-3a10-434c-bdb3-175cc3fbfa07%7D_intel-logo-white_UPDATED.png",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "274dcfc1-04fa-41d8-b3d5-5d660a0fb3eb",
+    "isActive" : true,
+    "trustedSiteName" : "https://my.tealiumiq.com",
+    "trustedSiteUrl" : "https://my.tealiumiq.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "166e767e-b96b-43ae-9eaf-ec4daeaed188",
+    "isActive" : true,
+    "trustedSiteName" : "https://datacloud.tealiumiq.com",
+    "trustedSiteUrl" : "https://datacloud.tealiumiq.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "d80277ba-9118-418d-b479-e239551006ba",
+    "isActive" : true,
+    "trustedSiteName" : "https://c.evidon.com",
+    "trustedSiteUrl" : "https://c.evidon.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "4f3db56f-b67f-4068-88e8-9a5a96d566b9",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.6sc.co",
+    "trustedSiteUrl" : "https://*.6sc.co",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "827fd9a6-ca60-4975-a20b-7dd5f8915a9f",
+    "isActive" : true,
+    "trustedSiteName" : "https://epsilon.6sense.com",
+    "trustedSiteUrl" : "https://epsilon.6sense.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "332b6254-abdb-46d9-afa7-ba58b7c73a1a",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.my.salesforce.com",
+    "trustedSiteUrl" : "https://*.my.salesforce.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "0311605b-be24-44b3-a9a0-d85cbea1985f",
+    "isActive" : true,
+    "trustedSiteName" : "https://cdn.cookielaw.org",
+    "trustedSiteUrl" : "https://cdn.cookielaw.org",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "c76e8d72-49f1-4505-a77d-1ff83cbdc062",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.ibosscloud.com",
+    "trustedSiteUrl" : "https://*.ibosscloud.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "2e842338-57c4-41e8-915c-04775344dbe6",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.onetrust.com",
+    "trustedSiteUrl" : "https://*.onetrust.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "e3e26192-220a-4175-9c13-348b334cf5ef",
+    "isActive" : true,
+    "trustedSiteName" : "https://*.adoberesources.net",
+    "trustedSiteUrl" : "https://*.adoberesources.net",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "907b3f98-7870-4a52-8091-a5e63812d077",
+    "isActive" : true,
+    "trustedSiteName" : "Avaamo",
+    "trustedSiteUrl" : "https://c0.avaamo.com",
+    "type" : "trustedSitesForScripts"
+  } ],
+  "type" : "site"
+}

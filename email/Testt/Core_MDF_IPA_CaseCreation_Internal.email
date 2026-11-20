@@ -1,0 +1,20 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_AuditCreation_with_UnderReviewSts_Subject}{!RelatedTo.Core_MDF_Claim_Number__c}" recipientType="User" relatedToType="Case" language="{!relatedTo.Core_MDF_Claim_Submitter__r.LanguageLocaleKey}">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p>{!$Label.Core_MDF_IPA_Salutation_Internal}<br/><br/>
+     {!$Label.Core_MDF_IPA_Int_Case_Creation_Body1}<br/><br/>   
+        {!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+        <br/>{!$Label.Core_MDF_Audit_Creation_IPA_Field1} {!RelatedTo.Core_MDF_CampaignName__c }
+    <br/>{!$Label.Core_MDF_Audit_Creation_Field2} {!RelatedTo.Core_MDF_ActivityName__c} 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}
+      </P>
+     
+     <p> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/>
+      {!$Label.Core_MDF_Audit_Creation_IPA_Body_3}</p>
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

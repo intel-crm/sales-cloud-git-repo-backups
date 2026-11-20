@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Opportunity.Name:UNIQUE</calculatedFormula>
+        <datatype>number</datatype>
+        <description>Oppty Count</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Oppty Count</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>DATE(YEAR(TODAY()),12,31) - TODAY()</calculatedFormula>
+        <datatype>number</datatype>
+        <description>how many days left of the calendar year from TODAY</description>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Days Left of the Year</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity.KPI_Opportunity__r$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.KPI_Opportunity__r$Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.UserRole</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity$Probability</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Type</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity$Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity$Core_Days_from_Opportunity_Create_to_Su__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Core_Approved_By__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$PrimaryPartnerAccount</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>Opportunity.Amount*Opportunity.Probability</calculatedFormula>
+        <dataType>Double</dataType>
+        <description>KPI revenue multiplied by oppty probability</description>
+        <developerName>CDF1</developerName>
+        <label>Weighted KPI Revenue</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>*Updated w/ NRTK Reports*
+NEX IOTG Design Dashboard</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>mexico</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.KPI_Opportunity__r$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>NEX IOTG Design $</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Core_Opportunity_Owner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>Opportunity$CloseDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$StageName</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Copy of US DESIGN IOTG Total wKPI - MX V</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_New_Opportunity_KPIs__c</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,32 @@
+:host {
+    
+    --slds-c-button-radius-border: .0rem;
+    
+    --slds-c-button-brand-color-background: #FFFFFF;
+    --slds-c-button-brand-text-color: black;
+    --slds-c-button-color-border: black;   
+    --slds-c-button-brand-color-border: black;
+    --slds-c-button-brand-color-border-hover : #0068b5; 
+    --lwc-buttonBorderRadius: .0rem;
+    --slds-c-button-brand-color-border-hover: black;
+    --slds-c-button-color-border-hover: black;
+    
+    
+    --slds-c-button-brand-color-background-active: #0068b5;
+     --sds-c-button-brand-color-background-active: #0068b5;
+    --lwc-brandAccessibleActive: #0068b5;
+    
+    
+    }
+    .quantiButton {
+        width: 34px;
+        padding: 13px 0;
+        background: transparent;
+        border: none;
+        color: #000 !important;
+    }
+    .quanticInput{
+        --lwc-heightInput: 1.9rem;
+        width: 35px;
+        display:contents;
+    }

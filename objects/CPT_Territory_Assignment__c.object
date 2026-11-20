@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>CPT_Territory_Assignment_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CPT_Territory_Assignment_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CPT_Territory_Assignment_Compact_Layout</fullName>
+        <fields>CPT_Territory_Name__c</fields>
+        <fields>CPT_Employee_Name__c</fields>
+        <fields>CPT_Quota_Setup__c</fields>
+        <label>CPT Territory Assignment Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object that connects Commissionable Employee to Accounts/Territories/Countries. It also stores the revenue streams and the Departments that the Employee is part of. The revenue stream and department assignment is done by the Manager.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>CPT_BR_All_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - All Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_All__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of BR ALL Division and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>BR - All</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_CCG_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Billings Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - CCG Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_CCG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of BR CCG Division and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>BR - CCG</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_DAIS_Target__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - DCAI Accelerator Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_DAIS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>BR - DCAI Accelerator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Billings Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - DCG Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of BR DCAI Division and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>BR - DCG</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Intel_AI_PC_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - Intel AI PC Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Intel_AI_PC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>BR - Intel AI PC</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_NEX_Ethernet_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR - DCAI Ethernet Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_NEX_Ethernet__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>BR - DCAI Ethernet</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Consumer_Target__c</fullName>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Consumption Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR - CCG Consumer Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Consumer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of CR - CCG Consumer CPU and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>CR - CCG Consumer</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_One_Intel_OEM_Target__c</fullName>
+        <description>Target Amount copied (using flow) from the corresponding field on the Territory Target record. If selected, this will roll up into the Quota Amount (for a given Division in Consumption Revenue) of the Employee.</description>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR - One Intel OEM Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_One_Intel_OEM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, the Employee is part of CR - CCG One Intel OEM and the corresponding Target Amount is rolled up to the Quota for that Division.</description>
+        <label>CR - One Intel OEM</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Target_V2__c</fullName>
+        <formula>IF(CPT_CR_CCG_Consumer__c, CPT_CR_CCG_Consumer_Target__c, 0) + IF(CPT_CR_CCG_One_Intel_OEM__c, CPT_CR_CCG_One_Intel_OEM_Target__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CR - CCG Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_DCAI_Target_V2__c</fullName>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CR - DCAI Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_NEX_Target_V2__c</fullName>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CR - NEX Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_OEM_Target__c</fullName>
+        <label>CR - OEM Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_OEM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CR - OEM</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Partner_Target__c</fullName>
+        <label>CR - Partner Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CR - Partner</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Retail_Target__c</fullName>
+        <label>CR - Retail Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Retail__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CR - Retail</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Employee_Name__c</fullName>
+        <description>The full name of the Employee for reference.</description>
+        <externalId>false</externalId>
+        <formula>CPT_Quota_Setup__r.CPT_Employee_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Employee Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Employee_WWID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Quota_Setup__r.CPT_Employee_WWID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Employee WWID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Inactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates weather the assignment is active in use or discarded</description>
+        <label>Inactive</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Locked_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(  CPT_Territory_Target__r.CPT_Quota_Period__r.CPT_Locked_Status__c  )</formula>
+        <label>Locked Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Manager_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Quota_Setup__r.CPT_Manager__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Manager Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Manager_WWID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Quota_Setup__r.CPT_Manager_WWID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Manager WWID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_CCG_Target__c</fullName>
+        <label>MarVol - Margin CCG Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_CCG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MarVol - Margin CCG</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_DCG_Target__c</fullName>
+        <label>MarVol - Margin DCG Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_DCG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MarVol - Margin DCG</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</fullName>
+        <externalId>false</externalId>
+        <label>MarVol - Next Gen CCG LNL Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_LNL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MarVol - Next Gen CCG LNL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</fullName>
+        <externalId>false</externalId>
+        <label>MarVol - Next Gen CCG PTL Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_PTL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MarVol - Next Gen CCG PTL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</fullName>
+        <externalId>false</externalId>
+        <label>MarVol - Next Gen CCG WCL Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_WCL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MarVol - Next Gen CCG WCL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</fullName>
+        <externalId>false</externalId>
+        <label>MarVol - Next Gen DCG GNR Target</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_DCG_GNR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>MarVol - Next Gen DCG GNR</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Quota_Period__c</fullName>
+        <description>The Quota Period for reference.</description>
+        <externalId>false</externalId>
+        <formula>CPT_Quota_Setup__r.CPT_Quota_Period__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Quota Period</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Quota_Setup__c</fullName>
+        <description>The link to the Quota Setup record.</description>
+        <label>Quota Setup</label>
+        <referenceTo>CPT_Quota_Setup__c</referenceTo>
+        <relationshipLabel>Territory Assignments</relationshipLabel>
+        <relationshipName>Territory_Assignments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>CPT_Territory_Name__c</fullName>
+        <description>The Name of the Territory for reference.</description>
+        <externalId>false</externalId>
+        <formula>CPT_Territory_Target__r.CPT_Account_Territory__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Territory Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Territory_Target__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The link to the Territory Target record.</description>
+        <label>Territory Target</label>
+        <referenceTo>CPT_Territory_Target__c</referenceTo>
+        <relationshipLabel>Territory Assignments</relationshipLabel>
+        <relationshipName>Territory_Assignments</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Unique_Identifier__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Unique Identifier to prevent duplicates for a given combination of Quota Setup and Territory Target. The format of this field is: Quota Setup Id - Territory Target Id.</description>
+        <externalId>false</externalId>
+        <label>Unique Identifier</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Territory Assignment</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_BR_All_Target__c</columns>
+        <columns>CPT_BR_CCG_Target__c</columns>
+        <columns>CPT_BR_DCAI_Target__c</columns>
+        <columns>CPT_CR_OEM_Target__c</columns>
+        <columns>CPT_CR_Retail_Target__c</columns>
+        <columns>CPT_CR_Partner_Target__c</columns>
+        <columns>CPT_MarVol_Margin_CCG_Target__c</columns>
+        <columns>CPT_MarVol_Margin_DCG_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_BR</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_BR_All__c</columns>
+        <columns>CPT_BR_All_Target__c</columns>
+        <columns>CPT_BR_CCG__c</columns>
+        <columns>CPT_BR_CCG_Target__c</columns>
+        <columns>CPT_BR_DCAI__c</columns>
+        <columns>CPT_BR_DCAI_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - BR</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_CR</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_CR_OEM__c</columns>
+        <columns>CPT_CR_OEM_Target__c</columns>
+        <columns>CPT_CR_Partner__c</columns>
+        <columns>CPT_CR_Partner_Target__c</columns>
+        <columns>CPT_CR_Retail__c</columns>
+        <columns>CPT_CR_Retail_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - CR</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_MARGINVOLUME</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_MarVol_Margin_CCG_Target__c</columns>
+        <columns>CPT_MarVol_Margin_DCG_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</columns>
+        <columns>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</columns>
+        <columns>CPT_Inactive__c</columns>
+        <columns>CPT_Locked_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - MARGINVOLUME</label>
+    </listViews>
+    <nameField>
+        <displayFormat>TA-{000000}</displayFormat>
+        <label>Assignment ID</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Territory Assignments</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <searchResultsAdditionalFields>CPT_Employee_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Territory_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>CPT_Prevent_BR_Territory_BU_Update</fullName>
+        <active>true</active>
+        <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
+        <errorConditionFormula>OR
+(
+  AND(CPT_BR_CCG__c, OR(CPT_BR_CCG_Target__c = 0, ISNULL(CPT_BR_CCG_Target__c))),
+  AND(CPT_BR_DCAI__c, OR(CPT_BR_DCAI_Target__c= 0, ISNULL(CPT_BR_DCAI_Target__c))),
+  AND(CPT_BR_All__c, OR(CPT_BR_All_Target__c = 0, ISNULL(CPT_BR_All_Target__c)))
+)</errorConditionFormula>
+        <errorMessage>The Billings Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_CR_Territory_BU_Update</fullName>
+        <active>true</active>
+        <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
+        <errorConditionFormula>OR
+(
+AND(CPT_CR_OEM__c, OR(CPT_CR_OEM_Target__c = 0, ISNULL(CPT_CR_OEM_Target__c))),
+AND(CPT_CR_Partner__c, OR(CPT_CR_Partner_Target__c = 0, ISNULL(CPT_CR_Partner_Target__c))),
+AND(CPT_CR_Retail__c, OR(CPT_CR_Retail_Target__c= 0, ISNULL(CPT_CR_Retail_Target__c)))
+)</errorConditionFormula>
+        <errorMessage>To assign a CR-KPI to an employee, the Consumption Revenue Target for the CR-KPI must be greater than $0.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_Territory_Target_Update</fullName>
+        <active>true</active>
+        <description>Prevent the users from changing the Target value.</description>
+        <errorConditionFormula>ISCHANGED(CPT_Territory_Target__c)</errorConditionFormula>
+        <errorDisplayField>CPT_Territory_Target__c</errorDisplayField>
+        <errorMessage>You do not have permission to make updates to the Target field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Restrict_Update_OnLockedRecord</fullName>
+        <active>true</active>
+        <description>Prevent update when the quota period is Hard Locked.</description>
+        <errorConditionFormula>AND
+(
+NOT( $Permission.CPT_IT_Admin_System_Admin_Permission ),
+TEXT(  CPT_Territory_Target__r.CPT_Quota_Period__r.CPT_Locked_Status__c  ) = &apos;Hard Lock&apos;
+)</errorConditionFormula>
+        <errorMessage>This record is locked. Please contact the Commissions Admin if you have any questions.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TA_Pair_CCG_Volume_and_Margin</fullName>
+        <active>true</active>
+        <description>This validation rule ensures Margin CCG and at least one NextGen CCG field (WCL, PTL, LNL) are selected together - mutual dependency required.</description>
+        <errorConditionFormula>OR(
+AND( CPT_MarVol_Margin_CCG__c, NOT(OR( CPT_MarVol_Next_Gen_CCG_WCL__c, CPT_MarVol_Next_Gen_CCG_PTL__c, CPT_MarVol_Next_Gen_CCG_LNL__c)) ),
+AND( OR( CPT_MarVol_Next_Gen_CCG_WCL__c, CPT_MarVol_Next_Gen_CCG_PTL__c, CPT_MarVol_Next_Gen_CCG_LNL__c), NOT(CPT_MarVol_Margin_CCG__c) )
+)</errorConditionFormula>
+        <errorMessage>Volume CCG (LNL/PTL/WCL) and Margin CCG must be selected together - if one is selected, the other is required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TA_Pair_DCG_Volume_and_Margin</fullName>
+        <active>true</active>
+        <description>This validation rule ensures mutual dependency between CPT_MarVol_NextGen_DCG_GNR and CPT_MarVol_Margin_DCG fields. If one is selected, the other must also be selected, and vice versa.</description>
+        <errorConditionFormula>OR( AND(CPT_MarVol_Next_Gen_DCG_GNR__c, NOT(CPT_MarVol_Margin_DCG__c)), AND(CPT_MarVol_Margin_DCG__c, NOT(CPT_MarVol_Next_Gen_DCG_GNR__c)) )</errorConditionFormula>
+        <errorMessage>Volume DCG and Margin DCG must both be selected together.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

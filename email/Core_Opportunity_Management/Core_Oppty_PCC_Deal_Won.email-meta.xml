@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <available>true</available>
+    <description>Sent when PCC Opportunity is submitted for approval.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_Oppty_PCC_Deal_Won</name>
+    <style>none</style>
+    <subject>Opportunity Submitted for Won</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

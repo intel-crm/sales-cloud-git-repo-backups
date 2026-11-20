@@ -1,0 +1,89 @@
+<template>
+    <div class="slds-p-around_small" style="background-color: #5875aa;color: white; font-size: 1.5rem;">
+        <b>IPS File Assignment</b>
+    </div>
+    <lightning-card>
+        <template if:true={checkcndtn}>
+            <div if:true={statusIncplte}>
+                <h2>File Upload Status not Complete.Supported Product/Account cannot be assigned to this File</h2>
+            </div>
+            <div if:true={expdate}>
+                <h2>File Expired.Supported Product/Account cannot be assigned to this File</h2>
+            </div>
+        </template>
+        <template if:false={checkcndtn}>
+            <div style="padding-left: 40px;">
+                <h1> <b> Assign Supported Products and Accounts to IPS File </b></h1>
+                <h2 style="color:#5875aa; font-size: 1rem;"><b> *Note: Supported Product is Mandatory* </b> </h2>
+            </div> <br />
+            <!-- Table -->
+            <div class="slds-align_absolute-center">
+                <table class=" mytable slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer"
+                    role="grid">
+                    <thead>
+                        <tr>
+                            <th scope="col" height="22" style="width: 3rem;  ">SNo.</th>
+                            <th scope="col" height="22">Supported Product</th>
+                            <th scope="col" height="22">Account</th>
+                            <th scope="col" height="22">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={listOfRows} for:item="rec">
+                            <tr key={rec} class="slds-hint-parent">
+                                <td style="font-weight: bold">
+                                    <lightning-formatted-number value={rec.index}></lightning-formatted-number>.
+                                </td>
+                                <td scope="col">
+                                    <c-core_ips_custom-Lookup-Lex icon-name="standard:account"
+                                        s-object-api-name="Core_IPS_Supported_Product__c"
+                                        onlookupupdate={lookupSpRecord} placeholder="Search Supported Product here..."
+                                        is-required=true>
+                                    </c-core_ips_custom-Lookup-Lex>
+                                </td>
+
+                                <td scope="col">
+                                    <c-core_ips_custom-Lookup-Lex icon-name="standard:account"
+                                        s-object-api-name="Account" onlookupupdate={lookupAccountRecord}
+                                        placeholder="Search Account here..." is-required=false>
+                                    </c-core_ips_custom-Lookup-Lex>
+                                </td>
+                                <td scope="col">
+                                    <div if:true={rec.nodelete}>
+                                        <lightning-button-icon variant="neutral" alternative-text="add row"
+                                            title="Add row" class="slds-icon slds-icon-text-success"
+                                            icon-name="utility:add" onclick={addNewRow}></lightning-button-icon>
+
+                                    </div>
+                                    <div if:false={rec.nodelete}>
+                                        <lightning-button-icon variant="neutral"
+                                            class="slds-icon slds-icon-text-success" alternative-text="add row"
+                                            title="Add row" icon-name="utility:add" onclick={addNewRow}>
+                                        </lightning-button-icon> &nbsp;&nbsp;&nbsp;
+                                        <lightning-button-icon class="slds-icon slds-icon-text-error"
+                                            icon-name="utility:delete" alternative-text="Remove" title="Remove"
+                                            name={rec.index} onclick={removeRow}></lightning-button-icon>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+            </div>
+            <div>
+                <!-- Footer -->
+                <footer class="slds-modal__footer slds-grid slds-grid--align-center" style="padding: 0.30rem 1rem;">
+                    <lightning-button icon-name="utility:save" variant="brand" label="Save" onclick={saveFileRecords}>
+                    </lightning-button> &nbsp;&nbsp;&nbsp;
+                    <button class="slds-button slds-button_neutral" onclick={navigateToFileUpload}>Cancel</button>
+                    
+                </footer>
+            </div>
+            <div if:true={spinner}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </div>
+        </template>
+    </lightning-card>
+</template>

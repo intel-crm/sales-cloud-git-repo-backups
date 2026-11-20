@@ -1,0 +1,60 @@
+.THIS {
+    background-color: t(white);
+    width: 100%;
+}
+
+.THIS .flexCenter {
+    align-items: center;
+    display: flex; 
+}
+
+.THIS .strength-1 .strengthPhrase {
+    color: t(darkRed);
+}
+
+.THIS .strength-2 .strengthPhrase {
+    color: t(orange);
+}
+
+.THIS .strength-3 .strengthPhrase {
+    color: t(green);
+}
+
+.THIS .strength-1 .strengthIcon {
+    background-color: t(darkRed);
+    /* transform: scaleX(-1); */
+}
+
+.THIS .strength-2 .strengthIcon {
+    background-color: t(orange);
+    /* transform: rotate(-66deg); */
+}
+
+.THIS .strength-3 .strengthIcon {
+    background-color: t(green);
+}
+
+.THIS img {
+    height: 1.6em;
+    margin-top: 1em;
+}
+
+.THIS .strengthIcon {
+    border-radius: 100%;
+    width: 65px;
+    height: 65px;
+}
+
+.THIS .strengthIcon .slds-icon {
+    fill: white;
+    margin-top: 0.4em;
+    height: 3em;
+    width: 3em;
+}
+
+@media (max-width: 767px) {
+    .THIS {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}

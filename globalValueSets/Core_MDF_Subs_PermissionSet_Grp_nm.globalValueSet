@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Core_MDF_Claim_Case_Reviewer_Manager_Group</fullName>
+        <default>false</default>
+        <label>Core_MDF_Claim_Case_Reviewer_Manager_Group</label>
+    </customValue>
+    <masterLabel>Subscription Permission Set Group</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

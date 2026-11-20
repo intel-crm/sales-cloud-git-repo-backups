@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <booleanFilter>(1 AND 2 AND 8) OR (1 AND 3 AND 4 AND 8) OR (1 AND 5 AND 6 AND 7 AND 8)</booleanFilter>
+    <name>PSG-EU-CENTRAL</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.Core_PSG_Account__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.BillingCountryCode</field>
+        <operation>equals</operation>
+        <value>DEU,RUS</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.BillingCountryCode</field>
+        <operation>equals</operation>
+        <value>AUT</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Name</field>
+        <operation>contains</operation>
+        <value>APPLE,GE HEALTHCARE</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Geo__c</field>
+        <operation>equals</operation>
+        <value>EMEA</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Name</field>
+        <operation>contains</operation>
+        <value>ABB,Power-one,B&amp;R,BERNECKER,MONDIAL</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Name</field>
+        <operation>notContain</operation>
+        <value>RABBI</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Deactivated__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </ruleItems>
+</Territory2Rule>

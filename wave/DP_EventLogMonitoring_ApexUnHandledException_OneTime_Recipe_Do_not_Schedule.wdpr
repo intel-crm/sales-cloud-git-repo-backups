@@ -1,0 +1,317 @@
+{
+  "version" : "56.0",
+  "nodes" : {
+    "SPLIT0_copy0_copy0_copy0" : {
+      "action" : "split",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "sourceField" : "EXCEPTION_MESSAGE",
+        "delimiter" : ":",
+        "targetFields" : [ {
+          "name" : "EXCEPTION_MESSAGE_split",
+          "label" : "DNUEXCEPTION_MESSAGE Split 1"
+        }, {
+          "name" : "EXCEPTION_MESSAGE_split1",
+          "label" : "EXCEPTION_MESSAGE Split 2"
+        } ]
+      }
+    },
+    "SPLIT1_copy0_copy0_copy0" : {
+      "action" : "split",
+      "sources" : [ "SPLIT0_copy0_copy0_copy0" ],
+      "parameters" : {
+        "sourceField" : "EXCEPTION_MESSAGE_split1",
+        "delimiter" : " ",
+        "targetFields" : [ {
+          "name" : "EXCEPTION_MESSAGE_split1_split",
+          "label" : "EXCEPTION_MESSAGE Split 2 Split 1"
+        }, {
+          "name" : "EXCEPTION_MESSAGE_split1_split1",
+          "label" : "DNUEXCEPTION_MESSAGE Split 2 Split 2"
+        } ]
+      }
+    },
+    "SPLIT2_copy0_copy0_copy0" : {
+      "action" : "split",
+      "sources" : [ "SPLIT1_copy0_copy0_copy0" ],
+      "parameters" : {
+        "sourceField" : "EXCEPTION_MESSAGE_split1_split1",
+        "delimiter" : " ",
+        "targetFields" : [ {
+          "name" : "EXCEPTION_MESSAGE_split1_split1_split",
+          "label" : "Class Name"
+        }, {
+          "name" : "EXCEPTION_MESSAGE_split1_split1_split1",
+          "label" : "DNUEXCEPTION_MESSAGE Split 2 Split 2 Split 2"
+        } ]
+      }
+    },
+    "FORMULA1_copy0_copy0_copy0" : {
+      "action" : "formula",
+      "sources" : [ "SPLIT2_copy0_copy0_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Class_Name",
+          "label" : "Class Name",
+          "formulaExpression" : "replace(EXCEPTION_MESSAGE_split1_split1_split, '\\'', '')",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "DROP_FIELDS0_copy0_copy0_copy0" : {
+      "action" : "schema",
+      "sources" : [ "FORMULA1_copy0_copy0_copy0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "EXCEPTION_MESSAGE_split", "EXCEPTION_MESSAGE_split1_split1", "EXCEPTION_MESSAGE_split1_split1_split1", "REQUEST_ID", "EXCEPTION_MESSAGE_split1_split1_split", "EXCEPTION_MESSAGE_split1", "EXCEPTION_MESSAGE_split1_split", "ORGANIZATION_ID" ]
+        }
+      }
+    },
+    "FORMULA2_copy0_copy0_copy0" : {
+      "action" : "formula",
+      "sources" : [ "DROP_FIELDS0_copy0_copy0_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Project_Info_formula",
+          "label" : "Project Info",
+          "formulaExpression" : "case\r\n when startsWith(Class_Name, 'epum') then 'A&E'\r\n when startsWith(Class_Name, 'UCD_') then 'UCD'\r\n    when startsWith(Class_Name, 'Core_KPI') then 'Unicorn'\r\n    when startsWith(Class_Name,'Core_Contact') then 'DRACO'\r\n    when startsWith(Class_Name,'Pricing') then 'Gravity'\r\n    when startsWith(Class_Name,'SEL_') then 'Gravity'\r\n    when startsWith(Class_Name,'QuoteBusinessLogic') then 'Gravity'\r\n    when startsWith(Class_Name,'PRM') then 'IPA'\r\n    when startsWith(Class_Name,'Sales_') then 'Concord'\r\n    when startsWith(Class_Name,'PSS') then 'PSS'\r\n    when startsWith(Class_Name,'Core_IPS') then 'Hercules'\r\n    when startsWith(Class_Name,'IPS') then 'Hercules'\r\n    when startsWith(Class_Name,'PSG_') then 'PSG Ventures'\r\n    when startsWith(Class_Name,'PSG') then 'PSG Ventures'\r\n    when startsWith(Class_Name,'Core_PSG') then 'PSG Ventures'\r\n    when startsWith(Class_Name,'Core_MDF') then 'CCP'\r\n    when startsWith(Class_Name,'Core_User') then 'DRACO'\r\n    when startsWith(Class_Name,'Core_Opp') then 'Unicorn'\r\n    when startsWith(Class_Name,'Core_Lead') then 'Unicorn' \r\n    when startsWith(Class_Name,'Core_PartnerLead') then 'Unicorn' \r\n    when startsWith(Class_Name,'Core_Batch_Opportunity') then 'Unicorn' \r\n    when startsWith(Class_Name,'Core_UpdateOptyRiskStatusFromQuote') then 'Unicorn' \r\n    when startsWith(Class_Name,'Core_Solution') then 'Unicorn'\t\r\n    when startsWith(Class_Name,'Core_Batch_DeleteInactiveKP') then 'Unicorn'\r\n    when startsWith(Class_Name,'Core_SA_') then 'Unicorn'\r\n    when startsWith(Class_Name,'PMP') then 'Marketplace'\r\n    when startsWith(Class_Name,'Intel_') then 'Generic'\r\n    when startsWith(Class_Name,'QuoteTrigger') then 'Generic'\r\n    when startsWith(Class_Name,'Queueable') then 'Salesforce CPQ'\r\n    when startsWith(Class_Name,'Product') then 'Salesforce CPQ'\r\n    when startsWith(Class_Name,'Quote') then 'Salesforce CPQ'\r\n    when startsWith(Class_Name,'Core_IQR') then 'IQR-Intel Quote Request'\r\n    when startsWith(Class_Name,'Core_ERPM') then 'ERPM(Quest)'\t\r\n    when startsWith(Class_Name,'Core_Integration') then 'Others'\r\n    when startsWith(Class_Name,'Contact') then 'Others'\t\r\n    when startsWith(Class_Name,'Abstract') then 'Others'\r\n    when startsWith(Class_Name,'Access') then 'Others'\r\n    when startsWith(Class_Name,'Account') then 'Others'\r\n    when startsWith(Class_Name,'Approval') then 'Others'\r\n    when startsWith(Class_Name,'Approve') then 'Others'\r\n    when startsWith(Class_Name,'Asset') then 'Others'\r\n    when startsWith(Class_Name,'Async') then 'Others'\r\n    when startsWith(Class_Name,'ATF') then 'Others'\r\nwhen startsWith(Class_Name,'Attend') then 'Others'\r\nwhen startsWith(Class_Name,'Batch') then 'Others'\r\nwhen startsWith(Class_Name,'BvD') then 'Others'\r\nwhen startsWith(Class_Name,'Calc') then 'Others'\r\nwhen startsWith(Class_Name,'Campaign') then 'Others'\r\nwhen startsWith(Class_Name,'Case') then 'Others'\r\nwhen startsWith(Class_Name,'Coach') then 'Others'\r\nwhen startsWith(Class_Name,'Column') then 'Others'\r\nwhen startsWith(Class_Name,'Comm') then 'Others'\r\nwhen startsWith(Class_Name,'Comp') then 'Others'\r\nwhen startsWith(Class_Name,'Config') then 'Others'\r\nwhen startsWith(Class_Name,'Connect') then 'Others'\r\nwhen startsWith(Class_Name,'Cons') then 'Others'\r\nwhen startsWith(Class_Name,'Content') then 'Others'\r\nwhen startsWith(Class_Name,'Contract') then 'Others'\r\nwhen startsWith(Class_Name,'Core_AAQC') then 'Others'\r\nwhen startsWith(Class_Name,'Core_Account') then 'Vega'\r\nwhen startsWith(Class_Name,'Core_Batch_Account') then 'Others'\r\nwhen startsWith(Class_Name,'Core_Batch_DDR') then 'Others'\r\nwhen startsWith(Class_Name,'Core_Batch_DeleteInactiveKP') then 'Others'\r\nwhen startsWith(Class_Name,'Core_Integration') then 'Others'\r\nwhen startsWith(Class_Name,'Core_Product') then 'Others'\r\nwhen startsWith(Class_Name,'Core_RestAPI') then 'Others'\r\nwhen startsWith(Class_Name,'Create') then 'Others'\r\nwhen startsWith(Class_Name,'Cs') then 'Others'\r\nwhen startsWith(Class_Name,'Cvent') then 'Others'\r\nwhen startsWith(Class_Name,'DaScoop') then 'Others'\r\nwhen startsWith(Class_Name,'Custom') then 'Others'\r\nwhen startsWith(Class_Name,'Data') then 'Others'\r\nwhen startsWith(Class_Name,'Delete') then 'Others'\r\nwhen startsWith(Class_Name,'Discount') then 'Others'\r\nwhen startsWith(Class_Name,'Doc') then 'Others'\r\nwhen startsWith(Class_Name,'Event') then 'Others'\r\nwhen startsWith(Class_Name,'Email') then 'Others'\r\nwhen startsWith(Class_Name,'Error') then 'Others'\r\nwhen startsWith(Class_Name,'fflib_') then 'Others'\r\nwhen startsWith(Class_Name,'Field') then 'Others'\r\nwhen startsWith(Class_Name,'Install') then 'Others'\r\nwhen startsWith(Class_Name,'JS') then 'Others'\r\nwhen startsWith(Class_Name,'NMT') then 'Others'\r\nwhen startsWith(Class_Name,'Nomination') then 'Others'\r\nwhen startsWith(Class_Name,'Opportunity') then 'Others'\r\nwhen startsWith(Class_Name,'Orbis') then 'Others'\r\nwhen startsWith(Class_Name,'Order') then 'Others'\r\nwhen startsWith(Class_Name,'Page') then 'Others'\r\nwhen startsWith(Class_Name,'Record') then 'Others'\r\nwhen startsWith(Class_Name,'Relat') then 'Others'\r\nwhen startsWith(Class_Name,'Reltio') then 'Others'\r\nwhen startsWith(Class_Name,'Remote') then 'Others'\r\nwhen startsWith(Class_Name,'REST') then 'Others'\r\nwhen startsWith(Class_Name,'Seismic') then 'Others'\r\nwhen startsWith(Class_Name,'Page') then 'Others'\r\nwhen startsWith(Class_Name,'Survey') then 'Others'\r\nwhen startsWith(Class_Name,'Sync') then 'Others'\r\nwhen startsWith(Class_Name,'Task') then 'Others'\r\nwhen startsWith(Class_Name,'Temp') then 'Others'\r\nwhen startsWith(Class_Name,'Trail') then 'Others'\r\nwhen startsWith(Class_Name,'Update') then 'Others'\r\nwhen startsWith(Class_Name,'User') then 'Others'\r\n    when contains(Class_Name, 'ERPM') then 'ERPM (Quest)'\r\n    when contains(Class_Name, 'CIM') then 'Vega'\r\n    when contains(Class_Name, 'CIM') then 'Quest'\r\n    when contains(Class_Name, 'CIM') then 'IPA'\r\n    when contains(Class_Name, 'SBQQ') then 'Salesforce CPQ'\t\r\n    when contains(Class_Name, 'ACM') then 'UCD'\r\n    when contains(Class_Name, 'LeadShare') then 'Unicorn'\r\n    when contains(Class_Name, 'KPI') then 'Unicorn'\t\t\r\nend ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA3_copy0_copy0_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2_copy0_copy0_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "TIMESTAMP_formula",
+          "label" : "TIMESTAMP Formula",
+          "formulaExpression" : "substr(TIMESTAMP, 1, 4)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4_copy0_copy0_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3_copy0_copy0_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "TIMESTAMP_formula1",
+          "label" : "TIMESTAMP Formula",
+          "formulaExpression" : "substr(TIMESTAMP, 5, 2)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA5_copy0_copy0_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4_copy0_copy0_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "TIMESTAMP_formula2",
+          "label" : "TIMESTAMP Formula",
+          "formulaExpression" : "substr(TIMESTAMP, 7, 2)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA6_copy0_copy0_copy0" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5_copy0_copy0_copy0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "TimeStamptoDate",
+          "label" : "TimeStamptoDate",
+          "formulaExpression" : "concat(concat(TIMESTAMP_formula, '-'),\r\nconcat(TIMESTAMP_formula1, '-')\r\n,TIMESTAMP_formula2)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_DATE0_copy0_copy0_copy0" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA6_copy0_copy0_copy0" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "TimeStamptoDate",
+          "newProperties" : {
+            "label" : "Log Date",
+            "name" : "TimeStamptoDate_to_date",
+            "typeProperties" : {
+              "type" : "DATETIME",
+              "format" : "yyyy-MM-dd"
+            }
+          }
+        } ]
+      }
+    },
+    "OUTPUT2_copy0_copy0_copy0" : {
+      "action" : "save",
+      "sources" : [ "TO_DATE0_copy0_copy0_copy0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "ApexUnexpectedException-Custom",
+          "name" : "Apex_Unexpected_Exception_Custom",
+          "folderName" : "Event_Monitoring_Analytics"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "EXCEPTION_TYPE", "TIMESTAMP_DERIVED", "EVENT_TYPE", "TIMESTAMP", "EXCEPTION_MESSAGE", "REQUEST_ID", "STACK_TRACE", "ORGANIZATION_ID" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "ApexUnexpectedException",
+          "name" : "ApexUnexpectedException"
+        },
+        "sampleDetails" : {
+          "type" : "TopN"
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "TRANSFORM2_copy0_copy0_copy0" : {
+        "label" : "ELF Formulas- Derive Class Name and Project Info Names",
+        "description" : "ELF Formulas- Derive Class Name and Project Info Names",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 252,
+        "graph" : {
+          "SPLIT0_copy0_copy0_copy0" : {
+            "label" : "Split"
+          },
+          "SPLIT1_copy0_copy0_copy0" : {
+            "label" : "Split"
+          },
+          "SPLIT2_copy0_copy0_copy0" : {
+            "label" : "Split"
+          },
+          "FORMULA1_copy0_copy0_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "DROP_FIELDS0_copy0_copy0_copy0" : {
+            "label" : "Drop Columns"
+          },
+          "FORMULA2_copy0_copy0_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA3_copy0_copy0_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA4_copy0_copy0_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA5_copy0_copy0_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA6_copy0_copy0_copy0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "TO_DATE0_copy0_copy0_copy0" : {
+            "label" : "To Date"
+          }
+        },
+        "connectors" : [ {
+          "source" : "SPLIT0_copy0_copy0_copy0",
+          "target" : "SPLIT1_copy0_copy0_copy0"
+        }, {
+          "source" : "SPLIT1_copy0_copy0_copy0",
+          "target" : "SPLIT2_copy0_copy0_copy0"
+        }, {
+          "source" : "SPLIT2_copy0_copy0_copy0",
+          "target" : "FORMULA1_copy0_copy0_copy0"
+        }, {
+          "source" : "FORMULA1_copy0_copy0_copy0",
+          "target" : "DROP_FIELDS0_copy0_copy0_copy0"
+        }, {
+          "source" : "DROP_FIELDS0_copy0_copy0_copy0",
+          "target" : "FORMULA2_copy0_copy0_copy0"
+        }, {
+          "source" : "FORMULA2_copy0_copy0_copy0",
+          "target" : "FORMULA3_copy0_copy0_copy0"
+        }, {
+          "source" : "FORMULA3_copy0_copy0_copy0",
+          "target" : "FORMULA4_copy0_copy0_copy0"
+        }, {
+          "source" : "FORMULA4_copy0_copy0_copy0",
+          "target" : "FORMULA5_copy0_copy0_copy0"
+        }, {
+          "source" : "FORMULA5_copy0_copy0_copy0",
+          "target" : "FORMULA6_copy0_copy0_copy0"
+        }, {
+          "source" : "FORMULA6_copy0_copy0_copy0",
+          "target" : "TO_DATE0_copy0_copy0_copy0"
+        } ]
+      },
+      "OUTPUT2_copy0_copy0_copy0" : {
+        "label" : "ApexUnexpectedException-Custom",
+        "description" : "ApexUnexpectedException-Custom",
+        "type" : "OUTPUT",
+        "top" : 252,
+        "left" : 392
+      },
+      "LOAD_DATASET0" : {
+        "label" : "ApexUnexpectedException",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "TRANSFORM2_copy0_copy0_copy0",
+      "target" : "OUTPUT2_copy0_copy0_copy0"
+    }, {
+      "source" : "LOAD_DATASET0",
+      "target" : "TRANSFORM2_copy0_copy0_copy0"
+    } ],
+    "hiddenColumns" : [ ]
+  }
+}

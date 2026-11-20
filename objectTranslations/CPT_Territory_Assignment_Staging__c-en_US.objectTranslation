@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Territory Assignment - Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Territory Assignments - Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Id --></label>
+        <name>CPT_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee WWID --></label>
+        <name>CPT_Employee_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field1 --></label>
+        <name>CPT_Generic_Field1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field2 --></label>
+        <name>CPT_Generic_Field2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Setup --></label>
+        <name>CPT_Quota_Setup__c</name>
+        <relationshipLabel><!-- Territory Assignments - Staging --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Territory Name --></label>
+        <name>CPT_Territory_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory Target --></label>
+        <name>CPT_Territory_Target__c</name>
+        <relationshipLabel><!-- Territory Assignments - Staging --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Validation Message --></label>
+        <name>CPT_Validation_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation Status --></label>
+        <name>CPT_Validation_Status__c</name>
+        <picklistValues>
+            <masterLabel>Fail</masterLabel>
+            <translation><!-- Fail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pass</masterLabel>
+            <translation><!-- Pass --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

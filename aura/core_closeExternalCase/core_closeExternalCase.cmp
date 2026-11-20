@@ -1,0 +1,12 @@
+<aura:component controller="core_S2S_CaseExternalFeedController" implements="force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:hasRecordId" access="global">
+    
+    <div style="display: flex;justify-content: center;align-items: center;flex-flow: column;padding:2%;margin-top: 2%;">
+        <div style="font-weight: 500;margin-top: 5%;margin-bottom: 3%;">
+            <p style="display: flex;justify-content: center;align-items: center;">Are you sure you would like to close the request ?</p>
+        </div>
+        <div style="width: 75%;display: flex;align-items: center;justify-content: center;">
+            <div style="margin-right: 5%"><lightning:button variant="brand-outline" label="Cancel request" title="Cancel request" onclick="{! c.myAction }" /></div>
+            <div style="margin-left: 5%"><lightning:button variant="brand" label="Close request" title="Close request" onclick="{! c.handleClick }" /></div>
+        </div>        
+    </div>    
+</aura:component>

@@ -1,0 +1,32 @@
+.THIS {
+  height: 120px;
+}
+
+.THIS.bgCharcoal {
+  background-color: t(charcoal);
+}
+
+.THIS .skyBlue {
+  color: t(paleBlue);
+}
+
+.THIS .searchBar {
+  display: inline-block;
+  width: 92vw;
+}
+
+@media (min-width: 768px) {
+  .THIS {
+    height: 90px;
+  }
+
+  .THIS .searchBar {
+    width: 600px;
+  }
+
+}
+
+/* child search bar */
+.THIS .searchForm {
+  margin: 0;
+}

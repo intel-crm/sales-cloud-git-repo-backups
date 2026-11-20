@@ -1,0 +1,14 @@
+<template>
+    <div if:true={isLoading}>
+        <lightning-spinner
+            alternative-text="Loading..." variant="brand" class="slds-is-fixed">
+        </lightning-spinner>
+    </div>
+    <lightning-quick-action-panel header="Resubmit for OPID">
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure to Resubmit for OPID?</h2>
+        <div slot="footer">
+            <lightning-button variant="brand" class="slds-p-around_x-small" label="Resubmit" onclick={handleonResubmit}></lightning-button>
+            <lightning-button variant="neutral" class="slds-p-around_x-small" label="Cancel" onclick={closeModal}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

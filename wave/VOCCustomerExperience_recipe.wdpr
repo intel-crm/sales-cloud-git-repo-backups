@@ -1,0 +1,428 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "Type", "Core_Account_ID__c", "Core_Unified_Global_Customer_BP_Id__c", "Core_Unified_Global_Customer_Name__c", "Core_Unified_Intermediate_Customer_BP_Id__c", "Core_Unified_Intermediate_Customer_Name__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FILTER3" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "VOCCustomerExperienceRecipe",
+          "name" : "VOCCustomerExperienceRecipe",
+          "folderName" : "Pipeline_Management"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET9" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "UCD_GLOBAL_ACCOUNT_NM", "UCD_GLOBAL_ACCOUNT_ID", "SURVEY_YEAR_NBR", "SURVEY_YEAR_WAVE_TXT", "ACCOUNT_APB_SCORE_PCT", "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT", "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT", "WAVE_ON_WAVE_ACCOUNT_APB_SCORE_DIFFERENCE_PCT", "INTEL_TARGET_ACCOUNT_APB_SCORE_DIFFERENCE_PCT", "MVIEW_TS" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "FACT_MARKETING_CESA_SUMMARY",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "FACT_MARKETING_CESA_SUMMARY"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "TO_DIMENSION0" : {
+      "action" : "typeCast",
+      "sources" : [ "LOAD_DATASET9" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "UCD_GLOBAL_ACCOUNT_ID_to_dimension",
+          "newProperties" : {
+            "name" : "UCD_GLOBAL_ACCOUNT_ID"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "UCD_GLOBAL_ACCOUNT_ID" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "UCD_GLOBAL_ACCOUNT_ID",
+          "newProperties" : {
+            "label" : "UCD_GLOBAL_ACCOUNT_ID",
+            "name" : "UCD_GLOBAL_ACCOUNT_ID_to_dimension",
+            "typeProperties" : {
+              "type" : "TEXT",
+              "length" : 255
+            }
+          }
+        } ]
+      }
+    },
+    "TO_DIMENSION1" : {
+      "action" : "typeCast",
+      "sources" : [ "TO_DIMENSION0" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "SURVEY_YEAR_NBR_to_dimension",
+          "newProperties" : {
+            "name" : "SURVEY_YEAR_NBR"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "SURVEY_YEAR_NBR" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "SURVEY_YEAR_NBR",
+          "newProperties" : {
+            "label" : "SURVEY_YEAR_NBR",
+            "name" : "SURVEY_YEAR_NBR_to_dimension",
+            "typeProperties" : {
+              "type" : "TEXT",
+              "length" : 255
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "TO_DIMENSION1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR",
+          "label" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR",
+          "formulaExpression" : "substr(INTEL_TARGET_ACCOUNT_APB_SCORE_PCT, 0, 5)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE0" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA0" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR_to_measure",
+          "newProperties" : {
+            "name" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR",
+          "newProperties" : {
+            "label" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR",
+            "name" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 2,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "TO_MEASURE0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR",
+          "label" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR",
+          "formulaExpression" : "substr(PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT, 0, 5)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE1" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA1" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR_to_measure",
+          "newProperties" : {
+            "name" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR",
+          "newProperties" : {
+            "label" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR",
+            "name" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 2,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "TO_MEASURE1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "ACCOUNT_APB_SCORE_PCT_NBR",
+          "label" : "ACCOUNT_APB_SCORE_PCT_NBR",
+          "formulaExpression" : "substr(ACCOUNT_APB_SCORE_PCT, 0, 5)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE2" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA3" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "ACCOUNT_APB_SCORE_PCT_NBR_to_measure",
+          "newProperties" : {
+            "name" : "ACCOUNT_APB_SCORE_PCT_NBR"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "ACCOUNT_APB_SCORE_PCT_NBR" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "ACCOUNT_APB_SCORE_PCT_NBR",
+          "newProperties" : {
+            "label" : "ACCOUNT_APB_SCORE_PCT_NBR",
+            "name" : "ACCOUNT_APB_SCORE_PCT_NBR_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 2,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "WAVE_ON_WAVE_ACCOUNT_APB_SCORE_DIFFERENCE_PCT_NBR",
+          "label" : "WAVE_ON_WAVE_ACCOUNT_APB_SCORE_DIFFERENCE_PCT_NBR",
+          "formulaExpression" : "ACCOUNT_APB_SCORE_PCT_NBR - PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR",
+          "precision" : 10,
+          "scale" : 2,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "TO_MEASURE2", "LOAD_DATASET2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "UCD_GLOBAL_ACCOUNT_ID" ],
+        "rightQualifier" : "Account",
+        "rightKeys" : [ "Core_Unified_Global_Customer_BP_Id__c" ]
+      }
+    },
+    "FILTER3" : {
+      "action" : "filter",
+      "sources" : [ "JOIN3" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Account.Name",
+          "operator" : "NOT",
+          "operands" : [ "Red Hat" ]
+        } ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET2" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT0" : {
+        "label" : "Output_VOCCustomerExperienceRecipe",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252.39999999999998,
+        "left" : 671.9
+      },
+      "LOAD_DATASET9" : {
+        "label" : "FACT_MARKETING_CESA_SUMMARY",
+        "type" : "LOAD_DATASET",
+        "top" : 251.8,
+        "left" : 112.30000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM1" : {
+        "label" : "Transform 1",
+        "type" : "TRANSFORM",
+        "top" : 252.10000000000002,
+        "left" : 252.2,
+        "graph" : {
+          "TO_DIMENSION0" : {
+            "label" : "To Text"
+          },
+          "TO_DIMENSION1" : {
+            "label" : "To Text"
+          },
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "INTEL_TARGET_ACCOUNT_APB_SCORE_PCT_NBR"
+          },
+          "TO_MEASURE0" : {
+            "label" : "To Number"
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "PREVIOUS_WAVE_ACCOUNT_APB_SCORE_PCT_NBR"
+          },
+          "TO_MEASURE1" : {
+            "label" : "To Number"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "ACCOUNT_APB_SCORE_PCT_NBR"
+          },
+          "TO_MEASURE2" : {
+            "label" : "To Number"
+          },
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WAVE_ON_WAVE_ACCOUNT_APB_SCORE_DIFFERENCE_PCT_NBR"
+          }
+        },
+        "connectors" : [ {
+          "source" : "TO_DIMENSION0",
+          "target" : "TO_DIMENSION1"
+        }, {
+          "source" : "TO_DIMENSION1",
+          "target" : "FORMULA0"
+        }, {
+          "source" : "FORMULA0",
+          "target" : "TO_MEASURE0"
+        }, {
+          "source" : "TO_MEASURE0",
+          "target" : "FORMULA1"
+        }, {
+          "source" : "FORMULA1",
+          "target" : "TO_MEASURE1"
+        }, {
+          "source" : "TO_MEASURE1",
+          "target" : "FORMULA2"
+        }, {
+          "source" : "FORMULA3",
+          "target" : "TO_MEASURE2"
+        }, {
+          "source" : "FORMULA2",
+          "target" : "FORMULA3"
+        } ]
+      },
+      "JOIN3" : {
+        "label" : "Join 3",
+        "type" : "JOIN",
+        "top" : 252.5,
+        "left" : 391.9
+      },
+      "FILTER3" : {
+        "label" : "Filter 3",
+        "type" : "FILTER",
+        "top" : 252.5,
+        "left" : 531.8
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET9",
+      "target" : "TRANSFORM1"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN3",
+      "target" : "FILTER3"
+    }, {
+      "source" : "FILTER3",
+      "target" : "OUTPUT0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

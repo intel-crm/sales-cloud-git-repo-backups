@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_64961691</developerName>
+        <masterLabel>Sales Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Opportunity_Owner_Manager_Email__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>xuan.a.li@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>arthur.yang@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>andrew.jiang@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>heng.zhang@intel.com</sourceValue>
+            </sourceValues>
+            <value>NEX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>eric.tang@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>victoria.yang@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>robin.bin.liu@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>jay.yu@intel.com</sourceValue>
+            </sourceValues>
+            <value>STSG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>yimin.gong@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>kai.hu@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>dan.lin.chen@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>wanjie.wang@intel.com</sourceValue>
+            </sourceValues>
+            <value>CISG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>yong.sz.li@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>tianle.liu@intel.com</sourceValue>
+            </sourceValues>
+            <value>DCAI OEM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>yiping.liu@intel.com</sourceValue>
+            </sourceValues>
+            <value>ISG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>chen.guang.yang@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>zhiyong.gao@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>hans.p.chuang@intel.com</sourceValue>
+            </sourceValues>
+            <value>Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>james.zheng@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>lei1.guo@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>stanley.wang@intel.com</sourceValue>
+            </sourceValues>
+            <value>TABB</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>jimmy.wang@intel.com</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>geng.xia@intel.com</sourceValue>
+            </sourceValues>
+            <value>TEG</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    OR(
+    Opportunity.Core_Technical_Owner_Manager__c = &quot;Tao Yan&quot;), &quot;TEG-CCG&quot;,
+
+    IF(OR(
+    Opportunity.Core_Technical_Owner_Manager__c = &quot;Yue Li&quot;), &quot;TEG-DC&quot;,
+    
+    IF(OR(
+    Opportunity.Core_Technical_Owner_Manager__c = &quot;Jimmy Wang&quot;,
+    Opportunity.Core_Technical_Owner_Manager__c = &quot;Bo Liu&quot;,
+    Opportunity.Core_Technical_Owner_Manager__c = &quot;Geng Xia&quot;
+    ), &quot;TEG-NEX&quot;,
+    
+    IF(OR(OWNER_MANAGER=&quot;Amy Li Li&quot;,
+        OWNER_MANAGER=&quot;Dan Lin Chen&quot;,
+        OWNER_MANAGER=&quot;Kelvin Liu&quot;,
+        OWNER_MANAGER=&quot;Yong Li&quot;),&quot;DCAI OEM&quot;,
+
+    IF(OR(OWNER_MANAGER=&quot;Wei Guo&quot;,
+    OWNER_MANAGER=&quot;Arthur Yang&quot;,
+    OWNER_MANAGER=&quot;Grace Geng&quot;,
+    OWNER_MANAGER=&quot;heng zhang&quot;,
+    OWNER_MANAGER=&quot;John Li&quot;,
+    OWNER_MANAGER=&quot;Ke Bi&quot;,
+    OWNER_MANAGER=&quot;Andrew Jiang&quot;),&quot;NEX Sales Team&quot;,
+    
+    IF(OR(OWNER_MANAGER=&quot;Yang Chen&quot;,
+    OWNER_MANAGER=&quot;Yan Chang&quot;,
+    OWNER_MANAGER=&quot;Alex Zhu&quot;,
+    OWNER_MANAGER=&quot;Yiping Liu&quot;,
+    OWNER_MANAGER=&quot;Dingjia Cai&quot;),&quot;ISG&quot;,
+
+    IF(OR(OWNER_MANAGER=&quot;Eric Tang&quot;,
+    OWNER_MANAGER=&quot;Bin Liu&quot;,
+    OWNER_MANAGER=&quot;Victoria Yang&quot;),&quot;STSG&quot;,
+    
+    
+    IF(OR(
+    OWNER_MANAGER=&quot;Kai Hu&quot;),&quot;NWCSP&quot;,
+
+        IF(OR(OWNER_MANAGER=&quot;Jim Gong&quot;,
+    OWNER_MANAGER=&quot;Hongbo Cui&quot;),&quot;Enterprise&quot;,
+
+        IF(OR(
+    OWNER_MANAGER=&quot;Jay Yu&quot;,
+    OWNER_MANAGER=&quot;Carol Qin&quot;,
+    OWNER_MANAGER=&quot;Wanjie Wang&quot;,
+    OWNER_MANAGER=&quot;Ryan Sun&quot;),&quot;Public Sector&quot;,
+    
+    IF(OR(OWNER_MANAGER=&quot;Tiffany Xia&quot;,
+    OWNER_MANAGER=&quot;Stanley Wang&quot;,
+    OWNER_MANAGER=&quot;James Zheng&quot;,
+    OWNER_MANAGER=&quot;Hunter Li&quot;,
+    OWNER_MANAGER=&quot;Carol Qin&quot;,
+    OWNER_MANAGER=&quot;Wanjie Wang&quot;,
+    OWNER_MANAGER=&quot;Ryan Sun&quot;),&quot;TABB&quot;,
+
+    IF(OR(OWNER_MANAGER=&quot;Gavin Gao&quot;,
+    OWNER_MANAGER=&quot;Kuo Liao&quot;,
+    OWNER_MANAGER=&quot;Chen Guang Yang&quot;,
+    FULL_NAME=&quot;Gavin Gao&quot;,
+     FULL_NAME=&quot;Kuo Liao&quot;,
+    FULL_NAME=&quot;Chen Guang Yang&quot;),&quot;CoSP&quot;,
+    
+    &quot;Other&quot;)
+    )
+    )
+    )
+    )
+    )))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Sales Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>PRODUCT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>GAUDI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Define,Design,Design Win,Develop,Production Win,Qualify</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Gaudi Pipeline</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURNEXTY</interval>
+    </timeFrameFilter>
+</Report>

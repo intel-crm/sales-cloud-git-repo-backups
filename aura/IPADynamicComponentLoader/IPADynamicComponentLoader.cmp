@@ -1,0 +1,15 @@
+<aura:component extends="c:IPAReduxConnectorLWC">
+
+    <aura:set attribute="storeName" value="ui" />
+
+    <aura:attribute name="currentModalName" type="string" />
+    <aura:attribute name="currentModalData" type="object" />
+
+    <aura:attribute name="modal" type="Aura.Component[]" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.currentModalData}" action="{!c.handleModalChange}" />
+
+    <div>{!v.modal}</div>
+
+</aura:component>

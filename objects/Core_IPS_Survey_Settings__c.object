@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Survey related settings (Translation Labels)</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_IPS_Footer_Label__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Custom Label Name for footer</inlineHelpText>
+        <label>Footer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Header_Label__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Custom Label Name for Header</inlineHelpText>
+        <label>Header Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Image_Resource__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Static Resource Name for IPS Logo Image</inlineHelpText>
+        <label>Image Logo Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_container_CSS__c</fullName>
+        <inlineHelpText>custom css styles can be put here</inlineHelpText>
+        <label>container CSS</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>IPS Survey Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

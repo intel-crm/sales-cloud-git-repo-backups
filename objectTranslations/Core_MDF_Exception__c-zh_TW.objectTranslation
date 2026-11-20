@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>例外</value>
+    </caseValues>
+    <fields>
+        <label>帳戶</label>
+        <name>Core_MDF_Account_id__c</name>
+        <relationshipLabel><!-- Exceptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Activity Category/Activity Type --></label>
+        <name>Core_MDF_Activity_Cate_and_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approvers Comments --></label>
+        <name>Core_MDF_Approver_1_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label>預算類型</label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_MDF_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Name --></label>
+        <name>Core_MDF_Company_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country/Region --></label>
+        <name>Core_MDF_Country_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Detail Link --></label>
+        <name>Core_MDF_Exception_Detail_Link_txt__c</name>
+    </fields>
+    <fields>
+        <label>例外結束日期</label>
+        <name>Core_MDF_Exception_End_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label>例外原因</label>
+        <name>Core_MDF_Exception_Reason_nm__c</name>
+        <picklistValues>
+            <masterLabel>Branding Exception from Activity Catalog</masterLabel>
+            <translation><!-- Branding Exception from Activity Catalog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Process Exception from Activity Catalog</masterLabel>
+            <translation><!-- Process Exception from Activity Catalog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Performance Exception from Activity Catalog</masterLabel>
+            <translation><!-- Proof of Performance Exception from Activity Catalog --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>例外開始日期</label>
+        <name>Core_MDF_Exception_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label>例外狀態</label>
+        <name>Core_MDF_Exception_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation><!-- Denied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Review</masterLabel>
+            <translation><!-- Pending Review --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If the box is ticked, this exception will be visible to external users --></help>
+        <label><!-- Expose Externally --></label>
+        <name>Core_MDF_Expose_Externally_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host Region --></label>
+        <name>Core_MDF_HostRegion_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue Description --></label>
+        <name>Core_MDF_Issue_Description_dsc__c</name>
+    </fields>
+    <fields>
+        <label>例外名稱</label>
+        <name>Core_MDF_Name_of_Exception_nm__c</name>
+    </fields>
+    <fields>
+        <label>備註</label>
+        <name>Core_MDF_Notes_txt__c</name>
+    </fields>
+    <fields>
+        <label>計劃</label>
+        <name>Core_MDF_Program_nm__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+            <translation><!-- Client Co-Marketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-GTM</masterLabel>
+            <translation><!-- Co-GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter</masterLabel>
+            <translation><!-- Datacenter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecosystem Extension Fund</masterLabel>
+            <translation><!-- Ecosystem Extension Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+            <translation><!-- Service Provider Co-Marketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Select All Accounts --></label>
+        <name>Core_MDF_Select_All_Accounts_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Select All Country --></label>
+        <name>Core_MDF_Select_All_Country_ind__c</name>
+    </fields>
+    <fields>
+        <label>總額影響（美元）</label>
+        <name>Core_MDF_Total_Dollar_Impact_amt__c</name>
+    </fields>
+    <nameFieldLabel>例外編號</nameFieldLabel>
+    <sharingReasons>
+        <label><!-- Exception External Sharing --></label>
+        <name>Exception_External_Sharing</name>
+    </sharingReasons>
+    <validationRules>
+        <errorMessage><!-- Please enter an account or select all accounts. --></errorMessage>
+        <name>Core_MDF_Account_Selection_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- User does not have access to create an exception for this Program. --></errorMessage>
+        <name>Core_MDF_CSC_Check_UserPermission</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Exception reason cannot be changed. --></errorMessage>
+        <name>Core_MDF_CannotChangeExceptionReason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- User doesn’t have access to edit this program. --></errorMessage>
+        <name>Core_MDF_CheckReviewerProgramAccess</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot create an exception for this Program. --></errorMessage>
+        <name>Core_MDF_CheckUserPermission</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Must select a Country or select All --></errorMessage>
+        <name>Core_MDF_Country_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be earlier than the Start Date. --></errorMessage>
+        <name>Core_MDF_EndDatCannotBeLessThanStartDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit Exception in this status. --></errorMessage>
+        <name>Core_MDF_ExceptionInDeniedOrCancelled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- User does not have access to create/edit exception for this Program. --></errorMessage>
+        <name>Core_MDF_ProgramCheckAccMgr</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Exception record cannot be edited --></errorMessage>
+        <name>Core_MDF_RestrictRecordEditToAcctManager</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Dollar Impacted cannot be less than or equal to zero. --></errorMessage>
+        <name>Core_MDF_TotalBudgetImpact_Cannot_Be_Neg</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit Select All Accounts field in this status. --></errorMessage>
+        <name>Core_MDF_restrict_acc_to_allaccswitch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Program/Budget Type --></errorMessage>
+        <name>Core_MDF_validate_legacy_budget_type</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

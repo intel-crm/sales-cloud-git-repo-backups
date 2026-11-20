@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Core_MDF_Claim_Payment_Link__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Outcome-Based Campaign Payment Link with Claim</description>
+    <label>Outcome-Based Campaign Payment Link with Claim</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Requested_Reimbursement_Amt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Status_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Hold_Type_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Bank_Name_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Payment Links : Claim : Claim Type</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Type_Txt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Region_Cd__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Sub_Claim_Id__c.Request.Core_MDF_Virtual_Corp_Acct_Name_txt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Invoice_Type_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursement Amount</displayNameOverride>
+            <field>Core_MDF_Reimbursement_Amount_Amt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Super Claim</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Claim_Id__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <masterLabel>Claim Payment Links</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Fund Account</displayNameOverride>
+            <field>Core_MDF_Account_Id__c.Core_MDF_Parent_Fund_Account__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Core_MDF_Account_Name_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Number</displayNameOverride>
+            <field>Core_MDF_Payment_Id__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Status</displayNameOverride>
+            <field>Core_MDF_Payment_Id__c.Core_MDF_Payment_Status_Txt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Sent On</displayNameOverride>
+            <field>Core_MDF_Payment_Id__c.Core_MDF_Payment_Sent_Dt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Made On</displayNameOverride>
+            <field>Core_MDF_Payment_Id__c.Core_MDF_Payment_Made_Dt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Run Geo</displayNameOverride>
+            <field>Core_MDF_Payment_Id__c.Core_MDF_Geo_Txt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Payment_Run_Number_Nbr__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Unique_Key_Id__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Electronic Fund Transfer Number</displayNameOverride>
+            <field>Core_MDF_Payment_Id__c.Core_MDF_EFT_Nbr__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Batch Number</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Batch_Nbr__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim ID</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Claim_Ref_Number__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Name</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Name</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Submitted Date</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.CreatedDate</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Submitted by User</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_CreatedBy_Nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Submitted by Company</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_AccountCompany__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Execution End Date</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Ad_Run_End_Date__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Execution Start Date</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Ad_Run_Start_Date__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proof Of Cost Currency</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Currency__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proof Of Cost Date</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Invoice_Date__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proof Of Cost #</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Invoice_Number__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bank Alias Name</displayNameOverride>
+            <field>Core_MDF_Bank_Id__c.Core_MDF_Bank_Alias_Name__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Country/ Location</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Country_Location_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Media Vehicle</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Media_Vehicle__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Program Name</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Program__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Budget Type</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Budget_Type_Options_Nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>3rd Party POP Documentation Required</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign Start Date</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Activity_Start_Date__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign End Date</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Activity_End_Date__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign Category</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Activity_Category__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign Type</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Activity_Types__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign Subtype</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Activity_SubType_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign Priority</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Request.Core_MDF_Priorities__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Bank_Id__c.Core_MDF_Bank_Beneficiary_Name__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Supplier ID</displayNameOverride>
+            <field>Core_MDF_Bank_Id__c.Core_MDF_Supplier_Number__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Campaign_Id__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Exchange Rate</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Exchange_rate__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reimbursable Invoice Amount (Local Currency)</displayNameOverride>
+            <field>Core_MDF_Reimbursable_Local_Amt__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Id__c.Core_MDF_Reimbursable_TransactionAmt_Loc__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outcome-Based Campaign Priority</displayNameOverride>
+            <field>Core_MDF_Claim_Id__c.Request.Core_MDF_Priority_nm__c</field>
+            <table>Core_MDF_Claim_Payment_Link__c</table>
+        </columns>
+        <masterLabel>Required Fields</masterLabel>
+    </sections>
+</ReportType>

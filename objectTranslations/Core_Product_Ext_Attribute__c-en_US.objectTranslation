@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Extended Attribute</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Extended Attributes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Foundation Product --></label>
+        <name>Core_Foundation_Product_Id__c</name>
+        <relationshipLabel><!-- Core_Product_Ext_Attributes (Foundation Product) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This allows for Alternate Logistic Number generation --></help>
+        <label><!-- ALN Enabled --></label>
+        <name>Core_Prod_QTE_Alt_LGSTS_NW_Enabled_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- This indicates if a product generates Slow Moving Inventory --></help>
+        <label><!-- SMI --></label>
+        <name>Core_Prod_QTE_Slow_Moving_Inventory_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>Core_Prod_Tool_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>ADD SEAT</masterLabel>
+            <translation><!-- ADD SEAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BASE</masterLabel>
+            <translation><!-- BASE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BUNDLE</masterLabel>
+            <translation><!-- BUNDLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORPORATE</masterLabel>
+            <translation><!-- CORPORATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HARD ALLOCATION</masterLabel>
+            <translation><!-- HARD ALLOCATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP</masterLabel>
+            <translation><!-- IP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PACKAGE</masterLabel>
+            <translation><!-- PACKAGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RENEWAL</masterLabel>
+            <translation><!-- RENEWAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOC</masterLabel>
+            <translation><!-- SOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOFT ALLOCATION</masterLabel>
+            <translation><!-- SOFT ALLOCATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOFTWARE</masterLabel>
+            <translation><!-- SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Product_Id__c</name>
+        <relationshipLabel><!-- Product Extended Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- AuthCode Product --></label>
+        <name>Core_SW_Lic_Authorization_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Comment --></label>
+        <name>Core_SW_Lic_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Companion --></label>
+        <name>Core_SW_Lic_Companion_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enforcement Method --></label>
+        <name>Core_SW_Lic_Enforcement_Method_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Download</masterLabel>
+            <translation><!-- Download --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>File</masterLabel>
+            <translation><!-- File --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standalone File</masterLabel>
+            <translation><!-- Standalone File --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- DES Parameter --></label>
+        <name>Core_SW_Lic_File_Data_Encryption_Std_Cd__c</name>
+        <picklistValues>
+            <masterLabel>1DES</masterLabel>
+            <translation><!-- 1DES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3DES</masterLabel>
+            <translation><!-- 3DES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BOTH</masterLabel>
+            <translation><!-- BOTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- License Parameter --></label>
+        <name>Core_SW_Lic_Generator_Parameter_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Group --></label>
+        <name>Core_SW_Lic_Group_Id__c</name>
+        <relationshipLabel><!-- Core_Product_Ext_Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Linux Download URL --></label>
+        <name>Core_SW_Lic_Linux_Download_URL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rehostable --></label>
+        <name>Core_SW_Lic_Rehostable_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Grace Period --></label>
+        <name>Core_SW_Lic_Renewal_Period_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool License Type --></label>
+        <name>Core_SW_Lic_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>FIXED</masterLabel>
+            <translation><!-- FIXED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOAT</masterLabel>
+            <translation><!-- FLOAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEUTRAL</masterLabel>
+            <translation><!-- NEUTRAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Web Displayable --></label>
+        <name>Core_SW_Lic_Web_Displayable_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Windows Download URL --></label>
+        <name>Core_SW_Lic_Windows_Download_URL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Description --></label>
+        <name>Core_SW_Prod_Additional_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- If this is meant for opportunity tracking. --></help>
+        <label><!-- Available In Opportunities --></label>
+        <name>Core_SW_Prod_Avail_In_Opportunities_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tools Order Entry determins if the product is available for Order entry --></help>
+        <label><!-- Available to TOE --></label>
+        <name>Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Expiration Duration (In days) --></label>
+        <name>Core_SW_Prod_Expiration_Duration_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Rehost --></label>
+        <name>Core_SW_Prod_Max_Rehost_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non-Commercial Purpose --></label>
+        <name>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Early Access</masterLabel>
+            <translation><!-- Early Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee</masterLabel>
+            <translation><!-- Employee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation</masterLabel>
+            <translation><!-- Evaluation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Free</masterLabel>
+            <translation><!-- Free --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>University</masterLabel>
+            <translation><!-- University --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Temporary License Allowed --></label>
+        <name>Core_SW_Prod_Temporary_Lic_Allowed_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Web Description --></label>
+        <name>Core_SW_Prod_Web_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- The indication describes the product as &apos;PSG Restricted Product&apos; that requires additional screening in PSG Quoting process. --></help>
+        <label><!-- PSG Restricted Product --></label>
+        <name>PSG_Restricted_Product__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot edit PSG data --></errorMessage>
+        <name>Core_Prevent_Non_PSG_Usr_ProdExt_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Creation of Extended Attribute record is restricted for Pre-Release(Inactive) Products. --></errorMessage>
+        <name>PSG_Restrict_Ext_Attr_On_InactiveProduct</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter the Foundation Product if Tool Type is Renewal or Add Seat --></errorMessage>
+        <name>PSG_Validate_Foundation_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter the Mandatory Fields 
+( Tool Type, Tool License Type, Enforcement Method, DES Parameter, Web Description) --></errorMessage>
+        <name>PSG_Validate_Tool_ExtendedAttributes</name>
+    </validationRules>
+</CustomObjectTranslation>

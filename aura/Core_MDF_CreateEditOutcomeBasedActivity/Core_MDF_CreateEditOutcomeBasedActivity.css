@@ -1,0 +1,62 @@
+.THIS .red-fc{
+    color:red ;
+}
+.THIS .blue-fc{
+    color: blue ;
+}
+.THIS .partner-contact-help {
+    color: #0070d2;
+    font-size: 0.75rem;
+}
+.THIS .text-left{
+    padding-left: 0.6rem;
+}
+
+.THIS .text-right-180{
+    color:red ;
+    padding-right:180px;
+}
+.THIS .text-bottom-180{
+    color:red ;
+    padding-bottom:180px;
+}
+
+.THIS .slds-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.THIS .slds-form-element__legend{
+    font-weight: bold;
+}
+
+.THIS .elementLabel .slds-form-element__label {
+   font-weight: bold;
+}
+.THIS .currency-input-with-symbol .slds-form-element__control {
+    position: relative;
+}
+
+.THIS .currency-input-with-symbol .slds-form-element__control:before {
+    content: "$";
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.THIS .currency-input-with-symbol input {
+    padding-left: 1.2rem;
+}
+
+.THIS.rrWarning {
+background-color: #FFF8DC;
+border: 1px solid #E6D38A;
+color: #000000;
+padding: 10px;
+text-align: center;
+border-radius: 4px;
+margin-bottom: 10px;
+}

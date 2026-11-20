@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Onboarding new account</fullName>
+        <default>false</default>
+        <label>Onboarding new account</label>
+    </customValue>
+    <customValue>
+        <fullName>Late approval of account’s MDF-related agreement</fullName>
+        <default>false</default>
+        <label>Late approval of account’s MDF-related agreement</label>
+    </customValue>
+    <customValue>
+        <fullName>New tool user (internal/external) ramping up</fullName>
+        <default>false</default>
+        <label>New tool user (internal/external) ramping up</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel’s tool suffered technical difficulties</fullName>
+        <default>false</default>
+        <label>Intel’s tool suffered technical difficulties</label>
+    </customValue>
+    <customValue>
+        <fullName>Budget was not loaded/approved on time by Intel</fullName>
+        <default>false</default>
+        <label>Budget was not loaded/approved on time by Intel</label>
+    </customValue>
+    <customValue>
+        <fullName>Hierarchy option was not created on time by Intel</fullName>
+        <default>false</default>
+        <label>Hierarchy option was not created on time by Intel</label>
+    </customValue>
+    <customValue>
+        <fullName>Activity was left as draft but never submitted</fullName>
+        <default>false</default>
+        <label>Activity was left as draft but never submitted</label>
+    </customValue>
+    <customValue>
+        <fullName>Original activity was cancelled by mistake.</fullName>
+        <default>false</default>
+        <label>Original activity was cancelled by mistake.</label>
+    </customValue>
+    <customValue>
+        <fullName>Activity was discussed with Intel but not recorded in tool on time. </fullName>
+        <default>false</default>
+        <label>Activity was discussed with Intel but not recorded in tool on time. </label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Project was left as draft but never submitted</fullName>
+        <default>false</default>
+        <label>Project was left as draft but never submitted</label>
+    </customValue>
+    <customValue>
+        <fullName>Original activity was cancelled by mistake</fullName>
+        <default>false</default>
+        <label>Original activity was cancelled by mistake</label>
+    </customValue>
+    <customValue>
+        <fullName>Activity was discussed with Intel but not recorded in tool on time</fullName>
+        <default>false</default>
+        <label>Activity was discussed with Intel but not recorded in tool on time</label>
+    </customValue>
+    <customValue>
+        <fullName>Original project was cancelled by mistake</fullName>
+        <default>false</default>
+        <label>Original project was cancelled by mistake</label>
+    </customValue>
+    <customValue>
+        <fullName>Project was discussed with Intel but not recorded in tool on time</fullName>
+        <default>false</default>
+        <label>Project was discussed with Intel but not recorded in tool on time</label>
+    </customValue>
+    <customValue>
+        <fullName>Project was discussed with Intel but not recorded in tool on time.</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Project was discussed with Intel but not recorded in tool on time.</label>
+    </customValue>
+    <customValue>
+        <fullName>Original project was cancelled by mistake.</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Original project was cancelled by mistake.</label>
+    </customValue>
+    <description>When Internal users creates a past dated activity for MDF or MDF+ Budget type, they should fill the potential reason</description>
+    <masterLabel>Reason for Past Dated Activity</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,166 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "d7812be8-4f0c-4014-a752-a308d7cf0d37",
+  "label" : "CompareProducts",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "mosaic-l2",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : false,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Compare Products"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "d4af9309-5720-4aba-b053-71981f5b1975",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "40763699-c3de-4286-b15f-a71e943d96c2",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "6adf198f-59fa-4675-8b8c-fb53efba3b93",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "0475e6f7-6141-42f3-9742-4eca66f9a4d5",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "d00bdadf-d9df-457e-89da-e3eaaaf88977",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "eb78e4d8-bda6-4071-a5d3-d9f903ac6ce6",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "96235b3f-4946-46d9-ab44-2147d156203b",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Compare Offerings\"/> \n<meta name=\"keywords\" content=\"sf,mp,compare offerings\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"CompareOfferings\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Compare products on Intel® Solutions Marketplace and discover top industry leading innovation.",
+        "title" : "Compare Offerings - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e510c3b2-e9a9-4300-a9ef-59f67530ec1d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e70165ea-e4ed-49b6-a868-b85d8b7da78a",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareProducts",
+      "id" : "651a9daf-cd16-457d-a514-966daef178be",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "067859a7-6328-40f4-b103-35c76d6c55ff",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "fec713cf-917e-4d05-8309-5dafdfc62932",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "$Label.c.PMP_All_Marketplace_Help",
+        "faqTitle" : "Offerings",
+        "headingLabel" : "$Label.c.PMP_MP_FAQ_Heading",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "82f17d08-3998-473e-ba10-5cb5bccab0dd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b6dd0c29-68cd-4ad2-8489-7f646cbf7b97",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "17f1e381-5a34-47f5-982c-b4332cf6088c",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "832294fd-f5af-413e-92bd-96c3a8b90779",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "484c85a4-1a42-4758-9d86-42650f071e58",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "d323f30e-ece3-4038-ae54-11502b92bcf9",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "0b4a0186-dcd8-4fe8-8120-5f47fb4720c6",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "bf07a6e0-0230-4988-a37a-ca367103da7d",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "bacfdca5-fe57-4962-a025-38bfc080a59f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c913ca3b-be90-402d-9c56-5d1bb2b4c8ad",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "30d7f4cd-45e6-415d-a05a-ca5b62b6049d",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "42fcdd52-66d5-48ad-b1a4-527105b1e5ed",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "c176c380-3a24-471a-becd-86f03b6aba14",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "f300d873-3561-453f-a149-a3f9eb84bce5",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "97d7114b-8bd5-4365-8f07-541509f3c901",
+    "regionName" : "blade10",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-compareproducts"
+}

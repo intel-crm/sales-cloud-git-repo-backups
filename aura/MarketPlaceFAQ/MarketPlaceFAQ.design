@@ -1,0 +1,8 @@
+<design:component>
+    <design:attribute name="headingLabel" label="FAQ Heading" />
+    <design:attribute name="allMarketPlaceHelpLabel" label="All Marketplace help (link)" />
+    <design:attribute name="paddingHorizontal" label="Horizontal component padding" />
+    <design:attribute name="inverse" label="Inverse Variant (white background, must be placed in full-width blade)" />
+    <design:attribute name="theme" label="Theme" datasource="default,white" default="default"/>
+	<design:attribute name="faqTitle" label="faqTitle"/>
+</design:component>

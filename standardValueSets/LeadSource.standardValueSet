@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Intel Customer Support</fullName>
+        <default>false</default>
+        <label>Intel Customer Support</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound Call</fullName>
+        <default>false</default>
+        <label>Outbound Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner Program</fullName>
+        <default>false</default>
+        <label>Partner Program</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prospecting - Existing Account</fullName>
+        <default>false</default>
+        <label>Prospecting - Existing Account</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prospecting - New Account</fullName>
+        <default>false</default>
+        <label>Prospecting - New Account</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral - Employee</fullName>
+        <default>false</default>
+        <label>Referral - Employee</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Webinar</fullName>
+        <default>false</default>
+        <label>Webinar</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Website</fullName>
+        <default>false</default>
+        <label>Website</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Intel Website</fullName>
+        <default>false</default>
+        <label>Intel Website</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Eloqua Scoring Model</fullName>
+        <default>false</default>
+        <label>Eloqua Scoring Model</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral – Partner/Disti/Third Party</fullName>
+        <default>false</default>
+        <label>Referral – Partner/Disti/Third Party</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Social Selling</fullName>
+        <default>false</default>
+        <label>Social Selling</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Scoring Model</fullName>
+        <default>false</default>
+        <label>Scoring Model</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inbound Email Inquiry</fullName>
+        <default>false</default>
+        <label>Inbound Email Inquiry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>List Purchase</fullName>
+        <default>false</default>
+        <label>List Purchase</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Media</fullName>
+        <default>false</default>
+        <label>Media</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales AI</fullName>
+        <default>false</default>
+        <label>Sales AI</label>
+    </standardValue>
+    <standardValue>
+        <fullName>IDC Credit Request</fullName>
+        <default>false</default>
+        <label>IDC Credit Request</label>
+    </standardValue>
+    <standardValue>
+        <fullName>LinkedIn Sales Navigator</fullName>
+        <default>false</default>
+        <label>LinkedIn Sales Navigator</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Salesforce</fullName>
+        <default>false</default>
+        <label>Salesforce</label>
+    </standardValue>
+</StandardValueSet>

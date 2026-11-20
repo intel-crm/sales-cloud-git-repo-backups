@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Intel Led Summary</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Intel Led Summary</value>
+    </caseValues>
+    <fields>
+        <label><!-- B2B# --></label>
+        <name>B2B__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active Planning Period --></label>
+        <name>CRM_CST_Active_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Inactive Planning Period --></label>
+        <name>CRM_CST_IsActive_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planning Period --></label>
+        <name>Core_PlanningPeriod__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regional Customer Id --></label>
+        <name>Core_Regional_Customer_Id__c</name>
+        <relationshipLabel><!-- Customer Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Unified Global Customer Name --></label>
+        <name>Core_UCD_Global_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Primary Coverage --></label>
+        <name>Coverage__c</name>
+        <picklistValues>
+            <masterLabel>Intel-led Account</masterLabel>
+            <translation><!-- Intel-led Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner-led Account</masterLabel>
+            <translation><!-- Partner-led Account --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Semi-Annual Temp Account Category --></label>
+        <name>Customer_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Name --></label>
+        <name>Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR --></label>
+        <name>DR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributors# --></label>
+        <name>Distributors__c</name>
+    </fields>
+    <fields>
+        <label><!-- GM --></label>
+        <name>GM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Indirect Billing# --></label>
+        <name>Indirect_Billing__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Accounts --></label>
+        <name>Number_Of_Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other# --></label>
+        <name>Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planning Period --></label>
+        <name>Planning_Period__c</name>
+        <relationshipLabel><!-- Customer Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Location --></label>
+        <name>Primary_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>RCStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region Branded Disti# --></label>
+        <name>Region_Branded_Disti__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region Direct OxMs# --></label>
+        <name>Region_Direct_OxMs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regional Co-Sell Partners# --></label>
+        <name>Regional_Co_Sell_Partners__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regional GSI ISV MSP# --></label>
+        <name>Regional_GSI_ISV_MSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regional Retailer# --></label>
+        <name>Regional_Retailer__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Group ID --></label>
+        <name>SPM_AI_Group_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Name --></label>
+        <name>SPM_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>SPM_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Global # --></label>
+        <name>Top_Global__c</name>
+    </fields>
+    <fields>
+        <label><!-- VP --></label>
+        <name>VP__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

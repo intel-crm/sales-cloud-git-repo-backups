@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_IPS_MAP_PAR__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Pending_Duration__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Account__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Supported_Product__c.Core_Supported_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c$Core_Submitter_Comments__c</field>
+    </columns>
+    <description>Lists pending PARs for Org Admins</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Approving_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Connected Home Division</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Line_Item_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Pending</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CHD Pending PAR&apos;s - Org Admins</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>test_par_line_item_report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Supported_Product__c.Core_Supported_Product_Name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_IPS_MAP_PAR__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_PREVCUR2Y</interval>
+    </timeFrameFilter>
+</Report>

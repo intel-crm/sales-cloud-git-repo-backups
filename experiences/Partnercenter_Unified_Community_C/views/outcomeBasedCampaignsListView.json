@@ -1,0 +1,46 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "b60a598e-805f-4775-a544-1d529f456566",
+  "label" : "Outcome-based Campaigns list view",
+  "regions" : [ {
+    "id" : "21c4243e-971d-43fd-92c9-5a1323dbb31d",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_OutcomeBasedCmpgn_ParentComp",
+      "id" : "8f0fdd5e-9e6e-4d96-94df-585835263ce3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2d7845ee-f26d-45c2-b1a6-070c9731256f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "502cf9ec-52f8-4c4e-a2bf-f0f1ffe0af31",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Outcome-based Campaigns list view"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "fb7f4138-e963-4a0f-80f8-20723e8eca9f",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c43fc8ff-c0b1-4270-a569-00148eea6dad",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-outcome-based-campaigns-list-view"
+}

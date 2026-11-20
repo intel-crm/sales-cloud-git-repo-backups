@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Tenders Comments</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tenders Comments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Pricing_Business_Unit_Pkl__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG</masterLabel>
+            <translation><!-- DCG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comment Ref Id --></label>
+        <name>Pricing_Comment_Ref_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Pricing_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Required --></label>
+        <name>Pricing_Required_Ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

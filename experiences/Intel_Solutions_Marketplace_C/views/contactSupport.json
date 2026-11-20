@@ -1,0 +1,82 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "9d191fae-a8b6-45ff-9223-8c0820d16914",
+  "label" : "Contact Support",
+  "regions" : [ {
+    "id" : "d58c37fa-1b69-4c76-8a49-b8b5cc139da8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "66b0a07d-e103-4b9b-82f1-85245b106adb",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "askConfirmationQuestion" : true,
+        "confirmationMessageLabel" : "Got it!",
+        "deflectionSubtitle" : "Find what you need here.",
+        "deflectionTitle" : "Need Answers Fast?",
+        "firstQuestion" : "Did this content solve your issue?",
+        "maxResults" : 6,
+        "measureDeflection" : true,
+        "redirectUrl" : "",
+        "secondQuestion" : "Stop creating your case?",
+        "showArticles" : true,
+        "showDiscussions" : false,
+        "topicId" : ""
+      },
+      "componentName" : "forceCommunity:caseDeflection",
+      "id" : "d11b7e16-9564-496b-acb4-82750be5d3a1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c85b2022-0509-45f5-ba1f-1553ece44506",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "ContactSupport"
+      },
+      "componentName" : "c:MarketplaceAnalyticsPageview",
+      "id" : "2419cd66-8052-448a-8328-5bcf5eb7b6de",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "87a1c39c-d76a-48ff-9577-907248b8bc59",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Contact Support\"/> \n<meta name=\"keywords\" content=\"sf,mp,contact support\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"ContactSupport\"/>",
+        "description" : "",
+        "title" : "Contact Support"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "473cd100-8669-4859-b1d1-efc8d4542323",
+      "renditionMap" : {
+        "ja" : "654c4a93-ba37-457c-b4bb-a9d0b5ce6ab7"
+      },
+      "renditions" : [ {
+        "id" : "654c4a93-ba37-457c-b4bb-a9d0b5ce6ab7",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "f24682f3-bb14-4242-af34-b79fb3856d36",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "contactsupport"
+}

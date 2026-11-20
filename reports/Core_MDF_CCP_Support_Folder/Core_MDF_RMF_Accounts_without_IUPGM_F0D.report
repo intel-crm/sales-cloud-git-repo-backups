@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Core_MDF_CoMarketing_Ultimate_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account$Core_MDF_Active_Ind__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_MDF_Channel_Program__c</field>
+    </columns>
+    <columns>
+        <field>Account.Internal_Users_Partner_Geo_Mappings__r$Core_MDF_User_id__c</field>
+    </columns>
+    <crossFilters>
+        <operation>without</operation>
+        <primaryTableColumn>Account$Id</primaryTableColumn>
+        <relatedTable>Core_MDF_Int_Users_Partner_Geo_Mapping__c</relatedTable>
+        <relatedTableJoinColumn>Core_MDF_Account_id__c</relatedTableJoinColumn>
+    </crossFilters>
+    <description>RMF Accounts for which No internal user is assigned (No associated IUPGM exists)</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Core_MDF_Co_Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_Active_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Core_MDF_CoMarketing_Ultimate_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,test_company1,北京苏尔泰科技有限公司-CST_CCPTest</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CCP_DQ RMF Accounts without IUPGM</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Accounts_with_OR_without_IUPGM__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

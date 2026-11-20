@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Core_IPS_All_CaseCat_RW_to_AllOrgAdmins</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This would provide R/W access to all Case Categories for Org Admins</description>
+        <label>Core IPS All CaseCat RW to AllOrgAdmins</label>
+        <sharedTo>
+            <role>IPS_Product_Org_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>IPS_Product_Org_Admin</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,281 @@
+.THIS {
+  color: t(white);
+  width: 100%;
+  position: relative;
+  background-color: t(darkBlue);
+  background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v4.jpg');
+  background-position: 0% 55%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.THIS .signIn {
+  font-size: 0.75em;
+  font-weight: 400;
+}
+.THIS .fill-height {
+  height: 100%;
+}
+.THIS .marquee-header {
+  font-family: "intel-clear", impact, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.16;
+}
+.THIS .marquee-header:lang(zh) {
+  font-family: "intel-clear", "intel-clear-cyrillic", "Microsoft YaHei", SimHei, impact, sans-serif;
+  font-weight: 400;
+}
+.THIS .marquee-header:lang(ja) {
+  font-family: "intel-clear", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", "MS PGothic", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+  font-weight: 400;
+}
+.THIS .marquee-header.h2 {
+  font-size: 1.625rem;
+  line-height: 1.25;
+}
+
+.THIS a.color-pale-blue use {
+  fill: t(paleBlue);
+}
+
+
+@media (max-width: 767px) {
+  .THIS .signIn {
+    background: rgba(0, 60, 113, 0.3);
+    width: 100%;
+  }
+  .THIS .breadcrumb-container {
+    min-height: 30px;
+    padding-top: 3px;
+  }
+  .THIS .main-flex-container {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  /*min height no breadcrumbs no sign in, makes sure it is centered*/
+  .THIS.no-bc.no-si.size-tall .text-container > div {
+    min-height: 300px;
+  }
+  .THIS.no-bc.no-si.size-medium .text-container > div {
+    min-height: 275px;
+  }
+  .THIS.no-bc.no-si.size-short .text-container > div {
+    min-height: 170px;
+  }
+  .THIS.no-bc.no-si.size-x-short .text-container > div {
+    min-height: 125px;
+  }
+  /*min height no breadcrumbs with sign in, makes sure it is centered*/
+  .THIS.no-bc.has-si.size-tall .text-container > div {
+    min-height: calc(
+      300px - 32px
+    ); /* 16px signin + 32px bc + padding offset 16px */
+  }
+  .THIS.no-bc.has-si.size-medium .text-container > div {
+    min-height: calc(275px - 32px);
+  }
+  .THIS.no-bc.has-si.size-short .text-container > div {
+    min-height: calc(170px - 32px);
+  }
+  .THIS.no-bc.has-si.size-x-short .text-container > div {
+    min-height: calc(125px - 32px);
+  }
+  /*min height with breadcrumbs with sign in, makes sure it is centered*/
+  .THIS.has-bc.has-si.size-tall .text-container > div {
+    min-height: calc(
+      300px - 80px
+    ); /* 16px signin + 32 breadcrumbs + padding offset 32px */
+  }
+  .THIS.has-bc.has-si.size-medium .text-container > div {
+    min-height: calc(275px - 80px);
+  }
+  .THIS.has-bc.has-si.size-short .text-container > div {
+    min-height: calc(170px - 80px);
+  }
+  .THIS.has-bc.has-si.size-x-short .text-container > div {
+    min-height: calc(125px - 80px);
+  }
+  /*min height with breadcrumbs, makes sure it is centered*/
+  .THIS.has-bc.no-si.size-tall .text-container > div {
+    min-height: calc(
+      300px - 48px
+    ); /* 0 signin + 32 breadcrumbs + padding offset 16px */
+  }
+  .THIS.has-bc.no-si.size-medium .text-container > div {
+    min-height: calc(275px - 48px);
+  }
+  .THIS.has-bc.no-si.size-short .text-container > div {
+    min-height: calc(170px - 48px);
+  }
+  .THIS.has-bc.no-si.size-x-short .text-container > div {
+    min-height: calc(125px - 48px);
+  }
+  /* Special case for L2 Search Medium */
+  .THIS.type-l2search.no-bc.no-si.size-medium .text-container > div {
+    min-height: 225px;
+  }
+  .THIS.type-l2search.no-bc.has-si.size-medium .text-container > div {
+    min-height: calc(225px - 32px);
+  }
+  .THIS.type-l2search.has-bc.has-si.size-medium .text-container > div {
+    min-height: calc(225px - 80px);
+  }
+  .THIS.type-l2search.has-bc.no-si.size-medium .text-container > div {
+    min-height: calc(225px - 48px);
+  }
+
+  .THIS.type-l2search .text {
+    display: none;
+  }
+
+  .THIS .text-container {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+  .THIS.has-bc.has-si .text-container {
+    margin-top: -24px;
+    padding: 24px 1.5rem;
+  }
+  .THIS.has-bc.no-si .text-container {
+    margin-top: -16px;
+    padding: 16px 1.5rem;
+  }
+  .THIS.no-bc.has-si .text-container {
+    margin-top: -8px;
+    padding: 8px 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .THIS {
+    padding-bottom: 0;
+    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v4.jpg');
+    background-position: 0% 70%;
+  }
+  .THIS .marquee-header {
+    font-size: 2.25rem;
+  }
+  .THIS .marquee-header.h2 {
+    font-size: 1.75rem;
+  }
+  .THIS .signIn {
+    position: absolute;
+    top: 26px;
+    right: 4em;
+  }
+  .THIS .text-container {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+  .THIS .main-flex-container {
+    flex-direction: column;
+  }
+  .THIS .breadcrumb-container {
+    min-height: 40px;
+    padding: 0 200px;
+  }
+  .THIS .breadCrumb {
+    margin-top: 24px;
+  }
+  .THIS.has-bc.size-x-short .breadCrumb {
+    margin-top: 10px;
+  } 
+  .THIS.has-bc .text-container {
+    margin-top: -20px;
+  }
+  /*min height with no breadcrumbs, makes sure it is centered*/
+  .THIS.no-bc.size-tall .text-container > div {
+    min-height: 350px;
+  }
+  .THIS.no-bc.size-medium .text-container > div {
+    min-height: 230px;
+  }
+  .THIS.no-bc.size-short .text-container > div {
+    min-height: 145px;
+  }
+  .THIS.no-bc.size-x-short .text-container > div {
+    min-height: 110px;
+  }
+  /*min height with breadcrumbs, makes sure it is centered*/
+  .THIS.has-bc.size-tall .text-container > div {
+    min-height: 325px;
+    padding: 20px 0;
+  }
+  .THIS.has-bc.size-medium .text-container > div {
+    min-height: 205px;
+    padding: 20px 0;
+  }
+  .THIS.has-bc.size-short .text-container > div {
+    min-height: 120px;
+    padding: 20px 0;
+  }
+  .THIS.has-bc.size-x-short .text-container > div {
+    min-height: 85px;
+    padding: 20px 0;
+  }
+}
+
+/* IE 11 BUG */
+@media screen and (min-width: 768px) and (-ms-high-contrast: active),
+  screen and (min-width: 768px) and (-ms-high-contrast: none) {
+  .THIS.has-bc.size-tall .text-container > div {
+    height: 325px;
+  }
+  .THIS.has-bc.size-medium .text-container > div {
+    height: 205px;
+  }
+  .THIS.has-bc.size-short .text-container > div {
+    height: 120px;
+  }
+  .THIS.has-bc.size-x-short .text-container > div {
+    height: 85px;
+  }
+  .THIS.no-bc.size-tall .text-container > div {
+    height: 350px;
+  }
+  .THIS.no-bc.size-medium .text-container > div {
+    height: 230px;
+  }
+  .THIS.no-bc.size-short .text-container > div {
+    height: 145px;
+  }
+  .THIS.no-bc.size-x-short .text-container > div {
+    height: 110px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .THIS .signIn {
+    right: 4em;
+    top: 26px;
+  }
+  .THIS .breadcrumb-container {
+    padding: 0 190px;
+  }
+}
+@media (min-width: 1200px) {
+  .THIS .breadcrumb-container {
+    padding: 0 140px;
+  }
+  .THIS .marquee-header {
+    font-size: 3rem;
+  }
+  .THIS .marquee-header.h2 {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1650px) {
+  .THIS .breadcrumb-container {
+    padding: 0;
+  }
+}
+
+.THIS h1,
+.THIS h1.h2 {
+  color: t(white);
+}
+
+.THIS .icon-white use {
+  fill: t(white);
+}

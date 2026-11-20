@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryGoal xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <label>Audit Prediction Story</label>
+    <outcome>
+        <field>Core_MDF_AccountCompany__c_formula</field>
+        <fieldLabel>Modified Case Status</fieldLabel>
+        <goal>Maximize</goal>
+    </outcome>
+    <predictionType>Classification</predictionType>
+    <subscribedEntity>Core_MDF_Claim_Prediction__c</subscribedEntity>
+</DiscoveryGoal>

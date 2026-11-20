@@ -1,0 +1,49 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "2acddea9-b259-4469-897f-6209f8b1c3a3",
+  "label" : "MP Maintenance-Create Edit Solution",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "title" : "The Solution Submission website is currently unavailable due to scheduled maintenance. Solution Submission will be available again on the 19th February at 1:00am Pacific Standard"
+      },
+      "componentName" : "c:coreIntcMarquee",
+      "id" : "9983697e-c277-4e3d-bfe4-5b8f9026128a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3f0b9225-7fc4-4f64-9811-0154c62dd195",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "d4462d1d-1620-459d-89b7-4897a12c1ecb",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "72d66959-9265-4800-96bb-8922e25a7358",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Submit a Solution\"/> \n<meta name=\"keywords\" content=\"sf,mp,submit a solution\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"SolutionCreateEdit\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "",
+        "title" : "Submit a Solution - - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "af3878b5-2cdd-49ed-a3d4-745a95690998",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "85b11eb1-e6a7-49c4-843e-891d42e3024f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-create-edit-solution"
+}

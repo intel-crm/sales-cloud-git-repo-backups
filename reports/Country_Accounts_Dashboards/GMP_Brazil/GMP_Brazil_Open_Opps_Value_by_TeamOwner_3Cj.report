@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_70241199</developerName>
+        <masterLabel>Owner Role - GMP India or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Baskar Dhandapani</sourceValue>
+            </sourceValues>
+            <value>Baskar Dhandapani Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Rajeev Borah</sourceValue>
+            </sourceValues>
+            <value>Rajeev Borah Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Saumer Phukan</sourceValue>
+            </sourceValues>
+            <value>Saumer Phukan Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Rahul Malhotra</sourceValue>
+            </sourceValues>
+            <value>Rahul Malhotra Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Prakash Mallya</sourceValue>
+            </sourceValues>
+            <value>Prakash Mallya direct reports</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_26540834</developerName>
+        <masterLabel>Owner role - GMP Mx or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Ricardo Lopez Tello</sourceValue>
+            </sourceValues>
+            <value>Ricardo Lopez Tello Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Diego Garza Rodriguez</sourceValue>
+            </sourceValues>
+            <value>Diego Garza Rodriguez Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Ricardo Barriga Navarro</sourceValue>
+            </sourceValues>
+            <value>Ricardo Barriga Navarro Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Santi Cardona</sourceValue>
+            </sourceValues>
+            <value>Santi Cardona direct reports</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_20201290</developerName>
+        <masterLabel>Owner role bucket - GMP, OSC, or others</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Takehiro Yoshii</sourceValue>
+            </sourceValues>
+            <value>Japan Billings Accounts A</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Daizo Takahashi</sourceValue>
+            </sourceValues>
+            <value>Japan Billings Accounts C</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Ray Zhang</sourceValue>
+            </sourceValues>
+            <value>Japan Business Consumption</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Teruya Ida</sourceValue>
+            </sourceValues>
+            <value>Japan Disti &amp; Scale Partners</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Takahiro Goto</sourceValue>
+            </sourceValues>
+            <value>PSG Japan Sales 5</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Hiroshi Tokai</sourceValue>
+            </sourceValues>
+            <value>PSG Japan Sales 6</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_2572062</developerName>
+        <masterLabel>Role - GMP UK or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Iain Beckingham</sourceValue>
+            </sourceValues>
+            <value>Iain Beckingham Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Ian Jones</sourceValue>
+            </sourceValues>
+            <value>Ian Jones Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Graham Palmer</sourceValue>
+            </sourceValues>
+            <value>Graham Palmer Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Graham Copperwheat</sourceValue>
+            </sourceValues>
+            <value>Graham Copperwheat Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Jennifer Shileika</sourceValue>
+            </sourceValues>
+            <value>Jennifer Shileika Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Simon Wilyman</sourceValue>
+            </sourceValues>
+            <value>Simon Wilyman Team</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>FULL_NAME</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP Brazil Sales Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_20201290</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GMP Brazil Open Opps Value by Team/Owner</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

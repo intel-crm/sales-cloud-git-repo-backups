@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User$UserRole</field>
+    </columns>
+    <columns>
+        <field>User$UserRole.ParentRole</field>
+    </columns>
+    <columns>
+        <field>User$UserRole.ParentRole.ParentRole</field>
+    </columns>
+    <columns>
+        <field>User$UserRole.ParentRole.ParentRole.ParentRole</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>User$UserRole.ParentRole.ParentRole.ParentRole</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP_10101706_Steve_Shakespeare_plusCOSandTA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Steve Shakespeare Subordinates (Level 3)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Users_in_Role_Hierarchy__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>User$LastLoginDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

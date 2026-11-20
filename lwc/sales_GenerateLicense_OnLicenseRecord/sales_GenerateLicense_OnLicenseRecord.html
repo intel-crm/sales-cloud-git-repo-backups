@@ -1,0 +1,76 @@
+<template>
+    <template if:true={showModal}>
+    <lightning-record-edit-form object-api-name="Sales_License__c" record-id={recordId} onload={handleOnLoad}>
+    
+<!-- modal header start -->
+<template if:true={fromcmp}>
+    <header class="slds-modal__header">
+        <lightning-layout>
+    <lightning-layout-item size="11">
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate "></h2>
+    </lightning-layout-item>
+    <lightning-layout-item size="1">
+        <div>
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" style="background: grey; top: 0%;"
+           title="Close" onclick={handleCancel}>
+           <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+               size="small"></lightning-icon>
+           <span class="slds-assistive-text">{label.Sales_OrderClose}</span>
+       </button>
+    </div>
+   </lightning-layout-item>
+    </lightning-layout>
+    </header>
+</template>
+
+    <lightning-card title={label.Sales_genlic} icon-name="standard:form">
+        <div if:false={isLoaded} class="slds-is-relative">  
+            <lightning-spinner alternative-text="Loading...">  
+            </lightning-spinner>  
+        </div>  
+    
+    <div class="slds-modal__content modelContentClass"><!--div for proper footer-->
+    <div class="slds-box" style="padding: .3%;">
+    <lightning-card title={label.Sales_creatnewcomp} icon-name="standard:form">
+        <div style="margin-left: 4%;">
+        <lightning-button label={label.Sales_addnewcomp} title="Add computer" onclick={createNewComputer} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+    </div>
+    
+   <!-- <div class="slds-box">-->
+       <lightning-card title={label.Sales_Assignexisting} icon-name="standard:form">
+        <div style="margin-left: 4%; margin-right: 4%;">
+        <lightning-formatted-text value={label.Sales_compname} class="slds-form-element__label" ></lightning-formatted-text>
+        <lightning-input-field field-name='Sales_License_Host_Node_Id__c' onchange={handleHostChange}  variant="label-hidden" value={getHostValue}></lightning-input-field>
+         </div>
+        <!-- Modal Footer start-->
+        <footer class="slds-card__footer">
+            <lightning-button variant="neutral" label={label.Sales_Cancel} title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="brand" label={label.Sales_Generate} title="Generate" onclick={handleSubmit} disabled={buttonClicked} class="slds-m-left_x-small"></lightning-button>
+        </footer>
+    </lightning-card>
+<!-- Modal Footer ends
+    </div>-->
+</div><!--closing div for proper footer-->
+  
+ 
+
+<template if:true={validateExistingLicenseHost}>
+    <c-confirmation-Dialog title={label.Sales_ConfirmationTitle} activationcode={activateCodeonLoad} hostid={hostValue} licenserecordid={licneserecordid}></c-confirmation-Dialog>
+</template>
+
+</lightning-card>
+
+</lightning-record-edit-form>
+<template if:true={createComputer}>
+    <c-sales-Create-New-Host fromcomponent ={fromcmp} fromlac={fromlac} fromlicensegenerate={licgenerate} onclose={closeEvent} oncancel={cancelEvent} licneserecordid ={licneserecordid} toollicensetype ={licenseType} primaryadmincontact={primarycontact}></c-sales-Create-New-Host>
+    <div class="slds-backdrop slds-backdrop_open" style="opacity: .23;"></div>
+</template>
+</template>
+<template if:true={enableFeedback}>
+            
+    <c-sales_-event-feedback rec-id={licneserecordid} capablity={capablity}>
+    </c-sales_-event-feedback>
+</template>
+</template>

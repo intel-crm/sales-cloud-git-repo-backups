@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_17386765</developerName>
+        <masterLabel>campign/source</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Lead.Core_Lead_Conversion_Point__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>WW_AnyAudience_AnyProduct_AnyIndustry_Customer Support_Embedded Manual Entry Form</sourceValue>
+            </sourceValues>
+            <value>CNDA request/ Manual Entry Form</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Avnet WW02</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Avnet WW06</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Avnet WW09</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Avnet WW09 (2)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW02</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW04</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW04 2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW06</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW09</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW09 Rotem 2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW09 Rotem 3</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW50 4</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty Eastronics WW07</sourceValue>
+            </sourceValues>
+            <value>Lead Bounty</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - WBQ - Embedded Innovator 11</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - WBQ - Embedded Innovator 12</sourceValue>
+            </sourceValues>
+            <value>EDC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>sawczuk,lukina,poterek,emea osc,tele prospect - EMEA,raczek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONVERTED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_State__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Not closed prospects by agent</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

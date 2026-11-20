@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Products External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Case Visible --></label>
+        <name>Case_Visible_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Family__c</name>
+        <picklistValues>
+            <masterLabel>Boards and Kits</masterLabel>
+            <translation><!-- Boards and Kits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Software Family</masterLabel>
+            <translation><!-- Data Center Software Family --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Developer Zone</masterLabel>
+            <translation><!-- Developer Zone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Products</masterLabel>
+            <translation><!-- High Performance Computing Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel(R) Desktop Boards and Kits</masterLabel>
+            <translation><!-- Intel(R) Desktop Boards and Kits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel(R) Education</masterLabel>
+            <translation><!-- Intel(R) Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel(R) Network Connectivity</masterLabel>
+            <translation><!-- Intel(R) Network Connectivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programs &amp; Services</masterLabel>
+            <translation><!-- Programs &amp; Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Devices</masterLabel>
+            <translation><!-- Smart Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology, Tools and Utilities</masterLabel>
+            <translation><!-- Technology, Tools and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Products</masterLabel>
+            <translation><!-- Wireless Products --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Enabled For Subscriptions --></label>
+        <name>ICS_Is_Enabled_For_Subscriptions_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Code --></label>
+        <name>ProductCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type ID --></label>
+        <name>RecordTypeId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Severity Allowed? --></label>
+        <name>Severity_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product SKU --></label>
+        <name>StockKeepingUnit__c</name>
+    </fields>
+    <fields>
+        <help><!-- Identifies if the product is part of the VPH Nav Hierarchy --></help>
+        <label><!-- VPH Nav --></label>
+        <name>VPH_Nav_c__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,49 @@
+.verticalAlign {
+    cursor: pointer;
+    padding: 0px 5px !important;
+}
+
+.slds-dropdown {
+    padding: 0px !important;
+}
+
+.slds-listbox li {
+    padding: .4rem 0.5rem !important;
+    display: flex;
+}
+
+.inputBox input {
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.eachItem:hover {
+    background-color: #F1F1F1;
+    cursor: pointer;
+}
+
+.slds-dropdown_fluid {
+    margin-top: 0px;
+}
+
+.buttonPadding {
+    padding-left: 10px;
+}
+
+.help-text {
+    display: none;
+    z-index: 6000;
+    position: absolute;
+    top: calc(100% - 35px);
+    left: 0px;
+    background-color: #f9f9f9e8;
+    border: 1px solid #cccccce8;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    /* white-space: nowrap; */
+}
+
+.input-container:hover .help-text {
+    display: block;
+}

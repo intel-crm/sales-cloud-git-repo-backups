@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Co_Marketing_Activity__c</name>
+        <relationshipLabel><!-- Activity Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_Field_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Clicks</masterLabel>
+            <translation>数字媒体 - 点击量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Conversions</masterLabel>
+            <translation>数字媒体 - 转换次数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Downloads</masterLabel>
+            <translation>数字媒体 - 下载量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Impressions</masterLabel>
+            <translation>数字媒体 - 印象数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Leads</masterLabel>
+            <translation>数字媒体 - 线索数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Page Views</masterLabel>
+            <translation>数字媒体 - 页面浏览数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Social Media Likes/Shares</masterLabel>
+            <translation>数字媒体 - 社交媒体点赞/分享数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Unique Visitors</masterLabel>
+            <translation>数字媒体 - 独特访客数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - Average time on Page (Seconds)</masterLabel>
+            <translation>数字媒体 - 页面平均停留时间（秒）</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media Percentage Spend</masterLabel>
+            <translation>数字媒体支出百分比</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Deal Wins</masterLabel>
+            <translation>会展/活动 - 交易赢取数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of End Customer Attendees</masterLabel>
+            <translation>会展/活动 - 最终客户与会者人数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Seller Attendees</masterLabel>
+            <translation>会展/活动 - 卖家与会者人数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - # of Sales Qualified Leads</masterLabel>
+            <translation>会展/活动 - 符合销售条件的销售线索数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - Revenue of Units Sold (USD)</masterLabel>
+            <translation>会展/活动 - 销售单位营收（美元）</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Percentage Spend</masterLabel>
+            <translation>活动花费百分比</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount - # of Days</masterLabel>
+            <translation>受资助的人数 - 天数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount Percentage Spend</masterLabel>
+            <translation>资助员工人数支出百分比</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deal Wins</masterLabel>
+            <translation>激励选项 - 交易赢取数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deals Registered</masterLabel>
+            <translation>激励选项 - 注册交易数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Design Wins</masterLabel>
+            <translation>激励 – 设计定案数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Units Sold</masterLabel>
+            <translation>激励选项 - 销售单位数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - Revenue of Units Sold (USD)</masterLabel>
+            <translation>激励选项 - 销售单位营收（美元）</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Percentage Spend</masterLabel>
+            <translation>激励支出百分比</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Leads</masterLabel>
+            <translation>潜在客户培育 - 线索数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Sales Qualified Leads</masterLabel>
+            <translation>潜在客户培育 - 符合销售条件的销售线索数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation Percentage Spend</masterLabel>
+            <translation>潜在客户培育支出百分比</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Conversions</masterLabel>
+            <translation>传统媒体 - 转换次数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Downloads</masterLabel>
+            <translation>传统媒体 - 下载量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Impressions</masterLabel>
+            <translation>传统媒体 - 印象数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Leads</masterLabel>
+            <translation>传统媒体 - 引导的数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Recipients</masterLabel>
+            <translation>传统媒体 - 接收者数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - Runs per hour</masterLabel>
+            <translation>传统媒体 - 每小时运行次数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media Percentage Spend</masterLabel>
+            <translation>传统媒体支出百分比</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation - # of Person Days</masterLabel>
+            <translation>零售激活 - 人员天数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation Percentage Spend</masterLabel>
+            <translation><!-- Retail Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
+            <translation>技术激活 - 交易成功数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deployments</masterLabel>
+            <translation>技术激活 - 部署数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
+            <translation>技术激活 – 设计定案数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Downloads</masterLabel>
+            <translation>技术激活 - 下载次数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Instances</masterLabel>
+            <translation>技术激活 - 实例数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Sales Qualified Leads</masterLabel>
+            <translation>技术激活 - 销售合格线索数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation Percentage Spend</masterLabel>
+            <translation><!-- Technical Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of End Customer Trainees</masterLabel>
+            <translation>培训 - 最终客户培训生人数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of Partner Trainees</masterLabel>
+            <translation>培训 - 合作伙伴培训生人数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Percentage Spend</masterLabel>
+            <translation>培训支出百分比</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Core_MDF_Field_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Amount --></label>
+        <name>Core_MDF_Spending_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation>数字媒体</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation>会展/活动</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount</masterLabel>
+            <translation>受资助的人数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive</masterLabel>
+            <translation>激励选项</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation</masterLabel>
+            <translation>潜在客户培育</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media</masterLabel>
+            <translation>传统媒体</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation</masterLabel>
+            <translation>零售激活</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation</masterLabel>
+            <translation>技术激活</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation>培训</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>KPI</masterLabel>
+            <translation><!-- KPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percentage</masterLabel>
+            <translation><!-- Percentage --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Activity Attributes Name --></nameFieldLabel>
+</CustomObjectTranslation>

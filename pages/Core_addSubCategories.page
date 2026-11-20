@@ -1,0 +1,24 @@
+<apex:page standardController="Core_IPS_Product_Issue_Category__c" extensions="Core_IssueCategoryController">
+   <apex:form >
+   <apex:pageblock rendered="{!(ErrorMessage != null)}">
+   <div align="center">
+   <apex:commandButton action="{!cancel}" value="Exit" />
+   </div>
+   <div align="center">
+   <apex:outputLabel value="{!ErrorMessage}" style="font-weight:bold"/> 
+   </div>
+   </apex:pageblock>
+  <apex:pageblock rendered="{!(ErrorMessage == null)}">
+      <apex:pageblockButtons >
+          <apex:commandButton action="{!addSubCategories}" value="Add Subcategories" />
+          <apex:commandButton action="{!cancel}" value="Exit"/>
+      </apex:pageblockButtons>      
+      <apex:pageBlockTable value="{!issueSubCategoryList}" var="isc">
+          <apex:column >
+              <apex:inputCheckbox value="{!isc.selected}" id="inputId"/>
+          </apex:column>
+          <apex:column value="{!isc.masterIssueCat.name}" headerValue="Sub Category"/>
+      </apex:pageBlockTable>
+  </apex:pageblock>
+  </apex:form>
+</apex:page>

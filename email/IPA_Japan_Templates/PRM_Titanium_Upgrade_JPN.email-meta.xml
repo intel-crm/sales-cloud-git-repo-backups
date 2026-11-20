@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Titanium_Upgrade_JPN</name>
+    <style>none</style>
+    <subject>インテル® パートナー アライアンス プレステージへようこそ</subject>
+    <textOnly>Intel® Partner Alliance Titanium
+
+
+{!Contact.FirstName} 様、
+
+おめでとうございます。御社は、インテル® パートナー・アライアンスのチタンクラスにアップグレードされました。次のメンバーシップ特典が受けられます。
+
+コンポーネントとシステムの双方で、より多くのポイントを獲得できます
+今年のプレミア・インテル・パートナー・イベント、インテル® Partner Connect にご招待します
+インテル経営陣から御社の見込み顧客にチタンクラス紹介状をお送りします
+
+ツールやリソースにアクセスするには、ログインしてください。
+
+今すぐ始めましょう
+
+
+インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
+
+メンバーシップの最適化についてのヘルプやガイダンスは、intel.com/partnerhelp を参照してください。
+
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+プライバシー・ポリシー  |  Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

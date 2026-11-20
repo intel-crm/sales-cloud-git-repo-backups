@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Profile Information</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Profile Information</value>
+    </caseValues>
+    <fields>
+        <label><!-- Address --></label>
+        <name>PMP_Account_Address_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Application --></label>
+        <name>PMP_Account_Application__c</name>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence</masterLabel>
+            <translation><!-- Artificial Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Security Surveillance</masterLabel>
+            <translation><!-- Digital Security Surveillance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Signage</masterLabel>
+            <translation><!-- Digital Signage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing</masterLabel>
+            <translation><!-- High Performance Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Whiteboard</masterLabel>
+            <translation><!-- Interactive Whiteboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things</masterLabel>
+            <translation><!-- Internet of Things --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Imaging and Office Automation</masterLabel>
+            <translation><!-- Print Imaging and Office Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart City</masterLabel>
+            <translation><!-- Smart City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Home</masterLabel>
+            <translation><!-- Smart Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Management</masterLabel>
+            <translation><!-- Video Management --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PMP_Account_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PMP_Account_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Information --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>PMP_Account_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apparel</masterLabel>
+            <translation><!-- Apparel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking</masterLabel>
+            <translation><!-- Banking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biotechnology</masterLabel>
+            <translation><!-- Biotechnology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chemicals</masterLabel>
+            <translation><!-- Chemicals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Communications</masterLabel>
+            <translation><!-- Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronics</masterLabel>
+            <translation><!-- Electronics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment</masterLabel>
+            <translation><!-- Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental</masterLabel>
+            <translation><!-- Environmental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance</masterLabel>
+            <translation><!-- Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food &amp; Beverage</masterLabel>
+            <translation><!-- Food &amp; Beverage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare</masterLabel>
+            <translation><!-- Healthcare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machinery</masterLabel>
+            <translation><!-- Machinery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not For Profit</masterLabel>
+            <translation><!-- Not For Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recreation</masterLabel>
+            <translation><!-- Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping</masterLabel>
+            <translation><!-- Shipping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utilities</masterLabel>
+            <translation><!-- Utilities --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program Membership --></label>
+        <name>PMP_Account_Program_Membership__c</name>
+        <picklistValues>
+            <masterLabel>Additional Partners</masterLabel>
+            <translation><!-- Additional Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA - GENERAL</masterLabel>
+            <translation><!-- ISA - GENERAL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>PMP_Account_Region__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Specialty --></label>
+        <name>PMP_Account_Specialty__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>PMP_Account_Sub_Region__c</name>
+        <picklistValues>
+            <masterLabel>ANZ</masterLabel>
+            <translation><!-- ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CEE</masterLabel>
+            <translation><!-- CEE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CER</masterLabel>
+            <translation><!-- CER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJKK</masterLabel>
+            <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KOREA</masterLabel>
+            <translation><!-- KOREA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>META</masterLabel>
+            <translation><!-- META --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAR</masterLabel>
+            <translation><!-- NAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEUR</masterLabel>
+            <translation><!-- NEUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCIS</masterLabel>
+            <translation><!-- RCIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROA</masterLabel>
+            <translation><!-- ROA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SA</masterLabel>
+            <translation><!-- SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEA</masterLabel>
+            <translation><!-- SEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEUR</masterLabel>
+            <translation><!-- SEUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAIWAN</masterLabel>
+            <translation><!-- TAIWAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WEUR</masterLabel>
+            <translation><!-- WEUR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Tag line or Catchy line for the partner --></help>
+        <label><!-- Tag Line --></label>
+        <name>PMP_Account_Tag_Line__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>PMP_Account_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active OPID Count --></label>
+        <name>PMP_Active_OPID_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Autofill Status --></label>
+        <name>PMP_Autofill_Txt__c</name>
+        <picklistValues>
+            <masterLabel>LLM_Knowledge</masterLabel>
+            <translation><!-- LLM_Knowledge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mixed</masterLabel>
+            <translation><!-- Mixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scraped</masterLabel>
+            <translation><!-- Scraped --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPA Badge Tier Ordering Sequence --></label>
+        <name>PMP_Badge_Tier_Sequence_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- MP Benefit Revoked? --></label>
+        <name>PMP_Benefit_Update_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Biz Org Type --></label>
+        <name>PMP_Biz_Org_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Biz Org Type Value --></label>
+        <name>PMP_Biz_Org_Type_Value_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Input Language --></label>
+        <name>PMP_Company_Information_Language_Nm__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation><!-- Simplified Chinese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead Generation Language Preference --></label>
+        <name>PMP_Company_Lead_Gen_Language_Nm__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation><!-- Simplified Chinese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Transaction Lifecycle Status --></label>
+        <name>PMP_Company_Lifecycle_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Admin Review</masterLabel>
+            <translation><!-- Admin Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Published</masterLabel>
+            <translation><!-- Published --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Required</masterLabel>
+            <translation><!-- Update Required --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Company Resource --></label>
+        <name>PMP_Company_Resource__c</name>
+        <picklistValues>
+            <masterLabel>Articles</masterLabel>
+            <translation><!-- Articles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>News</masterLabel>
+            <translation><!-- News --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WhitePaper</masterLabel>
+            <translation><!-- WhitePaper --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field capture comments for approval --></help>
+        <label><!-- Add Review Comments --></label>
+        <name>PMP_Company_Review_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Status Published Date --></label>
+        <name>PMP_Company_Status_Published_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Status Update Date --></label>
+        <name>PMP_Company_Status_Update_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP Data Load Identifier --></label>
+        <name>PMP_Data_Load_Identifier_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor  Components --></label>
+        <name>PMP_Disti_Components_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Programmable Gate Array</masterLabel>
+            <translation><!-- Field Programmable Gate Array --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graphics</masterLabel>
+            <translation><!-- Graphics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Distributor Country Coverage --></label>
+        <name>PMP_Disti_Country_Coverage_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor  System and Solutions --></label>
+        <name>PMP_Disti_Sys_Solutions_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center</masterLabel>
+            <translation><!-- Cloud Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Services</masterLabel>
+            <translation><!-- Cloud Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discrete Graphic Cards</masterLabel>
+            <translation><!-- Discrete Graphic Cards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things</masterLabel>
+            <translation><!-- Internet of Things --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Enhanced Login Users --></label>
+        <name>PMP_Enhanced_Login_Users_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Application Engineer --></label>
+        <name>PMP_Field_Application_Engineer_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Information (Field Application Engineer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- IPA Badge Tier --></label>
+        <name>PMP_IPA_Badge_Tier_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initial Storefront Changes Submitted --></label>
+        <name>PMP_Initial_Storefront_Submit_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel MP Admin Email --></label>
+        <name>PMP_Intel_Admin_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Marketplace Admin --></label>
+        <name>PMP_Intel_Admin_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Information (Intel Marketplace Admin) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Intel MP Admin Name --></label>
+        <name>PMP_Intel_Admin_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Distributor --></label>
+        <name>PMP_Is_Distributor_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Lead Generation --></label>
+        <name>PMP_Is_Enabled_Lead_Gen_Nm__c</name>
+        <picklistValues>
+            <masterLabel>False</masterLabel>
+            <translation><!-- False --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>True</masterLabel>
+            <translation><!-- True --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Limit Lead Generation to Intel Partners --></label>
+        <name>PMP_Is_Lead_Gen_Limited_Nm__c</name>
+        <picklistValues>
+            <masterLabel>False</masterLabel>
+            <translation><!-- False --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>True</masterLabel>
+            <translation><!-- True --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Published --></label>
+        <name>PMP_Is_Published_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Updated --></label>
+        <name>PMP_Is_Updated_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Working Copy --></label>
+        <name>PMP_Is_Working_Copy_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Updated Date --></label>
+        <name>PMP_Last_Updated_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- A unique user friendly identifier of the marketing profile. --></help>
+        <label><!-- Marketing Profile Id --></label>
+        <name>PMP_Marketing_Profile_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PMP_One_Partner_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opid Sfid Ref --></label>
+        <name>PMP_Opid_Sfid_Ref_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opid Sfid --></label>
+        <name>PMP_Opid_Sfid_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Partner Benefit Type --></label>
+        <name>PMP_Partner_Benefit_Type__c</name>
+        <picklistValues>
+            <masterLabel>Solution Marketplace Basic Access</masterLabel>
+            <translation><!-- Solution Marketplace Basic Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solutions Marketplace Basic Profile</masterLabel>
+            <translation><!-- Solutions Marketplace Basic Profile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solutions Marketplace Enhanced</masterLabel>
+            <translation><!-- Solutions Marketplace Enhanced --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>PMP_Partner_City_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>PMP_Partner_Country_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Partner Inactive --></label>
+        <name>PMP_Partner_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Logo Count --></label>
+        <name>PMP_Partner_Logo_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Logo Count --></label>
+        <name>PMP_Partner_Logo_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Street --></label>
+        <name>PMP_Partner_Primary_Street_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PMP_Partner_Program_nm__c</name>
+        <picklistValues>
+            <masterLabel>Additional Partners</masterLabel>
+            <translation><!-- Additional Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSPx2</masterLabel>
+            <translation><!-- CSPx2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA</masterLabel>
+            <translation><!-- ISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP</masterLabel>
+            <translation><!-- ITP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Premier Support</masterLabel>
+            <translation><!-- Intel Premier Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM-LOEM</masterLabel>
+            <translation><!-- ODM-LOEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resource &amp; Design Center</masterLabel>
+            <translation><!-- Resource &amp; Design Center --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Secondary Street --></label>
+        <name>PMP_Partner_Secondary_Street_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Segment --></label>
+        <name>PMP_Partner_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Programmable Gate Array</masterLabel>
+            <translation><!-- Field Programmable Gate Array --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage and Memory</masterLabel>
+            <translation><!-- Storage and Memory --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- State/province --></label>
+        <name>PMP_Partner_State_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Submitter UserId --></label>
+        <name>PMP_Partner_Submitter_UserId__c</name>
+        <relationshipLabel><!-- Marketing Profile Information (Partner Submitter UserId) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Zipcode --></label>
+        <name>PMP_Partner_Zipcode_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Published Copy Id --></label>
+        <name>PMP_Published_Copy_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Information (Published Copy Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Scrap Status Comment --></label>
+        <name>PMP_ScrapStatusComment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront EditAccess Ind --></label>
+        <name>PMP_Storefront_EditAccess_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront SiteUrl --></label>
+        <name>PMP_Storefront_SiteUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suppress Email --></label>
+        <name>PMP_Suppress_Email_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Topic Count --></label>
+        <name>PMP_Topic_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language Status --></label>
+        <name>PMP_Translated_Languages_Txt__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation><!-- Simplified Chinese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Language Status --></label>
+        <name>PMP_Translated_Languages__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation><!-- Simplified Chinese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Translation Status --></label>
+        <name>PMP_Translation_Lifecycle_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Translation Queue</masterLabel>
+            <translation><!-- In Translation Queue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- View Partners --></label>
+        <name>PMP_View_Partners_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- View Partners --></label>
+        <name>PMP_View_Partners__c</name>
+    </fields>
+    <fields>
+        <label><!-- Second SLA Workflow Date --></label>
+        <name>PMP_Workflow_One_Week_Trigger_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- First SLA WorkFlow Date --></label>
+        <name>PMP_Workflow_Three_Day_Trigger_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Working Copy Id --></label>
+        <name>PMP_Working_Copy_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Information (Working Copy Id) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

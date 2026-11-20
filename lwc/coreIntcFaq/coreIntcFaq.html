@@ -1,0 +1,15 @@
+<template>
+    <template if:true={ifs.showComponent}>
+        <div for:each={_faqs} for:item="faqSection" key={faqSection.key}>
+            <h4 if:true={faqSection.title} class="h4 slds-p-top_large slds-p-bottom_x-small">{faqSection.title}</h4>
+            <p if:true={faqSection.description} class="slds-p-top_x-small slds-p-bottom_small">{faqSection.description}</p>
+            <lightning-accordion allow-multiple-sections-open="true">
+                <lightning-accordion-section for:each={faqSection.questions} for:item="faq" key={faq.key} label={faq.question} class="intc-faq-section">
+                    <div class="slds-p-vertical_medium">
+                        <lightning-formatted-rich-text value={faq.answer}></lightning-formatted-rich-text>
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </div>
+    </template>
+</template>

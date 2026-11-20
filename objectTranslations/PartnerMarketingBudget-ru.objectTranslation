@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>true</plural>
+        <value>Бюджеты</value>
+    </caseValues>
+    <fields>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>false</plural>
+            <value>Сумма</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>partnermarketingbudget_amount</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>false</plural>
+            <value>Название бюджета</value>
+        </caseValues>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>true</plural>
+            <value>Название бюджета</value>
+        </caseValues>
+        <gender>Neuter</gender>
+        <name>partnermarketingbudget_name</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>false</plural>
+            <value>Общая выделенная сумма</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>partnermarketingbudget_totalallocatedamount</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>false</plural>
+            <value>Всего утвержденных заявок на возмещение</value>
+        </caseValues>
+        <gender>Neuter</gender>
+        <name>partnermarketingbudget_totalapprovedfcs</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>false</plural>
+            <value>Всего утвержденных запросов на возмещение</value>
+        </caseValues>
+        <gender>Neuter</gender>
+        <name>partnermarketingbudget_totalapprovedfrs</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <caseType>Nominative</caseType>
+            <plural>false</plural>
+            <value>Общая сумма выполненных заявок на возмещение</value>
+        </caseValues>
+        <gender>Neuter</gender>
+        <name>partnermarketingbudget_totalreimbursedfcs</name>
+    </fields>
+    <fields>
+        <label><!-- Account (Company) --></label>
+        <name>Core_MDF_AccountCompany__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 10 --></label>
+        <name>Core_MDF_Approver_10__c</name>
+        <relationshipLabel><!-- Budgets (Approver 10) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 1 --></label>
+        <name>Core_MDF_Approver_1__c</name>
+        <relationshipLabel><!-- Budgets (Approver 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 --></label>
+        <name>Core_MDF_Approver_2__c</name>
+        <relationshipLabel><!-- Budgets (Approver 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 --></label>
+        <name>Core_MDF_Approver_3__c</name>
+        <relationshipLabel><!-- Budgets (Approver 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 4 --></label>
+        <name>Core_MDF_Approver_4__c</name>
+        <relationshipLabel><!-- Budgets (Approver 4) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 5 --></label>
+        <name>Core_MDF_Approver_5__c</name>
+        <relationshipLabel><!-- Budgets (Approver 5) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 6 --></label>
+        <name>Core_MDF_Approver_6__c</name>
+        <relationshipLabel><!-- Budgets (Approver 6) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 7 --></label>
+        <name>Core_MDF_Approver_7__c</name>
+        <relationshipLabel><!-- Budgets (Approver 7) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 8 --></label>
+        <name>Core_MDF_Approver_8__c</name>
+        <relationshipLabel><!-- Budgets (Approver 8) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 9 --></label>
+        <name>Core_MDF_Approver_9__c</name>
+        <relationshipLabel><!-- Budgets (Approver 9) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Примечания к бюджету</label>
+        <name>Core_MDF_Budget_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Identifier --></label>
+        <name>Core_MDF_Budget_Identifier__c</name>
+    </fields>
+    <fields>
+        <label>Счет (Узел)</label>
+        <name>Core_MDF_Budget_Partner__c</name>
+        <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Статус бюджета</label>
+        <name>Core_MDF_Budget_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Review</masterLabel>
+            <translation>Ожидается проверка</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation>Отклонено</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Released</masterLabel>
+            <translation>Выпущен</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Report_txt__c</name>
+    </fields>
+    <fields>
+        <label>Тип бюджета</label>
+        <name>Core_MDF_Budget_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Тип бюджета</label>
+        <name>Core_MDF_Budget_Type__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation><!-- Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation>Ускорение корпоративных клиентских решений — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF 1.0</masterLabel>
+            <translation>Фонды совместного маркетинга для клиентских ПК 1.0</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation>Фонд маркетингового развития для специализаций по клиентам</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Engineering</masterLabel>
+            <translation><!-- Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF 1.0</masterLabel>
+            <translation>Фонды совместного маркетинга для ЦОД 1.0</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Market Accelerate</masterLabel>
+            <translation><!-- Data Center Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation>Фонд маркетингового развития для специализаций по центрам обработки данных</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation>Ускорение, ориентированное на данные — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение Ericsson — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение IBM — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение Microsoft — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение Nokia — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение Red Hat — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение SAP — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение SAS — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение Suse — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation>Глобальное ускорение VMware — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation>Ускорение масштабирования независимых поставщиков программного обеспечения — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based2</masterLabel>
+            <translation><!-- Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Rise Technology Initiative</masterLabel>
+            <translation><!-- Intel Rise Technology Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation>IoT Premier — Фонд маркетингового развития</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation>IoT Targeted — Фонд маркетингового развития</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation>Средства развития рынка</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation>Фонды маркетингового развития+</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation>План развития ODM — клиентский фонд стимулирования сбыта</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation>План совместного маркетинга OEM-производителя</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation>Фонд маркетингового развития для специализаций по Optane</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal I MDF</masterLabel>
+            <translation><!-- Proposal I MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal II MDF</masterLabel>
+            <translation><!-- Proposal II MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation>Усиление Red Hat — фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation>Клиент SOEM — Фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation>ЦОД SOEM — Фонд развития маркетинга</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation>План совместного маркетинга поставщика услуг</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation>Усиление VMWare — фонд развития маркетинга</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the amount the budget should be reduced by --></help>
+        <label><!-- Budget Reduction Amount --></label>
+        <name>Core_MDF_Decrease_Budget_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Budget --></label>
+        <name>Core_MDF_Legacy_Budget_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Full budget, visible to Intel only --></help>
+        <label><!-- Maximum Approved Budget --></label>
+        <name>Core_MDF_Maximum_Approved_Budget_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_MDF_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <help>Укажите название программы</help>
+        <label>Программа</label>
+        <name>Core_MDF_Program__c</name>
+        <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account Id --></label>
+        <name>Core_MDF_Ultimate_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Reference Number --></label>
+        <name>Core_MDF_budget_ref_nbr__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <recordTypes>
+        <description><!-- This is the Record type for Channel MDF Account based --></description>
+        <label><!-- Channel MDF Account Based --></label>
+        <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This is the Record type for Channel MDF Proposal based --></description>
+        <label><!-- Channel MDF Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-GTM --></description>
+        <label><!-- Co-GTM --></label>
+        <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- It will be used for Co-Marketing purposes. --></description>
+        <label>Ресурсы</label>
+        <name>Core_MDF_Co_Marketing</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Ecosystem Extension Fund --></description>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Intel Partner Alliance - Account Based --></description>
+        <label><!-- Intel Partner Alliance - Account Based --></label>
+        <name>Core_MDF_IPA_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Intel Partner Alliance --></description>
+        <label><!-- Intel Partner Alliance - Proposal Based --></label>
+        <name>Core_MDF_IPA_ProposalBased</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- It will be used for Retail Co-Marketing purposes --></description>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Budget Type is mandatory for the selected program --></errorMessage>
+        <name>Core_MDF_BudgetTypMandatoryForOEM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type cannot be changed --></errorMessage>
+        <name>Core_MDF_BudgetType_Cannot_Be_Edited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget reduction amount and Budget amount cannot be updated at the same time --></errorMessage>
+        <name>Core_MDF_Budget_Amount_Decrease_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget reduction amount cannot be greater than 0, as budget has not been created yet. --></errorMessage>
+        <name>Core_MDF_Budget_Decrease_Amount_Create</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Программа не совпадает с маркетинговой программой партнера по бюджету. Пожалуйста, обновите.</errorMessage>
+        <name>Core_MDF_Budget_Partner_and_Program_rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Дата окончания должна быть после даты начала.</errorMessage>
+        <name>Core_MDF_Checking_Enddate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget reduction amount cannot be greater than Budget amount --></errorMessage>
+        <name>Core_MDF_DecBudAmtCannotBeGreateThanAmt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget amount must be greater or equal to zero --></errorMessage>
+        <name>Core_MDF_Negative_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget reduction amount must be greater or equal to zero --></errorMessage>
+        <name>Core_MDF_Negative_Decrease_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Maximum Approved Budget cannot be negative. --></errorMessage>
+        <name>Core_MDF_Negative_Max_Approved_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Партнер по бюджету не может быть изменен</errorMessage>
+        <name>Core_MDF_PartnerNonEditable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Бюджет не может быть обновлен финансовым менеджером</errorMessage>
+        <name>Core_MDF_PreventBudgetEditingByFM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Невозможно изменить статус бюджета</errorMessage>
+        <name>Core_MDF_PreventDowngradingStatusbyFM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Программа не может быть изменена</errorMessage>
+        <name>Core_MDF_Program_Cannot_Be_Edited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not authorized to create the record for the selected Account --></errorMessage>
+        <name>Core_MDF_Restrict_AccountSelection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Amount cannot be greater than 9999999999999 --></errorMessage>
+        <name>Core_MDF_ValidateAmount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type is not applicable for selected program --></errorMessage>
+        <name>Core_MDF_ValidateBudgetTypForCCPProgram</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

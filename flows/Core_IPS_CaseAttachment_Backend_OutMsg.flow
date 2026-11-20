@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>IPS_APIGEE_Backend_Integration_Queueable</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Calling apex</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>IPS_APIGEE_Backend_Integration_Queueable</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>getCaseAttachmentIds</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue>Core_IPS_Case_Attachments__c</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>getCaseAttachmentIds</name>
+            <value>
+                <elementReference>myVariable_current</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Backend_Integration_Queueable</nameSegment>
+    </actionCalls>
+    <apiVersion>51.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>outbound message for a case attachment</label>
+        </rules>
+    </decisions>
+    <description>ve6</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+[Core_IPS_Case_Attachments__c].Core_Case__r.Core_IPS_Backend_ID__c &lt;&gt; null, 
+[Core_IPS_Case_Attachments__c].Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, 
+[Core_IPS_Case_Attachments__c].Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false , 
+[Core_IPS_Case_Attachments__c].Core_Is_Migrated__c = false,
+(ISPICKVAL([Core_IPS_Case_Attachments__c].Core_Promote_Status__c , &apos;&apos; ) || 
+ISPICKVAL( [Core_IPS_Case_Attachments__c].Core_Promote_Status__c , &apos;In Progress&apos; )),
+( ISPICKVAL([Core_IPS_Case_Attachments__c].Core_Upload_Status__c, &apos;Complete&apos;)), 
+( ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) || CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;) || CONTAINS($User.Username, &apos;ips.backend.integrationuser&apos;))
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!myVariable_current.Core_Case__r.Core_IPS_Backend_ID__c} &lt;&gt; null, 
+{!myVariable_current.Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, 
+{!myVariable_current.Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false , 
+{!myVariable_current.Core_Is_Migrated__c} = false,
+(ISPICKVAL({!myVariable_current.Core_Promote_Status__c} , &apos;&apos; ) || 
+ISPICKVAL( {!myVariable_current.Core_Promote_Status__c} , &apos;In Progress&apos; )),
+( ISPICKVAL({!myVariable_current.Core_Upload_Status__c}, &apos;Complete&apos;)), 
+( ({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;) || CONTAINS({!$User.Username}, &apos;ips.file.integrationuser&apos;) || CONTAINS({!$User.Username}, &apos;ips.backend.integrationuser&apos;))
+)</expression>
+    </formulas>
+    <interviewLabel>Core_IPS_CaseAttachment_Backend_OutMsg-14_InterviewLabel</interviewLabel>
+    <label>Core IPS CaseAttachment Backend OutMsg</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Core_IPS_Case_Attachments__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <status>Obsolete</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_IPS_Case_Attachments__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_IPS_Case_Attachments__c</objectType>
+    </variables>
+</Flow>

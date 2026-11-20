@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_31129177</developerName>
+        <masterLabel>Ops team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account_Create_Request__c.Delegate_Approver__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Ali El Gohary</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethan Street</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Justyna Pieniążek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>KAROLINA JURKIEWICZ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Sweet</sourceValue>
+            </sourceValues>
+            <value>EMEA Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Konidala Sairam Sharma</sourceValue>
+            </sourceValues>
+            <value>CCDO / Genpact</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Requestor_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Global_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account_Create_Request__c.Delegate_Approver__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Teck Joo Goh&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Gabriel Quesada&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Margaret Laffan&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Rebeca Asi Cartin&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Laura Hubbard&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Maria Odio&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Anirban Mukherjee&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Daniel Hidalgo&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Andrea Kowalski&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Victor Mena&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Christine Sullivan&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Cormack Glass&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Lea Nichols&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Alonso Lios&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Boulos Aoun&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Yasir Aziz&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Christian Staudinger&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Greg Anderson&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Gil Weitzman&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Michal Moran Roche&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Alaa Badr&quot;),
+    &quot;Software Sales&quot;, &quot;Other&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Account.Core_Account_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Teck Joo Goh,Gabriel Quesada,Margaret Laffan,Rebeca Asi Cartin,Laura Hubbard,Maria Odio,Anirban Mukherjee,Daniel Hidalgo,Andrea Kowalski,Victor Mena,Christine Sullivan,Cormack Glass,Lea Nichols,Alonso Lios,Boulos Aoun,Yasir Aziz,Christian Staudinger,Greg Anderson,Gil Weitzman,Michal Moran Roche,Alaa Badr</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CUST_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_31129177</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Account.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Software Sales AQR</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Create_Request__c@Account_Create_Request__c.Requested_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

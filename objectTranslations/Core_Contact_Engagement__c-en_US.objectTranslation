@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Engagement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Engagements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Core_Contact__c</name>
+        <relationshipLabel><!-- Contact Engagements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Editable --></label>
+        <name>Core_Editable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Code --></label>
+        <name>Core_Engagement_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Name --></label>
+        <name>Core_Engagement_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Name Intg --></label>
+        <name>Core_Engagement_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement --></label>
+        <lookupFilter>
+            <errorMessage><!-- Engagement selected is not available for edit in Salesforce. --></errorMessage>
+        </lookupFilter>
+        <name>Core_Engagement__c</name>
+        <relationshipLabel><!-- Contact Engagements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ExtId --></label>
+        <name>Core_ExtId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Engagement cannot be changed. --></errorMessage>
+        <name>DisableEdit</name>
+    </validationRules>
+</CustomObjectTranslation>

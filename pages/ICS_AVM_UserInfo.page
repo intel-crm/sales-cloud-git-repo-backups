@@ -1,0 +1,7 @@
+<apex:page controller="ICS_AVM_UserInfoController" contentType="application/json">
+{
+    "content": "{!userDetails}",
+    "iv": "{!iv}"
+     
+}
+</apex:page>

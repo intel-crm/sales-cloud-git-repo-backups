@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveLens xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <application>User_Adoption</application>
+    <datasets>LightningPageViewWithUsers</datasets>
+    <dateVersion>1</dateVersion>
+    <description>View Count of Exec Meeting Brief Records</description>
+    <masterLabel>Exec Meeting Brief Views</masterLabel>
+    <visualizationType>stackhbar</visualizationType>
+</WaveLens>

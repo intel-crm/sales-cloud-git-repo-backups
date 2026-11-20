@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Regionwise Campaign Budget --></value>
+    </caseValues>
+    <fields>
+        <label>キャンペーン</label>
+        <name>Core_MDF_Campaign__c</name>
+        <relationshipLabel><!-- Regionwise Campaign Budgets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>初年度の予算</label>
+        <name>Core_MDF_First_Year_Budget__c</name>
+    </fields>
+    <fields>
+        <label>地域</label>
+        <name>Core_MDF_Region__c</name>
+    </fields>
+    <fields>
+        <label>2 年目の予算</label>
+        <name>Core_MDF_Second_Year_Budget__c</name>
+    </fields>
+    <nameFieldLabel><!-- RegionWise Campaign Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Budget should not be less than Zero --></errorMessage>
+        <name>Core_MDF_Validate_Negative_Budget</name>
+    </validationRules>
+</CustomObjectTranslation>

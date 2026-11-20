@@ -1,0 +1,86 @@
+<template></template>
+  <!-- IPA2.0 + US TWC4497-1631 -->
+   <!--  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <template if:true={showSpinner}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+                
+            </template>
+            <header class="slds-modal__header intelBlue">
+                <div style="height: 10px;">
+                    <div class="close" >
+                        
+                    
+                        <lightning-button-icon 
+                         class="close" 
+                         icon-name="utility:close" 
+                         size="large" 
+                         variant="bare-inverse"
+                         onclick={handleCancel}>
+
+                        </lightning-button-icon>
+                    
+                        
+                    </div>
+                        
+                 
+                </div>
+                <h2 id="modal-heading-01" >{label.offeringValidityPeriod}</h2>
+                
+            </header>
+        <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">
+            
+            
+            <div class ="slds-p-left_small"> 
+                <span style="color: red;">
+                    *
+                </span>
+                <span>
+                    <label>{label.validFrom}</label>
+                </span>
+            </div>
+            <lightning-input
+                class = "slds-p-left_small"
+                data-id ="startDate"               
+                type="Date"
+                value={startDate}
+                onchange={handleChange}                
+                min={minStartDate} 
+                name="startDate"
+                
+                style="font-size: 1em;">
+            </lightning-input>
+
+            <div class ="slds-p-left_small slds-p-top_large"> 
+                <span style="color: red;">
+                    *
+                </span>
+                <span>
+                    <label>{label.validTo}</label>
+                </span>
+            </div>
+
+            <lightning-input
+                class = "slds-p-left_small" 
+                data-id="endDate"                 
+                type="Date"                
+                value={endDate} 
+                disabled={saveDisabled}
+                onchange={handleChange}               
+                min={minEndDate} 
+                name="endDate" >
+          </lightning-input>
+          
+            
+        </div>
+            <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral"  onclick={handleCancel}>{label.cancel}</button>
+            <button class="slds-button slds-button_brand" disabled={saveDisabled}  onclick={handleSave}>{label.submit}</button>
+            </footer>
+        </div>
+        
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template> -->

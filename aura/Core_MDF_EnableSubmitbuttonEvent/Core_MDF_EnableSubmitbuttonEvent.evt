@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="auditDocumentListToInsertOrUpdate" type="Object[]"/>
+    <aura:attribute name="disableSubmitButton" type="Boolean"/>    
+</aura:event>

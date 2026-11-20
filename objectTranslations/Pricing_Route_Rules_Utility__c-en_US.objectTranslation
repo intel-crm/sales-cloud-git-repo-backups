@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Route Rules Utility</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Route Rules Utilities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Pricing Category --></label>
+        <name>Pricing_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclusion</masterLabel>
+            <translation><!-- Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Touch</masterLabel>
+            <translation><!-- High Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Touch</masterLabel>
+            <translation><!-- Low Touch --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country --></label>
+        <name>Pricing_End_Customer_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>Pricing_End_Customer_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Region --></label>
+        <name>Pricing_Region_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

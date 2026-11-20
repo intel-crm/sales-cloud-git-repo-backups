@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Mentor Graphics</fullName>
+        <default>false</default>
+        <label>Mentor Graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Altera</fullName>
+        <default>false</default>
+        <label>Altera</label>
+    </customValue>
+    <customValue>
+        <fullName>Flexxera</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Flexxera</label>
+    </customValue>
+    <customValue>
+        <fullName>ARM License</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>ARM License</label>
+    </customValue>
+    <masterLabel>License Vendor</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Milestone</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Milestones</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>Core_Approved_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Milestone Commissionable? --></label>
+        <name>Core_Approved_Milestone_Commissionable__c</name>
+    </fields>
+    <fields>
+        <label><!-- As Measured By --></label>
+        <name>Core_As_Measured_By__c</name>
+    </fields>
+    <fields>
+        <help><!-- Required for ISG client utilization milestone goal tracking. Please specify the deployment/utilization (activation) quantities associated to “AMT, Unite, ProWIdi, Widoc, Authenticate” Milestone Focus --></help>
+        <label><!-- Deployment Quantity --></label>
+        <name>Core_Deployment_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Milestone Date --></label>
+        <name>Core_KPI_Milestone_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Approved Date --></label>
+        <name>Core_Milestone_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated field to provide the Milestone Area, based on common agreement used for Milestone Focus field. --></help>
+        <label><!-- Milestone Area (Do Not Use) --></label>
+        <name>Core_Milestone_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Claim Date --></label>
+        <name>Core_Milestone_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Commissionable? --></label>
+        <name>Core_Milestone_Commissionable__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Date when the Milestone Owner expects the specific milestone focus work to be complete. It should be updated if the forecast changes prior to claiming a win. Upon milestone completion (win claim or cancel), the owner must update the date. --></help>
+        <label><!-- Milestone Date --></label>
+        <name>Core_Milestone_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Description --></label>
+        <name>Core_Milestone_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Area --></label>
+        <name>Core_Milestone_Focus_Area__c</name>
+        <picklistValues>
+            <masterLabel>Deal - CCG</masterLabel>
+            <translation><!-- Deal - CCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal - DCG</masterLabel>
+            <translation><!-- Deal - DCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal - IOTG</masterLabel>
+            <translation><!-- Deal - IOTG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal - NSG</masterLabel>
+            <translation><!-- Deal - NSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal - NTG</masterLabel>
+            <translation><!-- Deal - NTG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - CCG</masterLabel>
+            <translation><!-- Design - CCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - DCG</masterLabel>
+            <translation><!-- Design - DCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - IOTG</masterLabel>
+            <translation><!-- Design - IOTG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - NSG</masterLabel>
+            <translation><!-- Design - NSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - NTG</masterLabel>
+            <translation><!-- Design - NTG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Milestone Focus --></label>
+        <name>Core_Milestone_Focus__c</name>
+        <picklistValues>
+            <masterLabel>3D NAND PCIe Data Center Wins</masterLabel>
+            <translation><!-- 3D NAND PCIe Data Center Wins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMT Activation</masterLabel>
+            <translation><!-- AMT Activation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add-On Software and Services</masterLabel>
+            <translation><!-- Add-On Software and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Architecture Conversion</masterLabel>
+            <translation><!-- Architecture Conversion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authenticate</masterLabel>
+            <translation><!-- Authenticate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Big Data Analytics</masterLabel>
+            <translation><!-- Big Data Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Platform</masterLabel>
+            <translation><!-- Connected Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connectivity / 5G</masterLabel>
+            <translation><!-- Connectivity / 5G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSS/Video</masterLabel>
+            <translation><!-- DSS/Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center All Flash SSD Storage</masterLabel>
+            <translation><!-- Data Center All Flash SSD Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Guard</masterLabel>
+            <translation><!-- Data Guard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deep Learning</masterLabel>
+            <translation><!-- Deep Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design</masterLabel>
+            <translation><!-- Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - 3D NAND Conversion</masterLabel>
+            <translation><!-- Design - 3D NAND Conversion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - Client</masterLabel>
+            <translation><!-- Design - Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - Data Center</masterLabel>
+            <translation><!-- Design - Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - Embedded</masterLabel>
+            <translation><!-- Design - Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - Optane</masterLabel>
+            <translation><!-- Design - Optane --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Docking</masterLabel>
+            <translation><!-- Docking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drones (Deal)</masterLabel>
+            <translation><!-- Drones (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drones (Design)</masterLabel>
+            <translation><!-- Drones (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy:  Connect the Unconnected</masterLabel>
+            <translation><!-- Energy:  Connect the Unconnected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental Monitoring</masterLabel>
+            <translation><!-- Environmental Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial: Connect the Unconnected</masterLabel>
+            <translation><!-- Industrial: Connect the Unconnected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>K-12 Transformation Project</masterLabel>
+            <translation><!-- K-12 Transformation Project --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics &amp; Asset Mgmt</masterLabel>
+            <translation><!-- Logistics &amp; Asset Mgmt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Movidius (Deal)</masterLabel>
+            <translation><!-- Movidius (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Movidius (Design)</masterLabel>
+            <translation><!-- Movidius (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFV/SDN</masterLabel>
+            <translation><!-- NFV/SDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Transformation</masterLabel>
+            <translation><!-- Network Transformation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Form Factor Adoption</masterLabel>
+            <translation><!-- New Form Factor Adoption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Next Gen Connectivity</masterLabel>
+            <translation><!-- Next Gen Connectivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane</masterLabel>
+            <translation><!-- Optane --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud</masterLabel>
+            <translation><!-- Private Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Cloud</masterLabel>
+            <translation><!-- Public Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Purley</masterLabel>
+            <translation><!-- Purley --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualified Horiz. IoT Cloud Platforms</masterLabel>
+            <translation><!-- Qualified Horiz. IoT Cloud Platforms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rack Scale Design (RSD)</masterLabel>
+            <translation><!-- Rack Scale Design (RSD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RealSense (Design)</masterLabel>
+            <translation><!-- RealSense (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Realsense (Deal)</masterLabel>
+            <translation><!-- Realsense (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Realtime Health FOG</masterLabel>
+            <translation><!-- Realtime Health FOG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Inventory Management</masterLabel>
+            <translation><!-- Retail Inventory Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail POS</masterLabel>
+            <translation><!-- Retail POS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saffron Technology (Deal)</masterLabel>
+            <translation><!-- Saffron Technology (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saffron Technology (Design)</masterLabel>
+            <translation><!-- Saffron Technology (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart &amp; Connected Home</masterLabel>
+            <translation><!-- Smart &amp; Connected Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Building</masterLabel>
+            <translation><!-- Smart Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart City</masterLabel>
+            <translation><!-- Smart City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Defined Storage</masterLabel>
+            <translation><!-- Software Defined Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic Account Initiative SDM/MDM</masterLabel>
+            <translation><!-- Strategic Account Initiative SDM/MDM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation:  AR/VR</masterLabel>
+            <translation><!-- Transformation:  AR/VR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation:  Connectivity / 5G</masterLabel>
+            <translation><!-- Transformation:  Connectivity / 5G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation: Connected Home</masterLabel>
+            <translation><!-- Transformation: Connected Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation: Deep Learning</masterLabel>
+            <translation><!-- Transformation: Deep Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation: Next Gen Connectivity</masterLabel>
+            <translation><!-- Transformation: Next Gen Connectivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation: Rack Scale Design</masterLabel>
+            <translation><!-- Transformation: Rack Scale Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformation: Workload Acceleration</masterLabel>
+            <translation><!-- Transformation: Workload Acceleration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformational:  DSS/Video</masterLabel>
+            <translation><!-- Transformational:  DSS/Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformational: Automated Driving (Deal)</masterLabel>
+            <translation><!-- Transformational: Automated Driving (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformational: Automated Driving (Design)</masterLabel>
+            <translation><!-- Transformational: Automated Driving (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformational: SW Defined Industrial Systems - Fog Server (Deal)</masterLabel>
+            <translation><!-- Transformational: SW Defined Industrial Systems - Fog Server (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transformational: SW Defined Industrial Systems - Fog Server (Design)</masterLabel>
+            <translation><!-- Transformational: SW Defined Industrial Systems - Fog Server (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unite</masterLabel>
+            <translation><!-- Unite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Retail</masterLabel>
+            <translation><!-- Visual Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Windows 10 &amp; Kaby Lake</masterLabel>
+            <translation><!-- Windows 10 &amp; Kaby Lake --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workload Acceleration</masterLabel>
+            <translation><!-- Workload Acceleration --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Milestone_Oppty__c</name>
+        <relationshipLabel><!-- Milestones (Opportunity) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Milestone Type --></label>
+        <name>Core_Milestone_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone --></label>
+        <name>Core_Milestone__c</name>
+        <picklistValues>
+            <masterLabel>Concept/Program Solidification</masterLabel>
+            <translation><!-- Concept/Program Solidification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Definition</masterLabel>
+            <translation><!-- Definition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment / Delivery</masterLabel>
+            <translation><!-- Deployment / Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enabled SW Production GA</masterLabel>
+            <translation><!-- Enabled SW Production GA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution</masterLabel>
+            <translation><!-- Execution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Govt. Policy / RFx Influenced</masterLabel>
+            <translation><!-- Govt. Policy / RFx Influenced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDM / SDM - Other</masterLabel>
+            <translation><!-- MDM / SDM - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Tech Adoption</masterLabel>
+            <translation><!-- New Tech Adoption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC / POT / Lab Trial</masterLabel>
+            <translation><!-- POC / POT / Lab Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pilot / Live Trial</masterLabel>
+            <translation><!-- Pilot / Live Trial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard Offering / Units Comm Available</masterLabel>
+            <translation><!-- Standard Offering / Units Comm Available --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win</masterLabel>
+            <translation><!-- Win --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Milestones --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Milestone Date at the time it was submitted for approval --></help>
+        <label><!-- x Original Milestone Date --></label>
+        <name>Core_Original_Milestone_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Role --></label>
+        <name>Core_Owner_Role__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use the default value of &quot;User&quot; when entering the milestone owner. --></help>
+        <label><!-- Owner --></label>
+        <name>Core_Owner__c</name>
+        <relationshipLabel><!-- Milestones --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- You must enter a Result/Loss Key Learning prior to submitting for approval. You will not be able to submit the milestone for approval until this field has been populated. --></help>
+        <label><!-- Result/Loss Key Learning --></label>
+        <name>Core_Results_Key_Learnings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_Solution_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Area/Focus --></label>
+        <name>Core_Solution_Area__c</name>
+        <picklistValues>
+            <masterLabel>Big Data/Analytics</masterLabel>
+            <translation><!-- Big Data/Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client: New Mobility Use Cases</masterLabel>
+            <translation><!-- Client: New Mobility Use Cases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client: Touch Appl Dev</masterLabel>
+            <translation><!-- Client: Touch Appl Dev --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client: vPro/Virtualization</masterLabel>
+            <translation><!-- Client: vPro/Virtualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education: K12</masterLabel>
+            <translation><!-- Education: K12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education: Post Secondary</masterLabel>
+            <translation><!-- Education: Post Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT</masterLabel>
+            <translation><!-- IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking: Ethernet</masterLabel>
+            <translation><!-- Networking: Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking: SDN/NFV</masterLabel>
+            <translation><!-- Networking: SDN/NFV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud: Microsoft</masterLabel>
+            <translation><!-- Private Cloud: Microsoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud: OpenStack</masterLabel>
+            <translation><!-- Private Cloud: OpenStack --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud: VMware</masterLabel>
+            <translation><!-- Private Cloud: VMware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Cloud: Sell with CSPs</masterLabel>
+            <translation><!-- Public Cloud: Sell with CSPs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refresh/Ramp/TAM Expansion</masterLabel>
+            <translation><!-- Refresh/Ramp/TAM Expansion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SW &amp; Svcs</masterLabel>
+            <translation><!-- SW &amp; Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage: Legacy</masterLabel>
+            <translation><!-- Storage: Legacy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage: NVM/CR</masterLabel>
+            <translation><!-- Storage: NVM/CR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage: SDS</masterLabel>
+            <translation><!-- Storage: SDS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- d_Solution Focus --></label>
+        <name>Core_Solution_Focus__c</name>
+        <picklistValues>
+            <masterLabel>2 in 1s</masterLabel>
+            <translation><!-- 2 in 1s --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aepona Services</masterLabel>
+            <translation><!-- Aepona Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alternate Compute Model</masterLabel>
+            <translation><!-- Alternate Compute Model --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Big Data Analytics and Infrastructure</masterLabel>
+            <translation><!-- Big Data Analytics and Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Refresh/Ramp/Other</masterLabel>
+            <translation><!-- Client Refresh/Ramp/Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloudera</masterLabel>
+            <translation><!-- Cloudera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco Comms Cloud – Sell Thru</masterLabel>
+            <translation><!-- Comms SP/Telco Comms Cloud – Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco Comms Devices – Sell Thru</masterLabel>
+            <translation><!-- Comms SP/Telco Comms Devices – Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco Comms Devices – Sell With</masterLabel>
+            <translation><!-- Comms SP/Telco Comms Devices – Sell With --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco Network Infra/DC/Cloud</masterLabel>
+            <translation><!-- Comms SP/Telco Network Infra/DC/Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco PC/Tablet – Sell Thru</masterLabel>
+            <translation><!-- Comms SP/Telco PC/Tablet – Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco PC/Tablet – Sell With</masterLabel>
+            <translation><!-- Comms SP/Telco PC/Tablet – Sell With --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco PC/Tablet/Devices</masterLabel>
+            <translation><!-- Comms SP/Telco PC/Tablet/Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms SP/Telco Services on IA - Sell Thru</masterLabel>
+            <translation><!-- Comms SP/Telco Services on IA - Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Manager SW</masterLabel>
+            <translation><!-- Data Center Manager SW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driving New Embedded Business</masterLabel>
+            <translation><!-- Driving New Embedded Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expressway Services Gateway or Tokenization</masterLabel>
+            <translation><!-- Expressway Services Gateway or Tokenization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Big Data and Analytics</masterLabel>
+            <translation><!-- Healthcare Big Data and Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare IT Infrastructure</masterLabel>
+            <translation><!-- Healthcare IT Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing</masterLabel>
+            <translation><!-- High Performance Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing - Sell Thru</masterLabel>
+            <translation><!-- High Performance Computing - Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Higher Education</masterLabel>
+            <translation><!-- Higher Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Design Win - Sell Thru</masterLabel>
+            <translation><!-- ISV Design Win - Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel CAS (Cache Accl. SW)</masterLabel>
+            <translation><!-- Intel CAS (Cache Accl. SW) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Hadoop SW and Services</masterLabel>
+            <translation><!-- Intel Hadoop SW and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel SSDs for Business Clients</masterLabel>
+            <translation><!-- Intel SSDs for Business Clients --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel SSDs for Data Center</masterLabel>
+            <translation><!-- Intel SSDs for Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT: Aggregation</masterLabel>
+            <translation><!-- IoT: Aggregation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT: Embedded</masterLabel>
+            <translation><!-- IoT: Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT: Gateway</masterLabel>
+            <translation><!-- IoT: Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT: Sensor</masterLabel>
+            <translation><!-- IoT: Sensor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>K12</masterLabel>
+            <translation><!-- K12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lustre or Intel Manager for Lustre</masterLabel>
+            <translation><!-- Lustre or Intel Manager for Lustre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIC Technology</masterLabel>
+            <translation><!-- MIC Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mashery Services</masterLabel>
+            <translation><!-- Mashery Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>McAfee Influence</masterLabel>
+            <translation><!-- McAfee Influence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mission Critical</masterLabel>
+            <translation><!-- Mission Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Point of Care</masterLabel>
+            <translation><!-- Mobile Point of Care --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multicore Performance - SSG</masterLabel>
+            <translation><!-- Multicore Performance - SSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Orchestration</masterLabel>
+            <translation><!-- Orchestration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud</masterLabel>
+            <translation><!-- Private Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Cloud</masterLabel>
+            <translation><!-- Public Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCM/AIM Suite and Retail-related Software</masterLabel>
+            <translation><!-- RCM/AIM Suite and Retail-related Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security and Intel Technologies</masterLabel>
+            <translation><!-- Security and Intel Technologies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sell Up</masterLabel>
+            <translation><!-- Sell Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sell with Cloud Providers</masterLabel>
+            <translation><!-- Sell with Cloud Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Refresh/Ramp/Other</masterLabel>
+            <translation><!-- Server Refresh/Ramp/Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Assurance Administrator</masterLabel>
+            <translation><!-- Service Assurance Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Defined Networking / NFV</masterLabel>
+            <translation><!-- Software Defined Networking / NFV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Defined Storage</masterLabel>
+            <translation><!-- Software Defined Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider / Integrator Enablement - Sell Thru</masterLabel>
+            <translation><!-- Solution Provider / Integrator Enablement - Sell Thru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage and IA Technology</masterLabel>
+            <translation><!-- Storage and IA Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAM expansion thru 1Mx2015</masterLabel>
+            <translation><!-- TAM expansion thru 1Mx2015 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tablets</masterLabel>
+            <translation><!-- Tablets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Touch Application Development</masterLabel>
+            <translation><!-- Touch Application Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>True Scale Influence</masterLabel>
+            <translation><!-- True Scale Influence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ultrabook/Other Client TAM Expansion</masterLabel>
+            <translation><!-- Ultrabook/Other Client TAM Expansion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vocational/Lifelong Learning</masterLabel>
+            <translation><!-- Vocational/Lifelong Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win vs. RISC</masterLabel>
+            <translation><!-- Win vs. RISC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation Solutions</masterLabel>
+            <translation><!-- Workstation Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vPro Implementation</masterLabel>
+            <translation><!-- vPro Implementation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted for Approval</masterLabel>
+            <translation><!-- Submitted for Approval --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Use Case or Key Technology --></label>
+        <name>Core_Use_Case__c</name>
+        <picklistValues>
+            <masterLabel>25 G Ethernet</masterLabel>
+            <translation><!-- 25 G Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40 G Ethernet</masterLabel>
+            <translation><!-- 40 G Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5G</masterLabel>
+            <translation><!-- 5G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ADLINK - Connect the Unconnected for Smart Manufacturing</masterLabel>
+            <translation><!-- ADLINK - Connect the Unconnected for Smart Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bosch MCMS air quality monitoring solution</masterLabel>
+            <translation><!-- Bosch MCMS air quality monitoring solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadband Gateway</masterLabel>
+            <translation><!-- Broadband Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cable Network vCPE/vCCAP</masterLabel>
+            <translation><!-- Cable Network vCPE/vCCAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco/Davra Connected Roadways</masterLabel>
+            <translation><!-- Cisco/Davra Connected Roadways --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>City beacon Smart City Solution</masterLabel>
+            <translation><!-- City beacon Smart City Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client SSD</masterLabel>
+            <translation><!-- Client SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP</masterLabel>
+            <translation><!-- CoSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial Drone (Falcon 8/8+)</masterLabel>
+            <translation><!-- Commercial Drone (Falcon 8/8+) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms</masterLabel>
+            <translation><!-- Comms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compute Sticks / Compute Cards</masterLabel>
+            <translation><!-- Compute Sticks / Compute Cards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer SaaS</masterLabel>
+            <translation><!-- Consumer SaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center SSD</masterLabel>
+            <translation><!-- Data Center SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter Manager</masterLabel>
+            <translation><!-- Datacenter Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Davra_Cisco Mass Transit Solution</masterLabel>
+            <translation><!-- Davra_Cisco Mass Transit Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell ELM - FieldSight (Café)</masterLabel>
+            <translation><!-- Dell ELM - FieldSight (Café) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell ELM - FieldSight (Genset Series E, Microgrid)</masterLabel>
+            <translation><!-- Dell ELM - FieldSight (Genset Series E, Microgrid) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell IMS Evolve</masterLabel>
+            <translation><!-- Dell IMS Evolve --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell V5</masterLabel>
+            <translation><!-- Dell V5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discrete FPGAs</masterLabel>
+            <translation><!-- Discrete FPGAs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Points</masterLabel>
+            <translation><!-- Distribution Points --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drone Light Shows</masterLabel>
+            <translation><!-- Drone Light Shows --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise IT Off-Premise</masterLabel>
+            <translation><!-- Enterprise IT Off-Premise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise IT On-Premise</masterLabel>
+            <translation><!-- Enterprise IT On-Premise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flowserve Pump Predictive Maintenance</masterLabel>
+            <translation><!-- Flowserve Pump Predictive Maintenance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GE CityIQ Smart Outdoor Lighting</masterLabel>
+            <translation><!-- GE CityIQ Smart Outdoor Lighting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Green Ideas Smart Outdoor Lighting</masterLabel>
+            <translation><!-- Green Ideas Smart Outdoor Lighting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hitachi Visualization Platform</masterLabel>
+            <translation><!-- Hitachi Visualization Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Honeywell Connected Freight</masterLabel>
+            <translation><!-- Honeywell Connected Freight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry SFA</masterLabel>
+            <translation><!-- Industry SFA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integrated FPGAs</masterLabel>
+            <translation><!-- Integrated FPGAs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integrated Graphics</masterLabel>
+            <translation><!-- Integrated Graphics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KMC Commander</masterLabel>
+            <translation><!-- KMC Commander --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MANO/CIM/Service Assurance</masterLabel>
+            <translation><!-- MANO/CIM/Service Assurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machine Learning/AI</masterLabel>
+            <translation><!-- Machine Learning/AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Movidius (Deal)</masterLabel>
+            <translation><!-- Movidius (Deal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUCs</masterLabel>
+            <translation><!-- NUCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-MRS Exception</masterLabel>
+            <translation><!-- Non-MRS Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Omni-Path</masterLabel>
+            <translation><!-- Omni-Path --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phi</masterLabel>
+            <translation><!-- Phi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prescriptive Data NANTUM</masterLabel>
+            <translation><!-- Prescriptive Data NANTUM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PrismTech Vortex Edge PMQ (Pred Maintenance)</masterLabel>
+            <translation><!-- PrismTech Vortex Edge PMQ (Pred Maintenance) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Purley with Quick Assist Technology (QAT)</masterLabel>
+            <translation><!-- Purley with Quick Assist Technology (QAT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Purley without Quick Assist Technology (QAT)</masterLabel>
+            <translation><!-- Purley without Quick Assist Technology (QAT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RRS - BT</masterLabel>
+            <translation><!-- RRS - BT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RRS - Detego</masterLabel>
+            <translation><!-- RRS - Detego --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RRS - Fujitsu</masterLabel>
+            <translation><!-- RRS - Fujitsu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSD Manager</masterLabel>
+            <translation><!-- RSD Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail - Shutuo/Giada Digital Signage</masterLabel>
+            <translation><!-- Retail - Shutuo/Giada Digital Signage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rice Electronics Connected Worker Solution</masterLabel>
+            <translation><!-- Rice Electronics Connected Worker Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saffron Technology (Design)</masterLabel>
+            <translation><!-- Saffron Technology (Design) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Out</masterLabel>
+            <translation><!-- Scale Out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Partner</masterLabel>
+            <translation><!-- Scale Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Up</masterLabel>
+            <translation><!-- Scale Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scanalytics People Behavior (Smart Flooring)</masterLabel>
+            <translation><!-- Scanalytics People Behavior (Smart Flooring) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silicon Photonics</masterLabel>
+            <translation><!-- Silicon Photonics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Snap</masterLabel>
+            <translation><!-- Snap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verizon Digital Kiosk</masterLabel>
+            <translation><!-- Verizon Digital Kiosk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WiFi Attach</masterLabel>
+            <translation><!-- WiFi Attach --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WiFi Extenders</masterLabel>
+            <translation><!-- WiFi Extenders --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>uCPE New Platforms</masterLabel>
+            <translation><!-- uCPE New Platforms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vBNG/vBRAS</masterLabel>
+            <translation><!-- vBNG/vBRAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vPro Activation</masterLabel>
+            <translation><!-- vPro Activation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vRAN/MEC</masterLabel>
+            <translation><!-- vRAN/MEC --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <description><!-- Standard Solution Milestone Record Type --></description>
+        <label><!-- Solution Milestone --></label>
+        <name>Core_Solution_Milestone</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- To set the milestone back to pending, submitter can use the Recall Approval Request button in the Approval History section or the approving manager can reject the approval request. --></errorMessage>
+        <name>Core_MileStone_SubAppr_To_Pend</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Deployment Quantity is required for the Milestone and Use Case or Key Technology selected --></errorMessage>
+        <name>Core_Milestone_Deployment_Qty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The milestone owner cannot be changed while the milestone is in submitted
+status. Please recall the approval request to change the owner. --></errorMessage>
+        <name>Core_Milestone_Prevent_Owner_Change</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Milestone_Credit --></label>
+        <name>Core_Milestone_Credit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Recall_Approval --></label>
+        <name>Core_Recall_Approval</name>
+    </webLinks>
+</CustomObjectTranslation>

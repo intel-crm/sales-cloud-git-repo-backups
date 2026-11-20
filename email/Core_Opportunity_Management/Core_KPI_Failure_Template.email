@@ -1,0 +1,11 @@
+Hello All,
+
+Please find the detail of failed record:
+
+Record Id: {!Core_KPI_Staging__c.Id}
+Opportunity Id: {!Core_KPI_Staging__c.Core_Opportunity_ID_Txt__c}
+Error Description : {!Core_KPI_Staging__c.Core_Error_Description__c}
+
+
+Thanks,
+Intel Support Team

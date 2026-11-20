@@ -1,0 +1,268 @@
+<apex:page id="mypage" standardController="case" extensions="Core_IPS_AddCommentController" sidebar="false" showHeader="false" tabStyle="Case" >
+<apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/> 
+            
+    <apex:form >
+    
+        <apex:pageBlock > <!--rendered="{!ShowAddComments}"-->
+            
+             <!--by added by venki 26-4-17 us:60988--->
+            <apex:pageBlockSection title="Case Details" id="Casedetails">
+                <apex:outputfield value="{!case.CaseNumber}"/>
+                <apex:outputfield value="{!case.status}"/>
+                <apex:outputfield value="{!case.Subject}"/>
+                <apex:outputfield value="{!case.Core_Sub_Status__c}"/>
+                <!-- added by varun 24-5-17 US67616 ---->
+                <!--<apex:outputfield value="{!case.Core_Contact_Name__c}" rendered="{!not(externalUser)}"/>-->
+                <apex:outputfield value="{!case.Core_IPS_Project_Case__r.name}"/>
+                <!--<apex:outputfield value="{!case.core_Account_Name__c}" rendered="{!not(externalUser)}"/>-->
+                <apex:outputfield value="{!case.Product.Name}"/>
+
+
+
+                
+                <script>twistSection(document.getElementById("{!$Component.Casedetails}").childNodes[0].childNodes[0]); </script>
+            </apex:pageBlockSection>  
+             <!--by added by venki 26-4-17 us:60988--->
+             <apex:pageBlockSection title="Description" columns="1" id="Description" >
+                 <apex:outputfield value="{!case.Core_Issue_Description__c}"/>
+                 <script>twistSection(document.getElementById("{!$Component.Description}").childNodes[0].childNodes[0]); </script>
+             </apex:pageBlockSection>
+             
+             <!--modified by venki 26-4-17 us:60988--->
+            <apex:pageblockSection title="Comments" id="comts" columns="1">
+               
+                <apex:pageblockSectionItem id="selectType" rendered="{!ShowRadioButton}"> 
+                  <!--  <apex:outputPanel rendered="{!InternalOnlyOptions}">  -->
+                    
+                    <!-- added by sumukh 6/5/17 -->
+
+                        <apex:selectRadio value="{!selectedRadioButton}" id="visibility">      
+                           <apex:selectOption itemValue="Public to Customers"  itemLabel="Public to Customers" rendered="{!not(externalUser)}" ></apex:selectOption>
+                           <apex:selectOption itemValue="Private to Intel"  itemLabel="Private to Intel" rendered="{!not(externalUser)}" ></apex:selectOption>        
+                           <apex:selectOption itemValue="Private to Agents"  itemLabel="Private to Agents" rendered="{!(userHasAccess)}"> </apex:selectOption>
+                        </apex:selectRadio>
+                        <!-- Sumukh-- end -->
+               
+                  <!--  </apex:outputPanel>-->
+                </apex:pageblockSectionItem>
+                
+            <!--</apex:pageblockSection>-->
+            
+            <!--<apex:actionRegion id="richcomnt">-->
+               <!-- <apex:pageBlockSection > -->      
+                    <apex:outputLabel value="{!$ObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment__c.InlineHelpText}"></apex:outputLabel>
+                        <apex:inputfield value="{!newCase.Core_IPS_Comment__c}" required="true" label="" style="width:50%"/>                            
+               <!-- </apex:pageBlockSection>-->
+            <!--</apex:actionRegion>-->
+               
+            </apex:pageblockSection>    
+                
+            <apex:PageBlockButtons >
+                <apex:commandButton value="Save Comment" action="{!saveComment}"  disabled="{!disableAccess}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:PageBlockButtons>   
+                
+            <apex:actionRegion >
+                
+                <apex:pageBlockSection title="Recent Comments" columns="1" ID="Recentcomments">
+                <!-- added by venki 26-4-2017 for expend and collapse-->
+                 <script>twistSection(document.getElementById("{!$Component.Recentcomments}").childNodes[0].childNodes[0]); </script>
+                   <apex:outputPanel id="comments">
+                    <apex:pageBlockTable value="{!casecomments}" var="comnt" columnsWidth="100%" cellspacing="20px"  >
+                     <!--Core_IPS_Sales_RepBB_Profile_Name; Core_IPS_Data_Ops_Profile_Name; Core_IPS_Sales_Manager_Profile_Name; Core_IPS_Sales_Ops_Profile_Name; Core_IPS_Sales_RepBBDual_Profile_Name; Core_IPS_Sales_RepCW_Profile_Name-->
+                      
+                      <!--For External when created by Internal and public [Note to Customer]-->
+                       <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName)}"> <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-Begin -->
+                         <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPublic}</b>&nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name)}"/></b> <br/> 
+                         <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>  
+                        </apex:column> 
+                        
+                        <!--For External when created by External and public [Note from Customer]-->
+                        
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name==$Label.Core_IPS_Profile_Name)}">                        
+                         <b>{!$Label.Core_IPS_CaseRTF_Notetype_External }</b>&nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputText value="{!comnt.createdBy.Name}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name==$Label.Core_IPS_Profile_Name)}"/></b> <br/>                         
+                         <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
+                        </apex:column>
+                        <!--For External when created by DataMigration and public [Communication Log]-->
+                         
+                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName)}" >
+                         <b>{!$Label.Core_IPS_CaseRTF_Notetype_DataMigration}</b>&nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!AND(externalUser, comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name)}"/></b> <br/> 
+                         <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
+                        </apex:column>
+                        
+                        <!--For Internal when created by Internal and public[Note to Customer]-->
+                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepBB_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Manager_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepCW_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c == 'Public to Customers' )}" >    
+                         <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPublic }</b>&nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepBB_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Data_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Manager_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_Ops_Profile_Name, comnt.createdBy.Profile.name!= $Label.Core_IPS_Sales_RepCW_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c == 'Public to Customers')}"/></b> <br/>  
+                         <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>
+                        </apex:column>
+                        
+                        <!--For Internal when created by Internal and not public [Internal note]-->
+                           
+                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name !=$Label.Core_IPS_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Private to Intel')}" >      
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPrivate}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name!=$Label.Core_IPS_Profile_Name,comnt.createdBy.Profile.name!= $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Private to Intel')}"/></b> <br/>      <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-End -->
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
+                            </apex:column>
+                              
+                        
+                        
+                        <!--For Internal and created by External and public [Note from Customer]-->
+                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name ==$Label.Core_IPS_Profile_Name)}" >       
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputText value="{!comnt.createdBy.Name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name==$Label.Core_IPS_Profile_Name)}"/></b> <br/>     
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>  
+                            </apex:column>
+                            
+                            <!--For Internal when created by Internal(Sales Rep BB) and public[Note From Customer]-->
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepBB_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >      
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepBB_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>   
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>   
+                            </apex:column>                  
+                        
+                        <!--For Internal when created by Internal(Data Ops) and public[Note From Customer]-->
+                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Ops_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >          
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Data_Ops_Profile_Name, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>        
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>  
+                            </apex:column>
+                             
+                        
+                        <!--For Internal when created by Internal(Sales Manager) and public[Note From Customer]-->
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_Manager_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >    
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_Manager_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>    
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
+                            </apex:column>
+                            
+                        
+                        <!--For Internal when created by Internal(Sales Ops) and public[Note From Customer]-->
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_Ops_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >   
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_Ops_Profile_Name ,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>  
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
+                            </apex:column>
+                            
+                        
+                        <!--For Internal when created by Internal(Sales Rep Dual) and public[Note From Customer]
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepBBDual_Profile_Name,comnt.Core_IPS_Public__c == true)}" >                                                 
+                         <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepBBDual_Profile_Name)}"/></b> <br/>                         
+                         <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>                         
+                        </apex:column>-->
+                        
+                        <!--For Internal when created by Internal(Sales Rep Dual) and public[Note To Customer]
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepBBDual_Profile_Name,comnt.Core_IPS_Public__c == true)}" >                                                 
+                         <b>{!$Label.Core_IPS_CaseRTF_Notetype_InternalPublic}</b>&nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                         <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND($Profile.Name!=$Label.Core_IPS_Profile_Name, comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepBBDual_Profile_Name)}"/></b> <br/>                         
+                         <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>                         
+                        </apex:column>-->
+                        
+                        <!--For Internal when created by Internal(Sales Rep CW) and public[Note From Customer]-->
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepCW_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >     
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_External}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_Sales_RepCW_Profile_Name,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>   
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
+                            </apex:column>
+                           
+                        
+                       <!--For Internal when created by DataMigration and not public [Communication Log]-->
+                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" > <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-Begin -->
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_DataMigration}</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputText value="{!comnt.CreatedBy.Name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName,comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>                
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>
+                            </apex:column>
+                            
+                            
+                        <!--For Internal when created by DataMigration and public[Communication Log]-->
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}" >  
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_DataMigration }</b>&nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                             <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND(not(externalUser), comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName, comnt.Core_IPS_Case_Comment_Type__c =='Public to Customers')}"/></b> <br/>   
+                             <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>
+                            </apex:column>
+                            
+                        <!-- US67444 - Ajay -->
+                        <!-- For Internal Logged IN User(Agents Only) and case comment created by internal users Private(Agents ONLY) -->                   
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND((userHasAccess),comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents') }">                                                 
+                                <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b>  &nbsp; &nbsp; &nbsp; 
+                              <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; 
+                              <b><apex:outputField value="{!comnt.CreatedBy.name}" rendered="{!AND((userHasAccess),comnt.createdBy.Profile.name == $Label.Core_IPS_CCP_CoreAccess_ProfileName,comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents')}" /></b> <br/> <!-- TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access-End -->
+                              <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField>                         
+                            </apex:column>  
+                            
+                            
+                            <!-- added by venki for pagination DEF:23171-->
+                            <apex:facet name="footer">Showing Page # {!pageNumber} of {!totalPages}</apex:facet> 
+                    </apex:pageBlockTable>
+                    <!-- added by venki for pagination DEF:23171-->
+                <apex:commandLink value="Next"  action="{!next}" rendered="{!disbaleNext}" reRender="comments" /> &nbsp;
+                <apex:commandLink value="Previous"  action="{!Previous}"  rendered="{!disableprevious}"  reRender="comments"/>
+                 </apex:outputPanel>
+                </apex:pageBlockSection>
+                
+               
+
+            </apex:actionRegion>
+           
+             <!--by added by venki 26-4-17 us:60988--->
+            
+             <apex:pageBlockSection title="{!$Label.core_IPS_Premier_Support_Case_Attachments}" id="PSCA"> 
+              
+               <apex:outputPanel rendered="{!caseattDisable}">
+                 <apex:pageBlockTable value="{!case.IPS_Case_Attachments__r}" var="att">
+                     <apex:column value="{!att.Name}"/>
+                     <apex:column value="{!att.Core_File_Name__c}"/>
+                     <apex:column value="{!att.Core_File_Description__c}"/>
+                     <apex:column value="{!att.Core_File_Size__c}"/>
+                     <apex:column value="{!att.Core_Category__c}"/>
+                     <apex:column value="{!att.Core_Upload_Status__c}"/>
+                     <apex:column value="{!att.Core_File_Hyperlink__c}"/>
+                     <apex:column value="{!att.Createddate}"/>
+                      <apex:column value="{!att.Core_FileUploadedBy__r.Name}" headervalue="{!$Label.core_ips_File_Uploaded_By}" />
+                     <apex:column value="{!att.CreatedBy.Name}" headerValue="Created By"/>
+                    
+                 </apex:pageBlockTable>
+              </apex:outputPanel> 
+              <apex:outputText rendered="{!not(caseattDisable)}"> {!$Label.core_IPS_No_Records}</apex:outputText> 
+              <script>twistSection(document.getElementById("{!$Component.PSCA}").childNodes[0].childNodes[0]); </script> 
+            </apex:pageBlockSection>
+                <apex:pageBlockSection title="{!$Label.core_IPS_Interested_Parties}" id="interestedparties"> 
+                
+                 <apex:outputPanel rendered="{!caseintDisable}">
+                 <apex:pageBlockTable value="{!case.Interested_Parties__r}" var="att" >
+                     <apex:column value="{!att.Name}"/>
+                     <apex:column value="{!att.User__r.Name}" headerValue="{!$Label.Core_ips_User}"/>
+                     <apex:column value="{!att.Contact__r.Name}" headerValue="{!$Label.Core_IPS_Contact}"/>
+                     <apex:column value="{!att.Active__c}"/>
+                     <apex:column value="{!att.First_Name__c}"/>
+                     <apex:column value="{!att.Last_Name__c}"/>
+                                         
+                 </apex:pageBlockTable>
+            </apex:outputPanel> 
+              <apex:outputText rendered="{!not(caseintDisable)}"> {!$Label.core_IPS_No_Records}</apex:outputText>
+               <script>twistSection(document.getElementById("{!$Component.interestedparties}").childNodes[0].childNodes[0]); </script>
+            </apex:pageBlockSection>
+            
+            <!------- us60988--------end-------------------->
+          </apex:pageBlock>
+    </apex:form>
+</apex:page>

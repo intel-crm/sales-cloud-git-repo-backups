@@ -1,0 +1,14 @@
+<!-- **************************************************************************************
+    Apex Page Name: Core_Opportunity_Credit
+    Version     : 1.0 
+	Created Date: 12/21/2022
+    Function    : Onclick of "Opportunity Credit" button, it will redirect to Opportunity credit report.
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+* Biswa             		12/21/2022            		Original Version
+    * 
+    ************************************************************************************* -->
+<apex:page standardController="Opportunity" extensions="Core_RedirectToReport" action="{!OppCPageRef}" showHeader="false" sidebar="false">
+
+</apex:page>

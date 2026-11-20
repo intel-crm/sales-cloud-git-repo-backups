@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>Disty Users</audienceName>
+    <container>Tenders</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <isEnabled>true</isEnabled>
+                <permissionName>PSG_External_Disty</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>05b65362-0f7f-489a-a120-9b24118e94bf$#$c1d970fe-30af-4a11-acd8-98157882684d</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Default_Navigation_Menu_Component_Properties</targetValue>
+        </target>
+        <target>
+            <groupName>d5561234-dd94-42ef-a205-17671899ed38</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Quote_Detail_PSG_Quote_Detail_Page</targetValue>
+        </target>
+        <target>
+            <groupName>10af861a-eab1-45b9-9041-1fbf8a58bb32$#$1f3dd10f-2d42-40ec-a219-082a17fb62ca</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Home_Rich_Content_Editor_Component</targetValue>
+        </target>
+    </targets>
+</Audience>

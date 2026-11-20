@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>myRule_1_A1</name>
+        <label>calling Queueable class</label>
+        <locationX>644</locationX>
+        <locationY>479</locationY>
+        <actionName>IPS_APIGEE_Case_Queueable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>myRule_3</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>getCaseIds</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Case_Queueable</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_3_A1</name>
+        <label>Calling Case Status Queueable</label>
+        <locationX>644</locationX>
+        <locationY>779</locationY>
+        <actionName>IPS_APIGEE_Case_Status_Update_Queueable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>myRule_5</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>getCaseIds</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Case_Status_Update_Queueable</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_5_A1</name>
+        <label>Calling Queueable Apex</label>
+        <locationX>644</locationX>
+        <locationY>1079</locationY>
+        <actionName>IPS_APIGEE_Case_Queueable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>myRule_7</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>getCaseIds</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Case_Queueable</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_7_A1</name>
+        <label>Calling Queueable Apex</label>
+        <locationX>644</locationX>
+        <locationY>1379</locationY>
+        <actionName>IPS_APIGEE_Case_Queueable</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>getCaseIds</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Case_Queueable</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>myRule_1</name>
+        <label>Case Depromote Backend Outbound Criteria</label>
+        <locationX>776</locationX>
+        <locationY>371</locationY>
+        <defaultConnector>
+            <targetReference>myRule_3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_Case Depromote Backend Outbound Criteria</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>TRUE_Case Depromote Backend Outbound Criteria</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_3</name>
+        <label>Case Status Update Backend Outbound Criteria</label>
+        <locationX>776</locationX>
+        <locationY>671</locationY>
+        <defaultConnector>
+            <targetReference>myRule_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_Case Status Update Backend Outbound Criteria</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>TRUE_Case Status Update Backend Outbound Criteria</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_5</name>
+        <label>Case Field Update Backend Outbound Criteria</label>
+        <locationX>776</locationX>
+        <locationY>971</locationY>
+        <defaultConnector>
+            <targetReference>myRule_7</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_Case Field Update Backend Outbound Criteria</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>TRUE_Case Field Update Backend Outbound Criteria</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_7</name>
+        <label>Case Backend Outbound Criteria</label>
+        <locationX>776</locationX>
+        <locationY>1271</locationY>
+        <defaultConnectorLabel>FALSE_Case Backend Outbound Criteria</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_Case Backend Outbound Criteria</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the Core IPS Case Backend Outbound Messages process using multiple criteria.
+Case depromote, promote, filed update, and status update moving to new  Apigee bridge</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_TRUE_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( (CONTAINS( {!$Record.Core_IPS_Backend_Previous_Status__c} ,&apos;disassociate&apos;)) ,
+(({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;)||(CONTAINS({!$User.Username}, &apos;ips.file.integrationuser&apos;))))</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!$Record.Core_IPS_Backend_System__c} &lt;&gt; null,
+ {!$Record.Core_IPS_Backend_ID__c} &lt;&gt; null, 
+ {!$Record.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null,
+  {!$Record.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false ,
+   {!$Record.Core_IPS_Backend_Previous_Status__c} &lt;&gt; null, 
+   {!$Record.Core_IPS_Backend_Previous_Status__c} &lt;&gt; &apos;&apos;,
+    OR(ISCHANGED({!$Record.Core_IPS_Backend_Previous_Status__c}),
+     ISCHANGED({!$Record.Core_Sub_Status__c})) ,
+      ({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;))</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!$Record.Core_IPS_Backend_System__c} &lt;&gt; null,
+       {!$Record.Core_IPS_Backend_ID__c} &lt;&gt; null, 
+       {!$Record.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null,
+        {!$Record.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false ,
+        {!$Record.Core_IPS_BK_Flds_UpdatedAt__c} &lt;&gt; {!$Record.Core_IPS_BK_Flds_UpdatedAt_PreVal__c} , 
+        NOT(ISPICKVAL( {!$Record.Status} , &apos;Closed&apos;)), 
+        ({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;) )</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( (({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;)||
+         CONTAINS({!$User.Username}, &apos;ips.file.integrationuser&apos;)),
+         {!$Record.Core_IPS_Backend_ID__c} == null, 
+         {!$Record.Core_IPS_Backend_System__c} !=null,
+          ISPICKVAL( {!$Record.Core_Promote_Status__c} , &apos;In Progress&apos;) ,
+           NOT(ISPICKVAL( {!$Record.Status} , &apos;Closed&apos;)), 
+           ( ISBLANK(TEXT({!$Record.Core_IPS_GEC_Status__c})) 
+           || ISPICKVAL( {!$Record.Core_IPS_GEC_Status__c}, &apos;Approved&apos;) 
+           || ISPICKVAL( {!$Record.Core_IPS_GEC_Status__c}, &apos;Approved with Guardrails&apos;)) )</expression>
+    </formulas>
+    <label>Core IPS Case Backend Outbound Messages_1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>myRule_1</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

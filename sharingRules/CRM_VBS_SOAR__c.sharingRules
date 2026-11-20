@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>CRM_VBS_AMR_SOAR_Committee_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>AMR SOAR Committee Share</label>
+        <sharedTo>
+            <group>CRM_VBS_AMR_SOAR_Committee</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CRM_VBS_Opportunity_Region__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CRM_VBS_APJ_SOAR_Committee_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>APJ SOAR Committee Share</label>
+        <sharedTo>
+            <group>CRM_VBS_APJ_SOAR_Committee</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CRM_VBS_Opportunity_Region__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CRM_VBS_EMEA_SOAR_Committee_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>EMEA SOAR Committee Share</label>
+        <sharedTo>
+            <group>CRM_VBS_EMEA_SOAR_Committee</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CRM_VBS_Opportunity_Region__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CRM_VBS_PRC_SOAR_Committee_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PRC SOAR Committee_Share</label>
+        <sharedTo>
+            <group>CRM_VBS_PRC_SOAR_Committee</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CRM_VBS_Opportunity_Region__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CRM_VBS_WW_SOAR_Committee_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>WW SOAR Committee Share</label>
+        <sharedTo>
+            <group>CRM_VBS_WW_SOAR_Committee</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

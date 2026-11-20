@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Intel® Partner Alliance Artificial Intelligence Data Center Specialty</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_AI_DATA_CENTER_FRA</name>
+    <style>none</style>
+    <subject>Spécialité Centre de données et intelligence artificielle de l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Félicitations, vous vous qualifiez !
+
+
+{!Contact.FirstName},
+
+Bienvenue dans la Spécialité Centre de données et intelligence artificielle de l&apos;Alliance partenaire Intel® ! En tant que Spécialiste Centre de données et intelligence artificielle, vous avez droit à des avantages spéciaux* conçus pour vous aider à développer et à mettre en œuvre vos solutions, notamment :
+
+Désignation d&apos;un Spécialiste Centre de données et intelligence artificielle
+Promotion de votre entreprise en tant que Spécialiste de l&apos;intelligence artificielle par Intel
+Points supplémentaires lors de l&apos;achat de produits serveurs Intel®1
+Accès aux ressources sur l&apos;intelligence artificielle d&apos;Intel
+Invitations prioritaires aux événements de l&apos;industrie et aux sessions de formation
+Accès aux services de test de la plateforme Intel
+
+Pour vous lancer, veuillez envoyer les informations suivantes à l&apos;adresse ITP-AI@intel.com :
+
+
+Contact principal pour les communications envoyées aux Spécialistes de l&apos;intelligence artificielle
+Nom :
+E-mail :
+
+
+Pour obtenir du matériel de vente et de promotion supplémentaire
+Adresse postale :
+Téléphone :
+
+Accéder aux avantages
+
+
+*Les avantages peuvent varier d&apos;une région à l&apos;autre.
+
+Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
+
+Visitez le site https://www.intel.com/content/www/fr/fr/partner-alliance/help/overview.html pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion.
+
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+1 Portefeuille de produits pour centres de données : processeurs Intel® Xeon® ; solutions d&apos;infrastructure réseau Intel® ; cartes mères et systèmes nus pour serveurs ; famille d&apos;unités de stockage SSD Intel® DC ; système d&apos;exploitation Wind River ; gammes de produits FPGA Intel® ; gestion des API ; logiciels HPC Intel® ; Intel® HPC Orchestrator ; Intel® Omni-Path Architecture ; Intel® Solutions for Lustre Software.
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

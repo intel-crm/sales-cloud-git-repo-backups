@@ -1,0 +1,77 @@
+<!----------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_Survey_Response
+*Version     : 1.0 
+*Description:  VF Page to display Survey Responses
+*Modification Log :
+* Developer                   Date                        Description
+* ----------------------------------------------------------------------------                 
+* Amritesh                  12/28/2017                    Created - US8534
+------------------------------------------------------------------------------->
+<apex:page standardController="Case" showHeader="false" applyHtmlTag="false">
+    <apex:includeLightning />
+    <div id="surveyFeedbackId"></div>
+    <script>
+    var uiTheme = "{!$User.UIThemeDisplayed}";
+    console.log('response theme' + uiTheme);
+     if(uiTheme == 'Theme4d'){       
+        $Lightning.use("c:core_IPS", function() {
+            $Lightning.createComponent("c:core_IPS_InlineSurveyFeedbackPage",
+                                       {   
+                                         recordId : "{!$CurrentPage.parameters.id}"  
+                                       },
+                                       "surveyFeedbackId",
+                                       function(component) {
+                                       });
+        }); 
+    }
+    if({!$User.UITheme} == 'Theme4d' || uiTheme == 'Theme3'){
+    window.onload = resizeWindow(); 
+    function resizeWindow(){
+    
+      top.document.getElementById("0661J000002s65l").height = "0px";
+    }
+        }
+    </script>
+    <style>
+        .norecords{display:none;}
+        .pbHeader table{ padding:0 !important; border-bottom-width:0 !important;}
+        .pbHeader{border-bottom-width:0 !important;}
+        .slds-scope .slds-card{border:none!important;}
+    </style>
+    <div class="bRelatedList">       
+        <apex:variable var="lightningDesktop" value="{!$User.UIThemeDisplayed == 'Theme4d'}" />
+        <apex:actionRegion rendered="{! !lightningDesktop}">
+        <apex:pageBlock title="Survey Feedback" mode="detail"  >        
+            <apex:variable value="{!0}" var="surveyResponseCount"/>
+            <table cellpadding="0" cellspacing="0" class="list surveyResponseTable">
+                <tr class="headerRow">
+                    <!--th>{!$ObjectType.Core_IPS_Response__c.fields.Name.Label}</th-->
+                    <th>{!$ObjectType.Core_IPS_Response__c.fields.Core_IPS_Question__c.Label}</th>
+                    <th>{!$ObjectType.Core_IPS_Response__c.fields.Core_IPS_Answer__c.Label}</th>
+                    <th>{!$ObjectType.Core_IPS_Response__c.fields.CreatedDate.Label}</th>
+                </tr>
+                <apex:repeat value="{!Case.Core_IPS_Responses__r}" var="response">
+                    <apex:outputPanel layout="none" rendered="{!response.Core_IPS_Question_Master__r.RecordType.DeveloperName=='Survey'}">
+                        <tr class="dataRow">
+                            <!--td> <apex:outputField value="{!response.Name}"/> </td-->
+                            <td> <apex:outputField value="{!response.Core_IPS_Question__c}"/> </td>
+                            <td> <apex:outputField value="{!response.Core_IPS_Answer__c}"/> </td>
+                            <td> 
+                                <apex:outputField value="{!response.CreatedDate}"/> 
+                                <apex:variable value="{!surveyResponseCount+1}" var="surveyResponseCount"/>
+                            </td>
+                        </tr>
+                    </apex:outputPanel>
+                </apex:repeat>
+            </table>
+            <apex:outputPanel styleClass="norecords">No records to display</apex:outputPanel>
+            <apex:outputPanel rendered="{!surveyResponseCount==0}">
+                <style> 
+                    .surveyResponseTable { display:none; } 
+                    .norecords { display:block; }
+                </style>
+            </apex:outputPanel>
+        </apex:pageBlock>
+        </apex:actionRegion>
+    </div>
+</apex:page>

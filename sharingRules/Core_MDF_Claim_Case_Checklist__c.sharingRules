@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Checklist_Sharing_for_CDB</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Checklist Sharing for CDB</label>
+        <sharedTo>
+            <group>Core_AI_CDB_Integrations_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Claim_Case_Checklist_Checklist_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Shares all Checklist records to Claim Case Checklist group users</description>
+        <label>Claim Case Checklist - Checklist Group</label>
+        <sharedTo>
+            <group>Core_MDF_Claim_Case_Checklist_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

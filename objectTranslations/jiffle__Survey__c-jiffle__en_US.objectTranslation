@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Jifflenow Survey</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Jifflenow Surveys</value>
+    </caseValues>
+    <fields>
+        <label><!-- Meeting Notes --></label>
+        <name>Meeting_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>jiffle__Account__c</name>
+        <relationshipLabel><!-- Jifflenow Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Attendee Name --></label>
+        <name>jiffle__Attendee_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attendee Type --></label>
+        <name>jiffle__Attendee_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attendee UUID --></label>
+        <name>jiffle__Attendee_UUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>jiffle__Campaign__c</name>
+        <relationshipLabel><!-- Jifflenow Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Event Location UUID --></label>
+        <name>jiffle__Event_Location_UUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Name --></label>
+        <name>jiffle__Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event UUID --></label>
+        <name>jiffle__Event_UUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invites --></label>
+        <name>jiffle__Invites__c</name>
+        <relationshipLabel><!-- Jifflenow Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Meeting ID --></label>
+        <name>jiffle__Meeting_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting --></label>
+        <name>jiffle__Meeting__c</name>
+        <relationshipLabel><!-- Jifflenow Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>jiffle__Opportunity__c</name>
+        <relationshipLabel><!-- Jifflenow Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Survey UUID --></label>
+        <name>jiffle__Survey_UUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Survey Response UUID --></label>
+        <name>jiffle__UUID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,10 @@
+<template>
+    <lightning-accordion active-section-name = "Case Description Information" allow-multiple-sections-open>
+        <lightning-accordion-section name="Case Description Information"
+             label="Case Description Information" id ="CaseDescription">
+             <lightning-record-form record-id={recordId} object-api-name={objectApiName} fields={caseDescriptionfields}
+                 columns="1" mode="readonly">
+             </lightning-record-form>
+         </lightning-accordion-section> 
+         </lightning-accordion>
+</template>

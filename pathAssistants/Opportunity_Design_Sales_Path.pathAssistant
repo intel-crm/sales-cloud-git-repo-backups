@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Opportunity Design Sales Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Core_Product_Segment__c</fieldNames>
+        <fieldNames>Core_Product_Application__c</fieldNames>
+        <fieldNames>Core_Consumption_Market__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;Stage Gates: Product Segment, Product Application, Vertical Market + Opportunity Contact &amp;amp; Role&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Discover&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Exit Criteria:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Clear understanding &amp;amp; documentation of problem statement, gaps/needs, desired business results, decision criteria / product requirements (including product application/segment/vertical market)&lt;/li&gt;&lt;li&gt;Confirm customer budget, resources, timeline + key customer contacts&lt;/li&gt;&lt;li&gt;Understand competitive landscape&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Define</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_First_Customer_Ship_Date__c</fieldNames>
+        <fieldNames>Core_Manufacturing_Geo__c</fieldNames>
+        <fieldNames>Core_Production_End_Date__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Stage Gates:&lt;/u&gt; First Customer Ship Date + Business Decision Maker &amp;amp; Manager Approves POP&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Design&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Exit Criteria:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Successfully power on in lab environment&lt;/li&gt;&lt;li&gt;Customer confirms Intel fulfilled business &amp;amp; technical requirements; issues identified &amp;amp; resolved (or resolution path identified)&lt;/li&gt;&lt;li&gt;Opportunity team documents final products / volume / first customer ship date / projected production plans (6QPS)&lt;/li&gt;&lt;li&gt;Primary customer contact documented &amp;amp; confirmed&lt;/li&gt;&lt;li&gt;Obtain &amp;amp; submit formal commitment to purchase (POP) after price negotiations complete&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Design</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>CloseDate</fieldNames>
+        <fieldNames>Core_Status_Update__c</fieldNames>
+        <info>&lt;p&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Scale &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Exit Criteria:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GTM strategy defined including launch, partner marketing, co-selling&lt;/li&gt;&lt;li&gt;Customer &amp;quot;launch&amp;quot;, in production, &amp;amp; shipping to end customers; update production schedule with any refinements&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Design Win</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Competitive_Architecture__c</fieldNames>
+        <fieldNames>Core_Intel_Platform__c</fieldNames>
+        <fieldNames>Core_Volume__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Stage Gates:&lt;/u&gt; Intel Platform + Opportunity Products&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Design &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Exit Criteria:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Propose Solution (including Intel products), define fellow travelers / partners, document expected volume&lt;/li&gt;&lt;li&gt;Enable customer access to appropriate resources (samples, documentation, specifications, BIOS, etc.)&lt;/li&gt;&lt;li&gt;Customer confirms Intel&amp;#39;s solution could addresses need; starts validation &amp;amp; defines support model&lt;/li&gt;&lt;li&gt;Identify / anticipate risks, work to alleviate&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Develop</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Scale &lt;/a&gt;&lt;/li&gt;&lt;li&gt;Co-marketing / co-selling begins&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Production Win</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Description</fieldNames>
+        <fieldNames>Core_Status_Update__c</fieldNames>
+        <fieldNames>Core_Technical_Owner__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;To Create:&lt;/u&gt; Opportunity Name, Account, Opportunity Type, Decision Date&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Stage Gates:&lt;/u&gt; Description, Status Update, Technical Owner&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Assess&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;&lt;u&gt;Exit Criteria:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Identify customer business/technical challenge &amp;amp; environment&lt;/li&gt;&lt;li&gt;Identify customer influencers/decision makers including technical owner&lt;/li&gt;&lt;li&gt;CNDA in place (&lt;span style=&quot;font-size: 13px;&quot;&gt;as applicable&lt;/span&gt;)&lt;/li&gt;&lt;li&gt;Identify Military Intelligence, Nuclear, Defense Space (MINDS) use + execute process (including ITAR) (&lt;span style=&quot;font-size: 13px;&quot;&gt;as applicable&lt;/span&gt;) &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Qualify</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Core_Design_Opportunity</recordTypeName>
+</PathAssistant>

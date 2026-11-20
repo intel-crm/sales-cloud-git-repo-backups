@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_English_Only_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Export_Compliance_Block__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Deactivated__c</field>
+    </columns>
+    <description>B2B report for KitTool Site, just with necessary columns.</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_B2B_Entitlement__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>B2B KitTool Report (removed columns)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>LAST_UPDATE</dateColumn>
+        <endDate>2018-06-04</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-05-01</startDate>
+    </timeFrameFilter>
+</Report>

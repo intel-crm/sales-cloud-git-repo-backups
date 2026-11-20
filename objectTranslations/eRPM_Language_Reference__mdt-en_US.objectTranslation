@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>eRPM Language Reference</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>eRPM Language References</value>
+    </caseValues>
+    <fields>
+        <label><!-- Chat_Deployment_Name --></label>
+        <name>Chat_Deployment_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lang code --></label>
+        <name>Lang_code__c</name>
+    </fields>
+    <fields>
+        <label><!-- LanguageCode2 --></label>
+        <name>LanguageCode2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locale Code --></label>
+        <name>Locale_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- eRPM Language Code --></label>
+        <name>eRPM_Language_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

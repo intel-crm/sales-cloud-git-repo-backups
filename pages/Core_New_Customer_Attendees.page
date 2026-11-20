@@ -1,0 +1,27 @@
+<apex:page standardController="Core_Customer_Attendees__c"  extensions="Core_AMBRelatedObjs" recordSetVar="test" sidebar="false" lightningStylesheets="true">
+  <apex:includeLightning />
+  <apex:form >
+        <div id="lightning"></div>
+        
+        <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">            
+                <script>
+                    window.top.location.href='{!NewCustomerAttendeeUrl}'
+                </script>
+            </apex:outputPanel>
+            
+            <!-- lightning -Theme4d—Modern “Lightning Experience” Salesforce theme-->
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">    
+                    
+                 <script type="text/javascript">
+                   sforce.one.createRecord('Core_Customer_Attendees__c',null,{ 
+                   Core_Account_Meeting_Brief__c : '{!ambId}'
+                });
+            
+            </script>
+                              
+            </apex:outputPanel>
+            
+           
+            
+            </apex:form>
+</apex:page>

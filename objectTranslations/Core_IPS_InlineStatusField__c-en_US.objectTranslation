@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_IPS_InlineStatusField</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_IPS_InlineStatusField</value>
+    </caseValues>
+    <fields>
+        <label><!-- StatusValue --></label>
+        <name>StatusValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- SubStatusValue --></label>
+        <name>SubStatusValue__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

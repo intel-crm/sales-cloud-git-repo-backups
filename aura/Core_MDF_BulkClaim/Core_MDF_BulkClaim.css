@@ -1,0 +1,8 @@
+.THIS .errorMsg {
+    color:#c23934;
+}
+.THIS .informativeText {
+    /*color: var(--lwc-colorTextLink, #0176d3);*/
+    color: 	#0176d3;
+    font-size: 0.8125rem;
+}

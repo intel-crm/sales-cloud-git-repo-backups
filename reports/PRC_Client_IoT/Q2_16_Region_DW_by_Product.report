@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_41501097</developerName>
+        <masterLabel>Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Guo Mu Fang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Junyi He</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>haixia Song</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jinliang Ruan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>lingfeng Liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Zhisheng Liao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>yuxuan sun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Vincent Lee</sourceValue>
+            </sourceValues>
+            <value>South</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Grace Ge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Haoyu Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hua Huang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jian L Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jianfeng Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shuang A Liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dongan Mu</sourceValue>
+            </sourceValues>
+            <value>North</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Huatao Tan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Teng Ma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nan Ma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Suli Jiang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stone Qin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yu V Liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qiang Q Wang</sourceValue>
+            </sourceValues>
+            <value>M&amp;W</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Write_In_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>BucketField_41501097</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <field>SERVICE_MONTH</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Q2&apos;16 Region DW by Product</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>QUANTITY</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-01-01</startDate>
+    </timeFrameFilter>
+</Report>

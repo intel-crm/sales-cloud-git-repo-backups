@@ -1,0 +1,10 @@
+.THIS .list-card-parent-title {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 767px) {
+    .THIS .list-card-parent-title {
+        margin-bottom: 5px;
+    }
+}.THIS {
+}

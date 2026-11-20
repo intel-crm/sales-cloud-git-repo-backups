@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Notification:  Your {!relatedTo.PMP_Partner_Offering_Nm__c} Showcase Offering has been approved and will be published in Showcase once pre-release product/s are released." recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingFuturePubliPreRelease offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

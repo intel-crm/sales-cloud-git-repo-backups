@@ -1,0 +1,21 @@
+<aura:component>
+    <aura:handler name="init" value="{!this}" access="global" action="{!c.doInit}" />
+    <aura:attribute name="documentTypes" type="String" />
+    <aura:attribute name="element" type="String" />
+    <aura:attribute name="checkboxName" type="String" />
+    <aura:attribute name="condition" type="Boolean" default="false" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="checkboxvalue" type="Boolean" default="false" />
+    <aura:handler name="change" value="{!v.checkboxvalue}" action="{!c.handleTable}" />
+    <aura:registerEvent name="checkboxChangeEvent" type="c:Core_MDF_checkboxChangeEvent"/>
+    
+    <aura:if isTrue="{!v.condition}">
+        <lightning:input aura:id="testCheckbox" type="checkbox" value="true" checked="true"
+            name="{!v.checkboxName}" onchange="{!c.fireParentEvent}" disabled ="{!v.disabled}" />
+            <aura:set attribute="else">
+               
+                <lightning:input aura:id="testCheckbox" type="checkbox" value="false" checked="false"
+                name="{!v.checkboxName}" onchange="{!c.fireParentEvent}" disabled ="{!v.disabled}" />
+            </aura:set>
+    </aura:if>
+</aura:component>

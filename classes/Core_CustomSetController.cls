@@ -1,0 +1,144 @@
+/****************************************************************************************************************************************
+* Class Name  : Core_CustomSetController
+* Version     : 1.0 
+* Created Date: 5 Oct 2017
+* Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* Team: PopcornApps         10/5/2017               Set Controller to create Premier Support Projects As IPS EXternal Customer 
+*****************************************************************************************************************************************/
+public class Core_CustomSetController {
+    
+    private  with sharing class WithSharingSetController{
+        ApexPages.StandardSetController getSetCntrlr(String query) {
+            return new ApexPages.StandardSetController(Database.getQueryLocator(query));
+        }
+    }
+    
+    public String query{get; private set;}
+    public String searchColumnName{get;set;}
+    public String searchString{get;set;}
+    public Integer pagesize {get;set;}
+    public List<Integer> pagesizeList {get;set;}
+    public Boolean isExisting {get;set;}
+    public static final String RECORDS_LIMIT = ' Limit 10000 ';
+    //public static final String ORDER_BY = 'ORDER by Name' ;
+    
+    public List<String> columnNames {get; private set;}
+   // private String recordId {get;set;}
+    //private String acctId {get;set;}
+   // private String contId {get;set;}
+    private Boolean isWithSharing {get;set;}
+    public Boolean enableSearch {get; private set;}
+    
+    public Map<Id, Wrapper> selectedRecords {get;set;}
+    public List<Wrapper> getAllSelectedRecords(){
+        return selectedRecords.values();
+    }
+    //Initializing Variables
+    private void init(){
+        selectedRecords = new Map<Id, Wrapper>();
+        this.pagesize = 10;
+        this.isExisting = false;
+        this.isWithSharing = false;
+        this.pagesizeList = new List<Integer>{10,20,50,100};
+            
+            }
+    //Getting the Parameters 
+    public Core_CustomSetController(String qry, List<String> cols,  Boolean isWithSharing,  Boolean xsting, String columnNameToSearch){
+        init();
+        this.query = qry;
+        this.columnNames = cols;
+        this.isWithSharing = isWithSharing;
+        this.isExisting = xsting;
+        if(String.isNotEmpty(columnNameToSearch)){
+            this.enableSearch = true;
+            this.searchColumnName = columnNameToSearch;
+        }
+        else{
+            this.enableSearch = false;
+        }
+    }
+    //Getting Search Condition String
+    public String getSearchCondition(){
+        String searchCondition = '';
+        if(String.isNotBlank(searchString) && String.isNotBlank(searchColumnName)){
+            for(String col : searchColumnName.split(',')){
+                if(searchCondition.length() > 0)
+                    searchCondition = searchCondition +' OR ';
+                
+                searchCondition = searchCondition + col+' like \'%'+searchString+'%\'';
+            }
+            searchCondition = ' AND (  ' +searchCondition+' ) ';
+        }
+        return searchCondition;
+    }
+    //Set Controller
+    public ApexPages.StandardSetController setCntrlr {
+        get {
+            if(setCntrlr == null) {
+                sobjectRecords = null;
+                String finalquery = query + getSearchCondition() +' ORDER by Name '+ RECORDS_LIMIT;
+                if(isWithSharing == false){
+                    this.setCntrlr = new ApexPages.StandardSetController(Database.getQueryLocator(finalquery));
+                }else{
+                    WithSharingSetController tmp = new WithSharingSetController();
+                    this.setCntrlr = tmp.getSetCntrlr(finalquery);
+                }
+                this.setCntrlr.setPageSize(pagesize);
+            }
+            return setCntrlr;
+        }
+        set;
+    }
+    //Used in Wrapper Class sobjectRecords
+    public List<sObject> getRecords(){
+        return setCntrlr.getRecords();
+    }
+    //Wrapper to get Selected Records
+    public List<Wrapper> getSelectedSobjectRecords(){
+        return SObjectRecords;
+    }
+    //Wrapper for Selecting/Unselecting Records from tables.
+    public List<Wrapper> sobjectRecords{
+        public get{
+            List<SObject> lst = setCntrlr.getRecords();
+            if(sobjectRecords == null || sobjectRecords.isEmpty()){
+                
+                sobjectRecords = new List<Wrapper>();
+                for(SObject s : lst){
+                    Wrapper w = new Wrapper(s);
+                    sobjectRecords.add(w);
+                    //IF -  Existing selected records section
+                    //ELSE - selected Section or aviable records section
+                    if(isExisting == true){
+                        w.selected = isExisting;
+                    }else{
+                        if(selectedRecords.containsKey(s.Id)){
+                            w.selected = true;
+                        }else {
+                            w.selected = false;
+                        }
+                        
+                    }
+                    w.isExisting = isExisting;
+                }
+            }
+            return sobjectRecords;
+        }public set;
+    }
+    
+    //Wrapper used for Updating Selected Records Table
+    public class Wrapper{
+        public Boolean selected {get;set;}
+        public sObject sobj {get;set;}
+        public Boolean isExisting = false;
+        public Wrapper(SObject s){
+            sobj = s;
+        }
+        public Wrapper(sObject s, Boolean f){
+            sobj = s;
+            selected = f;
+        }
+    }    
+}

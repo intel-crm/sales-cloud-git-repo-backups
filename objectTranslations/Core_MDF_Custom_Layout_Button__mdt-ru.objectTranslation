@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Button Name --></label>
+        <name>Core_MDF_Button_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Cancel Campaign</masterLabel>
+            <translation>Отменить кампанию</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancel Claim</masterLabel>
+            <translation>Отменить заявку</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Owner</masterLabel>
+            <translation><!-- Change Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clone</masterLabel>
+            <translation>Клонировать</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clone Claim</masterLabel>
+            <translation>Скопировать заявку на возмещение</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close</masterLabel>
+            <translation>Закрыть</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete PIC Review</masterLabel>
+            <translation><!-- Complete PIC Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete Payment Clearance Processing</masterLabel>
+            <translation><!-- Complete Payment Clearance Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Activity</masterLabel>
+            <translation>Создать маркетинговое действие</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Claim</masterLabel>
+            <translation>Создать заявку</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edit</masterLabel>
+            <translation>Правка</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Claim</masterLabel>
+            <translation>Приостановить заявку</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual Audit</masterLabel>
+            <translation><!-- Manual Audit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notify Partner</masterLabel>
+            <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release Hold</masterLabel>
+            <translation>Отменить приостановку</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reopen for Claiming</masterLabel>
+            <translation>Повторите открытие для подачи заявки</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submit For Approval</masterLabel>
+            <translation>Отправить на утверждение</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submit For PIC</masterLabel>
+            <translation>Отправить для проверки детализации</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submit for Payment Clearance</masterLabel>
+            <translation>Отправить для проверки платежа</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Button Type --></label>
+        <name>Core_MDF_Button_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>LightningComponent</masterLabel>
+            <translation><!-- LightningComponent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update a Record</masterLabel>
+            <translation><!-- Update a Record --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Filter Criteria Field --></label>
+        <name>Core_MDF_Filter_Criteria_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundClaim</masterLabel>
+            <translation><!-- PartnerFundClaim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundRequest</masterLabel>
+            <translation><!-- PartnerFundRequest --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation>Кампания</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim</masterLabel>
+            <translation><!-- Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity</masterLabel>
+            <translation>Совместные маркетинговые действия</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outcome-Based Campaign</masterLabel>
+            <translation>Кампания на основе результатов</translation>
+        </picklistValues>
+    </fields>
+    
+</CustomObjectTranslation>

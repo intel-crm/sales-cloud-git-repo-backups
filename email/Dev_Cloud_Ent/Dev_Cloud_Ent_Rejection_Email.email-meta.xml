@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Enterprise Access Rejection</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Dev_Cloud_Ent_Rejection_Email</name>
+    <style>none</style>
+    <subject>Enterprise Access Rejection</subject>
+    <textOnly>Intel Registration Confirmation
+
+INTEL® ON DEMAND WEB SERVICES
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+
+Thank you for requesting access to Intel® On Demand  web services testing environment (SBX)  . Please allow 3-5 business days for your request to be reviewed.
+
+
+
+Once approved, you will receive a confirmation e-mail. Please wait to log in to the Intel® On Demand web services testing environment until AFTER you receive the confirmation email.
+
+Thank you for your patience.
+
+If you have any questions, or do not receive an email regarding your access after one week, please contact us.
+
+
+Sincerely,
+
+Registration Administrator
+
+Intel® On Demand Team
+
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+
+Intel is committed to protecting your privacy. For more information,
+please see the Intel Privacy Notice.
+
+Legal Information | Trademarks Intel Corporation. All rights reserved.
+*Other names and brands may be claimed as the property of others.
+**Intel is not responsible for content of sites outside our intranet sites.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="renderCriteriaRuleComponent" type="boolean" default="false" /> 
+    <div class="modal-header slds-modal__header slds-size_1-of-1"></div>
+    <div class="modal-header slds-modal__header slds-size_1-of-1" Style="position:relative;">
+        
+        <center><lightning:button class="slds-button slds-button_brand" type="submit" label="Manage Criteria Rule" onclick="{!c.callComponent}" /></center>
+        
+        <!-- Calling the criteria rule component on click of the button-->
+        <aura:if isTrue="{!v.renderCriteriaRuleComponent}">
+            <c:Core_MDF_CriteriaRule recordId="{!v.recordId}"/>
+        </aura:if>
+    </div>  
+    
+</aura:component>

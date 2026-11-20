@@ -1,0 +1,53 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId">
+    <!-- <aura:attribute name="storeName" type="string" default="Settings" />
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="breadcrumbData" type="object[]" />
+    <aura:attribute name="offeringId" type="Id" />
+    <aura:attribute name="modalOpen" type="Boolean" default="false" description="Internal component state"/>
+    
+    <aura:attribute name="scale" type="string" />
+    <aura:attribute name="width" type="integer" />
+    <aura:attribute name="height" type="integer" />
+    <aura:attribute name="styleTransform" type="string" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	 -->
+    <!-- <div aura:id="adminReview"> -->
+       <!-- <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">-->
+            <!-- <div aura:id="outerContainer"  onclick="{!c.handleClick}">
+                <div aura:id="innerContent" class="scaledInnerContainer" >
+                    <div >
+                        <c:MarketplaceAdminDetails offeringId="{! v.offeringId}"/>
+                        
+                    </div>
+                </div>
+            </div> -->
+           <!-- <aura:set attribute="else">
+                <div class="slds-p-horizontal_medium slds-p-vertical_large">
+                    <span  onclick="{!c.handleToggleModal}"><c:IntelButton class="largeMobile" >Show Mobile Preview</c:IntelButton></span>
+                </div>
+                Admin Review Contents Mobile Version-->
+                
+                <!--<div class="create-offering-overlay slds-hide" aura:id="overlay">
+                    <div class="create-offering close-heading">
+                        <h3 class="heading-28 color-white">{!$Label.c.PMP_Admin_Review}</h3>
+                        <a class="close" href="#" aria-label="Close" onclick="{!c.handleToggleModal}">
+                            <lightning:icon class="icn" iconName="utility:close" size="small" />
+                        </a>
+                    </div>
+                    <div class="body create-offering-body">
+                        <div class="marquee">
+                            Admin Review Contents Mobile
+                        </div>                        
+                    </div>
+                </div>
+            </aura:set>
+        </aura:if>
+-->        
+        
+        <!-- Summary/preview step and related UI for offerings is now commented out. -->
+        <!-- <c:MarketplaceAdminReview ... /> -->
+        
+    <!-- </div> -->
+    
+</aura:component>

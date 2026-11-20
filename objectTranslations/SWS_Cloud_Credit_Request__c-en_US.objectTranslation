@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cloud Credit Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cloud Credit Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Additional Event Information --></label>
+        <name>SWS_Additional_Event_Information__c</name>
+    </fields>
+    <fields>
+        <help><!-- SATG and Community and Academic Outreach programs may request the following types of cloud coupons. --></help>
+        <label><!-- Community Program – Coupon Type --></label>
+        <name>SWS_Community_Program_Coupon_Type__c</name>
+        <picklistValues>
+            <masterLabel>Innovator coupon – Intended for an individual user and covers approximately 7 days of bare-metal access.</masterLabel>
+            <translation><!-- Innovator coupon – Intended for an individual user and covers approximately 7 days of bare-metal access. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Researcher coupon – Intended for Intel COEs, can be used by 5 participants and covers approximately 7 days of bare-metal access.</masterLabel>
+            <translation><!-- Researcher coupon – Intended for Intel COEs, can be used by 5 participants and covers approximately 7 days of bare-metal access. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student coupon – Intended for up to 30 students and covers approximately 14 days of virtual-machine access.</masterLabel>
+            <translation><!-- Student coupon – Intended for up to 30 students and covers approximately 14 days of virtual-machine access. --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Which Intel program is requesting a cloud coupon?
+Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com --></help>
+        <label><!-- Community Program Name --></label>
+        <name>SWS_Community_Program_Name__c</name>
+        <picklistValues>
+            <masterLabel>Software &amp; Advanced Technology Group: oneAPI Community and Academic Outreach</masterLabel>
+            <translation><!-- Software &amp; Advanced Technology Group: oneAPI Community and Academic Outreach --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Company Name --></label>
+        <name>SWS_Company_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compute/Service Requirements --></label>
+        <name>SWS_Compute_Service_Requirements__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>SWS_Contact__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Conversion Status --></label>
+        <name>SWS_Conversion_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- See Intel Directory https://workers.intel.com/#/ --></help>
+        <label><!-- Cost Center --></label>
+        <name>SWS_Cost_Center__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select Customer&apos;s country name, e.g., United States or South Korea. NOTE: Intel® Tiber™ AI Cloud and cloud coupons are not yet available in China. --></help>
+        <label><!-- Customer&apos;s Country --></label>
+        <name>SWS_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>SWS_Coupon_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Code --></label>
+        <name>SWS_Coupon_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Created On --></label>
+        <name>SWS_Coupon_Created_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Created On --></label>
+        <name>SWS_Coupon_Created_On_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Creator --></label>
+        <name>SWS_Coupon_Creator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Expiration Date --></label>
+        <name>SWS_Coupon_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Expiration Date --></label>
+        <name>SWS_Coupon_Expiration_Date_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Status --></label>
+        <name>SWS_Coupon_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Default credit coupon expiration date is typically 3 months. Credits do not guarantee availability in the Console. --></help>
+        <label><!-- Cloud Coupon Type --></label>
+        <name>SWS_Coupon_Type__c</name>
+        <picklistValues>
+            <masterLabel>Custom – Request for a more extended period of continuous bare-metal system access (requires approval and SalesForce ID if for external customer)</masterLabel>
+            <translation><!-- Custom – Request for a more extended period of continuous bare-metal system access (requires approval and SalesForce ID if for external customer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large – Covers 8 weeks of continuous bare-metal system access</masterLabel>
+            <translation><!-- Large – Covers 8 weeks of continuous bare-metal system access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium – Covers 4 weeks of continuous bare-metal system access</masterLabel>
+            <translation><!-- Medium – Covers 4 weeks of continuous bare-metal system access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard – Covers 2 appr. weeks of continuous bare-metal system access</masterLabel>
+            <translation><!-- Standard – Covers 2 appr. weeks of continuous bare-metal system access --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Coupon Valid From --></label>
+        <name>SWS_Coupon_Valid_From__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Valid From --></label>
+        <name>SWS_Coupon_Valid_From_fm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter only coupon value without the currency symbol (Eg. For a coupon of $50 enter &apos;50&apos; below and not &apos;$50&apos;) --></help>
+        <label><!-- Coupon Value --></label>
+        <name>SWS_Coupon_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Once this checkbox is selected and you click save, you cannot undo the creation of lead. --></help>
+        <label><!-- Create New Lead --></label>
+        <name>SWS_Create_Lead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Create New Lead --></label>
+        <name>SWS_Create_Lead_fm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Example: for large denomiation Credit Request --></help>
+        <label><!-- Custom Coupon Request --></label>
+        <name>SWS_Custom_Coupon_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Days Awaiting submission --></label>
+        <name>SWS_Duration_For_Awaiting_Submission__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Days taken For Coupon Generation --></label>
+        <name>SWS_Duration_For_Coupon_Generation__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Days taken For Coupon Rejection --></label>
+        <name>SWS_Duration_For_Coupon_Rejection__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Verification --></label>
+        <name>SWS_Email_Verification__c</name>
+        <picklistValues>
+            <masterLabel>Not Verified</masterLabel>
+            <translation><!-- Not Verified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verified</masterLabel>
+            <translation><!-- Verified --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Email Verification --></label>
+        <name>SWS_Email_Verification_fm__c</name>
+    </fields>
+    <fields>
+        <help><!-- AI Cloud credit coupons will be sent to this email address and the Submitter will be CC&apos;d. If you prefer that this customer does not receive an automatic email from Salesforce regarding the requested credits, please enter a different email address. --></help>
+        <label><!-- Customer Email Address --></label>
+        <name>SWS_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Error --></label>
+        <name>SWS_Error__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide as much detail as possible about the required cloud compute environment, including any customizations required to support the event. --></help>
+        <label><!-- Event Compute Environment Details --></label>
+        <name>SWS_Event_Compute_Environment_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the country where the event will take place. --></help>
+        <label><!-- Event Country --></label>
+        <name>SWS_Event_Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event End Date --></label>
+        <name>SWS_Event_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Name --></label>
+        <name>SWS_Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Start Date --></label>
+        <name>SWS_Event_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>SWS_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>SWS_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>SWS_Full_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Visit https://console.cloud.intel.com/ &gt; Hardware Catalogue for more information (e.g., VM size, Bare Metal, etc.) HW reservations are not guaranteed with this Request Form. --></help>
+        <label><!-- HW Compute Platform --></label>
+        <name>SWS_HW_Compute_Platform_PL__c</name>
+        <picklistValues>
+            <masterLabel>Intel® Gaudi Learning Server</masterLabel>
+            <translation><!-- Intel® Gaudi Learning Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Max Series GPU</masterLabel>
+            <translation><!-- Intel® Max Series GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Scalable processor</masterLabel>
+            <translation><!-- Intel® Xeon® Scalable processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jupyter Notebook</masterLabel>
+            <translation><!-- Jupyter Notebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple platforms</masterLabel>
+            <translation><!-- Multiple platforms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Visit https://console.cloud.intel.com/ &gt; Hardware Catalogue for more information. State whether your customer will need VM Small/Med/Large/Bare Metal, how many machines/instances and for how long (Start and End Date). 
+HW reservations are not guaranteed with this Request Form. --></help>
+        <label><!-- Additional compute platform details --></label>
+        <name>SWS_HW_Compute_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- IDC Error For Admin --></label>
+        <name>SWS_IDCErrorForAdmin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Error Time --></label>
+        <name>SWS_IDC_Error_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- IDC Response Time --></label>
+        <name>SWS_IDC_Response_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel BU/Field/Sales Contact --></label>
+        <name>SWS_Intel_BU_Field_Sales_Contact__c</name>
+    </fields>
+    <fields>
+        <help><!-- What type of compute will help you achieve your AI goals? --></help>
+        <label><!-- Interested in --></label>
+        <name>SWS_Interested_in__c</name>
+        <picklistValues>
+            <masterLabel>Bare Metal CPU</masterLabel>
+            <translation><!-- Bare Metal CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clusters</masterLabel>
+            <translation><!-- Clusters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GPU and accelerators</masterLabel>
+            <translation><!-- GPU and accelerators --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Learning Notebooks</masterLabel>
+            <translation><!-- Learning Notebooks --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Check this box if the coupon is a giveaway. For giveaway coupons, filling in Compute/Service Requirements (e.g., HW Reservations) is not required. --></help>
+        <label><!-- Is Coupon a Giveaway? --></label>
+        <name>SWS_Is_Giveaway__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box for a standard coupon. Leave it unchecked for a premium coupon. --></help>
+        <label><!-- Is the coupon for standard account? --></label>
+        <name>SWS_Is_Standard__c</name>
+    </fields>
+    <fields>
+        <label><!-- SWS_Is_Submitted_For_Coupon --></label>
+        <name>SWS_Is_Submitted_For_Coupon__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type &apos;Unknown&apos; if you don&apos;t know. --></help>
+        <label><!-- Job Title --></label>
+        <name>SWS_Job_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>SWS_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Redeem Run Date --></label>
+        <name>SWS_Last_Redeem_Run_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Redeemed Date --></label>
+        <name>SWS_Last_redeemed_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>SWS_Lead__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Is Locked? --></label>
+        <name>SWS_Locked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of users --></label>
+        <name>SWS_No_Of_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Participants --></label>
+        <name>SWS_Number_of_Participants__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Redemptions --></label>
+        <name>SWS_Number_of_Redemptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>SWS_Opportunity_Related__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Processing Team --></label>
+        <name>SWS_Processing_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Chosen --></label>
+        <name>SWS_Product_Chosen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter --></label>
+        <name>SWS_Quarter__c</name>
+    </fields>
+    <fields>
+        <help><!-- Click on the &apos;Get Coupon Redemption info&apos; button on the top right for the latest coupon redemption details --></help>
+        <label><!-- Coupon Redeemed --></label>
+        <name>SWS_Redeemed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Response --></label>
+        <name>SWS_Redemption_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rejected By --></label>
+        <name>SWS_Rejected_By__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests (Rejected By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rejected On --></label>
+        <name>SWS_Rejected_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Replied back --></label>
+        <name>SWS_Replied_back__c</name>
+    </fields>
+    <fields>
+        <label><!-- SWS_RequestStatus_fm --></label>
+        <name>SWS_RequestStatus_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rejection Justification --></label>
+        <name>SWS_Request_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Status --></label>
+        <name>SWS_Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>Awaiting Submission</masterLabel>
+            <translation><!-- Awaiting Submission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coupon Generated</masterLabel>
+            <translation><!-- Coupon Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coupon Generation in Progress</masterLabel>
+            <translation><!-- Coupon Generation in Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Request Status --></label>
+        <name>SWS_Request_Status_fm__c</name>
+        <picklistValues>
+            <masterLabel>Awaiting Submission</masterLabel>
+            <translation><!-- Awaiting Submission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coupon Generated</masterLabel>
+            <translation><!-- Coupon Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coupon Generation in Progress</masterLabel>
+            <translation><!-- Coupon Generation in Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select the type or reason you are requesting a cloud coupon. --></help>
+        <label><!-- Request Type --></label>
+        <name>SWS_Request_Type__c</name>
+        <picklistValues>
+            <masterLabel>External Customer – Intel platform evaluation for external customer(s).</masterLabel>
+            <translation><!-- External Customer – Intel platform evaluation for external customer(s). --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel internal use – one-time or ongoing use for internal development and research projects</masterLabel>
+            <translation><!-- Intel internal use – one-time or ongoing use for internal development and research projects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One-time external event – one-time use by participants attending an Intel community or customer outreach event (e.g., workshop, training, or hackathon).</masterLabel>
+            <translation><!-- One-time external event – one-time use by participants attending an Intel community or customer outreach event (e.g., workshop, training, or hackathon). --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research and education – ongoing use by participants of an Intel research and education community outreach program.</masterLabel>
+            <translation><!-- Research and education – ongoing use by participants of an Intel research and education community outreach program. --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Credit Request Type --></label>
+        <name>SWS_Request_Type_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resend Email Timestamp --></label>
+        <name>SWS_Resend_Email_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resend Email User Name --></label>
+        <name>SWS_Resend_Email_User_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Code --></label>
+        <name>SWS_Response_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Opportunity ID is required for large and custom compute platform requests. --></help>
+        <label><!-- Salesforce Opportunity ID --></label>
+        <name>SWS_Salesforce_Opportunity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter Email same as Requester Email --></label>
+        <name>SWS_SameAsSubmitter_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>SWS_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted By --></label>
+        <name>SWS_Submitted_By__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests (Submitted By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submitted On --></label>
+        <name>SWS_Submitted_On__c</name>
+    </fields>
+    <fields>
+        <help><!-- Submitter email will be cc&apos;d in the coupon email --></help>
+        <label><!-- Submitter Email Address --></label>
+        <name>SWS_Submitter_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter Last Name --></label>
+        <name>SWS_Submitter_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter Name --></label>
+        <name>SWS_Submitter_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter Email same as Customer Email --></label>
+        <name>SWS_Submitter_Requster_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- Describe your AI Cloud needs, and we will help you get started or resolve any issues. --></help>
+        <label><!-- Tell us more --></label>
+        <name>SWS_Tell_us_more__c</name>
+    </fields>
+    <fields>
+        <label><!-- Totally Redeemed --></label>
+        <name>SWS_Totally_Redeemed__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional use case details (e.g., AI model size) --></help>
+        <label><!-- Use Case Details --></label>
+        <name>SWS_Use_Case_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide as much detail as possible about the required cloud compute environment, including any customization requirements. --></help>
+        <label><!-- Use Case --></label>
+        <name>SWS_Use_Case__c</name>
+        <picklistValues>
+            <masterLabel>AI - Development</masterLabel>
+            <translation><!-- AI - Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI - Fine-tuning</masterLabel>
+            <translation><!-- AI - Fine-tuning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI - Inferencing</masterLabel>
+            <translation><!-- AI - Inferencing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI - Training</masterLabel>
+            <translation><!-- AI - Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC - Benchmark testing</masterLabel>
+            <translation><!-- HPC - Benchmark testing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC - Development</masterLabel>
+            <translation><!-- HPC - Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Coupon Request --></label>
+        <name>SWS_coupon_request__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coupon Response --></label>
+        <name>SWS_coupon_response__c</name>
+    </fields>
+    <fields>
+        <label><!-- redeemed_expired --></label>
+        <name>SWS_redeemed_expired__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Resends --></label>
+        <name>SWS_resend_email_click_count__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Cloud Credit Request --></label>
+        <name>SWS_Cloud_Credit_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Inquiry --></label>
+        <name>SWS_Inquiry</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Community_Program_Coupon_cannot_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Company_Name_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Compute_Service_Requirement_cannot_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Cost_Center_cannot_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Country_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Coupon_Value_cannot_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Coupon_type_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Coupon value should be greater than 0 --></errorMessage>
+        <name>Coupon_value_should_be_grater_than_0</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End date cannot be less than current date --></errorMessage>
+        <name>End_Date_Greater_than_Current_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End date cannot exceed 1 year + 1 day from today. --></errorMessage>
+        <name>End_date_not_exceeds_more_than_1_year</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Event end date should not less than event start date --></errorMessage>
+        <name>End_date_not_less_than_current_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Event_Compute_Environmen_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Event_End_Date_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Event_Start_Date_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Event_country_name_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry date cannot be less than current date --></errorMessage>
+        <name>Expiry_Date_Greater_than_Start_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Expiry_Date_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter atleast one alpha numeric character. --></errorMessage>
+        <name>FirstName_should_have_atleast_one_letter</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>HW_Compute_Platform_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>HW_Compute_Quantity_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select a different value, as this is not a Giveaway coupon. --></errorMessage>
+        <name>Incorrect_value_for_HW_Compute_Platform</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select a different value, as this is not a Giveaway coupon. --></errorMessage>
+        <name>Incorrect_value_for_Use_Case</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Intel_BU_Field_Sales_Con_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record is locked, you cannot edit Submitted/Coupon Generated record. --></errorMessage>
+        <name>Is_Locked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Job_Title_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>No_Of_user_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Number of Users cannot be negative or zero value --></errorMessage>
+        <name>No_Of_user_cannot_be_zero_or_negative</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Number_of_Participants_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Number of users must be a positive whole number, cannot include decimal values and should not exceed 50. --></errorMessage>
+        <name>Number_of_part_accept_only_whole_numbers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Number of users should not contain decimal value --></errorMessage>
+        <name>Number_of_user_accept_only_whole_numbers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Number cannot exceed 50 per request. --></errorMessage>
+        <name>Number_of_user_not_more_than_1000</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Program_name_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- RecordTypeId, Request Type, First Name, Last Name, Customer Email Address, Submitter Name, Submitter Email Address,Company Name,Event Name and Community Program Name are required fields to create a record based on the request type. --></errorMessage>
+        <name>Required_field_for_Cloud_Credit_Request</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- RecordTypeId, First Name, Last Name, Customer Email Address, Use Case, Interested in, Tell us more are required field to create a record. --></errorMessage>
+        <name>Required_field_for_Inquiry_record</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have the required permission to edit the Cloud Credit Request. --></errorMessage>
+        <name>SWS_Cannot_edit_Credit_with_ITAC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have the required permission to edit the Inquiry Request. --></errorMessage>
+        <name>SWS_Cannot_edit_Inquiry_with_IDC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can either choose to create a new lead or select an existing lead for the credit request. Please fill out only one of the fields. --></errorMessage>
+        <name>SWS_Choose_any_of_lead</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t change this value --></errorMessage>
+        <name>SW_Lead_creation_validation_rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Start_date_is_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start date should not be past date --></errorMessage>
+        <name>Start_date_less_than_current_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Event start date should not be past date --></errorMessage>
+        <name>Start_date_not_less_than_current_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start date cannot be earlier than 1 month from today. --></errorMessage>
+        <name>Start_date_not_less_than_one_month</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Submitter_Email_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Submitter_Name_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Use_Case_cannot_be_blank</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Download_Template --></label>
+        <name>Download_Template</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Submit_Coupon_for_Multiple_Requests --></label>
+        <name>Submit_Coupon_for_Multiple_Requests</name>
+    </webLinks>
+</CustomObjectTranslation>

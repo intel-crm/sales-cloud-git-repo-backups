@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This tab is used to open add intel support team members component on premier support project related list.</description>
+    <label>Add Intel Support Team Members</label>
+    <lwcComponent>core_IPS_supportTeamMemberLex</lwcComponent>
+    <motif>Custom15: People</motif>
+</CustomTab>

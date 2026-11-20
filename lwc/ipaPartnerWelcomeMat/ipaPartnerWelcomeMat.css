@@ -1,0 +1,57 @@
+.main {
+    padding: 2rem 1rem 1rem 1rem;
+}
+.tiles {
+    padding: 1rem;
+}
+/* Go To Partner button CSS starts here*/
+.home-btn{
+    height: 50px;
+    margin-top: 20px;
+}
+.home-btn a.slds-button_outline-brand{
+    width: 51%;
+    height: 100%;
+    color: #fff !important;
+    border-color: none;
+    border: 2px solid #fff !important;
+    background: none;
+}
+.home-btn .slds-button_outline-brand:active,
+.home-btn .slds-button_outline-brand:hover, 
+.home-btn .slds-button_outline-brand:focus {
+    background-color: none;
+    border: 2px solid #fff !important;
+}
+/* Go To Partner button CSS ends here*/
+@media only screen and (max-width: 767px) {
+
+}
+@media only screen and (min-width: 768px) {
+    .container-wrap {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        min-height: calc(100vh - 4rem);
+        margin: 0 auto;
+        align-items: center;
+    }
+    .main {
+        padding: 4.375rem 1rem;
+    }
+    .tiles {
+        padding: 2rem 1rem;
+    }
+    .column {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container-wrap {
+        width: 52.125rem;
+    }
+    .column {
+        width: 50%;
+    }
+}

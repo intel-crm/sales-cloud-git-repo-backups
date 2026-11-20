@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Integration Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Integration Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PCC_Partner_Program__c</name>
+        <relationshipLabel><!-- Integration Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Requested URL --></label>
+        <name>PCC_Requested_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Callout Type --></label>
+        <name>PRM_Callout_Type__c</name>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Class --></label>
+        <name>PRM_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>PRM_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>PRM_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Module --></label>
+        <name>PRM_Module__c</name>
+        <picklistValues>
+            <masterLabel>Admin Registration</masterLabel>
+            <translation><!-- Admin Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID</masterLabel>
+            <translation><!-- OPID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OnDemand OPID</masterLabel>
+            <translation><!-- OnDemand OPID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Points Data</masterLabel>
+            <translation><!-- Points Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Registration</masterLabel>
+            <translation><!-- Self Registration --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record ID --></label>
+        <name>PRM_Record_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Payload --></label>
+        <name>PRM_Request_Payload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request timestamp --></label>
+        <name>PRM_Request_timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Code --></label>
+        <name>PRM_Response_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Payload --></label>
+        <name>PRM_Response_Payload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response timestamp --></label>
+        <name>PRM_Response_timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Name --></label>
+        <name>PRM_System_Name__c</name>
+        <picklistValues>
+            <masterLabel>AEM</masterLabel>
+            <translation><!-- AEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AGS</masterLabel>
+            <translation><!-- AGS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIM</masterLabel>
+            <translation><!-- CIM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collinsion</masterLabel>
+            <translation><!-- Collinsion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERPM</masterLabel>
+            <translation><!-- ERPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>M2M</masterLabel>
+            <translation><!-- M2M --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Transaction time(in seconds) --></label>
+        <name>PRM_Transaction_time__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

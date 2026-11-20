@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Turn IPS features on/off</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Category__c</fullName>
+        <description>Grouping for settings</description>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <length>40</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Feature_Enabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Feature Enabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>IPS_Feature_Toggle</label>
+    <listViews>
+        <fullName>Core_Setting_Details</fullName>
+        <columns>Core_Category__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Feature_Enabled__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Setting Details</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

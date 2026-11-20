@@ -1,0 +1,48 @@
+.picreview-tooltip {
+  position: absolute;
+  left: 125px;
+  top: 385px;
+}
+.picreview-cycle {
+  right: 1000px;
+}
+.picreview-failed {
+  color: #03bafc;
+  font-weight: bold;
+}
+.picreview-completed {
+  color: green;
+  font-weight: bold;
+}
+.picreview-bold {
+  font-weight: bold;
+}
+.picreview-grid {
+  display: grid !important;
+  grid-auto-columns: 125px;
+}
+.margin-right {
+  margin-right: 25px;
+}
+.picreview-status-grid {
+  display: grid !important;
+  grid-auto-columns: 60px;
+}
+.picreview-error {
+  border: 1px solid rgb(238, 211, 215);
+  background-color: rgb(242, 222, 222);
+  color: rgb(185, 74, 72);
+  padding: 6px;
+}
+
+.picreview-disableclick {
+  pointer-events: none;
+}
+
+.picreview-reviewedbytextwrap {
+  width: 120px;
+  word-wrap: break-word;
+}
+.picreview-textwrap {
+  word-wrap: break-word;
+}

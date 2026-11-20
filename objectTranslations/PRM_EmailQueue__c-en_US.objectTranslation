@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPA Email Queue</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPA Email Queues</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Event --></label>
+        <name>PRM_Business_Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_Contact__c</name>
+        <relationshipLabel><!-- IPA Email Queues --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email Content --></label>
+        <name>PRM_Email_Content__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsInactive --></label>
+        <name>PRM_IsInactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- PartnerRole --></label>
+        <name>PRM_PartnerRole__c</name>
+        <picklistValues>
+            <masterLabel>Builder</masterLabel>
+            <translation><!-- Builder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>PRM_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Request --></label>
+        <name>PRM_Registration_Request__c</name>
+        <relationshipLabel><!-- IPA Email Queues --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status__c</name>
+        <picklistValues>
+            <masterLabel>COMPLETE</masterLabel>
+            <translation><!-- COMPLETE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERROR</masterLabel>
+            <translation><!-- ERROR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PENDING</masterLabel>
+            <translation><!-- PENDING --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>PRM_Tier__c</name>
+        <picklistValues>
+            <masterLabel>GOLD</masterLabel>
+            <translation><!-- GOLD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEMBER</masterLabel>
+            <translation><!-- MEMBER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PARTNER</masterLabel>
+            <translation><!-- PARTNER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRESTIGE</masterLabel>
+            <translation><!-- PRESTIGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TITANIUM</masterLabel>
+            <translation><!-- TITANIUM --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

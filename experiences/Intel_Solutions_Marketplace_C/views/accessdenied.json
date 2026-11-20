@@ -1,0 +1,139 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "d8557237-24d4-45bd-8da9-4f2f5081ac5a",
+  "label" : "accessdenied",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "ACCESS DENIED",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "x-short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "dfcbb721-a755-41cf-848b-0e902fc7e4e1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c230838f-119f-49a9-9502-be5b82436087",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "d52562a6-901b-4c6c-8e6c-116e73e174cd",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6fb455f9-d1cd-46ab-ad5a-743d5d6c2e87",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Access Denied\"/> \n<meta name=\"keywords\" content=\"sf,mp,access denied\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"AccessDenied\"/>\n<meta name=\"robots\" content=\"noindex,follow,noarchive\"/>",
+        "description" : "",
+        "title" : "accessdenied"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ab5cc8f0-0535-4b97-9b55-a1ec8e46ec37",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "62abbf4e-72f6-4a58-841a-4ada6a17a4de",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "classic-blue-gradient",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : true,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Access Denied"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "385bd53b-8861-4805-aa93-1b2e661977c0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "45e615c6-97d1-4352-a6b0-60f95ed6a4cb",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "7aa5203d-f6cf-4094-b1ea-af84df8e5c39",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelAccessDenied",
+      "id" : "6cbf744a-318f-4097-9ad5-0bdb040f9dd4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8a03fe6e-cc2a-4a3d-aea3-0fef6cae24bc",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "2b8edf72-b9b7-44be-b2f8-9b46f9f49ae7",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "ba0eb999-27e7-4ad3-9dda-ddd01d31f830",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "1f3563be-b9d5-44eb-8745-0688d3d74062",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "8b71a1a1-ff40-4ea2-966f-e5465a3b5249",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "23659fda-671b-4178-9968-78b889866577",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "0480b18c-5dba-4ecb-b02a-89fd85f43c7c",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "5f6df7ff-e934-42da-9256-1aecb67cfa6a",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "43a7b49d-250f-446e-9723-3a7426fd04ed",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "b5f26bd5-6fe4-4167-ab2f-6d7f65e1680e",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "6a3e0b09-5d7e-48f1-ab79-20a5c4836e1d",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-accessdenied"
+}

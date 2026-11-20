@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send notification to KPI Owner&apos;s Manager if the KPI is no longer achieved on team member&apos;s approved DWG, so that manager knows when the DWG approval should be recalled due to no longer having an achieved KPI</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_SMG_2019</letterhead>
+    <name>DWG No Longer Achieved Need to be Recalled</name>
+    <style>freeForm</style>
+    <subject>ALERT: Action may be required:  The KPI on Your Team Member’s Deal Win Goal is no Longer Achieved.</subject>
+    <textOnly>The KPI on your team member’s approved Deal Win Goal is no longer achieved.  Please review this Deal Win Goal and the associated Opportunity to determine if the goal approval should be recalled. Please note:    If the opportunity was reversed(e.g. to add a missing team member) and will be resubmitted within 7 business days, you can disregard this message.
+
+
+Deal Win Goal Name: {!Core_Goal__c.Name}
+
+Deal Win Goal Owner: {!Core_Goal__c.Core_Goal_Owner__c}
+
+Category: {!Core_Goal__c.Core_Goal_Category__c}
+
+KPI Name: {!Core_Goal__c.Core_Goal_BU_Focus_Area__c}
+
+Opportunity Name: {!Core_Goal__c.Core_Opportunity__c}
+
+
+
+Click Here {!Core_Goal__c.Link} to review the Deal Win Goal and associated Opportunity.
+
+
+
+Thankyou!
+
+
+
+_______________________________________________________________________
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

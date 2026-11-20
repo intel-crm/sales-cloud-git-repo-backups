@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Header</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Headers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Distribution List --></label>
+        <name>Email_Distribution_List__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Run Date Time --></label>
+        <name>Last_Run_Date_Time__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

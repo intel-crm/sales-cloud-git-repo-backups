@@ -1,0 +1,309 @@
+<apex:page standardController="Case" showHeader="false" sidebar="false"
+           applyHtmlTag="false" applyBodyTag="false" renderAs="pdf" extensions="Core_IPS_AddCommentController">
+        <head style="padding-right: 200px">    
+            <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />    
+            <style type="text/css" media="print">
+                html{
+                 font-family: Arial, Helvetica, sans-serif;
+                 }
+                 @page {
+                 size: A6 landscape;
+                  }
+                 .toolbar{
+                     padding-right: 200px;
+                 }
+                body{
+                    width:100%;
+                    height:100%;
+                    margin:0;
+                    padding:0;
+                    /*line-height:1rem;*/
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size:13px;
+                    padding-right: 200px
+                 }
+                td span div{
+                 white-space: pre-line !important;
+                 padding-right: 200px;
+               }
+            </style>    
+        </head> 
+        <div style="font-family: Arial Unicode MS; font-size:10px;  padding-right: 200px">
+            <apex:detail relatedList="true"/>
+            <apex:pageBlock >
+                <apex:pageBlockSection title="Recent Comments" columns="1"  >
+                    <apex:pageBlockTable value="{!caseComments}" var="comnt" cellspacing="20px"  columnsWidth="100%">
+                        <!-- Customer, Partner, Partner DFAE X Public to Customers-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(OR(comnt.Core_IPS_Comment_Author_Type__c == 'Customer',comnt.Core_IPS_Comment_Author_Type__c == 'Partner',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE'),comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                         
+                            
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By__r.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputText value="{!comnt.CreatedBy.Name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
+                            <b><apex:outputField value="{!comnt.CreatedBy.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                     
+                        </apex:column>    
+                        
+                        <!-- Partner X Private to Partner -->
+                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner'), comnt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >
+                         
+                            <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By__r.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputText value="{!comnt.CreatedBy.Name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
+                            <b><apex:outputField value="{!comnt.CreatedBy.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                       
+                        </apex:column>                   
+                                                 
+                        
+                        <!-- FAE X Public to Customers-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser,!partnerAgentUser, comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                    
+                            
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                                                     
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                       
+                        </apex:column> 
+                        
+                        
+                        <!-- FAE X Private to Partners-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner'), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner',partnerType=='Partner - DFAE')}" >                                                    
+                             <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" /> 
+                            <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" /> 
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                                                     
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                    
+                        </apex:column> 
+                        
+                        
+                        <!-- FAE X Private to Partners (Visible to internal only) -->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" > 
+                       
+                            <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;                                                    
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp; 
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />                                                    
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                    
+                        </apex:column> 
+                        
+                        
+                         <!-- FAE X Public to Customers (Visible to internal only) -->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                    
+                            
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" /> 
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" /> 
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                     
+                        </apex:column> 
+                        
+                        
+                        <!-- FAE X Private to Intel-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=="Private to Intel")}" >                         
+                           
+                            <apex:outputText >**</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" /> 
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+               
+                        </apex:column> 
+                        
+                        
+                        <!-- AGENTS / Partner - Agents  X Public to Customers-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser,!partnerAgentUser, OR(comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent'),comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                                              
+                           
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                                                      
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                     
+                        </apex:column> 
+                        
+                        
+                       <!-- AGENTS /Partner - Agents X Private to Partners-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner') ,  OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'),comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner', partnerType=='Partner - DFAE')}" >                                                                              
+                            <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                                                      
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                  
+                        </apex:column> 
+                        
+                        <!-- AGENTS X Private to Partners (Internal comments only)-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)),  OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >     
+                           
+                            <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;                                                                         
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;    
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />                                                  
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                     
+                        </apex:column> 
+                        
+                         <!-- AGENTS X Public to Customers(Internal comments only)-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                                              
+                            
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" /> 
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                   
+                        </apex:column> 
+                        
+                        
+                        <!-- AGENTS/Agent Partner X Private to Intel-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'System'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel' )}" >                         
+                            
+                            <apex:outputText >**</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!AND(comnt.Core_IPS_Comment_Authored_By__c !=null,comnt.Core_IPS_Comment_Authored_By__r.Id != gecSystemUser)}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                   
+                        </apex:column> 
+                        
+                        
+                        <!-- AGENTS / Agent Partner X Private to Agents-->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR(comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents',OR(userHasAccess,partnerAgentUser))}" >                         
+                            
+                            <apex:outputText >***</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
+                            <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                     
+                        </apex:column> 
+                        
+                        
+                        
+                         <!-- BackendIntegration X Private to intel comments -->
+                      <!--  Need extra parameter for this block Commented By Prem-->
+                      <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel')}" >                          
+                            <apex:outputText >**</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column> 
+                        
+                      <!-- BackendIntegration X Agent comments -->
+                      <!--  Need extra parameter for this block Commented By Prem-->
+                      <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(!(ExtUser), comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents',OR((partnerAgentUser),(userHasAccess)))}" >                          
+                             <apex:outputText >***</apex:outputText>
+                             <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column> 
+                        
+                      <!-- BackendIntegration X Partner comments -->
+                      <!--  Need extra parameter for this block Commented By Prem-->
+                      <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser),(partnerType=='Partner - DFAE')), comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >                          
+                           <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp; 
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column> 
+                        
+                         <!-- BackendIntegration X public comments -->
+                       <!--  Need extra parameter for this block Commented By Prem-->
+                         <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND( comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration', comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers' )}" >                          
+                            
+                            <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column> 
+                        
+                        
+                        <!-- Data Migration X Private comments -->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel')}" >                          
+                           
+                            <apex:outputText >**</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
+                           <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                            <!--<b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;-->
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column> 
+                        
+                        
+                         <!-- Data Migration X Partner comments -->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser),(partnerType=='Partner - DFAE')), comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >                          
+                           
+                           <apex:outputText >*</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;     
+                           <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->                         
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column>
+                        
+                        
+                        <!-- Data Migration X Agent comments -->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(!ExtUser, comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents',OR((partnerAgentUser),(userHasAccess)))}" >                          
+                           
+                            <apex:outputText >***</apex:outputText>
+                            <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
+                           <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column> 
+                        
+                        <!-- Data Migration X Public comments -->
+                        <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                          
+                            <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                            <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
+                            <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                        </apex:column>
+                    
+                        
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </div>
+</apex:page>

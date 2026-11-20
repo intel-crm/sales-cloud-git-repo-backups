@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Reminder: Review and Update Your {!relatedTo.Name} Profile" recipientType="User" relatedToType="PMP_Company__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_CompanyInfo_SixMonthsSinceLastUpdate partnerRecordId="{!relatedTo.Id}" partnerType="profile" />
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

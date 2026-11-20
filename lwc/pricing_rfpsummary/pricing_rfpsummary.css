@@ -1,0 +1,9 @@
+.header {
+    cursor: pointer;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #dddbda;
+}
+
+.header:hover {
+    background-color: #ecebea;
+}

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Update the custom task Type to Li Call if the subject contains Call</description>
+        <name>Update_Call_TaskType</name>
+        <label>Update Call TaskType</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI Call</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Li InMail if the subject contains InMail</description>
+        <name>Update_InMail_TaskType</name>
+        <label>Update InMail TaskType</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI InMail</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Li Message if the subject contains Message</description>
+        <name>Update_Message_TaskType</name>
+        <label>Update Message TaskType</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI Message</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Differentiation between types can easily be determined via systemized subjects, which all end with &quot;from Sales Navigator&quot; and start with the type of activity - InMail/Message/Smart Link/Phone Call/Note</description>
+        <name>Parse_LISN_Subject</name>
+        <label>Parse LISN Subject</label>
+        <locationX>446</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Parse_LISN_Subject_for_Message</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Message</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject for Message</label>
+        </rules>
+        <rules>
+            <name>Parse_LISN_Subject_For_Call</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Phone Call</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Call_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject For Call</label>
+        </rules>
+        <rules>
+            <name>Parse_LISN_Subject_for_InMail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>InMail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_InMail_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject for InMail</label>
+        </rules>
+    </decisions>
+    <interviewLabel>LISN {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>LISN Update TaskType</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Parse_LISN_Subject</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>from Sales Navigator</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

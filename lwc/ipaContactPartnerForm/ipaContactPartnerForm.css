@@ -1,0 +1,28 @@
+form,
+.form-width {
+  margin: 0 auto;
+  width: 100%;
+  --sds-c-textarea-sizing-min-height: 8rem;
+}
+
+div[slot='footer'] {
+  padding-bottom: 3rem; /* mobile safe area */
+}
+
+@media (min-width: 768px) {
+  form,
+  .form-width {
+    width: calc(100% - 2rem);
+  }
+
+  div[slot='footer'] {
+    padding-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  form,
+  .form-width {
+    width: calc(100% - 4rem);
+  }
+}

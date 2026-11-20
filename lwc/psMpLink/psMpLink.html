@@ -1,0 +1,18 @@
+<template>
+    <a class={aClass} href={href} onclick={handleClick} title={label} aria-label={label}>
+        <template if:true={truncatedString}>
+            {truncatedString}&hellip;
+        </template>
+        <template if:false={truncatedString}>
+            <template if:false={hasSlotContent}>
+                {label}
+            </template>
+            <slot class={slotClass} onslotchange={handleSlotChange}>
+                Missing slot content and/or label value.
+            </slot>
+            <template if:true={showNewWindowIcon}>
+                <lightning-icon icon-name="utility:new_window" class="slds-m-left_xx-small iconTextSize"></lightning-icon>
+            </template>
+        </template>
+    </a>
+</template>

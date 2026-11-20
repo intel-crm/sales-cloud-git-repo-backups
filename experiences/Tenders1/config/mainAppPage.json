@@ -1,0 +1,11 @@
+{
+  "cmsSettings" : { },
+  "currentThemeId" : "20d8d692-f9b9-45af-98b4-044e753b7de2",
+  "headMarkup" : "<meta charset=\"UTF-8\"/>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>\n<!--[if lte IE 9]>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\"/>\n<![endif]-->\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0\">\n\n<title>50recode.2 Test Page</title>\n\n<!--IGHF Loader-->\n<!--[if le IE 9]>\n<script type=\"text/javascript\" src=\"https://localhost/ighf/50recode.2/js/headerchooser-master.js\" ASYNC DEFER></script>\n<![endif]-->\n<!--[if gt IE 9]><!-->\n<script src=\"https://www.intel.com/ighf/50recode.2/js/headerchooser.js\" ASYNC></script>\n<!--<![endif]-->\n<script>INTELNAV = window.INTELNAV || {};INTELNAV.renderSettings={version:\"2.0 - 03/12/2017 08:00:00\",textDirection:\"--\",culture:\"--\",OutputId:\"--\"};</script>\n<!--/IGHF Loader-->\n\n<!-- \"PUT IGHF DASHBOARD SCRIPT HERE\" -->\n<script type=\"text/javascript\"> \n/*<![CDATA[*/ \n    INTELNAV = window.INTELNAV || {};\n    /*INTELNAV.dashboard = \"\";*/\n</script>",
+  "id" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "isLockerServiceEnabled" : true,
+  "isRelaxedCSPLevel" : true,
+  "label" : "main",
+  "templateName" : "PRM Community Template",
+  "type" : "appPage"
+}

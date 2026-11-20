@@ -1,0 +1,52 @@
+<template>
+    
+    <div class="search-results-container slds-is-relative">
+
+        <template if:true={showNoResults}>
+            <div class="slds-p-bottom_large">{noResultsLabel}</div>
+        </template>
+
+        <template for:each={cardGroups} for:item="group">
+            <div class="card-results-group slds-p-bottom_medium" key={group.key} data-count={group.cardCount}>
+                <template if:true={group.heading}>
+                    <h2 class="h4 mobile-padding">{group.heading}</h2>
+                </template>
+                <template if:true={group.subheading}>
+                    <p class="mobile-padding">{group.subheading}</p>
+                </template>
+                <c-ipa-card-list
+                    cards={group.cards}
+                    cards-per-row-mobile="1"
+                    cards-per-row-tablet="3"
+                    cards-per-row-desktop="3">
+                </c-ipa-card-list>
+            </div>
+        </template>
+    
+        <template if:false={hidePagination}>
+            <div class="search-results-pagination slds-grid slds-grid_align-spread">
+                <div class="search-results-text">
+                    {showingResultsText}
+                </div>
+                <div class="search-results-page-numbers" data-page-count={totalPages}>
+                    <span role="link" aria-label={labels.previous} tabindex={prevTabIdx} class={prevPageClass} data-page={prevPage} onclick={handlePageChange} onkeydown={handlePageChangeAccessibility}>
+                        <span class="fa-angle-left"></span>
+                        <span class="slds-show_medium">{labels.previous}</span>
+                    </span>
+                    <template for:each={paginationNumbers} for:item="paginationNumber">
+                        <span role="link" tabindex={paginationNumber.tabIdx} aria-label={paginationNumber.page} key={paginationNumber.key} class={paginationNumber.class}
+                            onclick={handlePageChange} onkeydown={handlePageChangeAccessibility} data-page={paginationNumber.page}>
+                            {paginationNumber.page}
+                        </span>
+                    </template>
+                    <span role="link" aria-label={labels.next} tabindex={nextTabIdx} class={nextPageClass} data-page={nextPage} onclick={handlePageChange} onkeydown={handlePageChangeAccessibility}>
+                        <span class="slds-show_medium">{labels.next}</span>
+                        <span class="fa-angle-right"></span>
+                    </span>
+                </div>
+            </div>
+        </template>
+
+    </div>
+
+</template>

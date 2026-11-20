@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPA Access Matrix</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPA Access Matrix</value>
+    </caseValues>
+    <fields>
+        <label><!-- Benefit Blade --></label>
+        <name>PRM_Benefit_Blade__c</name>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence Specialty</masterLabel>
+            <translation><!-- Artificial Intelligence Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center Specialty</masterLabel>
+            <translation><!-- Cloud Data Center Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Registration</masterLabel>
+            <translation><!-- Deal Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Enablement Services,DIT</masterLabel>
+            <translation><!-- Design Enablement Services,DIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Enablement Services,IDDS</masterLabel>
+            <translation><!-- Design Enablement Services,IDDS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Device as a Service Specialty</masterLabel>
+            <translation><!-- Device as a Service Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enablement Zones</masterLabel>
+            <translation><!-- Enablement Zones --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enthusiast PC Specialty</masterLabel>
+            <translation><!-- Enthusiast PC Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Tools and Resources</masterLabel>
+            <translation><!-- FPGA Tools and Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Data Center Specialty</masterLabel>
+            <translation><!-- High Performance Computing Data Center Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Solutions Builder Specialty</masterLabel>
+            <translation><!-- Industrial Solutions Builder Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Developer Zone - Premier</masterLabel>
+            <translation><!-- Intel® Developer Zone - Premier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Developer Zone - Standard</masterLabel>
+            <translation><!-- Intel® Developer Zone - Standard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leads</masterLabel>
+            <translation><!-- Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Services Specialty</masterLabel>
+            <translation><!-- Managed Services Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Studio</masterLabel>
+            <translation><!-- Marketing Studio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketplace</masterLabel>
+            <translation><!-- Marketplace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking Specialty</masterLabel>
+            <translation><!-- Networking Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Client Specialty</masterLabel>
+            <translation><!-- Optane Client Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Data Center Specialty</masterLabel>
+            <translation><!-- Optane Data Center Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Help</masterLabel>
+            <translation><!-- Partner Help --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Lookup Tool</masterLabel>
+            <translation><!-- Partner Lookup Tool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Points</masterLabel>
+            <translation><!-- Points --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing, Points and Promotions</masterLabel>
+            <translation><!-- Pricing, Points and Promotions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products &amp; Roadmaps</masterLabel>
+            <translation><!-- Products &amp; Roadmaps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resource &amp; Documentation Center - Premier Access</masterLabel>
+            <translation><!-- Resource &amp; Documentation Center - Premier Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resource &amp; Documentation Center - Public</masterLabel>
+            <translation><!-- Resource &amp; Documentation Center - Public --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Select Benefit</masterLabel>
+            <translation><!-- Select Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty</masterLabel>
+            <translation><!-- Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Specialty</masterLabel>
+            <translation><!-- Video Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialty</masterLabel>
+            <translation><!-- Visual Display Solutions Specialty --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Benefit Priority --></label>
+        <name>PRM_Benefit_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Click To Action Priority --></label>
+        <name>PRM_CTA_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Click To Action --></label>
+        <name>PRM_Click_To_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlements --></label>
+        <name>PRM_Entitlements__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hide Logo Icon --></label>
+        <name>PRM_Hide_Logo_Icon__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_IPA_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Builder</masterLabel>
+            <translation><!-- Builder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPA Quick Links --></label>
+        <name>PRM_IPA_Quick_Links__c</name>
+        <picklistValues>
+            <masterLabel>https://intel.com</masterLabel>
+            <translation><!-- https://intel.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>https://www.intelinvitemembers.com</masterLabel>
+            <translation><!-- https://www.intelinvitemembers.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>https://www.intelmanagepersonnel.com</masterLabel>
+            <translation><!-- https://www.intelmanagepersonnel.com --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPA URL --></label>
+        <name>PRM_IPA_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric --></label>
+        <name>PRM_Metric__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Benefit --></label>
+        <name>PRM_Partner_Benefit__c</name>
+        <relationshipLabel><!-- IPA Access Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Specialty/Select Benefit --></label>
+        <name>PRM_Partner_Specialty_Select_Benefit__c</name>
+        <relationshipLabel><!-- IPA Access Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Speciality/ Select Benefit Priority --></label>
+        <name>PRM_Speciality_Select_Benefit_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>PRM_isActive_Indicator__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Benefit Access Rule --></label>
+        <name>Benefit_Access_Rule</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Quick Links Access Rule --></label>
+        <name>Quick_Links_Access_Rule</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Specialty-Select Benefit Access Rule --></label>
+        <name>Specialty_Select_Benefit_Access_Rule</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

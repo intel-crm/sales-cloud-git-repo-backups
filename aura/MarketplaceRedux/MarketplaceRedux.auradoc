@@ -1,0 +1,168 @@
+<aura:documentation>
+	<aura:description>
+
+    <p>Redux Base Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/22/2019</p>
+    <p>CurrentVersion: 3.2</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>This is an abstract base component which connects subcomponents to a shared <a href="https://redux.js.org/introduction/getting-started">Redux</a> store.</p>
+    <p>
+        <a href="https://medium.com/@cabot_solutions/flux-the-react-js-application-architecture-a-comprehensive-study-fd2585d06483">
+            ReduxJS
+        </a>
+        is a "predictable state container" which manages app state, or the state of the page.
+    </p>
+    <p>The <a href="https://unpkg.com/redux@4.0.1/dist/redux.js">ReduxJS</a> library is included in the <code>ISG_Resources</code> static resource in <code>libraries/redux.js</code>.</p>
+
+		<hr/>
+    <p>Settings</p>
+    <p>Some settings, such as debug and caching booleans can be found at the top of the helper.js file.</p>
+
+    <hr/>
+
+    <p>This is an example of a subcomponent connected to the store:</p>
+    <pre>&lt;aura:component extends="c:ISGRedux" ... &gt;
+
+  &lt;aura:attribute name="storeName" type="string" default="UserData" /&gt;
+
+&lt;/aura:component&gt;
+</pre>
+    <p>By extending the base Redux component the subcomponent has direct access to the current Redux state.</p>
+    <p>The storeName attribute is optional, but allows the component easy access to a specific slice of the app state.</p>
+    <p>The subcomponent can now access the application state via the <code>v.appState</code> inherited attribute.</p>
+    <p>Example:</p>
+    <pre>&lt;h1&gt;UserName: {!v.appState.UserData.UserName}&lt;/h1&gt;</pre>
+    <p>Or because storeName is set to 'UserData', the specific slice can be accessed by using the <code>v.state</code> inherited attribute.</p>
+    <pre>&lt;h1&gt;UserName: {!v.state.UserName}&lt;/h1&gt;</pre>
+    <hr/>
+		<p>This component requires Reducers and Actions to work.</p>
+		<hr/>
+		<p>Reducers</p>
+		<p>Reducer components extend a base component.</p>
+		<p>See the documentation for the <code>ISGReducerBase</code> component for more on reducers.</p>
+		<p>Reducer subcomponents are added to the Redux base .cmp file</p>
+		<p>This is an example which uses a UserData store/reducer (see ISGRedux.cmp):</p>
+		<pre>&lt;c:ReducerUserData aura:id="reducer" storeName="UserData" cache="true" /&gt;</pre>
+		<hr/>
+    <p>Actions</p>
+    <p>Actions, like reducers, are stored in separate components for convenience.</p>
+		<p>For example, <code>ISGActionsSearch</code> and <code>ISGActionsSettings</code>...</p>
+		<p>(Look at the source code for these components as reference.)</p>
+		<p>In these components an actions "object" is returned from a <code>getActions</code> controller function.</p>
+		<p>This function is required, as well as an aura:method to access it.</p>
+    <p>The actions themselves are set up as <a href="https://github.com/reduxjs/redux-thunk">Thunk</a>
+       actions (actions which are set up as functions) which then internally use the passed dispatch function to dispatch plain object actions, eg.
+       <code>{ type: 'actionName', ... }</code>.</p>
+    <p>This also allows for for server requests and asynchronous actions.</p>
+    <hr/>
+    <p>The <code>getActions</code> controller function returns an object with all actions.</p>
+    <p>Each action or action "creator" takes a <code>params</code> input and returns a Redux action function.</p>
+    <p>A Redux action function takes three parameters:</p>
+    <pre>function(dispatch, getState, callServer) { ... }</pre>
+    <ul>
+      <li><code>dispatch</code>: this is the Redux dispatch function. It is used to dispatch further actions (typically standard Redux objects, but can be Thunk functions as well)</li>
+      <li><code>getState</code>: this can be used to access the current Redux app state, if needed</li>
+      <li><code>callServer</code>: injected custom api to call AuraMethod APEX server methods</li>
+    </ul>
+
+    <hr/>
+    <p>Example</p>
+<pre>search: function(params) {
+  return function(dispatch, getState, callServer) {
+    dispatch({ type: 'serverRequest', showLoadingSpinner: true });
+    return callServer('apexMethodName', { requestJSON: JSON.stringify(params) })
+      .then(function(response) {
+        dispatch({ type: 'serverResponse', response: response });
+      });
+    };
+}</pre>
+    <p>Typical async actions will follow this pattern... in this example the 'search' action:</p>
+    <ul>
+      <li>dispatches a 'serverRequest' (as a standard Redux action object)</li>
+      <li>calls the aura method asynchronously (returning a Promise)</li>
+      <li>then dispatches a 'serverResponse' (as a standard Redux action object)</li>
+    </ul>
+    <p>IMPORTANT NOTES:</p>
+		<ul>
+			<li>All action functions end up dispatching standard Redux action objects</li>
+			<li>Only standard Redux action objects make their way to the reducers</li>
+	    <li>Be sure to return the <code>dispatch</code> or a Promise within the action.. this way the top level action can be used as a promise in a component, if need be</li>
+			<li>By default .callServer parses the response as JSON. If returning a SF Object from the APEX method, avoid this parsing by adding <code>false</code> as a third argument:</li>
+<pre>callServer('apexMethodName', { requestJSON: JSON.stringify(params) }, false)</pre>
+		</ul>
+		<hr/>
+    <p>Last Note: Actions are designed to fit the needs of the state... In the controller, it's possible to simply return an action object... for example:</p>
+    <pre>logout: function(params) { return { type: 'logout' }},</pre>
+    <p>However it seems clearer and easier to maintain if all actions follow the consistent pattern of returning a fully Thunk-formatted function.</p>
+<pre>logout: function(params) {
+  return function(dispatch, getState, callServer) {
+    return dispatch({ type: 'logout' });
+  };
+},</pre>
+		<hr/>
+		<p>Dispatching Actions</p>
+		<br/>
+		<p>Note: DO NOT modify the v.appState (or v.state) attributes directly.</p>
+		<p>Instead, the subcomponent inherits a 'dispatch' helper function.</p>
+		<pre>helper.dispatch(component, 'login', { UserId: XX7868, UserName: 'Jane' });</pre>
+		<p>This is an example of a 'login' action.</p>
+		<p>The <code>helper.dispatch</code> function takes three parameters:</p>
+		<p>component, actionName (String), params (any object)</p>
+		<br/>
+		<p>Mapping State Changes to Subcomponent Attributes</p>
+		<p>Often we don't want to include <code>v.state</code> attributes directly for performance reasons.</p>
+		<p>For example, an <code>aura:iteration</code> redraws its contents every single time its value changes, which is every time the state changes if it accesses the state directly!!</p>
+		<p>Instead, however we can set <code>v.mapStateToAttributes</code>:</p>
+		<pre>({
+		doInit: function(component, event, helper) {
+		component.set('v.mapStateToAttributes', function(state) {
+			return {
+				listOfItems: state.listOfUserItems
+			};
+		})
+		}
+		})</pre>
+		<p>In this example the <code>listOfUserItems</code> value of the <code>UserData</code> store gets "mapped" to the subcomponent's <code>listOfItems</code> attribute.</p>
+		<p>Now <code>v.listOfItems</code> will only update if the value of listOfUserItems actually changes, so this is a much better way to handle performance!</p>
+		<p>The <code>mapStateToAttributes</code> takes a function which maps the state to attributes.</p>
+		<p>It functions similarly to the <code>mapStateToProps</code> function that exists in Redux for ReactJS.</p>
+		<hr/>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <p>2.0</p>
+		<ul>
+			<li>Separates actions into separate components... ISGActionsSearch, etc.</li>
+			<li>Adds some additional error handling and light refactoring</li>
+			<li>Adds a third parameter in the <code>callServer</code> function:
+				<ul>
+					<li>it is an optional boolean</li>
+					<li>by default, the APEX response is parsed as JSON</li>
+					<li>if this param is set to <code>false</code> it will skip JSON parsing and return the raw SF Object APEX response</li>
+				</ul>
+			</li>
+		</ul>
+		<br/>
+		<p>2.1</p>
+		<ul>
+			<li>Bug fixes to localStorage caching</li>
+		</ul>
+		<br/>
+		<p>2.2 -- adds Object.assign polyfill to potentially fix IE error</p>
+    <br/>
+    <p>2.21 -- bug fix</p>
+    <br/>
+    <p>3.0 -- significant bug fix... changes the way reducers are set up... see <code>ISGReducerBase</code> documentation for more</p>
+    <p>3.1 -- bug fix with Promise support on dispatches and queued actions.. this now works anywhere, and resolves with the current app state:</p>
+    <pre>helper.dispatch().then(function(state) { ...</pre>
+    <p>3.2 -- bug fix with api and adding ISGBaseComponent into the mix to allow components to call server actions in a specified apex controller</p>
+    <!-- CHANGELOG -->
+
+  </aura:description>
+
+</aura:documentation>

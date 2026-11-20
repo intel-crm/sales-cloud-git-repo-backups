@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>IPA/CoGTM approvers will be notified when proposal/project is in Pending Review</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyProposalApprovers</name>
+    <style>none</style>
+    <subject>MDF Proposal Status:</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

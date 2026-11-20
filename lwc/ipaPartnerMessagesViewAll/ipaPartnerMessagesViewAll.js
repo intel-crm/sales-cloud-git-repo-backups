@@ -1,0 +1,111 @@
+const USE_MOCK = window.location.href.match('mockdata') ? true : false;
+
+import { LightningElement, track } from 'lwc';
+
+import partnerMessagesTemplate from './ipaPartnerMessagesViewAll.html';
+import loadingTemplate from './loading.html';
+import { MockBenefitService } from 'c/ipaMockData';
+import { getPartnerMessagesViewAll, markMessageAsReadViewAll } from 'c/ipaBenefitService';
+
+import subject from '@salesforce/label/c.PMP_PartnerMessage_Subject';
+import type from '@salesforce/label/c.PMP_PartnerMessage_Type';
+import date from '@salesforce/label/c.PMP_PartnerMessage_Date';
+
+
+
+export default class ipaPartnerMessagesViewAll extends LightningElement {
+    @track isLoading = true;
+    @track title = '';
+    @track messages = [];
+    @track viewAllLink = {};
+
+    label = {
+        subject,
+        type,
+        date
+    };
+
+    connectedCallback() {
+        this.fetchPartnerMessages();
+    }
+    render() {
+        return this.isLoading ? loadingTemplate : partnerMessagesTemplate;
+    }
+
+    async fetchPartnerMessages() {
+        /* const result = await new Promise(resolve => {
+             // eslint-disable-next-line @lwc/lwc/no-async-operation
+             setTimeout(() => {
+                 getPartnerMessagesViewAll().then((value) => {
+                     resolve(value);
+                 });
+             }, 2000);
+         });*/
+        let result;
+        try {
+            if (USE_MOCK) {
+                result = await MockBenefitService.getPartnerMessagesViewAll();
+            } else {
+                result = await getPartnerMessagesViewAll();
+            }
+        } catch (e) {
+            console.error('getPartnerMessagesViewAll error', `${e}`);
+        }
+
+        if (result) {
+            this.title = result.title;
+            this.viewAllLink = result.viewAllLink;
+            /* this.messages = result.messages.map((message, index) => ({
+                 ...message,
+                 fields: this.addIds(message.fields, 'message-fields-' + index)
+             }));*/
+            this.messages = result && result.messages ? result.messages.map((message, index) => ({
+                ...message,
+                fields: this.addIds(message.fields, 'message-fields-' + index)
+            })) : [];
+            console.log('getPartnerMessages', JSON.parse(JSON.stringify(this.messages)));
+        }
+        this.isLoading = false;
+
+    }
+
+
+    markAsRead() {
+
+        markMessageAsReadViewAll().then((value) => {
+            console.log(value);
+        }).catch((error) => {
+            console.log('mark message as read errir', error)
+        })
+
+
+    }
+
+    addIds(arr, prefix) {
+        if (arr && arr.length > 0) {
+            return arr.map((item, index) => ({
+                ...item,
+                id: prefix + '-' + index
+            }));
+        }
+        return arr;
+    }
+
+    get classes() {
+        return {
+            containerClass: "container",
+            alignment: this.ifs.hasRightPanel ? "Left" : this.alignment
+        };
+    }
+
+    /*isLinkDataComplete(linkData) {
+        return linkData.label && (linkData.communityPage || linkData.externalUrl)
+    }
+    get ifs() {
+        return {
+            isViewAllLinkValid: this.isLinkDataComplete(this.viewAllLink)
+        }
+    }*/
+
+
+}

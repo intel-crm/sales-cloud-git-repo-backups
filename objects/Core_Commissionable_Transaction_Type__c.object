@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Maps Commissionable Transaction Types</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Commissionable_Transaction_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Commissionable Transaction Type</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Milestone__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity_Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Product</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Commissionable Transaction Type</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Core_Commissionable_Transaction_Type__c</columns>
+        <columns>Core_Milestone__c</columns>
+        <columns>Core_Opportunity_Product__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

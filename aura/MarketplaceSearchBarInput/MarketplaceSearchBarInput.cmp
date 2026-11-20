@@ -1,0 +1,38 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="name" type="string" />
+    <aura:attribute name="value" type="string" />
+    <aura:attribute name="type" type="string" default="text"/>
+
+    <aura:attribute name="title" type="string" />
+
+    <aura:attribute name="id" type="string" />
+
+    <aura:attribute name="placeholder" type="string" />
+    <aura:attribute name="tabindex" type="string" />
+    <aura:attribute name="onblur" type="object" />
+    <aura:attribute name="onkeyup" type="object" />
+    <aura:attribute name="onkeydown" type="object" />
+    
+    <aura:method name="focus" action="{!c.doFocus}" description="Focuses the input" />
+    
+    
+    <c:MarketplaceAnalyticsData aura:id="analyticsData" />
+    
+    <input
+      aura:id="input"
+      id="{!v.id}"
+      type="{!v.type}"
+
+      name="{!v.name}"
+      value="{!v.value}"
+      title="{!v.title}"
+      aria-label="{!v.title}"
+      placeholder="{!v.placeholder}"
+      tabindex="{!v.tabindex}"
+      onclick="{!c.handleOnClick}"
+      autocomplete="off"
+      onkeyup="{!c.handleInputChange}"
+      onblur="{!c.handleInputBlur}"
+      onkeydown="{!c.handleKeyDown}"
+       />
+</aura:component>

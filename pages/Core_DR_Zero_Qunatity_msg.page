@@ -1,0 +1,15 @@
+<apex:page cspHeader="true" StandardController="Core_Design_Registration__c" extensions="Core_DR_Zero_Quantity_msg_Ctrl" rendered="{!$User.UITheme != 'Theme4d'}">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <apex:form >
+     <apex:outputPanel rendered="{! AND(isZeroQuantityProducts=true,$User.UITheme != 'Theme4d')}">
+          <h2 style="font-weight:bold;font-size:medium;font-size:14px;text-align: -webkit-center;">
+                <apex:pageMessage id="msg" escape="0" summary="{!$Label.Core_Zero_Quantity_Msg}" severity="WARNING" strength="2"/>
+            </h2>
+        
+      </apex:outputPanel>
+    </apex:form>
+    
+    
+    
+</apex:page>

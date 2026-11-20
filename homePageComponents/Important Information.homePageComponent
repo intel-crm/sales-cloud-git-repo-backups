@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;div class=&quot;flexipageComponent&quot; style=&quot;text-align: start;&quot;&gt;
+&lt;div class=&quot;slds-card__body&quot;&gt;
+&lt;div class=&quot;flexipageComponent&quot; style=&quot;text-align: start;&quot;&gt;
+&lt;div class=&quot;slds-card__body&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;font-family: Calibri,sans-serif;&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #00b0f0;&quot;&gt;DID YOU MISS IT?&lt;/span&gt;&lt;/strong&gt; WW29 Sales Excellence Office hours recordings are available now! Click &lt;a href=&quot;https://salescrm.intel.com/sales-excellence-office-hours/&quot; style=&quot;color: #0563c1; text-decoration: underline;&quot;&gt;HERE&lt;/a&gt; to view and access past topics.&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-family: Calibri,sans-serif;&quot;&gt;&lt;strong&gt;&lt;span style=&quot;color: #00b0f0;&quot;&gt;COMING SOON! &lt;/span&gt;&lt;/strong&gt; Don’t miss upcoming Sales Excellence Office hours on Getting Started with Seismic in WW35, Seismic Features in WW37, and training on the Groove Outlook Integration coming in WW36.  Click &lt;a href=&quot;https://salescrm.intel.com/sales-excellence-office-hours/&quot; style=&quot;color: #0563c1; text-decoration: underline;&quot;&gt;HERE&lt;/a&gt; to add these sessions to your calendar!&lt;/span&gt;&lt;/span&gt;&lt;br&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;flexipageComponent&quot; style=&quot;text-align: start;&quot;&gt;
+&lt;div class=&quot;slds-card__body slds-card__body--inner&quot;&gt;
+&lt;div class=&quot;oneAlohaPage&quot;&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>wide</width>
+</HomePageComponent>

@@ -1,0 +1,536 @@
+<!--
+@description       : 
+@author            : ChangeMeIn@UserSettingsUnder.SFDoc
+@group             : 
+@last modified on  : 02-03-2026
+@last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+<lightning-button label="Update Deals" onclick={openDataTable} style="margin-right: 5px;"></lightning-button>
+<template if:true={openModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container" style="width: 95%;max-width: 150rem;">
+            <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
+                <lightning-button-icon icon-name="utility:close" size="large" onclick={closeModal}
+                    alternative-text="close" class="slds-modal__close">
+                </lightning-button-icon>
+            </header>
+
+            <header class="slds-modal__header">
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                    Bulk Change Request Processing
+                    <span style="position: relative; bottom: 4px; left: 2px;">
+                        <lightning-helptext content={label.toolTip}></lightning-helptext>
+                    </span>
+                </h2>
+            </header>
+            <div class="slds-modal__content" id="modal-content-id-2" style="overflow-x: scroll;overflow-y: scroll;">
+
+                <template if:true={isSpinner}>
+                    <div class="sldsspinnercontainer">
+                        <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                            <span class="slds-assistive-text">Loading..</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={isNoData}>
+                    <div class="slds-table_edit_container" style=" text-align: center; color: red; ">
+                        {msg}
+                    </div>
+                </template>
+                <template if:false={isNoData}>
+                    <div class="slds-table_edit_container table-responsive" style="height:300px;width:3500px">
+                        <table aria-multiselectable="true"
+                            class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_resizable-cols slds-scrollable--y"
+                            role="grid">
+                            <thead>
+                                <tr style="height: 30px;">
+                                    <template if:true={showLabel}>
+                                        <th scope="col" style="width:3rem; padding-left: 15px">
+                                            <div class="">
+                                                <lightning-input onchange={allSelected} type="checkbox"
+                                                    data-id="selectAllCheckBox"></lightning-input>
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="tableContentHide"
+                                            style="width:3rem;padding-left: 15px">
+                                            <lightning-icon icon-name='utility:shield' alternative-text='shield'
+                                                variant='success' size='x-small' title='Validation'>
+                                            </lightning-icon>
+                                        </th>
+                                    </template>
+                                    <template for:each={bulkFieldstoDisplay} for:item="field">
+                                        <th key={field} class="slds-is-resizable tableContentHide" scope="col"
+                                            style="white-space: break-spaces;text-align: center;">
+                                            <span class="" title={field}>{field}</span>
+                                            <div class="slds-resizable">
+                                                <input type="range" min="50" max="1000"
+                                                    class="slds-resizable__input slds-assistive-text"
+                                                    tabindex="0" />
+                                                <span class="slds-resizable__handle" onmousedown={calculateWidth}
+                                                    ondrag={setNewWidth} draggable="true">
+                                                    <span class="slds-resizable__divider"></span>
+                                                </span>
+                                            </div>
+                                        </th>
+                                    </template>                                       
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <template for:each={data} for:item="qli">
+                                    <tr key={qli.Id} aria-selected="false" class="slds-hint-parent"
+                                        style="height: 8px;">
+
+                                        <td scope="qli" role="gridcell" style="width:3rem; padding-left: 15px">
+                                            <div>
+                                                <lightning-input type="checkbox" value={qli.Id} data-id={qli.Id}
+                                                    onchange={handleCheckBox} variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                        </td>
+
+                                        <td scope="qli" class="slds-size_1-of-10">
+                                            <template if:true={qli.isError}>
+                                                <div align="left">
+                                                    <lightning-icon icon-name="utility:error" variant="error" 
+                                                        size="x-small" title={qli.errorMsg}></lightning-icon>
+                                                </div>
+                                            </template>
+                                            <template if:true={qli.isWarning}>
+                                                <div align="left">
+                                                    <lightning-icon icon-name="utility:warning" variant="warning"
+                                                        size="x-small" title={qli.errorMsg}></lightning-icon>
+                                                </div>
+                                            </template>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Quote_Line_Number__c}
+                                                value={qli.Pricing_Quote_Line_Number__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.product} value={qli.product} style="white-space: break-spaces;">
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.competitorProduct} style="white-space: break-spaces;"
+                                                value={qli.competitorProduct}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Deal_RFQ_Id__c}
+                                                value={qli.Pricing_Deal_RFQ_Id__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <lightning-formatted-number format-style="currency"
+                                                value={qli.Pricing_Req_Discounted_Unit_Price__c} data-id={qli.Id}>
+                                            </lightning-formatted-number>
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <lightning-formatted-number format-style="currency"
+                                                value={qli.Pricing_Request_Discount_Unit_Price_qty__c} data-id={qli.Id}>
+                                            </lightning-formatted-number>
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <lightning-formatted-number
+                                                value={qli.Pricing_New_Quantity_qty__c} data-id={qli.Id}>
+                                            </lightning-formatted-number>
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="number" formatter="currency" step="0.01"
+                                                    title={qli.Pricing_ECAP_Price_Amt__c} 
+                                                    value={qli.Pricing_ECAP_Price_Amt__c} data-id={qli.Id}
+                                                    max="9999999999999999.99" onchange={handleApproveECAPPrice}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                            
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="number"
+                                                    title={qli.Pricing_Approved_Unit_Qty__c}
+                                                    value={qli.Pricing_Approved_Unit_Qty__c} data-id={qli.Id}
+                                                    max="999999999999999999" onchange={handleApprovedQuantity}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                       
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="number"
+                                                    title={qli.Pricing_Payable_Quantity__c}
+                                                    value={qli.Pricing_Payable_Quantity__c} data-id={qli.Id}
+                                                    max="999999999999999999" onchange={handlePayableQuantity}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                       
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="number" formatter="currency" step="0.01"
+                                                    title={qli.Pricing_Meet_Comp_Price_Amt__c}
+                                                    value={qli.Pricing_Meet_Comp_Price_Amt__c} data-id={qli.Id}
+                                                    max="9999999999999999.99" onchange={handleMeetCompPrice}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                     
+                                        </td>
+
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_Approved_Start_Date_Dt__c}
+                                                    value={qli.Pricing_Approved_Start_Date_Dt__c} data-id={qli.Id}
+                                                    onchange={handleApproveStartDate} 
+                                                    variant="label-hidden"> 
+                                                </lightning-input>
+                                            </div>
+                                        
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_Approved_End_Date_Dt__c}
+                                                    value={qli.Pricing_Approved_End_Date_Dt__c} data-id={qli.Id}
+                                                    onchange={handleApproveEndDate}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                    
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_Start_Date_dt__c}
+                                                    value={qli.Pricing_Start_Date_dt__c} data-id={qli.Id}
+                                                    disabled variant="label-hidden" class="readonly-input">
+                                                </lightning-input>
+                                            </div>
+                                    
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_End_Date_dt__c}
+                                                    value={qli.Pricing_End_Date_dt__c} data-id={qli.Id}
+                                                    disabled variant="label-hidden" class="readonly-input">
+                                                </lightning-input>
+                                            </div>
+                                    
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_Revised_Pricing_Start_Date_dt__c}
+                                                    value={qli.Pricing_Revised_Pricing_Start_Date_dt__c} data-id={qli.Id}
+                                                    onchange={handleEffectiveDate} 
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                    
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_Billing_Start_Date_Dt__c}
+                                                    value={qli.Pricing_Billing_Start_Date_Dt__c} data-id={qli.Id}
+                                                    onchange={handleBillingStartDate}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                        
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input type="date" date-style="short"
+                                                    title={qli.Pricing_Billing_End_Date_Dt__c}
+                                                    value={qli.Pricing_Billing_End_Date_Dt__c} data-id={qli.Id}
+                                                    onchange={handleBillingEndDate}
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                       
+                                        </td>
+
+                                        <td scope="col" class="">
+                                            <div style=" overflow: visible;">
+                                                <lightning-combobox title={qli.backDateReason}
+                                                    value={qli.backDateReason} options={options} placeholder=""
+                                                    data-id={qli.Id} onchange={handleBackDateReason}
+                                                    variant="label-hidden"
+                                                     dropdown-alignment="auto">
+                                                </lightning-combobox>
+                                            </div>
+
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Consumption_Platform__c} style="white-space: break-spaces;"
+                                                value={qli.Pricing_Consumption_Platform__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Consumption_Region__c} style="white-space: break-spaces;"
+                                                value={qli.Pricing_Consumption_Region__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Consumption_Country__c} style="white-space: break-spaces;"
+                                                value={qli.Pricing_Consumption_Country__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Consumption_Sale_Geo__c} style="white-space: break-spaces;"
+                                                value={qli.Pricing_Consumption_Sale_Geo__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="tableContentHide">
+                                            <lightning-formatted-text title={qli.Pricing_Consumption_Segment__c} style="white-space: break-spaces;"
+                                                value={qli.Pricing_Consumption_Segment__c}>
+                                            </lightning-formatted-text>
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input title={qli.Pricing_Additional_T_C_s_Txt__c}
+                                                    value={qli.Pricing_Additional_T_C_s_Txt__c} data-id={qli.Id}
+                                                    onchange={handleAdditionalTC} maxlength="1000"
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                       
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input title={qli.Pricing_Additional_Comments_Txt__c}
+                                                    value={qli.Pricing_Additional_Comments_Txt__c} data-id={qli.Id}
+                                                    onchange={handleAdditionalComments} maxlength="20000"
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                       
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input title={qli.Pricing_pm_approval_comments_nm__c}
+                                                    value={qli.Pricing_pm_approval_comments_nm__c} data-id={qli.Id}
+                                                    onchange={handleApprovalComments} maxlength="1000" read-only
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                        </td>
+
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div>
+                                                <lightning-input title={qli.Pricing_Deal_Description__c}
+                                                    value={qli.Pricing_Deal_Description__c} data-id={qli.Id}
+                                                    onchange={handleDealDescription} maxlength="255"
+                                                    variant="label-hidden">
+                                                </lightning-input>
+                                            </div>
+                                     
+                                        </td>
+                                            
+                                        <td scope="col" class="slds-size_3-of-10">
+                                            <div class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-combobox_container">
+                                                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                                                            aria-expanded="true" aria-haspopup="listbox"
+                                                            role="combobox">
+                                                            <template if:true={qli.pricingManager}>
+                                                                <div data-key="pilldiv"
+                                                                    class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right"
+                                                                    role="none">
+                                                                    <span
+                                                                        class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+                                                                        title="object">
+                                                                        <div class="slds-icon slds-icon_small" aria-hidden="true">
+                                                                            <lightning-icon icon-name="standard:user" size="small"> </lightning-icon>
+                                                                        </div>
+                                                                        <span class="slds-assistive-text">Record</span>
+                                                                    </span>
+                                                                    <input type="text"
+                                                                        class="slds-input slds-combobox__input slds-combobox__input-value"
+                                                                        data-id={qli.Id}
+                                                                        aria-controls="listbox-id-5" role="textbox"
+                                                                        placeholder="Select an Option" readonly
+                                                                        value={qli.pricingManager} />
+                                                                    <button
+                                                                        class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                                                                        onclick={removeRecordOnLookup}
+                                                                        data-id={qli.Id}
+                                                                        title="Remove selected option">
+                                                                        <span class="slds-button__icon" aria-hidden="true">
+                                                                            <lightning-icon
+                                                                                icon-name="utility:close"
+                                                                                size="xx-Small"
+                                                                                class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                                                                aria-hidden="true">
+                                                                            </lightning-icon>
+                                                                        </span>
+                                                                        <span class="slds-assistive-text">Remove selected record</span>
+                                                                    </button>
+                                                                </div>
+                                                            </template>
+
+                                                            <template if:false={qli.pricingManager}>
+                                                                <div data-key="searchdiv"
+                                                                    class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                                                    role="none">
+                                                                    <input type="text" onfocusout={onLeave} onfocus={onfocusPricingmanager}
+                                                                        value={qli.searchKey} onkeyup={handleKeyChange}
+                                                                        onkeydown={handleKeyDown} data-id={qli.Id}
+                                                                        class="slds-input slds-combobox__input slds-has-focus"
+                                                                        aria-autocomplete="list"
+                                                                        aria-controls="listbox-id-2" role="textbox"
+                                                                        placeholder="Search..." />
+                                                                    <span
+                                                                        class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                                                        <lightning-icon icon-name="utility:search"
+                                                                            size="xx-Small"
+                                                                            class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                                                            aria-hidden="true">
+                                                                        </lightning-icon>
+                                                                    </span>
+                                                                </div>
+
+                                                                <template if:true={qli.recordsList}>
+                                                                    <div 
+                                                                        data-key="dropdownresult"
+                                                                        class="slds-show slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid dropDownClass"
+                                                                        role="listbox">
+                                                                        <ul class="slds-listbox slds-listbox_vertical"
+                                                                            role="presentation">
+                                                                            <template if:true={qli.message}>
+                                                                                <center> {qli.message}</center>
+                                                                            </template>
+                                                                            <template for:each={qli.recordsList}
+                                                                                for:item="record">
+                                                                                <li id={record.Id} key={record.Id} data-id={qli.Id}
+                                                                                    onclick={onRecordSelection}
+                                                                                    role="presentation"
+                                                                                    class="slds-listbox__item">
+                                                                                    <div data-key={record.Id}
+                                                                                        data-name={record.Name}
+                                                                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                                                        role="option">
+                                                                                        <span
+                                                                                            class="slds-media__figure slds-listbox__option-icon">
+                                                                                            <span
+                                                                                                class="slds-icon_container">
+                                                                                                <lightning-icon
+                                                                                                    icon-name="standard:user"
+                                                                                                    size="small">
+                                                                                                </lightning-icon>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            class="slds-media__body">
+                                                                                            <span
+                                                                                                data-key={record.Id}
+                                                                                                data-name={record.Name}
+                                                                                                class="slds-listbox__option-text_entity">{record.Name}
+                                                                                            </span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </template>
+                                                                        </ul>
+                                                                    </div>
+                                                                </template>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </template>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </template>
+
+            </div>
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" disabled={showBtn}
+                    onclick={closeModal}>Cancel</button>
+                <template if:false={isNoData}>
+                    <button class="slds-button slds-button_brand" disabled={showBtn}
+                        onclick={handleSave}>Save</button>
+                    <button class="slds-button slds-button_brand" disabled={showBtn}
+                        onclick={handleDealCreation}>Update Deals</button>
+                </template>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<template lwc:if={showSoftWarningApprovedECAP}>
+    <section role="dialog" tabindex="0" aria-modal="true" aria-labelledby="alert-heading-id"
+        aria-describedby="alert-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header slds-theme_alert-texture slds-theme_warning slds-p-around_small">
+                <div class="slds-align_absolute-center">
+                    <ul class="slds-list_horizontal">
+                        <li class="slds-p-right_small"><lightning-icon icon-name="utility:warning"
+                                alternative-text="Warning!" title="Warning" variant="warning"
+                                size="small"></lightning-icon></li>
+                        <li>
+                            <h1 style="font-size: 1.5em;">Warning!</h1>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slds-modal__content slds-p-around_small">
+                    <p>{softWarningApprovedECAPLabel}</p>  
+            </div>
+            <div class="slds-modal__footer slds-theme_default">
+                <lightning-button variant="neutral" label="Cancel" title="Cancel"
+                    onclick={closeModal}></lightning-button>
+                <lightning-button variant="brand" label='Continue' class="slds-m-left_small"
+                    title="Continue" onclick={handleContinueSoftWarning}></lightning-button>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+</template>

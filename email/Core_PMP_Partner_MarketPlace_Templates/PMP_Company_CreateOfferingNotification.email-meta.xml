@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <available>false</available>
+    <description>Template to send email when the account is given the MP Enhanced benefit after getting the &apos;Basic Profile&apos; benefit.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_Company_CreateOfferingNotification</name>
+    <style>none</style>
+    <subject>Action Required: You can now create Showcase Offering/s</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,69 @@
+.slds-tabs_default__link{
+	font-size: 32px;
+}
+
+.PostClass{
+	display: flex;
+    flex-direction: column;
+	padding: 2%;
+}
+
+.postclassInner-SelectSubmit{
+	display: flex;
+	padding-top: 2%;
+	justify-content: flex-end;
+}
+
+.mention-message-comment {
+    background-color: #f4f6f9; /* Light background for visibility */
+    border: 1px solid #d8dde6; /* Subtle border for definition */
+    border-radius: 4px; /* Rounded corners for a modern look */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+    z-index: 10; /* Ensure it appears above the rich text input */
+    font-size: 14px; /* Font size for readability */
+    color: #333; /* Text color for better readability */
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    width: max-content;
+    position: absolute;
+}
+
+.mention-message {
+    background-color: #f4f6f9; /* Light background for visibility */
+    border: 1px solid #d8dde6; /* Subtle border for definition */
+    border-radius: 4px; /* Rounded corners for a modern look */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+    z-index: 10; /* Ensure it appears above the rich text input */
+    font-size: 14px; /* Font size for readability */
+    color: #333; /* Text color for better readability */
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+   
+}
+
+.mention-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mention-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.mention-list li:hover {
+    background-color: #f4f4f4;
+}
+
+.mention {
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    display: inline-block;
+}

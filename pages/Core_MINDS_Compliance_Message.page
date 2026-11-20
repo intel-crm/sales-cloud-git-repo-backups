@@ -1,0 +1,21 @@
+<apex:page standardController="Opportunity" extensions="Core_MindsComplianceController" > 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <apex:form >
+        <apex:outputPanel rendered="{!Opportunity.Core_Compliance_Status__c=='Approved with Guardrails'}">
+            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
+                <div  style="font-weight:bold;color:orange;">{!Header} 
+                    <a href="{!Url}" target="_blank" style="font-weight:bold;color:orange;">{!Guardrail}</a>
+                    {!nonIntel} <a href="{!nonIntelUrl}" target="_blank" style="font-weight:bold;color:orange;">site.</a>                
+                    </div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+                 <div  style="font-weight:bold;color:orange;position:fixed;top:0;bottom:0;left:0;right:0;">{!Header}  
+                     <a href="{!Url}" target="_blank" style="font-weight:bold;color:orange;">{!Guardrail}</a>
+                    {!nonIntel} <a href="{!nonIntelUrl}" target="_blank" style="font-weight:bold;color:orange;">site.</a>                
+                    </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

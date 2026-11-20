@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- PIC Review --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- PIC Review --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Cycle Number --></label>
+        <name>Core_MDF_AI_CycleNumber_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI PIC Review ID --></label>
+        <name>Core_MDF_AI_PIC_Review_Id__c</name>
+        <relationshipLabel><!-- AI PIC Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Indicates AI Response or Manual Response. --></help>
+        <label><!-- Is AI PIC Review? --></label>
+        <name>Core_MDF_AI_PIC_Review_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim ID --></label>
+        <name>Core_MDF_Claim_ID_id__c</name>
+        <relationshipLabel><!-- PIC Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cycle Number --></label>
+        <name>Core_MDF_CycleNumber_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Time --></label>
+        <name>Core_MDF_EndTime_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>Core_MDF_External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Comments --></label>
+        <name>Core_MDF_InternalComments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Overall AI Confidence Score --></label>
+        <name>Core_MDF_Overall_AI_Confidence_Score_Nm__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Review Date --></label>
+        <name>Core_MDF_Review_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Duration in Minutes --></label>
+        <name>Core_MDF_Review_Duration_in_Minutes_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Status --></label>
+        <name>Core_MDF_Review_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Failed</masterLabel>
+            <translation><!-- AI Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Passed</masterLabel>
+            <translation><!-- AI Passed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Processing Failed</masterLabel>
+            <translation><!-- AI Processing Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation>Concluído</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation>Falhou</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reviewed By --></label>
+        <name>Core_MDF_ReviewedBy_id__c</name>
+        <relationshipLabel><!-- PIC Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Time --></label>
+        <name>Core_MDF_StartTime_dtm__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- PIC Review Name --></nameFieldLabel>
+</CustomObjectTranslation>

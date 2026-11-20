@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_CUSTENT_ID</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <description>Updated and working!</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_CUSTENT_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>a2B3b00000BIjyE,a2B3b00000BIjxa,a2B3b00000BEudh,a2B3b00000Ab1gb,a2B3b00000Ab1gg,a2B3b00000BIjxV,a2B3b00000B3Ez9,a2B3b00000ANCyd,a2B3b00000BIjx1,a2B3b00000BIjyO,a2B3b00000BIjyJ,a2B3b00000BIjwr,a2B3b00000BEvlX,a2B3b00000BEvlc,a2B3b00000Ab1Xo,a2B3b00000ANCyY,a2B3b00000BIjxz,a2B3b00000BIjyT,a2B3b00000BIjxk,a2B3b00000BIjxf,a2B3b00000BIjxL,a2B3b00000BIjxQ,a2B3b00000BIjx6,a2B3b00000BIkEv,a2B3b00000BIjww,a2B3b00000BIjxp,a2B3b00000BIjxu,a2B3b00000BIjyY,a2B3b00000BIjy9,a2B3b00000BIjxB,a2B3b00000BIjxG</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ADL-PS EAP IPS Report</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList@Case.Core_IPS_Project_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

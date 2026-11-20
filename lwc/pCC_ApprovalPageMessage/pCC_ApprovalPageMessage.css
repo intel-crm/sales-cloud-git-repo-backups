@@ -1,0 +1,18 @@
+.paddingbottom{
+    padding-bottom: 4rem;
+}
+.paddingtop{
+    padding-top:0.5rem;
+}
+.marginhorizotal{
+    
+    color: red;
+    font-family: intel-clear,tahoma,Helvetica,helvetica,Arial,sans-serif!important;
+    font-size: 10px;
+}
+.spinnerSize{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}

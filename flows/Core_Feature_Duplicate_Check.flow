@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assignment_1</name>
+        <label>Assignment 1</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Check_Duplicate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Core_Feature_Unique_Field_UpdateFormula</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Migrated from the: Core_Feature_Duplicate_Check workflow rule
+Workflow rule description: Workflow rule to avoid duplication of combination of Type and Value for Feature records..</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Feature_Unique_Field_UpdateFormula</name>
+        <dataType>String</dataType>
+        <expression>$Record.Core_Feature_Value__c+$Record.Core_Feature_Type__c+Text($Record.Core_Feature_BU__c)</expression>
+    </formulas>
+    <formulas>
+        <name>customValidation</name>
+        <dataType>String</dataType>
+        <expression>TRIM(RIGHT(MID({!$Flow.FaultMessage}, 
+FIND(&apos;DUPLICATE_VALUE: &apos;, {!$Flow.FaultMessage}), 
+((FIND(&apos;You can look up ExceptionCode values&apos;, 
+{!$Flow.FaultMessage}))-{!firstIndex})), LEN(MID({!$Flow.FaultMessage}, 
+FIND(&apos;DUPLICATE_VALUE: &apos;,{!$Flow.FaultMessage}), 
+((FIND(&apos;You can look up ExceptionCode values&apos;, 
+{!$Flow.FaultMessage}))-{!firstIndex})))-LEN(&apos;DUPLICATE_VALUE: &apos;)))</expression>
+    </formulas>
+    <formulas>
+        <name>firstIndex</name>
+        <dataType>Number</dataType>
+        <expression>FIND(&apos;DUPLICATE_VALUE: &apos;, {!$Flow.FaultMessage})</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Core_Feature_Duplicate_Check {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Feature_Duplicate_Check</label>
+    <migratedFromWorkflowRuleName>Core_Feature_Duplicate_Check</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assignment_1</targetReference>
+        </connector>
+        <object>Core_Feature__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload Email_DEU</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance: Gewerbeanmeldung oder vergleichbarer Unternehmensnachweis erforderlich</subject>
+    <textOnly>Vielen Dank für Ihren Antrag auf Aufnahme in die Intel® Partner Alliance!
+
+
+Vielen Dank für Ihren Antrag auf Aufnahme in die Intel® Partner Alliance.
+
+Bei der Bearbeitung Ihres Antrags konnten wir Ihre Firmendaten anhand der von Ihnen gemachten Angaben nicht verifizieren.Wir bitten Sie daher, auf diese E-Mail zu antworten und eines der folgenden Dokumente im PDF-, JPEG- oder PNG-Format anzuhängen, um diese Überprüfung abzuschließen:
+
+Gewerbeanmeldung oder anderer offizieller Nachweis der Geschäftstätigkeit (zum Nachweis, dass Ihre Firmenadresse mit der im Antrag genannten Adresse übereinstimmt)
+Steuerbescheinigung (die bestätigt, dass Ihre Firmenadresse mit der im Antrag genannten Adresse übereinstimmt)
+Firmenwebsite (die Ihre Firmenadresse ausweist, wobei diese mit der im Antrag übereinstimmt)
+
+Bitte antworten Sie auf diese E-Mail mit den beigefügten Unterlagen innerhalb von 7 Tagen, um eine automatische Ablehnung Ihrer Anfrage zu vermeiden. Sobald wir Ihre Antwort erhalten haben, werden wir das Team veranlassen, Ihren Antrag erneut zu prüfen.Sobald wir Ihre Antwort erhalten haben, werden wir das Team veranlassen, Ihren Antrag erneut zu prüfen.
+
+Vielen Dank für Ihre Zusammenarbeit bei der Lösung dieses Problems.
+
+
+
+
+Ihr Intel® Partner Alliance Team
+
+Bitte beachten Sie, dass dieser E-Mail-Posteingang automatisch verarbeitet und überwacht wird.
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© 2026 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+Datenschutz&amp;verbar;Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Product2$Name</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Division_Code_Short_Name__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Group_Code_Short_Name__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Product_Family__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Hierarchy_Name__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Product2$IsActive</field>
+    </columns>
+    <description>Cnvrg, ITA, Granulate and IDC products in CRM</description>
+    <filter>
+        <criteriaItems>
+            <column>Product2$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Cnvrg,granulate,developer cloud,project amber,trust authority</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2$Core_Product_Org__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Cnvrg, ITA, Granulate and IDC in CRM</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Product_with_Extended_Attributes__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Product2$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Product2$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

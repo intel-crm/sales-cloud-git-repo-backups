@@ -1,0 +1,2775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_11_A2</name>
+        <label>Email Alert</label>
+        <locationX>1100</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myDecision12</targetReference>
+        </connector>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_15_A2</name>
+        <label>Email Alert</label>
+        <locationX>1500</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_17_A2</name>
+        <label>Email Alert</label>
+        <locationX>1700</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Create_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A2</name>
+        <label>Email Alert</label>
+        <locationX>100</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Create_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Create_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A2</name>
+        <label>Email Alert</label>
+        <locationX>300</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Comment_Update_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_7_A2</name>
+        <label>Email Alert</label>
+        <locationX>700</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myDecision8</targetReference>
+        </connector>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Comment_Update_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A2</name>
+        <label>Email Alert</label>
+        <locationX>900</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_13_event_0_SA2</name>
+        <label>Email Alert</label>
+        <locationX>1300</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_13_event_0_postWaitExecutionAssignment</targetReference>
+        </connector>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Close_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_5_event_0_SA2</name>
+        <label>Email Alert</label>
+        <locationX>500</locationX>
+        <locationY>300</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</targetReference>
+        </connector>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</nameSegment>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myPreWaitDecision_myWait_myRule_13</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitAssignment_myWait_myRule_13</name>
+        <label>myWaitAssignment_myWait_myRule_13</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>cancelWaits</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>myWait_myRule_13</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myPreWaitDecision_myWait_myRule_5</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitAssignment_myWait_myRule_5</name>
+        <label>myWaitAssignment_myWait_myRule_5</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>cancelWaits</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>myWait_myRule_5</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitEvent_myWait_myRule_13_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_13_event_0_postWaitExecutionAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myWaitEvent_myWait_myRule_13_event_0_postActionExecutionVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myWait_myRule_13</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myWaitEvent_myWait_myRule_5_event_0_postActionExecutionVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myWait_myRule_5</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>External Create</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision10</name>
+        <label>myDecision10</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision12</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_11</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_pmetdec</targetReference>
+            </connector>
+            <label>External - Close Pending</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>6.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision12</name>
+        <label>myDecision12</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision14</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_13</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_13</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_13_pmetdec</targetReference>
+            </connector>
+            <label>External - Close Pending @10days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision14</name>
+        <label>myDecision14</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision16</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_15</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_15</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_15_pmetdec</targetReference>
+            </connector>
+            <label>External Support Assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>8.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision16</name>
+        <label>myDecision16</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_17</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_17</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_17_pmetdec</targetReference>
+            </connector>
+            <label>External Partner Comment Update</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_pmetdec</targetReference>
+            </connector>
+            <label>External Update Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_pmetdec</targetReference>
+            </connector>
+            <label>External Close</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision8</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_pmetdec</targetReference>
+            </connector>
+            <label>External Comment Update -Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision8</name>
+        <label>myDecision8</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision10</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_pmetdec</targetReference>
+            </connector>
+            <label>Ext Cmt Update Non-Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_13_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_13_event_0</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitEvent_myWait_myRule_13_event_0_postWaitExecutionAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_13_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_current.Core_IPS_Date_Time_Close_Pending__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_13_event_0_SA1</targetReference>
+            </connector>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_13_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_13</name>
+        <label>myPreWaitDecision_myWait_myRule_13</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_13</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_13</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_13</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPreWaitDecision_myWait_myRule_5</targetReference>
+            </connector>
+            <label>myPreWaitRule_myWait_myRule_13</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_5</name>
+        <label>myPreWaitDecision_myWait_myRule_5</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision</targetReference>
+            </connector>
+            <label>myPreWaitRule_myWait_myRule_5</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_11_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>1100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_11_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_11_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_11_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_11_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision12</targetReference>
+            </connector>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_13_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>1300</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myWait_myRule_13</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_13_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWait_myRule_13</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_13_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_13_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_15_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>1500</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_15_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_15_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_15_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_15_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_15_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_17_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>1700</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_17_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_17_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_17_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_17_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_17_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_3_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>300</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_3_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_3_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_5_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>500</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myWait_myRule_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWait_myRule_5</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_5_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_7_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>700</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_7_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_7_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision8</targetReference>
+            </connector>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_9_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>900</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_9_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_9_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>Process Builder to send IPS notifications - External</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(       
+             NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       OR(  [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+		         [Case].RecordType.developerName= 
+                                           $Label.Core_IPS_GECRecordTypeName),   
+                  NOT( ISBLANK([Case].ContactId )),
+                  NOT(ISNULL([Case].ContactId )) , 
+                 ISNEW(),
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		 [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+              OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			  ISPICKVAL([Case].Status, &apos;On Hold&apos;)  ) 
+               
+   )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(       
+             NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       OR(  {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+		         {!myVariable_current.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_GECRecordTypeName}),   
+                  NOT( ISBLANK({!myVariable_current.ContactId} )),
+                  NOT(ISNULL({!myVariable_current.ContactId} )) , 
+                 ISNEW(),
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!myVariable_current.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+              OR(    ISPICKVAL({!myVariable_current.Status}, &apos;New&apos;),
+			  ISPICKVAL({!myVariable_current.Status}, &apos;On Hold&apos;)  ) 
+               
+   )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		         [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ,
+             ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;) ,
+                AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))
+                               
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Public to Customers&apos; )
+
+        
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_11</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+              NOT(ISNULL({!myVariable_current.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_current.ContactId} )),
+
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Contact.Core_IPS_Active__c} = TRUE, 
+		         {!myVariable_current.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+			          ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ,
+             ISPICKVAL({!myVariable_current.Core_Sub_Status__c} , &apos;Close-Pending&apos;) ,
+                AND(   
+                                ISCHANGED({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}))
+                               
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_current.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+
+        
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		         [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ,
+             ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;) ,
+                AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))
+                               
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Public to Customers&apos; )
+
+        
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_11_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+              NOT(ISNULL({!myVariable_old.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_old.ContactId} )),
+
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Contact.Core_IPS_Active__c} = TRUE, 
+		         {!myVariable_old.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+			          ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ,
+             ISPICKVAL({!myVariable_old.Core_Sub_Status__c} , &apos;Close-Pending&apos;) ,
+                AND(   
+                                ISCHANGED({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}))
+                               
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_old.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+
+        
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		         [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+			 ISPICKVAL([Case].Status, &apos;Open&apos;)  ,
+             ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;) 
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_13</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+              NOT(ISNULL({!myVariable_current.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_current.ContactId} )),
+
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Contact.Core_IPS_Active__c} = TRUE, 
+		         {!myVariable_current.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+			 ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ,
+             ISPICKVAL({!myVariable_current.Core_Sub_Status__c} , &apos;Close-Pending&apos;) 
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		         [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+			 ISPICKVAL([Case].Status, &apos;Open&apos;)  ,
+             ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;) 
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_13_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+              NOT(ISNULL({!myVariable_old.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_old.ContactId} )),
+
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Contact.Core_IPS_Active__c} = TRUE, 
+		         {!myVariable_old.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+			 ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ,
+             ISPICKVAL({!myVariable_old.Core_Sub_Status__c} , &apos;Close-Pending&apos;) 
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(       
+             NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	     [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+		  
+                 /* NOT( ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  )),
+                  NOT(ISNULL([Case].Core_IPS_Partner_Sup_Owner__c  )) , */
+
+              /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  ), FALSE,[Case].Core_IPS_Partner_Sup_Owner__c.IsActive=true),
+
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+              OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			  ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+              ISCHANGED( [Case].Core_IPS_Partner_Sup_Owner__c )
+               
+   )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_15</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(       
+             NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	     {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+		  
+                 /* NOT( ISBLANK(myVariable_current.Core_IPS_Partner_Sup_Owner__c  )),
+                  NOT(ISNULL(myVariable_current.Core_IPS_Partner_Sup_Owner__c  )) , */
+
+              /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!myVariable_current.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariable_current.Core_IPS_Partner_Sup_Owner__r.IsActive}=true),
+
+
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+              OR(    ISPICKVAL({!myVariable_current.Status}, &apos;New&apos;),
+			  ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ) ,
+              ISCHANGED( {!myVariable_current.Core_IPS_Partner_Sup_Owner__c} )
+               
+   )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(       
+             NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	     [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+		  
+                 /* NOT( ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  )),
+                  NOT(ISNULL([Case].Core_IPS_Partner_Sup_Owner__c  )) , */
+
+              /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  ), FALSE,[Case].Core_IPS_Partner_Sup_Owner__c.IsActive=true),
+
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+              OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			  ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+              ISCHANGED( [Case].Core_IPS_Partner_Sup_Owner__c )
+               
+   )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_15_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(       
+             NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	     {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+		  
+                 /* NOT( ISBLANK(myVariable_old.Core_IPS_Partner_Sup_Owner__c  )),
+                  NOT(ISNULL(myVariable_old.Core_IPS_Partner_Sup_Owner__c  )) , */
+
+              /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariable_old.Core_IPS_Partner_Sup_Owner__r.IsActive}=true),
+
+
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+              OR(    ISPICKVAL({!myVariable_old.Status}, &apos;New&apos;),
+			  ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ) ,
+              ISCHANGED( {!myVariable_old.Core_IPS_Partner_Sup_Owner__c} )
+               
+   )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+            /*   NOT(ISNULL([Case].Core_IPS_Partner_Sup_Owner__c )) , 
+              NOT( ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c)), */
+
+           /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  ), FALSE,[Case].Core_IPS_Partner_Sup_Owner__c.IsActive=true),
+
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+                       OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+             
+              AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))                
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Private to Partner&apos;)
+
+
+)
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_17</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+            /*   NOT(ISNULL(myVariable_current.Core_IPS_Partner_Sup_Owner__c )) , 
+              NOT( ISBLANK(myVariable_current.Core_IPS_Partner_Sup_Owner__c)), */
+
+           /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!myVariable_current.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariable_current.Core_IPS_Partner_Sup_Owner__r.IsActive}=true),
+
+
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+  
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!myVariable_current.Status}, &apos;New&apos;),
+			          ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ) ,
+             
+              AND(   
+                                ISCHANGED({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_current.Core_Latest_Case_Comment_Type__c} , &apos;Private to Partner&apos;)
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+            /*   NOT(ISNULL([Case].Core_IPS_Partner_Sup_Owner__c )) , 
+              NOT( ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c)), */
+
+           /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  ), FALSE,[Case].Core_IPS_Partner_Sup_Owner__c.IsActive=true),
+
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+                       OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+             
+              AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))                
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Private to Partner&apos;)
+
+
+)
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_17_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+            /*   NOT(ISNULL(myVariable_old.Core_IPS_Partner_Sup_Owner__c )) , 
+              NOT( ISBLANK(myVariable_old.Core_IPS_Partner_Sup_Owner__c)), */
+
+           /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariable_old.Core_IPS_Partner_Sup_Owner__r.IsActive}=true),
+
+
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+  
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!myVariable_old.Status}, &apos;New&apos;),
+			          ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ) ,
+             
+              AND(   
+                                ISCHANGED({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_old.Core_Latest_Case_Comment_Type__c} , &apos;Private to Partner&apos;)
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(       
+             NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       OR(  [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+		         [Case].RecordType.developerName= 
+                                           $Label.Core_IPS_GECRecordTypeName),   
+                  NOT( ISBLANK([Case].ContactId )),
+                  NOT(ISNULL([Case].ContactId )) , 
+                 ISNEW(),
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		 [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+              OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			  ISPICKVAL([Case].Status, &apos;On Hold&apos;)  ) 
+               
+   )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(       
+             NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       OR(  {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+		         {!myVariable_old.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_GECRecordTypeName}),   
+                  NOT( ISBLANK({!myVariable_old.ContactId} )),
+                  NOT(ISNULL({!myVariable_old.ContactId} )) , 
+                 ISNEW(),
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!myVariable_old.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+              OR(    ISPICKVAL({!myVariable_old.Status}, &apos;New&apos;),
+			  ISPICKVAL({!myVariable_old.Status}, &apos;On Hold&apos;)  ) 
+               
+   )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+	     NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)),  
+             [Case].RecordType.developerName= 
+                                                   $Label.Core_IPS_CaseCreateRecordType_Name, 
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+	      [Case].Core_IPS_Is_Notification_Active__c  = TRUE,
+              [Case].Contact.Core_IPS_Active__c = TRUE,
+              [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,
+              [Case].Core_IPS_Customer_Visible__c = TRUE,       
+                 OR(       ISPICKVAL([Case].Status, &apos;New&apos;),
+			       ISPICKVAL([Case].Status, &apos;Open&apos;)  ),
+            ISCHANGED( [Case].Contact.Id )
+                 
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+	     NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)),  
+             {!myVariable_current.RecordType.DeveloperName}= 
+                                                   {!$Label.Core_IPS_CaseCreateRecordType_Name}, 
+              NOT(ISNULL({!myVariable_current.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_current.ContactId} )),
+	      {!myVariable_current.Core_IPS_Is_Notification_Active__c}  = TRUE,
+              {!myVariable_current.Contact.Core_IPS_Active__c} = TRUE,
+              {!myVariable_current.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,
+              {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,       
+                 OR(       ISPICKVAL({!myVariable_current.Status}, &apos;New&apos;),
+			       ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ),
+            ISCHANGED( {!myVariable_current.Contact.Id} )
+                 
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+	     NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)),  
+             [Case].RecordType.developerName= 
+                                                   $Label.Core_IPS_CaseCreateRecordType_Name, 
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+	      [Case].Core_IPS_Is_Notification_Active__c  = TRUE,
+              [Case].Contact.Core_IPS_Active__c = TRUE,
+              [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,
+              [Case].Core_IPS_Customer_Visible__c = TRUE,       
+                 OR(       ISPICKVAL([Case].Status, &apos;New&apos;),
+			       ISPICKVAL([Case].Status, &apos;Open&apos;)  ),
+            ISCHANGED( [Case].Contact.Id )
+                 
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+	     NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)),  
+             {!myVariable_old.RecordType.DeveloperName}= 
+                                                   {!$Label.Core_IPS_CaseCreateRecordType_Name}, 
+              NOT(ISNULL({!myVariable_old.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_old.ContactId} )),
+	      {!myVariable_old.Core_IPS_Is_Notification_Active__c}  = TRUE,
+              {!myVariable_old.Contact.Core_IPS_Active__c} = TRUE,
+              {!myVariable_old.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,
+              {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,       
+                 OR(       ISPICKVAL({!myVariable_old.Status}, &apos;New&apos;),
+			       ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ),
+            ISCHANGED( {!myVariable_old.Contact.Id} )
+                 
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(    
+               NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       OR(  [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+                         [Case].RecordType.developerName= 
+                                           $Label.Core_IPS_ClosedCase_RecordType_Name,
+		         [Case].RecordType.developerName= 
+                                           $Label.Core_IPS_GECRecordTypeName),
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		 [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+
+	        ISPICKVAL([Case].Status, &apos;Closed&apos;)
+                       
+ 
+   )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(    
+               NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       OR(  {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+                         {!myVariable_current.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_ClosedCase_RecordType_Name},
+		         {!myVariable_current.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_GECRecordTypeName}),
+              NOT(ISNULL({!myVariable_current.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_current.ContactId} )),
+
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!myVariable_current.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+
+	        ISPICKVAL({!myVariable_current.Status}, &apos;Closed&apos;)
+                       
+ 
+   )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(    
+               NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       OR(  [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+                         [Case].RecordType.developerName= 
+                                           $Label.Core_IPS_ClosedCase_RecordType_Name,
+		         [Case].RecordType.developerName= 
+                                           $Label.Core_IPS_GECRecordTypeName),
+              NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		 [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+
+	        ISPICKVAL([Case].Status, &apos;Closed&apos;)
+                       
+ 
+   )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(    
+               NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       OR(  {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+                         {!myVariable_old.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_ClosedCase_RecordType_Name},
+		         {!myVariable_old.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_GECRecordTypeName}),
+              NOT(ISNULL({!myVariable_old.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_old.ContactId} )),
+
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!myVariable_old.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+
+	        ISPICKVAL({!myVariable_old.Status}, &apos;Closed&apos;)
+                       
+ 
+   )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+               NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		 [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+                       OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))                
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Public to Customers&apos; )
+      
+
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+               NOT(ISNULL({!myVariable_current.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_current.ContactId} )),
+
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!myVariable_current.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!myVariable_current.Status}, &apos;New&apos;),
+			          ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL({!myVariable_current.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_current.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+      
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+               NOT(ISNULL([Case].ContactId )) , 
+              NOT( ISBLANK([Case].ContactId )),
+
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Contact.Core_IPS_Active__c = TRUE, 
+		 [Case].Contact.Core_IPS_Email_Opt_Out__c = FALSE,  
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+                       OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))                
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Public to Customers&apos; )
+      
+
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_7_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+               NOT(ISNULL({!myVariable_old.ContactId} )) , 
+              NOT( ISBLANK({!myVariable_old.ContactId} )),
+
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!myVariable_old.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!myVariable_old.Status}, &apos;New&apos;),
+			          ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL({!myVariable_old.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_old.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+      
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+        
+                   OR(      [Case].Count_Ext_Interested_Parties__c &gt; 0,
+                           /* NOT( ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  )) */
+                            /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  ), FALSE,[Case].Core_IPS_Partner_Sup_Owner__c.IsActive=true)
+                         ),
+                             
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+                       OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))                
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Public to Customers&apos; )
+      
+
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_current.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+        
+                   OR(      {!myVariable_current.Count_Ext_Interested_Parties__c} &gt; 0,
+                           /* NOT( ISBLANK(myVariable_current.Core_IPS_Partner_Sup_Owner__c  )) */
+                            /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!myVariable_current.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariable_current.Core_IPS_Partner_Sup_Owner__r.IsActive}=true)
+                         ),
+                             
+                 {!myVariable_current.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_current.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!myVariable_current.Status}, &apos;New&apos;),
+			          ISPICKVAL({!myVariable_current.Status}, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL({!myVariable_current.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_current.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_current.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+      
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       [Case].RecordType.developerName=
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+        
+                   OR(      [Case].Count_Ext_Interested_Parties__c &gt; 0,
+                           /* NOT( ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  )) */
+                            /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK([Case].Core_IPS_Partner_Sup_Owner__c  ), FALSE,[Case].Core_IPS_Partner_Sup_Owner__c.IsActive=true)
+                         ),
+                             
+                 [Case].Core_IPS_Is_Notification_Active__c = TRUE,
+                 [Case].Core_IPS_Customer_Visible__c = TRUE,
+                       OR(    ISPICKVAL([Case].Status, &apos;New&apos;),
+			          ISPICKVAL([Case].Status, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL([Case].Core_Sub_Status__c , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED([Case].Core_Latest_Comment_Time_Stamp__c),
+                                NOT(ISBLANK([Case].Core_Latest_Comment_Time_Stamp__c))                
+	                    ),
+                                       
+             ISPICKVAL([Case].Core_Latest_Case_Comment_Type__c , &apos;Public to Customers&apos; )
+      
+
+
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       {!myVariable_old.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+        
+                   OR(      {!myVariable_old.Count_Ext_Interested_Parties__c} &gt; 0,
+                           /* NOT( ISBLANK(myVariable_old.Core_IPS_Partner_Sup_Owner__c  )) */
+                            /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariable_old.Core_IPS_Partner_Sup_Owner__r.IsActive}=true)
+                         ),
+                             
+                 {!myVariable_old.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!myVariable_old.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!myVariable_old.Status}, &apos;New&apos;),
+			          ISPICKVAL({!myVariable_old.Status}, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL({!myVariable_old.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!myVariable_old.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!myVariable_old.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+      
+
+
+)</expression>
+    </formulas>
+    <interviewLabel>Core_IPS_Case_Notif_External_PB-32_InterviewLabel</interviewLabel>
+    <label>Core IPS Case Notif External PB R4.2</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Case</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_11_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1100</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_11_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Close-Pending Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_15_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1500</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_15_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Assigned PSO to Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_17_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1700</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_17_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has New Partner Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Update Email Text</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_1_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Created Case </stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Update Email Text</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_3_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Updated Contact on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>Update Email Text</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_7_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has New Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Update Email Text</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_9_A2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has New Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_13_event_0_SA1</name>
+        <label>Update Email Text</label>
+        <locationX>1300</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_13_event_0_SA2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Close-Pending Reminder on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Case]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_5_event_0_SA1</name>
+        <label>Update Email Text</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_5_event_0_SA2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>email_text</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Closed Case</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Obsolete</status>
+    <variables>
+        <name>cancelWaits</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>myWaitEvent_myWait_myRule_13_event_0_postActionExecutionVariable</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>myWaitEvent_myWait_myRule_5_event_0_postActionExecutionVariable</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <waits>
+        <name>myWait_myRule_13</name>
+        <label>myWait_myRule_13</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
+        <waitEvents>
+            <processMetadataValues>
+                <name>inputParameterType</name>
+                <value>
+                    <stringValue>referenced</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>myWaitEvent_myWait_myRule_13_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myWaitEvent_myWait_myRule_13_event_0_postActionExecutionVariable</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_13_event_0</targetReference>
+            </connector>
+            <eventType>DateRefAlarmEvent</eventType>
+            <inputParameters>
+                <name>TimeTableColumnEnumOrId</name>
+                <value>
+                    <stringValue>Case</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>EntityObjectId</name>
+                <value>
+                    <elementReference>myVariable_current.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Days</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>10.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeFieldColumnEnumOrId</name>
+                <value>
+                    <stringValue>Core_IPS_Date_Time_Close_Pending__c</stringValue>
+                </value>
+            </inputParameters>
+            <label>myWaitEvent_myWait_myRule_13_event_0</label>
+        </waitEvents>
+    </waits>
+    <waits>
+        <name>myWait_myRule_5</name>
+        <label>myWait_myRule_5</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
+        <waitEvents>
+            <processMetadataValues>
+                <name>inputParameterType</name>
+                <value>
+                    <stringValue>now</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>myWaitEvent_myWait_myRule_5_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myWaitEvent_myWait_myRule_5_event_0_postActionExecutionVariable</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_5_event_0_SA1</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>myVariable_waitStartTimeVariable</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </inputParameters>
+            <label>myWaitEvent_myWait_myRule_5_event_0</label>
+        </waitEvents>
+    </waits>
+</Flow>

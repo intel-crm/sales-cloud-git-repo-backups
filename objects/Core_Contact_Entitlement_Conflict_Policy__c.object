@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting will save the list of entitlements and their conflict policies that will throw the validation if tried to assign the listed entitlements together if one is already present.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Entitlement_Id__c</fullName>
+        <description>The concatenation of Entitlement Ids separated with semi-colon (;)</description>
+        <externalId>false</externalId>
+        <label>Entitlement Id</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>System_Validation__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Check this checkbox if the validation has to be thrown for system</description>
+        <label>System Validation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UI_Validation__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Check this checkbox if the validation has to be thrown on the UI page</description>
+        <label>UI Validation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Validation_Message__c</fullName>
+        <description>The message that has to be shown for this Conflict Policy</description>
+        <label>Validation Message</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>Contact Entitlement Conflict Policy</label>
+    <visibility>Public</visibility>
+</CustomObject>

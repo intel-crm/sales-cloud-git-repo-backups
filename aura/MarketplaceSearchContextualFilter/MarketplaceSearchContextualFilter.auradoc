@@ -1,0 +1,22 @@
+<aura:documentation>
+	<aura:description>
+    <p>Contextual Filter -- Node Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/29/2019</p>
+    <p>CurrentVersion: 1.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>Used with the <code>ISGL2ContextualFilterList</code> component.</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.1 - ApplyToDraft Update </p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

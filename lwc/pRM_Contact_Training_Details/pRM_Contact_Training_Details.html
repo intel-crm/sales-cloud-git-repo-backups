@@ -1,0 +1,22 @@
+<template>
+    <div class="back">
+        <lightning-layout-item class= "MeasurementPeriod" >
+            <p class="measurementHeader">{label.measurementPeriodheader}</p>
+            <lightning-combobox class="filterName" name="Measurement Period" label="Measurement Period" value={label.dashcurrMeasurementPeriod}
+                placeholder={label.dashcurrMeasurementPeriod} options={measurementoptions} onchange={changeTimeperiod}
+                variant="label-hidden"></lightning-combobox>
+        </lightning-layout-item>
+    </div>    
+
+    <div class="mainDiv slds-p-left_small slds-card">
+        <p class="truncation gridHeader slds-p-top_small">{headerLbl}</p>
+        <h2 class="contentBox">{trainingDetails}
+            <p if:true={spinner} class="contentBox">
+                <lightning-spinner variant="brand" alternative-text="Loading Data" size="small">
+                </lightning-spinner>
+            </p>
+        </h2>
+        <a href={pageUrl} class="gridFooter truncation">{linkLbl} ({headerLbl})</a>
+        <p class="slds-p-top_small"> </p>
+    </div>
+</template>

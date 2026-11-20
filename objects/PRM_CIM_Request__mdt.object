@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>It contains static values for CIM input to be used</description>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <description>API Key for the CIM callout</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>API Key</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Async_Id__c</fullName>
+        <description>AsynchronousRequestId to be used in CIM request</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>AsynchronousRequestId</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Calling_System__c</fullName>
+        <description>Contains CallingSourceSystem</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallingSourceSystem</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Default_Source_Attributes__c</fullName>
+        <description>It will contain value as false</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IncludeDefaultAttributesForSourceTypes</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Max_Records__c</fullName>
+        <description>Contains MaximumNumberOfRecordsToReturn from CIM</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>MaximumNumberOfRecordsToReturn</label>
+        <length>5</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Max_Score__c</fullName>
+        <description>MaximumSearchScore to be used for checking duplicacy of accounts in CIM</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>MaximumSearchScore</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Min_Score__c</fullName>
+        <description>MinimumSearchScore to be used in CIM</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>MinimumSearchScore</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Restriction_Level__c</fullName>
+        <description>MandatoryFieldRestrictionLevel to be used in CIM request</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>MandatoryFieldRestrictionLevel</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Score_Bar__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Score Bar</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>PRM CIM Request</label>
+    <listViews>
+        <fullName>All_Columns</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>PRM_Async_Id__c</columns>
+        <columns>PRM_Calling_System__c</columns>
+        <columns>PRM_Default_Source_Attributes__c</columns>
+        <columns>PRM_Restriction_Level__c</columns>
+        <columns>PRM_Max_Records__c</columns>
+        <columns>PRM_Max_Score__c</columns>
+        <columns>PRM_Min_Score__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Columns</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PRM CIM Requests</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

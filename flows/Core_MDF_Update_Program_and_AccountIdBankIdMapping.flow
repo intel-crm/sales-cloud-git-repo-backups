@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated and merged : Core_MDF_Update_the_Program and Core_MDF_WF_Update_AccountIdBankIdMapping workflow rules</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_MDF_Update_AccountIdBankIdMappingFormula</name>
+        <dataType>String</dataType>
+        <expression>$Record.Core_MDF_Account__c + $Record.Core_MDF_Bank__c</expression>
+    </formulas>
+    <interviewLabel>Update Program and AccountIdBankIdMapping {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_Update Program and AccountIdBankIdMapping</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Program_and_AccountBankIdMapping_Field</name>
+        <label>Update Program and AccountBankIdMapping Field</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <inputAssignments>
+            <field>Core_MDF_AccountIdBankIdMapping__c</field>
+            <value>
+                <elementReference>Core_MDF_Update_AccountIdBankIdMappingFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_MDF_Program__c</field>
+            <value>
+                <elementReference>$Record.Core_MDF_Account__r.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Program_and_AccountBankIdMapping_Field</targetReference>
+        </connector>
+        <filterFormula>1 != 2</filterFormula>
+        <object>Core_MDF_Account_Bank_Mapping__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

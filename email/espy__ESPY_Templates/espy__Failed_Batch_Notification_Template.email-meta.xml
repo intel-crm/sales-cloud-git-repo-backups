@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Failed_Batch_Notification_Template</name>
+    <style>none</style>
+    <subject>⚠ Failed Batch Job Notification</subject>
+    <textOnly>Hello Team,
+
+This is an automated notification to inform you that a scheduled batch job in Salesforce has failed.
+
+Batch Details:
+
+Class Name Job Id Status Created Date Submitted By
+{!FAILED_BATCH_TABLE}
+
+
+
+Please review the job in Setup → Apex Jobs for further details.
+
+Thank you,
+Salesforce System Notification</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

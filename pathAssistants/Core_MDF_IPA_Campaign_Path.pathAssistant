@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Campaign</entityName>
+    <fieldName>Core_MDF_Campaign_IPA_Path_Status__c</fieldName>
+    <masterLabel>IPA Campaign Path</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign is cancelled by user.&lt;/p&gt;</info>
+        <picklistValueName>Cancelled</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign End date is in the past.&lt;/p&gt;</info>
+        <picklistValueName>Completed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign is created by user and not submitted for Approval yet. (Status Not Applicable for Account Plan)&lt;/p&gt;</info>
+        <picklistValueName>Draft</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign Start date is current or in the past.&lt;/p&gt;</info>
+        <picklistValueName>In Progress</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign awaiting External user&amp;#39;s acceptance. (Status Not Applicable for Account Plan)&lt;/p&gt;</info>
+        <picklistValueName>Pending Approval</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign awaiting Internal approvals. (Status Not Applicable for Account Plan)&lt;/p&gt;</info>
+        <picklistValueName>Pending Review</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign Start date is in the future.&lt;/p&gt;</info>
+        <picklistValueName>Planned</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Campaign was submitted for Approval and was either rejected by the Internal Approver or not accepted by External user. (Status Not Applicable for Account Plan)&lt;/p&gt;</info>
+        <picklistValueName>Revision Required</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Core_MDF_Intel_Partner_Alliance</recordTypeName>
+</PathAssistant>

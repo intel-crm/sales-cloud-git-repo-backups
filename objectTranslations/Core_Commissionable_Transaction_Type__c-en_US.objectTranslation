@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Commissionable Transaction Type</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Commissionable Transaction Type</value>
+    </caseValues>
+    <fields>
+        <label><!-- Commissionable Transaction Type --></label>
+        <name>Core_Commissionable_Transaction_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone --></label>
+        <name>Core_Milestone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>Core_Opportunity_Product__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

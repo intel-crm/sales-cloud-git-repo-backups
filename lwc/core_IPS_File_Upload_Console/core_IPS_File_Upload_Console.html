@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-p-around_small" style="background-color: #5875aa;color: white; font-size: 1.5rem;">
+        <b>IPS File Upload Console</b>
+    </div>
+    <lightning-card>
+        <div>
+            <h2 style="padding-left: 40px; font-size: 1rem;"> <b>Streaming File Uploads </b></h2>
+        </div>
+        <div class="slds-grid slds-grid--align-center">
+            <button class="slds-button slds-button_neutral"  onclick={getUploadUrl}>Upload New Files</button> &nbsp;&nbsp;&nbsp; 
+            <button class="slds-button slds-button_neutral" onclick={navigateToFileUploadMasterList}>Assign Previously Uploaded Files</button> &nbsp;&nbsp;&nbsp;
+            <button class="slds-button slds-button_neutral" onclick={navigateToFileAssignmentList}>File Assignment List Views</button> &nbsp;&nbsp;&nbsp;
+            <button class="slds-button slds-button_neutral" onclick={refreshPage}>Refresh To see Recently Uploaded Files</button> 
+        </div>
+        <template if:false={showData}>
+            <br/>
+            <div>
+                <p style="padding-left: 40px;"> No Uploads currently detected for <b>{LoggedUserName}</b> </p> <br/>
+                <p style="padding-left: 40px; color: #5875aa;"> <b>"Upload New Files"</b> in a new window, Visit this page to see recently Uploaded Files </p>
+            </div>
+        </template>
+        <template if:true={showData}>
+            <div>
+                <p style="padding-left: 40px;"> Files Uploaded By <b>{LoggedUserName}</b> </p> <br/>
+                <p style="padding-left: 40px; color:#5875aa;"> <b>"Upload New Files" in a new window, Visit this page to see recently Uploaded Files </b></p>
+            </div>
+            <div class ="slds-p-around_large">
+                <lightning-datatable data={dataToShow} columns={columns} key-field="Id" hide-checkbox-column="true"></lightning-datatable>
+            </div>
+            
+        </template>
+    </lightning-card>
+</template>

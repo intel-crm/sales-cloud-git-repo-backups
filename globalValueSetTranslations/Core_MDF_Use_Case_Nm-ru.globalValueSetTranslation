@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+        <translation>Оптимизация ресурсов и операций</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+        <translation>Оптимизация контроля и автономность</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+        <translation>Мониторинг и управление энергопотреблением</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Environment Monitoring</masterLabel>
+        <translation>Мониторинг окружающей среды</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>General Purpose</masterLabel>
+        <translation>Общего назначения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Human Wellness Monitoring</masterLabel>
+        <translation>Наблюдение за состоянием здоровья человека</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Interactive Media</masterLabel>
+        <translation>Интерактивный медиаконтент</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Logistics &amp; Tracking</masterLabel>
+        <translation>Логистика и отслеживание</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Condition Monitoring</masterLabel>
+        <translation>Мониторинг состояния машины</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Inspection</masterLabel>
+        <translation>Проверка продукции</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Situational Monitoring</masterLabel>
+        <translation>Ситуационный мониторинг</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

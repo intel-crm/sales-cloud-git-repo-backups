@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_48315381</developerName>
+        <masterLabel>age</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>60</to>
+            </sourceValues>
+            <value>SLA on time</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+            </sourceValues>
+            <value>SLA not on time</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>OPEN</field>
+    </columns>
+    <columns>
+        <field>CLOSED</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND not (2 or 3) AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CHD - Retail-WW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>amit angrest,walter chan,ch cho,ralf hegemann,huang-pao kang,tri lam,clay liao,oliver malleck,benny peleg,dirk ruberg,gal savion,oren shoshani,thierry touitou,jack yang,ming tian,wenbo cai</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Case_Co_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>amit angrest,walter chan,ch cho,ralf hegemann,huang-pao kang,tri lam,clay liao,oliver malleck,benny peleg,dirk ruberg,gal savion,oren shoshani,thierry touitou,jack yang,ming tian,wenbo cai</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Resolved,No Response from Customer,Unresolved,Waiting For Customer Verification</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Severity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>High</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_48315381</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ugw - 60 days-sla</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
+    </timeFrameFilter>
+</Report>

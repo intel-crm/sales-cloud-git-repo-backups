@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_Budget_Type_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Account Plan</fullName>
+                    <default>false</default>
+                    <label>Account Plan</label>
+                </value>
+                <value>
+                    <fullName>Business Client Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Business Client Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>CCG Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>CCG Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Client Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Client Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Client Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Client Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Co-Engineering</fullName>
+                    <default>false</default>
+                    <label>Co-Engineering</label>
+                </value>
+                <value>
+                    <fullName>Data Center Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Data Center Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Data Center Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Data Center Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Data Centric Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Data Centric Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>DCG MAF</fullName>
+                    <default>false</default>
+                    <label>DCG MAF</label>
+                </value>
+                <value>
+                    <fullName>defaultBudget</fullName>
+                    <default>false</default>
+                    <label>defaultBudget</label>
+                </value>
+                <value>
+                    <fullName>Global Ericsson Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Ericsson Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global IBM Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global IBM Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Microsoft Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Microsoft Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Nokia Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Nokia Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Red Hat Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Red Hat Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global SAP Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global SAP Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global SAS Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global SAS Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Suse Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Suse Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global VMware Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global VMware Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Intel MDF Account Based1</fullName>
+                    <default>false</default>
+                    <label>Intel MDF Account Based1</label>
+                </value>
+                <value>
+                    <fullName>Intel MDF Account Based2</fullName>
+                    <default>false</default>
+                    <label>Intel MDF Account Based2</label>
+                </value>
+                <value>
+                    <fullName>Intel Rise Technology Initiative</fullName>
+                    <default>false</default>
+                    <label>Intel Rise Technology Initiative</label>
+                </value>
+                <value>
+                    <fullName>Iot Premier - MDF</fullName>
+                    <default>false</default>
+                    <label>Iot Premier - MDF</label>
+                </value>
+                <value>
+                    <fullName>Iot Targeted - MDF</fullName>
+                    <default>false</default>
+                    <label>Iot Targeted - MDF</label>
+                </value>
+                <value>
+                    <fullName>IPA Account Based1</fullName>
+                    <default>false</default>
+                    <label>IPA Account Based1</label>
+                </value>
+                <value>
+                    <fullName>ISV Scale Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>ISV Scale Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF+</fullName>
+                    <default>false</default>
+                    <label>MDF+</label>
+                </value>
+                <value>
+                    <fullName>ODM Growth Plan - Client MDF</fullName>
+                    <default>false</default>
+                    <label>ODM Growth Plan - Client MDF</label>
+                </value>
+                <value>
+                    <fullName>OEM CMP</fullName>
+                    <default>false</default>
+                    <label>OEM CMP</label>
+                </value>
+                <value>
+                    <fullName>Optane Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Optane Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Proposal II MDF</fullName>
+                    <default>false</default>
+                    <label>Proposal II MDF</label>
+                </value>
+                <value>
+                    <fullName>Proposal I MDF</fullName>
+                    <default>false</default>
+                    <label>Proposal I MDF</label>
+                </value>
+                <value>
+                    <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
+                    <default>false</default>
+                    <label>Red Hat &quot;Amplify&quot; - MDF</label>
+                </value>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>false</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>Scale Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Scale Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Scale Market Accelerate - MDF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Scale Market Accelerate - MDF</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CMP</fullName>
+                    <default>false</default>
+                    <label>Service Provider CMP</label>
+                </value>
+                <value>
+                    <fullName>SOEM Client MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Client MDF</label>
+                </value>
+                <value>
+                    <fullName>SOEM Data Center MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Data Center MDF</label>
+                </value>
+                <value>
+                    <fullName>VMWare Amplify - MDF</fullName>
+                    <default>false</default>
+                    <label>VMWare Amplify - MDF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Controlling_Field_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Controlling Field</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client Computing</fullName>
+                    <default>true</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Networking &amp; Intelligent Edge</fullName>
+                    <default>false</default>
+                    <label>Networking &amp; Intelligent Edge</label>
+                </value>
+                <value>
+                    <fullName>Business Client Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Business Client Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Scale Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Scale Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Account Plan</fullName>
+                    <default>false</default>
+                    <label>Account Plan</label>
+                </value>
+                <value>
+                    <fullName>Client Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Client Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Proposal I MDF</fullName>
+                    <default>false</default>
+                    <label>Proposal I MDF</label>
+                </value>
+                <value>
+                    <fullName>Proposal II MDF</fullName>
+                    <default>false</default>
+                    <label>Proposal II MDF</label>
+                </value>
+                <value>
+                    <fullName>Data Centric Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Data Centric Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>SOEM Data Center MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Data Center MDF</label>
+                </value>
+                <value>
+                    <fullName>SOEM Client MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Client MDF</label>
+                </value>
+                <value>
+                    <fullName>Client Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Client Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>IoT Premier - MDF</fullName>
+                    <default>false</default>
+                    <label>IoT Premier - MDF</label>
+                </value>
+                <value>
+                    <fullName>IoT Targeted - MDF</fullName>
+                    <default>false</default>
+                    <label>IoT Targeted - MDF</label>
+                </value>
+                <value>
+                    <fullName>ODM Growth Plan - Client MDF</fullName>
+                    <default>false</default>
+                    <label>ODM Growth Plan - Client MDF</label>
+                </value>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>false</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF+</fullName>
+                    <default>false</default>
+                    <label>MDF+</label>
+                </value>
+                <value>
+                    <fullName>OEM CMP</fullName>
+                    <default>false</default>
+                    <label>OEM CMP</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CMP</fullName>
+                    <default>false</default>
+                    <label>Service Provider CMP</label>
+                </value>
+                <value>
+                    <fullName>Co-Engineering</fullName>
+                    <default>false</default>
+                    <label>Co-Engineering</label>
+                </value>
+                <value>
+                    <fullName>Networking &amp; Telco</fullName>
+                    <default>false</default>
+                    <label>Networking &amp; Telco</label>
+                </value>
+                <value>
+                    <fullName>Edge</fullName>
+                    <default>false</default>
+                    <label>Edge</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Cloud</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Current_Object_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CurrentObject</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>false</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>PartnerFundRequest</fullName>
+                    <default>false</default>
+                    <label>PartnerFundRequest</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Campaign_Outcomes__c</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Campaign_Outcomes__c</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Execution_Context_nm__c</fullName>
+        <description>This specifies the execution context of campaign/activity.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Execution Context</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>create</fullName>
+                    <default>true</default>
+                    <label>create</label>
+                </value>
+                <value>
+                    <fullName>clone</fullName>
+                    <default>false</default>
+                    <label>clone</label>
+                </value>
+                <value>
+                    <fullName>edit</fullName>
+                    <default>false</default>
+                    <label>edit</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Set_API_Name_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Set API Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core_MDF_CCF_Campaign_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_CCF_Campaign_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_DCF_Campaign_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_DCF_Campaign_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_EEF_Campaign_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_EEF_Campaign_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Networking_Intelligent_Camp_FC</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Networking_Intelligent_Camp_FC</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Client_Computing_Camp_FC</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_Computing_Camp_FC</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_IPA_Campaign_FieldSet</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_IPA_Campaign_FieldSet</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Data_Center_Camp_FC</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Data_Center_Camp_FC</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Account_Plan</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Account_Plan</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Scale_Acceleration_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Scale_Acceleration_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Scale_Acceleration_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Scale_Acceleration_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Account_Plan</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Account_Plan</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_SOEM_Data_Center_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_SOEM_Data_Center_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Optane_Specialties_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Optane_Specialties_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_BusinessClientAcceleration</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_BusinessClientAcceleration</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobEricssonAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobEricssonAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Iot_Targeted_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Iot_Targeted_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobSuseAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobSuseAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_DataCenterSpecialtiesMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_DataCenterSpecialtiesMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_SOEM_Client_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_SOEM_Client_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_SOEM_Client_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_SOEM_Client_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_DataCentricAccelerationMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_DataCentricAccelerationMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobalIBMAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobalIBMAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobSuseAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobSuseAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Optane_Specialties_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Optane_Specialties_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobSAPAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobSAPAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_ISV_Scale_Acceleration_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_ISV_Scale_Acceleration_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobRedHatAccelerationMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobRedHatAccelerationMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Proposal_I_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Proposal_I_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobEricssonAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobEricssonAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Proposal_II_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Proposal_II_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobalIBMAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobalIBMAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobalNokiaAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobalNokiaAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobalNokiaAcceleration_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobalNokiaAcceleration_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_ISV_Scale_Acceleration_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_ISV_Scale_Acceleration_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobMicrosoftAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobMicrosoftAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Iot_Premier_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Iot_Premier_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Data_Center_Specialties_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Data_Center_Specialties_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_DataCentricAcceleration_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_DataCentricAcceleration_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Iot_Targeted_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Iot_Targeted_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_ODM_Growth_Plan_Client_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_ODM_Growth_Plan_Client_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobSASAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobSASAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Iot_Premier_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Iot_Premier_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Client_Specialties_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Client_Specialties_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_BusinessClientAcceleration</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_BusinessClientAcceleration</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobSASAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobSASAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobVMwareAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobVMwareAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_VMWare_Amplify_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_VMWare_Amplify_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_ODM_Growth_Plan_Client_MDF_Camp</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_ODM_Growth_Plan_Client_MDF_Camp</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_Red_Hat_Amplify_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_Red_Hat_Amplify_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Client_Specialties_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Client_Specialties_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_GlobMicrosoftAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_GlobMicrosoftAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobSAPAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobSAPAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Proposal_II_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Proposal_II_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Camp_Red_Hat_Amplify_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Camp_Red_Hat_Amplify_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobalRedHatAccelerationMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobalRedHatAccelerationMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_GlobVMwareAccelerateMDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_GlobVMwareAccelerateMDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Proposal_I_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Proposal_I_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_SOEM_Data_Center_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_SOEM_Data_Center_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_PFR_VMWare_Amplify_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_PFR_VMWare_Amplify_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_RMF_Campaign_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_RMF_Campaign_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_IPA_AccountBased</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_IPA_AccountBased</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Co_GTM_Campaign_Fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Co_GTM_Campaign_Fieldset</label>
+                </value>
+                <value>
+                    <fullName>core_mdf_ipa_campaign_purpose_fieldset</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_IPA_Campaign_Purpose_FieldSet</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Networking_Telco_Camp_FC</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Networking_Telco_Camp_FC</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Edge_Camp_FC</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Edge_Camp_FC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_FieldsToFetchPicklistValues__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>FieldsToFetchPicklistValues</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core_MDF_Custom_Picklist__c</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Custom_Picklist__c</label>
+                </value>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>false</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Campaign_Outcomes__c</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Campaign_Outcomes__c</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Record_Type_DeveloperName_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type Developer Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core_MDF_Channel_MDF</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Channel_MDF</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Channel_MDF_Proposal_Based</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Channel_MDF_Proposal_Based</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Channel_MDF_Account_Based</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Channel_MDF_Account_Based</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Data_Center_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Ecosystem_Extension_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Intel_Partner_Alliance</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Intel_Partner_Alliance_Account_Based</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Intel_Partner_Alliance_Account_Based</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Intel_Partner_Alliance_Proposal_Based</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Intel_Partner_Alliance_Proposal_Based</label>
+                </value>
+                <value>
+                    <fullName>Intel_Partner_Alliance_Account_Based</fullName>
+                    <default>false</default>
+                    <label>Intel_Partner_Alliance_Account_Based</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Retail_Marketing_Funds</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Co_GTM</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Co_GTM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>RecordType FieldSet Mapping</label>
+    <pluralLabel>RecordType FieldSet Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

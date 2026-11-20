@@ -1,0 +1,15 @@
+<aura:component controller="Pricing_PerformanceMetricsController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="isStandardQuoteLine" type="Boolean" /> 
+    <aura:attribute name="quoteLineId" type="Id" />
+    
+    <aura:if isTrue="{!v.isStandardQuoteLine}">
+        <div class="recordViewStyle slds-p-around_medium">
+            <force:recordView aura:id="quoteLineComp" recordId="{!v.quoteLineId}"></force:recordView>
+        </div>
+        <aura:set attribute="else">
+           <c:pricing_ReadOnly_FieldSet_Form recordId="{!v.quoteLineId}" />
+        </aura:set>
+    </aura:if>
+</aura:component>

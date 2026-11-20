@@ -1,0 +1,69 @@
+<!-- Generic Custom Searcheable Dropdown List -->
+<template>
+    <div class="slds-form-element">
+        <div class="slds-form-element_control">
+            <!-- Combobox Container -->
+            <div class="slds-combobox_container">
+                <!--DropDownClass is used to show and hide dropdown-->
+                <div class={dropDownClass} aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <!-- Input field to display selected value -->
+                    <lightning-input type="search"
+                        class="slds-p-around_xx-small slds-has-focus slds-combobox__input-value searchBox"
+                        id="searchBox" autocomplete="off" data-id="select-sobject-id" label={fieldLabel}
+                        aria-autocomplete="list" aria-controls="listbox-id-11" role="textbox" placeholder={placeHolder}
+                        onkeyup={handleKeyPress} onclick={handleInputFieldClicked} onchange={handleOnInputValueChanged}
+                        value={selectedItemName} disabled={fieldDisabled} required={isRequired}></lightning-input>
+                    <!--/ Input field to display selected value -->
+                    <!-- List box to show dropdown options -->                
+                    <template if:true={hasListToDisplay}>
+                        <div id="listbox-id-11" class="slds-dropdown slds-dropdown_fluid" role="listbox"
+                            onmouseleave={toggleDropDown}>
+                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown_length-5 customClass slds-dropdown_length-with-icon-7"
+                                tabindex="0" role="presentation" onblur={validateInputField}>
+                                <!-- Iterate the listItem-->
+                                <template for:each={listItems} for:item="eachRecord">
+                                    <!-- li to display each record in the list -->
+                                    <li key={eachRecord.Id} role="presentation" class="slds-listbox__item"
+                                        data-label={eachRecord.Name} data-value={eachRecord.Id}
+                                        onclick={itemListSelectHandler}>
+                                        <!-- Display the each record-->
+                                        <div id={eachRecord.Name}
+                                            class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                            <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                            <span class="slds-truncate">
+                                                <span>{eachRecord.Name}</span>
+                                            </span>
+                                        </div>
+                                        <!--/ Display the each record-->
+                                    </li>
+                                    <!--/ li to display each option in the list -->
+                                </template>
+                                <!--/ Iterate the listItem-->
+                            </ul>
+                        </div>
+                    </template>
+                    <template if:false={hasListToDisplay}>
+                        <!-- Display if record not found -->
+                        <div id="listbox-id-1" class="slds-dropdown slds-dropdown_fluid" role="listbox"
+                            onmouseleave={toggleDropDown}>
+                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown_length-5 customClass slds-dropdown_length-with-icon-7"
+                                tabindex="0" role="presentation">
+                                <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                    <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                    <span class="slds-truncate">
+                                        <span>{defaultListMessage}</span>
+                                    </span>
+                                </div>
+                            </ul>
+                        </div>
+                        <!--/ Display if record not found -->
+                    </template>
+                    <!--/ List box to show dropdown options -->
+                </div>
+                <!--/ DropDownClass is used to show and hide dropdown-->
+            </div>
+            <!--/ Combobox Container -->
+        </div>
+    </div>
+</template>
+<!--/ Generic Custom Searcheable Dropdown List -->

@@ -1,0 +1,41 @@
+<apex:component controller="Core_OpptyController" access="global"  >
+    <apex:attribute name="opportunityIDForController" type="id" description="The Opporunity's SF ID" assignTo="{!oppId}"/>
+    <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+        <tr>
+            <td>
+                Opportunity Product Information
+            </td>
+            
+            
+        </tr> 
+    </table>
+    <table style="border-collapse: collapse;font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+        
+        <thead >
+            <tr>
+                <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Product Name</th>
+                <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Status</th>
+                <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Claim Date</th>
+                <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Quantity</th>
+                <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">SalesPrice</th>
+                <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Total Price</th>
+            </tr>
+        </thead>
+        
+        <apex:repeat value="{!opp}" var="con">  
+            
+            <tr>
+                <td scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">{!con.Product2.Name}</td>
+                <td scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">{!con.Core_Status__c}</td>     
+                <td scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">{!con.Core_Claim_Date__c}</td>     
+                <td scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">{!con.Quantity}</td> 
+                <td scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">{!con.UnitPrice}</td>  
+                <td scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">{!con.TotalPrice}</td>  
+            </tr>
+        </apex:repeat> 
+    </table>
+    
+    
+    
+    
+</apex:component>

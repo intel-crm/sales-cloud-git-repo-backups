@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting is used in flow Core_AGS_Integration_Retrigger which is used to retrigger contacts that are failed with errors which work after retrigger.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AGS_Error_Message__c</fullName>
+        <inlineHelpText>Use this field to store common AGS errors that usually works on republish. In case of dynamic errors, we can store part of error message in this field.</inlineHelpText>
+        <label>AGS Error Message</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>Core Draco Republish Error Message</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,46 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="Core_UtilityController">
+    <aura:attribute name="userName" type="string" default="" />
+    <aura:attribute name="disableManageOfferings" type="boolean" default="false" />
+    <aura:attribute name="disableViewDashboard" type="boolean" default="false" />
+    <aura:attribute name="disableManageLeads" type="boolean" default="true" />
+    <aura:attribute name="disableManagedMPPartners" type="boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="showManageOfferings" type="boolean" default="false" />
+    <aura:attribute name="showDashboard" type="boolean" default="false" />
+	<aura:attribute name="showManageLeads" type="boolean" default="false" />
+    <aura:attribute name="showManagedPartners" type="boolean" default="false" />
+    
+    
+    <aura:attribute name="fullWidth" type="boolean" default="false" />
+    <div class="{! v.fullWidth ? 'fullWidth' : ''}">
+        <lightning:layout class="{! v.fullWidth ? 'fullWidth' : 'container'}" multipleRows="true">
+            <lightning:layoutItem size="12" largeDeviceSize="3" class="slds-p-vertical_xx-small userText">
+                {!$Label.c.PMP_ManageOffering_Welcome}&nbsp;{!v. userName}&nbsp;|&nbsp;{!$Label.c.PMP_ManageOffering_Your_Storefront}
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" largeDeviceSize="9" >
+                <div class="buttonContainer">
+                    <aura:if isTrue="{!v.showManageOfferings}">
+                        <c:IntelLink url="{!$Label.c.PMP_Marketplace_Community_URL + '/pmp-partner-offering/PMP_Partner_Offering__c'}" openInBlank="true">
+                            <c:IntelButton class="inline leftButton darkDisabled" disabled="{!v.disableManageOfferings}" tabindex="-1" >{!$Label.c.PMP_ManageOffering_Manage_Marketplace_Offerings}</c:IntelButton>
+                        </c:IntelLink>
+                    </aura:if>
+                    <aura:if isTrue="{!v.showManageLeads}">
+                    	<c:IntelLink>
+                        	<c:IntelButton class="inline leftButton darkDisabled" disabled="{!v.disableManageLeads}" tabindex="-1" >{!$Label.c.PMP_ManageOffering_Manage_Leads}</c:IntelButton>
+                    	</c:IntelLink>
+                    </aura:if>
+                    <aura:if isTrue="{!v.showDashboard}">
+                        <c:IntelLink url="{!$Label.c.PMP_Marketplace_Community_URL + '/dashboard'}" openInBlank="true">
+                            <c:IntelButton class="inline rightButton" disabled="{!v.disableViewDashboard}" tabindex="-1">{!$Label.c.PMP_ManageOffering_View_Marketplace_Dashboard}</c:IntelButton>
+                        </c:IntelLink>
+                    </aura:if>
+                    <aura:if isTrue="{!v.showManagedPartners}">
+                        <c:IntelLink url="{!$Label.c.PMP_Marketplace_Community_URL + '/partner/PMP_Company__c/'}" openInBlank="true"> 
+                        	<c:IntelButton class="inline rightButton" disabled="{!v.disableManagedMPPartners}" tabindex="-1">{!$Label.c.PMP_Manage_Marketplace_Partners}</c:IntelButton> 
+                        </c:IntelLink>
+                    </aura:if>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Core_MDF_PFR_Event_Rule --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_Activity_Category --></label>
+        <name>Core_MDF_Activity_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Activity_Types --></label>
+        <name>Core_MDF_Activity_Types__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Amount_Operator --></label>
+        <name>Core_MDF_Amount_Operator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Picklist Value --></label>
+        <name>Core_MDF_Country_Picklist_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Day_Difference --></label>
+        <name>Core_MDF_Day_Difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Days_Difference_Operator --></label>
+        <name>Core_MDF_Days_Difference_Operator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Days_Difference --></label>
+        <name>Core_MDF_Days_Difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Error_Message --></label>
+        <name>Core_MDF_Error_Message__c</name>
+        <picklistValues>
+            <masterLabel>Please submit event activities 30 days before activity Start Date</masterLabel>
+            <translation>イベント活動は、活動開始予定日の 30 日前には提出してください。</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Please submit event activities 60 days before activity Start Date</masterLabel>
+            <translation>イベント活動は、活動開始予定日の 60 日前には提出してください。</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_PFR_RecordType_Id --></label>
+        <name>Core_MDF_PFR_RecordType_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_PFR_RecordType --></label>
+        <name>Core_MDF_PFR_RecordType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_PFR_StartDate --></label>
+        <name>Core_MDF_PFR_StartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_Requested_Amount --></label>
+        <name>Core_MDF_Requested_Amount__c</name>
+    </fields>
+</CustomObjectTranslation>

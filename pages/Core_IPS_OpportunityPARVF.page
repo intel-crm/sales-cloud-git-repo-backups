@@ -1,0 +1,19 @@
+<apex:page StandardController="Opportunity" cache="true">
+     <apex:includeLightning />
+    <div id="lwcDemo" />
+   <!-- <apex:variable value="{!CONTAINS($CurrentPage.URL, 'lightning.force.com')}" var="isLightningMode"/>-->
+    <script>
+    $Lightning.use("c:core_IPS_OpportunityPARApp", function() {
+        $Lightning.createComponent("c:Core_IPS_Create_opportunity_PAR", {
+            recordId : '{!CASESAFEID($CurrentPage.parameters.Id)}',
+            //FLS Check Added - Nishitha
+            isLightningMode : "{!CONTAINS('{!JSENCODE($CurrentPage.URL)}', 'lightning.force.com')}"
+        },
+        "lwcDemo",
+            function(component) {
+              // extend the functionality as per your requirement
+            }
+       );
+    });
+    </script>
+</apex:page>

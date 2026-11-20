@@ -1,0 +1,1 @@
+{"@odata.nextLink": "", "value": [{"displayName": "testuser", "extension_0f4113104c90419c9f4205e0384e2ac7_enterpriseID": "0000", "mail": "user_deletion_test@inteldev.com"}]}

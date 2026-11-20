@@ -1,0 +1,87 @@
+<template>
+  
+  <h2 class="h5 text-normal slds-p-top_x-large slds-p-bottom_x-small">{labels.offeringFilters}</h2>
+
+  <div class="storefront-detail-filters-container">
+    <fieldset>
+      <legend><h3 class="p text-bold slds-p-vertical_xx-small">{labels.offeringsByCategory}</h3></legend>
+      <div class="storefront-filters-categories slds-p-bottom_small">
+        <template for:each={categoryFilters} for:item="catFilter">
+          <div key={catFilter.id} class="slds-p-vertical_xx-small">
+            <a role="button" tabindex="0" class="p text-bold link-text slds-text-align_left"
+              data-filter-name={CATEGORIES}
+              data-filter-id={catFilter.id}
+              data-selected={catFilter.selected}
+              onclick={handleClick}
+              onkeydown={handleAccessibility}>
+              {catFilter.label}
+            </a>
+          </div>
+          <template for:each={catFilter.children} for:item="catFilterL2">
+            <div key={catFilterL2.id} class="slds-m-left_x-small slds-p-vertical_xx-small">
+              <a role="button" tabindex="0" class="p link-text slds-text-align_left"
+                data-filter-name={CATEGORIES}
+                data-filter-id={catFilterL2.id}
+                data-selected={catFilterL2.selected}
+                onclick={handleClick}
+                onkeydown={handleAccessibility}>
+                {catFilterL2.label}
+              </a>
+            </div>
+            <template for:each={catFilterL2.children} for:item="catFilterL3">
+              <div key={catFilterL3.id} class="slds-m-left_medium slds-p-vertical_xx-small">
+                <a role="button" tabindex="0" class="p link-text slds-text-align_left"
+                  data-filter-name={CATEGORIES}
+                  data-filter-id={catFilterL3.id}
+                  data-selected={catFilterL3.selected}
+                  onclick={handleClick}
+                  onkeydown={handleAccessibility}>
+                  {catFilterL3.label}
+                </a>
+              </div>
+            </template>
+          </template>
+        </template>
+      </div>
+    </fieldset>
+
+    <div class="storefront-filters">
+      <template for:each={otherFilters} for:item="filter">
+        <fieldset key={filter.label} class="slds-p-bottom_xx-small">
+          <legend class="slds-p-top_small slds-p-bottom_xx-small">
+            <h3 class="p text-bold slds-p-vertical_xx-small">{filter.label}</h3>
+          </legend>
+          <template for:each={filter.children} for:item="filterChild">
+            <div key={filterChild.id} class="slds-m-left_x-small">
+              <lightning-input
+                class="slds-p-vertical_xx-small"
+                type="checkbox"
+                aria-label={filterChild.ariaLabel}
+                label={filterChild.label}
+                checked={filterChild.selected}
+                data-filter-name={filter.filterName}
+                data-filter-id={filterChild.id}
+                onchange={handleClick}>
+              </lightning-input>
+              <template for:each={filterChild.children} for:item="filterGrandChild">
+                <div key={filterGrandChild.id} class="slds-m-left_x-small">
+                  <lightning-input
+                    class="slds-p-vertical_xx-small"
+                    type="checkbox"
+                    aria-label={filterGrandChild.ariaLabel}
+                    label={filterGrandChild.label}
+                    checked={filterGrandChild.selected}
+                    data-filter-name={filter.filterName}
+                    data-filter-id={filterGrandChild.id}
+                    onchange={handleClick}>
+                  </lightning-input>
+                </div>
+              </template>
+            </div>
+          </template>
+        </fieldset>
+      </template>
+    </div>
+  </div>
+
+</template>

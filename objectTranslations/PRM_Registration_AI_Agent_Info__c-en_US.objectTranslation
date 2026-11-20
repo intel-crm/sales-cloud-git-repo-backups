@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Registration AI Agent Info</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Registration AI Agent Info</value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Comments --></label>
+        <name>PRM_AI_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Evidence --></label>
+        <name>PRM_AI_Evidence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Valid Company --></label>
+        <name>PRM_AI_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Request --></label>
+        <name>PRM_Registration_Request__c</name>
+        <relationshipLabel><!-- Registration AI Agent Info --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

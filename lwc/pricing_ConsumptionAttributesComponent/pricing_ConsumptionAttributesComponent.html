@@ -1,0 +1,122 @@
+<!--
+  @description       : 
+  @author            : Sandeep Chamate
+  @group             : 
+  @last modified on  : 12-29-2023
+  @last modified by  : Sandeep Chamate
+-->
+<template>
+
+    <template lwc:if={loadSpinner}>
+        <div style="height: 200px; position:relative">
+            <lightning-spinner variant="base" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class={sldsStyle} style="height: auto;">
+
+            <div class="slds-col slds-size_1-of-2">
+                <div class={paddingChange}>
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <template lwc:if={loadPlatformAndSalesGeo}>
+
+                            <div class="slds-col">
+                                <c-pricing-multi-select-picklist-lwc is-disabled={isDisabled.platformValue}
+                                    label="Consumption Platform"
+                                    onvaluechange={handlePlatformValueChange} options={platformOptions}
+                                    help-text={helpText.platformValue} onloadvalue={handlePlatformValueChange}
+                                    values={selectedPlatformValue} >
+                                </c-pricing-multi-select-picklist-lwc>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div class={paddingChange}>
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <template lwc:if={loadRegion}>
+
+                            <div class="slds-col">
+                                <c-pricing-multi-select-picklist-lwc is-disabled={isDisabled.regionValue}
+                                     label="Consumption Region"
+                                    onvaluechange={handleRegionValueChange} options={regionOptions}
+                                    help-text={helpText.regionValue} onloadvalue={handleRegionValueChange}
+                                    values={selectedRegionValues} >
+                                </c-pricing-multi-select-picklist-lwc>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div class={paddingChange}>
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <template lwc:if={loadCountry}>
+
+                            <div class="slds-col">
+                                <c-pricing-multi-select-picklist-lwc is-disabled={isDisabled.countryValue}
+                                    label="Consumption Country" onvaluechange={handleCountryValueChange}
+                                    options={countryOptions} help-text={helpText.countryValue}
+                                    onloadvalue={handleCountryValueChange} values={selectedCountryValues}
+                                    >
+                                </c-pricing-multi-select-picklist-lwc>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div class={paddingChange}>
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <template lwc:if={loadPlatformAndSalesGeo}>
+
+                            <div class="slds-col">
+                                <c-pricing-multi-select-picklist-lwc is-disabled={isDisabled.salesGeoValue}
+                                     label="Consumption Sales Geo"
+                                    onvaluechange={handleSalesGeoValueChange} options={salesGeoOptions}
+                                    help-text={helpText.salesGeoValue} onloadvalue={handleSalesGeoValueChange}
+                                    values={selectedSalesGeoValues} >
+                                </c-pricing-multi-select-picklist-lwc>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div class={paddingChange}>
+                    <div class="slds-form-element slds-form-element_stacked">
+                        <template lwc:if={loadPlatformAndSalesGeo}>
+
+                            <div class="slds-col">
+                                <c-pricing-multi-select-picklist-lwc is-disabled={isDisabled.segmentValue}
+                                     label="Consumption Segment"
+                                    onvaluechange={handleSegmentValueChange} options={segmentOptions}
+                                    help-text={helpText.segmentValue} onloadvalue={handleSegmentValueChange}
+                                    values={selectedSegmentValues} >
+                                </c-pricing-multi-select-picklist-lwc>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <template lwc:if={isEdit}>
+            
+            <div style="height: 50px;">
+
+            </div>
+            <div class="slds-align_absolute-center" style="margin: 10px;">
+                <lightning-button variant="brand" type="submit" label={saveLabel} title="Save" disabled={disableButton}
+                    onclick={handleOnSave} class="buttonPadding"></lightning-button>
+
+                <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={handleCancel}
+                    disabled={disableButton}></lightning-button>
+            </div>
+        </template> 
+    </template>
+</template>

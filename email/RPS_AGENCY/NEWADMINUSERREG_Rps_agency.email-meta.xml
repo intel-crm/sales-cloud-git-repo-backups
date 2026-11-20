@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome to Intel Retail Partner Solutions</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>NEWADMINUSERREG_Rps_agency</name>
+    <style>none</style>
+    <subject>Welcome to Intel Retail Partner Solutions</subject>
+    <textOnly>Welcome to Intel® Partner Marketing Studio
+
+
+Action Required
+
+
+This notice is to inform you that you have been registered as a representative of  {!Account.Name}  by an Intel Representative.
+
+An account has been generated that will allow you to access the Intel® Partner Marketing Studio web portal at https://marketingstudio.intel.com. Please follow the instructions below to get started.
+
+
+Please retain this e-mail for future reference.
+
+
+E-mail Address: {!Contact.Email}
+
+Your use of the Intel® Partner Marketing Studio is subject to the terms of your company’s Trademark Licensing Agreement with Intel.
+
+What you need to do
+
+Please follow this link to complete your account set up or  copying the URL into your browser.
+
+
+If you feel you have received this e-mail in error, please contact us here.
+
+Visit this link any time to manage your profile.
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+
+Your use of the Intel® Partner Marketing Studio is subject to the terms of your company’s Trademark Licensing Agreement with Intel.
+
+
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy |Cookies | Trademarks | Terms and Conditions | Manage Preferences</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>GA Banner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>GA Banners</value>
+    </caseValues>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>Core_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_Start_Date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Start Date should be less than End Date --></errorMessage>
+        <name>Core_Check_StartDate</name>
+    </validationRules>
+</CustomObjectTranslation>

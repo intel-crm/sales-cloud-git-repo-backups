@@ -1,0 +1,57 @@
+.THIS {
+    height: t(intelUnsupportedBrowserHeight);
+    display: none;
+}
+.THIS .ie11-note {
+  height: t(intelUnsupportedBrowserHeight);
+  background: t(charcoal);
+  color: t(white);
+  line-height: t(intelUnsupportedBrowserHeight);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: t(zIndexBeneathHeader)
+}
+.THIS.unsupportedIE11 a {
+    color: t(paleBlue);
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .THIS {
+        display: block;
+    }
+}
+
+.THIS .slds-modal__close {
+  box-shadow: none;
+  border: none;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.THIS.ie11-note .slds-icon-text-default,
+.THIS .slds-modal__close use {
+  fill: t(white);
+}
+
+.THIS .slds-modal__close .slds-button__icon {
+  width: 30px;
+  height: 30px;
+}
+.THIS .slds-modal__header,
+.THIS .slds-modal__content {
+  background: t(charcoal);
+  color: t(white);
+}
+
+.THIS .slds-modal__content {
+    text-align: center;
+    padding: 60px 80px;
+}
+
+.THIS header,
+.THIS footer {
+  background: t(charcoal);
+  border: 0 none;
+  padding: 0;
+}

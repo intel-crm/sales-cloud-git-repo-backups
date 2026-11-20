@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECBNFTENTHUJPN</name>
+    <style>none</style>
+    <subject>インテル® パートナー・アライアンスのエンスージアスト PC 専攻</subject>
+    <textOnly>認定取得、おめでとうございます !
+
+
+{!Contact.FirstName} 様、
+
+おめでとうございます。インテル® テクノロジー・プロバイダーのエンスージアスト向け PC スペシャリストに認定されました。
+
+PC ゲーマー人口が全世界で 10 億人を超えた今、市場は急速に成長しています。インテルと連携して顧客数を拡大し、売上を伸ばすチャンスです。
+
+以下のようなエンスージアスト向け PC スペシャリストの特典を、大いに活用してください。
+
+
+インテル® Core™ プロセッサー・ファミリー X、K、H シリーズを搭載した製品の追加ポイント・プロモーション
+エンスージアスト向け PC スペシャリストの認定と、インテル® テクノロジー・プロバイダーのウェブページへの掲載
+インテルの専門家による技術ウェビナー
+世界レベルのゲームやソフトウェア・パック
+地域の e スポーツイベントへの入場パス
+
+開始するには、以下の情報を明記して enthusiast-pc@intel.com 宛てに返信してください。
+
+
+エンスージアスト向け PC スペシャリスト関連情報の主な連絡先
+名前：電子メール:
+
+
+その他販売やプロモーション素材
+現住所：
+電話番号：
+
+特典を活用する
+
+
+* 特典は地域によって異なります。
+
+インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
+
+メンバーシップの最適化についてのヘルプやガイダンスは、https://www.intel.com/content/www/jp/ja/partner-alliance/help/overview.html を参照してください。
+
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+プライバシー  |  Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

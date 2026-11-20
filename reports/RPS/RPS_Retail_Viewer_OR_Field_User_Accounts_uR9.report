@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Business_Party_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Customer_Aggregation_Type__c</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <description>This contains SFId Missing RPS Accounts associated to Retail Field User or Retail Viewer internal users in RPS, matched by RPS Bus Org Name</description>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Joyful World,Media Mart,Pico,Sunfar,TNT Information,Tran Anh,Cel.ro (CORSAR ONLINE S.R.L),Alta Ltd,FORA TRADE LLP,Hyper Panda,Tesco,1&amp;1 Telecom GmbH,Brighthouse,Chuks Pee,Dansk / Bilka,Hizlial,MyMap,OKAY,Sferis,IFTA,Megasur,Sarl Fractal,A101,Bimeks,Fast,B-Tech,Gigatron,RAM computers,WinWin,Plugins,Saraiva,Flamingo,FNAC,Fry&apos;s,Musimundo Carsa,Olimpica,Tottus,Visions Electronics,Maquina de Vendas,Telefonica,Cencosud - PE,Wal-Mart - AR,Falabella - AR,Pernambucanas,Circuit City,Fred Meyer,RadioShack - US,Panafoto,Highly,Miranda,Cecomil,Online,Colombo,M&amp;M Santos,Papel &amp; Cia,Turk Telekom,Wadi,Microsoft - CA,Casper,Primetek,Distelsa,America Movil - CO,Olympia,Falcon,ITP,Noon Marketplace,NPD Outlet - US,JD Central,Power Mall,Al Hertani,Cetrogar,MSY,PRC - East,PRC - West,PRC - North,PRC - South,Alternate - Netherlands,Colorful - CN,Virtual Reality,Vivo,Judged Fcst - APJ,Judged Fcst - EMEA,Judged Fcst - India,Judged Fcst - LATAM,Judged Fcst - NAR,Judged Fcst - PRC,Harvey Norman - CEE,Expert META,Mercado Libre 1P - CL,Newton Station,US Total Market,Nojima Corp,Dell.com Commercial,Mercado Libre 3P - PE,Falabella 3P - CO,Coppel 3P - MX</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>RPS Retail Viewer OR Field User Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,275 @@
+<template>
+
+  <c-ipa-contact-partner-form></c-ipa-contact-partner-form>
+  <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+
+  <div class="storefront-detail">
+    <div class="slds-p-horizontal_medium">
+      <c-ipa-banner-carousel></c-ipa-banner-carousel>
+    </div>
+
+    <main class="slds-grid slds-wrap" aria-label={data.name}>
+      <div class="slds-col slds-size_12-of-12 slds-p-horizontal_medium">
+        <c-ipa-detail-header
+          is-mobile={currentScreen.isMobile}
+          header-type="storefront"
+          logo-url={data.logoUrl}
+          logo-alt={data.logoAlt}
+          headline={data.name}
+          tagline={data.tagline}
+          partner-status={data.partnerStatus}
+          partner-role={data.partnerRole}
+          contact-partner-analytics-details={contactPartnerAnalyticsDetails}
+          contact-partner-modal-data={data.contactPartnerData}
+          contact-partner-visible={data.showContactPartner}
+          badges={data.specialties}>
+        </c-ipa-detail-header>
+      </div>
+
+      <div class="filter-scroll-desktop slds-show_medium"></div>
+      <div class={classes.companyInfo}>
+        <h2 class="h5 text-normal slds-p-bottom_x-small slds-m-bottom_x-small">{labels.companyInformation}</h2>
+        <div class="company-link">
+          <c-ipa-link external-url={data.companyInfo.websiteUrl} label={companyWebsiteLabel} analytics-page={labels.pageName} class-name="link-text"></c-ipa-link>
+        </div>
+
+        <c-core-intc-text-block 
+              expanded={data.isDistributor} 
+              variant="lightGray" 
+              described-by={labels.companyInformation} 
+              size={companyInfoTextBlockSize}
+              onscrolltextblock={handleScrollTextBlock}
+              scroll-to-top='custom'>
+          <p slot='intro'>{data.companyInfo.descriptionShort}</p>
+          <p>{data.companyInfo.description}</p>
+
+          <template for:each={data.partnerAttributes} for:item="partnerAttribute">
+            <section class="sidebar-section" key={partnerAttribute.title}>
+              <h3 class="slds-p-top_large sidebar-section-header sidebar-border-bottom p text-bold">
+                  {partnerAttribute.title}
+              </h3>
+              <!-- Address Data -->
+              <template if:false={partnerAttribute.displayInModal}>
+                <div class="sidebar-section-content">
+                  <template iterator:attrsection={partnerAttribute.sections}>
+                      <div key={attrsection.value.label} class="sidebar-subsection" data-attr-length={attrsection.value.values.length}>
+                          <template if:true={attrsection.value.label}>
+                            <div class="sidebar-subsection-label text-bold">
+                              {attrsection.value.label}
+                              <template if:true={attrsection.value.values.length}>:</template>
+                            </div>
+                          </template>
+                          <c-ipa-attributes values={attrsection.value.values}
+                              separator={attrsection.value.separator}
+                              show-links-as-preview={previewMode}>
+                          </c-ipa-attributes>
+                          <template if:false={attrsection.last}>
+                            <br>
+                          </template>
+                        </div>
+                  </template>
+                </div>
+              </template>
+
+              <template if:true={partnerAttribute.displayInModal}>
+                <!-- Non-Address/Regional Coverage Data -->
+                <template if:false={partnerAttribute.displaySectionsInModal}>
+                  <c-ipa-quick-view 
+                    has-eyebrow 
+                    modal-button-label={partnerAttribute.modalButtonLabel} 
+                    onopen={handleOpenQuickView}
+                    onclose={handleCloseQuickView}
+                    display-mobile-modal
+                    data-display-section={partnerAttribute.displaySectionsInModal}
+                    data-section={partnerAttribute.title}
+                    modal-title={partnerAttribute.modalTitleLabel}
+                  >
+                    <div slot='header'>
+                      <h1 class='color-white'>{partnerAttribute.modalTitleLabel}</h1>
+                    </div>
+                    <ul slot='body' class='modal-attributes-container' data-section={partnerAttribute.title}>
+                      <template iterator:attrsection={partnerAttribute.sections}>
+                        <li key={attrsection.value.label} class="sidebar-subsection" data-attr-length={attrsection.value.values.length}>
+                          <template if:true={attrsection.value.label}>
+                            <h2 class="p sidebar-subsection-label text-bold">
+                              {attrsection.value.label}
+                            </h2>
+                          </template>
+                          <c-ipa-attributes values={attrsection.value.values}
+                              separator={attrsection.value.separator}
+                              show-links-as-preview={previewMode}>
+                          </c-ipa-attributes>
+                          <template if:false={attrsection.last}>
+                            <br>
+                          </template>
+                        </li>
+                      </template>
+                    </ul>
+                  </c-ipa-quick-view>  
+                </template>
+                <!-- Regional Coverage Data -->
+                <template if:true={partnerAttribute.displaySectionsInModal}>
+                  <template iterator:section={partnerAttribute.sections}>
+                    <div key={section.value.label}>
+                      <h4 class='p'>{section.value.label}
+                        <template if:true={section.value.values.length}>:</template>
+                      </h4>
+                      <template if:true={section.value.values.length}>
+                        <c-ipa-quick-view 
+                          has-eyebrow 
+                          modal-button-label={section.value.modalButtonLabel} 
+                          onopen={handleOpenQuickView}
+                          onclose={handleCloseQuickView} 
+                          display-mobile-modal
+                          data-display-section={partnerAttribute.displaySectionsInModal}
+                          data-section={section.value.label}
+                          modal-title={section.value.modalTitleLabel}
+                        >
+                          <div slot='header'>
+                            <h1 class='color-white'>{section.value.modalTitleLabel}</h1>
+                          </div>
+                          <ul slot='body' class='modal-attributes-container' data-section={section.value.label}>
+                            <template for:each={section.value.values} for:item='value'>
+                              <li key={value.label} class='slds-p-bottom_x-small'> 
+                                <h2 class='sidebar-subsection-label text-bold p'>
+                                  {value.label}
+                                </h2>
+                                <p>{value.subsection}</p>
+                              </li>
+                            </template>
+                          </ul>
+                        </c-ipa-quick-view>
+                      </template>
+                      <template if:false={section.last}>
+                        <br>
+                      </template>
+                    </div>
+                  </template>
+                </template>
+              </template>
+
+            </section>
+          </template>
+        </c-core-intc-text-block>
+
+        <div class="slds-p-top_x-small"></div>
+        <template if:true={loadingFeed}>
+          <div class="storefront-spinner slds-is-relative slds-m-top_medium slds-show_medium">
+            <lightning-spinner alternative-text={labels.loading} size="small"></lightning-spinner>
+          </div>
+        </template>
+        <template if:true={filtersVisible}>
+          <div class="accessibility-jump slds-show_medium">
+            <button class="skip-to-feed link-text slds-p-top_medium" onclick={handleSkipToFeed}>{labels.skipToFeed}</button>
+          </div>
+          <template if:true={filterStructure.length}>
+            <div class="slds-is-relative slds-hide_medium">
+              <div class="filter-scroll-mobile"></div>
+            </div>
+            <c-ipa-storefront-detail-filters
+                is-mobile={currentScreen.isMobile}
+                total-count={totalCountMobile}
+                filters={filterStructure}
+                draft-filters={draftFilters}
+                show-clear={filterTags.length}
+                onclearallfilters={handleClearAllFilters}
+                onresetdraft={handleResetDraft}
+                onfilterchange={handleFilterChange}
+                onapplymobile={handleApplyMobile}>
+            </c-ipa-storefront-detail-filters>
+          </template>
+        </template>
+      </div>
+
+      <template if:true={feedVisible}>
+        <div class="feed slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
+          <h2 class="slds-assistive-text">{labels.articleFeed}</h2>
+          <div class="filters-applied-container slds-is-relative slds-show_medium">
+            <template if:true={filterTags.length}>
+                <div class="slds-p-right_medium filter-label">
+                    <p>{labels.filtersApplied}</p>
+                </div>
+              <template iterator:it={filterTags}>
+                  <div class="pill"
+                      key={it.value.id}
+                      data-last={it.last}
+                      data-count={it.value.count}>
+                      {it.value.label}<span class="pill-count">
+                        <template if:true={it.value.count}>
+                          &nbsp;+{it.value.count}
+                        </template>
+                      </span>
+                      <button class="pill-cancel"
+                          aria-label={it.value.clearAriaLabel}
+                          data-id={it.value.id}
+                          data-filter-name={it.value.filterName}
+                          onclick={handleClearFilter}>
+                          <lightning-icon icon-name="utility:close" alternative-text={it.value.clearAriaLabel} title="close" class="cursor" size="xx-small"></lightning-icon>
+                      </button>
+                  </div>
+              </template>
+              <div class="slds-m-right_x-small slds-m-bottom_x-small slds-text-align_center">
+                <button class="text-upcase link-text text-bold text-small"
+                  onclick={handleClearAllFilters}>
+                  {labels.clearAllFilters}
+                </button>
+              </div>
+            </template>
+            <span class="accessibility-jump slds-m-left_x-small">
+              <button class="return-to-filters-button link-text" data-filter-count={filterTags.length} onclick={handleReturnToFilters}>
+                {labels.returnToFilters}
+              </button>
+            </span>
+          </div>
+          <div aria-live="polite" role="alert" class="slds-assistive-text">
+            {filtersAppliedAssistive}
+          </div>
+          <template if:true={filterTags.length}>
+            <div class="slds-p-bottom_medium slds-show_medium"></div>
+          </template>
+
+          <template for:each={formattedFeedItems} for:item="feedItem">
+            <div key={feedItem.key} class="slds-m-bottom_x-small">
+              <c-ipa-storefront-detail-card
+                card-type={feedItem.cardType}
+                card={feedItem}>
+              </c-ipa-storefront-detail-card>
+            </div>
+          </template>
+          <template if:true={loadingFeed}>
+            <div class="slds-is-relative slds-m-bottom_medium" style="height: 6rem;">
+              <lightning-spinner size="small" alternative-text={labels.loading}></lightning-spinner>
+            </div>
+          </template>
+          <template if:true={showLoadMore}>
+            <div class="slds-text-align_center slds-p-top_medium slds-p-bottom_large">
+              <button class="load-more-button button button-secondary" disabled={loadingFeed}
+                onclick={handleLoadMore}>{labels.loadMore}</button>
+            </div>
+          </template>
+          <!--  -->
+        </div>
+      </template>
+      <div class={classes.companyResources}>
+        <template if:true={data.companyResources.length}>            
+          <section class="slds-p-around_medium bg-white">
+              <h2 class="h5 text-normal slds-p-bottom_x-small sdlds-m-bottom_small">{labels.companyResources}</h2>
+              <template for:each={data.companyResources} for:item="companyResource">
+                <article key={companyResource.key} class="slds-p-top_medium">
+                  <h3 class="p text-bold breakWord">{companyResource.title}</h3>
+                  <p>{labels.resourceType}: {companyResource.resourceType}</p>
+                  <div>
+                    <c-ipa-link
+                      external-url={companyResource.url}
+                      label={companyResource.resourceType}
+                      analytics-element={labels.companyResources}>
+                    </c-ipa-link>
+                  </div>
+                </article>
+              </template>
+            </section>
+        </template>
+      </div>
+    </main>
+  </div>
+</template>

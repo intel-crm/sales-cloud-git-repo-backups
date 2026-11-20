@@ -1,0 +1,26 @@
+<template>
+
+    <article  class="slds-card">
+        <template if:true={isLoadingTable}>
+            <div class="spinner_class_div">
+                <lightning-spinner class="spinner_class"
+                    alternative-text="Loading"
+                    variant="brand">
+                </lightning-spinner>
+            </div>
+        </template>
+        <template if:false={isLoadingTable}>
+            <lightning-datatable key-field="id" class="slds-table_header-fixed_container slds-border_top"
+                data={dataList}
+                sorted-by={sortBy} default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection} onsort={handleSortdata}
+                show-row-number-column
+                hide-checkbox-column
+                columns={col}>
+            </lightning-datatable>
+            
+        </template>
+
+    </article >
+
+</template>

@@ -1,0 +1,508 @@
+<aura:component extends="c:MarketplaceBaseComponent" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,forceCommunity:availableForAllPageTypes,lightning:actionOverride"
+                access="global"
+                controller="PMP_OfferingDetailsController">
+    <aura:set attribute="storeName" value="Settings" /><!--Added as part of code merge[09/16]-->
+    <!--<aura:attribute name="storeName" type="string" default="Settings" />--><!--Commented as part of code merge[09/16]-->
+    <aura:attribute name="loading" type="boolean" default="false" />
+    <aura:attribute name="product" type="object" />
+    <!--<aura:attribute name="product" type="String" />-->
+    <aura:attribute name="offeringId" type="Id"/>
+    <aura:attribute name="showSpinner" type="boolean" default="true" description="Internal"/>
+    <aura:attribute name="editPageReference" type="object" />
+    <aura:attribute name="clonePageReference" type="object" />
+    <aura:attribute name="redirectToClone" type="boolean" default="false" />
+    
+    <aura:attribute name="editRecordId" type="String" default="a3s0n0000002BnzAAE" description="Hard coded for now." />
+    <aura:attribute name="showEditNotification" type="Boolean" default="true" />
+    <aura:attribute name="showViewNotification" type="Boolean" default="false" />
+    <aura:attribute name="showEditOfferingButton" type="Boolean" default="false" />  
+    <aura:attribute name="displayChatSection" type="Boolean"  default="false"/> <!-- Added by Ashish-->
+    <aura:attribute name="previewMode" type="boolean" default="false" />
+    <aura:attribute name="ShowClone" type="boolean" default ="false"/>
+    <aura:attribute name="previewParams" type="Object" />
+    <aura:attribute name="userDetails" type="object" />   
+    <aura:attribute name="count" type="integer" default="0" description="Internal component state"/>
+    <aura:attribute name="descriptionTabLabel" type="string" required="true" default="{!$Label.c.PMP_Description}" />
+    <aura:attribute name="marketingTabLabel" type="string" required="true" default="{!$Label.c.PMP_Marketing_Info}" />
+    <aura:attribute name="resourcesTabLabel" type="string" required="true" default="{!$Label.c.PMP_Resources}"/>
+    <aura:attribute name="isGuest" type="boolean" default="false" />
+    <aura:attribute name="offeringDisplayLang" type="string"/>
+    <aura:attribute name="notificationData" type="object[]" /><!--Added on 06/27-->   
+    <aura:attribute name="showEventBanner" type="Boolean" default="False" /> <!--Gireesh:US758953:Partner Offering Event Banner-->
+    
+    
+    <aura:attribute name="disabled" type="boolean" default="false"/>
+    
+    <aura:attribute name="dataObj" type="Object" default=""/>
+    
+    
+    <aura:attribute name="mdaId" type="string" default="" />
+    <aura:attribute name="showContactPartner" type="boolean" default= "false" />
+    <!--Show Disclaimer Added by Shahrukh to show the disclaimer with help of it-->
+    <aura:attribute name="showDisclaimer" type="boolean" default="false" />
+    <aura:attribute name="isPublished" type="boolean" default="false"/> <!--for Clone Functionality -->
+    <aura:attribute name="showDateChangeSection" type= "boolean" default ="false"/>
+    <aura:attribute name="showDateChangeButton" type= "boolean" default ="false"/> 
+    
+    <!--Added by raj, to be set true for enhanced partner-->
+    <aura:attribute name="isEnhancedPartner" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner class="mainSpinner" alternativeText="..." style="position: fixed" />
+    </aura:if> 
+    
+    <lightning:navigation aura:id="navigation"/>
+    <!--  <c:MarketplaceLeadGenForm  userDetails = "{!v.userDetails}" aura:id="contactForm" offeringDetails="{!v.product.offeringDetails}" ></c:MarketplaceLeadGenForm> -->
+    <aura:set attribute="auraPreInitBlock">
+        <auraStorage:init
+                          name="actions"
+                          persistent="false"
+                          secure="true"
+                          maxSize="1024"
+                          defaultExpiration="900"
+                          defaultAutoRefreshInterval="5" />
+    </aura:set>
+    <aura:if isTrue ="{!v.showDateChangeSection}">
+        <c:marketplaceOfferingDateUpdate offeringId="{!v.recordId}" oncloseModal="{!c.closeModal}"/>   	
+        
+    </aura:if>
+    
+    
+    <aura:if isTrue="{!and(v.showDisclaimer,not(v.previewMode))}">  
+        <p class="disclaimer slds-p-top_xxx-small">{!$Label.c.PMP_OfferingDetailDisclaimer1}</p>
+        
+        <p class="disclaimer slds-p-top_xxx-small">{!$Label.c.PMP_OfferingDetailDisclaimer2} <a class="disclaimer slds-p-top_xxx-small" href="javascript:void(0)" onclick="{!c.openDisclaimer}">
+            {!$Label.c.PMP_DisclaimerURL}
+            </a> </p> 
+    </aura:if>
+    
+    
+    
+    <!-- Ashish Chnages for for Enable Preview Page with read/write message (US583259) -->
+    <!--<aura:if isTrue="{!or(not(v.displayChatSection), v.showEventBanner)}">
+        <aura:if isTrue="{!or(and(not(v.previewMode),v.showViewNotification), v.showEventBanner)}">-->
+            <!--<aura:if isTrue="{!v.showEditNotification}">
+        <c:IntelLink recordId="{!v.editRecordId}" objectApiName="PMP_Partner_Offering__c">
+            <c:MarketplaceStorefrontNotificationsBanner type="redo"
+              message="Your offering requires an update for approval."
+              textLinkLabel="Edit This Offering"/>
+        </c:IntelLink>
+      </aura:if>
+      
+      <aura:if isTrue="{!v.showViewNotification}">
+         <c:IntelLink page="offering-preview" params="{!v.previewParams}" openInBlank="true">
+            <c:MarketplaceStorefrontNotificationsBanner type="lock"
+              textLinkLabel="View Offering Detail"
+              message="Your offering has been submitted and it is under Admin Review now." />
+        </c:IntelLink>
+      </aura:if>--><!--raj commented on 06/27 for code merge-->
+            <!--Added on 06/27 for code merge-->
+            <aura:if isTrue="{!not(v.displayChatSection)}">
+                <aura:if isTrue="{!and(not(v.previewMode),v.showViewNotification)}">
+                    <aura:iteration items="{! v.notificationData }" var="item" indexVar="idx">
+                        <div class="slds-m-right_small">
+                            <c:IntelLink pageReference="{!item.pageReference}" openInBlank="{!item.openInBlank}">
+                                <c:MarketplaceStorefrontNotificationsBanner type="{!item.type}"
+                                                                            message="{!item.message}"
+                                                                            textLinkLabel="{!item.textLinkLabel}"/>
+                                
+                            </c:IntelLink>
+                        </div>
+                    </aura:iteration>
+                                        
+                </aura:if>
+            </aura:if>
+            
+            
+            <!--Gireesh:US758953:Partner Offering Event Banner -->
+            <aura:if isTrue="{!v.showEventBanner}">
+                <div class="slds-m-right_small">
+                    <c:ipaBannerCarousel/>
+                </div>
+            </aura:if>
+            
+            <!--End-->
+            
+            <aura:if isTrue="{!not(v.displayChatSection)}">
+                <aura:if isTrue="{!and(not(v.previewMode),v.showViewNotification)}">
+                    
+                    <!-- US535006 Creating Clone Offering Button-->
+                    <!-- End of US 535006 --> 
+                    
+                    <!-- class is added for the below line as part of the US-US788273-->
+                    <lightning:layout multipleRows="true" class="{! v.showEventBanner ? '' : 'paddingtop'}">
+                        <lightning:layoutItem  class="padding-mobile-around-small padding-desktop-right-small padding-desktop-vertical-small" size="12" mediumDeviceSize="12">
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem class=" slds-m-bottom_medium indent slds-size_12-of-12">
+                                    <div class=" slds-grid slds-wrap slds-is-relative cloneBtnView">
+                                        <aura:if isTrue="{!or(and(v.showEditOfferingButton, v.isPublished), v.ShowClone)}">
+                                            <div onclick="{!c.handleClone}">
+                                                <c:IntelButton >{!$Label.c.PMP_CloneOffering}</c:IntelButton>
+                                            </div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.showDateChangeButton}">
+                                            <div onclick="{!c.openDateChange}">
+                                                <c:IntelButton >{!$Label.c.PMP_Edit_Publish_date}</c:IntelButton>
+                                            </div>
+                                        </aura:if>               
+                                        
+                                        <!-- End of US 535006 -->  
+                                        <aura:if isTrue="{!v.showEditOfferingButton}">
+                                            <c:IntelLink pageReference="{!v.editPageReference}">
+                                                <c:IntelButton disabled="{!v.disabled}">{!$Label.c.PMP_EditOffering}</c:IntelButton>
+                                            </c:IntelLink>
+                                        </aura:if>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:if>
+            </aura:if>
+        <!--</aura:if>
+    </aura:if>-->
+    <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'mobile'}">
+        <aura:if isTrue = "{v.showContactPartner}">
+            <div class="slds-p-around_medium bg-charcoal">
+                <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" languagePreference = "{!v.product.partnerDetails.leadLangPreference}" isLoggedIn="{!!v.dataObj.isGuest}"  dataObj="{!v.dataObj}" theme="mobile"/>
+            </div>
+        </aura:if>
+    </aura:if>
+    <!-- commented as Promotion is not MVP -->
+    <!--
+    <div class="padding-desktop-top-large">
+      <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+
+        <c:MarketplacePromotionCarousel class="padding-desktop-bottom-large" promotionData="{!v.product.promotion}"/>
+
+        <aura:set attribute="else">
+          <c:IntelHubSpoke
+            headline="{!$Label.c.PMP_Promotion}"
+            class="slds-m-bottom_medium slds-m-top_large slds-m-horizontal_small"
+            >
+            <div class="">
+              <c:MarketplacePromotionCarousel promotionData="{!v.product.promotion}"/>
+            </div>
+          </c:IntelHubSpoke>
+        </aura:set>
+      </aura:if>
+    </div>
+-->
+     <!--class is updated for the below line as part of the US-US788273-->
+    <lightning:layout multipleRows="true" class="{!or(v.showEventBanner, or(and(v.showEditOfferingButton, v.isPublished), v.showEditOfferingButton, v.showDateChangeButton)) ? '' : 'top-padding-if-no-banner'}">
+        <lightning:layoutItem  class="padding-mobile-around-small padding-desktop-right-small padding-desktop-vertical-small" size="12" mediumDeviceSize="9">
+            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}"> 
+                <!-- Desktop View -->
+                <aura:if isTrue="{! !empty(v.product)}">                
+                    <c:MarketplaceTabset aura:id="isgtabs" class="lightestGrayBg slds-m-bottom_xx-large">
+                        <c:MarketplaceTab label="{! v.descriptionTabLabel }">  
+                            <aura:if isTrue="{!and(!empty(v.product.productGallery),v.product.productGallery.length > 0)}">
+                                <c:MarketplaceProductGallery galleryData="{!v.product.productGallery}" count="{!v.count}"/>
+                            </aura:if>
+                            
+                            <c:IntelTextBlock
+                                              class="slds-m-around_medium white"
+                                              introSection="{!v.product.introSection}"
+                                              moreSection="{!v.product.moreSection}"
+                                              />      
+                            <c:MarketPlaceAccordion theme="cards" class="l3-accordion">                            
+                                <aura:if isTrue="{! !empty(v.product.selectedSpecificationsMap) }">                            
+                                    <c:MarketPlaceAccordionSection name="one" label="{!$Label.c.Core_Technical_Specification}" open="true" class="borderTop">
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks data="{!v.product}" type="technicalSpecifications"/> 
+                                            
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>
+                                <aura:if isTrue="{! !empty(v.product.selectedQualityMetricsMap) }">                            
+                                    <c:MarketPlaceAccordionSection name="one" label="{!$Label.c.PMP_Quality_Metrics}" open="true" class="borderTop">
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks data="{!v.product}" type="qualityMetrics"/> 
+                                            
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>
+                                <aura:if isTrue="{! !empty(v.product.includedIntelTechnologies) }">                      
+                                    <c:MarketPlaceAccordionSection name="two" label="{!$Label.c.Core_Included_Intel_Technology}" open="true" class="borderTop">
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceCardList imageResize="true" Header="{!$Label.c.PMP_Overview}" results="{!v.product.includedIntelTechnologies}" displayContactPartner="false" displayByPartner="false" displayAttributes="false" showAddToCompare="false" displayType="list" cardType="product" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" enableAttributeCountLimit="true"/>
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>
+                                
+                            </c:MarketPlaceAccordion>
+                        </c:MarketplaceTab>
+                        <c:MarketplaceTab label="{! v.marketingTabLabel }">
+                            <c:MarketPlaceAccordion theme="cards" class="l3-accordion">
+                                
+                                <aura:if isTrue="{! !empty(v.product.industriesApplications.industries) }">
+                                    <c:MarketPlaceAccordionSection name="one" label="{!$Label.c.Core_PMP_Industries}" open="true">
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.industriesApplications.industries}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="marketingInfo"/>
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>   
+                                <aura:if isTrue="{! !empty(v.product.industriesApplications.applications) }">   
+                                    <c:MarketPlaceAccordionSection name="one" label="{!$Label.c.Core_PMP_Applications}" open="true" >
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.industriesApplications.applications}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="marketingInfo"/>
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>  
+                                <aura:if isTrue="{! !empty(v.product.industriesApplications.availability_pricing) }">    
+                                    <c:MarketPlaceAccordionSection name="one" label="{!$Label.c.Core_PMP_Availability_Pricing}" open="true" >
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.industriesApplications.availability_pricing}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="marketingInfo"/>
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{! !empty(v.product.fulfillmentPartners) }">
+                                    <c:MarketPlaceAccordionSection name="two" label="{!$Label.c.Core_Fulfillment_Partners}" open="true" class="borderTop">
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks data="{!v.product.fulfillmentPartners}" Header="{!$Label.c.PMP_Market_Info}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="fullfillmentPartners" currentScreenSize="desktop"/>
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{! !empty(v.product.regions) }">
+                                    <c:MarketPlaceAccordionSection name="two" label="{!$Label.c.Core_Regions}" open="true" class="borderTop">
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceProductDetailBlocks data="{!v.product.regions}" Header="{!$Label.c.PMP_Market_Info}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="regions"/>
+                                        </div>
+                                    </c:MarketPlaceAccordionSection>
+                                </aura:if>
+                                
+                            </c:MarketPlaceAccordion>
+                            
+                        </c:MarketplaceTab>
+                        
+                        <aura:if isTrue="{! !empty(v.product.resources) }">
+                            <c:MarketplaceTab label="{! v.resourcesTabLabel }">                        
+                                <c:MarketplaceResourceList Header="{!$Label.c.PMP_Resources}" resouceList="{!v.product.resources}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}"/>                        
+                            </c:MarketplaceTab>
+                        </aura:if>
+                        
+                    </c:MarketplaceTabset>
+                </aura:if>
+                <!-- End Desktop View -->
+                
+                <aura:set attribute="else">
+                    <!-- Mobile View -->
+                    
+                    
+                    <h2 class="heading-24 slds-m-bottom_medium">{!$Label.c.PMP_Overview}</h2>
+                    
+                    <div class="slds-p-bottom_medium">
+                        <aura:if isTrue="{!and(!empty(v.product.productGallery),v.product.productGallery.length > 0)}">
+                            <c:MarketplaceProductGallery galleryData="{!v.product.productGallery}" count="{!v.count}"/>
+                        </aura:if>
+                        <c:IntelTextBlock
+                                          class="slds-p-around_medium slds-m-bottom_large bg-white"
+                                          introSection="{!v.product.introSection}"
+                                          moreSection="{!v.product.moreSection}"
+                                          />
+                        
+                        <aura:if isTrue="{! !empty(v.product.selectedSpecificationsMap) }">
+                            <c:IntelHubSpoke
+                                             headline="{!$Label.c.Core_Technical_Specification}"
+                                             class="slds-m-bottom_medium"
+                                             >
+                                <div class="slds-p-around_medium">
+                                    <c:MarketplaceProductDetailBlocks data="{!v.product}" type="technicalSpecifications"/>
+                                </div>
+                            </c:IntelHubSpoke>
+                        </aura:if>
+
+                        <aura:if isTrue="{! !empty(v.product.selectedQualityMetricsMap) }">
+                            <c:IntelHubSpoke
+                                             headline="Quality Metrics"
+                                             class="slds-m-bottom_medium"
+                                             >
+                                <div class="slds-p-around_medium">
+                                    <c:MarketplaceProductDetailBlocks data="{!v.product}" type="qualityMetrics"/>
+                                </div>
+                            </c:IntelHubSpoke>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{! !empty(v.product.includedIntelTechnologies) }">
+                            <c:IntelHubSpoke
+                                             headline="{!$Label.c.Core_Included_Intel_Technology}"
+                                             class="slds-m-bottom_medium"
+                                             >
+                                <div class="slds-p-around_medium lightestGrayBg ">
+                                    <c:MarketplaceCardList imageResize="true" Header="{!$Label.c.PMP_Overview}" results="{!v.product.includedIntelTechnologies}" cardHeightMatch="false" displayContactPartner="false" displayCardDescription="true" displayAttributes="false" displayByPartner="false" showAddToCompare="false" displayType="card" cardType="product" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" enableAttributeCountLimit="false"/>
+                                </div>
+                            </c:IntelHubSpoke>
+                        </aura:if>
+                        
+                    </div>
+                    
+                    
+                    <h2 class="heading-24 slds-m-vertical_medium">{!$Label.c.PMP_Market_Info}</h2>
+                    <div class="whiteBg slds-m-bottom_large">
+                        <!--<aura:if isTrue="{! !empty(v.product.industriesApplications) }">-->
+                        <div class="slds-p-around_medium borderBottom whiteBg">
+                            <aura:if isTrue="{! !empty(v.product.industriesApplications.industries) }">
+                                <h3 class="heading-24 slds-m-bottom_large slds-m-top_x-small">{!$Label.c.Core_PMP_Industries}</h3>
+                                <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.industriesApplications.industries}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="threeColumnLinks"/>
+                            </aura:if>
+                            <aura:if isTrue="{! !empty(v.product.industriesApplications.applications) }"> 
+                                <h3 class="heading-24 slds-m-bottom_large slds-m-top_x-small">{!$Label.c.Core_PMP_Applications}</h3>
+                                <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.industriesApplications.applications}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="threeColumnLinks"/>
+                            </aura:if>
+                            <aura:if isTrue="{! !empty(v.product.industriesApplications.availability_pricing) }"> 
+                                <h3 class="heading-24 slds-m-bottom_large slds-m-top_x-small">{!$Label.c.Core_PMP_Availability_Pricing}</h3>
+                                <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.industriesApplications.availability_pricing}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="threeColumnLinks"/>
+                            </aura:if>
+                        </div>
+                        <!--</aura:if>-->
+                        <div class="slds-p-around_medium ">
+                            <aura:if isTrue="{! !empty(v.product.fulfillmentPartners) }">
+                                <h3 class="heading-24  slds-m-bottom_medium slds-m-top_x-small">{!$Label.c.Core_Fulfillment_Partners}</h3>
+                                <div class="slds-p-vertical_medium">
+                                    <c:MarketplaceProductDetailBlocks Header="{!$Label.c.PMP_Market_Info}" data="{!v.product.fulfillmentPartners}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="fullfillmentPartners" currentScreenSize="mobile"/>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{! !empty(v.product.regions) }">
+                                
+                                <h3 class="heading-24  slds-m-bottom_medium slds-m-top_x-small">{!$Label.c.Core_Regions}</h3>
+                                <div class="slds-p-top_medium">
+                                    <c:MarketplaceProductDetailBlocks data="{!v.product.regions}" Header="{!$Label.c.PMP_Market_Info}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}" type="regions"/>
+                                </div>
+                            </aura:if>
+                        </div>
+                    </div>
+                    <aura:if isTrue="{! !empty(v.product.resources) }">
+                        <h2 class="heading-24 slds-m-vertical_medium">{!$Label.c.PMP_Resources}</h2>
+                        <div class="whiteBg">
+                            <c:MarketplaceResourceList Header="{!$Label.c.PMP_Resources}" resouceList="{!v.product.resources}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}"/>
+                        </div>
+                    </aura:if>
+                </aura:set>
+            </aura:if> 
+            
+        </lightning:layoutItem>
+        <lightning:layoutItem  padding="around-small" size="12" mediumDeviceSize="3">
+            
+            
+            <!--aura:if isTrue="{!and(not(v.previewMode),v.showViewNotification)}"> 
+         <aura:if isTrue="{!v.previewPageMessage}">
+                   <div class="slds-m-bottom_large">
+               <div class="slds-m-bottom_large">
+               <c:MarketplaceMessaging  aura:id="messaging" heading="{!$Label.c.PMP_Messaging_MessagesAboutOffering}" recordId="{! v.recordId }" />
+              </div>
+            </div>
+       </aura:if> 
+          </aura:if--> 
+            <!-- Ashish Chnages for for Enable Preview Page with read/write message (US583259) -->
+            <aura:if isTrue="{!v.displayChatSection}">
+                <div class="slds-m-bottom_large">
+                    <div class="slds-m-bottom_large">
+                        <c:MarketplaceMessaging  aura:id="messaging" heading="{!$Label.c.PMP_Messaging_MessagesAboutOffering}" recordId="{! v.recordId }" channel="Offering"/>
+                    </div>
+                </div>
+            </aura:if> 
+            <!-- Ashish Chnages for for Enable Preview Page with read/write message (US583259) -->
+            
+            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                <!-- Contact partner form -->
+                <!-- <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}"  dataObj="{!v.product.partnerDetails}" theme="large"/>-->
+                <aura:if isTrue = "{!v.showContactPartner}">
+                    <div class="slds-m-bottom_large">          
+                        <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" languagePreference = "{!v.product.partnerDetails.leadLangPreference}" isLoggedIn="{!!v.dataObj.isGuest}"  dataObj="{!v.dataObj}" theme="large"/>
+                    </div>
+                </aura:if>
+                <!-- Commented by Hemanta. Will revisit later to see if the condition is needed here. 
+                 Uncommented for CTA Validation US-->
+                <!-- <aura:if isTrue="{!!v.isGuest}">
+                <div onclick="{!c.openRequestaQuoteLoggedIn}" class="slds-m-vertical_large">
+                    <c:IntelButton class="inline large">{!$Label.c.PMP_Request_A_Quote}</c:IntelButton>
+                </div>
+               
+                <aura:set attribute="else">
+                 <div onclick="{!c.openRequestaQuote}" class="slds-m-vertical_large">
+                    <c:IntelButton class="inline large">{!$Label.c.PMP_Request_A_Quote}</c:IntelButton>
+                </div>
+                    </aura:set>
+                </aura:if>-->
+                
+            </aura:if>
+            <aura:if isTrue="{! !empty(v.product.partnerDetails)}">
+                <!-- Updated the padding from slds-p-bottom_small to slds-p-bottom_large as part of the US-US788273-->
+                <div class="slds-p-bottom_large">
+                    <c:MarketplacePartnerCard
+                                              minHeight="0"
+                                              id="{! v.product.partnerDetails.id}"
+                                              displayType="card"
+                                              imageUrl="{! v.product.partnerDetails.imageUrl}"
+                                              title="{! v.product.partnerDetails.name}"
+                                              description="{! v.product.partnerDetails.description}"
+                                              attributes="{! v.product.partnerDetails.attributes}"
+                                              dataObj="{! v.product.partnerDetails}"
+                                              partner="{! v.product.partnerDetails}"
+                                              displayContactPartner="false"
+                                              displayAllCompanyOffering="{!v.isEnhancedPartner}"
+                                              displayAttributes="true"
+                                              mdaId="{!v.mdaId}"
+                                              enableAttributeCountLimit="false"
+                                              
+                                              />
+                </div>
+            </aura:if>
+            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                <aura:if isTrue="{! !empty(v.product.productCompanyResource)}">
+                    <div class="whiteBg slds-m-bottom_large">
+                        <h3 class="heading-16 slds-p-vertical_medium slds-p-horizontal_medium">{!$Label.c.PMP_Company_Resources}</h3>
+                        <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.product.productCompanyResource}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}"/>
+                    </div>
+                </aura:if>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!not(empty(v.product.productCompanyResource))}">
+                        <c:IntelHubSpoke
+                                         headline="Company Resources"
+                                         class="slds-m-bottom_medium"
+                                         >
+                            <div class="slds-p-around_medium">
+                                <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.product.productCompanyResource}" mdaId="{!v.mdaId}" offeringId="{!v.recordId}"/>PMP_Company_Resources
+                            </div>
+                        </c:IntelHubSpoke>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                <aura:if isTrue="{!not(empty(v.product.articleCompanyResource))}">
+                    <div class="slds-m-bottom_large">
+                        <div class="whiteBg">
+                            <h3 class="heading-16 slds-p-vertical_medium slds-p-horizontal_medium">{!$Label.c.PMP_Company_Articles}</h3>                        
+                            <c:MarketplaceArticleList articleList="{!v.product.articleCompanyResource}" mdaId="{!v.mdaId}" Header="{!$Label.c.PMP_Company_Articles}" offeringId="{!v.recordId}"/>
+                        </div>    
+                        <div class="sectionFooter slds-text-align_right">
+                            <a href="{!v.product.viewAllLabel}" target="_blank">{!$Label.c.PMP_ViewAll}<lightning:icon iconName="utility:chevronright"
+                                                                                                        class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" /></a> 
+                        </div>
+                    </div>
+                </aura:if>    
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!not(empty(v.product.articleCompanyResource))}">
+                        <c:IntelHubSpoke
+                                         headline="{!$Label.c.PMP_Company_Articles}"
+                                         class="slds-m-bottom_medium"
+                                         >
+                            <div class="slds-p-around_medium">
+                                <c:MarketplaceArticleList articleList="{!v.product.articleCompanyResource}" mdaId="{!v.mdaId}" Header="{!$Label.c.PMP_Company_Articles}" offeringId="{!v.recordId}" />
+                            </div>
+                            <div class="slds-p-around_medium grayBg">
+                                <a href="View All">{!$Label.c.PMP_ViewAll}<lightning:icon iconName="utility:chevronright"
+                                                                           class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" /></a>
+                            </div>
+                        </c:IntelHubSpoke>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </lightning:layoutItem>
+        
+    </lightning:layout>
+</aura:component>

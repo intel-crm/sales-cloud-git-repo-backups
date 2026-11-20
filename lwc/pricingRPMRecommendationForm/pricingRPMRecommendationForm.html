@@ -1,0 +1,205 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : Subhanku
+  @group             : Accenture
+  @last modified on  : 01-28-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <template if:true={isModalOpen}>
+
+                <div class="slds-col">
+                    <lightning-record-edit-form density="Comfy" object-api-name="SBQQ__QuoteLine__c"
+                        record-id={quoteLineId} onsuccess={handleSuccess} onsubmit={handleSubmit} onerror={handleError}
+                        onload={handleLoad}>
+                        <lightning-messages></lightning-messages>
+                        <template if:true={errorMsg}>
+                            <div class="errorClass slds-text-heading_small">{errorMsg}</div>
+                        </template>
+
+                        <template if:false={load}>
+                            <template lwc:if={formValues}>
+                                <template for:each={formValues} for:item="obj">
+                                    <div key={obj.sectionLabel}>
+                                        <template if:false={obj.hideSectionLabel}>
+                                            <details class="slds-p-around_xx-small" style="background-color: white" open>
+                                                <summary class="slds-p-around_medium" onclick={handleClick}
+                                                    style="cursor: pointer">
+                                                    <span class="icon-container">
+                                                        <lightning-icon icon-name="utility:chevrondown" size="xx-small"
+                                                            class="slds-p-left_medium slds-p-right_medium slds-p-top_x-small"></lightning-icon>
+                                                    </span>
+                                                    <span style="pointer-events: none">
+                                                        {obj.sectionLabel}
+                                                    </span>
+                                                </summary>
+    
+                                                <div class="slds-grid slds-wrap slds-p-left_x-large" key={obj.sectionLabel}>
+                                                    <template for:each={obj.Fields} for:item="field"
+                                                        if:false={isReadOnlyForm}>
+                                                        <div key={field.APIName} class="slds-col slds-size_1-of-2"
+                                                            style="padding-right: 2rem">
+                                                            <template if:true={field.isInput}>
+                                                            <lightning-input-field field-name={field.APIName}
+                                                                    required={field.Required} onchange={handleChange}>
+                                                                </lightning-input-field>
+                                                            </template>
+                                                            <template if:false={field.isInput}>
+                                                                <lightning-output-field field-name={field.APIName}>
+                                                                </lightning-output-field>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+    
+                                                    <template for:each={obj.Fields} for:item="field"
+                                                        if:true={isReadOnlyForm}>
+                                                        <div key={field.APIName} class="slds-col slds-size_1-of-2"
+                                                            style="padding-right: 2rem">
+                                                            <lightning-output-field field-name={field.APIName}>
+                                                            </lightning-output-field>
+                                                        </div>
+                                                    </template>
+                                                </div>
+    
+    
+                                            </details>
+                                        </template>
+    
+                                        <template if:true={obj.hideSectionLabel}>
+                                            <div class="slds-grid slds-wrap slds-p-left_x-large">
+                                                <template for:each={obj.Fields} for:item="field" if:false={isReadOnlyForm}>
+                                                    <div key={field.APIName} class="slds-col slds-size_1-of-2"
+                                                        style="padding-right: 2rem">
+                                                        <template if:true={field.isInput}>
+                                                            <template if:true={field.isDateField}>
+                                                                <lightning-input data-id="name" type="date"
+                                                                    label={field.Label} value={field.fieldValue}
+                                                                    date-style="short" required={field.Required}
+                                                                    onchange={handleInputChange} class="slds-form-element"
+                                                                    style="width: 100%" variant="label-stacked">
+                                                                </lightning-input>
+                                                                <lightning-input-field field-name={field.APIName}
+                                                                    value={field.fieldValue} onchange={handleChange}
+                                                                class="slds-form-element__icon">
+                                                                </lightning-input-field>
+                                                            </template>
+                                                            <template if:false={field.isDateField}>
+                                                            <lightning-input-field field-name={field.APIName} value={field.doubleFieldValue} disabled={field.fieldDisabled}
+                                                                    required={field.Required} onchange={handleChange}>
+                                                            </lightning-input-field>
+                                                            </template>
+                                                        </template>
+                                                        <template if:false={field.isInput}>
+                                                                <lightning-output-field field-name={field.APIName}> 
+                                                                </lightning-output-field>
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                                <template for:each={obj.Fields} for:item="field" if:true={isReadOnlyForm}>
+                                                    <div key={field.APIName} class="slds-col slds-size_1-of-2"
+                                                        style="padding-right: 2rem">
+                                                            <lightning-output-field field-name={field.APIName}>
+                                                            </lightning-output-field>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </template>
+                            
+                        </template>
+
+                        <template if:true={loadSpinner}>
+                            <template if:true={getAIMessage}>
+                                <div class="slds-align_absolute-center">
+                                    {getAPIMessageValues}
+                                </div>
+                            </template>
+                            <div class="spinnerPadding">
+                                <lightning-spinner alternative-text="Loading..." size="medium" variant="brand"
+                                    class="saveSpinner">
+                                </lightning-spinner>
+                            </div>
+                        </template>
+                        <div class="slds-docked-form-footer slds-modal__footer footerStyle">
+                            <footer style="padding-top: 10px">
+                                <div class="slds-align_absolute-center">
+                                    <template if:false={isDPMLegalFianance}>
+                                        <lightning-button variant="neutral" label="Cancel" title="Cancel"
+                                            onclick={handleCancel} disabled={disableButton}></lightning-button>
+
+                                        <template if:true={isDraftQL}>
+                                            <lightning-button variant="brand" label={saveLabel} type="submit"
+                                                disabled={disableButton} title="OK" onclick={handleSave}
+                                                class="buttonPadding">
+                                            </lightning-button>
+                                        </template>
+                                        <template if:false={isDraftQL}>
+                                            <template if:false={isReadOnlyForm}>
+                                                <lightning-button variant="brand" label={saveLabel} type="submit"
+                                                    disabled={disableButton} title="OK" onclick={handleSave}
+                                                    class="buttonPadding">
+                                                </lightning-button>
+                                                <template if:false={isWriteInProduct}>
+                                                    <lightning-button variant="brand" label={dealButtonLabel}
+                                                        type="submit" disabled={disableButton} title="OK"
+                                                        onclick={handleDealClick} class="buttonPadding">
+                                                    </lightning-button>
+                                                </template>
+
+                                                <template if:false={isRunAIVisible}>
+                                                    <lightning-button if:true={pricingAIEnabled} variant="brand" label={aIButtonLabel}
+                                                        type="submit" disabled={disableButton} title="OK"
+                                                        onclick={handleAI} class="buttonPadding">
+                                                    </lightning-button>
+                                                </template>
+                                            </template>
+                                        </template>
+                                    </template>
+                                </div>
+                            </footer>
+                        </div>
+                        <template if:true={isSubmitSpinner}>
+                            <lightning-spinner alternative-text="Loading" size="medium" class={spinnerStyle}
+                                variant="brand">
+                            </lightning-spinner>
+                        </template>
+                    </lightning-record-edit-form>
+                </div>
+
+                <template lwc:if={isSoftWarningModalVisibleApprovedECAPAndSIPPError}>
+                    <section role="dialog" tabindex="0" aria-modal="true" aria-labelledby="alert-heading-id"
+                        aria-describedby="alert-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt">
+                        <div class="slds-modal__container">
+                            <div class="slds-modal__header slds-theme_alert-texture slds-theme_warning slds-p-around_small">
+                                <div class="slds-align_absolute-center">
+                                    <ul class="slds-list_horizontal">
+                                        <li class="slds-p-right_small"><lightning-icon icon-name="utility:warning" alternative-text="Warning!" title="Warning"
+                                            variant="warning" size="small"></lightning-icon></li>
+                                        <li><h1 style="font-size: 1.5em;">Warning!</h1></li>
+                                        </ul>
+                                </div>
+                            </div>
+                            <div class="slds-modal__content slds-p-around_small">
+                                <template lwc:if={isSoftWarningModalVisible}>
+                                    <p>{softWarningForLargeEnterprise}</p>
+                                </template>
+                                <template lwc:if={isSoftWarningModalVisibleApprovedECAP}>
+                                    <p>{softWarningForLargeEnterpriseApprovedECAP}</p>
+                                </template>           
+                            </div>
+                            <div class="slds-modal__footer slds-theme_default">
+                                <lightning-button variant="neutral" label="Cancel" title="Cancel"
+                                    onclick={closeSoftWarningForLargeEnterpriseModal}></lightning-button>
+                                <lightning-button variant="brand" label={continueButtonLabel} class="slds-m-left_small"
+                                    title={continueButtonLabel} onclick={handleContinueSoftWarning}></lightning-button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+                </template>
+
+    </template>
+</template>

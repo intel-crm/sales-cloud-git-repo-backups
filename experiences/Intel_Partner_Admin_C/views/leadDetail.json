@@ -1,0 +1,229 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "c:MarketplaceProductListLayout",
+  "dataProviders" : [ ],
+  "id" : "80526e52-0011-42c3-a332-0ee24d9f5203",
+  "label" : "Lead Detail",
+  "regions" : [ {
+    "id" : "fb770d6b-6272-45d6-bf36-4b3456a4a715",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "d866f6d4-b42c-4d52-8e31-27ab66e6df22",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:Core_Unclaimed_Lead_Notification",
+      "id" : "41a9946a-7455-4199-80d3-5534343c201e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:pathAssistant",
+      "id" : "e5fdabe7-2a84-4b07-b7fd-c484e2a79d2a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "6710e9db-cc66-4e7b-8174-cc8481f0fa11",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6c31c3e7-15e7-4a21-b9b9-3281076f3f79",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6d89eb53-6640-41df-bc9b-ae3c6d4710fa",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1878921a-b963-4c48-a127-0d3a49461534",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7adf19cb-a1fb-4cee-bf4c-e4ad88c39400",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"LeadDetailPage\",\"title\":\"Edit Lead\"}",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Edit Lead"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "5b7618a5-8dfd-4e45-a332-c84119ccc977",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ddacf236-ad34-4e61-a4d7-c9ff3afb15f4",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "5c3a97d8-e34b-43ab-a70a-d217f461a4cb",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "add0b6d7-3098-452e-93bf-efee595da003",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "c7c9e8eb-b59c-4d7d-b279-aa74e80512a1",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "71b99758-a650-4377-be43-621ef6917a44",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "$Label.c.PMP_All_Marketplace_Help",
+        "faqTitle" : "Manage Leads",
+        "headingLabel" : "$Label.c.PMP_MP_FAQ_Heading",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "41fcc4f9-fe74-44b3-87cd-b665a6da4c41",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d754d000-c22b-4180-b765-ff0ca1aaad60",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "6b1158dc-8634-46b8-bb2e-6707b195edd0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b9f83d45-2407-4d23-849d-45cfdf27acdf",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "cc9f9510-7649-41b2-8a2b-88a8605273df",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "22a06696-0ad7-42dc-bc7c-37023247d5c1",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "95910111-6c1a-4f0f-a13d-adb5bfa30c3b",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "6185b843-e273-4abd-83f4-c5f6656eaca0",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "c796d386-e4a4-4393-a9ac-944c74022b6e",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "1d81a242-2900-42f9-b30d-fc2898917638",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Partner Admin"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "b7fef97a-4d56-4d48-a588-5d128ea74f17",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d7d4a254-3f77-4b54-8765-e92c6787c5f9",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "ffd1c407-b63c-4866-a45c-ff36430a7078",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:Core_Unclaimed_Lead_Notification",
+      "id" : "31615850-cd89-4530-8fc6-258e630d60ec",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:pathAssistant",
+      "id" : "583353d6-66d1-4855-bab6-8d83b559502c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "4f500cd9-b9e5-484c-b389-e44c9ed7c100",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "eddc2e06-ae58-4dd4-a16c-c548a1f28fde",
+    "regionName" : "recordList",
+    "type" : "region"
+  }, {
+    "id" : "6b07ae6d-3c84-4b55-a398-c82a509afdef",
+    "regionName" : "createOfferingButton",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-00Q"
+}

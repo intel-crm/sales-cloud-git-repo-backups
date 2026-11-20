@@ -1,0 +1,9 @@
+<apex:page standardController="Account"  
+     extensions="Core_AccountOwnerChange_Controller"
+     action="{!changeOwnerRequest}">
+     <apex:pageMessages />
+     <apex:form style="margin-left:20px">
+         <apex:commandButton value="Return to Account" style="width:200px" action="{!returnToAccount}"/>     
+         <!-- <apex:commandButton value="Continue" style="width:100px" action="{!returnToAccount}"/> -->    
+     </apex:form>
+</apex:page>

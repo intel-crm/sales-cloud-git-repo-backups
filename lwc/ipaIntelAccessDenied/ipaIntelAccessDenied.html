@@ -1,0 +1,47 @@
+<template>
+  <div class="allContent">
+  <div if:true={showContent}>
+    <div class="ad-outer-container">
+      <div class="ad-inner-container container">
+        <div class="ad-main-content">
+          <h5 class="color-white">{label.HeaderHome}</h5>
+          <h2 class="title color-white">{label.HeaderLabel}</h2>
+        </div>
+      </div>
+    </div> 
+    <div style="background-color:white">
+      <h3 class="header">{label.ContentLabel}</h3>
+    </div>     
+    <div class="slds-p-around_none" style="background-color:white">
+
+    <lightning-layout multiple-rows class="outside-container">
+      
+      <lightning-layout-item class="content" size="12" medium-device-size="4" large-device-size="4">
+          <div>        
+          <img class = "image-style" src ={loginLogo}>
+          </div>
+          <br>
+          <h4 class="header-style">{label.completeRegstr}</h4>
+          <lightning-formatted-rich-text class="font-color" value={registrationStr}></lightning-formatted-rich-text>
+      </lightning-layout-item>
+      <lightning-layout-item class="content" size="12" medium-device-size="4" large-device-size="4"> 
+          <div> 
+           <img class = "image-style" src ={loginScreen}>
+           </div>
+           <br>    
+           <h4 class="header-style">{label.loginto}</h4>
+           <lightning-formatted-rich-text class="font-color" value={loginStr}></lightning-formatted-rich-text>
+      </lightning-layout-item>
+      <lightning-layout-item class ="content" size="12" medium-device-size="4" large-device-size="4">
+          <div>
+           <img class = "helpIcon-style" src ={helpLogo}>  
+           </div>
+           <br>
+            <h4 class="headerhelp-style">{label.contactUs}</h4>
+            <lightning-formatted-rich-text class="font-color" value={chatStr}></lightning-formatted-rich-text>
+      </lightning-layout-item>
+    </lightning-layout>
+    </div>
+  </div>
+</div>
+</template>

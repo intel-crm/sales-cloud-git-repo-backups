@@ -1,0 +1,7 @@
+<apex:page standardController="Core_Sales_Support_Request__c" sidebar="false" showHeader="false">
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
+
+    <B><I><font size="2"> When requesting IT @ Intel support, you must explictly allow an IT Geo Manager to be part of the opportunity team.</font></I></B>
+    
+</apex:page>

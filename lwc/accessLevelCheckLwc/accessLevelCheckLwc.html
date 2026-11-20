@@ -1,0 +1,221 @@
+<template>
+    <lightning-card title="Access Level">
+        <lightning-layout>
+            <lightning-layout-item class="slds-m-left_medium">
+                <lightning-input
+                    label="Record Id"
+                    required="true"
+                    name="recId"
+                    type="search"
+                    onchange={changeInput}
+                    placeholder="Enter Record Id"></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item class="slds-m-left_medium">
+                <lightning-input
+                    label="User Id or Email"
+                    required="true"
+                    name="userIdEmail"
+                    type="search"
+                    onchange={changeInput}
+                    placeholder="Enter User Id or Email"></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout>
+            <lightning-layout-item class="slds-m-left_medium slds-m-top_medium">
+                <lightning-button disabled={disableCheck} variant="brand" label="Check" title="Check" onclick={checkAccessLevel}></lightning-button>
+                <lightning-button
+                    disabled={disableReset}
+                    variant="brand"
+                    label="Reset"
+                    title="Reset"
+                    onclick={handleResetAll}
+                    class="slds-var-m-left_medium"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <template if:true={displayAccessLevel}>
+            <lightning-layout multiple-rows="true" size="12" class="slds-m-top_large">
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    <b>OWD-</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    {responseWrp.owdAccess}
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows="true" size="12">
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    <b>Object Name-</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    {responseWrp.objName}
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows="true" size="12">
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    <b>Read Access(Object)-</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    {responseWrp.readObjAccess}
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows="true" size="12">
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    <b>Edit Access(Object)-</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    {responseWrp.editObjAccess}
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows="true" size="12">
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    <b>Read Access(Record)-</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    {responseWrp.readRecAccess}
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows="true" size="12">
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    <b>Edit Access(Record)-</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-small">
+                    {responseWrp.editRecAccess}
+                </lightning-layout-item>
+            </lightning-layout>
+            <template if:true={displaySharingInfo}>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Highest Sharing Access Level-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.sharingAccessLevel}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Highest Sharing Source-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.sharingSource}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <template if:true={displayViewAll}>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>View All access-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.isViewAllAccess}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>View All access Source-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.viewAllAccessSource}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>View All access Id-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.viewAllAccessSourceId}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <template if:true={displayModifyAll}>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Modify All access-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.isModifyAllAccess}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Modify All access Source-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.modifyAllAccessSource}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Modify All access Id-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.modifyAllAccessSourceId}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <template if:true={displayPublicGroupInfo}>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Public Group ID-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.groupId}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Public Group Name-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.groupName}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <template if:true={displayParentPublicGroupInfo}>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Child Public Group ID-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.childGroupId}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Child Public Group Name-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.childGroupName}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <template if:true={displayRoleInfo}>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Role ID-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.roleId}
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true" size="12">
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        <b>Role Name-</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-left_x-small">
+                        {responseWrp.roleName}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+        </template>
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>

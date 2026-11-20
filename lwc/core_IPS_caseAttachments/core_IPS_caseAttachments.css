@@ -1,0 +1,72 @@
+.purpleColor{
+    background-color: #653171 !important;
+    color: white !important;
+}
+.tablecolor{
+    background-color: #fdfbfb !important;
+    color: black !important;
+}
+:host{
+    --sds-c-button-brand-color-background: white;
+    --sds-c-button-brand-color-background-hover: white;
+    --sds-c-button-brand-color-border: white; 
+    --sds-c-button-brand-color-border-hover: white;
+    --sds-c-button-brand-text-color: rgb(47, 136, 172);
+    --sds-c-button-brand-text-color-hover: rgb(47, 136, 172);
+    --sds-c-button-border: none;
+}
+.headingcolor{
+    background-color: #653171 !important;
+    border-color: white !important;
+}
+.greycolor{
+    background-color: #fdfbfb !important;
+    color: black !important;
+    table-layout: fixed;
+    width: 100%;
+}
+.whitecolor{
+    background-color: white !important;
+    color: black !important;
+}
+.retCaseBtn{
+    color:white;
+    border: 1px solid #ddd;
+    background-color:  rgb(8, 109, 224);
+    padding: 4px 12px;
+    height:30px;
+    width:155px;
+    font-weight: bold;
+    margin-left:20px;
+}
+.accordionClass{
+    --sds-c-accordion-heading-font-size : 1rem;
+    --slds-c-accordion-heading-text-color: green ;
+    font-weight: bold;    
+}
+.x-accordion-heading .x-accordion-toggle.collapsed {
+    background-color: white !important;
+    }
+lightning-accordion-section:-moz-focus-outer {
+    background-color: #653171 !important;
+    }
+ .cmtHeader{
+        background-color: #e9e9e9;
+        font-size: 16px;
+        font-weight: bold;
+        height: 50px;    
+    }
+.paddingcase{
+        padding-left: 340px; 
+        font-size: 0.8rem;
+    }
+
+@media screen and (max-width: 767px){
+    .paddingcase{
+        padding-left: 69px;
+    }
+    .greycolor{
+        width: 341px;
+        margin-left: -26px;
+    }
+}

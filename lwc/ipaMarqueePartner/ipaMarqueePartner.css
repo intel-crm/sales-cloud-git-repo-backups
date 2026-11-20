@@ -1,0 +1,35 @@
+/* @import 'c/coreIntcMarquee'; */
+
+c-ipa-link {
+    display: block;
+    margin-top: .5rem;
+}
+.mobile-column c-ipa-link  {
+    margin-bottom: 0.3125em;
+}
+.THIS .marquee {
+    background-color: t(darkBlue);
+}
+
+.slds-align_absolute-center{
+    padding-top: 0.80rem;
+    background-color:#ffd700;
+    padding-bottom: 0.80rem;
+    font-family: intel-clear,tahoma,Helvetica,helvetica,Arial,sans-serif!important;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 680;
+}
+@media only screen and (max-width: 767px) {
+    .right-content {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+    .mobile-column {
+        width: 50%;
+    }
+
+
+}

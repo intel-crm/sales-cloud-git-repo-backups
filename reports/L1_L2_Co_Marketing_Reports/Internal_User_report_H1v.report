@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Channel_Program_id__c</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_User_id__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Internal User report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_MDF_Int_Users_Partner_Geo_Mapping__c@Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Account_id__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

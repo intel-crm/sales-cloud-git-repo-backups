@@ -1,0 +1,95 @@
+.combobox {
+    overflow: visible;
+}
+
+.tableContentHide {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.errorClass {
+    background: red;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.THIS table td lightning-calendar td {
+    padding: 0 !important;
+    border-top: none !important;
+}
+
+.sldsspinnercontainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .2s ease, visibility 0s;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.slds-modal__container {
+    width: min-content;
+}
+
+.revisionSection {
+    text-align: left;
+}
+
+.revisionHelpText {
+    position: absolute;
+    left: 7rem;
+}
+
+th,
+td {
+    padding-left: 15px;
+}
+
+.field{
+    width: 10rem; 
+    white-space: break-spaces; 
+    text-align: center;
+}
+
+.p-left-1rem{
+    padding-left: 1rem;
+}
+
+.trimLength{    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 3rem;
+}
+
+.customSelect select {
+    padding-right: 1.25rem;
+    min-height: inherit;
+    line-height: normal;
+    height: 1.4rem;    
+}
+
+.customSelect label {
+    margin-top: .1rem;
+}
+
+.customSelect .slds-select_container::before {
+    border-bottom: 0;
+}
+
+.customInput {
+    width: 3rem;
+    height: 1.4rem;
+    text-align: center;
+    border: 1px solid #dddbda;
+    border-radius: 3px;
+    background-color:#fff;
+}

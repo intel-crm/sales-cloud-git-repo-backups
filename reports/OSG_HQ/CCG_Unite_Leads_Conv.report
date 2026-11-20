@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>IF(Lead.Core_SAL_Count__c:SUM&lt;1, 0, Lead.Core_SAL_Count__c:SUM/Lead.Core_MQL_Count__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>MGL Conversion to SAL</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>SAL %</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>IF(Lead.Core_SQL_Count__c:SUM&lt;1, 0, Lead.Core_SQL_Count__c:SUM/Lead.Core_MQL_Count__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Conversion of MAQLs to SQL</description>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>SQL %</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>IF(Opportunity.Core_Wins_Oppty__c:SUM&lt;1, 0, Opportunity.Core_Wins_Oppty__c:SUM/Lead.Core_MQL_Count__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>MAQL to Won Conversion</description>
+        <developerName>FORMULA3</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Won Conv %</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Status__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY_ACCT</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>COUNTRY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CONVERTED</field>
+    </columns>
+    <columns>
+        <field>CONVERTED_DATE</field>
+    </columns>
+    <columns>
+        <field>OPP_ACCT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPP_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OPP_OWNER</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Lead.Core_MQL_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Lead.Core_SAL_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Lead_Time_MQL_to_SAL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Lead.Core_SQL_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Lead_Time_SAL_to_SQL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Wins_Oppty__c</field>
+    </columns>
+    <description>RT: Leads with converted lead information.  Special report for Kathy Mann on Unite Leads with conversion information</description>
+    <filter>
+        <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Conversion_Point__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Unite</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Lead_Conversion_Point__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ccg_NAR_ccgcom_LL_2021_Redmond Partner Leads_C-MKA-16511_T-MKA-22809</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Conversion_Point__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ccg_NAR_ccgcom_LL_2021_FETC Leads_C-MKA-16511_T-MKA-22807</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Terminated,Converted,Rejected</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CCG Unite Leads Conv</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_PREVCUR2Y</interval>
+    </timeFrameFilter>
+</Report>

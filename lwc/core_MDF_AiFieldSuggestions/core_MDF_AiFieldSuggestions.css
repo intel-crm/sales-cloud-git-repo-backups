@@ -1,0 +1,97 @@
+/* aiFieldSuggestions.css */
+.suggestion-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.slds-modal__content {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.slds-form-element {
+    padding-bottom: 0.75rem;
+}
+
+.slds-form-element:last-child {
+    border-bottom: none;
+}
+
+/* Tactics Table Styles */
+.tactics-table-container {
+    width: 97%;
+    overflow-x: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.tactics-table-container table {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+}
+
+.tactics-table-container thead {
+    background-color: #f7f7f7;
+    border-bottom: 2px solid #d3d3d3;
+}
+
+.tactics-table-container th {
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: #333333;
+    white-space: nowrap;
+    background-color: #f7f7f7;
+}
+
+.tactics-table-container td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+    word-break: break-word;
+}
+
+.tactics-table-container tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.tactics-col-name {
+    width: 20%;
+    min-width: 120px;
+}
+
+.tactics-col-metrics {
+    width: 55%;
+    min-width: 250px;
+}
+
+.tactics-col-amount {
+    width: 25%;
+    min-width: 130px;
+    text-align: right;
+}
+
+.metrics-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metric-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+.metric-name {
+    font-weight: 500;
+    color: #333333;
+    white-space: nowrap;
+}
+
+.metric-value {
+    color: #696969;
+}

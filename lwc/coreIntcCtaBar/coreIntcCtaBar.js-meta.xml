@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>49.0</apiVersion>
+  <isExposed>true</isExposed>
+  <description>Full Width CTA Bar</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="ctaCommPage" label="CTA Community Page (API Name)" type="String" description=""/>
+      <property name="ctaExternalUrl" label="CTA External URL" type="String" description=""/>
+      <property name="ctaLabel" label="CTA Label" type="String" description=""/>
+      <property name="ctaLabelAria" label="CTA Aria Label" type="String" description=""/>
+      <property name="subtitle" label="Subtitle (Rich Text)" type="String" description=""/>  
+      <property name="title" label="Title" type="String" description=""/>
+      <property name="variation" label="Color Variation" type="String" datasource="primary,dark,light"/>
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

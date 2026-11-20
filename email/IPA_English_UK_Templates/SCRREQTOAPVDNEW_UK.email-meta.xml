@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_UK</name>
+    <style>none</style>
+    <subject>Welcome to Intel® Partner Alliance</subject>
+    <textOnly>Welcome to Intel® Partner Alliance
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Welcome! {!Account.Name} is now an Intel® Partner Alliance partner.
+Start growing your business by taking advantage of programme benefits, including:
+
+Intel customer support with global assistance for all technical, warranty and partner programme issues
+Intel® Partner University online training and webinars with industry-leading curriculum
+A vast partner network and marketplace to collaborate on data-centric solutions
+Marketing made easy with customisable materials and sales tools
+Access to Intel® Developer Zone
+
+
+Log in to https://crmdevipa-intelcloudcrm.cs45.force.com/ipa to view and manage your benefits.
+
+Log in to https://crmdevipa-intelcloudcrm.cs45.force.com/ipa/s/post-launch-primary for your role.
+
+
+Intel partners have a long history of innovation, and with Intel® Partner Alliance, we’ll help you accelerate building solutions for the data-centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+Visit https://intel.com/content/www/uk/en/secure/partner-alliance/help/overview.html for more help on getting started.
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

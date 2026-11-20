@@ -1,0 +1,35 @@
+<aura:documentation>
+	<aura:description>
+    <p>Resource List Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 2/25/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>Structure of Resource List items:</p>
+		<pre>
+[
+{
+	title: 'White Paper 1', // Section Title
+	linkUrl: '#', // Link URL
+	linkLabel: 'Lorem ipsum dolor sit amet, consectetu',  // Link Title
+	openInNewTab: true // Open in New Tab
+},
+{
+	title: 'White Paper 2',
+	linkUrl: '#',
+	linkLabel: 'Lorem ipsum dolor sit amet, consectetu',
+	openInNewTab: true
+}
+]
+</pre>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

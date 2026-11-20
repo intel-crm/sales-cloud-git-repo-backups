@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Registration_Request_Acknowledgement_Email</name>
+    <style>none</style>
+    <subject>Received: Your Intel® Partner Alliance application</subject>
+    <textOnly>Thank you for applying to the Intel® Partner Alliance Program
+
+Thank you for submitting your Intel Partner Alliance membership request
+
+Depending on whether your request is a new or existing business account, it may take us three business days to review and respond to your request
+
+Once your entitlements have been correctly provisioned, you will receive an email notifying you that you may login to the Partner Portal and experience all the benefits of being an Intel Partner Alliance member
+
+If you do not receive an email after the time listed above, please contact Support
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

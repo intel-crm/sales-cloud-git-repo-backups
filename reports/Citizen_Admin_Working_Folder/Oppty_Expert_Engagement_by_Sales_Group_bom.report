@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_12648547</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>FK_$Opportunity.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Russia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA UK Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Accounts Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Strategic Account Sales Group</sourceValue>
+            </sourceValues>
+            <value>.Global</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>FK_$Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Core_Expert_Engagement__c.Core_Expert_Engagement_Type__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>FK_OPP_ID</field>
+    </columns>
+    <columns>
+        <field>Core_Expert_Engagement__c.Expert_Engagement_Country__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Expert_Engagement__c.Core_Expert_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_Expert_Engagement__c.Core_Expert_Engagement_Geo__c</field>
+    </columns>
+    <columns>
+        <field>FK_OPP_CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FK_OPP_CLOSED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,undefined</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>partner hold</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_12648547</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Oppty &amp; Expert Engagement by Sales Group</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Expert_Engagement__c@Core_Expert_Engagement__c.Core_Opportunity_Name__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

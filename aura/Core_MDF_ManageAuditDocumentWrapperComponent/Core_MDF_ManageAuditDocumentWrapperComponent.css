@@ -1,0 +1,26 @@
+.THIS .closePop svg {
+  fill: white;
+}
+
+.THIS #confirmation-modal {
+  min-width: 20vw;
+  width: 30% !important;
+}
+
+.THIS .spnr {
+  z-index: 10000 !important;
+}
+
+.THIS .manageAuditDocumentPopup_modalContent {
+  max-height: 300px !important;
+  overflow-y: auto !important;
+}
+
+.THIS.ManageAuditDocumentWrapper {
+  margin-top: 0px !important;
+}
+
+.THIS .submitForPIC-modal {
+  width: auto !important;
+  max-width: 54% !important;
+}

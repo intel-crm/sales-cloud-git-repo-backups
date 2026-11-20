@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<isExposed>true</isExposed>
+	<apiVersion>66.0</apiVersion>
+	<masterLabel>core_MDF_staticTextDisplay</masterLabel>
+	<targets>
+		<target>lightning__AppPage</target>
+		<target>lightning__HomePage</target>
+		<target>lightning__RecordPage</target>
+		<target>lightningCommunity__Page</target>
+		<target>lightningCommunity__Default</target>
+	</targets>
+	<targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="textContent" type="String" label="Text Content" description="Enter the text to display."/>
+			<property name="backgroundColor" type="String" label="Background Color" default="#ffffff" description="Background color (hex code, e.g., #ffffff)"/>
+            <property name="textColor" type="String" label="Text Color" default="#000000" description="Text color (hex code, e.g., #000000)"/>
+			<property name="fontSize" type="String" label="Font Size (px)" default="14" description="Font size in pixels"/>
+            <property name="fontWeight" type="String" label="Font Weight" default="normal" description="Font weight (normal, bold, lighter, bolder, 100-900)"/>
+            <property name="textAlign" type="String" label="Text Alignment" default="left" description="Text alignment (left, center, right, justify)"/>
+			<property name="showIcon" type="Boolean" label="Show Icon" default="false" description="Display an icon with the text"/>
+            <property name="iconName" type="String" label="Icon Name" default="utility:info" description="Salesforce icon name (e.g., utility:info, standard:account, action:new)"/>
+			<property name="iconVariant" type="String" label="Icon Variant" default="neutral" description="Icon variant (base, error, inverse, success, warning, neutral)"/>
+            <property name="visibilityCriteria" type="String" label="Visibility Criteria" description="Rules for conditional visibility"/>
+        </targetConfig>
+		<targetConfig targets="lightningCommunity__Default">
+			<property name="recordId" label="Record Id" type="String" description=""/>
+            <property name="textContent" type="String" label="Text Content" description="Enter the text to display."/>
+			<property name="backgroundColor" type="String" label="Background Color" default="#ffffff" description="Background color (hex code, e.g., #ffffff)"/>
+            <property name="textColor" type="String" label="Text Color" default="#000000" description="Text color (hex code, e.g., #000000)"/>
+			<property name="fontSize" type="String" label="Font Size (px)" default="14" description="Font size in pixels"/>
+            <property name="fontWeight" type="String" label="Font Weight" default="normal" description="Font weight (normal, bold, lighter, bolder, 100-900)"/>
+            <property name="textAlign" type="String" label="Text Alignment" default="left" description="Text alignment (left, center, right, justify)"/>
+			<property name="showIcon" type="Boolean" label="Show Icon" default="false" description="Display an icon with the text"/>
+            <property name="iconName" type="String" label="Icon Name" default="utility:info" description="Salesforce icon name (e.g., utility:info, standard:account, action:new)"/>
+			<property name="iconVariant" type="String" label="Icon Variant" default="neutral" description="Icon variant (base, error, inverse, success, warning, neutral)"/>
+			<property name="visibilityCriteria" type="String" label="Visibility Criteria" description="Rules for conditional visibility"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

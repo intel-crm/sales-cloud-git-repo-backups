@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows users to access the Channel Sales Analysis tab</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Channel Wave Soft Launch User</label>
+    <license>Salesforce</license>
+    <tabSettings>
+        <tab>Core_Channel_Sales_Analysis</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

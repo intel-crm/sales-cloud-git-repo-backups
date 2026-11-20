@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>PartnerMarketingBudget.Amount:SUM
+-PartnerFundClaim.Amount:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Activity Available Amount</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PartnerFundAllocation.Core_MDF_Available_Allocation_Amount__c:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Claim Available Amount</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PartnerFundAllocation.Amount:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA3</developerName>
+        <downGroupingContext>PartnerMarketingBudget$Name</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Allocated Amount</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PartnerFundAllocation.Amount:SUM
+-PartnerFundClaim.Core_MDF_Reimbursable_Transaction_Amount__c:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA4</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Budget Balance</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PartnerFundAllocation.Amount:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA5</developerName>
+        <downGroupingContext>PartnerMarketingBudget$Name</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Budget Amount Total</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$Amount</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Available_Activity_Alloc_Amt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Claim_Reserved_Amount_Amt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget.PartnerFundAllocations$Core_MDF_Available_Allocation_Amount__c</field>
+    </columns>
+    <description>Report that lists account balance for each account node for a given budget year .</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests.PartnerFundClaims$Core_MDF_Region_Cd__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,ASMO,EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Budget_Type_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Plan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Program__c.Core_MDF_Technical_Program_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Intel Partner Alliance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>IPA - Bristal org_CCPTest,Bristal org_CCPTest Node</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations.PartnerFundRequests$Core_MDF_Fund_Request_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Closed,Draft,In-Progress,Pending Approval,Pending Review,Planned,Revision Required</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget.PartnerFundAllocations$ChannelPartner</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>LATAM,Japan,Incremental,Component,United States,Canada,PSG,Mexico,Hong Kong,Singapore,Taiwan,Miami,India,New Zealand,Malaysia,Thailand,Australia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Penta TEST H2,Eastronics 2H-23,AB H2-23,Avnet H2-23,REDINGTON H2-23,ESPRINET H2-23,Arrow H2-23,WestCoast H2-23,Copaco H2-23,MCR H2-23,CMS H2-23,Ingram H2-23,RECTRON H2-23,Index H2-23,SESA Group H2-23,Exertis H2-23,Computer Gross,TD Synnex H2-23,ELKO H2-23,LOGICOM H2-23,ALSO H2-23,Penta H2-23,ASBIS H2-23</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerMarketingBudget$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Branded Budgets / Magda</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Partner_Budgets_with_Allocations__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerMarketingBudget$StartDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "3039422f-a6b4-4600-bfa3-2f944585a215",
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "configurationTags" : [ ],
+  "devName" : "PricingGetHelp__c",
+  "id" : "bc3be383-ea8c-4b42-a98c-754531bdc6eb",
+  "label" : "Get Help",
+  "pageAccess" : "Public",
+  "routeType" : "custom-get-help",
+  "type" : "route",
+  "urlPrefix" : "get-help"
+}

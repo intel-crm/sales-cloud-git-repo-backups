@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Solution</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Solutions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Application/ Workload --></label>
+        <name>Core_Application_Workload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Link --></label>
+        <name>Core_Content_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Solution --></label>
+        <name>Core_End_Customer_Solution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry Use Case(s) --></label>
+        <name>Core_Industry_Use_Case_s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Core_Industry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution --></label>
+        <name>Core_Opp_Solution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity Solutions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Region of availability --></label>
+        <name>Core_Region_of_availability__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution --></label>
+        <name>Core_Solution_Areas__c</name>
+        <relationshipLabel><!-- Opportunity Solutions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Solution Owner Email --></label>
+        <name>Core_Solution_Owner_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technology Enabled --></label>
+        <name>Core_Technology_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Version --></label>
+        <name>Core_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Type --></label>
+        <name>Solution_Area_Type__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- New --></label>
+        <name>New</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Opportunity Solution --></label>
+        <name>Opportunity_Solution</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

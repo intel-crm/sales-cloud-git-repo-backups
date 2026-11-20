@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Territory Target</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Territory Targets</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account/Territory --></label>
+        <name>CPT_Account_Territory__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - All Target --></label>
+        <name>CPT_BR_All_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - CCG Target --></label>
+        <name>CPT_BR_CCG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - DCAI Accelerator Target --></label>
+        <name>CPT_BR_DCAI_DAIS_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - DCG Target --></label>
+        <name>CPT_BR_DCAI_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - Intel AI PC Target --></label>
+        <name>CPT_BR_Intel_AI_PC_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR - DCAI Ethernet Target --></label>
+        <name>CPT_BR_NEX_Ethernet_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - One Intel OEM Target --></label>
+        <name>CPT_CR_CCG_One_Intel_OEM_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - OEM Target --></label>
+        <name>CPT_CR_OEM_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Partner Target --></label>
+        <name>CPT_CR_Partner_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Retail Target --></label>
+        <name>CPT_CR_Retail_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin CCG Target --></label>
+        <name>CPT_MarVol_Margin_CCG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin DCG Target --></label>
+        <name>CPT_MarVol_Margin_DCG_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG LNL Target --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG PTL Target --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG WCL Target --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen DCG GNR Target --></label>
+        <name>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Period --></label>
+        <name>CPT_Quota_Period__c</name>
+        <relationshipLabel><!-- Territory Targets --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This record is locked. Contact Commissions Admin with questions. --></errorMessage>
+        <name>CPT_Restrict_Update_OnLockedRecord</name>
+    </validationRules>
+</CustomObjectTranslation>

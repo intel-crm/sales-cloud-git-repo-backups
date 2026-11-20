@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryGoal xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <deployedModels>
+        <active>true</active>
+        <aiModel>Maximize_Approved_ECAP_Price9</aiModel>
+        <fieldMappings>
+            <mappedField>SBQQ__QuoteLine__c.SBQQ__ProductName__c</mappedField>
+            <modelField>SBQQ__ProductName__c</modelField>
+            <sourceType>SalesforceField</sourceType>
+        </fieldMappings>
+        <fieldMappings>
+            <mappedField>SBQQ__QuoteLine__c.SBQQ__Product__r.Id</mappedField>
+            <modelField>Pricing_Product_Nm__c</modelField>
+            <sourceType>SalesforceField</sourceType>
+        </fieldMappings>
+        <label>Pricing_ECAP_Price_Amt__c</label>
+        <name>Pricing_ECAP_Price_Amt__c</name>
+        <prescribableFields>
+            <name>Pricing_Product_Nm__c</name>
+        </prescribableFields>
+        <prescribableFields>
+            <name>SBQQ__ProductName__c</name>
+        </prescribableFields>
+    </deployedModels>
+    <label>Predicted Approved ECAP Price</label>
+    <outcome>
+        <field>Pricing_ECAP_Price_Amt__c</field>
+        <fieldLabel>Approved ECAP Price</fieldLabel>
+        <goal>Maximize</goal>
+    </outcome>
+    <predictionType>Regression</predictionType>
+    <subscribedEntity>SBQQ__QuoteLine__c</subscribedEntity>
+</DiscoveryGoal>

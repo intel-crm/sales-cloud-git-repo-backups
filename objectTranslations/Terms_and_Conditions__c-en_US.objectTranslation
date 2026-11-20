@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Terms and Conditions</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Terms and Conditions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active Indicator --></label>
+        <name>Active_Indicator_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Channel_Program_id__c</name>
+        <relationshipLabel><!-- Terms and Conditions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Content Language --></label>
+        <name>Content_Language_nm__c</name>
+        <picklistValues>
+            <masterLabel>Chinese Simplified:zh_CN</masterLabel>
+            <translation><!-- Chinese Simplified:zh_CN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese Traditional:zh_TW</masterLabel>
+            <translation><!-- Chinese Traditional:zh_TW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English:en_US</masterLabel>
+            <translation><!-- English:en_US --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French:fr</masterLabel>
+            <translation><!-- French:fr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German:de</masterLabel>
+            <translation><!-- German:de --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian:it</masterLabel>
+            <translation><!-- Italian:it --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese:ja</masterLabel>
+            <translation><!-- Japanese:ja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean:ko</masterLabel>
+            <translation><!-- Korean:ko --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese:pt_BR</masterLabel>
+            <translation><!-- Portuguese:pt_BR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian:ru</masterLabel>
+            <translation><!-- Russian:ru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish Mex:es_MX</masterLabel>
+            <translation><!-- Spanish Mex:es_MX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish:es</masterLabel>
+            <translation><!-- Spanish:es --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Custom Permission --></label>
+        <name>Custom_Permission_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- NDA Updated Date --></label>
+        <name>NDA_Updated_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Program_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Site URL --></label>
+        <name>Site_URL_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- NDA Validity(in mnths) --></label>
+        <name>Validity_in_mnths_nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

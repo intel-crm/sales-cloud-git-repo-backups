@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_When__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_Project__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_sObjectType__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_sObjectId__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_Details__c</field>
+    </columns>
+    <description>Data sync errors reported by iPaaS</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_Log_Entry__c.Core_Severity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>baddata</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>iPaaS Data Errors</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Log_Entry__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_Log_Entry__c.Core_When__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_Log_Entry__c.Core_When__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

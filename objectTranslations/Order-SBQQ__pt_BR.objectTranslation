@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- OrderItemCount --></label>
+        <name>OrderItemCount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if the order is contracted. --></help>
+        <label>Contratado</label>
+        <name>SBQQ__Contracted__c</name>
+    </fields>
+    <fields>
+        <help><!-- &quot;By Subscription End Date&quot; creates a separate Contract for each unique Subscription End Date, containing only those Subscriptions. &quot;Single Contract&quot; creates one Contract containing all Subscriptions, regardless of their End Dates. --></help>
+        <label>Método de contratação</label>
+        <name>SBQQ__ContractingMethod__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total amount of all order product bookings. --></help>
+        <label>Lançamentos de pedido</label>
+        <name>SBQQ__OrderBookings__c</name>
+    </fields>
+    <fields>
+        <help><!-- The payment term for this order. --></help>
+        <label>Condições de pagamento</label>
+        <name>SBQQ__PaymentTerm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The price calculation status message --></help>
+        <label>Mensagem de status de cálculo de preço</label>
+        <name>SBQQ__PriceCalcStatusMessage__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates the order price calculation job status.  It is set by the system. --></help>
+        <label>Status de cálculo de preço</label>
+        <name>SBQQ__PriceCalcStatus__c</name>
+    </fields>
+    <fields>
+        <help><!-- The quote where the order is created from. --></help>
+        <label>Cotação</label>
+        <name>SBQQ__Quote__c</name>
+        <relationshipLabel>Pedidos</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Specify the term of the renewal. By default, it matches the original contract term. --></help>
+        <label>Termo de renovação</label>
+        <name>SBQQ__RenewalTerm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Rate of renewal price increases. --></help>
+        <label>Aumento na renovação (%)</label>
+        <name>SBQQ__RenewalUpliftRate__c</name>
+    </fields>
+    <fields>
+        <help><!-- The estimated tax amount --></help>
+        <label>Imposto estimado</label>
+        <name>SBQQ__TaxAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Airbill # --></label>
+        <name>Sales_Airbill_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amend Contract --></label>
+        <name>Sales_Amend_Contract__c</name>
+        <relationshipLabel><!-- Amend Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cancelled Order Quote No --></label>
+        <name>Sales_Cancelled_Quote_No__c</name>
+        <relationshipLabel><!-- Orders (Cancelled Quote No) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cancelled Reason --></label>
+        <name>Sales_Cancelled_Reason_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract --></label>
+        <name>Sales_Contract_Id__c</name>
+        <relationshipLabel><!-- Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Corporate Order --></label>
+        <name>Sales_Corporate_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cost Center --></label>
+        <name>Sales_Cost_Center__c</name>
+        <picklistValues>
+            <masterLabel>65525 - Sample</masterLabel>
+            <translation><!-- 65525 - Sample --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disty Channel --></label>
+        <name>Sales_Disty_Channel_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERP Entry Date --></label>
+        <name>Sales_ERP_Entry_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERP SO # --></label>
+        <name>Sales_ERP_SO_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Cust Acct Id --></label>
+        <name>Sales_End_Cust_Acct_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Cust PO # --></label>
+        <name>Sales_End_Cust_PO_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account 2 --></label>
+        <name>Sales_End_Customer_Account_2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Account --></label>
+        <name>Sales_End_Customer_Account__c</name>
+        <relationshipLabel><!-- Orders (End Customer Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>Sales_End_Customer_City_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Sales_End_Customer_Country_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Sales_End_Customer_Province_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Region --></label>
+        <name>Sales_End_Customer_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>Sales_End_Customer_State_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 2 --></label>
+        <name>Sales_End_Customer_Street2_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 1 --></label>
+        <name>Sales_End_Customer_Street_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip --></label>
+        <name>Sales_End_Customer_Zip_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Header Special Instructions --></label>
+        <name>Sales_Header_Special_Instructions_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incoterms --></label>
+        <name>Sales_Incoterms_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice # --></label>
+        <name>Sales_Invoice_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsPriceChanged --></label>
+        <name>Sales_IsPriceChanged__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Order --></label>
+        <name>Sales_IsRenewal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Recalled --></label>
+        <name>Sales_Is_Recalled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Verified --></label>
+        <name>Sales_Is_Verified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Order Id --></label>
+        <name>Sales_Legacy_Order_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Reason --></label>
+        <name>Sales_Order_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Non Stocking Order</masterLabel>
+            <translation><!-- Non Stocking Order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stocking Order</masterLabel>
+            <translation><!-- Stocking Order --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order Sub Type --></label>
+        <name>Sales_Order_Sub_Type__c</name>
+        <picklistValues>
+            <masterLabel>ARM standalone license order</masterLabel>
+            <translation><!-- ARM standalone license order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amend Non Commercial</masterLabel>
+            <translation><!-- Amend Non Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate Order</masterLabel>
+            <translation><!-- Corporate Order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dev Kit/PAC ES with license (Quartus and/or ARM) order</masterLabel>
+            <translation><!-- Dev Kit/PAC ES with license (Quartus and/or ARM) order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation license order</masterLabel>
+            <translation><!-- Evaluation license order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA university program license request</masterLabel>
+            <translation><!-- FPGA university program license request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner license order</masterLabel>
+            <translation><!-- Partner license order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standalone license order</masterLabel>
+            <translation><!-- Standalone license order --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Original Order --></label>
+        <name>Sales_Original_Order__c</name>
+        <relationshipLabel><!-- Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PO # --></label>
+        <name>Sales_PO_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Term --></label>
+        <name>Sales_Payment_Terms__c</name>
+    </fields>
+    <fields>
+        <label><!-- Req. Ship Date --></label>
+        <name>Sales_Req_Ship_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Count --></label>
+        <name>Sales_Retry_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancel Reason --></label>
+        <name>Sales_SAP_OrderCancelledReason__c</name>
+        <picklistValues>
+            <masterLabel>01 Lost to Competitor</masterLabel>
+            <translation><!-- 01 Lost to Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>02 Project Canceled</masterLabel>
+            <translation><!-- 02 Project Canceled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>03 Project Pushed Out</masterLabel>
+            <translation><!-- 03 Project Pushed Out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>04 Delivery Issue</masterLabel>
+            <translation><!-- 04 Delivery Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>05 Material Substitution</masterLabel>
+            <translation><!-- 05 Material Substitution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>06 Quality</masterLabel>
+            <translation><!-- 06 Quality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>07 Administrative</masterLabel>
+            <translation><!-- 07 Administrative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>08 Customer Request</masterLabel>
+            <translation><!-- 08 Customer Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10 Credit Rejection</masterLabel>
+            <translation><!-- 10 Credit Rejection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11 Sales Document Expiration</masterLabel>
+            <translation><!-- 11 Sales Document Expiration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14 Material Conversion</masterLabel>
+            <translation><!-- 14 Material Conversion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17 Partner Backlog Swamp</masterLabel>
+            <translation><!-- 17 Partner Backlog Swamp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18 MNC Transfer</masterLabel>
+            <translation><!-- 18 MNC Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21 ZWK2 Batch Auto Complete</masterLabel>
+            <translation><!-- 21 ZWK2 Batch Auto Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>23 0QTY PP Received from DATT</masterLabel>
+            <translation><!-- 23 0QTY PP Received from DATT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrative</masterLabel>
+            <translation><!-- Administrative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assigned by the System (Internal)</masterLabel>
+            <translation><!-- Assigned by the System (Internal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Rejection</masterLabel>
+            <translation><!-- Contract Rejection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GPEO Item Cancellation</masterLabel>
+            <translation><!-- GPEO Item Cancellation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RBA Sub Item Suppression</masterLabel>
+            <translation><!-- RBA Sub Item Suppression --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reject Cost Type DMR</masterLabel>
+            <translation><!-- Reject Cost Type DMR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SAP Order Date --></label>
+        <name>Sales_SAP_Order_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org --></label>
+        <name>Sales_Sales_Org_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduled Date --></label>
+        <name>Sales_Sched_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account 2 --></label>
+        <name>Sales_ShipTo_Account_2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>Sales_ShipTo_City_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Sales_ShipTo_Country_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Sales_ShipTo_Province_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>Sales_ShipTo_State_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 2 --></label>
+        <name>Sales_ShipTo_Street2_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 1 --></label>
+        <name>Sales_ShipTo_Street_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip --></label>
+        <name>Sales_ShipTo_Zip_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Date --></label>
+        <name>Sales_Ship_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship To Account --></label>
+        <name>Sales_Ship_To_Account__c</name>
+        <relationshipLabel><!-- Orders (Ship To Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ship To Acct Id --></label>
+        <name>Sales_Ship_To_Acct_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship to Region --></label>
+        <name>Sales_Ship_to_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shipment # --></label>
+        <name>Sales_Shipment_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shipping Condition --></label>
+        <name>Sales_Shipping_Condition_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shipping Instructions --></label>
+        <name>Sales_Shipping_Instructions_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account 2 --></label>
+        <name>Sales_SoldTo_Account_2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>Sales_SoldTo_City_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Sales_SoldTo_Country_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Sales_SoldTo_Province_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>Sales_SoldTo_State_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 2 --></label>
+        <name>Sales_SoldTo_Street2_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 1 --></label>
+        <name>Sales_SoldTo_Street_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip --></label>
+        <name>Sales_SoldTo_Zip_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sold To Account Region --></label>
+        <name>Sales_Sold_To_Account_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sold To Account --></label>
+        <name>Sales_Sold_To_Account__c</name>
+        <relationshipLabel><!-- Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sold To Acct Id --></label>
+        <name>Sales_Sold_To_Acct_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- It will store the comments from SAP --></help>
+        <label><!-- Sync Comments --></label>
+        <name>Sales_Sync_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Sales_status__c</name>
+        <picklistValues>
+            <masterLabel>Draft Order</masterLabel>
+            <translation><!-- Draft Order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order Cancelled</masterLabel>
+            <translation><!-- Order Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order created successfully</masterLabel>
+            <translation><!-- Order created successfully --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Order Creation Failed</masterLabel>
+            <translation><!-- SAP Order Creation Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Order Shipped</masterLabel>
+            <translation><!-- SAP Order Shipped --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Resubmission In Progress</masterLabel>
+            <translation><!-- SAP Resubmission In Progress --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <description><!-- Default Record type for all Order Records --></description>
+        <label><!-- Order Record --></label>
+        <name>Sales_Order_Record</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- When Order Activated or Cancelled, then Record type of Order will change to this Record type. --></description>
+        <label><!-- Read Only Record --></label>
+        <name>Sales_Read_Only_Record</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Cannot cancel order without providing Cancellation reason --></errorMessage>
+        <name>Core_PSG_Cancelled_Reason_On_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not allowed go back to Previous stage --></errorMessage>
+        <name>Core_PSG_Cannot_Skip_Stage_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot activate non stocking order without providing End Customer Account and Address details. --></errorMessage>
+        <name>Core_PSG_END_Customer_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All Mandatory fields should be filled to activate the order-1.Order Type/Sub Type 2.Ship to Account 3.Po Number 4.Shipping Condition 5.Incoterms 6.Req Ship Date 7.PriceBook 8.Sold To and Ship To Address. --></errorMessage>
+        <name>Core_PSG_Mandatory_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cost Center is mandatory for sample order --></errorMessage>
+        <name>Core_PSG_Mandatory_Fields_Sample_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order Type is defaulted and cannot be changed --></errorMessage>
+        <name>Core_PSG_Order_Type_on_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All Mandatory fields should be filled to activate the order :-
+1. Req Ship Date
+2. Price Book --></errorMessage>
+        <name>Core_PSG_Partner_License_Order_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please make sure the selected quote is Active and Approved --></errorMessage>
+        <name>Core_PSG_Valid_Quote_Filter_On_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Req. Ship date should be present or future date --></errorMessage>
+        <name>Core_PSG_Valid_Req_Ship_Date_On_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Não é possível contratar o pedido. Ative o pedido e tente novamente.</errorMessage>
+        <name>SBQQ__Cannot_Contract_New_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Customer Account field is required to Activate Non-Stocking order. --></errorMessage>
+        <name>Sales_ActivateOrd_EndCustAcc_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Incoterms field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_Incoterms_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- PO# field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_PONumber_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Price Book field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_Pricebook_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Req. Ship Date field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_ReqShipDate_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ship To Account field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_ShipToAcc_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order Sub Type field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_SubType_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order Type field is required to Activate the order. --></errorMessage>
+        <name>Sales_ActivateOrd_Type_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- User can set the order sub type as  Amend Non Commercial only incase of amend order. --></errorMessage>
+        <name>Sales_Amend_Non_Commercial_Order_SubType</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Activate Order Manually In case of &apos;Draft Order&apos; or &apos;SAP order Creation Failed. --></errorMessage>
+        <name>Sales_Cannot_Activate_Order_Manually</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order should have atleast one Order Product inorder to Submit to SAP. --></errorMessage>
+        <name>Sales_Cant_SubmitToSAP_WithoutOrderItem</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Corporate Order cannot have Stocking Order Reason --></errorMessage>
+        <name>Sales_Corporate_Reason_Default</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sold to account is an External account, You can&apos;t use Ship to account as an End customer account. --></errorMessage>
+        <name>Sales_EC_Validation_External_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sold to account is an Internal account, You can use only Internal Ship to account as an end customer account. --></errorMessage>
+        <name>Sales_EC_Validation_Internal_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sold to ,ship to and end customer accounts are mandatory . --></errorMessage>
+        <name>Sales_Mandatory_Accounts_For_Order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order Reason field is required to create the order. --></errorMessage>
+        <name>Sales_OrderCreation_OrderReason_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- PO# field is required to create the order. --></errorMessage>
+        <name>Sales_OrderCreation_PONumber_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ship To Account field is required to create the order. --></errorMessage>
+        <name>Sales_OrderCreation_ShipToAcc_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sold To Account field is required to create the order. --></errorMessage>
+        <name>Sales_OrderCreation_SoldToAcc_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- PO# cannot exceed 21 characters and cannot contain &apos;&amp;&apos; in it. --></errorMessage>
+        <name>Sales_PO_Number</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot have Stocking Order Reason for Non Commercial order type. --></errorMessage>
+        <name>Sales_PSG_Order_Reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote is mandatory for corporate orders. --></errorMessage>
+        <name>Sales_Quote_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit Stage, Order start date, Account and also cannot edit Order Products on Orders that are Cancelled And in SAP Resubmission In Progress. --></errorMessage>
+        <name>Sales_RestrictFields_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- In &apos;Non Commercial Order&apos; should not allowed Status as &apos;SAP Order Creation Failed&apos; and &apos;SAP Resubmission In Progress&apos;. --></errorMessage>
+        <name>Sales_Restrict_Non_Commercial_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End customer account chosen on the order should be same as SAP Ship to End Customer associated with the SAP ship to account. --></errorMessage>
+        <name>Sales_Ship_to_EC_Account_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Shipping Instruction cannot be edited --></errorMessage>
+        <name>Sales_Validation_Shipping_Instruction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot add Cancelled reason if order is not cancelled. --></errorMessage>
+        <name>Sales_cancelled_reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Can not select an Inactive Pricebook --></errorMessage>
+        <name>Sales_checkActivePricebook</name>
+    </validationRules>
+    <webLinks>
+        <label>Editar produtos do pedido</label>
+        <name>SBQQ__EditOrderProducts</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Retrigger Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRESEND_FRA</name>
+    <style>none</style>
+    <subject>Remplissez votre demande d&apos;adhésion à l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Vous y êtes presque !
+
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Merci d&apos;avoir soumis votre candidature. Un profil a été créé pour {!PRM_Registration_Request__c.PRM_Email_ID__c} et il ne vous reste plus que quelques étapes pour devenir membre de l&apos;Alliance partenaire Intel®.
+
+
+Pour activer votre compte et commencer à profiter des avantages du programme, fournissez les informations concernant votre compte et remplissez la section concernant les accords juridiques.
+
+
+Compléter
+
+Vous ne parvenez pas à accéder au lien ci-dessus ?
+
+https://www.intel.com/content/www/fr/fr/secure/partner/forms/ipa-account-search.html.
+
+Pour toute question, veuillez nous contacter à l&apos;adresse : programs@intel.com.
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

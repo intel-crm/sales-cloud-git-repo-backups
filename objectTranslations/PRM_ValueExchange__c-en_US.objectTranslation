@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Value Exchange</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Value Exchange</value>
+    </caseValues>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>PRM_Channel_Program_Level_Id__c</name>
+        <relationshipLabel><!-- Value Exchange --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Country Market Type --></label>
+        <name>PRM_Country_Market_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dynamic Content Visibility --></label>
+        <name>PRM_Dynamic_Content_Visibility__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>PRM_Program_Id__c</name>
+        <relationshipLabel><!-- Value Exchange --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Chinese Traditional --></label>
+        <name>PRM_Renewal_Content2_Chinese_Traditional__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Chinese simplified --></label>
+        <name>PRM_Renewal_Content2_Chinese_simplified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Danish --></label>
+        <name>PRM_Renewal_Content2_Danish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Dutch --></label>
+        <name>PRM_Renewal_Content2_Dutch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Finnish --></label>
+        <name>PRM_Renewal_Content2_Finnish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 French --></label>
+        <name>PRM_Renewal_Content2_French__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 German --></label>
+        <name>PRM_Renewal_Content2_German__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Indonesian --></label>
+        <name>PRM_Renewal_Content2_Indonesian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Italian --></label>
+        <name>PRM_Renewal_Content2_Italian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Japanese --></label>
+        <name>PRM_Renewal_Content2_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Korean --></label>
+        <name>PRM_Renewal_Content2_Korean__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Norwegian --></label>
+        <name>PRM_Renewal_Content2_Norwegian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Polish --></label>
+        <name>PRM_Renewal_Content2_Polish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Portuguese --></label>
+        <name>PRM_Renewal_Content2_Portuguese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Russian --></label>
+        <name>PRM_Renewal_Content2_Russian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Spanish --></label>
+        <name>PRM_Renewal_Content2_Spanish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Swedish --></label>
+        <name>PRM_Renewal_Content2_Swedish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Thai --></label>
+        <name>PRM_Renewal_Content2_Thai__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 Turkish --></label>
+        <name>PRM_Renewal_Content2_Turkish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 --></label>
+        <name>PRM_Renewal_Content2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content2 vietnamese --></label>
+        <name>PRM_Renewal_Content2_vietnamese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Chinese Traditional --></label>
+        <name>PRM_Renewal_Content_Chinese_Traditional__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Chinese simplified --></label>
+        <name>PRM_Renewal_Content_Chinese_simplified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Danish --></label>
+        <name>PRM_Renewal_Content_Danish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Dutch --></label>
+        <name>PRM_Renewal_Content_Dutch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Finnish --></label>
+        <name>PRM_Renewal_Content_Finnish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content French --></label>
+        <name>PRM_Renewal_Content_French__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content German --></label>
+        <name>PRM_Renewal_Content_German__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Indonesian --></label>
+        <name>PRM_Renewal_Content_Indonesian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Italian --></label>
+        <name>PRM_Renewal_Content_Italian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Japanese --></label>
+        <name>PRM_Renewal_Content_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Korean --></label>
+        <name>PRM_Renewal_Content_Korean__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Norwegian --></label>
+        <name>PRM_Renewal_Content_Norwegian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Polish --></label>
+        <name>PRM_Renewal_Content_Polish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Portuguese --></label>
+        <name>PRM_Renewal_Content_Portuguese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Russian --></label>
+        <name>PRM_Renewal_Content_Russian__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Spanish --></label>
+        <name>PRM_Renewal_Content_Spanish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Swedish --></label>
+        <name>PRM_Renewal_Content_Swedish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Thai --></label>
+        <name>PRM_Renewal_Content_Thai__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content Turkish --></label>
+        <name>PRM_Renewal_Content_Turkish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content --></label>
+        <name>PRM_Renewal_Content__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Content vietnamese --></label>
+        <name>PRM_Renewal_Content_vietnamese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

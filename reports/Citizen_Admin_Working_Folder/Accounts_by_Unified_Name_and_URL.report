@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Website__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Archer Daniels Midland,THE BANK OF NEW YORK MELLON,The Coca-Cola Compay,The Goldman Sachs Group Inc,THE HARTFORD,Home Depot,TJX Companies,The Trade Desk,THERMOFISHER SCIENTIFIC INC.,TIAA-CREF,Travekers,Truist Bank (BB&amp;T/SunTrust),TWO SIGMA INVESTMENTS,TYSON,UBER,UBS,UNITED AIRLINES UAL (IL),&quot;United Natural Foods, Inc. (UNFI)&quot;,UNITED PARCEL SERVICE,USAA,VALERO ENERGY CORP,Visa U.S.A. Inc.,WALGREENS,WALMART,WB Studios,Wells Fargo &amp; Company,Western Digital Corporation,Xcel Energy,Yahoo Inc.,Zillow Group,Zoom</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_MDM_Website__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>kimberly-clark.com,kochind.com,linkedin.com,lowes.com,marriott.com,massmutual.com,mastec.com,mastercard.com,mcdonalds.com,mckesson.com,medtronic.com,memorialhermann.org,merck.com,metlife.com,micron.com,morganstanley.com,nasdaq.com,nationwide.com,navyfederal.org,nbcuniversal.com,ncr.com,netflix.com,nexteraenergy.com,nike.com,northerntrust.com,nrg.com,omnicomgroup.com,optum.com,paypal.com,pepsico.com,pgecorp.com,phillips66.com,pinterest.com,principal.com,pg.com,progressive.com,providence.org,prudential.com,publix.com,rackspace.com,raymondjames.com,riotgames.com,spglobal.com,sabre.com,salesforce.com,slb.com,seagate.com,servicenow.com,siemens.com,slack.com,sony.com,southerncompanygas.com,southwest.com,statefarm.com,statestreet.com,stripe.com,sig.com,sutterhealth.org,synopsys.com,take2games.com,target.com,tesla.com,ti.com,textron.com,adm.com,bnymellon.com,coca-colacompany.com,goldmansachs.com,thehartford.com,homedepot.com,tjx.com,thetradedesk.com,thermofisher.com,tiaa.org,travelers.com,truist.com,twosigma.com,tysonfoods.com,uber.com,ubs.com,united.com,unfi.com,ups.com,usaa.com,valero.com,visa.com,walgreens.com,walmart.com,warnerbros.com,wellsfargo.com,westerndigital.com,xcelenergy.com,yahooinc.com,zillowgroup.com,zoom.us</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Names with Unified Names and URL</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

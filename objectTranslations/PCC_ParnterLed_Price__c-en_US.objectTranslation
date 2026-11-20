@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Led Price</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Led Prices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Division Code --></label>
+        <name>PCC_Division_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division --></label>
+        <name>PCC_Division__c</name>
+    </fields>
+    <fields>
+        <label><!-- EPM Name --></label>
+        <name>PCC_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family --></label>
+        <name>PCC_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast --></label>
+        <name>PCC_Forecast__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 Product --></label>
+        <name>PCC_L4_Product__c</name>
+        <relationshipLabel><!-- Partner Led Prices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- L5 Product --></label>
+        <name>PCC_L5_Product__c</name>
+        <relationshipLabel><!-- Partner Led Prices (L5 Product) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Market Code Name --></label>
+        <name>PCC_Market_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Master --></label>
+        <name>PCC_Material_Master__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Material Id --></label>
+        <name>PCC_Old_Material_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Op Code --></label>
+        <name>PCC_Op_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ordering Code --></label>
+        <name>PCC_Ordering_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>PCC_Processor_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product MM Attribute Mapping --></label>
+        <name>PCC_Product_MM_Attribute_Mapping__c</name>
+        <relationshipLabel><!-- Partner Led Prices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recommended Customer Price --></label>
+        <name>PCC_Recommended_Customer_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Status Code CH01 --></label>
+        <name>PCC_Sales_Status_Code_CH01__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Status Code CH02 --></label>
+        <name>PCC_Sales_Status_Code_CH02__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spec Code --></label>
+        <name>PCC_Spec_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Disti Price --></label>
+        <name>PCC_Standard_Disti_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- TD Flag CH01 --></label>
+        <name>PCC_TD_Flag_CH01__c</name>
+    </fields>
+    <fields>
+        <label><!-- TD Flag CH02 --></label>
+        <name>PCC_TD_Flag_CH02__c</name>
+    </fields>
+    <fields>
+        <label><!-- Work Week / Year --></label>
+        <name>PCC_Work_Week_Year__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ERPMSFEngagementSetting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ERPMSFEngagementSettings</value>
+    </caseValues>
+    <fields>
+        <help><!-- ERPM Engagement Code --></help>
+        <label><!-- Code --></label>
+        <name>Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will signify the ownership of the record. --></help>
+        <label><!-- Source --></label>
+        <name>Core_Source__c</name>
+        <picklistValues>
+            <masterLabel>Both</masterLabel>
+            <translation><!-- Both --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERPM</masterLabel>
+            <translation><!-- ERPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Entitlement name or Program name --></help>
+        <label><!-- EntitlementProgName --></label>
+        <name>EntitlementProgName__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mark it as checked if email has to sent for engagement else Unchecked --></help>
+        <label><!-- Notify --></label>
+        <name>Notify__c</name>
+    </fields>
+    <fields>
+        <label><!-- removalRequired --></label>
+        <name>core_removalRequired__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

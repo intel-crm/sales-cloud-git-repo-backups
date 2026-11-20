@@ -1,0 +1,19 @@
+<template>
+    <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
+    <c-ipa-marquee-default alignment={alignment} title={title} background-variant={backgroundVariant}>
+        <div slot="subtitle">
+            <template if:true={subtitle}>
+                <p class="subtitle color-white">{subtitle}</p>
+            </template>
+            <template if:true={linkData.label}>
+                <c-ipa-link inverse label={linkData.label} community-page={linkData.communityPage} external-url={linkData.externalUrl} caret={showCaret}></c-ipa-link>
+            </template>
+            <template if:true={showSearch}>
+                <div class="search" data-alignment={alignment}>
+                    <c-ipa-marquee-marketplace-search-box page-type={pageType}></c-ipa-marquee-marketplace-search-box>
+                </div>
+            </template>
+        </div>
+    </c-ipa-marquee-default>
+
+</template>

@@ -1,0 +1,43 @@
+<template>
+ <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">
+                                                    {label.Core_IPS_Country_Message}
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <span class="cpyCountryInput">
+                                                    <lightning-combobox data-id="countryField" class="inputs"
+                                                        name="CountryRegion" value={selectedvaluecountry}
+                                                        placeholder="Please Select" options={countryOptions}
+                                                        onchange={handleChangecountry}  variant='label-hidden'>
+                                                    </lightning-combobox>
+                                                </span>
+                                                <template if:true={isRequiredCountrycpy}>
+                                                    <span class="slds-text-color_error"> {label.Core_IPS_Required} </span>
+                                                </template>
+                                            </div>
+                                          
+                                        </div>
+                                         <template if:true={showState}>
+                                         <div class="slds-grid slds-wrap editclassalign" style="padding-top:10px;">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">
+                                                    I am submitting this case from State:
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <span class="cpyStateInput">
+                                                    <lightning-combobox data-id="stateField" class="inputs"
+                                                        name="State" value={statedefaultvalue}
+                                                        placeholder="Please Select" options={stateList}
+                                                        onchange={handleChangeState}  variant='label-hidden'>
+                                                    </lightning-combobox>
+                                                </span>
+                                                <template if:true={isRequiredStatecpy}>
+                                                    <span class="slds-text-color_error"> {label.Core_IPS_Required} </span>
+                                                </template>
+                                            </div>
+                                        </div>
+                                         </template>
+</template>

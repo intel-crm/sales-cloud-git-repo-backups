@@ -1,0 +1,12 @@
+.custom-box {
+    border-radius: 1rem;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.total-row {
+    font-weight: bold;
+}
+.currency-link-wrapper {
+    margin-top: -20px;     /* move link slightly upwards or downwards */
+    margin-left: 650px;    /* shift link to the right */
+}

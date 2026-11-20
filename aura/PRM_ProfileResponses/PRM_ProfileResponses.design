@@ -1,0 +1,3 @@
+<design:component>
+    <design:attribute name="ChannelProgram" label="Channel Program names seperated by Comma" />
+</design:component>

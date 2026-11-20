@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Profile Answer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Profile Answers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Answer Code --></label>
+        <name>PRM_Answer_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer Display Text --></label>
+        <name>PRM_Answer_Display_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer Text --></label>
+        <name>PRM_Answer_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Order --></label>
+        <name>PRM_Display_Order_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Order --></label>
+        <name>PRM_Display_Order_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- InActive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Questions --></label>
+        <name>PRM_Profile_Questions_Id__c</name>
+        <relationshipLabel><!-- Partner Profile Answer --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

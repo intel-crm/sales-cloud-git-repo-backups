@@ -1,0 +1,119 @@
+<template>
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-6">
+    </div>
+    <!-- <template if:true={showLoadingSpinner}>
+      <div style="z-index: 10000 !important;">
+          <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+      </div>
+  </template>-->
+    <div class="slds-col slds-size_4-of-6">
+      <lightning-layout>
+      <lightning-layout-item padding="around-small" size="12">
+       <lightning-card>
+            <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+              <lightning-layout>
+                <lightning-layout-item padding="around-small" size="12">
+                  <lightning-layout style="padding:0.5rem;background:#0961e6">
+                    <lightning-layout-item size="2">
+                      <div class="image">
+                          <img src={feedbackiconnew}>
+                      </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6">
+                      <div class="slds-text-color_inverse slds-text-body--regular slds-float_right">{label.givefeedback}</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2"></lightning-layout-item>
+                    <lightning-layout-item size="2">
+                      <div class="slds-float_right">
+                        <template if:false={ischatbotvalue}>
+                        <lightning-button variant="neutral" label="⨉" title="Cancel" onclick={handleOnCancel}>
+                        </lightning-button>
+                      </template>
+                    <template if:true={ischatbotvalue}>
+                      <lightning-button variant="neutral" label="⨉" title="Cancel" onclick={handleOnCancelchatbot}>
+                      </lightning-button>
+                     </template>
+                      </div>
+                    </lightning-layout-item>
+
+                  </lightning-layout>
+                  <lightning-layout>
+                   <div>{labelvalue}</div>
+                   </lightning-layout>
+                  </br>
+                  <template if:true={isRatingProvided}>
+                    <lightning-layout>
+                      <div class="slds-text-body--regular slds-text-color_error slds-text-title_bold">
+                        {label.service}
+                      </div><br />
+                    </lightning-layout>
+                  </template>
+
+                  <lightning-layout>
+
+                    <div class="rate">
+                     <input class="radiotype" type="radio" id="star15" name="name" value="5" onchange={rating} />
+                      <label for="star15" title={label.Sales_GiveFeedback_5star}>5 stars</label>
+                      <input class="radiotype"  type="radio" id="star14" name="name" value="4" onchange={rating} />
+                      <label for="star14" title={label.Sales_GiveFeedback_4star}>4 stars</label>
+                      <input class="radiotype" type="radio" id="star13" name="name" value="3" onchange={rating} />
+                      <label for="star13" title={label.Sales_GiveFeedback_3star}>3 stars</label>
+                      <input class="radiotype" type="radio" id="star12" name="name" value="2" onchange={rating} />
+                      <label for="star12" title={label.Sales_GiveFeedback_2star}>2 stars</label>
+                      <input class="radiotype" type="radio" id="star11" name="name" value="1" onchange={rating} />
+                      <label for="star11" title={label.Sales_GiveFeedback_1star}>1 star</label>
+                    </div>
+
+                  </lightning-layout>
+                </br>
+                  <template if:true={isCapabilityProvided}>
+                    <lightning-layout>
+                      <div class="slds-text-body--regular slds-text-color_error slds-text-title_bold">
+                        {label.Sales_capability}
+                      </div><br />
+                    </lightning-layout>
+                  </template>
+                  <lightning-layout>
+                    <lightning-layout-item  size = "12">
+                <!--<div>Please select Capability</div>--> 
+                  <lightning-combobox  style="padding-left:0%;" label="Please Select Capability" name="capability" placeholder="" value={value} required options={options} onchange={handlecapability} disabled={disablevalue}  dropdown-alignment="auto"></lightning-combobox> 
+               </lightning-layout-item>
+                </lightning-layout>
+                  <lightning-layout>
+                    {label.optional}
+                  </lightning-layout>
+                  <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="12">
+                      <lightning-textarea data-id="textfeedback" name="textfeedback" value={myVar}
+                        onchange={inputOnChange} label="" maxlength="500"></lightning-textarea>
+                    </lightning-layout-item>
+                  </lightning-layout>
+                  <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="12">
+                      <div>{output} {label.charactermessage}</div>
+                    </lightning-layout-item>
+                  </lightning-layout>
+                  <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="12">
+                    <template if:false={ischatbotvalue}>
+                  <lightning-button type="submit" name="submit" label={label.submitfeedback} onclick={handleOnSubmit} class="slds-float_right"> </lightning-button>
+                  </template>
+                   <template if:true={ischatbotvalue}>
+                     <lightning-button type="submit" name="submitbutton" label={label.submitfeedback} onclick={handleOnSubmitchatbot} class="slds-float_right"> </lightning-button>
+                   </template>
+                    </lightning-layout-item>
+                  </lightning-layout>
+
+                </lightning-layout-item>
+              </lightning-layout>
+            </div>
+          </lightning-card>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+    <div class="slds-col slds-size_1-of-6">
+    </div>
+    
+  </div>
+</template>

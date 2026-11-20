@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessMappings>
+        <accessLevel>Edit</accessLevel>
+        <object>PCC_EndCustomerAcc_Mapping__c</object>
+        <objectField>PCC_Partner_Account_Id__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <accessMappings>
+        <accessLevel>Edit</accessLevel>
+        <object>PRM_IPAMembership_Attributes__c</object>
+        <objectField>PRM_Account_Id__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <accessMappings>
+        <accessLevel>Read</accessLevel>
+        <object>Pricing_ConsumptionAccountMapping__c</object>
+        <objectField>Pricing_Account_Nm__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <accessMappings>
+        <accessLevel>Read</accessLevel>
+        <object>Pricing_Systematic_Tender_Limitation__c</object>
+        <objectField>Pricing_Account__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <accessMappings>
+        <accessLevel>Read</accessLevel>
+        <object>Pricing_UnifiedEndCustomerAccountMapping__c</object>
+        <objectField>Pricing_Account_Nm__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <description>Pricing End Customers Sharing and Consumption Account Mapping Sharing</description>
+    <name>IQR (Tender) Account Based Sharing</name>
+    <profiles>partner</profiles>
+</SharingSet>

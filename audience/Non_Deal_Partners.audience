@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>Non Deal Partners</audienceName>
+    <container>Intel Partner Admin</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <isEnabled>false</isEnabled>
+                <permissionName>PCC_Deal_Reg_Partner_Access_Custom</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>b0dbf309-f887-4c95-915b-c3195c5fbe6b</groupName>
+            <priority>2</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Deal_Reg_List_View_Deal_AccessDeniedPage_Page</targetValue>
+        </target>
+        <target>
+            <groupName>0ed44642-678c-41c1-a382-c097f6c88439</groupName>
+            <priority>2</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Deal_Home_Deal_Access_Denied_Page_Page</targetValue>
+        </target>
+    </targets>
+</Audience>

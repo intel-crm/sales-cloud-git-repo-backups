@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Account_Transfer_Log_Sharing_with_All_Users_CCP_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Account Transfer Log Sharing with All Users CCP Internal</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_External_CCFB_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>External CCFB All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CCFB_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_Internal_CCFB_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Internal CCFB All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CCFB_INTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>External_CCF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>External CCF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>External_CMDF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>External CMDF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_Channel_MDF_EXTERNAL_All</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>External_DCF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>External DCF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_DCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>External_SPCF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>External SPCF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_SPCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Internal_CCF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Internal CCF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Internal_CMDF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Internal CMDF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_Channel_MDF_INTERNAL_All</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Internal_DCF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Internal DCF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Internal_SPCF_All_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Internal SPCF All Sharing</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_SPCF_INTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

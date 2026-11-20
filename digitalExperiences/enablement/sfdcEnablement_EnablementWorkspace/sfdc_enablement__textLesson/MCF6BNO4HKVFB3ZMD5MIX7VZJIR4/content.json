@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Expand Opportunity with Customer",
+  "contentBody" : {
+    "description" : "Are there additional Gen AI opportunities at this customer? ",
+    "sections" : [ {
+      "content" : "<div>Now that the customer has seen the value of Gaudi within this opportunity, is there other places within their business we can expand? It could be a new region to deploy this solution or a new business challenge that could also benefit from Gaudi. </div>",
+      "keyConcept" : "Seek new complementary opportunities to expand the volume within the existing customer. ",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1
+  },
+  "urlName" : "expand-opportunity-with-customer"
+}

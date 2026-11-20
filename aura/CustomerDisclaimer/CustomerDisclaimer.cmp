@@ -1,0 +1,38 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" 
+                access="global" 
+                controller="CustomerDisclaimer">
+	<!-- call doInit js function on component load to fetch list view details-->   
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="finalMapToStore" type="Map" default="{1:null}" />
+    <!-- aura attributes --> 
+    <aura:attribute name="accepted" type="Boolean" default="false" />
+    <aura:attribute name="hideButton" type="Boolean" />
+    <aura:attribute name="html" type="String" />
+    <aura:attribute name="resourceIdForStore" type="string"/>
+    <aura:attribute name="resourceIdForDisplay" type="string"/>
+    <aura:attribute name="resToSiteUrlMap" type="Map" default="{1:null}" /> 
+    <aura:attribute name="resToContentMap" type="Map" default="{1:null}" />    
+    <aura:attribute name="accessErrorMsg" type="String"/>
+    <aura:attribute name="acceptanceText" type="String"/>
+    
+    <div class="{!if(v.accessErrorMsg == '' ,'slds-show slds-scrollable','slds-hide')}" aura:id="scrollDiv" onscroll="{!c.scroll}" style="height:50rem;background-color: white;border-style:solid">
+    <p class="slds-text-longform tile__title red-txt slds-var-p-around_x-small">
+        <aura:unescapedHtml value="{!v.html}"/>
+    </p>
+        
+        <lightning:layout horizontalAlign="center">
+        <lightning:layoutItem>
+            
+        <!--Approach 2-->     
+          <lightning:input type="checkbox" label="{!v.acceptanceText}" id="checkboxField"
+                         checked="{!v.accepted}" 
+                         onchange="{!c.onAcceptanceChange}"/>
+            <br/>
+             <lightning:button class="slds-button" variant="brand" label="Submit" onclick="{!c.handleOnAgree}" disabled="{!v.hideButton}"/>   
+      
+            </lightning:layoutItem>
+        </lightning:layout>
+              <br/> 
+     
+    </div> 
+</aura:component>

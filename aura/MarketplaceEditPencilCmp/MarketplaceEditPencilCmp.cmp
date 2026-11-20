@@ -1,0 +1,27 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller = "PMP_SearchEditStoreFrontController">
+    
+    <aura:attribute name="type" description="Icon type edit" type="String" default="edit" />
+    <aura:attribute name="isOpen" type="Boolean" default="false" description="Internal Component"/>
+    <aura:attribute name="currentStep" type="Integer" description="Current step on the modal to show"/>
+    <aura:attribute name="partnerId" type="String" />
+    <aura:attribute name="visible" type="Boolean" default="true" description="Edit pencil visibility"/>
+    <aura:attribute name="isLocked" type="Boolean" default="false"/>
+    
+    <aura:attribute name="accessibilityLabel" type="string" default="Open the edit storefront form" />
+    <aura:method name="openModal" action="{!c.openEditStoreModal}" />
+    
+    <aura:registerEvent name="appEvent" type="c:MarketplacePageEvent"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{! and(v.visible, v.body.length == 0)}">
+        <div aura:id="editSection" class="edit-storefront-section" onclick="{!c.openEditStoreModal}">
+            <lightning:icon iconName="{! 'utility:'+ v.type }" size="x-small" alternativeText="{!v.accessibilityLabel}"
+                            Class="iconContainer" />
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.body.length > 0}">
+        <a aura:id="editSection" class="edit-storefront-body" onclick="{!c.openEditStoreModal}" aria-label="{!v.accessibilityLabel}">
+            {!v.body}
+        </a>
+    </aura:if>
+</aura:component>

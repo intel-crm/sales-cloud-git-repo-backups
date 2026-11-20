@@ -1,0 +1,57 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true" subject="{!$Label.Core_MDF_PIC_Completion_Subject_Outcomebased}"
+                        recipientType="User"
+                         relatedToType="PartnerFundClaim"
+                         language="{!recipient.LanguageLocaleKey}">
+<messaging:htmlEmailBody >
+<html>
+    <body>
+                 <apex:outputPanel rendered="{!if(recipient.UserType =='PowerPartner',true,false)}">
+                         <p><span>{!$Label.Core_MDF_EmailTemp_DearIntelPartner}</span></p>
+                         <p><span>
+                           {!$Label.Core_MDF_PIC_Completion_EmailBody} 
+                          <strong>
+                         <!--  <c:Core_MDF_ReportLinkComp reportName="Outcome-Based Payment Clearance Status" isExternalUser="true" reportUrlLabel="link"/> -->
+                         <c:Core_MDF_ReportLinkComp reportName="Outcome-Based Payment Clearance Status" isExternalUser="true" reportUrlLabel="link"/>
+                          </strong> {!$Label.Core_MDF_Completion_EmailBody1_Outcomebased}
+                       
+                         {!$Label.Core_MDF_IPA_Reminder_EmailTemp_Body2}  <strong><a href="https://intelinside.intel.com/Support">{!$Label.Core_MDF_Program_Support}</a>&nbsp;</strong>
+                        </span> </p>
+                 
+                 </apex:outputPanel>
+                 <apex:outputPanel rendered="{!if(recipient.UserType =='Standard',true,false)}">
+                        <p>{!$Label.Core_MDF_EmailTemp_DearIntelemployee}</p>
+                          <p><span>
+                          Use the following 
+                          <strong>
+                        <!--  <c:Core_MDF_ReportLinkComp reportName="Claim POP Screening Status Report" isExternalUser="false" reportUrlLabel="link" /> -->
+                        <c:Core_MDF_ReportLinkComp reportName="Outcome-Based Payment Clearance Status" isExternalUser="false" reportUrlLabel="link" />
+                        
+                          </strong> to view Payment Clearance status for your claims for your account(s). If you have questions, please reach out to
+                           <strong><a href="https://intelinside.intel.com/Support">{!$Label.Core_MDF_Program_Support}</a>&nbsp;</strong>
+                        </span> </p>
+                 
+                 </apex:outputPanel>
+                 
+                 <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+                    <p>{!$Label.Core_MDF_Email_Signature}</p> 
+                      
+               
+                <div style="font-size:11px;font-family:Calibri">
+                                   <p>
+                                     <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                                           <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                           {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                            </p>         
+                    
+                    </div> 
+    </body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

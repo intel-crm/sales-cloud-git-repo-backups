@@ -1,0 +1,753 @@
+<template>
+	<template if:true={isDesktop}>
+		<div class="slds-grid slds-wrap" style="height:100%">
+			<div class="slds-col slds-size_4-of-12" style="height:100%;margin:-0.75rem">
+				<div class="slds-page-header">
+					<div class="slds-page-header__row">
+						<div class="slds-page-header__col-title">
+							<div class="slds-media">
+								<div class="slds-media__figure">
+									<lightning-icon icon-name="standard:approval"
+										alternative-text="Approval"
+										title="Approval">
+									</lightning-icon>
+								</div>
+								<div class="slds-media__body">
+									<div class="slds-page-header__name"
+										style="display: inline-block;">
+										<div
+											class="slds-page-header__name-title">
+											<h1>
+												<span> Approval Requests
+												</span>
+												<span class="slds-page-header__title slds-truncate"
+													title="Items to Approve">Items
+													to
+													Approve</span>
+											</h1>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="slds-page-header__col-actions">
+							<div class="slds-page-header__controls">
+								<div class="slds-page-header__control">
+									<ul class="slds-button-group-list">
+										<li>
+											<button class="slds-button slds-button_icon slds-button_icon-border-filled"
+												title="Refresh List"
+												onclick={refreshData}>
+												<lightning-icon
+													icon-name="utility:refresh"
+													size="x-small"
+													alternative-text="Refresh"
+													title="Refresh"></lightning-icon>
+												<span
+													class="slds-assistive-text">Refresh</span>
+											</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="slds-page-header__row">
+						<div class="slds-page-header__col-meta">
+							<template if:true={showDefaultMsg}>
+								<p class="slds-page-header__meta-text">
+									{totalApprovalcount} items • {showTimeContent}
+								</p>
+							</template>
+							<template if:false={showDefaultMsg}>
+								<p class="slds-page-header__meta-text">{countMessage}
+								</p>
+							</template>
+						</div>
+					</div>
+					<div style="width:90%;padding-left:10%;">
+						<lightning-input class="searchBar" data-id="searchText" type="search"
+							placeholder="Search..." onchange={handleFilterSearch}
+							disabled={isDisableSearch}></lightning-input>
+					</div>
+				</div>
+
+				<template if:true={showSpinner}>
+					<lightning-spinner alternative-text="Loading.." size="medium"
+						variant="brand"></lightning-spinner>
+				</template>
+
+				<template if:true={isRecordsAvailable}>
+					<div class="slds-box slds-theme_default" style="height:82%">
+						<div style="text-align:center">
+							<button class="slds-button slds-button_outline-brand"
+								disabled={disableBulkApproval} name="Approve"
+								onclick={handleApproveReject}>Approve</button>
+							<button class="slds-button slds-button_outline-brand"
+								disabled={disableBulkApproval} name="Reject"
+								onclick={handleApproveReject}>Reject</button>
+						</div>
+
+						<div style="padding-top:1.5%"></div>
+
+						<div class="slds-scrollable_y" style="height:93%">
+							<template for:each={approvalRequestUI} for:item="obj">
+								<div key={obj.objectName}
+									class="slds-section slds-is-open"
+									data-id={obj.objectName}>
+									<h3 class="slds-section__title">
+										<button type="button"
+											aria-controls={obj.objectName}
+											class="slds-button slds-section__title-action"
+											data-buttonid={obj.objectName}
+											onclick={toggleSection}>
+											<lightning-icon
+												icon-name="utility:switch"
+												alternative-text="button icon"
+												size="x-small"
+												class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon>
+											<span class="slds-truncate"
+												title={obj.objectName}>{obj.objectName}
+												({obj.count})</span>
+										</button>
+									</h3>
+									<div class="slds-section__content">
+										<template
+											for:each={obj.recordsToApprove}
+											for:item="rec">
+											<div key={rec.id}
+												style="width:98%;border-radius:20px">
+												<div data-id={rec.id}
+													data-name={rec.position}
+													data-record-id={rec.position}
+													class="slds-page-header slds-page-header_record-home hoverCss content"
+													onclick={onTileClick}
+													style="border-radius:5px;cursor:pointer;border-color:black;font-weight:500">
+													<div
+														class="slds-page-header__row">
+														<div
+															class="slds-page-header__col-title">
+															<div
+																class="slds-media">
+																<div
+																	class="slds-media__figure">
+
+																	<lightning-input
+																		type="checkbox"
+																		style="display:inline-block;padding-top:80%;border-color:black"
+																		data-id={rec.id}
+																		name={obj.objectName}
+																		checked={rec.isSelected}
+																		onchange={handleCheckBox}
+																		disabled={rec.isDisabled}>
+																	</lightning-input>
+																</div>
+																<div
+																	class="slds-media__body">
+																	<div
+																		class="slds-page-header__name">
+																		<div
+																			class="slds-page-header__name-title">
+																			<h1>
+																				<a data-record-id={rec.id}
+																					class="slds-text-link"
+																					onclick={handleNavigate}
+																					title={rec.title}
+																					name={rec.title}>{rec.title}</a>
+																			</h1>
+																			<div>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		style="padding-top:1%">
+																		<div class="slds-grid slds-wrap">
+																			<template
+																				for:each={rec.tableViewDetails}
+																				for:item="field">
+																				<div key={field.value}
+																					class="slds-col slds-size_1-of-2">
+																					{field.value}
+																				</div>
+																			</template>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<div
+													style="padding-top:1.2%">
+												</div>
+											</div>
+										</template>
+									</div>
+								</div>
+							</template>
+						</div>
+					</div>
+				</template>
+
+				<template if:false={isRecordsAvailable}>
+					<div class="slds-theme_default" style="height:100%">
+						<div class="noRecordText">
+							No records to Display
+						</div>
+					</div>
+				</template>
+
+
+
+			</div>
+
+
+			<div class="slds-col slds-size_8-of-12" style="height:100%">
+				<template if:true={specificContentId}>
+					<div style="width:100%;margin-left:2.5%;border-color:black">
+						<template for:each={contentDetailUI} for:item="rec">
+							<div key={rec.object}
+								class="slds-page-header slds-page-header_record-home"
+								style="border-color:black">
+								<div class="slds-page-header__row">
+									<div class="slds-page-header__col-title">
+										<div class="slds-media">
+											<div class="slds-media__figure">
+												<lightning-icon
+													icon-name={rec.icon}
+													alternative-text={rec.object}
+													title={rec.object}>
+												</lightning-icon>
+											</div>
+											<div class="slds-media__body">
+												<div class="slds-page-header__name">
+													<div
+														class="slds-page-header__name-title">
+														<h1>
+															<span>{rec.object}</span>
+															<span class="slds-page-header__title slds-truncate"
+																title={rec.title}>{rec.title}</span>
+														</h1>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="slds-page-header__col-actions">
+										<div class="slds-page-header__controls">
+											<div
+												class="slds-page-header__control">
+												<ul
+													class="slds-button-group-list">
+													
+													<li>
+														<button class="slds-button slds-button_neutral"
+															data-record-id={rec.object}
+
+															data-id={rec.id}
+															disabled={isDisableSingleApproval}
+															name="Approve"
+															onclick={handleApproveReject}>Approve</button>
+													</li>
+													<li>
+														<button class="slds-button slds-button_neutral"
+															data-record-id={rec.object}
+															data-id={rec.id}
+															disabled={isDisableSingleApproval}
+															name="Reject"
+															onclick={handleApproveReject}>Reject</button>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="slds-page-header__row slds-page-header__row_gutters"
+									style="border-color:black">
+									<div class="slds-page-header__col-details">
+										<ul class="slds-page-header__detail-row"
+											style="padding-left:2%">
+
+											<template
+												for:each={rec.compactDetails}
+												for:item="field">
+												<li key={field.label}
+													class="slds-page-header__detail-block">
+													<div class="slds-text-title slds-truncate"
+														title={field.label}>
+														{field.label}
+													</div>
+													<template
+														if:true={field.redirect}>
+														<a data-record-id={field.redirect}
+															class="slds-text-link"
+															onclick={handleNavigate}
+															title={field.value}
+															name={field.value}>{field.value}</a>
+													</template>
+													<template
+														if:false={field.redirect}>
+														<div class="slds-truncate"
+															title={field.value}>
+															{field.value}
+														</div>
+													</template>
+												</li>
+											</template>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div key={rec.id} class="slds-grid slds-wrap">
+								<div class="slds-col slds-size_7-of-12">
+
+									<div class="slds-box slds-theme_default"
+										style="margin-top:2%;border-color:black">
+
+										<div class="slds-tabs_default">
+											<ul class="slds-tabs_default__nav"
+												role="tablist">
+												<li class="slds-tabs_default__item slds-is-active"
+													title="Details"
+													role="presentation">
+													<a class="slds-tabs_default__link"
+														href="#"
+														role="tab"
+														style="font-size:125%"
+														tabindex="0"
+														aria-selected="true"
+														aria-controls="tab-default-1">Details</a>
+												</li>
+											</ul>
+											<div class="slds-scrollable_y">
+												<div class="slds-tabs_default__content slds-show"
+													style="height:380px"
+													role="tabpanel"
+													aria-labelledby="tab-default-1__item">
+													<div class="slds-section slds-is-open"
+														data-id={rec.title}>
+														<h3
+															class="slds-section__title">
+															<button type="button"
+																aria-controls={rec.title}
+																class="slds-button slds-section__title-action"
+																data-buttonid={rec.title}
+																onclick={toggleSection}>
+																<lightning-icon
+																	icon-name="utility:switch"
+																	alternative-text="button icon"
+																	size="x-small"
+																	class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon>
+																<span class="slds-truncate"
+																	title="Information">Information</span>
+															</button>
+														</h3>
+
+														<div
+															class="slds-section__content">
+
+															<div class="slds-theme_default" style="padding-left:2%">
+
+																<div class="slds-grid slds-wrap">
+																	<template
+																		for:each={rec.recordDetails}
+																		for:item="field">
+																		<div key={field.value}
+																			class="slds-col slds-size_1-of-2">
+																			<div class="slds-form-element slds-form-element_readonly"
+																				style="width:90%">
+																				<span
+																					class="slds-form-element__label">{field.label}</span>
+																				<div
+																					class="slds-form-element__control">
+																					<div
+																						class="slds-form-element__static">
+																						<template
+																							if:true={field.redirect}>
+																							<a data-record-id={field.redirect}
+																								class="slds-text-link"
+																								onclick={handleNavigate}
+																								title={field.value}
+																								name={field.value}>{field.value}</a>
+																						</template>
+																						<template
+																							if:false={field.redirect}>
+																							{field.value}
+																						</template>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</template>
+																</div>
+															</div>
+
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+
+									</div>
+
+								</div>
+
+								<div class="slds-col slds-size_5-of-12">
+									<div class="slds-box slds-theme_default"
+										style="margin-top:2.8%;margin-left:2%;border-color:black">
+										<p style="font-size:120%;font-weight:bold">
+											Comments</p>
+										<lightning-textarea data-id={rec.id}
+											class="comments"
+											value={rec.comments}
+											name={rec.object}
+											onchange={handleChangeComments} 
+											maxlength="1000"></lightning-textarea>
+											<div style="color:rgb(1, 118, 211);">
+											<div class="slds-text-body_small">
+											{commentsCharLim}</div>
+											</div>
+									</div>
+								</div>
+							</div>
+						</template>
+					</div>
+				</template>
+				<template if:false={specificContentId}>
+					<div class="slds-theme_default"
+						style="height:100%;width:100%;margin-left:2.5%;border-color:black">
+						<div
+							style="font-size:140%;padding-top:30%;font-weight:400;text-align:center">
+							No record selected
+						</div>
+						<div
+							style="font-size:120%;padding-top:1%;font-weight:100;text-align:center">
+							Open a record from the
+							list to get started.</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</template>
+
+
+	<template if:false={isDesktop}>
+		<div style="height:100%;margin:-0.75rem;padding-top:2%">
+			<div class="slds-page-header">
+				<div class="slds-page-header__row">
+					<div class="slds-page-header__col-title">
+						<div class="slds-media">
+							<div class="slds-media__figure">
+								<lightning-icon icon-name="standard:approval"
+									alternative-text="Approval" title="Approval">
+								</lightning-icon>
+							</div>
+							<div class="slds-media__body">
+								<div class="slds-page-header__name"
+									style="display: inline-block;">
+									<div class="slds-page-header__name-title">
+										<h1>
+											<span> Approval Requests </span>
+											<span class="slds-page-header__title slds-truncate"
+												title="Items to Approve">Items
+												to Approve</span>
+										</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slds-page-header__row">
+					<div class="slds-page-header__col-meta">
+						<template if:true={showDefaultMsg}>
+							<p class="slds-page-header__meta-text">{totalApprovalcount}
+								items • {showTimeContent}</p>
+						</template>
+					</div>
+				</div>
+				<div>
+					<lightning-input class="searchBar" data-id="searchText" type="search"
+						placeholder="Search..." onchange={handleFilterSearch}
+						disabled={isDisableSearch}></lightning-input>
+				</div>
+			</div>
+
+			<template if:true={showSpinner}>
+				<lightning-spinner alternative-text="Loading.." size="medium"
+					variant="brand"></lightning-spinner>
+			</template>
+
+			<template if:false={showSpinner}>
+				<template if:true={isRecordsAvailable}>
+					<div class="slds-box slds-theme_default" style="height:100%">
+						<div style="padding-top:1.5%"></div>
+						<div class="slds-scrollable_y" style="height:75%">
+
+							<template for:each={approvalRequestUI} for:item="obj">
+								<div key={obj.objectName}
+									class="slds-section slds-is-open"
+									data-id={obj.objectName}>
+									<h3 class="slds-section__title">
+										<button type="button"
+											aria-controls={obj.objectName}
+											class="slds-button slds-section__title-action"
+											data-buttonid={obj.objectName}
+											onclick={toggleSection}>
+											<lightning-icon
+												icon-name="utility:switch"
+												alternative-text="button icon"
+												size="x-small"
+												class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon>
+											<span class="slds-truncate"
+												title={obj.objectName}>{obj.objectName}
+												({obj.count})</span>
+										</button>
+									</h3>
+									<div class="slds-section__content">
+										<template
+											for:each={obj.recordsToApprove}
+											for:item="rec">
+											<div key={rec.id}
+												style="width:98%;border-radius:20px">
+												<div data-id={rec.id}
+													data-name={rec.position}
+													data-record-id={rec.position}
+													class="slds-page-header slds-page-header_record-home hoverCss content"
+													onclick={onTileClick}
+													style="border-radius:5px;cursor:pointer;border-color:black;font-weight:500">
+													<div
+														class="slds-page-header__row">
+														<div
+															class="slds-page-header__col-title">
+															<div
+																class="slds-media">
+																<div
+																	class="slds-media__body">
+																	<div
+																		class="slds-page-header__name">
+																		<div
+																			class="slds-page-header__name-title">
+																			<h1>
+																				<a data-record-id={rec.id}
+																					class="slds-text-link"
+																					title={rec.title}
+																					name={rec.title}>{rec.title}</a>
+																			</h1>
+																			<div>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		style="padding-top:1%">
+																		<div
+																			class="slds-grid slds-wrap">
+																			<template
+																				for:each={rec.tableViewDetails}
+																				for:item="field">
+																				<div key={field.value}
+																					class="slds-col slds-size_1-of-1">
+																					{field.value}
+																				</div>
+																			</template>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<div
+													style="padding-top:1.2%">
+												</div>
+											</div>
+										</template>
+									</div>
+								</div>
+							</template>
+						</div>
+					</div>
+				</template>
+			</template>
+
+		</div>
+	</template>
+
+	<template if:true={isRejectionModalOpen}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closeModal}></lightning-button-icon>
+					<!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+						title="Close" onclick={closeModal}>
+						<lightning-icon icon-name="utility:close" alternative-text="close"
+							variant="inverse" size="small"></lightning-icon>
+						<span class="slds-assistive-text">Close</span>
+					</button>-->
+			
+				</header>
+				<div class="slds-modal__content slds-p-around_medium">
+					<div style="max-height:180px">
+						<template if:true={popUpSpinner}>
+							<div class="popUpCustom">
+								<lightning-spinner alternative-text="Loading"
+									variant="brand"
+									size="medium"></lightning-spinner>
+							</div>
+						</template>
+						<template if:false={popUpSpinner}>
+							<lightning-input class="slds-p-left_xx-large" type="checkbox" data-id="checkbox" label={PERMANENT_REJECTION_CHECKBOX_MSG} onchange={handleChangeCheckbox}></lightning-input>
+							
+						<div if:true={enabledTerminalRejection} style="color:rgb(1, 118, 211);font-size:15px;padding-left:2%;padding-bottom:1%">
+							<p style="padding-top:20px">{PERMANENT_REJECTION_WARNING}</p>
+						</div>
+						</template>
+					</div>
+				</div>
+			<template if:false={popUpSpinner}>
+				<footer class="slds-modal__footer">
+					<button class="slds-button slds-button_neutral" onclick={closeModal}
+						name="Cancel" title="Cancel">Cancel</button>
+					<button class="slds-button slds-button_brand" onclick={handleRejection}
+						disabled={disableBulkApproveButton} name="Reject"
+						title={approvalButtonName}>{approvalButtonName}</button>
+				</footer>
+			</template>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+
+
+	<template if:true={isModalOpen}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closeModal}></lightning-button-icon>
+					<!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+						title="Close" onclick={closeModal}>
+						<lightning-icon icon-name="utility:close" alternative-text="close"
+							variant="inverse" size="small"></lightning-icon>
+						<span class="slds-assistive-text">Close</span>
+					</button>-->
+					<h2 class="slds-text-heading_medium slds-hyphenate">Approval Summary
+					</h2>
+					
+				</header>
+				<div class="slds-modal__content slds-p-around_medium">
+					<template if:false={popUpSpinner}>
+						<p style="color:rgb(1, 118, 211);padding-left:72%;padding-bottom:1%">
+							{commentsCharLim}
+						</p>
+					</template>
+					<!--div style="max-height:180px"-->
+					<div class="slds-m-bottom_none">
+						
+						<template if:true={popUpSpinner}>
+							<div class="popUpCustom">
+								<lightning-spinner alternative-text="Loading"
+									variant="brand"
+									size="medium"></lightning-spinner>
+							</div>
+						</template>
+						<template if:false={popUpSpinner}>
+							<lightning-datatable key-field="id"
+									data={approvalSummaryData}
+									oncellchange={checkCellValue}
+									show-row-number-column hide-checkbox-column
+									suppress-bottom-bar columns={columns}
+									errors={summaryErrors}
+									>
+								</lightning-datatable>
+						</template>
+						</div>
+					<!--/div-->
+					
+				</div>
+			<template if:false={popUpSpinner}>
+				<footer class="slds-modal__footer">
+					<button class="slds-button slds-button_neutral" onclick={closeModal}
+						title="Cancel">Cancel</button>
+					<button class="slds-button slds-button_brand" onclick={handleSubmitForApproval}
+						disabled={disableBulkApproveButton}
+						title={approvalButtonName}>{approvalButtonName}</button>
+				</footer>
+			</template>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+
+
+	<template if:true={isShowResultContent}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closeErrorModal}></lightning-button-icon>
+					<!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+						title="Close" onclick={closeErrorModal}>
+						<lightning-icon icon-name="utility:close" alternative-text="close"
+							variant="inverse" size="small"></lightning-icon>
+						<span class="slds-assistive-text">Close</span>
+					</button>-->
+					<h2 class="slds-text-heading_medium slds-hyphenate">Approval Status
+					</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium">
+					<div style="max-height:300px">
+						<div style="padding-top:10px"></div>
+						<template if:true={approvalResultContent}>
+								<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+									<thead>
+										<tr class = "slds-line-height_reset">
+											<th scope="col">
+												<div class="slds-truncate" title="Title">Title</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Status">Status</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Message">Message</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<template for:each={approvalResultContent} for:item="rec">
+										<tr key={rec.id} class="slds-hint-parent">
+											<th data-label="Title" scope="row" class="slds-truncate">
+												<div title="Title">
+													<a class="slds-text-link" data-record-id={rec.redirect} onclick={handleNavigate}>{rec.title}</a>
+												</div>
+											</th>
+											<td data-label="Status" class="slds-truncate">
+												<div class={rec.status} title="Status">{rec.status}</div>
+											</td>
+											<td data-label="Message" class="slds-truncate slds-cell-wrap">
+												<div title="Message">{rec.message}</div>
+											</td>
+										</tr>
+									</template>
+									</tbody>
+								</table>
+								<div style="padding-top:10px"></div>
+						</template>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+</template>

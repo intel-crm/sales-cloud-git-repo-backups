@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of  Li Li Chuah</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11646594__Chia_Ling_Tan</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_12055733_Li_Li_Chuah</parentRole>
+</Role>

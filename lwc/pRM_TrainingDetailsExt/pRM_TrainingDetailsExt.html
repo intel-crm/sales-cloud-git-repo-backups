@@ -1,0 +1,61 @@
+<template>
+  <lightning-card title={headerLbl} class="slds-card__header" icon-name="custom:custom3">
+    <div class="slds-box slds-m-around_medium">
+      <lightning-layout multiple-rows='true' vertical-align="start">
+        <lightning-layout-item>
+          <div class="slds-p-left_xx-small">
+            <lightning-input type="date" label={dtFrom} placeholder={startDatePlaceHolderlbl} value={StartDate}
+              onchange={setStartDate}></lightning-input>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item>
+          <div class="slds-p-left_xx-small">
+            <lightning-input type="date" label={dtTo} placeholder={endDatePlaceHolderlbl} value={endDate}
+              onchange={setEndDate}>
+            </lightning-input>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item>
+          <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
+            <div class="slds-p-left_xx-small">
+              <lightning-button-icon label={filterBtnLbl} alternative-text={filterBtnLbl} icon-name="utility:filterList"
+                variant="brand" onclick={criteriaSearch}>
+              </lightning-button-icon>
+            </div>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item>
+          <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
+            <div class="slds-p-left_xx-small">
+              <lightning-button-icon variant="brand" icon-name="utility:download" alternative-text={exportBtnLbl}
+                onclick={handleExport} disabled={isDataAvailable} class="slds-button">
+              </lightning-button-icon>
+            </div>
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+    <div if:true={spinner} class="slds-spinner_inline spinner-padding">
+      <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
+      </lightning-spinner>
+    </div>
+    <div dir="auto" class="myUniqueTable slds-m-around_medium slds-box">
+      <template if:true={isData}>
+        <div class="slds-m-around_medium slds-box">
+          <lightning-datatable key-field="id" data={records} hide-checkbox-column="true" show-row-number-column="true"
+            columns={columns} class="slds-p-left_large">
+          </lightning-datatable>
+          <p class="slds-m-vertical_medium content">
+            {totalRecords}: <b>{totalrecords} </b>{pageLbl} <b>{currentpage}</b> {ofLbl}
+            <b> {totalpages}</b>
+          </p>
+        </div>
+      </template>
+      <template if:false={spinner}>
+        <template if:false={isData}>
+          <p class="slds-align_absolute-center">{noDataMsgLbl} </p>
+        </template>
+      </template>
+    </div>
+  </lightning-card>
+</template>

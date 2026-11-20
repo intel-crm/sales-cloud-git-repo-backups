@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>PSG Lead APJ Covered Accts</name>
+    <queueMembers>
+        <users>
+            <user>11645521@intel.com.crm</user>
+            <user>11644379@intel.com.crm</user>
+            <user>serena@inteliotsolutionsalliance.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

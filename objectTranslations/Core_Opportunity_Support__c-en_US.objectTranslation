@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Support</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Supports</value>
+    </caseValues>
+    <fields>
+        <help><!-- Summarize the customer&apos;s challenges in two to three sentences. Outline business objectives, pain points, competitive threats, and digital transformation or sustainability goals. --></help>
+        <label><!-- Customer’s Business Challenge --></label>
+        <name>CRM_Business_Challenge_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Summarize the tangible business value the customer achieved in two to three sentences.Please provide quantifiable, measurable, and meaningful business results and key customer benefits if available --></help>
+        <label><!-- Customer&apos;s Business Results/ Outcomes --></label>
+        <name>CRM_Cust_Business_Results_Outcomes_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Willingness --></label>
+        <name>CRM_Customer_Willingness__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No – Customer Seems Unwilling</masterLabel>
+            <translation><!-- No – Customer Seems Unwilling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unsure</masterLabel>
+            <translation><!-- Unsure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes – No Formal Agreement</masterLabel>
+            <translation><!-- Yes – No Formal Agreement --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- During this win, what did you learn that your peers would benefit most from? --></help>
+        <label><!-- Sales Insights --></label>
+        <name>CRM_Sales_Insights_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Summarize the customer&apos;s solution in context with their pain points in two to three sentences. Provide details of the solution, including the use case/workload and any significant partner involvement. --></help>
+        <label><!-- Solution Summary --></label>
+        <name>CRM_Solution_Summary_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- List the major factors around why the customer chose Intel. --></help>
+        <label><!-- Why Intel --></label>
+        <name>CRM_Why_Intel_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Center of Excellence --></label>
+        <name>Center_of_Excellence__c</name>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence (AI)</masterLabel>
+            <translation><!-- Artificial Intelligence (AI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_Account_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please describe the need for  additional support  and how it will enhance the opportunity --></help>
+        <label><!-- Additional Support Needed --></label>
+        <name>Core_Additional_Support_Needed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Age --></label>
+        <name>Core_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Core_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Comments --></label>
+        <name>Core_Approval_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>Core_Approved_By_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Date --></label>
+        <name>Core_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 10 --></label>
+        <name>Core_Approver_10__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 10) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 1 --></label>
+        <name>Core_Approver_1__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 --></label>
+        <name>Core_Approver_2__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 --></label>
+        <name>Core_Approver_3__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 4 --></label>
+        <name>Core_Approver_4__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 4) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 5 --></label>
+        <name>Core_Approver_5__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 5) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 6 --></label>
+        <name>Core_Approver_6__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 6) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 7 --></label>
+        <name>Core_Approver_7__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 7) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 8 --></label>
+        <name>Core_Approver_8__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 8) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 9 --></label>
+        <name>Core_Approver_9__c</name>
+        <relationshipLabel><!-- Opportunity Supports (Approver 9) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- CoE Request Detail --></help>
+        <label><!-- CoE Request Detail --></label>
+        <name>Core_CoE_Request_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>Core_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Description --></label>
+        <name>Core_Opportunity_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opportunity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner --></label>
+        <name>Core_Opportunity_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Support Team Count --></label>
+        <name>Core_Opportunity_Support_Team_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assignee --></label>
+        <name>Core_Opportunity_Support_Team_Member__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide any primary blockers for this opportunity or concerns for the planned initiative. --></help>
+        <label><!-- Primary Blockers --></label>
+        <name>Core_PrimaryBlockers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Application --></label>
+        <name>Core_Product_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Segment --></label>
+        <name>Core_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response by SME --></label>
+        <name>Core_Response_by_SME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Stages --></label>
+        <name>Core_Sales_Stages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed : Support Not Provided</masterLabel>
+            <translation><!-- Closed : Support Not Provided --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed : Support Provided</masterLabel>
+            <translation><!-- Closed : Support Provided --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submitted Date --></label>
+        <name>Core_Submitted_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- TSS Support Type --></label>
+        <name>Core_TSS_Support_Type__c</name>
+        <picklistValues>
+            <masterLabel>AI TSS Support</masterLabel>
+            <translation><!-- AI TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG ECG TSS Support</masterLabel>
+            <translation><!-- CCG ECG TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG TSS Support​</masterLabel>
+            <translation><!-- CCG TSS Support​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DAIS TSS Support</masterLabel>
+            <translation><!-- DAIS TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI TSS Support</masterLabel>
+            <translation><!-- DCAI TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTG TSS Support​</masterLabel>
+            <translation><!-- NTG TSS Support​ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Technical Owner --></label>
+        <name>Core_Technical_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Market --></label>
+        <name>Core_Vertical_Market__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide the background information on the customers  current architecture --></help>
+        <label><!-- Background Information On Architecture --></label>
+        <name>Core_background_info_on_architecture__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity Supports --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>Sales_Group__c</name>
+    </fields>
+    <nameFieldLabel>Opportunity Support</nameFieldLabel>
+    <recordTypes>
+        <label><!-- Marketing Support --></label>
+        <name>CRM_Marketing_Support</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Cloud Solutions Architect Request --></label>
+        <name>Core_CSA_RecordType</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Center of Excellence Request --></label>
+        <name>Core_Center_of_Excellence_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Technical Sales Specialist Request --></label>
+        <name>Core_TSS_Request</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Opportunity Support Request Record Type cannot be changed. --></errorMessage>
+        <name>Core_OppSupReqRestrict_RecordType_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity Region cannot be blank --></errorMessage>
+        <name>Core_Opportunity_Region_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- There should be at least 1 CSA Member assigned to the Opportunity --></errorMessage>
+        <name>Core_Opportunity_Support_Team_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Customer Win Nomination is already Approved. Cannot change it back to Pending. --></errorMessage>
+        <name>Core_Opportunity_Support_statues_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Edit the CSA Support Request once approved --></errorMessage>
+        <name>Core_Prevent_Edit_on_ApprovedOpptSupp</name>
+    </validationRules>
+</CustomObjectTranslation>

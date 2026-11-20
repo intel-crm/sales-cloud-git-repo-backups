@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Tagging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Taggings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Taggings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>UniTag__Account__c</name>
+        <relationshipLabel><!-- Taggings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Tagged Record Id --></label>
+        <name>UniTag__Record_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Name --></label>
+        <name>UniTag__Record_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag --></label>
+        <name>UniTag__Tag__c</name>
+        <relationshipLabel><!-- Taggings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- sObject Type --></label>
+        <name>UniTag__sObject_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

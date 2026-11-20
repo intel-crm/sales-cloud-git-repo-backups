@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Recovery --></value>
+    </caseValues>
+    <fields>
+        <label>Betrag (USD)</label>
+        <name>Core_MDF_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Antrag</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Partnerschaftswertung</label>
+        <name>Core_MDF_PartnershipGradeMaintenance_Nbr__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recovered Budget --></label>
+        <name>Core_MDF_Recovered_Budget_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Begleichen, dann bezahlt werden</label>
+        <name>Core_MDF_Sure_Pay_Ind__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
+</CustomObjectTranslation>

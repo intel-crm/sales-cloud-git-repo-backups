@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "1b7d11fe-e997-47c6-be9f-2bd826da8f27",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "ef8eb2fd-0d88-43e6-beae-55ac2f4f56b1",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Campaign_Standard_Detail_Core_MDF_Compact_Layout_Component",
+  "id" : "a97f7b26-92c4-47b5-8780-e923b73a6428",
+  "type" : "experienceVariation"
+}

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Button_Name_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Button Name</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Cancel Campaign</fullName>
+                    <default>true</default>
+                    <label>Cancel Campaign</label>
+                </value>
+                <value>
+                    <fullName>Cancel Claim</fullName>
+                    <default>false</default>
+                    <label>Cancel Claim</label>
+                </value>
+                <value>
+                    <fullName>Change Owner</fullName>
+                    <default>false</default>
+                    <label>Change Owner</label>
+                </value>
+                <value>
+                    <fullName>Clone</fullName>
+                    <default>false</default>
+                    <label>Clone</label>
+                </value>
+                <value>
+                    <fullName>Clone Claim</fullName>
+                    <default>false</default>
+                    <label>Clone Claim</label>
+                </value>
+                <value>
+                    <fullName>Close Activity</fullName>
+                    <default>false</default>
+                    <label>Close</label>
+                </value>
+                <value>
+                    <fullName>Complete Payment Clearance Processing</fullName>
+                    <default>false</default>
+                    <label>Complete Payment Clearance Processing</label>
+                </value>
+                <value>
+                    <fullName>Complete PIC Review</fullName>
+                    <default>false</default>
+                    <label>Complete PIC Review</label>
+                </value>
+                <value>
+                    <fullName>Create Activity</fullName>
+                    <default>false</default>
+                    <label>Create Activity</label>
+                </value>
+                <value>
+                    <fullName>Create Claim</fullName>
+                    <default>false</default>
+                    <label>Create Claim</label>
+                </value>
+                <value>
+                    <fullName>Edit</fullName>
+                    <default>false</default>
+                    <label>Edit</label>
+                </value>
+                <value>
+                    <fullName>Hold Claim</fullName>
+                    <default>false</default>
+                    <label>Hold Claim</label>
+                </value>
+                <value>
+                    <fullName>Manual Audit</fullName>
+                    <default>false</default>
+                    <label>Manual Audit</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Notify Partner</fullName>
+                    <default>false</default>
+                    <label>Notify Partner</label>
+                </value>
+                <value>
+                    <fullName>Release Hold</fullName>
+                    <default>false</default>
+                    <label>Release Hold</label>
+                </value>
+                <value>
+                    <fullName>Reopen for Claiming</fullName>
+                    <default>false</default>
+                    <label>Reopen for Claiming</label>
+                </value>
+                <value>
+                    <fullName>Sharing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Sharing</label>
+                </value>
+                <value>
+                    <fullName>Submit For Approval</fullName>
+                    <default>false</default>
+                    <label>Submit For Approval</label>
+                </value>
+                <value>
+                    <fullName>Submit for Payment Clearance</fullName>
+                    <default>false</default>
+                    <label>Submit for Payment Clearance</label>
+                </value>
+                <value>
+                    <fullName>Submit For PIC</fullName>
+                    <default>false</default>
+                    <label>Submit For PIC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Button_Type_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Button Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>LightningComponent</fullName>
+                    <default>true</default>
+                    <label>LightningComponent</label>
+                </value>
+                <value>
+                    <fullName>Update a Record</fullName>
+                    <default>false</default>
+                    <label>Update a Record</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Filter_Criteria_Field__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Filter Criteria Field</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>true</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>PartnerFundRequest</fullName>
+                    <default>false</default>
+                    <label>PartnerFundRequest</label>
+                </value>
+                <value>
+                    <fullName>PartnerFundClaim</fullName>
+                    <default>false</default>
+                    <label>PartnerFundClaim</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Name_nm__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object Name</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Campaign</fullName>
+                    <default>true</default>
+                    <label>Campaign</label>
+                </value>
+                <value>
+                    <fullName>Co-Marketing Activity</fullName>
+                    <default>false</default>
+                    <label>Co-Marketing Activity</label>
+                </value>
+                <value>
+                    <fullName>Claim</fullName>
+                    <default>false</default>
+                    <label>Claim</label>
+                </value>
+                <value>
+                    <fullName>Outcome-Based Campaign</fullName>
+                    <default>false</default>
+                    <label>Outcome-Based Campaign</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Custom Layout Button</label>
+    <pluralLabel>Custom Layout Buttons</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

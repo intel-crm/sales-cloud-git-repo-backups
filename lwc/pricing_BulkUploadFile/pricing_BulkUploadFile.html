@@ -1,0 +1,82 @@
+<template>
+    <template if:true={showLoadingSpinner}>
+        <div style="z-index: 10000 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium"
+                style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+    <lightning-card title="Bulk Data Upload">
+        <div class="slds-p-left_medium">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="6">
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="8">
+                            <div>
+                                <div>
+                                    <template if:true={showOptions}>
+                                    <lightning-combobox label={picklistlabel} name={picklistlabel}
+                                        onchange={handlePickListValueChange} options={picklistvalueselectedDPM}
+                                        required=true value={selectedValue}
+                                        disabled={disableObjectSelection}></lightning-combobox>
+                                    </template>
+                                    <template if:false={showOptions}>
+                                    <lightning-combobox label={picklistlabel} name={picklistlabel}
+                                        onchange={handlePickListValueChange} options={picklistvalueselectedRPM}
+                                        required=true value={selectedValue}
+                                        disabled={disableObjectSelection}></lightning-combobox>
+                                    </template>
+                                </div>
+                                <div class="slds-text-body--regular slds-text-color_error">
+                                    {nullObjectError}
+                                </div><br />
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <div>
+                        <div>
+                            <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file"
+                                disabled={disableUploadFile} multiple></lightning-input>
+                        </div><br />
+                        <div class="slds-text-body--regular slds-text-color_error">
+                            {fileName}
+                        </div><br />
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-text-heading_small">
+                        <div class="slds-p-medium_around">
+                            <div if:true={objectDescription}>
+                                <b>Notes:</b><br>
+                                <lightning-formatted-text value={objectDescription}>
+                                </lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+            <template if:true={showProgressBar}>
+                <lightning-card title="Progress Bar"><br />
+                    <div style="margin-left: 2%;">
+                        <lightning-progress-bar size="medium" value={progress}
+                            variant="circular"></lightning-progress-bar>
+                    </div>
+                    <div class="slds-text-align--center slds-text-title" style="color:forestgreen;font-size: 14px;">
+                        {processStatus}
+                    </div>
+                </lightning-card>
+            </template>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button icon-name="utility:download" label={validateBtnLabel} title={validateBtnLabel}
+                        onclick={handleSave} variant="brand" disabled={disableValidateButton}></lightning-button>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button icon-name="utility:download" label="Download Template" title="Download Template"
+                        onclick={handleDownloadClick} variant="brand"
+                        disabled={disableTemplateButton}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

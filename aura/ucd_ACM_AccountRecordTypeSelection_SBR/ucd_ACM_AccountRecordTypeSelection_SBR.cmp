@@ -1,0 +1,3 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:actionOverride" access="global">
+    <c:ucd_ACM_AccountRecordType_SBR></c:ucd_ACM_AccountRecordType_SBR>
+</aura:component>

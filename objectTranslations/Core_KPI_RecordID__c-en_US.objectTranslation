@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>KPI RecordID</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>KPI RecordIDs</value>
+    </caseValues>
+    <fields>
+        <label><!-- IAH KPI Record ID --></label>
+        <name>Core_IAH_KPI_Record_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Criteria Detail --></label>
+        <name>Core_KPI_Criteria_Detail__c</name>
+        <relationshipLabel><!-- KPI RecordIDs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Year --></label>
+        <name>Core_Year__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The Year must be 4 digits Ex: 2020 --></errorMessage>
+        <name>Core_year_Limitation</name>
+    </validationRules>
+</CustomObjectTranslation>

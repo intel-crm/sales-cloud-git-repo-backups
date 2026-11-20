@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_46246027</developerName>
+        <masterLabel>Top 7 vs Other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>HUAWEI HQ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia Networks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ZTE CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett Packard Enterprise</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett Packard Enterprise Company</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cisco United Arab Emirates</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cisco Systems UK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS, TURKEY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS NORWAY AS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS (INDIA) PRIVATE LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL U S A CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON AB</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON ESPAÑA SA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON INDIA GLOBAL SERVICES PVT. LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON TELECOMUNICAZIONI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ericsson (China) Co., Ltd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ericsson Inc.</sourceValue>
+            </sourceValues>
+            <value>Top7</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+        </chartSummaries>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>EXP_PRODUCT_AMOUNT</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStackedLine</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>ACCOUNT_NAME</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Tiny</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Manufacturing_Geo__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdFamily__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_INF_KPI_ProdClass__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>User.Core_User_Geo__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Comms Infra</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPPORTUNITY_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>TS18 Top Create CQ</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

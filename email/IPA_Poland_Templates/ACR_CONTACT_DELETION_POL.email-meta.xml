@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_DELETION_POL</name>
+    <style>none</style>
+    <subject>Aktualizacja konta w programie Intel® Partner Alliance</subject>
+    <textOnly>Usunięcie użytkownika
+
+{!UserName},
+
+
+Na Twoim koncie w programie Intel® Partner Alliance została wprowadzona zmiana. Usunięto {!ContactEmail} z konta Twojej firmy.
+
+Nazwa firmy: {!Account.Name}
+Identyfikator firmy: {!Account.AccountNumber}
+Usunięto kontakt: E-mail {!ContactEmail}
+Relacja (rola): {!AcrRoles}
+
+Jeśli ta zmiana nie była autoryzowana, zaloguj się w celu zaktualizowania konta.
+W przypadku jakichkolwiek pytań prosimy o kontakt z nami poprzez https://signin.intel.com/ContactUs?Culture=pl-pl.
+
+
+
+Dziękujemy.
+Twój zespół Intel® Partner Alliance
+
+Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.pl
+Prywatność | Pliki cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

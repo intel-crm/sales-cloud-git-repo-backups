@@ -1,0 +1,263 @@
+<apex:page controller="Core_IPS_AddDefault_CaseOwner_Controller" sidebar="false"  showHeader="false">
+    
+    <apex:includeScript value="/soap/ajax/29.0/connection.js"/>
+    <apex:includeScript value="/support/console/35.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
+      
+    <script type="text/javascript">
+    
+    function doSearchOnEnter(ev)
+    {
+        if (window.event)
+        {
+            ev=window.event;
+        }
+        
+        var keyCode;
+        if (ev.keyCode)
+        {
+            keyCode=ev.keyCode;
+        }
+        else
+        {
+            keyCode=ev.charCode;
+        }
+        
+        if (keyCode == 13)
+        {
+            var ele=document.getElementById('{!$Component.j_id0.form.crit_block.crit_section.Searchbtn}');
+            ele.click();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    
+    function  verifyAndRedirect()
+    {         
+        if(confirm('The changes to the interested party list have been made on this case.')){
+            //console.log(JSON.stringify(sforce.console));        
+            //alert("{HTMLENCODE(JSENCODE(!$CurrentPage.parameters.IsConsole))}");
+            if("{HTMLENCODE(JSENCODE(!$CurrentPage.parameters.IsConsole))}"==true)
+            {
+                FinishRedirect();
+            }
+            
+            //window.location.href='/{!$CurrentPage.parameters.id}';
+            return false;
+            
+        }else{
+            return false;}
+    }
+    function testIsInConsole() {
+        if (sforce.console.isInConsole()) {
+            //alert('in console');
+        } else {
+            // alert('not in console');
+        }
+    }
+    
+    function select_usr(id,uname, ufname, ulname, uemail, isselusr, isselqueue) {       
+        $("[id$='seluser']").val(id);
+        $("[id$='selusername']").val(uname);        
+        $("[id$='seluserfname']").val(ufname);
+        $("[id$='seluserlname']").val(ulname);
+        $("[id$='seluseremail']").val(uemail);
+        $("[id$='seluserflag']").val(isselusr);
+        $("[id$='selqueueflag']").val(isselqueue);
+        //alert(id);
+    }
+    
+    function select_que(qid,qname,qname1,qdevname, isselusr, isselqueue) {       
+        $("[id$='selQue']").val(qid);
+        $("[id$='selQueName']").val(qname);   
+        $("[id$='selqueuename']").val(qname1);
+        $("[id$='selqueuedevname']").val(qdevname);
+        $("[id$='seluserflag1']").val(isselusr);
+        $("[id$='selqueueflag1']").val(isselqueue);
+             
+        
+    } 
+    
+    
+    </script> 
+    
+    <apex:form id="form">
+        <apex:pageBlock id="crit_block">
+            <apex:pagemessages rendered="{!showErrorMsg}" ></apex:pagemessages>
+            <apex:actionstatus id="status1">
+                <apex:facet name="start">
+                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height: 5000%;opacity:0.65;width:100%;">
+                        <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                            <span class="waitingDescription">Please Wait...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionstatus>
+            <apex:actionFunction id="FinishRedirect" Name="FinishRedirect" action="{!Finished}" /> 
+            
+            <apex:pageBlockSection >              
+                
+            </apex:pageBlockSection> 
+            
+            <apex:pageBlockSection title="Search Default Case Owner" columns="1" id="crit_section" rendered="true">    <!-- Added by sumukh for US176533 -->                
+                <apex:outputPanel id="pnl">
+                    
+                    <apex:selectList value="{!selectDCOoption}"  size="1"> 
+                        <apex:selectOption itemValue="User" itemLabel="User" />
+                        <apex:selectOption itemValue="Partner User" itemLabel="Partner User" />
+                        <apex:selectOption itemValue="Queue" itemLabel="Queue" />
+                    </apex:selectList> 
+                    
+                    &nbsp; &nbsp; &nbsp;
+                    <apex:inputText value="{!searchText}" label="Enter Search Text" style="width:40%" id="inputSearchText" onkeypress="return doSearchOnEnter(event);" html-placeholder="Type in the name and click Search.."/> 
+                    <apex:commandButton value="Search" action="{!doSearch}" id="Searchbtn" rerender="crit_block" status="status1"/> <!--  -->
+                    <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="You can add an User or a Queue as default case owner."/>                        
+                    </span>               
+                </apex:outputPanel>              
+            </apex:pageBlockSection>   
+            
+            <apex:pageBlockSection columns="1" id="crit_section_btn">   
+                <apex:outputPanel id="pn2">
+                    <div style="position:relative;left:450px;">
+                        <apex:commandButton value="Cancel" action="{!Finished}" /> 
+                        <apex:commandButton value="Done" action="{!saveAndRedirect}"  rendered="{!isSelected}" status="status1" reRender="None"/>           
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSection>           
+            
+            
+            
+            <apex:outputPanel id="selectedOwner" rendered="{!OR(isDefaultCaseOwnerUser, isDefaultCaseOwnerQueue)}"> 
+                <apex:pageBlock title="Selected Default Case Owner">
+                    <apex:outputPanel id="selectedOwnerUser" rendered="{!isDefaultCaseOwnerUser}"> 
+                        <table cellpadding="5" border="1" style="border-width:0px; border-style: groove;">
+                            <col width="200" />
+                            <col width="200" />
+                            <col width="200" />
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                            <tr>
+                                <td>{!defaultCaseOwnerUserFname}</td>
+                                <td>{!defaultCaseOwnerUserLname}</td>
+                                <td>{!defaultCaseOwnerUserEmail}</td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel id="selectedOwnerQueue" rendered="{!isDefaultCaseOwnerQueue}"> 
+                        <table cellpadding="5" border="1" style="border-width:0px; border-style: groove;">
+                            <col width="200" />
+                            <col width="200" />
+                            <tr>
+                                <th>Name</th>
+                                <th>Developer Name</th>
+                            </tr>
+                            <tr>
+                                <td>{!defaultCaseOwnerQueueName}</td>
+                                <td>{!defaultCaseOwnerQueueDevName}</td>
+                            </tr>
+                        </table>
+                        
+                    </apex:outputPanel>
+                    <apex:commandButton value="Remove" action="{!removeDefaultCaseOwner}" >
+                        <apex:actionSupport event="onclick"  action="{!removeDefaultCaseOwner}" reRender="crit_block,selectedOwner,selectedOwnerUser,selectedOwnerQueue" status="status1">
+                            <apex:param assignTo="{!selectedUser}" value="" name="selectedAA"/>
+                            <apex:param assignTo="{!selectedUserName}" value="" name="selectedBB"/>
+                            <apex:param assignTo="{!defaultCaseOwnerUserFname}" value="" name="selectedCC"/>
+                            <apex:param assignTo="{!defaultCaseOwnerUserLname}" value="" name="selectedDD"/>
+                            <apex:param assignTo="{!defaultCaseOwnerUserEmail}" value="" name="selectedEE"/>
+                            <apex:param assignTo="{!isDefaultCaseOwnerUser}" value="false" name="selectedFF"/>
+                            <apex:param assignTo="{!isDefaultCaseOwnerQueue}" value="false" name="selectedGG"/>
+                            <apex:param assignTo="{!selectedQueue}" value="" name="selectedHH"/>
+                            <apex:param assignTo="{!selectedQueueName}" value="" name="selectedII"/>
+                            <apex:param assignTo="{!defaultCaseOwnerQueueDevName}" value="" name="selectedJJ"/>
+                            <apex:param assignTo="{!defaultCaseOwnerQueueName}" value="" name="selectedKK"/>
+                            <apex:param assignTo="{!isSelected}" value="true" name="selectedLL"/>
+                        </apex:actionSupport>   </apex:commandButton>
+                </apex:pageBlock>
+            </apex:outputPanel>
+            
+            
+            
+            <apex:PageBlock title="Search Results:" id="searchresult" rendered="true" >  <!-- Added by sumukh for US176533 -->    
+                
+                <apex:outputPanel id="Results" rendered="{!userToBecreated}"> 
+                    <apex:inputHidden value="{!selectedUser}" id="seluser"/> 
+                    <apex:inputHidden value="{!selectedUserName}" id="selusername"/>
+                    <apex:inputHidden value="{!defaultCaseOwnerUserFname}" id="seluserfname"/>
+                    <apex:inputHidden value="{!defaultCaseOwnerUserLname}" id="seluserlname"/>
+                    <apex:inputHidden value="{!defaultCaseOwnerUserEmail}" id="seluseremail"/>
+                    <apex:inputHidden value="{!isDefaultCaseOwnerUser}" id="seluserflag"/>
+                    <apex:inputHidden value="{!isDefaultCaseOwnerQueue}" id="selqueueflag"/>
+                    <apex:pageBlockTable value="{!UserList}" var="usr" rendered="{!UserList!=null && UserList.size>0}">  
+                        
+                        <apex:column width="20">
+                            <input type="radio" name="usr1" value="{!usr}"  onclick="select_usr('{HTMLENCODE(!usr)}','{HTMLENCODE(!usr.name)}', '{HTMLENCODE(!usr.FirstName)}', '{HTMLENCODE(!usr.LastName)}', '{HTMLENCODE(!usr.Email)}', true, false); " rerender="selectedOwner,selectedOwnerUser,selectedOwnerQueue" escape="false"/> <!--- US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability ---> 
+                            <!--<apex:selectRadio id="test123" value="{!usr.Id}"  onclick="select_usr('{!usr}','{!usr.name}', '{!usr.FirstName}', '{!usr.LastName}', '{!usr.Email}', true, false); ">
+                                <apex:selectOption itemValue="false"       ></apex:selectOption></apex:selectRadio> -->
+                                <apex:actionSupport event="onclick" action="{!refreshSelected}" reRender="crit_block,selectedOwner,selectedOwnerUser,selectedOwnerQueue" status="status1">
+                                    <apex:param assignTo="{!selectedUser}" value="{! usr.Id }" name="selectedA"/>
+                                    <apex:param assignTo="{!selectedUserName}" value="{!usr.Name }" name="selectedB"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerUserFname}" value="{! usr.FirstName }" name="selectedC"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerUserLname}" value="{! usr.LastName }" name="selectedD"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerUserEmail}" value="{! usr.Email }" name="selectedE"/>
+                                    <apex:param assignTo="{!isDefaultCaseOwnerUser}" value="true" name="selectedF"/>
+                                    <apex:param assignTo="{!isDefaultCaseOwnerQueue}" value="false" name="selectedG"/>
+                                    <apex:param assignTo="{!isSelected}" value="true" name="selectedH"/>
+                                    
+                                </apex:actionSupport>
+                            
+                            
+                        </apex:column>
+                        <apex:column value="{!usr.FirstName}" headerValue="FirstName"/>
+                        <apex:column value="{!usr.LastName}" headerValue="LastName"/>
+                        <apex:column value="{!usr.Email}" headerValue="Email"/>
+                    </apex:pageBlockTable>
+                    <apex:outputPanel layout="block" rendered="{!UserList==null || UserList.size==0}" styleClass="nodata">
+                        No data found
+                    </apex:outputPanel>           
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="queResults" rendered="{!queueToBeCreated}"> 
+                    <apex:inputHidden value="{!selectedQueue}" id="selQue"/>
+                    <apex:inputHidden value="{!selectedQueueName}" id="selQueName"/>
+                    <apex:inputHidden value="{!defaultCaseOwnerQueueName}" id="selqueuename"/>
+                    <apex:inputHidden value="{!defaultCaseOwnerQueueDevname}" id="selqueuedevname"/>
+                    <apex:inputHidden value="{!isDefaultCaseOwnerUser}" id="seluserflag1"/>
+                    <apex:inputHidden value="{!isDefaultCaseOwnerQueue}" id="selqueueflag1"/>
+                    <apex:pageBlockTable value="{!Queuelist}" var="que" rendered="{!Queuelist!=null && Queuelist.size>0}"> 
+                        
+                        <apex:column width="20">
+                             <input type="radio" name="que1" value="{!que}" onclick="select_que('{HTMLENCODE(!que)}','{HTMLENCODE(!que.name)}','{HTMLENCODE(!que.name)}','{HTMLENCODE(!que.DeveloperName)}', false, true);" escape="false" /> <!--- US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                            <!--<apex:selectRadio id="que1" value="{!que.Id}">
+                                <apex:selectOption itemValue=""     ></apex:selectOption> </apex:selectRadio> -->
+                                <apex:actionSupport event="onclick" action="{!refreshSelected}" reRender="crit_block,selectedOwner,selectedOwnerUser,selectedOwnerQueue" status="status1">
+                                    <apex:param assignTo="{!selectedQueue}" value="{! que.QueueId }" name="selectedI"/>
+                                    <apex:param assignTo="{!selectedQueueName}" value="{! que.Queue.Name }" name="selectedJ"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerQueueName}" value="{! que.Queue.Name }" name="selectedK"/>
+                                    <apex:param assignTo="{!defaultCaseOwnerQueueDevName}" value="{! que.Queue.DeveloperName }" name="selectedL"/>
+                                    <apex:param assignTo="{!isDefaultCaseOwnerQueue}" value="true" name="selectedM"/>
+                                    <apex:param assignTo="{!isDefaultCaseOwnerUser}" value="false" name="selectedN"/>
+                                    <apex:param assignTo="{!isSelected}" value="true" name="selectedO"/>
+                                </apex:actionSupport>
+                            
+                        </apex:column>
+                        <apex:column value="{!que.Queue.Name}" headerValue="Name"/>
+                        <apex:column value="{!que.Queue.DeveloperNAME}" headerValue="Queue Name"/>                                
+                    </apex:pageBlockTable>
+                    <apex:outputPanel layout="block" rendered="{!Queuelist==null || Queuelist.size==0}" styleClass="nodata">
+                        No data found
+                    </apex:outputPanel>           
+                </apex:outputPanel>            
+            </apex:pageBlock>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

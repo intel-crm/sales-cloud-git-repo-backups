@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_Send_email_receipt_to_PAR_Submitter</name>
+        <label>Core_IPS_MAP_PAR__c.Core_Send_email_receipt_to_PAR_Submitter</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>Core_IPS_MAP_PAR__c.Core_Send_email_receipt_to_PAR_Submitter</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IPS_MAP_PAR__c.Core_Send_email_receipt_to_PAR_Submitter</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_PAR_Create_Notify_Submitter workflow rule
+Workflow rule description: Send 1 email per PAR header to the PAR submitter</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_PAR_Create_Notify_Submitter {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_PAR_Create_Notify_Submitter</label>
+    <migratedFromWorkflowRuleName>Core_PAR_Create_Notify_Submitter</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Send_email_receipt_to_PAR_Submitter</targetReference>
+        </connector>
+        <filterFormula>{!$Record.RecordType.Name}=&apos;PAR&apos;</filterFormula>
+        <object>Core_IPS_MAP_PAR__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

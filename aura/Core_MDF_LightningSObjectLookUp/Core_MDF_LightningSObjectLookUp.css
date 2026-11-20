@@ -1,0 +1,27 @@
+.THIS .closeIcon{
+    pointer-events: visible;
+    width: .875rem;
+    height: .875rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -.4375rem;
+    line-height: 1;
+    border: 0;
+    z-index: 2;
+    fill: rgb(171, 173, 176) !important;
+    right: .75rem;
+    background: transparent;
+}
+.THIS .dropdownStyle {
+    max-height: 5.5rem;
+}
+.THIS .slds-icon-text-default {
+    fill: rgb(171, 173, 176) !important;
+    background: transparent;
+}
+.THIS .clientIcon{
+    width:1.5rem;
+    height:1.5rem;
+    line-height:1;
+
+}

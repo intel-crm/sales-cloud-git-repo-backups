@@ -1,0 +1,264 @@
+.edit-button {
+    color: #1570c7;
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    padding-right: 20%;
+}
+
+.pageBkGD {
+    background-color: #f7f7f7;
+}
+
+.viewform {
+    padding-left: 20%;
+}
+
+.projectDeatilsBg {
+    background-color: #fff;
+    padding: 10px 30px;
+    margin: 1px 36px;
+}
+
+.Mask {
+    background-color: #653171;
+    height: 220px;
+}
+
+.caseEditBtn {
+    color: #653171;
+    border: 1px solid #653171;
+    background-color: White;
+    padding: 4px 12px;
+    height: 40px;
+    width: 150px;
+    margin-left: 60px;
+}
+
+.casesList {
+    display: block;
+    border: 1px solid #e9e9e9;
+}
+
+.intelProducts {
+    background-color: #fff;
+    padding: 30px 30px 5px 30px;
+    margin: 30px 36px;
+}
+
+.slds-modal__container {
+    max-width: 90rem !important;
+    width: 80% !important;
+    margin: 0 auto;
+    min-width: 30rem !important;
+}
+
+.inputsearchProj {
+    min-width: 46.2%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.selectProdOptions {
+    min-width: 100%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    padding-bottom: 20px;
+}
+
+.selectProjOptions {
+    min-width: 100%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    padding-bottom: 20px;
+}
+
+.projectMemberOwnerNote {
+    color: #cc0000;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.IntelProductsHeader {
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+}
+
+.casesListHeader {
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    padding: 20px;
+    text-align: center;
+}
+
+.preimerSuppHeader {
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+}
+
+.back-button {
+    color: #1570c7;
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    display: block;
+    text-align: right;
+    margin-top: 20px;
+}
+.projectdetailbtn {
+    margin-left: 83%;
+    width: 232px;
+}
+
+.center {
+    padding-left: 50%;
+}
+.subHeadline {
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 0px;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;
+    padding-left: 30px;
+}
+.saveproject {
+    color: white;
+    border: 1px solid #ddd;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height: 40px;
+    width: 155px;
+    margin-left: 20px;
+}
+.cancelproject {
+    color: #653171;
+    border: 1px solid #653171;
+    background-color: White;
+    padding: 4px 12px;
+    height: 40px;
+    width: 150px;
+    margin-left: 20px;
+}
+.mandate {
+    color: var(--redError);
+    content: "*";
+    position: absolute;
+    left: 40px;
+    padding-top: 15px;
+    visibility: visible;
+}
+.editProjHeader {
+    background-color: #653171;
+}
+
+.textColor {
+    color: white;
+}
+.accessMsg {
+    margin-left: 30px;
+    margin-right: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+.privilegeMsg {
+    margin-left: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 40px;
+}
+@media (max-width: 768px) {
+    .caseEditBtn {
+        margin-left: 0px;
+    }
+    .projectdetailbtn {
+        margin-left: 0;
+        width: 232px;
+    }
+    .Mask {
+        background-color: #653171;
+        height: auto;
+        padding-bottom: 10px;
+    }
+    .intelProducts {
+        background-color: #fff;
+        padding: 30px 10px 5px 10px;
+        margin: 0;
+    }
+    .projectDeatilsBg {
+        background-color: #fff;
+        padding: 10px 10px;
+        margin: 0;
+    }
+}
+ .requiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    padding-bottom: 10px;
+    padding-top: 1%;
+
+}
+.statusRequiredField{
+     display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: 5px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+   
+}
+.Newsubheadline{
+    margin-left: 29px;
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 0px;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;  
+}
+@media all and (max-width: 760px) {
+.statusRequiredField{
+        display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: 5px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    font-size: 10px;
+    }
+
+
+}

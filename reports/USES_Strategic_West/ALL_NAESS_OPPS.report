@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>PARTNER_ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Status_Update__c</field>
+    </columns>
+    <description>Updated USES 2024 Pipeline Matrix Dashboard</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17 OR 18 OR 19) AND 20</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client Computing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Providence St. Joseph Health,Arrow Electronics Canada Ltd,Evertz Technologies Limited,Avnet,Inc,Avnet International (Canada) Ltd,Staples Canada Inc,WBM Technologies Inc.,Softchoice Corporation,SOTI,Moneris,Falcons.AI,eSentire,Celestica,Canada Computers,M. A. Mortenson Company,D&amp;H Distributing,Amazon Canada,POLARIS,PDT PARTNERS,MEMX,GRASS VALLEY,CERNER CORPORATION,CAE INC,ALLEN VANGUARD (MED ENG),Deloitte Canada,Down Under Geo Solutions,Total Quality Logistics,McKesson Imaging and Workflow Solutions,Hanover Insurance,Kgp Telecommunications,Inc.,Schneider-Electric,Miami International Holdings,J-Squared Technologies Inc,Sam&apos;s Club,Radix Trading LLC,Sobeys,Halton Healthcare,SUBWAY,Milwaukee Electric Tool Corporation,Rubrik</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Digital Research Alliance of Canada,COMPUGEN INC,EVERTZ MICROSYSTEMS LTD,Marsh &amp; McLennan Agency LLC,FIS,Industrielle Alliance,Assurance et Services Financiers Inc,CompuCom Canada,Northwell Health,Inc.,NRG Energy,TIMKEN COMPANY,Mondelez International,MATROX ELECTRONIC SYSTEMS,ABBOTT LABORATORIES,Solera Holdings,TOWER RESEARCH CAPITAL LLC,Berkshire Hathaway Energy Company,Francisco Partners,L.P.,DEJERO,Energy Transfer Equity,Ontario Power Generation Inc,CERIO,ASANTE HEALTH,MURPHY OIL CORPORATION,Truist Bank (BB&amp;T/SunTrust),Baylor Scott &amp; White Health LLC,CANADIAN TIRE CORPORATION,BANK OF MONTREAL (BMO),CITIZENS BANK RI,The Goldman Sachs Group Inc,LEXISNEXIS,DILLARD&apos;S,HUMANWARE TECH CANADA INC,LITHIA MOTORS,INC.,ABBVIE,Eaton Corporation,Jabil Ltd,MICHAELS STORE,FASTLY,PAPA JOHNS,MEDSTAR HEALTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IRON MOUNTAIN INCORPORATED,THE BANK OF NEW YORK MELLON,ConocoPhillips,BLOOMBERG,MARATHON PETROLEUM CORPORATION,Aramark,JP MORGAN CHASE,GOVERNMENT OF QUEBEC,Toronto District School Board,GOVERNMENT OF CANADA,VERIZON,GOVERNMENT OF ONTARIO,Mavenir,BOMBARDIER,MET LIFE,OTTAWA-CARLETON DISTRICT SCHOOL BOARDÂ Â Â Â,DISTRICT SCHOOL BOARD OF NIAGARA (DSBN),ROYAL BANK FINANCIAL GROUP,BANK OF NOVA SCOTIA (SCOTIABANK),AMERICAN AIRLINES,UNITED PARCEL SERVICE,NEW YORK LIFE INSURANCE,USG CORP,YUM! BRANDS,INC.,7-ELEVEN,CUMMINS,CHUBB,DUKE ENERGY INC.,UNIVERSAL HEALTH,DOW CHEMICAL,PROGRESSIVE,PFIZER,INC. (HEADQUARTER) - USA,INTERNATIONAL PAPER,ANTHEM,Carnival Corp HQ,TELUS CORPORATION,SOUTHWEST AIRLINES COMPANY,CIBC (CANADIAN IMPERIAL BANK OF COMMERCE,CENTERPOINT ENERGY,KOCH INDUSTRIES INC.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>AMERICAN ELECTRIC POWER,SUNLIFE,FEDEX,TRINITY HEALTHCARE,JOHNSON &amp; JOHNSON (HEADQUARTER) - USA,AMERICAN EXPRESS,THE HARTFORD,BELL CANADA (HEADQUARTERS),PRUDENTIAL FINANCIAL (HEADQUARTER) - USA,TD CANADA TRUST,T. ROWE PRICE,KROGER,HUMANA,DE SHAW,EXXONMOBIL CORP - USA,PHILLIPS66,GRAINGER CORPORATION,OTTAWA CATHOLIC SCHOOL BOARD,INTERCONTINENTAL EXCHANGE,BARCLAYS,CHEVRON U.S.A. INC.,TEXTRON,NASDAQ - USA,BP - USA,OXY (HEADQUARTER) - USA,CITIGROUP (HEADQUARTERS) - USA,PNC FINANCIAL SERVICES GROUP,MILLENNIUM PARTNERS,FISERV,SYMCOR,ESSENTIA HEALTH,SCHLUMBERGER / WESTERNGECO,GOVERNMENT OF ALBERTA,Suncor Energy Inc,SERVICE CORPORATION INTERNATIONAL,QUANTLAB FINANCIAL,LOOMIS ARMORED,TOTAL E&amp;P USA,TGS-NOPEC,SYSCO CORPORATION</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>BC GOVERNMENT,PRINCESS CRUISES,BRIDGESTONE,Kinder Morgan Inc,OPTIVER TRADING,LABCORPORATION OF AMERICA,FIDELITY NATIONAL INFORMATION SERVICES,INC.,NATIONAL OILWELL VARCO,Houston Methodist,JEFFERIES GROUP,BROADRIDGE FINANCIAL,FIRST CITIZENS BANK,Staples,Inc.,MANITOBA HYDRO,Peel District School Board,ADVOCATE HEALTH CARE,TEXAS HEALTH RESOURCES,CHILDREN&apos;S HOSPITAL OF PHILADELPHIA,MEMORIAL HERMANN HEALTHCARE SYSTEM,THE WILLIAMS COMPANIES,VALERO ENERGY CORP,STRYKER CORPORATION,NATIONWIDE INSURANCE,GOV OF SASK,American International Group,DESJARDINS,Mastercard Incorporated,DEUTSCHE BANK  - USA,Legacy Health,CINCINNATI CHILDREN&apos;S HOSPITAL MEDICAL CENTER (CCHMC),BJC HEALTHCARE,SHELL OIL - USA,CIGNA,HORMEL FOODS,THE HUNTINGTON NATIONAL BANK INC,Corning Incorporated,Avigilon Corporation,IONODES INC,BANK OF AMERICA MERRILL LYNCH,FORD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>BMC Software,Inc.,Intersystems Corporation,BURLINGTON NORTHERN SANTA FE,EPIC SYSTEMS CORPORATION,PROCTER &amp; GAMBLE,ACXIOM,RACKSPACE,TENET HEALTHCARE CORPORATION,MORGAN STANLEY DEAN WITTER,Texas Instruments Incorporated,RAYMOND JAMES FINANCIAL,DELTA AIR LINES,TOYOTA MOTOR SALES U,USAA,MICRO LOGIC SAINTE-FOY LTEE,SOUTHERN COMPANY,SIMON FRASER UNIVERSITY,HALLIBURTON - USA,SOLACOM TECHNOLOGIES INC,JOHN DEERE,UniversitÃ© de Sherbrooke,CATERPILLAR,The Coca-Cola Company,Ciena Corporation,NEW ERA ELECTRONICS INC,GENERAL MOTORS (HEADQUARTER) - USA,GARMIN INTERNATIONAL,INC.,CARDINAL HEALTH,Ross Video Limited,GENETEC INC,Insight Canada,Lumentum,Audcomp Group Inc.,GRAPHIQUES MATROX INC,AppLogic Networks,Memory Express Computer Products,Motorola,Inc,MITEL NETWORKS CORPORATION,Synnex Canada Limited,ROGERS COMMUNICATION</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Hypertechnologie Ciara Inc,KONTRON CANADA INC,BAKER HUGHES,smith and associates,HUGHES NETWORK SYSTEMS,LLC,MERCK &amp; COMPANY,Mark Anthony Group,Louisiana-Pacific Corporation,Brinker,CEC Entertainment,St. Luke&apos;s,Fastcorp,Cook Children&apos;s Health Care System,PetValu,CoreCivic,Bain,Purolator,Canada Post,Fairview Health Services,PPG Industries,Baker Tilly,Apache,Intact Financial Corporation,AMC Theatres,Simtra BioPharma Solutions,Commonwealth Health,Valvoline,HNTB,Terracon,Performance Contracting,Mars,Incorporated,UMass Memorial Health,John Hancock,Structube,Pollard Banknote,S&amp;B Engineers and Constructors,Lululemon Athletica,MTE Consultants,Smith &amp; Wesson,TuffTek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Delta Dental of California,IMC,Copeland,COUNTRY Financial,SSM Health,Pape,Watts Unlimited,Conagra Brands,Rexall Pharmacy,Dentalcorp,Bulloch Technologies,Bath &amp; Body Works,University Health Network,Fastenal,Standard Insurance Company,Lallemand,Ace Hardware,Tomlinson,Guardian Life Insurance,Seekr Technologies,Orlando Health,Solventum,Central Health,Index Exchange,Definity Financial,Nexalus,Byos,Wedge Networks,ALCON,Synamedia,Solink,Iris Energy,Prediction Guard,Frost Bank,Lam Research,Amaara Networks Inc,E.C.I. Networks Inc.,CNA INSURANCE,TEKsystems Global Services,LLC,Imagine Communications</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Oschner Health,GAINWELL,Interactive Brokers LLC,Moderna,Penske,Banque Nationale du Canada (BNC),BOSE,Tauro Technologies,BC Clinical and Support Services,CBRE Enterprise,OSF Healthcare,Pershing Square Capital Management,L.P.,C2RO,Kubex,Arc Compute,Arctic Wolf,Aaeon Canada,Advantech Canada,Paycom,Adlink Technology Canada,Cyberworks Robotics Inc.,Government of Manitoba,IQVIA,Ballad Health,SHARED SERVICES CANADA,The Vanguard Group,CDW Canada Corp,Adventhealth,Converge Technology Partners Inc,Hydro One Limited,SWIFT  US,T-MOBILE,SANFORD HEALTH,Mayo Clinic,MAXLINEAR,COLUMBIA SPORTSWEAR COMPANY,HP INC.,AMGEN,MCKESSON CORPORATION,PEACEHEALTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Lumen,DEERE AND CO - HQ,Comcast Corporation,Fauchus Pfauchus,THRIVENT FINANCIAL FOR LUTHERANS,ALLINA HEALTHCARE,LAND O&apos;LAKES,INC.,ECOLAB,Warner Bros. Games,Align Technology,Leprino Foods,ADVANCED ENERGY,Hdr,Inc.,TELEPERFORMANCE,WELLS FARGO,KIEWIT CORP,FIRST NATIONAL BANK OF OMAHA,Hunter Douglas,Flexential,Fortive Corporation,Warner Brothers Records,ALLEN INSTITUTE,FIFTH THIRD BANK,EXPEDITORS INTERNATIONAL OF WASHINGTON,SEATTLE CHILDREN&apos;S HOSPITAL,ALASKA AIRLINES,PACCAR,Blue Origin,LLC (Enterprise,WinCo Foods,JUNIPER NETWORKS,BRIGHAM YOUNG UNIVBRIGHAM YOUNG UNIV,Molson Coors Brewing Company,United Natural Foods,J.R. Simplot Company,Reinsurance Group of America (RGA),USC Keck Medical Center,EDWARD JONES,HEALTHPARTNERS,UNITED LAUNCH ALLIANCE,Black Knight Financial Services</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Arthur J. Gallagher &amp; Company,Panda Restaurant Group,Inc.,COMMUNITY HEALTH SYSTEMS,INC.,PANERA BREAD,PRECISION CASTPARTS CORP.,XCEL ENERGY,SHERWIN-WILLIAMS,MUTUAL OF OMAHA INS.,C.H. ROBINSON,H&amp;R BLOCK,AMEREN CORP,AFLAC,PRINCIPAL FINANCIAL GROUP,AUTOZONE,NORTHERN TRUST,TIAA-CREF,ARCHER DANIELS MIDLAND,CHOICE HOTELS,AMERIPRISE FINANCIAL,RR DONNELLEY &amp; SONS,ASCENSION HEALTH,LATHAM &amp; WATKINS,RED BULL AMERICA,GLOBAL PAYMENTS,AMKOR TECHNOLOGY,TUCSON ELECTRIC,MERCY HEALTH,Equifax Information Techology LLC,Autodesk,HERTZ RENTAL CAR,ENTERPRISE RENT A CAR,U-HAUL,HCSC,Jack Henry &amp; Associates,WESTERN DIGITAL CORP.,Advance Auto Parts,EATON,TGS MANAGEMENT CORP,SONY ELECTRONICS INC.,Sonora Quest Laboratories</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Meritage Homes,University of New Mexico Health,Trader Joe&apos;s,Guitar Center,OSI Systems,UCLA Health,MX Technologies Inc.,Oâ€™Reilly Auto Parts,Cisco Client Sell-To,Magnite Inc,Lamb Weston,Ally Financial,Cushman &amp; Wakefield,Point72 Asset Management,LP,Honor Health,Union Pacific Corporation,MATCH.COM,J.B. HUNT TRANSPORT,DOLLAR GENERAL CORPORATION,EXELON,BRISTOL-MYERS SQUIBB (BMS),BGC PARTNERS / CANTOR FITZGERALD,BLACK &amp; VEATCH,Academy Sports + Outdoors,EOG RESOURCES,ST FRANCIS HOSPITAL AND MEDICAL CENTER,QUIKTRIP,UNIVERSITY HOSPITALS CLEVELAND,St. Jude Children&apos;s Research Hospital,Technip FMC,Veritas Technologies LLC (Enterprise),Virtu Financial LLC,HRT - Hudson River Trading,Renaissance Technologies LLC,GARTNER,TAKEDA PHARMACEUTICALS OF NORTH AMERICA,M&amp;T BANK,BLACKROCK,INC,Sharp HealthCare,TRACTOR SUPPLY COMPANY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>H.E.B. GROCERY COMPANY,DISCOUNT TIRE,Partners Healthcare System,Inc.,Allied Universal,Danaher Corporation,Athena Health,Fresenius,Live Nation,Hilton Worldwide Holdings Inc.,ERNST &amp; YOUNG,LLP,TRAVELERS,PRICEWATERHOUSE COOPERS (HEADQUARTER) -,KPMG - USA,FIDELITY INVESTMENTS,STATE STREET,CAPITAL ONE FINANCIAL CORP,FANNIE MAE,FREDDIE MAC,LIBERTY MUTUAL INSURANCE COMPANY,DELOITTE &amp; TOUCHE L.L.P.,GEICO,Beth Israel Deaconess Medical Center,SYNOPSYS,INC.,JOHNSON CONTROLS INC,FREEPORT MCMORAN,ILLUMINA INC,DRW HOLDINGS INC,CADENCE DESIGN SYSTEMS,The Queen&apos;s Health Systems,Headlands Technologies LLC,Adobe Systems,THERMOFISHER SCIENTIFIC INC.,PARSONS,KRAFT,VIASAT INC           (AM),Honda North America,Sempra Energy,NextEra Energy,The Walt Disney Company,QUALCOMM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Godaddy.com,LLC,Circle K Stores Inc,TELEPERFORMANCE,SALT LAKE CITY,UTAH,WYNN RESORTS,RESMED CORPORATION,Whole Foods Market,Inc.,JUMP TRADING,JBS USA HOLDINGS,INC.,PETCO,GRANT THORNTON,3M Company,OPTUM,NIKE,MCDONALD&apos;S CORPORATION,GENERAL MILLS,APPLIED MATERIALS,STATE FARM INSURANCE,PUBLIX,Activision Blizzard,DOLLAR TREE,PEPSI (HEADQUARTER) - USA,NBC UNIVERSAL,BOYD GAMING,EXPEDIA,CLEVELAND CLINIC,DAVITA,SONY CORP US,ELI LILLY AND COMPANY,KIMBERLY-CLARK,WALGREENS,WASTE MANAGMENT,INC,EDISON,CITADEL LLC,FIRST AMERICAN CORPORATION,PETSMART,HCA,BANNER HEALTH,MARRIOTT INTERNATIONAL,HOME DEPOT,US BANCORP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>LOWE&apos;S HOME IMPROVEMENT,CARGILL - USA,MGM RESORTS,STARBUCKS CORPORATION,BUNGIE,INC.,SOUTHWEST GAS,PHOENIX CHILDRENS HOSPITAL,UNIVERSITY OF COLORADO HEALTH,CVS CAREMARK CORPORATION,YARDI,TACO BELL,CHICAGO BOARD OF OPTIONS EXCHANGE,TWO SIGMA INVESTMENTS LLC,WESTERN UNION,ZIONS BANK,Ball Corporation,CAPITAL GROUP,SALT RIVER PROJECT (SRP),PROVIDENCE HEALTH &amp; SERVICES,CME GROUP,MICRON TECHNOLOGY,ALLSTATE,SHARP HEALTHCARE,TELETECH HOLDINGS,KNIGHT TRANSPORTATION,CAESARS ENTERTAINMENT,Vail Resorts,Inc.,LPL FINANCIAL,REPUBLIC SERVICES,ULTA SALON,NEWMONT MINING,NORDSTROM,Sony Pictures Entertainment,JANE STREET CAPITAL,Teledyne Technologies Inc,BOSTON CONSULTING GROUP,The Church of Jesus Christ of Latter-Day Saints,CommonSpirit Health,INTERMOUNTAIN HEALTH CARE,MOLINA HEALTHCARE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>SCRIPPS HEALTH,SUTTER HEALTH,Automatic Data Processing,Inc.,Honeywell,TERADATA OPERATIONS,INC,TYSON,Visa U.S.A. Inc.,Albertson&apos;s,LLC,DISCOVER FINANCIAL SERVICES,CEDARS SINAI,TJX COMPANIES INCORPORATED,GEORGIA PACIFIC,MEDTRONIC,UNITED AIRLINES UAL,KONAMI GAMING,INTUIT INC.,GAP,CHARLES SCHWAB,EDWARDS LIFESCIENCES LLC,COSTCO,TARGET CORPORATION,WALMART,THE NORTHWESTERN MUTUAL LIFE INSURANCE COMPANY,INC.,EMERSON,BEST BUY CO INC,SKYWORKS SOLUTIONS,Alorica Inc.,BROADCOM CORPORATION,MATTEL,PARAMOUNT,Environmental Systems Research Institute,Mazda Motors USA,Affinity Interactive,ICW Group,Hawaiian Electric Company,Credit One Bank,Alliant Insurance,Warner Bros. Discovery,The Venetian Resort,Las Vegas Sands</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>San Diego Zoo Wildlife Alliance,Automobile Club of Southern California,Arizona Public Service,UC San Diego Health,UCI Health,Herbalife Nutrition,CoreLogic,Carvana,Reliance Steel &amp; Aluminum,Experian,Astellas Pharma,Quinn Emanuel,Chipotle,Veeva,onsemi Enterprise,Sprouts Farmers Market,Hyundai Autoever America,Fox Corporation,Tetra Tech,Empower Retirement,Dish Network CCG only,The Ensign Group,Early Warning Services,Centene Corp,Google Client Sell To,Maxar Technologies,Microsoft Client Sell To,S&amp;P Global,Amazon Client Sell To,Susquehanna International Group,LLP,Sony Interactive Entertainment Llc,City of Hope</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Americas Canada,Americas US</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ALL NAESS OPPS</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREVCUR2FY</interval>
+    </timeFrameFilter>
+</Report>

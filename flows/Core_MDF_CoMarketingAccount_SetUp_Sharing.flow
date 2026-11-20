@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Share record on the basis of Geo as per Geo Based Sharing</description>
+        <name>Core_MDF_Create_Account_Share_For_Geo_Based_sharing</name>
+        <label>Create Account Share For Geo Based sharing</label>
+        <locationX>963</locationX>
+        <locationY>843</locationY>
+        <actionName>Core_MDF_Account_Sharing</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>listOfAccounts</name>
+            <value>
+                <elementReference>Account_Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Account_Sharing</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Share record on the basis of Geo as per Geo Based Sharing</description>
+        <name>Create_Account_Share_For_Geo_sharing</name>
+        <label>Create Account Share For Geo sharing</label>
+        <locationX>1014</locationX>
+        <locationY>1109</locationY>
+        <actionName>Core_MDF_Account_Sharing</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Reshare_To_Ext_Group_On_Owner_Change</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>listOfAccounts</name>
+            <value>
+                <elementReference>Account_Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Account_Sharing</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Reshare_To_Ext_Group_On_Owner_Change</name>
+        <label>Reshare To Ext Group On Owner Change</label>
+        <locationX>1274</locationX>
+        <locationY>1109</locationY>
+        <actionName>Core_MDF_Account_Owner_Change</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Check_For_Retail_Sharing_Group</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accountIdsList</name>
+            <value>
+                <elementReference>Account_Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Account_Owner_Change</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Share_To_Retail_Group</name>
+        <label>Share To Retail Group</label>
+        <locationX>1269</locationX>
+        <locationY>717</locationY>
+        <actionName>Core_MDF_Account_Utility</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accountToBeResharedList</name>
+            <value>
+                <elementReference>Account_Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Account_Utility</nameSegment>
+    </actionCalls>
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assigning isPartner = True, Channel Program reference Field, Account Active = true, and Ultimate Account same deom Parent fund account&apos;s ultimate account</description>
+        <name>Assigning_Default_Values_to_Co_Marketing_Account_0</name>
+        <label>Assigning Default Values to Co Marketing Account</label>
+        <locationX>394</locationX>
+        <locationY>455</locationY>
+        <assignmentItems>
+            <assignToReference>Account_Record.IsPartner</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Account_Record.Channel_Partner_Referance__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Account_Record.Core_MDF_Channel_Program__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Account_Record.Core_MDF_Active_Ind__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Account_Record.Core_MDF_CoMarketing_Ultimate_Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Account_Record.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_To_Check_if_Account_is_created_by_External_user</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>To assign values to a PNUM Record</description>
+        <name>Core_MDF_Assign_Values_to_PNUM_record</name>
+        <label>Assign Values to PNUM record</label>
+        <locationX>671</locationX>
+        <locationY>1108</locationY>
+        <assignmentItems>
+            <assignToReference>PNUMRecordList.Core_MDF_Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Account_Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>PNUMRecordList.Core_MDF_User__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Account_Record.CreatedById</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_Create_PNUM_Record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigning isPartner = True, Channel Program reference Field, Account Active = true, and Ultimate Account same as Parent fund account</description>
+        <name>Core_MDF_Assigning_Default_Values_to_Co_Marketing_Account</name>
+        <label>Assigning Default Values to Co Marketing Account</label>
+        <locationX>22</locationX>
+        <locationY>452</locationY>
+        <assignmentItems>
+            <assignToReference>Account_Record.IsPartner</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Account_Record.Channel_Partner_Referance__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Account_Record.Core_MDF_Channel_Program__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Account_Record.Core_MDF_Active_Ind__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Account_Record.Core_MDF_CoMarketing_Ultimate_Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Account_Record.Core_MDF_Parent_Fund_Account__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_To_Check_if_Account_is_created_by_External_user</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>If Account is created by External User, change owner to FLAO user</description>
+        <name>Core_MDF_Update_Owner_to_FLAO_User</name>
+        <label>Update Owner to FLAO User</label>
+        <locationX>208</locationX>
+        <locationY>986</locationY>
+        <assignmentItems>
+            <assignToReference>Account_Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Label.Core_MDF_Dummy_Account_Owner_Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_Update_Account_record_with_all_populated_values</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_For_Retail_Sharing_Group</name>
+        <label>Check For Retail Sharing Group</label>
+        <locationX>1260</locationX>
+        <locationY>961</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Retail_Group_Stamped</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Account_Record.Core_MDF_Group_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Share_To_Retail_Group</targetReference>
+            </connector>
+            <label>Is Retail Group Stamped</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>To Check if Account is Virtual Corp or not</description>
+        <name>Core_MDF_If_Parent_Fund_Account_s_Record_type_is_Intel</name>
+        <label>If Parent Fund Account&apos;s Record type is Intel</label>
+        <locationX>168</locationX>
+        <locationY>255</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_If_Account_is_Virtual_Corp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Account_Record.Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Intel_Account_Record_Type_Developer_Name</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Assigning_Default_Values_to_Co_Marketing_Account</targetReference>
+            </connector>
+            <label>If Account is Virtual Corp</label>
+        </rules>
+        <rules>
+            <name>Core_MDF_If_Account_is_not_Virtual_Corp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Account_Record.Core_MDF_Parent_Fund_Account__r.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Marketing_Record_Type_Developer_Name</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assigning_Default_Values_to_Co_Marketing_Account_0</targetReference>
+            </connector>
+            <label>If Account is not Virtual Corp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>To check if account is being created by External user</description>
+        <name>Core_MDF_To_Check_if_Account_is_created_by_External_user</name>
+        <label>To Check if Account is created by External user</label>
+        <locationX>205</locationX>
+        <locationY>692</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Update_Account_record_with_all_populated_values</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Account_is_created_by_External_user</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Account_Record.CreatedBy.UserType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PowerPartner</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Update_Owner_to_FLAO_User</targetReference>
+            </connector>
+            <label>If Account is created by External user</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_MDF_Validate_If_Internal_User</name>
+        <label>Validate If Internal User</label>
+        <locationX>658</locationX>
+        <locationY>842</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_Create_Account_Share_For_Geo_Based_sharing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_If_External_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Account_Record.CreatedBy.UserType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PowerPartner</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Assign_Values_to_PNUM_record</targetReference>
+            </connector>
+            <label>If External User</label>
+        </rules>
+    </decisions>
+    <description>When created by External Update Owner to FLAO User, Insert PNUM. 
+Update isPartner to True, Active to True, Populate CoMarketing Ultimate account field,  Sharing with Account Managers and Geo based Sharing</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_MDF_CoMarketingAccount_SetUp_Sharing {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_CoMarketingAccount_SetUp_Sharing</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Insert PNUM records after changing owner to FLAO user when created  by external</description>
+        <name>Core_MDF_Create_PNUM_Record</name>
+        <label>Create PNUM Record</label>
+        <locationX>857</locationX>
+        <locationY>1109</locationY>
+        <connector>
+            <targetReference>Create_Account_Share_For_Geo_sharing</targetReference>
+        </connector>
+        <inputReference>PNUMRecordList</inputReference>
+    </recordCreates>
+    <recordUpdates>
+        <description>Update account with all the fields populated in this flow</description>
+        <name>Core_MDF_Update_Account_record_with_all_populated_values</name>
+        <label>Update Account record with all populated values</label>
+        <locationX>459</locationX>
+        <locationY>840</locationY>
+        <connector>
+            <targetReference>Core_MDF_Validate_If_Internal_User</targetReference>
+        </connector>
+        <inputReference>Account_Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_MDF_If_Parent_Fund_Account_s_Record_type_is_Intel</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Account_Record</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>PartnerUser</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Label.Core_MDF_ReleaseHold_PartnerUserType</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>PNUMRecordList</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_MDF_Partner_Node_User_Mapping__c</objectType>
+    </variables>
+</Flow>

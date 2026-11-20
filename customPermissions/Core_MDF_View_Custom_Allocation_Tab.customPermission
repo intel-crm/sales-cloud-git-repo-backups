@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Created to use it in place of target audience on a custom PartnerFundAllocation page of community for CCP External Activity Submitter, CCP External Claim Submitter and CCP External View Only users.</description>
+    <isLicensed>false</isLicensed>
+    <label>Permission to View Custom Allocation Tab</label>
+</CustomPermission>

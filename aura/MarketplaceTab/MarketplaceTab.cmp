@@ -1,0 +1,19 @@
+<aura:component>
+    <aura:attribute name="renderOnFirstOpen" type="boolean" default="false" description="If True, the tab content will be rendered when the active is first set to true, otherwise it is hidden"/>
+    <aura:attribute name="active" type="boolean" default="false" />
+    <aura:attribute name="label" type="string" required="true" />
+    
+    <aura:handler name="change" value="{!v.active}" action="{!c.handleChange}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.active}">
+        <div class="isg-tab-content">
+            <aura:if isTrue="{! or(!v.renderOnFirstOpen, v.active) }">
+                {!v.body}
+            </aura:if>
+        </div>
+    </aura:if>
+    
+    
+    
+</aura:component>

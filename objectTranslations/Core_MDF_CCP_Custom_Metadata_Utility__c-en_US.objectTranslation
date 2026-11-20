@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Custom Metadata Utility</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Custom Metadata Utility</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Core_MDF_CustomMetadata_Utility_FieldSet --></label>
+        <name>Core_MDF_CustomMetadata_Utility_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Core_MDF_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 10 --></label>
+        <name>Core_MDF_Checkbox_Field_10_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 1 --></label>
+        <name>Core_MDF_Checkbox_Field_1_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 2 --></label>
+        <name>Core_MDF_Checkbox_Field_2_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 3 --></label>
+        <name>Core_MDF_Checkbox_Field_3_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 4 --></label>
+        <name>Core_MDF_Checkbox_Field_4_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 5 --></label>
+        <name>Core_MDF_Checkbox_Field_5_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 6 --></label>
+        <name>Core_MDF_Checkbox_Field_6_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 7 --></label>
+        <name>Core_MDF_Checkbox_Field_7_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 8 --></label>
+        <name>Core_MDF_Checkbox_Field_8_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checkbox Field 9 --></label>
+        <name>Core_MDF_Checkbox_Field_9_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date 1 --></label>
+        <name>Core_MDF_Date_1_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date 2 --></label>
+        <name>Core_MDF_Date_2_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 10 --></label>
+        <name>Core_MDF_Field_10_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 11 --></label>
+        <name>Core_MDF_Field_11_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 12 --></label>
+        <name>Core_MDF_Field_12_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 13 --></label>
+        <name>Core_MDF_Field_13_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 14 --></label>
+        <name>Core_MDF_Field_14_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 15 --></label>
+        <name>Core_MDF_Field_15_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 16 --></label>
+        <name>Core_MDF_Field_16_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 1 --></label>
+        <name>Core_MDF_Field_1_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 2 --></label>
+        <name>Core_MDF_Field_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 3 --></label>
+        <name>Core_MDF_Field_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 4 --></label>
+        <name>Core_MDF_Field_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 5 --></label>
+        <name>Core_MDF_Field_5_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 6 --></label>
+        <name>Core_MDF_Field_6_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 7 --></label>
+        <name>Core_MDF_Field_7_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 8 --></label>
+        <name>Core_MDF_Field_8_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field 9 --></label>
+        <name>Core_MDF_Field_9_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name/Criteria --></label>
+        <name>Core_MDF_Name_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number 1 --></label>
+        <name>Core_MDF_Number_1_num__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region/Country --></label>
+        <name>Core_MDF_Region_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Order --></label>
+        <name>Core_MDF_Sort_Order_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Category --></label>
+        <name>Core_MDF_Sub_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Core_MDF_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

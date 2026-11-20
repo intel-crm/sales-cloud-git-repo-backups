@@ -1,0 +1,42 @@
+<template>
+	<div class="mainDiv">
+			<lightning-card>
+					<div class="cardBody">
+							<div class="slds-grid slds-wrap">
+									<div class="slds-col slds-size_12-of-12">
+											<h2 class="cardHeading">{formLabels.PRM_Responsibilities_Header}</h2>
+									</div>
+									<template if:true={isPrimary}>
+											<div class="slds-col slds-size_4-of-12 sectionInfo">
+													<h3 class="subHeading">{formLabels.PRM_You} :</h3>
+											</div>
+											<div class="slds-col slds-size_8-of-12" style="padding: 0.5rem; font-size: 12px !important;">
+													<button class="slds-button slds-button_brand save_button hideButton" onclick={navigateToEPUM} style="font-size: 16px; float: right;">
+															{formLabels.PRM_Manage_Personnel}
+													</button>
+											</div>
+									</template>
+									<template if:false={isPrimary}>
+											<div class="slds-col slds-size_12-of-12 sectionInfo">
+													<h3 class="subHeading">{formLabels.PRM_You} :</h3>
+											</div>
+									</template>
+
+									<template for:each={loggedInUserResp} for:item="userEnttl">
+											<div key={userEnttl.Rank} class="contactClass slds-col slds-size_12-of-12 sectionInfo">
+													{userEnttl.Name}
+											</div>
+									</template>
+									<div class="slds-col slds-size_12-of-12">
+											<button class="slds-button slds-button_brand save_button showButton" onclick={navigateToEPUM}>
+													{formLabels.PRM_Manage_Personnel}
+											</button>
+									</div>
+									<div class="guidePartnerText">
+											{formLabels.EPUM_ManagePersonnel_SubTittle}
+									</div>
+							</div>
+					</div>
+			</lightning-card>
+	</div>
+</template>

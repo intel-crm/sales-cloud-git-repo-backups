@@ -1,0 +1,39 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "4bd348c7-7036-4789-90bf-3ead785610a6",
+  "label" : "Partner Fund Allocation Related List",
+  "regions" : [ {
+    "id" : "3b599ea6-bf20-4af2-b725-80082d28973d",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "b3ec9a74-3dcf-4e51-b4e1-f08bdd2ed4c8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e7fd3157-d763-4f62-ac72-dd4ff9ae02f8",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "81ba9bbc-c2a1-484c-8f0b-5b760df36d83",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-0R8"
+}

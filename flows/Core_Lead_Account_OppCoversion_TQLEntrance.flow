@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>C_LEAD</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>012o0000000Tr9EAAS</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>C_SalesLEAD</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0121J000000yaQ1QAI</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>for the LEAD WF 
+&apos; Core_Lead_to_Account_Conversion__FlagUpdate &apos;</description>
+        <name>Core_Lead_to_Account_Conversion_FlagUpdate</name>
+        <label>Core_Lead_to_Account_Conversion__FlagUpdate</label>
+        <locationX>347</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_TQL_Entrance</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Lead_to_Account_Conversion_FlagUpdateTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Lead_to_Account_Conversion_FlagUpdate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Lead_to_Account_Conversion_FlagUpdate</targetReference>
+            </connector>
+            <label>Core_Lead_to_Account_Conversion__FlagUpdateTRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the LEAD WF
+
+&apos;Core_Lead_TQL_Entrance&apos;</description>
+        <name>Core_Lead_TQL_Entrance</name>
+        <label>Core_Lead_TQL_Entrance</label>
+        <locationX>560</locationX>
+        <locationY>294</locationY>
+        <defaultConnector>
+            <targetReference>Core_Opportunity_Conversion_Unlock</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Lead_TQL_EntranceTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Lead_TQL_Entrance</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Lead_TQL_Entrance</targetReference>
+            </connector>
+            <label>Core_Lead_TQL_EntranceTRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the LEAD WF 
+
+&apos;Core_Opportunity_Conversion_Unlock&apos;</description>
+        <name>Core_Opportunity_Conversion_Unlock</name>
+        <label>Core_Opportunity_Conversion_Unlock</label>
+        <locationX>718</locationX>
+        <locationY>295</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Opportunity_Conversion_UnlockTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Opportunity_Conversion_Unlock</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Opportunity_Conversion_Unlock</targetReference>
+            </connector>
+            <label>Core_Opportunity_Conversion_UnlockTRUE</label>
+        </rules>
+    </decisions>
+    <description>For the LEAD WFs
+
+&apos;Core_Lead_to_Account_Conversion__FlagUpdate&apos;
+&apos;Core_Lead_TQL_Entrance&apos;
+&apos;Core_Opportunity_Conversion_Unlock&apos;
+&apos;Core_Reject_flag_update&apos; --- removing this consition due to fast field update in flow and moving to new flow</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Reject_flag_updateCondition</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;,{!$Record.RecordType.Name}=&quot;Lead&quot;),
+ISPICKVAL({!$Record.Core_Lead_State__c}, &apos;In Pursuit&apos;),
+ISPICKVAL({!$Record__Prior.Core_Lead_State__c}, &apos;Terminated&apos;),
+NOT(ISPICKVAL({!$Record__Prior.Core_Lead_Status__c}, &apos;Unreachable&apos;)),
+ISCHANGED({!$Record.Core_Lead_State__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Lead_to_Account_Conversion_FlagUpdate</name>
+        <dataType>Boolean</dataType>
+        <expression>OR( AND( OR({!$Record.RecordType.Name} = &quot;Sales Lead&quot;,{!$Record.RecordType.Name}=&quot;Lead&quot;), ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;) ), AND( {!$Record.RecordType.Name}=&quot;Partner Lead&quot;  ) )</expression>
+    </formulas>
+    <formulas>
+        <description>for the Lead WF 
+&apos;Core_Lead_TQL_Entrance&apos;</description>
+        <name>F_Core_Lead_TQL_Entrance</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (  ISPICKVAL(PRIORVALUE({!$Record.Status}), &quot;Tele Accepted Lead&quot;),  ISPICKVAL({!$Record.Status}, &quot;Tele Qualified Lead&quot;), {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;, ISCHANGED({!$Record.Status} ), OR( ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;) )  )</expression>
+    </formulas>
+    <formulas>
+        <description>for the LEAD WF
+
+&apos; Core_Opportunity_Conversion_Unlock &apos;</description>
+        <name>F_Core_Opportunity_Conversion_Unlock</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(   {!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Partner_Lead&apos;,  OR(   ISCHANGED({!$Record.Status}),   ISCHANGED({!$Record.Core_Lead_Status__c})  ),  ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),  ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Accepted&apos;),  ISPICKVAL(PRIORVALUE({!$Record.Core_Lead_Status__c}), &apos;Disqualified&apos;) )</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_Account/OppCoversion_TQLEntrance {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Account/OppCoversion_TQLEntrance_RejectFlagUpdate</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>FieldUpdateCore_Lead_to_Account_Conversion_FlagUpdate</name>
+        <label>FieldUpdateCore_Lead_to_Account_Conversion__FlagUpdate</label>
+        <locationX>358</locationX>
+        <locationY>407</locationY>
+        <connector>
+            <targetReference>Core_Lead_TQL_Entrance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_Conversion_Flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdateCore_Lead_TQL_Entrance</name>
+        <label>FieldUpdateCore_Lead_TQL_Entrance</label>
+        <locationX>575</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Core_Opportunity_Conversion_Unlock</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Entrance_Date_TQL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_TAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Status__c</field>
+            <value>
+                <stringValue>Qualified</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdateCore_Opportunity_Conversion_Unlock</name>
+        <label>FieldUpdateCore_Opportunity_Conversion_Unlock</label>
+        <locationX>739</locationX>
+        <locationY>407</locationY>
+        <inputAssignments>
+            <field>Core_Lead_to_Opportunity_Conversion_flag__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>459</locationX>
+        <locationY>46</locationY>
+        <connector>
+            <targetReference>Core_Lead_to_Account_Conversion_FlagUpdate</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED({!$Record.Status}) || ISCHANGED({!$Record.Core_Lead_Status__c}) || ISCHANGED({!$Record.Core_Lead_State__c})</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

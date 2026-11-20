@@ -1,0 +1,68 @@
+.custom-node-select {
+  margin: 1rem 1rem 0 0;
+  max-width: 13.25rem;
+  position: relative;
+}
+
+.custom-node-select[data-highlight="true"] {
+  background: var(--daisy);
+  box-sizing: content-box;
+  margin: 0;
+  padding: 1rem;
+}
+
+.custom-node-select[data-highlight="true"]::after {
+  right: 1.725rem;
+}
+
+.custom-node-select select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2rem;
+  padding: 0 1rem 0 1rem;
+  width: 100%;
+  width: 13.25rem;
+}
+
+.custom-node-select select,
+.custom-node-select select:focus,
+.custom-node-select select:active {
+  background: var(--white);
+  border: 1px solid var(--lightGray);
+  border-radius: .25rem;
+  color: var(--darkGray);
+  font-size: .813rem;
+}
+
+.custom-node-select select:disabled {
+  background: transparent;
+  border-color: var(--gray);
+  color: var(--gray);
+  cursor: not-allowed;
+}
+
+.custom-node-select select::-ms-expand {
+  display: none;
+}
+
+.custom-node-select::after {
+  border: 6px solid transparent;
+  border-top: 6px solid var(--darkGray);
+  content: " ";
+  display: inline-block;
+  pointer-events: none;
+  position: absolute;
+  right: .625rem;
+  top: 45%;
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1024px) {
+  .custom-node-select {
+    max-width: 10rem;
+  }
+
+  .custom-node-select select {
+    max-width: 10rem;
+  }
+}

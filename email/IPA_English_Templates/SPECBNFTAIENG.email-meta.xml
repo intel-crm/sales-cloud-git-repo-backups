@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SPECBNFTAIENG</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance Artificial Intelligence Data Center Specialty</subject>
+    <textOnly>Congratulations on Qualifying!
+
+
+{!Contact.FirstName},
+
+Welcome to Intel® Partner Alliance Artificial Intelligence Data Center Specialty! As a qualified Artificial Intelligence Data Center Specialist, you are eligible for specialty benefits* that are designed to help deliver and implement your solutions, including:
+
+Artificial Intelligence Data Center Specialist designation
+Intel promotion of your company as an Artificial Intelligence Specialist
+Additional points when purchasing Intel® Server Portfolio1 Products
+Access to Intel Artificial Intelligence Resources
+Priority invitations to industry events and training sessions
+Access to Intel Platform Testing Services
+
+To get started, please reply to ITP-AI@intel.com with the following information:
+
+
+Primary contact for Artificial Intelligence Specialist communications
+Name:
+Email:
+
+
+For additional sales and promotion materials
+Physical Mailing Address:
+Phone:
+
+Access benefits
+
+
+*Benefits may vary by geography.
+
+Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+
+Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+1 Data Center Portfolio products: Intel® Xeon® Processors; Intel® Network Infrastructure Solutions; Server Boards &amp; Barebones Systems; Intel® SSD Data Center Family; Wind River OS, Intel® FPGA Product Family; API Management; Intel® HPC Software; Intel® HPC Orchestrator; Intel® Omni-Path Architecture; Intel® Solutions for Lustre Software.
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

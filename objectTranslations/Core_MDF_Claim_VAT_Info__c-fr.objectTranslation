@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Document de paiement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Documents de paiement</value>
+    </caseValues>
+    <fields>
+        <label>Nom du compte</label>
+        <name>Core_MDF_Account_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved File Id --></label>
+        <name>Core_MDF_Approved_File_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the payment document approved for sending to GSPO. --></help>
+        <label><!-- Approved Payment Document --></label>
+        <name>Core_MDF_Approved_File_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Reminder Sent --></label>
+        <name>Core_MDF_ClaimSubRemNotificationSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Reminder Date --></label>
+        <name>Core_MDF_ClaimSubmitterReminder_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>Indique la demande associée au document de paiement</help>
+        <label>Demande</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Indique le type de document de paiement que le client doit télécharger.</help>
+        <label>Type de document</label>
+        <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_VAT_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Date --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Sent --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Sent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- RSM Reminder Sent --></label>
+        <name>Core_MDF_RSMRemNotificationSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- RSM Reminder Date --></label>
+        <name>Core_MDF_RSMReminderDate_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>Montant du remboursement sans la taxe</help>
+        <label>Montant du remboursement</label>
+        <name>Core_MDF_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Le statut du document de paiement</help>
+        <label>Statut du document</label>
+        <name>Core_MDF_Status_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Approuvé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>Annulé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>Rejeté</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>Documents en instance</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revision Required</masterLabel>
+            <translation>Révision requise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Review</masterLabel>
+            <translation>Examen en cours</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Claim --></label>
+        <name>Core_MDF_Sub_Claim_Id__c</name>
+        <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Le montant de la taxe</help>
+        <label>Montant de la taxe</label>
+        <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <help>Le numéro de transaction/facture lié au document de paiement</help>
+        <label>Numéro de facture fiscale</label>
+        <name>Core_MDF_VAT_Invoice_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <help>Le pourcentage de taxe appliqué sur le montant du remboursement</help>
+        <label>Pourcentage de taxe</label>
+        <name>Core_MDF_VAT_Per__c</name>
+    </fields>
+    <fields>
+        <label>Documents de paiement - Directives</label>
+        <name>Core_MDF_Vat_Inv_Guide_Link__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>ID du document</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Payment Document Record Type --></description>
+        <label><!-- Payment Document --></label>
+        <name>Core_MDF_Payment_Document</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Submit for Approval Record Type --></description>
+        <label><!-- Submit for Approval --></label>
+        <name>Core_MDF_Submit_for_Approval</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage>Le numéro de facture fiscale ne peut être modifié dans son statut actuel</errorMessage>
+        <name>Core_MDF_PreventInvNoEditAfterApproval</name>
+    </validationRules>
+</CustomObjectTranslation>

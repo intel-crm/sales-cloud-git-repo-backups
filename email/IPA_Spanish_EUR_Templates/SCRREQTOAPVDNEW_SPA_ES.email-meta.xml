@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_SPA_ES</name>
+    <style>none</style>
+    <subject>Le damos la bienvenida a la Alianza Intel® para socios</subject>
+    <textOnly>Le damos la bienvenida a la Alianza Intel® para socios
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}:
+
+¡Bienvenido! {!Account.Name} ya forma parte de la Alianza Intel® para socios.
+Empiece a hacer crecer su negocio aprovechando las ventajas del programa, entre ellas:
+
+Atención al cliente de Intel con asistencia global para todos los problemas técnicos, de garantía y del programa de socios
+Seminarios web y formación en línea en la Universidad Intel® para socios con planes de estudio líderes en la industria
+Una amplia red de socios y un mercado para colaborar en soluciones centradas en los datos
+Marketing simplificado con materiales y herramientas de venta personalizables
+Acceso a Intel® Developer Zone
+
+
+Inicie sesión en  https://wcm-stg.intel.com/libs/apps/intel/logout.json/deletesecuritytoken?target=https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary para ver y gestionar sus ventajas.
+
+Los socios de Intel tienen una larga trayectoria de innovación y, gracias a la Alianza Intel® para socios, le ayudaremos a acelerar la creación de soluciones para la economía centrada en los datos. Juntos, podremos conectarnos, innovar y crecer, haciendo posible oportunidades extraordinarias.
+
+Visite https://intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner-alliance/help/overview.html para obtener más ayuda sobre cómo dar los primeros pasos.
+
+Gracias,
+su equipo de la Alianza Intel® para socios
+
+
+
+Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

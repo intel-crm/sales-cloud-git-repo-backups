@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_PIC_Questions_To_CDB_Intg_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule is to share the PIC Review Questions to CDB Integration User</description>
+        <label>Core_MDF_Share_PIC_Questions_To_CDB_Intg_User</label>
+        <sharedTo>
+            <group>Core_AI_CDB_Integrations_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Is_Active_ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Outcome_Based_Indicator_Ind__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

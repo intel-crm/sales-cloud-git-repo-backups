@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <available>true</available>
+    <description>This is sent when new company is created</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>PMP_CompanyInfoDraftEmail_Profile</name>
+    <style>none</style>
+    <subject>Welcome: Get Started with Intel® Partner Showcase.</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

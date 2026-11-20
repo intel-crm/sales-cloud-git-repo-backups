@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Version 2
+Migrated from the: Core_Inquiry_name_update workflow rule
+Workflow rule description: Evaluate the rule when a record is created, and every time it&apos;s edited&quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Update_NameFormula</name>
+        <dataType>String</dataType>
+        <expression>TEXT($Record.Core_Inquiry_Type_Pkt__c)</expression>
+    </formulas>
+    <interviewLabel>Core_Inquiry_name_update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Inquiry_name_update</label>
+    <migratedFromWorkflowRuleName>Core_Inquiry_name_update</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>This is to update the Inquiry name to Inquiry type of the record</description>
+        <name>Update_Name</name>
+        <label>Update Name</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Core_Update_NameFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Name</targetReference>
+        </connector>
+        <filterFormula>OR(
+{!$Record.Core_Lead_Inquiries__c} &lt;&gt; NULL,
+{!$Record.Core_Contact_Inquiries__c} &lt;&gt; NULL
+)</filterFormula>
+        <object>Core_Inquiry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

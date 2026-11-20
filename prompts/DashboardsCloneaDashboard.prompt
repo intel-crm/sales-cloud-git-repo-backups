@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dashboards Clone a Dashboard</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/create-and-clone-a-dashboard/#Clone_a_Dashboard_Save_As</actionButtonLink>
+        <body>&lt;p&gt;Rather than creating a Dashboard from scratch, Dashboards in Sales CRM can be cloned and modified by an individual.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To clone a Dashboard,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;From the Dashboard that is to be cloned, click the down arrow button and select&amp;nbsp;&lt;strong&gt;Save As&lt;/strong&gt;. The&amp;nbsp;&lt;em&gt;Save As&lt;/em&gt;&amp;nbsp;window will open.&lt;/li&gt;&lt;li&gt;Provide a dashboard&amp;nbsp;&lt;strong&gt;Name&amp;nbsp;&lt;/strong&gt;and&amp;nbsp;&lt;strong&gt;Folder&lt;/strong&gt;&amp;nbsp;in which to save the new Dashboard. To choose a different folder from that which is displayed, click the&amp;nbsp;&lt;strong&gt;Select Folder&lt;/strong&gt;&amp;nbsp;link. Once the desired folder is selected, click the&amp;nbsp;&lt;strong&gt;Select Folder&lt;/strong&gt;&amp;nbsp;button.&lt;/li&gt;&lt;li&gt;Click&amp;nbsp;&lt;strong&gt;Create&lt;/strong&gt;. Once created, use the&amp;nbsp;&lt;strong&gt;Edit&lt;/strong&gt;&amp;nbsp;button in the new Dashboard in order to customize it.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Dashboards Clone a Dashboard</description>
+        <displayType>DockedComposer</displayType>
+        <header>Dashboards</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Dashboards Clone a Dashboard</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Dashboard</targetPageKey1>
+        <targetPageKey2>home</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Clone a Dashboard</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

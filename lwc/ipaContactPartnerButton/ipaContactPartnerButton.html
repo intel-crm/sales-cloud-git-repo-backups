@@ -1,0 +1,23 @@
+<template>
+
+    <template if:true={isMenu}>
+        <c-ipa-button-menu-dropdown
+            auto-scroll={autoScroll}
+            title={contactPartnerLabel}
+            menu-items={contactLinks}
+            onaction={handleContactAction}
+            ontoggle={handleContactToggle}>
+        </c-ipa-button-menu-dropdown>
+    </template>
+
+    <template if:false={isMenu}>
+        <lightning-button
+            class="button-full-width"
+            variant="brand"
+            label={contactPartnerLabel}
+            onclick={handleContactPartnerButton}
+            ontoggle={handleContactToggle}>
+        </lightning-button>
+    </template>
+
+</template>

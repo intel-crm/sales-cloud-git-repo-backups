@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>If Case Sub_status equal to Close_Pending then After 20 Days Case sub_status equal to closed and ststus equal to closed and record type become IPS Closed Case</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_IPS_Set_Status_Closed_after_20Days_ClosePending {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core IPS Set Status Closed after 20Days ClosePending</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Record type Id when name is &apos;IPS Closed Case&apos;</description>
+        <name>Get_Record_Type_Id</name>
+        <label>Get Record Type Id</label>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Case_field</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>IPS_Closed_Case</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Case_field</name>
+        <label>Update Case field</label>
+        <locationX>308</locationX>
+        <locationY>384</locationY>
+        <inputAssignments>
+            <field>Core_Sub_Status__c</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Record_Type_Id.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(ISPICKVAL({!$Record.Core_Sub_Status__c},&apos;Close-Pending&apos;),ISPICKVAL({!$Record.Status},&apos;Open&apos;),OR({!$Record.RecordType.Name}=&apos;IPS No Assigned Contact Case&apos;,{!$Record.RecordType.Name}=&apos;IPS Case Create&apos;,{!$Record.RecordType.Name}=&apos;IPS Closed Case&apos;))</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>twentyDays_After_Rule_Trigger_Date</name>
+            <connector>
+                <targetReference>Get_Record_Type_Id</targetReference>
+            </connector>
+            <label>twentyDays After Rule Trigger Date</label>
+            <offsetNumber>20</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_IPS_Date_Time_Close_Pending__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

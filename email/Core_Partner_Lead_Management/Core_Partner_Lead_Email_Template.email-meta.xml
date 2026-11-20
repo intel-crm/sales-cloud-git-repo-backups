@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template to notify Partner Users when a new lead is assigned.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_Partner_Lead_Email</letterhead>
+    <name>Partner Lead Email Template</name>
+    <style>freeForm</style>
+    <subject>New Lead Assignment</subject>
+    <textOnly>You have been assigned a Lead through Intel&apos;s Lead Management System. This customer is expecting contact within 24 hours. Please accept or reject this lead as soon as possible and, if accepted, follow up accordingly.
+
+Please click the below link to access the leads.
+https://premiersupport.intel.com/IPS
+
+Lead Information:
+
+Company: {!Lead.Company}
+
+Name: {!Lead.Name}
+Phone: {!Lead.Phone}
+Email: {!Lead.Email}
+
+Lead Notes: {!Lead.Core_Lead_Notes__c}
+
+Address:
+{!Lead.Address}
+
+Project Timeframe: {!Lead.Core_Project_Timeframe__c}
+Project Size: {!Lead.Core_Project_Size__c}
+Project Phase: {!Lead.Core_Project_Phase__c}
+
+Please click the below link for support.
+https://partners.seek.intel.com/SupportPage
+
+©Intel Corporation. All rights reserved.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

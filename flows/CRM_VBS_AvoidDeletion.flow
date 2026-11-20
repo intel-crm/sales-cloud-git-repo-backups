@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>user_cannot_delete_record</name>
+        <label>user cannot delete record</label>
+        <locationX>621</locationX>
+        <locationY>338</locationY>
+        <customErrorMessages>
+            <errorMessage>don&apos;t have access to delete the record</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <environments>Default</environments>
+    <interviewLabel>CRM_VBS_AvoidDeletion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CRM_VBS_AvoidDeletion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>user_cannot_delete_record</targetReference>
+        </connector>
+        <filterFormula>AND(
+NOT({!$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c}),
+NOT ( {!$Profile.Name} == &apos;System Administrator&apos; ||
+{!$Profile.Name} == &apos;IT Admin&apos; 
+)
+)</filterFormula>
+        <object>CRM_VBS_SOAR__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

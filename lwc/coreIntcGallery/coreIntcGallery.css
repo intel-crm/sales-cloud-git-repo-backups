@@ -1,0 +1,139 @@
+.gallery-cover {
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--carbon-tint2, #e9e9e9);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-height: 13rem;
+  text-align: center;
+}
+
+.gallery-cover[data-fixed-height="true"],
+.gallery-images-container[data-fixed-height="true"] {
+  height: 18rem;
+}
+
+.gallery-thumbnail img {
+  width: 100%;
+}
+
+c-core-intc-modal .gallery-image-container img {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  width: 100%;
+}
+
+.gallery-cover[data-fixed-height="true"] img,
+.gallery-images-container[data-fixed-height="true"] img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+[slot="body"] {
+  width: 100%;
+}
+
+.gallery-container {
+  background: none;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.gallery-counter[data-show="true"] {
+  display: flex;
+}
+
+.gallery-counter {
+  align-items: center;
+  background: var(--gray);
+  border: none;
+  bottom: 0;
+  color: var(--white);
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  padding: .375rem .875rem;
+  position: absolute;
+  right: 0;
+  --iconColor: var(--white);
+  --iconSize: 1.25rem;
+}
+
+.gallery-counter lightning-icon {
+  margin-top: -.1rem;
+}
+
+/* Thumbnails */
+.gallery-thumbnail-container {
+  margin: 1rem auto;
+}
+
+.gallery-thumbnail {
+  width: 5rem;
+}
+
+.gallery-image-container {
+  align-items: var(--intc-gallery-image-align-items, center);
+  border: 1px solid var(--intc-gallery-image-border, var(--carbon-tint2));
+  display: flex;
+  justify-content: var(--intc-gallery-image-justify-content, center);
+  position: relative;
+}
+
+.cover-carousel-wrapper {
+  position: relative;
+}
+
+.cover-carousel-wrapper .gallery-image-container img {
+  cursor: pointer;
+}
+
+.expand-icon-wrapper {
+  background-color: rgba(0, 0, 0, .5);
+  border: none;
+  color: var(--white, white) !important;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+}
+
+c-core-intc-video {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.accessibility-next {
+  background-color: var(--white);
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.accessibility-next:focus {
+  max-height: 2rem;
+}
+
+[role="alert"] {
+  max-height: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .gallery-container {
+    margin: 0 0 0 0;
+    transform: none;
+  }
+
+  .gallery-counter {
+    padding: 1rem 2rem;
+    --iconSize: 1.5rem;
+  }
+}

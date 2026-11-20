@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DDR Special Character Replacement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DDR Special Character Replacement</value>
+    </caseValues>
+    <fields>
+        <label><!-- Actual Character --></label>
+        <name>Actual_Character__c</name>
+    </fields>
+    <fields>
+        <label><!-- Junk Character --></label>
+        <name>Junk_Character__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

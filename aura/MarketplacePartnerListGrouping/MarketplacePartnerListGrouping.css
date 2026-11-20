@@ -1,0 +1,14 @@
+.THIS .separator {
+  margin-right: 3px;
+  display: inline-block;
+}
+
+@media (max-width: 1279px) {
+  .THIS a.color-dark-gray .nodeTitle {
+      color: t(white);
+  }
+  .THIS a.color-dark-gray:hover .slds-icon use,
+  .THIS a.color-dark-gray .slds-icon use {
+      fill: t(white);
+  }
+}

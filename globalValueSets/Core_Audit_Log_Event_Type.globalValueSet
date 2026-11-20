@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Account Team Audit</fullName>
+        <default>false</default>
+        <label>Account Team Audit</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Team Audit Notification</fullName>
+        <default>false</default>
+        <label>Account Team Audit Notification</label>
+    </customValue>
+    <masterLabel>Audit Log Event Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

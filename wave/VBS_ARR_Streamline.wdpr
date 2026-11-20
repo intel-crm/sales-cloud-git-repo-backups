@@ -1,0 +1,117 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OPORTUNITY_ID", "OPPORTUNITY_NM", "OPPORTUNITY_DESC_TXT", "OPPORTUNITY_STAGE_NM", "OPPORTUNITY_STAGE_MAPPING_NM", "OPPORTUNITY_AMT", "OPPORTUNITY_PROBABILITY_P", "OPPORTUNITY_CLOSE_DT", "OPPORTUNITY_OWNER_ID", "OPPORTUNITY_CONTACT_ID", "OPPORTUNITY_PRODUCT_SEGMENT_NM", "OPPORTUNITY_SALES_GROUPS_NM", "OPPORTUNITY_COVERAGE_NM", "OPPORTUNITY_AT_RISK_IND", "EXCLUDE_FROM_CONFIDENCE_IND", "STRATEGIC_OPPORTUNITY_IND", "OPPORTUNITY_FOCUS_NM", "OPPORTUNITY_VBS_STATUS_NM", "LINE_ITEM_ID", "VERTICAL_MARKET_NM", "PRODUCT_ID", "PRODUCT_FAMILY_NM", "PRODUCT_TYPE", "LINE_ITEM_NM", "AT_RISK_IND", "OPPORTUNITY_STATUS_NM", "BU_SHORT_NM", "ACCOUNT_ID", "ACCOUNT_NM", "ACCOUNT_INDUSTRY_NM", "ACCOUNT_SALES_GROUP_NM", "ACCOUNT_OWNER_ID", "PARTNER_ID", "PARTNER_OPPORTUNITY_ID", "PARTNER_NM", "PARTNER_ROLE_NM", "PARTNER_TYPE_NM", "OPPORTUNITY_OWNER_NM", "VBS_ID", "VBS_NM", "VBS_DSC", "SOAR_VBS_RENEWAL_DSC", "SOAR_STAGE_DSC", "VBS_ARR_QUARTER_DSC", "VBS_ARR_MONTH_DSC", "VBS_ARR_YEAR_DSC", "TOTAL_CONTRACT_VALUE_NBR", "PRIMARY_LAWYER_TXT", "PRIMARY_VBS_OFFERING_CATEGORY_DSC", "SOAR_VBS_DECISION_DSC", "ANNUAL_RECURRING_REVENUE_NBR", "MONTHLY_ANNUAL_RECURRING_REVENUE_NBR", "CONTRACT_LIFETIME_MONTHS_NBR", "ARR_LAST_DT", "ARR_CONTRACT_START_DT", "ARR_CONTRACT_START_DT_MONTH_TXT", "ARR_CONTRACT_START_DT_DAY_TXT", "ARR_CONTRACT_START_DT_YEAR_TXT", "LINK_REASON_DSC", "LINKED_OPPORTUNITY_NM", "OPP_VBS_TYPE_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "FACT_VBS_SOAR_ARR",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "FACT_VBS_SOAR_ARR"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "FACT VBS ARR",
+          "name" : "VBS_ARR",
+          "folderName" : "VBS"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET0", "LOAD_DATASET1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OPORTUNITY_ID" ],
+        "rightQualifier" : "Security_R",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Account.DirectTerritoryRoles.Role.Roles", "SecurityAugment.GroupMember1.GroupId", "Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "AccountTeamMember.UserId", "Account.ParentTerritoryRoles.Role.Roles", "AccountTeamMember.Security.Id", "SecurityAugment.GroupMember1.UserOrGroupId", "Security.Id", "AccountTeamMember.Security.Role.RolePath", "Security.Role.RolePath", "AccountTeamMember.Security.Role.Roles", "Security.Role.Roles", "AccountTeamMember.Security.Name", "SecurityAugment.GroupMemberRoles1.Role.Roles", "Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "Security.Name", "Group.Security.UserOrGroupId", "SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "Id" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Security_Register",
+          "name" : "Security_Register"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "FACT_VBS_SOAR_ARR",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT0" : {
+        "label" : "FACT VBS ARR",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 112.4,
+        "left" : 531.3
+      },
+      "JOIN0" : {
+        "label" : "Join 0",
+        "type" : "JOIN",
+        "top" : 113.30000000000001,
+        "left" : 252
+      },
+      "LOAD_DATASET1" : {
+        "label" : "Security_Register",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET0",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "OUTPUT0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

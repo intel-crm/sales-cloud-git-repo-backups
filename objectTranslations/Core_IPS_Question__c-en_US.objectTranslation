@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Environment Detail Question</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Environment Detail Questions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Add to Reporting --></label>
+        <name>Core_IPS_Add_to_Reporting__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environment Detail Answer Count --></label>
+        <name>Core_IPS_Answer_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- The input element to capture response --></help>
+        <label><!-- Datatype --></label>
+        <name>Core_IPS_Datatype__c</name>
+        <picklistValues>
+            <masterLabel>Multiselect Picklist</masterLabel>
+            <translation><!-- Multiselect Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Select Radio</masterLabel>
+            <translation><!-- Select Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text (255)</masterLabel>
+            <translation><!-- Text (255) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text Area (5000)</masterLabel>
+            <translation><!-- Text Area (5000) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Parent Answer --></label>
+        <name>Core_IPS_Environment_Detail_Answer__c</name>
+        <relationshipLabel><!-- Environment Detail Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Sequence in which question to be display --></help>
+        <label><!-- Order No --></label>
+        <name>Core_IPS_Order_No__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select if this question is dependent on parent question --></help>
+        <label><!-- Parent Question --></label>
+        <lookupFilter>
+            <errorMessage><!-- Only Picklist EDQ Questions can be selected as Parent Question --></errorMessage>
+        </lookupFilter>
+        <name>Core_IPS_Parent_Question__c</name>
+        <relationshipLabel><!-- Child Environment Detail Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Organization --></label>
+        <name>Core_IPS_Product_Organization__c</name>
+        <relationshipLabel><!-- Environment Detail Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Text to display for Question --></help>
+        <label><!-- Question --></label>
+        <name>Core_IPS_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting Name --></label>
+        <name>Core_IPS_Reporting_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is question mandatory --></help>
+        <label><!-- Required --></label>
+        <name>Core_IPS_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_IPS_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Survey Type --></label>
+        <name>Core_IPS_Survey_Type__c</name>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Rep</masterLabel>
+            <translation><!-- Sales Rep --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <description><!-- Used in GEC Cases --></description>
+        <label><!-- MAG Question --></label>
+        <name>Core_IPS_MAG_Question</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Used for Environment Detail Question under Support Org --></description>
+        <label><!-- Environment Detail Question --></label>
+        <name>EDQ</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Question used for Survey --></description>
+        <label><!-- Survey --></label>
+        <name>Survey</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Once set to Inactive, the Status cannot be reset to Active. This is to prevent inconsistencies in Case usage of the Environment Detail Question. --></errorMessage>
+        <name>Core_IPS_Core_Ques_Cant_Revert_to_Active</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please remove the value from Reporting Name Field or check Add to Reporting check box. --></errorMessage>
+        <name>Core_IPS_Remove_text_From_Reporting_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Enter the Reporting Name Field value. --></errorMessage>
+        <name>Core_IPS_Reporting_Field_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Environment Detail Questions that are Text can only have 1 Answer defined. --></errorMessage>
+        <name>Core_IPS_Validate_Data_Type_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Parent Question can only be selected for Environment Detail Question record type --></errorMessage>
+        <name>Core_IPS_Validate_Parent_Question</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Organization can only be selected for Environment Detail Question record type --></errorMessage>
+        <name>Core_IPS_Validate_Support_Org</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_To_Products_LEX_EnvDetailQuestion --></label>
+        <name>Add_To_Products_LEX_EnvDetailQuestion</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Add_To_Products --></label>
+        <name>Core_IPS_Add_To_Products</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Dependent_Answers --></label>
+        <name>Manage_Dependent_Answers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Dependent_Answers_LEX --></label>
+        <name>Manage_Dependent_Answers_LEX</name>
+    </webLinks>
+</CustomObjectTranslation>

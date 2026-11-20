@@ -1,0 +1,35 @@
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.lgc-bg-inverse {
+    background-color: rgb(22, 50, 92);
+}
+
+.dynamicField label {
+  font-weight: 600 !important;
+}
+/*Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area*/
+.showRequired .slds-form-element__control{
+
+  border:1px solid #cc0000;
+
+}
+.lengtherr{
+    display: block;
+    color: #cc0000;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+/*Sowmya End*/
+
+.productRequiredField{
+  display: block;
+  /* padding-top: 5px; */
+  color: #cc0000;
+  font-size: 14px;
+  margin-left: -250px;
+  position: absolute;
+  right: 190px;
+  top: 860px;
+}

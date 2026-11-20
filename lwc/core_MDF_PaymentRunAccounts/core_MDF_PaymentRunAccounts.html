@@ -1,0 +1,22 @@
+<template>
+    <div>
+    <lightning-accordion allow-multiple-sections-open class="slds-theme_default">
+<lightning-accordion-section name="A" label="Selected Accounts" class="slds-theme_shade" style = "text-decoration:none">
+ <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered">
+  <thead class="slds-assistive-text"></thead>
+  <tbody>
+    <template for:each={accountList} for:item="account" for:index="indexVar">
+      <tr key={account.Id}>
+          <td class="slds-size_1-of-6">
+              <div>
+                  {account.Name}
+              </div>
+          </td>
+          </tr>
+          </template>
+  </tbody>
+</table>
+</lightning-accordion-section>
+      </lightning-accordion>
+        </div>    
+</template>

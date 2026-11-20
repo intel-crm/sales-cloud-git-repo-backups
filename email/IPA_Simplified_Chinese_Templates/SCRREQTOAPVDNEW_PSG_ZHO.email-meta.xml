@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>PSG Licensing</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_PSG_ZHO</name>
+    <style>none</style>
+    <subject>Welcome to PSG Licensing</subject>
+    <textOnly>欢迎访问英特尔® FPGA 自助服务许可中心
+
+尊敬的 {!Contact.FirstName}：
+
+欢迎访问英特尔® FPGA 自助服务许可中心（SSLC）现在您可以查看、管理并且在必要时激活您的英特尔 PSG 软件和IP许可权利。
+SSLC 采用引导法帮助您执行基本许可权利功能。我们还提供参考视频和文档。
+
+请保存您的登录信息以方便未来使用：
+
+电子邮件地址: {!Contact.Email}
+
+您的密码应该像机密一样受到保护。在英特尔网站上使用此密码受英特尔使用条款和条件（链接来自各个网站的网页底部）约束。
+
+
+登录  licensing.intel.com  查看并管理您的英特尔® PSG 软件和 IP 许可权利。
+
+
+谢谢！
+您的英特尔® PSG SSLC 团队
+
+
+此消息作为英特尔® 可编程解决方案事业集团与您的 FPGA 软件和/或 IP许可权相关的重要业务通信发送。
+© {!$Label.PRM_CurrentYear} 英特尔公司
+英特尔公司, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.cn
+隐私条款&amp;verbar;Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

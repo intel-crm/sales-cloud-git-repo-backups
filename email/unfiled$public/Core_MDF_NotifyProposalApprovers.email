@@ -1,0 +1,65 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="{!relatedTo.Core_MDF_Account__r.Name} {!IF(relatedTo.Core_MDF_Program__c == $Label.Core_MDF_Co_GTM_Technical_program_name, 'Co-Engineering Campaign Status:', 'MDF Proposal Status:')} {!IF(AND(OR(relatedTo.Core_MDF_Last_Rejected_Level_Nm__c =='Price Reviewer',relatedTo.Core_MDF_Last_Rejected_Level_Nm__c =='Program Office Reviewer'),OR(relatedTo.Core_MDF_Completed_Approval_Level_Nm__c=='L1 Approval',relatedTo.Core_MDF_Completed_Approval_Level_Nm__c=='Program Office Reviewer'),relatedTo.Core_MDF_Approval_Stage_nm__c=='L1 Approval'),'Revision Required',CASE(relatedTo.Core_MDF_Approval_Stage_nm__c,'L1 Approval','L1 Approval Required','Program Office Reviewer','POR Approval Required','Price Reviewer','PCT Approval Required','Business Approver','Business Approval Required','L2 Regional Marketing','L2 Marketing Approval Required','L2 Regional Sales','L2 Sales Approval Required','Legal Reviewer','Legal Approval Required','L2 Approval','L2 Approval Required',''))}"
+                         relatedToType="Campaign">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <p> <span style="color: #ff0000;"><strong>Action Required</strong></span></p>
+                <p>{!$Label.Core_MDF_EmailTemp_DearIntelemployee}</p>
+                <p>{!IF(AND(relatedTo.Core_MDF_Last_Rejected_Level_Nm__c == 'Price Reviewer',relatedTo.Core_MDF_Approval_Stage_nm__c == 'L1 Approval',relatedTo.Status == 'Pending Review',relatedTo.Core_MDF_Completed_Approval_Level_Nm__c == 'L1 Approval'),$Label.Core_MDF_IPA_EmailTemp_ApprReq_PCT_L1,
+                    IF(relatedTo.Core_MDF_Program__c == $Label.Core_MDF_Co_GTM_Technical_program_name,'The following Campaign has been submitted and requires Intel review:','The following activity has been submitted and requires Intel review:'))}
+                </p>
+
+                <p><span>&nbsp; &nbsp; &nbsp; Member Name:</span> {!relatedTo.Core_MDF_Account__r.Name}</p>
+                <p>&nbsp; &nbsp; &nbsp; {!IF(relatedTo.Core_MDF_Program__c == 'CoGTM', 'Campaign Name: ', 'Proposal Name: ')} <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!relatedTo.Name}</apex:outputLink></p>
+                <p>&nbsp; &nbsp; &nbsp; Status:&nbsp;{!relatedTo.Status}</p>
+                    <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_Technical_program_name}">
+                        <p><span>&nbsp; &nbsp; &nbsp; Countries/locations:&nbsp;{!relatedTo.Core_MDF_Market__c}</span></p>
+                    </apex:outputPanel>
+                <p><span>&nbsp; &nbsp; &nbsp; Start Date:</span>
+                    <apex:outputText value=" {0, date, MMMM d','  yyyy}">
+                        <apex:param value="{!relatedTo.StartDate}"/>
+                    </apex:outputText>
+                </p>
+                <p><span>&nbsp; &nbsp; &nbsp; End Date:</span>
+                    <apex:outputText value=" {0, date, MMMM d','  yyyy}">
+                        <apex:param value="{!relatedTo.EndDate}"/>
+                    </apex:outputText>
+                </p>
+                <p><span>&nbsp; &nbsp; &nbsp; Priority:&nbsp;{!IF(relatedTo.Core_MDF_Program__c == $Label.Core_MDF_Co_GTM_Technical_program_name, relatedTo.Core_MDF_Priority__c, relatedTo.Core_MDF_IPA_Priority_nm__c)}</span></p>
+                <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c != $Label.Core_MDF_Co_GTM_Technical_program_name}">
+                    <p><span>&nbsp; &nbsp; &nbsp; Focus Area:&nbsp;{!relatedTo.Core_MDF_Focus_Area_nm__c}</span></p>
+                </apex:outputPanel>
+                <p><span>&nbsp; &nbsp; &nbsp; Budget amount:&nbsp;<apex:outputText value="{0,number,$#,##0.00}"><apex:param value="{!relatedTo.Core_MDF_Reimbursement_Amt__c}" /></apex:outputText></span></p>
+                <p><span>&nbsp; &nbsp; &nbsp; Comments:&nbsp;{!IF(relatedto.Core_MDF_Comments_Appvr_Only_txt__c != null,relatedto.Core_MDF_Comments_Appvr_Only_txt__c, "")}</span></p>
+   
+                <p>{!relatedTo.CreatedBy.Name}&nbsp;has requested your approval for the following item:<span>&nbsp;</span></p>
+                <p><apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">Click here                    
+                </apex:outputLink></p>
+                <p>Please click this link to approve or reject this record.</p>
+                <p></p>
+                <p>{!$Label.Core_MDF_Audit_Creation_Body7}</p>
+                <p>{!$Label.Core_MDF_Email_Signature}</p> 
+
+                <img src="https://intel.file.force.com/servlet/servlet.ImageServer?id=015Ho000003gyPd&oid=00Do0000000aRcf&lastMod=1720070041000" alt="Intel Logo" width="120" height="48"> </img>  
+                            
+                <div style="font-size:11px;font-family:Calibri">
+                    <p>
+                        <i> Contact
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> customer support </a>
+                            if you have additional questions.<br/><br/>
+                        </i>
+                        This message and any attachments are for the sole use of the intended recipient(s). If you are not the intended recipient, contact
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> customer support </a>
+                        immediately and confirm you have deleted all copies.<br/><br/>
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > Intel Corporation </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> Trademarks </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> Privacy Policy </a> |
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> Cookies </a>
+                    </p>                     
+                <p></p>
+                </div>
+            </body>  
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

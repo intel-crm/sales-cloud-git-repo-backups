@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c:AVG</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Net Promoter Score</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>NPS</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_86635346</developerName>
+        <masterLabel>Customerby Account</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT.NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEM LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEMS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC COMMUNICATION SYSTEMS LTD.</sourceValue>
+            </sourceValues>
+            <value>NEC Communication</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NEC INFOSYSTEMS</sourceValue>
+            </sourceValues>
+            <value>NEC INFO</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NEC PLATFORMS</sourceValue>
+            </sourceValues>
+            <value>NEC Platforms</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FUJITSU ADVANCED TECHNOLOGY LTD.</sourceValue>
+            </sourceValues>
+            <value>FATEC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FUJITSU KYUSHU NETWORK TECHNOLOGIES</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU KYUSHU NETWORK TECHNOLOGIES LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU KYUSHU NETWORK TECHNOLOGY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU KYUSYU NETWORK TECHNOLOGIES</sourceValue>
+            </sourceValues>
+            <value>QNET</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FUJITSU PFU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU PERIPHERAL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PFU</sourceValue>
+            </sourceValues>
+            <value>PFU</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FUJITSU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU GENERAL LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU I NETWORK SYSTEMS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU KANSAI CHUBU NET TECH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU LABO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU NETWORK COMMUNICATIONS INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU NETWORK TECHNOLOGY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU TOKKI SYSTEMS</sourceValue>
+            </sourceValues>
+            <value>Fujitsu</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NEC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC CORPORATION</sourceValue>
+            </sourceValues>
+            <value>NEC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
+        </chartSummaries>
+        <chartType>Line</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_86635346</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Large</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>NPS - JPRAE</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Escalated_Level__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Support_Level__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CONTACT.NAME</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Response__c.Core_IPS_Answer__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Response__c.Core_IPS_Survey_Type__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_Response__c.Core_IPS_Survey_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_Org1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-025</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Response__c.Core_IPS_Question__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>colleague</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Response__c.Core_IPS_Numeric_Answer__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>PSG-JP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>MAG,PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_86635346</field>
+        <sortByName>FORMULA1</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>CustomSummaryFormula</sortType>
+    </groupingsDown>
+    <name>End customer NPS</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseCustomEntity$Core_IPS_Response__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <endDate>2019-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
+    </timeFrameFilter>
+</Report>

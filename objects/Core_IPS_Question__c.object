@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Environment_Detail_Question_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Environment_Detail_Question_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Contains Question of Survey and Environmental Details</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>false</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>false</enableSharing>
+    <enableStreamingApi>false</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Core_IPS_Add_to_Reporting__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This field is using for external reporting like IAH as well as the IPS MSBI model.</description>
+        <label>Add to Reporting</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Answer_Count__c</fullName>
+        <label>Environment Detail Answer Count</label>
+        <summaryForeignKey>Core_IPS_Answer__c.Core_IPS_Question__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Datatype__c</fullName>
+        <description>Define the input element to capture response</description>
+        <inlineHelpText>The input element to capture response</inlineHelpText>
+        <label>Datatype</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Picklist</fullName>
+                    <default>false</default>
+                    <label>Picklist</label>
+                </value>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>false</default>
+                    <label>Text (255)</label>
+                </value>
+                <value>
+                    <fullName>Text Area</fullName>
+                    <default>false</default>
+                    <label>Text Area (5000)</label>
+                </value>
+                <value>
+                    <fullName>Select Radio</fullName>
+                    <default>false</default>
+                    <label>Select Radio</label>
+                </value>
+                <value>
+                    <fullName>Multiselect Picklist</fullName>
+                    <default>false</default>
+                    <label>Multiselect Picklist</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Environment_Detail_Answer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Parent Answer</label>
+        <referenceTo>Core_IPS_Answer__c</referenceTo>
+        <relationshipLabel>Environment Detail Questions</relationshipLabel>
+        <relationshipName>Environment_Detail_Questions</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Order_No__c</fullName>
+        <description>Sequence in which question to be display</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sequence in which question to be display</inlineHelpText>
+        <label>Order No</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Parent_Question__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Select if this question is dependent on parent question</description>
+        <inlineHelpText>Select if this question is dependent on parent question</inlineHelpText>
+        <label>Parent Question</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Only Picklist EDQ Questions can be selected as Parent Question</errorMessage>
+            <filterItems>
+                <field>Core_IPS_Question__c.Core_IPS_Datatype__c</field>
+                <operation>equals</operation>
+                <value>Picklist</value>
+            </filterItems>
+            <filterItems>
+                <field>Core_IPS_Question__c.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>EDQ</value>
+            </filterItems>
+            <filterItems>
+                <field>Core_IPS_Question__c.Core_IPS_Product_Organization__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Core_IPS_Product_Organization__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Core_IPS_Question__c</referenceTo>
+        <relationshipLabel>Child Environment Detail Questions</relationshipLabel>
+        <relationshipName>Core_IPS_Questions</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Product_Organization__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Support Org to which this question belongs</description>
+        <label>Product Organization</label>
+        <referenceTo>Core_IPS_Product_Organization__c</referenceTo>
+        <relationshipLabel>Environment Detail Questions</relationshipLabel>
+        <relationshipName>Core_IPS_Questions</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Question__c</fullName>
+        <description>Text to display for Question</description>
+        <inlineHelpText>Text to display for Question</inlineHelpText>
+        <label>Question</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Reporting_Name__c</fullName>
+        <description>This field is using for external reporting IAH/MSBI as the field name to create/use for the designated EDQ.</description>
+        <externalId>false</externalId>
+        <label>Reporting Name</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Is question mandatory</inlineHelpText>
+        <label>Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Status__c</fullName>
+        <description>Status of question either active or inactive</description>
+        <label>Status</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>true</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Survey_Type__c</fullName>
+        <description>Define the survey type, either for Customer or FAE/Sales Rep</description>
+        <label>Survey Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>Sales Rep</fullName>
+                    <default>false</default>
+                    <label>Sales Rep</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Environment Detail Question</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_000_Core_IPS_Question</fullName>
+        <columns>Core_IPS_Order_No__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Reporting_Name__c</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Datatype__c</columns>
+        <columns>Core_IPS_Add_to_Reporting__c</columns>
+        <columns>Core_IPS_Status__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPS - Org - Test Org 0</label>
+        <language>en_US</language>
+        <queue>Core_IPS_Org_000</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_001_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CC</label>
+        <queue>Core_IPS_Org_001</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_002_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CCG-SPG</label>
+        <queue>Core_IPS_Org_002</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_003_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CCD</label>
+        <queue>Core_IPS_Org_003</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_004_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CRD-WSS</label>
+        <queue>Core_IPS_Org_004</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_005_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CHD</label>
+        <queue>Core_IPS_Org_005</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_006_Core_IPS_Question</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPS - DCG</label>
+        <language>en_US</language>
+        <queue>Core_IPS_Org_006</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_007_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - EMBED</label>
+        <queue>Core_IPS_Org_007</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_008_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - DAL SDK</label>
+        <queue>Core_IPS_Org_008</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_009_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NSG</label>
+        <queue>Core_IPS_Org_009</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_010_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - PRC ADC</label>
+        <queue>Core_IPS_Org_010</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_011_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - SP</label>
+        <queue>Core_IPS_Org_011</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_012_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - HPC</label>
+        <queue>Core_IPS_Org_012</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_013_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - TSD</label>
+        <queue>Core_IPS_Org_013</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_014_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - Org - Test Org 14</label>
+        <queue>Core_IPS_Org_014</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_016_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NDG</label>
+        <queue>Core_IPS_Org_016</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_017_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - ICDG-CPEG</label>
+        <queue>Core_IPS_Org_017</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_018_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - BCP</label>
+        <queue>Core_IPS_Org_018</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_019_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - WCS</label>
+        <queue>Core_IPS_Org_019</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_020_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NGS</label>
+        <queue>Core_IPS_Org_020</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_021_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NTG PerC</label>
+        <queue>Core_IPS_Org_021</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_022_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - ADG</label>
+        <queue>Core_IPS_Org_022</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_023_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - IAGS</label>
+        <queue>Core_IPS_Org_023</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_024_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - ICS</label>
+        <queue>Core_IPS_Org_024</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_025_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - PSG</label>
+        <queue>Core_IPS_Org_025</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_026_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - IOG</label>
+        <queue>Core_IPS_Org_026</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_027_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - AXG-XCC</label>
+        <queue>Core_IPS_Org_027</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_028_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS-SMG</label>
+        <queue>Core_IPS_Org_028</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_029_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - IGT</label>
+        <queue>Core_IPS_Org_029</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Customer_Survey</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Datatype__c</columns>
+        <columns>Core_IPS_Status__c</columns>
+        <columns>Core_IPS_Order_No__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Survey_Type__c</field>
+            <operation>equals</operation>
+            <value>Customer</value>
+        </filters>
+        <label>Customer Survey</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MAG_Questions</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Datatype__c</columns>
+        <columns>Core_IPS_Order_No__c</columns>
+        <columns>Core_IPS_Environment_Detail_Answer__c</columns>
+        <columns>Core_IPS_Required__c</columns>
+        <columns>Core_IPS_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_IPS_Question__c.Core_IPS_MAG_Question</value>
+        </filters>
+        <label>MAG Questions</label>
+    </listViews>
+    <listViews>
+        <fullName>Sales_Rep_Survey</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Datatype__c</columns>
+        <columns>Core_IPS_Status__c</columns>
+        <columns>Core_IPS_Order_No__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Survey_Type__c</field>
+            <operation>equals</operation>
+            <value>Sales Rep</value>
+        </filters>
+        <label>Sales Rep Survey</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>Ques-{000000}</displayFormat>
+        <label>Question No</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Environment Detail Questions</pluralLabel>
+    <recordTypes>
+        <fullName>Core_IPS_MAG_Question</fullName>
+        <active>true</active>
+        <description>Used in GEC Cases</description>
+        <label>MAG Question</label>
+        <picklistValues>
+            <picklist>Core_IPS_Datatype__c</picklist>
+            <values>
+                <fullName>Multiselect Picklist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Picklist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Select Radio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Survey_Type__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Rep</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>EDQ</fullName>
+        <active>true</active>
+        <description>Used for Environment Detail Question under Support Org</description>
+        <label>Environment Detail Question</label>
+        <picklistValues>
+            <picklist>Core_IPS_Datatype__c</picklist>
+            <values>
+                <fullName>Multiselect Picklist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Picklist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Survey_Type__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Rep</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Survey</fullName>
+        <active>true</active>
+        <description>Question used for Survey</description>
+        <label>Survey</label>
+        <picklistValues>
+            <picklist>Core_IPS_Datatype__c</picklist>
+            <values>
+                <fullName>Picklist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Select Radio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Text Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Survey_Type__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Rep</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_IPS_Question__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Datatype__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Survey_Type__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Question__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Datatype__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Survey_Type__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Question__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Question__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Datatype__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Survey_Type__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Core_IPS_Core_Ques_Cant_Revert_to_Active</fullName>
+        <active>true</active>
+        <description>Once Environmental Details Question status has been set to Inactive, it cannot be reset to Active.</description>
+        <errorConditionFormula>AND(RecordType.DeveloperName = &quot;EDQ&quot;,  TEXT(  Core_IPS_Status__c ) = &quot;ACTIVE&quot;,
+TEXT (PRIORVALUE ( Core_IPS_Status__c )) = &quot;INACTIVE&quot;)</errorConditionFormula>
+        <errorDisplayField>Core_IPS_Status__c</errorDisplayField>
+        <errorMessage>Once set to Inactive, the Status cannot be reset to Active. This is to prevent inconsistencies in Case usage of the Environment Detail Question.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Remove_text_From_Reporting_Name</fullName>
+        <active>false</active>
+        <description>If Add to Reporting checkbox is unchecked and Reporting Name field has some value then validation rule will fire and display the error message.</description>
+        <errorConditionFormula>AND(Core_IPS_Add_to_Reporting__c == false,  NOT(ISBLANK(Core_IPS_Reporting_Name__c)))</errorConditionFormula>
+        <errorDisplayField>Core_IPS_Reporting_Name__c</errorDisplayField>
+        <errorMessage>Please remove the value from Reporting Name Field or check Add to Reporting check box.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Reporting_Field_mandatory</fullName>
+        <active>false</active>
+        <description>If Add to Reporting checkbox is checked and Reporting Name field is blank then validation rule will fire and display the error message.</description>
+        <errorConditionFormula>AND(Core_IPS_Add_to_Reporting__c == true,ISBLANK(Core_IPS_Reporting_Name__c))</errorConditionFormula>
+        <errorMessage>Please Enter the Reporting Name Field value.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Validate_Data_Type_Change</fullName>
+        <active>true</active>
+        <description>Once an Environment Detail Question record is created, the Datatype cannot be changed to prevent impact to Case display.</description>
+        <errorConditionFormula>Core_IPS_Answer_Count__c &gt; 1 &amp;&amp; ISCHANGED(Core_IPS_Datatype__c) &amp;&amp;
+ISPICKVAL(Core_IPS_Datatype__c , &apos;Text&apos;)</errorConditionFormula>
+        <errorMessage>Environment Detail Questions that are Text can only have 1 Answer defined.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Validate_Parent_Question</fullName>
+        <active>true</active>
+        <description>Parent Question can only be selected for Environment Detail Question record type</description>
+        <errorConditionFormula>RecordType.DeveloperName != &apos;EDQ&apos; &amp;&amp;
+ Core_IPS_Parent_Question__c != null</errorConditionFormula>
+        <errorMessage>Parent Question can only be selected for Environment Detail Question record type</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Validate_Support_Org</fullName>
+        <active>true</active>
+        <description>If Environmental Detail Question record type is not Environment Detail Question and Support Org is selected then deisplay error</description>
+        <errorConditionFormula>RecordType.DeveloperName != &apos;EDQ&apos; &amp;&amp; 
+Core_IPS_Product_Organization__c!=null</errorConditionFormula>
+        <errorMessage>Product Organization can only be selected for Environment Detail Question record type</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_To_Products_LEX_EnvDetailQuestion</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Add To Products</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/lightning/n/Core_IPS_Add_To_Products_LEX?c__recordId={!Core_IPS_Question__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_IPS_Add_To_Products</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add to Products</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_IPS_addEnvToProducts</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Manage_Dependent_Answers</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Manage Dependent Answers</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Core_IPS_AddDependentAnswers?qid={!Core_IPS_Question__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Manage_Dependent_Answers_LEX</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Manage Dependent Answers LEX</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/lightning/n/Manage_Dependent_Answers_LEX?c__recordId={!Core_IPS_Question__c.Id}</url>
+    </webLinks>
+</CustomObject>

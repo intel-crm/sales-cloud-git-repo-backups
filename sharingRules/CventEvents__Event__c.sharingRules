@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Cvent_Intel_CW_Users_Event</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all the Cvent Events to all Intel CW Users.</description>
+        <label>Cvent - Intel CW Users - Event</label>
+        <sharedTo>
+            <group>Core_All_Contingent_Workers_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Cvent_Intel_Users_Event</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all the Cvent Events to all Intel Users.</description>
+        <label>Cvent - Intel Users - Event</label>
+        <sharedTo>
+            <group>Core_All_Employees_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Expert Engagement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Expert Engagements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Engagement Date --></label>
+        <name>Core_Engagement_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expert Engagement Region --></label>
+        <name>Core_Expert_Engagement_Geo__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HQ</masterLabel>
+            <translation><!-- HQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Expert Engagement Type --></label>
+        <name>Core_Expert_Engagement_Type__c</name>
+        <picklistValues>
+            <masterLabel>5GIC</masterLabel>
+            <translation><!-- 5GIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A2E-Access to Expert Program</masterLabel>
+            <translation><!-- A2E-Access to Expert Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CQ&amp;R</masterLabel>
+            <translation><!-- CQ&amp;R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG/NPG Front End Process Resource</masterLabel>
+            <translation><!-- DCG/NPG Front End Process Resource --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DPGS Labs</masterLabel>
+            <translation><!-- DPGS Labs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DesignInTools.Intel.com</masterLabel>
+            <translation><!-- DesignInTools.Intel.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EBC-Executive Briefing Center</masterLabel>
+            <translation><!-- EBC-Executive Briefing Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Lab</masterLabel>
+            <translation><!-- IoT Lab --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Chain@Intel</masterLabel>
+            <translation><!-- Supply Chain@Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>l39-EMEA</masterLabel>
+            <translation><!-- l39-EMEA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Expert Name --></label>
+        <name>Core_Expert_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback/ Comments --></label>
+        <name>Core_Feedback_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interaction Type --></label>
+        <name>Core_Interaction_Type__c</name>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Person</masterLabel>
+            <translation><!-- In Person --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Conference</masterLabel>
+            <translation><!-- Video Conference --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opportunity_Name__c</name>
+        <relationshipLabel><!-- Expert Engagements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rate Engagement --></label>
+        <name>Core_Rate_Engagement__c</name>
+        <picklistValues>
+            <masterLabel>1 - Poor</masterLabel>
+            <translation><!-- 1 - Poor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 - Fair</masterLabel>
+            <translation><!-- 2 - Fair --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 - Good</masterLabel>
+            <translation><!-- 3 - Good --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 - Very Good</masterLabel>
+            <translation><!-- 4 - Very Good --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Excellent</masterLabel>
+            <translation><!-- 5 - Excellent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Expert Engagement Country/Region --></label>
+        <name>Expert_Engagement_Country__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Expert Engagement Region field is required for Engagement Type &quot;IoT Lab&quot; --></errorMessage>
+        <name>Core_Engagement_Type_pick_Geo</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expert Engagement Region field is required for Engagement Type &quot;CQ&amp;R&quot; --></errorMessage>
+        <name>Core_ExpertEngagmentType_CQR</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_New_IT_Intel_Engagement --></label>
+        <name>Core_New_IT_Intel_Engagement</name>
+    </webLinks>
+</CustomObjectTranslation>

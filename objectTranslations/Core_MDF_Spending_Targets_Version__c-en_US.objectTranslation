@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Spending Targets Version</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Spending Targets Versions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Core_MDF_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCF Top Accounts Report --></label>
+        <name>Core_MDF_CCF_Top_Accounts_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_MDF_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DCF Top Accounts Report --></label>
+        <name>Core_MDF_DCF_Top_Accounts_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Top Accounts Report --></label>
+        <name>Core_MDF_IPA_Top_Accounts_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Accounts Report --></label>
+        <name>Core_MDF_Other_Accounts_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets --></label>
+        <name>Core_MDF_Spending_Targets__c</name>
+        <relationshipLabel><!-- Spending Targets Versions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Top Accounts Report --></label>
+        <name>Core_MDF_Top_Accounts_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Version --></label>
+        <name>Core_MDF_Version_nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

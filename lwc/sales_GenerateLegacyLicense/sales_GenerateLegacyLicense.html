@@ -1,0 +1,27 @@
+<template>
+ <lightning-record-edit-form id="admnForm" object-api-name="Sales_Host__c" layout-type="compact"  title={label.Sales_Legacylic}>      
+<lightning-card title={label.legacyLicenseHeader} icon-name="standard:form">
+    <lightning-messages>  
+    </lightning-messages>  
+            
+    <lightning-layout>
+        <lightning-layout-item>{label.WelcomeLabel}
+        <label class="slds-float_left slds-p-top_medium" for="computerId">&nbsp;{label.legacylicenseheading}
+            <lightning-formatted-url label={label.Sales_queslegacy} value={label.computerIdURL} target="_blank"></lightning-formatted-url>
+             {label.Sales_legacyurl}
+        </label>
+        </lightning-layout-item>
+    </lightning-layout>
+
+<lightning-layout verticalalign="end" class="slds-p-around_xxx-small">
+    <lightning-layout-item padding="around-small" size="5" flexibility="auto">
+        <lightning-input-field id="computerId" field-name="Name" variant="label-hidden" onchange={handleInputFieldChange} ></lightning-input-field>  
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small" >            
+        <lightning-button name={label.Sales_getlegacylic} label={label.Sales_getlegacylic} variant="brand" onclick={handleComputer}></lightning-button>
+    </lightning-layout-item>
+</lightning-layout>
+</lightning-card>
+</lightning-record-edit-form>
+</template>

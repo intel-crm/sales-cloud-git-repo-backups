@@ -1,0 +1,30 @@
+<aura:documentation>
+	<aura:description>
+    <p>Product Card Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/09/2019</p>
+    <p>CurrentVersion: 1.6</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.6</p>
+		<p>Batch 3 updates</p>
+		<p>1.44</p>
+		<p>Made Title and Image a link</p>
+		<p>1.4</p>
+		<p>Bug Fix</p>
+		<p>1.2</p>
+		<p>Card Type: Added option to display descriptions on card display</p>
+		<p>List Type: Removed 3rd column if Add to compare and show attributes are false</p>
+
+		<p>1.1</p>
+		<p>Moved Add to Compare Label to within ISG_CompareCheckbox</p>
+		<p>Added option to not display attributes</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

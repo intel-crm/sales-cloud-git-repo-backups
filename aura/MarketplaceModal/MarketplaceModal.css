@@ -1,0 +1,131 @@
+.THIS.fitToContent > .slds-modal > .slds-modal__container {
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    height: auto;
+}
+
+.THIS.fitToContent > .slds-modal > .slds-modal__content {
+    height: auto;
+    width: auto;
+    overflow: visible;
+}
+
+.THIS.fitToContent a.close {
+    /* why do we need this? */
+    z-index: 1;
+}
+
+.THIS a.close {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.THIS > .slds-modal {
+    position: absolute;
+}
+
+.THIS a.close .slds-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.THIS a.close .slds-icon use {
+    fill: t(white);
+}
+
+.THIS > .slds-modal > .slds-modal__container > .slds-modal__header {
+    background-color: t(darkBlue);
+    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v3.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+}
+
+
+.THIS > .slds-modal > .slds-modal__container > .slds-modal__header h2 {
+    color: t(white);
+    font-size: 40px;
+}
+
+.THIS > .slds-modal > .slds-modal__container > .slds-modal__content {
+    background-color: t(white);
+    position: relative;
+    scroll-behavior: smooth;
+    height: calc(80vh - 80px);
+    overflow: auto;
+}
+
+.THIS > .slds-modal > .slds-modal__container {
+    display: block;
+    height: 80vh;
+    padding: 0;
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    overflow:visible;
+    z-index: 1000;
+    transition: 0.3s ease-out;
+    transform: translate(0);
+    max-width: unset;
+    min-width: unset;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .THIS > .slds-modal > .slds-modal__container > .slds-modal__header {
+        background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v3.jpg');
+    }
+
+    .THIS.slimMobileHeader > .slds-modal > .slds-modal__container > .slds-modal__header {
+        height: t(intelHeaderHeightMobile);
+        background: t(blue);
+        background-image: none !important;
+        padding: 10px;
+    }
+
+    .THIS.slimMobileHeader > .slds-modal > .slds-modal__container > .slds-modal__header h2 {
+        font-size: 26px;
+        line-height: 30px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-family: inherit;
+        width: calc(100% - 22px);
+    }
+
+    .THIS > .slds-modal > .slds-modal__container > .slds-modal__header a.close {
+        top: 8px;
+        right: 8px;
+        transform: none;
+    }
+
+    .THIS .lockNotification, .THIS .storefront-submit-disclaimer {
+        padding: 20px 0;
+    }
+
+    .THIS > .slds-modal > .slds-modal__container {
+        height: 100vh;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        top: 0;
+        padding: 0;
+    }
+
+    .THIS > .slds-modal > .slds-modal__container > .slds-modal__content {
+        height: 100%;
+    }
+
+}
+@media only screen and (min-width: 768px) {
+    .THIS > .slds-modal > .slds-modal__container > .slds-modal__content,
+    .THIS > .slds-modal > .slds-modal__container > .slds-modal__header {
+        width: 80vw;
+    }
+}

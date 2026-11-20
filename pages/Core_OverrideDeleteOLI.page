@@ -1,0 +1,25 @@
+<apex:page standardController="OpportunityLineItem"  extensions="Core_OverrideDeleteOLICtrl" lightningStylesheets="true" action="{!checkForDelete}">
+    <apex:pagemessages />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="bottom">
+            <apex:outputPanel rendered="{!isProceedEnable}">
+                
+                <apex:actionstatus id="pageStatus">
+                    <apex:facet name="stop">                  
+                        <apex:commandbutton action="{!proceed}" disabled="false" rerender="pageStatus" status="pageStatus" value="Proceed">
+                        </apex:commandbutton></apex:facet>
+                    <apex:facet name="start">
+                        <apex:commandbutton disabled="true" status="pageStatus" value="Saving...">
+                        </apex:commandbutton></apex:facet>
+                </apex:actionstatus>
+                
+            </apex:outputPanel>
+            </apex:pageBlockButtons>
+            <apex:pageBlockButtons location="bottom">  
+                <apex:commandButton value="Cancel" action="{!back}" status="pageStatus"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

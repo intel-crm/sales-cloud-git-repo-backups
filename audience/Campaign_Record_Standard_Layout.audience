@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>Campaign Record Standard Layout</audienceName>
+    <container>Partnercenter Unified Community</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <entityField>RecordType.DeveloperName</entityField>
+                <entityType>Campaign</entityType>
+                <fieldValue>Core_MDF_Intel_Partner_Alliance</fieldValue>
+            </criterionValue>
+            <operator>NotEqual</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>RecordType.DeveloperName</entityField>
+                <entityType>Campaign</entityType>
+                <fieldValue>Core_MDF_Channel_MDF</fieldValue>
+            </criterionValue>
+            <operator>NotEqual</operator>
+            <type>FieldBased</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>bb31e3b1-482a-4a92-8d2a-082b89ec690c</groupName>
+            <priority>2</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Campaign_Detail_Campaign_Standard_Detail_Page</targetValue>
+        </target>
+    </targets>
+</Audience>

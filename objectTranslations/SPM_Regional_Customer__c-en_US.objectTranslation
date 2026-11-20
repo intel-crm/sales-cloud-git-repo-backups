@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Regional View</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Regional View</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is Active Planning Period --></label>
+        <name>CRM_CST_Is_Active_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Inactive Planning Period --></label>
+        <name>CRM_CST_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planning Period --></label>
+        <name>Core_Planning_Period__c</name>
+        <relationshipLabel><!-- Regional View --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Starting Stage --></label>
+        <name>Core_Starting_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region_Formula__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>Stage__c</name>
+        <picklistValues>
+            <masterLabel>Country Manager</masterLabel>
+            <translation><!-- Country Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DR</masterLabel>
+            <translation><!-- DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GM</masterLabel>
+            <translation><!-- GM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP</masterLabel>
+            <translation><!-- VP --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to move the stages. Please contact your regional admins. --></errorMessage>
+        <name>Check_PS_for_moving_stage_forward</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot change the stage back. --></errorMessage>
+        <name>Prevent_stage_to_move_back</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>PCC Deal Reg ASMO</name>
+    <queueMembers>
+        <users>
+            <user>test.deal.reg.salesdesk.user@intel.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_Design_Registration__c</sobjectType>
+    </queueSobject>
+</Queue>

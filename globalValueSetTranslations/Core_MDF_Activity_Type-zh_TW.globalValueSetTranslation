@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Affiliate/ Referral Programs</masterLabel>
+        <translation><!-- Affiliate/ Referral Programs --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner Ad</masterLabel>
+        <translation><!-- Banner Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner/Display Ad</masterLabel>
+        <translation>橫幅/展示型廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Benchmarking</masterLabel>
+        <translation>評測基準</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Benchmarks</masterLabel>
+        <translation>評測基準</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Billboard/Transit</masterLabel>
+        <translation>看板／大眾運輸</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Bundle Offer</masterLabel>
+        <translation>買家──搭售方案</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Other</masterLabel>
+        <translation>買家－其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Reward/Frequency</masterLabel>
+        <translation>買家－獎勵/頻率</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Sweepstakes</masterLabel>
+        <translation>買家－抽獎</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Case Study</masterLabel>
+        <translation>個案研究</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Catalog/Brochure</masterLabel>
+        <translation>目錄/摺頁</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Online Display</masterLabel>
+        <translation>通路夥伴網站線上顯示</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Owned Event</masterLabel>
+        <translation>通路夥伴所屬活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Participation in Third-Party Event</masterLabel>
+        <translation>通路夥伴參與第三方廠商主辦的活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Website Online Ad</masterLabel>
+        <translation>通路夥伴網頁廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cinema</masterLabel>
+        <translation>電影院</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud/Platform Trial</masterLabel>
+        <translation>雲端/平台試用</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collateral</masterLabel>
+        <translation>文宣品</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collateral - Other</masterLabel>
+        <translation>推廣品 - 其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content</masterLabel>
+        <translation>內容</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content Creation</masterLabel>
+        <translation>內容創作</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deal Investment</masterLabel>
+        <translation>交易投資</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demo Hardware</masterLabel>
+        <translation>展示硬體</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demo Hardware/Cloud Instance</masterLabel>
+        <translation>示範硬體／雲端範例</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Video Screen</masterLabel>
+        <translation>數位影像螢幕</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Direct Mail</masterLabel>
+        <translation>直接郵遞廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Display/Video Ad</masterLabel>
+        <translation>展示型/視頻廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EcosystemPartner.com</masterLabel>
+        <translation><!-- EcosystemPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Email</masterLabel>
+        <translation>電子信箱</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Engineering</masterLabel>
+        <translation><!-- Engineering --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Graphic Ad</masterLabel>
+        <translation>平面廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In store Point of Sale - IPOS</masterLabel>
+        <translation><!-- In store Point of Sale - IPOS --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Store Promotion</masterLabel>
+        <translation>店內促銷</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IndustryPartner.com</masterLabel>
+        <translation><!-- IndustryPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insert/Outsert/Flyer</masterLabel>
+        <translation>插頁/折頁/傳單</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intelligent Point-of-Sale (iPOS)</masterLabel>
+        <translation><!-- Intelligent Point-of-Sale (iPOS) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Joint Engineering/Optimization</masterLabel>
+        <translation>聯合工程/最佳化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Joint Event</masterLabel>
+        <translation>聯合活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation>開發客戶</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Nurturing</masterLabel>
+        <translation>培養潛在客戶</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDF Recepient - Owned</masterLabel>
+        <translation><!-- MDF Recepient - Owned --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDF Recipient Demonstrations (External)</masterLabel>
+        <translation><!-- MDF Recipient Demonstrations (External) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Magazine and Newspaper</masterLabel>
+        <translation><!-- Magazine and Newspaper --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Magazine/Newspaper</masterLabel>
+        <translation>雜誌／報紙</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Event</masterLabel>
+        <translation>成員活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Owned Event</masterLabel>
+        <translation>成員所屬活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Participation in Third-Party Event</masterLabel>
+        <translation>成員參與協力廠商主辦的活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Website Online Display</masterLabel>
+        <translation>成員網站線上顯示</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member.com</masterLabel>
+        <translation><!-- Member.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Migration</masterLabel>
+        <translation>移轉</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Newsletter</masterLabel>
+        <translation><!-- Newsletter --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NonPartner.com</masterLabel>
+        <translation><!-- NonPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Bundle</masterLabel>
+        <translation>報價 - 捆綁包</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Contest</masterLabel>
+        <translation>優惠 - 競賽</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Other</masterLabel>
+        <translation>報價 - 其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Rewards</masterLabel>
+        <translation>優惠-獎勵</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Sweepstakes</masterLabel>
+        <translation>報價 - 抽獎活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Target</masterLabel>
+        <translation>優惠 - 目標</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Ad - Retargeting Banner Ad</masterLabel>
+        <translation><!-- Online Ad - Retargeting Banner Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Display</masterLabel>
+        <translation>線上顯示</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Marketing</masterLabel>
+        <translation><!-- Online Marketing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Video Spot</masterLabel>
+        <translation>線上影片插播</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Audio)</masterLabel>
+        <translation>其他（音訊）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Broadcast)</masterLabel>
+        <translation>其他（廣播）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Digital)</masterLabel>
+        <translation>其他（數位）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Event)</masterLabel>
+        <translation>其他（活動）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (OOH)</masterLabel>
+        <translation>其他（戶外廣告）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Out Of Home)</masterLabel>
+        <translation>其他（戶外廣告）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Print)</masterLabel>
+        <translation>其他（平面廣告）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Production)</masterLabel>
+        <translation>其他（生產）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Sales Readiness)</masterLabel>
+        <translation>其他（銷售整備）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Tech Exploration)</masterLabel>
+        <translation>其他（技術探索）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Technical Sales)</masterLabel>
+        <translation>其他（技術銷售）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Video)</masterLabel>
+        <translation>其他（影片）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out-of-Store Promotion</masterLabel>
+        <translation>店外促銷</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Outcome-Based</masterLabel>
+        <translation>基於結果</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Personnel</masterLabel>
+        <translation>人員</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Podcast</masterLabel>
+        <translation>播客</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Poster/Sign/Banner</masterLabel>
+        <translation>海報/標牌/橫幅</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion</masterLabel>
+        <translation>促銷</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion - Non-Retail</masterLabel>
+        <translation>促銷 - 非零售</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion - Retail</masterLabel>
+        <translation>促銷 - 零售</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Proof of Concept</masterLabel>
+        <translation>概念性驗證</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio</masterLabel>
+        <translation>電台</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Ad - out of store</masterLabel>
+        <translation><!-- Radio Ad - out of store --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Contest</masterLabel>
+        <translation>SPIF - 競賽</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Meeting Target</masterLabel>
+        <translation><!-- SPIF - Meeting Target --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Other</masterLabel>
+        <translation>SPIF - 其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Target</masterLabel>
+        <translation>SPIF - 目標</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Volume</masterLabel>
+        <translation>SPIF - 體積</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Event</masterLabel>
+        <translation>銷售活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Ad</masterLabel>
+        <translation>搜索（SEM）廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Graphic Ad</masterLabel>
+        <translation>搜索（SEM）圖形廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Text Ad</masterLabel>
+        <translation>搜尋（SEM）文字廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+        <translation><!-- Search Engine Marketing (SEM) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seed Unit</masterLabel>
+        <translation>種子機型</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Contest SPIF</masterLabel>
+        <translation>賣家－競賽 SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Other</masterLabel>
+        <translation>賣家－其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Per Instance SPIF</masterLabel>
+        <translation>銷售商 - 每個實例 SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Per Unit SPIF</masterLabel>
+        <translation>賣家－每單位 SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Target SPIF</masterLabel>
+        <translation>賣家－目標 SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Ad</masterLabel>
+        <translation>社交廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Graphic Ad</masterLabel>
+        <translation>社交圖形廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Online Display</masterLabel>
+        <translation>線上社群顯示</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Post</masterLabel>
+        <translation>社群媒體貼文</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Text Ad</masterLabel>
+        <translation>社交文字廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Video Ad</masterLabel>
+        <translation>社交視頻廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Development</masterLabel>
+        <translation>解決方案開發</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Streaming</masterLabel>
+        <translation>直播</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>System Demo</masterLabel>
+        <translation>系統演示</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TV</masterLabel>
+        <translation>電視</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telemarketing</masterLabel>
+        <translation>電話行銷</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Television</masterLabel>
+        <translation>電視</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Text Ad</masterLabel>
+        <translation>文字廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Third Party Event</masterLabel>
+        <translation>第三方活動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Third-party.com</masterLabel>
+        <translation><!-- Third-party.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Blog Post</masterLabel>
+        <translation><!-- Thirdparty.com - Blog Post --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Retargeting</masterLabel>
+        <translation><!-- Thirdparty.com - Retargeting --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - SEM</masterLabel>
+        <translation><!-- Thirdparty.com - SEM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Social Post</masterLabel>
+        <translation><!-- Thirdparty.com - Social Post --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training Incentive</masterLabel>
+        <translation>培訓獎勵</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training/Meeting</masterLabel>
+        <translation>訓練／會議</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Trial Instance</masterLabel>
+        <translation>試用實例</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video Ad</masterLabel>
+        <translation>影片廣告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video Screen</masterLabel>
+        <translation>影片螢幕</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Content</masterLabel>
+        <translation>網站內容</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Page</masterLabel>
+        <translation>網頁</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>iREP</masterLabel>
+        <translation><!-- iREP --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

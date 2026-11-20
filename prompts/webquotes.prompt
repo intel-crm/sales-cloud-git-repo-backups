@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Linking Webquotes</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/linking-webquotes-with-opportunities/</actionButtonLink>
+        <body>&lt;p&gt;Linking WebQuotes to opportunities allows you to view WebQuote details and status from the opportunity, such as discounted pricing.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1.&amp;nbsp;Open the opportunity and click &lt;strong&gt;Opportunity Support.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;2.&amp;nbsp;From the Opportunity Support window, select &lt;strong&gt;Create WebQuote&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;The WebQuote tool will open and the &lt;em&gt;Salesforce Opp ID&lt;/em&gt; field will auto-populate with the &lt;em&gt;Opportunity ID&lt;/em&gt;. Complete the form and click the Submit button.&amp;nbsp;Once submitted and approved, the WebQuote detail (URL) is provided in &lt;strong&gt;Sales Support&lt;/strong&gt; tab, in the &lt;em&gt;Related WebQuote&lt;/em&gt; section.&amp;nbsp;The Webquote status and the discounted price will be published within the opportunity.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Training for Linking WebQuotes</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Linking Webquotes</masterLabel>
+        <publishedDate>2024-02-02</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2024-02-01</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Linking WebQuotes to Opportunities</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities Editing in Grid View</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/opportunity-management-grid-view/</actionButtonLink>
+        <body>&lt;p&gt;When you need to edit or update more than one Opportunity at a time, using the Opportunity Management grid view saves time by consolidating your opportunities onto one page.&amp;nbsp;Use the App Launcher to open the &lt;strong&gt;Opportunity Managemen&lt;/strong&gt;t app. When the page opens, you’ll notice that data is consolidated based on tab content.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Editing in Grid View:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;The layout for each tab differs slightly based on the content within. To navigate, either use your mouse to choose a specific field or tab through and jump to open fields available for editing.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Choose the tab you want to process changes.&lt;/li&gt;&lt;li&gt;Navigate to the line item or field that requires an update. NOTE:&amp;nbsp;Some of the dropdown menu fields allow for multiple selections by holding down the CTRL button on your keyboard.&lt;/li&gt;&lt;li&gt;Move (with mouse or tab) to the next field&lt;strong&gt; &lt;/strong&gt;that needs to be updated.&lt;/li&gt;&lt;li&gt;When all updates have been processed on that tab, click &lt;strong&gt;Save &lt;/strong&gt;to save your changes.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Understanding how to &lt;a href=&quot;https://salescrm.intel.com/training-and-help/opportunity-management/opportunity-mgmt-grid-view/#LEXfilteringgridview&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;filter your Grid View&lt;/a&gt; can be helpful to process multiple updates.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Opportunities Editing in Grid View</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities Editing in Grid View</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Editing in Grid View</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327551453112</videoLink>
+    </promptVersions>
+</Prompt>

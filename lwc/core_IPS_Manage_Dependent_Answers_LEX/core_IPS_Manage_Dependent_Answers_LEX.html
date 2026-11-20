@@ -1,0 +1,168 @@
+<template>
+    <template if:false={ShowInsufficientAccess}>
+        <lightning-card>
+            <div if:true={showParentAnswerData}>
+                <div if:true={showData}>
+                    <div if:true={showChilData}>
+                        <div class="slds-p-around_small" style="background-color:white;">
+                            <div class="sslds-p-around_small"
+                                style="background-color:rgb(236, 243, 246); padding-left: 20px;">
+                                <h1 style="color:black; font-size:1.5rem;"><b>Select Dependent Answers</b></h1>
+                            </div>
+                            <div class="slds-p-around_small" style="background-color:rgb(236, 239, 240); ">
+                                <div class="slds-form-element slds-form-element_horizontal">
+                                    <b><label class="slds-form-element__label" for="horizontal-input-id-01">Parent
+                                            Question</label></b>
+                                    <div class="slds-form-element__control">
+                                        <input type="text" id="horizontal-input-id-01" value={Core_IPS_Question_Name}
+                                            class="slds-input" readonly />
+                                    </div>
+                                </div>
+
+                                <div class="slds-form-element slds-form-element_horizontal">
+                                    <b><label class="slds-form-element__label" for="horizontal-input-id-02">Parent
+                                            Answer</label></b>
+                                    <div class="slds-form-element__control">
+                                        <lightning-combobox id="horizontal-input-id-02" name="EnvDetailAnswer" label=""
+                                            value={value} options={answerOptions} onchange={handleparentAnswerChnage}>
+                                        </lightning-combobox>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <template for:each={childQuestionOptions} for:item="childQuestionOption">
+                                <div key={childQuestionOption.value} class="slds-p-around_small"
+                                    style=" background-color:rgb(233, 237, 238); ">
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <b><label class="slds-form-element__label"
+                                                for="horizontal-input-id-03">Dependent
+                                                Questions</label></b>
+                                        <div class="slds-form-element__control">
+
+                                            <input type="text" value={childQuestionOption.label} class="slds-input"
+                                                readonly />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div key={childQuestionOption.value} class="slds-p-around_small"
+                                    style=" background-color:rgb(229, 233, 235);">
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <b><label class="slds-form-element__label"
+                                                for="horizontal-input-id-04">Dependent
+                                                Answers</label></b>
+                                        <div class="slds-form-element__control">
+                                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                                <thead>
+                                                    <tr class="slds-line-height_reset slds-p-around_x-small">
+
+                                                        <th class="" style="width: 10px;" scope="col">
+                                                            <div class="slds-truncate" title="">
+
+                                                            </div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate"
+                                                                title="Environment Detail Answer">
+                                                                Environment Detail Answer
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <template for:each={childQuestionOption.childQuestions}
+                                                        for:item="item">
+                                                        <tr key={item.Id}>
+
+                                                            <td>
+                                                                <div class="slds-truncate">
+                                                                    <lightning-input type="checkbox" value={item.Id}
+                                                                        checked={item.parentAnswer}
+                                                                        disabled={item.isDisabled}
+                                                                        onchange={onchangeLineItems}>
+                                                                    </lightning-input>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="slds-truncate" title={item.name}>{item.Name}
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+
+
+
+
+                            <div class="slds-align_absolute-center" style="background-color:rgb(235, 240, 242);">
+                                <lightning-button label="Save" variant="brand" onclick={handleQuickSave}>
+                                </lightning-button>&nbsp;&nbsp;&nbsp;
+                                <lightning-button label="Save & Return " variant="brand" onclick={handleSave}>
+                                </lightning-button>&nbsp;&nbsp;&nbsp;
+                                <lightning-button label="Cancel" variant="brand"
+                                    onclick={exitAction}></lightning-button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div if:false={showParentAnswerData}>
+                <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                    <h1><b>No Parent Answer found !!</b></h1>
+                </div> <br />
+                <div class="slds-align_absolute-center">
+                    <lightning-button label="Back" variant="brand" onclick={exitAction}></lightning-button>
+                </div>
+            </div>
+
+            <div if:true={showParentAnswerData}>
+                <div if:false={showData}>
+                    <div if:false={showChilData}>
+                        <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                            <h1><b>No dependent Questions found !!</b></h1>
+                        </div> <br />
+                        <div class="slds-align_absolute-center">
+                            <lightning-button label="Back" variant="brand" onclick={exitAction}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div if:true={showParentAnswerData}>
+                <div if:true={showData}>
+                    <div if:false={showChilData}>
+                        <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                            <h1><b>No Child Answer found !!</b></h1>
+                        </div> <br />
+                        <div class="slds-align_absolute-center">
+                            <lightning-button label="Back" variant="brand" onclick={exitAction}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+    <template if:true={ShowInsufficientAccess}>
+        <lightning-card class="slds-p-around_medium">
+        <h1><b style="font-size: 20px;">Insufficient Privileges</b></h1></br>
+        <div class="slds-text-heading_small">
+
+            <p>You do not have the level of access necessary to perform the operation you requested. Please contact the
+                owner of the record or your administrator if access is necessary. For more information, <a
+                    href="https://help.salesforce.com/s/login/?startURL=%2Fapex%2Fhtdoor%3Floc%3Dhelp%26target%3Dadmin_insufficient_privileges_flowchart.htm%26language%3Den_US%26release%3D236.18.1%26instance%3DCS92%26showSplash%3Dtrue&ec=302&inst=Hx"
+                    target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p>
+
+        </div>
+    </lightning-card>
+    </template>
+</template>

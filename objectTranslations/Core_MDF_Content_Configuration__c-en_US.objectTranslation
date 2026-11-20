@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Content Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Content Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Core_MDF_Category_nm__c</name>
+        <picklistValues>
+            <masterLabel>Section Header</masterLabel>
+            <translation><!-- Section Header --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section Line Item</masterLabel>
+            <translation><!-- Section Line Item --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section SubHeader</masterLabel>
+            <translation><!-- Section SubHeader --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Content Help Text --></label>
+        <name>Core_MDF_Content_HelpText_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Label --></label>
+        <name>Core_MDF_Content_Label_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content URL --></label>
+        <name>Core_MDF_Content_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- German HelpText Trans --></label>
+        <name>Core_MDF_HelpText_de_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Mex HelpText Trans --></label>
+        <name>Core_MDF_HelpText_es_MX_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish HelpText Trans --></label>
+        <name>Core_MDF_HelpText_es_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- French HelpText Trans --></label>
+        <name>Core_MDF_HelpText_fr_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Italian HelpText Trans --></label>
+        <name>Core_MDF_HelpText_it_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japnese HelpText Trans --></label>
+        <name>Core_MDF_HelpText_ja_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Korean HelpText Trans --></label>
+        <name>Core_MDF_HelpText_ko_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portugese HelpText Trans --></label>
+        <name>Core_MDF_HelpText_pt_BR_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russian HelpText Trans --></label>
+        <name>Core_MDF_HelpText_ru_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Sim HelpText Trans --></label>
+        <name>Core_MDF_HelpText_zh_CN_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Trad HelpText Trans --></label>
+        <name>Core_MDF_HelpText_zh_TW_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Icon URL --></label>
+        <name>Core_MDF_Icon_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Icon required ? --></label>
+        <name>Core_MDF_Is_Icon_Required_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- German Label Trans --></label>
+        <name>Core_MDF_Label_de_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Mex Label Trans --></label>
+        <name>Core_MDF_Label_es_MX_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Label Trans --></label>
+        <name>Core_MDF_Label_es_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- French Label Trans --></label>
+        <name>Core_MDF_Label_fr_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Italian Label Trans --></label>
+        <name>Core_MDF_Label_it_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japnese Label Trans --></label>
+        <name>Core_MDF_Label_ja_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Korean Label Trans --></label>
+        <name>Core_MDF_Label_ko_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portugese Label Trans --></label>
+        <name>Core_MDF_Label_pt_BR_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russian Label Trans --></label>
+        <name>Core_MDF_Label_ru_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Sim Label Trans --></label>
+        <name>Core_MDF_Label_zh_CN_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Trad Label Trans --></label>
+        <name>Core_MDF_Label_zh_TW_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Content Confirguration --></label>
+        <name>Core_MDF_Parent_Content_Config_Id__c</name>
+        <relationshipLabel><!-- Content Configurations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Section Code --></label>
+        <name>Core_MDF_Section_Code_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Order --></label>
+        <name>Core_MDF_Sort_Order_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Style --></label>
+        <name>Core_MDF_Style_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- German URL Trans --></label>
+        <name>Core_MDF_de_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Mex URL Trans --></label>
+        <name>Core_MDF_es_MX_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish URL Trans --></label>
+        <name>Core_MDF_es_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- French URL Trans --></label>
+        <name>Core_MDF_fr_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>Core_MDF_isActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Italian URL Trans --></label>
+        <name>Core_MDF_it_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japnese URL Trans --></label>
+        <name>Core_MDF_ja_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Korean URL Trans --></label>
+        <name>Core_MDF_ko_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portugese URL Trans --></label>
+        <name>Core_MDF_pt_BR_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- rowspan --></label>
+        <name>Core_MDF_rowspan_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russian URL Trans --></label>
+        <name>Core_MDF_ru_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Sim URL Trans --></label>
+        <name>Core_MDF_zh_CN_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Trad URL Trans --></label>
+        <name>Core_MDF_zh_TW_URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

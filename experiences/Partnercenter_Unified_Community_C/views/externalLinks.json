@@ -1,0 +1,170 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "beeb4821-aaf3-4554-b4c3-e9ec2c6d593b",
+  "label" : "External Links",
+  "regions" : [ {
+    "id" : "f1b8d192-be22-47c9-b06e-c9046fc58433",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "target" : "New Window"
+      },
+      "componentName" : "c:PartnerCenter_Redirect",
+      "id" : "77bd1a79-2320-4a5f-9a5a-02fcf10f19f5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "79f80b11-762c-4fef-98a0-35394e274b3a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d4f79ff3-f811-4d85-83cb-31b9320ca5d3",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Program Support"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "dcc9c2a6-c7dc-43e6-9394-3346aaa4a508",
+      "renditionMap" : {
+        "de" : "9bf19ad7-b810-4a83-8ad8-44d24e275c9a",
+        "es" : "a51ebcd1-7d92-49f7-b0f0-d03d41b3595a",
+        "es_mx" : "64113bd5-9314-4a9a-8878-23f316532756",
+        "fr" : "2fc4b051-f15f-40fe-bbee-def82f5fdc93",
+        "it" : "ecdea889-5736-4b87-a304-e2f6067573d0",
+        "ja" : "e02d99be-7ff8-4ff4-a022-5ed948d38bd6",
+        "ko" : "3e262ab3-4fed-4d22-961b-45b6b0831cea",
+        "pt_br" : "e872e040-06ad-4534-9245-43ae284b4422",
+        "pt_pt" : "f6f620a1-04b9-458b-b51d-ef5f5fa13702",
+        "ru" : "37e43599-6260-49e7-9aeb-1318c80f3d0d",
+        "zh_cn" : "07aa6c60-9a8f-41df-a028-641cc40c71c1",
+        "zh_tw" : "7fdaf1a2-4222-43c4-9143-c1369e9da9b5"
+      },
+      "renditions" : [ {
+        "id" : "07aa6c60-9a8f-41df-a028-641cc40c71c1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "37e43599-6260-49e7-9aeb-1318c80f3d0d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f6f620a1-04b9-458b-b51d-ef5f5fa13702",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e02d99be-7ff8-4ff4-a022-5ed948d38bd6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ecdea889-5736-4b87-a304-e2f6067573d0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2fc4b051-f15f-40fe-bbee-def82f5fdc93",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "64113bd5-9314-4a9a-8878-23f316532756",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9bf19ad7-b810-4a83-8ad8-44d24e275c9a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3e262ab3-4fed-4d22-961b-45b6b0831cea",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a51ebcd1-7d92-49f7-b0f0-d03d41b3595a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e872e040-06ad-4534-9245-43ae284b4422",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7fdaf1a2-4222-43c4-9143-c1369e9da9b5",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Program Support",
+            "title" : "Program Support"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "bed328c6-cc41-4d60-9b5b-a6e712c80882",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-external-links"
+}

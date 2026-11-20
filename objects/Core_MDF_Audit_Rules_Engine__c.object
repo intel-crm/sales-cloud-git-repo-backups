@@ -1,0 +1,2105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Action_on_False_nm__c</fullName>
+        <description>This field is used to store the action to be taken when result is false</description>
+        <label>Action on (False)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>L1 Approval</fullName>
+                    <default>false</default>
+                    <label>L1 Approval</label>
+                </value>
+                <value>
+                    <fullName>L2 Approval</fullName>
+                    <default>false</default>
+                    <label>L2 Approval</label>
+                </value>
+                <value>
+                    <fullName>L3 Approval</fullName>
+                    <default>false</default>
+                    <label>L3 Approval</label>
+                </value>
+                <value>
+                    <fullName>L1&apos;s First Level Manager</fullName>
+                    <default>false</default>
+                    <label>L1&apos;s First Level Manager</label>
+                </value>
+                <value>
+                    <fullName>L1&apos;s Second Level Manager</fullName>
+                    <default>false</default>
+                    <label>L1&apos;s Second Level Manager</label>
+                </value>
+                <value>
+                    <fullName>Geo Lead Approval</fullName>
+                    <default>false</default>
+                    <label>Geo Lead Approval</label>
+                </value>
+                <value>
+                    <fullName>Program Office Reviewer</fullName>
+                    <default>false</default>
+                    <label>Program Office Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Price Reviewer</fullName>
+                    <default>false</default>
+                    <label>Price Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Additional Reviewer</fullName>
+                    <default>false</default>
+                    <label>Additional Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Planned</fullName>
+                    <default>false</default>
+                    <label>Planned</label>
+                </value>
+                <value>
+                    <fullName>No Action</fullName>
+                    <default>false</default>
+                    <label>No Action</label>
+                </value>
+                <value>
+                    <fullName>First Level Manager</fullName>
+                    <default>false</default>
+                    <label>First Level Manager</label>
+                </value>
+                <value>
+                    <fullName>Second Level Manager</fullName>
+                    <default>false</default>
+                    <label>Second Level Manager</label>
+                </value>
+                <value>
+                    <fullName>Customer Acceptance</fullName>
+                    <default>false</default>
+                    <label>Customer Acceptance</label>
+                </value>
+                <value>
+                    <fullName>ATF Approval</fullName>
+                    <default>false</default>
+                    <label>ATF Approval</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>EMEA Reviewer</fullName>
+                    <default>false</default>
+                    <label>EMEA Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Geo Lead Aproval</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Geo Lead Aproval</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Action_on_True_nm__c</fullName>
+        <description>Field to populate the action to be taken when the rule outcome is true</description>
+        <label>Action on (True)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>L1 Approval</fullName>
+                    <default>false</default>
+                    <label>L1 Approval</label>
+                </value>
+                <value>
+                    <fullName>L2 Approval</fullName>
+                    <default>false</default>
+                    <label>L2 Approval</label>
+                </value>
+                <value>
+                    <fullName>L3 Approval</fullName>
+                    <default>false</default>
+                    <label>L3 Approval</label>
+                </value>
+                <value>
+                    <fullName>L1&apos;s First Level Manager</fullName>
+                    <default>false</default>
+                    <label>L1&apos;s First Level Manager</label>
+                </value>
+                <value>
+                    <fullName>L1&apos;s Second Level Manager</fullName>
+                    <default>false</default>
+                    <label>L1&apos;s Second Level Manager</label>
+                </value>
+                <value>
+                    <fullName>Geo Lead Approval</fullName>
+                    <default>false</default>
+                    <label>Geo Lead Approval</label>
+                </value>
+                <value>
+                    <fullName>Program Office Reviewer</fullName>
+                    <default>false</default>
+                    <label>Program Office Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Price Reviewer</fullName>
+                    <default>false</default>
+                    <label>Price Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Additional Reviewer</fullName>
+                    <default>false</default>
+                    <label>Additional Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Planned</fullName>
+                    <default>false</default>
+                    <label>Planned</label>
+                </value>
+                <value>
+                    <fullName>No Action</fullName>
+                    <default>false</default>
+                    <label>No Action</label>
+                </value>
+                <value>
+                    <fullName>First Level Manager</fullName>
+                    <default>false</default>
+                    <label>First Level Manager</label>
+                </value>
+                <value>
+                    <fullName>Second Level Manager</fullName>
+                    <default>false</default>
+                    <label>Second Level Manager</label>
+                </value>
+                <value>
+                    <fullName>Customer Acceptance</fullName>
+                    <default>false</default>
+                    <label>Customer Acceptance</label>
+                </value>
+                <value>
+                    <fullName>ATF Approval</fullName>
+                    <default>false</default>
+                    <label>ATF Approval</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>EMEA Reviewer</fullName>
+                    <default>false</default>
+                    <label>EMEA Reviewer</label>
+                </value>
+                <value>
+                    <fullName>Geo Lead Aproval</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Geo Lead Aproval</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>To identify if the rule is active</description>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approver_Source_Value_on_False__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver Source Value on (False)</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approver_Source_Value_on_True__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver Source Value on (True)</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approver_Source_on_False_nm__c</fullName>
+        <label>Approver Source on (False)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Approver_Source</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approver_Source_on_True_nm__c</fullName>
+        <label>Approver Source on (True)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Approver_Source</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Multi_Nm__c</fullName>
+        <description>Stores Budget type field as multi select picklist</description>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Program_Nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <valueName>CCF 1.0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>MDF+</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>OEM CMP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>DCF 1.0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>Service Provider CMP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
+                <valueName>Retail MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
+                <valueName>RSA MD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Account Plan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Business Client Acceleration - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Client Specialties MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Data Centric Acceleration - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>IoT Premier - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>IoT Targeted - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>ODM Growth Plan - Client MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Proposal II MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Proposal I MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>SOEM Client MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>SOEM Data Center MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
+                <valueName>Cloud</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Nm__c</fullName>
+        <description>Stores the Budget Type for which the rule applies to</description>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Program_Nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <valueName>CCF 1.0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>MDF+</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client CoMarketing Fund</controllingFieldValue>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>OEM CMP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>DCF 1.0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center CoMarketing Fund</controllingFieldValue>
+                <valueName>Service Provider CMP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
+                <valueName>Retail MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
+                <valueName>RSA MD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Account Plan</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Business Client Acceleration - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Client Specialties MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Data Centric Acceleration - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>IoT Premier - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>IoT Targeted - MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>ODM Growth Plan - Client MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Proposal II MDF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
+                <valueName>Proposal I MDF</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_Dt__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <description>Rule to be applicable from mentioned date</description>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Nm__c</fullName>
+        <description>The rule criteria</description>
+        <label>Field</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Object_Nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Core_MDF_ofPagesEligible__c</fullName>
+                    <default>false</default>
+                    <label># of pages eligible</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_pagespayingfor__c</fullName>
+                    <default>false</default>
+                    <label># of Pages Member is Paying For</label>
+                </value>
+                <value>
+                    <fullName>ChannelPartnerId</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_AccountCompany__c</fullName>
+                    <default>false</default>
+                    <label>Account (Company)</label>
+                </value>
+                <value>
+                    <fullName>RequestId</fullName>
+                    <default>false</default>
+                    <label>Activity</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Budget_Type_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Activity Budget Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_ActivityCategory__c</fullName>
+                    <default>false</default>
+                    <label>ActivityCategory</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Category__c</fullName>
+                    <default>false</default>
+                    <label>Activity Category</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Classification_nm__c</fullName>
+                    <default>false</default>
+                    <label>Activity Classification</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_End_Date__c</fullName>
+                    <default>false</default>
+                    <label>Activity End Date</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_First_Approver_txt__c</fullName>
+                    <default>false</default>
+                    <label>Activity First Approver</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Reimbursement_Amt_nbr__c</fullName>
+                    <default>false</default>
+                    <label>Activity Reimbursement Amount</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Pillar_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Activity Retail Pillar</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Secondary_Pillar_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Activity Retail Secondary Pillar</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Start_Date__c</fullName>
+                    <default>false</default>
+                    <label>Activity Start Date</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Fund_Request_Status__c</fullName>
+                    <default>false</default>
+                    <label>Activity Status</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_SubType_nm__c</fullName>
+                    <default>false</default>
+                    <label>Activity Sub Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Types__c</fullName>
+                    <default>false</default>
+                    <label>Activity Type</label>
+                </value>
+                <value>
+                    <fullName>RequestedAmount</fullName>
+                    <default>false</default>
+                    <label>Budget Amount</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Budget_Amount_Local_amt__c</fullName>
+                    <default>false</default>
+                    <label>Budget Amount Local</label>
+                </value>
+                <value>
+                    <fullName>ChannlePartnerId</fullName>
+                    <default>false</default>
+                    <label>ChannlePartnerId</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Brand_nm__c</fullName>
+                    <default>false</default>
+                    <label>Claim Brand</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Budget_Type_Options_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Claim Budget Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Claim_Comments__c</fullName>
+                    <default>false</default>
+                    <label>Claim Comments</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_ToBeClosedDate__c</fullName>
+                    <default>false</default>
+                    <label>Close Date</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_Closure_Type__c</fullName>
+                    <default>false</default>
+                    <label>Closure Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Competitive_Elements__c</fullName>
+                    <default>false</default>
+                    <label>Competitive Elements</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Completed_Approval_Level_Name__c</fullName>
+                    <default>false</default>
+                    <label>Completed Approval Level</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Approval_Stage__c</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Core_MDF_Approval_Stage__c</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Brand__c</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Core_MDF_Brand__c</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Intel_Activity_Owner_txt__c</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Core_MDF_Intel_Activity_Owner_txt__c</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Prediction_Score_PB__c</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Core_MDF_Prediction_Score_PB__c</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Step_Completed__c</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Core_MDF_Step_Completed__c</label>
+                </value>
+                <value>
+                    <fullName>Country</fullName>
+                    <default>false</default>
+                    <label>Country</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Country_Location_nm__c</fullName>
+                    <default>false</default>
+                    <label>Country/Region</label>
+                </value>
+                <value>
+                    <fullName>CreatedById</fullName>
+                    <default>false</default>
+                    <label>Created By</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Budget_Currency_cd__c</fullName>
+                    <default>false</default>
+                    <label>Currency</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Domain_Type_nm__c</fullName>
+                    <default>false</default>
+                    <label>Domain Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_EligibleSpace__c</fullName>
+                    <default>false</default>
+                    <label>Eligible Space</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Escalation_Id__c</fullName>
+                    <default>false</default>
+                    <label>Escalation ID</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Event_Format_Nm__c</fullName>
+                    <default>false</default>
+                    <label>Event Format</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Ad_Run_End_Date__c</fullName>
+                    <default>false</default>
+                    <label>Execution End Date</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Ad_Run_Start_Date__c</fullName>
+                    <default>false</default>
+                    <label>Execution Start Date</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Government_Nexus__c</fullName>
+                    <default>false</default>
+                    <label>Government Involvement</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Incentive_Opted_In_ind__c</fullName>
+                    <default>false</default>
+                    <label>Incentive Opted In</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Incentive_Question_ind__c</fullName>
+                    <default>false</default>
+                    <label>Incentive Question</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Channel_Partner__c</fullName>
+                    <default>false</default>
+                    <label>Industry Partner</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Channel_Partner_Led__c</fullName>
+                    <default>false</default>
+                    <label>Industry Partner Led?</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_BU_Percent_txt__c</fullName>
+                    <default>false</default>
+                    <label>Intel Business Unit Split%</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activating_Intel_Owner_Reqd_Ind__c</fullName>
+                    <default>false</default>
+                    <label>Is Activating Intel Owner Required?</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Activity_CreatedByExternalUsr__c</fullName>
+                    <default>false</default>
+                    <label>isActivityCreatedByExternalUser</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_IsClaimReviewEscalation_Ind__c</fullName>
+                    <default>false</default>
+                    <label>IsClaimReviewEscalation</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Is_Field_Modified__c</fullName>
+                    <default>false</default>
+                    <label>isFieldModified</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Media_Vehicle__c</fullName>
+                    <default>false</default>
+                    <label>Media Vehicle</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Member_Manual_Hold_Comments_Txt__c</fullName>
+                    <default>false</default>
+                    <label>Member Hold Comments</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_New_Prediction_Score_nbr__c</fullName>
+                    <default>false</default>
+                    <label>New Prediction Score</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Other_Channel_Partner__c</fullName>
+                    <default>false</default>
+                    <label>Other Industry Partner</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_OutcomeBased_Ind__c</fullName>
+                    <default>false</default>
+                    <label>Outcome Based</label>
+                </value>
+                <value>
+                    <fullName>OwnerId</fullName>
+                    <default>false</default>
+                    <label>Owner</label>
+                </value>
+                <value>
+                    <fullName>Percentage</fullName>
+                    <default>false</default>
+                    <label>Percentage</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Prediction_Score_Nbr__c</fullName>
+                    <default>false</default>
+                    <label>Prediction Score</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Primary_Member_Acceptance_Ind__c</fullName>
+                    <default>false</default>
+                    <label>Primary Member Acceptance</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Priorities__c</fullName>
+                    <default>false</default>
+                    <label>Priority</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_ProductType__c</fullName>
+                    <default>false</default>
+                    <label>Product Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Program__c</fullName>
+                    <default>false</default>
+                    <label>Program</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Program_Office_Check_ind__c</fullName>
+                    <default>false</default>
+                    <label>Program Office Check</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Currency__c</fullName>
+                    <default>false</default>
+                    <label>Proof Of Cost Currency</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Invoice_Number__c</fullName>
+                    <default>false</default>
+                    <label>Proof Of Cost Number</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Proposal_Based_Ind__c</fullName>
+                    <default>false</default>
+                    <label>Proposal Based Indicator</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Region_cd__c</fullName>
+                    <default>false</default>
+                    <label>Region</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Region_nm__c</fullName>
+                    <default>false</default>
+                    <label>Region name</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Reimbursement_Percent__c</fullName>
+                    <default>false</default>
+                    <label>Reimbursement Rate (%)</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Requested_Reimbursement_Amt__c</fullName>
+                    <default>false</default>
+                    <label>Requested Amount (USD)</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Require_Additional_Review_ind__c</fullName>
+                    <default>false</default>
+                    <label>Require Additional Review</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Audit_Type__c</fullName>
+                    <default>false</default>
+                    <label>Review Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Rule_Engine_txt__c</fullName>
+                    <default>false</default>
+                    <label>Rule Type</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Price_reviewer_check_ind__c</fullName>
+                    <default>false</default>
+                    <label>SPIF Indicator</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Approval_Step_Completed__c</fullName>
+                    <default>false</default>
+                    <label>Steps Completed</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Target_Audience__c</fullName>
+                    <default>false</default>
+                    <label>Target Audience</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Ultimate_Account_ID__c</fullName>
+                    <default>false</default>
+                    <label>Ultimate Account ID</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>ChannelPartnerId</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_AccountCompany__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>RequestId</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Category__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Activity_End_Date__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Start_Date__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_SubType_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Types__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Brand_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Budget_Type_Options_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Claim_Comments__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Country_Location_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Escalation_Id__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Ad_Run_End_Date__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Ad_Run_Start_Date__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_IsClaimReviewEscalation_Ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Media_Vehicle__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Member_Manual_Hold_Comments_Txt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_OutcomeBased_Ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Currency__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Invoice_Number__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Region_cd__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Reimbursement_Percent__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Requested_Reimbursement_Amt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Audit_Type__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Target_Audience__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundClaim</controllingFieldValue>
+                <valueName>Core_MDF_Ultimate_Account_ID__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Claim_Prediction__c</controllingFieldValue>
+                <valueName>Core_MDF_New_Prediction_Score_nbr__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Claim_Prediction__c</controllingFieldValue>
+                <valueName>Core_MDF_Prediction_Score_Nbr__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Random</controllingFieldValue>
+                <valueName>Percentage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_ofPagesEligible__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_pagespayingfor__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Budget_Type_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_ActivityCategory__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Classification_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_First_Approver_txt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Reimbursement_Amt_nbr__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Pillar_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Secondary_Pillar_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Fund_Request_Status__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>RequestedAmount</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Budget_Amount_Local_amt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>ChannlePartnerId</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_ToBeClosedDate__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_Closure_Type__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Competitive_Elements__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Completed_Approval_Level_Name__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>CreatedById</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Budget_Currency_cd__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Domain_Type_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_EligibleSpace__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Event_Format_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Government_Nexus__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Incentive_Opted_In_ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Incentive_Question_ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Channel_Partner__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Channel_Partner_Led__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_BU_Percent_txt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activating_Intel_Owner_Reqd_Ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Activity_CreatedByExternalUsr__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Is_Field_Modified__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Other_Channel_Partner__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>OwnerId</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Primary_Member_Acceptance_Ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Priorities__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_ProductType__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Program__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Program_Office_Check_ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Proposal_Based_Ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Region_nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Require_Additional_Review_ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Rule_Engine_txt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Price_reviewer_check_ind__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PartnerFundRequest</controllingFieldValue>
+                <valueName>Core_MDF_Approval_Step_Completed__c</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ID_Field_Id__c</fullName>
+        <description>Stores the ID for values that need to be unique</description>
+        <externalId>false</externalId>
+        <label>ID Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Immediate_Ind__c</fullName>
+        <description>Determines if it is a immediate rule or sub-rule</description>
+        <label>Immediate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Look_Up_Field_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Look Up Field</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Next_Rule_False_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Execute the rule if the previous output was false</description>
+        <inlineHelpText>Executes the rule mentioned if the output is false, else exists Audit rules</inlineHelpText>
+        <label>Evaluates as False</label>
+        <referenceTo>Core_MDF_Audit_Rules_Engine__c</referenceTo>
+        <relationshipName>Audit_Rules_Engine</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Next_Rule_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Determine the next rule to be executed if previous output is true</description>
+        <inlineHelpText>Executes the rule mentioned if the output is true, else picks up for Audit</inlineHelpText>
+        <label>Evaluates as True</label>
+        <referenceTo>Core_MDF_Audit_Rules_Engine__c</referenceTo>
+        <relationshipName>Audit_Rules_Engine1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Nm__c</fullName>
+        <description>The rule criteria</description>
+        <label>Object</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PartnerFundClaim</fullName>
+                    <default>false</default>
+                    <label>Claim</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Claim_Prediction__c</fullName>
+                    <default>false</default>
+                    <label>Claim Prediction</label>
+                </value>
+                <value>
+                    <fullName>Random</fullName>
+                    <default>false</default>
+                    <label>Random</label>
+                </value>
+                <value>
+                    <fullName>PartnerFundRequest</fullName>
+                    <default>false</default>
+                    <label>Co-Marketing Activity</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_Nm__c</fullName>
+        <description>The rule criteria</description>
+        <label>Operator</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Field_Nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_BU_Percent_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Other_Channel_Partner__c</controllingFieldValue>
+                <controllingFieldValue>OwnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Priorities__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ProductType__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Escalation_Id__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_IsClaimReviewEscalation_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ActivityCategory__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Claim_Comments__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_CreatedByExternalUsr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Country_Location_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Is_Field_Modified__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Currency__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Prediction_Score_Nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Invoice_Number__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Program_Office_Check_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Media_Vehicle__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Member_Manual_Hold_Comments_Txt__c</controllingFieldValue>
+                <controllingFieldValue>Percentage</controllingFieldValue>
+                <controllingFieldValue>ChannelPartnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_AccountCompany__c</controllingFieldValue>
+                <controllingFieldValue>RequestId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_SubType_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Types__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Require_Additional_Review_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Rule_Engine_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Price_reviewer_check_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Reimbursement_Percent__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ultimate_Account_ID__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Requested_Reimbursement_Amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Closure_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Audit_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Completed_Approval_Level_Name__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Target_Audience__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ofPagesEligible__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Program__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_pagespayingfor__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Brand_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Reimbursement_Amt_nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Secondary_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Fund_Request_Status__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Options_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Classification_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Proposal_Based_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_New_Prediction_Score_nbr__c</controllingFieldValue>
+                <controllingFieldValue>RequestedAmount</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Amount_Local_amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ToBeClosedDate__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activating_Intel_Owner_Reqd_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Competitive_Elements__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Primary_Member_Acceptance_Ind__c</controllingFieldValue>
+                <controllingFieldValue>CreatedById</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Domain_Type_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Currency_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_EligibleSpace__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Event_Format_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Government_Nexus__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_OutcomeBased_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Opted_In_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Question_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Channel_Partner__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Channel_Partner_Led__c</controllingFieldValue>
+                <valueName>Equal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_BU_Percent_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Other_Channel_Partner__c</controllingFieldValue>
+                <controllingFieldValue>OwnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Priorities__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ProductType__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Escalation_Id__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_IsClaimReviewEscalation_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ActivityCategory__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Claim_Comments__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_CreatedByExternalUsr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Country_Location_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Is_Field_Modified__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Currency__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Prediction_Score_Nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Invoice_Number__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Program_Office_Check_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Media_Vehicle__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Member_Manual_Hold_Comments_Txt__c</controllingFieldValue>
+                <controllingFieldValue>ChannelPartnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_AccountCompany__c</controllingFieldValue>
+                <controllingFieldValue>RequestId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_SubType_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Types__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Require_Additional_Review_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Rule_Engine_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Price_reviewer_check_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Reimbursement_Percent__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ultimate_Account_ID__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Requested_Reimbursement_Amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Closure_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Audit_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Completed_Approval_Level_Name__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Target_Audience__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ofPagesEligible__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Program__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_pagespayingfor__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Brand_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Reimbursement_Amt_nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Secondary_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Fund_Request_Status__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Options_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Classification_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Proposal_Based_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_New_Prediction_Score_nbr__c</controllingFieldValue>
+                <controllingFieldValue>RequestedAmount</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Amount_Local_amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ToBeClosedDate__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activating_Intel_Owner_Reqd_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Competitive_Elements__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Primary_Member_Acceptance_Ind__c</controllingFieldValue>
+                <controllingFieldValue>CreatedById</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Domain_Type_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Currency_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_EligibleSpace__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Event_Format_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Government_Nexus__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_OutcomeBased_Ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Opted_In_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Question_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Channel_Partner__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Channel_Partner_Led__c</controllingFieldValue>
+                <valueName>Not Equal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_BU_Percent_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Other_Channel_Partner__c</controllingFieldValue>
+                <controllingFieldValue>OwnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Priorities__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ProductType__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ActivityCategory__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Claim_Comments__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Country_Location_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Currency__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Invoice_Number__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Media_Vehicle__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Member_Manual_Hold_Comments_Txt__c</controllingFieldValue>
+                <controllingFieldValue>ChannelPartnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_AccountCompany__c</controllingFieldValue>
+                <controllingFieldValue>RequestId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Category__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_SubType_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Types__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Rule_Engine_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Reimbursement_Percent__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ultimate_Account_ID__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Closure_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Audit_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Completed_Approval_Level_Name__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Target_Audience__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Brand_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Secondary_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Fund_Request_Status__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Options_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Competitive_Elements__c</controllingFieldValue>
+                <controllingFieldValue>CreatedById</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Domain_Type_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Currency_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Event_Format_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Government_Nexus__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Opted_In_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Question_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Channel_Partner__c</controllingFieldValue>
+                <valueName>In</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_BU_Percent_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Other_Channel_Partner__c</controllingFieldValue>
+                <controllingFieldValue>OwnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Priorities__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ProductType__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Claim_Comments__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Country_Location_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Currency__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Invoice_Number__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Media_Vehicle__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Member_Manual_Hold_Comments_Txt__c</controllingFieldValue>
+                <controllingFieldValue>ChannelPartnerId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_AccountCompany__c</controllingFieldValue>
+                <controllingFieldValue>RequestId</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_SubType_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Types__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Rule_Engine_txt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Reimbursement_Percent__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ultimate_Account_ID__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Closure_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Audit_Type__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Completed_Approval_Level_Name__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Target_Audience__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Brand_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Secondary_Pillar_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Fund_Request_Status__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Options_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Region_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Type_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Competitive_Elements__c</controllingFieldValue>
+                <controllingFieldValue>CreatedById</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Domain_Type_nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Currency_cd__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Event_Format_Nm__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Government_Nexus__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Opted_In_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Incentive_Question_ind__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Channel_Partner__c</controllingFieldValue>
+                <valueName>Not In</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Ad_Run_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Prediction_Score_Nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Requested_Reimbursement_Amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ofPagesEligible__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_pagespayingfor__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Reimbursement_Amt_nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_New_Prediction_Score_nbr__c</controllingFieldValue>
+                <controllingFieldValue>RequestedAmount</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Amount_Local_amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ToBeClosedDate__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_EligibleSpace__c</controllingFieldValue>
+                <valueName>Less Than</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Ad_Run_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Prediction_Score_Nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Requested_Reimbursement_Amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ofPagesEligible__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_pagespayingfor__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Reimbursement_Amt_nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_New_Prediction_Score_nbr__c</controllingFieldValue>
+                <controllingFieldValue>RequestedAmount</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Amount_Local_amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ToBeClosedDate__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_EligibleSpace__c</controllingFieldValue>
+                <valueName>Greater Than</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Ad_Run_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Prediction_Score_Nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Requested_Reimbursement_Amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ofPagesEligible__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_pagespayingfor__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Reimbursement_Amt_nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_New_Prediction_Score_nbr__c</controllingFieldValue>
+                <controllingFieldValue>RequestedAmount</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Amount_Local_amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ToBeClosedDate__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_EligibleSpace__c</controllingFieldValue>
+                <valueName>Less Than or Equal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Ad_Run_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Prediction_Score_Nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Start_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Ad_Run_End_Date__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Approval_Step_Completed__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Requested_Reimbursement_Amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ofPagesEligible__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_pagespayingfor__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Activity_Reimbursement_Amt_nbr__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_New_Prediction_Score_nbr__c</controllingFieldValue>
+                <controllingFieldValue>RequestedAmount</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Budget_Amount_Local_amt__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_ToBeClosedDate__c</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_EligibleSpace__c</controllingFieldValue>
+                <valueName>Greater Than or Equal</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Process_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_Nm__c</fullName>
+        <description>Stores the Program for which the rule applies to</description>
+        <label>Program</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Technical_Program_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_Cd__c</fullName>
+        <description>Stores the region for which the rule is applicable</description>
+        <label>Region</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Immediate_Ind__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>WW</fullName>
+                    <default>false</default>
+                    <label>WW</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>APJ</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>ASMO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>EMEA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>PRC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>WW</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Rule_Action_on_False_nm__c</fullName>
+        <description>Field to populate the action to be taken when the rule outcome is false</description>
+        <label>Action on (False)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Action_on_True_False</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Rule_Action_on_True_nm__c</fullName>
+        <description>Field to populate the action to be taken when the rule outcome is true</description>
+        <label>Action on (True)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Action_on_True_False</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Rule_Type_Nm__c</fullName>
+        <description>Distinguishes what kind of Rule it is</description>
+        <label>Rule Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Audit</fullName>
+                    <default>false</default>
+                    <label>Audit</label>
+                </value>
+                <value>
+                    <fullName>POP</fullName>
+                    <default>false</default>
+                    <label>POP</label>
+                </value>
+                <value>
+                    <fullName>Front End Review</fullName>
+                    <default>false</default>
+                    <label>Front End Review</label>
+                </value>
+                <value>
+                    <fullName>Approval Process</fullName>
+                    <default>false</default>
+                    <label>Approval Process</label>
+                </value>
+                <value>
+                    <fullName>PIC</fullName>
+                    <default>false</default>
+                    <label>PIC</label>
+                </value>
+                <value>
+                    <fullName>Test</fullName>
+                    <default>false</default>
+                    <label>Test</label>
+                </value>
+                <value>
+                    <fullName>Third Party</fullName>
+                    <default>false</default>
+                    <label>Third Party</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_Txt__c</fullName>
+        <description>The rule criteria</description>
+        <externalId>false</externalId>
+        <label>Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Rules Engine</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Rule_Type_Nm__c</columns>
+        <columns>Core_MDF_Program_Nm__c</columns>
+        <columns>Core_MDF_Budget_Type_Multi_Nm__c</columns>
+        <columns>Core_MDF_Region_Cd__c</columns>
+        <columns>Core_MDF_Object_Nm__c</columns>
+        <columns>Core_MDF_Field_Nm__c</columns>
+        <columns>Core_MDF_Operator_Nm__c</columns>
+        <columns>Core_MDF_Value_Txt__c</columns>
+        <columns>Core_MDF_Effective_Dt__c</columns>
+        <columns>Core_MDF_Immediate_Ind__c</columns>
+        <columns>Core_MDF_Next_Rule_Id__c</columns>
+        <columns>Core_MDF_Next_Rule_False_Id__c</columns>
+        <columns>Core_MDF_Active_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Mgr_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Claim_Audit_Rules</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Active_Ind__c</columns>
+        <columns>Core_MDF_Program_Nm__c</columns>
+        <columns>Core_MDF_Budget_Type_Multi_Nm__c</columns>
+        <columns>Core_MDF_Region_Cd__c</columns>
+        <columns>Core_MDF_Next_Rule_False_Id__c</columns>
+        <columns>Core_MDF_Next_Rule_Id__c</columns>
+        <columns>Core_MDF_Immediate_Ind__c</columns>
+        <columns>Core_MDF_Effective_Dt__c</columns>
+        <columns>Core_MDF_Field_Nm__c</columns>
+        <columns>Core_MDF_Operator_Nm__c</columns>
+        <columns>Core_MDF_Value_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Object_Nm__c</field>
+            <operation>equals</operation>
+            <value>PartnerFundClaim</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Rule_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Audit</value>
+        </filters>
+        <label>Claim Audit Rules</label>
+    </listViews>
+    <listViews>
+        <fullName>PIC_Rules_Claim</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Rule_Type_Nm__c</columns>
+        <columns>Core_MDF_Program_Nm__c</columns>
+        <columns>Core_MDF_Budget_Type_Multi_Nm__c</columns>
+        <columns>Core_MDF_Region_Cd__c</columns>
+        <columns>Core_MDF_Object_Nm__c</columns>
+        <columns>Core_MDF_Field_Nm__c</columns>
+        <columns>Core_MDF_Operator_Nm__c</columns>
+        <columns>Core_MDF_Value_Txt__c</columns>
+        <columns>Core_MDF_Effective_Dt__c</columns>
+        <columns>Core_MDF_Immediate_Ind__c</columns>
+        <columns>Core_MDF_Next_Rule_Id__c</columns>
+        <columns>Core_MDF_Next_Rule_False_Id__c</columns>
+        <columns>Core_MDF_Active_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Rule_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>PIC</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>PIC Rules Claim</label>
+    </listViews>
+    <listViews>
+        <fullName>X3rd_Party_Rules_Claim</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Rule_Type_Nm__c</columns>
+        <columns>Core_MDF_Program_Nm__c</columns>
+        <columns>Core_MDF_Budget_Type_Multi_Nm__c</columns>
+        <columns>Core_MDF_Region_Cd__c</columns>
+        <columns>Core_MDF_Object_Nm__c</columns>
+        <columns>Core_MDF_Field_Nm__c</columns>
+        <columns>Core_MDF_Operator_Nm__c</columns>
+        <columns>Core_MDF_Value_Txt__c</columns>
+        <columns>Core_MDF_Effective_Dt__c</columns>
+        <columns>Core_MDF_Immediate_Ind__c</columns>
+        <columns>Core_MDF_Next_Rule_Id__c</columns>
+        <columns>Core_MDF_Next_Rule_False_Id__c</columns>
+        <columns>Core_MDF_Active_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Rule_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Third Party</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>3rd Party Rules Claim</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Rule-{000}</displayFormat>
+        <label>Audit Rules Engine Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Rules Engine</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_ARE_ID_Field_Mandate</fullName>
+        <active>true</active>
+        <description>Mandate ID Field on Audit Rules Engine when Field is a lookup field (Account, Activity)</description>
+        <errorConditionFormula>IF((
+(ISPICKVAL(Core_MDF_Field_Nm__c , &apos;ChannelPartnerId&apos;) || ISPICKVAL(Core_MDF_Field_Nm__c , &apos;RequestId&apos;))
+&amp;&amp; Core_MDF_ID_Field_Id__c==&apos;&apos;),true,false)</errorConditionFormula>
+        <errorMessage>ID Field is mandatory for this Field value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_ARE_ID_Field_Not_Mandate</fullName>
+        <active>true</active>
+        <description>Mandate ID Field on Audit Rules Engine when Field is a lookup field (Account, Activity)</description>
+        <errorConditionFormula>NOT(ISPICKVAL(Core_MDF_Field_Nm__c , &apos;ChannelPartnerId&apos;)) &amp;&amp; Core_MDF_ID_Field_Id__c!=&apos;&apos; &amp;&amp; 
+NOT(ISPICKVAL(Core_MDF_Field_Nm__c , &apos;RequestId&apos;)) &amp;&amp; NOT(ISPICKVAL(Core_MDF_Field_Nm__c , &apos;CreatedById&apos;)) 
+&amp;&amp; NOT(ISPICKVAL(Core_MDF_Field_Nm__c , &apos;OwnerId&apos;))
+&amp;&amp; NOT(ISPICKVAL(Core_MDF_Field_Nm__c , &apos;Core_MDF_Ultimate_Account_ID__c&apos;))</errorConditionFormula>
+        <errorMessage>ID Field is not required for this criteria.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_ID_Field_should_be_Mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>Core_MDF_Look_Up_Field_Ind__c	&amp;&amp;  ISBLANK(Core_MDF_ID_Field_Id__c)</errorConditionFormula>
+        <errorMessage>Id Field is required</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Validation_for_Imm_rule_as_No</fullName>
+        <active>true</active>
+        <description>When Immediate rule is No do not mandate Program Region and Budget type</description>
+        <errorConditionFormula>ISPICKVAL(Core_MDF_Immediate_Ind__c , &apos;No&apos;) &amp;&amp; NOT(ISPICKVAL(Core_MDF_Program_Nm__c,&quot;&quot;))</errorConditionFormula>
+        <errorMessage>Program field should be blank if Immediate rule is No</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

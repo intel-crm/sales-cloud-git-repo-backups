@@ -1,0 +1,90 @@
+{
+  "appPageId" : "5a305cf4-135f-47a4-84a6-71d8c5d04ae1",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "e8364799-f0db-4c04-8ef5-37319d099c22",
+  "label" : "Product Detail",
+  "regions" : [ {
+    "id" : "4178d1dd-7562-49ba-b39f-ffc35ac43440",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_ProductDetail_LWC",
+      "id" : "c9f1e1e3-f84b-4008-87f5-66d0113b396c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4ab18b70-adbe-452d-8143-3024db82754c",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "8405b284-1289-4b2e-bfed-9a9c7ac8ac9c",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "a517c156-50f3-4727-adbd-4519d476cd45",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "b6ba5fd4-2ad1-4862-9ad6-2b39aff1123b",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "7ba4d484-a5bf-4810-82cd-8fca17c2c6eb",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "20791493-6d59-43a2-b710-8b1c74b4a662",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "3c66153d-a859-4187-9559-1be17ba39665",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "b7b17934-b4bb-408f-aa11-8eb159e6497a",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "304190ec-70cf-461b-bbbb-45e5a5aa2cea",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Product Detail"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ee2f66e1-30d2-475e-bf4b-cf8369c5de49",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3d7d943a-d17c-41a7-aaad-931b5a04ab36",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "780b3ca0-46b9-4bdc-80de-c2da4e8d5a1a",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "de9cb092-9caf-44fe-9d04-c1a89d7d8749",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "a41d50a4-04cd-498f-a345-fc3e3c20b0a8",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "c6d583e5-3dd5-49f1-9937-00a0e6c855da",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "GuD560phGqmRiUwld1ZHpoicNPXl7F",
+  "type" : "view",
+  "viewType" : "custom-product-detail"
+}

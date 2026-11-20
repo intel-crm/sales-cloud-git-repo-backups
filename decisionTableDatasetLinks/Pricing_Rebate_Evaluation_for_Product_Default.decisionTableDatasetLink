@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecisionTableDatasetLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisionTableName>Pricing_Rebate_Evaluation_for_Product</decisionTableName>
+    <isDefault>true</isDefault>
+    <setupName>Default Payload</setupName>
+    <sourceObject>Pricing_Product_Rebate_Mapping__c</sourceObject>
+</DecisionTableDatasetLink>

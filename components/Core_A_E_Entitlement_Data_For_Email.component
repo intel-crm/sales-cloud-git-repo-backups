@@ -1,0 +1,20 @@
+<apex:component controller="Core_A_E_Notify_Requester" access="global">
+    <!-- Attribute Definition -->
+   <apex:attribute name="contactId" description="Contact provided grant access to entitlement" type="Id" assignTo="{!conObj}"/>
+   <apex:attribute name="reqId" description="Contact provided grant access to entitlement" type="Id" assignTo="{!requestorId}"/>
+
+    
+    <b>Below are the entitlement(s) associated with this request:</b>
+        <br/>
+        <br/>
+       
+        <apex:repeat value="{!EntitlementNames[requestorId]}" var="ent">
+            
+             {!ent}
+            <br/>
+            
+             
+        </apex:repeat>
+     
+
+</apex:component>

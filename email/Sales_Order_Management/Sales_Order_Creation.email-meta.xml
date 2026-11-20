@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Sales Order Creation</name>
+    <style>none</style>
+    <subject>Your new order created successfully</subject>
+    <textOnly>A new order created
+
+
+Hi,
+
+This notice is to inform you that your new order has been created successfully.
+
+Account Name:{!Account.Name}
+Please refer to Order Number : {!Order.OrderNumber}
+
+
+If you have any questions, please contact us at programs@intel.com.
+
+Thank you,
+Your Order Management Team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© 2020 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

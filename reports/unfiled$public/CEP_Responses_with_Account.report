@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>MaritzCX__Survey_Response__c.MaritzCX__Survey_Id__c</field>
+    </columns>
+    <columns>
+        <field>MaritzCX__Survey_Response__c.MaritzCX__Metric_1__c</field>
+    </columns>
+    <columns>
+        <field>MaritzCX__Survey_Response__c.MaritzCX__Response_View_Link__c</field>
+    </columns>
+    <columns>
+        <field>MaritzCX__Survey_Response__c.MaritzCX__Comments_2__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_ALIAS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>kghatwar,bbaruso,joaquimm,bcazzama,msochac,jholtom,npanov,msimsek,mmajchrz,tobiasgr,gregoire,martamus,mlesiews,dwitkows,miacopin,dmatchin,vfedoro1,mjdzul,mjuszcza,kmkallot,amadam,rlipari,cbernard,pstaaf,akania,mjadwisz,ahako,ADopiera,DStackie,MDanilow,MBogucki,JBorkows,MStefano,APatryn,DKucera,okucukbx,jenssimx,pbrussx,oborekx,lbarabux,CGoergen,MVogt,dhurterx,HHussein,MYavuz,amaderx,SRunge,HStel,iledesmx,EVanore,grayrx,dajerrix,mmarz,rradtkex,THolst</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CEP Responses with Account</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$MaritzCX__Survey_Response__c@MaritzCX__Survey_Response__c.MaritzCX__Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>MaritzCX__Survey_Response__c.MaritzCX__Response_Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

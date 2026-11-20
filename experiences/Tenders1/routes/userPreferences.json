@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "configurationTags" : [ ],
+  "devName" : "pricing_user_preferences__c",
+  "id" : "314a0534-a685-4839-a809-41588fe736a1",
+  "label" : "User Preferences",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-user-preferences",
+  "type" : "route",
+  "urlPrefix" : "user-preferences"
+}

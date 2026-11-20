@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
+    <name>EMEA INF SI</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Alberto Fabiani</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Patricia Vandenplas</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Valnea Andriani</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Stefan Englet</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Geo__c</field>
+        <operation>equals</operation>
+        <value>EMEA</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Sales_Segment__c</field>
+        <operation>includes</operation>
+        <value>Influencer</value>
+    </ruleItems>
+</Territory2Rule>

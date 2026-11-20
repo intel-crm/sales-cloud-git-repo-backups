@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>AI Inference</masterLabel>
+        <translation>Inferência de IA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inference – Datacenter</masterLabel>
+        <translation>Inferência de IA – Datacenter</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inferencing</masterLabel>
+        <translation><!-- AI Inferencing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inferencing – Edge</masterLabel>
+        <translation>Inferência de IA – Borda</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Client Mainstream Mini PC</masterLabel>
+        <translation>Mini PC convencional de cliente</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Networking - Data &amp; Security</masterLabel>
+        <translation>Rede em nuvem – Dados e segurança</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connectivity</masterLabel>
+        <translation><!-- Connectivity --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator</masterLabel>
+        <translation>Criador</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DaaS (PCaaS)</masterLabel>
+        <translation><!-- DaaS (PCaaS) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Data &amp; Network Security</masterLabel>
+        <translation>Segurança de Dados e Redes</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deep Learning Inferencing</masterLabel>
+        <translation>Inferenciamento de Aprendizado Profundo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deep Learning Training</masterLabel>
+        <translation>Treinamento de Aprendizado Profundo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Early Access / Product Launch</masterLabel>
+        <translation>Acesso Antecipado / Iniciar Produto</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Compute and Modularity</masterLabel>
+        <translation>Computação e modularidade da borda</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise Cloud Networking &amp; Security</masterLabel>
+        <translation>Rede e Segurança da Nuvem Corporativa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Extend Platform Leadership</masterLabel>
+        <translation>Ampliar a liderança da plataforma</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Fixed/Wireless Access</masterLabel>
+        <translation>Acesso Fixo/Sem Fio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gamer Days</masterLabel>
+        <translation><!-- Gamer Days --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming Enthusiast</masterLabel>
+        <translation>Entusiasta de jogos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Performance Compute</masterLabel>
+        <translation>Computação de alto desempenho</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Speed Connectivity</masterLabel>
+        <translation>Conectividade de Alta Velocidade</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Accessibility</masterLabel>
+        <translation>IRTI: acessibilidade</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Climate &amp; Sustainability</masterLabel>
+        <translation>IRTI: clima e sustentabilidade</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Education</masterLabel>
+        <translation>IRTI: educação</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Health &amp; Life Sciences</masterLabel>
+        <translation>IRTI: saúde e ciências biológicas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Social Equity &amp; Human Rights</masterLabel>
+        <translation>IRTI: equidade social e direitos humanos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Accelerated (Solutions)</masterLabel>
+        <translation>Aceleração Intel (Soluções)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance AI Accelerator</masterLabel>
+        <translation>Acelerador de IA Intel® Partner Alliance</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance Edge Accelerator</masterLabel>
+        <translation>Acelerador de borda Intel® Partner Alliance</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance Networking Accelerator</masterLabel>
+        <translation>Acelerador de rede Intel® Partner Alliance</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IoT Edge AI - IoT/Vision/Video</masterLabel>
+        <translation>IA de borda da IoT – IoT/Visão/Vídeo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IoT Edge AI - Networking/Security</masterLabel>
+        <translation>IA de borda da IoT – Rede/Segurança</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Leading Edge FPGA</masterLabel>
+        <translation>FPGA de ponta</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manageability</masterLabel>
+        <translation>Gerenciabilidade</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Services</masterLabel>
+        <translation>Serviços gerenciados</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Market Ready Solution/RFP Ready Kit</masterLabel>
+        <translation>Solução pronta para o mercado/Kit preparado para RFP</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi-Access Edge Computing</masterLabel>
+        <translation>Computação de borda multi-acesso</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi/Hybrid Cloud Networking (SASE)</masterLabel>
+        <translation><!-- Multi/Hybrid Cloud Networking (SASE) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - 5G</masterLabel>
+        <translation>Operação em rede – 5G</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - Radio Access Networks/vRAN/oRAN</masterLabel>
+        <translation>Operação em rede – Redes de acesso por rádio/vRAN/oRAN</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - Visual Cloud/Video</masterLabel>
+        <translation>Operação em rede – Visual Cloud/Vídeo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - private wireless networks</masterLabel>
+        <translation>Operação em rede – Redes Privadas Sem Fio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>None</masterLabel>
+        <translation>Nenhum</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>On Prem Networking – Data &amp; Security</masterLabel>
+        <translation>Rede no local — Dados e segurança</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>P5G &amp; MEC​</masterLabel>
+        <translation><!-- P5G &amp; MEC​ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Private Wireless Networks</masterLabel>
+        <translation>Redes Privadas Sem Fio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks (RAN)</masterLabel>
+        <translation>Redes de Acesso por Rádio (RAN)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Skills for Innovation</masterLabel>
+        <translation>Habilidades para inovação (Skills for Innovation)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Acceleration: MRS, RRK</masterLabel>
+        <translation><!-- Solution Acceleration: MRS, RRK --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Aggregation</masterLabel>
+        <translation><!-- Solution Aggregation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Scale (IPA Accelerators)</masterLabel>
+        <translation>Escala da solução (aceleradores IPA)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Scale (MRS/RRK and AI ISV PW)</masterLabel>
+        <translation>Escala de Solução (MRS/RRK e IA ISV PW)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sustainability</masterLabel>
+        <translation>Sustentabilidade</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Visual Cloud</masterLabel>
+        <translation>Nuvem visual</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Intel Preference</masterLabel>
+        <translation>Ganhar a preferência da Intel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Performance &amp; Sell Up</masterLabel>
+        <translation>Ganhar desempenho e vender</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Volume</masterLabel>
+        <translation>Ganhar volume</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wireless Core</masterLabel>
+        <translation><!-- Wireless Core --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>eSports</masterLabel>
+        <translation><!-- eSports --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vRAN</masterLabel>
+        <translation><!-- vRAN --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

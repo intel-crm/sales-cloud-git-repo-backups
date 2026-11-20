@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BatchCreatedDate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BatchCreatedDate</value>
+    </caseValues>
+    <fields>
+        <label><!-- BatchSize --></label>
+        <name>espy__BatchSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- DateStr --></label>
+        <name>espy__DateStr__c</name>
+    </fields>
+    <fields>
+        <label><!-- JobType --></label>
+        <name>espy__JobType__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

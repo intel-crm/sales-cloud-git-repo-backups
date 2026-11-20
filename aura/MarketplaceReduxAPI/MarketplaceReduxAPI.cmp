@@ -1,0 +1,12 @@
+<aura:component controller="PMP_SearchMarketplaceController" description="APEX server API for Redux Actions" access="global" extensible="true">
+
+  <aura:attribute name="debug" type="boolean" default="false" description="Console log debug info"/>
+
+  <aura:method name="callServerFromReduxAction" action="{!c.callServerFromReduxAction}" description="Sample">
+    <aura:attribute name="component" type="Aura.Component" />
+    <aura:attribute name="auraMethodName" type="String" description="The name of the APEX @AuraEnabled Method"/>
+    <aura:attribute name="params" type="object" description="An object of the parameters sent to the APEX @AuraEnabled Method"/>
+    <aura:attribute name="returnSFObject" type="Boolean" default="false" description="Response is assumed to be JSON and parsed. Set 'true' to get the SF Object raw response."/>
+  </aura:method>
+{! v.body }
+</aura:component>

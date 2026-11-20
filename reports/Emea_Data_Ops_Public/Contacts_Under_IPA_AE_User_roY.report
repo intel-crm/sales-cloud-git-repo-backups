@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SALUTATION</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STREET</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_ZIP</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>PHONE1</field>
+    </columns>
+    <columns>
+        <field>PHONE2</field>
+    </columns>
+    <columns>
+        <field>PHONE3</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9</booleanFilter>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Aaditya Patil,Adam Van Cauwenberge,Adrian Jimenez,Aimee Hardy,Aimee Zhu,Aisling O&apos;Carroll,Akan Murat,Alexandra Ioana Barbu,Alexandru Craciun,Alex Unger,Alfredo Diez,Altan Most,Alvin Lupescu,AMANDA TAY,Amy Wilson,Andrei Popescu,Andrew Fogarty,Andy Kan,Angelica Rosales,Anjali Goel,Anju Saraswat,Anna-Marie Esmeralda,Anthony Pocholo Santos,Apseludelaga Manalu,Aradhana Singh,Archie Martin,Ashish Mangla,Ashwini Damle,Ayodele Owoka,Bella Jang,Benjamin Mitchell</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Beth Atkinson,Bogdan Grigore,Bourne Li,Brady Briggs,Braxton Gove,Cadee Stauffer,Camelia Oprea,Caroline Hewitt,Caroline Li,Casey Haas,Catalin Constantinescu,Chad Christensen,Charmie Bonifacio,ChimWeng Foong,Chuanzi Gu,CLARE CLARKE,Clarisse Singson,Connie Crowell,Conor Griffin,CorDarryl Hall,Cory Wagner,Daisy Chau,Damian Gorlicki,Danica Ann Papna,Daniel Lower,David Amador,David Boyle,David Connors,David Mikkelson,Denise Modar,Denise Parkinson,Dennis Aksoy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Dennis Sadberry,Derek Molloy,Devin Hadley,Devranjan Das,Dian Pane,Dilip Daga,Divya Gautam,Divya Rajasekar,Dmytro Raiskyi,Donna Frutiger,Drew Otto,Dumitru Croitoru,Edison Paloma,Edson Mejia,Eduardo Moreno,Elaine Luo,Elaiza Estepa,Erika Mae Paulino,Fang Yeong Sheng,Fernando Godoy,Gary Lutz,Gustavo Araya Ramirez,Guy-Erne Assika,Hakeem Mulero,Hannah Deighton,Hannah Hadley,Hanzhu Zhang,Harold Sudaria,Herve Hubert,Ian Manning,Ignacio Eiguren,Ionut Florian Dragne</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IPA SPL Admin With IPA A&amp;E Access BB,IPA Test With IPA A&amp;E Access BB,Isla Taylor,Issac Pan,Jacob Kodele,Jacoria Jones,JAHYEONG KOO,JAMES MCGOFFIN,Janani Surendran,JAN ARTHUR ABOGADO III,Jane Haddock,Jane Scott,Jayson Francois,Jennielyn Usi,Jennifer Bailio,Jennifer McKenna,Jennifer Miller,Jennifer Rivera,Jenny Wen,JIHYE LEE,Jimmy Dosumu,Joanna Oghobaghase,Jody Hopper,John Horton,John Shinto K S,Joseph Hostettler-Bath,Joseph O&apos;Reilly,Joshua Musin,Juan Vega,Julie Hurst,Jyotirmay panigrahi,Kaelain Sutton</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Karen Lappay,KAREN SALAZAR,Karina Misciur,Karla Arce,Karla Hidalgo,Karolayn Zarrazola,Kathleen Adame,Kayla Tobler,Kendra Huntsman,Ken Ford,Kevin Patterson,Kharla Amara,Kimberly Karalekas,Kimberly Swank,Kim Gowie,Kiranpal Rana,Kyle Egbert,Laoise Grennan,LaRon Boykin,Larry Carr,Larry Perkinsxxx,Leon Yang,Liesa Xu,Likhitha Choudary,Lindsay Hiebert,Ling Wang,Lisandro Cuestas,Lucy Ha,Lydia Zheng,Lynne Pauleen,Maksim Tombachev,Malissa Shaw</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Mamadou Bah,Manas Pathak,Marco Jonas Morales,Marcus McCollum,Maria Calderon,Maria Jose Gaidelon,Marianne Merrill,Maria Podgorneac,Maricris Fidelino,Marielle Calano,Marina Saco,Marisabel Aarin Ng Morales,MARK SADAM HALILI,Mark Wier,Martin Noufer,Marty Harward,MaryAnn McKinney,Mary Kay Simpson,Matheus Capelao,Mathew Inkley,Matthew Ellison,Matthew Smith,Max Coates,Melany Wright,Meloudy Quartel,Mert Erkan,Michael Sabelhaus,Mihaela Rus,Mike Mc Cloud,Mindy Ramsey,Monali Raj N,Monica Costache</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Nagasubramanian Ramamoorthy,Natalia Yakovleva,Nathan Dooner,Nathan Fowles,Nathan Van De Graff,Natthanon Kosithirunsakun,Nick Dai,Nicolae Grebur,NIKKO PIQUERO,Octavian Pirvulescu,Ohashi Hisashi,Orlando Sibaja Gutierrez,Ose Edeawe,Paradee Thiaosawaeng,Patryk Zietek,Paula Alvarez Bonin,Paul Butcher,Paul Butler,Perkins Briones,Piero Fioravanti,Prakash Kumar,Pumtaleit Wattantam,R.W. Jacob Kawaguchi,Rachel Stoffregen,Rafael Clapon,Ramya Rachure,Raven Faith Metal,Reselle Maningding,Ric de Luzon,Rishika Prasad Akshath,Rizza Joy Antonio,Rodney Dahleen</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Rodrigo Souza Silva,Ryan Brough,Sachin Kharche,Sai Yang Ng,Samantha Claire Dado,Sameera Kandewatte,Sarah Musick,Sarah O&apos;Sullivan,Sarah Orman,Sehrish Omer,Sergiu Curocichin,SHANMUGA A/L MOHANADASS,Sharisse Wong,Shruti Attelli,Sileny Monge Espinoza,Silvia Caballero,Sneha Choudhary,Stephanie Payne,Steven Dexheimer,Steven Hardy,Subhom Mitra,Subrahmanya Prakash,Suzanne Martinez,TeamDraco TestUser,Tina Chen,Tirupati Reddy Yeruva,Trisha Kennedy,Twinkle Sanque,Tyler Neumann,Vasile Lozovan,Vicentia Bacanu,Vigneshwar Hegde</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Vince Christian Torino,Vonn Cliffer Lelis,Willie Chow,Xiong Huang,Xujun Zhang,Yash Kulkarni,Yasvina Sheik,Yeong Ming Khoo,YUTON LIU,Zachary Whitnack,Zehra Firdaus,Zhong Lin,Zoltan Borsanyi</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CONTACT_OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Contacts Under IPA A&amp;E User</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

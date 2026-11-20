@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Spending Targets</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Spending Targets</value>
+    </caseValues>
+    <fields>
+        <label><!-- Bulk Update --></label>
+        <name>Core_MDF_Bulk_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_MDF_Description_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_MDF_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- List View Id --></label>
+        <name>Core_MDF_List_View_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Core_MDF_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Accounts Report Id --></label>
+        <name>Core_MDF_Other_Accounts_Report_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Accounts Report --></label>
+        <name>Core_MDF_Other_Accounts_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_MDF_Program_Name__c</name>
+        <relationshipLabel><!-- Spending Targets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets Amount --></label>
+        <name>Core_MDF_Spending_Targets_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date &amp; End Date --></label>
+        <name>Core_MDF_Start_Date_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_MDF_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets Dashboard Id --></label>
+        <name>Core_MDF_Target_Setting_Dashboard_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets Dashboard --></label>
+        <name>Core_MDF_Target_Setting_Dashboard__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Account Report Id --></label>
+        <name>Core_MDF_Top_Account_Report_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Accounts Report --></label>
+        <name>Core_MDF_Top_Accounts_Report__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Client --></label>
+        <name>Core_MDF_Client_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Datacenter --></label>
+        <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Intel Partner Alliance --></label>
+        <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Date should always be greater than or equal to Start Date --></errorMessage>
+        <name>Core_MDF_EndDateLessThanStartDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Program cannot be updated --></errorMessage>
+        <name>Core_MDF_ProgramChangeRestriction</name>
+    </validationRules>
+</CustomObjectTranslation>

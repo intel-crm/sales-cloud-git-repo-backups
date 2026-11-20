@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>for the workflow &quot; Core_CoveredAccount_Email_Notification &quot;</description>
+        <name>CoveredAccountLead_Email_Trigger</name>
+        <label>CoveredAccountLead_Email_Trigger</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>Lead.Core_CoveredAccount_Notification</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Core_Email_Notification_For_LeadOwnership_Change</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_CoveredAccount_Notification</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>LeadOwnershipChanegEmail</name>
+        <label>LeadOwnershipChanegEmail</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <actionName>Lead.Core_Email_Notification_For_Lead_Ownership_Change</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_Email_Notification_For_Lead_Ownership_Change</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for the workflow &quot; Core_Email_Notification_For_LeadOwnership_Change &quot;</description>
+        <name>Core_Email_Notification_For_LeadOwnership_Change</name>
+        <label>Core_Email_Notification_For_LeadOwnership_Change</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>LeadOwnershipChange</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Email_Notification_For_LeadOwnership_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>LeadOwnershipChanegEmail</targetReference>
+            </connector>
+            <label>LeadOwnershipChange</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the email trigger of &quot; Core_CoveredAccount_Email_Notification &quot; workflow</description>
+        <name>Covered_Account_Email</name>
+        <label>Covered Account Email</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Core_Email_Notification_For_LeadOwnership_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CoveredAccountTriggerEmail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_CoveredAccount_Email_Notification</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CoveredAccountLead_Email_Trigger</targetReference>
+            </connector>
+            <label>CoveredAccountTriggerEmail</label>
+        </rules>
+    </decisions>
+    <description>for the following workflows 
+1. Core_CoveredAccount_Email_Notification
+2.Core_Email_Notification_For_LeadOwnership_Change</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>has the entry condition for the &quot; Core_CoveredAccount_Email_Notification &quot; Workflow</description>
+        <name>F_Core_CoveredAccount_Email_Notification</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+     AND( ISNEW(), OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
+	 OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)), 
+     {!$Record.Core_Covered_account_owner__c}={!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Is_Covered_Account__c}=true ),
+	 AND( 
+		 OR(ISCHANGED({!$Record.Core_Existing_Covered_Account__c}), ISCHANGED({!$Record.OwnerId})), 
+		{!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;), 
+		OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)),
+		{!$Record.Core_Covered_account_owner__c}={!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Is_Covered_Account__c}=true ))</expression>
+    </formulas>
+    <formulas>
+        <description>for the &quot;  Core_Email_Notification_For_LeadOwnership_Change &quot;Lead Workflow</description>
+        <name>F_Core_Email_Notification_For_LeadOwnership_Change</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+AND( OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),OR(ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),
+ISPICKVAL({!$Record.Status}, &quot;Sales Generated Lead&quot;)),
+ISCHANGED({!$Record.OwnerId}), {!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot;,
+OR({!$Record.Core_Covered_account_owner__c} &lt;&gt; {!$Record.Core_Lead_Owner_Name__c}, {!$Record.Core_Covered_account_owner__c} = null) ),
+
+AND( OR({!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, {!$Record.RecordType.Name} = &quot;Sales Lead&quot;),
+ISPICKVAL( {!$Record.Status}, &quot;Sales Accepted Lead&quot; ), ISCHANGED({!$Record.OwnerId}),
+{!$Record.Core_Flag_on_Queue_or_User__c} =&quot;User&quot; ))</expression>
+    </formulas>
+    <interviewLabel>CoveredAccount_and_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CoveredAccount_and_LeadOwnership_Change_Email_Notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Covered_Account_Email</targetReference>
+        </connector>
+        <filterFormula>{!$Record.RecordType.DeveloperName} =&quot;Lead&quot; || {!$Record.RecordType.DeveloperName} =&quot;Sales_Lead&quot;</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

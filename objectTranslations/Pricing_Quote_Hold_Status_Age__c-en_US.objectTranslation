@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quote Hold Status Age</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quote Hold Status Ages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is On Hold --></label>
+        <name>Pricing_Is_On_Hold__c</name>
+    </fields>
+    <fields>
+        <label><!-- On Hold Hours --></label>
+        <name>Pricing_OnHold_Cummulative_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Time --></label>
+        <name>Pricing_QuoteOnHold_End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Time --></label>
+        <name>Pricing_QuoteOnHold_Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Role --></label>
+        <name>Pricing_QuoteOnHold_User_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>Pricing_QuoteOnHold__c</name>
+        <relationshipLabel><!-- Quote Hold Status Changes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Hold Comment --></label>
+        <name>Pricing_Quote_On_Hold_Comment__c</name>
+    </fields>
+    <sharingReasons>
+        <label><!-- On Hold Account Team Group --></label>
+        <name>Pricing_On_Hold_Account_Team_Group</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

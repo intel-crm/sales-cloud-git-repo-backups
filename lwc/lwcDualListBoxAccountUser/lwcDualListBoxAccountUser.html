@@ -1,0 +1,36 @@
+<template>
+    <div class="slds-modal__content slds-p-around--large slds-p-top_none">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label id="selectProgram" class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+                font-size: small;">{label.programFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup-program onprogram={programSelected} onfocus={focusMethod}>
+                </c-lwc-custom-lookup-program>
+            </div>
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label id="selectAccount" class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+            font-size: small;">{label.accountFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup onremove={selectedRecord} onselected={selectedRecord} program={programName}>
+                </c-lwc-custom-lookup>
+            </div>
+            <template if:false={spinner}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <div class="slds-col slds-size_6-of-6 slds-p-around_small">
+                <lightning-input id="userSearch" value={userSearchKey} onchange={onUserSearch} type="search" placeholder={label.searchUserLabel} disabled={inputDisable}>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-6 slds-p-around_small slds-p-top_none">
+                <lightning-dual-listbox id="dualList" name="users" disable-reordering="True" source-label={label.availableLabel}
+                    selected-label={label.selectedLabel} options={allAvailableUsers} value={allAvailableMappedUsers} onchange={handleChange}>
+                </lightning-dual-listbox>
+            </div>
+        </div>
+    </div>
+</template>

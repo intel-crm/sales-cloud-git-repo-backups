@@ -1,0 +1,31 @@
+<apex:page standardStylesheets="false" sidebar="false" showHeader="false">
+<style>
+body{
+background-color:#f1f3f5;
+}
+</style>
+<script>
+function sendSearchText(itm)
+{
+  var  str = document.getElementById('SearchText').value;
+  
+  str = str.replace(/\"/g,'\\"');
+  str = str.replace(/&/g,'%26');
+  var  finalstr = encodeURI(str);
+  if(itm==0)
+  {
+   parent.location.href ='{!$Site.Prefix}/apex/Core_IPS_GlobalCaseSearchPage?search=' + finalstr;
+  }
+  else
+  {  
+    parent.location.href ='{!$Site.Prefix}/apex/Core_IPS_GlobalCaseSearchPage?search=' + finalstr +'&A=1';
+  }
+}
+</script>
+<apex:form >
+
+<input type="text" style="width:120px;" id="SearchText" />
+<apex:commandButton id="gsearch" value="Go" onclick="sendSearchText(0);"/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="sendSearchText(1);" style="color:blue;font-size:12px;font-family: Arial,Helvetica,sans-serif;">Advanced Search</a>
+</apex:form>
+</apex:page>

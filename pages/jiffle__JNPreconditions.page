@@ -1,0 +1,16 @@
+<apex:page Controller="jiffle.JNEventMeetingList" sidebar="false" showHeader="true" standardStylesheets="false" lightningStylesheets="false">
+  <apex:include pageName="jiffle__JNConsent"/>
+  <apex:include pageName="jiffle__JNGlobals" />
+  <link rel="stylesheet" href="{!URLFOR($Resource.JNStylesheet, 'application.css')}" />
+  <div class="iris-react">
+    <div id="precondition-cont"></div>
+  </div>
+  <script>
+    window.CKEDITOR_BASEPATH = "{!URLFOR($Resource.JNCKeditor, 'ckeditor/')}";
+  </script>
+  <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNCKeditor, 'ckeditor/ckeditor.js')}"></script>
+  <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNResources, 'application.js')}"></script>
+  <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNCommons)}"></script>
+  <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNPreconditions)}"></script>
+  <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNPreconditionsPage)}"></script>
+</apex:page>

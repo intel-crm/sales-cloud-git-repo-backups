@@ -1,0 +1,284 @@
+<template>
+
+    <!-- <c-core-intc-modal onclose={handleClose} no-close-on-click>
+        <h2 slot="header" class="color-white">{heading}</h2>
+        <form slot="body" class="resource-wrapper">
+            <p>
+                <span>{label}</span>
+                <span class="color-red slds-m-left_small">{labels.requiredNotice}</span>
+            </p>
+            <hr>
+  
+            <div class="slds-is-relative" style="min-height: 10rem;">
+                <template if:true={loading}>
+                    <lightning-spinner alternative-text={labels.loading}></lightning-spinner>
+                </template>
+  
+                <template for:each={formattedResources} for:item="resource">
+                   <template if:false={resource.externalId}>
+                       <section key={resource.key} class="slds-grid slds-wrap"
+                           role="contentinfo" aria-label={resource.sectionAria}>
+                           <h4 class="resource-heading slds-size_12-of-12">
+                               <span>{labels.resource} {resource.resourceNumber}</span>
+                               <lightning-button-icon class="resource-remove" icon-name="utility:delete"
+                                   data-rnum={resource.resourceNumber} onclick={handleDeleteResource}
+                                   alternative-text={resource.deleteAria} onkeydown={handleDeleteResourceAccessibility}
+                                   variant="bare">
+                               </lightning-button-icon>
+                           </h4>
+  
+                           <c-core-intc-select
+                               class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-m-top_medium input-resource-type"
+                               label={labels.resourceType}
+                               required
+                               required-error-text={labels.requiredDropdown}
+                               required-option-label={labels.resourceTypePlaceholder}
+                               name="resourceType"
+                               data-focus={resource.resourceNumber}
+                               data-rnum={resource.resourceNumber}
+                               value={resource.resourceType}
+                               options={resourceTypeOptions}
+                               onchange={handleChange}>
+                            </c-core-intc-select>
+  
+                           <div class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-m-top_medium input-resource-name">
+                               <lightning-input
+                                   type="text"
+                                   required
+                                   name="title"
+                                   data-rnum={resource.resourceNumber}
+                                   label={labels.title}
+                                   value={resource.title}
+                                   onchange={handleChange}
+                                   pattern={labels.nameRegex}
+                                   maxlength={maxTitleLength}>
+                               </lightning-input>
+                            </div>
+  
+                           <div class="slds-show_medium"></div>
+  
+                             <lightning-textarea
+                               class="slds-size_12-of-12 slds-m-top_medium"
+                               type="text"
+                               name="description"
+                               required
+                               data-rnum={resource.resourceNumber}
+                               label={labels.description}
+                               value={resource.description}
+                               onchange={handleChange}
+                               maxlength={maxDescriptionLength}>
+                            </lightning-textarea>
+                            <template if:true={resource.description}>
+                                <p class="slds-size_12-of-12 utility-type slds-m-top_xx-small text-bold">
+                                   {resource.descriptionCharsRemaining}
+                                </p>
+                            </template>
+  
+                            <template if:true={resource.requiresAltText}>
+                              <div class="slds-size_12-of-12 slds-m-top_medium input-resource-alt-text">
+                                  <lightning-input
+                                      type="text"
+                                      required
+                                      name="altText"
+                                      data-rnum={resource.resourceNumber}
+                                      label={labels.altText}
+                                      value={resource.altText}
+                                      onchange={handleChange}
+                                      maxlength={maxAltTextLength}>
+                                  </lightning-input>
+                                  <p class="slds-form-element__help slds-size_12-of-12 slds-m-top_xx-small slds-m-bottom_xx-small">{labels.altTextHelp}</p>
+                              </div>
+                          </template>
+  
+                          <div class="slds-size_12-of-12 slds-m-top_medium">
+                            <p class="utility-type slds-m-bottom_small">
+                                {labels.assetNotice}
+                            </p>
+
+
+                            <div class={resource.errorContainerClass}>
+
+                              <template if:true={resource.doubleAssetError}>
+                                  <div class="slds-has-error">
+                                    <p class="slds-form-element__help" aria-describedby={resource.urlInputID}>
+                                      {labels.errors.urlOrUpload}
+                                    </p>
+                                  </div>
+                              </template>
+
+                              <template if:true={resource.noAssetError}>
+                                <div class="slds-has-error">
+                                  <p class="slds-form-element__help" aria-describedby={resource.urlInputID}>
+                                    {labels.errors.urlOrUploadBlank}
+                                  </p>
+                                </div>
+                              </template>
+
+                              <div class="slds-size_12-of-12 slds-medium-size_6-of-12 input-resource-url">
+                                <lightning-input
+                                  id={resource.urlInputID}
+                                  type="url"
+                                  label={labels.url}
+                                  name="url"
+                                  data-rnum={resource.resourceNumber}
+                                  value={resource.url}
+                                  onchange={handleChange}
+                                  pattern={labels.urlRegex}
+                                  message-when-pattern-mismatch={labels.urlInvalid}
+                                  maxlength={maxUrlLength}>
+                                </lightning-input>
+                                <p class="utility-type slds-m-top_xx-small">{labels.charLimits.url}</p>
+                              </div>
+
+                              <p class="slds-size_12-of-12 slds-medium-size_6-of-12 slds-m-top_medium ">
+                                {labels.assetDivider}
+                              </p>
+
+                              <div class="slds-size_12-of-12 slds-m-top_medium">
+
+                                <p class="slds-m-bottom_xx-small" id={resource.uploadLabelID}>{labels.upload} {resource.resourceTypeUpload}</p>
+
+                                <div class="input-resource-upload-wrapper">
+                                  <template if:false={resource.requiresAltText}>
+                                    <div class="input-resource-upload">
+                                      <lightning-file-upload
+                                        name="upload"
+                                        aria-labelledby={resource.uploadLabelID}
+                                        data-rnum={resource.resourceNumber}
+                                        data-focus={resource.resourceUploadNumber}
+                                        record-id={recordId}
+                                        accept={validUploadTypes}
+                                        onclick={handleUploadClick}
+                                        onuploadfinished={handleUpload}>
+                                      </lightning-file-upload>
+                                    </div>
+                                    <p class="disclaimer-text slds-m-top_xx-small">{uploadHelpText}</p>
+
+                                    <template if:true={resource.uploadName}>
+                                      <div class="slds-m-top_medium slds-m-bottom_xx-small">
+                                        {resource.uploadName}
+                                      </div>
+                                    </template>
+                                  </template>
+
+                                  <template if:true={resource.requiresAltText}>
+                                    <div class="input-resource-upload">
+                                      
+                                      <lightning-file-upload
+                                        name="upload"
+                                        aria-labelledby={resource.uploadLabelID}
+                                        data-rnum={resource.resourceNumber}
+                                        data-focus={resource.resourceUploadNumber}
+                                        record-id={recordId}
+                                        accept={validUploadVideoTypes}
+                                        onclick={handleUploadClick}
+                                        onuploadfinished={handleUploadVideo}>
+                                      </lightning-file-upload>
+
+                                      <template if:true={resource.assetHasErrors}>
+                                        <div class="slds-has-error">
+                                          <p class="slds-form-element__help">
+                                            <template if:true={resource.errorFileSize}>
+                                              <span class="upload-error">{labels.errors.uploadFileSize}</span>
+                                            </template>
+
+                                            <template if:true={resource.errorFileNameSpecialChars}>
+                                              <span class="upload-error">{labels.errors.uploadFileSpecialChars}</span>
+                                            </template>
+
+                                            <template if:true={resource.errorFileNameLength}>
+                                              <span class="upload-error">{labels.errors.uploadFileNameLength}</span>
+                                            </template>
+                                          
+                                          </p>
+                                        </div>
+                                      </template>
+
+                                    </div>
+                                    <p class="slds-form-element__help slds-m-top_xx-small">
+                                      <strong>{labels.uploadVideoHelpTextSize}</strong><br>
+                                      {uploadVideoHelpText}<br>
+                                      {labels.uploadVideoHelpTextFileName}
+                                    </p>
+
+                                    <template if:true={resource.uploadName}>
+                                      <c-ipa-file-card
+                                        brightcove-thumbnail={resource.videoThumbnail}
+                                        video-placeholder-thumbnail={videoPlaceholderImage}
+                                        alt-text={resource.altText}
+                                        alt-text-placeholder={labels.altTextPlaceholderText}
+                                        file-name={resource.uploadName}
+                                        resource-number={resource.resourceNumber}
+                                        upload-id="resource.uploadId">
+                                        <span slot="actionButtons">
+                                          <lightning-button-icon 
+                                            icon-name="utility:delete"
+                                            data-rnum={resource.resourceNumber} 
+                                            onclick={handleShowDeleteModal}
+                                            alternative-text={labels.deleteUploadFileAlt} 
+                                            variant="bare">
+                                          </lightning-button-icon>
+                                        </span>
+                                      </c-ipa-file-card>
+
+                                      <c-core-intc-modal 
+                                        data-rnum={resource.resourceNumber}
+                                        is-quickview="true" 
+                                        slim="true" 
+                                        no-close-on-click="true">
+
+                                        <div slot="body">
+                                          <h2 class="slds-p-around_medium slds-text-align_center">{labels.confirmDeleteTitle}</h2>
+
+                                          <p class="slds-p-around_medium ">{resource.confirmDeleteText}</p>
+
+                                          <div slot="footer" class="slds-p-around_medium slds-text-align_right">
+                                            <lightning-button 
+                                              data-rnum={resource.resourceNumber}
+                                              class="slds-m-right_medium" 
+                                              label={labels.cancel} 
+                                              onclick={handleCancelDeleteAsset}>
+                                            </lightning-button>
+                                            <lightning-button
+                                              data-rnum={resource.resourceNumber}
+                                              class="slds-m-right_medium" 
+                                              label={labels.ok}
+                                              variant="brand" 
+                                              onclick={handleDeleteAsset}>
+                                            </lightning-button>
+                                          </div>
+                                        </div>
+                                      </c-core-intc-modal>
+
+                                    </template>
+                                  </template>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="slds-size_12-of-12">
+                       </section>
+                    </template>
+                </template>
+                <template if:true={displayAddButton}>
+                    <div class="slds-size_12-of-12">
+                        <lightning-button
+                            data-focus="0"
+                            class="slds-m-bottom_medium"
+                            label={labels.add}
+                            icon-name="utility:add"
+                            onclick={handleAddResource}
+                            onkeydown={handleAddResourceAccessibility}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+        </form>
+  
+        <div slot="footer" class="slds-p-around_medium slds-text-align_right" data-is-loading={loading}>
+            <lightning-button class="slds-m-right_medium" label={labels.cancel} onclick={handleCancel}></lightning-button>
+            <lightning-button class="slds-m-right_medium" label={labels.save} variant="brand" disabled={saveDisabled} onclick={handleSave}></lightning-button>
+        </div>
+    </c-core-intc-modal>
+   -->
+  </template>

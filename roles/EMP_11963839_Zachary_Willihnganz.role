@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Benjamin Carter</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11963839_Zachary_Willihnganz</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10654584_Benjamin_Carter</parentRole>
+</Role>

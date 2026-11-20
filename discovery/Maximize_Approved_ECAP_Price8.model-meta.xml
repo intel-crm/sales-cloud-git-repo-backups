@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <label>Maximize Approved ECAP Price</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Product Name</label>
+        <name>SBQQ__ProductName__c</name>
+        <type>Text</type>
+        <values>Intel® Core™ i3-8300T Processor (8M Cache, 3.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6248 Processor (27.5M Cache, 2.50 GHz)</values>
+        <values>Intel® Core™ i5-8365UE Processor (6M Cache, up to 4.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6242 Processor (22M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i5-8400T Processor (9M Cache, up to 3.30 GHz)</values>
+        <values>Intel® Core™ i5-8500T Processor (9M Cache, up to 3.50 GHz)</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>End Customer Name</label>
+        <name>Pricing_EndCustomer_Nm__c</name>
+        <type>Text</type>
+        <values>TTZ LLP</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Project Name</label>
+        <name>Pricing_Project_Nm__c</name>
+        <type>Text</type>
+        <values>Client Quotes - 06.04.2023</values>
+        <values>Small Volume Quotes - Test MeetComp Pilot</values>
+        <values>test</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved ECAP Price</label>
+        <name>Pricing_ECAP_Price_Amt__c</name>
+        <type>Number</type>
+        <values>1.0___250250.0</values>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Pricing_ECAP_Price_Amt__c</predictedField>
+    <predictionType>Regression</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Project_Nm__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Project_Nm__c&quot;,&quot;postTransformationFilter&quot;:{&quot;includeOthers&quot;:true,&quot;type&quot;:&quot;Text&quot;,&quot;clusters&quot;:[]},&quot;type&quot;:&quot;TypographicClustering&quot;,&quot;config&quot;:{&quot;nameMapping&quot;:{},&quot;ignoreCase&quot;:true,&quot;clusters&quot;:{&quot;Data Center Quotes - 07.07.2023&quot;:[&quot;Data Center Quotes - 07.07.2023&quot;],&quot;Small Volume Quotes - 07.07.2023&quot;:[&quot;Small Volume Quotes - 07.07.2023&quot;],&quot;Data Center Quotes - 26.06.2023&quot;:[&quot;Data Center Quotes - 26.06.2023&quot;],&quot;HPE-123&quot;:[&quot;HPE-123&quot;],&quot;Client Quotes - 09.05.2023&quot;:[&quot;Client Quotes - 09.05.2023&quot;],&quot;Small Volume Quotes - 20.01.2023&quot;:[&quot;Small Volume Quotes - 20.01.2023&quot;],&quot;Small Volume Quotes - 15.05.2023&quot;:[&quot;Small Volume Quotes - 15.05.2023&quot;],&quot;Small Volume Quotes - 06.04.2023&quot;:[&quot;Small Volume Quotes - 06.04.2023&quot;],&quot;Client Quotes - 20.01.2023&quot;:[&quot;Client Quotes - 20.01.2023&quot;],&quot;Client Quotes - 08.06.2023 # 3&quot;:[&quot;Client Quotes - 08.06.2023 # 3&quot;],&quot;Client Quotes - 15.05.2023&quot;:[&quot;Client Quotes - 15.05.2023&quot;],&quot;Client Quotes - 20.01.23&quot;:[&quot;Client Quotes - 20.01.23&quot;],&quot;TEST FSE SDM Account Team#24&quot;:[&quot;TEST FSE SDM Account Team#24&quot;],&quot;Small Volume Quotes - 08.06.2023 # 3&quot;:[&quot;Small Volume Quotes - 08.06.2023 # 3&quot;],&quot;test&quot;:[&quot;test&quot;,&quot;Test&quot;],&quot;Data Center Quotes - 03.03.2023&quot;:[&quot;Data Center Quotes - 03.03.2023&quot;],&quot;TEST FSE SDM Account Team#25&quot;:[&quot;TEST FSE SDM Account Team#25&quot;],&quot;Client Quotes - 06.04.2023&quot;:[&quot;Client Quotes - 06.04.2023&quot;],&quot;Test Folio ID Hyperlink&quot;:[&quot;Test Folio ID Hyperlink&quot;],&quot;Test Additional RPM Receipients #1&quot;:[&quot;Test Additional RPM Receipients #1&quot;],&quot;Data Center Quotes - 11.07.2023&quot;:[&quot;Data Center Quotes - 11.07.2023&quot;],&quot;Client Quotes - 18.01.0&quot;:[&quot;Client Quotes - 18.01.0&quot;],&quot;Data Center Quotes - 08.02.2023&quot;:[&quot;Data Center Quotes - 08.02.2023&quot;],&quot;Small Volume Quotes - 13.02.2023&quot;:[&quot;Small Volume Quotes - 13.02.2023&quot;],&quot;Client Quotes - 11.04.2023&quot;:[&quot;Client Quotes - 11.04.2023&quot;],&quot;Small Volume Quotes - 24.06.2023&quot;:[&quot;Small Volume Quotes - 24.06.2023&quot;],&quot;Data Center Quotes - 24.06.2023&quot;:[&quot;Data Center Quotes - 24.06.2023&quot;],&quot;Data Center Quotes - 15.05.2023&quot;:[&quot;Data Center Quotes - 15.05.2023&quot;],&quot;Data Center Quotes - 05.04&quot;:[&quot;Data Center Quotes - 05.04&quot;],&quot;Data Center Quotes - 09.01&quot;:[&quot;Data Center Quotes - 09.01&quot;],&quot;Small Volume Quotes - 05.01&quot;:[&quot;Small Volume Quotes - 05.01&quot;],&quot;Data Center&quot;:[&quot;Data Center&quot;],&quot;Data Center Quotes - 11.04.2023&quot;:[&quot;Data Center Quotes - 11.04.2023&quot;],&quot;Client Quotes#49&quot;:[&quot;Client Quotes#49&quot;],&quot;Data Center Quotes - 08.06.2023 # 3&quot;:[&quot;Data Center Quotes - 08.06.2023 # 3&quot;],&quot;Client Quotes - UCD # 3&quot;:[&quot;Client Quotes - UCD # 3&quot;],&quot;Client Quotes - UCD # 2&quot;:[&quot;Client Quotes - UCD # 2&quot;],&quot;Test SDMApproval #12&quot;:[&quot;Test SDMApproval #12&quot;],&quot;LBP CD CTO test&quot;:[&quot;LBP CD CTO test&quot;],&quot;Additional RPM#7625&quot;:[&quot;Additional RPM#7625&quot;],&quot;Data Center Quotes - 18.01&quot;:[&quot;Data Center Quotes - 18.01&quot;],&quot;Small Volume Quotes - 08.06.2023&quot;:[&quot;Small Volume Quotes - 08.06.2023&quot;],&quot;test2&quot;:[&quot;test2&quot;],&quot;Data Center Quotes - 28.05.2023&quot;:[&quot;Data Center Quotes - 28.05.2023&quot;],&quot;Small Volume Quotes - Test MeetComp Pilot&quot;:[&quot;Small Volume Quotes - Test MeetComp Pilot&quot;],&quot;Client Quotes - 08.02.2023&quot;:[&quot;Client Quotes - 08.02.2023&quot;],&quot;Client Quotes - 18.01&quot;:[&quot;Client Quotes - 18.01&quot;],&quot;Client Quotes&quot;:[&quot;Client Quotes&quot;],&quot;Small Volume Quotes - 09.02.2023&quot;:[&quot;Small Volume Quotes - 09.02.2023&quot;],&quot;Client Quotes - 03.03.2023&quot;:[&quot;Client Quotes - 03.03.2023&quot;]},&quot;distanceThreshold&quot;:1,&quot;quality&quot;:1},&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Project_Nm__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Project_Nm__c</targetFieldNames>
+        <type>TypographicClustering</type>
+    </transformations>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_EndCustomer_Nm__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_EndCustomer_Nm__c&quot;,&quot;postTransformationFilter&quot;:{&quot;includeOthers&quot;:true,&quot;type&quot;:&quot;Text&quot;,&quot;clusters&quot;:[]},&quot;type&quot;:&quot;TypographicClustering&quot;,&quot;config&quot;:{&quot;nameMapping&quot;:{},&quot;ignoreCase&quot;:true,&quot;clusters&quot;:{&quot;Test EC&quot;:[&quot;Test EC&quot;],&quot;BMW Test Account&quot;:[&quot;BMW Test Account&quot;],&quot;Client Quotes - UCD # 1&quot;:[&quot;Client Quotes - UCD # 1&quot;],&quot;test&quot;:[&quot;test&quot;],&quot;Jio TeleCommunications&quot;:[&quot;Jio TeleCommunications&quot;],&quot;Azintelecom&quot;:[&quot;Azintelecom&quot;],&quot;Mama Earth Naturals Test&quot;:[&quot;Mama Earth Naturals Test&quot;],&quot;Nokia Communications..&quot;:[&quot;Nokia Communications..&quot;],&quot;BMW Test&quot;:[&quot;BMW Test&quot;],&quot;TTZ LLP&quot;:[&quot;TTZ LLP&quot;],&quot;BMW&quot;:[&quot;BMW&quot;],&quot;Big Beans&quot;:[&quot;Big Beans&quot;],&quot;Fossils.&quot;:[&quot;Fossils.&quot;],&quot;IQR_test_Customer&quot;:[&quot;IQR_test_Customer&quot;],&quot;CompuGroup Medical&quot;:[&quot;CompuGroup Medical&quot;],&quot;International Insurance Company&quot;:[&quot;International Insurance Company&quot;],&quot;Test Benz Companies&quot;:[&quot;Test Benz Companies&quot;]},&quot;distanceThreshold&quot;:1,&quot;quality&quot;:1},&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_EndCustomer_Nm__c</sourceFieldNames>
+        <targetFieldNames>Pricing_EndCustomer_Nm__c</targetFieldNames>
+        <type>TypographicClustering</type>
+    </transformations>
+</DiscoveryAIModel>

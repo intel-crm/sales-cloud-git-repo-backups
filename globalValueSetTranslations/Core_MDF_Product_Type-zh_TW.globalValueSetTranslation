@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>2-in-1</masterLabel>
+        <translation>2 合1</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ACPC</masterLabel>
+        <translation><!-- ACPC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AIO</masterLabel>
+        <translation>整合式全功能</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>All-in-One Desktop</masterLabel>
+        <translation><!-- All-in-One Desktop --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>All-in-one</masterLabel>
+        <translation>整合式全功能電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Altera®</masterLabel>
+        <translation><!-- Altera® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Appliance</masterLabel>
+        <translation>設備</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Athena</masterLabel>
+        <translation><!-- Athena --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Chromebook</masterLabel>
+        <translation><!-- Chromebook --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Client</masterLabel>
+        <translation>用戶端</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud</masterLabel>
+        <translation>雲端</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Instance Consumption</masterLabel>
+        <translation>雲端實例使用量</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Communications</masterLabel>
+        <translation>通訊</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Component</masterLabel>
+        <translation>系統元件</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Data Center DGPU</masterLabel>
+        <translation><!-- Data Center DGPU --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Desktop</masterLabel>
+        <translation>桌上型電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Gateway</masterLabel>
+        <translation><!-- Edge Gateway --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge/IOT</masterLabel>
+        <translation>邊緣/IOT</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA Programmable Solution</masterLabel>
+        <translation>FPGA 可程式化解決方案</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HPC</masterLabel>
+        <translation>高效能運算</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Handheld</masterLabel>
+        <translation>手持裝置</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hyper Converged Solutions</masterLabel>
+        <translation>超融合式解決方案</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Unite®</masterLabel>
+        <translation><!-- Intel Unite® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel vPro®</masterLabel>
+        <translation><!-- Intel vPro® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intelligent Edge/IoT</masterLabel>
+        <translation>智能邊緣/物聯網</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i3</masterLabel>
+        <translation><!-- Intel® Core™ i3 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i5</masterLabel>
+        <translation><!-- Intel® Core™ i5 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i7</masterLabel>
+        <translation><!-- Intel® Core™ i7 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i9</masterLabel>
+        <translation><!-- Intel® Core™ i9 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Enpirion®</masterLabel>
+        <translation><!-- Intel® Enpirion® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Movidius™</masterLabel>
+        <translation><!-- Intel® Movidius™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Nervana™</masterLabel>
+        <translation><!-- Intel® Nervana™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™</masterLabel>
+        <translation><!-- Intel® Optane™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ DC</masterLabel>
+        <translation><!-- Intel® Optane™ DC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® RealSense™</masterLabel>
+        <translation><!-- Intel® RealSense™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon®</masterLabel>
+        <translation><!-- Intel® Xeon® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Laptop</masterLabel>
+        <translation>筆記型電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mini PC</masterLabel>
+        <translation>小巧電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mini PC w/NUC</masterLabel>
+        <translation>搭載 NUC 的迷你型電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mini PC/NUC</masterLabel>
+        <translation>迷你電腦/NUC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
+        <translation><!-- Modern Notebook (2-in-1/T+L) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Motherboard</masterLabel>
+        <translation>主機板</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC</masterLabel>
+        <translation><!-- NUC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking &amp; Telecommunications</masterLabel>
+        <translation>網路與電信</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking/Ethernet</masterLabel>
+        <translation>網路/乙太網路</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Notebook</masterLabel>
+        <translation>筆記型電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>OpenVINO™</masterLabel>
+        <translation><!-- OpenVINO™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Programmable Solution</masterLabel>
+        <translation>可程式化解決方案</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server</masterLabel>
+        <translation>伺服器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (AI/GPU)</masterLabel>
+        <translation>伺服器（AI/GPU）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (Cloud)</masterLabel>
+        <translation>伺服器（雲端）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (ESMB)</masterLabel>
+        <translation>伺服器（ESMB）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (HPC)</masterLabel>
+        <translation>伺服器 （HPC）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (non-HPC)</masterLabel>
+        <translation>伺服器（非 HPC）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service</masterLabel>
+        <translation>服務</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software</masterLabel>
+        <translation>軟體</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution</masterLabel>
+        <translation>解決方案</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Storage</masterLabel>
+        <translation>儲存系統</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telco</masterLabel>
+        <translation>電信</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thin &amp; Light</masterLabel>
+        <translation>輕薄裝置</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traditional Desktop</masterLabel>
+        <translation><!-- Traditional Desktop --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traditional Notebook</masterLabel>
+        <translation>傳統筆記型電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation</masterLabel>
+        <translation><!-- Workstation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation - Desktop</masterLabel>
+        <translation>工作站 - 桌上型電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation - Fixed</masterLabel>
+        <translation>工作站 - 固定裝置</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation - Mobile</masterLabel>
+        <translation>工作站 - 行動電腦</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Xeon</masterLabel>
+        <translation><!-- Xeon --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

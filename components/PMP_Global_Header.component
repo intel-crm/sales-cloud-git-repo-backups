@@ -1,0 +1,16 @@
+<apex:component access="global" controller="PMP_SendEmailAlertsForPartners">
+  <apex:attribute name="message" type="String" description="Message to be displayed on Banner" assignTo="{!headerMessage}"/>
+	
+  <table style="background-color:#0068B5;" width="75%">
+    <tr>
+        <td style="padding-left:50px;border: 0px;border:none;">
+            <div style="color:white;"><h1 style="font-weight:normal">{!headerMessage} </h1></div>
+        </td>
+        <td style="border:none;padding-right:20px;" align="right">          
+            <!--<img src="{!URLFOR($Resource.IntelClearFonts, 'images/intel-logo-white-100.png')}" align="right"/> -->
+            <apex:image url="{!headerURL}"/>
+        </td>
+    </tr>
+   </table>
+    
+</apex:component>

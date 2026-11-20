@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Survey</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Surveys</value>
+    </caseValues>
+    <fields>
+        <label><!-- ALG Survey Id --></label>
+        <name>MaritzCX__ALG_Survey_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- MaritzCX Survey Response View Link --></label>
+        <name>MaritzCX__Allegiance_Survey_Response_View_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Default Survey --></label>
+        <name>MaritzCX__Is_Default_Survey__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1- Goal --></label>
+        <name>MaritzCX__KM1_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1- Max --></label>
+        <name>MaritzCX__KM1_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1- Min --></label>
+        <name>MaritzCX__KM1_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2- Goal --></label>
+        <name>MaritzCX__KM2_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2- Max --></label>
+        <name>MaritzCX__KM2_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2- Min --></label>
+        <name>MaritzCX__KM2_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3- Goal --></label>
+        <name>MaritzCX__KM3_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3- Max --></label>
+        <name>MaritzCX__KM3_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3- Min --></label>
+        <name>MaritzCX__KM3_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4- Goal --></label>
+        <name>MaritzCX__KM4_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4- Max --></label>
+        <name>MaritzCX__KM4_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4- Min --></label>
+        <name>MaritzCX__KM4_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5- Goal --></label>
+        <name>MaritzCX__KM5_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5- Max --></label>
+        <name>MaritzCX__KM5_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5- Min --></label>
+        <name>MaritzCX__KM5_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1 Chart --></label>
+        <name>MaritzCX__Key_Metric_1_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2 Chart --></label>
+        <name>MaritzCX__Key_Metric_2_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3 Chart --></label>
+        <name>MaritzCX__Key_Metric_3_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4 Chart --></label>
+        <name>MaritzCX__Key_Metric_4_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5 Chart --></label>
+        <name>MaritzCX__Key_Metric_5_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>MaritzCX__Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Trend --></label>
+        <name>MaritzCX__Time_Trend__c</name>
+        <picklistValues>
+            <masterLabel>Half Yearly</masterLabel>
+            <translation><!-- Half Yearly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly</masterLabel>
+            <translation><!-- Monthly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quarterly</masterLabel>
+            <translation><!-- Quarterly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yearly</masterLabel>
+            <translation><!-- Yearly --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

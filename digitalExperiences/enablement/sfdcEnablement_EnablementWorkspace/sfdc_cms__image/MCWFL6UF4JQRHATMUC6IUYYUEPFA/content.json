@@ -1,0 +1,15 @@
+{
+  "type" : "sfdc_cms__image",
+  "title" : "Pain Points 1",
+  "contentBody" : {
+    "sfdc_cms:media" : {
+      "source" : {
+        "mimeType" : "image/png",
+        "ref" : "0sNHo000000ChuO",
+        "type" : "file",
+        "size" : 9687
+      }
+    }
+  },
+  "urlName" : "pain-points-1"
+}

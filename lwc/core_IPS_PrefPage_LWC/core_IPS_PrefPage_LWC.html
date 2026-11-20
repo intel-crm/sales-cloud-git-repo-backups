@@ -1,0 +1,129 @@
+<template>
+<lightning-card>
+    <div class="slds-p-around_medium">
+        <lightning-button onclick={handleNavigateBack} label="< Back" title="Back to dashboard" class="noBorder">
+        </lightning-button>
+    </div>
+    <div style="height: 6rem;background-color: #653171;">
+        <h1 style="font-size: 22px; font-weight:normal; color: white;" class="slds-p-around_x-large">Preferences
+        </h1>
+    </div>
+    <div class="prefPageContainer">
+        <h1 style="font-size: 22px; font-weight:normal; padding-top: 2rem;padding-left:2rem;">Trade Compliance
+            Preferences</h1>
+        <div style="padding-top: 15px; padding-left:2rem; padding-right:2rem;">
+            <span>By selecting No below, you are confirming that cases you submit on Intel®
+                Premier
+                Support are NOT related to the use of Intel® Products and Solutions regarding military,
+                intelligence,
+                nuclear/biochemical, defense, or space (MINDS)</span>
+        </div>
+        <div class="slds-grid slds-wrap " style="padding-top: 20px; padding-right: 10px;">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2"
+                style="padding-left: 2rem; padding-right:1.5rem">
+                <span style="font-weight:bold">Are your cases typically related to the use of Intel® Products
+                    and
+                    Solutions in regards to military, intelligence, nuclear/biochemical, defense, or space items?
+                </span>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <span style="display: flex;">
+                    <lightning-input type="checkbox" label="Yes" name="yeschecked" onchange={handleChangecheck}
+                        checked={yesValue}></lightning-input>
+                    <lightning-input type="checkbox" label="No" name="nochecked" onchange={handleChangecheckNo}
+                        class="slds-p-left_large" checked={noValue}></lightning-input>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap " style="padding-top: 20px;">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2" style="padding-top: 1.5rem;">
+                <span style="font-weight:bold;padding-top: 20px; padding-left:2rem;">My primary worksite location
+                    <span style="color:red">*</span>
+                </span>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                <lightning-combobox name="filter" value={selectedValue} options={options}
+                    onchange={handlePicklistChange} style="padding-right: 6px;">
+                </lightning-combobox>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <h1 style="font-size: 22px; font-weight:normal; padding-left:2rem;">Email Preferences</h1>
+            <div style="padding-top: 15px;padding-left:2rem;padding-right:2rem;">On this page you can Opt In or Out
+                of Intel Premier Support email
+                communication. By Opting In you are agreeing that Intel will notify you when a Case has been:
+                Create,
+                Updated, Closed, Reopened or had an Attachment. You will also be notified if a File has been made
+                available for you to download. By Opting Out you will receive no email communication except for when
+                a
+                Case you are working on has been Closed.</div>
+        </div>
+        <div class="slds-grid slds-wrap " style="padding-top: 20px;">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2"
+                style="padding-top:1rem;padding-left:2rem;padding-right:1.5rem;">
+                <template if:true={emailin}>
+                    <span style="font-weight:bold;padding-top: 15px;">You are currently Opted Out to receive emails
+                        from Intel Premier Support. Check the box below to Opt In.
+                    </span>
+                </template>
+                <template if:true={emailout}>
+                    <span style="font-weight:bold;padding-top: 15px;">You are currently Opted In to receive emails
+                        from Intel Premier Support. Check the box below to Opt Out.
+                    </span>
+                </template>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <template if:true={emailin}>
+                    <lightning-input type="checkbox" label="Yes,Opt in" name="yescheckedopt"
+                        onchange={handleChangecheckoptin} style="padding-top: 15px"></lightning-input>
+                </template>
+                <template if:true={emailout}>
+                    <lightning-input type="checkbox" label="Yes,Opt Out" name="yescheckedopt"
+                        onchange={handleChangecheckoptout} style="padding-top: 15px"></lightning-input>
+                </template>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <h1 style="padding-top: 15px; font-size: 22px; font-weight:normal; padding-left:2rem;">Please set your
+                local TimeZone here</h1>
+            <div class="slds-grid slds-wrap " style="padding-top: 20px;">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2"
+                    style="padding-left:2rem;padding-right:1.5rem;">
+                    <span style="font-weight:bold;width: 33ch;padding-top: 15px">The date/time information on the
+                        cases will
+                        be displayed in the timezone below. You can update your settings here.</span>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId}>
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field field-name="TimeZoneSidKey" value={timevalue} variant="label-hidden"
+                            onchange={handlePicklistChangetimezone} required=false></lightning-input-field>
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="slds-grid slds-wrap " style="padding-top: 20px;padding-bottom:20px">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2"></div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <lightning-button variant="brand" label="Submit" title="Save" onclick={submitHandleClick}
+                    class="slds-m-left_x-small" style="padding-top: 15px">
+                </lightning-button>
+
+                <lightning-button variant="Neutral" label="Cancel" title="Cancel" onclick={cancelHandleClick}
+                    class="slds-m-left_x-small" style="padding-top: 15px">
+                </lightning-button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+    </div>
+</lightning-card>
+<template if:true={isSpinner}>
+    <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+</template>
+</template>

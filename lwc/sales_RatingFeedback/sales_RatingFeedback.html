@@ -1,0 +1,90 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+     </div>
+        <div class="slds-col">
+          <lightning-card>
+           <lightning-layout>
+              <lightning-layout-item padding="around-small" size = "12">
+                 <lightning-layout style="padding:0.5rem;background:#0961e6">
+                  <lightning-layout-item size="3">
+                      <div class="image">
+                          <img src={feedbackiconnew}>
+                      </div>
+                   </lightning-layout-item>
+                 <lightning-layout-item size="6">
+                      <div class="slds-text-body--regular slds-text-color_inverse" style="text-align: center;" >{label.SalesGiveFeedbackHtml}</div>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="2">
+      
+                  </lightning-layout-item>
+                  <lightning-layout-item size="1">
+                      <div  class="slds-float_right"> 
+                       <lightning-button variant="neutral" label="⨉" title="Cancel" onclick={handleOnCancel}> </lightning-button>
+                   </div> 
+                  </lightning-layout-item>  
+                  </lightning-layout>
+                  <lightning-layout>
+                  <lightning-layout-item size="12">
+                  <div></br>{label.rating_one}</div> 
+                  </lightning-layout-item>
+                  </lightning-layout>
+                </br>
+                <template if:true={isRatingProvided}>
+                  <lightning-layout>
+                    <div class="slds-text-body--regular slds-text-color_error slds-text-title_bold">
+                      {label.service}
+                    </div><br />
+                  </lightning-layout>
+                </template>
+                  <lightning-layout>
+                    <div class="rate">
+                          <input type="radio" id="starfive" name="name" value="5" onchange={rating}/>
+                              <label for="starfive" title={label.Sales_GiveFeedback_5star}>5 stars</label>
+                              <input type="radio" id="starfour" name="name" value="4" onchange={rating} />
+                              <label for="starfour" title={label.Sales_GiveFeedback_4star}>4 stars</label>
+                              <input type="radio" id="starthree" name="name" value="3" onchange={rating} />
+                              <label for="starthree" title={label.Sales_GiveFeedback_3star}>3 stars</label>
+                              <input type="radio" id="startwo" name="name" value="2" onchange={rating} />
+                              <label for="startwo" title={label.Sales_GiveFeedback_2star}>2 stars</label>
+                              <input type="radio" id="starone" name="name" value="1" onchange={rating} />
+                              <label for="starone" title={label.Sales_GiveFeedback_1star}>1 star</label>
+                      </div>
+                 
+                 </lightning-layout>
+                  </br>
+                   <template if:true={isCapabilityProvided}>
+                    <lightning-layout>
+                       <div class="slds-text-body--regular slds-text-color_error slds-text-title_bold">
+                       {label.Sales_capability}
+                     </div><br />
+                    </lightning-layout>
+                    </template>
+                           <lightning-layout>
+                            <lightning-layout-item  size = "12">
+                        <!--<div>Please select Capability</div>--> 
+                          <lightning-combobox  style="padding-left:0%;" label={label.Sales_SelectCapability} name="capability" placeholder="" value={value} options={options} onchange={handlecapability}  required  dropdown-alignment="auto"></lightning-combobox> 
+                       </lightning-layout-item>
+                        </lightning-layout>
+                           <lightning-layout>
+                              <lightning-layout-item  size = "12">
+                                <div>{label.optional}</div>
+                                <lightning-textarea data-id="textfeedback" name="textfeedback"  style="margin-top: -4%;" value={textfeed} onchange={input1OnChange} label=""  maxlength="500"></lightning-textarea>
+                                <div>{output} {label.charactermessage}</div>
+                            </lightning-layout-item>
+                          </lightning-layout>
+                         <lightning-layout>
+                              <lightning-layout-item padding="around-small" size = "12">
+                                  <lightning-button type="submit" name="submit" label={label.Sales_SubmitFeedback_Html} onclick={handleOnSubmit} class="slds-float_right"> </lightning-button>
+                              </lightning-layout-item>
+                          </lightning-layout>
+                           <lightning-layout>
+                          </lightning-layout>
+                  </lightning-layout-item>
+              </lightning-layout>
+        </lightning-card>
+        </div>
+        <div class="slds-col">  
+        </div>
+      </div>  
+</template>

@@ -1,0 +1,100 @@
+<template>
+    <template if:true={showModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+    <div class="slds-modal__container">
+            <!-- modal body start -->
+
+   <header class="slds-modal__header">         
+    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title={label.Sales_OrderClose} onclick={closeModal}>  
+                  <lightning-icon icon-name="utility:close"    alternative-text="close"    variant="inverse"    size="small" ></lightning-icon>        
+  <span class="slds-assistive-text">{label.Sales_OrderClose}</span>                  
+  </button>    
+   </header>
+
+
+ <div class="slds-modal__content slds-p-around_medium">
+
+    <!--<div class="slds-m-around_large">  -->
+        <div if:false={isLoaded} class="slds-is-relative">  
+            <lightning-spinner alternative-text="Loading...">  
+            </lightning-spinner>  
+        </div>  
+    <!--</div>  -->
+
+    <template if:false={showGenerateLicenseForm}>
+    <lightning-record-edit-form id="admnForm" object-api-name="Sales_License__c" layout-type="compact"  
+    title={label.Saleslicinfotitle} onsuccess={handleOnSuccess}  
+    onload={handleOnLoad}>  
+    <lightning-card title={label.SalesActivationCodeTitle} icon-name="standard:form">
+    <lightning-messages>  
+    </lightning-messages>  
+            
+    <lightning-layout>
+        <lightning-layout-item>
+            <div style="margin-left:10%;width: 188%;padding-top: 11%;">
+            <label class="slds-float_left slds-p-top_medium" style="margin-bottom: -9%;" for="activationCode">{label.SalesLACHTML}</label>
+            <abbr title={label.salesreq} class="slds-float_left slds-required slds-p-top_medium">*</abbr>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+
+        <lightning-layout verticalalign="end" class="slds-p-around_xxx-small">
+        <lightning-layout-item padding="around-small" size="10" flexibility="auto">
+            <lightning-input-field id="activationCode" onchange={handleInputFieldChange} field-name='Sales_License_Activation_Code__c' variant="label-hidden" onkeydown={key_Code_Checker}></lightning-input-field>  
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" >            
+            <lightning-button name={label.SalessearchErr} label={label.SalessearchErr}  style="margin-left: -15%;" onclick={validateinputactivationCode} disabled={disableSearch}></lightning-button>
+        </lightning-layout-item>
+        </lightning-layout>
+
+        <template if:true={isDataFound}>
+            <div class="slds-box">
+            <lightning-datatable
+                    key-field="id"
+                    data={hostlist}
+                    columns={columns}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1">
+            </lightning-datatable>
+            </div>
+            <br>
+        </template>
+
+    <template if:true={isInternal}>
+        <lightning-layout>
+            <lightning-layout-item>
+                <div style="margin-left:15%;width: 188%;padding-top: 11%;">
+                <label class="slds-float_left slds-p-top_medium" for="primaryAdm">{label.SalesPrimaryAdminHTML}</label>
+                <abbr title={label.salesreq} class="slds-float_left slds-required slds-p-top_medium">*</abbr> 
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout verticalalign="end" class="slds-p-around_xxx-small">
+            <lightning-layout-item padding="around-small" size="10" flexibility="auto">
+                <lightning-input-field id="primaryAdm" onchange={handleInputFieldChange} field-name='Sales_License_Primary_Admin_Contact__c' variant="label-hidden" required="true"></lightning-input-field>  
+            </lightning-layout-item>
+        </lightning-layout>
+    </template> 
+     
+<footer class="slds-card__footer">
+    <template if:false={isInternal}>
+        <hr>
+    </template>
+    <lightning-button variant="neutral" label={label.Sales_Cancel} title={label.Sales_Cancel} onclick={navigateToListView} class="slds-m-left_x-small"></lightning-button>
+    <lightning-button variant="brand" label={label.Sales_nextmsg} title={label.Sales_nextmsg} onclick={handleOnSubmitBtnClick} class="slds-m-left_x-small" disabled={disableNext}></lightning-button>
+
+</footer>
+</lightning-card> 
+</lightning-record-edit-form>
+</template>
+
+</div>
+<template if:true={showGenerateLicenseForm}>
+    <c-sales_-generate-license_-on-license-Record activatecodeonload={activationCode} fromlac={fromlac} licneserecordid={licenseId} primarycontact={primaryAdminContact} licensetypevalue={licenseToolType} existingcomputername={isHost}  licenserectype={licType} licstatus={licenseStatus} ></c-sales_-generate-license_-on-license-Record>
+</template>
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+</template>

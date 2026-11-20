@@ -1,0 +1,22 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Define Customer's Desired Business Outcome",
+  "contentBody" : {
+    "description" : "Identify the business outcome or challenge the customer is trying to solve for and discuss + document the customers evaluation criteria which would result in a Generative AI solution landing on Intel",
+    "sections" : [ {
+      "content" : "<div><img alt=\"Pain Points 1\" src=\"/cms/media/MCWFL6UF4JQRHATMUC6IUYYUEPFA\" /></div><div><img alt=\"Pain Points\" src=\"/cms/media/MCPUP6NM2X5JFY3OK77QN5WYROAU\" /></div>",
+      "keyConcept" : "Identify Pain Points and Challenges",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Ask the customer questions around criteria and metrics they will require which could result in a Gaudi purchase. </div><div><br /></div><ul><li>Performance / cost competitiveness </li><li>Specific performance levels </li><li>Compatibility with required models </li><li>Ease of use </li></ul>",
+      "keyConcept" : "Discuss evaluation criteria with the customer ",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Through the Assess Phase details and the above questions, define the key Business Outcome for your customer&#39;s LLM opportunity.</div><div><br /></div><div><img alt=\"Business Outcome\" src=\"/cms/media/MC2IYAPXC6A5CRLGKKQYGEP3R24E\" /></div>",
+      "keyConcept" : "Business Outcome Definition",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1.0
+  },
+  "urlName" : "define-customer-s-desired-business-outcome"
+}

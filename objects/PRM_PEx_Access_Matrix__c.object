@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PRM_Benefit_Blade__c</fullName>
+        <label>Benefit Blade</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Artificial Intelligence Specialty</fullName>
+                    <default>false</default>
+                    <label>Artificial Intelligence Specialty</label>
+                </value>
+                <value>
+                    <fullName>Cloud Data Center Specialty</fullName>
+                    <default>false</default>
+                    <label>Cloud Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Deal Registration</fullName>
+                    <default>false</default>
+                    <label>Deal Registration</label>
+                </value>
+                <value>
+                    <fullName>Design Enablement Services,DIT</fullName>
+                    <default>false</default>
+                    <label>Design Enablement Services,DIT</label>
+                </value>
+                <value>
+                    <fullName>Design Enablement Services,IDDS</fullName>
+                    <default>false</default>
+                    <label>Design Enablement Services,IDDS</label>
+                </value>
+                <value>
+                    <fullName>Device as a Service Specialty</fullName>
+                    <default>false</default>
+                    <label>Device as a Service Specialty</label>
+                </value>
+                <value>
+                    <fullName>Enablement Zones</fullName>
+                    <default>false</default>
+                    <label>Enablement Zones</label>
+                </value>
+                <value>
+                    <fullName>Enthusiast PC Specialty</fullName>
+                    <default>false</default>
+                    <label>Enthusiast PC Specialty</label>
+                </value>
+                <value>
+                    <fullName>FPGA Tools and Resources</fullName>
+                    <default>false</default>
+                    <label>FPGA Tools and Resources</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing Data Center Specialty</fullName>
+                    <default>false</default>
+                    <label>High Performance Computing Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Industrial Solutions Builder Specialty</fullName>
+                    <default>false</default>
+                    <label>Industrial Solutions Builder Specialty</label>
+                </value>
+                <value>
+                    <fullName>Intel® Developer Zone - Premier</fullName>
+                    <default>false</default>
+                    <label>Intel® Developer Zone - Premier</label>
+                </value>
+                <value>
+                    <fullName>Intel® Developer Zone - Standard</fullName>
+                    <default>false</default>
+                    <label>Intel® Developer Zone - Standard</label>
+                </value>
+                <value>
+                    <fullName>IPA Lookup Tool</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IPA Lookup Tool</label>
+                </value>
+                <value>
+                    <fullName>Leads</fullName>
+                    <default>false</default>
+                    <label>Leads</label>
+                </value>
+                <value>
+                    <fullName>Managed Services Specialty</fullName>
+                    <default>false</default>
+                    <label>Managed Services Specialty</label>
+                </value>
+                <value>
+                    <fullName>Marketing Studio</fullName>
+                    <default>false</default>
+                    <label>Marketing Studio</label>
+                </value>
+                <value>
+                    <fullName>Marketplace</fullName>
+                    <default>false</default>
+                    <label>Marketplace</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>Networking Specialty</fullName>
+                    <default>false</default>
+                    <label>Networking Specialty</label>
+                </value>
+                <value>
+                    <fullName>Optane Client Specialty</fullName>
+                    <default>false</default>
+                    <label>Optane Client Specialty</label>
+                </value>
+                <value>
+                    <fullName>Optane Data Center Specialty</fullName>
+                    <default>false</default>
+                    <label>Optane Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Partner Help</fullName>
+                    <default>false</default>
+                    <label>Partner Help</label>
+                </value>
+                <value>
+                    <fullName>Partner Lookup Tool</fullName>
+                    <default>false</default>
+                    <label>Partner Lookup Tool</label>
+                </value>
+                <value>
+                    <fullName>Points</fullName>
+                    <default>false</default>
+                    <label>Points</label>
+                </value>
+                <value>
+                    <fullName>Pricing, Points and Promotions</fullName>
+                    <default>false</default>
+                    <label>Pricing, Points and Promotions</label>
+                </value>
+                <value>
+                    <fullName>Products &amp; Roadmaps</fullName>
+                    <default>false</default>
+                    <label>Products &amp; Roadmaps</label>
+                </value>
+                <value>
+                    <fullName>Resource &amp; Documentation Center - Premier Access</fullName>
+                    <default>false</default>
+                    <label>Resource &amp; Documentation Center - Premier Access</label>
+                </value>
+                <value>
+                    <fullName>Resource &amp; Documentation Center - Public</fullName>
+                    <default>false</default>
+                    <label>Resource &amp; Documentation Center - Public</label>
+                </value>
+                <value>
+                    <fullName>Select Benefit</fullName>
+                    <default>false</default>
+                    <label>Select Benefit</label>
+                </value>
+                <value>
+                    <fullName>Specialty</fullName>
+                    <default>false</default>
+                    <label>Specialty</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Video Specialty</fullName>
+                    <default>false</default>
+                    <label>Video Specialty</label>
+                </value>
+                <value>
+                    <fullName>Visual Display Solutions Specialty</fullName>
+                    <default>false</default>
+                    <label>Visual Display Solutions Specialty</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Benefit_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Priority</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_CTA_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Click To Action Priority</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Click_To_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Click To Action</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Entitlements__c</fullName>
+        <externalId>false</externalId>
+        <label>Entitlements</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Hide_Logo_Icon__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Enable/Disable logo in Community</description>
+        <label>Hide Logo Icon</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_IPA_Partner_Role__c</fullName>
+        <label>Partner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor</label>
+                </value>
+                <value>
+                    <fullName>Solution Integrator</fullName>
+                    <default>false</default>
+                    <label>Solution Integrator</label>
+                </value>
+                <value>
+                    <fullName>Guest</fullName>
+                    <default>false</default>
+                    <label>Guest</label>
+                </value>
+                <value>
+                    <fullName>Builder</fullName>
+                    <default>false</default>
+                    <label>Builder</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Cloud &amp; Comms Service Provider</label>
+                </value>
+                <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Original Equipment Manufacturer (OEM)</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>Sponsor</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Sponsor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_IPA_Quick_Links__c</fullName>
+        <label>IPA Quick Links</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>https://intel.com</fullName>
+                    <default>false</default>
+                    <label>https://intel.com</label>
+                </value>
+                <value>
+                    <fullName>https://www.intelmanagepersonnel.com</fullName>
+                    <default>false</default>
+                    <label>https://www.intelmanagepersonnel.com</label>
+                </value>
+                <value>
+                    <fullName>https://www.intelinvitemembers.com</fullName>
+                    <default>false</default>
+                    <label>https://www.intelinvitemembers.com</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_IPA_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>IPA URL</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Metric__c</fullName>
+        <externalId>false</externalId>
+        <label>Metric</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Benefit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Partner Benefit</label>
+        <referenceTo>PRM_PartnerBenefit__c</referenceTo>
+        <relationshipName>PRM_Access_Matrix_Setups</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Specialty_Select_Benefit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Partner Specialty/Select Benefit</label>
+        <referenceTo>PRM_Specialty__c</referenceTo>
+        <relationshipLabel>IPA Access Matrix</relationshipLabel>
+        <relationshipName>IPA_Access_Matrix</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Speciality_Select_Benefit_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Speciality/ Select Benefit Priority</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_isActive_Indicator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isActive</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>IPA Access Matrix</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Benefit_Blade__c</columns>
+        <columns>PRM_Benefit_Priority__c</columns>
+        <columns>PRM_Partner_Benefit__c</columns>
+        <columns>PRM_Partner_Specialty_Select_Benefit__c</columns>
+        <columns>PRM_IPA_Partner_Role__c</columns>
+        <columns>PRM_Entitlements__c</columns>
+        <columns>PRM_Click_To_Action__c</columns>
+        <columns>PRM_CTA_Priority__c</columns>
+        <columns>PRM_Speciality_Select_Benefit_Priority__c</columns>
+        <columns>PRM_IPA_URL__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>AMS-{0000}</displayFormat>
+        <label>IPA Access Matrix Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>IPA Access Matrix</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Benefit_Access_Rule</fullName>
+        <active>true</active>
+        <label>Benefit Access Rule</label>
+        <picklistValues>
+            <picklist>PRM_Benefit_Blade__c</picklist>
+            <values>
+                <fullName>Deal Registration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Enablement Services%2CDIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Enablement Services%2CIDDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enablement Zones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Tools and Resources</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Developer Zone - Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Developer Zone - Standard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Studio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketplace</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Help</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Lookup Tool</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pricing%2C Points and Promotions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products %26 Roadmaps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource %26 Documentation Center - Premier Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource %26 Documentation Center - Public</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Select Benefit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Quick_Links__c</picklist>
+            <values>
+                <fullName>https%3A%2F%2Fintel%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Quick_Links_Access_Rule</fullName>
+        <active>true</active>
+        <label>Quick Links Access Rule</label>
+        <picklistValues>
+            <picklist>PRM_Benefit_Blade__c</picklist>
+            <values>
+                <fullName>Enablement Zones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Studio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketplace</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Help</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Select Benefit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Quick_Links__c</picklist>
+            <values>
+                <fullName>https%3A%2F%2Fintel%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>https%3A%2F%2Fwww%2Eintelinvitemembers%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>https%3A%2F%2Fwww%2Eintelmanagepersonnel%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Specialty_Select_Benefit_Access_Rule</fullName>
+        <active>true</active>
+        <label>Specialty-Select Benefit Access Rule</label>
+        <picklistValues>
+            <picklist>PRM_Benefit_Blade__c</picklist>
+            <values>
+                <fullName>Artificial Intelligence Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Data Center Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Device as a Service Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enablement Zones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enthusiast PC Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High Performance Computing Data Center Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industrial Solutions Builder Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Managed Services Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Studio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketplace</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optane Client Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optane Data Center Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Help</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Select Benefit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Visual Display Solutions Specialty</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Quick_Links__c</picklist>
+            <values>
+                <fullName>https%3A%2F%2Fintel%2Ecom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

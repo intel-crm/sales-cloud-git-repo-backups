@@ -1,0 +1,1261 @@
+<!--
+  @description       : 
+  @author            : Balaji M
+  @group             : 
+  @last modified on  : 09-03-2020
+  @last modified by  : Balaji M
+  Modifications Log 	
+  Ver   Date         Author     Modification
+  1.0   08-24-2020   Balaji M   Initial Version
+-->
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" controller="PMP_SearchEditStoreFrontController">
+    
+    <!--  <aura:attribute name="devUploadRecordId" type="String" default="{!$Label.c.ISG_EditStorefront_DEV_UploadRecordId}" /> -->
+    
+    <aura:set attribute="storeName" value="Settings" />
+    
+    <aura:attribute name="isOpen" type="boolean" default="false" description="Opens the edit storefront modal" />
+    <aura:attribute name="isLocked" type="Boolean" default="false" description="The edit storefront modal is locked because changes have already been submitted" />
+    <aura:attribute name="partnerId" type="String" description="The Id for the partner object being edited" />
+    <aura:attribute name="currentStep" type="Integer" default="0" description="This is the current step in the form and can be set to enter the form on a specific step" />
+    <aura:attribute name="firstSubmission" type="Boolean" default="true" description="Is this the first time using the form and submitting the offering?" />
+    <aura:attribute name="isGuest" type="Boolean" default="false" />
+    <aura:attribute name="isOpenCheckbox" type="Boolean" default="false"/> 
+    <aura:attribute name="showModal" type="boolean" default="false"/><!-- Added by Megha as part of US619896-->
+    <aura:attribute name="isFromLink" type="boolean" default="false"/><!-- Added by Subash as part of US619896-->
+    <!-- other internal attributes -->
+      <aura:attribute name="isAnyError" type="boolean" default="false"/>
+    <aura:attribute name="activeStep" type="Integer" default="6" description="Internal (this form does not keep track of 'pristine' steps in the form" />
+    <aura:attribute name="steps" type="Object[]" description="Internal" />
+    <aura:attribute name="stepLabels" type="string[]" description="Internal" />
+    <aura:attribute name="onstepchange" type="Object" description="Internal" />
+    <aura:attribute name="onTabChange" type="Object" description="Internal" />
+    <aura:attribute name="modalHeading" type="String" description="Internal" />
+    <aura:attribute name="currentStepHeading" type="String" default="" description="Internal" />
+    <aura:attribute name="formTouched" type="Boolean" default="false" />
+    <aura:attribute name="formValid" type="Boolean" default="false" />
+    <aura:attribute name="formErrorMsgs" type="String[]" />
+    <aura:attribute name="closeModalCallback" type="Object" description="Internal" />
+    
+    <aura:attribute name="stepLoading" type="boolean" default="false" />
+    <aura:attribute name="nextButtonDisabled" type="Boolean" default="false" />
+    
+    <!-- step attributes (form data) -->
+    <aura:attribute name="logoCheck" type="Boolean" description="Internal"  default="true"/> 
+    <aura:attribute name="hasLogo" type="Boolean" default="false" description="Internal" />
+    <aura:attribute name="logourl" type="string" description="Internal" />
+    <aura:attribute name="workingCopyId" type="String" description="Internal" />
+    <aura:attribute name="formData" type="Object" description="Internal" />
+    <aura:attribute name="logo" type="Object[]" description="Internal" />
+    <aura:attribute name="additionalLogos" type="object[]" description="Internal" />
+    <aura:attribute name="showAdditionalUploader" type="Boolean" default="false" description="Internal" />
+    <aura:attribute name="descriptionData" type="Object" description="Internal" />
+    <aura:attribute name="suppressEmail" type="Boolean" default="false" description = "Internal"/>
+    <!-- IPA 2.0 TWC729-7887 -->
+    <!-- <aura:attribute name="isEnhanced" type="Boolean" default="false" description = "Internal"/> -->
+    
+    <aura:attribute name="appOptions" type="Object[]" description="Internal" />
+    <aura:attribute name="indOptions" type="Object[]" description="Internal" />
+    <aura:attribute name="isFirstDraft" type="Boolean" />
+    <aura:attribute name="currentStatus" type ="String" default = ""/>
+    
+    <aura:attribute name="regionsSelected" type="string[]" description="Internal" />
+    <aura:attribute name="regionOptions" type="Object[]" description="Internal" />
+    <aura:attribute name="regionsSelectedAll" type="boolean" description="Internal" />
+    
+    <aura:attribute name="applicationsSelected" type="string[]" description="Internal" />
+    <aura:attribute name="applicationOptions" type="Object[]" description="Internal" />
+    <aura:attribute name="applicationError" type="Boolean" default="false" />
+    
+    <aura:attribute name="industryOptions" type="Object[]" />
+    <aura:attribute name="industryError" type="Boolean" default="false" />
+    
+    <aura:attribute name="regionLearnMoreUrl" type="string" description="Internal" />
+    <aura:attribute name="languageLearnMoreUrl" type="string" description="Internal" />
+    <aura:attribute name="regionError" type="Boolean" default="false" />
+    <aura:attribute name="resources" type="object[]" description="Internal" />
+    <aura:attribute name="resourcesError" type="Boolean" default="false" />
+    <aura:attribute name="resourcesMax" type="Integer" default="5" />
+    <aura:attribute name="resourceTypeOptions" type="Object[]" description="Internal" />
+    <aura:attribute name="summaryData" type="Object"/>
+    
+    <aura:attribute name="regionsToDisplay" type="Object"/>
+    
+    <aura:attribute name="errorInputs" type="Object[]" description="Internal"/>
+    <aura:attribute name="showErrors" type="boolean" default="false" description="Internal"/>
+    <aura:attribute name="leadSettings" type="boolean" description="internal boolean to showcase Lead gen settings" />
+    <aura:attribute name="onLeadGenDataUpdate" type="object" description="Internal set from controller data" />
+    <aura:attribute name="isAdmin" type="Boolean" default="false" />
+    <aura:attribute name="isProfileAdmin" type="Boolean" default="false" />
+    <!--  <aura:attribute name="urlMatchingPattern" type="string" default="^(https:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$" /> -->      <!-- Javascript regular expression for email check -->
+    <aura:attribute name="urlMatchingPattern" type="string" default="{!$Label.c.PMP_EditStoreFront_URL_Regex}" />       <!-- Javascript regular expression for URL check -->
+    <aura:attribute name="isregionsSelected" type="boolean" description="regions" default = "false"/>
+    <aura:attribute name="selectedOptions" type="object[]" />
+    <aura:attribute name="selectedIndus" type="object[]" />
+    <aura:attribute name="selectedApps" type="object[]" />
+    <!-- <aura:attribute name="logourl" type="string" description="Internal" />-->
+    <!-- Admin Review Attributes -->
+    <aura:attribute name="loggedInAdmin" type="string"/>
+    <aura:attribute name="admins" type="Object[]"/>
+    <aura:attribute name="statusList" type="Object[]"/>
+    <aura:attribute name="submittedBy" type="string" default="Parter Admin"/>
+    <aura:attribute name="submittedOn" type="string" default="20-May-2019"/>
+    <aura:attribute name="isPublishedCopyDraft" type="boolean" />
+    <aura:attribute name="partnerNames" type="Object[]" />
+    <!-- Address website declare attributes-->
+    <aura:attribute name="partwrapMap" type="Object"/>
+    <aura:attribute name="partwrap" type="Object[]"/>
+    
+    <aura:attribute name="partner" type="Object" />
+    <aura:attribute name="pnameFreeText" type="String" />
+    <aura:attribute name="pnameDropdown" type="String" />
+    <aura:attribute name="showText" type="boolean" default="false" />
+    <aura:attribute name="countries" type="list" default="[]" />
+    <aura:attribute name="states" type="list" default="[]" />
+    <aura:attribute name="isStateDisabled" type="boolean" default="false"/>
+    <aura:attribute name="isDistributor" type="boolean" default="false" />
+    <aura:attribute name="isInvalidAddress" type="boolean" default="false" />
+    
+    <!-- messages -->
+    <aura:attribute name="messageFromIntel" type="string" description="Internal" />
+    <aura:attribute name="messageFromIntelMore" type="String" description="Internal" />
+    <aura:attribute name="showMoreMsg" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="updateFormCallback" type="Object" description="Internal" />
+    <aura:attribute name="showSpinner" type="String" default="false" description="Internal" />
+    <aura:attribute name="isIntelAdmin" type="Boolean" default="false" />
+    <!-- change and event handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.currentStep}" action="{!c.handleStepChange}" />
+    <aura:handler name="change" value="{!v.isOpen}" action="{!c.handleFormOpen}" />
+    <!--  <aura:handler name="change" value="{!v.additionalLogos}" action="{!c.handleAdditionalLogosChange}" />-->
+    
+    <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
+    
+    <aura:handler name="change" value="{!v.currentStep}" action="{!c.handleCurrentStepValueChange}"/>
+    <aura:attribute name="websiteValidation" type="Boolean" default="true" />
+    <aura:attribute name="websiteReturnValue" type="Boolean" default="false" />
+    <div>
+        <aura:if isTrue="{!v.isOpen}">
+            <c:MarketplaceModal aura:id="modal" heading="{!v.modalHeading}" isOpen="{!v.isOpen}" useSlimMobileHeader="true" closeModalCallback="{!v.closeModalCallback}" >
+                <div class="{!join(' ', 'fullHeight', v.state.currentScreenSize == 'mobile' ? 'bgWhite' : 'bgGray')}">
+                    <!-- spinner here -->
+                    <aura:if isTrue="{!v.showSpinner}">                            
+                        <lightning:spinner alternativeText="Loading..." />                            
+                    </aura:if>
+                    <div class="modalContainer">
+                          <aura:if isTrue="{! or(!v.isFromLink, v.isAnyError)}">
+                            <aura:if isTrue="{!or(v.isLocked, v.currentStep == v.steps.length)}">
+                                <!-- LOCKED (already submitted / just submitted) progress display -->
+                                <h5 class="locked-state-heading heading-24 color-dark-gray">{!$Label.c.PMP_Storefront_ProfileSubmitted}</h5><!--As per copy Deck changes-->
+                                
+                                <c:MarketplaceStorefrontSubmitProgressIndicator isLocked="{!v.isLocked}" isIntelAdmin="{!v.isIntelAdmin}" />
+                            </aura:if>
+                            <!--FORM Lead Gen Settings-->
+                            <!-- <aura:if isTrue="{!and(v.isLocked, v.currentStep == 6,!v.isIntelAdmin)}">-->
+                            
+                            <aura:if isTrue="{!and( v.currentStep == 6,!v.isIntelAdmin)}">
+                                <!-- <aura:if isTrue="{!or(v.isLocked, v.currentStep == 6)}">-->
+                                <!--<aura:if isTrue="{!or(v.isStep2)}">-->
+                                <aura:if isTrue="{!v.leadSettings}">
+                                    <div class="slds-m-top_x-large">
+                                        <c:MarketplaceLeadGenSettings aura:id="leadGenStep" partnerId="{!v.partnerId}" hasAccess="true" hideButtons="true" 
+                                                                      onDataUpdatedCallback="{!v.onLeadGenDataUpdate}" />
+                                    </div>
+                                </aura:if>
+                            </aura:if> 
+                            <!-- <aura:if isTrue="{!and(!v.isLocked, v.currentStep != v.steps.length)}">-->
+                            <aura:if isTrue="{!and(!v.isLocked, v.currentStep lt v.steps.length)}">
+                                <lightning:layout multipleRows="true" class="slds-p-horizontal_medium">
+                                    <!-- FORM STEPS PROGRESS BAR -->
+                                    <lightning:layoutItem size="12" class="{!(v.state.currentScreenSize == 'mobile' ? 'slds-p-horizontal_medium ' : 'bgGray ') + 'progressLayoutItem'}">
+                                        <aura:if isTrue="{!not(empty(v.steps))}">
+                                            <aura:if isTrue="{!or(v.isPublishedCopyDraft, v.isIntelAdmin)}" >
+                                                <div class="progressBarContainer">  <!--activeStep="{!v.steps.length}"-->
+                                                    <c:MarketplaceCreateProductProgressBar aura:id="progress"
+                                                                                           activeStep="{!v.activeStep}" 
+                                                                                           currentStep="{!v.currentStep}"
+                                                                                           currentStepValid="true"
+                                                                                           pathLabels="{!v.steps}"
+                                                                                           onchange="{!v.onstepchange}" />
+                                                </div>
+                                                <aura:set attribute="else">
+                                                    <lightning:layoutItem size="12" class="{!(v.state.currentScreenSize == 'mobile' ? '' : 'bgGray ') + 'progressLayoutItem'}">
+                                                        <c:MarketplaceTabset aura:id="tabset" initialTab="{!v.currentStep}" onTabChange="{!v.onTabChange}">
+                                                            <aura:iteration items="{!v.steps}" var="step">
+                                                                <c:MarketplaceTab label="{!step}"></c:MarketplaceTab>
+                                                            </aura:iteration>
+                                                        </c:MarketplaceTabset>
+                                                    </lightning:layoutItem>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                        </aura:if>
+                                    </lightning:layoutItem>
+                                
+                                    <lightning:layoutItem size="12" class="{!(v.state.currentScreenSize == 'mobile' ? 'bgWhite slds-m-top_medium ' : 'bgGray ') + 'headerLayoutItem'}">
+                                        
+                                        <h1 class="h4 heading-24">{!v.currentStepHeading}</h1>
+                                        <div class="slds-p-top_small">
+                                            <span class="color-red slds-m-right_xxx-small">*</span>&nbsp;{!$Label.c.PMP_Create_Offering_Form_Required}<!--Copy deck Changes-->
+                                            <!--<span class="color-red slds-m-right_xxx-small">*</span>&nbsp;{!$Label.c.PMP_Storefront_RequiredField}-->                                    </div>
+                                    </lightning:layoutItem>
+
+                                    <lightning:layoutItem size="12" mediumDeviceSize="8" class="formLayoutItem">
+                                        <a aura:id="formAnchor" id="formAnchor"></a>
+                                        <form aura:id="form" onsubmit="{!c.handleFormSubmit}">
+                                            <!-- FORM STEPS -->
+                                            <!-- STEP 1: LOGO -->
+                                            <!-- Modified by Ajay : Commented aura:if for currentstep logic as switching condition unrenders and destroys the content which has to be used for form validation -->
+                                            <!-- Added div and slds-hide and slds-show logic-->
+                                            <!--<aura:if isTrue="{!v.currentStep == 0}">-->
+                                            <div aura:id="step-0" class="slds-hide">
+                                                <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-vertical_large'), 'slds-p-around_medium bgWhite')}">
+                                                    <div class="slds-clearfix">
+                                                        <div class="slds-float_right" style="margin-bottom: -1.5rem;"> 
+                                                            <lightning:input aura:id="switch" type="checkbox" label="{!$Label.c.PMP_Enter_a_Free_Text}" name="input1" onchange="{!c.switchToText}"/>
+                                                        </div>
+                                                    </div>
+                                                    <!--Added by Subash for US682883 & US685085-->
+                                                    <div class="slds-p-around_medium">
+                                                        <aura:if isTrue="{!v.showText}">
+                                                            <lightning:input aura:id="pnameTxt" value="{!v.pnameFreeText}" label="{!$Label.c.PMP_Partner_Name}" onchange="{!c.companyInformationValidation}" required="true" maxlength="80"/>
+                                                            <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,80)}</p>
+                                                            <aura:set attribute="else">
+                                                                <lightning:select aura:id="pname" name="{!$Label.c.PMP_Partner_Name}" label="{!$Label.c.PMP_Partner_Name}" value="{!v.pnameDropdown}" 
+                                                                                  onchange="{!c.partnerNameDropDownChange}" required="true">
+                                                                    <aura:if isTrue="{!v.partnerNames.length > 0}">
+                                                                        <aura:iteration items="{!v.partnerNames}" var="item" indexVar="i">
+                                                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                                        </aura:iteration>
+                                                                    </aura:if>
+                                                                </lightning:select>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div>
+                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small slds-m-left_medium">{!$Label.c.PMP_Edit_Offering_Form_Storefront_Logo}</p>
+                                                    <div id="logoScrollId" class="{!v.state.currentScreenSize == 'mobile' ? '' : 'slds-m-horizontal_small'}">
+                                                        <aura:if isTrue="{!v.workingCopyId}">
+                                                            <c:MarketplaceFormImageUploader aura:id="uploader1"
+                                                                                            recordIdForUpload="{!v.workingCopyId}"
+                                                                                            required="true"
+                                                                                            label="{!$Label.c.PMP_Edit_Storefront_Logo_Label}"
+                                                                                            maxUploads="1"
+                                                                                            disclaimer1="{!$Label.c.PMP_Form_Image_Uploader_Logo_Disclaimer1}"
+                                                                                            errorMessage="{!$Label.c.PMP_Edit_Storefront_Logo_Required}" 
+                                                                                            method = "{!c.handleLogoCheck}"
+                                                                                            livesInsideModal="true"
+                                                                                            updateFormCallback="{!v.updateFormCallback}"/>
+                                                        </aura:if>
+                                                    </div>
+                                                    
+                                                    <div class="slds-p-around_medium slds-m-bottom_medium"  id="webScrollId">
+                                                        <lightning:input aura:id="pwebsite" required="true" value="{!v.partner.website}" label="{!$Label.c.PMP_Website}" pattern="{!v.urlMatchingPattern}" messageWhenPatternMismatch="{!$Label.c.PMP_Invalid_Url_Error}" onchange="{!c.companyInformationValidation}" maxlength="255"/>
+                                                        <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p id="addressScollId" class="slds-m-top_medium slds-m-bottom_xx-small slds-m-left_medium">{!$Label.c.PMP_Address}</p>
+                                                        <aura:if isTrue="{!v.isInvalidAddress}">
+                                                            <div data-help-message="true" role="alert" class="slds-form-element__help slds-m-left_medium" style="color: rgb(194, 57, 52);">{!$Label.c.PMP_Invalid_Address}</div>
+                                                        </aura:if>
+                                                        <lightning:layout multipleRows="true">
+                                                            <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                <lightning:input aura:id="street1" value="{!v.partner.primaryStreet}" label="{!$Label.c.PMP_Primary_Street}" onchange="{!c.companyInformationValidation}" maxlength="255"/>
+                                                                <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                <lightning:input aura:id="street2" value="{!v.partner.secondaryStreet}" label="{!$Label.c.PMP_Secondary_Street}" onchange="{!c.companyInformationValidation}" maxlength="255"/>
+                                                                <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout>
+                                                        <lightning:layout multipleRows="true">
+                                                            <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                <lightning:select aura:id="country" name="country" label="{!$Label.c.PMP_Country}" onchange="{!c.onCountryChange}" value="{!v.partner.country}">
+                                                                    <option value="">{!$Label.c.PMP_LeadGen_ChooseOne}</option>
+                                                                    <aura:iteration items="{!v.countries}" var="option">
+                                                                        <option text="{!option.label}" value="{!option.label}" selected="{!option.label == v.partner.country}" />
+                                                                    </aura:iteration>
+                                                                </lightning:select>
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                <lightning:select aura:id="state" name="state" label="{!$Label.c.PMP_LeadGen_State}" disabled="{!v.isStateDisabled}" onchange="{!c.onStateChange}" value="{!v.partner.state}">
+                                                                    <option value="">{!$Label.c.PMP_LeadGen_ChooseOne}</option>
+                                                                    <aura:iteration items="{!v.states}" var="option">
+                                                                        <option text="{!option.label}" value="{!option.label}" selected="{!option.label == v.partner.state}" />
+                                                                    </aura:iteration>
+                                                                </lightning:select>
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout>
+                                                        <lightning:layout multipleRows="true">
+                                                            <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                <lightning:input aura:id="city" value="{!v.partner.city}" label="{!$Label.c.PMP_City}" onchange="{!c.companyInformationValidation}" maxlength="100"/>
+                                                                <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,100)}</p>
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                <lightning:input aura:id="postal" value="{!v.partner.postalCode}" label="{!$Label.c.PMP_Zip_Code}" onchange="{!c.companyInformationValidation}" maxlength="255"/>
+                                                                <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout>
+                                                    </div>
+                                                    <!--End for US682883 & US685085-->                                                    
+                                                </div>
+                                                <!--      <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? 'slds-m-top_medium slds-p-vertical_medium' : 'slds-m-top_x-large slds-p-vertical_large  slds-m-bottom_medium'), 'bgWhite')}">
+                                                <h2 class="{!join(' ', 'h4', (v.state.currentScreenSize == 'mobile' ? 'slds-p-horizontal_medium' : 'slds-p-horizontal_large'))}">
+                                                    {!$Label.c.PMP_Edit_Storefront_Additional_Logos}
+                                                </h2>
+                                                <p class="{!'slds-m-vertical_small ' + (v.state.currentScreenSize == 'mobile' ? 'slds-m-left_medium' : 'slds-m-left_large')}">
+                                                    {!$Label.c.PMP_Edit_Storefront_Additional_Logos_des}
+                                                </p>
+                                                  
+                                                <aura:if isTrue="{!v.showAdditionalUploader}">
+                                                    <div class="{!v.state.currentScreenSize == 'mobile' ? '' : 'slds-m-horizontal_x-small'}">
+                                                        <c:MarketplaceFormImageUploader aura:id="uploader2"
+                                                                                recordIdForUpload="{!v.devUploadRecordId}"
+                                                                                acceptableFormats="['.eps','.svg','.ai']"
+                                                                                disclaimer2="{!$Label.c.PMP_Form_Image_Uploader_Vector_Disclaimer2}"
+                                                                                disclaimer3=""
+                                                                                label="{!$Label.c.PMP_Edit_Storefront_Additional_Logo_Label}"
+                                                                                livesInsideModal="true"
+                                                                                updateFormCallback="{!v.updateFormCallback}"	 />
+                                                    </div>
+                                                    <aura:set attribute="else">
+                                                        <div class="{!'slds-m-top_medium ' + (v.state.currentScreenSize == 'mobile' ? 'slds-m-left_medium' : 'slds-m-left_large')}">
+                                                            <span onclick="{!c.handleUploadAdditional}">
+                                                                <c:IntelButton class="gray inline">
+                                                                    <lightning:icon iconName="utility:add" class="iconSizeNormal iconDarkGray slds-m-right_small" />
+                                                                    <span>{!$Label.c.PMP_Edit_Storefront_Additional_Files_Btn}</span>
+                                                                </c:IntelButton>
+                                                            </span>
+                                                        </div>
+                                                    </aura:set>
+                                                </aura:if>
+                                                </div>			-->
+                                            <!--</aura:if> -->
+                                            </div>
+
+                                            
+                                            <!-- STEP 2: COMPANY DESCRIPTION -->
+                                            <!-- Modified by Ajay : Commented aura:if for currentstep logic as switching condition unrenders and destroys the content which has to be used for form validation -->
+                                            <!-- Added div and slds-hide and slds-show logic-->
+                                            <!-- <aura:if isTrue="{!v.currentStep == 1}"> -->
+                                            <div aura:id="step-1" class="slds-hide">
+                                                <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-around_medium'), 'bgWhite')}">
+                                                    <div id="langScrollId" >
+                                                        <c:MarketplaceFormDropdown aura:id="dropdown" label="{!$Label.c.PMP_Edit_Storefront_Description_Lang_Label}" required="true" value="{!v.descriptionData.language}" options="{!v.descriptionData.languageOptions}" updateFormCallback="{!v.updateFormCallback}" disabled = "{!v.currentStatus =='Update Required'}"/>
+                                                    </div>
+                                                    
+                                                    <!--Learn More link Commented since not required -->
+                                                    <!-- <p class="slds-p-horizontal_medium slds-p-bottom_medium mTopSmallNeg">
+                                                    <a href="{!v.languageLearnMoreUrl}">
+                                                        {!$Label.c.PMP_Edit_Storefront_Language_LearnMoreLink}
+                                                        <lightning:icon iconName="utility:chevronright" class="slds-m-left_xxx-small iconSizeSmall iconBlue" />
+                                                    </a>
+                                                </p>  --> 
+                                                    <div id="tagScrollId" >
+                                                        <c:MarketplacePartnerFormInputText aura:id="textInput" label="{!$Label.c.PMP_Edit_Storefront_Description_Tagline_Label}" required="true" maxLength="50" value="{!v.descriptionData.tagline}" updateFormCallback="{!v.updateFormCallback}" />
+                                                    </div>
+                                                    <div id="descScrollId">
+                                                        <c:MarketplaceFormRichTextEditor aura:id="rtInput" label="{!$Label.c.PMP_Edit_Storefront_Description_Des_Label}" required="true" value="{!v.descriptionData.description}" formats="['bold','italic','underline','strike','list','indent','clean']" updateFormCallback="{!v.updateFormCallback}" fromStorefront="true" /> <!--US954587:ADDED fromStorefront attribute -->
+                                                    </div>
+                                                </div>
+                                            <!-- </aura:if> -->
+                                            </div>
+
+                                            <!-- STEP 3: COMPANY DETAILS -->
+                                            <!-- Modified by Ajay : Commented aura:if for currentstep logic as switching condition unrenders and destroys the content which has to be used for form validation -->
+                                            <!-- Added div and slds-hide and slds-show logic-->
+                                            <!-- <aura:if isTrue="{!v.currentStep == 2}"> -->
+                                            <div aura:id="step-2" class="slds-hide">
+                                                <div id="indScrollId" class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? 'slds-p-around_medium' : 'slds-p-around_large'), 'bgWhite')}">
+                                                    <p><span class="color-red">*</span>{!$Label.c.PMP_Industry}</p><br/>
+                                                    <aura:if isTrue="{!not(empty(v.industryOptions))}">
+                                                        <aura:iteration items="{!v.industryOptions}" var="option">
+                                                            <lightning:input class="regionOption" type="checkbox" checked="{!option.checked}" label="{!option.label}" value="{!option.value}" onchange="{!c.handleIndustryChange}" />
+                                                            <aura:if isTrue="{!option.checked}">
+                                                                <aura:if isTrue="{!not(empty(option.children))}">
+                                                                    <c:MarketplaceFormDropdown aura:id="industryDropdown" readOnly="true" value="{!option.selections}" allowMultipleOptions="true" options="{!option.children}" updateFormCallback="{!v.updateFormCallback}" />
+                                                                </aura:if>
+                                                            </aura:if>
+                                                        </aura:iteration>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!v.industryError}">
+                                                        <div class="textColorRed slds-p-vertical_medium">
+                                                            {!$Label.c.PMP_Edit_Storefront_Industry_Error}
+                                                        </div>
+                                                    </aura:if>
+                                                </div>
+                                                <div id="appScrollId" class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? 'slds-p-around_medium' : 'slds-p-around_large'), 'bgWhite')}">
+                                                    <p><span class="color-red">*</span>{!$Label.c.PMP_application}</p><br/>
+                                                    <aura:iteration items="{!v.applicationOptions}" var="option">
+                                                        <lightning:input class="regionOption" type="checkbox" checked="{!option.checked}" label="{!option.label}" value="{!option.value}" onchange="{!c.handleApplicationChange}" />
+                                                        <aura:if isTrue="{!option.checked}">
+                                                            <aura:if isTrue="{!not(empty(option.children))}">
+                                                                <c:MarketplaceFormDropdown aura:id="applicationDropdown" readOnly="true" value="{!option.selections}" allowMultipleOptions="true" options="{!option.children}" updateFormCallback="{!v.updateFormCallback}" />
+                                                            </aura:if>
+                                                        </aura:if>
+                                                    </aura:iteration>
+                                                    <aura:if isTrue="{!v.applicationError}">
+                                                        <div class="textColorRed slds-p-vertical_medium">
+                                                            {!$Label.c.PMP_Edit_Storefront_Application_Error}
+                                                        </div>
+                                                    </aura:if>
+                                                </div>
+                                                <aura:if isTrue="{!!v.isDistributor}"><!--Added by Subash for US697109-->
+                                                    <div id="regScrollId" class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? 'slds-p-around_medium' : 'slds-p-around_large'), 'bgWhite')}">
+                                                        <p><span class="color-red">*</span> {!$Label.c.PMP_Edit_Storefront_Geo_Top}</p>
+                                                        <p class="pSmallText">{!$Label.c.PMP_Edit_Storefront_Geo_Sub}</p>
+                                                        <!-- Learn More link Commented since not required -->
+                                                        <!--<p class="slds-p-vertical_medium">
+                                                            <a href="{!v.regionLearnMoreUrl}">
+                                                                {!$Label.c.PMP_Edit_Storefront_Geo_LearnMoreLink}
+                                                                <lightning:icon iconName="utility:chevronright" class="slds-m-left_xxx-small iconSizeSmall iconBlue" />
+                                                            </a>
+                                                        </p> -->
+                                                        
+                                                        <lightning:input aura:id="selectAllRegionCheckbox" class="slds-m-bottom_medium regionOption"
+                                                                         type="checkbox" checked="{!v.regionsSelectedAll}" onchange="{!c.handleRegionChangeAll}" label="{!$Label.c.PMP_Select_All}" />
+                                                        <aura:iteration items="{!v.regionOptions}" var="option">
+                                                            <lightning:input class="regionOption" type="checkbox" checked="{!option.checked}" label="{!option.label}" value="{!option.value}" onchange="{!c.handleRegionChange}" />
+                                                             <aura:if isTrue="{!option.checked}">   
+                                                             <aura:if isTrue="{!v.isOpenCheckbox}">
+                                                                    <c:MarketplaceFormCheckbox aura:id="regionDropdown" options="{!option.children}" isPartnerCountry ="false"/>
+                                                                    <aura:set attribute="else">
+                                                                        <c:MarketplaceFormCheckbox aura:id="regionDropdown" options="{!option.children}" isPartnerCountry ="true" />
+                                                                    </aura:set>
+                                                            </aura:if>
+                                                            </aura:if>
+                                                        </aura:iteration>
+                                                        <aura:if isTrue="{!v.regionError}">
+                                                            <div class="textColorRed slds-p-vertical_medium">
+                                                                {!$Label.c.PMP_Edit_Storefront_Geo_Error}
+                                                            </div>
+                                                        </aura:if>
+                                                    </div>
+                                                </aura:if>
+                                            <!-- </aura:if> -->
+                                            </div>
+
+                                            <!-- STEP 4: COMPANY RESOURCES -->
+                                            <!-- Modified by Ajay : Commented aura:if for currentstep logic as switching condition unrenders and destroys the content which has to be used for form validation -->
+                                            <!-- Added div and slds-hide and slds-show logic-->
+                                            <!-- <aura:if isTrue="{!v.currentStep == 3}"> -->
+                                            <div aura:id="step-3" class="slds-hide">
+                                                <div id="resScrollId" class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_small slds-p-bottom_medium'), 'bgWhite')}">
+                                                    <p class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? 'slds-p-horizontal_medium slds-m-bottom_small' : 'slds-p-horizontal_large'), 'slds-p-top_medium')}">
+                                                        {!$Label.c.PMP_Edit_Storefront_Resources_Top}
+                                                    </p>
+                                                    
+                                                    <aura:iteration items="{!v.resources}" var="resource" indexVar="index">
+                                                        <div id="{!'resource' + index}" class="{!join(' ', (index lt (v.resourcesMax - 1) ? 'slds-p-vertical_small borderBottom' : 'slds-p-vertical_small'), v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-horizontal_small')}">
+                                                            <div class="slds-p-horizontal_small">
+                                                                <h4>{!$Label.c.PMP_Edit_Storefront_Resources_Res} {!index + 1}
+                                                                    <span data-idx="{!index}" class="delete-wrapper" onclick="{!c.handleDeleteResource}">
+                                                                        <lightning:icon iconName="utility:delete" size="xx-small" alternativeText="delete" class="iconDarkGray slds-m-right_small"/>
+                                                                    </span>
+                                                                </h4>
+                                                            </div>
+                                                            <lightning:layout multipleRows="true">
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                    <lightning:input aura:id="resource" type="text" label="{!$Label.c.PMP_Edit_Storefront_Product_Resources_Name_Lbl}" value="{!resource.title}" required="true" onchange="{!c.handleChange}" maxlength="80" minlength="0"/>
+                                                                </lightning:layoutItem>
+                                                            </lightning:layout>
+                                                            <lightning:layout multipleRows="true">
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                    <lightning:select aura:id="resource" label="{!$Label.c.PMP_Edit_Storefront_Resources_Type_Label}" required="true" messageWhenValueMissing="{!$Label.c.PMP_RequiredDropdownField}" value="{!resource.type}" onchange="{!c.handleDropdownChange}">
+                                                                        <option value="">{!$Label.c.PMP_Edit_Storefront_Resources_Type_Placeholder}</option>
+                                                                        <aura:iteration var="option" items="{!v.resourceTypeOptions}">
+                                                                            <option value="{!option.value}">{!option.label}</option>
+                                                                        </aura:iteration>
+                                                                    </lightning:select>
+                                                                </lightning:layoutItem>
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6" class="slds-p-vertical_small slds-p-horizontal_medium">
+                                                                    <lightning:input aura:id="resourceUrl" type="url" label="{!$Label.c.PMP_Edit_Storefront_Resources_URL_Label}" value="{!resource.url}" pattern="{!v.urlMatchingPattern}" messageWhenPatternMismatch="{!$Label.c.PMP_Invalid_Url_Error}" required="true" maxlength="255" onblur="{!c.handleChange}" onchange="{!c.handleChange}" />
+                                                                    <p class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</p>
+                                                                </lightning:layoutItem>
+                                                            </lightning:layout>
+                                                        </div>
+                                                    </aura:iteration>
+                                                    
+                                                    <aura:if isTrue="{!v.resources.length lt v.resourcesMax}">
+                                                        <div class="{!(v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large')  + ' slds-m-top_large slds-m-bottom_small fullWidth'}">
+                                                            <span onclick="{! c.handleAddResource }">
+                                                                <c:IntelButton class="gray inline" aura:id="addResourceBtn">
+                                                                    <lightning:icon iconName="utility:add" class="iconSizeNormal iconDarkGray slds-m-right_small" />
+                                                                    <span>{!$Label.c.PMP_Edit_Storefront_Resources_Add_Btn}</span>
+                                                                </c:IntelButton>
+                                                            </span>
+                                                        </div>
+                                                        
+                                                    </aura:if>
+                                                    <!-- <span class="error">errormessage</span> -->
+                                                </div>
+                                            <!-- </aura:if> -->
+                                            </div>
+
+                                            <!-- STEP 5: SUMMARY -->
+                                            <!-- Modified by Ajay : Commented aura:if for currentstep logic as switching condition unrenders and destroys the content which has to be used for form validation -->
+                                            <!-- Added div and slds-hide and slds-show logic-->
+                                            <!-- <aura:if isTrue="{!v.currentStep == 4}"> -->
+                                            <div aura:id="step-4" class="slds-hide">    
+                                                <div class="{!join(' ', 'slds-m-bottom_medium', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">
+                                                    <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">
+                                                        <span>{!$Label.c.PMP_Edit_Storefront_Company_Information}</span>
+                                                        <aura:if isTrue="{!and(v.summaryData.logo.isUpdated, !v.isFirstDraft)}"><span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span></aura:if>
+                                                    </h2>
+                                                    <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium slds-p-top_medium' : 'slds-m-horizontal_large slds-p-top_medium'}">
+                                                        <aura:if isTrue="{!and(v.partner.name, v.hasLogo)}">
+                                                            <!--Added by Subash for US682883 & US685085-->
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Partner_Name}</p>
+                                                            <p class="pSmallText">{!v.partner.name}</p>
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Logo}</p>
+                                                            <img class="logoImg" src="{!v.logourl}"  />
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Website}</p>
+                                                            <p class="pSmallText">{!v.partner.website}</p>
+                                                            <!--End US682883 & US685085-->
+                                                            <!--Added by Sooriya for US686697-->
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Address}</p>
+                                                            <lightning:layout multipleRows="true">
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Primary_Street}</p>
+                                                                    <p class="pSmallText">{!v.partner.primaryStreet}</p>
+                                                                </lightning:layoutItem>
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Secondary_Street}</p>
+                                                                    <p class="pSmallText">{!v.partner.secondaryStreet}</p>
+                                                                </lightning:layoutItem>
+                                                            </lightning:layout>
+                                                            <lightning:layout multipleRows="true">
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_City}</p>
+                                                                    <p class="pSmallText">{!v.partner.city}</p>
+                                                                </lightning:layoutItem>
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_LeadGen_State}</p>
+                                                                    <p class="pSmallText">{!v.partner.state}</p>
+                                                                </lightning:layoutItem>
+                                                            </lightning:layout>
+                                                            <lightning:layout multipleRows="true">
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Country}</p>
+                                                                    <p class="pSmallText">{!v.partner.country}</p>
+                                                                </lightning:layoutItem>
+                                                                <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                                    <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Zip_Code}</p>
+                                                                    <p class="pSmallText">{!v.partner.postalCode}</p>
+                                                                </lightning:layoutItem>
+                                                            </lightning:layout>
+                                                            <!--END OF US686697-->
+                                                            <aura:set attribute="else">
+                                                                <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;
+                                                                    <a class="error-link textColorRed" data-tab="logo" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>
+                                                                </p>
+                                                            </aura:set>
+                                                        </aura:if>       
+                                                    </div>
+                                                </div>
+                                                <div class="{!join(' ', 'slds-m-bottom_medium', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">
+                                                    <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">
+                                                        <span>{!$Label.c.PMP_Edit_Storefront_Company_Description}</span><!--Copy Deck Changes-->
+                                                        <!--<span>{!$Label.c.PMP_Storefront_Company_Overview}</span>-->
+                                                        <aura:if isTrue="{!and(v.summaryData.description.isUpdated, !v.isFirstDraft)}"><span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span></aura:if>
+                                                    </h2>
+                                                    <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'}">
+                                                        
+                                                        <aura:if isTrue="{!v.summaryData.description.isValid}"> 
+                                                            
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Description_Lang_Label}</p>
+                                                            <p class="pSmallText">{!v.summaryData.description.language}</p>
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Description_Tagline_Label}</p>
+                                                            <p class="pSmallText">{!v.summaryData.description.tagline}</p>
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Description_Des_Label}</p>
+                                                            <p class="pSmallText"><ui:outputRichText value="{!v.summaryData.description.description}" class="summary-richtext"/></p>
+                                                            
+                                                            <aura:set attribute="else">
+                                                                <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;
+                                                                    <a class="error-link textColorRed" data-tab="description" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>
+                                                                </p>
+                                                            </aura:set> 
+                                                        </aura:if> 
+                                                    </div>
+                                                </div>
+                                                <div class="{!join(' ', 'slds-m-bottom_medium', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">
+                                                    <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">
+                                                        <span>{!$Label.c.PMP_Edit_Storefront_Company_Details}</span> 
+                                                        <aura:if isTrue="{!and(v.summaryData.companyDetail.isUpdated, !v.isFirstDraft)}"> <span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span>  </aura:if> 
+                                                    </h2>
+                                                    <div class="{!join(' ','containWidth',(v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">
+                                                        <aura:if isTrue="{!v.summaryData.companyDetail.isValid}"> 
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Industry}</p>
+                                                            <aura:iteration items="{!v.summaryData.companyDetail.industries}" var="region">
+                                                                <p class="pSmallText">{!region.label}</p>
+                                                                <p class="pSmallText">
+                                                                    <aura:iteration items="{!region.children}" var="childRegion" indexVar="idxc">
+                                                                        <span>{!childRegion.label}</span>
+                                                                        <aura:if isTrue="{!idxc lt (region.children.length - 1)}">,&nbsp;</aura:if>
+                                                                    </aura:iteration>
+                                                                </p> 
+                                                            </aura:iteration>
+                                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_application}</p>
+                                                            <aura:iteration items="{!v.summaryData.companyDetail.applications}" var="region">
+                                                                <p class="pSmallText">{!region.label}</p>
+                                                                <p class="pSmallText">
+                                                                    <aura:iteration items="{!region.children}" var="childRegion" indexVar="idxc">
+                                                                        <span>{!childRegion.label}</span>
+                                                                        <aura:if isTrue="{!idxc lt (region.children.length - 1)}">,&nbsp;</aura:if>
+                                                                    </aura:iteration>
+                                                                </p> 
+                                                            </aura:iteration>
+                                                            <aura:if isTrue="{!!v.isDistributor}"><!--Added by Subash for US697109-->
+                                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Geo_Top}</p>
+                                                                <aura:iteration items="{!v.regionsToDisplay}" var="region">
+                                                                    <p class="pSmallText">{!region.label}</p>
+                                                                    <p class="pSmallText">
+                                                                        <aura:iteration items="{!region.children}" var="childRegion" indexVar="idxc">
+                                                                            <aura:if isTrue="{!childRegion.checked}">
+                                                                                <span>{!childRegion.label}</span>
+                                         										<aura:if isTrue="{!childRegion.children.length > 0}">
+                                                                                      ,
+                                                                                </aura:if>
+                                                                                <aura:iteration items="{!childRegion.children}" var="subchildRegion" indexVar="idxc1">
+                                                                                    <aura:if isTrue="{!subchildRegion.checked}">
+                                                                                        <span>{!subchildRegion.label}</span>
+                                                                                        <aura:if isTrue="{!!subchildRegion.last}">,&nbsp;</aura:if>
+                                                                                       <aura:if isTrue="{!subchildRegion.last}"><br/></aura:if>
+                                                                                    </aura:if>
+                                                                                </aura:iteration>
+                                                                            </aura:if>
+                                                                        </aura:iteration>
+                                                                    </p> 
+                                                                </aura:iteration>   
+                                                            </aura:if>
+                                                            <aura:set attribute="else">
+                                                                <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;
+                                                                    <a class="error-link textColorRed" data-tab="regions" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>
+                                                                </p>
+                                                            </aura:set>
+                                                        </aura:if>  
+                                                    </div>
+                                                </div>
+                                                <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">
+                                                    <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">
+                                                        <span>{!$Label.c.PMP_Edit_Storefront_Company_Resources}</span>
+                                                        <aura:if isTrue="{!and(v.summaryData.resources.isUpdated, !v.isFirstDraft)}"><span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span></aura:if>
+                                                    </h2>
+                                                    <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'}">
+                                                        <aura:if isTrue="{!v.summaryData.resources.isValid}"> 
+                                                            <table class="slds-m-top_small">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="slds-p-vertical_xx-small">{!$Label.c.PMP_Edit_Storefront_Resources_Type_Label}</th>
+                                                                        <th class="slds-p-vertical_xx-small">{!$Label.c.PMP_Edit_Storefront_Resources_Res}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <aura:iteration items="{!v.summaryData.resources.all}" var="resource" indexVar="index">
+                                                                        <tr>
+                                                                            <td class="slds-p-vertical_xx-small">
+                                                                                <p class="pSmallText">{!resource.type}</p>
+                                                                            </td>
+                                                                            <td class="slds-p-vertical_xx-small">
+                                                                                <p class="pSmallText">
+                                                                                    <c:psMpLink externalUrl="{!resource.url}" label="{!resource.title}"></c:psMpLink> 
+                                                                                    <!-- <p class="pSmallText">{!resource.title}</p> -->
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </aura:iteration>
+                                                                </tbody>
+                                                            </table>
+                                                            <aura:set attribute="else">
+                                                                <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;
+                                                                    <a class="error-link textColorRed" data-tab="resources" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>
+                                                                </p>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div>
+                                                </div>
+                                            <!-- </aura:if> -->
+                                            </div>
+
+                                            <!-- Step 5: Admin Review -->
+                                            <!-- <aura:if isTrue="{!and(!v.isLocked, !v.isAdmin, v.currentStep == 7)}">-->
+                                            <!-- Modified by Ajay : Commented aura:if for currentstep logic as switching condition unrenders and destroys the content which has to be used for form validation -->
+                                            <!-- Added div and slds-hide and slds-show logic-->
+                                            <!-- <aura:if isTrue="{!and(v.isIntelAdmin, v.currentStep == 5)}"> -->
+                                            <aura:if isTrue="{!and(v.isIntelAdmin)}">
+                                            <div aura:id="step-5" class="slds-hide">
+                                                <!-- <aura:if isTrue="{!v.currentStep == 5}">-->
+                                                <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-around_medium'), 'bgWhite')}">
+                                                    <form> 
+                                                        <lightning:layout multipleRows="true" >
+                                                            <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
+                                                                <aura:if isTrue="{!v.loggedInAdmin}">
+                                                                    <c:MarketplaceFormDropdown aura:id="dropdown" label="{!$Label.c.PMP_Select_Admin}" value="{!v.loggedInAdmin}" options="{!v.admins}" updateFormCallback="{!v.updateFormCallback}"/>  
+                                                                </aura:if>
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
+                                                                
+                                                                <aura:if isTrue="{!v.currentStatus}">
+                                                                    <c:MarketplaceFormDropdown aura:id="dropdown" label="{!$Label.c.PMP_Edit_Storefront_Storefront_Status}" value="{!v.currentStatus}" options="{!v.statusList}" updateFormCallback="{!v.updateFormCallback}"/>  
+                                                                </aura:if>
+                                                            </lightning:layoutItem>
+                                                            
+                                                            <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-p-horizontal_small slds-p-vertical_x-small">
+                                                                
+                                                                <aura:if isTrue="{!v.currentStatus=='Approved'}">
+                                                                     <lightning:input aura:id="suppressEmail" type="checkbox" label="Suppress Email" name="suppress" onchange="{!c.onSuppressEmailCheck}"/>
+                                                                </aura:if>
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout><br/><br/>
+                                                        <lightning:layout horizontalAlign="left" verticalAlign="start" >
+                                                            <lightning:layoutItem flexibility="auto" padding="around-medium">
+                                                                <div class="other-admin-font"> {!$Label.c.PMP_Assigned_to_Admin}:
+                                                                    {!v.loggedInAdmin}
+                                                                </div>
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout>
+                                                        <br/><br/>
+                                                        <lightning:layout horizontalAlign="left">
+                                                            <lightning:layoutItem flexibility="auto" padding="around-medium">
+                                                                <div class="admin-partner-font">{!$Label.c.PMP_Edit_Storefront_Changes_Sub_on}</div>
+                                                                {!v.submittedOn}
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem flexibility="auto" padding="around-medium">
+                                                                <div class="admin-partner-font">{!$Label.c.PMP_Edit_Storefront_Changes_Sub_by}</div>
+                                                                {!v.submittedBy}
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout>
+                                                    </form>  
+                                                </div>
+                                            <!-- </aura:if> -->
+                                            </div>
+                                            </aura:if>
+                                            <!-- END STEPS -->
+                                        </form>
+                                        <aura:if isTrue="{!v.showErrors}">
+                                            <p class="bold slds-p-top_small">{!$Label.c.PMP_Toast_Notification_Copy}</p>
+                                            <ul>
+                                                <aura:iteration items="{!v.errorInputs}" var="item">
+                                                    <li><a class="error-link textColorRed" id="{!item.name}" onclick="{!c.handleErrorClick}">{!item.label}</a></li>
+                                                </aura:iteration>
+                                            </ul>
+                                        </aura:if>
+                                    </lightning:layoutItem>
+                                    <aura:if isTrue="{!!v.isFirstDraft}">
+                                        <lightning:layoutItem size="12" mediumDeviceSize="4" class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? 'bgWhite' : 'bgWhite'), 'messageLayoutItem')}">
+                                            <aura:if isTrue="{!v.workingCopyId}">   
+                                                <c:MarketplaceMessaging isPartner="true" heading="{!$Label.c.PMP_Messaging_MessagesAboutStorefront}" recordId="{! v.workingCopyId }" />
+                                            </aura:if>
+                                        </lightning:layoutItem> 
+                                    </aura:if>    
+                                    
+                                </lightning:layout>
+                            </aura:if>
+                            
+                            <aura:if isTrue="{!and(v.currentStep == v.steps.length-1, v.formErrorMsgs.length gt 0)}">
+                                <div class="slds-p-horizontal_medium slds-p-top_large" >
+                                    <p><b>{!$Label.c.PMP_Edit_Storefront_Address_Issues}</b></p>
+                                    <aura:iteration items="{!v.formErrorMsgs}" var="msg">
+                                        <p class="textColorRed slds-p-vertical_xxx-small">{!msg}</p>
+                                    </aura:iteration>
+                                </div>
+                            </aura:if>
+                        </aura:if>
+                    </div>
+                    <!-- prev / next / close buttons -->
+                    <!-- mobile -->
+                    <aura:if isTrue="{!and(v.state.currentScreenSize == 'mobile', !v.isFromLink)}">
+                        <aura:if isTrue="{!v.leadSettings}">
+                            <!-- <p class="slds-p-horizontal_xx-large help-text">{!$Label.c.PMP_Storefront_ProfilePopUp_Footer} <c:IntelLink url="{!$Label.c.PMP_Intel_Profile_Url}" openInBlank="true">{!$Label.c.PMP_Storefront_ProfilePopUp_FooterLink}&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></c:IntelLink></p>--><!--Custom Label Changes-->
+                            <!-- aura:unescapedHtml added as part of DE83021 -->
+                            <p class="slds-p-horizontal_xx-large help-text"><aura:unescapedHtml value="{!$Label.c.PMP_Storefront_FooterIntelLink}"/>&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></p>
+                        </aura:if>
+                        <lightning:layout class="slds-p-around_medium slds-text-align_center step-button-group">
+                            <aura:if isTrue="{!!v.isFromLink}">
+                                <aura:if isTrue="{!v.leadSettings}">
+                                    <!-- <p class="slds-p-horizontal_xx-large help-text">{!$Label.c.PMP_Storefront_ProfilePopUp_Footer}&nbsp;<c:IntelLink url="{!$Label.c.PMP_Intel_Profile_Url}" openInBlank="true">{!$Label.c.PMP_Storefront_ProfilePopUp_FooterLink}&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></c:IntelLink></p>--><!-- Custom Label Changes-->
+                                    <!-- aura:unescapedHtml added as part of DE83021 -->
+                                    <p class="slds-p-horizontal_xx-large help-text"><aura:unescapedHtml value="{!$Label.c.PMP_Storefront_FooterIntelLink}"/>&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></p>
+                                </aura:if>
+                                <div class="desktop-action-buttons slds-p-vertical_x-small slds-text-align_right slds-p-horizontal_xx-large">
+                                    <!--<aura:if isTrue="{!and(v.currentStep eq 6, v.isAdmin)}">-->
+                                    <aura:if isTrue="{!and(v.currentStep eq 6, !v.isIntelAdmin)}">
+                                        <span onclick="{!c.handleClose}">
+                                            <c:IntelButton disabled="false" class="nextButton">
+                                                {!$Label.c.PMP_Storefront_Save_and_Close}
+                                            </c:IntelButton>
+                                        </span>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.isFirstDraft}">
+                                        <aura:if isTrue="{!or(v.isLocked, v.currentStep eq v.steps.length)}">
+                                            <aura:if isTrue="{!v.isProfileAdmin}">
+                                                <span onclick="{!c.handleNextStep}">
+                                                    <c:IntelButton disabled="false" class="nextButton">
+                                                        {!$Label.c.PMP_Edit_Storefront_ProceedToStep_Btn}
+                                                    </c:IntelButton>
+                                                </span>   
+                                                <aura:set attribute="else">
+                                                    <span onclick="{!c.handleClose}">
+                                                        <c:IntelButton disabled="false" class="nextButton">
+                                                            {!$Label.c.PMP_Edit_Storefront_Close_Btn}
+                                                        </c:IntelButton>
+                                                    </span> <!-- Close X  buttton of the modal ends -->
+                                                </aura:set>
+                                            </aura:if>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!and(v.currentStep gt 0, v.currentStep lt 4)}">
+                                                    <span onclick="{!c.handlePrevStep}" class="slds-m-right_medium">
+                                                        <c:IntelButton disabled="false" class="prevButton gray">
+                                                            {!$Label.c.PMP_Edit_Storefront_Previous_Btn}
+                                                        </c:IntelButton>
+                                                    </span>
+                                                </aura:if> <!-- Previous button ends -->  
+                                                    <aura:if isTrue="{!v.currentStep lt v.steps.length-1}">
+                                                        <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                            <c:IntelButton disabled="false" class="prevButton gray">
+                                                                {!$Label.c.PMP_Cancel}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <span onclick="{!c.handleNextStep}">
+                                                            <c:IntelButton class="nextButton">
+                                                                {!$Label.c.PMP_Edit_Storefront_Next_Btn}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <aura:set attribute="else">
+                                                            <aura:if isTrue="{!!v.leadSettings}">
+                                                                <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                                    <c:IntelButton disabled="false" class="prevButton gray">
+                                                                        {!$Label.c.PMP_Cancel}
+                                                                    </c:IntelButton>
+                                                                </span>
+                                                            </aura:if>
+                                                            <aura:if isTrue="{!v.currentStatus == 'Update Required'}">
+                                                                <span onclick="{!c.handleNextStep}">
+                                                                    <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                        {!$Label.c.PMP_Edit_Storefront_Resubmit_Btn_sm}
+                                                                    </c:IntelButton>
+                                                                    <aura:set attribute ="else">
+                                                                        <aura:if isTrue="{!!v.leadSettings}">
+                                                                            <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                                {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
+                                                                            </c:IntelButton>
+                                                                        </aura:if>
+                                                                        
+                                                                    </aura:set>
+                                                                </span>
+                                                            </aura:if>
+                                                            
+                                                        </aura:set>
+                                                    </aura:if> <!-- next button, cancel button & submit button block ends -->
+                                            </aura:set>
+                                        </aura:if>
+                                        
+                                        <aura:set attribute="else">
+                                            <aura:if isTrue="{!and(v.isIntelAdmin, v.currentStep eq 5)}">
+                                                <span onclick="{!c.handleNextStep}">
+                                                    <aura:if isTrue="{!v.currentStatus == 'Update Required'}">
+                                                        <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                            {!$Label.c.PMP_Edit_Storefront_Resubmit_Btn_sm}
+                                                        </c:IntelButton>
+                                                        <aura:set attribute ="else">
+                                                            <!-- <aura:if isTrue="{!!v.leadSettings}">-->
+                                                            <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
+                                                            </c:IntelButton>
+                                                            <!-- </aura:if>-->
+                                                            
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </span>
+                                            </aura:if>
+                                            <aura:if isTrue="{!or(v.isLocked, v.currentStep eq v.steps.length)}">                                            
+                                                <span onclick="{!c.handleClose}">
+                                                    <c:IntelButton disabled="false" class="nextButton">
+                                                        {!$Label.c.PMP_Edit_Storefront_Close_Btn}
+                                                    </c:IntelButton>
+                                                </span>
+                                                <aura:set attribute="else">
+                                                    <aura:if isTrue="{!v.currentStep lt 4}">
+                                                        <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                            <c:IntelButton disabled="false" class="prevButton gray">
+                                                                {!$Label.c.PMP_Cancel}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <span onclick="{!c.handleGoToSummary}" class="slds-m-right_medium">
+                                                            <c:IntelButton disabled="false" class="prevButton gray">
+                                                                {!$Label.c.PMP_Edit_Storefront_Summary}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <span onclick="{!c.handleSubmitEdits}" class="slds-m-right_medium">
+                                                            <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                {!$Label.c.PMP_Summary_SubmitEdits_Label}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <aura:set attribute="else">
+                                                            <aura:if isTrue="{!v.currentStep eq 4}"> 
+                                                                <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                                    <c:IntelButton disabled="false" class="prevButton gray">
+                                                                        {!$Label.c.PMP_Cancel}
+                                                                    </c:IntelButton>
+                                                                </span>
+                                                                <span onclick="{!c.handleSubmitEdits}" class="slds-m-right_medium">
+                                                                    <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                        {!$Label.c.PMP_Summary_SubmitEdits_Label}
+                                                                    </c:IntelButton>
+                                                                </span>
+                                                            </aura:if>  
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                        </aura:set>
+                                        
+                                    </aura:if>                                
+                                </div>
+                            </aura:if>
+                        </lightning:layout>
+                        <div style="height: 50px;">
+                            <!-- spacer -->
+                        </div>
+                        
+                        <!-- desktop buttons -->
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!!v.isFromLink}">
+                                <aura:if isTrue="{!v.leadSettings}">
+                                    <!-- <p class="slds-p-horizontal_xx-large help-text">{!$Label.c.PMP_Storefront_ProfilePopUp_Footer}&nbsp;<c:IntelLink url="{!$Label.c.PMP_Intel_Profile_Url}" openInBlank="true">{!$Label.c.PMP_Storefront_ProfilePopUp_FooterLink}&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></c:IntelLink></p>--><!-- Custom Label Changes-->
+                                    <!-- aura:unescapedHtml added as part of DE83021 -->
+                                    <p class="slds-p-horizontal_xx-large help-text"><aura:unescapedHtml value="{!$Label.c.PMP_Storefront_FooterIntelLink}"/>&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></p>
+                                </aura:if>
+                                <div class="desktop-action-buttons slds-p-vertical_x-small slds-text-align_right slds-p-horizontal_xx-large">
+                                    <!--<aura:if isTrue="{!and(v.currentStep eq 6, v.isAdmin)}">-->
+                                    <aura:if isTrue="{!and(v.currentStep eq 6, !v.isIntelAdmin)}">
+                                        <span onclick="{!c.handleClose}">
+                                            <c:IntelButton disabled="false" class="nextButton">
+                                                {!$Label.c.PMP_Storefront_Save_and_Close}
+                                            </c:IntelButton>
+                                        </span>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.isFirstDraft}">
+                                        <aura:if isTrue="{!or(v.isLocked, v.currentStep eq v.steps.length)}">
+                                            <aura:if isTrue="{!v.isProfileAdmin}">
+                                                <span onclick="{!c.handleNextStep}">
+                                                    <c:IntelButton disabled="false" class="nextButton">
+                                                        {!$Label.c.PMP_Edit_Storefront_ProceedToStep_Btn}
+                                                    </c:IntelButton>
+                                                </span>   
+                                                <aura:set attribute="else">
+                                                    <span onclick="{!c.handleClose}">
+                                                        <c:IntelButton disabled="false" class="nextButton">
+                                                            {!$Label.c.PMP_Edit_Storefront_Close_Btn}
+                                                        </c:IntelButton>
+                                                    </span> <!-- Close X  buttton of the modal ends -->
+                                                </aura:set>
+                                            </aura:if>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!and(v.currentStep gt 0, v.currentStep lt 4)}">
+                                                    <span onclick="{!c.handlePrevStep}" class="slds-m-right_medium">
+                                                        <c:IntelButton disabled="false" class="prevButton gray">
+                                                            {!$Label.c.PMP_Edit_Storefront_Previous_Btn}
+                                                        </c:IntelButton>
+                                                    </span>
+                                                </aura:if> <!-- Previous button ends -->  
+                                                <aura:if isTrue="{!v.currentStep lt v.steps.length-1}">
+                                                    <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                        <c:IntelButton disabled="false" class="prevButton gray">
+                                                            {!$Label.c.PMP_Cancel}
+                                                        </c:IntelButton>
+                                                    </span>
+                                                    <span onclick="{!c.handleNextStep}">
+                                                        <c:IntelButton class="nextButton">
+                                                            {!$Label.c.PMP_Edit_Storefront_Next_Btn}
+                                                        </c:IntelButton>
+                                                    </span>
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!!v.leadSettings}">
+                                                            <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                                <c:IntelButton disabled="false" class="prevButton gray">
+                                                                    {!$Label.c.PMP_Cancel}
+                                                                </c:IntelButton>
+                                                            </span>
+                                                        </aura:if>
+                                                        <span onclick="{!c.handleNextStep}">
+                                                            <aura:if isTrue="{!v.currentStatus == 'Update Required'}">
+                                                                <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                    {!$Label.c.PMP_Edit_Storefront_Resubmit_Btn_sm}
+                                                                </c:IntelButton>
+                                                                <aura:set attribute ="else">
+                                                                    <aura:if isTrue="{!!v.leadSettings}">
+                                                                        <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                            {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
+                                                                        </c:IntelButton>
+                                                                    </aura:if>
+                                                                    
+                                                                </aura:set>
+                                                            </aura:if>
+                                                        </span>
+                                                        
+                                                    </aura:set>
+                                                </aura:if> <!-- next button, cancel button & submit button block ends -->
+                                            </aura:set>
+                                        </aura:if>
+                                        
+                                        <aura:set attribute="else">
+                                            <aura:if isTrue="{!and(v.isIntelAdmin, v.currentStep eq 5)}">
+                                                <span onclick="{!c.handleNextStep}">
+                                                    <aura:if isTrue="{!v.currentStatus == 'Update Required'}">
+                                                        <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                            {!$Label.c.PMP_Edit_Storefront_Resubmit_Btn_sm}
+                                                        </c:IntelButton>
+                                                        <aura:set attribute ="else">
+                                                            <!-- <aura:if isTrue="{!!v.leadSettings}">-->
+                                                            <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
+                                                            </c:IntelButton>
+                                                            <!-- </aura:if>-->
+                                                            
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </span>
+                                            </aura:if>
+                                            <aura:if isTrue="{!or(v.isLocked, v.currentStep eq v.steps.length)}">                                            
+                                                <span onclick="{!c.handleClose}">
+                                                    <c:IntelButton disabled="false" class="nextButton">
+                                                        {!$Label.c.PMP_Edit_Storefront_Close_Btn}
+                                                    </c:IntelButton>
+                                                </span>
+                                                <aura:set attribute="else">
+                                                    <aura:if isTrue="{!v.currentStep lt 4}">
+                                                        <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                            <c:IntelButton disabled="false" class="prevButton gray">
+                                                                {!$Label.c.PMP_Cancel}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <span onclick="{!c.handleGoToSummary}" class="slds-m-right_medium">
+                                                            <c:IntelButton disabled="false" class="prevButton gray">
+                                                                {!$Label.c.PMP_Edit_Storefront_Summary}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <span onclick="{!c.handleSubmitEdits}" class="slds-m-right_medium">
+                                                            <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                {!$Label.c.PMP_Summary_SubmitEdits_Label}
+                                                            </c:IntelButton>
+                                                        </span>
+                                                        <aura:set attribute="else">
+                                                            <aura:if isTrue="{!v.currentStep eq 4}"> 
+                                                                <span onclick="{!c.handleClose}" class="slds-m-right_medium cancelButton">
+                                                                    <c:IntelButton disabled="false" class="prevButton gray">
+                                                                        {!$Label.c.PMP_Cancel}
+                                                                    </c:IntelButton>
+                                                                </span>
+                                                                <span onclick="{!c.handleSubmitEdits}" class="slds-m-right_medium">
+                                                                    <c:IntelButton disabled="{!!v.formValid}" class="nextButton">
+                                                                        {!$Label.c.PMP_Summary_SubmitEdits_Label}
+                                                                    </c:IntelButton>
+                                                                </span>
+                                                            </aura:if>  
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                        </aura:set>
+                                        
+                                    </aura:if>                                
+                                </div>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isFromLink}">      	
+                        <div class="slds-var-m-around_medium"> 	
+                            <div class="{!join(' ', 'slds-m-bottom_medium', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">            	
+                                <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">          	
+                                    <span>{!$Label.c.PMP_Edit_Storefront_Company_Information}</span>            	
+                                    <aura:if isTrue="{!and(v.summaryData.logo.isUpdated, !v.isFirstDraft)}"><span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span></aura:if>          	
+                                </h2> 	
+                                <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium slds-p-top_medium' : 'slds-m-horizontal_large slds-p-top_medium'}">
+                                    <aura:if isTrue="{!and(v.partner.name, v.hasLogo)}">
+                                        <!--Added by Subash for US682883 & US685085-->
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Partner_Name}</p>
+                                        <p class="pSmallText">{!v.partner.name}</p>
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Heading_Logo}</p>
+                                        <img class="logoImg" src="{!v.logourl}"  />
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Website}</p>
+                                        <p class="pSmallText">{!v.partner.website}</p>
+                                        <!--End US682883 & US685085-->
+                                        <!--Added by Sooriya for US686697-->
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Address}</p>
+                                        <lightning:layout multipleRows="true">
+                                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Primary_Street}</p>
+                                                <p class="pSmallText">{!v.partner.primaryStreet}</p>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Secondary_Street}</p>
+                                                <p class="pSmallText">{!v.partner.secondaryStreet}</p>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                        <lightning:layout multipleRows="true">
+                                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_City}</p>
+                                                <p class="pSmallText">{!v.partner.city}</p>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_LeadGen_State}</p>
+                                                <p class="pSmallText">{!v.partner.state}</p>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                        <lightning:layout multipleRows="true">
+                                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Country}</p>
+                                                <p class="pSmallText">{!v.partner.country}</p>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                                <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Zip_Code}</p>
+                                                <p class="pSmallText">{!v.partner.postalCode}</p>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                        <!--END OF US686697-->
+                                        <aura:set attribute="else">
+                                            <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;
+                                                <a class="error-link textColorRed" data-tab="logo" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>
+                                            </p>
+                                        </aura:set>
+                                    </aura:if>       
+                                </div>              	
+                            </div>    	
+                            <div class="{!join(' ', 'slds-m-bottom_medium', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">            	
+                                <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">          	
+                                    <span>{!$Label.c.PMP_Edit_Storefront_Company_Description}</span>
+                                    
+                                    <aura:if isTrue="{!and(v.summaryData.description.isUpdated, !v.isFirstDraft)}"><span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span></aura:if>          	
+                                </h2> 	
+                                <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'}">        	
+                                    
+                                    <aura:if isTrue="{!v.summaryData.description.isValid}">        	
+                                        
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Description_Lang_Label}</p>    	
+                                        <p class="pSmallText">{!v.summaryData.description.language}</p>            	
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Description_Tagline_Label}</p> 	
+                                        <p class="pSmallText">{!v.summaryData.description.tagline}</p> 	
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Description_Des_Label}</p>      	
+                                        <p class="pSmallText"><ui:outputRichText value="{!v.summaryData.description.description}" class="summary-richtext"/></p>              	
+                                        
+                                        <aura:set attribute="else">            	
+                                            <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;    	
+                                                <a class="error-link textColorRed" data-tab="description" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>           	
+                                            </p>     	
+                                        </aura:set>            	
+                                    </aura:if>    	
+                                </div>               	
+                            </div>    	
+                            <div class="{!join(' ', 'slds-m-bottom_medium', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">            	
+                                <h2 class="{!join(' ', 'summarySection', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">          	
+                                    <span>{!$Label.c.PMP_Edit_Storefront_Company_Details}</span>   	
+                                    <aura:if isTrue="{!and(v.summaryData.companyDetail.isUpdated, !v.isFirstDraft)}"> <span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span>  </aura:if>        	
+                                </h2> 	
+                                <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'}">        	
+                                    <aura:if isTrue="{!v.summaryData.companyDetail.isValid}"> 	
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Industry}</p>     	
+                                        <aura:iteration items="{!v.summaryData.companyDetail.industries}" var="region">             	
+                                            <p class="pSmallText">{!region.label}</p>          	
+                                            <p class="pSmallText"> 	
+                                                <aura:iteration items="{!region.children}" var="childRegion" indexVar="idxc">              	
+                                                    <span>{!childRegion.label}</span> 	
+                                                    <aura:if isTrue="{!idxc lt (region.children.length - 1)}">,&nbsp;</aura:if>      	
+                                                </aura:iteration>        	
+                                            </p>     	
+                                        </aura:iteration> 	
+                                        <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_application}</p> 	
+                                        <aura:iteration items="{!v.summaryData.companyDetail.applications}" var="region">         	
+                                            <p class="pSmallText">{!region.label}</p>          	
+                                            <p class="pSmallText"> 	
+                                                <aura:iteration items="{!region.children}" var="childRegion" indexVar="idxc">              	
+                                                    
+                                                    <span>{!childRegion.label}</span> 	
+                                                    
+                                                    <aura:if isTrue="{!idxc lt (region.children.length - 1)}">,&nbsp;</aura:if>      	
+                                                </aura:iteration>        	
+                                            </p>     	
+                                        </aura:iteration> 
+                                        <aura:if isTrue="{!!v.isDistributor}"><!--Added by Subash for US697109-->
+                                            <p class="slds-m-top_medium slds-m-bottom_xx-small">{!$Label.c.PMP_Edit_Storefront_Geo_Top}</p>  	
+                                            <aura:iteration items="{!v.summaryData.companyDetail.regions}" var="region">  	
+                                                <p class="pSmallText">{!region.label}</p>          	
+                                                <p class="pSmallText"> 	
+                                                    <aura:iteration items="{!region.children}" var="childRegion" indexVar="idxc">
+                                                        <aura:if isTrue="{!childRegion.checked}">
+                                                            <span>{!childRegion.label}</span>
+                                                            <aura:if isTrue="{!idxc lt (region.children.length - 1)}">,&nbsp;
+                                                                <aura:set attribute="else">
+                                                                    ,&nbsp;
+                                                                </aura:set>
+                                                            </aura:if>
+                                                            <aura:iteration items="{!childRegion.children}" var="subchildRegion" indexVar="idxc1">
+                                                                <aura:if isTrue="{!subchildRegion.checked}">
+                                                                    <span>{!subchildRegion.label}</span>
+                                                                    <aura:if isTrue="{!idxc1 lt (childRegion.children.length - 1)}">,&nbsp;</aura:if>
+                                                                    <aura:if isTrue="{!idxc1 eq (childRegion.children.length - 1)}"> <br/> </aura:if>
+                                                                </aura:if>
+                                                            </aura:iteration>
+                                                        </aura:if>
+                                                    </aura:iteration>
+                                                    
+                                                </p>     	
+                                            </aura:iteration> 	
+                                        </aura:if>
+                                        
+                                        <aura:set attribute="else">            	
+                                            <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;    	
+                                                <a class="error-link textColorRed" data-tab="regions" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>           	
+                                            </p>     	
+                                        </aura:set>            	
+                                    </aura:if>    	
+                                </div>               	
+                            </div>    	
+                            <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-top_medium slds-p-bottom_large'), 'bgWhite')}">    	
+                                <h2 class="{!join(' ', 'borderBottom', 'h5', (v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'))}">         	
+                                    <span>{!$Label.c.PMP_Edit_Storefront_Company_Resources}</span>  	
+                                    <aura:if isTrue="{!and(v.summaryData.resources.isUpdated, !v.isFirstDraft)}"><span class="updatedText">{!$Label.c.PMP_Summary_Updated_Label}</span></aura:if>          	
+                                </h2> 	
+                                <div class="{!v.state.currentScreenSize == 'mobile' ? 'slds-m-horizontal_medium' : 'slds-m-horizontal_large'}">        	
+                                    <aura:if isTrue="{!v.summaryData.resources.isValid}">           	
+                                        <table class="slds-m-top_small"> 	
+                                            <thead>              	
+                                                <tr>  	
+                                                    <th class="slds-p-vertical_xx-small">{!$Label.c.PMP_Edit_Storefront_Resources_Type_Label}</th>     	
+                                                    <th class="slds-p-vertical_xx-small">{!$Label.c.PMP_Edit_Storefront_Resources_Res}</th>    	
+                                                </tr> 	
+                                            </thead>            	
+                                            <tbody>              	
+                                                <aura:iteration items="{!v.summaryData.resources.all}" var="resource" indexVar="index">                	
+                                                    <tr>              	
+                                                        <td class="slds-p-vertical_xx-small">         	
+                                                            <p class="pSmallText">{!resource.type}</p>     	
+                                                        </td>      	
+                                                        <td class="slds-p-vertical_xx-small">         	
+                                                            <p class="pSmallText">              	
+                                                                <c:psMpLink externalUrl="{!resource.url}" label="{!resource.title}"></c:psMpLink>                 	
+                                                                <!-- <p class="pSmallText">{!resource.title}</p> -->  	
+                                                            </p>   	
+                                                        </td>      	
+                                                    </tr>            	
+                                                </aura:iteration>        	                                                
+                                            </tbody>            	
+                                        </table>  	
+                                        <aura:set attribute="else">            	
+                                            <p class="slds-p-vertical_small textColorRed">{!$Label.c.PMP_Summary_ContentError_Label}&nbsp;    	
+                                                <a class="error-link textColorRed" data-tab="resources" href="javascript:void(0);" onclick="{!c.handleGoBack}">{!$Label.c.PMP_Summary_ContentTryAgainError_Label}</a>           	
+                                            </p>     	
+                                        </aura:set>            	
+                                    </aura:if>    	
+                                </div>               	
+                            </div>    	
+                        </div>        	
+                    </aura:if>
+                </div>
+            </c:MarketplaceModal>    
+        </aura:if>
+        
+    </div>
+    
+</aura:component>

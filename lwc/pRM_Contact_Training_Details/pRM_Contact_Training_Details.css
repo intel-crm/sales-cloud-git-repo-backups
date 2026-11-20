@@ -1,0 +1,117 @@
+.custom-box {
+    height: fit-content;
+    width: auto;
+}
+h2{
+    text-align: center;
+    font-size: 12px;
+    color : rgb(0, 113, 97);
+    font-size: 70px;
+    font-weight: lighter;
+    margin-top: .25rem; 
+}
+div{
+    background-color: white; width: 30rem; height: fit-content;
+}
+p{
+    color: #16325c;
+    font-size: 1rem;
+    /* font-size:.8125rem; */
+    align-self: start;
+    font-weight: normal;
+}
+.mainDiv{
+    /* border: solid;
+    border-width: thin; */
+    /* left: 8px; */
+    height: 168px;
+    width: 33%;
+    height: min-content;
+}
+/* a{
+    font-size: 12px;
+    
+} */
+button.expandComponent, button.filterComponent {
+    margin: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.actions {
+    margin-top: .75rem;
+    margin-right: .75rem;
+}
+.gridFooter {
+    align-self: flex-start;
+    font-weight: normal;
+    font-size: smaller;
+}
+.truncation {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.gridHeader {
+    font-family: "SalesforceSans-Regular",Arial,sans-serif;
+    font-size: 1rem;
+    color: #16325c;
+    line-height: 1.25rem;
+    top: inherit;
+    width: calc(100% - 20px);
+}
+
+.contentBox{
+    box-sizing: content-box;
+    background-color: white;
+    text-align:center;
+    text-size-adjust: inherit;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-family:'SalesforceSans-Regular',Arial,sans-serif !important;
+}
+
+.slds-assistive-text {
+    position: absolute!important;
+    margin: -1px!important;
+    border: 0!important;
+    padding: 0!important;
+    width: 1px!important;
+    height: 1px!important;
+    overflow: hidden!important;
+    clip: rect(0 0 0 0)!important;
+    text-transform: none!important;
+    white-space: nowrap!important;
+}
+
+.MeasurementPeriod{
+    padding-right: 40px;
+    
+}
+.back{
+    background-color: rgb(243,243,243);
+    height: 3cm;
+    width:30cm;
+    border:0.25rem black;
+}
+.filterName{
+    width: 366px;
+    height: 86.333px;
+    padding-bottom: 16px;
+    font-size: 14px; /*Utkarsh - Added font size to allign measurment dropdown with training dashboard.*/
+    margin-left: 16px;
+}
+.measurementHeader{
+    color: #444444;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: sans-serif;
+    padding-bottom: 13px;
+}
+.slds-combobox__input{
+    border: 0.5px solid rgb(201,201,201);
+    border-radius: 5px;
+}

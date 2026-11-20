@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Client Computing</masterLabel>
+        <translation>客户端计算</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Data Center</masterLabel>
+        <translation>数据中心</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge</masterLabel>
+        <translation>边缘</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking &amp; Telco</masterLabel>
+        <translation>网络和电信</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

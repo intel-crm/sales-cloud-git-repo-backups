@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Benefit Matrix</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Benefit Matrix</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approval Type --></label>
+        <name>PRM_Approval_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Automatic</masterLabel>
+            <translation><!-- Automatic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual</masterLabel>
+            <translation><!-- Manual --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PRM_BenfitMatrix_Combination --></label>
+        <name>PRM_BenfitMatrix_Combination__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Benefit Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Tier --></label>
+        <name>PRM_Channel_Program_Level_Id__c</name>
+        <relationshipLabel><!-- Benefit Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Covered Account --></label>
+        <name>PRM_Covered_Account_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>PRM_IsActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Benefit --></label>
+        <name>PRM_Partner_Benefit_Id__c</name>
+        <relationshipLabel><!-- Benefit Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Builder</masterLabel>
+            <translation><!-- Builder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Type --></label>
+        <name>PRM_Partner_Type_Id__c</name>
+        <relationshipLabel><!-- Benefit Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Total Quantity --></label>
+        <name>PRM_Total_Quantity_Nbr__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Partner Benefit, Channel Program and Partner Type are not Editable --></errorMessage>
+        <name>PRM_Restrict_FieldEdit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Quantity does not apply for this Benefit --></errorMessage>
+        <name>PRM_Total_Quantity_Restriction</name>
+    </validationRules>
+</CustomObjectTranslation>

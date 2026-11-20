@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Spending Targets Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Spending Targets Line Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Spending Targets Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- All Accounts --></label>
+        <name>Core_MDF_All_Accounts_nm__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Core_MDF_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bucket --></label>
+        <name>Core_MDF_Bucket_nm__c</name>
+        <picklistValues>
+            <masterLabel>Broad Priority</masterLabel>
+            <translation><!-- Broad Priority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMF</masterLabel>
+            <translation><!-- SMF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Spending Targets Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign Name --></label>
+        <name>Core_MDF_Campaign_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>AUSTRALIA</masterLabel>
+            <translation><!-- AUSTRALIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Other APJ</masterLabel>
+            <translation><!-- All Other APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Other ASMO</masterLabel>
+            <translation><!-- All Other ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Other EMEA</masterLabel>
+            <translation><!-- All Other EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BRAZIL</masterLabel>
+            <translation><!-- BRAZIL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CANADA</masterLabel>
+            <translation><!-- CANADA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHINA</masterLabel>
+            <translation><!-- CHINA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COLOMBIA</masterLabel>
+            <translation><!-- COLOMBIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FRANCE</masterLabel>
+            <translation><!-- FRANCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GERMANY</masterLabel>
+            <translation><!-- GERMANY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HONG KONG</masterLabel>
+            <translation><!-- HONG KONG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITALY</masterLabel>
+            <translation><!-- ITALY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAPAN</masterLabel>
+            <translation><!-- JAPAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KOREA</masterLabel>
+            <translation><!-- KOREA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MACAU</masterLabel>
+            <translation><!-- MACAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEXICO</masterLabel>
+            <translation><!-- MEXICO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POLAND</masterLabel>
+            <translation><!-- POLAND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SWEDEN</masterLabel>
+            <translation><!-- SWEDEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UNITED KINGDOM</masterLabel>
+            <translation><!-- UNITED KINGDOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UNITED STATES</masterLabel>
+            <translation><!-- UNITED STATES --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country_nm__c</name>
+        <picklistValues>
+            <masterLabel>AUSTRALIA</masterLabel>
+            <translation><!-- AUSTRALIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Other APJ</masterLabel>
+            <translation><!-- All Other APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Other ASMO</masterLabel>
+            <translation><!-- All Other ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Other EMEA</masterLabel>
+            <translation><!-- All Other EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BRAZIL</masterLabel>
+            <translation><!-- BRAZIL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CANADA</masterLabel>
+            <translation><!-- CANADA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHINA</masterLabel>
+            <translation><!-- CHINA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COLOMBIA</masterLabel>
+            <translation><!-- COLOMBIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FRANCE</masterLabel>
+            <translation><!-- FRANCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GERMANY</masterLabel>
+            <translation><!-- GERMANY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HONG KONG</masterLabel>
+            <translation><!-- HONG KONG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITALY</masterLabel>
+            <translation><!-- ITALY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAPAN</masterLabel>
+            <translation><!-- JAPAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KOREA</masterLabel>
+            <translation><!-- KOREA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MACAU</masterLabel>
+            <translation><!-- MACAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEXICO</masterLabel>
+            <translation><!-- MEXICO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POLAND</masterLabel>
+            <translation><!-- POLAND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SWEDEN</masterLabel>
+            <translation><!-- SWEDEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UNITED KINGDOM</masterLabel>
+            <translation><!-- UNITED KINGDOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UNITED STATES</masterLabel>
+            <translation><!-- UNITED STATES --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Focus Area --></label>
+        <name>Core_MDF_Focus_Area_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host Region --></label>
+        <name>Core_MDF_Host_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority Weightage --></label>
+        <name>Core_MDF_Priority_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>Core_MDF_Priority_nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Commercial</masterLabel>
+            <translation><!-- AI Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Consumer</masterLabel>
+            <translation><!-- AI Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI PC &amp; Consumer</masterLabel>
+            <translation><!-- AI PC &amp; Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI PC - Commercial</masterLabel>
+            <translation><!-- AI PC - Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced Analytics</masterLabel>
+            <translation><!-- Advanced Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple Compete Commercial</masterLabel>
+            <translation><!-- Apple Compete Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple Compete Consumer</masterLabel>
+            <translation><!-- Apple Compete Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple Compete Workstation</masterLabel>
+            <translation><!-- Apple Compete Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence</masterLabel>
+            <translation><!-- Artificial Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial</masterLabel>
+            <translation><!-- Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial Evo (non-vPro)</masterLabel>
+            <translation><!-- Commercial Evo (non-vPro) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial non-vPro</masterLabel>
+            <translation><!-- Commercial non-vPro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial vPro</masterLabel>
+            <translation><!-- Commercial vPro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial vPro Evo</masterLabel>
+            <translation><!-- Commercial vPro Evo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Evo</masterLabel>
+            <translation><!-- Consumer Evo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer non-Evo</masterLabel>
+            <translation><!-- Consumer non-Evo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise AI</masterLabel>
+            <translation><!-- Enterprise AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise IT</masterLabel>
+            <translation><!-- Enterprise IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming</masterLabel>
+            <translation><!-- Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing</masterLabel>
+            <translation><!-- High Performance Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Optimization</masterLabel>
+            <translation><!-- Infrastructure Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things</masterLabel>
+            <translation><!-- Internet of Things --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Transformation</masterLabel>
+            <translation><!-- Network Transformation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation</masterLabel>
+            <translation><!-- Workstation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_MDF_ProgramName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets Record Name --></label>
+        <name>Core_MDF_Spending_Targets_Record_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets Version --></label>
+        <name>Core_MDF_Spending_Targets_Version__c</name>
+        <relationshipLabel><!-- Spending Targets Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Spending Version Record Name --></label>
+        <name>Core_MDF_Spending_Version_Record_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Targets --></label>
+        <name>Core_MDF_Target_Setting__c</name>
+        <relationshipLabel><!-- Spending Targets Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account Id --></label>
+        <name>Core_MDF_Ultimate_Account_Id__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Client --></label>
+        <name>Core_MDF_Client_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Datacenter --></label>
+        <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Intel Partner Alliance --></label>
+        <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Account cannot be updated --></errorMessage>
+        <name>Core_MDF_AccountChangeRestriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account should be blank if All Account option is selected --></errorMessage>
+        <name>Core_MDF_Do_Not_Select_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Amount should be greater or equal to 0 --></errorMessage>
+        <name>Core_MDF_Negative_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Priority Weightage should be within 0% - 100% --></errorMessage>
+        <name>Core_MDF_PriorityPercentValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Region is Mandatory for CCF and DCF Programs. --></errorMessage>
+        <name>Core_MDF_Region_Should_Not_Be_Blank</name>
+    </validationRules>
+</CustomObjectTranslation>

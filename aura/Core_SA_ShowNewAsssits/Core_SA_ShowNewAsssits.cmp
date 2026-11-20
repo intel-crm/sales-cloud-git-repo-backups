@@ -1,0 +1,44 @@
+<aura:component controller="Core_SA_ServiceWrapper" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome">
+    <!-- This component is used on the Account Specific page to display Total number of Unread Assists -->
+    
+    <!--Local Vaiables Below -->
+    <aura:attribute name="headingLabel" type="string" default="New Assists" description="Heading label" />
+    <aura:attribute name="showBool" type="Boolean" default="true"/>
+    <aura:attribute name="TotalAssists" type="String" default="0"/>
+  	<aura:attribute name="userSessionData" type="Object" />
+  	<aura:attribute name="data" type="Object" />
+    <aura:attribute name="accountId" type="string" />
+    <aura:attribute name="cimId" type="string" />
+	<aura:attribute name="userWWID" type="String" />    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="saSwitchToggle" type = "Boolean" default= "{!$Label.c.CRM_SA_Switch}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+  	<aura:if isTrue="{! !empty(v.data)}">
+        <!--render this object on the page only if the JSON data.show = TRUE -->
+    	<aura:renderIf isTrue="{!v.data.show}">
+			<article class="slds-card slds-card_boundary forceRelatedListCardDesktop">
+    			<div class="slds-grid slds-page-header forceRelatedListCardHeader">
+        			<header class="slds-media slds-media--center slds-has-flexi-truncate">
+                        <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                            <div class="extraSmall forceEntityIcon" style="background-color: #FCB95B">
+                                <span class="uiImage" data-aura-class="uiImage">
+									<img aura:id="TotalAssistsIcon" class="icon " alt="{!$Label.c.Core_SA_ShowNewAssistsTitle}" title="{!$Label.c.Core_SA_ShowNewAssistsTitle}" src="{!$Label.c.Core_SA_IconPath}"/>                                
+                                </span>
+                            </div>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                 <div aura:id="TotalAssists" data-source="unread_indicator" class="" onclick="{!c.gotoURL}">
+                                    <a href="javascript:void(0)" class="slds-card__header-link slds-truncate" title="{!$Label.c.Core_SA_ShowNewAssistsTitle}">
+                                        <span>{!v.data.content}</span>
+                                    </a>
+                                </div>                            
+                            </h2>
+                        </div>
+                    </header>
+                </div>
+            </article>     
+  		</aura:renderIf>
+  	</aura:if>
+</aura:component>

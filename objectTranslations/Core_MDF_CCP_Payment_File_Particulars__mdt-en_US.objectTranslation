@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Payment File Particulars</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Payment File Particulars</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approver WWID --></label>
+        <name>Core_MDF_Approver_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Header Record --></label>
+        <name>Core_MDF_Batch_Header_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Trailer Record --></label>
+        <name>Core_MDF_Batch_Trailer_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>Core_MDF_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commodity Code CSAR --></label>
+        <name>Core_MDF_Commodity_Code_CSAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commodity Code Customer NonPO --></label>
+        <name>Core_MDF_Commodity_Code_Customer_NonPO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commodity Code Expense --></label>
+        <name>Core_MDF_Commodity_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cost Center --></label>
+        <name>Core_MDF_Cost_Center__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- GL Account CSAR --></label>
+        <name>Core_MDF_GL_Account_CSAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- GL Account Customer NonPO --></label>
+        <name>Core_MDF_GL_Account_Customer_NonPO__c</name>
+    </fields>
+    <fields>
+        <label><!-- GL Account Expense --></label>
+        <name>Core_MDF_GL_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Header Record --></label>
+        <name>Core_MDF_Invoice_Header_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Line Item --></label>
+        <name>Core_MDF_Invoice_Line_Item__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Type --></label>
+        <name>Core_MDF_Invoice_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment File Code --></label>
+        <name>Core_MDF_Payment_File_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Buy from Postal Code --></label>
+        <name>Core_MDF_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profit Center --></label>
+        <name>Core_MDF_Profit_Center__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program ID --></label>
+        <name>Core_MDF_Program_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship to Postal Code --></label>
+        <name>Core_MDF_Ship_to_Postal_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

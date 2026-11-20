@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <template if:true={isQuestionAvailable}>  
+        <template for:each={questionSets} for:item="item">
+            <div class="slds-p-around_medium" key={item.quesOrder}>
+                <!--  <lightning-tile key={item.label} label={item.label} type="media"> -->
+                  <label class="slds-form-element__label" style="color:#000000; font-size: medium;"> {item.label}</label>
+                      <div key={item.quesOrder}>
+    
+                        <br></br>
+                        <div class="slds-grid slds-wrap" style="padding-left: 7%;">
+                            <template for:each={item.radioBtn} for:item="radioBtn">
+                                <div key={radioBtn.Id} class="slds-col slds-size_1-of-5">
+                                <input key={radioBtn.id} type="radio" id={radioBtn.id} name={item.label}
+                                    value={radioBtn.value} data-id={item.quesId} onchange={rating} />
+                                </div>
+                            </template>
+                        </div>
+                    <p style="float:left; padding:3%;">{stronglyDisagree}</p>
+                    <p style="float:right; padding:3%;">{stronglyAgree}</p>
+    
+                      </div>
+    
+                 <!-- </lightning-tile> -->
+                 <br>
+              </div>
+        </template>
+        
+        <br>
+    
+        <!--  <lightning-tile label="Additional comments" type="media"> -->
+            <label class="slds-form-element__label" style="padding-left:16px; font-size: medium; color:#000000"> {additionalComments}</label>
+            <br></br>
+                <div style="padding-left:30px">
+                    <textarea id="OptionalFeedback" name="OptionalFeedback" rows="2" cols="60"
+                        placeholder={optionalFeedback} onchange={rating}></textarea>
+                </div>
+          <!--  </lightning-tile> -->
+        <br>
+        <lightning-button label={submitButton} title={submitButton} onclick={submitAction} class="slds-align_absolute-center"> </lightning-button>
+    </template>
+    </div>
+    
+    </template>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Check_Embargoed_Country_Value</name>
+        <label>Check Embargoed Country Value</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignmentItems>
+            <assignToReference>EmbargoedCountry</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>BooleanEC</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>This flow returns true or false for embargoed countries</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>BooleanEC</name>
+        <dataType>Boolean</dataType>
+        <expression>OR({!InputCountry} = &apos;Cuba&apos;, {!InputCountry}=&apos;Syria&apos;,{!InputCountry}=&apos;Iran&apos;, {!InputCountry}=&apos;Russia&apos;, {!InputCountry}=&apos;Belarus&apos;, {!InputCountry}=&apos;North Korea&apos;)</expression>
+    </formulas>
+    <interviewLabel>EmbargoedCountries {!$Flow.CurrentDateTime}</interviewLabel>
+    <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
+    <label>EmbargoedCountries</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Embargoed_Country_Value</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>EmbargoedCountry</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>InputCountry</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

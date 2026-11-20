@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>GEO</fullName>
+        <default>false</default>
+        <label>Region</label>
+    </customValue>
+    <customValue>
+        <fullName>LINEOFBUSNS</fullName>
+        <default>false</default>
+        <label>Line of Business</label>
+    </customValue>
+    <customValue>
+        <fullName>GLBL</fullName>
+        <default>false</default>
+        <label>Global</label>
+    </customValue>
+    <customValue>
+        <fullName>CTRY</fullName>
+        <default>false</default>
+        <label>Country</label>
+    </customValue>
+    <customValue>
+        <fullName>Country</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Country Old</label>
+    </customValue>
+    <customValue>
+        <fullName>Global</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Global Old</label>
+    </customValue>
+    <masterLabel>Grouping Method</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

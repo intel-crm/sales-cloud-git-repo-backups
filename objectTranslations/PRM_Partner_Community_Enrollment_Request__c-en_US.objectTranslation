@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Community Enrollment Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Community Enrollment Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>PRM_Approver_Id__c</name>
+        <relationshipLabel><!-- Partner Community Enrollment Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Community Change Agent --></label>
+        <name>PRM_Community_Change_Agent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_Contact_Id__c</name>
+        <relationshipLabel><!-- Partner Community Enrollment Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Ind --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Community --></label>
+        <name>PRM_Partner_Community_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Funded Head</masterLabel>
+            <translation><!-- Funded Head --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Cloud Insider Partner</masterLabel>
+            <translation><!-- Intel® Cloud Insider Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® FPGA Partner</masterLabel>
+            <translation><!-- Intel® FPGA Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® IOT Solution Partner</masterLabel>
+            <translation><!-- Intel® IOT Solution Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Network Builders Partner</masterLabel>
+            <translation><!-- Intel® Network Builders Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tech Ambassador</masterLabel>
+            <translation><!-- Tech Ambassador --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Change Date --></label>
+        <name>PRM_Status_Change_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

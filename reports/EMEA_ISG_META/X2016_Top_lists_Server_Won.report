@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>AMOUNT:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Amount</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_86183444</developerName>
+        <masterLabel>Opportunity Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal: Sell-to</sourceValue>
+            </sourceValues>
+            <value>Sell to</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal: Sell-through</sourceValue>
+            </sourceValues>
+            <value>Sell Thru-With</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_95616230</developerName>
+        <masterLabel>Product Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Core_Product_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Boards and Kits</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Processors</sourceValue>
+            </sourceValues>
+            <value>CPU</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Chipsets</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Development Kits</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Education</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethernet Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fabric Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Innovative Devices</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mobile Communications Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Server Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SoFIA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Solid-State Drives</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wireless Networking</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Graphics Drivers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>I/O Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Technologies</sourceValue>
+            </sourceValues>
+            <value>Non - CPU</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_70949855</developerName>
+        <masterLabel>Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Opportunity_Country__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Qatar</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kuwait</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utd.Arab Emir.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Oman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yemen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bahrain</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Iraq</sourceValue>
+            </sourceValues>
+            <value>GCC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lebanon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Egypt</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jordan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Palestine,State</sourceValue>
+            </sourceValues>
+            <value>Egypt and Levant</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Turkey</sourceValue>
+            </sourceValues>
+            <value>Turkey</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Saudi Arabia</sourceValue>
+            </sourceValues>
+            <value>Saudi Arabia</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>South Africa</sourceValue>
+            </sourceValues>
+            <value>South Africa</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Kenya</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tanzania</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rwanda</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Uganda</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethiopia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Burundi</sourceValue>
+            </sourceValues>
+            <value>East Africa</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Nigeria</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ghana</sourceValue>
+            </sourceValues>
+            <value>Nigeria &amp; Ghana</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Senegal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cote d&apos;Ivoire</sourceValue>
+            </sourceValues>
+            <value>West Africa</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Algeria</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Morocco</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tunisia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Libya</sourceValue>
+            </sourceValues>
+            <value>North Africa</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Opportunity.Core_Opportunity_Country__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sub_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>META</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Application__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Server</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Consumption_Market__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Government</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPPORTUNITY_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Country__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2016 Top lists (Server) Won</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>closedwon</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

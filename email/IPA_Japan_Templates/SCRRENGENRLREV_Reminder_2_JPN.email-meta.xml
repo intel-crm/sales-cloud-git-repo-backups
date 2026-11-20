@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_Reminder_2_JPN</name>
+    <style>none</style>
+    <subject>リマインダー: メールアドレス確認のお願い</subject>
+    <textOnly>リマインダー: メールを確認し、パスワードを設定してください
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} 様、
+
+インテル® パートナー・アライアンスへの登録を開始していだだき、ありがとうございます。
+続行するには、以下のリンクをクリックしてください
+
+
+メールを確認し、パスワードを設定してください
+
+
+このリンクは 4 時間後に期限切れになりますのでご注意ください次のステップを完了してパスワードを設定するには、下記のユーザー名を使用してください
+ユーザー名: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+上のリンクにアクセスできない場合
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ja&amp;target=https://wcm-ciqa.intel.com/content/www/jp/ja/secure/partner/forms/ipa-account-search.html
+
+
+プログラムにご参加いただけることを楽しみにしております。
+敬具
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+プライバシー &amp;verbar; クッキー</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

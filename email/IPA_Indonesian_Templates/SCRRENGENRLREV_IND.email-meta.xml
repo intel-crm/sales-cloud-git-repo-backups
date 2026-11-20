@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_IND</name>
+    <style>none</style>
+    <subject>Verifikasi alamat email Anda</subject>
+    <textOnly>Verifikasi Email Anda &amp; Atur Kata Sandi Anda
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Terima kasih telah memulai pendaftaran Intel® Partner Alliance Anda!
+Klik link di bawah untuk melanjutkan
+
+
+Verifikasi Email Anda &amp; Atur Kata Sandi Anda
+
+
+Perlu diketahui bahwa tautan ini akan kedaluwarsa dalam 24 jamUntuk menyelesaikan langkah berikutnya dan Atur Kata Sandi Anda, gunakan nama pengguna yang terdaftar di bawah ini
+Nama pengguna: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+Tidak dapat mengakses tautan di atas?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=id&amp;target=https://wcm-ciqa.intel.com/content/www/id/id/secure/partner/forms/ipa-account-search.html
+
+
+Kami menantikan Anda dalam program ini!
+Salam,
+Tim Intel® Partner Alliance Anda
+
+Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privasi &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

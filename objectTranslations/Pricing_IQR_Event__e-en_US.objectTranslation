@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing IQR Event</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing IQR Events</value>
+    </caseValues>
+    <fields>
+        <label><!-- Email Template --></label>
+        <name>Pricing_EmailTemplate_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- IQR Action --></label>
+        <name>Pricing_IQR_Action_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuoteId --></label>
+        <name>Pricing_QuoteId_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuoteLineId --></label>
+        <name>Pricing_QuoteLineId_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

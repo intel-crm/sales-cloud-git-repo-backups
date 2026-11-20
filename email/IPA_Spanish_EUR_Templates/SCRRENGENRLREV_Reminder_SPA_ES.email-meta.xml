@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_Reminder_SPA_ES</name>
+    <style>none</style>
+    <subject>Recordatorio: verifique su correo electrónico y establezca su contraseña</subject>
+    <textOnly>Recordatorio: verifique su correo electrónico y establezca su contraseña
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}:
+
+¡Gracias por comenzar su registro en la Alianza Intel® para socios!
+Haga clic en el siguiente enlace para continuar
+
+
+Verifique su correo electrónico y establezca su contraseña
+
+Para completar el siguiente paso y establecer su contraseña, emplee el nombre de usuario indicado a continuación
+Nombre de usuario: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+¿No puede acceder al enlace anterior?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=es&amp;target=https://wcm-ciqa.intel.com/content/www/es/es/secure/partner/forms/ipa-account-search.html
+
+
+¡Esperamos contar con usted en el programa!
+Atentamente,
+su equipo de la Alianza Intel® para socios
+
+Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.).www.intel.es
+Privacidad &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

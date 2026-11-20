@@ -1,0 +1,97 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:hasSObjectName,lightning:isUrlAddressable" access="global" controller="Core_MDF_Campaign_QuickActionController" >
+    <ltng:require styles="{!$Resource.Core_MDF_ModalWidthCSS}"/>
+    <aura:attribute name="recordId" type="Id" default="" />
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="campaignName" type="String" />
+    <aura:attribute name="recordTypeId" type="Id" default="" />
+    <aura:attribute name="recordTypeName" type="String" default="" />
+    <aura:attribute name="recordTypeDeveloperName" type="String" default="" />
+    <aura:attribute name="campaignStatus" type="String" default="" />
+    <aura:attribute name="mode" type="String" default="" />
+    <aura:attribute name="fieldSetName" type="String" default="" />    
+    <aura:attribute name="recordInfoLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="fieldSetLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="isCommunity" type="Boolean" default="false"/>
+    <aura:attribute name="hasEditAccess" type="Boolean" default="false"/>
+    <aura:attribute name="message" type="String" default=""/>
+    <aura:attribute name="isSaveDisable" type="Boolean" default=""/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <aura:attribute name="nonCustomizedUI" type="Boolean" default="false"/>
+     <aura:attribute name="proposalBasedIndicator" type="Boolean" default="false"/>
+    <aura:attribute name="claimAssociatedIndicator" type="Boolean" default="false"/>
+    <aura:attribute name="isAccountactive" type="Boolean" default="false"/>
+    <aura:attribute name="isValidCampaigToEdit" type="Boolean" default="true"/>
+    <aura:attribute name="campaignRecord" type="Campaign" />
+    <aura:attribute name="pfrList" type="PartnerFundRequest[]" default="[]"/>
+    <aura:attribute name="partnerMapping" type="String" default="" /> 
+    <aura:attribute name="vitualCorpToNodeAcc" type="object" default="[]" />
+    <aura:attribute name="NodeAccountsList" type="Id[]" default="[]" />
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .slds-slide-up-saving{
+        outline:none;
+        }       
+    </aura:html>
+    
+    <aura:dependency resource="markup://force:editRecord" type="EVENT" />
+    <!--<aura:handler name="handleSaveSuccess" event="force:recordSaveSuccess" action="{!c.handleSaveSuccess}" /> -->
+     <aura:handler name="onSaveSuccess" event="force:recordSaveSuccess" action="{!c.handleSaveSuccess}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <aura:handler name="change" value="{!v.recordInfoLoaded}" action="{!c.fetchFieldSetInfo}" />
+	<!--Register Event-->
+    <aura:registerEvent name="closeModalAndLogErrorMessageEvent" type="c:Core_MDF_CloseModalAndLogErrorMessageEvent"/>
+       
+    <aura:if isTrue="{!v.fieldSetLoaded}">
+        <aura:if isTrue="{!v.hasEditAccess}">
+            <aura:if isTrue="{!v.isCommunity}">
+      		 <c:core_MDF_Create_Campaign recordId="{!v.recordId}" mode="{!v.mode}" recordTypeId="{!v.recordTypeId}" recordTypeName="{!v.recordTypeName}" recordTypeDeveloperName="{!v.recordTypeDeveloperName}" objectApiName="Campaign" fieldSetName="{!v.fieldSetName}" status="{!v.campaignStatus}" campaignRecordFromCampaignEdit="{!v.campaignRecord}" oncloseModal="{!c.handleSaveSuccess}" activityListEdit="{!v.pfrList}" vitualCorpToNodeAcc="{!v.vitualCorpToNodeAcc}" NodeAccountsList="{!v.NodeAccountsList}" onapplicationerror="{!c.closeModalAndDisplayErrorMsg}"  ontoastMessageEvent="{!c.showStickyToastMessage}"></c:core_MDF_Create_Campaign>
+                <aura:set attribute="else">
+                 <c:core_MDF_Create_Campaign recordId="{!v.recordId}" mode="{!v.mode}" recordTypeId="{!v.recordTypeId}" recordTypeName="{!v.recordTypeName}" recordTypeDeveloperName="{!v.recordTypeDeveloperName}" objectApiName="Campaign" fieldSetName="{!v.fieldSetName}" status="{!v.campaignStatus}" isCommunity="{!v.isCommunity}" campaignRecordFromCampaignEdit="{!v.campaignRecord}" oncloseModal="{!c.handleSaveSuccess}" activityListEdit="{!v.pfrList}" vitualCorpToNodeAcc="{!v.vitualCorpToNodeAcc}" NodeAccountsList="{!v.NodeAccountsList}" onapplicationerror="{!c.closeModalAndDisplayErrorMsg}"  ontoastMessageEvent="{!c.showStickyToastMessage}"></c:core_MDF_Create_Campaign>
+                </aura:set>
+            </aura:if>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!not(empty(v.message))}">
+                    <div class="slds-box slds-theme- -error">
+                        <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.message}</h5>
+                    </div>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+        <aura:set attribute="else">
+            <aura:if isTrue="{!v.nonCustomizedUI}">
+                <div aura:id="modalIdForStandardRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-slide-up-saving slds-modal_large slds-align_absolute-center" style="width:85%;">
+                    <div class="slds-modal__container">
+                        <aura:if isTrue="{!v.showSpinner}">
+                            <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
+                        </aura:if>
+                        <!-- Heading (Header of the Modal) -->
+                        <div class="slds-modal__header">
+                            <br/>
+                            <div class="slds-text-heading_medium">Edit {!v.campaignName}</div>
+                            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.prevPage}">
+                                <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                                <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                            </button>
+                        </div>
+                        <div class="slds-modal__content slds-p-around--medium">
+                            <div class="slds-p-left_small slds-p-right_small">
+                              <force:recordEdit aura:id="edit" recordId="{!v.recordId}" ></force:recordEdit>
+                            </div>
+                        </div>
+                        <div class="slds-modal__footer slds-theme--default">
+                            <!-- SAVE AND CANCEL -->
+                            <lightning:layout horizontalAlign="right" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12">
+                                    <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Cancel}" onclick="{!c.prevPage}" />
+                                    <lightning:button aura:id="Save" variant="brand" disabled="{!v.isSaveDisable}" label="{!$Label.c.Core_MDF_Save}" onclick="{!c.customSave}" />
+                                	
+                                </lightning:layoutItem>
+                            </lightning:layout>                        
+                        </div>
+                    </div>
+                </div>
+                <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>  
+            </aura:if>
+        </aura:set>
+    </aura:if>
+</aura:component>

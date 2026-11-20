@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Assist + Consent</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Assist + Consent</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Partner Assist + Consent --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Choice --></label>
+        <name>PRM_Choice_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Partner Assist Choice 1</masterLabel>
+            <translation><!-- Partner Assist Choice 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Assist Choice 2</masterLabel>
+            <translation><!-- Partner Assist Choice 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Consent Provided By --></label>
+        <name>PRM_Consent_Provided_By_Id__c</name>
+        <relationshipLabel><!-- Partner Assist + Consent --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consent Provided Date --></label>
+        <name>PRM_Consent_Provided_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consent Provided --></label>
+        <name>PRM_Consent_Provided_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor --></label>
+        <name>PRM_Distributor_Id__c</name>
+        <relationshipLabel><!-- Partner Assist + Consent --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

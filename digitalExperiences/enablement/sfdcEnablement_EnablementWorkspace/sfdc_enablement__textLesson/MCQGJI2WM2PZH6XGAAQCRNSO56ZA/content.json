@@ -1,0 +1,30 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Gaudi POC on Prem",
+  "contentBody" : {
+    "description" : "Based on your customer's requirements, the solution build for the Gaudi POC has to be on-prem. Please follow the below steps to complete the POC successfully.",
+    "sections" : [ {
+      "content" : "<div>Many customer&#39;s have their preferred OEM that they would like to utilize for their solutions. Identify your customer&#39;s preferred OEM and engage wit the Category Sales business development team on next steps. Megan Gawlik will be able to discuss the availability for on-prem POC options. </div>",
+      "keyConcept" : "Identify Preferred OEM",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>On-Prem POC&#39;s require a business justification with the OEM team leads on why the POC needs to be preformed on-prem instead of in ITDC. The Category team will pull in the proper OEM Business leader to join the discussion. Bring and discuss any technical requirements for this POC. </div><div><br /></div><div>The Category and OEM team teams will review and prioritize against other POC requests. </div>",
+      "keyConcept" : "Review On-Prem POC Justification",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>After discussions and prioritization, the goal is to receive a green light for the on-prem POC with the desired OEM from both the business and the technical teams involved in the POC. </div><div><br /></div><div>After the decision, your customer will be assigned an OEM POC Experience Manager. </div><div><br /></div><div>To begin the POC, we will need customer and OEM to sign the necessary loan agreements in order to kick off the POC. </div>",
+      "keyConcept" : "Business & Technical Decision",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Your customer&#39;s on-premise POC is shipped from the OEM to the customer&#39;s preferred site. You can engage with your OEM counterparts and team to track POC shipment status. </div><div><br /></div><div>Once the shipment arrives, your customer, the POC Experience Manager, and yourself can support the onsite delivery and system bring up / turn on. </div>",
+      "keyConcept" : "Product Shipment",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Now the system is turned on and ready to go, deploy the solution and begin your POC.</div><div><br /></div><div><span style=\"font-size: 13px;\">With the system in hand and turned on, your customer&#39;s technical teams may need support on how to develop with Gaudi. Here is the link to the </span><a style=\"font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(0, 102, 204);\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://docs.habana.ai/en/latest/index.html\">Habana Developer site</a><span style=\"font-size: 13px;\"> for them to learn and walk through all the details on getting started to optimizations on Gaudi.</span></div><div><br /></div><div><span style=\"font-size: 13px;\">Additionally, there are many validated software models on Gaudi today. For support throughout the POC, here is the </span><a style=\"font-size: 13px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DCGHMFMjqHfVG8HP6MJ6b4XBm7pG\">Gaudi Software Roadmap</a><span style=\"font-size: 13px;\"> that lists the current validated models as well as upcoming optimized models and updates. </span></div><div><br /></div><div>OEM&#39;s will provide the support of the POC to the customer. The OEM will lean on the Category Sales team TSS and/or Habana BU Engineering team as they need additional help. They will follow the process defined through the Jira Service Desk.</div><div><br /></div><div>From here, the POC deploys as planned to competition.</div>",
+      "keyConcept" : "Deploy the POC ",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 5.0
+  },
+  "urlName" : "gaudi-poc-on-prem"
+}

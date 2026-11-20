@@ -1,0 +1,52 @@
+<template>
+    <template if:true={showSpinner}>
+        <div class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template> 
+    <lightning-card>
+        <template if:true={isNotNavigation}>
+            <c-pricing-search-component object-api-name="SBQQ__QuoteLine__c" field-api-name="Pricing_Quote_Line_Number__c" search-type="Partial"
+            filter-field-api-name="Pricing_Status_Nm__c" filter-field-value="Pending Further Intel Review" selected-record-id={selectedRecordId} onrecordselect={handleQuoteLineSelection} onvaluechange={handleValueChange} ></c-pricing-search-component>  
+        </template>        
+        <template if:true={showDetails}>
+            <lightning-card>
+                <!--<c-pricing-_-r-p-m-_-recommendation-_-form recordid={quoteLineId} isnotquotepage=true></c-pricing-_-r-p-m-_-recommendation-_-form>-->
+                <c-pricing-r-p-m-recommendation-form recordid={quoteLineId} isnotquotepage=true onchangeurlevent={handleCancel}></c-pricing-r-p-m-recommendation-form>
+            </lightning-card>
+            
+            <!--<div class="details-section slds-p-left_small slds-p-right_small">
+                <div class="slds-box">
+                    <div class="slds-grid slds-border_bottom slds-p-left_small slds-p-right_small">                
+                        <div class="slds-col slds-col slds-size_6-of-12 slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-01">Price Recommendation</label>
+                            <div class="slds-form-element__control">
+                            <span>1512</span>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-col slds-size_6-of-12 slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-01">Price Interval(+/- 10%)</label>
+                            <div class="slds-form-element__control">
+                            <span>1361-1663</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-border_bottom slds-p-left_small slds-p-right_small">
+                        <div class="slds-col slds-col slds-size_6-of-12 slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-01">%Discount</label>
+                            <div class="slds-form-element__control">
+                            <span>23.56%</span>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-col slds-size_6-of-12 slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-01">Prob of winning model</label>
+                            <div class="slds-form-element__control">
+                            <span>Done</span>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>-->
+        </template>
+    </lightning-card>
+</template>

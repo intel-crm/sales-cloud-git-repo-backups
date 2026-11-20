@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This setting is used for PSG Siebel authentication</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Password__c</fullName>
+        <description>This field is used for storing the password</description>
+        <externalId>false</externalId>
+        <label>Password</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_User_Name__c</fullName>
+        <description>This field used to store the user name</description>
+        <externalId>false</externalId>
+        <label>User Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PSG Integration Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,22 @@
+.THIS .accordionName {
+  white-space: pre-wrap;
+}
+
+/*.THIS .slds-truncate {
+    white-space: normal;
+}*/
+.THIS .slds-button_reset{
+    font-size: 14px;
+}
+.THIS.handleWidth {
+    max-width: 50rem;
+    height: 90%
+}
+
+.THIS .slds-accordion__summary-content {
+    white-space: pre-wrap;
+}
+
+.THIS .custom-modal {
+    max-width: 54rem;
+}

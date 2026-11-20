@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rules Engine</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rules Engine</value>
+    </caseValues>
+    <fields>
+        <label><!-- Action on (False) --></label>
+        <name>Core_MDF_Action_on_False_nm__c</name>
+        <picklistValues>
+            <masterLabel>ATF Approval</masterLabel>
+            <translation><!-- ATF Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Additional Reviewer</masterLabel>
+            <translation><!-- Additional Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Acceptance</masterLabel>
+            <translation><!-- Customer Acceptance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Reviewer</masterLabel>
+            <translation><!-- EMEA Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>First Level Manager</masterLabel>
+            <translation><!-- First Level Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geo Lead Approval</masterLabel>
+            <translation><!-- Geo Lead Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L1 Approval</masterLabel>
+            <translation><!-- L1 Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L1&apos;s First Level Manager</masterLabel>
+            <translation><!-- L1&apos;s First Level Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L1&apos;s Second Level Manager</masterLabel>
+            <translation><!-- L1&apos;s Second Level Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L2 Approval</masterLabel>
+            <translation><!-- L2 Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L3 Approval</masterLabel>
+            <translation><!-- L3 Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Action</masterLabel>
+            <translation><!-- No Action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planned</masterLabel>
+            <translation><!-- Planned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Reviewer</masterLabel>
+            <translation><!-- Price Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Program Office Reviewer</masterLabel>
+            <translation><!-- Program Office Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Second Level Manager</masterLabel>
+            <translation><!-- Second Level Manager --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Action on (True) --></label>
+        <name>Core_MDF_Action_on_True_nm__c</name>
+        <picklistValues>
+            <masterLabel>ATF Approval</masterLabel>
+            <translation><!-- ATF Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Additional Reviewer</masterLabel>
+            <translation><!-- Additional Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Acceptance</masterLabel>
+            <translation><!-- Customer Acceptance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Reviewer</masterLabel>
+            <translation><!-- EMEA Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>First Level Manager</masterLabel>
+            <translation><!-- First Level Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geo Lead Approval</masterLabel>
+            <translation><!-- Geo Lead Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L1 Approval</masterLabel>
+            <translation><!-- L1 Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L1&apos;s First Level Manager</masterLabel>
+            <translation><!-- L1&apos;s First Level Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L1&apos;s Second Level Manager</masterLabel>
+            <translation><!-- L1&apos;s Second Level Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L2 Approval</masterLabel>
+            <translation><!-- L2 Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L3 Approval</masterLabel>
+            <translation><!-- L3 Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Action</masterLabel>
+            <translation><!-- No Action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planned</masterLabel>
+            <translation><!-- Planned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Reviewer</masterLabel>
+            <translation><!-- Price Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Program Office Reviewer</masterLabel>
+            <translation><!-- Program Office Reviewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Second Level Manager</masterLabel>
+            <translation><!-- Second Level Manager --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver Source Value on (False) --></label>
+        <name>Core_MDF_Approver_Source_Value_on_False__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver Source Value on (True) --></label>
+        <name>Core_MDF_Approver_Source_Value_on_True__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver Source on (False) --></label>
+        <name>Core_MDF_Approver_Source_on_False_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver Source on (True) --></label>
+        <name>Core_MDF_Approver_Source_on_True_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Multi_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Date --></label>
+        <name>Core_MDF_Effective_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field --></label>
+        <name>Core_MDF_Field_Nm__c</name>
+        <picklistValues>
+            <masterLabel># of Pages Member is Paying For</masterLabel>
+            <translation><!-- # of Pages Member is Paying For --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel># of pages eligible</masterLabel>
+            <translation><!-- # of pages eligible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account (Company)</masterLabel>
+            <translation><!-- Account (Company) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity</masterLabel>
+            <translation><!-- Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Budget Type</masterLabel>
+            <translation><!-- Activity Budget Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Category</masterLabel>
+            <translation><!-- Activity Category --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Classification</masterLabel>
+            <translation><!-- Activity Classification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity End Date</masterLabel>
+            <translation><!-- Activity End Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity First Approver</masterLabel>
+            <translation><!-- Activity First Approver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Reimbursement Amount</masterLabel>
+            <translation><!-- Activity Reimbursement Amount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Retail Pillar</masterLabel>
+            <translation><!-- Activity Retail Pillar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Retail Secondary Pillar</masterLabel>
+            <translation><!-- Activity Retail Secondary Pillar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Start Date</masterLabel>
+            <translation><!-- Activity Start Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Status</masterLabel>
+            <translation><!-- Activity Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Sub Type</masterLabel>
+            <translation><!-- Activity Sub Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Type</masterLabel>
+            <translation><!-- Activity Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ActivityCategory</masterLabel>
+            <translation><!-- ActivityCategory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget Amount</masterLabel>
+            <translation><!-- Budget Amount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget Amount Local</masterLabel>
+            <translation><!-- Budget Amount Local --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ChannlePartnerId</masterLabel>
+            <translation><!-- ChannlePartnerId --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Brand</masterLabel>
+            <translation><!-- Claim Brand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Budget Type</masterLabel>
+            <translation><!-- Claim Budget Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Comments</masterLabel>
+            <translation><!-- Claim Comments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close Date</masterLabel>
+            <translation><!-- Close Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closure Type</masterLabel>
+            <translation><!-- Closure Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitive Elements</masterLabel>
+            <translation><!-- Competitive Elements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed Approval Level</masterLabel>
+            <translation><!-- Completed Approval Level --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Country</masterLabel>
+            <translation><!-- Country --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Country/Region</masterLabel>
+            <translation><!-- Country/Region --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Created By</masterLabel>
+            <translation><!-- Created By --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Currency</masterLabel>
+            <translation><!-- Currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domain Type</masterLabel>
+            <translation><!-- Domain Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible Space</masterLabel>
+            <translation><!-- Eligible Space --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation ID</masterLabel>
+            <translation><!-- Escalation ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Format</masterLabel>
+            <translation><!-- Event Format --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution End Date</masterLabel>
+            <translation><!-- Execution End Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution Start Date</masterLabel>
+            <translation><!-- Execution Start Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Involvement</masterLabel>
+            <translation><!-- Government Involvement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Opted In</masterLabel>
+            <translation><!-- Incentive Opted In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Question</masterLabel>
+            <translation><!-- Incentive Question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Partner</masterLabel>
+            <translation><!-- Industry Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Partner Led?</masterLabel>
+            <translation><!-- Industry Partner Led? --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Business Unit Split%</masterLabel>
+            <translation><!-- Intel Business Unit Split% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Is Activating Intel Owner Required?</masterLabel>
+            <translation><!-- Is Activating Intel Owner Required? --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IsClaimReviewEscalation</masterLabel>
+            <translation><!-- IsClaimReviewEscalation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media Vehicle</masterLabel>
+            <translation><!-- Media Vehicle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Hold Comments</masterLabel>
+            <translation><!-- Member Hold Comments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Prediction Score</masterLabel>
+            <translation><!-- New Prediction Score --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Industry Partner</masterLabel>
+            <translation><!-- Other Industry Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outcome Based</masterLabel>
+            <translation><!-- Outcome Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Owner</masterLabel>
+            <translation><!-- Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percentage</masterLabel>
+            <translation><!-- Percentage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prediction Score</masterLabel>
+            <translation><!-- Prediction Score --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Primary Member Acceptance</masterLabel>
+            <translation><!-- Primary Member Acceptance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Priority</masterLabel>
+            <translation><!-- Priority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Type</masterLabel>
+            <translation><!-- Product Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Program</masterLabel>
+            <translation><!-- Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Program Office Check</masterLabel>
+            <translation><!-- Program Office Check --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof Of Cost Currency</masterLabel>
+            <translation><!-- Proof Of Cost Currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof Of Cost Number</masterLabel>
+            <translation><!-- Proof Of Cost Number --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal Based Indicator</masterLabel>
+            <translation><!-- Proposal Based Indicator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region</masterLabel>
+            <translation><!-- Region --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region name</masterLabel>
+            <translation><!-- Region name --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reimbursement Rate (%)</masterLabel>
+            <translation><!-- Reimbursement Rate (%) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Amount (USD)</masterLabel>
+            <translation><!-- Requested Amount (USD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Require Additional Review</masterLabel>
+            <translation><!-- Require Additional Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review Type</masterLabel>
+            <translation><!-- Review Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rule Type</masterLabel>
+            <translation><!-- Rule Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPIF Indicator</masterLabel>
+            <translation><!-- SPIF Indicator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Steps Completed</masterLabel>
+            <translation><!-- Steps Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target Audience</masterLabel>
+            <translation><!-- Target Audience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ultimate Account ID</masterLabel>
+            <translation><!-- Ultimate Account ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>isActivityCreatedByExternalUser</masterLabel>
+            <translation><!-- isActivityCreatedByExternalUser --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>isFieldModified</masterLabel>
+            <translation><!-- isFieldModified --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ID Field --></label>
+        <name>Core_MDF_ID_Field_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Immediate --></label>
+        <name>Core_MDF_Immediate_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Look Up Field --></label>
+        <name>Core_MDF_Look_Up_Field_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Executes the rule mentioned if the output is false, else exists Audit rules --></help>
+        <label><!-- Evaluates as False --></label>
+        <name>Core_MDF_Next_Rule_False_Id__c</name>
+        <relationshipLabel><!-- Rules Engine (Evaluates as False) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Executes the rule mentioned if the output is true, else picks up for Audit --></help>
+        <label><!-- Evaluates as True --></label>
+        <name>Core_MDF_Next_Rule_Id__c</name>
+        <relationshipLabel><!-- Rules Engine (Evaluates as True) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_MDF_Object_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Claim</masterLabel>
+            <translation><!-- Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Prediction</masterLabel>
+            <translation><!-- Claim Prediction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity</masterLabel>
+            <translation><!-- Co-Marketing Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Random</masterLabel>
+            <translation><!-- Random --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator --></label>
+        <name>Core_MDF_Operator_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Process Name --></label>
+        <name>Core_MDF_Process_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_Cd__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW</masterLabel>
+            <translation><!-- WW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Action on (False) --></label>
+        <name>Core_MDF_Rule_Action_on_False_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action on (True) --></label>
+        <name>Core_MDF_Rule_Action_on_True_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rule Type --></label>
+        <name>Core_MDF_Rule_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Approval Process</masterLabel>
+            <translation><!-- Approval Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Audit</masterLabel>
+            <translation><!-- Audit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Front End Review</masterLabel>
+            <translation><!-- Front End Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PIC</masterLabel>
+            <translation><!-- PIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP</masterLabel>
+            <translation><!-- POP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test</masterLabel>
+            <translation><!-- Test --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third Party</masterLabel>
+            <translation><!-- Third Party --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Core_MDF_Value_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- ID Field is mandatory for this Field value --></errorMessage>
+        <name>Core_MDF_ARE_ID_Field_Mandate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- ID Field is not required for this criteria. --></errorMessage>
+        <name>Core_MDF_ARE_ID_Field_Not_Mandate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Id Field is required --></errorMessage>
+        <name>Core_MDF_ID_Field_should_be_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Program field should be blank if Immediate rule is No --></errorMessage>
+        <name>Core_MDF_Validation_for_Imm_rule_as_No</name>
+    </validationRules>
+</CustomObjectTranslation>

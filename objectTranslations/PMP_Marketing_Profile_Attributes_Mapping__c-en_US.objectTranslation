@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Profile Attributes Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Profile Attributes Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Marketing Profile Information --></label>
+        <name>PMP_Marketing_Profile_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Attributes Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Partner Program --></label>
+        <name>PMP_Partner_Role__c</name>
+        <relationshipLabel><!-- Marketing Profile Attributes Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Partner Segment --></label>
+        <name>PMP_Partner_Segment__c</name>
+        <relationshipLabel><!-- Marketing Profile Attributes Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Partner Specialty --></label>
+        <name>PMP_Partner_Specialty__c</name>
+        <relationshipLabel><!-- Marketing Profile Attributes Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Tier --></label>
+        <name>PMP_Partner_Tier__c</name>
+        <relationshipLabel><!-- Marketing Profile Attributes Mappings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,85 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="Core_UtilityController">
+    <aura:attribute name="type" type="string" description="Type determines the breadcrumb data" />
+    <aura:attribute name="heading" type="string"  description="Main heading label"/>
+    <aura:attribute name="text" type="string"  description="Optional Text label" />
+    <aura:attribute name="breadcrumbData" type="object[]" description="Internal breadcrumb data"/>
+    <aura:attribute name="showBreadcrumbs" type="boolean" default="true"  description="Show breadcrumbs" />
+    <aura:attribute name="showSignIn" type="boolean" default="false" description="Show Sign In"/>
+    <aura:attribute name="userLoggedIn" type="boolean" default="false" description="Indicates if the user is logged in"/>
+    <aura:attribute name="size" type="string"  description="Marquee Desktop: tall, medium, short, x-short" />
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="objectAPiName" type="string" />
+    <aura:attribute name="searchParams" type="string" />
+    <aura:attribute name="loginUrl" type="string" description="URL for login link"/>
+    
+    <aura:attribute name="storeName" type="string" default="Search" />
+    
+    <!--<aura:attribute name="record" type="object" />-->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	
+    <force:recordData layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      fields="Name"
+                      targetFields="{!v.record}"
+                      recordUpdated="{!c.recordUpdate}" 
+                      />
+    
+    <c:coreIntcSso aura:id="ssoLibrary" />
+    
+    <!-- Analytics -->
+    <aura:attribute name="analyticsPageType" type="string" description="PageType for analytics" />
+    <c:MarketplaceAnalyticsLibrary aura:id="analyticsLibrary" />
+    
+    <!-- Primarily used on l2search type -->
+    <aura:attribute name="learnMoreLink" type="string" default="" />
+    <aura:set attribute="storeName" value="Search" /><!--Added as part of code merge[09/16]-->
+    <!--<aura:attribute name="storeName" type="string" default="Search" />--><!--Commented as part of code merge[09/16]-->
+
+    <div class="{!join(' ', 'size-'+ v.size, 'type-'+v.type, v.showBreadcrumbs ? 'has-bc': 'no-bc', and(v.showSignIn, not(v.userLoggedIn)) ? 'has-si': 'no-si' )}">
+        <div class="container fill-height">
+            <!-- Lightning tags changed with div tags US622399 prabuddh -->
+            <div class="slds-grid slds-wrap fill-height main-flex-container "> <!--  <lightning:layout class="fill-height main-flex-container" multipleRows="true"> -->
+            	<aura:if isTrue="{!and(v.showSignIn, not(v.userLoggedIn))}">
+                    <div class="slds-show_medium slds-text-align_right signIn">
+                        {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}<br/>
+                        <a class="color-pale-blue" 
+                           href="{!v.loginUrl}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                    </div>
+                    <div class="slds-hide_medium signIn slds-p-vertical_medium slds-text-align_center" >
+                        {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}
+                        <a class="color-pale-blue slds-m-left_medium" 
+                           href="{!v.loginUrl}" onclick="{!c.handleSignIn}">{!$Label.c.PMP_Sign_In}</a> | <c:IntelLink class="color-pale-blue" url="{!$Label.c.PMP_Partner_Program_Url}" openInBlank="true">{!$Label.c.PMP_Learn_More}</c:IntelLink>
+                    </div>
+                </aura:if>                
+                <aura:if isTrue="{!v.showBreadcrumbs}">
+                    <div class="breadcrumb-container slds-size_12-of-12"> <!-- <lightning:layoutItem size="12" class="breadcrumb-container"> -->
+                    	<div class="slds-show_medium breadCrumb">
+                            <c:MarketplaceBreadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" />
+                        </div>
+                        <div class="slds-hide_medium slds-m-top_medium">
+                            <c:MarketplaceBreadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" />
+                        </div>
+                    </div> <!--  </lightning:layoutItem> -->            
+                </aura:if>                            
+                <div class="slds-p-horizontal_large slds-text-align_left text-container slds-size_12-of-12"> <!--   <lightning:layoutItem size="12" class=" slds-p-horizontal_large slds-text-align_left text-container"> -->
+                     <div class="{!join(' ','slds-grid slds-wrap', 'fill-height', v.type != 'short' ? 'slds-grid_vertical-align-center' : '' )}"> <!-- <lightning:layout class="{!join(' ', 'fill-height', v.type != 'short' ? 'slds-grid_vertical-align-center' : '' )}"  multipleRows="true"> -->
+                        	<div class="slds-text-align_center slds-size_12-of-12">  <!--  <lightning:layoutItem size="12" class="slds-text-align_center"> -->
+                            <h1 class="{!join(' ', 'marquee-header', v.type == 'l0' ? '' : 'h2')}">{!v.heading}</h1>                            
+                            <aura:if isTrue="{! !empty(v.text)}">
+                                <p class="slds-m-top_medium text">{!v.text}</p>
+                            </aura:if>
+                            <aura:if isTrue="{! !empty(v.learnMoreLink) }">
+                                <div class="slds-m-top_medium">
+                                    <c:IntelLink class="color-pale-blue" url="{!v.learnMoreLink}" openInBlank="true">{!$Label.c.PMP_Learn_More}<lightning:icon iconName="utility:chevronright"
+                                                                                                                                                               class="cursor icon-xx-small slds-m-left_xxx-small link-caret"
+                                                                                                                                                               size="x-small"/></c:IntelLink>
+                                </div>
+                            </aura:if>
+                        </div> <!--</lightning:layoutItem> -->
+                        </div>  <!-- </lightning:layout> -->
+                 </div>  <!--  </lightning:layoutItem> -->                       
+            </div> <!--  </lightning:layout>	-->    
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,29 @@
+<template>
+    <div>
+<header class="slds-modal__header">
+
+            <h2 class="slds-text-heading_small">Create AGS Identity</h2>
+
+        </header>
+        <div class="slds-modal__content">
+            <div class="slds-p-around_small">
+                <template if:true={identityExist}>
+                    <p class="slds-align_absolute-center">Cannot retrigger AGS identity,click Cancel</p><br />
+                </template>   
+                <template if:true={enterpriseCheck}>
+                    <p class="slds-align_absolute-center">This will initiate a retrigger to create Identity in AGS</p><br />
+                    <p class="slds-align_absolute-center">Click on Confirm to Retrigger AGS Identity</p>
+                </template> 
+                <template if:true={sendEmail}>
+                    <p class="slds-align_absolute-center">Enterprise ID already exist on Contact, click on confirm to retrigger an EV email</p>
+                </template>
+            </div>
+        </div>
+        <footer class="slds-modal__footer">  
+            <lightning-button variant="Neutral" label="Cancel" onclick={closeModal} class="slds-p-around_x-small"></lightning-button>
+            <template if:true={showConfirm}>
+            <lightning-button variant="brand" label="Confirm" onclick={handleConfirm} class="slds-p-around_x-small"></lightning-button>
+        </template>
+        </footer>
+    </div>
+</template>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AGS OAuth Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>AGS OAuth Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Token URL --></label>
+        <name>Access_Token_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Authentication --></label>
+        <name>Client_Authentication__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Secret --></label>
+        <name>Client_Secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- GET Endpoint Path --></label>
+        <name>Get_Endpoint_Path__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grant Type --></label>
+        <name>Grant_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- POST Endpoint Path --></label>
+        <name>Post_Endpoint_Path__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scope --></label>
+        <name>Scope__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timeout --></label>
+        <name>Timeout__c</name>
+    </fields>
+    <fields>
+        <label><!-- Token Name --></label>
+        <name>Token_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,51 @@
+<apex:page lightningStylesheets="true">
+    <!--<script type="text/javascript">action="{!populateOpptyList}"
+        function checkAll(cb){
+            var inputElem = document.getElementsByTagName("input");
+            for(var i=0; i<inputElem.length; i++)
+            {
+                if(inputElem[i].id.indexOf("checkedone")!=-1)
+                    inputElem[i].checked = cb.checked;
+            }
+        }    
+        function reloadGoal(){
+            sforce.one.navigateToURL('/{!goalId}')
+        
+        }
+    </script>
+    <apex:form >
+        <apex:pageMessages id="errors" />
+       <apex:pageBlock title="Removing Opportunities from Deal Win Goal">
+        
+            <apex:pageBlockButtons location="Bottom">
+           
+                <apex:commandButton action="{!updateOppty}" value="Confirm" oncomplete="reloadGoal();"/>
+                <apex:commandButton value="Cancel" action="{!cancelAdd}"/>
+            </apex:pageBlockButtons>
+            <table width="100%" border="0">
+                <tr>
+                    <td valign="top">
+                        <apex:pageBlock id="results">
+                            <apex:pageBlockTable value="{!NewremoveOpptylist}" var="opty">                        
+                                <apex:column >                                
+                                    <apex:facet name="header">                                         
+                                        <apex:inputCheckbox >
+                                                <apex:actionSupport event="onclick" onsubmit="checkAll(this)" rerender="results"/>
+                                        </apex:inputCheckbox>                                        
+                                    </apex:facet>
+                                    <apex:inputCheckbox value="{!opty.Newselected}" id="checkedone">
+                                            <!--<apex:actionSupport event="onclick" action="{!GetSelected2}" rerender="results"/>-->
+                                    <!--</apex:inputCheckbox>
+                                
+                                </apex:column>
+                                <apex:column value="{!opty.Newopp.Core_DWG_Opportunity_Name__c}"/>
+                                <apex:column value="{!opty.Newopp.Core_DWG_Opp_Stage__c}"/>
+                                <apex:column value="{!opty.Newopp.Core_DWG_Account_Name__c}"/>
+                            </apex:pageBlockTable>
+                        </apex:pageBlock>
+                    </td>
+                </tr>
+            </table>
+        </apex:pageBlock>
+    </apex:form>    -->
+</apex:page>

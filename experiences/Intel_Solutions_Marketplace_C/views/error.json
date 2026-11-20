@@ -1,0 +1,74 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "9e8b8986-1085-4c3e-acb5-a3f7db0e3708",
+  "label" : "Error",
+  "regions" : [ {
+    "id" : "fd684aba-9629-4a3b-b156-a18195d8d318",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p class=\"slds-p-around_medium slds-text-align_center\">\n                The page you requested has moved or doesn’t exist. Go to the \n<a href=\"https://marketplace.intel.com/s\" class=\"slds-text-link\">Intel® Partner Showcase</a> \n<br>\n<span class=\"slds-text-color_weak\">If redirected from <b>Offerings/Solutions</b> the support for the Offerings/Solutions has been discontinued. Please <a href=\"https://marketplace.intel.com/s\" class=\"slds-text-link\">click here</a>  to visit the Intel® Partner Showcase homepage. Thank you.</span>\n</p>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "ba27db44-363d-4117-bf02-e6c2b62c273f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ccaaf740-2cd7-4dbd-8593-08348b08264d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "Error"
+      },
+      "componentName" : "c:MarketplaceAnalyticsPageview",
+      "id" : "45e85b7c-96a5-4e87-a7e2-8d841464e6a6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "11342760-2f65-4e7f-8bf2-29e65bfdc3e4",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Error\"/> \n<meta name=\"keywords\" content=\"sf,mp,error\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"Error\"/>",
+        "description" : "",
+        "title" : "Error"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "29869cfe-e375-400a-bd52-ecb18179f1ed",
+      "renditionMap" : {
+        "ja" : "c7215e31-6524-4158-83f0-0cb1674c13be",
+        "zh_cn" : "d3ef3df4-7cde-4332-a668-194607ae39b8"
+      },
+      "renditions" : [ {
+        "id" : "c7215e31-6524-4158-83f0-0cb1674c13be",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d3ef3df4-7cde-4332-a668-194607ae39b8",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "c1f5afff-c4db-4585-bd07-c4f39c6ee2c8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "error"
+}

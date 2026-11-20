@@ -1,0 +1,55 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase" implements="forceCommunity:availableForAllPageTypes">
+    <!--https://developer.salesforce.com/docs/component-library/bundle/lightning:radioGroup/example-->
+
+    <aura:attribute name="label" type="string" description="Label" />
+    <aura:attribute name="additionalText" type="string" description="additionalText" />
+    <aura:attribute name="options" type="object[]" description="List of radio option objects. Radio option properties include: 'label', 'value', 'isSelected', 'additionalValues'" />
+    <aura:attribute name="valueType" type="string" default="default" description="Can be 'default', 'complex', or 'picklist'" />
+    <aura:attribute name="requireAllLevels" type="Boolean" default="false" description="If input is required and 'requireAllLevels' is set to true, input will only be valid if the selection extends to the lowest-most child." />    
+    <aura:attribute name="isChildRequired" type="boolean" default="false" description="Internal" /> <!--psg analysis-->
+    <aura:attribute name="handleChange" type="Object" description="Internal" />
+    <aura:attribute name="isInlineRadio" type = "Boolean" default="false" /> <!-- for PSG POC -->
+    <aura:attribute name="forceShowError" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="errorMessage" type="string" description="Error message text" />
+    <aura:attribute name="isL3Selected" type="boolean" default="false"/><!--added for PSG POC-->
+    <aura:attribute name="isDropdownValueChanged" type="boolean" default="false" description="Internal" /> 
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.searchTerm}" action="{!c.handleSearch}" />
+    <!--Added by shahrukh for DE45826-->
+	<aura:attribute name="showLabel" type="Boolean" default="false"/>
+    <!--End of code for DE45826-->
+	<aura:attribute name="allowMultipleHierarchy" type="Boolean" default="false" />
+    <aura:attribute name="parentValue" type="String" />
+    
+    
+    <div class="{!join(' ', 'slds-p-bottom_x-small', v.required ? 'isRequired' : 'isNotRequired')}">
+      <aura:if isTrue="{!v.showLabel}"><!--Added by shahrukh for DE45826-->
+      	<div class="label slds-m-bottom_xx-small">{!v.label}</div>
+      </aura:if>
+      
+        <aura:if isTrue="{!v.additionalText}">
+           <div class="additionalLabel slds-m-bottom_xx-small">
+               <aura:unescapedhtml value="{!v.additionalText}"></aura:unescapedhtml>
+           </div>
+      </aura:if>
+      
+       <aura:if isTrue="{!v.forceShowError}">
+            <div class="errorMessage slds-p-vertical_xxx-small">{!v.errorMessage}</div>
+      </aura:if>
+        
+        
+        <div class = "{!v.isInlineRadio ? 'slds-grid' : ''}">
+            <aura:iteration items="{!v.options}" var="option">
+                <c:MarketplaceFormRadioChild aura:id="radioChild" name="{!v.name}"
+                                             disabled="{!v.disabled}"
+                                             radio="{!option}"
+                                             onchange="{!v.handleChange}" isChildRequired="{!v.isChildRequired}"
+                                             radioFieldName ="{!v.inputSpecId}" errorMessage="{!v.errorMessage}"/>
+            </aura:iteration>
+        </div>
+      
+      
+    </div>
+
+</aura:component>

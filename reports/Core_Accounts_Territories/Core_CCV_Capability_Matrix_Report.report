@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_CCV__c$Id</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Capability_Matrix__r$Core_Company__c</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Capability_Matrix__r$Core_People__c</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Capability_Matrix__r$Core_Products_Services__c</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Capability_Matrix__r$Core_Programs__c</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Capability_Matrix__r$Core_Other__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_CCV__c$Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CCV Capability Matrix[Matrix]</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_CCV_Capability_Matrix_Report_Type__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_CCV__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

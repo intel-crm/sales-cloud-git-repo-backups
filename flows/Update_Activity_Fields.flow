@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Update the custom task Type to Li Call if the subject contains Call</description>
+        <name>Update_Call_TaskType</name>
+        <label>Update Call TaskType</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI Call</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Li ConnectReq if the subject starts with Connection Request</description>
+        <name>Update_ConnectReq_TaskType</name>
+        <label>Update ConnectReq TaskType</label>
+        <locationX>2162</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI ConnectReq</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Li InMail if the subject contains InMail</description>
+        <name>Update_InMail_TaskType</name>
+        <label>Update InMail TaskType</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI InMail</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Li Message if the subject contains Message</description>
+        <name>Update_Message_TaskType</name>
+        <label>Update Message TaskType</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LI Message</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>LinkedIn</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Seismic Add To Cart if the subject contains Added to Cart</description>
+        <name>Update_Seismic_Add_To_Cart</name>
+        <label>Update Seismic Add To Cart</label>
+        <locationX>1634</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic Add to Cart</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Seismic Add To Workspace if the subject contains Added to Workspace</description>
+        <name>Update_Seismic_Add_To_Workspace</name>
+        <label>Update Seismic Add To Workspace</label>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic Add To Workspace</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Seismic Download if the subject contains Downloaded</description>
+        <name>Update_Seismic_Download</name>
+        <label>Update Seismic Download</label>
+        <locationX>1106</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic Download</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Seismic LiveSend if the subject contains sent via LiveSend to</description>
+        <name>Update_Seismic_LiveSend</name>
+        <label>Update Seismic LiveSend</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic LiveSend</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Update the custom task Type to Seismic Post to Chatter if the subject contains Posted to Chatter</description>
+        <name>Update_Seismic_Post_To_Chatter</name>
+        <label>Update Seismic Post To Chatter</label>
+        <locationX>1898</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Task_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic Post to Chatter</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Activity_Source__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Seismic</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Differentiation between types can easily be determined via systemized subjects, which all end with &quot;from Sales Navigator&quot; and start with the type of activity - InMail/Message/Smart Link/Phone Call/Note</description>
+        <name>Parse_LISN_Subject</name>
+        <label>Parse LISN Subject</label>
+        <locationX>1238</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Parse_LISN_Subject_for_Message</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Message</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Message_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject for Message</label>
+        </rules>
+        <rules>
+            <name>Parse_LISN_Subject_For_Call</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Phone Call</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Call_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject For Call</label>
+        </rules>
+        <rules>
+            <name>Parse_LISN_Subject_for_InMail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>InMail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_InMail_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject for InMail</label>
+        </rules>
+        <rules>
+            <name>Parse_Subject_for_Seismic_sent_via_LiveSend_to</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>sent via LiveSend to</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Seismic_LiveSend</targetReference>
+            </connector>
+            <label>Parse Subject for Seismic sent via LiveSend to</label>
+        </rules>
+        <rules>
+            <name>Parse_Subject_for_Seismic_Downloaded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Downloaded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Seismic_Download</targetReference>
+            </connector>
+            <label>Parse Subject for Seismic Downloaded</label>
+        </rules>
+        <rules>
+            <name>Parse_Subject_for_Seismic_Added_to_Workspace</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Added to Workspace</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Seismic_Add_To_Workspace</targetReference>
+            </connector>
+            <label>Parse Subject for Seismic Added to Workspace</label>
+        </rules>
+        <rules>
+            <name>Parse_Subject_for_Seismic_Added_to_Cart</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Added to Cart</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Seismic_Add_To_Cart</targetReference>
+            </connector>
+            <label>Parse Subject for Seismic Added to Cart</label>
+        </rules>
+        <rules>
+            <name>Parse_Subject_for_Seismic_Posted_to_Chatter</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Posted to Chatter</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Seismic_Post_To_Chatter</targetReference>
+            </connector>
+            <label>Parse Subject for Seismic Posted to Chatter</label>
+        </rules>
+        <rules>
+            <name>Parse_LISN_Subject_for_Connection_Request</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Connection Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_ConnectReq_TaskType</targetReference>
+            </connector>
+            <label>Parse LISN Subject for Connection Request</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Update Activity Fields {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Activity Fields</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>1112</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Parse_LISN_Subject</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>from Sales Navigator</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>sent via LiveSend to</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Added to Cart</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Added to Workspace</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue> Downloaded</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue> Posted to Chatter</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

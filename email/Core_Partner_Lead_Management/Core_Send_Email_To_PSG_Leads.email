@@ -1,0 +1,54 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta name=Generator content="Microsoft Word 15 (filtered medium)">
+</head>
+
+<body lang=EN-US>
+
+ <table style="background-color: #0071c5;" width="850">
+  <tbody>
+    <tr>
+	  <td style="padding-left: 50px; border: none;">
+	    <div style="color: white;">
+		  <h1>WE HAVE A NEW LEAD FOR YOU!</h1>
+		 </div>
+		</td>
+		<td style="border: none; padding-right: 20px;" align="right">
+		<img src="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" />
+		</td>
+		</tr>
+		</tbody>
+</table>
+
+<table style="height: 303px;" width="850" style="border-style: ridge;border-width:thin; border:0.10em solid #F9F9F9">
+<tbody>
+<div>
+<tr>
+<td style="width: 540.667px;">
+ <p>&nbsp;Hello<o:p></o:p></p>
+ <p>&nbsp;Great news—we have a new lead that may interest you. To take action on it and help ensure the quality of leads <br> &nbsp; we send you, please 
+  <a href="{!$Label.Core_Partner_Community_Classic}/{!Lead.Id}">log in and accept or reject it within 30 days</a>.
+ </p>
+ <p>&nbsp;Wishing you continued success</p>
+ <p>&nbsp;The Intel Lead Management Team</p>
+<hr/>
+ <p>&nbsp;LEAD SUMMARY (for full details, follow the review links below)</p>
+  <p>&nbsp;Lead Name :<a href="{!$Label.Core_Partner_Community_Classic}/{!Lead.Id}">{!Lead.Name}</a><o:p></o:p></p>
+  <p>&nbsp;Lead Company :<a href="{!$Label.Core_Partner_Community_Classic}/{!Lead.Id}">{!Lead.Company}</a><o:p></o:p></p>
+  <p>&nbsp;Lead Notes :<a href="{!$Label.Core_Partner_Community_Classic}/{!Lead.Id}">{!Lead.Core_Lead_Notes__c}</a></p>
+	<hr/>
+	<p><a href="{!$Label.Core_Partner_Community_Classic}/{!Lead.Id}">&nbsp;Review Lead</a></p>
+	<hr/>
+	<p><o:p>&nbsp;Can’t access the link above?</o:p></p>
+	<p><o:p>&nbsp;<a href="{!$Label.Core_Partner_Community_Classic}/00Q?fcf={!$Label.Core_My_Lead_Listview_Id}">{!$Label.Core_Partner_Community_Classic}/00Q?fcf={!$Label.Core_My_Lead_Listview_Id}</a></o:p></p>
+	<hr/>
+	<p><o:p>Questions? Let our Partner Admin Team help:<a href="mailto:partnerleads@intel.com">partnerleads@intel.com</a></o:p></p>
+	<hr/>
+	<p style="text-align: center;font-size: 10px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation</br>&copy; 2019 Intel Corporation<br /> Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.</br> <a href="http://www.intel.com">www.intel.com</a></br><a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+
+  </td>
+ </tr>
+ </div>
+ </tbody>
+ </table>
+ </body>
+ </html>

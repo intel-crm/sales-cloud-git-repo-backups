@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>RMF_External_Group_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>RMF External Group Sharing</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>contains</operation>
+            <value>RMF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

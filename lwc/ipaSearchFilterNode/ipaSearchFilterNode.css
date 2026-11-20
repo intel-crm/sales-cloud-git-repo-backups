@@ -1,0 +1,27 @@
+.search-filter-node[data-count="0"] {
+  display: none;
+}
+
+.search-filter-node-checkbox-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-filter-node-text {
+  font-size: 1rem;
+  margin-right: 1rem;
+  word-break: break-word;
+}
+
+.search-filter-prerelease {
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 1rem;
+  height: min-content;
+  padding: .125rem .5rem;
+  transform: translateY(-.125rem);
+}
+
+.search-filter-node-checkbox-container lightning-input {
+  flex-shrink: 0;
+}

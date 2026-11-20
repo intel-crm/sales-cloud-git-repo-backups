@@ -1,0 +1,13 @@
+<apex:page standardController="lead" >
+
+<flow:interview name="Reject_Intel_Prospect" finishLocation="/{!Lead.Id}" buttonLocation="bottom" >
+    <apex:param name="vaLeadID" value="{!Lead.Id}" />  
+</flow:interview>
+   
+<apex:form >
+   <div align="center" draggable="false" >
+   <apex:commandButton value="Cancel" action="{!cancel}"/ >
+   </div>
+</apex:form>
+
+</apex:page>

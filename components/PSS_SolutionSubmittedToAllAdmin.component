@@ -1,0 +1,72 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component access="global"></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+        
+            table {
+                font-family: sans-serif; /*arial, sans-serif , Intel Clear;*/
+                border-collapse: collapse;
+                border-left: 1px solid #dddddd;
+                border-right: 1px solid #dddddd;
+                border-top: 0px;
+                border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+                padding: 8px;
+            }
+            
+            .intelBlue{
+                color:#0071c5;
+            }
+        
+        </style>
+          
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="You have a new solution to review!"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                         Hello Intel Showcase Admin, <br/><br/>
+                        <apex:outputText rendered="{!IF(AND(solutionData.PSS_Solution_Submitter_UserId_Id__c != null, solutionData.PSS_Solution_Submitter_UserId_Id__r.IsActive==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
+                        
+                        A new solution {!solutionData.PSS_Proposal_Name_Txt__c} has been submitted by {!solutionData.PSS_Partner_Name__c} and needs to be reviewed. <br/><br/>
+                        
+                        Thanks,<br/><br/>
+                        <b>Solution name:</b> {!solutionData.PSS_Proposal_Name_Txt__c} <br/><br/>                     
+
+                        <p><apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}" styleClass="intelBlue">View solution preview</apex:outputLink></p><br/>
+                        
+                    </td>
+                </tr>
+                 -->
+                <!-- Email Body -->
+                
+                <!-- Questions/Contact -->
+              <!--  <tr>
+                    <td style="padding-left:50px;">  
+                        For FAQs and helpful information,<br/>
+                        please visit. <apex:outputLink value="{!$Label.PSS_MailTo}" styleClass="intelBlue">
+                            {!$Label.PSS_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

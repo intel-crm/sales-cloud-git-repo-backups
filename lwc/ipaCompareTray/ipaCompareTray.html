@@ -1,0 +1,63 @@
+<template>
+
+    <div class="slds-assistive-text" role='alert' aria-live='polite'>{statusLabel}</div>
+
+    <div class={classes}>
+
+        <div class="mobile-close slds-hide_medium" onclick={handleToggleOpen}>
+            <lightning-icon icon-name={iconName} class="slds-m-left_medium" size="x-small"></lightning-icon>
+        </div>
+
+
+        <div class="first-section-container" >
+            <div class="compare-button-container slds-text-align_center">
+                
+                <c-ipa-link community-page="Compare_Offerings__c" aria-skip={isCompareDisabled} label={compareLabel}
+                    class-name={compareButtonClasses}>
+                </c-ipa-link>
+                <span class="toggle-tray" onclick={handleToggleOpen} onkeydown={handleToggleOpenAccessibility} tabindex="0" aria-expanded={isOpen} aria-controls="compare-tray-open" aria-label={labels.toggleTrayAccessibility}>
+                    <lightning-icon icon-name={iconName} class="slds-m-left_medium" size="xx-small"></lightning-icon>
+                </span>
+            </div>
+
+            <template if:true={notificationMessage}>
+                <div class="notification-container slds-p-top_x-large slds-p-horizontal_x-large">
+                    <div class="notification-message">
+                        {notificationMessage}
+                    </div>
+                    <div class="clear-all-container slds-p-around_small" onclick={handleClearTray}>
+                        <lightning-button variant="brand" label={labels.clearAllLabel}></lightning-button>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="tray-content" id="compare-tray-content">
+            <template for:each={items} for:item="item">
+                <div key={item.id} class="tray-item-container">
+                    <div class="tray-item">
+                        <div class="slds-text-align_center small-separator-bottom item-image">
+                            <c-ipa-link class-name="link-no-style"
+                                object-page="PMP_Partner_Offering__c" record-id={item.id} aria-skip>
+                                <img class ="offering-img-height" src={item.imageUrl} />
+                            </c-ipa-link>
+                        </div>
+                        <div class="slds-p-top_small item-label">
+                            <c-ipa-link object-page="PMP_Partner_Offering__c" class-name="truncate-2" record-id={item.id} label={item.title}></c-ipa-link>
+                        </div>
+                        <div class="tray-item-close" data-id={item.id} onclick={handleRemoveItem} aria-role="button" aria-label={item.removeAriaLabel} tabindex="0" onkeydown={handleRemoveItemAccessibility}>
+                            <lightning-icon icon-name="utility:close" size="xx-small"></lightning-icon>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template for:each={placeholders} for:item="item">
+                <div key={item.key} class="tray-item-container">
+                    <div class="tray-item placeholder"></div>
+                </div>
+            </template>
+        </div>
+
+    </div>
+
+</template>

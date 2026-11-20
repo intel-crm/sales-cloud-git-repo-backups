@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core CPQ List Price</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>List Prices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Pricebookentry --></label>
+        <name>Pricebookentry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Book --></label>
+        <name>core_cpq_Price_Book__c</name>
+        <relationshipLabel><!-- List Prices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- List Price --></label>
+        <name>core_cpq_list_price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lower Bound --></label>
+        <name>core_cpq_lowerbound_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum Order Qty --></label>
+        <name>core_cpq_minimum_order_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multiple Order Quantity --></label>
+        <name>core_cpq_multiple_order_quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>core_cpq_product_name__c</name>
+        <relationshipLabel><!-- List Prices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product OPN --></label>
+        <name>core_cpq_product_opn_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Speed --></label>
+        <name>core_cpq_speed_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Id --></label>
+        <name>core_cpq_unique_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upper Bound --></label>
+        <name>core_cpq_upperbound_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Cost --></label>
+        <name>price_disty_cost_amt__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- List Price Record Type --></label>
+        <name>PSG_List_Price_Record_Type</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

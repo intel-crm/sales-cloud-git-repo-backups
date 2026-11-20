@@ -1,0 +1,274 @@
+.THIS {
+  background: t(white);
+  background-image: t(photoBackground);
+  padding-bottom: 30px;
+  position: relative;
+}
+.THIS .toggleOverlay {
+  height: 234px;
+  display: block;
+}
+.THIS .toggleOverlay img {
+  margin-top: 9px;
+  height: 234px;
+}
+
+.THIS  .galleryToggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  background: t(gray);
+  color: t(white);
+  padding: 15px 30px;
+  z-index: 2;
+  opacity: 1;
+}
+.THIS  .galleryToggle:hover {
+  color: t(white);
+}
+.THIS .galleryToggle:before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  background-image: url(/s/sfsites/c/resource/PMP_Resources/images/sprite-icons.png);
+  background-position: -283px -236px;
+  width: 25px;
+  height: 19px;
+  margin-right: 10px;
+}
+
+/*overlay*/
+.THIS .mediaOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 264px;
+  width: 100%;
+  overflow: hidden;
+  background: t(white);
+  z-index: t(zIndexModal);
+  /* transition: .5s ease-out; */
+  /* opacity: 0;  */
+}
+.THIS .modalBackground {
+  background: t(modalBackground);
+  z-index: t(zIndexModalBackground);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  opacity: 0;
+  transition: opacity .5s ease-out;
+}
+
+/* Transition Grouping */
+.THIS .mediaOverlay,
+.THIS .mediaOverlay .close,
+.THIS .mediaOverlay.slds-show .product-media-gallery .innerCarousel img,
+.THIS .mediaOverlay .jumpList {
+  transition: all .5s ease-out;
+}
+.THIS .mediaOverlay .carousel .innerCarousel {
+  transition: transform .5s ease-in-out;
+}
+.THIS .mediaOverlay .slidingPaddlePrev,
+.THIS .mediaOverlay .slidingPaddleNext {
+  transition: opacity .5s ease-out;
+}
+
+.THIS .mediaOverlay.noanimate .carousel .innerCarousel,
+.THIS .mediaOverlay.noanimate.slds-show .product-media-gallery .innerCarousel img {
+  transition: none !important;
+}
+
+.THIS .carousel {
+  width: 100%;
+  overflow: hidden;
+}
+.THIS .carousel .innerCarousel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+  -webkit-overflow-scrolling: touch;
+}
+.THIS .media-item {
+  width: 100%;
+  text-align: center;
+  flex: 0 0 auto;
+}
+/* overlay jumplinks*/
+.THIS .jumpList {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+  justify-content: center;
+
+}
+.THIS .jumplistItem {
+  width: 80px;
+  flex: 0 0 auto;
+}
+.THIS .jumplistItem a {
+  display: block;
+  border: 2px solid transparent;
+}
+.THIS .jumplistItem a {
+  opacity: .5;
+  width: 80px;
+}
+.THIS .jumplistItem img {
+  max-height: 70px;
+}
+.THIS .jumplistItem a.selected {
+  opacity: 1;
+}
+.THIS .jumplistItem a:hover {
+  opacity: 1;
+}
+
+.THIS .product-media-gallery {
+  position: relative;
+}
+
+.THIS .slidingPaddlePrev span,
+.THIS .slidingPaddleNext span{
+  margin-left: -500px;
+}
+.THIS .slidingPaddlePrev,
+.THIS .slidingPaddleNext {
+  background-image: url(/s/sfsites/c/resource/PMP_Resources/images/sliding-gallery-arrows.png);
+  width: 100px;
+  height: 50px;  display:inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+}
+.THIS .slidingPaddlePrev {
+  left: 0;
+}
+
+.THIS .slidingPaddlePrev:hover {
+  background-position: 0 -50px;
+}
+.THIS .slidingPaddleNext {
+  background-position: -100px 0;
+  right: 0;
+}
+.THIS .slidingPaddleNext:hover {
+  background-position: -100px -50px;
+}
+.THIS .close {
+  display: block;
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.THIS .close .slds-icon {
+  width: 30px;
+  height: 30px;
+}
+.THIS .close .slds-icon-text-default use {
+  fill: t(darkGray);
+}
+
+
+@media (max-width: 767px) {
+  .THIS .mediaOverlay {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      transform: translateX(-100%);
+  }
+  .THIS .mediaOverlay.slds-show {
+      width: 100vw;
+      height: 100vh;
+      transform: translateX(0);
+      position: fixed;
+  }
+  .THIS .mediaOverlay .slidingPaddlePrev,
+  .THIS .mediaOverlay .slidingPaddleNext {
+    display: none;
+  }
+  .THIS .jumpList {
+    flex-wrap: wrap;
+  }
+  .THIS .mediaOverlay.slds-show .product-media-gallery .innerCarousel video {
+      width: 90%;
+  }
+  .THIS .mediaOverlay.slds-show .product-media-gallery .innerCarousel .video {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+  }
+
+}
+
+@media (min-width: 768px) {
+  /* effects for > 768 */
+  .THIS .mediaOverlay .close {
+      max-height: 0;
+      overflow: hidden;
+  }
+
+  .THIS .mediaOverlay .slidingPaddlePrev,
+  .THIS .mediaOverlay .slidingPaddleNext,
+  .THIS .mediaOverlay .jumpList {
+    opacity: 0;
+  }
+  .THIS .mediaOverlay.slds-show {
+      opacity:1;
+      height: 570px;
+      width: 750px;
+
+      transform: translateX(-12px);
+  }
+  .THIS .modalBackground.slds-show {
+    opacity: 1;
+  }
+
+  .THIS .mediaOverlay.slds-show .close {
+      max-height: 40px;
+  }
+
+  .THIS .mediaOverlay.slds-show .slidingPaddlePrev,
+  .THIS .mediaOverlay.slds-show .slidingPaddleNext,
+  .THIS .mediaOverlay.slds-show .jumpList {
+    opacity: 1;
+  }
+  .THIS .mediaOverlay .product-media-gallery .innerCarousel img {
+      height: 234px;
+  }
+  .THIS .mediaOverlay.slds-show .product-media-gallery .innerCarousel img {
+      height: 430px;
+  }
+  .THIS .mediaOverlay.slds-show .product-media-gallery .innerCarousel video {
+      height: 430px;
+      width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+    .THIS .mediaOverlay.slds-show {
+        width: 970px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+  .THIS .mediaOverlay.slds-show {
+      width: 1170px;
+  }
+}
+
+@media (min-width: 1650px) {
+    .THIS .mediaOverlay.slds-show {
+        width: 1610px;
+    }
+}

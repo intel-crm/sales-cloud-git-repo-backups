@@ -1,0 +1,134 @@
+<template>
+<template if:false={surveyCaptured}>
+
+    <lightning-card>
+    <div style="padding-left :50px" class="slds-p-bottom_x-large"><img src={ips_Survey_Logo}>
+      <div style="padding:10px 0"> {surveyheader} {casenum}  </div>
+      <table style="padding-left: 70px"  class="slds-table  slds-table_edit slds-table_fixed-layout slds-table_resizable-cols">
+          <tbody>
+           <template if:true={showcontent}>           
+          <template if:true={isLoaded}>
+            <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+        </template>
+       
+               <template for:each={valueFromInt} for:item="con" for:index="index" >
+                <tr   key={con.questionId}>
+                  <td style="width:45%;" >
+                        <span>
+                     
+                       {con.orderNo}. <lightning-formatted-text value={con.question} key={con.questionId} required="true" style="font-size: 14px" ></lightning-formatted-text>
+                     <span style="color:red;padding-left:5px" if:true={con.isRequired}>*</span>
+                       <template if:true={con.isRequired} required></template>
+                        </span>
+                    </td>
+                    <td>      
+                     <template if:true={con.options}>
+                      <template if:false={con.isRequired}> 
+                        <table style="width:680px">
+                          <tr>
+                            <td> 
+                              <img src={happyemj}>
+                              </td>
+                              <td>
+                              <img src={neutralemojiii} >
+                            </td>
+                            <td>
+                              <img src={Core_IPS_SadEmoji}>
+                            </td>
+                          </tr>
+                        </table>
+                      
+                    </template>
+                </template>
+                <table>
+                    <tr>
+                      <td>
+                    <lightning-radio-group name={con.questionId}
+                    options={con.options}
+                    value={con.options}
+                    type="radio" key={con.options} onchange={changeVlaueinRadio} class="customRadioCls" variant="label-inline" 
+                    if:true={con.options} 
+                    data-index={index} style="width:538px ;font-size: 14px"></lightning-radio-group>
+                  
+                
+                <lightning-input type="text"  if:true={con.answerTypeTextarea} name={con.questionId} key={con.questionId}  onchange={onchangeTextarea}
+                maxlength="500" style="width:538px;font-size: 14px" ></lightning-input>
+                  
+               
+                <lightning-input type="text"  if:true={con.answerTypefreetext} name={con.questionId} key={con.questionId}  onchange={onchangeFreeTextarea}
+                maxlength="5000" style="width:538px;font-size: 14px"></lightning-input>
+              </td>
+              </tr>
+              </table>
+                    </td>
+              
+                </tr>
+            
+            </template>
+        
+          
+        </template>
+   
+                </tbody>
+            </table>
+    
+                
+            
+          
+</div>
+
+<div >
+  <table>
+    <tr>
+     
+        <td style="width:45%;" >&nbsp; </td>
+        <td style="padding-left: 481px;">
+          <lightning-formatted-url value={footer1} label="Privacy" target="_blank" style="padding-right:5px"></lightning-formatted-url>
+          |
+          <lightning-formatted-url value={footer2} label="Cookies" target="_blank" style="padding-left:5px"></lightning-formatted-url>
+        </td>
+    </tr>
+  </table>
+  
+
+</div>
+<div style="
+padding-left: 28%;
+padding-top: 2%;
+">
+<lightning-button  label="Submit
+" title="Primary action" onclick={onClickSubmit} class="slds-m-left_x-small"></lightning-button>
+<lightning-button  label="Skip
+" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+</div>
+</lightning-card>
+</template>
+<template if:true={surveyCaptured}>
+<lightning-card>
+    <div style="padding-left :50px" class="slds-p-bottom_x-large"><img src={ips_Survey_Logo}>
+    <div style="padding:10px 0"> {surveyheader} {casenum}  </div>
+    <div style=" font-weight: bold;padding-top: 10px">
+ {closecasetext}
+ </div>
+ <table>
+ 
+<tr>
+  <td style="padding-left: 20%;padding-top: 5%;">
+    <span>    
+ <lightning-button  label="Skip" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+ </span>
+</td>
+</tr>
+<tr>
+  <td style="padding-left: 454px;padding-top: 30px;">
+    <lightning-formatted-url value={footer1} label="Privacy" target="_blank" style="padding-right:5px"></lightning-formatted-url>
+    |
+    <lightning-formatted-url value={footer2} label="Cookies" target="_blank" style="padding-left:5px"></lightning-formatted-url>
+  </td>
+</tr>
+
+ </table>
+</div>
+</lightning-card>
+</template>
+</template>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This custom permission will allow users to Delete Account User.</description>
+    <isLicensed>false</isLicensed>
+    <label>Permission to Delete Account User</label>
+</CustomPermission>

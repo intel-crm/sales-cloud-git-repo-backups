@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Bank__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Type_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Status__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundClaim$Amount</field>
+    </columns>
+    <description>GEO - APJ
+Program - DCF
+Claim Status - Payment Due</description>
+    <filter>
+        <booleanFilter>(1 OR (3 AND 4)) AND 5 AND 2 AND 6</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Payment Due</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Adjustment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Available Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Region_Cd__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCF 1.0,MDF,MDF+,OEM CMP,Service Provider CMP</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Bank__c.Core_MDF_Supplier_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_AccountCompany__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Request.ChannelPartner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>APJ_DCF_Claims</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PartnerFundClaim_Reports__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

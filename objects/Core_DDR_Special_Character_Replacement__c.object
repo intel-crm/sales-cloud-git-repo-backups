@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>To replace the special character like registered ®, trademark ™,</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Actual_Character__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Character</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Junk_Character__c</fullName>
+        <externalId>false</externalId>
+        <label>Junk Character</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>DDR Special Character Replacement</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>Junk_Character__c</columns>
+        <columns>Actual_Character__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,98 @@
+<template>
+    <div class="messaging-container" data-collapsed={collapsed}>
+        <template if:true={heading}>
+            <h3 class="h4 messaging-heading slds-p-bottom_large slds-grid slds-grid_vertical-align-center">
+                <span class="truncate-3">{heading}</span>
+                <span onclick={handleToggleOpen}
+                    class="chat-accordion fa-angle-up slds-hide_medium"></span>
+            </h3>
+        </template>
+
+        <div class="messaging-collapse slds-is-relative">
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading messages..."></lightning-spinner>
+            </template>
+            
+            <a class="message-history fa-angle-up"
+                onclick={handlePageUp}
+                data-enabled={historyLinkEnabled}>
+                {labels.messageHistory}
+            </a>
+
+            <section role="log" class="chat-container slds-chat" onscroll={handleScroll}>
+                <ul class="slds-chat-list">
+                    <template for:each={formattedMessages} for:item="msg">
+                        <template if:true={msg.isStatus}>
+                            <li key={msg.key} class="chat-event-listitem slds-chat-listitem slds-chat-listitem_event">
+                                <div class="chat-event slds-chat-event">
+                                    <div class="chat-body slds-chat-event__body">
+                                        <span>
+                                            {msg.message}{msg.delimeter}
+                                            <lightning-formatted-date-time
+                                                value={msg.timestamp}
+                                                year="numeric"
+                                                day="numeric"
+                                                month="numeric"
+                                                hour="numeric"
+                                                minute="numeric"
+                                            ></lightning-formatted-date-time>
+                                        </span>
+                                    </div>
+                                    <div class="slds-chat-event__rule"></div>
+                                </div>
+                            </li>
+                        </template>
+
+                        <template if:true={msg.isMessage}>
+                            <li key={msg.key} class={msg.liClass}>
+                                <div class="chat-message slds-chat-message">
+                                    <div class="slds-chat-message__body">
+                                        <div class={msg.textClass}>
+                                            <span>{msg.message}</span>
+                                        </div>
+                                        <div class="chat-msg-meta slds-chat-message__meta">
+                                            {msg.formattedAuthor}{msg.delimeter}
+                                            <lightning-formatted-date-time
+                                            value={msg.timestamp}
+                                            year="numeric"
+                                            day="numeric"
+                                            month="numeric"
+                                            hour="numeric"
+                                            minute="numeric"
+                                            ></lightning-formatted-date-time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </template>
+                </ul>
+            </section>
+
+            <div class="slds-grid chat-input-container">
+                <lightning-input
+                    class="chat-input"
+                    type="text"
+                    disabled={sending}
+                    aria-label={labels.postAMessage}
+                    label={labels.postAMessage}
+                    variant="label-hidden"
+                    name="messaging"
+                    value={newMessage}
+                    placeholder={labels.postAMessage}
+                    max-length={messageMaxLength}
+                    onchange={handleInputChange}
+                    onkeydown={handleInputKeydown}>
+                </lightning-input>
+                <lightning-button
+                    class="button-full-width"
+                    variant="brand"
+                    aria-label={labels.send}
+                    label={labels.send}
+                    disabled={isNewMessageEmpty}
+                    onclick={handleSendClick}>
+                </lightning-button>
+            </div>
+        </div>
+    </div>
+</template>

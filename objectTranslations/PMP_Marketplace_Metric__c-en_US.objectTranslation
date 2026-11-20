@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Metric</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Metrices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PMP_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric API Name --></label>
+        <name>PMP_Metric_API_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric Description --></label>
+        <name>PMP_Metric_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric Name --></label>
+        <name>PMP_Metric_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mismatch Count --></label>
+        <name>PMP_Mismatch_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mismatch Percent --></label>
+        <name>PMP_Mismatch_Percent_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Count --></label>
+        <name>PMP_Total_Cnt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

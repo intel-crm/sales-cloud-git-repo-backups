@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>CPT_Sales_Compensation_Plan_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CPT_Sales_Compensation_Plan_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CPT_Sales_Compensation_Plan_Compact_Layout</fullName>
+        <fields>CPT_Plan_Name__c</fields>
+        <label>CPT Sales Compensation Plan Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to store Compensation Plans. A Plan has a unique name and has 5 elements that need to add up to 100%.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>CPT_Breakout_Total__c</fullName>
+        <description>The sum of all the Breakout Elements. It should be equal to 100.</description>
+        <formula>(VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Billings_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) + VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_MarginVolume__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;))+ VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Consumption_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) + VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Sales_OKR__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) +
+VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Sales_Team_Goal__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The sum of all the Breakout Elements. It should be equal to 100.</inlineHelpText>
+        <label>Breakout Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Inactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if this record is Inactive.</description>
+        <inlineHelpText>Indicates if this record is Inactive.</inlineHelpText>
+        <label>Inactive</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Manager_Plan__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Select the checkbox if the plan is for Manager only.</description>
+        <label>Manager Plan</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarginVolume__c</fullName>
+        <description>Percentage field to store MarginVolume %</description>
+        <label>MarginVolume</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Percent_Billings_Revenue__c</fullName>
+        <description>Percentage Element Breakout for Billings Revenue.</description>
+        <label>Billings Revenue</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Percent_Consumption_Revenue__c</fullName>
+        <description>Percentage Element Breakout for Consumption Revenue.</description>
+        <label>Consumption Revenue</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Percent_Deal_Win_Revenue__c</fullName>
+        <description>Percentage Element Breakout for Deal Win Revenue.</description>
+        <label>Deal Win Revenue</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Percent_Sales_OKR__c</fullName>
+        <description>Percentage Element Breakout for Sales OKR.</description>
+        <label>Sales OKR</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Percent_Sales_Team_Goal__c</fullName>
+        <description>Percentage Element Breakout for Sales Team Goal.</description>
+        <label>Sales Team Goal</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Persona_ID__c</fullName>
+        <description>The identifier of the Plan in Callidus system.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The identifier of the Plan in Callidus system.</inlineHelpText>
+        <label>Persona ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Code__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Unique Code given to each Plan by IT Team. This Code is stamped on the Quota Setup record, and is used to derive the OKR and Sales Team Goal dependent picklist values.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Unique Code given to each Plan by IT Team. This Code is stamped on the Quota Setup record, and is used to derive the OKR and Sales Team Goal dependent picklist values.</inlineHelpText>
+        <label>Plan Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Description__c</fullName>
+        <description>A name given by the business for each plan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A name given by the business for each plan.</inlineHelpText>
+        <label>Plan Description</label>
+        <length>80</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Plan_Number__c) + &apos; &apos; +  CPT_Plan_Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Plan Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Number__c</fullName>
+        <description>It is used to capture the 3 digit plan number which is unique</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A unique number given by the business for each plan.</inlineHelpText>
+        <label>Plan #</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Type__c</fullName>
+        <description>Select the Choice whether the Plan is for Seller Or Manager</description>
+        <label>Plan Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <label>Seller</label>
+                </value>
+                <value>
+                    <fullName>Manager</fullName>
+                    <default>false</default>
+                    <label>Manager</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>XX_CPT_Persona_ID__c</fullName>
+        <description>The identifier of the Plan in Callidus system.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The identifier of the Plan in Callidus system.</inlineHelpText>
+        <label>XX Persona ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>XX_CPT_Plan_Name__c</fullName>
+        <description>A unique name given by the business for each plan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A unique name given by the business for each plan.</inlineHelpText>
+        <label>XX Plan Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Sales Compensation Plan</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Plan_Number__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Plan_Type__c</columns>
+        <columns>CPT_Percent_Billings_Revenue__c</columns>
+        <columns>CPT_Percent_Consumption_Revenue__c</columns>
+        <columns>CPT_MarginVolume__c</columns>
+        <columns>CPT_Percent_Sales_OKR__c</columns>
+        <columns>CPT_Percent_Sales_Team_Goal__c</columns>
+        <columns>CPT_Breakout_Total__c</columns>
+        <columns>CPT_Inactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>PLAN-{0000}</displayFormat>
+        <label>Plan ID</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Sales Compensation Plans</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <searchResultsAdditionalFields>CPT_Plan_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Plan_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Plan_Description__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>CPT_BreakoutTotal_ShouldBe_EqualTo_100</fullName>
+        <active>true</active>
+        <description>Rule to keep the Breakout Total value equal to 100%</description>
+        <errorConditionFormula>IF(CPT_Breakout_Total__c &lt;&gt; 1, TRUE, FALSE)</errorConditionFormula>
+        <errorMessage>Breakout Total value should be equal to 100%</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_Plan_Number_Update</fullName>
+        <active>true</active>
+        <description>Prevent Plan Number Update</description>
+        <errorConditionFormula>ISCHANGED(CPT_Plan_Number__c)</errorConditionFormula>
+        <errorDisplayField>CPT_Plan_Number__c</errorDisplayField>
+        <errorMessage>Field not editable</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

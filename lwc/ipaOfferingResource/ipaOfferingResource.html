@@ -1,0 +1,152 @@
+<template>
+    <template if:false={editorOption}>
+        <div class="offering-resource-container">
+            <div class="offering-resource-title-wrapper">
+                <template if:true={videoTypeInfo}>
+                    <div class="slds-var-m-bottom_small">
+                        <template if:true={videoType.thumbnailUrl}>
+                            <div class="image-container">
+                                <img src={videoType.thumbnailUrl} class="image" alt={altText}>
+                                <button class="video-thumbnail-play fa-icons_functional_video-70" onclick={handleOpenModal} aria-label={labels.openModal} onkeydown={handleKey}></button>
+                            </div>
+                        </template>
+                        <template if:false={videoType.thumbnailUrl}>
+                            <div class="placeHolder-image" onclick={handleOpenImageModal} aria-label={labels.placeholderImage} tabindex="0" onkeydown={handleImageKey}>
+                                <img src={videoPlaceholderImage} alt={labels.altTextPlaceholderText}>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <div class="title-container">
+                    <h3 class="p text-bold breakWord" tabindex="0">
+                        <template if:true={url}>
+                            <c-ipa-link external-url={url} preview={preview} aria-label={icon.alt} label={title} analytics-element={labels.resources} analytics-page={labels.pageType} tabindex="-1">
+                                <template if:true={icon.classes}>
+                                    <span class={icon.classes}></span>
+                                </template>
+                                {title}
+                            </c-ipa-link>
+                        </template>
+
+                        <template if:false={url}>
+                            <span class="title">
+                                <template if:true={icon.classes}>
+                                    <span class={icon.classes} ></span>
+                                </template>
+                                {title}
+                            </span>
+                        </template>
+                    </h3>
+                </div>
+            </div>
+
+            <section class="text-card slds-grid slds-wrap" key={labels}>
+                <template if:true={resourceType}>
+                    <div class="typeWrapper slds-size_1-of-1 slds-small-size_5-of-12 slds-var-m-bottom_x-small"> 
+                        <span class="text-bold">{labels.resourceType}: </span>
+                        <span class="typeSpace">{resourceType}</span>
+                    </div>
+                </template>
+                <template if:true={publishDate}>
+                    <div class="publishedWrapper slds-small-size_7-of-12">  
+                        <span class="text-bold" tabindex="-1">{labels.publish}: </span>
+                        <span>{publishDate}</span>
+                    </div>
+                </template>
+                </section>
+            <div class="file-info">
+                <template if:true={fileType}>
+                    <div class="slds-var-m-top_x-small">
+                        <span class="text-bold slds-var-m-right_xx-small">{labels.file}:</span>
+                        <span class="slds-var-m-right_xxx-small">{fileType}</span>
+                        <template if:true={fileSize}>
+                            <span class="slds-var-m-right_xx-small">({fileSize})</span>
+                        </template>
+                        <c-ipa-link external-url={downloadUrl} aria-label={labels.download} hide-icon preview={preview}>
+                            <span class="fa-rb-download"></span>
+                        </c-ipa-link>
+                    </div>
+                </template>
+            </div>
+            <template if:true={description}>
+                <div class="resource-description">{description}</div>
+            </template>
+        
+        </div>
+        <template if:true={videoType}>
+            <c-core-intc-modal is-quickview="true" slim="false" close-icon-inverse="true" data-keydown-action="close" onclick={handleCloseModal} onkeydown={handleCloseKey}>
+                    <div slot="body" class="videoheight">
+                        <template if:true={videoType.thumbnailUrl}>
+                            <c-core-intc-video class="resource-modal-video" video-type={videoType.videoType} account={videoType.accountId} video-id={videoType.videoId} width="100%" no-focus="false" autoplay="true"> </c-core-intc-video>
+                        </template>
+                    </div>
+                </c-core-intc-modal>
+                <c-core-intc-modal  is-quickview="true" slim="false" close-icon-inverse="false" class="image-modal" > 
+                    <div slot="body">
+                        <img src={videoPlaceholderImage} width="100%"  height="60vh">
+                    </div>       
+                </c-core-intc-modal>
+        </template>
+    </template>
+
+    <template if:true={editorOption}>
+        <!-- View for editing resouce -->
+        <div class="resource-wrapper">
+            <template if:true={videoTypeInfo}>
+                <template if:true={videoType.thumbnailUrl}>
+                    <div class="image-container">
+                        <img src={videoType.thumbnailUrl} alt={altText}>
+                    </div>
+                </template>
+                <template if:false={videoType.thumbnailUrl}>
+                    <div class="image-container">
+                        <img src={videoPlaceholderImage} alt={labels.altTextPlaceholderText}>
+                    </div>
+                </template>
+            </template>
+    
+            <div class="resource-information">
+                <p class="title breakWord">
+                    <strong>
+                        <template if:true={url}>
+                            <c-ipa-link external-url={url} aria-label={title}>
+                                <template if:true={icon.classes}>
+                                    <span class={icon.classes} ></span>
+                                </template>
+                                {title}
+                            </c-ipa-link>
+                        </template>
+        
+                        <template if:false={url}>
+                            <template if:true={icon.classes}>
+                                <span class={icon.classes} ></span>
+                            </template>
+                            {title}
+                        </template>
+                    </strong>
+                </p>
+                <p>
+                    <strong>{labels.resourceType}:</strong> {resourceType} 
+                </p>
+        
+                <p>
+                    <strong>{labels.description}:</strong> {description} 
+                </p>
+        
+        
+                <template if:true={fileType}>
+                    <p>
+                        <strong>{labels.file}:</strong> {fileType} ({fileSize}) 
+                        <template if:false={icon.classes}>
+                            <template if:true={downloadUrl}>
+                                <c-ipa-link external-url={downloadUrl} aria-label={labels.download} hide-icon>
+                                    <span class="fa-rb-download"></span>
+                                </c-ipa-link>
+                            </template>
+                        </template>
+                    </p>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

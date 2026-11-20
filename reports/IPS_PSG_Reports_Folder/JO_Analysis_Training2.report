@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_88783245</developerName>
+        <masterLabel>Bug Closure</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <value>Doc Bug</value>
+        </values>
+        <values>
+            <value>Tool/Software Bug</value>
+        </values>
+        <values>
+            <value>Sillicon Bug</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_75631441</developerName>
+        <masterLabel>Ease of Use</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <value>Customer Error</value>
+        </values>
+        <values>
+            <value>Enahcnement Request</value>
+        </values>
+        <values>
+            <value>Not Supported</value>
+        </values>
+        <values>
+            <value>Design Review/Consultation</value>
+        </values>
+        <values>
+            <value>Known Issue</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_53185288</developerName>
+        <masterLabel>Product Name2</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 LP FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 MX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Stratix® V E FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GS FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GZ FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V E FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V SE FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V SX FPGA</sourceValue>
+            </sourceValues>
+            <value>SV/AV/CV</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® MAX® 10 FPGA</sourceValue>
+            </sourceValues>
+            <value>Max 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
+            </sourceValues>
+            <value>Agilex</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Arria® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Stratix® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <value>PAC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CLOSED_DATEONLY</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_53185288</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Cases Closed - PSG</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Support_Level__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Escalated_Date__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Organization__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Case.Core_AAQC_Case_recordType</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Programmable Solutions Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Case_Closure__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Training Required</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_53185288</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Support_Level__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Tier 1,Tier 2,Tier 3,Tier 4,ROW,Top Opps</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_53185288</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Core_IPS_Product_name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>JO Analysis Training2</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <endDate>2020-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-10-01</startDate>
+    </timeFrameFilter>
+</Report>

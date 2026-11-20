@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <available>true</available>
+    <description>This email is sent to CoGTM Claim Submitter when a claim is approved.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_EmailClaimSubmitterOnApproval</name>
+    <style>none</style>
+    <subject>Claim Approved</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

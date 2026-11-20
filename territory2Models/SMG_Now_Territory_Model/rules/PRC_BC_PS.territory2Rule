@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <name>PRC-BC-PS</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.Core_Sales_Groups__c</field>
+        <operation>equals</operation>
+        <value>PRC Sales Group</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Jay Yu,Jianguang Liu,Zhe Chen,Ian Zheng,Jim Kong,Hui Li,Ryan Sun,haifeng lv,Aivy Tan Tan,Jennifer Xie,Peter Song,Yurong Song,Tieniu Xiang,Jimmy Yeung,Julia Liang,Grace Li</value>
+    </ruleItems>
+</Territory2Rule>

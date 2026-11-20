@@ -1,0 +1,621 @@
+<template>
+    <template if:true={createmode}>
+        <div class="divclass">
+            <H1 class="selectpjthead">IPS Case</H1>
+            <div class="slds-m-horizontal_x-large" style="margin-top: 29px; ">
+                <div class="slds-progress barSize">
+                    <ol class="slds-progress__list">
+                        <li class="slds-progress__item slds-is-active">
+                            <div class="slds-progress__marker"></div>
+                        </li>
+                        <li class="slds-progress__item">
+                            <div class="slds-progress__marker"></div>
+                        </li>
+                        <li class="slds-progress__item">
+                            <div class="slds-progress__marker"></div>
+                        </li>
+                    </ol>
+
+                    <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100"
+                        aria-valuenow="0" role="progressbar">
+                        <span class="slds-progress-bar__value barProgress"></span>
+                    </div>
+                </div>
+
+                <lightning-layout-item size=8>
+                    <div class="progressText slds-grid slds-grid_align-spread">
+                        <div class="slds-col firstLabel">
+                            <p class="progressActiveText">Case Details</p>
+                        </div>
+                        <div class="slds-col middleLabel">Check for Answers</div>
+                        <div class="slds-col lastLabel">Case Creation</div>
+                    </div>
+                </lightning-layout-item>
+            </div>
+        </div>
+        <div class="slds-p-horizontal_medium">
+            <div>
+                <div>
+                    <div class="headline firstHeadline">
+                        <span>
+                            Military, intelligence, nuclear/biochemical, or space (MINDS) Information
+                        </span>
+                    </div>
+                    <div class="headlinemini">
+                        Your Preferences tab indicates the following default settings. Please edit as appropriate for
+                        THIS
+                        case.
+                    </div>
+                </div>
+
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                        <p class="subHeadline relatedcase">Is THIS case related to the use of Intel®
+                            Products and Solutions in regards
+                            to
+                            military, intelligence, nuclear/biochemical, defense, or space (MINDS) items?</p>
+                    </div>
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12 checkboxalign">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_3-of-6 slds-large-size_1-of-6">
+                                <lightning-input type="checkbox" label="Yes" name="yeschecked"
+                                    onchange={handleChangeMINDS} checked={showboolean1}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_3-of-6 slds-large-size_1-of-6">
+                                <lightning-input type="checkbox" label="No" name="nochecked"
+                                    onchange={handleChangeMINDS} checked={showboolean2}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                        <span class="subHeadline">I am submitting this case from
+                            Country/Region:</span>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                        <span style="width: 100%;">
+                            <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                    <lightning-combobox name="CountryRegion" variant="label-hidden" class="inputs validateCountry" value={selectedValuecountry}
+                                        options={options} onchange={handlePicklistChange} placeholder="Please Select">
+                                    </lightning-combobox>
+                                    <template if:true={isRequiredCountry}>
+                                    <span class="comboRequiredField"> {label.Core_IPS_Required} </span>
+                                    </template>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                  <template if:true={showState}>
+                 <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                        <span class="subHeadline">I am submitting this case from
+                            Region:</span>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                        <span style="width: 100%;">
+                            <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                    <lightning-combobox name="Region" variant="label-hidden" onfocus={handleonfocus} class="inputs validateState" data-id="stateid" value={statedefaultvalue}
+                                        options={stateList} onchange={handleStateChange} placeholder="Please Select">
+                                    </lightning-combobox>
+                                    <template if:true={isRequiredState}>
+                                    <span class="comboRequiredField"> {label.Core_IPS_Required} </span>
+                                    </template>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                  </template>
+            </div>
+            <hr />
+            <div>
+                <div class="slds-grid slds-wrap">
+                    <div class="headline slds-col">
+                        <span>
+                            Case information
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Select Project start -->
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12"
+                        style="margin-top: 20px;">
+                        <span class="subHeadline">Select Project
+                            <lightning-helptext class="inputs"
+                                content="Projects enable different teams, Often from different companies to colloborate on resolving cases. if this case is related to one of your projects, Select the Project Name from the List. If you would like to create a new project, select the My Projects Tab, wherever you have the option to create the new project">
+                            </lightning-helptext>
+                        </span>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                        <span style="width: 100%;">
+                            <p>
+                                <!-- Project start-->
+                                <template if:true={isLookupQueryPresentProject}>
+                                    <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small msearchInput">
+                                        <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                            <template if:false={isSelectedProjectPresent}>
+                                            <div class="validateProject">
+                                                <c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeProject}
+                                                    iconname={lookupIconNameProject}
+                                                    searchfield-name={lookupSearchFieldNameProject}
+                                                    query-string={lookupQueryStringProject} is-sosl="false" is-proj="true" is-read-only={projDisable}
+                                                    count-query-string={lookupCountQueryStringProject} query-string1={lookupTempQueryStringProject}
+                                                    selected-record={premiersupportprojectdata}
+                                                    query-execution-required=true
+                                                    extra-field1-label="Premier Support Project ID"
+                                                    extra-field1="Core_IPS_Project_ID__c" asset-id={assetid}>
+                                                </c-core_-i-p-s_-custom-lookup>
+                                                <template if:true={isRequiredProject}>
+                                                <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                                </template>
+                                            </div>
+                                            </template>
+</div>
+</div>
+</template>
+<!-- Project end-->
+</p>
+</span>
+</div>
+</div>
+<!-- Select Project end -->
+
+<!-- Select projectNote start -->
+<div class="slds-grid slds-wrap">
+    <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_7-of-12 notestext">
+        <p style="font-weight: 500; font-size: 12px;" class="notetext">
+            <template if:true={showContacts}>
+                                <div>
+                                    <p style="padding-top:10px; font-size:12px;">
+                                        <b>Note:</b> If Project is set to 'Not Applicable',
+                                        all the <a onclick={openModal}><u>contacts</u></a> in your account will have
+                                        access to
+                                        the case.
+                                    </p>
+                                </div>
+                                <!-- Contact Modal -->
+                                <template if:true={isModalOpen}>
+                                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01"
+                                        aria-modal="true" aria-describedby="modal-content-id-1"
+                                        class="slds-modal slds-fade-in-open">
+                                        <div class="slds-modal__container">
+                                            <header class="slds-modal__header contactHeader">
+                                                <button
+                                                    class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                                    title="Close" onclick={closeModal}>
+                                                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                                                        variant="inverse" size="small"></lightning-icon>
+                                                    <span class="slds-assistive-text">Close</span>
+                                                </button>
+                                                <h2 id="modal-heading-01"
+                                                    class="slds-float_left slds-text-heading_medium slds-hyphenate">
+                                                    <span style="color:white; font-weight:bold">Contact
+                                                        Information</span>
+                                                </h2>
+                                            </header>
+                                            <div class="slds-modal__content slds-p-around_medium pageBkGD portalTable"
+                                                id="modal-content-id-1">
+                                                <lightning-datatable data={conData} columns={contactColumns}
+                                                    key-field="Id" hide-checkbox-column="true">
+                                                </lightning-datatable>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="slds-backdrop slds-backdrop_open"></div>
+                                </template>
+            </template>
+        </p>
+    </div>
+</div>
+<!-- Select projectNote End -->
+
+
+
+
+<!-- Select Product start -->
+<template if:true={projSelected}>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12" style="margin-top: 15px;">
+        <span class="subHeadline">Select Product
+        <lightning-helptext class="inputs" content="Please type in atleast 3 chars of product name. If you do not see your product listed, please check the Intel Products tab to verify it is available.">
+        </lightning-helptext>
+        </span>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+        <span style="width: 100%;">
+                            <p>
+                                <!-- Product -->
+                                <template if:true={isLookupQueryPresentProduct}>
+                                    <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small msearchInput">
+                                        <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                            <div class="validateProduct">
+                                            <c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeProduct}
+                                                iconname={lookupIconNameProduct} is-required-field="false" is-read-only={prodDisable}
+                                                searchfield-name={lookupSearchFieldNameProduct}
+                                                query-string={lookupQueryStringProduct} is-sosl="false" is-prod="true"
+                                                count-query-string={lookupCountQueryStringProduct} selected-project={caseProjectId}
+                                                selected-record={projectdata} query-execution-required=true query-string1={lookupTempQueryStringProduct}
+                                                extra-field1-label="Product Focus Area"
+                                                extra-field1="core_Product_Application__c"
+                                                extra-field2-label="Premier Support Project"
+                                                extra-field2="Core_IPS_Project_Name__c">
+                                            </c-core_-i-p-s_-custom-lookup>
+                                            </div>
+                                            <template if:true={isRequiredProduct}>
+                                                <span class="productRequiredField"> {label.Core_IPS_Required} </span>
+                                            </template>
+                                        </div>
+                                        <div class="slds-size_3-of-12"></div>
+                                    </div>
+                                </template>
+                                <!-- Product end -->
+                            </p>
+                        </span>
+    </div>
+</div>
+</template>
+<!-- Select Product End -->
+
+<!-- Select ProductVariant start -->
+<div class="slds-grid slds-wrap casecreationvalign" if:true={renderProductVariant}>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+        <span class="productVar">Product Variant <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span></span>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+        <span style="width: 100%;">
+                            <!-- Product Variant -->
+                            <template if:true={renderProductVariant}>
+                                <div class="slds-grid slds-wrap slds-size_12-of-12">
+                                    <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                        <lightning-combobox name="progress" class="inputs"
+                                             value={productvariant}
+                                            options={productVariantOptions} onchange={handleChangeProductVariant}
+                                            disabled={disableEdit}>
+                                        </lightning-combobox>
+                                    </div>
+                                    <div class="slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+                                    </div>
+                                </div>
+                            </template>
+                            <!-- Product Variant -->
+                        </span>
+    </div>
+</div>
+<!-- Select ProductVariant End -->
+
+<hr />
+<div class="headline slds-col">
+    <span>
+                        Search Details
+                    </span>
+</div>
+<!-- 
+<div class="slds-grid slds-wrap casecreationvalign">
+    <template if:true={showProject}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                            
+                            <span class="subHeadline">Project</span>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                            <span style="width: 100%;">
+                                {selectedProjectName}
+                                <p style="padding-top:10px; font-size:12px;">
+                                    *Note: If Project is blank or set to 'Not Applicable', all the <a
+                                        onclick={openModal}>contacts</a> in your account will have access to the case.
+                                </p>
+                            </span>
+                        </div>
+                    </template>
+</div>
+
+<div class="slds-grid slds-wrap casecreationvalign">
+    <template if:true={showProduct}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                            
+                            <span class="subHeadline">Product</span>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                            <span style="width: 100%;">
+                                {selectedProductName}
+                            </span>
+                        </div>
+                    </template>
+</div> -->
+
+<div class="slds-grid slds-wrap casecreationvalign">
+    <template if:true={showProdVariants}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12"
+                            style="margin-top: 10px;">
+
+                            <span class="subHeadline">Product Variant</span>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                            <span style="width: 100%;">
+                                {selectedVariantName}
+                            </span>
+                        </div>
+                    </template>
+</div>
+
+<div class="slds-grid slds-wrap casecreationvalign" if:true={renderProductCategory}>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12" style="margin-top: 15px;">
+        <span class="subHeadline">Case Category</span>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+        <span style="width: 100%;">
+                            <template if:true={renderProductCategory}>
+                                <div class="slds-grid slds-wrap slds-size_12-of-12">
+                                    <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                        <lightning-combobox name="progress" class="inputs validateCategory" value={CaseCategoryId}
+                                             options={caseCategoryOptions}
+                                            onchange={handleChangeSubCategory} disabled={disableEdit}>
+                                        </lightning-combobox>
+                                    <template if:true={isRequiredCategory}>
+                                    <span class="comboRequiredField"> {label.Core_IPS_Required} </span>
+                                    </template>
+                                    </div>
+                                    <div class="slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_2-of-12">
+                                    </div>
+                                </div>
+                            </template>
+                            <!-- Category -->
+                        </span>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign" if:true={renderProductSubCategory}>
+    <div class="slds-col slds-size_1-of-1  slds-medium-size_4-of-12 slds-large-size_5-of-12">
+        <span class="subHeadline">Case Sub-Category</span>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+        <span style="width: 100%;">
+                            <template if:true={renderProductSubCategory}>
+                                <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                    <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                        <lightning-combobox name="progress" class="inputs validateSubCategory" value={CaseSubCategoryId}
+                                             options={subcategoryoptions}
+                                            onchange={handleChangeRenderSubCategoryedq} disabled={disableEdit}>
+                                        </lightning-combobox>
+                                        <template if:true={isRequiredSubcategory}>
+                                        <span class="comboRequiredField"> {label.Core_IPS_Required} </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_2-of-12">
+                                    </div>
+                                </div>
+                            </template>
+                        </span>
+    </div>
+</div>
+   <template if:true={isSpinner}>
+      <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+   </template>
+
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+        <span class="subHeadline">Subject</span>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+        <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+            <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                <lightning-input class="inputs validateSubject" onchange={handlesubject} value={sendcasesubject} max-length="80">
+                </lightning-input>
+                <template if:true={isRequiredSubject}>
+                <span class="comboRequiredField"> {label.Core_IPS_Required} </span>
+                </template>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- START As part of BugAssist by Hassan-->
+    <template if:true= {isBugAssistTrue}>
+        <div>
+            <c-core_-i-p-s_-bug-assist_form1_-l-w-c onsend={handleSendEvent} bug-assist-data = {bugAssistData} parent-field-value={subjectForBugAssist} onvaluereset={handleValueReset} ></c-core_-i-p-s_-bug-assist_form1_-l-w-c>
+        </div>
+    </template>
+    <!--End BugAssist-->
+</div>
+
+</template>
+<template if:true={sslcmode}>
+        <div class="slds-p-horizontal_medium">
+            <div>
+                <div class="slds-grid slds-wrap">
+                    <div class="headline slds-col">
+                        <span>
+                            Military, intelligence, nuclear/biochemical, or space (MINDS) Information
+                        </span>
+                    </div>
+                    <p style="font-size: 12px;">&emsp;&emsp;&ensp;
+                        Your My Preferences tab indicates the following default settings. Please edit as appropriate for
+                        THIS
+                        case.
+                    </p>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                        <p class="subHeadline">Is THIS case related to the use of Intel® Products and Solutions in
+                            regards
+                            to
+                            military, intelligence, nuclear/biochemical, defense, or space (MINDS) items?</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12">
+                        <div></br>
+                            <lightning-input type="checkbox" label="Yes" name="yeschecked" onchange={handleChangeMINDS}
+                                checked={showboolean1}></lightning-input>
+                        </div>
+                        &emsp;
+                        <div></br>
+                            <lightning-input type="checkbox" label="No" name="nochecked" onchange={handleChangeMINDS}
+                                checked={showboolean2}></lightning-input>
+                        </div>
+                    </div>
+                </div></br>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-grid slds-size_1-of-2">
+                        <p class="subHeadline">I am submitting this case from Country/Region:</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                        <span style="width: 100%;"></br>
+
+                            {contactCountry}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="headline slds-col"><span>Case information</span></div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <p class="subHeadline">Project</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    </br>{Projectdefault}
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <p class="subHeadline">Product</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    </br>
+                    {Assetdefault}
+                </div>
+            </div>
+            <hr />
+            <div class="slds-grid slds-wrap">
+                <div class="headline slds-col"><span>Case Details</span></div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <p class="subHeadline">Subject</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    </br>
+                    <lightning-input data-id="subjectField" class="inputs" value={subjectvaluesslc}
+                        onchange={handleChange} max-length="80">
+                    </lightning-input>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <p class="subHeadline">Case Description</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    </br>
+                    <lightning-input-rich-text data-id="descriptionFeild" class="inputs" value={descriptiondefault}
+                        onchange={handleChange}></lightning-input-rich-text>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    <p class="subHeadline">Case Type</p>
+                </div>
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    <span>
+                        <lightning-combobox data-id="CaseType" class="inputs" name="CaseType" value={CaseTypedefault}
+                            placeholder="Please Select" options={CaseTypeOptions} onchange={handleChange}>
+                        </lightning-combobox>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    <p class="subHeadline">Severity</p>
+                </div>
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    <span>
+                        <lightning-combobox data-id="Severity" class="inputs" name="Severity" value={severityValue}
+                            placeholder="Please Select" options={caseSeverityoptions} onchange={handleChange}>
+                        </lightning-combobox>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    <p class="subHeadline">Customer Reference ID</p>
+                </div>
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    </br>
+                    <lightning-input data-id="custmerreference" class="custmerreference" onchange={handleChange}>
+                    </lightning-input>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    <p class="subHeadline">End Customer</p>
+                </div>
+                <div class="slds-col slds-grid slds-size_1-of-2">
+                    </br>
+                    <lightning-input data-id="endcustomer" class="endcustomer" onchange={handleChange}>
+                    </lightning-input>
+                </div>
+            </div>
+            <hr />
+            <div class="slds-grid slds-wrap">
+                <div class="headline slds-col">
+                    <span>Product/Project Info</span>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-grid slds-medium-size_4-of-12 slds-size_5-of-12">
+                    <p class="subHeadline">Case Category</p>
+                </div>
+                <div class="slds-col slds-grid slds-size_7-of-12">
+                    <span style="width: 100%;">
+                        <!-- Category -->
+                        <div class="slds-grid slds-wrap slds-medium-size_8-of-12 slds-size_12-of-12">
+                            <div class="slds-size_1-of-12"></div>
+                            <div class="slds-size_7-of-12">
+                                <lightning-combobox name="progress" value={Case_Categorydefault}
+                                    placeholder="-Select Category-" options={caseCategoryOptions}
+                                    onchange={handleChangeSubCategory} disabled={disableEdit}>
+                                </lightning-combobox>
+                            </div>
+                            <div class="slds-size_2-of-12"></div>
+                        </div>
+                        <!-- Category -->
+                    </span>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-grid slds-medium-size_4-of-12 slds-size_5-of-12">
+                    <p class="subHeadline">Case Subcategory</p>
+                </div>
+                <div class="slds-col slds-grid slds-medium-size_8-of-12 slds-size_7-of-12">
+                    <span style="width: 100%;">
+                        <!-- Sub Category -->
+                        <template if:true={renderProductSubCategory}>
+                            <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                <div class="slds-size_1-of-12"></div>
+                                <div class="slds-size_7-of-12">
+                                    <lightning-combobox name="progress" value={caseSubCategory}
+                                        placeholder="-Select Sub Category-" options={subcategoryoptions}
+                                        onchange={handleChangeRenderSubCategoryedq} disabled={disableEdit}>
+                                    </lightning-combobox>
+                                </div>
+                                <div class="slds-size_2-of-12"></div>
+                            </div>
+                        </template>
+<!-- Sub Category -->
+</span>
+</div>
+</div>
+<!-- Environmental Details -->
+<hr />
+<div class="headline slds-col">
+    <span>Environmental Details</span>
+
+</div>
+</div>
+</template>
+
+</template>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Registration Tracker Steps</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Registration Tracker Steps</value>
+    </caseValues>
+    <fields>
+        <label><!-- Auto Approved --></label>
+        <name>PRM_Auto_Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- Classname --></label>
+        <name>PRM_Classname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Step --></label>
+        <name>PRM_Current_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Step No --></label>
+        <name>PRM_Display_Step_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Step --></label>
+        <name>PRM_Previous_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>PRM_Registration_Type__c</name>
+        <picklistValues>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Invite</masterLabel>
+            <translation><!-- Bulk Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Partner Invite</masterLabel>
+            <translation><!-- External Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GetProfile</masterLabel>
+            <translation><!-- GetProfile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite</masterLabel>
+            <translation><!-- Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self</masterLabel>
+            <translation><!-- Self --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Revise Step --></label>
+        <name>PRM_Revise_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revise --></label>
+        <name>PRM_Revise__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update field --></label>
+        <name>PRM_Update_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry --></label>
+        <name>Retry__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION_RUS</name>
+    <style>none</style>
+    <subject>В учетную запись Intel® Partner Alliance добавлен новый пользователь</subject>
+    <textOnly>Подтверждение информации об учетной записи
+
+{!UserName},
+
+Новый сотрудник был добавлен к учетной записи {!Account.Name} в Intel® Partner Alliance представителем Intel или другим контактным лицом вашей компании.
+
+Название компании: {!Account.Name}
+Идентификатор компании: {!Account.AccountNumber}
+Добавленный контакт: Эл. адрес {!ContactEmail}
+Отношения (роль): {!AcrRoles}
+
+Если вы не одобряете это обновление, пожалуйста войдите на сайт, чтобы удалить новый контакт.
+
+Если у вас имеются вопросы, пожалуйста, свяжитесь с нами по адресу: https://signin.intel.com/ContactUs?Culture=ru-ru
+
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!$Label.PRM_CurrentYear} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

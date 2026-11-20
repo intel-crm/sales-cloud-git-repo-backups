@@ -1,0 +1,11 @@
+"Structure_Identifier"|"Source_id"|"Name"|"Restriction Level"|"Status"
+"VPH_L1_873"|"873"|"Processors"|"Processor"|""|""
+"VPH_L2_595"|"595"|"Intel® Xeon® Processors"|"Processor"|""|""
+"VPH_L3_204098"|"204098"|"3rd Generation Intel® Xeon® Scalable Processors"|"Processor"|""|""
+"VPH_L4_205684"|"205684"|"Intel® Xeon® Platinum 8380HL Processor (38.5M Cache, 2.90 GHz)"|"Processor"|"0"|"Launched"
+"VPH_L4_204087"|"204087"|"Intel® Xeon® Platinum 8380H Processor (38.5M Cache, 2.90 GHz)"|"Processor"|"0"|"Launched"\
+"VPH_L2_95582"|"95582"|"Legacy Chipsets"|"Chipset"|""|""
+"VPH_L3_98458"|"98458"|"Intel® 9 Series Chipsets"|"Chipset"|""|""
+"VPH_L4_81761"|"81761"|"Intel® X99 Chipset"|"Chipset"|"0"|"Launched"
+"VPH_L4_82012"|"82012"|"Intel® Z97 Chipset"|"Chipset"|"0"|"Discontinued"
+"VPH_L4_82010"|"82010"|"Intel® H97 Chipset"|"Chipset"|"0"|"Discontinued"

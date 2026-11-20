@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Assigned_Only</name>
+        <label>Assigned Only</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <actionName>Core_Opportunity_Support_Team__c.Opportunity_Support_Team_Member_Assigned</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Opportunity_Support_Team__c.Opportunity_Support_Team_Member_Assigned</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Assignment_Email</name>
+        <label>Assignment Email</label>
+        <locationX>446</locationX>
+        <locationY>839</locationY>
+        <actionName>Core_Opportunity_Support_Team__c.Opportunity_Support_Team_Member_Assigned</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Opportunity_Support_Team__c.Opportunity_Support_Team_Member_Assigned</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Reassignement_done</name>
+        <label>Reassignement done</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <actionName>Core_Opportunity_Support__c.Opportunity_Support_team_member_is_reassigned</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Assignment_Email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Core_Opportunity_Support__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Opportunity_Support__c.Opportunity_Support_team_member_is_reassigned</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_for_Assignment_or_Reassignment</name>
+        <label>Check for Assignment or Reassignment</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Reassigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Reassignment Check</defaultConnectorLabel>
+        <rules>
+            <name>Assignment_Check</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Opportunity_Support_Team_Member__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Core_Opportunity_Support_Team_Member__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assigned_Only</targetReference>
+            </connector>
+            <label>Assignment Check</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>When the status is not submitted and Opportunity Support Team Member is added</description>
+        <name>Opportunity_Support_Request_is_Approved_with_Team_Members_Added</name>
+        <label>Opportunity Support Request is Approved with Team Members Added</label>
+        <locationX>501</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Submission and Approval</defaultConnectorLabel>
+        <rules>
+            <name>Assignment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Support__r.Core_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_for_Assignment_or_Reassignment</targetReference>
+            </connector>
+            <label>Assignment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Reassigned</name>
+        <label>Reassigned</label>
+        <locationX>446</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Assignment_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Reassignment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Support__r.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Opportunity_Support_Team_Member__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reassignement_done</targetReference>
+            </connector>
+            <label>Reassignment</label>
+        </rules>
+    </decisions>
+    <description>Trigger notification when new member is added to the team after Opportunity support approve</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>currentYear</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR(DATEVALUE(NOW())))</expression>
+    </formulas>
+    <formulas>
+        <name>emailAddress</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Core_Opportunity_Support__r.Opportunity__r.Owner.Email}+&apos;,&apos;+{!$Record.Core_Opportunity_Support__r.CreatedBy.Email} +&apos;,&apos;+{!$Record.Core_Opportunity_Support__r.Core_Approver_1__r.Email}+&apos;,&apos;+{!$Record.Core_Opportunity_Support__r.Core_Approver_2__r.Email}+&apos;,&apos;+{!$Record.Core_Opportunity_Support__r.Core_Approver_3__r.Email}+&apos;,&apos;+{!$Record.Core_Opportunity_Support__r.Core_Approver_4__r.Email}+&apos;,&apos;+
+{!$Record.Core_Opportunity_Support__r.Core_Approver_5__r.Email}+&apos;,&apos;+{!$Record.LastModifiedBy.Email}</expression>
+    </formulas>
+    <formulas>
+        <name>EmailSubject</name>
+        <dataType>String</dataType>
+        <expression>&apos;REASSIGNED Opportunity Support Request (CSA/TSS):&apos;+ {!$Record.Core_Opportunity_Support__r.Opportunity__r.Account.Name}+&apos; - &apos;+ {!$Record.Core_Opportunity_Support__r.Opportunity__r.Name}</expression>
+    </formulas>
+    <formulas>
+        <name>OppsupportLink</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_550}, FIND( &apos;/services&apos;, {!$Api.Partner_Server_URL_550})) &amp; {!$Record.Core_Opportunity_Support__c}</expression>
+    </formulas>
+    <formulas>
+        <name>technicalOwner</name>
+        <dataType>String</dataType>
+        <expression>IF(ISNULL({!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__c}) || ISBLANK({!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__c}), &apos; &apos;, {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__r.FirstName} + &apos; &apos; +{!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Technical_Owner__r.LastName})</expression>
+    </formulas>
+    <formulas>
+        <name>UserAddition</name>
+        <dataType>String</dataType>
+        <expression>IF( ISNEW(), ({!$Record.Core_Opportunity_Support_Team_Member__r.FirstName}  + &apos; &apos;+{!$Record.Core_Opportunity_Support_Team_Member__r.LastName} + &apos; added to the Team for the following Opportunity:&apos;) , ({!$Record__Prior.Core_Opportunity_Support_Team_Member__r.FirstName}  + &apos; &apos;+{!$Record__Prior.Core_Opportunity_Support_Team_Member__r.LastName} + &apos; is replcaed by&apos; + {!$Record.Core_Opportunity_Support_Team_Member__r.FirstName}  + &apos; &apos;+{!$Record.Core_Opportunity_Support_Team_Member__r.LastName} + &apos; in the opportunity team for the following Opportunity:&apos;))</expression>
+    </formulas>
+    <interviewLabel>Opportunity Support team notification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Support team notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>375</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Opportunity_Support_Request_is_Approved_with_Team_Members_Added</targetReference>
+        </connector>
+        <object>Core_Opportunity_Support_Team__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>userAddtionEmailTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;table class=&quot;ql-table-blob&quot; style=&quot;background-color: #0071c5;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style=&quot;padding-left: 50px; border: none;&quot;&gt;&lt;div style=&quot;color: white;&quot;&gt;&lt;h1&gt;Reassigned Opportunity Support Resource (CSA)!&lt;/h1&gt;&lt;/div&gt;&lt;/td&gt;&lt;td align=&quot;right&quot; style=&quot;border: none; padding-right: 20px; white-space: pre;&quot;&gt;&lt;p&gt;&lt;img alt=&quot;app image.jpg&quot; src=&quot;https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;amp;oid=00Do0000000aRcf&quot; /&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;font-family: intel clear; border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Dear Opportunity Owner/Requestor/Assigner {!$Record.CreatedBy.FirstName} {!$Record.CreatedBy.LastName}&lt;br /&gt;&lt;br /&gt;CSA support has been reassigned for the below Opportunity. Please find the link to the Support Request and Opportunity Information below: &lt;br /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;padding-left: 50px; border: 1px solid #d3d3d3; font-size: 14px; font-family: intel clear;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;a style=&quot;font-size: 18px;&quot; href=&quot;{!OppsupportLink}&quot;&gt; Click Here&lt;/a&gt;to see additional information on this opportunity.&lt;br /&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 20px;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style=&quot;white-space: pre;&quot;&gt;Opportunity Information&lt;br /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;font-family: intel clear; border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Account Name : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Account.Name}&lt;/td&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Opportunity Name : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Name}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Stage : {!$Record.Core_Opportunity_Support__r.Opportunity__r.StageName}&lt;/td&gt;&lt;td style=&quot;font-family: &apos;intel clear&apos;; white-space: pre;&quot; width=&quot;40%&quot;&gt;Decision Date : {!$Record.Core_Opportunity_Support__r.Opportunity__r.CloseDate} &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;SalesGroup : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Sales_Groups__c}&lt;/td&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Opportunity Type : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Opportunity_Type__c}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-family: &apos;intel clear&apos;; white-space: pre;&quot; width=&quot;40%&quot;&gt;Opportunity Owner : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Owner.FirstName} {!$Record.Core_Opportunity_Support__r.Opportunity__r.Owner.LastName}&lt;/td&gt;&lt;td style=&quot;font-family: &apos;intel clear&apos;; white-space: pre;&quot; width=&quot;40%&quot;&gt;Product Segement : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Product_Segment__c}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-family: &apos;intel clear&apos;; white-space: pre;&quot; width=&quot;40%&quot;&gt;Technical Owner : {!technicalOwner}&lt;/td&gt;&lt;td style=&quot;font-family: &apos;intel clear&apos;; white-space: pre;&quot; width=&quot;40%&quot;&gt;Product Application : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Product_Application__c}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Amount : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Amount}&lt;/td&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Vertical Market : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Consumption_Market__c}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Competitive Architecture: {!$Record.Core_Opportunity_Support__r.Opportunity__r.Core_Competitive_Architecture__c}&lt;/td&gt;&lt;td style=&quot;font-family: intel clear;&quot; width=&quot;40%&quot;&gt;Probability(%) : {!$Record.Core_Opportunity_Support__r.Opportunity__r.Probability}&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;font-family: intel clear; border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Opportunity Support Resource Reassignment Details &lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;border-collapse: collapse; font-family: intel clear; border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style=&quot;font-family: intel clear; border: 1px solid #d3d3d3; padding-left: 1%;&quot; width=&quot;40%&quot;&gt;&lt;b&gt;Assigner &lt;/b&gt;&lt;/td&gt;&lt;td style=&quot;padding-left: 1%; border: 1px solid #d3d3d3; font-family: intel clear;&quot; width=&quot;40%&quot;&gt;&lt;b&gt;{!$Record.LastModifiedBy.FirstName} {!$Record.LastModifiedBy.LastName}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-left: 1%; font-family: intel clear; border: 1px solid #d3d3d3;&quot; width=&quot;40%&quot;&gt;&lt;b&gt;CSA Resource Reassigned &lt;/b&gt;&lt;/td&gt;&lt;td style=&quot;padding-left: 1%; font-family: intel clear; border: 1px solid #d3d3d3;&quot; width=&quot;40%&quot;&gt;&lt;b&gt; {!$Record.Core_Opportunity_Support_Team_Member__r.FirstName} {!$Record.Core_Opportunity_Support_Team_Member__r.LastName}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-left: 1%; font-family: intel clear; border: 1px solid #d3d3d3;&quot; width=&quot;40%&quot;&gt;&lt;b&gt;Accepted/Rejected Notes&lt;/b&gt;&lt;/td&gt;&lt;td style=&quot;padding-left: 1%; font-family: intel clear;&quot; width=&quot;40%&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table class=&quot;ql-table-blob&quot; style=&quot;border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 20px;&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;p style=&quot;text-align: center; font-size: 12px;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel Corporation&lt;br /&gt;©{!currentYear} Intel Corporation&lt;br /&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;a href=&quot;http://www.intel.com&quot;&gt;www.intel.com&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;http://www.intel.com/privacy&quot;&gt;Privacy&lt;/a&gt; | &lt;a href=&quot;http://www.intel.com/cookies&quot;&gt;Cookies&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</text>
+    </textTemplates>
+</Flow>

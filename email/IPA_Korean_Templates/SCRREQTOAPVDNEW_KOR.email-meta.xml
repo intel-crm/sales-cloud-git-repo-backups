@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_KOR</name>
+    <style>none</style>
+    <subject>조치 필요: 45일 이내에 파트너 프로그램 액세스 권한을 활성화하십시오</subject>
+    <textOnly>축하합니다, 멤버십 요청이 승인 및 처리되었습니다!
+
+
+인텔® 파트너 얼라이언스 프로그램에 오신 것을 환영합니다!
+
+파트너 여러분이 인텔 에코시스템과 연결되어 비즈니스 성과를 창출하고 성장을 견인하는 혁신적인 솔루션을 가속할 수 있도록 설계된 통합 에코시스템에 참여하게 되어 기쁘게 생각합니다.
+
+계정에 중단 없이 액세스할 수 있도록 이 이메일 수신 후 45일 이내에 로그인하시기 바랍니다. 로그인하면 프로필이 활성 상태로 유지되고 귀사와 연결됩니다.
+
+귀사에 맞춤화된 혜택으로 다음과 같은 이점을 누리실 수 있습니다:
+
+최신 도구, 교육, 리소스를 활용하여 새로운 비즈니스 기회 창출
+적격 구매와 활동에 대한 포인트 적립 및 사용
+시장 개발 펀드로 마케팅 및 영업 성과 가속화
+최신 인텔® 소프트웨어에서 워크로드 학습, 프로토타입 제작 및 테스트
+인텔® 파트너 유니버시티에서 제공하는 세계적 수준의 교육으로 지식 확장
+NDA 콘텐츠, 로드맵 및 개발자 도구를 활용하여 혁신적인 제품 개발
+인텔® 마케팅 스튜디오의 공동 마케팅 광고 소재를 활용하여 신속하게 캠패인 시작
+인텔® Partner Showcase의 파트너 상점을 통해 유망한 잠재 고객 확보
+
+로그인 및 시작하기
+
+인텔 로그인 절차에 도움이 필요하면  여기 를 클릭하십시오.
+
+
+
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보 취급방침 &amp;verbar; 쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,37 @@
+<apex:page showHeader="false" sidebar="false" title="OPID All Grids Page" standardController="Account">
+    <GBLite:TabbedPageComponent pageAPIName="GBTabs_OPID_All_Grids_Page" customJsIds="" customCssIds="">
+    <GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+        <script>
+            var pageDefinition = {
+    "pageAPIName": "GBTabs_OPID_All_Grids_Page",
+    "showSidebar": false,
+    "showHeader": false,
+    "height": "900",
+    "object": "0",
+    "globalButtons": false,
+    "description": "",
+    "selectedCustomJSIds": [],
+    "selectedCustomCSSIds": [],
+    "id": 1630442258337,
+    "tabs": [
+        {
+            "id": 1630442258340,
+            "content": "{!gridPage}gname=OPID Contact Mgmt 1&amp;sh=0&amp;sfname=default&amp;fpf=Core_IPA_One_Partner_Id__c&amp;fpv={!CaseSafeId(id)}",
+            "name": "Contact Management"
+        },
+        {
+            "id": 1630442258341,
+            "content": "{!gridPage}gname=OPID Account Mgmt 1&amp;sh=0&amp;sfname=default&amp;fpf=Core_IPA_One_Partner_Id__c&amp;fpv={!CaseSafeId(id)}",
+            "name": "Account Management 1"
+        },
+        {
+            "id": 1630442258342,
+            "content": "{!gridPage}gname=OPID Account Mgmt 2&amp;sh=0&amp;sfname=default&amp;fpf=Core_IPA_One_Partner_Id__c&amp;fpv={!CaseSafeId(id)}",
+            "name": "Account Management 2"
+        }
+    ],
+    "name": "OPID All Grids Page"
+};
+        </script>
+    </GBLite:TabbedPageComponent>
+</apex:page>

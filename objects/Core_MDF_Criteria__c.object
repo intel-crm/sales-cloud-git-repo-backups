@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>Core_MDF_ApprovalCriteria</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>Core_MDF_ApprovalCriteria</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>At least one active approver record should be created to make approval criteria active.</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Criteria_Description__c</fullName>
+        <description>Field concatenates all the criteria for an Approval Criteria record.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Core_MDF_Field_Name_1__c) ,&apos;&apos;, Core_MDF_Field_Name_1__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_1__c) &amp; &apos; &apos; &amp; Core_MDF_Value_1__c ) &amp; IF(ISBLANK(Core_MDF_Field_Name_2__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_2__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_2__c) &amp; &apos; &apos; &amp; Core_MDF_Value_2__c ) &amp; 
+IF(ISBLANK(Core_MDF_Field_Name_3__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_3__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_3__c) &amp; &apos; &apos; &amp; Core_MDF_Value_3__c ) &amp; IF(ISBLANK(Core_MDF_Field_Name_4__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_4__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_4__c) &amp; &apos; &apos; &amp; Core_MDF_Value_4__c ) &amp; 
+IF(ISBLANK(Core_MDF_Field_Name_5__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_5__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_5__c) &amp; &apos; &apos; &amp; Core_MDF_Value_5__c ) &amp; IF(ISBLANK(Core_MDF_Field_Name_6__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_6__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_6__c) &amp; &apos; &apos; &amp; Core_MDF_Value_6__c ) &amp; 
+IF(ISBLANK(Core_MDF_Field_Name_7__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_7__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_7__c) &amp; &apos; &apos; &amp; Core_MDF_Value_7__c ) &amp; IF(ISBLANK(Core_MDF_Field_Name_8__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_8__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_8__c) &amp; &apos; &apos; &amp; Core_MDF_Value_8__c ) &amp; 
+IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_9__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_9__c) &amp; &apos; &apos; &amp; Core_MDF_Value_9__c ) &amp; IF(ISBLANK(Core_MDF_Field_Name_10__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &amp; Core_MDF_Field_Name_10__c &amp; &apos; &apos; &amp; TEXT(Core_MDF_Operator_10__c) &amp; &apos; &apos; &amp; Core_MDF_Value_10__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approval Criteria Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Criteria_Ref_Code_txt__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Used to map the IUPGM with Approval Criteria record.</description>
+        <externalId>false</externalId>
+        <label>Approval Criteria Automation Refer Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Process__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Process</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Type__c</fullName>
+        <label>Approval Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Single</fullName>
+                    <default>false</default>
+                    <label>Single</label>
+                </value>
+                <value>
+                    <fullName>Multiple</fullName>
+                    <default>false</default>
+                    <label>Multiple</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approvers_Count__c</fullName>
+        <label>Approvers Count</label>
+        <summaryFilterItems>
+            <field>Core_MDF_Approver__c.Core_MDF_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Approver__c.Core_MDF_Criteria__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_10__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 10</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 5</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 6</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 7</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 8</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Field_Name_9__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Name 9</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Number_Of_Steps__c</fullName>
+        <externalId>false</externalId>
+        <label>Number Of Steps</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Object Type</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_10__c</fullName>
+        <label>Operator 10</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_1__c</fullName>
+        <label>Operator 1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_2__c</fullName>
+        <label>Operator 2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_3__c</fullName>
+        <label>Operator 3</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_4__c</fullName>
+        <label>Operator 4</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_5__c</fullName>
+        <label>Operator 5</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_6__c</fullName>
+        <label>Operator 6</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_7__c</fullName>
+        <label>Operator 7</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_8__c</fullName>
+        <label>Operator 8</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Operator_9__c</fullName>
+        <label>Operator 9</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Equal</fullName>
+                    <default>false</default>
+                    <label>Equal</label>
+                </value>
+                <value>
+                    <fullName>Not Equal</fullName>
+                    <default>false</default>
+                    <label>Not Equal</label>
+                </value>
+                <value>
+                    <fullName>Less Than</fullName>
+                    <default>false</default>
+                    <label>Less Than</label>
+                </value>
+                <value>
+                    <fullName>Greater Than</fullName>
+                    <default>false</default>
+                    <label>Greater Than</label>
+                </value>
+                <value>
+                    <fullName>Less Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Less Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>Greater Than or Equal</fullName>
+                    <default>false</default>
+                    <label>Greater Than or Equal</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>Not In</fullName>
+                    <default>false</default>
+                    <label>Not In</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_10__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 10</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 5</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 6</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 7</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 8</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Value_9__c</fullName>
+        <externalId>false</externalId>
+        <label>Value 9</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Approval Criteria</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Core_MDF_Active__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Sub_Type__c</columns>
+        <columns>Core_MDF_Field_Name_1__c</columns>
+        <columns>Core_MDF_Operator_1__c</columns>
+        <columns>Core_MDF_Value_1__c</columns>
+        <columns>Core_MDF_Field_Name_2__c</columns>
+        <columns>Core_MDF_Operator_2__c</columns>
+        <columns>Core_MDF_Value_2__c</columns>
+        <columns>Core_MDF_Field_Name_3__c</columns>
+        <columns>Core_MDF_Operator_3__c</columns>
+        <columns>Core_MDF_Value_3__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CRT-{0000}</displayFormat>
+        <label>Criteria Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Approval Criteria</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Active_Approver_Required</fullName>
+        <active>true</active>
+        <description>Should have at least one active approver to make criteria active.</description>
+        <errorConditionFormula>IF((Core_MDF_Active__c == TRUE &amp;&amp;  Core_MDF_Approvers_Count__c  &lt;= 0),TRUE,FALSE)</errorConditionFormula>
+        <errorMessage>Active Approval Criteria must have at least one active approver. Please uncheck Active checkbox.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Operator_Cannot_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+	(Core_MDF_Field_Name_1__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_1__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_2__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_2__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_3__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_3__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_4__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_4__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_5__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_5__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_6__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_6__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_7__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_7__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_8__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_8__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_9__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_9__c , &apos;&apos;)),
+	(Core_MDF_Field_Name_10__c != NULL &amp;&amp; ISPICKVAL( Core_MDF_Operator_10__c , &apos;&apos;))
+ )</errorConditionFormula>
+        <errorMessage>Operator cannot be blank.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

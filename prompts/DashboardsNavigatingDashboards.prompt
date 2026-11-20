@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dashboards Navigating Dashboards</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/navigate-and-apply-report-filtering/</actionButtonLink>
+        <body>&lt;p&gt;Standard dashboards can be categorized as follows:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;BU Sales Teams and SMG Sales Groups&lt;/strong&gt;: Business Unit-specific meant for KPI driven dashboards.&amp;nbsp;Shared across teams and regions within a sales segment.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Dashboard Templates&lt;/strong&gt;: Pre-built dashboard “templates” that can be used as-is or copied into personal folders and modified as needed.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Public Dashboards&lt;/strong&gt;: Publicly-shared folders that contain standard dashboards created by administrators. Folders containing these dashboards are identified by “Core” (Team-based). Dashboards found within “Core” folders can be copied into other personal or shared folders and then customized as needed.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You can also create your own dashboards from scratch.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Dashboard are accessed from the &lt;strong&gt;Dashboards&lt;/strong&gt; tab in Sales CRM. Click the down arrow on a tab to access recently used/viewed dashboards.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Once on the tab for &lt;strong&gt;Dashboards&lt;/strong&gt;, dashboards can be viewed by category (aka &quot;Folder&quot;). In addition to this, you can sort dashboards by column, or use the &lt;strong&gt;Search &lt;/strong&gt;field to help locate a dashboard. Dashboards or folders can also be saved as &lt;strong&gt;Favorites &lt;/strong&gt;for easy access.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Dashboards Navigating Dashboards</description>
+        <displayType>DockedComposer</displayType>
+        <header>Dashboards</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Dashboards Navigating Dashboards</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Dashboard</targetPageKey1>
+        <targetPageKey2>home</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Navigating Dashboards</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

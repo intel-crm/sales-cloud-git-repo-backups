@@ -1,0 +1,45 @@
+.THIS {
+  background: t(darkestGray);
+  color: t(white);
+  padding: 2rem 0;
+}
+
+.THIS .userText {
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+.THIS .leftButton,
+.THIS .rightButton {
+  padding: .5rem;
+}
+@media (max-width: 1023px) {
+  .THIS .cISG_Button.inline button.has-body,
+  .THIS .cISG_Button.inline button.has-body:not(.has-icon) {
+    min-width: 300px;
+  }
+  .THIS .buttonContainer a {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+}
+@media (min-width: 1024px) {
+  .THIS {
+    padding: 1rem 0;
+  }
+  .THIS.fullWidth {
+    padding: 1rem 1.5rem;
+  }
+  .THIS .userText {
+    text-align: left;
+    padding-bottom: 0;
+    line-height: 1.5;
+  }
+  .THIS .buttonContainer {
+    text-align: right;
+  }
+  .THIS .rightButton {
+    padding-right: 0;
+  }
+}

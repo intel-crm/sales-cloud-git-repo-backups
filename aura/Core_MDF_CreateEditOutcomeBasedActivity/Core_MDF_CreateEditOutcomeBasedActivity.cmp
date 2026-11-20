@@ -1,0 +1,1296 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride"
+    access="global" Controller="Core_MDF_PartnerFundRequestCreatePage">
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 70rem !important;
+        width:95% !important;
+        height:90% !important;
+        }
+    </aura:html>
+    <aura:html tag="style">.toastMessage.forceActionsText{
+        white-space : pre-line !important;}
+    </aura:html>
+
+    <!-- Essential Record and UI Control Attributes -->
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="isOwnerInactive" type="Boolean" default="false" />
+
+    <aura:attribute name="ipaAcctMgr" type="Boolean" default="false" description="IPA Account Manager flag" />
+
+    <!-- Skip PCT Approval Checkbox Attribute -->
+    <aura:attribute name="showPCTApprovalCheckbox" type="Boolean" default="false"
+        description="Show PCT Approval checkbox when Incentive is selected" />
+    <!-- Indu banner - IPA outcome based -->
+    <aura:attribute name="showBanner" type="Boolean" default="false"/>
+    <aura:attribute name="rrBannerDate" type="String"/>
+
+    <!-- Core PFR Object Attributes -->
+    <aura:attribute type="PartnerFundRequest" name="newPFR" default="{Name:'', 
+                             RequestedAmount:0,
+                             ChannelPartner:null,
+                             Core_MDF_Competitive_Elements__c:'',
+                             Core_MDF_Government_Nexus__c:'',
+                             Core_MDF_ofPagesEligible__c:'',
+                             Core_MDF_pagespayingfor__c:'',
+                             Core_MDF_Skip_PCT_Approval_ind__c:false
+                             }" description="Stores the field value of PFR object on Create and Edit of the record " />
+
+    <!-- Multi-select Options -->
+    <aura:attribute type="PartnerFundRequest" name="oldPFR"
+        description="Stores the actualy field value of PFR object before Editing the record "></aura:attribute>
+    <aura:attribute name="Uploadfinished" type="boolean" default="false"
+        description="Verify whether file is uploaded or not" />
+    <aura:attribute name="selectedCountryOptions" type="List" default="[]" description="Selected Country values" />
+    <aura:attribute name="selectedBrandOptions" type="List" default="[]" description="Selected Brand values" />
+    <aura:attribute name="selectedTargetAudienceOptions" type="List" default="[]"
+        description="Selected Target Audience values" />
+    <aura:attribute name="selectedTacticsOptions" type="List" default="[]" description="Selected Tactics values" />
+    <aura:attribute name="selectedOutcomeMetricOptions" type="List" default="[]"
+        description="Selected Outcome Metric values" />
+    <aura:attribute name="selectedProductTypeOptions" type="List" default="[]"
+        description="Selected ProductType values" />
+    <aura:attribute name="selectedMeasurementApproachOptions" type="List" default="[]" description="Selected Measurement Approach values"/>
+    <aura:attribute name="showOtherMeasurementApproachField" type="Boolean" default="false" description="Show Other Measurement Approach text field"/>
+
+
+    <!-- Available Options for Multi-selects -->
+    <aura:attribute name="AllCountryOptions" type="List" default="[]" description="All Country options" />
+    <aura:attribute name="AllBrandOptions" type="List" default="[]" description="All Brand options" />
+    <aura:attribute name="AllTargetAudienceOptions" type="List" default="[]"
+        description="All Target Audience options" />
+    <aura:attribute name="activityTacticsOptions" type="List" default="[]" description="All Tactics options" />
+    <aura:attribute name="outcomeMetricOptions" type="List" default="[]" description="All Outcome Metric options" />
+    <!-- Anjali changes - Added attributes for Measurement Approach dependent picklist -->
+    <aura:attribute name="measurementApproachPicklistValues" type="Map" />
+    <aura:attribute name="measurementApproachValues" type="String[]"/>
+    <aura:attribute name="measurementApproachOptions" type="List" default="[]" description="All Measurement Approach options"/>
+    <aura:attribute name="AllTechnologyOptions" type="List" default="[]" description="All Technology options" />
+    <aura:attribute name="AllCountryOptionsMain" type="List" default="[]"
+        description="This attribute holds all Country values for Country Multi Select" />
+    <aura:attribute name="allPriority2Values" type="List" default="[]"
+        description="All Priority #2 options before filtering" />
+
+    <!-- Campaign and Lookup Attributes -->
+    <aura:attribute name="selectedAccount" type="Account" default="{'sobjectType':'Account',Id:null, Name:''}" 
+                description="Selected Account"/>
+    
+    <!-- AI Suggestions Display Attributes -->
+    <aura:attribute name="showAccountSuggestion" type="Boolean" default="false" description="Show account suggestion from AI"/>
+    <aura:attribute name="aiAccountSuggestion" type="String" default="" description="Account suggestion message from AI"/>
+    <aura:attribute name="aiDebugMessage" type="String" default="" description="Debug message for AI"></aura:attribute>
+    <aura:attribute name="extractedAccountName" type="String" default="" description="Account name extracted by AI - stored for use when suggestions applied"/>
+
+    <!-- AI Recommendation Tracking Attributes -->
+    <aura:attribute name="aiRequestGroupId" type="String" default="" description="Unique ID for AI request group"/>
+    <aura:attribute name="aiTrackingEntries" type="List" default="[]" description="AI tracking entries to persist on save"/>
+    <aura:attribute name="aiSourceType" type="String" default="" description="Source type: Description, File, Combined"/>
+    <aura:attribute name="aiSourceFiles" type="String" default="" description="Comma-separated list of analyzed file names"/>
+    <aura:attribute name="preAiFieldValues" type="Object" default="{}" description="Stores field values before AI suggestions applied"/>
+    <aura:attribute name="appliedAiFieldValues" type="Object" default="{}" description="Stores AI applied values for comparison"/>
+    
+    <!-- Budget and Financial Attributes -->
+    <aura:attribute name="BudgetLocal" type="Integer" default="" description="Local budget amount" />
+    <aura:attribute name="budgetStr" type="List" default="[]" description="Budget string for display" />
+    <aura:attribute name="selAvailableBudget" type="String" default="" description="Selected available budget" />
+    <aura:attribute name="showBudgetErrorMsg" type="Boolean" default="false" />
+    <aura:attribute name="showErrorMsgForMaxIntelInvest" type="Boolean" default="false" />
+    <aura:attribute name="ErrorMsgForMaxIntelInvest" type="String" default="" />
+    <aura:attribute name="showErrorMsgForSpendingLimit" type="Boolean" default="false" />
+    <aura:attribute name="ErrorMsgForSpendingLimit" type="String" default="" />
+    <aura:attribute name="showBudgetTypeError" type="Boolean" default="false" />
+
+    <!-- RecordType Attributes -->
+    <aura:attribute name="recordtype" type="String" default="" description="RecordType ID" />
+    <aura:attribute name="recordtypeName" type="String" default="" description="RecordType Name" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default="" description="RecordType Developer Name" />
+
+    <!-- Field Control Attributes -->
+    <aura:attribute name="pfrRequiredFields" type="Object" default="{}" />
+    <aura:attribute name="pfrFieldVisibility" type="Object" default="{}" />
+    <aura:attribute name="pfrFieldEditablity" type="Object" default="{}" />
+
+    <!-- Focus Area and Priority -->
+    <aura:attribute name="selectedFocusArea" type="String" default="" description="Selected Focus Area" />
+    <aura:attribute name="AllFocusAreaOptions" type="List" default="[]" description="All Focus Area options" />
+    <aura:attribute name="SelPriority" type="String" default="" description="Selected Priority" />
+    <aura:attribute name="priorityValues" type="List" default="[]" description="Priority options" />
+    <aura:attribute name="SelPriority2" type="String" default="" description="Selected Priority #2" />
+    <aura:attribute name="priorityValues2" type="List" default="[]" description="Priority options #2" />
+    <aura:attribute name="SelRegion" type="String" default="" description="Selected Region" />
+    <aura:attribute name="regionvalues" type="List" default="[]" description="All region values" />
+    <aura:attribute name="selectedEcosystemPartnerOptions" type="String" default=""
+        description="Selected Ecosystem Partner" />
+    <aura:attribute name="AllEcosystemPartner" type="List" default="[]" description="All Ecosystem Partner values" />
+    <aura:attribute name="selectedInitiativeOptions" type="String" default="" description="Selected Initiative" />
+    <aura:attribute name="selectedTechnologyOptions" type="String" default=""
+        description="Selected Technology values" />
+    <aura:attribute name="AllInitiativeOptions" type="List" default="[]" description="All Initiative values" />
+
+    <aura:attribute name="ProductTypes" type="Map" />
+    <aura:attribute name="ProductTypeDependent" type="String[]" />
+    <aura:attribute name="priorityDependent" type="String[]" />
+    <aura:attribute name="priority" type="Map" />
+    <aura:attribute name="MultiBrandValues" type="String[]" />
+    <aura:attribute name="MultiBrandTypes" type="Map" />
+    <aura:attribute name="audiencePicklistValues" type="String"
+        description="Stores the Audience values of the activity" />
+    <aura:attribute name="MultiTargetAudienceValues" type="String[]" />
+    <aura:attribute name="initiativePicklistValues" type="String"
+        description="Stores the Initiatives values of the activity" />
+    <aura:attribute name="MultiInitiativeValues" type="String[]" />
+    <aura:attribute name="MultiEcoPartnerTypes" type="Map" />
+    <aura:attribute name="MultiEcoPartnerValues" type="String[]" />
+    <aura:attribute name="outcomes" type="Map" />
+    <aura:attribute name="outcomesDependants" type="String[]" />
+    <aura:attribute name="priority2" type="Map" />
+    <aura:attribute name="priority2Dependants" type="String[]" />
+    <aura:attribute name="regions" type="Map" />
+    <aura:attribute name="regionDependants" type="String[]" />
+    <aura:attribute name="technologiesDependant" type="String[]" />
+    <aura:attribute name="technologies" type="Map" />
+     <aura:attribute name="isLoadingAI" type="Boolean" default="false" description="AI analysis in progress"/>
+    <aura:attribute name="smartAnalysisMode" type="String" default="Description and Files" description="Current analysis mode"/>
+    <aura:attribute name="focusAreaDetectionSource" type="String" default="" description="Source of focus area selection (manual/description/file)"/>
+    <aura:attribute name="CountryPicklistValues" type="Map" description="Country picklist values" />
+    <aura:attribute name="CountryDependants" type="String[]" />
+    <aura:attribute name="Countries" type="String[]" description="to store country/region" />
+    <aura:attribute name="ReimbursementRateVal" type="List" default="[]" description="Reimbursement rate values" />
+    <aura:attribute name="reimbursementRatePickValues" type="List" default="[]" description="RR pick values" />
+    <aura:attribute name="disabledMap" type="Object" default="{}" description="Disabled field map" />
+    <aura:attribute name="isActivityReviewRequired" type="Boolean" default="false"
+        description="Activity review required" />
+    <aura:attribute name="SelCategory" type="String" default="" description="Selected category" />
+    <aura:attribute name="SelActivityType" type="String" default="" description="Selected activity Type" />
+    <aura:attribute name="startDate" type="Date" description="Start date" />
+    <aura:attribute name="budgetTypeVal" type="List" default="[]" description="Budget type values" />
+    <aura:attribute name="budgetTypePicklistMap" type="Map" description="Budget type values" />
+    <aura:attribute name="singleBudgetType" type="Boolean" default="false" description="Single budget type" />
+    <aura:attribute name="SelReimbursementRate" type="String" default="" description="Selected Reimbursement Rate" />
+    <aura:attribute name="disableRRPercent" type="Boolean" default="false" description="Disable RR Percent" />
+    <aura:attribute name="maxIntelInvestment" type="Decimal" default="0" description="Maximum Intel Investment" />
+    <aura:attribute name="SelProductType" type="List" default="[]" description="Selected Product Type" />
+    <aura:attribute name="ProductTypeValues" type="List" default="[]" description="Product Type options" />
+    <aura:attribute name="selectedOutcomes" type="List" description="current selection outcome metric" />
+    <aura:attribute name="prevSelectedOutcomes" type="List" default="[]"
+        description="previous selected outcome metric" />
+    <aura:attribute name="outcomeOptions" type="List" description="outcome metric options " />
+    <aura:attribute name="isOutcomeSelectionInvalid" type="Boolean" default="false" />
+    <aura:attribute name="prevSelectedCountries" type="List" default="[]" />
+    <aura:attribute name="selActivityClassification" type="String" default=""
+        description="Stores the selected Activity Classification" />
+    <aura:attribute name="tacticMetricsValues" type="Map" default="{}" />
+    <aura:attribute name="ActivityNodeAccValues" type="List" default="[]" />
+
+    <!--Rishabh-->
+    <aura:handler name="change" value="{!v.selectedOutcomeMetricOptions}" action="{!c.onOutcomeMetricOptionsChange}" />
+
+    <aura:handler name="change" value="{!v.selectedProductTypeOptions}" action="{!c.onProductTypeOptionsChange}" />
+    <aura:attribute name="showActivityPurpose" type="Boolean" default="false" />
+
+
+    <!-- Filter Attributes -->
+    <aura:attribute name="countryFilter" type="String" description="Country filter text" />
+
+    <!-- to handle the eventpop & gn questions -->
+    <aura:attribute name="goForSave" type="Boolean" default="false" />
+    <!-- Save/Navigation Control -->
+    <aura:attribute name="isSaveDisable" type="Boolean" default="false" />
+    <aura:attribute name="isSaveandNewDisable" type="Boolean" default="false" />
+    <aura:attribute name="isSaveandNew" type="Boolean" default="false" />
+    <aura:attribute name="checkSaveComplete" type="Boolean" default="false" />
+
+    <!-- Status and Mode -->
+    <aura:attribute name="mode" type="String" default="" />
+    <aura:attribute name="checkStatusAttribute" type="Boolean" default="True" />
+    <aura:attribute name="SelectedStatus" type="String" description="Selected status" />
+    <aura:attribute name="StatusLabel" type="String[]" description="Status options" />
+    <aura:attribute name="CurrentStatus" type="String"
+        description="Stores the api name of current status of the activity" />
+    <aura:attribute name="CurrentStatusLabel" type="String" description="Current status label" />
+
+    <!-- Error and Message Handling -->
+    <aura:attribute name="messageType" type="String" default="" />
+    <aura:attribute name="message" type="String" default="" />
+
+    <!-- Clone and Community Attributes -->
+    <aura:attribute name="checkCloneAttribute" type="Boolean" default="false" />
+    <aura:attribute name="checkCloneRecordId" type="String" default="" />
+    <aura:attribute name="communityRecordId" type="String" default="" />
+    <aura:attribute name="checkCommunityAttribute" type="Boolean" default="false" />
+    <aura:attribute name="checkNewCommunityAttribute" type="Boolean" default="false" />
+
+    <!-- User Permissions -->
+    <aura:attribute name="hasCreateAccess" type="boolean" default="false" description="User has create access" />
+
+    <!-- Conversion and Localization -->
+    <aura:attribute name="apitoLabelConvert" type="Map" />
+    <aura:attribute name="updateSelected" type="boolean" default="false" />
+
+    <!-- File Upload -->
+    <aura:attribute name="checkfileuploadcondition" type="Boolean" default="true" />
+    <!--Akash, IPA outcome-->
+    <aura:attribute name="isAccountSelected" type="Boolean" default="false" />
+    <aura:attribute name="ContentDocumentIds" type="String[]" default="" />
+
+    <!-- Activity Creation Context -->
+    <aura:attribute name="isActivityLayout" type="Boolean" default="false" />
+    <aura:attribute name="isActivityCreationOnCampaign" type="Boolean" default="false" />
+    <aura:attribute name="isPropBasedCampaign" type="boolean" default="false" />
+    <aura:attribute name="initialLoadCompleted" type="Boolean" default="false" />
+    <aura:attribute name="initialFocusAreaLoaded" type="Boolean" default="false" />
+
+    <!-- Navigation Service -->
+    <lightning:navigation aura:id="navService" />
+
+    <!-- Event Handlers -->
+    <aura:handler name="change" value="{!v.recordtypeName}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.selectedFocusArea}" action="{!c.focusAreaChange}" />
+    <aura:handler name="change" value="{!v.selectedBrandOptions}" action="{!c.onBrandChange}" />
+
+
+    <aura:handler name="change" value="{!v.selectedEcosystemPartnerOptions}" action="{!c.onEcosystemPartnerChange}" />
+    <aura:handler name="change" value="{!v.selectedInitiativeOptions}" action="{!c.onInitiativesChange}" />
+    <aura:handler name="change" value="{!v.selectedTechnologyOptions}" action="{!c.onTechnologyChange}" />
+    <aura:handler name="change" value="{!v.selectedTargetAudienceOptions}" action="{!c.onTargetAudienceChange}" />
+    <aura:handler name="change" value="{!v.selectedCountryOptions}" action="{!c.onCountryChange}" />
+    <aura:handler name="change" value="{!v.countryFilter}" action="{!c.filterCountry}" />
+    <aura:handler name="change" value="{!v.SelPriority}" action="{!c.handlePriority1Change}" />
+    <aura:handler name="change" value="{!v.SelPriority2}" action="{!c.handlePriority2Change}" />
+    <aura:handler name="change" value="{!v.selectedTacticsOptions}" action="{!c.onTacticsChange}" />
+    <aura:handler name="change" value="{!v.selectedMeasurementApproachOptions}" action="{!c.onMeasurementApproachChange}"/>
+    <aura:handler name="change" value="{!v.SelRegion}" action="{!c.onRegionChange}" />
+    <aura:handler name="change" value="{!v.selBudgetType}" action="{!c.onBudgetTypeChange}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+
+    <aura:attribute name="oldstatus" type="String" />
+    <aura:attribute name="userId" type="String" />
+    <aura:attribute name="hasIUPGMRecord" type="Boolean" default="false" />
+    <aura:attribute name="isUserCurrentIPAApprover" type="Boolean" default="false" />
+    <aura:attribute name="isSPIFSecAvailable" type="Boolean" default="false" />
+    <aura:attribute name="isSPIFSecReadOnly" type="Boolean" default="true" />
+    <aura:attribute name="segmentString" type="String" default="" />
+    <aura:attribute name="ChgndAttach" type="Boolean" default="false" />
+    <aura:attribute name="endDate" type="Date" />
+
+    <aura:attribute name="isClosedActivity" type="Boolean" default="false" />
+    <aura:attribute name="ShowEventPopup" type="boolean" default="false"
+        description="To diable or enable Event Popup" />
+    <aura:attribute name="EventMessage" type="String" default="" description="It contains the content of popup" />
+    <aura:attribute name="AgreeButtonLabel" type="String" default="" description="It contains the button labels" />
+    <aura:attribute name="DisagreeButtonLabel" type="String" default="" description="It contains the button labels" />
+    <aura:attribute name="PopupType" type="String" description="It contains the type of popup" />
+    <aura:attribute name="PopupButtonValue" type="boolean" default="false"
+        description="It stores user input of Event popup" />
+    <aura:attribute name="ELCPopupButtonValue" type="boolean" default="false"
+        description="It stores user input of ELC popup" />
+    <aura:attribute name="recordApplicableForActivityRules" type="Boolean" default="true" />
+    <aura:attribute name="componentAttributes" type="Object" />
+    <aura:attribute name="activityCreationStartTime" type="Long" default=""
+        description="This attribute holds the Start time when user is creating activity" />
+    <aura:attribute name="focusArea" type="Map" />
+    <aura:attribute name="focusAreaDependent" type="String[]" />
+    <aura:attribute name="isShowAllocationAmt" type="Boolean" default="false" />
+    <aura:attribute name="showAllocationAmtMsg" type="String" default="" />
+    <aura:attribute name="selBudgetType" type="String" default="" description="Stores the selected Budget Type" />
+    <aura:attribute name="renderGovtQuestion" type="boolean" default="false"
+        description="To display Event releated questions based on Tactics" />
+    <aura:attribute name="renderPrintQuestion" type="Boolean" default="false" description="Render Print Questions" />
+    <aura:attribute name="hideCompetitiveQuest" type="Boolean" default="false"
+        description="Hide Competitive Questions" />
+    <aura:attribute name="renderTechExplorationQuestSection" type="Boolean" default="false"
+        description="Render Tech Exploration Questions" />
+    <aura:attribute name="isOpalActivity" type="Boolean" default="false" description="Is Opal Activity" />
+    <aura:attribute name="pfrCloneCheck" type="Boolean" default="false" description="PFR Clone Check" />
+    <aura:attribute name="IPAIntelContri" type="Decimal" default="0" description="IPA Intel Contribution" />
+    <aura:attribute type="String[]" name="activityFieldSetList" default="" description="Stores the field Info">
+    </aura:attribute>
+    <aura:attribute name="additionalAccFilter" type="String" default=""
+        description="Additional filter for account lookup" />
+    <aura:handler name="change" value="{!v.selectedAccount}" action="{!c.resetAccountattributes}" />
+    <!-- Event Handler For the ELC Popup -->
+    <aura:handler name="ButtonClickEvent" event="c:Core_MDF_PopupButtonClick" action="{!c.hidePopup}" />
+    <!-- Event Handler For the File Update -->
+    <aura:handler name="fileuploadcheck" event="c:Core_MDF_Activity_Upload_File_Event" action="{!c.uploadfile}" />
+    <!-- Atrribute to store the userpermissions for AM,CR and External  -->
+    <aura:attribute name="userperMap" type="Map" default="{}" />
+    <aura:attribute name="externalper" type="Boolean" default="false" />
+    <aura:attribute name="accmgrper" type="Boolean" default="true" />
+    <aura:attribute name="priceReviewersPer" type="Boolean" default="false" />
+    <aura:attribute name="ipaL2Approver" type="Boolean" default="false" />
+    <aura:attribute name="userWithoutAccess" type="Boolean" default="false" />
+    <aura:attribute name="priority1Error" type="String" default="" />
+    <aura:attribute name="priority2Error" type="String" default="" />
+    <aura:attribute name="showPriority1Error" type="Boolean" default="false" />
+    <aura:attribute name="showPriority2Error" type="Boolean" default="false" />
+    <aura:attribute name="actReimbRateError" type="boolean" default="false" />
+    <aura:attribute name="outcomeActivityValues" type="Object"
+        description="Holds all outcome activity details from child LWC" />
+    <aura:attribute name="showDependentFields" type="Boolean" default="false" />
+    <aura:attribute name="isOutcomeBasedCampaign" type="Boolean" default="true" />
+    <aura:attribute name="showAISuggestions" type="Boolean" default="false" description="Show AI Suggestions based on user email"/>
+    <aura:attribute name="focusAreaSetFromFile" type="Boolean" default="false" description="Flag to track if focus area was set from file upload"/>
+    <!--Ramapriya- Partner Contact Field-->
+    <aura:attribute name="allowedPartnerContactDomains" type="List" default="[]"/>
+    <aura:attribute name="partnerContactDomainsLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="showPartnerContactError" type="Boolean" default="false"/>
+    <aura:attribute name="partnerContactErrorMsg" type="String" default=""/>
+    <lightning:navigation aura:id="navService" />
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="large" class="slds-is-fixed"></lightning:spinner>
+        <div class="slds-spinner"></div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.showIntelOwnerSpinner}">
+        <lightning:spinner alternativeText="Loading" size="large"></lightning:spinner>
+    </aura:if>
+    <!--Rishabh - Save and New button-->
+    <aura:if isTrue="{!and(v.isSaveandNew,v.checkSaveComplete)}">
+        <c:Core_MDF_PFR_RecordTypeSelectorComp checkCommunityAttribute="{!v.checkNewCommunityAttribute}"
+            IsOutComeBasedCampaignComp="true" checkSaveandNew="{!v.isSaveandNew}" isPfrUrl="true" />
+
+        <aura:set attribute="else">
+            <div id="pivot"></div>
+            <!-- Page Starts Here -->
+            <!-- PAGE HEADER -->
+            <!-- Popup Message when user tries to edit the Activity -->
+            <aura:if isTrue="{!v.isClosedActivity}">
+                <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43"
+                    class="slds-modal slds-slide-up-saving slds-modal_small">
+                    <div class="slds-modal__container">
+                        <!-- Heading (Header of the Modal) -->
+                        <div class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close"
+                                class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large"
+                                variant="bare" onclick="{! c.closeModalClosedActivtiy }" alternativeText="Close" />
+                        </div>
+                        <div class="slds-modal__content slds-p-around--medium">
+                            <div class="slds-card slds-align_absolute-center">
+                                <lightning:icon iconName="utility:error" variant="error" />
+                                <div class="slds-p-around_medium slds-align_absolute-center">
+                                    {!$Label.c.Core_MDF_Close_Activity_Error}</div>
+                            </div>
+                        </div>
+                        <div class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel}"
+                                onclick="{!c.closeModalClosedActivtiy}" />
+                        </div>
+                    </div>
+                </div>
+                <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+            </aura:if>
+
+            <lightning:layout class="slds-page-header slds-page-header--object-home" aura:id="header">
+                <lightning:layoutItem>
+                    <lightning:icon iconName="standard:partner_fund_request" class="icn"
+                        alternativeText="{!$Label.c.Core_MDF_OutcomeBased_Campaign_Page_Header_2}" />
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-small">
+                    <div class="page-section page-header">
+                        <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_OutcomeBased_Campaign_Page_Header}</h1>
+                        <h2 class="slds-text-heading--medium">{!$Label.c.Core_MDF_OutcomeBased_Campaign_Page_Header_2}
+                        </h2>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+            <!-- / PAGE HEADER -->
+
+            <!--Error Messages-->
+            <aura:if isTrue="{!empty(v.message)}">
+                <div></div>
+                <aura:set attribute="else">
+                    <div align="center">
+                        <c:Core_MDF_ErrorMessage type="{!v.messageType}" message="{!v.message}" />
+                    </div>
+                </aura:set>
+            </aura:if>
+
+            <!--Event and ELC Popup-->
+            <aura:if isTrue="{!v.ShowEventPopup}">
+                <c:Core_MDF_ELCPopup EventMessage="{!v.EventMessage}" AgreeLabel="{!v.AgreeButtonLabel}"
+                    DisagreeLabel="{!v.DisagreeButtonLabel}" PopupType="{!v.PopupType}" />
+            </aura:if>
+
+            <aura:if isTrue="{!and(v.mode == 'edit', v.showBanner)}">
+                <div class="rrWarning">
+                    {!$Label.c.Core_MDF_RR_Recalculation_Warning}&#160;{!v.rrBannerDate}
+                </div>
+            </aura:if> <!-- indu RR banner -->
+            
+            <div class="slds-card">
+                <div class="slds-p-around_large">
+                    <form class="slds-form--stacked">
+
+                        <!-- Status Section -->
+                        <aura:if isTrue="{!v.checkStatusAttribute}">
+                            <lightning:layout class="slds-page-header slds-page-header--object-home">
+                                <lightning:layoutItem padding="horizontal-small">
+                                    <div class="page-section page-header">
+                                        <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Status}</h1>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+
+                            <!-- Fund Request Status Field-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue="{!(v.CurrentStatus != $Label.c.Core_MDF_PFRStatus)}">
+                                        <lightning:select name="SelectStatus" label="{!$Label.c.Core_MDF_Status}"
+                                            value="{!v.SelectedStatus}"
+                                            disabled="{!v.pfrFieldEditablity.Core_MDF_Fund_Request_Status__c}"
+                                            class="elementLabel">
+                                            <option text="{!v.CurrentStatusLabel}" value=""></option>
+                                            <aura:iteration items="{!v.StatusLabel}" var="i">
+                                                <option text="{!i.label}" value="{!i.value}"></option>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                        <aura:set attribute="else">
+                                            <lightning:select name="SelectStatus" label="{!$Label.c.Core_MDF_Status}"
+                                                value="{!v.SelectedStatus}"
+                                                disabled="{!v.pfrFieldEditablity.Core_MDF_Fund_Request_Status__c}"
+                                                class="elementLabel">
+                                                <option text="{!v.CurrentStatusLabel}" value=""></option>
+                                            </lightning:select>
+                                        </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>                       
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        <aura:if isTrue="{!AND(v.checkfileuploadcondition, v.showAISuggestions)}">
+                            <c:Core_MDF_Activity_Upload_File disabled="{!OR(v.disabledMap.attachement,v.pfrFieldEditablity.attachement)}" 
+                                                            createEditPFRAttr="True" 
+                                                            activityBudgetType="{!v.selBudgetType}"
+                                                            contentdocumentids="{!v.ContentDocumentIds}" />
+                            
+                        </aura:if>
+                        <aura:if isTrue="{!v.showAISuggestions}">
+                        <lightning:layout horizontalAlign="start" verticalAlign="end">
+                            <lightning:layoutItem size="5">
+                                <div class="slds-m-bottom_medium">
+                                    <lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Activity_Description_Outcome_Based}" required="true" name="Description" value="{!v.newPFR.Core_MDF_Activity_Description__c}" onchange="{!c.handleDescriptionChange}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Activity_Description__c}" />
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="no-grow" class="slds-p-left_small">
+                                <img src="{!$Resource.Core_MDF_AI_Icon}"
+                                    alt="Get AI Suggestions"
+                                    title="Get AI Suggestions"
+                                    onclick="{!c.getSmartAISuggestions}"
+                                    style="cursor:pointer;width:39px;height:39px;margin-bottom:12px;" />
+                            </lightning:layoutItem>
+                           <aura:if isTrue="{!v.isLoadingAI}">
+                          <div class="slds-m-top_small slds-align_absolute-center">
+                           <lightning:spinner size="small" alternative-text="AI is analyzing..."></lightning:spinner>
+                          </div>
+                        </aura:if>
+                        </lightning:layout>
+                    </aura:if>
+                        
+                        <!-- DETAIL SECTION HEADER -->
+                        <lightning:layout class="slds-page-header slds-page-header--object-home">
+                            <lightning:layoutItem padding="horizontal-small">
+                                <div class="page-section page-header">
+                                    <h1 class="slds-text-heading--label">
+                                        {!$Label.c.Core_MDF_Activity_Creation_Detail_Section}</h1>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+
+                        <!-- Activity Title & Account -->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input aura:id="NewForm" label="{!$Label.c.Core_MDF_Name}" name="Title"
+                                    value="{!v.newPFR.Title}" required="true"
+                                    disabled="{!v.pfrFieldEditablity.Title}" />
+                            </lightning:layoutItem>
+
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                mediumDeviceSize="5" largeDeviceSize="5">
+                                <aura:if isTrue="{!v.mode == 'edit'}">
+                                    <lightning:input aura:id="NewForm" type="text"
+                                        label="{!$Label.c.Core_MDF_PFR_Account}" value="{!v.selectedAccount.Name}"
+                                        disabled="true" />
+                                    <aura:set attribute="else">
+                                        <c:Core_Intel_customLookup objectAPIName="Account"
+                                            selectedRecord="{!v.selectedAccount}"
+                                            sAdditionalFilter="{!v.additionalAccFilter}"
+                                            label="{!$Label.c.Core_MDF_Account}" IconName="standard:account"
+                                            disabled="false" />
+                                        <aura:if isTrue="{!v.isShowAllocationAmt}">
+                                            <p class="blue-fc">{!v.showAllocationAmtMsg}</p>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+
+                        <!-- START DATE AND END DATE FIELD -->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input aura:id="NewForm" type="date" label="{!$Label.c.Core_MDF_Start_Date}"
+                                    required="true" name="startDate" onchange="{!c.createAdditionalfilter}"
+                                    value="{!v.newPFR.Core_MDF_Start_Date__c}"
+                                    disabled="{!v.pfrFieldEditablity.Core_MDF_Start_Date__c}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input aura:id="NewForm" type="date" label="{!$Label.c.Core_MDF_End_Date}"
+                                    required="true" name="endDate" onchange="{!c.createNewAdditionalfilter}"
+                                    value="{!v.newPFR.Core_MDF_End_Date__c}"
+                                    disabled="{!v.pfrFieldEditablity.Core_MDF_End_Date__c}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+
+                        <!-- Focus Area -->
+                        <lightning:layout multipleRows="true" horizontalAlign="spread">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                mediumDeviceSize="5" largeDeviceSize="5">
+                                <aura:if isTrue="{!v.mode == 'edit'}">
+                                    <lightning:input aura:id="focusArea" type="text"
+                                        label="{!$Label.c.Core_MDF_Focus_Area_title}" value="{!v.selectedFocusArea}"
+                                        disabled="true" />
+                                    <aura:set attribute="else">
+                                        <!--<c:Core_MDF_Picklist aura:id="focusArea" objName="PartnerFundRequest" fldName="Core_MDF_Focus_Area_nm__c" 
+                                                            recTypeName="{!v.recordtypeName}" selectedValue="{!v.selectedFocusArea}" isRequired="true"
+                                                            recTypeDevName="{!v.recordtypeDeveloperName}" dispLabel="{!$Label.c.Core_MDF_Focus_Area_title}"
+                                                            options="{!v.AllFocusAreaOptions}" disabled="{!v.pfrFieldEditablity.Core_MDF_Focus_Area_nm__c}"
+                                                            labelValueMap="{!v.apitoLabelConvert}" IsClone="{!v.checkCloneAttribute}" fetchPicklistValuesFromCampaign="false" />-->
+                                        <lightning:select aura:id="focusArea" name="FocusArea"
+                                            value="{!v.selectedFocusArea}" label="{!$Label.c.Core_MDF_Focus_Area_title}"
+                                            disabled="{!v.pfrFieldVisibility.Core_MDF_Focus_Area_nm__c}"
+                                            required="true">
+                                                <aura:iteration items="{!v.AllFocusAreaOptions}" var="opt">
+                                                        <option value="{!opt.value}">{!opt.label}</option>
+                                                </aura:iteration>                        
+                                            </lightning:select>
+                                        </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <aura:if isTrue="{!v.showAISuggestions}">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <aura:if isTrue="{!v.mode == 'edit'}">
+                                    <!--<lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}" label="{!$Label.c.Core_MDF_Budget_Type}" disabled="true" required="true" >
+                                                        <aura:iteration items="{!v.budgetTypeVal}" var="opt">
+                                                                    <option value="{!v.opt.value}">{!opt.label}</option>
+                                                        </aura:iteration>                        
+                                                    </lightning:select>-->
+                                    <lightning:input aura:id="NewForm1" type="text" name="BudgetType"
+                                        value="{!v.newPFR.Core_MDF_Budget_Type_nm__c}"
+                                        label="{!$Label.c.Core_MDF_Budget_Type}" disabled="true" required="true" />
+                                    <aura:set attribute="else">
+                                        <lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}"
+                                            label="{!$Label.c.Core_MDF_Budget_Type}"
+                                            disabled="{!v.pfrFieldVisibility.Core_MDF_Budget_Type_nm__c}"
+                                            required="true">
+                                            <aura:iteration items="{!v.budgetTypeVal}" var="opt">
+                                                <option value="{!opt.value}">{!opt.label}</option>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                        <aura:if isTrue="{!v.showBudgetTypeError}">
+                                            <p class="red-fc">{!$Label.c.Core_MDF_BudgetTypeBlank_Error}</p>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                            </lightning:layoutItem>
+                            </aura:if>
+                            
+                            <!--Activity Description-->
+                            <aura:if isTrue="{! !v.showAISuggestions}">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <!--Akash-->
+                                <lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Activity_Description_Outcome_Based}" required="true" name="Description" value="{!v.newPFR.Core_MDF_Activity_Description__c}" onchange="{!c.handleDescriptionChange}" onblur="{!c.handleDescriptionBlur}"  disabled="{!v.pfrFieldEditablity.Core_MDF_Activity_Description__c}" />
+                            </lightning:layoutItem>
+                            </aura:if>
+                            <c:core_MDF_AiFieldSuggestions aura:id="aiSuggestionsComponent" onapplysuggestions="{!c.handleApplySuggestions}" />
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+            
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                            <!--Budget Type-->
+                            <aura:if isTrue="{! !v.showAISuggestions}">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <aura:if isTrue="{!v.mode == 'edit'}">
+                                    <!--<lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}" label="{!$Label.c.Core_MDF_Budget_Type}" disabled="true" required="true" >
+                                                        <aura:iteration items="{!v.budgetTypeVal}" var="opt">
+                                                                    <option value="{!v.opt.value}">{!opt.label}</option>
+                                                        </aura:iteration>                        
+                                                    </lightning:select>-->
+                                    <lightning:input aura:id="NewForm1" type="text" name="BudgetType" value="{!v.newPFR.Core_MDF_Budget_Type_nm__c}" label="{!$Label.c.Core_MDF_Budget_Type}" disabled="true" required="true"/>
+                                    <aura:set attribute="else">
+                                        <lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}" label="{!$Label.c.Core_MDF_Budget_Type}" disabled="{!v.pfrFieldVisibility.Core_MDF_Budget_Type_nm__c}" required="true">
+                                            <aura:iteration items="{!v.budgetTypeVal}" var="opt">
+                                                                <option value="{!opt.value}">{!opt.label}</option>
+                                                    </aura:iteration>                        
+                                                </lightning:select>
+                                            <aura:if isTrue="{!v.showBudgetTypeError}">
+                                                <p class= "red-fc">{!$Label.c.Core_MDF_BudgetTypeBlank_Error}</p>  
+                                            </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                            </lightning:layoutItem>
+                             </aura:if>               
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <lightning:select aura:id="availableBudget" name="Available Budget" value="{!v.selAvailableBudget}" label="{!$Label.c.Core_MDF_Available_Budget_Label}" required="true" onchange = "{!c.saveBudget}" 
+                                                      disabled="{!OR(v.disabledMap.availableBudget,v.pfrFieldEditablity.availableBudget)}" >
+                                        <option value="">{!$Label.c.Core_MDF_PFR_None_Translation}</option>
+                                        <aura:iteration items="{!v.budgetStr}" var="item">
+                                            <option value="{!item.key}"  selected="{!item.key==v.selAvailableBudget}">
+                                                {!item.value}
+                                            </option>                           
+                                        </aura:iteration>                           
+                                    </lightning:select>
+                                    <aura:if isTrue="{! v.showBudgetErrorMsg}">
+                                        <div class="slds-p-bottom-small">
+                                            <p class='red-fc'>{!$Label.c.Core_MDF_No_Available_Budgets_Warning}</p>
+                                        </div>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            <aura:if isTrue="{!v.showAISuggestions}">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input aura:id="BudgetAmount" type="number" class="currency-input-with-symbol" label="{!$Label.c.Core_MDF_Activity_Total_Investment}" required="true" name="BudgetAmount" onchange = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}" placeholder="Enter amount"/>
+                                <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}" >
+                                            <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
+                                </aura:if>
+                            </lightning:layoutItem>
+                            </aura:if>        
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                        </lightning:layout>
+                                                
+                        <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <aura:if isTrue="{! !v.showAISuggestions}">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input aura:id="BudgetAmount" type="number" class="currency-input-with-symbol" label="{!$Label.c.Core_MDF_Activity_Total_Investment}" required="true" name="BudgetAmount" onchange = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}" placeholder="Enter amount"/>
+                                <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}" >
+                                            <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
+                                </aura:if>
+                            </lightning:layoutItem>
+                            </aura:if>
+                            <aura:if isTrue="{!v.showAISuggestions}">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input    aura:id="NewForm" type="number" class="currency-input-with-symbol" label="{!$Label.c.Core_MDF_Maximum_Intel_Investment}"
+                                                    required="true" name="maxIntelInvest" value="{!v.maxIntelInvestment}" min="0"
+                                                    step="any" onchange="{!c.calculateMaxIntelInvestment}" disabled="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}" 
+                                                    placeholder="Enter amount" />
+                                <aura:if isTrue="{!v.showErrorMsgForMaxIntelInvest}">
+                                    <p class="red-fc">{!v.ErrorMsgForMaxIntelInvest}</p>
+                                </aura:if>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
+                            </aura:if>
+                            <aura:if isTrue="{! !v.showAISuggestions}">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <lightning:input    aura:id="NewForm" type="number" class="currency-input-with-symbol" label="{!$Label.c.Core_MDF_Maximum_Intel_Investment}"
+                                                    required="true" name="maxIntelInvest" value="{!v.maxIntelInvestment}" min="0"
+                                                    step="any" onchange="{!c.calculateMaxIntelInvestment}" disabled="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}" 
+                                                    placeholder="Enter amount" />
+                                <aura:if isTrue="{!v.showErrorMsgForMaxIntelInvest}" >
+                                            <p class= "red-fc">{!v.ErrorMsgForMaxIntelInvest}</p>  
+                                </aura:if>
+                            </lightning:layoutItem>
+                            </aura:if>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+                        <aura:if isTrue="{!v.isAccountSelected}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="10"
+                                    mediumDeviceSize="10" largeDeviceSize="10">
+                                    <c:core_MDF_Outcome_Based_Acc_Node aura:id="activityAccNode"
+                                        recordId="{!v.recordId}" parentAccountId="{!v.selectedAccount.Id}"
+                                        totalAmount="{!v.maxIntelInvestment}" mode="{!v.mode}"
+                                        budgetId="{!v.selAvailableBudget}"
+                                        editable="{!v.pfrFieldEditablity.Core_MDF_Maximum_Intel_Investment_amt__c}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.showDependentFields}">
+                            <!--Priority-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <!--Priority Field for IPA-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <div class="slds-form-element">
+                                        <c:Core_MDF_Picklist aura:id="Priority1Field" objName="PartnerFundRequest"
+                                            fldName="Core_MDF_Priority_nm__c" isRequired="true"
+                                            recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelPriority}"
+                                            dispLabel="{!$Label.c.Core_MDF_Priority}"
+                                            disabled="{!v.pfrFieldEditablity.Core_MDF_Priority_nm__c}"
+                                            recTypeDevName="{!v.recordtypeDeveloperName}" options="{!v.priorityValues}"
+                                            fetchPicklistValuesFromCampaign="false"
+                                            labelValueMap="{!v.apitoLabelConvert}" />
+                                        <aura:if isTrue="{!v.showPriority1Error}">
+                                            <div class="slds-form-element__help slds-text-color_error">
+                                                <lightning:icon iconName="utility:error" size="x-small" variant="error"
+                                                    class="slds-m-right_x-small"></lightning:icon>
+                                                {!v.priority1Error}
+                                            </div>
+                                        </aura:if>
+                                    </div>
+
+                                </lightning:layoutItem>
+
+                                <!--Priority #2-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <div class="slds-form-element">
+                                        <c:Core_MDF_Picklist aura:id="Priority2Field" objName="PartnerFundRequest"
+                                            fldName="Core_MDF_Priority_2_nm__c" isRequired="false"
+                                            recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelPriority2}"
+                                            dispLabel="{!$Label.c.Core_MDF_Priority2}"
+                                            disabled="{!v.pfrFieldEditablity.Core_MDF_Priority_2_nm__c}"
+                                            recTypeDevName="{!v.recordtypeDeveloperName}" options="{!v.priorityValues2}"
+                                            fetchPicklistValuesFromCampaign="false"
+                                            labelValueMap="{!v.apitoLabelConvert}" />
+
+                                        <aura:if isTrue="{!v.showPriority2Error}">
+                                            <div class="slds-form-element__help slds-text-color_error">
+                                                <lightning:icon iconName="utility:error" size="x-small" variant="error"
+                                                    class="slds-m-right_x-small"></lightning:icon>
+                                                {!v.priority2Error}
+                                            </div>
+                                        </aura:if>
+                                    </div>
+
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <!--Region-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_Picklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Outcome_Region_nm__c" isRequired="false"
+                                        recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelRegion}"
+                                        dispLabel="{!$Label.c.Core_MDF_RegionLabel}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Outcome_Region_nm__c}"
+                                        recTypeDevName="{!v.recordtypeDeveloperName}" options="{!v.regionvalues}"
+                                        fetchPicklistValuesFromCampaign="false"
+                                        labelValueMap="{!v.apitoLabelConvert}" />
+
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="6"
+                                    smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <!--- Country filter Field -->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <lightning:input type="text" value="{!v.countryFilter}"
+                                        label="{!$Label.c.Core_MDF_Country_Filter}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Country_nm__c}" />
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
+
+                            </lightning:layout>
+
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+
+                                <!--COUNTRY field-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Country_nm__c" isRequired="true" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Market}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Country_nm__c}"
+                                        availableOptions="{!v.AllCountryOptions}"
+                                        selectedOptions="{!v.selectedCountryOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+                                </lightning:layoutItem>
+
+                                <!--TARGET AUDIENCE field-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_TargetAudience_nm__c" isRequired="true" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Target_Audience}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_TargetAudience_nm__c}"
+                                        availableOptions="{!v.AllTargetAudienceOptions}"
+                                        selectedOptions="{!v.selectedTargetAudienceOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+
+                                <!--Initiatives field for IPA-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_EcosystemPartner_nm__c" isRequired="true"
+                                        RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}"
+                                        CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_EcoSystem_Partner}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_EcosystemPartner_nm__c}"
+                                        availableOptions="{!v.AllEcosystemPartner}"
+                                        selectedOptions="{!v.selectedEcosystemPartnerOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+                                </lightning:layoutItem>
+
+                                <!--Ecosystem Partner field for IPA-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Initiative_nm__c" isRequired="true" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Initiatives_label}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Initiative_nm__c}"
+                                        availableOptions="{!v.AllInitiativeOptions}"
+                                        selectedOptions="{!v.selectedInitiativeOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+
+                                <!--Brand  -->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Brand_nm__c" isRequired="true" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Brand}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Brand_nm__c}"
+                                        availableOptions="{!v.AllBrandOptions}"
+                                        selectedOptions="{!v.selectedBrandOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+
+                                    <!--Technology-->
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Technology_txt__c" isRequired="true" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Technology}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Technology_txt__c}"
+                                        availableOptions="{!v.AllTechnologyOptions}"
+                                        selectedOptions="{!v.selectedTechnologyOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+
+                            </lightning:layout>
+
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <!--Product Type-->
+                                    <!-- <c:Core_MDF_Picklist objName="PartnerFundRequest" fldName="Core_MDF_ProductType__c" isRequired="true"
+                                                         recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelProductType}" 
+                                                         dispLabel="{!$Label.c.Core_MDF_Product_Type}" disabled="{!v.pfrFieldEditablity.Core_MDF_ProductType__c}"
+                                                         recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                         options = "{!v.ProductTypeValues}" labelValueMap="{!v.apitoLabelConvert}" fetchPicklistValuesFromCampaign = "false"/>  -->
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_ProductType__c" isRequired="true" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Product_Type}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_ProductType__c}"
+                                        availableOptions="{!v.ProductTypeValues}"
+                                        selectedOptions="{!v.selectedProductTypeOptions}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="6"
+                                    smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6"></lightning:layoutItem>
+
+                            </lightning:layout>
+
+                            <!--Outcome Metric-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Outcomes_nm__c" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Outcome_Metric}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Outcomes_nm__c}"
+                                        availableOptions="{!v.outcomeMetricOptions}"
+                                        selectedOptions="{!v.selectedOutcomeMetricOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+
+
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
+                            </lightning:layout>
+                            <!--Outcome Metric-->
+                            <aura:if isTrue="{!v.showActivityPurpose}">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                        mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="10"
+                                        mediumDeviceSize="10" largeDeviceSize="10">
+
+                                        <c:core_MDF_Activity_Purpose_Comp recordId="{!v.recordId}"
+                                            aura:id="activityOutcomeCmp" CommunityRecId="{!v.communityRecordId}"
+                                            selectedOutcomeMetricOptions="{!v.selectedOutcomeMetricOptions}"
+                                            selectedTechnologyOptions="{!v.selectedTechnologyOptions}"
+                                            selectedBrandOptions="{!v.selectedBrandOptions}"
+                                            editable="{!v.pfrFieldEditablity.Core_MDF_Outcomes_nm__c}"
+                                            isOutcomeBasedActivity="{!v.newPFR.Core_MDF_Is_Outcome_Based_Ind__c}"
+                                            Activitystatus="{!v.newPFR.Core_MDF_Fund_Request_Status__c}"
+                                            labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}">
+                                        </c:core_MDF_Activity_Purpose_Comp>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                        mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                            <!--other Brand field -new-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <lightning:textarea class="elementLabel" aura:id="NewForm"
+                                        label="{!$Label.c.Core_MDF_Activity_Other_OutcomeBrandsTechnologies}"
+                                        name="OtherBrandsTechnologies"
+                                        value="{!v.newPFR.Core_MDF_Other_Brands_Technologies_txt__c}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Other_Brands_Technologies_txt__c}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="6"
+                                    smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <!-- Tactics -->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <!--Tactics Field for IPA-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest"
+                                        fldName="Core_MDF_Tactics_nm__c" RecId="{!v.recordId}"
+                                        CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                        dispLabel="{!$Label.c.Core_MDF_Activity_Tactics}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Tactics_nm__c}"
+                                        availableOptions="{!v.activityTacticsOptions}"
+                                        selectedOptions="{!v.selectedTacticsOptions}"
+                                        updateCountry="{!v.updateSelected}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <!-- Skip PCT Approval Checkbox - Show only when Incentive is selected -->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue="{!v.showPCTApprovalCheckbox}">
+                                        <div class="slds-form-element">
+                                            <lightning:input type="checkbox"
+                                                label="{!$Label.c.Core_MDF_Activity_Skip_PCT_Approval}"
+                                                name="pctApprovalCheckbox"
+                                                checked="{!v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c}"
+                                                onchange="{!c.handlePCTApprovalChange}"
+                                                value="{!v.newPFR.Core_MDF_Skip_PCT_Approval_ind__c}"
+                                                fieldLevelHelp="{!$Label.c.Core_MDF_PCT_HelpText_Value}"
+                                                disabled="{!OR(v.pfrFieldEditablity.Core_MDF_Skip_PCT_Approval_ind__c, not(or(v.externalper, v.accmgrper)))}" />
+                                        </div>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    smallDeviceSize="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5"
+                                    smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <!--Attribution - Increase from Guidebook /Attribution - Decrease from Guidebook-->
+                        <!-- For Internal Users, both attribution fields will be displayed even though the field is null, refer (1) and (3) -->
+                        <!-- For External Users, attribution fields will be diplayed only on edit when the field is not null.
+                             Either (1) or (2) is considered when one of the field has value in it. If both the fields have value, then (1) and (3) if blocks are considered-->
+                        <aura:if isTrue ="{!(!empty(v.pfrFieldVisibility))}">
+				<lightning:layout horizontalAlign="spread" multipleRows="true">
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+					<lightning:layoutItem size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" padding="around-small">                         		
+					<!-- (1) -->
+                                    	<aura:if isTrue="{! or(not(v.externalper),and(v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c != null,and(v.externalper,v.mode == 'edit')))}">
+                                  		<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Variance_Pos}"
+                                                            	    required="false" name="Attribution_Variance_Pos" value="{!v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c	}"
+                                                                    disabled="{!v.pfrFieldEditablity.Core_MDF_Attribution_Variance_Pos_txt__c}"/>
+                                    	<!-- (2) -->
+                                    	<aura:set attribute="else">
+						<aura:if isTrue="{!and(v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c != null,and(v.externalper,v.mode == 'edit'))}">
+							<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Variance_Neg}"
+                                                           		    required="false" name="Attribution_Variance_Neg" value="{!v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c}"
+                                                           		    disabled="{!v.pfrFieldEditablity.Core_MDF_Attribution_Variance_Neg_txt__c}"/> 	
+                                   		</aura:if>
+					</aura:set>
+					</aura:if>
+                           		</lightning:layoutItem>
+					<lightning:layoutItem size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" padding="around-small">
+					<!-- (3) -->
+                                    	<aura:if isTrue="{! or(not(v.externalper),and(and(v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c != null,v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c != null),and(v.externalper,v.mode == 'edit')))}">
+                               			<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Variance_Neg}"
+                                                           	    required="false" name="Attribution_Variance_Neg" value="{!v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c}"
+                                                           	    disabled="{!v.pfrFieldEditablity.Core_MDF_Attribution_Variance_Neg_txt__c}"/> 
+					</aura:if>
+                                	</lightning:layoutItem>
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                          	</lightning:layout> 
+                          </aura:if>
+                      <!--END Attribution - Increase from Guidebook /Attribution - Decrease from Guidebook-->
+                            <!--Incentive Section-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="10"
+                                    mediumDeviceSize="10" largeDeviceSize="10">
+                                    <aura:if isTrue="{!v.pfrCloneCheck == false}">
+                                        <aura:if isTrue="{!v.isSPIFSecAvailable}">
+                                            <aura:if
+                                                isTrue="{! and(and(v.isSPIFSecReadOnly, v.recordId != null), not(v.checkCloneAttribute)) }">
+                                                <c:core_MDF_DisplayProducts aura:id="displaySegment"
+                                                    recordId="{!v.recordId}" activityAmount="{!v.maxIntelInvestment}" />
+                                                <aura:set attribute="else">
+                                                    <c:core_MDF_ActivitySegments aura:id="segmentComp"
+                                                        activityProgram="{!v.recordtypeName}"
+                                                        recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                        activityType="{!v.SelActivityType}" mode="{!v.mode}"
+                                                        recordId="{!v.recordId}" accountId="{!v.selectedAccount}"
+                                                        activityAmount="{!v.maxIntelInvestment}"
+                                                        actTactics="{!v.selectedTacticsOptions}"
+                                                        isOutcomeBased="true" />
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:if>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                    mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+
+                            <!--Tactic Metrics Start-->
+                            <aura:if isTrue="{!not(empty(v.selectedTacticsOptions))}">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                        mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="10"
+                                        mediumDeviceSize="10" largeDeviceSize="10">
+                                        <c:core_MDF_Tactics_Form aura:id="tacticMetrics"
+                                            actTactics="{!v.selectedTacticsOptions}" mode="{!v.mode}"
+                                            recordId="{!v.recordId}" ipaclone="{!v.pfrCloneCheck}"
+                                            isProposalBased="{!v.isPropBasedCampaign}"
+                                            intelContribution="{!v.maxIntelInvestment}"
+                                            programName="{!v.recordtypeName}"
+                                            editable="{!v.pfrFieldEditablity.Core_MDF_Tactics_nm__c}" />
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1"
+                                        mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                            <!--Tactic Metrics END-->
+                        <!--Anjali changes - Measurement Approach Start - Dependent picklist field that filters based on Focus Area-->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="10" mediumDeviceSize="10" largeDeviceSize="10">
+                                <!-- Anjali changes - Multi-select picklist with RecId/CloneRecId for proper value loading in edit/clone mode -->
+                                <c:Core_MDF_CustomMultiSelectPicklist aura:id="measurementApproachMultiSelect"   objName="PartnerFundRequest" fldName="Core_MDF_Measurement_Approach_nm__c" 
+                                                                        RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                        dispLabel="{!$Label.c.Core_MDF_Measurement_Approach}" disabled="{!v.pfrFieldEditablity.Core_MDF_Measurement_Approach_nm__c}"
+                                                                        availableOptions="{!v.measurementApproachOptions}" selectedOptions="{!v.selectedMeasurementApproachOptions}"  updateCountry="{!or(v.checkCloneAttribute, v.mode == 'edit')}"/>
+                                
+                                <!--Anjali changes - Other Measurement Approach Text Area - Conditional Display - Shows when "Other (Specify)" is selected -->
+                                <aura:if isTrue="{!v.showOtherMeasurementApproachField}">
+                                    <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                        <!-- Anjali changes - Reduced size to 5, positioned on left side, made required=true -->
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6" class="slds-p-left_none">
+                                            <lightning:textarea aura:id="otherMeasurementApproach" 
+                                                                name="Core_MDF_Other_Measurement_Approach_txt__c"
+                                                                label="{!$Label.c.Core_MDF_Other_Measurement_Approach}"
+                                                                value="{!v.newPFR.Core_MDF_Other_Measurement_Approach_txt__c}"
+                                                                disabled="{!v.pfrFieldEditablity.Core_MDF_Other_Measurement_Approach_txt__c}"
+                                                                maxlength="255"
+                                                                required="true"
+                                                                placeholder="Please specify other measurement approach"/>
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                                </aura:if>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+                        <!--Anjali changes - Measurement Approach END-->
+                            
+                        <!-- Partner Contact Field -->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <div class="partnerContactWrap" onkeyup="{!c.handleEmailKeyup}">
+                                    <!--Ramapriya-->
+                                    <lightning:textarea aura:id="partnerContactField"
+                                        label="{!$Label.c.Core_MDF_Partner_Contact_FieldLabel}"
+                                        name="Core_MDF_Partner_Contact_txt__c"
+                                        value="{!v.newPFR.Core_MDF_Partner_Contact_txt__c}"
+                                        onchange="{!c.handleEmailValidation}"
+                                        disabled="{!v.pfrFieldEditablity.Core_MDF_Partner_Contact_txt__c}"
+                                        maxlength="255" />
+                                    <aura:if isTrue="{!v.showPartnerContactError}">
+                                        <p class="red-fc">{!v.partnerContactErrorMsg}</p>
+                                    </aura:if>
+                                    <p class="partner-contact-help">{!$Label.c.Core_MDF_Partner_Contact_FieldValidation}</p>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6"></lightning:layoutItem>
+                        </lightning:layout>
+                        </aura:if>
+                            <aura:if isTrue="{!(v.renderPrintQuestion || v.renderGovtQuestion || v.renderTechExplorationQuestSection)}">
+                            <lightning:layout class="slds-page-header slds-page-header--object-home">
+                                <lightning:layoutItem padding="horizontal-small">
+                                    <div class="page-section page-header">
+                                        <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Questions_Section}</h1>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <c:Core_MDF_DynamicQuestionsComp newPFRq="{!v.newPFR}"
+                                renderPrintQuestions="{!v.renderPrintQuestion}"
+                                hideCompetitiveQuest="{!v.hideCompetitiveQuest}"
+                                renderGovtQuestions="{!v.renderGovtQuestion}"
+                                renderTechExplorationQuestSection="{!v.renderTechExplorationQuestSection}"
+                                disabled="{!v.disabledMap.questions}" isOpalActivity="{!v.isOpalActivity}"
+                                recordtypeDeveloperName="{!if(OR(v.recordtypeDeveloperName !=null,v.recordtypeDeveloperName != undefined),v.recordtypeDeveloperName,v.newPFR.RecordType.DeveloperName)}" />
+                        </aura:if>
+
+                        <div class="c-container slds-p-bottom_small" style="padding-top: 15px; padding-left: 15px;">
+
+                            <lightning:layout horizontalAlign="left" multipleRows="true">
+
+                                <lightning:layoutItem size="10" smallDeviceSize="10" mediumDeviceSize="8"
+                                    largeDeviceSize="8">
+
+                                    <a href="{!$Label.c.Core_MDF_Outcome_Link_Click_Here}"
+                                        target="_blank">{!$Label.c.Core_MDF_Click_here}</a>&nbsp;{!$Label.c.Core_MDF_Outcome_Link_Sales_and_Marketing}
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                        </div>
+
+                        <!--File Upload-->
+                        <aura:if isTrue="{!AND(v.checkfileuploadcondition, !v.showAISuggestions)}">
+                            <c:Core_MDF_Activity_Upload_File
+                                disabled="{!OR(v.disabledMap.attachement,v.pfrFieldEditablity.attachement)}"
+                                createEditPFRAttr="True" activityBudgetType="{!v.selBudgetType}"
+                                contentdocumentids="{!v.ContentDocumentIds}" />
+                        </aura:if>
+                        <div class="slds-p-bottom_medium">
+                            <!-- Save/Cancel Buttons -->
+                            <aura:if isTrue="{!v.pfrCloneCheck}">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="3"
+                                        mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="2"
+                                        mediumDeviceSize="2" largeDeviceSize="2">
+                                        <div align="left">
+                                            <lightning:button aura:id="Save" variant="brand"
+                                                disabled="{!v.isSaveDisable}" label="{!$Label.c.Core_MDF_Save}"
+                                                onclick="{!c.customSave}" />
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="3"
+                                        mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                </lightning:layout>
+                                <aura:set attribute="else">
+                                    <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="3"
+                                            mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="2"
+                                            mediumDeviceSize="2" largeDeviceSize="2">
+                                            <div align="right">
+                                                <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Cancel}"
+                                                    onclick="{!c.handleCancel}" />
+                                                <!--onclick="{!c.closeModal}" -->
+                                            </div>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="2"
+                                            mediumDeviceSize="2" largeDeviceSize="2">
+                                            <div align="center">
+                                                <lightning:button aura:id="SaveandNew" variant="Neutral"
+                                                    disabled="{!v.isSaveandNewDisable}"
+                                                    label="{!$Label.c.Core_MDF_Save_and_New}"
+                                                    onclick="{!c.customSave}" />
+                                            </div>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="2"
+                                            mediumDeviceSize="2" largeDeviceSize="2">
+                                            <div align="left">
+                                                <lightning:button aura:id="Save" variant="brand"
+                                                    disabled="{!v.isSaveDisable}" label="{!$Label.c.Core_MDF_Save}"
+                                                    onclick="{!c.customSave}" />
+                                            </div>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="3"
+                                            mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                    </lightning:layout>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

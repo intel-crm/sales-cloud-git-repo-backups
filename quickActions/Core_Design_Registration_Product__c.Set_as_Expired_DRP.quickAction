@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Sets the DRP status to Expired</description>
+    <flowDefinition>PCC_Set_As_Expired_DRP</flowDefinition>
+    <label>Set as Expired</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

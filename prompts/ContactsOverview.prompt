@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Contacts Overview</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/</actionButtonLink>
+        <body>&lt;p&gt;A contact is anyone outside of Intel associated with your&amp;nbsp;business accounts&amp;nbsp;with whom you will work on account opportunities. A contact record enables you to&amp;nbsp;store a variety&amp;nbsp;of information, such as phone numbers, addresses, titles, and roles in a deal. All Sales CRM users have visibility&amp;nbsp;to all contacts.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Contact/list?0.promptId=ContactsCreateaContact&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Create a Contact&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Contact/list?0.promptId=ContactsEditaContact&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Edit a Contact&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Contact/list?0.promptId=ContactsDeactivateAContact&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Deactivate A Contact&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Contact/list?0.promptId=ContactsRelatedContactsDirectindirect&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Related Contacts &lt;/a&gt;(Direct/indirect)&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=ContactsManageContactsRolesOpportunity&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Manage Contacts Roles from an Opportunity&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Contact/list?0.promptId=ContactsChangeAccounts&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Change Accounts&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: inherit;&quot;&gt;Contact Role Definitions:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Business Decision Maker&lt;/strong&gt;:&amp;nbsp;Makes the purchase decision and is concerned about the business value and ROI. Carries sufficient weight within the buying group to decide if a service/product will be purchased.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Champion&lt;/strong&gt;: Contact looking for a solution&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Customer Technical Owner:&lt;/strong&gt;&amp;nbsp;Used for the distribution process, formerly named Distributor Technical Owner&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Influencer&lt;/strong&gt;:&amp;nbsp;A trusted voice of reason, asking tough questions and carefully considering product performance. Contributes to the formulation and determination of the specifications of the product or service. Also could evaluate and recommend which potential supplier satisfies the specific needs of the organization.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Ratifier&lt;/strong&gt;:&amp;nbsp;Comes from the procurement,&amp;nbsp;legal, or finance aspect and questions the pricing model, contract structure, and more. Can select the suppliers and manages the buying process.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Technical Decision Maker&lt;/strong&gt;:&amp;nbsp;Same context as Business Decision Maker from a Technical aspect.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;User&lt;/strong&gt;: Persons that actually use the product or service and will be affected by the product on a day-to-day basis.&amp;nbsp;May need to show how it will be affected for the better. Not always involved in the buying process, but have a critical role in the feedback and evaluation process of the performance of the good that has been purchased.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>3</delayDays>
+        <description>Contacts Overview and Help</description>
+        <displayType>DockedComposer</displayType>
+        <header>Contacts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Contacts Overview</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Contact</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Contacts Overview and Help</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Activity Segment Mapping --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Activity Segment Mapping --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_Activity_Category_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label>Quota stimata dello SPIF</label>
+        <name>Core_MDF_Estimated_Share_of_SPIF_amt__c</name>
+    </fields>
+    <fields>
+        <label>Volume massimo in bundle</label>
+        <name>Core_MDF_Maximum_Bundled_Volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label>Costo massimo del bundle</label>
+        <name>Core_MDF_Maximum_Cost_of_Bundle_nbr__c</name>
+    </fields>
+    <fields>
+        <label>Volume minimo delle previsioni</label>
+        <name>Core_MDF_Minimum_Forecast_Volume_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>Core_MDF_Partner_Fund_Request_id__c</name>
+        <relationshipLabel><!-- Activity Segment Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Importo SPIF $/U</label>
+        <name>Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPIF Notes (Internal only) --></label>
+        <name>Core_MDF_SPIF_Notes_internal_only_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPIF Notes --></label>
+        <name>Core_MDF_SPIF_Notes_txt__c</name>
+    </fields>
+    <fields>
+        <label>Segmento</label>
+        <name>Core_MDF_Segment_Name_nm__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Activity Segment Mapping Name --></nameFieldLabel>
+    
+</CustomObjectTranslation>

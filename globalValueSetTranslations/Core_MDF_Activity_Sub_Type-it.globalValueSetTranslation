@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Affiliate</masterLabel>
+        <translation>Consociate</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner/Display</masterLabel>
+        <translation>Banner/Espositore</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Catalog/Brochure</masterLabel>
+        <translation>Cataloghi/Brochure</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Circular</masterLabel>
+        <translation>Circolare</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connected IPOS</masterLabel>
+        <translation>IPOS connesso</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content Library</masterLabel>
+        <translation>Libreria di contenuti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DCF SMF</masterLabel>
+        <translation><!-- DCF SMF --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demonstration</masterLabel>
+        <translation>Dimostrazione pratica</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Direct Mail</masterLabel>
+        <translation>Mailing diretto</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Email</masterLabel>
+        <translation>E-mail</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>End Cap</masterLabel>
+        <translation>Espositore di fine corsia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Giveaway</masterLabel>
+        <translation>Gadget</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IPOS/ePOS</masterLabel>
+        <translation><!-- IPOS/ePOS --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insert/Outsert/Flyer</masterLabel>
+        <translation>Inserti/Allegati/Opuscoli</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Landing Experience</masterLabel>
+        <translation>Esperienza di landing</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation>Generazione di lead</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Listing Page Branding</masterLabel>
+        <translation>Branding in pagina di elenco</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mobile App</masterLabel>
+        <translation>App mobile</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Operational Support</masterLabel>
+        <translation>Supporto operativo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Collateral)</masterLabel>
+        <translation>Altro (Materiale collaterale)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Direct Mail)</masterLabel>
+        <translation>Altro (Mailing diretto)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (EcosystemPartner.com)</masterLabel>
+        <translation>Altro (EcosystemPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (In-Store Promotion)</masterLabel>
+        <translation>Altro (Promozione in negozio)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (IndustryPartner.com)</masterLabel>
+        <translation>Altro (IndustryPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Joint Event)</masterLabel>
+        <translation>Altro (Evento congiunto)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Member.com)</masterLabel>
+        <translation>Altro (Member.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (NonPartner.com)</masterLabel>
+        <translation>Altro (NonPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Out-Of-Store Promotion)</masterLabel>
+        <translation>Altro (Promozione fuori negozio)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Personnel)</masterLabel>
+        <translation>Altro (Personale)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Promotion)</masterLabel>
+        <translation>Altro (Promozione)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Poster/Sign/Banner</masterLabel>
+        <translation>Poster/Cartellonistica/Banner</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Champion</masterLabel>
+        <translation>Campione di prodotto</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Branding</masterLabel>
+        <translation>Branding della pagina dei prodotti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Carousel</masterLabel>
+        <translation>Carosello della pagina dei prodotti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Content</masterLabel>
+        <translation>Contenuto della pagina dei prodotti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promo/Landing Page</masterLabel>
+        <translation>Promozione/Landing page</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promoter</masterLabel>
+        <translation>Promotore</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Recommendation Tool</masterLabel>
+        <translation>Consigli agli acquirenti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retargeting - Banner/Display</masterLabel>
+        <translation>Retargeting - Banner/display</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retargeting - Text Ad</masterLabel>
+        <translation>Retargeting - Annunci di testo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Reviews/Ratings</masterLabel>
+        <translation>Recensioni/Valutazioni</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Riser</masterLabel>
+        <translation><!-- Riser --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Kit</masterLabel>
+        <translation>Kit di vendita</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Onsite</masterLabel>
+        <translation>Vendita in loco</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search</masterLabel>
+        <translation>Ricerca</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Banner/Display</masterLabel>
+        <translation>Ricerca - Banner/display</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Shopping</masterLabel>
+        <translation>Ricerca - Shopping</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Sponsored Brand</masterLabel>
+        <translation>Ricerca - Brand sponsorizzato</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Text Ad</masterLabel>
+        <translation>Ricerca - Annunci di testo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Top Products</masterLabel>
+        <translation>Ricerca - Prodotti principali</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shop in Shop</masterLabel>
+        <translation>Acquista in negozio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shopper Review</masterLabel>
+        <translation>Recensione degli acquirenti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Signage</masterLabel>
+        <translation>Segnaletica</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Media - Banner/Display</masterLabel>
+        <translation>Social media - Banner/display</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Media - Post</masterLabel>
+        <translation>Social media - Post</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Streaming/Content Mkt</masterLabel>
+        <translation><!-- Streaming/Content Mkt --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Text Ad</masterLabel>
+        <translation>Annunci di testo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traffic Driver + Landing Page</masterLabel>
+        <translation>Promozione + Pagina di destinazione</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video</masterLabel>
+        <translation><!-- Video --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Zone</masterLabel>
+        <translation>Zona</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

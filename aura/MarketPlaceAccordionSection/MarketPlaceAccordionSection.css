@@ -1,0 +1,30 @@
+.THIS .accordionSectionHeader .slds-icon {
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+}
+.THIS .accordionSectionHeader a {
+  display: block;
+  position: relative;
+  color: t(darkGray);
+  padding-right: 22px;
+}
+.THIS .accordionSectionHeader a .icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.THIS .accordionSectionHeader a .icon .slds-icon use {
+  fill: t(mediumBlue);
+}
+.THIS .accordionSectionHeader a:hover .icon .slds-icon use,
+.THIS .accordionSectionHeader a:active .icon .slds-icon use {
+  fill: t(digitalBlue);
+}
+
+@media (min-width: 768px) {
+  .THIS .accordionSectionHeader a .icon {
+    right: 5px;
+  }
+}

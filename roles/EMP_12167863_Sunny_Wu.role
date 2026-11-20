@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of William Yost</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_12167863_Sunny_Wu</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10070785_Alan_Yost</parentRole>
+</Role>

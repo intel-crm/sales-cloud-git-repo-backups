@@ -1,0 +1,111 @@
+@media screen and (min-width: 320px) {
+
+.container {
+    display: flex;
+}
+
+.manage{
+    white-space: nowrap;
+}
+
+.box {
+    inline-size: 150px;
+    overflow-wrap: break-word;
+}
+
+.THIS.dots-here:after {
+    border-bottom: 1px dotted;
+    border-top : 1px dotted;
+    content: '';
+    flex: 1;
+}
+
+.THIS.dots-here{
+    display: flex;
+    width: 300px;
+}
+
+.lgc-bq{
+    margin-top: -25px;
+    min-width:200px;
+}
+
+.lgc-kk{
+    margin-top: 5px;
+}
+
+.lsg-cm{
+    margin-top: 5px;
+}
+
+.lsg-cd{
+    margin-top: -20px;
+}
+
+.lsg-tt{
+    margin-left: -5px;
+    
+}
+
+.lmp-ps{
+    margin-top: -5px;
+}
+
+/*.lmp-pp{
+    margin-right: -50px;
+}*/
+
+
+.lsg-tk{
+    margin-top: -5px;
+}
+
+
+.THIS.modelContentClass{
+    overflow-y: hidden !important;
+}
+
+.THIS .slds-listbox {
+    overflow-y: auto !important;
+}
+}
+@media screen and (max-width: 800px) {}
+
+.newHostFormat{
+    flex-basis: 48%;
+    font-size:  0.75rem;
+    color: #5A5A5A;
+}
+.newHostFormat1{
+    flex-basis: 48%;
+    font-size:  0.75rem;
+    color: #5A5A5A;
+    margin-left: 7px;
+}
+
+.newHostFormat2{
+    flex-basis: 48%;
+    font-size:  0.75rem;
+    color: #5A5A5A;
+    margin-left: 12px;
+}
+
+.newHostDisplay{
+    display: flex;
+}
+
+.newHostAbbrStyle{
+    flex-basis: 0%;
+}
+
+.newHostInputFieldFormat{
+    width: 100%;
+}
+
+.newHostInputFieldFormat1{
+    width: 90%;
+}
+
+.THIS.newHostInputFieldFormat.lightning-helptext{
+    display: none;
+}

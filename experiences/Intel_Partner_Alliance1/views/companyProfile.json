@@ -1,0 +1,168 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPA_Company_Profile_Layout",
+  "dataProviders" : [ ],
+  "id" : "60b025f3-a666-421d-9a3a-21ba684afa76",
+  "label" : "CompanyProfile",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "#",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "#",
+        "rightCta1Label" : "Company Profile",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "#",
+        "rightCta2Label" : "MyIntel Profile",
+        "subtitle" : "",
+        "title" : "Company Profile"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "f2c4694a-1a39-4f53-abdc-856b9524cd7d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f325057a-7b16-497a-8656-8bdbc4d82d13",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "0e653e19-4187-4458-8d35-6a2f27e79e6f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooter",
+      "id" : "4f552b58-dc94-462f-a4a5-66deecafb663",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "45e44f94-060c-44bf-84e8-a8c2895b3161",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Company Profile\"/>\n<meta name=\"pageType\" content=\"CompanyProfile\"/>",
+        "description" : "",
+        "title" : "Company Profile"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "18c8be62-520e-4588-af2a-ebd97c60bcc2",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "da2be34a-adb5-44c5-9f1b-792f18870aa8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"CompanyProfile\",\"title\":\"Company Profile\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Company Profile",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "df95c934-5ce9-424b-838d-12f0bf254029",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "04e64515-875f-4f76-a4ce-f347fb9acab6",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "4d62f601-4bbd-4ab3-b259-30ef743cbbfd",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "01052db1-223b-4d9f-a34c-d35fad840cf3",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:companyInfo",
+      "id" : "e87bd948-d24e-4112-b759-729bbf4775c4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bbabf04b-bf87-4072-985c-e5121181bfc4",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "925685b0-6db1-4de5-b757-be6ead911ec3",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:responsibilityGrid",
+      "id" : "f67ae217-e9dd-41b0-a56e-c8dda0163e0a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2c6240f-4855-46e2-b81c-8292da7cfced",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "f51f86b4-9d8c-4ef5-b9d8-5bd3c5d242f2",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "edf89b7d-8dfc-4f4d-af55-165ff64d2cd6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d8f8be7b-988b-4f00-b912-06cf6a0ada2c",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "beab7fc7-37b9-448f-bb28-dbbcb41a51ac",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "cf25cb67-3b0b-4a0b-b447-91fb20b05456",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "dfebcf02-436e-4c3f-ae05-f925f4155f11",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "41203435-c2b8-4170-b0df-f77b27ffd53f",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "82dea4bd-e728-4dea-91b6-b1d72d0bd446",
+    "regionName" : "tab01",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-companyprofile"
+}

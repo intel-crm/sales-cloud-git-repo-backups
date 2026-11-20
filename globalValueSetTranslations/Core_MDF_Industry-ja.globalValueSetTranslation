@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Accommodation and Food Services</masterLabel>
+        <translation>宿泊 / 飲食サービス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Agriculture</masterLabel>
+        <translation>農業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Amusement and Gambling</masterLabel>
+        <translation>娯楽およびギャンブル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arts and Entertainment</masterLabel>
+        <translation>アートおよびエンターテインメント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+        <translation>芸術、娯楽およびレクリエーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive</masterLabel>
+        <translation>自動車産業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive (Non Manufacturing)</masterLabel>
+        <translation>自動車 (製造業以外)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B2B general</masterLabel>
+        <translation>B2B 全般</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B2C, no industry</masterLabel>
+        <translation>B2C、業種なし</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Communications</masterLabel>
+        <translation>通信</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Construction</masterLabel>
+        <translation>建設</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Defense and Space</masterLabel>
+        <translation>防衛および宇宙</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education</masterLabel>
+        <translation>教育</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy and Utilities</masterLabel>
+        <translation>エネルギーおよび公益事業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Finance and Insurance</masterLabel>
+        <translation>金融、保険</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>ゲーム用 PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government</masterLabel>
+        <translation>政府</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Health &amp; Life Sciences</masterLabel>
+        <translation>医療 &amp; ライフサイエンス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Healthcare</masterLabel>
+        <translation>医療</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manufacturing</masterLabel>
+        <translation>製造</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Media</masterLabel>
+        <translation>メディア</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NA</masterLabel>
+        <translation><!-- NA --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Not For Profit</masterLabel>
+        <translation>非営利事業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>その他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Professional and Business Services</masterLabel>
+        <translation>専門およびビジネスサービス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+        <translation>不動産、レンタルおよびリース</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retail</masterLabel>
+        <translation>小売</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Robotics</masterLabel>
+        <translation>ロボット工学</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software</masterLabel>
+        <translation>ソフトウェア</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software and Services</masterLabel>
+        <translation>ソフトウェアとサービス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telecommunications</masterLabel>
+        <translation>通信</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Transportation and Warehouse</masterLabel>
+        <translation>輸送および倉庫管理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Transportation, Travel and Warehousing</masterLabel>
+        <translation>輸送、旅行および倉庫</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

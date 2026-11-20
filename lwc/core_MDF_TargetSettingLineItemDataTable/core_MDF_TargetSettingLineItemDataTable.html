@@ -1,0 +1,211 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="custom:custom71"
+                            alternative-text="Line Item"
+                            title="Line Item">
+                        </lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name"
+                            style="display: inline-block;">
+                            <div
+                                class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate"
+                                     style="padding: 5px;" title={spendingTargetsLineItems_Header}>{spendingTargetsLineItems_Header} ({totalRecords})</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <template if:true={isEditable}>
+                        <template if:true={showCampaignButton}>
+                            <div class="slds-page-header__control">
+                                <ul class="slds-button-group-list">
+                                    <li>
+                                        <button class="slds-button slds-button_outline-brand"
+                                                name="createCampaign" onclick={handleCreateCampaign}>Create Campaign
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </template>
+                        <template if:true={showNewButton}>
+                            <div class="slds-page-header__control">
+                                <ul class="slds-button-group-list">
+                                    <li>
+                                        <button class="slds-button slds-button_outline-brand"
+                                            name="New" onclick={handleCreate}>New
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </template>
+                </template>
+                </div>
+            </div>
+        </div>
+    </div> 
+<template if:true={showTargetItemModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open modal-bg">
+        <div class="slds-modal__container">
+            <!-- modal header start -->
+            <header class="slds-modal__header">
+                <!-- <lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closeTargetItemModal}></lightning-button-icon> -->
+
+                <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeTargetItemModal}>
+                    <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading_medium slds-hyphenate">Select Target Items</h2>
+            </header>
+                    <!-- modal body start -->
+            
+            <div class="slds-modal__content slds-p-around_medium">
+                <div if:true={isLoaded}>
+                    <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+                </div>
+                <template if:false={startAndEndDate2YearBelow}>
+                <template if:false={startAndEndDateIsInPast}>
+                    <template if:true={targetLineItemTable.length}>
+                        <div class="accordion">
+                            <template for:each={targetLineItemTable} for:item="item">
+                                <lightning-accordion key={item.key} >
+                                    <lightning-accordion-section name={item.key} label={item.key}>
+                                    <div >
+                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    <th scope="col">
+                                                        <div class="slds-truncate" title="Account">Account</div>
+                                                    </th>
+                                                    <th scope="col"> 
+                                                        <div class="slds-truncate" title="Priority">Priority</div>
+                                                    </th>
+                                                    <th scope="col">
+                                                        <div class="slds-truncate" title="Description">Campaign Name</div>
+                                                    </th>
+                                                    <th scope="col">
+                                                        <div class="slds-truncate" title="Select">Select</div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template for:each={item.value} for:item="row">
+                                                    <tr key={row.Id}>
+                                                        <td data-label="Account">
+                                                            <div class="slds-truncate" style="width: 150px;" title={row.AccName}>{row.AccName}</div>
+                                                        </td>
+                                                        <td data-label="Priority">
+                                                            <div class="slds-truncate" style="width: 150px;" title={row.Core_MDF_Priority_nm__c}>{row.Core_MDF_Priority_nm__c}</div>
+                                                        </td>
+                                                        <td data-label="CampaignName">
+                                                            <div class="slds-truncate" style="width: 150px;" title={row.Core_MDF_Campaign_Name__c}>{row.Core_MDF_Campaign_Name__c}</div>
+                                                        </td>
+                                                        <td data-label="Select" style="text-align:center;">
+                                                            <div class="slds-truncate">
+                                                                <label class="slds-checkbox">
+                                                                    <input type="checkbox" data-id={row.Id} onchange={handleTargetLineItemCheckbox} />
+                                                                    <span class="slds-checkbox_faux"></span>
+                                                                    <span class="slds-assistive-text">Select Row</span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </lightning-accordion-section>
+                                    </lightning-accordion>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:false={targetLineItemTable.length}>
+                        <p>{label.noSpendingItmAvaiable}</p>
+                    </template>
+                </template>
+            </template>
+                <template if:true={startAndEndDateIsInPast}>
+                    <p>{label.campaignDateInPast}</p>
+                </template>
+                <template if:true={startAndEndDate2YearBelow}>
+                    <p>{label.campaignDateBeyond2year}</p>
+                </template>
+            </div>
+            <footer class="slds-modal__footer" style = "text-align: center;">
+                <button class="slds-button slds-button_brand button-width" disabled={createBtnDisable} onclick={handleCreateCampFromSTLI}>OK</button>
+                <button class="slds-button slds-button_brand button-width"  onclick={closeTargetItemModal}>Cancel</button>
+            </footer>
+        </div>
+    </section>
+</template>
+
+<template if:true={showCreatedCampaign}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open modal-bg">
+        <div class="slds-modal__container campaign-window">
+            <!-- modal header start -->
+
+            <!-- <lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closeCampaignWindow}></lightning-button-icon> -->
+                <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeCampaignWindow}>
+                    <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                    <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_medium">
+            <c-core_-m-d-f_-create_-campaign record-id={recordIds} record-type-id={cmpRecordTypeId} record-type-name={cmpRecordTypeName} mode='edit'
+            record-type-developer-name={cmpRecordTypeDeveloperName} object-api-name='Campaign' status={campaignStatus} field-set-name={fieldSetName} >
+            </c-core_-m-d-f_-create_-campaign>
+            </div>
+        </div>
+    </section>
+</template>
+
+
+
+    
+        <div style="height: min-content">
+            <template if:true={data}>
+                <c-core_-m-d-f_-custom_-picklist
+                    key-field="Id"
+                    data={recordsToDisplay} 
+                    columns={columns} 
+                    onvalueselect={handleSelection}
+                    draft-values={draftValues} 
+                    oncellchange={handleCellChange}
+                    onsave={handleSave}
+                    oncancel={handleCancel}
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={onHandleSort}
+                    errors={dataErrors}
+                    onmultiselectpicklistchanged={multpicklistChanged}
+                    hide-checkbox-column>
+                </c-core_-m-d-f_-custom_-picklist>
+            </template>
+        </div>
+        <!--PAGE NAVIGATION-->
+            <div class="slds-box slds-theme_default">
+            <div class="slds-align_absolute-center">
+                <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small" alternative-text="First Page" onclick={firstPage}></lightning-button>
+                <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous" alternative-text="Previous" onclick={previousPage}></lightning-button>
+                &nbsp;&nbsp;
+                <span class="slds-badge">Showing {pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+                &nbsp;
+                <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next" alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+                <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last" alternative-text="Last Page" onclick={lastPage} icon-position="right"></lightning-button>
+            </div>
+        </div>
+</template>

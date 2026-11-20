@@ -1,0 +1,42 @@
+<!-- sldsValidatorIgnore -->
+<template>
+<!--div class="slds-modal__content"-->   
+<lightning-quick-action-panel>  
+    <lightning-spinner if:true={isLoading} alternative-text="Loading"></lightning-spinner>  
+    <div style="font-size:20px;" label-class="Cancel_Product" class="slds-align_absolute-center">Cancel Product</div>
+    <template if:true={showCommentsPopup}>
+        <br/><lightning-textarea name="comment" label="Please enter the cancel comments" style="text-align:left;" value={commentText} onchange={handleReasonChange} label-class="custom-label-class" ></lightning-textarea>
+    <br/>
+    <div class="slds-align_absolute-center">
+    <lightning-button class="slds-button slds-button_brand" label ="Save" variant="brand" onclick ={handleSaveButton} disabled={disableSave}></lightning-button> 
+    <lightning-button class="slds-button slds-button_brand" label ="Cancel" variant="brand" onclick ={sendClosePopupToAura}></lightning-button> 
+</div></template>  
+    
+    <template if:true={otherAlert}>
+    <div class="slds-modal__content">
+        <div class="slds-p-around_small"> 
+            
+            <template if:true={cancelledProduct}>
+                <hr><p class="slds-align_absolute-center">Product is already cancelled.</p><br />
+            </template>
+            <template if:true={expiredProduct}>
+                <hr><p class="slds-align_absolute-center">Product is already expired.</p><br />
+            </template>
+            <template if:true={success}>
+                <hr><p class="slds-align_absolute-center">Product is Cancelled Successfully.</p><br />
+            </template>
+            <template if:true={alertMsg}>
+                <hr><p class="slds-align_absolute-center">{alertMsg}</p><br />
+            </template>
+            <template if:true={exception}>
+                <hr> <p class="slds-align_absolute-center">There is an issue processing the record. Please raise a support ticket.</p><br />
+            </template>
+            <template if:true={cancelButton}> 
+            <lightning-button class="slds-float_right slds-button slds-button_brand" label ="Close" variant="brand" onclick ={sendClosePopupToAura}></lightning-button> 
+        </template> 
+            </div>
+        </div>
+    </template> 
+                                       
+</lightning-quick-action-panel>
+</template>

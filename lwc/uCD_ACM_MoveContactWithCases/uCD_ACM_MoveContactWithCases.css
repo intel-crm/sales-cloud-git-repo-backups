@@ -1,0 +1,48 @@
+.custom-header {
+    background-color: #A3E4D7;
+	color: black;
+	padding: 0px;
+}
+
+.warning-text {
+    background-color: rgb(254, 147, 57);
+	padding: 5px;
+}
+
+.error-text {
+    background-color: rgb(243, 6, 6);
+	padding: 5px;
+}
+.headers {
+	font-size: large;
+}
+
+.datatable-box {
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+}
+
+.frozen-header-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #f4f6f9;  /* Light background to distinguish header */
+    z-index: 1;  /* Ensure header stays above the table body */
+}
+
+/* Optional: Add a border to the header for better visibility */
+.frozen-header-table thead th {
+    border-bottom: 2px solid #d8dde6;
+}
+
+.search-box {
+    width: 300px;
+}
+
+.fields-lable-inline {
+    margin-top: 0.7%;
+}
+
+.slds-modal__header {
+    background-color: #ffc;
+}

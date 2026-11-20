@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Seismic_PIMActiveHierarchy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Seismic_PIMActiveHierarchies</value>
+    </caseValues>
+    <fields>
+        <label><!-- HierarchyID --></label>
+        <name>HierarchyID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Name --></label>
+        <name>Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L0 --></label>
+        <name>L0__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1  ID --></label>
+        <name>L1_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1 --></label>
+        <name>L1__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 ID --></label>
+        <name>L2_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 --></label>
+        <name>L2__c</name>
+    </fields>
+    <fields>
+        <label><!-- L3 ID --></label>
+        <name>L3_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L3 --></label>
+        <name>L3__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 ID --></label>
+        <name>L4_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 --></label>
+        <name>L4__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 ID --></label>
+        <name>L5_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 --></label>
+        <name>L5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process --></label>
+        <name>Process__c</name>
+    </fields>
+    <fields>
+        <label><!-- Seismic Name --></label>
+        <name>Seismic_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Seismic Property ID --></label>
+        <name>Seismic_Property_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,42 @@
+.textAreaBody {
+    --sds-c-textarea-sizing-min-height:130px;
+}
+/*.slds-modal__container{
+	max-width: 80rem !important;
+    width: 80% !important;
+}*/
+.accordionClassError{
+    color: black; 
+    height:5.5rem;
+    width:100%;
+}
+.slds-tabs_scoped__link{
+    color: rgb(255, 0, 0) !important; 
+}
+.slds-tabs--scoped__link{
+    color: rgb(255, 0, 0) !important; 
+}
+.accordionClassWarning{
+    height:5.5rem;
+    width:100%;
+    color: black;
+}
+.slds-tabs_scoped__item{
+    color: red;
+}
+
+.slds-tabs_default__link{
+     color: yellow;
+}
+lightning-button.warButton{
+    --sds-c-button-brand-color-background:rgb(255, 187, 0);
+    --sds-c-button-brand-color-border:rgb(255, 187, 0);
+    --sds-c-button-brand-color-background-hover:rgb(255, 136, 0);
+    --sds-c-button-brand-color-background-active: rgb(255, 136, 0);
+}
+lightning-button.errButton{
+    --sds-c-button-brand-color-background: rgba(255, 0, 0, 0.726);
+    --sds-c-button-brand-color-border:rgba(255, 0, 0, 0.726);
+    --sds-c-button-brand-color-background-hover:rgba(255, 0, 0, 0.863);
+    --sds-c-button-brand-color-background-active: rgb(255, 0, 0);
+}

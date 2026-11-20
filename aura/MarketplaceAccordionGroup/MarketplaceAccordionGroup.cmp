@@ -1,0 +1,40 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="section" type="object" />
+    <aura:attribute name="index" type="Integer" />
+    <aura:attribute name="highlightDifferences" type="boolean" default="true" />
+    
+    
+    
+    <c:MarketPlaceAccordionSection name="{! 'v.section-'+v.index }" label="{!v.section.label}" >
+        <aura:iteration items="{!v.section.dataRows}" var="row">
+            <lightning:layout class="{!(and(v.highlightDifferences, row.highlight) ? 'highlight' : '') + ' sectionContent'}">
+                <lightning:layoutItem class="col">
+                    <div class="slds-p-around_small">
+                        {!row.label}
+                        <aura:if isTrue="{!row.info}">
+                            <span class="tooltip slds-m-left_small" style="position: relative;">
+                                <lightning:icon iconName="utility:info" size="x-small" />
+                                <div class="tooltip-container">
+                                    <div class="tooltip-content slds-p-vertical_x-small slds-p-horizontal_small">
+                                        {!row.info}
+                                    </div>
+                                </div>
+                            </span>
+                        </aura:if>
+                    </div>
+                </lightning:layoutItem>
+                <aura:iteration items="{!row.data}" var="colData" indexVar="j">
+                    <lightning:layoutItem class="col">
+                        <div class="slds-p-around_small">{!colData}</div>
+                    </lightning:layoutItem>
+                </aura:iteration>
+                <aura:if isTrue="{!row.data.length lt v.maxProducts}">
+                    <lightning:layoutItem class="col">
+                        <div class="slds-p-around_small"><!-- empty spacer --></div>
+                    </lightning:layoutItem>
+                </aura:if>
+            </lightning:layout>
+        </aura:iteration>
+        
+    </c:MarketPlaceAccordionSection>
+</aura:component>

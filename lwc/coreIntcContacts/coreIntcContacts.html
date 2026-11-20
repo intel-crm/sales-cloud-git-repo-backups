@@ -1,0 +1,48 @@
+<template>
+  <c-core-intc-error-service></c-core-intc-error-service>
+  <div if:true={display.version1} class={rowCss}>
+      <div class="slds-size_12-of-12 slds-medium-size_4-of-12 contact-row" for:each={_contacts} for:item="contact" key={contact.key}>
+          <div class="slds-grid slds-p-right_medium contact-container">
+              <img if:true={contact.imgUrl} class="contact-image" src={contact.imgUrl} alt={contact.label} aria-hidden="true"/>
+              <div class="slds-size_7-of-12">
+                <h5>
+                  <lightning-formatted-rich-text value={contact.label}></lightning-formatted-rich-text>
+                </h5>
+                <p class="slds-p-top_xx-small slds-p-bottom_small">
+                  <lightning-formatted-rich-text value={contact.copy}></lightning-formatted-rich-text>
+                </p>
+                <a href={contact.linkUrl} target={contact.linkTarget}>
+                    {contact.linkCopy}
+                    <lightning-icon class="slds-m-left_xxx-small cursor link-caret" aria-hidden="true" icon-name="utility:chevronright" size="x-small"></lightning-icon>
+                </a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div if:true={display.version2} class={rowCss}>
+    <div class="slds-size_12-of-12 slds-medium-size_3-of-12 contact-row" for:each={_contacts} for:item="contact" key={contact.key}>
+      <div class="slds-grid slds-p-right_medium contact-container">
+        <div class="slds-size_12-of-12 slds-large-size_9-of-12">
+          <lightning-icon if:true={contact.iconIsLightning} class="slds-m-right_x-small" aria-hidden="true" icon-name={contact.icon} size="x-small"></lightning-icon>
+          <span if:false={contact.iconIsLightning} class={contact.icon}></span>
+          <strong if:true={contact.label}>
+            <lightning-formatted-rich-text value={contact.label}></lightning-formatted-rich-text>
+          </strong>
+          <p if:true={contact.copy} class="slds-p-top_xx-small slds-p-bottom_small">
+            <lightning-formatted-rich-text value={contact.copy}></lightning-formatted-rich-text>
+          </p>
+          <p class="slds-p-top_xx-small slds-p-bottom_small" for:each={contact.links} for:item="link" key={link.key}>
+            <a href={link.url} target={link.target}>
+              {link.copy}
+              <span if:true={link.targetIcon} class="slds-p-left_xx-small">
+                <lightning-icon if:true={link.targetIconIsLightning} aria-hidden="true" icon-name={link.targetIcon} size="xx-small"></lightning-icon>
+                <span if:false={link.targetIconIsLightning} class={link.targetIcon}></span>
+              </span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

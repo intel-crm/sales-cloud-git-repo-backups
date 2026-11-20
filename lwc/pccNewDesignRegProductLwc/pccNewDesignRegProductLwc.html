@@ -1,0 +1,47 @@
+<template>
+    <div class="slds-modal__header">
+        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">New Product</h1>
+    </div>
+    <lightning-record-edit-form
+        density="comfy"
+        object-api-name="Core_Design_Registration_Product__c"
+        record-type-id="0121J000000U313QAC"
+        onsuccess={handleSuccess}
+        onsubmit={handleSubmit}
+        onload={handleLoad}
+        onerror={handleError}>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input-field field-name="Core_Design_Registration_Id__c" value={drId} required="true"></lightning-input-field>
+                <lightning-input-field field-name="Core_Product_Id__c" onchange={handleProductChange}></lightning-input-field>
+                <lightning-formatted-text
+                    lwc:if={displaySave}
+                    class="slds-text-title_bold slds-form-element__label"
+                    value={productSelectionMessage}></lightning-formatted-text>
+                <lightning-input-field field-name="MMID_or_Ordering_code__c" onchange={handleMMIDChange}></lightning-input-field>
+                <lightning-input-field field-name="Core_Full_Year_Qty__c" required="true"></lightning-input-field>
+                <lightning-input-field field-name="PCC_Standard_Distributor_Price__c" style="display:none;" value={sdp}></lightning-input-field>
+                <lightning-input-field field-name="PCC_Recommended_Customer_Price__c" style="display:none;" value={rcp}></lightning-input-field>
+                <lightning-input-field field-name="PCC_Eligible_for_DDI_Payment__c" style="display:none;" value={ddiEligible}></lightning-input-field>
+                <lightning-input-field field-name="PCC_Payment_Expiration_Date__c" style="display:none;" value={expDate}></lightning-input-field>
+                <lightning-input-field field-name="PCC_DDI_focused__c" style="display:none;" value={ddiFocused}></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input-field field-name="Core_Design_Product_Status_Nm__c" disabled="true"></lightning-input-field>
+                <lightning-input-field field-name="Core_Comment_Txt__c"></lightning-input-field>
+                <lightning-input-field field-name="Core_Partner_Tracking_Cd__c"></lightning-input-field>
+                <lightning-input-field field-name="Core_Target_Resale_Amt__c" value={targetResalePrice} disabled="true"></lightning-input-field>
+                <lightning-formatted-text
+                    lwc:if={displaySave}
+                    value="Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel."></lightning-formatted-text>
+            </lightning-layout-item>
+        </lightning-layout>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <div class="slds-align_absolute-center" lwc:if={displaySave}>
+            <lightning-button label="Cancel" variant="neutral" onclick={handleClosePopup}></lightning-button>
+            <lightning-button class="slds-var-p-left_small" variant="brand" type="submit" label="Save"></lightning-button>
+        </div>
+    </lightning-record-edit-form>
+</template>

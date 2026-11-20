@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EV email for DZP in Japan</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_DZP_JPN</name>
+    <style>none</style>
+    <subject>メールアドレスの確認</subject>
+    <textOnly>E-メールアドレスの確認
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} 様、
+
+インテル® デベロッパー・ゾーン・プレミアへのアクセスにお申込みいただき、ありがとうございました。
+手続きを進める前に、メールアドレスを確認していただく必要があります。
+このリンクは 24 時間で期限切れとなり、ログイン ID とパスワードを使用した別のメールでの確認が必要となります。
+
+
+メールを確認し、パスワードを設定してください
+
+次の手順を完了してパスワードを設定するには、以下のユーザー名を使用してください。
+
+ユーザー名: {!PRM_Registration_Request__c.PRM_Contact_Login_ID__c}
+メールアドレス: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+上のリンクにアクセスできない場合
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ja-JP&amp;target=https://wcm-stg.intel.com/content/www/jp/ja/secure/rdc/forms/rdc-account-search.html
+
+
+ご協力ありがとうございます。
+インテル® デベロッパー・ゾーン・プレミア・チーム
+
+このメッセージは、インテル® デベロッパー・ゾーン・プレミア関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© 2020 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.co.jp
+プライバシー &amp;verbar; クッキー</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,48 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "df140ff6-5f73-425d-97e5-d6b313a76a5b",
+  "label" : "Special Reports",
+  "regions" : [ {
+    "id" : "7a3a6888-e86f-42b0-b72a-0a88fc01c756",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "url" : "https://sqlbiext.intel.com/Reports/browse/Co-Marketing"
+      },
+      "componentName" : "c:Core_MDF_CommunityRedirection",
+      "id" : "7cdf9a05-1fd4-4ad2-b59c-bb4a901d07d4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fc3e3ad2-a00b-47e2-9f29-3bf5386cb342",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e8306384-376e-4e98-aabe-7f18119271ec",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Special Reports"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6922c0b6-8857-4667-a2f6-0ca97c04c836",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4710b731-920b-479e-adb9-0e9fa54a284c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-special-reports"
+}

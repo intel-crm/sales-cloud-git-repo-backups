@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Update Status of Approved Quote Lines for {!relatedTo.SBQQ__Quote__r.Name}" recipientType="User" relatedToType="SBQQ__QuoteLine__c" renderUsingSystemContextWithoutSharing="True">
+ <messaging:htmlEmailBody >
+        <c:Pricing_QLApprove_OppWonLost_Notify quoteRecordId="{!relatedTo.SBQQ__Quote__c}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Direct_Legal_Parent_Id__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Direct_Pricing_Parent_Id__c</field>
+    </columns>
+    <columns>
+        <field>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration__c</field>
+    </columns>
+    <columns>
+        <field>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration_Product__c</field>
+    </columns>
+    <columns>
+        <field>PCC_DDR_L5_Product_Mapping__c.PCC_L5_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>PCC_DDR_L5_Product_Mapping__c.PCC_L4_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>DR with Parent Account</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$PCC_DDR_L5_Product_Mapping__c@PCC_DDR_L5_Product_Mapping__c.PCC_Opportunity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

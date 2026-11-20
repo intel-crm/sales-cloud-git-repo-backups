@@ -1,0 +1,122 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 01-07-2025
+  @last modified by  : Vrushabh Uprikar
+-->
+<aura:component implements="force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader"
+                access="global"
+                controller="Pricing_QuoteCloneController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="messageNotification" type="String" />
+    <aura:attribute name="isSuccess" type="Boolean" default="" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="newRecordId" type="String" />
+    <aura:attribute name="quote" type="SBQQ__Quote__c" />
+    <aura:attribute name="isSVD" type="Boolean" default="false" />
+    <aura:attribute name="showMessageScreen" type="Boolean"  default="false"/>
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="value" type="String" />
+    <aura:attribute name="quoteType" type="String" />
+    <aura:attribute name="showAddText" type="Boolean" default="false" />
+    <aura:attribute name="isSVDActive" type="Boolean" default="false" />
+    
+    <lightning:navigation aura:id="navService"/>
+    <!-- SPINNER -->
+    <div aura:id="spinner" class="slds-is-relative">
+        <lightning:spinner aura:id="mySpinner" class="slds-hide" size="medium" variant="brand" alternativeText="Please wait..." style="min-height: 20vh;background-color:white;"/>
+        
+        <!-- SUCCESS -->   
+        <aura:if isTrue="{!v.showMessageScreen}">
+            <aura:if isTrue="{!v.isSuccess}">
+                <div class="slds-p-around_medium">
+                    <div aura:id="successMessage" style="height:4rem;">
+                        <div class="slds-is-relative slds-align_absolute-center">
+                            <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                                <span class="slds-assistive-text">success</span>
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small" style="text-align:center"> {!v.messageNotification} </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-p-around_medium" style="text-align:center">
+                    <a href="javascript:void(0)" onclick="{!c.navigateToRecord}"> 
+                        Click here to go to the new quote 
+                    </a>
+                </div>
+                <div class="slds-p-around_none" style="text-align:center">
+                    <a href="javascript:void(0)" onclick="{!c.goBackLink}"> 
+                        Click here to go back to the previous page 
+                    </a>
+                </div>
+                <aura:set attribute="else">
+                    <div class="slds-p-around_medium">
+                        <div aura:id="errorMessage" style="height:4rem;">
+                            <div class="slds-is-relative slds-align_absolute-center">
+                                <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                                    <span class="slds-assistive-text">error</span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small" style="text-align:center"> {!v.messageNotification} </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-p-around_medium" style="text-align:center">
+                        <a href="javascript:void(0)" onclick="{!c.goBackLink}"> 
+                            Click here to go back to the previous page 
+                        </a>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+        <aura:if isTrue="{!v.isSVD}">
+            <aura:html tag="style">
+                .cuf-content {
+                padding: 0 0rem !important;
+                }
+                .slds-p-around--medium {
+                padding: 0rem !important;
+                }
+                .slds-modal__content{
+                height:unset !important;
+                max-height:unset !important;
+                }
+            </aura:html>
+            <div aura:id="spinner">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel }"
+                                          alternativeText="close" class="slds-modal__close" />
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        Select Quote Type
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" style = "height:150px;" id="modal-content-id-1"> 
+                    <lightning:radioGroup
+                                          aura:id="mygroup"
+                                          label="Quote Type"
+                                          options="{! v.options }"
+                                          value="{! v.value }"
+                                          onchange="{! c.handleChange }"
+                                          required="true"
+                                          class="slds-p-around_medium"/>
+                    <div class="{!if(v.showAddText==true,'slds-show','slds-hide')}" style="color:red;padding-left:20px;">
+                        {!$Label.c.Pricing_Tender_Clone_Additional_Text}
+                    </div>
+                </div>
+                
+                <footer class="slds-modal__footer fixed"> 
+                    <lightning:button variant="neutral" label="Cancel" title="Cancel"
+                                      onclick="{! c.closeModel }" />
+                    <lightning:button variant="brand" label="Clone"
+                                      title="OK" onclick="{!c.quoteClone}" />
+                </footer>
+            </div> 
+        </aura:if>
+    </div>
+</aura:component>

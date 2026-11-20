@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUACCTADD_German</name>
+    <style>none</style>
+    <subject>Erforderliche Schritte zur Vervollständigung Ihrer Registrierung bei der Intel® Partner Alliance</subject>
+    <textOnly>Erforderliche Schritte zur Vervollständigung Ihrer Registrierung bei der Intel® Partner Alliance
+
+
+
+
+{!Contact.FirstName},
+
+Herzlichen Glückwunsch, Ihr Firmenadministrator oder ein Intel-Vertreter hat Sie zu einem Intel® Partner Alliance-Konto hinzugefügt! Sie sind nur wenige Schritte entfernt, um Ihre Registrierung abzuschließen.
+
+Die nachfolgenden Profilinformationen wurden für Sie erstellt:
+
+E-Mail-Adresse: {!Contact.Email}
+Firmenname: {{ACCOUNTNAME}}
+Intel® Partner Alliance Business-ID: {{ACCOUNTNUMBER}}
+
+
+Bitte klicken Sie auf den folgenden Link, um Ihre Registrierung abzuschließen.
+
+
+{{ButtonText}}
+
+
+Können Sie auf den obigen Link nicht zugreifen?
+{{EVLINK}}
+Bei Fragen wenden Sie sich bitte an uns auf {{SUPPORTLINK}}.
+Wir freuen uns über Ihre Teilnahme am Programm!
+Mit freundlichen Grüßen,
+Ihr Intel® Partner Alliance Team
+
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, USA. www.intel.com
+Datenschutz | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

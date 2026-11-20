@@ -1,0 +1,418 @@
+<!-- *********************************************************************
+* LWC Name - psg_requestQuote
+* Description - Disty Quote Request and View Form for Community Portal
+********************************************************************* -->
+<template>
+    <div class="spinner">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+        </template>
+    </div>
+    <lightning-layout>
+        <lightning-layout-item size = "12" horizontal-align="space" padding = "around-large">
+            <lightning-card title={name} icon-name="standard:quotes">  
+                <template if:true={inProgressQuote}>
+                    <template if:false={requestUpdateAction}>
+                        <div class="slds-clearfix">
+                            <div class="slds-float_right" style="margin-top:-45px;margin-right: 5px;">
+                            <template if:false={isCpQuote}>
+                                 <lightning-button variant = "brand" icon-name="utility:send" label={requestButtonLabel} disabled={disableSave} onclick={requestUpdate}></lightning-button>
+                            </template>
+                                
+                            <template if:true={enableDPARequest}><!--added for DPA -->
+                                &nbsp;&nbsp;<lightning-button variant = "brand" icon-name="utility:send" label='Request DPA' disabled={disableSave} onclick={requestDPAAction}></lightning-button>
+                            </template>
+                            <template if:true={enableALNRequest}><!--added for ALN -->
+                                &nbsp;&nbsp;<lightning-button variant = "brand" icon-name="utility:send" label='Request ALN' disabled={disableSave} onclick={requestALNAction}></lightning-button>
+                            </template>                            
+                        </div>
+                        </div>
+                    </template>
+                </template>
+                <template if:true={requestUpdateAction}>
+                    <template if:false={requestDPAFlag}>
+                        <template if:false={requestALNFlag}>
+                            <div class="slds-clearfix">
+                                <div class="slds-float_right" style="margin-top: -35px;margin-right: 5px;">
+                                    <lightning-button class='footer-btn' variant = "brand" icon-name="utility:save" label="Submit Request" disabled={disableSave} onclick={sendRequestUpdate}></lightning-button>
+                                    <lightning-button class='footer-btn' variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" disabled={disableSave} onclick={cancelRequestUpdate}></lightning-button>
+                                </div>
+                                <br/>
+                            </div>
+                        </template>
+                    </template>
+                </template>
+                <!-- added for DPA--><!-- added for ALN-->
+                <template if:true={requestUpdateAction}>
+                    <template if:true={requestDPAFlag}>
+                        <div class="slds-clearfix">
+                            <div class="slds-float_right" style="margin-top: -35px;margin-right: 5px;">
+                                <lightning-button class='footer-btn' variant = "brand" icon-name="utility:save" label="Submit DPA Request" disabled={disableSave} onclick={sendRequesDPAtUpdate}></lightning-button>
+                                <lightning-button class='footer-btn' variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" disabled={disableSave} onclick={cancelDPARequestUpdate}></lightning-button>
+                            </div>
+                            <br/>
+                        </div>
+                    </template>
+                    <template if:true={requestALNFlag}>
+                        <div class="slds-clearfix">
+                            <div class="slds-float_right" style="margin-top: -35px;margin-right: 5px;">
+                                <lightning-button class='footer-btn' variant = "brand" icon-name="utility:save" label="Submit ALN Request" disabled={disableSave} onclick={sendRequestALNUpdate}></lightning-button>
+                                <lightning-button class='footer-btn' variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" disabled={disableSave} onclick={cancelALNRequestUpdate}></lightning-button>
+                            </div>
+                            <br/>
+                        </div>
+                    </template>
+                </template>
+                
+            <div class="main">
+                <div class="spinner">
+                    <template if:true={disableSave}>
+                        <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+                    </template>
+                </div>
+                <div class="slds-scrollable_y">
+                            <!----------------------------- Quote Details Section--------------------------------- -->
+                            <lightning-accordion-section name="quoteDetails" label="Quote Details">
+                                <div class="main-panel">
+                                    
+                                        <template if:true={lockRecord}>
+                                            <lightning-record-edit-form record-id={recordId} object-api-name="SBQQ__Quote__c" onload={handleOnLoad} density="comfy">
+                                                <div class="slds-grid slds-wrap slds-border_top slds-border_right slds-border_left slds-border_bottom">
+                                                    <template for:each={quoteColumnsLocked} for:item="item" for:index="index">
+                                                        <div key={item.fname} class="slds-col slds-size_1-of-2">
+                                                            <!-- ****************Partially Locked Record**************** -->
+                                                            <template if:true={lockPartialRecord}>
+                                                                <template if:true={item.editable}>
+                                                                    <template if:true={item.required}>
+                                                                        <lightning-input-field field-name={item.fname} variant="label-stacked" required></lightning-input-field>
+                                                                    </template>
+                                                                    <template if:false={item.required}>
+                                                                        <lightning-input-field field-name={item.fname} variant="label-stacked"></lightning-input-field>
+                                                                    </template>                                                    
+                                                                </template>
+                                                                <template if:false={item.editable}>
+                                                                        <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                                </template>
+    
+                                                            </template>
+                                                            <template if:true={requestUpdateAction}>
+                                                                <template if:true={item.editable}>
+                                                                    <template if:true={item.required}>
+                                                                        <template if:true={item.override}>
+                                                                            <lightning-combobox class="customInput" name="core_cpq_quote_type_nm__c" label="Quote Type" placeholder=""
+                                                                                value={quoteRec.core_cpq_quote_type_nm__c} options={typeOptions} onchange={handleChange} required>
+                                                                            </lightning-combobox>
+                                                                            <br/>
+                                                                        </template>
+                                                                        <template if:false={item.override}>
+                                                                            <lightning-input-field field-name={item.fname} variant="label-stacked" required></lightning-input-field>
+                                                                        </template> 
+                                                                    </template>
+                                                                    <template if:false={item.required}>
+                                                                        <lightning-input-field field-name={item.fname} variant="label-stacked"></lightning-input-field>
+                                                                    </template>                                                    
+                                                                </template>
+                                                                <template if:false={item.editable}>
+                                                                    <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                                </template>
+                                                            </template>
+                                                            <!-- ****************Locked Record**************** -->
+                                                            <template if:false={requestUpdateAction}>
+                                                                <template if:false={lockPartialRecord}>
+                                                                    <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                                </template>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                    <template if:true={enableRadioOption}>
+                                                        <div class="slds-col slds-size_1-of-2" style="padding: 7px">
+                                                            <lightning-radio-group name="radioGroup1"
+                                                                label = "Do you have a confirmed order from the End Customer to request for a Design Win ?"
+                                                                options = {radiooptions}
+                                                                value = {radiobuttonvalue}
+                                                                type = "radio"
+                                                                onchange = {handleRadioSelection}
+                                                                required = {enableRadioOption}
+                                                            ></lightning-radio-group>  
+                                                            <template if:true={radioButtonMsg}>
+                                                                <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" icon-name="utility:warning" >
+                                                                </lightning-icon><!--<p style="color:rgb(255, 115, 0);">Create a Budgetary Quote prior to requesting for a Design Win Quote.</p>-->
+                                                                <lightning-formatted-text style= "color:rgb(255, 136, 0)" class="slds-form-element__label slds-col" value="Create a Budgetary Quote prior to requesting for a Design Win Quote."></lightning-formatted-text>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </lightning-record-edit-form>
+                                            
+                                      
+                                            <!-- completes -->
+                                           <!-- <template if:true={enableRadioOption}>
+                                                <lightning-radio-group name="radioGroup1"
+                                                    label = "Do you have a confirmed order from the End Customer to request for a Design Win ?"
+                                                    options = {radiooptions}
+                                                    value = {radiobuttonvalue}
+                                                    type = "radio"
+                                                    onchange = {handleRadioSelection}
+                                                    required = {enableRadioOption}
+                                                ></lightning-radio-group>
+                                                <template if:true={radioButtonMsg}>
+                                                    <p style="color:red;">Create a Budgetary Quote prior to requesting for a Design Win Quote.</p>
+                                                </template>
+                                            </template>-->
+                                    
+                                    
+                                    </template>
+
+                                    <!-- ****************Editable/Draft Record**************** -->
+                                    <template if:false={lockRecord}>
+                                        <lightning-record-edit-form record-id={recordId} object-api-name="SBQQ__Quote__c" onload={handleOnLoad}>
+                                            <lightning-messages></lightning-messages>
+                                            <div class="slds-grid slds-form slds-wrap">
+                                                <!--
+                                                <div class="slds-col slds-size_2-of-4">
+                                                    <lightning-combobox class="customInput" name="SentTo" label="Sent To" value='EMEA' 
+                                                    options={sentToOptions} onchange={handleChange} required>
+                                                    </lightning-combobox>  
+                                                </div>
+                                                -->
+                                                <template for:each={quoteColumns} for:item="item" for:index="index">
+                                                    <div key={item.fname} class="slds-col slds-size_1-of-2" >
+                                                        <!--<template if:false={pendingvisblity}>added for pending visibility-->
+                                                            <template if:true={item.required}>  
+                                                                <template if:true={item.override}>
+                                                                    <lightning-combobox class="customInput" name="core_cpq_quote_type_nm__c" label="Quote Type" placeholder=""
+                                                                        value={quoteRec.core_cpq_quote_type_nm__c} options={typeOptions} onchange={handleChange} required>
+                                                                    </lightning-combobox>
+                                                                    <br/>
+                                                                </template>
+                                                                <template if:false={item.override}>
+                                                                    <lightning-input-field field-name={item.fname} variant="label-stacked" required></lightning-input-field>
+                                                                </template>
+                                                            </template>
+                                                            <template if:false={item.required}>
+                                                                <lightning-input-field field-name={item.fname} variant="label-stacked"></lightning-input-field>
+                                                            </template>  
+                                                       <!-- </template>-->
+                                                       <!-- <template if:true={pendingvisblity}>added for pending visibility
+                                                           <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                        </template>-->
+                                                    </div>
+                                                </template>
+                                        </div>
+                                        </lightning-record-edit-form>
+                                        
+                                        <template if:true={enableRadioOption}>
+                                            <lightning-radio-group name="radioGroup"
+                                                label = "Do you have a confirmed order from the End Customer to request for a Design Win ?"
+                                                options = {radiooptions}
+                                                value = {radiobuttonvalue}
+                                                type = "radio"
+                                                onchange = {handleRadioSelection}
+                                                required = {enableRadioOption}
+                                            ></lightning-radio-group>
+                                            <template if:true={radioButtonMsg}>
+                                                
+                                                <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" icon-name="utility:warning" >
+                                                </lightning-icon><!--<p style="color:rgb(255, 115, 0);">Create a Budgetary Quote prior to requesting for a Design Win Quote.</p>-->
+                                                <lightning-formatted-text style= "color:rgb(255, 136, 0)" class="slds-form-element__label slds-col" value="Create a Budgetary Quote prior to requesting for a Design Win Quote."></lightning-formatted-text>
+                                            </template>
+                                        </template>
+                                    </template>
+                                </div>
+                                
+                            </lightning-accordion-section>
+                               <!----------------------------- Web Information (Disty Input) Section--------------------------------- -->
+                            
+                               <template if:true={lockRecord}>
+                                <template if:false={requestDPAFlag}>
+                                    <template if:false={requestALNFlag}>
+                                        <template if:false={isCpQuote}>
+                                            <lightning-accordion allow-multiple-sections-open active-section-name="distydetails">
+                                            <lightning-accordion-section  name = "distydetails"  label = "Web Information (Disty Input)">
+                                            <lightning-record-edit-form record-id={recordId} object-api-name="SBQQ__Quote__c" onload={handleOnLoad} density="comfy">
+                                            <div class="slds-grid slds-wrap slds-border_top slds-border_right slds-border_bottom slds-border_left">
+                                                <template for:each={DistyFields} for:item="item" for:index="index">
+                                                    <div key={item.fname} class="slds-col slds-size_1-of-2">
+                                                        <!-- ****************Partially Locked Record**************** -->
+                                                        <template if:true={lockPartialRecord}>
+                                                            <template if:true={item.editable}>
+                                                                <template if:true={item.required}>
+                                                                    <lightning-input-field field-name={item.fname} variant="label-stacked" required></lightning-input-field>
+                                                                </template>
+                                                                <template if:false={item.required}>
+                                                                    <lightning-input-field field-name={item.fname} variant="label-stacked"></lightning-input-field>
+                                                                </template>                                                    
+                                                            </template>
+                                                            <template if:false={item.editable}>
+                                                                <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                            </template>
+                                                        </template>
+                                                        
+                                                        <template if:true={requestUpdateAction}>
+                                                            <template if:true={item.editable}>
+                                                                <template if:true={item.required}>
+                                                                    <template if:true={item.override}>
+                                                                        <lightning-combobox class="customInput" name="core_cpq_quote_type_nm__c" label="Quote Type" placeholder=""
+                                                                            value={quoteRec.core_cpq_quote_type_nm__c} options={typeOptions} onchange={handleChange} required>
+                                                                        </lightning-combobox>
+                                                                        <br/>
+                                                                    </template>
+                                                                    <template if:false={item.override}>
+                                                                        <lightning-input-field field-name={item.fname} variant="label-stacked" required></lightning-input-field>
+                                                                    </template> 
+                                                                </template>
+                                                                <template if:false={item.required}>
+                                                                    <lightning-input-field field-name={item.fname} variant="label-stacked"></lightning-input-field>
+                                                                </template>                                                    
+                                                            </template>
+                                                            <template if:false={item.editable}>
+                                                                <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                            </template>
+                                                        </template>
+                                                        
+                                                        <!-- ****************Locked Record**************** -->
+                                                        <template if:false={requestUpdateAction}>
+                                                            <template if:false={lockPartialRecord}>
+                                                                <lightning-output-field field-name={item.fname} variant="label-stacked"> </lightning-output-field>
+                                                            </template>
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </lightning-record-edit-form>
+                                            </lightning-accordion-section>
+                                        </lightning-accordion> 
+                                        </template>
+
+                                </template>
+                                </template>
+                                </template>
+                                   
+                                
+                            
+
+
+                            <!-- ---------------------------- Quote Lines Section------------------------------- -->
+
+                            <!-- ******************Related List****************** -->
+                            <template if:true={relatedList}>
+                            <lightning-accordion allow-multiple-sections-open active-section-name="dpaAlnRelatedList">
+                            <lightning-accordion-section name="dpaAlnRelatedList" label="DPAs and ALNs">    
+                                <template lwc:if={dpaalnRecords}>
+                                    <div class="slds-scrollable slds-hint-parent" style="height:14rem;">
+                                        <lightning-datatable 
+                                            key-field="Id"
+                                            data={dpaalnRecords}
+                                            columns={dpaAlnColumn}
+                                            hide-checkbox-column="true"
+                                            min-column-width="20px"
+                                            show-row-number-column="true" 
+                                            onrowaction={navigateToDPAsALNsDetail}>
+                                        </lightning-datatable>
+                                    </div>
+                                </template>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                        </template>
+                        
+                <!--    </form> -->
+                </div>
+            </div>
+            
+            <!-- ******************Footer Buttons********************* -->
+            <template if:false={lockRecord}>
+                <!--<template if:false={pendingvisblity}>hide save/save & submit button in draft/new when shared disty visibility-->
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right">
+                            <lightning-button-group>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:save" label="Save" disabled={disableSave} onclick={saveData}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:send" label="Save and Submit" disabled={disableSave} onclick={submitData}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" onclick={cancelEdit}></lightning-button>
+                            </lightning-button-group>
+                        </div>
+                        <br/>
+                    </div>
+                <!--</template> -->   
+            </template>
+            <template if:true={inProgressQuote}>
+                <template if:false={requestUpdateAction}>
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right" style="margin-top: 8px;margin-right: 5px;">
+                            <template if:false={isCpQuote}>
+                                <lightning-button class='footer-btn' variant = "brand" icon-name="utility:send" label={requestButtonLabel} disabled={disableSave} onclick={requestUpdate}></lightning-button>
+                                </template>
+                            <template if:true={enableDPARequest}><!--added for DPA -->
+                                <lightning-button variant = "brand" icon-name="utility:send" label='Request DPA' disabled={disableSave} onclick={requestDPAAction}></lightning-button>
+                            </template>
+                            <template if:true={enableALNRequest}><!--added for ALN -->
+                                &nbsp;&nbsp;<lightning-button variant = "brand" icon-name="utility:send" label='Request ALN' disabled={disableSave} onclick={requestALNAction}></lightning-button>
+                            </template>                            
+                        </div>
+                        <br/>
+                    </div>
+                </template>
+            </template>
+            <template if:true={requestUpdateAction}>
+                <template if:false={requestDPAFlag}><!-- added for DPA-->
+                    <template if:false={requestALNFlag}><!-- added for ALN-->
+                        <div class="slds-clearfix">
+                            <div class="slds-float_right" style="margin-top: 8px;">
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:save" label="Submit Request" disabled={disableSave} onclick={sendRequestUpdate}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" disabled={disableSave} onclick={cancelRequestUpdate}></lightning-button>
+                            </div>
+                            <br/>
+                        </div>
+                    </template>
+                </template>
+            </template>
+            <!-- added for DPA--><!-- added for ALN-->
+            <template if:true={requestUpdateAction}>
+                <template if:true={requestDPAFlag}>
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right" style="margin-top: 8px;">
+                            <lightning-button class='footer-btn' variant = "brand" icon-name="utility:save" label="Submit DPA Request" disabled={disableSave} onclick={sendRequesDPAtUpdate}></lightning-button>
+                            <lightning-button class='footer-btn' variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" disabled={disableSave} onclick={cancelDPARequestUpdate}></lightning-button>
+                        </div>
+                        <br/>
+                    </div>
+                </template>
+                <template if:true={requestALNFlag}>
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right" style="margin-top: 8px;">
+                            <lightning-button class='footer-btn' variant = "brand" icon-name="utility:save" label="Submit ALN Request" disabled={disableSave} onclick={sendRequestALNUpdate}></lightning-button>
+                            <lightning-button class='footer-btn' variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" disabled={disableSave} onclick={cancelALNRequestUpdate}></lightning-button>
+                        </div>
+                        <br/>
+                    </div>
+                </template>
+            </template>
+            <template if:true={lockPartialRecord}>
+                <template if:false={isNewStatus}>
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right">
+                            <lightning-button-group>
+                                <lightning-button class='footer-btn'  variant = "brand" label="Save" disabled={disableSave} onclick={savePendingData}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" label="Save and Submit" disabled={disableSave} onclick={submitPendingData}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" label="Cancel" onclick={cancelEdit}></lightning-button>
+                            </lightning-button-group>
+                        </div>
+                        <br/>
+                    </div>
+                </template>
+                <template if:true={isNewStatus}>
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right">
+                            <lightning-button-group>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:save" label="Save" disabled={disableSave} onclick={saveData}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:send" label="Save and Submit" disabled={disableSave} onclick={submitData}></lightning-button>
+                                <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" onclick={cancelEdit}></lightning-button>
+                            </lightning-button-group>
+                        </div>
+                        <br/>
+                    </div>
+                </template>            
+            </template>
+        </lightning-card>
+    </lightning-layout-item>
+</lightning-layout>   
+</template>

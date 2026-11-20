@@ -1,0 +1,24 @@
+<!---
+/**************************************************************************************
+Vf page Name:  Core_Industry_Warning
+Version     : 1.0 
+Created Date: 09/4/2020
+Description :if Account Industry is blank or 'To be Defined',it will display a warning message.
+(User Story US767646)ACCT : Change logic of Industry Validation.
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Kavyashree HR Infosys Team           09/4/2020              Initial Revision
+
+--->
+<apex:page standardController="Account"> 
+    <apex:form >
+        <apex:outputPanel rendered="{!(ISBLANK(Account.Industry) || Account.Industry == 'To Be Defined') && Account.Core_Covered_Account__c}">
+            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
+                <div  style="font-weight:bold;color:orange;margin-left:35%;">{!$Label.Core_Acc_Industry_WarningMsg}</div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+                <div  style="font-weight:bold;color:orange;">{!$Label.Core_Acc_Industry_WarningMsg}</div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

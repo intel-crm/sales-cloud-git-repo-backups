@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Territory2Model.Territory2s$DeveloperName</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s$Id</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$RoleInTerritory2</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$Name</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations*User$Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$UserRole</field>
+    </columns>
+    <columns>
+        <field>Territory2Model$DeveloperName</field>
+    </columns>
+    <description>All members of Territory Name: SMG_WW_Read from Territory Model SMG_Now_Territory</description>
+    <filter>
+        <criteriaItems>
+            <column>Territory2Model$DeveloperName</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>SMG_Now_Territory_Model</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Territory2Model.Territory2s$DeveloperName</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>SMG_WW_Read</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Territory Name: SMG_WW_Read</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Territory_with_Users__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Territory2Model$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,121 @@
+.THIS .slds-form-element__label:not(.uploaderLabel) {
+    display: none;
+}
+
+.THIS .isRequired label.uploaderLabel::before {
+    color: t(sfRedError);
+    content: '*';
+    margin-right: 4px;
+}
+
+.THIS .isInvalid .borderDashed {
+    border: 2px solid t(sfRedError);
+}
+
+.THIS .isDisabled .disabledIcon {
+    pointer-events: none;
+}
+.THIS .isDisabled .disabledIcon .slds-icon {
+    opacity: 0.5;
+}
+
+.THIS .slds-file-selector__dropzone {
+    border: none;
+}
+
+.THIS .slds-truncate {
+    white-space: break-spaces;
+}
+
+.THIS .minImageDisplayWidth {
+    min-width: 300px;
+}
+
+.THIS .borderDashed {
+    border: 1px dashed t(lightGray);
+    overflow-wrap: anywhere;
+}
+
+.THIS .slds-file-selector, .THIS .slds-file-selector__dropzone,
+.THIS .slds-file-selector slot, .THIS label.slds-file-selector__body {
+    width: auto !important;
+}
+
+.THIS .slds-file-selector__button {
+    margin: 0 !important;
+}
+
+.THIS .error-text {
+    color: t(sfRedError);
+    font-size: 0.75em;
+}
+
+.THIS .disclaimer-text {
+    font-size: 13px;
+}
+
+.THIS .slds-file-selector__body {
+    margin: 0px;
+    cursor: pointer;
+}
+
+.THIS .slds-file-selector__button {
+    margin: 20px 95px;
+    color: t(progressBarBlue);
+}
+
+.THIS [data-disabled="true"] lightning-file-upload {
+    pointer-events: none;
+}
+
+.THIS .slds-file-selector__input[disabled] ~ .slds-file-selector__body > .slds-file-selector__button {
+    color: var(--carbon-shade1, #525252);
+}
+
+.THIS .slds-icon-utility-download .slds-icon, .THIS .slds-icon-utility-delete .slds-icon {
+    fill: var(--sds-c-icon-color-foreground-default, var(--lwc-colorTextIconDefault,rgb(107, 109, 112)));
+}
+
+/* Images */
+.THIS .borderedContainer {
+    border: 1px solid t(lightGray);
+}
+
+.THIS .slds-file-selector__text {
+    display: none;
+}
+
+.THIS .slds-icon {
+    height: 1em;
+    width: 1em;
+}
+
+.THIS .imageContainer {
+    min-height: 3em;
+}
+
+.THIS .imageContainer img {
+    max-height: 100%;
+}
+
+.THIS .titleContainer {
+    background-color: t(lightestGray);
+}
+
+.THIS .titleContainer span {
+    cursor: pointer;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10-IE11 CSS styles go here needed so modal in modal works properly */
+    .THIS .slds-modal {
+        top: 45px;
+    }
+    .THIS .slds-show_inline-block {
+        display: block;
+    }
+}
+
+.THIS .altTextDisclaimer {
+    font-size: 0.65rem;
+}

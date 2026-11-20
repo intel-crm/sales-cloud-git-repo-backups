@@ -1,0 +1,253 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerLayout",
+  "dataProviders" : [ ],
+  "id" : "f4150aa7-9d09-4bc6-94b4-a2dd9a503040",
+  "label" : "Home",
+  "regions" : [ {
+    "id" : "6f9148c1-7c9e-40df-a522-4cee79862259",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "28374640-d372-4caa-bded-4ea77a42ff70",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "actions" : [ {
+          "isPublic" : true,
+          "name" : "NewLead"
+        }, {
+          "isPublic" : true,
+          "name" : "NewOpportunity"
+        }, {
+          "isPublic" : true,
+          "name" : "NewTask"
+        }, {
+          "isPublic" : true,
+          "name" : "NewCase"
+        } ],
+        "label" : "Quick Create"
+      },
+      "componentName" : "forceCommunity:createRecordButton",
+      "id" : "742f9f7c-133f-406f-b1bb-29ad9660a0f6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "listViewIdForNavigation" : "Core_ALL_GLOBAL_Catch_All_Lead",
+        "navigateToListView" : true,
+        "pageSize" : 5,
+        "sortBy" : "CreatedDate",
+        "title" : "Lead Inbox"
+      },
+      "componentName" : "forceCommunity:leadInbox",
+      "id" : "121b1eee-8fff-48bd-9c33-94192de054d7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "MyOpportunities",
+        "layout" : "COMPACT",
+        "pageSize" : 5,
+        "scope" : "Opportunity",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "d88b0fe5-85d6-458c-a6b4-6f24ae5fba25",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "OPEN",
+        "layout" : "COMPACT",
+        "pageSize" : 5,
+        "scope" : "Task",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "76b706e0-04a4-4126-ba50-39c9706a17cd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e01063ba-1ab2-42ea-8067-e5130af1e0a0",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "0a8880e7-ed3e-4469-85b7-ebfe666be5b5",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Home\"/>\n<meta name=\"pageType\" content=\"ManageBenefits\"/>",
+        "description" : "",
+        "title" : "Manage Benefits"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f8e5cdee-f431-4107-93ee-75f9e14b0ad7",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0d78cd88-507a-4137-baf3-3fd84b4af0ca",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "87c96813-66ff-4728-9321-71953e29f502",
+    "regionName" : "widget",
+    "type" : "region"
+  }, {
+    "id" : "cb3da467-158d-4a64-b99e-c4f49b15d2c0",
+    "regionName" : "welcomeBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"ManageBenefits\",\"title\":\"Home\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "BenefitService",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "50788d3f-3a41-4bbe-b5a8-2a58f833e9ef",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0a7343ae-4117-4824-88f6-c6bfcbb79956",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "c6739e19-2d2c-4377-8be5-3f6d531bf253",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "9b1fdc47-cd0e-471c-9cf4-fe2fa616ef3b",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "description" : "Deprecated",
+        "title" : "@salesforce/label/c.IPA_Benefits_Manage_Benefits"
+      },
+      "componentName" : "c:ipaBenefitCardList",
+      "id" : "a06bc0c2-5c30-4fe0-93bc-906375bdfb13",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "de5c0bf5-cb43-427b-ad7e-f3b97d41d9a0",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaPartnerMessages",
+      "id" : "9fdd681c-3bc0-4f5b-9af6-b5882de3ae10",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f54c7e72-1044-4bd2-ab05-4cc3a02a24be",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaPartnerQuickLinks",
+      "id" : "cc8af0a0-af70-4ed1-b0b5-15a7185cd3d2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f092a9ec-1195-4cc6-8ac8-66c018917825",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "c66d253c-832e-441d-b02b-bdc5220e4ed7",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "4ccdd4d9-808f-42fd-8151-9227c8e01860",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "956eca1a-659e-4e2c-aec4-23d661f8974f",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "2c83349b-50c1-4382-aa67-1a7e81c39074",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "7f0fc4c7-419f-4677-9402-150477a41343",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "1733e67d-1051-478e-a400-b55cfe1be961",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "53c5a7a0-b867-4bff-8098-379a229f8bb1",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "b326f0bd-2c53-4b21-9da9-17d3feca0a6a",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "8ab87b45-03d1-46e1-a410-dca654da1a17",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "c4157b36-18fc-4155-8db1-971f1652349d",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "4b55782e-6f0a-49fa-8884-43126583c452",
+    "regionName" : "blade5",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "home"
+}

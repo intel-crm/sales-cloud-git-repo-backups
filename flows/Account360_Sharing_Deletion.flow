@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Delete Account360 objects sharing for the deleted Account team member</description>
+        <name>Delete_Account360_objects_sharing_for_the_deleted_Account_team_member</name>
+        <label>Delete Account360 objects sharing for the deleted Account team member</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <actionName>Account360_DeleteSharing</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accountId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>userId</name>
+            <value>
+                <elementReference>$Record.UserId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Account360_DeleteSharing</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>To Delete sharing for Account Plan, Executive Meeting Brief and Account Status for the deleted Account Team Member</description>
+    <environments>Default</environments>
+    <interviewLabel>Account360 Sharing Deletion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account360 Sharing Deletion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Delete_Account360_objects_sharing_for_the_deleted_Account_team_member</targetReference>
+        </connector>
+        <object>AccountTeamMember</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

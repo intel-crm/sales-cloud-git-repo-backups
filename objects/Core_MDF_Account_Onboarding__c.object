@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Onboarding_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>Intel/Agency Account to be onboarded.</inlineHelpText>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Mastered_Account</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Core_MDF_Account Onboarding (Account)</relationshipLabel>
+        <relationshipName>Account_Onboards</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>Program for which Intel/Agency Account to be onboarded.</inlineHelpText>
+        <label>Channel Program</label>
+        <referenceTo>ChannelProgram</referenceTo>
+        <relationshipLabel>Core_MDF_Account Onboarding</relationshipLabel>
+        <relationshipName>Account_Onboards</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Domains_txt__c</fullName>
+        <inlineHelpText>Multiple Domain values can be entered separated by semicolon(&apos;;&apos;), Example : intel.com</inlineHelpText>
+        <label>Domains</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Host_Region_nm__c</fullName>
+        <description>Host Region for Co-Marketing Accounts</description>
+        <label>Host Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Host_Region</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partner_Type_nm__c</fullName>
+        <label>Partner Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Primary Partner</fullName>
+                    <default>false</default>
+                    <label>Primary Partner</label>
+                </value>
+                <value>
+                    <fullName>Activating Partner</fullName>
+                    <default>false</default>
+                    <label>Activating Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Type_nm__c</fullName>
+        <description>Holds the payment type value</description>
+        <label>Payment Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>Customer (Pass Through)</fullName>
+                    <default>false</default>
+                    <label>Customer (Pass Through)</label>
+                </value>
+                <value>
+                    <fullName>Distributor (Cash)</fullName>
+                    <default>false</default>
+                    <label>Distributor (Cash)</label>
+                </value>
+                <value>
+                    <fullName>Distributor (Credit Memo)</fullName>
+                    <default>false</default>
+                    <label>Distributor (Credit Memo)</label>
+                </value>
+                <value>
+                    <fullName>Non-Customer</fullName>
+                    <default>false</default>
+                    <label>Non-Customer</label>
+                </value>
+                <value>
+                    <fullName>Customer-NonPO</fullName>
+                    <default>false</default>
+                    <label>Customer-NonPO</label>
+                </value>
+                <value>
+                    <fullName>Customer (Credit Memo)</fullName>
+                    <default>false</default>
+                    <label>Customer (Credit Memo)</label>
+                </value>
+                <value>
+                    <fullName>Vistex (Cash)</fullName>
+                    <default>false</default>
+                    <label>Vistex (Cash)</label>
+                </value>
+                <value>
+                    <fullName>Vistex (Credit Memo)</fullName>
+                    <default>false</default>
+                    <label>Vistex (Credit Memo)</label>
+                </value>
+                <value>
+                    <fullName>Customer (Disti)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Customer (Disti)</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>Indirect Distributor</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Indirect Distributor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_SubParent_Account_to_be_Created__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select the checkbox ,if Virtual Account needs to be created.</inlineHelpText>
+        <label>Virtual Account to be Created</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Technical_Program_nm__c</fullName>
+        <label>Technical Program Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Technical_Program_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Type__c</fullName>
+        <inlineHelpText>Select the Type of Account to be onboarded.</inlineHelpText>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Agency Account</fullName>
+                    <default>false</default>
+                    <label>Agency Account</label>
+                </value>
+                <value>
+                    <fullName>Intel Account</fullName>
+                    <default>false</default>
+                    <label>Normal Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Virtual_Account_Name_txt__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Virtual Account Name to be created.</inlineHelpText>
+        <label>Virtual Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Works_For__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>Account for which Agency is Working.</inlineHelpText>
+        <label>Works For</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Mastered_Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_CoMarketingAgency__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Core_MDF_Account Onboarding (Works For)</relationshipLabel>
+        <relationshipName>Account_Onboards1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Account Onboarding</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Type__c</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Works_For__c</columns>
+        <columns>Core_MDF_SubParent_Account_to_be_Created__c</columns>
+        <columns>Core_MDF_Virtual_Account_Name_txt__c</columns>
+        <columns>Core_MDF_Domains_txt__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Core_MDF_Payment_Type_nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Account__c</field>
+            <operation>contains</operation>
+            <value>XIAOMI</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>IPA_MDF_Virtual_Accounts</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>Core_MDF_Type__c</columns>
+        <columns>Core_MDF_Payment_Type_nm__c</columns>
+        <columns>Core_MDF_Host_Region_nm__c</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Virtual_Account_Name_txt__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Channel_Program__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Account__c</field>
+            <operation>contains</operation>
+            <value>Quentin Faucher</value>
+        </filters>
+        <label>IPA MDF Virtual Accounts</label>
+    </listViews>
+    <nameField>
+        <displayFormat>A-{0000}</displayFormat>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Onboarding</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
+        <active>true</active>
+        <label>Client</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Client CoMarketing Fund</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Client_Co_Marketing_Fund_Boost</fullName>
+        <active>true</active>
+        <label>Client Co-Marketing Fund Boost</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Client CoMarketing Fund Boost</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_GTM</fullName>
+        <active>true</active>
+        <label>Co-GTM</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vistex %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vistex %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>CoGTM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Data_Center_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <label>Datacenter</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Data Center CoMarketing Fund</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
+        <active>true</active>
+        <label>Ecosystem Extension Fund</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Ecosystem Extension Fund</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
+        <active>true</active>
+        <label>Intel Partner Alliance</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer-NonPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Intel Partner Alliance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
+        <active>true</active>
+        <label>Retail Marketing Funds</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Retail Marketing Funds</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Service_Provider_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <label>Service Provider Co-Marketing Fund</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>Service Provider CoMarketing Fund</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Core_MDF_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Channel_Program__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Works_For__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_SubParent_Account_to_be_Created__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Virtual_Account_Name_txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Domains_txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_HostRegionVal_ForAgencyAcounts</fullName>
+        <active>true</active>
+        <description>Host Region is not applicable for Agency accounts</description>
+        <errorConditionFormula>AND(TEXT(Core_MDF_Type__c)= $CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_AgencyAccount.Core_MDF_Value_Txt__c ,NOT(ISBLANK(TEXT( Core_MDF_Host_Region_nm__c))))</errorConditionFormula>
+        <errorMessage>Host Region is not applicable for Agency Accounts</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_HostRegionVal_OtherPrograms</fullName>
+        <active>true</active>
+        <description>Host Region is applicable only for IPA Program. So, this validation rule is to restrict for other programs.</description>
+        <errorConditionFormula>AND(NOT(ISBLANK( TEXT(Core_MDF_Host_Region_nm__c))), NOT(TEXT(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)=$Label.Core_MDF_IPA_Program_Name))</errorConditionFormula>
+        <errorMessage>Host Region is only applicable for Intel Partner Alliance Program.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_IPA_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND((TEXT(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)==&apos;Intel Partner Alliance&apos;),  NOT( ISBLANK(Core_MDF_Domains_txt__c) ))</errorConditionFormula>
+        <errorMessage>Domains are not applicable for the selected program.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_IPA_HostRegionCheck</fullName>
+        <active>true</active>
+        <description>Host Region is mandatory for IPA Program</description>
+        <errorConditionFormula>AND(TEXT( Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)=$Label.Core_MDF_IPA_Program_Name, TEXT(Core_MDF_Type__c) =  $CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IntelAccount.Core_MDF_Value_Txt__c, ISBLANK(TEXT( Core_MDF_Host_Region_nm__c)))</errorConditionFormula>
+        <errorMessage>Host Region is mandatory for Intel Partner Alliance Program.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_IPA_PaymentTypeCheck</fullName>
+        <active>true</active>
+        <description>Selected Payment Type is only applicable for Intel Partner Alliance Program and Ecosystem Extension Fund.</description>
+        <errorConditionFormula>AND(NOT(OR(TEXT(Core_MDF_Technical_Program_nm__c)==$Label.Core_MDF_IPA_Program_Name,TEXT(Core_MDF_Technical_Program_nm__c)==$Label.Core_MDF_EEF_Program_Name,TEXT(Core_MDF_Technical_Program_nm__c)==$Label.Core_MDF_Co_GTM_Technical_program_name)),
+OR(TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Cash)&apos;,TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Credit Memo)&apos;,TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Customer (Pass Through)&apos;))</errorConditionFormula>
+        <errorMessage>Payment Type is only applicable for Intel Partner Alliance Program and Ecosystem Extension Fund.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_IPA_RetailValidation</fullName>
+        <active>true</active>
+        <errorConditionFormula>If( (TEXT(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)== &apos;Retail Marketing Funds&apos; ||  TEXT(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)==&apos;Intel Partner Alliance&apos;)&amp;&amp; TEXT(Core_MDF_Type__c )==&apos;Agency Account&apos;, true,false)</errorConditionFormula>
+        <errorMessage>Agency account type is not applicable for the selected program.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_RestrictAccountOnboardEdit</fullName>
+        <active>true</active>
+        <description>Blocking editing of account onboarding records</description>
+        <errorConditionFormula>OR(ISCHANGED( Core_MDF_Account__c ),
+ISCHANGED( Core_MDF_Channel_Program__c ),
+ISCHANGED( Core_MDF_Type__c ),
+ISCHANGED( Core_MDF_Virtual_Account_Name_txt__c ),
+ISCHANGED( Core_MDF_SubParent_Account_to_be_Created__c ),
+ISCHANGED( Core_MDF_Works_For__c ),
+ISCHANGED( Core_MDF_Domains_txt__c ),
+ISCHANGED( Core_MDF_Payment_Type_nm__c ), ISCHANGED( Core_MDF_Host_Region_nm__c ))</errorConditionFormula>
+        <errorMessage>Account onboarding record cannot be edited</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

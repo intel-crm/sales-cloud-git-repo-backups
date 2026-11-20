@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_Business_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Channel_Membership__c.Core_Current_Membership_Tier__c</field>
+    </columns>
+    <columns>
+        <field>Core_Channel_Membership__c.Core_Points_Due_to_Expire_Next_Qtr__c</field>
+    </columns>
+    <columns>
+        <field>Core_Channel_Membership__c.Core_Points_Expired_in_Current_Qtr__c</field>
+    </columns>
+    <columns>
+        <field>Core_Channel_Membership__c.Core_Total_Available_Points__c</field>
+    </columns>
+    <description>Informe de Puntos a Expirar</description>
+    <format>Summary</format>
+    <name>Reporte Puntos España</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountCustomEntity$Core_Channel_Membership__c</reportType>
+    <scope>ownaccountteam</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

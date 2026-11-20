@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>復原</value>
+    </caseValues>
+    <fields>
+        <label>金額（美元）</label>
+        <name>Core_MDF_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label>報銷</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>夥伴關係分數</label>
+        <name>Core_MDF_PartnershipGradeMaintenance_Nbr__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recovered Budget --></label>
+        <name>Core_MDF_Recovered_Budget_Nm__c</name>
+    </fields>
+    <fields>
+        <label>先結算，後付款</label>
+        <name>Core_MDF_Sure_Pay_Ind__c</name>
+    </fields>
+    <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
+</CustomObjectTranslation>

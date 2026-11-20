@@ -1,0 +1,64 @@
+.slds-modal__header {
+    background: var(--blue);
+    border-radius: 0;
+    
+}
+.modal-close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    cursor: pointer;
+}
+.content-wrap {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--lightGray);
+}
+
+.content-footer {
+    line-height: 1.25;
+}
+
+.footer-link {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.slds-modal__footer {
+    background: var(--white);
+    display: flex;
+    border: 0 none;
+    padding: 1.5rem;
+}
+
+li {
+    margin: 1.5rem 0;
+}
+.slds-modal__footer .slds-button + .slds-button.flex-right,
+.flex-right {
+    margin-left: auto;
+}
+
+.button-primary {
+    border: 1px solid transparent;
+}
+
+@media only screen and (max-width: 767px) {
+    h2 {
+        padding: 0 1rem;
+    }
+    .slds-modal__footer {
+        margin-bottom: 8rem;
+        box-shadow: none;
+    }
+    .slds-modal__footer button {
+        max-width: 50%;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .modal-body {
+        overflow: auto;
+        height: calc(80vh - 8.5rem);
+    }
+
+}

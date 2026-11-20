@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <externalClientApplication>IQR_My_Deals_v1</externalClientApplication>
+    <label>IQR_My_Deals_v1_oauthSecurity</label>
+</ExtlClntAppOauthSecuritySettings>

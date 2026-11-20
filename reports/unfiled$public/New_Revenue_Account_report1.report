@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_48256634</developerName>
+        <masterLabel>Account Name</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT.NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>NGC - 4733 Trident Ct Halethorpe</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Baltimore</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Chantilly</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Columbia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Linthicum Heights (Aviation Blvd)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Linthicum Heights (Nursery Rd)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Melbourne</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Mission Systems (Linthicum)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - Rolling Meadows (Hicks Rd.)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NGC - San Diego</sourceValue>
+            </sourceValues>
+            <value>NGC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>MICROSOFT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MICROSOFT CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Microsoft - Windows Cloud Server</sourceValue>
+            </sourceValues>
+            <value>MICROSOFT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APPLE INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APPLE INC.</sourceValue>
+            </sourceValues>
+            <value>APPLE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Collins Aerospace</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ROCKWELL COLLINS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ROCKWELL COLLINS INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ROCKWELL COLLINS, INC.</sourceValue>
+            </sourceValues>
+            <value>COLLINS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VIASAT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VIASAT, INC.</sourceValue>
+            </sourceValues>
+            <value>VIASAT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CRESTRON ELECTRONIC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CRESTRON ELECTRONICS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Crestron Electronics</sourceValue>
+            </sourceValues>
+            <value>CRESTRON</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Bug_Doc_Fix_ID__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Intel_Sup_Owner__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND ((6 AND 7) OR (8 AND 9) OR (10 AND 11) OR (12 AND 13) OR (14 AND 15) OR (16 AND 17) OR (18 AND 19) OR 20)</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Case.Core_AAQC_Case_recordType</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New,Open,​Open,​​Open</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Invalid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Close-Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Programmable Solutions Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Intel® Stratix® 10</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Microsoft,NGC,F5 Networks,Qualcomm,Viasat,Broadcom,Squirrels Research Labs,Ciena,Dasan Zhone Solutions,Apple</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Intel® Arria® 10</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Apple,Crestron,Harris Corporation,Texas Instruments,Collins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Enpirion</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Crestron</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Arria® V</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Collins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Intel® MAX® 10</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>nVidia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Intel® eASIC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>nVidia,Collins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Intel® FPGA PAC N3000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>ZT Group,Samsung</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Amazon Web Services</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_48256634</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Core_Severity__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>New Revenue Account report</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>AGE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
+    </timeFrameFilter>
+</Report>

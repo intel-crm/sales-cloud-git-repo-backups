@@ -1,0 +1,3 @@
+<aura:event type="Application" description="Child to Parent Cmmunication">
+    <aura:attribute name="alertMessages" type="String" />
+</aura:event>

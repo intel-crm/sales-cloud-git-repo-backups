@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>TPT_Tracker__c$Name</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$InnovationTracker__c</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$Status__c</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$Status_Change_Date_Time__c</field>
+    </columns>
+    <columns>
+        <field>TPT_Tracker__c$Time_Taken_To_Submit__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>TPT_Tracker__c$InnovationTracker__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Innovation Tracker Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>TPT_Tracker__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>TPT_Tracker__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

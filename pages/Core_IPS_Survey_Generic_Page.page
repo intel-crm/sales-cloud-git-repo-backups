@@ -1,0 +1,15 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_Survey_Generic_Page
+Version     : 1.0 
+Created Date: Aug 28 2017
+Function    : Visualforce Page to display generic message if site has any issue in displaying survey page 
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Amritesh                   08/28/2017               Created
+------------------------------------------------------------------------------------------------------------>
+<apex:page title="Intel Premier Support Survey" showHeader="false">
+	<div style="padding:30px;">            
+        <apex:outputText value="{!$Label.Core_IPS_Survey_Generic_Message}" escape="false"/>
+    </div>
+</apex:page>

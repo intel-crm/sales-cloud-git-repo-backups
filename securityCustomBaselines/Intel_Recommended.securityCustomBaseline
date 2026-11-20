@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SecurityCustomBaseline xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseline>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;
+
+&lt;!-- 
+     Please read Custom Baseline File Requirements for information about making changes in this file:
+     https://help.salesforce.com/articleView?id=security_custom_baseline_file_requirements.htm
+--&gt;
+
+&lt;baseline name=&quot;INTEL Recommended&quot; developerName=&quot;INTELRecommended&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+      xsi:noNamespaceSchemaLocation=&quot;security-risk-baseline.xsd&quot;&gt;
+      
+      &lt;highRiskSecuritySettings&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.lockSessionsToDomain&quot; compliant=&quot;true&quot; nonCompliant=&quot;warning&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.enableSmsIdentity&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.clickjackSetup&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.clickjackNonSetup&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.clickjackVisualForceHeaders&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.clickjackVisualForceNoHeaders&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.csrfGet&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.csrfPost&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.requireHttpOnly&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;FileUploadAndDownloadSecurity.hybridSecurityRiskFileTypes&quot; compliant=&quot;0.0&quot; warning=&quot;0.5&quot;/&gt;
+        &lt;enumSetting name=&quot;PasswordPolicies.maxLoginAttempts&quot; compliant=&quot;ThreeAttempts,FiveAttempts,TenAttempts&quot; warning =&quot;NoLimit&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;CertificateAndKeyManagement.expiredCert&quot; compliant=&quot;0.0&quot; warning=&quot;1.0&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;SharingSettings.orgWideDefaults&quot; compliant=&quot;0.0&quot; warning=&quot;1.0&quot;/&gt; 
+      &lt;/highRiskSecuritySettings&gt;
+
+      &lt;mediumRiskSecuritySettings&gt;
+        &lt;booleanSetting name=&quot;PasswordPolicies.minOneDayPasswordLifetime&quot; compliant=&quot;true&quot; nonCompliant=&quot;warning&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.forceRelogin&quot; compliant=&quot;true&quot; nonCompliant=&quot;warning&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.enforceLoginIp&quot; compliant=&quot;true&quot; nonCompliant=&quot;warning&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.cspOnEmail&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.xssProtection&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.contentSniffingProtection&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;LoginAccessPolicies.adminLoginAsAnyUser&quot; compliant=&quot;false&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;PasswordPolicies.history&quot; compliant=&quot;5.0&quot; warning=&quot;0.0&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;PasswordPolicies.minPasswordLength&quot; compliant=&quot;8.0&quot; warning=&quot;6.0&quot;/&gt;
+        &lt;enumSetting name=&quot;PasswordPolicies.expiration&quot; compliant=&quot;ThirtyDays,SixtyDays,NinetyDays&quot; warning=&quot;SixMonths&quot; critical=&quot;OneYear,Never&quot;/&gt;
+        &lt;enumSetting name=&quot;PasswordPolicies.complexity&quot; compliant=&quot;SpecialCharacters,UpperLowerCaseNumeric,UpperLowerCaseNumericSpecialCharacters,Any3UpperLowerCaseNumericSpecialCharacters&quot; warning=&quot;AlphaNumeric&quot; critical=&quot;NoRestriction&quot;/&gt;
+      &lt;/mediumRiskSecuritySettings&gt;
+      
+      &lt;lowRiskSecuritySettings&gt;
+        &lt;booleanSetting name=&quot;PasswordPolicies.obscureSecretAnswer&quot; compliant=&quot;true&quot; nonCompliant=&quot;warning&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.forceLogoutOnTimeout&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.icOn2faRegistration&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;RemoteSiteSettings.remoteSiteSettings&quot; compliant=&quot;0.0&quot; warning=&quot;1.0&quot;/&gt;
+        &lt;enumSetting name=&quot;PasswordPolicies.questionRestriction&quot; compliant=&quot;DoesNotContainPassword&quot; warning=&quot;None&quot; /&gt;
+        &lt;enumSetting name=&quot;PasswordPolicies.lockoutInterval&quot; compliant=&quot;FifteenMinutes,ThirtyMinutes,SixtyMinutes,Forever&quot;/&gt;
+        &lt;enumSetting name=&quot;SessionSettings.timeout&quot; compliant=&quot;FifteenMinutes,ThirtyMinutes,SixtyMinutes,TwoHours,FourHours,EightHours&quot; warning=&quot;TwelveHours&quot; critical=&quot;TwentyFourHours&quot;/&gt;
+      &lt;/lowRiskSecuritySettings&gt;
+      
+      &lt;informationalSecuritySettings&gt;
+        &lt;numericRangeSetting name=&quot;CertificateAndKeyManagement.keySize&quot; compliant=&quot;4096.0&quot; warning=&quot;2048.0&quot;/&gt;
+        &lt;numericRangeSetting name=&quot;CertificateAndKeyManagement.certExpiration&quot; compliant=&quot;180.0&quot; warning=&quot;1.0&quot;/&gt;
+        &lt;booleanSetting name=&quot;UserPIISettings.enforceNameVisibility&quot; compliant=&quot;true&quot; nonCompliant=&quot;critical&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.redirectionAllowUntrusted&quot; compliant=&quot;false&quot; nonCompliant=&quot;warning&quot;/&gt;
+        &lt;booleanSetting name=&quot;SessionSettings.icOnEmailChange&quot; compliant=&quot;true&quot; nonCompliant=&quot;warning&quot;/&gt;
+      &lt;/informationalSecuritySettings&gt;
+
+&lt;/baseline&gt;</baseline>
+    <isDefault>false</isDefault>
+    <label>Intel Recommended</label>
+</SecurityCustomBaseline>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Claim Status on Hold For Partner Users</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Claim_Status_OnHold_Partner</name>
+    <style>none</style>
+    <subject>Claim #  has been put on hold</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

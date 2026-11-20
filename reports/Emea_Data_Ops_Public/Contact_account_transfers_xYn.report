@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_86251885</developerName>
+        <masterLabel>Edit by (team)</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Michael Sweet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Justyna Pieniążek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>KAROLINA JURKIEWICZ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ali El Gohary</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paolo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sarah Rust</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethan Street</sourceValue>
+            </sourceValues>
+            <value>EMEA Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Jeffrey Peet</sourceValue>
+            </sourceValues>
+            <value>Jeff Peet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Michael Thurmond</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LINDA LEE NORTH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nhat Nguyen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gabriella Mejia</sourceValue>
+            </sourceValues>
+            <value>AMR Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>YueXin Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yu Hong Deng</sourceValue>
+            </sourceValues>
+            <value>PRC Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Luna Tseng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nurzalifah Binti Sulaiman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jason Xiao</sourceValue>
+            </sourceValues>
+            <value>APJ Data Ops</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_86251885</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>CREATED_DATE</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>CONTACT_ACCOUNT</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_ID__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Enterprise_Id__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_eRPM_Person_Id__c</field>
+    </columns>
+    <columns>
+        <field>field_key</field>
+    </columns>
+    <columns>
+        <field>OLDVAL</field>
+    </columns>
+    <columns>
+        <field>NEWVAL</field>
+    </columns>
+    <columns>
+        <field>CONTACT_OWNER</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Name</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_86251885</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AMR Data Ops,APJ Data Ops,EMEA Data Ops,Jeff Peet,PRC Data Ops</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_86251885</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Contact account transfers - changes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CURPREVQ</interval>
+    </timeFrameFilter>
+</Report>

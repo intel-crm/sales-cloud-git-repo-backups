@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>EMBED - HW L3 (ECG-PSE) ASMO Atom</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_007_HW_L3_ECG_PSE_ASMO_Atom</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

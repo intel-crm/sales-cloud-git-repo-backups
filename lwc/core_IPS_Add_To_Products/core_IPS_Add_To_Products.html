@@ -1,0 +1,45 @@
+<template>
+    <!--<lightning-quick-action-panel header="Add Environment Details Operational to Supported Products and Environment Detail Question" 
+    style=" background-color:rgb(205, 233, 242);"> -->
+    
+        <div class="slds-align_absolute-center" style="background-color:#5875aa; height:50px;" >
+            <h1 style="color:white; font-size:1.5rem;"><b>Add Environment Details Operational to Supported Products and Environment Detail Question</b></h1>
+        </div>
+        <lightning-card>
+        <div if:true={showData}>
+            <div class="slds-align_absolute-center">
+                <lightning-button label="Add To Products" onclick={addToProduct} disabled={disableaddtoprod}></lightning-button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <lightning-button label="Exit" onclick={exitAction}></lightning-button>
+            </div>
+        
+            <br/>
+            <div class="slds-p-around_small">
+                <template if:true={supportedProductsData}>
+                    <div style="height:25rem;">
+                        <lightning-datatable key-field="Id" data={supportedProductsData} columns={columns}
+                        onrowselection={handleRowSelection} onsave={handleSave} draft-values={fldsItemValues}
+                        onloadmore={loadMoreData} enable-infinite-loading>
+                        </lightning-datatable>
+                    </div>
+                    
+                </template>
+            </div>
+        
+            <div if:true={lightningSpinner}>
+                <lightning-spinner alternative-text="Loading..." variant="brand" class="slds-is-fixed">
+                </lightning-spinner>
+            </div>
+        </div>
+        </lightning-card>
+        <div if:false={showData}>
+            <div class="slds-align_absolute-center">
+                <lightning-button label="Exit" onclick={exitAction}></lightning-button>
+            </div>    
+            <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                    <h1><b>{Message}</b></h1>
+            </div>        
+        </div>
+    
+   <!--</lightning-quick-action-panel>-->
+</template>

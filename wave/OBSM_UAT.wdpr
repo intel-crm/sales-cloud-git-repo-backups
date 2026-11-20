@@ -1,0 +1,2227 @@
+{
+  "version" : "65.0",
+  "nodes" : {
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET20", "LOAD_DATASET19" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "DEPARTMENT_CD" ],
+        "rightQualifier" : "WRK_DPT",
+        "rightKeys" : [ "DEPARTMENT_CD" ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Email", "Id", "Username", "Name", "ManagerId", "Core_WWID__c", "Core_Manager__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Opportunity.Opportunity_Focus__c", "CloseDate", "first_snap_of_month.min_snapshot_month.snapshot_yearquarter", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Name", "Core_Opportunity_Owner__c", "Opportunity.Core_Coverage_Type_Nm__c", "OpportunityProducts.Opportunity.Account.Owner.Name", "Id", "OpportunityProducts.Opportunity.StageName", "Core_Opportunity_Type__c", "OppAccountUser.Id", "OpportunityProducts.Opportunity.CreatedDate", "OwnerId", "PushSnap.MinquarterSnapforPush.snapshot_yearquarter", "first_snap_decision.first_decision_of_quarter.Snapshot_yearmonth", "first_snap_of_month.min_snapshot_month.Snapshot_yearmonth", "snapshot_yearquarter", "Type", "AccountId", "OpportunityProducts.Opportunity.Core_Sales_Group__c", "first_snap_decision.snapshot_yearquarter", "OpportunityAccount.Name", "OpportunityProducts.Opportunity.Core_Opportunity_Type__c", "Snapshot_Date", "Opportunity.Core_Opportunity_Coverage_Nm__c", "opp_sales_group", "OpportunityProducts.Core_Status__c", "OpportunityProducts.Opportunity.TeamMembers.User.Name", "Core_Push_Counter__c", "unhealthy_past_due" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "ForecastSnapshot",
+          "name" : "Forecast_Snapshot_with_Transforms"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "FORMULA23" : {
+      "action" : "formula",
+      "sources" : [ "JOIN8" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Flag_MonthAccess",
+          "label" : "Flag_MonthAccess",
+          "formulaExpression" : "case when Snapshot_YearMonth = \"usage.WW_YearMonth\" then 1 else 0 end",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA24" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA23" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Flag_WeekAccess",
+          "label" : "Flag_WeekAccess",
+          "formulaExpression" : "\"usage.UNIQUE_PAGE_ENTITY_ID\"",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA25" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA24" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "YearQuarter",
+          "label" : "YearQuarter",
+          "formulaExpression" : "concat(year(CloseDate),'0',quarter(CloseDate))",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA26" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA25" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Year",
+          "label" : "Year",
+          "formulaExpression" : "string(year(CloseDate))",
+          "precision" : 4,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA27" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA26" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Month_Name",
+          "label" : "Month_Name",
+          "formulaExpression" : "case when month(CloseDate) = 1 then 'January'\r\nwhen month(CloseDate) = 2 then 'February'\r\nwhen month(CloseDate) = 3 then 'March' \r\nwhen month(CloseDate) = 4 then 'April' \r\nwhen month(CloseDate) = 5 then 'May' \r\nwhen month(CloseDate) = 6 then 'June'\r\nwhen month(CloseDate) = 7 then 'July'\r\nwhen month(CloseDate) = 8 then 'August'\r\nwhen month(CloseDate) = 9 then 'September'\r\nwhen month(CloseDate) = 10 then 'October'\r\nwhen month(CloseDate) = 11 then 'November'\r\nwhen month(CloseDate) = 12 then 'December' end",
+          "precision" : 30,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA28" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA27" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "yearMonthNumber",
+          "label" : "yearMonthNumber",
+          "formulaExpression" : "case when month(CloseDate) > 9 then concat(year(CloseDate),month(CloseDate)) else concat(year(CloseDate),'0',month(CloseDate)) end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "JOIN9", "FILTER1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "User.Email" ],
+        "rightQualifier" : "WRK_Oppty",
+        "rightKeys" : [ "CORPORATE_EMAIL_TXT" ]
+      }
+    },
+    "JOIN8" : {
+      "action" : "join",
+      "sources" : [ "FORMULA42", "AGGREGATE9" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id", "Work_Week_SnapShot", "User.Id" ],
+        "rightQualifier" : "usage",
+        "rightKeys" : [ "PAGE_ENTITY_ID", "WW_Week", "USER_ID_DERIVED" ]
+      }
+    },
+    "FORMULA14" : {
+      "action" : "formula",
+      "sources" : [ "FILTER2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Week_Accessed",
+          "label" : "Week_Accessed",
+          "formulaExpression" : "WEEKOFYEAR(TIMESTAMP_DERIVED)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA15" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA14" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_Week",
+          "label" : "WW_Week",
+          "formulaExpression" : "case when Week_Accessed < 10 then concat('WW0',string(Week_Accessed)) else concat('WW',string(Week_Accessed)) end\r\n",
+          "precision" : 4,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA16" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA15" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Month_Accessed",
+          "label" : "Month_Accessed",
+          "formulaExpression" : "Month(TIMESTAMP_DERIVED)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA17" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_Month",
+          "label" : "WW_Month",
+          "formulaExpression" : "case when Month_Accessed < 10 then concat('0', string(Month_Accessed)) else string(Month_Accessed) end",
+          "precision" : 2,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA18" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA17" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_YearMonth",
+          "label" : "WW_YearMonth",
+          "formulaExpression" : "concat(string(Year(TIMESTAMP_DERIVED)),WW_Month)",
+          "precision" : 6,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA19" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA55" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_YearQuarter",
+          "label" : "WW_YearQuarter",
+          "formulaExpression" : "concat(string(Year(TIMESTAMP_DERIVED)),\r\n'0',string(quarter(TIMESTAMP_DERIVED)))",
+          "precision" : 6,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA55" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA18" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_Year",
+          "label" : "WW_Year",
+          "formulaExpression" : "string(Year(TIMESTAMP_DERIVED))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA20" : {
+      "action" : "formula",
+      "sources" : [ "JOIN7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Work_Week_SnapShot",
+          "label" : "Work_Week_SnapShot",
+          "formulaExpression" : "case when weekofyear(Snapshot_Date) < 10 then concat('WW0',weekofyear(Snapshot_Date)) else concat('WW',weekofyear(Snapshot_Date)) end\r\n",
+          "precision" : 4,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA21" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA20" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Week_SnapShot",
+          "label" : "Week_SnapShot",
+          "formulaExpression" : "weekofyear(Snapshot_Date)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA22" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA21" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Snapshot_YearMonth",
+          "label" : "Snapshot_YearMonth",
+          "formulaExpression" : "concat(string(year(Snapshot_Date)),\r\ncase when month(Snapshot_Date) < 10 then concat('0',string(month(Snapshot_Date))) else string(month(Snapshot_Date)) end)",
+          "precision" : 6,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA42" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA22" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Filtered_OpptyType",
+          "label" : "Filtered_OpptyType",
+          "formulaExpression" : "CASE WHEN \"Core_Opportunity_Type__c\" in ('Deal: Sell-to', 'Design: Original', 'Design: Secondary', 'Deal: Sell-with', 'Deal: Sell-through') then \"Core_Opportunity_Type__c\" else null end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FILTER1" : {
+      "action" : "filter",
+      "sources" : [ "JOIN0" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "JOB_TYPE_NM",
+          "operator" : "EQUAL",
+          "operands" : [ "Partner Sales Account Manager", "Sales Account Manager", "Account Executive", "Sales Applications Engineer" ]
+        }, {
+          "type" : "TEXT",
+          "field" : "CORPORATE_EMAIL_TXT",
+          "operator" : "CONTAINS",
+          "operands" : [ "@intel.com" ]
+        } ]
+      }
+    },
+    "FILTER2" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET21" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "ORGANIZATION_ID",
+          "operator" : "EQUAL",
+          "operands" : [ "00Do0000000aRcf" ]
+        }, {
+          "type" : "TEXT",
+          "field" : "PAGE_ENTITY_TYPE",
+          "operator" : "EQUAL",
+          "operands" : [ "Opportunity", "Product2" ]
+        }, {
+          "type" : "TEXT",
+          "field" : "PAGE_ENTITY_ID",
+          "operator" : "NOT",
+          "operands" : [ "", "unknown" ]
+        }, {
+          "type" : "DATETIME",
+          "field" : "Snapshot_Date",
+          "operator" : "GREATER_THAN",
+          "operands" : [ "1688083200000" ]
+        } ]
+      }
+    },
+    "JOIN9" : {
+      "action" : "join",
+      "sources" : [ "JOIN10", "LOAD_DATASET4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OppAccountUser.Id" ],
+        "rightQualifier" : "User",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OpportunityId", "Role", "CreatedDate" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "OpportunityContactRole",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "OpportunityContactRole"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "JOIN10" : {
+      "action" : "join",
+      "sources" : [ "JOIN11", "FILTER3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Contact",
+        "rightKeys" : [ "OpportunityId" ]
+      }
+    },
+    "FILTER3" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET10" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Role",
+          "operator" : "EQUAL",
+          "operands" : [ "Business Decision Maker" ]
+        } ]
+      }
+    },
+    "APPEND0" : {
+      "action" : "appendV2",
+      "sources" : [ "FORMULA29", "FORMULA30" ],
+      "parameters" : {
+        "fieldMappings" : [ ],
+        "allowImplicitDisjointSchema" : true
+      }
+    },
+    "FORMULA29" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA28" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Sales_Group",
+          "label" : "Sales_Group",
+          "formulaExpression" : "case when \"Account.Core_Sales_Groups__c\" is not null then 'Total' else null end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA30" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA28" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Sales_Group",
+          "label" : "Sales_Group",
+          "formulaExpression" : "(case\r\n      when contains(upper(\"Account.Core_Sales_Groups__c\"), 'INDIA')\r\n      then 'India'\r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'EMEA') \r\n      then 'EMEA'\r\n      when \"Account.Core_Sales_Groups__c\" = 'Global Solutions & Services Sales Group' then 'GSS'\r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'APJ') then 'APJ' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'Americas' ) then 'Americas' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'PRC') then 'PRC' \r\n      else 'Other'\r\nend)\r\n",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN11" : {
+      "action" : "join",
+      "sources" : [ "FILTER9", "LOAD_DATASET11" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "AccountId" ],
+        "rightQualifier" : "Account",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET11" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Technical_Owner__c", "Core_Account_Owner__c", "Core_Account_Owner_Preview__c", "OwnerId", "Id", "Core_Account_Type__c", "Core_Account_Coverage__c", "Core_Sales_Groups__c", "Core_Opportunity_Sales_Group_Txt__c", "Core_Unified_Global_Customer_Name__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET12" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "WhatId", "ActivityDate" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Task",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Task"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET13" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "WhatId", "ActivityDateTime", "ActivityDate" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Event",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Event"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "FORMULA31" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_UpdateWeek",
+          "label" : "WW_UpdateWeek",
+          "formulaExpression" : "case when weekofyear(ActivityDate) < 10 then concat('WW0',string(weekofyear(ActivityDate))) else concat('WW',string(weekofyear(ActivityDate))) end\r\n\r\n\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA33" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA31" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UpdateMonth",
+          "label" : "UpdateMonth",
+          "formulaExpression" : "case when month(ActivityDate) < 10 then concat('0',string(month(ActivityDate))) else concat('',string(month(ActivityDate))) end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA43" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA33" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UpdateYearMonth",
+          "label" : "UpdateYearMonth",
+          "formulaExpression" : "case when month(ActivityDate) < 10 then concat(string(year(ActivityDate)),'0',string(month(ActivityDate))) else concat(string(year(ActivityDate)),'',string(month(ActivityDate))) end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA45" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA43" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UpdateYear",
+          "label" : "UpdateYear",
+          "formulaExpression" : "year(ActivityDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA47" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA45" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UpdateFlag",
+          "label" : "UpdateFlag",
+          "formulaExpression" : "1",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA54" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA47" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "OpportunityId",
+          "label" : "OpportunityId",
+          "formulaExpression" : "WhatId",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA32" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_UpdateWeek",
+          "label" : "WW_UpdateWeek",
+          "formulaExpression" : "case when weekofyear(ActivityDate) < 10 then concat('WW0',string(weekofyear(ActivityDate))) else concat('WW',string(weekofyear(ActivityDate))) end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA34" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA32" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UpdateMonth",
+          "label" : "UpdateMonth",
+          "formulaExpression" : "case when month(ActivityDate) < 10 then concat('0',string(month(ActivityDate))) else concat('',string(month(ActivityDate))) end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA44" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA34" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UpdateYearMonth",
+          "label" : "UpdateYearMonth",
+          "formulaExpression" : "case when month(ActivityDate) < 10 then concat(string(year(ActivityDate)),'0',string(month(ActivityDate))) else concat(string(year(ActivityDate)),'',string(month(ActivityDate))) end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA46" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA44" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UpdateYear",
+          "label" : "UpdateYear",
+          "formulaExpression" : "year(ActivityDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA48" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA46" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UpdateFlag",
+          "label" : "UpdateFlag",
+          "formulaExpression" : "1",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA53" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA48" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "OpportunityId",
+          "label" : "OpportunityId",
+          "formulaExpression" : "WhatId",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "LOAD_DATASET14" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OwnerId", "Name", "LastModifiedDate", "Account__c", "Number_of_Attachments__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account_Plan__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account_Plan__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "JOIN14" : {
+      "action" : "join",
+      "sources" : [ "JOIN17", "LOAD_DATASET14" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Account.Id" ],
+        "rightQualifier" : "Account_Plan",
+        "rightKeys" : [ "Account__c" ]
+      }
+    },
+    "LOAD_DATASET16" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "OpportunityId", "CreatedById", "CreatedDate", "Field", "OldValue", "NewValue", "DataType" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "OpportunityFieldHistory",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "OpportunityFieldHistory"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "FILTER6" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA52" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "flag_history",
+          "operator" : "EQUAL",
+          "operands" : [ "T" ]
+        }, {
+          "type" : "NUMBER",
+          "field" : "UpdateYear",
+          "operator" : "GREATER_OR_EQUAL",
+          "operands" : [ "2023" ]
+        } ]
+      }
+    },
+    "OUTPUT1" : {
+      "action" : "save",
+      "sources" : [ "FORMULA37" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Account_Plan_UAT",
+          "name" : "Account_Plan_UAT",
+          "folderName" : "Bug_Fix"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA35" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "WW_UpdateWeek",
+          "label" : "WW_UpdateWeek",
+          "formulaExpression" : "case when weekofyear(CreatedDate) < 10 then concat('WW0',string(weekofyear(CreatedDate))) else concat('WW',string(weekofyear(CreatedDate))) end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA39" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA51" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "NewNewValue",
+          "label" : "NewNewValue",
+          "formulaExpression" : "case when NewValue is null then 'NULLIFIED' else NewValue end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA40" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA39" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "OldOldValue",
+          "label" : "OldOldValue",
+          "formulaExpression" : "case when OldValue is null then 'NULLIFIED' else OldValue end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA41" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA40" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "flag_history",
+          "label" : "flag_history",
+          "formulaExpression" : "case \r\nwhen coalesce(NewValue, 'NA') = coalesce(OldValue, 'NA')  then 'F'\r\nelse 'T' \r\nend",
+          "precision" : 1,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA49" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA35" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UpdateMonth",
+          "label" : "UpdateMonth",
+          "formulaExpression" : "case when month(CreatedDate) < 10 then concat('0',string(month(CreatedDate))) else concat('',string(month(CreatedDate))) end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA50" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA49" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "UpdateYearMonth",
+          "label" : "UpdateYearMonth",
+          "formulaExpression" : "case when month(CreatedDate) < 10 then concat(string(year(CreatedDate)),'0',string(month(CreatedDate))) else concat(string(year(CreatedDate)),'',string(month(CreatedDate))) end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA51" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA50" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UpdateYear",
+          "label" : "UpdateYear",
+          "formulaExpression" : "year(CreatedDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA52" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA41" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "UpdateFlag",
+          "label" : "UpdateFlag",
+          "formulaExpression" : "1",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA36" : {
+      "action" : "formula",
+      "sources" : [ "JOIN16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Account_YearQuarter",
+          "label" : "Account_YearQuarter",
+          "formulaExpression" : "concat(string(year(LastModifiedDate)),'0',string(quarter(LastModifiedDate)))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA37" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA36" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Account_Sales_Groups",
+          "label" : "Account_Sales_Groups",
+          "formulaExpression" : "(case  when contains(upper(\"Account.Core_Sales_Groups__c\"), 'INDIA')\r\n      then 'India'\r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'EMEA') \r\n      then 'EMEA'\r\n      when \"Account.Core_Sales_Groups__c\" = 'Global Accounts Sales Group' then 'GSA' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'APJ') then 'APJ' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'Americas' ) then 'Americas' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'PRC') then 'PRC' \r\n      else 'Other'\r\nend)\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN16" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET14", "LOAD_DATASET11" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Account__c" ],
+        "rightQualifier" : "Account",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "APPEND1" : {
+      "action" : "appendV2",
+      "sources" : [ "FILTER8", "FILTER7" ],
+      "parameters" : {
+        "fieldMappings" : [ {
+          "top" : "WhatId",
+          "bottom" : "WhatId"
+        }, {
+          "top" : "ActivityDate",
+          "bottom" : "ActivityDate"
+        }, {
+          "top" : "WW_UpdateWeek",
+          "bottom" : "WW_UpdateWeek"
+        }, {
+          "top" : "UpdateMonth",
+          "bottom" : "UpdateMonth"
+        }, {
+          "top" : "UpdateYearMonth",
+          "bottom" : "UpdateYearMonth"
+        }, {
+          "top" : "UpdateYear",
+          "bottom" : "UpdateYear"
+        }, {
+          "top" : "UpdateFlag",
+          "bottom" : "UpdateFlag"
+        }, {
+          "top" : "OpportunityId",
+          "bottom" : "OpportunityId"
+        } ]
+      }
+    },
+    "FILTER7" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA54" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "WhatId",
+          "operator" : "IS_NOT_NULL",
+          "operands" : [ ]
+        }, {
+          "type" : "NUMBER",
+          "field" : "UpdateYear",
+          "operator" : "GREATER_OR_EQUAL",
+          "operands" : [ "2023" ]
+        } ]
+      }
+    },
+    "FILTER8" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA53" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "WhatId",
+          "operator" : "IS_NOT_NULL",
+          "operands" : [ ]
+        }, {
+          "type" : "NUMBER",
+          "field" : "UpdateYear",
+          "operator" : "GREATER_OR_EQUAL",
+          "operands" : [ "2023" ]
+        } ]
+      }
+    },
+    "EXTRACT3" : {
+      "action" : "extractGrains",
+      "sources" : [ "APPEND2" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE7" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT3" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "MAX",
+          "source" : "UpdateFlag",
+          "name" : "Update_Flag",
+          "label" : "Update_Flag"
+        } ],
+        "groupings" : [ "OpportunityId", "UpdateYearMonth", "UpdateMonth", "WW_UpdateWeek" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "APPEND2" : {
+      "action" : "appendV2",
+      "sources" : [ "APPEND1", "FILTER6" ],
+      "parameters" : {
+        "fieldMappings" : [ {
+          "top" : "WW_UpdateWeek",
+          "bottom" : "WW_UpdateWeek"
+        }, {
+          "top" : "UpdateMonth",
+          "bottom" : "UpdateMonth"
+        }, {
+          "top" : "UpdateYearMonth",
+          "bottom" : "UpdateYearMonth"
+        }, {
+          "top" : "UpdateYear",
+          "bottom" : "UpdateYear"
+        }, {
+          "top" : "UpdateFlag",
+          "bottom" : "UpdateFlag"
+        }, {
+          "top" : "OpportunityId",
+          "bottom" : "OpportunityId"
+        } ]
+      }
+    },
+    "JOIN17" : {
+      "action" : "join",
+      "sources" : [ "APPEND0", "AGGREGATE7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id", "Snapshot_YearMonth", "Work_Week_SnapShot" ],
+        "rightQualifier" : "Update",
+        "rightKeys" : [ "OpportunityId", "UpdateYearMonth", "WW_UpdateWeek" ]
+      }
+    },
+    "FILTER9" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET5" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Opportunity.Core_Opportunity_Coverage_Nm__c",
+          "operator" : "EQUAL",
+          "operands" : [ "Intel-Led Opportunity" ]
+        } ]
+      }
+    },
+    "EXTRACT4" : {
+      "action" : "extractGrains",
+      "sources" : [ "FORMULA19" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE9" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT4" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "PAGE_ENTITY_ID",
+          "name" : "UNIQUE_PAGE_ENTITY_ID",
+          "label" : "Unique PAGE_ENTITY_ID"
+        } ],
+        "groupings" : [ "PAGE_ENTITY_ID", "USER_ID_DERIVED", "WW_Month", "WW_Week", "WW_YearMonth", "WW_Year" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "OUTPUT2" : {
+      "action" : "save",
+      "sources" : [ "AGGREGATE7" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpptyUpdates_UAT",
+          "name" : "OpptyUpdates_UAT",
+          "folderName" : "Bug_Fix"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "JOIN18" : {
+      "action" : "join",
+      "sources" : [ "JOIN14", "LOAD_DATASET17" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Account.OwnerId" ],
+        "rightQualifier" : "User1",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET17" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ManagerId", "Id" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "JOIN19" : {
+      "action" : "join",
+      "sources" : [ "JOIN18", "LOAD_DATASET18" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "User1.ManagerId" ],
+        "rightQualifier" : "AccountManager",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET18" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "OUTPUT3" : {
+      "action" : "save",
+      "sources" : [ "JOIN19" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UsageTrending_UAT",
+          "name" : "UsageTrending_UAT",
+          "folderName" : "Bug_Fix"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "OUTPUT6" : {
+      "action" : "save",
+      "sources" : [ "APPEND0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OBSMTotalSalesGroup_UAT",
+          "name" : "OBSMTotalSalesGroup_UAT",
+          "folderName" : "Bug_Fix"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET19" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "DEPARTMENT_NM", "DEPARTMENT_LEVEL_THREE_NM", "DEPARTMENT_LEVEL_SIX_NM", "DEPARTMENT_LEVEL_FOUR_NM", "DEPARTMENT_LEVEL_FIVE_NM", "DEPARTMENT_CD" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "WORKER_DEPARTMENT_HIERARCHY_SNAPSHOT",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "WORKER_DEPARTMENT_HIERARCHY_SNAPSHOT"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET20" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "JOB_TYPE_NM", "JOB_FUNCTION_NM", "CORPORATE_EMAIL_TXT", "FULL_NM", "LAST_NM", "MIDDLE_NM", "FIRST_NM", "WWID", "ROOT_PERSON_ROLE_TYPE_CD", "DEPARTMENT_CD" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "ENTERPRISE_WORKER",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "ENTERPRISE_WORKER"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET21" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "PAGE_ENTITY_TYPE", "Snapshot_Date", "TIMESTAMP_DERIVED", "ORGANIZATION_ID", "PAGE_ENTITY_ID", "USER_ID_DERIVED" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "SnapshotDS",
+          "name" : "SnapshotDS4_1"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "JOIN0" : {
+        "label" : "WRK_DPT",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 530.3,
+        "left" : 392
+      },
+      "LOAD_DATASET4" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 810.2,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET5" : {
+        "label" : "ForecastSnapshot",
+        "type" : "LOAD_DATASET",
+        "top" : 810.3,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM2" : {
+        "label" : "Transform 2",
+        "type" : "TRANSFORM",
+        "top" : 810.2,
+        "left" : 952,
+        "graph" : {
+          "FORMULA23" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Flag_MonthAccess"
+          },
+          "FORMULA24" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Flag_WeekAccess"
+          },
+          "FORMULA25" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "YearQuarter"
+          },
+          "FORMULA26" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Year"
+          },
+          "FORMULA27" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Month_Name"
+          },
+          "FORMULA28" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "yearMonthNumber"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA23",
+          "target" : "FORMULA24"
+        }, {
+          "source" : "FORMULA24",
+          "target" : "FORMULA25"
+        }, {
+          "source" : "FORMULA25",
+          "target" : "FORMULA26"
+        }, {
+          "source" : "FORMULA26",
+          "target" : "FORMULA27"
+        }, {
+          "source" : "FORMULA27",
+          "target" : "FORMULA28"
+        } ]
+      },
+      "JOIN7" : {
+        "label" : "WRK_Oppty",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 670.2,
+        "left" : 532
+      },
+      "JOIN8" : {
+        "label" : "Usage",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 670.2,
+        "left" : 812
+      },
+      "TRANSFORM3" : {
+        "label" : "Transform 3",
+        "type" : "TRANSFORM",
+        "top" : 1090.2,
+        "left" : 812,
+        "graph" : {
+          "FORMULA14" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Week_Accessed"
+          },
+          "FORMULA15" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_Week"
+          },
+          "FORMULA16" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Month_Accessed"
+          },
+          "FORMULA17" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_Month"
+          },
+          "FORMULA18" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_YearMonth"
+          },
+          "FORMULA19" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_YearQuarter"
+          },
+          "FORMULA55" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_Year"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA14",
+          "target" : "FORMULA15"
+        }, {
+          "source" : "FORMULA15",
+          "target" : "FORMULA16"
+        }, {
+          "source" : "FORMULA16",
+          "target" : "FORMULA17"
+        }, {
+          "source" : "FORMULA17",
+          "target" : "FORMULA18"
+        }, {
+          "source" : "FORMULA55",
+          "target" : "FORMULA19"
+        }, {
+          "source" : "FORMULA18",
+          "target" : "FORMULA55"
+        } ]
+      },
+      "TRANSFORM4" : {
+        "label" : "Transform 4",
+        "type" : "TRANSFORM",
+        "top" : 670.2,
+        "left" : 672,
+        "graph" : {
+          "FORMULA20" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Work_Week_SnapShot"
+          },
+          "FORMULA21" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Week_SnapShot"
+          },
+          "FORMULA22" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Snapshot_YearMonth"
+          },
+          "FORMULA42" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Filtered_OpptyType"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA20",
+          "target" : "FORMULA21"
+        }, {
+          "source" : "FORMULA21",
+          "target" : "FORMULA22"
+        }, {
+          "source" : "FORMULA22",
+          "target" : "FORMULA42"
+        } ]
+      },
+      "FILTER1" : {
+        "label" : "Filter 1",
+        "type" : "FILTER",
+        "top" : 530.2,
+        "left" : 532
+      },
+      "FILTER2" : {
+        "label" : "Filter 2",
+        "type" : "FILTER",
+        "top" : 1092,
+        "left" : 671.8
+      },
+      "JOIN9" : {
+        "label" : "Join 9",
+        "type" : "JOIN",
+        "top" : 810.2,
+        "left" : 532
+      },
+      "LOAD_DATASET10" : {
+        "label" : "OpportunityContactRole",
+        "type" : "LOAD_DATASET",
+        "top" : 670.3,
+        "left" : 252,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN10" : {
+        "label" : "Join 10",
+        "type" : "JOIN",
+        "top" : 950.2,
+        "left" : 392
+      },
+      "FILTER3" : {
+        "label" : "Filter 3",
+        "type" : "FILTER",
+        "top" : 670.3,
+        "left" : 392
+      },
+      "APPEND0" : {
+        "label" : "Total_Sales_Group",
+        "description" : "",
+        "type" : "APPEND",
+        "top" : 670.2,
+        "left" : 1232
+      },
+      "TRANSFORM5" : {
+        "label" : "Sales_Total",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 670.2,
+        "left" : 1092,
+        "graph" : {
+          "FORMULA29" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Sales_Group"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "TRANSFORM6" : {
+        "label" : "Sales_Original",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 810.2,
+        "left" : 1092,
+        "graph" : {
+          "FORMULA30" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Sales_Group"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "JOIN11" : {
+        "label" : "Join 11",
+        "type" : "JOIN",
+        "top" : 810.3,
+        "left" : 252
+      },
+      "LOAD_DATASET11" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 950.3,
+        "left" : 252,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET12" : {
+        "label" : "Task",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET13" : {
+        "label" : "Event",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 671.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM7" : {
+        "label" : "Transform 7",
+        "type" : "TRANSFORM",
+        "top" : 111.5,
+        "left" : 812,
+        "graph" : {
+          "FORMULA31" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_UpdateWeek"
+          },
+          "FORMULA33" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateMonth"
+          },
+          "FORMULA43" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateYearMonth"
+          },
+          "FORMULA45" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateYear"
+          },
+          "FORMULA47" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateFlag"
+          },
+          "FORMULA54" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "OpportunityId"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA31",
+          "target" : "FORMULA33"
+        }, {
+          "source" : "FORMULA33",
+          "target" : "FORMULA43"
+        }, {
+          "source" : "FORMULA43",
+          "target" : "FORMULA45"
+        }, {
+          "source" : "FORMULA45",
+          "target" : "FORMULA47"
+        }, {
+          "source" : "FORMULA47",
+          "target" : "FORMULA54"
+        } ]
+      },
+      "TRANSFORM8" : {
+        "label" : "Transform 8",
+        "type" : "TRANSFORM",
+        "top" : 251.5,
+        "left" : 812,
+        "graph" : {
+          "FORMULA32" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_UpdateWeek"
+          },
+          "FORMULA34" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateMonth"
+          },
+          "FORMULA44" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateYearMonth"
+          },
+          "FORMULA46" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateYear"
+          },
+          "FORMULA48" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateFlag"
+          },
+          "FORMULA53" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "OpportunityId"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA32",
+          "target" : "FORMULA34"
+        }, {
+          "source" : "FORMULA34",
+          "target" : "FORMULA44"
+        }, {
+          "source" : "FORMULA44",
+          "target" : "FORMULA46"
+        }, {
+          "source" : "FORMULA46",
+          "target" : "FORMULA48"
+        }, {
+          "source" : "FORMULA48",
+          "target" : "FORMULA53"
+        } ]
+      },
+      "LOAD_DATASET14" : {
+        "label" : "Account_Plan__c",
+        "type" : "LOAD_DATASET",
+        "top" : 670.3,
+        "left" : 1512,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN14" : {
+        "label" : "Account_Plan",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 530.3,
+        "left" : 1512
+      },
+      "LOAD_DATASET16" : {
+        "label" : "OpportunityFieldHistory",
+        "type" : "LOAD_DATASET",
+        "top" : 531.9,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER6" : {
+        "label" : "Filter 6",
+        "type" : "FILTER",
+        "top" : 391.9,
+        "left" : 952
+      },
+      "OUTPUT1" : {
+        "label" : "Account_Plan",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 810.3,
+        "left" : 1652
+      },
+      "TRANSFORM9" : {
+        "label" : "Transform 9",
+        "type" : "TRANSFORM",
+        "top" : 530.2,
+        "left" : 812,
+        "graph" : {
+          "FORMULA35" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "WW_UpdateWeek"
+          },
+          "FORMULA39" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "NewNewValue"
+          },
+          "FORMULA40" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "OldOldValue"
+          },
+          "FORMULA41" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "flag_history"
+          },
+          "FORMULA49" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateMonth"
+          },
+          "FORMULA50" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateYearMonth"
+          },
+          "FORMULA51" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateYear"
+          },
+          "FORMULA52" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "UpdateFlag"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA39",
+          "target" : "FORMULA40"
+        }, {
+          "source" : "FORMULA40",
+          "target" : "FORMULA41"
+        }, {
+          "source" : "FORMULA35",
+          "target" : "FORMULA49"
+        }, {
+          "source" : "FORMULA49",
+          "target" : "FORMULA50"
+        }, {
+          "source" : "FORMULA51",
+          "target" : "FORMULA39"
+        }, {
+          "source" : "FORMULA50",
+          "target" : "FORMULA51"
+        }, {
+          "source" : "FORMULA41",
+          "target" : "FORMULA52"
+        } ]
+      },
+      "TRANSFORM10" : {
+        "label" : "Transform 10",
+        "type" : "TRANSFORM",
+        "top" : 950.3,
+        "left" : 1652,
+        "graph" : {
+          "FORMULA36" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Account_YearQuarter"
+          },
+          "FORMULA37" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Account_Sales_Groups"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA36",
+          "target" : "FORMULA37"
+        } ]
+      },
+      "JOIN16" : {
+        "label" : "Join 16",
+        "type" : "JOIN",
+        "top" : 950.3,
+        "left" : 1512
+      },
+      "APPEND1" : {
+        "label" : "Append 1",
+        "type" : "APPEND",
+        "top" : 251.60000000000002,
+        "left" : 1092
+      },
+      "FILTER7" : {
+        "label" : "Filter 7",
+        "type" : "FILTER",
+        "top" : 111.80000000000001,
+        "left" : 952
+      },
+      "FILTER8" : {
+        "label" : "Filter 8",
+        "type" : "FILTER",
+        "top" : 251.8,
+        "left" : 952
+      },
+      "AGGREGATE6" : {
+        "label" : "Aggregate 6",
+        "type" : "AGGREGATE",
+        "top" : 530.2,
+        "left" : 1232,
+        "graph" : {
+          "EXTRACT3" : null,
+          "AGGREGATE7" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT3",
+          "target" : "AGGREGATE7"
+        } ]
+      },
+      "APPEND2" : {
+        "label" : "Append 2",
+        "type" : "APPEND",
+        "top" : 391.6,
+        "left" : 1092
+      },
+      "JOIN17" : {
+        "label" : "Join 17",
+        "type" : "JOIN",
+        "top" : 672.1,
+        "left" : 1372
+      },
+      "FILTER9" : {
+        "label" : "Filter 9",
+        "type" : "FILTER",
+        "top" : 1090.3,
+        "left" : 112
+      },
+      "AGGREGATE8" : {
+        "label" : "Aggregate 8",
+        "type" : "AGGREGATE",
+        "top" : 950.2,
+        "left" : 812,
+        "graph" : {
+          "EXTRACT4" : null,
+          "AGGREGATE9" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT4",
+          "target" : "AGGREGATE9"
+        } ]
+      },
+      "OUTPUT2" : {
+        "label" : "OpptyUpdates",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 392,
+        "left" : 1232.1
+      },
+      "JOIN18" : {
+        "label" : "Join 18",
+        "type" : "JOIN",
+        "top" : 530.3,
+        "left" : 1652
+      },
+      "LOAD_DATASET17" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 392.1,
+        "left" : 1652.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN19" : {
+        "label" : "Join 19",
+        "type" : "JOIN",
+        "top" : 530.3,
+        "left" : 1792
+      },
+      "LOAD_DATASET18" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 392.1,
+        "left" : 1792,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT3" : {
+        "label" : "UsageTrending",
+        "type" : "OUTPUT",
+        "top" : 672.9,
+        "left" : 1932
+      },
+      "OUTPUT6" : {
+        "label" : "Output 6",
+        "type" : "OUTPUT",
+        "top" : 952,
+        "left" : 1372
+      },
+      "LOAD_DATASET19" : {
+        "label" : "WORKER_DEPARTMENT_HIERARCHY_SNAPSHOT",
+        "type" : "LOAD_DATASET",
+        "top" : 392.1,
+        "left" : 252.2,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET20" : {
+        "label" : "ENTERPRISE_WORKER",
+        "type" : "LOAD_DATASET",
+        "top" : 531.9,
+        "left" : 252,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET21" : {
+        "label" : "SnapshotDS",
+        "type" : "LOAD_DATASET",
+        "top" : 952,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET20",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN17",
+      "target" : "JOIN14"
+    }, {
+      "source" : "JOIN9",
+      "target" : "JOIN7"
+    }, {
+      "source" : "JOIN10",
+      "target" : "JOIN9"
+    }, {
+      "source" : "JOIN11",
+      "target" : "JOIN10"
+    }, {
+      "source" : "JOIN8",
+      "target" : "TRANSFORM2"
+    }, {
+      "source" : "FILTER1",
+      "target" : "JOIN7"
+    }, {
+      "source" : "TRANSFORM4",
+      "target" : "JOIN8"
+    }, {
+      "source" : "AGGREGATE8",
+      "target" : "JOIN8"
+    }, {
+      "source" : "JOIN0",
+      "target" : "FILTER1"
+    }, {
+      "source" : "FILTER2",
+      "target" : "TRANSFORM3"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN9"
+    }, {
+      "source" : "JOIN7",
+      "target" : "TRANSFORM4"
+    }, {
+      "source" : "LOAD_DATASET10",
+      "target" : "FILTER3"
+    }, {
+      "source" : "FILTER3",
+      "target" : "JOIN10"
+    }, {
+      "source" : "TRANSFORM5",
+      "target" : "APPEND0"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "TRANSFORM6"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "TRANSFORM5"
+    }, {
+      "source" : "TRANSFORM6",
+      "target" : "APPEND0"
+    }, {
+      "source" : "FILTER9",
+      "target" : "JOIN11"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "JOIN11"
+    }, {
+      "source" : "LOAD_DATASET13",
+      "target" : "TRANSFORM7"
+    }, {
+      "source" : "LOAD_DATASET12",
+      "target" : "TRANSFORM8"
+    }, {
+      "source" : "TRANSFORM10",
+      "target" : "OUTPUT1"
+    }, {
+      "source" : "LOAD_DATASET14",
+      "target" : "JOIN16"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "JOIN16"
+    }, {
+      "source" : "LOAD_DATASET14",
+      "target" : "JOIN14"
+    }, {
+      "source" : "JOIN16",
+      "target" : "TRANSFORM10"
+    }, {
+      "source" : "LOAD_DATASET16",
+      "target" : "TRANSFORM9"
+    }, {
+      "source" : "TRANSFORM9",
+      "target" : "FILTER6"
+    }, {
+      "source" : "FILTER8",
+      "target" : "APPEND1"
+    }, {
+      "source" : "FILTER7",
+      "target" : "APPEND1"
+    }, {
+      "source" : "TRANSFORM7",
+      "target" : "FILTER7"
+    }, {
+      "source" : "TRANSFORM8",
+      "target" : "FILTER8"
+    }, {
+      "source" : "APPEND1",
+      "target" : "APPEND2"
+    }, {
+      "source" : "FILTER6",
+      "target" : "APPEND2"
+    }, {
+      "source" : "APPEND2",
+      "target" : "AGGREGATE6"
+    }, {
+      "source" : "APPEND0",
+      "target" : "JOIN17"
+    }, {
+      "source" : "AGGREGATE6",
+      "target" : "JOIN17"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "FILTER9"
+    }, {
+      "source" : "TRANSFORM3",
+      "target" : "AGGREGATE8"
+    }, {
+      "source" : "AGGREGATE6",
+      "target" : "OUTPUT2"
+    }, {
+      "source" : "JOIN14",
+      "target" : "JOIN18"
+    }, {
+      "source" : "LOAD_DATASET17",
+      "target" : "JOIN18"
+    }, {
+      "source" : "JOIN18",
+      "target" : "JOIN19"
+    }, {
+      "source" : "LOAD_DATASET18",
+      "target" : "JOIN19"
+    }, {
+      "source" : "JOIN19",
+      "target" : "OUTPUT3"
+    }, {
+      "source" : "APPEND0",
+      "target" : "OUTPUT6"
+    }, {
+      "source" : "LOAD_DATASET19",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET21",
+      "target" : "FILTER2"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

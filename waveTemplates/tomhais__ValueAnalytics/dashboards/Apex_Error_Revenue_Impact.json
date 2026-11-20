@@ -1,0 +1,2868 @@
+{
+  "name" : "Apex_Error_Revenue_Impact_tp",
+  "label" : "Apex Error Revenue Risk",
+  "folder" : {
+    "id" : "${App.Folder.Id}"
+  },
+  "dateVersion" : 1,
+  "mobileDisabled" : false,
+  "xmd" : {
+    "measures" : [
+      {
+        "conditionalFormatting" : { },
+        "field" : "OppSummaryTable_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OppSummaryTable_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OppSummaryTable_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OppSummaryTable_1.F",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OppSummaryTable_1.G",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OppSummaryTable_1.H",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ImpactedAccountsDeta_1.GeneralOppStats.TotalAmount",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ImpactedAccountsDeta_1.TotalAccountErrors",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ImpactedAccountsDeta_1.GeneralOppStats.AllOpps",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OpportunityDetailsTa_1.OppHighRiskErrorCount",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OpportunityDetailsTa_1.HighRiskAmount",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "OpportunityDetailsTa_1.OLIExceptions.TotalPrice",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.S",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.R",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.Q",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.J",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.I",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.H",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.G",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.F",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.C",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.K",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.L",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.M",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.N",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.O",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.P",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryTable_1.T",
+        "format" : {
+          "delimiters" : { }
+        }
+      }
+    ],
+    "derivedDimensions" : [ ],
+    "organizations" : [ ],
+    "showDetailsDefaultFields" : [ ],
+    "dates" : [ ],
+    "derivedMeasures" : [ ],
+    "dimensions" : [ ]
+  },
+  "state" : {
+    "dataSourceLinksInfo" : {
+      "enableAutomaticLinking" : true,
+      "excludeRelationships" : [ ],
+      "links" : [ ]
+    },
+    "filters" : [ ],
+    "gridLayouts" : [
+      {
+        "maxWidth" : 1200,
+        "name" : "Default",
+        "numColumns" : 49,
+        "pages" : [
+          {
+            "label" : "Landing",
+            "name" : "1a6b0924-8419-450a-ae0f-8175f1441aad",
+            "navigationHidden" : false,
+            "widgets" : [
+              {
+                "colspan" : 15,
+                "column" : 1,
+                "name" : "container_2",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "container_3",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 33,
+                "name" : "container_4",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_1",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_2",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_3",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_4",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 3,
+                "name" : "number_6",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 9,
+                "name" : "number_7",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_8",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_9",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_10",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_11",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 19,
+                "name" : "number_12",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 25,
+                "name" : "number_13",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_20",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_21",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_22",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_23",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 41,
+                "name" : "number_24",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 35,
+                "name" : "number_25",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 6,
+                "name" : "text_1",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 7,
+                "column" : 21,
+                "name" : "text_2",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 38,
+                "name" : "text_3",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "link_3",
+                "row" : 42,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "link_4",
+                "row" : 42,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 1,
+                "name" : "text_4",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "text_5",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 33,
+                "name" : "text_6",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "link_20",
+                "row" : 4,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 3,
+                "column" : 45,
+                "name" : "link_21",
+                "row" : 4,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "text_11",
+                "row" : 0,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              }
+            ]
+          },
+          {
+            "label" : "OppDetails",
+            "name" : "951b328a-4a33-47cc-b08f-09bfd7081510",
+            "navigationHidden" : false,
+            "widgets" : [
+              {
+                "colspan" : 15,
+                "column" : 1,
+                "name" : "container_2",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "container_3",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 33,
+                "name" : "container_4",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "container_6",
+                "row" : 45,
+                "rowspan" : 11,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_1",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_2",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_3",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_4",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 3,
+                "name" : "number_6",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 9,
+                "name" : "number_7",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_8",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_9",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_10",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_11",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 19,
+                "name" : "number_12",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 25,
+                "name" : "number_13",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_20",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_21",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_22",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_23",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 41,
+                "name" : "number_24",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 35,
+                "name" : "number_25",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_13",
+                "row" : 45,
+                "rowspan" : 11,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "link_4",
+                "row" : 42,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "link_17",
+                "row" : 42,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 1,
+                "name" : "text_4",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 6,
+                "name" : "text_1",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "text_5",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 7,
+                "column" : 21,
+                "name" : "text_2",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 33,
+                "name" : "text_6",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 38,
+                "name" : "text_3",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "link_20",
+                "row" : 4,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 3,
+                "column" : 45,
+                "name" : "link_21",
+                "row" : 4,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "text_11",
+                "row" : 0,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              }
+            ]
+          },
+          {
+            "label" : "AccountDetails",
+            "name" : "de9d7439-4973-4071-b018-c5c2b032197e",
+            "navigationHidden" : false,
+            "widgets" : [
+              {
+                "colspan" : 15,
+                "column" : 1,
+                "name" : "container_2",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "container_3",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 33,
+                "name" : "container_4",
+                "row" : 7,
+                "rowspan" : 37,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_1",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_2",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_3",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "number_4",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 3,
+                "name" : "number_6",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 9,
+                "name" : "number_7",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_8",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_9",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_10",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "number_11",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 19,
+                "name" : "number_12",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 25,
+                "name" : "number_13",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_20",
+                "row" : 13,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_21",
+                "row" : 21,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_22",
+                "row" : 25,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 35,
+                "name" : "number_23",
+                "row" : 29,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 41,
+                "name" : "number_24",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 35,
+                "name" : "number_25",
+                "row" : 35,
+                "rowspan" : 7,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "container_1",
+                "row" : 45,
+                "rowspan" : 11,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_14",
+                "row" : 45,
+                "rowspan" : 11,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 3,
+                "name" : "link_3",
+                "row" : 42,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 19,
+                "name" : "link_19",
+                "row" : 42,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 1,
+                "name" : "text_4",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 6,
+                "name" : "text_1",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "text_5",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 7,
+                "column" : 21,
+                "name" : "text_2",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 33,
+                "name" : "text_6",
+                "row" : 10,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 5,
+                "column" : 38,
+                "name" : "text_3",
+                "row" : 7,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 17,
+                "name" : "link_20",
+                "row" : 4,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 3,
+                "column" : 45,
+                "name" : "link_21",
+                "row" : 4,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "text_11",
+                "row" : 0,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              }
+            ]
+          }
+        ],
+        "rowHeight" : "fine",
+        "selectors" : [ ],
+        "style" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "backgroundColor" : "#FFFFFF",
+          "cellSpacingX" : 0,
+          "cellSpacingY" : 0,
+          "fit" : "original",
+          "gutterColor" : "#C5D3E0"
+        },
+        "version" : 1.0
+      }
+    ],
+    "layouts" : [ ],
+    "steps" : {
+      "ImpactedAccountsDeta_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAAccountsImpactedByErrors_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ImpactedAccountsDetails",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 100,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : "Name",
+                  "name" : "Name"
+                },
+                {
+                  "field" : "Owner.Name",
+                  "name" : "Owner.Name"
+                },
+                {
+                  "field" : "Owner.Division",
+                  "name" : "Owner.Division"
+                },
+                {
+                  "field" : "Owner.Department",
+                  "name" : "Owner.Department"
+                },
+                {
+                  "field" : "Owner.Country",
+                  "name" : "Owner.Country"
+                },
+                {
+                  "field" : "Owner.Roles.Name",
+                  "name" : "Owner.Roles.Name"
+                },
+                {
+                  "field" : "GeneralOppStats.AllOpps",
+                  "name" : "GeneralOppStats.AllOpps"
+                },
+                {
+                  "field" : "TotalAccountErrors",
+                  "name" : "TotalAccountErrors"
+                },
+                {
+                  "field" : "GeneralOppStats.TotalAmount",
+                  "name" : "GeneralOppStats.TotalAmount"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAAccountsImpactedByErrors_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "Name",
+              "Owner.Name",
+              "Owner.Roles.Name",
+              "Owner.Division",
+              "Owner.Department",
+              "Owner.Country",
+              "GeneralOppStats.AllOpps",
+              "GeneralOppStats.TotalAmount",
+              "TotalAccountErrors"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : true,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "OppSummaryTable_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "OppSummaryTable",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "HighRiskAmount"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "OppHighRiskErrorCount"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "OppHighRiskRecordCount"
+                  ],
+                  "name" : "C"
+                },
+                {
+                  "field" : [
+                    "unique",
+                    "Owner.Id"
+                  ],
+                  "name" : "D"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "OLIExceptions.Exceptions.SUM_RecordException"
+                  ],
+                  "name" : "E"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "Exceptions.SUM_RecordException"
+                  ],
+                  "name" : "F"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "all"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "Amount"
+                  ],
+                  "name" : "G"
+                }
+              ],
+              "filters" : [
+                [
+                  "Exceptions.SUM_RecordException",
+                  [
+                    0
+                  ],
+                  ">"
+                ],
+                [
+                  "OLIExceptions.Exceptions.SUM_RecordException",
+                  [
+                    0
+                  ],
+                  "=="
+                ]
+              ],
+              "groups" : [
+                "all"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "OLIExceptions.TotalPrice"
+                  ],
+                  "name" : "H"
+                }
+              ],
+              "filters" : [
+                [
+                  "OLIExceptions.Exceptions.SUM_RecordException",
+                  [
+                    0
+                  ],
+                  ">"
+                ],
+                [
+                  "Exceptions.SUM_RecordException",
+                  [
+                    0
+                  ],
+                  "=="
+                ]
+              ],
+              "groups" : [
+                "all"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "input_1" : {
+        "label" : "",
+        "start" : [
+          1
+        ],
+        "type" : "input",
+        "valueType" : "number",
+        "values" : [
+          {
+            "max" : 10000,
+            "min" : 100
+          }
+        ]
+      },
+      "SummaryTable_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAAccountsImpactedByErrors_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "SummaryTable",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "OppExceptions.AccSUmOppHighRiskErrorCount"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "Exceptions.SUM_RecordException"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "OppExceptions.AccSumOppMediumRiskErrorCount"
+                  ],
+                  "name" : "C"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "AccountLowRiskErrorCount"
+                  ],
+                  "name" : "E"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "OppExceptions.AccSUmOppHighRiskRecordCount"
+                  ],
+                  "name" : "F"
+                },
+                {
+                  "field" : [
+                    "unique",
+                    "Id"
+                  ],
+                  "name" : "G"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "OppExceptions.AccSumOppMediumRiskRecordCount"
+                  ],
+                  "name" : "H"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "AccountLowRiskErrorCount"
+                  ],
+                  "name" : "J"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "GeneralOppStats.TotalAmount"
+                  ],
+                  "name" : "K"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "GeneralOppStats.AverageAmount"
+                  ],
+                  "name" : "L"
+                },
+                {
+                  "field" : [
+                    "median",
+                    "GeneralOppStats.AverageAmount"
+                  ],
+                  "name" : "N"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "GeneralOppStats.AllOpps"
+                  ],
+                  "name" : "T"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "all"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAAccountsImpactedByErrors_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "formula" : "B+C",
+                  "name" : "D"
+                },
+                {
+                  "formula" : "G+H",
+                  "name" : "I"
+                },
+                {
+                  "formula" : "D*L",
+                  "name" : "M"
+                },
+                {
+                  "formula" : "D*(L-N)",
+                  "name" : "O"
+                },
+                {
+                  "formula" : " D*(L+N)",
+                  "name" : "P"
+                },
+                {
+                  "formula" : "E*L",
+                  "name" : "Q"
+                },
+                {
+                  "formula" : "E*(L-N)",
+                  "name" : "R"
+                },
+                {
+                  "formula" : "E*(L+N)",
+                  "name" : "S"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ]
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+              "I",
+              "J",
+              "K",
+              "L",
+              "M",
+              "N",
+              "O",
+              "P",
+              "Q",
+              "R",
+              "S",
+              "T"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "OpportunityDetailsTa_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "OpportunityDetailsTable",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 100,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : "Name",
+                  "name" : "Name"
+                },
+                {
+                  "field" : "Owner.Name",
+                  "name" : "Owner.Name"
+                },
+                {
+                  "field" : "Owner.Roles.Name",
+                  "name" : "Owner.Roles.Name"
+                },
+                {
+                  "field" : "Owner.Division",
+                  "name" : "Owner.Division"
+                },
+                {
+                  "field" : "Owner.Department",
+                  "name" : "Owner.Department"
+                },
+                {
+                  "field" : "Owner.Country",
+                  "name" : "Owner.Country"
+                },
+                {
+                  "field" : "HighRiskAmount",
+                  "name" : "HighRiskAmount"
+                },
+                {
+                  "field" : "OLIExceptions.TotalPrice",
+                  "name" : "OLIExceptions.TotalPrice"
+                },
+                {
+                  "field" : "OppHighRiskErrorCount",
+                  "name" : "OppHighRiskErrorCount"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#a8b7c7",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "Name",
+              "Owner.Name",
+              "Owner.Roles.Name",
+              "Owner.Division",
+              "Owner.Department",
+              "Owner.Country",
+              "HighRiskAmount",
+              "OLIExceptions.TotalPrice",
+              "OppHighRiskErrorCount"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#16325c",
+              "fontColor" : "#ffffff",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#54698d",
+            "innerMinorBorderColor" : "#a8b7c7",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : true,
+            "totals" : true,
+            "verticalPadding" : 4
+          },
+          "type" : "table"
+        }
+      }
+    },
+    "widgetStyle" : {
+      "backgroundColor" : "#FFFFFF",
+      "borderColor" : "#747474",
+      "borderEdges" : [ ],
+      "borderRadius" : 0,
+      "borderWidth" : 1
+    },
+    "widgets" : {
+      "number_12" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "O",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Best Case",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_11" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "K",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Pipeline Exposed to Risk",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "content" : {
+              "description" : {
+                "displayTemplate" : "[OpportunityCount] Opportunities",
+                "values" : {
+                  "OpportunityCount" : {
+                    "field" : "T",
+                    "sourceType" : "result",
+                    "step" : "SummaryTable_1"
+                  }
+                }
+              }
+            },
+            "customizeTooltip" : true
+          }
+        },
+        "type" : "number"
+      },
+      "number_10" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "I",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Impacted Records",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "link_19" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "1a6b0924-8419-450a-ae0f-8175f1441aad"
+          },
+          "destinationType" : "page",
+          "fontSize" : 12,
+          "includeState" : false,
+          "text" : "Hide Details [ - ]",
+          "textAlignment" : "center",
+          "textColor" : "#963CE8"
+        },
+        "type" : "link"
+      },
+      "link_17" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "1a6b0924-8419-450a-ae0f-8175f1441aad"
+          },
+          "destinationType" : "page",
+          "fontSize" : 12,
+          "includeState" : false,
+          "text" : "Hide Details [ - ]",
+          "textAlignment" : "center",
+          "textColor" : "#963CE8"
+        },
+        "type" : "link"
+      },
+      "number_9" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "D",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Errors",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_8" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "M",
+          "numberColor" : "#091A3E",
+          "numberSize" : 48,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Pipeline Indirectly Impacted",
+          "titleColor" : "#54698D",
+          "titleSize" : 12,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_7" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "H",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "OppSummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Line Item",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_6" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "G",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "OppSummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Opportunity",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_13" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "P",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Worst Case",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "text_11" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "16px",
+                  "color" : "#54698d"
+                },
+                "insert" : "A High-Level Summary of Open Pipeline That Is Directly or Indirectly Impacted by Apex Exceptions In Or Around the Opportunity Workspace"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "table_13" : {
+        "parameters" : {
+          "borderColor" : "#a8b7c7",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#ffffff",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "Name",
+            "Owner.Name",
+            "Owner.Roles.Name",
+            "Owner.Division",
+            "Owner.Department",
+            "Owner.Country",
+            "HighRiskAmount",
+            "OLIExceptions.TotalPrice",
+            "OppHighRiskErrorCount"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#16325c",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#54698d",
+          "innerMinorBorderColor" : "#a8b7c7",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : true,
+          "step" : "OpportunityDetailsTa_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "container_1" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_2" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "table_14" : {
+        "parameters" : {
+          "borderColor" : "#a8b7c7",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#ffffff",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "Name",
+            "Owner.Name",
+            "Owner.Roles.Name",
+            "Owner.Division",
+            "Owner.Department",
+            "Owner.Country",
+            "GeneralOppStats.AllOpps",
+            "GeneralOppStats.TotalAmount",
+            "TotalAccountErrors"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#16325c",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#54698d",
+          "innerMinorBorderColor" : "#a8b7c7",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : true,
+          "step" : "ImpactedAccountsDeta_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "container_3" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_4" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_6" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "text_3" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "20px"
+                },
+                "insert" : "Low Risk"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_2" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "20px"
+                },
+                "insert" : "Medium Risk"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_5" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Account, Task, Event, Contact Role related the Opportunity"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_4" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Opportunities, Line Items"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_6" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Contact, Case, Task, Event related to the Opportunity's Account"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "number_23" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "Q",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Exposed Pipeline",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_22" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "J",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Impacted Records",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_21" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "E",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Errors",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_20" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "Q",
+          "numberColor" : "#091A3E",
+          "numberSize" : 48,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Pipeline Associated with Impacted Accounts",
+          "titleColor" : "#54698D",
+          "titleSize" : 12,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "text_1" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "20px"
+                },
+                "insert" : "High Risk"
+              },
+              {
+                "attributes" : {
+                  "align" : "center"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "link_3" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "951b328a-4a33-47cc-b08f-09bfd7081510"
+          },
+          "destinationType" : "page",
+          "fontSize" : 12,
+          "includeState" : false,
+          "text" : "Show Details [ + ]",
+          "textAlignment" : "center",
+          "textColor" : "#963CE8"
+        },
+        "type" : "link"
+      },
+      "link_4" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "de9d7439-4973-4071-b018-c5c2b032197e"
+          },
+          "destinationType" : "page",
+          "fontSize" : 12,
+          "includeState" : false,
+          "text" : "Show Details [ + ]",
+          "textAlignment" : "center",
+          "textColor" : "#963CE8"
+        },
+        "type" : "link"
+      },
+      "link_21" : {
+        "parameters" : {
+          "destinationLink" : {
+            "tooltip" : "Video guide for this dashboard",
+            "url" : "https://vimeo.com/748898208"
+          },
+          "destinationType" : "url",
+          "fontSize" : 12,
+          "includeState" : false,
+          "text" : "[ Help ]",
+          "textAlignment" : "center",
+          "textColor" : "#963CE8"
+        },
+        "type" : "link"
+      },
+      "link_20" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "${App.Dashboards['Apex Exceptions'].Name}",
+            "namespace" : "${Org.Namespace}"
+          },
+          "destinationType" : "dashboard",
+          "fontSize" : 12,
+          "includeState" : false,
+          "text" : "[ Click To Explore Apex Exceptions in Detail ]",
+          "textAlignment" : "center",
+          "textColor" : "#963CE8"
+        },
+        "type" : "link"
+      },
+      "number_25" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "R",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Best Case",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_24" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "S",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "SummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Worst Case",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_4" : {
+        "parameters" : {
+          "compact" : false,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "D",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "OppSummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Impacted Sales Reps",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_3" : {
+        "parameters" : {
+          "compact" : false,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "C",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "OppSummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Impacted Records",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_2" : {
+        "parameters" : {
+          "compact" : false,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "B",
+          "numberColor" : "#091A3E",
+          "numberSize" : 16,
+          "showActionMenu" : true,
+          "step" : "OppSummaryTable_1",
+          "textAlignment" : "left",
+          "title" : "Errors",
+          "titleColor" : "#091A3E",
+          "titleSize" : 16,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      },
+      "number_1" : {
+        "parameters" : {
+          "compact" : true,
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "measureField" : "A",
+          "numberColor" : "#091A3E",
+          "numberSize" : 48,
+          "showActionMenu" : true,
+          "step" : "OppSummaryTable_1",
+          "textAlignment" : "center",
+          "title" : "Pipeline Directly Impacted",
+          "titleColor" : "#54698D",
+          "titleSize" : 12,
+          "tooltip" : {
+            "customizeTooltip" : false
+          }
+        },
+        "type" : "number"
+      }
+    }
+  }
+}

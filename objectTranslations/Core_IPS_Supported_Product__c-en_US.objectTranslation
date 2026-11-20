@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Supported Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Supported Products</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- SupportedProductFieldSet --></label>
+        <name>SupportedProductFieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Code Name Hidden Evaluate NA --></label>
+        <name>Code_Name_Hidden_Evaluate_NA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name Hidden Evaluate NOCONA --></label>
+        <name>Code_Name_Hidden_Evaluate_NOCONA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name Hidden Insert Spaces --></label>
+        <name>Core_Code_Name_Hidden_Insert_Spaces__c</name>
+    </fields>
+    <fields>
+        <help><!-- Derived from Product master data. Read only field. --></help>
+        <label><!-- Code Name --></label>
+        <name>Core_Code_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this to expire related assets --></help>
+        <label><!-- EOIS --></label>
+        <name>Core_EOIS__c</name>
+    </fields>
+    <fields>
+        <help><!-- A value is mandatory for this field. --></help>
+        <label><!-- Access Flag --></label>
+        <name>Core_Flag_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approval Required</masterLabel>
+            <translation><!-- Approval Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto Approve</masterLabel>
+            <translation><!-- Auto Approve --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Par Hidden</masterLabel>
+            <translation><!-- Par Hidden --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Code Name for Search --></label>
+        <name>Core_IPS_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Product Variant --></label>
+        <name>Core_IPS_Is_Show_Variant__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity PAR --></label>
+        <name>Core_IPS_Opportunity_PAR__c</name>
+        <relationshipLabel><!-- Supported Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This field if checked indicates that the product is a public product;
+This field value cannot be changed once checked as Public Product. --></help>
+        <label><!-- Public Product? --></label>
+        <name>Core_IPS_Public_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Name --></label>
+        <name>Core_Platform_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Shown on Save. Inherited from the Product Master record. Cannot be edited. --></help>
+        <label><!-- Product EPM ID_DONOTUSE --></label>
+        <name>Core_Prod_EPM_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the description for the Intel Support Org that supports this product --></help>
+        <label><!-- Product Focus Area --></label>
+        <name>Core_Product_Application__c</name>
+    </fields>
+    <fields>
+        <help><!-- Shown on Save. Inherited from the Product Master record. Cannot be edited. --></help>
+        <label><!-- Product EPM ID --></label>
+        <name>Core_Product_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Derived from the Pipeline Launch Date in Enterprise data. Cannot be edited by IPS Admins. --></help>
+        <label><!-- Product Launch Date --></label>
+        <name>Core_Product_Launch_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org ID --></label>
+        <name>Core_Product_Organization__c</name>
+        <relationshipLabel><!-- Supported Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Reference to the Master Data product. --></help>
+        <label><!-- Product Name --></label>
+        <lookupFilter>
+            <errorMessage><!-- Product Master Data record is not IPS Visible. Exit this screen and request Data Ops to set Product to IPS Visible. --></errorMessage>
+            <informationalMessage><!-- Only &quot;IPS Visible&quot; products are shown for adding to IPS Support Orgs. --></informationalMessage>
+        </lookupFilter>
+        <name>Core_Product__c</name>
+        <relationshipLabel><!-- Supported Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A read/write field that can be edited by a Support Org admin to capture the start of the Support life cycle of a product. The value varies by Support Org. --></help>
+        <label><!-- Support Launch Date --></label>
+        <name>Core_Support_Launch_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org Name --></label>
+        <name>Core_Support_Org_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Shown on Save. Copied from the Product Master Data name. Cannot be edited. --></help>
+        <label><!-- Supported Product Name DO NOT USE --></label>
+        <name>Core_Supported_Prod_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Editable by the Support Org Admin. Add nicknames or easily recognizable names to enable search on Case. --></help>
+        <label><!-- Alias --></label>
+        <name>Core_Supported_Product_Alias__c</name>
+    </fields>
+    <fields>
+        <help><!-- Copied from EPM Product Name on Save. Cannot be edited. --></help>
+        <label><!-- Supported Product Name --></label>
+        <name>Core_Supported_Product_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used by Support Org Admins to group products around security sensitivity within their Product Life Cycle phase. Possible values include “Early Access”,  “Hot” or “Focus”, “Pre-Launch”, “Post-Launch”, “Revenue”, “Sustaining”. --></help>
+        <label><!-- Search/Reporting Tag --></label>
+        <name>Core_Supported_Product_Tag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Supported Product --></label>
+        <name>Core_Unique_Supported_Product__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Product name on an existing record cannot be updated. Create a new Supported Product instead. --></errorMessage>
+        <name>Core_IPS_Cannot_Update_Supp_Prod_Header</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot change the value of Access Flag as it is a public product --></errorMessage>
+        <name>Core_IPS_Cannot_change_Access_Flag</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Once Set to as Public Product, cannot revert back --></errorMessage>
+        <name>Core_IPS_Cannot_change_Public_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Once set to EOIS, you cannot clear the EOIS value from a Supported Product. --></errorMessage>
+        <name>Core_IPS_Prevent_EOIS_Removal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Support Org not in use, cannot add or update Product to this Org. --></errorMessage>
+        <name>Core_IPS_Restrict_009_SupportedProduct</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Valid Product Hierarchy can be made as Public Product --></errorMessage>
+        <name>Core_IPS_VPH_Check_PublicProduct</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot make Valid Platform Codename Hierarchy Product as public product --></errorMessage>
+        <name>Core_IPS_VPLCH_Restrict_PublicProduct</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Name cannot be blank. --></errorMessage>
+        <name>Core_Product_Name_Cant_Be_Null</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Case_Categories --></label>
+        <name>Add_Case_Categories</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Environment_Details_LEX --></label>
+        <name>Add_Environment_Details_LEX</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Copy_Categories_EDQ_Lex --></label>
+        <name>Copy_Categories_EDQ_Lex</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Add_Issue_categories --></label>
+        <name>Core_Add_Issue_categories</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_EDO_under_Sub_Cat --></label>
+        <name>Core_EDO_under_Sub_Cat</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Copy_Categories_EnvironmentDetails --></label>
+        <name>Core_IPS_Copy_Categories_EnvironmentDetails</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Set_to_General --></label>
+        <name>Core_IPS_Set_to_General</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Supported_Product_Make_EOIS --></label>
+        <name>Core_Supported_Product_Make_EOIS</name>
+    </webLinks>
+</CustomObjectTranslation>

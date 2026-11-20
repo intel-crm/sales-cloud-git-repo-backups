@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Collaboration in Salesforce</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>//SFDCpopup(&apos;https://cloudcrmtrng.amr.corp.intel.com/collaboration-in-salesforce/&apos;,1024,768);
+SFDCpopup(&apos;https://salescrm.intel.com/collaboration-in-salesforce/&apos;,1024,768);
+function SFDCpopup (url,w,h){
+
+  if (isIE()) { // bypass checks because ie can&apos;t make cross domain requests without relaxing security
+    popupCenter(url, &apos;&apos;,w, h );
+  }
+  else {
+    var http = new XMLHttpRequest();
+
+    try
+    {
+      //http.open(&apos;GET&apos;, &apos;https://cloudcrmtrng.amr.corp.intel.com&apos;, false);
+      //http.send();
+      popupCenter(url, &apos;&apos;,w, h );
+    }
+    catch (error)
+    {
+      //alert(error);
+      alert(&apos;An error has occured. Please make sure you are on the Intel network&apos;);
+    }
+  }
+};
+
+function isIE() {
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf(&quot;MSIE &quot;);
+
+  return (msie &gt; -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
+}
+
+function popupCenter(url, title, w, h) {
+  var left = (screen.width/2)-(w/2);
+  var top = (screen.height/2)-(h/2);
+  return window.open(url, title, &apos;toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=&apos;+w+&apos;, height=&apos;+h+&apos;, top=&apos;+top+&apos;, left=&apos;+left);
+};</url>
+</CustomPageWebLink>

@@ -1,0 +1,214 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "8423c697-013c-4334-83f0-608b41c87a62",
+  "label" : "Offerings by Use Cases",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "729a7afe-6b9c-4225-a701-e3e7bece47c8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ea109268-a6dd-4491-a0f8-fbc8346c2053",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"OfferingsByUseCases\",\"title\":\"Offerings By Use Cases\"}",
+        "backgroundVariant" : "mosaic-l1",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : true,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : true,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Discover partner offerings by use cases",
+        "title" : "Offerings by Use Cases"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "c9d1d376-40cb-4eaf-bfd9-589f2d2403c7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "82d96f32-b97f-4a77-82a2-7a6e343adfa8",
+        "zh_cn" : "fdae0d68-7a2e-4372-b930-a7163f676aae"
+      },
+      "renditions" : [ {
+        "id" : "fdae0d68-7a2e-4372-b930-a7163f676aae",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "了解按用例划分的合作伙伴产品",
+            "title" : "按用例划分的产品"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "82d96f32-b97f-4a77-82a2-7a6e343adfa8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "使用事例別のパートナー・オファリングを検索します",
+            "title" : "使用事例別のオファリング"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "19231fed-6ad4-451d-91b5-6dbc36b4c82d",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "e1597976-1012-44a8-8ace-dd2089fb7b10",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "headingOverride" : "",
+        "limitRecordsValue" : "All",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "recordId" : "",
+        "showFeaturedOnly" : false,
+        "showHeading" : false,
+        "showIcon" : false,
+        "showViewAllLink" : false,
+        "taxonomy" : "OfferingApplications",
+        "theme" : "default",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "e9c2a4f8-b070-4667-b282-7dddbc35d0a3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "460b6b24-85a5-435f-a4f9-a9ac0a4ce1c5",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "c45384c6-6f0c-430d-b23a-77f0c505553b",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "faqTitle" : "Offerings",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "ed74ed97-752b-4def-b9e6-3edf3276ad2e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a7172b1d-224d-475a-ba51-cb6cdad857b3",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaCommPage" : "Home",
+        "ctaExternalURL" : "",
+        "ctaLabel" : "Learn More",
+        "subtitle" : "Gain expertise, take advantage of special promotions, marketing tools, and other valuable benefits of being a member.",
+        "theme" : "dark",
+        "title" : "Join the Intel® Partner Alliance"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "6b6c01d3-a65a-4c14-9d53-032b635e5c20",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "542c9573-005a-49c7-938a-fcf68ecd2046",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "6c8d1652-c657-4091-9053-66810ff14641",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2d32ff70-5bc6-466d-9d7f-182d1affda10",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "ba600782-25e0-4ddc-996d-bcd57ad0eb00",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "75ab72ad-740b-4551-8b00-8b80f2a24a88",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "c9331e76-3b59-48c8-8295-ca7a8f1a9fcd",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "4ac15c68-473c-4a69-bceb-37ad6623ea56",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "9b4f6f34-329c-406e-996d-f18d15d797a1",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareTray",
+      "id" : "8a228860-f6fa-47fe-8d0e-77537c27b4ec",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6e72ee47-5a3f-4e77-a8ac-b9c885c10382",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Offerings By Use Cases\"/> \n<meta name=\"keywords\" content=\"offerings by use cases, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingsByUseCases\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace offerings by use cases on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "Offerings by Use Cases  - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "15121232-f437-49d9-9638-495d86620ad0",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d5c38d2a-53e5-44bd-93ca-0fae6d7142c4",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-offerings-by-use-cases"
+}

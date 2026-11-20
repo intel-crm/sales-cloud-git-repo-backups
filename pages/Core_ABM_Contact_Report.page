@@ -1,0 +1,27 @@
+<apex:page showheader="true" sidebar="false" applyHtmlTag="true" applyBodyTag="true" 
+           title="Account-based Marketing Contact Report">
+    
+    <apex:outputPanel style="height: auto;margin-top: 3px;margin-bottom: 0;font-family: 'Verdana','Geneva',sans-serif;
+                        font-size: 91.3%;margin-bottom: -15px;height: 15px;vertical-align: middle;">
+
+    </apex:outputPanel>
+    &nbsp;<br/>
+    &nbsp;<br/>
+    
+    <apex:pageMessages />
+    
+    <!--Note: VF buttons were removed after UX review, but keeping this line here in case we ever want to add them back in.
+        apex:include pageName="Core_WaveChannelDashboardMenu" rendered="{!showDashboard}" /-->
+    
+    <!-- Page accepts either "id" or "cim_id" as a parameter. If "id" is passed, it knows what account it's on, and pulls the CIM ID
+         from that account. Otherwise it assumes "cim_id" is passed and uses that. -->
+    
+    <wave:dashboard dashboardId="{!$Label.Core_ABM_Contact_Report_Dashboard_ID}" 
+                    showTitle="true"
+                    openLinksInNewWindow="false"
+                    height="1500" width="100%"
+                    hideOnError="true"
+                    filter="{'datasets' : {'AccountMarketingDataset': [ {'fields':['contact_id'], 'filter': { 'operator': 'in', 'values': ['{!$CurrentPage.parameters.contact_id}']}}]}}"
+                     />
+    
+</apex:page>

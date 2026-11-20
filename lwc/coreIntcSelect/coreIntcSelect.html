@@ -1,0 +1,30 @@
+<template>
+    <div class={classes}>
+        <label for={name}
+            class="slds-form-element__label"
+            data-is-required={required}
+            data-show-label={showLabel}>
+            <abbr class="slds-required">*</abbr>
+            {label}
+        </label>
+        <div class="select">
+            <select
+                aria-label={accessibilityLabel}
+                name={name}
+                disabled={disabled}
+                required={required}
+                onchange={handleChange}
+                onblur={handleBlur}>
+                <template for:each={formattedOptions} for:item="opt">
+                    <option
+                        key={opt.key}
+                        value={opt.value}
+                        selected={opt.selected}>
+                        {opt.label}
+                    </option>
+                </template>
+            </select>
+        </div>
+        <div class="slds-form-element__help">{requiredErrorText}</div>
+    </div>
+</template>

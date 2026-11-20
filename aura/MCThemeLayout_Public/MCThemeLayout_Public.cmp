@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Tenders (IQR) Access Denied Page">
+    <aura:attribute name="templateHeader" type="Aura.Component[]" required="false" />
+    <aura:attribute name="templateFooter" type="Aura.Component[]" required="false" />
+
+    <div id="recode50header" class="no-animate"></div>
+    <c:IntelHeader />
+
+    <div>
+        <lightning:layout>
+            <lightning:layoutItem size="2"></lightning:layoutItem>
+            <lightning:layoutItem size="8">
+                <div class="intel-content-area">
+                    {!v.body}
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2"></lightning:layoutItem>
+        </lightning:layout>
+
+    </div>
+
+    <c:IntelFooter />
+    <div id="recode50footer"></div>
+</aura:component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Amigo Technologies Joint Stock Company Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Amigo Technologies Joint Stock Company Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>SMG_GMC_Read_Only_Role_do_not_nest_users</parentRole>
+</Role>

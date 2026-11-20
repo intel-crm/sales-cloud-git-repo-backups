@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_All_WW_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All WW folks related to any Questions</description>
+        <label>All Question All Training RW</label>
+        <sharedTo>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility,Permission,Training,Bug/Issue,Reporting,System Access,Enhancement,Other</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_BugIssue_All_BugissueGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All Bugs/Issues related Questions to &quot;Question-Bug/Issues&quot; Group</description>
+        <label>All Question BugIssue All BugissueGrp RW</label>
+        <sharedTo>
+            <group>Core_Question_Bug_Issue</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Bug/Issue</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_DataVisibility_All_DataVisibility_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Data/Visibility&quot; related Questions to &quot;Question-DataVisibility-WW&quot; Group</description>
+        <label>All_Question_DataVisibility_All_DataVisibility_RW</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_WW</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_OtherEnhancement_All_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Other&quot; &quot;Enhancment&quot;  related Questions to &quot;Question-Other&quot; Group</description>
+        <label>All Question OtherEnhancement All RW</label>
+        <sharedTo>
+            <group>Core_Question_Others</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Other,Enhancement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_Permission_All_PermissionGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Permission&quot; related Questions to &quot;Question-Permission&quot; Group</description>
+        <label>All Question Permission All Permission RW</label>
+        <sharedTo>
+            <group>Core_Question_Permission</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Permission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_Product_Price_All_Product_PriceGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All Product/Price related Questions to &quot;Question-Product/Price&quot; Group</description>
+        <label>All Question Product/Price All Product/PriceGrp RW</label>
+        <sharedTo>
+            <group>Core_Question_Products_Price</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Product/Price</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_Reporting_All_ReportingGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Reporting&quot; related Questions to &quot;Question-Reporting&quot; Group</description>
+        <label>All Question Reporting All Reporting RW</label>
+        <sharedTo>
+            <group>Core_Question_Reporting</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Reporting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_SystemAccess_All_SystemAccessGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;System Access&quot; related Questions to &quot;Question-System Access&quot; Group</description>
+        <label>All Question SystemAccess All SystemAccess RW</label>
+        <sharedTo>
+            <group>Core_Question_System_Access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>System Access</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_All_Question_Training_All_TrainingGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Training&quot; related Questions to &quot;Question - Trainings&quot; Group</description>
+        <label>All Question Training All Training RW</label>
+        <sharedTo>
+            <group>Core_Question_Training</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Training</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Ask_A_Question_IPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share IPS records with IPS profiles</description>
+        <label>Ask A Question IPS</label>
+        <sharedTo>
+            <group>Core_Ask_A_Question_IPS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Ask_A_Question_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Ask A Question Users</label>
+        <sharedTo>
+            <group>Core_Ask_A_Question_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ask A Question Sales,Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Question_APJ_DataVisibility_APJDataVisibilityGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Data Access&quot; related Questions in APJ to &quot;Question-Data Access-APJ&quot; Group</description>
+        <label>Question APJ DataVisibility APJDataVisibilityGrp RW</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_APJ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Question_ASMO_DataVisibility_ASMODataVisibilityGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Data Accesc&quot; related Questions in ASMO to &quot;Question-Data Access-ASMO&quot; Group</description>
+        <label>Core Question ASMO DataVisibility ASMODataVisibilityGrp RW</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_ASMO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Question_EMEA_DataVisibility_EMEADataVisibilityGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Data Access&quot; related Questions in EMEA to &quot;Question-Data Access-EMEA&quot; Group</description>
+        <label>Question EMEA DataVisibility EMEADataVisibilityGrp RW</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_EMEA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Question_PRC_DataVisibility_PRCDataVisibilityGrp_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Question Sharing Rule would provide READ/WRITE Access to All &quot;Data Access&quot; related Questions in PRC to &quot;Question-Data Access-PRC&quot; Group</description>
+        <label>Question PRC DataVisibility PRCDataVisibilityGrp RW</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ask A Question Intel Premier Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

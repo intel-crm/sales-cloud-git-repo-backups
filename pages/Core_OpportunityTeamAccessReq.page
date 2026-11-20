@@ -1,0 +1,30 @@
+<apex:page controller="Core_OpportunityTeamAccessReq_Controller">
+    <apex:form id="theForm">
+    <apex:pageBlock id="theBlock">
+        <apex:pageBlockSection >
+            <!--<apex:inputField value="{!opptyTeamAccObj.Opportunity_Name__c}"/>            -->
+            <apex:inputField value="{!opptyTeamAccObj.Owner.Name}" label="Requester"/>             
+            <apex:inputField value="{!opptyTeamAccObj.Approval_Status__c}"/>          
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Opportunity ID"></apex:outputLabel>
+                <apex:outputText value="{!oppty.Id}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Opportunity Team Role"></apex:outputLabel>
+                <apex:inputField value="{!opptyTeamAccObj.Opportunity_Team_Role__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Opportunity Access Level"></apex:outputLabel>
+                <apex:inputField value="{!opptyTeamAccObj.Opportunity_Access__c}"/>
+            </apex:pageBlockSectionItem>
+            
+            <apex:inputField value="{!opptyTeamAccObj.Core_ChangeReason__c}" required="true"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!Save}"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

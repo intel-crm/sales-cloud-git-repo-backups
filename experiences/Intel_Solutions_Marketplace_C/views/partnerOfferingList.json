@@ -1,0 +1,238 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceProductListLayout",
+  "dataProviders" : [ ],
+  "id" : "5d95aa11-5be9-47a6-8c8d-d4c9eb591fe6",
+  "label" : "Partner Offering List",
+  "regions" : [ {
+    "id" : "d6833897-6ee6-4be5-bfd3-7dffbd2190df",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showDisplay" : "showall",
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "e68c9344-e864-4994-aec3-2c90d7a38f1c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "da4c61cc-0b11-4c3e-a50f-5f957e9994f2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "9b56a77b-a4ac-451a-a240-8b067cbeef7a",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"MyOfferings\",\"title\":\"My Offerings\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "My Offerings"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "7729853e-10e3-44d2-9cb7-014abe52a909",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "4d2f73ba-3998-47ce-9bc1-ce126292cf50",
+        "zh_cn" : "cb8ea23e-fe0e-4b2e-a6fd-5be906fccdc7"
+      },
+      "renditions" : [ {
+        "id" : "cb8ea23e-fe0e-4b2e-a6fd-5be906fccdc7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "我的产品"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4d2f73ba-3998-47ce-9bc1-ce126292cf50",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "マイ・オファリング"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "ff30dd79-037e-4fb8-af58-4564e07a5e14",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "objectInfo" : "PMP_Partner_offering__c"
+      },
+      "componentName" : "c:PSS_SolutionListView",
+      "id" : "fff5e091-16e8-45be-8ab6-dcd37a54c0fc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bba1b795-58ce-419d-a43e-f34e8e18016a",
+    "regionName" : "recordList",
+    "type" : "region"
+  }, {
+    "id" : "a40bbad3-669e-40f0-abff-20503061412b",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "3f79102b-1680-419a-bd08-1e1144d9bbc4",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "$Label.c.PMP_All_Marketplace_Help",
+        "faqTitle" : "Partner Offering List",
+        "headingLabel" : "$Label.c.PMP_MP_FAQ_Heading",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "3e8e99f3-cc0d-46ad-a429-b0ef0cba4ff9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "40f41375-5768-4208-a7b3-bb71a2babc18",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "00B0n000000ylObEAI",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "PMP_Partner_Offering__c",
+        "showActionBar" : true,
+        "showDisplay" : "showall",
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "c341d185-c46e-4845-9f06-0bb7b34ed9f1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "40e54276-1016-44a3-8302-2fade2d99934",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceCreateProductButton",
+      "id" : "534d6acf-f04f-4723-a79c-ed2c0fdcb2df",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "32dcf81a-997b-4c41-bffa-8d8cce740cee",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "2a8bd078-f324-4d42-bace-ee940e8d4db8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "14b90423-291b-462c-ba16-8f2b1166bf5d",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "ff6af2c5-fdc8-4124-996f-77f47fc41d7b",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "fe37ec0d-aeb9-4db6-8866-e69bdf922724",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "1586e4be-7579-4a66-9c43-74d7a0f1293a",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "699e8ff6-d36a-4ef9-b442-4c3fd6dff7bb",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2a8c8ee2-2584-4413-baaa-3e7c6a0e7b5f",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "7e55e9c5-ff4b-48a4-8549-eea2ff5b8f2b",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "60261cfb-5e2f-4af0-a3a3-d8109abac471",
+      "renderPriority" : "HIGHEST",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "450c5296-0ec6-408a-b8e8-7dfe35699442",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceCreateProductButton",
+      "id" : "316a272b-f8cd-46d7-a600-45303539e38c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:PMP_ExportListView",
+      "id" : "448ae015-f824-41fb-a412-e488bd9999fd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "11442509-82f7-4d7b-9b5b-434b0ef11149",
+    "regionName" : "createOfferingButton",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "list-a5b"
+}

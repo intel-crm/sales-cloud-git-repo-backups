@@ -1,0 +1,112 @@
+:host{
+    display: block;
+}
+.message-container {
+    border-bottom: 1px solid var(--lightGray);
+}
+.open .message-content{
+    display: block;
+}
+.close .message-content {
+    display: none;
+}
+.message-content {
+    padding: 1rem 1rem 1rem 3rem;
+}
+.message-heading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.message-content .body {
+    overflow: auto;
+}
+
+.subject,
+.type,
+.date {
+    padding: 1rem 1rem 1rem 0;
+    align-items: center;
+}
+.subject {
+    padding: 1rem 1rem 1rem 1rem;
+}
+.toggle {
+    padding: 1rem;
+    flex: 0 0 3rem;
+}
+.message-body {
+    background: #ccf;
+
+}
+.footer-actions {
+    padding: 1rem 0;
+}
+.subject a {
+    display: flex;
+}
+.subject .icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    flex: 0 0 3rem;
+    align-self: center;
+}
+.subject .text {
+    flex: 1 1 auto;
+}
+
+.message-unread .subject [class^="fa-"]:before,
+.message-unread .subject  [class*=" fa-"]:before,
+.message-unread .subject {
+    font-weight: bold;
+}
+
+.error {
+    padding: 1rem;
+    margin-top: 1rem;
+    color: var(--darkRed);
+    background: var(--redErrorBg);
+    display: inline-block;
+}
+@media only screen and (max-width: 767px) {
+    .mobile-hide {
+        display: none;
+    }
+    .subject {
+        padding: 1rem;
+        flex: 1;
+    }
+    .subject .icon {
+        flex: 0 0 2rem;
+    }
+    .mark-as-read {
+        text-align: center;
+        display: block;
+    }
+    .mark-as-delete {
+        text-align: center;
+        display: block;
+    }
+    c-ipa-link {
+        display: block;
+    }
+    .reply-button {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .subject {
+        flex: 4;
+    }
+    .type {
+        flex: 2;
+    }
+    .date {
+        flex: 2;
+    }
+    .message-content {
+        padding: 1rem 1rem 1rem 4rem;
+    }
+}

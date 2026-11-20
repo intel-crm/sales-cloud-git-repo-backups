@@ -1,0 +1,56 @@
+<aura:component controller = "Core_MDF_ApprovalCriteriaHelper" implements="lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="criteriaRule" type="Core_MDF_Criteria_Rule__c[]" default="{'sobjectType':'Core_MDF_Criteria_Rule__c'}" />
+    <aura:attribute name="singleCriteriaRule" type="Core_MDF_Criteria_Rule__c" default="{'sobjectType':'Core_MDF_Criteria_Rule__c'}"/>    
+    <aura:attribute name="options" type="String[]"/>
+    <aura:attribute name="operatorOptions" type="String[]"/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:registerEvent name="navEvt" type="force:navigateToSObject"/>
+    
+    <div class="slds-modal__header">       
+        <center>
+            <center><h2>Criteria Rule Set</h2></center>
+            <table style="width:80%;hieght:80%">
+                <tr >
+                    <td style="width:30%;padding: 0 8px 8px 0;" > <a onclick="{!c.addRow}">Add Row</a></td>                
+                    <br></br>                               
+                    <br></br>
+                </tr>
+                <aura:iteration items="{!v.criteriaRule}" var="item" indexVar="indx">
+                    <tr>                    
+                        <td style="width:30%;padding: 0 8px 8px 0;">
+                            <ui:inputSelect label="Field Name" class="slds-input"  value="{!item.Core_MDF_Field_Name__c}" required="true">
+                                <aura:iteration items="{!v.options}" var="opt">
+                                    <option text="{!opt.label}" value="{!opt.value}" selected="{!opt.value==item.Core_MDF_Field_Name__c}"/>
+                                </aura:iteration> 
+                            </ui:inputSelect>
+                        </td>
+                        
+                        <td style="width:30%;padding: 0 8px 8px 0;">
+                            <ui:inputSelect label="Operator" class="slds-input"  value="{!item.Core_MDF_Operator__c}" required="true">
+                                <aura:iteration items="{!v.operatorOptions}" var="opt">
+                                    <option text="{!opt.label}" value="{!opt.value}" selected="{!opt.value==item.Core_MDF_Operator__c}"/>
+                                </aura:iteration> 
+                            </ui:inputSelect>
+                        </td>
+                        <td style="width:30%;padding: 0 8px 8px 0;" >
+                            <lightning:input label="Value" value="{!item.Core_MDF_Value__c}" />
+                        </td>
+                        <td style="width:10%;padding: 0 8px 8px 0; vertical-align:center">
+                            <center><lightning:buttonIcon value="{!indx}" iconName="utility:delete" onclick="{!c.deleteRow}" variant="bare" alternativeText="Delete Row" iconClass="dark"/></center>
+                            <!--<a id="deleteRow" onclick="{!c.deleteRow}" value="{!indx}">Delete Row</a>-->
+                        </td>                    
+                    </tr>                		
+                </aura:iteration>
+                <tr>
+                </tr>
+            </table>    
+            <footer >
+                <lightning:button class="slds-button slds-button_brand" type="submit" label="Cancel" onclick="{!c.cancel}" />  
+                <lightning:button class="slds-button slds-button_brand" type="submit" label="Save" onclick="{!c.updateCriteria}" />  
+            </footer>
+        </center></div>
+    
+</aura:component>

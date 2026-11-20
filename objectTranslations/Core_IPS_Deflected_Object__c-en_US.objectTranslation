@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Deflected Object</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Deflected Objects</value>
+    </caseValues>
+    <fields>
+        <label><!-- Case ID --></label>
+        <name>Core_IPS_Case_ID__c</name>
+        <relationshipLabel><!-- Deflected Objects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Core_IPS_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Core_IPS_Contact_Id__c</name>
+        <relationshipLabel><!-- Deflected Objects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_IPS_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description on Coveo --></label>
+        <name>Core_IPS_Description_on_Coveo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_IPS_Product__c</name>
+        <relationshipLabel><!-- Deflected Objects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Search JSON --></label>
+        <name>Core_IPS_Search_JSON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Search String --></label>
+        <name>Core_IPS_Search_String__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_IPS_Status__c</name>
+        <picklistValues>
+            <masterLabel>Abandoned</masterLabel>
+            <translation><!-- Abandoned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Created</masterLabel>
+            <translation><!-- Case Created --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Converted</masterLabel>
+            <translation><!-- Converted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deflected</masterLabel>
+            <translation><!-- Deflected --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>holds the order in which the taxonomy static resources should be executed.</description>
+    <fields>
+        <fullName>Execution_Order__c</fullName>
+        <description>Order of execution of taxonomy static resources</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Order of execution of taxonomy static resources</inlineHelpText>
+        <label>Execution Order</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Static_Resource_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Static Resource Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP Taxonomy Static Resource Exec Order</label>
+    <listViews>
+        <fullName>View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Execution_Order__c</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Static_Resource_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>View</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PMP Taxonomy Static Resource Exec Orders</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom Utility Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Utility Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Field Name --></label>
+        <name>Core_MDF_Account_Field_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- App --></label>
+        <name>Core_MDF_App_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>Core_MDF_Batch_Size_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Column Headers --></label>
+        <name>Core_MDF_Column_Headers_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Account Filter --></label>
+        <name>Core_MDF_Enable_Account_Filter_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ext Permission Set Names --></label>
+        <name>Core_MDF_Ext_PermissionSet_Names_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter Criteria --></label>
+        <name>Core_MDF_Filter_Criteria_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Free Search --></label>
+        <name>Core_MDF_Free_Search_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Int Permission Set Names --></label>
+        <name>Core_MDF_Int_PermisionSet_Names_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory Filter Fields --></label>
+        <name>Core_MDF_Mandatory_Filter_Fields_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name field --></label>
+        <name>Core_MDF_Name_field_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Label --></label>
+        <name>Core_MDF_Object_Label_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_MDF_Object_apiName_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profiles --></label>
+        <name>Core_MDF_Profiles_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Names --></label>
+        <name>Core_MDF_Record_Types_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- System User Name --></label>
+        <name>Core_MDF_System_User_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of From User --></label>
+        <name>Core_MDF_Type_of_From_User_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of To User --></label>
+        <name>Core_MDF_Type_of_To_User_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account Field --></label>
+        <name>Core_MDF_Ultimate_Account_Field_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>Core_MDF_isActive_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- isProgramApplicable --></label>
+        <name>Core_MDF_isProgramApplicable_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- requiredQueryFields --></label>
+        <name>Core_MDF_requiredQueryFields_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Account Field cannot be Blank --></errorMessage>
+        <name>Core_MDF_AccountField_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

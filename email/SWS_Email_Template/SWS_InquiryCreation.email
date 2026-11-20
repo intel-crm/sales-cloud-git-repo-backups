@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="Thanks for contacting Intel® Tiber AI Cloud" recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <img src="{!$Label.Intel_Tiber_AI_Cloud}"  alt="Intel® Tiber™ AI Cloud" width="630" height="135"/> 
+                <br></br><br></br>
+                Hi {!relatedTo.SWS_First_Name__c} {!relatedTo.SWS_Last_Name__c}, <br></br>
+                <p>Thank you for contacting us! We're excited to help you get started in your AI journey.<br></br>
+                Our team will get back to you soon. </p>
+                
+                <h3>Start now</h3>
+                In the mean time you can get familiarized with AI Cloud: 
+                <br></br>
+                <ul>
+                    <li><a href="https://console.cloud.intel.com?utm_source=AIcloud&utm_medium=email&utm_campaign=thankyou" style="color:#0563C1">Sign up to our console</a>.</li>
+                    
+                    <li><a href="https://console.cloud.intel.com/docs/services/start_free.html?utm_source=AIcloud&utm_medium=email&utm_campaign=thankyou" style="color:#0563C1">Get started for free</a>.</li>
+                    
+                    <li><a href="https://console.cloud.intel.com/docs/index.html?utm_source=AIcloud&utm_medium=email&utm_campaign=thankyou" style="color:#0563C1">Browse our documentation</a>, readily available to provide you with detailed instructions and tutorials.</li>
+                </ul>
+                <h3>Looking for help?</h3>
+                <p>If you need further assistance, feel free to learn about our <a href="https://ai.cloud.intel.com/support/?utm_source=AIcloud&utm_medium=email&utm_campaign=thankyou" style="color:#0563C1">support channels</a>.
+                <br></br>
+                Do something wonderful, 
+                <br></br>
+                Intel® Tiber™ AI Cloud Team</p>     
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

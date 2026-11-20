@@ -1,0 +1,27 @@
+<template>
+  <div class="slds-page-header dropdown-container auto-height" style="border: 1px solid #D3D3D3; padding-bottom: 10px;" data-id="AIinference"  >
+    <div class="slds-page-header__name slds-page-header__name-title auto-height">
+      <div class="slds-media__figure">
+        <lightning-icon
+          style="--slds-c-icon-color-background:rgb(255, 90, 100);"
+          icon-name="standard:product"
+          title="Edge Software Solution"
+          size="small"
+        ></lightning-icon>
+      </div>
+      <h1>
+        <span class="strong-text" style="font-size:17px;">Edge Software Solution&nbsp;</span>
+      </h1>
+      <lightning-icon icon-name = "utility:down" size = "small"   class="clickable-text" onclick={handleExpand}></lightning-icon>
+    </div>
+    <div if:true={showDropdown} class = "slds-box">
+      <!--<span class="slds-page-header__name space-between hover-text" style="font-size:15px;" onclick={handleAiInfernceDynamicView}>
+        Smartsheet List View</span>-->
+      <lightning-button label="Smartsheet List View" title="Smartsheet List View" onclick={handleAiInfernceDynamicView} class="slds-m-left_x-small" style="font-weight:bold"></lightning-button>
+      &nbsp;&nbsp;
+      <lightning-helptext content="Clicking here will re-direct you to the SmartSheet Dynamic View. Upon re-direction, filter by the SFDC CRM Oppty ID to get Edge Software support requests logged for this opportunity."></lightning-helptext>
+    </div>
+    
+    
+  </div>
+</template>

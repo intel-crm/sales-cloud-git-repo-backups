@@ -1,0 +1,171 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+   <!-- <template if:true={openModal}>
+       <template if:true={isButton}>
+           <div class="slds-size_9-of-10">
+               <c-core-intc-modal is-open no-close-on-click onclose={handleClose}>
+                   <div key={heading} slot="header">
+                       <h3 class="color-white">{labels.header}</h3>
+                   </div>
+                   <div slot="body">
+                       <div class="contactsModalBody">
+                           <template if:true={isContactsAvailable}>
+                               <lightning-card class="card slds-size_8-of-10">
+                                   <div class="slds-grid slds-gutters">
+                                       <div class="contactsSearch slds-col slds-size_2-of-3">
+                                           <c-core-intc-search keyword-value="" is-typeahead typeahead-options=""
+                                               placeholder={labels.placeholder} typeahead-no-results=""
+                                               onclearkeyword={handleClearKeyword}
+                                               onfinishedtyping={handleFinishedTyping}>
+                                           </c-core-intc-search>
+                                       </div>
+                                   </div>
+                                   <div class="slds-grid slds-gutters">
+                                       <div class="slds-col slds-size_8-of-10">
+                                           <template if:false={isContactSearch}>
+                                               <div class="contactDatatable">
+                                                   <lightning-datatable data-id3="datarow" key-field="Id"
+                                                       data={contactsRecord} columns={columns}
+                                                       selected-rows={initialSelected} max-column-width="900"
+                                                       min-column-width="900" onrowselection={rowSelection}>
+                                                   </lightning-datatable>
+                                               </div>
+                                           </template>
+                                           <template if:true={isContactSearch}>
+                                               <div class="contactDatatable">
+                                                   <lightning-datatable data-id4="datarow" key-field="Id"
+                                                       data={contactSearchData} columns={columns}
+                                                       max-column-width="900" min-column-width="900"
+                                                       selected-rows={searchPreSelected}
+                                                       onrowselection={searchRowSelection}>
+                                                   </lightning-datatable>
+                                               </div>
+                                           </template>
+                                       </div>
+                                   </div>
+                                   <template if:true={isPillData}>
+                                       <div class="slds-grid slds-gutters">
+                                           <div class="slds-col slds-size_8-of-10">
+                                               <template for:each={pillData} for:item="option" for:index="index">
+                                                   <lightning-pill class="contactsLightningPill slds-float_left"
+                                                       data-index={index} data-id1={option.Id} key={option.Id}
+                                                       label={option.Name} onremove={handleRemove}>
+                                                   </lightning-pill>
+                                               </template>
+                                           </div>
+                                       </div>
+                                   </template>
+                                   <div class="slds-grid slds-gutters">
+                                       <div class="slds-col slds-size_5-of-10">
+                                           <lightning-button class="contactsButton slds-m-left_x-small" variant="brand"
+                                               label={labels.saveButtonLabel} title={labels.saveButtonLabel}
+                                               onclick={shareContact} disabled={isSaveDisabled}>
+                                           </lightning-button>
+                                       </div>
+                                   </div>
+                                   <div class="slds-grid slds-gutters">
+                                       <div class="slds-col slds-size_8-of-12">
+                                           <span class="spanResults slds-float_left">
+                                               <p>{labels.manageText}
+                                                   <c-ipa-link class="contactsLink" label={labels.manageIPALink}
+                                                       external-url={labels.manageIPALinkURL}>
+                                                   </c-ipa-link>
+                                                   {labels.manageTextContd}
+                                               </p>
+                                           </span>
+                                       </div>
+                                   </div>
+                               </lightning-card>
+                           </template>
+                           <template if:false={isContactsAvailable}>
+                               <div class="slds-grid slds-gutters">
+                                   <div class="slds-col slds-size_8-of-10">
+                                       <span class="spanNoResults slds-float_left">
+                                           <p>{labels.noResultsFound}
+                                               <c-ipa-link class="contactsLink" label={labels.manageIPALink}
+                                                   external-url={labels.manageIPALinkURL}>
+                                               </c-ipa-link>
+                                               {labels.noResultsFoundContd}
+                                           </p>
+                                       </span>
+                                   </div>
+                               </div>
+                           </template>
+                       </div>
+                   </div>
+               </c-core-intc-modal>
+           </div>
+       </template>
+   </template>
+   <template if:false={isButton}>
+       <div class="slds-size_9-of-10">
+           <c-core-intc-modal is-open has-header has-body no-close-on-click onclose={handleClose}>
+               <div key={heading} slot="header">
+                   <h3 class="color-white">{labels.solutionContacts}</h3>
+               </div>
+               <div slot="body">
+                   <div class="contactsModalBody">
+                        <div if:true={showSpinner} class="spinnerBody">
+                            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                        </div>
+                 <div if:false={showSpinner}>
+                       <template if:true={submitterName}>
+                           <div class="slds-grid slds-gutters">
+                               <div class="slds-col slds-size_8-of-10">
+                                   <span class="spanNoResults slds-float_left">
+                                       <p>{labels.submitterLabel} : {submitterName}
+                                       </p>
+                                   </span>
+                               </div>
+                           </div>
+                           <template if:true={isContactsAvailable}>
+                               <lightning-card class="card slds-size_8-of-10">
+                                   <div class="slds-grid slds-gutters">
+                                       <div class="contactsSearch slds-col slds-size_2-of-3">
+                                           <c-core-intc-search keyword-value="" is-typeahead typeahead-options=""
+                                               placeholder={labels.placeholder} typeahead-no-results=""
+                                               onclearkeyword={handleClearKeyword}
+                                               onfinishedtyping={handleFinishedTyping}>
+                                           </c-core-intc-search>
+                                       </div>
+                                   </div>
+                                   <div class="slds-grid slds-gutters">
+                                       <div class="slds-col slds-size_8-of-10">
+                                           <template if:false={isContactSearch}>
+                                               <div class="contactDatatable">
+                                                   <lightning-datatable data-id3="datarow" key-field="Id"
+                                                       data={contactsRecord} columns={columns} max-column-width="900"
+                                                       hide-checkbox-column=true>
+                                                   </lightning-datatable>
+                                               </div>
+                                           </template>
+                                           <template if:true={isContactSearch}>
+                                               <div class="contactDatatable">
+                                                   <lightning-datatable data-id4="datarow" key-field="Id"
+                                                       data={contactSearchData} columns={columns}
+                                                       max-column-width="900" hide-checkbox-column=true>
+                                                   </lightning-datatable>
+                                               </div>
+                                           </template>
+                                       </div>
+                                   </div>
+                               </lightning-card>
+                           </template>
+                       <template if:false={isContactsAvailable}>
+                           <div class="slds-grid slds-gutters">
+                               <div class="slds-col slds-size_8-of-10">
+                                   <span class="spanNoResults slds-float_left">
+                                       <p>{labels.noResultsFoundSharedContacts}
+                                       </p>
+                                   </span>
+                               </div>
+                           </div>
+                       </template>
+                    </template>
+                 </div>
+              </div>
+           </div>
+        </c-core-intc-modal>
+     </div>
+  </template> -->
+</template>

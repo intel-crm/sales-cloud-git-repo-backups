@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Video_Specialty_ZHT</name>
+    <style>none</style>
+    <subject>Intel® 夥伴聯盟影片專長</subject>
+    <textOnly>恭喜您符合資格了！
+
+
+{!Contact.FirstName}您好，
+
+歡迎來到 Intel® 夥伴聯盟影片專長！身為合格的物聯網專家，您有資格獲得額外的福利*，這些福利專為協助您成長您的物聯網影片業務所設計，包括：
+
+獨家的計畫標章
+指定的市場開發基金
+內容行銷的機會
+受邀參加特殊活動與媒合商機
+
+享用福利
+
+
+*不同地區的福利可能不盡相同。
+
+Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
+
+請造訪 https://www.intel.com/content/www/tw/zh/partner-alliance/help/overview.html 取得將您的會員資格效益最大化的協助與說明。
+
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

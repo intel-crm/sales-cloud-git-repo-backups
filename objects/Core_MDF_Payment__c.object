@@ -1,0 +1,1812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Payment_RecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Store the information of all the payments</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_AccountCompany_Txt__c</fullName>
+        <description>The company the Payment is related to</description>
+        <externalId>false</externalId>
+        <label>Account (Company)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account (Company)</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Payments</relationshipLabel>
+        <relationshipName>Payments2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Nm__c</fullName>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_Txt__c</fullName>
+        <description>Formula field to populate Budget Type on Payment. It is used in List View.</description>
+        <externalId>false</externalId>
+        <formula>IF( RecordType.DeveloperName == &apos;Core_MDF_RMF_MDF&apos;, &apos;Retail MDF&apos;, IF(RecordType.DeveloperName == &apos;Core_MDF_RMF_MD&apos;, &apos;RSA MD&apos;, &apos;&apos;) )</formula>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments_txt__c</fullName>
+        <label>Comments</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Conversion_Rate_Nbr__c</fullName>
+        <description>Conversion Rate of USD into local Bank Currency . It is used in Retail MDF payment record and in payment file .</description>
+        <externalId>false</externalId>
+        <label>Conversion Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>12</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Converted_Amt_Nbr__c</fullName>
+        <description>Amount after getting converted from USD into Bank&apos;s currency. This field is used in Retail MDF record as well as in file</description>
+        <externalId>false</externalId>
+        <label>Converted Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_CreatedBy_Nm__c</fullName>
+        <description>Shows the name for external user if created by is external otherwise Intel System User</description>
+        <externalId>false</externalId>
+        <formula>IF (
+ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;),
+CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Created By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Currency_Cd_Txt__c</fullName>
+        <description>Currency code of claim&apos;s bank grouped in a single payment record.</description>
+        <externalId>false</externalId>
+        <label>Currency Code</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_EFT_Nbr__c</fullName>
+        <label>EFT Number</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Geo_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_MDF_Payment_Run_Id__r.Core_MDF_Geo_Txt__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Payment Run Geo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
+        <description>Shows the name for external user if last modified by is external otherwise Intel System User</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
+LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last Modified By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Owner_Nm__c</fullName>
+        <description>Shows the name for external user if Owner is external otherwise Intel System User</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL( Owner:User.Profile.UserType ,&apos;PowerPartner&apos;),
+Owner:User.FirstName &amp; &apos; &apos; &amp; Owner:User.LastName ,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Paid_Amt__c</fullName>
+        <label>Paid Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Made_Dt__c</fullName>
+        <label>Payment Made On</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_No_Txt__c</fullName>
+        <description>Payment reference number used by the loopback batch for updating the payments once payment is done.</description>
+        <externalId>false</externalId>
+        <formula>IF( Core_MDF_Program_Txt__c = &apos;Client Co-Marketing Fund Boost&apos;, 
+Name + &quot;-&quot; + &apos;CCF_BOOST&apos;,
+
+Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
+&apos;Client&apos;, 
+&apos;CCF&apos;,
+ 
+&apos;Datacenter&apos;, 
+&apos;DCF&apos;,
+
+&apos;Service Provider Co-Marketing Fund&apos;,
+&apos;SPCF&apos;,
+
+&apos;Retail Marketing Funds&apos;,
+ IF(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c, &apos;Retail MDF&apos;) , &apos;RMF - MDF&apos;, &apos;RMF - MD&apos;) ,
+
+&apos;Intel Partner Alliance&apos;,
+&apos;IPA&apos;,
+
+&apos;Co-GTM&apos;,
+&apos;COGTM&apos;,
+&apos;&apos;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Payment Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Run_Id__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Payment Run</label>
+        <referenceTo>Core_MDF_Payment_Run__c</referenceTo>
+        <relationshipLabel>Payments (Payment Run)</relationshipLabel>
+        <relationshipName>Payments1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Sent_Dt__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <label>Payment Sent On</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Status_Txt__c</fullName>
+        <label>Payment Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Paid</fullName>
+                    <default>false</default>
+                    <label>Paid</label>
+                </value>
+                <value>
+                    <fullName>Pending Payment</fullName>
+                    <default>true</default>
+                    <label>Pending Payment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Sub_Geo_Txt__c</fullName>
+        <description>Formula to populate the Sub Geo for ASMO region on Payment .It is used in List View.</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(ISPICKVAL( Core_MDF_Payment_Run_Id__r.Core_MDF_Geo_Txt__c , &apos;ASMO&apos;),ISPICKVAL( Core_MDF_Payment_Run_Id__r.Core_MDF_Subgeo_Txt__c , &apos;NAR&apos;)), &apos;NAR&apos;, IF(AND(ISPICKVAL( Core_MDF_Payment_Run_Id__r.Core_MDF_Geo_Txt__c , &apos;ASMO&apos;),ISPICKVAL( Core_MDF_Payment_Run_Id__r.Core_MDF_Subgeo_Txt__c , &apos;LAR&apos;)), &apos;LAR&apos;,&apos;&apos;))</formula>
+        <label>Payment Sub Geo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Type_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Payment_Run_Id__r.Core_MDF_Program_Id__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_RMF_Actual_Payment_Amt__c</fullName>
+        <description>It is a retail field. It is the actual amount paid as part of the payment. Initially this field would be same as Paid Amount field. Retail Payment Admin would update this field with the actual amount PAID after Payment.</description>
+        <label>Actual Payment Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_RMF_Proposed_Payment_Amt__c</fullName>
+        <description>It is the Retail field .It is the proposed payment amount to be paid  as part of  the payment. This field value would be same as Paid Amount field.</description>
+        <formula>Core_MDF_Paid_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Proposed Payment Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>Payment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Program_Txt__c</columns>
+        <columns>Core_MDF_Budget_Type_Nm__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Paid_Amt__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <columns>Core_MDF_AccountCompany_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CCF_MDF_Payments</fullName>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <columns>Core_MDF_Budget_Type_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>includes</operation>
+            <value>MDF,MDF+</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_Client_Co_Marketing_Fund_MDF</value>
+        </filters>
+        <label>CCF MDF/MDF+ Payments</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_RSA_MD_ASMO_LAR</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_RMF_MD</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Payment_Sub_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>LAR</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RSA MD</value>
+        </filters>
+        <label>RSA - MD (ASMO - LAR)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_LAR</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_Retail_MDF_ASMO_LAR</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_Currency_Cd_Txt__c</columns>
+        <columns>Core_MDF_Conversion_Rate_Nbr__c</columns>
+        <columns>Core_MDF_Converted_Amt_Nbr__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Payment_Sub_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>LAR</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Retail MDF</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_Txt__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Retail - MDF (ASMO - LAR)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_LAR</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>DCF_MDF_Payments</fullName>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <columns>Core_MDF_Budget_Type_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>includes</operation>
+            <value>MDF,MDF+</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_Data_Center_Co_Marketing_Fund_MDF</value>
+        </filters>
+        <label>DCF MDF/MDF+ Payments</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>RSA_MD_APJ</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_RMF_MD</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RSA MD</value>
+        </filters>
+        <label>RSA - MD (APJ)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_APJ</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>RSA_MD_ASMO</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_RMF_MD</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Payment_Sub_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>NAR</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RSA MD</value>
+        </filters>
+        <label>RSA - MD (ASMO - NAR)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_NAR</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>RSA_MD_EMEA</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_RMF_MD</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RSA MD</value>
+        </filters>
+        <label>RSA - MD (EMEA)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_EMEA</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>RSA_MD_PRC</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
+        <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Payment__c.Core_MDF_RMF_MD</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RSA MD</value>
+        </filters>
+        <label>RSA - MD (PRC)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_PRC</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Retail_MDF_APJ</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_Currency_Cd_Txt__c</columns>
+        <columns>Core_MDF_Conversion_Rate_Nbr__c</columns>
+        <columns>Core_MDF_Converted_Amt_Nbr__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Retail MDF</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_Txt__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Retail - MDF (APJ)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_APJ</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Retail_MDF_ASMO</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_Currency_Cd_Txt__c</columns>
+        <columns>Core_MDF_Conversion_Rate_Nbr__c</columns>
+        <columns>Core_MDF_Converted_Amt_Nbr__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Retail MDF</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Payment_Sub_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>NAR</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_Txt__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Retail - MDF (ASMO - NAR)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_ASMO_NAR</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Retail_MDF_EMEA</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_Currency_Cd_Txt__c</columns>
+        <columns>Core_MDF_Conversion_Rate_Nbr__c</columns>
+        <columns>Core_MDF_Converted_Amt_Nbr__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Retail MDF</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_Txt__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Retail - MDF (EMEA)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_EMEA</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Retail_MDF_PRC</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Payment_Run_Id__c</columns>
+        <columns>Core_MDF_Payment_No_Txt__c</columns>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Payment_Sent_Dt__c</columns>
+        <columns>Core_MDF_Payment_Made_Dt__c</columns>
+        <columns>Core_MDF_Currency_Cd_Txt__c</columns>
+        <columns>Core_MDF_Conversion_Rate_Nbr__c</columns>
+        <columns>Core_MDF_Converted_Amt_Nbr__c</columns>
+        <columns>Core_MDF_Payment_Status_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Geo_Txt__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Retail MDF</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_Txt__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <label>Retail - MDF (PRC)</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Int_Retail_PRC</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>{000000}</displayFormat>
+        <label>Payment Reference</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Payments</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_Client_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <description>Client Program Record Type</description>
+        <label>Client</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Client_Co_Marketing_Fund_Boost</fullName>
+        <active>true</active>
+        <description>CCFB Program Record Type</description>
+        <label>Client Co-Marketing Fund Boost</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Client_Co_Marketing_Fund_MDF</fullName>
+        <active>true</active>
+        <description>CCF MDF Record Type</description>
+        <label>Client MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_GTM</fullName>
+        <active>true</active>
+        <description>Co-GTM Record Type</description>
+        <label>Co-GTM</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Co-Engineering</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Data_Center_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <description>DCF Program Record Type</description>
+        <label>Datacenter</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</fullName>
+        <active>true</active>
+        <description>DCF MDF Record Type</description>
+        <label>Datacenter MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
+        <active>true</active>
+        <description>IPA Program Record Type</description>
+        <label>Intel Partner Alliance</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Account Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_RMF_MD</fullName>
+        <active>true</active>
+        <description>RSA MD Record Type</description>
+        <label>RSA MD</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_RMF_MDF</fullName>
+        <active>true</active>
+        <description>Retail MDF Record Type</description>
+        <label>Retail MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
+        <active>true</active>
+        <description>It will be used for Retail Co-Marketing purposes</description>
+        <label>Retail Marketing Funds</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Service_Provider_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <description>SPCF Program Record Type</description>
+        <label>Service Provider Co-Marketing Fund</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_MDF_Payment_Run_Id__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_Payment_No_Txt__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_Paid_Amt__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_Payment_Sent_Dt__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_Payment_Made_Dt__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_Payment_Status_Txt__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_MDF_Program_Txt__c</customTabListAdditionalFields>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <listViewButtons>Core_MDF_Export_List_View</listViewButtons>
+        <listViewButtons>Core_MDF_Bulk_Update_Payment_Status</listViewButtons>
+        <lookupDialogsAdditionalFields>Core_MDF_Payment_Run_Id__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_Payment_No_Txt__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_Paid_Amt__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_Payment_Sent_Dt__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_Payment_Made_Dt__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_Payment_Status_Txt__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_MDF_Program_Txt__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Payment_Run_Id__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Payment_No_Txt__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Paid_Amt__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Payment_Sent_Dt__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Payment_Made_Dt__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Payment_Status_Txt__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_MDF_Program_Txt__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Core_MDF_Payment_Run_Id__c</searchFilterFields>
+        <searchFilterFields>Core_MDF_Payment_No_Txt__c</searchFilterFields>
+        <searchFilterFields>Core_MDF_Paid_Amt__c</searchFilterFields>
+        <searchFilterFields>Core_MDF_Payment_Sent_Dt__c</searchFilterFields>
+        <searchFilterFields>Core_MDF_Payment_Made_Dt__c</searchFilterFields>
+        <searchFilterFields>Core_MDF_Payment_Status_Txt__c</searchFilterFields>
+        <searchFilterFields>Core_MDF_Program_Txt__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_MDF_Payment_Run_Id__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Program_Txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Budget_Type_Nm__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Payment_No_Txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Paid_Amt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Payment_Sent_Dt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Payment_Made_Dt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_RMF_Actual_Payment_Amt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Payment_Status_Txt__c</searchResultsAdditionalFields>
+        <searchResultsCustomButtons>Core_MDF_Bulk_Update_Payment_Status</searchResultsCustomButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_COGTM_Payment_Edit_Validation</fullName>
+        <active>false</active>
+        <description>Payment Nature Should be Vistex cash or Credit</description>
+        <errorConditionFormula>AND(
+  RecordType.DeveloperName = &apos;Core_MDF_Co_GTM&apos;,
+  NOT(ISBLANK(Core_MDF_Payment_Run_Id__c)),
+  NOT(OR(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Payment_Nature_nm__c, &apos;Contra Vistex&apos;),
+         INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Payment_Nature_nm__c, &apos;Contra CSAR&apos;))),
+  $Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm,
+NOT($Permission.Core_MDF_CCP_Internal_Payment_Admin_Manager),
+  OR(
+    ISCHANGED(Core_MDF_EFT_Nbr__c),
+    ISCHANGED(Core_MDF_Payment_Made_Dt__c),
+    ISCHANGED(Core_MDF_Payment_Status_Txt__c),
+    ISCHANGED(Core_MDF_RMF_Actual_Payment_Amt__c)
+  )
+)</errorConditionFormula>
+        <errorMessage>Payment status update is only allowed for Vistex Cash and Vistex Credit payments.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_ActualAmtGreaterThanProposedAmt</fullName>
+        <active>true</active>
+        <description>Actual Payment Amount Can&apos;t be greater than Proposed Payment Amount.</description>
+        <errorConditionFormula>AND(OR(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;RSA MD&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF+&quot;)) , Core_MDF_RMF_Actual_Payment_Amt__c &gt; 
+Core_MDF_RMF_Proposed_Payment_Amt__c)</errorConditionFormula>
+        <errorMessage>Actual Payment Amount Cannot Exceed the Proposed Payment Amount</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Allow_Edit_MDF_Payments</fullName>
+        <active>true</active>
+        <description>To allow edit access on custom permissions</description>
+        <errorConditionFormula>AND( OR(RecordType.DeveloperName=&apos;Core_MDF_Client_Co_Marketing_Fund_MDF&apos;, RecordType.DeveloperName=&apos;Core_MDF_Data_Center_Co_Marketing_Fund_MDF&apos;), NOT( $Permission.Core_MDF_Allow_Edit_for_MDF_Payments ),OR( ISCHANGED( Core_MDF_Payment_Status_Txt__c ),  ISCHANGED( Core_MDF_RMF_Actual_Payment_Amt__c ),  ISCHANGED( Core_MDF_Payment_Made_Dt__c ), ISCHANGED( Core_MDF_EFT_Nbr__c )  ))</errorConditionFormula>
+        <errorMessage>This user does not have access to edit the MDF Payment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_BlockPaidToPendingPayment</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISCHANGED(Core_MDF_Payment_Status_Txt__c),
+TEXT(PRIORVALUE(Core_MDF_Payment_Status_Txt__c)) = &quot;Paid&quot;,
+TEXT(Core_MDF_Payment_Status_Txt__c) = &quot;Pending Payment&quot;
+)</errorConditionFormula>
+        <errorMessage>A payment marked as Paid cannot be reverted to Pending Payment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_CheckActualPaymentAmtNotBlank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(OR(INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;RSA MD&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF&quot;),INCLUDES(Core_MDF_Payment_Run_Id__r.Core_MDF_Budget_Type_nm__c,&quot;MDF+&quot;)),
+   ISBLANK(Core_MDF_RMF_Actual_Payment_Amt__c) ,
+    ISPICKVAL(Core_MDF_Payment_Status_Txt__c, &apos;Paid&apos;))</errorConditionFormula>
+        <errorMessage>Actual Payment Amount is mandatory.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_MDF_Bulk_Update_Payment_Status</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Bulk Update Payment Status</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Core_MDF_Bulk_Update_Payment_Status</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_MDF_Export_List_View</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Export List View</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/Core_MDF_ExportToExcel?ObjName=Core_MDF_Payment__c</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_30534474</developerName>
+        <masterLabel>GROUP</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA France Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Russia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA UK Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Strategic Account Sales Group</sourceValue>
+            </sourceValues>
+            <value>GSA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Opportunity.Core_Push_Counter__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Compliance_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Export_Compliance_Block__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <description>RT Opportunities.  Filter pushes &gt; 3.  Current Quarter + 3
+Added Owner Role, Opp Owner Mgr Email, Technical Owner Mgr Email, Primary Country</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.Core_Deal_Opportunity,Opportunity.Core_Design_Opportunity,Opportunity.Core_New_Opportunity,Opportunity.Core_Opportunity</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Push_Counter__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,APJ Partner Holding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS1_COUNTRY_CODE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,AFG,ALA,ALB,DZA,AS,ASM,AND,AGO,AIA,ATA,ATG,AG,ARG,ARM,ABW,AUS,AUT,AZE,BHS,BHR,BGD,BRB,BLR,BEL,BLZ,BEN,BMU,BTN,BOL,BO,BES,BQ,BA,BIH,BWA,BV,BVT,BRA,IOT,VGB,IO,BRN,BN,BGR,BFA,BDI,CAF,KHM,CMR,CAN,CPV,CYM,CF,TCD,CHL,CHN,CX,CXR,CC,CCK,COL,COM,COG,CD,CK,COK,CRI,CIV,HRV,CUB,CUW,CW,CYP,CZE,CZ,COD,DNK,DJI,DMA,DOM,DO,ECU,EGY,SLV,GNQ,GQ,ERI,EST,SWZ,ETH,FK,FLK,FRO,FM,FJI,FIN,FRA,GUF,PYF,PF,ATF,TF,GAB,GMB,GEO,DEU,GHA,GIB,GRC,GRL,GRD,GLP,GUM,GTM,GGY,GIN,GNB,GUY,HTI,HMD,HM,VA,HND,HK,HKG,HUN,ISL,IND,IDN,IRN,IR,IRQ,IRL,IMN,ISR,ITA,JAM,JPN,JEY,JOR,KAZ,KEN,KIR,KP,KR,KWT,KGZ,LA,LAO,LVA,LBN,LSO,LBR,LBY,LIE,LTU,LUX,MO,MAC,MK,MDG,MWI,MYS,MDV,MLI,MLT,MH,MHL,MTQ,MRT,MUS,MYT,MEX,FSM,UMI,MDA,MD,MCO,MNG,MNE,MSR,MAR,MOZ,MMR,MNP,NAM,NRU,NPL,NLD,AN,ANT,NCL,NZL,NIC,NER,NGA,NIU,NF,NFK,MP,PRK,MKD,NOR,OMN,PAK,PLW,PS,PSE,PAN,PNG,PG,PRY,PER,PHL,PCN,POL,PRT,PR,PRI,QAT,REU,ROU,RUS,RU,RWA,SGS,STP,BL,SH,KN,LCA,MAF,MF,SPM,PM,VC,WSM,SMR,ST,SAU,SEN,SRB,SCG,SYC,SLE,SGP,SXM,SX,SVK,SVN,SLB,SOM,ZAF,GS,KOR,SSD,ESP,LKA,BLM,SHN,VCT,KNA,SDN,SUR,SJM,SJ,SZ,SWE,CHE,SYR,SY,TWN,TJK,TZA,TZ,THA,TLS,TGO,TKL,TON,TTO,TT,TUN,TUR,TKM,TC,TCA,TUV,UGA,UKR,AE,GBR,USA,UM,URY,ARE,UZB,VUT,VAT,VEN,VE,VNM,VN,VI,VIR,VG,WLF,WF,ESH,YEM,ZMB,ZWE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_30534474</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Copy of PFH Opty Pushes R2</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURNEXTQ</interval>
+    </timeFrameFilter>
+</Report>

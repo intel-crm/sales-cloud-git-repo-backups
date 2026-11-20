@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>A wizard driven flow to add child object to a timeline configuration.</description>
+    <environments>Default</environments>
+    <label>Add Child object to Config</label>
+    <processType>Flow</processType>
+</Flow>

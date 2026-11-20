@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_BU_Focus_Area__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Opportunities_at_Approval__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Opportunity_Identified__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Claim_Date__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>tom_kpi</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Goal__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

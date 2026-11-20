@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <description>UpdatePSGPartnerProgramformula</description>
+        <name>UpdatePSGPartnerProgramformula</name>
+        <dataType>String</dataType>
+        <expression>IF( INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;ATE&quot;), &quot;ATE; &quot;,&quot;&quot;)
++
+IF( INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;CTE&quot;), &quot;CTE;&quot;, &quot;&quot;)
++
+IF( INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;DCG Tier 1-2 CSPs&quot;), &quot;DCG Tier 1-2 CSPs; &quot;, &quot;&quot;)
++
+IF( INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;Intel-Badged Cloud SPs (CSPs)&quot;), &quot;Intel-Badged Cloud SPs (CSPs); &quot;, &quot;&quot;)
++
+IF( INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;ISA Co-Selling&quot;), &quot;ISA Co-Selling; &quot;, &quot;&quot;)
++
+IF( INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;ISA Member&quot;), &quot;ISA Member; &quot;, &quot;&quot;)
++ 
+&apos;PSG Demand Creation - Distribution&apos;</expression>
+    </formulas>
+    <interviewLabel>Account Default PSG Partner Program {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Default PSG Partner Program</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_PSG_Partner_Program</name>
+        <label>Update PSG Partner Program</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Core_Partner_Alliance_Program__c</field>
+            <value>
+                <elementReference>UpdatePSGPartnerProgramformula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_PSG_Partner_Program</targetReference>
+        </connector>
+        <filterFormula>IF( ( NOT(INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;PSG Demand Creation - Distribution&quot;)) &amp;&amp;
+NOT(INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;PSG Demand Creation - Hybrid&quot;)) &amp;&amp;
+NOT(INCLUDES({!$Record.Core_Partner_Alliance_Program__c}, &quot;PSG Demand Creation - PSG&quot;)) &amp;&amp;
+({!$Record.Core_PSG_Account__c} ==  True)&amp;&amp;
+{!$Record.RecordType.DeveloperName} == &quot;Mastered_Account&quot;
+), true, false)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

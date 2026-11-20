@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_SPA</name>
+    <style>none</style>
+    <subject>Bienvenido a Intel® Partner Alliance Gold</subject>
+    <textOnly>Intel® Partner Alliance Gold
+
+
+
+{!Contact.FirstName}:
+
+Realizamos cambios interesantes, modificamos los criterios del programa Intel® Partner Alliance y mejoramos los beneficios que ayudan a satisfacer sus necesidades empresariales. Como resultado, su empresa se actualizó a Intel® Partner Alliance Gold. ¡Felicitaciones!
+
+Estos son algunos de los beneficios incrementales que recibirá como miembro del nivel Gold:
+
+Insignia Gold
+Cambio anticipado en garantía
+Más oportunidades de ganar y canjear puntos
+Acceso a la tienda y publicaciones del Solutions Marketplace
+Acceso a la zona para desarrolladores: documentos seguros y de primer nivel (a pedido)
+
+
+Hay muchos motivos para entusiasmarse con la experiencia nueva de Intel® Partner University, como los siguientes:
+
+Una actualización completa de la experiencia digital
+Programas de entrenamiento personalizados
+Y un sistema de clasificación de contenidos nuevo para ayudar a los socios a encontrar y utilizar los contenidos mejor valorados por sus colegas.
+
+
+Además, ahora les proporcionamos a nuestros socios información y tendencias de la industria seleccionadas, presentadas por el científico de datos del equipo de Dimensionamiento y Pronóstico de Mercados de Intel.
+
+Prepárese para disfrutar de una experiencia de usuario nueva y mejorada en Intel® Solutions Marketplace:
+
+Nueva imagen y navegación más sencilla en el sitio web
+Una experiencia mejorada para generar conexiones y clientes potenciales entre socios
+Una funcionalidad de búsqueda general mejorada
+
+
+Intel® Partner Alliance se esfuerza constantemente por proporcionar más valor y beneficios para que su empresa pueda prosperar en el entorno actual. Obtenga más información sobre lo que Intel® Partner Alliance ofrece para ayudarle a hacer avanzar su empresa.
+
+
+Comience hoy mismo
+
+
+
+Muchas gracias,
+Su equipo de Intel® Partner Alliance
+
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacidad &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,414 @@
+.THIS {
+    color: t(darkGray);
+}
+.THIS .bold {
+    font-weight: 700;
+}
+
+.THIS .error-link {
+    text-decoration: underline;
+}
+
+.THIS .error-link:hover {
+    color: t(redError);
+}
+
+.THIS .bold {
+    font-weight: bold;
+}
+
+.THIS .inline {
+    display: inline-block;
+}
+
+.THIS .fullWidth {
+    width: 100%;
+}
+
+.THIS .fullHeight {
+    min-height: 100%;
+}
+
+.THIS .pSmallText {
+    font-size: 0.8em;
+    overflow-wrap: break-word;
+}
+
+.THIS .summarySection {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.THIS .summarySection span {
+    flex: 1;
+}
+
+.THIS .summarySection span.updatedText {
+    flex-grow: 0;
+    font-size: 0.8125rem;
+    font-style: italic;
+    margin-bottom: 2px;
+}
+
+.THIS .mTopSmallNeg {
+  margin-top: -.5rem;
+}
+.THIS .bgGray {
+    background-color: t(lightestGray);
+}
+
+.THIS .bgDarkestGray {
+    background-color: t(darkestGray);
+}
+
+.THIS .bgWhite {
+    background-color: t(white);
+}
+
+.THIS .borderBottom {
+    border-bottom: 1px solid t(lightGray);
+}
+
+.THIS .borderTop {
+    border-top: 1px solid t(lightGray);
+}
+
+.THIS .textColorRed {
+    color: t(sfRedError);
+}
+
+.THIS .slds-path__nav .slds-path__item,
+.THIS .slds-path__nav .slds-path__item:before,
+.THIS .slds-path__nav .slds-path__item:after {
+    background: t(white);
+}
+
+/* INPUTS */
+.THIS label.slds-form-element__label {
+    font-size: 1em;
+}
+
+.THIS .slds-rich-text-editor .slds-rich-text-area__content {
+    min-height: 12em;
+    max-height: 20em;
+}
+
+.THIS img.logoImg {
+    border: 1px solid t(lightGray);
+    max-width: 120px;
+}
+.THIS .error-asterisk {
+    position: absolute;
+    left: -0.5em;
+    top: -2px;
+    color: t(sfRedError);
+}
+.THIS .iconRemoveLogo {
+    background-color: t(blue);
+    border-radius: 100%;
+    cursor: pointer;
+    padding: 0.25em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%) scale(0.6, 0.6);
+}
+.THIS .iconRemoveLogo2 {
+    background-color: t(blue);
+    cursor: pointer;
+    padding: 0.25em;
+    transform: scale(0.6, 0.6);
+}
+.THIS .iconRemoveLogo .slds-icon, .THIS .iconRemoveLogo2 .slds-icon {
+    width: 1em;
+    height: 1em;
+}
+
+.THIS .delete-wrapper {
+    float: right;
+    padding-right: 10px;
+}
+
+.THIS .delete-wrapper .slds-icon {
+    width: 16px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* --- */
+
+.THIS .messageFromIntel {
+    background-color: t(black);
+    color: t(white);
+}
+.THIS .messageFromIntel h4 {
+    color: t(white);
+}
+
+.THIS .modalContainer {
+  /*  min-height: 100%;	*/
+}
+
+.THIS h1.h4 {
+    border-bottom: 1px solid t(lightGray);
+}
+
+.THIS .progressLayoutItem {
+    order: 1;
+}
+.THIS .headerLayoutItem {
+    order: 2;
+    padding: 0 1em;
+}
+.THIS .formLayoutItem {
+    order: 3;
+}
+.THIS .messageLayoutItem {
+    order: 0;
+}
+
+.THIS .progressBarContainer {
+    padding: 1.5em 0;
+}
+
+.THIS .iconSizeNormal .slds-icon {
+    height: 1em;
+    width: 1em;
+    transform: translateY(-1px);
+}
+
+.THIS .iconSizeSmall .slds-icon {
+    height: 0.7em;
+    width: 0.7em;
+    transform: translateY(-1px);
+}
+
+.THIS .iconDarkGray use {
+    fill: t(darkGray);
+}
+
+/*For DE108385,to make the delete icon in dark gray color */
+.THIS .iconDarkGray .slds-icon-text-default {
+    fill: t(darkGray) !important;     
+}
+
+.THIS .iconWhite use {
+    fill: t(white);
+}
+
+.THIS .containWidth {
+    overflow-wrap: break-word;
+}
+
+.THIS .nextButton button:disabled {
+    cursor: not-allowed;
+}
+
+.THIS .h4.borderBottom {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Needs to display inline-block for create offering form*/
+.THIS .cMarketplaceFormImageUploader .slds-show_inline-block {
+    display: block;
+}
+
+.THIS .tabSet {
+    margin-top: 25px;
+}
+
+.THIS .slds-has-error .slds-form-element__help {
+    font-size: 0.875em;
+}
+
+.THIS .summary-richtext ul {
+    list-style: disc;
+    margin-left: 1.3em !important;
+}
+
+.THIS .summary-richtext ol {
+    list-style: decimal;
+    margin-left: 1em !important;
+}
+
+.THIS .summary-richtext ol li {
+    padding-left: 0.3em;
+}
+
+.THIS .ql-indent-1 {
+    padding-left: 3em;
+}
+
+.THIS .ql-indent-2 {
+    padding-left: 6em
+}
+
+.THIS .ql-indent-3 {
+    padding-left: 9em;
+}
+
+.THIS .ql-indent-4 {
+    padding-left: 12em
+}
+
+.THIS .ql-indent-5 {
+    padding-left: 15em;
+}
+
+.THIS .ql-indent-6 {
+    padding-left: 18em
+}
+
+/* .THIS #modal-heading-01 {
+    font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+    font-size: 1.75rem; /* 28px; */
+/*   font-weight: 700;
+    line-height: 1.3;
+} */
+
+.THIS .locked-state-heading {
+    text-align: center;
+    padding-top: 30px;
+    font-weight: bold;
+}
+
+.THIS .desktop-action-buttons {
+    background-color: white;
+    margin-top: 15px;
+}
+
+
+@media (max-width: 767px) {
+    .THIS .prevButton button, .THIS .nextButton button, .THIS .nextButton button:disabled, .THIS .step-button-group .nextButton button, .THIS .step-button-group .prevButton button,
+    .THIS .step-button-group .prevButton button.has-body,
+    .THIS .step-button-group .nextButton button.has-body {
+        padding: .3em 0;
+        width: 100%;
+    }
+    .THIS .cMarketplaceMessaging {
+      background-color: transparent;
+    }
+    .THIS .fullHeight {
+        height: 100%;
+        min-height: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch
+    }
+    .THIS .step-button-group {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+    }
+    .THIS .help-text {
+        padding: 0 15px;
+    }
+
+    .THIS .locked-state-heading {
+        font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+        font-weight: 200;
+        font-style: normal;
+    }
+}
+
+/* Main desktop styles */
+@media (min-width: 768px) {
+    .THIS .modalContainer {
+        padding: 0;
+    }
+    .THIS .progressLayoutItem {
+        order: 0;
+        padding: 0;
+    }
+    .THIS .headerLayoutItem {
+        order: 1;
+        padding: 0;
+    }
+    .THIS .formLayoutItem {
+        margin-top: 1.5em;
+        order: 2;
+        padding: 0 2em 0 0;
+    }
+    .THIS .messageLayoutItem {
+        margin-top: 1em;
+        order: 3;
+    }
+    .THIS .progressBarContainer {
+        padding: 3em 1em;
+    }
+     .THIS .tabSet {
+        background-color: t(lightestGray);
+        padding-bottom: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    .THIS .summary-note {
+        font-size: .813em;
+    }
+    .THIS .slds-modal__content {
+        background-color: t(lightestGray) !important;
+    }
+    .THIS .tabSet .sliderButton {
+        display: block !important;
+    }
+    .THIS .cMarketplaceLeadGenSettings {
+        margin: 15px 20px;
+    }
+    .THIS .cancelButton {
+        float: left;
+    }
+
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10-IE11 CSS styles go here needed so modal in modal works properly */
+    .THIS > .cMarketplaceModal > .slds-modal > .slds-modal__container > .slds-modal__content,
+    .THIS > .slimMobileHeader > .slds-modal > .slds-modal__container > .slds-modal__content {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 989px) and (min-width: 979px) {
+    .THIS .lightningLink {
+        white-space: nowrap;
+    }
+}
+
+/* Container width spacing on larger desktop sizes */
+@media (min-width: 992px) {
+    .THIS .modalContainer {
+        width: 780px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .THIS .linkItem {
+        flex: 1 1 auto !important; /* c:MarketplaceTab header tab width */
+    }
+    .THIS .tabSet .sliderButton {
+        display: none !important;
+    }
+    .THIS .locked-state-heading {
+        margin-bottom: -50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .THIS .modalContainer {
+        width: 960px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1650px) {
+    .THIS .modalContainer {
+        width: 1320px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.THIS .regionOption .slds-form-element__label {
+  font-size: 1em;
+}

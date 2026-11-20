@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_25339103</developerName>
+        <masterLabel>NEX Solution Area</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Solution_Area__c</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_25339103</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <description>One Edge Deals/Designs - Pending</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND ((4 AND 5 AND 6) OR (4 AND 5 AND 7) OR (4 AND 5 AND 8) OR (4 AND 5 AND 9) OR (4 AND 5 AND 10) OR (4 AND 5 AND 11) OR (4 AND 5 AND 12) OR (4 AND 5 AND 13) OR (4 AND 5 AND 14) OR (4 AND 5 AND 15) OR (4 AND 5 AND 16)) AND (17 OR 18)</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Comms Infra. / Networking,Embedded / IOT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Area__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>NEX</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Network Infrastructure</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>One Edge Solution</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Asset &amp; Operations Optimization</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Control Optimization &amp; Autonomy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Environment Monitoring</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Energy Monitoring &amp; Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Human Wellness Monitoring</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Interactive Media</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Logistics &amp; Tracking</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Machine Condition Monitoring</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Product Inspection</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Situational Monitoring</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Use Case: Video Safety and Security</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Network -</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Visual Cloud -</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Solution_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2022 One Edge Pending Qtr</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2022-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2022-01-01</startDate>
+    </timeFrameFilter>
+</Report>

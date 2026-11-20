@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPS Case Attachment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPS Case Attachments</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Global Search Field Result --></label>
+        <name>Core_IPS_Global_Search_Field_Result</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Core_Case__c</name>
+        <relationshipLabel><!-- Premier Support Case Attachments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Core_Category__c</name>
+        <picklistValues>
+            <masterLabel>Analyzer</masterLabel>
+            <translation><!-- Analyzer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIOS/Firmware</masterLabel>
+            <translation><!-- BIOS/Firmware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Code Sample</masterLabel>
+            <translation><!-- Code Sample --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compiler</masterLabel>
+            <translation><!-- Compiler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documentation</masterLabel>
+            <translation><!-- Documentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver</masterLabel>
+            <translation><!-- Driver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Library</masterLabel>
+            <translation><!-- Library --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patches</masterLabel>
+            <translation><!-- Patches --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- File Size InBytes --></label>
+        <name>Core_FileSizeInBytes__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Uploaded By --></label>
+        <name>Core_FileUploadedBy__c</name>
+        <relationshipLabel><!-- IPS Case Attachments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- File Description --></label>
+        <name>Core_File_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- File GUID --></label>
+        <name>Core_File_GUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Download Link --></label>
+        <name>Core_File_Hyperlink__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Name --></label>
+        <name>Core_File_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Size --></label>
+        <name>Core_File_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- File URL --></label>
+        <name>Core_File_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attachment Source --></label>
+        <name>Core_IPS_Attachment_Source__c</name>
+        <picklistValues>
+            <masterLabel>API</masterLabel>
+            <translation><!-- API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B2B API</masterLabel>
+            <translation><!-- B2B API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Backend System</masterLabel>
+            <translation><!-- Backend System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Portal</masterLabel>
+            <translation><!-- Customer Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Migration</masterLabel>
+            <translation><!-- Data Migration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Portal</masterLabel>
+            <translation><!-- Internal Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>n/a</masterLabel>
+            <translation><!-- n/a --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Attachment Visibility --></label>
+        <name>Core_IPS_Attachment_Visibility__c</name>
+        <picklistValues>
+            <masterLabel>Private to Intel</masterLabel>
+            <translation><!-- Private to Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private to Partner</masterLabel>
+            <translation><!-- Private to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public to Customers</masterLabel>
+            <translation><!-- Public to Customers --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BackendType --></label>
+        <name>Core_IPS_BES_BackendType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promote Status --></label>
+        <name>Core_IPS_BES_Promote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Done</masterLabel>
+            <translation><!-- Done --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Successfully</masterLabel>
+            <translation><!-- Sent Successfully --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BackendId --></label>
+        <name>Core_IPS_BackendId__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS File Upload --></label>
+        <name>Core_IPS_File_Upload__c</name>
+        <relationshipLabel><!-- IPS Case Attachments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- IP Type --></label>
+        <name>Core_IPS_IP_Type__c</name>
+        <picklistValues>
+            <masterLabel>Customized Firmware</masterLabel>
+            <translation><!-- Customized Firmware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customized SW+FW package</masterLabel>
+            <translation><!-- Customized SW+FW package --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customized Software</masterLabel>
+            <translation><!-- Customized Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Review Result</masterLabel>
+            <translation><!-- Design Review Result --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Document (Customer Specific)</masterLabel>
+            <translation><!-- Document (Customer Specific) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Document (Intel Confidential)</masterLabel>
+            <translation><!-- Document (Intel Confidential) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Document (Public)</masterLabel>
+            <translation><!-- Document (Public) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firmware for debug</masterLabel>
+            <translation><!-- Firmware for debug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firmware hotfix</masterLabel>
+            <translation><!-- Firmware hotfix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SW+FW hotfix package</masterLabel>
+            <translation><!-- SW+FW hotfix package --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software for debug</masterLabel>
+            <translation><!-- Software for debug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software hotfix</masterLabel>
+            <translation><!-- Software hotfix --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Security Compliance --></label>
+        <name>Core_IPS_Security_Compliance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Uploaded By Email --></label>
+        <name>Core_IPS_Uploaded_By_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Uploaded By FirstName --></label>
+        <name>Core_IPS_Uploaded_By_FirstName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Uploaded By Name --></label>
+        <name>Core_IPS_Uploaded_By_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Migrated --></label>
+        <name>Core_Is_Migrated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload Status Updated At --></label>
+        <name>Core_Last_Status_Updated_At__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promote Status --></label>
+        <name>Core_Promote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Done</masterLabel>
+            <translation><!-- Done --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Successfully</masterLabel>
+            <translation><!-- Sent Successfully --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_Type__c</name>
+        <picklistValues>
+            <masterLabel>Attachment</masterLabel>
+            <translation><!-- Attachment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Link</masterLabel>
+            <translation><!-- Link --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Upload Status --></label>
+        <name>Core_Upload_Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Upload UserId --></label>
+        <name>Core_Upload_UserId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload idsid --></label>
+        <name>Core_Upload_idsid__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- No Edits allowed until File Upload Status is set to &apos;Complete&apos; --></errorMessage>
+        <name>Core_IPS_Prevent_Edit_Until_Complete</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status Change not allowed once set to Complete --></errorMessage>
+        <name>Core_IPS_Prevent_StatusChng_FromComplete</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to create or update record related to Org 025 --></errorMessage>
+        <name>IPS_Altera_Go_Live_Attmt_Restriction</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Attach_File --></label>
+        <name>Core_Attach_File</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_External_Attach_File --></label>
+        <name>Core_IPS_External_Attach_File</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Refresh_to_See_New_Attachments --></label>
+        <name>Core_Refresh_to_See_New_Attachments</name>
+    </webLinks>
+</CustomObjectTranslation>

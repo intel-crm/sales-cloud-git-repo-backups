@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Escalation__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Channel_Program_id__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Escalation_Type_nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Escalation_Status_nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Co_Marketing_Activity_id__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Case_ID_Number_id__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$Core_MDF_Budget_ID_Number_id__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Escalation__c$Core_MDF_Approved_Amount_amt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Escalation__c$Core_MDF_Total_Dollar_Impact_amt__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Escalation__c$CreatedDate</field>
+    </columns>
+    <description>This report contains data for pending approval escalations</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Escalation__c$Core_MDF_Escalation_Status_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Review</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Pending Escalations for an Approval</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Escalations__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Escalation__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

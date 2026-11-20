@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDataset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <application>Event_Monitoring_Analytics</application>
+    <description>Created from the DP_Apex_Unexpected_Exception_Custom-DataDump Recipe (Schedule Once Daily) recipe.</description>
+    <masterLabel>ApexUnexpectedException Archive</masterLabel>
+    <type>default</type>
+</WaveDataset>

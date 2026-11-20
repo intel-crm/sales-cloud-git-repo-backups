@@ -1,0 +1,102 @@
+<aura:component
+                controller="Pricing_PerformanceMetricsController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,forceCommunity:availableForAllPageTypes"
+                access="global"
+                >
+    <aura:attribute name="picklistValues" type="Object" />
+    <aura:attribute name="hasUpdateAccess" type="Boolean" default="false" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute
+                    name="record"
+                    type="Object"
+                    default="{'sobjectType' : 'Pricing_Performance_Metric__c',
+                             'Id':'',
+                             'Pricing_Performance_Metric_Nm__c' : '',
+                             'Pricing_Weighting_Pct__c' : '',
+                             'Pricing_Comp_SKU_Performance_Nbr__c' : '',
+                             'Pricing_Intel_SKU_Performance_Nbr__c' : '',
+                             'Pricing_Other_Nm__c' : ''}"
+                    />
+    
+    <lightning:layoutItem size="3" padding="around-small">
+        <lightning:select
+                          aura:id="schType"
+                          name="schType"
+                          value="{!v.record.Pricing_Performance_Metric_Nm__c}"
+                          required="true"
+                          onchange="{!c.onChange}"
+                          disabled="{!not(v.hasUpdateAccess)}"
+                          >
+            <option value="">--None--</option>
+            <aura:iteration items="{!v.picklistValues}" var="item">
+                <option value="{!item}">{!item}</option>
+            </aura:iteration>
+        </lightning:select>
+        <!--<lightning:input label="Performance Metrics Used" value="{!v.record.Pricing_Performance_Metric_Nm__c}" variant="label-hidden"/>-->
+    </lightning:layoutItem>
+    <lightning:layoutItem size="2" padding="around-small">
+        <div></div>
+        <lightning:input
+                         class="myCustomClass"
+                         type="number"
+                         formatter="percent-fixed"
+                         label="Weighting"
+                         value="{!v.record.Pricing_Weighting_Pct__c}"
+                         variant="label-hidden"
+                         min="1"
+                         max="100"
+                         messageWhenRangeOverflow="Value must be between 1 and 100"
+                         messageWhenRangeUnderflow="Value must be between 1 and 100"
+                         disabled="{!not(v.hasUpdateAccess)}"
+                         />
+    </lightning:layoutItem>
+    <lightning:layoutItem size="2" padding="around-small">
+        <div></div>
+        <lightning:input
+                         aura:id="intelSKU"
+                         class="myCustomClass"
+                         type="number"
+                         step=".01"
+                         min="0.01"
+                         label="Intel SKU"
+                         max="9999999999999999"
+                         messageWhenRangeOverflow="Value exceeded the maximum limit (16 digits before decimal)"
+                         value="{!v.record.Pricing_Intel_SKU_Performance_Nbr__c}"
+                         variant="label-hidden"
+                         messageWhenRangeUnderflow="Value must be greater than 0"
+                         messageWhenStepMismatch="More than 2 digits after decimal places will be rounded to 2"
+                         disabled="{!not(v.hasUpdateAccess)}"
+                         />
+    </lightning:layoutItem>
+    <lightning:layoutItem size="2" padding="around-small">
+        <div></div>
+        <lightning:input
+                         aura:id="compSKU"
+                         class="myCustomClass"
+                         type="number"
+                         step=".01"
+                         label="Comp SKU"
+                         min="0.01"
+                         max="9999999999999999"
+                         messageWhenRangeOverflow="Value exceeded the maximum limit (16 digits before decimal)"
+                         value="{!v.record.Pricing_Comp_SKU_Performance_Nbr__c}"
+                         variant="label-hidden"
+                         messageWhenRangeUnderflow="Value must be greater than 0"
+                         messageWhenStepMismatch="More than 2 digits after decimal places will be rounded to 2"
+                         disabled="{!not(v.hasUpdateAccess)}"
+                         />
+    </lightning:layoutItem>  
+    <lightning:layoutItem size="2" padding="around-small">
+        <div></div>
+        <lightning:input
+                         class="myCustomClass"
+                         label="Other Text"
+                         aura:id="otherText"
+                         value="{!v.record.Pricing_Other_Nm__c}"
+                         variant="label-hidden"
+                         disabled="{!not(v.hasUpdateAccess) ? not(v.hasUpdateAccess) : v.disabled}"
+						 maxlength="255"	                         
+                         />
+    </lightning:layoutItem>
+</aura:component>

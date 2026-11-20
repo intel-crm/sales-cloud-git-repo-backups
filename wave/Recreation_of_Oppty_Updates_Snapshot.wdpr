@@ -1,0 +1,280 @@
+{
+  "version" : "63.0",
+  "nodes" : {
+    "LOAD_DATASET14" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "IsActive", "Id", "Name", "ManagerId", "Core_WWID__c", "Core_Manager__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FILTER2" : {
+      "action" : "filter",
+      "sources" : [ "JOIN41" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "IsActive",
+          "operator" : "EQUAL",
+          "operands" : [ "true" ]
+        } ]
+      }
+    },
+    "LOAD_DATASET16" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "HIERARCHY_SYSTEM_ID", "USER_ID", "USER_NM", "USER_MANAGER_ID", "USER_MANAGER_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_MANAGER_GENERAL_HIERARCHY_ID_CRMA",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_MANAGER_GENERAL_HIERARCHY_ID_CRMA"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN32" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET22", "FILTER2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OWNER_SYSTEM_ID" ],
+        "rightQualifier" : "FILTER2",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "OUTPUT11" : {
+      "action" : "save",
+      "sources" : [ "JOIN36" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "UpdatesMetricMarchSnapshot",
+          "name" : "UpdatesMetricMarchSnapshot",
+          "folderName" : "Bug_Fix"
+        }
+      }
+    },
+    "LOAD_DATASET21" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Role", "ID2", "ID4", "ID3", "ID6", "ID", "ID5", "ID7", "ID8" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "MetricsOperationManager",
+          "name" : "MetricsOperationManager"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA18" : {
+      "action" : "formula",
+      "sources" : [ "JOIN32" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "operationmanagrrole",
+          "label" : "operationmanagrrole",
+          "formulaExpression" : "'global'",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN36" : {
+      "action" : "join",
+      "sources" : [ "FORMULA18", "LOAD_DATASET21" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "operationmanagrrole" ],
+        "rightQualifier" : "MetricsOpe",
+        "rightKeys" : [ "Role" ]
+      }
+    },
+    "JOIN41" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET14", "LOAD_DATASET16" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "DIM_MANAGE",
+        "rightKeys" : [ "USER_ID" ]
+      }
+    },
+    "LOAD_DATASET22" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Snapshot_Text_Date", "OWNER_HIERARCHY_TXT", "OWNER_SYSTEM_ID", "CustomSnapshotFilter", "Snapshot_Date", "UPDATED_OPPORTUNITIES_NBR", "TOTAL_OPPORTUNITIES_NBR" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Opportunity Updates Snapshot - March 2025",
+          "name" : "Opportunity_Updates_Snapshot_March_20251"
+        },
+        "sampleDetails" : {
+          "type" : "TopN"
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET14" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER2" : {
+        "label" : "FILTER2",
+        "type" : "FILTER",
+        "top" : 112,
+        "left" : 392
+      },
+      "LOAD_DATASET16" : {
+        "label" : "DIM_MANAGER_GENERAL_HIERARCHY_ID_CRMA",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN32" : {
+        "label" : "Join 32",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 532
+      },
+      "OUTPUT11" : {
+        "label" : "OpportunityUpdatesMetric",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 112,
+        "left" : 952
+      },
+      "LOAD_DATASET21" : {
+        "label" : "MetricsOperationManager",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM6" : {
+        "label" : "Transform 6",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 672,
+        "graph" : {
+          "FORMULA18" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "operationmanagrrole"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "JOIN36" : {
+        "label" : "Join 36",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 812
+      },
+      "JOIN41" : {
+        "label" : "Join 41",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 252
+      },
+      "LOAD_DATASET22" : {
+        "label" : "Opportunity Updates Snapshot - March 2025",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 392.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET22",
+      "target" : "JOIN32"
+    }, {
+      "source" : "FILTER2",
+      "target" : "JOIN32"
+    }, {
+      "source" : "JOIN32",
+      "target" : "TRANSFORM6"
+    }, {
+      "source" : "TRANSFORM6",
+      "target" : "JOIN36"
+    }, {
+      "source" : "LOAD_DATASET21",
+      "target" : "JOIN36"
+    }, {
+      "source" : "LOAD_DATASET14",
+      "target" : "JOIN41"
+    }, {
+      "source" : "LOAD_DATASET16",
+      "target" : "JOIN41"
+    }, {
+      "source" : "JOIN41",
+      "target" : "FILTER2"
+    }, {
+      "source" : "JOIN36",
+      "target" : "OUTPUT11"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

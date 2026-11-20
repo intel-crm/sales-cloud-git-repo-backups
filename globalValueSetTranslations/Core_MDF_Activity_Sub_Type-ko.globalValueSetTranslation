@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Affiliate</masterLabel>
+        <translation>계열사</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner/Display</masterLabel>
+        <translation>배너/디스플레이</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Catalog/Brochure</masterLabel>
+        <translation>카탈로그/브로셔</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Circular</masterLabel>
+        <translation>회전식</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connected IPOS</masterLabel>
+        <translation>연결된 IPOS</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content Library</masterLabel>
+        <translation>컨텐츠 라이브러리</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DCF SMF</masterLabel>
+        <translation><!-- DCF SMF --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demonstration</masterLabel>
+        <translation>데모</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Direct Mail</masterLabel>
+        <translation>다이렉트 메일</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Email</masterLabel>
+        <translation>이메일</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>End Cap</masterLabel>
+        <translation>엔드 캡</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Giveaway</masterLabel>
+        <translation>경품 행사</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IPOS/ePOS</masterLabel>
+        <translation><!-- IPOS/ePOS --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insert/Outsert/Flyer</masterLabel>
+        <translation>인서트/아웃서트/전단지</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Landing Experience</masterLabel>
+        <translation>시작 경험</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation>리드 생성</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Listing Page Branding</masterLabel>
+        <translation>나열 페이지 브랜딩</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mobile App</masterLabel>
+        <translation>모바일 앱</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Operational Support</masterLabel>
+        <translation>운영 지원</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Collateral)</masterLabel>
+        <translation>기타(부수)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Direct Mail)</masterLabel>
+        <translation>기타(직접 메일)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (EcosystemPartner.com)</masterLabel>
+        <translation>기타(EcosystemPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (In-Store Promotion)</masterLabel>
+        <translation>기타(매장 내 프로모션)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (IndustryPartner.com)</masterLabel>
+        <translation>기타(IndustryPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Joint Event)</masterLabel>
+        <translation>기타(공동 행사)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Member.com)</masterLabel>
+        <translation>기타(Member.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (NonPartner.com)</masterLabel>
+        <translation>기타(NonPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Out-Of-Store Promotion)</masterLabel>
+        <translation>기타(매장 밖 프로모션)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Personnel)</masterLabel>
+        <translation>기타(직원)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Promotion)</masterLabel>
+        <translation>기타(프로모션)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Poster/Sign/Banner</masterLabel>
+        <translation>포스터/사이니지/배너</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Champion</masterLabel>
+        <translation>제품 챔피언</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Branding</masterLabel>
+        <translation>제품 페이지 브랜딩</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Carousel</masterLabel>
+        <translation>제품 페이지 카루젤</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Content</masterLabel>
+        <translation>제품 페이지 콘텐츠</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promo/Landing Page</masterLabel>
+        <translation>프로모션/랜딩 페이지</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promoter</masterLabel>
+        <translation>기획자</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Recommendation Tool</masterLabel>
+        <translation>추천 도구</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retargeting - Banner/Display</masterLabel>
+        <translation>변경 - 배너/디스플레이</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retargeting - Text Ad</masterLabel>
+        <translation>변경 - 텍스트 광고</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Reviews/Ratings</masterLabel>
+        <translation>리뷰/평가 수</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Riser</masterLabel>
+        <translation>라이저</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Kit</masterLabel>
+        <translation>판매 키트</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Onsite</masterLabel>
+        <translation>현장 판매</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search</masterLabel>
+        <translation>검색</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Banner/Display</masterLabel>
+        <translation>검색 – 배너/디스플레이</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Shopping</masterLabel>
+        <translation>검색 - 쇼핑</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Sponsored Brand</masterLabel>
+        <translation>검색 - 후원 브랜드</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Text Ad</masterLabel>
+        <translation>검색 – 텍스트 광고</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Top Products</masterLabel>
+        <translation>검색 - 가장 인기 있는 제품</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shop in Shop</masterLabel>
+        <translation>숍인숍</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shopper Review</masterLabel>
+        <translation>구매자 후기</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Signage</masterLabel>
+        <translation>사이니지</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Media - Banner/Display</masterLabel>
+        <translation>소셜 미디어 - 배너/디스플레이</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Media - Post</masterLabel>
+        <translation>소셜 미디어 - 포스트</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Streaming/Content Mkt</masterLabel>
+        <translation>스트리밍/콘텐츠 Mkt</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Text Ad</masterLabel>
+        <translation>텍스트 광고</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traffic Driver + Landing Page</masterLabel>
+        <translation>교통 드라이버+ 랜딩 페이지</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video</masterLabel>
+        <translation>비디오</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Zone</masterLabel>
+        <translation>구역</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,60 @@
+<aura:documentation>
+	<aura:description>
+    <p>Create Offering Form RADIO Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 6/4/2019</p>
+    <p>CurrentVersion: 2.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+    <p>Example Structure:</p>
+<pre>{
+    type: 'radio',
+    apiName: 'offering',
+    fieldName: 'RadioField__c',
+    label: 'Basic Radio (RadioField__c)',
+    layoutItemMediumDeviceSize: 6,
+    options: [{
+            label: 'Option 1',
+            value: 'opt1'
+        },
+        {
+            label: 'Option 2',
+            value: 'opt2'
+        }, ...
+    ]
+}</pre>
+    <br/>
+    <p>Example Structure (valueType 'complex'):</p>
+<pre>{
+    type: 'radio',
+    apiName: 'radiooptions',
+    valueType: 'complex',
+    label: 'Radio Hierarchy (radiooptions)',
+    options: [{
+            label: 'Option 1',
+            value: 'hopt1',
+            children: [{
+                    label: 'Option 2',
+                    value: 'hopt2',
+                    additionalValues: {
+                        relId: 'XX9823'
+                    }
+                },
+                {
+                    label: 'Option 3',
+                    value: 'hopt3',
+                    additionalValues: {
+                        relId: 'XX9862'
+                    }
+                }
+            ]
+        }, ...</pre>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <p>2.0 now uses ISSGFormRadioChild for hierarchy, and w/ DropdownRadio combo</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

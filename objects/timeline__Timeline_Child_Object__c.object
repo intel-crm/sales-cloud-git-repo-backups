@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>timeline__Data_Provider_Type__c</fullName>
+        <defaultValue>&quot;Related Record&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Will determine if the data is being fetched from a related record or a delegated apex class.</description>
+        <inlineHelpText>Will determine if the data is being fetched from a related record or a delegated apex class.</inlineHelpText>
+        <label>Data Provider Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Related Record</fullName>
+                    <default>false</default>
+                    <label>Related Record</label>
+                </value>
+                <value>
+                    <fullName>Apex class</fullName>
+                    <default>false</default>
+                    <label>Apex class</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>timeline__Date_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Field API Name that will be used to date and time part of the timeline. Created Date will be used as the default if this field isn&apos;t specified.</inlineHelpText>
+        <label>Date Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Display_Object_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <label>Display Object Name</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>timeline__External_Key__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>The external key of the record can be used in automated pipelines to upsert data.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Use the External Key to set a fixed unique key for this record. This can be used to load data into Salesforce.</inlineHelpText>
+        <label>External Key</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Fields_to_Display__c</fullName>
+        <deprecated>false</deprecated>
+        <inlineHelpText>Common separated list of fields to display in the detail section of the timeline component.</inlineHelpText>
+        <label>Fields to Display</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>timeline__Filter_Criteria_Config__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Filter Criteria Config</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>timeline__Icon_Image_Url__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Image url that represents the child object.</inlineHelpText>
+        <label>Icon Image Url</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Icon_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Standard Icon name (mainly used for standard objects) that have a corresponding icon at https://lightningdesignsystem.com/icons/#standard</inlineHelpText>
+        <label>Icon Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Include_All_Records__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <inlineHelpText>This field doesn&apos;t have a function. If you are planning to include archived activities, please refer to the documentation to implement an Apex dataprovider.</inlineHelpText>
+        <label>Include All Records</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>timeline__LWC_Ui_Api_Not_Supported__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This field indicates that this object isn&apos;t supported via the LWC UI API and hence will need special handling that can&apos;t use outputField LWC component.</description>
+        <inlineHelpText>This field indicates that this object isn&apos;t supported via the LWC UI API and hence will need special handling that can&apos;t use outputField LWC component.</inlineHelpText>
+        <label>LWC Ui Api Not Supported</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>timeline__Object_Color__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Theme color for the child object.</inlineHelpText>
+        <label>Object Color</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Object__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Child Object API Name</description>
+        <externalId>false</externalId>
+        <label>Object</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Overdue_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Field that denotes if a child object record is overdue. This will be used to display the record in the &quot;Upcoming and overdue&quot; section.</inlineHelpText>
+        <label>Overdue Field</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Provider_Apex_Classname__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Apex class name in case the data provider is &apos;Apex class&apos;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Apex class name in case the data provider is &apos;Apex class&apos;</inlineHelpText>
+        <label>Provider Apex Classname</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Reference_Field_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reference Field Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Relationship_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the relationship for the child object.</inlineHelpText>
+        <label>Relationship Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Sub_Title_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A field to hold the fields to display on sub title</description>
+        <inlineHelpText>A field to hold the fields to display on sub title</inlineHelpText>
+        <label>Sub Title Fields</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>timeline__Subtitle_Label__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A label that goes in front of the sub title field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A label that goes in front of the sub title field</inlineHelpText>
+        <label>Subtitle Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Timeline_Configuration__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Timeline Configuration</label>
+        <referenceTo>timeline__Timeline_Configuration__c</referenceTo>
+        <relationshipLabel>Timeline Child Objects</relationshipLabel>
+        <relationshipName>Timeline_Child_Objects</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>timeline__Title_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Field that will be used as the title of the activity timeline.</inlineHelpText>
+        <label>Title Field</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>timeline__Title_link_Navigate_to__c</fullName>
+        <defaultValue>&quot;Record Detail&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <inlineHelpText>Determine the behaviour of the hyperlink when displaying the timeline.</inlineHelpText>
+        <label>Title link Navigate to</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Record Detail</fullName>
+                    <default>false</default>
+                    <label>Record Detail</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>timeline__Where_Clause__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Where Clause</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Timeline Child Object</label>
+    <nameField>
+        <displayFormat>TLC-{000000}</displayFormat>
+        <label>Timeline Child Object Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Timeline Child Objects</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>timeline__Object_Color_required_with_Icon_Image</fullName>
+        <active>true</active>
+        <description>Object Color required with Icon Image</description>
+        <errorConditionFormula>AND(LEN(timeline__Icon_Image_Url__c)&gt;0, LEN(timeline__Object_Color__c) = 0)</errorConditionFormula>
+        <errorDisplayField>timeline__Object_Color__c</errorDisplayField>
+        <errorMessage>Object Color required with Icon Image</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

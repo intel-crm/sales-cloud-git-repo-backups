@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="IDC Coupon Generation Request Complete. [TOTAL_NUMBER] requests were processed." recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c">
+ <messaging:htmlEmailBody >
+      <html>
+         <body>
+            <p>
+               This email is to inform you that the coupon generation process for the selected [TOTAL_NUMBER] Credit Requests has been completed. Here are your results:<br/><br/>
+Successful coupon generation: [SUCCESS]<br/>
+Unsuccessful coupon generation: [UNSUCCESS]<br/>
+
+<br/><br/>
+Please refer to the attachment for details of each Credit Request Record.
+
+
+            </p>
+         </body>
+      </html>
+   </messaging:htmlEmailBody>
+</messaging:emailTemplate>

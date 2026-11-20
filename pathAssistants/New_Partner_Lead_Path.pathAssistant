@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Core_Lead_Status__c</fieldName>
+    <masterLabel>New Partner Lead Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Name</fieldNames>
+        <fieldNames>Phone</fieldNames>
+        <fieldNames>Email</fieldNames>
+        <fieldNames>Core_Lead_Priority__c</fieldNames>
+        <fieldNames>Core_Lead_Contact_Estb_Dt__c</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Overview :&lt;/b&gt;&lt;/p&gt;&lt;p&gt;This Lead has been “Accepted” by you and ready to be contacted.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Actions:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Attempt to contact the Lead by phone / email&lt;/li&gt;&lt;li&gt;Click the “Mark Status as Complete” button to mark the status as “Contacted”&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Best Practices&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please attempt to make first contact with this Lead based on “Lead Priority”: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Hot&lt;/b&gt; - attempt to contact within 1 business day&lt;/li&gt;&lt;li&gt;&lt;b&gt;Warm&lt;/b&gt; - attempt to contact within 2 business day&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cold&lt;/b&gt; - attempt to contact within 4 business day&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Accepted</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Name</fieldNames>
+        <fieldNames>Phone</fieldNames>
+        <fieldNames>Email</fieldNames>
+        <fieldNames>Core_Lead_Contact_Estb_Dt__c</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Overview: &lt;/b&gt;&lt;/p&gt;&lt;p&gt;This Lead has been “Contacted” by you and ready to be further qualified or rejected.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Actions:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Continue attempting to contact the Lead until they become engaged in a conversation; we recommend at least four contact attempts within 30 days&lt;/li&gt;&lt;li&gt;Once you establish contact with the Lead, check the checkbox “Contact Established” field&lt;/li&gt;&lt;li&gt;If you determine the Lead is “Qualified”, fill out the appropriate qualification fields (if required) and click the “Mark Status as Complete” button&lt;/li&gt;&lt;li&gt;If the Lead was unreachable or not qualified, click the “Reject” button and mark appropriate “Reject Reason”&lt;/li&gt;&lt;/ol&gt;</info>
+        <picklistValueName>Contacted</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Name</fieldNames>
+        <fieldNames>Core_Lead_Source_Pkt__c</fieldNames>
+        <fieldNames>Core_Lead_PMP_Action__c</fieldNames>
+        <fieldNames>Core_Lead_Priority__c</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Overview: &lt;/b&gt;&lt;/p&gt;&lt;p&gt;A new Partner-Ready Lead has been created and assigned to you. Please determine if you would like to “Accept” or “Reject” this Lead.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Actions:&lt;/b&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Evaluate if the Lead is worth pursuing by reviewing the fields below&lt;/li&gt;&lt;li&gt;If the Lead appears to have potential, click the “Claim” button to “Accept” the Lead&lt;/li&gt;&lt;li&gt;If not, click the “Reject” button and mark appropriate “Reject Reason”&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Best Practices&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Please “Claim” this Lead and attempt to make first contact based on “Lead Priority”:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Hot&lt;/b&gt; - attempt to contact within 1 business days&lt;/li&gt;&lt;li&gt;&lt;b&gt;Warm &lt;/b&gt;- attempt to contact within 2 business days&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cold &lt;/b&gt;- attempt to contact within 4 business days&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;b&gt;Overview:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt; This Lead is considered “Qualified” by you and a potential revenue opportunity. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Qualified</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Partner_Lead</recordTypeName>
+</PathAssistant>

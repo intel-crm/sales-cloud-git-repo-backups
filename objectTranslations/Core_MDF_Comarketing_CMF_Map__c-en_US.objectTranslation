@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Comarketing CMF Map</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Comarketing CMF Map</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_Id__c</name>
+        <relationshipLabel><!-- Comarketing CMF Map --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Channel --></label>
+        <name>Core_MDF_Distribution_Channel_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate Detected --></label>
+        <name>Core_MDF_Duplicate_Detected_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_MDF_Geo_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org --></label>
+        <name>Core_MDF_Sales_Org_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship To Number --></label>
+        <name>Core_MDF_Ship_To_Number_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sold To Number --></label>
+        <name>Core_MDF_Sold_To_Number_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- CMF Record already exists for the selected Account. --></errorMessage>
+        <name>Core_MDF_Check_Duplicate_Record_Creation</name>
+    </validationRules>
+</CustomObjectTranslation>

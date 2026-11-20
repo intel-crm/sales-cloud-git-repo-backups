@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Target Setting Line Item Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Target Setting Line Item Configuration</value>
+    </caseValues>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Focus Area --></label>
+        <name>Core_MDF_Focus_Area_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_MDF_Sub_Region_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

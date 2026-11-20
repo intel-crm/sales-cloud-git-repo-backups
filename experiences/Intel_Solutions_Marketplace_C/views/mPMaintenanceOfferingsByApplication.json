@@ -1,0 +1,74 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "74ee561f-3e92-4dc7-b7cc-4f60d5ea244b",
+  "label" : "MP Maintenance-Offerings by Application",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "d981ec81-7d2b-4b60-9271-188682558e2e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "81b8debf-daa4-4bb1-b790-50ce8fdaed5c",
+        "zh_cn" : "5e0ca9c1-4921-46ba-8765-ed9ad2485955"
+      },
+      "renditions" : [ {
+        "id" : "5e0ca9c1-4921-46ba-8765-ed9ad2485955",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "81b8debf-daa4-4bb1-b790-50ce8fdaed5c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "eb7a4f14-c7ab-4adc-bf89-06582040720f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "7e3edf40-4277-496f-b0da-231e318aeb24",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "20bdb5aa-2f69-4bb6-8112-7ab5f1f77e57",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Offerings By Application\"/> \n<meta name=\"keywords\" content=\"offerings by application, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingsByApplication\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace offerings by application on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "Offerings by Application  - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4ea98e1a-7774-4885-a903-c2bef1b4eabb",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "eab6c329-3b70-43d7-8835-8f7c90c7874d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offerings-by-application"
+}

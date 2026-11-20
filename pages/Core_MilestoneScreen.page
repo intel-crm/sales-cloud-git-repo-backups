@@ -1,0 +1,53 @@
+<apex:page id="mypage" standardController="case" extensions="Core_MilestoneScreenController" sidebar="false" showHeader="false" tabStyle="Case" applyHtmlTag="false">
+    <apex:includeLightning />
+        <apex:outputPanel onclick="return false;" >
+            <div id="caseMilestoneId" />
+        </apex:outputPanel>
+       
+    <script>
+    var userContext = "{!$User.UIThemeDisplayed}";
+    
+    //if(userContext == 'Theme4d' || userContext == 'Theme3'){
+    if(userContext == 'Theme4d'){
+        $Lightning.use("c:core_IPS", function() {
+                $Lightning.createComponent("c:core_IPS_MilestoneScreen",
+                                           { 
+                                               recordId : "{!$CurrentPage.parameters.id}"
+                                           },
+                                           "caseMilestoneId",
+                                           function(component) {
+                                           });
+            }); 
+        }
+    if(userContext == 'Theme4d' || userContext == 'Theme3'){
+    //if(userContext == 'Theme3'){
+    window.onload = resizeWindow(); 
+    function resizeWindow(){
+    
+      top.document.getElementById("0663F000000NS9g").height = "0px";
+    }
+        }
+    </script>
+    <apex:variable var="lightningDesktop" value="{! $User.UIThemeDisplayed == 'Theme4d'}" />
+        <apex:actionRegion rendered="{! !lightningDesktop}">
+    <apex:form >
+        <apex:pageBlock >
+             <apex:actionRegion >
+                <apex:pageBlockSection title="Recent Milestones" columns="1">
+                    <apex:pageBlockTable value="{!caseMilestones}" var="comnt"  >
+                        <apex:column value="{!comnt.CsMs.MilestoneType.Name}" headerValue="MileStoneType Name"/>
+                        <apex:column value="{!comnt.CsMs.Case.caseNumber}" headerValue="Case Number"/>
+                        <apex:column value="{!comnt.CsMs.CompletionDate}" headerValue="Completion date"/> 
+                        <apex:column value="{!comnt.CsMs.TargetDate}" headerValue="Target Date"/>
+                        <apex:column value="{!comnt.BusinessHoursName}" headerValue="Business Hours"/>
+                        <apex:column value="{!comnt.TimeRemaininginHours}" headerValue="Time Remaining in Hours"/>
+                        <apex:column value="{!comnt.TimeRemaininginDays}" headerValue="Time Remaining in Days"/>                                             
+                        <apex:column value="{!comnt.CsMs.IsViolated}" headerValue="Violated"/>
+                        <apex:column value="{!comnt.CsMs.IsCompleted}" headerValue="Completed"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:actionRegion>
+        </apex:pageBlock>
+    </apex:form>
+    </apex:actionRegion>
+</apex:page>

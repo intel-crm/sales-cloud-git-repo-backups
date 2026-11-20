@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Contract Line Item --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Contract Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contract Section Details History --></label>
+        <name>Core_MDF_Contract_Section_Details_Histry__c</name>
+    </fields>
+    <fields>
+        <label>Details zum Vertragsabschnitt</label>
+        <name>Core_MDF_Contract_Section_Details_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>Core_MDF_Inactive_Ind__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Contract Line Item Name --></nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,11 @@
+.belowText {
+    font-style: normal;
+    font-size: 15px;
+    padding-top: 25px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.errorInputTxt{
+    color: red;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities Opportunity Solution</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/opportunity-solutions-groups/</actionButtonLink>
+        <body>&lt;p&gt;During the Design stage, Opportunity Solutions need to be identified before submitting for approval.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;To add the Opportunity Solutions:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1.&amp;nbsp;Within the Opportunity, click on the &lt;strong&gt;Opportunity Solutions&lt;/strong&gt; tab.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2.&amp;nbsp;&lt;strong&gt;Search for the desired Solution(s)&lt;/strong&gt;.&amp;nbsp;Search filters are available to refine your results. &lt;/p&gt;&lt;ul&gt;&lt;li&gt;You can apply the filters either before searching or after you have searched.&amp;nbsp; Refine the results by choosing a value from one, two, or all 3 categories.&lt;/li&gt;&lt;li&gt;When a value is chosen, the list dynamically adjusts to provide results within the chosen category value.&amp;nbsp;&amp;nbsp;If you need to change to a different category, click the field and choose a different value.&lt;/li&gt;&lt;li&gt;To remove a chosen value, you will need to click the Reset Search button.&amp;nbsp;This will reset all categories as well as the search term.&lt;/li&gt;&lt;li&gt;Solution Search Text field will search the Solution Partner field (e.g. Dell).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;3.&amp;nbsp;Click the checkbox next to the Solution(s) you would like to add.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;4. Scroll down to click the &lt;strong&gt;Create Opportunity Solution &lt;/strong&gt;button&lt;strong&gt;.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Refer to the &lt;em&gt;Opportunity Solution&lt;/em&gt; related section to see added solutions.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To delete a solution, go to the &lt;em&gt;Opportunity Solution &lt;/em&gt;related section&lt;em&gt;.&lt;/em&gt; Find the Solution you want to delete and click the dropdown arrow next to it. Select &lt;strong&gt;Delete &lt;/strong&gt;and click the &lt;strong&gt;Delete &lt;/strong&gt;button.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Opportunities Opportunity Solution instruction</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities Opportunity Solution</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Opportunity Solutions</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

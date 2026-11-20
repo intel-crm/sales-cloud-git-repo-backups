@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Commissionable Employee - Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Commissionable Employees - Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Id --></label>
+        <name>CPT_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee WWID --></label>
+        <name>CPT_Employee_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>CPT_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field1 --></label>
+        <name>CPT_Generic_Field1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field2 --></label>
+        <name>CPT_Generic_Field2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field3 --></label>
+        <name>CPT_Generic_Field3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Role --></label>
+        <name>CPT_Job_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>CPT_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager WWID --></label>
+        <name>CPT_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager --></label>
+        <name>CPT_Manager__c</name>
+        <relationshipLabel><!-- Commissionable Employees - Staging --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>CPT_Plan_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Job --></label>
+        <name>CPT_Platform_Job__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Compensation Plan --></label>
+        <name>CPT_Sales_Compensation_Plan__c</name>
+        <relationshipLabel><!-- Commissionable Employees - Staging --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>CPT_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org --></label>
+        <name>CPT_Sales_Org__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team --></label>
+        <name>CPT_Sales_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation Message --></label>
+        <name>CPT_Validation_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation Status --></label>
+        <name>CPT_Validation_Status__c</name>
+        <picklistValues>
+            <masterLabel>Fail</masterLabel>
+            <translation><!-- Fail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pass</masterLabel>
+            <translation><!-- Pass --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

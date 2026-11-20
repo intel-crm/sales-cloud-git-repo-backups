@@ -1,0 +1,6 @@
+<design:component >
+  <!-- IPA2.0 + US TWC4497-1631 -->
+  <design:attribute name="showManageOffering" label="Show Manage Offering Button"/>
+  <design:attribute name="showEditPencil" label="Show Edit Pencil Icons"/>
+  <design:attribute name="showLeadGeneration" label="Show Lead Generation"/>
+</design:component>

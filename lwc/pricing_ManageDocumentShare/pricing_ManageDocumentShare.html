@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Document Share" icon-name="standard:custom">
+        <div class="">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-grid slds wrap header">
+                    <div class="slds-size_8-of-12" style="padding-left: 0.4rem;">
+                        <span class="slds-truncate">Pricing Document Name</span>
+                    </div>
+                    <div class="slds-size_4-of-12">
+                        <span class="slds-truncate">Number Of Attachments</span>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap body" style="margin-bottom: 1rem;">
+                    <div class="slds-size_8-of-12" style="padding-left: 0.4rem;">
+                        <div class="slds-truncate recordNameLink divTrunc"
+                                onclick={navigateToRecordPage}>{recordName}</div>
+                    </div>
+                    <div class="slds-size_4-of-12">
+                        <span class="slds-truncate">{noOfAttachments}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

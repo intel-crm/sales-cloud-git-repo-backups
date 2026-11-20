@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>CENTRAL DE SERVICIOS PC Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>CENTRAL DE SERVICIOS PC Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_12128912_Jorge_Becerra_Pantoja</parentRole>
+</Role>

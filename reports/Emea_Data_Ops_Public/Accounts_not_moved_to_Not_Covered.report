@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22081012</developerName>
+        <masterLabel>Data Ops or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>MICHAEL SWEET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paulo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonia Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Herman Wynn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Jolin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Kline</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Julia Sallaiova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Amber Tsai</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simon Lee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindy Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sylvia Saw Ai Ong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yu Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LINDA LEE NORTH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NHAT THANH NGUYEN</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Level__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Open_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_B2B_Entitlement__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Justyna Pieniążek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Primary_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Covered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>5/23/2025 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_ADDRESS1_COUNTRY_CODE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Accounts not moved to Not Covered</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

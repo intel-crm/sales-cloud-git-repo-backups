@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>send_achieve_email</name>
+        <label>send achieve email</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <actionName>Core_Goal__c.Core_Goal_DWG_Ready_to_Submit_Notification</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Goal__c.Core_Goal_DWG_Ready_to_Submit_Notification</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Not_Achieved</name>
+        <label>Send Not Achieved</label>
+        <locationX>314</locationX>
+        <locationY>695</locationY>
+        <actionName>Core_Goal__c.Core_Goal_DWG_Need_To_Recall_When_KPI_Not_Achieved</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Goal__c.Core_Goal_DWG_Need_To_Recall_When_KPI_Not_Achieved</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Condition</name>
+        <label>Check Condition</label>
+        <locationX>446</locationX>
+        <locationY>575</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>not_achieved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MatchOppKPI_Backend__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>KPI Not Achieved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MatchOppKPI_2ndPrev_Backend__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>KPI Achieved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Goal_Claim_Date__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <dateValue>2021-12-31</dateValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Goal_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Not_Achieved</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>not achieved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Mail</name>
+        <label>check Mail</label>
+        <locationX>248</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>Check_Condition</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Achieved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MatchOppKPI_Backend__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>KPI Achieved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MatchOppKPI_2ndPrev_Backend__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>KPI Achieved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>send_achieve_email</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Achieved</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_OnChange_MatchOppKPI_BackendField workflow rule
+
+
+Updates the value of Core_MatchOppKPI_Prev_Backend and Core_MatchOppKPI_2ndPrev_Backend</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Update_MatchOppKPI_Prev_FieldFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(PRIORVALUE($Record.Core_MatchOppKPI_Backend__c) == null &amp;&amp; $Record.Core_MatchOppKPI_Backend__c == &apos;No KPI Match&apos;, &apos;No KPI Match&apos;, PRIORVALUE($Record.Core_MatchOppKPI_Backend__c))</expression>
+    </formulas>
+    <formulas>
+        <name>Update_MatchOppKPI_2nd_Prev_FieldFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(PRIORVALUE({!$Record.Core_MatchOppKPI_Backend__c})&lt;&gt; null,PRIORVALUE({!$Record.Core_MatchOppKPI_Prev_Backend__c}),&apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>Core_OnChange_MatchOppKPI_BackendField {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_OnChange_MatchOppKPI_BackendField</label>
+    <migratedFromWorkflowRuleName>Core_OnChange_MatchOppKPI_BackendField</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>updates both Prev and 2nd Prev Backend fields of MatchOppKPI pre fields</description>
+        <name>Update_MatchOppKPI_Prev_and_2nd_PrevField</name>
+        <label>Update MatchOppKPI Prev and 2nd PrevField</label>
+        <locationX>248</locationX>
+        <locationY>335</locationY>
+        <connector>
+            <targetReference>check_Mail</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_MatchOppKPI_2ndPrev_Backend__c</field>
+            <value>
+                <elementReference>Update_MatchOppKPI_2nd_Prev_FieldFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_MatchOppKPI_Prev_Backend__c</field>
+            <value>
+                <elementReference>Core_Update_MatchOppKPI_Prev_FieldFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_MatchOppKPI_Prev_and_2nd_PrevField</targetReference>
+        </connector>
+        <filterFormula>NOT({!$Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c}) &amp;&amp; 
+{!$Record.Core_Opportunity__c} &lt;&gt; null &amp;&amp;  ISCHANGED({!$Record.Core_MatchOppKPI_Backend__c}) &amp;&amp; {!$Record.Core_MatchOppKPI_Backend__c} != null</filterFormula>
+        <object>Core_Goal__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1600</triggerOrder>
+</Flow>

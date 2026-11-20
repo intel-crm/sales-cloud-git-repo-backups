@@ -1,0 +1,78 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6ee169bf-5271-4d39-a302-1c88b9936a4a",
+  "label" : "Company Training Credits",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"TrainingCredits\",\"title\":\"Training Credits\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Training Credits",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "#",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "",
+        "title" : ""
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "d4d348b7-f21c-4b6e-85d8-f08a3f8cd8fc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "aba618d9-92a4-4a23-a5a3-0c9fd4cea84a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_CompanyTrainingCredits",
+      "id" : "dbb52cd3-e6b8-44c9-94cb-0dec67b6c122",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ce2c002d-b694-4cf8-ac7f-b96fa03defc7",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "c0edca0b-35ec-4404-92d7-bfbd8524a4d4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e743de2e-4909-4afc-b1dd-cdf97d9cc160",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Training Credits\"/>\n<meta name=\"pageType\" content=\"TrainingCredits\"/>",
+        "description" : "",
+        "title" : "Company Training Credits"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "fe292615-671b-4078-b345-6568a4e9c491",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ca185c48-97c7-4f36-8130-d791d0708b3b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-company-training-credits"
+}

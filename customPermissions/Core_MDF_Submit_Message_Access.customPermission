@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>To identify if a user has access to submit message functionality on case object or not</description>
+    <isLicensed>false</isLicensed>
+    <label>UsersWithAccessToSubmitMessage</label>
+</CustomPermission>

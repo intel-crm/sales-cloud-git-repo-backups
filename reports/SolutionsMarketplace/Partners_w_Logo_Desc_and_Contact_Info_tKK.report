@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>PMP_Company__c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>PMP_Company__c$PMP_Partner_Program_nm__c</field>
+        </columns>
+        <columns>
+            <field>PMP_Company__c$PMP_Account_Specialty__c</field>
+        </columns>
+        <columns>
+            <field>PMP_Company__c$PMP_Company_Lifecycle_Status_Nm__c</field>
+        </columns>
+        <columns>
+            <field>PMP_Company__c$PMP_Partner_Logo_Cnt__c</field>
+        </columns>
+        <columns>
+            <field>PMP_Company__c$CreatedDate</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>PMP_Company__c$PMP_Is_Published_Ind__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>1</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Marketing Profile With Translati block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Marketing_Profile_With_Translations__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>PMP_Company__c$CreatedDate</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>PMP_Company__c</joinTable>
+    </blockInfo>
+    <description>To identify the MP partners logo and description details. and add contact details</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PMP_Company__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Partners w/ Logo, Desc and Contact Info</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Marketing_Profile_With_Translations__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

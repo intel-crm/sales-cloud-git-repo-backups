@@ -1,0 +1,12 @@
+.buttonStyle {
+    height: 2rem;
+    justify-content: center;
+    display: flex;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+}
+.attachmentStyle {
+    width: max-content;
+    font-size: 0.8rem;
+    margin-top: 0px;
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom URL Embed</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom URL Embeds</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Level --></label>
+        <name>Core_Access_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Add User SessionID --></label>
+        <name>Core_Add_User_SessionID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Auto SSO Enabled --></label>
+        <name>Core_Auto_SSO_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Core_Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Secret --></label>
+        <name>Core_Client_Secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- Session Parameter --></label>
+        <name>Core_Session_Parameter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tenant Id --></label>
+        <name>Core_Tenant_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dynamic Filter and Value txt --></label>
+        <name>Dynamic_Filter_and_Value_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dynamic filter --></label>
+        <name>Dynamic_filter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Embed_URL_Class --></label>
+        <name>Embed_URL_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Access Error txt --></label>
+        <name>No_Access_Error_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Security Query txt --></label>
+        <name>Security_Query_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Security enforced --></label>
+        <name>Security_enforced__c</name>
+    </fields>
+    <fields>
+        <label><!-- Static Filter and Value txt --></label>
+        <name>Static_Filter_and_Value_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Static filter --></label>
+        <name>Static_filter__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field to store URL --></help>
+        <label><!-- URL --></label>
+        <name>URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Filter and Value txt --></label>
+        <name>User_Filter_and_Value_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Info --></label>
+        <name>User_Info__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Fill &apos;Filter and Value&apos; and &apos;Object&apos; field for Dynamic filter to work. --></errorMessage>
+        <name>Dynamic_Filter_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Fill &apos;Security Query&apos; field for Security to be enforced. --></errorMessage>
+        <name>Security_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Fill &apos;Static Filter&apos; field for Static filter to work. --></errorMessage>
+        <name>Static_Filter_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Fill &apos;User Filter and Value&apos; field for User Info filter to work. --></errorMessage>
+        <name>User_Info_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,24 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+    
+    <!--<aura:attribute name="storeName" type="string" default="Settings" />--><!--Commented as part of code merge[09/16]-->
+    <aura:set attribute="storeName" value="Settings" /><!--Added as part of code merge [09/16]-->
+    <aura:attribute name="headline" type="string" default="" />
+    <aura:attribute name="copy" type="string" default="" />
+
+		<aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+			<div class="slds-show_medium slds-p-around_small">
+				<h3 class="promo-heading">{! v.headline }</h3>
+				<div class="slds-p-vertical_small">
+					{! v.copy }
+				</div>
+			</div>
+
+	    <aura:set attribute="else">
+				<c:IntelHubSpoke headline="{!v.headline}"
+					class="slds-m-around_medium"
+					>
+					<p class="slds-p-around_large">{! v.copy }</p>
+				</c:IntelHubSpoke>
+	    </aura:set>
+		</aura:if>
+</aura:component>

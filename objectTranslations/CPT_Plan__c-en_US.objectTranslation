@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Compensation Plan</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Compensation Plans</value>
+    </caseValues>
+    <fields>
+        <help><!-- The sum of all the Breakout Elements. It should be equal to 100. --></help>
+        <label><!-- Breakout Total --></label>
+        <name>CPT_Breakout_Total__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if this record is Inactive. --></help>
+        <label><!-- Inactive --></label>
+        <name>CPT_Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Plan --></label>
+        <name>CPT_Manager_Plan__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarginVolume --></label>
+        <name>CPT_MarginVolume__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings Revenue --></label>
+        <name>CPT_Percent_Billings_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumption Revenue --></label>
+        <name>CPT_Percent_Consumption_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win Revenue --></label>
+        <name>CPT_Percent_Deal_Win_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales OKR --></label>
+        <name>CPT_Percent_Sales_OKR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team Goal --></label>
+        <name>CPT_Percent_Sales_Team_Goal__c</name>
+    </fields>
+    <fields>
+        <help><!-- The identifier of the Plan in Callidus system. --></help>
+        <label><!-- Persona ID --></label>
+        <name>CPT_Persona_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique Code given to each Plan by IT Team. This Code is stamped on the Quota Setup record, and is used to derive the OKR and Sales Team Goal dependent picklist values. --></help>
+        <label><!-- Plan Code --></label>
+        <name>CPT_Plan_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- A name given by the business for each plan. --></help>
+        <label><!-- Plan Description --></label>
+        <name>CPT_Plan_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>CPT_Plan_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- A unique number given by the business for each plan. --></help>
+        <label><!-- Plan # --></label>
+        <name>CPT_Plan_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>CPT_Plan_Type__c</name>
+        <picklistValues>
+            <masterLabel>Manager</masterLabel>
+            <translation><!-- Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The identifier of the Plan in Callidus system. --></help>
+        <label><!-- XX Persona ID --></label>
+        <name>XX_CPT_Persona_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- A unique name given by the business for each plan. --></help>
+        <label><!-- XX Plan Name --></label>
+        <name>XX_CPT_Plan_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Breakout Total value should be equal to 100% --></errorMessage>
+        <name>CPT_BreakoutTotal_ShouldBe_EqualTo_100</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Field not editable --></errorMessage>
+        <name>CPT_Prevent_Plan_Number_Update</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,105 @@
+.gridFooter {
+    align-self: flex-start;
+    font-weight: normal;
+    font-size: smaller;
+    text-align:center;
+    color: #0054ae;
+}
+.truncation {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.contentBox{
+    box-sizing: border-box;
+    background-color: white;
+    text-align:center;
+    text-size-adjust: inherit;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family:'SalesforceSans-Regular',Arial,sans-serif !important;
+}
+.mainDiv{
+    /* border: solid;
+    border-width: thin; */
+    /* left: 8px; */
+    height: 168px;
+    width: 32.6%;
+    height: min-content;
+}
+.styleBox{
+    margin-left:15px;
+}
+
+
+.fontColor{
+    font-size: 50px;
+    text-align: center; 
+    color:rgb(0, 113, 97);
+    font-weight: 500;
+}
+
+.gridHeader{
+    text-align:center;
+    font-size: 1rem;
+    color: #16325c;
+    font-weight:normal;
+}
+.performance-value-text {
+
+    padding-left: 2px;
+    padding-right: 16px;
+    color:rgb(0, 113, 97);
+    font-size: 50px;
+    font-weight: 500;
+  
+  }
+  .exampleHolder{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.boxsizing{
+    width: auto;
+}
+  .hide {
+    display: none;
+  }
+  .hoverComp:hover {
+    text-decoration: underline;
+}
+  
+  .hoverComp:hover + .hide {
+    
+    display: inline-block;
+    background-color: white;
+    color: black;
+    width: auto;
+    height: 20px;
+    text-align: center;
+    border-style: ridge;
+    border-radius: 0;
+    font-size: 12px;
+    position: absolute;
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+.linkStyle{
+    /* color: #16325c; */
+    font-size: 1rem;
+  }
+
+  .fontDollar{
+    font-size: 50px; 
+    padding-left:16px;
+    text-align: center; 
+    color:rgb(0, 113, 97);
+    font-weight: 500;
+}

@@ -1,0 +1,2356 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Manager__c", "Id", "Name" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Name", "Core_Account_ID__c", "Core_Prime_Account_Name__c", "Core_Unified_Global_Customer_Name__c", "Core_Unified_Intermediate_Customer_Name__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ParentId", "Core_MDF_Parent_Fund_Account__c", "Name", "Core_Account_ID__c", "Core_Sales_Groups__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Sales_Segments__c", "Core_Sales_Group__c", "Core_Sales_Groups__c", "Id", "AccountId", "Name", "Description", "StageName", "Amount", "CloseDate", "Type", "OwnerId", "PushCount", "Core_Loss_Cancel_Reason__c", "Core_Technical_Owner__c", "Core_Product_Count__c", "Core_Opportunity_Past_Due__c", "Core_Risk_Reason__c", "Core_Opportunity_Owner__c", "Core_Technical_Owner_Manager__c", "Core_Opportunity_Type__c", "Core_Geographical_Territory_Name__c", "Core_Geographical_Territory__c", "Core_Status_Update__c", "Core_Push_Counter__c", "Core_Opportunity_Coverage__c", "Core_Pushes__c", "Core_Segment__c", "Core_At_Risk__c", "Core_Age__c", "Core_Low_stage_progression__c", "Core_Low_pipeline_confidence__c", "Core_Opp_Strategic_Opportunity__c", "Core_Opportunity_Coverage_Nm__c", "Core_Coverage_Type_Nm__c", "Opportunity_Focus__c", "Push_Reason__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Opportunity",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Opportunity"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "JOIN12", "LOAD_DATASET2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "AccountId" ],
+        "rightQualifier" : "OpportunityAccount",
+        "rightKeys" : [ "Core_Account_ID__c" ]
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "JOIN2", "FORMULA14" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OwnerId" ],
+        "rightQualifier" : "OppAccountUser",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Risk_Priority__c", "Core_At_Risk_Status", "Core_At_Risk__c", "Opportunity.Core_At_Risk_Created_Date__c", "Core_Risk_Create_Date__c", "FiscalKPIDate.fiscalmonthnumber", "Opportunity.TeamMembersNoOwners.User.Manager.Name", "CoreKPIDateQuarter", "FiscalCreatedDate.fiscalmonthname", "Core_Status__c", "Opportunity.TeamMembers.User.Name", "Core_KPI_Date__c", "Opportunity.Core_Sales_Group__c", "OpportunityId", "Opportunity.CloseDate", "Opportunity.Account.Core_Sales_Segment__c", "Opportunity.CreatedDate", "Opportunity.Core_Opp_Strategic_Opportunity__c", "StageSorted", "Opportunity.Owner.Manager.Name", "FiscalTransDt.fiscalmonthnumber", "Core_Approved_BU_Short_Name__c", "Opportunity.TechOwner.Manager.Name", "Core_BU_Short_Name__c", "Opportunity.TeamMembersNoOwners.User.Name", "Opportunity.Core_Opportunity_Type__c", "FiscalDecisionDate.dayofmonth", "Opportunity.AccountTeamMember.UserId", "StageDurationString", "FiscalDecisionDate.fiscalmonthnumber", "FiscalKPIDate.workweekintegernumber", "Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "Product2.Core_Product_Family__c", "ProductCode", "FiscalDecisionDate.fiscalyearquarternumber", "Core_BU_Product_Segment__c", "Opportunity.Account.DirectTerritoryRoles.Role.Roles", "FiscalCreatedDate.fiscalmonthnumber", "Opportunity.Account.Core_Prime_Account_Name__c", "FiscalKPIDate.fiscalyearnumber", "Opportunity.TechOwner.Manager.Manager.Name", "Opportunity.Id", "GroupMember.UserOrGroupId", "FiscalProductionDate.fiscalmonthnumber", "StageFunnel", "Product2.Name", "Opportunity.SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "Opportunity.Owner.Manager.Manager.Name", "Opportunity.TechOwner.Name", "FiscalDecisionDate.fiscalquarternumber", "FiscalDecisionDate.fiscalyearnumber", "Core_Product_Segment__c", "Opportunity.OpportunityPartner.Core_Partner_Type__c", "Opportunity.Account.Owner.Name", "Opportunity.Core_Opportunity_Past_Due__c", "CoreKPIDateYearQuarter", "Opportunity.Group.Security.UserOrGroupId", "Product2.Core_Code_Name__c", "Name", "Opportunity.Security.Id", "Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "Opportunity.TeamMembers.User.Manager.Name", "Opportunity.Account.Name", "opportunityDecisionDateQuarter", "Product2Id", "Opportunity.AccountTeamMember.Security.Role.Roles", "Push", "Opportunity.Core_Pushes__c", "Opportunity.OpportunityPartner.Name", "Opportunity.Core_Named_Strategic__c", "Opportunity.TeamMembers.User.Manager.Manager.Name", "Opportunity.StageName", "Opportunity.Security.Role.Roles", "Opportunity.TeamMembersNoOwners.User.Manager.Manager.Name", "GroupMemberRoles.Role.Roles", "OpptyProductsWithModifyAllData.ModifyAllData.AssigneeId", "Opportunity.Account.ParentTerritoryRoles.Role.Roles", "FiscalProductionClaimDate.fiscalmonthnumber", "Opportunity.Amount", "Opportunity.Core_Wins_Oppty__c", "Opportunity.Core_Push_Counter__c", "Opportunity.Core_Product_Count__c", "Opportunity.Core_Days_from_Opportunity_Create_to_Su__c", "Core_KPI_Total_Price__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityProducts",
+          "name" : "OpportunityProducts"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "LOAD_DATASET6" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "OpportunityProducts",
+        "rightKeys" : [ "Opportunity.Id" ]
+      }
+    },
+    "FORMULA13" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Manager__c_formula",
+          "label" : "Manager Formula",
+          "formulaExpression" : "'Name' ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA14" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Manager__c_formula_formula",
+          "label" : "Manager Formula Formula",
+          "formulaExpression" : "'Core_Manager__c'",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FILTER5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Partner__c_formula",
+          "label" : "Partner Formula",
+          "formulaExpression" : "(case  \r\n      when contains(upper(\"Core_Sales_Groups__c\"), 'INDIA')\r\n      then 'India'\r\n      when startsWith('Core_Sales_Groups__c', 'EMEA') \r\n      then 'EMEA'\r\n      when 'Core_Sales_Groups__c' in ('Global Strategic Account Sales Group','Global Accounts Sales Group', 'Global Solutions & Services Sales Group') then 'GSA' \r\n      when startsWith('Core_Sales_Groups__c', 'APJ') then 'APJ' \r\n      when startsWith('Core_Sales_Groups__c', 'Americas' ) then 'Americas' \r\n      when startsWith('Core_Sales_Groups__c', 'PRC') then 'PRC' \r\n      else 'Other'\r\nend)\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_noproducts",
+          "label" : "unhealthy_noproducts",
+          "formulaExpression" : "(case \r\n     when Core_Product_Count__c = 0 then 1  \r\nelse 0\r\nend)",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_stage",
+          "label" : "unhealthy_stage",
+          "formulaExpression" : "(case \r\n      when StageName = 'Qualify' or  StageName = 'Define'  then 1 \r\n else 0\r\nend)",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA6" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Partner__c_formula2",
+          "label" : "Partner Formula",
+          "formulaExpression" : "(case \r\n when Core_Opp_Strategic_Opportunity__c = 'true' then 'true'\r\nelse 'false'\r\nend)",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA7" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_pushes",
+          "label" : "unhealthy_pushes",
+          "formulaExpression" : "(case\r\n    when Core_Push_Counter__c >3 and year(\"OpportunityProducts.Opportunity.CreatedDate\") >= 2023 then 1 \r\n     else 0\r\nend)",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA10" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Partner__c_formula3",
+          "label" : "Partner Formula",
+          "formulaExpression" : "'Name'",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA11" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Partner__c_formula3_formula",
+          "label" : "Partner Formula Formula",
+          "formulaExpression" : "'CloseDate_Year'",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA12" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_Partner__c_formula3_formula_formula",
+          "label" : "Partner Formula Formula Formula",
+          "formulaExpression" : "(case when 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '1' then '01' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '2' then '02' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '3' then '03' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '4' then '04' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '5' then '05' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '6' then '06' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '7' then '07' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '8' then '08' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '9' then '09' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '10' then '10' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '11' then '11' \r\nwhen 'OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber' = '12' then '12'\r\nend)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA9" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_mmddyyyy",
+          "label" : "CloseDate_mmddyyyy",
+          "formulaExpression" : "concat(substr('CloseDate', 6, 2),'/',substr('CloseDate', 9, 2),'/',substr('CloseDate', 1, 4))",
+          "precision" : 40,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA8" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA9" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_YearQuarter",
+          "label" : "CloseDate_YearQuarter",
+          "formulaExpression" : "concat('CloseDate_Year','0','CloseDate_Quarter') ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA15" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_pastdue",
+          "label" : "unhealthy_pastdue",
+          "formulaExpression" : "(case \r\n      when datediff(now(), CloseDate) > 0 and StageName in ('Define', 'Design', 'Develop', 'Group', 'Qualify')  then 1  else 0\r\nend)",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA16" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA15" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy",
+          "label" : "unhealthy",
+          "formulaExpression" : "case\r\n     when Core_Product_Count__c = 0 then 1     \r\n     when StageName = 'Qualify' or  StageName = 'Define'  then 1 \r\n     when datediff(now(), CloseDate) > 0 and StageName in ('Define', 'Design', 'Develop', 'Group', 'Qualify')\r\n     then 1 \r\n     when Core_Push_Counter__c >3 and year(\"OpportunityProducts.Opportunity.CreatedDate\") >=2023\r\n     then 1 \r\n     else 0\r\nend\r\n",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA17" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA8" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "opp_sales_group",
+          "label" : "Opportunity Sales Group",
+          "formulaExpression" : "case \r\n      when contains(upper(\"UltimateParent.Core_Sales_Groups__c\"), 'INDIA')\r\n      then 'India'\r\n      when startsWith(\"UltimateParent.Core_Sales_Groups__c\", 'EMEA') then 'EMEA' \r\n      when \"UltimateParent.Core_Sales_Groups__c\" in ('Global Strategic Account Sales Group','Global Accounts Sales Group','Global Solutions & Services Sales Group') then 'GSA' \r\n      when startsWith(\"UltimateParent.Core_Sales_Groups__c\", 'APJ')then 'APJ' \r\n      when startsWith(\"UltimateParent.Core_Sales_Groups__c\", 'Americas' )then 'Americas' \r\n      when startsWith(\"UltimateParent.Core_Sales_Groups__c\", 'PRC' )then 'PRC' \r\n      else 'Other'\r\nend\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA26" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA46" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "cancel_push_lost_date",
+          "label" : "Cancel, Push, Lost Date",
+          "formulaExpression" : "case \r\n    when StageName in('Cancelled', 'Lost') \r\n    then CloseDate\r\n    when \"PushDate.IsPush\" = 'Push' \r\n    then \"PushDate.push_date\"\r\n    else null \r\nend",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA27" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA26" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "opp_age",
+          "label" : "Opportunity Age",
+          "formulaExpression" : "datediff(\"OpportunityProducts.Opportunity.CloseDate\", \"OpportunityProducts.Opportunity.CreatedDate\")",
+          "precision" : 18,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA28" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA27" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "opp_status",
+          "label" : "Opportunity Status",
+          "formulaExpression" : "case \r\n    when StageName in ('Group Cancelled','Production Cancelled', 'Group Closed', 'Design Win', 'Production Win') \r\n    then 'Won'\r\n    when StageName = 'Lost' \r\n    then 'Lost'\r\n    when contains(StageName,'Cancelled')\r\n    then 'Cancelled'\r\n    when Core_At_Risk__c = 'true'\r\n    then 'At Risk'\r\n    else 'Open'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA34" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA36" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "loss_cancel_push",
+          "label" : "Win/Loss/Cancel/Push",
+          "formulaExpression" : "case \r\n    \r\n    when opp_status in ('Lost','Cancelled','Won')\r\n    then opp_status\r\n    when \"PushDate.IsPush\" = 'Push' \r\n    then 'Push'\r\n    when \"OpportunityProducts.Core_At_Risk__c\" = 'true' or opp_status = 'At Risk'\r\n    then 'At Risk'\r\n    else null \r\nend ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA35" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA49" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "opfiscalkpimonthnumber",
+          "label" : "opfiscalkpimonthnumber",
+          "formulaExpression" : "case when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '1' then '01' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '2' then '02' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '3' then '03' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '4' then '04' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '5' then '05' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '6' then '06' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '7' then '07' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '8' then '08' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '9' then '09' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '10' then '10' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '11' then '11' when \"OpportunityProducts.FiscalDecisionDate.fiscalmonthnumber\" = '12' then '12' end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA36" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA28" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "oppprod_status_formula",
+          "label" : "Opportunity Product Stage",
+          "formulaExpression" : "case \r\n    when \"OpportunityProducts.Core_Status__c\" in ('Group Cancelled','Production Cancelled', 'Group Closed', 'Design Win', 'Production Win','Win Approved') \r\n    then 'Won'\r\n    when \"OpportunityProducts.Core_Status__c\" = 'Lost' \r\n    then 'Lost'\r\n    when contains(\"OpportunityProducts.Core_Status__c\", 'Cancelled')\r\n    then 'Cancelled'\r\n    when Core_At_Risk__c = 'true'\r\n    then 'At Risk'\r\n    else 'Open'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "BUCKET0" : {
+      "action" : "bucket",
+      "sources" : [ "FORMULA35" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "Core_Opportunity_Type__c_bucket",
+          "label" : "Opportunity Type Bucket",
+          "type" : "TEXT",
+          "bucketsSetup" : {
+            "defaultBucketValue" : "Other",
+            "nullBucketValue" : "Other",
+            "isPassthroughEnabled" : false,
+            "sourceField" : {
+              "name" : "Core_Opportunity_Type__c",
+              "type" : "TEXT"
+            },
+            "buckets" : [ {
+              "value" : "Sell-through",
+              "sourceValues" : [ "Deal: Sell-through" ]
+            }, {
+              "value" : "Design Win",
+              "sourceValues" : [ "Deal: Sell-with", "Design: Original", "Design: Secondary", "Design: Software-enable" ]
+            }, {
+              "value" : "Sell-to",
+              "sourceValues" : [ "Deal: Sell-to" ]
+            } ]
+          }
+        } ]
+      }
+    },
+    "FORMULA42" : {
+      "action" : "formula",
+      "sources" : [ "BUCKET0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "decision_quarter",
+          "label" : "Decision Quarter",
+          "formulaExpression" : "concat(year(CloseDate),'0',quarter(CloseDate))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA45" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA42" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "KPI_Decision_date",
+          "label" : "KPI Decision Date",
+          "formulaExpression" : "case \r\n    when \"OpportunityProducts.Core_KPI_Date__c\" is not null \r\n    then \"OpportunityProducts.Core_KPI_Date__c\" \r\n    else CloseDate \r\nend",
+          "format" : "dd/MM/yyyy",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA46" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA17" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "opp_sales_group_ordered",
+          "label" : "Opportunity Sales Group Ordered",
+          "formulaExpression" : "case \r\n    when opp_sales_group = 'Americas' \r\n    then '1.Americas'\r\n    when opp_sales_group = 'APJ'\r\n    then '2.APJ'\r\n    when opp_sales_group = 'EMEA'\r\n    then '3.EMEA'\r\n    when opp_sales_group = 'PRC'\r\n    then '4.PRC'\r\n    when opp_sales_group = 'GSA'\r\n    then '5.GSA'\r\n    when opp_sales_group = 'India'\r\n    then '6.India'\r\n    when opp_sales_group = 'Other'\r\n    then '7.Other'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA47" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA45" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "PushReason_filled",
+          "label" : "Push Reason",
+          "formulaExpression" : "case when Push_Reason__c is null then '-' else Push_Reason__c end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA49" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA34" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "opportunity_focus",
+          "label" : "Opportunity Focus",
+          "formulaExpression" : "case when Opportunity_Focus__c is null then '-' else Opportunity_Focus__c end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA50" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA47" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "now",
+          "label" : "Now",
+          "formulaExpression" : "now()",
+          "format" : "MM/dd/yyyy",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA51" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA50" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "decisiondatediff",
+          "label" : "KPI Decision Date Decision Date diff",
+          "formulaExpression" : "datediff(KPI_Decision_date, CloseDate) ",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "OpportunityId", "CreatedById", "CreatedDate", "Field", "DataType", "OldValue", "NewValue" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "OpportunityFieldHistory",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "OpportunityFieldHistory"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FILTER1" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET7" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Field",
+          "operator" : "EQUAL",
+          "operands" : [ "CloseDate" ]
+        } ]
+      }
+    },
+    "FORMULA19" : {
+      "action" : "formula",
+      "sources" : [ "JOIN17" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "old_close_date",
+          "label" : "Old Close Date",
+          "formulaExpression" : "to_timestamp(\"MaxChange.OldValue\")",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA21" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA19" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "new_close_date",
+          "label" : "New Close Date",
+          "formulaExpression" : "to_timestamp(\"MaxChange.NewValue\")",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA22" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA21" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "num_days_pushed",
+          "label" : "Number of Days Changed",
+          "formulaExpression" : "datediff(new_close_date, old_close_date)",
+          "precision" : 18,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA23" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA22" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Latest_CloseDate_Change",
+          "label" : "Latest CloseDate Change",
+          "formulaExpression" : "first_value(num_days_pushed)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "DROP_FIELDS0" : {
+      "action" : "schema",
+      "sources" : [ "EDIT_ATTRIBUTES4" ],
+      "parameters" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "Id", "Field", "CreatedById", "DataType", "OldValue", "OldValue_trimmed", "NewValue", "new_val_trimmed", "num_days_pushed", "IsDeleted" ]
+        }
+      }
+    },
+    "FORMULA24" : {
+      "action" : "computeRelative",
+      "sources" : [ "TO_MEASURE3" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "IsPush",
+          "label" : "Is Push",
+          "formulaExpression" : "case \r\n    when first_value(oldyear_quarter) < first_value(newyear_quarter)\r\n    then 'Push' \r\n    else null \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA25" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA24" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "push_date",
+          "label" : "Push Date",
+          "formulaExpression" : "first_value(\"MaxChange.CreatedDate\")",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA30" : {
+      "action" : "computeRelative",
+      "sources" : [ "DROP_FIELDS0" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "most_recent_old_date",
+          "label" : "Most Recent Old Date ",
+          "formulaExpression" : "first_value(old_close_date)",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA31" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA30" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "ASC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "most_recent_new_date",
+          "label" : "Most Recent New Date",
+          "formulaExpression" : "first_value(new_close_date)",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA32" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA31" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "newyear_quarter",
+          "label" : "new year-quarter",
+          "formulaExpression" : "concat(year(most_recent_new_date),quarter(most_recent_new_date))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE2" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA32" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "newyear_quarter_to_measure",
+          "newProperties" : {
+            "name" : "newyear_quarter"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "newyear_quarter" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "newyear_quarter",
+          "newProperties" : {
+            "label" : "new year-quarter",
+            "name" : "newyear_quarter_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 0,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA33" : {
+      "action" : "formula",
+      "sources" : [ "TO_MEASURE2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "oldyear_quarter",
+          "label" : "old year-quarter",
+          "formulaExpression" : "concat(year(most_recent_old_date),quarter(most_recent_old_date))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE3" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA33" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "oldyear_quarter_to_measure",
+          "newProperties" : {
+            "name" : "oldyear_quarter"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "oldyear_quarter" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "oldyear_quarter",
+          "newProperties" : {
+            "label" : "old year-quarter",
+            "name" : "oldyear_quarter_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 0,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES4" : {
+      "action" : "schema",
+      "sources" : [ "FORMULA23" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "MaxChange.CreatedDate",
+          "newProperties" : {
+            "label" : "Created Date",
+            "name" : "MaxChange.CreatedDate",
+            "typeProperties" : {
+              "type" : "DATETIME",
+              "format" : "yyyy-MM-dd"
+            }
+          }
+        } ]
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "JOIN18", "FILTER2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "PushDate",
+        "rightKeys" : [ "OpportunityId" ]
+      }
+    },
+    "OUTPUT2" : {
+      "action" : "save",
+      "sources" : [ "FORMULA51" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "SMG_OpportunityWithNoPrd_UAT",
+          "name" : "SMG_OpportunityWithNoPrd_UAT",
+          "folderName" : "Development"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FILTER2" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA25" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "IsPush",
+          "operator" : "EQUAL",
+          "operands" : [ "Push" ]
+        } ]
+      }
+    },
+    "FLATTEN0" : {
+      "action" : "flatten",
+      "sources" : [ "LOAD_DATASET3" ],
+      "parameters" : {
+        "selfField" : "Core_Account_ID__c",
+        "parentField" : "ParentId",
+        "multiField" : {
+          "name" : "HierarchyMulti",
+          "label" : "Hierarchy Multi",
+          "isSystemField" : false
+        },
+        "pathField" : {
+          "name" : "HierarchyPath",
+          "label" : "Hierarchy Path",
+          "isSystemField" : false
+        },
+        "includeSelfId" : false
+      }
+    },
+    "FORMULA38" : {
+      "action" : "formula",
+      "sources" : [ "FLATTEN0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "acct_level",
+          "label" : "Account Level",
+          "formulaExpression" : "case \r\nwhen HierarchyMulti is null \r\nthen 'L0'\r\nelse concat('L',size(HierarchyMulti)) end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA39" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA38" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "ultimate_parent",
+          "label" : "Ultimate Parent",
+          "formulaExpression" : "substr(HierarchyPath,(char_length(HierarchyPath)-17))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "EXTRACT0" : {
+      "action" : "extractGrains",
+      "sources" : [ "FORMULA39" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE1" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT0" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "COUNT",
+          "name" : "Children",
+          "label" : "Children"
+        } ],
+        "groupings" : [ ],
+        "pivots" : [ ],
+        "selfField" : "Core_Account_ID__c",
+        "parentField" : "ParentId",
+        "nodeType" : "HIERARCHICAL"
+      }
+    },
+    "JOIN9" : {
+      "action" : "join",
+      "sources" : [ "FORMULA39", "AGGREGATE1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Core_Account_ID__c" ],
+        "rightQualifier" : "Children",
+        "rightKeys" : [ "Core_Account_ID__c" ]
+      }
+    },
+    "LOAD_DATASET8" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Name", "ParentId", "Core_Account_ID__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN10" : {
+      "action" : "join",
+      "sources" : [ "JOIN9", "LOAD_DATASET8" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "ParentId" ],
+        "rightQualifier" : "Parent",
+        "rightKeys" : [ "Core_Account_ID__c" ]
+      }
+    },
+    "JOIN11" : {
+      "action" : "join",
+      "sources" : [ "JOIN10", "LOAD_DATASET8" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Parent.ParentId" ],
+        "rightQualifier" : "Ultimate",
+        "rightKeys" : [ "Core_Account_ID__c" ]
+      }
+    },
+    "FORMULA40" : {
+      "action" : "formula",
+      "sources" : [ "JOIN11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Children",
+          "label" : "Children",
+          "formulaExpression" : "\"Children.Children\" - 1",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "DROP_FIELDS2" : {
+      "action" : "schema",
+      "sources" : [ "FORMULA40" ],
+      "parameters" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "Children.Children" ]
+        }
+      }
+    },
+    "EDIT_ATTRIBUTES1" : {
+      "action" : "schema",
+      "sources" : [ "DROP_FIELDS2" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "Ultimate.Name",
+          "newProperties" : {
+            "label" : "Ultimate Parent Account Name",
+            "name" : "UltimateParent.Name"
+          }
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES2" : {
+      "action" : "schema",
+      "sources" : [ "EDIT_ATTRIBUTES1" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "UltimateParent.Id",
+          "newProperties" : {
+            "label" : "Ultimate Parent Account ID",
+            "name" : "UltimateParent.Id"
+          }
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES3" : {
+      "action" : "schema",
+      "sources" : [ "EDIT_ATTRIBUTES2" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "Parent.Name",
+          "newProperties" : {
+            "label" : "Parent Account Name",
+            "name" : "Parent.Name"
+          }
+        } ]
+      }
+    },
+    "JOIN12" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET5", "EDIT_ATTRIBUTES3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "AccountId" ],
+        "rightQualifier" : "UltimateParent",
+        "rightKeys" : [ "Core_Account_ID__c" ]
+      }
+    },
+    "LOAD_DATASET9" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "CreatedDate", "Core_Opportunity__c", "Core_Forecast_Amount__c", "Core_Forecast_Quarter__c", "Core_Forecast__c", "Core_Quarter_End_Date__c", "Core_Quarter_First_Weekend_Date__c", "Core_Quarter_Start_Date__c", "Core_Days_Remains__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Opportunity_Forecast__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Opportunity_Forecast__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FILTER4" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET9" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Core_Forecast__c",
+          "operator" : "EQUAL",
+          "operands" : [ "Commit" ]
+        } ]
+      }
+    },
+    "JOIN13" : {
+      "action" : "join",
+      "sources" : [ "FORMULA51", "FILTER4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Commit",
+        "rightKeys" : [ "Core_Opportunity__c" ]
+      }
+    },
+    "OUTPUT4" : {
+      "action" : "save",
+      "sources" : [ "FORMULA44" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "SMGOpportunityWithNoProdCommits_UAT",
+          "name" : "SMGOpportunityWithNoProdCommits_UAT",
+          "folderName" : "Development"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA41" : {
+      "action" : "formula",
+      "sources" : [ "JOIN13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "IsCommit",
+          "label" : "Is Commit",
+          "formulaExpression" : "case \r\nwhen \"Commit.Core_Forecast__c\" = 'Commit'\r\nthen 'Commit'\r\nelse 'Not Commit'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA44" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA41" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "forecast_decision_date",
+          "label" : "Forecast/Decision Date",
+          "formulaExpression" : "case \r\nwhen \"Commit.Core_Quarter_Start_Date__c\" is not null \r\nthen \"Commit.Core_Quarter_Start_Date__c\" \r\nelse CloseDate \r\nend",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "Name", "Core_Opportunity__c", "Core_Partner__c", "Core_Partner_Role__c", "Core_Partner_Type__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Opportunity_Partner__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Opportunity_Partner__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN15" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET10", "LOAD_DATASET11" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Core_Partner__c" ],
+        "rightQualifier" : "AccountPartner",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET11" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "Core_Account_ID__c", "Core_Unified_Global_Customer_Name__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN16" : {
+      "action" : "join",
+      "sources" : [ "FORMULA44", "JOIN15" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "MULTI_VALUE_LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "OppPartner",
+        "rightKeys" : [ "Core_Opportunity__c" ]
+      }
+    },
+    "OUTPUT5" : {
+      "action" : "save",
+      "sources" : [ "JOIN16" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "SMG_OpportunityWithNoPrd_Partners_UAT",
+          "name" : "SMG_OpportunityWithNoPrd_Partners_UAT",
+          "folderName" : "Development"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA43" : {
+      "action" : "formula",
+      "sources" : [ "FILTER1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "ChangeDateUnix",
+          "label" : "ChangeDateUnix",
+          "formulaExpression" : "to_unix_timestamp(CreatedDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "EXTRACT1" : {
+      "action" : "extractGrains",
+      "sources" : [ "FORMULA43" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE3" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT1" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "MAX",
+          "source" : "ChangeDateUnix",
+          "name" : "MostRecentChangeDateUnix",
+          "label" : "MostRecentChangeDateUnix"
+        } ],
+        "groupings" : [ "OpportunityId" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "JOIN17" : {
+      "action" : "join",
+      "sources" : [ "AGGREGATE3", "FORMULA43" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "OpportunityId", "MostRecentChangeDateUnix" ],
+        "rightQualifier" : "MaxChange",
+        "rightKeys" : [ "OpportunityId", "ChangeDateUnix" ]
+      }
+    },
+    "EXTRACT2" : {
+      "action" : "extractGrains",
+      "sources" : [ "LOAD_DATASET6" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE5" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT2" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "Core_Approved_BU_Short_Name__c",
+          "name" : "UNIQUE_Core_Approved_BU_Short_Name__c",
+          "label" : "Unique Approved BU Short Name"
+        } ],
+        "groupings" : [ "OpportunityId" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "JOIN18" : {
+      "action" : "join",
+      "sources" : [ "JOIN5", "AGGREGATE5" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "ProdCount",
+        "rightKeys" : [ "OpportunityId" ]
+      }
+    },
+    "FILTER5" : {
+      "action" : "filter",
+      "sources" : [ "JOIN7" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "StageName",
+          "operator" : "DOES_NOT_CONTAIN",
+          "operands" : [ "Group" ]
+        } ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET1" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 112.19999999999999,
+        "left" : 1092,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET2" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 952,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET3" : {
+        "label" : "Account",
+        "description" : "",
+        "type" : "LOAD_DATASET",
+        "top" : 530.2,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET5" : {
+        "label" : "Opportunity",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 532,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN2" : {
+        "label" : "OpportunityAccount",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 392,
+        "left" : 952
+      },
+      "JOIN3" : {
+        "label" : "OppAccountUser",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 1092
+      },
+      "LOAD_DATASET6" : {
+        "label" : "OpportunityProducts",
+        "description" : "",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 1372,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN5" : {
+        "label" : "OpportunityProductsJoin",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 1372
+      },
+      "TRANSFORM1" : {
+        "label" : "UserOwner",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 252.3,
+        "left" : 1092,
+        "graph" : {
+          "FORMULA13" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            }
+          },
+          "FORMULA14" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            }
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA13",
+          "target" : "FORMULA14"
+        } ]
+      },
+      "TRANSFORM2" : {
+        "label" : "OppPrdtcs",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 392,
+        "left" : 1932,
+        "graph" : {
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "sales_group"
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_noproducts"
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_stage"
+          },
+          "FORMULA6" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "strategic_opportunity"
+          },
+          "FORMULA7" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_pushes"
+          },
+          "FORMULA10" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "OpportunityName"
+          },
+          "FORMULA11" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_YearNumber"
+          },
+          "FORMULA12" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "opfiscalkpimonthnumber"
+          },
+          "FORMULA9" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_mmddyyyy"
+          },
+          "FORMULA8" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_YearQuarter"
+          },
+          "FORMULA15" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_pastdue"
+          },
+          "FORMULA16" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy"
+          },
+          "FORMULA17" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA26" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA27" : {
+            "parameters" : {
+              "type" : "DATE_DIFFERENCE_UI"
+            },
+            "label" : "Return Duration Between Dates"
+          },
+          "FORMULA28" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA34" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA35" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "opfiscalkpimonthnumber"
+          },
+          "FORMULA36" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "BUCKET0" : {
+            "label" : "Bucket"
+          },
+          "FORMULA42" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA45" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA46" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA47" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA49" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA50" : {
+            "parameters" : {
+              "type" : "DATE_NOW_UI"
+            },
+            "label" : "Formula Now"
+          },
+          "FORMULA51" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA3",
+          "target" : "FORMULA4"
+        }, {
+          "source" : "FORMULA4",
+          "target" : "FORMULA5"
+        }, {
+          "source" : "FORMULA5",
+          "target" : "FORMULA6"
+        }, {
+          "source" : "FORMULA6",
+          "target" : "FORMULA7"
+        }, {
+          "source" : "FORMULA7",
+          "target" : "FORMULA10"
+        }, {
+          "source" : "FORMULA11",
+          "target" : "FORMULA12"
+        }, {
+          "source" : "FORMULA12",
+          "target" : "FORMULA9"
+        }, {
+          "source" : "FORMULA9",
+          "target" : "FORMULA8"
+        }, {
+          "source" : "FORMULA10",
+          "target" : "FORMULA15"
+        }, {
+          "source" : "FORMULA16",
+          "target" : "FORMULA11"
+        }, {
+          "source" : "FORMULA15",
+          "target" : "FORMULA16"
+        }, {
+          "source" : "FORMULA8",
+          "target" : "FORMULA17"
+        }, {
+          "source" : "FORMULA26",
+          "target" : "FORMULA27"
+        }, {
+          "source" : "FORMULA27",
+          "target" : "FORMULA28"
+        }, {
+          "source" : "FORMULA36",
+          "target" : "FORMULA34"
+        }, {
+          "source" : "FORMULA28",
+          "target" : "FORMULA36"
+        }, {
+          "source" : "FORMULA35",
+          "target" : "BUCKET0"
+        }, {
+          "source" : "BUCKET0",
+          "target" : "FORMULA42"
+        }, {
+          "source" : "FORMULA42",
+          "target" : "FORMULA45"
+        }, {
+          "source" : "FORMULA46",
+          "target" : "FORMULA26"
+        }, {
+          "source" : "FORMULA17",
+          "target" : "FORMULA46"
+        }, {
+          "source" : "FORMULA45",
+          "target" : "FORMULA47"
+        }, {
+          "source" : "FORMULA49",
+          "target" : "FORMULA35"
+        }, {
+          "source" : "FORMULA47",
+          "target" : "FORMULA50"
+        }, {
+          "source" : "FORMULA50",
+          "target" : "FORMULA51"
+        }, {
+          "source" : "FORMULA34",
+          "target" : "FORMULA49"
+        } ]
+      },
+      "LOAD_DATASET7" : {
+        "label" : "OpportunityFieldHistory",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 1092,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER1" : {
+        "label" : "Filter to Close Days Change",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 532,
+        "left" : 1232
+      },
+      "TRANSFORM3" : {
+        "label" : "TransformPushDays",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 530.2,
+        "left" : 1372,
+        "graph" : {
+          "FORMULA19" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA21" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA22" : {
+            "parameters" : {
+              "type" : "DATE_DIFFERENCE_UI"
+            },
+            "label" : "Return Duration Between Dates"
+          },
+          "FORMULA23" : {
+            "label" : "Formula"
+          },
+          "DROP_FIELDS0" : {
+            "label" : "Drop Columns"
+          },
+          "FORMULA24" : {
+            "label" : "Formula"
+          },
+          "FORMULA25" : {
+            "label" : "Formula"
+          },
+          "FORMULA30" : {
+            "label" : "Formula"
+          },
+          "FORMULA31" : {
+            "label" : "Formula"
+          },
+          "FORMULA32" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "TO_MEASURE2" : {
+            "label" : "To Number"
+          },
+          "FORMULA33" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "TO_MEASURE3" : {
+            "label" : "To Number"
+          },
+          "EDIT_ATTRIBUTES4" : {
+            "label" : "Edit Attributes"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA19",
+          "target" : "FORMULA21"
+        }, {
+          "source" : "FORMULA21",
+          "target" : "FORMULA22"
+        }, {
+          "source" : "FORMULA22",
+          "target" : "FORMULA23"
+        }, {
+          "source" : "FORMULA24",
+          "target" : "FORMULA25"
+        }, {
+          "source" : "DROP_FIELDS0",
+          "target" : "FORMULA30"
+        }, {
+          "source" : "FORMULA30",
+          "target" : "FORMULA31"
+        }, {
+          "source" : "FORMULA31",
+          "target" : "FORMULA32"
+        }, {
+          "source" : "FORMULA32",
+          "target" : "TO_MEASURE2"
+        }, {
+          "source" : "TO_MEASURE2",
+          "target" : "FORMULA33"
+        }, {
+          "source" : "TO_MEASURE3",
+          "target" : "FORMULA24"
+        }, {
+          "source" : "FORMULA33",
+          "target" : "TO_MEASURE3"
+        }, {
+          "source" : "EDIT_ATTRIBUTES4",
+          "target" : "DROP_FIELDS0"
+        }, {
+          "source" : "FORMULA23",
+          "target" : "EDIT_ATTRIBUTES4"
+        } ]
+      },
+      "JOIN7" : {
+        "label" : "Join PushDays",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 392.3,
+        "left" : 1652.4
+      },
+      "OUTPUT2" : {
+        "label" : "Output OpportunityWithNoPrd",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 392,
+        "left" : 2072
+      },
+      "FILTER2" : {
+        "label" : "Filter to Pushes",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 532.3,
+        "left" : 1652.4
+      },
+      "TRANSFORM5" : {
+        "label" : "Flatten",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 670.2,
+        "left" : 112,
+        "graph" : {
+          "FLATTEN0" : {
+            "label" : "Flatten"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "TRANSFORM6" : {
+        "label" : "Parents Calc",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 532,
+        "left" : 252,
+        "graph" : {
+          "FORMULA38" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA39" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA38",
+          "target" : "FORMULA39"
+        } ]
+      },
+      "AGGREGATE0" : {
+        "label" : "Children",
+        "description" : "",
+        "type" : "AGGREGATE",
+        "top" : 672,
+        "left" : 252,
+        "graph" : {
+          "EXTRACT0" : null,
+          "AGGREGATE1" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT0",
+          "target" : "AGGREGATE1"
+        } ]
+      },
+      "JOIN9" : {
+        "label" : "Join Children to Flatten",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 672,
+        "left" : 392
+      },
+      "LOAD_DATASET8" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 532,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN10" : {
+        "label" : "Join Parent Name",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 672,
+        "left" : 532
+      },
+      "JOIN11" : {
+        "label" : "Join Ultimate Parent Name",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 670.2,
+        "left" : 672
+      },
+      "TRANSFORM7" : {
+        "label" : "Transform Ultimate Parent",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 530.2,
+        "left" : 672,
+        "graph" : {
+          "FORMULA40" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "DROP_FIELDS2" : {
+            "label" : "Drop Columns"
+          },
+          "EDIT_ATTRIBUTES1" : {
+            "label" : "Edit Attributes"
+          },
+          "EDIT_ATTRIBUTES2" : {
+            "label" : "Edit Attributes"
+          },
+          "EDIT_ATTRIBUTES3" : {
+            "label" : "Edit Attributes"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA40",
+          "target" : "DROP_FIELDS2"
+        }, {
+          "source" : "DROP_FIELDS2",
+          "target" : "EDIT_ATTRIBUTES1"
+        }, {
+          "source" : "EDIT_ATTRIBUTES1",
+          "target" : "EDIT_ATTRIBUTES2"
+        }, {
+          "source" : "EDIT_ATTRIBUTES2",
+          "target" : "EDIT_ATTRIBUTES3"
+        } ]
+      },
+      "JOIN12" : {
+        "label" : "Join Ultimate Parent",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 392.1,
+        "left" : 672
+      },
+      "LOAD_DATASET9" : {
+        "label" : "Core_Opportunity_Forecast__c",
+        "type" : "LOAD_DATASET",
+        "top" : 812.3,
+        "left" : 1652.4,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER4" : {
+        "label" : "Filter 4",
+        "type" : "FILTER",
+        "top" : 672.3,
+        "left" : 1792.4
+      },
+      "JOIN13" : {
+        "label" : "Join 13",
+        "type" : "JOIN",
+        "top" : 532.3,
+        "left" : 1792.4
+      },
+      "OUTPUT4" : {
+        "label" : "Output Dataset w/ Commits",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 532,
+        "left" : 2212.1
+      },
+      "TRANSFORM8" : {
+        "label" : "Transform Commits",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 532,
+        "left" : 2072.1,
+        "graph" : {
+          "FORMULA41" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA44" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Create field for forecast for forecasted dates and decision without forecast"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA41",
+          "target" : "FORMULA44"
+        } ]
+      },
+      "LOAD_DATASET10" : {
+        "label" : "Core_Opportunity_Partner__c",
+        "type" : "LOAD_DATASET",
+        "top" : 812.3,
+        "left" : 1792.4,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN15" : {
+        "label" : "Join Account Partner",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 672.3,
+        "left" : 1932.4
+      },
+      "LOAD_DATASET11" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 812.3,
+        "left" : 1932.4,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN16" : {
+        "label" : "Join Opp Partner",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 672.3,
+        "left" : 2072.4
+      },
+      "OUTPUT5" : {
+        "label" : "Output Dataset w/ Partners",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 672,
+        "left" : 2352.1
+      },
+      "TRANSFORM9" : {
+        "label" : "Transform 9",
+        "type" : "TRANSFORM",
+        "top" : 672,
+        "left" : 1232,
+        "graph" : {
+          "FORMULA43" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "AGGREGATE2" : {
+        "label" : "Aggregate 2",
+        "type" : "AGGREGATE",
+        "top" : 812,
+        "left" : 1232,
+        "graph" : {
+          "EXTRACT1" : null,
+          "AGGREGATE3" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT1",
+          "target" : "AGGREGATE3"
+        } ]
+      },
+      "JOIN17" : {
+        "label" : "Join 17",
+        "type" : "JOIN",
+        "top" : 672,
+        "left" : 1372
+      },
+      "AGGREGATE4" : {
+        "label" : "Product Count",
+        "type" : "AGGREGATE",
+        "top" : 252.10000000000002,
+        "left" : 1512,
+        "graph" : {
+          "EXTRACT2" : null,
+          "AGGREGATE5" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT2",
+          "target" : "AGGREGATE5"
+        } ]
+      },
+      "JOIN18" : {
+        "label" : "Join 18",
+        "type" : "JOIN",
+        "top" : 392,
+        "left" : 1512
+      },
+      "FILTER5" : {
+        "label" : "Remove Group Stages",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 392,
+        "left" : 1792
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET10",
+      "target" : "JOIN15"
+    }, {
+      "source" : "JOIN12",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "JOIN12"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "JOIN13"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN5"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN5"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "TRANSFORM1"
+    }, {
+      "source" : "FILTER5",
+      "target" : "TRANSFORM2"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "FILTER1"
+    }, {
+      "source" : "JOIN18",
+      "target" : "JOIN7"
+    }, {
+      "source" : "FILTER2",
+      "target" : "JOIN7"
+    }, {
+      "source" : "TRANSFORM3",
+      "target" : "FILTER2"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "TRANSFORM5"
+    }, {
+      "source" : "TRANSFORM5",
+      "target" : "TRANSFORM6"
+    }, {
+      "source" : "TRANSFORM6",
+      "target" : "AGGREGATE0"
+    }, {
+      "source" : "TRANSFORM6",
+      "target" : "JOIN9"
+    }, {
+      "source" : "AGGREGATE0",
+      "target" : "JOIN9"
+    }, {
+      "source" : "JOIN9",
+      "target" : "JOIN10"
+    }, {
+      "source" : "LOAD_DATASET8",
+      "target" : "JOIN10"
+    }, {
+      "source" : "JOIN10",
+      "target" : "JOIN11"
+    }, {
+      "source" : "LOAD_DATASET8",
+      "target" : "JOIN11"
+    }, {
+      "source" : "JOIN11",
+      "target" : "TRANSFORM7"
+    }, {
+      "source" : "TRANSFORM7",
+      "target" : "JOIN12"
+    }, {
+      "source" : "LOAD_DATASET9",
+      "target" : "FILTER4"
+    }, {
+      "source" : "FILTER4",
+      "target" : "JOIN13"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "OUTPUT2"
+    }, {
+      "source" : "JOIN13",
+      "target" : "TRANSFORM8"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "JOIN15"
+    }, {
+      "source" : "TRANSFORM8",
+      "target" : "JOIN16"
+    }, {
+      "source" : "JOIN15",
+      "target" : "JOIN16"
+    }, {
+      "source" : "TRANSFORM8",
+      "target" : "OUTPUT4"
+    }, {
+      "source" : "JOIN16",
+      "target" : "OUTPUT5"
+    }, {
+      "source" : "FILTER1",
+      "target" : "TRANSFORM9"
+    }, {
+      "source" : "TRANSFORM9",
+      "target" : "AGGREGATE2"
+    }, {
+      "source" : "AGGREGATE2",
+      "target" : "JOIN17"
+    }, {
+      "source" : "TRANSFORM9",
+      "target" : "JOIN17"
+    }, {
+      "source" : "JOIN17",
+      "target" : "TRANSFORM3"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "AGGREGATE4"
+    }, {
+      "source" : "JOIN5",
+      "target" : "JOIN18"
+    }, {
+      "source" : "AGGREGATE4",
+      "target" : "JOIN18"
+    }, {
+      "source" : "JOIN7",
+      "target" : "FILTER5"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

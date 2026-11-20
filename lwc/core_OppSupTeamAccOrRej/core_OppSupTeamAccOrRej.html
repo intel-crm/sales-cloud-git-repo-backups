@@ -1,0 +1,115 @@
+<template>
+    <template if:true={showAccOrdenied}>
+        <lightning-card title="Opportunity Support request">    
+            <div class="slds-scrollable_y " style="height:8rem;">
+                <template for:each={supporRequest} for:item="suppReq">
+                    <div key={suppReq.Id} class="slds-box slds-box_x-small slds-grid slds-wrap">
+                        <div class=" slds-size_7-of-12 slds-p-left_x-small ">
+                            {suppReq.Core_Opportunity_Support__r.Core_Opportunity_Name__c}
+                            <div data-oppsupid={suppReq.Id} class="customLink" onclick={detailview}><a data-oppsupid={suppReq.Id}>{suppReq.Name} </a></div>
+                        </div>
+                        <div class="slds-size_5-of-12 ">
+                            <lightning-button value={suppReq.Id} data-oppsupid={suppReq.Id} class="slds-p-left_x-small" label="Accept" variant="brand" onclick={detailview}></lightning-button>
+                            <lightning-button value={suppReq.Id} data-oppsupid={suppReq.Id} class="slds-p-left_x-small" label="Deny" variant="brand-outline" onclick={detailview}></lightning-button>
+                            
+                        </div>
+                    </div> 
+            </template>               
+            </div>
+        </lightning-card>
+    </template>
+    <template if:true={isModalOpen}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Opportunity Support Request Details</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label">Record Type</p> </br><p class="output ">{singleDataShow.Core_Opportunity_Support__r.RecordType.Name}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label"> Account Name </p> </br><p class="output">{singleDataShow.Core_Opportunity_Support__r.Opportunity__r.Account.Name}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label"> Opportunity Name </p> </br><p class="output"> {singleDataShow.Core_Opportunity_Support__r.Core_Opportunity_Name__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label"> Sales Stage </p> </br><p class="output"> {singleDataShow.Core_Opportunity_Support__r.Core_Sales_Stages__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label"> Amount </p> </br><p class="output"> {singleDataShow.Core_Opportunity_Support__r.Core_Amount__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4">
+                            <p class="slds-form-element__label"> Sales Group </p> </br><p class="output">  &nbsp; {singleDataShow.Core_Opportunity_Support__r.Sales_Group__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4  ">
+                            <p class="slds-form-element__label"> Product Segment </p> </br><p class="output"> &nbsp; {singleDataShow.Core_Opportunity_Support__r.Core_Product_Segment__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label"> Vertical Market </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_Vertical_Market__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label">Product Application </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_Product_Application__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label">Technical Owner </p> </br><p class="output">   &nbsp; {singleDataShow.Core_Opportunity_Support__r.Core_Technical_Owner__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                            <p class="slds-form-element__label">Opportunity Description </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_Opportunity_Description__c}</p>
+                        </div>
+                        <template if:true={tssRecord}>
+                            <div class="slds-size_2-of-4 ">
+                                <p class="slds-form-element__label">TSS Support Type </p> </br><p class="output">  {singleDataShow.Core_Opportunity_Support__r.Core_TSS_Support_Type__c}</p>
+                            </div>
+                        </template>
+                        <template if:true={coeRecord}>
+                            <div class="slds-size_2-of-4 ">
+                                <p class="slds-form-element__label">Center of Excellence </p> </br><p class="output">  {singleDataShow.Core_Opportunity_Support__r.Center_of_Excellence__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                                <p class="slds-form-element__label">CoE Request Detail </p> </br><p class="output">  &nbsp; {singleDataShow.Core_Opportunity_Support__r.Core_CoE_Request_Detail__c}</p>
+                            </div>
+                        </template>
+                        <template if:true={csaTSSfields}>
+                            <div class="slds-size_2-of-4 ">
+                                <p class="slds-form-element__label">Primary Blockers </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_PrimaryBlockers__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                                <p class="slds-form-element__label">Additional Support Needed </p> </br><p class="output">  &nbsp; {singleDataShow.Core_Opportunity_Support__r.Core_Additional_Support_Needed__c}</p>
+                        </div>
+                        <div class="slds-size_2-of-4 ">
+                                <p class="slds-form-element__label">Background Information On current architecture </p> </br><p class="output"> &nbsp;  {singleDataShow.Core_Opportunity_Support__r.Core_background_info_on_architecture__c}</p>
+                            </div>
+                        </template>
+                        <div class="slds-size_4-of-4 ">
+                            <lightning-textarea name="Comments" maxlength="2050" onchange={handleInputChange}
+                            value={userComments} placeholder="Approved/Rejection Comments"  label="Approved/Rejection Comments" required="true"></lightning-textarea>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <lightning-button value={singleDataShow.Id} class="slds-p-left_x-small" label="Accept" variant="brand" onclick={handleAccept}></lightning-button>
+                            <lightning-button value={singleDataShow.Id} class="slds-p-left_x-small" label="Deny" variant="brand-outline" onclick={handleDeny}></lightning-button>
+                            <lightning-button class=" slds-p-left_x-small" variant="brand-outline" onclick={closeModal} label="Cancel">Cancel</lightning-button>
+                    
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+</template>

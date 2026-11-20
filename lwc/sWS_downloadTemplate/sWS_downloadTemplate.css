@@ -1,0 +1,24 @@
+.label{
+		padding-left:3%;
+		font-weight: bold;
+}
+.label1{
+		padding-bottom:2%;
+		font-weight: bold;
+}
+.box_padding{
+		padding:6%;
+}
+.boxsize_outer{
+		width:30%;
+}
+.background{
+		background-color: #ffffff;
+}
+.btn_padding{
+    padding-left: 3%;
+    padding-bottom: 3%;
+}
+.dropdown_padding{
+    padding-left: 3%;
+}

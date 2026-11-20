@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quota Setup</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quota Setup</value>
+    </caseValues>
+    <fields>
+        <help><!-- List Account(s) assignment for “DCAI Sapphire Rapids Billings Volume #” Sales OKR. --></help>
+        <label><!-- Account Breakout --></label>
+        <name>CPT_Account_Breakout__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-All % Assigned --></label>
+        <name>CPT_BR_All_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR-All Quota --></label>
+        <name>CPT_BR_All_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR (Allocated) --></label>
+        <name>CPT_BR_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR (Allowed) --></label>
+        <name>CPT_BR_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR (% Assigned) --></label>
+        <name>CPT_BR_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-CCG % Assigned --></label>
+        <name>CPT_BR_CCG_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR-CCG Quota --></label>
+        <name>CPT_BR_CCG_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-DCG % Assigned --></label>
+        <name>CPT_BR_DCAI_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-DCAI Accelerator % Assigned --></label>
+        <name>CPT_BR_DCAI_DAIS_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR-DCAI Accelerator Quota --></label>
+        <name>CPT_BR_DCAI_DAIS_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR-DCG Quota --></label>
+        <name>CPT_BR_DCAI_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-Intel AI PC % Assigned --></label>
+        <name>CPT_BR_Intel_AI_PC_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-Intel AI PC Quota --></label>
+        <name>CPT_BR_Intel_AI_PC_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-DCAI Ethernet % Assigned --></label>
+        <name>CPT_BR_NEX_Ethernet_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- BR-DCAI Ethernet Quota --></label>
+        <name>CPT_BR_NEX_Ethernet_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR-SATG Federal % Assigned --></label>
+        <name>CPT_BR_SATG_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR (Allocated) --></label>
+        <name>CPT_CR_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR (Allowed) --></label>
+        <name>CPT_CR_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR (% Assigned) --></label>
+        <name>CPT_CR_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR-CCG % Assigned --></label>
+        <name>CPT_CR_CCG_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- CR-CCG Quota --></label>
+        <name>CPT_CR_CCG_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - OEM % Assigned --></label>
+        <name>CPT_CR_OEM_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - OEM Quota --></label>
+        <name>CPT_CR_OEM_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Partner % Assigned --></label>
+        <name>CPT_CR_Partner_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Partner Quota --></label>
+        <name>CPT_CR_Partner_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Retail % Assigned --></label>
+        <name>CPT_CR_Retail_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - Retail Quota --></label>
+        <name>CPT_CR_Retail_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked, system will validate the completeness of the data while updates are saved. --></help>
+        <label><!-- Complete --></label>
+        <name>CPT_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective_End --></label>
+        <name>CPT_Effective_End__c</name>
+    </fields>
+    <fields>
+        <help><!-- For employees not active at the beginning of the period, please indicate the effective month. [10-Dec-25] --></help>
+        <label><!-- Effective Month --></label>
+        <name>CPT_Effective_Month__c</name>
+        <picklistValues>
+            <masterLabel>Apr 2026</masterLabel>
+            <translation><!-- Apr 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aug 2026</masterLabel>
+            <translation><!-- Aug 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dec 2026</masterLabel>
+            <translation><!-- Dec 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feb 2026</masterLabel>
+            <translation><!-- Feb 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jan 2026</masterLabel>
+            <translation><!-- Jan 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jul 2026</masterLabel>
+            <translation><!-- Jul 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jun 2026</masterLabel>
+            <translation><!-- Jun 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mar 2026</masterLabel>
+            <translation><!-- Mar 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>May 2026</masterLabel>
+            <translation><!-- May 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nov 2026</masterLabel>
+            <translation><!-- Nov 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oct 2026</masterLabel>
+            <translation><!-- Oct 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sep 2026</masterLabel>
+            <translation><!-- Sep 2026 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Effective_Start --></label>
+        <name>CPT_Effective_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee Name --></label>
+        <name>CPT_Employee_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee WWID --></label>
+        <name>CPT_Employee_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee --></label>
+        <name>CPT_Employee__c</name>
+        <relationshipLabel><!-- Quota Setup --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Provide your comments for Commission admin to review and take the corrective action. --></help>
+        <label><!-- Comments --></label>
+        <name>CPT_Inaccurate_Data_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- When data is incorrect, check this box and provide the comments for Commission admin to review and take the corrective action. --></help>
+        <label><!-- Inaccurate Data --></label>
+        <name>CPT_Inaccurate_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Role --></label>
+        <name>CPT_Job_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Name 1 --></label>
+        <name>CPT_KPI_Name1__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Name 2 --></label>
+        <name>CPT_KPI_Name2__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Name 3 --></label>
+        <name>CPT_KPI_Name3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locked Status --></label>
+        <name>CPT_Locked_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager WWID --></label>
+        <name>CPT_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Name --></label>
+        <name>CPT_Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol (Allocated) --></label>
+        <name>CPT_MarVol_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol (Allowed) --></label>
+        <name>CPT_MarVol_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol (% Assigned) --></label>
+        <name>CPT_MarVol_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin CCG % Assigned --></label>
+        <name>CPT_MarVol_Margin_CCG_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin CCG Quota --></label>
+        <name>CPT_MarVol_Margin_CCG_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if you want to include CCG margin target. Must be selected with at least one Volume CCG field. --></help>
+        <label><!-- MarVol - Margin CCG --></label>
+        <name>CPT_MarVol_Margin_CCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin DCG % Assigned --></label>
+        <name>CPT_MarVol_Margin_DCG_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Margin DCG Quota --></label>
+        <name>CPT_MarVol_Margin_DCG_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if you want to include DCG margin target. Must be selected together with NextGen DCG GNR. --></help>
+        <label><!-- MarVol - Margin DCG --></label>
+        <name>CPT_MarVol_Margin_DCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG LNL Quota --></label>
+        <name>CPT_MarVol_NextGen_CCG_LNL_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if you want to include CCG NextGen LNL volume target. Requires Margin CCG to also be selected. --></help>
+        <label><!-- MarVol - Next Gen CCG LNL --></label>
+        <name>CPT_MarVol_NextGen_CCG_LNL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG PTL Quota --></label>
+        <name>CPT_MarVol_NextGen_CCG_PTL_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if you want to include CCG NextGen PTL volume target. Requires Margin CCG to also be selected. --></help>
+        <label><!-- MarVol - Next Gen CCG PTL --></label>
+        <name>CPT_MarVol_NextGen_CCG_PTL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG WCL Quota --></label>
+        <name>CPT_MarVol_NextGen_CCG_WCL_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if you want to include CCG NextGen WCL volume target. Requires Margin CCG to also be selected. --></help>
+        <label><!-- MarVol - Next Gen CCG WCL --></label>
+        <name>CPT_MarVol_NextGen_CCG_WCL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen DCG GNR Quota --></label>
+        <name>CPT_MarVol_NextGen_DCG_GNR_Quota__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if you want to include DCG NextGen GNR volume target. Must be selected together with Margin DCG. --></help>
+        <label><!-- MarVol - Next Gen DCG GNR --></label>
+        <name>CPT_MarVol_NextGen_DCG_GNR__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG LNL % Assigned --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG PTL % Assigned --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen CCG WCL % Assigned --></label>
+        <name>CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol - Next Gen DCG GNR % Assigned --></label>
+        <name>CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol Subelements Count --></label>
+        <name>CPT_MarVol_Subelements_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>CPT_Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select &quot;Overlay&quot; if a role is an overlay or duplicate quota (i.e., technical seller). This will exclude quota from Manager roll-up. --></help>
+        <label><!-- Overlay --></label>
+        <name>CPT_Overlay__c</name>
+    </fields>
+    <fields>
+        <label><!-- Persona ID --></label>
+        <name>CPT_Persona_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>CPT_Plan_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>CPT_Plan_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan --></label>
+        <name>CPT_Plan__c</name>
+        <picklistValues>
+            <masterLabel>100</masterLabel>
+            <translation><!-- 100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>101</masterLabel>
+            <translation><!-- 101 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>202</masterLabel>
+            <translation><!-- 202 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>300</masterLabel>
+            <translation><!-- 300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>301</masterLabel>
+            <translation><!-- 301 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>305</masterLabel>
+            <translation><!-- 305 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>403</masterLabel>
+            <translation><!-- 403 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>600</masterLabel>
+            <translation><!-- 600 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>601</masterLabel>
+            <translation><!-- 601 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>602</masterLabel>
+            <translation><!-- 602 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>800</masterLabel>
+            <translation><!-- 800 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>801</masterLabel>
+            <translation><!-- 801 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>802</masterLabel>
+            <translation><!-- 802 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Platform Job --></label>
+        <name>CPT_Platform_Job__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Plan --></label>
+        <name>CPT_Quota_Manager_Plan__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Period --></label>
+        <name>CPT_Quota_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>CPT_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales OKR (Allocated) --></label>
+        <name>CPT_Sales_OKR_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales OKR (Allowed) --></label>
+        <name>CPT_Sales_OKR_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales OKR (% Assigned) --></label>
+        <name>CPT_Sales_OKR_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Maximum 1000 characters allowed. --></help>
+        <label><!-- Sales OKR Objective 1 --></label>
+        <name>CPT_Sales_OKR_Objective1__c</name>
+    </fields>
+    <fields>
+        <help><!-- Maximum 1000 characters allowed. --></help>
+        <label><!-- Sales OKR Objective 2 --></label>
+        <name>CPT_Sales_OKR_Objective2__c</name>
+    </fields>
+    <fields>
+        <help><!-- Maximum 1000 characters allowed. --></help>
+        <label><!-- Sales OKR Objective 3 --></label>
+        <name>CPT_Sales_OKR_Objective3__c</name>
+    </fields>
+    <fields>
+        <help><!-- Sales OKR for Q1 Only. --></help>
+        <label><!-- Sales OKR --></label>
+        <name>CPT_Sales_OKR__c</name>
+        <picklistValues>
+            <masterLabel>Sales OKR Q1</masterLabel>
+            <translation><!-- Sales OKR Q1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Org --></label>
+        <name>CPT_Sales_Org__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team Goal (Allocated) --></label>
+        <name>CPT_Sales_Team_Goal_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team Goal (Allowed) --></label>
+        <name>CPT_Sales_Team_Goal_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team Goal (% Assigned) --></label>
+        <name>CPT_Sales_Team_Goal_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team Goal --></label>
+        <name>CPT_Sales_Team_Goal__c</name>
+        <picklistValues>
+            <masterLabel>AMR STG</masterLabel>
+            <translation><!-- AMR STG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ STG</masterLabel>
+            <translation><!-- APJ STG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AUTOMOTIVE STG</masterLabel>
+            <translation><!-- AUTOMOTIVE STG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA STG</masterLabel>
+            <translation><!-- EMEA STG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GOVERNMENT STG</masterLabel>
+            <translation><!-- GOVERNMENT STG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA STG</masterLabel>
+            <translation><!-- INDIA STG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC STG</masterLabel>
+            <translation><!-- PRC STG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Team --></label>
+        <name>CPT_Sales_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>CPT_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>CPT_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total (Allocated) --></label>
+        <name>CPT_Total_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total (% Assigned) --></label>
+        <name>CPT_Total_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Identifier --></label>
+        <name>CPT_Unique_Identifier__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked, system will validate the completeness of the data while updates are saved. --></help>
+        <label><!-- XX_Complete --></label>
+        <name>XX_CPT_Complete__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please select 0% instead of &quot;none&quot; for all the Assigned % fields. --></errorMessage>
+        <name>CPT_Avoid_AssignPercent_To_None</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Territory must be linked to the selected Billings Revenue Business Units (BU) to assign % and Quota. Please select the BR-BU checkbox in Territory Assignments. --></errorMessage>
+        <name>CPT_Avoid_BR_AssignPercent_WhenNoTarget</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Territory must be linked to the selected Consumption Revenue Business Units (BU) to assign % and Quota. Please select the CR-BU checkbox in Territory Assignments. --></errorMessage>
+        <name>CPT_Avoid_CR_AssignPercent_WhenNoTarget</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Territory must be tied to selected Deal Win Rev BU&apos;s to Assign % and Quota. Please add quota for selected DR-BU(s) in Territory Assignments. --></errorMessage>
+        <name>CPT_Avoid_DR_AssignPercent_WhenNoTarget</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The BR % Assigned exceeds the allowed limit. --></errorMessage>
+        <name>CPT_BR_Prevent_Excess_Allocation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete the Billings Revenue Assigned % and Quota fields. --></errorMessage>
+        <name>CPT_BR_Prevent_Incomplete_Data_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The CR % Assigned exceeds the allowed limit. --></errorMessage>
+        <name>CPT_CR_Prevent_Excess_Allocation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete the Consumption Revenue Assigned % and Quota fields. --></errorMessage>
+        <name>CPT_CR_Prevent_Incomplete_Data_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This record is locked. Please contact the Commissions Admin with any questions. --></errorMessage>
+        <name>CPT_Cannot_Edit_Locked_Records</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- DR % Assigned is greater than allowed. --></errorMessage>
+        <name>CPT_DR_Prevent_Excess_Allocation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete Deal Win Revenue Assigned % and Quota. --></errorMessage>
+        <name>CPT_DR_Prevent_Incomplete_Data_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales OKR Objective 2 cannot be completed until Sales OKR Objective 1 is completed. --></errorMessage>
+        <name>CPT_Ensure_Sales_OKR_Objective2_Filled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Sales OKR Objective 3 cannot be completed until Sales OKR Objectives 1 and 2 are completed. --></errorMessage>
+        <name>CPT_Ensure_Sales_OKR_Objective3_Editable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You must fill in at least one Sales OKR Objective before marking the stage as Completed. --></errorMessage>
+        <name>CPT_Ensure_Sales_OKR_Objective_Filled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales OKR % Assigned is greater than allowed. --></errorMessage>
+        <name>CPT_OKR_Prevent_Excess_Allocation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete Sales OKR Selection, Assigned %, and Quota. --></errorMessage>
+        <name>CPT_OKR_Prevent_Incomplete_Data_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid assignment: Check plan-specific percentage restrictions. --></errorMessage>
+        <name>CPT_Plan_Specific_Field_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the employee here. To add a new employee, please go to Quota Setup and select &quot;New.&quot; --></errorMessage>
+        <name>CPT_Prevent_Employee_Lookup_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please update the Stage value --></errorMessage>
+        <name>CPT_Prevent_Null_Stage_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Objective and KPI Name fields cannot be modified when Stage is &quot;Completed&quot;. --></errorMessage>
+        <name>CPT_Prevent_OKR_Changes_When_Completed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete the Sales Team Goal Selection. --></errorMessage>
+        <name>CPT_STG_Prevent_Incomplete_Data_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- MarginVolume sub-element checkbox must be selected when corresponding quota has a value greater than 0. Unselect the MarginVolume sub-element checkbox if respective Quota value is 0. --></errorMessage>
+        <name>MarVol_Checkbox_And_Quota_Alignment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill the corresponding Objective/KPI field.
+(Example: Sales OKR Objective 1 &lt;=&gt; KPI Name 1) --></errorMessage>
+        <name>Objective_KPI_Alignment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Margin CCG and Volume CCG (LNL/PTL/WCL) must be selected together - if one is selected, the other is required. --></errorMessage>
+        <name>Pair_CCG_Volume_and_Margin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Volume DCG and Margin DCG must both be selected together. --></errorMessage>
+        <name>Pair_DCG_Volume_and_Margin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Minimum 10% is allowed on CR Subelements for the selected plan. --></errorMessage>
+        <name>Restrict_5_Percent_For_Plan_602_802</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- KPIs must be selected sequentially. Please select KPI 1 before KPI 2 and KPI 2 before KPI 3. --></errorMessage>
+        <name>Sequential_KPI_Entry</name>
+    </validationRules>
+</CustomObjectTranslation>

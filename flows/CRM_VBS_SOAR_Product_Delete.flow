@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Delete_Error</name>
+        <label>Delete Error</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <customErrorMessages>
+            <errorMessage>SOAR Products/Team cannot be modified after SOAR VBS Decision is SOAR3 Approved.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Other_checks_error</name>
+        <label>Other checks error</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <customErrorMessages>
+            <errorMessage>SOAR Cannot be modified Once Contract is Signed or Opportunity is Closed.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_SOAR3_Approved_and_Bypass</name>
+        <label>Check SOAR3 Approved and Bypass</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SOAR3_Approved_and_Bypass_check</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass_SOAR_DW_Check__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_VBS_Decision__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR3 Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Error</targetReference>
+            </connector>
+            <label>SOAR3 Approved and Bypass check</label>
+        </rules>
+        <rules>
+            <name>SOAR_Stages_After_SOAR3_Opp_DW</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass_SOAR_DW_Check__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_VBS_Decision__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR4 Contract Signed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Design Win</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Win</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Other_checks_error</targetReference>
+            </connector>
+            <label>SOAR Stages After SOAR3/Opp DW/Lost</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>CRM_VBS_SOAR_Product_Delete {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CRM_VBS_SOAR_Product_Delete</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_SOAR3_Approved_and_Bypass</targetReference>
+        </connector>
+        <filterFormula>OR(ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_VBS_Decision__c},&apos;SOAR3 Approved&apos;),
+ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_VBS_Decision__c},&apos;SOAR4 Contract Signed&apos;),
+ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName},&apos;Design Win&apos;),
+ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName},&apos;Production Lost&apos;),
+ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName},&apos;Lost&apos;),
+ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName},&apos;Production Win&apos;),
+ISPICKVAL({!$Record.CRM_VBS_SOAR__r.CRM_VBS_SOAR_Opportunity__r.StageName},&apos;Production Cancelled&apos;))</filterFormula>
+        <object>CRM_VBS_Product__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

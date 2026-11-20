@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_AGS_Role_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>AGS Role Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Classification_Req__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Classification Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_All_Accounts__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>All Accounts</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>YES_ONLY</fullName>
+                    <default>false</default>
+                    <label>YES_ONLY</label>
+                </value>
+                <value>
+                    <fullName>NO_ONLY</fullName>
+                    <default>false</default>
+                    <label>NO_ONLY</label>
+                </value>
+                <value>
+                    <fullName>YES_NO</fullName>
+                    <default>false</default>
+                    <label>YES_NO</label>
+                </value>
+                <value>
+                    <fullName>ANY</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ANY</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_All_Budget_Type_Available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>All Budget Type Available</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Region_Options__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Approval Region Options</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Region_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Approval Region Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Required_When_False__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Required When False</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Geo_Budget_Mapping__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Geo Budget Mapping</label>
+        <length>50000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Required__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IUPGM Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Role_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IUPGM Role Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core_MDF_Is_Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Keywords__c</fullName>
+        <description>Comma-separated keywords for role recommendation scoring. Example: budget, approve, reject, mdf, ccf</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Comma-separated keywords. More matches = higher recommendation score.</inlineHelpText>
+        <label>Keywords</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Permission_Set_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Permission Set Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_AGS_Role_Map__c</fullName>
+        <description>Optional JSON map of selected Region/Sub-Region to a region-specific AGS role name. When populated, the automation resolves one AGS role per selected region instead of using Core_MDF_AGS_Role_Name__c. Example: {&quot;PRC&quot;:&quot;Co-Marketing(Salesforce)-RMF PRC Payment Admin&quot;,&quot;EMEA&quot;:&quot;Co-Marketing(Salesforce)-RMF EMEA Payment Admin&quot;}</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>JSON map of Region to AGS role. Leave blank to use the single AGS Role Name.</inlineHelpText>
+        <label>Region AGS Role Map</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_Options__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Region Options</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Role_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Role Label</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Role_Purpose__c</fullName>
+        <description>One-line summary of what this role does. Used for role recommendation display. Example: Allows users to Approve/Reject MDF Budgets for CCF Program</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Brief description of the role purpose for chatbot role recommendation.</inlineHelpText>
+        <label>Role Purpose</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Skip_PS_Check__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When true, the Permission Set / role &quot;already assigned&quot; check (Gate 5) is bypassed for this role config — the AGS request is always submitted regardless of whether the user already has the Permission Set, for both new and existing users. Used for prerequisite/base-access roles such as Core Access.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Skip PS Check</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Use_Cases__c</fullName>
+        <description>Describes when to use this role. Used for role recommendation matching. Example: Use when: approving budgets, reviewing MDF requests, managing budget allocations</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Describe when this role should be used. Supports keyword-based role recommendation.</inlineHelpText>
+        <label>Use Cases</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_WW_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>WW Only</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>IUPGM Rule Configuration</label>
+    <pluralLabel>IUPGM Rule Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

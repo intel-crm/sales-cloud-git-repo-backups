@@ -1,0 +1,23 @@
+<template>
+    <div class="text-block-container" data-contained={contained}>
+        <div class="text-block-content" data-size={size} data-expanded={expanded} data-variant={variant} data-intro={isIntroSection}>
+            <!-- if using intro slot-->
+            <slot name='intro' onslotchange={handleSlotChange} data-visible={slotVisible}>
+            </slot>
+
+            <!-- default -->
+            <slot data-visible={slotVisible} onslotchange={handleSlotChange}></slot>
+
+            <!-- if using class properties -->
+            <template if:true={introSection}>
+                <lightning-formatted-rich-text value={specificFormattedText}></lightning-formatted-rich-text>
+            </template>
+        </div>
+        <button class={fullButtonClasses} onclick={handleMoreClick} aria-label={ariaLabel} aria-expanded={expanded}>
+            <div class='text-block-button-content'>
+                <span>{label}</span>
+                <lightning-icon icon-name={iconName} class="slds-m-left_x-small" size="x-small"></lightning-icon>
+            </div>
+        </button>
+    </div>
+</template>

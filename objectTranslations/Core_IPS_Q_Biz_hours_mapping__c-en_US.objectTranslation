@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Queue X Biz Hours</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Queue X Biz Hours</value>
+    </caseValues>
+    <fields>
+        <help><!-- Active Flag for Queue to Biz hours mapping --></help>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Identifier to tie Business hours to Queue for defining Case milestones --></help>
+        <label><!-- Business Hours ID --></label>
+        <name>Business_Hours_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Name to associate to a Queue which will define milestone hours --></help>
+        <label><!-- Business Hours Name --></label>
+        <name>Business_Hours_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue ID --></label>
+        <name>Queue_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Queue Name association to use for defining Business Hours used on Case Milestones --></help>
+        <label><!-- Queue Name --></label>
+        <name>Queue_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

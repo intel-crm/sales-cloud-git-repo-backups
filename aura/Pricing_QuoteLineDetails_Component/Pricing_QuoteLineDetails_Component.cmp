@@ -1,0 +1,524 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-17-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component controller="Pricing_QuoteLineController"
+    implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable"
+    access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--<aura:dependency resource="markup://force:editRecord" type="EVENT" />-->
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <aura:handler event="force:showToast" action="{!c.handleToastEvent}" />
+    <!--<aura:handler event="force:editRecord" action="{!c.refreshcomp}"/>-->
+    <aura:attribute name="menuOptions" type="List" default="[]" />
+    <aura:attribute name="sObjectName" type="String" />
+    <!--<aura:handler event="c:Pricing_Modal_Confirmation_Click" action="{!c.handleApplicationEvent}" />-->
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <aura:attribute name="quoteLines" type="SBQQ__QuoteLine__c[]" default="{'sobjectType':'SBQQ__QuoteLine__c'}" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="quoteLine" type="SBQQ__QuoteLine__c" />
+    <aura:attribute name="isDraftQuote" type="Boolean" default="false" />
+    <aura:attribute name="hasCreateAccess" type="Boolean" default="false" />
+    <aura:attribute name="hasCreateAccessPf" type="Boolean" default="false" />
+    <aura:attribute name="hasUpdateAccessPf" type="Boolean" default="false" />
+    <aura:attribute name="hasDeleteAccessPf" type="Boolean" default="false" />
+    <aura:attribute name="revisionRequiredByOEM" type="Boolean" default="false" />
+    <aura:attribute name="revisionRequiredByFIELD" type="Boolean" default="false" />
+    <aura:attribute name="sendNotification" type="Boolean" default="false" />
+    <aura:attribute name="showApprovalErrorScreen" type="Boolean" default="false" />
+    <aura:attribute name="quoteLinesApprovalDetails" type="Object[]" />
+    <aura:attribute name="approvalId" type="Id" />
+    <aura:attribute name="LineId" type="Id" />
+    <aura:attribute name="actionStr" type="String" />
+    <aura:attribute name="productName" type="String" />
+    <aura:attribute name="qliIdToApprovedEndDateMap" type="Map" default="{}" />
+    <aura:attribute name="qliIdToQliTypeMap" type="Map" default="{}" />
+    <aura:attribute name="isHoldQuote" type="Boolean" default="false" />
+    <aura:attribute name="picklistValues" type="Object" />
+
+    <aura:attribute name="confirmationValue" type="string" />
+    <aura:attribute name="quoteLineToBeDeleted" type="Id" />
+    <aura:attribute name="menuItemDisable" type="Boolean" default="false" />
+
+    <aura:attribute name="quoteLineActions" type="String" default="Pending" />
+    <aura:attribute name="isModalOpen" type="boolean" default="false" />
+    <aura:attribute name="isSubmitModalOpen" type="boolean" default="false" />
+    <aura:attribute name="approvalAction" type="string" default="Approve" />
+    <aura:attribute name="v.isOEMField" type="Boolean" default="false" />
+    <aura:attribute name="errors" type="string" default="" />
+
+    <aura:attribute name="isSSDQuote" type="Boolean" default="false" />
+    <aura:attribute name="isSSDQuoteLine" type="Boolean" default="false" />
+    <aura:attribute name="isSSDQuoteLineEdit" type="Boolean" default="false" />
+    <aura:attribute name="isAccordionRefresh" type="Boolean" default="false" />
+    <aura:attribute name="showRPMRecommendation" type="Boolean" default="false" />
+    <aura:attribute name="isAccordionRefreshRPM" type="Boolean" default="false" />
+    <aura:attribute name="isPricingManager" type="Boolean" default="false" />
+    <aura:attribute name="isBulkApproveRejectAction" type="Boolean" default="false" />
+    <aura:attribute name="isBulkDealCreations" type="Boolean" default="false" />
+    <aura:attribute name="isBulkUpdateDealProcess" type="Boolean" default="false" />
+    <aura:attribute name="isFSEorSDM" type="Boolean" default="false" />
+    <aura:attribute name="hasPricingManagerAccess" type="Boolean" default="false" />
+    <aura:attribute name="hasFinancialIncentiveManagerAccess" type="Boolean" default="false" />
+    <aura:attribute name="isFinancialIncentiveQuote" type="Boolean" default="false" />
+    <aura:attribute name="hasPartnerUserAccess" type="Boolean" default="false" />
+    <aura:attribute name="isConsumptionRefresh" type="Boolean" default="false" />
+    <aura:attribute name="isSVDActive" type="Boolean" default="false" />   
+    <aura:attribute name="isSmallVolumeQuote" type="Boolean" default="false" />   
+
+    <lightning:notificationsLibrary aura:id="notifLib" />
+
+    <aura:attribute name="refreshParentComponent" type="Boolean" default="false" />
+    <aura:attribute name="isSpinner" type="boolean" default="false" />
+    <aura:attribute name="isDisabled" type="boolean" default="false" />
+    <aura:attribute name="comments" type="string" default="" />
+    <aura:attribute name="quoteLineId" type="Id" default="" />
+    <aura:attribute name="quoteLineType" type="string" default="" />
+    <aura:attribute name="toastLineId" type="Id" default="" />
+    <aura:attribute name="isSdmFastTrack" type="boolean" default="false" />
+
+    <!-- customer revision and field revision -->
+    <aura:attribute name="showRevisionFields" type="boolean" default="false" />
+    <aura:attribute name="revisionComments" type="string" default="" />
+    <aura:attribute name="revisionCheck" type="boolean" default="false" />
+    <aura:attribute name="wonMsg" type="string" default="" />
+
+    <aura:attribute name="RejectionReasonsMap" type="Map" />
+    <aura:attribute name="selectedRejectionReasonsPickListValue" type="String" default="" />
+    <aura:attribute name="hideRejectionComments" type="boolean" default="true" />
+
+    <!--Lost reason-->
+    <aura:attribute name="LostReasonMap" type="Map" />
+    <aura:attribute name="selectedLostReasonsPickListValue" type="String" default="" />
+    <aura:attribute name="hideLostComments" type="boolean" default="true" />
+
+    <aura:attribute name="qliSoftWarning" type="boolean" default="false" />
+    <aura:attribute name="qliSoftWarningApprovedECAP" type="boolean" default="false" />
+    <aura:attribute name="continueSoftWarningLabel" type="string" default="" />
+    
+
+    <!-- Navigation service Added By Naresh as part of US1104647-->
+    <lightning:navigation aura:id="navService" />
+    <aura:attribute name="showConsumptionParametersEdit" type="Boolean" default="false" />
+
+    <!--override Toast CSS with external [.CSS] file.-->
+    <ltng:require styles="{!$Resource.multilineToastCSS}" />
+    <aura:if isTrue="{!v.isModalOpen}">
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="approval-action-modal-heading" aria-modal="true"
+            aria-describedby="approval-action" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div aura:id="spinner" class="slds-is-relative">
+                    <lightning:spinner aura:id="mySpinner" class="slds-hide" size="medium" variant="brand"
+                        alternativeText="Please wait..." style="min-height: 20vh; background-color: transparent;" />
+                    <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" class="slds-modal__close" />
+                    </header>
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel }"
+                            alternativeText="close" class="slds-modal__close" />
+                        <h2 id="approval-action-modal-heading" class="slds-text-heading_medium slds-hyphenate">
+                            {! v.approvalAction}
+                        </h2>
+                    </header>
+
+                    <div class="slds-modal__content slds-var-p-around_medium" id="approval-action">
+                        <aura:if isTrue="{!v.revisionRequiredByOEM == true}">
+                            <lightning:input type="checkbox" label="Send Email Notification" name="input2"
+                                value="{!v.sendNotification}" />
+                        </aura:if>
+                        <aura:if
+                            isTrue="{!and(and(v.quoteLine.Pricing_Status_Nm__c != 'Lost', v.isOEMField), v.approvalAction == 'Approve') }">
+                            <!--add custom label for input field-->
+                            <label class="slds-form-element__label"
+                                style="margin-right: 0.5rem;">{!$Label.c.Pricing_Tender_FSE_Recommended_Label}</label>
+                            <!--lightning help text for input field-->
+                            <lightning:helptext content="{!$Label.c.Pricing_Tender_FSE_Recommended_Helptext}"
+                                class="customIcon" />
+                            <!-- use variant="label-hidden" for hide standard label-->
+                            <lightning:input type="text" name="lName"
+                                label="{!$Label.c.Pricing_Tender_FSE_Recommended_Label}"
+                                value="{!v.quoteLine.Pricing_FSE_Recommended_Price_Nm__c}" variant="label-hidden"
+                                maxlength="255" />
+                            <aura:if isTrue="{!v.quoteLine.Pricing_FSE_Recommended_Price_Nm__c.length}">
+                                <span class="floatToRight">{!255 -
+                                    v.quoteLine.Pricing_FSE_Recommended_Price_Nm__c.length} characters
+                                    remaining</span>
+                            </aura:if>
+                        </aura:if>
+                        <aura:if isTrue="{!not(empty(v.errors))}">
+                            <div class="slds-var-p-around_small slds-p-top_none">
+                                <div aura:id="errorMessage" style="height: max-content;">
+                                    <div class="slds-is-relative slds-align_absolute-center">
+                                        <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                                            <span class="slds-assistive-text">Error</span>
+                                            <div class="slds-notify__content">
+                                                <h3 class="slds-text-heading_small" style="text-align: center;">
+                                                    {!v.errors}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <aura:if
+                                isTrue="{!v.quoteLine.Pricing_Program_Type_Nm__c == $Label.c.Pricing_Tender_FinancialIncentive_Quote}">
+                                <div class="slds-var-p-top_medium" style="text-align:center">
+                                    <a href="javascript:void(0)" onclick="{!c.closeAndEditQLIncentive}"> Click here to
+                                        edit.</a>
+                                </div>
+                                <aura:set attribute="else">
+                                    <div class="slds-var-p-top_medium" style="text-align:center">
+                                        <a href="javascript:void(0)" onclick="{!c.closeAndEditQL}"> Click here to
+                                            edit.</a>
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </aura:if>
+
+
+                        <aura:if isTrue="{!v.approvalAction == 'Lost'}">
+
+                            <lightning:select aura:id="LostReasonsPickList"
+                                value="{!v.selectedLostReasonsPickListValue}" onchange="{!c.handleLostReasonsChange}"
+                                name="LostReasonsPicklist" label="Lost Reason">
+
+                                <option value="">--None--</option>
+                                <aura:iteration items="{!v.LostReasonMap}" var="i" indexVar="key">
+                                    <option text="{!i.value}" value="{!i.key}" />
+                                </aura:iteration>
+                            </lightning:select>
+
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.revisionCheck == true}">
+                            <lightning:input type="checkbox" label="Create Chatter Post" checked="true" value=""
+                                onchange="{!c.revisionChatterPost}"></lightning:input>
+                            <aura:if isTrue="{!v.showRevisionFields}">
+                                <lightning:helptext style="position: absolute;left: 7rem;"
+                                    content="{!$Label.c.Pricing_IQR_RevisionHelpText}" />
+                                <lightning:textarea name="input1" label="Enter Comments" value="{!v.revisionComments}"
+                                    maxlength="8000" />
+
+                                <aura:if isTrue="{!v.revisionComments.length}">
+                                    <span class="floatToRight">{!8000 - v.revisionComments.length} characters
+                                        remaining</span>
+                                </aura:if>
+                            </aura:if>
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!v.approvalAction != 'Reject' }">
+                                    <aura:if
+                                        isTrue="{!and(v.quoteLineType == $Label.c.Pricing_Tender_FinancialIncentive_Quote, v.approvalAction == 'Cancel')}">
+                                        <lightning:textarea aura:id="inputCmp" value="{!v.comments}" label="Comments"
+                                            required="true" maxlength="1000" />
+                                        <aura:if isTrue="{!v.comments.length}">
+                                            <span class="floatToRight">{!1000 - v.comments.length} characters
+                                                remaining</span>
+                                        </aura:if>
+                                        <aura:set attribute="else">
+                                            <lightning:textarea aura:id="inputCmp" value="{! v.comments}"
+                                                label="Comments" maxlength="20000" />
+                                            <aura:if isTrue="{!v.comments.length}">
+                                                <span class="floatToRight">{!20000 - v.comments.length} characters
+                                                    remaining</span>
+                                            </aura:if>
+                                        </aura:set>
+                                    </aura:if>
+                                    <div class="slds-var-p-top_xx-small">
+                                        <aura:if isTrue="{!and(v.isSdmFastTrack,v.isOEMField)}">
+                                            <lightning:input type="Checkbox" name="lName" label="SDM Fast Track"
+                                                checked="{!v.quoteLine.Pricing_SDM_Fast_Track__c}" />
+                                        </aura:if>
+                                    </div>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.approvalAction == 'Reject'}">
+                            <lightning:select aura:id="RejectionReasonsPickList"
+                                value="{!v.selectedRejectionReasonsPickListValue}"
+                                onchange="{!c.handleRejectionReasonsChange}" name="RejectionReasonsPicklist"
+                                label="Rejection Reason" required="true">
+                                <aura:iteration items="{!v.RejectionReasonsMap}" var="i" indexVar="key">
+                                    <option text="{!i.value}" value="{!i.key}" />
+                                </aura:iteration>
+                            </lightning:select>
+
+                            <lightning:textarea aura:id="inputCmp" value="{!v.comments}"
+                                required="{!(v.selectedRejectionReasonsPickListValue == 'Other (Comments required)' ? true : false)}"
+                                label="Comments" maxlength="1000" />
+                            <aura:if isTrue="{!v.comments.length}">
+                                <span class="floatToRight">{!1000 - v.comments.length} characters
+                                    remaining</span>
+                            </aura:if>
+                        </aura:if>
+
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="Cancel" disabled="{!v.isSpinner}" title="Cancel"
+                            onclick="{! c.closeModel }" />
+                        <lightning:button variant="brand"
+                            label="{!if(v.approvalAction == 'Cancel', (v.isSpinner ? 'Saving...' : 'Save'), (v.isSpinner ? 'Saving...' : v.approvalAction))}"
+                            disabled="{!v.isDisabled}" title="OK" onclick="{!c.submitDetails}" />
+                    </footer>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+    <aura:if isTrue="{!or(v.qliSoftWarning, v.qliSoftWarningApprovedECAP)}">
+        <section role="dialog" tabindex="0" aria-modal="true" aria-labelledby="alert-heading-id"
+            aria-describedby="alert-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header slds-theme_alert-texture slds-theme_warning slds-p-around_small">
+                    <div class="slds-align_absolute-center">
+                        <ul class="slds-list_horizontal">
+                            <li class="slds-p-right_small">
+                                <lightning:icon iconName="utility:warning" alternative-text="Warning!" variant="warning"
+                                    title="warning variant small" size="small" />
+                            </li>
+                            <li>
+                                <h1 style="font-size: 1.5em;">Warning!</h1>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="slds-modal__content slds-p-around_small" id="alert-message-wrapper">
+                    <aura:if isTrue="{!v.qliSoftWarning}">
+                    <p>
+                        {!$Label.c.Pricing_Tender_Soft_Warning_for_Large_Enterprise}
+                    </p>
+                </aura:if>
+                <aura:if isTrue="{!v.qliSoftWarningApprovedECAP}">
+                    <p>
+                        {!$Label.c.Pricing_Tender_Approved_ECAP}
+                    </p>
+                </aura:if>
+                </div>
+                <div class="slds-modal__footer slds-theme_default">
+                    <lightning:button variant="neutral" label="Cancel" disabled="{!v.isSpinner}" title="Cancel"
+                        onclick="{!c.closeModel}" />
+                    <lightning:button variant="brand" label="{!v.continueSoftWarningLabel}"
+                        title="{!v.continueSoftWarningLabel}" onclick="{!c.handleContinueSoftWarning}" />
+                </div>
+                </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="custom:custom26" size="small" />
+            Quote Line Details
+        </aura:set>
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.hasCreateAccess}">
+                <aura:if isTrue="{!or(v.hasPartnerUserAccess,not(v.isHoldQuote))}">
+                    <aura:if isTrue="{!and(not(v.isFinancialIncentiveQuote), not(and(v.isSVDActive, v.isSmallVolumeQuote)))}">
+                        <aura:if
+                            isTrue="{!or(not(v.hasPricingManagerAccess),and(not(v.isDraftQuote),v.hasPricingManagerAccess))}">
+                            <c:pricing_Manage_New_QuoteLine recordId="{!v.recordId}" />
+                        </aura:if>
+                    </aura:if>
+                </aura:if>
+            </aura:if>
+
+            <aura:if isTrue="{!and(v.isBulkDealCreations,not(v.isHoldQuote))}">
+                <aura:if isTrue="{!not(v.isFinancialIncentiveQuote)}">
+                    <aura:if isTrue="{!v.hasPricingManagerAccess}">
+                        <c:pricing_QuoteLine_BulkCreateDeal recordId="{!v.recordId}" />
+                    </aura:if>
+                </aura:if>
+            </aura:if>
+
+            <aura:if isTrue="{!and(v.isBulkUpdateDealProcess,not(v.isHoldQuote))}">
+                <aura:if isTrue="{!not(v.isFinancialIncentiveQuote)}">
+                    <aura:if isTrue="{!v.hasPricingManagerAccess}">
+                        <c:pricing_QuoteLineBulk_ChangeRequest_Comp recordId="{!v.recordId}" />
+                    </aura:if>
+                </aura:if>
+            </aura:if>
+
+            <aura:if isTrue="{!not(v.isFinancialIncentiveQuote)}">
+                <aura:if isTrue="{!and (v.isBulkApproveRejectAction, not(v.isHoldQuote))}">
+                    <aura:if isTrue="{!v.isFSEorSDM}">
+                        <c:pricing_QuoteLine_BulkSalesRepAction recordId="{!v.recordId}" />
+                    </aura:if>
+                </aura:if>
+            </aura:if>
+
+            <aura:if isTrue="{!and(v.isFinancialIncentiveQuote, v.hasFinancialIncentiveManagerAccess)}">
+                <c:pricing_FI_QuoteLine_BulkApproveReject recordId="{!v.recordId}" />
+            </aura:if>
+
+            <aura:if isTrue="{!not(v.isHoldQuote)}">
+                <aura:if isTrue="{!not(v.isFinancialIncentiveQuote)}">
+                    <aura:if isTrue="{!v.hasPricingManagerAccess}">
+                        <c:pricingRPMBulkReject recordId="{!v.recordId}" />
+                    </aura:if>
+                </aura:if>
+            </aura:if>
+        </aura:set>
+
+        <div aura:id="spinnerQuoteLine" class="slds-is-relative">
+            <lightning:spinner aura:id="quoteLineSpinner" class="slds-hide" size="medium" variant="brand"
+                alternativeText="Please wait..." style="background-color: transparent;" />
+            <div class="slds-var-m-around_small">
+                <lightning:accordion allowMultipleSectionsOpen="true">
+                    <aura:if isTrue="{!v.quoteLines.length > 0}">
+                        <aura:iteration items="{!v.quoteLines}" var="line">
+                            <lightning:accordionSection class="accordionName" name="{!line.Id}"
+                                label="{!line.SBQQ__ProductName__c == null ? (line.Pricing_Quote_Line_Number__c +' : '+line.Pricing_Other_Product_Nm__c) : line.SBQQ__ProductName__c == $Label.c.Pricing_Write_In_Product ? (line.Pricing_Quote_Line_Number__c +' : '+line.SBQQ__ProductName__c+' ('+line.Pricing_Other_Product_Nm__c+')') : (line.Pricing_Quote_Line_Number__c +' : '+line.SBQQ__ProductName__c)}">
+                                <aura:set attribute="actions">
+                                    <div class="slds-var-p-right_xxx-small slds-grid ">
+                                       <aura:if isTrue="{!or(line.Pricing_Integration_Status_Nm__c != '', line.Pricing_Application_Agent_Status__c != '')}">
+                                           <c:Pricing_Acronym_Supplier inputText="{!line.Pricing_Status_Nm__c}"
+                                                integrationStatus="{!line.Pricing_Integration_Status_Nm__c}"
+                                                errorMessage="{!line.Pricing_Error_Messages__c}"
+                                                programType="{!line.Pricing_Quote_Program_Nm__c}"
+                                                aiIntegrationStatus="{!line.Pricing_Application_Agent_Status__c}" 
+                                                quoteLine="{!line}"/>
+                                        </aura:if>
+
+                                        <div class="slds-box slds-box_xx-small" title="{!line.Pricing_Status_Nm__c}"
+                                            style="white-space: nowrap !important;display: inline-block;">
+                                            <p class="fontSize">{!line.acronym}</p>
+                                        </div>
+                                    </div>
+                                    <lightning:buttonMenu aura:id="menu" alternativeText="Show menu"
+                                        menuAlignment="right" onselect="{!c.quotelineAction}" class="{!line.Id}"
+                                        onopen="{!c.onMenuOpen}">
+                                        <aura:iteration items="{!v.menuOptions}" var="option">
+                                            <lightning:menuItem class="{!line.Pricing_Status_Nm__c}" value="{!option}"
+                                                label="{!option}" disabled="{!v.menuItemDisable}" />
+                                        </aura:iteration>
+                                    </lightning:buttonMenu>
+                                </aura:set>
+                                <aura:set attribute="body">
+                                    <aura:if
+                                        isTrue="{!line.Pricing_Program_Type_Nm__c == $Label.c.Pricing_Tender_FinancialIncentive_Quote}">
+                                        <force:recordView aura:id="quoteLineComp" recordId="{!line.Id}">
+                                        </force:recordView>
+                                        <aura:set attribute="else">
+                                            <aura:if
+                                                isTrue="{!or(line.Pricing_Program_Type_Nm__c == $Label.c.Pricing_Tender_Standard_QuoteLine, line.Pricing_Program_Type_Nm__c == $Label.c.Pricing_Tender_Small_Volume_Quote)}">
+                                                <force:recordView aura:id="quoteLineComp" recordId="{!line.Id}">
+                                                </force:recordView>
+                                                <c:Pricing_PerformanceMetrics recordId="{!line.Id}"
+                                                    hasCreateAccessPf="{!v.hasCreateAccessPf}"
+                                                    hasUpdateAccessPf="{!v.hasUpdateAccessPf}"
+                                                    hasDeleteAccessPf="{!v.hasDeleteAccessPf}"
+                                                    picklistValues="{!v.picklistValues}" isCalledFromParent="true" />
+                                                <aura:set attribute="else">
+                                                    <c:pricing_ReadOnly_FieldSet_Form recordId="{!line.Id}"
+                                                        quoteId="{!v.recordId}" />
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </lightning:accordionSection>
+                        </aura:iteration>
+                    </aura:if>
+                </lightning:accordion>
+            </div>
+        </div>
+        <aura:set attribute="footer">
+            <br />
+            <br />
+        </aura:set>
+        <aura:if isTrue="{!v.showApprovalErrorScreen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="publish-quote-modal-content" class="slds-modal slds-fade-in-open slds-modal_medium"
+                style="top:10%">
+                <div class="slds-modal__container" style="width: 53%">
+                    <header style="padding: 0px; border-bottom: 0px;" class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel}" alternativeText="close"
+                             class="slds-modal__close" />
+                    </header>
+                    <!-- <header class="slds-modal__header">         </header>  -->
+
+                    <div class="slds-modal__content slds-var-p-around_medium" id="publish-quote-modal-content">
+                        <c:Pricing_Publish_Quote recordId="{!v.quoteLineId}" quoteId="{!v.recordId}" sObjectName="SBQQ__QuoteLine__c"
+                            isModelOpen="{!v.showApprovalErrorScreen}" aura:id="compB" method="{!c.closeSubmitModel}"
+                            isQuoteLineApproval="true" />
+                    </div>
+                    <!--  <footer class="slds-modal__footer"> </footer> -->
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+        <!--###### QuoteLine Record Edit form Modal ######-->
+        <aura:if isTrue="{!v.isSSDQuoteLineEdit}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="ql-record-edit-modal-content" class="slds-modal slds-fade-in-open slds-modal_medium"
+                style="top:10%">
+                <div class="slds-modal__container" style="width: 53%">
+                    <header class="slds-modal__header slds-var-p-around_medium">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close"  class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Quote Line Edit</h2>
+                    </header>
+                    <div class="slds-modal__content" id="ql-record-edit-modal-content">
+                        <c:pricing_Edit_FieldSet_Form quoteId="{!v.recordId}" recordId="{#v.quoteLineId}"
+                            onmodalOpenEvent="{!c.setModalAttribute}" onrefreshAccordionEvent="{!c.refreshAccordion}" />
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+        <!--###### RPM Recommendation Form ######-->
+        <aura:if isTrue="{!v.showRPMRecommendation}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="rpm-form-modal-content" class="slds-modal slds-fade-in-open slds-modal_medium"
+                style="top:10%">
+                <div class="slds-modal__container" style="width: 53%">
+                    <header class="slds-modal__header slds-var-p-around_medium">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close"  class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.productName}</h2>
+                    </header>
+                    <div class="slds-modal__content" id="rpm-form-modal-content">
+                        <c:pricingRPMRecommendationForm recordId="{#v.quoteLineId}"
+                            onRPMModalOpenEvent="{!c.setModalAttribute}"
+                            onRPMRefreshAccordionEvent="{!c.RPMRefreshAccordion}" />
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+        <!--###### Edit Consumption Parameters Form ######-->
+        <aura:if isTrue="{!v.showConsumptionParametersEdit}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="consumption-modal-content" class="slds-modal slds-fade-in-open slds-modal_medium"
+                style="top:10%">
+                <div class="slds-modal__container" style="width: 53%; height:auto">
+                    <header class="slds-modal__header slds-var-p-around_medium">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Consumption Parameters
+                            Edit</h2>
+                    </header>
+                    <div class="slds-modal__content" id="consumption-modal-content">
+                        <c:pricing_ConsumptionAttributesComponent quoteLineId="{#v.quoteLineId}" style="height: 300px;"
+                            onconsumptionclose="{!c.closeModel}" quoteId="{!v.recordId}" isChangeStyle="false"
+                            isEdit="true" onrefreshconsumptions="{!c.refreshConsumption}" />
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+    </lightning:card>
+
+</aura:component>

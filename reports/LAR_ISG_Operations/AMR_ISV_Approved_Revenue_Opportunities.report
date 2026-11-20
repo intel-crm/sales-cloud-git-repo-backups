@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_13107407</developerName>
+        <masterLabel>Accounts</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>VMWARE, INC.</sourceValue>
+            </sourceValues>
+            <value>VMWare</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sas Institute Inc.</sourceValue>
+            </sourceValues>
+            <value>SAS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CITRIX SYSTEMS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CITRIX SYSTEMS, INC.</sourceValue>
+            </sourceValues>
+            <value>Citrix</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>RED HAT, INC. (HEADQUARTER) - USA</sourceValue>
+            </sourceValues>
+            <value>Red Hat</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SAP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAP AMERICAS, INC.</sourceValue>
+            </sourceValues>
+            <value>SAP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Couchbase</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Apcera</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NUTANIX INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NUTANIX, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ORACLE CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Oracle America, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HYTRUST</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Atlantis Computing Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maxta</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Metaswitch Networks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MARKLOGIC</sourceValue>
+            </sourceValues>
+            <value>Tier 2</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Milestone_Description__c</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <filter>
+        <booleanFilter>((1 OR 2) AND 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>Core_Solution_Milestone__c.Core_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Carl Brown,Mats Clarhamn,Amy Doescher,Don Snyder,Roxana Nava,Andre Serafim</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Carl Brown,Mats Clarhamn,Amy Doescher,Don Snyder,Roxana Nava,Andre Serafim</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Solution_Milestone__c.Core_Solution_Account_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Apcera,Mirantis,Nutanix,SAP,Redhat,red hat,VMware,Oracle,HyTrust,SAS,Atlantis,Citrix,Couchbase,Marklogic,Maxta,Metaswitch</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Solution_Milestone__c.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Solution_Milestone__c.Core_Owner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_13107407</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>AMR ISV Approved Revenue Opportunities</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Core_Solution_Milestone__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

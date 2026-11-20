@@ -1,0 +1,58 @@
+/* TODO : get rid of !importants if possible */
+/* TODO : get rid of specific px values and use percentage of container */
+
+.THIS {
+    height: 100%; 
+    width: 100%;
+}
+
+.THIS .iconImageContainer img {
+    max-height: 100%; /* related to ID-4007 */
+    max-width: 100%;
+}
+
+.THIS .slds-icon_container {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.THIS .slds-icon {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.THIS .recode50Container {
+    align-items: center;
+    display: flex;
+    height: 100% !important;
+    justify-content: center;
+    width: 100% !important;
+}
+
+.THIS .recode50 .icon {
+    font-size: 4em;
+}
+
+.THIS .svgImageContainer {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.THIS .svgImageContainer img {
+    height: 64%;
+    width: 64%;
+}
+.THIS .iconImageContainer {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.THIS.bg-blue {
+    background-color: t(blue);
+}

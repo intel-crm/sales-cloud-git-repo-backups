@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SPECBNFTOPTANEENG</name>
+    <style>none</style>
+    <subject>Congratulations on qualifying for specialty benefits</subject>
+    <textOnly>Congratulations on qualifying for Specialty Benefits!
+
+Click here to view this email as a web page.
+
+{!Contact.FirstName},
+
+Welcome to Intel® Technology Provider OPTANE Data Center Specialty Benefits!  As a OPTANE Data Center Specialist you can take advantage of Specialty Benefits specifically designed to help you create winning cloud solutions and give you a competitive edge in the marketplace when deploying Intel®-based solutions.
+
+As a qualified OPTANE Data Center Specialist, you are eligible for Specialty Benefits* that are designed to help you grow your cloud business including:
+
+OPTANE Data Center Specialist designation
+Intel Promotion of your Company as a Cloud Specialist
+Customer Matchmaking Opportunities
+Additional Points when purchasing Intel® Server Products for Cloud
+Access to Intel Cloud Resources
+Facilitated qualification for Intel® Cloud Builders
+Priority invitations to industry events and training sessions
+Access to Cloud Experts
+
+Thank you again for being an active Intel Technology Provider.
+
+Access Benefits &gt;
+
+*Benefits may vary by geography.
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. All rights reserved. Intel and the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+
+You may unsubscribe at any time by clicking the Unsubscribe link below.
+Privacy | Cookies |  Unsubscribe | *Trademarks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

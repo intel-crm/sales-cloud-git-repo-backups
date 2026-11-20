@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>RecordType FieldSet Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>RecordType FieldSet Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation><!-- Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Market Accelerate</masterLabel>
+            <translation><!-- CCG Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Engineering</masterLabel>
+            <translation><!-- Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG MAF</masterLabel>
+            <translation><!-- DCG MAF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Market Accelerate</masterLabel>
+            <translation><!-- Data Center Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPA Account Based1</masterLabel>
+            <translation><!-- IPA Account Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based1</masterLabel>
+            <translation><!-- Intel MDF Account Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based2</masterLabel>
+            <translation><!-- Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Rise Technology Initiative</masterLabel>
+            <translation><!-- Intel Rise Technology Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iot Premier - MDF</masterLabel>
+            <translation><!-- Iot Premier - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iot Targeted - MDF</masterLabel>
+            <translation><!-- Iot Targeted - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation><!-- ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal I MDF</masterLabel>
+            <translation><!-- Proposal I MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal II MDF</masterLabel>
+            <translation><!-- Proposal II MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation><!-- SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>defaultBudget</masterLabel>
+            <translation><!-- defaultBudget --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Controlling Field --></label>
+        <name>Core_MDF_Controlling_Field_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation><!-- Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Engineering</masterLabel>
+            <translation><!-- Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge</masterLabel>
+            <translation><!-- Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation><!-- IoT Premier - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation><!-- IoT Targeted - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking &amp; Intelligent Edge</masterLabel>
+            <translation><!-- Networking &amp; Intelligent Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking &amp; Telco</masterLabel>
+            <translation><!-- Networking &amp; Telco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation><!-- ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal I MDF</masterLabel>
+            <translation><!-- Proposal I MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal II MDF</masterLabel>
+            <translation><!-- Proposal II MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation><!-- SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CurrentObject --></label>
+        <name>Core_MDF_Current_Object_nm__c</name>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Campaign_Outcomes__c</masterLabel>
+            <translation><!-- Core_MDF_Campaign_Outcomes__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundRequest</masterLabel>
+            <translation><!-- PartnerFundRequest --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Execution Context --></label>
+        <name>Core_MDF_Execution_Context_nm__c</name>
+        <picklistValues>
+            <masterLabel>clone</masterLabel>
+            <translation><!-- clone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>create</masterLabel>
+            <translation><!-- create --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>edit</masterLabel>
+            <translation><!-- edit --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Set API Name --></label>
+        <name>Core_MDF_Field_Set_API_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCF_Campaign_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_CCF_Campaign_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Account_Plan</masterLabel>
+            <translation><!-- Core_MDF_Camp_Account_Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_BusinessClientAcceleration</masterLabel>
+            <translation><!-- Core_MDF_Camp_BusinessClientAcceleration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Client_Specialties_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Client_Specialties_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_DataCenterSpecialtiesMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_DataCenterSpecialtiesMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_DataCentricAccelerationMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_DataCentricAccelerationMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobEricssonAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobEricssonAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobMicrosoftAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobMicrosoftAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobRedHatAccelerationMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobRedHatAccelerationMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobSAPAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobSAPAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobSASAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobSASAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobSuseAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobSuseAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobVMwareAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobVMwareAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobalIBMAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobalIBMAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_GlobalNokiaAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_GlobalNokiaAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_ISV_Scale_Acceleration_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_ISV_Scale_Acceleration_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Iot_Premier_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Iot_Premier_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Iot_Targeted_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Iot_Targeted_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Optane_Specialties_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Optane_Specialties_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Proposal_II_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Proposal_II_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Proposal_I_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Proposal_I_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Red_Hat_Amplify_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Red_Hat_Amplify_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_SOEM_Client_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_SOEM_Client_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_SOEM_Data_Center_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_SOEM_Data_Center_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_Scale_Acceleration_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_Scale_Acceleration_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Camp_VMWare_Amplify_MDF</masterLabel>
+            <translation><!-- Core_MDF_Camp_VMWare_Amplify_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_Computing_Camp_FC</masterLabel>
+            <translation><!-- Core_MDF_Client_Computing_Camp_FC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Co_GTM_Campaign_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_Co_GTM_Campaign_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_DCF_Campaign_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_DCF_Campaign_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_Camp_FC</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_Camp_FC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_EEF_Campaign_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_EEF_Campaign_Fieldset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Edge_Camp_FC</masterLabel>
+            <translation><!-- Core_MDF_Edge_Camp_FC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_AccountBased</masterLabel>
+            <translation><!-- Core_MDF_IPA_AccountBased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Campaign_FieldSet</masterLabel>
+            <translation><!-- Core_MDF_IPA_Campaign_FieldSet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Campaign_Purpose_FieldSet</masterLabel>
+            <translation><!-- Core_MDF_IPA_Campaign_Purpose_FieldSet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Networking_Intelligent_Camp_FC</masterLabel>
+            <translation><!-- Core_MDF_Networking_Intelligent_Camp_FC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Networking_Telco_Camp_FC</masterLabel>
+            <translation><!-- Core_MDF_Networking_Telco_Camp_FC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_ODM_Growth_Plan_Client_MDF_Camp</masterLabel>
+            <translation><!-- Core_MDF_ODM_Growth_Plan_Client_MDF_Camp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Account_Plan</masterLabel>
+            <translation><!-- Core_MDF_PFR_Account_Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_BusinessClientAcceleration</masterLabel>
+            <translation><!-- Core_MDF_PFR_BusinessClientAcceleration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Client_Specialties_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Client_Specialties_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_DataCentricAcceleration_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_DataCentricAcceleration_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Data_Center_Specialties_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Data_Center_Specialties_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobEricssonAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobEricssonAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobMicrosoftAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobMicrosoftAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobSAPAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobSAPAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobSASAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobSASAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobSuseAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobSuseAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobVMwareAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobVMwareAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobalIBMAccelerateMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobalIBMAccelerateMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobalNokiaAcceleration_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobalNokiaAcceleration_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_GlobalRedHatAccelerationMDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_GlobalRedHatAccelerationMDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_ISV_Scale_Acceleration_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_ISV_Scale_Acceleration_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Iot_Premier_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Iot_Premier_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Iot_Targeted_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Iot_Targeted_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_ODM_Growth_Plan_Client_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_ODM_Growth_Plan_Client_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Optane_Specialties_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Optane_Specialties_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Red_Hat_Amplify_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Red_Hat_Amplify_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_SOEM_Client_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_SOEM_Client_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_SOEM_Data_Center_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_SOEM_Data_Center_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_Scale_Acceleration_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_Scale_Acceleration_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_PFR_VMWare_Amplify_MDF</masterLabel>
+            <translation><!-- Core_MDF_PFR_VMWare_Amplify_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Proposal_II_MDF</masterLabel>
+            <translation><!-- Core_MDF_Proposal_II_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Proposal_I_MDF</masterLabel>
+            <translation><!-- Core_MDF_Proposal_I_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_RMF_Campaign_Fieldset</masterLabel>
+            <translation><!-- Core_MDF_RMF_Campaign_Fieldset --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FieldsToFetchPicklistValues --></label>
+        <name>Core_MDF_FieldsToFetchPicklistValues__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Campaign_Outcomes__c</masterLabel>
+            <translation><!-- Core_MDF_Campaign_Outcomes__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Custom_Picklist__c</masterLabel>
+            <translation><!-- Core_MDF_Custom_Picklist__c --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Type Developer Name --></label>
+        <name>Core_MDF_Record_Type_DeveloperName_nm__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF_Account_Based</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF_Account_Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF_Proposal_Based</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF_Proposal_Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Co_GTM</masterLabel>
+            <translation><!-- Core_MDF_Co_GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Ecosystem_Extension_Fund</masterLabel>
+            <translation><!-- Core_MDF_Ecosystem_Extension_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance_Account_Based</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance_Account_Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance_Proposal_Based</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance_Proposal_Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel_Partner_Alliance_Account_Based</masterLabel>
+            <translation><!-- Intel_Partner_Alliance_Account_Based --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

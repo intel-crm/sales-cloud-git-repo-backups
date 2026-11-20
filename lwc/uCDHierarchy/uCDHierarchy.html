@@ -1,0 +1,98 @@
+<template>
+    <template if:false={showFinalComponent}>
+        <template if:true={showopidname}>
+            <div class="opidNameClass opidSecondScreen">
+                <div>
+                    <span class="slds-required">*</span>
+                    <span class="slds-form-element__label" style="font-weight: bold;">1PID Name</span>
+                </div>
+                <lightning-input
+                    variant="label-hidden" 
+                    name="1pidNameInput"
+                    label="1PID Name"
+                    pattern=".*\S.*"
+                    message-when-pattern-mismatch="Please provide an 1PID name."
+                    value={opidName}
+                    message-when-value-missing="Please provide an 1PID name."
+                    onchange={handleOpidNameInput}
+                    required>
+                </lightning-input>
+            </div>
+        </template>
+        <div class="textClass">
+            <p>The following Intel accounts will be linked to the 1PID, do you want to proceed.</p>
+        </div>
+        <div class="opidAccounts">  
+            <template if:true={childrecords}>
+                <!--<template if:false={showFinalComponent}>-->
+                    <div class="scroll-container">
+                        <table class="slds-table_bordered slds-table_cell-buffer slds-table_striped opidAccountsTable">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col">
+                                        <div class="slds-truncate" >Intel Account</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate">Unified ID</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate">Intel Account 1PID Association</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={childrecords} for:item="childrecord">
+                                    <tr key={childrecord.Id}>
+                                        <td>
+                                            <div class="slds-truncate" >{childrecord.Name}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">{childrecord.Core_Business_Party_Id__c}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" style="font-weight: bold;">X</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="opidNameClass">
+                        <div>
+                            <span class="slds-required">*</span>
+                            <span class="slds-form-element__label" style="font-weight: bold;">Comments</span>
+                        </div>
+                        <lightning-input
+                            variant="label-hidden" 
+                            name="commentsInput"
+                            label="Comments"
+                            pattern=".*\S.*"
+                            message-when-pattern-mismatch="Please provide Comments."
+                            value={comments}
+                            message-when-value-missing="Please provide Comments."
+                            onchange={handleCommentInput}
+                            required>
+                        </lightning-input>
+                    </div>
+                    <div class="buttonClass">
+                        <div class="submitButton">
+                            <lightning-button label="Back" onclick={handleClick} variant="brand"></lightning-button>
+                        </div>
+                            <lightning-button label="Proceed" onclick={handleProceedClick} variant="brand"></lightning-button>
+                    </div>
+                <!--</template>-->
+            </template>
+            
+            
+
+            <template if:true={childerror}>
+                <p>Error: {childerror}</p>
+            </template>
+        </div>
+    </template>
+    <template if:true={showFinalComponent}>
+        <div class="opidParentClass">
+            <c-u-c-d-Final-Pop-Up></c-u-c-d-Final-Pop-Up>
+        </div>
+    </template>
+</template>

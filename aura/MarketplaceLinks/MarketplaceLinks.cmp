@@ -1,0 +1,29 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="type" type="string" default="keymetrics"/>
+    <aura:attribute name="title" type="string" default=""/>
+    <aura:attribute name="linkList" type="Object"/>
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+
+
+    <div class="slds-p-top_x-large slds-p-horizontal_medium">
+        <h3 class="heading-20 normal-weight">{!v.title}</h3>
+        <lightning:layout multipleRows="true">
+                <aura:iteration items="{!v.linkList}" var="item">
+
+                        <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-p-vertical_small">
+                            <aura:if isTrue="{! !empty(item.title)}">
+                                <div class="slds-p-bottom_small heading-16 normal-weight">{!item.title}</div>
+                            </aura:if>
+                            <lightning:layout multipleRows="true">
+                                <aura:iteration items="{!item.data}" var="regions">
+                                        <lightning:layoutItem size="12"  class="slds-p-bottom_x-small">
+                                            <c:IntelLink url="{! regions.link}" openInBlank="true">{!regions.label}</c:IntelLink>
+                                        </lightning:layoutItem>
+                                </aura:iteration>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                </aura:iteration>
+        </lightning:layout>
+    </div>
+
+</aura:component>

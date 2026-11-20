@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Meeting Brief Background Talking Points</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Meeting Brief Background Talking Points</value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Generated --></label>
+        <name>CRM_AI_Generated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agenda Topic --></label>
+        <name>CRM_Agenda_Topic__c</name>
+    </fields>
+    <fields>
+        <label><!-- Background --></label>
+        <name>CRM_Background__c</name>
+    </fields>
+    <fields>
+        <label><!-- Executive Meeting Brief --></label>
+        <name>CRM_Executive_Meeting_Brief__c</name>
+        <relationshipLabel><!-- Meeting Brief Background Talking Points --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Proactive Talking Points --></label>
+        <name>CRM_Proactive_Talking_Points__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reactive Talking Points --></label>
+        <name>CRM_Reactive_Talking_Points__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

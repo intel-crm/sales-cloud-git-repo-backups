@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Recovery Dashboard</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Recovery Dashboard</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Amount --></label>
+        <name>Core_MDF_Claim_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manual Recovery Amount (USD) --></label>
+        <name>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Possible Amount --></label>
+        <name>Core_MDF_Max_Possible_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partnership Score Detail --></label>
+        <name>Core_MDF_Partnership_Score_Detail_Id__c</name>
+        <relationshipLabel><!-- Recovery Dashboard --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partnership Score --></label>
+        <name>Core_MDF_Partnership_Score_Id__c</name>
+        <relationshipLabel><!-- Recovery Dashboard --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Score --></label>
+        <name>Core_MDF_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scorecard --></label>
+        <name>Core_MDF_Scorecard_Id__c</name>
+        <relationshipLabel><!-- Recovery Dashboard --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Weighted PV Amount --></label>
+        <name>Core_MDF_Weighted_PV_Amt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

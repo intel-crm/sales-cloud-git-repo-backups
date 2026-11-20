@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Email Notification Disabler</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Email Notification Disabler</value>
+    </caseValues>
+    <fields>
+        <label><!-- Allowed Entitlement Ids --></label>
+        <name>Core_Allowed_Entitlement_Ids__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Id --></label>
+        <name>Core_Engagement_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Excluded Entitlement Ids --></label>
+        <name>Core_Excluded_Entitlement_Ids__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is the Rule Active? --></label>
+        <name>Core_Is_the_Rule_Active__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

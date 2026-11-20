@@ -1,0 +1,165 @@
+<template>
+  <template if:true={haserror} >
+    <div>{label.Core_MDF_ApplicationErrorMessage}</div>
+  </template>
+  <template if:true={data}>
+
+      
+    <!-- <c-core_MDF_HistoryComponent permset={permSetNames}></c-core_MDF_HistoryComponent> -->
+
+  <article
+    class="slds-card slds-card_boundary related_list_card_border_top forceRelatedListCardDesktop"
+  >
+    <div class="related_list_themed_border_top"></div>
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="slds-text-title_bold">
+            <span
+              class="slds-card__header-title slds-truncate slds-m-right--xx-small"
+              title=""
+              >{historyHeaderData}</span
+            >
+          </h2>
+        </div>
+      </header>
+      <div class="slds-no-flex">
+        <div class="actionsContainer"></div>
+      </div>
+    </div>
+
+
+    <div style="height: 300px;">
+      <lightning-datatable
+              key-field="id"
+              data={data}
+              columns={columns}
+              hide-checkbox-column>
+      </lightning-datatable>
+  </div>  
+
+
+
+
+    <!--<div if:true={historyData} class="slds-card__body">
+      <div class="slds-table--header-fixed_container forceBaseListView forceRelatedListPreviewGrid tableHeaderTopBorder">
+        <div class="slds-scrollable--y scrollbarHeight">
+          <table
+            class="forceRecordLayout slds-table slds-no-row-hover slds-table_cell-buffer slds-table_fixed-layout uiVirtualDataGrid--default uiVirtualDataGrid slds-table--header-fixed"
+          >
+            <thead>
+              <tr>
+                <th
+                scope="col"
+                  title="Date"
+                  aria-label="Date"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight"
+                    >
+                    {label.Core_MDF_History_Date}
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  title="Field"
+                  aria-label="Field"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    {label.Core_MDF_History_Field}
+                  </div>
+                </th> 
+                <th
+                  scope="col"
+                  title="User"
+                  aria-label="User"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    {label.Core_MDF_History_User}
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  title="Original Value"
+                  aria-label="Original Value"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    {label.Core_MDF_History_Original_Value}
+                  </div>
+                </th>
+                <th
+                  scope="col"
+                  title="New Value"
+                  aria-label="New Value"
+                >
+                  <div
+                    class="slds-cell-fixed fixedCellHeight extraSpace"
+                    >
+                    {label.Core_MDF_History_New_Value}
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tfoot></tfoot>
+            <tbody>
+              <template iterator:it={historyData}>
+                <tr key={it.value.id}>
+                   
+                  <td>
+                     
+                    <span class="uiOutputDateTime" title={it.value.createdDate}>
+                      {it.value.createdDate}</span
+                    >
+                    </td>
+                  <td>
+                      <span class="uiOutputDateTime" title={it.value.field}
+                      >{it.value.field}</span
+                    >
+                   </td>
+                  <td>
+                      <span class="uiOutputDateTime forceOutputLookup forceOutputLookupText"
+                      title={it.value.user}
+                    >
+                      {it.value.user}
+                    </span>
+                   </td>
+
+                  <td>
+                      <template if:true={it.value.isCheckbox}>                                     
+                      <c-child-row value={it.value.oldValue}> </c-child-row>
+                    </template>
+                    <template if:false={it.value.isCheckbox}>
+                      <span class="uiOutputText" title={it.value.oldValue}>
+                        {it.value.oldValue}
+                      </span>
+                    </template>
+                    
+                  </td>
+                  <td>
+                      <template if:true={it.value.isCheckbox}>
+                         <c-child-row value={it.value.newValue}> </c-child-row>
+                    </template>
+                    <template if:false={it.value.isCheckbox}>
+                      <span class="uiOutputText" title={it.value.newValue}>
+                        {it.value.newValue}</span
+                      >
+                    </template>
+                    
+                  </td>
+                  
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>-->
+  </article>
+</template>
+    </template>

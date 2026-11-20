@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Brand Awareness</masterLabel>
+        <translation><!-- Brand Awareness --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consideration</masterLabel>
+        <translation><!-- Consideration --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Design Wins</masterLabel>
+        <translation>設計獲勝案例</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Preference</masterLabel>
+        <translation><!-- Preference --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Intent</masterLabel>
+        <translation><!-- Purchase Intent --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Billings</masterLabel>
+        <translation>收入 - 帳單</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Consumption / ARR</masterLabel>
+        <translation>收入 - 消費 / ARR</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Deal Wins</masterLabel>
+        <translation>收入 - 贏得交易</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Pipelines/Opportunities</masterLabel>
+        <translation>收入 - 管道/機會</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Share of Voice</masterLabel>
+        <translation><!-- Share of Voice --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Deal Wins</masterLabel>
+        <translation>量 - 贏得交易</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Leads</masterLabel>
+        <translation>量 - 潛在客戶</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Pipeline/Opportunities</masterLabel>
+        <translation>量 - 管道/機會</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Units</masterLabel>
+        <translation>量 - 單位</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

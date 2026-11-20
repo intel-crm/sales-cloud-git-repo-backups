@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Complete the Gaudi Fit Questionnaire",
+  "contentBody" : {
+    "description" : "Complete the customer requirements questionnaire for Gaudi. This evaluation will help walk you through if Gaudi is a match for the customer's workload and future business solutions.",
+    "sections" : [ {
+      "content" : "<div>Please click here to go to the Generative AI Questionnaire located within Seismic</div><div><a style=\"font-size: 14px; color: rgb(51, 51, 51); font-family: &#34;Source Sans Pro&#34;, &#34;Segoe UI&#34;, Frutiger, Helvetica, Arial;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DCdfR4PPpj27CGqXHpqC7CXcD2Hd\">https://intel.seismic.com/Link/Content/DCdfR4PPpj27CGqXHpqC7CXcD2Hd</a></div><div><br /></div><div>Once on the document in Seismic, click on the &#34;Add to Workspace&#34; button in the top right corner. Then add the questionnaire to &#34;My Files&#34;.</div><div><br /></div><div>Navigate to your Workspace, click the 3 dots on the right side of the document and click &#34;copy to&#34; to your files again. Rename the copy of the document to &#34;Generative AI Questionnaire - YOUR OPPORTNITY NAME&#34;. Then proceed to fill out the form.</div><div><br /></div><div>Once your form is completed, click the 3 dots on the right side again and click &#34;Share externally&#34;. Utilize the Live send feature within Seismic to send the completed questionnaire to the following PDL: smg.dcai.gtm.ai.end.customer&#64;intel.com</div>",
+      "keyConcept" : "Fill out the Questionnaire and share with opportunity team",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1.0
+  },
+  "urlName" : "complete-the-gaudi-fit-questionnaire"
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Scoring</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Scorings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Scoring Level --></label>
+        <name>PSS_Scoring_Level_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scoring Range Lower Bound --></label>
+        <name>PSS_Scoring_Range_Lower_Bound_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scoring Range Upper Bound --></label>
+        <name>PSS_Scoring_Range_Upper_Bound_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scoring Type --></label>
+        <name>PSS_Scoring_Type__c</name>
+        <picklistValues>
+            <masterLabel>Category</masterLabel>
+            <translation><!-- Category --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consolidate</masterLabel>
+            <translation><!-- Consolidate --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Category --></label>
+        <name>PSS_Solution_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>DCG</masterLabel>
+            <translation><!-- DCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOTG</masterLabel>
+            <translation><!-- IOTG --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

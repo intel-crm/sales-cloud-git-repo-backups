@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Recommendations</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Recommendations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>Core_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Product Type --></label>
+        <name>Core_Account_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account__c</name>
+        <relationshipLabel><!-- Account Recommendations --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Top 1 sales item --></help>
+        <label><!-- Branded Top Sales 1 Item --></label>
+        <name>Core_Brand_Top_Sales_1_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last purchase Month/Year of the product --></help>
+        <label><!-- Branded Top Sales 1 Last Purchase Dt --></label>
+        <name>Core_Brand_Top_Sales_1_Last_Purchase_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The quantity the user bought from this item in his last purchase --></help>
+        <label><!-- Branded Top Sales 1 Last Purchase Qty --></label>
+        <name>Core_Brand_Top_Sales_1_Last_Purchase_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total qty the user bought from this item in the last year --></help>
+        <label><!-- Branded Top Sales 1 Total Qty --></label>
+        <name>Core_Brand_Top_Sales_1_Total_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Top 2 sales item --></help>
+        <label><!-- Branded Top Sales 2 Item --></label>
+        <name>Core_Brand_Top_Sales_2_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last purchase Month/Year of the product --></help>
+        <label><!-- Branded Top Sales 2 Last Purchase Dt --></label>
+        <name>Core_Brand_Top_Sales_2_Last_Purchase_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quantity the user bought from this item in his last purchase --></help>
+        <label><!-- Branded Top Sales 2 Last Purchase Qty --></label>
+        <name>Core_Brand_Top_Sales_2_Last_Purchase_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total qty the user bought from this item in the last year --></help>
+        <label><!-- Branded Top Sales 2 Total Qty --></label>
+        <name>Core_Brand_Top_Sales_2_Total_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Top 3 sales item --></help>
+        <label><!-- Branded Top Sales 3 Item --></label>
+        <name>Core_Brand_Top_Sales_3_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last purchase Month/Year of the product --></help>
+        <label><!-- Branded Top Sales 3 Last Purchase Dt --></label>
+        <name>Core_Brand_Top_Sales_3_Last_Purchase_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quantity the user bought from this item in his last purchase --></help>
+        <label><!-- Branded Top Sales 3 Last Purchase Qty --></label>
+        <name>Core_Brand_Top_Sales_3_Last_Purchase_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total qty the user bought from this item in the last year --></help>
+        <label><!-- Branded Top Sales 3 Total Qty --></label>
+        <name>Core_Brand_Top_Sales_3_Total_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Top 1 sales item --></help>
+        <label><!-- Component Top Sales 1 Item --></label>
+        <name>Core_Comp_Top_Sales_1_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last purchase Month/Year of the product --></help>
+        <label><!-- Component Top Sales 1 Last Purchase Dt --></label>
+        <name>Core_Comp_Top_Sales_1_Last_Purchase_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quantity the user bought from this item in his last purchase --></help>
+        <label><!-- Component Top Sales 1 Last Purchase Qty --></label>
+        <name>Core_Comp_Top_Sales_1_Last_Purchase_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total qty the user bought from this item in the last year --></help>
+        <label><!-- Component Top Sales 1 Total Qty --></label>
+        <name>Core_Comp_Top_Sales_1_Total_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Top 2 sales item --></help>
+        <label><!-- Component Top Sales 2 Item --></label>
+        <name>Core_Comp_Top_Sales_2_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last purchase Month/Year of the product --></help>
+        <label><!-- Component Top Sales 2 Last Purchase Dt --></label>
+        <name>Core_Comp_Top_Sales_2_Last_Purchase_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quantity the user bought from this item in his last purchase --></help>
+        <label><!-- Component Top Sales 2 Last Purchase Qty --></label>
+        <name>Core_Comp_Top_Sales_2_Last_Purchase_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total qty the user bought from this item in the last year --></help>
+        <label><!-- Component Top Sales 2 Total Qty --></label>
+        <name>Core_Comp_Top_Sales_2_Total_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Top 3 sales item --></help>
+        <label><!-- Component Top Sales 3 Item --></label>
+        <name>Core_Comp_Top_Sales_3_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last purchase Month/Year of the product --></help>
+        <label><!-- Component Top Sales 3 Last Purchase Dt --></label>
+        <name>Core_Comp_Top_Sales_3_Last_Purchase_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quantity the user bought from this item in his last purchase --></help>
+        <label><!-- Component Top Sales 3 Last Purchase Qty --></label>
+        <name>Core_Comp_Top_Sales_3_Last_Purchase_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total qty the user bought from this item in the last year --></help>
+        <label><!-- Component Top Sales 3 Total Qty --></label>
+        <name>Core_Comp_Top_Sales_3_Total_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Was the product recommendation useful? This is used to improve the predictive analytics engine. --></help>
+        <label><!-- Feedback 1 Indicator --></label>
+        <name>Core_Feedback_1_Indicator__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback 1 Timestamp --></label>
+        <name>Core_Feedback_1_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback 1 User --></label>
+        <name>Core_Feedback_1_User__c</name>
+        <relationshipLabel><!-- Account Recommendations (Feedback 1 User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Was the product recommendation useful? This is used to improve the predictive analytics engine. --></help>
+        <label><!-- Feedback 2 Indicator --></label>
+        <name>Core_Feedback_2_Indicator__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback 2 Timestamp --></label>
+        <name>Core_Feedback_2_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback 2 User --></label>
+        <name>Core_Feedback_2_User__c</name>
+        <relationshipLabel><!-- Account Recommendations (Feedback 2 User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Was the product recommendation useful? This is used to improve the predictive analytics engine. --></help>
+        <label><!-- Feedback 3 Indicator --></label>
+        <name>Core_Feedback_3_Indicator__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback 3 Timestamp --></label>
+        <name>Core_Feedback_3_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback 3 User --></label>
+        <name>Core_Feedback_3_User__c</name>
+        <relationshipLabel><!-- Account Recommendations (Feedback 3 User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Geo of the account --></help>
+        <label><!-- Geography --></label>
+        <name>Core_Geography__c</name>
+    </fields>
+    <fields>
+        <help><!-- Timestamp of the AA model execution --></help>
+        <label><!-- Model Timestamp --></label>
+        <name>Core_Model_Timestamp__c</name>
+    </fields>
+    <fields>
+        <help><!-- ITP ID of the account --></help>
+        <label><!-- Organization Account ID --></label>
+        <name>Core_Organization_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 1 Based On --></label>
+        <name>Core_Product_Recommended_1_Based_On__c</name>
+    </fields>
+    <fields>
+        <help><!-- True or false indicator to say if the specific recommendation is related to the reseller being an early adopter (could be an early adopter in the product family) --></help>
+        <label><!-- Product Recommended 1 Early Adopter --></label>
+        <name>Core_Product_Recommended_1_Early_Adopter__c</name>
+    </fields>
+    <fields>
+        <help><!-- If relevant (branded recommendation) - this is the item&apos;s form factor --></help>
+        <label><!-- Product Recommended 1 Form Factor --></label>
+        <name>Core_Product_Recommended_1_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <help><!-- First item for recommendation. This is the item id created within EDW (based on level in product tree relevant for recommendation). --></help>
+        <label><!-- Product Recommended 1 ID --></label>
+        <name>Core_Product_Recommended_1_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Text name of the recommended product --></help>
+        <label><!-- Product Recommended 1 Name --></label>
+        <name>Core_Product_Recommended_1_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 1 Repeat --></label>
+        <name>Core_Product_Recommended_1_Repeat__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 1 Sell Type --></label>
+        <name>Core_Product_Recommended_1_Sell_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if recommended item is component or branded --></help>
+        <label><!-- Product Recommended 1 Type --></label>
+        <name>Core_Product_Recommended_1_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 2 Based On --></label>
+        <name>Core_Product_Recommended_2_Based_On__c</name>
+    </fields>
+    <fields>
+        <help><!-- True or false indicator to say if the specific recommendation is related to the reseller being an early adopter (could be an early adopter in the product family) --></help>
+        <label><!-- Product Recommended 2 Early Adopter --></label>
+        <name>Core_Product_Recommended_2_Early_Adopter__c</name>
+    </fields>
+    <fields>
+        <help><!-- If relevant (branded recommendation) - this is the item&apos;s form factor --></help>
+        <label><!-- Product Recommended 2 Form Factor --></label>
+        <name>Core_Product_Recommended_2_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <help><!-- Second item for recommendation. This is the item id created within EDW (based on level in product tree relevant for recommendation). --></help>
+        <label><!-- Product Recommended 2 ID --></label>
+        <name>Core_Product_Recommended_2_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Text name of the recommended product --></help>
+        <label><!-- Product Recommended 2 Name --></label>
+        <name>Core_Product_Recommended_2_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 2 Repeat --></label>
+        <name>Core_Product_Recommended_2_Repeat__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 2 Sell Type --></label>
+        <name>Core_Product_Recommended_2_Sell_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if recommended item is component or branded --></help>
+        <label><!-- Product Recommended 2 Type --></label>
+        <name>Core_Product_Recommended_2_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 3 Based On --></label>
+        <name>Core_Product_Recommended_3_Based_On__c</name>
+    </fields>
+    <fields>
+        <help><!-- True or false indicator to say if the specific recommendation is related to the reseller being an early adopter (could be an early adopter in the product family) --></help>
+        <label><!-- Product Recommended 3 Early Adopter --></label>
+        <name>Core_Product_Recommended_3_Early_Adopter__c</name>
+    </fields>
+    <fields>
+        <help><!-- If relevant (branded recommendation) - this is the item&apos;s form factor --></help>
+        <label><!-- Product Recommended 3 Form Factor --></label>
+        <name>Core_Product_Recommended_3_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <help><!-- Third item for recommendation. This is the item id created within EDW (based on level in product tree relevant for recommendation). --></help>
+        <label><!-- Product Recommended 3 ID --></label>
+        <name>Core_Product_Recommended_3_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Text name of the recommended product --></help>
+        <label><!-- Product Recommended 3 Name --></label>
+        <name>Core_Product_Recommended_3_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 3 Repeat --></label>
+        <name>Core_Product_Recommended_3_Repeat__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Recommended 3 Sell Type --></label>
+        <name>Core_Product_Recommended_3_Sell_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if recommended item is component or branded --></help>
+        <label><!-- Product Recommended 3 Type --></label>
+        <name>Core_Product_Recommended_3_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recommendations Viewed --></label>
+        <name>Core_Recommendations_Viewed__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

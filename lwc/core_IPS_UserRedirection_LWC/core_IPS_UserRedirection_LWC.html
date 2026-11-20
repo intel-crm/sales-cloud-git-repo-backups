@@ -1,0 +1,34 @@
+<template>
+    <!-- <template if:true={isLoggedIn}>
+        <c-core_-i-p-s_-header_-l-w-c></c-core_-i-p-s_-header_-l-w-c>
+    </template> -->
+    <lightning-layout>
+        <lightning-layout-item class="slds-align_absolute-center" flexibility="auto" padding="around-small">
+            <div class="slds-m-around_medium slds-align_absolute-center">
+                <img src={pageNotFoundImage}>
+            </div>
+
+        </lightning-layout-item>
+
+    </lightning-layout>
+    <template if:true={isDdrUser}>
+        <div class="slds-m-around_medium slds-align_absolute-center" style="color: red">
+            <b> If you are looking for Design Registration &nbsp;<a href="https://partner.intel.com"
+                    style="text-decoration: underline;"> Click here</a> </b>
+        </div>
+    </template>
+    <template if:false={isDdrUser}>
+        <div class="slds-p-bottom_large slds-align_absolute-center" style="padding-top: 20px;">
+            <input onclick={navigateToHome} type="button" class="btn" value="Home" style="color: white;
+            border: 1px solid #ddd;
+            background-color: #0068b5;
+            padding: 4px 12px;
+            height: 40px;
+             width: 120px;"></input>
+        </div>
+    </template>
+    <template if:true={isLoggedIn}>
+        <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+    </template>
+
+</template>

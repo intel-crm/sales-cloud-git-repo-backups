@@ -1,0 +1,14 @@
+<!-- **************************************************************************************
+    Apex Page Name:  Core_Milestone_Credit
+    Version     : 1.0 
+    Created Date: 02 Jul 2018
+    Function    : Onclick of "Milestone Credit" button, it will redirect to Milestone credit standard report.
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Laxmana Lenka             07/02/2018              Original Version
+    * 
+    ************************************************************************************* -->
+<apex:page standardController="Opportunity" extensions="Core_RedirectToReport" action="{!MCPageRef}" showHeader="false" sidebar="false">
+
+</apex:page>

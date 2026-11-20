@@ -1,0 +1,9 @@
+<aura:component>
+
+  <aura:method
+    name="getActions"
+    action="{!c.getActions}"
+    description="Used to get the object of redux actions">
+  </aura:method>
+
+</aura:component>

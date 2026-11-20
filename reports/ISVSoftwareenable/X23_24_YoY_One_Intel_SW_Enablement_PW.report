@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_35423244</developerName>
+        <masterLabel>Sales Group Regions</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Partner Led</sourceValue>
+            </sourceValues>
+            <value>Americas</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA France Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Russia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA UK Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Partner Led</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Partner Led</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Partner Holding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Partner Led</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Accounts Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Solutions &amp; Services Sales Group</sourceValue>
+            </sourceValues>
+            <value>Global</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Role__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>NEXT_STEP</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_35423244</field>
+    </columns>
+    <description>Compare &apos;23 SW Enablement PW to &apos;24</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 4 AND ((3 AND 5 AND 6) OR (7 AND 8))</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Software-enable</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_has_Solution__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Concatenated_Technology_Enabled__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>,VNNI,​ Bfloat16,​ AVX-512,​ RDT,​ Crypto NI​,SGX​,TME​,AMX (TMUL)​,IAX​,DSA​,TDX​,QAT​,HBM,​ SST Speed Select,​ SIOV​,IAA​,DLB​,HFNI,​ DDIO​,OpenVINO,​ OneAPI  Base Toolkit,​ OneAPI AI Analytics Toolkit,​ OneAPI HPC Toolkit,​ OneAPI IOT Toolkit,​ OneAPI Rendering Toolkit,​ DL Boost​,Xpdk (DPDK,IPDK,SPDK,etc​),Intel RHOC​,Intel DAOS​,Intel Neural Compressor,​ ISA-Library,​ TADK,​ CNDP,​ Network Certified Solutions  (latest IA compute),Optane PMEM,VMD/VROC,Habana,Intel Automation Tool-OCR,Intel Automation Tool-OCM,Wi-Fi 7,Camera &amp; Graphics DX12,MEP for VPU,HGS,Thunderbolt 4,Modern Standby Telemetry,Security TPR &amp; ACM Support,Windows Hello Sensors,VRAN Boost,PMU,LAM,DPE,SMM,CET</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_First_Customer_Ship_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>12/30/2023</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_First_Customer_Ship_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>12/31/2023</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Concatenated_Technology_Enabled__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>AMX (TMUL),AVX-512,Bfloat16,CNDP,Crypto NI,DDIO,DL Boost,DLB,DSA,HBM,HFNI,IAA,IAX,Intel Automation Tool-OCM,Intel Automation Tool-OCR,Intel DAOS,Intel Neural Compressor,Intel RHOC,ISA-Library,Network Certified Solutions (latest IA compute),OneAPI Base Toolkit,OneAPI AI Analytics Toolkit,OneAPI HPC Toolkit,OneAPI IOT Toolkit,OneAPI Rendering Toolkit,OpenVINO,Optane PMEM,QAT,RDT,SGX,SIOV,SST Speed Select,TADK,TDX,TME,VMD/VROC,VNNI,VRAN Boost,Xpdk (DPDK,IPDK,SPDK,etc)</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>23-24 YoY One Intel SW Enablement PW</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_First_Customer_Ship_Date__c</dateColumn>
+        <interval>INTERVAL_PREVCUR2FY</interval>
+    </timeFrameFilter>
+</Report>

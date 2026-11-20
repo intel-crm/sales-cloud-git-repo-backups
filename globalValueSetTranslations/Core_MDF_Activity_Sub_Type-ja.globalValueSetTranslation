@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Affiliate</masterLabel>
+        <translation>アフィリエイト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner/Display</masterLabel>
+        <translation>バナー / ディスプレイ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Catalog/Brochure</masterLabel>
+        <translation>カタログ / パンフレット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Circular</masterLabel>
+        <translation>サーキュラー POP</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connected IPOS</masterLabel>
+        <translation>オンライン IPOS</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content Library</masterLabel>
+        <translation>コンテンツ・ライブラリー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DCF SMF</masterLabel>
+        <translation><!-- DCF SMF --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demonstration</masterLabel>
+        <translation>デモ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Direct Mail</masterLabel>
+        <translation>ダイレクトメール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Email</masterLabel>
+        <translation>メールアドレス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>End Cap</masterLabel>
+        <translation>エンド</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Giveaway</masterLabel>
+        <translation>景品</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IPOS/ePOS</masterLabel>
+        <translation>IPOS / ePOS</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insert/Outsert/Flyer</masterLabel>
+        <translation>折り込み広告 / 別冊資料 / チラシ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Landing Experience</masterLabel>
+        <translation>ランディング・エクスペリエンス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation>リードの獲得</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Listing Page Branding</masterLabel>
+        <translation>リストページのブランディング</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mobile App</masterLabel>
+        <translation>モバイルアプリ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Operational Support</masterLabel>
+        <translation>運営サポート</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Collateral)</masterLabel>
+        <translation>その他 (配布資料)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Direct Mail)</masterLabel>
+        <translation>その他 (ダイレクトメール)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (EcosystemPartner.com)</masterLabel>
+        <translation>その他 (EcosystemPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (In-Store Promotion)</masterLabel>
+        <translation>その他 (店内プロモーション)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (IndustryPartner.com)</masterLabel>
+        <translation>その他 (IndustryPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Joint Event)</masterLabel>
+        <translation>その他 (共同開催イベント)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Member.com)</masterLabel>
+        <translation>その他 (Member.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (NonPartner.com)</masterLabel>
+        <translation>その他 (NonPartner.com)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Out-Of-Store Promotion)</masterLabel>
+        <translation>その他 (屋外プロモーション)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Personnel)</masterLabel>
+        <translation>その他 (スタッフ)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Promotion)</masterLabel>
+        <translation>その他 (キャンペーン)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Poster/Sign/Banner</masterLabel>
+        <translation>ポスター / 看板 / バナー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Champion</masterLabel>
+        <translation>製品に精通した販売スタッフ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Branding</masterLabel>
+        <translation>製品ページのブランディング</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Carousel</masterLabel>
+        <translation>製品ページのカルーセル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Page Content</masterLabel>
+        <translation>製品ページのコンテンツ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promo/Landing Page</masterLabel>
+        <translation>プロモーション / ランディング・ページ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promoter</masterLabel>
+        <translation>プロモーター</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Recommendation Tool</masterLabel>
+        <translation>サポートツール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retargeting - Banner/Display</masterLabel>
+        <translation>リターゲティング - バナー / ディスプレイ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retargeting - Text Ad</masterLabel>
+        <translation>リターゲティング - テキスト広告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Reviews/Ratings</masterLabel>
+        <translation>レビュー / 評価</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Riser</masterLabel>
+        <translation>ライザー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Kit</masterLabel>
+        <translation>販売キット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Onsite</masterLabel>
+        <translation>対面販売</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search</masterLabel>
+        <translation>検索</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Banner/Display</masterLabel>
+        <translation>検索 - バナー / ディスプレイ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Shopping</masterLabel>
+        <translation>検索 - 購入</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Sponsored Brand</masterLabel>
+        <translation>検索 - スポンサーブランド</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Text Ad</masterLabel>
+        <translation>検索 - テキスト広告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search - Top Products</masterLabel>
+        <translation>検索 - 上位製品</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shop in Shop</masterLabel>
+        <translation>ショップインショップ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shopper Review</masterLabel>
+        <translation>購入者レビュー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Signage</masterLabel>
+        <translation>看板広告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Media - Banner/Display</masterLabel>
+        <translation>ソーシャルメディア - バナー / ディスプレイ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Media - Post</masterLabel>
+        <translation>ソーシャルメディア - 投稿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Streaming/Content Mkt</masterLabel>
+        <translation>ストリーミング / コンテンツマーケット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Text Ad</masterLabel>
+        <translation>テキスト広告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traffic Driver + Landing Page</masterLabel>
+        <translation>トラフィック・ドライバー + ランディング・ページ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video</masterLabel>
+        <translation>ビデオ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Zone</masterLabel>
+        <translation>ゾーン</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

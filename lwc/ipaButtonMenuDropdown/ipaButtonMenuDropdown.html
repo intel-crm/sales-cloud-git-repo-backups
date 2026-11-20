@@ -1,0 +1,41 @@
+<template>
+    
+    <label class="slds-hide" for="button-menu">{title}</label>
+    <button id="button-menu"
+        class="button button-primary button-full-width slds-text-align_center"
+        onclick={handleToggleOpen}
+        aria-controls="button-menu-items"
+        aria-expanded={isOpen}>
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col">{title}</div>
+            <lightning-icon class="slds-col" icon-name={iconName}></lightning-icon>
+        </div>
+    </button>
+
+    <template if:true={isOpen}>
+        <ul id="button-menu-items"
+            aria-labelledby="button-menu"
+            onclick={handleSelectItem}
+            onkeydown={handleBtnKeyDown}>
+            <template for:each={menuItems} for:item="item">
+                <li key={item.key}>
+                    <template if:true={item.isAction}>
+                        <a tabindex="0" aria-label={item.label}
+                            aria-role="button"
+                            class="link-text"
+                            data-key={item.key}>
+                            {item.label}
+                        </a>
+                    </template>
+                    <template if:false={item.isAction}>
+                        <c-ipa-link label={item.label}
+                            community-page={item.communityPage}
+                            external-url={item.externalUrl}>
+                        </c-ipa-link>
+                    </template>
+                </li>
+            </template>
+        </ul>
+    </template>
+
+</template>

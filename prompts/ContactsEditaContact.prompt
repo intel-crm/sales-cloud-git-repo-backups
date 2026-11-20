@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Contacts Edit a Contact</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/create-or-edit-account-contacts/</actionButtonLink>
+        <body>&lt;p&gt;There are multiple ways you can edit a contact. Note that in order to edit the Contact, you must be the Contact Owner or the Account Owner, otherwise, please submit the edit request through &lt;a href=&quot;https://salescrm.intel.com/support-and-help-2/#tab-id-6&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ask A Question&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To edit a contact from the &lt;strong&gt;Contacts &lt;/strong&gt;tab/&lt;strong&gt;Contact &lt;/strong&gt;home page,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Click the drop-down arrow associated with the contact you want to edit and select &lt;strong&gt;Edit&lt;/strong&gt;. The &lt;em&gt;Contact&lt;/em&gt; details page opens.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Edit &lt;/strong&gt;to make all editable fields available, or click the &lt;em&gt;pencil &lt;/em&gt;icon on a field.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save &lt;/strong&gt;when finished making edits.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Contacts Edit a Contact</description>
+        <displayType>DockedComposer</displayType>
+        <header>Contacts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Contacts Edit a Contact</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Contact</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Edit a Contact</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327632620112</videoLink>
+    </promptVersions>
+</Prompt>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset>KPIProdOpportunitiesAZ_UAT</dataset>
+    <dimensions>
+        <field>o.opportunity_name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordDisplayFields>
+            <recordDisplayField>opportunity_id</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>opportunity_id</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>o.account_name</field>
+        <isDerived>false</isDerived>
+        <label>Account Name</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>1 - Won KPI</bin>
+                <formatValue>#37c94a</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>2 - Pending KPI</bin>
+                <formatValue>#2197da</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>kpi_type</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>kpi_type</field>
+        <isDerived>false</isDerived>
+        <label>KPI Type</label>
+        <members>
+            <label>Won KPI</label>
+            <member>1 - Won KPI</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <label>Pending KPI</label>
+            <member>2 - Pending KPI</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <recordIdField>kpi_type</recordIdField>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>kpi_full_date_Month</field>
+        <isDerived>false</isDerived>
+        <members>
+            <label>1</label>
+            <member>01</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <label>2</label>
+            <member>02</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <label>3</label>
+            <member>03</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <label>4</label>
+            <member>04</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <label>5</label>
+            <member>05</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <label>6</label>
+            <member>06</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <label>7</label>
+            <member>07</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <label>8</label>
+            <member>08</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <label>9</label>
+            <member>09</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+</WaveXmd>

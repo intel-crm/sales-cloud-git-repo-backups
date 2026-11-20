@@ -1,0 +1,36 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+    
+    
+	<aura:attribute name="theme" type="String" default="primary" description="Theme selection currently can be set to light/primar/dark"/>
+	<aura:attribute name="heading" type="String" default="Heading" description="Heading Text" />
+	<aura:attribute name="subHeading" type="String" default="Sub Heading" description="Subheading Text" />
+	<aura:attribute name="ctaLabel" type="String" default="CTA Label"  description="CTA Label Text" />
+	<aura:attribute name="ctaURL" type="String" default="http://www.intel.com" description="CTA URL"  />
+  	<aura:attribute name="ctaURLNewTab" type="boolean" default="false" description="Open CTA Link in new window"  />
+    
+	 
+	<!-- Offering Detail -->
+  <div class="{!v.theme}">
+		<div class="container margin-horizontal-auto slds-p-top_xx-large slds-p-bottom_xx-large">
+        <lightning:layout class="fill-height" verticalAlign="center" multipleRows="true">
+
+					<aura:if isTrue="{! !empty(v.heading)}">
+						<lightning:layoutItem size="12" class="slds-text-align_center slds-m-bottom_large">
+	            <h3 class="margin-horizontal-auto">{!v.heading}</h3> <!--Updated heading from h2 to h3 -Merge[US611347]-->
+						</lightning:layoutItem>
+					</aura:if>
+
+					<aura:if isTrue="{! !empty(v.subHeading)}">
+						<lightning:layoutItem size="12" class="slds-text-align_center slds-m-bottom_large">
+						  <p class="margin-horizontal-auto">{!v.subHeading}</p>
+						</lightning:layoutItem>
+					</aura:if>
+					<aura:if isTrue="{! !empty(v.ctaLabel)}">
+						<lightning:layoutItem size="12" class="slds-text-align_center">
+							<c:IntelButton href="{!$Label.c.PMP_Partner_Program_Url}" openInNewTab="{!v.ctaURLNewTab}" buttonClass="white">{!v.ctaLabel}</c:IntelButton>
+						</lightning:layoutItem>
+					</aura:if>
+        </lightning:layout>
+		</div>
+  </div>
+</aura:component>

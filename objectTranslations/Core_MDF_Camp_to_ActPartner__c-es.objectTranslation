@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Activating Partners --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Activating Partners --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Activating Partner Ultimate Account --></label>
+        <name>Core_MDF_ActPartner_Ultimate_Acc_Id__c</name>
+    </fields>
+    <fields>
+        <label>Activar cuenta de socio</label>
+        <name>Core_MDF_Activating_Partner_Account_id__c</name>
+        <relationshipLabel><!-- Activating Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Activating Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program__c</name>
+        <relationshipLabel><!-- Activating Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>Core_MDF_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Partner Ultimate Account --></label>
+        <name>Core_MDF_PrimPartner_Ultimate_Acc_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate --></label>
+        <name>Core_MDF_Reimbursement_Rate_pct__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Activating Partners Name --></nameFieldLabel>
+</CustomObjectTranslation>

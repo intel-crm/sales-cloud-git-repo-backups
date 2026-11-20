@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Table to store the mapping of CSV file column name to the API Field name in Design Registration Stage object. This is used by Design Registrations.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_CSV_Column_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>CSV Column Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Design_API_Field_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Design API Field Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Design_Required_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Design Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Field_Data_Type_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Field Data Type</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Header_Or_Product_Ind__c</fullName>
+        <externalId>false</externalId>
+        <label>Header/ Product</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Stage_API_Field_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Stage API Field Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Stage_Required_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>During csv or json import, for staging object, is this field value is required or not.</description>
+        <inlineHelpText>During csv or json import, for staging object, is this field value is required or not.</inlineHelpText>
+        <label>Stage Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Design Registrations Bulk Upload</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Active_Ind__c</columns>
+        <columns>Core_Header_Or_Product_Ind__c</columns>
+        <columns>Core_Field_Data_Type_Txt__c</columns>
+        <columns>Core_CSV_Column_Nm__c</columns>
+        <columns>Core_Stage_API_Field_Nm__c</columns>
+        <columns>Core_Design_API_Field_Nm__c</columns>
+        <columns>Core_Stage_Required_Ind__c</columns>
+        <columns>Core_Design_Required_Ind__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <language>en_US</language>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

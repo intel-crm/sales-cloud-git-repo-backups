@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Bank__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Type_Txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Status__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundClaim$Amount</field>
+    </columns>
+    <columns>
+        <field>PartnerFundClaim$Request.Core_MDF_BU_Percent_txt__c</field>
+    </columns>
+    <description>Adjustments available</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Adjustment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Available Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Request.ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Client CoMarketing Fund,Client CoMarketing Fund Boost,Data Center CoMarketing Fund,Intel Partner Alliance,Retail Marketing Funds,Service Provider CoMarketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Data Center Market Accelerate,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF,Account Plan,Proposal I MDF,Proposal II MDF</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_Bank__c.Core_MDF_Supplier_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Core_MDF_AccountCompany__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Request.ChannelPartner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Adjustments available</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PartnerFundClaim_Reports__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundClaim$Core_MDF_Activity_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

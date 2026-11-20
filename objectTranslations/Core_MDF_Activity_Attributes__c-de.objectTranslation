@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Co_Marketing_Activity__c</name>
+        <relationshipLabel><!-- Activity Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_Field_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Clicks</masterLabel>
+            <translation>Digitalmedien – Anzahl Klicks</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Conversions</masterLabel>
+            <translation>Digitalmedien – Anzahl Konvertierungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Downloads</masterLabel>
+            <translation>Digitalmedien – Anzahl der Downloads</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Impressions</masterLabel>
+            <translation>Digitalmedien – Anzahl AdImpressions</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Leads</masterLabel>
+            <translation>Digitalmedien – Anz. der Interessenten</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Page Views</masterLabel>
+            <translation>Digitalmedien – Anzahl Seitenansichten</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Social Media Likes/Shares</masterLabel>
+            <translation>Digitalmedien – Anzahl der Social-Media-Likes/Shares</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Unique Visitors</masterLabel>
+            <translation>Digitalmedien – Anzahl der eindeutigen Besucher</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - Average time on Page (Seconds)</masterLabel>
+            <translation>Digitalmedien – Durchschnittliche Seitenzeit (Sekunden)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media Percentage Spend</masterLabel>
+            <translation>Prozentanteil Ausgab digitale Medien</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Deal Wins</masterLabel>
+            <translation>Veranstaltung – Anzahl der Deal-Gewinne</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of End Customer Attendees</masterLabel>
+            <translation>Veranst. – Anzahl Endkunden-Teiln.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Seller Attendees</masterLabel>
+            <translation>Veranst. – Anzahl Verkäufer-Teiln.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - # of Sales Qualified Leads</masterLabel>
+            <translation>Veranst. – Anzahl qual. Sales Leads</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - Revenue of Units Sold (USD)</masterLabel>
+            <translation>Veranst. – Umsatz verk. Einheiten (USD)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Percentage Spend</masterLabel>
+            <translation>Prozentuale Ausgaben für Events</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount - # of Days</masterLabel>
+            <translation>Finanzierte Mitarbeiter – Anzahl Tage</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount Percentage Spend</masterLabel>
+            <translation>% Ausgab finanzierte Mitarbeiter</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deal Wins</masterLabel>
+            <translation>Incentive – Anzahl der Deal-Gewinne</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deals Registered</masterLabel>
+            <translation>Incentive – Anzahl reg. Angebote</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Design Wins</masterLabel>
+            <translation>Anreiz – Anzahl der Design-Wins</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Units Sold</masterLabel>
+            <translation>Incentive – Anzahl verkauften Einheiten</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - Revenue of Units Sold (USD)</masterLabel>
+            <translation>Incentive – Umsatz der verkauften Einheiten (USD)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Percentage Spend</masterLabel>
+            <translation>Prozentuale Ausgaben für Käuferanreize</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Leads</masterLabel>
+            <translation>Lead-Kultivierung – Anz. der Interessenten</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Sales Qualified Leads</masterLabel>
+            <translation>Lead-Kultivierung – Anzahl der qualifizierten Sales Leads</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation Percentage Spend</masterLabel>
+            <translation>% Ausgaben für die Lead-Kultivierung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Conversions</masterLabel>
+            <translation>Ältere Medien – Anzahl Konvertierungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Downloads</masterLabel>
+            <translation>Ältere Medien – Anzahl der Downloads</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Impressions</masterLabel>
+            <translation>Ältere Medien – Anzahl AdImpressions</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Leads</masterLabel>
+            <translation>Ältere Medien – Anz. der Interessenten</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Recipients</masterLabel>
+            <translation>Ältere Medien – Anzahl der Empfänger</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - Runs per hour</masterLabel>
+            <translation>Ältere Medien – Läufe pro Stunde</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media Percentage Spend</masterLabel>
+            <translation>Prozentanteil Ausgab ältere Medien</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation - # of Person Days</masterLabel>
+            <translation>Retail-Aktivierung – Anzahl Personentage</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation Percentage Spend</masterLabel>
+            <translation><!-- Retail Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
+            <translation>Technische Aktivierung – # Deal-Wins</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deployments</masterLabel>
+            <translation>Tech. Aktiv. - Nr. der Bereitstellungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
+            <translation>Technische Aktivierung – # Design-Wins</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Downloads</masterLabel>
+            <translation>Tech. Aktivierung - Nr. der Downloads</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Instances</masterLabel>
+            <translation>Tech. Aktivierung - Nr. der Instanzen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Sales Qualified Leads</masterLabel>
+            <translation>Technische Aktivierung - Nr. der qualifizierten Sales Leads</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation Percentage Spend</masterLabel>
+            <translation><!-- Technical Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of End Customer Trainees</masterLabel>
+            <translation>Schulung – Anzahl der Endkunden-Auszubildenden</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of Partner Trainees</masterLabel>
+            <translation>Schulung – Anzahl der Partner-Trainees</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Percentage Spend</masterLabel>
+            <translation>Prozentanteil Ausgab Schulungen</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Core_MDF_Field_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Amount --></label>
+        <name>Core_MDF_Spending_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation>Digitalmedien</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation>Veranstaltung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount</masterLabel>
+            <translation>Finanzierte Mitarbeiter</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive</masterLabel>
+            <translation><!-- Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation</masterLabel>
+            <translation>Lead-Kultivierung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media</masterLabel>
+            <translation>Ältere Medien</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation</masterLabel>
+            <translation>Einzelhandelsaktivierung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation</masterLabel>
+            <translation>Technische Aktivierung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation>Schulung</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>KPI</masterLabel>
+            <translation><!-- KPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percentage</masterLabel>
+            <translation><!-- Percentage --></translation>
+        </picklistValues>
+    </fields>
+    
+    <nameFieldLabel><!-- Activity Attributes Name --></nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>IPS - Mapping Business hours to case Queue for SLA Definition</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Active Flag for Queue to Biz hours mapping</description>
+        <inlineHelpText>Active Flag for Queue to Biz hours mapping</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_ID__c</fullName>
+        <description>Business Hours Identifier</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifier to tie Business hours to Queue for defining Case milestones</inlineHelpText>
+        <label>Business Hours ID</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Name__c</fullName>
+        <description>IPS Business Hours Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Business Hours Name to associate to a Queue which will define milestone hours</inlineHelpText>
+        <label>Business Hours Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Queue_ID__c</fullName>
+        <description>IPS Queue Identifier</description>
+        <externalId>false</externalId>
+        <label>Queue ID</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Queue_Name__c</fullName>
+        <description>IPS Queue Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Queue Name association to use for defining Business Hours used on Case Milestones</inlineHelpText>
+        <label>Queue Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Queue X Biz Hours</label>
+    <listViews>
+        <fullName>Core_IPS_Case_Queue_Biz_Hour_Associations</fullName>
+        <columns>NAME</columns>
+        <columns>SETUP_OWNER_NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Business_Hours_Name__c</columns>
+        <columns>Queue_Name__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>IPS - Case Queue Biz Hour Associations</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

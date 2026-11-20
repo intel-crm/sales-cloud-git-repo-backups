@@ -1,0 +1,63 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+    <!-- <div>
+        <div>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_5-of-6">
+                    <div class="custom-box slds-text-heading_small">
+                        <div class="slds-var-p-bottom_xxx-small slds-text-title_bold">
+                            {label.questionLabel}
+                        </div>
+                        <div class="slds-var-p-bottom_x-large">
+                            <lightning-formatted-rich-text value={question.label}></lightning-formatted-rich-text>
+                        </div>
+                        <div class="slds-var-p-bottom_xxx-small slds-text-title_bold">
+                            {label.questionType}
+                        </div>
+                        <div class="slds-var-p-bottom_x-large">
+                            {question.questionType}
+                        </div>
+                        <div if:true={optionsMapped}>
+                            <div class="slds-var-p-bottom_small slds-text-title_bold">
+                                {label.optionsMapping}
+                            </div>
+                            <template for:each={processedmappedOptions} for:item='choice'>
+                                <div key={choice.Id}>
+                                    <div class="slds-grid slds-border_bottom slds-var-p-bottom_xx-small">
+                                        <div class="slds-col slds-size_5-of-12 slds-var-p-bottom_x-small">
+                                            {choice.Label}:
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12"></div>
+                                        <div class="slds-col slds-size_5-of-12 slds-var-p-right_small">
+                                            {choice.SelectedTaxonomy}
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <div if:true={questionMapped}>
+                            {label.mappedToLabel} {questionMappedTo}
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-wrap slds-size_1-of-6 slds-var-p-around_small">
+                    <lightning-button variant="brand" label={label.mapLabel} title="Map" onclick={openMappingModal}
+                        class="slds-var-m-left_x-small">
+                    </lightning-button>
+                    <div if:true={displayIconCondition}>
+                        <div class="slds-var-p-around_small">
+                            <lightning-icon icon-name="action:approval" size="small" alternative-text="Mapping Complete"
+                                variant="success"></lightning-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template if:true={modalOpen}>
+            <c-pss-question-option-mapping-modal top-taxonomy={topTaxonomy} proposal-options={options}
+                has-options={hasOptions} offering-fields={offeringFields} onsave={handleSaveMapping}
+                onclosemodal={handlecloseModal} question={question}>
+            </c-pss-question-option-mapping-modal>
+        </template>
+    </div> -->
+</template>

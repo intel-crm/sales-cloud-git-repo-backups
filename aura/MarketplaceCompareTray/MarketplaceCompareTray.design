@@ -1,0 +1,5 @@
+<design:component>
+	<design:attribute name="compareLabel" label="Compare Label" />
+  <design:attribute name="ofLabel" label="'Of' Label" />
+  <design:attribute name="maxItemsToCompare" label="Max Limit for Items to Compare" />
+</design:component>

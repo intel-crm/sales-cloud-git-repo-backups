@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Premier Support Project</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Premier Support Projects</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Global Search Field Result --></label>
+        <name>Core_IPS_Global_Search_Field_Result</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- yy_IpsProjectFieldSet --></label>
+        <name>IpsProjectFieldSet</name>
+    </fieldSets>
+    <fields>
+        <help><!-- Adds all Premier Support Project Members as External Interested Parties on Cases created --></help>
+        <label><!-- Enable Members as Interested Parties --></label>
+        <name>Core_IPS_EnableMemberasInterestedParties__c</name>
+    </fields>
+    <fields>
+        <help><!-- Adds all Intel Support Team members as Internal Interested Parties --></help>
+        <label><!-- Enable IST as Interested Parties --></label>
+        <name>Core_IPS_Enable_ISTasInterested_Parties__c</name>
+    </fields>
+    <fields>
+        <label><!-- GroupId --></label>
+        <name>Core_IPS_GroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Name --></label>
+        <name>Core_IPS_Group_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Representative who is the default support owner for new Cases created on the Project --></help>
+        <label><!-- Intel Support Owner --></label>
+        <name>Core_IPS_Intel_Support_Owner__c</name>
+        <relationshipLabel><!-- Premier Support Projects (Intel Support Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- InternalGroupId --></label>
+        <name>Core_IPS_InternalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Collab Team ID --></label>
+        <name>Core_IPS_Legacy_Collab_Team_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner FAE from project members list will become the default Partner Support Owner (PSO) for new Cases created on Project. PSO will get email notifications whenever a case is updated. For more details refer to Projects Training topic on the home page. --></help>
+        <label><!-- Partner Support Owner --></label>
+        <name>Core_IPS_Partner_Support_Owner__c</name>
+        <relationshipLabel><!-- Premier Support Projects (Partner Support Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Private --></label>
+        <name>Core_IPS_Private__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premier Support Project ID --></label>
+        <name>Core_IPS_Project_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will strip text within emails for the Case Subject, Description and Comments --></help>
+        <label><!-- Remove Notification Details --></label>
+        <name>Core_IPS_Remove_Notification_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Level --></label>
+        <name>Core_IPS_Support_Level__c</name>
+        <picklistValues>
+            <masterLabel>ROW</masterLabel>
+            <translation><!-- ROW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 1</masterLabel>
+            <translation><!-- Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 2</masterLabel>
+            <translation><!-- Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 3</masterLabel>
+            <translation><!-- Tier 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 4</masterLabel>
+            <translation><!-- Tier 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top Opps</masterLabel>
+            <translation><!-- Top Opps --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unique Project Number --></label>
+        <name>Core_IPS_Unique_Project_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update PSO --></label>
+        <name>Core_IPS_Update_PSO__c</name>
+    </fields>
+    <fields>
+        <help><!-- An Multiparty Non-Disclosure Agreement is mandatory when more than one Account is added to a project. Use N/A when only one Account is added. --></help>
+        <label><!-- MPNDA --></label>
+        <name>Core_MPNDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Accounts --></label>
+        <name>Core_Number_of_Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Opportunities --></label>
+        <name>Core_Number_of_Opportunities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Products --></label>
+        <name>Core_Number_of_Products__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Active Member --></label>
+        <name>Core_Number_of_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Description --></label>
+        <name>Core_Project_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted Pending</masterLabel>
+            <translation><!-- Submitted Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Number of Active IST --></label>
+        <name>Intel_Support_Team_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Sub_Region__c</name>
+        <picklistValues>
+            <masterLabel>ANZ</masterLabel>
+            <translation><!-- ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CEE</masterLabel>
+            <translation><!-- CEE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CER</masterLabel>
+            <translation><!-- CER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJKK</masterLabel>
+            <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KOREA</masterLabel>
+            <translation><!-- KOREA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>META</masterLabel>
+            <translation><!-- META --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAR</masterLabel>
+            <translation><!-- NAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEUR</masterLabel>
+            <translation><!-- NEUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCIS</masterLabel>
+            <translation><!-- RCIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROA</masterLabel>
+            <translation><!-- ROA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SA</masterLabel>
+            <translation><!-- SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEA</masterLabel>
+            <translation><!-- SEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEUR</masterLabel>
+            <translation><!-- SEUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAIWAN</masterLabel>
+            <translation><!-- TAIWAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WEUR</masterLabel>
+            <translation><!-- WEUR --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Active --></label>
+        <name>Active</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot enable more than 50 IST members in bulk. Please enable them individually from related records --></errorMessage>
+        <name>CORE_IPS_INTELSUPPORTTEAM_COUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot enable more than 50 Project members in bulk. Please enable them individually from related records --></errorMessage>
+        <name>CORE_IPS_PROJECTMEMBER_COUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only an Intel Project Owner may edit the Private setting --></errorMessage>
+        <name>Core_IPS_PreventCheckingPrivate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Owner of a Private Project must be an IPS Agent in order to set the Status to Active. --></errorMessage>
+        <name>Core_IPS_Private_Project_Owner_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A valid MPNDA is required prior to adding secondary Accounts to a Premier Support Project --></errorMessage>
+        <name>Core_IPS_Project_MPNDA_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status must be set to Draft when creating a Project --></errorMessage>
+        <name>Core_IPS_Project_StatusAtProjCreate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Project Status value can&apos;t be changed to Draft once the project is active. --></errorMessage>
+        <name>Core_IPS_Project_Status_field_edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
+        <name>Core_IPS_Restrict_Changing_Private</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region --></errorMessage>
+        <name>SubRegionNotNullIfRegionExistedOnNewProj</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_IPS_Update_Support_Owners --></label>
+        <name>Core_IPS_Update_Support_Owners</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- core_Submit --></label>
+        <name>core_Submit</name>
+    </webLinks>
+</CustomObjectTranslation>

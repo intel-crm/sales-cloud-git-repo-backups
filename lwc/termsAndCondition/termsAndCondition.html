@@ -1,0 +1,44 @@
+<template>
+<div class="mainDiv">
+		<lightning-card>			
+				<h2 class="cardHeading">{formLabels.PRM_LA_Header}</h2>
+				<template if:true={error}>
+						<div class="error">
+								<lightning-icon icon-name="utility:warning" alternative-text="" size="small"></lightning-icon>
+								<p>{formLabels.PRM_LA_Error}</p>
+						</div>
+				</template>
+				<template if:false={rowCount}>
+						<div class="error">
+								<lightning-icon icon-name="utility:warning" alternative-text="" size="small"></lightning-icon>
+								<p>{formLabels.PRM_LA_No_Data}</p>
+						</div>
+				</template>
+				<lightning-layout>
+					<lightning-layout-item>
+				<template for:each={agreements} for:item="agreement">
+						<div class="cardHolder" key={agreement.RecordId}>
+								<a  target="_blank" href={formLabels.IPALegalTermsAndConditionStaticLink}  class="divFirst">{agreement.LegalAgreementName} </a>
+								<p class="divThird">{formLabels.PRM_LA_Signed_Date} <lightning-formatted-date-time value={agreement.LegalAgreementSignedDate}></lightning-formatted-date-time></p>
+						</div>
+				</template>
+			</lightning-layout-item>
+			<lightning-layout-item>
+				<template if:true={ShowDocList}>
+					<div class="docHolder">
+						<ul>
+							<template for:each={docList} for:item="doc"> 
+								<li style="list-style-type: disc;" key={doc.Document_Id__c}>									  
+									<a href={openDoc} key={doc.Document_Id__c} data-name={doc.Document_Id__c} onclick={handleClick}>
+										{doc.Title__c}
+									</a>
+								</li>
+							</template>
+						</ul>					
+					</div>
+			    </template>
+			</lightning-layout-item>	
+			</lightning-layout>
+		</lightning-card>
+</div>
+</template>

@@ -1,0 +1,96 @@
+<aura:component controller="Core_MDF_ECMCreationServerController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride">
+    <!--Declare Attributes-->
+    <aura:attribute name="exceptionWrapperList" type="object" Default="" description="This will contain all the Exception records and the different flags" />
+    <aura:attribute name="noMatchException" type ="boolean" default = "false" description = "This will return true value when there no match in Exception"/>
+    <aura:attribute name="disableSave" type ="boolean" default = "false" description = "This will disable save button in case of no match or no selection" />
+    <aura:attribute name="selectedCount" type="integer" default="0"/>
+    <aura:attribute name="isEnabled" type="boolean" Default="false" description="" />
+    
+    <!--aura init handler , call js "loadExceptionList" function on component load, and display Exception data on table-->   
+    <aura:handler name="init" value="{!this}" action="{!c.loadExceptionList}"/>    
+    
+    <div class="slds-m-around_xxx-large">
+        <aura:if isTrue="{!v.isEnabled}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-slide-up-saving slds-modal_large">
+            <div class="slds-modal__container">
+                <!-- ###### MODAL BOX HEADER Start ######-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}" alternativeText="close" variant="bare" class="slds-modal__close"/>
+                    <h2>{!$Label.c.Core_MDF_Add_Exception}</h2>
+                </header>
+                <!--###### MODAL BOX BODY Part Start######-->
+                
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div aura:id="searchRes" class="slds-form-element slds-lookup slds-is-close">
+                        <aura:if isTrue="{!v.noMatchException}">
+                            <div align="center"><c:Core_MDF_ErrorMessage type="error" message="{!$Label.c.Core_MDF_No_Matching_Exceptions}" /></div>
+                            <aura:set attribute="else">
+                                <!--Exception table part--> 
+                                <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                                    <thead>
+                                        <tr class="slds-text-title--caps">
+                                            <th style="width:3.25rem;" class="slds-text-align--right">
+                                            </th>
+                                            <th>
+                                                <span class="slds-truncate" title="Name">{!$Label.c.Core_MDF_Exception_Name}</span>      
+                                            </th>
+                                            <th>       
+                                                <span class="slds-truncate" title="Reason">{!$Label.c.Core_MDF_Exception_Reason}</span>
+                                            </th>
+                                            <th >
+                                                <div class="slds-truncate" title="Activity Category Type">{!$Label.c.Core_MDF_Exception_Activity_Category_Type}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <!--table body start, Iterate contact list as a <tr> -->
+                                    <tbody>
+                                        <aura:iteration items="{!v.exceptionWrapperList}" var="ew">
+                                            <tr>
+                                                <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                                                    <div class="slds-form-element">
+                                                        <div class="slds-form-element__control">
+                                                            <label class="slds-checkbox">
+                                                                <!-- <lightning:input type="checkbox" checked="{!ew.isECMAlreadyCreated}" 
+                                                                disabled="{!ew.isChecked}"
+                                                                onchange = "{!c.enableSaveButton}"/> -->
+                                                                <lightning:input type="checkbox" checked="{!ew.isECMAlreadyCreated}" disabled="{!ew.isChecked}" onchange="{!c.checkboxSelect}"/>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!ew.exceptionRecord.Core_MDF_Name_of_Exception_nm__c}">
+                                                        <a href = "{!ew.exceptionRecordLink}">
+                                                            {!ew.exceptionRecord.Core_MDF_Name_of_Exception_nm__c}
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!ew.exceptionRecord.Core_MDF_Exception_Reason_nm__c}">{!ew.exceptionRecord.Core_MDF_Exception_Reason_nm__c}</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!ew.exceptionRecord.Core_MDF_Activity_Cate_and_Type_nm__c}">{!ew.exceptionRecord.Core_MDF_Activity_Cate_and_Type_nm__c}</div>
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </div>
+                
+                <!--###### MODAL BOX FOOTER Part Start ######-->
+                <footer class="slds-modal__footer ">
+                    <lightning:button aura:id="saveButton" variant="brand" 
+                                      label="{!$Label.c.Core_MDF_Save}" title="{!$Label.c.Core_MDF_Save}" 
+                                      onclick="{!c.saveECMRecords}" disabled ="{!v.disableSave}" class="slds-align_absolute-center"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <!--###### MODAL BOX Part END Here ######-->
+        </aura:if>
+    </div>
+    
+</aura:component>

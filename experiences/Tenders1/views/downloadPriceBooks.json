@@ -1,0 +1,46 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "bd078734-e7dd-4ad5-b63a-563ad50c51ee",
+  "label" : "Download Price Books",
+  "regions" : [ {
+    "id" : "d5d6a6e9-a3da-4119-bf08-37ac51561031",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:psg_downloadPriceBooks",
+      "id" : "dae23b06-db43-4770-b695-b075711515c6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ac9e5213-1260-4a83-b693-c5194ba7cbb0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "f4c6e282-26b2-49bf-a8a3-4fdb737ae35e",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Download Price Books"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "9b53e813-53bb-45be-b2c0-66b5f3ddaadd",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "070a373b-a5d7-4aa0-af98-e125a9af2381",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-psg-download-price-books"
+}

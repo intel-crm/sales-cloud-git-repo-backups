@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Staging table to initially load the potential IPA Registration Accounts coming from various Campaigns.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PRM_Account_City__c</fullName>
+        <description>City of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Country_Code__c</fullName>
+        <description>Country Code of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account Country Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Name__c</fullName>
+        <description>Name of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Number_of_Employees__c</fullName>
+        <description>Number of Employees of the Account. This data comes from the data load file.</description>
+        <label>Account Number of Employees</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1-9</fullName>
+                    <default>false</default>
+                    <label>1 - 9 Employees</label>
+                </value>
+                <value>
+                    <fullName>10-24</fullName>
+                    <default>false</default>
+                    <label>10 - 24 Employees</label>
+                </value>
+                <value>
+                    <fullName>25-49</fullName>
+                    <default>false</default>
+                    <label>25 - 49 Employees</label>
+                </value>
+                <value>
+                    <fullName>50-99</fullName>
+                    <default>false</default>
+                    <label>50 - 99 Employees</label>
+                </value>
+                <value>
+                    <fullName>100-249</fullName>
+                    <default>false</default>
+                    <label>100 - 249 Employees</label>
+                </value>
+                <value>
+                    <fullName>250-499</fullName>
+                    <default>false</default>
+                    <label>250 - 499 Employees</label>
+                </value>
+                <value>
+                    <fullName>500-999</fullName>
+                    <default>false</default>
+                    <label>500 - 999 Employees</label>
+                </value>
+                <value>
+                    <fullName>1000-4999</fullName>
+                    <default>false</default>
+                    <label>1,000-4,999 Employees</label>
+                </value>
+                <value>
+                    <fullName>5000-9999</fullName>
+                    <default>false</default>
+                    <label>5,000 - 9,999 Employees</label>
+                </value>
+                <value>
+                    <fullName>10000+</fullName>
+                    <default>false</default>
+                    <label>10,000 Employees or More</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Partner_Role__c</fullName>
+        <description>Partner Role of the Account. This data comes from the data load file.</description>
+        <label>Account Partner Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
+                    <fullName>Guest</fullName>
+                    <default>false</default>
+                    <label>Guest</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
+                    <default>false</default>
+                    <label>Original Equipment Manufacturer (OEM)</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <label>Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Cloud &amp; Comms Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Solution Integrator</fullName>
+                    <default>false</default>
+                    <label>Service Integrator</label>
+                </value>
+                <value>
+                    <fullName>Sponsor</fullName>
+                    <default>false</default>
+                    <label>Sponsor</label>
+                </value>
+                <value>
+                    <fullName>TBD</fullName>
+                    <default>false</default>
+                    <label>TBD</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Phone__c</fullName>
+        <description>Phone Number of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account Phone</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Postal_Code__c</fullName>
+        <description>Postal Code of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account Postal Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_State_Code__c</fullName>
+        <description>State Code of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account State Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Street__c</fullName>
+        <description>Street of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account Street</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Website__c</fullName>
+        <description>Website of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>Account Website</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to the Account record. This is assigned after the Account record is created.</description>
+        <label>SFDC Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>IPA_Staging_Accounts</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Batch_Id__c</fullName>
+        <description>The batch identifier. All the records from each upload is given the same unique batch id.</description>
+        <externalId>false</externalId>
+        <label>Batch Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_External_Account_Id__c</fullName>
+        <description>External Id of the Account. This data comes from the data load file.</description>
+        <externalId>false</externalId>
+        <label>External Account Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Generic_Field1__c</fullName>
+        <description>Generic Field to store any additional info.</description>
+        <externalId>false</externalId>
+        <label>Generic Field1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Generic_Field2__c</fullName>
+        <description>Generic Field to store any additional info.</description>
+        <externalId>false</externalId>
+        <label>Generic Field2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Generic_Field3__c</fullName>
+        <description>Generic Field to store any additional info.</description>
+        <externalId>false</externalId>
+        <label>Generic Field3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Generic_Field4__c</fullName>
+        <description>Generic Field to store any additional info.</description>
+        <externalId>false</externalId>
+        <label>Generic Field4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Generic_Field5__c</fullName>
+        <description>Generic Field to store any additional info.</description>
+        <externalId>false</externalId>
+        <label>Generic Field5</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Validation_Message__c</fullName>
+        <description>Error message that is captured after the execution of validation script.</description>
+        <externalId>false</externalId>
+        <label>Validation Message</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Validation_Status__c</fullName>
+        <description>The status of validation. Starts with the value of Pending and moves to Pass or Fail after the execution of validation script.</description>
+        <label>Validation Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Pass</fullName>
+                    <default>false</default>
+                    <label>Pass</label>
+                </value>
+                <value>
+                    <fullName>Fail</fullName>
+                    <default>false</default>
+                    <label>Fail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>IPA Staging - Account</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Batch_Id__c</columns>
+        <columns>PRM_Account_Name__c</columns>
+        <columns>PRM_Account_Country_Code__c</columns>
+        <columns>PRM_Account_State_Code__c</columns>
+        <columns>PRM_Account_Website__c</columns>
+        <columns>PRM_Account_Partner_Role__c</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Validation_Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+    </listViews>
+    <listViews>
+        <fullName>BATCH_0000006</fullName>
+        <columns>PRM_Batch_Id__c</columns>
+        <columns>NAME</columns>
+        <columns>PRM_Account_Name__c</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Account_Partner_Role__c</columns>
+        <columns>PRM_External_Account_Id__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>PRM_Account_Country_Code__c</columns>
+        <columns>PRM_Account_State_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Batch_Id__c</field>
+            <operation>equals</operation>
+            <value>BATCH-0000006</value>
+        </filters>
+        <label>BATCH-0000006</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>BATCH_0000008</fullName>
+        <columns>PRM_Batch_Id__c</columns>
+        <columns>NAME</columns>
+        <columns>PRM_Account_Name__c</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Account_Partner_Role__c</columns>
+        <columns>PRM_External_Account_Id__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>PRM_Account_Country_Code__c</columns>
+        <columns>PRM_Account_State_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Batch_Id__c</field>
+            <operation>equals</operation>
+            <value>BATCH-0000008</value>
+        </filters>
+        <label>BATCH-0000008</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>BATCH_0000013</fullName>
+        <columns>PRM_Batch_Id__c</columns>
+        <columns>NAME</columns>
+        <columns>PRM_Account_Name__c</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Account_Partner_Role__c</columns>
+        <columns>PRM_External_Account_Id__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>PRM_Account_Country_Code__c</columns>
+        <columns>PRM_Account_State_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Batch_Id__c</field>
+            <operation>equals</operation>
+            <value>BATCH-0000013</value>
+        </filters>
+        <label>BATCH-0000013</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>BATCH_NULL</fullName>
+        <columns>PRM_Batch_Id__c</columns>
+        <columns>NAME</columns>
+        <columns>PRM_Account_Name__c</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Account_Partner_Role__c</columns>
+        <columns>PRM_External_Account_Id__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>PRM_Account_Country_Code__c</columns>
+        <columns>PRM_Account_State_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Batch_Id__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>BATCH NULL</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>IPA-ACCT-{0000000}</displayFormat>
+        <label>Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>IPA Staging - Accounts</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

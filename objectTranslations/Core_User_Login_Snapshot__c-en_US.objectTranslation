@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>User Login Snapshot</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>User Login Snapshots</value>
+    </caseValues>
+    <fields>
+        <help><!-- Displays Created Date --></help>
+        <label><!-- Created Date --></label>
+        <name>Core_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Department --></label>
+        <name>Core_Department__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays Full Name --></help>
+        <label><!-- Full Name --></label>
+        <name>Core_Full_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays Geo --></help>
+        <label><!-- Region --></label>
+        <name>Core_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is HQ User? --></label>
+        <name>Core_Is_HQ_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Login Duration --></label>
+        <name>Core_Last_Login_Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays Last Login --></help>
+        <label><!-- Last Login --></label>
+        <name>Core_Last_Login__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays profile. --></help>
+        <label><!-- Profile --></label>
+        <name>Core_Profile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Core_Role__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays Sub Geo --></help>
+        <label><!-- Sub Region --></label>
+        <name>Core_Sub_Geo__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays username --></help>
+        <label><!-- Username --></label>
+        <name>Core_Username__c</name>
+    </fields>
+    <fields>
+        <label><!-- WWID --></label>
+        <name>Core_WWID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

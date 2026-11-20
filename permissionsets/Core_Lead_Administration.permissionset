@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grant access to Leads Admin Tab</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Lead Administration</label>
+    <license>Salesforce</license>
+    <pageAccesses>
+        <apexPage>Core_Lead_Administration_Grid</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <tabSettings>
+        <tab>Core_Lead_Administration_Grid</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Zahlungsdokument</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Zahlungsdokumente</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Zahlungsdokument</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Zahlungsdokumente</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Zahlungsdokument</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Zahlungsdokumente</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Zahlungsdokument</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Zahlungsdokumente</value>
+    </caseValues>
+    <fields>
+        <label>Kontobezeichnung</label>
+        <name>Core_MDF_Account_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved File Id --></label>
+        <name>Core_MDF_Approved_File_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the payment document approved for sending to GSPO. --></help>
+        <label><!-- Approved Payment Document --></label>
+        <name>Core_MDF_Approved_File_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Reminder Sent --></label>
+        <name>Core_MDF_ClaimSubRemNotificationSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Reminder Date --></label>
+        <name>Core_MDF_ClaimSubmitterReminder_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>Zeigt den Anspruch an, der dem Zahlungsdokument zugeordnet ist</help>
+        <label>Antrag</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Zeigt die Art des Zahlungsdokuments an, das vom Kunden hochgeladen werden muss.</help>
+        <label>Dokumenttyp</label>
+        <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_VAT_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Date --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Sent --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Sent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- RSM Reminder Sent --></label>
+        <name>Core_MDF_RSMRemNotificationSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- RSM Reminder Date --></label>
+        <name>Core_MDF_RSMReminderDate_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>Kostenerstattungsbetrag ohne Steuern</help>
+        <label>Kostenerstattungsbetrag</label>
+        <name>Core_MDF_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Der Status des Zahlungsdokuments</help>
+        <label>Dokumentenstatus</label>
+        <name>Core_MDF_Status_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Genehmigt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>Storniert</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>Abgelehnt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>Unterlagen fehlen noch</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revision Required</masterLabel>
+            <translation>Überarbeitung erforderlich</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Review</masterLabel>
+            <translation>Wird geprüft</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Claim --></label>
+        <name>Core_MDF_Sub_Claim_Id__c</name>
+        <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Der Steuerbetrag</help>
+        <label>Steuerbetrag</label>
+        <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <help>Die Transaktion/Rechnungsnummer gehört zu dem Zahlungsdokument</help>
+        <label>Steuerrechnungsnummer</label>
+        <name>Core_MDF_VAT_Invoice_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <help>Der Steueranteil wird auf den Kostenerstattungsbetrag angerechnet</help>
+        <label>Steuer %</label>
+        <name>Core_MDF_VAT_Per__c</name>
+    </fields>
+    <fields>
+        <label>Richtlinien für Zahlungsdokumente</label>
+        <name>Core_MDF_Vat_Inv_Guide_Link__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Dokument-ID</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Payment Document Record Type --></description>
+        <label><!-- Payment Document --></label>
+        <name>Core_MDF_Payment_Document</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Submit for Approval Record Type --></description>
+        <label><!-- Submit for Approval --></label>
+        <name>Core_MDF_Submit_for_Approval</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage>Die Steuerrechnungsnummer kann in dem aktuellen Status nicht bearbeitet werden</errorMessage>
+        <name>Core_MDF_PreventInvNoEditAfterApproval</name>
+    </validationRules>
+</CustomObjectTranslation>

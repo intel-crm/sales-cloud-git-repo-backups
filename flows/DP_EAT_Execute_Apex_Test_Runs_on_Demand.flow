@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Email_notification_for_Flow_exception</name>
+        <label>Email notification for Flow exception</label>
+        <locationX>1106</locationX>
+        <locationY>638</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>faultEmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Fetch_Project_Info_before_enqueuing.DP_EAT_Email_Addresses__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>faultEmailSubject</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Email_Notification_with_Report_links_0</name>
+        <label>Email Notification with Report links</label>
+        <locationX>50</locationX>
+        <locationY>1478</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_job_status_of_Project_Info.DP_EAT_Email_Addresses__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>emailSubject</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Enqueue_Project_Test_Classes_0</name>
+        <label>Enqueue Project Test Classes</label>
+        <locationX>611</locationX>
+        <locationY>518</locationY>
+        <actionName>DP_EAT_InvocableUtility</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Fetch_Project_Info_record</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Email_notification_for_Flow_exception</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>params</name>
+            <value>
+                <elementReference>EnqueueTestsParams</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>DP_EAT_InvocableUtility</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Log_Project_Test_Run_Results</name>
+        <label>Log Project Test Run Results</label>
+        <locationX>380</locationX>
+        <locationY>998</locationY>
+        <actionName>DP_EAT_InvocableUtility</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>If_Send_Email_is_true</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>params</name>
+            <value>
+                <elementReference>logResultsParams</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>DP_EAT_InvocableUtility</nameSegment>
+    </actionCalls>
+    <apiVersion>54.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Enqueue_Tests_Params_0</name>
+        <label>Assign Enqueue Tests Params</label>
+        <locationX>611</locationX>
+        <locationY>398</locationY>
+        <assignmentItems>
+            <assignToReference>EnqueueTestsParams</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>enqueueTestsAction</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>EnqueueTestsParams</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Enqueue_Project_Test_Classes_0</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_log_results_params</name>
+        <label>Assign log results params</label>
+        <locationX>380</locationX>
+        <locationY>878</locationY>
+        <assignmentItems>
+            <assignToReference>logResultsParams</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>logResultsAction</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>logResultsParams</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Log_Project_Test_Run_Results</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <name>enqueueTestsAction</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Enqueue tests</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>logResultsAction</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Log test results</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>Check_if_job_completed</name>
+        <label>Check if job completed</label>
+        <locationX>182</locationX>
+        <locationY>1358</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Job_completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_job_status_of_Project_Info.DP_EAT_Job_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Notification_with_Report_links_0</targetReference>
+            </connector>
+            <label>Job completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Send_Email_is_true</name>
+        <label>If Send Email is true</label>
+        <locationX>380</locationX>
+        <locationY>1118</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Email_is_true</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Fetch_Project_Info_record.DP_EAT_Send_Email__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_job_status_of_Project_Info</targetReference>
+            </connector>
+            <label>Send Email is true</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Status_is_Not_Queued</name>
+        <label>If Status is Not Queued</label>
+        <locationX>990</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_not_Queued</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Fetch_Project_Info_before_enqueuing.DP_EAT_Job_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Queued</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Enqueue_Tests_Params_0</targetReference>
+            </connector>
+            <label>Status is not Queued</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>dateTimeafterXMinutes</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Flow.CurrentDateTime} + {!Fetch_Project_Info_record.DP_EAT_Pause_Time_in_minutes__c}/1440</expression>
+    </formulas>
+    <formulas>
+        <name>ProjectNameFilterValue</name>
+        <dataType>String</dataType>
+        <expression>IF( 
+CONTAINS( {!Fetch_Project_Info_record.Name} , &quot; &quot;) , 
+SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;), 
+ IF(
+  CONTAINS( {!Fetch_Project_Info_record.Name} , &quot;&amp;&quot;), 
+  SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot;&amp;&quot;, &quot;%26&quot;), 
+  {!Fetch_Project_Info_record.Name}
+ ) 
+)</expression>
+    </formulas>
+    <interviewLabel>DP_EAT - Execute Apex Test Runs on Demand {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DP_EAT - Execute Apex Test Runs on Demand</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Fetch_Project_Info_before_enqueuing</name>
+        <label>Fetch Project Info before enqueuing</label>
+        <locationX>990</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>If_Status_is_Not_Queued</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>DP_EAT_Project_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Fetch_Project_Info_record</name>
+        <label>Fetch Project Info record</label>
+        <locationX>611</locationX>
+        <locationY>638</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Time_Delay</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>DP_EAT_Project_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_job_status_of_Project_Info</name>
+        <label>Get job status of Project Info</label>
+        <locationX>182</locationX>
+        <locationY>1238</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_job_completed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>DP_EAT_Project_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <runInMode>DefaultMode</runInMode>
+    <start>
+        <locationX>864</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Fetch_Project_Info_before_enqueuing</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>emailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi,
+
+The execution of selected test classes for {!Fetch_Project_Info_record.Name} is completed. Please visit the below Reports for detailed results:-
+
+https://intel--crmdevint3.lightning.force.com/lightning/r/Report/00O2i000000TsOUEA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}
+
+https://intel--crmdevint3.lightning.force.com/lightning/r/Report/00O2i000000TsOTEA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>faultEmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi,
+
+Something went wrong while executing test runs for {!Fetch_Project_Info_before_enqueuing.Name} through EAT automation. Please try again later.
+Most likely, the test classes you&apos;re trying to run are already enqueued for test runs. Refer this for more details-
+https://intel.sharepoint.com/:p:/r/sites/Bhoomi/_layouts/15/Doc.aspx?sourcedoc=%7B4F4DB4D5-098A-4679-8F36-D3F2EF92A6F5%7D&amp;file=UI%20%26%20Functional%20Design%20for%20EAT.pptx&amp;action=edit&amp;mobileredirect=true&amp;wdOrigin=TEAMS-ELECTRON.teams.files&amp;wdExp=TEAMS-CONTROL&amp;wdhostclicktime=1649218975445
+
+Error message:
+{!$Flow.FaultMessage}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>faultEmailSubject</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Fault occurred while executing test runs for {!Fetch_Project_Info_before_enqueuing.Name}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PPTLink</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;a href=&quot;https://intel.sharepoint.com/:p:/r/sites/Bhoomi/_layouts/15/Doc.aspx?sourcedoc=%7B4F4DB4D5-098A-4679-8F36-D3F2EF92A6F5%7D&amp;amp;file=UI%20%26%20Functional%20Design%20for%20EAT.pptx&amp;amp;action=edit&amp;amp;mobileredirect=true&amp;amp;wdOrigin=TEAMS-ELECTRON.teams.files&amp;amp;wdExp=TEAMS-CONTROL&amp;amp;wdhostclicktime=1649218975445&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://intel.sharepoint.com/:p:/r/sites/Bhoomi/_layouts/15/Doc.aspx?sourcedoc=%7B4F4DB4D5-098A-4679-8F36-D3F2EF92A6F5%7D&amp;amp;file=UI%20%26%20Functional%20Design%20for%20EAT.pptx&amp;amp;action=edit&amp;amp;mobileredirect=true&amp;amp;wdOrigin=TEAMS-ELECTRON.teams.files&amp;amp;wdExp=TEAMS-CONTROL&amp;amp;wdhostclicktime=1649218975445&lt;/a&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>emailSubject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>{!Fetch_Project_Info_record.Name} Test Run Results</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>EnqueueTestsParams</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>logResultsParams</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <waits>
+        <name>Time_Delay</name>
+        <label>Time Delay</label>
+        <locationX>611</locationX>
+        <locationY>758</locationY>
+        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
+        <waitEvents>
+            <name>After_time_delay</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Assign_log_results_params</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>dateTimeafterXMinutes</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <label>After time delay</label>
+        </waitEvents>
+    </waits>
+</Flow>

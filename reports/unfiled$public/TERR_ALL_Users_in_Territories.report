@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$Name</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations*User$Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Territory2Model.Territory2s.UserTerritory2Associations$RoleInTerritory2</field>
+    </columns>
+    <description>All Users, Name, WWID and Territory Role</description>
+    <filter>
+        <criteriaItems>
+            <column>Territory2Model$State</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>3</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Territory2Model.Territory2s$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>TERR - ALL Users in Territories</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Territory_with_Users__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Territory2Model$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Channel Program</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Channel Programs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Abbreviated ProgramName --></label>
+        <name>Core_MDF_Abbreviated_ProgramName_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Budget Amount Check Required --></label>
+        <name>Core_MDF_Act_Budget_Amt_Chk_Reqd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank Document Hold Required - Countries --></label>
+        <name>Core_MDF_BankDocHold_Countries_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank Program Value --></label>
+        <name>Core_MDF_Bank_Program_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- BudgetTypeBasedSharing --></label>
+        <name>Core_MDF_BudgetTypeBasedSharing_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Camp Not Editable Fields When PFR Exists --></label>
+        <name>Core_MDF_CampNotEditFieldsWhenPFRExists__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Picklist Fields --></label>
+        <name>Core_MDF_Campaign_Picklist_Fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Text Fields --></label>
+        <name>Core_MDF_Campaign_Text_Fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Entitlement name --></label>
+        <name>Core_MDF_ClaimSubEntitlementName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign CAP Validation Required --></label>
+        <name>Core_MDF_Cmpgn_CAP_Validation_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Entitlement Name --></label>
+        <name>Core_MDF_Contact_Entitlement_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ignore External Allocation Sharing --></label>
+        <name>Core_MDF_Ignore_External_Alloc_Sharing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ignore External Budget Sharing --></label>
+        <name>Core_MDF_Ignore_External_Budget_Sharing__c</name>
+    </fields>
+    <fields>
+        <label><!-- VR Incentive Question Label Reference --></label>
+        <name>Core_MDF_InctQuest_Label_Ref__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node-Based Sharing Required --></label>
+        <name>Core_MDF_Node_Based_Sharing_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program ID --></label>
+        <name>Core_MDF_Program_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_MDF_Program_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Program Name --></label>
+        <name>Core_MDF_Technical_Program_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo-Based Sharing Required --></label>
+        <name>Geo_Based_Sharing_Required__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

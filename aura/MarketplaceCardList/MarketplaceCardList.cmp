@@ -1,0 +1,99 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+	<aura:attribute name="minHeight" type="Integer" default="0" />
+	<aura:attribute name="buttonFooterminHeight" type="Integer" default="0" />
+	<aura:attribute name="displayType" type="String" default="" />
+	<aura:attribute name="cardType" type="String" default="partner" />
+	<aura:attribute name="displayAttributes" type="boolean" default="true" />
+	<aura:attribute name="displayByPartner" type="boolean" default="true" />
+	<aura:attribute name="displayContactPartner" type="boolean" default="true" />
+	<aura:attribute name="displayCardDescription" type="boolean" default="false" />
+	<aura:attribute name="displayCardType" type="boolean" default="false" />
+
+    <aura:attribute name="onImageLoaded" type="Object" description="Internal"/>
+    
+	<aura:attribute name="cardHeightMatch" type="boolean" default="true" />
+	<aura:attribute name="showAddToCompare" type="boolean" default="true" />
+
+	<aura:attribute name="mediumDeviceOverride" type="string" default="6" />
+	<aura:attribute name="largeDeviceOverride" type="string" default="4" />
+
+    <aura:attribute name="rangeFirst" type="integer" />
+    <aura:attribute name="rangeLast" type="integer" />
+
+	<aura:attribute name="results" type="Object[]" />
+    
+    <aura:attribute name="mdaId" type="string" default="" />
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="offeringId" type="Id"/> -->
+    <aura:attribute name="Header" type="string" default="" />
+    
+    	<!-- Optional Card Attribute Count Limit -->
+	<aura:attribute name="enableAttributeCountLimit" type="boolean" default="true" description="Enable Product/Partner Card attribute count limit"/>
+	<aura:attribute name="attributeCountLimit" type="Integer" default="2" description="Product/Partner Card attribute count limit"/>
+    <aura:attribute name="imageResize" type="boolean" default ="false" />
+    
+    <lightning:layout class="cardList" pullToBoundary="medium" multipleRows="true" aura:id="resultsList" >
+        <aura:iteration items="{!v.results}" var="item">
+            <lightning:layoutItem size="12" class="{!join(' ', 'cardListItem', item.onlyVisibleToIntel ? 'showFooter' : '')}" mediumDeviceSize="{!v.displayType == 'card' ? v.mediumDeviceOverride: 12}" largeDeviceSize="{!v.displayType == 'card' ? v.largeDeviceOverride: 12}">
+                <aura:if isTrue="{! or(item.type == 'product', v.cardType == 'product') }">
+                    <c:MarketplaceProductCard
+                                              minHeight="{!v.cardHeightMatch ? v.minHeight : 0}"
+                                              buttonFooterminHeight="{!v.cardHeightMatch ? v.buttonFooterminHeight : 0}"
+                                              aura:id="card"
+                                              imageResize="true"
+                                              partner="{! item.partner }"
+                                              product="{! item }"
+                                              displayType="{!v.displayType}"
+                                              imageUrl="{! item.imageUrl}"
+                                              specImageUrl="{!item.specImageUrl}"                      
+                                              title="{! item.title}"
+                                              specTitle="{! item.specTitle}"
+                                              specTitleUrl = "{! item.specTitleUrl}"                      
+                                              displayAttributes="{!v.displayAttributes}"
+                                              displayByPartner="{! v.displayByPartner}"
+                                              displayContactPartner="{! item.isContactPartnerVisible}"
+                                              displayCardDescription="{! v.displayCardDescription}"
+                                              showType="{! v.displayCardType}"
+                                              description="{! item.description}"
+                                              descriptionList="{!item.specValues}"                      
+                                              attributes="{! item.attributes}"                      
+                                              showAddToCompare="{! v.showAddToCompare }"
+                                              onImageLoaded="{! v.onImageLoaded}"
+                                              dataObj="{!item}" 
+                                              mdaId="{!v.mdaId}" 
+                                              
+                                              Header="{!v.Header}" 
+                                              enableAttributeCountLimit="{! v.enableAttributeCountLimit}"
+                                              attributeCountLimit="{! v.attributeCountLimit}"
+                                              />
+                                              <!-- IPA2.0 + US TWC4497-1631
+                                              offeringId="{!v.offeringId}"   -->
+                    <aura:set attribute="else">
+                        <c:MarketplacePartnerCard
+                                                  minHeight="{!v.cardHeightMatch ? v.minHeight : 0}"
+                                                  buttonFooterminHeight="{!v.cardHeightMatch ? v.buttonFooterminHeight : 0}"
+                                                  aura:id="card"
+                                                  id="{! item.id}"
+                                                  partner="{! item }"
+                                                  displayType="{!v.displayType}"
+                                                  imageUrl="{! item.imageUrl}"
+                                                  title="{! item.name}"
+                                                  description="{! item.description}"
+                                                  displayAttributes="{!v.displayAttributes}"
+                                                  displayContactPartner="{! item.isContactPartnerVisible}"
+                                                  displayCardDescription="{! v.displayCardDescription}"
+                                                  showType="{! v.displayCardType}"
+                                                  attributes="{! item.attributes}"
+                                                  dataObj="{!item}"
+                                                  onImageLoaded="{! v.onImageLoaded}"
+                                                  enableAttributeCountLimit="{! v.enableAttributeCountLimit}"
+                                                  attributeCountLimit="{! v.attributeCountLimit}" 
+                                                  />
+                    </aura:set>
+                </aura:if>
+            </lightning:layoutItem>
+        </aura:iteration>
+    </lightning:layout>
+    
+
+</aura:component>

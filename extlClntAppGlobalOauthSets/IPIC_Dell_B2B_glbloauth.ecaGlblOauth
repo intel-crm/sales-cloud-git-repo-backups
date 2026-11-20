@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIIG8DCCBdigAwIBAgIQDE9hYlQjD8rCsEX8AmnQozANBgkqhkiG9w0BAQsFADBZ
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMTMwMQYDVQQDEypE
+aWdpQ2VydCBHbG9iYWwgRzIgVExTIFJTQSBTSEEyNTYgMjAyMCBDQTEwHhcNMjYw
+NzA5MDAwMDAwWhcNMjcwMTIzMjM1OTU5WjBvMQswCQYDVQQGEwJVUzEOMAwGA1UE
+CBMFVGV4YXMxEzARBgNVBAcTClJvdW5kIFJvY2sxHzAdBgNVBAoTFkRlbGwgVGVj
+aG5vbG9naWVzIEluYy4xGjAYBgNVBAMTEWFwaWludGVsLmRlbGwuY29tMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAow4vKdjM3SVpne9EoFjA6Q03gXNc
+5HiZSGPGkKoIugwZpCRHLxcmMmb2pkzLd9vsBcd/WLtbWDzXcUbrztcpOv4/Qy/9
+gW39DkV4DRKFB7/loXJVHAzFNFCOqadJjJPpwAhnbO/X85yLjyqF2m7ws7aXXln5
+Tfa3S70RHY18LEQdJAUmgJdOyq5k8etPOIkh5e8LQamIR7T51CjtTkE9vUxpsHj0
+PJ01xsxzSCRfDdNYl7khzE7BFd3yWh3YGgIuXSsU+px64fPxeQtcMRrdYwcbXWRt
+8vFMwgwYDYxeO9Dh3x1s7AX8YwSMkGpAUCfi6LL9pXQVi/P5R4UpRUKOvwIDAQAB
+o4IDnDCCA5gwHwYDVR0jBBgwFoAUdIWAwGbH3zfez70pN6oDHb7tzRcwHQYDVR0O
+BBYEFM5BqLGoUDYzT7pOO3C8c6bj1/eJMDQGA1UdEQQtMCuCEWFwaWludGVsLmRl
+bGwuY29tgghkZWxsLmNvbYIMZGVsbHRlYW0uY29tMD4GA1UdIAQ3MDUwMwYGZ4EM
+AQICMCkwJwYIKwYBBQUHAgEWG2h0dHA6Ly93d3cuZGlnaWNlcnQuY29tL0NQUzAO
+BgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwgZ8GA1UdHwSBlzCB
+lDBIoEagRIZCaHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0R2xvYmFs
+RzJUTFNSU0FTSEEyNTYyMDIwQ0ExLTEuY3JsMEigRqBEhkJodHRwOi8vY3JsNC5k
+aWdpY2VydC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBDQTEt
+MS5jcmwwgYcGCCsGAQUFBwEBBHsweTAkBggrBgEFBQcwAYYYaHR0cDovL29jc3Au
+ZGlnaWNlcnQuY29tMFEGCCsGAQUFBzAChkVodHRwOi8vY2FjZXJ0cy5kaWdpY2Vy
+dC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBDQTEtMS5jcnQw
+DAYDVR0TAQH/BAIwADCCAX8GCisGAQQB1nkCBAIEggFvBIIBawFpAHYATGPcmOWc
+HauI9h6KPd6uj6tEozd7X5uUw/uhnPzBviYAAAGfRnC+kwAABAMARzBFAiEAvb+i
+Hl2MEP6I2h0ZJJdkd+VeWvFQ+4cYbJwHfmbUu/ECIBFY1ghXxAZLd6ywRahJbs91
+YEUux5Z7O4udul6XPPt9AHYA1tWNqdAXU/NqSqDHV0kCr+vH3CzTjNn3ZMgMiRke
+nwIAAAGfRnC+pwAABAMARzBFAiEAnErTeOW3mtv0n8f7bPWQYtMThzTBLSfuXP1R
+ivuKGGsCIFjqK2da3fkAmzbCYfAD7IvIu45pVCDHNlafAZgXh48TAHcAHJ9oLOn6
+8EVpUPgbloqH3dsyENhM5siy44JSSsTPWZ8AAAGfRnC/WgAABAMASDBGAiEAnEtE
+C5oFjzAH36QbRkhvepNf2hL01JQe5Fhm8036404CIQCVIwoY9fpc/ujrTPQqsoC4
+zDggDZ+l9UXtsvj0awj8eDANBgkqhkiG9w0BAQsFAAOCAQEArsIaaMc/kgDf0AvS
+In3XHGqtnRgZqKHU60f4ddcLD777KyHAvZkRPAeFDk4b4XZqONid7y/q5c45E/jj
+oqBU63NqfgWgX9ZUi6Y0PS2LcRr3AZL35i9gwd+blAKhYHRTd6TLbh9c0ukHHnwX
+lE+qj1QICnpscCtbvDCt4ofrB/CHuImg6uoE2GM4VVkWOe1X8T6C+tQcnNp45HhP
+qu1VrkCkcR6mq117nkvEfiDb6Y6oA7ZZIrMVpy5licfCUzUEIClKDoCbgB3Stash
+V0OckVUu+cabmwBvYHJaF0qz7nuo45jnRbAcxPEmp082N+4Clke+n5OyqixSrski
+5uuj6w==</certificate>
+    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lAselY3ULM7__DNCS3Sqb.Xto1vi8AQN6n9xUTc0zCfstgr.hegoqSxZt9t</consumerKey>
+    <externalClientApplication>IPIC_Dell_B2B</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>IPIC_Dell_B2B_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

@@ -1,0 +1,15 @@
+<template>
+    <div class="container-wrap">
+        <div class="column main">
+            <div class="slds-m-bottom_x-small eyebrow color-white">{eyebrow}</div>
+            <h1 class="slds-m-bottom_large color-white h2">{title}</h1>
+            <p class="color-white">{description}</p>
+            <template if:true={showpartnerbtn}>
+                <div class="home-btn"><a class="slds-button slds-button_outline-brand" href={label.IPASecureHomepageLink}>{label.IPAPartnerHomeBtn}</a></div>
+            </template>            
+        </div>
+        <div class="column tiles">
+            <slot name="tiles" onmarkstepcomplete={markstepcomplete}></slot>
+        </div>
+    </div>
+</template>

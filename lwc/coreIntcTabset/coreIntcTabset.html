@@ -1,0 +1,32 @@
+<template>
+    
+  <div class="tabset-nav"
+    role="tablist"
+    aria-label={ariaLabel}
+    data-stack-mobile={stackMobile}>
+      <div class="tabset-prev-paddle tabset-nav-slider-button slds-text-align_center slds-hide fa-angle-left color-white"
+          onclick={handlePaddleClick}
+          data-direction="prev">
+      </div>
+      <div class="tabset-nav-inner">
+          <template for:each={tabs} for:item="tab" for:index="idx">
+              <a key={tab.key} role="tab" data-tab={tab.key} data-idx={idx} data-is-active={tab.isActive} data-link={tab.link}
+                  aria-label={tab.label} aria-selected={tab.isActive} aria-controls={name}
+                  tabindex={tab.tabIndex}
+                  onkeydown={handleTabChangeAccessibility} onclick={handleChangeTab}
+                  class="tabset-nav-item slds-p-horizontal_small">
+                  <span>{tab.label}</span>
+              </a>
+          </template>
+      </div>
+      <div class="tabset-next-paddle tabset-nav-slider-button slds-text-align_center slds-hide fa-angle-right color-white"
+          onclick={handlePaddleClick}
+          data-direction="next">
+      </div>
+  </div>
+  
+  <div class="tabset-tab-content">
+      <slot onslotchange={handleSlotChange}></slot>
+  </div>
+
+</template>

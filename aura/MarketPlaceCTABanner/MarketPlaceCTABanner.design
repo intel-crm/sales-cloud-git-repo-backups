@@ -1,0 +1,8 @@
+<design:component Label="Marketplace CTA Banner">
+  <design:attribute name="theme" label="Theme" datasource="primary,dark,light" default="light"/>
+  <design:attribute name="heading" label="Title" />
+  <design:attribute name="subHeading" label="Body" />
+  <design:attribute name="ctaLabel" label="CTA Label" />
+  <design:attribute name="ctaURL" label="CTA URL - Not Used, use label PMP_Partner_Program_Url instead" />
+  <design:attribute name="ctaURLNewTab" label="Open URL in New Tab" />
+</design:component>

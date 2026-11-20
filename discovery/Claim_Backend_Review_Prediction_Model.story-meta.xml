@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryStory xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <application>CoMarketing</application>
+    <autopilot>Disabled</autopilot>
+    <classificationThreshold>0.724</classificationThreshold>
+    <label>Claim Backend Review Prediction Model</label>
+    <outcome>
+        <failureValue>LOW RISK</failureValue>
+        <field>Core_MDF_Claim_Risk_Level</field>
+        <goal>Maximize</goal>
+        <label>Risk Level</label>
+        <successValue>HIGH RISK</successValue>
+        <type>Text</type>
+    </outcome>
+    <sourceContainer>Core_MDF_Claim_BackendReview_Prediction_Dataset</sourceContainer>
+    <sourceType>AnalyticsDataset</sourceType>
+</DiscoveryStory>

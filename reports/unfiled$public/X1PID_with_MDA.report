@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>Core_Account_Group_Member__c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Core_Account_Group_Member__c$Name</field>
+        </columns>
+        <columns>
+            <field>Core_Account_Group_Member__c$LastModifiedDate</field>
+        </columns>
+        <columns>
+            <field>Core_Account_Group_Member__c$Core_Intel_Account_Id__c</field>
+        </columns>
+        <columns>
+            <field>Core_Account_Group_Member__c$Core_Partner_Account_Id__c</field>
+        </columns>
+        <columns>
+            <field>Core_Account_Group_Member__c$Id</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Core_Account_Group_Member__c$Core_MDA_Ind__c</field>
+        </columns>
+        <format>Tabular</format>
+        <name>One Partners block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>One_Partners__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Core_Account_Group_Member__c$CreatedDate</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Core_Account_Group_Member__c</joinTable>
+    </blockInfo>
+    <description>Report showing all IPA accounts including MDA flag</description>
+    <format>MultiBlock</format>
+    <name>1PID with MDA</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>One_Partners__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

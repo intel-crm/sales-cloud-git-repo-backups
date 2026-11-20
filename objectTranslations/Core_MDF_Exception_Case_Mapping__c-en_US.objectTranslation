@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Exception Case Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Exception Case Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Case Id --></label>
+        <name>Core_MDF_Case_Id_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Name --></label>
+        <name>Core_MDF_Case_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Standard Status --></label>
+        <name>Core_MDF_Case_Standard_Status_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Core_MDF_Case_id__c</name>
+        <relationshipLabel><!-- Exceptions Applied --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Status --></label>
+        <name>Core_MDF_Case_status_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim_id__c</name>
+        <relationshipLabel><!-- Exception Case Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim name --></label>
+        <name>Core_MDF_Claim_name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Name --></label>
+        <name>Core_MDF_Exception_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Number --></label>
+        <name>Core_MDF_Exception_Number_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Reason --></label>
+        <name>Core_MDF_Exception_Reason_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception --></label>
+        <name>Core_MDF_Exception_id__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Exception Status --></label>
+        <name>Core_MDF_Exception_status_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_txt__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot update Exception Case Mapping records for a Case. --></errorMessage>
+        <name>Core_MDF_Cannot_UpdateECM_IF_Case_Closed</name>
+    </validationRules>
+</CustomObjectTranslation>

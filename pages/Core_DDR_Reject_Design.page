@@ -1,0 +1,13 @@
+<apex:page cspHeader="true" standardController="Core_Design_Registration__c" >
+
+<flow:interview finishLocation="/{!Core_Design_Registration__c.Id}" buttonLocation="bottom" name="Reject_Design_Registration">
+    <apex:param name="vaDRID" value="{!Core_Design_Registration__c.Id}" />
+</flow:interview>
+
+<apex:form >
+   <div align="center" draggable="false" >
+   <apex:commandButton value="Cancel" action="{!cancel}"/ >
+   </div>
+</apex:form>
+
+</apex:page>

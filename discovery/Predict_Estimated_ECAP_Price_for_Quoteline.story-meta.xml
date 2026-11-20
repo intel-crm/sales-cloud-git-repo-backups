@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryStory xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <application>IQR_Pricing_Analytics</application>
+    <autopilot>Disabled</autopilot>
+    <label>Predict Estimated ECAP Price for Quoteline</label>
+    <outcome>
+        <field>Pricing_ECAP_Price_Amt__c</field>
+        <goal>Maximize</goal>
+        <label>Approved ECAP Price</label>
+        <type>Number</type>
+    </outcome>
+    <sourceContainer>Quote_Line_Records_for_Model</sourceContainer>
+    <sourceType>AnalyticsDataset</sourceType>
+</DiscoveryStory>

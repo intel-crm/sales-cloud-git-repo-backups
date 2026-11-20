@@ -1,0 +1,6 @@
+<design:component>
+  <design:attribute name="debugMode" label="Debug Mode (skip redirect, log url)" />
+	<design:attribute name="searchType" label="Search Type" datasource="partner,product" />
+  <design:attribute name="showSeparator" label="Show Separator Beneath Component" />
+  <design:attribute name="showSeparatorTop" label="Show Separator on Top of Component" />
+</design:component>

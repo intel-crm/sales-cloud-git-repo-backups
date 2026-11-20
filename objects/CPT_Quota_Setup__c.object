@@ -1,0 +1,2663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>CPT_Quota_Setup_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CPT_Quota_Setup_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CPT_Quota_Setup_Compact_Layout</fullName>
+        <fields>CPT_Employee_Name__c</fields>
+        <fields>CPT_Employee_WWID__c</fields>
+        <fields>CPT_Manager__c</fields>
+        <fields>CPT_Plan_Name__c</fields>
+        <fields>OwnerId</fields>
+        <fields>LastModifiedById</fields>
+        <label>CPT Quota Setup Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A Quota Setup Record is created for each Commissionable Employee for a given Quota Period. This is where the Manager will enter the Assignments and Quota Numbers for their Employees.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>CPT_Account_Breakout__c</fullName>
+        <description>It&apos;s used for &quot;DCAI Sapphire Rapids Billings Volume&quot; and &quot;Sapphire Rapids Next Wave &amp; Comms Consumption Volume&quot; Sales OKRs</description>
+        <inlineHelpText>List Account(s) assignment for “DCAI Sapphire Rapids Billings Volume #” Sales OKR.</inlineHelpText>
+        <label>Account Breakout</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_All_Assigned__c</fullName>
+        <label>BR-All % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_All_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR-All Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_BR_All_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_BR_All__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Allocated__c</fullName>
+        <formula>(
+VALUE( SUBSTITUTE(TEXT( CPT_BR_CCG_Assigned__c ), &apos;%&apos;, &apos;&apos;)) +
+VALUE( SUBSTITUTE(TEXT( CPT_BR_DCAI_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+
+VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;)) 
+)/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BR (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Billings_Revenue__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <label>BR (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_BR_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_BR_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BR (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_CCG_Assigned__c</fullName>
+        <label>BR-CCG % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_CCG_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR-CCG Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_BR_CCG_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_BR_CCG__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_Assigned__c</fullName>
+        <label>BR-DCG % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_DAIS_Assigned__c</fullName>
+        <label>BR-DCAI Accelerator % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_DAIS_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR-DCAI Accelerator Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_BR_DCAI_DAIS_Target__c</summarizedField>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_DCAI_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR-DCG Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_BR_DCAI_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_BR_DCAI__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Intel_AI_PC_Assigned__c</fullName>
+        <label>BR-Intel AI PC % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_Intel_AI_PC_Quota__c</fullName>
+        <label>BR-Intel AI PC Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_BR_Intel_AI_PC_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_BR_Intel_AI_PC__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_NEX_Ethernet_Assigned__c</fullName>
+        <label>BR-DCAI Ethernet % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_NEX_Ethernet_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>BR-DCAI Ethernet Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_BR_NEX_Ethernet_Target__c</summarizedField>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_BR_SATG_Assigned__c</fullName>
+        <label>BR-SATG Federal % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Allocated__c</fullName>
+        <formula>(
+VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+VALUE( SUBSTITUTE(TEXT( CPT_CR_Retail_Assigned__c ), &apos;%&apos;, &apos;&apos;))+VALUE( SUBSTITUTE(TEXT( CPT_CR_Partner_Assigned__c ), &apos;%&apos;, &apos;&apos;))
+)/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CR (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Consumption_Revenue__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CR (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_CR_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_CR_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CR (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Assigned__c</fullName>
+        <label>CR-CCG % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_CCG_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>CR-CCG Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_CR_CCG_Target_V2__c</summarizedField>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_OEM_Assigned__c</fullName>
+        <label>CR - OEM % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_OEM_Quota__c</fullName>
+        <label>CR - OEM Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_CR_OEM_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_CR_OEM__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Partner_Assigned__c</fullName>
+        <label>CR - Partner % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Partner_Quota__c</fullName>
+        <label>CR - Partner Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_CR_Partner_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_CR_Partner__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Retail_Assigned__c</fullName>
+        <label>CR - Retail % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_CR_Retail_Quota__c</fullName>
+        <label>CR - Retail Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_CR_Retail_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_CR_Retail__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Complete__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Manager will check this box when planning is completed. Validation rule will check for the completeness of the data when this checkbox is selected.</description>
+        <inlineHelpText>If checked, system will validate the completeness of the data while updates are saved.</inlineHelpText>
+        <label>Complete</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Effective_End__c</fullName>
+        <description>Effective end formula field to derive end date for the setup.[10-Dec-25]</description>
+        <formula>CASE(
+    LEFT(TEXT(CPT_Effective_Month__c), 3),
+    &quot;Jan&quot;, DATE(2026, 12, 31),
+    &quot;Feb&quot;, DATE(2026, 12, 31),
+    &quot;Mar&quot;, DATE(2026, 12, 31),
+    &quot;Apr&quot;, DATE(2026, 12, 31),
+    &quot;May&quot;, DATE(2026, 12, 31),
+    &quot;Jun&quot;, DATE(2026, 12, 31),
+    &quot;Jul&quot;, DATE(2026, 12, 31),
+    &quot;Aug&quot;, DATE(2026, 12, 31),
+    &quot;Sep&quot;, DATE(2026, 12, 31),
+    &quot;Oct&quot;, DATE(2026, 12, 31),
+    &quot;Nov&quot;, DATE(2026, 12, 31),
+    &quot;Dec&quot;, DATE(2026, 12, 31),
+    DATE(2026, 12, 31)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Effective_End</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Effective_Month__c</fullName>
+        <inlineHelpText>For employees not active at the beginning of the period, please indicate the effective month. [10-Dec-25]</inlineHelpText>
+        <label>Effective Month</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Jan 2026</fullName>
+                    <default>true</default>
+                    <label>Jan 2026</label>
+                </value>
+                <value>
+                    <fullName>Feb 2026</fullName>
+                    <default>false</default>
+                    <label>Feb 2026</label>
+                </value>
+                <value>
+                    <fullName>Mar 2026</fullName>
+                    <default>false</default>
+                    <label>Mar 2026</label>
+                </value>
+                <value>
+                    <fullName>Apr 2026</fullName>
+                    <default>false</default>
+                    <label>Apr 2026</label>
+                </value>
+                <value>
+                    <fullName>May 2026</fullName>
+                    <default>false</default>
+                    <label>May 2026</label>
+                </value>
+                <value>
+                    <fullName>Jun 2026</fullName>
+                    <default>false</default>
+                    <label>Jun 2026</label>
+                </value>
+                <value>
+                    <fullName>Jul 2026</fullName>
+                    <default>false</default>
+                    <label>Jul 2026</label>
+                </value>
+                <value>
+                    <fullName>Aug 2026</fullName>
+                    <default>false</default>
+                    <label>Aug 2026</label>
+                </value>
+                <value>
+                    <fullName>Sep 2026</fullName>
+                    <default>false</default>
+                    <label>Sep 2026</label>
+                </value>
+                <value>
+                    <fullName>Oct 2026</fullName>
+                    <default>false</default>
+                    <label>Oct 2026</label>
+                </value>
+                <value>
+                    <fullName>Nov 2026</fullName>
+                    <default>false</default>
+                    <label>Nov 2026</label>
+                </value>
+                <value>
+                    <fullName>Dec 2026</fullName>
+                    <default>false</default>
+                    <label>Dec 2026</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Effective_Start__c</fullName>
+        <description>Effective end formula field to derive start date for the setup.[10-Dec-25]</description>
+        <formula>CASE( 
+LEFT(TEXT(CPT_Effective_Month__c), 3), &quot;Jan&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 1, 1), &quot;Feb&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 2, 1), &quot;Mar&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 3, 1), &quot;Apr&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 4, 1), &quot;May&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 5, 1), &quot;Jun&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 6, 1), &quot;Jul&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 7, 1), &quot;Aug&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 8, 1), &quot;Sep&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 9, 1), &quot;Oct&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 10, 1), &quot;Nov&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 11, 1), &quot;Dec&quot;, 
+DATE(VALUE(MID(TEXT(CPT_Effective_Month__c), 5, 4)), 12, 1), DATE(1900, 1, 1) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Effective_Start</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Employee_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Full_Name__c</formula>
+        <label>Employee Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Employee_WWID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Employee_WWID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Employee WWID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Employee__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Employee</label>
+        <referenceTo>CPT_Employee__c</referenceTo>
+        <relationshipLabel>Quota Setup</relationshipLabel>
+        <relationshipName>Quota_Setup</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Inaccurate_Data_Comments__c</fullName>
+        <inlineHelpText>Provide your comments for Commission admin to review and take the corrective action.</inlineHelpText>
+        <label>Comments</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Inaccurate_Data__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When data is incorrect, manager will check this box and provide the comments for Commission admin to review and take the corrective action.</description>
+        <inlineHelpText>When data is incorrect, check this box and provide the comments for Commission admin to review and take the corrective action.</inlineHelpText>
+        <label>Inaccurate Data</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Job_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Employee__r.CPT_Job_Role__c)</formula>
+        <label>Job Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_KPI_Name1__c</fullName>
+        <description>First KPI linked to Objective 1. Required if any KPI is tracked and must be filled before KPI Name 2 or 3.</description>
+        <label>KPI Name 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_ObjectiveKPIs</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_KPI_Name2__c</fullName>
+        <description>Second KPI linked to Objective 2. May be completed only after KPI Name 1.</description>
+        <label>KPI Name 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_ObjectiveKPIs</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_KPI_Name3__c</fullName>
+        <description>Third KPI linked to Objective 3. May be completed only after KPI Name 2.</description>
+        <label>KPI Name 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_ObjectiveKPIs</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Locked_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(  CPT_Employee__r.CPT_Quota_Period__r.CPT_Locked_Status__c  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Locked Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Manager_WWID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Manager__r.Core_Federation_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Manager WWID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( CPT_Employee__r.CPT_Manager__c ), &apos;&apos;, ( CPT_Employee__r.CPT_Manager__r.FirstName + &apos; &apos; + CPT_Employee__r.CPT_Manager__r.LastName ))</formula>
+        <label>Manager Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Allocated__c</fullName>
+        <formula>IF(CPT_MarVol_Subelements_Count__c &gt;= 2, 0.3, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_MarginVolume__c ), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_MarVol_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_MarVol_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_CCG_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(CPT_MarVol_Margin_CCG__c, CPT_MarVol_Subelements_Count__c &gt; 0),
+TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)) &amp; &apos;%&apos;,
+&apos;0%&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol - Margin CCG % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_CCG_Quota__c</fullName>
+        <label>MarVol - Margin CCG Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Margin_CCG_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_CCG__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_CCG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select this if you want to include CCG margin target. Must be selected with at least one Volume CCG field.</inlineHelpText>
+        <label>MarVol - Margin CCG</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_DCG_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(CPT_MarVol_Margin_DCG__c, CPT_MarVol_Subelements_Count__c &gt; 0),
+TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)) &amp; &apos;%&apos;,
+&apos;0%&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol - Margin DCG % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_DCG_Quota__c</fullName>
+        <label>MarVol - Margin DCG Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Margin_DCG_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_DCG__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_DCG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select this if you want to include DCG margin target. Must be selected together with NextGen DCG GNR.</inlineHelpText>
+        <label>MarVol - Margin DCG</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_CCG_LNL_Quota__c</fullName>
+        <label>MarVol - Next Gen CCG LNL Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_LNL__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_CCG_LNL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select this if you want to include CCG NextGen LNL volume target. Requires Margin CCG to also be selected.</inlineHelpText>
+        <label>MarVol - Next Gen CCG LNL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_CCG_PTL_Quota__c</fullName>
+        <label>MarVol - Next Gen CCG PTL Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_PTL__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_CCG_PTL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select this if you want to include CCG NextGen PTL volume target. Requires Margin CCG to also be selected.</inlineHelpText>
+        <label>MarVol - Next Gen CCG PTL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_CCG_WCL_Quota__c</fullName>
+        <label>MarVol - Next Gen CCG WCL Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_CCG_WCL__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_CCG_WCL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select this if you want to include CCG NextGen WCL volume target. Requires Margin CCG to also be selected.</inlineHelpText>
+        <label>MarVol - Next Gen CCG WCL</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_DCG_GNR_Quota__c</fullName>
+        <label>MarVol - Next Gen DCG GNR Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_MarVol_Next_Gen_DCG_GNR__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_NextGen_DCG_GNR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Select this if you want to include DCG NextGen GNR volume target. Must be selected together with Margin DCG.</inlineHelpText>
+        <label>MarVol - Next Gen DCG GNR</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(CPT_MarVol_NextGen_CCG_LNL__c, CPT_MarVol_Subelements_Count__c &gt; 0),
+TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)) &amp; &apos;%&apos;,
+&apos;0%&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol - Next Gen CCG LNL % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVol_Subelements_Count__c &gt; 0),
+TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)) &amp; &apos;%&apos;,
+&apos;0%&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol - Next Gen CCG PTL % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(CPT_MarVol_NextGen_CCG_WCL__c , CPT_MarVol_Subelements_Count__c &gt; 0),
+TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)) &amp; &apos;%&apos;,
+&apos;0%&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol - Next Gen CCG WCL % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+    AND(CPT_MarVol_NextGen_DCG_GNR__c, CPT_MarVol_Subelements_Count__c &gt; 0),
+    TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)) &amp; &apos;%&apos;,
+    &apos;0%&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol - Next Gen DCG GNR % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Subelements_Count__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CPT_MarVol_Margin_CCG__c, 1, 0) + IF(CPT_MarVol_Margin_DCG__c, 1, 0) + IF(CPT_MarVol_NextGen_CCG_LNL__c, 1, 0) + IF(CPT_MarVol_NextGen_CCG_PTL__c, 1, 0) + IF(CPT_MarVol_NextGen_CCG_WCL__c, 1, 0) + IF(CPT_MarVol_NextGen_DCG_GNR__c, 1, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MarVol Subelements Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Notes__c</fullName>
+        <label>Notes</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Overlay__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Managers to identify if a role is an Overlay and skip level managers can sum up all the Non-Overlay quotas and assign to managers.</description>
+        <inlineHelpText>Select &quot;Overlay&quot; if a role is an overlay or duplicate quota (i.e., technical seller). This will exclude quota from Manager roll-up.</inlineHelpText>
+        <label>Overlay</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Persona_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Persona_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Persona ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Plan_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Plan Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan_Type__c</fullName>
+        <description>Indicates whether the Plan assigned is for Seller or Manager</description>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Plan_Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Plan Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Plan__c</fullName>
+        <description>Picklist values to be controlling on STG. [10-Dec-2025]</description>
+        <label>Plan</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>100</fullName>
+                    <default>false</default>
+                    <label>100</label>
+                </value>
+                <value>
+                    <fullName>101</fullName>
+                    <default>false</default>
+                    <label>101</label>
+                </value>
+                <value>
+                    <fullName>202</fullName>
+                    <default>false</default>
+                    <label>202</label>
+                </value>
+                <value>
+                    <fullName>300</fullName>
+                    <default>false</default>
+                    <label>300</label>
+                </value>
+                <value>
+                    <fullName>301</fullName>
+                    <default>false</default>
+                    <label>301</label>
+                </value>
+                <value>
+                    <fullName>305</fullName>
+                    <default>false</default>
+                    <label>305</label>
+                </value>
+                <value>
+                    <fullName>403</fullName>
+                    <default>false</default>
+                    <label>403</label>
+                </value>
+                <value>
+                    <fullName>600</fullName>
+                    <default>false</default>
+                    <label>600</label>
+                </value>
+                <value>
+                    <fullName>601</fullName>
+                    <default>false</default>
+                    <label>601</label>
+                </value>
+                <value>
+                    <fullName>602</fullName>
+                    <default>false</default>
+                    <label>602</label>
+                </value>
+                <value>
+                    <fullName>800</fullName>
+                    <default>false</default>
+                    <label>800</label>
+                </value>
+                <value>
+                    <fullName>801</fullName>
+                    <default>false</default>
+                    <label>801</label>
+                </value>
+                <value>
+                    <fullName>802</fullName>
+                    <default>false</default>
+                    <label>802</label>
+                </value>
+                <value>
+                    <fullName>102</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>102</label>
+                </value>
+                <value>
+                    <fullName>200</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>200</label>
+                </value>
+                <value>
+                    <fullName>201</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>201</label>
+                </value>
+                <value>
+                    <fullName>400</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>400</label>
+                </value>
+                <value>
+                    <fullName>401</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>401</label>
+                </value>
+                <value>
+                    <fullName>402</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>402</label>
+                </value>
+                <value>
+                    <fullName>404</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>404</label>
+                </value>
+                <value>
+                    <fullName>500</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>500</label>
+                </value>
+                <value>
+                    <fullName>501</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>501</label>
+                </value>
+                <value>
+                    <fullName>502</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>502</label>
+                </value>
+                <value>
+                    <fullName>700</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>700</label>
+                </value>
+                <value>
+                    <fullName>900</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>900</label>
+                </value>
+                <value>
+                    <fullName>BD-AND-BD-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>BD-AND-BD-MGMT</label>
+                </value>
+                <value>
+                    <fullName>COMMS-NEXT-WAVE-CLOUD-SERVICE-PROVIDER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>COMMS-NEXT-WAVE-CLOUD-SERVICE-PROVIDER</label>
+                </value>
+                <value>
+                    <fullName>COMMS-NEXTWAVE-SP-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>COMMS-NEXTWAVE-SP-MGMT</label>
+                </value>
+                <value>
+                    <fullName>COUNTRY-MULTI-TEAM-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>COUNTRY-MULTI-TEAM-MGMT</label>
+                </value>
+                <value>
+                    <fullName>CSP-SDM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CSP-SDM</label>
+                </value>
+                <value>
+                    <fullName>DAIS AI Accelerator</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DAIS AI Accelerator</label>
+                </value>
+                <value>
+                    <fullName>DIRECT-BUILDER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DIRECT-BUILDER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>DISTI</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DISTI</label>
+                </value>
+                <value>
+                    <fullName>DISTRIBUTOR-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DISTRIBUTOR-MGMT</label>
+                </value>
+                <value>
+                    <fullName>END-USER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>END-USER</label>
+                </value>
+                <value>
+                    <fullName>END-USER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>END-USER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>END-USER-SP-MGMT-PARTNER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>END-USER-SP-MGMT-PARTNER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>HYBRID-END-USER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HYBRID-END-USER</label>
+                </value>
+                <value>
+                    <fullName>INDIRECT-BUILDER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INDIRECT-BUILDER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>MULTI-PARTNER-WITH-DISTI</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>MULTI-PARTNER-WITH-DISTI</label>
+                </value>
+                <value>
+                    <fullName>NEW-PARTNER-ACQUISITION</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NEW-PARTNER-ACQUISITION</label>
+                </value>
+                <value>
+                    <fullName>NSP-NSI</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSP-NSI</label>
+                </value>
+                <value>
+                    <fullName>NSP-NSI-PARTNER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSP-NSI-PARTNER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>OEM-SDM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM-SDM</label>
+                </value>
+                <value>
+                    <fullName>OEM-SDM-CONSUMER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM-SDM-CONSUMER</label>
+                </value>
+                <value>
+                    <fullName>OEM-SDM-CONSUMER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM-SDM-CONSUMER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>OEM-SDM-CONSUMPTION</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM-SDM-CONSUMPTION</label>
+                </value>
+                <value>
+                    <fullName>OEM-SDM-CONSUMPTION-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM-SDM-CONSUMPTION-MGMT</label>
+                </value>
+                <value>
+                    <fullName>PARTNER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PARTNER</label>
+                </value>
+                <value>
+                    <fullName>PARTNER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PARTNER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>PSG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PSG</label>
+                </value>
+                <value>
+                    <fullName>RETAIL</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>RETAIL</label>
+                </value>
+                <value>
+                    <fullName>RETAIL-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>RETAIL-MGMT</label>
+                </value>
+                <value>
+                    <fullName>SALES-BILLINGS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SALES-BILLINGS</label>
+                </value>
+                <value>
+                    <fullName>SALES-SEMI-NET</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SALES-SEMI-NET</label>
+                </value>
+                <value>
+                    <fullName>SELECT-NSP</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SELECT-NSP</label>
+                </value>
+                <value>
+                    <fullName>SELECT-NSP-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SELECT-NSP-MGMT</label>
+                </value>
+                <value>
+                    <fullName>SELECT-PARTNER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SELECT-PARTNER</label>
+                </value>
+                <value>
+                    <fullName>SELECT-PARTNER-MGMT</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SELECT-PARTNER-MGMT</label>
+                </value>
+                <value>
+                    <fullName>SMG Global Billings Revenue</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SMG Global Billings Revenue</label>
+                </value>
+                <value>
+                    <fullName>STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>STG</label>
+                </value>
+                <value>
+                    <fullName>SW/SaaS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SW/SaaS</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL-BILLINGS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL-BILLINGS</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL-SEMI-NET</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL-SEMI-NET</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Platform_Job__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Employee__r.CPT_Platform_Job__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Platform Job</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Quota_Manager_Plan__c</fullName>
+        <description>To access whether the selected plan is a Manager Plan or not</description>
+        <formula>CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Manager_Plan__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Manager Plan</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Quota_Period__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Quota_Period__r.CPT_Quota_Period__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Quota Period</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Group__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Sales_Group__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Group</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR_Allocated__c</fullName>
+        <formula>IF(ISPICKVAL(CPT_Sales_OKR__c, &quot;&quot;), 0, CPT_Sales_OKR_Allowed__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales OKR (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Sales_OKR__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales OKR (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Sales_OKR_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_Sales_OKR_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales OKR (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR_Objective1__c</fullName>
+        <description>Capture the Sales OKR Objective 1</description>
+        <inlineHelpText>Maximum 1000 characters allowed.</inlineHelpText>
+        <label>Sales OKR Objective 1</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR_Objective2__c</fullName>
+        <description>Capture the Sales OKR Objective 2</description>
+        <inlineHelpText>Maximum 1000 characters allowed.</inlineHelpText>
+        <label>Sales OKR Objective 2</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR_Objective3__c</fullName>
+        <description>Capture the Sales OKR Objective 3</description>
+        <inlineHelpText>Maximum 1000 characters allowed.</inlineHelpText>
+        <label>Sales OKR Objective 3</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_OKR__c</fullName>
+        <inlineHelpText>Sales OKR for Q1 Only.</inlineHelpText>
+        <label>Sales OKR</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sales OKR</fullName>
+                    <default>true</default>
+                    <label>Sales OKR Q1</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Org__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Sales_Org__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Org</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Team_Goal_Allocated__c</fullName>
+        <formula>IF(ISPICKVAL(CPT_Sales_Team_Goal__c, &quot;&quot;), 0, CPT_Sales_Team_Goal_Allowed__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Team Goal (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Team_Goal_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Sales_Team_Goal__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Team Goal (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Team_Goal_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Sales_Team_Goal_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_Sales_Team_Goal_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Team Goal (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Team_Goal__c</fullName>
+        <description>Picklist options to select STG values dependent on Plan. [10-Dec-2025]</description>
+        <label>Sales Team Goal</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>CPT_Plan__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AMR STG</fullName>
+                    <default>false</default>
+                    <label>AMR STG</label>
+                </value>
+                <value>
+                    <fullName>APJ STG</fullName>
+                    <default>false</default>
+                    <label>APJ STG</label>
+                </value>
+                <value>
+                    <fullName>AUTOMOTIVE STG</fullName>
+                    <default>false</default>
+                    <label>AUTOMOTIVE STG</label>
+                </value>
+                <value>
+                    <fullName>EMEA STG</fullName>
+                    <default>false</default>
+                    <label>EMEA STG</label>
+                </value>
+                <value>
+                    <fullName>GOVERNMENT STG</fullName>
+                    <default>false</default>
+                    <label>GOVERNMENT STG</label>
+                </value>
+                <value>
+                    <fullName>INDIA STG</fullName>
+                    <default>false</default>
+                    <label>INDIA STG</label>
+                </value>
+                <value>
+                    <fullName>PRC STG</fullName>
+                    <default>false</default>
+                    <label>PRC STG</label>
+                </value>
+                <value>
+                    <fullName>Altera APJ STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera APJ STG</label>
+                </value>
+                <value>
+                    <fullName>Altera Americas STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera Americas STG</label>
+                </value>
+                <value>
+                    <fullName>Altera EMEA STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera EMEA STG</label>
+                </value>
+                <value>
+                    <fullName>Altera PRC STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera PRC STG</label>
+                </value>
+                <value>
+                    <fullName>Altera Strategic Accounts STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera Strategic Accounts STG</label>
+                </value>
+                <value>
+                    <fullName>Altera WW STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera WW STG</label>
+                </value>
+                <value>
+                    <fullName>Automotive</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Automotive</label>
+                </value>
+                <value>
+                    <fullName>Billings</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Billings</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Channel Partner</label>
+                </value>
+                <value>
+                    <fullName>DAIS AI Accelerator</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DAIS AI Accelerator</label>
+                </value>
+                <value>
+                    <fullName>Disti &amp; Local OxM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Disti &amp; Local OxM</label>
+                </value>
+                <value>
+                    <fullName>OEM Consumption</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM Consumption</label>
+                </value>
+                <value>
+                    <fullName>PSG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PSG</label>
+                </value>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>SMG Global Billings Revenue</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SMG Global Billings Revenue</label>
+                </value>
+                <value>
+                    <fullName>SOFTWARE STG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SOFTWARE STG</label>
+                </value>
+                <value>
+                    <fullName>SW/SaaS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SW/SaaS</label>
+                </value>
+                <value>
+                    <fullName>Service Providers</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Service Providers</label>
+                </value>
+                <value>
+                    <fullName>TSS WW AXG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TSS WW AXG</label>
+                </value>
+                <value>
+                    <fullName>TSS WW CCG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TSS WW CCG</label>
+                </value>
+                <value>
+                    <fullName>TSS WW DCAI PSG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TSS WW DCAI PSG</label>
+                </value>
+                <value>
+                    <fullName>TSS WW NEX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TSS WW NEX</label>
+                </value>
+                <value>
+                    <fullName>TSS/CSA WW DCAI</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TSS/CSA WW DCAI</label>
+                </value>
+                <value>
+                    <fullName>WW DCAI AI</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>WW DCAI AI</label>
+                </value>
+                <value>
+                    <fullName>WW DCAI Optane</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>WW DCAI Optane</label>
+                </value>
+                <value>
+                    <fullName>WW NEX NCNG</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>WW NEX NCNG</label>
+                </value>
+                <value>
+                    <fullName>WW NEX Software</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>WW NEX Software</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>403</controllingFieldValue>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>AUTOMOTIVE STG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>403</controllingFieldValue>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>GOVERNMENT STG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>AMR STG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>APJ STG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>EMEA STG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>INDIA STG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>600</controllingFieldValue>
+                <controllingFieldValue>601</controllingFieldValue>
+                <controllingFieldValue>602</controllingFieldValue>
+                <valueName>PRC STG</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_Team__c</fullName>
+        <externalId>false</externalId>
+        <formula>CPT_Employee__r.CPT_Sales_Team__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Team</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Stage__c</fullName>
+        <label>Stage</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In-Progress</fullName>
+                    <default>true</default>
+                    <label>In-Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( TEXT(CPT_Stage__c) == &apos;In-Progress&apos;, IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;In-Progress&quot;,20,50),
+IF( TEXT(CPT_Stage__c) == &apos;Completed&apos;, IMAGE(&quot;/img/samples/color_green.gif&quot;, &quot;Completed&quot;,20,50),
+IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Total_Allocated__c</fullName>
+        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Sales_OKR_Allocated__c + CPT_Sales_Team_Goal_Allocated__c+ CPT_MarVol_Allocated__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Total_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Total_Allocated__c*100) &amp; &quot;/100%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Unique_Identifier__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Unique Identifier to prevent duplicates for a given combination of Quota Period and Employee. The format of this field is: Quota Period Id - Employee Id.</description>
+        <externalId>false</externalId>
+        <label>Unique Identifier</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>XX_CPT_Complete__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Manager will check this box when planning is completed. Validation rule will check for the completeness of the data when this checkbox is selected.</description>
+        <inlineHelpText>If checked, system will validate the completeness of the data while updates are saved.</inlineHelpText>
+        <label>XX_Complete</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Quota Setup</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Manager__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_BR_Assigned__c</columns>
+        <columns>CPT_CR_Assigned__c</columns>
+        <columns>CPT_Sales_OKR_Assigned__c</columns>
+        <columns>CPT_Sales_Team_Goal_Assigned__c</columns>
+        <columns>CPT_MarVol_Assigned__c</columns>
+        <columns>CPT_Total_Assigned__c</columns>
+        <columns>CPT_Effective_Start__c</columns>
+        <columns>CPT_Effective_End__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CPT_My_Team_s_Quota</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Manager__c</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Total_Assigned__c</columns>
+        <columns>CPT_Job_Role__c</columns>
+        <columns>CPT_Effective_Month__c</columns>
+        <columns>CPT_Effective_Start__c</columns>
+        <columns>CPT_Effective_End__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Team&apos;s Quota</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Inaccurate_Data</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee__c</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Employee_WWID__c</columns>
+        <columns>CPT_Manager__c</columns>
+        <columns>CPT_Plan__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Job_Role__c</columns>
+        <columns>CPT_Sales_Org__c</columns>
+        <columns>CPT_Sales_Group__c</columns>
+        <columns>CPT_Sales_Team__c</columns>
+        <columns>CPT_Inaccurate_Data_Comments__c</columns>
+        <columns>CPT_Inaccurate_Data__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_Inaccurate_Data__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Inaccurate Data</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_Billing_Revenue</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_BR_All_Quota__c</columns>
+        <columns>CPT_BR_All_Assigned__c</columns>
+        <columns>CPT_BR_CCG_Quota__c</columns>
+        <columns>CPT_BR_CCG_Assigned__c</columns>
+        <columns>CPT_BR_DCAI_Quota__c</columns>
+        <columns>CPT_BR_DCAI_Assigned__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_BR_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota - Billing Revenue</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_Consumption_Revenue</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_CR_OEM_Quota__c</columns>
+        <columns>CPT_CR_OEM_Assigned__c</columns>
+        <columns>CPT_CR_Partner_Quota__c</columns>
+        <columns>CPT_CR_Partner_Assigned__c</columns>
+        <columns>CPT_CR_Retail_Quota__c</columns>
+        <columns>CPT_CR_Retail_Assigned__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_CR_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota - Consumption Revenue</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_MarginVolume</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_MarVol_Margin_CCG_Quota__c</columns>
+        <columns>CPT_MarVol_Margin_CCG_Assigned__c</columns>
+        <columns>CPT_MarVol_Margin_DCG_Quota__c</columns>
+        <columns>CPT_MarVol_Margin_DCG_Assigned__c</columns>
+        <columns>CPT_MarVol_NextGen_CCG_LNL_Quota__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</columns>
+        <columns>CPT_MarVol_NextGen_CCG_PTL_Quota__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</columns>
+        <columns>CPT_MarVol_NextGen_CCG_WCL_Quota__c</columns>
+        <columns>CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</columns>
+        <columns>CPT_MarVol_NextGen_DCG_GNR_Quota__c</columns>
+        <columns>CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_MarVol_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota - MarginVolume</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_Sales_OKR</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Manager__c</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Sales_OKR_Assigned__c</columns>
+        <columns>CPT_Sales_OKR__c</columns>
+        <columns>CPT_Sales_OKR_Objective1__c</columns>
+        <columns>CPT_Sales_OKR_Objective2__c</columns>
+        <columns>CPT_Sales_OKR_Objective3__c</columns>
+        <columns>CPT_Effective_Month__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_Sales_OKR_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </filters>
+        <label>My Team&apos;s Quota - Sales OKR</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_Sales_Team_Goal</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Manager__c</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Sales_Team_Goal_Assigned__c</columns>
+        <columns>CPT_Sales_Team_Goal__c</columns>
+        <columns>CPT_Effective_Month__c</columns>
+        <columns>CPT_Effective_Start__c</columns>
+        <columns>CPT_Effective_End__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_Sales_Team_Goal_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </filters>
+        <label>My Team&apos;s Quota - Sales Team Goal</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>QS-{000000}</displayFormat>
+        <label>Quota Setup ID</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Quota Setup</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <searchResultsAdditionalFields>CPT_Employee_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Employee_WWID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Manager__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>CPT_Avoid_AssignPercent_To_None</fullName>
+        <active>true</active>
+        <description>Please select 0% instead of &quot;none&quot; for all the Assigned % fields.</description>
+        <errorConditionFormula>OR(
+
+AND(
+  CPT_BR_Allowed__c &gt; 0, 
+  OR(
+    TEXT(CPT_BR_CCG_Assigned__c)=&apos;&apos;,  
+    TEXT(CPT_BR_DCAI_Assigned__c)=&apos;&apos;, 
+    TEXT(CPT_BR_DCAI_DAIS_Assigned__c)=&apos;&apos;,
+    TEXT(CPT_BR_NEX_Ethernet_Assigned__c)=&apos;&apos;,
+    TEXT(CPT_BR_All_Assigned__c)=&apos;&apos;,
+    TEXT(CPT_BR_Intel_AI_PC_Assigned__c)=&apos;&apos;
+  )
+),
+
+AND(
+  CPT_CR_Allowed__c &gt; 0, 
+  OR(
+    TEXT(CPT_CR_CCG_Assigned__c)=&apos;&apos;
+  )
+),
+
+AND(
+  CPT_Sales_OKR_Allowed__c &gt; 0, 
+  OR(
+    CPT_Sales_OKR_Assigned__c=&apos;&apos;
+  )
+),
+
+AND(
+  CPT_Sales_Team_Goal_Allowed__c &gt; 0, 
+  OR(
+    CPT_Sales_Team_Goal_Assigned__c =&apos;&apos;
+  )
+)
+
+
+)</errorConditionFormula>
+        <errorMessage>Please select 0% instead of &quot;none&quot; for all the Assigned % fields.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Avoid_BR_AssignPercent_WhenNoTarget</fullName>
+        <active>true</active>
+        <description>Restrict user from giving the percentage assigned when there is no target.</description>
+        <errorConditionFormula>AND(ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+OR(
+IF(Text(CPT_BR_CCG_Assigned__c)=&apos;0%&apos;,false,IF(CPT_BR_CCG_Quota__c=0,true,false)),
+IF(Text(CPT_BR_DCAI_Assigned__c )=&apos;0%&apos;,false,IF(CPT_BR_DCAI_Quota__c=0,true,false)),
+IF(Text(CPT_BR_All_Assigned__c)=&apos;0%&apos;,false,IF(CPT_BR_All_Quota__c=0,true,false))
+)
+)</errorConditionFormula>
+        <errorMessage>A Territory must be linked to the selected Billings Revenue Business Units (BU) to assign % and Quota. Please select the BR-BU checkbox in Territory Assignments.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Avoid_CR_AssignPercent_WhenNoTarget</fullName>
+        <active>true</active>
+        <description>Restrict user from giving the percentage assigned when there is no target.</description>
+        <errorConditionFormula>AND(ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+OR(
+IF(Text(CPT_CR_OEM_Assigned__c)=&apos;0%&apos;,false,IF(CPT_CR_OEM_Quota__c=0,true,false)),
+IF(Text(CPT_CR_Retail_Assigned__c)=&apos;0%&apos;,false,IF(CPT_CR_Retail_Quota__c=0,true,false)),
+IF(Text(CPT_CR_Partner_Assigned__c)=&apos;0%&apos;,false,IF(CPT_CR_Partner_Quota__c=0,true,false))
+)
+)</errorConditionFormula>
+        <errorMessage>A Territory must be linked to the selected Consumption Revenue Business Units (BU) to assign % and Quota. Please select the CR-BU checkbox in Territory Assignments.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Avoid_DR_AssignPercent_WhenNoTarget</fullName>
+        <active>false</active>
+        <description>Restrict user from giving the percentage assigned when there is no target.</description>
+        <errorConditionFormula>OR(IF(Text(CPT_DR_AXG_Assigned__c)=&apos;0%&apos;,false,IF(CPT_DR_AXG_Quota__c=0,true,false)),
+IF(Text(CPT_DR_CCG_Assigned__c)=&apos;0%&apos;,false,IF(CPT_DR_CCG_Quota__c=0,true,false)),
+IF(TEXT(CPT_DR_DCAI_Assigned__c) =&apos;0%&apos;,false,IF(CPT_DR_DCAI_Quota__c=0,true,false)),
+IF(TEXT(CPT_DR_NEX_Assigned__c) =&apos;0%&apos;,false,IF(CPT_DR_NEX_Quota__c=0,true,false)))</errorConditionFormula>
+        <errorMessage>A Territory must be tied to selected Deal Win Rev BU&apos;s to Assign % and Quota. Please add quota for selected DR-BU(s) in Territory Assignments.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_BR_Prevent_Excess_Allocation</fullName>
+        <active>true</active>
+        <description>Prevent over allocation of Billing Revenue(BR)</description>
+        <errorConditionFormula>CPT_BR_Allocated__c &gt; CPT_BR_Allowed__c</errorConditionFormula>
+        <errorMessage>The BR % Assigned exceeds the allowed limit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_BR_Prevent_Incomplete_Data_Update</fullName>
+        <active>true</active>
+        <description>Enforce Billing Revenue assignment and quota is complete</description>
+        <errorConditionFormula>AND(ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+
+
+OR(
+AND(OR(ISBLANK(TEXT(CPT_BR_CCG_Assigned__c)),Text(CPT_BR_CCG_Assigned__c)=&apos;0%&apos;), CPT_BR_CCG_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_BR_DCAI_Assigned__c)),Text(CPT_BR_DCAI_Assigned__c)=&apos;0%&apos;), CPT_BR_DCAI_Quota__c	&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_BR_DCAI_DAIS_Assigned__c)),Text(CPT_BR_DCAI_DAIS_Assigned__c)=&apos;0%&apos;), CPT_BR_DCAI_DAIS_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_BR_NEX_Ethernet_Assigned__c)),Text(CPT_BR_NEX_Ethernet_Assigned__c)=&apos;0%&apos;), CPT_BR_NEX_Ethernet_Quota__c	&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_BR_All_Assigned__c)),Text(CPT_BR_All_Assigned__c)=&apos;0%&apos;), CPT_BR_All_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_BR_Intel_AI_PC_Assigned__c)),Text(CPT_BR_Intel_AI_PC_Assigned__c)=&apos;0%&apos;), CPT_BR_Intel_AI_PC_Quota__c&gt;0),
+
+
+AND(Text(CPT_BR_CCG_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_CCG_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_CCG_Quota__c&lt;=0),
+AND(Text(CPT_BR_DCAI_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_DCAI_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_DCAI_Quota__c	&lt;=0),
+AND(Text(CPT_BR_DCAI_DAIS_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_DCAI_DAIS_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_DCAI_DAIS_Quota__c&lt;=0),
+AND(Text(CPT_BR_NEX_Ethernet_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_NEX_Ethernet_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_NEX_Ethernet_Quota__c=0),
+AND(Text(CPT_BR_All_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_All_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_All_Quota__c&lt;=0),
+AND(Text(CPT_BR_Intel_AI_PC_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_Intel_AI_PC_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_Intel_AI_PC_Quota__c&lt;=0),
+
+
+CPT_BR_Allocated__c&lt;&gt;CPT_BR_Allowed__c 
+)
+
+)</errorConditionFormula>
+        <errorMessage>Please complete the Billings Revenue Assigned % and Quota fields.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_CR_Prevent_Excess_Allocation</fullName>
+        <active>true</active>
+        <description>Prevent over allocation of Consumption Revenue(CR)</description>
+        <errorConditionFormula>CPT_CR_Allocated__c &gt;  CPT_CR_Allowed__c</errorConditionFormula>
+        <errorMessage>The CR % Assigned exceeds the allowed limit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_CR_Prevent_Incomplete_Data_Update</fullName>
+        <active>true</active>
+        <description>Enforce Consumption Revenue assignment and quota is complete</description>
+        <errorConditionFormula>AND(
+  ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+  OR(
+    AND(OR(ISBLANK(TEXT(CPT_CR_OEM_Assigned__c)), TEXT(CPT_CR_OEM_Assigned__c)=&apos;0%&apos;), CPT_CR_OEM_Quota__c&gt;0),
+    AND(OR(ISBLANK(TEXT(CPT_CR_Retail_Assigned__c)), TEXT(CPT_CR_Retail_Assigned__c)=&apos;0%&apos;), CPT_CR_Retail_Quota__c&gt;0),
+    AND(OR(ISBLANK(TEXT(CPT_CR_Partner_Assigned__c)), TEXT(CPT_CR_Partner_Assigned__c)=&apos;0%&apos;), CPT_CR_Partner_Quota__c&gt;0),
+    AND(TEXT(CPT_CR_OEM_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_CR_OEM_Assigned__c)&lt;&gt;&apos;&apos;, CPT_CR_OEM_Quota__c&lt;=0),
+    AND(TEXT(CPT_CR_Retail_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_CR_Retail_Assigned__c)&lt;&gt;&apos;&apos;, CPT_CR_Retail_Quota__c&lt;=0),
+    AND(TEXT(CPT_CR_Partner_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_CR_Partner_Assigned__c)&lt;&gt;&apos;&apos;, CPT_CR_Partner_Quota__c&lt;=0),
+    CPT_CR_Allocated__c &lt;&gt; CPT_CR_Allowed__c
+  )
+)</errorConditionFormula>
+        <errorMessage>Please complete the Consumption Revenue Assigned % and Quota fields.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Cannot_Edit_Locked_Records</fullName>
+        <active>true</active>
+        <description>Restrict users from editing the record when the record is locked</description>
+        <errorConditionFormula>OR(
+    AND(
+       CPT_Locked_Status__c = &apos;Soft Lock&apos;, 
+       NOT($Permission.CPT_IT_Admin_System_Admin_Permission ),
+       NOT($Permission.CPT_Commission_Admin_Permission)
+    ),
+
+
+   AND(
+      CPT_Locked_Status__c = &apos;Hard Lock&apos;, 
+      NOT($Permission.CPT_IT_Admin_System_Admin_Permission )
+   )
+
+)</errorConditionFormula>
+        <errorMessage>This record is locked. Please contact the Commissions Admin with any questions.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_DR_Prevent_Excess_Allocation</fullName>
+        <active>false</active>
+        <description>Prevent over allocation of Deal Win Revenue(DR)</description>
+        <errorConditionFormula>CPT_DR_Allocated__c &gt; CPT_DR_Allowed__c</errorConditionFormula>
+        <errorMessage>DR % Assigned is greater than allowed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_DR_Prevent_Incomplete_Data_Update</fullName>
+        <active>false</active>
+        <description>Enforce Deal Win Revenue assignment and quota is complete</description>
+        <errorConditionFormula>AND(ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+
+OR(
+AND(OR(ISBLANK(TEXT(CPT_DR_CCG_Assigned__c)),Text(CPT_DR_CCG_Assigned__c)=&apos;0%&apos;), CPT_DR_CCG_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_DR_DCAI_Assigned__c)),Text(CPT_DR_DCAI_Assigned__c)=&apos;0%&apos;), CPT_DR_DCAI_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_DR_AXG_Assigned__c)),Text(CPT_DR_AXG_Assigned__c)=&apos;0%&apos;), CPT_DR_AXG_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_DR_NEX_Assigned__c)),Text(CPT_DR_NEX_Assigned__c)=&apos;0%&apos;), CPT_DR_NEX_Quota__c&gt;0),
+
+
+
+AND(Text(CPT_DR_CCG_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_DR_CCG_Assigned__c)&lt;&gt;&apos;&apos;, CPT_DR_CCG_Quota__c&lt;=0),
+AND(Text(CPT_DR_DCAI_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_DR_DCAI_Assigned__c)&lt;&gt;&apos;&apos;, CPT_DR_DCAI_Quota__c&lt;=0),
+AND(Text(CPT_DR_AXG_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_DR_AXG_Assigned__c)&lt;&gt;&apos;&apos;, CPT_DR_AXG_Quota__c&lt;=0),
+AND(Text(CPT_DR_NEX_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_DR_NEX_Assigned__c)&lt;&gt;&apos;&apos;, CPT_DR_NEX_Quota__c&lt;=0),
+
+
+CPT_DR_Allocated__c&lt;&gt;CPT_DR_Allowed__c 
+)
+
+)</errorConditionFormula>
+        <errorMessage>Please complete Deal Win Revenue Assigned % and Quota.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Ensure_Sales_OKR_Objective2_Filled</fullName>
+        <active>true</active>
+        <description>Sales OKR Objective 2 cannot be completed until Sales OKR Objective 1 is completed.</description>
+        <errorConditionFormula>AND(
+  ISBLANK(CPT_Sales_OKR_Objective1__c),
+  NOT(ISBLANK(CPT_Sales_OKR_Objective2__c))
+)</errorConditionFormula>
+        <errorDisplayField>CPT_Sales_OKR_Objective2__c</errorDisplayField>
+        <errorMessage>Sales OKR Objective 2 cannot be completed until Sales OKR Objective 1 is completed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Ensure_Sales_OKR_Objective3_Editable</fullName>
+        <active>true</active>
+        <description>The Sales OKR Objective 3 cannot be completed until Sales OKR Objectives 1 and 2 are completed.</description>
+        <errorConditionFormula>AND(
+  OR(
+    ISBLANK(CPT_Sales_OKR_Objective1__c),
+    ISBLANK(CPT_Sales_OKR_Objective2__c)
+  ),
+  NOT(ISBLANK(CPT_Sales_OKR_Objective3__c))
+)</errorConditionFormula>
+        <errorDisplayField>CPT_Sales_OKR_Objective3__c</errorDisplayField>
+        <errorMessage>The Sales OKR Objective 3 cannot be completed until Sales OKR Objectives 1 and 2 are completed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Ensure_Sales_OKR_Objective_Filled</fullName>
+        <active>true</active>
+        <description>Ensures that at least one of the Sales OKR Objective field is filled out before marking the stage to completed.</description>
+        <errorConditionFormula>AND(
+ (CPT_Sales_OKR_Allowed__c&lt;&gt;0),
+  ISPICKVAL(CPT_Stage__c, &quot;Completed&quot;),
+  ISBLANK(CPT_Sales_OKR_Objective1__c),
+  ISBLANK(CPT_Sales_OKR_Objective2__c),
+  ISBLANK(CPT_Sales_OKR_Objective3__c)
+)</errorConditionFormula>
+        <errorDisplayField>CPT_Sales_OKR_Objective1__c</errorDisplayField>
+        <errorMessage>You must fill in at least one Sales OKR Objective before marking the stage as Completed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_OKR_Prevent_Excess_Allocation</fullName>
+        <active>true</active>
+        <description>Prevent over allocation of Sales OKR</description>
+        <errorConditionFormula>CPT_Sales_OKR_Allocated__c &gt; CPT_Sales_OKR_Allowed__c</errorConditionFormula>
+        <errorMessage>Sales OKR % Assigned is greater than allowed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_OKR_Prevent_Incomplete_Data_Update</fullName>
+        <active>true</active>
+        <description>Enforce Sales OKR assignment and quota is complete</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+
+    OR(
+        CPT_Sales_OKR_Allocated__c&lt;&gt;CPT_Sales_OKR_Allowed__c
+    )
+)</errorConditionFormula>
+        <errorMessage>Please complete Sales OKR Selection, Assigned %, and Quota.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Plan_Specific_Field_Restriction</fullName>
+        <active>true</active>
+        <description>This validation rule ensures that percentage value for selected plans (301, 601 or 801), users can select a restricted percentage value in only one field at a time.</description>
+        <errorConditionFormula>OR( 
+/* Plan 301 - Prevent any invalid combinations (treat 0% as empty) */ 
+
+AND( ISPICKVAL(CPT_Plan__c, &quot;301&quot;), 
+OR( 
+/* Both OEM and Partner have non-zero values */ 
+AND( NOT(OR(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;0%&quot;))), NOT(OR(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;0%&quot;))) ), 
+/* Retail has any non-zero value */ 
+NOT(OR(ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;0%&quot;))), 
+/* OEM has non-zero value but not 50% */ 
+AND( NOT(OR(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;0%&quot;))), NOT(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;50%&quot;)) ), 
+/* Partner has non-zero value but not 50% */ 
+AND( NOT(OR(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;0%&quot;))), NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;50%&quot;)) ) ) ), 
+
+/* Plans 601 &amp; 801 - Similar logic for 70% */ 
+
+AND( OR( ISPICKVAL(CPT_Plan__c, &quot;601&quot;), ISPICKVAL(CPT_Plan__c, &quot;801&quot;) ), 
+OR( 
+/* Multiple fields have 70% */ 
+AND(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;70%&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;70%&quot;)), AND(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;70%&quot;), ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;70%&quot;)), AND(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;70%&quot;), ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;70%&quot;)), 
+/* Any field has non-zero value but not 70% */ 
+AND( NOT(OR(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;0%&quot;))), NOT(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;70%&quot;)) ), AND( NOT(OR(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;0%&quot;))), NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;70%&quot;)) ), AND( NOT(OR(ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;0%&quot;))), NOT(ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;70%&quot;)) ) ) ) 
+)</errorConditionFormula>
+        <errorMessage>Invalid assignment: Check plan-specific percentage restrictions.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_Employee_Lookup_Update</fullName>
+        <active>true</active>
+        <description>You cannot change the employee here. To add a new employee, please go to Quota Setup and select &quot;New.&quot;</description>
+        <errorConditionFormula>ISCHANGED( CPT_Employee__c )</errorConditionFormula>
+        <errorDisplayField>CPT_Employee__c</errorDisplayField>
+        <errorMessage>You cannot change the employee here. To add a new employee, please go to Quota Setup and select &quot;New.&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_Null_Stage_Update</fullName>
+        <active>true</active>
+        <description>Enforce Stage field has a value</description>
+        <errorConditionFormula>ISPICKVAL(CPT_Stage__c, &apos;&apos;)</errorConditionFormula>
+        <errorMessage>Please update the Stage value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_OKR_Changes_When_Completed</fullName>
+        <active>true</active>
+        <description>This validation rule prevents users from modifying any Objective and KPI Name fields when the stage is set to &quot;Completed&quot;.</description>
+        <errorConditionFormula>AND( ISPICKVAL(CPT_Stage__c, &quot;Completed&quot;), OR( ISCHANGED(CPT_Sales_OKR_Objective1__c), ISCHANGED(CPT_Sales_OKR_Objective2__c), ISCHANGED(CPT_Sales_OKR_Objective3__c), ISCHANGED(CPT_KPI_Name1__c), ISCHANGED(CPT_KPI_Name2__c), ISCHANGED(CPT_KPI_Name3__c) ) )</errorConditionFormula>
+        <errorMessage>Objective and KPI Name fields cannot be modified when Stage is &quot;Completed&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_STG_Prevent_Incomplete_Data_Update</fullName>
+        <active>true</active>
+        <description>Enforce Sales Team Goal assignment</description>
+        <errorConditionFormula>AND(
+ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+CPT_Sales_Team_Goal_Allowed__c &gt; 0,
+ISBLANK(TEXT(CPT_Sales_Team_Goal__c))
+)</errorConditionFormula>
+        <errorMessage>Please complete the Sales Team Goal Selection.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>MarVol_Checkbox_And_Quota_Alignment</fullName>
+        <active>true</active>
+        <description>This validation rule ensures mutual dependency between checkbox fields and their corresponding quota fields. If a quota value &gt; 0 exists, the corresponding checkbox must be selected. If a checkbox is selected, the corresponding quota value must be &gt; 0.</description>
+        <errorConditionFormula>AND( ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;), OR( AND(NOT(CPT_MarVol_Margin_CCG__c), CPT_MarVol_Margin_CCG_Quota__c &gt; 0), AND(NOT(CPT_MarVol_Margin_DCG__c), CPT_MarVol_Margin_DCG_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_LNL__c), CPT_MarVol_NextGen_CCG_LNL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_PTL__c), CPT_MarVol_NextGen_CCG_PTL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_WCL__c), CPT_MarVol_NextGen_CCG_WCL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_DCG_GNR__c), CPT_MarVol_NextGen_DCG_GNR_Quota__c &gt; 0),AND(CPT_MarVol_Margin_CCG__c, CPT_MarVol_Margin_CCG_Quota__c &lt;= 0), AND(CPT_MarVol_Margin_DCG__c, CPT_MarVol_Margin_DCG_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_LNL__c, CPT_MarVol_NextGen_CCG_LNL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVol_NextGen_CCG_PTL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_WCL__c, CPT_MarVol_NextGen_CCG_WCL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_DCG_GNR__c, CPT_MarVol_NextGen_DCG_GNR_Quota__c &lt;= 0), CPT_MarVol_Allocated__c &lt;&gt; CPT_MarVol_Allowed__c ) )</errorConditionFormula>
+        <errorDisplayField>CPT_Account_Breakout__c</errorDisplayField>
+        <errorMessage>MarginVolume sub-element checkbox must be selected when corresponding quota has a value greater than 0. Unselect the MarginVolume sub-element checkbox if respective Quota value is 0.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Objective_KPI_Alignment</fullName>
+        <active>true</active>
+        <description>This rule ensures that the corresponding KPI field is filled when an objective is filled.</description>
+        <errorConditionFormula>OR( 
+AND(NOT(ISBLANK(CPT_Sales_OKR_Objective1__c)), ISPICKVAL(CPT_KPI_Name1__c, &quot;&quot;)), 
+AND(NOT(ISBLANK(CPT_Sales_OKR_Objective2__c)), ISPICKVAL(CPT_KPI_Name2__c, &quot;&quot;)), 
+AND(NOT(ISBLANK(CPT_Sales_OKR_Objective3__c)), ISPICKVAL(CPT_KPI_Name3__c, &quot;&quot;)),
+AND(NOT(ISPICKVAL(CPT_KPI_Name1__c, &quot;&quot;)), ISBLANK(CPT_Sales_OKR_Objective1__c)),
+AND(NOT(ISPICKVAL(CPT_KPI_Name2__c, &quot;&quot;)), ISBLANK(CPT_Sales_OKR_Objective2__c)),
+AND(NOT(ISPICKVAL(CPT_KPI_Name3__c, &quot;&quot;)), ISBLANK(CPT_Sales_OKR_Objective3__c))
+)</errorConditionFormula>
+        <errorMessage>Please fill the corresponding Objective/KPI field.
+(Example: Sales OKR Objective 1 &lt;=&gt; KPI Name 1)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Pair_CCG_Volume_and_Margin</fullName>
+        <active>true</active>
+        <description>This validation rule ensures Margin CCG and at least one NextGen CCG field (WCL, PTL, LNL) are selected together - mutual dependency required.</description>
+        <errorConditionFormula>OR( 
+AND( CPT_MarVol_Margin_CCG__c, NOT(OR( CPT_MarVol_NextGen_CCG_WCL__c, CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVol_NextGen_CCG_LNL__c )) ), 
+AND( OR( CPT_MarVol_NextGen_CCG_WCL__c, CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVol_NextGen_CCG_LNL__c ), NOT(CPT_MarVol_Margin_CCG__c) ) 
+)</errorConditionFormula>
+        <errorMessage>Margin CCG and Volume CCG (LNL/PTL/WCL) must be selected together - if one is selected, the other is required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Pair_DCG_Volume_and_Margin</fullName>
+        <active>true</active>
+        <description>This validation rule ensures mutual dependency between CPT_MarVol_NextGen_DCG_GNR and CPT_MarVol_Margin_DCG fields. If one is selected, the other must also be selected, and vice versa.</description>
+        <errorConditionFormula>OR( AND(CPT_MarVol_NextGen_DCG_GNR__c, NOT(CPT_MarVol_Margin_DCG__c)), AND(CPT_MarVol_Margin_DCG__c, NOT(CPT_MarVol_NextGen_DCG_GNR__c)) )</errorConditionFormula>
+        <errorMessage>Volume DCG and Margin DCG must both be selected together.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Restrict_5_Percent_For_Plan_602_802</fullName>
+        <active>false</active>
+        <description>This validation rule prevents users from selecting 5% in the OEM/Retail/Partner % Assigned field under CR when Plan is 602 or 802.</description>
+        <errorConditionFormula>AND( 
+OR( 
+ISPICKVAL(CPT_Plan__c, &quot;602&quot;), ISPICKVAL(CPT_Plan__c, &quot;802&quot;) 
+), 
+OR(
+ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;5%&quot;), ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;5%&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;5%&quot;) )
+)</errorConditionFormula>
+        <errorMessage>Minimum 10% is allowed on CR Subelements for the selected plan.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sequential_KPI_Entry</fullName>
+        <active>true</active>
+        <description>This rule ensure that the KPI fields are filled in a sequence.</description>
+        <errorConditionFormula>OR( 
+AND(NOT(ISPICKVAL(CPT_KPI_Name2__c, &quot;&quot;)), ISPICKVAL(CPT_KPI_Name1__c, &quot;&quot;)), 
+AND(NOT(ISPICKVAL(CPT_KPI_Name3__c, &quot;&quot;)), ISPICKVAL(CPT_KPI_Name2__c, &quot;&quot;)) 
+)</errorConditionFormula>
+        <errorMessage>KPIs must be selected sequentially. Please select KPI 1 before KPI 2 and KPI 2 before KPI 3.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

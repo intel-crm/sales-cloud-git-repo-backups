@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Bulk_Campaign_Invitation_ZHT</name>
+    <style>none</style>
+    <subject>開發者專區高級版的使用者現在有資格加入 Intel 夥伴聯盟！</subject>
+    <textOnly>As a Developer Zone Premier user, you are now eligible to join Intel® Partner Alliance!
+
+Gain extra benefits in addition to the value of Developer Zone Premier!
+
+Join Intel®
+Partner Alliance
+
+
+
+First Name: {!Contact.FirstName}
+Last Name: {!Contact.LastName}
+Username (Email Address):{!Contact.Email}
+
+
+The Developer Zone Premier entitlement enables access to Intel Confidential resources and secure content and is now a benefit of the Intel® Partner Alliance. As a valued Developer Zone Premier user, you are now eligible to join the Intel Partner Alliance program immediately.
+
+Your company is already a valued member of Intel Partner Alliance. This is an opportunity for you to join your colleagues, who are already part of the program and gain access to exclusive, highly valued benefits. A few examples include:
+
+Access to over 800 world-class courses and 30+ competencies and certifications, industry insights, and business forecasts - vital knowledge through Intel® Partner University.
+
+Curated, industry-topic, task-focused Activation Zones with the resources to build, market, and sell products and solutions based on Intel® technology.
+
+Promote your solutions on our Partner Showcase through your personalized storefront allowing you to connect with thousands of partners and your end-customers throughout the ecosystem.
+
+Join now by enrolling as a contact and begin experiencing everything Intel Partner Alliance and Developer Zone Premier have to offer.
+
+Follow these quick and easy steps:
+
+Click Join now and follow the prompts* to link you to your company’s account.
+
+Once confirmed you’ll receive an email to log into Intel Partner Alliance.
+
+Discover all the benefits the program offers, join Intel Partner Alliance now.
+
+
+Click to join
+
+
+
+
+Need help signing up to be a partner? Contact support
+
+**Azure Multi-Factor Authentication (MFA) Help
+
+Join the Intel® Partner Alliance group on LinkedIn
+
+View in browser.
+
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,2408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_Age__c</fullName>
+        <description>Used to calculate the age of a ticket</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Core_Status__c , &apos;Closed&apos;), LastModifiedDate - CreatedDate , Now() - CreatedDate)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Used to calculate the age of a ticket</inlineHelpText>
+        <label>Age (Days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Description__c</fullName>
+        <label>Description</label>
+        <length>49512</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Functional_Area__c</fullName>
+        <label>Functional Area(Optional)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Accounts</fullName>
+                    <default>false</default>
+                    <label>Accounts</label>
+                </value>
+                <value>
+                    <fullName>Contacts</fullName>
+                    <default>false</default>
+                    <label>Contacts</label>
+                </value>
+                <value>
+                    <fullName>Leads</fullName>
+                    <default>false</default>
+                    <label>Leads</label>
+                </value>
+                <value>
+                    <fullName>Opportunities</fullName>
+                    <default>false</default>
+                    <label>Opportunities</label>
+                </value>
+                <value>
+                    <fullName>Deal Support</fullName>
+                    <default>false</default>
+                    <label>Deal Support</label>
+                </value>
+                <value>
+                    <fullName>Products</fullName>
+                    <default>false</default>
+                    <label>Products</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Geo__c</fullName>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>WW</fullName>
+                    <default>false</default>
+                    <label>WW</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Org_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Support Org Number</label>
+        <referenceTo>Core_IPS_Product_Organization__c</referenceTo>
+        <relationshipName>Ask_a_Question</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Org_Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_IPS_Support_Org_Name__r.Core_IPS_Support_Org_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Support Org Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_I_Need_Assistance_With__c</fullName>
+        <label>I Need Assistance With</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account &amp; Contacts</fullName>
+                    <default>false</default>
+                    <label>Account &amp; Contacts</label>
+                </value>
+                <value>
+                    <fullName>Permission</fullName>
+                    <default>false</default>
+                    <label>Permission</label>
+                </value>
+                <value>
+                    <fullName>Training</fullName>
+                    <default>false</default>
+                    <label>Training</label>
+                </value>
+                <value>
+                    <fullName>Training Materials</fullName>
+                    <default>false</default>
+                    <label>Training Materials</label>
+                </value>
+                <value>
+                    <fullName>Bug/Issue</fullName>
+                    <default>false</default>
+                    <label>Bug/Issue</label>
+                </value>
+                <value>
+                    <fullName>Products</fullName>
+                    <default>false</default>
+                    <label>Products</label>
+                </value>
+                <value>
+                    <fullName>Product/Price</fullName>
+                    <default>false</default>
+                    <label>Product/Price</label>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                    <label>Reporting</label>
+                </value>
+                <value>
+                    <fullName>System Access</fullName>
+                    <default>false</default>
+                    <label>System Access</label>
+                </value>
+                <value>
+                    <fullName>Enhancement</fullName>
+                    <default>false</default>
+                    <label>Enhancement</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Data/ Visibility</fullName>
+                    <default>false</default>
+                    <label>Data/ Visibility</label>
+                </value>
+                <value>
+                    <fullName>IPS Case</fullName>
+                    <default>false</default>
+                    <label>IPS Case</label>
+                </value>
+                <value>
+                    <fullName>Projects</fullName>
+                    <default>false</default>
+                    <label>Projects</label>
+                </value>
+                <value>
+                    <fullName>PSG Support</fullName>
+                    <default>false</default>
+                    <label>PSG Support</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Internal_Comments__c</fullName>
+        <label>Internal Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_On_Hold_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>On Hold Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Organization_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_IPS_Support_Org_Name__r.Core_Organization_Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Focus Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Resolution_Type__c</fullName>
+        <label>Resolution Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_I_Need_Assistance_With__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Update Account/Sales Team</fullName>
+                    <default>false</default>
+                    <label>Update Account/Sales Team</label>
+                </value>
+                <value>
+                    <fullName>Update Territory</fullName>
+                    <default>false</default>
+                    <label>Update Territory</label>
+                </value>
+                <value>
+                    <fullName>Update Address</fullName>
+                    <default>false</default>
+                    <label>Update Address</label>
+                </value>
+                <value>
+                    <fullName>Update Owner</fullName>
+                    <default>false</default>
+                    <label>Update Owner</label>
+                </value>
+                <value>
+                    <fullName>Add User</fullName>
+                    <default>false</default>
+                    <label>Add User</label>
+                </value>
+                <value>
+                    <fullName>Delete User</fullName>
+                    <default>false</default>
+                    <label>Delete User</label>
+                </value>
+                <value>
+                    <fullName>Update Profile</fullName>
+                    <default>false</default>
+                    <label>Update Profile</label>
+                </value>
+                <value>
+                    <fullName>Folder Access</fullName>
+                    <default>false</default>
+                    <label>Folder Access</label>
+                </value>
+                <value>
+                    <fullName>General</fullName>
+                    <default>false</default>
+                    <label>General</label>
+                </value>
+                <value>
+                    <fullName>Account/Contact</fullName>
+                    <default>false</default>
+                    <label>Account/Contact</label>
+                </value>
+                <value>
+                    <fullName>Leads</fullName>
+                    <default>false</default>
+                    <label>Leads</label>
+                </value>
+                <value>
+                    <fullName>Opptortunity</fullName>
+                    <default>false</default>
+                    <label>Opptortunity</label>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                    <label>Reporting</label>
+                </value>
+                <value>
+                    <fullName>Mobile</fullName>
+                    <default>false</default>
+                    <label>Mobile</label>
+                </value>
+                <value>
+                    <fullName>Outlook</fullName>
+                    <default>false</default>
+                    <label>Outlook</label>
+                </value>
+                <value>
+                    <fullName>Conga</fullName>
+                    <default>false</default>
+                    <label>Conga</label>
+                </value>
+                <value>
+                    <fullName>Data Updates</fullName>
+                    <default>false</default>
+                    <label>Data Updates</label>
+                </value>
+                <value>
+                    <fullName>Logged with TAC</fullName>
+                    <default>false</default>
+                    <label>Logged with TAC</label>
+                </value>
+                <value>
+                    <fullName>Enhancement Logged</fullName>
+                    <default>false</default>
+                    <label>Enhancement Logged</label>
+                </value>
+                <value>
+                    <fullName>Create / Change Folder</fullName>
+                    <default>false</default>
+                    <label>Create / Change Folder</label>
+                </value>
+                <value>
+                    <fullName>Create / Change Report</fullName>
+                    <default>false</default>
+                    <label>Create / Change Report</label>
+                </value>
+                <value>
+                    <fullName>Create / Change Dashboard</fullName>
+                    <default>false</default>
+                    <label>Create / Change Dashboard</label>
+                </value>
+                <value>
+                    <fullName>Dynamic Dashboard</fullName>
+                    <default>false</default>
+                    <label>Dynamic Dashboard</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>MSBI</fullName>
+                    <default>false</default>
+                    <label>MSBI</label>
+                </value>
+                <value>
+                    <fullName>SSO</fullName>
+                    <default>false</default>
+                    <label>SSO</label>
+                </value>
+                <value>
+                    <fullName>Add/Update Price</fullName>
+                    <default>false</default>
+                    <label>Add/Update Price</label>
+                </value>
+                <value>
+                    <fullName>Add/Update Product</fullName>
+                    <default>false</default>
+                    <label>Add/Update Product</label>
+                </value>
+                <value>
+                    <fullName>Answered</fullName>
+                    <default>false</default>
+                    <label>Answered</label>
+                </value>
+                <value>
+                    <fullName>Unanswered</fullName>
+                    <default>false</default>
+                    <label>Unanswered</label>
+                </value>
+                <value>
+                    <fullName>User Training</fullName>
+                    <default>false</default>
+                    <label>User Training</label>
+                </value>
+                <value>
+                    <fullName>Duplicate</fullName>
+                    <default>false</default>
+                    <label>Duplicate</label>
+                </value>
+                <value>
+                    <fullName>Other  (Explain Below)</fullName>
+                    <default>false</default>
+                    <label>Other  (Explain Below)</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <controllingFieldValue>Training Materials</controllingFieldValue>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <controllingFieldValue>Enhancement</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Answered</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <controllingFieldValue>Training Materials</controllingFieldValue>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <controllingFieldValue>Enhancement</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Unanswered</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <controllingFieldValue>Training Materials</controllingFieldValue>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <controllingFieldValue>Enhancement</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>User Training</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <controllingFieldValue>Training Materials</controllingFieldValue>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <controllingFieldValue>Enhancement</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Duplicate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <controllingFieldValue>Training Materials</controllingFieldValue>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <controllingFieldValue>Enhancement</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Other  (Explain Below)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <valueName>Update Account/Sales Team</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <valueName>Update Territory</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <valueName>Update Address</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <valueName>Update Owner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <valueName>Add User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data/ Visibility</controllingFieldValue>
+                <valueName>Delete User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <valueName>Update Profile</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Permission</controllingFieldValue>
+                <valueName>Folder Access</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <valueName>General</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <valueName>Account/Contact</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <valueName>Leads</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <valueName>Opptortunity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <valueName>Reporting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <valueName>Mobile</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <valueName>Outlook</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <valueName>Conga</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training</controllingFieldValue>
+                <valueName>Data Updates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <valueName>Logged with TAC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Bug/Issue</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Enhancement Logged</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Create / Change Report</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Create / Change Dashboard</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Dynamic Dashboard</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <controllingFieldValue>Enhancement</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <valueName>MSBI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>System Access</controllingFieldValue>
+                <valueName>SSO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <valueName>Add/Update Price</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Product/Price</controllingFieldValue>
+                <valueName>Add/Update Product</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Resolution__c</fullName>
+        <label>Resolution</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_SLA_Duration__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Core_Status__c , &quot;New&quot;), NOW() - CreatedDate, Null)</formula>
+        <label>SLA Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_SLA_Indicator__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Core_SLA_Status__c = &apos;Good&apos;, IMAGE(&apos;/resource/Icon_Transparent_Green&apos;, &apos;green&apos;, 20, 20), 
+ IF( Core_SLA_Status__c = &apos;Warning&apos;, IMAGE(&apos;/resource/Icon_Transparent_Yellow&apos;, &apos;yellow&apos;, 20, 20),
+ IF( Core_SLA_Status__c = &apos;Violation&apos;, IMAGE(&apos;/resource/Icon_Transparent_Red&apos;, &apos;red&apos;, 20, 20),
+ NULL)))</formula>
+        <label>SLA Indicator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_SLA_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL( Core_Status__c , &apos;New&apos;), 
+IF(Core_SLA_Duration__c &lt; 0.5, &apos;Good&apos;, IF(Core_SLA_Duration__c &lt; 1, &apos;Warning&apos;, &quot;Violation&quot;)), &apos;In Progress&apos;)</formula>
+        <label>SLA Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Service_Now_Ticket_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Now Ticket ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Severity_Level__c</fullName>
+        <inlineHelpText>Critical – affects all users with no workaround.
+High – issue affects many users with no workaround.
+Medium – bug affects some users and short-term workaround.
+Low – regarding a routine issue</inlineHelpText>
+        <label>Severity Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>true</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Critical</fullName>
+                    <default>false</default>
+                    <label>Critical</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Status__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>On Hold</fullName>
+                    <default>false</default>
+                    <label>On Hold</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Subcategory__c</fullName>
+        <label>Subcategory</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_I_Need_Assistance_With__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Contact Access/Visibility</fullName>
+                    <default>false</default>
+                    <label>Contact Access/Visibility</label>
+                </value>
+                <value>
+                    <fullName>Contact Emulation</fullName>
+                    <default>false</default>
+                    <label>Contact Emulation</label>
+                </value>
+                <value>
+                    <fullName>Contact Tool Access</fullName>
+                    <default>false</default>
+                    <label>Contact Tool Access</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>PAR/MAP</fullName>
+                    <default>false</default>
+                    <label>PAR/MAP</label>
+                </value>
+                <value>
+                    <fullName>Project</fullName>
+                    <default>false</default>
+                    <label>Project</label>
+                </value>
+                <value>
+                    <fullName>Attachments</fullName>
+                    <default>false</default>
+                    <label>Attachments</label>
+                </value>
+                <value>
+                    <fullName>Comments</fullName>
+                    <default>false</default>
+                    <label>Comments</label>
+                </value>
+                <value>
+                    <fullName>Customer Feedback</fullName>
+                    <default>false</default>
+                    <label>Customer Feedback</label>
+                </value>
+                <value>
+                    <fullName>Interested Parties</fullName>
+                    <default>false</default>
+                    <label>Interested Parties</label>
+                </value>
+                <value>
+                    <fullName>SLA/Case Milestones</fullName>
+                    <default>false</default>
+                    <label>SLA/Case Milestones</label>
+                </value>
+                <value>
+                    <fullName>Licensed Products</fullName>
+                    <default>false</default>
+                    <label>Licensed Products</label>
+                </value>
+                <value>
+                    <fullName>MSBI</fullName>
+                    <default>false</default>
+                    <label>MSBI</label>
+                </value>
+                <value>
+                    <fullName>SFDC</fullName>
+                    <default>false</default>
+                    <label>SFDC</label>
+                </value>
+                <value>
+                    <fullName>Accounts</fullName>
+                    <default>false</default>
+                    <label>Accounts</label>
+                </value>
+                <value>
+                    <fullName>Members</fullName>
+                    <default>false</default>
+                    <label>Members</label>
+                </value>
+                <value>
+                    <fullName>Products</fullName>
+                    <default>false</default>
+                    <label>Products</label>
+                </value>
+                <value>
+                    <fullName>Cases</fullName>
+                    <default>false</default>
+                    <label>Cases</label>
+                </value>
+                <value>
+                    <fullName>Add a Product to SFDC</fullName>
+                    <default>false</default>
+                    <label>Add a Product to SFDC</label>
+                </value>
+                <value>
+                    <fullName>Ensure Product cannot be supported out of SFDC</fullName>
+                    <default>false</default>
+                    <label>Ensure Product cannot be supported out of SFDC</label>
+                </value>
+                <value>
+                    <fullName>Make a Product IPS Visible</fullName>
+                    <default>false</default>
+                    <label>Make a Product IPS Visible</label>
+                </value>
+                <value>
+                    <fullName>Add/Modify Case Category</fullName>
+                    <default>false</default>
+                    <label>Add/Modify Case Category</label>
+                </value>
+                <value>
+                    <fullName>Product Access</fullName>
+                    <default>false</default>
+                    <label>Product Access</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <valueName>Licensed Products</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <valueName>Add a Product to SFDC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <valueName>Ensure Product cannot be supported out of SFDC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <valueName>Make a Product IPS Visible</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Products</controllingFieldValue>
+                <valueName>Add/Modify Case Category</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <valueName>Attachments</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <valueName>Comments</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <valueName>Customer Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <valueName>Interested Parties</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IPS Case</controllingFieldValue>
+                <valueName>SLA/Case Milestones</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <valueName>Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <valueName>Members</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <valueName>Products</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Projects</controllingFieldValue>
+                <valueName>Cases</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>MSBI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>SFDC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Contact Access/Visibility</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Contact Emulation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Contact Tool Access</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Account &amp; Contacts</controllingFieldValue>
+                <valueName>Product Access</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Subject__c</fullName>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_Profile__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Profile.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitter Profile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_s_Cell__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.MobilePhone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitter&apos;s Cell</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_s_Department__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Department</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitter&apos;s Department</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_s_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitter&apos;s Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_s_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.FirstName &amp;&quot; &quot;&amp; CreatedBy.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitter&apos;s Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_s_Work_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitter&apos;s Work Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Support Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Support_Owner</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Ask a Question (Do Not Use - EOL)</label>
+    <listViews>
+        <fullName>APJ_Data_Visibility_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </filters>
+        <filters>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </filters>
+        <label>APJ Data/Visibility Queue</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_APJ</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>ASMO_Data_Visibility_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </filters>
+        <label>ASMO Data/Visibility Queue</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_ASMO</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Bug_Issue</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Bug/Issue</value>
+        </filters>
+        <label>All Support Requests - Bug/Issue</label>
+        <sharedTo>
+            <group>Core_Question_Bug_Issue</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Enhancement</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Enhancement</value>
+        </filters>
+        <label>All Support Requests - Enhancement</label>
+        <sharedTo>
+            <group>Core_Question_Bug_Issue</group>
+            <group>Core_Question_Data_Visibility_APJ</group>
+            <group>Core_Question_Data_Visibility_ASMO</group>
+            <group>Core_Question_Data_Visibility_EMEA</group>
+            <group>Core_Question_Data_Visibility_PRC</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_Others</group>
+            <group>Core_Question_Permission</group>
+            <group>Core_Question_Reporting</group>
+            <group>Core_Question_System_Access</group>
+            <group>Core_Question_Training</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Other</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Other</value>
+        </filters>
+        <label>All Support Requests - Other</label>
+        <sharedTo>
+            <group>Core_Question_Bug_Issue</group>
+            <group>Core_Question_Data_Visibility_APJ</group>
+            <group>Core_Question_Data_Visibility_ASMO</group>
+            <group>Core_Question_Data_Visibility_EMEA</group>
+            <group>Core_Question_Data_Visibility_PRC</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_Others</group>
+            <group>Core_Question_Permission</group>
+            <group>Core_Question_Reporting</group>
+            <group>Core_Question_System_Access</group>
+            <group>Core_Question_Training</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_PSG</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>PSG Support</value>
+        </filters>
+        <label>All Support Requests - PSG</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Permission</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Permission</value>
+        </filters>
+        <label>All Support Requests - Permission</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_Permission</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Reporting</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Reporting</value>
+        </filters>
+        <label>All Support Requests - Reporting</label>
+        <sharedTo>
+            <group>Core_Question_Reporting</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Sys_Access</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>System Access</value>
+        </filters>
+        <label>All Support Requests - System Access</label>
+        <sharedTo>
+            <group>Core_Question_System_Access</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>AllSupportRequest_Training</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Training</value>
+        </filters>
+        <label>All Support Requests - Training</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_Training</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_Clo_Support_Requests_Support_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </filters>
+        <label>All Closed Support Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>All_In_Support_Requests_Support_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>In Progress</value>
+        </filters>
+        <label>All In Progress Support Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>All_New_Support_Requests_Support_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </filters>
+        <label>All New Support Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>All_On_Support_Requests_Support_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>On Hold</value>
+        </filters>
+        <label>All On Hold Support Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Support_Requests_Product_Price</fullName>
+        <columns>NAME</columns>
+        <columns>Core_SLA_Indicator__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Product/Price</value>
+        </filters>
+        <label>All Support Requests - Product/Price</label>
+        <sharedTo>
+            <group>Core_Question_Products_Price</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_Support_Requests_Support_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Support Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>Core_Support_Requests_Core_Ask_A_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Support Requests</label>
+        <queue>Core_Support_Requests</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>EMEA_Data_Visibility_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </filters>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </filters>
+        <label>EMEA Data/Visibility Queue</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_EMEA</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>IPS_All_Closed_Support_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subcategory__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_Ask_A_Question__c.CoreAsk_A_Question_IPS</value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </filters>
+        <label>IPS All Closed Support Requests</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_Ask_A_Question_IPS</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>IPS_All_In_Progress_Support_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subcategory__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_Ask_A_Question__c.CoreAsk_A_Question_IPS</value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>In Progress</value>
+        </filters>
+        <label>IPS All In Progress Support Requests</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_Ask_A_Question_IPS</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>IPS_All_New_Support_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subcategory__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_Ask_A_Question__c.CoreAsk_A_Question_IPS</value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </filters>
+        <label>IPS All New Support Requests</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_Ask_A_Question_IPS</group>
+            <group>Core_Ask_A_Question_Users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>IPS_All_On_Hold_Support_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subcategory__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_Ask_A_Question__c.CoreAsk_A_Question_IPS</value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>On Hold</value>
+        </filters>
+        <label>IPS All On Hold  Support Requests</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Core_Ask_A_Question_IPS</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>IPS_All_Support_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Subcategory__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <columns>Core_Submitter_s_Email__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_Ask_A_Question__c.CoreAsk_A_Question_IPS</value>
+        </filters>
+        <label>IPS All Support Requests</label>
+        <sharedTo>
+            <group>Core_Ask_A_Question_IPS</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>MySupportRequest_Permission</fullName>
+        <columns>NAME</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Severity_Level__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Resolution__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Support_Owner__c</field>
+            <operation>equals</operation>
+            <value>$user</value>
+        </filters>
+        <label>My Support Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>PRC_Data_Visibility_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </filters>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </filters>
+        <label>PRC Data/Visibility Queue</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_PRC</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>WW_Data_Visibility_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_I_Need_Assistance_With__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Subject__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_I_Need_Assistance_With__c</field>
+            <operation>equals</operation>
+            <value>Data/ Visibility</value>
+        </filters>
+        <filters>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>WW</value>
+        </filters>
+        <label>WW Data/Visibility Queue</label>
+        <sharedTo>
+            <group>Core_Question_Data_Visibility_APJ</group>
+            <group>Core_Question_Data_Visibility_ASMO</group>
+            <group>Core_Question_Data_Visibility_EMEA</group>
+            <group>Core_Question_Data_Visibility_PRC</group>
+            <group>Core_Question_Data_Visibility_WW</group>
+            <group>Core_Question_WW</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>SR-{00000}</displayFormat>
+        <label>Support Request Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Ask a Question (Do Not Use - EOL)</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>CoreAsk_A_Question_IPS</fullName>
+        <active>true</active>
+        <description>This is for the IPS functionality used by Agents, Support Org Admins and Field Application Engineers working on Intel Premier Support case management</description>
+        <label>Ask A Question Intel Premier Support</label>
+        <picklistValues>
+            <picklist>Core_Functional_Area__c</picklist>
+            <values>
+                <fullName>Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contacts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_I_Need_Assistance_With__c</picklist>
+            <values>
+                <fullName>Account %26 Contacts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhancement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPS Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Projects</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training Materials</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Resolution_Type__c</picklist>
+            <values>
+                <fullName>Answered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other  %28Explain Below%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unanswered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User Training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Severity_Level__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Subcategory__c</picklist>
+            <values>
+                <fullName>Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add a Product to SFDC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add%2FModify Case Category</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Attachments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cases</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Access%2FVisibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Emulation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Tool Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Feedback</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ensure Product cannot be supported out of SFDC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interested Parties</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Make a Product IPS Visible</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Members</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR%2FMAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Project</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SLA%2FCase Milestones</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_Ask_A_Question_Sales</fullName>
+        <active>true</active>
+        <description>Sales AAQ</description>
+        <label>Ask A Question Sales</label>
+        <picklistValues>
+            <picklist>Core_Functional_Area__c</picklist>
+            <values>
+                <fullName>Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contacts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deal Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Geo__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_I_Need_Assistance_With__c</picklist>
+            <values>
+                <fullName>Bug%2FIssue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data%2F Visibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhancement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Permission</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product%2FPrice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Resolution_Type__c</picklist>
+            <values>
+                <fullName>Account%2FContact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add%2FUpdate Price</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add%2FUpdate Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conga</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Create %2F Change Dashboard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Create %2F Change Folder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Create %2F Change Report</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Updates</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delete User</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dynamic Dashboard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhancement Logged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Folder Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Logged with TAC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSBI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opptortunity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outlook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Update Account%2FSales Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Update Address</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Update Owner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Update Profile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Update Territory</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Severity_Level__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Subcategory__c</picklist>
+            <values>
+                <fullName>Contact Emulation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_SLA_Indicator__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_I_Need_Assistance_With__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Subject__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Severity_Level__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Support_Owner__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_Question_Do_Not_Change_Owner</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED( OwnerId )</errorConditionFormula>
+        <errorMessage>You cannot change the Submitter. Please change Support Owner for any owner changes.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Support_Request_On_Hold_Reason_Reqd</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL(Core_Status__c, &quot;On Hold&quot;),
+ Core_On_Hold_Reason__c =&quot;&quot;
+)</errorConditionFormula>
+        <errorMessage>A value for On Hold Reason is required if Status equals On Hold.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Support_Request_Resolution_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL(Core_Status__c, &quot;Closed&quot;),
+Core_Resolution__c=&quot;&quot;
+)</errorConditionFormula>
+        <errorMessage>A value for Resolution is required if Status equals Closed.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

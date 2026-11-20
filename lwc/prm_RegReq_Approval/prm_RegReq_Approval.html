@@ -1,0 +1,49 @@
+<!--
+    @description       : Self Registration Request record approval button logic
+    @Created By        : Agate team
+    @last modified on  : 
+    @last modified by  :
+-->
+<template>
+  <lightning-quick-action-panel title="Quick Action Title">
+  
+    <lightning-spinner alternative-text="Loading" size="small" lwc:if={isSpinner}></lightning-spinner>
+  
+    <lightning-record-edit-form object-api-name="PRM_Registration_Request__c" record-id={recordId}
+      onload={handleOnLoad}>
+      <lightning-messages></lightning-messages>
+      <template lwc:if={isError}>
+        
+        <div class="errorMsg">{errorMessage}</div>
+        <template for:each={errorMessages} for:item="error">
+          <!-- <div key={error} class="errorMsg">{error}</div> -->
+          <ul key={error} class="slds-list_dotted">
+            <li class="errorMsgList">{error}</li>
+          </ul>
+        </template>
+      </template>
+   
+      <!--Other fields here-->
+      
+      <template if:false={isError}>
+        <template lwc:if={showSave}>
+          <lightning-input-field field-name="PRM_Review_Note_txt__c" class="prmreviewnote">
+          </lightning-input-field>
+        </template>
+      </template>
+   
+    </lightning-record-edit-form>
+  
+    <template if:false={isError}>
+      <template lwc:if={showSave}>
+       
+        <div slot="footer">
+          <lightning-button variant="brand" label="Save" onclick={handleSaveButton}></lightning-button>
+          &nbsp; &nbsp;
+          <lightning-button variant="destructive" label="Cancel" onclick={closeAction}></lightning-button>
+        </div>
+      </template>
+  
+  </template>
+  </lightning-quick-action-panel>
+</template>

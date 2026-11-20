@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Inbound Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Inbound Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Hierarchy ID --></label>
+        <name>Core_Hierarchy_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Name --></label>
+        <name>Core_Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>Core_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Id --></label>
+        <name>Core_Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivation Date --></label>
+        <name>Deactivation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is MMID Blank --></label>
+        <name>Is_MMID_Blank__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_AdvocatedForNewDesign --></label>
+        <name>L4_AdvocatedForNewDesign__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_CodenameText --></label>
+        <name>L4_CodenameText__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_CodenameText_rawValue --></label>
+        <name>L4_CodenameText_rawValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_CoreCount --></label>
+        <name>L4_CoreCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_DesignExpirationDate --></label>
+        <name>L4_DesignExpirationDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_DriveCapacity --></label>
+        <name>L4_DriveCapacity__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_DriveCapacity_rawValue --></label>
+        <name>L4_DriveCapacity_rawValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_Filter_Family --></label>
+        <name>L4_Filter_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_Filter_Family_rawValue --></label>
+        <name>L4_Filter_Family_rawValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_LaunchDate --></label>
+        <name>L4_LaunchDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_MarketSegment --></label>
+        <name>L4_MarketSegment__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_MaxTDP --></label>
+        <name>L4_MaxTDP__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_MaxTDP_rawValue --></label>
+        <name>L4_MaxTDP_rawValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_ProcessorNumber --></label>
+        <name>L4_ProcessorNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_ProductGroup --></label>
+        <name>L4_ProductGroup__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_ProductGroup_rawValue --></label>
+        <name>L4_ProductGroup_rawValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 Restriction Level --></label>
+        <name>L4_Restriction_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_StableImagePlatformProgramVersion --></label>
+        <name>L4_StableImagePlatformProgramVersion__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_StatusCode --></label>
+        <name>L4_StatusCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_Sub_Component_Category_WOR --></label>
+        <name>L4_Sub_Component_Category_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_Sub_Component_Category_WR --></label>
+        <name>L4_Sub_Component_Category_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Component Category --></label>
+        <name>L4_Sub_Component_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4_VProTechnology --></label>
+        <name>L4_VProTechnology__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_CustomCustomerCode_WOR --></label>
+        <name>L5_CustomCustomerCode_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_CustomCustomerCode_WR --></label>
+        <name>L5_CustomCustomerCode_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_CustomCustomerCode --></label>
+        <name>L5_CustomCustomerCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_CustomIndicator_WOR --></label>
+        <name>L5_CustomIndicator_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_CustomIndicator_WR --></label>
+        <name>L5_CustomIndicator_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_CustomIndicator --></label>
+        <name>L5_CustomIndicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Division_withBracket_WOR --></label>
+        <name>L5_Division_withBracket_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Division_withBracket_WR --></label>
+        <name>L5_Division_withBracket_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Division_withBracket --></label>
+        <name>L5_Division_withBracket__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Division_withoutBracket_WOR --></label>
+        <name>L5_Division_withoutBracket_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Division_withoutBracket_WR --></label>
+        <name>L5_Division_withoutBracket_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Division_withoutBracket --></label>
+        <name>L5_Division_withoutBracket__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_FamilyName_WOR --></label>
+        <name>L5_FamilyName_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_FamilyName_WR --></label>
+        <name>L5_FamilyName_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_FamilyName --></label>
+        <name>L5_FamilyName__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Group_withBracket_WOR --></label>
+        <name>L5_Group_withBracket_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Group_withBracket_WR --></label>
+        <name>L5_Group_withBracket_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Group_withBracket --></label>
+        <name>L5_Group_withBracket__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Group_withoutBracket_WOR --></label>
+        <name>L5_Group_withoutBracket_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Group_withoutBracket_WR --></label>
+        <name>L5_Group_withoutBracket_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Group_withoutBracket --></label>
+        <name>L5_Group_withoutBracket__c</name>
+    </fields>
+    <fields>
+        <label><!-- Line Of Business Description --></label>
+        <name>L5_Line_Of_Business_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Line of Business --></label>
+        <name>L5_Line_of_Business__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_MarketCodeName_WOR --></label>
+        <name>L5_MarketCodeName_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_MarketCodeName_WR --></label>
+        <name>L5_MarketCodeName_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_MarketCodeName --></label>
+        <name>L5_MarketCodeName__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_MaterialStatusCode_WOR --></label>
+        <name>L5_MaterialStatusCode_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_MaterialStatusCode_WR --></label>
+        <name>L5_MaterialStatusCode_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_MaterialStatusCode --></label>
+        <name>L5_MaterialStatusCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Opcode_WOR --></label>
+        <name>L5_Opcode_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Opcode_WR --></label>
+        <name>L5_Opcode_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_Opcode --></label>
+        <name>L5_Opcode__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_OrderingCode_WOR --></label>
+        <name>L5_OrderingCode_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_OrderingCode_WR --></label>
+        <name>L5_OrderingCode_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_OrderingCode --></label>
+        <name>L5_OrderingCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProductClass_WOR --></label>
+        <name>L5_ProductClass_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProductClass_WR --></label>
+        <name>L5_ProductClass_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProductClass --></label>
+        <name>L5_ProductClass__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProductDescription_WOR --></label>
+        <name>L5_ProductDescription_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProductDescription_WR --></label>
+        <name>L5_ProductDescription_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProductDescription --></label>
+        <name>L5_ProductDescription__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProfitCenter_WOR --></label>
+        <name>L5_ProfitCenter_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProfitCenter_WR --></label>
+        <name>L5_ProfitCenter_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_ProfitCenter --></label>
+        <name>L5_ProfitCenter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profit Center Description --></label>
+        <name>L5_Profit_Center_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_mmid_WR --></label>
+        <name>L5_mmid_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5_mmid --></label>
+        <name>L5_mmid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restriction Code --></label>
+        <name>Restriction_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>iPaaS_Load_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_1_epm_id --></label>
+        <name>level_1_epm_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_1_epm_name --></label>
+        <name>level_1_epm_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_2_epm_id --></label>
+        <name>level_2_epm_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_2_epm_name --></label>
+        <name>level_2_epm_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_3_epm_id --></label>
+        <name>level_3_epm_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_3_epm_name --></label>
+        <name>level_3_epm_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_4_epm_id --></label>
+        <name>level_4_epm_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_4_epm_name --></label>
+        <name>level_4_epm_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_5_epm_id --></label>
+        <name>level_5_epm_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- level_5_epm_name --></label>
+        <name>level_5_epm_name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

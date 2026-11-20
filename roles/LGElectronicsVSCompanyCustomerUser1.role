@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>LG Electronics VS Company Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>LG Electronics VS Company Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10709544_Allen_Lee</parentRole>
+</Role>

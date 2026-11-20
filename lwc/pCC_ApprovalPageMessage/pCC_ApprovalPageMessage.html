@@ -1,0 +1,17 @@
+<template>
+    <div class="marginhorizotal">
+      <template if:true={showMessage}>
+        <template if:true={enableMessage}>
+            <lightning-card>
+        <div class="slds-text-heading_medium slds-text-align_center">Do Not Approve/Reject the Deal from this page. Please go to the deal record and then perform the actions accordingly.</div>
+            </lightning-card>
+</template>
+<template if:true={enableMessagesPre}>
+  <lightning-card>
+<div class="slds-text-heading_medium slds-text-align_center">Do Not Approve/Reject the Deal from this page. Please go to the deal record and then perform the actions accordingly.</div>
+  </lightning-card>
+</template>
+
+</template>
+</div>
+</template>

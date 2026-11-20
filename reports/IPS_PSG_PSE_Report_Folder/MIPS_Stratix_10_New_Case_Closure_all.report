@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_9253579</developerName>
+        <masterLabel>CEG Owner Groups 1</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-AP-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-EMIF</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-HSIO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-SOCO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-PG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-CAT2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-GUAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
+            </sourceValues>
+            <value>WWRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EU-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-EU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-US</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-US-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-MAG</sourceValue>
+            </sourceValues>
+            <value>MAG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-SJ-DLA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Software!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HLD!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SH-Board-Design</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Config!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-EMIF!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-FPGA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Software!</sourceValue>
+            </sourceValues>
+            <value>Factory APPS</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_57505999</developerName>
+        <masterLabel>CEG Owner Groups 2</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-unassigned</sourceValue>
+            </sourceValues>
+            <value>APRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-IP/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Manager</sourceValue>
+            </sourceValues>
+            <value>EURAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-JP-CAT2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-JP-Manager</sourceValue>
+            </sourceValues>
+            <value>JPRAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-EMIF</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-GUAD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-HSIO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-SOCO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-unassigned</sourceValue>
+            </sourceValues>
+            <value>NARAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-PG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <value>PGGAE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-SJ-CQE!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-DLA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HLD!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Software!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SH-Board-Design</sourceValue>
+            </sourceValues>
+            <value>SJ APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-PG-Config!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-EMIF!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-FPGA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Software!</sourceValue>
+            </sourceValues>
+            <value>PG APPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EU-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-EU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-MAG-US</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-US-MAG</sourceValue>
+            </sourceValues>
+            <value>MAG</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_40617595</developerName>
+        <masterLabel>Family</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Product__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 MX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 SX SoC FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 SX SoC FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 LP FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone 10</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_95270773</developerName>
+        <masterLabel>Grouped Case Closure</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Customer &gt; Configuration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Error/Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Documentation Guidance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Community/Forum Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Hardware</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; BIOS Vendor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; OS Vendor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; SysInt Vendor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Tool Vendor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; 3rd Party</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Updated Version</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer &gt; Manufacturing</sourceValue>
+            </sourceValues>
+            <value>Customer</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel &gt; Design Review</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Design Consultation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Customized Solution</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Performance Optimization</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Answered General Inquiry</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Expected Behavior</sourceValue>
+            </sourceValues>
+            <value>Intel Support</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel &gt; Documentation Updated</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Documentation Missing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Silicon Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Hardware Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Firmware Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Software Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Unknown Fix</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Manufacturing</sourceValue>
+            </sourceValues>
+            <value>Intel Bug/Fixes</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Customer &gt; Change Request</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Deferred To Future Project</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Not Supported/Not POR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; No Fix/Not To Be Fixed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Not Reproducible</sourceValue>
+            </sourceValues>
+            <value>Gaps, Enhancements</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Customer &gt; License Request</sourceValue>
+            </sourceValues>
+            <value>License</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel &gt; Known Issue</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Regression</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel &gt; Resolved via Prior Case</sourceValue>
+            </sourceValues>
+            <value>Inetel Known Issues</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CLOSED_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_95270773</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Top Issues - Category by Family</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Escalated_Date__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Organization__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Case.Core_AAQC_Case_recordType</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Programmable Solutions Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Invalid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_40617595</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Stratix</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Case_Closure__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Case_Closure__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>license,duplicate</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_40617595</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CLOSED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_95270773</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MIPS Stratix 10 New Case Closure all</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,21 @@
+<apex:page Controller="Core_MDF_ExportToExcel" 
+           showHeader="false" readOnly="true" cache="true" contentType="{!contentType}" renderAs="{!renderType}" 
+           applyHtmlTag="false">
+    <apex:outputText value="{!bom}Intel Confidential"/>{!newLine} 
+    <apex:outputText value="Export Date: {!reportDate}"/>{!newLine} {!newLine}        
+    <apex:outputText value="{!filterName}"/>{!newLine}
+     
+    
+    <apex:repeat value="{!lstColumn}" var="varfield">                     
+        <apex:outputText value="{!varField.label}"/>,
+    </apex:repeat>{!newline}
+    <apex:repeat value="{!lstlstObj}" var="block">
+        <apex:repeat value="{!block}" var="dataRecord">
+            <apex:repeat value="{!lstColumn}" var="varfield">
+               <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == False}"/>
+               <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == True}"/>,
+            </apex:repeat>{!newline}
+        </apex:repeat>                                                                                    
+    </apex:repeat>
+   
+</apex:page>

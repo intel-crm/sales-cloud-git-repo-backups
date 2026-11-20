@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>CORE_MDF_ACCOUNT_USER_CCP_CLAIM_CASE_REVIEWER_INTERNAL</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>ACCOUNT USER - CCP CLAIM CASE REVIEWER INTERNAL</description>
+        <label>ACCOUNT USER - CCP CLAIM CASE REVIEWER INTERNAL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Account_users_sharing_for_L2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Account users sharing for L2</label>
+        <sharedTo>
+            <group>Core_MDF_Grant_Access_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_1</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Account User Share from All Users CCP Int to All Users CCP Int</description>
+        <label>Account User Share for All Users CCP Int 1</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_2</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Account User Share from CCP CCF Boost EXTERNAL ALL to All Users CCP Int</description>
+        <label>Account User Share for All Users CCP Int 2</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CCFB_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_3</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Account Share from CCP CCF EXTERNAL ALL to All Users CCP Internal</description>
+        <label>Account User Share for All Users CCP Int 3</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_CCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_4</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Account User share from CCP DCF EXTERNAL ALL to All Users CCP Internal</description>
+        <label>Account User Share for All Users CCP Int 4</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_DCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDF_Account_User_Share_for_All_Users_CCP_Int_6</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Account User Share from CCP SPCF EXTERNAL ALL to All Users CCP Internal</description>
+        <label>Account User Share for All Users CCP Int 5</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDF_CCP_SPCF_EXTERNAL_ALL</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

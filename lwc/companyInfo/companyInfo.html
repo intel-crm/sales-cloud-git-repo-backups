@@ -1,0 +1,290 @@
+<template>
+<div class="mainDiv">
+		<lightning-card>
+				<h2 class="cardHeading">{formLabels.PRM_CompanyInformation}</h2>
+				<div class="slds-grid slds-wrap slds-size_1-of-1 subHeadingDiv">
+						<h3 class="subHeading">{formLabels.PRM_ContactInformation}</h3>
+						<template if:true={isPrimary}>
+								<button class="slds-button slds-button_icon" title={formLabels.PRM_Edit_ButtonLabel}>
+										<lightning-icon icon-name="utility:edit" alternative-text="edit" size="x-small" onclick={handleContactInfo}> </lightning-icon>
+										<span class="slds-assistive-text">{formLabels.PRM_Edit_ButtonLabel}</span>
+								</button>
+						</template>
+				</div>
+				<div class="cardBody">
+						<div class="slds-grid slds-wrap">
+								<div class="slds-max-small-size_1-of-1 slds-size_1-of-4 sectionInfo">
+										<div class="sectionHeading">{formLabels.PRM_CompanyName}</div>
+										<div class="sectionDetail">{companyName}</div>
+										<div class="sectionHeading" style="margin-top: 1rem;">{formLabels.PRM_Role}</div>
+										<div class="sectionDetail">{partnerRole}</div>
+								</div>
+
+								<div class="slds-max-small-size_1-of-1 slds-size_1-of-4 sectionInfo">
+										<div class="sectionHeading">{formLabels.PRM_Country}</div><!--TWC729-7727-->
+										<div class="sectionDetail">
+												<template if:true={showPhysicalAddress}>
+													<!--TWC729-7727
+														<template if:true={physicalAddressLine1}>
+																<div>{physicalAddressLine1}</div>
+														</template>
+														<template if:true={physicalAddressLine2}>
+																<div>{physicalAddressLine2}</div>
+														</template>
+														<template if:true={physicalPostalCode}>
+																<div>{physicalPostalCode}</div>
+														</template>-->
+														<template if:true={physicalCountry}>
+																<div>{physicalCountry}</div>
+														</template>
+												</template>
+										</div>
+								</div>
+								<div class="slds-max-small-size_1-of-1 slds-size_1-of-4 sectionInfo">
+										<div class="sectionHeading">{formLabels.PRM_Website}</div>
+										<template if:false={isEdit}>
+												<div class="sectionDetail">{website}</div>
+										</template>
+										<template if:true={isEdit}>
+												<div class="sectionDetail">
+														<lightning-input class="inputField" onchange={websiteOnChange} value={website}> </lightning-input>
+												</div>
+										</template>
+								</div>
+						</div>
+				</div>
+				<template if:true={isEdit}>
+						<div class="slds-grid slds-wrap" style="justify-content: center;">
+								<button onclick={onSave} class="slds-button slds-button_brand save_button btnGeneric">{formLabels.PRM_Save_ButtonLabel}</button>
+								<button onclick={onCancel} class="slds-button slds-button_neutral btnGeneric">{formLabels.PRM_Cancel_ButtonLabel}</button>
+						</div>
+				</template>
+				<div class="slds-grid slds-wrap slds-size_1-of-1 subHeadingDiv">
+						<h3 class="subHeading">{formLabels.PRM_PartnerInformation}</h3>
+				</div>
+				<div class="cardBody">
+						<div class="slds-grid" style="margin-top: 1rem; margin-bottom: 2rem;">
+								<div class="slds-max-small-size_1-of-1 slds-size_1-of-4 sectionInfo">
+										<div class="sectionHeading">{formLabels.PRM_AccountNumber}</div>
+										<div class="sectionDetail">{AccountNumber}</div>
+										<!-- <div class="sectionHeading" style="margin-top: 1rem;">{formLabels.PRM_Grouping}</div>
+										<div class="sectionDetail">{naturalGrouping}</div>  -->
+										<!-- IPA2.0 - TWC727 - 2898 -->
+								</div>
+								<!-- IPA2.0 - TWC727 - 2898 -->
+								<div class="slds-max-small-size_1-of-1 slds-size_1-of-4 sectionInfo">
+										<div class="sectionHeading" >{formLabels.PRM_Grouping}</div>
+										<div class="sectionDetail">{naturalGrouping}</div>
+								</div>
+								<template if:true={specialityAndBenefit}>
+										<div class="slds-max-small-size_1-of-1 slds-size_2-of-4 sectionInfo">
+												<template if:true={isSpeciality}>
+														<div class="sectionHeading">{formLabels.PRM_SpecialtyLabel}
+															<a href={manageUrl} target="_self" class="benefitSection manageLinkColor"> {formLabels.PRM_Manage}></a>
+														</div>	
+														<template for:each={spetialities} for:item="speciatilty">
+																<div class="sectionDetail" key={speciatilty.id}>
+																		{speciatilty}
+																</div>
+														</template>
+														<div style="margin-top: 1rem;"></div>
+												</template>
+												<template if:true={isBenefit}>
+														<div class="sectionHeading">{formLabels.PRM_SelectBenefits}
+																<a href={manageUrl} target="_self" class="benefitSection manageLinkColor"> {formLabels.PRM_Manage}></a>
+														</div>
+														<template for:each={benifits} for:item="benifit">
+																<div class="sectionDetail" key={benifit.id}>{benifit} </div>
+														</template>
+												</template>
+										</div>
+								</template>
+								
+						</div>
+				</div>
+				<div class="slds-grid slds-wrap slds-size_1-of-1 subHeadingDiv">
+						<h3 class="subHeading" style="margin-top: 0rem;">{formLabels.PRM_AcceptableDomains} &nbsp;
+								<template if:true={isPrimary}>
+										<button class="slds-button slds-button_icon" title="Edit">
+												<lightning-icon icon-name="utility:edit" alternative-text={formLabels.PRM_Edit_ButtonLabel} size="x-small" onclick={openmodal}> </lightning-icon>
+												<span class="slds-assistive-text">{formLabels.PRM_Edit_ButtonLabel}</span>
+										</button>
+								</template>
+							</h3>
+				</div>
+				<div class="cardBody">
+						<div class="slds-grid" style="margin-top: 1rem; margin-bottom: 2rem;">
+								<div class="slds-max-small-size_1-of-1 slds-size_2-of-4 sectionInfo">
+										<template for:each={responces} for:item="res">
+												<div class="sectionDetail" key={res.RecordId}>
+														{res.WhiteListName}
+												</div>
+										</template>
+								</div>
+						</div>
+						<c-terms-and-condition></c-terms-and-condition>
+				</div>	
+
+				<!-- <template if:true={isPrimary}> -->
+				<template if:true={isPartnerAssistAvailable}>
+						<div class="slds-grid slds-wrap slds-size_1-of-1 subHeadingDiv">
+								<h3 class="subHeading">{formLabels.PRM_ReleaseInfo}</h3>
+								<template if:true={isPrimary}>
+										<button class="slds-button slds-button_icon" title={formLabels.PRM_Edit_ButtonLabel}>
+												<lightning-icon icon-name="utility:edit" alternative-text={formLabels.PRM_Edit_ButtonLabel} size="x-small" onclick={openPartnerAssistModal}> </lightning-icon>
+												<span class="slds-assistive-text">{formLabels.PRM_Edit_ButtonLabel}</span>
+										</button>
+								</template>
+						</div>
+						<div class="cardBody" style="margin-bottom: 2rem;">
+								<div class="slds-grid slds-wrap slds-m-bottom_small">
+										<div class="slds-size_1-of-1 sectionDetail">{PartnerAssistInfo}</div>
+								</div>
+
+								<div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+												<div class="sectionHeading">{formLabels.PRM_OptIn}</div>
+												<lightning-input checked={partnerAssistCheckbox} type="checkbox" disabled={optinCheckboxDisable} onchange={partnerAssistCheck}></lightning-input>
+										</div>
+										<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+												<div class="sectionHeading">{formLabels.PRM_Disti1}</div>
+												<template if:false={partnerAssistModal}><span class="sectionDetail">{partnerAssistOption1.DistributerName}</span></template>
+												<template if:true={partnerAssistModal}>
+														<lightning-combobox
+																								name="optionSelect"
+																								disabled={distributerSelectDisable}
+																								onchange={changeHandler1}
+																								class="selectClass"
+																								value={partnerAssistOption1.DistributerName}
+																								options={distributer1}
+																								>
+														</lightning-combobox>
+												</template>
+										</div>
+										<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+												<div class="sectionHeading">{formLabels.PRM_Disti2}</div>
+												<template if:true={partnerAssistOption2}>
+														<template if:false={partnerAssistModal}><span class="sectionDetail">{partnerAssistOption2.DistributerName}</span></template>
+														<template if:true={partnerAssistModal}>
+																<lightning-combobox
+																										name="optionSelect"
+																										disabled={distributerSelectDisable}
+																										onchange={changeHandler2}
+																										class="selectClass"
+																										value={partnerAssistOption2.DistributerName}
+																										options={distributer1}
+																										>
+																</lightning-combobox>
+														</template>
+												</template>
+												<template if:false={partnerAssistOption2}>
+														<template if:true={partnerAssistModal}>
+																<lightning-combobox name="optionSelect" disabled={distributerSelectDisable} onchange={changeHandler2} class="selectClass" options={distributer1}>
+																</lightning-combobox>
+														</template>
+												</template>
+										</div>
+								</div>
+						</div>
+						<template if:true={partnerAssistModal}>
+								<div class="slds-grid slds-wrap" style="justify-content: center;">
+										<button onclick={savePartAsstModel} class="slds-button slds-button_brand save_button btnGeneric">{formLabels.PRM_Save_ButtonLabel}</button>
+										<button onclick={closeModal} class="slds-button slds-button_neutral btnGeneric">{formLabels.PRM_Cancel_ButtonLabel}</button>
+								</div>
+						</template>
+				</template>
+				<!-- </template> -->
+
+		</lightning-card>
+
+		<!-- Modal for the partner info edit functionality-->
+		<template if:true={openmodel}>
+				<div class="modal-hidden" style="height: 640px;">
+						<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+								<div class="modalContainerCustom">
+										<header class="slds-modal__header modalHeader">
+												<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse modalCloseButton" title="Close" onclick={closeModal}>
+														<lightning-icon icon-name="utility:close" size="xx-small"> </lightning-icon>
+														<span class="slds-assistive-text">Close</span>
+												</button>
+
+												<h2 id="modal-heading-01" class="slds-hyphenate subHeadingPopUp">
+														{formLabels.PRM_EditPartnerInfo}
+												</h2>
+										</header>
+										<div class="slds-modal__content slds-p-around_large modalBody" id="modal-content-id-1">
+												<div class="slds-grid slds-wrap" style="margin-top: 1rem; margin-bottom: 2rem;">
+
+														<div class="slds-grid slds-wrap slds-size_1-of-1">
+																<div class="sectionHeading" >{formLabels.PRM_AcceptableDomains}</div>
+																<div class="whiteListCss">
+																		{formLabels.PRM_AcceptableDomains_Info}
+																</div>
+																<div class="slds-m-top_small">
+																		<!--<lightning-icon icon-name="utility:warning" alternative-text="caution" size="xx-small"></lightning-icon>-->
+
+																		<span class="whiteListCss">
+																				<lightning-icon icon-name="utility:warning" alternative-text="warning" size="xx-small"></lightning-icon> {formLabels.PRM_AcceptableDomains_Caution}</span
+																				>
+																</div>
+																<div class="slds-grid slds-wrap" style="width: 100%;">
+																		<template for:each={responces} for:item="res" for:index="index">
+																				<div class="slds-grid slds-wrap" key={res.RecordId} style="width: 100%; align-items: center;">
+																						<div class="slds-size_4-of-5" key={res.RecordId}>
+																								<div class="form-inline" data-rec={res.RecordId}>
+																										<span>@</span>
+																										<input
+																														name={index}
+																														title={res.RecordId}
+																														onblur={handleAcceptDomainBlur}
+																														value={res.WhiteListName}
+																														onchange={handleAcceptDomainChange}
+																														type="text"
+																														/>
+																								</div>
+
+																								<span class="slds-assistive-text">{res.WhiteListName}</span>
+																						</div>
+																						<div class="slds-size_1-of-5" key={res.RecordId}>
+																								<lightning-helptext content={formLabels.PRM_AcceptableDomains_HelpText} class="customIcon"> </lightning-helptext>
+																								<button class="slds-button slds-button_icon" style="margin-top: 4px;">
+																										<lightning-icon
+																																		icon-name="utility:delete"
+																																		alternative-text={formLabels.PRM_Remove_ButtonLabel}
+																																		size="xx-small"
+																																		name={index}
+																																		class={res.RecordId}
+																																		onclick={removeDomain}
+																																		title={formLabels.PRM_Remove_ButtonLabel}
+																																		tooltip={formLabels.PRM_Remove_ButtonLabel}
+																																		>
+																										</lightning-icon>
+																										<!--<span title={index} onclick ={removeDomain}><i class="fa-trash-empty"></i></span>-->
+																										<span class="slds-assistive-text">{formLabels.PRM_Remove_ButtonLabel}</span>
+																								</button>
+																						</div>
+																						<div data-val={res.RecordId} class="slds-text-color_error errorMsg"></div>
+																				</div>
+																		</template>
+																</div>
+																<button class="slds-button slds-button_neutral add_domain btnGeneric" style="margin-top: 1rem;" onclick={addDomainTextField}>
+																		{formLabels.PRM_Add_ButtonLabel}
+																</button>
+														</div>
+												</div>
+										</div>
+										<footer class="footerModalCustom">
+												<button class="slds-button slds-button_neutral btnGeneric" onclick={closeModal}>
+														{formLabels.PRM_Cancel_ButtonLabel}
+												</button>
+												<button class="slds-button slds-button_brand save_button btnGeneric" onclick={saveModel}>
+														{formLabels.PRM_Save_ButtonLabel}
+												</button>
+										</footer>
+								</div>
+						</section>
+						<div class="slds-backdrop slds-backdrop_open"></div>
+				</div>
+		</template>
+</div>
+</template>

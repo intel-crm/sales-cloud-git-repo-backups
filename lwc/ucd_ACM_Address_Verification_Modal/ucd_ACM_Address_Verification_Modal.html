@@ -1,0 +1,77 @@
+<template>
+    <template if:false={ready}>
+        <lightning-modal-body>
+            <div class="slds-is-relative slds-p-around_x-large slds-align_absolute-center" style="min-height: 8rem;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </lightning-modal-body>
+    </template>
+
+    <template if:true={ready}>
+        <lightning-modal-header label="Verify Address"></lightning-modal-header>
+        <lightning-modal-body>
+            <div class="slds-is-relative" onclick={handleDeselectAddress}>
+                <template if:true={saving}>
+                    <lightning-spinner alternative-text="Saving" size="medium"></lightning-spinner>
+                </template>
+                <template if:true={hasCleansedAddress}>
+                <div class="slds-m-bottom_small slds-text-align_center slds-text-color_weak">
+                    Click an address to select it, then click Proceed
+                </div>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class={cleansedBoxClass} data-option="cleansed" onclick={handleAddressBoxClick}
+                            style="height: 100%; cursor: pointer;">
+                            <div class="slds-text-title_caps slds-text-color_weak slds-m-bottom_small">
+                                <b>Loqate Cleansed Address</b>
+                            </div>
+                            <p style="color:rgb(27, 150, 255)">{cleansedAddress.streetName}</p>
+                            <p style="color:rgb(27, 150, 255)">
+                                {cleansedAddress.cityName},&nbsp;{cleansedAddress.stateName}&nbsp;{cleansedAddress.postalCode}
+                            </p>
+                            <p style="color:rgb(27, 150, 255)">{cleansedAddress.countryName}</p>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class={userInputBoxClass} data-option="userInput" onclick={handleAddressBoxClick}
+                            style="height: 100%; cursor: pointer;">
+                            <div class="slds-text-title_caps slds-text-color_weak slds-m-bottom_small">
+                                <b>Address As Entered</b>
+                            </div>
+                            <p style="color:rgb(27, 150, 255)">{userEnteredAddress.streetName}</p>
+                            <p style="color:rgb(27, 150, 255)">
+                                {userEnteredAddress.cityName},&nbsp;{userEnteredAddress.stateName}&nbsp;{userEnteredAddress.postalCode}
+                            </p>
+                            <p style="color:rgb(27, 150, 255)">{userEnteredAddress.countryName}</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <template if:false={hasCleansedAddress}>
+                <p style="color:rgb(41, 43, 44);text-align: center; font-weight: bold;">No matching address found.
+                    Please verify the entered address before proceeding with request submission.</p>
+                <div class="slds-grid slds-gutters slds-wrap slds-grid_align-center slds-m-top_small">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class={userInputBoxClass} data-option="userInput" onclick={handleAddressBoxClick}
+                            style="height: 100%; cursor: pointer;">
+                            <div class="slds-text-title_caps slds-text-color_weak slds-m-bottom_small">
+                                <b>Address As Entered</b>
+                            </div>
+                            <p style="color:rgb(27, 150, 255)">{userEnteredAddress.streetName}</p>
+                            <p style="color:rgb(27, 150, 255)">
+                                {userEnteredAddress.cityName},&nbsp;{userEnteredAddress.stateName}&nbsp;{userEnteredAddress.postalCode}
+                            </p>
+                            <p style="color:rgb(27, 150, 255)">{userEnteredAddress.countryName}</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            </div>
+        </lightning-modal-body>
+        <lightning-modal-footer>
+            <lightning-button label="Cancel" onclick={handleCancel} disabled={saving}></lightning-button>
+            <lightning-button variant="brand" label="Proceed" class="slds-m-left_x-small" onclick={handleProceed} disabled={saving}></lightning-button>
+        </lightning-modal-footer>
+    </template>
+</template>

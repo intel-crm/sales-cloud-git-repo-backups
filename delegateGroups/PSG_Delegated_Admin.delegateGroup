@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>AGS_PSG Business Admin</groups>
+    <groups>PSG ASMO ABOS</groups>
+    <groups>PSG ASMO AZ NM</groups>
+    <groups>PSG GEO LEAD - CP</groups>
+    <groups>PSG Internal Users - ReadEdit</groups>
+    <groups>PSG WW BM - CP</groups>
+    <groups>PSG CISCO</groups>
+    <groups>PSG ASMO ACAN</groups>
+    <groups>PSG ASMO CA</groups>
+    <groups>PSG ASMO HI</groups>
+    <groups>PSG ASMO IA</groups>
+    <groups>PSG ASMO MID</groups>
+    <groups>PSG ASMO MINN</groups>
+    <groups>PSG ASMO NV</groups>
+    <groups>PSG ASMO NW</groups>
+    <groups>PSG ASMO OHIO</groups>
+    <groups>PSG ASMO RM</groups>
+    <groups>PSG ASMO SC</groups>
+    <groups>PSG ASMO SE</groups>
+    <groups>PSG ASMO WI</groups>
+    <groups>PSG BUSOPS APJ</groups>
+    <groups>PSG BUSOPS ASMO</groups>
+    <groups>PSG BUSOPS EMEA</groups>
+    <groups>PSG BUSOPS ASMO</groups>
+    <groups>PSG BUSOPS PRC</groups>
+    <groups>PSG INTEL</groups>
+    <groups>PSG Manage -Disti Margin</groups>
+    <groups>PSG Manage -MSVP</groups>
+    <groups>PSG MICROSOFT</groups>
+    <groups>PSG SOS AP South</groups>
+    <groups>PSG SOS APJ</groups>
+    <groups>PSG ASMO</groups>
+    <groups>PSG SOS EMEA</groups>
+    <groups>PSG SOS Japan</groups>
+    <groups>PSG SOS Korea</groups>
+    <groups>PSG SOS NA</groups>
+    <groups>PSG SOS PRC</groups>
+    <groups>PSG SOS PRC Arw</groups>
+    <groups>PSG SOS PRC Cytech</groups>
+    <groups>PSG SOS Taiwan</groups>
+    <groups>PSG SOS Transfer Pricing</groups>
+    <groups>PSG FSE APJ</groups>
+    <groups>PSG FSE ASMO</groups>
+    <groups>PSG FSE EMEA</groups>
+    <groups>PSG FSE PRC</groups>
+    <label>PSG Delegated Admin</label>
+    <loginAccess>false</loginAccess>
+    <roles>_SMG</roles>
+</DelegateGroup>

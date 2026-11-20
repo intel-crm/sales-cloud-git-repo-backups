@@ -1,0 +1,50 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_File_AssignSPAccount
+Version     : 1.0 
+Created Date: 23 Sept 2015
+Function    : Visualforce Page to Assign Supported Products and Accounts to IPS File  
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Johri, Sagar                09/15/2015             Created
+------------------------------------------------------------------------------------------------------------>
+
+<apex:page standardController="Core_IPS_File_Upload_Master__c" extensions="Core_IPS_File_AssignSPAccount_Controller" showHeader="false">
+    <apex:form >
+        <apex:message />
+        <apex:messages />
+        <apex:pageBlock title="{!$Label.Core_IPS_File_AssignSPAccount_Page_PBTitle}" id="block" mode="edit">
+            <apex:variable value="{!1}" var="rowNum"/>
+            <apex:pageBlockSection showHeader="true" title="IPS File" columns="1">
+                <apex:pageBlockTable var="wrp" value="{!wrplist}" border="1"  style="width:100%">
+                    <apex:column headerValue="S No." >
+                        <apex:outputText value="{!rowNum}" />
+                        <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                    </apex:column>
+                    <apex:column headerValue="Supported Product">
+                        <apex:inputField value="{!wrp.fps.Core_Supported_Product__c}" required="true"/>
+                    </apex:column>
+                    <apex:column headerValue="Account">
+                        <apex:inputField value="{!wrp.fps.Core_Account__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="Parent" rendered="{!renderParent}">
+                        <!--<apex:inputField value="{!wrp.fps.Core_IPS_File_Upload_Master__c}"/>-->
+                        <apex:inputField value="{!Core_IPS_File_Upload_Master__c.Id}"/>
+                    </apex:column>
+                    <apex:column headerValue="Actions">
+                        <apex:commandbutton value="Add Row" action="{!addrow}"/>
+                        <apex:commandbutton value="Delete Row" action="{!delrow}" disabled="{!delButtonDisabled}" reRender="block"  immediate="true" html-formnovalidate="formnovalidate">
+                            <apex:param name="rowToBeDeleted" value="true"  assignTo="{!wrp.flag}"></apex:param>
+                        </apex:commandbutton>
+                    </apex:column>
+                </apex:pageBlockTable>
+             </apex:pageBlockSection>
+             <div align="center" draggable="false" >
+                 <apex:pageBlockButtons location="top" >
+                    <apex:commandbutton value="Save" action="{!saveRecord}"/>
+                    <apex:commandbutton value="Cancel" action="{!cancelRecord}" immediate="true" html-formnovalidate="formnovalidate"/>
+                </apex:pageBlockButtons>
+             </div>
+        </apex:pageBlock>     
+    </apex:form>
+</apex:page>

@@ -1,0 +1,69 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="title" type="string" />
+    <aura:attribute name="subtitle" type="string" />
+    <aura:attribute name="CTA" type="string" />
+    <aura:attribute name="CTAUrl" type="string" />
+    <aura:attribute name="viewAllHeadline" type="String" />
+    <aura:attribute name="viewMoreLinkTitle" type="String" default=""/>
+    <aura:attribute name="listing" type="Object[]" default="[]" />
+    <aura:attribute name="viewAll" type="boolean" />
+    <aura:attribute name="ctaTop" type="boolean" default="true" />
+    <aura:attribute name="showOnlyFirst" type="Integer" default="9"/>
+    <aura:attribute name="showOnlyFirstMobile" type="Integer" default="9"/>
+    
+    
+    <!-- SEO Friendly URL attribute -->
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="objectApiName" type="string" />
+    <aura:attribute name="isCategoryPage" type="boolean" default="false" description="For identifying Category pages for creating SEO Friendly URL" />
+    <aura:attribute name="isPartnerPage" type="boolean" default="false" description="For identifying Partner program pages for creating SEO Friendly URL" />
+    <aura:attribute name="isSpecialtyPage" type="boolean" default="false" description="For identifying Specialty pages for creating SEO Friendly URL" />
+    <aura:attribute name="isSeoPage" type="boolean" default="false" />	
+    
+    <lightning:layout horizontalAlign="spread" multipleRows="true"
+                      class="padding-mobile-horizontal-medium list-card-parent">
+        <lightning:layoutItem size="12" mediumDeviceSize="9" class="list-card-parent-title">
+            <h4>{!v.title}</h4>
+        </lightning:layoutItem>
+        
+        <aura:if isTrue="{! !empty(v.subtitle)}">
+            <lightning:layoutItem size="12" mediumDeviceSize="12" class="list-card-parent-subtitle">
+                <p class="slds-p-top_x-small">{!v.subtitle}</p>
+            </lightning:layoutItem>
+        </aura:if>
+        
+        <aura:if isTrue="{!and(v.ctaTop, or(v.CTAUrl,v.CTA))}">
+            <lightning:layoutItem size="12" mediumDeviceSize="3" class="list-card-parent-cta top">
+                <!-- <a onclick="{!c.handleClick}" href="{!v.CTAUrl}">{!v.CTA}
+                    <lightning:icon iconName="utility:chevronright"
+                        class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" /></a>-->
+                <c:IntelLink page ="search" searchParams = "{!v.listing[0].searchType}">
+                    {!v.CTA}
+                    <lightning:icon iconName="utility:chevronright" class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" />
+                </c:IntelLink>
+                
+            </lightning:layoutItem>
+        </aura:if>
+        
+        <c:MarketplaceSimpleCardList class="simpleCardList"
+                                     data="{!v.listing}"
+                                     showOnlyFirst="{!v.showOnlyFirst}"
+                                     showOnlyFirstMobile="{!v.showOnlyFirstMobile}"
+                                     viewAllHeadline="{!v.viewAllHeadline}"
+                                     viewMoreLinkTitle="{!v.viewMoreLinkTitle}"
+                                     isCategoryPage="{!v.isCategoryPage}"
+                                     isSpecialtyPage="{!v.isSpecialtyPage}"
+                                     isSeoPage="{!v.isSeoPage}"
+                                     isPartnerPage="{!v.isPartnerPage}"
+                                     objectApiName="{!v.objectApiName}"/>
+        
+        <aura:if isTrue="{!and(!v.ctaTop, or(v.CTAUrl,v.CTA))}">
+            <lightning:layoutItem size="12" mediumDeviceSize="3" class="list-card-parent-cta bottom">
+                <a onclick="{!c.handleClick}" href="{!v.CTAUrl}">{!v.CTA}
+                    <lightning:icon iconName="utility:chevronright"
+                                    class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" /></a>
+            </lightning:layoutItem>
+        </aura:if>
+        
+    </lightning:layout>
+</aura:component>

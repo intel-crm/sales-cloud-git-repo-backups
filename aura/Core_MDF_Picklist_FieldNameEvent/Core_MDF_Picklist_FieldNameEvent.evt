@@ -1,0 +1,3 @@
+<aura:event type="Component" description="On change of the pick list value pass the fieldname to parent component">
+    <aura:attribute name="FieldName" type="string" description="This stores the value selected in picklist field name"/>
+</aura:event>

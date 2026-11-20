@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_IPS_BES_Questions</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_IPS_BES_Questions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Backend System Name --></label>
+        <name>Backend_System_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environmental Detail Question --></label>
+        <name>Environmental_Detail_Question__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

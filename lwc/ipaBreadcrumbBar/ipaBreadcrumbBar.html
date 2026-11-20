@@ -1,0 +1,28 @@
+<template>
+  <div class="breadcrumbContainer" if:true={selectedItems.length}>
+    <template iterator:it={selectedItems}>
+      <div class="breadcrumbInstance" key={it.value.id}>
+        <div if:true={it.value.noChildren} class="breadcrumbText" data-index={it.index}>{it.value.text}</div>
+        <div if:false={it.value.noChildren} class="breadcrumbLink" data-index={it.index} onclick={toggleBreadcrumb} aria-role="button">
+          {it.value.text} <span class="slds-p-left_xx-small">&#709;</span>
+          <div class="breadcrumbSeparator" if:false={it.last}>/</div>
+        </div>
+        <div class={it.value.className} if:true={it.value.children}>
+          <div for:each={sanitizedChildren} for:item="child" key={child.id}>;
+            <!-- <div for:each={it.value.children} for:item="child" key={child.id}>; -->
+            <!-- <span if:true={child.textOnly}>{child.text}</span> -->
+            <span if:true={child.textOnly}>
+            <lightning-formatted-text value={child.text}></lightning-formatted-text>
+            </span>
+            <!-- <a if:false={child.textOnly} href={child.url} target={child.target} data-id={child.id} data-index={it.index} onclick={handleLinkClick}>
+              {child.text}
+            </a> -->
+            <a if:false={child.textOnly} href={child.sanitizedUrl} target={child.target} rel={child.computedRel} data-id={child.id} data-index={it.index} onclick={handleLinkClick}>
+              {child.text}
+          </a>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

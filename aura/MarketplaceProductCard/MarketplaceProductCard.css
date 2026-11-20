@@ -1,0 +1,310 @@
+.THIS {
+    padding: 0;
+}
+.THIS .itemWrap2 {
+  width: 100%;
+}
+/*.THIS .relative {
+  position: relative;
+}*/
+
+.THIS .offeringTag {
+  background: t(blue);
+  padding: 0 .25em;
+  color: t(white);
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+
+.THIS .indent {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.THIS h3 {
+  font-size: 1.500em;
+  line-height: 1.084;
+  font-weight: normal;
+  word-break: normal;
+  color: t(blue);
+}
+.THIS .mediaWrap {
+  text-align: center;
+}
+.THIS .mediaWrap a {
+  width: 100%;
+  display: block;
+}
+
+.THIS.card  {
+  background: t(lightestGray);
+}
+.THIS.card .offeringTag {
+  position: absolute;
+  z-index:1;
+}
+
+.THIS.card .itemWrap  {
+  background: t(white);
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  height: calc(100% - 1.3em - 5px) !important;
+}
+.THIS .intelOnlyFooter {
+  background: transparent;
+  height: calc(1.3em + 5px);
+}
+
+/* Added to remove Javascript for equalizing heights in card list */
+.THIS.flexCol, .THIS .flexCol {
+  display: flex;
+  flex-direction: column;
+}
+.THIS.flexCol:not(.list), .THIS:not(.list) .flexCol {
+  height: 100%;
+}
+.THIS.card .itemWrap2 {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+.THIS.card .buttonFooter {
+  width: 100%;
+}
+
+.THIS.list  {
+  margin: 0 15px 20px;
+}
+.THIS.list .itemWrap {
+  background: t(white);
+}
+
+.THIS.list .itemWrap2  {
+  padding: 20px 15px;
+}
+.THIS.list .byAttribute {
+  font-size: 1.125em;
+  line-height: 1.44;
+}
+.THIS.card .addToCompare {
+  text-align: center;
+}
+
+.THIS.card .addToCompare {
+  text-align: center;
+}
+
+.THIS.card .mediaWrap{
+  border-bottom: 1px solid t(lightGray);
+  /* min-height: 150px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.THIS.list .mediaWrap {
+  border: 1px solid t(lightGray);
+}
+.THIS.list .addToCompare {
+  text-align: left;
+}
+
+.THIS .offerBar {
+  display: flex;
+  width: 100%;
+  background: t(white);
+}
+
+.THIS.card .offerBar {
+  position: absolute;
+  z-index:1;
+}
+
+.THIS .splitBar .barItem{
+  width: 50%;
+  padding: 0 .25em;
+  color: t(white);
+  letter-spacing: 1px;
+}
+.THIS .splitBar .barItem:last-child{
+  margin-left: 1px;
+}
+.THIS .fullBar .barItem {
+  padding: 0 .25em;
+  color: t(white);
+  letter-spacing: 1px;
+  width: 100%;
+  height: 20px;
+}
+.THIS .theme-cerulean-blue {
+  background: t(digitalBlue);
+}
+.THIS .theme-primary-blue {
+  background: t(blue);
+}
+/* Tooltip */
+.THIS .tooltip {
+  position: relative;
+  display: inline-block;
+  outline: none;
+}
+.THIS .shape-circle {
+  border-radius: 12px;
+  display: inline-block;
+  outline: none;
+  min-width: 12px;
+  height: 12px;
+  color: t(digitalBlue);
+  background-color: t(white);
+  font-size: 0.7em;
+  font-weight: bold;
+  line-height: 1;
+  padding: 2px 2.5px 0px 3px;
+  text-align: center;
+}
+.THIS .tooltip .tooltip-container {
+  display: none;
+  position: absolute;
+  bottom: 27px;
+  left: -32px;
+  width: 40em;
+}
+
+.THIS .tooltip .tooltip-content {
+  background-color: t(blue);
+  border-radius: 4px;
+  color: t(white);
+  font-size: 13px;
+}
+.THIS a.tooltip .slds-icon {
+  margin-top: -3px;
+
+}
+.THIS a.tooltip:hover .slds-icon use,
+.THIS a.tooltip .slds-icon use,
+.THIS .tooltip .slds-icon-text-default {
+  fill: t(white);
+}
+.THIS .tooltip .tooltip-content::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom: 0;
+  bottom: -10px;
+  left: 22px;
+  border-top-color: t(blue);
+  border-width: 16px;
+}
+.THIS .tooltip:focus .tooltip-container,
+.THIS .tooltip:hover .tooltip-container {
+  display: flex;
+}
+/*.THIS .intelOnlyFooter {
+  margin-top: 10px;
+}*/
+
+.THIS .imageContainer {
+  position: relative;
+  overflow: hidden;
+}
+.THIS .imageContainer:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.THIS .imageContainer.stretchWidth > img {
+  width: 100%;
+  height: auto;
+}
+.THIS .imageContainer.stretchHeight > img {
+  width: auto;
+  height: 100%;
+}
+
+.THIS .imageContainer > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  transform: translate( -50%, -50% );
+}
+.THIS .descriptionBlock .slds-rich-text-editor__output,
+.THIS .slds-rich-text-editor__output {
+  overflow-wrap: normal;
+  word-wrap: normal;
+  hyphens: none;
+  line-height: 1.5rem;
+}
+.THIS .hideTextOverflow {
+  overflow: hidden;
+  display: block;
+}
+
+.THIS .featureList ul {
+  overflow: hidden;
+  line-height: 1.5em;
+  position: relative; 
+}
+.THIS .featureList li {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+.THIS .descriptionBlock {
+  overflow: hidden;
+  position: relative; 
+  line-height: 1.5rem;
+  max-height: 6rem; 
+  /* text-align: justify;   */
+  padding-right: 1rem;
+}
+/* create the ... */
+.THIS .descriptionBlock:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  top: 4.5rem;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.THIS .descriptionBlock ul:after,
+.THIS .descriptionBlock:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -1rem;
+  background: white;
+}
+
+@media (max-width: 767px) {
+  .THIS.card .byAttribute {
+    font-size: 1.125em;
+    line-height: 1.44;
+    margin-bottom: 0px;
+  }
+}
+@media (min-width: 768px) {
+  .THIS.list .mediaWrap img,
+  .THIS.card .mediaWrap img{
+    max-height: none;
+    /* width: 100%; */
+  }
+}
+@media (max-width: 1024px) {
+  .THIS .tooltip .tooltip-container {
+    display: none;
+    position: absolute;
+    bottom: 27px;
+    left: -32px;
+    width: auto;
+  }
+}
+.THIS .resize{
+}

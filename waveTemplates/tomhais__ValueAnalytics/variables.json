@@ -1,0 +1,157 @@
+{
+	"LPVDataset":{
+		"label":"Choose an existing Lightning Page View dataset.",
+		"description":"This can be the LightningPageViewWithUsers dataset file provided by the Event Monitoring templated app, or one created from an external connector. You can type the dataset name to find it.",
+		"required":true,
+		"variableType":{"type":"DatasetType"}
+	},
+	"LIDataset":{
+		"label":"Choose an existing Lightning Interaction dataset.",
+		"description":"This can be the LightningInteractionWithUsers dataset file provided by the Event Monitoring templated app, or one created from an external connector. You can type the dataset name to find it.",
+		"required":true,
+		"variableType":{"type":"DatasetType"}
+	},
+	"ApexDataset":{
+		"label":"Choose an existing Apex Execution dataset.",
+		"description":"This can be the ApexExecutionWithUsers dataset file provided by the Event Monitoring templated app, or one created from an external connector. You can type the dataset name to find it.",
+		"required":true,
+		"variableType":{"type":"DatasetType"}
+	},
+	"ExceptionsDataset":{
+		"label":"Choose an existing Apex Unexpected Exception dataset.",
+		"description":"This can be the ApexUnexpectedExceptionProcessed dataset file provided by the Event Monitoring templated app, or one created from an external connector. You can type the dataset name to find it.",
+		"required":true,
+		"variableType":{"type":"DatasetType"}
+	},
+	"ApexTriggersDataset":{
+		"label":"Choose an existing Apex Trigger dataset.",
+		"description":"This can be the ApexTriggerWithUsers dataset file provided by the Event Monitoring templated app, or one created from an external connector. You can type the dataset name to find it.",
+		"required":true,
+		"variableType":{"type":"DatasetType"}
+	},  
+	"VFDataset":{
+		"label":"Choose an existing Visualforce Request dataset.",
+		"description":"This can be the VisualforceRequestWithUsers dataset file provided by the Event Monitoring templated app, or one created from an external connector. You can type the dataset name to find it.",
+		"required":true,
+		"variableType":{"type":"DatasetType"}
+	},
+	"Sales":{
+		"label":"Sales Analysis",
+		"description":"What you like to perform additional adoption and correlation analysis on Opportunities?",
+		"required":true,
+		"variableType":{"type": "StringType","enums": ["Yes","No"]}
+	},
+	"Service":{
+		"label":"Service Analysis",
+		"description":"What you like to perform additional adoption and correlation analysis on Cases?",
+		"required":true,
+		"variableType":{"type": "StringType","enums": ["Yes","No"]}
+	},
+	"Customer":{
+		"label":"Customer Analysis",
+		"description":"What you like to perform additional adoption and correlation analysis on Accounts?",
+		"required":true,
+		"variableType":{"type": "StringType","enums": ["Yes","No"]}
+	},
+	"Lead":{
+		"label":"Lead Analysis",
+		"description":"What you like to perform additional adoption and correlation analysis on Leads?",
+		"required":true,
+		"variableType":{"type": "StringType","enums": ["Yes","No"]}
+	},
+  "RevenueRisk":{
+		"label":"Revenue Risk Analysis",
+		"description":"Would you like to perform additional analysis on the impact of Apex Exceptions on Opportunities and Accounts?",
+		"required":true,
+		"variableType":{"type": "StringType","enums": ["Yes","No"]}
+	},
+  "Overrides" : {
+    "label" : "Overrides",
+    "description" : "Internal configuration to allow asset creation overrides, not to be displayed in UI.",
+    "defaultValue" : {
+      "createAllDashboards" : true,
+      "createAllComponents" : true,
+      "createAllLenses" : true,
+      "createAllExternalFiles" : true,
+      "createDataflow" : true,
+      "createAllDatasetFiles" : true,
+      "createAllImages" : true,
+      "createAllRecipes" : true
+    },
+    "required" : true,
+    "excludeSelected" : false,
+    "excludes" : [ ],
+    "variableType" : {
+      "required" : [
+        "createAllExternalFiles",
+        "createAllDashboards",
+        "createAllComponents",
+        "createAllImages",
+        "createAllDatasetFiles",
+        "createAllLenses",
+        "createDataflow",
+        "createAllRecipes"
+      ],
+      "type" : "ObjectType",
+      "properties" : {
+        "createAllDashboards" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createAllComponents" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createAllLenses" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createAllExternalFiles" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createDataflow" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createAllDatasetFiles" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createAllImages" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        },
+        "createAllRecipes" : {
+          "type" : "BooleanType",
+          "enums" : [
+            true,
+            false
+          ]
+        }
+      },
+      "strictValidation" : true
+    }
+  }
+}

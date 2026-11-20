@@ -1,0 +1,113 @@
+<apex:component access="global" controller="PMP_OfferingEmailAlertsController">
+
+<!--<html>
+<style>
+/* Regular */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: normal;
+font-weight: 400;
+font-style: normal;
+}
+
+/* Light */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: 200;
+font-style: normal;
+}
+    
+/* Bold */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: bold;
+font-weight: 700;
+font-style: normal;
+}
+    
+table {
+  font-family: sans-serif; /*arial, sans-serif,Intel Clear;*/
+  border-collapse: collapse;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 0px;
+  border-bottom: 1px solid #dddddd;
+}
+
+td, th {
+  padding: 8px;
+}
+
+.intelBlue{
+  color:#0071c5;
+}
+
+h1{
+  font-family: sans-serif !important;  
+}
+</style>
+
+<apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
+ 
+<body>
+-->
+    <!-- Header Banner -->
+<!--    <c:PMP_Global_Header message="A showcase offering has been updated and is waiting for your review!"/>-->
+    <!-- Header Banner -->
+    
+<!--    <table width="75%">  -->  
+        
+        <!-- Email Body -->
+<!--        <tr>
+            <td style="padding-left:50px;">
+                <br/>Hello Intel Showcase Admin <br/><br/>
+                The offering {!offeringData.PMP_Partner_Offering_Nm__c} has been updated by {!companyName} and needs to be reviewed.<br/><br/>
+                Thanks <br/> <br/>
+                
+                <b>Offering Name: {!offeringData.PMP_Partner_Offering_Nm__c} </b><br/>
+                Category: {!offeringData.PMP_Category_nm__c} <br/>
+                Sub-category: {!offeringData.PMP_Sub_Category_nm__c} <br/> <br/>
+            </td>
+          </tr>-->
+          <!-- Email Body -->
+          
+          <!-- CTA -->
+<!--          <tr>
+            <td style="padding-left:50px;">      
+                <p><apex:outputLink value="{!communityURL}{!publishedOfferingId}" styleClass="intelBlue">View offering preview</apex:outputLink></p>
+                
+                <br/>
+                
+            </td>
+         </tr>  -->      
+        <!-- Next Best Step -->
+        <!--<tr>    
+            <td style="padding-left:50px;">
+                Would you like to create another Offering ?<br/>
+                <apex:outputLink value="marketplace@intel.com" styleClass="intelBlue">
+                Create Another Offering
+                </apex:outputLink><br/><br/>
+            </td>
+        </tr>-->
+        <!-- Next Best Step -->
+        
+        
+<!--       </table>-->
+        
+    <!-- Global Footer -->
+<!--    <c:PMP_Global_Footer />-->
+    <!-- Global Footer -->
+<!--</body>
+
+</html>-->
+
+</apex:component>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Claim Attributes --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Claim Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_Field_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Clicks</masterLabel>
+            <translation><!-- Digital Media - # of Clicks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Conversions</masterLabel>
+            <translation><!-- Digital Media - # of Conversions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Downloads</masterLabel>
+            <translation><!-- Digital Media - # of Downloads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Impressions</masterLabel>
+            <translation><!-- Digital Media - # of Impressions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Leads</masterLabel>
+            <translation><!-- Digital Media - # of Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Page Views</masterLabel>
+            <translation><!-- Digital Media - # of Page Views --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Social Media Likes/Shares</masterLabel>
+            <translation><!-- Digital Media - # of Social Media Likes/Shares --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Unique Visitors</masterLabel>
+            <translation><!-- Digital Media - # of Unique Visitors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - Average time on Page (Seconds)</masterLabel>
+            <translation><!-- Digital Media - Average time on Page (Seconds) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media Percentage Spend</masterLabel>
+            <translation><!-- Digital Media Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Deal Wins</masterLabel>
+            <translation><!-- Event  - # of Deal Wins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of End Customer Attendees</masterLabel>
+            <translation><!-- Event  - # of End Customer Attendees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Seller Attendees</masterLabel>
+            <translation><!-- Event  - # of Seller Attendees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - # of Sales Qualified Leads</masterLabel>
+            <translation><!-- Event - # of Sales Qualified Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - Revenue of Units Sold (USD)</masterLabel>
+            <translation><!-- Event - Revenue of Units Sold (USD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Percentage Spend</masterLabel>
+            <translation><!-- Event Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount - # of Days</masterLabel>
+            <translation><!-- Funded Headcount - # of Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount Percentage Spend</masterLabel>
+            <translation><!-- Funded Headcount Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deal Wins</masterLabel>
+            <translation><!-- Incentive - # of Deal Wins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deals Registered</masterLabel>
+            <translation><!-- Incentive - # of Deals Registered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Design Wins</masterLabel>
+            <translation>激励 – 设计定案数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Units Sold</masterLabel>
+            <translation><!-- Incentive - # of Units Sold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - Revenue of Units Sold (USD)</masterLabel>
+            <translation><!-- Incentive - Revenue of Units Sold (USD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Percentage Spend</masterLabel>
+            <translation><!-- Incentive Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Leads</masterLabel>
+            <translation><!-- Lead Cultivation - # of Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Sales Qualified Leads</masterLabel>
+            <translation><!-- Lead Cultivation - # of Sales Qualified Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation Percentage Spend</masterLabel>
+            <translation><!-- Lead Cultivation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Conversions</masterLabel>
+            <translation><!-- Legacy Media - # of Conversions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Downloads</masterLabel>
+            <translation><!-- Legacy Media - # of Downloads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Impressions</masterLabel>
+            <translation><!-- Legacy Media - # of Impressions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Leads</masterLabel>
+            <translation><!-- Legacy Media - # of Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Recipients</masterLabel>
+            <translation><!-- Legacy Media - # of Recipients --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - Runs per hour</masterLabel>
+            <translation><!-- Legacy Media - Runs per hour --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media Percentage Spend</masterLabel>
+            <translation><!-- Legacy Media Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation - # of Person Days</masterLabel>
+            <translation>零售激活 - 人员天数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation Percentage Spend</masterLabel>
+            <translation><!-- Retail Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
+            <translation>技术激活 - 交易成功数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deployments</masterLabel>
+            <translation>技术激活 - 部署数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
+            <translation>技术激活 – 设计定案数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Downloads</masterLabel>
+            <translation>技术激活 - 下载次数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Instances</masterLabel>
+            <translation>技术激活 - 实例数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Sales Qualified Leads</masterLabel>
+            <translation>技术激活 - 销售合格线索数量</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation Percentage Spend</masterLabel>
+            <translation><!-- Technical Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of End Customer Trainees</masterLabel>
+            <translation><!-- Training - # of End Customer Trainees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of Partner Trainees</masterLabel>
+            <translation><!-- Training - # of Partner Trainees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Percentage Spend</masterLabel>
+            <translation><!-- Training Percentage Spend --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Core_MDF_Field_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation><!-- Digital Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount</masterLabel>
+            <translation><!-- Funded Headcount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive</masterLabel>
+            <translation><!-- Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation</masterLabel>
+            <translation><!-- Lead Cultivation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media</masterLabel>
+            <translation><!-- Legacy Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation</masterLabel>
+            <translation>零售激活</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation</masterLabel>
+            <translation>技术激活</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>KPI</masterLabel>
+            <translation><!-- KPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI - Activity</masterLabel>
+            <translation><!-- KPI - Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI - Claim</masterLabel>
+            <translation><!-- KPI - Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percentage</masterLabel>
+            <translation><!-- Percentage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Previous Period Spends</masterLabel>
+            <translation><!-- Previous Period Spends --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spend This Period</masterLabel>
+            <translation><!-- Spend This Period --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Total Planned Spend</masterLabel>
+            <translation><!-- Total Planned Spend --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Claim Attributes Name --></nameFieldLabel>
+</CustomObjectTranslation>

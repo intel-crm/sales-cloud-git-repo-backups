@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>CRM_Linked_Opportunities</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CRM_Linked_Opportunities</fullName>
+        <fields>Name</fields>
+        <fields>CRM_Primary_Opportunity__c</fields>
+        <fields>CRM_Linked_Opportunity__c</fields>
+        <fields>CRM_Link_Reason__c</fields>
+        <label>Linked Opportunities</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>CRM_Link_Description__c</fullName>
+        <label>Link Description</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Link_Reason__c</fullName>
+        <label>Link Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Design HW component to Design SW component</fullName>
+                    <default>false</default>
+                    <label>Design HW component to Design SW component</label>
+                </value>
+                <value>
+                    <fullName>Design Original (ODM Board) to Design Secondary (OEM System)</fullName>
+                    <default>false</default>
+                    <label>Design Original (ODM Board) to Design Secondary (OEM System)</label>
+                </value>
+                <value>
+                    <fullName>ITE opportunities to Actual deployment</fullName>
+                    <default>false</default>
+                    <label>ITE opportunities to Actual deployment</label>
+                </value>
+                <value>
+                    <fullName>VBS original to VBS Consumption only</fullName>
+                    <default>false</default>
+                    <label>VBS original to VBS Consumption only</label>
+                </value>
+                <value>
+                    <fullName>VBS Silicon pull-through</fullName>
+                    <default>false</default>
+                    <label>VBS Silicon pull-through</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_Linked_Opportunity__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <inlineHelpText>Displayed list of opportunities are linked TO current opportunity</inlineHelpText>
+        <label>Opportunity Linked To</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunities Linked From</relationshipLabel>
+        <relationshipName>Linked_Opportunities</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Primary_Opportunity__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <inlineHelpText>Current opportunity is linked FROM displayed list of opportunities</inlineHelpText>
+        <label>Opportunity Linked From</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunities Linked To</relationshipLabel>
+        <relationshipName>CRM_Linked_Opportunities</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_UniqueLinkedOppty__c</fullName>
+        <description>Create a unique key with a combination of Opportunity Linked From &amp; Opportunity Linked To</description>
+        <externalId>false</externalId>
+        <label>UniqueLinkedOppty</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Linked Opportunities</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CRM_Link_Reason__c</columns>
+        <columns>CRM_Primary_Opportunity__c</columns>
+        <columns>CRM_Linked_Opportunity__c</columns>
+        <columns>CRM_Link_Description__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Linked Opp - {0000}</displayFormat>
+        <label>Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Linked Opportunities</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>CRM_Link_Reason__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_Primary_Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_Linked_Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_Link_Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>CRM_Restrict_Deletion_for_Renewed_Opp</fullName>
+        <active>true</active>
+        <description>Restrict deletion of linked records for opportunities that are created through Renewal button</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+IF(OR(ISPICKVAL(CRM_Link_Reason__c,&apos;VBS Original -&gt;VBS Renewal&apos;),ISPICKVAL(CRM_Link_Reason__c,&apos;SW &amp; Services Original -&gt;SW &amp; Services Renewal&apos;), ISPICKVAL(PRIORVALUE(CRM_Link_Reason__c),&apos;VBS Original -&gt;VBS Renewal&apos;), ISPICKVAL(PRIORVALUE(CRM_Link_Reason__c),&apos;SW &amp; Services Original -&gt;SW &amp; Services Renewal&apos;)) &amp;&amp; !ISNEW() &amp;&amp; !ISCHANGED( CRM_Link_Description__c), TRUE,FALSE)
+)</errorConditionFormula>
+        <errorMessage>You cannot modify this record since it is created through Renewal.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

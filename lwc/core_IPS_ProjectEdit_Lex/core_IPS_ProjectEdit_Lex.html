@@ -1,0 +1,67 @@
+<template>
+    <lightning-card>
+     <template if:true={hasAccess}>   
+        <lightning-record-edit-form
+        object-api-name="Core_IPS_Project__c"
+        record-id={recordId}
+        onsuccess={handleSuccess} onsubmit ={handleSubmit} onerror={handleError}>
+    <!--<lightning-messages></lightning-messages>-->
+        <div class="slds-m-around_medium">
+            <!-- <lightning-input-field
+            field-name="Id"
+            value={projectId}
+        ></lightning-input-field> -->
+            <header class="slds-text-heading--small slds-align--absolute-center header">
+                <b><h4>New Premier Support Project: Active</h4></b>
+            </header><br/>
+            
+            <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Name" required="true"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="OwnerId"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_MPNDA__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_Status__c"></lightning-input-field></div>
+            <lightning-input-field field-name="Core_IPS_Private__c"></lightning-input-field><br/>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_Project_Description__c"></lightning-input-field></div>
+            </div><br/>
+            
+            <header class="slds-text-heading--small slds-align--absolute-left header">
+                <b><h4>Case Defaults</h4></b>
+            </header><br/>
+            <div class="slds-grid slds-wrap">
+            <!--<div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_Number_of_Opportunities__c"></lightning-input-field></div>-->
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_IPS_Support_Level__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-output-field field-name="Core_IPS_Intel_Support_Owner__c"></lightning-output-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Region__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-output-field field-name="Core_IPS_Partner_Support_Owner__c"></lightning-output-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Sub_Region__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_IPS_EnableMemberasInterestedParties__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_IPS_Remove_Notification_Details__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_IPS_Enable_ISTasInterested_Parties__c"></lightning-input-field></div>
+            </div><br/>
+
+            <header class="slds-text-heading--small slds-align--absolute-left header">
+                <b><h4>System Information</h4></b>
+            </header><br/>
+            <div class="slds-grid slds-wrap">
+            <div if:true={editMode}><lightning-output-field field-name="Core_IPS_Project_ID__c" ></lightning-output-field></div>
+           <!--- <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="CreatedById"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_IPS_Legacy_Collab_Team_ID__c"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="LastModifiedById"></lightning-input-field></div>
+            <div class="slds-col slds-size_1-of-2"><lightning-input-field field-name="Core_IPS_GroupId__c"></lightning-input-field></div>-->
+            <lightning-output-field field-name="Core_IPS_Legacy_Collab_Team_ID__c"></lightning-output-field>
+            <lightning-output-field field-name="Core_IPS_GroupId__c"></lightning-output-field>
+            </div></div>
+            <div align="center">
+                <lightning-button variant="brand" type="submit" name="save" label="Save" class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand" type="submit" name="save and new" label="Save & New" onclick={handleSaveandNew} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button  type="cancel" name="cancel" label="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </template>
+    <template if:false={hasAccess}>
+        <div class="privilegeMsg"><p>Insufficient Privileges</p></div><br/>
+        <div class="accessMsg"><p>You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary. For more information, <a href="https://help.salesforce.com/s/login/?startURL=%2Fapex%2Fhtdoor%3Floc%3Dhelp%26target%3Dadmin_insufficient_privileges_flowchart.htm%26language%3Den_US%26release%3D236.18.1%26instance%3DCS92%26showSplash%3Dtrue&ec=302&inst=Hx" target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p></div><br/>
+        <div align="center"><lightning-button label="Go Back" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button></div><br/><br/>
+    </template>
+</lightning-card>
+</template>

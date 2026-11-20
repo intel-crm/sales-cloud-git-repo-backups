@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>CM_Feedback__c</field>
+        <formula>IF( $Permission.CST_Country_Manager ,&apos;Rejected&apos;,&apos;&apos;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>GM_Feedback__c</field>
+        <formula>IF( OR($Permission.CST_General_Manager, $Permission.CST_Regional_Admin) ,&apos;Rejected&apos;,&apos;&apos;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>VP_Feedback__c</field>
+        <formula>IF( $Permission.CST_Vice_President ,&apos;Rejected&apos;,&apos;&apos;)</formula>
+    </fieldOverrides>
+    <label>Reject</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns/>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>The new customers are rejected successfully!</successMessage>
+    <type>Update</type>
+</QuickAction>

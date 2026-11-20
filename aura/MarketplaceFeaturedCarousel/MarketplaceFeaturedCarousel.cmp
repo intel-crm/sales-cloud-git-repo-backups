@@ -1,0 +1,50 @@
+<aura:component controller="PMP_SearchMarketplaceController" implements="forceCommunity:availableForAllPageTypes" description="L0 Featured Carousel">
+    <!-- private/internal -->
+    
+    <aura:attribute name="featuredProductsTabList" type="object[]" />
+    <aura:attribute name="loading" type="boolean" default="false" />
+    <aura:attribute name="firstLoadLimit" type="Integer" default="4"/>
+    <aura:attribute name="finalLimit" type="Integer" default="15000"/>
+    <aura:attribute name="displayCardAttributes" type="boolean" default="false" />
+    <aura:attribute name="displayByPartner" type="boolean" default="false" />
+    <aura:attribute name="temp" type="boolean"/>
+    <aura:attribute name="onActiveTab" type="object"/>
+    <aura:attribute name="onActive" type="object"/>
+    <aura:attribute name="ctaLink" type="boolean" default="true" />
+    <aura:attribute name="currentTabIndex" type="integer" default="0"  description="Internal component state"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-p-vertical_x-large">
+        
+        <aura:if isTrue="{!v.featuredProductsTabList.length > 0 }">
+            <h4 class="slds-m-bottom_small slds-m-horizontal_medium slds-hide_medium">{!$Label.c.PMP_L0_Featured_Solutions}</h4>
+            <h4 class="slds-m-bottom_medium slds-show_medium">{!$Label.c.PMP_L0_Featured_Solutions}</h4>
+            <c:MarketplaceTabset aura:id="isgtabs" currentTabIndex="{!v.currentTabIndex}" onActive="{!v.onActive}" isFeaturedTabSet="true"> 
+                <aura:iteration items="{!v.featuredProductsTabList}" var="featuredProductsTab" indexVar="idx">
+                    <!-- <aura:if isTrue="{!featuredProductsTab.products.length > 0}">-->
+                    <c:MarketplaceTab label="{!featuredProductsTab.label}"> 
+                        
+                        <c:MarketplaceCardCarousel aura:id="tab-card-carousel"
+                                                   render="{!''+v.currentTabIndex == ''+idx}"
+                                                   index="{!idx}"
+                                                   displayCardAttributes="true"
+                                                   searchParams="{!featuredProductsTab.searchParams}"
+                                                   ctaTitle="{!featuredProductsTab.ctaTitle}"
+                                                   eventTitle="{!featuredProductsTab.eventTitle}"      
+                                                   displayCardType="true"
+                                                   displayByPartner="true"
+                                                   ctaLink = "{!featuredProductsTab.ctaLink}"
+                                                   categoryId="{!featuredProductsTab.categoryId}"
+                                                   />
+                        
+                        
+                    </c:MarketplaceTab>
+                    <!--  </aura:if>-->
+                </aura:iteration>
+            </c:MarketplaceTabset>
+        </aura:if>
+    </div>
+    
+    
+</aura:component>

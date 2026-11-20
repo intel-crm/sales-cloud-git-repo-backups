@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>IPS - Org Admin - SMG</groups>
+    <groups>SMG Projects – COE</groups>
+    <groups>SMG Projects – Unassigned</groups>
+    <label>IPS - Org Admin - SMG</label>
+    <loginAccess>false</loginAccess>
+</DelegateGroup>

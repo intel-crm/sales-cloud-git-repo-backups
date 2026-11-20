@@ -1,0 +1,387 @@
+<template>
+	<template if:true={showHomePage}>
+			<div class="element-width" style="background-color:whitesmoke;">
+				<lightning-card>
+					<div class="slds-m-bottom_xxx-small slds-var-p-left_xx-large slds-var-p-bottom_xx-large">
+						<lightning-icon class="slds-float_left my-icon" icon-name="utility:home" size="small">
+						</lightning-icon>
+						<span class="slds-m-left_xx-small slds-float_left slds-text-heading_medium"
+							style="color:#0176d3;font-size: 24px;"> Home
+						</span>
+					</div>
+					<div class="slds-text-align_center slds-var-p-top-medium slds-var-p-bottom_xxx-large"
+						style="font-size: 40px;text-align:center;color: green;">Manage Notification Subscriptions</div>
+
+					<div class="slds-align_absolute-center slds-m-top-large slds-m-bottom-small"
+						style="font-size: 30px;padding-left: 50px;padding-right: 50px; padding-top: 50px;text-align:center">
+						{labels.SubscriptionEmulationScreen_Msg}
+					</div>
+					<div class="slds-align_absolute-center slds-m-top-small slds-m-bottom-small slds-var-p-bottom_xx-large"
+						style="width:100%;height: 80%;padding-bottom: 70px;padding-top: 40px;">
+						<div class="slds-p-vertical_x-small subscriptionButtons slds-m-right_large"
+							onclick={handleYourselfBtn}>
+							<span>Manage Subscriptions For Myself</span>
+							<lightning-icon class="my-icon slds-p-left_xx-small" icon-name="utility:chevronright"
+								size="x-small">
+							</lightning-icon>
+						</div>
+						<div class="subscriptionButtons slds-p-vertical_x-small" onclick={handleOthersBtn}>
+							<span>Manage Subscriptions For Others</span>
+							<lightning-icon class="my-icon slds-p-left_xx-small" icon-name="utility:chevronright"
+								size="x-small">
+							</lightning-icon>
+						</div>
+					</div>
+
+					<template if:true={showUserSearchModal}>
+						<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+							aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
+							<div class="slds-modal__container" style="width:70%">
+								<!--Header part of the Modal-->
+								<header class="slds-modal__header">
+									<lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={handleSearchModalClose}>
+									</lightning-button-icon>
+										<h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate">Search
+										User</h2>
+								</header>
+								<div class="slds-grid slds-wrap slds-modal__content slds-p-around_large searchModal"
+									id="modal-content-id-4">
+									<lightning-combobox name="Project/Application" required="true"
+										label="Project/Application" value={selApplication} class="slds-size_4-of-12"
+										placeholder="Select Project/Application" options={appOptions}
+										onchange={handleApplicationChange} disabled={disableAppDropdown}>
+									</lightning-combobox>
+									<div class={dynamiClassname} data-id="resultBox" aria-expanded="false"
+										aria-haspopup="listbox" role="combobox" style="padding: 0 0 0 16px;">
+										<div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right search_input"
+											role="none">
+											<lightning-input type="search" required="true" data-id="userinput"
+												label="Search User" value={valueselected} name="searchUser"
+												onchange={searchUser}
+												field-level-help="Enter few characters of User by Name"
+												placeholder="Search by Name" disabled={disableUserSearch}> <!--call method only when user stops typing-->
+											</lightning-input>
+											<template if:true={hasUserList}>
+												<div id="listbox-id-4"
+													class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid "
+													role="listbox">
+													<ul class="slds-listbox slds-listbox_vertical " role="presentation">
+														<template for:each={userList} for:item="useritem">
+															<li role="presentation" class="slds-listbox__item"
+																key={useritem.userId}>
+																<div data-id={useritem.userId}
+																	data-name={useritem.userName}
+																	data-email={useritem.userEmail}
+																	data-active={useritem.userActive}
+																	data-reclaim={useritem.userLicenseReclaim}
+																	onclick={getDataBasedOnSelUser}
+																	class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+																	role="option">
+																	<div class="slds-media slds-media_center">
+																		<span class="slds-media__figure">
+																			<span
+																				class="slds-icon_container slds-icon-standard-user">
+																				<lightning-icon
+																					icon-name="standard:user">
+																				</lightning-icon>
+																			</span>
+																		</span>
+																		<span class="slds-media__body">
+																			<span
+																				class="slds-listbox__option-text slds-listbox__option-text_entity">{useritem.userName}</span>
+																			<span
+																				class="slds-listbox__option-text slds-listbox__option-text_entity">{useritem.userEmail}</span>
+																		</span>
+																	</div>
+																</div>
+															</li>
+														</template>
+													</ul>
+												</div>
+											</template>
+										</div>
+									</div>
+									<div class="slds-grid slds-modal__content user-details-Modal slds-size_12-of-12"
+										id="modal-content-id-5"> 
+										<div class="slds-text-align_left slds-var-p-top_x-large">
+											<template if:true={showSelUserDetails}>
+												<article class="slds-card selectedUserCard">
+													<div class="slds-card__header slds-grid">
+														<header
+															class="slds-media slds-media_center slds-has-flexi-truncate">
+															<div class="slds-media__figure">
+																<span
+																	class="slds-icon_container slds-icon-standard-contact"
+																	title="user">
+																	<lightning-icon icon-name="standard:user"
+																		alternative-text="user"
+																		title="user"></lightning-icon>
+																</span>
+															</div>
+															<div class="slds-media__body">
+																<h2 class="slds-card__header-title">
+																	<span>Selected User</span>
+																</h2>
+															</div>
+														</header>
+													</div>
+													<div class="slds-card__body slds-card__body_inner">
+														<b>Name : </b> {selUserName} <br />
+														<b>Email : </b> {selUserEmail} <br />
+														<b>Active : </b> {selUserActive} <br />
+														<b>License Reclaimed : </b> {selUserLicenseReclaimed}
+													</div>
+													<footer class="slds-card__footer"></footer>
+												</article>
+											</template>
+										</div>
+									</div>
+								</div>
+								<footer class="slds-modal__footer">
+									<button class="slds-button slds-button_brand" onclick={handleProceedBtnClick}
+										title="Proceed" disabled={disableProceedBtn}>Proceed</button>
+									<button class="slds-button slds-button_neutral" onclick={handleSearchModalClose}
+										title="Cancel" disabled={disableSearchCancelBtn}>Cancel</button>
+								</footer>
+								<!--Footer part of the Modal-->
+							</div>
+						</section>
+						<div class="slds-backdrop slds-backdrop_open"> </div>
+					</template>
+				</lightning-card>
+			</div>
+		
+	</template>
+
+	<template if:true={showSpinner}>
+		<div class="spinner">
+			<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+		</div>
+	</template>
+	<template if:true={showSubscriptionScreen}>
+		<div class="slds-var-m-bottom_small element-width">
+			<lightning-card>
+				<div class="slds-var-m-right_small slds-float_right homeBtn">
+					<template if:true={hasEmulationAccess}>
+						<lightning-button class="goToHomeButton" variant="brand" label="Go To Home" title="Home"
+							onclick={goToHomePage}>
+						</lightning-button>
+					</template>
+				</div>
+				<h1 class="title slds-text-heading--medium slds-hyphenate"
+					style="font-weight:bold;font-size:30px;text-align:center">
+					{labels.SubsNotification_Header_Title} </h1>
+
+				<div class="slds-m-bottom_xxx-small slds-var-p-left_xx-large slds-var-p-right_xx-large">
+					<div class="slds-m-left_x-large">
+						<lightning-icon class="slds-m-top_x-small slds-float_left" icon-name="standard:user"
+							alternative-text="user" title="user"></lightning-icon>
+						<span class="slds-m-top_xx-small  slds-m-left_xx-small slds-float_left">
+							<template if:true={isUserOnSelfSubscription}>
+								<div class="slds-m-top_x-small slds-m-left_xx-small slds-float_left" style="color:#0176d3; font-size: 18px">
+									{name}</div>
+							</template>
+							<template if:false={isUserOnSelfSubscription}>
+								<div class="slds-m-left_xx-small" style="color:#3a3c3e; font-size:12px">Managing Subscription For</div>
+								<div class="slds-m-left_xx-small slds-float_left" style="color:#0176d3; font-size: 18px"> {name}</div>
+							</template>
+						</span>
+					</div>
+					<template if:true={showNotificationDetails}>
+						<span
+							class="slds-required slds-m-top_x-small slds-float_right slds-text-heading_small mandatoryDisClaimer">
+							{labels.SubsNotification_MandateNotification_Msg}
+						</span>
+					</template> 
+				</div>
+				
+				<div class="slds-text-heading--medium data-unavailable"  
+					style="font-size: 20px;text-align:center; color:red">
+					<template if:true={showNoDataMessage}>
+				    {labels.SubsNotification_NoData_Msg}
+				    </template>
+			</div>
+			</lightning-card>
+		</div>
+		<template if:true={showNotificationDetails}>
+			<div
+				class="modal-header slds-modal__header slds-var-p-top_x-medium slds-var-p-bottom_x-large slds-var-m-bottom_large element-width">
+				<div class="slds-scrollable_y container-padding"
+					style="min-height:fit-content;max-height:80rem;width:100%">
+					<div class="slds-m-bottom_small slds-var-p-bottom-large" style="color:green;font-size: 20px;">
+						{labels.SubsNotification_Disclaimer_Msg}
+					</div>
+					<template for:each={subscriptionData} for:item="item" for:index="index">
+						<div class={item.cssClassName} key={item.objectName} data-id={index}>
+							<h3 class="slds-section__title">
+								<button aria-controls={index} aria-expanded="false"
+									class="slds-button slds-section__title-action " style="font-size: 20px"
+									onclick={handleSecExpandOrCollapse} data-name={item.objectName}>
+									<lightning-icon icon-name={item.iconName} aria-hidden="true" size="x-small"
+										class="accordion-chevron-icon"></lightning-icon>
+									<label class="slds-var-p-left_medium "
+										style="color:rgb(11,92,171)">{item.objectLabel}</label>
+								</button>
+							</h3>
+							<div class="slds-section__content" id="expando-unique-id" aria-hidden="true">
+								<template if:true={item.isExpanded}>
+									<div class="slds-scrollable_y "
+										style="min-height:fit-content;max-height:15rem;width:100%">
+										<table
+											class="slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right slds-no-row-hover table"
+											style="border-radius:10px">
+											<thead>
+												<tr
+													class="slds-text-heading_label slds-var-p-top_xx-large slds-var-p-bottom_xx-large">
+													<th class="slds-size_2-of-12 slds-text-align_center table-Headers-Padding selfSubscriptionTdTh"
+														style="background-color: rgb(244, 246, 249);font-weight: bold;"
+														scope="col">Notification Type
+													</th>
+													<th class="slds-size_4-of-12 slds-text-align_center table-Headers-Padding selfSubscriptionTdTh"
+														style="background-color: rgb(244, 246, 249);font-weight: bold"
+														scope="col">Description
+													</th>
+													<th class="slds-size_1-of-12 slds-text-align_center table-Headers-Padding selfSubscriptionTdTh"
+														style="background-color: rgb(244, 246, 249);font-weight: bold"
+														scope="col">Subscribed
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<template for:each={item.notificationTypes} for:item="notification"
+													for:index="nIndex">
+													<tr key={notification.apiname} date-name={notification.apiname}>
+
+														<template if:true={notification.isRowSelected}>	
+															<template if:false={notification.mandateNotification}>
+																<td class="slds-size_1-of-12 notification-type slds-text-align_left slds-p-right_xx-small selfSubscriptionTdTh"
+																	style="color:#0176d3;font-weight: 600px;">
+																	{notification.label}
+																</td>
+															</template>
+															<td class="slds-size_4-of-12 document-type slds-m-right_xx-small slds-text-align_left selfSubscriptionTdTh"
+																style="color:#0176d3;font-weight: 600px;">
+																<span>{notification.helpText}</span>
+															</td>
+														</template>
+														<template if:false={notification.isRowSelected}>
+															<template if:true={notification.mandateNotification}>
+																<td class="slds-size_1-of-12 slds-text-align_left selfSubscriptionTdTh"
+																	style="font-weight: 600px;">
+																	<span> <span
+																			if:true={notification.mandateNotification}
+																			class="slds-required ">*
+																		</span>{notification.label}</span>
+																</td>
+															</template>
+															<template if:false={notification.mandateNotification}>
+																<td class="slds-size_1-of-12 notification-type slds-text-align_left slds-p-right_xx-small selfSubscriptionTdTh"
+																	style="font-weight: 600px;">
+																	{notification.label}
+																</td>
+															</template>
+															<td class="slds-size_4-of-12 document-type slds-m-right_xx-small slds-text-align_left selfSubscriptionTdTh"
+																style="font-weight: 600px;">
+																<span>{notification.helpText}</span>
+															</td>
+														</template>
+
+														<td
+															class="slds-size_1-of-12 toggle_padding slds-m-top_large slds-m-bottom_large selfSubscriptionTdTh">
+
+															<lightning-input data-id="toggle2" class="input__toggle"
+																type="toggle"
+																disabled={notification.mandateNotification}
+																name={notification.apiname}
+																onchange={handleToggleChange}
+																checked={notification.subscribed}
+																data-object={item.objectName}  message-toggle-active=""
+																message-toggle-inactive=""></lightning-input>
+														</td>
+													</tr>
+												</template>
+											</tbody>
+										</table>
+									</div>
+								</template>
+							</div>
+						</div>
+					</template>
+				</div>
+
+				<template if:true={showSaveModal}> 
+					<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+						aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+						<div class="slds-modal__container">
+
+							<!--Header part of the Modal-->
+							<header class="slds-modal__header">
+								<lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={handleSaveModalNo}>
+								</lightning-button-icon>
+								<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirmation
+								</h2>
+							</header>
+							<div class="slds-modal__content slds-p-around_medium" style="text-align:center"
+								id="modal-content-id-1">
+								{labels.SubsNotifications_SaveBtn_Msg}
+							</div>
+
+							<footer class="slds-modal__footer">
+
+								<button class="slds-button slds-button_brand" onclick={handleSaveModalYes}
+									title="Yes">Yes</button>
+								<button class="slds-button slds-button_neutral" onclick={handleSaveModalNo}
+									title="No">No</button>
+							</footer>
+							<!--Footer part of the Modal-->
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open"> </div>
+				</template>
+				<template if:true={showCancelModal}>
+					<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
+						aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+						<div class="slds-modal__container">
+
+							<!--Header part of the Modal-->
+							<header class="slds-modal__header">
+								<lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={handleCancelModalNo}>
+								</lightning-button-icon>
+								<h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Confirmation
+								</h2>
+							</header>
+							<div class="slds-modal__content slds-p-around_medium" style="text-align:center"
+								id="modal-content-id-2">
+								{labels.SubsNotifications_CancelBtn_Msg}
+							</div>
+
+							<footer class="slds-modal__footer">
+
+								<button class="slds-button slds-button_brand" onclick={handleCancelModalYes}
+									title="Yes">Yes</button>
+								<button class="slds-button slds-button_neutral" onclick={handleCancelModalNo}
+									title="No">No</button>
+							</footer>
+							<!--Footer part of the Modal-->
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open"> </div>
+				</template>
+
+				<template if:true={showNotificationDetails}>
+					<div class="slds-align_absolute-center slds-m-top_small slds-docked-form-footer">
+						<lightning-button variant="brand" label=" Save" title="save" onclick={handleSave}
+							disabled={disableSaveBtn} class=" slds-m-right_medium">
+						</lightning-button>
+						<lightning-button variant="neutral" label="Cancel" title="cancel" onclick={handlecancel}
+							disabled={disableCancelBtn} class=" slds-m-right_large">
+						</lightning-button>
+					</div>
+				</template>
+
+
+			</div>
+		</template>
+
+	</template>
+</template>

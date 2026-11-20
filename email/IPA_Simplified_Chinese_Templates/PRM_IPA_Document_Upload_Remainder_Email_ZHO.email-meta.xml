@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload Remainder Email_ZHO</name>
+    <style>none</style>
+    <subject>英特尔® 合作伙伴联盟：需要营业执照</subject>
+    <textOnly>感谢您申请加入英特尔® 合作伙伴联盟！
+
+
+感谢您申请加入英特尔® 合作伙伴联盟。
+
+处理您的申请时，我们无法根据您提供的资料验证您的公司信息。因此，请您回复此邮件，并以PDF、JPEG或PNG格式的附件形式上传以下文件之一，以完成此次验证：
+
+营业执照（表明贵公司地址与申请相匹配）
+纳税证明（表明贵公司地址与申请相匹配）
+公司网站（表明贵公司地址与申请相匹配）
+
+为避免您的请求被自动拒绝，请在 4 天内回复此电子邮件并添加随附文件。 收到您的回复后，我们将建议团队重新审核您的申请。
+
+感谢您为解决此事给予的合作！
+
+
+
+
+英特尔® 合作伙伴联盟团队
+
+请注意，此邮箱由系统自动处理和监控。
+
+本邮件是有关您与英﻿特﻿尔﻿® 合作伙伴联盟当前合作关系的重要业务邮件。
+© 2026 英特尔公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+隐私条款 &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

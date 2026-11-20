@@ -1,0 +1,324 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes" description="L2 Search page Left Column Component Container">
+ 	<aura:set attribute="storeName" value="Search" />
+
+  <aura:attribute name="defaultPageSize" type="integer" default="6" description="Design attribute - sets default page size for search"/>
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/>  <!-- Added by MGDANIES - 10/31 -->
+  <aura:handler name="change" value="{!v.categoryId}" action="{!c.handleCategoryChange}" />
+
+  <aura:attribute name="sortByField" type="string" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="searchType" type="string" default="all" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="categoryId" type="string" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="categories" type="object[]" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="selectedCategoryTitle" type="string" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="applicationTags" type="object[]" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="filters" type="object[]" description="Internal Component - set by Redux settings in Controller"/>
+  <aura:attribute name="selectedFiltersCount" type="integer" description="local variable total selected filter count" />
+
+  <aura:attribute name="filterGroupCount" type="object" description="local variable group filter count selected filter count" />
+  <aura:attribute name="pmp" type="object" description="local variable indicating if filters are open" />
+
+  <aura:attribute name="categoryModalOpen" type="Boolean" default="false" description="Internal Component"/>
+  <aura:attribute name="refineModalOpen" type="Boolean" default="false"  description="Internal Component"/>
+  <aura:attribute name="partnerModalOpen" type="Boolean" default="false"  description="Internal Component"/>
+  <aura:attribute name="multilevelModalOpen" type="boolean" default="false"  description="Internal Component"/>
+
+  <aura:attribute name="multilevelTitle" type="string" description="Internal Component"/>
+  <aura:attribute name="multilevelID" type="string" description="Internal Component"/>
+  <aura:attribute name="multilevelFilterList" type="object[]" description="Internal Component"/>
+  <aura:attribute name="multilevelSelectedList" type="object[]" description="Internal Component"/>
+   
+  <aura:attribute name="onRefineApplyClick" type="Object"  description="Internal Component"/>
+  <aura:attribute name="onPartnerClick" type="Object"  description="Internal Component"/>
+  <aura:attribute name="onMultilevelClick" type="Object"  description="Internal Component"/>
+
+
+  <div class="{!v.appState.Settings.currentScreenSize +  ' slds-p-bottom_medium search-' + v.appState.Settings.currentSldsBreakPoint}">
+    <!-- Connect URL Search Params -->
+    <c:MarketplaceSearchParams searchCategory="{!v.categoryId}" searchType="{!v.searchType}" defaultPageSize="{!v.defaultPageSize}"/>
+    <div class="relative">
+      <aura:if isTrue="{!and(v.state.searchLoading, v.appState.Settings.currentSldsBreakPoint == 'x-large', !v.partnerModalOpen)}">
+        <lightning:spinner alternativeText="Loading" size="small"/>
+      </aura:if>
+      <c:MarketplaceSearchBar searchType="{!v.searchType}" />
+    </div>
+
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'small' || v.appState.Settings.currentSldsBreakPoint == 'medium' || v.appState.Settings.currentSldsBreakPoint == 'large'}">
+      <div class="slds-var-p-horizontal_medium">
+        <lightning:layout multipleRows="true">
+          <lightning:layoutItem size="6">
+            <button class="darkButton" onclick="{!c.handleShowCategoryOverlay}">
+                  <span class="small-f">{!$Label.c.PMP_Category}</span>
+                  <span class="medium-f bold">{!v.state.searchHeading}</span>
+            </button>
+          </lightning:layoutItem>
+
+            <lightning:layoutItem size="6" class="slds-text-align_right">
+              <button class="darkButton" onclick="{!c.handleShowRefineOverlay}">
+                  <lightning:icon iconName="utility:rating"
+                    class="cursor"
+                    size="x-small"/>
+                    <span class="medium-f slds-m-left_x-small">{!$Label.c.PMP_Refine} {! v.selectedFiltersCount ? '&nbsp;+' + v.selectedFiltersCount : ''}</span>
+              </button>
+          </lightning:layoutItem>
+
+        </lightning:layout>
+
+
+      </div>
+
+      <div class="category-overlay page-overlay" aura:id="categoryOverlay">
+        <div class="modalTitle">
+          {!$Label.c.PMP_Select_Category}
+          <a class="close" href="#" aria-label="{!$Label.c.Core_PMP_Close}" onclick="{!c.handleShowCategoryOverlay}"><lightning:icon class="icn" iconName="utility:close" size="medium" /></a>
+        </div>
+        <div class="modalBody">
+          <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12">
+                <div class="searchTreeTextNormal">
+                  <aura:iteration items="{!v.categories}" var="category" indexVar="i">
+                    <c:MarketplaceSearchCategoryFilter
+                      category="{!category}"
+                      open="true"
+                      disableOpenToggle="true"
+                      level="0"
+                       />
+                  </aura:iteration>
+                </div>
+            </lightning:layoutItem>
+          </lightning:layout>
+        </div>
+      </div>
+      <div class="refine-overlay page-overlay" aura:id="refineOverlay">
+        <div class="modalTitle">
+          {!$Label.c.PMP_Refine}
+          <a class="close" href="#" aria-label="{!$Label.c.Core_PMP_Close}" onclick="{!c.handleShowRefineOverlay}"><lightning:icon class="icn" iconName="utility:close" size="medium" /></a>
+        </div>
+        <div class="modalBody">
+            <lightning:layout multipleRows="true">
+              <aura:if isTrue="{!v.searchType == 'product'}">
+                <lightning:layoutItem class="slds-m-top_xxx-small" size="12">
+                  <div class="sortByContainer slds-m-vertical_large">
+                                    <label for="sortByField" class="slds-hide">{!$Label.c.CORE_PMP_Sort_By}:</label>
+                      <select class="darkSelect" id="sortByField" name="sortByField" aura:id="sortByField" value="{!v.sortByField}" onchange="{!c.handleSortBy}">
+                        <option value="">{!$Label.c.CORE_PMP_Sort_By}</option>
+                        <option value="1">Product Sort One Desc</option>
+                        <option value="2">Product Sort One ASC </option>
+                        <option value="3">Product Sort Two ASC </option>
+                        <option value="4">Product Sort Two Desc</option>
+                        <option value="5">Product Sort Three ASC </option>
+                        <option value="6">Product Sort Three Desc</option>
+                      </select>
+                  </div>
+                </lightning:layoutItem>
+              </aura:if>
+              <aura:if isTrue="{!v.searchType == 'partner'}">
+                <lightning:layoutItem class="slds-m-top_xxx-small" size="12">
+                  <div class="sortByContainer slds-m-vertical_large">
+                                    <label for="sortByField" class="slds-hide">{!$Label.c.CORE_PMP_Sort_By}:</label>
+                      <select class="darkSelect" id="sortByField" name="sortByField" aura:id="sortByField" value="{!v.sortByField}" onchange="{!c.handleSortBy}">
+                        <option value="">{!$Label.c.CORE_PMP_Sort_By}</option>
+                        <option value="1">Partner Sort One Desc</option>
+                        <option value="2">Partner Sort One ASC </option>
+                        <option value="3">Partner Sort Two ASC </option>
+                        <option value="4">Partner Sort Two Desc</option>
+                        <option value="5">Partner Sort Three ASC </option>
+                        <option value="6">Partner Sort Three Desc</option>
+                      </select>
+                  </div>
+                </lightning:layoutItem>
+              </aura:if>
+            
+            <aura:if isTrue="{!v.refineModalOpen}">
+              <aura:iteration items="{!v.filters}" var="tagset" indexVar="i">
+                <lightning:layoutItem class="slds-m-top_xxx-small border-top " size="12">
+                    <aura:if isTrue="{!tagset.type == 'tag'}">
+                      <c:MarketplaceSearchAppliedFilters 
+                          title="{!tagset.label}" 
+                          filterName="{!tagset.name}" 
+                          filterGroupCount="{!v.filterGroupCount}"
+                          filterOpen="{!v.filterOpenState}"
+                          renderType="contextFilterMobile"
+                          tags="{!tagset.tags}"
+                          open="false"
+                          showClearFiltersLink="{!tagset.showClearLink}"
+                      />
+
+                    </aura:if>
+                    <aura:if isTrue="{!tagset.type == 'multilevel'}">
+                      <c:MarketplaceSearchAppliedFilters title="{!tagset.label}" filterName="{!tagset.name}" filterGroupCount="{!v.filterGroupCount}" open="false">
+                          <div class="tagTree">
+                              <aura:iteration items="{!tagset.tags}" var="item" indexVar="i">
+                                  <p class="slds-p-bottom_x-small">	
+                                      <a  class="color-white text-underline" href="javascript:void(0);" 	
+                                         id="{!item.value}" 	
+                                         data-modal-id="multilevelModal" 	
+                                         data-modal-title="{!item.label}"	
+                                         data-modal-context-id="{!tagset.name}"	
+                                         data-modal-L0filter-id="{!item.value}"	
+                                         onclick="{!c.handleShowModal}">	
+                                          {!item.label} <aura:if isTrue="{!item.count > 0}">&nbsp;<span class="color-white">({!item.count})</span></aura:if>	
+                                      </a>	
+                                  </p>
+                              </aura:iteration>
+                          </div>
+                        </c:MarketplaceSearchAppliedFilters>
+                    </aura:if>                    
+                    <aura:if isTrue="{!tagset.type == 'partnerfilter'}">
+                      <c:MarketplaceSearchAppliedFilters title="{!tagset.label}" filterName="{!tagset.name}" filterGroupCount="{!v.filterGroupCount}" open="false" filterOpen="{!v.filterOpenState}">
+                        <div class="tagTree">
+                          <c:MarketplacePartnerListGrouping
+                              tagset="{!tagset}"
+                              tags="{!tagset.tags}"
+                            />
+                        </div>
+                      </c:MarketplaceSearchAppliedFilters>
+                    </aura:if>
+                </lightning:layoutItem>
+              </aura:iteration>
+            </aura:if>
+            <div class="border-top fullWidth"></div>
+              <lightning:layoutItem class="slds-m-top_small" size="12">
+                <lightning:layout multipleRows="true">
+                  <lightning:layoutItem size="6">
+                    <button class="grayButton" onclick="{!c.handleClearAllFilters}">
+                        {!$Label.c.PMP_Clear_All_Filters}
+                    </button>
+                  </lightning:layoutItem>
+                    <lightning:layoutItem size="6" class="slds-text-align_right">
+                      <c:IntelButton onclick="{!v.onRefineApplyClick}">
+                        {!$Label.c.PMP_Apply}
+                      </c:IntelButton>
+                  </lightning:layoutItem>
+
+                </lightning:layout>
+              </lightning:layoutItem>
+
+            </lightning:layout>
+        </div>
+
+      </div>
+    </aura:if>
+
+    <aura:if isTrue="{! and(v.refineModalOpen, (v.appState.Settings.currentSldsBreakPoint != 'x-large'))}">
+      <!-- Hub spoke for Multilevel Modal-->
+      <div class="modal-overlay spoke-overlay" aura:id="multilevelModal" id="multilevelModal">
+          <aura:if isTrue="{!v.multilevelModalOpen}">
+          <div class="close-heading">
+            <a class="close spoke slds-p-around_large" data-modal-id="multilevelModal" onclick="{!c.handleShowModal}">
+              <h3 class="heading-20">{!v.multilevelTitle}</h3>
+              <lightning:icon iconName="utility:chevronleft" class="shiftUp icon-white slds-m-left_medium"
+                size="x-small" />
+            </a>
+          </div>
+          <div class="body">
+            <c:MarketplaceMultiLevelModal 
+              onclose="{!v.onMultilevelClick}"
+              headerTitle="{!v.multilevelTitle}"
+              initialSelectedList="{!v.multilevelSelectedList}"
+              filterId="{!v.multilevelID}"
+              initialState="{!v.multilevelFilterList}"
+            />
+          </div>
+          </aura:if>
+      </div>
+    </aura:if>
+    <aura:if isTrue="{!v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+      <div class="relative">
+        <aura:if isTrue="{!and(v.state.searchLoading, !v.partnerModalOpen)}">
+          <lightning:spinner alternativeText="Loading"/>
+        </aura:if>
+        <div class="modal-overlay" aura:id="multilevelModal" id="multilevelModal">
+          <aura:if isTrue="{! v.multilevelModalOpen}">
+            <c:MarketplaceMultiLevelModal 
+              onclose="{!v.onMultilevelClick}"
+              headerTitle="{!v.multilevelTitle}"
+              initialSelectedList="{!v.multilevelSelectedList}"
+              filterId="{!v.multilevelID}"
+              initialState="{!v.multilevelFilterList}"
+            />          
+          </aura:if>
+        </div>
+        <div class="modal-backdrop slds-hide" aura:id="multilevelModalBackdrop" id="multilevelModalBackdrop"></div>
+
+        <lightning:layout multipleRows="true">
+          <lightning:layoutItem size="12">
+            <c:MarketplaceSearchAppliedFilters title="{!$Label.c.PMP_Search_Categories_Filter}" open="true">
+              <div class="searchTreeTextNormal">
+                <aura:iteration items="{!v.categories}" var="category" indexVar="i">
+                  <c:MarketplaceSearchCategoryFilter
+                    category="{!category}"
+                    open="true"
+                    disableOpenToggle="true"
+                    level="0" />
+                </aura:iteration>
+              </div>
+            </c:MarketplaceSearchAppliedFilters>
+          </lightning:layoutItem>
+
+          <aura:iteration items="{!v.filters}" var="tagset" indexVar="i">
+            <lightning:layoutItem class="slds-m-top_xxx-small" size="12">
+	    
+                <aura:if isTrue="{!tagset.type == 'tag'}">
+                  <c:MarketplaceSearchAppliedFilters 
+                  showClearFiltersLink="{!tagset.showClearLink}"
+                  title="{!tagset.label}" 
+                  filterName="{!tagset.name}" 
+                  filterGroupCount="{!v.filterGroupCount}" 
+                  filterOpen="{!v.filterOpenState}"
+                  open="{!tagset.autoexpand}"
+                  tags="{!tagset.tags}"
+                  />
+                </aura:if>
+                <aura:if isTrue="{!tagset.type == 'partnerfilter'}">
+                  <c:MarketplaceSearchAppliedFilters title="{!tagset.label}" filterName="{!tagset.name}" filterGroupCount="{!v.filterGroupCount}" filterOpen="{!v.filterOpenState}" open="false">
+                    <div class="tagTree slds-p-bottom_x-large">
+                      <a href="javascript:void(0);"  data-modal-id="partnerModal"  onclick="{!c.handleShowModal}">{!format($Label.c.PMP_View_Partners,tagset.count)}</a>
+                        <div class="partnerModal modal-overlay" aura:id="partnerModal" id="partnerModal">
+                          <aura:if isTrue="{!v.partnerModalOpen}">
+                            <c:MarketplacePartnerListModal
+                              tagset="{!tagset}"
+                              tags="{!tagset.tags}"
+                              onclick="{!v.onPartnerClick}"
+                              />
+                          </aura:if>
+                        </div>
+                        <div class="partnerModalBackdrop modal-backdrop slds-hide" aura:id="partnerModalBackdrop" id="partnerModalBackdrop"></div>
+                        
+
+                    </div>
+                  </c:MarketplaceSearchAppliedFilters>
+                </aura:if>
+                <aura:if isTrue="{!tagset.type == 'multilevel'}">
+                    <c:MarketplaceSearchAppliedFilters title="{!tagset.label}" filterName="{!tagset.name}" filterGroupCount="{!v.filterGroupCount}" open="false">
+                        <div class="tagTree">
+                            <aura:iteration items="{!tagset.tags}" var="item" indexVar="i">
+                                <p class="slds-p-bottom_x-small">	
+                                    <a  href="javascript:void(0);" 	
+                                       id="{!item.value}" 	
+                                       data-modal-id="multilevelModal" 	
+                                       data-modal-title="{!item.label}"	
+                                       data-modal-context-id="{!tagset.name}"	
+                                       data-modal-L0filter-id="{!item.value}"	
+                                       onclick="{!c.handleShowModal}">	
+                                        {!item.label} <aura:if isTrue="{!item.count > 0}">&nbsp;<span class="color-darkgray">({!item.count})</span></aura:if>	
+                                    </a>	
+                                </p>
+                            </aura:iteration>
+                        </div>
+                  </c:MarketplaceSearchAppliedFilters>
+                </aura:if>
+
+            </lightning:layoutItem>
+          </aura:iteration>
+        </lightning:layout>
+      </div>
+
+
+    </aura:if>
+
+
+  </div>
+
+</aura:component>

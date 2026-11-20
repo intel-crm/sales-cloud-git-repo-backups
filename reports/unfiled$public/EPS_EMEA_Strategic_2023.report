@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_67833849</developerName>
+        <masterLabel>SMG Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Strategic Account Sales Group</sourceValue>
+            </sourceValues>
+            <value>Global Accounts</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Americas Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>US Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP APJ Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA France Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Russia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA UK Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Russia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP UK Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Named Account Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opp_Strategic_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Status_Update__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Architecture_Conversion__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Competitive_Architecture__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Push_Counter__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001IFjrsAAD&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001FPOFGAA5&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0061J00000W99EmQAJ&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001I7oQQAAZ&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001HHRMDAA5&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001IucmPAAR&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001FR0BJAA1&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001I7pBrAAJ&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001I7otJAAR&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001HWf76AAD&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001Iu7tRAAR&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001JT4r0AAD&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001FPdeTAAT&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001JSJs7AAH&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001JSfEEAA1&quot;
+, &quot;Lighthouse&quot;, 
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001I7sLeAAJ&quot;
+, &quot;Lighthouse&quot;,
+IF(Opportunity.Core_Opportunity_ID__c=&quot;0063b00001IuCKEAA3&quot;
+, &quot;Lighthouse&quot;, &quot;No&quot;)))))))))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>LightHouse?</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>AMOGLION_EMEA_Strategic_2023</description>
+    <filter>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <column>OPPORTUNITY_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001JSJs7,0063b00001JSfEE,0063b00001IuCKE,0063b00001Iu7tR,0063b00001FPdeT,0063b00001JT4r0,0063b00001IucmP,0063b00001IFjrs,0063b00001I7pBr,0063b00001I7otJ,0063b00001I7oQQ,0063b00001HWf76,0063b00001HHRMD,0063b00001FR0BJ,0063b00001FPOFG,0061J00000W99Em,0063b00001I7sLe</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EPS_EMEA_Strategic_2023</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>PROBABILITY</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2030-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2023-01-01</startDate>
+    </timeFrameFilter>
+</Report>

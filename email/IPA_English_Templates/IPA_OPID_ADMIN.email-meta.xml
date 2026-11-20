@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>IPA_OPID_ADMIN</name>
+    <style>none</style>
+    <subject>1PID with no active location account</subject>
+    <textOnly>Hello,
+
+This is to inform that for the 1PID(s) listed below there is no active account associated. If this is not expected, please raise a ticket in production support.
+%AccountNames%</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

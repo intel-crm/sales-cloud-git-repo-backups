@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Opportunity Has Been Rejected" recipientType="User" relatedToType="Opportunity"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Core_PCC_OpportunityRejectNotification oppRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

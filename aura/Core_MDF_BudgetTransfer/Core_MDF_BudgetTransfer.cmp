@@ -1,0 +1,195 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" extends="c:Core_MDF_BudgetBase" controller="Core_MDF_BudgetTransfer">
+    <ltng:require styles="{!$Resource.Core_MDF_AccountTransferCSS}"/>
+    <aura:attribute name="hasAccess" type="Boolean" default="false"/>
+    <aura:attribute name="accessErrorMsg" type="String" default=""/>
+    <!-- Attributes start-->        
+    <aura:attribute name="PartnerMarketingBudgetList" type="Object[]" access="public" />
+    <aura:attribute name="budget" type="Decimal"  access="public" />
+    <aura:attribute name="totalAmount" type="Decimal"  access="public" />
+    <aura:attribute name="button" type="boolean" default="true"  access="public" />
+    <aura:attribute name="error" type="boolean" default="false" access="public"/>
+    <aura:attribute name="autoSelected" type="boolean" default="true" access="public" />
+    <aura:attribute name="partnerTransferTo" type="String" access="public" /> 
+    <aura:attribute name="fadeTimeout" type="Integer" default="5000"/>
+    <aura:attribute name="errorMsg" type="String" access="public"/>
+    <aura:attribute name="sameAmountTransferError" type="boolean" default="false" access="public"/>
+    <aura:attribute name="amountTransferExceedsError" type="boolean" default="false" access="public"/>
+    <aura:attribute name="onSuccessAmount" type="Decimal" access="public"/>
+    
+    <aura:attribute name="fromAccountList" type="List" default="[]"/>
+    <aura:attribute name="fromAccountSelectedValue" type="Object" access="public" default="{'Id':'','Name':''}" />
+    <aura:attribute name="budgetSelectedValue" type="Map" access="public" default="{'Id':'','Name':''}" />
+	<aura:attribute name="toAccountList" type="List" default="[]"/>
+    <aura:attribute name="toAccountSelectedValue" type="Map" access="public" default="{'Id':'','Name':''}" />
+    <aura:attribute name="disableBudget" type="boolean" default="true" access="public"/>
+    <aura:attribute name="disableToAccount" type="boolean" default="true" access="public"/>
+    <aura:attribute name="disableTransferAmount" type="boolean" default="true" access="public"/>
+    <!-- Attributes end-->
+    
+    <!--Handlers start-->
+    <aura:handler name="init" value="{!this}" action="{!c.DoInit}"/>
+    
+    <!--Handlers end-->
+    
+    <aura:if isTrue="{!v.hasAccess}">   
+        <lightning:layout class="slds-page-header slds-page-header--object-home" >
+            
+    <!--loading spinner start-->
+         <lightning:spinner aura:id="accountTransferSpinner" variant="brand" size="x-small" class="slds-hide"/>
+    <!-- Loading spinner end--> 
+        
+        <lightning:layoutItem >
+            <lightning:icon iconName="custom:custom16" alternativeText="Account"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-small">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Account}</h1>
+                <h2 class="slds-text-heading--medium">{!$Label.c.Core_MDF_Transfer}</h2>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small" class="slds-size_1-of-2" >
+            
+            
+            
+            
+            <!--FROM- -->
+            <fieldset class="slds-box slds-box_xx-small slds-container--small slds-p-top_none"  >
+                <legend ><b>
+                    {!$Label.c.Core_MDF_From_Account}</b>
+                </legend>
+                
+                
+
+                <lightning:notificationsLibrary aura:id="notifyId"/>
+                <!-- From Account  -->
+                <c:core_MDF_Searchable_Dropdownlist aura:id="fromAccountComponent" 
+                                                    placeHolder="{!$Label.c.Core_MDF_Search +'...'}" 
+                                                    inputDataList="{! v.fromAccountList }" 
+                                                    selectedItemName="{!v.fromAccountSelectedValue.Name}"
+                                                    requiredMessage="{!$Label.c.Core_MDF_CompleteThisField_ErrorMessage}"
+                                                    defaultListMessage="{!$Label.c.Core_MDF_NoRecordsFound}"
+                                                    isRequired="true"
+                                                    onselectedItem="{!c.fromAccountToChange}" 
+                                                    oninputFieldValueClear="{!c.ClearFromAccount}"
+                                                    onclick="{!c.fromAccountClick}"/>                
+                <!-- Budget  -->
+                <c:core_MDF_Searchable_Dropdownlist aura:id="PMBComponent" 
+                                                    fieldLabel="{!$Label.c.Core_MDF_Budget}" 
+                                                    placeHolder="{!$Label.c.Core_MDF_Search +'...'}" 
+                                                    inputDataList="{!v.PartnerMarketingBudgetList}" 
+                                                    isRequired="true"
+                                                    requiredMessage="{!$Label.c.Core_MDF_CompleteThisField_ErrorMessage}"
+                                                    defaultListMessage="{!$Label.c.Core_MDF_NoRecordsFound}"
+                                                    fieldDisabled = "{!v.disableBudget}"
+                                                    onselectedItem="{!c.OnBudgetChange}" 
+                                                    oninputFieldValueClear="{!c.ClearBudget}"/>
+                
+                <div class="slds-hide" aura:id="availableAmount">
+                    <lightning:input aura:id="partner_" label="{!$Label.c.Core_MDF_Total_Available_Amount}" 
+                                     type="number" formatter="currency" min="0" disabled="true"  readonly="true"
+                                     name="totalAmount" fieldLevelHelp="{!$Label.c.Core_MDF_Total_Available_Amount_Helptext}"
+                                     value="{!v.totalAmount}" class="slds-p-around_xx-small"
+                                     flexibility="grow"                                     
+                                     /> 
+                </div>   
+            </fieldset>
+            <fieldset class="slds-box slds-box_xx-small slds-container--small slds-p-top_none"  >
+                <legend ><b>
+                    {!$Label.c.Core_MDF_To_Account}
+                    </b>
+                </legend>
+                
+                <!-- To Account  -->
+                
+                <c:core_MDF_Searchable_Dropdownlist aura:id="toAccountComponent" 
+                                                    placeHolder="{!$Label.c.Core_MDF_Search +'...'}" 
+                                                    inputDataList="{! v.toAccountList }" 
+                                                    isRequired="true"
+                                                    requiredMessage="{!$Label.c.Core_MDF_CompleteThisField_ErrorMessage}"
+                                                    defaultListMessage="{!$Label.c.Core_MDF_NoRecordsFound}"
+                                                    fieldDisabled = "{!v.disableToAccount}"
+                                                    onselectedItem="{!c.toAccountToChange}" 
+                                                    oninputFieldValueClear="{!c.ClearToAccount}"/>
+                    
+                <lightning:input aura:id="partner_" label="{!$Label.c.Core_MDF_Amount_to_Transfer}" type="number" formatter="currency" min="0.1"
+                                 name="budget"  value="{!v.budget}" maxlength="13" onblur="{!c.HandleBlur }" step="0.01" required="true"
+                                 class="slds-p-around_xx-small Budget" disabled="{!v.disableTransferAmount}"
+                                 flexibility="grow"
+                                 /> 
+            </fieldset>
+            <lightning:button label="{!$Label.c.Core_MDF_Transfer}" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              disabled="{!v.button}"
+                              name="transferBtn"
+                              aura:id="transferBtn"
+                              onclick="{!c.TransferBudget}"/>           
+            
+            <lightning:button label="{!$Label.c.Core_MDF_Clear}" 
+                              class="slds-m-top--medium"
+                              variant="brand"                                                 
+                              name="transferBtn"
+                              aura:id="transferBtnNew"
+                              onclick="{!c.Clear}"/> 
+        </lightning:layoutItem>
+        <lightning:layoutItem>
+            <div class=" slds-hide" aura:id="toast" style="height:4rem;">
+                <div class="slds-notify_container slds-is-absolute ">
+                    <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Success}</span>
+                        
+                        <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" >
+                            <c:svg class="slds-icon slds-icon_small" aria-hidden="true"
+                                   xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#success'}" /> 
+                            
+                        </span>
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small ">{!$Label.c.Core_MDF_Transfer_of} ${!v.onSuccessAmount}&nbsp;{!$Label.c.Core_MDF_to} "{!v.partnerTransferTo}" {!$Label.c.Core_MDF_is_successful}</h2>
+                        </div>
+                        <button class="slds-button slds-button_icon slds-notify__close " title="{!$Label.c.Core_MDF_Close}" 
+                                onclick="{!c.CloseToast}">
+                            <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
+                                   xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
+                            <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                        </button>
+                    </div>
+                </div>
+            </div> 
+        </lightning:layoutItem>
+        <lightning:layoutItem>
+            <div class=" slds-hide" aura:id="errorToast" style="height: 4rem;">
+                <div class="slds-notify_container slds-is-absolute">
+                    <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Error}</span>
+                        <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" >
+                            <c:svg class="slds-icon slds-icon_small" aria-hidden="true"
+                                   xlinkHref="{!$Resource.Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#error'}" /> 
+                            
+                            
+                        </span>
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small ">{!v.errorMsg}</h2>
+                        </div>
+                        <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}"
+                                onclick="{!c.CloseErrorToast}"
+                                >
+                            <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
+                                   xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
+                            
+                            
+                            <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout> 
+<aura:set attribute="else">
+    <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+        {!v.accessErrorMsg}
+    </lightning:card>
+</aura:set>
+</aura:if>
+    
+</aura:component>

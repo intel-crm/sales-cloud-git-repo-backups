@@ -1,0 +1,17 @@
+<!-- Component which loads on Save of Exception Records -->
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+                access="global">
+    
+    <!-- Handler function for fetching value on the load of the component -->
+    <aura:handler name="init" value="{!this}" action="{!c.onExceptionCreation}"/>
+    
+    <!-- Attribute Initialization -->
+    <aura:attribute type="Boolean" name="loadExceptionsAccountLayout" Default="false" 
+                    description="Controls the Account Selection Component on the Exception Record" />
+    
+    <!-- Accounts Popup for the the Exception -->
+    <aura:if isTrue ="{!v.loadExceptionsAccountLayout}" >
+        <c:Core_MDF_ExceptionAccounts exceptionsQucikActionIndicator = "true" recordId = "{!v.recordId}" />
+    </aura:if>
+    
+</aura:component>

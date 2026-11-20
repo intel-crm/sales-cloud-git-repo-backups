@@ -1,0 +1,57 @@
+<!--
+  @description       : LWc for Bulk Won/Lost action for Rebate Analyst
+  @author            : Sandeep Chamate
+  @group             : Accenture
+  @last modified on  : 06-08-2023
+  @last modified by  : Sandeep Chamate
+-->
+<template>
+    <template if:true={showLoadingSpinner}>
+        <div>
+            <lightning-spinner alternative-text="Uploading......" size="medium" variant="brand"></lightning-spinner>
+        </div>
+    </template>
+
+    <lightning-card title="Bulk Won/Lost">
+
+        <div class="slds-p-left_medium">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="6">
+                    <div>
+                        <div>
+                            <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file"
+                                multiple></lightning-input>
+                        </div><br />
+                        <div class="slds-text-body--regular slds-text-color_error">
+                            {fileName}
+                        </div><br />
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-text-heading_small">
+                        <div class="slds-p-medium_around">
+                            <b>Notes:</b><br>
+                            <lightning-formatted-text value={noteSection}>
+                            </lightning-formatted-text>
+
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button label="Update Status"
+                        title="Update Status" onclick={handleSave} variant="brand"
+                        disabled={disableValidateButton}></lightning-button>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button icon-name="utility:download" label="Download Template" title="Download Template"
+                        onclick={handleDownloadClick} variant="brand"></lightning-button>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

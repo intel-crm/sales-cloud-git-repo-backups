@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_Reminder_VIE</name>
+    <style>none</style>
+    <subject>Nhắc nhở: Đừng quên xác nhận</subject>
+    <textOnly>Nhắc nhở: Xác minh Email &amp; Đặt mật khẩu của bạn
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Cảm ơn bạn đã bắt đầu đăng ký tham gia Liên minh Đối tác Intel®!
+Vui lòng nhấp vào liên kết bên dưới để tiếp tục
+
+
+Xác minh Email &amp; Đặt mật khẩu của bạn
+
+Để hoàn thành bước tiếp theo và Đặt Mật khẩu của bạn, vui lòng sử dụng tên người dùng được liệt kê bên dưới
+Tên người dùng: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+Không thể truy cập liên kết trên?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=vi&amp;target=https://wcm-ciqa.intel.com/content/www/vn/vi/secure/partner/forms/ipa-account-search.html
+
+
+Chúng tôi mong chờ sự tham gia của bạn trong chương trình!
+Trân trọng!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 Hoa Kỳ.www.intel.com
+Quyền riêng tư&amp;verbar;Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

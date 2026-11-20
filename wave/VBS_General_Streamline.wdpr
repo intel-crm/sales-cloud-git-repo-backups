@@ -1,0 +1,117 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "KPI_TOTAL_PRICE_NBR", "OPORTUNITY_ID", "OPPORTUNITY_NM", "OPPORTUNITY_DESC_TXT", "OPPORTUNITY_STAGE_NM", "OPPORTUNITY_STAGE_MAPPING_NM", "OPPORTUNITY_AMT", "OPPORTUNITY_PROBABILITY_P", "OPPORTUNITY_CLOSE_DT", "OPPORTUNITY_OWNER_ID", "OPPORTUNITY_CONTACT_ID", "OPPORTUNITY_PRODUCT_SEGMENT_NM", "OPPORTUNITY_SALES_GROUPS_NM", "OPPORTUNITY_COVERAGE_NM", "STRATEGIC_OPPORTUNITY_IND", "OPPORTUNITY_FOCUS_NM", "OPPORTUNITY_VBS_STATUS_NM", "VERTICAL_MARKET_NM", "PRODUCT_ID", "PRODUCT_FAMILY_NM", "PRODUCT_TYPE", "LINE_ITEM_NM", "OPPORTUNITY_STATUS_NM", "BU_SHORT_NM", "ACCOUNT_ID", "ACCOUNT_NM", "ACCOUNT_SALES_GROUP_NM", "ACCOUNT_OWNER_ID", "PARTNER_ID", "PARTNER_OPPORTUNITY_ID", "PARTNER_NM", "OPPORTUNITY_OWNER_NM", "VBS_ID", "VBS_NM", "VBS_DSC", "SOAR_VBS_RENEWAL_DSC", "SOAR_STAGE_DSC", "CONTRACT_LIFETIME_MONTHS_NBR", "SOAR_OWNER_NM", "VBS_QUARTER_DSC", "VBS_MONTH_DSC", "VBS_YEAR_DSC", "TOTAL_CONTRACT_VALUE_NBR", "CTV_MONTHLY_NBR", "PRIMARY_LAWYER_TXT", "PRIMARY_VBS_OFFERING_CATEGORY_DSC", "SOAR_VBS_DECISION_DSC", "ANNUAL_RECURRING_REVENUE_NBR", "VBS_END_DT", "VBS_CONTRACT_START_DT", "VBS_CONTRACT_START_DT_MONTH_TXT", "VBS_CONTRACT_START_DT_DAY_TXT", "VBS_CONTRACT_START_DT_YEAR_TXT" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "FACT_VBS_SOAR_GENERAL",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "FACT_VBS_SOAR_GENERAL"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "VBS General Streamline",
+          "name" : "VBS_General",
+          "folderName" : "VBS"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET0", "LOAD_DATASET1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OPORTUNITY_ID" ],
+        "rightQualifier" : "Security_R",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "Group.Security.UserOrGroupId", "Security.Name", "AccountTeamMember.Security.Role.RolePath", "Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "SecurityAugment.GroupMemberRoles1.Role.Roles", "AccountTeamMember.Security.Name", "Security.Role.Roles", "AccountTeamMember.Security.Role.Roles", "Security.Role.RolePath", "Security.Id", "SecurityAugment.GroupMember1.UserOrGroupId", "AccountTeamMember.Security.Id", "Account.ParentTerritoryRoles.Role.Roles", "AccountTeamMember.UserId", "Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "SecurityAugment.GroupMember1.GroupId", "Account.DirectTerritoryRoles.Role.Roles" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Security_Register",
+          "name" : "Security_Register"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "FACT_VBS_SOAR_GENERAL",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT0" : {
+        "label" : "VBS General Streamlined",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 113.30000000000001,
+        "left" : 670.3
+      },
+      "JOIN0" : {
+        "label" : "Join 0",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 252.5
+      },
+      "LOAD_DATASET1" : {
+        "label" : "Security_Register",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET0",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "OUTPUT0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

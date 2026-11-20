@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREUNASPA</name>
+    <style>none</style>
+    <subject>Confirmaci&amp;oacute de registro de Intel</subject>
+    <textOnly>Solicitud recibida para el programa Intel® Cloud Insider
+
+Estimado, {!PRM_Registration_Request__c.PRM_First_Name__c}  {!PRM_Registration_Request__c.PRM_Last_Name__c}
+
+Gracias por enviar su solicitud para el programa Intel® Cloud Insider. Revisaremos la solicitud en un plazo de cinco días hábiles. Si tiene alguna pregunta, comuníquese con nosotros en programas@intel.com.
+
+
+Le agradecemos su interés en el programa Intel® Cloud Insider.
+
+
+Atentamente,
+Administrador, programa Intel® Cloud Insider.
+Sus soluciones. Nuestra tecnología. Más inteligentes, juntos.
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. Todos los derechos reservados. Intel y el logotipo Intel son marcas comerciales de la Corporación Intel o sus filiales en los Estados Unidos o en otros países.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.Intel.com
+Puede cancelar la suscripción en cualquier momento si actualiza los ajustes de su perfil en:  {!$Label.PRM_MyIntelProfileURL}
+Privacidad | Cookies | *Marcas comerciales</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

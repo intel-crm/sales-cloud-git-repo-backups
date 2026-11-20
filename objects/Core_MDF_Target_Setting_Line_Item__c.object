@@ -1,0 +1,1919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object will be used to store data of each Target Setting for forecasting</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>(1 AND 2 AND 3) OR (4 AND 5 AND 6) OR (7 AND 8 AND 9)</booleanFilter>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Client</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</field>
+                <operation>equals</operation>
+                <value>Client CoMarketing Fund</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Is_Top_Account_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Intel Partner Alliance</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</field>
+                <operation>equals</operation>
+                <value>Intel Partner Alliance</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Is_Top_Account_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Datacenter</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c</field>
+                <operation>equals</operation>
+                <value>Datacenter</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Is_Top_Account_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Forecast_Line_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_All_Accounts_nm__c</fullName>
+        <label>All Accounts</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Amount__c</fullName>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Bucket_nm__c</fullName>
+        <description>To store the Bucket values of Target Setting Line Items</description>
+        <label>Bucket</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Broad Priority</fullName>
+                    <default>false</default>
+                    <label>Broad Priority</label>
+                </value>
+                <value>
+                    <fullName>SMF</fullName>
+                    <default>false</default>
+                    <label>SMF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_nm__c</fullName>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Campaign_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Campaign</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>Spending Targets Line Items</relationshipLabel>
+        <relationshipName>Spending_Targets_Line_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Campaign_Name__c</fullName>
+        <description>To store the Campaign Name</description>
+        <externalId>false</externalId>
+        <label>Campaign Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Country_Name_nm__c</fullName>
+        <description>To store the country value of Target Setting Line Items</description>
+        <label>Country</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All Other APJ</fullName>
+                    <default>false</default>
+                    <label>All Other APJ</label>
+                </value>
+                <value>
+                    <fullName>All Other ASMO</fullName>
+                    <default>false</default>
+                    <label>All Other ASMO</label>
+                </value>
+                <value>
+                    <fullName>All Other EMEA</fullName>
+                    <default>false</default>
+                    <label>All Other EMEA</label>
+                </value>
+                <value>
+                    <fullName>AUSTRALIA</fullName>
+                    <default>false</default>
+                    <label>AUSTRALIA</label>
+                </value>
+                <value>
+                    <fullName>BRAZIL</fullName>
+                    <default>false</default>
+                    <label>BRAZIL</label>
+                </value>
+                <value>
+                    <fullName>CANADA</fullName>
+                    <default>false</default>
+                    <label>CANADA</label>
+                </value>
+                <value>
+                    <fullName>CHINA</fullName>
+                    <default>false</default>
+                    <label>CHINA</label>
+                </value>
+                <value>
+                    <fullName>COLOMBIA</fullName>
+                    <default>false</default>
+                    <label>COLOMBIA</label>
+                </value>
+                <value>
+                    <fullName>FRANCE</fullName>
+                    <default>false</default>
+                    <label>FRANCE</label>
+                </value>
+                <value>
+                    <fullName>GERMANY</fullName>
+                    <default>false</default>
+                    <label>GERMANY</label>
+                </value>
+                <value>
+                    <fullName>HONG KONG</fullName>
+                    <default>false</default>
+                    <label>HONG KONG</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
+                <value>
+                    <fullName>ITALY</fullName>
+                    <default>false</default>
+                    <label>ITALY</label>
+                </value>
+                <value>
+                    <fullName>JAPAN</fullName>
+                    <default>false</default>
+                    <label>JAPAN</label>
+                </value>
+                <value>
+                    <fullName>KOREA</fullName>
+                    <default>false</default>
+                    <label>KOREA</label>
+                </value>
+                <value>
+                    <fullName>MACAU</fullName>
+                    <default>false</default>
+                    <label>MACAU</label>
+                </value>
+                <value>
+                    <fullName>MEXICO</fullName>
+                    <default>false</default>
+                    <label>MEXICO</label>
+                </value>
+                <value>
+                    <fullName>POLAND</fullName>
+                    <default>false</default>
+                    <label>POLAND</label>
+                </value>
+                <value>
+                    <fullName>SWEDEN</fullName>
+                    <default>false</default>
+                    <label>SWEDEN</label>
+                </value>
+                <value>
+                    <fullName>UNITED KINGDOM</fullName>
+                    <default>false</default>
+                    <label>UNITED KINGDOM</label>
+                </value>
+                <value>
+                    <fullName>UNITED STATES</fullName>
+                    <default>false</default>
+                    <label>UNITED STATES</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Country_nm__c</fullName>
+        <description>To store the country value of Target Setting Line Items</description>
+        <label>Country</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>All Other APJ</fullName>
+                    <default>false</default>
+                    <label>All Other APJ</label>
+                </value>
+                <value>
+                    <fullName>All Other ASMO</fullName>
+                    <default>false</default>
+                    <label>All Other ASMO</label>
+                </value>
+                <value>
+                    <fullName>All Other EMEA</fullName>
+                    <default>false</default>
+                    <label>All Other EMEA</label>
+                </value>
+                <value>
+                    <fullName>ALL Other PRC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ALL Other PRC</label>
+                </value>
+                <value>
+                    <fullName>AUSTRALIA</fullName>
+                    <default>false</default>
+                    <label>AUSTRALIA</label>
+                </value>
+                <value>
+                    <fullName>BRAZIL</fullName>
+                    <default>false</default>
+                    <label>BRAZIL</label>
+                </value>
+                <value>
+                    <fullName>CANADA</fullName>
+                    <default>false</default>
+                    <label>CANADA</label>
+                </value>
+                <value>
+                    <fullName>CHINA</fullName>
+                    <default>false</default>
+                    <label>CHINA</label>
+                </value>
+                <value>
+                    <fullName>COLOMBIA</fullName>
+                    <default>false</default>
+                    <label>COLOMBIA</label>
+                </value>
+                <value>
+                    <fullName>FRANCE</fullName>
+                    <default>false</default>
+                    <label>FRANCE</label>
+                </value>
+                <value>
+                    <fullName>GERMANY</fullName>
+                    <default>false</default>
+                    <label>GERMANY</label>
+                </value>
+                <value>
+                    <fullName>HONG KONG</fullName>
+                    <default>false</default>
+                    <label>HONG KONG</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
+                <value>
+                    <fullName>ITALY</fullName>
+                    <default>false</default>
+                    <label>ITALY</label>
+                </value>
+                <value>
+                    <fullName>JAPAN</fullName>
+                    <default>false</default>
+                    <label>JAPAN</label>
+                </value>
+                <value>
+                    <fullName>KOREA</fullName>
+                    <default>false</default>
+                    <label>KOREA</label>
+                </value>
+                <value>
+                    <fullName>MACAU</fullName>
+                    <default>false</default>
+                    <label>MACAU</label>
+                </value>
+                <value>
+                    <fullName>MEXICO</fullName>
+                    <default>false</default>
+                    <label>MEXICO</label>
+                </value>
+                <value>
+                    <fullName>POLAND</fullName>
+                    <default>false</default>
+                    <label>POLAND</label>
+                </value>
+                <value>
+                    <fullName>SWEDEN</fullName>
+                    <default>false</default>
+                    <label>SWEDEN</label>
+                </value>
+                <value>
+                    <fullName>UNITED KINGDOM</fullName>
+                    <default>false</default>
+                    <label>UNITED KINGDOM</label>
+                </value>
+                <value>
+                    <fullName>UNITED STATES</fullName>
+                    <default>false</default>
+                    <label>UNITED STATES</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Focus_Area_nm__c</fullName>
+        <label>Focus Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Focus_Area</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Host_Region_Txt__c</fullName>
+        <description>This filed is used to populate Virtual Corp Account&apos;s Geo field as Host Region</description>
+        <externalId>false</externalId>
+        <formula>IF( Core_MDF_ProgramName_Txt__c = &apos;Intel Partner Alliance&apos; &amp;&amp; ISNULL(Core_MDF_Account__c) = false  , TEXT(Core_MDF_Account__r.Core_Geo__c),&apos;&apos;)</formula>
+        <label>Host Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Priority_Percentage__c</fullName>
+        <description>To stamp the Priority Percent for Line Item</description>
+        <label>Priority Weightage</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Priority_nm__c</fullName>
+        <description>To store Priority values for Target Setting Line Items</description>
+        <label>Priority</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Advanced Analytics</fullName>
+                    <default>false</default>
+                    <label>Advanced Analytics</label>
+                </value>
+                <value>
+                    <fullName>AI Commercial</fullName>
+                    <default>false</default>
+                    <label>AI Commercial</label>
+                </value>
+                <value>
+                    <fullName>AI Consumer</fullName>
+                    <default>false</default>
+                    <label>AI Consumer</label>
+                </value>
+                <value>
+                    <fullName>AI PC &amp; Consumer</fullName>
+                    <default>false</default>
+                    <label>AI PC &amp; Consumer</label>
+                </value>
+                <value>
+                    <fullName>AI PC - Commercial</fullName>
+                    <default>false</default>
+                    <label>AI PC - Commercial</label>
+                </value>
+                <value>
+                    <fullName>AI PC - Consumer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>AI PC - Consumer</label>
+                </value>
+                <value>
+                    <fullName>Apple Compete Commercial</fullName>
+                    <default>false</default>
+                    <label>Apple Compete Commercial</label>
+                </value>
+                <value>
+                    <fullName>Apple Compete Consumer</fullName>
+                    <default>false</default>
+                    <label>Apple Compete Consumer</label>
+                </value>
+                <value>
+                    <fullName>Apple Compete Workstation</fullName>
+                    <default>false</default>
+                    <label>Apple Compete Workstation</label>
+                </value>
+                <value>
+                    <fullName>Artificial Intelligence</fullName>
+                    <default>false</default>
+                    <label>Artificial Intelligence</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Commercial</fullName>
+                    <default>false</default>
+                    <label>Commercial</label>
+                </value>
+                <value>
+                    <fullName>Commercial Evo (non-vPro)</fullName>
+                    <default>false</default>
+                    <label>Commercial Evo (non-vPro)</label>
+                </value>
+                <value>
+                    <fullName>Commercial non-vPro</fullName>
+                    <default>false</default>
+                    <label>Commercial non-vPro</label>
+                </value>
+                <value>
+                    <fullName>Commercial vPro</fullName>
+                    <default>false</default>
+                    <label>Commercial vPro</label>
+                </value>
+                <value>
+                    <fullName>Commercial vPro Evo</fullName>
+                    <default>false</default>
+                    <label>Commercial vPro Evo</label>
+                </value>
+                <value>
+                    <fullName>Consumer</fullName>
+                    <default>false</default>
+                    <label>Consumer</label>
+                </value>
+                <value>
+                    <fullName>Consumer Evo</fullName>
+                    <default>false</default>
+                    <label>Consumer Evo</label>
+                </value>
+                <value>
+                    <fullName>Consumer non-Evo</fullName>
+                    <default>false</default>
+                    <label>Consumer non-Evo</label>
+                </value>
+                <value>
+                    <fullName>Enterprise AI</fullName>
+                    <default>false</default>
+                    <label>Enterprise AI</label>
+                </value>
+                <value>
+                    <fullName>Enterprise IT</fullName>
+                    <default>false</default>
+                    <label>Enterprise IT</label>
+                </value>
+                <value>
+                    <fullName>Gaming</fullName>
+                    <default>false</default>
+                    <label>Gaming</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing</fullName>
+                    <default>false</default>
+                    <label>High Performance Computing</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Optimization</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Optimization</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things</fullName>
+                    <default>false</default>
+                    <label>Internet of Things</label>
+                </value>
+                <value>
+                    <fullName>Network Transformation</fullName>
+                    <default>false</default>
+                    <label>Network Transformation</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Workstation</fullName>
+                    <default>false</default>
+                    <label>Workstation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ProgramName_Txt__c</fullName>
+        <description>This field is used to store program name present on the parent Spending Target record</description>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Spending_Targets_Version__r.Core_MDF_Spending_Targets__r.Core_MDF_Program_Name__r.Name</formula>
+        <label>Program Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_Name_nm__c</fullName>
+        <description>Field to store the region of selected country</description>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Host_Region</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_nm__c</fullName>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Host_Region</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Spending_Targets_Record_Name__c</fullName>
+        <description>Field to store the Spending Target&apos;s Name as text</description>
+        <externalId>false</externalId>
+        <label>Spending Targets Record Name</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Spending_Targets_Version__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Spending Targets Version</label>
+        <referenceTo>Core_MDF_Spending_Targets_Version__c</referenceTo>
+        <relationshipLabel>Spending Targets Line Items</relationshipLabel>
+        <relationshipName>Spending_Targets_Line_Items</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Spending_Version_Record_Name__c</fullName>
+        <description>Field to store Spending Targets Version&apos;s record name in form of text</description>
+        <externalId>false</externalId>
+        <label>Spending Version Record Name</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Target_Setting__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Spending Targets</label>
+        <referenceTo>Core_MDF_Target_Setting__c</referenceTo>
+        <relationshipLabel>Spending Targets Line Items</relationshipLabel>
+        <relationshipName>Forecast_Line_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Ultimate_Account_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c)</formula>
+        <label>Ultimate Account Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Spending Targets Line Item</label>
+    <listViews>
+        <fullName>Core_MDF_CCF_Target_Setting_Line_Item</fullName>
+        <columns>Core_MDF_Target_Setting__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Priority_nm__c</columns>
+        <columns>Core_MDF_Bucket_nm__c</columns>
+        <columns>Core_MDF_Country_nm__c</columns>
+        <columns>Core_MDF_Region_nm__c</columns>
+        <columns>Core_MDF_Amount__c</columns>
+        <columns>Core_MDF_Campaign_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Target_Setting_Line_Item__c.Core_MDF_Client_Co_Marketing_Fund</value>
+        </filters>
+        <label>CCF Target Setting Line Item</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_DCF_Target_Setting_Line_Item</fullName>
+        <columns>Core_MDF_Target_Setting__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Priority_nm__c</columns>
+        <columns>Core_MDF_Bucket_nm__c</columns>
+        <columns>Core_MDF_Country_nm__c</columns>
+        <columns>Core_MDF_Region_nm__c</columns>
+        <columns>Core_MDF_Amount__c</columns>
+        <columns>Core_MDF_Campaign_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Target_Setting_Line_Item__c.Core_MDF_Data_Center_Co_Marketing_Fund</value>
+        </filters>
+        <label>DCF Target Setting Line Item</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>FLI-{0000000}</displayFormat>
+        <label>Spending Targets Line Item Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Spending Targets Line Items</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_Client_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <label>Client</label>
+        <picklistValues>
+            <picklist>Core_MDF_All_Accounts_nm__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Bucket_nm__c</picklist>
+            <values>
+                <fullName>Broad Priority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SMF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Country_Name_nm__c</picklist>
+            <values>
+                <fullName>AUSTRALIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANADA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COLOMBIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GERMANY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HONG KONG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITALY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JAPAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEXICO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POLAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SWEDEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED KINGDOM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED STATES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Country_nm__c</picklist>
+            <values>
+                <fullName>AUSTRALIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANADA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COLOMBIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GERMANY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HONG KONG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITALY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JAPAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEXICO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POLAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SWEDEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED KINGDOM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED STATES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Focus_Area_nm__c</picklist>
+            <values>
+                <fullName>Client Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking %26 Telco</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Priority_nm__c</picklist>
+            <values>
+                <fullName>AI PC %26 Consumer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AI PC - Commercial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_Name_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Data_Center_Co_Marketing_Fund</fullName>
+        <active>true</active>
+        <label>Datacenter</label>
+        <picklistValues>
+            <picklist>Core_MDF_All_Accounts_nm__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Bucket_nm__c</picklist>
+            <values>
+                <fullName>Broad Priority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SMF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Country_Name_nm__c</picklist>
+            <values>
+                <fullName>AUSTRALIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANADA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COLOMBIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GERMANY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HONG KONG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITALY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JAPAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEXICO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POLAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SWEDEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED KINGDOM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED STATES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Country_nm__c</picklist>
+            <values>
+                <fullName>AUSTRALIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANADA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COLOMBIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GERMANY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HONG KONG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITALY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JAPAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEXICO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POLAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SWEDEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED KINGDOM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED STATES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Focus_Area_nm__c</picklist>
+            <values>
+                <fullName>Client Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking %26 Telco</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Priority_nm__c</picklist>
+            <values>
+                <fullName>Enterprise AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_Name_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
+        <active>true</active>
+        <label>Intel Partner Alliance</label>
+        <picklistValues>
+            <picklist>Core_MDF_All_Accounts_nm__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Bucket_nm__c</picklist>
+            <values>
+                <fullName>Broad Priority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SMF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>Account Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Country_Name_nm__c</picklist>
+            <values>
+                <fullName>AUSTRALIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANADA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COLOMBIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GERMANY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HONG KONG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITALY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JAPAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEXICO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POLAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SWEDEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED KINGDOM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED STATES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Country_nm__c</picklist>
+            <values>
+                <fullName>AUSTRALIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>All Other EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANADA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHINA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COLOMBIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRANCE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GERMANY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HONG KONG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ITALY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JAPAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MACAU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEXICO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POLAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SWEDEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED KINGDOM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNITED STATES</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Focus_Area_nm__c</picklist>
+            <values>
+                <fullName>Client Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking %26 Telco</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Priority_nm__c</picklist>
+            <values>
+                <fullName>Advanced Analytics</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Artificial Intelligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial Evo %28non-vPro%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial non-vPro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial vPro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial vPro Evo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consumer Evo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consumer non-Evo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High Performance Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet of Things</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Workstation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_Name_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_AccountChangeRestriction</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED(Core_MDF_Account__c)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
+        <errorMessage>Account cannot be updated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Do_Not_Select_Account</fullName>
+        <active>true</active>
+        <description>Throws error when All Account selected as Yes and if Account is entered.</description>
+        <errorConditionFormula>AND(ISNEW(), ISPICKVAL( Core_MDF_All_Accounts_nm__c , &apos;Yes&apos;), NOT(ISBLANK( Core_MDF_Account__c )))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
+        <errorMessage>Account should be blank if All Account option is selected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Negative_Amount</fullName>
+        <active>true</active>
+        <errorConditionFormula>Core_MDF_Amount__c &lt; 0</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Amount__c</errorDisplayField>
+        <errorMessage>Amount should be greater or equal to 0</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_PriorityPercentValidation</fullName>
+        <active>true</active>
+        <description>Priority Weightage should be within 0 - 100 range.</description>
+        <errorConditionFormula>OR(Core_MDF_Priority_Percentage__c &gt; 1.0, Core_MDF_Priority_Percentage__c &lt; 0.0)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Priority_Percentage__c</errorDisplayField>
+        <errorMessage>Priority Weightage should be within 0% - 100%</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Region_Should_Not_Be_Blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(RecordType.DeveloperName != $Label.Core_MDF_IPA_RecordType, ISBLANK(Core_MDF_Region_Name_nm__c))</errorConditionFormula>
+        <errorMessage>Region is Mandatory for CCF and DCF Programs.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

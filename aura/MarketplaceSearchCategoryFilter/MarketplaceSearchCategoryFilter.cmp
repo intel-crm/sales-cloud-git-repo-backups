@@ -1,0 +1,51 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="storeName" type="string" default="Search" />
+
+  <aura:attribute name="category" type="object" />
+
+  <aura:attribute name="open" type="boolean" default="false" />
+  <aura:attribute name="selected" type="boolean" default="false" />
+  <aura:attribute name="disableOpenToggle" type="boolean" default="false" />
+
+  <aura:attribute name="level" type="Integer" default="0"/>
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+ <c:MarketplaceAnalyticsData aura:id="analyticsData" /><!-- component having the Web analytics logic -->   
+    
+  <div class="cursor">
+    <div class="{!(v.selected ? 'selectedNode' : '') + ' slds-p-vertical_xx-small slds-m-bottom_xx-small node' + ' paddingLevel-'+ v.level}">
+      <aura:if isTrue="{!and(!v.disableOpenToggle, v.category.children.length > 0)}">
+        <a href="#" class="toggleIcon darkTheme" onclick="{!c.handleToggleOpenCategory}">
+          <span class="toggleIcon">
+            <lightning:icon
+              class="slds-m-right_xx-small cursor"
+              iconName="{!v.open ? 'utility:dash' : 'utility:add'}" />
+          </span>
+        </a>
+        <aura:set attribute="else">
+          <span style="width: 20px;"></span>
+        </aura:set>
+      </aura:if>
+      <span>
+        <a data-id="{!v.category.categoryId}" class="darkTheme" data-type="{!v.category.categoryType}"  onclick="{!c.handleSelectCategory}">
+          <span class="nodeTitle">{!v.category.categoryName}</span>&nbsp;
+          <span class="{!('' + v.category.count == '0') ? 'textSuperLight' : 'textLight'}">({!v.category.count})</span>
+        </a>
+      </span>
+    </div>
+    <aura:if isTrue="{!v.open}">
+      <div class="{!v.disableOpenToggle ? '' : ''}">
+        <aura:iteration items="{!v.category.children}" var="child" indexVar="i">
+          <c:MarketplaceSearchCategoryFilter
+            aura:id="treenode"
+            category="{!child}"
+            level="{!v.level + 1}"
+             />
+        </aura:iteration>
+      </div>
+    </aura:if>
+  </div>
+
+</aura:component>

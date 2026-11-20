@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22081012</developerName>
+        <masterLabel>Data Ops or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>MICHAEL SWEET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paulo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonia Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Herman Wynn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Jolin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Kline</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Julia Sallaiova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Amber Tsai</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simon Lee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindy Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sylvia Saw Ai Ong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yu Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LINDA LEE NORTH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NHAT THANH NGUYEN</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>OLDVAL</field>
+    </columns>
+    <columns>
+        <field>NEWVAL</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>field_key</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>account owner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Justyna Pieniążek</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MEA Account changes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-24</startDate>
+    </timeFrameFilter>
+</Report>

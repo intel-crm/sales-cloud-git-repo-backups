@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_SPA</name>
+    <style>none</style>
+    <subject>Verifique su dirección de correo electrónico</subject>
+    <textOnly>Verificar su dirección de correo electrónico
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Gracias por enviar su solicitud a Intel® Partner Alliance.
+Haga clic en el enlace a continuación para verificar su dirección de correo electrónico y conectar su cuenta.
+
+
+Verificar ahora
+
+
+Tenga en cuenta que este enlace caducará en 24 horas ¿No puede acceder al enlace anterior?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=es&amp;target=https://wcm-ciqa.intel.com/content/www/xl/es/secure/partner/forms/ipa-account-search.html
+
+
+¿Necesita ayuda para verificar su correo electrónico para Intel® Partner Alliance? Converse en línea con Intel
+¡Esperamos contar con usted en el programa!
+Atentamente,
+Su equipo de Intel® Partner Alliance
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, EE. UU. www.intel.com
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

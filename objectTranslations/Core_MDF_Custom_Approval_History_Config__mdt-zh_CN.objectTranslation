@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Custom Approval History Config --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Actual Approver Alias --></label>
+        <name>Core_MDF_ActualApprover_Alias__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Approver Last Name --></label>
+        <name>Core_MDF_ActualApprover_LastName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Approver Masked Label --></label>
+        <name>Core_MDF_ActualApprover_Masked_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Approver Masked --></label>
+        <name>Core_MDF_ActualApprover_Masked__c</name>
+    </fields>
+    <fields>
+        <label>实际审批人</label>
+        <name>Core_MDF_ActualApprover_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To Alias --></label>
+        <name>Core_MDF_AssignedTo_Alias__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To Last Name --></label>
+        <name>Core_MDF_AssignedTo_LastName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To Masked Label --></label>
+        <name>Core_MDF_AssignedTo_Masked_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To Masked --></label>
+        <name>Core_MDF_AssignedTo_Masked__c</name>
+    </fields>
+    <fields>
+        <label>分配对象</label>
+        <name>Core_MDF_AssignedTo_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- holds ; seperated values of column names in order they need to be displayed --></help>
+        <label><!-- Column order --></label>
+        <name>Core_MDF_Column_order__c</name>
+    </fields>
+    <fields>
+        <help><!-- JSON Sample - [ {&quot;record&quot;:[{
+&quot;step_Name&quot;: &quot;Price Reviewer&quot;,
+&quot;comments_masked&quot;: &quot;true&quot;,
+&quot;comments_desc&quot;:&quot;Generic&quot;}],
+&quot;ps_name&quot;:&quot;Core_MDF_CCP_
+Ext_IPA_Proposal_Manager&quot;}] --></help>
+        <label><!-- Class Constant --></label>
+        <name>Core_MDF_Comment_Filter_Reference_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments Masked Label --></label>
+        <name>Core_MDF_Comments_Masked_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments Masked --></label>
+        <name>Core_MDF_Comments_Masked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_MDF_Comments__c</name>
+    </fields>
+    <fields>
+        <label>日期</label>
+        <name>Core_MDF_CreatedDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- JSON Sample - [ {&quot;record&quot;:[{
+&quot;step_Name&quot;: &quot;Price Reviewer&quot;,
+&quot;comments_masked&quot;: &quot;true&quot;,
+&quot;comments_desc&quot;:&quot;Generic&quot;}],
+&quot;ps_name&quot;:&quot;Core_MDF_CCP_
+Ext_IPA_Proposal_Manager&quot;}] --></help>
+        <label><!-- Custom Label Configration --></label>
+        <name>Core_MDF_Custom_Label_Configration__c</name>
+        <relationshipLabel><!-- Custom Approval History Configs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- For External User --></label>
+        <name>Core_MDF_External_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier Checkbox Field1 --></label>
+        <name>Core_MDF_Identifier_CheckboxField1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier Checkbox Field2 --></label>
+        <name>Core_MDF_Identifier_CheckboxField2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier TextField1 --></label>
+        <name>Core_MDF_Identifier_TextField1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Identifier TextField2 --></label>
+        <name>Core_MDF_Identifier_TextField2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order By --></label>
+        <name>Core_MDF_Order_By__c</name>
+    </fields>
+    <fields>
+        <label>状态</label>
+        <name>Core_MDF_StepStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Table Title --></label>
+        <name>Core_MDF_Title__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- You can select only one comment field reference at a time --></errorMessage>
+        <name>Core_MDF_Comment_Filer_Reference</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Masked label should not be empty if corresponding masked Checkbox is selected --></errorMessage>
+        <name>Core_MDF_Masked_label_reqd</name>
+    </validationRules>
+</CustomObjectTranslation>

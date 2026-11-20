@@ -1,0 +1,82 @@
+<template>
+    <template if:false={ifs.showModal}>
+        <slot name="tile"></slot>
+    </template>
+    <template if:true={ifs.showModal}>
+        <a href="#" onclick={openModal}>
+            <slot name="tile"></slot>
+        </a>
+        <c-core-intc-modal data-name="modal1" has-body has-header data-type="cancel" fixed-header>
+            <div slot="header">
+                <h3 class="color-white">{modalTitle}</h3>
+            </div>
+            <div slot="body">
+                <template: if:true={isLoading}>
+                    <lightning-spinner alternative-text="loading"></lightning-spinner>
+                </template:>
+                <div class="slds-p-around_large modal-body">
+                    <div class="content-wrap">
+                        <template if:true={ifs.hasImageUrl}>
+                            <div class="image slds-m-right_medium">
+                                <img src={imageUrl}/>
+                            </div>
+                        </template>
+                        <div class="content">
+                            <template if:true={content}>
+                                <template for:each={content} for:item="item">
+                                    <template if:true={item.isText}>
+                                        <p class="slds-m-bottom_medium" key={item.id}>{item.body}</p>
+                                    </template>
+                                    <template if:true={item.isRichText}>
+                                        <div class="slds-m-bottom_medium" key={item.id}><lightning-formatted-rich-text class="spaced-out" value={item.body}></lightning-formatted-rich-text></div>
+                                    </template>
+                                    <template if:true={item.isLinks}>
+                                        <template for:each={item.body} for:item="link">
+                                            <div class="link-out slds-m-bottom_medium" key={link.id}>
+                                                <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage}  object-page={link.objectPage} record-id={link.recordId} caret="true"></c-ipa-link>
+                                            </div>
+                                        </template>
+                                    </template>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+    
+                    <div class="partner-dual-listbox-wrap">
+                        <lightning-dual-listbox id="selectOptions"
+                            class="label-14 centered"
+                            name="community"
+                            disable-reordering="true"
+                            source-label={sourceLabel}
+                            selected-label={selectedLabel}
+                            required-options={requiredOptions}
+                            options={communityOptions}
+                            value={selectedOptions}
+                            onchange={handleChange}>
+                        </lightning-dual-listbox>
+                    </div>
+    
+                    <div class="footer-link">
+                        <template if:true={ifs.isFooterLinkValid}>
+                            <c-ipa-link external-url={footerLinkData.externalUrl} label={footerLinkData.label} community-page={footerLinkData.communityPage}  object-page={footerLinkData.objectPage} record-id={footerLinkData.recordId} ></c-ipa-link>
+                        </template>
+                    </div>
+    
+                </div>
+                <div class="slds-modal__footer">
+                    <template if:false={isNonPrimary}>
+                        <button type="button" class="button button-secondary" onclick={closeModal} data-type="cancel">{label.cancel}</button>
+                    </template>
+    
+                    <template if:true={formChanged}>
+                        <button type="button" class="button button-primary flex-right" onclick={handleButtonStep} data-type="submit">{label.submit}</button>
+                    </template>
+                    <template if:false={formChanged}>
+                        <button type="button" class="button button-primary flex-right" onclick={handleButtonStep} data-type="skip">{label.skip}</button>
+                    </template>
+                </div>
+            </div>
+        </c-core-intc-modal>
+    </template>
+
+</template>

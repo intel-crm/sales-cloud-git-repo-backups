@@ -1,0 +1,242 @@
+<!-- Salesforce Out of the box fuctionality of upload file and attachment -->
+<!-- Called Conditionally from Parent Component -->
+<aura:component
+  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+  access="global"
+  Controller="Core_MDF_FileUploadController"
+>
+  <!-- Attribute Initialization -->
+  <aura:attribute
+    name="accept"
+    type="List"
+    default=""
+    description="Stores which types of the files user is allowed to upload"
+  />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default=""
+                    description="Stores the recordtypeName from the parent component" />
+  <aura:attribute
+    name="displayEventTemplate"
+    type="Boolean"
+    default="false"
+    description="Controls whether file upload links to be displayed"
+  />
+    <aura:attribute
+    name="displayIndustryPartnerTemplate"
+    type="Boolean"
+    default="false"
+    description="Controls whether file upload links to be displayed"
+  />
+  <aura:attribute
+    name="multiple"
+    type="Boolean"
+    default="true"
+    description="Controls whether user is allowed to upload multiple file or not"
+  />
+  <aura:attribute
+    name="disabled"
+    type="Boolean"
+    default="false"
+    description="Conditionally disabling the upload functionality"
+  />
+  <aura:attribute
+    name="uploadfilecheck"
+    type="Boolean"
+    default="false"
+    description="The value which validates on parent whether file is uploaded or not, component event is used to send the value to parent"
+  />
+  <aura:attribute
+    name="contentdocumentids"
+    type="String[]"
+    default=""
+    description="Stores the content document ids of the uploaded file "
+  />
+  <aura:attribute
+    name="userInfo"
+    type="string"
+    description="Stores the userinfo of logged in user used for dummy storage"
+  />
+
+  <aura:attribute
+    name="createEditPFRAttr"
+    type="string"
+    description="Is the call from Create/Edit or Record page"
+    default="false"
+  />
+  <aura:attribute name="filedata" type="Object" />
+  <aura:attribute name="iserror" type="Boolean" default="false"/>
+  <aura:attribute name="errormsg" type="string" default=""/>
+    <aura:attribute name="isOpalActivity" type="Boolean" default="false" />
+    <aura:attribute name="activityBudgetType" type="String" default="" description="Stores the Budget Type selected at Activity" />
+    <aura:attribute name="opalFileUploadBudgetTypes" type="Boolean" default="false" />
+
+  <!-- Registering the Component Event for passing the values to parent -->
+  <aura:registerEvent
+    name="fileuploadcheck"
+    type="c:Core_MDF_Activity_Upload_File_Event"
+  />
+  <!-- Handler class called on the load of the component -->
+  <aura:handler name="init" value="this" action="{!c.doInit}" />
+  <!-- Modal Starts-->
+  <div style="width:100%">
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+      <lightning:layoutItem padding="horizontal-small">
+        <div class="page-section page-header">
+          <h1 class="slds-text-heading--label"
+            >{!$Label.c.Core_MDF_UploadAttachmentSection}</h1
+          >
+        </div>
+      </lightning:layoutItem>
+    </lightning:layout>
+    <aura:if isTrue="{!v.createEditPFRAttr}">
+      <lightning:layout>
+        <lightning:layoutItem size="6" padding="horizontal-medium" >
+          <div>
+            <lightning:fileUpload
+              label="{!$Label.c.Core_MDF_AddAttachment}"
+              multiple="{!v.multiple}"
+              accept="{!v.accept}"
+              recordId="{!v.userInfo}"
+              onuploadfinished="{!c.handleUploadFinished}"
+              disabled="{!v.disabled}"
+            />
+          </div>
+        </lightning:layoutItem>
+        <!--Modified Date : 4-June-2020 Modified By : NZ Description : Display Event form links only for Event Type Activties -->
+        <lightning:layoutItem size="6" padding="horizontal-medium" class="slds-float_left">
+          <aura:if isTrue="{!v.displayEventTemplate}">
+            <div class="slds-list_horizontal slds-has-block-links">
+	    <!-- US1016810 - Added Extra condition to display only single Event Form link for OPAL Activities -->
+            <aura:if isTrue="{!and(v.isOpalActivity)}">
+              <span style="padding-left: 20px;">
+	          <br /><br />
+	          <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2H}" target="_blank">
+	            {!$Label.c.Core_MDF_EventForm2H}
+	          </a>
+              </span>
+              <aura:set attribute="else">
+              <span style="padding-left: 20px;">
+                  <br /><br />
+                  <a href="{!$Label.c.Core_MDF_EventApprovalFormLink}" target="_blank">
+                      {!$Label.c.Core_MDF_EventApprovalForm}
+                  </a>
+              </span>
+              <span style="padding-left: 20px;">
+                  <br /><br />
+                  <a href="{!$Label.c.Core_MDF_EventApprovalFormLink2020}" target="_blank">
+                    {!$Label.c.Core_MDF_EventApprovalForm2020}
+                  </a>
+              </span>
+              </aura:set>
+              </aura:if>
+            </div>
+            </aura:if>
+                     <aura:if isTrue="{!(v.displayIndustryPartnerTemplate)}">
+                          <div class="slds-list_horizontal slds-has-block-links">
+                              <aura:if isTrue="{!v.opalFileUploadBudgetTypes}">
+                                  <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_CCF_RecordTypeName}">
+                                 <span style="padding-left: 20px;">
+                                    <br /><br />
+                                   <a href="{!$Label.c.Core_MDF_IP_com_Form_Link_CCF}" target="_blank">
+                                        {!$Label.c.Core_MDF_IndustryPartner_com_Form}
+                                    </a>
+                                </span>
+                                      <aura:set attribute="else">
+									<span style="padding-left: 20px;">
+                                        <br /><br />
+                                        <a href="{!$Label.c.Core_MDF_IP_com_Form_Link_DCF}" target="_blank">
+                                            {!$Label.c.Core_MDF_IndustryPartner_com_Form}
+                                        </a>
+                                    </span>
+                                                                                                                             
+                                     </aura:set>
+                                  </aura:if>                                                                                                        
+                                     </aura:if>                                
+                          </div>
+                      </aura:if>
+        </lightning:layoutItem>
+      </lightning:layout>
+    </aura:if>
+    <br></br>
+    <aura:if isTrue="{!not(empty(v.filedata))}">
+      <div style="width:100%">
+        <lightning:layout>
+          <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+            <table class="slds-table slds-table_fixed-layout" style="width:100%">
+              <thead>
+                <tr class="slds-text-title_caps">
+                  <th scope="col" style="width:80%">
+                    <div
+                      class="slds-truncate"
+                      title="{!$Label.c.Core_MDF_Document_Title}"
+                      >{!$Label.c.Core_MDF_Document_Title}</div
+                    >
+                  </th>
+                  <th scope="col" style="width:20%">
+                    <div class="slds-truncate" title="Delete"></div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <aura:iteration items="{!v.filedata}" var="file">
+                  <tr class="slds-hint-parent">
+                    <th
+                      scope="row"
+                      data-label="{!$Label.c.Core_MDF_Document_Title}"
+                    >
+                      <div class="slds-cell-wrap">
+                        <a
+                          href="{!file.docurl}"
+                          target="_blank"
+                                                 rel="noopener noreferrer"
+                          download="{!file.Title}"
+                        >
+                          {!file.Title}
+                        </a>
+                      </div>
+                    </th>
+                    <th scope="row">
+                      <div>
+                        <aura:if isTrue="{!v.createEditPFRAttr}">
+                          <a
+                            onclick="{!c.deleteSelected}"
+                            data-Id="{!file.ContentDocumentId}"
+                          >
+                            <lightning:icon
+                              variant="info"
+                              iconName="utility:delete"
+                              class="slds-icon slds-icon_small"
+                              size="small"
+                              alternativeText="Delete"
+                            />
+                            <span class="slds-assistive-text">Delete Icon</span>
+                          </a>
+                        </aura:if>
+                      </div>
+                    </th>
+                  </tr>
+                </aura:iteration>
+                
+              </tbody>
+            </table>
+          </lightning:layoutItem>
+          <aura:if isTrue="{! v.isLoading }">
+            <lightning:spinner alternativeText="Loading" />
+          </aura:if>
+        </lightning:layout>
+      </div>
+    </aura:if>
+    <aura:if isTrue="{!(empty(v.filedata))}">
+        <p>{!$Label.c.Core_MDF_NoFiles} </p>
+      </aura:if><br/>
+    <aura:if isTrue="{!(v.iserror)}">
+        <!--<div class="slds-notify slds-notify_toast slds-theme_error">
+            <div class="slds-notify__content">
+                <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.errormsg}</h5>
+                <p class="slds-align_absolute-center">{!v.errormsg}</p>
+            </div>
+        </div>-->
+        <p class="slds-text-title_bold slds-text-color_error">{!v.errormsg}</p>
+    </aura:if>
+  </div>
+  <!-- Modal Closes -->
+</aura:component>

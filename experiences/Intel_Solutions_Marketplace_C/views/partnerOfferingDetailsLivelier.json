@@ -1,0 +1,156 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "fe3118d1-2576-4d20-98a8-bb3c16c6aa8b",
+  "label" : "Partner Offering Details Livelier",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "e3ed145b-a37c-4ece-8ee2-4499ceccadf9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "44ec2b05-d505-4c39-9a94-a56c22b8a52d",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"OfferingDetailPage\",\"title\":\"Offering Detail Page\"}",
+        "communityName" : "Marketplace",
+        "includeCanonical" : true
+      },
+      "componentName" : "c:ipaBreadcrumbsAnalytics",
+      "id" : "9c7309f3-6c8a-4158-832a-18c81d165e4d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9dd42626-65c8-4c41-a94d-63ee52b60d91",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "f3d5eff8-e67c-40fa-9fa3-f6b6d2b0f4c4",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "1b8e9d06-6a5c-4454-bd56-10b9b55bb2de",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "b1757026-9283-4e67-826c-f15cae56c0f1",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "6a8e1e4b-107a-47c2-a0e4-3d57694d787c",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:ipaOfferingDetail",
+      "id" : "ce63d73f-86fc-4818-b793-075f131b35f1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0fbb5b25-e927-45e7-b9ee-73710f1d0a01",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "$Label.c.PMP_All_Marketplace_Help",
+        "faqTitle" : "Offerings",
+        "headingLabel" : "$Label.c.PMP_MP_FAQ_Heading",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "49b44950-be30-4279-8d80-7e737cd49067",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "78ddf841-e9e9-4ca8-b5c4-cda05abde812",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "2b254933-5d50-4d6d-9605-ca93a0bdfb1b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0f052c1e-a205-4c11-97ba-57de43564814",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "8d5794fc-0a78-4b31-9fac-9bcc3e4d2d79",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "f7a1f09d-9f34-432d-973c-bba2c9f09739",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "57cdb731-32c4-4d4f-bb44-62227055e7cb",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaCommPage" : "",
+        "ctaExternalURL" : "",
+        "theme" : "dark"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "eb71867f-c015-48fa-b1cf-ac3702bacec0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "43702d65-16e1-4c78-b329-d8e888c834ca",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "id" : "d6600915-74d1-4b49-b6e0-0b2e2ef73fab",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "View offering details for {!Record._Title} on Intel® Solutions Marketplace.",
+        "title" : "{!Record._Title} - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "5c160339-7215-4c79-9612-15c52c0b5438",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c7344fbe-bb99-4e94-9215-d60787c36632",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "detail-a5b"
+}

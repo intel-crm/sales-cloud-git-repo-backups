@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>myRule_1_A1</name>
+        <label>Calling Queueable apex</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>IPS_APIGEE_Case_Comments_Queueable</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>getCaseCommentIds</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Case_Comments_Queueable</nameSegment>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the Core IPS CaseComment Backend OutMsg process using Outbound criteria criteria.
+ve10</description>
+    <label>Core IPS CaseComment Backend OutMsg_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <filterFormula>AND( 
+{!$Profile.Name} &lt;&gt; &apos;Integration&apos; , {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;,   
+{!$Record.Core_IPS_Case__r.Core_IPS_Backend_ID__c} &lt;&gt; null,  {!$Record.Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, 
+{!$Record.Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false,
+
+OR(
+      ISPICKVAL({!$Record.Core_Promote_Status__c}, &apos;&apos;), 
+      ISPICKVAL({!$Record.Core_Promote_Status__c}, &apos;In Progress&apos;)
+      ),
+OR(
+      {!$Record.Core_IPS_Comment_Attachment_Id__c} == null, 
+      {!$Record.Core_IPS_Comment_Attachment_Id__c}  == &apos;&apos;
+      )
+)</filterFormula>
+        <object>Core_IPS_Case_Comments__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

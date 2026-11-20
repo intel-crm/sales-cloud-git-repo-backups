@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Support Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Support Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_Account_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Adds the IT Region resource member to the opportunity --></help>
+        <label><!-- Add to Opportunity Team --></label>
+        <name>Core_Add_to_Opportunity_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner --></label>
+        <name>Core_DRD_Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deadline for Results --></label>
+        <name>Core_DRD_Deadline_for_Results__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_DRD_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Type --></label>
+        <name>Core_DRD_Request_Type__c</name>
+        <picklistValues>
+            <masterLabel>Acknowledge Existing/Previous Support Engagement</masterLabel>
+            <translation><!-- Acknowledge Existing/Previous Support Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center &amp; Cloud SW Support</masterLabel>
+            <translation><!-- Data Center &amp; Cloud SW Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering Services</masterLabel>
+            <translation><!-- Engineering Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking, Comms, Media SW Support</masterLabel>
+            <translation><!-- Networking, Comms, Media SW Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remote Access</masterLabel>
+            <translation><!-- Remote Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Development Tools</masterLabel>
+            <translation><!-- Software Development Tools --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Core_DRD_Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Core_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expert Name --></label>
+        <name>Core_Expert_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>Core_External_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Feedback for the support request --></help>
+        <label><!-- Feedback/Comments --></label>
+        <name>Core_Feedback_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- IT Region Manager Email --></label>
+        <name>Core_IT_Geo_Manager_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- IT Region Manager --></label>
+        <name>Core_IT_Geo_Manager__c</name>
+        <relationshipLabel><!-- Sales Support Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- City for Domain and topic --></help>
+        <label><!-- City --></label>
+        <name>Core_IT_IAI_City__c</name>
+    </fields>
+    <fields>
+        <help><!-- Country for the topic discussion --></help>
+        <label><!-- Country --></label>
+        <name>Core_IT_IAI_Country__c</name>
+        <picklistValues>
+            <masterLabel>Argentina</masterLabel>
+            <translation><!-- Argentina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia</masterLabel>
+            <translation><!-- Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austria</masterLabel>
+            <translation><!-- Austria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azerbaijan</masterLabel>
+            <translation><!-- Azerbaijan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belgium</masterLabel>
+            <translation><!-- Belgium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brazil</masterLabel>
+            <translation><!-- Brazil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chile</masterLabel>
+            <translation><!-- Chile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colombia</masterLabel>
+            <translation><!-- Colombia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Costa Rica</masterLabel>
+            <translation><!-- Costa Rica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Democratic Republic, Congo</masterLabel>
+            <translation><!-- Democratic Republic, Congo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denmark</masterLabel>
+            <translation><!-- Denmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecuador</masterLabel>
+            <translation><!-- Ecuador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Egypt</masterLabel>
+            <translation><!-- Egypt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finland</masterLabel>
+            <translation><!-- Finland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgia</masterLabel>
+            <translation><!-- Georgia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hong Kong</masterLabel>
+            <translation><!-- Hong Kong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungary</masterLabel>
+            <translation><!-- Hungary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesia</masterLabel>
+            <translation><!-- Indonesia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iraq</masterLabel>
+            <translation><!-- Iraq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ireland</masterLabel>
+            <translation><!-- Ireland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Israel</masterLabel>
+            <translation><!-- Israel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italy</masterLabel>
+            <translation><!-- Italy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kazakhstan</masterLabel>
+            <translation><!-- Kazakhstan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liechtenstein</masterLabel>
+            <translation><!-- Liechtenstein --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malaysia</masterLabel>
+            <translation><!-- Malaysia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mexico</masterLabel>
+            <translation><!-- Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netherlands</masterLabel>
+            <translation><!-- Netherlands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norway</masterLabel>
+            <translation><!-- Norway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pakistan</masterLabel>
+            <translation><!-- Pakistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panama</masterLabel>
+            <translation><!-- Panama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peru</masterLabel>
+            <translation><!-- Peru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philippines</masterLabel>
+            <translation><!-- Philippines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poland</masterLabel>
+            <translation><!-- Poland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portugal</masterLabel>
+            <translation><!-- Portugal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romania</masterLabel>
+            <translation><!-- Romania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russia</masterLabel>
+            <translation><!-- Russia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saudi Arabia</masterLabel>
+            <translation><!-- Saudi Arabia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Africa</masterLabel>
+            <translation><!-- South Africa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Korea</masterLabel>
+            <translation><!-- South Korea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spain</masterLabel>
+            <translation><!-- Spain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sri Lanka</masterLabel>
+            <translation><!-- Sri Lanka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sweden</masterLabel>
+            <translation><!-- Sweden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switzerland</masterLabel>
+            <translation><!-- Switzerland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taiwan</masterLabel>
+            <translation><!-- Taiwan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thailand</masterLabel>
+            <translation><!-- Thailand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukraine</masterLabel>
+            <translation><!-- Ukraine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Arab Emirates</masterLabel>
+            <translation><!-- United Arab Emirates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom</masterLabel>
+            <translation><!-- United Kingdom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United State Minor Islands</masterLabel>
+            <translation><!-- United State Minor Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States</masterLabel>
+            <translation><!-- United States --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uruguay</masterLabel>
+            <translation><!-- Uruguay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Venezuela</masterLabel>
+            <translation><!-- Venezuela --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnam</masterLabel>
+            <translation><!-- Vietnam --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Date of the topic for IT @ Intel Engagement --></help>
+        <label><!-- Date of Topic --></label>
+        <name>Core_IT_IAI_Date_of_Topic__c</name>
+    </fields>
+    <fields>
+        <help><!-- IT @ Intel Domain Request --></help>
+        <label><!-- Domain --></label>
+        <name>Core_IT_IAI_Domain__c</name>
+        <picklistValues>
+            <masterLabel>Analytics and Data Architecture</masterLabel>
+            <translation><!-- Analytics and Data Architecture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Journey</masterLabel>
+            <translation><!-- Cloud Journey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data, Analytics and AI</masterLabel>
+            <translation><!-- Data, Analytics and AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter and Infrastructure</masterLabel>
+            <translation><!-- Datacenter and Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering Pods</masterLabel>
+            <translation><!-- Engineering Pods --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Applications</masterLabel>
+            <translation><!-- Enterprise Applications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Leadership / Biz Value</masterLabel>
+            <translation><!-- IT Leadership / Biz Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Leadership and Strategy</masterLabel>
+            <translation><!-- IT Leadership and Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry 4.0</masterLabel>
+            <translation><!-- Industry 4.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Innovative Workplace</masterLabel>
+            <translation><!-- Innovative Workplace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing and Industrial</masterLabel>
+            <translation><!-- Manufacturing and Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security &amp; Privacy</masterLabel>
+            <translation><!-- Security &amp; Privacy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software and Enterprise Applications</masterLabel>
+            <translation><!-- Software and Enterprise Applications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sustainability</masterLabel>
+            <translation><!-- Sustainability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workplace of the Future</masterLabel>
+            <translation><!-- Workplace of the Future --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- State or Province of the domain topic --></help>
+        <label><!-- State/Province --></label>
+        <name>Core_IT_IAI_State_Province__c</name>
+    </fields>
+    <fields>
+        <help><!-- Venue for the domain topic for IT @ Intel --></help>
+        <label><!-- Venue Type --></label>
+        <name>Core_IT_IAI_Venue_Type__c</name>
+        <picklistValues>
+            <masterLabel>FTF at Account location</masterLabel>
+            <translation><!-- FTF at Account location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTF at Intel location</masterLabel>
+            <translation><!-- FTF at Intel location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTF at other offsite location</masterLabel>
+            <translation><!-- FTF at other offsite location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Off-line (like email)</masterLabel>
+            <translation><!-- Off-line (like email) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Sales</masterLabel>
+            <translation><!-- Online Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Teleconference</masterLabel>
+            <translation><!-- Teleconference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video conference</masterLabel>
+            <translation><!-- Video conference --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region Request --></label>
+        <name>Core_IT_Intel_Geo__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- IT @ Intel topics --></help>
+        <label><!-- Topics --></label>
+        <name>Core_IT_Intel_Topics__c</name>
+        <picklistValues>
+            <masterLabel>AI Everywhere Strategy​</masterLabel>
+            <translation><!-- AI Everywhere Strategy​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced Process Control</masterLabel>
+            <translation><!-- Advanced Process Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agile/Dev-Ops​</masterLabel>
+            <translation><!-- Agile/Dev-Ops​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analytics: Datasets Integration</masterLabel>
+            <translation><!-- Analytics: Datasets Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Annual Performance Review</masterLabel>
+            <translation><!-- Annual Performance Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Optimization</masterLabel>
+            <translation><!-- Application Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Strategy​</masterLabel>
+            <translation><!-- Application Strategy​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BYOD, BYOC, and Mobile Applications</masterLabel>
+            <translation><!-- BYOD, BYOC, and Mobile Applications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Big Data Architecture, Apache Hadoop</masterLabel>
+            <translation><!-- Big Data Architecture, Apache Hadoop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Big Data Security</masterLabel>
+            <translation><!-- Big Data Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Continuity &amp; Disaster</masterLabel>
+            <translation><!-- Business Continuity &amp; Disaster --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRM Solutions</masterLabel>
+            <translation><!-- CRM Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Capacity Planning</masterLabel>
+            <translation><!-- Capacity Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Configuration &amp; O/S</masterLabel>
+            <translation><!-- Client Configuration &amp; O/S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Health &amp; Telemetry ​</masterLabel>
+            <translation><!-- Client Health &amp; Telemetry ​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Refresh Cycle, TCO and Virtualization</masterLabel>
+            <translation><!-- Client Refresh Cycle, TCO and Virtualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Architecture​</masterLabel>
+            <translation><!-- Cloud Architecture​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Aware Applications</masterLabel>
+            <translation><!-- Cloud Aware Applications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Overview: ODCA, x-aaS</masterLabel>
+            <translation><!-- Cloud Overview: ODCA, x-aaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Security​</masterLabel>
+            <translation><!-- Cloud Security​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Communication/Collaboration tools</masterLabel>
+            <translation><!-- Communication/Collaboration tools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conference Room Innovation</masterLabel>
+            <translation><!-- Conference Room Innovation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cope Exactly and Change Control</masterLabel>
+            <translation><!-- Cope Exactly and Change Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cybersecurity: A Strategic Overview</masterLabel>
+            <translation><!-- Cybersecurity: A Strategic Overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Strategy, Operation &amp; DCM</masterLabel>
+            <translation><!-- DC Strategy, Operation &amp; DCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCM</masterLabel>
+            <translation><!-- DCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Cooling Technologies​</masterLabel>
+            <translation><!-- Data Center Cooling Technologies​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Strategy and Journey​</masterLabel>
+            <translation><!-- Data Center Strategy and Journey​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Management​</masterLabel>
+            <translation><!-- Data Management​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Platforms &amp; Architecture​(Cloudera/ELK/​Splunk/Kafka)</masterLabel>
+            <translation><!-- Data Platforms &amp; Architecture​(Cloudera/ELK/​Splunk/Kafka) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Protection</masterLabel>
+            <translation><!-- Data Protection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Twin​</masterLabel>
+            <translation><!-- Digital Twin​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endpoint Detection and Response​</masterLabel>
+            <translation><!-- Endpoint Detection and Response​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy Conservation and Generation​</masterLabel>
+            <translation><!-- Energy Conservation and Generation​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering Pods</masterLabel>
+            <translation><!-- Engineering Pods --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Architecture</masterLabel>
+            <translation><!-- Enterprise Architecture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facility &amp; Design Innovations​</masterLabel>
+            <translation><!-- Facility &amp; Design Innovations​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Factory Automation</masterLabel>
+            <translation><!-- Factory Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FinOps</masterLabel>
+            <translation><!-- FinOps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Governance &amp; Innovation</masterLabel>
+            <translation><!-- Governance &amp; Innovation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing</masterLabel>
+            <translation><!-- High Performance Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Highly Efficient Density DC (Energy/Cooling)</masterLabel>
+            <translation><!-- Highly Efficient Density DC (Energy/Cooling) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyperconverged Infrastructure</masterLabel>
+            <translation><!-- Hyperconverged Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Identity &amp; Access Management</masterLabel>
+            <translation><!-- Identity &amp; Access Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Memory Data Base and ERP</masterLabel>
+            <translation><!-- In-Memory Data Base and ERP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Megatrends &amp; Digital Enterprise</masterLabel>
+            <translation><!-- Industry Megatrends &amp; Digital Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® vPro® platform​</masterLabel>
+            <translation><!-- Intel® vPro® platform​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Planning &amp; IT Business Value​</masterLabel>
+            <translation><!-- Investment Planning &amp; IT Business Value​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Prioritization</masterLabel>
+            <translation><!-- Investment Prioritization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT in the factory floor / other use cases</masterLabel>
+            <translation><!-- IoT in the factory floor / other use cases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leadership &amp; Strategic Planning.</masterLabel>
+            <translation><!-- Leadership &amp; Strategic Planning. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machine/Deep Learning</masterLabel>
+            <translation><!-- Machine/Deep Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing Big Data / Analytics</masterLabel>
+            <translation><!-- Manufacturing Big Data / Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On-vs-Off Premise EA Solutions</masterLabel>
+            <translation><!-- On-vs-Off Premise EA Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Source Solutions (Openstack)</masterLabel>
+            <translation><!-- Open Source Solutions (Openstack) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational Excellence &amp; KPIs</masterLabel>
+            <translation><!-- Operational Excellence &amp; KPIs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Workload Solutions</masterLabel>
+            <translation><!-- Other Workload Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PC Client Profiling /segmentation</masterLabel>
+            <translation><!-- PC Client Profiling /segmentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PC Strategy &amp; Refresh​</masterLabel>
+            <translation><!-- PC Strategy &amp; Refresh​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Predictive Analytics​</masterLabel>
+            <translation><!-- Predictive Analytics​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Privacy by Design</masterLabel>
+            <translation><!-- Privacy by Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RISC Migration and ERP</masterLabel>
+            <translation><!-- RISC Migration and ERP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Journey​</masterLabel>
+            <translation><!-- SAP Journey​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOC - Security Ops Center, SBI (Security BI)</masterLabel>
+            <translation><!-- SOC - Security Ops Center, SBI (Security BI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSDs for Servers &amp; Storage Solutions</masterLabel>
+            <translation><!-- SSDs for Servers &amp; Storage Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SW Defined Infrastructure (SDI/NFV) or RSD</masterLabel>
+            <translation><!-- SW Defined Infrastructure (SDI/NFV) or RSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Securing the Cloud and the edge</masterLabel>
+            <translation><!-- Securing the Cloud and the edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Architecture​</masterLabel>
+            <translation><!-- Security Architecture​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Biz Intelligence</masterLabel>
+            <translation><!-- Security Biz Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Strategy</masterLabel>
+            <translation><!-- Security Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Serve BI &amp; Data Visualization</masterLabel>
+            <translation><!-- Self Serve BI &amp; Data Visualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Virtualization &amp; Optimization</masterLabel>
+            <translation><!-- Server Virtualization &amp; Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Support &amp; Help Desk</masterLabel>
+            <translation><!-- Service Support &amp; Help Desk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shop Floor Control</masterLabel>
+            <translation><!-- Shop Floor Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Site Selection &amp; Design</masterLabel>
+            <translation><!-- Site Selection &amp; Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart-Buildings and IoT</masterLabel>
+            <translation><!-- Smart-Buildings and IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Development</masterLabel>
+            <translation><!-- Software Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Chain Solutions</masterLabel>
+            <translation><!-- Supply Chain Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Chain​</masterLabel>
+            <translation><!-- Supply Chain​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Talent Management and Diversity</masterLabel>
+            <translation><!-- Talent Management and Diversity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Threat Management &amp; Incident Response</masterLabel>
+            <translation><!-- Threat Management &amp; Incident Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tools Integration</masterLabel>
+            <translation><!-- Tools Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tools Preventive Maintenance</masterLabel>
+            <translation><!-- Tools Preventive Maintenance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training and Awareness</masterLabel>
+            <translation><!-- Training and Awareness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workload Placement​</masterLabel>
+            <translation><!-- Workload Placement​ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Military, Aerospace, or Gov&apos;t Compliance --></label>
+        <name>Core_MAG_Compliance_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Military, Aerospace, or Gov&apos;t End Use --></label>
+        <name>Core_MAG_End_Use__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Sales Support Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Rate the support of the engagement --></help>
+        <label><!-- Rate Enagement --></label>
+        <name>Core_Rate_Enagement__c</name>
+        <picklistValues>
+            <masterLabel>1- Poor</masterLabel>
+            <translation><!-- 1- Poor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 - Fair</masterLabel>
+            <translation><!-- 2 - Fair --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 - Good</masterLabel>
+            <translation><!-- 3 - Good --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 - Very Good</masterLabel>
+            <translation><!-- 4 - Very Good --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Excellent</masterLabel>
+            <translation><!-- 5 - Excellent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Requestor Email --></label>
+        <name>Core_Requestor_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor --></label>
+        <name>Core_Requestor__c</name>
+    </fields>
+    <fields>
+        <label><!-- SSR Link --></label>
+        <name>Core_SSR_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Support Type --></label>
+        <name>Core_Sales_Support_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Status of the request --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed/Closed</masterLabel>
+            <translation><!-- Completed/Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Discovery</masterLabel>
+            <translation><!-- In Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Process</masterLabel>
+            <translation><!-- In Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ready to Assign</masterLabel>
+            <translation><!-- Ready to Assign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <description><!-- Request IT @ Intel Support for Opportunities --></description>
+        <label><!-- IT @ Intel --></label>
+        <name>Core_DS_IT_Intel</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Generic Deal Support Request --></description>
+        <label><!-- Generic --></label>
+        <name>Core_Deal_Support_Generic</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Premier Support Request --></label>
+        <name>Core_Premier_Support_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for SSG DRD Support Requests --></description>
+        <label><!-- SSG Support Request --></label>
+        <name>Core_SSG_Support_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Samples Request --></label>
+        <name>Core_Samples_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Seed Order --></label>
+        <name>Core_Seed_Order</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You must select &quot;Add to Opportunity&quot; team for IT@Intel Support --></errorMessage>
+        <name>Check_IT_Intel_Opportunity_Team</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not reopen a support request once it is closed --></errorMessage>
+        <name>Closed_Request_can_not_be_reopened</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You must select &quot;Add to Opportunity&quot; team for IT@Intel Support --></errorMessage>
+        <name>Core_Check_IT_Intel_Opportunity_Team</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide a feedback by rating this engagement --></errorMessage>
+        <name>Core_IT_Intel_Rate_Feedback</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not add the support request until the MAG Questionnaire is approved. --></errorMessage>
+        <name>Core_MAG_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not add the support request until the MAG Questionnaire is approved. --></errorMessage>
+        <name>MAG_Approved</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_DSR_Edit --></label>
+        <name>Core_DSR_Edit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IT_Intel_Key_Contacts --></label>
+        <name>Core_IT_Intel_Key_Contacts</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_New_Sales_Support_Request --></label>
+        <name>Core_New_Sales_Support_Request</name>
+    </webLinks>
+</CustomObjectTranslation>

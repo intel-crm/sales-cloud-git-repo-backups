@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Profile</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Profiles</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Phone --></label>
+        <name>Core_Account_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account__c</name>
+        <relationshipLabel><!-- Account Profiles --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Answer 10 --></label>
+        <name>Core_Answer_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 11 --></label>
+        <name>Core_Answer_11__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 12 --></label>
+        <name>Core_Answer_12__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 13 --></label>
+        <name>Core_Answer_13__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 14 --></label>
+        <name>Core_Answer_14__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 15 --></label>
+        <name>Core_Answer_15__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 16 --></label>
+        <name>Core_Answer_16__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 17 --></label>
+        <name>Core_Answer_17__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 18 --></label>
+        <name>Core_Answer_18__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 19 --></label>
+        <name>Core_Answer_19__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 1 --></label>
+        <name>Core_Answer_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 20 --></label>
+        <name>Core_Answer_20__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 21 --></label>
+        <name>Core_Answer_21__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 22 --></label>
+        <name>Core_Answer_22__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 23 --></label>
+        <name>Core_Answer_23__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 24 --></label>
+        <name>Core_Answer_24__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 25 --></label>
+        <name>Core_Answer_25__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 26 --></label>
+        <name>Core_Answer_26__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 27 --></label>
+        <name>Core_Answer_27__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 28 --></label>
+        <name>Core_Answer_28__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 2 --></label>
+        <name>Core_Answer_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 3 --></label>
+        <name>Core_Answer_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 4 --></label>
+        <name>Core_Answer_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 5 --></label>
+        <name>Core_Answer_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 6 --></label>
+        <name>Core_Answer_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 7 --></label>
+        <name>Core_Answer_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 8 --></label>
+        <name>Core_Answer_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 9 --></label>
+        <name>Core_Answer_9__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefit Level 1 --></label>
+        <name>Core_Benefit_Level_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefit Level 2 --></label>
+        <name>Core_Benefit_Level_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business ID --></label>
+        <name>Core_Business_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company DBA --></label>
+        <name>Core_Company_DBA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company URL --></label>
+        <name>Core_Company_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- External_ID --></label>
+        <name>Core_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- National ID --></label>
+        <name>Core_National_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 10 --></label>
+        <name>Core_Profile_Question_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 11 --></label>
+        <name>Core_Profile_Question_11__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 12 --></label>
+        <name>Core_Profile_Question_12__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 13 --></label>
+        <name>Core_Profile_Question_13__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 14 --></label>
+        <name>Core_Profile_Question_14__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 15 --></label>
+        <name>Core_Profile_Question_15__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 16 --></label>
+        <name>Core_Profile_Question_16__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 17 --></label>
+        <name>Core_Profile_Question_17__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 18 --></label>
+        <name>Core_Profile_Question_18__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 19 --></label>
+        <name>Core_Profile_Question_19__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 1 --></label>
+        <name>Core_Profile_Question_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 20 --></label>
+        <name>Core_Profile_Question_20__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 21 --></label>
+        <name>Core_Profile_Question_21__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 22 --></label>
+        <name>Core_Profile_Question_22__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 23 --></label>
+        <name>Core_Profile_Question_23__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 24 --></label>
+        <name>Core_Profile_Question_24__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 25 --></label>
+        <name>Core_Profile_Question_25__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 26 --></label>
+        <name>Core_Profile_Question_26__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 27 --></label>
+        <name>Core_Profile_Question_27__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 28 --></label>
+        <name>Core_Profile_Question_28__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 2 --></label>
+        <name>Core_Profile_Question_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 3 --></label>
+        <name>Core_Profile_Question_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 4 --></label>
+        <name>Core_Profile_Question_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 5 --></label>
+        <name>Core_Profile_Question_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 6 --></label>
+        <name>Core_Profile_Question_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 7 --></label>
+        <name>Core_Profile_Question_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 8 --></label>
+        <name>Core_Profile_Question_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Question 9 --></label>
+        <name>Core_Profile_Question_9__c</name>
+    </fields>
+    <fields>
+        <label><!-- Version --></label>
+        <name>Core_Version__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_EOT --></label>
+        <name>Core_EOT</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>47.0</apiVersion>
+    <available>true</available>
+    <description>Template for, Update required first reminder (3 days)</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP CompanyUpdateRequiredFirstNotification</name>
+    <style>none</style>
+    <subject>Reminder: Edit Required for Your Storefront</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

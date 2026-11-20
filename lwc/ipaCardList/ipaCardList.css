@@ -1,0 +1,68 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  overflow-x: hidden; /* Prevent scrollbar on Tablet < 768px */
+}
+
+.card-list-container {
+  align-items: normal; /* IMPORTANT: fills vertical space for cards */
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-list-container[data-carousel="true"] {
+  flex-wrap: nowrap;
+  margin-left: 4rem;
+}
+
+/* Container breaks at tablet change: xs,sm (full-width) /// md,lg,xl (percentage) */
+.card-list-container.bp-medium,
+.card-list-container.bp-large,
+.card-list-container.bp-x-large {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.card-list-item {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 1rem 1rem .5rem 1rem;
+  width: calc(100% - 4rem);
+}
+
+.card-list-container.cards-per-row-1 .card-list-item {
+  padding: 1rem 0 .5rem;
+  width: 100%;
+}
+
+.card-list-container.cards-per-row-2 .card-list-item {
+  width: 50%;
+}
+
+.card-list-container.cards-per-row-3 .card-list-item {
+  width: 33.3333%;
+}
+
+.card-list-container.cards-per-row-4 .card-list-item {
+  width: 25%;
+}
+
+.card-list-container.cards-per-row-5 .card-list-item {
+  width: 20%;
+}
+
+.card-list-container[data-carousel="true"].cards-per-row-1 .card-list-item {
+  margin: 0 auto;
+  padding: 1rem 1rem .5rem 1rem;
+  width: calc(100% - 4rem);
+}
+
+.intelOnlyFooter {
+  background-color: transparent;
+  padding-top: 5px;
+  width: 100%;
+}

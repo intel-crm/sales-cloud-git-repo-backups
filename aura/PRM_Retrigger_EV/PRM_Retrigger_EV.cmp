@@ -1,0 +1,58 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="PRM_Retrigger_EV_Utility" access="global" >
+    
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="isEVSuccess" type="boolean"/>  
+    <aura:attribute name="statusMessage" type="String" default=""/>
+    <aura:attribute name="showConfirmDialog" type="boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>        
+    <center><ui:spinner aura:id="spinner"/></center> -->
+    
+    <aura:if isTrue="{!v.showConfirmDialog}">
+        <div class="slds-modal__container" style="width:max-content;padding:0;display:contents !important">
+            <!--Modal Box Header Start-->
+            <header class="slds-modal__header">
+                <h1 class="slds-text-heading--medium">Confirmation</h1>
+            </header>
+            <!--Modal Box Header End-->
+            
+            <!--Modal Box Content Start-->
+            <div class="slds-modal__content slds-p-top_x-large slds-p-right_x-large slds-p-bottom_x-large" style="width:max-content">
+                <center>{!v.message}</center>
+            </div>
+            <!--Modal Box Content End-->
+            
+            <!--Modal Box Button Start-->
+            <footer class="slds-modal__footer">
+                <lightning:button name='Cancel' label='Cancel' onclick='{!c.handleCancelButton}'/>
+                <lightning:button variant="brand" name='Confirm' label='Confirm' onclick='{!c.handleConfirmButton}'/>
+            </footer>
+            <!--Modal Box Button End-->
+        </div>
+        <aura:set attribute="else">
+            <div class="slds-modal__container" style="width:max-content;padding:0;display:contents !important">
+                <!--Modal Box Header Start-->
+                <header class="slds-modal__header">
+                    <h1 class="slds-text-heading--medium">Confirmation</h1>
+                </header>
+                <!--Modal Box Header End-->
+                
+                <!--Modal Box Content Start-->
+                <div class="slds-modal__content slds-p-top_x-large slds-p-right_x-large slds-p-bottom_x-large slds-align_absolute-center" style="width:max-content">
+                    <center>{!v.statusMessage}</center>
+                </div>
+                <!--Modal Box Content End-->
+                
+                <!--Modal Box Button Start-->
+                <footer class="slds-modal__footer">
+                    <lightning:button name='Close' label='Close' onclick='{!c.handleCancelButton}'/>
+                </footer>
+                <!--Modal Box Button End-->
+            </div>            
+        </aura:set>
+    </aura:if>
+    
+</aura:component>

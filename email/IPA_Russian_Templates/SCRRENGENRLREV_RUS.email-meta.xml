@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_RUS</name>
+    <style>none</style>
+    <subject>Подтвердите адрес электронной почты</subject>
+    <textOnly>Подтвердите адрес электронной почты
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Благодарим за отправку заявки на регистрацию в Intel® Partner Alliance.
+До обработки заявки нам необходимо убедиться в том, что этот адрес электронной почты принадлежит вам. Если вы не подтвердите адрес электронной почты в течение 30 дней, заявка будет удалена из нашей системы и вам придется повторно подать заявку на рассмотрение.
+
+
+Подтвердить сейчас
+
+Не удается получить доступ к приведенной выше ссылке?
+https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ru&amp;target=https://ciqa.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.html
+
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!$Label.PRM_CurrentYear} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

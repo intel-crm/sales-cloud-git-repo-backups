@@ -1,0 +1,20 @@
+<template>
+   
+        <lightning-card>
+        <template if:true={autoSignInEnabled}>
+            <div data-id="embed-container" style="height:600px; width:100%"></div>
+        </template>
+        
+        
+        <template if:false={autoSignInEnabled}>
+						<div style={setDIVHeight}>
+								<iframe class=embed-iframe data-id="embed_iframe" allow="clipboard-read; clipboard-write" src={fullUrl} > </iframe>
+						</div>
+            
+        </template>
+        
+        <template if:true={noAccess}>
+            <p>{noAccessMsg}</p>
+        </template>
+    </lightning-card>
+</template>

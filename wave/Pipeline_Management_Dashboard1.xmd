@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>*</bin>
+                <formatValue>#B50E03</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>81</bin>
+                <formatValue>#E6E830</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>90</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>unhealthy_percentage</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>multiple</type>
+        </conditionalFormatting>
+        <field>HealthyOpportunities_3.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Won_Opportunities_De_1.Decision Date</field>
+        <isDerived>false</isDerived>
+        <label>KPI Decision Date</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_3.Decision Date</field>
+        <isDerived>false</isDerived>
+        <label>KPI Decision Date</label>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>pd_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_3.Past Due</field>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>i_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_3.Inactive</field>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>lq_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_3.Low Velocity</field>
+        <isDerived>false</isDerived>
+        <sortIndex>5</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>ph_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_3.Health Status</field>
+        <isDerived>false</isDerived>
+        <sortIndex>6</sortIndex>
+    </dimensions>
+    <measures>
+        <field>HealthyOpportunities_4.Healthy_Percentage</field>
+        <formatCustomFormat>[&quot;#,###%&quot;,100]</formatCustomFormat>
+        <formatDecimalSeparator>.</formatDecimalSeparator>
+        <formatThousandsSeparator>,</formatThousandsSeparator>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>*</bin>
+                <formatValue>#B50E03</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>81</bin>
+                <formatValue>#E6E830</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>90</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>unhealthy_percentage</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>multiple</type>
+        </conditionalFormatting>
+        <field>HealthyOpportunities_3.unhealthy_percentage</field>
+        <isDerived>false</isDerived>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>Clone_of_lens_2_2.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>Won_Opportunities_De_1.Won</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_2_1.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Pipeline_Management_Dashboard1</waveVisualization>
+</WaveXmd>

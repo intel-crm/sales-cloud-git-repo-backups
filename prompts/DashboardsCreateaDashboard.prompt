@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dashboards Create a Dashboard</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/create-and-clone-a-dashboard/#Create_a_Dashboard</actionButtonLink>
+        <body>&lt;p&gt;A Dashboard consists of visual components that represent data provided by a source report.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To create a Dashboard,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Access the dashboard builder by navigating to the &lt;strong&gt;Dashboard&lt;/strong&gt; tab, and click on &lt;strong&gt;New Dashboard&lt;/strong&gt;. The&lt;em&gt; New Dashboard&lt;/em&gt; window will open.&lt;/li&gt;&lt;li&gt;Provide a dashboard &lt;strong&gt;Name&lt;/strong&gt; and &lt;strong&gt;Description&lt;/strong&gt;.&amp;nbsp;The &lt;strong&gt;Folder&lt;/strong&gt; field refers to where the Dashboard will be located.&amp;nbsp;The default folder is the &lt;strong&gt;Private Dashboards&lt;/strong&gt; folder. Click &lt;strong&gt;Create&lt;/strong&gt; when complete.&lt;/li&gt;&lt;li&gt;Click the &lt;strong&gt;+ Component&lt;/strong&gt; button to begin adding content to the dashboard.&lt;/li&gt;&lt;li&gt;Search for data sources within Reports and/or Folders. Upon finding the data source, click &lt;strong&gt;Select&lt;/strong&gt;. The &lt;em&gt;Add Component&lt;/em&gt; window will open.&lt;/li&gt;&lt;li&gt;Determine how data should be viewed by using the provided attributes. Attributes that are listed are dependent on the Report.&amp;nbsp;A sample view will be provided in the &lt;strong&gt;Preview&lt;/strong&gt; window to verify. Click &lt;strong&gt;Add&lt;/strong&gt; when the view is satisfactory.&lt;/li&gt;&lt;li&gt;Repeat steps 3-5 until desired data is complete.&lt;/li&gt;&lt;li&gt;Once data is set, additional edits can be processed by clicking the &lt;em&gt;pencil&lt;/em&gt; icon in the top right corner. The new Dashboard can also be organized by dragging different sections around the grid.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt; once the Dashboard is complete.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Dashboards Create a Dashboard</description>
+        <displayType>DockedComposer</displayType>
+        <header>Dashboards</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Dashboards Create a Dashboard</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Dashboard</targetPageKey1>
+        <targetPageKey2>home</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Create a Dashboard</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327834940112</videoLink>
+    </promptVersions>
+</Prompt>

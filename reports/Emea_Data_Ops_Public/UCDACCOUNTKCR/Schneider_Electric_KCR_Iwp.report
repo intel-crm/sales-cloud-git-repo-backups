@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_74963244</developerName>
+        <masterLabel>Has Open Opptys?</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.Core_Account_ID__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>YES</value>
+        </values>
+        <values>
+            <value>NO</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_64217728</developerName>
+        <masterLabel>Uncovered</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>USERS.NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>A&amp;E Account Owner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Uncovered Account</sourceValue>
+            </sourceValues>
+            <value>Uncovered &amp; A&amp;E</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Prime_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>User.Core_User_Profile_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_PSG_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_MDF_CoMarketingActive__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_B2B_Entitlement__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_IPS_Active__c</field>
+    </columns>
+    <columns>
+        <field>Account.KCR_Process_Outcome_Temp__c</field>
+    </columns>
+    <columns>
+        <field>Account.KCR_Global_Business_Party_Id_Temp__c</field>
+    </columns>
+    <columns>
+        <field>Account.KCR_Global_Account_Name_Temp__c</field>
+    </columns>
+    <columns>
+        <field>Account.KCR_Consolidated_Target_Account_Temp__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Record_Type__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CASE(Account.Core_Account_ID__c,
+&quot;001o0000011mAvgAAE&quot;,&quot;YES&quot;,
+&quot;001o000000OSxdwAAD&quot;,&quot;YES&quot;,
+&quot;001o000000OStg1AAD&quot;,&quot;YES&quot;,
+&quot;001o0000011m9CEAAY&quot;,&quot;YES&quot;,
+&quot;0011J00001DI70PQAT&quot;,&quot;YES&quot;,
+&quot;001o0000011m9CiAAI&quot;,&quot;YES&quot;,
+&quot;0011J00001MYqTwQAL&quot;,&quot;YES&quot;,
+&quot;001o000000OT6QFAA1&quot;,&quot;YES&quot;,
+&quot;0013b00001wgJbHAAU&quot;,&quot;YES&quot;,
+&quot;001o000000OTIgmAAH&quot;,&quot;YES&quot;,
+&quot;001o000000OTFHbAAP&quot;,&quot;YES&quot;,
+&quot;001o000000OSvNrAAL&quot;,&quot;YES&quot;,
+  &quot;NO&quot;
+  )</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Has Open Opportunities</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.KCR_Global_Account_Name_Temp__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Schneider Electric</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Schneider Electric KCR</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>ADDRESS1_COUNTRY_CODE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

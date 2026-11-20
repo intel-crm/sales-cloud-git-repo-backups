@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>TASK_SUBTYPE</field>
+    </columns>
+    <columns>
+        <field>Activity.Core_Subtype_of_Activity__c</field>
+    </columns>
+    <columns>
+        <field>Activity.Core_Type_of_Activity__c</field>
+    </columns>
+    <columns>
+        <field>FULL_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOWNER</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
+        <criteriaItems>
+            <column>Activity.Core_Subtype_of_Activity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sample/Seed Sent</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Kristen Call,Austin Davis,Camille Cudaback,Jose Monroy,Andrew Meyer,Ian Chick,Kristy Fay,Kevin Kim,Christopher Haynes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Chelsea Brooks,Don Nuyen,Robert Lacomble,Colin Crawford,Craig Hulcy,Geraldo Gonzalez,Valerie Espinoza,Vijay Ramasami,Joao Haddad,Bala Thinagarajan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Kimberly Goodrich,Max Abelardo,Ron Simon,Ryan Finkelstein,VINICIO ENRIQUEZ,Darrell  Van Dyken,Matthew Horany</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Angelo Correa-Denoncourt,Ashley Rodrigue,BRIAN JEAN,Gary Dalton,Kevin Gildea,Matthew Pearson,Nicholas J Finamore,Oleg Stepanov,Rajin Jain,Rebecca Forsbrey</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Brian  Highland,Brian Hurrell,Bryce Kerker,Edgar Zapata,Elias Stucky,Jordan Peters,Kimberly Kelly,Mary Eaves,Sheldon Prince,Wendy Tolls</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Curtis Equi,Daniel Tozzi,David Miles,Erick Mayoral,Felipe Pastor Beneyto,Hermant Patel,Jesse Jensen,Joseph Pryszlak,Michael Simmons,Navneet,Saini,Paul Willey,Richard Piper</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Steven Darrah,Vince Curella,Christopher Haynes,Ken Constantino,Tim Wood,Cormack Glass,Todd Phillips,Asma Aziz,Santi Garcia Vitores,Megan Dahl</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Official NASS Seed Unit Report</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>DUE_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

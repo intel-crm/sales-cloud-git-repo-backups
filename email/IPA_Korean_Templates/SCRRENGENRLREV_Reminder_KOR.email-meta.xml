@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_Reminder_KOR</name>
+    <style>none</style>
+    <subject>확인하는 것을 잊지 마세요</subject>
+    <textOnly>미리 알림: 이메일 확인 및 비밀번호 설정
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+인텔® 파트너 얼라이언스 등록을 시작해 주셔서 감사합니다.
+아래 링크를 클릭해 계속하십시오.
+
+
+이메일 확인 및 비밀번호 설정
+
+다음 단계를 완료하고 비밀번호를 설정하려면 아래 나와 있는 사용자 이름을 사용하십시오.
+사용자 이름: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+위 링크에 액세스할 수 없습니까?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ko&amp;target=https://wcm-ciqa.intel.com/content/www/kr/ko/secure/partner/forms/ipa-account-search.html
+
+
+귀하가 프로그램에 참여해주시기를 기대하고 있겠습니다!
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} 인텔사
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+개인정보 보호&amp;verbar;쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

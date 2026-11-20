@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Modify VN</name>
+    <style>none</style>
+    <subject>Cập nhật tài khoản kinh doanh</subject>
+    <textOnly>Cập nhật tài khoản kinh doanh
+
+
+!%UserFirstName%!,,
+
+Thông báo này để báo cho bạn rằng một cá nhân đã sửa đổi tùy chọn chia rẻ thông tin chương trình Liên minh Đối tác Intel® với Nhà phân phối được ủy quyền Intel® được chọn và/hoặc Nhà cung cấp được chấp thuận của Intel® (Nhà cung cấp dịch vụ).
+
+Tên tài khoản kinh doanh: !%AccountName%!
+Số tài khoản: !%AccountNumber%!
+Người liên hệ chính đưa ra lựa chọn này: !%UserEmailAddr%!
+Ngày: !%DateSigned%!
+Nhà cung cấp dịch vụ được chọn: !%Distributors%!
+Ủy quyền: Tôi ủy quyền cho Intel để chia sẻ với Nhà cung cấp dịch vụ thông tin về tài khoản Intel® Technology Provider Program của tôi, để giúp quản lý những lợi ích của mình. Tôi cũng ủy quyền cho Intel cho phép họ được thay mặt tôi đổi điểm (không hỗ trợ tại khu vực châu Á, Thái Bình Dương và Nhật Bản).
+
+
+Nếu bạn không chấp thuận hành động này hoặc cảm thấy đã có sai sót, bạn có thể sửa đổi các lựa chọn hoặc chọn không tham gia.
+Nếu bạn có bất cứ câu hỏi nào, hãy liên hệ với chúng tôi tại programs@intel.com.
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

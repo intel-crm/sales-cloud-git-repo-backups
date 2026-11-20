@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rich Media Asset Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rich Media Asset Stages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Document Added On --></label>
+        <name>PMP_Added_On_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Categories --></label>
+        <name>PMP_Categories_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Description --></label>
+        <name>PMP_Document_Description_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Download Path --></label>
+        <name>PMP_Document_Download_Path_url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Id --></label>
+        <name>PMP_Document_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Name --></label>
+        <name>PMP_Document_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Path --></label>
+        <name>PMP_Document_Path_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Type --></label>
+        <name>PMP_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Retrieved --></label>
+        <name>PMP_Is_Retrieved_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old PDF Updated Date --></label>
+        <name>PMP_Old_PDF_Updated_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PDF Updated Date --></label>
+        <name>PMP_PDF_Updated_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner ID --></label>
+        <name>PMP_Partner_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner MPID --></label>
+        <name>PMP_Partner_MPID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>PMP_Partner_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Make this field true from false, and the pdf file download will be triggered. --></help>
+        <label><!-- ReTrigger --></label>
+        <name>PMP_ReTrigger_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Updated On --></label>
+        <name>PMP_Updated_On_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

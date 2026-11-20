@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_25332621</developerName>
+        <masterLabel>Last Logged In</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-1</to>
+            </sourceValues>
+            <value>N/A</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-1</from>
+                <to>7</to>
+            </sourceValues>
+            <value>Previous Week</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>7</from>
+                <to>30</to>
+            </sourceValues>
+            <value>Previous 8-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+                <to>60</to>
+            </sourceValues>
+            <value>&gt; 30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+            </sourceValues>
+            <value>&gt; 60 Days</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Full_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 7 AND (3 OR 4 OR 5 OR 6 OR 8 OR 9)</booleanFilter>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>3/28/2015 12:00 AM,3/30/2015 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Makiko Eda,Hideaki Doki,Masayuki Akiba,Gen Chen,Masaya Ejima,Akiko Kanno,Masaharu Hirose,Shigehiko Ito,Tomoya Ito,Hajime Koga,Hiroyuki Koike,Kazuya Kunita,Miki Kurihara,Nakamura Masazumi,Tsuyoshi Ono,Yoshihiko Ota,Tomokazu Sakai,Yoshikazu Sato,Masashi Shigemura,Yasunori Shimura,Syuichi Suzuki,Tomoaki Maeshima,Hikaru Nakamura,Michitaka Yamashiro,Kenta Ueda,Tomotaka Uraguchi,Koichiro Urayama,Nobuyuki Yahagi,Kazuhiko Atsumi,Takahiro Emi,Chengnan Jin,Naoko Kagawa,Aaron Mcbride,Satoru Misawa,Ryo Nakagawara</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Kiyotaka Oguri,Erika Tsuzuki,Kayoko Ohno,Yuji Osugi,Hajime Tanno,Masahiro Tsukiji,David Zhu,Takako Hirose,Naho Machida,Midoriko Chikara,Takaya Miwa,Tsutomu Miyashita,Tomoki Nakajima,Yuki Ohira,Mitsumasa Suzuki,Shinji Ueda,Kyosuke Watanabe,Mina Nakagawa,Ken Takeuchi,Nobuhiko Amano,Kenichiro Anjo,Masanori Aratani,Takashi Hakiri,Yuma Higuchi,Yuji Kajita,Masumi Kanesaki,Takuya Makino,Keiko Nakashima,Yoshito Ohtsubo,Gordon Pan,Hideyoshi Tamaki,Shintaro Agatsuma,Masahiro Gohda,Masaki Kinokuni,Noritoshi Kurokawa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Koshi Odagiri,Daisuke Oshima,Hiroshi Tanaka,Kotaro Ueno,Masashi Horikoshi,Mitsuru Ikei,Hirokazu Kobayashi,Nagayoshi Kobayashi,Yoko Kubotera,Naoyuki Mori,Chisato Ohkawa,Mikio Sakemoto,Yasuhito Takeuchi,Kazuhide Yamamoto,Youngsik Yoon,Luna Zhang,Takako Fujiki,Akimori Ikeda,Hidetomo Kasakura,Go Nakagawa,Joe Wu,Mariko Yasunaga,Kazuhisa Kurihara,Kenichi Miyamoto,Hiroshi Otsuka,Miwako Wakaki,Masahito Yashiro,Kosuke Hirano,Yuki Fukuhara,Eiji Taguchi,Masahiro Gunji,Yoshiaki Kazama,Takeshi Nikaido,Yutaka Suzuki</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Satomi Homma,Yasushi Ishiyama,Takeshi Kajiwara,Yasuko Koshiba,Mariko Koshimura,Yoko Mochizuki,Hisashi Nagai,Ken Nakazono,Michio Kunitomi,Hiroshi Shimoyama,Jiro Taguchi,Shimpei Takasugi,Marc Navabi,Toshiyuki Mitsue,Hiroe Sumi,Tetsu Yamanaka,Takashi Sakamoto,Yuka Shimizu,Fumiki Negishi,Kenji Takemoto,Hisazumi Shirae,Kojiro Sugiura,Cohei Kishikawa,Kazuya Murakami,Kenichi Nishi,Masahiro Shimohori,Yutaka Yokoyama,Tomoko Tanaka,Atsu Yamada,Shintaro Ogura,Takeshi Sugiura,Manabu Tsunori,Satoshi Yano,Takaaki Anzai</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Profile__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales Manager</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Shinichiro Kamei,Tomohira Kan,Kimihiro Sugino,Joseph Yip,Ray Zhang,Makoto Ohno,Kosaku Hatanaka,Hiroshi Kaneko,Masaaki N Maeda,Shuji Tsuji,Toshitaka Ueno,Keiichi Otsuka,Hiroshi Iizuka,Yuko Kayawari,Daisuke Maejima,Mitsuru Ochi,Kumi Ohashi,Koji Okamoto,Kunihiko Sasaki,Tsutomu Shintani,Tetsuro Yajima,Takehiro Yoshii,Kunio Akaike,Chingyao Jerry Chou,Tomohiro Kato,Kenji Sakamoto,Shunichi Beniya,Chiaki Hirano,Yosuke Ito,Takuji Yamasaki,Shinichi Zensho,Junji Hayafune,Kiyomichi Arai,Satoru Hanaki,Jun Nagase</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Toshiyuki Ozawa,Mika Yabuta,Takehiro Yamao,Tomoaki Yamazaki,Daisuke Imabeppu,Takafumi Furuta,Tomoya Horita,Yukikazu Kato,Shinsaku Shimada,Junko Ohishi,Daizo Takahashi,Chikashi Mashimo,Takehiro Miyazaki,Kimiko Nagatomi,Nobuki Shigeno,Arata Tanaka,Takako Uno,Rikako Tanaka,Teruya Ida,Goh Ozawa,Kanako Tochihara,Natsuko Nezu,Nobuyoshi Morii,Sawako Hanatani,Yoichi Hirota,Yuki Higuchi</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalWeek</dateGranularity>
+        <field>CUST_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_25332621</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_User_Login_Snapshot__c.Core_Profile__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>DS - Japan login Wkly (Mgr)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_User_Login_Snapshot__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

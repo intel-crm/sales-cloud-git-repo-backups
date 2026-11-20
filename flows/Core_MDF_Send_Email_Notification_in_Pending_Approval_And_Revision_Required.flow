@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>PFR_records_updated_to_Revision_required_and_Send_Email_in_Pending_Approval</name>
+        <label>PFR records updated to Revision required and Send Email in Pending Approval</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <actionName>Core_MDF_UpdateActivityFields</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowInputWrapperList</name>
+            <value>
+                <elementReference>inputWrapperList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_UpdateActivityFields</nameSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Input_List</name>
+        <label>Check Input List</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <defaultConnectorLabel>Input List Empty</defaultConnectorLabel>
+        <rules>
+            <name>Input_List_Having_Values</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>inputWrapperList</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PFR_records_updated_to_Revision_required_and_Send_Email_in_Pending_Approval</targetReference>
+            </connector>
+            <label>Input List Having Values</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Send Email Notification in Pending Approval And Re {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Email Notification in Pending Approval And Revision Required</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Run_After_5_min</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>inputWrapperList</name>
+        <apexClass>Core_MDF_FlowInputWrapper</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <waits>
+        <name>Run_After_5_min</name>
+        <elementSubtype>WaitDuration</elementSubtype>
+        <label>Run After 5 min</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
+        <waitEvents>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Check_Input_List</targetReference>
+            </connector>
+            <label>el_0</label>
+            <offset>5</offset>
+            <offsetUnit>Minutes</offsetUnit>
+        </waitEvents>
+    </waits>
+</Flow>

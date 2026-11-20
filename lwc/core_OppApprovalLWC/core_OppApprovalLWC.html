@@ -1,0 +1,77 @@
+<template>
+    <lightning-quick-action-panel header="Submit for Approval">
+    
+        <div class="slds-is-relative" >
+            <template if:true={loaded}>
+                
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+            
+            <template if:true={showHideTab} >
+                 
+                <lightning-tabset variant="scoped" class="tab-active" style="height:200px" active-tab-value={activeTab}>
+                    
+                    <template if:true={showErrors}>
+                        <lightning-tab icon-name="utility:error" label={errorSize} class="slds-scrollable_y accordionClassError" data-id= "error" value="1" onactive={handleActive}>
+                            <ol class="slds-list_ordered">
+                                <template for:each={hardStopList} for:item="hs">
+                                    <li key={hs}>
+                                        {hs}
+                                    </li>
+                                </template>
+                            </ol>
+                        </lightning-tab>
+                    </template>
+                    <template if:true={showWarnings}>
+                        <lightning-tab icon-name="utility:warning" label={warningSize} class="slds-scrollable_y accordionClassWarning" data-id= "warning" value="2" onactive={handleActive}>
+                            <ol class="slds-list_ordered">
+                                <template for:each={softStopList} for:item="ss">
+                                    <li key={ss}>
+                                        {ss}
+                                    </li>
+                                </template>
+                            </ol>
+                        </lightning-tab>
+                    </template>
+                   
+                     <template if:true={showEPACData}>
+                         
+                         <lightning-tab icon-name="standard:entitlement_template" label="Override Sales Price"  value="3" onactive={handleActive}>
+                            <div  style="height: 300px;" >
+                                 
+                             <lightning-datatable
+                                 key-field="Sequence"
+                                 data={dataList}
+                                 row-number-offset={rowOffset}
+                                 show-row-number-column
+                                 columns={dataTableColumns}
+                                 column-widths-mode = "auto"
+                                 suppress-bottom-bar=true
+                                 onrowselection={getSelectedRowData}
+                                 
+                                 >
+                                  
+                             </lightning-datatable>
+                            </div>  
+                         </lightning-tab>
+                          
+                    </template>
+                    
+                </lightning-tabset>
+                 
+            </template>
+            
+        
+            <lightning-textarea label="Comments" value={comments} onchange={commentChange} class="custom-textarea" ></lightning-textarea>
+        
+        </div>
+        <div slot="footer">
+                <lightning-button  if:true={showEPACData} variant="brand" label="Back" disabled={bDisableBackBtn} onclick={goBack}></lightning-button>
+                <lightning-button if:true={showEPACData}  variant="brand" label="Next" disabled={bDisableNextBtn} onclick={goNext} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button  if:false={isCalledFromAura} variant="neutral" class="slds-m-left_x-small" label="Cancel" onclick={closeAction}></lightning-button>
+                <lightning-button variant="brand" class="slds-m-left_x-small" label="Submit" onclick={handleSubmitClick} disabled={submitDisabled}></lightning-button>
+                
+        </div>
+    </lightning-quick-action-panel>
+   
+</template>

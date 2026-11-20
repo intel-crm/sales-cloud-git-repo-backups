@@ -1,0 +1,38 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "493a7873-835d-415f-97f8-c6a3380c5504",
+  "label" : "Training",
+  "regions" : [ {
+    "id" : "2d2e2698-c9e3-4b4f-a1f1-ea55162f460e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "5d467646-4ca6-4c07-ac77-48e884b6e3ec",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "c2a7e690-e1d9-4b6c-bcd5-5a6332854cf5",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Training"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f4e6ecf6-e250-4322-8efc-ad27a3860525",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5a2aedd9-9d56-42e6-9fa1-4502fc1502e7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-training"
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Impact Path Scoring Range</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Impact Path Scoring Ranges</value>
+    </caseValues>
+    <fields>
+        <label><!-- Impact Path Scoring Criteria --></label>
+        <name>PSS_Impact_Path_Scoring_Criteria__c</name>
+        <relationshipLabel><!-- Impact Path Scoring Ranges --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Logical Operator --></label>
+        <name>PSS_Logical_Operator__c</name>
+        <picklistValues>
+            <masterLabel>Contains</masterLabel>
+            <translation><!-- Contains --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Does not contain</masterLabel>
+            <translation><!-- Does not contain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equal to</masterLabel>
+            <translation><!-- Equal to --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater than</masterLabel>
+            <translation><!-- Greater than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lower than</masterLabel>
+            <translation><!-- Lower than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Range</masterLabel>
+            <translation><!-- Range --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>PSS_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score Value --></label>
+        <name>PSS_Score_Value__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,38 @@
+/* General styling for mobile for offering and storefront detail header */
+.mobile-wrapper {
+  width: 100%;
+}
+
+.mobile-header-title {
+  display: flex;
+}
+
+.h2 {
+  color: var(--charcoal);
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 32px;
+  width: 213px;
+}
+
+.contact-button {
+  width: 100%;
+}
+
+.social-share-container {
+  display: inline-block;
+  margin-left: auto;
+  position: relative;
+}
+
+.tagline {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.sticky-container {
+  background-color: var(--white);
+  box-shadow: 0 1px 0 0 var(--lightGray);
+  width: 100%;
+}

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Audio</masterLabel>
+        <translation>オーディオ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Audio 2025</masterLabel>
+        <translation>オーディオ 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadcast</masterLabel>
+        <translation>放送</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadcast (Pre-2025)</masterLabel>
+        <translation>放送 (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer Incentive</masterLabel>
+        <translation>購入者報奨金</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer Incentive 2025</masterLabel>
+        <translation>購入者インセンティブ 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital</masterLabel>
+        <translation>デジタル (Digital)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital 2025</masterLabel>
+        <translation>デジタル 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Media</masterLabel>
+        <translation>デジタルメディア</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Media (Pre-2025)</masterLabel>
+        <translation>デジタルメディア (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event</masterLabel>
+        <translation>イベント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event (Pre-2025)</masterLabel>
+        <translation>イベント (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event 2025</masterLabel>
+        <translation>イベント 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Incentive</masterLabel>
+        <translation>インセンティブ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Innovation</masterLabel>
+        <translation><!-- Innovation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Management</masterLabel>
+        <translation>リードの管理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Management (Pre-2025)</masterLabel>
+        <translation>リードの管理 (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Ad</masterLabel>
+        <translation><!-- Online Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home</masterLabel>
+        <translation>屋外広告 (OOH)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home (Pre-2025)</masterLabel>
+        <translation>屋外広告 (OOH) (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home 2025</masterLabel>
+        <translation>屋外 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home Media</masterLabel>
+        <translation>屋外広告 (OOH)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
+        <translation>屋外広告 (OOH) (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Outcome-Based</masterLabel>
+        <translation>成果ベース</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Paid Social Media</masterLabel>
+        <translation>ペイド・ソーシャルメディア</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
+        <translation>ペイド・ソーシャルメディア (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print</masterLabel>
+        <translation>印刷</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print (Pre-2025)</masterLabel>
+        <translation>印刷 (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print 2025</masterLabel>
+        <translation>印刷 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print Media</masterLabel>
+        <translation>プリント広告</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Print Media (Pre-2025)</masterLabel>
+        <translation>プリント広告 (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production</masterLabel>
+        <translation>実稼動</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production 2025</masterLabel>
+        <translation>製品 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Incentive</masterLabel>
+        <translation>購入インセンティブ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
+        <translation>購入インセンティブ (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Incentive</masterLabel>
+        <translation>販売インセンティブ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
+        <translation>販売インセンティブ (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness</masterLabel>
+        <translation>販売準備</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
+        <translation>販売準備 (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Readiness 2025</masterLabel>
+        <translation>販売準備 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+        <translation>検索エンジン・マーケティング (SEM)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
+        <translation>検索エンジン・マーケティング (SEM) (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Performance</masterLabel>
+        <translation><!-- Search Performance --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller Incentive</masterLabel>
+        <translation>販売者報奨金</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller Incentive 2025</masterLabel>
+        <translation>販売者インセンティブ 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tech Exploration</masterLabel>
+        <translation>技術探索</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
+        <translation>技術探索 (2025年以前)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Sales</masterLabel>
+        <translation>テクニカルセールス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Sales 2025</masterLabel>
+        <translation>テクニカルセールス 2025</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training</masterLabel>
+        <translation><!-- Training --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video</masterLabel>
+        <translation>ビデオ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video 2025</masterLabel>
+        <translation>ビデオ 2025</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

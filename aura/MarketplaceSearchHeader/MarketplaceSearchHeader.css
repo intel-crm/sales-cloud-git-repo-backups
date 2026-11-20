@@ -1,0 +1,92 @@
+.THIS {
+  background: t(charcoal);
+  color: t(white);
+}
+.THIS .badges {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.THIS .badges .cISGL2ContextualFilterNode {
+  display: inline-block;
+}
+
+.THIS .sortByContainer {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid t(darkGray);
+  font-size: 0.813em;
+  line-height: 1.231;
+  padding: 1px 8px 0 10px;
+  position: relative;
+  margin-right: 5px;
+  /* margin-top: 10px; */
+  color: t(gray);
+}
+
+.THIS .sortByContainer label {
+  font-size: 0.813em;
+  line-height: 30px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+.THIS .sortByContainer select {
+  padding-right: 16px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.THIS .sortByContainer select {
+  cursor: pointer;
+}
+.THIS .sortByContainer select::-ms-expand {
+    display: none;
+}
+.THIS .sortByContainer > div:before {
+  content:' ';
+  pointer-events: none;
+  border: solid ;
+  border: 6px solid transparent;
+  border-top: 6px solid t(darkGray);
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 34%;
+}
+
+.THIS .darkButton {
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid t(darkGray);
+  padding: 5px 7px;
+  margin-right: 5px;
+  /* margin-top: 10px; */
+}
+.THIS .darkButton .slds-icon-text-default {
+  fill:  t(darkIconFill);
+}
+.THIS .right-align {
+  text-align: right;
+}
+
+.THIS .cISG_Button button.has-body:not(.has-icon) {
+  padding: 6px 0;
+}
+.THIS .results-total {
+  line-height: 36px;
+}
+.THIS .darkSelect,
+.THIS .darkSelect:focus,
+.THIS .darkSelect:active  {
+  border: 0 none;
+  background: transparent;
+  color: t(gray);
+}
+
+
+@media (min-width: 768px) {
+    .THIS .padding-bottom-medium {
+      padding: 1rem;
+    }
+}

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22081012</developerName>
+        <masterLabel>Data Ops or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>MICHAEL SWEET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paulo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonia Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Herman Wynn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Jolin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Kline</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Julia Sallaiova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Amber Tsai</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simon Lee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindy Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sylvia Saw Ai Ong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yu Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LINDA LEE NORTH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NHAT THANH NGUYEN</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_8138902</developerName>
+        <masterLabel>Sales Group buckets</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>Hosted / GSA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Undefined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Partner Led</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Partner Led</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Partner Led</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Partner Led</sourceValue>
+            </sourceValues>
+            <value>Partner / Undefined</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>Intel led</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_8138902</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>OLDVAL</field>
+    </columns>
+    <columns>
+        <field>NEWVAL</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>field_key</field>
+    </columns>
+    <columns>
+        <field>Account.Unified_Hierarchy_View__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Unified ID</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OLDVAL</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Hosted Sales Group,EMEA Partner Led,EMEA Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_8138902</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MSWEET EMEA - Unified ID changes 90days</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST90</interval>
+    </timeFrameFilter>
+</Report>

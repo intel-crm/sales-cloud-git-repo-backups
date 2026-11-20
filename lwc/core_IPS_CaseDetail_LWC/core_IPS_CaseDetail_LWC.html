@@ -1,0 +1,1567 @@
+<template>
+    <template if:true={hasAccess}>
+        <template if:false={showCloseCaseSurvey}>
+            <div class="pageBkGD">
+                <template if:true={showmaincmp}>
+                    <div class="slds-p-around_medium">
+                        <lightning-button onclick={handleNavigateBack} label="< Back" title="Back to dashboard"
+                            class="noBorder"></lightning-button>
+                    </div>
+                    <div class="Mask">
+                        <div class="slds-p-around_large" style="color:white">
+                            <template if:true={currentCaseData}>
+                                <div class="slds-truncate slds-p-right_small" style="font-size:28px">
+                                    {currentCaseData.Subject}
+                                </div>
+                                <div class="slds-truncate slds-p-right_small" style="font-size:16px">
+                                    {currentCaseData.Description}</div>
+                            </template>
+</div>
+<div class="slds-grid slds-wrap slds-p-left_large" style="color:white">
+    <div class="slds-col slds-size_6-of-12 slds-large-size_1-of-12" style="font-size:16px">
+        <div style="font-weight:bold">Case No</div>
+        <template if:true={currentCaseData}>
+                                    <div>{currentCaseData.CaseNumber}</div>
+                                </template>
+    </div>
+    <div class="slds-col slds-size_6-of-12 slds-large-size_1-of-12" style="font-size:16px">
+        <div style="font-weight:bold">Status</div>
+        <template if:true={currentCaseData}>
+                                    <div>{currentCaseData.Status}</div>
+                                </template>
+    </div>
+    <div class="slds-col slds-size_6-of-12 slds-large-size_1-of-12" style="font-size:16px">
+        <div style="font-weight:bold">Severity</div>
+        <template if:true={currentCaseData}>
+                                    <div>{currentCaseData.Core_Severity__c}</div>
+                                </template>
+    </div>
+    <div class="slds-col slds-size_6-of-12 slds-large-size_1-of-12" style="font-size:16px">
+        <div style="font-weight:bold">Project</div>
+        <template if:true={currentCaseData}>
+                                    <template if:true={ProjectData}>
+                                        <div class="slds-truncate slds-p-right_small">
+                                            <a href="" onclick={navigateToProjectDetail} target="_self">
+                                                <span
+                                                    style="color:white ;">{currentCaseData.Core_IPS_Project_Case__r.Name}
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </template>
+        <template if:false={ProjectData}>
+                                        <div class="slds-truncate slds-p-right_small">
+                                            {ProjNotapplicable}</div>
+                                    </template>
+        </template>
+    </div>
+    <div class="slds-col slds-size_6-of-12 slds-large-size_3-of-12" style="font-size:16px">
+        <div style="font-weight:bold">Intel Product</div>
+        <template if:true={currentCaseData}>
+                                    <div class="">{currentCaseData.Core_IPS_Product_name__c}</div>
+                                </template>
+    </div>
+    <div class="slds-float_right slds-p-top_x-small">
+        <template if:true={ClosedCase}>
+                                    <input onclick={openEditModal} type="button" class="caseEditBtn"
+                                        value="Edit Case"></input>
+                                </template>
+        <template if:false={isCaseClosed}>
+                                    <input onclick={openCsModal} type="button" class="caseCloseBtn"
+                                        value="Close Case"></input>
+                                </template>
+    </div>
+    <br></br>
+    <div style="margin-top: 12px; padding-left:15px;">
+        <template if:true={enableCopy}>
+                                    <lightning-button-icon icon-name="utility:copy" alternative-text="Copy" title="Copy"
+                                        class="slds-m-left_xx-small" variant="border-inverse" onclick={showCopy}>
+                                    </lightning-button-icon>
+                                </template>
+        <template if:true={enablePrint}>
+                                    <lightning-button-icon icon-name="utility:print" alternative-text="Print"
+                                        title="Print" class="slds-m-left_xx-small" variant="border-inverse"
+                                        onclick={showPrint}>
+                                    </lightning-button-icon>
+                                </template>
+
+    </div>
+</div>
+<!-- Display Modal - Close Case -->
+<template if:true={isModalOpen}>
+                            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                                <div class="slds-modal__container">
+                                    <button
+                                        class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                        title="Close" onclick={closeCsModal}>
+                                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                                            variant="inverse" size="small"></lightning-icon>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+
+                                    <div class="slds-modal__content slds-p-around_medium closemobile" id="modal-content-id-1">
+
+                                        <span class="slds-p-bottom_xx-large slds-p-top_large slds-align_absolute-center"
+                                            style="font-size:large;">
+                                            Are you sure you want to close this case?
+                                        </span>
+                                        <div class="slds-align_absolute-center">
+                                            <input onclick={closeCsModal} type="button" class="caseEditBtn"
+                                                value="Cancel"></input>
+                                            <input onclick={closeTheCase} type="button" class="caseCloseBtn"
+                                                value="Close the Case"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="slds-backdrop slds-backdrop_open"></div>
+                        </template>
+<!-- Display Modal - Edit Case -->
+<template if:true={isEditCase}>
+                            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                                <div class="slds-modal__container">
+                                    <header class="slds-modal__header editCaseHeader">
+                                        <button
+                                            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                            title="Close" onclick={closeEditModal}>
+                                            <lightning-icon icon-name="utility:close" alternative-text="close"
+                                                variant="inverse" size="small"></lightning-icon>
+                                            <span class="slds-assistive-text">Close</span>
+                                        </button>
+                                        <div class="slds-clearfix">
+                                            <div class="slds-float_left slds-p-left_medium">
+                                                <h2 id="modal-heading-01"
+                                                    class="slds-text-heading_medium slds-hyphenate">
+                                                    <template if:true={currentCaseData}>
+                                                        <div class="editCaseHeader">Edit Case
+                                                            {currentCaseData.CaseNumber}
+                                                        </div>
+                                                    </template>
+</h2>
+</div>
+<div class="slds-float_right slds-p-right_large">
+</div>
+</div>
+</header>
+<div class="slds-modal__content slds-p-around_medium">
+    <div class="slds-grid slds-wrap editclassalign">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <span class="subHeadline">Subject</span>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <template if:true={subjectReadonly}>
+                                                    <div class="editSubjectInput">
+                                                        <lightning-input name="Subject" variant="label-hidden"
+                                                            data-id="Subject"
+                                                            value={currentCaseData.Subject} onchange={doSomething}>
+                                                        </lightning-input>
+                                                    </div>
+                                                    <template if:true={isRequiredSubject}>
+                                                        <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                                    </template>
+                                                </template>
+                                                <template if:false={subjectReadonly}>
+                                                    <lightning-input name="Subject" class="inputs" data-id="subjectInput"
+                                                        value={currentCaseData.Subject} onchange={doSomething}
+                                                        disabled=true></lightning-input>
+                                                </template>
+        </div>
+    </div>
+
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <span class="subHeadline">Remove Notification Details <span
+                                                        style="font-size:12px; font-weight:500;">(Optional)</span></span>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <template if:true={removeReadonly}>
+                                                    <lightning-input type="checkbox" name="RemoveNotificationDetails"
+                                                        class="inputs inputsCheckbox" data-id="Remove"
+                                                        checked={currentCaseData.Core_IPS_Restricted_Secret_Content__c}
+                                                        onchange={doCheckbox}>
+                                                    </lightning-input>
+                                                </template>
+            <template if:false={removeReadonly}>
+                                                    <lightning-input type="checkbox" name="RemoveNotificationDetails"
+                                                        class="inputs inputsCheckbox"
+                                                        checked={currentCaseData.Core_IPS_Restricted_Secret_Content__c}
+                                                        onchange={doCheckbox} disabled=true></lightning-input>
+                                                </template>
+        </div>
+    </div>
+
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <span class="subHeadline"> Case
+                                                    Description 
+                                                    <lightning-helptext
+                                                        content="If you are pasting Images into this Field, the size limit is 100KB">
+                                                    </lightning-helptext>
+                                                </span>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                </br>
+                                                <template if:true={descriptionReadonly}>
+                                                    <div class="editDescInput">
+                                                        <lightning-input-rich-text name="description" data-id="description"
+                                                            value={currentCaseData.Core_Issue_Description__c}
+                                                            onchange={doSomething}>
+                                                        </lightning-input-rich-text>
+                                                    </div>
+                                                    <template if:true={isRequiredDesc}>
+                                                        <p class="requiredField">{label.Core_IPS_Required}</p>
+                                                    </template>
+                                                </template>
+            <template if:false={descriptionReadonly}>
+                                                    <lightning-input-rich-text name="description"
+                                                        value={currentCaseData.Core_Issue_Description__c} class="inputs"
+                                                        onchange={doSomething} disabled=true>
+                                                    </lightning-input-rich-text>
+                                                </template>
+        </div>
+    </div>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <!-- <span class="subHeadline"> <span style="color: red;"></span>Case Type -->
+                                                <span class="subHeadline"> <span></span>Case Type
+                                                </span>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <span>
+                                                    <template if:true={caseTypeReadonly}>
+                                                        <lightning-combobox class="inputs  caseTypePadding"
+                                                            variant="label-hidden" name="CaseType" data-id="CaseTypeInput"
+                                                            value={currentCaseData.Core_CaseType__c}
+                                                            placeholder="Please Select" options={CaseTypeOptions}
+                                                            onchange={doSomething}></lightning-combobox>
+                                                    </template>
+                                                    <template if:false={caseTypeReadonly}>
+                                                        <lightning-combobox class="inputs" name="CaseType"
+                                                            value={currentCaseData.Core_CaseType__c}
+                                                            placeholder="Please Select" options={CaseTypeOptions}
+                                                            onchange={doSomething} disabled=true></lightning-combobox>
+                                                    </template>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <span class="subHeadline">Severity</span>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <span>
+                                                    <template if:true={severityReadonly}>
+                                                        <lightning-combobox data-id="SeverityInput" variant="label-hidden"
+                                                            class="inputs severityPadding" name="Severity"
+                                                            value={currentCaseData.Core_Severity__c}
+                                                            placeholder="Please Select" options={caseSeverityoptions}
+                                                            onchange={doSomething}>
+                                                        </lightning-combobox>
+                                                    </template>
+                                                    <template if:false={severityReadonly}>
+                                                        <lightning-combobox class="inputs" name="Severity"
+                                                            value={currentCaseData.Core_Severity__c}
+                                                            placeholder="Please Select" options={caseSeverityoptions}
+                                                            onchange={doSomething} disabled=true>
+                                                        </lightning-combobox>
+                                                    </template>
+
+                                                </span>
+        </div>
+    </div>
+    </br>
+    <template if:true={editSeverityReason}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <span class="subHeadline"> Severity
+                                                        Reason</span>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <span class="editSeverityRsnInput inputs">
+                                                        <lightning-textarea data-id="SeverityReason"
+                                                            variant="label-hidden" class="severityinput"
+                                                            name="SeverityReason"
+                                                            value={currentCaseData.Core_Severity_Reason__c}
+                                                            onchange={doSomething}>
+                                                        </lightning-textarea>
+                                                        <template if:true={isRequiredSeverityRsn}>
+                                                            <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                                        </template>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <span class="subHeadline">Customer Reference ID <span
+                                                        style="font-size:12px; font-weight:500;">(Optional)</span>
+
+                                                    <lightning-helptext
+                                                        content="If you have already entered this case in your internal case management tool, You can use your internal identification to track your case by entering it here">
+                                                    </lightning-helptext>
+                                                </span>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+            </br>
+            <template if:true={customerrefReadonly}>
+                                                    <lightning-input class="inputs" name="customerRefId"
+                                                        value={currentCaseData.Core_Customer_Reference_ID__c}
+                                                        onchange={doSomething}>
+                                                    </lightning-input>
+                                                </template>
+            <template if:false={customerrefReadonly}>
+                                                    <lightning-input class="inputs" name="customerRefId"
+                                                        value={currentCaseData.Core_Customer_Reference_ID__c}
+                                                        onchange={doSomething} disabled=true>
+                                                    </lightning-input>
+                                                </template>
+
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <span class="subHeadline">End Customer <span
+                                                        style="font-size:12px; font-weight:500;">(Optional)</span>
+                                                    <lightning-helptext
+                                                        content="If you are submitting the case on behalf of another company, Please fill the Company's name here">
+                                                    </lightning-helptext>
+                                                </span>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+            </br>
+            <template if:true={endCustomerReadonly}>
+                                                    <lightning-input class="inputs" name="endCustomer"
+                                                        value={currentCaseData.Core_End_Customer__c}
+                                                        onchange={doSomething}>
+                                                    </lightning-input>
+                                                </template>
+            <template if:false={endCustomerReadonly}>
+                                                    <lightning-input class="inputs" name="endCustomer"
+                                                        value={currentCaseData.Core_End_Customer__c}
+                                                        onchange={doSomething} disabled=true>
+                                                    </lightning-input>
+                                                </template>
+
+
+        </div>
+    </div>
+    <template if:true={agentCheck}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <span class="subHeadline">Partner Supported Owner <span
+                                                            style="font-size:12px; font-weight:500;">(Optional)</span></span>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3"></br>
+                                                    <lightning-input data-id="endcustomer" class="inputs"
+                                                        value={partnerSupportOwner} disabled="true">
+                                                    </lightning-input>
+                                                </div>
+                                            </div>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                   <span class="subHeadline">Partner Supported Account
+                                                       <span style="font-size:12px; font-weight:500;">(Optional)</span>
+                                                   </span>
+                                                   
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    </br>
+                                                    <template if:true={PSAReadonly}>
+                                                        <lightning-combobox name="progress"
+                                                            value={currentCaseData.Core_Partner_Supported_Account__c}
+                                                            placeholder={partnerSupportedAccountName} class="inputs"
+                                                            options={partnerSupportedAccount}
+                                                            onchange={handleChangePartnerAccount}>
+                                                        </lightning-combobox>
+                                                    </template>
+                                                    <template if:false={PSAReadonly}>
+                                                        <lightning-combobox name="progress"
+                                                            value={currentCaseData.Core_Partner_Supported_Account__c}
+                                                            placeholder={partnerSupportedAccountName} class="inputs"
+                                                            options={partnerSupportedAccount}
+                                                            onchange={handleChangePartnerAccount} disabled=true>
+                                                        </lightning-combobox>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <div class="line"></div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="headline slds-col slds-p-around_small">
+                                                <span class="slds-p-around_medium">
+                                                    Product/Project Info
+                                                </span>
+    </div>
+</div>
+<div class="slds-grid slds-wrap editclassalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Project</p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+        <span>
+                                                    <template if:true={ProjectData}>
+                                                        <lightning-input class="inputs" name="project"
+                                                            value={currentCaseData.Core_IPS_Project_Case__r.Name}
+                                                            disabled=true></lightning-input>
+                                                    </template>
+                                                    <template if:false={ProjectData}>
+                                                        <p class="slds-m-top_medium">
+                                                            {ProjNotapplicable}
+                                                        </p>
+                                                    </template>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+                                                    style="padding-top: 1rem;">
+                                                    <p class="subHeadline">Product<span
+                                                    style="font-size:12px; font-weight:500;">&nbsp;(Optional)
+                                                   </span></p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <span>
+                                                    <lightning-input class="inputs" name="product"
+                                                        value={currentCaseData.Core_IPS_Product_name__c} disabled=true>
+                                                    </lightning-input>
+                                                </span>
+    </div>
+</div>
+<template if:true={showProductVarinat}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+                                                    style="padding-top: 1rem;">
+                                                    <p class="subHeadlinecopy">Product Variant <span
+                                                            style="font-size:12px; font-weight:500;">(Optional)</span>
+                                                    </p>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    <span style="width: 100%;">
+                                                        <div
+                                                            class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                                            <div class="slds-size_12-of-12">
+                                                                <template if:true={prodVariantReadonly}>
+                                                                    <lightning-combobox name="progress"
+                                                                        value={productvariantName}
+                                                                        options={caseProductVariantOptions}
+                                                                        placeholder={productvariantName}
+                                                                        onchange={handleChangeProductVariant}
+                                                                        class="inputs">
+                                                                    </lightning-combobox>
+                                                                </template>
+<template if:false={prodVariantReadonly}>
+                                                                    <lightning-combobox name="progress"
+                                                                        value={productvariantName}
+                                                                        options={caseProductVariantOptions}
+                                                                        placeholder={productvariantName}
+                                                                        onchange={handleChangeProductVariant}
+                                                                        class="inputs" disabled=true>
+                                                                    </lightning-combobox>
+                                                                </template>
+</div>
+<div class="slds-size_2-of-12"></div>
+</div>
+</span>
+</div>
+</div>
+</template>
+<template if:true={hideCaseCategory}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <p class="subHeadline">Case
+                                                        Category</p>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    <span>
+                                                        <template if:true={caseCategoryReadOnly}>
+                                                            <lightning-combobox class="inputs "
+                                                                variant="label-hidden" name="caseCategory"
+                                                                value={currentCaseData.Core_Case_Issue_Category__c}
+                                                                placeholder="-select category-"
+                                                                options={CaseCategoryoptions}
+                                                                onchange={handleChangeCategory}>
+                                                            </lightning-combobox>
+                                                        </template>
+
+<template if:false={caseCategoryReadOnly}>
+                                                            <lightning-combobox class="inputs" name="caseCategory"
+                                                                value={currentCaseData.Core_Case_Issue_Category__c}
+                                                                placeholder="-select category-"
+                                                                options={CaseCategoryoptions}
+                                                                onchange={handleChangeCategory} disabled=true>
+                                                            </lightning-combobox>
+                                                        </template>
+</span>
+</div>
+</div>
+</template>
+<template if:true={showSubCat}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <p class="subHeadline">Case
+                                                        Subcategory</p>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    <span>
+                                                        <template if:true={subCatReadonly}>
+                                                            <div class="editSubCatInput inputs">
+                                                                <lightning-combobox 
+                                                                    variant="label-hidden" name="caseSubcategory"
+                                                                    value={currentCaseData.Core_Case_Issue_Sub_Category__c}
+                                                                    placeholder="-select sub category-"
+                                                                    options={CaseSubcategoryoptions} data-id="subCategoryInput"
+                                                                    onchange={handleChangeRenderSubCategoryedq}>
+                                                                </lightning-combobox>
+                                                                <template if:true={isRequiredSubCat}>
+                                                                    <p class="requiredField">{label.Core_IPS_Required}</p>
+                                                                </template>
+                                                            </div>
+                                                            
+                                                        </template>
+<template if:false={subCatReadonly}>
+
+                                                            <lightning-combobox class="inputs" name="caseSubcategory"
+                                                                value={currentCaseData.Core_Case_Issue_Sub_Category__c}
+                                                                placeholder="-select sub category-"
+                                                                options={CaseSubcategoryoptions}
+                                                                onchange={handleChangeRenderSubCategoryedq}
+                                                                disabled=true>
+                                                            </lightning-combobox>
+                                                        </template>
+</span>
+</div>
+</div>
+</template>
+<div class="line"></div>
+<div class="slds-grid slds-wrap editclassalign">
+    <div class="headline slds-col slds-p-around_small">
+        <span class="slds-p-around_medium">
+                                                    Environmental Details
+                                                </span>
+    </div>
+</div>
+<div>
+    <template if:true={showEdqSection}>
+                                            </template>
+    <template if:true={showProdEdqs}>
+                                                <c-dynamic-form-builder fields={prodEdqRecs}
+                                                    iscommunity={communityCheck} data-id="prodEDQ" execution-mode="edit"
+                                                    case-id={recordId} supported-product-id={passSupportedProductID}>
+                                                </c-dynamic-form-builder>
+                                            </template>
+    <template if:true={showSubCatEdqs}>
+                                                <c-dynamic-form-builder fields={subCatRecEdqs}
+                                                    iscommunity={communityCheck} data-id="subCatEDQ"
+                                                    execution-mode="edit" case-id={recordId}
+                                                    supported-product-id={passSupportedProductID}>
+                                                </c-dynamic-form-builder>
+                                            </template>
+</div>
+<div class="slds-align_absolute-center slds-m-around_medium savebutton">
+    <input onclick={editSaveHandler} type="button" class="newCommentBtn newCommentBtnforsave" value="Save Changes"></input>
+    <input onclick={closeEditModal} type="button" class="caseEditBtncancel" value="Cancel"></input>
+</div>
+</div>
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+</div>
+<!-- Tab Navigation -->
+<div class="slds-p-around_large">
+    <lightning-tabset active-tab-value={selectedItem}>
+        <lightning-tab label="Case Comments" value="caseComments" onactive={handleSelect}>
+        </lightning-tab>
+        <lightning-tab label="Case Information" value="caseInformation" onactive={handleSelect}>
+        </lightning-tab>
+        <lightning-tab label="Environment" value="environment" onactive={handleSelect}>
+        </lightning-tab>
+        <lightning-tab label="Attachments" value="attachments" onactive={handleSelect}>
+        </lightning-tab>
+        <lightning-tab label="Interested Parties" value="interestedParties" onactive={handleSelect}>
+        </lightning-tab>
+    </lightning-tabset>
+</div>
+<!-- Case Comment Section -->
+<template if:true={caseComments}>
+                        <template if:true={caseCmtSection}>
+                            <div class="slds-clearfix">
+                                <div class="slds-float_left slds-p-left_medium slds-m-top_large mobiletop">
+                                    <template if:true={isCaseCmt}>
+                                        <input onclick={newCommentBtn} type="button" name="newCommentBtn"
+                                            class="newCommentBtnin" value="New Comment"></input>
+                                    </template>
+</div>
+<div class="Searchalign slds-p-right_large">
+    <lightning-input type="search" onchange={handleCommentSearch} class="slds-m-bottom_small" placeholder="Search Comments" maxlength="70">
+    </lightning-input>
+</div>
+</div>
+<div class="slds-p-around_large tablemobile">
+    <table cellpadding="2">
+        <thead>
+            <tr class="cmtHeader">
+                <th class="slds-p-around_medium">
+                    <div>From</div>
+                </th>
+                <th class="slds-p-around_medium" style="width: 65%; text-align:left;">
+                    <div>Comment</div>
+                </th>
+                <th class="slds-p-around_medium">
+                    <div>Date</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <template for:each={currentCaseComments} for:item="ccc">
+
+                                            <template if:true={ccc.isExternal}>
+                                                <tr class="slds-border_bottom blueBg" key={ccc.Id}>
+
+                                                    <td class="slds-p-around_medium " scope="col">
+                                                        <div><b>{ccc.Core_IPS_Comment_Authored_By_Name__c}</b></div>
+                                                        <template if:true={ccc.CreatedBy}>
+                                                            <div>{ccc.CreatedBy.Email}</div>
+                                                        </template>
+            </td>
+            <td class="slds-p-around_medium" scope="col">
+                <div style="width:57rem;">
+                    <lightning-formatted-rich-text value={ccc.Core_IPS_Rich_Comment__c}>
+                    </lightning-formatted-rich-text>
+                </div>
+            </td>
+            <td class="slds-p-around_medium" scope="col">
+                <div>
+                    {ccc.CreatedDate}
+                </div>
+            </td>
+
+            </tr>
+            </template>
+            <template if:true={ccc.isnotExternal}>
+                                                <tr class="slds-border_bottom whiteBg" key={ccc.Id}>
+                                                    <td class="slds-p-around_medium " scope="col">
+                                                        <div><b>{ccc.Core_IPS_Comment_Authored_By_Name__c}</b></div>
+                                                        <template if:true={ccc.CreatedBy}>
+                                                            <div>{ccc.CreatedBy.Email}</div>
+                                                        </template>
+            </td>
+            <td class="slds-p-around_medium" scope="col">
+                <div style="width:50rem;">
+                    <lightning-formatted-rich-text value={ccc.Core_IPS_Rich_Comment__c}>
+                    </lightning-formatted-rich-text>
+                </div>
+            </td>
+            <td class="slds-p-around_medium" scope="col">
+                <div>
+                    {ccc.CreatedDate}
+                </div>
+            </td>
+            </tr>
+            </template>
+            </template>
+        </tbody>
+    </table>
+</div>
+</template>
+<template if:false={caseCmtSection}>
+                            <div class="slds-p-left_medium">
+                                <div class="slds-p-left_large">
+                                    <template if:false={isPartnerORCustomer}>
+                                        <lightning-radio-group name="commentRadioGroup" options={commentOptions}
+                                            value={commentValue} type="radio" onchange={handleRadioChange}>
+                                        </lightning-radio-group>
+                                    </template>
+</div>
+<div class="slds-p-top_large slds-p-bottom_small slds-p-left_large">
+    Note : If you are pasting images into this field, the size limit is 1MB
+</div>
+<div class="slds-p-bottom_large slds-p-left_large slds-p-right_large" style="--slds-c-textarea-sizing-min-height: 200px;">
+        <lightning-input-rich-text value="" onchange={getCommentValue} >
+        </lightning-input-rich-text>    
+</div>
+<div class="slds-clearfix">
+    <div class="slds-float_left slds-p-left_medium">
+        <div class="slds-p-top_large">
+            <input onclick={sendCommentBtn} type="button" class="newCommentBtn" value="Save Comment"></input>
+        </div>
+    </div>
+    <div class="slds-p-right_medium">
+        <div class="slds-p-top_large">
+            <input onclick={commentCancelled} type="button" class="cancelBtn" value="Cancel"></input>
+        </div>
+    </div>
+</div>
+</div>
+<div class="slds-p-around_large">
+    <div class="tooltip" style="font-size:20px;">
+        <input type="button" class="recentcmtBtn" style="font-size:20px;" onclick={showRecentcomments} value="Recent Comments"></input>
+        <template if:false={showcmts}>
+                                        <span class="tooltiptext" style="font-size:10px;">click to show comments</span>
+                                    </template>
+        <template if:true={showcmts}>
+                                        <span class="tooltiptext" style="font-size:10px;">click to hide comments</span>
+                                    </template>
+    </div>
+    <template if:true={showcmts}>
+                                    <div class="slds-p-around_large">
+                                        <lightning-button-icon class="slds-float_right" icon-name="utility:collapse_all"
+                                            onclick={handleCollapse}>
+                                        </lightning-button-icon>
+                                    </div>
+                                    <div class="slds-p-around_large">
+                                        <lightning-accordion allow-multiple-sections-open="true"
+                                            active-section-name={sectionNames} class="accordionClass">
+                                            <template for:each={recentCommentsList} for:item="ccc">
+                                                <template if:true={ccc.isExternal}>
+                                                    <lightning-accordion-section class="blueColor" name={ccc.Id}
+                                                        label={ccc.Core_IPS_Comment_Authored_By_Name__c} key={ccc}>
+                                                        <div class="Commentalign">
+                                                            {ccc.CreatedDate} <br />
+                                                            <lightning-formatted-rich-text
+                                                                value={ccc.Core_IPS_Rich_Comment__c}>
+                                                            </lightning-formatted-rich-text>
+                                                        </div>
+                                                    </lightning-accordion-section>
+                                                </template>
+    <template if:true={ccc.isnotExternal}>
+                                                    <lightning-accordion-section class="greyColor" name={ccc.Id}
+                                                        label={ccc.Core_IPS_Comment_Authored_By_Name__c} key={ccc}>
+                                                        <div class="Commentalign">
+                                                            {ccc.id}{ccc.CreatedDate} <br />
+                                                            <lightning-formatted-rich-text
+                                                                value={ccc.Core_IPS_Rich_Comment__c}>
+                                                            </lightning-formatted-rich-text>
+                                                        </div>
+                                                    </lightning-accordion-section>
+                                                </template>
+    </template>
+    </lightning-accordion>
+</div>
+</template>
+</div>
+</template>
+</template>
+<!-- Case Information Section -->
+<template if:true={caseInformation}>
+                        <div class="slds-p-left_large slds-p-bottom_small" style="font-size:20px;">
+                            Case Information
+                        </div>
+                        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                            <lightning-output-field aura:id="caseField" class="slds-size_1-of-2" type="text"
+                                value={currentCaseData.Id} label="Case Id"></lightning-output-field>
+                        </div>
+                        <lightning-record-view-form record-id={currentCaseData.Id} object-api-name="Case">
+                            <div class="slds-form_horizontal slds-form slds-grid slds-wrap slds-p-around_large">
+                                <lightning-output-field field-name="CaseNumber" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_IPS_Case_Owner_Name__c"
+                                    class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Status" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="core_Account_Name__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_Sub_Status__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_Contact_Name__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_Severity__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_Customer_Reference_ID__c"
+                                    class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_Severity_Reason__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_End_Customer__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_CaseType__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_IPS_Restricted_Secret_Content__c"
+                                    class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_IPS_Legacy_IPS_ID__c" class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_IPS_Knowledge_Base_Link__c"
+                                    class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_External_Issue_Category__c"
+                                    class="slds-size_1-of-2">
+                                </lightning-output-field>
+                                <lightning-output-field field-name="Core_External_Issue_Subcategory__c"
+                                    class="slds-size_1-of-2">
+                                </lightning-output-field>
+                            </div>
+                        </lightning-record-view-form>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-grid slds-size_2-of-12">
+                                <p class="subHeadline">Subject</p>
+                            </div>
+                            <div
+                                class="slds-col slds-grid slds-size_10-of-12 slds-p-top_medium slds-p-left_medium colorsub">
+                                <template if:true={currentCaseData}>
+                                    {currentCaseData.Subject}
+                                </template>
+</div>
+</div>
+<div class="slds-grid">
+    <div class="slds-col slds-grid slds-size_2-of-12">
+        <p class="subHeadline">Case Description</p>
+    </div>
+    <div class="slds-col slds-grid slds-size_10-of-12 slds-p-top_medium slds-p-left_medium colorsub">
+        <template if:true={currentCaseData}>
+                                    <lightning-formatted-rich-text value={currentCaseData.Core_Issue_Description__c}>
+                                    </lightning-formatted-rich-text>
+                                </template>
+    </div>
+</div>
+</template>
+<template if:true={environment}>
+                        <div class="slds-clearfix">
+                            <div class="slds-float_left slds-p-left_medium">
+                                <div style="font-size:20px;">Environmental Details</div>
+                            </div>
+                            <div class="slds-float_right slds-p-right_large">
+                                <lightning-input type="search" onchange={handleEnvSearch} class="slds-m-bottom_small"
+                                    style="width: 18rem;" placeholder="Search Environment Details" maxlength="70">
+                                </lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-p-around_large">
+                            <table>
+                                <thead>
+                                    <tr class="cmtHeader">
+                                        <th class="slds-p-around_medium">
+                                            <div>Question</div>
+                                        </th>
+                                        <th class="slds-p-around_medium">
+                                            <div>Response</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={currentCaseEnvDetails} for:item="edq">
+                                        <tr key={edq.Id} style="border-bottom: 1px solid #ddd;">
+                                            <td class="slds-p-around_medium" scope="col">
+                                                <template if:true={edq.Core_IPS_Question__c}>
+                                                    <div>{edq.Core_IPS_Question__c}</div>
+                                                </template>
+</td>
+<td class="slds-p-around_medium" scope="col">
+    <template if:true={edq.Core_IPS_Answer__c}>
+                                                    <div>{edq.Core_IPS_Answer__c}</div>
+                                                </template>
+</td>
+</tr>
+</template>
+</tbody>
+</table>
+</div>
+</template>
+<template if:true={attachments}>
+                        <template if:true={attachfilesection}>
+                            <template if:true={profileattachshow}>
+                                    <div class="slds-clearfix">
+                                        <div class="slds-float_left slds-p-left_medium">
+                                            <template if:true={isAttachment}>
+                                                <input onclick={attachhandleClick} type="button"
+                                                    class="newAttactmentBtn" value="Attach File"></input>
+                                            </template>
+                                        </div>
+                                        <template if:true={booleanRefreshAttachments}>
+                                        <div class="slds-float_left slds-p-left_medium">
+                                            <input onclick={refreshPage} type="button" class="newAttactmentBtn"
+                                                value="Refresh to see new Attachments"></input>
+                                        </div>
+                                        </template>
+                                        <div class="slds-float_right slds-p-right_large">
+                                            <lightning-input type="search" onchange={attachmentsearchbox}
+                                                class="slds-m-bottom_small attachmentSearch"
+                                                placeholder="Search attachments" maxlength="70"></lightning-input>
+                                        </div>
+                                    </div>
+                                
+                                <div class="slds-p-around_large">
+                                    <div class="buttoncolor">
+                                        <lightning-card>
+                                            <lightning-datatable key-field="id" data={attachmentData} columns={columns}
+                                                onrowaction={attRowAction} hide-checkbox-column></lightning-datatable>
+                                        </lightning-card>
+                                    </div>
+                                </div>
+                            </template>
+                            <template if:true={profileattach}>
+                                    <div class="slds-clearfix">
+                                        <div class="slds-float_left slds-p-left_medium">
+                                            <template if:true={booleanPublictoCustomers}>
+                                                <input onclick={attachhandleClick} type="button"
+                                                    class="newAttactmentBtn"
+                                                    value="Attach File - Public to Customers"></input>
+                                            </template>
+<template if:true={booleanPrivatetoPartners}> <input
+                                                    onclick={attachhandleClickPartner} type="button"
+                                                    class="newAttactmentBtn"
+                                                    value="Attach File - Private to Partners"></input>
+                                            </template>
+<template if:true={booleanPrivatetoIntel}>
+                                                <input onclick={attachhandleClickIntel} type="button"
+                                                    class="newAttactmentBtn"
+                                                    value="Attach File - Private to Intel"></input>
+                                            </template>
+<template if:true={booleanLinkFile}>
+                                                <input onclick={handlelinkfile} type="button" class="newAttactmentBtn"
+                                                    value="Link File"></input>
+                                            </template>
+<template if:true={booleanRefreshAttachments}> <input onclick={refreshPage}
+                                                    type="button" class="newAttactmentBtn"
+                                                    value="Refresh to see new Attachments"></input>
+                                            </template>
+
+                                        </div>
+                                        <div class="slds-float_right slds-p-right_large">
+                                            <lightning-input type="search" onchange={attachmentsearchbox}
+                                                class="slds-m-bottom_small attachmentSearch"
+                                                placeholder="Search attachments" maxlength="70"></lightning-input>
+                                        </div>
+                                    </div>
+                                
+                                <div class="slds-p-around_large">
+                                    <div class="buttoncolor">
+                                        <lightning-card>
+                                            <lightning-datatable key-field="id" data={attachmentData}
+                                                columns={Agentcolumns} onrowaction={handleRowActions}
+                                                hide-checkbox-column></lightning-datatable>
+                                        </lightning-card>
+                                    </div>
+                                </div>
+                                <template if:true={editattRecord}>
+                                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01"
+                                        aria-modal="true" aria-describedby="modal-content-id-1"
+                                        class="slds-modal slds-fade-in-open">
+                                        <div class="slds-modal__container">
+                                            <!-- modal header start -->
+                                            <header class="slds-modal__header"
+                                                style="background-color: #9341a5; color: white;">
+                                                <button
+                                                    class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                                    title="Close" onclick={closeAttEditModal}>
+                                                    <lightning-icon class="red-icon" icon-name="utility:close"
+                                                        alternative-text="close" variant="inverse" size="small">
+                                                    </lightning-icon>
+                                                    <span class="slds-assistive-text">Close</span>
+                                                </button>
+                                                <h2 id="modal-heading-03"
+                                                    class="slds-text-heading_medium slds-hyphenate">
+                                                    IPS
+                                                    Case Attachment {attName}</h2>
+                                            </header>
+                                            <div class="slds-modal__content slds-p-around_medium attachmentalign"
+                                                id="modal-content-id-3">
+                                                <lightning-record-edit-form record-id={attrecId}
+                                                    object-api-name="Core_IPS_Case_Attachments__c"
+                                                    onsuccess={handleSuccess} onsubmit={handleAttachmentRecordSubmit}>
+                                                    <lightning-messages>
+                                                    </lightning-messages>
+                                                    <lightning-output-field>
+                                                    </lightning-output-field>
+                                                    <lightning-input-field field-name="Core_File_Name__c" disabled=true>
+                                                    </lightning-input-field>
+                                                    <lightning-input-field field-name="Core_File_Description__c">
+                                                    </lightning-input-field>
+                                                    <lightning-input-field field-name="Core_Upload_Status__c"
+                                                        disabled=true>
+                                                    </lightning-input-field>
+                                                    <lightning-input-field field-name="Core_File_Size__c" disabled=true>
+                                                    </lightning-input-field>
+                                                    <lightning-input-field
+                                                        field-name="Core_IPS_Attachment_Visibility__c" disabled=true>
+                                                    </lightning-input-field>
+                                                    <lightning-input-field field-name="Core_File_GUID__c" disabled=true>
+                                                    </lightning-input-field>
+                                                    <lightning-input-field required="true" field-name="CreatedDate"
+                                                        disabled=true>
+                                                    </lightning-input-field>
+                                                    <div
+                                                        class="slds-align_absolute-center slds-m-around_medium slds-p-top_large slds-border_top">
+                                                        <input type="Submit" class="newCommentBtn" value="Save"></input>
+                                                        <input type="button" class="cancelBtn" value="Cancel"
+                                                            onclick={closeAttEditModal}></inputtype>
+                                                    </div>
+                                                </lightning-record-edit-form>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </template>
+<template if:true={showdata}>
+                                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01"
+                                        aria-modal="true" aria-describedby="modal-content-id-1"
+                                        class="slds-modal slds-fade-in-open">
+                                        <div class="slds-modal__container">
+                                            <!-- modal header start -->
+                                            <header class="slds-modal__header"
+                                                style="background-color: #653171; color: white;">
+                                                <button
+                                                    class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                                    title="Close" onclick={closeLinkModal}>
+                                                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                                                        variant="inverse" size="small"></lightning-icon>
+                                                    <span class="slds-assistive-text">Close</span>
+                                                </button>
+                                                <h2 id="modal-heading-02"
+                                                    class="slds-text-heading_medium slds-hyphenate" style="color:white">
+                                                    File
+                                                    List</h2>
+                                            </header>
+                                            <!-- modal body start -->
+                                            <div class="slds-modal__content slds-p-around_medium"
+                                                id="modal-content-id-2">
+                                                <template if:true={isLinkDataAvailable}>
+                                                    <lightning-card title="Select Files">
+                                                        <div class="slds-align_absolute-center">
+                                                            <input type="button" value="Save" onclick={onSaveHandler}
+                                                                class="newCommentBtn" />
+                                                            <input type="button" class="cancelBtn" value="Cancel"
+                                                                onclick={onCancelHandler}></input>
+                                                        </div>
+                                                        <div class="slds-p-around_large"
+                                                            style="width: auto; color:black;">
+                                                            <div class="buttoncolor">
+                                                                <lightning-datatable data={linkdataToShow}
+                                                                    columns={linkcolumns} key-field="Id"
+                                                                    onrowselection={getSelectedRecords}>
+                                                                </lightning-datatable>
+                                                            </div>
+                                                        </div>
+                                                    </lightning-card>
+                                                </template>
+<template if:false={isLinkDataAvailable}>
+                                                    No Files to Link for Case
+                                                </template>
+
+</div>
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+
+                            </template>
+                            <template if:true={profileattachFae}>
+                                    <div class="slds-clearfix">
+                                        <div class="slds-float_left slds-p-left_medium">
+                                            <template if:true={isAttachment}>
+                                                <input onclick={attachhandleClick} type="button"
+                                                    class="newAttactmentBtn"
+                                                    value="Attach File - Public to Customers"></input>
+                                                <input onclick={attachhandleClickPartner} type="button"
+                                                    class="newAttactmentBtn"
+                                                    value="Attach File - Private to Partners"></input>
+                                            </template>
+                                        </div>
+                                        <template if:true={booleanRefreshAttachments}>
+                                            <div class="slds-float_left slds-p-left_medium">
+                                                <input onclick={refreshPage} type="button" class="newAttactmentBtn"
+                                                    value="Refresh to see new Attachments"></input>
+                                            </div>
+                                        </template>
+                                        <div class="slds-float_right slds-p-right_large">
+                                            <lightning-input type="search" onchange={attachmentsearchbox}
+                                                class="slds-m-bottom_small attachmentSearch"
+                                                placeholder="Search attachments" maxlength="70"></lightning-input>
+                                        </div>
+                                    </div>
+                                
+                                <div class="slds-p-around_large">
+                                    <div class="buttoncolor">
+                                        <lightning-card>
+                                            <lightning-datatable key-field="id" data={attachmentData} columns={columns}
+                                                onrowaction={attRowAction} hide-checkbox-column></lightning-datatable>
+                                        </lightning-card>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+
+</template>
+
+<!---->
+<template if:true={interestedParties}>
+                        <div style="padding-left: 26px;">
+                            <p>
+                                {label.Core_IPS_Note_Message}
+                            </p>
+                        </div>
+                        <div class="slds-p-around_large" style="height:28rem;">
+                            <lightning-input type="search" placeholder="Filter Names" onchange={handleSearchChange}
+                                style="width:36rem;"></lightning-input><template if:true={isErrormessage}>
+                                <div id="errormessage" style="color: #FF0000;margin-top:5px">{errorMessageLabel}</div>
+                            </template><br />
+<lightning-dual-listbox add-button-label="Add" remove-button-label="Remove" name="Select Options" source-label="Available Members" options={interestedpartiesvalue} selected-label="Selected Members" value={previnterestedparties} onchange={handleChangeintrsdpartymembers}
+    class="selectinteredtedOptions" size=5 disable-reordering>
+</lightning-dual-listbox>
+<template if:true={showAddRemoveBtn}>
+                                <lightning-button
+                                    class="slds-m-bottom_large slds-m-top_large slds-m-right_medium slds-float_right back-button"
+                                    variant="brand" name='Add / Remove Members' label='Add / Remove Members'
+                                    onclick={handleSaveMemeber}>
+                                </lightning-button>
+                            </template>
+</div>
+</template>
+
+</template>
+
+<template if:true={showCopycmp}>
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- modal header start -->
+                            <header class="slds-modal__header editCaseHeader">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close" onclick={gobackToCase}>
+                                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                        size="small"></lightning-icon>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                                <div class="slds-clearfix">
+                                    <div class="slds-float_left slds-p-left_medium">
+                                        <h2 class="slds-text-heading_medium slds-hyphenate">
+                                            <template if:true={currentCaseData}>
+                                                <div class="copyCaseHeader">Copy Case {currentCaseData.CaseNumber}</div>
+                                            </template>
+</h2>
+</div>
+</div>
+</header>
+<div class="slds-modal__content slds-p-around_medium">
+    <div class="slds-align_absolute-center">
+
+    </div>
+    &nbsp;
+    <lightning-accordion class="accordionA" allow-multiple-sections-open onsectiontoggle={handleSectionToggle} active-section-name={activeSections}>
+
+        <lightning-accordion-section name="A" label="Military,intelligence,nuclear/biochemical,or space (MINDS) Information">
+
+                                        <p class="textaligncopy">
+                                            {label.Core_IPS_Preferences_Message}
+                                        </p>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3"
+                                                style="padding-bottom: 2rem;">
+                                                <p class="subHeadlinecopy">
+                                                    {label.Core_IPS_Minds_Message}
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <div>
+                                                    </br>
+                                                    <lightning-input type="checkbox" label="Yes" name="yeschecked"
+                                                        onchange={handleChangeMINDS} checked={showboolean1}>
+                                                    </lightning-input>
+                                                </div>
+                                                &emsp;
+                                                <div>
+                                                    </br>
+                                                    <lightning-input type="checkbox" label="No" name="nochecked"
+                                                        onchange={handleChangeMINDS} checked={showboolean2}>
+                                                    </lightning-input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </br>
+                                       
+                                        <c-core_-i-p-s_-country-state_-l-w-c selectedvaluecountry={selectedValuecountry} statedefaultvalue={statedefaultvalue} oncountryselect={countrySelect} onstateselect={stateSelect}></c-core_-i-p-s_-country-state_-l-w-c>
+                                    </lightning-accordion-section>
+                                    <lightning-accordion-section name="B" label="Case Details">
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">Subject
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                </br>
+                                                <div class="cpySubjectInput">
+                                                    <lightning-input data-id="subjectField"  value={subject}
+                                                        name="subject" onchange={handleChangeCopy}
+                                                        variant="label-hidden"></lightning-input>
+                                                </div>
+                                                <template if:true={isRequiredSubjectCpy}>
+                                                    <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">Case Description
+                                                    <lightning-helptext
+                                                        content={label.Core_IPS_Limit_Message}>
+                                                    </lightning-helptext>
+
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                </br>
+                                                <div class="cpyDescInput">
+                                                    <lightning-input-rich-text data-id="descriptionFeild"
+                                                        name="description" value={caseDescription}
+                                                        onchange={handleChangeCopy}>
+                                                    </lightning-input-rich-text>
+                                                </div>
+                                                <template if:true={isRequiredDescCpy}>
+                                                    <p class="requiredField">{label.Core_IPS_Required}</p>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        </br>
+                                        </br>
+                                        </br>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">Case Type
+                                                    <lightning-helptext
+                                                        content="Please Indicate the type of Support you are Requesting">
+                                                    </lightning-helptext>
+
+                    </p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                    <span>
+                                                    <lightning-combobox data-id="CaseType" class="inputs"
+                                                        name="CaseType" value={caseType} placeholder="Please Select"
+                                                        options={CaseTypeOptions} onchange={handleChangeCopy} 
+                                                        variant='label-hidden'>
+                                                    </lightning-combobox>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">Severity
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                <span>
+                                                    <lightning-combobox data-id="Severity" class="inputs"
+                                                        name="Severity" value={severity} placeholder="Please Select"
+                                                        options={caseSeverityoptions} onchange={handleChangeCopy}
+                                                         variant='label-hidden'>
+                                                    </lightning-combobox>
+                                                </span>
+                </div>
+            </div>
+            <template if:true={copySeverityReason}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <span class="subHeadlinecopy">Severity
+                                                        Reason</span>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <span>
+                                                        <div class="cpySrnsInput inputs">
+                                                            <lightning-textarea data-id="SeverityReasonCpy" class="severityinput"
+                                                                name="SeverityReason" value={caseSeverityReason}
+                                                                onchange={handleChangeCopy} variant="label-hidden">
+                                                            </lightning-textarea>
+                                                            <template if:true={isRequiredSeverityRsncpy}>
+                                                                <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                                            </template>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </template>
+
+          <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">Customer Reference ID<span
+                                                        style="font-size:12px; font-weight:500;">(Optional)</span>
+                                                    <lightning-helptext
+                                                        content={label.Core_IPS_Notes_Message}>
+                                                    </lightning-helptext>
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                </br>
+                                                <lightning-input data-id="custmerreference"
+                                                    class="custmerreference inputs" name="customerRefId"
+                                                    onchange={handleChangeCopy} value={customerReferenceID}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">End Customer<span
+                                                        style="font-size:12px; font-weight:500;">(Optional)</span>
+                                                    <lightning-helptext
+                                                        content={label.Core_IPS_Company_Message}>
+                                                    </lightning-helptext>
+                                                </p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                </br>
+                                                <lightning-input data-id="endcustomer" class="endcustomer inputs"
+                                                    name="endCustomer" onchange={handleChangeCopy} value={endcustomer}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                        <template if:true={agentCheck}>
+
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <span class="subHeadline">Partner Supported Owner</span>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3"></br>
+                                                    <lightning-input data-id="endcustomer" class="inputs"
+                                                        value={partnerSupportOwner} disabled="true">
+                                                    </lightning-input>
+                                                </div>
+                                            </div>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <template if:true={CopyPartnerAccountRequired}>
+                                                        <span class="subHeadline">Partner Supported Account</span>
+                                                        
+                                                    </template>
+                                                    <template if:false={CopyPartnerAccountRequired}>
+                                                        <span class="subHeadline">Partner Supported Account
+                                                        <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span></span>
+                                                    </template>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    </br>
+                                                    <div class="partnerAccreq">
+                                                        <lightning-combobox name="progress" value={partnerSupportAccount}
+                                                            placeholder={partnerSupportAccount} class="inputs" 
+                                                            options={partnerSupportedAccount} 
+                                                            onchange={handleChangePartnerAccount}>
+                                                        </lightning-combobox>
+                                                        <template if:true={ispartnerAccreq}>
+                                                            <span class="requiredField">{label.Core_IPS_Required}</span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </lightning-accordion-section>
+                                    <lightning-accordion-section name="C" label="Product/Project Info">
+                                        <div class="slds-grid slds-wrap editclassalign">
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <p class="subHeadlinecopy">Project</p>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                <template if:true={ProjectData}>
+                                                    {projectName}
+                                                </template>
+            <template if:false={ProjectData}>
+                                                    {ProjNotapplicable}
+                                                </template>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap marginalign copyclassalign">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+            <p class="subHeadlinecopy">Product Name: </p>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+            {ProductName}
+        </div>
+    </div>
+    <template if:true={showProductVarinat}>
+                                            <div class="slds-grid slds-wrap" style="margin-top: -1.5rem;">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+                                                    style="padding-top: 1rem;">
+                                                    <p class="subHeadlinecopy">Product Variant
+                                                        <span style="font-size:12px; font-weight:500;">(Optional)</span>
+                                                    </p>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    <span style="width: 100%;">
+                                                        <div
+                                                            class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                                            <div class="slds-size_12-of-12">
+
+                                                                <lightning-combobox name="progress"
+                                                                    value={productvariantName}
+                                                                    options={caseProductVariantOptions}
+                                                                    placeholder={productvariantName}
+                                                                    onchange={handleChangeProductVariant}
+                                                                    class="inputs">
+                                                                </lightning-combobox>
+
+                                                            </div>
+                                                            <div class="slds-size_2-of-12"></div>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </template>
+    <template if:true={showCategory}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <p class="subHeadline">Case
+                                                        Category</p>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    <!-- {CategoryName} -->
+                                                    <span>
+
+                                                        <lightning-combobox class="inputs" name="caseCategory"
+                                                            value={caseIssueCategoryId} options={CaseCategoryoptions}
+                                                            onchange={handleChangeCategory} 
+                                                            variant='label-hidden'>
+                                                        </lightning-combobox>
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </template>
+    <template if:true={showSubCategory}>
+                                            <div class="slds-grid slds-wrap editclassalign">
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                                    <p class="subHeadline">Case
+                                                        Subcategory</p>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                                    <span>
+                                                        <div class="cpysubCatInput inputs">
+                                                            <lightning-combobox  name="caseSubcategory"
+                                                                value={caseIssueSubCategoryId} data-id="subCategory"
+                                                                options={CaseSubcategoryoptions}
+                                                                onchange={handleChangeRenderSubCategoryedq} 
+                                                                variant='label-hidden'>
+                                                            </lightning-combobox>
+                                                            <template if:true={isRequiredSubCatcpy}>
+                                                                <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                                            </template>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </template>
+</lightning-accordion-section>
+<lightning-accordion-section name="D" label=" Environmental Details">
+    <!-- Environmental Details start-->
+
+    <template if:true={showProdEdqs}>
+                                            <c-dynamic-form-builder iscommunity={communityCheck} fields={prodEdqRecs}
+                                                data-id="prodEDQ" execution-mode="copy" case-id={recordId}
+                                                supported-product-id={passSupportedProductID}>
+                                            </c-dynamic-form-builder>
+                                        </template>
+    <template if:true={showSubCatEdqs}>
+
+                                            <c-dynamic-form-builder iscommunity={communityCheck} fields={subCatRecEdqs}
+                                                data-id="subCatEDQ" execution-mode="copy" case-id={recordId}
+                                                supported-product-id={passSupportedProductID}>
+                                            </c-dynamic-form-builder>
+                                        </template>
+
+    <!-- Environmental Details End-->
+</lightning-accordion-section>
+</lightning-accordion>
+
+                                <div class="slds-align_absolute-center slds-m-around_medium editbuttonal">
+                                    <input onclick={saveHandler} type="button"
+                                        class="newCommentBtn newCommentBtnforsave" value="Save Changes"></input>
+                                    <input onclick={gobackToCase} type="button" class="caseEditBtncancel"
+                                        value="Cancel"></input>
+                                </div>
+                                &nbsp;
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+<template if:true={isExportButtonClicked}>
+                    <!-- This Modal will only be visible if showModal is set to true -->
+                    <template if:true={isExportButtonClicked}>
+                        <section aria-modal="true" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container slds-scrollable">
+                                <header class="slds-modal__header">
+                                    <h2 class="slds-text-heading_small">Case Details</h2>
+                                    <lightning-icon class="slds-modal__close" variant="inverse"
+                                        icon-name="utility:close" size="small" onclick={closeModal}></lightning-icon>
+                                </header>
+                                <div class="slds-modal__content">
+                                    <div class="slds-p-around_large">
+                                        <template if:true={applicationPageUrl}>
+                                            <lightning-layout-item flexibility="auto" size="12" padding="around-large">
+                                                <iframe height="700px" width="97%" src={applicationPageUrl}></iframe>
+                                            </lightning-layout-item>
+                                        </template>
+</div>
+</div>
+<footer class="slds-modal__footer">
+    <lightning-button variant="brand" label="Cancel" onclick={closeModal} class="slds-p-around_x-small"></lightning-button>
+</footer>
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+</template>
+<template if:true={isPrintButtonClicked}>
+                    <template if:true={applicationPageUrl}>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button variant="brand" label="Cancel" onclick={closeModal}
+                                class="slds-p-around_x-small">
+                            </lightning-button>
+                        </div>
+                        <lightning-layout-item flexibility="auto" size="12" padding="around-large">
+                            <iframe height="700px" width="97%" src={applicationPageUrl}></iframe>
+                        </lightning-layout-item>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button variant="brand" label="Cancel" onclick={closeModal}
+                                class="slds-p-around_x-small">
+                            </lightning-button>
+                        </div>
+                    </template>
+</template>
+
+</div>
+</template>
+<!-- Close Case Survey -->
+<template if:true={isPartnerORPartnerFAE}>
+            <template if:true={showCloseCaseSurvey}>
+               <div class="slds-p-around_medium surveyalign">
+                    <div class="slds-p-bottom_x-large"><img style="width: 100%;" src={ips_Survey_Logo}></div>
+                <div class="slds-p-bottom_medium" style="text-align: center;">{surveyMessage}</div>
+                    <p style="text-align:center;font-weight:bold;text-decoration:underline;font-size:25px;">
+                        <lightning-formatted-url value={showCloseCaseSurveyValue} label="Start Survey" target="_blank">
+                        </lightning-formatted-url>
+                    </p>
+                    
+                </div>
+            </template>
+<c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+
+</template>
+</template>
+<template if:false={hasAccess}>
+
+        <div class="privilegeMsg">
+            <p>Insufficient Privileges</p>
+        </div><br />
+
+        <div class="accessMsg">
+            <p>
+                {label.Core_IPS_Permission_Message}
+            </p>
+        </div><br />
+
+        <div align="center">
+            <lightning-button label="Go Back" onclick={handlePrevilageCancel} class="slds-m-left_x-small">
+            </lightning-button>
+        </div><br /><br />
+
+    </template>
+<template if:true={isSpinner}>
+        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+    </template>
+
+
+</template>

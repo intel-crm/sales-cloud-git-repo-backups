@@ -1,0 +1,168 @@
+.THIS .progressbar .slds-icon_container {
+    display: block; /* BUG ID-4316-10/30 Merge Changes */
+} 
+
+.THIS li .slds-icon {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.THIS .lockNotification {
+    color: t(redLock);
+}
+.THIS .lockNotification .slds-icon {
+    fill: t(redLock);
+}
+.THIS li.lock .slds-icon {
+    fill: t(redLock);
+    width: 16px;
+    height: 19px;
+    top: -3px;
+}
+.THIS li.checked .slds-icon {
+    background-color: t(progressBarBlue);
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    padding: 2px;
+    top: -3px;
+    fill: t(white);
+}
+
+.THIS.slds-progress-wrapper {
+    padding: 50px 0 50px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.THIS .progressbar {
+    display: flex;
+    padding-top: 50px;
+}
+
+.THIS .progressbar li {
+    list-style-type: none;
+    flex: 1 0 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0px;
+    position: relative;
+    text-align: center;
+}
+.THIS .progressbar li.active p {
+    padding-top: 0;
+}
+.THIS .progressbar li p {
+    color: t(darkGray);
+    padding: 5px 30px;
+}
+.THIS .progressbar li.lock::before,
+.THIS .progressbar li.checked::before {
+    border: 3px solid transparent;
+}
+
+.THIS .progressbar li:before {
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border: 3px solid t(lightGray);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: transparent;
+    content: ' \25CF';
+    font-size: 0px;
+}
+.THIS .progressbar li:after {
+    width: 80%;
+    height: 4px;
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -40%;
+    background-color: t(lightGray);
+}
+.THIS .progressbar li.checked:after,
+.THIS .progressbar li.checked + li:after {
+    background-color: t(progressBarBlue);
+}
+.THIS .progressbar li:first-child:after {
+    content: none;
+}
+.THIS .progressbar li.active:before {
+    background-color: t(white);
+    border: 5px solid t(progressBarBlue);
+    margin-top: -5px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.THIS.slds-progress_vertical .slds-progress__item_content {
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.THIS.storefront-submit-disclaimer {
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+
+    .THIS .slds-progress__item.slds-is-active .slds-progress__marker {
+        box-shadow: none;
+        background: t(white);
+        border: 5px solid t(progressBarBlue);
+        margin-left: -5px;
+    }
+
+    .THIS .slds-progress__item .slds-progress__marker {
+        border-color: t(lightGray);
+        background: t(lightestGray);
+    }
+
+    .THIS .slds-progress__item.checked .slds-progress__marker {
+        margin-top: 5px;
+    }
+    .THIS .slds-progress__item.checked::after {
+        background-color: t(progressBarBlue);
+    }
+    .THIS .slds-progress__item.checked + .slds-progress__item::before {
+        background-color: t(progressBarBlue);
+    }
+    .THIS .slds-progress__item.checked .slds-progress__marker .slds-icon {
+        background: t(progressBarBlue);
+        border-radius: 50%;
+        fill: t(redLock);
+        padding: 2px;
+        width: calc(1rem - 2px);
+        height: calc(1rem - 2px);
+    }
+    .THIS .slds-progress__item.checked .slds-progress__marker .slds-icon {
+        fill: t(white);
+    }
+    .THIS .slds-progress__item.lock .slds-progress__marker .slds-icon {
+        fill: t(redLock);
+    }
+
+    .THIS .slds-progress__item.lock .slds-progress__marker,
+    .THIS .slds-progress__item.checked .slds-progress__marker {
+        border-color: transparent;
+        background: transparent;
+        height: auto;
+    }
+
+    .THIS.slds-progress_vertical .slds-progress__item.slds-is-active:before {
+        background-color: t(progressBarBlue);
+    }
+
+    .THIS.slds-progress_vertical .slds-progress__item:before {
+        bottom: 80%;
+    }
+    .THIS.slds-progress_vertical .slds-progress__item:after {
+        top: 80%;
+    }
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Custom setting to store Program, Region, Role, Group mapping</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_txt__c</fullName>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Group_Name_txt__c</fullName>
+        <label>Group Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Budget_Type_Applicable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To determine what all roles are budget type enabled</description>
+        <label>Is Budget Type Applicable</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_For_IUPGM_Monitor_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is For IUPGM Monitor</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Primary_Role__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To check if role is Primary or Secondary</description>
+        <label>Is Primary Role</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Program</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Role_txt__c</fullName>
+        <label>Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>CCP ProgramGeoRoleGroupMap</label>
+    <visibility>Public</visibility>
+</CustomObject>

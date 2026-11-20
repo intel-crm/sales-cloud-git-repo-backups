@@ -1,0 +1,97 @@
+<aura:documentation>
+	<aura:description>
+    <p>Create Offering Form CHECKBOX Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 6/4/2019</p>
+    <p>CurrentVersion: 2.1</p>
+<pre>Outline for future performance gain on Search:
+- set up checkboxes initially
+- assign each checkbox unique ID
+- update UI manually using document.querySelector()
+- make sure data-binding value stays in sync with UI
+</pre>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>See attribute descriptions for more details.</p>
+    <p>Child inputs can also be of subType <code>text</code> and <code>radio</code>.</p>
+    <p>Specifications example:</p>
+    <ul>
+      <li>interactionType: <code>parent</code></li>
+      <li>valueType: <code>complex</code></li>
+      <li>accordionType: <code>search</code></li>
+    </ul>
+    <p>Example options:</p>
+<pre>[
+  {
+    label: 'Option 1 ®',
+    value: 'opt1',
+    additionalValues: {
+      relatedId: 'related info'
+    },
+    children: [
+      {
+        label: 'Child Option 1 ®',
+        value: 'chopt1',
+        children: [
+          {
+            label: 'Child Option 1A ®',
+            value: 'chopt1A'
+          },
+          {
+            label: 'Child Option 2A ®',
+            value: 'chopt2A',
+            children: [
+              {
+                label: 'Child Radio Options',
+                value: 'radioIdX897',
+                subType: 'radio',
+                radioOptions: [
+                  {
+                    label: 'One',
+                    value: 'one'
+                  },
+                  {
+                    label: 'Two',
+                    value: 'two'
+                  },
+                  {
+                    label: 'Three',
+                    value: 'three'
+                  }
+                ]
+              },
+              {
+                label: 'Child Option 4',
+                value: 'textIdX298',
+                subType: 'text',
+                textValue: '',
+                additionalValues: {
+                  relatedId: 'XX2323'
+                }
+              },
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Child Option 2',
+        value: 'chopt2'
+      }
+    ]
+  },
+  {
+    label: 'Option 2',
+    value: 'opt2'
+  }
+]</pre>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <p>1.1 - added escape to regex special characters</p>
+    <p>2.0 - 5/23 delivery w/ subtypes "text", "radio"</p>
+    <p>2.1 - bug fixes</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

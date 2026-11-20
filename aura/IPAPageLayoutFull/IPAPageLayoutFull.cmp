@@ -1,0 +1,94 @@
+<aura:component implements="forceCommunity:layout" description="Marketplace 2.0 Page Layout" access="global">
+
+    <aura:attribute name="bannerBlade" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade0" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade5" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade6" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade7" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade8" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade9" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade10" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="compareTray" type="Aura.Component[]" required="false"></aura:attribute>
+
+    <div>
+      <div class="bannerBlade">
+          {!v.bannerBlade}
+      </div>
+
+      <div class="marquee">
+        {!v.marquee}
+      </div>
+
+      <div class="blade3">
+        <div class="container">
+            {!v.blade0}
+        </div>
+      </div>
+      
+      <div class="blade1">
+        <div class="container">
+            {!v.blade1}
+        </div>
+      </div>
+
+      <div class="blade3">
+        <div class="container">
+            {!v.blade8}
+        </div>
+      </div>
+
+      <div class="blade1">
+        <div class="container">
+            {!v.blade9}
+        </div>
+      </div>
+
+      <div class="blade2">
+        <div class="container">
+            {!v.blade2}
+        </div>
+      </div>
+
+      <div class="blade7">
+        <div class="container">
+          {!v.blade7}
+        </div>
+      </div>
+
+      <div class="blade3">
+        <div class="container">
+            {!v.blade3}
+        </div>
+      </div>
+
+      <div class="blade4">
+        {!v.blade4}
+      </div>
+
+      <div class="compareTray">
+          {!v.compareTray}
+      </div>
+        
+      <div class="blade1">
+        <div class="container">
+            {!v.blade5}
+        </div>
+      </div>
+
+      <div class="blade3">
+        <div class="container">
+            {!v.blade6}
+        </div>
+      </div>
+
+      <div>
+        {!v.blade10}
+      </div>
+        
+    </div>
+</aura:component>

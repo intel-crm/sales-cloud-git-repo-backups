@@ -1,0 +1,115 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component access="global"></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif , Intel Clear;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            } -->
+            
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+            
+        <!-- </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Solution Successfully Submitted"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        <br/>{!solutionData.owner.firstName},<br/><br/>
+                        Thank you for submitting your solution, {!solutionData.PSS_Proposal_Name_Txt__c}, to Intel® Partner Alliance. Our team will review your submission and send you a response.<br/><br/>
+                        If you have submitted your solution in Simplified Chinese, Intel will translate your submission into English to go through our internal review. If we need more information from you, we will contact you. All correspondence and updates will need to be in English.<br/><br/>
+                        Someone submitting a solution to Intel can share the solution with others in their organization.  Those copied on this email have the ability to view and edit the solution.<br/><br/> 
+                        Thanks again,<br/><br/>
+                        Your Intel® Partner Alliance team <br/> <br/>
+                    </td>
+                </tr> -->
+                
+                <!-- Email Body -->
+                
+                <!-- Next Best Step -->
+                <!-- <tr>    
+                    <td style="padding-left:50px;">
+                        Would you like to submit another solution?<br/>
+                        <apex:outputLink value="{!createSolutionURL}" styleClass="intelBlue">
+                            Submit another solution  
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Next Best Step -->
+                
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at 
+                        <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                            {!$Label.PMP_MailTo}
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

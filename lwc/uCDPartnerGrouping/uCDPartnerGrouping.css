@@ -1,0 +1,70 @@
+.opidCreation{
+	color : black;
+    font-size: 16px;
+    font-weight: bold;
+	padding:40px;
+}
+
+.opidCreationButton{
+	float:right;
+}
+
+.opidParentClass {
+	height: 450px;
+}
+
+.opidAccounts {
+	padding:40px;
+}
+
+.opidAccountsTable {
+	border-right: 1px solid rgb(201, 201, 201);
+	border-left: 1px solid rgb(201, 201, 201);
+}
+
+.opidAccountsTable thead {
+	background-color: rgb(1, 118, 211);
+    color: white;
+    height: 25px;
+}
+
+.opidAccountsTable th {
+	border: 1px solid rgb(201, 201, 201);
+	text-align: center;
+}
+
+.opidAccountsTable td {
+	border: 1px solid rgb(201, 201, 201);
+	text-align: center;
+}
+
+.buttonClass {
+	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	font-size: 16px;
+    font-weight: bold;
+}
+
+.submitButton {
+	margin-right: 10px;
+}
+
+.opidNameClass {
+	color : black;
+    font-size: 16px;
+    font-weight: bold;
+	margin-top: 20px ;
+}
+.errorMessageClass{
+	color :rgb(186, 5, 23);
+    font-size: 12px;
+	font-weight: bold;
+}
+.picklistValueErrorMessage{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}

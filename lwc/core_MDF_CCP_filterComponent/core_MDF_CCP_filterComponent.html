@@ -1,0 +1,83 @@
+<template>
+    <lightning-card>
+     <!-- <div class="slds-page-header">
+       <lightning-layout horizontal-align="center">
+            <h1 class="slds-text-heading--label"><b>CCP filter component</b></h1>
+        </lightning-layout>
+        </div>-->  
+        <lightning-layout-item  size = "12">
+            <lightning-combobox  label="Field" name="fieldname" style="margin-top:2%" placeholder="" value={value} onchange={handlefields}  options={options}  required  dropdown-alignment="auto"></lightning-combobox> 
+           <template if:false={booleanFlag}>
+            <lightning-combobox  value={valueOperator} label="Operator" name="fieldoperator" style="margin-top:2%" placeholder="" onchange={handleoperator}  options={operationList}  required  dropdown-alignment="auto"></lightning-combobox> 
+           </template>
+            <template if:true={booleanFlag}>
+            <lightning-combobox  value={valueOperatorBoolean} label="Operator" name="fieldoperatorBoolean" style="margin-top:2%" placeholder="" onchange={handleoperatorBoolean}  options={operationBooleanList}  required  dropdown-alignment="auto"></lightning-combobox> 
+            </template>
+            <template if:true={textboxVisible}>
+            <lightning-input type="text" label="Value" value={valueText}  required="true" onchange={handlevalue} style="margin-top:2%"  placeholder="" ></lightning-input>
+            </template>
+            <template if:true={dateTimeVisible}>
+            <lightning-input type="datetime" value={dateTimeValue} name="datetime" label="Required Date Time field" required  onchange={handleDateValue} ></lightning-input>
+           </template>
+            <template if:true={dateVisible}>
+            <lightning-input type="date" value={dateValue} name="date" label="Enter a date" onchange={handleDate}></lightning-input>
+            </template>
+            <template if:true={radioVisible}>
+            <lightning-radio-group name="radioGroup" label="Select the options" options={optionsRadio} value={booleanValue} required type="radio" onchange={handleRadio}></lightning-radio-group>
+             </template>
+            <template if:true={comboboxVisible}>
+            <lightning-combobox   label="value" name="valueCombo" placeholder="" value={pickListValue} onchange={handleCombo}  options={pickList}  required  dropdown-alignment="auto" ></lightning-combobox> 
+            </template>
+            </lightning-layout-item>
+            <lightning-layout>
+            <lightning-layout-item  size = "4">
+            <lightning-button  name="cancel" label="Cancel" onclick={handleCancel} style="margin-top:4%" class="slds-float_left"> </lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item  size = "3">
+            <lightning-button  name="add" label="Add" onclick={handleAdd} style="margin-top:4%" class="slds-float_right"> </lightning-button>                
+            </lightning-layout-item>
+            <lightning-layout-item  size = "1">
+            </lightning-layout-item>
+            <lightning-layout-item  size = "4">
+            </lightning-layout-item>
+            </lightning-layout>
+           
+           
+           <template if:true={pillFlag}>
+
+          <!-- <template for:each={filter} for:item="serecord">
+                <span key={serecord.recId}>
+                <lightning-pill label={serecord}  onremove={handleRemove}>
+                        <lightning-icon icon-name="standard:account"  ></lightning-icon>
+                    </lightning-pill>
+                </span>
+            </template>--> 
+
+            <template for:each={labelItems} for:item="pillItem" for:index="index">               
+                <lightning-pill label={pillItem.label} onremove={handleRemove} 
+                    key={pillItem.label} name={index}>
+                </lightning-pill>
+            </template>
+           </template>
+          <lightning-textarea label="Filter Condition" req value={filterOutput} onchange={ontextArea}></lightning-textarea>
+          <template if:true={errorFlag}>
+              {errorFilter}
+          </template>
+          <!-- <lightning-combobox   label="Select the operator" name="radioFilter" placeholder="" value={booleanOpearator} onchange={handleOperatorType}  options={operatorType}  dropdown-alignment="auto" ></lightning-combobox> -->
+         
+            <lightning-layout>
+                <lightning-layout-item size = "3">
+
+                </lightning-layout-item>
+                <lightning-layout-item  size = "4">
+           <lightning-button  name="apply" label="Apply" onclick={handleApply} style="margin-top:4%" class="slds-float_right"> </lightning-button>
+           </lightning-layout-item>
+           </lightning-layout>   
+
+          <!-- <template if:true={applyFlag}>
+            <div>
+            Please click on Apply button to apply the filter condition before searching the records 
+           </div>
+        </template>-->
+    </lightning-card>
+</template>

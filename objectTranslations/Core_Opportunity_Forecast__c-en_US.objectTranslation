@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Forecast</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Forecasts</value>
+    </caseValues>
+    <fields>
+        <help><!-- Days remain to complete first week of Quarter --></help>
+        <label><!-- Days Remains --></label>
+        <name>Core_Days_Remains__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Amount --></label>
+        <name>Core_Forecast_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Quarter --></label>
+        <name>Core_Forecast_Quarter__c</name>
+        <picklistValues>
+            <masterLabel>Q1 2024</masterLabel>
+            <translation><!-- Q1 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2025</masterLabel>
+            <translation><!-- Q1 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2024</masterLabel>
+            <translation><!-- Q2 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2025</masterLabel>
+            <translation><!-- Q2 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2024</masterLabel>
+            <translation><!-- Q3 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2024</masterLabel>
+            <translation><!-- Q4 2024 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Forecast --></label>
+        <name>Core_Forecast__c</name>
+        <picklistValues>
+            <masterLabel>Best Case</masterLabel>
+            <translation><!-- Best Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancel</masterLabel>
+            <translation><!-- Cancel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commit</masterLabel>
+            <translation><!-- Commit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Certainty</masterLabel>
+            <translation><!-- Low Certainty --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity Forecasts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quarter End Date --></label>
+        <name>Core_Quarter_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter First Weekend Date --></label>
+        <name>Core_Quarter_First_Weekend_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter Start Date --></label>
+        <name>Core_Quarter_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Read Only --></label>
+        <name>Core_Read_Only__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- New --></label>
+        <name>Core_OppForecastNew</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- ReadOnly --></label>
+        <name>Core_ReadOnly</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cancelled Forecast records cannot be created. --></errorMessage>
+        <name>Core_Opp_Prevent_Cancelled_Forecast_Recs</name>
+    </validationRules>
+</CustomObjectTranslation>

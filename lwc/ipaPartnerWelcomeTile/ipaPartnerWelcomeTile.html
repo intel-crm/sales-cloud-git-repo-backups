@@ -1,0 +1,16 @@
+<template>
+    <div class={classes.containerClass}>
+        <div class="icon">
+            <template if:true={ifs.stepCompleted}>
+                <lightning-icon icon-name="utility:success"></lightning-icon>
+            </template>
+            <template if:false={ifs.stepCompleted}>
+                <span class="current"></span>
+            </template>
+        </div>
+        <div class="content">
+            <h2 class="color-white text-root-size">{title}</h2>
+            <p class="color-white">{description}</p>
+        </div>
+    </div>
+</template>

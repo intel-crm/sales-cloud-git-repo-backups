@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Lot de demandes</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Lots de demandes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Claim Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>État du lot de demande</label>
+        <name>Core_MDF_ClaimBatch_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation>En panne</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>Documents en instance</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>Soumis</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation>Réussite</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>État du lot de demande</label>
+        <name>Core_MDF_Claim_Batch_Status_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de demandes (envoyées)</label>
+        <name>Core_MDF_Claim_Count_InProgress_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de réclamations en attente</label>
+        <name>Core_MDF_Claim_Count_Pending_Document__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de demandes (rejetées)</label>
+        <name>Core_MDF_Claim_Fail_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de demandes (acceptées)</label>
+        <name>Core_MDF_Claim_Pass_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de demandes (total)</label>
+        <name>Core_MDF_Claim_Total_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>Créé par</label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Dernière modification par</label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Propriétaire</label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Programme</label>
+        <name>Core_MDF_Program_Id__c</name>
+        <relationshipLabel><!-- Claim Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>Core_MDF_Send_Email__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nom du lot de demande</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

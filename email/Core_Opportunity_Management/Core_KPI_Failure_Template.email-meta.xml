@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This mail is sent to the user when the record failed to process for the third time</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>KPI Failure Template</name>
+    <style>none</style>
+    <subject>KPI Failure Notification</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

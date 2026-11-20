@@ -1,0 +1,12 @@
+<aura:component
+    controller="PMP_SearchMarketplaceController"
+    extensible="true"
+    abstract="true">
+
+  <aura:attribute name="storeName" type="string" required="true" description="The name of the store for the reducer. Must be unique."/>
+  <aura:attribute name="cache" type="boolean" default="false" description="Enable LocalStorage caching for this store."/>
+
+  <aura:method name="getReducer" action="{!c.getReducer}" description="This function is overridden in reducer subcomponents. It is required."/>
+  <aura:method name="getCacheFormatter" action="{!c.getCacheFormatter}" description="This function can be overridden in reducer subcomponent to specify what part of the state (if any) gets cached to LocalStorage. It is optional. (By default nothing is cached.)"/>
+
+</aura:component>

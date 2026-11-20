@@ -1,0 +1,69 @@
+.THIS .slds-icon {
+  color: t(black);
+  height: 0.7rem;
+  width: 0.7rem;
+}
+
+.THIS .title {
+  color: t(darkGray);
+  font-size: 1.250em;
+  display: block;
+}
+.THIS .count {
+  border: 1px solid t(lightGray);
+  border-radius: 2.6px;
+  padding: 0 3px;
+  position: absolute;
+  top: 3px;
+  right: 0;
+  font-size: 0.750em;
+  color: t(gray);
+}
+
+
+.THIS .cursor {
+  cursor: pointer;
+}
+.THIS .toggle {
+  display: block;
+  position: relative;
+  margin: 3px;
+  padding-left: 25px;
+}
+.THIS .hasCount.toggle {
+  padding-right: 30px;
+}
+
+.THIS .iconWrap {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.THIS .clearLink.inactive {
+  cursor: default;
+  /* color: t(gray); */
+}
+
+@media (max-width: 767px) {
+    .THIS {
+      /* border-bottom: 2px solid t(darkGray); */
+      color: white;
+    }
+    .THIS .slds-icon {
+      color: white;
+    }
+    .THIS .title {
+      color: white;
+    }
+}
+
+
+@media (min-width: 1280px) {
+    .THIS {
+      background-color: t(white);
+    }
+
+
+}

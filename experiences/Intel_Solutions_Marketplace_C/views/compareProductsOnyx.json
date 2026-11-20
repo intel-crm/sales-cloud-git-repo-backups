@@ -1,0 +1,152 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "834bd8c1-2620-4035-a34e-c916e355b21b",
+  "label" : "CompareProducts Onyx",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"CompareOfferings\",\"title\":\"Compare Offerings\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Compare Offerings"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "53138b89-a388-47bf-9cb1-12f0503910e1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "077e2f73-125e-4ae9-9d93-df8cd1be2b95",
+        "zh_cn" : "c9b3dd35-9b09-46ef-98d4-08c31b3b62d1"
+      },
+      "renditions" : [ {
+        "id" : "c9b3dd35-9b09-46ef-98d4-08c31b3b62d1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "ctaCommPage" : "",
+            "ctaExternalUrl" : "",
+            "ctaLabel" : "",
+            "title" : "比较产品"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "077e2f73-125e-4ae9-9d93-df8cd1be2b95",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "ctaLabel" : "",
+            "title" : "オファリングを比較する"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "b15c2ed9-6b87-442b-bca8-ac0e7763173f",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceCompareProducts",
+      "id" : "468ee890-aad9-4c40-a305-7d2cf2658501",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d045619d-34e6-48dd-adab-dd239bd90967",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "7388bbf2-da77-48e9-81fc-fe2978bb0ac0",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "dc8a0d10-8935-476c-8b7a-e776b7724f30",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "6d65336a-b842-4474-bdc4-19d3e062a684",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a5f6aa81-593c-47ad-9356-f65355ece1b0",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "89354f97-b76f-4603-acf9-90dbdab7c74d",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Compare Offerings\"/> \n<meta name=\"keywords\" content=\"sf,mp,compare offerings\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"CompareOfferings\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Compare products on Intel® Solutions Marketplace and discover top industry leading innovation.",
+        "title" : "Compare Offerings - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "5f11f35a-711f-4703-a9a8-190794b866a4",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "26d916f0-8cfc-405f-bf94-f61143599882",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "ec26af14-bd2b-4502-95be-4f710810596e",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "23a04e75-ba43-44f2-92dc-20b43e4f7f59",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "8f7c6917-8828-461a-bd9d-160563b3e522",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "034d555b-a049-49b0-b307-836e8a9c2245",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "dfc59327-a0c1-42f5-bc30-d1e1765e3678",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "$Label.c.PMP_All_Marketplace_Help",
+        "faqTitle" : "Offerings",
+        "headingLabel" : "$Label.c.PMP_MP_FAQ_Heading",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "c3362b11-6b50-4cd3-8474-19a4d0515064",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "685fdf79-d3a9-471d-b237-2eb6b716ff4e",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "256faca8-c271-4296-bcdc-513f2decec30",
+    "regionName" : "blade1white",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-compareproducts"
+}

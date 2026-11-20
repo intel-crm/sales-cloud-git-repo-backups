@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_KOR</name>
+    <style>none</style>
+    <subject>인텔® 파트너 얼라이언스 골드 오신 것을 환영합니다</subject>
+    <textOnly>인텔® 파트너 얼라이언스 Gold
+
+
+
+{!Contact.FirstName},
+
+당사는 몇 가지 흥미로운 변화를 통해 인텔® 파트너 얼라이언스 프로그램 기준을 수정했으며 비즈니스 요구 사항을 지원하는 혜택을 강화했습니다. 그 결과, 귀사는 인텔® 파트너 얼라이언스 Gold로 업그레이드되었습니다. 축하합니다!
+
+다음은 Gold 등급 회원이 받게 되는 점진적인 혜택입니다.
+
+Gold 배지
+고급 보증 대체(AWR)
+더 많은 포인트 적립 및 사용 기회
+솔루션 마켓플레이스 상점에 대한 액세스 및 포스팅
+개발자 존 액세스 - 프리미어 및 보안 문서(요청 시)
+
+
+새로운 인텔® 파트너 유니버시티의 다양하고 흥미로운 경험은 다음과 같습니다.
+
+디지털 경험을 위한 완전한 업그레이드
+맞춤형 교육 경로
+업계 관계자들이 가장 높게 평가한 콘텐츠를 찾고 소비하는 데 도움이 되는 새로운 콘텐츠 등급 시스템 도입
+
+
+또한, 파트너들에게 인텔의 시장 규모 조정 및 예측 팀의 데이터 과학자가 제공하는 선별된 업계 동향 및 인사이트를 제공하고 있습니다.
+
+새롭고 향상된 인텔® 솔루션 마켓플레이스 사용자 경험을 기대하십시오.
+
+새로운 디자인과 더 쉬워진 사이트 탐색
+파트너 간의 연결 및 리드 생성을 위한 개선된 경험
+전반적인 검색 기능 개선
+
+
+인텔® 파트너 얼라이언스는 오늘날 환경에서 여러분의 비즈니스가 번창할 수 있도록 더욱 훌륭한 가치, 솔루션, 혜택을 제공하기 위해 끊임없이 노력하고 있습니다. 비즈니스 발전에 도움이 되는 인텔® 파트너 얼라이언스의 제공 내용을 자세히 알아보십시오.
+
+
+지금 바로 시작
+
+
+
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보 취급방침 &amp;verbar; 쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

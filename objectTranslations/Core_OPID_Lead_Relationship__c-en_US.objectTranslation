@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>OPID Lead Relationship</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>OPID Lead Relationships</value>
+    </caseValues>
+    <fields>
+        <label><!-- Lead Name --></label>
+        <lookupFilter>
+            <errorMessage><!-- Lead record type should be Partner Lead --></errorMessage>
+        </lookupFilter>
+        <name>Core_Lead_Name__c</name>
+        <relationshipLabel><!-- OPID Lead Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- OPID Name --></label>
+        <name>Core_OPID_Name__c</name>
+        <relationshipLabel><!-- OPID Lead Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Public Group Ids --></label>
+        <name>Core_Public_Group_Ids__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

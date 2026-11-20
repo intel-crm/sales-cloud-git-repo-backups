@@ -1,0 +1,23 @@
+<messaging:emailTemplate subject="Action Required: Missing Approver Roles Configuration"
+                         recipientType="User" 
+                         relatedToType="Core_MDF_Record_Tracking__c">
+<messaging:htmlEmailBody >
+
+<html>
+<body>
+</body>
+<p>Dear Intel employee,</p>
+
+<p>Please <strong><a href="{!$Label.Core_MDF_PFRDetailLink}{!relatedTo.Id}">{!$Label.Core_MDF_Click_here}</a></strong>, We have identified that approver roles are not configured for the following key objects in the system:</p>
+<p><strong>Budget,Campaign,PartnerFundRequest</strong></p>
+
+<p>Please review and configure the appropriate approver roles to ensure proper workflow functionality.</p>
+
+<p>Note: This is a system generated email.</p>
+
+<div>Thank you,</div>
+<div>Intel® Partner Investment Center</div>
+
+</html>    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>APIGEE Credentials For Sales</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>APIGEE Credentials For Sales</value>
+    </caseValues>
+    <fields>
+        <label><!-- Class name --></label>
+        <name>Core_Class_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Id --></label>
+        <name>Core_Client_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Secret --></label>
+        <name>Core_Client_Secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- EndPoint Url --></label>
+        <name>Core_EndPoint_Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grant Type --></label>
+        <name>Core_Grant_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Token EndPoint URL --></label>
+        <name>Core_Token_EndPoint_URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

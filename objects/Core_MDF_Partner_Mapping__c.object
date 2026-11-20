@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_ActPartner_Ultimate_Acc_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(Core_MDF_Activating_Partner_Account_id__r.Core_MDF_CoMarketing_Ultimate_Account__c)</formula>
+        <label>Activating Partner Ultimate Account</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activating_Partner_Account_id__c</fullName>
+        <label>Activating Partner Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Core_MDF_Channel_Program__r.Name</field>
+                <operation>equals</operation>
+                <value>Ecosystem Extension Fund</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Core_MDF_Co_Marketing</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketingActive__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Active_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Primary to Activating Partners Map (Activating Partner Account)</relationshipLabel>
+        <relationshipName>Primary_to_Activating_Partners_Map1</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Channel Program</label>
+        <referenceTo>ChannelProgram</referenceTo>
+        <relationshipLabel>Primary to Activating Partners Map</relationshipLabel>
+        <relationshipName>Primary_to_Activating_Partners_Map</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_End_Date__c</fullName>
+        <description>End Date up to which Primary to Activating Partner Map is effective.</description>
+        <inlineHelpText>End Date up to which Primary to Activating Partner Map is effective.</inlineHelpText>
+        <label>Effective End Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_Start_Date__c</fullName>
+        <description>Start Date from which Primary to Activating Partner Map is effective.</description>
+        <inlineHelpText>Start Date from which Primary to Activating Partner Map is effective.</inlineHelpText>
+        <label>Effective Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PrimPartner_Ultimate_Acc_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(Core_MDF_Primary_Partner_Account_id__r.Core_MDF_CoMarketing_Ultimate_Account__c)</formula>
+        <label>Primary Partner Ultimate Account</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Primary_Partner_Account_id__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Primary Partner Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Core_MDF_Channel_Program__r.Name</field>
+                <operation>equals</operation>
+                <value>Ecosystem Extension Fund</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Core_MDF_Co_Marketing</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketingActive__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Active_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Primary to Activating Partners Map</relationshipLabel>
+        <relationshipName>Primary_to_Activating_Partners_Map</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Unique_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Core_MDF_Primary_Partner_Account_id__c - Core_MDF_Activating_Partner_Account_id__c.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Combination of Primary Partner Account Id and Activating Partner Account Id</inlineHelpText>
+        <label>Unique ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Primary to Activating Partner Map</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>Core_MDF_Primary_Partner_Account_id__c</columns>
+        <columns>Core_MDF_Activating_Partner_Account_id__c</columns>
+        <columns>Core_MDF_Effective_Start_Date__c</columns>
+        <columns>Core_MDF_Effective_End_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PAMAP-{00000000}</displayFormat>
+        <label>Primary to Activating Partner Map Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Primary to Activating Partners Map</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Check_Partner_Type_for_Partner_Accounts</fullName>
+        <active>true</active>
+        <description>One or both of the accounts selected have an incorrect partner type. Select accounts with appropriate partner type.</description>
+        <errorConditionFormula>OR(NOT(INCLUDES( Core_MDF_Primary_Partner_Account_id__r.Core_MDF_Partner_Type_nm__c, &apos;Primary Partner&apos;)) ,
+				NOT(INCLUDES( Core_MDF_Activating_Partner_Account_id__r.Core_MDF_Partner_Type_nm__c, &apos;Activating Partner&apos;)))</errorConditionFormula>
+        <errorMessage>One or both of the accounts selected have an incorrect partner type. Select accounts with appropriate partner type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Channel_Program_Restrict</fullName>
+        <active>true</active>
+        <description>Primary to Activating Partner Map is applicable only for Ecosystem Extension Fund Program</description>
+        <errorConditionFormula>and( NOT(ISBLANK( Core_MDF_Channel_Program__c) ),
+Core_MDF_Channel_Program__r.Name!=&apos;Ecosystem Extension Fund&apos;)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Channel_Program__c</errorDisplayField>
+        <errorMessage>Please select &apos;Ecosystem Extension Fund’. Primary to Activating partner Map is applicable for &apos;Ecosystem Extension Fund&apos; program only.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Check_Unique_Partner_Accounts</fullName>
+        <active>true</active>
+        <description>To check if Primary Partner Account and Activating Partner Account are different.</description>
+        <errorConditionFormula>Core_MDF_Activating_Partner_Account_id__c = Core_MDF_Primary_Partner_Account_id__c</errorConditionFormula>
+        <errorMessage>Primary Partner and Activating Partner cannot be the same.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Effective_Start_End_Date</fullName>
+        <active>true</active>
+        <description>Effective end date should be greater than or equal to the effective start date.</description>
+        <errorConditionFormula>Core_MDF_Effective_Start_Date__c  &gt;  Core_MDF_Effective_End_Date__c</errorConditionFormula>
+        <errorMessage>Effective end date should be greater than or equal to the effective start date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Partner_Acc_Change_Restriction</fullName>
+        <active>true</active>
+        <description>The Partner Account mapping cannot be modified once a Primary and Activating Partner Mapping is created.</description>
+        <errorConditionFormula>AND( Core_MDF_Channel_Program__r.Name  = &apos;Ecosystem Extension Fund&apos; ,
+					!ISNEW(),
+  			OR(ISCHANGED(Core_MDF_Activating_Partner_Account_id__c) ,
+					ISCHANGED(Core_MDF_Primary_Partner_Account_id__c)))</errorConditionFormula>
+        <errorMessage>The Partner Account mapping cannot be modified once a Primary and Activating Partner Mapping is created.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

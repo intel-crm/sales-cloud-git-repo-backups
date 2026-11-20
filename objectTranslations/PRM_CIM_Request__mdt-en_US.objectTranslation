@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM CIM Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM CIM Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Key --></label>
+        <name>API_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- AsynchronousRequestId --></label>
+        <name>PRM_Async_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallingSourceSystem --></label>
+        <name>PRM_Calling_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- IncludeDefaultAttributesForSourceTypes --></label>
+        <name>PRM_Default_Source_Attributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- MaximumNumberOfRecordsToReturn --></label>
+        <name>PRM_Max_Records__c</name>
+    </fields>
+    <fields>
+        <label><!-- MaximumSearchScore --></label>
+        <name>PRM_Max_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- MinimumSearchScore --></label>
+        <name>PRM_Min_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- MandatoryFieldRestrictionLevel --></label>
+        <name>PRM_Restriction_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score Bar --></label>
+        <name>Score_Bar__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

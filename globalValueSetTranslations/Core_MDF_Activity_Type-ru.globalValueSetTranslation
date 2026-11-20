@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Affiliate/ Referral Programs</masterLabel>
+        <translation><!-- Affiliate/ Referral Programs --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner Ad</masterLabel>
+        <translation><!-- Banner Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner/Display Ad</masterLabel>
+        <translation>Баннер/демонстрируемая реклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Benchmarking</masterLabel>
+        <translation>Сравнительный анализ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Benchmarks</masterLabel>
+        <translation>Эталонные тесты</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Billboard/Transit</masterLabel>
+        <translation>Реклама на щитах/транспорте</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Bundle Offer</masterLabel>
+        <translation>Покупатель — комплексное предложение</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Other</masterLabel>
+        <translation>Покупатель — Другое</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Reward/Frequency</masterLabel>
+        <translation>Покупатель — Награда/частота</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Sweepstakes</masterLabel>
+        <translation>Покупатель — Лотерея</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Case Study</masterLabel>
+        <translation>История успеха</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Catalog/Brochure</masterLabel>
+        <translation>Каталог/Брошюра</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Online Display</masterLabel>
+        <translation>Баннерная интернет-реклама (CP)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Owned Event</masterLabel>
+        <translation>Мероприятие (CP)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Participation in Third-Party Event</masterLabel>
+        <translation>Мероприятие другой компании (CP)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Website Online Ad</masterLabel>
+        <translation>Реклама на сайте программы</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cinema</masterLabel>
+        <translation>Реклама в кинотеатрах</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud/Platform Trial</masterLabel>
+        <translation>Испытание облака/платформы</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collateral</masterLabel>
+        <translation>Печатные рекламные материалы</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collateral - Other</masterLabel>
+        <translation>Печатные рекламные материалы — другое</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content</masterLabel>
+        <translation>Содержание:</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content Creation</masterLabel>
+        <translation>Создание контента</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deal Investment</masterLabel>
+        <translation>Инвестиции в сделку</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demo Hardware</masterLabel>
+        <translation>Демонстрационное оборудование</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demo Hardware/Cloud Instance</masterLabel>
+        <translation>Демонстрационное оборудование/экземпляр облака</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Video Screen</masterLabel>
+        <translation>Цифровые видео-табло</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Direct Mail</masterLabel>
+        <translation>Прямая почтовая рассылка</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Display/Video Ad</masterLabel>
+        <translation>Отображаемая/видеореклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EcosystemPartner.com</masterLabel>
+        <translation><!-- EcosystemPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Email</masterLabel>
+        <translation>Электронные рассылки</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Engineering</masterLabel>
+        <translation><!-- Engineering --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Graphic Ad</masterLabel>
+        <translation>Графическое объявление</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In store Point of Sale - IPOS</masterLabel>
+        <translation><!-- In store Point of Sale - IPOS --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Store Promotion</masterLabel>
+        <translation>Специальная акция в магазине</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IndustryPartner.com</masterLabel>
+        <translation><!-- IndustryPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insert/Outsert/Flyer</masterLabel>
+        <translation>Вставка/вкладыш/листовка</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intelligent Point-of-Sale (iPOS)</masterLabel>
+        <translation><!-- Intelligent Point-of-Sale (iPOS) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Joint Engineering/Optimization</masterLabel>
+        <translation>Совместная разработка/Оптимизация</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Joint Event</masterLabel>
+        <translation>Совместное мероприятие</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation>Привлечение потенциальных клиентов</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Nurturing</masterLabel>
+        <translation>Определение круга потенциальных клиентов</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDF Recepient - Owned</masterLabel>
+        <translation><!-- MDF Recepient - Owned --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDF Recipient Demonstrations (External)</masterLabel>
+        <translation><!-- MDF Recipient Demonstrations (External) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Magazine and Newspaper</masterLabel>
+        <translation><!-- Magazine and Newspaper --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Magazine/Newspaper</masterLabel>
+        <translation>Журнал/газета</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Event</masterLabel>
+        <translation>Мероприятие для участников</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Owned Event</masterLabel>
+        <translation>Мероприятие участника</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Participation in Third-Party Event</masterLabel>
+        <translation>Мероприятие другой компании (M)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Website Online Display</masterLabel>
+        <translation>Онлайн-размещение на веб-сайте участника</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member.com</masterLabel>
+        <translation><!-- Member.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Migration</masterLabel>
+        <translation><!-- Migration --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Newsletter</masterLabel>
+        <translation><!-- Newsletter --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NonPartner.com</masterLabel>
+        <translation><!-- NonPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Bundle</masterLabel>
+        <translation>Предложение — Пакет</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Contest</masterLabel>
+        <translation>Предложение — Конкурс</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Other</masterLabel>
+        <translation>Предложение — Другое</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Rewards</masterLabel>
+        <translation>Предложение — награды</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Sweepstakes</masterLabel>
+        <translation>Предложение — Лотерея</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Target</masterLabel>
+        <translation>Предложение — Цель</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Ad - Retargeting Banner Ad</masterLabel>
+        <translation><!-- Online Ad - Retargeting Banner Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Display</masterLabel>
+        <translation>Баннерная интернет-реклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Marketing</masterLabel>
+        <translation><!-- Online Marketing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Video Spot</masterLabel>
+        <translation>Место размещения онлайн-видео</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Audio)</masterLabel>
+        <translation>Другое (аудио)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Broadcast)</masterLabel>
+        <translation>Другое (вещание)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Digital)</masterLabel>
+        <translation>Другое (цифровое)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Event)</masterLabel>
+        <translation>Другое (мероприятие)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (OOH)</masterLabel>
+        <translation>Другое (наружная реклама)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Out Of Home)</masterLabel>
+        <translation>Другое (наружная реклама)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Print)</masterLabel>
+        <translation>Другое (печатная версия)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Production)</masterLabel>
+        <translation>Другое (производство)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Sales Readiness)</masterLabel>
+        <translation>Другое (готовность к продажам)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Tech Exploration)</masterLabel>
+        <translation>Другое (исследование технологии)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Technical Sales)</masterLabel>
+        <translation>Другое (технические продажи)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Video)</masterLabel>
+        <translation>Другое (видео)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out-of-Store Promotion</masterLabel>
+        <translation>Специальная акция за пределами магазина</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Outcome-Based</masterLabel>
+        <translation>На основе результатов</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Personnel</masterLabel>
+        <translation>Персонал</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Podcast</masterLabel>
+        <translation>Подкаст</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Poster/Sign/Banner</masterLabel>
+        <translation>Плакат/знак/баннер</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion</masterLabel>
+        <translation>Рекламная акция</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion - Non-Retail</masterLabel>
+        <translation>Промоакция — Не в розничной торговле</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion - Retail</masterLabel>
+        <translation>Промоакция — Розничная торговля</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Proof of Concept</masterLabel>
+        <translation>Подтверждение концепции</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio</masterLabel>
+        <translation>Реклама на радио</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Ad - out of store</masterLabel>
+        <translation><!-- Radio Ad - out of store --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Contest</masterLabel>
+        <translation>SPIF — Конкурс</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Meeting Target</masterLabel>
+        <translation><!-- SPIF - Meeting Target --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Other</masterLabel>
+        <translation>SPIF - Другое</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Target</masterLabel>
+        <translation>SPIF — Цель</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Volume</masterLabel>
+        <translation>SPIF — Объём</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Event</masterLabel>
+        <translation>Мероприятие по продажам</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Ad</masterLabel>
+        <translation>Поиск (SEM) реклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Graphic Ad</masterLabel>
+        <translation>Поиск графического объявления (SEM)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Text Ad</masterLabel>
+        <translation>Текстовое объявление о поиске (SEM)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+        <translation><!-- Search Engine Marketing (SEM) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seed Unit</masterLabel>
+        <translation>Начальное изделие</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Contest SPIF</masterLabel>
+        <translation>Продавец — Конкурсный фонд для поощрения продавцов</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Other</masterLabel>
+        <translation>Продавец — Другое</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Per Instance SPIF</masterLabel>
+        <translation>Продавец — на экземпляр SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Per Unit SPIF</masterLabel>
+        <translation>Продавец — Фонд для поощрения продавцов за каждое изделие</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Target SPIF</masterLabel>
+        <translation>Продавец — Целевой фонд для поощрения продавцов</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Ad</masterLabel>
+        <translation>Социальная реклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Graphic Ad</masterLabel>
+        <translation>Графическое объявление для социальных общения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Online Display</masterLabel>
+        <translation>Социальная баннерная интернет-реклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Post</masterLabel>
+        <translation>Социальное сообщение</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Text Ad</masterLabel>
+        <translation>Текстовое объявление в социальных сетях</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Video Ad</masterLabel>
+        <translation>Видеообык для социальных общения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Development</masterLabel>
+        <translation>Разработка решения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Streaming</masterLabel>
+        <translation>Прямая трансляция</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>System Demo</masterLabel>
+        <translation>Демонстрация системы</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TV</masterLabel>
+        <translation>Реклама на телевидении</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telemarketing</masterLabel>
+        <translation>Телемаркетинг</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Television</masterLabel>
+        <translation>Реклама на телевидении</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Text Ad</masterLabel>
+        <translation>Текстовая реклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Third Party Event</masterLabel>
+        <translation>Мероприятие сторонней компании</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Third-party.com</masterLabel>
+        <translation><!-- Third-party.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Blog Post</masterLabel>
+        <translation><!-- Thirdparty.com - Blog Post --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Retargeting</masterLabel>
+        <translation><!-- Thirdparty.com - Retargeting --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - SEM</masterLabel>
+        <translation><!-- Thirdparty.com - SEM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Social Post</masterLabel>
+        <translation><!-- Thirdparty.com - Social Post --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training Incentive</masterLabel>
+        <translation>Стимулы для обучения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training/Meeting</masterLabel>
+        <translation>Обучение/собрание</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Trial Instance</masterLabel>
+        <translation>Пробный экземпляр</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video Ad</masterLabel>
+        <translation>Видеореклама</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video Screen</masterLabel>
+        <translation>Видеоэкран</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Content</masterLabel>
+        <translation>Веб-данные</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Page</masterLabel>
+        <translation>Веб-страница</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>iREP</masterLabel>
+        <translation><!-- iREP --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

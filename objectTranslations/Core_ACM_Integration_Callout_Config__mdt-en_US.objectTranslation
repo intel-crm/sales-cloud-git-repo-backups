@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ACM Integration Callout Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ACM Integration Callout Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Content_Type --></label>
+        <name>Content_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endpoint --></label>
+        <name>Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Http_Method --></label>
+        <name>Http_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is_Active --></label>
+        <name>Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timeout_Ms --></label>
+        <name>Timeout_Ms__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

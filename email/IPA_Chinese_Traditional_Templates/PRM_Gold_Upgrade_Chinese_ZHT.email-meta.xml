@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_Chinese_ZHT</name>
+    <style>none</style>
+    <subject>歡迎來到 Intel® 夥伴聯盟黃金級</subject>
+    <textOnly>Intel® 夥伴聯盟黃金級會員
+
+
+
+{!Contact.FirstName}，
+
+我們做了一些令人振奮的變更，並修改 Intel® 夥伴聯盟計畫標準，增強了支援您業務需求的優勢。因此，貴公司已升級為 Intel® 夥伴聯盟黃金級會員。恭喜！
+
+以下是您作為黃金級會員將獲得的一些額外優勢：
+
+黃金級會員徽章
+進階保固換貨服務
+更多賺取和兌換點數的機會
+使用解決方案市場的店面及刊登
+存取開發者專區 - 高級與保護文件（應要求提供）
+
+
+全新的 Intel® 夥伴大學體驗有許多內容值得期待，包括：
+
+完整升級至數位體驗
+個人化的訓練途徑
+以及全新的內容評等系統，協助夥伴尋找及使用同行評等最高的內容。
+
+
+此外，我們也將為夥伴提供精心策劃的產業趨勢和見解，這要歸功於 Intel 市場規模和預測團隊的資料科學家。
+
+敬請期待全新改良版的 Intel® 解決方案市場使用者體驗：
+
+全新的外觀、感受和更便於使用的網站導覽
+在夥伴之間建立人脈和潛在客戶的改良體驗
+改良的整體搜尋功能
+
+
+Intel® 夥伴聯盟不斷努力提供價值與優勢，讓您的企業在現今的環境中蓬勃發展。進一步瞭解 Intel® 夥伴聯盟協助您精進業務所提供的內容。
+
+
+馬上開始
+
+
+
+謹致
+您的 Intel® 夥伴聯盟團隊
+
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+隱私權 &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

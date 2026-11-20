@@ -1,0 +1,1 @@
+public interface Pricing_RestAPI_SuccessContent {}

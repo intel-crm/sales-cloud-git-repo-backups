@@ -1,0 +1,30 @@
+<!--CORE: Simple Card Template | With Icon-->
+<template>
+    <c-core-intc-link label={card.linkData.label} community-page={card.linkData.communityPage} external-url={card.linkData.externalUrl} object-page={card.linkData.objectPage} record-id={card.linkData.recordId} hide-icon>
+        <div class={classes.containerClass}>
+            <div class="core-card-icon-container">
+                <template if:true={card.icon}>
+                    <span class="fa-wrap">
+                        <span class={iconFaClass}></span>
+                    </span>
+                </template>
+                <template if:true={card.sfIcon}>
+                    <lightning-icon icon-name={card.sfIcon} size="large"></lightning-icon>
+                </template>
+                <template if:true={card.svgIconUrl}>
+                  <div class="core-card-image">
+                    <img src={card.svgIconUrl}>
+                  </div>
+                </template>
+                <template if:true={card.imageUrl}>
+                  <div class="core-card-image">
+                    <img src={card.imageUrl}>
+                  </div>
+                </template>
+            </div>
+            <div class="core-card-title">
+                <div class={classes.titleClass}>{card.title}</div>
+            </div>
+        </div>
+    </c-core-intc-link>
+</template>

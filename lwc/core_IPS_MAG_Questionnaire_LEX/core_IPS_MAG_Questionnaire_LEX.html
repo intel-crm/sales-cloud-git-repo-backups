@@ -1,0 +1,37 @@
+<template>
+    <lightning-card>
+        <lightning-accordion allow-multiple-sections-open active-section-name= "MINDS Questionnaire">
+            <lightning-accordion-section name="MINDS Questionnaire" label="MINDS Questionnaire" class="slds-accordion"><br/>
+                <template if:true ={isError}>
+                <div style="height: 50px;border:solid 1px red;background-color:rgb(226, 212, 164)">
+                    <h1 style="color:red;padding-left: 30px;padding-top:5px;">Error:</h1>
+                    <p style="padding-left: 30px;">Please ensure the MAG Questionnaire is fully filled out prior to setting the MAG Review Request Status to MAG Questionnaire Completed</p>
+                </div>
+            </template>
+                <template for:each={result} for:item='field'>
+                    <template if:false ={field.dependentQues}>
+                    <div key={field.questionId}>
+                    <c-magbuilder type ={field.answerType} iseditable ={readOnly} fieldlabel ={field.question} isrequiredfield ={field.required} lovs ={field.lovs}
+                    value ={field.answer} dependentques ={field.dependentQues} recordid ={recordId} ordernumber ={field.orderNo} parentquesid ={field.answer}
+                    questionid ={field.questionId} mvalue ={field.selectedValues} onchildmethod={callFromChild}></c-magbuilder>
+                </div>
+            </template>
+        </template>
+        <div class="slds-align_absolute-center">
+        <template if:true ={isEditable}>
+        <lightning-button label="Save" title="SisEditableave" onclick={saveHandler} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="brand" label="Cancel" title="Cancel" onclick={cancelHandler} class="slds-m-left_x-small"></lightning-button>
+      </template>  
+      <template if:false ={isEditable}>
+        <lightning-button label="Return" title="Return"  onclick={cancelHandler} class="slds-m-left_x-small"></lightning-button>
+      </template> 
+    </div>
+      <template if:true ={saveFlag}> 
+      <lightning-spinner
+                alternative-text="Loading..." variant="brand">
+            </lightning-spinner> 
+        </template>
+    </lightning-accordion-section>
+        </lightning-accordion>  
+    </lightning-card>
+</template>

@@ -1,0 +1,83 @@
+.customCSS {
+    letter-spacing: 1px;
+    color: #0068b5;
+    border: 0;
+    white-space: nowrap;
+    background: white;
+    padding: 26px;
+}
+
+.customSrarch {
+    height: 70px;
+    background: #f3f3f3;
+    align-items: center;
+}
+
+.Fill-1 {
+    width: 155px;
+    height: 73px;
+    padding: 15px 16px 14px 16px;
+    background-color: #0068b5;
+    color: white;
+    float: left;
+}
+
+.By-Product {
+    font-weight: 900;
+    margin-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.productsBg {
+    background-color: #653171;
+}
+
+.customCSSMenu {
+    letter-spacing: 1px;
+    color: #0068b5;
+    border: 0;
+    white-space: nowrap;
+    background: white;
+}
+
+.IpsLogo {
+    max-width: 150px;
+    height: 73px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: #0068b5;
+    border-radius: 6px;
+    position: absolute;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.logoutbutton {
+    border: none;
+    background: transparent;
+    color: #0054ae;
+}
+
+.iconcolor svg {
+    fill: #747474;
+}
+
+@media screen and (max-width: 767px) {
+    .customCSS {
+        padding: 26px 15px;
+        font-size: 12px;
+    }
+}

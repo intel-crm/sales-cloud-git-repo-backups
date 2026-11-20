@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Xgboost</algorithmType>
+    <classificationThreshold>0.43891256004571916</classificationThreshold>
+    <label>Maximize Modified Case Status</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Duration</label>
+        <name>Core_MDF_Activity_Start_Date__c_formula</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Brand</label>
+        <name>Core_MDF_Brand__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Ad Run Duration</label>
+        <name>Core_MDF_Ad_Run_Start_Date__c_formula</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Category</label>
+        <name>Core_MDF_Activity_Category__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>CPI</label>
+        <name>CountryCPI.CPI</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Requested Amount (USD)</label>
+        <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Country/Region</label>
+        <name>Core_MDF_Country_Location_nm__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Program</label>
+        <name>Core_MDF_Program__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account (Company)</label>
+        <name>Core_MDF_AccountCompany__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Media Vehicle</label>
+        <name>Core_MDF_Media_Vehicle__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Target Audience</label>
+        <name>Core_MDF_Target_Audience__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Type</label>
+        <name>Core_MDF_Activity_Types__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Region</label>
+        <name>Core_MDF_Region_Cd__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Modified Case Status</label>
+        <name>Core_MDF_AccountCompany__c_formula</name>
+        <type>Text</type>
+    </modelFields>
+    <modelRuntimeType>H2O</modelRuntimeType>
+    <predictedField>Core_MDF_AccountCompany__c_formula</predictedField>
+    <predictionType>Classification</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <trainingMetrics>{&quot;r2&quot;:0.43342846090147247,&quot;nobs&quot;:9911,&quot;confusionMatrices&quot;:{&quot;thresholds&quot;:[0.43891256004571916],&quot;tns&quot;:[7159],&quot;tps&quot;:[1399],&quot;totalPositives&quot;:1761,&quot;totalNegatives&quot;:8150},&quot;rmse&quot;:0.3219931598164911,&quot;type&quot;:&quot;Binomial&quot;,&quot;gini&quot;:0.7982930917559148,&quot;meanPerClassError&quot;:0.19832343914028167,&quot;mse&quot;:0.10367959496860839,&quot;logloss&quot;:0.33994824689807407,&quot;auc&quot;:0.8991465458779574}</trainingMetrics>
+</DiscoveryAIModel>

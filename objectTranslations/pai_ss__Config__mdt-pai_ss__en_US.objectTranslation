@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>People.ai Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>People.ai Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Canvas: Auth. Field --></label>
+        <name>pai_ss__CanvasAuthField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Canvas: Initiation Method --></label>
+        <name>pai_ss__CanvasInitMethod__c</name>
+        <picklistValues>
+            <masterLabel>Identity Provider Initiated</masterLabel>
+            <translation><!-- Identity Provider Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Initiated</masterLabel>
+            <translation><!-- Service Provider Initiated --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

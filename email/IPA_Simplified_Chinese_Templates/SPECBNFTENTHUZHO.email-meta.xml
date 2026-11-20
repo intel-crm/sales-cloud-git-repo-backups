@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECBNFTENTHUZHO</name>
+    <style>none</style>
+    <subject>英特尔® 合作伙伴联盟发烧友级 PC 专家</subject>
+    <textOnly>祝贺您符合资格！
+
+
+尊敬的{!Contact.FirstName}：
+
+恭喜您成为一名英特尔® 技术合作伙伴发烧友级 PC 专家！
+
+由于全球 PC 玩家的数量已经突破 10 亿，市场正在快速发展，您已经拥有了通过英特尔扩大客户群和实现创收的优势。
+
+充分利用您现在可以享受的所有权益，包括：
+
+
+采用英特尔® 酷睿™ X、K 和 H 系列处理器的产品可享额外积分促销
+发烧友级 PC 专家称号以及英特尔® 技术合作伙伴网页的访问权限
+英特尔专家举办的技术研讨会
+一流的游戏和软件包
+本地电子竞技活动入场许可
+
+首先，请回信至 enthusiast-pc@intel.com 并提供以下信息：
+
+
+负责发烧友级 PC 专家通信的主要联系人
+名称：
+电子邮件：
+
+
+获取其他销售和推广材料
+实际邮寄地址：
+电话：
+
+获得权益
+
+
+*权益可能因地理位置而异。
+
+英特尔的合作伙伴总是在不断创新，而英特尔® 合作伙伴联盟的出现将为您的创新提供鼎力支持，帮助您加速构建创新解决方案，在以数据为中心的经济大潮中乘风破浪。我们将与您携手共同创造非凡机遇，实现连接、创新与成长。
+
+访问 https://www.intel.com/content/www/cn/zh/partner-alliance/help/overview.html，获取关于如何优化会员状态的帮助和指导。
+
+
+谢谢！
+英特尔® 合作伙伴联盟团队
+
+发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隐私 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

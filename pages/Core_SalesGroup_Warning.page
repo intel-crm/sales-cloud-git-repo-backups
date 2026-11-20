@@ -1,0 +1,24 @@
+<!---
+/**************************************************************************************
+Vf page Name:  Core_SalesGroup_Warning
+Version     : 1.0 
+Created Date: 20/2/2018
+Description :if Account sales Group is blank,it will display a warning message.
+(User Story US95951)ACCT: Sales Group entry mandatory after taking Account Ownership.
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Rajesh infy Team           20/2/2018               Initial Revision
+
+--->
+<apex:page standardController="Account"> 
+    <apex:form >
+        <apex:outputPanel rendered="{!ISBLANK(Account.Core_Sales_Groups__c) && Account.Core_Covered_Account__c}">
+            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
+                <div  style="font-weight:bold;color:orange;margin-left:35%;">{!$Label.Core_Acc_SalesGroup_WarningMsg}</div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+                <div  style="font-weight:bold;color:orange;">{!$Label.Core_Acc_SalesGroup_WarningMsg}</div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

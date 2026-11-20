@@ -1,0 +1,12 @@
+There is a new Account in CRM that has been flagged as export control.
+
+Account ID : {!Account.Id}
+CIM ID: {!Account.Core_CIM_ID__c}
+Account Name: {!Account.Name}
+Account Owner: {!Account.OwnerFullName}
+Account Type: {!Account.Core_Account_Type__c}
+
+
+Please review the Opportunity and follow up with the opportunity owner if needed.
+
+Thank you!

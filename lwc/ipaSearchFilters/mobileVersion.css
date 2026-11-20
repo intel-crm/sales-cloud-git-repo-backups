@@ -1,0 +1,22 @@
+@import "./shared";
+
+.mobile-modal-buttons-container {
+  border-bottom: 1px solid var(--lightGray);
+}
+
+c-core-intc-hub-spoke .mobile-modal-buttons-container {
+  border-bottom: none;
+}
+
+.filter-grouping-container {
+  border-bottom: none;
+  border-top: 1px solid var(--lightGray);
+}
+
+.search-filter-nodes {
+  max-height: unset;
+}
+
+.ipaSearchFilters-apply-button {
+  margin-right: 0;
+}

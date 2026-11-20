@@ -1,0 +1,81 @@
+/* .THIS .slds-textarea {
+    height:300px;
+    width:400px;
+}
+
+.THIS .submit{
+    display: block; 
+}
+
+.THIS .right-align {
+    text-align: right;
+    padding-right: 170px;
+}
+
+.THIS .left-align {
+    text-align: left;
+    
+}
+.THIS .center-align {
+    text-align: center;
+    
+}
+.THIS .width{
+    width:100%;
+}
+
+.THIS .admin-font {
+    font-size: 150%;   
+    color: #555555;
+    position: relative;
+    top: 30px;
+}
+
+.THIS .admin-partner-font {
+   font-weight: bold;
+   font-size: 100%;    
+}
+
+.THIS .other-admin-font {
+     font-size: 100%; 
+     color: #555555;
+}
+.THIS .borderBottom{
+    border-color: #d7d7d7;
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 1px;
+        padding-top: 1.75rem;
+}
+
+.THIS .adminSelectBtn{
+    width: 35%;
+}
+
+@media (max-width: 767px){
+  .THIS .adminSelectBtn{
+    margin: 0 1rem;
+    width: 92%;
+}  
+}
+.THIS .adminPopUpBtn{
+    font-size: 9px;
+}
+.THIS .slds-p-right_medium{
+    font-size: 100%;
+    color: #555555;
+}
+.THIS .segementValue {
+     font-size: 100%;
+    color: #555555;
+}
+.THIS .adminBChnage {
+    position: relative;
+    top: 27px;
+}
+@media (max-width: 767px){
+    .THIS .adminBChnage {
+    position: relative;
+    top: 0;
+}
+} */

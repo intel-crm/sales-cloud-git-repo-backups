@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Claim Prediction</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Claim Prediction</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity  ID --></label>
+        <name>Core_MDF_Activity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Claim Id --></label>
+        <name>Core_MDF_Claim_Id_External_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Event Id --></label>
+        <name>Core_MDF_PE_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

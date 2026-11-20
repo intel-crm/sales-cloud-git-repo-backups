@@ -1,0 +1,51 @@
+<apex:page standardController="Core_IPS_Product_Issue_Category__c" action="{!getAssignedSubCategory}" extensions="Core_IssueCategoryController"  lightningStyleSheets="true">   
+<apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+
+    <script language="javascript">
+    // A $( document ).ready() block.
+$( document ).ready(function() {
+    $("select").change(function(){
+    
+       if($(this).val() == 'Inactive')
+       {
+         $(".pbBody").prepend("<span id='msgSpan' style='color:red;align:center;'>Are you sure? Once set to Inactive, changing the status back to Active will require a KTBR request!<br/>All children objects (Subcategories and Env Details if configured) will be set to Inactive as well. </span>");
+       }
+       else
+       {
+         $(".pbBody").find("#msgSpan").remove();
+       }
+    
+    });
+});
+
+    </script>
+
+ <apex:form >
+    <apex:pageblock rendered="{!(ErrorMessage != null)}">
+   <div align="center">
+   <apex:commandButton action="{!cancel}" value="Exit" />
+   </div>
+   <div align="center">
+   <apex:outputLabel value="{!ErrorMessage}" style="font-weight:bold"/> 
+   </div>
+   </apex:pageblock>          
+  	<apex:pageblock rendered="{!(ErrorMessage == null)}">
+        <apex:pageBlockButtons location="bottom">
+     	 	<apex:commandButton value="Save" action="{!saveCategory}" />
+  			<apex:commandButton value="Cancel" action="{!cancel}"/>
+         </apex:pageBlockButtons>
+   <apex:pageBlockSection >  
+          <apex:repeat value="{!$ObjectType.Core_IPS_Product_Issue_Category__c.FieldSets.Case_Category_Edit_Fields}" var="category">  
+          <apex:pageBlockSectionItem rendered="{!if(category.required,true,false)}" >
+            <apex:outputLabel value="{!category.Label}"></apex:outputLabel>
+            <apex:inputfield value="{!caseCategory[category]}" required="{!AND(category.required,category.type <>'boolean')}"></apex:inputfield>
+           </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem rendered="{!if(category.required,false,true)}" >
+            <apex:outputLabel value="{!category.Label}"></apex:outputLabel>
+            <apex:outputfield value="{!caseCategory[category]}"  ></apex:outputfield>
+           </apex:pageBlockSectionItem>
+        </apex:repeat> 
+      </apex:pageBlockSection>
+     </apex:pageblock>
+  </apex:form> 
+</apex:page>

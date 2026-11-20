@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Benefit Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Benefit Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Benefits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Partner Benefit Key --></label>
+        <name>PRM_Account_Partner_Benefit_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account RT --></label>
+        <name>PRM_Account_RT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Benefit --></label>
+        <lookupFilter>
+            <errorMessage><!-- The selected Partner Benefit is either Inactive or doesn&apos;t belong to &quot;Intel Partner Alliance&quot; program. Please verify your selection. --></errorMessage>
+        </lookupFilter>
+        <name>PRM_Partner_Benefit_Id__c</name>
+        <relationshipLabel><!-- Partner Benefit Association --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>PRM_Source__c</name>
+        <picklistValues>
+            <masterLabel>Select Benefit</masterLabel>
+            <translation><!-- Select Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier</masterLabel>
+            <translation><!-- Tier --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status Change Date --></label>
+        <name>PRM_Status_Change_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- On update of any field, Status Reason should also be updated --></help>
+        <label><!-- Status Reason --></label>
+        <name>PRM_Status_Reason_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suppress Email --></label>
+        <name>PRM_Suppress_Email__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please add a reason in the Status reason --></errorMessage>
+        <name>PRM_Status_Reason_Removal_Mandatory</name>
+    </validationRules>
+</CustomObjectTranslation>

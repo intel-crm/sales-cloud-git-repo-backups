@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template to send Daily Summary of Lead Counts to the Partners - Debug Version that will be sent to internal users only.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_Partner_Lead_Email</letterhead>
+    <name>Partner Lead Count Email Template - Debug</name>
+    <style>freeForm</style>
+    <subject>Lead Summary</subject>
+    <textOnly>You have been assigned {!Lead.SummaryCount} leads on {!Lead.SummaryDate} through Intel&apos;s Lead Management System. Please review these leads and contact these customers within the next 72 hours. Please accept or reject these leads as soon as possible. 
+
+Please click the following link to access the leads. 
+https://partners.intel.com 
+
+Please click the following link for training and support. 
+https://partners.seek.intel.com/SupportPage 
+
+©Intel Corporation. All rights reserved.
+
+----------------------------------------------------------------------------------------------------------------
+
+Date: {!Lead.SummaryDate}
+Summary Count:  {!Lead.SummaryCount}
+
+Queue Id: {!Lead.QueueId}
+Partner Name: {!Lead.PartnerName}
+Queue Members: {!Lead.QueueMembers}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

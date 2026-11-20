@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>IQR Release Notification WW32 2022</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>What&apos;s New</actionButtonLabel>
+        <actionButtonLink>https://salescrm.intel.com/ww32-2022-release-update/</actionButtonLink>
+        <body>&lt;p&gt;&lt;span style=&quot;color: rgb(59, 56, 56); font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;The latest Tenders IQR release included the following enhancements &amp;amp; fixes:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;An error message with instructions will be displayed when attempting to submit a change request when the quote line pricing end date is greater than 90 days&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;The IQR Quote Letter has been updated to align with the My Deals and Future Skus Quote Letter&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;SDMs can now mark a quote line as won or lost for non-restricted accounts&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif; color: rgb(59, 56, 56);&quot;&gt;TIP&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif; color: rgb(59, 56, 56);&quot;&gt;: SDMs, don’t forget set a delegate for your approvals if you are OOO. Instructions on how to do this can be found &lt;/span&gt;&lt;a href=&quot;https://salescrm.intel.com/ww32-2022-release-update/ &quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif; color: rgb(59, 56, 56);&quot;&gt;here&lt;/a&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif; color: rgb(59, 56, 56);&quot;&gt;.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;Click on What’s New to review more details and see what else was implemented.&amp;nbsp;&lt;/p&gt;</body>
+        <customApplication>Pricing_Intel_Quote_Request</customApplication>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2022-09-10</endDate>
+        <header>Welcome to Intel Quote Request</header>
+        <isPublished>false</isPublished>
+        <masterLabel>IQR Release Notification WW32 2022</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2022-07-14</startDate>
+        <targetPageKey1>SBQQ__Quote__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Did you know…</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

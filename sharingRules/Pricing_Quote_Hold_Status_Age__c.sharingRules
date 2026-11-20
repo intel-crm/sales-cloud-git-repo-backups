@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Pricing_Quote_Hold_Status_Age_Sharing_To_Pricing_Manager_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing Quote Hold Status Age Sharing To Pricing Manager Group</label>
+        <sharedTo>
+            <group>Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Quote_Hold_Status_Age_Sharing_To_Read_Only_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing Quote Hold Status Age Sharing To Read Only Group</label>
+        <sharedTo>
+            <group>Pricing_All_Pricing_ReadOnly_Users_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

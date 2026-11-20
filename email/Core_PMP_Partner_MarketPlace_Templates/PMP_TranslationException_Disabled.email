@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Exception Occurred During  Partner/Offering Translation Process" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_TranslationException />
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

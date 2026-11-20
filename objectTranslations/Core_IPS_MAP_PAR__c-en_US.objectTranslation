@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Access</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Access</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Flag --></label>
+        <name>Core_IPS_MAP_Access_Flag__c</name>
+        <picklistValues>
+            <masterLabel>Approval Required</masterLabel>
+            <translation><!-- Approval Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto Approve</masterLabel>
+            <translation><!-- Auto Approve --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Par Hidden</masterLabel>
+            <translation><!-- Par Hidden --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- # Supported Accounts --></label>
+        <name>Core_IPS_MAP_Count_Supp_acct__c</name>
+    </fields>
+    <fields>
+        <label><!-- # Supported Products --></label>
+        <name>Core_IPS_MAP_Count_Supp_prod__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_IPS_MAP_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Naming Convention:   Org - Product/Platform Grouping - Geo - Team
+(example:  &quot;DCG - Skylake - All - None&quot;) --></help>
+        <label><!-- MAP Name --></label>
+        <name>Core_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique ID of the Support Org that owns this MAP/PAR record --></help>
+        <label><!-- Support Org --></label>
+        <name>Core_Product_Organization__c</name>
+        <relationshipLabel><!-- Product Access --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please include information that will help assess approval - for example a brief explanation of the Account&apos;s design or application and if known, the division or team expected to support the Account on the Product(s) being requested. --></help>
+        <label><!-- Submitter Comments --></label>
+        <name>Core_Submitter_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the Support Org that owns this MAP/PAR record --></help>
+        <label><!-- Support Org Name --></label>
+        <name>Core_Support_Org_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- isPARRequest --></label>
+        <name>Core_isPARRequest__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Used for MAP --></description>
+        <label><!-- MAP --></label>
+        <name>Core_MAP</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Used for PAR --></description>
+        <label><!-- PAR --></label>
+        <name>Core_PAR</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- No value supplied for Record Type.
+
+Please use the [Create Product Access] button from Support Org or Account detail pages to create new Product Access records. --></errorMessage>
+        <name>Core_Require_Record_Type_Value</name>
+    </validationRules>
+</CustomObjectTranslation>

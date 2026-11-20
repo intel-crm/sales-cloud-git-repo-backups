@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_History_Header_Translation --></label>
+        <name>Core_MDF_History_Header_Translation_nm__c</name>
+        <picklistValues>
+            <masterLabel>ACTUAL METRICS</masterLabel>
+            <translation>TATSÄCHLICH ERREICHTE KENNZAHLEN</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Transfer Logs History</masterLabel>
+            <translation>Verlauf der Übertragungsprotokolle des Kontos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account User History</masterLabel>
+            <translation>Benutzerverlauf des Kontos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget History</masterLabel>
+            <translation>Budgetverlauf</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Adjustment Requests History</masterLabel>
+            <translation>Verlauf von Antragsanpassungen in Bezug auf Forderungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim History</masterLabel>
+            <translation>Chronologie der Antragsbearbeitung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Offsets History</masterLabel>
+            <translation>Verlauf der Antragsaufrechnungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity History</masterLabel>
+            <translation>Co-Marketing Aktivitätsgeschichte</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disbursement Status</masterLabel>
+            <translation>Auszahlungsstatus</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Criteria List History</masterLabel>
+            <translation>Verlauf der Haltekriterienliste</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>METRICS</masterLabel>
+            <translation>Bewertungskriterien</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLANNED METRICS</masterLabel>
+            <translation>GEPLANTE KENNZAHLEN</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP Requirements</masterLabel>
+            <translation>Erforderliche Durchführungsnachweise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Fund Allocations History</masterLabel>
+            <translation>Verlauf der Partnerfonds-Zuweisungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Group Mapping History</masterLabel>
+            <translation>Verlauf des Partnergruppen-Mappings</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Breakdown</masterLabel>
+            <translation>Aufschlüsselung der Zahlung</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Details</masterLabel>
+            <translation>Zahlungsdaten</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment History</masterLabel>
+            <translation>Zahlungsverlauf</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Run History</masterLabel>
+            <translation>Verlauf des Zahllaufs</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please provide the Object&apos;s API name. --></help>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_obj_nm__c</name>
+    </fields>
+    
+</CustomObjectTranslation>

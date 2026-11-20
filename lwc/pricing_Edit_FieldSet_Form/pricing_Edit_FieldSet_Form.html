@@ -1,0 +1,142 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 12-15-2023
+  @last modified by  : Sandeep Chamate
+-->
+<template>
+    <template if:true={isModalOpen}>
+
+        <!--<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open ">
+            <div class="slds-modal__container" >
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Quote Line</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        -->
+        <lightning-record-edit-form density="Comfy" object-api-name="SBQQ__QuoteLine__c" record-id={recordId}
+            onsuccess={handleSuccess} onsubmit={handleSubmit} onerror={handleError} onload={handleLoad}>
+            <lightning-messages></lightning-messages>
+            <template if:false={loadSpinner}>
+                <template for:each={formValues} for:item="obj">
+                    <div key={obj.sectionLabel}>
+
+                        <template if:false={obj.hideSectionLabel}>
+
+                            <details key={obj.sectionLabel} class="slds-p-around_xx-small"
+                                style="background-color: white" open>
+                                <summary class="slds-p-around_medium" onclick={handleClick} style="cursor: pointer">
+                                    <span key={obj.sectionLabel} class="icon-container">
+                                        <lightning-icon icon-name='utility:chevrondown' size="xx-small"
+                                            class="slds-p-left_medium slds-p-right_medium slds-var-p-top_x-small"></lightning-icon>
+                                    </span>
+                                    <span style="pointer-events: none"> {obj.sectionLabel} </span>
+                                </summary>
+
+                                <div class="slds-grid slds-wrap slds-p-left_x-large" key={obj.sectionLabel}>
+                                    <template for:each={obj.Fields} for:item="field">
+                                        <div key={field.APIName} class="slds-col slds-size_1-of-2"
+                                            style="padding-right: 2rem;">
+                                            <template key={field.APIName} if:true={field.isInput}>
+                                                <lightning-input-field field-name={field.APIName}
+                                                    required={field.Required}>
+                                                </lightning-input-field>
+                                            </template>
+                                            <template key={field.APIName} if:false={field.isInput}>
+                                                <lightning-output-field field-name={field.APIName}>
+                                                </lightning-output-field>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+
+                            </details>
+
+                        </template>
+
+                        <template if:true={obj.hideSectionLabel}>
+                            <div class="slds-grid slds-wrap slds-p-left_x-large" key={obj.sectionLabel}>
+                                <template for:each={obj.Fields} for:item="field">
+                                    <div key={field.APIName} class="slds-col slds-size_1-of-2"
+                                        style="padding-right: 2rem;">
+                                        <template key={field.APIName} if:true={field.isInput}>
+                                            <template if:true={field.isDateField}>
+                                                <lightning-input data-id="name" type="date" label={field.Label}
+                                                    value={field.fieldValue} date-style="short"
+                                                    required={field.Required} onchange={handleInputChange}
+                                                    class="slds-form-element" style="width:100%;"
+                                                    variant="label-stacked">
+                                                </lightning-input>
+                                                <lightning-input-field field-name={field.APIName}
+                                                    required={field.Required} class="slds-form-element__icon">
+                                                </lightning-input-field>
+                                            </template>
+                                            <template if:false={field.isDateField}>
+                                                <lightning-input-field field-name={field.APIName}
+                                                    required={field.Required}>
+                                                </lightning-input-field>
+                                            </template>
+                                        </template>
+                                        <template key={field.APIName} if:false={field.isInput}>
+                                            <lightning-output-field field-name={field.APIName}>
+                                            </lightning-output-field>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+
+                    </div>
+                </template>
+            </template>
+            <div class="slds-docked-form-footer slds-modal__footer footerStyle">
+                <footer style="padding-top: 10px">
+                    <div class="slds-align_absolute-center">
+                        <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                        <button class="slds-button slds-button_brand" type="submit" onclick={handleSave}
+                            disabled={disableButton}>
+                            <template if:true={saveSpinner}>
+                                Saving...
+                            </template>
+                            <template if:false={saveSpinner}>
+                                Save
+                            </template>
+                        </button>
+                    </div>
+                </footer>
+            </div>
+            <template if:true={saveSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium" class="spinnerStyle" variant="brand">
+                </lightning-spinner>
+            </template>
+            <template if:true={loadSpinner}>
+                <lightning-spinner alternative-text="Loading..." size="medium" variant="brand" class="saveSpinner">
+                </lightning-spinner>
+            </template>
+        </lightning-record-edit-form>
+
+        <!--</div>-->
+        <!--<div>
+                    <footer class="slds-modal__footer">
+                        <div class="slds-align_absolute-center">
+                            <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                            <button class="slds-button slds-button_brand" type= "submit">Save</button>
+                        </div>
+                    </footer>
+                </div>    
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        -->
+
+    </template>
+</template>

@@ -1,0 +1,2897 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Users</value>
+    </caseValues>
+    <fields>
+        <label><!-- About Me --></label>
+        <name>AboutMe__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>AccountId__c</name>
+        <relationshipLabel><!-- Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Alias --></label>
+        <name>Alias__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nickname --></label>
+        <name>CommunityNickname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Name --></label>
+        <name>CompanyName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Encoding --></label>
+        <name>EmailEncodingKey__c</name>
+        <picklistValues>
+            <masterLabel>General US &amp; Western Europe (ISO-8859-1, ISO-LATIN-1)</masterLabel>
+            <translation><!-- General US &amp; Western Europe (ISO-8859-1, ISO-LATIN-1) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese (EUC)</masterLabel>
+            <translation><!-- Japanese (EUC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese (JIS)</masterLabel>
+            <translation><!-- Japanese (JIS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese (Shift-JIS)</masterLabel>
+            <translation><!-- Japanese (Shift-JIS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese (Shift-JIS_2004)</masterLabel>
+            <translation><!-- Japanese (Shift-JIS_2004) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean (ks_c_5601-1987)</masterLabel>
+            <translation><!-- Korean (ks_c_5601-1987) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese (GB2312)</masterLabel>
+            <translation><!-- Simplified Chinese (GB2312) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Traditional Chinese (Big5)</masterLabel>
+            <translation><!-- Traditional Chinese (Big5) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Traditional Chinese Hong Kong (Big5-HKSCS)</masterLabel>
+            <translation><!-- Traditional Chinese Hong Kong (Big5-HKSCS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unicode (UTF-8)</masterLabel>
+            <translation><!-- Unicode (UTF-8) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fax --></label>
+        <name>Fax__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>LanguageLocaleKey__c</name>
+        <picklistValues>
+            <masterLabel>Arabic</masterLabel>
+            <translation><!-- Arabic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulgarian</masterLabel>
+            <translation><!-- Bulgarian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Simplified)</masterLabel>
+            <translation><!-- Chinese (Simplified) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Traditional)</masterLabel>
+            <translation><!-- Chinese (Traditional) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Croatian</masterLabel>
+            <translation><!-- Croatian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech</masterLabel>
+            <translation><!-- Czech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Danish</masterLabel>
+            <translation><!-- Danish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch</masterLabel>
+            <translation><!-- Dutch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (UK)</masterLabel>
+            <translation><!-- English (UK) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finnish</masterLabel>
+            <translation><!-- Finnish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation><!-- French --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation><!-- German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greek</masterLabel>
+            <translation><!-- Greek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hebrew</masterLabel>
+            <translation><!-- Hebrew --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungarian</masterLabel>
+            <translation><!-- Hungarian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesian</masterLabel>
+            <translation><!-- Indonesian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian</masterLabel>
+            <translation><!-- Italian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation><!-- Korean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian</masterLabel>
+            <translation><!-- Norwegian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polish</masterLabel>
+            <translation><!-- Polish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Brazil)</masterLabel>
+            <translation><!-- Portuguese (Brazil) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (European)</masterLabel>
+            <translation><!-- Portuguese (European) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romanian</masterLabel>
+            <translation><!-- Romanian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian</masterLabel>
+            <translation><!-- Russian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovak</masterLabel>
+            <translation><!-- Slovak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovene</masterLabel>
+            <translation><!-- Slovene --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation><!-- Spanish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Mexico)</masterLabel>
+            <translation><!-- Spanish (Mexico) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish</masterLabel>
+            <translation><!-- Swedish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai</masterLabel>
+            <translation><!-- Thai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkish</masterLabel>
+            <translation><!-- Turkish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukrainian</masterLabel>
+            <translation><!-- Ukrainian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnamese</masterLabel>
+            <translation><!-- Vietnamese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>LastName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locale --></label>
+        <name>LocaleSidKey__c</name>
+        <picklistValues>
+            <masterLabel>Afrikaans (South Africa)</masterLabel>
+            <translation><!-- Afrikaans (South Africa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Albanian (Albania)</masterLabel>
+            <translation><!-- Albanian (Albania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amharic (Ethiopia)</masterLabel>
+            <translation><!-- Amharic (Ethiopia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Algeria)</masterLabel>
+            <translation><!-- Arabic (Algeria) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Bahrain)</masterLabel>
+            <translation><!-- Arabic (Bahrain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Egypt)</masterLabel>
+            <translation><!-- Arabic (Egypt) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Iraq)</masterLabel>
+            <translation><!-- Arabic (Iraq) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Jordan)</masterLabel>
+            <translation><!-- Arabic (Jordan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Kuwait)</masterLabel>
+            <translation><!-- Arabic (Kuwait) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Lebanon)</masterLabel>
+            <translation><!-- Arabic (Lebanon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Libya)</masterLabel>
+            <translation><!-- Arabic (Libya) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Morocco)</masterLabel>
+            <translation><!-- Arabic (Morocco) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Oman)</masterLabel>
+            <translation><!-- Arabic (Oman) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Qatar)</masterLabel>
+            <translation><!-- Arabic (Qatar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Saudi Arabia)</masterLabel>
+            <translation><!-- Arabic (Saudi Arabia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Sudan)</masterLabel>
+            <translation><!-- Arabic (Sudan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Tunisia)</masterLabel>
+            <translation><!-- Arabic (Tunisia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (United Arab Emirates)</masterLabel>
+            <translation><!-- Arabic (United Arab Emirates) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic (Yemen)</masterLabel>
+            <translation><!-- Arabic (Yemen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Armenian (Armenia)</masterLabel>
+            <translation><!-- Armenian (Armenia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azerbaijani (Azerbaijan)</masterLabel>
+            <translation><!-- Azerbaijani (Azerbaijan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangla (Bangladesh)</masterLabel>
+            <translation><!-- Bangla (Bangladesh) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangla (India)</masterLabel>
+            <translation><!-- Bangla (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basque (Spain)</masterLabel>
+            <translation><!-- Basque (Spain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belarusian (Belarus)</masterLabel>
+            <translation><!-- Belarusian (Belarus) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bosnian (Bosnia &amp; Herzegovina)</masterLabel>
+            <translation><!-- Bosnian (Bosnia &amp; Herzegovina) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulgarian (Bulgaria)</masterLabel>
+            <translation><!-- Bulgarian (Bulgaria) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burmese (Myanmar [Burma])</masterLabel>
+            <translation><!-- Burmese (Myanmar [Burma]) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Catalan (Spain)</masterLabel>
+            <translation><!-- Catalan (Spain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (China)</masterLabel>
+            <translation><!-- Chinese (China) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (China, Pinyin Ordering)</masterLabel>
+            <translation><!-- Chinese (China, Pinyin Ordering) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (China, Stroke Ordering)</masterLabel>
+            <translation><!-- Chinese (China, Stroke Ordering) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Hong Kong SAR China)</masterLabel>
+            <translation><!-- Chinese (Hong Kong SAR China) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Hong Kong SAR China, Stroke Ordering)</masterLabel>
+            <translation><!-- Chinese (Hong Kong SAR China, Stroke Ordering) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Macao SAR China)</masterLabel>
+            <translation><!-- Chinese (Macao SAR China) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Malaysia)</masterLabel>
+            <translation><!-- Chinese (Malaysia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Singapore)</masterLabel>
+            <translation><!-- Chinese (Singapore) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Taiwan)</masterLabel>
+            <translation><!-- Chinese (Taiwan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Taiwan, Stroke Ordering)</masterLabel>
+            <translation><!-- Chinese (Taiwan, Stroke Ordering) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Croatian (Croatia)</masterLabel>
+            <translation><!-- Croatian (Croatia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech (Czechia)</masterLabel>
+            <translation><!-- Czech (Czechia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Danish (Denmark)</masterLabel>
+            <translation><!-- Danish (Denmark) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch (Aruba)</masterLabel>
+            <translation><!-- Dutch (Aruba) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch (Belgium)</masterLabel>
+            <translation><!-- Dutch (Belgium) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch (Netherlands)</masterLabel>
+            <translation><!-- Dutch (Netherlands) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch (Suriname)</masterLabel>
+            <translation><!-- Dutch (Suriname) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dzongkha (Bhutan)</masterLabel>
+            <translation><!-- Dzongkha (Bhutan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Antigua &amp; Barbuda)</masterLabel>
+            <translation><!-- English (Antigua &amp; Barbuda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Australia)</masterLabel>
+            <translation><!-- English (Australia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Bahamas)</masterLabel>
+            <translation><!-- English (Bahamas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Barbados)</masterLabel>
+            <translation><!-- English (Barbados) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Belgium)</masterLabel>
+            <translation><!-- English (Belgium) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Belize)</masterLabel>
+            <translation><!-- English (Belize) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Bermuda)</masterLabel>
+            <translation><!-- English (Bermuda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Botswana)</masterLabel>
+            <translation><!-- English (Botswana) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Cameroon)</masterLabel>
+            <translation><!-- English (Cameroon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Canada)</masterLabel>
+            <translation><!-- English (Canada) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Cayman Islands)</masterLabel>
+            <translation><!-- English (Cayman Islands) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Cyprus)</masterLabel>
+            <translation><!-- English (Cyprus) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Eritrea)</masterLabel>
+            <translation><!-- English (Eritrea) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Eswatini)</masterLabel>
+            <translation><!-- English (Eswatini) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Falkland Islands)</masterLabel>
+            <translation><!-- English (Falkland Islands) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Fiji)</masterLabel>
+            <translation><!-- English (Fiji) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Gambia)</masterLabel>
+            <translation><!-- English (Gambia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Germany)</masterLabel>
+            <translation><!-- English (Germany) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Ghana)</masterLabel>
+            <translation><!-- English (Ghana) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Gibraltar)</masterLabel>
+            <translation><!-- English (Gibraltar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Guyana)</masterLabel>
+            <translation><!-- English (Guyana) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Hong Kong SAR China)</masterLabel>
+            <translation><!-- English (Hong Kong SAR China) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (India)</masterLabel>
+            <translation><!-- English (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Indonesia)</masterLabel>
+            <translation><!-- English (Indonesia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Ireland)</masterLabel>
+            <translation><!-- English (Ireland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Israel)</masterLabel>
+            <translation><!-- English (Israel) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Jamaica)</masterLabel>
+            <translation><!-- English (Jamaica) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Kenya)</masterLabel>
+            <translation><!-- English (Kenya) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Liberia)</masterLabel>
+            <translation><!-- English (Liberia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Madagascar)</masterLabel>
+            <translation><!-- English (Madagascar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Malawi)</masterLabel>
+            <translation><!-- English (Malawi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Malaysia)</masterLabel>
+            <translation><!-- English (Malaysia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Malta)</masterLabel>
+            <translation><!-- English (Malta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Mauritius)</masterLabel>
+            <translation><!-- English (Mauritius) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Namibia)</masterLabel>
+            <translation><!-- English (Namibia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Netherlands)</masterLabel>
+            <translation><!-- English (Netherlands) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (New Zealand)</masterLabel>
+            <translation><!-- English (New Zealand) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Nigeria)</masterLabel>
+            <translation><!-- English (Nigeria) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Pakistan)</masterLabel>
+            <translation><!-- English (Pakistan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Papua New Guinea)</masterLabel>
+            <translation><!-- English (Papua New Guinea) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Philippines)</masterLabel>
+            <translation><!-- English (Philippines) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Rwanda)</masterLabel>
+            <translation><!-- English (Rwanda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Samoa)</masterLabel>
+            <translation><!-- English (Samoa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Seychelles)</masterLabel>
+            <translation><!-- English (Seychelles) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Sierra Leone)</masterLabel>
+            <translation><!-- English (Sierra Leone) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Singapore)</masterLabel>
+            <translation><!-- English (Singapore) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Sint Maarten)</masterLabel>
+            <translation><!-- English (Sint Maarten) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Solomon Islands)</masterLabel>
+            <translation><!-- English (Solomon Islands) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (South Africa)</masterLabel>
+            <translation><!-- English (South Africa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (St. Helena)</masterLabel>
+            <translation><!-- English (St. Helena) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Tanzania)</masterLabel>
+            <translation><!-- English (Tanzania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Tonga)</masterLabel>
+            <translation><!-- English (Tonga) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Trinidad &amp; Tobago)</masterLabel>
+            <translation><!-- English (Trinidad &amp; Tobago) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Uganda)</masterLabel>
+            <translation><!-- English (Uganda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (United Arab Emirates)</masterLabel>
+            <translation><!-- English (United Arab Emirates) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (United Kingdom)</masterLabel>
+            <translation><!-- English (United Kingdom) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (United States)</masterLabel>
+            <translation><!-- English (United States) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Vanuatu)</masterLabel>
+            <translation><!-- English (Vanuatu) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estonian (Estonia)</masterLabel>
+            <translation><!-- Estonian (Estonia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finnish (Finland)</masterLabel>
+            <translation><!-- Finnish (Finland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Belgium)</masterLabel>
+            <translation><!-- French (Belgium) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Canada)</masterLabel>
+            <translation><!-- French (Canada) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Comoros)</masterLabel>
+            <translation><!-- French (Comoros) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (France)</masterLabel>
+            <translation><!-- French (France) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Guinea)</masterLabel>
+            <translation><!-- French (Guinea) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Haiti)</masterLabel>
+            <translation><!-- French (Haiti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Luxembourg)</masterLabel>
+            <translation><!-- French (Luxembourg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Mauritania)</masterLabel>
+            <translation><!-- French (Mauritania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Monaco)</masterLabel>
+            <translation><!-- French (Monaco) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Morocco)</masterLabel>
+            <translation><!-- French (Morocco) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Switzerland)</masterLabel>
+            <translation><!-- French (Switzerland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Wallis &amp; Futuna)</masterLabel>
+            <translation><!-- French (Wallis &amp; Futuna) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgian (Georgia)</masterLabel>
+            <translation><!-- Georgian (Georgia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German (Austria)</masterLabel>
+            <translation><!-- German (Austria) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German (Belgium)</masterLabel>
+            <translation><!-- German (Belgium) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German (Germany)</masterLabel>
+            <translation><!-- German (Germany) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German (Luxembourg)</masterLabel>
+            <translation><!-- German (Luxembourg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German (Switzerland)</masterLabel>
+            <translation><!-- German (Switzerland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greek (Cyprus)</masterLabel>
+            <translation><!-- Greek (Cyprus) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greek (Greece)</masterLabel>
+            <translation><!-- Greek (Greece) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gujarati (India)</masterLabel>
+            <translation><!-- Gujarati (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haitian Creole (Haiti)</masterLabel>
+            <translation><!-- Haitian Creole (Haiti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haitian Creole (United States)</masterLabel>
+            <translation><!-- Haitian Creole (United States) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hawaiian (United States)</masterLabel>
+            <translation><!-- Hawaiian (United States) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hebrew (Israel)</masterLabel>
+            <translation><!-- Hebrew (Israel) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hindi (India)</masterLabel>
+            <translation><!-- Hindi (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungarian (Hungary)</masterLabel>
+            <translation><!-- Hungarian (Hungary) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Icelandic (Iceland)</masterLabel>
+            <translation><!-- Icelandic (Iceland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesian (Indonesia)</masterLabel>
+            <translation><!-- Indonesian (Indonesia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Irish (Ireland)</masterLabel>
+            <translation><!-- Irish (Ireland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian (Italy)</masterLabel>
+            <translation><!-- Italian (Italy) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian (Switzerland)</masterLabel>
+            <translation><!-- Italian (Switzerland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese (Japan)</masterLabel>
+            <translation><!-- Japanese (Japan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kalaallisut (Greenland)</masterLabel>
+            <translation><!-- Kalaallisut (Greenland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kannada (India)</masterLabel>
+            <translation><!-- Kannada (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kazakh (Kazakhstan)</masterLabel>
+            <translation><!-- Kazakh (Kazakhstan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khmer (Cambodia)</masterLabel>
+            <translation><!-- Khmer (Cambodia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean (South Korea)</masterLabel>
+            <translation><!-- Korean (South Korea) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kyrgyz (Kyrgyzstan)</masterLabel>
+            <translation><!-- Kyrgyz (Kyrgyzstan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lao (Laos)</masterLabel>
+            <translation><!-- Lao (Laos) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Latvian (Latvia)</masterLabel>
+            <translation><!-- Latvian (Latvia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lithuanian (Lithuania)</masterLabel>
+            <translation><!-- Lithuanian (Lithuania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luba-Katanga (Congo - Kinshasa)</masterLabel>
+            <translation><!-- Luba-Katanga (Congo - Kinshasa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luxembourgish (Luxembourg)</masterLabel>
+            <translation><!-- Luxembourgish (Luxembourg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macedonian (North Macedonia)</masterLabel>
+            <translation><!-- Macedonian (North Macedonia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malay (Brunei)</masterLabel>
+            <translation><!-- Malay (Brunei) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malay (Malaysia)</masterLabel>
+            <translation><!-- Malay (Malaysia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malayalam (India)</masterLabel>
+            <translation><!-- Malayalam (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maltese (Malta)</masterLabel>
+            <translation><!-- Maltese (Malta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marathi (India)</masterLabel>
+            <translation><!-- Marathi (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montenegrin (Montenegro)</masterLabel>
+            <translation><!-- Montenegrin (Montenegro) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montenegrin (Montenegro, USD)</masterLabel>
+            <translation><!-- Montenegrin (Montenegro, USD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nepali (Nepal)</masterLabel>
+            <translation><!-- Nepali (Nepal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian (Norway)</masterLabel>
+            <translation><!-- Norwegian (Norway) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pashto (Afghanistan)</masterLabel>
+            <translation><!-- Pashto (Afghanistan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polish (Poland)</masterLabel>
+            <translation><!-- Polish (Poland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Angola)</masterLabel>
+            <translation><!-- Portuguese (Angola) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Brazil)</masterLabel>
+            <translation><!-- Portuguese (Brazil) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Cape Verde)</masterLabel>
+            <translation><!-- Portuguese (Cape Verde) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Mozambique)</masterLabel>
+            <translation><!-- Portuguese (Mozambique) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Portugal)</masterLabel>
+            <translation><!-- Portuguese (Portugal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (São Tomé &amp; Príncipe)</masterLabel>
+            <translation><!-- Portuguese (São Tomé &amp; Príncipe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romanian (Moldova)</masterLabel>
+            <translation><!-- Romanian (Moldova) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romanian (Romania)</masterLabel>
+            <translation><!-- Romanian (Romania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romansh (Switzerland)</masterLabel>
+            <translation><!-- Romansh (Switzerland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rundi (Burundi)</masterLabel>
+            <translation><!-- Rundi (Burundi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Armenia)</masterLabel>
+            <translation><!-- Russian (Armenia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Belarus)</masterLabel>
+            <translation><!-- Russian (Belarus) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Kazakhstan)</masterLabel>
+            <translation><!-- Russian (Kazakhstan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Kyrgyzstan)</masterLabel>
+            <translation><!-- Russian (Kyrgyzstan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Lithuania)</masterLabel>
+            <translation><!-- Russian (Lithuania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Moldova)</masterLabel>
+            <translation><!-- Russian (Moldova) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Poland)</masterLabel>
+            <translation><!-- Russian (Poland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Russia)</masterLabel>
+            <translation><!-- Russian (Russia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian (Ukraine)</masterLabel>
+            <translation><!-- Russian (Ukraine) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samoan (Samoa)</masterLabel>
+            <translation><!-- Samoan (Samoa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samoan (United States)</masterLabel>
+            <translation><!-- Samoan (United States) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbian (Cyrillic) (Bosnia and Herzegovina)</masterLabel>
+            <translation><!-- Serbian (Cyrillic) (Bosnia and Herzegovina) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbian (Cyrillic) (Serbia)</masterLabel>
+            <translation><!-- Serbian (Cyrillic) (Serbia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbian (Latin) (Bosnia and Herzegovina)</masterLabel>
+            <translation><!-- Serbian (Latin) (Bosnia and Herzegovina) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbian (Latin) (Serbia)</masterLabel>
+            <translation><!-- Serbian (Latin) (Serbia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbian (Serbia)</masterLabel>
+            <translation><!-- Serbian (Serbia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovak (Slovakia)</masterLabel>
+            <translation><!-- Slovak (Slovakia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovenian (Slovenia)</masterLabel>
+            <translation><!-- Slovenian (Slovenia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Somali (Djibouti)</masterLabel>
+            <translation><!-- Somali (Djibouti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Somali (Somalia)</masterLabel>
+            <translation><!-- Somali (Somalia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Argentina)</masterLabel>
+            <translation><!-- Spanish (Argentina) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Bolivia)</masterLabel>
+            <translation><!-- Spanish (Bolivia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Chile)</masterLabel>
+            <translation><!-- Spanish (Chile) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Colombia)</masterLabel>
+            <translation><!-- Spanish (Colombia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Costa Rica)</masterLabel>
+            <translation><!-- Spanish (Costa Rica) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Dominican Republic)</masterLabel>
+            <translation><!-- Spanish (Dominican Republic) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Ecuador)</masterLabel>
+            <translation><!-- Spanish (Ecuador) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (El Salvador)</masterLabel>
+            <translation><!-- Spanish (El Salvador) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Guatemala)</masterLabel>
+            <translation><!-- Spanish (Guatemala) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Honduras)</masterLabel>
+            <translation><!-- Spanish (Honduras) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Mexico)</masterLabel>
+            <translation><!-- Spanish (Mexico) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Nicaragua)</masterLabel>
+            <translation><!-- Spanish (Nicaragua) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Panama)</masterLabel>
+            <translation><!-- Spanish (Panama) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Paraguay)</masterLabel>
+            <translation><!-- Spanish (Paraguay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Peru)</masterLabel>
+            <translation><!-- Spanish (Peru) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Puerto Rico)</masterLabel>
+            <translation><!-- Spanish (Puerto Rico) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Spain)</masterLabel>
+            <translation><!-- Spanish (Spain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (United States)</masterLabel>
+            <translation><!-- Spanish (United States) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Uruguay)</masterLabel>
+            <translation><!-- Spanish (Uruguay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Venezuela)</masterLabel>
+            <translation><!-- Spanish (Venezuela) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swahili (Kenya)</masterLabel>
+            <translation><!-- Swahili (Kenya) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish (Sweden)</masterLabel>
+            <translation><!-- Swedish (Sweden) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagalog (Philippines)</masterLabel>
+            <translation><!-- Tagalog (Philippines) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tajik (Tajikistan)</masterLabel>
+            <translation><!-- Tajik (Tajikistan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tamil (India)</masterLabel>
+            <translation><!-- Tamil (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tamil (Sri Lanka)</masterLabel>
+            <translation><!-- Tamil (Sri Lanka) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Te reo (New Zealand)</masterLabel>
+            <translation><!-- Te reo (New Zealand) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telugu (India)</masterLabel>
+            <translation><!-- Telugu (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai (Thailand)</masterLabel>
+            <translation><!-- Thai (Thailand) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tigrinya (Ethiopia)</masterLabel>
+            <translation><!-- Tigrinya (Ethiopia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkish (Türkiye)</masterLabel>
+            <translation><!-- Turkish (Türkiye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukrainian (Ukraine)</masterLabel>
+            <translation><!-- Ukrainian (Ukraine) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Urdu (Pakistan)</masterLabel>
+            <translation><!-- Urdu (Pakistan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uzbek (Latin, Uzbekistan)</masterLabel>
+            <translation><!-- Uzbek (Latin, Uzbekistan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnamese (Vietnam)</masterLabel>
+            <translation><!-- Vietnamese (Vietnam) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welsh (United Kingdom)</masterLabel>
+            <translation><!-- Welsh (United Kingdom) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xhosa (South Africa)</masterLabel>
+            <translation><!-- Xhosa (South Africa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yiddish (United States)</masterLabel>
+            <translation><!-- Yiddish (United States) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yoruba (Benin)</masterLabel>
+            <translation><!-- Yoruba (Benin) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zulu (South Africa)</masterLabel>
+            <translation><!-- Zulu (South Africa) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Mobile --></label>
+        <name>MobilePhone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Zone --></label>
+        <name>TimeZoneSidKey__c</name>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Azores Summer Time (Atlantic/Azores)</masterLabel>
+            <translation><!-- (GMT+00:00) Azores Summer Time (Atlantic/Azores) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Abidjan)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Abidjan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Accra)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Accra) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Bamako)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Bamako) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Banjul)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Banjul) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Bissau)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Bissau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Conakry)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Conakry) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Dakar)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Dakar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Freetown)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Freetown) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Lome)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Lome) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Monrovia)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Monrovia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Nouakchott)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Nouakchott) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Ouagadougou)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Ouagadougou) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Africa/Sao_Tome)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Africa/Sao_Tome) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (America/Danmarkshavn)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (America/Danmarkshavn) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Atlantic/Reykjavik)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Atlantic/Reykjavik) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (Atlantic/St_Helena)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (Atlantic/St_Helena) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+00:00) Greenwich Mean Time (GMT)</masterLabel>
+            <translation><!-- (GMT+00:00) Greenwich Mean Time (GMT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) British Summer Time (Europe/Guernsey)</masterLabel>
+            <translation><!-- (GMT+01:00) British Summer Time (Europe/Guernsey) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) British Summer Time (Europe/Isle_of_Man)</masterLabel>
+            <translation><!-- (GMT+01:00) British Summer Time (Europe/Isle_of_Man) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) British Summer Time (Europe/Jersey)</masterLabel>
+            <translation><!-- (GMT+01:00) British Summer Time (Europe/Jersey) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) British Summer Time (Europe/London)</masterLabel>
+            <translation><!-- (GMT+01:00) British Summer Time (Europe/London) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Central European Standard Time (Africa/Algiers)</masterLabel>
+            <translation><!-- (GMT+01:00) Central European Standard Time (Africa/Algiers) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Central European Standard Time (Africa/Tunis)</masterLabel>
+            <translation><!-- (GMT+01:00) Central European Standard Time (Africa/Tunis) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Irish Standard Time (Europe/Dublin)</masterLabel>
+            <translation><!-- (GMT+01:00) Irish Standard Time (Europe/Dublin) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Bangui)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Bangui) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Brazzaville)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Brazzaville) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Douala)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Douala) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Kinshasa)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Kinshasa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Lagos)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Lagos) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Libreville)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Libreville) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Luanda)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Luanda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Malabo)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Malabo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Ndjamena)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Ndjamena) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Niamey)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Niamey) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) West Africa Standard Time (Africa/Porto-Novo)</masterLabel>
+            <translation><!-- (GMT+01:00) West Africa Standard Time (Africa/Porto-Novo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Western European Summer Time (Africa/Casablanca)</masterLabel>
+            <translation><!-- (GMT+01:00) Western European Summer Time (Africa/Casablanca) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Western European Summer Time (Africa/El_Aaiun)</masterLabel>
+            <translation><!-- (GMT+01:00) Western European Summer Time (Africa/El_Aaiun) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Western European Summer Time (Atlantic/Canary)</masterLabel>
+            <translation><!-- (GMT+01:00) Western European Summer Time (Atlantic/Canary) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Western European Summer Time (Atlantic/Faeroe)</masterLabel>
+            <translation><!-- (GMT+01:00) Western European Summer Time (Atlantic/Faeroe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Western European Summer Time (Atlantic/Madeira)</masterLabel>
+            <translation><!-- (GMT+01:00) Western European Summer Time (Atlantic/Madeira) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Western European Summer Time (Europe/Lisbon)</masterLabel>
+            <translation><!-- (GMT+01:00) Western European Summer Time (Europe/Lisbon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Blantyre)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Blantyre) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Bujumbura)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Bujumbura) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Gaborone)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Gaborone) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Harare)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Harare) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Juba)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Juba) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Khartoum)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Khartoum) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Kigali)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Kigali) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Lubumbashi)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Lubumbashi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Lusaka)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Lusaka) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Maputo)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Maputo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central Africa Time (Africa/Windhoek)</masterLabel>
+            <translation><!-- (GMT+02:00) Central Africa Time (Africa/Windhoek) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Africa/Ceuta)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Africa/Ceuta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Antarctica/Troll)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Antarctica/Troll) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Arctic/Longyearbyen)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Arctic/Longyearbyen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Amsterdam)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Amsterdam) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Andorra)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Andorra) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Belgrade)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Belgrade) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Berlin)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Berlin) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Bratislava)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Bratislava) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Brussels)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Brussels) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Budapest)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Budapest) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Busingen)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Busingen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Copenhagen)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Copenhagen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Gibraltar)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Gibraltar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Ljubljana)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Ljubljana) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Luxembourg)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Luxembourg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Madrid)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Madrid) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Malta)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Malta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Monaco)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Monaco) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Oslo)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Oslo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Paris)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Paris) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Podgorica)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Podgorica) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Prague)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Prague) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Rome)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Rome) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/San_Marino)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/San_Marino) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Sarajevo)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Sarajevo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Skopje)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Skopje) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Stockholm)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Stockholm) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Tirane)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Tirane) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Vaduz)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Vaduz) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Vatican)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Vatican) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Vienna)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Vienna) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Warsaw)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Warsaw) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Zagreb)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Zagreb) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Central European Summer Time (Europe/Zurich)</masterLabel>
+            <translation><!-- (GMT+02:00) Central European Summer Time (Europe/Zurich) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Eastern European Standard Time (Africa/Tripoli)</masterLabel>
+            <translation><!-- (GMT+02:00) Eastern European Standard Time (Africa/Tripoli) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Eastern European Standard Time (Europe/Kaliningrad)</masterLabel>
+            <translation><!-- (GMT+02:00) Eastern European Standard Time (Europe/Kaliningrad) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)</masterLabel>
+            <translation><!-- (GMT+02:00) South Africa Standard Time (Africa/Johannesburg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) South Africa Standard Time (Africa/Maseru)</masterLabel>
+            <translation><!-- (GMT+02:00) South Africa Standard Time (Africa/Maseru) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) South Africa Standard Time (Africa/Mbabane)</masterLabel>
+            <translation><!-- (GMT+02:00) South Africa Standard Time (Africa/Mbabane) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabian Standard Time (Asia/Aden)</masterLabel>
+            <translation><!-- (GMT+03:00) Arabian Standard Time (Asia/Aden) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabian Standard Time (Asia/Baghdad)</masterLabel>
+            <translation><!-- (GMT+03:00) Arabian Standard Time (Asia/Baghdad) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabian Standard Time (Asia/Bahrain)</masterLabel>
+            <translation><!-- (GMT+03:00) Arabian Standard Time (Asia/Bahrain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabian Standard Time (Asia/Kuwait)</masterLabel>
+            <translation><!-- (GMT+03:00) Arabian Standard Time (Asia/Kuwait) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabian Standard Time (Asia/Qatar)</masterLabel>
+            <translation><!-- (GMT+03:00) Arabian Standard Time (Asia/Qatar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabian Standard Time (Asia/Riyadh)</masterLabel>
+            <translation><!-- (GMT+03:00) Arabian Standard Time (Asia/Riyadh) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Addis_Ababa)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Addis_Ababa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Asmera)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Asmera) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Dar_es_Salaam)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Dar_es_Salaam) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Djibouti)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Djibouti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Kampala)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Kampala) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Mogadishu)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Mogadishu) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Africa/Nairobi)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Africa/Nairobi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Indian/Antananarivo)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Indian/Antananarivo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Indian/Comoro)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Indian/Comoro) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) East Africa Time (Indian/Mayotte)</masterLabel>
+            <translation><!-- (GMT+03:00) East Africa Time (Indian/Mayotte) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Standard Time (Africa/Cairo)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Standard Time (Africa/Cairo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Standard Time (Asia/Amman)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Standard Time (Asia/Amman) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Standard Time (Europe/Istanbul)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Standard Time (Europe/Istanbul) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Asia/Beirut)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Asia/Beirut) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Asia/Famagusta)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Asia/Famagusta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Asia/Gaza)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Asia/Gaza) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Asia/Hebron)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Asia/Hebron) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Asia/Nicosia)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Asia/Nicosia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Athens)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Athens) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Bucharest) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Chisinau)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Chisinau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Helsinki) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Kyiv)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Kyiv) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Mariehamn)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Mariehamn) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Riga)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Riga) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Sofia)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Sofia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Tallinn)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Tallinn) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Uzhgorod)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Uzhgorod) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Vilnius)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Vilnius) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Eastern European Summer Time (Europe/Zaporozhye)</masterLabel>
+            <translation><!-- (GMT+03:00) Eastern European Summer Time (Europe/Zaporozhye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)</masterLabel>
+            <translation><!-- (GMT+03:00) Israel Daylight Time (Asia/Jerusalem) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Moscow Standard Time (Europe/Kirov)</masterLabel>
+            <translation><!-- (GMT+03:00) Moscow Standard Time (Europe/Kirov) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Moscow Standard Time (Europe/Minsk)</masterLabel>
+            <translation><!-- (GMT+03:00) Moscow Standard Time (Europe/Minsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Moscow Standard Time (Europe/Moscow)</masterLabel>
+            <translation><!-- (GMT+03:00) Moscow Standard Time (Europe/Moscow) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Syowa Time (Antarctica/Syowa)</masterLabel>
+            <translation><!-- (GMT+03:00) Syowa Time (Antarctica/Syowa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Volgograd Standard Time (Europe/Volgograd)</masterLabel>
+            <translation><!-- (GMT+03:00) Volgograd Standard Time (Europe/Volgograd) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Armenia Standard Time (Asia/Yerevan)</masterLabel>
+            <translation><!-- (GMT+04:00) Armenia Standard Time (Asia/Yerevan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Azerbaijan Standard Time (Asia/Baku)</masterLabel>
+            <translation><!-- (GMT+04:00) Azerbaijan Standard Time (Asia/Baku) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Georgia Standard Time (Asia/Tbilisi)</masterLabel>
+            <translation><!-- (GMT+04:00) Georgia Standard Time (Asia/Tbilisi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Gulf Standard Time (Asia/Dubai)</masterLabel>
+            <translation><!-- (GMT+04:00) Gulf Standard Time (Asia/Dubai) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Gulf Standard Time (Asia/Muscat)</masterLabel>
+            <translation><!-- (GMT+04:00) Gulf Standard Time (Asia/Muscat) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Mauritius Standard Time (Indian/Mauritius)</masterLabel>
+            <translation><!-- (GMT+04:00) Mauritius Standard Time (Indian/Mauritius) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Moscow Standard Time + 1 (Europe/Saratov)</masterLabel>
+            <translation><!-- (GMT+04:00) Moscow Standard Time + 1 (Europe/Saratov) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Moscow Standard Time + 1 (Europe/Ulyanovsk)</masterLabel>
+            <translation><!-- (GMT+04:00) Moscow Standard Time + 1 (Europe/Ulyanovsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Réunion Time (Indian/Reunion)</masterLabel>
+            <translation><!-- (GMT+04:00) Réunion Time (Indian/Reunion) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Samara Standard Time (Europe/Astrakhan)</masterLabel>
+            <translation><!-- (GMT+04:00) Samara Standard Time (Europe/Astrakhan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Samara Standard Time (Europe/Samara)</masterLabel>
+            <translation><!-- (GMT+04:00) Samara Standard Time (Europe/Samara) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Seychelles Time (Indian/Mahe)</masterLabel>
+            <translation><!-- (GMT+04:00) Seychelles Time (Indian/Mahe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:30) Afghanistan Time (Asia/Kabul)</masterLabel>
+            <translation><!-- (GMT+04:30) Afghanistan Time (Asia/Kabul) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) East Kazakhstan Time (Asia/Almaty)</masterLabel>
+            <translation><!-- (GMT+05:00) East Kazakhstan Time (Asia/Almaty) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) East Kazakhstan Time (Asia/Qostanay)</masterLabel>
+            <translation><!-- (GMT+05:00) East Kazakhstan Time (Asia/Qostanay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) French Southern &amp; Antarctic Time (Indian/Kerguelen)</masterLabel>
+            <translation><!-- (GMT+05:00) French Southern &amp; Antarctic Time (Indian/Kerguelen) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Maldives Time (Indian/Maldives)</masterLabel>
+            <translation><!-- (GMT+05:00) Maldives Time (Indian/Maldives) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Mawson Time (Antarctica/Mawson)</masterLabel>
+            <translation><!-- (GMT+05:00) Mawson Time (Antarctica/Mawson) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Pakistan Standard Time (Asia/Karachi)</masterLabel>
+            <translation><!-- (GMT+05:00) Pakistan Standard Time (Asia/Karachi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Tajikistan Time (Asia/Dushanbe)</masterLabel>
+            <translation><!-- (GMT+05:00) Tajikistan Time (Asia/Dushanbe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Turkmenistan Standard Time (Asia/Ashgabat)</masterLabel>
+            <translation><!-- (GMT+05:00) Turkmenistan Standard Time (Asia/Ashgabat) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Uzbekistan Standard Time (Asia/Samarkand)</masterLabel>
+            <translation><!-- (GMT+05:00) Uzbekistan Standard Time (Asia/Samarkand) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Uzbekistan Standard Time (Asia/Tashkent)</masterLabel>
+            <translation><!-- (GMT+05:00) Uzbekistan Standard Time (Asia/Tashkent) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Vostok Time (Antarctica/Vostok)</masterLabel>
+            <translation><!-- (GMT+05:00) Vostok Time (Antarctica/Vostok) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) West Kazakhstan Time (Asia/Aqtau)</masterLabel>
+            <translation><!-- (GMT+05:00) West Kazakhstan Time (Asia/Aqtau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) West Kazakhstan Time (Asia/Aqtobe)</masterLabel>
+            <translation><!-- (GMT+05:00) West Kazakhstan Time (Asia/Aqtobe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) West Kazakhstan Time (Asia/Atyrau)</masterLabel>
+            <translation><!-- (GMT+05:00) West Kazakhstan Time (Asia/Atyrau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) West Kazakhstan Time (Asia/Oral)</masterLabel>
+            <translation><!-- (GMT+05:00) West Kazakhstan Time (Asia/Oral) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) West Kazakhstan Time (Asia/Qyzylorda)</masterLabel>
+            <translation><!-- (GMT+05:00) West Kazakhstan Time (Asia/Qyzylorda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Yekaterinburg Standard Time (Asia/Yekaterinburg)</masterLabel>
+            <translation><!-- (GMT+05:00) Yekaterinburg Standard Time (Asia/Yekaterinburg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:30) India Standard Time (Asia/Colombo)</masterLabel>
+            <translation><!-- (GMT+05:30) India Standard Time (Asia/Colombo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:30) India Standard Time (Asia/Kolkata)</masterLabel>
+            <translation><!-- (GMT+05:30) India Standard Time (Asia/Kolkata) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:45) Nepal Time (Asia/Kathmandu)</masterLabel>
+            <translation><!-- (GMT+05:45) Nepal Time (Asia/Kathmandu) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Bangladesh Standard Time (Asia/Dhaka)</masterLabel>
+            <translation><!-- (GMT+06:00) Bangladesh Standard Time (Asia/Dhaka) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Bhutan Time (Asia/Thimphu)</masterLabel>
+            <translation><!-- (GMT+06:00) Bhutan Time (Asia/Thimphu) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) China Standard Time (Asia/Urumqi)</masterLabel>
+            <translation><!-- (GMT+06:00) China Standard Time (Asia/Urumqi) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Indian Ocean Time (Indian/Chagos)</masterLabel>
+            <translation><!-- (GMT+06:00) Indian Ocean Time (Indian/Chagos) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Kyrgyzstan Time (Asia/Bishkek)</masterLabel>
+            <translation><!-- (GMT+06:00) Kyrgyzstan Time (Asia/Bishkek) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Omsk Standard Time (Asia/Omsk)</masterLabel>
+            <translation><!-- (GMT+06:00) Omsk Standard Time (Asia/Omsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:30) Cocos Islands Time (Indian/Cocos)</masterLabel>
+            <translation><!-- (GMT+06:30) Cocos Islands Time (Indian/Cocos) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:30) Myanmar Time (Asia/Rangoon)</masterLabel>
+            <translation><!-- (GMT+06:30) Myanmar Time (Asia/Rangoon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Christmas Island Time (Indian/Christmas)</masterLabel>
+            <translation><!-- (GMT+07:00) Christmas Island Time (Indian/Christmas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Davis Time (Antarctica/Davis)</masterLabel>
+            <translation><!-- (GMT+07:00) Davis Time (Antarctica/Davis) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Hovd Standard Time (Asia/Hovd)</masterLabel>
+            <translation><!-- (GMT+07:00) Hovd Standard Time (Asia/Hovd) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Indochina Time (Asia/Bangkok)</masterLabel>
+            <translation><!-- (GMT+07:00) Indochina Time (Asia/Bangkok) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Indochina Time (Asia/Ho_Chi_Minh)</masterLabel>
+            <translation><!-- (GMT+07:00) Indochina Time (Asia/Ho_Chi_Minh) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Indochina Time (Asia/Phnom_Penh)</masterLabel>
+            <translation><!-- (GMT+07:00) Indochina Time (Asia/Phnom_Penh) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Indochina Time (Asia/Vientiane)</masterLabel>
+            <translation><!-- (GMT+07:00) Indochina Time (Asia/Vientiane) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Krasnoyarsk Standard Time (Asia/Krasnoyarsk)</masterLabel>
+            <translation><!-- (GMT+07:00) Krasnoyarsk Standard Time (Asia/Krasnoyarsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Krasnoyarsk Standard Time (Asia/Novokuznetsk)</masterLabel>
+            <translation><!-- (GMT+07:00) Krasnoyarsk Standard Time (Asia/Novokuznetsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Moscow Standard Time + 4 (Asia/Barnaul)</masterLabel>
+            <translation><!-- (GMT+07:00) Moscow Standard Time + 4 (Asia/Barnaul) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Moscow Standard Time + 4 (Asia/Tomsk)</masterLabel>
+            <translation><!-- (GMT+07:00) Moscow Standard Time + 4 (Asia/Tomsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Novosibirsk Standard Time (Asia/Novosibirsk)</masterLabel>
+            <translation><!-- (GMT+07:00) Novosibirsk Standard Time (Asia/Novosibirsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Western Indonesia Time (Asia/Jakarta)</masterLabel>
+            <translation><!-- (GMT+07:00) Western Indonesia Time (Asia/Jakarta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Western Indonesia Time (Asia/Pontianak)</masterLabel>
+            <translation><!-- (GMT+07:00) Western Indonesia Time (Asia/Pontianak) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Australian Western Standard Time (Australia/Perth)</masterLabel>
+            <translation><!-- (GMT+08:00) Australian Western Standard Time (Australia/Perth) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Brunei Darussalam Time (Asia/Brunei)</masterLabel>
+            <translation><!-- (GMT+08:00) Brunei Darussalam Time (Asia/Brunei) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Casey Time (Antarctica/Casey)</masterLabel>
+            <translation><!-- (GMT+08:00) Casey Time (Antarctica/Casey) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Central Indonesia Time (Asia/Makassar)</masterLabel>
+            <translation><!-- (GMT+08:00) Central Indonesia Time (Asia/Makassar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) China Standard Time (Asia/Macau)</masterLabel>
+            <translation><!-- (GMT+08:00) China Standard Time (Asia/Macau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) China Standard Time (Asia/Shanghai)</masterLabel>
+            <translation><!-- (GMT+08:00) China Standard Time (Asia/Shanghai) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Hong Kong Standard Time (Asia/Hong_Kong)</masterLabel>
+            <translation><!-- (GMT+08:00) Hong Kong Standard Time (Asia/Hong_Kong) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Irkutsk Standard Time (Asia/Irkutsk)</masterLabel>
+            <translation><!-- (GMT+08:00) Irkutsk Standard Time (Asia/Irkutsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)</masterLabel>
+            <translation><!-- (GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Malaysia Time (Asia/Kuching)</masterLabel>
+            <translation><!-- (GMT+08:00) Malaysia Time (Asia/Kuching) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Philippine Standard Time (Asia/Manila)</masterLabel>
+            <translation><!-- (GMT+08:00) Philippine Standard Time (Asia/Manila) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Singapore Standard Time (Asia/Singapore)</masterLabel>
+            <translation><!-- (GMT+08:00) Singapore Standard Time (Asia/Singapore) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Taipei Standard Time (Asia/Taipei)</masterLabel>
+            <translation><!-- (GMT+08:00) Taipei Standard Time (Asia/Taipei) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Ulaanbaatar Standard Time (Asia/Choibalsan)</masterLabel>
+            <translation><!-- (GMT+08:00) Ulaanbaatar Standard Time (Asia/Choibalsan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Ulaanbaatar Standard Time (Asia/Ulaanbaatar)</masterLabel>
+            <translation><!-- (GMT+08:00) Ulaanbaatar Standard Time (Asia/Ulaanbaatar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:45) Australian Central Western Standard Time (Australia/Eucla)</masterLabel>
+            <translation><!-- (GMT+08:45) Australian Central Western Standard Time (Australia/Eucla) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) East Timor Time (Asia/Dili)</masterLabel>
+            <translation><!-- (GMT+09:00) East Timor Time (Asia/Dili) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Eastern Indonesia Time (Asia/Jayapura)</masterLabel>
+            <translation><!-- (GMT+09:00) Eastern Indonesia Time (Asia/Jayapura) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Japan Standard Time (Asia/Tokyo)</masterLabel>
+            <translation><!-- (GMT+09:00) Japan Standard Time (Asia/Tokyo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Korean Standard Time (Asia/Seoul)</masterLabel>
+            <translation><!-- (GMT+09:00) Korean Standard Time (Asia/Seoul) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Palau Time (Pacific/Palau)</masterLabel>
+            <translation><!-- (GMT+09:00) Palau Time (Pacific/Palau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Yakutsk Standard Time (Asia/Chita)</masterLabel>
+            <translation><!-- (GMT+09:00) Yakutsk Standard Time (Asia/Chita) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Yakutsk Standard Time (Asia/Khandyga)</masterLabel>
+            <translation><!-- (GMT+09:00) Yakutsk Standard Time (Asia/Khandyga) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Yakutsk Standard Time (Asia/Yakutsk)</masterLabel>
+            <translation><!-- (GMT+09:00) Yakutsk Standard Time (Asia/Yakutsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)</masterLabel>
+            <translation><!-- (GMT+09:30) Australian Central Standard Time (Australia/Adelaide) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:30) Australian Central Standard Time (Australia/Broken_Hill)</masterLabel>
+            <translation><!-- (GMT+09:30) Australian Central Standard Time (Australia/Broken_Hill) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:30) Australian Central Standard Time (Australia/Darwin)</masterLabel>
+            <translation><!-- (GMT+09:30) Australian Central Standard Time (Australia/Darwin) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Antarctica/Macquarie)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Antarctica/Macquarie) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Australia/Currie)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Australia/Currie) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Australia/Hobart)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Australia/Hobart) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Australia/Lindeman)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Australia/Lindeman) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Australia/Melbourne)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Australia/Melbourne) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)</masterLabel>
+            <translation><!-- (GMT+10:00) Australian Eastern Standard Time (Australia/Sydney) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Chamorro Standard Time (Pacific/Guam)</masterLabel>
+            <translation><!-- (GMT+10:00) Chamorro Standard Time (Pacific/Guam) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Chamorro Standard Time (Pacific/Saipan)</masterLabel>
+            <translation><!-- (GMT+10:00) Chamorro Standard Time (Pacific/Saipan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Chuuk Time (Pacific/Truk)</masterLabel>
+            <translation><!-- (GMT+10:00) Chuuk Time (Pacific/Truk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Dumont-d’Urville Time (Antarctica/DumontDUrville)</masterLabel>
+            <translation><!-- (GMT+10:00) Dumont-d’Urville Time (Antarctica/DumontDUrville) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Papua New Guinea Time (Pacific/Port_Moresby)</masterLabel>
+            <translation><!-- (GMT+10:00) Papua New Guinea Time (Pacific/Port_Moresby) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Vladivostok Standard Time (Asia/Ust-Nera)</masterLabel>
+            <translation><!-- (GMT+10:00) Vladivostok Standard Time (Asia/Ust-Nera) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Vladivostok Standard Time (Asia/Vladivostok)</masterLabel>
+            <translation><!-- (GMT+10:00) Vladivostok Standard Time (Asia/Vladivostok) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)</masterLabel>
+            <translation><!-- (GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Bougainville Standard Time (Pacific/Bougainville)</masterLabel>
+            <translation><!-- (GMT+11:00) Bougainville Standard Time (Pacific/Bougainville) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Kosrae Time (Pacific/Kosrae)</masterLabel>
+            <translation><!-- (GMT+11:00) Kosrae Time (Pacific/Kosrae) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Magadan Standard Time (Asia/Magadan)</masterLabel>
+            <translation><!-- (GMT+11:00) Magadan Standard Time (Asia/Magadan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Magadan Standard Time (Asia/Srednekolymsk)</masterLabel>
+            <translation><!-- (GMT+11:00) Magadan Standard Time (Asia/Srednekolymsk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) New Caledonia Standard Time (Pacific/Noumea)</masterLabel>
+            <translation><!-- (GMT+11:00) New Caledonia Standard Time (Pacific/Noumea) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Norfolk Island Standard Time (Pacific/Norfolk)</masterLabel>
+            <translation><!-- (GMT+11:00) Norfolk Island Standard Time (Pacific/Norfolk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Ponape Time (Pacific/Ponape)</masterLabel>
+            <translation><!-- (GMT+11:00) Ponape Time (Pacific/Ponape) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Sakhalin Standard Time (Asia/Sakhalin)</masterLabel>
+            <translation><!-- (GMT+11:00) Sakhalin Standard Time (Asia/Sakhalin) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)</masterLabel>
+            <translation><!-- (GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Vanuatu Standard Time (Pacific/Efate)</masterLabel>
+            <translation><!-- (GMT+11:00) Vanuatu Standard Time (Pacific/Efate) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Anadyr Standard Time (Asia/Anadyr)</masterLabel>
+            <translation><!-- (GMT+12:00) Anadyr Standard Time (Asia/Anadyr) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Fiji Standard Time (Pacific/Fiji)</masterLabel>
+            <translation><!-- (GMT+12:00) Fiji Standard Time (Pacific/Fiji) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Gilbert Islands Time (Pacific/Tarawa)</masterLabel>
+            <translation><!-- (GMT+12:00) Gilbert Islands Time (Pacific/Tarawa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Marshall Islands Time (Pacific/Kwajalein)</masterLabel>
+            <translation><!-- (GMT+12:00) Marshall Islands Time (Pacific/Kwajalein) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Marshall Islands Time (Pacific/Majuro)</masterLabel>
+            <translation><!-- (GMT+12:00) Marshall Islands Time (Pacific/Majuro) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Nauru Time (Pacific/Nauru)</masterLabel>
+            <translation><!-- (GMT+12:00) Nauru Time (Pacific/Nauru) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) New Zealand Standard Time (Antarctica/McMurdo)</masterLabel>
+            <translation><!-- (GMT+12:00) New Zealand Standard Time (Antarctica/McMurdo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)</masterLabel>
+            <translation><!-- (GMT+12:00) New Zealand Standard Time (Pacific/Auckland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Petropavlovsk-Kamchatski Standard Time (Asia/Kamchatka)</masterLabel>
+            <translation><!-- (GMT+12:00) Petropavlovsk-Kamchatski Standard Time (Asia/Kamchatka) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Tuvalu Time (Pacific/Funafuti)</masterLabel>
+            <translation><!-- (GMT+12:00) Tuvalu Time (Pacific/Funafuti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Wake Island Time (Pacific/Wake)</masterLabel>
+            <translation><!-- (GMT+12:00) Wake Island Time (Pacific/Wake) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Wallis &amp; Futuna Time (Pacific/Wallis)</masterLabel>
+            <translation><!-- (GMT+12:00) Wallis &amp; Futuna Time (Pacific/Wallis) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:45) Chatham Standard Time (Pacific/Chatham)</masterLabel>
+            <translation><!-- (GMT+12:45) Chatham Standard Time (Pacific/Chatham) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+13:00) Apia Standard Time (Pacific/Apia)</masterLabel>
+            <translation><!-- (GMT+13:00) Apia Standard Time (Pacific/Apia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)</masterLabel>
+            <translation><!-- (GMT+13:00) Phoenix Islands Time (Pacific/Enderbury) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+13:00) Tokelau Time (Pacific/Fakaofo)</masterLabel>
+            <translation><!-- (GMT+13:00) Tokelau Time (Pacific/Fakaofo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+13:00) Tonga Standard Time (Pacific/Tongatapu)</masterLabel>
+            <translation><!-- (GMT+13:00) Tonga Standard Time (Pacific/Tongatapu) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+14:00) Line Islands Time (Pacific/Kiritimati)</masterLabel>
+            <translation><!-- (GMT+14:00) Line Islands Time (Pacific/Kiritimati) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-01:00) Cape Verde Standard Time (Atlantic/Cape_Verde)</masterLabel>
+            <translation><!-- (GMT-01:00) Cape Verde Standard Time (Atlantic/Cape_Verde) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-01:00) East Greenland Summer Time (America/Scoresbysund)</masterLabel>
+            <translation><!-- (GMT-01:00) East Greenland Summer Time (America/Scoresbysund) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-01:00) West Greenland Summer Time (America/Godthab)</masterLabel>
+            <translation><!-- (GMT-01:00) West Greenland Summer Time (America/Godthab) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-02:00) Fernando de Noronha Standard Time (America/Noronha)</masterLabel>
+            <translation><!-- (GMT-02:00) Fernando de Noronha Standard Time (America/Noronha) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)</masterLabel>
+            <translation><!-- (GMT-02:00) South Georgia Time (Atlantic/South_Georgia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-02:00) St Pierre &amp; Miquelon Daylight Time (America/Miquelon)</masterLabel>
+            <translation><!-- (GMT-02:00) St Pierre &amp; Miquelon Daylight Time (America/Miquelon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)</masterLabel>
+            <translation><!-- (GMT-02:30) Newfoundland Daylight Time (America/St_Johns) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/Buenos_Aires)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/Buenos_Aires) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/La_Rioja)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/La_Rioja) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/Rio_Gallegos)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/Rio_Gallegos) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/Salta)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/Salta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/San_Juan)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/San_Juan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/San_Luis)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/San_Luis) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/Tucuman)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/Tucuman) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Argentina/Ushuaia)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Argentina/Ushuaia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Catamarca)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Catamarca) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Cordoba)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Cordoba) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Jujuy)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Jujuy) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Argentina Standard Time (America/Mendoza)</masterLabel>
+            <translation><!-- (GMT-03:00) Argentina Standard Time (America/Mendoza) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Atlantic Daylight Time (America/Glace_Bay)</masterLabel>
+            <translation><!-- (GMT-03:00) Atlantic Daylight Time (America/Glace_Bay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Atlantic Daylight Time (America/Goose_Bay)</masterLabel>
+            <translation><!-- (GMT-03:00) Atlantic Daylight Time (America/Goose_Bay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Atlantic Daylight Time (America/Halifax)</masterLabel>
+            <translation><!-- (GMT-03:00) Atlantic Daylight Time (America/Halifax) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Atlantic Daylight Time (America/Moncton)</masterLabel>
+            <translation><!-- (GMT-03:00) Atlantic Daylight Time (America/Moncton) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Atlantic Daylight Time (America/Thule)</masterLabel>
+            <translation><!-- (GMT-03:00) Atlantic Daylight Time (America/Thule) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)</masterLabel>
+            <translation><!-- (GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Araguaina)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Araguaina) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Bahia)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Bahia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Belem)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Belem) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Fortaleza)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Fortaleza) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Maceio)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Maceio) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Recife)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Recife) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Santarem)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Santarem) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia Standard Time (America/Sao_Paulo)</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia Standard Time (America/Sao_Paulo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Chile Standard Time (America/Punta_Arenas)</masterLabel>
+            <translation><!-- (GMT-03:00) Chile Standard Time (America/Punta_Arenas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Chile Standard Time (Antarctica/Palmer)</masterLabel>
+            <translation><!-- (GMT-03:00) Chile Standard Time (Antarctica/Palmer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Falkland Islands Standard Time (Atlantic/Stanley)</masterLabel>
+            <translation><!-- (GMT-03:00) Falkland Islands Standard Time (Atlantic/Stanley) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) French Guiana Time (America/Cayenne)</masterLabel>
+            <translation><!-- (GMT-03:00) French Guiana Time (America/Cayenne) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Rothera Time (Antarctica/Rothera)</masterLabel>
+            <translation><!-- (GMT-03:00) Rothera Time (Antarctica/Rothera) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Suriname Time (America/Paramaribo)</masterLabel>
+            <translation><!-- (GMT-03:00) Suriname Time (America/Paramaribo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Uruguay Standard Time (America/Montevideo)</masterLabel>
+            <translation><!-- (GMT-03:00) Uruguay Standard Time (America/Montevideo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Amazon Standard Time (America/Boa_Vista)</masterLabel>
+            <translation><!-- (GMT-04:00) Amazon Standard Time (America/Boa_Vista) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Amazon Standard Time (America/Campo_Grande)</masterLabel>
+            <translation><!-- (GMT-04:00) Amazon Standard Time (America/Campo_Grande) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Amazon Standard Time (America/Cuiaba)</masterLabel>
+            <translation><!-- (GMT-04:00) Amazon Standard Time (America/Cuiaba) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Amazon Standard Time (America/Manaus)</masterLabel>
+            <translation><!-- (GMT-04:00) Amazon Standard Time (America/Manaus) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Amazon Standard Time (America/Porto_Velho)</masterLabel>
+            <translation><!-- (GMT-04:00) Amazon Standard Time (America/Porto_Velho) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Anguilla)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Anguilla) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Antigua)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Antigua) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Aruba)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Aruba) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Barbados)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Barbados) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Blanc-Sablon)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Blanc-Sablon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Curacao)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Curacao) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Dominica)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Dominica) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Grenada)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Grenada) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Guadeloupe)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Guadeloupe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Kralendijk)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Kralendijk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Lower_Princes)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Lower_Princes) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Marigot)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Marigot) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Martinique)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Martinique) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Montserrat)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Montserrat) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Port_of_Spain)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Port_of_Spain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Puerto_Rico) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Santo_Domingo)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Santo_Domingo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/St_Barthelemy)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/St_Barthelemy) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/St_Kitts)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/St_Kitts) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/St_Lucia)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/St_Lucia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/St_Thomas)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/St_Thomas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/St_Vincent)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/St_Vincent) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic Standard Time (America/Tortola)</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic Standard Time (America/Tortola) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Bolivia Time (America/La_Paz)</masterLabel>
+            <translation><!-- (GMT-04:00) Bolivia Time (America/La_Paz) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Chile Standard Time (America/Santiago)</masterLabel>
+            <translation><!-- (GMT-04:00) Chile Standard Time (America/Santiago) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Detroit)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Detroit) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Grand_Turk)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Grand_Turk) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Indiana/Indianapolis)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Indiana/Indianapolis) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Indiana/Marengo)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Indiana/Marengo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Indiana/Petersburg)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Indiana/Petersburg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Indiana/Vevay)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Indiana/Vevay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Indiana/Vincennes)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Indiana/Vincennes) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Indiana/Winamac)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Indiana/Winamac) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Iqaluit)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Iqaluit) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Kentucky/Monticello)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Kentucky/Monticello) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Louisville)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Louisville) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Montreal)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Montreal) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Nassau)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Nassau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/New_York)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/New_York) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Nipigon)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Nipigon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Pangnirtung)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Pangnirtung) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Port-au-Prince)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Port-au-Prince) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Thunder_Bay)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Thunder_Bay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Eastern Daylight Time (America/Toronto)</masterLabel>
+            <translation><!-- (GMT-04:00) Eastern Daylight Time (America/Toronto) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Guyana Time (America/Guyana)</masterLabel>
+            <translation><!-- (GMT-04:00) Guyana Time (America/Guyana) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Paraguay Standard Time (America/Asuncion)</masterLabel>
+            <translation><!-- (GMT-04:00) Paraguay Standard Time (America/Asuncion) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Venezuela Time (America/Caracas)</masterLabel>
+            <translation><!-- (GMT-04:00) Venezuela Time (America/Caracas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Acre Standard Time (America/Eirunepe)</masterLabel>
+            <translation><!-- (GMT-05:00) Acre Standard Time (America/Eirunepe) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Acre Standard Time (America/Rio_Branco)</masterLabel>
+            <translation><!-- (GMT-05:00) Acre Standard Time (America/Rio_Branco) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Chicago)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Chicago) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Indiana/Knox)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Indiana/Knox) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Indiana/Tell_City)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Indiana/Tell_City) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Matamoros)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Matamoros) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Menominee)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Menominee) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/North_Dakota/Beulah)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/North_Dakota/Beulah) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/North_Dakota/Center)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/North_Dakota/Center) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/North_Dakota/New_Salem)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/North_Dakota/New_Salem) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Rainy_River)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Rainy_River) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Rankin_Inlet)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Rankin_Inlet) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Resolute)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Resolute) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Central Daylight Time (America/Winnipeg)</masterLabel>
+            <translation><!-- (GMT-05:00) Central Daylight Time (America/Winnipeg) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Colombia Standard Time (America/Bogota)</masterLabel>
+            <translation><!-- (GMT-05:00) Colombia Standard Time (America/Bogota) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Eastern Standard Time (America/Cancun)</masterLabel>
+            <translation><!-- (GMT-05:00) Eastern Standard Time (America/Cancun) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Eastern Standard Time (America/Cayman)</masterLabel>
+            <translation><!-- (GMT-05:00) Eastern Standard Time (America/Cayman) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Eastern Standard Time (America/Coral_Harbour)</masterLabel>
+            <translation><!-- (GMT-05:00) Eastern Standard Time (America/Coral_Harbour) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Eastern Standard Time (America/Jamaica)</masterLabel>
+            <translation><!-- (GMT-05:00) Eastern Standard Time (America/Jamaica) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Eastern Standard Time (America/Panama)</masterLabel>
+            <translation><!-- (GMT-05:00) Eastern Standard Time (America/Panama) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Ecuador Time (America/Guayaquil)</masterLabel>
+            <translation><!-- (GMT-05:00) Ecuador Time (America/Guayaquil) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Mountain Daylight Time (America/Ojinaga)</masterLabel>
+            <translation><!-- (GMT-05:00) Mountain Daylight Time (America/Ojinaga) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Peru Standard Time (America/Lima)</masterLabel>
+            <translation><!-- (GMT-05:00) Peru Standard Time (America/Lima) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Bahia_Banderas)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Bahia_Banderas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Belize)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Belize) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Costa_Rica)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Costa_Rica) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/El_Salvador)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/El_Salvador) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Guatemala)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Guatemala) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Managua)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Managua) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Merida)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Merida) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Mexico_City)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Mexico_City) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Monterrey)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Monterrey) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Regina)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Regina) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Swift_Current)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Swift_Current) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central Standard Time (America/Tegucigalpa)</masterLabel>
+            <translation><!-- (GMT-06:00) Central Standard Time (America/Tegucigalpa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Easter Island Standard Time (Pacific/Easter)</masterLabel>
+            <translation><!-- (GMT-06:00) Easter Island Standard Time (Pacific/Easter) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Galapagos Time (Pacific/Galapagos)</masterLabel>
+            <translation><!-- (GMT-06:00) Galapagos Time (Pacific/Galapagos) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mexican Pacific Standard Time (America/Chihuahua)</masterLabel>
+            <translation><!-- (GMT-06:00) Mexican Pacific Standard Time (America/Chihuahua) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mountain Daylight Time (America/Boise)</masterLabel>
+            <translation><!-- (GMT-06:00) Mountain Daylight Time (America/Boise) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mountain Daylight Time (America/Cambridge_Bay)</masterLabel>
+            <translation><!-- (GMT-06:00) Mountain Daylight Time (America/Cambridge_Bay) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mountain Daylight Time (America/Denver)</masterLabel>
+            <translation><!-- (GMT-06:00) Mountain Daylight Time (America/Denver) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mountain Daylight Time (America/Edmonton)</masterLabel>
+            <translation><!-- (GMT-06:00) Mountain Daylight Time (America/Edmonton) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mountain Daylight Time (America/Inuvik)</masterLabel>
+            <translation><!-- (GMT-06:00) Mountain Daylight Time (America/Inuvik) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mountain Daylight Time (America/Yellowknife)</masterLabel>
+            <translation><!-- (GMT-06:00) Mountain Daylight Time (America/Yellowknife) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mexican Pacific Standard Time (America/Hermosillo)</masterLabel>
+            <translation><!-- (GMT-07:00) Mexican Pacific Standard Time (America/Hermosillo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mexican Pacific Standard Time (America/Mazatlan)</masterLabel>
+            <translation><!-- (GMT-07:00) Mexican Pacific Standard Time (America/Mazatlan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mountain Standard Time (America/Creston)</masterLabel>
+            <translation><!-- (GMT-07:00) Mountain Standard Time (America/Creston) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mountain Standard Time (America/Dawson_Creek)</masterLabel>
+            <translation><!-- (GMT-07:00) Mountain Standard Time (America/Dawson_Creek) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mountain Standard Time (America/Fort_Nelson)</masterLabel>
+            <translation><!-- (GMT-07:00) Mountain Standard Time (America/Fort_Nelson) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mountain Standard Time (America/Phoenix)</masterLabel>
+            <translation><!-- (GMT-07:00) Mountain Standard Time (America/Phoenix) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Northwest Mexico Daylight Time (America/Santa_Isabel)</masterLabel>
+            <translation><!-- (GMT-07:00) Northwest Mexico Daylight Time (America/Santa_Isabel) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)</masterLabel>
+            <translation><!-- (GMT-07:00) Pacific Daylight Time (America/Los_Angeles) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Pacific Daylight Time (America/Tijuana)</masterLabel>
+            <translation><!-- (GMT-07:00) Pacific Daylight Time (America/Tijuana) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Pacific Daylight Time (America/Vancouver)</masterLabel>
+            <translation><!-- (GMT-07:00) Pacific Daylight Time (America/Vancouver) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Yukon Time (America/Dawson)</masterLabel>
+            <translation><!-- (GMT-07:00) Yukon Time (America/Dawson) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Yukon Time (America/Whitehorse)</masterLabel>
+            <translation><!-- (GMT-07:00) Yukon Time (America/Whitehorse) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Alaska Daylight Time (America/Anchorage)</masterLabel>
+            <translation><!-- (GMT-08:00) Alaska Daylight Time (America/Anchorage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Alaska Daylight Time (America/Juneau)</masterLabel>
+            <translation><!-- (GMT-08:00) Alaska Daylight Time (America/Juneau) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Alaska Daylight Time (America/Metlakatla)</masterLabel>
+            <translation><!-- (GMT-08:00) Alaska Daylight Time (America/Metlakatla) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Alaska Daylight Time (America/Nome)</masterLabel>
+            <translation><!-- (GMT-08:00) Alaska Daylight Time (America/Nome) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Alaska Daylight Time (America/Sitka)</masterLabel>
+            <translation><!-- (GMT-08:00) Alaska Daylight Time (America/Sitka) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Alaska Daylight Time (America/Yakutat)</masterLabel>
+            <translation><!-- (GMT-08:00) Alaska Daylight Time (America/Yakutat) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Pitcairn Time (Pacific/Pitcairn)</masterLabel>
+            <translation><!-- (GMT-08:00) Pitcairn Time (Pacific/Pitcairn) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-09:00) Gambier Time (Pacific/Gambier)</masterLabel>
+            <translation><!-- (GMT-09:00) Gambier Time (Pacific/Gambier) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-09:00) Hawaii-Aleutian Daylight Time (America/Adak)</masterLabel>
+            <translation><!-- (GMT-09:00) Hawaii-Aleutian Daylight Time (America/Adak) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-09:30) Marquesas Time (Pacific/Marquesas)</masterLabel>
+            <translation><!-- (GMT-09:30) Marquesas Time (Pacific/Marquesas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-10:00) Cook Islands Standard Time (Pacific/Rarotonga)</masterLabel>
+            <translation><!-- (GMT-10:00) Cook Islands Standard Time (Pacific/Rarotonga) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)</masterLabel>
+            <translation><!-- (GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Johnston)</masterLabel>
+            <translation><!-- (GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Johnston) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-10:00) Tahiti Time (Pacific/Tahiti)</masterLabel>
+            <translation><!-- (GMT-10:00) Tahiti Time (Pacific/Tahiti) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-11:00) Niue Time (Pacific/Niue)</masterLabel>
+            <translation><!-- (GMT-11:00) Niue Time (Pacific/Niue) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-11:00) Samoa Standard Time (Pacific/Midway)</masterLabel>
+            <translation><!-- (GMT-11:00) Samoa Standard Time (Pacific/Midway) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)</masterLabel>
+            <translation><!-- (GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Username --></label>
+        <name>Username__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

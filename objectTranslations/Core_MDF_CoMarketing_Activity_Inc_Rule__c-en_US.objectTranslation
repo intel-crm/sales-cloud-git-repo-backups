@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CoMarketing Activity Incentive Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CoMarketing Activity Incentive Rules</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_Activity_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Brand --></label>
+        <name>Core_MDF_Brand_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- CoMarketing Activity Incentive Rules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Effective Date --></label>
+        <name>Core_MDF_Effective_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incentive --></label>
+        <name>Core_MDF_Incentive_Pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ineffective Date --></label>
+        <name>Core_MDF_Ineffective_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_MDF_Product_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Label --></label>
+        <name>Core_MDF_Question_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technology --></label>
+        <name>Core_MDF_Technology_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please select at least one criteria to create the rule --></errorMessage>
+        <name>Core_MDF_Validate_Criteria</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ineffective date cant be lesser than effective date --></errorMessage>
+        <name>Core_MDF_Validate_Dates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter incentive percentage between 0 to100 --></errorMessage>
+        <name>Core_MDF_Validate_Incentive</name>
+    </validationRules>
+</CustomObjectTranslation>

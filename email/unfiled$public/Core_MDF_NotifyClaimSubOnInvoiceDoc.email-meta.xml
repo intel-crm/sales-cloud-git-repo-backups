@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Claim Submitters will receive notifications for Invoice Document Upload</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyClaimSubOnInvoiceDoc</name>
+    <style>none</style>
+    <subject>Claim #  requires submission of VAT invoice</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

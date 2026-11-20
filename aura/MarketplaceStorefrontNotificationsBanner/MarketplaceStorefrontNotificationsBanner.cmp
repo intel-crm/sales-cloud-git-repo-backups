@@ -1,0 +1,54 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    
+    <aura:attribute name="message" description="Message for notification status" type="String" default="[Message missing.]" />
+    <aura:attribute name="type" description="Message type, can be save/lock/redo/save" type="String" default="redo" />
+    <aura:attribute name="openEditStorefront" type="Boolean" default="false" />
+    <aura:attribute name="editStorefrontStep" type="Integer" default="0" />
+    <aura:attribute name="textLinkLabel" type="String" />
+    
+    <aura:registerEvent name="appEvent" type="c:MarketplacePageEvent"/>
+    
+    
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navService"/>
+    
+    <div aura:id="notification" class="{!join(' ', 'notificationBanner', v.textLinkLabel ? 'cursorPointer' : '')}" >
+        
+        <lightning:layout  multipleRows="true">
+            
+            <lightning:layoutItem class="messageContainer" size="{! v.textLinkLabel ? '7' : '12' }" mediumDeviceSize="{!v.textLinkLabel ? '9' : '12'}">
+                <lightning:icon iconName="{! 'utility:'+ v.type }"
+                                size="x-small"
+                                alternativeText="{!v.type}"
+                                class="iconContainer" />
+                <span class="message">{!v.message}</span>
+            </lightning:layoutItem>
+            <aura:if isTrue="{!v.textLinkLabel}">
+                <lightning:layoutItem size="5" mediumDeviceSize="3" class="rightAlign linkText">
+                    <a href="#" onclick="{!c.handleClick}">{!v.textLinkLabel}</a>
+                </lightning:layoutItem>
+            </aura:if>
+            
+        </lightning:layout>
+        
+        
+        
+        <!--
+        <p class="{!v.type + ' fullWidth'}">
+            <lightning:icon iconName="{! 'utility:'+ v.type }"
+                            size="x-small"
+                            alternativeText="{!v.type}"
+                            class="iconContainer" />
+            <span class="message">{!v.message}</span>
+            <aura:if isTrue="{!v.textLinkLabel}">
+                <span  class="slds-float_right slds-m-right_xx-large link-text">
+                    {!v.textLinkLabel}
+                </span>
+            </aura:if>
+
+        </p> -->
+    </div>
+    
+    
+</aura:component>

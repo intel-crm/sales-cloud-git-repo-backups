@@ -1,0 +1,726 @@
+<!------------------------------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_CaseClone
+*Description:  Used to Clone Case
+*Modification Log :
+* Developer                   Date                        Description
+* ------------------------------------------------------------------------------------------------                 
+* Amritesh                    12/18/2017                  Modified - US85344,US101112 
+----------------------------------------------------------------------------------------------------->
+<apex:page id="page" standardController="case" extensions="Core_IPS_Case_Clone_Controller" action="{!PageInit}"  >
+    <!--<apex:includeScript value="{!URLFOR($Resource.CKeditor, '/ckeditor/ckeditor.js')}"/>-->
+    <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+    <apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+    
+    <!-- added by amritesh US85344,US101112 -->
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.js')}"/>
+    
+    <style>
+        .custom-combobox {
+        position: relative;
+        display: inline-block;
+        }
+        .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+        }
+        .custom-combobox-input {
+        margin: 0;
+        padding: 4px 8px;
+        background-color:white;
+        }
+        
+        .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        }
+        
+        .link a {
+        margin-left:1%; 
+        color:blue;
+        }
+        
+    </style>
+    
+    <script>
+    
+    $( function() {
+        
+        $.widget( "custom.combobox", {
+            _create: function() {
+                
+                this.wrapper = $( "<span>" )
+                .addClass( "custom-combobox" )
+                .insertAfter( this.element );
+                
+                this.element.hide();
+                this._createAutocomplete();
+                this._createShowAllButton();
+            },
+            
+            _createAutocomplete: function() {
+                
+                var selected = this.element.children( ":selected" ),
+                    value = selected.val() ? selected.text() : "";
+                
+                this.input = $( "<input>" )
+                .appendTo( this.wrapper )
+                .val( {!JSENCODE('value')} )
+                .attr( "title", "" )
+                .attr( "placeholder", "--Select--" )
+                .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+                .autocomplete({
+                    delay: 0,
+                    minLength: 0,
+                    source: $.proxy( this, "_source" ),
+                })
+                .tooltip({
+                    classes: {
+                        "ui-tooltip": "ui-state-highlight"
+                    }
+                });
+                /*.click(function() { 
+                        $(this).autocomplete("search", ""); 
+                    });*/
+                this._on( this.input, {
+                    autocompleteselect: function( event, ui ) {
+                        
+                        ui.item.option.selected = true;
+                        //-- Fire the Event --
+                        $(this.element).trigger( "change" );
+                        
+                        this._trigger( "select", event, {
+                            item: ui.item.option
+                        });
+                        
+                    },
+                    
+                    autocompletechange: "_removeIfInvalid"
+                });
+                
+                //Adjust select option width automatically
+                $(this.input).width($(this.element).width() > 50 ? $(this.element).width()-10 : $(this.element).width());  
+                /* if($(this.element).width()>350){
+                        $(this.input).width(350); 
+                    }else{
+                        $(this.input).width($(this.element).width() > 50 ? $(this.element).width()-10 : $(this.element).width()); 
+                    }*/
+                $(this.input).data("uiAutocomplete").menu._isDivider = function( item ) {
+                    return false;
+                }
+            },
+            
+            
+            _createShowAllButton: function() {
+                var input = this.input,
+                    wasOpen = false;
+                
+                $( "<a>" )
+                .attr( "tabIndex", -1 )
+                .attr( "title", "Type to autocomplete or click to show All options" )
+                .tooltip()
+                .appendTo( this.wrapper )
+                .button({
+                    icons: {
+                        primary: "ui-icon-triangle-1-s"
+                    },
+                    text: false
+                })
+                .removeClass( "ui-corner-all" )
+                .addClass( "custom-combobox-toggle ui-corner-right" )
+                .on( "mousedown", function() {
+                    wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+                })
+                .on( "click", function() {
+                    input.trigger( "focus" );
+                    
+                    // Close if already visible
+                    if ( wasOpen ) {
+                        return;
+                    }
+                    
+                    // Pass empty string as value to search for, displaying all results
+                    input.autocomplete( "search", "" );
+                });
+            },
+            
+            _source: function( request, response ) {
+                var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                
+                response( this.element.children( "option" ).map(function() {
+                    var text = $( this ).text();
+                    if ( this.value && ( !request.term || matcher.test(text) ) )
+                        return {
+                            label: text,
+                            value: text,
+                            option: this
+                        };
+                }) );
+            },
+            
+            _removeIfInvalid: function( event, ui ) {
+                
+                // Selected an item, nothing to do
+                if ( ui.item ) {
+                    return;
+                }
+                
+                // Search for a match (case-insensitive)
+                var value = this.input.val(),
+                    valueLowerCase = value.toLowerCase(),
+                    valid = false;
+                this.element.children( "option" ).each(function() {
+                    if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+                        this.selected = valid = true;
+                        return false;
+                    }
+                });
+                
+                // Found a match, nothing to do
+                if ( valid ) {
+                    return;
+                }
+                
+                // Remove invalid value
+                this.input
+                .val( "" )
+                .attr( "title", value + " didn't match any item" )
+                .tooltip( "open" );
+                this.element.val( "" );
+                this._delay(function() {
+                    this.input.tooltip( "close" ).attr( "title", "" );
+                }, 2500 );
+                this.input.autocomplete( "instance" ).term = "";
+            },
+            
+            _destroy: function() {
+                this.wrapper.remove();
+                this.element.show();
+            }                
+        });
+        renderCombobox();             
+        
+    });
+    
+    
+    function renderCombobox() {
+        //update the select list which has to be made autocomplete with styleClass/class="cust-combobox"
+        $('.cust-combobox').combobox();
+        
+        //multiselect dropdown
+        register_MultiSelect();
+    }
+    
+    function register_MultiSelect() {
+        //multiselect dropdown          
+        $(".custom-multiselect select option[value='']").remove();
+        $('.custom-multiselect').dropdown({                
+            multipleMode: 'label',
+            
+            // search field
+            input: '<input type="text" maxLength="20" placeholder="Search and Select Multiple...">'
+            
+        });
+    }
+    
+    </script>
+    <!-- Added by amritesh US85344,US101112 -->
+    
+    <style>
+        .errorM4 .msgIcon, .errorSmall {
+        background-image: url(/img/samples/flag_red.gif) !important;
+        }
+        
+        .myCustomMessage .message {
+        background: none  !important;
+        border: none !important;
+        }
+        
+    </style>
+    
+    <style><!--//Changes for Defect DE38556-->
+        #spinner{
+        display: none;
+        width:200px;
+        height: 50px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        text-align:center;
+        padding:10px;
+        font:normal 16px Tahoma, Geneva, sans-serif;
+        margin-left: -100px;
+        margin-top: -100px;
+        z-index:2;
+        overflow: auto;
+        border:1px solid #CCC;
+        background-color:white;
+        z-index:100;
+        padding:5px;
+        line-height:20px;
+        }
+        #opaque {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: none;
+        background-color: gray;
+        filter: alpha(opacity=30);
+        opacity: 0.3;
+        -moz-opacity:0.3;
+        -khtml-opacity:0.3
+        }
+        * html #opaque {
+        position: absolute;
+        }
+        .enableVariant label {
+        display: inline-block;
+        width: 17%;
+        text-align: right;
+        margin-right: 15px;
+        color: #4a4a56;
+        font-weight: bold;
+        font-size: 11px;
+        }
+        
+    </style>
+    
+    <script>
+    function fnConfirmBox()
+    {
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height:170,
+            modal: true,
+            buttons: {
+                "Ok": function() {
+                    ConfirmBox();
+                    $( this ).dialog( "close" );
+                    window.close(); 
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });  
+    }
+    <!--Added by Geetha as per user story US92077-->
+        $( document ).ready(function() {
+            console.log('In Ready');
+            if( $('[id$=ProjectId]').text()==""){
+                console.log('In Edit');
+                $('[id$=RelatedMessage]').css("display","block");
+            }
+        }); 
+    <!--Ended by Geetha as per user story US92077
+        //window.document.onload = new function(e)
+        //{
+        //if({!isMAG})
+        //{
+        //alert("As your account is flagged as Military Aerospace and Government, you cannot copy this case. Please submit a new case using the Create New Case button or link.");
+        //window.parent.close();  
+        //}      
+        //}
+        -->
+        //Changes for Defect DE38556
+        function showSpinner(){
+            document.getElementById('opaque').style.display='block';
+            var popUp = document.getElementById('spinner');
+            popUp.style.display = 'block';  
+        }
+    
+    </script> 
+    
+    <style type="text/css"> 
+        /*Start--US343456--14th June 2019--Aniket--MINDS Case Creation*/       
+        ..MAGSec .detailList tr:first-child td {
+            font-size: 13px;
+        }
+        .MAGSec .detailList tr:nth-child(2) th {
+            width: 60%;
+            text-align: left;
+            padding-left: 30px;
+            padding-top: 15px;
+        }
+        .MAGSec .detailList tr:first-child td {
+            font-size: 13px;
+        }
+        .MAGSec .detailList tr:nth-child(2) th label {
+            color: #000;
+            font-weight: normal;
+            font-size: 12px;
+            
+        }
+        .MAGSec .detailList tr:nth-child(2) td {
+            padding-left: 0;
+        }
+          .MAGSec .detailList tr:nth-child(3) th {
+                text-align: left;
+                padding-left: 30px;
+                font-size: 12px;
+                font-weight: normal;
+                width: 22%;
+                padding-right: 0;
+                color: #000;
+        }
+        .MAGSec .detailList tr:nth-child(3) td {
+                padding-left: 0;
+                position: relative;
+        }
+        .MAGSec .detailList tr:nth-child(3) td table td {
+                padding-left: 0;
+                position: relative;
+        }
+        .MAGSec .detailList tr:nth-child(3) td table td:before {
+            content: '';
+            background-color: #c00;
+            position: absolute;
+            left: -4px;
+            width: 3px;
+            height: 17px;
+            top: 6px;
+            bottom: 1px;
+        }
+        /*End--US343456--14th June 2019--Aniket--MINDS Case Creation*/
+    </style>
+    
+    <div id="dialog-confirm" title="Confirmation:" style="display:none;">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will lose all your changes. Are you sure you want to Cancel?</p>
+    </div>  
+    <div id="opaque"/><!--Changes for Defect DE38556-->
+    <div id="spinner">
+        <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
+    </div>
+    
+    <apex:form id="form">  
+        <apex:pageBlock id="pageblock">
+            
+            <apex:pageMessages />
+            <apex:actionFunction name="ConfirmBox" action="{!cancelCaseDetails}"/>
+            <!-- Modified by karthick 25/06/2018  defect fix : DE40246 -->
+            <apex:actionFunction name="BindEvent" action="{!BindEvent}" reRender="subCategory2,casesubcatId,environment1" status="status1" oncomplete="renderCombobox()"></apex:actionFunction> <!-- modified by amritesh US85344,US101112 -->
+            <!--Added by Geetha as per user story US92077-->
+            <apex:actionFunction name="showPopup" action="{!showPopup}" rerender="popup"/>
+            <!--Ended by Geetha as per user story US92077-->
+            <apex:pageBlockButtons >
+                
+                <apex:commandButton value="Submit" action="{!saveCaseDetails}" onclick="showSpinner()"/> <!--Change for defect DE38556-->          
+                
+                <!--<apex:commandButton value="Cancel" onclick="if(confirm('If you select cancel all changes will be lost. Do you wish to continue?')){window.close()}else{return false;}" action="{!cancelCaseDetails}"/>-->
+                <input type="button" value="Cancel" class="btn" onclick="fnConfirmBox();"/>
+            </apex:pageBlockButtons>
+            <apex:actionstatus id="status1">
+                <apex:facet name="start">
+                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                                                         height: 100%;opacity:0.65;width:100%;">
+                        <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                            <span class="waitingDescription">Please Wait...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionstatus>            
+            <!--Start--US343456--14th June 2019--Aniket--MINDS Case Creation-->
+            <apex:outputPanel >
+                <div class="MAGSec">                                       
+                    <apex:pageBlockSection title="{!$Label.Core_IPS_MINDS_Information}"  columns="1">                       
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$Label.Core_IPS_My_Settings_Data}" escape="false"/>
+                        </apex:pageBlockSectionItem>                                                
+                        <apex:pageBlockSectionItem >
+                            <apex:outputlabel styleClass="questionsLabel" value="{!$Label.Core_IPS_MAG_Question}"  />
+                            <apex:selectRadio value="{!isMindsFlag}" > 
+                                <apex:selectOption itemValue="true" itemLabel=" Yes " /> 
+                                <apex:selectOption itemValue="false" itemLabel=" No " />
+                            </apex:selectRadio>
+                        </apex:pageBlockSectionItem>                        
+                        <apex:pageBlockSection columns="1">
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputlabel styleClass="countrylabel" value="{!$Label.Core_IPS_MAG_Country_Region}"/>                                     
+                                    <apex:selectList id="countries" value="{!selectedCountry}" size="1" required="true" >
+                                        <apex:selectOptions value="{!countries}"/>
+                                    </apex:selectList>
+                                </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                    </apex:pageBlockSection>    
+                </div>
+            </apex:outputpanel>
+            <!--End--US343456--14th June 2019--Aniket--MINDS Case Creation-->               
+            <apex:pageblockSection title="Case Details" columns="1" id="caseCustomerDetail">
+                <!--start added by Aayushi US126300-->
+                <apex:outputpanel id="showCustomerVisible" rendered="{!!externalUser}">
+                    <apex:pageblocksection columns="1" id="CustomerVisible">
+                        <apex:pageBlockSectionItem rendered="{!!isNACCase}">                
+                            <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_Customer_Visible__c.Label}"/>
+                            <apex:inputcheckbox value="{!custVisible}"/>
+                        </apex:pageBlockSectionItem>                                                                               
+                    </apex:pageblocksection>
+                </apex:outputpanel>
+                <!--end-->
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_IPS_Clone_Case_Field_Set}"  var="f">
+                    <apex:pageBlockSectionItem rendered="{!if(OR(f.label == 'Subject',f.label=='Severity Reason'),false,true)}" helpText="{!if(f.label='Case Description',$ObjectType.Case.fields[f].InlineHelpText,'')}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                                <div Class="requiredBlock"/>
+                                <!--<apex:inputtextarea id="textareaDescription" value="{!cs[f.fieldPath]}" styleClass="ckeditor" richText="false" style="width:500%" rendered="{!if(f.label!='Severity',true,false)}"/>-->  
+                                <apex:inputField value="{!cloneCase[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false)}"/>
+                                <apex:inputField value="{!cloneCase[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false)}" id="PriorityId">
+                                    <apex:actionSupport event="onchange" rerender="showSeverityReason" action="{!DisplayPriorityReason}" status="status1"/>
+                                </apex:inputField>
+                                <apex:outputText escape="false" id="SeverityMessage" rendered="{!if(f.label=='Severity',true,false)}" styleClass="link" value="{!$Label.Core_IPS_Severity_Details}" />
+                            </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!if(f.label == 'Subject',true,false)}">
+                        
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!cloneCase[f.fieldPath]}" style="width:60%" required="{!OR(f.required, f.dbrequired)}"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    
+                </apex:repeat>
+            </apex:pageblockSection>
+            
+            <apex:outputpanel id="showSeverityReason">
+                <apex:pageblocksection rendered="{!if(DisplayPriorityReason==true,true,false)}">
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.fields.Core_Severity_Reason__c.InlineHelpText}">                
+                        <apex:outputLabel value="Severity Reason "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!cloneCase.Core_Severity_Reason__c}"/>                 
+                        </apex:outputPanel>                                           
+                    </apex:pageBlockSectionItem>                                                                               
+                </apex:pageblocksection>
+            </apex:outputpanel>
+            
+            
+            <apex:outputpanel id="showCaseType">
+                <apex:pageblocksection columns="1" id="CaseType">
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.fields.Core_CaseType__c.InlineHelpText}">                
+                        <apex:outputLabel value="Case Type "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!cloneCase.Core_CaseType__c}"/>                 
+                        </apex:outputPanel>                                           
+                    </apex:pageBlockSectionItem>                                                                               
+                </apex:pageblocksection>
+            </apex:outputpanel>
+            
+            <apex:pageblockSection columns="1" id="caseCopyDetail2">
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Customer_Case_Fields_Optional}" var="f">
+                    <apex:pageBlockSectionItem helptext="{!$ObjectType.Case.fields[f].InlineHelpText}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:inputField value="{!cloneCase[f.fieldPath]}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+                
+                
+                <!--RK Code Add PSO/PSA to Case when copying a case Begin -->
+                <apex:outputPanel styleClass="owner"> 
+                    <apex:pageBlockSection rendered="{!(isPartnerFAE|| isAgentPartner)}" >
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Partner Support Owner"/>
+                            <apex:outputLabel id="supportOwner" value="{!$User.FirstName&' '&$User.LastName}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:outputPanel> 
+                
+                <!--PSA Field-->
+                <apex:pageBlockSectionItem rendered="{!(isPartnerFAE|| isAgentPartner)}" id="targetCustaccountSec" >
+                    <apex:outputLabel value="Partner Supported Account"/>
+                    <apex:outputPanel styleClass="requiredInput" layout="block" >
+                        <apex:outputPanel styleClass="requiredBlock" layout="block" id="styleReq" rendered="{!(cs.Core_IPS_Project_Case__c!= '' &&cs.Core_IPS_Project_Case__c!= null)}"  /> 
+                        <apex:selectList id="targetCustaccount" styleclass="targetCustaccount" label="Partner Supported Account" value="{!selectedAccountId}" size="1" required="true" >
+                            <apex:selectOptions value="{!IPSParentAccountList}"/>
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <!-- RK Code Add PSO/PSA to Case when copying a case End-->
+                
+            </apex:pageblockSection>
+            <!-- <apex:pageblockSection title="Case Desciption">
+            <apex:repeat value="{!$ObjectType.Case.FieldSets.Issue_Description_Fields}"  var="f">
+            <apex:pageBlockSectionItem >
+            <apex:outputLabel value="{!f.label}"/>
+            <apex:inputField value="{!cloneCase[f.fieldPath]}" required="{!OR(f.required, f.dbrequired)}"/>
+            </apex:pageBlockSectionItem>
+            <br/>
+            </apex:repeat>-->
+            <!--</apex:pageblockSection>-->
+            
+            <apex:pageblockSection title="Product/Project Info" columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Product Name:" for="category"/>
+                    <apex:outputPanel >
+                        
+                        <apex:outputText value="{!IF(AND(ast.name != null,ast.name != ''),ast.name,cloneCase.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c )}"/>
+                        <!--<apex:outputText rendered="{!IF(ast.name == null || ast.name == '',true,false)}">Products not found</apex:outputText>-->
+                    </apex:outputPanel>                 
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Project:"/>
+                    <apex:outputText value="{!ProjectName}" id="ProjectId"/>
+                </apex:pageBlockSectionItem>
+                
+                
+                <!--RK Code for Product Variant Begin US108800 --> 
+                <apex:outputPanel id="varIsShowVariant1" styleClass="enableVariant" rendered="{!blnShowVariant}" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel >
+                            <apex:outputLabel value="Product Variant:" ></apex:outputLabel> 
+                        </apex:outputPanel>
+                        <apex:outputPanel >   
+                            <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant"  styleClass="cust-combobox" >       
+                                <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem> 
+                </apex:outputPanel>
+                <!--RK Code for Product Variant  End US108800 -->
+                
+                <apex:pageBlockSectionItem rendered="{!displayCategories}" id="categorySI"> <!-- modified by amritesh US85344,US101112 -->
+                    <apex:outputLabel value="Case Category:" for="category" rendered="{!categoryOptions.size>1}" />
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput"  layout="block" rendered="{!categoryOptions.size>1}">
+                            <apex:outputPanel styleClass="requiredBlock" id="subCategory"  layout="block"/>
+                            <apex:selectList value="{!categorySelected}" size="1" id="category" styleClass="cust-combobox"> <!-- modified by amritesh US85344,US101112 -->
+                                <apex:selectOptions value="{!categoryOptions}"/> 
+                                <apex:actionSupport event="onchange" action="{!getEnvDetails}"  reRender="none" oncomplete="BindEvent();"/> 
+                            </apex:selectList> 
+                        </apex:outputPanel>                
+                    </apex:actionRegion>
+                </apex:pageBlockSectionItem> 
+                
+                <apex:pageBlockSectionItem rendered="{!displaySubCategories}">
+                    
+                    
+                    <apex:outputPanel id="casesubcatId">
+                        <apex:outputLabel value="Case Subcategory:" rendered="{!subCategoryOptions.size>1}"/>                   
+                    </apex:outputPanel>
+                    <apex:actionRegion >
+                        <apex:outputPanel id="subCategory2">
+                            <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!subCategoryOptions.size>1}">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!subCategoryOptions.size>1}"/>    
+                                <apex:selectList value="{!subCategorySelected}" size="1" styleClass="cust-combobox"> <!-- modified by amritesh US85344,US101112 -->
+                                    <apex:selectOptions value="{!subCategoryOptions}"/>   
+                                    <apex:actionSupport event="onchange" action="{!UpdateEnvDetails}" reRender="none" oncomplete="BindEvent();"/>            
+                                </apex:selectList>
+                            </apex:outputPanel>
+                        </apex:outputPanel>            
+                    </apex:actionRegion>
+                </apex:pageBlockSectionItem>
+                
+                
+                
+            </apex:pageblockSection>
+            <!--Added by Geetha as per user story US92077-->
+            
+            <apex:outputText escape="false" id="RelatedMessage" style="color:red;margin-left:10%;display:none" value="{!$Label.Core_IPS_Project_Related_Message}" rendered="{!externalUser}"/>
+            
+            
+            <!--Ended by Geetha as per user story US92077-->
+            
+            <!-- Visualforce component for Environment Detail Questions, added by amritesh 12/18/2017 - US85344,US101112  -->
+            <c:Core_IPS_Case_Creation_EDQ_Section displayEnvDetails="{!displayEnvDetails}" selectedProductId="{!productId}"
+                                                  selectedSAProductId="{!null}" subCategorySelected="{!subCategorySelected}"
+                                                  envDetails="{!envDetails}" subCatenvDetList="{!subCatEnvDetails}"/>
+            
+        </apex:pageBlock>
+        
+        <!--Added by Geetha as per user story US92077-->
+        <style type="text/css">
+            
+            .popup
+            {
+            background-color: white;
+            border-width: 2px;
+            border-style: solid;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            width: 800px;
+            
+            margin-left: -400px;
+            top:80px;
+            }
+            .popup1
+            {
+            
+            width: 500px;
+            height: 300px;
+            }
+            .popupBg
+            {
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 70);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+            }
+            .closeButton {
+            
+            position: absolute;
+            right: 7px;
+            background: white;
+            top: 2px;
+            
+            }
+            .test .apexp{
+            overflow:scroll;
+            height:300px;
+            }
+            
+        </style>
+        <apex:outputPanel id="popup" >
+            <apex:outputPanel styleClass="popupBg" layout="block" rendered="{!displayPopUp}" />
+            <apex:outputPanel styleClass="popup test"  layout="block" rendered="{!displayPopUp}" >
+                <apex:commandLink value="Close" action="{!closePopup}" rerender="popup" styleClass="closeButton"/>
+                
+                <apex:pageBlock title="List of Contacts"  >
+                    
+                    <apex:pageblockSection title="Contact Information" collapsible="false" columns="1"  >
+                        
+                        <apex:pageBlockTable value="{!con}" var="contact"  >
+                            <apex:column value="{!contact.FirstName}"/>
+                            <apex:column value="{!contact.LastName}"/>
+                            <apex:column value="{!contact.Email}"/>
+                        </apex:pageBlockTable>
+                    </apex:pageblockSection>
+                </apex:pageBlock> 
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <!--Ended by Geetha as per user story US92077-->  
+   
+    </apex:form>
+    <script>
+        $.each($("select[id*=caseCustomerDetail]"), function( index, value ) { 
+          if(value[0].innerHTML=='--None--'){value[0].innerHTML='--Select--';}
+        });
+        $.each($("select[id*=CaseType]"), function( index, value ) { 
+          if(value[0].innerHTML=='--None--'){value[0].innerHTML='--Select--';}
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,585 @@
+{
+  "version" : "64.0",
+  "nodes" : {
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "OpportunityId", "CreatedById", "CreatedDate", "Field", "DataType", "OldValue", "NewValue" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "OpportunityFieldHistory",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "OpportunityFieldHistory"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FILTER1" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET7" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Field",
+          "operator" : "EQUAL",
+          "operands" : [ "CloseDate" ]
+        } ]
+      }
+    },
+    "FORMULA19" : {
+      "action" : "formula",
+      "sources" : [ "JOIN17" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "old_close_date",
+          "label" : "Old Close Date",
+          "formulaExpression" : "to_timestamp(\"MaxChange.OldValue\")",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA21" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA19" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "new_close_date",
+          "label" : "New Close Date",
+          "formulaExpression" : "to_timestamp(\"MaxChange.NewValue\")",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA22" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA21" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "num_days_pushed",
+          "label" : "Number of Days Changed",
+          "formulaExpression" : "datediff(new_close_date, old_close_date)",
+          "precision" : 18,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA23" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA22" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Latest_CloseDate_Change",
+          "label" : "Latest CloseDate Change",
+          "formulaExpression" : "first_value(num_days_pushed)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "DROP_FIELDS0" : {
+      "action" : "schema",
+      "sources" : [ "EDIT_ATTRIBUTES4" ],
+      "parameters" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "Id", "Field", "CreatedById", "DataType", "OldValue", "OldValue_trimmed", "NewValue", "new_val_trimmed", "num_days_pushed", "IsDeleted" ]
+        }
+      }
+    },
+    "FORMULA24" : {
+      "action" : "computeRelative",
+      "sources" : [ "TO_MEASURE3" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "IsPush",
+          "label" : "Is Push",
+          "formulaExpression" : "case \r\n    when first_value(oldyear_quarter) < first_value(newyear_quarter)\r\n    then 'Push' \r\n    else null \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA25" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA24" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "push_date",
+          "label" : "Push Date",
+          "formulaExpression" : "first_value(\"MaxChange.CreatedDate\")",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA30" : {
+      "action" : "computeRelative",
+      "sources" : [ "DROP_FIELDS0" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "DESC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "most_recent_old_date",
+          "label" : "Most Recent Old Date ",
+          "formulaExpression" : "first_value(old_close_date)",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA31" : {
+      "action" : "computeRelative",
+      "sources" : [ "FORMULA30" ],
+      "parameters" : {
+        "partitionBy" : [ "OpportunityId" ],
+        "orderBy" : [ {
+          "fieldName" : "MaxChange.CreatedDate",
+          "direction" : "ASC"
+        } ],
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "most_recent_new_date",
+          "label" : "Most Recent New Date",
+          "formulaExpression" : "first_value(new_close_date)",
+          "format" : "yyyy-MM-dd",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA32" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA31" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "newyear_quarter",
+          "label" : "new year-quarter",
+          "formulaExpression" : "concat(year(most_recent_new_date),quarter(most_recent_new_date))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE2" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA32" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "newyear_quarter_to_measure",
+          "newProperties" : {
+            "name" : "newyear_quarter"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "newyear_quarter" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "newyear_quarter",
+          "newProperties" : {
+            "label" : "new year-quarter",
+            "name" : "newyear_quarter_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 0,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA33" : {
+      "action" : "formula",
+      "sources" : [ "TO_MEASURE2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "oldyear_quarter",
+          "label" : "old year-quarter",
+          "formulaExpression" : "concat(year(most_recent_old_date),quarter(most_recent_old_date))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE3" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA33" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "oldyear_quarter_to_measure",
+          "newProperties" : {
+            "name" : "oldyear_quarter"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "oldyear_quarter" ]
+        }
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "oldyear_quarter",
+          "newProperties" : {
+            "label" : "old year-quarter",
+            "name" : "oldyear_quarter_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 0,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "EDIT_ATTRIBUTES4" : {
+      "action" : "schema",
+      "sources" : [ "FORMULA23" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "MaxChange.CreatedDate",
+          "newProperties" : {
+            "label" : "Created Date",
+            "name" : "MaxChange.CreatedDate",
+            "typeProperties" : {
+              "type" : "DATETIME",
+              "format" : "yyyy-MM-dd"
+            }
+          }
+        } ]
+      }
+    },
+    "FILTER2" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA25" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "IsPush",
+          "operator" : "EQUAL",
+          "operands" : [ "Push" ]
+        } ]
+      }
+    },
+    "FORMULA43" : {
+      "action" : "formula",
+      "sources" : [ "FILTER1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "ChangeDateUnix",
+          "label" : "ChangeDateUnix",
+          "formulaExpression" : "to_unix_timestamp(CreatedDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "EXTRACT1" : {
+      "action" : "extractGrains",
+      "sources" : [ "FORMULA43" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE3" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT1" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "MAX",
+          "source" : "ChangeDateUnix",
+          "name" : "MostRecentChangeDateUnix",
+          "label" : "MostRecentChangeDateUnix"
+        } ],
+        "groupings" : [ "OpportunityId" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "JOIN17" : {
+      "action" : "join",
+      "sources" : [ "AGGREGATE3", "FORMULA43" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "OpportunityId", "MostRecentChangeDateUnix" ],
+        "rightQualifier" : "MaxChange",
+        "rightKeys" : [ "OpportunityId", "ChangeDateUnix" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FILTER2" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OppFieldHistoryValidations_TEST",
+          "name" : "OppFieldHistoryValidations_TEST",
+          "folderName" : "Bug_Fix"
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET7" : {
+        "label" : "OpportunityFieldHistory",
+        "type" : "LOAD_DATASET",
+        "top" : 250.60000000000002,
+        "left" : 111.80000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER1" : {
+        "label" : "Filter to Close Days Change",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 250.60000000000002,
+        "left" : 251.8
+      },
+      "TRANSFORM3" : {
+        "label" : "TransformPushDays",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 250.60000000000002,
+        "left" : 391.8,
+        "graph" : {
+          "FORMULA19" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA21" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA22" : {
+            "parameters" : {
+              "type" : "DATE_DIFFERENCE_UI"
+            },
+            "label" : "Return Duration Between Dates"
+          },
+          "FORMULA23" : {
+            "label" : "Formula"
+          },
+          "DROP_FIELDS0" : {
+            "label" : "Drop Columns"
+          },
+          "FORMULA24" : {
+            "label" : "Formula"
+          },
+          "FORMULA25" : {
+            "label" : "Formula"
+          },
+          "FORMULA30" : {
+            "label" : "Formula"
+          },
+          "FORMULA31" : {
+            "label" : "Formula"
+          },
+          "FORMULA32" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "TO_MEASURE2" : {
+            "label" : "To Number"
+          },
+          "FORMULA33" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "TO_MEASURE3" : {
+            "label" : "To Number"
+          },
+          "EDIT_ATTRIBUTES4" : {
+            "label" : "Edit Attributes"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA19",
+          "target" : "FORMULA21"
+        }, {
+          "source" : "FORMULA21",
+          "target" : "FORMULA22"
+        }, {
+          "source" : "FORMULA22",
+          "target" : "FORMULA23"
+        }, {
+          "source" : "FORMULA24",
+          "target" : "FORMULA25"
+        }, {
+          "source" : "DROP_FIELDS0",
+          "target" : "FORMULA30"
+        }, {
+          "source" : "FORMULA30",
+          "target" : "FORMULA31"
+        }, {
+          "source" : "FORMULA31",
+          "target" : "FORMULA32"
+        }, {
+          "source" : "FORMULA32",
+          "target" : "TO_MEASURE2"
+        }, {
+          "source" : "TO_MEASURE2",
+          "target" : "FORMULA33"
+        }, {
+          "source" : "TO_MEASURE3",
+          "target" : "FORMULA24"
+        }, {
+          "source" : "FORMULA33",
+          "target" : "TO_MEASURE3"
+        }, {
+          "source" : "EDIT_ATTRIBUTES4",
+          "target" : "DROP_FIELDS0"
+        }, {
+          "source" : "FORMULA23",
+          "target" : "EDIT_ATTRIBUTES4"
+        } ]
+      },
+      "FILTER2" : {
+        "label" : "Filter to Pushes",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 250.60000000000002,
+        "left" : 671.8
+      },
+      "TRANSFORM9" : {
+        "label" : "Transform 9",
+        "type" : "TRANSFORM",
+        "top" : 390.6,
+        "left" : 251.8,
+        "graph" : {
+          "FORMULA43" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "AGGREGATE2" : {
+        "label" : "Aggregate 2",
+        "type" : "AGGREGATE",
+        "top" : 530.6,
+        "left" : 251.8,
+        "graph" : {
+          "EXTRACT1" : null,
+          "AGGREGATE3" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT1",
+          "target" : "AGGREGATE3"
+        } ]
+      },
+      "JOIN17" : {
+        "label" : "Join 17",
+        "type" : "JOIN",
+        "top" : 390.6,
+        "left" : 391.8
+      },
+      "OUTPUT0" : {
+        "label" : "OppFieldHistoryValidations_TEST",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252,
+        "left" : 812
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET7",
+      "target" : "FILTER1"
+    }, {
+      "source" : "TRANSFORM3",
+      "target" : "FILTER2"
+    }, {
+      "source" : "FILTER1",
+      "target" : "TRANSFORM9"
+    }, {
+      "source" : "TRANSFORM9",
+      "target" : "AGGREGATE2"
+    }, {
+      "source" : "AGGREGATE2",
+      "target" : "JOIN17"
+    }, {
+      "source" : "TRANSFORM9",
+      "target" : "JOIN17"
+    }, {
+      "source" : "JOIN17",
+      "target" : "TRANSFORM3"
+    }, {
+      "source" : "FILTER2",
+      "target" : "OUTPUT0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

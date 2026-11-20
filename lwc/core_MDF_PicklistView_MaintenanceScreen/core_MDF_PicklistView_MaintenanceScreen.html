@@ -1,0 +1,294 @@
+<template>
+	<div class="spinner">
+		<template if:true={isLoading}>
+			<lightning-spinner alternative-text="Loading" variant="brand" size="large">
+			</lightning-spinner>
+		</template>
+	</div>
+	<lightning-card style="background-color:white">
+		<div class="slds-box">
+			<lightning-combobox name="projectSelection" data-id="project" label="Project/Application"
+				placeholder="Please Select a Project/Application" style="display: inline-block;width:20%"
+				value={selectedProgram} options={programOptions} onchange={handleProgramselection}
+				class="slds-p-horizontal_medium">
+			</lightning-combobox>
+			<lightning-combobox name="objectSelection" data-id="object" label="Object"
+				placeholder="Please Select an Object" style="display: inline-block;width:20%" value={selectedObject}
+				options={objectOptions} onchange={handleObjectSelection} class="slds-p-horizontal_medium">
+			</lightning-combobox>
+			<lightning-button variant="brand" icon-name="utility:download" style="display: inline-block;padding-left:2%"
+				label="GetPicklistDetails" onclick={getPicklistDetails} disabled={disableGetPicklistdetails}>
+			</lightning-button>
+			<lightning-button variant="brand" label="Export" title="Export" onclick={handleExport}
+				style="display: inline-block;padding-left:2%" disabled={disableGetPicklistdetails}>
+			</lightning-button>
+		</div>
+		<template if:true={showAccordion}>
+			<template for:each={sortedfieldOptions} for:item="item" for:index="index">
+				<div class={item.cssClassName} key={item.value} data-id={index}>
+					<h3 class="slds-section__title">
+						<button aria-controls={index} aria-expanded="false"
+                                class="slds-button slds-section__title-action" onclick={getPicklistValueDetailsOnExpand} data-name={item.value}>
+                                <lightning-icon icon-name={item.iconName} size="x-small" aria-hidden="true"
+                                    class="accordion-chevron-icon"></lightning-icon>
+                                <label class="slds-var-p-left_medium">{item.label}</label>
+                            </button>
+					</h3>
+					<div class="slds-section__content claim-activity-details" id={index} aria-hidden="true">
+						<template if:true={item.isExpanded}>
+							<lightning-tabset>
+								<lightning-tab label="PickList Values">
+									<div class="slds-scrollable_y"
+										style="min-height:fit-content;max-height:20rem;width:100%">
+										<table
+											class="slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right slds-no-row-hover">
+											<thead>
+												<tr class="slds-text-heading_label">
+													<template for:each={columns} for:item="col">
+														<th key={col.label} scope="col" width={col.width}>{col.label}
+														</th>
+													</template>
+												</tr>
+											</thead>
+											<tbody>
+												<template for:each={item.data} for:item="fld">
+													<tr key={fld.id}>
+														<td>{fld.id}</td>
+														<td>
+															<template if:false={fld.isEditable}>
+																{fld.label}
+																<template if:true={hasEditAccess}>
+																	<template if:true={fld.showEditIcon}>
+																		<lightning-button-icon variant="info"
+																			size="small"
+																			class="slds-icon slds-icon_small slds-float_right"
+																			icon-name="utility:edit"
+																			alternative-text="edit" onclick={handleEdit}
+																			data-name={fld.id}>
+																		</lightning-button-icon>
+																	</template>
+																</template>
+															</template>
+															<template if:true={fld.isEditable}>
+																<lightning-input type="text" variant="standard"
+																	name={fld.id} value={fld.label}
+																	class="slds-col slds-size_2-of-3"
+																	onchange={handleUpdatedValue} data-name={fld.id}>
+																</lightning-input>
+																<lightning-button-icon variant="info" size="small"
+																	class="slds-icon slds-icon_small slds-float_right closeIcon"
+																	icon-name="utility:undo" alternative-text="edit"
+																	onclick={handleInputEditCancel} data-name={fld.id}>
+																</lightning-button-icon>
+															</template>
+
+														</td>
+														<td>{fld.value}</td>
+														<template if:true={fld.isNew}>
+															<td>
+																<lightning-button-icon variant="info" size="small"
+																	class="slds-icon slds-icon_small"
+																	icon-name="utility:delete" alternative-text="Delete"
+																	onclick={removeRow} data-name={fld.id}>
+																</lightning-button-icon>
+															</td>
+														</template>
+													</tr>
+
+												</template>
+											</tbody>
+										</table>
+									</div>
+									<lightning-button-group class="slds-align_absolute-center slds-m-top_small">
+										<template if:true={hasEditAccess}>
+											<lightning-button variant="brand" label="Add" onclick={addNewRow}
+												class=" slds-m-right_small" data-name={item.value}>
+											</lightning-button>
+											<lightning-button variant="brand" label="Save" title="Submit"
+												data-name={item.value} onclick={handleSave} class=" slds-m-right_small">
+											</lightning-button>
+											<lightning-button variant="brand" label="Export" title="Export"
+												onclick={handleExport} class=" slds-m-right_small">
+											</lightning-button>
+											<lightning-button variant="brand" label="backfill" title="backfill"
+												onclick={handlebackfill} class=" slds-m-right_small">
+											</lightning-button>
+										</template>
+										<template if:true={hasReadOnlyAccess}>
+											<lightning-button variant="brand" label="Export" title="Export"
+												onclick={handleExport} class=" slds-m-right_small">
+											</lightning-button>
+										</template>
+									</lightning-button-group>
+
+								</lightning-tab>
+								<lightning-tab label={recordTypeTabName} onactive={handleActive}>
+									<template if:true={showRecordtypeAccordions}>
+										<template for:each={recordTypeInfos} for:item="recType" for:index="recIndex">
+											<div key={recType.id} class={recType.cssClassName}>
+												<h3 class="slds-section__title">
+													<button aria-controls={recIndex} aria-expanded="false" class="slds-button slds-section__title-action" onclick={getRecordTypeDetails} data-name={recType.name}>
+                                			<lightning-icon icon-name={recType.iconName} size="x-small" aria-hidden="true"
+                                    		class="accordion-chevron-icon"></lightning-icon>
+                                		<label class="slds-var-p-left_medium">{recType.label}</label>
+                            			</button>
+												</h3>
+												<div class="slds-section__content claim-activity-details" id={recIndex}
+													aria-hidden="true" key={recType.id}>
+													<template if:true={recType.isExpanded}>
+														<template if:false={recType.isEdit}>
+															<template if:false={displayMessageforNoRTAccess}>
+															<div class="slds-scrollable_y"
+																style="min-height:fit-content;max-height:15rem;width:100%">
+																<ul class="slds-list_dotted slds-m-top_medium">
+  																	<template for:each={picklistValues} for:item="item">
+                														<li key={item}> {item.label}</li>
+            														</template>
+																</ul>
+															</div>
+															<lightning-button-group
+																class="slds-align_absolute-center slds-m-top_small">
+																<template if:true={hasEditAccess}>
+																	<lightning-button variant="brand" label="Edit"
+																		title="Edit" class=" slds-m-right_small"
+																		onclick={editPicklistValuesOnRT}
+																		data-name={recType.id}>
+																	</lightning-button>
+																	<lightning-button variant="brand" label="Export"
+																		title="Export" onclick={handleExport}
+																		class=" slds-m-right_small">
+																	</lightning-button>
+																	<lightning-button variant="brand" label="backfill"
+																		title="backfill" onclick={handlebackfill}
+																		class=" slds-m-right_small">
+																	</lightning-button>
+																</template>
+																<template if:true={hasReadOnlyAccess}>
+																	<lightning-button variant="brand" label="Export"
+																		title="Export" onclick={handleExport}
+																		class=" slds-m-right_small">
+																	</lightning-button>
+																</template>
+															</lightning-button-group>
+															</template>
+															<template if:true={displayMessageforNoRTAccess}>
+																<b>No Value has access to Selected Record Type!</b>
+															</template>
+														</template>
+														<template if:true={recType.isEdit}>
+															<lightning-dual-listbox name={recType.id}
+																source-label={label.availableLabel}
+																selected-label={label.selectedLabel}
+																value={recordTypeSelectedPLValues}
+																options={recordTypeAvailablePLValues}
+																onchange={handleRTValuesChange}>
+															</lightning-dual-listbox>
+															<lightning-button-group
+																class="slds-align_absolute-center slds-m-top_small">
+																<lightning-button variant="neutral" label="Cancel"
+																	title="cancel" class="slds-m-right_small"
+																	onclick={handleRTSectionCancel}
+																	data-name={recType.id}>
+																</lightning-button>
+																<lightning-button variant="brand" label="Save"
+																	title="Save" class="slds-m-right_small"
+																	onclick={savePicklistValuesOnRT}
+																	data-name={recType.id}>
+																</lightning-button>
+															</lightning-button-group>
+
+														</template>
+													</template>
+												</div>
+											</div>
+										</template>
+
+									</template>
+								</lightning-tab>
+								<lightning-tab label="Dependency" onactive={handleDependency}>
+									<template if:true={showDependencyAccordions}>
+										<template if:false={displayMessage}>
+										<template for:each={recordTypeInfosonDep} for:item="recType" for:index="recIndex">
+											<div key={recType.id} class={recType.cssClassName}>
+												<h3 class="slds-section__title">
+													<button aria-controls={recIndex} aria-expanded="false" class="slds-button slds-section__title-action" onclick={getFDDetailsBasedonRecordType} data-name={recType.name}>
+                                			<lightning-icon icon-name={recType.iconName} size="x-small" aria-hidden="true"
+                                    		class="accordion-chevron-icon"></lightning-icon>
+                                		<label class="slds-var-p-left_medium">{recType.label}</label>
+                            			</button>
+												</h3>
+										<div class="slds-section__content claim-activity-details" id={recIndex}
+													aria-hidden="true" key={recType.id}>
+											<template if:true={recType.isExpanded}>
+
+											<!-- this template block displays the dependent fields in accordions -->
+											<template for:each={dependentfieldsInfo} for:item="fd" for:index="fdIndex">
+											<!--<p key={fd.name}>{fd.name}</p>-->
+												<div key={fd.id} class={fd.cssClassName}>
+													<h3 class="slds-section__title">
+														<button aria-controls={fdIndex} aria-expanded="false" class="slds-button slds-section__title-action" onclick={getFDDetails} data-name={fd.name}>
+                                						<lightning-icon icon-name={fd.iconName} size="x-small" aria-hidden="true"
+                                    					class="accordion-chevron-icon"></lightning-icon>
+                                						<label class="slds-var-p-left_medium">{fd.label}</label>
+                            							</button>
+													</h3>
+													<div class="slds-scrollable--y" style="min-height:fit-content;max-height:20rem;width:100%">
+														<template if:true={fd.isExpanded}>
+															<template if:false={displayMessageforNoDependency}>
+															<table class="slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right slds-no-row-hover">
+																	<thead>
+																		<tr class="slds-text-heading_label">
+																			<th scope="col">
+																				<div title="Key" style="min-width: 140px;">{selectedfieldName}</div>
+																			</th>
+																			<th scope="col">
+																				<div title="Value"  style="min-width: 140px;">{dependentField}</div>
+																			</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<template for:each={processedData} for:item="keyValue">
+																			<tr key={keyValue.key}>
+																				<th scope="col">
+																					<div>{keyValue.key}</div>
+																				</th>
+																				<th scope="col">
+																				<template for:each={keyValue.value} for:item="value">
+																					<div key={value}>
+																						{value}<br/>
+																					</div>
+																				</template>
+																				</th>
+																			</tr>
+																		</template>
+																	</tbody>
+																</table>
+															</template>
+														</template>
+													</div>
+												</div>
+											</template>
+											<!-- dependent fields display ended here -->
+
+											</template>
+										</div>
+
+										</div>
+										</template>
+										</template>
+										<!-- Display message if the selected field doesnt have dependent fields -->
+										<template if:true={displayMessage}>
+											Selected field <b>{item.label}</b> does not have dependent field/s!!
+										</template>
+
+									</template>
+									
+								</lightning-tab>
+							</lightning-tabset>
+						</template>
+					</div>
+				</div>
+			</template>
+		</template>
+	</lightning-card>
+</template>

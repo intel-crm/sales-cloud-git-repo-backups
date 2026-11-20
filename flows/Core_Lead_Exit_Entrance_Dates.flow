@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for the WF 
+&apos;Core_Entrance Date – Contact – No Opportunity&apos;</description>
+        <name>Core_Entrance_Date_Contact_No_Opportunity</name>
+        <label>Core_Entrance Date – Contact – No Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_Exit_Date_Stamp</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_No_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_EntranceDate_Contact_NoOpportunity</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>fieldUpdate_Core_Entrance_Date_Contact_No_Opportunity</targetReference>
+            </connector>
+            <label>Contact – No Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the LEAD WF 
+
+&apos;Core_Lead_Exit_Date_Stamp&apos;</description>
+        <name>Core_Lead_Exit_Date_Stamp</name>
+        <label>Core_Lead_Exit_Date_Stamp</label>
+        <locationX>182</locationX>
+        <locationY>695</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Exit_Date_Stamp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Lead_Exit_Date_Stamp</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdate_Core_Lead_Exit_Date_Stamp</targetReference>
+            </connector>
+            <label>Exit_Date_Stamp</label>
+        </rules>
+    </decisions>
+    <description>For the Following LEADS 
+
+1.Core_EntranceDateTAL_forSaleLead (no use) Now MQL 
+2.Core_Entrance Date – Contact – No Opportunity
+3.Core_Lead_Exit_Date_Stamp</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>F_Core_Conatct_No_Opportunity_Entrance</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+AND(
+ $Record.IsConverted = true,
+ ISPICKVAL($Record.Status, &apos;Contact - No Opportunity&apos;),
+ ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;)
+),NOW(),null)</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_EntranceDate_Contact_NoOpportunity</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,  ISPICKVAL({!$Record.Status}, &quot;Contact - No Opportunity&quot;),  ISPICKVAL ({!$Record.Core_Lead_Status__c}, &quot;Disqualified&quot;) )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_EntranceDateMQL_forSaleLead</name>
+        <dataType>Boolean</dataType>
+        <expression>AND ( ISNULL({!$Record.Core_Entrance_Date_MQL__c}),  ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;), {!$Record.RecordType.Name} &lt;&gt;&apos;Partner Lead&apos; )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Lead_Exit_Date_Stamp</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(  {!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Partner_Lead&apos;,  NOT(ISCHANGED({!$Record.Status})),  ISCHANGED({!$Record.Core_Lead_Status__c}) )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Lead_MAQL_Entrance</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( ISNULL({!$Record.Core_Entrance_Date_MQL__c}), ISPICKVAL( {!$Record.Core_Lead_Status__c} ,&quot;New&quot;), ISPICKVAL({!$Record.Status}, &quot;Marketing Qualified Lead&quot;),  {!$Record.RecordType.Name}  &lt;&gt;  &apos;Partner Lead&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Stage_MAQL</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+AND(
+ ISPICKVAL($Record.Status, &apos;Marketing Qualified Lead&apos;),
+ OR(
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Rejected&apos;)
+ )
+),NOW(),
+IF(
+ AND(
+  ISPICKVAL($Record.Status, &apos;Marketing Qualified Lead&apos;),
+  OR(
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;New&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Accepted&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Qualified&apos;)
+  )
+ ),null,$Record.Core_Exit_Date_MAQL__c)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Stage_SAL</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+OR(
+ AND(
+ $Record.IsConverted = true, 
+ ISPICKVAL($Record.Status, &apos;Contact - No Opportunity&apos;), 
+ ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;) 
+ ),
+ AND(
+  ISPICKVAL($Record.Status, &apos;Sales Accepted Lead&apos;),
+  OR(
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Rejected&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Unreachable&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Passed to Partner&apos;)
+  )
+)),NOW(),
+IF(
+ AND(
+  ISPICKVAL($Record.Status, &apos;Sales Accepted Lead&apos;),
+  OR(
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Accepted&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Qualified&apos;)
+  )
+ ),null,$Record.Core_Exit_Date_SAL__c)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Stage_TAL</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+AND(
+ ISPICKVAL($Record.Status, &apos;Tele Accepted Lead&apos;),
+ OR(
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Rejected&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Passed to Partner&apos;)
+ )
+),NOW(),
+IF(
+ AND(
+  ISPICKVAL($Record.Status, &apos;Tele Accepted Lead&apos;),
+  OR(
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Accepted&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Qualified&apos;)
+  )
+ ),null,$Record.Core_Exit_Date_TAL__c)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Stage_TQL</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+AND(
+ ISPICKVAL($Record.Status, &apos;Tele Qualified Lead&apos;),
+ OR(
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Rejected&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Passed to Partner&apos;)
+ )
+),NOW(),
+IF(
+ AND(
+  ISPICKVAL($Record.Status, &apos;Tele Qualified Lead&apos;),
+  OR(
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Accepted&apos;),
+   ISPICKVAL($Record.Core_Lead_Status__c, &apos;Qualified&apos;)
+  )
+ ),null,$Record.Core_Exit_Date_TQL__c)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Stage_SGL</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+AND(
+ ISPICKVAL($Record.Status, &apos;Sales Generated Lead&apos;),
+ OR(
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Disqualified&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Rejected&apos;)
+ )
+),NOW(),
+IF(
+ AND(
+  ISPICKVAL($Record.Status, &apos;Sales Generated Lead&apos;),
+  ISPICKVAL($Record.Core_Lead_Status__c, &apos;Accepted&apos;)
+ ),null,{!$Record.SWS_Exit_Date_SGL__c})
+)</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_Exit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Exit_Entrance_Dates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>fieldUpdate_Core_Entrance_Date_Contact_No_Opportunity</name>
+        <label>fieldUpdate &apos;Core_Entrance Date – Contact – No Opportunity&apos;</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <connector>
+            <targetReference>Core_Lead_Exit_Date_Stamp</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_EntranceDate_Contact_No_Opportunity__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_SAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdate_Core_Lead_Exit_Date_Stamp</name>
+        <label>FieldUpdate &apos;Core_Lead_Exit_Date_Stamp&apos;</label>
+        <locationX>50</locationX>
+        <locationY>803</locationY>
+        <inputAssignments>
+            <field>Core_EntranceDate_Contact_No_Opportunity__c</field>
+            <value>
+                <elementReference>F_Core_Conatct_No_Opportunity_Entrance</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_MAQL__c</field>
+            <value>
+                <elementReference>F_Core_Stage_MAQL</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_SAL__c</field>
+            <value>
+                <elementReference>F_Core_Stage_SAL</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SWS_Exit_Date_SGL__c</field>
+            <value>
+                <elementReference>Stage_SGL</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Non_Partner_Lead_Update</name>
+        <label>Non Partner Lead Update</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <connector>
+            <targetReference>Core_Entrance_Date_Contact_No_Opportunity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SWS_Non_Partner_Lead__c</field>
+            <value>
+                <stringValue>TRUE</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Non_Partner_Lead_Update</targetReference>
+        </connector>
+        <filterFormula>{!$Record.RecordType.Name} &lt;&gt;&apos;Partner Lead&apos;</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

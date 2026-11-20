@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Pricing_Tender_All_Internal_Tender_Users</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Internal Tender Users</label>
+        <sharedTo>
+            <group>Pricing_All_Internal_Tender_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Pricing_Quote_Type__c</field>
+            <operation>equals</operation>
+            <value>Client,Data Center</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Tender_IQR_Division_Admin</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>IQR Division Admin</label>
+        <sharedTo>
+            <group>Pricing_IQR_Division_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Pricing_Quote_Type__c</field>
+            <operation>equals</operation>
+            <value>Client,Data Center</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

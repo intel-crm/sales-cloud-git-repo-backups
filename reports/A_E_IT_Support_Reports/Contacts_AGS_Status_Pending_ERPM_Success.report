@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_97299886</developerName>
+        <masterLabel>Transaction Status</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Contact$Core_AGS_Duration__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>1</to>
+            </sourceValues>
+            <value>Inprogress(Less than a minute)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>1</from>
+                <to>5</to>
+            </sourceValues>
+            <value>Issue(Less than 5 minutes)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>5</from>
+            </sourceValues>
+            <value>Stuck(More than 5 Minutes)</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Contact$FirstName</field>
+    </columns>
+    <columns>
+        <field>Contact$LastName</field>
+    </columns>
+    <columns>
+        <field>Contact$Email</field>
+    </columns>
+    <columns>
+        <field>Contact$Core_ERPM_Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Id</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Contact$Core_AGS_Integration_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$Core_ERPM_Integration_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Successful</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$LastModifiedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>4/16/2017 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$Core_Contact_B2B_Indicator__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_97299886</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Contacts-AGS Status Pending/ERPM Success</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Contact__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contact$LastModifiedDate</dateColumn>
+        <interval>INTERVAL_LAST7</interval>
+    </timeFrameFilter>
+</Report>

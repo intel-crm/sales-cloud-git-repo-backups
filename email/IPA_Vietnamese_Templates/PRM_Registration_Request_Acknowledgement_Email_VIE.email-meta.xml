@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Registration_Request_Acknowledgement_Email_VIE</name>
+    <style>none</style>
+    <subject>Đã nhận: Đơn xin tham gia Liên minh Đối tác Intel® của bạn</subject>
+    <textOnly>Đơn của bạn đang được xử lý
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+
+Cảm ơn bạn đã gửi đơn. Vui lòng đợi chúng tôi ba ngày làm việc để xử lý yêu cầu của bạn.
+Nếu bạn có bất cứ câu hỏi nào, hãy liên hệ với chúng tôi tại https://signin.intel.com/ContactUs?Culture=vi-vn.
+
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

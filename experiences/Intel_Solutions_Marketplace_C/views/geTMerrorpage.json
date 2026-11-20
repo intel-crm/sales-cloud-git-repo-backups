@@ -1,0 +1,38 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "41aafb71-d046-48a2-894f-b20097b33c1b",
+  "label" : "GeTMerrorpage",
+  "regions" : [ {
+    "id" : "f53332f1-3413-45f7-9b35-4cc2b7522df2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "96fbb69e-68c1-4d95-b643-8f54eff2c16b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "50acf782-fc3e-473a-ac36-138212eb7e0c",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "GeTMerrorpage"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0fa34ac6-8449-43de-b876-d971cec0496d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "999f28f2-10b3-448b-8c8c-2c7b413ad357",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-getmerrorpage"
+}

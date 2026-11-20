@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Topic</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Topics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Event Banner Language Mapping --></label>
+        <name>PMP_Event_Banner_Language_Mapping__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Banner Language --></label>
+        <name>PMP_Event_Banner_Language__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation><!-- Simplified Chinese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Holds chinese tagline for this event --></help>
+        <label><!-- Event Chinese Tagline --></label>
+        <name>PMP_Event_Chinese_Tagline__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the Japanese Tagline for the Event --></help>
+        <label><!-- Event Japanese Tagline --></label>
+        <name>PMP_Event_Japanese_Tagline__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Learn More Link --></label>
+        <name>PMP_Event_Learn_More_Link_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Screen Reader Text --></label>
+        <name>PMP_Event_Screen_Reader_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is used to check whether topic is Active --></help>
+        <label><!-- Is Active --></label>
+        <name>PMP_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for event end date. --></help>
+        <label><!-- Marketplace Event End Date --></label>
+        <name>PMP_Marketplace_Event_End_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the related Marketplace Event Id --></help>
+        <label><!-- Marketplace Event Id --></label>
+        <name>PMP_Marketplace_Event_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for event start date. --></help>
+        <label><!-- Marketplace Event Start Date --></label>
+        <name>PMP_Marketplace_Event_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Event Status --></label>
+        <name>PMP_Marketplace_Event_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the information for Event Tagline. --></help>
+        <label><!-- Marketplace Event Tagline --></label>
+        <name>PMP_Marketplace_Event_Tagline__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is used to store the Topic Name --></help>
+        <label><!-- Marketplace Topic Name --></label>
+        <name>PMP_Marketplace_Topic_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Chinese topic Description --></help>
+        <label><!-- Topic Chinese Description --></label>
+        <name>PMP_Topic_Chinese_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Chinese Topic Name --></help>
+        <label><!-- Topic Chinese Name --></label>
+        <name>PMP_Topic_Chinese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the english topic Description --></help>
+        <label><!-- Topic English Description --></label>
+        <name>PMP_Topic_English_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field used to store the topic Id --></help>
+        <label><!-- Topic Id --></label>
+        <name>PMP_Topic_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Japanese topic Description --></help>
+        <label><!-- Topic Japanese Description --></label>
+        <name>PMP_Topic_Japanese_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Japanese topic title --></help>
+        <label><!-- Topic Japanese Name --></label>
+        <name>PMP_Topic_Japanese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds information about the type of Topic --></help>
+        <label><!-- Topic Type --></label>
+        <name>PMP_Topic_Type__c</name>
+        <picklistValues>
+            <masterLabel>Event Topic</masterLabel>
+            <translation><!-- Event Topic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Featured Topic</masterLabel>
+            <translation><!-- Featured Topic --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be before Start Date --></errorMessage>
+        <name>End_Date_cannot_be_before_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Topic Type cannot be modified --></errorMessage>
+        <name>PMP_Cannot_Change_Topic_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Marketplace Topic Name Cannot be changed --></errorMessage>
+        <name>PMP_Topic_Name_Cannot_Be_Changed</name>
+    </validationRules>
+</CustomObjectTranslation>

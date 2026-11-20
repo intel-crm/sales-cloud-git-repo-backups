@@ -1,0 +1,67 @@
+<!--
+@Class Name    : sales_ExistingFoundationLicenseView
+@Version       : 1.0
+@Created Date  : March 2021
+@Function      : This component will display the existing foundation license record for different action puporse.
+
+@Modification Log :
+Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------
+* Srishty Sharma          24-March-2021            License View Component. 
+-->
+<template>
+	<template if:true={isLoaded}>
+		<template if:true={showValidationMessage}>
+			<div class="slds-text-color_error">{validationMessage}</div>
+		</template>
+		<template if:true={showValidationForLessQuantity}>
+			<div class="orangeColor">{validationMessage}</div>
+		</template>
+		<template if:true={showValidationForExpiredMessage}>
+			<div class="slds-text-color_error">{validationMessage}</div>
+		</template>
+		<template if:false={showValidationMessage}>
+			<template if:false={showValidationForExpiredMessage}>
+				<div class="slds-grid slds-gutters">
+					<div class="slds-col slds-size_1-of-4">
+						<lightning-input type="number" name="distributedQuantity"
+							label="Enter quantity to be distributed" min=1 max={availableQuantityOfRenewal}
+							value={distributedQuantity} onchange={quantityChange}
+							message-when-range-overflow='The quantity entered is more than the available quantity'
+							message-when-range-underflow='The quantity entered cannot be 0'
+							message-when-value-missing='Quantity cannot be blank' required></lightning-input>
+							
+					</div>
+				</div>
+				<template if:true={showWarningMessage}>
+					<div class="slds-text-color_error">{label.salesLicErrHTML}</div>
+				</template>
+
+				<lightning-layout>
+					<lightning-layout-item size="5">
+					</br>
+				   
+					<p style="padding-top: 2%;">Select license that you want to distribute -</p> 
+					</lightning-layout-item>
+					<lightning-layout-item size="7">
+				   <lightning-input  type="text"  placeholder="Filter by License Name" onchange={onchangeHandle}  style="width:50%;" class="slds-float_right"  ></lightning-input>
+				   &nbsp;
+				   <!-- <strong>Select an existing license that you want to renew -</strong>-->
+				   </lightning-layout-item>
+					</lightning-layout>
+
+				<div class="slds-var-m-around_small">
+					<template if:true={data}>
+						<lightning-datatable data={data} columns={columnsList} key-field="Id"
+							onrowaction={callRowAction} selected-rows={preSelectedRows}
+							onrowselection={handleRowSelection}>
+						</lightning-datatable>
+					</template>
+					<template if:true={error}>
+						{error}
+					</template>
+				</div>
+			</template>
+		</template>
+	</template>
+</template>

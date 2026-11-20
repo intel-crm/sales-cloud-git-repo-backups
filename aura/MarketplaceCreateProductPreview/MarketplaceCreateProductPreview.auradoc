@@ -1,0 +1,29 @@
+<aura:documentation>
+	<aura:description>
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <p>Create Offering Preview Component</p>
+
+
+		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/imp/s/offering-edit?recordId=a3s0n000000AXcAAAW?language=en_US">
+			Create/Edit Offering - Last step preview
+		</a>
+    <br /> -->
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <!-- <p>Last Updated: 4/4/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/> -->
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- <p>This is the preview component for the offering creation wizard.</p>
+		<p>The <code>v.data</code> is passed in from the Form component.</p> -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <!-- <hr/>
+    <p>Change Log</p> -->
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

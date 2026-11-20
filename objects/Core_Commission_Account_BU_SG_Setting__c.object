@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Approved_BU_Product_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved BU Product Segment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Approved_BU_Short_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved BU Short Name</label>
+        <length>80</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Approved_Opp_Product_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Opportunity Product Segment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Approved_Prime_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Prime Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Approved_Sales_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Sales Group</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Claim_Date_From__c</fullName>
+        <defaultValue>Today()</defaultValue>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Claim_Date_To__c</fullName>
+        <label>End Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Active?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>New Commission Logic</label>
+    <listViews>
+        <fullName>All_Fields</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Approved_BU_Product_Segment__c</columns>
+        <columns>Core_Approved_BU_Short_Name__c</columns>
+        <columns>Core_Approved_Opp_Product_Segment__c</columns>
+        <columns>Core_Approved_Prime_Account_Name__c</columns>
+        <columns>Core_Approved_Sales_Group__c</columns>
+        <columns>Core_IsActive__c</columns>
+        <columns>Core_Claim_Date_From__c</columns>
+        <columns>Core_Claim_Date_To__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Fields</label>
+        <language>en_US</language>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,37 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;"><br></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">An IOTG
+opportunity meeting your criteria has been submitted for approval:</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">&nbsp;</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Account Name:</span></b><span style="font-family:&quot;Intel Clear&quot;,sans-serif">&nbsp;<o:p></o:p></span><span style="background-color: rgb(255, 255, 255); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">{!Opportunity.Account}</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Opportunity Name:&nbsp;</span></b><span style="background-color: rgb(255, 255, 255); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;</span><span style="background-color: rgb(255, 255, 255); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">{!Opportunity.Name}</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Product Application:</span></b><span style="color: rgb(0, 0, 0); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;</span><font face="Intel Clear, sans-serif">{!Opportunity.Core_Product_Application__c}</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="color: rgb(0, 0, 0); font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;"><b><a href="{!Opportunity.Link}">Click Here</a>&nbsp;</b>to see
+additional information on this opportunity and notify the approving manager if
+it is not ready for approval.</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;">_______________________________________________________________________<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:7.5pt;font-family:&quot;Intel Clear Light&quot;,sans-serif;
+color:#666666">This message contains Intel Confidential information and should
+be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel.
+Access to this e-mail by anyone other than the intended recipient is
+unauthorized. If you are not the intended recipient (or responsible for
+delivery of the message to such person), you may not use, copy, distribute, or
+deliver this message or any part of its contents or take any action in reliance
+on it, and in such case, you should destroy this message. <br>
+<br>
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200
+Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA </span><a href="http://www.intel.com/"><span style="font-size:7.5pt;font-family:&quot;Intel Clear Light&quot;,sans-serif">www.intel.com</span></a><span style="font-size:7.5pt;font-family:&quot;Intel Clear Light&quot;,sans-serif;color:#666666">
+(408) 765-8080</span><span style="font-family:&quot;Intel Clear Light&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>]]></td>
+</tr>
+</table>

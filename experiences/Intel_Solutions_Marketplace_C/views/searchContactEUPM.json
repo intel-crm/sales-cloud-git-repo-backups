@@ -1,0 +1,30 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IntelBlankPageLayout",
+  "dataProviders" : [ ],
+  "id" : "b75245e2-a10f-48c8-bddc-6f348200bf3e",
+  "label" : "SearchContactEUPM",
+  "regions" : [ {
+    "id" : "562b5f51-8bea-418a-bcae-d9d4a4a68467",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "SearchContactEUPM"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "60f7c6d3-2739-48ab-bd73-4a063b6291c5",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a87558e1-3a50-48fa-8495-8891670e0fcf",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-searchcontacteupm"
+}

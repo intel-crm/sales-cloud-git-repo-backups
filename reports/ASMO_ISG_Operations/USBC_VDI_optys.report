@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_84520655</developerName>
+        <masterLabel>Series</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Product2.Core_Code_Name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <value>Downieville</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>YOUNGSVILLE ME</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>YOUNGSVILLE ME;YOUNGSVILLE SE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>YOUNGSVILLE SE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>YOUNGSVILLE;YOUNGSVILLE SE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Youngsville</sourceValue>
+            </sourceValues>
+            <value>Youngsville</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>YOUNGSVILLE REFRESH</sourceValue>
+            </sourceValues>
+            <value>Youngsville Refresh</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CLIFFDALE DP ME</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE DP SE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE DP SE2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE ME</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE ME;CLIFFDALE ME LP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE DP SE;CLIFFDALE DP SE2;CLIFFDALE DP ME</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE SE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE SE;CLIFFDALE DP SE2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE SE;CLIFFDALE SE LP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cliffdale</sourceValue>
+            </sourceValues>
+            <value>Cliffdale</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CLIFFDALE REFRESH VE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CLIFFDALE RE SE</sourceValue>
+            </sourceValues>
+            <value>Cliffdale Refresh</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>FULTONDALE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FULTONDALE 3</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FULTONDALE X8</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FULTONDALE;FULTONDALE 5;FULTONDALE 3</sourceValue>
+            </sourceValues>
+            <value>Fultondale</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>HALEYVILLE 10;HALEYVILLE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HALEYVILLE 3</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HALEYVILLE 3;HALEYVILLE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HALEYVILLE SE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HALEYVILLE;HALEYVILLE 10</sourceValue>
+            </sourceValues>
+            <value>Haleyville</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR EMB</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR M.2 DC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR M.2 DC;PLEASANT STAR M.2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR M.2;PLEASANT STAR M.2 DC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR M.2PRO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR M.2PRO;PLEASANT STAR M.2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pleasant Star</sourceValue>
+            </sourceValues>
+            <value>Pleasant Star</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PLEASANT STAR SIPPRO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANTDALE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLEASANTDALE REFRESH</sourceValue>
+            </sourceValues>
+            <value>Pleasantdale</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>COLD STREAM DP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COLD STREAM</sourceValue>
+            </sourceValues>
+            <value>Cold Stream</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>STONY BEACH</sourceValue>
+            </sourceValues>
+            <value>Stony Beach</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Status_Update__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Type__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Vendor__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>US Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>benjamin miller,ruiz,thomson,smiley</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>cook,gordon,weston,descheemaeker,o&apos;donnell,swanger,haynes,rodman,herrmann,mushahwar,wood</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>vdi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>vdi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Status_Update__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>vdi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Products__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>p4800x</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>USBC VDI optys no P4800X</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2026-11-20</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-20</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <field>lens_3.SUB_PAGE</field>
+        <isDerived>false</isDerived>
+        <label>Component</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_3.TIMESTAMP_DERIVED_MONTH</field>
+        <isDerived>false</isDerived>
+        <label>Month</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_3.TIMESTAMP_DERIVED_YEAR</field>
+        <isDerived>false</isDerived>
+        <label>Year</label>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <measures>
+        <field>lens_3.B</field>
+        <isDerived>false</isDerived>
+        <label>Number of accesses</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_3.A</field>
+        <isDerived>false</isDerived>
+        <label>Number of Users</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Account_and_Opportunities_Objects_Usage_Dashboard_UAT_Version</waveVisualization>
+</WaveXmd>

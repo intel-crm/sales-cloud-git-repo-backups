@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Primary to Activating Partner Map</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Primary to Activating Partners Map</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activating Partner Ultimate Account --></label>
+        <name>Core_MDF_ActPartner_Ultimate_Acc_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activating Partner Account --></label>
+        <name>Core_MDF_Activating_Partner_Account_id__c</name>
+        <relationshipLabel><!-- Primary to Activating Partners Map (Activating Partner Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program__c</name>
+        <relationshipLabel><!-- Primary to Activating Partners Map --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- End Date up to which Primary to Activating Partner Map is effective. --></help>
+        <label><!-- Effective End Date --></label>
+        <name>Core_MDF_Effective_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start Date from which Primary to Activating Partner Map is effective. --></help>
+        <label><!-- Effective Start Date --></label>
+        <name>Core_MDF_Effective_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Partner Ultimate Account --></label>
+        <name>Core_MDF_PrimPartner_Ultimate_Acc_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Partner Account --></label>
+        <name>Core_MDF_Primary_Partner_Account_id__c</name>
+        <relationshipLabel><!-- Primary to Activating Partners Map --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Combination of Primary Partner Account Id and Activating Partner Account Id --></help>
+        <label><!-- Unique ID --></label>
+        <name>Core_MDF_Unique_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- One or both of the accounts selected have an incorrect partner type. Select accounts with appropriate partner type. --></errorMessage>
+        <name>Check_Partner_Type_for_Partner_Accounts</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select &apos;Ecosystem Extension Fund’. Primary to Activating partner Map is applicable for &apos;Ecosystem Extension Fund&apos; program only. --></errorMessage>
+        <name>Core_MDF_Channel_Program_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Primary Partner and Activating Partner cannot be the same. --></errorMessage>
+        <name>Core_MDF_Check_Unique_Partner_Accounts</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective end date should be greater than or equal to the effective start date. --></errorMessage>
+        <name>Core_MDF_Effective_Start_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Partner Account mapping cannot be modified once a Primary and Activating Partner Mapping is created. --></errorMessage>
+        <name>Core_MDF_Partner_Acc_Change_Restriction</name>
+    </validationRules>
+</CustomObjectTranslation>

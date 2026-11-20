@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_App_Document_Types_nm__c</fullName>
+        <description>Holds the Applicable Document Types</description>
+        <label>App Document Types</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Proof of Branding</fullName>
+                    <default>false</default>
+                    <label>Proof of Branding</label>
+                </value>
+                <value>
+                    <fullName>Proof of Cost</fullName>
+                    <default>false</default>
+                    <label>Proof of Cost</label>
+                </value>
+                <value>
+                    <fullName>Proof of Execution</fullName>
+                    <default>false</default>
+                    <label>Proof of Execution</label>
+                </value>
+                <value>
+                    <fullName>Proof of Attribution</fullName>
+                    <default>false</default>
+                    <label>Proof of Attribution</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Applicable_Document_Types_txt__c</fullName>
+        <description>Displays Applicable Document Types in separate rows</description>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Cost&quot;), $Label.Core_MDF_Proof_of_Cost + BR() , NULL) +
+IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Branding&quot;), $Label.Core_MDF_Proof_of_Branding + BR() , NULL) +
+IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Attribution&quot;), $Label.Core_MDF_Proof_of_Attribution + BR() , NULL) +
+IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;), $Label.Core_MDF_Proof_of_Execution , NULL)</formula>
+        <label>Applicable Document Types</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Audit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Audit</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>Core_MDF_Audit</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Batch_Record__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Claim Batch Record</label>
+        <referenceTo>Core_MDF_Claim_Batch_Stage__c</referenceTo>
+        <relationshipLabel>Case Review Documents</relationshipLabel>
+        <relationshipName>Case_Review_Documents</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Claim</label>
+        <referenceTo>PartnerFundClaim</referenceTo>
+        <relationshipLabel>Proof of Performance Documents</relationshipLabel>
+        <relationshipName>Case_Review_Documents</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ContentVersion_Id__c</fullName>
+        <description>Content Version ID</description>
+        <externalId>false</externalId>
+        <label>ContentVersion ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Document_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Document_Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Document_Types__c</fullName>
+        <description>Holds the Document Types which are selected</description>
+        <label>Sel Document Types</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Proof of Branding</fullName>
+                    <default>false</default>
+                    <label>Proof of Branding</label>
+                </value>
+                <value>
+                    <fullName>Proof of Cost</fullName>
+                    <default>false</default>
+                    <label>Proof of Cost</label>
+                </value>
+                <value>
+                    <fullName>Proof of Execution</fullName>
+                    <default>false</default>
+                    <label>Proof of Execution</label>
+                </value>
+                <value>
+                    <fullName>Proof of Attribution</fullName>
+                    <default>false</default>
+                    <label>Proof of Attribution</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Download_Document_Title_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Download Document Title</label>
+        <length>225</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Encoded_Document_Title_txt__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>confirm length with the leads</inlineHelpText>
+        <label>Encoded Document Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Ext_Document_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK($Label.Core_MDF_PFRCommunityLink+&apos;sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Document Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Int_Document_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK(&apos;/sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Document Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Old_Document_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>App File ID</label>
+        <length>225</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Proof_of_Branding__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Proof of Branding</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Proof_of_Cost__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Proof of Cost</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Proof_of_Execution__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Proof of Execution</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_SFT_File_Download_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to identify the file to be downloaded from salesforce or SFT</description>
+        <label>SFT File Available Ind</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_SFT_File_Download_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>$Label.Core_MDF_SFT_Hyperlink + &apos;FileName=&apos;+Core_MDF_Encoded_Document_Title_txt__c+&apos;&amp;AppFileID=&apos;+Core_MDF_Old_Document_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SFT File Download URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Selected_Document_Types_txt__c</fullName>
+        <description>Displays Selected Document Types in separate rows</description>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES( Core_MDF_Document_Types__c , &quot;Proof of Cost&quot;), $Label.Core_MDF_Proof_of_Cost + BR() , NULL) +
+IF(INCLUDES( Core_MDF_Document_Types__c , &quot;Proof of Branding&quot;), $Label.Core_MDF_Proof_of_Branding + BR() , NULL) +
+IF(INCLUDES( Core_MDF_Document_Types__c , &quot;Proof of Attribution&quot;), $Label.Core_MDF_Proof_of_Attribution + BR() , NULL) +
+IF(INCLUDES( Core_MDF_Document_Types__c , &quot;Proof of Execution&quot;), $Label.Core_MDF_Proof_of_Execution , NULL)</formula>
+        <label>Selected Document Types</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Case Review Document</label>
+    <nameField>
+        <displayFormat>DOC-{0000}</displayFormat>
+        <label>Audit Document Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Case Review Documents</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_DocumentType_Selection_Check</fullName>
+        <active>true</active>
+        <description>Applicable document types and selected document types shouldn&apos;t be empty.</description>
+        <errorConditionFormula>IF( $CustomMetadata.Trigger_Execution__mdt.Core_MDF_Audit_Doc_Type_Check.Active__c == true,IF(OR(ISBLANK(Core_MDF_App_Document_Types_nm__c), ISBLANK(Core_MDF_Document_Types__c)), true, false), false)</errorConditionFormula>
+        <errorMessage>You cannot insert/update Documents without Document Type(POC, POA, POE).</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

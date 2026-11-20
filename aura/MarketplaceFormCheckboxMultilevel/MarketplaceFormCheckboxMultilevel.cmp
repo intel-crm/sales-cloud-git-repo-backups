@@ -1,0 +1,142 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase" description="See Form Examples for usage">
+
+    <aura:attribute name="label" type="string" description="Main label for input" />
+    <aura:attribute name="options" type="object[]" description="A list of checkbox options" />
+
+    <aura:attribute name="interactionType" type="string" default="default" description="Can be 'default', 'recursive', 'recursiveselect', or 'parent'" />
+    <aura:attribute name="accordionType" type="string" default="default" description="Can be 'default', 'accordion', or 'search'"/>
+    <aura:attribute name="valueType" type="string" default="default" description="Can be 'default', 'complex', or 'picklist'"/>
+    <aura:attribute name="theme" type="string" default="default" description="Can be 'default', 'filter'" />
+
+
+    <!-- Internal attributes -->
+    <aura:attribute name="checkboxes" type="object[]" description="Internal" />
+    <aura:attribute name="initialCheckboxes" type="Object[]" description="Internal" />
+    <aura:attribute name="searchString" type="string" description="Internal" />
+    <aura:attribute name="_debounceSearchTimer" type="object" description="Internal" />
+    <aura:attribute name="_searching" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="_scrollToResult" type="boolean" default="false" description="Internal" />
+
+      <!-- Toggle Collapsible Type and Clear Filters -->
+    <aura:attribute name="collapsible" type="boolean" default="false" />
+    <aura:attribute name="clearFilters" type="boolean" default="false" />
+    <aura:attribute name="expandedSections" type="object[]" description="Internal" />
+    <aura:attribute name="_handleToggleSection" type="object" description="Internal" />
+    <aura:attribute name="_handleClearFilter" type="object" description="Internal" />
+    <aura:attribute name="_handleSelectfilter" type="object" description="Internal" />
+
+    <aura:attribute name="handleChange" type="object" description="Internal" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.searchString}" action="{!c.handleSearch}" />
+    <aura:method name="reset" action="{!c.handleReset}"/>
+
+    <div class="{!join(' ', (v.required ? 'isRequired' : 'isNotRequired'), 'theme-'+ v.theme )}">
+      <aura:if isTrue="{!v.accordionType == 'default'}">
+        <aura:if isTrue="{!v.label}">
+          <label for="{!v.name}" class="topLabel slds-p-bottom_medium">{!v.label}</label>
+          <input type="hidden" id="{!v.name}" name="{!v.name}" value="{!v.value}"/><!-- for accessibility -->
+        </aura:if>
+
+        <lightning:layout multipleRows="true">
+          <aura:iteration items="{!v.checkboxes}" var="checkbox" indexVar="i">
+            <lightning:layoutItem size="{!v.layoutItemSize}" mediumDeviceSize="{!layoutItemMediumDeviceSize}">
+              <c:MarketplaceFormCheckboxChildMultilevel aura:id="checkbox"
+                checkbox="{!checkbox}"
+                disabled="{!v.disabled}"
+                topLevel="true"
+                onchange="{!v.handleChange}"
+                ontogglesection="{!v._handleToggleSection}"
+                onclearfilter="{!v._handleClearFilter}"
+                onselectfilter="{!v._handleSelectfilter}"
+                collapsible="true"
+                clearFilters="true"                
+                expandedSections="{!v.expandedSections}"
+                />
+            </lightning:layoutItem>
+          </aura:iteration>
+        </lightning:layout>
+      </aura:if>
+
+      <aura:if isTrue="{!v.accordionType != 'default'}">
+        <aura:if isTrue="{!v.label}">
+          <label for="{!v.name}" class="topLabel slds-p-bottom_medium">{!v.label}</label>
+          <input type="hidden" id="{!v.name}" name="{!v.name}" value="{!v.value}"/><!-- for accessibility -->
+        </aura:if>
+        <aura:if isTrue="{!v.accordionType == 'search'}">
+          <div onkeydown="{!c.handleSearchKeydown}">
+            <lightning:input class="slds-p-bottom_small" disabled="{!v.disabled}"
+                type="search" isLoading="{!v._searching}" value="{!v.searchString}" />
+          </div>
+        </aura:if>
+        <aura:iteration items="{!v.checkboxes}" var="checkbox" indexVar="i">
+            <div class="checkboxAccordionSection">
+                <div data-idx="{!i}"
+                class="{! join(' ', (checkbox.open ? 'open' : ''), 'checkboxAccordionSectionHeader slds-p-top_small slds-p-bottom_x-small', (checkbox.highlight ? 'highlight' : ''))}"  onclick="{!c.handleToggleOpen}" >
+                    <a href="javascript:void(0);" data-idx="{!i}" onclick="{!c.handleToggleOpen}" class="{! join(' ', 'slds-p-left_xx-small')}">
+                        <div onclick="{!c.ignoreParentClick}" class="slds-show_inline-block slds-p-vertical_xx-small">
+                            <lightning:input aura:id="topLevelCheckbox" class="{!join(' ', checkbox.firstResult ? 'firstResult' : '', 'inlineBlock')}" disabled="{!v.disabled}" label="{!checkbox.label}" name="{!checkbox.value}" onchange="{!c.handleTopLevelChange}" type="checkbox" checked="{!checkbox.checked}"/>
+                            <aura:if isTrue="{!checkbox.prerelease}">
+                              <span class="prereleaseLabel">{!$Label.c.PMP_Create_Offering_Prerelease_Label}</span>
+                            </aura:if>
+                        </div>
+                    </a>
+                    <aura:if isTrue="{!!empty(checkbox.children)}">
+                      <aura:if isTrue="{!v.clearFilters }">
+                        <span class="filterOptions">
+                          <a class="{!join(' ', 'filter selectFilter', v.appState.settings.currentSldsBreakPoint != 'x-large' ? 'text-underline' : '')}" data-value="{!checkbox.value}" onclick="{!c.handleSelectFilter}" href="javascript:void()">{!$Label.c.Core_PMP_Select_All}</a> | 
+                          <a class="{!join(' ', 'filter clearFilter', v.appState.settings.currentSldsBreakPoint != 'x-large' ? 'text-underline' : '')}" data-value="{!checkbox.value}" onclick="{!c.handleClearFilter}" href="javascript:void()">{!$Label.c.Core_PMP_Deselect_All}</a>
+                        </span>
+                      </aura:if>                          
+                      <aura:if isTrue="{!v.collapsible}">
+                        <aura:if isTrue="{! and(!empty(checkbox.totalSelected), checkbox.totalSelected > 0)}">
+                          <span class="count">{!checkbox.totalSelected}</span>
+                        </aura:if>
+                      </aura:if>
+
+                      <a href="javascript:void(0);" data-idx="{!i}" onclick="{!c.handleToggleOpen}" class="accordionIcon">
+                        <span class="icon">
+                          <aura:if isTrue="{!v.theme == 'filter'}">
+                            <lightning:icon iconName="{!checkbox.open ? 'utility:chevrondown' : 'utility:chevronright'}" />
+                            <aura:set attribute="else">
+                              <lightning:icon iconName="{!checkbox.open ? 'utility:chevronup' : 'utility:chevrondown'}" />
+                            </aura:set>
+                          </aura:if>
+                        </span>
+                      </a>
+                    </aura:if>
+                </div>
+                <aura:if isTrue="{!and(!empty(checkbox.children), or(checkbox.open, checkbox.hasBeenRendered))}">
+                  <aura:if isTrue="{!!checkbox.delayRender}">
+                      <div class="{!join(' ', 'checkboxAccordionSectionContent', 'slds-p-vertical_xx-small') }">
+                          <aura:iteration items="{!checkbox.children}" var="child" indexVar="cI">
+                            <c:MarketplaceFormCheckboxChildMultilevel aura:id="checkbox"
+                              checkbox="{!child}"
+                              disabled="{!v.disabled}"
+                              onchange="{!v.handleChange}"
+                              ontogglesection="{!v._handleToggleSection}"
+                              onclearfilter="{!v._handleClearFilter}"
+                              onselectfilter="{!v._handleSelectfilter}"
+                              collapsible="{!v.collapsible}"
+                              clearFilters="{!v.clearFilters}"
+                              expandedSections="{!v.expandedSections}"
+                              theme="{!v.theme}"
+                              />
+                          </aura:iteration>
+                      </div>
+                    <aura:set attribute="else">
+                      <div class="spinnerContainer"><lightning:spinner alternativeText="{!$Label.c.PMP_L1_Featured_Products_Loading}" size="small" /></div>
+                    </aura:set>
+                  </aura:if>
+
+                </aura:if>
+            </div>
+        </aura:iteration>
+      </aura:if>
+
+      <aura:if isTrue="{!and(v.touched, !v.valid)}">
+        <p class="errorMessage slds-m-vertical_x-small">{!v.errorMessage}</p>
+      </aura:if>
+    </div>
+
+</aura:component>

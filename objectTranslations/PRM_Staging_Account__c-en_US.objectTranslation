@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPA Staging - Account</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPA Staging - Accounts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account City --></label>
+        <name>PRM_Account_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Country Code --></label>
+        <name>PRM_Account_Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>PRM_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Number of Employees --></label>
+        <name>PRM_Account_Number_of_Employees__c</name>
+        <picklistValues>
+            <masterLabel>1 - 9 Employees</masterLabel>
+            <translation><!-- 1 - 9 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1,000-4,999 Employees</masterLabel>
+            <translation><!-- 1,000-4,999 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10 - 24 Employees</masterLabel>
+            <translation><!-- 10 - 24 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10,000 Employees or More</masterLabel>
+            <translation><!-- 10,000 Employees or More --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>100 - 249 Employees</masterLabel>
+            <translation><!-- 100 - 249 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25 - 49 Employees</masterLabel>
+            <translation><!-- 25 - 49 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>250 - 499 Employees</masterLabel>
+            <translation><!-- 250 - 499 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5,000 - 9,999 Employees</masterLabel>
+            <translation><!-- 5,000 - 9,999 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50 - 99 Employees</masterLabel>
+            <translation><!-- 50 - 99 Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>500 - 999 Employees</masterLabel>
+            <translation><!-- 500 - 999 Employees --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Partner Role --></label>
+        <name>PRM_Account_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBD</masterLabel>
+            <translation><!-- TBD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Phone --></label>
+        <name>PRM_Account_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Postal Code --></label>
+        <name>PRM_Account_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account State Code --></label>
+        <name>PRM_Account_State_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Street --></label>
+        <name>PRM_Account_Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Website --></label>
+        <name>PRM_Account_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFDC Account --></label>
+        <name>PRM_Account__c</name>
+        <relationshipLabel><!-- IPA Staging - Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Batch Id --></label>
+        <name>PRM_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Account Id --></label>
+        <name>PRM_External_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field1 --></label>
+        <name>PRM_Generic_Field1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field2 --></label>
+        <name>PRM_Generic_Field2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field3 --></label>
+        <name>PRM_Generic_Field3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field4 --></label>
+        <name>PRM_Generic_Field4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field5 --></label>
+        <name>PRM_Generic_Field5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation Message --></label>
+        <name>PRM_Validation_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation Status --></label>
+        <name>PRM_Validation_Status__c</name>
+        <picklistValues>
+            <masterLabel>Fail</masterLabel>
+            <translation><!-- Fail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pass</masterLabel>
+            <translation><!-- Pass --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

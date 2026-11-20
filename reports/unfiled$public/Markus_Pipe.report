@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>o</joinTable>
+        </blockInfo>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>AMOUNT</field>
+        </columns>
+        <columns>
+            <field>CLOSE_DATE</field>
+        </columns>
+        <columns>
+            <field>OPPORTUNITY_NAME</field>
+        </columns>
+        <columns>
+            <field>ACCOUNT_NAME</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>OWNER_MANAGER</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Markus Gabler</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Opportunities with Products block 1</name>
+        <params>
+            <name>terr</name>
+            <value>all</value>
+        </params>
+        <params>
+            <name>open</name>
+            <value>all</value>
+        </params>
+        <params>
+            <name>probability</name>
+            <value>&gt;0</value>
+        </params>
+        <params>
+            <name>co</name>
+            <value>0</value>
+        </params>
+        <reportType>OpportunityProduct</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <sortColumn>ACCOUNT_NAME</sortColumn>
+        <sortOrder>Asc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>CLOSE_DATE</dateColumn>
+            <endDate>2020-07-21</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2017-04-02</startDate>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>o</joinTable>
+    </blockInfo>
+    <description>all open opps sorted by Owner</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Markus_Pipe</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <showDetails>true</showDetails>
+</Report>

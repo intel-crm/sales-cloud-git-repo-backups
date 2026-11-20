@@ -1,0 +1,99 @@
+<template>
+    <template if:true={isfaeuser}>
+    <template if:false={isFae}>
+        <div class="slds-align_absolute-center" style="height:20rem" >
+            <p><b>{label.ErrorMsg1}</b>&nbsp;
+                <b> <lightning-formatted-url value={label.ErrorMsg2} tooltip="intel.com" target="_blank"></lightning-formatted-url></b>
+                  <b>  {label.ErrorMsg3}</b></p>
+        </div>  
+       
+    </template>
+
+  <template if:true={isFae}>
+    <lightning-card variant="Narrow">
+        <lightning-layout horizontal-align="spread" vertical-align="stretch">
+            <lightning-layout-item padding="around-small" size="12">
+                <div>
+                    <template if:true={dataAvailable}>
+                        <lightning-datatable data={result} columns={columnsList} key-field="id" max-row-selection="1"
+                            onrowselection={getSelectedRow} suppress-bottom-bar="true" oncellchange={handleNoSeatsEdit}
+                            draft-values={draftValues}>
+                        </lightning-datatable>
+                    </template>
+                </div>
+                <template if:true={isload}>
+                <template if:false={dataAvailable}>
+                    <div class="slds-m-vertical_medium" style="padding-left:7.5%">
+                        {label.NoProducts}
+                    </div>
+                </template>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+           <!-- <lightning-layout-item size="1"></lightning-layout-item>-->
+            <lightning-layout-item size="9" style="padding-left: 1%;">
+                <template if:true={termandcondition}>
+                <p>
+                    <lightning-input type="checkbox"
+                        label={TermsCondition_txt} onchange={handleTandC}>
+                    </lightning-input>
+                </p>
+                <br />
+                <lightning-formatted-rich-text
+                value={tandCDescription}
+                ></lightning-formatted-rich-text>
+            </template>
+               <!-- <p> <template if:true={tandCDescription}>
+                        1.&nbsp;
+                        <lightning-button variant="base" label="Privacy" class="slds-m-left_x-small"
+                            onclick={showTerms}></lightning-button>
+                        &nbsp;and&nbsp;
+                        <lightning-formatted-url value="https://www.intel.com" label="Terms of Use" target="_blank">
+                        </lightning-formatted-url>
+                    </template>
+                    <template if:true={showTermsCheck}>
+                        <p> <strong> &nbsp;
+                                <lightning-formatted-text value={tandCDescription}></lightning-formatted-text>
+                            </strong>
+                        </p>
+                    </template>
+                </p> -->
+            </lightning-layout-item>
+            <lightning-layout-item size="2"></lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout horizontal-align="spread" vertical-align="stretch">
+            <lightning-layout-item size="8"></lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="4">
+                <lightning-button variant="brand" label="Get License" onclick={handleClick} disabled={buttonClicked} class="slds-float_right">
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <template if:true={bShowModal}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+                <div class="slds-modal__container">
+
+                    <header class="slds-modal__header slds-modal__header_empty">
+                    </header>
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning-card variant="Narrow">
+                            <c-sales_-generate-license_-on-license-Record activatecodeonload={licActivationId}
+                                licneserecordid={lic_id} primarycontact={primarycontact} tooltype={tooltype}
+                                licensetypevalue={licensetypevalue}>
+                            </c-sales_-generate-license_-on-license-Record>
+                        </lightning-card>
+                    </div>
+
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+    </lightning-card>
+    </template>
+</template>
+</template>

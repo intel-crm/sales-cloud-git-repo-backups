@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.Id</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$Group</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.IsActive</field>
+    </columns>
+    <columns>
+        <field>GroupMember-QueuePublicGroupMembership$GroupMember-User.LastLoginDate</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>GroupMember-QueuePublicGroupMembership$Group</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account 360 PG READ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>GroupMember-QueuePublicGroupMembership$GroupMember-User.IsActive</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>group member inactive</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Group_Members__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>GroupMember-QueuePublicGroupMembership$GroupMember-User</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>GroupMember-QueuePublicGroupMembership$Group.CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

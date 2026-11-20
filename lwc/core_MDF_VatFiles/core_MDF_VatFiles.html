@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Payment Documents" icon-name="custom:custom63">
+            <div class="slds-m-around_medium">
+                <template if:true={vatfiles.data}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={vatfiles.data}
+                        columns={columns}
+                        draft-values={draftValues}
+                        max-row-selection = '1'>
+                    </lightning-datatable>
+                </template>
+                <template if:true={vatfiles.error}>
+                    <!-- handle Apex error -->
+                </template>
+                <div class="slds-align_absolute-center slds-p-top_large">
+                <lightning-button onclick={handleclick} value="Submit" label="Submit"></lightning-button>
+                </div>
+            </div>
+    </lightning-card>
+</template>

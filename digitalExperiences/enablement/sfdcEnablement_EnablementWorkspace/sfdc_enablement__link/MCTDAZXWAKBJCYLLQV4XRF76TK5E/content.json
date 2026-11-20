@@ -1,0 +1,9 @@
+{
+  "type" : "sfdc_enablement__link",
+  "title" : "Link to Sharepoint Form",
+  "contentBody" : {
+    "description" : "Gaudi Fit Questionnaire",
+    "externalLink" : "https://intel.sharepoint.com/:w:/r/sites/CBUSalesEnablementForum/Shared%20Documents/General/Gaudi%20Fit%20Questionnaire.docx?d=w89fb4df0b58543b4a1f9529a5588a88b&csf=1&web=1&e=QqkyPJ"
+  },
+  "urlName" : "link-to-sharepoint-form"
+}

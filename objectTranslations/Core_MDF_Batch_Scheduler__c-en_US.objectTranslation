@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Scheduler</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Scheduler</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Class name --></label>
+        <name>Core_MDF_Batch_Class_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is required only for batches with Parameterized constructor --></help>
+        <label><!-- Batch Class Signature --></label>
+        <name>Core_MDF_Batch_Class_Signature_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter size of batch class. maximum value can be 200. --></help>
+        <label><!-- Batch Size --></label>
+        <name>Core_MDF_Batch_Size_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Note: --></label>
+        <name>Core_MDF_Class_Signature_Note_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Completed Jobs --></label>
+        <name>Core_MDF_Completed_Item_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days of Week --></label>
+        <name>Core_MDF_Days_of_Week__c</name>
+        <picklistValues>
+            <masterLabel>Friday</masterLabel>
+            <translation><!-- Friday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monday</masterLabel>
+            <translation><!-- Monday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saturday</masterLabel>
+            <translation><!-- Saturday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunday</masterLabel>
+            <translation><!-- Sunday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thursday</masterLabel>
+            <translation><!-- Thursday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuesday</masterLabel>
+            <translation><!-- Tuesday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wednesday</masterLabel>
+            <translation><!-- Wednesday --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Effective End Time --></label>
+        <name>Core_MDF_Effective_End_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Start Time --></label>
+        <name>Core_MDF_Effective_Start_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you have multiple emails, please separate them using a comma. Ex: email1@test.com,email2@test.com --></help>
+        <label><!-- Additional Email Recipients --></label>
+        <name>Core_MDF_Email_Receipients__c</name>
+    </fields>
+    <fields>
+        <help><!-- The email template need to be configured per Program/Batch Job. --></help>
+        <label><!-- Enable Email Notification --></label>
+        <name>Core_MDF_Enable_Email_Notification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Every X Hour --></label>
+        <name>Core_MDF_Every_X_Hour_Nbr__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation><!-- 14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>16</masterLabel>
+            <translation><!-- 16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17</masterLabel>
+            <translation><!-- 17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18</masterLabel>
+            <translation><!-- 18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>19</masterLabel>
+            <translation><!-- 19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation><!-- 20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21</masterLabel>
+            <translation><!-- 21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>22</masterLabel>
+            <translation><!-- 22 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>23</masterLabel>
+            <translation><!-- 23 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Every X Minute --></label>
+        <name>Core_MDF_Every_X_Minute_Nbr__c</name>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation><!-- 20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25</masterLabel>
+            <translation><!-- 25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30</masterLabel>
+            <translation><!-- 30 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>35</masterLabel>
+            <translation><!-- 35 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40</masterLabel>
+            <translation><!-- 40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>45</masterLabel>
+            <translation><!-- 45 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50</masterLabel>
+            <translation><!-- 50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55</masterLabel>
+            <translation><!-- 55 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GMT Time --></label>
+        <name>Core_MDF_GMT_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>Core_MDF_Inactive__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is applicable only if &apos;Enable Email Notification&apos; checked. Select this to receive all notifications, if not checked then only failure notifications received. --></help>
+        <label><!-- Include All Notifications --></label>
+        <name>Core_MDF_Include_All_Notifications__c</name>
+    </fields>
+    <fields>
+        <label><!-- Frequency --></label>
+        <name>Core_MDF_Job_Frequency__c</name>
+        <picklistValues>
+            <masterLabel>Daily</masterLabel>
+            <translation><!-- Daily --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Days of Week</masterLabel>
+            <translation><!-- Days of Week --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Every X Hour</masterLabel>
+            <translation><!-- Every X Hour --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Every X Minute</masterLabel>
+            <translation><!-- Every X Minute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Once</masterLabel>
+            <translation><!-- Once --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- # of Line Items --></label>
+        <name>Core_MDF_Line_Items_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Batch Run Time --></label>
+        <name>Core_MDF_Next_Batch_Run_Time_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Pending Jobs --></label>
+        <name>Core_MDF_No_of_Pending_Jobs_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Scheduled Jobs --></label>
+        <name>Core_MDF_No_of_Scheduled_Jobs_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is required only for batches with Parameterized constructor --></help>
+        <label><!-- Object JSON --></label>
+        <name>Core_MDF_Object_JSON_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>Core_MDF_Priority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+        <picklistValues>
+            <masterLabel>A&amp;E</masterLabel>
+            <translation><!-- A&amp;E --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACM</masterLabel>
+            <translation><!-- ACM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCP</masterLabel>
+            <translation><!-- CCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPQ</masterLabel>
+            <translation><!-- CPQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPA</masterLabel>
+            <translation><!-- IPA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Pipeline</masterLabel>
+            <translation><!-- Sales Pipeline --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Scheduler Status --></label>
+        <name>Core_MDF_Scheduler_Status_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Time --></label>
+        <name>Core_MDF_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduled Time --></label>
+        <name>Scheduled_Time_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please select an End date greater than Next run time. --></errorMessage>
+        <name>Core_MDF_End_Date_Greater_Than_Next_Run</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Batch class cannot be changed. Please create a new job. --></errorMessage>
+        <name>Core_MDF_Restrict_Batch_Class_Name_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a valid Batch size between 1 to 200 --></errorMessage>
+        <name>Core_MDF_Restrict_Batch_Size</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Batch Schedule cannot be edited in current status. --></errorMessage>
+        <name>Core_MDF_Restrict_Edit_Based_On_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Batch Schedule Frequency cannot be modified. Please Create a new job. --></errorMessage>
+        <name>Core_MDF_Restrict_Frequency_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Batch Schedule cannot be cancelled in current status. --></errorMessage>
+        <name>Core_MDF_Restrict_Inactive_Checkbox_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduled time cannot be in past --></errorMessage>
+        <name>Core_MDF_Restrict_Scheduler_Time</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Batch Schedule Start date cannot be modified. Please create a new job. --></errorMessage>
+        <name>Core_MDF_Restrict_Start_Date_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective Start Time cannot be in past --></errorMessage>
+        <name>Core_MDF_Restrict_Start_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select an End date greater than Start date. --></errorMessage>
+        <name>Core_MDF_Start_Date_Less_Than_End_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Whitelisted Domains</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Whitelisted Domains</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Account Whitelisted Domains --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Effective End Date Time --></label>
+        <name>Effective_End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>Inactive_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>Partner_Program__c</name>
+        <relationshipLabel><!-- Account Whitelisted Domains --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

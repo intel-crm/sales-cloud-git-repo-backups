@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Type</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Types</value>
+    </caseValues>
+    <fields>
+        <label><!-- Partner Role Code --></label>
+        <name>PRM_PartnerRoleCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role Description --></label>
+        <name>PRM_PartnerRoleDesc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Type Description --></label>
+        <name>PRM_PartnerTypeDesc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Type Code --></label>
+        <name>PRM_PartneryTypeCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role Name --></label>
+        <name>PRM_Role_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_channelprogram__c</name>
+        <relationshipLabel><!-- Partner Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_inactind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

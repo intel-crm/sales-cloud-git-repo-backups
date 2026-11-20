@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>PREVENT_UPDATE_ERROR_MESSAGE</name>
+        <label>PREVENT UPDATE ERROR MESSAGE</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Modification is allowed only on the latest Registration record.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>IS_LATEST_CHECK</name>
+        <label>IS LATEST CHECK</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>PREVENT_UPDATE_ERROR_MESSAGE</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IS_LATEST_TRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GET_LATEST_REJECTED_REGISTRATION_EMAIL.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <label>IS LATEST TRUE</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>PRM_Registration_Request_Prevent_Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_Registration_Request_Prevent_Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GET_LATEST_REJECTED_REGISTRATION_EMAIL</name>
+        <label>GET LATEST REJECTED REGISTRATION EMAIL</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IS_LATEST_CHECK</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Record_Type_Name_rpt_txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>VARIABLEACR</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_Email_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PRM_Email_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PRM_Registration_Request__c</object>
+        <sortField>Created_Date_Time__c</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GET_LATEST_REJECTED_REGISTRATION_EMAIL</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Record_Type_Name_rpt_txt__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account Create Request</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <object>PRM_Registration_Request__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>VARIABLEACR</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Account Create Request</stringValue>
+        </value>
+    </variables>
+</Flow>

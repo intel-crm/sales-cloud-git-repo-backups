@@ -1,0 +1,18 @@
+.THIS.h_iframe iframe {
+    width:100%;
+    height:100%;
+}
+
+.THIS.h_iframe {
+    height: calc(100% + (2 * var(--lwc-templateGutters,0.75rem)));
+    width: calc(100% + (2 * var(--lwc-templateGutters,0.75rem)));
+    margin: calc(-1 * var(--lwc-templateGutters,0.75rem));
+}
+
+.slds-template_default.THIS {
+	padding: 0rem;
+}
+
+.THIS .slds-template_default, .THIS .slds-tabs--default__item{
+    padding:0px;
+}

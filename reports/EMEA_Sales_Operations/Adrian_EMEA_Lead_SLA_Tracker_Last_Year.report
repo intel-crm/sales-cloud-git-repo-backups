@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_78395505</developerName>
+        <masterLabel>Grouped Source</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Lead.Core_Lead_Conversion_Point__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Avnet WW02</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW02</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW04</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW04 2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Partner Program_Disti Lead Bounty - Eastronics WW50 4</sourceValue>
+            </sourceValues>
+            <value>Disti Bounty</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Eval Platforms Store</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Gateways</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Get Help</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Registration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Samples - Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Samples - Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_AnyIndustry_DesignCenter_EDC - Solutions Directory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Communications_DesignCenter_EDC - Registration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Communications_DesignCenter_EDC - Samples - Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Communications_DesignCenter_EDC - Samples - Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Energy_DesignCenter_EDC - Registration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Media_DesignCenter_EDC - Registration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_DeveloperEmbedded_IOT_Media_DesignCenter_EDC - Samples - Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WW_AnyAudience_AnyProduct_AnyIndustry_Customer Support_Embedded Manual Entry Form</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WW_AnyAudience_AnyProduct_AnyIndustry_Customer Support_ITDM ESS Manual Lead Entry Form</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WW_AnyAudience_AnyProduct_AnyIndustry_Customer Support_ITDM WA Manual Lead Entry Form</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WW_DeveloperMaker_AnyProduct_AnyIndustry_Customer Support_Manual Lead Entry for Maker from ICS</sourceValue>
+            </sourceValues>
+            <value>Web</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_43053261</developerName>
+        <masterLabel>Grouped State</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Lead.Core_Lead_State__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Open</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Engaged</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>On Hold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Accepted</sourceValue>
+            </sourceValues>
+            <value>Open</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Rejected</sourceValue>
+            </sourceValues>
+            <value>Rejected</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_88002537</developerName>
+        <masterLabel>Manager</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Guy Bar-Ner</sourceValue>
+            </sourceValues>
+            <value>Guy Bar-Ner</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Christoph Johann</sourceValue>
+            </sourceValues>
+            <value>Christoph Johann</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Dietmar Rohlf</sourceValue>
+            </sourceValues>
+            <value>Dietmar Rohlf</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Evzen Pavlovsky</sourceValue>
+            </sourceValues>
+            <value>Evzen Pavlosky</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>-</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_40760695</developerName>
+        <masterLabel>Owner Role Display - Short</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Edwin Peters</sourceValue>
+            </sourceValues>
+            <value>Edwin Peters</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <value>Yulia Smelkova</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Uros Huzjak</sourceValue>
+            </sourceValues>
+            <value>Uros Huzjak</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Williams, Carey</sourceValue>
+            </sourceValues>
+            <value>Carey Williams</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Eran Gal</sourceValue>
+            </sourceValues>
+            <value>Eran Gal</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Sign for Com - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA Sign for Com - Manager</sourceValue>
+            </sourceValues>
+            <value>VSC SignForFom</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA TIM - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA TIM - Manager</sourceValue>
+            </sourceValues>
+            <value>VSC TIM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Marketing Center - Employee</sourceValue>
+            </sourceValues>
+            <value>VSC Mktg</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Teleperformance - Employee</sourceValue>
+            </sourceValues>
+            <value>VSC TP</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_19587491</developerName>
+        <masterLabel>Owner Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Teleperformance - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA TIM - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA Sign for Com - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA Marketing Center - Employee</sourceValue>
+            </sourceValues>
+            <value>VSC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_88002537</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Lead.Core_First_Contact_SLA__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>OWNER_ROLE_DISPLAY</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Disposition_SLA__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_40760695</field>
+    </columns>
+    <columns>
+        <field>OPP_OWNER_ALIAS</field>
+    </columns>
+    <columns>
+        <field>OWNER_ROLE</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER_ALIAS</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>BucketField_19587491</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY_ACCT</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Last_Activity_Date__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Stage_Change_Date_Time__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_State_Entrance_Date_Open__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_State_Entrance_Date_Accepted__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_State_Entrance_Date_Engaged__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_State_Entrance_Date_OnHold__c</field>
+    </columns>
+    <columns>
+        <field>CONVERTED_DATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ROLE_DISPLAY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>Smelkova,Gal,Williams,Czekaj,szman,Drazkowski,Garcia Comin,Peters,Galyamov,Osiecki,Carrera,Huzjak,VSC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Lead.Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_First_Contact_SLA__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>old lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_OWNER_ALIAS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_88002537</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_First_Contact_SLA__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Adrian EMEA Lead SLA Tracker Last Year</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_PREVFY</interval>
+    </timeFrameFilter>
+</Report>

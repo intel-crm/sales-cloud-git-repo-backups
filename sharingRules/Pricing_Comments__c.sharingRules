@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>All_Pricing_Read_Only_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Pricing Read Only User</label>
+        <sharedTo>
+            <group>Pricing_All_Pricing_ReadOnly_Users_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Manager</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing Manager</label>
+        <sharedTo>
+            <group>Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

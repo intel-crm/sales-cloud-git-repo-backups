@@ -1,0 +1,151 @@
+<template>
+    <div class="api-documentation-container">
+        <!-- Header -->
+        <header class="documentation-header">
+            <div class="header-content">
+                <h1>API Documentation</h1>
+            </div>
+            <div class="toolbar-actions">
+                <button class="btn btn-primary" onclick={handleExpandAll}>
+                    Expand All
+                </button>
+                <button class="btn btn-secondary" onclick={handleCollapseAll}>
+                    Collapse All
+                </button>
+            </div>
+        </header>
+
+        <!-- Loading/Error States -->
+        <template if:true={isLoading}>
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Loading API documentation...</p>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="error-container">
+                <div class="error-icon">⚠️</div>
+                <p>{errorMessage}</p>
+            </div>
+        </template>
+
+        <!-- Main Content -->
+        <template if:false={isLoading}>
+            <main class="api-documentation">
+                <template for:each={apiRecords} for:item="record">
+                    <article key={record.id} class="api-panel">
+                        <!-- Panel Header -->
+                        <div class="panel-header">
+                            <button
+                                type="button"
+                                class="panel-toggle"
+                                data-panel-id={record.panelId}
+                                onclick={handleTogglePanel}
+                            >
+                                <span class="api-name">{record.apiName}</span>
+                            </button>
+                            <div class="version-control">
+                                <label class="version-label" for={record.panelId}>Version</label>
+                                <select
+                                    id={record.panelId}
+                                    class="version-select"
+                                    data-panel-id={record.panelId}
+                                    value={record.selectedVersion}
+                                    onchange={handleVersionChange}
+                                >
+                                    <template for:each={record.versionOptions} for:item="versionOption">
+                                        <option key={versionOption.value} value={versionOption.value}>
+                                            {versionOption.label}
+                                        </option>
+                                    </template>
+                                </select>
+                            </div>
+                            <div class="header-meta">
+                                <template if:true={record.category}>
+                                    <span class="category-tag">{record.category}</span>
+                                </template>
+                                <span class={record.methodClass}>
+                                    {record.apiMethod}
+                                </span>
+                                <span class="chevron" data-expanded={record.isExpanded}>▼</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel Content -->
+                        <template if:true={record.isExpanded}>
+                            <div class="panel-content">
+                                <!-- Description -->
+                                <template if:true={record.description}>
+                                    <div class="description-section">
+                                        <p>{record.description}</p>
+                                        <template if:true={record.eol}>
+                                            <div class="eol-badge">
+                                                <span class="eol-label">EOL</span>
+                                                <span>{record.eol}</span>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+
+                                <!-- Endpoint -->
+                                <template if:true={record.apiEndpoint}>
+                                    <div class="endpoint-section">
+                                        <h4>Endpoint</h4>
+                                        <div class="endpoint-box">
+                                            <code>{record.apiEndpoint}</code>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <!-- Request/Response Grid -->
+                                <div class="grid-container">
+                                    <!-- Request Example -->
+                                    <template if:true={record.requestExample}>
+                                        <div class="code-box">
+                                            <div class="code-header">
+                                                <h4>Request</h4>
+                                                <button
+                                                    class="download-btn"
+                                                    data-panel-id={record.panelId}
+                                                    onclick={handleDownloadRequest}
+                                                    title="Download Request JSON"
+                                                >
+                                                    ⬇ Download
+                                                </button>
+                                            </div>
+                                            <pre><code>{record.requestExample}</code></pre>
+                                        </div>
+                                    </template>
+
+                                    <!-- Response Example -->
+                                    <template if:true={record.responseExample}>
+                                        <div class="code-box">
+                                            <div class="code-header">
+                                                <h4>
+                                                    Response
+                                                    <template if:true={record.statusCode}>
+                                                        <span class="status-code">({record.statusCode})</span>
+                                                    </template>
+                                                </h4>
+                                                <button
+                                                    class="download-btn"
+                                                    data-panel-id={record.panelId}
+                                                    onclick={handleDownloadResponse}
+                                                    title="Download Response JSON"
+                                                >
+                                                    ⬇ Download
+                                                </button>
+                                            </div>
+                                            <pre><code>{record.responseExample}</code></pre>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </article>
+                </template>
+            </main>
+        </template>
+    </div>
+</template>

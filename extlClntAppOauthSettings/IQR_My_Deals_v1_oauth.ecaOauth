@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>Api, Web, RefreshToken, OpenID</commaSeparatedOauthScopes>
+    <externalClientApplication>IQR_My_Deals_v1</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>IQR_My_Deals_v1_oauth</label>
+    <oauthLink>00Do0000000aRcf:888cv000000gC9d</oauthLink>
+</ExtlClntAppOauthSettings>

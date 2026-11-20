@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_84229479</developerName>
+        <masterLabel>Teams</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>User.Core_Manager__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Jean-Laurent Philippe</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Adam Roe</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sarah Robinson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Antonino Albarran</sourceValue>
+            </sourceValues>
+            <value>CTO</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Matthew Ward</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Joachim Aertebjerg</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marie Pinon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Karsten Fels</sourceValue>
+            </sourceValues>
+            <value>COE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Dieter Hoffend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Erwan Montaux</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivana Jordanova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Iain Beckingham</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Andreas Timm</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Elena Makhalina</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pippa Chick</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sven Beckmann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Helene De La Gastine</sourceValue>
+            </sourceValues>
+            <value>!Sales - EPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Stephanie Gohier</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jesus Sanchez Paniagua</sourceValue>
+            </sourceValues>
+            <value>!Sales - Consumer Sales</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Georgios Kardaras</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simon Wilyman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Norberto Carrascal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tal Elgar</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jost Henning Eid</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Torsten Kahrmann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Patricia Pozuelo Real</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Christine Harrison</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Peel</sourceValue>
+            </sourceValues>
+            <value>!Sales - Partner Sales</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Gosia Dzul</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Galin Dimov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stephanie Loock</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Katarzyna Bielak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simon Windsor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edwin Peters</sourceValue>
+            </sourceValues>
+            <value>!Sales - Digital Sales</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Johan Elfsson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rami Ilari Vaittinen</sourceValue>
+            </sourceValues>
+            <value>!Sales - Nokia/Ericsson</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Steve Shakespeare</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonja Pierer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stefani Eiselle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maurits Tichelman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Javier Galiana</sourceValue>
+            </sourceValues>
+            <value>!Sales - Sales FLMs</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Unique</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>ALIAS</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_84229479</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>USER_ID</field>
+    </columns>
+    <columns>
+        <field>LOGIN_DATE</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>ACTIVE</field>
+    </columns>
+    <columns>
+        <field>LAST_LOGIN</field>
+    </columns>
+    <columns>
+        <field>DEPARTMENT</field>
+    </columns>
+    <columns>
+        <field>ROLE</field>
+    </columns>
+    <columns>
+        <field>User.Core_User_Geo__c</field>
+    </columns>
+    <description>taken from DASHBOARD: User Adoption Dashboard Prototype</description>
+    <filter>
+        <criteriaItems>
+            <column>LOGIN_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_WEEKS:13</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Integration,API,Test,Reltio,Eloqua,User,PSG_SOS,Auto,POC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LICENSE_TYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>S</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Core_User_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>ccp - core,sales rep,sales manager,smg,a&amp;e,dual,ips agent,ips support,sales ops,BU Account Collaborator,Marketing Development</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>IPA A&amp;E User,partner</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_84229479</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <aggregateType>Sum</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Core_Manager__c</field>
+        <sortByName>ACTIVE</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <groupingsDown>
+        <aggregateType>Sum</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>PROFILE</field>
+        <sortByName>ACTIVE</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>MSWEET - adoption - logins #4 avgbyteam</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>LAST_LOGIN</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>LAST_LOGIN</dateColumn>
+        <interval>INTERVAL_LAST90</interval>
+    </timeFrameFilter>
+</Report>

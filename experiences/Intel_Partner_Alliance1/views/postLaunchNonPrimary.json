@@ -1,0 +1,51 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerOnboardingLayout",
+  "dataProviders" : [ ],
+  "id" : "15bb93a4-7841-4159-9033-6ccb6ac2a9e2",
+  "label" : "Post Launch - non primary",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "type" : "Test Only-Non Primary"
+      },
+      "componentName" : "c:ipaPartnerOnboarding",
+      "id" : "ee93a1b6-005f-4f68-8818-c6e63e165296",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"PostLaunchNonPrimary\",\"title\":\"Post Launch - non primary\"}",
+        "communityName" : "IPA",
+        "includeCanonical" : false
+      },
+      "componentName" : "c:ipaAnalyticsPageLoad",
+      "id" : "dfcd2915-eb9a-4572-adc9-bd313c0a5a8d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4f2c9ac4-41fc-4a56-b157-6afe5274438d",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Post Launch - non primary\"/>\n<meta name=\"pageType\" content=\"PostLaunchNonPrimary\"/>",
+        "description" : "",
+        "title" : "Post Launch - non primary"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "90489e34-5689-4bbc-ab39-7d8340e12b52",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7631c47f-8440-4245-a76d-2d6ef9dc5407",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-post-launch-non-primary"
+}

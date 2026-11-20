@@ -1,0 +1,5 @@
+<apex:page Controller="jiffle.JNEventMeetingList" action="{!chkconfigsettings}" standardStylesheets="false" showHeader="true" sidebar="false"
+    docType="html-5.0" tabStyle="Jifflenow_Meetings__tab">
+    <apex:include pageName="jiffle__JNLegacyHome" rendered="{!!ecsConfigValue}" />
+    <apex:include pageName="jiffle__JNHome" rendered="{!ecsConfigValue}" />    
+</apex:page>

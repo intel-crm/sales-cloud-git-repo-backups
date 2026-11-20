@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Product Approval History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Product Approval History</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approved BU Short Name --></label>
+        <name>Core_Opp_Hist_Approved_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>Core_Opp_Hist_Approved_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Quantity --></label>
+        <name>Core_Opp_Hist_Approved_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Sales Group --></label>
+        <name>Core_Opp_Hist_Approved_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Sales Price --></label>
+        <name>Core_Opp_Hist_Approved_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Total Price --></label>
+        <name>Core_Opp_Hist_Approved_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved BU Product Segment --></label>
+        <name>Core_Opp_Hist_BU_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Date --></label>
+        <name>Core_Opp_Hist_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Commissionable? --></label>
+        <name>Core_Opp_Hist_Commissionable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opp_Hist_Core_Opportunity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opp_Hist_Core_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity Product Approval History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Manager Approved Date --></label>
+        <name>Core_Opp_Hist_Manager_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpportunityLineItemID --></label>
+        <name>Core_Opp_Hist_OpportunityLineItemID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Opportunity Coverage --></label>
+        <name>Core_Opp_Hist_Opportunity_Coverage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Core_Opp_Hist_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Opp_Hist_Product__c</name>
+        <relationshipLabel><!-- Opportunity Product Approval History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Production Claim Date --></label>
+        <name>Core_Opp_Hist_Production_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Opp_Hist_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deleted</masterLabel>
+            <translation><!-- Deleted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Cancelled</masterLabel>
+            <translation><!-- Production Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Lost</masterLabel>
+            <translation><!-- Production Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Win</masterLabel>
+            <translation><!-- Production Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win Approved</masterLabel>
+            <translation><!-- Win Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win Submitted</masterLabel>
+            <translation><!-- Win Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

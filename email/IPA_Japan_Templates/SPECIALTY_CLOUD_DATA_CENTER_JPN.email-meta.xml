@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Intel® Partner Alliance Cloud Data Center Specialty</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_CLOUD_DATA_CENTER_JPN</name>
+    <style>none</style>
+    <subject>インテル® パートナー・アライアンスのクラウド・データセンター専攻</subject>
+    <textOnly>認定取得、おめでとうございます !
+
+
+{!Contact.FirstName} 様、
+
+インテル® パートナー・アライアンス・クラウド・データセンター専攻へようこそ ! 認定人クラウド・データセンター・スペシャリストとして、クラウドビジネスの促進を助ける、様々な専門的な特典利用*の対象になりました。
+
+クラウド・データセンター・スペシャリストの認定
+インテルによる貴社のクラウド・スペシャリストとしてのプロモーション
+カスタマー・マッチメーキングの機会
+クラウド向けインテル® サーバー製品購入時の追加ポイント
+インテル® クラウド・リソースの利用
+業界イベントやトレーニング・セッションへの優先的な招待
+インテル® Platform Testing Services へのアクセス
+
+開始するには、以下の情報を明記して ITP-CLOUD@intel.com 宛てに返信してください。
+
+
+クラウド・スペシャリスト関連情報の主な連絡先
+名前:
+電子メール:
+
+
+その他販売やプロモーション素材
+現住所:
+電話番号:
+
+特典を活用する
+
+
+* 特典は地域によって異なります。
+
+インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
+
+メンバーシップの最適化についてのヘルプやガイダンスは、https://cqpreview.intel.com/content/www/jp/ja/partner-alliance/help/overview.html を参照してください。
+
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+プライバシー  |  Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

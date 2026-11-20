@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Confirmation email sent to user for SSLC</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Test No Contact Confirmation</name>
+    <style>formalLetter</style>
+    <subject>IPS - Created Case {!Case.CaseNumber} - {!Case.Subject}</subject>
+    <textOnly>Case {!Case.CaseNumber} has been created.
+_______________________________________________________________
+
+Case Details
+
+Case Number: {!Case.CaseNumber}
+Subject: {!Case.Subject}
+Description: {!Case.Description}
+
+
+Please refer to this case number when corresponding with your Intel Representative.
+_______________________________________________________________
+
+
+
+We give you many choices regarding our use of your personal information for marketing purposes. You may update and request access to your contact details and communication preferences by using one of the following methods: visit the specific product or service web site; use the Contact Us form at https://www-ssl.intel.com/content/www/us/en/forms/privacy-contact-us.html; or send a letter to the postal address below.
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customMetadataTypeRecord>API_M_Auth_Provider__mdt.ACM_Address_Cleanser</customMetadataTypeRecord>
+    <executionUser>12255162@intel.com.crm</executionUser>
+    <friendlyName>ACM Address Cleanser</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
+    <plugin>IPA_Apigee_Auth_Provider</plugin>
+    <providerType>Custom</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>false</sendSecretInApis>
+</AuthProvider>

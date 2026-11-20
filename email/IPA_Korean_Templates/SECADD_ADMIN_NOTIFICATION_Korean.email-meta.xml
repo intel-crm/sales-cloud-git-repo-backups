@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SECADD_ADMIN_NOTIFICATION_Korean</name>
+    <style>none</style>
+    <subject>인텔® 파트너 얼라이언스 신청서 검토</subject>
+    <textOnly>보류 중인 요청 검토
+
+{!UserName},
+
+{{CONTACTEMAILID}}을 귀하의 계정 {{ACCOUNTNAME}}에 연락처로 추가하는 요청을 검토하십시오.
+
+로그인하여 요청을 승인하거나 거부하십시오.
+
+
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} 인텔사
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보 처리방침 | 쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

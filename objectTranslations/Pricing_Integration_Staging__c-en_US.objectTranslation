@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Integration Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Integration Stagings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is Bulk Change Request --></label>
+        <name>Pricing_Bulk_ChangeRequest_chk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Country Mismatch Request --></label>
+        <name>Pricing_Is_Country_Mismatch_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message Type --></label>
+        <name>Pricing_Message_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payload --></label>
+        <name>Pricing_Payload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>Pricing_QuoteID__c</name>
+        <relationshipLabel><!-- Pricing Integration Stagings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Request ID --></label>
+        <name>Pricing_RequestID__c</name>
+        <relationshipLabel><!-- Pricing Integration Stagings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Retry Number --></label>
+        <name>Pricing_Retry_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Time Stamp --></label>
+        <name>Pricing_Retry_Time_Stamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- SObjectId --></label>
+        <name>Pricing_SObjectId__c</name>
+    </fields>
+    <fields>
+        <label><!-- SObject --></label>
+        <name>Pricing_SObject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Pricing_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation><!-- Successful --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- UCD Response Type --></label>
+        <name>Pricing_UCD_Response_Type__c</name>
+        <picklistValues>
+            <masterLabel>Duplicate Account</masterLabel>
+            <translation><!-- Duplicate Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Account</masterLabel>
+            <translation><!-- Requested Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Duplicate Account</masterLabel>
+            <translation><!-- Requested Duplicate Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resubmitted</masterLabel>
+            <translation><!-- Resubmitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Survivor Account</masterLabel>
+            <translation><!-- Survivor Account --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Notify created by &amp; Owner when exception status changes to Approved or Denied</description>
+        <name>Notify_user_on_status_change</name>
+        <label>Notify user on status change</label>
+        <locationX>446</locationX>
+        <locationY>947</locationY>
+        <actionName>Core_MDF_DetermineActiveUsersToSendEmail</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendDiff</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>Core_MDF_ExceptionApprovalStatusUpdate</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>userIdList</name>
+            <value>
+                <elementReference>ExceptionUserList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_DetermineActiveUsersToSendEmail</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>Submit Exception For Approval</description>
+        <name>Submit_Exception_For_Approval</name>
+        <label>Submit Exception For Approval</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <elementReference>Approval_Process_Name</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>submitterId</name>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>submit</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <description>Update Exception Approvers Comments</description>
+        <name>Update_Exception_Approvers_Comment</name>
+        <label>Update Exception Approvers Comment</label>
+        <locationX>644</locationX>
+        <locationY>431</locationY>
+        <actionName>Core_MDF_Exception_TriggerServiceHandler</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Notify_on_Rejection_Approval</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>exceptionList</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Exception_TriggerServiceHandler</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign creator to list to send email to the creator</description>
+        <name>Submitter_Assignment</name>
+        <label>Submitter Assignment</label>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>ExceptionUserList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Notify_user_on_status_change</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign creator and owner to list to send email to the creator &amp; owner</description>
+        <name>Submitter_Assignment_1</name>
+        <label>Submitter Assignment 1</label>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>ExceptionUserList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ExceptionUserList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Notify_user_on_status_change</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check if owner and created by user is same, if same then add only one id to exception list to avoid sending multiple emails</description>
+        <name>Check_if_owner_and_created_by_is_same</name>
+        <label>Check if owner and created by is same</label>
+        <locationX>446</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Submitter_Assignment_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_if_owner_and_created_is_same</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CreatedById</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Submitter_Assignment</targetReference>
+            </connector>
+            <label>Check if owner and created is same</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Notify exception creator and owner when exception is approved or denied</description>
+        <name>Notify_on_Rejection_Approval</name>
+        <label>Notify on Denied/Approval of exception</label>
+        <locationX>644</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Notify_on_Exception_Rejection_Approval</name>
+            <conditionLogic>3 AND (1 OR 2)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Exception_Status_nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Exception_Status_nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Denied</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Exception_Status_nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_owner_and_created_by_is_same</targetReference>
+            </connector>
+            <label>Notify on Exception Rejection/Approval</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Submit_Exception_for_Review</name>
+        <label>Submit Exception for Review</label>
+        <locationX>578</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Exception_is_New_and_Status_is_Pending_Review</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Exception_Creation_to_Launch_Ap</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Exception_statuschanged_from_draftto_PendingReview</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Submit_Exception_For_Approval</targetReference>
+            </connector>
+            <label>If Exception is New/Clone and Status is Pending Review</label>
+        </rules>
+        <rules>
+            <name>If_Exception_Status_is_changes_to_Approved_Denied</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Exception_Status_is_changes_to_Approved_Denied</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Exception_Approvers_Comment</targetReference>
+            </connector>
+            <label>If Exception Status is changes to Approved/Denied</label>
+        </rules>
+    </decisions>
+    <description>Flow is used to trigger approval process for exception</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Exception_Clone_Launch_AP</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISNEW(),NOT(ISPICKVAL({!$Record.Core_MDF_Exception_Status_nm__c}, &apos;Pending Review&apos;)))</expression>
+    </formulas>
+    <formulas>
+        <name>Exception_Creation_to_Launch_Ap</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISNEW(),ISPICKVAL({!$Record.Core_MDF_Exception_Status_nm__c}, &apos;Pending Review&apos;))</expression>
+    </formulas>
+    <formulas>
+        <description>Returns true when user all account as true while exception status is on draft</description>
+        <name>Exception_Selected_All_Account_on_draft_status</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISCHANGED({!$Record.Core_MDF_Select_All_Accounts_ind__c}),ISPICKVAL({!$Record.Core_MDF_Exception_Status_nm__c}, &apos;Draft&apos;))</expression>
+    </formulas>
+    <formulas>
+        <description>If Exception Status is changes to Approved/Denied</description>
+        <name>Exception_Status_is_changes_to_Approved_Denied</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(NOT(ISNEW()),ISCHANGED({!$Record.Core_MDF_Exception_Status_nm__c}),OR(ISPICKVAL({!$Record.Core_MDF_Exception_Status_nm__c}, &apos;Approved&apos;),ISPICKVAL({!$Record.Core_MDF_Exception_Status_nm__c}, &apos;Denied&apos;)))</expression>
+    </formulas>
+    <formulas>
+        <description>Returns true when exception status changes from Draft to Pending Review</description>
+        <name>Exception_statuschanged_from_draftto_PendingReview</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISCHANGED({!$Record.Core_MDF_Exception_Status_nm__c}),AND(ISPICKVAL({!$Record__Prior.Core_MDF_Exception_Status_nm__c}, &apos;Draft&apos;),ISPICKVAL({!$Record.Core_MDF_Exception_Status_nm__c}, &apos;Pending Review&apos;)))</expression>
+    </formulas>
+    <interviewLabel>Submit Exception For Approval {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Submit Exception For Approval</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Submit_Exception_for_Review</targetReference>
+        </connector>
+        <object>Core_MDF_Exception__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Approval_Process_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Core_MDF_Exception_Approval_Process_v10</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Exception_Record</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_MDF_Exception__c</objectType>
+    </variables>
+    <variables>
+        <description>List to collect owner/creator to send email on status change</description>
+        <name>ExceptionUserList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Update Exception Approvers Comment</description>
+        <name>UpdateExceptionApproversComment</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_MDF_Exception__c</objectType>
+    </variables>
+</Flow>

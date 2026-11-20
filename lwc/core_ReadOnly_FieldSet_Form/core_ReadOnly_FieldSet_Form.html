@@ -1,0 +1,260 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-07-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+   <lightning-spinner alternative-text="Loading" if:true={isLoading} class="spinshow" size="large" variant="brand" ></lightning-spinner>
+   <lightning-record-edit-form record-id={recordId} object-api-name="OpportunityLineItem" >
+      <lightning-messages>
+      </lightning-messages>
+      <div class="slds-float_right">
+         <template lwc:if={showEditField}>
+            <lightning-button variant="brand-outline" type="reset" name="Cancel" label="Cancel" onclick={handleCancelButtonClick} class="slds-var-m-left_x-small" if:false={invokedFromAura}></lightning-button>
+            <lightning-button variant="brand" name="Save" label="Save" class="slds-m-top_small slds-var-m-left_x-small" onclick={handleSave} if:false={invokedFromAura}></lightning-button>
+         </template>
+         <template lwc:else>
+            <lightning-button variant="brand-outline" name="Edit" label="Edit" alignment-bump="right" onclick={handleEdit} if:false={invokedFromAura}></lightning-button>
+         </template>
+      </div>
+       <br/> <br/>
+      <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+      
+         <template if:false={DesignOrDeal}>
+            <template if:true={isPCCenabled}>
+            <lightning-accordion-section name="E" label="Financial Incentive Quote Line Details">
+               <div class="slds-grid">
+                     <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                        <lightning-output-field field-name="Core_Quote_Line_Number__c" class="underline-field" ></lightning-output-field>
+                        <lightning-output-field field-name="Core_Quote_Line_Cancellation_Date__c" class="underline-field" ></lightning-output-field>
+                        
+                     </div>
+                     <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                        <lightning-output-field field-name="Core_Quote_Line_Status_Nm__c" class="underline-field" ></lightning-output-field>         
+                     </div>
+                  
+                  </div>
+            </lightning-accordion-section>
+         </template>
+      </template>
+         <lightning-accordion-section name="A" label="Opportunity Product Details">
+            <div class="slds-grid">
+               <template if:true={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="OpportunityId" ></lightning-input-field>
+                     <lightning-input-field field-name="Product2Id" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Write_In_Product_Name__c" onchange={handleWIPName}></lightning-input-field>
+                     <lightning-input-field field-name="Core_Product_Type__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Group__c" onchange={handleGroup}></lightning-input-field>
+                     <lightning-input-field field-name="Core_Division__c" ></lightning-input-field>
+					      <lightning-input-field field-name="Core_BU_Product_Segment__c"></lightning-input-field>
+					      <lightning-input-field field-name="Core_BU_Short_Name__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Owning_BU_Short_Name_New__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_KPI_Product_Group__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_UCD_Global_Account_Name__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Opp_Product_Segment__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Product_Application__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Intel_vPro_Platform_Eligibility__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_BU_Mapping_record__c" onchange={handleBUMappingRec}></lightning-input-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="Core_Status__c" onchange={handleStatus}></lightning-input-field>
+                     <template if:false={DesignOrDeal}>
+                     <div class="slds-p-left_x-small"> 
+                     <span >{qtyStaticTextBody} 
+                        <a href={qtyStaticTextHyperLink} target="_blank" rel="noopener noreferrer" class="quantity-link">{qtyStaticTextHyperLinkText}</a>
+                     </span>
+                     </div>   
+                     </template>
+                     <lightning-input-field field-name="Quantity" onchange={handleQuantity} disabled={toDisableQty}></lightning-input-field>
+                     <template if:true={DesignOrDeal}>
+                     <lightning-input-field field-name="Core_PW_Quantity__c" onchange={handlePWQty}></lightning-input-field>
+                     </template>
+                     <lightning-input-field field-name="ListPrice"></lightning-input-field>
+                     <lightning-input-field field-name="UnitPrice" onchange={handleUnitPrice}></lightning-input-field>
+                     <template if:true={DesignOrDeal}>
+                     <lightning-input-field field-name="Core_PW_Sales_Price__c" onchange={handlePWSalesPrice}></lightning-input-field>
+                     </template>
+                     <lightning-input-field field-name="TotalPrice"></lightning-input-field>
+                     <template if:true={DesignOrDeal}>
+                     <lightning-input-field field-name="Core_Production_Win_Total_Price__c"></lightning-input-field>
+                     </template>
+                     <lightning-input-field field-name="Core_Loss_Cancel_Reason__c" onchange={handleLossCancelReason}></lightning-input-field>
+                     <lightning-input-field field-name="Core_Loss_Cancel_Details__c" onchange={handleLossCancelDetails}></lightning-input-field>
+                     <lightning-input-field field-name="Core_Opportunity_Product_ID__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Vendor__c" onchange={handleVendor}></lightning-input-field>
+                     <lightning-input-field field-name="Core_UCD_Opportunity_Product_Vendor__c"></lightning-input-field>
+                     <!--<lightning-input-field field-name="Core_Advanced_Technology__c" onchange={handleAdvTech}></lightning-input-field>-->
+                     <lightning-input-field field-name="Core_Competitor__c" onchange={handleCompetitor} class="competitorTag"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Competitor_Product__c" onchange={handleCompProd} value={value} class="competitorProdTag" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_OtherCompetitor_Product_Txt__c" onchange={handleCompProdTxt}></lightning-input-field>
+                   </div>
+               </template>
+               <template if:false={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="OpportunityId" class="underline-field underline-text-field "></lightning-output-field>
+                     <lightning-output-field field-name="Product2Id" class="underline-field underline-text-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Write_In_Product_Name__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Product_Type__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Group__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Division__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_BU_Product_Segment__c" class="underline-field"></lightning-output-field>
+					      <lightning-output-field field-name="Core_BU_Short_Name__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Owning_BU_Short_Name_New__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_KPI_Product_Group__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_UCD_Global_Account_Name__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Opp_Product_Segment__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Product_Application__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Intel_vPro_Platform_Eligibility__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_BU_Mapping_record__c" class="underline-field"></lightning-output-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="Core_Status__c" class="underline-field"></lightning-output-field>
+                     <template if:false={DesignOrDeal}>
+                     <div class="slds-p-left_xx-small"> 
+                     <span >{qtyStaticTextBody} 
+                        <a href={qtyStaticTextHyperLink} target="_blank" rel="noopener noreferrer" class="quantity-link">{qtyStaticTextHyperLinkText}</a>
+                     </span>
+                     </div>
+                     </template>
+                     <lightning-output-field field-name="Quantity" class="underline-field"></lightning-output-field>
+                     <template if:true={DesignOrDeal}>
+                     <lightning-output-field field-name="Core_PW_Quantity__c" class="underline-field"></lightning-output-field>
+                     </template>
+                     <lightning-output-field field-name="ListPrice" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="UnitPrice" class="underline-field" ></lightning-output-field>
+                     <template if:true={DesignOrDeal}>
+                     <lightning-output-field field-name="Core_PW_Sales_Price__c" class="underline-field"></lightning-output-field>
+                     </template>
+                     <lightning-output-field field-name="TotalPrice" class="underline-field"></lightning-output-field>
+                     <template if:true={DesignOrDeal}>
+                     <lightning-output-field field-name="Core_Production_Win_Total_Price__c" class="underline-field"></lightning-output-field>
+                     </template>
+                     <lightning-output-field field-name="Core_Loss_Cancel_Reason__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Loss_Cancel_Details__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Opportunity_Product_ID__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Vendor__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_UCD_Opportunity_Product_Vendor__c" class="underline-field"></lightning-output-field>
+                     <!--<lightning-output-field field-name="Core_Advanced_Technology__c" class="underline-field" ></lightning-output-field>-->
+                     <lightning-output-field field-name="Core_Competitor__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Competitor_Product__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_OtherCompetitor_Product_Txt__c" class="underline-field"></lightning-output-field>
+                  </div>
+               </template>
+            </div>
+         </lightning-accordion-section>
+         
+         <lightning-accordion-section name="B" label="Approval Information (Design Win - DW)">
+            <div class="slds-grid">
+               <template if:false={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="Core_Approved_By__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_Date__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Claim_Date__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_BU_Product_Segment__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_BU_Short_Name__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Opp_Approved_Sales_Group__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="CRM_DW_App_UCD_Customer_Name__c" class="underline-field" ></lightning-output-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="Core_Approved_Quantity__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_Sales_Price__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_Total_Price__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_Commissionable__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_KPI_Product_Group__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_Opp_Product_Segment__c" class="underline-field" ></lightning-output-field>
+                     <lightning-output-field field-name="Core_Approved_Opportunity_Product_App__c" class="underline-field"></lightning-output-field>
+                  </div>
+               </template>
+               <template if:true={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="Core_Approved_By__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_Date__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Claim_Date__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_BU_Product_Segment__c" ></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_BU_Short_Name__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Opp_Approved_Sales_Group__c"></lightning-input-field>
+                     <lightning-input-field field-name="CRM_DW_App_UCD_Customer_Name__c"></lightning-input-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="Core_Approved_Quantity__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_Sales_Price__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_Total_Price__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_Commissionable__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_KPI_Product_Group__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_Opp_Product_Segment__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Approved_Opportunity_Product_App__c"></lightning-input-field>
+                  </div>
+               </template>
+            </div>
+         </lightning-accordion-section>
+         <template if:true={DesignOrDeal}>
+         <lightning-accordion-section name="C" label="Approval Information (Production Win - PW)">
+            <div class="slds-grid">
+               <template if:false={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="Core_PW_Approved_By__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Manager_Approved_Date__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Production_Claim_Date__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_BU_Product_Segment__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_BU_Short_Name__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_Sales_Group__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="CRM_PW_App_UCD_Customer_Name__c" class="underline-field"></lightning-output-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="Core_PW_Approved_Quantity__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_Sales_Price__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_Total_Price__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_Commissionable__c" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_PW_Approved_KPI_Product_Group__c" class="underline-field"></lightning-output-field>
+                  </div>
+               </template>
+               <template if:true={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="Core_PW_Approved_By__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Manager_Approved_Date__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Production_Claim_Date__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_BU_Product_Segment__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_BU_Short_Name__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_Sales_Group__c" ></lightning-input-field>
+                     <lightning-input-field field-name="CRM_PW_App_UCD_Customer_Name__c"></lightning-input-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="Core_PW_Approved_Quantity__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_Sales_Price__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_Total_Price__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_Commissionable__c"></lightning-input-field>
+                     <lightning-input-field field-name="Core_PW_Approved_KPI_Product_Group__c"></lightning-input-field>
+                  </div>
+               </template>
+            </div>
+         </lightning-accordion-section>
+         </template>
+         <lightning-accordion-section name="D" label="System Information">
+            <div class="slds-grid">
+               <template if:false={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="CreatedById" class="underline-field" ></lightning-output-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-output-field field-name="LastModifiedById" class="underline-field"></lightning-output-field>
+                     <lightning-output-field field-name="Core_Design_Registration_Product_Id__c" class="underline-field"></lightning-output-field>
+                  </div>
+               </template>
+               <template if:true={showEditField}>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="CreatedById" ></lightning-input-field>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large padding-right: 2rem;">
+                     <lightning-input-field field-name="LastModifiedById"></lightning-input-field>
+                     <lightning-input-field field-name="Core_Design_Registration_Product_Id__c"></lightning-input-field>
+                  </div>
+               </template>
+            </div>
+         </lightning-accordion-section>
+       
+      </lightning-accordion>
+   </lightning-record-edit-form>
+</template>

@@ -1,0 +1,4 @@
+<design:component>
+<design:attribute name="cardType" label="Card Type" datasource="partner,product" default="partner"/>
+
+</design:component>

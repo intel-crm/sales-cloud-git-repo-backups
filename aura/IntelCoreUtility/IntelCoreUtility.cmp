@@ -1,0 +1,2 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="Core_UtilityController">
+</aura:component>

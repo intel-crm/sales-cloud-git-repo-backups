@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Commission KPI Mappings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Commission KPI Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Aggregate Type --></label>
+        <name>Core_Aggregate_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Type --></label>
+        <name>Core_Event_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>Core_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI End Date --></label>
+        <name>Core_KPI_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Field --></label>
+        <name>Core_KPI_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Id --></label>
+        <name>Core_KPI_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Name --></label>
+        <name>Core_KPI_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Start Date --></label>
+        <name>Core_KPI_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Type --></label>
+        <name>Core_KPI_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

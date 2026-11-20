@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DebugLevel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apexCode>INFO</apexCode>
+    <apexProfiling>NONE</apexProfiling>
+    <callout>NONE</callout>
+    <database>NONE</database>
+    <label>Just_Apex_Debug</label>
+    <nba>NONE</nba>
+    <system>INFO</system>
+    <validation>INFO</validation>
+    <visualforce>NONE</visualforce>
+    <wave>NONE</wave>
+    <workflow>NONE</workflow>
+</DebugLevel>

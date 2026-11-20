@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Builder</fullName>
+        <default>false</default>
+        <label>Builder</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributor</fullName>
+        <default>false</default>
+        <label>Distributor</label>
+    </customValue>
+    <customValue>
+        <fullName>Independent Software Vendor</fullName>
+        <default>false</default>
+        <label>Independent Software Vendor</label>
+    </customValue>
+    <customValue>
+        <fullName>Service Provider</fullName>
+        <default>false</default>
+        <label>Cloud &amp; Comms Service Provider</label>
+    </customValue>
+    <customValue>
+        <fullName>Solution Integrator</fullName>
+        <default>false</default>
+        <label>Solution Integrator</label>
+    </customValue>
+    <customValue>
+        <fullName>Guest</fullName>
+        <default>false</default>
+        <label>Guest</label>
+    </customValue>
+    <customValue>
+        <fullName>Original Equipment Manufacturer (OEM)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Original Equipment Manufacturer (OEM)</label>
+    </customValue>
+    <customValue>
+        <fullName>Sponsor</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sponsor</label>
+    </customValue>
+    <customValue>
+        <fullName>OEM</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OEM</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not Applicable</label>
+    </customValue>
+    <customValue>
+        <fullName>FPGA Designer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FPGA Design Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Manufacturer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Manufacturer</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Solution Provider</label>
+    </customValue>
+    <masterLabel>IPA Partner Role</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

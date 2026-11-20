@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used for setting up the Entitlement Ids and Engagement for which E-mail should not be triggered</description>
+    <fields>
+        <fullName>Core_Allowed_Entitlement_Ids__c</fullName>
+        <description>Used for holding the entitlements ids for which email should be triggered</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Allowed Entitlement Ids</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Engagement_Id__c</fullName>
+        <description>Holds the engagement record id which is not be associated</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Engagement Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Excluded_Entitlement_Ids__c</fullName>
+        <description>Used for holding entitlement ids for which emails should not be triggered</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Excluded Entitlement Ids</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Is_the_Rule_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Disables the rule if unchecked</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is the Rule Active?</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Contact Email Notification Disabler</label>
+    <pluralLabel>Contact Email Notification Disabler</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

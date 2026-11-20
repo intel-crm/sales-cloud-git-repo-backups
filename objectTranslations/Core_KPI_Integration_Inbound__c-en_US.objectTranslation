@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>KPI Integration Inbound</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>KPI Integration Inbound</value>
+    </caseValues>
+    <fields>
+        <label><!-- KPI Achieved? --></label>
+        <name>Core_IAH_KPI_Achieved__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Added Date --></label>
+        <name>Core_IAH_KPI_Added_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Time --></label>
+        <name>Core_IAH_KPI_Batch_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- IAH DB Status --></label>
+        <name>Core_IAH_KPI_DB_Status__c</name>
+        <picklistValues>
+            <masterLabel>Delete</masterLabel>
+            <translation><!-- Delete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert</masterLabel>
+            <translation><!-- Insert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Change</masterLabel>
+            <translation><!-- No Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update</masterLabel>
+            <translation><!-- Update --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- KPI Error Message --></label>
+        <name>Core_IAH_KPI_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Last Updated Date --></label>
+        <name>Core_IAH_KPI_Last_Updated_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Name --></label>
+        <name>Core_IAH_KPI_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Id --></label>
+        <name>Core_IAH_KPI_Oppty_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Id --></label>
+        <name>Core_IAH_KPI_Oppty_Prod_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Volume --></label>
+        <name>Core_IAH_KPI_Oppty_Volume__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Quantity --></label>
+        <name>Core_IAH_KPI_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- IAH KPI Record ID --></label>
+        <name>Core_IAH_KPI_Record_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Retry Counter --></label>
+        <name>Core_IAH_KPI_Retry_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Threshold Met? --></label>
+        <name>Core_IAH_KPI_Threshold_Met__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes*</masterLabel>
+            <translation><!-- Yes* --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- KPI Total Price --></label>
+        <name>Core_IAH_KPI_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Type --></label>
+        <name>Core_IAH_KPI_Type__c</name>
+        <picklistValues>
+            <masterLabel>Salesforce Opp KPI Product Group Count</masterLabel>
+            <translation><!-- Salesforce Opp KPI Product Group Count --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Pipeline $</masterLabel>
+            <translation><!-- Salesforce Pipeline $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Pipeline Opp Count</masterLabel>
+            <translation><!-- Salesforce Pipeline Opp Count --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Pipeline Units</masterLabel>
+            <translation><!-- Salesforce Pipeline Units --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Production Win $</masterLabel>
+            <translation><!-- Salesforce Production Win $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Production Win Opp Count</masterLabel>
+            <translation><!-- Salesforce Production Win Opp Count --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SF KPI ID --></label>
+        <name>Core_IAH_SF_KPI_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processing Status --></label>
+        <name>Core_KPI_Processing_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failure</masterLabel>
+            <translation><!-- Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

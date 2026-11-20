@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="{!if(relatedTo.Pricing_New_Change_Request_cb__c == true,'Change Approval Request: IQR Quote Line', 'Approval Request: IQR Quote Line')}" recipientType="User" relatedToType="SBQQ__QuoteLine__c" renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_QuoteLineApprovalInitialNotify quoteLineRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

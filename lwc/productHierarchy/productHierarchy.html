@@ -1,0 +1,297 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:true={error}>
+        <div class="slds-grid slds-gutters slds-p-around_x-small">
+        <div class="slds-col slds-size_1-of-1 slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+            <!--error graphic-->
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+            <lightning-icon icon-name="utility:error" alternative-text="Error" title="Error" variant="inverse"></lightning-icon>
+            </span>
+            <!--error message-->
+            <h2>Some Error occured Please Contact to Admin</h2>
+            <!--close button-->
+        </div>
+    </div>
+    </template>
+    <div class="slds-grid slds-gutters">        
+        <div class="slds-col slds-size_3-of-7">
+           <div class="slds-card">
+                <ul class="lgc-bg slds-p-around_small">
+                    <header class="slds-media slds-media--center slds-has-flexi-truncate slds-p-around_medium colorwhite">
+                        <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                            <lightning-icon class="my-icon" icon-name="standard:hierarchy" size="small"  alternative-text="hierarchy"></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                Product Hierarchy
+                            </h2>
+                        </div>
+                    </header>
+                    <div>
+                        <template if:true={isLoading}>
+                            <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                            </lightning-spinner>
+                        </template>
+                        
+                        <div class="lgc-bg slds-p-around_small">
+                            <div class="onerow slds-grid slds-gutters">
+                                <lightning-combobox class="slds-col slds-size_1-of-3" name="SearchType" label="Search Type"  value={isSelected} options={SearchTypeOptions} placeholder="Select an option" onchange={handleActive}></lightning-combobox>
+                                <lightning-input class="slds-col slds-size_2-of-3 slds-p-vertical_x-small" label="Enter Value" value={inputText} onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div>
+                                <lightning-button icon-name="utility:search" label="Search" onclick={handleSearch}></lightning-button>
+                                <lightning-button class="slds-p-left_medium" icon-name="utility:refresh" label="Reset" onclick={resetData}></lightning-button>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters">
+                            <lightning-combobox class="slds-col slds-p-around_x-small" name="Hierarchy" label="Hierarchy"  value={HierarchyValue} options={HierarchyOptions} placeholder="Select an option" onchange={HierarchyChange}></lightning-combobox>
+                            <lightning-combobox class="slds-col slds-p-around_x-small" name="Active" label="Active"  value={activeValue} options={activeOptions} placeholder="Select an option" onchange={activeChange}></lightning-combobox>
+                        </div>
+                        <div class="lgc-bg slds-p-around_small">
+                            <div class="onerow slds-grid slds-gutters">
+                            <lightning-button class="slds-p-around_medium" label={toggleButtonLabelName} title="Show Name" icon-name={toggleIconName} onclick={handleToggleClickName}></lightning-button>
+                            <lightning-button class="slds-p-around_medium" label={toggleButtonLabelLevel} title="Show Level" icon-name={toggleIconLevel} onclick={handleToggleClickLevel}></lightning-button>
+                            <div class="toggle-icon-active slds-m-around_medium slds-p-around_xxx-small"> Represents active</div>
+                            <div class="toggle-icon-inactive slds-m-around_medium slds-p-around_xxx-small"> Represents inactive</div>
+                            </div>
+                        </div>
+                        <div class="divsize slds-scrollable colorwhite">
+                            <template if:true={found}>
+                                <template for:each={items} for:item="item">
+                                    <c-product-hierarchy-item key={item.id} item={item} onselected={handleItemClick} name-visible={nameVisible} level-visible={levelVisible}></c-product-hierarchy-item>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="slds-col slds-size_4-of-7">
+            <div class="relativePos">
+                <template if:true={isLoading2}>
+                    <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                    </lightning-spinner>
+                </template>
+                <template if:true={recordId}>
+                <div class="lgc-bg">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-3">
+                            <lightning-button
+                                            class="slds-p-around_small btn2"
+                                              icon-name="utility:undo"
+                                              variant="border-filled"
+                                              onclick={handleRevertButtonClick}
+                                              alternative-text="Revert"
+                                              label="Back to Search Results"
+                                              ></lightning-button>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-align_absolute-center">
+                                            <lightning-button
+                                              class="slds-p-around_small"
+                                              label="<< Previous"
+                                              name="Previous"
+                                              disabled={getZeroNav}
+                                              onclick={navigateRecord}
+                                              ></lightning-button>
+                            <lightning-button
+                                              class="slds-p-around_small"
+                                              label="Next >>"
+                                              name="Next"
+                                              disabled={getMaxNav}
+                                              onclick={navigateRecord}
+                                              ></lightning-button>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-text-align_right">
+                            <span> {tableDatatempcurrentRecord} out of {tableDatatempsize}</span>
+                        </div>
+                       
+                    </div>
+                   
+                    <div class="bgcolor slds-m-vertical_small">
+                        <h2 slot="title">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-size_1-of-12 ">
+                                    <lightning-icon icon-name="standard:product" size="large" class="slds-m-around_medium"></lightning-icon>
+                                </div>
+                                <div class="slds-col slds-size_11-of-12 divcen">
+                                    <div onclick={handleClick} data-id={recordId}>
+                                        <b><span class="textC">{recordName}</span></b></div>
+                                </div>
+                            </div>
+                        </h2>
+                    </div>
+                    <lightning-tabset variant="scoped" active-tab-value="1">
+                        <lightning-tab label="Details" value="1" onactive={handleDataActive}>
+                            
+                            <div class="bgcolor slds-p-around_medium">
+                                <lightning-record-form layout-type="Full" record-id={recordId} object-api-name="Product2"
+                                                       columns="2" mode="view">
+                                </lightning-record-form>
+                            </div>
+                        </lightning-tab>
+                        <lightning-tab label="Product History" value="2" onactive={handleDataActive}>
+                            <div class="slds-card borderline">
+                                <header class="slds-media slds-media--center slds-has-flexi-truncate slds-p-around_medium colorwhite">
+                                    <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                                        <lightning-icon class="my-icon" icon-name="standard:hierarchy" size="small"  alternative-text="hierarchy"></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            Product  History&nbsp;({dataLength})
+                                        </h2>
+                                    </div>
+                                </header>
+                                <template if:true={dataRelated}>
+                                    <div class="bordertop">
+                                        <div class="slds-grid slds-gutters slds-p-around_medium">
+                                            <div class="slds-col">
+                                                <lightning-combobox
+                                                                    name="Field"
+                                                                    label="Filter By Field"
+                                                                    value={filterFieldValue}
+                                                                    placeholder="Select an option"
+                                                                    options={fieldFilterOptions.Fields}
+                                                                    onchange={handleFilterChange}
+                                                                    ></lightning-combobox>
+                                                <template if:true={filterFieldValue}>
+                                                    <lightning-button-icon name="FieldClose" class="slds-float_right" icon-name="utility:close" onclick={clear}></lightning-button-icon>
+                                                </template>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-combobox
+                                                                    name="CreatedByName"
+                                                                    label="Filter By Created Name"
+                                                                    value={filterCreatedByNameValue}
+                                                                    placeholder="Select an option"
+                                                                    options={fieldFilterOptions.CreatedByNames}
+                                                                    onchange={handleFilterChange}
+                                                                    ></lightning-combobox>
+                                                <template if:true={filterCreatedByNameValue}>
+                                                    <lightning-button-icon name="CreatedByNameClose" class="slds-float_right" icon-name="utility:close" onclick={clear}></lightning-button-icon>
+                                                </template>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-combobox
+                                                                    name="OldValue"
+                                                                    label="Filter By Old Values"
+                                                                    value={filterOldValue}
+                                                                    placeholder="Select an option"
+                                                                    options={fieldFilterOptions.OldValues}
+                                                                    onchange={handleFilterChange}
+                                                                    ></lightning-combobox>
+                                                <template if:true={filterOldValue}>
+                                                    <lightning-button-icon name="OldValueClose" class="slds-float_right" icon-name="utility:close" onclick={clear}></lightning-button-icon>
+                                                </template>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-combobox
+                                                                    name="NewValue"
+                                                                    label="Filter By New Values"
+                                                                    value={filterNewValue}
+                                                                    placeholder="Select an option"
+                                                                    options={fieldFilterOptions.NewValues}
+                                                                    onchange={handleFilterChange}
+                                                                    ></lightning-combobox>
+                                                <template if:true={filterNewValue}>
+                                                    <lightning-button-icon  name="NewValueClose" class="slds-float_right" icon-name="utility:close" onclick={clear}></lightning-button-icon>
+                                                </template>
+                                            </div>
+                                            
+                                        </div>
+                                        <lightning-datatable
+                                                             key-field="id"
+                                                             data={dataRelated}
+                                                             columns={columnsRelated}
+                                                             hide-checkbox-column
+                                                             resize-column-disabled>
+                                        </lightning-datatable> 
+                                    </div>     
+                                </template>  
+                                
+                            </div>
+                        </lightning-tab>
+                    </lightning-tabset>
+                </div>
+            </template>
+        </div>
+            <div class="relativePos">
+            <template if:true={isLoading3}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                </lightning-spinner>
+            </template>
+            <template if:true={table}>
+                <div class="slds-card lgc-bg slds-p-around_small">
+                    <header class="slds-media slds-media--center slds-has-flexi-truncate slds-p-around_medium colorwhite">
+                        <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                            <lightning-icon class="my-icon" icon-name="standard:hierarchy" size="small"  alternative-text="hierarchy"></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                Product List&nbsp;({totalRecountCount})
+                            </h2>
+                        </div>
+                    </header>
+                    <div class="slds-m-around_x-small">
+                        <div class="slds-grid slds-wrap">
+                            <template for:each={searchInputs} for:item="searchInput" for:index="index">
+                                <div key={searchInput.id} class="slds-grid slds-wrap slds-col slds-size_1-of-4">
+                                    <div class="slds-col slds-size_5-of-6">
+                                        <lightning-input
+                                                         type="text"
+                                                         label="Search Term"
+                                                         value={searchInput.value}
+                                                         onchange={handleSearchProductList}
+                                                         data-index={index}
+                                                         ></lightning-input>
+                                                        <label class="colorred"> {searchInput.searchOutputError}</label>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-6">
+                                        <lightning-button-icon
+                                                               icon-name="utility:clear"
+                                                               alternative-text="Remove"
+                                                               onclick={handleRemoveSearchInput}
+                                                               data-index={index}
+                                                               class="slds-float_right slds-p-top_xx-small"
+                                                               ></lightning-button-icon>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>   
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-button class="slds-m-top_large btn2" label="Add Search Input" onclick={addSearchInput}></lightning-button>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4"></div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-combobox label="No of Rows"  value={recordCount} options={recordCountOptions} onchange={handleNoofRows}></lightning-combobox>
+                            </div> 
+                            <div class="slds-col slds-size_1-of-4"> <lightning-button class="slds-m-top_large btn2"  variant="brand" label="Export to CSV" onclick={handleExportClick}></lightning-button></div>
+                            
+                        </div>           
+                        
+                    </div>
+                    
+                    <div  style="height: 31.5rem;">
+                        <lightning-datatable
+                                             key-field="Id"
+                                             data={tableData}
+                                             columns={columns}
+                                             show-row-number-column
+                                             hide-checkbox-column
+                                             onrowaction={handleRowAction}>
+                        </lightning-datatable>
+                        
+                    </div>
+                    
+                    <template if:true={loadMoreToggle}>
+                        <div class="slds-align_absolute-center lgc-bg slds-p-top_small">
+                            <lightning-button class="slds-p-around_xx-small" label="Load More" title="Load More" onclick={LoadMore}></lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+        </div>
+    </div>
+</template>

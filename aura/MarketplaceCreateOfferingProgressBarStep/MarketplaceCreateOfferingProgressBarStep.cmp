@@ -1,0 +1,35 @@
+<aura:component ></aura:component>
+<!-- IPA2.0 + US TWC4497-1631-->
+  <!-- <aura:attribute name="idx" type="string" />
+  <aura:attribute name="title" type="string" />
+  <aura:attribute name="assistiveText" type="string" />
+
+  <aura:attribute name="current"    type="boolean" default="false" />
+  <aura:attribute name="active"     type="boolean" default="false" />
+  <aura:attribute name="complete"   type="boolean" default="false" />
+  <aura:attribute name="incomplete" type="boolean" default="false" />
+
+  <aura:attribute name="onClickCallback" type="object" />
+
+  <li onclick="{!c.handleClick}" class="{! join(' ', 'slds-path__item', (v.current ? 'slds-is-current' : ''), (v.active ? 'slds-is-active' : ''), (v.complete ? 'slds-is-complete': ''), (v.incomplete ? 'slds-is-incomplete': '')) }" role="presentation">
+    <a aria-selected="{!v.current ? 'true' : 'false'}" class="slds-path__link" href="javascript:void(0);" id="{!'path-' + v.idx}" role="tab" >
+      <span class="slds-path__stage">
+
+        <aura:if isTrue="{!v.current}">
+          <span class="slds-assistive-text">Current Section ({!v.title})</span>
+        </aura:if>
+
+        <aura:if isTrue="{!and(!v.current, v.complete)}">
+          <span class="slds-assistive-text">Section Complete ({!v.title})</span>
+        </aura:if>
+
+        <aura:if isTrue="{!and(!v.current, v.incomplete)}">
+          <span class="slds-assistive-text">Incomplete Section ({!v.title})</span>
+        </aura:if>
+
+      </span>
+      <span class="slds-path__title">{!v.title}</span>
+    </a>
+  </li>
+
+</aura:component> -->

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>Payment Admins will be notified on VAT Invoice Validation</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyPaymentAdminsOnVATInvoice</name>
+    <style>none</style>
+    <subject>Claim #  VAT invoice submitted for review</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

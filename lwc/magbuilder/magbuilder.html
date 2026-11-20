@@ -1,0 +1,37 @@
+<template>
+    <!--text-->
+    <div class="slds-m-top_x-small slds-m-bottom_x-small"> <!-- slds-m-bottom_x-large -->
+        <!-- <h2 class="slds-text-heading_medium slds-m-bottom_medium"></h2>--> <!-- slds-p-around_medium lgc-bg -->
+            <div class="main" data-id={fieldid}>
+                <template if:false={dependentques}>
+                <template if:true={textcheck}>
+                    <lightning-input type="text" class="inputdat" value={value} name={questionid}
+                        required={isrequiredfield} label={fieldlabel} disabled={iseditable}>
+                    </lightning-input>
+                </template>
+                <template if:true={piclistcheck}>
+                    <lightning-combobox class="inputdat" required={isrequiredfield} name={questionid}
+                        label={fieldlabel} value={value} placeholder="-Select Options-" options={lovs} onchange={handleChange}
+                        disabled={iseditable}>
+                    </lightning-combobox>
+                </template>
+                <template if:true={multiselectpiclistcheck}>
+                    <!--MultiSelect-->
+                    <lightning-dual-listbox name={fieldid} required={isrequiredfield} class="inputdat"
+                        label={fieldlabel} source-label="Available" selected-label="Selected" value={mvalue}
+                        field-level-help="" options={lovs} onchange={handleChange} disabled={iseditable}>
+                    </lightning-dual-listbox>
+                </template>
+                <template if:true={textareacheck}>
+                    <lightning-textarea name={ordernumber} value={value} class="inputdat"
+                        placeholder={placeholdertext} required={isrequiredfield} label={fieldlabel} disabled={iseditable}>
+                    </lightning-textarea>
+                </template>
+                </template>
+            </div> 
+        </div>
+        <template if:true={flag}>
+            <c-magchildbuilder type ={childResult.answerType} fieldlabel ={childResult.question} isrequiredfield ={childResult.required} lovs ={childResult.lovs}
+                    value ={childResult.answer} dependentques ={childResult.dependentQues} recordid ={recordId} ordernumber ={childResult.orderNo} answer ={childResult.answer} questionid ={childResult.questionId} iseditable ={iseditable}></c-magchildbuilder>
+            </template>
+        </template>

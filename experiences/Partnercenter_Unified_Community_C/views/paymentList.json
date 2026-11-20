@@ -1,0 +1,44 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d076afb7-b05a-4e59-8d5b-5d3998080fb0",
+  "label" : "Payment List",
+  "regions" : [ {
+    "id" : "4e576ef6-9d78-4932-9ee5-179eaa7d0f34",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_ExportListView",
+      "id" : "8b844021-e5eb-4fc4-bdee-3057bac57eee",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showDisplay" : "showall"
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "fe4998a3-abb2-4018-8141-a89fb05e2d5f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fe9387ba-9d50-47f6-a2d6-ade0e1a3c7e3",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "84342c80-a617-4645-a42a-51c19ed5065c",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a4J"
+}

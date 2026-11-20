@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>U</fullName>
+        <default>false</default>
+        <label>15 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>KB</fullName>
+        <default>false</default>
+        <label>33 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>NB</fullName>
+        <default>false</default>
+        <label>35 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>KC</fullName>
+        <default>false</default>
+        <label>36 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>NC</fullName>
+        <default>false</default>
+        <label>37 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>KD</fullName>
+        <default>false</default>
+        <label>47 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>F</fullName>
+        <default>false</default>
+        <label>55 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>S</fullName>
+        <default>false</default>
+        <label>60 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>KF</fullName>
+        <default>false</default>
+        <label>75 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>M</fullName>
+        <default>false</default>
+        <label>90 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>A15</fullName>
+        <default>false</default>
+        <label>Average 15 days</label>
+    </customValue>
+    <customValue>
+        <fullName>30E</fullName>
+        <default>false</default>
+        <label>Baseline date on End of the month</label>
+    </customValue>
+    <customValue>
+        <fullName>N31</fullName>
+        <default>false</default>
+        <label>31 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N34</fullName>
+        <default>false</default>
+        <label>34 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N39</fullName>
+        <default>false</default>
+        <label>39 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N43</fullName>
+        <default>false</default>
+        <label>43 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N49</fullName>
+        <default>false</default>
+        <label>49 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N50</fullName>
+        <default>false</default>
+        <label>50 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N51</fullName>
+        <default>false</default>
+        <label>51 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N52</fullName>
+        <default>false</default>
+        <label>52 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N53</fullName>
+        <default>false</default>
+        <label>53 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N54</fullName>
+        <default>false</default>
+        <label>54 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N56</fullName>
+        <default>false</default>
+        <label>56 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N57</fullName>
+        <default>false</default>
+        <label>57 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N58</fullName>
+        <default>false</default>
+        <label>58 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N59</fullName>
+        <default>false</default>
+        <label>59 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>DBB</fullName>
+        <default>false</default>
+        <label>Net 48 days</label>
+    </customValue>
+    <customValue>
+        <fullName>125</fullName>
+        <default>false</default>
+        <label>PSG Term to ZTE</label>
+    </customValue>
+    <customValue>
+        <fullName>N46</fullName>
+        <default>false</default>
+        <label>46 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 75 DAYS</fullName>
+        <default>false</default>
+        <label>NET 75 DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>N44</fullName>
+        <default>false</default>
+        <label>44 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>I55</fullName>
+        <default>false</default>
+        <label>Intercompany net 55</label>
+    </customValue>
+    <customValue>
+        <fullName>N41</fullName>
+        <default>false</default>
+        <label>41 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N38</fullName>
+        <default>false</default>
+        <label>38 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N32</fullName>
+        <default>false</default>
+        <label>32 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>G</fullName>
+        <default>false</default>
+        <label>Credit Cards</label>
+    </customValue>
+    <customValue>
+        <fullName>I</fullName>
+        <default>false</default>
+        <label>Cash in Advance</label>
+    </customValue>
+    <customValue>
+        <fullName>X</fullName>
+        <default>false</default>
+        <label>60 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>Y</fullName>
+        <default>false</default>
+        <label>45 days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>CG</fullName>
+        <default>false</default>
+        <label>40 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>N</fullName>
+        <default>false</default>
+        <label>30 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>R</fullName>
+        <default>false</default>
+        <label>30 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>Pay immediately w/o deduction</fullName>
+        <default>false</default>
+        <label>Pay immediately w/o deduction</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 90 DAYS</fullName>
+        <default>false</default>
+        <label>NET 90 DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 60 DAYS</fullName>
+        <default>false</default>
+        <label>NET 60 DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 53DAYS</fullName>
+        <default>false</default>
+        <label>NET 53DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 48DAYS</fullName>
+        <default>false</default>
+        <label>NET 48DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 47DAYS</fullName>
+        <default>false</default>
+        <label>NET 47DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 45DAYS</fullName>
+        <default>false</default>
+        <label>NET 45DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 41DAYS</fullName>
+        <default>false</default>
+        <label>NET 41DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 30DAYS</fullName>
+        <default>false</default>
+        <label>NET 30DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>NET 15 DAYS</fullName>
+        <default>false</default>
+        <label>NET 15 DAYS</label>
+    </customValue>
+    <customValue>
+        <fullName>CIA CASHIERS CHECK</fullName>
+        <default>false</default>
+        <label>CIA CASHIERS CHECK</label>
+    </customValue>
+    <customValue>
+        <fullName>CIA</fullName>
+        <default>false</default>
+        <label>CIA</label>
+    </customValue>
+    <customValue>
+        <fullName>Baseline date- End of month</fullName>
+        <default>false</default>
+        <label>Baseline date- End of month</label>
+    </customValue>
+    <customValue>
+        <fullName>ALL CREDIT CARDS</fullName>
+        <default>false</default>
+        <label>ALL CREDIT CARDS</label>
+    </customValue>
+    <customValue>
+        <fullName>30 days due net at End of Mth</fullName>
+        <default>false</default>
+        <label>30 days due net at End of Mth</label>
+    </customValue>
+    <customValue>
+        <fullName>1% 30, 30 days Due NET</fullName>
+        <default>false</default>
+        <label>1% 30, 30 days Due NET</label>
+    </customValue>
+    <customValue>
+        <fullName>N42</fullName>
+        <default>false</default>
+        <label>42 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>160</fullName>
+        <default>false</default>
+        <label>Intercompany net 60</label>
+    </customValue>
+    <customValue>
+        <fullName>A</fullName>
+        <default>false</default>
+        <label>Cash Against Documents</label>
+    </customValue>
+    <customValue>
+        <fullName>AA</fullName>
+        <default>false</default>
+        <label>Due on 10th day after 2 Months</label>
+    </customValue>
+    <customValue>
+        <fullName>AB</fullName>
+        <default>false</default>
+        <label>Due on 15th day after 2 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AC</fullName>
+        <default>false</default>
+        <label>Due on 25th day after 2 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AD</fullName>
+        <default>false</default>
+        <label>Due on 5th day after 3 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AE</fullName>
+        <default>false</default>
+        <label>Due on 10th day after 3 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AF</fullName>
+        <default>false</default>
+        <label>Due on 15th day after 3 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AG</fullName>
+        <default>false</default>
+        <label>Due on 20th day after 3 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AH</fullName>
+        <default>false</default>
+        <label>Due on 25th day after 3 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AI</fullName>
+        <default>false</default>
+        <label>Due on 30th day after 3 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AJ</fullName>
+        <default>false</default>
+        <label>Due on 5th day after 4 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AK</fullName>
+        <default>false</default>
+        <label>Due on 10th day after 4 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AL</fullName>
+        <default>false</default>
+        <label>Due on 15th day after 4 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AM</fullName>
+        <default>false</default>
+        <label>Due on 20th day after 4 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AN</fullName>
+        <default>false</default>
+        <label>Due on 25th day after 4 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AO</fullName>
+        <default>false</default>
+        <label>Due on 30th day after 4 mths</label>
+    </customValue>
+    <customValue>
+        <fullName>AP</fullName>
+        <default>false</default>
+        <label>45 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>AQ</fullName>
+        <default>false</default>
+        <label>120 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>AS</fullName>
+        <default>false</default>
+        <label>50 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>AT</fullName>
+        <default>false</default>
+        <label>20 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>AU</fullName>
+        <default>false</default>
+        <label>LOC at Sight</label>
+    </customValue>
+    <customValue>
+        <fullName>AW</fullName>
+        <default>false</default>
+        <label>LOC 30 Days After Shipment</label>
+    </customValue>
+    <customValue>
+        <fullName>AX</fullName>
+        <default>false</default>
+        <label>LOC 45 days after shipment</label>
+    </customValue>
+    <customValue>
+        <fullName>AY</fullName>
+        <default>false</default>
+        <label>21 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>BA</fullName>
+        <default>false</default>
+        <label>D/A 45 Days</label>
+    </customValue>
+    <customValue>
+        <fullName>BB</fullName>
+        <default>false</default>
+        <label>30 Days Net from Invoice Date</label>
+    </customValue>
+    <customValue>
+        <fullName>BC</fullName>
+        <default>false</default>
+        <label>D/A 30 Days</label>
+    </customValue>
+    <customValue>
+        <fullName>BD</fullName>
+        <default>false</default>
+        <label>45 Days Net from Invoice Date</label>
+    </customValue>
+    <customValue>
+        <fullName>BJ</fullName>
+        <default>false</default>
+        <label>35 Days EOM</label>
+    </customValue>
+    <customValue>
+        <fullName>BK</fullName>
+        <default>false</default>
+        <label>80 Days EOM</label>
+    </customValue>
+    <customValue>
+        <fullName>BL</fullName>
+        <default>false</default>
+        <label>15 Days EOM</label>
+    </customValue>
+    <customValue>
+        <fullName>BV</fullName>
+        <default>false</default>
+        <label>63 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>C</fullName>
+        <default>false</default>
+        <label>Letter of Credit</label>
+    </customValue>
+    <customValue>
+        <fullName>CA</fullName>
+        <default>false</default>
+        <label>Due Upon Receipt</label>
+    </customValue>
+    <customValue>
+        <fullName>E</fullName>
+        <default>false</default>
+        <label>Per Agreement</label>
+    </customValue>
+    <customValue>
+        <fullName>FF</fullName>
+        <default>false</default>
+        <label>7.5% 30 Days Net 30</label>
+    </customValue>
+    <customValue>
+        <fullName>H</fullName>
+        <default>false</default>
+        <label>COD Cashiers Check</label>
+    </customValue>
+    <customValue>
+        <fullName>I27</fullName>
+        <default>false</default>
+        <label>Intercompany net 27</label>
+    </customValue>
+    <customValue>
+        <fullName>I30</fullName>
+        <default>false</default>
+        <label>Intercompany net 30</label>
+    </customValue>
+    <customValue>
+        <fullName>I75</fullName>
+        <default>false</default>
+        <label>Intercompany net 75</label>
+    </customValue>
+    <customValue>
+        <fullName>I90</fullName>
+        <default>false</default>
+        <label>Intercompany net 90</label>
+    </customValue>
+    <customValue>
+        <fullName>J</fullName>
+        <default>false</default>
+        <label>75 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>KA</fullName>
+        <default>false</default>
+        <label>7 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>KE</fullName>
+        <default>false</default>
+        <label>65 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>O</fullName>
+        <default>false</default>
+        <label>COD Company Check</label>
+    </customValue>
+    <customValue>
+        <fullName>P</fullName>
+        <default>false</default>
+        <label>10 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>T</fullName>
+        <default>false</default>
+        <label>90 Days End of Month</label>
+    </customValue>
+    <customValue>
+        <fullName>V</fullName>
+        <default>false</default>
+        <label>150 Days Net</label>
+    </customValue>
+    <customValue>
+        <fullName>XW</fullName>
+        <default>false</default>
+        <label>Net 30 up to 90 days</label>
+    </customValue>
+    <customValue>
+        <fullName>XX</fullName>
+        <default>false</default>
+        <label>Net 60 up to 90 days</label>
+    </customValue>
+    <customValue>
+        <fullName>XY</fullName>
+        <default>false</default>
+        <label>Net 45 up to 90 days</label>
+    </customValue>
+    <customValue>
+        <fullName>XZ</fullName>
+        <default>false</default>
+        <label>Net 65 up to 90 days</label>
+    </customValue>
+    <customValue>
+        <fullName>Z</fullName>
+        <default>false</default>
+        <label>T/T at Sight</label>
+    </customValue>
+    <customValue>
+        <fullName>Z27</fullName>
+        <default>false</default>
+        <label>65% net 30 days 35% on acceptance</label>
+    </customValue>
+    <customValue>
+        <fullName>ZB1</fullName>
+        <default>false</default>
+        <label>Upon acceptance net 120</label>
+    </customValue>
+    <customValue>
+        <fullName>ZD1</fullName>
+        <default>false</default>
+        <label>C2FO No Discount Due Upon Receipt</label>
+    </customValue>
+    <customValue>
+        <fullName>ZDD</fullName>
+        <default>false</default>
+        <label>C2FO Dynamic Discount</label>
+    </customValue>
+    <customValue>
+        <fullName>PK</fullName>
+        <default>false</default>
+        <label>Payable immediately Due net</label>
+    </customValue>
+    <customValue>
+        <fullName>D</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>D</label>
+    </customValue>
+    <masterLabel>Payment Terms</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

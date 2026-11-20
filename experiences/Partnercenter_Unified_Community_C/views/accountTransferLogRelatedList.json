@@ -1,0 +1,39 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "4b3b8d9e-bdec-4400-871d-b967f6ee35fa",
+  "label" : "Account Transfer Log Related List",
+  "regions" : [ {
+    "id" : "9601edf2-6570-4219-8b9a-6cc4c096ef60",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "a7ee23ee-d74b-4c68-8ef7-9c5c4a55d218",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "272f2b53-aba2-4991-8fcb-d999c6e04d44",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3d47bdef-61a1-4310-b172-a1206351014f",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a3g"
+}

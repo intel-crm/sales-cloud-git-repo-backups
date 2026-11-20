@@ -1,0 +1,45 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    <template if:true={showDropdowns}>
+    <div class="slds-box slds-theme--default">
+        <div if:true={showHeader} class="slds-p-horizontal_medium slds-p-bottom_small"><b>{recoveryDashboard}</b></div>
+        <div style="width: 100%;">
+            <lightning-combobox name="programFilter" data-id="program" label={programLabel} placeholder={selectProgram} style="display: inline-block;width:23%"
+                value={programSelectedId} options={programOptions} onchange={handleProgramFilterChange}
+                class="slds-p-horizontal_medium">
+            </lightning-combobox>
+            <div data-id="account" class="slds-col slds-size_9-of-12" style="display: inline-block;width:23%;top: -25px;position: relative">
+                <c-core_-m-d-f_-custom-lookup label={accountLabel}  obj-name="Account" data-id="account"
+                                                search-placeholder="Search Accounts..." filter={accountQueryFilter}  
+                                                onlookupselected={handleAccountFilterChange}
+                                                selected-record={accValueSelected}
+                                                value={accValueSelected}
+                                                bypass-sharing={bypassSharing}
+                                                disabled={accountNotLoaded}>
+                </c-core_-m-d-f_-custom-lookup>
+            </div>
+
+            <lightning-combobox name="quarterFilter" data-id="quarter" label={quarterLabel} placeholder={selectQuarter} style="display: inline-block;width:20%"
+                value={quarterValueSelected} options={quarterOptions} onchange={handleQuarterFilterChange}
+                class="slds-p-horizontal_medium" disabled={quarterNotLoaded}>
+            </lightning-combobox>
+
+            <lightning-button variant="brand" icon-name="utility:download" style="display: inline-block;padding-left:2%"
+            label={getDataLabel} onclick={getData}
+            disabled={allOptionsNotSelected}>
+            </lightning-button>
+        </div>
+    </div>
+    </template>
+    <template if:true={isRecoveryRecordNotPresent}>
+        <lightning-card>
+            <p class="slds-p-horizontal_small slds-align_absolute-center"><b>{recoveryRecordNotPresesntMessage}</b></p>
+        </lightning-card>
+    </template>
+    
+</template>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sridhar.swaminathan@intel.com</contactEmail>
+    <label>PCC EBV B2B</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>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</certificate>
+        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lOvppMXu1M5qev77612vjtms2QZBJxLHKnMhT9X02v6FQHP4cmp5O.B8fDw</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PCC EBV</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

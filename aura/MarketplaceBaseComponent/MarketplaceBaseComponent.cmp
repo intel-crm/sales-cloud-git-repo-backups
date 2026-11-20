@@ -1,0 +1,5 @@
+<aura:component abstract="true" extensible="true" extends="c:MarketplaceRedux">
+
+  {!v.body}
+
+</aura:component>

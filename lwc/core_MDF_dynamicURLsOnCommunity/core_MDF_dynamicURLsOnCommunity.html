@@ -1,0 +1,21 @@
+<template>
+	<div class="slds-theme_default">
+		<div class="slds-grid slds-wrap">
+            <template for:each={homeContent} for:item="contentConfigObj">
+            <div key={contentConfigObj.Id} class="slds-col slds-size_1-of-1 layout" ></div>
+                <div key={contentConfigObj.Id} >
+                <template if:true={contentConfigObj.isIconRequired}>
+                  <p class="cta-item"><a style="display :flex;align-items:center;" target="_blank" href={contentConfigObj.contentUrl} title={contentConfigObj.contentHelpText}>
+                    <img src={contentConfigObj.iconUrl} style="width: 10%;height 10%;" />
+                    <span style="padding-left :1%" class="content">{contentConfigObj.contentLabel}</span></a></p>
+                </template>
+                <template if:false={contentConfigObj.isIconRequired}>
+                    <p class="cta-item"><a style="display :flex;align-items:center;" target="_blank" href={contentConfigObj.contentUrl}>
+                    <button type="button" class="btn btn-primary">›</button>
+                    <span class="content">{contentConfigObj.contentLabel}</span></a></p>
+                </template>
+                </div>
+            </template>
+		</div>
+	</div>
+</template>

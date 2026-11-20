@@ -1,0 +1,355 @@
+<aura:component
+                implements="flexipage:availableForRecordHome,force:lightningQuickAction,flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+                controller="Core_MDF_CustomLayoutConfig_Controller" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="isNotifyOwner" type="Boolean" default="false" />
+    <!-- Design Attribute-->
+    <aura:attribute name="objAPIName" type="String" />
+    <aura:attribute name="isCoGtm" type="Boolean" default="false" />
+    <!--<aura:attribute name="recordTypeName" type="String" />-->
+    <aura:attribute name="fieldAPIName" type="String" />
+    
+    <aura:attribute name="fieldAPIoperator" type="String" /><!--14820-->
+    <aura:attribute name="isCompactLayout" type="String" />
+    
+    <aura:attribute name="compactLayoutFields" type="List" />
+    <aura:attribute name="quickActionsButtons" type="List" />
+    <aura:attribute name="quickActionsHideButtons" type="List" />
+    <aura:attribute name="buttonMenu" type="Boolean" default="false" />
+    <aura:attribute name="objLabel" type="String" />
+    <aura:attribute name="cmptLayoutIcon" type="String" />
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="isInternalUser" type="Boolean" default="false" />
+    <aura:attribute name="isExternalUser" type="Boolean" default="false" />
+    <aura:attribute name="isShowHeaderFooter" type="Boolean" default="false" />
+    <aura:attribute name="openCmp" type="String" />
+    
+    <!--Modal Attribute for Update Buttons-->
+    <aura:attribute name="openModalForUpdateButton" type="Boolean" default="false" />
+    <aura:attribute name="modalHeader" type="String" />
+    <aura:attribute name="modalBody" type="String" />
+    <aura:attribute name="record" type="Campaign"/>
+    <aura:attribute name="controllingObj" type="Object"/>
+    <aura:attribute name="fieldValue" type="String"/>
+    <aura:attribute name="errorMessage" type="String"/>
+    <aura:attribute name="openModalForLtCmp" type="Boolean" default="false" />
+    <aura:attribute name="showLoading" type="Boolean" default="false" />
+    <aura:attribute name="isSpinner" type="Boolean" default="false" />
+    <aura:attribute name="modalPopConfMessage" type="String" />
+    <aura:attribute name="isDefaultQuickAction" type="Boolean" default="false" />
+    <aura:attribute name="hiddenFieldsMap" type="Map"/>
+    <!--Event Handler - Close Modal event-->
+    <aura:handler event="c:Core_MDF_CloseModalAndLogErrorMessageEvent" action="{!c.closeModalAndDisplayErrorMsg}" name="closeModalAndLogErrorMessageEvent" />
+    <aura:handler event="c:Core_MDF_closeModalEvent" action="{!c.closeModal}" name="closeModalEvent" />
+
+    <aura:if isTrue="{!(v.isInternalUser)}">
+        <article class="slds-card" style="background-color:rgba(243, 243, 243)">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title="campaign">
+                            <lightning:icon iconName="{!v.cmptLayoutIcon}" class="slds-m-left_x-small" slot="media">
+                            </lightning:icon>
+                            <span class="slds-assistive-text"></span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="header-column">
+                            <p>{!v.objLabel}</p>
+                            <p><Strong>{!v.title}</Strong></p>
+                        </h2>
+                    </div>
+                    <aura:iteration items="{!v.quickActionsButtons}" var="quickAction">
+                        <div class="slds-no-flex">
+                            <button class="slds-button slds-button_neutral" value="{!quickAction.type}"
+                                    data-id="{!quickAction.orgLabel}"
+                                    onclick="{!c.handleOnClick}">{!quickAction.label}</button>
+                        </div>
+                    </aura:iteration>
+                    <aura:if isTrue="{!(v.buttonMenu)}">
+                        <lightning:buttonMenu alternativeText="Action" onselect="{!c.handleOnselect}" class="anyname"
+                                              menuAlignment="right">
+                            <aura:iteration items="{!v.quickActionsHideButtons}" var="quickAction">
+                                <lightning:menuItem value="{!quickAction.type}" label="{!quickAction.label}" />
+                            </aura:iteration>
+                        </lightning:buttonMenu>
+                    </aura:if>
+                </header>
+            </div>
+            <footer class="slds-card__footer" style="background-color:White">
+                <lightning:layout multipleRows="false">
+                    <aura:iteration items="{!v.compactLayoutFields}" var="fld">
+                        <aura:if isTrue="{!fld.isAccessible}">
+                            <lightning:layout multipleRows="false" class="slds-p-right_xx-large">
+                                <lightning:layoutItem padding="around-small">
+                                    <aura:if isTrue="{!fld.istextField}">
+                                        <div class="header-column">
+                                            <p class="slds-text-align_left slds-p-bottom_xx-small">{!fld.label}</p>
+                                            <p class="slds-text-align_left">{!fld.value}</p>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue="{!fld.isreferenceField}">
+                                        <!--Tooltip-->
+                                        <div style="display:none;position: absolute;opacity:0;margin-top: -2px;margin-left: 85px;text-align: left;"
+                                             class="ModelTooltip" data-id="{!fld.value.index}">
+                                            <c:core_MDF_HoverForCustomLayoutConfig
+                                                                                   recordid="{!fld.value.parentObjectId}" name="{!fld.value.parentObjectName}"
+                                                                                   value="{!fld.value.urlName}" tabicon="{!fld.value.tabIcon}">
+                                            </c:core_MDF_HoverForCustomLayoutConfig>
+                                        </div>
+                                        <p class="slds-text-align_left slds-p-bottom_xx-small">{!fld.label}</p>
+                                        <p class="slds-text-align_left">
+                                            <lightning:formattedUrl title="{!fld.value.index}" name="{!fld.value.index}" value="{!fld.value.url}" 
+                                                                    label="{!fld.value.urlName}" onmouseover="{!c.handleMouseover}" onmouseout="{!c.handleMouseout}" >
+                                            </lightning:formattedUrl>
+                                        </p>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                    </aura:iteration>
+                </lightning:layout>
+            </footer>
+        </article>
+    </aura:if>
+    
+    <aura:if isTrue="{!(v.isExternalUser)}">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container" title="campaign">
+                        <lightning:icon iconName="{!v.cmptLayoutIcon}" class="slds-m-left_x-small" slot="media">
+                        </lightning:icon>
+                        <span class="slds-assistive-text"></span>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="header-column">
+                        <p>{!v.objLabel}</p>
+                        <p><Strong>{!v.title}</Strong></p>
+                    </h2>
+                </div>
+                <aura:iteration items="{!v.quickActionsButtons}" var="quickAction">
+                    <div class="slds-no-flex">
+                        <button class="slds-button slds-button_neutral" value="{!quickAction.type}"
+                                data-id="{!quickAction.orgLabel}" onclick="{!c.handleOnClick}">{!quickAction.label}</button>
+                    </div>
+                </aura:iteration>
+                <aura:if isTrue="{!(v.buttonMenu)}">
+                    <lightning:buttonMenu alternativeText="Action" onselect="{!c.handleOnselect}" class="anyname"
+                                          menuAlignment="right">
+                        <aura:iteration items="{!v.quickActionsHideButtons}" var="quickAction">
+                            <lightning:menuItem value="{!quickAction.type}" label="{!quickAction.label}" />
+                        </aura:iteration>
+                    </lightning:buttonMenu>
+                </aura:if>
+            </header>
+        </div>
+        <footer class="slds-card__footer" style="background-color:White">
+            <lightning:layout multipleRows="false">
+                <aura:iteration items="{!v.compactLayoutFields}" var="fld">
+                    <aura:if isTrue="{!fld.isAccessible}">
+                        <lightning:layout multipleRows="false" class="slds-p-right_xx-large">
+                            <lightning:layoutItem padding="around-small">
+                                <aura:if isTrue="{!fld.istextField}">
+                                    <div class="header-column">
+                                        <p class="slds-text-align_left slds-p-bottom_xx-small">{!fld.label}</p>
+                                        <p class="slds-text-align_left">{!fld.value}</p>
+                                    </div>
+                                </aura:if>
+                                <aura:if isTrue="{!fld.isreferenceField}">
+                                    <!--Tooltip-->
+                                    <div style="display:none;position: absolute;opacity:0;margin-top: -2px;margin-left: 85px;text-align: left;"
+                                         class="ModelTooltip" data-id="{!fld.value.index}">
+                                        <c:core_MDF_HoverForCustomLayoutConfig
+                                                                               recordid="{!fld.value.parentObjectId}" name="{!fld.value.parentObjectName}"
+                                                                               value="{!fld.value.urlName}" tabicon="{!fld.value.tabIcon}">
+                                        </c:core_MDF_HoverForCustomLayoutConfig>
+                                    </div>
+                                    <p class="slds-text-align_left slds-p-bottom_xx-small">{!fld.label}</p>
+                                    <p class="slds-text-align_left">
+                                        <lightning:formattedUrl title="{!fld.value.index}" name="{!fld.value.index}" value="{!fld.value.url}" 
+                                                                label="{!fld.value.urlName}" onmouseover="{!c.handleMouseover}" onmouseout="{!c.handleMouseout}" >
+                                        </lightning:formattedUrl>
+                                    </p>
+                                </aura:if>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </aura:if>
+                </aura:iteration>
+            </lightning:layout>
+        </footer>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showLoading}">
+        <lightning:spinner alternativeText="Loading" size="medium" class="spinnerClass"></lightning:spinner>
+    </aura:if>
+    
+    <!-- <aura:if isTrue="{!(v.openCmp == 'Create Activity')}">
+        <c:Core_MDF_PFR_RecordTypeSelectorComp recordId="{!v.recordId}" createActivityFromCampaign="true"
+            isCampaignUrl="true" />
+    </aura:if> -->
+    <!-- <aura:if isTrue="{!(v.openCmp == 'Clone')}">
+        <c:Core_MDF_CampaignClone recordId="{!v.recordId}" campaignCustomClone="true" />
+    </aura:if> -->
+    <!-- <aura:if isTrue="{!(v.openCmp == 'Edit')}">
+        <c:Core_MDF_CampaignEdit recordId="{!v.recordId}"/>
+    </aura:if> -->
+    <aura:if isTrue="{!(v.openCmp == 'Update')}">
+        <force:recordData aura:id="recordHandler" recordId="{!v.recordId}" fields="Status" targetFields="{!v.controllingObj}"
+                          targetRecord="{!v.record}" mode="EDIT"/>
+    </aura:if>
+    <aura:if isTrue="{!AND((v.openCmp == 'Create Claim'),v.objAPIName == 'PartnerFundRequest')}">
+        <c:Core_MDF_PFC_Create recordId ="{!v.recordId}" isNewClaimCreate="true" isCoGtm ="{!v.isCoGtm}"/>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+    
+    <!-- Modal For Button Type - Lightning Cmp -->
+    <aura:if isTrue="{!(v.openModalForLtCmp)}">
+        <div class="slds-modal slds-fade-in-open slds-backdrop">
+            <div class="slds-modal__container">
+                <!--HEADER Section-->
+                <!--<div class="slds-modal__header">-->
+                <!-- Roshan - Hide close button conditionally -->
+                <aura:if isTrue="{!not(AND(v.objAPIName == 'PartnerFundClaim', OR(v.openCmp == 'Edit', v.openCmp == 'Clone Claim')))}">
+                    <lightning:buttonIcon iconName="utility:close" alternativeText="Close this window" size="large"
+                        variant="bare" onclick="{!c.closeModal}" class="slds-modal__close" />
+                </aura:if>
+                <aura:if isTrue="{!(v.isShowHeaderFooter)}">
+                    <div class="slds-modal__header">
+                        <h2 style="font-size: 21px;">{!v.modalHeader}</h2>
+                    </div>
+                </aura:if>
+                <!--Body Section style="overflow: visible; min-height: fit-content;"-->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <aura:if isTrue="{!AND((v.openCmp == 'Edit'),v.objAPIName == 'Campaign')}">
+                        <c:Core_MDF_CampaignEdit recordId="{!v.recordId}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!(v.openCmp == 'Create Activity')}">
+                        <c:Core_MDF_PFR_RecordTypeSelectorComp recordId="{!v.recordId}" isCampaignUrl="true"/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Clone'),v.objAPIName == 'Campaign')}">
+                        <c:Core_MDF_CampaignClone  recordId="{!v.recordId}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Edit'),v.objAPIName == 'PartnerFundRequest')}">
+                        <c:Core_MDF_PartnerFundRequest_Edit recordId ="{!v.recordId}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Clone'),v.objAPIName == 'PartnerFundRequest')}">
+                             <c:Core_MDF_PartnerFundRequest_Clone recordId ="{!v.recordId}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Close Activity'),v.objAPIName == 'PartnerFundRequest')}">
+                        <c:Core_MDF_CloseActivity recordId ="{!v.recordId}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Edit'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_PFC_EditSwitch recordId ="{!v.recordId}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Clone Claim'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_PFC_Clone_Claim recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Hold Claim'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_PFC_Manual_Hold_Claim recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Cancel Claim'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_PFC_Cancel recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Release Hold'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_Release_Hold recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Reopen for Claiming'),v.objAPIName == 'PartnerFundRequest')}">
+                        <!--<c:Core_MDF_Reopen_Activity_Cmp recordId ="{!v.recordId}" compactLayout="{!v.closeModal}"/>-->
+                        <c:core_MDF_Reopen_Activity recordId="{!v.recordId}" onclosemodal="{!c.closeModal}"/>
+                    </aura:if>
+                    <!-- Roshan - added for Outcome based -->
+                    <aura:if isTrue="{!AND((v.openCmp == 'Complete PIC Review'),v.objAPIName == 'PartnerFundClaim')}"> 
+                        <div style="overflow: visible; max-height: 500px;">
+                            <c:core_MDF_PicReviewProcess recordId ="{!v.recordId}"/>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Submit For PIC'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_SubmitClaimToPICProcess recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Submit for Payment Clearance'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_SubmitClaimToPICProcess recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <aura:if isTrue="{!AND((v.openCmp == 'Manual Audit'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:Core_MDF_PFC_Manual_Audit recordId ="{!v.recordId}" isCustomComp = 'true'/>
+                    </aura:if>
+                    <!--16654-->
+                    <aura:if isTrue="{!AND((v.openCmp == 'Complete Payment Clearance Processing'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:core_MDF_PicReviewProcess recordId ="{!v.recordId}"/>
+                    </aura:if>
+
+                </div>
+                <!--Footer Section-->
+                <aura:if isTrue="{!(v.isShowHeaderFooter)}">
+                    <div class="slds-modal__footer">
+                        <span>
+                            <lightning:button label="Cancel" variant="brand" onclick="{!c.closeModal}" />
+                        </span>
+                    </div>
+                </aura:if>
+            </div>
+        </div>
+    </aura:if>
+    
+    <!-- Modal For Button Type - Update -->
+    <aura:if isTrue="{!(v.openModalForUpdateButton)}">
+        <div class="slds-modal slds-fade-in-open slds-backdrop">
+            <div class="slds-modal__container">
+                <!--HEADER Section-->
+                <div class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" alternativeText="Close this window" size="large"
+                                          variant="bare" onclick="{!c.closeModal}" class="slds-modal__close" />
+                    <h2 style="font-size: 21px;">{!v.modalHeader}</h2>
+                </div>
+                <!--Body Section-->
+                <aura:if isTrue="{!v.isSpinner}">
+                  
+                    <lightning:spinner alternativeText="Loading" size="medium" class="spinnerClass"></lightning:spinner>
+                </aura:if>
+                <aura:if isTrue="{!not(empty(v.errorMessage))}">
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <p class="slds-p-left_small" style="height: 39px;background-color: red;color: white;">Review the
+                            errors on this page.</p>
+                        <p class="slds-p-left_small" style="color:red">{!v.errorMessage}</p>
+                        <p class="slds-p-top_medium slds-border_bottom"></p>
+                    </div>
+                </aura:if>
+                <div class="slds-modal__content slds-p-around_medium">
+                    
+                    <!-- Roshan - WW19 UAT feedback -->
+                    <p class="slds-p-left_small">{!if(and(v.objAPIName == 'PartnerFundClaim', v.modalHeader == 'Submit For Approval'), 'IMPORTANT', 'Alert')}</p>
+
+                    <aura:if isTrue="{!v.openCmp == 'Close Activity'}">
+                    <p class="slds-p-left_small">Press “Save” to {!v.modalHeader} or “Cancel” to continue editing the
+                        {!v.modalBody}.</p>
+                    <aura:set attribute="else"> <p class="slds-p-left_small">{!v.modalPopConfMessage}</p></aura:set>    
+                    </aura:if>
+                    
+                </div>
+                <!--Footer Section-->
+                <div class="slds-modal__footer">
+                    <aura:if isTrue="{!v.isNotifyOwner}">
+                        <span>
+                            <lightning:button label="No" variant="brand" onclick="{!c.closeModal}"/>
+                        </span>
+                        <span class="slds-p-left_small">
+                            <lightning:button label="Yes" variant="brand" onclick="{!c.confirmAction}"/>
+                        </span>
+                        <aura:set attribute="else">
+                            <span>
+                                <lightning:button label="Cancel" variant="brand" onclick="{!c.closeModal}" />
+                            </span>
+                            <aura:if isTrue="{!not(v.isDefaultQuickAction)}">
+                                <span class="slds-p-left_small">
+                                    <lightning:button label="Save" variant="brand" onclick="{!c.saveModal}" />
+                                </span>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

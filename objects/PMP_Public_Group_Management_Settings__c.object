@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>PMP_Action_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Action</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Contributing_Entitlement_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Contributing Entitlement Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Contributing_Field_API_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Contributing Field API</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Contributing_Field_Value_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Contributing Field Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Inactive_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Inactive indicator</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Public_Group_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Public Group Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Public Group Management Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

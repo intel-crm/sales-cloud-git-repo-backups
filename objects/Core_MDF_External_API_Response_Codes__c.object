@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Response status codes, status messages, error messages for external APIs</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Code__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Context_of_Error__c</fullName>
+        <externalId>false</externalId>
+        <label>Context of Error</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Http_Status_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Http Status Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Log_Entry__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Log Entry</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Message__c</fullName>
+        <label>Message</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_RestAPI_Error_Severity__c</fullName>
+        <externalId>false</externalId>
+        <label>Core RestAPI Error Severity</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>External API Response Codes</label>
+    <listViews>
+        <fullName>MyView</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Category__c</columns>
+        <columns>Core_Code__c</columns>
+        <columns>Core_Http_Status_Code__c</columns>
+        <columns>Core_Message__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>MyView</label>
+        <language>en_US</language>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

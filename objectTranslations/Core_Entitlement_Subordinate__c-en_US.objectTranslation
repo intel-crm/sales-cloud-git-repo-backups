@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Entitlement Subordinate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Entitlement Subordinates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Parent Entitlement --></label>
+        <name>Core_Parent_Entitlement_Id__c</name>
+        <relationshipLabel><!-- Entitlements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Select Action --></label>
+        <name>Core_Parent_Select_Action__c</name>
+        <picklistValues>
+            <masterLabel>Disable Subordinate</masterLabel>
+            <translation><!-- Disable Subordinate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Select Subordinate</masterLabel>
+            <translation><!-- Select Subordinate --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subordinate Entitlement --></label>
+        <name>Core_Subordinate_Entitlement__c</name>
+        <relationshipLabel><!-- Entitlement Subordinates --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

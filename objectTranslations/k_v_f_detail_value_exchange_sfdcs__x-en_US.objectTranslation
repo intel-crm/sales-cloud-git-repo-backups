@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>k_v_f_detail_value_exchange_sfdcs</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>k_v_f_detail_value_exchange_sfdcs</value>
+    </caseValues>
+    <fields>
+        <label><!-- business_organization_nbr --></label>
+        <name>business_organization_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- business_organization_party_id --></label>
+        <name>business_organization_party_id__c</name>
+        <relationshipLabel><!-- k_v_f_detail_value_exchange_sfdcs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- change_ts --></label>
+        <name>change_ts__c</name>
+    </fields>
+    <fields>
+        <label><!-- disti_nm --></label>
+        <name>disti_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- end_dt --></label>
+        <name>end_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- forecast_product_nbr --></label>
+        <name>forecast_product_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- form_factor_txt --></label>
+        <name>form_factor_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- hash_id --></label>
+        <name>hash_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- intel_brand_nm --></label>
+        <name>intel_brand_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- invoice_dt --></label>
+        <name>invoice_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- invoice_nbr --></label>
+        <name>invoice_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- item_id --></label>
+        <name>item_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- old_material_id --></label>
+        <name>old_material_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- one_partner_customer_aggregation_id --></label>
+        <name>one_partner_customer_aggregation_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- product_sold_qty --></label>
+        <name>product_sold_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- sales_type_cd --></label>
+        <name>sales_type_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- sales_volume_united_states_dollar_amt --></label>
+        <name>sales_volume_united_states_dollar_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- start_dt --></label>
+        <name>start_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- value_exchange_period_txt --></label>
+        <name>value_exchange_period_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

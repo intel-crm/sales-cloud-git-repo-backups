@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Reltio Sync Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reltio Sync Config</value>
+    </caseValues>
+    <fields>
+        <label><!-- Config JSON --></label>
+        <name>rtsync__Config_JSON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Count Config --></label>
+        <name>rtsync__Retry_Count_Config__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduler Record Count --></label>
+        <name>rtsync__Scheduler_Record_Count__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

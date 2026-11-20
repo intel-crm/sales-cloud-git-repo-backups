@@ -1,0 +1,171 @@
+<aura:component controller = "PMP_SearchCompanyLeadGenController" >
+	<aura:attribute name="hasAccess" type="boolean" default="false" />
+	<aura:attribute name="dataModified" type="boolean" default="false" description="internal" />
+	<aura:attribute name="dataSaved" type="boolean" default="false" description="internal"/>
+    <aura:attribute name="hideButtons" type="boolean" default="false" description="internal" />
+
+    <aura:attribute name="initialData" type="Object" />
+	<aura:attribute name="data" type="Object"/>
+
+	<aura:attribute name="onDataUpdatedCallback" type="Object" default="{}" />
+
+	<aura:attribute name="localSettingsData" type="Object" />
+	<aura:attribute name="languageData" type="Object[]" />
+    
+	<aura:handler name="change" value="{!v.data}" action="{!c.handleDataChange}" />
+    
+	
+    <aura:attribute name="loading" type="boolean" default ="true"/>
+    <aura:attribute name="partnerId" type="String" />
+	<aura:attribute name="storeFrontAdministratorModalOpen" type="Boolean" default="false" />
+	<aura:attribute name="onSaveClick" type="Object"/>
+	<aura:attribute name="onCancelClick" type="Object"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="partnerAdminData" type="Object[]" default="[]" />
+    <aura:attribute name="columns" type="List"/>
+	
+    <aura:handler event="c:MarketplacePageEvent" action="{!c.saveSettings}" />
+    
+	<div class="{!(v.hasAccess ? 'hasAccess': 'noAccess') + ' slds-m-bottom_x-large'}">
+        
+		<aura:if isTrue="{! !v.hasAccess }">
+			<div class="blue slds-p-around_medium">
+				{!$Label.c.PMP_To_Edit_Lead_Gen_Settings}&nbsp;<a href="javascript:void(0);" onclick="{! c.handleStorefrontAdministratorModal}">{!$Label.c.PMP_LeadGen_StorefrontAdministrator}</a><!--&nbsp;{!$Label.c.PMP_LeadGen_ContactNote2}-->
+			</div>
+
+			<div class="storeFrontAdminModal modal-overlay" aura:id="storeFrontAdminModal">
+				<div class="modalTitle marquee h3">
+					<span class="intel-clear-pro">
+          	{!$Label.c.PMP_LeadGen_StorefrontAdminPersonnel}
+					</span>
+          <a class="close" href="#" aria-label="{!$Label.c.Core_PMP_Close}" onclick="{!c.handleStorefrontAdministratorModal}"><lightning:icon class="icn" iconName="utility:close" size="medium" /></a>
+        </div>
+        <div class="modalBody">
+					<lightning:layout class="slds-m-bottom_medium" multipleRows="true">
+						<lightning:layoutItem   size="12" class="slds-m-bottom_large">
+							{!$Label.c.PMP_LeadGen_AdministratorNote}
+						</lightning:layoutItem>
+                        <div style="height: 250px;width:1000px">
+                            <lightning:datatable
+                                    keyField="id"
+                                    data="{! v.partnerAdminData }"
+                                    columns="{! v.columns }"
+                                    hideCheckboxColumn="true"
+                                    resizeColumnDisabled = "true"/>
+                        </div>
+                        <!-- <aura:iteration items="{!v.partnerAdminData}" var="partAdminData">                            
+                            <lightning:layoutItem   size="12" mediumDeviceSize="4" class="padding-mobile-bottom-medium">
+                                <b>Name</b><br/>
+                                <span class="break-word">{! partAdminData.Name }</span>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem   size="12" mediumDeviceSize="4" class="padding-mobile-bottom-medium">
+                                <b>{!$Label.c.PMP_Email}</b><br/>
+                                <a href="{! 'mailto:' +partAdminData.Email }"><span class="break-word">{! partAdminData.Email }</span></a>
+                            </lightning:layoutItem>                            
+                            <lightning:layoutItem   size="12" mediumDeviceSize="4"  class="">
+                                <b>{!$Label.c.PMP_Phone}</b><br/>
+                                <span class="break-word">{! partAdminData.Phone }</span>
+                            </lightning:layoutItem>
+                        </aura:iteration> -->
+                        
+						<!--<lightning:layoutItem   size="12" class="slds-m-vertical_xx-large">
+							{!$Label.c.PMP_LeadGen_Questions1}&nbsp; <a href="javascript:void(0);">{!$Label.c.PMP_LeadGen_MarketplaceHelp} &rsaquo;</a>
+						</lightning:layoutItem>-->
+                        <!--Adding help link as part of US459003-->
+                        <lightning:layoutItem   size="12" class="slds-m-vertical_xx-large">
+                            {!$Label.c.PMP_LeadGen_Questions1}&nbsp;<c:IntelLink url="{!$Label.c.PMP_IPA_HelpLink}"> {!$Label.c.PMP_LeadGen_MarketplaceHelp} &rsaquo;</c:IntelLink>
+                        </lightning:layoutItem>
+						<lightning:layoutItem   size="12" class="slds-text-align_right">
+							<span onclick="{! c.handleStorefrontAdministratorModal}">
+								<c:IntelButton class="slds-m-right_medium" >
+										{!$Label.c.Core_PMP_Close}
+								</c:IntelButton>
+							</span>
+						</lightning:layoutItem>
+					</lightning:layout>
+				</div>
+			</div>
+			<div class="storeFrontAdminModalBackdrop slds-hide" aura:id="storeFrontAdminModalBackdrop"></div>
+
+		</aura:if>
+		<div class="leadGenBox slds-p-around_medium">
+            <aura:if isTrue="{!v.loading}">                                                  
+                        <lightning:spinner class="mainSpinner" alternativeText="Loading..."/>                                                   
+        </aura:if>
+			<h4 class="heading-16  slds-p-top_large slds-p-bottom_large">{!$Label.c.PMP_LeadGen_Settings}
+				<aura:if isTrue="{! v.dataSaved }">
+					<lightning:icon iconName="action:approval"
+						class="cursor"
+						size="x-small"/>
+				</aura:if>
+
+			</h4>
+			<lightning:layout class="slds-m-bottom_medium" multipleRows="true">
+				<lightning:layoutItem   size="8" class="slds-m-bottom_large">
+					{!$Label.c.PMP_LeadGen_EnableLeadGeneration}
+					<span class="small heading-12">
+						{!$Label.c.PMP_LeadGen_EnableLeadGeneration_Note1}
+						<!-- {!$Label.c.PMP_LeadGen_EnableLeadGeneration_Note2} -->
+					</span>
+				</lightning:layoutItem>
+				<lightning:layoutItem   size="4">
+					<lightning:input type="toggle" aura:id="enableLeadGen" ariaLabel="Enable Lead Generation" name="enableLeadGeneration" checked="{! v.localSettingsData.enableLeadGeneration}" required="false" messageToggleActive="{!$Label.c.PMP_Toggle_On}" messageToggleInactive="{!$Label.c.PMP_Toggle_Off}" onclick="{!c.handleLocalDataChange}"/>
+				</lightning:layoutItem>
+				<div class="{! (v.localSettingsData.enableLeadGeneration ? 'enabled': 'disableSection') + ' slds-grid slds-wrap'}">
+					<lightning:layoutItem   size="8" class="slds-m-bottom_large">
+						{!$Label.c.PMP_LeadGen_LimitLeadGeneration}
+						<span class="small heading-12">{!$Label.c.PMP_LeadGen_LimitLeadGeneration_Note}</span>
+					</lightning:layoutItem>
+					<lightning:layoutItem   size="4">
+						<lightning:input type="toggle" aura:id="limitLeadGen" ariaLabel="Limit lead generation to other Intel partners only" name="input2" checked="{! v.localSettingsData.limitToPartners }" required="false"  messageToggleActive="{!$Label.c.PMP_Toggle_On}" messageToggleInactive="{!$Label.c.PMP_Toggle_Off}" onclick="{!c.handleLocalDataChange}" />
+					</lightning:layoutItem>
+
+					<lightning:layoutItem   size="12" >
+						{!$Label.c.PMP_LeadGen_Language_Preferences} 
+						<span class="small heading-12">{!$Label.c.PMP_LeadGen_Language_Preferences_Note}</span>
+					</lightning:layoutItem>
+					<lightning:layoutItem   size="12" class="slds-m-top_medium slds-m-bottom_large">
+                       
+                        <aura:if isTrue="{!not(empty(v.languageData))}">
+                            <div onclick="{!c.handleLocalDataChange}">    
+                                <c:MarketplaceFormDropdown
+                                                           isLeadGen="true"                       
+                                                           aura:id="language"
+                                                           label="Language Preferences"
+                                                           options="{!v.languageData}"
+                                                           allowMultipleOptions="true"
+                                                           required="false"
+                                                           placeholder="{!$Label.c.PMP_Lead_Gen_Lang_No_Preference}"
+                                                           
+                                                           ></c:MarketplaceFormDropdown>
+                            </div>
+                        </aura:if>
+                        <!--Added by Manjula as part of US619832-->
+                        <!-- <aura:if isTrue="{!v.hideButtons}">
+                            <p class="slds-p-top_medium">{!$Label.c.PMP_LeadGen_IntelLeadAgreementReview}&nbsp; <c:IntelLink url="https://marketplace.intel.com/s/help/imp/s/help" page="marketplace-help" openInBlank="true">{!$Label.c.PMP_LeadGen_IntelLeadAgreement}&nbsp;<lightning:icon iconName="utility:new_window" class="modal brand" size="xx-small"></lightning:icon></c:IntelLink></p>
+                        </aura:if>  --> 
+						<!-- </aura:if> -->
+					</lightning:layoutItem>
+				</div>
+			</lightning:layout>
+            
+			<aura:if isTrue="{!and(v.dataModified,!v.hideButtons)}">
+				<div class="leadGenActions">
+					<lightning:layout multipleRows="true">
+						<lightning:layoutItem  size="6" mediumDeviceSize="12" largeDeviceSize="6" class="alignCenter slds-m-bottom_medium" >
+							<c:IntelButton class="inline" onclick="{! v.onSaveClick}">
+									{!$Label.c.Core_PMP_Save}
+							</c:IntelButton>
+						</lightning:layoutItem>
+						<lightning:layoutItem   size="6" mediumDeviceSize="12" largeDeviceSize="6" class="alignCenter slds-m-bottom_medium" >
+							<c:IntelButton class="gray inline" onclick="{! v.onCancelClick}">
+									{!$Label.c.Core_PMP_Cancel}
+							</c:IntelButton>
+						</lightning:layoutItem>
+					</lightning:layout>
+
+				</div>
+			</aura:if>
+		</div>
+	</div>
+</aura:component>

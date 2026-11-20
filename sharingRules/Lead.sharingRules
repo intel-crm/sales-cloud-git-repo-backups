@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_Lead_APJ_APJSalesOps_ReadWrite</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Lead  Sharing Rule would provide READ/WRITE Access to All Lead for APJ Geo to Sales Ops in the APJ Geo</description>
+        <label>Lead_APJ_APJSalesOps_ReadWrite</label>
+        <sharedTo>
+            <group>Core_Sales_Ops_APJ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Lead_ASMO_ASMOSalesOps_ReadWrite</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Core Lead ASMO ASMO SalesOps ReadWrite</label>
+        <sharedTo>
+            <group>Core_Sales_Ops_ASMO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Lead_EMEA_EMEASalesOps_ReadWrite</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Lead  Sharing Rule would provide READ/WRITE Access to All Lead for EMEA Geo to Sales Ops in the EMEA Geo</description>
+        <label>Lead EMEA EMEASalesOps ReadWrite</label>
+        <sharedTo>
+            <group>Core_Sales_Ops_EMEA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Lead_PRC_PRCSalesOps_ReadWrite</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This Lead  Sharing Rule would provide READ/WRITE Access to All Lead for PRC Geo to Sales Ops in the PRC Geo</description>
+        <label>Lead PRC PRCSalesOps ReadWrite</label>
+        <sharedTo>
+            <group>Core_Sales_Ops_PRC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Geo__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Partner_Lead_Admin_Leads</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all Partner leads to Partner Lead Admin users..</description>
+        <label>Core - Partner Lead Admin - Leads</label>
+        <sharedTo>
+            <group>Core_PG_Partner_Lead_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Lead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Cvent_Integration_User_Leads</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all Intel leads to Cvent Integration user.</description>
+        <label>Cvent - Integration User - Leads</label>
+        <sharedTo>
+            <group>Cvent_Integration_User</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Sales Lead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Marketo_User_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Marketo User Sharing</label>
+        <sharedTo>
+            <group>Marketo_Access_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>equals</operation>
+            <value>005Ho00000KMIKGIA5</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SWS_6Sense_Lead_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Sharing rule to share record with 6Sense Integration User</description>
+        <label>SWS 6Sense Lead Sharing</label>
+        <sharedTo>
+            <group>SWS_6Sense_Admin_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Sales Lead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_IDC_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share IDC created Lead with IDC Group</description>
+        <label>Share with IDC Users</label>
+        <sharedTo>
+            <group>AGS_SWS_IDC_Business_Ops</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>LeadSource</field>
+            <operation>equals</operation>
+            <value>IDC Credit Request</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,148 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "de40e2b2-34ab-4669-9839-94ad902ce91a",
+  "label" : "create offering submit",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"OfferingSubmit\",\"title\":\"Offering Submit\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Your Offering Has Been Submitted"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "8c5f9a49-73f8-44a1-b4b9-3128ff87b37b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "1d3e13d9-e216-4aa9-aff8-8ff20c439365",
+        "zh_cn" : "ce5178a1-dc15-487c-b0fd-362b6cc1efbb"
+      },
+      "renditions" : [ {
+        "id" : "ce5178a1-dc15-487c-b0fd-362b6cc1efbb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "您的产品/产品解决方案已提交"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1d3e13d9-e216-4aa9-aff8-8ff20c439365",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "オファリングが送信されました"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5ac74e73-285b-4ac6-b859-9b8dad4a2c7a",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceCreateProductSubmission",
+      "id" : "1796bb30-051f-44d0-bf94-349c1c25e02a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bb334a02-00ae-4d34-a849-c5730f3111ef",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "2215a786-fea2-424f-b67f-73dbd426f10a",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "b6e9ee09-d8bd-4519-961f-84c9844605bb",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "0ab0bf2c-c9f0-432a-b029-3e5c622cfb77",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "c8f4a65a-07ab-408d-b874-c2e70e01ff91",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "bb8d207a-ea7b-4d34-bdba-6c03e13836a4",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "8c7b7ab1-a9b0-41c5-b8f6-143be15260ce",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "173aa12e-f6d0-487b-9de1-87d2ba19652a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d10b71fa-0f22-479e-b82b-5116e7d7cf04",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "b026f650-2ebb-4256-8fea-4120ced4f7a9",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Offering Submit\"/> \n<meta name=\"keywords\" content=\"sf,mp,offering submit\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingSubmit\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Submit your products and solution offerings on Intel® Solutions Marketplace.",
+        "title" : "Offering Submit -  Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1a926dcb-99d8-4095-8986-acac23461c7d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "22c7a6f1-3a17-4420-8355-630ee90c178b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "b9e7fb58-81ca-42c4-9942-8bd552fc11d7",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "faqTitle" : "Offering Creation",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "bde485f7-6ec2-4e90-ac8e-d7a79a4182df",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d2128852-ada9-452f-85e9-86c6b72c0d8a",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "8359d9d0-0f1a-4b9d-9217-345ff7c5c0c0",
+    "regionName" : "blade1white",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-create-offering-submit"
+}

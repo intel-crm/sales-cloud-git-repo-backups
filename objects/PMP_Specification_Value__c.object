@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Specification Value object stores all the different values that a specification can hold.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PMP_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>To see if the specification value is active or not</description>
+        <inlineHelpText>To see if the specification value is active or not</inlineHelpText>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Display_Type_Nm__c</fullName>
+        <description>Type of control to be displayed for the specification selection (Radio/Checkbox)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of control to be displayed for the specification selection (Radio/Checkbox)</inlineHelpText>
+        <label>Display Type</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Image_URL__c</fullName>
+        <label>Image URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Name_Chinese__c</fullName>
+        <description>This field appends the Pre-Release tag to the specification value if it is a pre-release. if not it just takes the name.</description>
+        <externalId>false</externalId>
+        <formula>IF( PMP_Spec_Pre_Release_Ind__c = true &amp;&amp; NOT(ISBLANK(  PMP_Specification_Value_Chinese_Cd__c )), PMP_Specification_Value_Chinese_Cd__c &amp;&quot; &quot;&amp;&apos;(Pre-Release)&apos;,PMP_Specification_Value_Chinese_Cd__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name Chinese</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Name_Japanese__c</fullName>
+        <description>This field appends the Pre-release tag at the end to the Japanese name value, if it is a pre-release spec value, if not it just takes the name.</description>
+        <externalId>false</externalId>
+        <formula>IF( PMP_Spec_Pre_Release_Ind__c = true &amp;&amp; NOT(ISBLANK( PMP_Specification_Value_Japanese_Cd__c )), PMP_Specification_Value_Japanese_Cd__c&amp;&quot; &quot;&amp;&apos;(Pre-Release)&apos;,PMP_Specification_Value_Japanese_Cd__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name Japanese</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Off_Roadmap_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Partner Off-Roadmap Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_Restriction_Lvl__c</fullName>
+        <description>This determines whether a product is public or not
+0 - Public/Launched
+1 - Pre-Release</description>
+        <label>Restriction Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0</fullName>
+                    <default>true</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_Specification_Value_Cd__c</fullName>
+        <description>Specification Value Id from PIM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specification Value Id from PIM</inlineHelpText>
+        <label>PIM Specification Value Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_Specification_Value_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Holds a combination of PIM Spec Value Specification Id and Locale</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Holds a combination of PIM Spec Value Specification Id and Locale</inlineHelpText>
+        <label>PIM SpecValue External Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_Status__c</fullName>
+        <label>Product Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Launched</fullName>
+                    <default>false</default>
+                    <label>Launched</label>
+                </value>
+                <value>
+                    <fullName>Roadmap</fullName>
+                    <default>false</default>
+                    <label>Roadmap</label>
+                </value>
+                <value>
+                    <fullName>Discontinued</fullName>
+                    <default>false</default>
+                    <label>Discontinued</label>
+                </value>
+                <value>
+                    <fullName>Announced</fullName>
+                    <default>false</default>
+                    <label>Announced</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_URL__c</fullName>
+        <label>Product URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Spec_Pre_Release_Ind__c</fullName>
+        <formula>ISPICKVAL(PMP_Product_Restriction_Lvl__c, &quot;1&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Specification Pre Release Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Spec_Value_Type_Nm__c</fullName>
+        <description>To know if Spec Value is related to Processor or Chipset or Others</description>
+        <externalId>false</externalId>
+        <inlineHelpText>To know if Spec Value is related to Processor or Chipset or Others</inlineHelpText>
+        <label>Spec Value Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Product_Cd__c</fullName>
+        <externalId>false</externalId>
+        <label>PIM Specification Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Value_Cd__c</fullName>
+        <description>Holds the value of a Specification Value record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the value of a Specification Value record</inlineHelpText>
+        <label>Specification Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Value_Chinese_Cd__c</fullName>
+        <description>Specification value in chinese</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specification value in chinese</inlineHelpText>
+        <label>Specification Value (Chinese)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Value_Japanese_Cd__c</fullName>
+        <description>Specification value in Japanese</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specification value in Japanese</inlineHelpText>
+        <label>Specification Value (Japanese)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Value_Nm__c</fullName>
+        <description>name of specification value</description>
+        <externalId>false</externalId>
+        <inlineHelpText>name of specification value</inlineHelpText>
+        <label>Specification Value Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Value_Sequence_Nbr__c</fullName>
+        <description>Holds the sequence number for Specification Values</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the sequence number for Specification Values</inlineHelpText>
+        <label>Specification Value Sequence</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_id__c</fullName>
+        <externalId>false</externalId>
+        <label>PMP Specification id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Specification Value</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Product_Specification_Value_Cd__c</columns>
+        <columns>PMP_Specification_Value_Cd__c</columns>
+        <columns>PMP_Display_Type_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PMP_Partner_Off_Roadmap_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Specification Values</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,54 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "60627851-18ad-432e-8a3c-ae76a24c73c1",
+  "label" : "MP Maintenance-Offerings by Use Cases",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "93476939-a206-41b8-834a-c7dd7b354615",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "66d968ab-4210-4c7c-abcf-037e7da66af7",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "f7bbcbac-c60e-4e91-ad80-0120a6720c06",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fc854ca9-be36-4fdf-8875-0ebd7f1d6540",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Offerings By Use Cases\"/> \n<meta name=\"keywords\" content=\"offerings by use cases, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingsByUseCases\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace offerings by use cases on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "Offerings by Use Cases  - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "8f4090e0-e1ab-4e89-80a1-a1c50bf81d7c",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b0499ef1-d12b-49ba-9b59-47c0c9427049",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offerings-by-use-cases"
+}

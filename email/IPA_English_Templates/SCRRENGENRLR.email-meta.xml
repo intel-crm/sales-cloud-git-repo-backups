@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLR</name>
+    <style>none</style>
+    <subject>Your Intel®Cloud Insider Application</subject>
+    <textOnly>Verify your Email Address
+
+Thank you for submitting your Intel® Cloud Insider application. Before we can process it, we need to make sure this email address is yours. If your email address is not validated within 30 days, your application will be deleted from our system and you will be required to re-submit a new application for consideration.
+
+
+Verify Now
+
+Questions? Contact Intel® Cloud Insider Support at programs@intel.com or here
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

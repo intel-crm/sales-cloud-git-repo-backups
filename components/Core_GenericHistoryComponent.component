@@ -1,0 +1,21 @@
+<apex:component controller="Core_GenericHistoryComponentController">
+    
+<!-- This is a generic field history component for VF pages, based on public code from
+     https://developer.salesforce.com/forums?id=906F000000095wwIAA -->
+
+    <!-- Attribute Definition -->
+    <apex:attribute name="object" description="Object we wish to view the history of" type="SObject" required="true" assignTo="{!myObject}" />
+    <apex:attribute name="recLimit" description="Number of lines of history to display" type="Integer" required="false" assignTo="{!recordLimit}" />
+    
+    <!-- Object History Related List -->
+    <apex:pageBlock title="{!objectLabel} History">
+        <apex:pageBlockTable value="{!ObjectHistory}" var="History" >
+            <apex:column headerValue="Date" value="{!History.thedate}"/>
+            <apex:column headerValue="User">
+                <apex:outputLink value="/{!History.userId}"> {!History.who} </apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Action"><apex:outputText escape="false" value="{!History.action}"/></apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+</apex:component>

@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="displayInputs" type="Map"/>
+    <aura:attribute name="aName" type="String"/>
+    <aura:attribute name="accAddress" type="String"/>
+    <aura:attribute name="contactName" type="String"/>
+    <aura:attribute name="contactEmail" type="String"/>
+    <aura:attribute name="accountColumns" type="String"/>
+    <aura:attribute name="contactColumns" type="String"/>
+    <aura:attribute name="accountData" type="String"/>
+    <aura:attribute name="contactData" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        
+    <div style="background-color:white">
+        <div class="inlineTitle slds-p-top--large slds-p-horizontal--medium slds-p-bottom--medium slds-text-heading--medium slds-align_absolute-center">
+            {!$Label.c.PRM_Confirmation}
+        </div>
+        <!--<div class="slds-border_top"></div>
+        <div class="slds-align_absolute-center slds-p-top_small slds-p-bottom_small">
+            <b>{!$Label.c.PRM_Confirmation_Message}</b>
+        </div>-->
+        <lightning:card iconName="standard:account" title='{!$Label.c.PRM_Account_Information}'>
+            
+            <lightning:datatable
+                                 columns="{!v.accountColumns}"
+                                 data="{!v.accountData}"
+                                 keyField="id" hideCheckboxColumn = "true" resizeColumnDisabled="true" />
+        </lightning:card>            
+        <div class="slds-p-top_xx-large">
+            <lightning:card iconName="standard:contact" title='{!$Label.c.PRM_Contact_Information}'>
+                
+                <lightning:datatable
+                                     columns="{!v.contactColumns}"
+                                     data="{!v.contactData}"
+                                     keyField="id" hideCheckboxColumn="true" resizeColumnDisabled="true"/>
+            </lightning:card>    
+        </div>
+    </div>
+    
+</aura:component>

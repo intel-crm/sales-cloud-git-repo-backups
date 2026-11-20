@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,lightning:isUrlAddressable">
+<!-- implementing isUrlAddressable interface -->
+    <aura:attribute name="recId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.reInit}" />
+<!-- for the data to refresh everytime a new recId is passed -->
+<c:core_MDF_Approval_Request_Detail recId="{!v.recId}"></c:core_MDF_Approval_Request_Detail>
+</aura:component>

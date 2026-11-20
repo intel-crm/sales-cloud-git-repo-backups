@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  overflow-x: hidden; /* Prevent scrollbar on Tablet < 768px */
+}
+
+/* Mobile First */
+.simple-card-list-container {
+  align-items: normal;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.simple-card-list-item {
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  margin: 0;
+  min-width: 0;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.simple-card-list-item:last-child {
+  padding: 1rem;
+}
+
+/* Tablet */
+@media only screen and (min-width: 767px) and (max-width: 1023px) {
+  .simple-card-list-item {
+    flex: 0 0 50%;
+    padding: 1rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .simple-card-list-item {
+    flex: 0 0 20%;
+    padding: 1rem;
+  }
+
+  .simple-card-list-container[data-desktop-cols='4'] .simple-card-list-item {
+    flex: 0 0 25%;
+  }
+
+  .simple-card-list-container[data-desktop-cols='3'] .simple-card-list-item {
+    flex: 0 0 33.333%;
+  }
+}

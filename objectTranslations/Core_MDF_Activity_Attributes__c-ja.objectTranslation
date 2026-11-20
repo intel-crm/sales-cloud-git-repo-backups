@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Activity Attributes --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Co_Marketing_Activity__c</name>
+        <relationshipLabel><!-- Activity Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_Field_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Clicks</masterLabel>
+            <translation>デジタルメディア - クリック数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Conversions</masterLabel>
+            <translation>デジタルメディア - コンバージョン数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Downloads</masterLabel>
+            <translation>デジタルメディア - ダウンロード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Impressions</masterLabel>
+            <translation>デジタルメディア - インプレッション数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Leads</masterLabel>
+            <translation>デジタルメディア - リード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Page Views</masterLabel>
+            <translation>デジタルメディア - アクセス数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Social Media Likes/Shares</masterLabel>
+            <translation>デジタルメディア - ソーシャルメディアのいいね/ 共有数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - # of Unique Visitors</masterLabel>
+            <translation>デジタルメディア - ユニークビジター数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media - Average time on Page (Seconds)</masterLabel>
+            <translation>デジタルメディア - ページの平均時間 (秒)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media Percentage Spend</masterLabel>
+            <translation>デジタルメディアの割合支出</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Deal Wins</masterLabel>
+            <translation>イベント - ディールウィン数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of End Customer Attendees</masterLabel>
+            <translation>イベント - エンドカスタマー出席者数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event  - # of Seller Attendees</masterLabel>
+            <translation>イベント - 販売者出席者数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - # of Sales Qualified Leads</masterLabel>
+            <translation>イベント - 販売評価リード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event - Revenue of Units Sold (USD)</masterLabel>
+            <translation>イベント - 販売されたユニット数の収益 (米ドル)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Percentage Spend</masterLabel>
+            <translation>イベントの割合支出</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount - # of Days</masterLabel>
+            <translation>資金提供された人員 - 日数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount Percentage Spend</masterLabel>
+            <translation>資金提供された人員の割合支出</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deal Wins</masterLabel>
+            <translation>インセンティブ - ディールウィン数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Deals Registered</masterLabel>
+            <translation>インセンティブ - 登録されたディール数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Design Wins</masterLabel>
+            <translation>インセンティブ - デザイン獲得数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - # of Units Sold</masterLabel>
+            <translation>インセンティブ - 販売されたユニット数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive - Revenue of Units Sold (USD)</masterLabel>
+            <translation>インセンティブ - 販売されたユニット数の収益 (米ドル)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive Percentage Spend</masterLabel>
+            <translation>インセンティブの割合支出</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Leads</masterLabel>
+            <translation>リード育成 - リード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation - # of Sales Qualified Leads</masterLabel>
+            <translation>リード育成 - 販売評価リード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation Percentage Spend</masterLabel>
+            <translation>リード育成の割合支出</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Conversions</masterLabel>
+            <translation>レガシーメディア - コンバージョン数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Downloads</masterLabel>
+            <translation>レガシーメディア - ダウンロード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Impressions</masterLabel>
+            <translation>レガシーメディア - インプレッション数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Leads</masterLabel>
+            <translation>レガシーメディア - リード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - # of Recipients</masterLabel>
+            <translation>レガシーメディア - 受信者数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media - Runs per hour</masterLabel>
+            <translation>レガシーメディア - 1 時間ごとに実行</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media Percentage Spend</masterLabel>
+            <translation>過去のメディアの割合支出</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation - # of Person Days</masterLabel>
+            <translation>小売アクティベーション - 人日数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation Percentage Spend</masterLabel>
+            <translation><!-- Retail Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
+            <translation>テクニカル・アクティベーション - 契約獲得数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Deployments</masterLabel>
+            <translation>テクニカルアクティベーション - 導入数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Design Wins</masterLabel>
+            <translation>テクニカル・アクティベーション - デザイン獲得数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Downloads</masterLabel>
+            <translation>テクニカルアクティベーション - ダウンロード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Instances</masterLabel>
+            <translation>テクニカルアクティベーション - インスタンス数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation - # of Sales Qualified Leads</masterLabel>
+            <translation>テクニカルアクティベーション - 販売評価リード数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation Percentage Spend</masterLabel>
+            <translation><!-- Technical Activation Percentage Spend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of End Customer Trainees</masterLabel>
+            <translation>トレーニング - エンドカスタマー研修生数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training - # of Partner Trainees</masterLabel>
+            <translation>トレーニング - パートナー研修生数</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Percentage Spend</masterLabel>
+            <translation>トレーニングの割合支出</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Core_MDF_Field_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Amount --></label>
+        <name>Core_MDF_Spending_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation>デジタルメディア</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation>イベント</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Headcount</masterLabel>
+            <translation>資金提供された人員</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incentive</masterLabel>
+            <translation>インセンティブ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Cultivation</masterLabel>
+            <translation>リード育成</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Media</masterLabel>
+            <translation>レガシーメディア</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Activation</masterLabel>
+            <translation>小売アクティベーション</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Activation</masterLabel>
+            <translation>テクニカルアクティベーション</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation>トレーニング</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_MDF_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>KPI</masterLabel>
+            <translation><!-- KPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percentage</masterLabel>
+            <translation><!-- Percentage --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Activity Attributes Name --></nameFieldLabel>
+</CustomObjectTranslation>

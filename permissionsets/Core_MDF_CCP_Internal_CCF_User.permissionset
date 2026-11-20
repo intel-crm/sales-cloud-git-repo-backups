@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Internal_CCF_User</name>
+    </customPermissions>
+    <description>Internal User for CCP Program</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CCP Internal CCF User</label>
+    <license>Salesforce</license>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_Target_Setting_Line_Item__c.Core_MDF_Client_Co_Marketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_Target_Setting__c.Core_MDF_Client_Co_Marketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundAllocation.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+</PermissionSet>

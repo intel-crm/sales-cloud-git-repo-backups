@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Flex Queue Job Priority</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Flex Queue Job Priority</value>
+    </caseValues>
+    <fields>
+        <label><!-- ApexClassID --></label>
+        <name>espy__ApexClassID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Apex Class Name --></label>
+        <name>espy__Apex_Class_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flex Queue Priority --></label>
+        <name>espy__Flex_Queue_Priority__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

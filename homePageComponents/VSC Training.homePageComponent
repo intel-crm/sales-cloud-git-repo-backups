@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <links>Core_Training_Home</links>
+    <links>Core_Pipeline_Management</links>
+    <links>Core_General_Salesforce_Functionality</links>
+    <links>Core_Collaboration_in_Salesfoce</links>
+    <links>Core_Account_and_Contact_Management</links>
+    <links>Core_Opportunity_Management</links>
+    <links>Core_Lead_Management</links>
+    <links>Core_VSC_Training</links>
+    <links>Core_Reporting</links>
+    <pageComponentType>links</pageComponentType>
+</HomePageComponent>

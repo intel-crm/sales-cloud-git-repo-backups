@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>4</activeVersionNumber>
+    <description>TWC3123-4569 --Enable Status Update Functionality for Opportunity Solution Group type Opportunities. User can update the status update on all opportunities at a single go from opportunity Solution group type opportunity.</description>
+    <masterLabel>Core_SolOppty_Status_Update</masterLabel>
+</FlowDefinition>

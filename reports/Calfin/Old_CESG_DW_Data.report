@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <description>Report for Calfin</description>
+    <filter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Naresh Angi,Anh Cavenaugh,Alejo Corredor,Jay Shekhewat,Mubeen Naithy,Edrick Wong,Brian Watson,Joseph Dolan,Rebeca Delgado Gomez,Frank Jensen,Jairam Kalyanasundharam,Stacy Chen,Nabeel Ahmed,Bill Chuan,Lorenzo Clark,Ned Fiori,Miles Ito,John Kaufman,Cam Lopez,Meg Mcdonald,Thomas Norton,Davinder Singh,Rick Willardson,Melanie Yan,Colleen Lim,Vikram Reddy,Mark Glenski,Ratika Hansen,Terry Harper,Gail Michelsen,Gina Moore,Nick Ong,Sophia Pollerana-Garcia,Zachary Seto,Craig Hood,Ezra Williams,Jeff Liborio,Taiga Ryu,Scott Ackerman,Kim Carlton,Ali Dioury,Randy Finfrock,David Gee,Steven Hughes,Madhu Karthik Jayaprakash,John Langlois,Jeff Noble,Scott Schmoll,Doug Geisler,Adam Barrett,Dimas De Oliveira Jr,Heather Husted,JOSEPH FARIS,Kim Haws,Charles McCann,Claude Moore,Adam Prengler,Milton Walker Iii,Scott Zych,Bob Charles,Yury Dzyubanny,Barry Farber,Rob Gillis Gillis,Jose Izaguirre,Chris Kennedy,Balaji Srinivasan,William Willis,Chris Bartos,David Berkeley,Matt Brady,Alan Budris,Chuck Cundari</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Approved_By__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Old CESG DW Data</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREVFY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email will be send to IPA Admins on successful linkage to opid</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>OPID Creation Email</name>
+    <style>none</style>
+    <subject>1PID linked to location accounts</subject>
+    <textOnly>Hello,
+
+This is to inform that for the Intel accounts listed below OPID linkage has been established.
+If this is not expected, please raise a ticket in production support.
+%AccountNames%</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

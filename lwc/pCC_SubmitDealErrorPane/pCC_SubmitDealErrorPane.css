@@ -1,0 +1,30 @@
+.bgcolor{
+    background-color: white;
+}
+.header{
+    font-weight: bold;
+}
+.spanux{
+    color:red;
+    font-weight: bold;
+    font-size:0.8rem
+}
+.lisize{
+    font-size:0.7rem
+}
+.scrollme{
+    overflow-y: scroll;
+    height: 6rem;
+}
+.slds-spinner-text {
+    width: 320px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .slds-spinner--medium .slds-spinner-text {
+    transform: translate(-32%, -50%) rotate(-90deg);
+}
+.paddingTop{
+    padding-top: 25%;
+}

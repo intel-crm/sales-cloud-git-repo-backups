@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>AED - UAE Dirham</masterLabel>
+        <translation>AED - Dirham de Emiratos Árabes Unidos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ALL - Albanian Lek</masterLabel>
+        <translation>ALL - Lek de Albania</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AMD - Armenian Dram</masterLabel>
+        <translation>AMD - Dram de Armenia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ANG - Neth Antilles Guilder</masterLabel>
+        <translation>ANG - Florín de las Antillas holandesas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ARS - Argentine Peso</masterLabel>
+        <translation>ARS - Peso argentino</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AUD - Australian Dollar</masterLabel>
+        <translation>AUD - Dólar australiano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AZN - Azerbaijanian New Manat</masterLabel>
+        <translation>AZN - Nuevo manat de Azerbaiyán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BAM - Convertible Marks</masterLabel>
+        <translation>BAM - Marcos convertibles</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BBD - Barbados Dollar</masterLabel>
+        <translation>BBD - Dólar de Barbados</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BDT - Bangladesh Taka</masterLabel>
+        <translation>BDT - Taka de Bangladesh</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BGN - Bulgaria Lev</masterLabel>
+        <translation>BGN - Lev de Bulgaria</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BHD - Bahraini Dinar</masterLabel>
+        <translation>BHD - Dinar de Baréin</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BMD - Bermuda Dollar</masterLabel>
+        <translation>BMD - Dólar de Bermudas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BND - Brunei Dollar</masterLabel>
+        <translation>BND - Dólar de Brunei</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BOB - Bolivian Boliviano</masterLabel>
+        <translation>BOB - Boliviano de Bolivia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BRL - Brazilian Real</masterLabel>
+        <translation>BRL - Real brasileño</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BSD - Bahamian Dollar</masterLabel>
+        <translation>BSD - Dólar de Bahamas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BWP - Botswana Pula</masterLabel>
+        <translation>BWP - Pula de Botsuana</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BZD - Belize Dollar</masterLabel>
+        <translation>BZD - Dólar de Belice</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CAD - Canadian Dollar</masterLabel>
+        <translation>CAD - Dólar canadiense</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CHF - Swiss Franc</masterLabel>
+        <translation>CHF - Franco suizo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CLP - Chilean Peso</masterLabel>
+        <translation>CLP - Peso chileno</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CNY - Chinese Yuan</masterLabel>
+        <translation>CNY - Yuan chino</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>COP - Colombian Peso</masterLabel>
+        <translation>COP - Peso colombiano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CRC - Costa Rica Colon</masterLabel>
+        <translation>CRC - Colón de Costa Rica</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CZK - Czech Koruna</masterLabel>
+        <translation>CZK - Corona checa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DKK - Danish Krone</masterLabel>
+        <translation>DKK - Corona danesa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DOP - Dominican Peso</masterLabel>
+        <translation>DOP - Peso dominicano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DZD - Algerian Dinar</masterLabel>
+        <translation>DZD - Dinar argelino</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EGP - Egyptian Pound</masterLabel>
+        <translation>EGP - Libra egipcia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EUR - Euro</masterLabel>
+        <translation><!-- EUR - Euro --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>GBP - British Pound</masterLabel>
+        <translation>GBP - Libra esterlina</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>GEL - Georgia Lari</masterLabel>
+        <translation>GEL - Lari de Georgia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>GTQ - Guatemala Quetzal</masterLabel>
+        <translation>GTQ - Quetzal de Guatemala</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HKD - Hong Kong Dollar</masterLabel>
+        <translation>HKD - Dólar de Hong Kong</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HNL - Honduras Lempira</masterLabel>
+        <translation>HNL - Lempira de Honduras</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HRK - Croatian Kuna</masterLabel>
+        <translation>HRK - Kuna croata</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HUF - Hungarian Forint</masterLabel>
+        <translation>HUF - Florín húngaro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IDR - Indonesian Rupiah</masterLabel>
+        <translation>IDR - Rupia indonesia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ILS - Israeli Shekel</masterLabel>
+        <translation>ILS - Shekel israelí</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>INR - Indian Rupee</masterLabel>
+        <translation>INR - Rupia india</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ISK - Iceland Krona</masterLabel>
+        <translation>ISK - Corona islandesa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>JMD - Jamaican Dollar</masterLabel>
+        <translation>JMD - Dólar jamaicano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>JOD - Jordanian Dinar</masterLabel>
+        <translation>JOD - Dinar jordano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>JPY - Japanese Yen</masterLabel>
+        <translation>JPY - Yen japonés</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>KES - Kenyan Shilling</masterLabel>
+        <translation>KES - Chelín de Kenia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>KHR - Cambodia Riel</masterLabel>
+        <translation>KHR - Riel de Camboya</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>KRW - Korean Won</masterLabel>
+        <translation>KRW - Won surcoreano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>KWD - Kuwaiti Dinar</masterLabel>
+        <translation>KWD - Dinar kuwaití</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>KZT - Kazakhstan Tenge</masterLabel>
+        <translation>KZT - Tenge de Kazajistán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LBP - Lebanese Pound</masterLabel>
+        <translation>LBP - Libra libanesa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LKR - Sri Lanka Rupee</masterLabel>
+        <translation>LKR - Rupia de Sri Lanka</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LTL - Lithuanian Lita</masterLabel>
+        <translation>LTL - Lita lituana</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LVL - Latvian Lat</masterLabel>
+        <translation>LVL - Lat letón</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MAD - Moroccan Dirham</masterLabel>
+        <translation>MAD - Dirham marroquí</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDL - Moldovan Leu</masterLabel>
+        <translation>MDL - Leu moldavo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MKD - Macedonian Denar</masterLabel>
+        <translation>MKD - Denar macedonio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MUR - Mauritius Rupee</masterLabel>
+        <translation>MUR - Rupia de Mauricio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MXN - Mexican Peso</masterLabel>
+        <translation>MXN - Peso mexicano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MYR - Malaysian Ringgit</masterLabel>
+        <translation>MYR - Ringgit malayo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NAD - Namibian Dollar</masterLabel>
+        <translation>NAD - Dólar de Namibia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NGN - Nigerian Naira</masterLabel>
+        <translation>NGN - Naira de Nigeria</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NIO - Nicaragua Cordoba</masterLabel>
+        <translation>NIO - Córdoba de Nicaragua</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NOK - Norwegian Krone</masterLabel>
+        <translation>NOK - Corona noruega</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NPR - Nepalese Rupee</masterLabel>
+        <translation>NPR - Rupia nepalesa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NZD - New Zealand Dollar</masterLabel>
+        <translation>NZD - Dólar de Nueva Zelanda</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>OMR - Omani Rial</masterLabel>
+        <translation>OMR - Rial de Omán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PAB - Panama Balboa</masterLabel>
+        <translation>PAB - Balboa de Panamá</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PEN - Peruvian Sol</masterLabel>
+        <translation>PEN - Sol peruano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PHP - Philippine Peso</masterLabel>
+        <translation>PHP - Peso filipino</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PKR - Pakistani Rupee</masterLabel>
+        <translation>PKR - Rupia de Pakistán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PLN - Polish Zloty</masterLabel>
+        <translation>PLN - Zloty polaco</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PYG - Paraguayan Guarani</masterLabel>
+        <translation>PYG - Guaraní paraguayo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>QAR - Qatar Rial</masterLabel>
+        <translation>QAR - Rial de Qatar</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RON - Romanian Leu (New)</masterLabel>
+        <translation>RON - Leu (nuevo) rumano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RSD - Serbian Dinar</masterLabel>
+        <translation>RSD - Dinar serbio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RUB - Russian Rouble</masterLabel>
+        <translation>RUB - Rublo ruso</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SAR - Saudi Arabian Riyal</masterLabel>
+        <translation>SAR - Riyal de Arabia Saudita</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SEK - Swedish Krona</masterLabel>
+        <translation>SEK - Corona sueca</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SGD - Singapore Dollar</masterLabel>
+        <translation>SGD - Dólar de Singapur</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SVC - El Salvador Colon</masterLabel>
+        <translation>SVC - Colón de El Salvador</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>THB - Thai Baht</masterLabel>
+        <translation>THB - Baht tailandés</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TJS - Tajik Somoni</masterLabel>
+        <translation>TJS - Somoni de Tayikistán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TND - Tunisian Dinar</masterLabel>
+        <translation>TND - Dinar tunecino</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TRY - Turkish Lira (New)</masterLabel>
+        <translation>TRY - Lira (nueva) turca</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TTD - Trinidad&amp;Tobago Dollar</masterLabel>
+        <translation>TTD - Dólar de Trinidad y Tobago</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TWD - Taiwan Dollar</masterLabel>
+        <translation>TWD - Dólar de Taiwán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>UAH - Ukraine Hryvnia</masterLabel>
+        <translation>UAH - Hryvnia de Ucrania</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>USD - U.S. Dollar</masterLabel>
+        <translation>USD - Dólar de EE. UU.</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>UYU - Uruguayan New Peso</masterLabel>
+        <translation>UYU - Nuevo peso uruguayo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>UZS - Uzbekistan Sum</masterLabel>
+        <translation>UZS - Sum de Uzbekistán</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>VND - Vietnam Dong</masterLabel>
+        <translation>VND - Dong vietnamita</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ZAR - South African Rand</masterLabel>
+        <translation>ZAR - Rand sudafricano</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

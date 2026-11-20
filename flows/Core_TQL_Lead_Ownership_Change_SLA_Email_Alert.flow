@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>sp1Core_TQL_SLA_Expired_Alert</name>
+        <label>Lead.Core_TQL_SLA_Expired_Alert</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Lead.Core_TQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_TQL_Lead_Ownership_Change_SLA_Email_Alert workflow rule
+Workflow rule description: &quot;</description>
+    <label>Core_TQL_Lead_Ownership_Change_SLA_Email_Alert</label>
+    <migratedFromWorkflowRuleName>Core_TQL_Lead_Ownership_Change_SLA_Email_Alert</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND( {!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;, {!$Record.Core_Ownership_change_in_one_day_TQL__c} =false, {!$Record.Core_Having_Tasks_in_TQL__c}=True, {!$Record.Core_SLA_Listed_User__c}=True, {!$Record.Core_Created_Post_NewLead_Process__c}=True, OR( ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;) ), ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>ScheduledPath1</name>
+            <connector>
+                <targetReference>sp1Core_TQL_SLA_Expired_Alert</targetReference>
+            </connector>
+            <label>ScheduledPath1</label>
+            <offsetNumber>-1</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_Meeting_date_Weekday_Calculation__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

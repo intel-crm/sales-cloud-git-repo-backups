@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>All</masterLabel>
+        <translation><!-- All --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business</masterLabel>
+        <translation><!-- Business --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business Owners/SMB</masterLabel>
+        <translation><!-- Business Owners/SMB --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business owners</masterLabel>
+        <translation>企業主</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>C-Suite</masterLabel>
+        <translation><!-- C-Suite --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner</masterLabel>
+        <translation>通路夥伴</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial</masterLabel>
+        <translation>商業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consultant/Influencer</masterLabel>
+        <translation>顧問/影響力人物</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer</masterLabel>
+        <translation>消費者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Mainstream</masterLabel>
+        <translation>消費者 - 主流</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Premium</masterLabel>
+        <translation>消費者 - 高級</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator</masterLabel>
+        <translation>建立者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DIY</masterLabel>
+        <translation><!-- DIY --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Developer</masterLabel>
+        <translation>開發者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Distributors</masterLabel>
+        <translation>配銷商</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Customers (edge computing)</masterLabel>
+        <translation>邊緣客戶（邊緣運算）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education</masterLabel>
+        <translation>教育</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education Professionals</masterLabel>
+        <translation>教育專業人士</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Employees</masterLabel>
+        <translation>員工</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise</masterLabel>
+        <translation>企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enthusiast Gaming</masterLabel>
+        <translation><!-- Enthusiast Gaming --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Entry Gaming</masterLabel>
+        <translation>入門遊戲</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gamer</masterLabel>
+        <translation>遊戲玩家</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>遊戲</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government</masterLabel>
+        <translation>政府機構</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government agency heads</masterLabel>
+        <translation>政府機構負責人</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government/Public Sector</masterLabel>
+        <translation>政府/公共部門</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Healthcare</masterLabel>
+        <translation>醫療</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IT Decision Maker</masterLabel>
+        <translation>IT 決策者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IT Manager</masterLabel>
+        <translation><!-- IT Manager --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Large Business</masterLabel>
+        <translation>大型企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Line of Business</masterLabel>
+        <translation>企業營運 (Line of Business)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer (Overwhelmed)</masterLabel>
+        <translation><!-- Mainstream Consumer (Overwhelmed) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
+        <translation>主流消費者－知識型</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
+        <translation>主流消費者－困惑型</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
+        <translation>主流消費者－技術知識型</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Business</masterLabel>
+        <translation>受管理的企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manufacturer/OEM</masterLabel>
+        <translation>製造商/OEM</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mid Market</masterLabel>
+        <translation>中型市場</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mobile Go Getter</masterLabel>
+        <translation>行動派人士</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
+        <translation><!-- Modern Consumer (Knowledgeable) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Partner Sales Force</masterLabel>
+        <translation>夥伴銷售力量</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Partner </masterLabel>
+        <translation>夥伴 </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project / program managers</masterLabel>
+        <translation>專案/計畫經理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchasing</masterLabel>
+        <translation>採購</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Reseller</masterLabel>
+        <translation>經銷商</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Leaders</masterLabel>
+        <translation>銷售領導者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Security managers</masterLabel>
+        <translation>安全性管理員</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Senior Business Decision Maker</masterLabel>
+        <translation>資深企業決策者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small Business</masterLabel>
+        <translation>小型企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small and Medium Business</masterLabel>
+        <translation>中小企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solutions Architect</masterLabel>
+        <translation>解決方案設計師</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sr. Business Decision Maker</masterLabel>
+        <translation>資深企業決策者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>System Integrators</masterLabel>
+        <translation>系統整合商</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Influencer</masterLabel>
+        <translation>技術影響力權威</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Unmanaged Small Business</masterLabel>
+        <translation>未受管理的小型企業</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

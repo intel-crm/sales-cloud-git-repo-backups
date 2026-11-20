@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Accounts External</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Service Cloud Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Country --></label>
+        <name>BillingCountry__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the legal account name which is provided from external source system Dun and Bradstreet. --></help>
+        <label><!-- Account Legal Name --></label>
+        <name>Core_Account_Legal_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Type --></label>
+        <name>Core_Account_Type_c__c</name>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EBM- Embedded Board Manufacturer</masterLabel>
+            <translation><!-- EBM- Embedded Board Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMS- Electronic Manufacturing Services</masterLabel>
+            <translation><!-- EMS- Electronic Manufacturing Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EPSD/Tap Channel</masterLabel>
+            <translation><!-- EPSD/Tap Channel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End User - Enterprise</masterLabel>
+            <translation><!-- End User - Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End User - Government</masterLabel>
+            <translation><!-- End User - Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End user - Education</masterLabel>
+            <translation><!-- End user - Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPDC- IP Data Center</masterLabel>
+            <translation><!-- IPDC- IP Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV/OSV</masterLabel>
+            <translation><!-- ISV/OSV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM</masterLabel>
+            <translation><!-- ODM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM/LOEM</masterLabel>
+            <translation><!-- OEM/LOEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller</masterLabel>
+            <translation><!-- Reseller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller - SFR</masterLabel>
+            <translation><!-- Reseller - SFR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller LFR</masterLabel>
+            <translation><!-- Reseller LFR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Providers/Telco</masterLabel>
+            <translation><!-- Service Providers/Telco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator (SI/ITO/bVAR)</masterLabel>
+            <translation><!-- Solution Integrator (SI/ITO/bVAR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEM</masterLabel>
+            <translation><!-- TEM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Customer --></label>
+        <name>ICS_WR_Direct_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority Corporate --></label>
+        <name>ICS_WR_Priority_Corporate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner ID --></label>
+        <name>OwnerId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Phone --></label>
+        <name>Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type ID --></label>
+        <name>RecordTypeId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Cloud Id --></label>
+        <name>Sales_Cloud_Id__c</name>
+        <relationshipLabel><!-- Accounts_External_ISvC --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>Website__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

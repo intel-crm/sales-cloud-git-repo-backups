@@ -1,0 +1,8 @@
+.disablelistitem {
+    pointer-events:none;
+    opacity:0.6;
+}
+
+.current-selection {
+    white-space: nowrap !important;
+}

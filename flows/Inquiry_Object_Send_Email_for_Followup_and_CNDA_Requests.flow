@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_Inquiry_Asked_For_Contact_Follow_Up</name>
+        <label>Core_Inquiry_Asked_For_Contact_Follow_Up</label>
+        <locationX>732</locationX>
+        <locationY>955</locationY>
+        <actionName>Core_Inquiry__c.Core_Inquiry_Asked_For_Contact_Follow_Up</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Inquiry__c.Core_Inquiry_Asked_For_Contact_Follow_Up</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Core_Inquiry_Asked_For_Lead_Follow_Up</name>
+        <label>Core_Inquiry_Asked_For_Lead_Follow_Up</label>
+        <locationX>120</locationX>
+        <locationY>963</locationY>
+        <actionName>Core_Inquiry__c.EA_Core_Inquiry_Asked_For_Lead_Follow_Up</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Inquiry__c.EA_Core_Inquiry_Asked_For_Lead_Follow_Up</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Core_Inquiry_CNDA_Request_Contact</name>
+        <label>Core_Inquiry_CNDA_Request_Contact</label>
+        <locationX>555</locationX>
+        <locationY>1089</locationY>
+        <actionName>Core_Inquiry__c.Core_Inquiry_CNDA_Request_Contact</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Inquiry__c.Core_Inquiry_CNDA_Request_Contact</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Core_Inquiry_CNDA_Request_Lead</name>
+        <label>Core_Inquiry_CNDA_Request_Lead</label>
+        <locationX>327</locationX>
+        <locationY>1079</locationY>
+        <actionName>Core_Inquiry__c.Core_Inquiry_CNDA_Request_Lead</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Inquiry__c.Core_Inquiry_CNDA_Request_Lead</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>IntelCorporationNoReply</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>wsm-postmaster@intel.com</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>Check_if_Lead_Contact_email_is_updated</name>
+        <label>Check if Lead/Contact email is updated</label>
+        <locationX>413</locationX>
+        <locationY>414</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Lead_Contact_owner_Email_is_not_there</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Contact_Owner_Email__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_Or_Contact_owner_email</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Lead Contact owner Email is not there</label>
+        </rules>
+        <rules>
+            <name>If_Lead_Contact_owner_Email_is_there</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Contact_Owner_Email__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Lead_or_Contact</targetReference>
+            </connector>
+            <label>If Lead Contact owner Email is there</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Lead_or_Contact</name>
+        <label>Check if Lead or Contact</label>
+        <locationX>399</locationX>
+        <locationY>600</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_for_Lead</targetReference>
+            </connector>
+            <label>If Lead</label>
+        </rules>
+        <rules>
+            <name>If_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Contact_Inquiries__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_for_Contact</targetReference>
+            </connector>
+            <label>If Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Email_for_Contact</name>
+        <label>Send Email for Contact</label>
+        <locationX>471</locationX>
+        <locationY>869</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Email_for_Followup_Contact</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asked for Follow-up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Requested Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Inquiry_Asked_For_Contact_Follow_Up</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Send Email for Followup Contact</label>
+        </rules>
+        <rules>
+            <name>Send_Email_for_CNDA_Request_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CNDA Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Inquiry_CNDA_Request_Contact</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Send Email for CNDA Request Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Send_Email_for_Lead</name>
+        <label>Send Email for Lead</label>
+        <locationX>324</locationX>
+        <locationY>873</locationY>
+        <defaultConnectorLabel>No Criteria was met.</defaultConnectorLabel>
+        <rules>
+            <name>Send_Email_for_Followup</name>
+            <conditionLogic>(1 OR 2 OR 3) AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asked for Follow-up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Requested Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__r.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Inquiry_Asked_For_Lead_Follow_Up</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Send Email for Followup</label>
+        </rules>
+        <rules>
+            <name>Send_Email_for_CNDA_Request</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CNDA Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Inquiries__r.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Inquiry_CNDA_Request_Lead</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Send Email for CNDA Request</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>cf_Core_Lead_Contact_Owner_Email_UpdationFormula</name>
+        <dataType>String</dataType>
+        <expression>IF( $Record.Core_Lead_Inquiries__c &lt;&gt; NULL, IF($Record.Core_Lead_Inquiries__r.Owner:User.Email&lt;&gt; NULL, $Record.Core_Lead_Inquiries__r.Owner:User.Email, null),IF($Record.Core_Contact_Inquiries__c &lt;&gt; NULL, IF($Record.Core_Contact_Inquiries__r.Owner.Email&lt;&gt; NULL, $Record.Core_Contact_Inquiries__r.Owner.Email,null),null))</expression>
+    </formulas>
+    <formulas>
+        <name>logicforfetchingleadorcontactowneremail</name>
+        <dataType>String</dataType>
+        <expression>IF( $Record.Core_Lead_Inquiries__c &lt;&gt; NULL, IF($Record.Core_Lead_Inquiries__r.Owner:User.Email&lt;&gt; NULL, $Record.Core_Lead_Inquiries__r.Owner:User.Email, null),IF($Record.Core_Contact_Inquiries__c &lt;&gt; NULL, IF($Record.Core_Contact_Inquiries__r.Owner.Email&lt;&gt; NULL, $Record.Core_Contact_Inquiries__r.Owner.Email,null),null))</expression>
+    </formulas>
+    <interviewLabel>Inquiry Object Send Email for Followup and CNDA Requests {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Inquiry Object Send Email for Followup and CNDA Requests</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Lead_Or_Contact_owner_email</name>
+        <label>Update Lead Or Contact owner email</label>
+        <locationX>130</locationX>
+        <locationY>443</locationY>
+        <connector>
+            <targetReference>Check_if_Lead_or_Contact</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <value>
+                <elementReference>logicforfetchingleadorcontactowneremail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>328</locationX>
+        <locationY>47</locationY>
+        <connector>
+            <targetReference>Check_if_Lead_Contact_email_is_updated</targetReference>
+        </connector>
+        <filterFormula>IF((  ISNEW() &amp;&amp; 
+   TEXT ( {!$Record.Core_Inquiry_Type_Pkt__c}   ) = &apos;Asked for Follow-up&apos;  ||
+   TEXT ( {!$Record.Core_Inquiry_Type_Pkt__c}   ) = &apos;CNDA Request&apos;  ||
+   TEXT ( {!$Record.Core_Inquiry_Type_Pkt__c}   ) = &apos;Requested Quote&apos;  ||
+   TEXT ( {!$Record.Core_Inquiry_Type_Pkt__c}   ) = &apos;Sales Approved&apos; 
+)
+||
+ ( ISCHANGED(   {!$Record.Core_Inquiry_Type_Pkt__c} )  
+&amp;&amp;
+ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Asked for Follow-up&apos;) ||
+ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;CNDA Request&apos; ) ||
+ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Requested Quote&apos; ) ||
+ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Sales Approved&apos;  ) 
+ ), TRUE,FALSE)</filterFormula>
+        <object>Core_Inquiry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>v_LeadContactOwnerEmail</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>v_RequestedQuote</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Requested Quote</stringValue>
+        </value>
+    </variables>
+</Flow>

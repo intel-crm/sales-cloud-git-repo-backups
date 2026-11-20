@@ -1,0 +1,42 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+            <div class="slds-progress-wrapper">
+                <ul class="progressbar">
+                        <li class="checked"><lightning:icon iconName="utility:check" size="x-small" /><p>{!$Label.c.PMP_LeadGen_Submitted}</p></li>
+                       <!-- <li class="checked"><lightning:icon iconName="utility:check" size="x-small" /><p>{!$Label.c.PMP_LeadGen_DetailsSent}</p></li>-->
+                        <li class="active"><p>{!$Label.c.PMP_LeadGen_PartnerReview}</p></li>
+                        <li><p>{!$Label.c.PMP_LeadGen_PartnerRespond}</p></li>
+                </ul>
+            </div>
+    </aura:if>
+    <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'medium' || v.appState.Settings.currentSldsBreakPoint == 'small'}">
+            <div class="slds-progress slds-p-horizontal_medium slds-progress_vertical">
+                <ol class="slds-progress__list">
+                    <li class="slds-progress__item checked">
+                                <div class="slds-progress__marker">
+                                        <lightning:icon iconName="utility:check" size="x-small" />
+                                </div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_LeadGen_Submitted}</div>
+                    </li>
+                   <!-- <li class="slds-progress__item checked">
+                            <div class="slds-progress__marker">
+                                    <lightning:icon iconName="utility:check" size="x-small" />
+                        </div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_LeadGen_DetailsSent}</div>
+                    </li>-->
+                    <li class="slds-progress__item slds-is-active">
+                        <div class="slds-progress__marker">
+                        </div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_LeadGen_PartnerReview}</div>
+                    </li>
+                    <li class="slds-progress__item">
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_LeadGen_PartnerRespond}</div>
+                    </li>
+                    
+                    </ol>
+            
+            </div>
+    </aura:if>
+
+</aura:component>

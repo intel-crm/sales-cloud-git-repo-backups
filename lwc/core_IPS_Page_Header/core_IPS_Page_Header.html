@@ -1,0 +1,66 @@
+<template>
+    <div class="slds-page-header slds-page-header_record-home">
+        <div class="slds-page-header__col-actions slds-float_right">
+            <div align="right" class="slds-page-header__controls">
+                <div class="slds-page-header__control">
+                <c-core_-i-p-s_-record-page-quick-action item={casenumber1}>
+                    </c-core_-i-p-s_-record-page-quick-action>
+                </div>
+            </div>
+        </div></br></br>
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                       <lightning-icon icon-name="standard:case" alternative-text="New Case" title="Case" size="Medium"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span>Case</span>
+                                    <span class="slds-page-header__title slds-truncate"
+                                        title={casenumber}>{casenumber} - {subject}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="slds-grid slds-page-header__detail-row">            
+            <template for:each={fieldSets} for:item="fielset">                   
+                <div class="slds-page-header__col-title slds-truncate" key={fielset.apiName}>  
+                    <div  title={fielset.label}>
+                        <p class="slds-text-title slds-truncate" title={fielset.label}>{fielset.label}</p>
+                        <p class="fieldComponent slds-text-body--regular slds-show_inline-block slds-truncate">
+                        <slot>
+                            <lightning-formatted-text value={fielset.value} title={fielset.value}></lightning-formatted-text>
+                        </slot>
+                        </p>
+                    </div>
+                </div>
+            </template>
+        </div>      
+                    
+        <!-- <div class="slds-page-header__detail-block" >
+            <div  title="Field 2 (3)">
+                <p class="slds-text-title slds-truncate" title="Status">Status</p>
+                <p class="slds-text-body--regular  slds-truncate">
+                    <lightning-formatted-text value="Open"></lightning-formatted-text>
+                    </p>
+            </div>
+            
+        </div>
+        <div class="slds-page-header__detail-block" >
+            <div  title="Field 2 (3)">
+                <p class="slds-text-title slds-truncate" title="Case Number">Case Number</p>
+                <p class="fieldComponent slds-text-body--regular slds-show_inline-block slds-truncate">
+                    <lightning-formatted-text value="00219400"></lightning-formatted-text>
+                    </p>
+            </div>
+            
+        </div>-->
+         
+    </div>
+</template>

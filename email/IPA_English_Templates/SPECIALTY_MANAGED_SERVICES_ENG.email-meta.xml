@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_MANAGED_SERVICES_ENG</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance Managed Services Specialty</subject>
+    <textOnly>Congratulations on Qualifying!
+
+
+{!Contact.FirstName},
+
+Welcome to Intel® Partner Alliance Managed Services Specialty! As a qualified Managed Services Specialist, you are eligible for Specialty Benefits* that are designed to help deliver and implement your solutions, including:
+
+Managed Services Specialist designation
+Intel promotion of your company as a Managed Services Specialist
+Additional Intel incentive points
+Priority invitations to industry events and training sessions
+Access to Intel Platform Testing Services
+
+To get started, please reply to ITP-MS@intel.com with the following information:
+
+
+Primary contact for Managed Services Specialist communications
+Name:
+Email:
+
+
+For additional sales and promotion materials
+Physical Mailing Address:
+Phone:
+
+Access benefits
+
+
+*Benefits may vary by geography.
+
+Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+
+Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

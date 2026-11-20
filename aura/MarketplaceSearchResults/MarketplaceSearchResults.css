@@ -1,0 +1,90 @@
+.THIS {
+ position: relative;
+}
+.THIS .loadingContainer {
+  position: absolute;
+  height: 100%;
+  min-height: 300px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 2;
+}
+.THIS .spinnerContainer {
+  height: 300px;
+  position: relative;
+}
+
+
+.THIS, .THIS .slds-tabs_default {
+  background-color: transparent;
+}
+
+.THIS .iconBlue use {
+  fill: t(digitalBlue);
+}
+
+.THIS .pageDisplayInput {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+}
+.THIS .pageDisplayLeftStatus {
+  float: left;
+  padding-top: 8px;
+}
+.THIS .pageDisplayRightStatus {
+  float: right;
+}
+
+.THIS .icon-xx-small .slds-icon {
+  height: .6em;
+  width: .6em;
+}
+.THIS .tabsHeader {
+  border-bottom: 1px solid t(lightGray);
+}
+
+
+@media (max-width: 1279px) {
+  .THIS.padding-xs-l-horizontal-medium {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+.THIS .tab {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em 0;
+  position: relative;
+  width: 100%;
+}
+
+.THIS .tab.activeTab {
+  color: t(darkGray);
+  font-weight: 400;
+}
+
+.THIS .tab::after {
+  background-color: t(digitalBlue);
+  content: '';
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: height .2s linear;
+  width: 100%;
+}
+
+.THIS .tab.activeTab::after {
+  height: 0.16rem;
+  transition: height 0s linear;
+}
+
+.THIS .tab:hover::after {
+  height: 0.1rem;
+}
+
+.THIS .tab:active {
+
+}

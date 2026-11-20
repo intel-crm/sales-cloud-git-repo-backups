@@ -1,0 +1,111 @@
+<template>
+    <lightning-card title={lightningCardTitle}>
+        <div class="slds-align_absolute-center">
+            <div class="slds-form slds-grid slds-gutters">
+                <div class="slds-col slds-size_9-of-12">
+                    <template if:false={isNotAdminUser}>
+                        <template if:true={isLookupQueryPresent}>
+                            <c-core_-i-p-s_-custom-lookup
+                                onselectedrec={handleAccountChange} 
+                                iconname={lookupIconName}
+                                searchfield-name={lookupSearchFieldName}
+                                query-string={lookupQueryString}
+                                query-execution-required=true
+                                count-query-string={lookupCountQueryString}
+                                extra-field1-label="Account Owner"
+                                extra-field1="Owner.Name"
+                                extra-field3-label="Account Id"
+                                extra-field3="Id"
+                                >
+                            </c-core_-i-p-s_-custom-lookup>
+                        </template>
+                    </template>
+                    <template if:true={isNotAdminUser}>
+                        <c-core_-i-p-s_-custom-lookup 
+                            onselectedrec={handleAccountChange} 
+                            iconname={lookupIconName}
+                            searchfield-name={lookupSearchFieldName}
+                            records-to-search={FAEAccounts}
+                            query-execution-required=false
+                            extra-field1-label="Account Owner"
+                            extra-field1="Owner.Name"
+                            extra-field3-label="Account Id"
+                            extra-field3="Id">
+                        </c-core_-i-p-s_-custom-lookup>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_5-of-12">
+                    <lightning-button disabled={isAddAccountBtnEnabled} variant="brand" label="Add Account" class="slds-m-left_medium" title="Add Account" onclick={openModalToGetComments}></lightning-button>
+                </div>
+            </div>
+        </div>
+        <template if:true={isDataAvailable}>
+            <c-core_-i-p-s_-datatable-utility
+                hide-checkbox-column={hideCheckboxColumn} 
+                show-row-number-column={showRowNumberColumn} 
+                enable-infinite-loading={enableInfiniteLoading}
+                num-and-checkbox-both-cols={numAndCheckboxBothCols}
+                normal-data-table={normalDataTable}
+                records={dataToShow}
+                columns={columns}
+                number-of-rows-to-show={numberOfRowsToShow}
+                height-in-rem={heightInRem}
+                onrowactions={handleRowActions}>
+            </c-core_-i-p-s_-datatable-utility>
+        </template>
+    </lightning-card>
+    
+    <template if:true={bShowModalToGetComment}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header mainHeading">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeGetCommentsModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading--large slds-align--absolute-center header">Account Request Details</h2>
+                </header>
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_xxx-small" id="modal-content-id-1">
+                    <div class="slds-m-vertical_medium" style="padding-left:2em; padding-right:2em; height:12rem;">
+                        <p><b>Account Name:</b>&nbsp;<lightning-formatted-text value={selectedAccountName} ></lightning-formatted-text></p>
+                        <br />
+                        <p><lightning-textarea label="Submitter Comments:" required name="submittercomment" value={submitterComment} onchange={handlesubmittercomment}></lightning-textarea></p>
+                    </div>
+                </div>
+                <!-- modal footer start-->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeGetCommentsModal}>Cancel</button>
+                    <button class="slds-button slds-button_brand" disabled={isNextBtnDisable} onclick={nextHandle}>Next</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+    <template if:true={bShowModal}>
+        <c-core_-i-p-s_-model-to-view-datatable-utility
+            modal-title={modaltitle}
+            modal-hide-checkbox-column={modalHideCheckboxColumn}
+            modal-enable-infinite-loading={modalEnableInfiniteLoading}
+            modal-normal-data-table={modalNormalDataTable}
+            modal-num-and-checkbox-both-cols={modalNumAndCheckboxBothCols}
+            modal-table-height-in-rem={heightInRem}
+            modal-show-row-number-column={modalShowRowNumberColumn}
+            modal-table-pre-selected-rows={preSelectedLineItems}
+            message-text1={noteIfLineItemNotPresent}
+            records={draftLineItemsToShow}
+            columns={lineItemPreviewCols}
+            is-prev-btn-required=true
+            onrecordselection={getSelectedRecords}
+            onsubmitclick={saveRecords}
+            onprevclick={prevHandler}
+            onclosemodal={closeModal}>
+        </c-core_-i-p-s_-model-to-view-datatable-utility>
+    </template>
+    <template if:true={spinnerOn}>
+            <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+    </template>
+</template>

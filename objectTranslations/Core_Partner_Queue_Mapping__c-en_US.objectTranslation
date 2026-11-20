@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner-Queue Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner-Queue Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disposition Reminder Email Opt-In --></label>
+        <name>Core_Disposition_Reminder_Email_Opt_In__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disposition as PLCL --></label>
+        <name>Core_Disposition_as_PLCL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>Core_Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Name --></label>
+        <name>Core_Queue_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront Id --></label>
+        <name>Core_Storefront_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront Name --></label>
+        <name>Core_Storefront_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Identifier ID --></label>
+        <name>PMP_MDA_BizOrg_Id__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Dispositioned Partner Lead for PLCL --></label>
+        <name>Core_Dispositioned_Partner_Lead_for_PLCL</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Master Partner Queue Mapping --></label>
+        <name>Core_PartnerQueueMapping</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataset>Solution_CRM_Test4</dataset>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>sales_grouping</field>
+        <isDerived>false</isDerived>
+        <label>Sales Grouping</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <members>
+            <label>Americas</label>
+            <member>1-Americas</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <label>APJ</label>
+            <member>2-APJ</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <label>EMEA</label>
+            <member>3-EMEA</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <label>GSS</label>
+            <member>5-GSS</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <label>PRC</label>
+            <member>4-PRC</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <label>Other</label>
+            <member>6-Other</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <origin>sales_grouping</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <description>OpportunityAccountName</description>
+        <field>Opportunity.Account.Name</field>
+        <fullyQualifiedName>Opportunity.Account.Name</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>Account Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <origin>Opportunity.Account.Name</origin>
+        <recordDisplayFields>
+            <recordDisplayField>Opportunity.Account.Name</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opp.AccountId</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <description>OpportunityName</description>
+        <field>Opportunity.Name</field>
+        <fullyQualifiedName>Opportunity.Name</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>Opportunity Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <origin>Opportunity.Name</origin>
+        <recordDisplayFields>
+            <recordDisplayField>Opportunity.Name</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opp.Id</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>StageSorted</field>
+        <isDerived>false</isDerived>
+        <members>
+            <label>Qualify</label>
+            <member>1 - Qualify</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <label>Define</label>
+            <member>2 - Define</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <label>Develop</label>
+            <member>3 - Develop</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <label>Design</label>
+            <member>4 - Design</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <label>Design Win</label>
+            <member>5 - Design Win</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <label>Production Win</label>
+            <member>6 - Production Win</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <label>Production Lost</label>
+            <member>7 - Production Lost</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <label>Production Cancelled</label>
+            <member>8 - Production Cancelled</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <label>Lost</label>
+            <member>9 - Lost</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <members>
+            <label>Cancelled</label>
+            <member>91 - Cancelled</member>
+            <sortIndex>9</sortIndex>
+        </members>
+        <members>
+            <label>No Match</label>
+            <member>99 - No Match</member>
+            <sortIndex>10</sortIndex>
+        </members>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+</WaveXmd>

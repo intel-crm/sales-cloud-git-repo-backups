@@ -1,0 +1,139 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="L1 Featured Products Card Carousel/L0 Featured Offering">
+    <!-- uses redux for screen size responsiveness -->
+    <!-- private/internal -->
+    <aura:attribute name="loading" type="boolean" default="false" description="Internal Component Setting" />
+    <aura:attribute name="numberOfPages" type="integer" description="Internal Component Setting"/>
+    <aura:attribute name="pages" type="integer[]" description="Internal Component Setting"/>
+    <aura:attribute name="perPage" type="integer" description="Internal Component Setting"/>
+    <aura:attribute name="currentPage" type="integer" default="1" description="Internal Component Setting"/>
+    <aura:attribute name="renderIndex" type="integer" default="4" description="Internal Component Setting"/>
+    <aura:attribute name="lazyLoadingTimer" type="integer" default="4" description="Internal Component Setting"/>
+    <aura:attribute name="featuredProducts" type="object[]" default="[]" description="Featured Item Listing - Array of Product and Partner Cards"/>
+    <aura:attribute name="touchSettings" type="object" description="Internal Component Setting"/>
+    <aura:attribute name="touchData" type="object" description="Internal Component Setting"/>
+    <aura:attribute name="listing" type="Object[]" default="[]" />
+    <aura:attribute name="categoryId" type="String"/>   
+    <aura:attribute name="ctaLink" type="String" default="#"  description="CTA URL"/>
+    <aura:attribute name="ctaTitle" type="String" default=""  description="CTA Title"/>
+    <aura:attribute name="eventTitle" type="String" default="" description="CTA Title for Events tab(View more Event offering records)" />
+    <aura:attribute name="ctaOpenInNewTab" type="boolean" default="false" description="CTA will open in a new Tab"/>
+    <aura:attribute name="ctaOnClick" type="Object" default="" description="Optional CTA onclick callback"/>
+    <aura:attribute name="communityLink" type="String" default="" description="Optional community link out on CTA Click"/>
+    <aura:attribute name="searchParams" type="Object" default="" />
+    <aura:attribute name="displayCardType" type="boolean" default="false" description="Display card type"/>
+    <aura:attribute name="displayCardAttributes" type="boolean" default="false"  description="Display card attributes"/>
+    <aura:attribute name="displayByPartner" type="boolean" default="false"  description="Display by partner on Partner cards"/>
+    <aura:attribute name="displayContactPartner" type="boolean" default="false"  description="Display prduct card Contact Partner"/>
+    
+    <!-- Optional Card Attribute Count Limit -->
+    <aura:attribute name="enableAttributeCountLimit" type="boolean" default="true" description="Enable Product/Partner Card attribute count limit"/>
+    <aura:attribute name="attributeCountLimit" type="Integer" default="2" description="Product/Partner Card attribute count limit"/>
+    
+    <aura:attribute name="onImageLoaded" type="Object" description="Internal Component Setting" />
+    <aura:attribute name="featured" type="boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.featuredProducts}" action="{!c.handleDataChange}" />
+    <aura:attribute name="index" type="integer" default="0" description="Internal" />
+    <aura:attribute name="alreadyRendered" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="render" type="boolean" default="true"
+                    description="Default it is true when false nothing will be rendered here" />
+    <aura:handler name="change" value="{!v.render}" action="{!c.handleRenderChange}" />
+    <!-- <aura:method name="resetHeight" action="{!c.handleResetHeight}"></aura:method> -->
+    
+    <!-- <aura:handler name="render" value="{!this}" action="{!c.handleResetHeight}" /> -->
+    
+    <div>
+        <lightning:layout horizontalAlign="spread" multipleRows="true" class="slds-m-top_large">
+            <aura:if isTrue="{! or (v.loading, !v.alreadyRendered)}">
+                <lightning:layoutItem class="spinnerContainer">
+                    <lightning:spinner alternativeText="{!$Label.c.PMP_L1_Featured_Products_Loading}" />
+                </lightning:layoutItem>
+            </aura:if>
+            <!--  <aura:set attribute="else">-->
+            <lightning:layoutItem size="12" class="riseAbove">
+                <div id="carouselPosition" aura:id="carousel-position" ontouchstart="{!c.handleTouchStart}"
+                     ontouchend="{!c.handleTouchEnd}">
+                    <lightning:layout aura:id="touchContainer">
+                        <aura:iteration items="{!v.featuredProducts}" var="product"  indexVar="idx">
+                            <lightning:layoutItem size="10" mediumDeviceSize="5" largeDeviceSize="3"
+                                                  class="carouselCardContainer">
+                                <div aura:id="card" class="carouselCard slds-m-horizontal_medium">
+                                    <aura:if isTrue="{! lessthan(idx,v.renderIndex)}">
+                                        <aura:if isTrue="{! product.type == 'partner'}">
+                                            <c:MarketplacePartnerCard aura:id="card" id="{! product.id}" displayType="card"
+                                                                      imageUrl="{! product.imageUrl}" title="{! product.name}"
+                                                                      description="{! product.description}"
+                                                                      displayAttributes="{!v.displayCardAttributes}"
+                                                                      displayCardDescription="false" displayContactPartner="{! v.displayContactPartner }"
+                                                                      showType="{! v.displayCardType}" attributes="{! product.attributes}"
+                                                                      dataObj="{!product}" onImageLoaded="{! v.onImageLoaded}"
+                                                                      enableAttributeCountLimit="{! v.enableAttributeCountLimit}"
+                                                                      attributeCountLimit="{! v.attributeCountLimit}" />
+                                            <aura:set attribute="else">
+                                                <c:MarketplaceProductCard partner="{! product.partner }"
+                                                                          product="{! product }" displayType="card"
+                                                                          imageUrl="{! product.imageUrl}" title="{! product.title}"
+                                                                          description="{! product.description}"
+                                                                          attributes="{! product.attributes}"
+                                                                          displayAttributes="{! v.displayCardAttributes }"
+                                                                          displayByPartner="{! v.displayByPartner }"
+                                                                          displayCardDescription="false" showType="{! v.displayCardType}"
+                                                                          featured = "{!v.featured}"
+                                                                          showAddToCompare="false" onImageLoaded="{! v.onImageLoaded}"
+                                                                          enableAttributeCountLimit="{! v.enableAttributeCountLimit}"
+                                                                          attributeCountLimit="{! v.attributeCountLimit}" />
+                                            </aura:set>
+                                        </aura:if>
+                                        <aura:set attribute="else">
+                                            <lightning:layoutItem class="cardSpinnerContainer">
+                                                <lightning:spinner alternativeText="{!$Label.c.PMP_L1_Featured_Products_Loading}"
+                                                                   size="small" />
+                                            </lightning:layoutItem>
+                                            
+                                        </aura:set>
+                                    </aura:if>
+                                </div>
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </lightning:layout>
+                </div>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem size="12" class="slds-text-align_center slds-p-vertical_medium paging">
+                <ul class="slds-carousel__indicators" role="tablist">
+                    <aura:iteration items="{!v.pages}" var="page">
+                        <li class="slds-carousel__indicator" role="presentation">
+                            <a id="{!'indicator-id-0' + page}" aura:id="carouselBubble"
+                               onclick="{!c.handleChangePage}" data-page="{!page}"
+                               class="{!'slds-carousel__indicator-action ' + (v.currentPage == page ? 'slds-is-active' :'')}"
+                               href="javascript:void(0);" role="tab" data-tabindex="{!page}"
+                               aria-selected="{! v.currentPage == page }"
+                               aria-controls="{!'content-id-0' + page}"
+                               title="{!'Feature Products - page ' + page}">
+                                <span class="slds-assistive-text">{!$Label.c.PMP_L1_Featured_Products}
+                                    {!page}</span>
+                            </a>
+                        </li>
+                    </aura:iteration>
+                </ul>
+                <aura:if isTrue="{! !empty(v.ctaTitle)}">
+                    <!--	<a href="{! v.ctaLink }" onclick="c.handleClick"
+        target="{! v.ctaOpenInNewTab ? '_blank': ''}" class="cta padding-mobile-top-large">{! format($Label.c.PMP_View_More_Featured_Category,v.ctaTitle)}
+        <lightning:icon iconName="utility:chevronright"
+         class="slds-m-left_xxx-small cursor link-caret" size="x-small" /></a>-->
+                    <c:IntelLink class="cta padding-mobile-top-large viewMoreStyle"  recordId="{!v.searchParams.cat}" objectApiName="PMP_Category__c">{! format($Label.c.PMP_View_More_Featured_Category,v.ctaTitle)}<lightning:icon iconName="utility:chevronright"
+                                                                                                                                                                                                                       class="slds-m-left_xxx-small cursor link-caret" size="x-small" /> </c:IntelLink>  
+                    
+                </aura:if>
+                <aura:if isTrue="{! !empty(v.eventTitle)}">
+                	<c:IntelLink class="cta padding-mobile-top-large viewMoreStyle" page='search' searchParams='{!v.searchParams}'>{! format($Label.c.PMP_View_More_Featured_Category,v.eventTitle)}<lightning:icon iconName="utility:chevronright"
+                                                                                                                                                                                                                               class="slds-m-left_xxx-small cursor link-caret" size="x-small" /></c:IntelLink>
+                </aura:if>
+            </lightning:layoutItem>
+            
+            <!--   </aura:set>-->
+            <!-- </aura:if>-->
+        </lightning:layout>
+    </div>
+    
+</aura:component>

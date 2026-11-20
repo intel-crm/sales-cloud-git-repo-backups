@@ -1,0 +1,88 @@
+.THIS {
+  position: relative;
+}
+.THIS button {
+  background-color: t(buttonPrimary); 
+  border: 1px solid transparent;
+  color: t(white);
+  font-size: 1em;
+  border-radius: 2px;
+  width: 100%;
+  padding: .3em 1em;
+}
+.THIS:hover button {
+  background-color: t(buttonPrimaryHover); 
+}
+.THIS button .slds-icon_container {
+  pointer-events: none;
+}
+.THIS a {
+  color: t(buttonPrimary);
+  display: block;
+  padding: 6px 0;
+}
+
+.THIS .icon-white use {
+  fill: t(white);
+}
+
+.THIS .partner-overlay {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: t(white);
+  border: 1px solid t(lightestGray);
+  transition: 0.3s ease-out;
+  padding: .5em 1em .5em 1em;
+  z-index: 1;
+}
+
+.THIS .shiftUp {
+  transform: translateY(-1px);
+  margin-left: .5em;
+}
+
+/* Mobile Theme (New in 1.1 Marketplace) */
+.THIS.theme-mobile {
+  height: 3.75rem;
+}
+.THIS.theme-mobile button {
+  height: 100%;
+}
+
+/* Large Theme mainly on offering detail */
+
+.THIS.theme-large button {
+  background-color: t(buttonPrimary);
+  font-size: 1em;
+  padding: 1.3em .5em;
+}
+.THIS.theme-large:hover button {
+  background-color: t(buttonPrimaryHover);
+}
+
+.THIS.theme-large .partner-overlay {
+  top: 64px;
+}
+/*Desktop*/
+.THIS.theme-large button .shiftUp {
+  margin-left: 1em;
+}
+
+@media (min-width: 768px) {
+  .THIS.theme-large button {
+    padding: 1em .5em;
+  }
+  .THIS button .shiftUp,
+  .THIS.theme-large button .shiftUp {
+    margin-left: .5em;
+  }
+}
+@media (min-width: 1280px) {
+  .THIS.theme-large button {
+    padding: 1.3em .5em;
+  }
+  .THIS.theme-large button .shiftUp {
+    margin-left: 1em;
+  }
+}

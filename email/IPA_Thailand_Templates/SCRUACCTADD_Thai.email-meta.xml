@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUACCTADD_Thai</name>
+    <style>none</style>
+    <subject>การดำเนินการที่จำเป็นเพื่อลงทะเบียน Intel® Partner Alliance ให้เสร็จสมบูรณ์</subject>
+    <textOnly>การดำเนินการที่จำเป็นเพื่อลงทะเบียน Intel® Partner Alliance ให้เสร็จสมบูรณ์
+
+
+
+
+{!Contact.FirstName},
+
+ยินดีด้วย ผู้ดูแลระบบบริษัทของคุณหรือตัวแทนของ Intel ได้เพิ่มคุณในบัญชี Intel® Partner Alliance แล้ว อีกเพียงไม่กี่ขั้นตอน การลงทะเบียนก็จะเสร็จสมบูรณ์
+
+ระบบได้สร้างข้อมูลโปรไฟล์ด้านล่างนี้ให้กับคุณ:
+
+ที่อยู่อีเมล: {!Contact.Email}
+ชื่อบริษัท: {{ACCOUNTNAME}}
+ID ธุรกิจใน Intel® Partner Alliance: {{ACCOUNTNUMBER}}
+
+
+โปรดคลิกลิงก์ด้านล่างเพื่อดำเนินการลงทะเบียนให้เสร็จสมบูรณ์
+
+
+{{ButtonText}}
+
+
+ไม่สามารถเข้าถึงลิงก์ด้านบนได้ใช่ไหม
+{{EVLINK}}
+หากคุณมีคำถามใดๆ โปรดติดต่อเราที่ {{SUPPORTLINK}}
+เราหวังเป็นอย่างยิ่งว่าคุณจะร่วมเป็นส่วนหนึ่งในโปรแกรมนี้!
+ด้วยความเคารพ
+ทีม Intel® Partner Alliance ของคุณ
+
+
+ข้อความนี้ส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA www.intel.com
+ความเป็นส่วนตัว | คุกกี้
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

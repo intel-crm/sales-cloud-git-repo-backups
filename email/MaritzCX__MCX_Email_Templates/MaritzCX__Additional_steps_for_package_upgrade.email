@@ -1,0 +1,52 @@
+<style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        table{
+            width:100%;
+        }
+        
+        table,th, td {
+            border: 1px solid black;
+            padding:5px;
+        }
+        
+        th,td{
+            text-align: left;
+        } 
+    </style>
+    <p>The MaritzCX platform failed to register the MaritzCX for Salesforce package upgrade. Please follow these instructions to complete the upgrade process:</p>
+    <ol>
+        <li>Log into your Admin account at MaritzCX.</li>
+        <li>Go to <b>ADMIN | Company Setup | Salesforce Integration</b>.</li>
+        <li>Under <b>Salesforce Settings</b>, click on the <b>Refresh Package Version</b> button.</li>
+    </ol> 
+    <p>The new features will now be available.</p>   
+    
+        <table>
+            <tr>
+                <th colspan="2">Additional Details</th>
+            </tr>
+            <tr>
+                <td>Organization Id</t\d>
+                <td>{!Organization.Id}</td>
+            </tr>
+            <tr>
+                <td>Organization Name</td>
+                <td>{!Organization.Name}</td>
+            </tr>
+            <tr>
+                <td>Organization URL</td>
+                <td>{!Organization.instance}</td>
+            </tr>
+            <tr>
+                <td>Installer Email</td>
+                <td>{!User.Email}</td>
+            </tr>
+            <tr>
+                <td>Error Messages</td>
+                <td>{!Apex.errorMessages}</td>
+            </tr>
+        </table>
+</messaging:htmlEmailBody>

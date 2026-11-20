@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "a1b2ab0b-8d17-4b49-9975-f273ed799883",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "8c0ae6eb-9748-4180-9cda-161085d78797",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Partner_Fund_Claim_Detail_core_MDF_CustomLayoutConfig_Component",
+  "id" : "76c95d37-4608-4286-8000-e919a3a4b9df",
+  "type" : "experienceVariation"
+}

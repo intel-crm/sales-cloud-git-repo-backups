@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_69193171</developerName>
+        <masterLabel>source</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Lead.Core_Lead_Conversion_Point__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_3rd Party List_01112016</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_3rd Party List_04112016</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_3rd Party List_07112016</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_3rd Party List_08112016</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_3rd Party List_09112016</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_3rd Party List_31102016</sourceValue>
+            </sourceValues>
+            <value>3rd party list</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_Storage_Email - External_Storage Sales Play Score Ups</sourceValue>
+            </sourceValues>
+            <value>Storage Email Sales Paly</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_040816</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_050816</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_070916</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_080816</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_090816</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_150816</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_200716</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_210716</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA_ITDecisionMaker_Cloud_Email - External_280716</sourceValue>
+            </sourceValues>
+            <value>ITDecisionMaker Cloud</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_69193171</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Lead.Core_Lead_State__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>COMPANY_ACCT</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Last_Activity_Date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>LEAD_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>emea osc,sawczuk,lukina,raczek,tele prospects - emea,poterek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONVERTED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_State__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_69193171</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>lead gen statistics by campaign ww45</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

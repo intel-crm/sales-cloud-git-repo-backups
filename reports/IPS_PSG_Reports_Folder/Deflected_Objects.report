@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Deflected_Object__c.Core_IPS_Case_ID__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Deflected_Object__c.Core_IPS_Contact_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Deflected_Object__c.Core_IPS_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Deflected_Object__c.Core_IPS_Search_JSON__c</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <description>Deflected Objects</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_Deflected_Object__c.Core_IPS_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deflected</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Deflected Objects</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_IPS_Deflected_Object__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CUST_LAST_UPDATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

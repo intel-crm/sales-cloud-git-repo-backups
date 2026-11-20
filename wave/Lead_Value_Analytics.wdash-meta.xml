@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <application>Value_Analytics</application>
+    <dateVersion>1</dateVersion>
+    <description>Take a business, KPI-led view of how your Service users interact with your customer data.  Understand what components on the page are used by high-productivity users, and what unused components may be beneficial to users who are still learning.</description>
+    <masterLabel>Lead Value Analytics</masterLabel>
+    <templateAssetSourceName>Lead_Value_Analytics_tp</templateAssetSourceName>
+</WaveDashboard>

@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Facts</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Facts</value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Content in System --></label>
+        <name>Core_AI_Content_in_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ambient Temp Req --></label>
+        <name>Core_Ambient_Temp_Req__c</name>
+    </fields>
+    <fields>
+        <label><!-- Athena Candidate? --></label>
+        <name>Core_Athena_Candidate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Battery Life Target --></label>
+        <name>Core_Battery_Life_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Biz MFA --></label>
+        <name>Core_Biz_MFA__c</name>
+    </fields>
+    <fields>
+        <label><!-- BlueTooth --></label>
+        <name>Core_BlueTooth__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPU --></label>
+        <name>Core_CPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Camera (3D) --></label>
+        <name>Core_Camera_3D__c</name>
+    </fields>
+    <fields>
+        <label><!-- Camera --></label>
+        <name>Core_Camera__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cellular Reqs --></label>
+        <name>Core_Cellular_Reqs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chipset --></label>
+        <name>Core_Chipset__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cloud Service Provider --></label>
+        <name>Core_Cloud_Service_Provider__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumer Factor Login --></label>
+        <name>Core_Consumer_Factor_Login__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumer Sales Category --></label>
+        <name>Core_Consumer_Sales_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumer Sales System --></label>
+        <name>Core_Consumer_Sales_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contains 2:1 --></label>
+        <name>Core_Contains_2_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Count --></label>
+        <name>Core_Core_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Crystal Ridge --></label>
+        <name>Core_Crystal_Ridge__c</name>
+    </fields>
+    <fields>
+        <label><!-- DIMM Per CPU --></label>
+        <name>Core_DIMM_Per_CPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- DMR --></label>
+        <name>Core_DMR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Entry Method --></label>
+        <name>Core_Design_Entry_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design House --></label>
+        <name>Core_Design_House__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design IP --></label>
+        <name>Core_Design_IP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Start Date --></label>
+        <name>Core_Design_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Support Req? --></label>
+        <name>Core_Direct_Support_Req__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Resolution --></label>
+        <name>Core_Display_Resolution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor --></label>
+        <name>Core_Distributor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dynamic Tuning Technology --></label>
+        <name>Core_Dynamic_Tuning_Technology__c</name>
+    </fields>
+    <fields>
+        <label><!-- EMS --></label>
+        <name>Core_EMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- ESF Firm --></label>
+        <name>Core_ESF_Firm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Early Access Status --></label>
+        <name>Core_Early_Access_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Embedded Board Manufacturer --></label>
+        <name>Core_Embedded_Board_Manufacturer__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer --></label>
+        <name>Core_End_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entry SPP (US$) --></label>
+        <name>Core_Entry_SPP_US__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPGA Virtualization Framework --></label>
+        <name>Core_FPGA_Virtualization_Framework__c</name>
+    </fields>
+    <fields>
+        <label><!-- Far Field Audio --></label>
+        <name>Core_Far_Field_Audio__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firmware --></label>
+        <name>Core_Firmware__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Board Build Date --></label>
+        <name>Core_First_Board_Build_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form Factor --></label>
+        <name>Core_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <label><!-- GNSS (Global Nav) --></label>
+        <name>Core_GNSS_Global_Nav__c</name>
+    </fields>
+    <fields>
+        <label><!-- Graphics --></label>
+        <name>Core_Graphics__c</name>
+    </fields>
+    <fields>
+        <label><!-- ID Chassis Refresh --></label>
+        <name>Core_ID_Chassis_Refresh__c</name>
+    </fields>
+    <fields>
+        <label><!-- ISV/OSV --></label>
+        <name>Core_ISV_OSV__c</name>
+    </fields>
+    <fields>
+        <label><!-- ITO --></label>
+        <name>Core_ITO__c</name>
+    </fields>
+    <fields>
+        <label><!-- If PCI Express ETH or Interlaken --></label>
+        <name>Core_If_PCI_Express_ETH_or_Interlaken__c</name>
+    </fields>
+    <fields>
+        <label><!-- If PCI Express --></label>
+        <name>Core_If_PCI_Express__c</name>
+    </fields>
+    <fields>
+        <label><!-- Innovation Engine --></label>
+        <name>Core_Innovation_Engine__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Authenicate --></label>
+        <name>Core_Intel_Authenicate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel QAT BW Gbps --></label>
+        <name>Core_Intel_QAT_BW_Gbps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intended Usage --></label>
+        <name>Core_Intended_Usage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interface Protocol IP --></label>
+        <name>Core_Interface_Protocol_IP__c</name>
+    </fields>
+    <fields>
+        <label><!-- IoT --></label>
+        <name>Core_IoT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is DPDK Used? --></label>
+        <name>Core_Is_DPDK_Used__c</name>
+    </fields>
+    <fields>
+        <label><!-- Knights Landing --></label>
+        <name>Core_Knights_Landing__c</name>
+    </fields>
+    <fields>
+        <label><!-- LAN --></label>
+        <name>Core_LAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- LOEM --></label>
+        <name>Core_LOEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- LTE Type --></label>
+        <name>Core_LTE_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Low Power Connectivity --></label>
+        <name>Core_Low_Power_Connectivity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Memory Config(Dual-Channel 128b) --></label>
+        <name>Core_Memory_Config_Dual_Channel_128b__c</name>
+    </fields>
+    <fields>
+        <label><!-- Memory DSP and Embedded IP --></label>
+        <name>Core_Memory_DSP_and_Embedded_IP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Modern Standby --></label>
+        <name>Core_Modern_Standby__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multi boarded --></label>
+        <name>Core_Multi_boarded__c</name>
+    </fields>
+    <fields>
+        <label><!-- New ID? --></label>
+        <name>Core_New_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node Controller --></label>
+        <name>Core_Node_Controller__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node Manager --></label>
+        <name>Core_Node_Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number U2 Slots (NVMe) --></label>
+        <name>Core_Number_U2_Slots_NVMe__c</name>
+    </fields>
+    <fields>
+        <label><!-- ODM --></label>
+        <name>Core_ODM__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM --></label>
+        <name>Core_OEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operating System --></label>
+        <name>Core_Operating_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Opportunity ID --></label>
+        <name>Core_Opportunity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other IP --></label>
+        <name>Core_Other_IP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other --></label>
+        <name>Core_Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- P1n Frequency GHz --></label>
+        <name>Core_P1n_Frequency_GHz__c</name>
+    </fields>
+    <fields>
+        <label><!-- PAN Radio --></label>
+        <name>Core_PAN_Radio__c</name>
+    </fields>
+    <fields>
+        <label><!-- Performance Features Enabled --></label>
+        <name>Core_Performance_Features_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Capability/Technology --></label>
+        <name>Core_Product_Capability_Technology__c</name>
+    </fields>
+    <fields>
+        <label><!-- Production Lifecycle --></label>
+        <name>Core_Production_Lifecycle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Publisher --></label>
+        <name>Core_Publisher__c</name>
+    </fields>
+    <fields>
+        <label><!-- QAT Discrete --></label>
+        <name>Core_QAT_Discrete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Qty of ES2 Samples? --></label>
+        <name>Core_Qty_of_ES2_Samples__c</name>
+    </fields>
+    <fields>
+        <label><!-- Qty of Yuba City (CRB)? --></label>
+        <name>Core_Qty_of_Yuba_City_CRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuickAssist Tech --></label>
+        <name>Core_QuickAssist_Tech__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ready Mode --></label>
+        <name>Core_Ready_Mode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Early Access? --></label>
+        <name>Core_Request_Early_Access__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reseller --></label>
+        <name>Core_Reseller__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retailer --></label>
+        <name>Core_Retailer__c</name>
+    </fields>
+    <fields>
+        <label><!-- SBA --></label>
+        <name>Core_SBA__c</name>
+    </fields>
+    <fields>
+        <label><!-- SSD --></label>
+        <name>Core_SSD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Screen Size --></label>
+        <name>Core_Screen_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Security/Data Protection --></label>
+        <name>Core_Security_Data_Protection__c</name>
+    </fields>
+    <fields>
+        <label><!-- Security Software --></label>
+        <name>Core_Security_Software__c</name>
+    </fields>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>Core_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Providers/Telco --></label>
+        <name>Core_Service_Providers_Telco__c</name>
+    </fields>
+    <fields>
+        <label><!-- Single Rail Power Supply --></label>
+        <name>Core_Single_Rail_Power_Supply__c</name>
+    </fields>
+    <fields>
+        <label><!-- Socket Count --></label>
+        <name>Core_Socket_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Socket --></label>
+        <name>Core_Socket__c</name>
+    </fields>
+    <fields>
+        <label><!-- Software Stack --></label>
+        <name>Core_Software_Stack__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Provider --></label>
+        <name>Core_Solution_Provider__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storm Lake --></label>
+        <name>Core_Storm_Lake__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stylus --></label>
+        <name>Core_Stylus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sustainability Compliance --></label>
+        <name>Core_Sustainability_Compliance__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Integrator --></label>
+        <name>Core_System_Integrator__c</name>
+    </fields>
+    <fields>
+        <label><!-- TDP --></label>
+        <name>Core_TDP__c</name>
+    </fields>
+    <fields>
+        <label><!-- TEM --></label>
+        <name>Core_TEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Thunderbolt --></label>
+        <name>Core_Thunderbolt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultrabook --></label>
+        <name>Core_Ultrabook__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unit Height --></label>
+        <name>Core_Unit_Height__c</name>
+    </fields>
+    <fields>
+        <label><!-- Use Condition --></label>
+        <name>Core_Use_Condition__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Experience (UX) --></label>
+        <name>Core_User_Experience_UX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Sector --></label>
+        <name>Core_Vertical_Sector__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voice Assist --></label>
+        <name>Core_Voice_Assist__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wake on Voice --></label>
+        <name>Core_Wake_on_Voice__c</name>
+    </fields>
+    <fields>
+        <label><!-- WiFi --></label>
+        <name>Core_WiFi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wireless Charge --></label>
+        <name>Core_Wireless_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wireless Display --></label>
+        <name>Core_Wireless_Display__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wireless Gigabyte --></label>
+        <name>Core_Wireless_Gigabyte__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wireless LAN --></label>
+        <name>Core_Wireless_LAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wireless M2 Key --></label>
+        <name>Core_Wireless_M2_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wireless WAN --></label>
+        <name>Core_Wireless_WAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Z Height --></label>
+        <name>Core_Z_Height__c</name>
+    </fields>
+    <fields>
+        <label><!-- vPro --></label>
+        <name>Core_vPro__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

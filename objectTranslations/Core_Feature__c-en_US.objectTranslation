@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Feature</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Features</value>
+    </caseValues>
+    <fields>
+        <label><!-- Check Duplicate --></label>
+        <name>Core_Check_Duplicate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feature BU --></label>
+        <name>Core_Feature_BU__c</name>
+        <picklistValues>
+            <masterLabel>CCG</masterLabel>
+            <translation><!-- CCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG ECG</masterLabel>
+            <translation><!-- CCG ECG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI</masterLabel>
+            <translation><!-- DCAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTG</masterLabel>
+            <translation><!-- NTG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG</masterLabel>
+            <translation><!-- PSG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Long ID --></label>
+        <name>Core_Feature_Long_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feature Type --></label>
+        <name>Core_Feature_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feature Value --></label>
+        <name>Core_Feature_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multi-Select --></label>
+        <name>Core_Multi_Select__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

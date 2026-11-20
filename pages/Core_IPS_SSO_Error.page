@@ -1,0 +1,48 @@
+<apex:page showHeader="false" >
+<style>
+.container {
+    background:white;
+    width:349px;
+    height:138px;
+    font-size:17px;
+    //color:black;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid grey;
+    padding-left: 12px;
+    align-content: center;
+}
+.container a{
+    color:blue;
+    font-color:blue;
+    text-decoration:none;
+}
+</style> 
+    <apex:form >
+         <div style="padding-left: 36%;padding-top: 10%;">
+             <apex:image value="{!$Resource.SSOErrorLog}" style=" align-content: center; width=50"/>
+         </div>
+        <br/>
+        <div style="postion:center;padding-left: 35%">
+        <div class="container">
+            <div>
+                <!--
+                {!$Label.SSO_Login_Error_message1} <a href="http://eam.intel.com/EAMWeb/" style="text-decoration:none;"><h1 style="color:blue;font-weight:lighter">{!$Label.SSO_Login_Error_message2}</h1></a>
+                {!$Label.SSO_Login_Error_message3}  <a href="http://it.intel.com/#/incident/5096/5820" style="text-decoration:none;"><h1 style="color:blue;font-weight:lighter">{!$Label.SSO_Login_Error_message4}</h1></a> 
+                -->
+                <!-- Added below by Amritesh for Employee Customer US72554 on 8 Jan 2018 -->
+                <apex:outputText value="{!$Label.SSO_Login_Error_message1}" escape="false" />
+                <apex:outputText value="{!$Label.SSO_Login_Error_message2}" escape="false" />
+                <apex:outputText value="{!$Label.SSO_Login_Error_message3}" escape="false" />
+                <apex:outputText value="{!$Label.SSO_Login_Error_message4}" escape="false" />
+                
+                <!-- Added below by Yogesh for Employee Customer US72554 on 27 Nov 2017 -->
+                <!--Removed by Amritesh - 8/17/2018 as per US144542 -->
+                <!--apex:outputText value="{!$Label.Core_IPS_Employees_Using_AGS_to_register_for_IPS_access}" escape="false"/-->
+            </div> 
+            
+        </div>
+        </div> 
+    </apex:form>
+</apex:page>

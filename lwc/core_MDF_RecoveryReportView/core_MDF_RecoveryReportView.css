@@ -1,0 +1,42 @@
+.custom-width {
+    max-width: 80rem !important;
+    width: 80% !important;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+ }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #d1d6d8;
+}
+
+.seventyfive-percent {
+  zoom: 75%;
+}
+
+.offsetTable{
+  max-width: 80rem !important;
+  width: 80% !important;
+}
+
+.offsetTableRow{
+    background-color: #ffffff !important;
+}
+
+.rowError{
+  color: red;
+  font-style: italic;
+  padding: 0px 8px 8px 12px;
+  width: max-content
+}
+
+.slds-input_error {
+  border-bottom: 2px solid red !important;
+  border-radius: 4px;
+}

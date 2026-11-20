@@ -1,0 +1,18 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Educate yourself on Generative AI",
+  "contentBody" : {
+    "description" : "Customers want a choice in AI, they want an alternate in Intel. Enterprises trust Intel to deliver through Xeon and Core in servers and AIPCs. Learn all about them to become an AI seller.",
+    "sections" : [ {
+      "content" : "<div>The below training is required for you to be an Intel Generative AI seller. They are 20 minute courses, knock them out as you find holes in your schedule or knock it out in one day in a marathon!</div><div><br /></div><div>The cool part is you get an externally promotable Credly badge certifying you passed this course. We are working on offering an external certification based on this curriculum in Q3&#39;24 too so you&#39;d only have to take that exam if you wanted true certification like CCIE or CCNE!!</div><div><br /></div><div>The curriculum is found here:</div><div>https://degreed.com/pathway/jp15z5ek8v/pathway</div><div><br /></div><div>Audience: Any SMG seller with an AI potential customer</div>",
+      "keyConcept" : "All Sellers: Principles of AI Curiculum - 25 courses to your Intel AI badge",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>The link below is for the AI on Xeon 30-3-30 deck. There are many more content available on seismic regarding our AI strategy and assets.</div><div><br /></div><div><br /></div><div><a style=\"color: rgb(0, 102, 204); font-size: 13px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://content.intel.com/812318\">https://content.intel.com/812318</a></div>",
+      "keyConcept" : "AI on Xeon reference material",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 2.0
+  },
+  "urlName" : "educate-yourself-on-generative-ai"
+}

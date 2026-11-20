@@ -1,0 +1,112 @@
+<aura:component extends="c:MarketplaceRedux">
+    
+    <aura:set attribute="storeName" value="Settings" />
+    
+    <aura:attribute name="data" type="object" description="Data used for SimpleCard: ie. label, description, descriptionLinkText, page, imgUrl, see documentation example for more" />
+    <aura:attribute name="viewAllHeadline" type="String" description="Optional Headline for second set of cards shown after clicking 'View More'" />
+    <aura:attribute name="viewMoreLinkTitle" type="String" default="{!$Label.c.PMP_ViewAll}" />
+    <aura:attribute name="showOnlyFirst" type="Integer" default="6" description="Display only N cards before showing 'View More' link" />
+    <aura:attribute name="showOnlyFirstMobile" type="Integer" default="3" description="Display only N cards before showing 'View More' link (Mobile)" />
+    <aura:attribute name="class" type="String" description="Optional class at root" />
+
+    <aura:attribute name="viewAll" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="indexShowCount" type="integer" description="Internal" />
+    
+    <!-- SEO Friendly URL attribute -->
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="objectApiName" type="string" />
+  	<aura:attribute name="isCategoryPage" type="boolean" default="false" description="For identifying Category pages for creating SEO Friendly URL" />
+    <aura:attribute name="isPartnerPage" type="boolean" default="false" description="For identifying Partner program pages for creating SEO Friendly URL" />
+    <aura:attribute name="isSpecialtyPage" type="boolean" default="false" description="For identifying Specialty pages for creating SEO Friendly URL" />
+    <aura:attribute name="isSeoPage" type="boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="{!v.class ? v.class : ''}">
+        <lightning:layout multipleRows="true" pullToBoundary="medium" verticalAlign="stretch">
+            <aura:iteration items="{!v.data}" var="item" indexVar="i">
+              
+                <aura:if isTrue="{! i lt v.indexShowCount}">
+                    <lightning:layoutItem size="12" mediumDeviceSize="6" largeDeviceSize="4"
+                                          padding="around-medium" class="simple-card-list-card">
+                        <c:MarketplaceSimpleCard class="full-width"
+                                                 imgUrl="{!item.imgUrl}"
+                                                 label="{!item.label}"
+                                                 iconType="{!item.iconType}"
+                                                 iconName="{!item.iconName}"
+                                                 iconBG="{!item.iconBG}"
+                                                 isIcon="{!item.isIcon}"
+                                                 linkIsVideo="{!item.linkIsVideo}"
+                                                 description="{!item.description}"
+                                                 descriptionLink="{!item.descriptionLink}"
+                                                 descriptionLinkText="{!item.descriptionLinkText}"
+                                                 descriptionLinkTarget="{!item.descriptionLinkTarget}"
+                                                 page="{!item.page}"
+                                                 link="{!item.link}"
+                                                 searchParams="{!item.searchParams}" 
+                                                 isCategoryPage="{!v.isCategoryPage}"
+                                                 isPartnerPage="{!v.isPartnerPage}"
+                                                 isSeoPage="{!v.isSeoPage}"
+                                                 isSpecialtyPage="{!v.isSpecialtyPage}"
+                                                 objectApiName="{!v.objectApiName}"/>
+                    </lightning:layoutItem>
+                </aura:if>
+            </aura:iteration>
+        </lightning:layout>
+        <!-- pullToBoundry value changed to medium with merge, previous:small - Prabuddh -->
+        <lightning:layout multipleRows="true" pullToBoundary="medium" verticalAlign="stretch">
+            <aura:iteration items="{!v.data}" var="item" indexVar="i">
+                <aura:if isTrue="{! and(v.viewAll, and(i eq v.indexShowCount, v.viewAllHeadline)) }">
+                    <lightning:layoutItem size="12" class="slds-p-horizontal_small slds-p-vertical_large">
+                        <h4>{!v.viewAllHeadline}</h4>
+                    </lightning:layoutItem>
+                </aura:if>
+                <aura:if isTrue="{! i gt v.indexShowCount - 1 }">
+                    <aura:if isTrue="{!v.viewAll}" >
+                    	<lightning:layoutItem size="12" mediumDeviceSize="6" largeDeviceSize="4"
+                                          padding="around-medium" 
+                                          class="simple-card-list-card">
+                        <c:MarketplaceSimpleCard class="full-width"
+                                                 imgUrl="{!item.imgUrl}"
+                                                 label="{!item.label}"
+                                                 iconType="{!item.iconType}"
+                                                 iconName="{!item.iconName}"
+                                                 iconBG="{!item.iconBG}"
+                                                 isIcon="{!item.isIcon}"
+                                                 linkIsVideo="{!item.linkIsVideo}"
+                                                 description="{!item.description}"
+                                                 descriptionLink="{!item.descriptionLink}"
+                                                 descriptionLinkText="{!item.descriptionLinkText}"
+                                                 descriptionLinkTarget="{!item.descriptionLinkTarget}"
+                                                 page="{!item.page}"
+                                                 link="{!item.link}"
+                                                 searchParams="{!item.searchParams}"
+                                                 isCategoryPage="{!v.isCategoryPage}"
+                                                 isPartnerPage="{!v.isPartnerPage}"
+                                                 isSeoPage="{!v.isSeoPage}"
+                                                 isSpecialtyPage="{!v.isSpecialtyPage}"
+                                                 objectApiName="{!v.objectApiName}"/>
+                    </lightning:layoutItem>
+                    
+                    </aura:if>
+                    
+                </aura:if>
+                
+            </aura:iteration>
+        </lightning:layout>
+        
+        <aura:if isTrue="{! and(!v.viewAll, v.data.length > v.indexShowCount) }">
+            <div class="view-all-wrapper">
+                <span class="line-copy-left"></span>
+                <div class="view-all-wrapper-container">
+                    <lightning:icon iconName="utility:chevrondown" size="xx-small" /> <!-- size value changed to xx-small via merge previous value : x-small - PRabuddh -->
+                    <a href="javascript:void(0);" class="view-expand-all" onclick="{!c.expandAll}">
+                        {!v.viewMoreLinkTitle}
+                    </a>
+                </div>
+                <span class="line-copy-right"></span>
+            </div>
+        </aura:if>
+    </div>
+    
+</aura:component>

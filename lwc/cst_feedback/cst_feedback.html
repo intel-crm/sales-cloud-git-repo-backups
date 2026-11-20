@@ -1,0 +1,279 @@
+<template>
+    <template if:true={showComp}>
+    <template if:true={accountFeedback}>
+    <lightning-card>
+   
+        <h2 class="slds-card__header-title slds-p-around--medium">
+            {stage} Feedback
+        </h2>
+        <div class="slds-p-around--medium" style="margin-top:-20px;">
+        <lightning-combobox name="AcctFeedbackOption" label="Feedback" value={selectedAcctFeedback} options={acctFeedbackOptions} onchange={handleAcctFeedbackChange}> </lightning-combobox> 
+
+        <template if:true={showChangeToPartnerFields}>
+            <div>
+                <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
+            </div>  
+            <div>
+                <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleAFAcctOwner}></lightning-input>
+            </div> 
+            <div>
+                <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleAFTeamMembers}></lightning-input>
+            </div>  
+             <div>
+                <lightning-combobox name="AcctSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={acctSalesGrpOptions} onchange={handleAFSG} required > </lightning-combobox> 
+             </div> 
+             
+              <div>
+                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <lightning-dual-listbox
+                    name="Semi-Annual Account Category"
+                    source-label="Available Options"
+                    selected-label="Selected Options"
+                    options={accountCategoryOptions}
+                    value={selectedAccountCategory}
+                    onchange={handleAccountCategoryChange}>
+                </lightning-dual-listbox>  
+            </div>
+        </template>
+
+        <template if:true={showChangeToUncoveredFields}>
+            <div>
+                <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
+            </div>  
+            <div>
+                <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleAFAcctOwner}></lightning-input>
+            </div> 
+            <div>
+                <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleAFTeamMembers}></lightning-input>
+            </div>  
+             <div>
+                <lightning-combobox name="AcctSGOption" label="New Sales Group" class="validate" value={newSalesGroup} options={acctSalesGrpOptions} onchange={handleAFSG} required> </lightning-combobox> 
+            </div> 
+            
+              <div>
+                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <lightning-dual-listbox
+                    name="Semi-Annual Account Category"
+                    source-label="Available Options"
+                    selected-label="Selected Options"
+                    options={accountCategoryOptions}
+                    value={selectedAccountCategory}
+                    onchange={handleAccountCategoryChange}>
+                </lightning-dual-listbox>  
+            </div>
+        </template>
+
+        <template if:true={showChangeOwnershipFields}>
+            <div>
+                <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
+            </div>  
+            <div>
+                <lightning-input type="text" label="New Account Owner" class="validate" value={newAccountOwner} onchange={handleAFAcctOwner} required></lightning-input>
+            </div> 
+            <div>
+                <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleAFTeamMembers}></lightning-input>
+            </div>  
+             <div>
+                <lightning-combobox name="AcctSGOption" label="New Sales Group" value={newSalesGroup} options={acctSalesGrpOptions} onchange={handleAFSG}> </lightning-combobox> 
+            </div>
+            
+              <div>
+                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <lightning-dual-listbox
+                    name="Semi-Annual Account Category"
+                    source-label="Available Options"
+                    selected-label="Selected Options"
+                    options={accountCategoryOptions}
+                    value={selectedAccountCategory}
+                    onchange={handleAccountCategoryChange}
+                    class="labletext">
+                </lightning-dual-listbox>  
+            </div>
+        </template>
+
+        <template if:true={showAddToIntelLedFields}>
+            <div>
+                <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
+            </div>  
+            <div>
+                <lightning-input type="text" label="New Account Owner" class="validate" value={newAccountOwner} onchange={handleAFAcctOwner} required></lightning-input>
+            </div> 
+            <div>
+                <lightning-input type="text" label={teamMemberLabel} value={teamMembers} onchange={handleAFTeamMembers}></lightning-input>
+            </div>  
+             <div>
+                <lightning-combobox name="AcctSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={acctSalesGrpOptions} onchange={handleAFSG} required> </lightning-combobox> 
+            </div>
+            
+              <div>
+                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <lightning-dual-listbox
+                    name="Semi-Annual Account Category"
+                    source-label="Available Options"
+                    selected-label="Selected Options"
+                    options={accountCategoryOptions}
+                    value={selectedAccountCategory}
+                    onchange={handleAccountCategoryChange}>
+                </lightning-dual-listbox>  
+            </div>
+        </template>
+         <!--newly added-->
+        <template if:true={showChangeToOtherLedFields}>
+            <div>
+                <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleAFReason} required></lightning-input>
+            </div>  
+            <div>
+                <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleAFAcctOwner}></lightning-input>
+            </div> 
+            <div>
+                <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleAFTeamMembers}></lightning-input>
+            </div>  
+             <div>
+                <lightning-combobox name="AcctSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={acctSalesGrpOptions} onchange={handleAFSG} required > </lightning-combobox> 
+             </div> 
+             
+              <div>
+                <legend class="slds-form-element__legend slds-form-element__label">Semi-Annual Account Category</legend>
+                <lightning-dual-listbox
+                    name="Semi-Annual Account Category"
+                    source-label="Available Options"
+                    selected-label="Selected Options"
+                    options={accountCategoryOptions}
+                    value={selectedAccountCategory}
+                    onchange={handleAccountCategoryChange}>
+                </lightning-dual-listbox>  
+            </div>
+        </template>
+        <!--newly added-->
+        
+        
+        </div>
+        <lightning-layout-item size="9" flexibility="auto" padding="horizontal-medium" class="slds-text-align_right">
+        
+        <lightning-button variant="brand" class="slds-m-right_x-small" label="Submit" onclick={handleAcctFeedbackSubmit} disabled={disabled}></lightning-button>
+</lightning-layout-item>
+    </lightning-card>
+    </template>
+   
+    
+    
+    <template if:true={customerFeedback}>
+        <lightning-card>
+            <h2 class="slds-card__header-title slds-p-around--medium">
+                {stage} Feedback
+            </h2>
+            <div class="slds-p-around--medium" style="margin-top:-20px;">
+            <lightning-combobox name="FeedbackOption" label="Feedback" value={selectedCstFeedback} options={cstFeedbackOptions} onchange={handleCstFeedbackChange}> </lightning-combobox> 
+            <template if:true={showFeedbackBy}>
+                <p class="slds-form-element__label">
+                    Feedback By <lightning-helptext content="This field is automatically populated with the person entering the feedback.In case feedback needs to be provided on someone's behalf, please provide the email of the person."></lightning-helptext>           
+                 </p>
+                 <lightning-input style="margin-top: -20px;" name="feedbackBy" varient="label-hidden" type="text" value={feedbackBy} onchange={handleCstFeedbackBy}></lightning-input>         
+            </template>
+            
+            <template if:true={showChangeToPartnerFields}>
+                <div>
+                    <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
+                </div>  
+                <div>
+                    <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleCstAcctOwner}></lightning-input>
+                </div> 
+                <div>
+                    <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleCstTeamMembers}></lightning-input>
+                </div>  
+                 <div>
+                    <lightning-combobox name="CstSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG} required> </lightning-combobox> 
+                </div>
+                
+            </template>
+
+            <template if:true={showChangeToUncoveredFields}>
+                <div>
+                    <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
+                </div>  
+                <div>
+                    <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleCstAcctOwner}></lightning-input>
+                </div> 
+                <div>
+                    <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleCstTeamMembers}></lightning-input>
+                </div>  
+                 <div>
+                    <lightning-combobox name="CstSGOption" label="New Sales Group" class="validate" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG} required> </lightning-combobox> 
+                </div> 
+                
+            </template>
+
+            <template if:true={showChangeOwnershipFields}>
+                <div>
+                    <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
+                </div>  
+                <div>
+                    <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleCstAcctOwner}></lightning-input>
+                </div> 
+                <div>
+                    <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleCstTeamMembers}></lightning-input>
+                </div>  
+                 <div>
+                    <lightning-combobox name="CstSGOption" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG}> </lightning-combobox> 
+                </div> 
+               
+            </template>
+
+            <template if:true={showAddToIntelLedFields}>
+                <div>
+                    <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
+                </div>  
+                <div>
+                    <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleCstAcctOwner}></lightning-input>
+                </div> 
+                <div>
+                    <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleCstTeamMembers}></lightning-input>
+                </div>  
+                 <div>
+                    <lightning-combobox name="CstSGOption" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG}> </lightning-combobox> 
+                </div> 
+                
+            </template>
+                
+            <template if:true={showPartialFields}>
+                <div>
+                    <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
+                </div>  
+                <div>
+                    <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleCstAcctOwner}></lightning-input>
+                </div> 
+                <div>
+                    <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleCstTeamMembers}></lightning-input>
+                </div>  
+                 <div>
+                    <lightning-combobox name="CstSGOption" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG}> </lightning-combobox> 
+                </div>
+                
+            </template>
+            <!---newly added-->
+            <template if:true={showChangeToOtherLedFields}>
+                <div>
+                    <lightning-input type="text" label="Reason for change" class="validate" value={reasonForChange} onchange={handleCstReason} required></lightning-input>
+                </div>  
+                <div>
+                    <lightning-input type="text" label="New Account Owner" value={newAccountOwner} onchange={handleCstAcctOwner}></lightning-input>
+                </div> 
+                <div>
+                    <lightning-input type="text" label="Team Members" value={teamMembers} onchange={handleCstTeamMembers}></lightning-input>
+                </div>  
+                 <div>
+                    <lightning-combobox name="CstSGOption" class="validate" label="New Sales Group" value={newSalesGroup} options={cstSalesGrpOptions} onchange={handleCstSG} required> </lightning-combobox> 
+                </div>
+            </template>
+           <!---newly added-->
+        </div>
+        
+        <lightning-layout-item size="9" flexibility="auto" padding="horizontal-medium" class="slds-text-align_right">
+        
+        <lightning-button variant="brand" class="slds-m-right_x-small" label="Submit" onclick={handleCstFeedbackSubmit} disabled={disabled}></lightning-button>
+        </lightning-layout-item>
+        
+    </lightning-card>  
+    </template>
+    </template>
+</template>

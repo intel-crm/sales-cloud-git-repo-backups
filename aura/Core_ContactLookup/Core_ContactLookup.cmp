@@ -1,0 +1,149 @@
+<aura:component controller="Core_SerachContactController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"  access='global' >   
+    
+    
+    <!--<div class="demo-only" style="padding: 0.5rem; background: rgb(22, 50, 92);">
+      <div class="slds-text-color_inverse">Search for Staff:</div>
+    </div>-->
+    <!--### declared attributes ###-->
+    <aura:attribute name="isNew" type="Boolean"/>
+    <aura:attribute name="headerText" type="String"/>
+    <aura:attribute name="objId" type="Id"/>
+    <aura:attribute name="isView" type="Boolean"/>
+    <aura:attribute name="searchResult"  type="List" description="use for store and display staff list return from server"/>
+    <aura:attribute name="searchKeyword" type="String" description="use for store user search input"/>
+    <aura:attribute name="infoMessage"   type="boolean" default="false" description="use for display no record found message"/>
+    <aura:attribute name="numberOfRecord" type="integer" default="0" description="use for display Number of records"/>    
+    <!--aura:registerEvent name="staffEvent" type="c:StaffViewCompEvent"/-->
+    <aura:registerEvent name="loadEntitlementEvent" type="c:Core_Contact_Ent_Event"/>
+    <aura:registerEvent name="createContactEvent" type="c:Core_Contact_Creation_Event"/>
+    <aura:attribute name="contactRecId" type="Id"/>
+    <aura:attribute name="recordNotFound" default="true" type="Boolean"/>
+    <aura:attribute name="recordFound" default="true" type="Boolean"/>
+    <aura:attribute name="isNewContact" default="false" type="Boolean"/>
+    <aura:handler event="c:Core_Contact_Creation_DisplayEvent" action="{!c.passEmailFromSavedContactToDisplay}"/>
+    <aura:attribute name="isComarketing" default="false" type="Boolean"/>
+    <aura:attribute type="Boolean" name="isShowSpinner" default="false"/>
+    <!-- start of PAGE HEADER -->
+    <lightning:layout class="slds-page-header slds-page-header--object-home" horizontalAlign="spread" >
+        
+        <lightning:layoutItem padding="horizontal-medium">
+            
+            <lightning:icon iconName="standard:people" alternativeText="Contacts"/>
+            <div class="page-section page-header">
+                <b><h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Contact_ContactLookup}</h1></b>
+                <b><h2 class="slds-text-heading--medium">{!v.headerText}</h2></b>
+            </div>  
+        </lightning:layoutItem>
+        
+        
+        <lightning:layoutItem padding="horizontal-large">
+            
+            <div class="slds-form-element">
+                <!--button type="button" onclick="{!c.createNew}" class="slds-button slds-button__brand">New</button>
+                <button type="button" onclick="{!c.searchShow}" class="slds-button slds-button__brand">Search</button-->
+            </div>
+            
+        </lightning:layoutItem>
+        
+    </lightning:layout>
+    <!-- end of PAGE HEADER -->
+    
+    <lightning:card title="">
+        
+        <aura:if isTrue="{!and(!v.isNew,!v.isView)}">
+            
+            <div class="slds-m-around--large">
+                <form class="slds-form--inline">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="search"></label>
+                       <div class="slds-form-element__control">
+                            <ui:inputText aura:id="searchId" size="50" class="slds-input" value="{!v.searchKeyword}" required="true" placeholder="{!$Label.c.Core_MDF_Type_here}"/>
+                        </div>
+                    </div>
+                    <button type="button" onclick="{!c.Search}" class="slds-button slds-button--brand">{!$Label.c.Core_MDF_Search_Contact}</button>    
+                </form>
+                <br/>
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                    <thead>
+                        <tr class="slds-text-title--caps">
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Full_Name}">{!$Label.c.Core_MDF_Full_Name}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_First_Name_Contact_Creation}">{!$Label.c.Core_MDF_First_Name_Contact_Creation}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Last_Name_cc}">{!$Label.c.Core_MDF_Last_Name_cc}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Account}">{!$Label.c.Core_MDF_Account}</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Business_Email}">{!$Label.c.Core_MDF_Business_Email}</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:if isTrue="{!v.infoMessage}">
+                            <div class="slds-text-color--error noResultFoundSec"> {!$Label.c.Core_MDF_NoResult}</div>
+                        </aura:if>
+                        <!--### display all records of searchResult attribute by aura:iteration ###-->
+                        <aura:if isTrue="{!v.isShowSpinner}"> 
+                        <lightning:spinner alternativeText="Loading" size="medium" />
+                        <aura:set attribute="else">
+                        <aura:iteration items="{!v.searchResult}" var="staff">
+                            <tr>
+                                <td>
+                                    <div >{!staff.contact.Name} </div>
+                                    <!--<a onclick = "{!c.navigateToContact}" id="{!staff.Id}" target="_blank"></a>-->
+                                </td>
+                                <td>
+                                    <div >{!staff.contact.FirstName}</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{!staff.contact.LastName}</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{!staff.contact.Account.Name}</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{!staff.contact.Email}</div>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                        </aura:set>
+                    </aura:if>
+                    </tbody>
+                </table>
+                
+                <div>
+                    <!--aura:if isTrue="{!v.numberOfRecord>0}">
+                            <span class="slds-badge slds-float_right">Total: {!v.numberOfRecord}</span> 
+                            <aura:set attribute="else">
+                                <span class="slds-float_right">Total: 0</span> 
+                            </aura:set>
+                        </aura:if-->
+                </div>
+            </div>
+        </aura:if>
+        
+        <!--aura:if isTrue="{!v.isView}">
+            <c:StaffRecordView recordId="{!v.objId}"/>
+        </aura:if-->
+        
+    </lightning:card>
+    <aura:if isTrue="{!and(!v.isNew,!v.isView)}">
+        <div class="slds-float_leftsearchFooterSec">
+            <!--Is Record found = {!v.recordFound}-->
+           	<lightning:button aura:id="entitlementLoaderBtn"  onclick="{!c.loadEntitlements}" variant="brand" class="{!v.recordFound == true ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordNotFound}">{!$Label.c.Core_MDF_Load_Entitlements}</lightning:button> <!--hideCmp-->
+            <lightning:button aura:id="creatContactBtn"  onclick="{!c.createNew}" variant="brand" class="{!v.recordFound == false ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordFound}">{!$Label.c.Core_MDF_Create_Contact}</lightning:button>    
+        </div>
+    </aura:if>
+    
+    <!--Modal For New Contact-->
+    <aura:if isTrue="{!v.isNewContact}">
+        <c:Core_Contact_Creation></c:Core_Contact_Creation>
+    </aura:if>
+    <!--Modal For New Contact-->                    
+    
+</aura:component>

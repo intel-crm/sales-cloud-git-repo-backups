@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>Tender.Tech.Team@intel.com</contactEmail>
+    <label>IQR HPI B2B</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIIDfjCCAmagAwIBAgIQCVbjBHJHTVaY9UiXvXYR+TANBgkqhkiG9w0BAQsFADA8MQ8wDQYDVQQKEwZIUCBJbmMxETAPBgNVBAsTCFNURiBUb29sMRYwFAYDVQQDEw1TVEYgVG9vbCBDZXJ0MB4XDTI2MDkxNTA1NTQxNFoXDTI3MDkxNTA2MDQxNFowPDEPMA0GA1UEChMGSFAgSW5jMREwDwYDVQQLEwhTVEYgVG9vbDEWMBQGA1UEAxMNU1RGIFRvb2wgQ2VydDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANb+5Eu4mWhjnJvuawNoBiGvl9sJV5p8hycaHU/xBPQFPVOjJceMu8bnHhT0jlixPKcTpOydms0tNDOwJUBPWyjWc2Z+L0neYqAbQ3F0eiwJ4aSmXuS1U4HDYhz+N2NK4LhcfdUKhKGXmgOdtiqJX6JTgBvV/eWSfyD/jGY9LRfJsr2dDOllDnilRq2H49RNQWWFsrRJewVXMfV/RhcQ36/7ja5+uQzZRyOEVsXJQf8dHFvYgHShWXE2LXCCpYpLBIMTLEIb7pnX+ybabpTWyDX7QJkRK+16YG7gKZo5qmg8l7pNho8gU3+zZBuhNKXQR0KPq6kJhaijlQ0KehQL/aECAwEAAaN8MHowDgYDVR0PAQH/BAQDAgWgMAkGA1UdEwQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFEb9y10/3Ey4AtjyBHcZXpD9ta19MB0GA1UdDgQWBBRG/ctdP9xMuALY8gR3GV6Q/bWtfTANBgkqhkiG9w0BAQsFAAOCAQEAfiLmoAPm5/mif9UNUNDrPzJHE6d1+swFcXja76wDKwElBSx2qrO27vsy3G4KIeQi+ttUqzUFZjpbR9+Oi8/5HzvadviR+TB6fXfhiN+VIv4/L8eDNQl5STXc6QpFj6nRDl9S5ZQUmJRX7zLWtu1l3JzEgFxEGZclp54Uv8X8axSiiUjQsvVJgaqlaZaXssO5UkudcUvqJFL7+Vnp7E1elblP2XOlS7NjujI2ky1GVwfYtJjEntbXwzlrnJ1w0i9u4BzQ2PeF61kGgYvtwzMUOpRppZzP63NU1cXp0VUuvxR/g0Hu/92Mr3+JCpYpiMsXUJOdVYHgX4Bhn//lqFLMfQ==</certificate>
+        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6rT6ZeduUa182g9HRk14bZSLvb.OFLK.5C_eaOlM5MCNVnZPdyr9cO4i3dxT</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Pricing IQR HPI B2B</permissionSetName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

@@ -1,0 +1,2098 @@
+<!-- This Component is for storing PFR Record Value on New and Edit Record Creation and is called from RecordTypeSelector Component -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride" 
+                access="global" 
+                Controller="Core_MDF_PartnerFundRequestCreatePage">
+    
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 70rem !important;
+        width:90% !important;
+        
+        }
+    </aura:html>
+        <aura:html tag="style">.toastMessage.forceActionsText{
+			white-space : pre-line !important;}
+    </aura:html>
+
+     <!-- [IPA - Budget CAP]  - [OOC - P8] - Internal Account Manager/External - Validation Reimbursement Amount against Budget CAP-->    
+    <aura:attribute name="chkBdgtCpExcd" type="boolean" default ="false" />
+    <!-- Record ID and Country Options for Country Multi Select -->
+    <aura:attribute name="recordId" type="Id" />
+     <aura:attribute name="vrQuestionList" type="String[]" />
+    <aura:attribute name="selectedCountryOptions" type="List" default="[]" description="This attribute holds the selected value for Country Multi Select"/>
+    <!-- Attribute Holds value of Industry values [ww35] -->
+    <aura:attribute name="selectedIndustryOptions" type="List" default="[]" description="This attribute holds the selected value for Industry Multi Select"/>
+     <aura:attribute name="selectedBrandOptions" type="List" default="[]"
+                    description="This attribute holds the selected value for Brand Multi Select" />
+    <aura:attribute name="selectedApproverOptions" type="List" default="[]" description="This attribute holds the selected value for Approver Multi Select"/>
+    <aura:attribute name="selectedPrimaryApproverOptions" type="List" default="[]" description="This attribute holds the selected value for Approver Multi Select"/>
+    <aura:attribute name="selectedExtActSubmitterOptions" type="List" default="[]" description="This attribute holds the selected value for Submitter Multi Select"/>
+    <aura:attribute name="AllCountryOptions" type="List" default="[]" description="This attribute holds all Country values for Country Multi Select"/>
+    <!-- Declared attribute allIndustryOptions to show values available on Campaign -->
+   <aura:attribute name="allIndustryOptions" type="List" default="[]" description="This attribute holds all Industry values for Industry Multi Select"/>
+    <aura:attribute name="AllBrandOptions" type="List" default="[]"
+                    description="This attribute holds all Country values for Country Multi Select" />
+    <aura:attribute name="AllApproverOptions" type="List" default="[]" description="This attribute holds all Country values for Approver Multi Select"/>
+   <aura:attribute name="AllPrimaryApproverOptions" type="List" default="[]" description="This attribute holds all Country values for Primary Approver Multi Select"/>
+  <aura:attribute name="AllExtActSubmitterOptions" type="List" default="[]" description="This attribute holds all values for Submitter Multi Select"/>
+    <aura:attribute name="AllCountryOptionsMain" type="List" default="[]" description="This attribute holds all Country values for Country Multi Select"/>
+    <!-- BU Split Avaliable list :Technical [IPA] BU Mapping % Splits - Enable BU Splits at Activity -->
+    <aura:attribute name="buSplitAvaliableList" type="List" default="[]"
+                    description="This attribute holds all BU Split avaliable values" />
+    <aura:attribute name="buSplitSelectedList" type="List" default="[]"
+                    description="This attribute holds all BU Split selected values" />
+    <aura:attribute name="showBuSplitSection" type="Boolean" default="false" />
+    <!--<aura:attribute type="Core_MDF_BU_Splits__mdt" name="metadataBuSplitMap" default=""
+                    description="Stores the metadata values from the server side"></aura:attribute>-->
+    <aura:attribute name="buSplitList" type="List" default="[]"
+                    description="This attribute holds all BU Split selected values" />
+   
+    <aura:attribute name="isEMEARegion" type="Boolean" default="false" />
+    <aura:attribute name="defaultBUPercent" type="String" default="" />
+    <aura:attribute name="defaultBU" type="String" default="" />
+    <aura:attribute name="busplitTotalPercentage" type="Integer" />
+    <aura:attribute name="intelContribution" type="Double" />
+        <aura:attribute name="showBUSPlitMultiselect" type="boolean" default="false"/>
+ 	<aura:attribute name="buSplitWholeNumError" type="boolean" default="false"/>
+    <aura:attribute name="isShowAllocationAmt" type="Boolean" default="false" />
+    <aura:attribute name="showAllocationAmtMsg" type="String" default="" />
+     <!-- BU Split Avaliable list- Technical [IPA] BU Mapping % Splits - Enable BU Splits at Activity -->
+    <!-- Attributes for Reimbursement Rate -->
+    <aura:attribute name="isCCFDCFActivity" type="Boolean" default="false"/>
+    <aura:attribute name="ReimbursementRateVal" type="String[]" description="Stores the selected Target Audience value from the form"/> 
+    <aura:attribute name="SelReimbursementRate" type="String" default = "" description="Stores the selected Target Audience value from the form"/> 
+    <aura:attribute name="campaignBudgetList" type="List" default="[]"
+                    description="This attribute Campaign Budget Records" />
+    <aura:attribute name="ultimateAcctList" type="List" default="[]" /> <!-- list of ultimate account id for EEF-->
+    <!-- New attribute to add for CCF/DCF hierarchy -->
+    <aura:attribute name="hierarchyAcctList" type="List" default="[]"/>
+
+    <aura:attribute name ="budgetStr" type ="String" />
+    <!-- Subtype Multiselect -->
+    <aura:attribute type="String[]" name="activityFieldSetList" default=""
+                    description="Stores the field Info"></aura:attribute>
+    <aura:attribute name="rsmActivityReviewerper" type="Boolean" default="false" />
+    <aura:attribute name="selectedSubTypeOptions" type="List" default="[]"
+                    description="This attribute holds the selected value for Sub type Multi Select" />
+    <aura:attribute name="activityMultiSubTypeVal" type="List" default="[]"
+                    description="This attribute holds all values for Sub type Multi Select" />
+    <aura:attribute name="activityMultiSelSubType" type="Map" description="to store Multi Sub type values" />
+	 <!--[Opal - CCF/DCF] - [OOC - P6] - Replace "Channel Partner" with "Industry Partner"-->
+    <aura:attribute name="activityMultiIndPartnerVal" type="List"  default="[]"
+                    description="This attribute holds all values for Industry partner Multi Select" />
+    <aura:attribute name="selectedIndPartnerOptions" type="List" default="[]"
+                    description="This attribute holds the selected value for Industry partner Multi Select" />
+    <aura:attribute name="isOldCtry" type="Boolean" default ="true" />
+    <aura:attribute name="OldSelCountry" type="String" default="" 
+                    description="Stores the old value of selected market value from the form"/>
+    <aura:attribute name="stopMethodExecution" type="Boolean" default ="false" />               
+    <aura:attribute name="componentAttributes" type="Object" />
+    <aura:attribute name="isSaveDisable" type="Boolean" default ="false" />
+    <aura:attribute name="isSaveandNewDisable" type="Boolean" default ="false" />
+    <aura:attribute name="isSaveandNew" type="Boolean" default ="false" 
+                    description="Stores the value on click of Save and New button"/>
+    <aura:attribute name="isClosedActivity" type="Boolean" default ="false" />
+    <aura:attribute type="String" name="communityRecordId" default=""/>
+    <aura:attribute name="checkCommunityAttribute" type="Boolean" default ="false" />
+    <aura:attribute name="checkNewCommunityAttribute" type="Boolean" default ="false" />
+    <aura:attribute name="checkSaveComplete" type="Boolean" default ="false" 
+                    description="Stores the value when Save is completed onclick of Save and New"/>
+     <!-- Start -EEF permission sets attributes -->
+    <aura:attribute name="primaryaccper" type="Boolean" default="false"/>
+    <aura:attribute name="activatingaccper" type="Boolean" default="false"/>
+       <!-- END -EEF permission sets attributes -->
+    <aura:attribute name="showBudgetErrorMsg" type="Boolean" default="false" />
+    <aura:attribute name="showBudgetTypeFields" type="Boolean" default="false" />
+    <aura:attribute name="showErrorMsgForSpendingLimit" type="Boolean" default="false" />
+    <aura:attribute name="showErrorMsgForCSPRevAmt" type="Boolean" default="false" /> <!--EEF -->
+    <aura:attribute name="ErrorMsgForCSPAmt" type="String" default="" />
+    <aura:attribute name="ErrorMsgForSpendingLimit" type="String" default="" />
+    <aura:attribute name="startDate" type="date"/>
+    <aura:attribute name="endDate" type="date"/>
+    <!-- To check Opportunity Id is valid -->
+     <aura:attribute name="isInvalidOppId" type="boolean" default="false"
+                    description="To check opportunity id is SF Id" />
+     <!--To Check activity creation Access -->
+      <aura:attribute name="hasCreateAccess" type="boolean" default="false"
+                    description="To check if user has create access " />
+    <!-- Attribute Initialization-->
+    <aura:attribute type="PartnerFundRequest" name="newPFR" 
+                    default="{Name:'', 
+                             RequestedAmount:0,
+                             ChannelPartner:null,
+                             Core_MDF_Competitive_Elements__c:'',
+                             Core_MDF_Government_Nexus__c:'',
+                             Core_MDF_ofPagesEligible__c:'',
+                             Core_MDF_pagespayingfor__c:''}"
+                    description="Stores the field value of PFR object on Create and Edit of the record "></aura:attribute>
+    <aura:attribute type="PartnerFundRequest" name="oldPFR" 
+                    description="Stores the actualy field value of PFR object before Editing the record "></aura:attribute>
+    <aura:attribute name="SelMarketValue" type="String" default="" 
+                    description="Stores the selected market value from the form"/>
+    <aura:attribute name="BudgetLocal" type="Integer" default="" 
+                    description="Stores the local budget from the form"/>
+    <aura:attribute name="OldBudgetLocal" type="Integer" default="" description="Stores the local budget from the form" />
+    <aura:attribute name="OldbudgetCurrency" type="String" default="USD" />
+    <aura:attribute name="IsOldBudget" type="Boolean" default="true" />
+    <aura:attribute name="budgetCurrency" type="String" default="USD"
+                    description="The local currency used for budget "/>
+    <aura:attribute name="budgetCurrencyOld" type="String" default="USD"
+                    description="The local currency used for budget "/>
+    
+    <aura:attribute name="createdDateClone" type="Boolean" default ="false" />
+    <aura:attribute name="BudgetException" type="boolean" default="false" 
+                    description="Set to true if any Exception from method called"/>
+    <aura:attribute name="JointContent" type="boolean" default="false"
+                    description="Joint Content for SPCF RecordType"/>
+    <aura:attribute name="SelCategory" type="String" default="" 
+                    description="Stores the selected Activity Category value from the form"/>
+    <aura:attribute name="SelActivityType" type="String" default="" 
+                    description="Stores the selected Activity Type value from the form"/>
+    <!-- subtype single select -->					
+    <aura:attribute name="selActivitySubType" type="String" default=""
+                    description="Stores the selected Activity Sub Type value from the form" />
+    <aura:attribute name="selActivityEventName" type="String" default=""
+                    description="Stores the selected Event Name value from the form" />
+    <aura:attribute name="activityInApproval" type="Boolean" default=""
+                    description="Stores true if Activity in Approval" />
+     <aura:attribute name="eventActCategory" type="boolean" default="false"
+                    description="To display Event Form when category as Event" />
+    <aura:attribute name="SelProductType" type="String" default="" 
+                    description="Stores the selected Product Type value from the form"/>
+    <aura:attribute name="SelBrand" type="String" default="" 
+                    description="Stores the selected Brand value from the form"/>	
+    <aura:attribute name="SelTargetAudience" type="String" default="" 
+                    description="Stores the selected Target Audience value from the form"/> 	
+    <aura:attribute name="selectedLookUpRecord" type="Campaign" default="{'sobjectType':'Campaign',Id:null, Name:''}" 
+                    description="Stores the selected Campaign value from the form"/>
+    <aura:attribute name="selectedPartner" type="sObject" default="{Id:null, Name:''}" 
+                    description="Stores the selected Account(Channel Partner) value from the form"/>	
+    <aura:attribute name="additionalFilter" type="String" default="" 
+                    description="To add the constructed filter based on startdate and enddate for displaying the lookup(Account and Campaign) values"/>
+   	<aura:attribute name="outcomeBasedOptInInd" type="Boolean" default="false" 
+                description="Stores the Campaign's outcome based opt-in indicator"/>
+    <aura:attribute name="currMap" type="String[]" description="Map used for Global key Map value pair for currency "/>
+    <aura:attribute name="currBTMap" type="String[]" description="Map used for Global key Map value pair for Budget Type"/>
+    <aura:attribute name="PriorType" type="String[]" description="Map used for Global key Map value pair for Priority Type"/>
+    <!-- RecordType Attributes to Store RecordType ID, Name and DeveloperName -->
+    
+    <aura:attribute name="recordtype" type="String" default="" 
+                    description="Stores the recordtypeID from the parent component"/>
+    <aura:attribute name="campriority" type="String" default=""
+                    description="Stores the Priority from campaign"/>
+    <aura:attribute name="campriorityValue" type="Boolean" default="false"
+                    description="Stores the Priority from campaign"/>
+    <aura:attribute name="recordtypeName" type="String" default="" 
+                    description="Stores the recordtypeName from the parent component"/>
+    <aura:attribute name="programName" type="String" default="" 
+                    description="Stores the non localised recordtypeName from the parent component"/>
+    <aura:attribute name="recordtypeDeveloperName" type="String" default="" 
+                    description="Stores the recordtypeName from the parent component"/>
+    <aura:attribute name="messageType" type="String" default="" 
+                    description="To fetch the Type of message from custom error message component"/>
+    <aura:attribute name="message" type="String" default="" 
+                    description="To get the message from error message component"/>
+    <!-- Below are the attribute defined for the Popups in the component -->
+    <aura:attribute name="ShowEventPopup" type="boolean" default="false" 
+                    description="To diable or enable Event Popup"/>
+    <aura:attribute name="EventMessage" type="String" default="" 
+                    description="It contains the content of popup"/>
+    <aura:attribute name="AgreeButtonLabel" type="String" default="" 
+                    description="It contains the button labels"/>
+    <aura:attribute name="DisagreeButtonLabel" type="String" default="" 
+                    description="It contains the button labels"/>
+    <aura:attribute name="PopupType" type="String" 
+                    description="It contains the type of popup"/>
+    
+    <aura:attribute name="fieldNameCurrency" type="String" default="Core_MDF_Budget_Currency_cd__c" access="global" description="Used to fetch the Global Picklist Value in Controller NZ" />
+    <!-- Attribute to control status section in the UI (Status Section Should be shown in Edit Scenario Only) -->
+    <aura:attribute name="checkStatusAttribute" type="Boolean" default ="True" />
+    <aura:attribute name="activityOwner" type="String" default="" access="global"  description="Used to fetch the Activity Owner for Internal User" ></aura:attribute>
+    <aura:attribute name="activityOwnerId" type="Id" default="" access="global"  description="Used to fetch the Activity Owner for Internal User" ></aura:attribute>
+    <aura:attribute name="activityExtOwner" type="String" default="" access="global"  description="Used to fetch the Activity Owner for External User" ></aura:attribute>
+    <aura:attribute name="activityExtOwnerId" type="Id" default="" access="global"  description="Used to fetch the Activity Owner for External User" ></aura:attribute>
+    <!-- Attribute to Store Clone Button Variable -->
+    <aura:attribute name="checkCloneAttribute" type="Boolean" default ="false" />
+    <aura:attribute name="checkCloneRecordId" type="String" default ="" />
+    <aura:attribute name="displayApprovers" type="Boolean" default ="false" />
+    <aura:attribute name="displayExtActSubmitters" type="Boolean" default ="false" />
+    <aura:attribute name="PopupButtonValue" type="boolean" default="false" 
+                    description="It stores user input of Event popup"/> 
+    <aura:attribute name="ELCPopupButtonValue" type="boolean" default="false" 
+                    description="It stores user input of ELC popup"/>
+    <!-- Below Attributes are defined for the Question Rendering -->
+    <aura:attribute name="renderPrintQuestion" type="boolean" default="false" 
+                    description="To display print releated questions based on Activity Category and type"/>
+    <aura:attribute name="renderTechExplorationQuestSection" type="boolean" default="false"
+                    description="To display Tech Exploration releated questions based on Activity Category and type" />
+    <aura:attribute name="renderGovtQuestion" type="boolean" default="false" 
+                    description="To display Event releated questions based on Activity Category and Amount"/>
+    <!--Attribute to dynamically display Activity Sub type -->
+    <aura:attribute name="activitySubTypeAvailable" type="boolean" default="false"
+                    description="To display Activity Sub Type based " />  
+    <aura:attribute name="activityEventNameApplicable" type="boolean" default="false"
+                    description="To display Activity Event Name based on Activity Type" /> 
+    <aura:attribute name="isActivityTypeChanged" type="boolean" default="false"
+                    description="To display Activity Event Name based on Activity Type" />  
+    <aura:attribute name="showOtherEventName" type="boolean" default="false"
+                    description="To display Activity Other Event based on Event Name" /> 
+    <!--Attribute for storing the Reason Value selected on the UI-->
+    <aura:attribute name="showOtherReasonName" type="boolean" default="false"
+                    description="To display Other Reason Text field based on the Reason Name" />
+    <!-- Below are the attribute defined for the File Upload Fucntionality -->
+    <aura:attribute name="Uploadfinished" type="boolean" default="false" 
+                    description="Verify whether file is uploaded or not"/>
+    <aura:attribute name="ContentDocumentIds" type="String[]" default="" 
+                    description="Stores the Uploaded Document Ids"/>
+    <aura:attribute name="fileData" type="String[]" default="" description="Stores the Uploaded Document Ids" />
+    <!-- Below attribute is for storing all the metadataMapped Records from the Custom Metadata -->
+    <aura:attribute type="Core_MDF_CCP_Custom_Metadata_Utility__c[]" name="metadataMap" 
+                    default="" description="Stores the metadata values from the server side"></aura:attribute>
+    <!-- Below attributes to handle the channel partner picklist selection -->
+    <aura:attribute name="IsCP" type="boolean" default="false" description="To hold the value whether its a CP by category and type"/>    
+    <aura:attribute name="CPLed" type="boolean" default="false" description="To hold the CP led user selected value"/>    
+    <aura:attribute name="SelChannelPartner" type="String" default="" 
+                    description="Stores the selected channel partner value from the form"/>
+    <aura:attribute name="SelIndustryPartner" type="String" default="" 
+                    description="Stores the selected channel partner value from the form"/>
+    <aura:attribute name="SelOtherChannelPartner" type="String" default="" 
+                    description="Stores the other channel partner value from the form"/>
+    <aura:attribute name="IsOtherCP" type="boolean" default="false" description="Check whether its other than regular channel partner"/>    
+    <aura:attribute name="IsPR" type="boolean" default="false" description="Check whether potential Reason is enabled" /> 
+    <aura:attribute name="IsStrategicMarketingFundVisible" type="boolean" default="false"
+                    description="Check whether the Strategic Marketing Fund is enabled" />
+   
+    <!-- EEF CSP Intel-based Revenue -->
+    <aura:attribute name="cspIntelRevVal" type="Integer" default=""
+                    description="Stores the csp intel-revenue value" />
+    <aura:attribute name="IsStartDateChanged" type="boolean" default="false" description="Check whether the start date is changed" />
+    <aura:attribute name="Countries" type="String[]" description="to store country/region"/>
+    <aura:attribute name="ActivityCategories" type="String[]" description="to store activity categories"/>
+    <aura:attribute name="ActivityTypeValues" type="String[]" description="to store activity categories"/>
+    <aura:attribute name="activityEventNameOptions" type="String[]" description="to store activity Event Name"/>
+    <aura:attribute name="SelPotentialReason" type="String" default="" description="Stores the selected Potential Reason Picklist value" />
+    <aura:attribute name="OptPotentialReason" type="String[]" description="Holds the options of Potential Reason field" />
+    <!-- Subtype Single select attrbute -->
+    <aura:attribute name="activitySubTypeValues" type="String[]" description="to store activity sub type values" />
+    <aura:attribute name="ActivityTypes" type="Map" description="to store activity types"/>
+    <aura:attribute name="EventNameMap" type="Map" description="to store activity event name"/>
+    <!--<aura:attribute name="activitySubTypes" type="Map" description="to store activity types" />-->
+    <aura:attribute name="StatusLabel" type="String[]" description="Captures the status to be displayed for user selection"/>
+    <aura:attribute name="SelectedStatus" type="String" description="It holds the status selected by user"/>
+    <aura:attribute name="CountryPicklistValues" type="String" description="Stores the Label of current currency of the activity"/>
+     <aura:attribute name="BrandPicklistValues" type="String"
+                    description="Stores the Label of current currency of the activity" />
+    <aura:attribute name="InitiativesPicklistValues" type="String"
+                    description="Stores the Label of Initiative of the activity" />
+    <aura:attribute name="IndustryPicklistValues" type="String"
+                    description="Stores the Label of Industry of the activity" />
+    <aura:attribute name="ApproverPicklistValues" type="String"/>
+    <aura:attribute name="PriApproverPicklistValues" type="String"/> <!--EEF-->
+
+    <aura:attribute name="ExtActSubmitterPicklistValues" type="String"/>
+    <aura:attribute name="countryFilter" type="String" description="Stores the Search text for country filter"/>
+	 <aura:attribute name="brandFilter" type="String" description="Stores the Search text for country filter" />
+    <aura:attribute name="approverFilter" type="String"/>
+    <aura:attribute name="approverPrimaryFilter" type="String"/>
+    <aura:attribute name="extActSubmitterFilter" type="String"/>
+    <aura:attribute name="CurrentStatus" type="String" description="Stores the api name of current status of the activity" />
+    <aura:attribute name="CurrentStatusLabel" type="String" description="Stores the Label of current currency of the activity"/>
+    <aura:attribute name="CurrentCurrencyLabel" type="String" description="Stores the Label of current status of the activity" default="USD - U.S.Dollar"/>
+    <aura:attribute name="disabledMap" type="Map" description="stores the disable status of all controls"/>
+    <aura:attribute name="ApprovalException" type="boolean" default = "false" description="Account manager edit and approval not needed"/>
+    <aura:attribute name="isEventFormTemplateVisible" type="boolean" default="false"
+                    description="Event Form Links visibility control Flag" />
+    <aura:attribute name="isIndustryPartnerFormTemplateVisible" type="boolean" default="false"
+                    description="Industry Partner Form Links visibility control Flag" />
+    <aura:attribute name="additionalAccFilter" type="String" default="" 
+                    description="To add the constructed filter based on record type for displaying the lookup(Account and Campaign) values"/>
+   
+    <!-- Attributes to defined for checking the old values for defined budget -->
+    <aura:attribute name="oldCampaignId" type="String" default=""/>
+    <aura:attribute name="oldbudget" type="Decimal" />
+    <aura:attribute name="oldcategory" type="String" />
+    <aura:attribute name="oldstatus" type="String" />
+    <aura:attribute name="oldsdate" type="Date" />
+    <aura:attribute name="oldedate" type="Date" />
+    <aura:attribute name="ChgndAttach" type="Boolean" default="false" />
+    <aura:attribute name="oldActivtyType" type="String" />
+    <!-- Variable Reimbursement Rate-->
+    <aura:attribute name="oldProdType" type="String" />
+    <!--<aura:attribute name="oldBrand" type="String" />-->
+    <aura:attribute name="oldBrandMulti" type="String[]" />
+    <!-- Attributes defined to get or store all the picklist value for PFR custom object -->
+    <aura:attribute name="TargetAudience" type="String[]" />
+    <aura:attribute name="ProductTypeValues" type="String[]"/>
+    <aura:attribute name="ProductTypes" type="Map" />
+    <aura:attribute name="BrandValues" type="String[]"/>
+    <aura:attribute name="BrandTypes" type="Map" />
+    <aura:attribute name="IsCCFBoost" type="Boolean" default="false" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="showKPISpinner" type="Boolean" default="false" />
+     <aura:attribute name="showIntelOwnerSpinner" type="Boolean" default="false" />
+    <!-- to handle the eventpop & gn questions -->
+    <aura:attribute name="goForSave" type="Boolean" default="false" />
+
+    <!-- Event Format Related Attributes -->
+    <aura:attribute name="eventFormatValues" type="String[]" />
+    <!-- Akash Ecosystem -->
+    <aura:attribute name="ecosystemAllocations" type="List" default="[]"/>
+    <aura:attribute name="eventFormats" type="Map" />
+    <aura:attribute name="enableEventFormat" type="boolean" default="false"
+                    description="To display Event Format based on Activity Category (Event)and type (not promotion)" />
+    <aura:attribute name="setEventFormatOptionOnload" type="boolean" default="false"
+                    description="To display Event Format based on Activity Category (Event)and type (not promotion)" />
+    <aura:attribute name="selectedEventFormat" type="String" default=""
+                    description="Stores the selected Event Formatvalue from the form" />
+    <!-- Event Format Related Attributes Ends-->
+    <!-- Attribute holds all the localized picklist value on the load of the page -->
+    <aura:attribute name="apitoLabelConvert" type="Map"/>
+    <!-- Attribute to check budget condition for popups and question and file upload -->
+    <aura:attribute name="recordApplicableForActivityRules" type="Boolean" default ="true" />
+    <aura:attribute name="checkbudgetcondition" type="Boolean" default ="false" />
+    <aura:attribute name="checkfileuploadcondition" type="Boolean" default ="false" />
+    <!--Attributes for Activity Tactics-->
+    <aura:attribute name="activityTacticsOptions" type="List" default="[]" description="Store available options for activity tactics field"/>
+    <aura:attribute name="selectedTacticsOptions" type="List" default="[]" description="Store selected options for activity tactics field"/>
+    <aura:attribute name="showActTactics" type="Boolean" default="false" description="Show activity tactics field based on the selected start date" />
+    <aura:attribute name="activityTacticsOptionsStored" type="List" default="[]"/>
+    <!-- Atrribute to store the userpermissions for AM,CR and External  -->
+    <aura:attribute name="userperMap" type="Map" default="{}"/>
+    <aura:attribute name="fileexceptionper" type="Boolean" default="false"/>
+    <aura:attribute name="auditorper" type="Boolean" default="false"/>
+    <aura:attribute name="externalper" type="Boolean" default="false"/>
+    <aura:attribute name="accmgrper" type="Boolean" default="false"/>
+    <aura:attribute name="rmfextuserper" type="Boolean" default="false"/>
+    <aura:attribute name="retailgeouserper" type="Boolean" default="false"/>
+    <aura:attribute name="ipaApproverPer" type="Boolean" default="false" />  
+    <aura:attribute name="rmfexternalper" type="Boolean" default="false" />
+    <aura:attribute name="userWithoutAccess" type="Boolean" default="false"/>
+    <aura:attribute name="isActivityReviewRequired" type="Boolean" default="false" />
+    <aura:attribute name="isUserCurrentIPAApprover" type="Boolean" default="false" />
+    <aura:attribute name="popVisible" type="Boolean" default="false" />
+    <aura:attribute name="existingIntelOwner" type="String" default="" />
+    <aura:attribute name="existingPriIntelOwner" type="String" default="" />
+    <aura:attribute name="existingMemberActivityOwner" type="String" default=""/>
+    <aura:attribute name="existingMemberActivityOwnerId" type="String" default=""/>
+    <!-- Variable Reimbursement Rate changes-->
+    <aura:attribute name="incentive" type="String" default="" />
+    <aura:attribute name="incentiveCriteriaId" type="String" />
+    <aura:attribute name="vrQuestion" type="String" default="" />
+    <aura:attribute name="vrOptInQuestion" type="String" default="" />
+    <aura:attribute name="cmpgnStatus" type="String" default="Draft" />
+    <!-- SPIF Attributes start -->
+    <aura:attribute name="isSPIFSecAvailable" type="Boolean" default="false" />
+    <aura:attribute name="isSPIFSecReadOnly" type="Boolean" default="true" />
+    <aura:attribute name="segmentString" type="String" default="" />
+    <aura:attribute name="tacticMetricsValues" type="Map" default="{}" /><!--CCF/DCF - Outcome-->
+    <aura:attribute name="disableCurrency" type="Boolean" default="false" 
+                    description = "used for disabling the currency field while onchange " /> 
+    <aura:attribute name="mode" type="String" default="" />
+    <aura:attribute name="isSPIFSecModified" type="Boolean" default="false" />
+    <aura:attribute name="isEEFMetricsModified" type="Boolean" default="false" />
+    <!-- SPIF Attributes end -->
+    <aura:attribute name="checkGeoLeadMetricSecEditability" type="Boolean" default="false" />
+    <aura:attribute name="activityClosureType" type="String" default="" />
+    <aura:attribute name="disableRSMMetricEditability" type="Boolean" default="false" />
+    <aura:attribute name="selAvailableBudget" type="String" default="" description="Stores the Budget Type selected from campaign" />
+    <!-- Sneha -->
+    <!--Domain Type Attributes-->
+    <aura:attribute name="SelDomainType" type="String" default="" description="Stores the selected Domain Type value"/>
+	<aura:attribute name="DomainTypeOptions" type="String[]" description="Stores the options for Domain Type picklist"/>
+	<aura:attribute name="isDomainTypeVisible" type="Boolean" default="false" description="Controls the visibility of Domain Type picklist"/>
+    
+    <!-- OPAL Attributes starts-->
+    <aura:attribute name="isBTSelAtCampaign" type="Boolean" default="false" description="To check whether the Budget type is selected at Campaign or not"/>
+    <aura:attribute name="selBudgetType" type="String" default="" description="Stores the Budget Type selected from campaign" />
+    <aura:attribute name="doInitCheck" type="Boolean" default="false" description="to determine method called from doInit" />
+    <aura:attribute name="budgetTypeVal" type="String[]" description="Map used for Global key Map value pair for Budget Type" />
+    <aura:attribute name="isCCFDCFRecType" type="Boolean" default="false" />
+    <aura:attribute name="singleBudgetType" type="Boolean" default="false" description="Set to true if only one Budget Type is selected at Campaign" />
+    <aura:attribute name="FlexiReimbursementAmt" type="String" default="" description="Flexible Reimbursement Amount" />
+    <aura:attribute name="isBudgetTypeFlexible" type="Boolean" default="false" />
+    <aura:attribute name="reimbursementRatePickValues" type="String[]" description="Stores the Reimbursement rate picklist values"/> 
+    <aura:attribute name="disableRRPercent" type="Boolean" default="false" />
+    <aura:attribute name="isOpalActivity" type="Boolean" default="false" />
+    <aura:attribute name="competetiveElement" type="String" default="false" />
+    <aura:attribute name="incentivePercent" type="String" default="false" />
+    <aura:attribute name="ActivityCategoriesMain" type="String[]" description="to store activity categories"/>
+    <!--To Control Goverment Question for Event Activity Type -->
+    <aura:attribute name="hideCompetitiveQuest" type="boolean" default="false" />
+    <aura:attribute name="isOPALApprover" type="Boolean" default="false" />
+    <aura:attribute name="newRRValue" type="Integer" default="" description="Stores the new Reimbursement Rate percent calculated value" />
+    <!-- OPAL Attributes Ends-->
+    <aura:attribute name="isOwnerInactive" type="Boolean" default="false" />
+    <aura:attribute name="intelOwnerReq" type="Boolean" default="false" /> <!--EEF-->
+    <aura:attribute name="isExtActSubmitterInactive" type="Boolean" default="false" />	
+    <aura:attribute name="isAdditionalReviewReqd" type="Boolean" default="false" />
+    <aura:attribute name="isLoggedInUserLevelOneApprover" type="Boolean" default="false" />
+    <aura:attribute name="opalAccountManagers" type="Boolean" default="false"/>
+    <aura:attribute name="priceReviewersPer" type="Boolean" default="false"/>
+    <aura:attribute name="hasIUPGMRecord" type="Boolean" default="false"/>
+    <aura:attribute name="userId" type="String" />
+    <aura:attribute name="approvalStage" type="String" />
+    <aura:attribute name="budgetAvailableFlag" type="Boolean" default="false" />
+     <aura:attribute name="clonedCampaignRecord" type="Campaign"/>
+    <!-- [IPA MDF] - Campaign - Clone a Proposal - Activity Section -->
+    <aura:attribute name="pfrCloneCheck" type="boolean" default ="false" />
+     <aura:attribute name="metricCloneVal" type="String" default ="" />
+    <aura:registerEvent name="ipaActRecClone" type="c:Core_MDF_IPAActivityClone" />
+    <!--CCF/DCF - Outcome-->
+    <aura:attribute name="IPAIntelContri" type="Integer" default=""  description="Stores the intel contribution amount"/>
+<aura:attribute type="PartnerFundRequest" name="pfrCloneOnCampaign"
+                    description="Stores the actualy field value of PFR object before Editing the record "></aura:attribute>
+     <aura:attribute name="AllInitiativeOptions" type="List" default="[]"
+                    description="This attribute holds all Initiative values for Initiative Multi Select" />
+    <aura:attribute name="selectedInitiativeOptions" type="List" default="[]" description="This attribute holds the selected value for Initiatives Multi Select"/>
+    <!-- [IPA MDF] - Campaign - Clone a Proposal - Activity Section e end-->
+ <aura:attribute name="activityAmount" type="Decimal" />
+ <aura:attribute name="isActivityLayout" type="Boolean" default="false" />
+ <aura:attribute name="isEditPlanned" type="Boolean" default="false" />
+<aura:attribute name="isIntEditPlanned" type="Boolean" default="false" />
+<aura:attribute name="isActivityCreationOnCampaign" type="Boolean" default="false"/>
+<aura:attribute name="activityCreationStartTime" type="Long" default="" description="This attribute holds the Start time when user is creating activity"/>
+<aura:attribute name="oldCompetitiveElement" type="String" default ="" />    
+    <!--EEF Attributes-->
+	<aura:attribute name="EefIntelContri" type="Integer" default="" description="Stores the intel contribution amount"/>
+    
+    <lightning:navigation aura:id="navService"/>
+    <!-- POP and Attribution attributes-->
+    <aura:attribute name="isAttributionReqVisible" type="Boolean" default="false" description="Controls the visibility of Attribution Requirements field"/>
+    <aura:attribute name="isPOPReqVisible" type="Boolean" default="false" description="Controls the visibility of POP Requiremnets field"/>
+    <!-- Handler for on change event of above attributes and fields on the form -->
+    <aura:handler name="change" value="{!v.recordtypeName}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.SelCategory}" action="{!c.resetActivtyType}" />
+    <aura:handler name="change" value="{!v.competetiveElement}" action="{!c.resetIntelContribution}" />
+    <aura:handler name="change" value="{!v.incentivePercent}" action="{!c.resetIntelContribution}" />
+    <!-- Commented below line as part to remove field Dependencies  -->
+    <aura:handler name="change" value="{!v.SelProductType}" action="{!c.resetBrand}" />
+    <aura:handler name="change" value="{!v.selectedLookUpRecord}" action="{!c.resetPicklistValues}" />
+    <aura:handler name="change" value="{!v.SelActivityType}" action="{!c.resetActTypeDepAttributes}" />
+    <aura:handler name="change" value="{!v.selActivitySubType}" action="{!c.getKPIAttributes}" />
+    <aura:handler name="change" value="{!v.selActivityEventName}" action="{!c.onEventNameChange}" />
+    <aura:handler name="change" value="{!v.SelDomainType}" action="{!c.onDomainTypeChange}" />
+    <aura:handler name="change" value="{!v.selectedPartner}" action="{!c.resetAccountattributes}" />
+    <aura:handler name="change" value="{!v.countryFilter}" action="{!c.filterCountry}" />
+    <aura:handler name="change" value="{!v.brandFilter}" action="{!c.filterBrand}" />
+    <aura:handler name="change" value="{!v.approverFilter}" action="{!c.filterApprover}" />
+    <aura:handler name="change" value="{!v.approverPrimaryFilter}" action="{!c.filterPrimaryApprover}" /> <!--EEF-->
+    <aura:handler name="change" value="{!v.extActSubmitterFilter}" action="{!c.filterExtActSubmitter}"/>
+    <!-- Fetch selected Country values and reset CPLed when a country value is selected or changed-->
+    <aura:handler name="change" value="{!v.selectedCountryOptions}" action="{!c.setCtryResetCPLed}"/>
+    <aura:handler name="change" value="{!v.selectedApproverOptions}" action="{!c.setApprover}"/>
+    <aura:handler name="change" value="{!v.selectedPrimaryApproverOptions}" action="{!c.setPrimaryApprover}"/>
+    <aura:handler name="change" value="{!v.selectedExtActSubmitterOptions}" action="{!c.setExtActSubmitter}"/>
+    <!--Handle Reason for Past dated Activity Changes-->
+    <aura:handler name="change" value="{!v.SelPotentialReason}" action="{!c.onReasonValueChange}" />
+    <!-- Variable Reimbursement Rate changes-->
+    <aura:handler name="change" value="{!v.SelBrand}" action="{!c.resetonBrandChange}" />
+    <aura:handler name="change" value="{!v.selBudgetType}" action="{!c.budgetTypeChangeOPAL}" />
+    <!--OPAL Ends-->
+	 <!--[Opal - CCF/DCF] - [OOC - P6] - Replace "Channel Partner" with "Industry Partner"-->
+     <aura:handler name="change" value="{!v.selectedIndPartnerOptions}" action="{!c.indPartnerChange}" />
+      <!-- BU Split-->
+     <aura:handler name="change" value="{!v.buSplitSelectedList}" action="{!c.busplitOnChange}" />
+    <!--SPIF Amount -->
+     <aura:handler name="change" value="{!v.SelReimbursementRate}" action="{!c.selReimbursementRateOnChange}" />
+    <!-- test code for KPI read only begins -->
+    <!--<aura:handler event="force:refreshView" action="{!c.customSave}" />-->
+    <!-- Event Handler For the PickList component values change -->
+    <aura:handler name="PicValue" event="c:Core_MDF_PickListChangeEvent" action="{!c.SetOtherCPValue}"/>   
+    <!-- Onload of the Page the values to be loaded on New and Edit Scenario -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Event Handler For the ELC Popup -->
+    <aura:handler name="ButtonClickEvent" event="c:Core_MDF_PopupButtonClick" action="{!c.hidePopup}"/>
+    <!-- Event Handler For the File Update -->
+    <aura:handler name="fileuploadcheck" event="c:Core_MDF_Activity_Upload_File_Event" action="{!c.uploadfile}"/>
+    <!-- Event Handler For Question rendering -->
+    <aura:handler name="dynamicQuestionEvt" event="c:Core_MDF_DynamicQuestionEvent" action="{!c.questions}"/>
+    
+    <!--Event Handler for Activity tactics field--><!--CCF/DCF - Outcome-->
+    <aura:handler name="change" value="{!v.selectedTacticsOptions}" action="{!c.onTacticsChange}"/>
+    
+    <!-- Variable Reimbursement Rate changes-->
+    <aura:attribute name="renderVRQuestion" type="boolean" default="false" />
+    <aura:attribute name="vrdata" type="List" default="" description="Stores the PFR VR data from server side" />
+    
+    <!-- RecordTypeSelectorComp called after save is completed -->
+    <aura:attribute name="isPropBasedCampaign" type="boolean" default="false" />
+    <aura:attribute name="ipaCloneRecd" type="boolean" default="false" />
+    <aura:attribute name="latestCategoryValues" type="String[]" description="Stores the latest values of Activity Category from Custom Setting" />
+    <aura:attribute name="oldStartDate" type="Date" description="Stores the latest values of Activity Category from Custom Setting" />
+    
+    <aura:attribute name="isReimbursementFieldBlank" type="Boolean" default="false"/> <!-- Rishabh -->
+
+    
+    <!--During multiple Save or Save and New button click avoid apex call by using this indicator-->
+    <aura:attribute name="isSaveButtonClicked" type="Boolean" default="false" />
+    
+    <aura:if isTrue = "{!v.showSpinner}" >
+        <lightning:spinner alternativeText="Loading" size="large" class = "slds-is-fixed"></lightning:spinner>
+        <div class="slds-spinner">
+        </div>
+    </aura:if>    
+    <aura:if isTrue = "{!v.showIntelOwnerSpinner}" >  
+        <lightning:spinner alternativeText="Loading" size="large"></lightning:spinner>      
+    </aura:if>
+    <aura:if isTrue="{!and(v.isSaveandNew,v.checkSaveComplete)}">
+        <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType}">
+            <c:Core_MDF_PFR_RecordTypeSelectorComp checkCommunityAttribute="{!v.checkNewCommunityAttribute}" isCampaignUrl="true" recordId="{!v.selectedLookUpRecord.Id}" campaignObject="{!v.selectedLookUpRecord}" checkSaveandNew="{!v.isSaveandNew}" />
+            <aura:set attribute="else">
+                <c:Core_MDF_PFR_RecordTypeSelectorComp checkCommunityAttribute="{!v.checkNewCommunityAttribute}" campaignObject="{!v.selectedLookUpRecord}" checkSaveandNew="{!v.isSaveandNew}" isActivityCreatedFromCamp="{!v.isActivityLayout}" />
+            </aura:set>
+        </aura:if>
+        
+        
+        
+        
+        <aura:set attribute="else">         
+            <div id="pivot"></div>
+            <!-- Page Starts Here -->
+            <!-- PAGE HEADER -->
+            <!-- Popup Message when someone tries to edit the Activity -->
+            <aura:if isTrue="{!v.isClosedActivity}">
+                <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-slide-up-saving slds-modal_small"><!--class="slds-modal slds-fade-in-open slds-modal_large"-->
+                    <div class="slds-modal__container">
+                        <!-- Heading (Header of the Modal) -->
+                        <div class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeModalClosedActivtiy }"  alternativeText="Close" />
+                            <!--<button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.closeModalClosedActivtiy}">
+                                X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                            </button>-->
+                        </div>
+                        <div class="slds-modal__content slds-p-around--medium">
+                            <div class="slds-card slds-align_absolute-center"   >
+                                <lightning:icon iconName="utility:error" variant="error"/>
+                                <div class="slds-p-around_medium slds-align_absolute-center">{!$Label.c.Core_MDF_Close_Activity_Error}</div>
+                            </div>
+                        </div>
+                        <div class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel}" onclick="{!c.closeModalClosedActivtiy}"/>
+                        </div>
+                    </div>
+                </div>
+                <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+            </aura:if>
+            
+            <lightning:layout class="slds-page-header slds-page-header--object-home" aura:id="header">
+                <lightning:layoutItem>
+                    <lightning:icon iconName="standard:partner_fund_request" class="icn" alternativeText="My Activities"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-small">
+                    <div class="page-section page-header">
+                        <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Activity_Creation_Page_Header}</h1>
+                        <h2 class="slds-text-heading--medium">My {!$Label.c.Core_MDF_Activity_Creation_Page_Header}</h2>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+            <!-- / PAGE HEADER -->
+            <!--Error Messages-->
+            <aura:if isTrue="{!empty(v.message)}">
+                <div ></div> 
+                <aura:set attribute="else">
+                    <div align="center"><c:Core_MDF_ErrorMessage type="{!v.messageType}" message="{!v.message}" /></div>   
+                </aura:set>
+            </aura:if> 
+            <!--Event and ELC Popup-->
+            <aura:if isTrue="{!v.ShowEventPopup}">
+                <c:Core_MDF_ELCPopup EventMessage="{!v.EventMessage}" AgreeLabel="{!v.AgreeButtonLabel}" DisagreeLabel="{!v.DisagreeButtonLabel}" PopupType="{!v.PopupType}" recordtypeDeveloperName="{!v.recordtypeDeveloperName}"/>
+                
+            </aura:if>
+            
+            
+            <div class="slds-card">
+                <div class="slds-p-around_large">
+                    <form class="slds-form--stacked">
+                        <!-- Status Section -->
+                        <aura:if isTrue="{!v.checkStatusAttribute}">
+                            <lightning:layout class="slds-page-header slds-page-header--object-home">
+                                <lightning:layoutItem padding="horizontal-small">
+                                    <div class="page-section page-header">
+                                        <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_ActivityStatusSection}</h1>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <!-- Fund Request Status Field-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>                       
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue="{!(v.CurrentStatus != $Label.c.Core_MDF_PFRStatus)}">
+                                        <lightning:select name="SelectStatus" label="{!$Label.c.Core_MDF_StatusLabelValue}" value="{!v.SelectedStatus}" disabled="{!v.disabledMap.frstatus}">
+                                            <option text="{!v.CurrentStatusLabel}" value=""></option>
+                                            <aura:iteration items="{!v.StatusLabel}" var="i">
+                                                <option text="{!i.label}" value="{!i.value}"></option>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                        <aura:set attribute="else">
+                                            <lightning:select name="SelectStatus" label="{!$Label.c.Core_MDF_StatusLabelValue}" value="{!v.SelectedStatus}" disabled="{!v.disabledMap.frstatus}">
+                                                <option text="{!v.CurrentStatusLabel}" value=""></option>
+                                            </lightning:select>   
+                                        </aura:set>
+                                    </aura:if>    
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>                       
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        <!-- DETAIL SECTION HEADER -->
+                        <lightning:layout class="slds-page-header slds-page-header--object-home">
+                            <lightning:layoutItem padding="horizontal-small">
+                                <div class="page-section page-header">
+                                    <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Activity_Creation_Detail_Section}</h1>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <!-- NAME AND DESCRIPTION FIELD -->	
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem> 
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <!-- ACTIVITY NAME FIELD for CCF/DCF/SPCF/CCFB/RMF Required-->
+                                <lightning:input aura:id="NewForm" label="{!$Label.c.Core_MDF_A_description_of_the_activity_to_be_performed}" name="Title"  value="{!v.newPFR.Title}" required="true" disabled="{!v.disabledMap.name}"/> 
+                            </lightning:layoutItem>  
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                <aura:if isTrue="{!v.recordtypeDeveloperName != $Label.c.Core_MDF_PFR_DescriptionRepositionRequiredRecordType}">  
+                                    <!-- DESCRIPTION FIELD for CCF/DCF/SPCF/CCFB Required-->
+                                    <lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Activity_Description}" required="true" name="Description" value="{!v.newPFR.Core_MDF_Activity_Description__c}" disabled="{!v.disabledMap.desc}" />
+                                    <aura:set attribute="else">
+                                     	<!-- DESCRIPTION FIELD for RMF-->
+                                        <lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Activity_Description}"
+                                                            required="false" name="Description" value="{!v.newPFR.Core_MDF_Activity_Description__c}"
+                                                            disabled="{!v.disabledMap.desc}" />
+                                    </aura:set>
+                                </aura:if>
+                            </lightning:layoutItem>  
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem> 
+                        </lightning:layout>
+                        
+                        <!-- START DATE AND END DATE FIELD FOR ALL PROGRAMS-->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                  largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                  largeDeviceSize="5">
+                                <lightning:input aura:id="NewForm" type="date" label="{!$Label.c.Core_MDF_Start_Date}" required="true"
+                                                 name="startDate" onchange="{!c.createAdditionalfilter}" value="{!v.newPFR.Core_MDF_Start_Date__c}"
+                                                 disabled="{!v.disabledMap.sdate}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                  largeDeviceSize="5">
+                                <lightning:input aura:id="NewForm" type="date" label="{!$Label.c.Core_MDF_End_Date}" required="true"
+                                                 name="endDate" onchange="{!c.createNewAdditionalfilter}" value="{!v.newPFR.Core_MDF_End_Date__c}"
+                                                 disabled="{!v.disabledMap.edate}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                  largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+                       
+                       
+                        <!--Retail Related changes-->                
+                        
+                        <aura:if isTrue="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail,v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType)}">
+                            <!-- CAMPAIGN LOOKUP AND  PRIORITY FIELD RMF-->                
+                            <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue="{!v.disabledMap.cmpgn}">
+                                            <lightning:input  type="text" label="{!$Label.c.Core_MDF_Campaign}"
+                                                             value="{!v.selectedLookUpRecord.Name}" disabled="true" />
+                                            <aura:set attribute="else">
+                                    <c:Core_Intel_customLookup objectAPIName="campaign" selectedRecord="{!v.selectedLookUpRecord}"
+                                                               sAdditionalFilter="{!v.additionalFilter}" label="{!$Label.c.Core_MDF_Campaign}"
+                                                               IconName="standard:campaign" disabled="{!v.disabledMap.cmpgn}"/>                    
+                                            </aura:set>
+                                        </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <lightning:select aura:id="NewForm"  name="priorityType" value="{!v.campriority}" label="{!$Label.c.Core_MDF_Priority}" required="true" disabled = "{!v.disabledMap.priority}">
+                                        <aura:iteration items="{!v.PriorType}" var="item" >
+                                            <option  value="{!item.key}" >
+                                                {!item.value}
+                                            </option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            
+                         <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail}">
+                           <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                            	<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                   
+                                   <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Initiative_nm__c"
+                                                                                  RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                                  dispLabel="{!$Label.c.Core_MDF_Initiatives_label}" disabled="{!v.disabledMap.initiative}"
+                                                                                  availableOptions="{!v.AllInitiativeOptions}" selectedOptions="{!v.selectedInitiativeOptions}" />  
+                                    
+                                    
+                               </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5" />
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1" />
+                           </lightning:layout>
+                        
+                        </aura:if>
+                            
+                            
+                            
+                            <!-- ACCOUNT and Budget Type Field RMF-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                   
+                         
+                                    <lightning:input aura:id="NewForm" type="text"  label="{!$Label.c.Core_MDF_PFR_Account}" value="{!v.selectedLookUpRecord.Core_MDF_Account__r.Name}" disabled="true" />
+				    <aura:if isTrue="{!v.isShowAllocationAmt}">
+                                        <p class="blue-fc">{!v.showAllocationAmtMsg}</p>
+				    </aura:if>
+                                </lightning:layoutItem> 
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                    <!--Budget Type-->        
+                                    <lightning:input aura:id="NewForm" type="text" label="{!$Label.c.Core_MDF_Budget_Type}" disabled="true" value="{!v.selectedLookUpRecord.Core_MDF_Budget_Type_txt__c}"  /> 
+                                </lightning:layoutItem>
+                                <!--  Available Budget -->            
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                    <lightning:select aura:id="availableBudget" name="Available Budget" value="{!v.selAvailableBudget}" label="{!$Label.c.Core_MDF_Available_Budget_Label}" required="true" onchange = "{!c.saveBudget}" disabled="{!v.disabledMap.availableBudget}" >
+                                        <option value="">{!$Label.c.Core_MDF_PFR_None_Translation}</option>
+                                        <aura:iteration items="{!v.budgetStr}" var="item">
+                                            <option value="{!item.key}"  selected="{!item.key==v.selAvailableBudget}">
+                                                {!item.value}
+                                            </option>                           
+                                        </aura:iteration>                           
+                                    </lightning:select>
+                                </lightning:layoutItem> 
+                                
+                                
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                                <aura:if isTrue="{! v.showBudgetErrorMsg}">
+                                    <lightning:layoutItem padding="around-x-small" flexibility="grow" size="12" mediumDeviceSize="12" largeDeviceSize="12">
+                                        <div align="right" class="slds-p-bottom-small">
+                                            <p class='text-right-180'>{!$Label.c.Core_MDF_No_Available_Budgets_Warning}</p>
+                                        </div>
+                                    </lightning:layoutItem>
+                                </aura:if>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem> 
+                            </lightning:layout>
+                           
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                                <!--Currency Field RMF-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                    <lightning:select aura:id="BudgetCurrency456" name="BudgetCurrency" value="{!v.budgetCurrency}"
+                                                      label="{!$Label.c.Core_MDF_Budget_Currency}" 
+                                                      disabled="{!(v.disableCurrency || v.disabledMap.budget)}"
+                                                      onchange="{!c.calculateBudgetAmount}">
+                                        
+                                        <aura:iteration items="{!v.currMap}" var="item">
+                                            <aura:if isTrue="{!((not(empty(v.newPFR.Id))) || (v.checkCloneAttribute))}"><!-- Edit and Clone to get the data from PFR  -->
+                                                <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">
+                                                    {!item.value}
+                                                </option>
+                                                <aura:set attribute="else"><!-- For New, USD is default  -->
+                                                    <option value="{!item.key}" selected="{!item.key == 'USD'}">
+                                                        {!item.value}
+                                                    </option>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:iteration>
+                                    </lightning:select></lightning:layoutItem>
+                                <!--Activity Spending Limit Local Field RMF-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                    <lightning:input aura:id="BudgetAmount" type="number" label="{!$Label.c.Core_MDF_Budget_Amount}" required="true" name="BudgetAmount" onblur = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.disabledMap.budget}"/>                    
+                                    <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}">
+                                       <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
+                                    </aura:if>
+                                     </lightning:layoutItem>
+                                <!--Reimbursement Rate picklist field RMF--> 
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">                        
+                                    <aura:if isTrue = "{!v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail}">                                                                  
+                                        <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_Reimbursement_Rate_pct__c" ParentId="" 
+                                                                     recTypeName="{!v.recordtypeName}" ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                     selectedValue = "{!v.SelReimbursementRate}"
+                                                                     options="{!v.ReimbursementRateVal}" dispLabel="{!$Label.c.Core_MDF_Reimbursement_Rate}" disabled="{!v.disabledMap.reimbursement}"/>                                                              
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>             				                    
+                            </lightning:layout>
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                    <!--Reason for Past Dated Activity field RMF--> 
+                                    <aura:if isTrue="{!and(v.IsPR,not(v.externalper))}">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                        largeDeviceSize="5">
+                                        <c:Core_Intel_customPicklist objName="PartnerFundRequest"
+                                                                     fldName="Core_MDF_ReasonforPastDatedActivity_Nm__c" ParentId="" recTypeName="{!v.recordtypeName}"
+                                                                     ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                     selectedValue="{!v.SelPotentialReason}" options="{!v.OptPotentialReason}" 
+                                                                     dispLabel="{!$Label.c.Core_MDF_Reason_for_Past_Dated_Activity}" disabled="{!v.disabledMap.sdate}" />  
+                                    </lightning:layoutItem> 
+                                    <!--Check if the value selected for Reason field is Other-->
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                    largeDeviceSize="5">
+                                    <aura:if isTrue="{!v.showOtherReasonName}">
+                                        <lightning:input aura:id="otherReason" type="text"  label="{!$Label.c.Core_MDF_Other_Reason_Name}" 
+                                                        value="{!v.newPFR.Core_MDF_Other_Reason_nm_txt__c}" onchange="{!c.handleOtherReason}" required = "true"/>
+                                    </aura:if>
+                                    </lightning:layoutItem>
+                                    </aura:if>  
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                               
+                            </lightning:layout>
+                            <aura:set attribute="else">
+                                <!-- Field Display Section for CCF/DCF/SPCF/CCFB -->
+                                <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign))}">
+                                    <!-- CAMPAIGN LOOKUP AND  PRIORITY FIELD -->                
+                                    <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                            <!-- CCF/DCF Campaign Field -->
+                                            <aura:if isTrue="{!v.disabledMap.cmpgn}">
+                                            <lightning:input  type="text" label="{!$Label.c.Core_MDF_Campaign}"
+                                                             value="{!v.selectedLookUpRecord.Name}" disabled="true" />
+                                            <aura:set attribute="else">
+                                            <c:Core_Intel_customLookup objectAPIName="campaign" selectedRecord="{!v.selectedLookUpRecord}"
+                                                                       sAdditionalFilter="{!v.additionalFilter}" label="{!$Label.c.Core_MDF_Campaign}"
+                                                                       IconName="standard:campaign" disabled="{!v.disabledMap.cmpgn}"/>                    
+                                            </aura:set>
+                                        </aura:if>
+                                        </lightning:layoutItem>
+                                          <aura:if isTrue="{!and(or(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF, v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF)),and(v.selectedLookUpRecord.Core_MDF_Opal_Budget_Type_Txt__c != 'CCF 1.0',v.selectedLookUpRecord.Core_MDF_Opal_Budget_Type_Txt__c != 'DCF 1.0'))}">
+                                            <!--CCF/DCF Priority Field except for Legacy Budgets -->
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                                <lightning:select aura:id="NewForm" name="priorityType" value="{!v.campriority}"
+                                                                  label="{!$Label.c.Core_MDF_Priority}" required="true" disabled="{!v.disabledMap.priority}">
+                                                    <aura:iteration items="{!v.PriorType}" var="item">
+                                                        <option value="{!item.key}">
+                                                            {!item.value}
+                                                        </option>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                        </lightning:layoutItem>
+                                         <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+           
+                                                 <aura:set attribute="else">
+                                                       <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                                        <lightning:input aura:id="NewForm" type="text" label="{!$Label.c.Core_MDF_Priority}" required="true"
+                                                                         disabled="true" value="{!v.selectedLookUpRecord.Core_MDF_Priority__c}" />
+
+                                                    </lightning:layoutItem>
+                                                    <!--</aura:if>-->
+                                     <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+													 </aura:set>
+                                                         </aura:if>
+                                    </lightning:layout>
+                                    <!-- CHANNEL PARTNER AND BUDGET FIELDS SECTION -->
+                                    <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                            <!-- [OPAL CCF/DCF] - Activity - Account Name not editable once Activity is created - start -->
+                                            <aura:if isTrue="{!and(v.recordId != null, and(v.isOpalActivity, not(v.checkCloneAttribute)))}">
+                                                <lightning:input aura:id="NewForm" type="text" label="{!$Label.c.Core_MDF_Channel_Partner}" value="{!v.selectedPartner.Name}" disabled="true"/>
+                                                <aura:set attribute="else">
+                                                    <c:Core_Intel_customLookup objectAPIName="Account" selectedRecord="{!v.selectedPartner}"
+                                                          sAdditionalFilter="{!v.additionalAccFilter}" label="{!$Label.c.Core_MDF_Channel_Partner}"
+                                                          IconName="standard:account" disabled="{!v.disabledMap.acct}"/>
+                                                </aura:set>
+                                            </aura:if>
+					     			<!--[OPAL CCF/DCF] - Activity - Account Name not editable once Activity is created - end -->
+                                             <aura:if isTrue="{!v.isShowAllocationAmt}">
+                                                          
+                                                <p class='blue-fc'>{!v.showAllocationAmtMsg}</p>
+                                             </aura:if>
+                                        </lightning:layoutItem> 
+                                        <!--OPAL changes Budget Type for CCF/DCF Programs starts -->
+                                        <aura:if isTrue="{!and(or(v.showBudgetTypeFields,and(v.isBTSelAtCampaign, v.isCCFDCFRecType)),or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF))}">                                        
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                                <!--Budget Type-->        
+                                                <lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}" label="{!$Label.c.Core_MDF_Budget_Type}" disabled="{!v.singleBudgetType}" required="true" >
+                                                    <option value="">{!$Label.c.Core_MDF_PFR_None_Translation}</option>
+                                                    <aura:iteration items="{!v.budgetTypeVal}" var="item">
+                                                        <option value="{!item.key}">
+                                                            {!item.value}
+                                                        </option>                           
+                                                    </aura:iteration>                          
+                                                </lightning:select>
+                                            </lightning:layoutItem>
+                                            <!--  Available Budget -->            
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                                <lightning:select aura:id="availableBudget" name="Available Budget" value="{!v.selAvailableBudget}" label="{!$Label.c.Core_MDF_Available_Budget_Label}" required="true" onchange = "{!c.saveBudget}" disabled="{!v.disabledMap.availableBudget}" >
+                                                    <option value="">{!$Label.c.Core_MDF_PFR_None_Translation}</option>
+                                                    <aura:iteration items="{!v.budgetStr}" var="item">
+                                                        <option value="{!item.key}"  selected="{!item.key==v.selAvailableBudget}">
+                                                            {!item.value}
+                                                        </option>                           
+                                                    </aura:iteration>                           
+                                                </lightning:select>
+                                            </lightning:layoutItem> 
+                                            
+                                            
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                                            <aura:if isTrue="{! v.showBudgetErrorMsg}">
+                                                <lightning:layoutItem padding="around-x-small" flexibility="grow" size="12" mediumDeviceSize="12" largeDeviceSize="12">
+                                                    
+                                                    <div align="right" class="slds-p-bottom-small">
+                                                        <p class='text-right-180'>{!$Label.c.Core_MDF_No_Available_Budgets_Warning}</p>
+                                                        
+                                                    </div>
+                                                </lightning:layoutItem>
+                                            </aura:if>
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                                            
+                                            
+                                            
+                                        </aura:if>
+                                        
+                                        <!--OPAL changes Budget Type for CCF/DCF Programs ends -->
+                                        <!-- Budget Currency Section -->
+                                     <!--Currency Field --> 
+                                        <!--EEF - Budget Type and Available Budget fields-->
+                                        <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType}">
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                                <lightning:select aura:id="NewForm" name="BudgetType" value="{!v.selBudgetType}" label="{!$Label.c.Core_MDF_Budget_Type}"  required="true" >
+                                                <option value="">{!$Label.c.Core_MDF_PFR_None_Translation}</option>
+                                                    <aura:iteration items="{!v.budgetTypeVal}" var="item">
+                                                        <option value="{!item.key}" selected="{!item.key==v.selBudgetType}">
+                                                            {!item.value}
+                                                        </option>                           
+                                                    </aura:iteration>                          
+                                            </lightning:select>
+                                            
+                                        </lightning:layoutItem>
+                                                        
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                            <lightning:select aura:id="availableBudget" name="Available Budget" value="{!v.selAvailableBudget}" label="{!$Label.c.Core_MDF_Available_Budget_Label}" required="true" onchange = "{!c.saveBudget}" disabled="{!v.disabledMap.availableBudget}" >
+                                            <option value="">{!$Label.c.Core_MDF_PFR_None_Translation}</option>
+                                                <aura:iteration items="{!v.budgetStr}" var="item">
+                                                    <option value="{!item.key}" selected="{!item.key==v.selAvailableBudget}" >
+                                                        {!item.value}
+                                                    </option>                           
+                                                </aura:iteration>                           
+                                            </lightning:select>
+                                        
+                                               </lightning:layoutItem>
+                                          
+
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>        
+                                       <aura:if isTrue="{!v.showBudgetErrorMsg}">
+										<lightning:layoutItem padding="around-x-small" flexibility="grow" size="12" mediumDeviceSize="12" largeDeviceSize="12">
+                                                  
+                                                  <!--div class="slds-text-align_right"-->
+                                            <div align="right" class="slds-p-bottom-small">
+                                                        <p class='text-right-180'>{!$Label.c.Core_MDF_No_Available_Budgets_Warning}</p>
+                                                        <!--/div-->
+                                            </div>
+                                              </lightning:layoutItem>
+                                              </aura:if>      
+                                     </aura:if>
+                                        <aura:if isTrue="{!(v.recordtypeDeveloperName != $Label.c.Core_MDF_EEF_RecordType)}">
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                            <lightning:select aura:id="BudgetCurrency456" name="BudgetCurrency" value="{!v.budgetCurrency}"
+                                                              label="{!$Label.c.Core_MDF_Budget_Currency}" 
+                                                              disabled="{!(v.disableCurrency || v.disabledMap.budget)}"
+                                                               onchange="{!c.calculateBudgetAmount}">
+                                                				
+                                                <aura:iteration items="{!v.currMap}" var="item">
+                                                    <aura:if isTrue="{!((not(empty(v.newPFR.Id))) || (v.checkCloneAttribute))}"><!-- Edit and Clone to get the data from PFR  -->
+                                                        <!-- Edit and Clone to get the data from PFR  -->
+                                                        <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">
+                                                            {!item.value}
+                                                        </option>
+                                                        <aura:set attribute="else"><!-- For New, USD is default  -->
+                                                            <option value="{!item.key}" selected="{!item.key == 'USD'}">
+                                                                {!item.value}
+                                                            </option>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </lightning:layoutItem>
+                                        <!--Activity Spending Limit Local CCF/DCF -->
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                            <lightning:input aura:id="BudgetAmount" type="number" label="{!$Label.c.Core_MDF_Budget_Amount}" required="true" name="BudgetAmount" onblur = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.disabledMap.budget}"/> 
+                                            <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}">
+                                                <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
+                                            </aura:if>
+                                        </lightning:layoutItem>
+                                        <aura:if isTrue="{!and(not(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType),v.isBTSelAtCampaign, v.isCCFDCFRecType, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF))}">
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="2.5" largeDeviceSize="2.5">
+                                                <aura:if isTrue="{!(not(v.isPropBasedCampaign)|| (v.selBudgetType == $Label.c.Core_MDF_BudgetType_CMP) || (v.selBudgetType == $Label.c.Core_MDF_BudgetType_MDF) || (v.selBudgetType == $Label.c.Core_MDF_BudgetType_MDFPlus) || (v.selBudgetType == $Label.c.Core_MDF_BudgetType_SP_CMP))}">
+                                                    <!--Reimbursement Rate CCF/DCF -->
+                                                    <aura:if isTrue="{!and(v.selAvailableBudget != null, v.selAvailableBudget !='')}">
+                                                        <c:Core_Intel_customPicklist objName="PartnerFundRequest"
+                                                                                     fldName="Core_MDF_Reimbursement_Rate_pct__c" ParentId="" recTypeName="{!v.recordtypeName}"
+                                                                                     ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                                     selectedValue="{!v.SelReimbursementRate}" options="{!v.ReimbursementRateVal}"
+                                                                                     dispLabel="{!$Label.c.Core_MDF_Reimbursement_Rate_Label}" disabled= "{!v.disableRRPercent}" />
+                                                    </aura:if>
+                                                    
+                                                </aura:if>
+                                            </lightning:layoutItem>
+                                            <!-- MDF Reimbursement Amount (USD) CCF/DCF-->
+                                            <aura:if isTrue="{!v.externalper}">
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                                    <aura:if isTrue="{!v.isBudgetTypeFlexible}">
+                                                        <lightning:input aura:id="NewForm" type="number" label="{!$Label.c.Core_MDF_Flexible_Reimbursement_Amount}"
+                                                                        required="false" name="FlexibleReimbursementAmt" value="{!v.FlexiReimbursementAmt}"
+                                                                        min="0" step="any" onchange="{!c.calculateFlexibleRR}" disabled="true" />
+                                                        
+                                                    </aura:if>
+                                                </lightning:layoutItem>
+                                            </aura:if>
+
+                                            <!-- MDF Reimbursement Amount (USD) CCF/DCF-->
+                                            <aura:if isTrue="{!not(v.externalper)}">
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                                <aura:if isTrue="{!v.isBudgetTypeFlexible}">
+                                                    <lightning:input aura:id="NewForm" type="number" label="{!$Label.c.Core_MDF_Flexible_Reimbursement_Amount}"
+                                                                     required="false" name="FlexibleReimbursementAmt" value="{!v.FlexiReimbursementAmt}"
+                                                                     min="0" step="any" onchange="{!c.calculateFlexibleRR}" disabled="{!v.disabledMap.mdfReimbAmnt}" />
+                                                    
+                                                </aura:if>
+                                            </lightning:layoutItem>
+                                            </aura:if>
+                                            <aura:set attribute="else">
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="2.5" largeDeviceSize="2.5"></lightning:layoutItem>
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                            </aura:set>
+                                        </aura:if>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem> 
+                                       </aura:if>
+                                    </lightning:layout>
+                                    <aura:if isTrue="{!(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType)}">
+                                            <lightning:layout>
+                                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                                	<lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                            <lightning:select aura:id="BudgetCurrency456" name="BudgetCurrency" value="{!v.budgetCurrency}"
+                                                              label="{!$Label.c.Core_MDF_Budget_Currency}" 
+                                                              disabled="{!v.disabledMap.budget}" onchange="{!c.calculateBudgetAmount}">
+                                                <aura:iteration items="{!v.currMap}" var="item">
+                                                    <aura:if isTrue="{!((not(empty(v.newPFR.Id))) || (v.checkCloneAttribute))}"><!-- Edit and Clone to get the data from PFR  -->
+                                                        <option value="{!item.key}" selected="{!item.key == v.newPFR.Core_MDF_Budget_Currency_cd__c}">
+                                                            {!item.value}
+                                                        </option>
+                                                        <aura:set attribute="else"><!-- For New, USD is default  -->
+                                                            <option value="{!item.key}" selected="{!item.key == 'USD'}">
+                                                                {!item.value}
+                                                            </option>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </lightning:layoutItem>
+                                                
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                                    <lightning:input aura:id="BudgetAmount" type="number" label="{!$Label.c.Core_MDF_Budget_Amount}" required="true" name="BudgetAmount" onblur = "{!c.calculateBudgetAmount}" value="{!v.BudgetLocal}" min="0" step="any" disabled="{!v.disabledMap.budget}"/> 
+                                                    <aura:if isTrue="{!v.showErrorMsgForSpendingLimit}">
+                                                        <p class= "red-fc">{!v.ErrorMsgForSpendingLimit}</p>  
+                                                    </aura:if>
+                                        </lightning:layoutItem>
+                                          <lightning:layoutItem padding="around-small" flexibility="grow" size="2" smallDeviceSize="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                           
+                                               <lightning:input aura:id="IntelContribution" type="number" step="0.01" label="{!$Label.c.Core_MDF_IntelContribution}" required="false" name="Contribution" value="{!v.EefIntelContri}" disabled="true" /> 
+                                           
+                                        </lightning:layoutItem>
+                                                 <lightning:layoutItem padding="around-small" flexibility="grow" size="3" smallDeviceSize="3" mediumDeviceSize="3" largeDeviceSize="3">
+                                                 
+                                                 <lightning:input aura:id="NewForm" type="number" step="0.01" label="{!$Label.c.Core_MDF_CSP_Intel_Based_Revenue}"
+                                                                     value="{!v.cspIntelRevVal}" onblur = "{!c.validateCSPAmt}" required="true" fieldLevelHelp="{!$Label.c.Core_MDF_CSPIntelBased_hlpText}" disabled="{!v.disabledMap.cspIntelRevenue}" maxlength="16"/>
+                                                    
+                                                    <aura:if isTrue = "{!v.showErrorMsgForCSPRevAmt}">
+                                                    <p class="red-fc"><lightning:formattedText  value="{!v.ErrorMsgForCSPAmt}"/></p>    
+                                                    
+                                                </aura:if>                                           
+                                        </lightning:layoutItem>
+                                                
+   												<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                            
+                                            </lightning:layout>
+                                        
+                                        </aura:if>
+                                     <!-- Start-EEF End Customer and Opportunity ID field -->
+
+                                    
+                                    <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType}">
+                                        <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                                  largeDeviceSize="1"></lightning:layoutItem>
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                                  largeDeviceSize="5" >
+                                                
+                                                <lightning:input aura:id="NewForm"
+                                                                 label="{!$Label.c.Core_MDF_End_Customer}" name="Core_MDF_End_Customer_txt__c"
+                                                                 value="{!v.newPFR.Core_MDF_End_Customer_txt__c}" required="false" disabled="{!v.disabledMap.endCustomer}" />
+                                                
+                                                
+                                            </lightning:layoutItem>
+                                            
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                                  largeDeviceSize="5" >
+                                                <aura:if isTrue="{!not(v.externalper)}">
+                                                    <lightning:input aura:id="opportunityId" label="Opportunity ID" required="false"
+                                                                     name = "OpportunityId" value = "{!v.newPFR.Core_MDF_Opportunity_id__c}" disabled="{!v.disabledMap.OppId}" onblur = "{!c.validateOppId}" onchange = "{!c.handleOpportunityId}" maxlength="18"/>
+                                                    <aura:if isTrue="{!v.isInvalidOppId}">
+                                                        <p class= "red-fc">{!$Label.c.Core_MDF_OpportunityID_Error}</p>  
+                                                    </aura:if>
+                                                </aura:if>
+                                            </lightning:layoutItem>
+                                            
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                                  largeDeviceSize="1"></lightning:layoutItem>
+                                        </lightning:layout>
+                                    </aura:if>
+                                    
+                                    <!-- End-EEF End Customer and Opportunity ID field -->
+                                    <!--Member Acceptor Section CCF/DCF/EEF--> 
+                                    <!--Member Acceptor Filter Field followed by Member Acceptor Field -->
+                                    <aura:if isTrue="{!OR(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType,and(v.isBTSelAtCampaign,v.isCCFDCFRecType, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF)))}">
+                                            
+                                        <aura:if isTrue="{!v.displayExtActSubmitters}">
+                                            <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                                    <!-- Multi-Select Submitter --> 
+                                                    <lightning:input type="text" value="{!v.extActSubmitterFilter}" label="{!$Label.c.Core_MDF_Member_Acceptor_Filter}"  disabled="{!v.disabledMap.extSubmitter}"/>
+                                                    <br></br>
+                                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Member_Acceptor_Id__c"
+                                                                                          RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                                          dispLabel="{!$Label.c.Core_MDF_Member_Acceptor}"
+                                                                                          availableOptions = "{!v.AllExtActSubmitterOptions}" selectedOptions = "{!v.selectedExtActSubmitterOptions}" disabled="{!v.disabledMap.extSubmitter}"/>
+                                                </lightning:layoutItem>
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                                      largeDeviceSize="5"></lightning:layoutItem>
+                                            </lightning:layout>
+                                            
+                                        </aura:if>
+                                    </aura:if>                                                
+                                    <!--Member Owner text field CCF/DCF/EEF-->
+                                    <aura:if isTrue="{!OR(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType,and(v.isCCFDCFRecType, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName ==$Label.c.Core_MDF_PFR_DCF)))}">	
+                                        <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                                  largeDeviceSize="1"></lightning:layoutItem>
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                                <lightning:input aura:id="NewForm"
+                                                                 label="{!$Label.c.Core_MDF_Member_Owner}" name="Core_MDF_Member_Owner_txt__c"
+                                                                 value="{!v.newPFR.Core_MDF_Member_Owner_txt__c}" required="false" disabled="{!v.disabledMap.memberOwner}" />
+                                            </lightning:layoutItem>
+                                            
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                                  largeDeviceSize="1"></lightning:layoutItem>
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                                  largeDeviceSize="5"></lightning:layoutItem>
+                                        </lightning:layout>
+                                        
+                                        
+                                    </aura:if> 
+                                    <!--- Strategic Marketing Fund and Reason for Past Dated Activity CCF/DCF-->
+                                    <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                              largeDeviceSize="1"></lightning:layoutItem>
+                                        <!-- Strategic Marketing Fund Checkbox field CCF/DCF -->
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                              largeDeviceSize="5">
+                                            <aura:if isTrue="{!(v.IsStrategicMarketingFundVisible)}">  
+                                                <lightning:input type="checkbox" name="StrategicMarketingFund" 
+                                                                 label="{!$Label.c.Core_MDF_Strategic_Marketing_Fund}" 
+                                                                 aura:id="NewForm" 
+                                                                 checked="{!v.selectedLookUpRecord.Core_MDF_Strategic_Marketing_Fund_Ind__c}" 
+                                                                 disabled="true"/>
+                                            </aura:if> 
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6"
+                                            largeDeviceSize="6"></lightning:layoutItem>
+                                    </lightning:layout>   
+                                        <!--Reason for Past Dated Activity Field CCF/DCF-->
+                                    <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                        largeDeviceSize="1"></lightning:layoutItem>  
+                                            <aura:if isTrue="{!and(v.IsPR,not(v.externalper))}">
+                                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                largeDeviceSize="5">
+                                                <c:Core_Intel_customPicklist objName="PartnerFundRequest"
+                                                                             fldName="Core_MDF_ReasonforPastDatedActivity_Nm__c" ParentId="" recTypeName="{!v.recordtypeName}"
+                                                                             ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                             selectedValue="{!v.SelPotentialReason}" options="{!v.OptPotentialReason}" 
+                                                                             dispLabel="{!$Label.c.Core_MDF_Reason_for_Past_Dated_Activity}" disabled="{!v.disabledMap.sdate}" /> 
+                                            </lightning:layoutItem> 
+                                                <!--Check if the value selected for Reason field is Other-->
+                                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                largeDeviceSize="5">
+                                                <aura:if isTrue="{!v.showOtherReasonName}">
+                                                    <lightning:input aura:id="otherReason" type="text"  label="{!$Label.c.Core_MDF_Other_Reason_Name}" 
+                                                                        value="{!v.newPFR.Core_MDF_Other_Reason_nm_txt__c}" onchange="{!c.handleOtherReason}" required = "true"/>
+                                                </aura:if> 
+                                                </lightning:layoutItem>
+                                            </aura:if>  
+                                        <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                              largeDeviceSize="1"></lightning:layoutItem>
+                                    </lightning:layout>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+                        
+                        <!--DETAIL SECTION END FOR ALL PROGRAMS --> 
+                        
+                        <!-- ADDITIONAL DETAIL SECTION START -->
+                        <lightning:layout class="slds-page-header slds-page-header--object-home">
+                            <lightning:layoutItem padding="horizontal-small">
+                                <div class="page-section page-header">
+                                    <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Activity_Creation_Additional_Section}</h1>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign))}">
+                            <!-- Sales & Marketing Guidebook Link-->
+                             <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType}">
+                                 <div class="c-container">
+                                     <lightning:layout horizontalAlign="left" multipleRows="true">
+                                         
+                                         <lightning:layoutItem size="10" smallDeviceSize="10" mediumDeviceSize="8" largeDeviceSize="8" padding="around-small">
+                                             
+                                             <a href="{!$Label.c.Core_MDF_EEF_Link_Click_Here}" target="_blank">{!$Label.c.Core_MDF_Click_here}</a>&nbsp;{!$Label.c.Core_MDF_Link_Sales_and_Marketing}
+                                         </lightning:layoutItem>
+                                         
+                                     </lightning:layout>
+                                 </div> 
+                                 <aura:set attribute="else">
+                                    <div class="c-container" style="padding-top: 15px; padding-left: 15px;">
+                                
+                                        <lightning:layout horizontalAlign="left" multipleRows="true">
+                                    
+                                            <lightning:layoutItem size="10" smallDeviceSize="10" mediumDeviceSize="8" largeDeviceSize="8" >
+                                        
+                                                <a href="{!$Label.c.Core_MDF_Link_Click_Here}" target="_blank">{!$Label.c.Core_MDF_Click_here}</a>&nbsp;{!$Label.c.Core_MDF_Link_Sales_and_Marketing}
+                                            </lightning:layoutItem>
+                                    
+                                        </lightning:layout>
+                                        <lightning:layout horizontalAlign="left" multipleRows="true">
+                                    
+                                            <lightning:layoutItem size="10" smallDeviceSize="10" mediumDeviceSize="8" largeDeviceSize="8" >
+                                        
+                                                <a href="{!$Label.c.Core_MDF_Outcome_Link_Click_Here}" target="_blank">{!$Label.c.Core_MDF_Click_here}</a>&nbsp;{!$Label.c.Core_MDF_Outcome_Link_Sales_and_Marketing}
+                                            </lightning:layoutItem>
+                                    
+                                         </lightning:layout>
+                                    </div>
+                                 </aura:set>
+                            </aura:if>
+                            <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <!--- Country filter Field CCF/DCF/RMF-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <lightning:input type="text" value="{!v.countryFilter}" label="{!$Label.c.Core_MDF_Country_Filter}" disabled="{!v.disabledMap.country}" />
+                                </lightning:layoutItem>
+                                <!--Target Audience Field CCF/DCF/RMF-->
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue = "{!empty(v.selectedLookUpRecord.Id)}">
+                                        <aura:if isTrue = "{!((v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF)|| not(v.isPropBasedCampaign) ||(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF_Boost))}">
+                                            <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_TargetAudience__c" 
+                                                                         ParentId="" recTypeName="{!v.recordtypeName}" ParentfldName="" 
+                                                                         recTypeDevName="{!v.recordtypeDeveloperName}" selectedValue="{!v.SelTargetAudience}"
+                                                                         dispLabel="{!$Label.c.Core_MDF_Target_Audience}" disabled="{!v.disabledMap.audience}"
+                                                                         options = "{!v.TargetAudience}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                            
+                                            <aura:set attribute="else">
+                                                <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_TargetAudience__c" 
+                                                                             ParentId="" ParentfldName="" recTypeName="{!v.recordtypeName}" 
+                                                                             selectedValue="{!v.SelTargetAudience}" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                             dispLabel="{!$Label.c.Core_MDF_Target_Audience}"
+                                                                             disabled="{!v.disabledMap.audience}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                            </aura:set>
+                                        </aura:if>
+                                        <aura:set attribute="else"> 
+                                            <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_TargetAudience__c" ParentId="{!v.selectedLookUpRecord.Id}" 
+                                                                         recTypeName="{!v.recordtypeName}" ParentfldName="Core_MDF_Audience__c" 
+                                                                         selectedValue="{!v.SelTargetAudience}" 
+                                                                         dispLabel="{!$Label.c.Core_MDF_Target_Audience}" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                         disabled="{!v.disabledMap.audience}"
+                                                                         options = "{!v.TargetAudience}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                        </aura:set>
+                                    </aura:if>             
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        
+                        
+                        
+                        <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign))}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5">
+                                    <!-- Multi-Select COUNTRY Field CCF/DCF/RMF--> 
+                                    <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Country_nm__c"
+                                                                          RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                          dispLabel="{!$Label.c.Core_MDF_Market}" disabled="{!v.disabledMap.country}"
+                                                                          availableOptions = "{!v.AllCountryOptions}" selectedOptions = "{!v.selectedCountryOptions}"/> 
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5" />
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1" />
+                            </lightning:layout>
+                            
+                        </aura:if>
+                        <!--BRAND MULTISELECT FIELD CCF/DCF/CCFB/SPCF/RMF-->
+                        <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign))}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue="{!empty(v.selectedLookUpRecord.Id)}">	
+                                        <!--aura:if isTrue = "{!((v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF)||(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF_Boost) || not(v.isPropBasedCampaign))}"-->
+                                        <aura:if isTrue="{!((v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF) || (v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF_Boost))}">
+                                            
+                                            
+                                            <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Brand_nm__c"
+                                                                                  RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                                  dispLabel="{!$Label.c.Core_MDF_Brand}" disabled="{!v.disabledMap.brand}"
+                                                                                  availableOptions="{!v.AllBrandOptions}" selectedOptions="{!v.selectedBrandOptions}" />
+                                            <aura:set attribute="else">
+                                                
+                                                <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Brand_nm__c"
+                                                                                      RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                                      dispLabel="{!$Label.c.Core_MDF_Brand}" disabled="{!v.disabledMap.brand}"
+                                                                                      />  
+                                                
+                                            </aura:set>
+                                        </aura:if> 
+                                        <aura:set attribute="else">
+                                            
+                                            <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Brand_nm__c"
+                                                                                  RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                                  dispLabel="{!$Label.c.Core_MDF_Brand}" disabled="{!v.disabledMap.brand}"
+                                                                                  availableOptions="{!v.AllBrandOptions}" selectedOptions="{!v.selectedBrandOptions}" />   
+                                            
+                                        </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5" />
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1" />
+                            </lightning:layout>
+                        </aura:if>
+                        
+                        
+                        
+                        <!-- PRODUCT TYPE FIELD ALL PROGRAM-->			
+                        <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign))}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true"> 
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">   
+                                    <aura:if isTrue = "{!empty(v.selectedLookUpRecord.Id)}">
+                                        <aura:if isTrue = "{!((v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF)||(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF_Boost) || not(v.isPropBasedCampaign))}">
+                                            <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_ProductType__c" ParentId="" 
+                                                                         ParentfldName="" recTypeName="{!v.recordtypeName}" 
+                                                                         selectedValue="{!v.SelProductType}" dispLabel="{!$Label.c.Core_MDF_Product_Type}" 
+                                                                         recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                         controllingvalue="{!v.SelTargetAudience}" disabled="{!v.disabledMap.prodtype}"
+                                                                         options = "{!v.ProductTypeValues}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                            <aura:set attribute="else">
+                                                <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_ProductType__c" 
+                                                                             ParentId="" ParentfldName="" recTypeName="{!v.recordtypeName}" 
+                                                                             selectedValue="{!v.SelProductType}" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                             dispLabel="{!$Label.c.Core_MDF_Product_Type}" controllingvalue="{!v.SelTargetAudience}"
+                                                                             disabled="{!v.disabledMap.prodtype}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                            </aura:set>
+                                        </aura:if>
+                                        <aura:set attribute="else"> 
+                                            <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_ProductType__c" 
+                                                                         ParentId="{!v.selectedLookUpRecord.Id}" ParentfldName="Core_MDF_Product_Type__c" 
+                                                                         recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelProductType}" 
+                                                                         dispLabel="{!$Label.c.Core_MDF_Product_Type}" disabled="{!v.disabledMap.prodtype}"
+                                                                         controllingvalue="{!v.SelTargetAudience}" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                         options = "{!v.ProductTypeValues}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                        </aura:set>
+                                    </aura:if>                    
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5" />
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1" />
+                            </lightning:layout> 
+                        </aura:if>
+                        
+                        
+                        <!-- ACTIVITY CATEGORY AND ACTIVITY TYPE FIELD -->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">   
+                                <!--ACTIVITY CATEGORY FIELD--> 
+                                <aura:if isTrue="{!(empty(v.selectedLookUpRecord.Id) || (v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType) || v.isPropBasedCampaign)}">
+                                    <!-- Activity Category and Type non-dependency on Campaign selection -->
+                                    <aura:if
+                                             isTrue="{!((v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail) || (v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType) || (v.isPropBasedCampaign))}">
+                                        <!--     <aura:if isTrue = "{!v.recordtypeName == $Label.c.Core_MDF_CCF_RecordType}"> -->                                                       
+                                        <c:Core_Intel_customPicklist aura:id="activityCat" objName="PartnerFundRequest" fldName="Core_MDF_ActivityCategory__c" 
+                                                                     ParentId="" ParentfldName="" recTypeName="{!v.recordtypeName}" 
+                                                                     selectedValue="{!v.SelCategory}" 
+                                                                     dispLabel="{!$Label.c.Core_MDF_Activity_Category}" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                     options = "{!v.ActivityCategories}" disabled="{!v.disabledMap.category}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                        <aura:set attribute="else">
+                                            <c:Core_Intel_customPicklist aura:id="activityCat" objName="PartnerFundRequest" fldName="Core_MDF_ActivityCategory__c" 
+                                                                         ParentId="" ParentfldName="" recTypeName="{!v.recordtypeName}" 
+                                                                         selectedValue="{!v.SelCategory}" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                         dispLabel="{!$Label.c.Core_MDF_Activity_Category}"
+                                                                         disabled="{!v.disabledMap.category}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                        </aura:set>
+                                    </aura:if>
+                                    <aura:set attribute="else"> 
+                                        <c:Core_Intel_customPicklist aura:id="activityCat" objName="PartnerFundRequest" fldName="Core_MDF_ActivityCategory__c" 
+                                                                     ParentId="{!v.selectedLookUpRecord.Id}" ParentfldName="Core_MDF_Activity_Category__c" 
+                                                                     recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelCategory}" 
+                                                                     recTypeDevName="{!v.recordtypeDeveloperName}" dispLabel="{!$Label.c.Core_MDF_Activity_Category}"
+                                                                     options="{!v.ActivityCategories}" disabled="{!v.disabledMap.category}"
+                                                                     labelValueMap="{!v.apitoLabelConvert}" olPfrStatus="{!v.oldPFR.Core_MDF_Fund_Request_Status__c}" IsClone="{!v.checkCloneAttribute}" mode="{!v.mode}"/>
+                                    </aura:set>
+                                </aura:if>                    
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">   
+                                <!--ACTIVITY TYPE FIELD--> 
+                                <aura:if isTrue="{!(empty(v.selectedLookUpRecord.Id) || (v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType) || v.isPropBasedCampaign)}">
+                                    <!-- Activity Category and Type non-dependency on Campaign selection -->
+                                    <aura:if
+                                             isTrue="{!((v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail)|| (v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType) || v.isPropBasedCampaign)}">
+                                        <!--<aura:if isTrue = "{!v.recordtypeName == $Label.c.Core_MDF_CCF_RecordType}"> -->
+                                        <c:Core_Intel_customPicklist aura:id="activityType" objName="PartnerFundRequest" fldName="Core_MDF_Activity_Types__c" 
+                                                                     ParentId="" ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                     recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelActivityType}" 
+                                                                     dispLabel="{!$Label.c.Core_MDF_Activity_Type}" controllingvalue="{!v.SelCategory}"
+                                                                     options="{!v.ActivityTypeValues}" disabled="{!v.disabledMap.type}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                        <aura:set attribute="else">
+                                            <c:Core_Intel_customPicklist aura:id="activityType" objName="PartnerFundRequest" fldName="Core_MDF_Activity_Types__c" 
+                                                                         ParentId="" ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                         recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelActivityType}" 
+                                                                         dispLabel="{!$Label.c.Core_MDF_Activity_Type}" controllingvalue="{!v.SelCategory}"
+                                                                         disabled="{!v.disabledMap.type}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                        </aura:set>
+                                    </aura:if>
+                                    <aura:set attribute="else"> 
+                                        <c:Core_Intel_customPicklist aura:id="activityType" objName="PartnerFundRequest" fldName="Core_MDF_Activity_Types__c" 
+                                                                     ParentId="{!v.selectedLookUpRecord.Id}" ParentfldName="Core_MDF_Activity_Type__c" 
+                                                                     recTypeDevName="{!v.recordtypeDeveloperName}" recTypeName="{!v.recordtypeName}"
+                                                                     selectedValue="{!v.SelActivityType}" dispLabel="{!$Label.c.Core_MDF_Activity_Type}"
+                                                                     options="{!v.ActivityTypeValues}" disabled="{!v.disabledMap.type}"
+                                                                     controllingvalue="{!v.SelCategory}" labelValueMap="{!v.apitoLabelConvert}" olPfrStatus="{!v.oldPFR.Core_MDF_Fund_Request_Status__c}" IsClone="{!v.checkCloneAttribute}" mode="{!v.mode}"/>
+                                        
+                                    </aura:set>
+                                </aura:if>                    
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1">
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <!--Outcome Based Tactics Field-->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" smallDeviceSize="1"  mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <!--Tactics Field -->
+                            <aura:if isTrue="{!v.showActTactics}">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                        <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Tactics_nm__c" 
+                                                                              RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                              dispLabel="{!$Label.c.Core_MDF_Activity_Tactics}" disabled="{!v.disabledMap.tactics}"
+                                                                              availableOptions="{!v.activityTacticsOptions}" selectedOptions="{!v.selectedTacticsOptions}"  updateCountry="{!v.updateSelected}"/>
+                                    </lightning:layoutItem>
+                                </aura:if>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" smallDeviceSize="1"  mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5">
+                            </lightning:layoutItem>
+                        </lightning:layout>
+
+                        <!-- Showing ACTIVITY SUB-TYPE field on the activity create, clone and edit page dependent on the Activity Type field value, 
+        only if there is a dependent activity subtype value
+         Date: 06-01-2020 -->
+                        <aura:if isTrue="{!v.activitySubTypeAvailable}">
+                            <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail}">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5">
+                                        <c:Core_Intel_customPicklist aura:id="activityMultiSubTypeVal" objName="PartnerFundRequest" fldName="Core_MDF_Activity_SubType_nm__c"
+                                                                     recTypeDevName="{!v.recordtypeDeveloperName}" recTypeName="{!v.recordtypeName}"
+                                                                     selectedValue="{!v.selActivitySubType}" dispLabel="{!$Label.c.Core_MDF_Activity_Sub_Type_nm}"
+                                                                     options="{!v.activitySubTypeValues}" disabled="{!v.disabledMap.type}"
+                                                                     controllingvalue="{!v.SelActivityType}" labelValueMap="{!v.apitoLabelConvert}" />
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                            <!-- Multi-Select Sub-type -->
+                            <aura:if isTrue="{!or(v.isOpalActivity, v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType)}">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5">
+                                        <c:Core_MDF_CustomMultiSelectPicklist aura:id="activityMultiSubTypeVal" objName="PartnerFundRequest"
+                                                                              fldName="Core_MDF_Activity_SubType_nm__c" RecId="{!v.recordId}"
+                                                                              CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                              dispLabel="{!$Label.c.Core_MDF_Activity_Sub_Type_nm}" disabled="{!v.disabledMap.type}"
+                                                                              availableOptions="{!v.activityMultiSubTypeVal}" selectedOptions="{!v.selectedSubTypeOptions}" isIpaCloneAct="{!v.ipaCloneRecd}"/>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                        </aura:if>
+                        
+                        <!-- Domain Type-->
+                        <aura:if isTrue="{!v.isDomainTypeVisible}">
+							<lightning:layout horizontalAlign="spread" multipleRows="true">
+                            	<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5">
+									<c:Core_Intel_customPicklist aura:id="activityDomainType" objName="PartnerFundRequest" fldName="Core_MDF_Domain_Type_nm__c" 			
+											 					 recTypeDevName="{!v.recordtypeDeveloperName}" ParentId="{!v.selectedLookUpRecord.Id}" ParentfldName="Core_MDF_Domain_Type_nm__c"
+											 					 recTypeName="{!v.recordtypeName}" selectedValue="{!v.SelDomainType}" controllingvalue="{!v.SelCategory}" labelValueMap="{!v.apitoLabelConvert}" 
+											 					 options="{!v.DomainTypeOptions}" dispLabel="{!$Label.c.Core_MDF_Domain_Type}" disabled="{!v.disabledMap.domainType}" mode="{!v.mode}" olPfrStatus="{!v.oldPFR.Core_MDF_Fund_Request_Status__c}" IsClone="{!v.checkCloneAttribute}" />
+								</lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6">
+                                </lightning:layoutItem>
+                            </lightning:layout>
+						</aura:if>
+                        
+                        <!-- EVENT NAME  -->
+                        <aura:if isTrue="{!v.activityEventNameApplicable}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5">
+                                    
+                                    <c:Core_Intel_customPicklist aura:id="activityEventName" objName="PartnerFundRequest" fldName="Core_MDF_Event_Name_nm__c" 
+                                                                 ParentId="" ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                 recTypeName="{!v.recordtypeName}" selectedValue="{!v.selActivityEventName}" options="{!v.activityEventNameOptions}"
+                                                                 dispLabel="{!$Label.c.Core_MDF_Event_Name}" controllingvalue="{!v.SelActivityType}"
+                                                                 disabled="{!v.disabledMap.EventName}" labelValueMap="{!v.apitoLabelConvert}" mode="{!v.mode}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5">
+                                    <aura:if isTrue="{!v.showOtherEventName}">
+                                        <lightning:input aura:id="otherEvent" type="text"  label="{!$Label.c.Core_MDF_Other_Event_Name}" 
+                                                         value="{!v.newPFR.Core_MDF_Other_Event_Name_txt__c}" disabled="{!v.disabledMap.EventOtherName}" onchange="{!c.handleOtherEvent}" required = "true"/>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        
+                      	<!-- POP and Attribution Requirements-->
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            	<lightning:layoutItem size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" padding="around-small">                         		
+					<aura:if isTrue="{!v.isAttributionReqVisible}">
+                                  		<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Requirements}"
+                                                            required="true" name="Attribution_Requirements" value="{!v.newPFR.Core_MDF_Attribution_Requirements_txt__c}"
+                                                            maxlength="1000" disabled="{!v.disabledMap.attributionreq}" fieldLevelHelp="{!$Label.c.Core_MDF_Attribution_Req_Help_Text}"/>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            	<lightning:layoutItem size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" padding="around-small">
+                                    	<aura:if isTrue="{!v.isPOPReqVisible}">
+				    		<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_POP_Requirements}"
+                                                            required="true" name="POP_Requirements" value="{!v.newPFR.Core_MDF_POP_Requirements_txt__c}"
+                                                            maxlength="1000" disabled="{!v.disabledMap.popreq}" fieldLevelHelp="{!$Label.c.Core_MDF_POP_Requirement_Help_Text}"/>
+                                    	</aura:if>
+                                </lightning:layoutItem>
+                             <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                        </lightning:layout>
+                        
+                    <!-- Start - Existing Intel owner Field -->  
+                        <!--FOR EXTERNAL USER INTEL OWNER FIELDS-->
+                        <aura:if isTrue = "{!and(v.externalper,v.recordtypeDeveloperName != $Label.c.Core_MDF_EEF_RecordType, and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign)))}">
+                            <aura:if isTrue = "{!v.displayApprovers}">
+                                
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5">
+                                        <!-- Multi-Select Approver --> 
+                                        <lightning:input type="text" value="{!v.approverFilter}" label="{!$Label.c.Core_MDF_Intel_Owner_Filter}" disabled="{!v.disabledMap.country}"/>
+                                        <br></br>
+                                        <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Intel_Activity_Owner_Id__c"
+                                                                              RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                              dispLabel="{!$Label.c.Core_MDF_Intel_Owner}"
+                                                                              availableOptions = "{!v.AllApproverOptions}" selectedOptions = "{!v.selectedApproverOptions}" disabled="{!v.disabledMap.intelOwner}"/>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5" />
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1" />
+                                </lightning:layout>
+                            </aura:if>
+                        </aura:if>
+                        <!--INTERNAL USERS INTEL OWNER FIELD CCF/DCF -->
+			<aura:if isTrue="{!(v.recordtypeDeveloperName != $Label.c.Core_MDF_EEF_RecordType)}">
+                        <aura:if isTrue="{!and(v.isBTSelAtCampaign, v.isCCFDCFRecType, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF))}">
+                            <aura:if isTrue="{!and(v.displayApprovers,not(v.externalper))}">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5">
+                                        <lightning:input type="text" value="{!v.approverFilter}" label="{!$Label.c.Core_MDF_Intel_Owner_Filter}"  disabled="{!v.disabledMap.country}"/>
+                                        <br></br>
+                                        <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Intel_Activity_Owner_Id__c"
+                                                                              RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" 
+                                                                              dispLabel="{!$Label.c.Core_MDF_Intel_Owner}"
+                                                                              availableOptions = "{!v.AllApproverOptions}" selectedOptions = "{!v.selectedApproverOptions}" disabled="{!v.disabledMap.intelOwner}"/>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                          largeDeviceSize="5" />
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                          largeDeviceSize="1" />
+                                    </lightning:layout>
+                                </aura:if>
+                             </aura:if>
+                        </aura:if>
+                        <!--End - Existing Intel owner Field -->   
+                        <!-- Start Primary Intel Owner & Intel Owner-->   
+                        <aura:if isTrue ="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType,v.displayApprovers)}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">  
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5">
+                                    <aura:if isTrue = "{!v.activatingaccper}">
+                                        <div class="slds-grid">
+                                            <div class="slds-col">
+                                                <label class="slds-form-element__label slds-no-flex">{!$Label.c.Core_MDF_Intel_Owner}</label>
+                                            </div>
+                                            <div class="slds-col">
+                                                <div><lightning:helptext iconName="utility:info" content="{!$Label.c.Core_MDF_Intel_Owner_help_text}" /></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <lightning:input aura:id="NewFormLookup" variant = "label-hidden" value="{!v.activityOwner}" disabled="true" />
+                                    </aura:if>
+                                    <aura:if isTrue = "{!v.externalper}">
+                                        
+                                        
+                                        <lightning:input type="text" value="{!v.approverFilter}" label="{!$Label.c.Core_MDF_Intel_Owner_Filter}"  disabled="{!v.disabledMap.country}"/>
+                                        <br></br>
+                                        <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Intel_Activity_Owner_Id__c"
+                                                                              RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                              dispLabel="{!$Label.c.Core_MDF_Intel_Owner}" helpText="{!$Label.c.Core_MDF_Intel_Owner_help_text}"
+                                                                              availableOptions = "{!v.AllApproverOptions}" selectedOptions = "{!v.selectedApproverOptions}" isRequired="{!v.intelOwnerReq}" disabled="{!v.disabledMap.intelOwner}"/>
+                                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.primaryaccper}">
+                                         <lightning:input aura:id="NewFormLookup" label="{!$Label.c.Core_MDF_Intel_Pri_Owner}" class="slds-p-vertical_small"
+                                                         value="{!v.activityOwner}" disabled="true" />
+                                        
+                                        </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5">
+                                    <aura:if isTrue ="{!OR(v.externalper,v.activatingaccper)}">
+                                        
+                                        <lightning:input type="text" value="{!v.approverPrimaryFilter}" label="{!$Label.c.Core_MDF_Intel_Pri_Owner_Filter}" disabled="{!v.disabledMap.country}"/>
+                                        <br></br>
+                                        <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Primary_Intel_Owner_Id__c"
+                                                                              RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                                              dispLabel="{!$Label.c.Core_MDF_Intel_Pri_Owner}"
+                                                                              availableOptions = "{!v.AllPrimaryApproverOptions}" selectedOptions = "{!v.selectedPrimaryApproverOptions}" disabled="{!v.disabledMap.intelPrimaryOwner}"/>
+                                        
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1" > </lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                       <!--End - Primary Intel Owner & Intel Owner for EEF-->   
+                        <!-- KPI Fields Test Starts --> 
+                        <lightning:layout horizontalAlign="spread" multipleRows="true">
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="10" mediumDeviceSize="10" largeDeviceSize="10">
+                                <aura:if isTrue="{!v.showKPISpinner}">
+                                    <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
+                                </aura:if>
+								  <!--[IPA MDF] - Campaign - Clone a Proposal - Activity Section  added pfrCloneCheck to pass to kpi along with metrics value-->
+                                <c:core_MDF_KPI_Fields onkpiCompVisibilityEvent="{!c.handleKPIComp}" aura:id="kpiFields"  ipaclone="{!v.pfrCloneCheck}" ipaclonemetricsvalue ="{!v.metricCloneVal}" isProposalBased="{!v.isPropBasedCampaign}"/>
+                                
+                                <!--Another section for Segment SPIF Activity Questions-->  
+								  <!-- [IPA MDF] - Campaign - Clone a Proposal -->
+									 <aura:if isTrue="{!v.pfrCloneCheck == false}">
+                                <aura:if isTrue="{!v.isSPIFSecAvailable}">
+                                    <aura:if isTrue="{! and(and(or(v.isSPIFSecReadOnly,v.disabledMap.isSpifReadOnly), v.recordId != null), not(v.checkCloneAttribute)) }">
+                                        <c:core_MDF_DisplayProducts aura:id="displaySegment" recordId="{!v.recordId}" activityAmount="{!v.activityAmount}"/>
+                                        <aura:set attribute="else">
+                                                 <c:core_MDF_ActivitySegments aura:id="segmentComp" activityProgram="{!v.recordtypeName}" recTypeDevName="{!v.recordtypeDeveloperName}" activityType="{!v.SelActivityType}" mode="{!v.mode}" recordId="{!v.recordId}" accountId="{!v.selectedLookUpRecord.Core_MDF_Account__c}" activityAmount="{!v.activityAmount}" actTactics ="{!v.selectedTacticsOptions}"/>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:if> 
+								  </aura:if>
+                            </lightning:layoutItem>                     
+                            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>                     
+                        </lightning:layout>
+                        <!-- KPI Fields Test Ends -->     
+                        
+                        <!--CCF/DCF - Outcome-->
+                        <!--Tactic Metrics Start-->
+                        
+                        <aura:if isTrue="{!not(empty(v.selectedTacticsOptions))}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="10" mediumDeviceSize="10" largeDeviceSize="10">
+                                    <aura:if isTrue="{!v.showKPISpinner}">
+                                        <lightning:spinner alternative-text="Loading" size="large"></lightning:spinner>
+                                    </aura:if>
+                                    <c:core_MDF_Tactics_Form aura:id="tacticMetrics" actTactics ="{!v.selectedTacticsOptions}" mode="{!v.mode}" recordId="{!v.recordId}" ipaclone="{!v.pfrCloneCheck}" 
+                                                            isProposalBased="{!v.isPropBasedCampaign}" intelContribution = "{!v.intelContribution}"
+                                                            editable = "{!v.disabledMap.tactics}"  programName = "{!v.recordtypeName}"/>
+                                </lightning:layoutItem>                     
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>                     
+                            </lightning:layout>
+                        </aura:if>
+                        <!--Tactic Metrics END-->
+                        
+                        
+                        <aura:if isTrue="{!v.enableEventFormat}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5">
+                                    <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_Event_Format_Nm__c"
+                                                                 ParentId="" ParentfldName="" recTypeDevName="{!v.recordtypeDeveloperName}"
+                                                                 recTypeName="{!v.recordtypeName}" selectedValue="{!v.selectedEventFormat}" dispLabel="{!$Label.c.Core_MDF_Event_Format_Label}"
+                                                                 options="{!v.eventFormatValues}" disabled="{!v.disabledMap.eventFormat}"
+                                                                 controllingvalue="{!v.SelActivityType}" labelValueMap="{!v.apitoLabelConvert}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                                                      largeDeviceSize="5"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1"
+                                                      largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        <!-- Joint Content -->
+                        
+                        <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_PFR_Retail,v.recordtypeDeveloperName != $Label.c.Core_MDF_EEF_RecordType,and(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType,not(v.isPropBasedCampaign)))}">
+                            <!-- Channel partner block -->
+                            <!--Industry Partner Led? field-->
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">   
+                                    
+                                    <aura:if isTrue ="{!v.recordtypeDeveloperName != $Label.c.Core_MDF_SPCF_Program}">
+                                       
+                                        <aura:if isTrue="{!and(v.selectedLookUpRecord.Id != null,
+                                                         v.isOpalActivity == false)}">
+                                            <lightning:input type="checkbox" name="inputCPLed" label="{!$Label.c.Core_MDF_IP_Led}"
+                                                             aura:id="inputCPLed" class="slds-p-vertical_small" checked="{!v.CPLed}"
+                                                             disabled="{!v.disabledMap.cpled}" />
+                                            <!-- {!v.disabledMap.cpled} -->
+                                        </aura:if>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6">
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">    
+    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">   
+        <aura:if isTrue="{!and(v.CPLed,not(v.isOpalActivity))}">
+            <aura:if isTrue="{!not(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType)}">
+                <c:Core_Intel_customPicklist objName="PartnerFundRequest" fldName="Core_MDF_Channel_Partner__c"
+                                             recTypeDevName="{!v.recordtypeDeveloperName}" ParentId="" ParentfldName="" CPLed="{!v.CPLed}"
+                                             Ctry="{!v.SelMarketValue}" recTypeName="{!v.recordtypeName}"
+                                             selectedValue="{!v.SelChannelPartner}" dispLabel="{!$Label.c.Core_MDF_EcoSystem_Partner}"
+                                             controllingvalue="{!v.SelMarketValue}" disabled="{!v.disabledMap.cp}" 
+                                             isOpalAct ="{!v.isBTSelAtCampaign}"/>
+            </aura:if>
+        </aura:if>
+                                    
+                                    
+        
+        <!-- [Opal - CCF/DCF] - [OOC - P6] - Replace "Channel Partner" with "Industry Partner"-->
+        <aura:if isTrue="{!(v.isOpalActivity)}">
+            <c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Channel_Partner__c"
+                                                  RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+                                                  dispLabel="{!$Label.c.Core_MDF_EcoSystem_Partner}" disabled="{!v.disabledMap.cp}"
+                                                  availableOptions="{!v.activityMultiIndPartnerVal}" selectedOptions="{!v.selectedIndPartnerOptions}" />
+                                        
+        </aura:if>
+        
+        <aura:if isTrue="{!and(v.IsOtherCP,v.CPLed)}">
+            <lightning:input type="text" name="inputOtherIP" value="{!v.SelOtherChannelPartner}"
+                             label="{!$Label.c.Core_MDF_Other_IP}" aura:id="inputOtherIP" class="slds-p-vertical_small"
+                             disabled="{!v.disabledMap.ocp}" required="true" />
+        </aura:if>
+    </lightning:layoutItem>
+    
+    <!-- Akash Ecosystem Partner Allocation section - now in parallel -->
+    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+        <aura:if isTrue="{!(v.isOpalActivity)}">
+            <c:core_MDF_ecosystemPartnerAllocation 
+                aura:id="ecosystemAllocation"
+                selectedEcosystemPartnerOptions="{!v.selectedIndPartnerOptions}"
+                mode="{!v.mode}"
+                recordId="{!v.recordId}"
+                editable="{!v.disabledMap.cp}"
+                onecosystempartnerremove="{!c.handleEcosystemPartnerRemove}">
+            </c:core_MDF_ecosystemPartnerAllocation>
+        </aura:if>
+    </lightning:layoutItem>
+    
+    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+</lightning:layout>
+                        </aura:if>
+                        
+                        <!-- Add Industry Value for CCF /DCF /EEF-->
+                        
+                        <aura:if isTrue="{!and(OR(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType,(v.isOpalActivity),OR(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF)))}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">    
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">   
+                                    	<c:Core_MDF_CustomMultiSelectPicklist objName="PartnerFundRequest" fldName="Core_MDF_Industry_Multi_nm__c"
+																					  RecId="{!v.recordId}" CloneRecId="{!v.checkCloneRecordId}" CommunityRecId="{!v.communityRecordId}"
+																					  dispLabel="{!$Label.c.Core_MDF_Industry}" disabled="{!v.disabledMap.industry}"
+																					  availableOptions="{!v.allIndustryOptions}" selectedOptions="{!v.selectedIndustryOptions}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="6" smallDeviceSize="6" mediumDeviceSize="6" largeDeviceSize="6"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        <!--[OEM Integration - CCF/DCF/EEF] - [Activity] - Two Additional Fields-->
+                        <!--Attribution - Increase from Guidebook /Attribution - Decrease from Guidebook -->
+                        <!-- For Internal Users, both the attribution fields will be displayed on create,clone and edit. refer (1) and (3) -->
+                        <!-- For External Users, attribution fields will be diplayed only on edit when the field is not null.
+                         	 Either (1) or (2) is considered when one of the field has value in it. If both the fields have value, then (1) and (3) if blocks are considered-->
+                        <aura:if isTrue="{!OR(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail,OR(v.isOpalActivity,v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType))}">
+                        	<lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+									<lightning:layoutItem size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" padding="around-small">                        		
+                                        <!-- (1) -->
+                                        <aura:if isTrue="{!or(not(v.externalper),and(v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c != null,and(v.externalper,v.mode == 'edit')))}">
+                                    		<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Variance_Pos}"
+                                                            required="false" name="Attribution_Variance_Pos" value="{!v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c	}"
+                                                            disabled="{!v.disabledMap.Attr_Var_Pos}"/>
+															
+											<!-- (2) -->
+                                            <aura:set attribute="else">
+												<aura:if isTrue="{!and(v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c != null,and(v.externalper,v.mode == 'edit'))}">
+													<lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Variance_Neg}"
+                                                            required="false" name="Attribution_Variance_Neg" value="{!v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c}"
+                                                            disabled="{!v.disabledMap.Attr_Var_Neg}"/>
+                                             	</aura:if>
+											</aura:set>
+												
+                                       </aura:if>
+                                     </lightning:layoutItem>
+                                <lightning:layoutItem size="5" smallDeviceSize="5" mediumDeviceSize="5" largeDeviceSize="5" padding="around-small">                
+                                    <!-- (3) -->
+                                    <aura:if isTrue="{! or(not(v.externalper),and(and(v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c != null,v.newPFR.Core_MDF_Attribution_Variance_Pos_txt__c != null),and(v.externalper,v.mode == 'edit')))}">
+                                        <lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Attribution_Variance_Neg}"
+                                                            required="false" name="Attribution_Variance_Neg" value="{!v.newPFR.Core_MDF_Attribution_Variance_Neg_txt__c}"
+                                                            disabled="{!v.disabledMap.Attr_Var_Neg}"/> 
+                                    </aura:if>    
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        
+                        <!-- Additional Review/Marketing Review Checkbox Field-->                
+                        <aura:if isTrue ="{!and(v.isLoggedInUserLevelOneApprover,and (v.selBudgetType != '',v.selBudgetType != null))}">
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
+                                    <aura:if isTrue="{!and(v.selBudgetType == $Label.c.Core_MDF_BudgetType_CMP || v.selBudgetType == $Label.c.Core_MDF_BudgetType_SP_CMP)}">
+                                        <lightning:input type="checkbox" name="isAdditionalReviewReqd" 
+                                                         label="{!$Label.c.Core_MDF_Field_Review + '?'}"
+                                                         aura:id="NewForm" 
+                                                         checked="{!v.isAdditionalReviewReqd}" 
+                                                         disabled="{!v.disabledMap.isAdditionalReviewReqd}"/> 
+                                        <aura:set attribute="else">
+                                           
+                                            <aura:if isTrue="{!or(v.selBudgetType == $Label.c.Core_MDF_BudgetType_MDF, v.selBudgetType == $Label.c.Core_MDF_BudgetType_MDFPlus)}">
+                                                <lightning:input type="checkbox" name="isAdditionalReviewReqd" 
+                                                                 label="{!$Label.c.Core_MDF_Marketing_Review + '?'}" 
+                                                                 aura:id="NewForm" 
+                                                                 checked="{!v.isAdditionalReviewReqd}" 
+                                                                 disabled="{!v.disabledMap.isAdditionalReviewReqd}"/> 
+                                            </aura:if>
+                                        </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:if>
+                        
+                        <!-- QUESTIONS SECTION START -->
+                        <!-- Variable Reimbursement Rate changes-->
+                        <aura:if isTrue="{!v.renderVRQuestion}">
+                            <lightning:layout class="slds-page-header slds-page-header--object-home">
+                                <lightning:layoutItem padding="horizontal-small">
+                                    <div class="page-section page-header">
+                                        <!--Help Text Start -->
+                                        <div class="slds-grid">
+                                            <div class="slds-col topPaddingClass"><h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_VR_Section}</h1></div>
+                                            <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF}">
+                                                <div class="slds-col"><lightning:helptext content="{!$Label.c.Core_MDF_Activity_VR_Help_Text}" /></div>
+                                            </aura:if>
+                                        </div>
+                                        <!-- Help Text End -->
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <c:Core_MDF_VRQuestion newPFRq="{!v.newPFR}"
+                                                   showVR="{!v.renderVRQuestion}"  vrQuestionList = "{!v.vrQuestionList}"
+                                                   IncentiveQuestionLbl="{!v.vrQuestion}"
+                                                   IncentiveOptInLbl="{!v.vrOptInQuestion}"
+                                                   disabled="{!v.disabledMap.vrquestions}" />
+                        </aura:if>
+                        
+                        <!-- Print Media, Government Question, Tech Exploration SECTION  -->
+                        <aura:if isTrue="{!(v.renderPrintQuestion || v.renderGovtQuestion || v.renderTechExplorationQuestSection)}">
+                            <lightning:layout class="slds-page-header slds-page-header--object-home">
+                                <lightning:layoutItem padding="horizontal-small">
+                                    <div class="page-section page-header">
+                                        <h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Questions_Section}</h1>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <c:Core_MDF_DynamicQuestionsComp newPFRq="{!v.newPFR}" renderPrintQuestions="{!v.renderPrintQuestion}"  hideCompetitiveQuest ="{!v.hideCompetitiveQuest}"
+                                                             renderGovtQuestions="{!v.renderGovtQuestion}" renderTechExplorationQuestSection = "{!v.renderTechExplorationQuestSection}" disabled="{!v.disabledMap.questions}" isOpalActivity = "{!v.isOpalActivity}" />
+                        </aura:if>
+                        
+                        <!-- UPLOAD FILE SECTION START -->
+                        <!--Modified Date : 4-June-2020 Modified By : NZ Description : Display Upload File Section visibilty to Content Creation-->
+                        <aura:if isTrue="{!and(v.checkfileuploadcondition,and(not(v.isIndustryPartnerFormTemplateVisible),
+                                         not(v.isEventFormTemplateVisible)))}">
+                            <c:Core_MDF_Activity_Upload_File disabled="{!v.disabledMap.attachement}" createEditPFRAttr="True" activityBudgetType="{!v.selBudgetType}"
+                                                             contentdocumentids="{!v.ContentDocumentIds}" filedata="{!v.fileData}" />
+                            
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!and(v.checkfileuploadcondition, v.isEventFormTemplateVisible,v.eventActCategory)}">
+                                    <c:Core_MDF_Activity_Upload_File disabled="{!v.disabledMap.attachement}" createEditPFRAttr="True" activityBudgetType="{!v.selBudgetType}" isOpalActivity="{!v.isOpalActivity}"
+                                                                     displayEventTemplate="{!v.isEventFormTemplateVisible}" contentdocumentids="{!v.ContentDocumentIds}" recordtypeDeveloperName="{!v.recordtypeDeveloperName}" filedata="{!v.fileData}" />
+                                    
+                                    
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!and(v.checkfileuploadcondition,v.isIndustryPartnerFormTemplateVisible, v.SelActivityType == $Label.c.Core_MDF_Activity_Type_IndustryPartner)}">
+                                            <c:Core_MDF_Activity_Upload_File disabled="{!v.disabledMap.attachement}" createEditPFRAttr="True" activityBudgetType="{!v.selBudgetType}"
+                                                                             displayIndustryPartnerTemplate="{!v.isIndustryPartnerFormTemplateVisible}" contentdocumentids="{!v.ContentDocumentIds}" recordtypeDeveloperName="{!v.recordtypeDeveloperName}" filedata="{!v.fileData}"/>
+                                            
+                                        </aura:if>
+                                        
+                                    </aura:set>
+                                </aura:if>
+                            </aura:set>
+                            
+                        </aura:if>        
+                        <!--- POP Requirements Information for Retail -->
+                        <aura:if isTrue="{!and(and(v.SelCategory != null, v.SelActivityType != null), v.popVisible) }">
+                            <aura:if isTrue="{!and(v.SelCategory != '', v.SelActivityType != '') }">
+                                <lightning:layout horizontalAlign="center" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="12" smallDeviceSize="12" mediumDeviceSize="10" largeDeviceSize="10">
+                                        <c:core_MDF_POP_Details aura:id="popComp" displayLabel="POP" actCat="{!v.SelCategory}" actType="{!v.SelActivityType}" actSubType="{!v.selActivitySubType}" recTypeName="{!v.recordtypeName}" />
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                        </aura:if>
+                        <!--- POP Requirements Information for Retail ends -->
+                        
+                        <!-- start  - [OEM Integration - CCF/DCF] - [Ts & Cs for Activities]  -->
+                        <aura:if isTrue="{!and(v.externalper,or(v.isOpalActivity, v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType))}">
+                            <div class="c-container">
+                                <lightning:layout horizontalAlign="center" multipleRows="true">
+                                    <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"></lightning:layoutItem>
+                                    <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="10" largeDeviceSize="10" padding="around-small">
+                                        <div  class='text-left'>
+                                            <!-- Displaying T's and C's and Compliance for Opal Activities -->
+                                            <aura:if isTrue="{!v.isOpalActivity}">
+                                                {!$Label.c.Core_MDF_Opal_External_T_C}&nbsp;<a href="{!$Label.c.Core_MDF_Opal_Ext_LinkTerms}" target="_blank">{!$Label.c.Core_MDF_Translated_Termslink}</a>&nbsp;{!$Label.c.Core_MDF_and}&nbsp;<a href="{!$Label.c.Core_MDF_Opal_Ext_LinkCompliance}" target="_blank">{!$Label.c.Core_MDF_Translated_CompliancePolicyLink}</a>.
+                                                <aura:set attribute="else">
+                                                    <!-- Updated T's and C's link and Compliance link for IPA Activities -->
+                                                    {!$Label.c.Core_MDF_Opal_External_T_C}&nbsp;<a href="{!$Label.c.Core_MDF_IPA_Ext_LinkTerms}" target="_blank">{!$Label.c.Core_MDF_Translated_Termslink}</a>&nbsp;{!$Label.c.Core_MDF_and}&nbsp;<a href="{!$Label.c.Core_MDF_IPA_Ext_LinkCompliance}" target="_blank">{!$Label.c.Core_MDF_Translated_CompliancePolicyLink}</a>.
+                                                </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"></lightning:layoutItem>
+                                </lightning:layout>
+                            </div>
+                        </aura:if>
+                        <!-- end - [OEM Integration - CCF/DCF] - [Ts & Cs for Activities]  -->
+                        
+                        
+                         <!-- start  - [OEM Integration - EEF] - [Ts & Cs for Activities]  -->
+                        <aura:if isTrue="{!and(v.externalper, v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType)}">
+                            <div class="c-container">
+                                <lightning:layout horizontalAlign="center" multipleRows="true">
+                                    <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"></lightning:layoutItem>
+                                    <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="10" largeDeviceSize="10" padding="around-small">
+                                        <div  class='text-left'>
+                                            <!-- Displaying T's and C's and Compliance for Opal Activities -->
+                                           {!$Label.c.Core_MDF_Opal_External_T_C}&nbsp;<a href="{!$Label.c.Core_MDF_EEF_Ext_LinkTerms}" target="_blank">{!$Label.c.Core_MDF_Translated_Termslink}</a>&nbsp;{!$Label.c.Core_MDF_and}&nbsp;<a href="{!$Label.c.Core_MDF_EEF_Ext_LinkCompliance}" target="_blank">{!$Label.c.Core_MDF_Translated_CompliancePolicyLink}</a>.
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="1" largeDeviceSize="1" padding="around-small"></lightning:layoutItem>
+                                </lightning:layout>
+                            </div>
+                        </aura:if>
+                        <!-- end - [OEM Integration - CCF/DCF] - [Ts & Cs for Activities]  -->
+                        
+                        <!-- SAVE AND CANCEL -->			
+                        <!-- [IPA MDF] - Campaign - Clone a Proposal - Activity Section -added save button which fire events on save and is capture at campaign-->
+                        <aura:if isTrue="{!v.pfrCloneCheck}">   
+                            <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2"> 
+                                    <div align="left">
+                                        <lightning:button aura:id="Save" variant="brand" disabled="{!v.isSaveDisable}" label="{!$Label.c.Core_MDF_Save}" onclick="{!c.customSave}"/>
+                                    </div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                            </lightning:layout>
+                            <aura:set attribute="else">
+                                <lightning:layout horizontalAlign="spread" multipleRows="true">
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                        <div align="right">
+                                            <lightning:button variant="Neutral" label="{!$Label.c.Core_MDF_Cancel}" onclick="{!c.closeModal}"/>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2">
+                                        <div align="center">	
+                                            <lightning:button aura:id="SaveandNew" variant="Neutral" disabled="{!v.isSaveandNewDisable}" label="{!$Label.c.Core_MDF_Save_and_New}" onclick="{!c.customSave}"/>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="2" mediumDeviceSize="2" largeDeviceSize="2"> 
+                                        <div align="left">
+                                            <lightning:button aura:id="Save" variant="brand" disabled="{!v.isSaveDisable}" label="{!$Label.c.Core_MDF_Save}" onclick="{!c.customSave}"/>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                                </lightning:layout>    
+                            </aura:set>
+                        </aura:if>
+                    </form>
+                </div>
+            </div>
+        </aura:set>       
+    </aura:if>
+    <!-- Page Ends Here -->	
+</aura:component>

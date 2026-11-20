@@ -1,0 +1,19 @@
+<template>
+    <div class="c-container">
+        <lightning-card>
+            <h3 slot="title">
+                <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+                Please Select the partner
+            </h3>
+            <p class="slds-var-p-horizontal_small">
+                <c-p-m-p_-multi-select_-rich-media icon-name="standard:company" onretrieve={selectItemEventHandler}
+                    onremove={deleteItemEventHandler}>
+                </c-p-m-p_-multi-select_-rich-media>
+            </p><br><br>
+            <template if:true={isItemExists}>
+                <c-pmp-richmedia-offeringtable partner-ids ={selectedItemsToDisplay} record-id ={recordId}>
+                </c-pmp-richmedia-offeringtable>
+            </template>
+        </lightning-card>
+    </div>
+</template>

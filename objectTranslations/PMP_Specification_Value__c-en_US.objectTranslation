@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Specification Value</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Specification Values</value>
+    </caseValues>
+    <fields>
+        <help><!-- To see if the specification value is active or not --></help>
+        <label><!-- Is Active --></label>
+        <name>PMP_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type of control to be displayed for the specification selection (Radio/Checkbox) --></help>
+        <label><!-- Display Type --></label>
+        <name>PMP_Display_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Image URL --></label>
+        <name>PMP_Image_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name Chinese --></label>
+        <name>PMP_Name_Chinese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name Japanese --></label>
+        <name>PMP_Name_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Off-Roadmap Indicator --></label>
+        <name>PMP_Partner_Off_Roadmap_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restriction Level --></label>
+        <name>PMP_Product_Restriction_Lvl__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Specification Value Id from PIM --></help>
+        <label><!-- PIM Specification Value Id --></label>
+        <name>PMP_Product_Specification_Value_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds a combination of PIM Spec Value Specification Id and Locale --></help>
+        <label><!-- PIM SpecValue External Key --></label>
+        <name>PMP_Product_Specification_Value_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>PMP_Product_Status__c</name>
+        <picklistValues>
+            <masterLabel>Announced</masterLabel>
+            <translation><!-- Announced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discontinued</masterLabel>
+            <translation><!-- Discontinued --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Launched</masterLabel>
+            <translation><!-- Launched --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Roadmap</masterLabel>
+            <translation><!-- Roadmap --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product URL --></label>
+        <name>PMP_Product_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Pre Release Indicator --></label>
+        <name>PMP_Spec_Pre_Release_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- To know if Spec Value is related to Processor or Chipset or Others --></help>
+        <label><!-- Spec Value Type --></label>
+        <name>PMP_Spec_Value_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIM Specification Id --></label>
+        <name>PMP_Specification_Product_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the value of a Specification Value record --></help>
+        <label><!-- Specification Value --></label>
+        <name>PMP_Specification_Value_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specification value in chinese --></help>
+        <label><!-- Specification Value (Chinese) --></label>
+        <name>PMP_Specification_Value_Chinese_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specification value in Japanese --></help>
+        <label><!-- Specification Value (Japanese) --></label>
+        <name>PMP_Specification_Value_Japanese_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- name of specification value --></help>
+        <label><!-- Specification Value Name --></label>
+        <name>PMP_Specification_Value_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the sequence number for Specification Values --></help>
+        <label><!-- Specification Value Sequence --></label>
+        <name>PMP_Specification_Value_Sequence_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP Specification id --></label>
+        <name>PMP_Specification_id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

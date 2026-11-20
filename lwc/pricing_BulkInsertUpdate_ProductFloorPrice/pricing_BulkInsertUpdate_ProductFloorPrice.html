@@ -1,0 +1,44 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-20-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>  
+    <div class="slds-p-left_medium">
+       
+        <lightning-quick-action-panel  header="Bulk Insert/Update Product Floor Prices">
+        
+            <template lwc:if={isRPMUser}>
+                <div>
+                    <div>
+                        <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file"
+                            disabled={disableUploadFile} multiple></lightning-input>
+                    </div><br />
+                    <div class="slds-text-body--regular slds-text-color_error">
+                        {fileName}
+                    </div><br />
+                </div>
+            
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="horizontal-small">
+                        <lightning-button icon-name="utility:download" label="Insert/Update Floor Price" title="Insert/Update Floor Price"
+                            onclick={handleSave} variant="brand" disabled={disableValidateButton}></lightning-button>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="horizontal-small">
+                        <lightning-button icon-name="utility:download" label="Download Template" title="Download Template"
+                            onclick={handleDownloadClick} variant="brand"
+                            disabled={disableTemplateButton}></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+            <template lwc:else>
+                <div class="slds-table_edit_container" style=" text-align: center; margin-top: 5px; color: red; ">
+                   {msg}         
+                </div>
+            </template>
+        </lightning-quick-action-panel>
+    </div> 
+</template>

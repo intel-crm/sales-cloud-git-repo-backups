@@ -1,0 +1,18 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Outline Customer Solution Requirements",
+  "contentBody" : {
+    "description" : "What are the details of the solution that are important for the build? ",
+    "sections" : [ {
+      "content" : "<div>Ask your customer some key questions around specific on how they would need a solution to their problem built:</div><div><br /></div><ul><li>Location - on-prem, cloud, or hybrid</li><li>Identify any data center limitations (ex. power)</li><li>Define customer&#39;s cooling preferences (air vs. liquid)</li></ul>",
+      "keyConcept" : "Key Questions on Build",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>While building out a LLM solution, there are sure to be plenty of roadblocks or paint points that the customer has run into so far in their process. Document what those roadblocks are in order to define a solution for a POC that addresses those pain points. Ideally utilize customer language when listing specific customer issues and pain points this opportunity will address. </div>",
+      "keyConcept" : "Roadblocks",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 2.0
+  },
+  "urlName" : "outline-customer-solution-requirements"
+}

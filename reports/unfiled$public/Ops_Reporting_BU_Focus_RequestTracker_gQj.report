@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Role__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Partner_Alliance_Program__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Channel_Program__c</field>
+    </columns>
+    <description>Filter by account ID to quickly pull the info needed when filling in a new BU Focus change request on the shared request tracker sheet</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Account_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>001o000000OSv7nAAD,001o000000O66InAAJ</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Ops Reporting - BU Focus Change Request</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,6 @@
+Username is - {!User.Username}
+Profile ID is - {!User.ProfileId}
+Profile Name is -  {!User.Profile}
+
+Account ID - {!Account.Id}
+Account Name - {!Account.Name}

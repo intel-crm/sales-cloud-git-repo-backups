@@ -1,0 +1,53 @@
+.THIS .TopButtonCls{
+    text-align:center;
+    width:100%;
+    padding-bottom:2%;
+}
+
+.THIS .BelowButtonCls{
+    text-align:center;
+    width:100%;
+    padding-top:2%;
+}
+
+.THIS .LabelCls{
+    width: 15%;
+}
+
+.THIS .ValueCls{
+    display: inline-block;
+}
+
+.THIS .AtRiskCheckboxCls{
+    width:100%;
+    padding-bottom:2%;
+    padding-left:1%;
+}
+
+.THIS .TrCls{
+    border-bottom: 1px solid lightgray;
+}
+
+.THIS .borderRight{
+    border-right: 1px solid lightgray;
+}
+
+.THIS .paddRight170{
+    padding-right: 170px;
+}
+
+.THIS .paddRight100{
+    padding-right: 100px;
+}
+
+.THIS .paddRight70{
+    padding-right: 70px;
+}
+
+.THIS .wordWrap{
+    white-space: break-spaces;
+}
+
+.THIS .boldCls{
+    font-weight: bold;
+}

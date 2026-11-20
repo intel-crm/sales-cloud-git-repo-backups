@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>6. Sample Management Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>6. Sample Management Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Frequency (Seconds) --></label>
+        <name>MaritzCX__API_Frequency__c</name>
+    </fields>
+    <fields>
+        <help><!-- This flag is used to stop Sample Management operations. --></help>
+        <label><!-- Disable Sending Invitations --></label>
+        <name>MaritzCX__Disable_Sending_Invitations__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Recipients --></label>
+        <name>MaritzCX__Number_Of_Recipients__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Limit --></label>
+        <name>MaritzCX__Retry_Limit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Endpoint --></label>
+        <name>MaritzCX__Service_Endpoint__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

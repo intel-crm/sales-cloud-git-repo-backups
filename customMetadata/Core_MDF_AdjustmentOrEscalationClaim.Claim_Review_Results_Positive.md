@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Claim Review Results (Positive)</label>
+    <protected>false</protected>
+    <values>
+        <field>Core_MDF_Reason_txt__c</field>
+        <value xsi:type="xsd:string">Claim Review Results (Positive)</value>
+    </values>
+    <values>
+        <field>Core_MDF_Type_txt__c</field>
+        <value xsi:type="xsd:string">Claim</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION_VIE</name>
+    <style>none</style>
+    <subject>Người dùng mới đã được thêm vào tài khoản Liên minh Đối tác Intel®</subject>
+    <textOnly>Xác nhận chi tiết tài khoản
+
+{!UserName},
+
+Một cá nhân đã được đại diện Intel hoặc một người liên lạc khác tại công ty của bạn thêm vào tài khoản Liên minh Đối tác Intel® của {!Account.Name}.
+
+Tên Công Ty: {!Account.Name}
+ID doanh nghiệp: {!Account.AccountNumber}
+Liên hệ bổ sung: Email {!ContactEmail}
+Mối quan hệ (Vai trò): {!AcrRoles}
+
+Nếu bạn không chấp thuận cập nhật này, vui lòng đăng nhập để xóa liên hệ.
+
+Nếu bạn có bất cứ câu hỏi nào, hãy liên hệ với chúng tôi tại https://signin.intel.com/ContactUs?Culture=vi-vn
+
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

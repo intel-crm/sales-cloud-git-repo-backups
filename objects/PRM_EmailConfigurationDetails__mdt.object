@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>PRM_BusinessEvent__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Business Event</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_ChannelProgram__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Country__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_FolderName__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Folder Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Geo__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Geo</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_InputParameter__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Input Parameter</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_Language__c</fullName>
+        <defaultValue>&quot;English: en_US&quot;</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Language</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Letterhead_Template__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Letterhead Template</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_MergeField__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Merge Field</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_PartnerType__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_RecipientLogic__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Recipient Logic</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_Recipient__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Recipient</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Partner User</fullName>
+                    <default>true</default>
+                    <label>Partner User</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Primary Contact</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Primary Contact</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Works for</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Works for</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Trainee</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Trainee</label>
+                </value>
+                <value>
+                    <fullName>External Emails</fullName>
+                    <default>false</default>
+                    <label>External Emails</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Primary Contact,Works for</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Primary Contact,Works for</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Works for,Trainee</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Works for,Trainee</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Primary Contact,Trainee</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Primary Contact,Trainee</label>
+                </value>
+                <value>
+                    <fullName>Contact Relationship: Primary Contact,Works for,Trainee</fullName>
+                    <default>false</default>
+                    <label>Contact Relationship: Primary Contact,Works for,Trainee</label>
+                </value>
+                <value>
+                    <fullName>Public Group: PRM - MP Admin Temp</fullName>
+                    <default>false</default>
+                    <label>Public Group: PRM - MP Admin Temp</label>
+                </value>
+                <value>
+                    <fullName>Public Group: PMP - All Intel Admin Users</fullName>
+                    <default>false</default>
+                    <label>Public Group: PMP - All Intel Admin Users</label>
+                </value>
+                <value>
+                    <fullName>Public Group: IPA - All Intel Admin Users</fullName>
+                    <default>false</default>
+                    <label>Public Group: IPA - All Intel Admin Users</label>
+                </value>
+                <value>
+                    <fullName>Public Group: AGS_1PID IPA Admin Group</fullName>
+                    <default>false</default>
+                    <label>Public Group: AGS_1PID IPA Admin Group</label>
+                </value>
+                <value>
+                    <fullName>Public Group: CIMPRIME Support and admin group</fullName>
+                    <default>false</default>
+                    <label>Public Group: CIMPRIME Support and admin group</label>
+                </value>
+                <value>
+                    <fullName>Public Group: AGS_IPA Registration Approvers</fullName>
+                    <default>false</default>
+                    <label>Public Group: AGS_IPA Registration Approvers</label>
+                </value>
+                <value>
+                    <fullName>Public Group: L2 IPA Support</fullName>
+                    <default>false</default>
+                    <label>Public Group: L2 IPA Support</label>
+                </value>
+                <value>
+                    <fullName>Public Group: PRM Tech Email Recipient</fullName>
+                    <default>false</default>
+                    <label>Public Group: PRM Tech Email Recipient</label>
+                </value>
+                <value>
+                    <fullName>Public Group: EmailCheck</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Public Group: EmailCheck</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Specialty__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PRM_Specialty</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_TemplateName__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Template Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_TemplateUniqueName__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Template Unique Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Email Configuration Details</label>
+    <pluralLabel>Email Configuration Details</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

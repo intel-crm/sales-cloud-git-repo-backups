@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>constant_StandardPriceBook</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>01so0000002PRqUAAW</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>for the PB &quot; Assign Price Book &quot;</description>
+        <name>Assign_Price_Book</name>
+        <label>Assign Price Book</label>
+        <locationX>314</locationX>
+        <locationY>923</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Channel_Opportunity_and_is_cloned_FALSE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Channel_Opportunity_Ind__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_IsClone__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Standard_Price_Book</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Check for Channel Opportunity and is cloned FALSE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_Opportunity_AtRisk_Update</name>
+        <label>Core_Opportunity_AtRisk_Update</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Update_Loss_Cancel_From_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Product_AtRisk_Greater_Than_Zero</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Products_At_Risk_Count__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Products_At_Risk_Count__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OpportunityAtRisk_True</targetReference>
+            </connector>
+            <label>Product_AtRisk_Greater_Than_Zero</label>
+        </rules>
+        <rules>
+            <name>Product_AtRisk_Count_Zero</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Products_At_Risk_Count__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Products_At_Risk_Count__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OpportunityAtRisk_False</targetReference>
+            </connector>
+            <label>Product_AtRisk_Count_Zero</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>For the PB &quot; Update Loss Cancel From Opportunity &quot;</description>
+        <name>Update_Loss_Cancel_From_Opportunity</name>
+        <label>Update Loss Cancel From Opportunity</label>
+        <locationX>314</locationX>
+        <locationY>623</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Price_Book</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Stage_Prod_Lost</name>
+            <conditionLogic>(1 OR 2 ) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Loss_Cancel_Reason_for_Pro_Lost</targetReference>
+            </connector>
+            <label>Is Stage Prod Lost</label>
+        </rules>
+    </decisions>
+    <description>Has the following PB--
+1. &quot;  Core_Opportunity_AtRisk_Update &quot;                                   [ in 1st DECISION block ]
+2.  Update Loss Cancel From Opportunity                                 [ in 2nd DECISION block ]
+4. Assign Price Book                                                                 [ in 3 rd DECISION block ]
+5. UpdateApprovedProductApplicationOnProd                       [  in 4th DECISION block  ]</description>
+    <interviewLabel>Core_Opportunity_PBs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Opportunity_PB</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Assign_Standard_Price_Book</name>
+        <label>Assign Standard Price Book</label>
+        <locationX>182</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Pricebook2Id</field>
+            <value>
+                <elementReference>constant_StandardPriceBook</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>When &quot; Product_AtRisk_Count_Zero &quot; decision part is TRUE</description>
+        <name>OpportunityAtRisk_False</name>
+        <label>OpportunityAtRisk_False</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Update_Loss_Cancel_From_Opportunity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_At_Risk__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>when &quot; Product_AtRisk_Greater_Than_Zero &quot; decision part is TRUE</description>
+        <name>OpportunityAtRisk_True</name>
+        <label>OpportunityAtRisk_True</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Update_Loss_Cancel_From_Opportunity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_At_Risk__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>when the   &quot;  Is Stage Prod Lost &quot;   decision is TRUE</description>
+        <name>Update_Loss_Cancel_Reason_for_Pro_Lost</name>
+        <label>Update Loss Cancel Reason for Pro Lost</label>
+        <locationX>182</locationX>
+        <locationY>731</locationY>
+        <connector>
+            <targetReference>Assign_Price_Book</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Production Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Production Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Delete In Progress (&lt;15 min)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Lost</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Loss_Cancel_Details__c</field>
+            <value>
+                <elementReference>$Record.Core_Loss_Cancel_Details__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Loss_Cancel_Reason__c</field>
+            <value>
+                <elementReference>$Record.Core_Loss_Cancel_Reason__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Status__c</field>
+            <value>
+                <elementReference>$Record.StageName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OpportunityLineItem</object>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Opportunity_AtRisk_Update</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

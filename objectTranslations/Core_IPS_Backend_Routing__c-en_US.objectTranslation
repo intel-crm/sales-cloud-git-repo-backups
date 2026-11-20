@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Backend Routing</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Backend Routings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Auto Promote --></label>
+        <name>Core_IPS_Auto_Promote__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Routing Order --></label>
+        <name>Core_IPS_Backend_Routing_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Core_IPS_Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Backend System --></label>
+        <name>Core_IPS_New_Backend_System__c</name>
+        <relationshipLabel><!-- Backend Routings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_IPS_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue --></label>
+        <name>Core_IPS_Queue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Type --></label>
+        <name>Core_IPS_Routing_Casetype__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Organization --></label>
+        <name>Core_IPS_Support_Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Product Name --></label>
+        <name>Core_IPS_Supported_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Product --></label>
+        <name>Core_IPS_Supported_Product__c</name>
+        <relationshipLabel><!-- Backend Routings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Environment Detail Question --></label>
+        <name>Environment_Detail_Question__c</name>
+        <relationshipLabel><!-- Backend Routings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Environment Question Answer --></label>
+        <name>Environment_Question_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org --></label>
+        <name>Support_Org__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

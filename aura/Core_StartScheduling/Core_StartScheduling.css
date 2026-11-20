@@ -1,0 +1,21 @@
+.THIS .slds-scrollable_x {
+ 
+}
+
+.THIS .warningError {
+    margin-top: 20%;
+}
+.THIS .float{
+    float:right;
+}
+.THIS .outerBox {
+	position:relative;
+	height:280px;
+	border:1px solid #666;
+	overflow:auto;
+	background-color:#eee
+}
+ 
+.THIS .spinner {
+	position:absolute;
+}

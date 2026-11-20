@@ -1,0 +1,7 @@
+.tab-container {
+    display: none;
+}
+
+.tab-container[data-is-active="true"] {
+    display: block;
+}

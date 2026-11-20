@@ -1,0 +1,16 @@
+.THIS {
+  background-color: var(--coreIntcBackgroundColor, var(--white));
+  color: var(--coreIntcColor, var(--carbon-shade2));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* to address older Edge support - https://developer.salesforce.com/docs/component-library/bundle/lightning-layout/documentation */
+@media all and (-ms-high-contrast: none) {
+  .THIS [class*="slds-size_"],
+  .THIS [class*="slds-size--"] {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}

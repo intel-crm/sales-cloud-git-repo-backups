@@ -1,0 +1,101 @@
+<!----------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_MAG_Response
+*Version     : 1.0 
+*Description:  VF Page to display MAG Responses
+*Modification Log :
+* Developer                   Date                        Description
+* ----------------------------------------------------------------------------                 
+* Sugandha                  27/08/2018                    Created - US148915
+------------------------------------------------------------------------------->
+<apex:page standardController="Case" standardStylesheets="true" showHeader="false" applyHtmlTag="false" >
+    <apex:includeLightning />
+    <div id="LightningComponentid"></div>
+    <script>
+        var uiTheme = "{!$User.UIThemeDisplayed}";
+   
+        if(uiTheme == 'Theme4d'|| uiTheme == 'Theme4u'){ 
+           
+            $Lightning.use("c:core_IPS", function() {
+                $Lightning.createComponent("c:core_IPS_MAG_Response_LEX",
+                                           {   
+                                              recordId : "{!$CurrentPage.parameters.id}"                                         
+                                           },
+                                           "LightningComponentid",
+                                           function(component) {
+                                           });
+            }); 
+        }
+        if({!$User.UITheme} == 'Theme4d' ){
+            window.onload = resizeWindow(); 
+            function resizeWindow(){
+            
+                //top.document.getElementById("0663F000000NS9g").height = "0px";--priority 1 violation top is blacklisted
+               parent.document.getElementById("0663F000000NS9g").height = "0px";
+            }
+        }
+    </script>
+    <style>
+        .norecords{display:none;}
+        .pbHeader table{ padding:0 !important; border-bottom-width:0 !important;}
+        .pbHeader{border-bottom-width:0 !important;}
+        .slds-scope .slds-card{border:none!important;}
+        .slds-scope .slds-has-button-menu .slds-th__action{background: #F3F2F2;}
+    </style>
+    <script> 
+     twistSection(document.getElementById('{!$Component.thePanel}').getElementsByTagName('img')[0]) 
+   </script>
+        <apex:variable var="lightningDesktop" value="{!$User.UIThemeDisplayed== 'Theme3'}" />
+       
+        <apex:pageBlock mode="detail" id="thePanel" rendered="{!lightningDesktop}" >  
+            <apex:variable value="{!0}" var="gecResponseCount"/>
+            <apex:variable value="{!0}" var="MagResponseCount"/>
+            <apex:variable value="{!0}" var="QuesNo"/>
+            
+            <table cellpadding="0" cellspacing="0" class="list surveyResponseTable">
+                <tr class="headerRow">
+                    <th>Question No</th>
+                    <th>{!$ObjectType.Core_IPS_GEC_Details__c.fields.Core_IPS_GEC_Question1__c.Label}</th>
+                    <th>{!$ObjectType.Core_IPS_GEC_Details__c.fields.Core_IPS_GEC_Question2__c.Label}</th>
+                    <th>Submitted By</th>
+                    <th>{!$ObjectType.Core_IPS_Response__c.fields.CreatedDate.Label}</th>
+                </tr>
+                <apex:repeat value="{!Case.GEC_Details__r}" var="gecAns">
+                    <tr class="dataRow">
+                        <td><apex:variable value="{!gecResponseCount+1}" var="gecResponseCount"/>
+                            {!gecResponseCount}
+                        </td>
+                        <td> <apex:outputField value="{!gecAns.Core_IPS_GEC_Question1__c}"/> </td>
+                        <td> <apex:outputField value="{!gecAns.Core_IPS_GEC_Question2__c}"/> </td>
+                        <td> <apex:outputField value="{!gecAns.LastModifiedById}"/> </td>
+                        <td> 
+                            <apex:outputField value="{!gecAns.CreatedDate}"/> 
+                        </td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!Case.Core_IPS_Responses__r}" var="response">
+                    <apex:outputPanel layout="none" rendered="{!(response.Core_IPS_Question_Master__r.RecordType.DeveloperName=='Core_IPS_MAG_Question' && response.Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__c==null) || (response.Core_IPS_Answer__c != null && response.Core_IPS_Question_Master__r.RecordType.DeveloperName=='Core_IPS_MAG_Question' && response.Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__c!=null)}" style="overflow:auto">
+                        <tr class="dataRow">
+                            <td>
+                                <apex:variable value="{!MagResponseCount+1}" var="MagResponseCount" />
+                                <apex:outputText value="{!LEFT(response.Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__r.Core_IPS_Question_Text__c,1)+'.'+LEFT(response.Core_IPS_Question__c,1)}" rendered="{!response.Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__c!=null}"/>
+                                <apex:outputText value="{!LEFT(response.Core_IPS_Question__c,1)}" rendered="{!response.Core_IPS_Question_Master__r.Core_IPS_Environment_Detail_Answer__c==null}"/>            
+                            </td>
+                            <td> <apex:outputText value="{!RIGHT(response.Core_IPS_Question__c,LEN(response.Core_IPS_Question__c)-2)}" /> </td>
+                            <td> <apex:outputField value="{!response.Core_IPS_Answer__c}"/> </td>
+                            <td> <apex:outputField value="{!response.LastModifiedById}"/> </td>
+                            <td><apex:outputField value="{!response.CreatedDate}"/> </td>
+                        </tr>
+                    </apex:outputPanel>
+                </apex:repeat>
+            </table>
+                
+            <apex:outputPanel styleClass="norecords">No records to display</apex:outputPanel>
+            <apex:outputPanel rendered="{!gecResponseCount==0 && MagResponseCount==0}">
+                <style> 
+                    .surveyResponseTable { display:none; } 
+                    .norecords { display:block; }
+                </style>
+            </apex:outputPanel>
+        </apex:pageBlock> 
+       
+</apex:page>

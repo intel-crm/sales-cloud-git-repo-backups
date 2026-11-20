@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset>VBS_SOAR</dataset>
+    <dimensions>
+        <field>Account_nm</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordDisplayFields>
+            <recordDisplayField>Account_nm</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opportunity.AccountId</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Opportunity_Name</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordDisplayFields>
+            <recordDisplayField>Opportunity_Name</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opportunity.Core_Opportunity_ID__c</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>Managed Services</bin>
+                <formatValue>#CD96FF</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>On-demand</bin>
+                <formatValue>#4269E9</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Optimization Software</bin>
+                <formatValue>#95FFFF</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Paid Support Services</bin>
+                <formatValue>#00B3B4</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Platform Software</bin>
+                <formatValue>#B3B400</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Semi-custom</bin>
+                <formatValue>#FFCD95</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>5</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>CRM_VBS_SO.CRM_VBS_Primary_VBS_Offering_Category__c</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>CRM_VBS_SO.CRM_VBS_Primary_VBS_Offering_Category__c</field>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>Managed Services</bin>
+                <formatValue>#98B1FF</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>On-demand</bin>
+                <formatValue>#963CE9</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Optimization Software</bin>
+                <formatValue>#95FFFF</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Paid Support Services</bin>
+                <formatValue>#95FFB0</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Platform Software</bin>
+                <formatValue>#FFCD95</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Semi-custom</bin>
+                <formatValue>#B3B400</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>5</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Unidentified</bin>
+                <formatValue>#00B3B4</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>6</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>Primary_VBS_Offering_Category</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Primary_VBS_Offering_Category</field>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SOAR_VBS_Renewal</field>
+        <isDerived>false</isDerived>
+        <label>VBS  Status</label>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+</WaveXmd>

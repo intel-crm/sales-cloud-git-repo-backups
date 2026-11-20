@@ -1,0 +1,84 @@
+.THIS .marquee {
+    background-color: t(darkBlue);
+}
+
+.THIS .contentPanel {
+    min-height: 500px;
+}
+
+.THIS .container {
+    width: 100%;
+}
+
+.THIS .compareTray {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: t(zIndexModal);
+}
+
+@media (min-width: 768px)
+    {
+    .THIS .padding-medium {
+      padding: 1em;
+    }
+    .THIS .container {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .THIS .l2-override.container {
+      width: 100%;
+    }
+}
+
+@media (min-width: 992px)
+    {
+    .THIS .container {
+        width: 970px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .THIS .l2-override.container {
+      width: 100%;
+    }
+}
+
+@media (min-width: 1200px)
+{
+    .THIS .container {
+        width: 1170px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .THIS .l2-override.container {
+      width: 100%;
+    }
+}
+/* SLds xtralarge */
+@media (min-width: 1280px)
+{
+    .THIS .padding-x-large {
+      padding: 1em;
+    }
+    .THIS .slds-x-large-size_3-of-12 {
+      width: 25%;
+    }
+    .THIS .slds-x-large-size_9-of-12 {
+      width: 75%;
+    }
+    .THIS .l2-override.container {
+      width: 1170px;
+    }
+}
+
+
+@media (min-width: 1650px)
+    {
+    .THIS .l2-override.container,
+    .THIS .container {
+        width: 1610px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}

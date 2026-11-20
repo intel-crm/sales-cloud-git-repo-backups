@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core MDF Email Translation Resub Reqd</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core MDF Email Translation Resub Reqds</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account : --></label>
+        <name>Core_MDF_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action Required --></label>
+        <name>Core_MDF_Action_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity End Date : --></label>
+        <name>Core_MDF_Activity_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Name : --></label>
+        <name>Core_MDF_Activity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Start Date : --></label>
+        <name>Core_MDF_Activity_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Subtype : --></label>
+        <name>Core_MDF_Activity_Subtype__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type : --></label>
+        <name>Core_MDF_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type : --></label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim # : --></label>
+        <name>Core_MDF_Claim__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claiming Window Closure Date : --></label>
+        <name>Core_MDF_Claimin_Window_Closure_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country/Region --></label>
+        <name>Core_MDF_Country_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Submission Link --></label>
+        <name>Core_MDF_Document_Submission_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date : --></label>
+        <name>Core_MDF_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Files Affected --></label>
+        <name>Core_MDF_Files_Affected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Greetings External --></label>
+        <name>Core_MDF_Greetings_External__c</name>
+    </fields>
+    <fields>
+        <label><!-- Greetings Internal --></label>
+        <name>Core_MDF_Greetings_Internal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue --></label>
+        <name>Core_MDF_Issue__c</name>
+    </fields>
+    <fields>
+        <label><!-- LanguageLocalKey --></label>
+        <name>Core_MDF_LanguageLocalKey__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody15 --></label>
+        <name>Core_MDF_MailBody15__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody4 --></label>
+        <name>Core_MDF_MailBody4__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody5 --></label>
+        <name>Core_MDF_MailBody5__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter1 --></label>
+        <name>Core_MDF_MailFooter1__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter2 --></label>
+        <name>Core_MDF_MailFooter2__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter3 --></label>
+        <name>Core_MDF_MailFooter3__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter4 --></label>
+        <name>Core_MDF_MailFooter4__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter5 --></label>
+        <name>Core_MDF_MailFooter5__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter6 --></label>
+        <name>Core_MDF_MailFooter6__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter7 --></label>
+        <name>Core_MDF_MailFooter7__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter8 --></label>
+        <name>Core_MDF_MailFooter8__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter9 --></label>
+        <name>Core_MDF_MailFooter9__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailSubject1 --></label>
+        <name>Core_MDF_MailSubject1__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailSubject2 --></label>
+        <name>Core_MDF_MailSubject2__c</name>
+    </fields>
+    <fields>
+        <label><!-- N/A --></label>
+        <name>Core_MDF_Not_Applicable__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIC Review Result Field Name --></label>
+        <name>Core_MDF_PIC_Review_Result_Field_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Only for Paid Legacy Claims --></help>
+        <label><!-- Post Payment Body Content1 --></label>
+        <name>Core_MDF_Post_Payment_Body_Content1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Post Payment Body Content2 --></label>
+        <name>Core_MDF_Post_Payment_Body_Content2__c</name>
+    </fields>
+    <fields>
+        <help><!-- Only for Paid Legacy Claims --></help>
+        <label><!-- Post Payment MailSubject2 --></label>
+        <name>Core_MDF_Post_Payment_MailSubject2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Team --></label>
+        <name>Core_MDF_Program_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program : --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <help><!-- Only for Legacy Claims --></help>
+        <label><!-- Reminder1 Subject --></label>
+        <name>Core_MDF_Reminder1_Subject__c</name>
+    </fields>
+    <fields>
+        <help><!-- Only for Legacy Claims --></help>
+        <label><!-- Reminder2 Subject --></label>
+        <name>Core_MDF_Reminder2_Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Thank You, --></label>
+        <name>Core_MDF_Thank_You__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

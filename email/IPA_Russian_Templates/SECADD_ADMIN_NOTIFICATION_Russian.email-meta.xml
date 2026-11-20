@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SECADD_ADMIN_NOTIFICATION_Russian</name>
+    <style>none</style>
+    <subject>Проверка заявки на регистрацию в Intel® Partner Alliance</subject>
+    <textOnly>Запрос на проверку
+
+{!UserName},
+
+Проверьте следующий запрос: добавление {{CONTACTEMAILID}} в вашу учетную запись {{ACCOUNTNAME}} в качестве контакта.
+
+Войдите в систему для подтверждения или отклонения запроса.
+
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!$Label.PRM_CurrentYear} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

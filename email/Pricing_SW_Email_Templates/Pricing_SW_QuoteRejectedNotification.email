@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Status for Quote: {!relatedTo.Quote__r.Name}/{!relatedTo.Quote__r.Pricing_SW_Account_Name__c}" recipientType="User" relatedToType="sbaa__Approval__c">
+    <messaging:htmlEmailBody >
+        <c:Pricing_SW_QuoteRejectedNotification quoteRecordId="{!relatedTo.Quote__r.Id}" quoteApprovalRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,42 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:hasSObjectName,lightning:isUrlAddressable,lightning:hasPageReference"
+    controller="Core_MDF_AuditDocumentHelper_Revamp" access="global">
+    <!--handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Aura attributes-->
+    <aura:attribute name="isCoGtm" type="Boolean" default="false" />
+    <!-- for passing Program value-->
+    <aura:attribute name="programName" type="String" description="to store the program value" />
+    <aura:attribute name="openManageAuditDocumentWrapperComp" type="boolean" default="false"></aura:attribute>
+    <aura:attribute name="openManageAuditDocPopup" type="Boolean" default="false"
+        description="This indicator is passed to manage audit document wrapper component to open the manage audit doc popup" />
+    <aura:attribute name="recordId" type="Id" default="{!v.recordId}" />
+    <aura:attribute name="enableDocumentUploadSection" type="Boolean" default="false" />
+    <aura:attribute name="disableDocumentUploadSection" type="Boolean" default="false" />
+    <aura:attribute name="claimDetails" type="Object" description="Holds the claim details" />
+    <aura:attribute name="existingAuditDocuments" type="List" description="Holds the existing audit document list" />
+    <aura:attribute name="actyPOPDescReq" type="Boolean" default="false"
+        description="Flag to display the Activity POP required description - applicable only for IPA programs" />
+    <aura:attribute name="isThirdPartyClaim" type="Boolean" default="false"
+        description="indicates whether the claim belongs to 3rd party or not" />
+    <aura:attribute name="isLegacyClaim" type="Boolean" default="false"
+        description="Indicates whether the claim is legacy or not" />
+    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false" />
+    <!--UI Implementation starts here-->
+    <aura:if isTrue="{!v.enableDocumentUploadSection}">
+        <div class="slds-grid slds-align_absolute-center proof_Of_Documents">
+            <div class="slds-var-m-right_medium POP_Header">
+                {!$Label.c.Core_MDF_Proof_of_Performance_Document_Submission}
+            </div>
+            <lightning:button label="{!$Label.c.Core_MDF_Upload_and_Manage_Documents}"
+                onclick="{!c.openManageAuditDocumentSection}"></lightning:button>
+        </div>
+    </aura:if>
+    <!--render manage audit wrapper component-->
+    <aura:if isTrue="{!v.openManageAuditDocumentWrapperComp}">
+        <c:Core_MDF_ManageAuditDocumentWrapperComponent openManageAuditDocPopup="{!v.openManageAuditDocPopup}"
+            recordId="{!v.recordId}" claimDetails="{!v.claimDetails}" isThirdPartyClaim="{!v.isThirdPartyClaim}"
+            existingAuditDocuments="{!v.existingAuditDocuments}" actyPOPDescReq="{!v.actyPOPDescReq}"
+            isLegacyClaim="{!v.isLegacyClaim}" programName = "{!v.programName}" isCoGtm="{!v.isCoGtm}" isOutcomeBasedAccountBasedAct ="{!v.isOutcomeBasedAccountBasedAct}"/>
+    </aura:if>
+</aura:component>

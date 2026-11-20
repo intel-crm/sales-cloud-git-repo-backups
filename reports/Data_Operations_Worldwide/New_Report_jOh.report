@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Match_Opportunity_KPI__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>CUST_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>a3B1J000000u7JY,a3B1J000001M7wn,a3B1J000000u7zo,a3B1J000000u6Hh,a3B1J000000u5X4,a3B1J000000u6P6,a3B1J000000u5Uy,a3B1J000000u7KI,a3B1J000000uAkm,a3B1J000000uAkN,a3B1J000000uAkr,a3B1J000000u4BH,a3B1J000000u4B2,a3B1J000000u4BC,a3B1J000000u4B7,a3B1J000000u5Zt,a3B1J000000u4WU,a3B1J000000u7GZ,a3B1J000000uC1y,a3B1J000000u9jP,a3B1J000000uD29,a3B1J000000uAkw,a3B1J000000uBks,a3B1J000000u57l,a3B1J000001M8LY,a3B1J000000u7mV,a3B1J000000u555,a3B1J000000u57L,a3B1J000000u55A,a3B1J000000u57V,a3B1J000000u55K,a3B1J000000u55F,a3B1J000000u57z,a3B1J000000u57m,a3B1J000000u4X8,a3B1J000000u589,a3B1J000000uE3g,a3B1J000000uDPC,a3B1J000001M82C,a3B1J000000uDPH,a3B1J000001M82H,a3B1J000000qFDz,a3B1J000000u584,a3B1J000000u40s,a3B1J000000u9ys</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>DWG - New</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Goal__c@Core_Goal__c.Core_Opportunity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

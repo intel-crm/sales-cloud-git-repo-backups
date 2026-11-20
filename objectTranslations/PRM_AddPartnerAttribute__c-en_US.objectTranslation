@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_AddPartnerAttribute</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_AddPartnerAttribute</value>
+    </caseValues>
+    <fields>
+        <label><!-- PRM_AccBuFocusColHeader --></label>
+        <name>PRM_AccBuFocusColHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_AccNameColHeader --></label>
+        <name>PRM_AccNameColHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_AccNumColHeader --></label>
+        <name>PRM_AccNumColHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_AcmPartnerRoleColHeader --></label>
+        <name>PRM_AcmPartnerRoleColHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_ChProgLevelColHeader --></label>
+        <name>PRM_ChProgLevelColHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_SpCritNameColHeader --></label>
+        <name>PRM_SpCritNameColHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_SpCritVar --></label>
+        <name>PRM_SpCritVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_TrainedEmpNoHeader --></label>
+        <name>PRM_TrainedEmpNoHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_TrainedEmpNoVar --></label>
+        <name>PRM_TrainedEmpNoVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_TrainingCreditsHeader --></label>
+        <name>PRM_TrainingCreditsHeader__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_TrainingCreditsVar --></label>
+        <name>PRM_TrainingCreditsVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_accountBuFocusVar --></label>
+        <name>PRM_accountBuFocusVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_accountNameVar --></label>
+        <name>PRM_accountNameVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_accountNumVar --></label>
+        <name>PRM_accountNumVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_acmpartnerRoleVar --></label>
+        <name>PRM_acmpartnerRoleVar__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_channelProgLevelNameVar --></label>
+        <name>PRM_channelProgLevelNameVar__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

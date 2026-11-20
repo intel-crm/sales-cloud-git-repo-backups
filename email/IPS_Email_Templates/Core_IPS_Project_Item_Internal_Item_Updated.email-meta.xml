@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>IPS_Letterhead</letterhead>
+    <name>Core IPS Project Item Internal Item Updated</name>
+    <style>freeForm</style>
+    <subject>IPS - Project Product {!Core_IPS_Product__c.Status__c} has been closed.</subject>
+    <textOnly>Project {!Core_IPS_Product__c.Core_IPS_Project__c} has been closed.
+
+Project #: {!Core_IPS_Product__c.Core_IPS_Project__c}
+Line Item #: {!Core_IPS_Product__c.Name}
+Line Item Approval Status: {!Core_IPS_Product__c.Status__c}
+Supported Product: {!Core_IPS_Product__c.Core_Supported_Product_Name__c}
+Submitter: {!Core_IPS_Product__c.CreatedBy}
+
+To view this Line Item please go to this link: {!$Label.Core_IPS_Notification_Internal_URL}/{!Core_IPS_Product__c.Id}
+
+_______________________________________________________________
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

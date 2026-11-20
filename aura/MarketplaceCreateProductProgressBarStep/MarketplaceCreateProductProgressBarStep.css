@@ -1,0 +1,5 @@
+.THIS {
+}
+.THIS a:focus .slds-path__title {
+  outline: auto;
+}

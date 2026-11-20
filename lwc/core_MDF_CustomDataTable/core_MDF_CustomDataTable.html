@@ -1,0 +1,138 @@
+<template>
+    <lightning-card title={title}>
+
+        <!-- Roshan - commented old code to enable overflow only for picklist
+        <div class={scrollWrapperClass} onfocusin={handleCellFocus} onfocusout={handleCellBlur}>  -->
+            
+        <div class={scrollWrapperClass}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <template if:true={showSelectAll}>
+                        <th class="select-column">
+                            <lightning-input
+                                type="checkbox"
+                                label="Select All"
+                                variant="label-hidden"
+                                checked={isAllSelected}
+                                onchange={handleSelectAllToggle}>
+                            </lightning-input>
+                        </th>
+                    </template>
+                    <template for:each={headerColumns} for:item="col">
+                        <th key={col.fieldName} style={col.columnStyle}>
+                            <div class={col.headerClass}>
+                                <span>
+                                    <template if:true={col.required}>
+                                        <abbr class="slds-required" title="required">*</abbr>
+                                    </template>
+                                    {col.label}
+                                </span>
+                                <template if:true={col.helpText}>
+                                    <lightning-helptext content={col.helpText} class="slds-m-left_xx-small slds-p-bottom_xx-small"></lightning-helptext>
+                                </template>
+                            </div>
+                        </th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={rows} for:item="record">
+                    <tr key={record._key}>
+                        <template if:true={enableRowSelection}>
+                            <td class="select-column">
+                                <lightning-input
+                                    type="checkbox"
+                                    label="Select Row"
+                                    variant="label-hidden"
+                                    data-row-id={record._key}
+                                    checked={record._selected}
+                                    onchange={handleRowSelectToggle}>
+                                </lightning-input>
+                            </td>
+                        </template>
+                        <template for:each={record.fields} for:item="col">
+                            <td key={col.key} class={col.class} style={col.columnStyle}>
+                                <template if:true={col.editable}>
+                                    <div class="input-wrapper">
+                                        <div if:true={col.typeIsTextArea} class="slds-p-top_small">
+                                            <lightning-textarea
+                                                value={col.value}
+                                                data-row-id={record._key}
+                                                data-col-key={col.key}
+                                                onchange={handleCellChange}
+                                                max-length={col.maxLength}
+                                                required={col.required}
+                                                title={col.helpText}
+                                                variant="label-hidden">
+                                            </lightning-textarea>
+                                        </div>
+                                        <div if:true={col.typeIsText} class="slds-p-top_large">
+                                            <lightning-input
+                                                type="text"
+                                                value={col.value}
+                                                data-row-id={record._key}
+                                                data-col-key={col.key}
+                                                onchange={handleCellChange}
+                                                max-length={col.maxLength}
+                                                required={col.required}
+                                                title={col.helpText}
+                                                variant="label-hidden">
+                                            </lightning-input>
+                                        </div>
+                                        <div if:true={col.typeIsNumber} class="slds-p-top_large">
+                                            <lightning-input
+                                                type="number"
+                                                value={col.value}
+                                                data-row-id={record._key}
+                                                data-col-key={col.key}
+                                                onchange={handleCellChange}
+                                                required={col.required}
+                                                min={col.min}
+                                                max={col.max}
+                                                step={col.step}
+                                                title={col.helpText}
+                                                variant="label-hidden">
+                                            </lightning-input>
+                                        </div>
+                                        <div if:true={col.typeIsDate} class="slds-p-top_large">
+                                            <lightning-input
+                                                type="date"
+                                                value={col.value}
+                                                data-row-id={record._key}
+                                                data-col-key={col.key}
+                                                onchange={handleCellChange}
+                                                required={col.required}
+                                                title={col.helpText}
+                                                variant="label-hidden">
+                                            </lightning-input>
+                                        </div>
+                                        <div if:true={col.typeIsPicklist} class="slds-p-top_large">
+                                            <!-- Roshan - enable overflow only for picklist -->
+                                            <lightning-combobox
+                                                value={col.value}
+                                                data-row-id={record._key}
+                                                data-col-key={col.key}
+                                                onopen={handleCellFocus}
+                                                onchange={handleCellChange}
+                                                options={col.options}
+                                                placeholder={col.placeholder}
+                                                required={col.required}
+                                                title={col.helpText}
+                                                variant="label-hidden">
+                                            </lightning-combobox>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template if:false={col.editable}>
+                                    <div class={col.class} title={col.helpText}>{col.value}</div>
+                                </template>
+                            </td>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        </div>
+    </lightning-card>
+</template>

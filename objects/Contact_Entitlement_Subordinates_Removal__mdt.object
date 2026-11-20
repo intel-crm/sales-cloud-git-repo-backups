@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_Condition__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Condition</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Entitlement_Id__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Entitlement_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Entitlement_Subordinate_Id__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement Subordinate Id</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Entitlement_Subordinate_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement Subordinate Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Contact Entitlement Subordinates Removal</label>
+    <listViews>
+        <fullName>All2</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Core_Entitlement_Name__c</columns>
+        <columns>Core_Entitlement_Id__c</columns>
+        <columns>Core_Entitlement_Subordinate_Name__c</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Core_Condition__c</columns>
+        <columns>Core_Entitlement_Subordinate_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All2</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Contact Entitlement Subordinates Removal</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

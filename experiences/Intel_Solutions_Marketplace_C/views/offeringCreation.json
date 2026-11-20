@@ -1,0 +1,197 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "72a4035a-f27f-444a-9bb0-7ac84a685ba9",
+  "label" : "Offering Creation",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"OfferingDetailPage\",\"title\":\"Offering Creation\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Create A New Offering"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "2c5ad632-4811-4dd4-a83a-4bd15999bbd8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "cd2212cb-3553-4225-aaa9-32286fe03d16",
+        "zh_cn" : "ee352c04-be87-4288-a100-76d1de74500f"
+      },
+      "renditions" : [ {
+        "id" : "ee352c04-be87-4288-a100-76d1de74500f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "创建新产品/产品解决方案"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "cd2212cb-3553-4225-aaa9-32286fe03d16",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "新しいオファリングを作成"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "8e77d59f-78b7-469a-9f44-fb6e73a4f21a",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "44a03ed0-fbda-4543-b150-cc569c7d95f9",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cancelButtonText" : "Cancel",
+        "changesSavedText" : "Changes saved",
+        "debugMode" : true,
+        "recordId" : "{!recordId}",
+        "recordListViewId" : "",
+        "saveButtonText" : "Save"
+      },
+      "componentName" : "c:MarketplaceCreateProductsForm",
+      "id" : "8fd87c2f-3eb4-4948-96f0-6d98651b420c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "1c6b3982-1d80-4d06-aea2-05f99e07d9f1",
+        "zh_cn" : "d7674687-240f-4753-91f1-10c89324d6b7"
+      },
+      "renditions" : [ {
+        "id" : "d7674687-240f-4753-91f1-10c89324d6b7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "cancelButtonText" : "取消",
+            "saveButtonText" : "保存"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1c6b3982-1d80-4d06-aea2-05f99e07d9f1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "cancelButtonText" : "キャンセル",
+            "saveButtonText" : "保存"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "0004ce65-95cb-4f6d-ba96-7f8ddaec019d",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "f840a8ff-469c-4b50-ab3c-1ffeb5d7cb70",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "fbc532fe-aed9-437a-a759-1db50ffcefaa",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "000c25a7-9135-4c01-83d0-d0b556bf515c",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "bf4c988c-123e-45cb-b5d1-b16d898994bc",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "291ce6d6-8e2d-43ca-b307-c18efdf5caa1",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "38823669-2eef-41d5-a900-b9e4482da57f",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "0059dad2-186b-4111-9acd-a0701df8495b",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "ac2a8cc5-38e5-4e04-a2db-5769328b8693",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ba45f402-6f05-4ba7-ad4d-d2be5c663041",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "faqTitle" : "Offering Creation",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "94365de9-9330-45d9-8222-a9e024b27d99",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "ceb1da5b-b1fe-4d00-b75f-bbeab5aeb12f",
+        "zh_cn" : "1637242d-cee3-4f03-8681-a43b24595f5b"
+      },
+      "renditions" : [ {
+        "id" : "ceb1da5b-b1fe-4d00-b75f-bbeab5aeb12f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "よくある質問"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1637242d-cee3-4f03-8681-a43b24595f5b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "常见问题解答"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "6392a9e6-5790-4b8f-b65a-494028563fde",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "42caa9c9-2e56-4900-8075-d5a8f9893fd8",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Offering Creation\"/> \n<meta name=\"keywords\" content=\"sf,mp,offering creation\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Create your products and solution offerings on Intel® Solutions Marketplace.",
+        "title" : "Offering Creation - - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "9cf83895-892a-487e-a488-09ba9b86b500",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f8050384-a3e2-4636-9122-213b35523794",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offering-create"
+}

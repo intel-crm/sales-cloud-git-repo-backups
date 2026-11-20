@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom Layout Section</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Layout Sections</value>
+    </caseValues>
+    <fields>
+        <label><!-- Proposal or Account Based --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Based</masterLabel>
+            <translation><!-- Account Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal Based</masterLabel>
+            <translation><!-- Proposal Based --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Value should be in JSON format.
+Ex: [{&quot;profileName&quot; : &quot;System Administrator&quot;, &quot;controllingFieldValueBasedOnPs&quot;: [{&quot;controllingFieldValue&quot;:&quot;Draft&quot;,&quot;buttons&quot;:[&quot;Edit&quot;, &quot;Clone&quot;, &quot;Cancel Campaign&quot;, &quot;Create Activity&quot;]},{&quot;controllingFieldValue&quot;:&quot;Cancelled&quot;,&quot;buttons&quot;:[&quot;Clone&quot;]},{&quot;controllingFieldValue&quot;:&quot;Revision Required&quot;,&quot;buttons&quot;:[&quot;Edit&quot;, &quot;Clone&quot;, &quot;Cancel Campaign&quot;, &quot;Submit For Approval&quot;, &quot;Create Activity&quot;]}]}] --></help>
+        <label><!-- Buttons Visibility Based On Profile --></label>
+        <name>Core_MDF_ButtonVisibilityByProfile_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value should be in JSON format.
+Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&quot;, &quot;controllingFieldValueBasedOnPs&quot;: [{&quot;controllingFieldValue&quot;:&quot;Draft&quot;,&quot;buttons&quot;:[&quot;Edit&quot;, &quot;Clone&quot;, &quot;Cancel Campaign&quot;, &quot;Submit For Approval&quot;, &quot;Create Activity&quot;]},{&quot;controllingFieldValue&quot;:&quot;Cancelled&quot;,&quot;buttons&quot;:[&quot;Clone&quot;]}]}] --></help>
+        <label><!-- Buttons Visibility Based On PS --></label>
+        <name>Core_MDF_ButtonsVisibilityOnStatus_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field View --></label>
+        <name>Core_MDF_Field_View_nm__c</name>
+        <picklistValues>
+            <masterLabel>API Create</masterLabel>
+            <translation><!-- API Create --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compact Layout</masterLabel>
+            <translation><!-- Compact Layout --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Detail Layout</masterLabel>
+            <translation><!-- Detail Layout --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Hide If No Value --></label>
+        <name>Core_MDF_Hide_If_No_Value_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Of Columns --></label>
+        <name>Core_MDF_No_Of_Columns_nm__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Name --></label>
+        <name>Core_MDF_Record_Type_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section Name --></label>
+        <name>Core_MDF_Section_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sequence No --></label>
+        <name>Core_MDF_Sequence_No_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- German Trans --></label>
+        <name>Core_MDF_de_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Mex Trans --></label>
+        <name>Core_MDF_es_MX_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Trans --></label>
+        <name>Core_MDF_es_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- French Trans --></label>
+        <name>Core_MDF_fr_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Italian Trans --></label>
+        <name>Core_MDF_it_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japanese Trans --></label>
+        <name>Core_MDF_ja_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Korean Trans --></label>
+        <name>Core_MDF_ko_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portuguese Trans --></label>
+        <name>Core_MDF_pt_BR_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russian Trans --></label>
+        <name>Core_MDF_ru_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Sim Trans --></label>
+        <name>Core_MDF_zh_CN_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Trad Trans --></label>
+        <name>Core_MDF_zh_TW_cd__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot enable &apos;Hide If No Value&apos; when the field view is set to &apos;Compact Layout&apos;. Please choose a different layout or disable &apos;Hide If No Value&apos;. --></errorMessage>
+        <name>Core_MDF_CompactLayoutHideNotAllowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Buttons Visibility Based On Status should be blank for Detail Layout Field View --></errorMessage>
+        <name>Core_MDF_FieldViewDetailLayoutValidation</name>
+    </validationRules>
+</CustomObjectTranslation>

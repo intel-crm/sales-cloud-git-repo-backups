@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account External System Info</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account External System Info</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Account External System Info --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ERPM Business ID --></label>
+        <name>PRM_Business_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERPM Business Name --></label>
+        <name>PRM_ERPM_Business_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Tier --></label>
+        <name>PRM_Effective_Tier__c</name>
+        <picklistValues>
+            <masterLabel>AFFILIATE</masterLabel>
+            <translation><!-- AFFILIATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASSOCIATE</masterLabel>
+            <translation><!-- ASSOCIATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GENERAL</masterLabel>
+            <translation><!-- GENERAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GOLD</masterLabel>
+            <translation><!-- GOLD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEMBER</masterLabel>
+            <translation><!-- MEMBER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLATINUM</masterLabel>
+            <translation><!-- PLATINUM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PREMIER</masterLabel>
+            <translation><!-- PREMIER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REGISTERED</masterLabel>
+            <translation><!-- REGISTERED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIP</masterLabel>
+            <translation><!-- VIP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Engagement --></label>
+        <name>PRM_Engagement__c</name>
+        <picklistValues>
+            <masterLabel>CIP</masterLabel>
+            <translation><!-- CIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSN</masterLabel>
+            <translation><!-- DSN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA</masterLabel>
+            <translation><!-- ISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-AI</masterLabel>
+            <translation><!-- ITP-AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-Cloud</masterLabel>
+            <translation><!-- ITP-Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-Enthusiast</masterLabel>
+            <translation><!-- ITP-Enthusiast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-Gold</masterLabel>
+            <translation><!-- ITP-Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-HPC</masterLabel>
+            <translation><!-- ITP-HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-ODM-LOEM</masterLabel>
+            <translation><!-- ITP-ODM-LOEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-Platinum</masterLabel>
+            <translation><!-- ITP-Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP-Registered</masterLabel>
+            <translation><!-- ITP-Registered --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

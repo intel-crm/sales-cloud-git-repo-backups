@@ -1,0 +1,21 @@
+<aura:documentation>
+	<aura:description>
+    <p>Modal Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 5/1/2019</p>
+    <p>CurrentVersion: 0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+		<p>This is a modal component.</p>
+		<p>It is currently used in the Edit Storefront Wizard.</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+         <p>2.0 - Style adjustments</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

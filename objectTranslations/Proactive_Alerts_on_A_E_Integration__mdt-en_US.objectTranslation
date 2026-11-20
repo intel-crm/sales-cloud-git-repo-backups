@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Proactive Alert on A&amp;E Integration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Proactive Alerts on A&amp;E Integration</value>
+    </caseValues>
+    <fields>
+        <label><!-- Error Group --></label>
+        <name>Core_Error_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Source --></label>
+        <name>Core_Error_Source__c</name>
+        <picklistValues>
+            <masterLabel>AGS</masterLabel>
+            <translation><!-- AGS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERPM</masterLabel>
+            <translation><!-- ERPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Error Text --></label>
+        <name>Core_Error_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum count for Alert --></label>
+        <name>Core_Minimum_count_for_Alert__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsIgnore --></label>
+        <name>IsIgnore__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

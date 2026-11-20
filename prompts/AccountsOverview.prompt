@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Overview</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/</actionButtonLink>
+        <body>&lt;p&gt;Accounts are&amp;nbsp;Intel’s&amp;nbsp;customers,&amp;nbsp;partners, and competitors. Each account stores information such as the name, address, and phone number of the account contacts. It also&amp;nbsp;stores related information such as opportunities, activities, cases, partners, contracts, and notes.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;All the accounts within Sales CRM are visible to all blue badge Sales CRM users.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsAccount360&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Account 360&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountPlans&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Account Plans&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel--crmqa3.sandbox.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsRequestaNewAccount&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Request a New Account&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsEditanAccount&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Edit an Account&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsCreateorEditaContact&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Create or Edit a A Contact&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsAddEditDeleteAccountTeamMembers&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Add/Edit/Delete Account Team Members&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsChangeAccountOwnership&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Change Account Ownership&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsAccessEntitlementGrantAccess&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Access &amp;amp; Entitlement - Grant Access&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsUnifiedCustomerData&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;UCD&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsCreateEditDefaultAccountTeams&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Create/Edit Default account teams&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsAddAttachments&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Add Attachments&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>3</delayDays>
+        <description>Accounts Overview</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Overview</masterLabel>
+        <publishedDate>2024-04-11</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Accounts Overview and Help</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

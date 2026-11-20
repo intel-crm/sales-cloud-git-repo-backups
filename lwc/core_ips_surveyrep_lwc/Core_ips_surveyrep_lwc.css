@@ -1,0 +1,16 @@
+.THIS.customRadioCls .slds-form-element__control .slds-radio{
+    display : inline-block !important;
+    border:1px solid red
+}
+.THIS .slds-radio {  
+    display: inline !important;  
+} 
+fieldset {
+    display: flex;
+  }
+  .slds-form-element__control{
+    display: flex;
+  }
+  .customRadioCls fieldset .slds-form-element__control{
+    display:flex;
+  }

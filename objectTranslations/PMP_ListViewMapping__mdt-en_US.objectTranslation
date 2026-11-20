@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ListViewMapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ListViewMappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Hyperlink Field Names --></label>
+        <name>Hyperlink_Field_Names__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>PMP_Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- List View Name --></label>
+        <name>PMP_List_View_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectName --></label>
+        <name>PMP_sObjectName__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

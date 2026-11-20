@@ -1,0 +1,269 @@
+<!-- This page is used to display the MaritzCX Configuration Settings 
+    Last Modified By: Ankur 8-May-2017 Default start date  
+-->
+<apex:page controller="MaritzCX.ConfigurationController">
+<!-- Jquery Datepicker Files-->
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/Highcharts_Library/api/js/jquery-1.11.3.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/jqueryDatePicker/jquery-ui-1.11.4/jquery-ui.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.MaritzCX__MCX_Highcharts_Library, '/jqueryDatePicker/jquery-ui-themes-1.9.2/themes/ui-lightness/jquery-ui.css')}" />
+<!-- End of Jquery Datepicker-->
+
+<style> 
+table.mytable { border-collapse: collapse;empty-cells: hide; }
+.mytable th{padding: 5px; text-align: center;}
+.mytable td {padding: 5px; width:120px;}
+</style>
+
+<script type="text/javascript">
+    var j$ = jQuery.noConflict();
+    var locateDateFormat = UserContext.dateFormat;                 
+    locateDateFormat = locateDateFormat.replace(/M/g, 'm').replace('yyyy', 'yy'); 
+    locateDateFormat = (locateDateFormat.match(/m/g).length == 1) ? locateDateFormat.replace('m', 'mm') : locateDateFormat;                
+    locateDateFormat = (locateDateFormat.match(/d/g).length == 1) ? locateDateFormat.replace('d', 'dd') : locateDateFormat;
+    
+    window.onload = function(){initDatepicker();};    
+    function initDatepicker(){    
+        j$('[id$=datepicker]').datepicker({
+        dateFormat: locateDateFormat,
+        maxDate : 0,
+        changeMonth: true,
+        changeYear: true}); 
+    }  
+</script>
+
+<apex:form id="myForm">
+    <apex:pageBlock id="myPageBlock" tabStyle="Case" title="{!$Label.maritzcx__configuration}"><br />
+        <apex:pageMessages id="msg" />
+        <apex:pageBlockSection title="{!$Label.maritzcx__visualization_configuration}" collapsible="false" columns="1">        
+            <apex:pageBlockSectionItem >
+                <apex:outputText escape="true" value="The settings below are needed to display charts on the Contact and Account screens.Minimum and Maximum are the rating values for the associated questions. {!$Label.maritzcx__save_after_each_setting}"/>
+            </apex:pageBlockSectionItem>               
+        </apex:pageBlockSection>    
+        <br/>
+        <apex:outputPanel id="allsurevyMsg">
+            <apex:pageMessage summary="{!$Label.maritzcx__config_all_survey_msg}" severity="info" strength="1" rendered="{!surveyFilterId =='All'}"/>
+        </apex:outputPanel>
+        <apex:outputPanel id="newtab">        
+        <table class="mytable">
+            <tr>
+                <td style="vertical-align: middle;"><apex:outputLabel value="{!$Label.maritzcx__survey}" for="Survey" style="font-weight: bold;"/></td>
+                <td>
+                    <apex:selectList label="Survey" size="1" value="{!surveyFilterId}" disabled="{!IF(surveyFilterId == null,true,false)}" style="width:150px;">
+                        <apex:selectOptions value="{!SurveyOptions}"/>
+                        <apex:actionSupport event="onchange" action="{!retrieveDetails}" oncomplete="initDatepicker();" reRender="allsurevyMsg,msg,defaultSurId,newtab"/>                        
+                    </apex:selectList>
+                </td>
+                <td>
+                    <apex:outputPanel id="defaultSurId">
+                        <apex:inputCheckBox id="checkDone" label="Set as Default Survey" value="{!defaultSurvey}" rendered="{!surveyFilterId !='All'}" style="vertical-align: middle;">
+                            <apex:actionSupport event="onchange" rerender="msg" />
+                        </apex:inputCheckBox>
+                        <apex:outputLabel value="{!$Label.maritzcx__default_survey}" for="Default Survey" rendered="{!surveyFilterId !='All'}" style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;"/>                
+                    </apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;"><apex:outputLabel value="{!$Label.maritzcx__time_trend_filter}" for="timeTrend" style="font-weight: bold;"/></td>
+                <td>
+                    <apex:selectList label="timeTrend" size="1" value="{!selectedTrend}" style="width:150px;">
+                        <apex:selectOptions value="{!TimeTrendOptions}"/>                        
+                    </apex:selectList>
+                </td>                
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;"><apex:outputLabel value="{!$Label.maritzcx__start_date}" for="datepicker" style="font-weight: bold;"/></td>
+                <td>
+                    <apex:inputText id="datepicker" size="8" value="{!startDate}"/>
+                </td>                
+            </tr>
+            <tr>
+                <th></th>
+                <th><apex:outputText value="{!$Label.maritzcx__minimum}" escape="true"/></th>
+                <th><apex:outputText value="{!$Label.maritzcx__maximum}" escape="true"/></th>
+                <th><apex:outputText value="{!$Label.maritzcx__goal}" escape="true"/></th>
+                <th><apex:outputText value="{!$Label.maritzcx__chart_type}" escape="true"/></th>                                                                
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;">
+                    <apex:outputText title="{!keyMetric1Label}" value="{!if(len(keyMetric1Label) > 21, LEFT(keyMetric1Label, 21)+'...', keyMetric1Label)}" escape="true" style="font-weight:bold;"/>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric1Min}" style="width:150px;text-align: center;/">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric1Max}" style="width:150px;text-align: center;/">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric1Goal}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:selectList value="{!selectedChartTypeK1}" size="1" style="width:150px;">
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;">
+                    <apex:outputText title="{!keyMetric2Label}" value="{!if(len(keyMetric2Label) > 21, LEFT(keyMetric2Label, 21)+'...', keyMetric2Label)}" escape="true" style="font-weight:bold;"/>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric2Min}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric2Max}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric2Goal}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:selectList value="{!selectedChartTypeK2}" size="1" style="width:150px;">
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;">
+                    <apex:outputText title="{!keyMetric3Label}" value="{!if(len(keyMetric3Label) > 21, LEFT(keyMetric3Label, 21)+'...', keyMetric3Label)}" escape="true" style="font-weight:bold;"/>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric3Min}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric3Max}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric3Goal}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:selectList value="{!selectedChartTypeK3}" size="1" style="width:150px;">
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;">
+                    <apex:outputText title="{!keyMetric4Label}" value="{!if(len(keyMetric4Label) > 21, LEFT(keyMetric4Label, 21)+'...', keyMetric4Label)}" escape="true" style="font-weight:bold;"/>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric4Min}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric4Max}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric4Goal}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:selectList value="{!selectedChartTypeK4}" size="1" style="width:150px;">
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;">
+                    <apex:outputText title="{!keyMetric5Label}" value="{!if(len(keyMetric5Label) > 21, LEFT(keyMetric5Label, 21)+'...', keyMetric5Label)}" escape="true" style="font-weight:bold;"/>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric5Min}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric5Max}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!keyMetric5Goal}" style="width:150px;text-align: center;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </td>
+                <td>
+                    <apex:selectList value="{!selectedChartTypeK5}" size="1" style="width:150px;">
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </td>
+            </tr>
+        </table>
+        </apex:outputPanel>
+        <br/>    
+            <apex:commandButton value="{!$Label.maritzcx__save}" action="{!saveVizConfiguration}" reRender="msg"/>
+        <br/>
+        <apex:pageBlockSection title="{!$Label.maritzcx__case_settings}" collapsible="false" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputText escape="true" value="The settings below can be used for managing MaritzCX Cases."/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <br/>
+        <apex:outputPanel id="caseSettings">
+            <table class="mytable">
+                <tr>
+                    <td style="vertical-align: middle;"><apex:outputText escape="true" style="font-weight:bold;" value="Record Type"/></td>
+                    <td>
+                        <apex:selectList label="Record Type" value="{!caseRecordTypeId}" multiselect="false" size="1" style="width:150px;" disabled="{!caseRecordTypeList.size==0}">
+                            <apex:selectOptions value="{!caseRecordTypes}"/>
+                            <apex:actionSupport event="onchange" rerender="msg" />
+                        </apex:selectList>
+                    </td>
+                </tr>                
+            </table>            
+            <apex:commandButton value="{!$Label.maritzcx__save}" action="{!saveCaseSettings}" reRender="msg,caseSettings"/>
+        </apex:outputPanel>
+        <!-- Case Settings Section -END-->
+        
+        <!-- Configure Columns -START-->
+        <apex:pageBlockSection title="{!$Label.maritzcx__configure_columns}" collapsible="false" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputText escape="true" value="{!$Label.maritzcx__configure_columns_info}"/>
+            </apex:pageBlockSectionItem>
+            
+        </apex:pageBlockSection>
+        <br/>
+        <apex:outputPanel id="ConfigureColumns">
+        <c:SelectMultipleOptionsComp />               
+        </apex:outputPanel>
+        <!--  Configure Columns -END-->
+        
+        <!-- Configure Questions -START-->
+        <apex:pageBlockSection title="{!$Label.maritzcx__configure_questions}" collapsible="false" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputText escape="true" value="{!$Label.maritzcx__configure_questions_info}"/>
+            </apex:pageBlockSectionItem>            
+        </apex:pageBlockSection>
+        <br/>                
+        <apex:outputPanel id="ConfigureQuestions">
+        <c:ConfigureQuestionComp id="quescomp"/>
+        </apex:outputPanel>
+        <!--  Configure Questions -END-->                        
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

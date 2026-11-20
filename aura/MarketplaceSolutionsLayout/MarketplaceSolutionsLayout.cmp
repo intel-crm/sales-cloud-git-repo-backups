@@ -1,0 +1,85 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:layout" description="Marquee w/ full body content area" access="global">
+    <aura:attribute name="bannerBlade" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1white" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="sidebar" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="ctabar" type="Aura.Component[]" required="false" />
+    <aura:attribute name="faq" type="Aura.Component[]" required="false" />
+    <aura:attribute name="faqWhite" type="Aura.Component[]" required="false" />
+    <aura:attribute name="compareTray" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="showFullWidth" type="Boolean" default="true"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
+    <aura:handler event="c:PSS_HandleAdminReview" action="{!c.handleAdminEvent}"/>
+    
+    <div>
+      <div class="bannerBlade">
+          <div class="banner">
+          {!v.bannerBlade}
+          </div>    
+      </div>
+        
+      <div class="marquee">
+          {!v.marquee}
+      </div>
+      <div class="container">
+          <div class="contentPanel">
+              {!v.main}
+          </div>
+      </div>
+       <aura:if isTrue="{!v.showFullWidth}"> 
+     <div class="bg-white">
+         
+          {!v.mainFullWidth}
+      </div>
+        </aura:if>
+      <div class="bg-blade-odd">
+        <div class="container">
+          {!v.blade1}
+        </div>
+      </div>
+      <div class="bg-white">
+          <div class="container">
+            {!v.blade1white}
+          </div>
+        </div>
+      <div class="bg-blade-even">
+        <div class="container">
+            {!v.blade2}
+        </div>
+      </div>
+      <div class="bg-blade-odd">
+        <div class="container">
+          {!v.blade3}
+        </div>
+      </div>
+      <div class="bg-blade-even">
+        <div class="inner">
+            {!v.blade4}
+        </div>
+      </div>
+      <!--  Container class is to avoid full width content (OPTIONAL) -->
+      <div class="bg-white">
+        <div class="inner">
+          {!v.faqWhite}
+        </div>
+      </div>  
+      <div>
+          {!v.ctabar}
+      </div>
+      
+      <div class="container">
+          {!v.faq}
+      </div>
+
+      <div class="compareTray">
+          {!v.compareTray}
+      </div>
+    </div>
+</aura:component>

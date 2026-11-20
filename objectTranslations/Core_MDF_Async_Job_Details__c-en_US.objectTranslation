@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Async Job Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Async Job Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- Job Id --></label>
+        <name>Core_MDF_Job_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Type --></label>
+        <name>Core_MDF_Job_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Bulk API</masterLabel>
+            <translation><!-- Bulk API --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>Core_MDF_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_MDF_Object_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operation --></label>
+        <name>Core_MDF_Operation_nm__c</name>
+        <picklistValues>
+            <masterLabel>Delete</masterLabel>
+            <translation><!-- Delete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert</masterLabel>
+            <translation><!-- Insert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update</masterLabel>
+            <translation><!-- Update --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Response</masterLabel>
+            <translation><!-- No Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

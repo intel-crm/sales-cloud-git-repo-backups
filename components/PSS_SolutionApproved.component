@@ -1,0 +1,87 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component ></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            table {
+            font-family: sans-serif; /*arial, sans-serif ;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            a{
+            color:#0071c5;
+}-->
+            
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+<!--             
+        </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Congratulations, Your Solution is Approved"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        Hello, <br/><br/>
+                        Congratulations, your solution, {!solutionData.PSS_Proposal_Name_Txt__c}, has been approved for: <br/>
+                        <apex:outputText value="{!SUBSTITUTE(solutionData.PSS_View_Program_Applicable_Txt__c, ',', '<br/>')}"  escape="false"/><br/><br/>
+                        If you are new to the Intel® Partner Showcase, you will receive a series of emails within 3 business days, guiding you through the onboarding process.  If you do not receive information within the 3 business days, please contact&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}</apex:outputLink>&nbsp;for assistance.<br/><br/>
+                        If you already have a storefront on the Intel® Partner Showcase, you will receive an email asking you to review your draft offering.<br/><br/>
+                        If your solution qualifies for Intel® Partner Alliance Select Benefits, you will receive details on how to access these benefits.<br/><br/>
+                        We are thrilled your solution is part of Intel® Partner Showcase, we look forward to accelerating your solution together.<br/><br/>
+                        
+                        Sincerely,<br/><br/>
+                        Your Intel® Partner Alliance team <br/><br/>
+                        
+                    </td>
+                </tr> -->
+                
+                <!-- Email Body -->
+                <!-- Email shared with -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        This email may be shared with others in your organization. You may see the full list of who the solution is shared with in the Solution Summary page.<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink>
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+                
+                
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+                  <!-- <c:PSS_Global_Footer />  -->
+
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

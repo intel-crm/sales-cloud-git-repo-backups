@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Opportunity Submitted for Won" recipientType="User" relatedToType="Opportunity"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Core_PCC_OpportunityApprovalNotification oppRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,47 @@
+.storefront-detail-filters-container h3 {
+  border-bottom: 1px solid var(--lightGray);
+}
+
+.accessibility-jump {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .2s linear;
+}
+
+.accessibility-jump:focus {
+  max-height: 2rem;
+}
+
+.filter-button {
+  background: var(--white);
+  border-color: var(--carbon);
+  color: inherit;
+}
+
+.filter-button:focus {
+  color: var(--white, #ffffff);
+}
+
+.filter-button-count {
+  border: 1px solid black;
+  border-color: var(--carbon-tint-2);
+  border-radius: .125rem;
+  padding: .0625rem .375rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.filter-button-sticky-container {
+  border-bottom: 1px solid var(--lightGray);
+}
+
+/* selected category filters lose link blue */
+a[data-selected="true"] {
+  color: inherit;
+}
+
+lightning-input {
+  word-break: break-word;
+}

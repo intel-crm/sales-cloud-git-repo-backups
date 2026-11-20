@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Core_All_Users_CCP_Internal</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Core_MDF_CCP_Internal_Retail_All</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Core_MDF_Budget_Partner__c</field>
+        <field>StartDate</field>
+        <field>EndDate</field>
+        <field>Amount</field>
+        <field>Core_MDF_Budget_Status__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>CCP_Finance_Manager_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for Co-marketing Budget</description>
+        <entryCriteria>
+            <formula>RecordType.DeveloperName = $Label.Core_MDF_CoMarketing_Budget_Record_type</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step for Co-marketing Budget</label>
+        <name>Core_MDF_Step_for_Co_marketing_Budget</name>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_ASMO_LAR_RetailBudget_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for ASMO LAR Retail Budget</description>
+        <entryCriteria>
+            <formula>AND(RecordType.DeveloperName = $Label.Core_MDF_Retail_Budget_Record_type,
+ISPICKVAL(Core_MDF_Budget_Partner__r.Core_Geo__c, &apos;ASMO&apos;),
+ISPICKVAL(Core_MDF_Budget_Partner__r.Core_Sub_Geo__c, &apos;LAR&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step for ASMO LAR Retail Budget</label>
+        <name>Core_MDF_Step_for_ASMO_LAR_Retail_Budget</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_APJ_Retail_Budget_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for APJ Retail Budget</description>
+        <entryCriteria>
+            <formula>AND(RecordType.DeveloperName = $Label.Core_MDF_Retail_Budget_Record_type,	
+ISPICKVAL(Core_MDF_Budget_Partner__r.Core_Geo__c, &apos;APJ&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step for APJ Retail Budget</label>
+        <name>Core_MDF_Step_for_APJ_Retail_Budget</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_EMEA_Retail_Budget_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for EMEA Retail Budget</description>
+        <entryCriteria>
+            <formula>AND(RecordType.DeveloperName = $Label.Core_MDF_Retail_Budget_Record_type,	
+ISPICKVAL( Core_MDF_Budget_Partner__r.Core_Geo__c, &apos;EMEA&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step for EMEA Retail Budget</label>
+        <name>Core_MDF_Step_for_EMEA_Retail_Budget</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_PRC_Retail_Budget_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for PRC Retail Budget</description>
+        <entryCriteria>
+            <formula>AND(RecordType.DeveloperName = $Label.Core_MDF_Retail_Budget_Record_type,	
+ISPICKVAL( Core_MDF_Budget_Partner__r.Core_Geo__c, &apos;PRC&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Step for PRC Retail Budget</label>
+        <name>Core_MDF_Step_for_PRC_Retail_Budget</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_ASMO_NAR_RetailBudget_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for ASMO NAR Retail Budget</description>
+        <entryCriteria>
+            <formula>AND(RecordType.DeveloperName = $Label.Core_MDF_Retail_Budget_Record_type,
+ISPICKVAL(Core_MDF_Budget_Partner__r.Core_Geo__c, &apos;ASMO&apos;),
+ISPICKVAL(Core_MDF_Budget_Partner__r.Core_Sub_Geo__c, &apos;NAR&apos;))</formula>
+        </entryCriteria>
+        <label>Step for ASMO NAR Retail Budget</label>
+        <name>Core_MDF_Step_for_ASMO_NAR_Retail_Budget</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>CCP Budget Approval Process</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>PartnerMarketingBudget.Core_MDF_Budget_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Budget Approval Process</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

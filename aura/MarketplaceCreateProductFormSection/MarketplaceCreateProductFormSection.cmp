@@ -1,0 +1,54 @@
+<aura:component></aura:component>
+<!-- IPA2.0 + US TWC4497-1631 -->
+  <!-- <aura:attribute name="headline" type="string" required="true" description="The headline for the section"/>
+  <aura:attribute name="isAccordion" type="boolean" default="false" description="This will show subsections in an accordion view."/>
+  <aura:attribute name="isAccordionOnlyShowCurrent" type="boolean" default="false" description="This will only allow one subsection open at a time."/>
+  <aura:attribute name="userSelectedLanguage" type="string" />
+  <aura:attribute name="subsections" type="object[]" required="true" description="Internal"/>
+  <aura:attribute name="formData" type="Object" description="Internal"/>
+  <aura:attribute name="currentStepTouched" type="boolean" default="false" description="Internal"/>
+  <aura:attribute name="updateFormCallback" type="object" description="Internal"/>
+  <aura:attribute name="notActive" type="boolean" default="true" />	
+    <aura:attribute name = "activeStep" type="integer" />
+  <div class="formSection">
+    <h2 class="slds-m-horizontal_medium h4">{!v.headline}</h2>
+    <aura:if isTrue="{!v.isAccordion}">
+      <c:MarketPlaceAccordion allowMultipleSectionsOpen="{!!v.isAccordionOnlyShowCurrent}">
+        <aura:iteration items="{!v.subsections}" var="subsection">
+          <c:MarketPlaceAccordionSection headerClass="slds-m-horizontal_medium" name="{!subsection.headline}" label="{!subsection.headline}">
+            <c:MarketplaceCreateProductFormSubsection
+              aura:id="subsection"
+              headline="{!subsection.headline}"
+              showHeadline="{!subsection.showHeadline}"
+	      notActive="{!subsection.notActive}"
+	      additionalText="{!subsection.additionalText}" 
+              inputs="{!subsection.inputs}"
+              formData="{!v.formData}"
+              currentStepTouched="{!v.currentStepTouched}"                                        
+              updateFormCallback="{!v.updateFormCallback}"
+              userSelectedLanguage= "{!v.userSelectedLanguage}"
+              activeStep = "{!v.activeStep}"/>
+          </c:MarketPlaceAccordionSection>
+        </aura:iteration>
+      </c:MarketPlaceAccordion>
+
+      <aura:set attribute="else">
+        <aura:iteration items="{!v.subsections}" var="subsection">
+          <c:MarketplaceCreateProductFormSubsection
+            aura:id="subsection"
+            headline="{!subsection.headline}"
+            showHeadline="{!subsection.showHeadline}"
+	    notActive="{!subsection.notActive}"
+	    additionalText="{!subsection.additionalText}"
+            inputs="{!subsection.inputs}"
+            formData="{!v.formData}"
+            updateFormCallback="{!v.updateFormCallback}"
+            userSelectedLanguage= "{!v.userSelectedLanguage}"
+            activeStep = "{!v.activeStep}"
+                                                    />
+        </aura:iteration>
+      </aura:set>
+    </aura:if>
+  </div>
+
+</aura:component> -->

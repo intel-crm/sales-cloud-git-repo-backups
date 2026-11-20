@@ -1,0 +1,37 @@
+<apex:page standardController="Core_AAQC_Commissions_Case__c" extensions="Core_AAQC_Inquiry_Details_CTRL">
+<style>
+ input[value="New Note"]{
+   display:none;
+}
+#commissionsInquiryRelatedAttachments{
+color:#000;
+font-size:1.3em;
+font-family:Arial,Helvetica,sans-serif;
+font-weight:bold
+
+}
+</style>
+<!-- Added integrity and cross origin attributes as suggested by semgrep tool as part of TWC4767-3971: KIIT: Semgrep Scan Results>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+
+<script>
+
+$(document).ready(function(){
+
+var id="{!Core_AAQC_Commissions_Case__c.Id}";
+var res=id.substring(0,15);
+console.log('id'+id);
+var str=res+'_RelatedNoteList_title';
+console.log('str'+str);
+document.getElementById(str).innerHTML = "Attachments"
+//console.log('outside ready test');
+//$('[id$=a3N3F000000CnHG_RelatedNoteList_title]').css("display",'none');
+//$('[id$=a3N3F000000CnHG_RelatedNoteList_title]').after('<br/><span id = "commissionsInquiryRelatedAttachments"  style="display:block">Attachments</span>');
+//$('#commissionsInquiryRelatedAttachments').text("Attachments");
+//$('#commissionsInquiryRelatedAttachments').css('display','block'); 
+}); 
+</script>
+<apex:pageMessages id="theMsg"></apex:pageMessages>
+<apex:detail inlineEdit="false" showChatter="false"/> 
+ <!-- <apex:outputLink value="/5003F000000s946/a?retURL=https://intel--crmdevcase--c.cs92.visual.force.com/apex/Core_AAQC_Commissions_Inquiry_Details?id=a3N3F000000CnHGUA0&sfdc.override=1">Change Owner</apex:outputLink>-->
+</apex:page>

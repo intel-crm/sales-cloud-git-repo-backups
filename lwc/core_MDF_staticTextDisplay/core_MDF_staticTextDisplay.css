@@ -1,0 +1,63 @@
+.text-container {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+}
+
+.rich-text-content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.icon-left,
+.icon-right {
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+.icon-top,
+.icon-bottom {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.icon-left.align-with-text {
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+.icon-right.align-with-text {
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+.icon-top.align-with-text,
+.icon-bottom.align-with-text {
+    align-self: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .text-container {
+        font-size: 12px !important;
+        padding: 8px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-container {
+        font-size: 11px !important;
+        padding: 6px !important;
+        margin: 4px 0 !important;
+    }
+    .text-container lightning-icon {
+        --slds-c-icon-sizing-x-small: 0.75rem;
+        --slds-c-icon-sizing-small: 1rem;
+        --slds-c-icon-sizing-medium: 1.25rem;
+    }
+}

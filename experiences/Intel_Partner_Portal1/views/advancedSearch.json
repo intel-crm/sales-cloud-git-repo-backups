@@ -1,0 +1,90 @@
+{
+  "appPageId" : "5a305cf4-135f-47a4-84a6-71d8c5d04ae1",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "d0831b1a-4346-46f8-a6db-676127c054c4",
+  "label" : "Advanced Search",
+  "regions" : [ {
+    "id" : "3baec18b-cca3-44b6-a306-f908bf142e4a",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_CaseAdvanceSearch_LWC",
+      "id" : "d57c53cd-f902-4488-8075-b1eabea760f8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "887678b3-fb6d-4d1e-9112-f31d8148acda",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "dce4e53f-acf2-40e8-b052-70454ea4e337",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "659a1da9-3e83-41e7-a50e-ce209f78f410",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "e8a67ad1-8121-4e01-9177-7c718b406ee0",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "5558bf20-699a-49e8-bc76-002fbaaf7368",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "7a74a59f-8f09-46a3-82dd-87c1bba35ae9",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "2d8f4804-efc1-46db-883e-65dd36e83455",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "241271ab-2715-446d-8100-5b4e84c4188f",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "bc4f1d23-4638-4679-895d-4ebbe7434e83",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Advanced Search"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "723be1a0-987d-4d39-99c8-3c244cb33aef",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f646c38a-fd47-41b2-a875-ba4259939e7a",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "751b8a7a-79da-4514-8f51-5a1b7a7d1dc1",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "fa91827d-0285-4e2a-91b3-272be3b0cdad",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "f3c9755b-ed3a-44e1-8d0c-0362d609e0f0",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "0a8dccb3-500b-45ac-ad2c-956fcff8ca8b",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "GuD560phGqmRiUwld1ZHpoicNPXl7F",
+  "type" : "view",
+  "viewType" : "custom-advanced-search"
+}

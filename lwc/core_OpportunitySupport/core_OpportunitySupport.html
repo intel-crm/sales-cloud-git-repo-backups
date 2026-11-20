@@ -1,0 +1,346 @@
+<template>
+  <template if:true={showMainComponent}>
+    <header class="slds-modal__header">
+      <h2 id="modalheading" class="slds-modal__title slds-hyphenate strong-text">
+      Opportunity Support
+      </h2>
+  </header>
+ 
+  <br />
+  <!--<template lwc:if={comboflag}>-->
+  <div class="slds-m-left_large slds-m-right_large slds-is-relative">
+    <!--<template if:true={psgSpinner}>
+      <div>
+        <lightning-spinner  alternative-text="Loading" size="medium"></lightning-spinner>
+      </div>
+    </template>-->
+    <div class="strong-text slds-m-bottom_xx-small">
+      <lightning-layout>
+        <lightning-layout-item padding="around-small" size="8">
+          Select a Support Type&nbsp;
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-x-small" >
+          <lightning-button label="Expand All" onclick={handleExpandAll} class="slds-m-right_x-small"  icon-position="right"></lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item padding="around-x-small" >
+        <lightning-button data-id="collapse" label="Collapse All" onclick={handleCollapseAll} class="slds-m-right_x-small" icon-position="right"></lightning-button>    
+      </lightning-layout-item>
+      </lightning-layout>
+        </div>
+  <div lwc:ref="myDiv" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text" data-id="techExpertparent">
+    <div  class="slds-col">
+    Technical Expert Sales
+    <lightning-icon
+      size="x-small"
+      class="chevronIcon"
+      icon-name={icon}
+      data-id="techExpert"
+      name="expandAll"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  
+  <template lwc:if={techExpertparent}>
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" data-id="CloudSolutionArchitect" onclick={handleCSA}>
+        Cloud Solution Architect Support&nbsp;
+        <lightning-helptext
+          content="Request a Cloud Solution Architect to advance cloud-specific opportunity"
+        ></lightning-helptext>
+      </div>
+      <div class="slds-box slds-box_x-small pointercursor" data-id="TechnicalSalesSpecialist" onclick={handleTSSS}>
+        Technical Sales Specialist Support&nbsp;
+        <lightning-helptext
+          content="Request a Technical Solutions Specialist to dive into a product-specific opportunity"
+        ></lightning-helptext>
+      </div>
+      <div class="slds-box slds-box_x-small pointercursor" data-id="SoftwareExpertSupport" onclick={handleSES}>
+        Software Expert Support&nbsp;
+        <lightning-helptext
+          content="Request a Software Expert for opportunities where software can advance Intel's value proposition"
+        ></lightning-helptext>
+      </div>
+      <div class="slds-box slds-box_x-small pointercursor" data-id="AIinference" onclick={handleAiInference} >
+        Edge Software Solution&nbsp;
+        <lightning-helptext
+          content="Request Edge software support for opportunities where CCG Edge software solutions can advance Intel's value proposition"
+        ></lightning-helptext>
+      </div>
+      <div class="slds-box slds-box_x-small pointercursor" data-id="ITintelEngagement" onclick={handleITIntel}>
+        IT @ Intel Engagement&nbsp;
+        <lightning-helptext
+          content="Intel IT thought leadership and best practices that help customers navigate the ever-evolving IT landscape"
+        ></lightning-helptext>
+      </div>
+      <div class="slds-box slds-box_x-small pointercursor" onclick={createPremierSupport}>
+        Premier Support&nbsp;
+        <lightning-helptext
+          content="Create a new Premier Support (IPS) project on behalf of a customer or link your opportunity to an existing Premier Support project."
+        ></lightning-helptext>
+      </div>
+    </div>
+  </template>
+  <div lwc:ref="myDiv1" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text"  data-id="IndExpertparent">
+    <div  class="slds-col">
+    Industry Expert Sales
+    <lightning-icon
+      size="x-small"
+      class="chevronIcon"
+      icon-name={icon}
+      data-id="IndExpert"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  <template lwc:if={IndExpertparent}>
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" onclick={handleCOE}>
+        Center of Excellence&nbsp;
+        <lightning-helptext
+          content="Request a Center of Excellence representative to develop and execute a One Intel global strategy that defines outcome-based approaches in alignment with industry needs"
+        ></lightning-helptext>
+      </div>
+    </div>
+  </template>
+  <div lwc:ref="myDiv2" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text"  data-id="OppAtRiskparent">
+    <div  class="slds-col">
+    Mark an Opportunity At Risk
+    <lightning-icon
+    title ="arrow"
+      size="x-small"
+      class="chevronIcon"
+      icon-name={icon}
+      data-id="OppAtRisk"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  <template lwc:if={OppAtRiskparent}>
+    <div>
+      <div class="slds-box slds-box_x-small">
+        To start the process <lightning-formatted-url id="AtRisk" value={riskURL} tooltip="At Risk" label="go to the At Risk tab" target="_blank" ></lightning-formatted-url> and follow the directions on the At Risk training page to mark a product at risk.
+        <lightning-helptext
+          content="Request Subject Matter Expert (SME) to assist by marking a product in the opportunity at risk."
+        ></lightning-helptext>
+      </div>
+    </div>
+  </template>
+  
+  <div lwc:ref="myDiv3" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text"  data-id="GeneralExportparent">
+    <div  class="slds-col">
+    General Support
+    <lightning-icon
+      size="x-small"
+      class="chevronIcon support-type"
+      icon-name={icon}
+      data-id="GeneralExport"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  <template lwc:if={GeneralExportparent}>
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" onclick={handleAskAQuestion}>
+        Ask a question&nbsp;
+        <lightning-helptext
+          content="Submit a question or request for support to the sales enablement and support team (CRM, Access & Entitlements, Incentives, Etc.)"
+        ></lightning-helptext>
+      </div>
+    </div>
+  </template>
+  
+  <div lwc:ref="myDiv4" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text" data-id="pqparent" if:true={flgshowPricingAndQuoting}>
+  <div  class="slds-col">
+    Pricing or Quoting
+    <lightning-icon
+      size="x-small"
+      class="chevronIcon support-type"
+      icon-name={icon}
+      data-id="pq"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  <template lwc:if={pqparent} >
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" id="IQRTender" onclick={handleIQRTender}>
+        Tenders IQR&nbsp;
+        <lightning-helptext
+          content="If you are an AE, you will need to engage with a SDM or an OEM to create a tender request via the IQR Tender tool."
+        ></lightning-helptext>
+      </div>
+    </div>
+
+    <!--<div >
+      <div if:true={hideAndshowPSGQuoteValue}> 
+        <div class="slds-box slds-box_x-small pointercursor" onclick={createPSGQuote}>
+          PSG Quote&nbsp;
+          <lightning-helptext
+            content="Request a PSG quote to be created in PSG IQR"
+          ></lightning-helptext>
+        </div>
+      </div>
+    </div>
+    -->
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" onclick={createWebQuote}>
+        WebQuote&nbsp;
+        <lightning-helptext
+          content="If you are an AE, you will need to engage with a FSE to create a WebQuote request via the WebQuote tool."
+        ></lightning-helptext>
+      </div>
+    </div>
+    <div if:true={flghasAccessToCreateSWQuote}>
+      <div class="slds-box slds-box_x-small pointercursor" id="SoftwareServicesQuote" onclick={handleCreateQuote}>
+        Software & Services Quote&nbsp;
+        <lightning-helptext
+          content="Software & Services Quote"
+        ></lightning-helptext>
+      </div>
+    </div>
+  </template>
+  
+  <div lwc:ref="myDiv5" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text" data-id="prodFulfilparent">
+    <div  class="slds-col">
+    Product Fulfillment
+    <lightning-icon
+      size="x-small"
+      class="chevronIcon support-type"
+      icon-name={icon}
+      data-id="prodFulfil"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  <template lwc:if={prodFulfilparent}>
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" onclick={orderSeed}>
+        Order Seeds&nbsp;
+        <lightning-helptext
+          content="Request Commercial/Prototype Devices (via Intel Demo Depot)"
+        ></lightning-helptext>
+      </div>
+    </div>
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" onclick={requestSample}>
+        Request Samples&nbsp;
+        <lightning-helptext
+          content="Request Components (via My Samples/SMS)"
+        ></lightning-helptext>
+      </div>
+    </div>
+  </template>
+  <!-- TWC4767-2678- Start-->
+  <div lwc:ref="myDiv6" class="slds-grid slds-grid_vertical-reverse custom-box headerfont strong-text" data-id="marketingSupparent">
+    <div  class="slds-col">
+    Marketing Support
+    <lightning-icon
+      size="x-small"
+      class="chevronIcon"
+      icon-name={icon}
+      data-id="marketingSup"
+      name="expandAll"
+      onclick={handleDropDown}
+    >
+    </lightning-icon>
+  </div>
+  </div>
+  
+  <template lwc:if={marketingSupparent}>
+    <div >
+      <div class="slds-box slds-box_x-small pointercursor" data-id="CustomerWinNomination" onclick={handleMS}>
+        Customer Win Nomination&nbsp;
+        <lightning-helptext
+          content="Customer Win Nomination for Intel led opportunities"
+        ></lightning-helptext>
+      </div>
+      
+    </div>
+  </template>
+  <!-- TWC4767-2678- End-->
+  </div>
+  
+  <br/>
+  <br/>
+  <footer class="slds-modal__footer">
+      <lightning-button label="Close" onclick={closeAction} class="slds-m-left_x-small"></lightning-button>
+  
+  </footer>
+  </template>
+  <!--Software Expert Support Start-->
+  <template if:true={isShowModal}>
+           <div class="slds-card slds-m-around_xx-small">
+            <lightning-layout horizontal-align="center" multiple-rows="true">
+                <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
+                    medium-device-size="10" large-device-size="10" padding="around-small">
+                    <div style="text-align: center;font-size: large;">{label.formTitle}</div> 
+                </lightning-layout-item>
+            </lightning-layout>
+            <hr style='margin:-0.5px 0px -0.5px 0px;'/>
+            </div>  
+          <template if:true={spinnerOn}>
+            <div>
+              <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+          </template>
+          <div if:true={alertViewed} class="slds-is-relative slds-m-around_xx-large">
+            <div class="slds-notify slds-notify_alert slds-alert_error slds-is-relative" role="alert">
+              <span class="slds-assistive-text">error</span>
+              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+                <lightning-icon icon-name="utility:error" alternative-text="Error!" title="Error" size="medium" variant="inverse"></lightning-icon>
+              </span>
+              <ol class="slds-list_ordered">
+                <template for:each={errorList} for:item="err">
+                  <li key={err}>
+                    <h2 class="slds-text-align_left">{err}</h2>
+                  </li>
+                </template>
+              </ol>
+             
+            </div>
+          </div>
+          <div class="slds-grid slds-wrap slds-p-around_medium">
+            <div class="slds-col slds-size_12-of-12">
+              <label>
+                <span class="">Opportunity Name : </span>
+              </label>
+              <lightning-formatted-url label={OppsName} value={OppsLink}></lightning-formatted-url>
+            </div>
+            <div class="slds-col slds-size_12-of-12">
+              <lightning-combobox name="RequestType" label="Support Request Type" value={value} options={options} onchange={handleChange1} placeholder="Select" required></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_12-of-12">
+              <lightning-input name="Subject" type="text" label="Subject" value={Subject} onchange={handleChange1} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_12-of-12">
+              <lightning-textarea name="Description" label="Description" value={Description} onchange={handleChange1} required></lightning-textarea>
+            </div>
+            <div class="slds-col slds-size_12-of-12">
+              <lightning-input class="slds-size_1-of-2" type="date" name="DeadLineDate" label="Deadline for Results" value={DeadlineDate} onchange={handleChange1} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_12-of-12 slds-m-top_xx-small">
+              <lightning-input type="checkbox" label="I agree to share the Opportunity with Software Engineering Teams" name="UserAgreed" value={userAgreed} onchange={handleChange1} required></lightning-input>
+            </div>
+          </div>
+        
+        <footer class="slds-modal__footer">
+          <lightning-button label="Create Software Expert Support Request" onclick={createSSRRequest} class="slds-m-left_x-small" disabled={spinnerOn}></lightning-button>
+        </footer>
+     
+  </template>
+  <!--Software Expert Support End-->
+  <!--COE Support Start-->
+  <template if:true={isCOEModal}>
+      <div>
+        <c-core_technical-industry-support if:true={isCOEModal} record-id={recordId} record-type-id={TssCsaCoe} recortyp-name={oppsSupptypName} onmycustomevent={closeAction}></c-core_technical-industry-support>
+      </div>
+  </template>
+  <!--COE Support END-->
+</template>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "configurationTags" : [ ],
+  "devName" : "Offering_Submit__c",
+  "id" : "a7a32cdf-0cd9-4478-bfd7-2f5eebbeabbe",
+  "label" : "Offering Submit",
+  "pageAccess" : "RequiresLogin",
+  "routeType" : "custom-create-offering-submit",
+  "type" : "route",
+  "urlPrefix" : "offering-submit"
+}

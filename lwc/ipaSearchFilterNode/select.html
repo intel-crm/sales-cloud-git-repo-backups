@@ -1,0 +1,11 @@
+<template>
+    <div class="custom-node-select" data-highlight={highlightSelect}>
+        <select name={filter.name} onchange={handleChangeSelect}>
+            <template for:each={selectOptions} for:item="option">
+                <option key={option.label} value={option.value} selected={option.selected}>
+                    {option.label}
+                </option>
+            </template>
+        </select>
+    </div>
+</template>

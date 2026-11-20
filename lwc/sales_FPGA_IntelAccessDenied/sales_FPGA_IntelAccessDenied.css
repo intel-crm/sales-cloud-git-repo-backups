@@ -1,0 +1,176 @@
+.ad-outer-container {
+  background-color: #0068b5;
+  background-repeat: no-repeat;
+  color: var(--white);
+  position: relative;
+  width: 100%;
+  font-family: "intel-one","intel-clear",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.625rem;
+}
+
+.ad-inner-container {
+  padding: 1.1rem 1rem;
+  position: relative;
+  text-align: center;
+}
+.slds-gutters{
+  background-color: black;
+  padding-left: 10px;
+}
+
+.ad-message {
+  padding: 3rem;
+}
+
+.ad-message-container {
+  background-color: var(--lightestGray);
+  width: 100%;
+}
+
+.ad-right-content {
+  font-size: .9rem;
+  padding-top: 20px;
+}
+
+.title {
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.slds-grid {
+  padding :"around-small";
+  background-color: white;
+
+ 
+}
+.font-color{
+  color: black;
+}
+.slds-col{
+  padding-left: 30px;
+}
+.ad-right-margin{
+        background-color: rgb(252, 252, 252);
+}
+.slds-m-horizontal_xx-large{
+  background-color: rgb(252, 252, 252);
+}
+.image-style{
+    height: 112px;
+    object-fit: contain;
+}
+.helpIcon-style{
+  width: 88px;
+    height: 110px;
+    padding-top: 23px;
+}
+.header{
+  padding-top: 22px;
+  padding-left: 12px;
+  color: #0068b5;
+  background-color: white;
+  font-weight: 500;
+  margin-left: 2%;
+  FONT-SIZE: 140%;
+}
+
+.header-style{
+  font-family: "intel-clear";
+  font-weight: 300;
+}
+.headerhelp-style{
+  color: #0068b5;
+  background-color: white;
+  font-weight: 500;
+  padding-top: 0px;
+}
+@media (min-width: 768px) {
+  .ad-right-content {
+    padding-top: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 2.5rem;
+    width: 10rem;
+  }
+}
+
+@media (min-width: 992px) {
+ 
+
+  .ad-right-content {
+    width: 15rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ad-right-content {
+    width: 20rem;
+  }
+}
+
+.outside-container{
+  padding: 20px;
+  display: flex;
+  justify-content: left; 
+  margin-left: 8%;
+  margin-right: 8%;
+  max-width: 80%;
+  
+}
+
+.content{
+  padding-left: 40px;
+  color: #262626;
+ 
+}
+
+.allContent{
+  font-family: "intel-clear";
+  line-height: 1.5;
+  font-weight: 400;
+ 
+}
+.fixedContent{
+  display: flex;
+  justify-content: center;
+  }
+
+  @media (min-width: 1600px) {
+    .header {
+      margin-left: 4%;
+    }
+  }
+   .dividing-line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0%;
+  background-color: #d7d7d7;
+  
+}
+.vl {
+border-left: 1px solid #d7d7d7;
+height: 230px;
+position: absolute;
+left: 45%;
+margin-left: -3px;
+
+background-color: #d7d7d7;
+}
+.verticalLine {
+          height: 180px;
+          position: absolute;
+          right: 40%;
+          background-color: #d7d7d7;
+          z-index: 50;
+      }
+
+      @media (max-width: 767px){
+.dividing-line {
+  display: none;
+}
+      }

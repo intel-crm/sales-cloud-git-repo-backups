@@ -1,0 +1,7 @@
+<aura:event type="COMPONENT" description="hold activity record when ipa campaign is clone">
+    <aura:attribute name="detail" type="sObject" default="{}" />
+    <aura:attribute name="buSplitDetail" type="String" default="" />
+    <aura:attribute name="isMetricsBlank" type="String" default="false" />
+    <aura:attribute name="activityToAttrList" type="Object" default="{}" />
+    <aura:attribute name="isBlankTacticMetrics" type="Boolean" default="false" />
+</aura:event>

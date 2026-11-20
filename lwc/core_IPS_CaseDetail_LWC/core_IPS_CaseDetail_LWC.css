@@ -1,0 +1,536 @@
+.caseCloseBtn {
+    color: white;
+    border: 1px solid White;
+    background-color: #653171;
+    padding: 4px 12px;
+    height: 40px;
+    /* width: 105px; */
+    margin-left: 12px;
+}
+
+.resCaseCloseBtn {
+    color: white;
+    border: 1px solid White;
+    background-color: #653171;
+    padding: 4px 12px;
+    height: 40px;
+    width: 180px;
+    margin-left: 20px;
+}
+
+.slds-m-left_xx-small {
+    color: white;
+    background-color: #653171;
+}
+
+.inputsTextarea {
+    border: 1px solid RGB(113, 113, 113);
+}
+
+.borderClass {
+  border: 1.5px solid red;
+}
+
+.inputsCheckbox {
+    margin-top: 50px;
+}
+
+.caseEditBtn {
+    
+    color: #653171;
+    border: 1px solid #653171;
+    background-color: White;
+    padding: 4px 12px;
+    height: 40px;
+    width: 105px;
+    margin-left: 12px;
+}
+
+.caseEditBtncancel {
+    color: #653171;
+    border: 1px solid #653171;
+    background-color: White;
+    padding: 4px 12px;
+    height: 40px;
+    width: 150px;
+    margin-left: 20px;
+}
+
+.colorsub {
+    color: gray;
+    font-size: 1rem;
+}
+
+.newCommentBtn {
+    color: white;
+    border: 1px solid #ddd;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height: 40px;
+    width: 155px;
+    margin-left: 20px;
+}
+.newCommentBtnin{
+    color: white;
+    border: 1px solid #ddd;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height: 40px;
+    width: 155px;
+    margin-left: 20px;
+}
+
+/* .newAttactmentBtn {
+    color: white;
+    border: 1px solid rgb(3, 226, 255);
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height: 40px;
+    width: auto;
+    margin-left: 20px;
+} */
+
+.newAttactmentBtn {
+    color: #0068b5;
+    border: 1px solid #0068b5;
+    background-color: transparent;
+    padding: 4px 12px;
+    height: 40px;
+    width: auto;
+    margin-left: 20px;
+}
+
+.newLinkAttachSaveBtn {
+    color: white;
+    border: 1px solid rgb(3, 226, 255);
+    border-radius: 5px;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height: 35px;
+    width: auto;
+    margin-left: 20px;
+}
+
+.newLinkAttachCancelBtn {
+    color: Black;
+    border: 1px solid rgb(3, 226, 255);
+    border-radius: 5px;
+    background-color: white;
+    padding: 4px 12px;
+    height: 35px;
+    width: auto;
+    margin-left: 20px;
+}
+
+.attSubmitBtn {
+    color: white;
+    border: 1px solid #ddd;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height: 40px;
+    width: 155px;
+}
+
+.attSelectBtn {
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    background-color: white;
+    padding: 4px 12px;
+    height: 40px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #3a81b8 !important;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.accordionClass {
+    --sds-c-accordion-heading-font-size: 0.9rem;
+}
+
+.pageBkGD {
+    background-color: #f7f7f7;
+}
+
+.blueColor {
+    background-color: #e3f3ff !important;
+}
+
+.greyColor {
+    background-color: rgb(245, 244, 244) !important;
+}
+
+.recentcmtBtn {
+    color: Black;
+    background-color: rgba(250, 247, 247, 0.795);
+    padding: 4px 12px;
+    border: 0px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+hr {
+    width: auto;
+}
+
+.attBtn {
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    background-color: white;
+    padding: 4px 12px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+.cancelBtn {
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    background-color: white;
+    padding: 4px 12px;
+    height: 40px;
+    width: 155px;
+    margin-left: 20px;
+}
+
+.Mask {
+    background-color: #653171;
+    height: 220px;
+}
+
+.buttoncolor {
+    --sds-c-button-brand-color-background: white;
+    --sds-c-button-brand-color-background-hover: white;
+    --sds-c-button-brand-color-border: white;
+    --sds-c-button-brand-color-border-hover: white;
+    --sds-c-button-brand-text-color: rgb(47, 136, 172);
+    --sds-c-button-brand-text-color-hover: rgb(47, 136, 172);
+    --sds-c-button-border: none;
+}
+
+.cmtHeader {
+    background-color: #e9e9e9;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+}
+
+.red-icon {
+    --lwc-colorTextIconDefault: #F62217;
+}
+
+.editCaseHeader {
+    background-color: #653171;
+    color: white;
+}
+
+.copyCaseHeader {
+    background-color: #653171;
+    color: white;
+}
+
+.subHeadline {
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 0px;
+    font-size: 16px;
+    font-weight: 600 !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;
+    padding-left: 30px;
+}
+
+.whiteBg {
+    background-color: #fff;
+}
+
+.blueBg {
+    background-color: #e3f3ff;
+}
+
+.subHeadlinecopy {
+    padding-right: 4rem !important;
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    font-size: 16px;
+    font-weight: 600 !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;
+}
+
+.headline {
+    font-size: large;
+    background-color: #653171;
+    color: white;
+}
+
+.inputs {
+    width: 615px;
+    position: relative;
+    top: -20px;
+    /* top:15px; */
+}
+
+.severityinput{
+    width: 615px;
+    position: relative;
+    
+}
+
+.line {
+    height: 2px;
+    background-color: black;
+}
+
+.rectangle {
+    width: 1650px;
+    height: 38px;
+    margin: 1px 0 0;
+    padding: 9px 1565px 9px 33.9px;
+    background-color: #fff;
+}
+
+.accordionA {
+    --sds-c-accordion-heading-font-size: 1.2rem;
+    word-break: break-word;
+}
+
+.slds-modal__container {
+    max-width: 90rem !important;
+    width: 80% !important;
+    margin: 0 auto;
+    min-width: 30rem !important;
+}
+
+.caseInfoDesc outputfield {
+    margin-left: -12rem;
+}
+
+.accessMsg {
+    margin-left: 30px;
+    margin-right: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.privilegeMsg {
+    margin-left: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.Searchalign {
+    float: right;
+}
+
+.textaligncopy {
+    padding-left: 2rem;
+    padding-right: 5rem !important;
+    font-weight: 600 !important;
+}
+.wrapped-content{
+    overflow-wrap: break-word;/*new*/
+}
+
+.marginalign {
+    margin-top: 0rem;
+}
+
+.editclassalign {
+    align-items: center;
+}
+
+.copyclassalign {
+    align-items: center;
+    padding-top: 15px;
+}
+.surveyalign{
+    padding-left:15rem;
+    padding-right:15rem;
+    padding-top:5rem;
+    padding-bottom:5rem;
+    text-align:justify
+}
+.Commentalign{
+    padding:10px;
+    font-size: 13px; 
+    width:57rem;
+}
+
+@media screen and (max-width:1023px) {
+    .inputs {
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .Commentalign{
+        width:17rem;
+    }
+    .closemobile{
+        max-width: 385px;
+        margin-left: 2px;
+    }
+    .surveyalign{
+        padding: 0px;
+    }
+    .copyclassalign {
+        padding-top: 0px;
+    }
+    .tablemobile {
+        overflow: auto;
+    }
+    .savebutton {
+        display: block;
+    }
+    .marginalign {
+        margin-top: 0;
+    }
+    .textaligncopy {
+        padding-left: 0rem;
+        text-align: justify;
+    }
+    .caseCloseBtn {
+        width: 100%;
+        margin-left: 0px;
+        margin-bottom: 20px;
+    }
+    .subHeadlinecopy {
+        margin: 0px 15px 0px 0px;
+        word-wrap: break-word !important;
+        text-align: justify;
+    }
+    .line {
+        height: 0px;
+        background-color: transparent;
+    }
+    .inputs {
+        width: 75%;
+    }
+    .editbuttonal {
+        display: block;
+    }
+    .subHeadline {
+        width: 100%;
+        margin: 5px 5px 5px 5px;
+        padding-left: 0;
+    }
+    .Searchalign {
+        float: none;
+        width: 100%;
+        padding-left: 20px;
+        padding-top: 15px;
+    }
+    .Mask {
+        background-color: #653171;
+        height: auto;
+    }
+    .caseEditBtn {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 5px;
+        margin-bottom: 25px;
+        margin-right: 7px;
+    }
+    .caseEditBtncancel {
+        width: 74%;
+        margin-left: 0px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+    .resCaseCloseBtn {
+        margin-left: 6px;
+    }
+    .newCommentBtn {
+        width: 100%;
+        margin-left: 10px;
+        position: relative;
+        top: 0px;
+    }
+    .mobiletop{
+        margin-top: -20px;
+    }
+    .newCommentBtnforsave {
+        width: 74%;
+        margin-left: 0px;
+        position: relative;
+        top: -15px;
+    }
+    
+}
+.subPadding{
+    padding-top: 30px;
+}
+.caseTypePadding{
+    padding-top: 20px;
+}
+.severityPadding{
+    padding-top: 20px;
+}
+
+.requiredField{
+    display: block;
+    padding-top: 5px;
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.showRequired .slds-form-element__control{
+  border:2px solid #cc0000;
+}
+
+/* .showRequired{
+      border: 2px solid #c81326;
+
+} */
+.Descriptionborder {
+    border: 2px solid #cc0000;
+  }
+
+.requiredSevreason{
+    display: block;
+   
+    color: #cc0000;
+    font-size: 14px;
+   
+}
+
+.requiredField{
+    display: block;
+    color: #cc0000;
+    font-size: 14px;
+    padding-bottom: 10px;
+    padding-top: 1%;
+}
+
+.countryrequired{
+    display: block;
+    color: #cc0000;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-left: 0px;
+}

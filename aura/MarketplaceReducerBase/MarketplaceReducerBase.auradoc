@@ -1,0 +1,76 @@
+<aura:documentation>
+	<aura:description>
+
+    <p>Redux Reducer Base Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/12/2019</p>
+    <p>CurrentVersion: 3.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+
+        <p><a href="https://redux.js.org/basics/reducers">Redux Reducers</a></p>
+        <p>This is the base component for the reducers related to the <code>ISGRedux</code> component.</p>
+        <p>See the documentation for ISGRedux for an overview of the Redux setup.</p>
+        <hr/>
+        <p>Reducer subcomponents containing a slice of the Redux app state extend this base component.</p>
+        <p>Steps to create a reducer subcomponent:</p>
+        <p>(This example is a store for holding user state / info)</p>
+        <ul>
+            <li>STEP 1: Create a Lightning Component ie. "ReducerForUserData" that extends <code>ReducerBase</code></li>
+            <pre>&lt;aura:component extends="c:ISGReducerBase"&gt;&lt;/aura:component&gt;</pre>
+            <li>In the helper js file specify a <code>getReducer</code> function:</li>
+            <pre>getReducer : function() {
+  return function(state, action) {
+
+    // Initial State
+    if (!state) state = {
+      items: [],
+      notificationMessage: ''
+    };
+
+    switch(action.type) {
+
+      case 'clearCompareTray':
+        return Object.assign({}, state, { items: [], notificationMessage: '' });
+
+      default:
+        return state;
+    }
+  };
+},</pre>
+
+            <li>
+              <p>NOTE! Always return a new object clone of the original state value in helper action functions.</p>
+              <p>Use: <code>Object.assign({} ...)</code> or <code>.slice()</code> etc...</p>
+            </li>
+            <li>STEP 3: Connect the reducer to the <code>ISGRedux</code> base component by adding it as a child component with aura:id="reducer" and storeName="..." attributes.</li>
+          <pre>&lt;c:ReducerForUserData aura:id="reducer" storeName="UserData" /&gt;</pre>
+        </ul>
+
+        <br/>
+
+        <p>Caching (getCacheFormatter)</p>
+        <p>Another function is possible to override in the helper which controls what parts of the state gets cached to LocalStorage.</p>
+        <p>Example Usage:</p>
+        <pre>getCacheFormatter: function() {
+  return function(state) {
+    return Object.assign({}, state, {
+      notificationMessage: ''
+    });
+  };
+},</pre>
+
+      <!-- CHANGELOG ADD ANY UPDATES HERE -->
+      <hr/>
+      <p>Change Log</p>
+      <p>1.1</p>
+			<p>Bug fix w/ caching</p>
+      <br/>
+      <p>3.0 -- new structure, to use with ISGRedux v. 3.0</p>
+
+      <!-- CHANGELOG -->
+
+    </aura:description>
+</aura:documentation>

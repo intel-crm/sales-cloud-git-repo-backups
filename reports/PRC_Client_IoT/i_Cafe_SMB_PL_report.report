@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_74946574</developerName>
+        <masterLabel>region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Jiang suli</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ma Nan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ma Teng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liu Yu V</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tan Huatao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qin Stone</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wang Qiang Q</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jia Pei</sourceValue>
+            </sourceValues>
+            <value>M&amp;W</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Huang Hua</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ge Grace</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wang Jianfeng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mu Dongan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liu Shuang A</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wang Jian L</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chen Haoyu</sourceValue>
+            </sourceValues>
+            <value>North</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>sun yuxuan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liao Zhisheng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liu lingfeng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Song haixia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ruan Jinliang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>He Junyi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fang Guo Mu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lee Vincent</sourceValue>
+            </sourceValues>
+            <value>South</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Tan Michael</sourceValue>
+            </sourceValues>
+            <value>LOEM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Guo Wei</sourceValue>
+            </sourceValues>
+            <value>IoT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Huang Yimin</sourceValue>
+            </sourceValues>
+            <value>FAE</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>BucketField_74946574</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_U__c</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Design_Product_Category__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Write_In_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
+        <field>SERVICE_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>SERVICE_MONTH</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_CUSTOMER_ID</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <description>i-Cafe + SMB PL tracking with Product for management</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>PRC VAR PL Report_Product Track</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

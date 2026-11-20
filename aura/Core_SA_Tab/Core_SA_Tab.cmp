@@ -1,0 +1,44 @@
+<aura:component controller="Core_SA_ServiceWrapper" implements="lightning:isUrlAddressable,lightning:hasPageReference,force:hasRecordId,force:appHostable"  access="global" description="Read Cookies, Session and Pass it to external App via iFrame">
+    <aura:attribute name="accountId" type="String" default="defaultAccount"/>
+    <aura:attribute name="cimId" type="String" default="defaultCimID"/>
+    <aura:attribute name="source" type="String" default="assists_tab"/>
+    <aura:attribute name="Aid" type="String" default="defaultAid"/>
+    <aura:attribute name="index" type="String" default="defaultIndex"/>
+    <aura:attribute name="urlParams" type="String" default="{!$Label.c.Core_SA_HostValue}"/>
+	<aura:attribute name="userInfo" type="User" />
+    <aura:attribute name="data" type="object" />
+	<aura:attribute name="userWWID" type="String" />
+	<aura:attribute name="userEmail" type="String" />
+	<aura:attribute name="orgId" type="String" />
+	<aura:attribute name="sessionId" type="String" />
+	<aura:attribute name="sid" type="String" />
+	<aura:attribute name="lastMonth" type="String" />
+    <aura:attribute name="pageReference" type="object" />
+    <aura:attribute name="pageRefresh" type="Boolean" default="true"/>
+
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:handler name="change" value="{!v.pageReference}" action="{!c.refreshPage}" />
+ 
+    
+    <!-- below code is only for debug
+    <p><b>pageReference.url: </b>{!v.pageReference}</p>
+    <p><b>pageReference returl: </b>{!v.cimID}</p>
+
+    <p><b>CIM ID: </b>{!v.cimID}</p>
+ 	<p><b>Click source: </b>{!v.source}</p>
+    <p><b>Assist ID: </b>{!v.Aid}</p>
+    <p><b>Click Index: </b>{!v.index}</p>
+    <p><b>User Data: </b>{!v.userInfo.Email}:{!v.userInfo.Core_WWID__c}</p>    
+    <p><b>User Data: </b>{!v.userInfo.Name}:{!v.userInfo.Core_WWID__c}</p>
+    <p><b>Session Data: Org ID: </b>{!v.data.orgId}: <b>Session ID:</b> {!v.data.sessionId}</p>
+    <p><b>urlParams: </b> {!v.urlParams} </p>-->
+    
+    <!-- Iframe below is to host the SalesAssist application on the custom Assists Tab -->
+	<aura:if isTrue="{!v.pageRefresh == false}">
+        <!--<lightning:helptext content='{!v.urlParams}'/> -->
+ 		<div class="h_iframe">    
+	   		<iframe src='{!v.urlParams}' frameborder="0" scrolling="true" allow="fullscreen" allowfullscreen="true" id="{!v.cimId}"/>
+    	</div>
+    </aura:if>
+</aura:component>

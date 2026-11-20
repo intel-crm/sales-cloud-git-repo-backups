@@ -1,0 +1,85 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-20-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+  <lightning-card title="Comments" icon-name="standard:question_feed">
+    <lightning-tabset>
+      <template if:true={nonFIQuote}>
+        <lightning-tab label="Quote Comments">
+          <div if:true={tenderComments.data} class="slds-card__body">
+            <div class="slds-scrollable--y scrollbarHeight">
+              <table class="forceRecordLayout slds-table slds-no-row-hover slds-table_cell-buffer slds-table_fixed-layout uiVirtualDataGrid--default uiVirtualDataGrid slds-table--header-fixed">
+                <tbody>
+                  <template iterator:it={processedList}>
+                    <tr key={it.value.Id}>
+                      <td>
+                        <p class="wrap">{it.value.Pricing_Question__c}</p>
+                      </td>
+                      <td>
+                        <template if:true={isCommentOptional}>
+                          <template if:true={it.value.Pricing_Required_Ind__c}>
+                            <lightning-textarea onblur={textAreaOnBlur} name={it.value.Pricing_Question__c}
+                              data-id={it.value.Id} onchange={handleChange} value={it.value.Pricing_Answer__c}
+                              disabled={disableInput} minlength={it.value.MinLength} maxlength={it.value.MaxLength}
+                              message-when-too-short="Your entry is too short! Minimum 10 characters required"
+                              style='white-space: pre-wrap;'></lightning-textarea>
+                          </template>
+                          <template if:false={it.value.Pricing_Required_Ind__c}>
+                            <lightning-textarea data-id={it.value.Id} onchange={handleChange}
+                              value={it.value.Pricing_Answer__c} disabled={disableInput} maxlength={it.value.MaxLength}>
+                            </lightning-textarea>
+                          </template>
+                        </template>
+                        <template if:false={isCommentOptional}>
+                          <template if:true={it.value.Pricing_Required_Ind__c}>
+                            <lightning-textarea required onblur={textAreaOnBlur} name={it.value.Pricing_Question__c}
+                              data-id={it.value.Id} onchange={handleChange} value={it.value.Pricing_Answer__c}
+                              disabled={disableInput} minlength={it.value.MinLength} maxlength={it.value.MaxLength}
+                              message-when-too-short="Your entry is too short! Minimum 10 characters required"
+                              style='white-space: pre-wrap;'></lightning-textarea>
+                          </template>
+                          <template if:false={it.value.Pricing_Required_Ind__c}>
+                            <lightning-textarea data-id={it.value.Id} onchange={handleChange}
+                              value={it.value.Pricing_Answer__c} disabled={disableInput} maxlength={it.value.MaxLength}>
+                            </lightning-textarea>
+                          </template>
+                        </template>
+                        <lightning-formatted-text class={it.value.Id} value=""></lightning-formatted-text>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+              <div if:true={hasUpdateAccess} class="slds-align_absolute-center">
+                <lightning-button variant="brand" type="submit" label="Save" title="Save" onclick={handleSave} disabled={disableInput}>
+                </lightning-button>
+              </div>
+            </div>
+          </div>
+        </lightning-tab>
+      </template>
+
+      <template if:true={showRPMComments}>
+        <lightning-tab label="Pricing Manager Comments">
+          <div class="slds-p-around_x-small">
+            <lightning-textarea data-id="pmCmnt" disabled={disblePMComment} value="" placeholder="Write a comment..."
+              label="Comment" maxlength="131072" onchange={handleComment}></lightning-textarea>
+          </div>
+          <div class="slds-p-around_x-small">
+            <lightning-button type="submit" label="Post" variant="brand" title="Post" onclick={createComment}
+              value={pmComment} class=""></lightning-button>
+          </div>
+          <div class="slds-p-around_x-small" style="height: 500px;">
+            <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column
+              wrap-text-max-lines="1000">
+            </lightning-datatable>
+          </div>
+        </lightning-tab>
+      </template>
+    </lightning-tabset>
+  </lightning-card>
+</template>

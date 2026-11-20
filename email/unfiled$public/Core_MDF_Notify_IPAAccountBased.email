@@ -1,0 +1,81 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+    recipientType="User"
+    language="{!recipient.LanguageLocaleKey}"  
+    relatedToType="PartnerFundRequest"
+    subject="{!if(RelatedTo.Core_MDF_Fund_Request_Status__c='In-Progress Pending Approval', IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign # ' & RelatedTo.Core_MDF_Activity_Number__c & ' ' & $Label.Core_MDF_InProgressPending_Approval_subject, $Label.Core_MDF_Request & ' # ' & RelatedTo.Core_MDF_Activity_Number__c & ' ' & $Label.Core_MDF_InProgressPending_Approval_subject), IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign # ' & RelatedTo.Core_MDF_Activity_Number__c & ' ' & $Label.Core_MDF_Pending_Approval_subject, $Label.Core_MDF_Request & ' # ' & RelatedTo.Core_MDF_Activity_Number__c & ' ' & $Label.Core_MDF_Pending_Approval_subject))}">
+
+
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-size:14px;font-family:Calibri">  
+                    <p> <span style="color: #ff0000;"><strong>{!$Label.Core_MDF_IPA_EmailTemp_ActionReq}</strong></span></p>
+                    
+                    <p>{!$Label.Core_MDF_EmailTemp_DearIntelPartner}</p>
+                    
+                    <p><span>
+                        {!RelatedTo.CreatedBy.Name}&nbsp;{!$Label.Core_MDF_Email_Template_Appr_Req}:&nbsp;<br />
+                    </span></p> 
+                    
+                    <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field1} {!relatedTo.ChannelPartner.Name}</p>
+                    <apex:outputPanel rendered="{!AND(NOT(ISBLANK(RelatedTo.Core_MDF_Program__c)), NOT(ISBLANK(RelatedTo.Core_MDF_UpdateCampaign__c)))}">
+                        <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Audit_Creation_Field3} {!RelatedTo.Core_MDF_UpdateCampaign__c}</p>
+                    </apex:outputPanel>
+                    <p>&nbsp; &nbsp; &nbsp; {!IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign Name:', $Label.Core_MDF_EmailTemp_Claim_Activity_Name)} {!RelatedTo.Title}</p>
+                    <p>&nbsp; &nbsp; &nbsp; {!IF(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'), 'Outcome-Based Campaign Number:', $Label.Core_MDF_EmailTemp_Activity_Number)} {!RelatedTo.Core_MDF_Activity_Number__c}</p>
+                    <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemp_Budget_Type} {!RelatedTo.Core_MDF_Budget_Type_nm__c}</p> 
+                    <apex:outputPanel rendered="{!if(RelatedTo.Core_MDF_Program__c =='Intel Partner Alliance',true,false)}">
+                        <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemp_Focus_Area}&nbsp;{!relatedTo.Core_MDF_Focus_Area_nm__c}</p>
+                        <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_EmailTemplate_Budget_Amount}&nbsp;${!relatedTo.Core_MDF_Activity_Reimbursement_Amt_nbr__c}</p>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance'))}">
+                        <p>&nbsp; &nbsp; &nbsp;<span> {!$Label.Core_MDF_EmailTemp_Activity_Type}&nbsp;<apex:outputField value="{!RelatedTo.Core_MDF_Activity_Types__c}" /></span></p>
+                    </apex:outputPanel>
+                    <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_EmailTemp_Field3} {!RelatedTo.Core_MDF_Fund_Request_Status__c}</p>
+                    <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_Country_Location}&nbsp;{!relatedTo.Core_MDF_Country_nm__c}</p>
+                    <apex:outputPanel rendered="{!if(AND(RelatedTo.Core_MDF_Program__c =='Intel Partner Alliance',NOT(ISBLANK(relatedTo.Core_MDF_Internal_Approval_Comment_txt__c))),true,false)}">
+                        <p>&nbsp; &nbsp; &nbsp; {!$Label.Core_MDF_IPA_Approver_Comment} {!RelatedTo.Core_MDF_Internal_Approval_Comment_txt__c}</p>
+                    </apex:outputPanel>   
+                    
+                    <p><span>
+                        {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body5} 
+                        <apex:outputText value="{0, date, MMMM d','  yyyy}"> <apex:param value="{!RelatedTo.Core_MDF_ToBeClosedDate__c}" /> </apex:outputText> .
+                    </span></p>
+                    
+                    <p>
+                        <apex:outputLink rendered="{!AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c)}"
+                                       value="{!$Label.Core_MDF_Outcome_Community_Link + RelatedTo.Id}">
+                            {!$Label.Core_MDF_IPA_EmailTemp_Link1}
+                        </apex:outputLink>
+                        <apex:outputLink rendered="{!NOT(AND(ISNULL(RelatedTo.Campaign), RelatedTo.Core_MDF_Program__c = 'Intel Partner Alliance', RelatedTo.Core_MDF_Is_Outcome_Based_Ind__c))}"
+                                       value="{!$Label.Core_MDF_PFRCommunityLink + RelatedTo.Id}">
+                            {!$Label.Core_MDF_IPA_EmailTemp_Link1}
+                        </apex:outputLink>
+                    </p>
+                    
+                    <p>{!$Label.Core_MDF_IPA_EmailTemp_Body8}</p>
+                    <p></p>
+                    
+                    <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+                    <p>{!$Label.Core_MDF_Email_Signature}</p> 
+                </div>
+                <div style="font-size:11px;font-family:Calibri">
+                    <p>
+                        <i>  
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/>
+                        </i>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                    </p>
+                </div>    
+            </body>
+        </html>    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

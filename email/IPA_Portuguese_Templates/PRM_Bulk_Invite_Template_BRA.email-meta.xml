@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Bulk_Invite_Template_BRA</name>
+    <style>none</style>
+    <subject>Resultados do carregamento de dados em massa</subject>
+    <textOnly>歡迎您加入 Intel® 夥伴聯盟
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}您好，
+
+歡迎您！{!Account.Name}現在已成為 Intel® 夥伴聯盟的夥伴。
+現在就開始利用計畫的福利拓展您的業務，包括：
+
+Intel 的客服針對所有技術、保固與夥伴計畫的問題提供全球協助
+Intel® 夥伴大學的線上培訓和網路研討會，提供領先業界的課程
+龐大的夥伴網路與市場，可針對以資料為中心的解決方案進行合作
+可客製化的素材和銷售工具讓行銷變輕鬆
+访问英特尔® 开发人员专区
+
+
+登入 https://crmqa3-intelcloudcrm.cs37.force.com/ipa 以檢視和管理您的福利。
+
+請登入 https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary 確認您的角色。
+
+
+Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
+請造訪 https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html 取得更多有關入門開始的幫助。
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel 公司，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

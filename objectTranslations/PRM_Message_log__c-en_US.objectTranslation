@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Message log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Message logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_Contact_Id__c</name>
+        <relationshipLabel><!-- Message logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>PRM_Message_Id__c</name>
+        <relationshipLabel><!-- Message logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message Viewed --></label>
+        <name>PRM_Message_Viewed_Ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

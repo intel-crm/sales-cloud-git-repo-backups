@@ -1,0 +1,65 @@
+<aura:documentation>
+	<aura:description>
+    <p>Create Offering Form Input BASE Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/30/2019</p>
+    <p>CurrentVersion: 1.01</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+		<p>This is the base component for the various form inputs.</p>
+		<br/>
+		<p>See the documentation for <code>MarketplaceCreateProductsForm</code> for more details.</p>
+		<br/>
+		<p>Input Components extend this component, for example:</p>
+<pre>&lt;aura:component extends="c:MarketplaceCreateProductFormInputBase"&gt;
+
+  &lt;aura:attribute name="label" type="string" /&gt;
+
+  &lt;lightning:input aura:id="input"
+    label="{!v.label}"
+    value="{!v.value}"
+    required="{!v.required}"
+    /&gt;
+
+&lt;/aura:component&gt;</pre>
+		<p>In this case the <code>v.label</code> attribute is added.</p>
+		<p>However, <code>v.value</code> and <code>v.required</code> are inherited.</p>
+
+		<p>The following base attributes exist for all inputs:</p>
+		<ul>
+			<li>type (String)</li>
+			<li>name (String)</li>
+			<li>required (Boolean)</li>
+			<li>errorMessage (String)</li>
+			<li>layoutItemSize (Integer)</li>
+			<li>layoutItemMediumDeviceSize (Integer)</li>
+		</ul>
+
+		<br/>
+		<p>NOTE: a helper function <code>helper.updateForm(component)</code> must be called to notify the form of changes.</p>
+		<p>This function should be called on init, and any time the input changes, for example:</p>
+
+<pre>doInit : function(component, event, helper) {
+	component.set("v.valid", true);
+	helper.updateForm(component);
+},
+
+handleChange : function(component, event, helper) {
+	var valid = component.find("input").reportValidity();
+	component.set('v.valid', valid);
+	component.set('v.touched', true);
+	helper.updateForm(component);
+}</pre>
+
+		<p>The component keeps track of its internal state and internal UI.</p>
+		<p>When <code>updateForm</code> is called, the form checks inputs and updates its own state and UI (Back/Next buttons etc.)</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

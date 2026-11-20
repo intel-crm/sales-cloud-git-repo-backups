@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- License Generation Request --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Event Type --></label>
+        <name>Evevt_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- LicenseId --></label>
+        <name>LicenseId__c</name>
+    </fields>
+    <fields>
+        <label>许可 ID</label>
+        <name>License_Id__c</name>
+    </fields>
+    <fields>
+        <label>联系人电子邮件地址</label>
+        <name>Sales_Contact_Email_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales_Contact --></label>
+        <name>Sales_Contact__c</name>
+    </fields>
+    <fields>
+        <label>内容文档 ID</label>
+        <name>Sales_Content_Document_Id__c</name>
+    </fields>
+    <fields>
+        <label>文件扩展</label>
+        <name>Sales_File_Ext__c</name>
+    </fields>
+    <fields>
+        <label>文件</label>
+        <name>Sales_File__c</name>
+    </fields>
+    <fields>
+        <label>文件大小</label>
+        <name>Sales_File_size__c</name>
+    </fields>
+    <fields>
+        <label>主计算机 ID</label>
+        <name>Sales_Host_Id__c</name>
+        <relationshipLabel>许可生成请求</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Legacy Attachment Name --></label>
+        <name>Sales_Legacy_Attachment_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Sales_License_Contact__c</name>
+        <relationshipLabel>许可生成请求</relationshipLabel>
+    </fields>
+    <fields>
+        <label>许可证文件</label>
+        <name>Sales_License_File__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Name --></label>
+        <name>Sales_License_Name__c</name>
+    </fields>
+    <fields>
+        <label>许可中包含的产品</label>
+        <name>Sales_Products_in_License__c</name>
+    </fields>
+    <fields>
+        <label>状态</label>
+        <name>Sales_Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation>完整</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error File</masterLabel>
+            <translation>文件生成错误</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error Submission</masterLabel>
+            <translation>提交错误</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation>新增</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>已提交</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>类型</label>
+        <name>Sales_Type__c</name>
+        <picklistValues>
+            <masterLabel>Checkout</masterLabel>
+            <translation>结账</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Companion</masterLabel>
+            <translation>辅助</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emergency</masterLabel>
+            <translation>紧急情况</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FAE</masterLabel>
+            <translation><!-- FAE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy</masterLabel>
+            <translation>传统型</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NULL</masterLabel>
+            <translation><!-- NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation>合作伙伴</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Perpetual</masterLabel>
+            <translation>永久</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RU</masterLabel>
+            <translation><!-- RU --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Request Id --></nameFieldLabel>
+</CustomObjectTranslation>

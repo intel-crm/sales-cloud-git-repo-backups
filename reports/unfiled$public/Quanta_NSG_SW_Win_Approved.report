@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_25734527</developerName>
+        <masterLabel>D3600</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC D3600 Series (1.0TB, 2.5in PCIe 3.0 2x2, 20nm, MLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC D3600 Series (2.0TB, 2.5in PCIe 3.0 2x2, 20nm, MLC)</sourceValue>
+            </sourceValues>
+            <value>D3600</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_16171823</developerName>
+        <masterLabel>P4500 &amp; P4501</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (1.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (1.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (1.6TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (1.9TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (16.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (2.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (2.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (4.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (4.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (480GB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (6.4TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (8.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (8.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (8.0TB, Ruler PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>P4500</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (1.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (1.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (2.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (2.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (4.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (4.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (400GB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (500GB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (500GB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>P4501</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_12377366</developerName>
+        <masterLabel>P4600 &amp; P4601</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (1.6TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (1.6TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (2.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (2.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (3.2TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (3.2TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (4.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (6.4TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (8.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>P4600</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (1.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (1.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (2.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (2.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (3.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (4.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (480GB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>P4601</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_2376319</developerName>
+        <masterLabel>P4800X</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (1.5TB, 1/2 Height PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (1.5TB, 2.5in PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (187GB, 1/2 Height PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (3.0TB, 1/2 Height PCIe x8, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (375GB, 1/2 Height PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (375GB, 2.5in PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (375GB, W.2 PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (750GB, 1/2 Height PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (750GB, 1/2 Height PCIe x8, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (750GB, 2.5in PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (750GB, W.2 PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <value>P4800X</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_855267</developerName>
+        <masterLabel>SSD</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4600 Series (960GB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4600 Series (480GB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4600 Series (3.8TB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4600 Series (240GB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4600 Series (1.9TB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>S46</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4500 Series (960GB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4500 Series (7.6TB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4500 Series (480GB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4500 Series (3.8TB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4500 Series (240GB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S4500 Series (1.9TB, 2.5in SATA 6Gb/s, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>S45</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC S3520 Series (1.6TB, 2.5in SATA 6Gb/s, 3D1, MLC)</sourceValue>
+            </sourceValues>
+            <value>S35</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4608 Series (6.4TB, 1/2 Height PCIe 3.1 x8, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (4.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4601 Series (3.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (6.4TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (4.0TB, 1/2 Height PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4600 Series (1.6TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>P46</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (4.0TB, M.2 110mm PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4501 Series (4.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (4.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC P4500 Series (16.0TB, 2.5in PCIe 3.1 x4, 3D1, TLC)</sourceValue>
+            </sourceValues>
+            <value>P45</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SSD DC D3600 Series (2.0TB, 2.5in PCIe 3.0 2x2, 20nm, MLC)</sourceValue>
+            </sourceValues>
+            <value>D36</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (750GB, 2.5in PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Optane™ SSD DC P4800X Series (375GB, 1/2 Height PCIe x4, 20nm, 3D XPoint)</sourceValue>
+            </sourceValues>
+            <value>P48</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>EXP_AMOUNT</column>
+        </chartSummaries>
+        <chartType>Pie</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_855267</groupingColumn>
+        <legendPosition>OnChart</legendPosition>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>true</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Pie chart Allen SSD Design Win Status</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Volume__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Status_Update__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>QUANTA COMPUTER INC.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Amazon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Facebook</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>NSG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Win Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_855267</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Quanta NSG SW$ (Win Approved)</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2017-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
+    </timeFrameFilter>
+</Report>

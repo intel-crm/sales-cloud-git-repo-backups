@@ -1,0 +1,190 @@
+<template>
+
+  <template if:true={contentDetailUI}>
+    <template for:each={contentDetailUI} for:item="rec">
+      <div key={rec.id} style="width: 100%;">
+        <div class="slds-page-header slds-page-header_record-home" style="border-color:black">
+
+          <lightning-layout padding="around-xx-small">
+            <lightning-layout-item size="1"></lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="7">
+              <div style="display:inline-block;margin-right:10px;" data-id="Approve" onclick={handleApproveRejectClick}>
+                <lightning-icon icon-name="action:approval" alternative-text="Approve" title="Approve" size="small">
+                </lightning-icon><br />
+                <div class="slds-text-body_small">Approve</div>
+              </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="4">
+              <div style="display:inline-block;" data-id="Reject" onclick={handleApproveRejectClick}>
+
+                <lightning-icon icon-name="action:close" alternative-text="Reject" title="Reject" size="small">
+                </lightning-icon><br />
+
+                <div class="slds-text-body_small">Reject</div>
+              </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="2"></lightning-layout-item>
+          </lightning-layout>
+
+          <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+              <div class="slds-media">
+                <div class="slds-media__figure">
+                  <lightning-icon icon-name={rec.icon} alternative-text={rec.object} title={rec.object}>
+                  </lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                  <div class="slds-page-header__name">
+                    <div class="slds-page-header__name-title">
+                      <h1>
+                        <span>{rec.object}</span>
+                        <span data-record-id={rec.id} class="slds-page-header__title slds-truncate slds-text-link"
+                          onclick={handleNavigate} title={rec.title}>{rec.title}</span>
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-page-header__row slds-page-header__row_gutters" style="border-color:black">
+            <div class="slds-page-header__col-details">
+              <ul class="slds-page-header__detail-row" style="padding-left:2%">
+
+                <div class="slds-grid slds-wrap" style="width: 100%;">
+
+                  <template for:each={rec.compactDetails} for:item="field">
+                    <div key={field.value} class="slds-col slds-size_1-of-1">
+                    <lightning-layout-item padding="around-x-small">
+                      <div class="slds-p-top_x-small"></div>
+                      <dl class="slds-list_horizontal slds-wrap">
+                        <dt class="slds-dl_horizontal_label">
+                          <div class="slds-text-color_weak" style="display: block;">
+                            <b>{field.label}</b>
+                          </div>
+                        </dt> &nbsp;
+                        <dd class="slds-dl_horizontal_detail">
+                          <div class="slds-scrollable_none" style="display: block;">
+                            {field.value}
+                          </div>
+                        </dd>
+                      </dl>
+                      <div class="slds-p-top_xx-small"></div>
+                      <div class="slds-border_bottom">
+                      </div>
+
+                    </lightning-layout-item>
+                    </div>
+                  </template>
+
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="slds-grid slds-wrap">
+          <div class="slds-box slds-theme_default" style="margin-top:2%;border-color:black">
+            <div class="slds-tabs_default">
+              <ul class="slds-tabs_default__nav" role="tablist">
+                <li class="slds-tabs_default__item slds-is-active" title="Details" role="presentation">
+                  <a class="slds-tabs_default__link" href="#" role="tab" style="font-size:125%" tabindex="0"
+                    aria-selected="true" aria-controls="tab-default-1">Details</a>
+                </li>
+              </ul>
+              <div class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+                <div class="slds-section slds-is-open" data-id={rec.title}>
+                  <h3 class="slds-section__title">
+                    <button type="button" aria-controls={rec.title} class="slds-button slds-section__title-action"
+                      data-buttonid={rec.title}>
+                      <lightning-icon icon-name="utility:switch" alternative-text="button icon" size="x-small"
+                        class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon>
+                      <span class="slds-truncate" title="Information">Information</span>
+                    </button>
+                  </h3>
+                  <div class="slds-section__content">
+                    <div class="slds-theme_default" style="padding-left:2%">
+                      <div class="slds-grid slds-wrap">
+
+                        <template for:each={rec.recordDetails} for:item="field">
+
+                          <div key={field.value} class="slds-col slds-size_1-of-1">
+                            <div class="slds-form-element slds-form-element_readonly" style="width:100%">
+                              <span class="slds-form-element__label">{field.label}</span>
+                              <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">
+                                  <template if:true={field.redirect}>
+                                    <a data-record-id={field.redirect} class="slds-text-link" onclick={handleNavigate}
+                                      title={field.value} name={field.value}>{field.value}</a>
+                                  </template>
+                                  <template if:false={field.redirect}>
+                                    {field.value}
+                                  </template>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+
+
+
+
+
+  </template>
+
+
+
+  <template if:true={isModalopen}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+      aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+
+        <header class="slds-modal__header">
+          <lightning-button-icon icon-name="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" alternative-text="Close" onclick={closeModal}></lightning-button-icon>
+          <!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+            onclick={closeModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+            </lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>-->
+          <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">{popupHeaderText}</h2>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="textarea-id-02">Comments</label>
+            <div class="slds-form-element__control">
+              <textarea id="textarea-id-02" rows=10 class="slds-textarea" placeholder="Enter Comments..."
+                name="textArea" onchange={handleTextAreaChange} autofocus></textarea>
+            </div>
+          </div>
+
+        </div>
+        <template if:true={showSpinner}>
+          <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <footer class="slds-modal__footer">
+          <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+          <button class="slds-button slds-button_brand block" onclick={handleApproveRejectPopUp}
+            title={popupButtonLabel}>{approvalButtonName}</button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+
+
+
+</template>

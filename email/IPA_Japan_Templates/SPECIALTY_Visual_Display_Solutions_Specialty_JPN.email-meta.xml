@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Visual_Display_Solutions_Specialty_JPN</name>
+    <style>none</style>
+    <subject>インテル® パートナー・アライアンスのビジュアル・ディスプレイ・ソリューション専攻</subject>
+    <textOnly>認定取得、おめでとうございます !
+
+
+{!Contact.FirstName} 様、
+
+インテル® パートナー・アライアンスのビジュアル・ディスプレイ・ソリューション専攻へようこそ。認定 IoT スペシャリストとして、IoT ビジュアル・ディスプレイ・ソリューション・ビジネスの促進を助ける、より多くの特典利用の対象になりました。
+
+指定市場開発基金
+コンテンツ・マーケティングおよびセールス・プレイブックへの掲載の機会
+時別イベントへの招待とマッチメイキングの機会
+
+特典を活用する
+
+
+* 特典は地域によって異なります。
+
+インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
+
+メンバーシップの最適化についてのヘルプやガイダンスは、https://www.intel.com/content/www/jp/ja/partner-alliance/help/overview.html を参照してください。
+
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+プライバシー  |  Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

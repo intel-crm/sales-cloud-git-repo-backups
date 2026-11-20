@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Compact_Layout_for_Lightning</fullName>
+        <fields>Name</fields>
+        <fields>Sales_Computer_Name_Txt__c</fields>
+        <fields>Sales_Computer_Type__c</fields>
+        <fields>Sales_Contact__c</fields>
+        <label>Compact Layout for Lightning</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Sales_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Host Information</relationshipLabel>
+        <relationshipName>Host_Information</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_CompType_URL_del__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( &quot;https://www.intel.com/content/www/us/en/programmable/support/support-resources/download/licensing/lic-q2se_licenses.html&quot; , &quot;Altera Software Licenses (intel.com)&quot; , &quot;_blank&quot;)</formula>
+        <label>Help on how to determine Computer Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Companion_Server1_Txt__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Companion Computer ID can be either Guard ID (T or S followed by 9 digits) or NIC ID (12 hexadecimal characters) only</inlineHelpText>
+        <label>Companion Computer ID 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Companion_Server2_Txt__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Companion Computer ID can be either Guard ID (T or S followed by 9 digits) or NIC ID (12 hexadecimal characters) only</inlineHelpText>
+        <label>Companion Computer ID 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Computer_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Computer Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Computer_Type__c</fullName>
+        <label>Computer Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Sales_License_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NIC ID</fullName>
+                    <default>false</default>
+                    <label>NIC ID</label>
+                </value>
+                <value>
+                    <fullName>HOST ID</fullName>
+                    <default>false</default>
+                    <label>HOST ID</label>
+                </value>
+                <value>
+                    <fullName>GUARD ID</fullName>
+                    <default>false</default>
+                    <label>GUARD ID</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>FIXED</controllingFieldValue>
+                <controllingFieldValue>FLOAT</controllingFieldValue>
+                <valueName>NIC ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>FIXED</controllingFieldValue>
+                <valueName>GUARD ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>FLOAT</controllingFieldValue>
+                <valueName>HOST ID</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Primary Admin</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Host Information</relationshipLabel>
+        <relationshipName>Host_Information</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Host_Is_Created_From_Custom_Page__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is created for backend validation purposes.</description>
+        <label>Host Is Created From Custom Page</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_IsTemporaryLicense__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To check whether license file has to be generated temporary using the temporary button</description>
+        <label>IsTemporaryLicense</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Legacy_Host_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field stores the Id from Seibel as part of migration</description>
+        <externalId>true</externalId>
+        <label>Legacy Host Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_LicenseType_URL_del__c</fullName>
+        <defaultValue>&quot;https://www.intel.com/content/www/us/en/programmable/support/support-resources/download/licensing/lic-q2se_licenses.html&quot;</defaultValue>
+        <inlineHelpText>Altera Software Licenses (intel.com)</inlineHelpText>
+        <label>Help on how to determine Computer Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Sales_License_Type__c</fullName>
+        <label>License Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FIXED</fullName>
+                    <default>false</default>
+                    <label>FIXED</label>
+                </value>
+                <value>
+                    <fullName>FLOAT</fullName>
+                    <default>false</default>
+                    <label>FLOAT</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Primary_Admin_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Admin Email</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Primary_Admin_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Admin Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Primary_Computer_ID_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Computer ID - Dont Use</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Redundant_Server1_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Redundant Server ID 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Redundant_Server2_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Redundant Server ID 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_isActiveHost__c</fullName>
+        <defaultValue>true</defaultValue>
+        <inlineHelpText>Please use Activate/ Deactivate Computer button from the drop down at the right corner above for  Activating or Deactivating the Computer</inlineHelpText>
+        <label>Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Temporary_NIC_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Temporary NIC ID</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Host Information</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Sales_Computer_Name_Txt__c</columns>
+        <columns>NAME</columns>
+        <columns>Sales_License_Type__c</columns>
+        <columns>Sales_Computer_Type__c</columns>
+        <columns>Sales_isActiveHost__c</columns>
+        <columns>Sales_Primary_Admin_Email__c</columns>
+        <columns>Sales_Companion_Server1_Txt__c</columns>
+        <columns>Sales_Companion_Server2_Txt__c</columns>
+        <columns>Sales_Redundant_Server1_Txt__c</columns>
+        <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Sales_Host__c.Sales_NewHost</value>
+        </filters>
+        <label>All Computers</label>
+        <sharedTo>
+            <group>AGS_PSG_External_License_Users</group>
+            <group>AGS_PSG_Internal_LicenseAdmin</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>Primary Computer ID</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Host Information</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Sales_NewHost</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Compact_Layout_for_Lightning</compactLayoutAssignment>
+        <label>New Host</label>
+        <picklistValues>
+            <picklist>Sales_Computer_Type__c</picklist>
+            <values>
+                <fullName>GUARD ID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HOST ID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NIC ID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_License_Type__c</picklist>
+            <values>
+                <fullName>FIXED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FLOAT</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Sales_Computer_Name_Txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sales_isActiveHost__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sales_Contact__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Sales_EnterComputerNameOnHostCreation</fullName>
+        <active>true</active>
+        <description>SSLC Enhancement</description>
+        <errorConditionFormula>OR(ISBLANK( Sales_Computer_Name_Txt__c ),ISNULL(Sales_Computer_Name_Txt__c))</errorConditionFormula>
+        <errorDisplayField>Sales_Computer_Name_Txt__c</errorDisplayField>
+        <errorMessage>Please enter the Computer Name</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Fixed_GUARD_NIC_Allowed</fullName>
+        <active>true</active>
+        <description>Computer Type can only be Guard Id or NIC ID for Fixed license type computer</description>
+        <errorConditionFormula>AND(
+ISPICKVAL( Sales_License_Type__c , &apos;FIXED&apos;) ,
+ISPICKVAL( Sales_Computer_Type__c , &quot;HOST ID&quot;)
+,NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Computer_Type__c</errorDisplayField>
+        <errorMessage>Computer Type can either be a Guard Id or a NIC ID for Fixed license type computer</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Fixed_Lic_Red_Server_NotAllowed</fullName>
+        <active>true</active>
+        <description>For FIXED License Type, User Can add either 0, 1 or both companion servers only.</description>
+        <errorConditionFormula>AND(
+ISPICKVAL( Sales_License_Type__c , &apos;FIXED&apos;) ,
+OR(
+NOT(ISBLANK(Sales_Redundant_Server1_Txt__c)),
+NOT(ISBLANK(Sales_Redundant_Server2_Txt__c))
+),NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
+)</errorConditionFormula>
+        <errorMessage>For FIXED License Type computers, you cannot add redundant servers. You can optionally add companion computers</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Float_HOST_NIC_Allowed</fullName>
+        <active>true</active>
+        <description>Computer Type can either be a NIC ID or a HOST ID for Float license type computer</description>
+        <errorConditionFormula>AND(
+ISPICKVAL( Sales_License_Type__c , &apos;FLOAT&apos;),
+ISPICKVAL(  Sales_Computer_Type__c , &quot;GUARD ID&quot;)
+,NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Computer_Type__c</errorDisplayField>
+        <errorMessage>Computer Type can only be NIC ID or HOST ID for Float license type computer</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Float_Lic_NoneorBoth_RedServer_Req</fullName>
+        <active>true</active>
+        <description>For FLOAT License Type, User Can add either 0 or both redundant servers only.</description>
+        <errorConditionFormula>AND(
+ISPICKVAL( Sales_License_Type__c , &apos;FLOAT&apos;),
+OR(
+AND( ISBLANK(Sales_Redundant_Server1_Txt__c) , NOT(ISBLANK(Sales_Redundant_Server2_Txt__c)) ),
+AND( NOT(ISBLANK(Sales_Redundant_Server1_Txt__c)) , ISBLANK(Sales_Redundant_Server2_Txt__c) ),
+NOT( ISBLANK(Sales_Companion_Server1_Txt__c) ),
+NOT( ISBLANK(Sales_Companion_Server2_Txt__c) )
+),
+NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
+)</errorConditionFormula>
+        <errorMessage>For FLOAT License Type, either none or both Redundant Servers must be added to a host &amp; cannot add Companion Computer for FLOAT license type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_HostCreation_Validation</fullName>
+        <active>true</active>
+        <description>This validation rule is created to restrict User in creating Host record from New Button at Lookup field.</description>
+        <errorConditionFormula>AND(ISNEW(),NOT(Sales_Host_Is_Created_From_Custom_Page__c),NOT(ISCLONE()))</errorConditionFormula>
+        <errorMessage>You are not authorized to add a New Host from this screen.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Valid_Companion_Server_Id</fullName>
+        <active>true</active>
+        <description>Server Id should be same as computer type which is Guard Id (T or S followed by 9 digits) for Computer type selected as Guard Id , NIC Id (12 Hexadecimal Characters) for computer selected as NIC Id and 8 hexadecimal for Computer type selected as Host Id</description>
+        <errorConditionFormula>AND(OR(
+
+AND(
+NOT(ISBLANK( Sales_Companion_Server1_Txt__c )),
+OR(
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;NIC ID&apos;),
+NOT((REGEX(Sales_Companion_Server1_Txt__c, &quot;[A-Fa-f0-9]{12}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;HOST ID&apos;),
+NOT((REGEX(Sales_Companion_Server1_Txt__c, &quot;[A-Fa-f0-9]{8}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;GUARD ID&apos;),
+NOT((REGEX(Sales_Companion_Server1_Txt__c, &quot;[T|S]{1}[0-9]{9}&quot;)))
+)
+)
+),
+
+AND(
+NOT(ISBLANK( Sales_Companion_Server2_Txt__c )),
+OR(
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;NIC ID&apos;),
+NOT((REGEX(Sales_Companion_Server2_Txt__c, &quot;[A-Fa-f0-9]{12}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;HOST ID&apos;),
+NOT((REGEX(Sales_Companion_Server2_Txt__c, &quot;[A-Fa-f0-9]{8}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;GUARD ID&apos;),
+NOT((REGEX(Sales_Companion_Server2_Txt__c, &quot;[T|S]{1}[0-9]{9}&quot;)))
+)
+)
+)
+
+),NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c )))</errorConditionFormula>
+        <errorMessage>Invalid computer type for companion computer IDs</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Valid_PrimaryComputerID</fullName>
+        <active>true</active>
+        <description>Primary Computer Id can be Host Id for Computer Type=&apos;Host ID&apos; OR NIC Id for Computer Type=&apos;NIC ID&apos; OR Guard Id for Computer Type=&apos;Guard ID&apos;. [Host Id (8 Hexadecimal) / NIC Id (12 Hexadecimal) / Guard Id (Dongle)(T or S followed by 9 digits) ]</description>
+        <errorConditionFormula>AND(NOT($Setup.PRM_Execution_Controls__c.BypassValidationInTransferAdmin__c),OR(
+AND( 
+ISPICKVAL(  Sales_Computer_Type__c  , &apos;NIC ID&apos;),
+NOT((REGEX(Name, &quot;[A-Fa-f0-9]{12}&quot;)))
+),
+AND( 
+ISPICKVAL(  Sales_Computer_Type__c  , &apos;HOST ID&apos;),
+NOT((REGEX(Name, &quot;[A-Fa-f0-9]{8}&quot;)))
+),
+AND( 
+ISPICKVAL(  Sales_Computer_Type__c  , &apos;GUARD ID&apos;),
+NOT((REGEX(Name, &quot;[T|S]{1}[0-9]{9}&quot;)))
+)
+),NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c )))</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Invalid primary computer ID. HOST ID : Eight digit hexadecimal digits--12345678 / NIC ID : 12 hexadecimal digits--123456789101 / GUARD ID (Dongle) : T or S prefix followed by nine digits --T000000001</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Valid_Redundant_Server_Id</fullName>
+        <active>true</active>
+        <description>Server Id should be same as computer type which is Guard Id (T or S followed by 9 digits) for Computer type selected as Guard Id , NIC Id (12 Hexadecimal Characters) for computer selected as NIC Id and 8 hexadecimal for Computer type selected as Host Id</description>
+        <errorConditionFormula>AND(OR(
+
+AND(
+NOT(ISBLANK( Sales_Redundant_Server1_Txt__c )),
+OR(
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;NIC ID&apos;),
+NOT((REGEX(Sales_Redundant_Server1_Txt__c, &quot;[A-Fa-f0-9]{12}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;HOST ID&apos;),
+NOT((REGEX(Sales_Redundant_Server1_Txt__c, &quot;[A-Fa-f0-9]{8}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;GUARD ID&apos;),
+NOT((REGEX(Sales_Redundant_Server1_Txt__c, &quot;[T|S]{1}[0-9]{9}&quot;)))
+)
+)
+),
+
+AND(
+NOT(ISBLANK( Sales_Redundant_Server2_Txt__c )),
+OR(
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;NIC ID&apos;),
+NOT((REGEX(Sales_Redundant_Server2_Txt__c, &quot;[A-Fa-f0-9]{12}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;HOST ID&apos;),
+NOT((REGEX(Sales_Redundant_Server2_Txt__c, &quot;[A-Fa-f0-9]{8}&quot;)))
+),
+AND(
+ISPICKVAL( Sales_Computer_Type__c , &apos;GUARD ID&apos;),
+NOT((REGEX(Sales_Redundant_Server2_Txt__c, &quot;[T|S]{1}[0-9]{9}&quot;)))
+)
+)
+)
+
+),NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c )))</errorConditionFormula>
+        <errorDisplayField>Sales_Account__c</errorDisplayField>
+        <errorMessage>Invalid computer type for redundant server IDs</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Temporary_NIC_ID_Validation_Fixed</fullName>
+        <active>true</active>
+        <description>Temporary NIC ID cannot be set for Fixed license type computers</description>
+        <errorConditionFormula>IF(ISPICKVAL( Sales_License_Type__c , &apos;FIXED&apos;)&amp;&amp; (NOT(ISBLANK(Temporary_NIC_ID__c)) &amp;&amp; NOT(ISCHANGED( Sales_Primary_Admin_Email__c )) &amp;&amp;
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))),true , false)</errorConditionFormula>
+        <errorDisplayField>Temporary_NIC_ID__c</errorDisplayField>
+        <errorMessage>Temporary NIC ID is only for Float license type Hosts, to generate temporary license.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Temporary_NIC_ID_Validation_Float</fullName>
+        <active>true</active>
+        <description>Temporary NIC ID should be of 12 hexadecimal characters</description>
+        <errorConditionFormula>AND(
+ISPICKVAL(  Sales_License_Type__c  , &apos;FLOAT&apos;),
+NOT((REGEX( Temporary_NIC_ID__c , &quot;[A-Fa-f0-9]{12}&quot;))),
+NOT(ISBLANK(Temporary_NIC_ID__c)),NOT(ISCHANGED( Sales_Primary_Admin_Email__c )),
+NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
+)</errorConditionFormula>
+        <errorDisplayField>Temporary_NIC_ID__c</errorDisplayField>
+        <errorMessage>Please enter temporary NIC ID (Temporary NIC ID should be of 12 hexadecimal characters).</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

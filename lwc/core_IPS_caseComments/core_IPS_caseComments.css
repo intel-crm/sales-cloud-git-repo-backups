@@ -1,0 +1,22 @@
+.accordionClass{
+    --sds-c-accordion-heading-font-size : 0.9rem;
+}
+.blueColor{
+    background-color:#e3f3ff !important;
+    font-weight: bold;
+}
+.greyColor{
+    background-color: #EEEEEE !important;
+    font-weight: bold;
+}
+.withoutBold{
+    font-weight: normal;
+}
+/* [interop-accordionSection_accordionSection-host]{
+    display:inline;
+} */
+
+ .selectorText::selection {
+      color: red;
+      background-color: yellow;
+    }

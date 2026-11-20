@@ -1,0 +1,13 @@
+.col-content,
+.col-content2 {
+  background: var(--carbon-tint2);
+  width: 100%;
+}
+
+.col-content {
+  height: 20rem;
+}
+
+.col-content2 {
+  height: 9rem;
+}

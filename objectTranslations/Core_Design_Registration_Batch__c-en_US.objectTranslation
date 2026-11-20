@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Design Registration Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Design Registration Batches</value>
+    </caseValues>
+    <fields>
+        <label><!-- Design Batch Report --></label>
+        <name>Core_Design_Batch_Report_URL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Count (Fail) --></label>
+        <name>Core_Fail_Design_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Count (Fail) --></label>
+        <name>Core_Fail_Product_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of file used for bulk import. File attached in the section below. --></help>
+        <label><!-- File Name --></label>
+        <name>Core_File_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- ISR/Internal user should select &quot;Partner Account&quot; field while uploading csv file. --></help>
+        <label><!-- Partner Account --></label>
+        <name>Core_Partner_Account_Id__c</name>
+        <relationshipLabel><!-- Design Registration Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Design Count (Pass) --></label>
+        <name>Core_Pass_Design_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Count (Pass) --></label>
+        <name>Core_Pass_Product_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Count (Total) --></label>
+        <name>Core_Total_Design_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Count (Total) --></label>
+        <name>Core_Total_Product_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Rows --></label>
+        <name>Core_Total_Row_Cnt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_View_Detail_Report --></label>
+        <name>Core_View_Detail_Report</name>
+    </webLinks>
+</CustomObjectTranslation>

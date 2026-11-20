@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Retrigger Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRESEND_THA</name>
+    <style>none</style>
+    <subject>โปรดกรอกใบสมัครเข้าร่วม Intel® Partner Alliance ของคุณให้ครบถ้วน</subject>
+    <textOnly>คุณเกือบถึงจุดหมายแล้ว!
+
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+ขอบคุณที่ส่งใบสมัครของคุณเข้ามา มีการสร้างโปรไฟล์สำหรับ {!PRM_Registration_Request__c.PRM_Email_ID__c} และเพียงดำเนินการอีกไม่กี่ขั้นตอน คุณก็จะเข้าร่วมเป็นพาร์ทเนอร์ใน Intel® Partner Alliance
+
+
+หากต้องการเปิดใช้งานบัญชีของคุณ และเริ่มต้นใช้สิทธิประโยชน์ของคุณ โปรดกรอกข้อมูลบัญชีของคุณให้เสร็จ และดำเนินการตามข้อกำหนดด้านกฎหมาย
+
+
+ดำเนินการให้เสร็จสิ้นตอนนี้
+
+ไม่สามารถเข้าถึงลิงก์ด้านบนได้ใช่หรือไม่
+
+https://www.intel.com/content/www/th/th/secure/partner/forms/ipa-account-search.html
+
+หากคุณมีคำถามใดๆ โปรดติดต่อเราได้ที่ programs@intel.com
+
+ขอขอบคุณ
+ทีม Intel® Partner Alliance ของคุณ
+
+
+
+ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

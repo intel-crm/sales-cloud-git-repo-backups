@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREUNAENG</name>
+    <style>none</style>
+    <subject>Intel Registration Confirmation</subject>
+    <textOnly>Intel® Cloud Insider Program Application Received
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c}   {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+Thank you for submitting your Intel® Cloud Insider Program application. We will review your application within 5 business days. If you have any questions, please contact us at programs@intel.com
+
+
+Thank you for your interest in joining Intel® Cloud Insider Program.
+
+
+Sincerely,
+Administrator, Intel® Cloud Insider Program.
+Your solutions. Our technology. Smarter together.
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+You may unsubscribe at any time by updating your profile settings at: {!$Label.PRM_MyIntelProfileURL}
+Privacy | Cookies | *Trademarks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

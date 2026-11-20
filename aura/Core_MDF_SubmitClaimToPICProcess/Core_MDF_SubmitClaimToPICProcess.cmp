@@ -1,0 +1,96 @@
+<aura:component controller="Core_MDF_AuditDocumentHelper_Revamp"
+    implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <!--This tag sets PIC confirmation popup's width and height-->
+    <aura:html tag="style">
+        .slds-modal__content {
+        height: auto !important;
+        padding: 0px 0px !important;
+        }
+
+        .cuf-content {
+        padding: 0 0px !important;
+        }
+
+        .slds-modal__container {
+            width: auto !important;
+            max-width: 54% !important;
+        }
+    </aura:html>
+    <aura:attribute name="isValidClaimUser" type="boolean" default="false"
+        description="Indicates whether the logged in user is claim submitter or not" />
+    <aura:attribute name="isClaimEligibleForPIC" type="boolean" default="false"
+        description="claim eligibility for PIC Review Process" />
+    <aura:attribute name="claimId" type="Id" description="claim id" />
+    <aura:attribute name="spinner" type="boolean" default="false" />
+    <aura:attribute name="submitForPICWrapper" type="object" default="null" />
+    <aura:attribute name="AreDocsAvailable" type="boolean" default="false"
+        description="Indicates whether the documents are uplaoded for claim or not" />
+    <aura:attribute name="isLegacyClaim" type="boolean" default="false" />
+    <!--Added by VB-->
+    <aura:attribute name="isCustomComp" type="boolean" default="false" description="Indicates whether this component is rendered from standard quick action or from custom compact layout"/>
+    <aura:attribute name="isOutComeBased" type="boolean" default="false" description="Indicates whether the claim is super/subclaim"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        <!--This is to fire a component event to close a modal popup-->
+    <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/>
+
+    <!-- Confirmation popup to set the claim for PIC Review -->
+    <aura:if isTrue="{!v.spinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+
+        <aura:set attribute="else">
+            <header>
+                <div class="slds-modal__header slds-text-heading_medium">
+                    <aura:if isTrue="{!v.isOutComeBased}">
+                        {!$Label.c.Core_MDF_Submit_For_Payment_Clearance}
+                        <aura:set attribute="else">
+                    {!$Label.c.Core_MDF_Submit_For_PIC}
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </header>
+            <div class="slds-modal__content slds-var-p-around_medium slds-text-align_center slds-var-m-top_large slds-var-m-bottom_large slds-var-m-left_small slds-var-m-right_small"
+                id="modal-content-id-1">
+                <aura:if isTrue="{!v.isValidClaimUser}">
+                    <aura:if isTrue="{!v.isClaimEligibleForPIC}">
+                        <aura:if isTrue="{!v.AreDocsAvailable}">
+                            <div>{!v.isOutComeBased ? $Label.c.Core_MDF_Submit_For_Payment_Confirmation_Message : $Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message}</div>
+                            <aura:set attribute="else">
+                                <div>{!$Label.c.Core_MDF_Mandatory_Document_Types_Error_Message}</div>
+                            </aura:set>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <div>{!$Label.c.Core_MDF_Submit_For_PIC_NotApplicable_Message}</div>
+                        </aura:set>
+                    </aura:if>
+                    <aura:set attribute="else">
+                        <div>{!$Label.c.Core_MDF_Manual_Audit_Access_Error}</div>
+                    </aura:set>
+                </aura:if>
+            </div>
+            <footer class="slds-modal__footer">
+                <aura:if isTrue="{!v.isValidClaimUser}">
+                    <aura:if isTrue="{!v.isClaimEligibleForPIC}">
+                        <aura:if isTrue="{!v.AreDocsAvailable}">
+                            <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_DQNo}"
+                                onclick="{!c.closeConfirmationPopup}" />
+                            <lightning:button variant="Brand" label="{!$Label.c.Core_MDF_DQYes}"
+                                onclick="{!c.submitForPICReview}" />
+                            <aura:set attribute="else">
+                                <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Close}"
+                                    onclick="{!c.closeConfirmationPopup}" />
+                            </aura:set>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Close}"
+                                onclick="{!c.closeConfirmationPopup}" />
+                        </aura:set>
+                    </aura:if>
+                    <aura:set attribute="else">
+                        <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Close}"
+                            onclick="{!c.closeConfirmationPopup}" />
+                    </aura:set>
+                </aura:if>
+            </footer>
+        </aura:set>
+    </aura:if>
+</aura:component>

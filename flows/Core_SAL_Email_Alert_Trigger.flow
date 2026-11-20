@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_SAL_SLAEmail</name>
+        <label>Lead.Core_SAL_SLAEmail</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>Lead.Core_SAL_SLAEmail</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_SAL_SLAEmail</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_SAL_Email_Alert_Trigger workflow rule
+Workflow rule description: &quot;</description>
+    <environments>Default</environments>
+    <label>Core_SAL_Email_Alert_Trigger</label>
+    <migratedFromWorkflowRuleName>Core_SAL_Email_Alert_Trigger</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_SAL_SLAEmail</targetReference>
+        </connector>
+        <filterFormula>OR(AND(ISCHANGED({!$Record.Core_SendEmail__c}), {!$Record.Core_SendEmail__c} = true, {!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Partner_Lead&apos;, ISPICKVAL( {!$Record.Status} , &apos;Sales Accepted Lead&apos;), ISPICKVAL( {!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;), {!$Record.Core_Having_Tasks__c} = false, {!$Record.Core_Created_Post_NewLead_Process__c}=true, {!$Record.Core_SLA_Listed_User__c} = true), AND(ISCHANGED( {!$Record.Core_SendEmail4__c} ), {!$Record.Core_SendEmail4__c} = true, {!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Partner_Lead&apos;, ISPICKVAL( {!$Record.Status} , &apos;Sales Accepted Lead&apos;), ISPICKVAL( {!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;), {!$Record.Core_Created_Post_NewLead_Process__c}=True, {!$Record.Core_SLA_Listed_User__c} = true))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -1,0 +1,27 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase">
+
+    <aura:attribute name="dropdown" type="Object" />
+    <aura:attribute name="dropdownValue" type="string" description="Keeps track of dropdown value. Can be used to set already existing value." />
+    <aura:attribute name="initialDropdownValue" type="string" />
+    <aura:attribute name="radios" type="Object[]" />
+    <aura:attribute name="radioValue" type="string" description="Keeps track of dropdown value. Can be used to set already existing value." />
+    <aura:attribute name="initialRadioValue" type="string"/>
+    <aura:attribute name="dropdownComponent" type="Aura.Component[]" description="Internal" />
+    <aura:attribute name="radioComponent" type="Aura.Component[]" description="Internal" />
+	<aura:attribute name="label" type="string" description="Attribute corresponds to same on lightning:select."/>
+
+    <aura:attribute name="firstLoad" type="boolean" description="to identify first time load" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.dropdownValue}" action="{!c.handleDropdownValueChange}" />
+	<aura:registerEvent name="isEndCustomerTypeMandatory" type="c:MarketplaceIsEndCustomerTypeMandatory"/>
+    <lightning:layout multipleRows="true" class="{!v.required ? 'isRequired' : 'isNotRequired'}">
+        {!v.dropdownComponent}
+        
+        <div class="slds-p-around_medium">
+        	{!v.radioComponent}
+        </div>
+        
+    </lightning:layout> 
+	
+
+</aura:component>

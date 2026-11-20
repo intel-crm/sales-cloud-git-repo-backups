@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Product2$Core_Product_ID__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Product2$IsActive</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Name</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_OPN__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Product2$IsActive</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2$Core_Product_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® FPGAs</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Product2.Product_Ext_Attribute__r$Core_Prod_QTE_Slow_Moving_Inventory_Ind__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Product Extended Attrb - SMI</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Product_with_Extended_Attributes__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Product2$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable" access="global" description="Sample Component">
+  <aura:attribute name="recordId" type="String" access="global"/> 
+    <div>
+	<lightning:tabset variant="scoped">
+        <lightning:tab label="Quote Detail">
+            <c:psg_requestQuote recordId="{!v.recordId}"/>
+        </lightning:tab>
+        <aura:if isTrue="{!v.recordId != null }">
+            <lightning:tab label="Chatter">
+                <forceChatter:publisher context="RECORD" recordId="{!v.recordId}" />
+                <forceChatter:feed type="Record" subjectId="{!v.recordId}"/>
+            </lightning:tab>
+        </aura:if>       
+    </lightning:tabset>
+   </div>     
+</aura:component>

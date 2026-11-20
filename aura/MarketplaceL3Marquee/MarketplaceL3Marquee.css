@@ -1,0 +1,349 @@
+.THIS {
+    color: t(white);
+    padding: 2em 0;
+    width: 100%;
+    position: relative;
+    background-color: t(darkBlue);
+    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v4.jpg'); 
+    background-position: 0% 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.THIS .marquee-header {
+  font-family: "intel-clear", impact, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.16;
+  display: inline-block;
+  word-wrap: break-word;  
+}
+.THIS .marquee-header:lang(zh) {
+  font-family: "intel-clear", "intel-clear-cyrillic", "Microsoft YaHei", SimHei, impact, sans-serif;
+  font-weight: 400;
+}
+.THIS .marquee-header:lang(ja) {
+  font-family: "intel-clear", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", "MS PGothic", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+  font-weight: 400;
+}
+.THIS .marquee-header.h2 {
+  color: t(white);
+  font-size: 1.625rem;
+  line-height: 1.25;
+  display: initial;
+  word-wrap: break-word;   
+}
+
+.THIS .marquee-checkbox-container {
+  display: inline-block;
+}
+
+/* Preview Mode Link Override */
+.THIS.preview a {
+  cursor: default;
+}
+.THIS.preview a:hover {
+  color: t(blue);
+}
+.THIS.preview a.color-pale-blue:hover{
+  color: t(paleBlue);
+}
+.THIS.preview .main-breadcrumb.dark a:hover {
+  color: t(white);
+}
+
+.THIS .smallDevicePadding {
+  padding: 0 1em;
+}
+
+/*Edit Icon positioning*/
+
+.THIS .imageWrapper {
+  background: t(white);
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+}
+.THIS .imageWrapper img {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.THIS .edit-storefront-section {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.THIS .edit-storefront-section .slds-icon_container {
+  background: t(white); 
+}
+/*empty image */
+.THIS .edit-storefront-body:active .slds-icon_container .slds-icon use,
+.THIS .edit-storefront-body:hover .slds-icon_container .slds-icon use,
+.THIS .edit-storefront-body .slds-icon_container .slds-icon use,
+.THIS .emptyImage.profileCompleted .slds-icon_container .slds-icon use {
+  fill: t(white); 
+}
+.THIS .edit-storefront-body .slds-icon,
+.THIS .emptyImage.profileCompleted .slds-icon_container .slds-icon {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.THIS .edit-storefront-body:active,
+.THIS .edit-storefront-body:hover,
+.THIS .edit-storefront-body  {
+  color: t(white); 
+}
+.THIS .emptyImage {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border: 3px dashed t(lightGray);
+  background: rgba(255,255,255, .16);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Vertical center alignment */
+  justify-content: center; /* Horizontal center alignment */
+}
+.THIS .emptyImage.profileCompleted {
+  opacity: 0.5;
+}
+.THIS p {
+  color: t(white);
+}
+@media (min-width: 768px) {
+  .THIS {
+    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v4.jpg');
+    background-position: 0% 70%; 
+  }
+
+  .THIS .smallDevicePadding {
+    padding: 0;
+  }
+
+  .THIS .marquee-header {
+    font-size: 2.25rem;
+  }
+  .THIS .marquee-header.h2 {
+    font-size: 1.75rem;
+  }
+}
+.THIS .signIn {
+  font-size: 0.750em;
+  font-weight: 400;
+}
+.THIS .pointer {
+  cursor: pointer;
+}
+
+.THIS .fontSizeSmall {
+  font-size: 0.875em;
+}
+
+.THIS .fontPaleBlue {
+  color: t(paleBlue);
+}
+
+.THIS .compare {
+  padding-bottom: 1.25rem;
+}
+.THIS .borderTop {
+  border-width: 1px 0 0 0;
+  border-color: t(darkGray);
+  border-style: solid;
+}
+.THIS .lastUpdated {
+  display: block;
+}
+.THIS .bookmarkButton,
+.THIS .bookmarkButtonBlue {
+  font-size: 0.875em; /* 14px; */
+  line-height: 1.3;
+  border-radius: 4px;
+}
+
+.THIS .bookmarkButton {
+  border: 1px solid t(darkGray);
+  width: 100%;
+}
+
+.THIS .bookmarkButtonBlue {
+  border: 1px solid t(paleBlue);
+  color: t(paleBlue);
+}
+
+.THIS .bookmarkButtonBlue:hover {
+  border-color: t(digitalBlue);
+  color: t(digitalBlue);
+}
+
+.THIS .linkSkyBlue {
+  color: t(paleBlue);
+}
+
+.THIS .moreModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: t(zIndexCompareTray);
+}
+
+.THIS .moreModal .slds-icon {
+  height: 0.85em;
+  width: 0.85em;
+  transform: translateY(-1px);
+}
+
+.THIS .moreModal .slds-icon use {
+  fill: t(white);
+}
+
+.THIS .moreModal.open {
+  background-color: t(black);
+  /* height: 170px; */
+  width: 200px;
+}
+
+.THIS .headerContainer {
+  margin-top: 20px;
+  position: relative;
+}
+
+.THIS .shortDescription {
+  max-height: 5em;
+  overflow: hidden;
+}
+
+.THIS .icon-white use {
+  fill: t(white);
+}
+
+.THIS .pointer {
+  cursor: pointer;
+}
+
+
+/* tooltip */
+.THIS .tooltip {
+  position: relative;
+}
+
+.THIS .tooltip.tooltipRight .tooltip-container {
+  transform: translate(0em, calc(-100% - 1em));
+}
+
+.THIS .tooltip .tooltip-container {
+  /* background-color: transparent; */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-5em, calc(-100% - 1em));
+  width: 40em;
+  z-index: 11;
+}
+
+.THIS .tooltip .tooltip-content {
+  background-color: t(digitalBlue);
+  border-radius: 2px;
+  color: t(white);
+  font-size: 0.8em;
+}
+
+.THIS .tooltip .tooltip-container.fade {
+  animation: fade 2s linear;
+  display: flex;
+}
+.THIS .bookmark {
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+  left:0;
+  width:100%;
+}
+
+@media (max-width: 767px) {
+  .THIS .signIn {
+    background: rgba(0, 60, 113, 0.3);
+    width: 100%;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .THIS .headerContainer {
+    margin-top: 0;
+  }
+  .THIS .textContainer {
+    height: calc(100% - 40px);
+    padding: 20px 0;
+  }
+  .THIS .partnerImage {
+    position: relative;
+    flex: 0 0 150px;
+  }
+  .THIS .fillHeight {
+      height: 100%;
+  }
+  .THIS .lastUpdated {
+    display: inline-block;
+  }
+  .THIS .signIn {
+    position: absolute;
+    top: 20px;
+    right: 4em;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .THIS .signIn {
+    position: absolute;
+    top: 20px;
+    right: 4em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .THIS .marquee-header {
+    font-size: 3rem;
+  }
+  .THIS .marquee-header.h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  10%, 90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.THIS .pnameCls {
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #0071c5;
+    padding: 3px;
+    margin-left: 0.5rem;
+    vertical-align: top;
+    background: #ffffff;
+    line-height: 12px;
+}
+
+
+.THIS .pnameCls svg{
+    fill: #0071c5;
+}
+
+
+.THIS .checkbox.addToCompare .slds-form-element__label {
+  color: white !important;
+}

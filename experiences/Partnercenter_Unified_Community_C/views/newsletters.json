@@ -1,0 +1,488 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "61769fa4-956d-4b01-8fe7-e5fa8b5e243b",
+  "label" : "Newsletters",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<h2>Newsletters</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Access editions of Co-Marketing newsletters below. &nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Newsletter Frequently Asked Questions</span></a></p>\n\t</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "db19a71f-882a-4923-8911-b6c92deeda2f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "6b8154be-d050-4e4c-a9a3-5c28e2e2caeb",
+        "es" : "6436a310-2dac-42f3-ad47-38b06df1aaf1",
+        "es_mx" : "a5e8dc43-92a2-40af-bc68-73b63242650d",
+        "fr" : "3179595a-6597-47c6-a887-6d73ce62f899",
+        "it" : "e5c37b2a-d513-4cf2-9606-92148c9326fa",
+        "ja" : "73f163eb-8fa0-4895-af19-7dbf4f13acce",
+        "ko" : "db17a4cc-d2f7-4aa0-8f71-c26579f98358",
+        "pt_br" : "d3781404-6b8d-48d4-8791-96e8980ab5b8",
+        "ru" : "9f0b94aa-8c3e-4189-bb8a-25d624f73a15",
+        "zh_cn" : "17465a6f-4715-4019-8cc1-b84cb538c894",
+        "zh_tw" : "4dcd76c1-0e28-4d89-ac79-dafde0491d7d"
+      },
+      "renditions" : [ {
+        "id" : "17465a6f-4715-4019-8cc1-b84cb538c894",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>新闻简报</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">访问以下版本的联合市场推广新闻简报。&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">新闻简报常见问题解答</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "73f163eb-8fa0-4895-af19-7dbf4f13acce",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>ニュースレター</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">共同マーケティング・ファンド別のニュースレターは、以下よりアクセスしてください。&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">ニュースレターに関するよくある質問 (FAQ)</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3179595a-6597-47c6-a887-6d73ce62f899",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Lettres d'information</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Accédez aux éditions des lettres d'information sur le co-marketing ci-dessous.&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Questions-réponses de la lettre d'information</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "db17a4cc-d2f7-4aa0-8f71-c26579f98358",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>뉴스레터</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">아래의 공동 마케팅 뉴스레터를 확인해 보십시오.&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">뉴스레터 자주 묻는 질문</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6436a310-2dac-42f3-ad47-38b06df1aaf1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Boletines</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Acceda más abajo a las ediciones de los boletines de marketing conjunto.&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Preguntas más frecuentes sobre los boletines</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a5e8dc43-92a2-40af-bc68-73b63242650d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Boletines informativos</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Acceda a ediciones de boletines informativos sobre mercadeo conjunto a continuación.<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">&nbsp Preguntas frecuentes sobre los boletines informativos</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4dcd76c1-0e28-4d89-ac79-dafde0491d7d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>電子報</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">請到下面存取各個版次的「共同行銷」電子報。&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">電子報常見問答集</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e5c37b2a-d513-4cf2-9606-92148c9326fa",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Newsletter</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Accedi di seguito alle edizioni delle newsletter di co-marketing.&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Domande ricorrenti sulla newsletter</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9f0b94aa-8c3e-4189-bb8a-25d624f73a15",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Новостные рассылки</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Доступ к выпускам новостных рассылок совместного маркетинга.&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Часто задаваемые вопросы по новостным рассылкам</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d3781404-6b8d-48d4-8791-96e8980ab5b8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Boletins</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Acesso às edições dos boletins de Marketing Conjunto abaixo &nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Perguntas frequentes sobre o boletim informativo</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6b8154be-d050-4e4c-a9a3-5c28e2e2caeb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Newsletter</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Hier können Sie die Ausgaben der Co-Marketing-Newsletter abrufen.&nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Häufige Fragen (FAQ) zum Newsletter</span></a></p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<h2>Newsletters</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Access editions of Co-Marketing newsletters below. &nbsp<a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/faq.pdf\"><span class=\"\">Newsletter Frequently Asked Questions</span></a></p>\n\t</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "144fb526-a1c2-4b46-b160-8123bd26bd8a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<h2>Newsletters</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Coming Soon</p>\n\t</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "975c4217-cd0a-4feb-99d8-b3ba0a508f4c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "9e393490-2bb4-4634-9385-6c9ede6f513e",
+        "es" : "bded220e-70b5-4e7e-9543-fcf57d656788",
+        "es_mx" : "354bc314-539d-4144-9c5b-04131eb41a87",
+        "fr" : "a83442e9-e57c-4f9d-9640-797229484f3b",
+        "it" : "83bc4c4e-d3ec-442a-a610-3a87938bacab",
+        "ja" : "d6bd089e-4c89-4850-8f2a-a58a64cb0b7f",
+        "ko" : "c22a8740-4a29-4f45-9510-9e238eef655f",
+        "pt_br" : "4518139d-3706-497a-87f8-4e5cd8bac44d",
+        "ru" : "28b2797b-cef7-41d3-8d91-dff0c781b6ac",
+        "zh_cn" : "a832c060-1f7e-48af-8ef1-703fa29a4e4a",
+        "zh_tw" : "bd8d77be-2bcf-4f65-88c9-1d9068ef1218"
+      },
+      "renditions" : [ {
+        "id" : "a832c060-1f7e-48af-8ef1-703fa29a4e4a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>新闻简报</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">即将推出</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d6bd089e-4c89-4850-8f2a-a58a64cb0b7f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>ニュースレター</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">近日公開</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a83442e9-e57c-4f9d-9640-797229484f3b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Lettres d'information</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">A venir...</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9e393490-2bb4-4634-9385-6c9ede6f513e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Newsletter</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Demnächst ...</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c22a8740-4a29-4f45-9510-9e238eef655f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>뉴스레터</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">곧 출시 예정</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bded220e-70b5-4e7e-9543-fcf57d656788",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Boletines</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Próximamente</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "354bc314-539d-4144-9c5b-04131eb41a87",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Boletines informativos</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Disponible muy pronto</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bd8d77be-2bcf-4f65-88c9-1d9068ef1218",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>電子報</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">即將推出</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "83bc4c4e-d3ec-442a-a610-3a87938bacab",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Newsletter</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Prossimamente</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "28b2797b-cef7-41d3-8d91-dff0c781b6ac",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Новостные рассылки</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Скоро!</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4518139d-3706-497a-87f8-4e5cd8bac44d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Boletins</h2>\n<div style=\"height:1em;\"></div>\n\t<div class=\"link\">\n\t\t<p class=\"cta-item\">Brevemente</p>\n\t</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<h3>Client Newsletters</h3>\n\t\t\t<div class=\"storytelling-links\">\n\t\t\t\t<div class=\"storytellingitems\">\n\t\t\t\t\t <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\t\t\t\t\t\t <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2019</span></a></p>\n\t\t\t\t\t\t</div>\t\t\t\t\t\t\n\t\t\t\t\t<div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">June 2019</span></a></p>\n\t\t\t\t\t\t</div>\t\t\t\t\t\t\n\t\t\t       <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">October 2019</span></a></p>\n\t\t\t\t\t\t</div>\n                   <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2020</span></a></p>\n\t\t\t\t   \t\t</div>\n                    <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Februrary 2021</span></a></p>\n\t\t\t\t   \t\t</div>\n                    </div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "fe5fe779-7c03-4656-8a0a-493cae5171e9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "02fe55d1-cfde-4d02-9a5a-979478a87f96",
+        "es" : "26573242-4c5b-4255-b76b-3f54ee33805b",
+        "es_mx" : "de702890-522b-4739-a212-8ceb9a4e362c",
+        "fr" : "045d406c-e92e-4070-a87c-70e919f2a06d",
+        "it" : "8429fe14-9c07-4ce6-bf97-d39538a56f4a",
+        "ja" : "f8074e80-5f60-45b3-af6c-c45732bb40ae",
+        "ko" : "6aa932a6-bab9-422a-be2c-be693a685d0f",
+        "pt_br" : "d5166341-a475-40ec-8727-f7504228a747",
+        "ru" : "262120fc-4adf-4e0b-a61e-a39f1d5e2c81",
+        "zh_cn" : "3e5f91aa-f55d-423a-be5e-ba0b3376d41b",
+        "zh_tw" : "55c7d191-e7bc-40be-9445-882acb8b0c83"
+      },
+      "renditions" : [ {
+        "id" : "3e5f91aa-f55d-423a-be5e-ba0b3376d41b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>个人电脑联合市场推广基金 (CCF) 新闻简报</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\"> 2019 年 4 月</span></a></p>\n            </div>                             \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 6 月</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 10 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020 年 4 月</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020 年 7 月</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021 年 2 月</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f8074e80-5f60-45b3-af6c-c45732bb40ae",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>クライアント共同マーケティング・ファンド (CCF) ニュースレター</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019年4月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019年6月</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019年10月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020年4月</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020年7月</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021年2月</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "045d406c-e92e-4070-a87c-70e919f2a06d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Lettres d'information du Fonds de co-marketing pour client (CCF)</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Avril 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Juin 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Octobre 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Avril 2020</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Juillet 2020</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Février 2021</span></a></p>\n\t\t\t</div>\n        </div>\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "02fe55d1-cfde-4d02-9a5a-979478a87f96",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Client-Co-Marketing-Fonds (CCF) – Newsletter</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Juni 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Oktober 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2020</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Juli 2020</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Feb 21</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6aa932a6-bab9-422a-be2c-be693a685d0f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>클라이언트 공동 마케팅 기금(CCF) 뉴스레터</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019년 4월</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019년 6월</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019년 10월</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t   <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020년4월</span></a></p>\n\t\t    </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t   <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020년 7월</span></a></p>\n\t\t    </div>\n             <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t   <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021년 2월</span></a></p>\n\t\t    </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "26573242-4c5b-4255-b76b-3f54ee33805b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Boletines del Fondo de marketing conjunto para clientes (CCF)</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Junio de 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Octubre de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2020</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Julio de 2020</span></a></p>\n\t\t\t\t   \t\t</div>\n             <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Febrero de 2021</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "de702890-522b-4739-a212-8ceb9a4e362c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Boletines informativos de Fondo de mercadeo conjunto para clientes (CCF)</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Junio de 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Octubre de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2020</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Julio de 2020</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Febrero de 2021</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "55c7d191-e7bc-40be-9445-882acb8b0c83",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>用戶端共同行銷基金 (CCF) 電子報</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 4 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 6 月</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 10 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020 年 4 月</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020 年 7 月</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021 年 2 月</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8429fe14-9c07-4ce6-bf97-d39538a56f4a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Newsletter del Fondo di co-marketing per client (CCF)</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\"> Aprile 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Giugno 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Ottobre 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Aprile 2020</span></a></p>\n\t\t    </div>\n            <div style=\"height:1em;\"></div>\n\t\t    <div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Luglio 2020</span></a></p>\n\t\t    </div>\n            <div style=\"height:1em;\"></div>\n\t\t    <div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Febbraio 2021</span></a></p>\n\t\t    </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "262120fc-4adf-4e0b-a61e-a39f1d5e2c81",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Новостные рассылки Фонда совместного маркетинга для клиентских ПК</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Апрель 2019 г.</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Июнь 2019 г.</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Октябрь 2019 г.</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Апрель 2020 г.</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Июль 2020 г.</span></a></p>\n\t\t\t\t   \t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Февраль 2021 г.</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d5166341-a475-40ec-8727-f7504228a747",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Recursos do Fundo de Marketing Conjunto para Cliente (CCF)</h3>\n\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\"> Abril de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Junho de 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Outubro de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2020</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/jul-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Julho de 2020</span></a></p>\n\t\t\t</div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Fevereiro de 2021</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<h3>Datacenter Newsletters</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2019</span></a></p>\n            </div>       \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">June 2019</span></a></p>\n            </div>    \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">October 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">February 2021</span></a></p>\n            </div>\n        </div>\n    </div>\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "9b54513a-423c-477a-a2ab-6a363f5b1c5d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "76611acc-4342-4386-8406-eec6cc13fc14",
+        "es" : "62e02605-347d-4763-b582-55bbb7ee5365",
+        "es_mx" : "87f42ec0-b8c4-4a95-b572-f71d1c53f7cf",
+        "fr" : "bd2d6f62-6063-40d6-acf8-b9fb0d992ac4",
+        "it" : "ef337c9d-e8ee-420e-a6b0-43fa64b683e6",
+        "ja" : "1b90b8f0-662a-4a3b-9321-42499ed736fe",
+        "ko" : "d23864c4-f8ca-468d-b19b-6b2fbafbdaa4",
+        "pt_br" : "f56c834d-0878-4c3a-a185-88ec5190adde",
+        "ru" : "2cd5712e-177e-44f2-8017-b490a5f4fdda",
+        "zh_cn" : "004ddb82-1280-40c5-bf8c-14d723ca5819",
+        "zh_tw" : "f2dadbb1-7d0a-45e9-9ec2-3a3e422491db"
+      },
+      "renditions" : [ {
+        "id" : "004ddb82-1280-40c5-bf8c-14d723ca5819",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>数据中心联合市场推广基金 (DCF) 新闻简报</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 4 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 6 月</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 10 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020 年 4 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021 年 2 月</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1b90b8f0-662a-4a3b-9321-42499ed736fe",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>データセンター共同マーケティング・ファンド (DCF) ニュースレター</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019年4月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019年6月</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019年10月</span></a></p>\n            </div>\n\t\t\t<div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020年4月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021年2月</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bd2d6f62-6063-40d6-acf8-b9fb0d992ac4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Lettres d'information du Fonds de co-marketing pour centre de données (DCF)</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/dcf/march-2019-program-update.pdf \"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Avril 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Juin 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Octobre 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Avril 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Février 2021</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "76611acc-4342-4386-8406-eec6cc13fc14",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Datacenter-Co-Marketing-Fonds (DCF) – Newsletter</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Juni 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Oktober 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">April 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Feb 21</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d23864c4-f8ca-468d-b19b-6b2fbafbdaa4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>데이터 센터 공동 마케팅 기금(DCF) 뉴스레터</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019년 4월</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019년 6월</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019년 10월</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020년4월</span></a></p>\n            </div>\n             <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t   <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021년 2월</span></a></p>\n\t\t    </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "62e02605-347d-4763-b582-55bbb7ee5365",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Boletines del Fondo de marketing conjunto para centros de datos (DCF)</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Junio de 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Octubre de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Febrero de 2021</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "87f42ec0-b8c4-4a95-b572-f71d1c53f7cf",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Boletines informativos de Fondo de mercadeo conjunto para centros de datos (DCF)</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Junio de 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Octubre de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Febrero de 2021</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f2dadbb1-7d0a-45e9-9ec2-3a3e422491db",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>資料中心共同行銷基金 (DCF) 電子報</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 4 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 6 月</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2019 年 10 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2020 年 4 月</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">2021 年 2 月</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ef337c9d-e8ee-420e-a6b0-43fa64b683e6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Newsletter del Fondo di co-marketing per data center (DCF)</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Aprile 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Giugno 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Ottobre 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Aprile 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t    <div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Febbraio 2021</span></a></p>\n\t\t    </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2cd5712e-177e-44f2-8017-b490a5f4fdda",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Новостные рассылки Фонда совместного маркетинга для дата центров</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Апрель 2019 г.</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Июнь 2019 г.</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Октябрь 2019 г.</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Апрель 2020 г.</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t\t\t\t<div class=\"link\">\n\t\t\t\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Февраль 2021 г.</span></a></p>\n\t\t\t\t   \t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f56c834d-0878-4c3a-a185-88ec5190adde",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h3>Fundo de Marketing Conjunto para Data Center (DCF)</h3>\n<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/dcf/march-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/dcf/june-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Junho de 2019</span></a></p>\n            </div>\t\t\t\t\t\t\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/dcf/sept-2019-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Outubro de 2019</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/dcf/apr-2020-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Abril de 2020</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\t\t\t<div class=\"link\">\n\t\t\t\t<p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf/feb-2021-program-update.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Fevereiro de 2021</span></a></p>\n\t\t\t</div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "87b917fd-e981-46c4-bb85-ad135b2150c8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "6a43da8c-3645-4bc4-bf59-49176680e175",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d3c1024c-a650-4652-b222-7f105d3bd09e",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Newsletters"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "013e66ef-6d37-402d-80ab-34abb6e3088d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ee89a7cf-c465-477f-855c-a9549361ea79",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-newsletters"
+}

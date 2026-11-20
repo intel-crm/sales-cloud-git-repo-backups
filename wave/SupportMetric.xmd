@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <measures>
+        <field>aggregateflex.Opp_TSS</field>
+        <isDerived>false</isDerived>
+        <label>Opp_TSS</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>aggregateflex.Opp_CSA</field>
+        <isDerived>false</isDerived>
+        <label>Opp_CSA</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>aggregateflex.Opp_Support</field>
+        <isDerived>false</isDerived>
+        <label>Opp_Support</label>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>aggregateflex.Opp_SupportAssign</field>
+        <isDerived>false</isDerived>
+        <label>Opp_SupportAssign</label>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>aggregateflex.Metric_OppSupport</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Metric_OppSupport</label>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>SupportMetric</waveVisualization>
+</WaveXmd>

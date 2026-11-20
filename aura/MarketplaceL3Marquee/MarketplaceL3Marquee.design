@@ -1,0 +1,11 @@
+<design:component>
+
+    <design:attribute name="debugMode" label="Debug Mode (no redirect for links)" />
+    <design:attribute name="showBreadcrumbs" label="Show Breadcrumbs" />
+    <design:attribute name="displayType" label="Display Type" datasource="partner,product"/>
+    <design:attribute name="showSignIn" label="Show Sign In (Not used)" />
+    <design:attribute name="bookmarkLabel" label="Bookmark Label (this design attribute is deprecated -- using Custom Label -- PMP_L3_Marquee_Bookmark)" />
+    <design:attribute name="showEditPencil" label="Show Edit Pencil Icons"/>
+	<design:attribute name="analyticsPageType" label="PageType for analytics" />
+    
+</design:component>

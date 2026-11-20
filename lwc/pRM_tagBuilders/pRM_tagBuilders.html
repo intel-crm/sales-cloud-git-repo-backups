@@ -1,0 +1,84 @@
+<template>
+    <!--div style="height:4rem" if:true={isSpinnerLoaded}>
+        <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+    </div-->
+    <template if:false={confirmscreen}>
+        <!-- section for Account data starts here-->
+        <lightning-card title="Account Data" icon-name="custom:custom63">
+            <div class="slds-m-around_medium">
+
+                <lightning-layout multiple-rows="true" vertical-align="true" class="slds-p-bottom_large">
+                    <lightning-layout-item size="12" small-device-size="10" medium-device-size="8"
+                        large-device-size="6">
+                        <lightning-input type="search" onchange={handleAccountNameOrID}
+                            placeholder="Please Enter Account name or Account Id" variant="label-hidden">
+                        </lightning-input>
+                        <p class="errorInputTxt">{errorInputTxt}</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-left_small">
+                        <button class="slds-button slds-button_brand" title="Search" onclick={handleSearch}>
+                            {label.search}
+                        </button>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-left_small">
+                    <div if:true={isSearchData}>
+                        <lightning-button label="Tag Partners" variant="brand" onclick={toggleSteps}>
+                        </lightning-button>
+                    </div>
+                </lightning-layout-item>
+                </lightning-layout>
+
+                <div if:true={isLoaded}>
+                    <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+                </div>
+
+                <template if:true={isSelectedData}>
+                    <label><b>Selected Accounts</b></label>
+                    <lightning-datatable data={uniqueConsolidatedData} columns={columns} key-field="id" selected-rows={finalselectedrows}
+                        suppress-bottom-bar
+                        table-name="selectTable"
+                        draft-values={draftvalues}
+                    >
+                    </lightning-datatable>
+
+                    <div class="c-container slds-align_absolute-center">
+                        <lightning-layout horizontal-align="spread">
+                            <template if:true={isSelectedData}>
+                                <lightning-layout-item padding="around-small">
+                                    <lightning-button label="Tag Partners" variant="brand" onclick={toggleSteps}>
+                                    </lightning-button>
+                                </lightning-layout-item>
+                            </template>
+
+                        </lightning-layout>
+                    </div>
+                </template>
+
+                <template if:true={isSearchData}>
+                    <!-- <template if:false={isRecordsReturned}> -->
+                    <label><b>Searched Accounts</b></label>
+                    <lightning-datatable data={searchData} columns={columns} key-field="id" selected-rows={selectedrows}
+                        suppress-bottom-bar
+                        draft-values={draftvalues}
+                        table-name="searchTable"
+                        onrowselection = {handleRowSelection}
+                    
+                    >
+                    </lightning-datatable>
+                    <!-- </template> -->
+
+
+
+                </template>
+
+                <template if:true={isNoRecordsReturned}>
+                    <div class="belowText">There may be no 1PID account with this Id or Name, or the 1PID account may already have an association to this Affiliation.</div>
+                </template>
+
+                <template if:true={account.error}>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+
+</template>

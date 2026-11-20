@@ -1,0 +1,3 @@
+<design:component>
+   		<design:attribute name="target" label="Target Window" description="Enter target window" datasource="Same Window,New Window" />
+</design:component>

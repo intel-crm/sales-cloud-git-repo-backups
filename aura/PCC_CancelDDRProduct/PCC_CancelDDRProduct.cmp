@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+    <!--<aura:attribute name="recordId" type="Id" />-->
+    <aura:attribute name="receivedBoolean" type="Boolean" default="false"/>
+
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/>
+    <c:pCC_Cancel_product recordId="{!v.recordId}" onsendClosePopup="{!c.cancelPopup}"></c:pCC_Cancel_product>
+
+</aura:component>

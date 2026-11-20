@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Opp_IncrementPushCounterFormula</name>
+        <dataType>Number</dataType>
+        <expression>IF( 
+ISNULL( $Record.Core_Push_Counter__c ), 
+1, 
+$Record.Core_Push_Counter__c + 1 
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Core_Opp_UpdatePushCounterFlow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Opp_UpdatePushCounterFlow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Reporting Push counter increment</description>
+        <name>UpdatePushCounter</name>
+        <label>Update Push Counter</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Core_Push_Counter__c</field>
+            <value>
+                <elementReference>Core_Opp_IncrementPushCounterFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UpdatePushCounter</targetReference>
+        </connector>
+        <filterFormula>IF( TEXT({!$Record.Core_Coverage_Type_Nm__c}) == &apos;Deal Registration&apos; &amp;&amp; 
+TEXT({!$Record.Core_Opportunity_Coverage_Nm__c}) == &apos;Partner-Led Opportunity&apos;, FALSE ,IF((ISPICKVAL({!$Record.StageName}, &apos;Develop&apos;) || ISPICKVAL({!$Record.StageName}, &apos;Design&apos;)),IF( {!$Record.CloseDate}&gt; PRIORVALUE( {!$Record.CloseDate}), IF (MONTH({!$Record.CloseDate}) &lt;&gt;  MONTH(PRIORVALUE( {!$Record.CloseDate})) ||  YEAR({!$Record.CloseDate}) &lt;&gt;  YEAR(PRIORVALUE( {!$Record.CloseDate})), TRUE, FALSE), FALSE), FALSE) )</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

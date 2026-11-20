@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Quote Program CAP Size</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Quote Program CAP Size</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Pricing_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Pricing_Account_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Pricing_Active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Small Deal CAP size --></label>
+        <name>Pricing_Small_Deal_CAP_size_Number__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

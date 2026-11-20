@@ -1,0 +1,73 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+    <!-- <template if:true={accessSolution}>
+    <div class="main slds-size_12-of-12 slds-medium-size_11-of-12">
+        <div class="messageContainer">
+            <c-ipa-storefront-notifications-banner theme='background' banner-message={message} icon-type={iconType}>
+            </c-ipa-storefront-notifications-banner>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_12-of-12 action-button-wrapper">
+                <div class="create-button-wrapper">
+                    <template if:true={showRecreate}>
+                        <lightning-button class="button-full-width" variant="brand" label={labels.recreateButtonLabel}
+                            onclick={createOfferingFromSolution} disabled={disableRecreateButton}></lightning-button>
+                    </template>
+                </div>
+                <div class="clone-button-wrapper">
+                    <template if:true={showEditable}>
+                        <lightning-button class="button-full-width" variant="brand" label={labels.editSolutionLabel}
+                            onclick={navigateToEditMode}></lightning-button>
+                    </template>
+                </div>
+                <div class="edit-button-wrapper">
+                    <template if:true={showAddContact}>
+                        <lightning-button class="button-full-width" variant="brand" label={labels.addContactsLabel}
+                        title={labels.helpText} onclick={navigateToAddContact}></lightning-button>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="spinner">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                </lightning-spinner>
+            </template>
+        </div>
+        <c-core-intc-tabset name="solution" initial-active-tab={initialActiveTab} stack-mobile>
+            <c-core-intc-tab heading={labels.solutionDetailsLabel}>
+                <div class="slds-float_left slds-size_8-of-12">
+                    <c-pss-answered-solution question-ans-list={questionAnsList}
+                    intel-product-list={intelProductList}></c-pss-answered-solution>
+                </div>
+                <span class="messageText slds-p-around_small  slds-size_4-of-12">
+                    {labels.messageHeading}
+                </span>
+                <div class="slds-float_right slds-p-around_small  slds-size_4-of-12">
+                    <c-ipa-Messaging channel="Solution" record-id={recordId}>
+                    </c-ipa-Messaging>
+                    <span class="messageText">{labels.messageHelpText}</span>
+                </div>
+            </c-core-intc-tab>
+            <c-core-intc-tab heading={labels.submitterDetailsLabel}>
+                <div class="slds-float_left slds-size_5-of-8">
+                    <c-pss-submitter-details result-record-details={resultRecordDetails}>
+                    </c-pss-submitter-details>
+                </div>
+                <span class="messageAlign messageText slds-p-around_small  slds-size_4-of-12">
+                    {labels.messageHeading}
+                </span>
+                <div class="slds-float_right slds-p-around_small slds-size_1-of-3">
+                    <c-ipa-Messaging channel="Solution" record-id={recordId}>
+                    </c-ipa-Messaging>
+                    <span class="messageText">{labels.messageHelpText}</span>
+                </div>
+            </c-core-intc-tab>
+        </c-core-intc-tabset>
+        <template if:true={addContact}>
+            <c-pss-contact-share-on-solution solution-id={recordId} onclosemodal={closeModal} is-button="true" is-open-popup="true">
+            </c-pss-contact-share-on-solution>
+        </template>
+    </div>
+</template> -->
+</template>

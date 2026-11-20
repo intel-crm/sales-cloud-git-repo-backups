@@ -1,0 +1,11 @@
+.card {
+  position: relative;
+  padding: 1rem .9rem;
+  background: transparent;
+  border-top: 1px solid #a6a6a6; 
+  border-radius: 0;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+  box-shadow: none;
+  padding-top: 30px;
+}

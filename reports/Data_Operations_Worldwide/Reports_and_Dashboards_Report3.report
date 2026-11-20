@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Dashboard</field>
+    </columns>
+    <columns>
+        <field>Report$Owner</field>
+    </columns>
+    <columns>
+        <field>Report$CreatedBy.FirstName</field>
+    </columns>
+    <columns>
+        <field>Report$CreatedBy.LastName</field>
+    </columns>
+    <description>Search which report tied to which dashboard</description>
+    <filter>
+        <criteriaItems>
+            <column>Report$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>MA LEADS-US OSC MGL ON HOLD Swyers,IoTG US OSC DESIGN T1 WON,IoTG US OSC DESIGN T1 PENDING,IoTG US OSC DESIGN T1 TOTAL,Dell Partner Rpt,Pipeline Quality SWYERS,MA US OSC Opty INACTIVE Swyers,MA US OSC Opty LOW VELOCITY Swyers,MA US OSC Optys AT RISK Swyers,MA US OSC Opty &gt; 400 Days SWYERS,MA US OSC Prod ON HOLD Swyers,MA US OSC Opty HIGH PUSHES Swyers,PIPE US OSC SWYERS WIN RATE,MA LEADS-US OSC MGL &gt; 60 Day SWYERS,MA US Inside Optys No Status Updt SWYERS,MA LEADS-US OSC MGL UNREAD Swyers,MA LEADS-US OSC MGL OPEN Swyers,PIPE US OSC SWYERS WON,PIPE US OSC SWYERS PENDING,PIPE US OSC SWYERS TOTAL,MA US OSC Optys MAG HOLD Swyers,PIPE US OSC SWYERS IoTG TOTAL,PIPE US OSC SWYERS IoTG PNDG,PIPE US OSC SWYERS IoTG PENDING,PIPE US OSC SWYERS IoTG WON,MA US OSC Opty PAST DUE Swyers</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Reports and Dashboards Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Reports_and_Dashboards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Report$Owner</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Report$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

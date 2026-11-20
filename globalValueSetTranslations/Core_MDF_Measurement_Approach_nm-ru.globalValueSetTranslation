@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Analyst Reports</masterLabel>
+        <translation>Аналитические отчёты</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel/Partner-reported Sell-through/Consumption Data</masterLabel>
+        <translation>Данные о продажах и потреблении, отчётываемые Intel/Partner</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Market Research/Brand Tracking</masterLabel>
+        <translation>Маркетинговые исследования/отслеживание бренда</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Specify)</masterLabel>
+        <translation>Прочее (уточнить)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Partner CRM/Sales Reporting</masterLabel>
+        <translation>Партнёрская CRM/Отчётность по продажам</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

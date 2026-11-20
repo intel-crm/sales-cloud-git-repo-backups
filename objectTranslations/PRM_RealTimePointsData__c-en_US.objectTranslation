@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>RealTimePointData</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>RealTimePointsData</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountBizId --></label>
+        <name>PRM_AccountBizId__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountId --></label>
+        <name>PRM_AccountId__c</name>
+        <relationshipLabel><!-- RealTimePointsData --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>PRM_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason --></label>
+        <name>PRM_Status_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

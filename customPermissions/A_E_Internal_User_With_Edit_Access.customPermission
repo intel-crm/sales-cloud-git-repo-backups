@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>For access permission - ER DZP</description>
+    <isLicensed>false</isLicensed>
+    <label>A&amp;E Internal User With Edit Access</label>
+</CustomPermission>

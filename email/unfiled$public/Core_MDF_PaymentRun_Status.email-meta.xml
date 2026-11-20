@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>This Email is sent to Payment Run Record Owner when the Payment Run record status changes to &apos;Completed&apos; or &apos;Error&apos;</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_PaymentRun_Status</name>
+    <style>none</style>
+    <subject>The Payment Run . Payment Run Number:</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDataset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <application>UIOLI_License</application>
+    <description>Created from the DP_UIOLI_Licenses recipe.</description>
+    <masterLabel>DP_Feature_License_Dataset</masterLabel>
+    <type>default</type>
+</WaveDataset>

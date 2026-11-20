@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Deal Ready for Review Email Notification</name>
+    <style>none</style>
+    <subject>New Deal Submitted Ready for Review</subject>
+    <textOnly>Deal Registration Rejected
+
+Hello {!$Record.Core_Intel_Technical_Owner_Id__r.FirstName},
+
+
+
+The following Deal Registration has been Rejected
+
+
+
+Registration Number: {!$Record.Name}
+
+Deal Registration Name: {!$Record.Core_Design_Registration_Nm__c}
+
+End Customer Account: {!$Record.Core_End_Customer_Account_Id__r.Name}
+
+Rejection Reason: {!$Record.Core_Rejection_Reason_Nm__c}
+
+Rejection Comments: {!$Record.Core_Rejection_Comment_Txt__c}
+
+
+
+{!table}
+
+
+
+For more details, you can access the deal registration record here
+
+
+
+This email was sent from an unmonitored mailbox. For questions, please contact your Intel Partner Sales Account Manager.
+
+
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+©2024 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.Intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>All_Fin_Inctv_Pricing_Manager_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Fin Inctv Pricing Manager Group</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Financial Incentive</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>All_Pricing_Read_Only_Users_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Pricing Read Only Users Group</label>
+        <sharedTo>
+            <group>Pricing_All_Pricing_ReadOnly_Users_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Financial Incentive</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_All_Fin_Inctv_TPT_Record_Share</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Fin Inctv TPT Record Share</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Rebate_Analyst_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Financial Incentive</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_All_Fin_Inctv_TPT_Record_Sharing_for_Read_only_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Fin Inctv TPT Record Sharing for Read only All</label>
+        <sharedTo>
+            <group>Pricing_Fin_Incntv_Read_Only_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Financial Incentive</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Manager_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing Manager Group</label>
+        <sharedTo>
+            <group>Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Financial Incentive</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

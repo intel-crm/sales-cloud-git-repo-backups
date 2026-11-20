@@ -1,0 +1,8 @@
+c-ipa-taxonomy-list {
+  display: block;
+  padding: 2.5rem 0 1.5rem 0;
+}
+
+c-ipa-taxonomy-list:nth-child(n + 2) {
+  border-top: 1px solid var(--lightGray);
+}

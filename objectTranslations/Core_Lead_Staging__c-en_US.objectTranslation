@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Lead Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Lead Stage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Phone --></label>
+        <name>Core_Business_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Core_Company__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eloqua Error --></label>
+        <name>Core_Eloqua_Error__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Core_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>Core_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Function --></label>
+        <name>Core_Job_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>Core_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Conversion Point --></label>
+        <name>Core_Lead_Conversion_Point__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Form Submit Date --></label>
+        <name>Core_Lead_Form_Submit_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Notes --></label>
+        <name>Core_Lead_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Action --></label>
+        <name>Core_Lead_PMP_Action__c</name>
+        <picklistValues>
+            <masterLabel>Asked for Follow-Up</masterLabel>
+            <translation><!-- Asked for Follow-Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Attended Webinar</masterLabel>
+            <translation><!-- Attended Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNDA Request</masterLabel>
+            <translation><!-- CNDA Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Downloaded Content</masterLabel>
+            <translation><!-- Downloaded Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Quote</masterLabel>
+            <translation><!-- Requested Quote --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visited Booth</masterLabel>
+            <translation><!-- Visited Booth --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Volume for Quotation --></label>
+        <name>Core_Lead_Quotation_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Source --></label>
+        <name>Core_Lead_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Tactic ID --></label>
+        <name>Core_Marketing_Tactic_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign ID --></label>
+        <name>Core_MktCampaign_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Owner --></label>
+        <name>Core_Notify_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- OptinConsent --></label>
+        <name>Core_OptIn_Consent__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opt In Source Name --></label>
+        <name>Core_Opt_In_Source_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opt In Source --></label>
+        <name>Core_Opt_in_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>Core_Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profession --></label>
+        <name>Core_Profession__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Size --></label>
+        <name>Core_Project_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Timeframe --></label>
+        <name>Core_Project_Timeframe__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source Id --></label>
+        <name>Core_Source_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specific Lead Source --></label>
+        <name>Core_Specific_Lead_Source__c</name>
+        <picklistValues>
+            <masterLabel>Insight.Tech</masterLabel>
+            <translation><!-- Insight.Tech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Product Catal</masterLabel>
+            <translation><!-- Intel Product Catal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Website</masterLabel>
+            <translation><!-- Intel Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketplace</masterLabel>
+            <translation><!-- Marketplace --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>Core_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ThirdPartyconsent --></label>
+        <name>Core_Third_Party_Consent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Web Visit Session ID --></label>
+        <name>Core_Web_Visit_Session_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner ID --></label>
+        <name>PMP_MDA_BizOrg_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Segment --></label>
+        <name>PMP_MktProfile_BizSegment__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic</masterLabel>
+            <translation><!-- Programmable Logic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage and Memory</masterLabel>
+            <translation><!-- Storage and Memory --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Expected Delivery date --></label>
+        <name>PMP_Offering_ExpDelivery_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Marketplace offering Id --></label>
+        <name>PMP_Offering_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering Referring URL --></label>
+        <name>PMP_Offering_Referring_URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

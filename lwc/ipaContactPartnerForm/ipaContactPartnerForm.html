@@ -1,0 +1,315 @@
+<template>
+    <template if:true={formType}>
+        <c-core-intc-modal is-open no-close-on-click onclose={handleClose}>
+            <div key={heading} slot="header">
+                <h3 class="color-white">{heading}</h3>
+            </div>
+            <div slot="body">
+                <template if:false={submitted}>
+                    <form onsubmit={handleFormSubmit}>
+                        <div class="slds-grid slds-wrap slds-is-relative">
+                            <template if:false={formReady}>
+                                <lightning-spinner alternative-text="Loading user details..."></lightning-spinner>
+                            </template>
+                            <template if:true={formReady}>
+                                                            
+                                <!-- Ask A Question -->
+                                <template if:true={isAskQuestion}>
+                                    <div class="slds-p-horizontal_small slds-p-top_large slds-size_12-of-12">
+                                        {labels.askQuestion.youAreContacting}&nbsp;
+                                        <c-ipa-link
+                                            label={formData.name}
+                                            record-id={formData.id}
+                                            object-page="Company_Information_Detail__c">
+                                        </c-ipa-link>
+                                        <p><i>{formData.leadLangPreference}</i></p>
+                                    </div>
+                                    <div class="slds-p-horizontal_small slds-p-vertical_medium slds-size_12-of-12">
+                                        <span class="color-red slds-m-right_xxx-small">*&nbsp;{labels.required}</span>
+                                    </div>
+                                    <div class="slds-p-horizontal_small slds-p-top_x-small slds-p-bottom_small slds-size_12-of-12">
+                                        <lightning-textarea name="description" value={userDetails.description} required
+                                            label={labels.askQuestion.whatWouldYouLikeToKnow}
+                                            maxlength={descriptionMaxLength}
+                                            message-when-value-missing={labels.errors.missing}
+                                            onchange={handleCustomValidation}>
+                                        </lightning-textarea>
+                                        <template if:true={descriptionValue}>
+                                            <p class="utility-type slds-m-top_xx-small text-bold">
+                                                {descriptionCharsRemaining}
+                                            </p>
+                                        </template>
+                                    </div>
+                                </template>
+
+                                <!-- Request A Quote -->
+                                <template if:true={isRequestQuote}>
+                                    <div class="slds-p-horizontal_small slds-p-top_large slds-size_12-of-12">
+                                        {labels.requestQuote.thankYou}&nbsp;
+                                        <c-ipa-link
+                                            label={formData.name}
+                                            record-id={formData.id}
+                                            object-page="PMP_Company__c">
+                                        </c-ipa-link>
+                                        &nbsp;{labels.requestQuote.thankYou2}&nbsp;
+                                        <c-ipa-link
+                                            label={formData.title}
+                                            record-id={formData.oid}
+                                            object-page="Partner_Offering_Detail__c">
+                                        </c-ipa-link>
+                                        <p><i>{formData.leadLangPreference}</i></p>
+                                    </div>
+                                    <div class="slds-p-horizontal_small slds-p-vertical_medium slds-size_12-of-12">
+                                        <span class="color-red slds-m-right_xxx-small">*&nbsp;{labels.required}</span>
+                                    </div>
+                                    <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-small-size_6-of-12">
+                                        <lightning-input type="number" name="volume" required min="1" maxlength="35"
+                                            value={userDetails.volume}
+                                            label={labels.requestQuote.volume}
+                                            message-when-value-missing={labels.errors.missing}>
+                                        </lightning-input>
+                                        <p class="utility-type slds-m-top_xx-small">{labels.charLimits.volume}</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-small-size_6-of-12">
+                                        <lightning-input type="date" name="deliveryDate"
+                                            value={userDetails.deliveryDate}
+                                            label={labels.requestQuote.deliveryDate}
+                                            min={deliveryDateMin}
+                                            message-when-range-underflow={labels.errors.deliveryDate}
+                                        ></lightning-input>
+                                    </div>
+                                    <div class="slds-p-horizontal_small slds-p-top_x-small slds-p-bottom_small slds-size_12-of-12">
+                                        <lightning-textarea name="description"
+                                            value={userDetails.description}
+                                            required
+                                            label={labels.requestQuote.description}
+                                            maxlength={descriptionMaxLength}
+                                            message-when-value-missing={labels.errors.missing}
+                                            onchange={handleCustomValidation}>
+                                        </lightning-textarea>
+                                        <template if:true={descriptionValue}>
+                                            <p class="utility-type slds-m-top_xx-small text-bold">
+                                                {descriptionCharsRemaining}
+                                            </p>
+                                        </template>
+                                    </div>
+                                </template>
+
+                                <!-- Shared -->
+                                <div class="slds-p-horizontal_small slds-p-top_small slds-p-bottom_x-small slds-size_12-of-12">
+                                    <p>{labels.tellUsAboutYou}</p>
+                                    <template if:true={readOnly}>
+                                        <p class="heading-14 intel-clear-light-italic">{labels.fieldsArePopulated}</p>
+                                    </template>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <lightning-input type="text" name="firstName" required readonly={readOnly}
+                                        label={labels.firstName}
+                                        value={userDetails.firstName}
+                                        maxlength="100"
+                                        message-when-value-missing={labels.errors.missing}
+                                        onchange={handleCustomValidation}>
+                                    </lightning-input>
+                                    <p class="utility-type slds-m-top_xx-small">{labels.charLimits.firstName}</p>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <lightning-input type="text" name="lastName" required readonly={readOnly}
+                                        label={labels.lastName}
+                                        value={userDetails.lastName}
+                                        maxlength="100"
+                                        message-when-value-missing={labels.errors.missing}
+                                        onchange={handleCustomValidation}>
+                                    </lightning-input>
+                                    <p class="utility-type slds-m-top_xx-small">{labels.charLimits.lastName}</p>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <c-core-intc-select name="profession"
+                                        label={labels.profession}
+                                        value={userDetails.profession}
+                                        required-option-label={labels.chooseOne}
+                                        required-error-text={labels.errors.missing}
+                                        options={partnerProfessions}>
+                                    </c-core-intc-select>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <lightning-input type="text" name="companyName" required readonly={readOnly}
+                                        label={labels.companyName}
+                                        value={userDetails.companyName}
+                                        maxlength="100"
+                                        message-when-value-missing={labels.errors.missing}
+                                        onchange={handleCustomValidation}>
+                                    </lightning-input>
+                                    <p class="utility-type slds-m-top_xx-small">{labels.charLimits.companyName}</p>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <c-core-intc-select name="country" required
+                                        label={labels.country}
+                                        value={userDetails.country}
+                                        onchange={handleCountryChange}
+                                        required-option-label={labels.chooseOne}
+                                        required-error-text={labels.errors.missing}
+                                        options={countries}>
+                                    </c-core-intc-select>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <c-core-intc-select name="state" required={statesRequired} disabled={statesDisabled}
+                                        label={labels.state}
+                                        value={userDetails.state}
+                                        required-option-label={labels.chooseOne}
+                                        required-error-text={labels.errors.missing}
+                                        options={states}>
+                                    </c-core-intc-select>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <lightning-input type="tel" name="phone"
+                                        label={labels.phone}
+                                        message-when-value-missing={labels.errors.missing}
+                                        message-when-pattern-mismatch={labels.errors.phoneCheck}
+                                        required value={userDetails.phone}
+                                        pattern="[0-9\(\)\+\- ]+"
+                                        onchange={handleCustomValidation}>
+                                    </lightning-input>
+                                </div>
+                                <div class="slds-p-horizontal_small slds-p-vertical_x-small slds-size_12-of-12 slds-medium-size_6-of-12">
+                                    <lightning-input type="email" name="email" required readonly={readOnly}
+                                        label={labels.email}
+                                        message-when-value-missing={labels.errors.missing}
+                                        message-when-type-mismatch={labels.errors.emailCheck}
+                                        value={userDetails.email}
+                                        maxlength="100"
+                                        onchange={handleCustomValidation}>
+                                    </lightning-input>
+                                </div>
+                            </template>
+
+                            <div class="slds-p-horizontal_small slds-p-vertical_medium slds-form-element">
+                                <div class="slds-form-element__control slds-grow">
+                                    <span class="slds-checkbox">
+                                        <abbr title="required" aria-label="required" class="slds-required">*</abbr>
+                                        <input type="checkbox" name="terms" data-id="terms-checkbox"
+                                            id="terms-checkbox"
+                                            aria-label={labels.termsAria}
+                                            required aria-describedby="help-message-terms"
+                                            onchange={handleTermsChange}>
+                                        <label for="terms-checkbox" class="slds-checkbox__label p slds-grid slds-grid_vertical-align-center">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-m-left_x-small">
+                                                <template for:each={termsLabelItems} for:item="item">
+                                                    <template if:true={item.href}>
+                                                        <c-ipa-link key={item.label}
+                                                            external-url={item.href}
+                                                            label={item.label}>
+                                                        </c-ipa-link>
+                                                    </template>
+                                                    <template if:false={item.href}>
+                                                        <span key={item}>{item}</span>
+                                                    </template>
+                                                </template>
+                                            </span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <template if:true={showTermsCheckboxError}>
+                                    <div class="slds-has-error">
+                                        <span id="help-message-terms" class="slds-form-element__help">{labels.errors.missing}</span>
+                                    </div>
+                                </template>
+                            </div>
+                            
+                            <div class="slds-p-horizontal_small slds-p-vertical_medium slds-form-element slds-size_12-of-12">
+                                <div class="slds-form-element__control slds-grow">
+                                    <span class="slds-checkbox">
+                                        <input type="checkbox" name="intelOptIn" data-id="intelOptIn-checkbox"
+                                            id="intelOptIn-checkbox"
+                                            onchange={handleElqOptInChange}>
+                                        <label for="intelOptIn-checkbox" class="slds-checkbox__label p slds-grid slds-grid_vertical-align-center">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-m-left_x-small">{labels.elqOptIn}</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-p-horizontal_small slds-p-vertical_medium slds-form-element slds-size_12-of-12">
+                                <div class="slds-form-element__control slds-grow">
+                                    <span class="slds-checkbox">
+                                        <abbr title="required" aria-label="required" class="slds-required">*</abbr>
+                                        <input type="checkbox" name="partners" data-id="partners-checkbox"
+                                            id="partners-checkbox"
+                                            required
+                                            onchange={handlePartnersShareChange}>
+                                        <label for="partners-checkbox" class="slds-checkbox__label p slds-grid slds-grid_vertical-align-center">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-m-left_x-small">
+                                                <span>{labels.partnerInfoShare1}&nbsp;</span>
+                                                <span>
+                                                    <c-ipa-link
+                                                        label={formData.name}
+                                                        record-id={formData.id}
+                                                        object-page="Company_Information_Detail__c">
+                                                    </c-ipa-link>
+                                                </span>
+                                                <span>&nbsp;{labels.partnerInfoShare2}</span>    
+                                            
+                                            </span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <template if:true={showPartnersInfoShareCheckboxError}>
+                                    <div class="slds-has-error">
+                                        <span id="help-message-partners" class="slds-form-element__help">{labels.errors.missing}</span>
+                                    </div>
+                                </template>
+                            </div>
+
+
+                            <div class="slds-p-horizontal_small slds-p-bottom_x-large notice slds-size_12-of-12">
+                                <p>
+                                    <template for:each={privacyLabelItems} for:item="item">
+                                        <template if:true={item.href}>
+                                            <c-ipa-link key={item.label}
+                                                external-url={item.href}
+                                                label={item.label}>
+                                            </c-ipa-link>
+                                        </template>
+                                        <template if:false={item.href}>
+                                            <span key={item} class="label-item">{item}</span>
+                                        </template>
+                                    </template>
+                                </p>
+                                <p class="slds-p-top_large">{labels.termsNotice}</p>
+                            </div>
+                        </div>
+                    </form>
+                </template>
+
+                <template if:true={submitted}>
+                    <div class="form-width slds-p-top_small slds-p-bottom_large">
+                        <div class="slds-p-around_small slds-size_12-of-12">
+                            {labels.submittedMsg}&nbsp;
+                            <c-ipa-link
+                                label={formData.name}
+                                record-id={formData.id}
+                                object-page="PMP_Company__c">
+                            </c-ipa-link>
+                        </div>
+                        <c-ipa-progress-indicator
+                            steps={submissionSteps}>
+                        </c-ipa-progress-indicator>
+                    </div>
+                </template>
+            </div>
+
+            <div slot="footer" class="slds-p-around_medium slds-text-align_right">
+                <template if:false={submitted}>
+                    <lightning-button class="slds-m-right_medium" label={labels.cancel} onclick={handleCancel}></lightning-button>
+                    <lightning-button class="slds-m-right_x-small" variant="brand" label={labels.submit} onclick={handleSubmit}></lightning-button>
+                </template>
+                <template if:true={submitted}>
+                    <lightning-button variant="brand" class="slds-m-right_x-small" label={labels.close} onclick={handleCancel}></lightning-button>
+                </template>
+            </div>
+            
+        </c-core-intc-modal>
+    </template>
+</template>

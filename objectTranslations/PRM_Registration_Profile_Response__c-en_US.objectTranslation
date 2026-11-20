@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Registration Profile Response</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Registration Profile Responses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Profile Answer --></label>
+        <name>PRM_Profile_Answer_Id__c</name>
+        <relationshipLabel><!-- Registration Profile Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Profile Question --></label>
+        <name>PRM_Profile_Question_Id__c</name>
+        <relationshipLabel><!-- Registration Profile Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Registration Request --></label>
+        <name>PRM_Registration_Request_Id__c</name>
+        <relationshipLabel><!-- Registration Profile Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Response Text --></label>
+        <name>PRM_Response_Txt__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_$Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Audit_Log__c.Core_Event_Time__c</field>
+    </columns>
+    <columns>
+        <field>Core_Audit_Log__c.Core_Completed_Time__c</field>
+    </columns>
+    <columns>
+        <field>Core_Audit_Log__c.Core_Completed_By_User__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_ROLE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 or 4 or  5 or 6 or 7 or 8 or 9  or  10 or 11)</booleanFilter>
+        <criteriaItems>
+            <column>Core_Audit_Log__c.Core_Event_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Team Audit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Aamir Sultan,Aaron Voelker,Abdallah Salim,Abgar Barsegyan,ADRIAN CIOROIANU,Adrian Whelan,Agnieszka Kania,ahmed elgabalawi,Ahmed M El Zoghby,Aida Darmenova,Aissatou Sow,Aleksandra Patryn,alex t wang,Alex Twinomugisha,alexander m sorkin,Alexander Roessler,Alexandre Santos,Alexei Skopintsev,Alexey Karpukhin,Alexey Sleptsov,Alina Grabovska,Alina Husek,Amit Golani,Amr Adam,Anastasia Smyslova,Anastasios Panagou,Anders Aarsoe,Andrea Cato,Andrea Luiselli,Andrea Toigo,Andrei V Duvin,Andrew John,Andrew L Page,Andrew W Richardson,Andrey Akhmylov,Andrey Komlev,Andrzej Grzybowski,Andrzej Jankowski,Anja Fichtel,Anna Dopieralska,Anna Shkurova,Annas Taghoury,Anne Bonnier,Anton Meshkov,ARDIS MINASSIAN,Ari Tella,Armando Mozo,Arnaud Chezeaud,Arsen Chinetov,Artur Bar,Avi Mistry</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Axel Thunborg,Aya Altamimi,BABATUNDE ROBINSON,Barbara Barusova Maliszewska,Bartosz Filipowicz,Bastian Gerkum,Benedetta Cazzamali,Benjamin Kitenge,Bernd Panenka,Bogdan Georgescu,Bogdan Rauta,Boris Zinkov,Bradley Jenkins,Branislav Ides,Carl-Daniel Norenberg,Carlo Parmeggiani,Carol Razzouk,Caroline Franzen,Caroline Mwangi,Cem Cercioglu,Cem Isik,Chris Horner,Christian Ekenberg,Christian Ganz,Christina Fugh,Claude Chauvet,Claudio Bellini,Claudio Maniscalco,Claus Bjoernsten,Corentin Bernard,Cristel Saudemont,Cuneyt Yucel,Cyril Hermant,David Barrand,David Colomo Romeo,David Farrow,David J Rogers,Davide Torrice,Davor Kucera,Delimir Tasic,Denis Gusiatsky,Denis Haehnsen,Deniz Sahin,Diana Stackievic,Dietmar Mueller,Dinesh K Ramdin,Dion Ubert,Dmitry Beloshitskiy,Dmitry Matchin,Dmitry Melnikov</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Dmitry V Kornev,DominicX A Jerriho,Dominika Kargut,Donal O Donnabhain,Dorian Witkowski,Dorsten Wenzel,Drissia Lazaar,Edward R Galyamov,Ekaterina Smirnova,EkaterinaX A Popova,ELENA LEZHACHEVA,Elzbieta Marcinkevic,EMILIANO IMPERATO,Emmaliese Baldwin,Emmanuel Musese,Enrique Celma,Ercole Vanore,Eric M Muthuuri,ERIC YAPI,Erio Bagnato,Ewan Wishart,Eyad M Halawani,Fabio Veronelli,Ferial Soussi,Florence Peutin,Francesca Paolini,Frank Kuth,Frank Lafos,Gabriela Cumpanas,Gary A Martin,Gemma Gray,Gennaro Cipolletta,Goker Ozturk,Gokhan Yasar,Griet Aertgeerts,Gulshan Kumar,Guy Janssens,Hadi Mitri,Hannes Steyn,Harald Firmenich,Hariharasudan Ganesan,Hasan Albitar,Heiner Genzken,Helena Liebelt,Helene De La Gastine,Helene Marchi,Hemesh A Prag,Hendrik Unkel,Henning Eid,Henrike Boehme</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>HERBERT SCHREIBER,Herman Stel,Hesham Ahmed,Hisam Advan,Hisham Hussein,Ian Lloyd,Ibrahima Camara,Igor Illarionov,igor rudym,Ilan Hochman,Ilan Marcus,Ilan Turjeman,ILIA JOULIABINE,Integration User,Iryna Kryva,Isinsu Akcetin,Ivan Pankov,Iyad C Malaeb,Jacek Borkowski,JACQUES DECLAS,Jaime Forero,Jakob Janzen,Jalaj Batta,Jani Heikkinen,Janice R Bassa,Jason Holtom,Jason Tan,Jean-Claude Benoit,Jeff Liborio,Jens Simons,Joachim Thomasberger,Joao C Fidalgo,Joaquim Martin,Joerg Mueller,Johan Elfsson,Johan Falk,Johan M Liden,Johanne Salla,John Bradley,John Swinburne,John Wilkins,Jorge Lang,Jozsef Gacsal,Juan Carlos Luengo,Julie Penman,Justin D Christiansen,Justin P Whitney,Kahina Bazizi,Kamil Guzik,Karan Bawa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Kareem M Sherif,KARIM BIBI TRIKI,Karim Ghatwary,Karin Baer,Katarzyna Bielak,Katarzyna Chentko,Kathleen M Kallot,Kathryn Martin,Kathy van den Hende,Khaled Azmy,Konstantin Zamkov,Konstantinos Zorbas,Koray Candir,Koray Yildiz,Kristel Goijens,Kristina Hercher,Ksenia Zabegalova,Laetitia Faucon,ledda valdivieso,Levent Akbas,Loubna Berkani,Louise Summerton,Lukasz Chrzanowski,Luuk Verink,Maciej Bogucki,Maciej Narojczyk,Magnus Sjoblom,Mahmoud El-gabry,Majed Alelaiwi,Malgorzata J Dzul,Manfred Schuster,Marc Dollfus,Marcin Kurek,Marcin Majchrzak,Marco Iacopini,Marco Soldi,Marek Lesiewski,MARIA DEMACHEVA,MARIA SORAGNESE,Mariam Toema,Marie G Pinon,Mario Brugnolotti,Mariusz Jadwiszczok,Mark Allen,Markus Seifert,Marta Muszynska,Martin Kieserg,Martin Strobel,Martin Varbuchta,Mascha Mosorka</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Matthew Ward,Matthias Todd,Maurizio Zanardi,MAXYM DMYTRYCHENKO,Melanie Montgomery,Meline Tarposhyan,Melissa Govender,Meryem Vogt,Metin Yavuz,Michael Dostert,Michael Shehata,Michael Vierheilig,Michael Wachira,Michal Juszczak,Michal Kisman,Michal Poterek,Mihály Bába,Mikhail Polozov,Mikhail Vilkov,Mikolaj Danilowicz,Miroslav Mlejnek,Miroslav Stefanov,Mohamed Amr,MOHAMED FAHMY,Mohamed Marzouki,Mohamed Zamil,Mohamed-Ali Dioury,Mohammad Abd El Aziz,Monica Atef,Monica Terren,Mouna Agourram,Moustafa Hussein,Murat Simsek,Nadia Mandich,Nadine Arnold,Nardine Rizk,natalia galyan,Natalia Poliakova,Natalia Shen,Nathan Reddy,Nick Christopher Day,Nicklas Aglert,nicolas silvestre,Nikolay Mester,Nikolay Panov,Nikolay Zaozersky,Nikos Panagiotidis,Nina M Woolvett,Nir Shafir,Nouhad Jaber</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>NTOKOZO NCONGWANE,Octavian ENE,Oksana Slutskaya,Olaf Hoehne,Olena Kornienko,Olga Galanina,Olga Speranskaya,Oren Benisty,Orna Borek,Ozge Kastan,Paolo D&apos;onofrio,Paolo Ossola,Pascal Lassaigne,Patricia Friesenhausen,Patrick Messmer,Patrik Staaf,Patryk Pabich,Paul A Baines,PAUL CARBIN,Paul J Harris,Paul Prior,Pavel Plotitsyn,Pawel Magott,Pedro Dias,Peter Graef,Peter J Bevan,Petr Ulvr,Piotr K Sobstyl,Przemek Papuzynski,RaduX M Dinu,Raphael Monten,Rasha Ganam,Ravza Bek,Richard Horvath,Robert Adamski,Robert Charles,Robert Gray,Robert Maskell,Roberto Lipari,Robyn Shean,Romana Kanova,Romeo Merli,Ross M Corfield,Sachin A Seesurrun,Saeed Al Zahrani,Said El Mouden,Saku Lahteenmaki,Sally Lauwereins,Sameh Elmallah,Sara Bodin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Sarah Hussein,Sarah Runge,Sascha Klingelhofer,Scott J Gillingham,Sebastien Lenormand,Sergey Lobachev,SERGEY SHTERTSER,Serhan Szman,SHAMIT PATEL,Silvia Invernici,Silvio Biolatto,Simon Morse,Simon Windsor,Snezana Gajic,Stanley Muoneke,Stav Salomon,Stefan Hessler,Stefani Eisele,Stefanie Doehler,Steffen Helfert,Stephan HILBY,Stephanie Weber,STEPHEN DEUTSCH,Steven Hopper,Steven W Johnson,Stijn Derache,Susan Mbogo,Susanna Ackermann,Sushant R Naik,Svetlana Gostyusheva,sylvain sauty,Tal Elgar,TAL ROTEM,Tamara Rau,Tanja Holst,Tao Yang,Tarek Rahal,Tatiana Kisel,Tatyana Kurtinova,Thi Hoang Mai Chu,Thomas Kellerer,Thor Dahlstedt,Tiago Terrivel,Tim Hatch,Tim Hoyle,Tobias Gran,Tobias Grimm,Tobias Hoffmann,Tomasz Hodakowski,Tomislav Pasanec</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Tommi Raitio,Ulf Jahnke,Ulrike Kolde,Uncovered Account,Uri Baron,Uwe Horsthemke,Uygar Doyuran,Valere Dussaux,Vasily Lizunov,Vendor Sales Center,VICTORIA SANDLER,Victoria Yevtoushenko,Virginia Miguez,Vitalii Braghish,Vladimir Bykovnikov,Vladimir Fedorov,Vladimir V Slinko,Volga Simsek,Wayne J Holt,Wim Nagels,Wojciech Bosek,Xavier Petot,Yaniv Erel,Ygal Sameach,Youssef Abouseif,Youssef Hilali,yulia gontar,Yulia Kargapoltseva,Yves Aillerie,Grand Total</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>audit</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Audit_Log__c@Core_Audit_Log__c.Core_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Audit_Log__c.Core_Event_Time__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-05-18</startDate>
+    </timeFrameFilter>
+</Report>

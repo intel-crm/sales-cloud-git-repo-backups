@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>IPA document upload email registration for India country</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload India</name>
+    <style>none</style>
+    <subject>Intel Partner Alliance: Business License Needed</subject>
+    <textOnly>Thank you for applying to the Intel® Partner Alliance!
+
+
+
+Thank you for applying to the Intel Partner Alliance.
+
+While processing your application, we were unable to verify your company information based on the input you provided. Therefore, we kindly request you reply to this email by attaching both of the following documents in either PDF, JPEG, or PNG format to complete this verification:
+
+GST Certificate including Annexures
+A copy of your Masked Aadhaar card
+Please reply to this email with the attached document(s) within 7 days to avoid automatic rejection of your request. Once we have received your response, we will advise the team to re-review your application.
+
+Thank you for your cooperation in resolving this matter.
+
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+Please know that this email inbox is automatically processed and monitored.
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© 2025 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

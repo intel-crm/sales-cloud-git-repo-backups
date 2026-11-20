@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_DELETION_ZHT</name>
+    <style>none</style>
+    <subject>Intel® 夥伴聯盟帳戶更新</subject>
+    <textOnly>已移除使用者
+
+{!UserName} 您好，
+
+
+您的 Intel® 夥伴聯盟帳戶已變更。{!ContactEmail} 已從貴公司帳戶中移除。
+
+公司名稱： {!Account.Name}
+企業 ID： {!Account.AccountNumber}
+移除的聯絡人：電子郵件為 {!ContactEmail}
+關係（職位）： {!AcrRoles}
+
+若這項變更未獲授權，請登入來更新帳戶。
+如果您有疑問，請從這裡與我們聯絡支援團隊。
+
+
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

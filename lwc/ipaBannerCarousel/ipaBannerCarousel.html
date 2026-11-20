@@ -1,0 +1,15 @@
+<template>
+    <template if:true={count}>
+        <c-core-intc-carousel items-per-page="1" name="BannerCarousel" variant='banner'>
+            <div slot="content" class="banner-carousel-content-wrapper">
+                <template for:each={banners} for:item="banner" for:index="index">
+                    <div data-carousel-item={index} key={banner.key}>
+                        <div class="ipaBannerCarousel-container" data-banner-count={count}>
+                            <c-ipa-banner banner={banner} onimageloaded={handleImageLoad}></c-ipa-banner>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </c-core-intc-carousel>
+    </template>
+</template>

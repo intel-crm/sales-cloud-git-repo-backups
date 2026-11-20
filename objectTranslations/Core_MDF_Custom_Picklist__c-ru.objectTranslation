@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>true</plural>
+        <value><!-- Custom Picklist --></value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Core_MDF_CCF_Campaign_Fieldset --></label>
+        <name>Core_MDF_CCF_Campaign_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Account Plan Campaign --></label>
+        <name>Core_MDF_Camp_Account_Plan</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Business Client Acceleration - MDF Campaign --></label>
+        <name>Core_MDF_Camp_BusinessClientAcceleration</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client Market Accelerate --></label>
+        <name>Core_MDF_Camp_Client_Market_Accelerate</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client Specialties MDF Campaign --></label>
+        <name>Core_MDF_Camp_Client_Specialties_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- DCG MAF --></label>
+        <name>Core_MDF_Camp_DCG_MAF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Center Market Accelerate --></label>
+        <name>Core_MDF_Camp_DataCenterMarketAccelerate</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Centric Acceleration - MDF Campaign --></label>
+        <name>Core_MDF_Camp_DataCentricAccelerationMDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Intel Rise Technology Initiative --></label>
+        <name>Core_MDF_Camp_IRTI</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Iot Premier - MDF Campaign --></label>
+        <name>Core_MDF_Camp_Iot_Premier_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Iot Targeted - MDF Campaign --></label>
+        <name>Core_MDF_Camp_Iot_Targeted_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Proposal II MDF Campaign --></label>
+        <name>Core_MDF_Camp_Proposal_II_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Proposal I MDF Campaign --></label>
+        <name>Core_MDF_Camp_Proposal_I_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SOEM Client MDF Campaign --></label>
+        <name>Core_MDF_Camp_SOEM_Client_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SOEM Data Center MDF Campaign --></label>
+        <name>Core_MDF_Camp_SOEM_Data_Center_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client Computing - Campaign --></label>
+        <name>Core_MDF_Client_Computing_Camp_FC</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_Co_GTM_Campaign_Fieldset --></label>
+        <name>Core_MDF_Co_GTM_Campaign_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_DCF_Campaign_Fieldset --></label>
+        <name>Core_MDF_DCF_Campaign_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Center - Campaign --></label>
+        <name>Core_MDF_Data_Center_Camp_FC</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_MDF_EEF_Campaign_Fieldset --></label>
+        <name>Core_MDF_EEF_Campaign_Fieldset</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Edge - Campaign --></label>
+        <name>Core_MDF_Edge_Camp_FC</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- IPA Campaign FieldSet --></label>
+        <name>Core_MDF_IPA_Campaign_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Networking and Intelligent Edge- Campaign --></label>
+        <name>Core_MDF_Networking_Intelligent_Camp_FC</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Networking &amp; Telco - Campaign --></label>
+        <name>Core_MDF_Networking_Telco_Camp_FC</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- ODM Growth Plan - Client MDF Campaign --></label>
+        <name>Core_MDF_ODM_Growth_Plan_Client_MDF_Camp</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Account Plan --></label>
+        <name>Core_MDF_PFR_Account_Plan</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Business Client Acceleration - MDF --></label>
+        <name>Core_MDF_PFR_BusinessClientAcceleration</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client Market Accelerate --></label>
+        <name>Core_MDF_PFR_Client_Market_Accelerate</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client Specialties MDF --></label>
+        <name>Core_MDF_PFR_Client_Specialties_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Center Market Accelerate --></label>
+        <name>Core_MDF_PFR_DataCenterMarketAccelerate</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Centric Acceleration - MDF --></label>
+        <name>Core_MDF_PFR_DataCentricAcceleration_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Intel Rise Technology Initiative --></label>
+        <name>Core_MDF_PFR_IRTI</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Intel MDF Account Based2 --></label>
+        <name>Core_MDF_PFR_Intel_MDF_Account_Based2</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Iot Premier - MDF --></label>
+        <name>Core_MDF_PFR_Iot_Premier_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Iot Targeted - MDF --></label>
+        <name>Core_MDF_PFR_Iot_Targeted_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- ODM Growth Plan - Client MDF --></label>
+        <name>Core_MDF_PFR_ODM_Growth_Plan_Client_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SOEM Client MDF --></label>
+        <name>Core_MDF_PFR_SOEM_Client_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SOEM Data Center MDF --></label>
+        <name>Core_MDF_PFR_SOEM_Data_Center_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Proposal II MDF --></label>
+        <name>Core_MDF_Proposal_II_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Proposal I MDF --></label>
+        <name>Core_MDF_Proposal_I_MDF</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- RMF Campaign Fieldset --></label>
+        <name>Core_MDF_RMF_Campaign_Fieldset</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>CampaignId__c</name>
+        <relationshipLabel><!-- Custom Picklists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Счет</label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Custom Picklists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_ActivityCategory__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you check this box, an approval workflow (including any threshold logic) will be applied to OEM CMP activities in this Campaign. The MDF approval workflow is always applied to MDF/MDF+ activities. --></help>
+        <label><!-- Activity Approval Required --></label>
+        <name>Core_MDF_Activity_Approval_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category -&gt;Type --></label>
+        <name>Core_MDF_Activity_Category_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Classification --></label>
+        <name>Core_MDF_Activity_Classification_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Detailed description of the activity to be performed --></help>
+        <label><!-- Activity Description --></label>
+        <name>Core_MDF_Activity_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Subtype --></label>
+        <name>Core_MDF_Activity_SubType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Types__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attribution - Decrease from Guidebook --></label>
+        <name>Core_MDF_Attribution_Variance_Neg_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attribution - Increase from Guidebook --></label>
+        <name>Core_MDF_Attribution_Variance_Pos_txt__c</name>
+    </fields>
+    <fields>
+        <label>Аудитория</label>
+        <name>Core_MDF_Audience__c</name>
+    </fields>
+    <fields>
+        <label>Торговая марка</label>
+        <name>Core_MDF_Brand__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Intel brand that is being marketed --></help>
+        <label><!-- Brand --></label>
+        <name>Core_MDF_Brand_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- This rate is an estimate; it may be different when you submit for claiming --></help>
+        <label><!-- Activity Spending Limit Local --></label>
+        <name>Core_MDF_Budget_Amount_Local_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Amount --></label>
+        <name>Core_MDF_Budget_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Currency --></label>
+        <name>Core_MDF_Budget_Currency_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type(P) --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Anticipated revenue from Intel-based instances, in USD --></help>
+        <label><!-- CSP Intel-Based Revenue --></label>
+        <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
+    </fields>
+    <fields>
+        <help>В случае выбора применяется руководство на основе результатов. В случае, если выбор не выбран, применяется стандартное руководство по продажам и маркетингу. Активности в рамках этой кампании должны быть настроены соответствующим образом.</help>
+        <label>Кампания на основе результатов</label>
+        <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Scoring --></label>
+        <name>Core_MDF_Campaign_Scoring_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments (Internal Only) --></label>
+        <name>Core_MDF_Comments_Internal_Only__c</name>
+    </fields>
+    <fields>
+        <label>Комментарии (Внешние)</label>
+        <name>Core_MDF_Comments__c</name>
+    </fields>
+    <fields>
+        <label>Имя контактного лица и адрес эл. почты</label>
+        <name>Core_MDF_Contact_Name_And_Email_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract ID --></label>
+        <name>Core_MDF_Contract_ID_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Controlling Field --></label>
+        <name>Core_MDF_Controlling_Field_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Plan</masterLabel>
+            <translation><!-- Account Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF 1.0</masterLabel>
+            <translation><!-- CCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Market Accelerate</masterLabel>
+            <translation><!-- Client Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Engineering</masterLabel>
+            <translation><!-- Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF 1.0</masterLabel>
+            <translation><!-- DCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge</masterLabel>
+            <translation><!-- Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FC1</masterLabel>
+            <translation><!-- FC1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FC2</masterLabel>
+            <translation><!-- FC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation><!-- IoT Premier - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation><!-- IoT Targeted - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking &amp; Intelligent Edge</masterLabel>
+            <translation><!-- Networking &amp; Intelligent Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking &amp; Telco</masterLabel>
+            <translation><!-- Networking &amp; Telco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation><!-- ODM Growth Plan - Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal I MDF</masterLabel>
+            <translation><!-- Proposal I MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposal II MDF</masterLabel>
+            <translation><!-- Proposal II MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation><!-- SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation><!-- SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale Acceleration - MDF</masterLabel>
+            <translation><!-- Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country/Region --></label>
+        <name>Core_MDF_Country_nm__c</name>
+    </fields>
+    <fields>
+        <label>Индивидуальная ставка возмещения</label>
+        <name>Core_MDF_Custom_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
+        <help>Используйте маркетинговые названия и кодовое название по мере доступности.</help>
+        <label>Продукция для заказчиков</label>
+        <name>Core_MDF_Customer_Product_Codename_txt__c</name>
+    </fields>
+    <fields>
+        <help>Новые победы клиента</help>
+        <label>Количество развертываний</label>
+        <name>Core_MDF_Deployment_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Domain Type --></label>
+        <name>Core_MDF_Domain_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ecosystem Partner --></label>
+        <name>Core_MDF_EcosystemPartner_nm__c</name>
+    </fields>
+    <fields>
+        <label>Партнер по экосистеме</label>
+        <name>Core_MDF_Ecosystem_Partner_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Дата окончания</label>
+        <name>Core_MDF_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Format --></label>
+        <name>Core_MDF_Event_Format_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Hybrid Event</masterLabel>
+            <translation><!-- Hybrid Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Person</masterLabel>
+            <translation><!-- In Person --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Event</masterLabel>
+            <translation><!-- Virtual Event --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Event Name --></label>
+        <name>Core_MDF_Event_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Member Visibility Date --></label>
+        <name>Core_MDF_External_Visibility_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Year Budget Amount --></label>
+        <name>Core_MDF_First_Year_Budget_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Year Budget --></label>
+        <name>Core_MDF_First_Year_Budget__c</name>
+        <relationshipLabel><!-- Custom Picklists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- First Year Claims --></label>
+        <name>Core_MDF_First_Year_Claims__c</name>
+    </fields>
+    <fields>
+        <help>Основная сфера деятельности, которая представлена на рынке</help>
+        <label>Основная сфера деятельности</label>
+        <name>Core_MDF_Focus_Area_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Status --></label>
+        <name>Core_MDF_Fund_Request_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hero Product --></label>
+        <name>Core_MDF_Hero_Product__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select this if this is an IPA Account that has Co-Engineering --></help>
+        <label><!-- IPA Co-Engineering Campaign? --></label>
+        <name>Core_MDF_IPA_Co_Engineering_Campaign_ind__c</name>
+    </fields>
+    <fields>
+        <help>Основной приоритет, который представлен на рынке</help>
+        <label>Приоритет</label>
+        <name>Core_MDF_IPA_Priority_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Core_MDF_Industry_Multi_nm__c</name>
+    </fields>
+    <fields>
+        <label>Отрасль</label>
+        <name>Core_MDF_Industry_Nm__c</name>
+    </fields>
+    <fields>
+        <help>Намеренный акцент, определенный Intel, который соответствует корпоративной цели или цели бизнес-подразделения. Единая инициатива может относиться к одной основной сфере деятельности или приоритету, в то время как другая инициатива может относиться к нескольким основным сферам деятельности или приоритетам. Инициатива должна быть выбрана только в том случае, если она согласована со специалистами Intel по работе с клиентами или ее выполнение осуществляется на основе опубликованного руководства.</help>
+        <label>Инициатива</label>
+        <name>Core_MDF_Initiative_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integrated Campaign Details --></label>
+        <name>Core_MDF_Integrated_Campaign_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integrated Campaign --></label>
+        <name>Core_MDF_Integrated_Campaign__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Ответственный со стороны Intel</label>
+        <name>Core_MDF_Intel_Owner_id__c</name>
+        <relationshipLabel><!-- Custom Picklists (Intel Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Проверяющий Intel</label>
+        <name>Core_MDF_Intel_Verifier_id__c</name>
+        <relationshipLabel><!-- Custom Picklists (Intel Verifier) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Как будет оцениваться эффективность кампании. Стандартные KPIs включают потенциальных клиентов (новые контакты) и развертываний (новые победы клиентов).</help>
+        <label>Ключевой показатель эфф. Маркетинга</label>
+        <name>Core_MDF_Key_Marketing_Indicator_nm__c</name>
+    </fields>
+    <fields>
+        <label>Ключевой показатель производительности</label>
+        <name>Core_MDF_Key_Performance_Indicator__c</name>
+    </fields>
+    <fields>
+        <help>Новые контакты</help>
+        <label>Количество потенциальных клиентов</label>
+        <name>Core_MDF_Lead_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Reimbursement Amount (USD) --></label>
+        <name>Core_MDF_MDFReimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMID # --></label>
+        <name>Core_MDF_MMID__c</name>
+    </fields>
+    <fields>
+        <label>Сегмент рынка</label>
+        <name>Core_MDF_Market_Segment_nm__c</name>
+    </fields>
+    <fields>
+        <label>Страна/регион</label>
+        <name>Core_MDF_Market__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Objective / Strategy --></label>
+        <name>Core_MDF_Marketing_Objective_Strategy__c</name>
+    </fields>
+    <fields>
+        <label>Подход к измерению</label>
+        <name>Core_MDF_Measurement_Approach_nm__c</name>
+    </fields>
+    <fields>
+        <label>Акцептор участника</label>
+        <name>Core_MDF_Member_Acceptor_id__c</name>
+        <relationshipLabel><!-- Custom Picklists (Member Acceptor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Member Solution --></label>
+        <name>Core_MDF_Member_Solution_txt__c</name>
+    </fields>
+    <fields>
+        <label>Тема/сообщения</label>
+        <name>Core_MDF_Messaging__c</name>
+    </fields>
+    <fields>
+        <label>Мои предложения #</label>
+        <name>Core_MDF_MyDeals_txt__c</name>
+    </fields>
+    <fields>
+        <label>Дата завершения платформы OEM</label>
+        <name>Core_MDF_OEM_Platform_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Дата начала платформы OEM-производителя</label>
+        <name>Core_MDF_OEM_Platform_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Тип бюджета</label>
+        <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Другой партнер по экосистеме</label>
+        <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
+    </fields>
+    <fields>
+        <label>Другие методы измерения</label>
+        <name>Core_MDF_Other_Measurement_Approach_txt__c</name>
+    </fields>
+    <fields>
+        <label>Другие критерии исхода</label>
+        <name>Core_MDF_Other_Outcome_Criteria_txt__c</name>
+    </fields>
+    <fields>
+        <help>Если в списке нет основного показателя успеха /KPI для этой кампании, вы можете ввести пользовательский показатель здесь. Выберите то, что можно подсчитать, например впечатления, клики, взаимодействие, файлы для загрузки и т. д.</help>
+        <label>Другие конечные показатели</label>
+        <name>Core_MDF_Other_Outcome_txt__c</name>
+    </fields>
+    <fields>
+        <label>Другое количество</label>
+        <name>Core_MDF_Other_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label>Другая причина, название</label>
+        <name>Core_MDF_Other_Reason_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Outcome_Region_nm__c</name>
+    </fields>
+    <fields>
+        <help>Выберите один результат. Если данная кампания основана на результатах, то этот результат будет использоваться для оценки успеха кампании. Выплаты не обусловлены эффективностью кампании.</help>
+        <label>Метрика результатов</label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
+        <label>Примечания к PCT</label>
+        <name>Core_MDF_PCT_Notes_txt__c</name>
+    </fields>
+    <fields>
+        <label>Контакт с партнёром</label>
+        <name>Core_MDF_Partner_Contact_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Activating Partners supporting this campaign. --></help>
+        <label><!-- Partner Mapping --></label>
+        <name>Core_MDF_Partner_Mapping_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Member Acceptance --></label>
+        <name>Core_MDF_Primary_Member_Acceptance_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Приоритет</label>
+        <name>Core_MDF_Priorities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority #2 --></label>
+        <name>Core_MDF_Priority_2_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority #3 --></label>
+        <name>Core_MDF_Priority_3_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority 2 Weightage --></label>
+        <name>Core_MDF_Priority_Percentage_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority 3 Weightage --></label>
+        <name>Core_MDF_Priority_Percentage_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority Weightage --></label>
+        <name>Core_MDF_Priority_Percentage__c</name>
+    </fields>
+    <fields>
+        <label>Приоритет</label>
+        <name>Core_MDF_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority PFR --></label>
+        <name>Core_MDF_Priority_nm__c</name>
+    </fields>
+    <fields>
+        <label>Тип продукции</label>
+        <name>Core_MDF_ProductType__c</name>
+    </fields>
+    <fields>
+        <label>Тип продукции</label>
+        <name>Core_MDF_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profit Center --></label>
+        <name>Core_MDF_Profit_Center__c</name>
+    </fields>
+    <fields>
+        <label>Программа</label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposal Based Indicator --></label>
+        <name>Core_MDF_Proposal_Based_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Оценка предложения</label>
+        <name>Core_MDF_Proposal_Score_nbr__c</name>
+    </fields>
+    <fields>
+        <label>Причина обратной даты</label>
+        <name>Core_MDF_Reason_for_Back_Dating_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for Past Dated Activity --></label>
+        <name>Core_MDF_ReasonforPastDatedActivity_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Регион</label>
+        <name>Core_MDF_Region_cd__c</name>
+    </fields>
+    <fields>
+        <label>Ставка возмещения</label>
+        <name>Core_MDF_ReimbursementRate_pct__c</name>
+    </fields>
+    <fields>
+        <help>Общие инвестиции (Intel + Partner) x ставка возмещения = максимальные инвестиции в Intel.</help>
+        <label>Максимальные инвестиции Intel</label>
+        <name>Core_MDF_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Ставка возмещения</label>
+        <name>Core_MDF_Reimbursement_Rate__c</name>
+        <picklistValues>
+            <masterLabel>100%</masterLabel>
+            <translation><!-- 100% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25%</masterLabel>
+            <translation><!-- 25% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>33%</masterLabel>
+            <translation><!-- 33% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50%</masterLabel>
+            <translation><!-- 50% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55%</masterLabel>
+            <translation><!-- 55% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60%</masterLabel>
+            <translation><!-- 60% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>65%</masterLabel>
+            <translation><!-- 65% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70%</masterLabel>
+            <translation><!-- 70% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>75%</masterLabel>
+            <translation><!-- 75% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80%</masterLabel>
+            <translation><!-- 80% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>85%</masterLabel>
+            <translation><!-- 85% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90%</masterLabel>
+            <translation><!-- 90% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95%</masterLabel>
+            <translation><!-- 95% --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate(PFR) --></label>
+        <name>Core_MDF_Reimbursement_Rate_pct__c</name>
+        <picklistValues>
+            <masterLabel>0%</masterLabel>
+            <translation><!-- 0% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>100%</masterLabel>
+            <translation><!-- 100% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25%</masterLabel>
+            <translation><!-- 25% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>33%</masterLabel>
+            <translation><!-- 33% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50%</masterLabel>
+            <translation><!-- 50% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55%</masterLabel>
+            <translation><!-- 55% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60%</masterLabel>
+            <translation><!-- 60% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>65%</masterLabel>
+            <translation><!-- 65% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70%</masterLabel>
+            <translation><!-- 70% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>75%</masterLabel>
+            <translation><!-- 75% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80%</masterLabel>
+            <translation><!-- 80% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>85%</masterLabel>
+            <translation><!-- 85% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90%</masterLabel>
+            <translation><!-- 90% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95%</masterLabel>
+            <translation><!-- 95% --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Ставка возмещения</label>
+        <name>Core_MDF_Reimbursement_Rate_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Second Year Budget Amount only needed if End Date is a different year than the Start Date --></help>
+        <label><!-- Second Year Budget Amount --></label>
+        <name>Core_MDF_Second_Year_Budget_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget --></label>
+        <name>Core_MDF_Second_Year_Budget__c</name>
+        <relationshipLabel><!-- Custom Picklists (Budget) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Second Year Claims --></label>
+        <name>Core_MDF_Second_Year_Claims__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spending Cap Amount (USD) --></label>
+        <name>Core_MDF_Spending_Cap_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Дата начала</label>
+        <name>Core_MDF_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategic Marketing Fund --></label>
+        <name>Core_MDF_Strategic_Marketing_Fund_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supports legacy Program --></label>
+        <name>Core_MDF_Supports_legacy_program__c</name>
+        <picklistValues>
+            <masterLabel>CMP only</masterLabel>
+            <translation><!-- CMP only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF or both CMP &amp; MDF</masterLabel>
+            <translation><!-- MDF or both CMP &amp; MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Audience --></label>
+        <name>Core_MDF_TargetAudience__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Audience --></label>
+        <name>Core_MDF_TargetAudience_nm__c</name>
+    </fields>
+    <fields>
+        <label>Технология</label>
+        <name>Core_MDF_Technology__c</name>
+    </fields>
+    <fields>
+        <label>Общие инвестиции (Intel + Partner)</label>
+        <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Выберите пример использования, который наиболее соответствует предложению решения, продвигаемого в рамках этой кампании. Если ни один из перечисленных примеров использования не подходит, выберите «Общего назначения».</help>
+        <label>Пример использования</label>
+        <name>Core_MDF_Use_Case_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Количество</label>
+        <name>Core_MDF_Volume_txt__c</name>
+    </fields>
+    <fields>
+        <help>Текстовое поле свободной формы</help>
+        <label>Описание</label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help>Дата завершения деятельности по кампании. Дата окончания кампании будет автоматически введена в качестве даты исполнения для всех задач кампании.</help>
+        <label>Дата окончания</label>
+        <name>EndDate__c</name>
+    </fields>
+    <fields>
+        <help>Введите имя кампании Стандартные правила наименования [Сокращенное название компании + квартал + год + продукт/целевой продукт</help>
+        <label>Название кампании</label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <help>Дата начала деятельности по кампании</help>
+        <label>Дата начала</label>
+        <name>StartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Name --></label>
+        <name>Title__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Custom Picklist Name --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- Channel MDF - Account Based --></label>
+        <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client --></label>
+        <name>Core_MDF_Client_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Co-GTM Program --></description>
+        <label><!-- Co-GTM --></label>
+        <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for CCP DCF Program --></description>
+        <label><!-- Datacenter --></label>
+        <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for CCP EEF Program --></description>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- IPA Account Based Record Type for both Campaign and Activity --></description>
+        <label><!-- Intel Partner Alliance - Account Based --></label>
+        <name>Core_MDF_Intel_Partner_Alliance_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- IPA Account Based for Campaign --></description>
+        <label><!-- Intel Partner Alliance - Account --></label>
+        <name>Core_MDF_Intel_Partner_Alliance_Account_Based_Camp</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- IPA Proposal Based Record type for both  Campaign and Activity --></description>
+        <label><!-- Intel Partner Alliance - Proposal --></label>
+        <name>Core_MDF_Intel_Partner_Alliance_Proposal_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type created for Retail program --></description>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+</CustomObjectTranslation>

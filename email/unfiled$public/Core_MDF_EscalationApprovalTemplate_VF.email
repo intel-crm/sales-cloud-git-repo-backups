@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="Status Change for your {!relatedTo.Core_MDF_Escalation_Type_nm__c} Escalation Request ID: {!relatedTo.Name}" 
+                         recipientType="User" 
+                         language="en_US"
+                         relatedToType="Core_MDF_Escalation__c">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>  <div style="font-size:14px;font-family:Calibri">
+                <p>
+                Your {!relatedTo.Core_MDF_Escalation_Type_nm__c} escalation's request's <a href ="{!RelatedTo.Core_MDF_Escalation_Detail_Link_txt__c}">{!relatedTo.Name}</a> status changed to {!relatedTo.Core_MDF_Escalation_Status_nm__c}
+                </p><br/>
+                <p>Thank you,<br/>
+                Intel® Partner Investment Center
+                </p>
+            </div>
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

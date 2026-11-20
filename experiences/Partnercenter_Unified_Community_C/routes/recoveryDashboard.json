@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Core_MDF_Recovery_Summary__c",
+  "id" : "0755992f-a3a4-4f9f-bc1a-3a86811308ef",
+  "label" : "Recovery dashboard",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-recovery-summary",
+  "type" : "route",
+  "urlPrefix" : "recovery-dashboard"
+}

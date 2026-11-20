@@ -1,0 +1,344 @@
+<template>
+   <div>
+      <c-core_-i-p-s_-global-search_-l-w-c casedatainfo={caseInfo} onsearchvaluechange={hanldeProgressValueChange} >
+      </c-core_-i-p-s_-global-search_-l-w-c>
+   </div>
+   <div style="min-width: 225px; border-right: 1px; background:#f7f7f7;">
+      <lightning-layout class="sideNavContainer">
+         <lightning-layout-item class="sideNav">
+            <lightning-vertical-navigation selected-item={selectedItem} onselect={handleSelect} class="navigation">
+               <div class="navigationbuttons" style="padding-top: 12px;">
+                  <div class="slds-p-bottom_small">
+                     <input onclick={handleNewCaseNavigate} type="button" class="btn" value="Create New Case"></input>
+                  </div>
+                  <div class="slds-p-top_small">
+                     <input onclick={handleNewProjectNavigate} type="button" class="btn"
+                        value="Create New Project"></input>
+                  </div>
+               </div>
+               <lightning-vertical-navigation-section class="slds-nav-vertical slds-nav-vertical_shade">
+                  <lightning-vertical-navigation-item label="My Cases" name="allCases" onclick={hideGlobalTables}>
+                  </lightning-vertical-navigation-item>
+                  <lightning-vertical-navigation-item label="My Projects" name="allProjects" onclick={getProjects}>
+                  </lightning-vertical-navigation-item>
+                  <lightning-vertical-navigation-item label="My Intel Products" name="intelProducts"
+                     onclick={getProducts}></lightning-vertical-navigation-item>
+                  <lightning-vertical-navigation-item label="Contacts" name="allContacts" onclick={getContacts}>
+                  </lightning-vertical-navigation-item>
+               </lightning-vertical-navigation-section>
+            </lightning-vertical-navigation>
+         </lightning-layout-item>
+         <lightning-layout-item class="slds-p-left_small"
+            style=" width:calc(100% - 210px); background-color: #FFF; padding-left: 0;">
+            <!-- Global Search Result Section Start -->
+            <div>
+               <template if:true={isAllTablesVisible}>
+                  <div class="gbCard">
+                     <div class="globalSearch">
+                        <h2 class="csename">Cases</h2>
+                        <template if:true={caseShowmsg}>
+                           <lightning-datatable key-field="id" data={fewCaseList} columns={globalcasecolumns}
+                              onrowaction={globalCaseRowAction} hide-checkbox-column="true" column-widths-mode="auto"
+                              sorted-direction={sortGlobalCaseDirection} onsort={doGlobalCaseSorting} 
+                              sorted-by={GlobalCaseSortBy} enable-infinite-loading>
+                           </lightning-datatable>
+                           <template if:false={isglobalCaserefreshPageination}>
+                              <c-core_-i-p-s_-paginator_-l-w-c records={globalcaserecordsToDisplay}
+                                 total-records={globalcaserecordsToDisplay.length} show-search-box="true"
+                                 onpaginatorchange={handleCasePaginationChange}>
+                              </c-core_-i-p-s_-paginator_-l-w-c>
+                           </template>
+                           <template if:true={isglobalCaserefreshPageination}>
+                              <c-core_-i-p-s_-paginator_-l-w-c records={globalcaserecordsToDisplay}
+                                 total-records={globalcaserecordsToDisplay.length} show-search-box="true"
+                                 onpaginatorchange={handleCasePaginationChange}>
+                              </c-core_-i-p-s_-paginator_-l-w-c>
+                           </template>
+                        </template>
+                        <template if:false={caseShowmsg}>
+                           <div class="slds-p-left_medium" style="font-size: 16px;">
+                              No Case Records to show
+                           </div>
+                        </template>
+                        {loadMoreCaseStatus}
+                     </div>
+                  </div>
+                  <hr style="margin: 0;" />
+                  <div style="padding-top: 0;">
+                     <div class="globalSearch">
+                        <h2 class="prjname">Projects</h2>
+                        <div>
+                           <template if:true={prjshowmsg}>
+                              <lightning-datatable key-field="id" data={projPaginationList}
+                                 columns={globalprojectcolumns} hide-checkbox-column="true" max-column-width="auto"
+                                 sorted-direction={sortGlobalProjectDirection} onsort={doGlobalProjectSorting} 
+                                 sorted-by={GlobalProjectSortBy}>
+                              </lightning-datatable>
+                              <div class="globalprojectpaginator">
+                                 <template if:false={isglobalProjrefreshPageination}>
+                                    <c-core_-i-p-s_-paginator_-l-w-c records={globalprjRecToDisplay}
+                                       total-records={globalprjRecToDisplay.length} show-search-box="true"
+                                       onpaginatorchange={globalprojPaginatorChange}>
+                                    </c-core_-i-p-s_-paginator_-l-w-c>
+                                 </template>
+                                 <template if:true={isglobalProjrefreshPageination}>
+                                    <c-core_-i-p-s_-paginator_-l-w-c records={globalprjRecToDisplay}
+                                       total-records={globalprjRecToDisplay.length} show-search-box="true"
+                                       onpaginatorchange={globalprojPaginatorChange}>
+                                    </c-core_-i-p-s_-paginator_-l-w-c>
+                                 </template>
+                              </div>
+                           </template>
+                        </div>
+                        <template if:false={prjshowmsg}>
+                           <div class="slds-p-left_medium" style="font-size: 16px;">
+                              No Project Records to show
+                           </div>
+                        </template>
+                     </div>
+                  </div>
+                  <hr style="margin: 0;" />
+                  <div style="padding-top: 0;">
+                     <div class="globalSearch">
+                        <h2 class="pdtname">Products</h2>
+                        <div>
+                           <template if:true={pdtShowmsg}>
+                              <lightning-datatable key-field="id" data={prodPaginationList}
+                                 columns={globalproductColumns} hide-checkbox-column="true" max-column-width="auto"
+                                 sorted-direction={sortGlobalProductDirection} onsort={doGlobalProductSorting} 
+                                 sorted-by={GlobalProductSortBy}>
+                              </lightning-datatable>
+                              <div class="globalProductpaginator">
+                                 <template if:false={isglobalProdrefreshPageination}>
+                                    <c-core_-i-p-s_-paginator_-l-w-c records={globalpdtRecToDisplay}
+                                       total-records={globalpdtRecToDisplay.length} show-search-box="true"
+                                       onpaginatorchange={globalPrdPaginatorChange}>
+                                    </c-core_-i-p-s_-paginator_-l-w-c>
+                                 </template>
+                                 <template if:true={isglobalProdrefreshPageination}>
+                                    <c-core_-i-p-s_-paginator_-l-w-c records={globalpdtRecToDisplay}
+                                       total-records={globalpdtRecToDisplay.length} show-search-box="true"
+                                       onpaginatorchange={globalPrdPaginatorChange}>
+                                    </c-core_-i-p-s_-paginator_-l-w-c>
+                                 </template>
+                              </div>
+                           </template>
+                        </div>
+                        <template if:false={pdtShowmsg}>
+                           <div class="slds-p-left_medium" style="font-size: 16px;">
+                              No Products Records to Show
+                           </div>
+                        </template>
+                     </div>
+                  </div>
+               </template>
+            </div>
+            <!-- Global Search Result Section End -->
+            <!--Case Section Start-->
+            <div>
+               <template if:true={cases}>
+                  <div>
+                     <div class="CaseTable">
+                        <template if:true={caseRecords}>
+                           <c-core_-i-p-s_-generic-list-view_-cmp></c-core_-i-p-s_-generic-list-view_-cmp>
+                        </template>
+                        </br>
+                        <template if:true={error}>
+                           {error}
+                        </template>
+                     </div>
+                  </div>
+               </template>
+               <!--Case Section End-->
+               <!--Project Section Start-->
+               <template if:true={projects}>
+                  <div>
+                     <div class="slds-clearfix">
+                        <div class="slds-float_right slds-p-right_medium">
+                           <lightning-input type="search" onchange={ProjectKeyChange}
+                              class="slds-m-bottom_small projectSearch" placeholder="Search Project" maxlength="70">
+                           </lightning-input>
+                        </div>
+                     </div>
+                     <template if:true={projShowMsg}>
+                        <template if:true={prjRecToDisplay}>
+                           <div style="margin-left: 17px;">
+                              <div>
+                                 <lightning-datatable key-field="Id" data={paginatedProjects}
+                                    columns={projcolumnsResult} hide-checkbox-column="true"
+                                    onrowaction={handleRowActionedit} sorted-by={sortProjectBy} max-column-width="auto"
+                                    sorted-direction={sortProjectDirection} onsort={doProjectSorting} 
+                                    column-widths-mode="auto" min-column-width="auto">
+                                 </lightning-datatable>
+                              </div>
+                              <template if:false={isprojectpagination}>
+                                 <c-core_-i-p-s_-paginator_-l-w-c records={prjRecToDisplay}
+                                    total-records={prjRecToDisplay.length} show-search-box="true"
+                                    onpaginatorchange={handlePaginationProjects}>
+                                 </c-core_-i-p-s_-paginator_-l-w-c>
+                              </template>
+                              <template if:true={isprojectpagination}>
+                                 <c-core_-i-p-s_-paginator_-l-w-c records={prjRecToDisplay}
+                                    total-records={prjRecToDisplay.length} show-search-box="true"
+                                    onpaginatorchange={handlePaginationProjects}>
+                                 </c-core_-i-p-s_-paginator_-l-w-c>
+                              </template>
+                           </div>
+                        </template>
+                     </template>
+                     <template if:false={projShowMsg}>
+                        <div class="slds-p-left_medium">
+                           <h2 style="font-size: 16px;  text-align:center; margin: 80px 0;"> No Project Records to Show
+                           </h2>
+                        </div>
+                     </template>
+                     <template if:true={error}>
+                        Project Error
+                     </template>
+                  </div>
+               </template>
+               <!--Project Section Ends-->
+               <!--Product Section Start-->
+               <template if:true={products}>
+                  <div style="margin-left: 17px;">
+                     <div class="slds-clearfix">
+                        <div class="slds-float_left slds-p-left_medium">
+                           <lightning-combobox style="width:230px;" name="productvalue" value={productvalue}
+                              options={productoptions} onchange={handleProductNavigation}></lightning-combobox>
+                        </div>
+                        <div class="slds-float_right slds-p-right_medium">
+                           <lightning-input type="search" onchange={ProductKeyChange}
+                              class="slds-m-bottom_small productSearch" placeholder="Search Product" maxlength="70">
+                           </lightning-input>
+                        </div>
+                     </div>
+                     <!-- <template if:true={editform}>
+                        <c-core_-I-P-S_-Edit-Form record-id={recordId}></c-core_-I-P-S_-Edit-Form>
+                     </template> -->
+                     <div class="">
+                        <template if:true={prdShowMsg}>
+                           <template if:true={productRecords}>
+                              <div>
+                                 <lightning-datatable class="products" key-field="Id" data={paginatedProducts}
+                                    columns={prodcolumnsResult} hide-checkbox-column="true" max-column-width="auto"
+                                    onrowaction={handleRowActionproducts} sorted-by={sortProductBy} column-widths-mode="auto"
+                                    sorted-direction={sortProductDirection} onsort={doProductSorting}>
+                                 </lightning-datatable>
+                              </div>
+                              <template if:false={isrefreshPageination}>
+                                 <div style="padding-top: 10px;">
+                                    <c-core_-i-p-s_-paginator_-l-w-c records={pdtRecToDisplay}
+                                       total-records={pdtRecToDisplay.length} show-search-box="true"
+                                       onpaginatorchange={handleprodPaginatorChange}>
+                                    </c-core_-i-p-s_-paginator_-l-w-c>
+                                 </div>
+                              </template>
+                              <template if:true={isrefreshPageination}>
+                                 <c-core_-i-p-s_-paginator_-l-w-c records={pdtRecToDisplay}
+                                    total-records={pdtRecToDisplay.length} show-search-box="true"
+                                    onpaginatorchange={handleprodPaginatorChange}>
+                                 </c-core_-i-p-s_-paginator_-l-w-c>
+                              </template>
+                           </template>
+                        </template>
+                        <template if:false={prdShowMsg}>
+                           <div class="slds-p-left_medium">
+                              <h2 style="font-size: 16px; margin:80px 0; text-align:center;"> No Product Records to Show
+                              </h2>
+                           </div>
+                        </template>
+                        <template if:true={error}>
+                           Product Error
+                        </template>
+                     </div>
+                     <template if:true={CaseCreation}>
+                        <lightning-icon icon-name="utility:error"
+                           alternative-text="You Can't create a case on Inactive Products" title="New Case">
+                        </lightning-icon>
+                     </template>
+                  </div>
+               </template>
+               <!--Product Section Ends-->
+
+               <!--Contact Section Start-->
+
+               <template if:true={contacts}>
+                  <div style="margin-left: 17px;">
+                     <div class="slds-clearfix">
+                        <div class="slds-float_left slds-p-left_medium">
+                        </div>
+                        <div class="slds-float_right slds-p-right_medium">
+                           <lightning-input type="search" onchange={ContactKeyChange}
+                              class="slds-m-bottom_small contactSearch" placeholder="Search Contact" maxlength="70">
+                           </lightning-input>
+                        </div>
+                     </div>
+                     <div class="">
+                        <template if:true={conShowMsg}>
+                           <template if:true={conRecToDisplay}>
+                              <div>
+                                 <lightning-datatable key-field="Id" data={paginatedContacts} columns={concolumnsResult}
+                                    hide-checkbox-column="true" sorted-by={sortContactBy} column-widths-mode="auto"
+                                    sorted-direction={sortContactDirection} onsort={doContactSorting} class="products">
+                                 </lightning-datatable>
+                              </div>
+                              <template if:false={isContactrefreshPageination}>
+                                 <c-core_-i-p-s_-paginator_-l-w-c records={conRecToDisplay}
+                                    total-records={conRecToDisplay.length} show-search-box="true"
+                                    onpaginatorchange={handlePaginationContacts}>
+                                 </c-core_-i-p-s_-paginator_-l-w-c>
+                              </template>
+                              <template if:true={isContactrefreshPageination}>
+                                 <c-core_-i-p-s_-paginator_-l-w-c records={conRecToDisplay}
+                                    total-records={conRecToDisplay.length} show-search-box="true"
+                                    onpaginatorchange={handlePaginationContacts}>
+                                 </c-core_-i-p-s_-paginator_-l-w-c>
+                              </template>
+                           </template>
+                        </template>
+                        <template if:false={conShowMsg}>
+                           <h2 style="font-size: 16px; margin: 80px 0; text-align: center;">No Contact Records to show
+                           </h2>
+                        </template>
+                        <template if:true={error}>
+                           Contact Error
+                        </template>
+                     </div>
+                  </div>
+               </template>
+            </div>
+            <!--Contact Section Ends-->
+         </lightning-layout-item>
+      </lightning-layout>
+   </div>
+   <div class="slds-grid slds-wrap mButtons">
+      <div class="slds-col slds-size_2-of-12 Rectangle">
+         <a href={label.MyIntelBusiness} target="_blank">
+            <span>My Intel Business Applications and Tools </span>
+         </a>
+      </div>
+      <div class="slds-col slds-size_2-of-12 Rectangle">
+         <a href="#" onclick={navigateToDisclaimer}>
+            <span>Confidentiality Statement</span>
+         </a>
+      </div>
+      <div class="slds-col slds-size_2-of-12 Rectangle">
+         <a href="#" onclick={navigateToPreference}>
+            <span>Preferences</span>
+         </a>
+      </div>
+      <div class="slds-col slds-size_2-of-12 Rectangle">
+         <a href={label.ResourceDesignCenter} target="_blank">
+            <span>Resource Design Center</span>
+         </a>
+      </div>
+      <div class="slds-col slds-size_2-of-12 Rectangle ">
+         <a href={label.VIP} target="_blank">
+            <span>Validation Internet Portal</span><br />(VIP)
+         </a>
+      </div>
+   </div>
+   <template if:true={isSpinner}>
+      <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+   </template>
+</template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Data_Ops_Non_Admin (Please don&apos;t nest users under this)</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Data_Ops_Non_Admin (Please don&apos;t nest users under this)</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Admin</parentRole>
+</Role>

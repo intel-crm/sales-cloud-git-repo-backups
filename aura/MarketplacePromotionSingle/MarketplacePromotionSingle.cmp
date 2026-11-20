@@ -1,0 +1,36 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" extends="c:MarketplaceRedux" description="Single Item Promotion">
+	<aura:set attribute="storeName" value="Settings" />
+
+	<aura:attribute name="loading" type="boolean" default="false" description="Internal component state"/>
+	<aura:attribute name="imageUrl" type="String" default="" description="Image 810px x 456 Minimum "/>
+	<aura:attribute name="title" type="String" default="" description="Title Text" />
+	<aura:attribute name="subTitle" type="String" default="" description="Sub Title Text" />
+	<aura:attribute name="ctaLink" type="String" default="" description="CTA Link URL"/>
+	<aura:attribute name="ctaLabel" type="String" default="" description="CTA Label"/>
+
+
+	<div>
+		<div class="container">
+			<lightning:layout multipleRows="true" class="{!(v.appState.Settings.currentScreenSize == 'mobile' ? '' : 'slds-grid_vertical-align-center')}">
+				<aura:if isTrue="{! v.loading }">
+					<lightning:layoutItem>
+						<lightning:spinner alternativeText="{!$Label.c.PMP_L1_Featured_Products_Loading}" size="small"/>
+					</lightning:layoutItem>
+
+					<aura:set attribute="else">
+						<lightning:layoutItem size="12" mediumDeviceSize="6" class="imageContainer imgleft">
+							<img src="{! v.imageUrl }" />
+						</lightning:layoutItem>
+						<lightning:layoutItem size="12" mediumDeviceSize="6" class="textContainer slds-grid ">
+							<div>
+								<h3 class="heading-28 color-blue slds-m-bottom_x-small">{! v.title }</h3>
+								<p class="slds-m-bottom_medium">{! v.subTitle }</p>
+								<c:IntelButton href="{! v.ctaLink }" openInNewTab="true" >{! v.ctaLabel }</c:IntelButton>
+							</div>
+						</lightning:layoutItem>
+					</aura:set>
+				</aura:if>
+			</lightning:layout>
+		</div>
+	</div>
+</aura:component>

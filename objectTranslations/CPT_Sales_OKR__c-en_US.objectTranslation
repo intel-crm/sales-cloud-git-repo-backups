@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales OKR</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales OKRs</value>
+    </caseValues>
+    <fields>
+        <label><!-- ElementID --></label>
+        <name>CPT_ElementID__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Name --></label>
+        <name>CPT_KPI_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Objective Grading --></label>
+        <name>CPT_Objective_Grading__c</name>
+    </fields>
+    <fields>
+        <label><!-- PlanID --></label>
+        <name>CPT_PlanID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Setup --></label>
+        <name>CPT_Quota_Setup__c</name>
+        <relationshipLabel><!-- Sales OKRs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales OKR Description --></label>
+        <name>CPT_SalesOKR_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales OKR # --></label>
+        <name>CPT_SalesOKR_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- PayeeID --></label>
+        <name>CPT_SalesOKR_PayeeID__c</name>
+    </fields>
+    <fields>
+        <label><!-- SalesOKRQuarterID --></label>
+        <name>CPT_SalesOKR_QuarterID__c</name>
+    </fields>
+    <fields>
+        <label><!-- SubElementID --></label>
+        <name>CPT_SubElementID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

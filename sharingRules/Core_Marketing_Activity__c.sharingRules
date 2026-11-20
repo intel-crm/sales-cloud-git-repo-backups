@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_Marketing_Activity_AllEmployees_Read_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Marketing Activity AllEmployees Read/Write</label>
+        <sharedTo>
+            <group>Core_MDM_All_Activity_Access_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Acer</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Acer</label>
+        <sharedTo>
+            <group>Core_MDM_Acer</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Acer</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Amazon</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Amazon</label>
+        <sharedTo>
+            <group>Core_MDM_Amazon</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Amazon</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Asus</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Asus</label>
+        <sharedTo>
+            <group>Core_MDM_Asus</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Asus</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Bull</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Bull</label>
+        <sharedTo>
+            <group>Core_MDM_Bull</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Bull</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Cisco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Cisco</label>
+        <sharedTo>
+            <group>Core_MDM_Cisco</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Cisco</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Dell</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Dell</label>
+        <sharedTo>
+            <group>Core_MDM_Dell</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Dell</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Fujitsu</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Fujitsu</label>
+        <sharedTo>
+            <group>Core_MDM_Fujitsu</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Fujitsu</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Google</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Google</label>
+        <sharedTo>
+            <group>Core_MDM_Google</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Google</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_HP</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM HP</label>
+        <sharedTo>
+            <group>Core_MDM_HP</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_HP</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Huawei</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Huawei</label>
+        <sharedTo>
+            <group>Core_MDM_Huawei</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Huawei</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_IBM</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM IBM</label>
+        <sharedTo>
+            <group>Core_MDM_IBM</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_IBM</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Lenovo</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Lenovo</label>
+        <sharedTo>
+            <group>Core_MDM_Lenovo</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Lenovo</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Microsoft</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Microsoft</label>
+        <sharedTo>
+            <group>Core_MDM_Microsoft</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Microsoft</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Oracle</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Oracle</label>
+        <sharedTo>
+            <group>Core_MDM_Oracle</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Oracle</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Samsung</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Samsung</label>
+        <sharedTo>
+            <group>Core_MDM_Samsung</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Samsung</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Core_MDM_Toshiba</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MDM Toshiba</label>
+        <sharedTo>
+            <group>Core_MDM_Toshiba</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_MDM_Toshiba</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product MM Attribute Event</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product MM Attribute Event</value>
+    </caseValues>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Load Status --></label>
+        <name>Load_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>iPaaS_Load_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

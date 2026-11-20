@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Execution</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Executions</value>
+    </caseValues>
+    <fields>
+        <help><!-- The average time a batch takes to execute. --></help>
+        <label><!-- Average Execution Time (Mins) --></label>
+        <name>espy__AverageExecutionTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date &amp; Time for Execution --></label>
+        <name>espy__Date_Time_for_Execution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>espy__Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- No.of Execution of the batch in a day. --></help>
+        <label><!-- Frequency --></label>
+        <name>espy__Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours --></label>
+        <name>espy__Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Execution Time --></label>
+        <name>espy__Last_Execution_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minutes --></label>
+        <name>espy__Minutes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Execution Time --></label>
+        <name>espy__Next_Execution_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Execution Time --></label>
+        <name>espy__Next_Execution_UserTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Time Run --></label>
+        <name>espy__One_Time_Run__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>espy__Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Query --></label>
+        <name>espy__Query__c</name>
+    </fields>
+    <fields>
+        <label><!-- Run By User Name --></label>
+        <name>espy__Run_By_User_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Run By User --></label>
+        <name>espy__Run_By_User__c</name>
+        <relationshipLabel><!-- Batch Executions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Scheduler Check Date --></label>
+        <name>espy__Scheduler_Check_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduler Check --></label>
+        <name>espy__Scheduler_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>espy__Scope_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted Date --></label>
+        <name>espy__Submitted_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time interval --></label>
+        <name>espy__Time_interval__c</name>
+        <picklistValues>
+            <masterLabel>Daily</masterLabel>
+            <translation><!-- Daily --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hourly</masterLabel>
+            <translation><!-- Hourly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minutes</masterLabel>
+            <translation><!-- Minutes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly</masterLabel>
+            <translation><!-- Monthly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Weekly</masterLabel>
+            <translation><!-- Weekly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yearly</masterLabel>
+            <translation><!-- Yearly --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>espy__isActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please enter scope size less than 200 --></errorMessage>
+        <name>espy__Batch_Size_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

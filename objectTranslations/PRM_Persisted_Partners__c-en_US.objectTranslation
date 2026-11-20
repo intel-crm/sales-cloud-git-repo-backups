@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Persisted Partners</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Persisted Partners</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Persisted Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Criteria --></label>
+        <name>PRM_Specialty_Criteria_Id__c</name>
+        <relationshipLabel><!-- Persisted Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Specialty --></label>
+        <name>PRM_Specialty_Id__c</name>
+        <relationshipLabel><!-- Persisted Partners --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

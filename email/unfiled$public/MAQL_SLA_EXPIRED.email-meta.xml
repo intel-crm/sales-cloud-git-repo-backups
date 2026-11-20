@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>MAQL SLA Expired</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Lead_Intel</letterhead>
+    <name>MAQL SLA EXPIRED</name>
+    <style>freeForm</style>
+    <subject>Please log an activity, call or email on your MQL lead.</subject>
+    <textOnly>Dear {!Lead.OwnerFirstName},
+
+The lead you own {!Lead.Name} from {!Lead.Company} in the MQL Stage, with priority of {!Lead.Core_Lead_Priority__c} must be contacted.
+
+Click here to visit this lead record in SFDC
+
+As a reminder, the following SLA is expected for MQL lead assigned to you:
+
+(&lt;Lead Priority&gt; if Hot): Lead Status must attempt contact within 1 business day.  Initial Activity (Email or Phone Call) must be logged the following business day.
+(&lt;Lead Priority&gt; if Warm): Lead Status must attempt contact within 2 business days.  Initial Activity (Email or Phone Call) must be logged the following business day.
+(&lt;Lead Priority&gt; if Cold): Lead Status must attempt contact within 4 business days.  Initial Activity (Email or Phone Call) must be logged the following business day.
+
+Please process your lead by updating the Lead Status and Sub Status as soon as possible. Non processed Leads will be reflected in reporting for Action.
+
+Leads move to a terminated state if there is no activity for 30 days and 90 days since the creation date.
+
+Thank you.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

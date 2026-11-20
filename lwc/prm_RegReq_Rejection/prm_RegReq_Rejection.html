@@ -1,0 +1,29 @@
+<!--
+    @description       : Self Registration Request record Reject button logic
+    @Created By        : Agate team
+    @last modified on  : 
+    @last modified by  : 
+-->
+<template>
+    <lightning-quick-action-panel title="Rejection Panel">
+        <lightning-spinner alternative-text="Loading" size="small" if:true={isSpinner} ></lightning-spinner>
+        <lightning-record-edit-form object-api-name="PRM_Registration_Request__c" record-id={recordId}>     
+            <lightning-messages></lightning-messages>
+            <!--Other fields here-->
+            <template if:true={showRejectReason}>
+                <lightning-input-field field-name="PRM_Reject_Reason__c" value={comments} onchange={handleReasonChange}> </lightning-input-field>
+            </template>
+            <template if:true={showSave}>
+                <div style="float:right">
+                    <lightning-button variant="brand" label="Save" onclick={handleSaveButton}></lightning-button> &nbsp; &nbsp;
+                    <lightning-button variant="destructive" label="Cancel" onclick={closeAction} ></lightning-button>
+                </div>
+                
+            </template> 
+        </lightning-record-edit-form>
+        
+        <div slot="footer">
+            <p class="slds-align_absolute-center">{formMessage}</p>
+        </div>
+    </lightning-quick-action-panel>
+</template>

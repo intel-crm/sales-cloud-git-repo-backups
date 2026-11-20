@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-form-element selectbox">
+        <!--<label class="slds-form-element__label" for="combobox-id-5"></label>-->
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                    aria-expanded="true" aria-haspopup="listbox" role="combobox" >
+                            <lightning-input class="availableBudgetsCmp" type="text" value={selectedmessage} label ={picklistlabel}
+                            onclick={handleShowdropdown} placeholder={placeholderText} required={enableRequired} disabled={disablePickilst}>
+                            <lightning-icon icon-name="utility:down" size="x-small" aria-hidden="true"
+                                alternative-text="drop-down" title="click to drop-down">
+                            </lightning-icon>
+                            </lightning-input>
+                            <template if:false={disablePickilst}>
+                    <template if:true={showdropdown}>
+                        <div id="listbox-id-5" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid adjustWidth"
+                            role="listbox" onmouseleave={handleleave}>
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation" style="width: fit-content;max-width:fit-content">
+                                <template for:each={values} for:item="eachvalue">
+                                    <c-core_-m-d-f_-campaign_-picklist_-selection key={eachvalue.label} label={eachvalue.label}
+                                        value={eachvalue.value} selected={eachvalue.selected} original-file-name={eachvalue.originalFileName} question-code={eachvalue.questionCode} parent-question-code={eachvalue.parentQueCode} onpicklistselection= {onPicklistSelection}>
+                                    </c-core_-m-d-f_-campaign_-picklist_-selection>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </template>
+                </div>
+            </div>           
+        </div>
+    </div>
+</template>

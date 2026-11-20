@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Routing Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Routing Rules</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is ASMO Country --></label>
+        <name>Pricing_ASMO_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Application --></label>
+        <name>Pricing_Application_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP</masterLabel>
+            <translation><!-- CoSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstations</masterLabel>
+            <translation><!-- Workstations --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Of Change Request --></label>
+        <name>Pricing_Change_Request_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Table Name --></label>
+        <name>Pricing_Decision_Table_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is End Customer On Exclusion List? --></label>
+        <name>Pricing_EndCust_Exclusion_List_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is End Customer On High Touch List? --></label>
+        <name>Pricing_EndCust_HighTouch_List_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is End Customer On CSP List? --></label>
+        <name>Pricing_EndCustomer_CSP_List_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country --></label>
+        <name>Pricing_End_Customer_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Covered Account --></label>
+        <name>Pricing_Is_Covered_Account_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Routing Rule Active --></label>
+        <name>Pricing_Is_Routing_Rule_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Segment --></label>
+        <name>Pricing_Market_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Consumer Retail Pull</masterLabel>
+            <translation><!-- Consumer Retail Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corp</masterLabel>
+            <translation><!-- Corp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:DSS</masterLabel>
+            <translation><!-- Embedded:DSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:EBM (Embedded Board Manufacturer)</masterLabel>
+            <translation><!-- Embedded:EBM (Embedded Board Manufacturer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Energy</masterLabel>
+            <translation><!-- Embedded:Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Gaming</masterLabel>
+            <translation><!-- Embedded:Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Industrial</masterLabel>
+            <translation><!-- Embedded:Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:MAG (Military Aerospace Govt)</masterLabel>
+            <translation><!-- Embedded:MAG (Military Aerospace Govt) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Medical</masterLabel>
+            <translation><!-- Embedded:Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Other</masterLabel>
+            <translation><!-- Embedded:Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Print Imaging</masterLabel>
+            <translation><!-- Embedded:Print Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Thin Client</masterLabel>
+            <translation><!-- Embedded:Thin Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transactional Retail</masterLabel>
+            <translation><!-- Embedded:Transactional Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transportation</masterLabel>
+            <translation><!-- Embedded:Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Visual Retail</masterLabel>
+            <translation><!-- Embedded:Visual Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB</masterLabel>
+            <translation><!-- SMB --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Maximum Quote Quantity Allowed --></label>
+        <name>Pricing_Maximum_Quote_Qty_Allowed_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Requested Quantity --></label>
+        <name>Pricing_Overall_Quote_Quantity_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Type --></label>
+        <name>Pricing_Program_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Incentive</masterLabel>
+            <translation><!-- Financial Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ PMem</masterLabel>
+            <translation><!-- Optane™ PMem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ SSD</masterLabel>
+            <translation><!-- Optane™ SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Volume Quotes - Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Small Volume Quotes - Data Center Xeon® CPU --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Group Name --></label>
+        <name>Pricing_RPM_Group_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Pricing_Region_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Route Rule Name --></label>
+        <name>Pricing_Route_Rule_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Segmentation --></label>
+        <name>Pricing_Routing_Output_Criteria_Nm__c</name>
+        <picklistValues>
+            <masterLabel>High Touch</masterLabel>
+            <translation><!-- High Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Touch</masterLabel>
+            <translation><!-- Low Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Touch</masterLabel>
+            <translation><!-- No Touch --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Pricing Manager Email --></label>
+        <name>Pricing_Routing_RPM_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Routing Rule End Date --></label>
+        <name>Pricing_Routing_Rule_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Routing Rule Id --></label>
+        <name>Pricing_Routing_Rule_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Routing Rule Start Date --></label>
+        <name>Pricing_Routing_Rule_Start_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Pricing End Date should be today or in future. --></errorMessage>
+        <name>Pricing_EndDateCannotBePast_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Requested Quantity and  Maximum Quantity Allowed should be greater than 0. --></errorMessage>
+        <name>Pricing_MinMax_Quantity_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Routing Rule Start Date or Routing Rule End Date cannot be blank. --></errorMessage>
+        <name>Pricing_RouteRuleStartAnd_EndDate_Null</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Provide Value for Either Pricing Manager Email or Pricing Manager Group Name. --></errorMessage>
+        <name>Pricing_RouteRule_EitherRPMEmailOrRPMGrp</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Routing Rule End Date is before Routing Rule Start Date. Please enter a Routing Rule End Date that is after the Routing Rule Start Date. --></errorMessage>
+        <name>Pricing_RuleEndDate_Before_RuleStartDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Either Routing Rule Start Date or Routing Rule End Date has already passed. Please ensure both dates are in the future. --></errorMessage>
+        <name>Pricing_RuleStartAndEndDate_In_Past</name>
+    </validationRules>
+</CustomObjectTranslation>

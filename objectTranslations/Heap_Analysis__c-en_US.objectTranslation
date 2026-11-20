@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Heap Analysis</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Heap Analysis</value>
+    </caseValues>
+    <fields>
+        <label><!-- After FPH CPU Time --></label>
+        <name>After_FPH_CPU_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- After FPH Heap Size --></label>
+        <name>After_FPH_Heap_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- After IPS CPU Time --></label>
+        <name>After_IPS_CPU_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- After IPS Heap Size --></label>
+        <name>After_IPS_Heap_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- After Mapping CPU Time --></label>
+        <name>After_Mapping_CPU_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- After Mapping Heap Size --></label>
+        <name>After_Mapping_Heap_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- After Sales And FPH CPU Time --></label>
+        <name>After_Sales_And_FPH_CPU_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- After Sales And FPH Heap Size --></label>
+        <name>After_Sales_And_FPH_Heap_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- After Sales CPU Time --></label>
+        <name>After_Sales_CPU_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- After Sales Heap Size --></label>
+        <name>After_Sales_Heap_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class Name --></label>
+        <name>Class_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Elapsed Time --></label>
+        <name>Elapsed_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Time --></label>
+        <name>End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Output Record Count --></label>
+        <name>Output_Record_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q Number --></label>
+        <name>Q_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Count --></label>
+        <name>Record_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Time --></label>
+        <name>Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>iPaaS_Load_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

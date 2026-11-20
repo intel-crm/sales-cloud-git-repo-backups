@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Discuss, negotiate and finalize the PO",
+  "contentBody" : {
+    "description" : "With a successful POC completed, the next step is the discussion with the customer on finalizing the PO.",
+    "sections" : [ {
+      "content" : "<div>After a successful POC, the discussions need to occur with the customer on the business negotiations and steps to transform from a POC to a PO.</div><div><br /></div><div>The end goal of these discussions is getting the PO in hand and finalized to purchase.</div>",
+      "keyConcept" : "Moving from POC to Win",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1
+  },
+  "urlName" : "discuss-negotiate-and-finalize-the-po"
+}

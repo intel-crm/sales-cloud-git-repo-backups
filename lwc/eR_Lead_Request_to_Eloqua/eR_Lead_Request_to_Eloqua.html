@@ -1,0 +1,16 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    <lightning-quick-action-panel>
+        <p>{label.EloquaLabel}</p>
+        <div slot="footer">
+            <lightning-button variant="neutral" label="Cancel" onclick={closeAction}></lightning-button> &nbsp;
+            <lightning-button variant="brand" label="Create" onclick= {leadCreation}></lightning-button>
+          </div>
+        
+    </lightning-quick-action-panel>
+</template>

@@ -1,0 +1,109 @@
+<template>
+	<div class="slds-template__container">
+	<template lwc:if={categoryColumn}>
+		<table id="AaqId" cellpadding="0" cellspacing="0">
+			<tr>
+				<th colspan="2"
+					style="padding-left:0;background:#1797c0; color:#fff;">
+					<div style="display:flex;align-items: center;width:100%;">
+						<div style="flex-basis:30%;display:flex;align-items:center;">
+							<h1 style="font-size: 16px;font-weight: 500;margin-left:20px;">Please Select a Topic</h1>
+						</div>
+						<div style="flex-basis:50%;display:flex;align-items:center;justify-content:flex-start;">
+							<div class="oneai-banner">
+    <span class="oneai-banner-info">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><circle cx="8" cy="8" r="8" fill="#1797c0"/><text x="8" y="12" text-anchor="middle" font-size="12" fill="#fff" font-family="Arial, sans-serif">i</text></svg>
+    </span>
+    <span class="oneai-banner-text">
+        {chatBanner}
+    </span>
+    <a href="javascript:void(0);" class="oneai-banner-link" onclick={openChatModal}>Try it Now</a>
+</div>
+						</div>
+						<div style="flex-basis:20%;display:flex;align-items:center;justify-content:flex-end;">
+							<div class="tooltip-container">
+								<div style="justify-content: center;display: flex; flex-wrap: wrap;">
+									<div class="tooltip-text slds-nubbin_bottom-left">Only Service Cloud cases are visible from this button.</div>
+									<button onclick={navigateRelatedListView} class="slds-button slds-button_outline-brand" style="display:flex;cursor:pointer;">My Service Cases</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</th>
+			</tr>
+			<template for:each={categoryColumn} for:item="profiles" for:index="index">
+    <template if:true={profiles.Core_Run_As_Flow__c}>
+        <tr key={profiles.Id} class={profiles.rowClass} style="display: flex;">
+            <td style="flex-basis: auto; display: flex; align-items: center; gap: 0.15rem; min-width: fit-content;">
+                <button onclick={handleModal} style="border: 0px; max-width: 195px; height: 45px; cursor:pointer; flex-shrink: 0;" data-val={profiles.Name}>
+                    <img src={profiles.imageURL} class="imgAAQ"/>
+                </button>
+                <!-- Chat Button for Sales CRM, Access and Entitlement, Intel Premier Support -->
+                <template if:true={profiles.isChatBotProfile}>
+                    <div class="oneai-tooltip-container">
+                        <button onclick={openChatModal} data-chat-url={profiles.chatUrl} style="border: 0px; max-width: 195px; height: 45px;cursor:pointer; flex-shrink: 0;">
+                            <img src="/resource/AAQ_OneAIChatBot" class="imgAAQ"/>
+                        </button>
+                        <span class="oneai-tooltip-text">
+                            {profiles.tooltipText}
+                        </span>
+                    </div>
+                </template>
+            </td>
+            <td style="align-items: center; display: flex; flex-basis: 100%">
+                <lightning-formatted-rich-text value={profiles.desc}></lightning-formatted-rich-text>
+            </td>
+        </tr>
+    </template>
+    <template if:false={profiles.Core_Run_As_Flow__c}>
+        <tr key={profiles.Id} class={profiles.rowClass} style="display: flex;">
+            <td style="flex-basis: auto; display: flex; align-items: center; gap: 0.15rem; min-width: fit-content;">
+                <a href={profiles.Core_Profile_Url__c} target="_blank" id={profiles.Name}
+                    style="border: 0px; max-width: 195px; height: 45px; flex-shrink: 0;">
+                    <img src={profiles.imageURL} class="imgAAQ"/>
+                </a>
+                <!-- Chat Button for Sales CRM, Access and Entitlement, Intel Premier Support -->
+                <template if:true={profiles.isChatBotProfile}>
+                    <div class="oneai-tooltip-container">
+                        <button onclick={openChatModal} data-chat-url={profiles.chatUrl} style="border: 0px; max-width: 195px; height: 45px;cursor:pointer; flex-shrink: 0;">
+                            <img src="/resource/AAQ_OneAIChatBot" class="imgAAQ"/>
+                        </button>
+                        <span class="oneai-tooltip-text">
+                            {profiles.tooltipText}
+                        </span>
+                    </div>
+                </template>
+            </td>
+            <td style="align-items: center; display: flex; flex-basis: 100%">
+                <lightning-formatted-rich-text value={profiles.desc}></lightning-formatted-rich-text>
+            </td>
+        </tr>
+    </template>
+</template>
+		</table>
+	</template>
+	<template lwc:if={error}>
+		<p>{error}</p>
+	</template>
+	<template lwc:if={isModel}>
+		<c-core_aaqcase modalheader={modalHeader} ismodal={isModel} onclosemodal={handleModalClose}></c-core_aaqcase>
+	</template>
+	<!-- Responsive Chat Panel as Modal -->
+	<template if:true={showIframe}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-outer">
+      <div class="slds-modal__container modal-container">
+        <header class="slds-modal__header modal-header">
+          <h2 class="slds-modal__title modal-title">{chatHeader}</h2>
+          <button class="slds-button slds-button_icon slds-modal__close custom-close-btn modal-close-btn" title="Close" onclick={closeChatPanel}>
+            <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+          </button>
+        </header>
+        <div class="slds-modal__content modal-content">
+          <iframe src={chatUrl} class="chat-iframe"></iframe>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+	</div>
+</template>

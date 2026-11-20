@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Create/Edit Default Account Teams</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/create-and-edit-a-default-account-team/</actionButtonLink>
+        <body>&lt;p&gt;Setting a default Account Team is an easy way to save time when creating new accounts.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To create a default Account Team,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Click the &lt;strong&gt;View Profile&lt;/strong&gt; icon to access your Sales CRM profile, then select &lt;strong&gt;Settings&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;From your &lt;em&gt;Profile Settings&lt;/em&gt; page, click &lt;strong&gt;My Personal Information&lt;/strong&gt; from the left-hand column to expand the personal options, if it is not already done for you.&lt;/li&gt;&lt;li&gt;Select &lt;strong&gt;Advanced User Details&lt;/strong&gt;. The &lt;em&gt;Advanced User Details&lt;/em&gt; page opens.&lt;/li&gt;&lt;li&gt;Hover over the &lt;strong&gt;Default Account Team&lt;/strong&gt; link to bring up a pop-menu and click the &lt;strong&gt;Add&lt;/strong&gt; button. The &lt;em&gt;Add Members&lt;/em&gt; page opens.&lt;/li&gt;&lt;li&gt;Click the magnifying glass next to the blank user field to search for the person you want to add.&lt;/li&gt;&lt;li&gt;Once a member has been selected, use the drop-down fields to set their access levels for &lt;strong&gt;Account Access&lt;/strong&gt;, &lt;strong&gt;Opportunity Access&lt;/strong&gt;, and &lt;strong&gt;Case Access&lt;/strong&gt;, as well as their &lt;strong&gt;Team Role&lt;/strong&gt; - refer to Member Access Levels below.&lt;/li&gt;&lt;li&gt;Using the check boxes at the top, select whether you’d like your default team to automatically be added to all new and/or existing accounts.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Member Access Levels&lt;/strong&gt;:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Read Only: User will see Accounts/Opportunities/Cases but unable to edit&lt;/li&gt;&lt;li&gt;Read/Write: User will be able to see and edit Accounts/Opportunities/Cases&lt;/li&gt;&lt;li&gt;Private: Applies to Opportunities/Cases – User will see the record only if they are explicitly added to it&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To edit your existing Default Account Team, access your default Account Team on the &lt;em&gt;Advanced User Details&lt;/em&gt; page (described above). Use the &lt;strong&gt;Edit&lt;/strong&gt;/&lt;strong&gt;Del &lt;/strong&gt;&amp;nbsp;links to change a current team member’s permissions, or to remove them from the team.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Create/Edit Default Account Teams</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Create/Edit Default Account Teams</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Create/Edit Default Account Teams</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

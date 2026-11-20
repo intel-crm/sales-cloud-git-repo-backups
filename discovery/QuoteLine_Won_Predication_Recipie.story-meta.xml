@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryStory xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <application>IQR_Pricing_Analytics</application>
+    <autopilot>Disabled</autopilot>
+    <classificationThreshold>0.699</classificationThreshold>
+    <label>QuoteLine Won Predication Recipie</label>
+    <outcome>
+        <failureValue>Lost</failureValue>
+        <field>Pricing_Status_Nm__c</field>
+        <goal>Maximize</goal>
+        <label>Quote Line Status</label>
+        <successValue>Won</successValue>
+        <type>Text</type>
+    </outcome>
+    <sourceContainer>IQR_QuoteLine_Won_Predication_Recipie</sourceContainer>
+    <sourceType>AnalyticsDataset</sourceType>
+</DiscoveryStory>

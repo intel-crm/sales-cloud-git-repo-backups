@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Approval_Email_for_Approver</name>
+        <label>Approval Email for Approver</label>
+        <locationX>886</locationX>
+        <locationY>1334</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Approver_Email_for_Partner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_deal_record.Core_Intel_Technical_Owner_Id__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Approved Converted to Opportunity</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>ApproverEmailBodyForApprover</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Approver_Email_for_Partner</name>
+        <label>Approver Email for Partner</label>
+        <locationX>886</locationX>
+        <locationY>1442</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Create_partner_email_log</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_deal_record.Owner:User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Deal Approved Converted to Opportunity</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>PartnerApprovalEmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Process_design_reg_OLI</name>
+        <label>Process design reg OLI</label>
+        <locationX>1810</locationX>
+        <locationY>386</locationY>
+        <actionName>PCC_ProcessDesignOLIs</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>ddrIds</name>
+            <value>
+                <elementReference>$Record.PCC_Record_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_ProcessDesignOLIs</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Process_design_reg_opportunity</name>
+        <label>Process design reg opportunity</label>
+        <locationX>1546</locationX>
+        <locationY>386</locationY>
+        <actionName>PCC_ProcessDesignOpportunity</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>ddrIds</name>
+            <value>
+                <elementReference>$Record.PCC_Record_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_ProcessDesignOpportunity</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_column_to_email_table</name>
+        <label>Add column to email table</label>
+        <locationX>886</locationX>
+        <locationY>494</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EmailTableColumns</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDealDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Add_Email_Table_row_to_table_markup</name>
+        <label>Add Email Table row to table markup</label>
+        <locationX>974</locationX>
+        <locationY>710</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EmailTableRowForApproval</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IterateOverDealDRP</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_deal_process_message_with_error</name>
+        <label>Assign deal process message with error</label>
+        <locationX>380</locationX>
+        <locationY>1094</locationY>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.PCC_Deal_Approval_Process_Message__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>errorMsg</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.PCC_Opportunity_Quote_creation_failed__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>rowLockFailure</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_deal_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_deal_process_message_with_success</name>
+        <label>Assign deal process message with success</label>
+        <locationX>1018</locationX>
+        <locationY>1766</locationY>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.PCC_Deal_Approval_Process_Message__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Successfully processed</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_deal_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_deal_process_message_with_success_Opportunity</name>
+        <label>Assign deal process message with success Opportunity</label>
+        <locationX>1282</locationX>
+        <locationY>386</locationY>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.PCC_Deal_Approval_Process_Message__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Successfully processed - Non PDI</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_deal_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_re_try_on_deal</name>
+        <label>Assign re-try on deal</label>
+        <locationX>50</locationX>
+        <locationY>710</locationY>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.PCC_Deal_re_try_count__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>retryCount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_deal_process_message_with_error</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Change_status_to_deal_accepted_for_review</name>
+        <label>Change status to deal accepted for review</label>
+        <locationX>314</locationX>
+        <locationY>710</locationY>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.Core_Design_Registration_Status_Nm__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Deal accepted</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_deal_record.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Deal_Registration_Partner_record_type.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Publish_event_for_refresh</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Close_Email_Table_Row_for_markup</name>
+        <label>Close Email Table Row for markup</label>
+        <locationX>886</locationX>
+        <locationY>902</locationY>
+        <assignmentItems>
+            <assignToReference>table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>get_intel_logo_link</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Deal_Resubmission_Email</name>
+        <label>Deal Resubmission Email</label>
+        <locationX>1227</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Error</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failure</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Error_Message__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Row_lock_issue</targetReference>
+            </connector>
+            <label>Error</label>
+        </rules>
+        <rules>
+            <name>Quote_Created_Success</name>
+            <conditionLogic>(1 AND 2 AND 3) OR 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Success</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Object__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Record_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Resubmission Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetDealRegProductRecords</targetReference>
+            </connector>
+            <label>Quote Created Success</label>
+        </rules>
+        <rules>
+            <name>Opportunity_Created_Success</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Success</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Object__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opportunity</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Record_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_deal_process_message_with_success_Opportunity</targetReference>
+            </connector>
+            <label>Opportunity Created Success</label>
+        </rules>
+        <rules>
+            <name>Create_Design_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Object__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opportunity</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Design</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Process_design_reg_opportunity</targetReference>
+            </connector>
+            <label>Create Design Opportunity</label>
+        </rules>
+        <rules>
+            <name>Create_Design_OLI</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Object__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OLI</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Design</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Process_design_reg_OLI</targetReference>
+            </connector>
+            <label>Create Design OLI</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Resubmission_Flow</name>
+        <label>Is Resubmission Flow?</label>
+        <locationX>886</locationX>
+        <locationY>1658</locationY>
+        <defaultConnector>
+            <targetReference>Assign_deal_process_message_with_success</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Resubmission_Email1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PCC_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Resubmission Email</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Resubmission Email?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Retry_count_is_under_3</name>
+        <label>Retry count is under 3</label>
+        <locationX>182</locationX>
+        <locationY>494</locationY>
+        <defaultConnector>
+            <targetReference>Get_Deal_Registration_Partner_record_type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>retryCount</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Publish_event_for_re_try</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Row_lock_issue</name>
+        <label>Row lock issue?</label>
+        <locationX>380</locationX>
+        <locationY>386</locationY>
+        <defaultConnector>
+            <targetReference>Assign_deal_process_message_with_error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>rowLockFailure</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Design__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Retry_count_is_under_3</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>currentyear</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR(TODAY()))</expression>
+    </formulas>
+    <formulas>
+        <name>EmailTableRowForApproval</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;tr&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDealDRP.Name}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDealDRP.Core_Product_Id__r.Name}+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDealDRP.Core_Design_Product_Status_Nm__c})+ 
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDealDRP.Core_Comment_Txt__c}+
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDealDRP.CreatedDate})+ 
+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>errorMsg</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;b&gt;Please raise an IT support ticket&lt;/b&gt; &lt;br/&gt;&lt;br/&gt; Error while creating &apos;&amp;{!$Record.PCC_Object__c}&amp;&apos;-&apos;&amp;{!$Record.PCC_Error_Message__c}</expression>
+    </formulas>
+    <formulas>
+        <name>retryCount</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISBLANK({!Get_deal_record.PCC_Deal_re_try_count__c}) ,
+1,
+{!Get_deal_record.PCC_Deal_re_try_count__c} + 1
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>rowLockFailure</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Record.PCC_Error_Message__c}, &apos;unable to obtain exclusive access to this record&apos;)</expression>
+    </formulas>
+    <interviewLabel>Deal Approval Process Communication Error Handling {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Deal Approval Process Communication Error Handling</label>
+    <loops>
+        <name>IterateOverDealDRP</name>
+        <label>IterateOverDealDRP</label>
+        <locationX>886</locationX>
+        <locationY>602</locationY>
+        <collectionReference>GetDealRegProductRecords</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Email_Table_row_to_table_markup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Close_Email_Table_Row_for_markup</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_partner_email_log</name>
+        <label>Create partner email log</label>
+        <locationX>886</locationX>
+        <locationY>1550</locationY>
+        <connector>
+            <targetReference>Is_Resubmission_Flow</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Email_Template_Name__c</field>
+            <value>
+                <stringValue>Deal Approved Notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Language__c</field>
+            <value>
+                <stringValue>English</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Contact__c</field>
+            <value>
+                <elementReference>Get_deal_record.Owner:User.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_EmailContent__c</field>
+            <value>
+                <elementReference>PartnerApprovalEmailBody</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_EmailDeliverabilityStatus__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Email_API_Response__c</field>
+            <value>
+                <stringValue>Mail sent successfully !!</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Subject__c</field>
+            <value>
+                <stringValue>Deal Approved Converted to Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Timestamp__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_ToEmailID__c</field>
+            <value>
+                <elementReference>Get_deal_record.Owner:User.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_User__c</field>
+            <value>
+                <elementReference>Get_deal_record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PRM_EmailLog__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Publish_event_for_re_try</name>
+        <label>Publish event for re-try</label>
+        <locationX>50</locationX>
+        <locationY>602</locationY>
+        <connector>
+            <targetReference>Assign_re_try_on_deal</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>PCC_Object__c</field>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Record_ID__c</field>
+            <value>
+                <elementReference>$Record.PCC_Record_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Retry__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Type__c</field>
+            <value>
+                <stringValue>Create</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Publish_event_for_refresh</name>
+        <label>Publish event for refresh</label>
+        <locationX>314</locationX>
+        <locationY>818</locationY>
+        <connector>
+            <targetReference>Assign_deal_process_message_with_error</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>PCC_Record_ID__c</field>
+            <value>
+                <elementReference>$Record.PCC_Record_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PCC_Type__c</field>
+            <value>
+                <stringValue>Refresh</stringValue>
+            </value>
+        </inputAssignments>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_deal_record</name>
+        <label>Get deal record</label>
+        <locationX>1227</locationX>
+        <locationY>170</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Deal_Resubmission_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PCC_Record_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_Design_Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Deal_Registration_Partner_record_type</name>
+        <label>Get Deal Registration - Partner record type</label>
+        <locationX>314</locationX>
+        <locationY>602</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Change_status_to_deal_accepted_for_review</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Deal_Registration_Partner</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_external_record_link</name>
+        <label>get external record link</label>
+        <locationX>886</locationX>
+        <locationY>1226</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Approval_Email_for_Approver</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_External_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_intel_logo_link</name>
+        <label>get intel logo link</label>
+        <locationX>886</locationX>
+        <locationY>1010</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_internal_record_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Intel_Logo_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_internal_record_link</name>
+        <label>get internal record link</label>
+        <locationX>886</locationX>
+        <locationY>1118</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_external_record_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Internal_Record_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetDealRegProductRecords</name>
+        <label>GetDealRegProductRecords</label>
+        <locationX>886</locationX>
+        <locationY>386</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Add_column_to_email_table</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_deal_record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_deal_record</name>
+        <label>Update deal record</label>
+        <locationX>1227</locationX>
+        <locationY>2042</locationY>
+        <inputReference>Get_deal_record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1101</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_deal_record</targetReference>
+        </connector>
+        <flowRunAsUser>TriggeringUser</flowRunAsUser>
+        <object>PCC_Deal_Approval_Process_Communication__e</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>ApproverEmailBodyForApprover</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;Deal Registration Approved&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ Hello {!Get_deal_record.Core_Intel_Technical_Owner_Id__r.FirstName},
+&lt;br&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
+An &lt;b&gt;Opportunity has been created &lt;/b&gt;for your deal registration.
+&lt;br&gt;
+&lt;br&gt;
+&lt;i&gt;Please note that this email confirms only the creation of the opportunity and not the incentive approval.&lt;/i&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!Get_deal_record.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!Get_deal_record.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;External ID: &lt;/b&gt;{!Get_deal_record.PCC_Partner_Reference_ID__c}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!Get_deal_record.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;b&gt;Opportunity: &lt;/b&gt; Click &lt;a href={!get_internal_record_link.Value__c}{!Get_deal_record.Core_Opportunity_Id__c}&gt;here&lt;/a&gt; to view
+&lt;br&gt;
+{!table}
+&lt;br&gt;
+&lt;b&gt;You will receive a separate notification once the incentive approval is completed.&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;
+For more details, you can access the opportunity record &lt;a href={!get_internal_record_link.Value__c}{!Get_deal_record.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager or utilize the Chatter feature on the Opportunity.
+&lt;br&gt;
+&lt;br&gt;
+It is the Intel Partner&apos;s responsibility to understand the export, customs and sanction controls applicable to the Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PartnerApprovalEmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;Deal Registration Approved&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+Hello {!Get_deal_record.Owner:User.FirstName},
+&lt;br&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
+An &lt;b&gt;Opportunity has been created &lt;/b&gt;for your deal registration.
+&lt;br&gt;
+&lt;br&gt;
+&lt;i&gt;Please note that this email confirms only the creation of the opportunity and not the incentive approval.&lt;/i&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!Get_deal_record.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!Get_deal_record.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;External ID: &lt;/b&gt;{!Get_deal_record.PCC_Partner_Reference_ID__c}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!Get_deal_record.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;b&gt;Opportunity: &lt;/b&gt; Click &lt;a href={!get_external_record_link.Value__c}opportunity/{!Get_deal_record.Core_Opportunity_Id__c}&gt;here&lt;/a&gt; to view
+&lt;br&gt;
+{!table}
+&lt;br&gt;
+&lt;b&gt;You will receive a separate notification once the incentive approval is completed.&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;
+For more details, you can access the opportunity record &lt;a href={!get_external_record_link.Value__c}opportunity/{!Get_deal_record.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager or utilize the Chatter feature on the Opportunity.
+&lt;br&gt;
+&lt;br&gt;
+It is the Intel Partner&apos;s responsibility to understand the export, customs and sanction controls applicable to the Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>EmailTableColumns</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;tr&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Id&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Product Name&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Status&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Comment&lt;/th&gt; &lt;th style=&quot;border: 1px solid black;&quot;&gt;Created Date&lt;/th&gt;  &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>ErrorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ResponseMessage</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>table</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table border=&quot;1&quot; style=&quot;border-collapse: collapse; width:550px&quot;&gt;</stringValue>
+        </value>
+    </variables>
+</Flow>

@@ -1,0 +1,143 @@
+<template>
+  
+  <template if:true={acctReasonCreate}>
+    <template if:true={isSpinner}>
+      <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
+    </template>
+    <template if:false={isSpinner}>
+      <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+
+        <div class="slds-modal__content slds-is-relative">
+        </div>
+
+        
+        <template if:true={AuthorizedUser}>
+        <div>
+        <!-- Header Start -->
+        <header class="slds-modal__header" style="text-align: left;">
+          <lightning-button-icon
+            class="slds-modal__close"
+            title="Close"
+            icon-name="utility:close"
+            icon-class="slds-button_icon-inverse"
+            onclick={closeModal}
+          ></lightning-button-icon>
+
+          <h2 class="slds-text-heading_medium slds-hyphenate header-string">
+              New Account Request
+          </h2>
+        </header>
+        <!-- Header End -->
+        <div
+          class="slds-modal__content slds-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <slot>
+           <p>What is the reason for the new account request?</p><br>
+        
+            <div class="">
+              
+              <fieldset class="slds-form-element">
+                
+                <div class="slds-form-element__control">
+                <span if:true={validUserForSBRRequest} class="slds-radio">
+              
+                <input type="radio" id="radio-63" value= {requestValueOption1} name="options" checked onclick ={handleSaveTrail}/>
+                <label class="slds-radio__label" for="radio-63">
+                <span class="slds-radio_faux"></span>
+                <span class="slds-form-element__label" style="font-weight:bold">Opportunity Management</span>
+                <br>
+                </label>
+                <p class="slds-p-left_large"><lightning-formatted-text value='Use when a new account is needed to create opportunities. Includes Opportunity registration (Design & Deal). Any Intel Led sales group selection will initiate additional review for SMG approval process.' ></lightning-formatted-text></p>              
+                  <input type="radio" id="radio-66" value= {requestValueOption3} name="options"  onclick ={handleSaveTrail}/>
+                  <label class="slds-radio__label" for="radio-66">
+                  <span class="slds-radio_faux"></span>
+                  <span class="slds-form-element__label" style="font-weight:bold">Co-Marketing/MDF</span>
+                  <br>
+                  </label>
+                  <p class="slds-p-left_large"><lightning-formatted-text value='Used by admins supporting the Partner Investment Center setup and onboarding.' ></lightning-formatted-text></p>
+                    <input type="radio" id="radio-68" value= {requestValueOption5} name="options" onclick ={handleSaveTrail}/>
+                    <label class="slds-radio__label" for="radio-68">
+                    <span class="slds-radio_faux"></span>
+                    <span class="slds-form-element__label" style="font-weight:bold">Access & Entitlement for External Contacts Onboarding</span>
+                    <br>
+                    </label>
+                    <p class="slds-p-left_large"><lightning-formatted-text value='Used by business operations supporting external contact onboarding entitlements setup to specific content or applications.' ></lightning-formatted-text></p>
+                  </span>
+                    <span if:true={validUserForPartner} class="slds-radio">
+                    <input type="radio" id="radio-81" value= {requestValueOption4} name="options" onclick ={handleSaveTrail}/>
+                    <label class="slds-radio__label" for="radio-81">
+                    <span class="slds-radio_faux"></span>
+                    <span class="slds-form-element__label" style="font-weight:bold">Intel Partner Alliance</span>
+                    <br>
+                    </label>
+                    <p class="slds-p-left_large"><lightning-formatted-text value='Not for sellers. Used by admins supporting IPA partner registration membership setup and onboarding.' ></lightning-formatted-text></p>
+                    </span>
+                <span if:true={validUserForSBRRequest} class="slds-radio">
+                <input type="radio" id="radio-80" value= {requestValueOption2} name="options" onclick ={handleSaveTrail}/>
+                <label class="slds-radio__label" for="radio-80">
+                <span class="slds-radio_faux"></span>
+                <span class="slds-form-element__label" style="font-weight:bold">Other Support Use</span>
+                </label>
+                <p class="slds-p-left_large"><lightning-formatted-text value='Not for sellers. For business operations when reason is not due to opportunity management, access & entitlement for external contacts, Intel Partner Alliance or Partner Investment center setup.' ></lightning-formatted-text></p>
+                </span>
+                </div>
+                </fieldset>
+          </div>
+           </slot>
+        </div>
+        <footer class = "slds-modal__footer" style="padding-right: 33rem;">
+          <lightning-button  id = "btn" variant="brand" label="Continue" class="slds-m-left_x-small" onclick={handleSave} ></lightning-button>
+        </footer>
+      </div>
+      </template>
+
+
+
+        <template if:false={AuthorizedUser}>
+          <lightning-button-icon
+              class="slds-modal__close"
+              title="Close"
+              icon-name="utility:close"
+              icon-class="slds-button_icon-inverse"
+              onclick={closepopup}
+            ></lightning-button-icon>
+           
+           <div class="demo-only" style="padding:0.5rem;background:#eff0f3">
+            <div class="slds-text-color_regular">Insufficient Privileges. You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary.</div>
+          </div>
+        </template>
+      </div>
+    </section>
+  </template>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+    
+  </template>
+  
+      <lightning-layout multiple-rows="true">
+          <lightning-layout-item padding="around-small" size="12">
+              <template if:true={acctSearchStep}>
+                  <c-search-account-Screen1 acctreasontrail={acctReasonTrail} onacctsearchnextclick={acctSearchNextClickHandler}>
+                  </c-search-account-Screen1>
+              </template>
+              <template if:true={acctCreateStep}>
+                <div class="background">
+                  <c-ucd_-a-c-m_-create_-account_-s-b-r onacctcreatebackclick={acctCreateBackClickHandler}
+                      acctformdetails={acctDetails} acctreasontrail={acctReasonTrail}>
+                  </c-ucd_-a-c-m_-create_-account_-s-b-r>
+                </div>
+              </template>
+              
+          </lightning-layout-item>
+      </lightning-layout>
+</template>

@@ -1,0 +1,32 @@
+<aura:documentation>
+	<aura:description>
+    <p>Marketplace Help and Training Card List Component</p>
+	
+  	<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/marketplace-help">
+		Preview in Marketplace help page -  Help &amp; Training For You
+	  </a>
+    <br/>
+    	
+  	<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/marketplace-dashboard?language=en_US">
+      Preview in Marketplace Dasboard page -  Help &amp; Training For You
+      </a>
+      <br/>
+    <a href="https://intel--nppdevpmp--sitepreview.cs67.force.com/styleguide/s/components-simple-card-list?language=en_US">
+      List of Simple Card List Types
+    </a>
+
+	
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 8/1/2019</p>
+    <p>CurrentVersion: 1.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+  	<p>Used primarily in the Marketplace Help and Marketplace Dashboard pages. Currently the text and data is updated based on the page type design settings</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

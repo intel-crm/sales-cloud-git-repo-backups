@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>IPS_Agent_Tab_Visibility</name>
+    </customPermissions>
+    <description>Users with this permissionset can access IPS Case Agent bot</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>IPS Agent Accessible</label>
+</PermissionSet>

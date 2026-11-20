@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <available>true</available>
+    <description>This Email is sent to Claim Submitters on PIC Pass</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyClaimSubmitterOn_PICPass</name>
+    <style>none</style>
+    <subject>Claim # set to</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

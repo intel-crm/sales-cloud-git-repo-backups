@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataset>UserLicensesDataset</dataset>
+    <dimensions>
+        <field>Core_User_Profile_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Profile Name</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Profilewit.AvailableL.MasterLabel</field>
+        <isDerived>false</isDerived>
+        <label>User License Name</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+</WaveXmd>

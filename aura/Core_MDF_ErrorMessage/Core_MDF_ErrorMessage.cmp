@@ -1,0 +1,14 @@
+<!-- Component to Stores the Error Message And Display to the parent component -->
+<aura:component access="global">
+    <!-- Attribute Intialization -->
+    <aura:attribute name="message" description="Message content, can be HTML" type="String" default="Message from MessageComponent.cmp"/>
+    <aura:attribute name="type" description="Message type, can be error/warning/info/success" type="String" default="error"/>
+    <!--It handles to view the error messages-->
+    <div class="slds-box slds-theme--error">
+        <lightning:icon iconName="{! 'utility:'+ v.type }" size="medium" alternativeText="{!v.type}" Class="iconContainer"/> &nbsp;
+        <span class="slds-text-body–regular">
+        	<!--<aura:unescapedHtml value="{!v.message}"/>-->
+            <lightning:formattedRichText value="{!v.message}" />
+        </span>
+    </div>
+</aura:component>

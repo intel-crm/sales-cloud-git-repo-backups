@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Is_Data_Loaded</name>
+        <label>Update Is Data Loaded</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Data_Loaded__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>IsFieldUpdated</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_Field_Updated_or_Created</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Is_Data_Loaded</name>
+        <label>Check Is Data Loaded</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Is_Field_Updated_or_Created</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Data_Loaded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Data_Loaded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Is_Data_Loaded</targetReference>
+            </connector>
+            <label>Is Data Loaded</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Field_Updated_or_Created</name>
+        <label>Is Field Updated or Created</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Boolean_check</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsFieldUpdated</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_contact_entitlement_details</targetReference>
+            </connector>
+            <label>Boolean check</label>
+        </rules>
+    </decisions>
+    <description>Updates Unique id and resets dataloaded, don&apos;t notify fields</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ConcatContactIdEntId</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.Core_Contact_Id__c,15})+LEFT({!$Record.Core_Entitlement_Id__c,15})</expression>
+    </formulas>
+    <interviewLabel>Core Contact Entitlement Fields Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Contact Entitlement Fields Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_contact_entitlement_details</name>
+        <label>Update contact entitlement details</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Is_Data_Loaded</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Data_Loaded__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>IsFieldUpdated</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>ListOfCERecords</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Contact_Entitlement__c</objectType>
+    </variables>
+</Flow>

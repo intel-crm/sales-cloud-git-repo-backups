@@ -1,0 +1,100 @@
+<!--IPA2.0: US-TWC729-7976-->
+<aura:component >
+</aura:component>
+<!--<aura:component Controller="PSS_SolutionSubmitCtrl"
+    implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,lightning:hasPageReference" access="global">
+
+    <ltng:require styles="{!$Resource.IpaResources + '/styles/ipabundle.min.css'}" />
+    <ltng:require styles="{!$Resource.IpaResources + '/fonts/site-global-icons-ipa/css/site-global-icons-ipa-codes.css'}" />
+    <ltng:require styles="{!$Resource.IpaResources + '/fonts/site-global-icons-ipa/css/site-global-icons-ipa-embedded.css'}" />
+ 
+    <aura:attribute type="String" name="recordId" />
+    <aura:attribute type="String" name="surveyResultId" />
+    <aura:attribute type="String" name="createRecordId" />
+    <aura:attribute type="String" name="psslogicalId" />
+    <aura:attribute type="String" name="additionalParameter" />
+    <aura:attribute type="Boolean" name="isCalledFromStandaloneApp" default="false"  />
+    <aura:attribute type="String" name="recId" />
+    <aura:attribute type="Boolean" name="toggleLwcComponent" default="false" />
+
+    <aura:attribute name="spinner" type="Boolean" default="true" />
+    <aura:attribute name="addContactVisibility" type="Boolean" default="false" />
+    <aura:attribute name="loadSurvey" type="Boolean" default="false" />
+
+    <aura:registerEvent name="solutionSubmitEvent" type="c:PSS_SolutionSubmitEvent" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div style="max-width: 100% !important; width:100% !important;">
+    <article class="slds-card solutionSubmitCard">-->
+        <!--loading spinner start-->
+        <!--<aura:if isTrue="{!v.spinner}">
+            <div style="height:6rem;">
+                <div aura:id="spinnerId" class="slds-spinner_container">
+                    <div class="slds-spinner slds-spinner_medium" role="status">
+                        <span class="slds-assistive-text">Loading...</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </div>
+        </aura:if>-->
+        <!-- Loading spinner end-->
+
+        <!--<div class="c-container">
+            <lightning:layout horizontalAlign="space">
+                <lightning:layoutItem size="8">
+                    <aura:if isTrue="{!v.loadSurvey}">
+                        <div style="overflow-y:hidden;">
+                            <ArdiraSurvey:surveyvistaResponder surveyId="{!v.createRecordId}"
+                                logicalId="{!v.psslogicalId}" externalIntegration="true"
+                                additionalParams="{!v.additionalParameter}" isCalledFromStandaloneApp="{!v.isCalledFromStandaloneApp}"
+                                onsvevent_surveyloaded="{!c.surveyLoad}" onsvevent_savedraftclicked="{!c.draftClick}"
+                                onsvevent_nextbuttonclicked="{!c.nextButtonClick}"
+                                onsvevent_surveysubmitted="{!c.surveySubmit}"
+                                onsvevent_previousbuttonclicked="{!c.previousButtonClick}"
+                                onsvevent_submitbuttonclicked="{!c.submitButtonClick}"
+                                onsvevent_thankyoubuttonclicked="{!c.thankYouButtonClick}"
+                                onsvevent_thankyouquestionclicked="{!c.thankYouQuestionClick}"
+                                onsvevent_scrolltotop="{!c.scrollToTop}"
+                                onsvevent_surveyexception="{!c.surveyExceptionCall}">
+                            </ArdiraSurvey:surveyvistaResponder>
+                        </div>
+                    </aura:if>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="4">
+                    <aura:if isTrue="{!v.addContactVisibility}">
+                        <div id="addContButton" class="addContBtn slds-p-top_small slds-p-bottom_small">
+                            <lightning:button disabled="{!v.addContactDisableCheck}" aura:id="addContBtn"
+                                variant="brand" label="Add Contacts" onclick="{!c.openAddContactModal}" />
+                            <p style="font-size:0.75rem;padding-top:0.5rem;color:#262626;">
+                                <lightning:formattedText value="{!$Label.c.PSS_AddContacts_HelpText}">
+                                </lightning:formattedText>
+                            </p>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.toggleLwcComponent}">
+                        <div>
+                            <c:pssContactShareOnSolution aura:id="pssContactShareOnSolution"
+                                onclosemodal="{!c.closeContactModal}" solutionId="{!v.recId}" isButton="true"
+                                isOpenPopup="true">
+                            </c:pssContactShareOnSolution>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.loadSurvey}">
+                        <div>
+                            <p style="padding-left:1.3rem;font-size:0.75rem;padding-bottom:0.5rem;color:#262626;">
+                                <lightning:formattedText value="{!$Label.c.PSS_MessageBox_Heading}">
+                                </lightning:formattedText>
+                            </p>
+                            <c:ipaMessaging aura:id="ipaMessaging" recordId="{!v.surveyResultId}" channel="Solution">
+                            </c:ipaMessaging>
+                            <p style="padding-left:1.3rem;font-size:0.75rem;color:#262626;">
+                                <lightning:formattedText value="{!$Label.c.PSS_MessageText}"></lightning:formattedText>
+                            </p>
+                        </div>
+                    </aura:if>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </article>
+    </div>
+</aura:component>-->

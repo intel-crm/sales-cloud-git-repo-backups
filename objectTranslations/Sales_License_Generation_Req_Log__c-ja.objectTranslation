@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- License Generation Request --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Event Type --></label>
+        <name>Evevt_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- LicenseId --></label>
+        <name>LicenseId__c</name>
+    </fields>
+    <fields>
+        <label>ライセンス ID</label>
+        <name>License_Id__c</name>
+    </fields>
+    <fields>
+        <label>連絡先メールアドレス</label>
+        <name>Sales_Contact_Email_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales_Contact --></label>
+        <name>Sales_Contact__c</name>
+    </fields>
+    <fields>
+        <label>コンテンツ・ドキュメント ID</label>
+        <name>Sales_Content_Document_Id__c</name>
+    </fields>
+    <fields>
+        <label>ファイル拡張子</label>
+        <name>Sales_File_Ext__c</name>
+    </fields>
+    <fields>
+        <label>ファイル</label>
+        <name>Sales_File__c</name>
+    </fields>
+    <fields>
+        <label>ファイルサイズ</label>
+        <name>Sales_File_size__c</name>
+    </fields>
+    <fields>
+        <label>コンピューター ID</label>
+        <name>Sales_Host_Id__c</name>
+        <relationshipLabel>ライセンス発行リクエスト</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Legacy Attachment Name --></label>
+        <name>Sales_Legacy_Attachment_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Sales_License_Contact__c</name>
+        <relationshipLabel>ライセンス発行リクエスト</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ライセンスファイル</label>
+        <name>Sales_License_File__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Name --></label>
+        <name>Sales_License_Name__c</name>
+    </fields>
+    <fields>
+        <label>ライセンス対象製品</label>
+        <name>Sales_Products_in_License__c</name>
+    </fields>
+    <fields>
+        <label>ステータス</label>
+        <name>Sales_Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation>完了</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error File</masterLabel>
+            <translation>ファイル生成エラー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error Submission</masterLabel>
+            <translation>送信エラー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation>新規</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>提出済み</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>タイプ</label>
+        <name>Sales_Type__c</name>
+        <picklistValues>
+            <masterLabel>Checkout</masterLabel>
+            <translation>チェックアウト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Companion</masterLabel>
+            <translation>コンパニオン</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emergency</masterLabel>
+            <translation>緊急時</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FAE</masterLabel>
+            <translation><!-- FAE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy</masterLabel>
+            <translation>レガシー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NULL</masterLabel>
+            <translation><!-- NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation>パートナー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Perpetual</masterLabel>
+            <translation>永久</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RU</masterLabel>
+            <translation><!-- RU --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Request Id --></nameFieldLabel>
+</CustomObjectTranslation>

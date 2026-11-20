@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <available>true</available>
+    <description>Email Template to Notify AE when an Opportunity is won/lost and Quote Lines are in Approved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Pricing_QLApprove_OppWonLost_Notifiy</name>
+    <packageVersions>
+        <majorNumber>246</majorNumber>
+        <minorNumber>3</minorNumber>
+        <namespace>SBQQ</namespace>
+    </packageVersions>
+    <style>none</style>
+    <subject>Update Status of Approved Quote Lines</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

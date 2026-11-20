@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Bulk_Campaign_Invitation_FRA</name>
+    <style>none</style>
+    <subject>En tant qu&apos;utilisateur Premier de la Zone des développeurs, vous pouvez désormais rejoindre l&apos;Alliance partenaire Intel !</subject>
+    <textOnly>En tant qu&apos;utilisateur Premier de la Zone des développeurs, vous pouvez désormais rejoindre l&apos;Alliance partenaire Intel® !
+
+Bénéficiez d&apos;avantages supplémentaires en plus de ceux offerts aux utilisateurs Premier de la Zone des développeurs !
+
+Rejoindre l&apos;Alliance
+partenaire Intel®
+
+Prénom :
+
+Nom :
+
+Nom d&apos;utilisateur (adresse e-mail) :
+
+Les utilisateurs Premier de la Zone des développeurs ont accès aux ressources classées Confidentiel Intel et à des contenus sécurisés. Cela fait désormais partie des avantages offerts par l&apos;Alliance partenaire Intel®. En tant qu&apos;utilisateur Premier de la Zone des développeurs, vous êtes désormais éligible à rejoindre le programme Alliance partenaire Intel®.
+
+Votre entreprise est déjà un membre important de l&apos;Alliance partenaire Intel®. C&apos;est l&apos;occasion pour vous de rejoindre vos collègues membres du programme et d&apos;accéder à des avantages exclusifs de grande valeur. En voici quelques exemples :
+
+Accédez à plus de 800 cours de classe mondiale, à plus de 30 compétences et certifications, à des informations sur le secteur et à des prévisions commerciales, autant de connaissances indispensables fournies par l&apos;Université partenaire Intel®.
+Gagnez des points grâce à des achats de produits Intel éligibles et à des activités pour vous aider à développer votre activité. Échangez des points contre des services utiles à votre entreprise.
+Profitez de Zones d&apos;activation organisées et axées sur des thèmes et des tâches spécifiques au secteur contenant toutes les ressources nécessaires pour créer, commercialiser et vendre des produits et des solutions basés sur la technologie Intel®.
+Faites la promotion de vos solutions sur notre Vitrine des partenaires Intel® grâce à votre vitrine personnalisée qui vous permet d&apos;entrer en contact avec des milliers de partenaires et vos clients dans tout l&apos;écosystème.
+
+Rejoignez-nous dès maintenant en vous inscrivant en tant que contact et gagnez 100 points* pour votre entreprise afin de découvrir tout ce que l&apos;Alliance partenaire Intel® et la Zone des développeurs Premier ont à offrir.
+
+Suivez ces étapes rapides et simples :
+
+Cliquez sur S&apos;inscrire et suivez les instructions** pour être rattaché(e) au compte de votre entreprise.
+Vous recevrez ensuite un e-mail vous permettant de vous connecter à l&apos;Alliance partenaire Intel®.
+
+Découvrez tous les avantages de notre programme en rejoignant l&apos;Alliance partenaire Intel® dès maintenant.
+
+S&apos;inscrire
+
+
+Avez-vous besoin d&apos;aide pour vous inscrire en tant que partenaire ? Contacter l&apos;assistance.
+
+
+*Vous devez être éligible aux points. Voir les conditions d&apos;éligibilité.
+
+*Aide sur l&apos;authentification multi-facteurs (MFA) Azure
+
+Rejoignez le groupe de l&apos;Alliance partenaire Intel® sur LinkedIn
+
+© 2024, Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
+Confidentialité &amp;verbar; Cookies &amp;verbar; *Marques &amp;verbar; Se désabonner</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

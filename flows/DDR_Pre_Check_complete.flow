@@ -1,0 +1,1694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This step is to approve process instance record.</description>
+        <name>Approve_Instance_Record</name>
+        <label>Approve Instance Record</label>
+        <locationX>4186</locationX>
+        <locationY>890</locationY>
+        <actionName>PCC_InvocableMethods</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Update_DR_Record_When_PSAM_Uncovered</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>action</name>
+            <value>
+                <elementReference>ApprovalAction</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comments</name>
+            <value>
+                <elementReference>ApprovalComment</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>regId</name>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_InvocableMethods</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>This action will approve process instance record.</description>
+        <name>Approve_Process_Instance_Record</name>
+        <label>Approve Process Instance Record</label>
+        <locationX>710</locationX>
+        <locationY>890</locationY>
+        <actionName>PCC_InvocableMethods</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Account_and_related_Approver</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_for_deal_accepted_status</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>action</name>
+            <value>
+                <elementReference>ApprovalAction</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comments</name>
+            <value>
+                <elementReference>ApprovalComment</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>regId</name>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_InvocableMethods</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>This action will approve process instance record.</description>
+        <name>Approve_Process_Instance_Record_when_PSAM_covered</name>
+        <label>Approve Process Instance Record when PSAM covered</label>
+        <locationX>3526</locationX>
+        <locationY>890</locationY>
+        <actionName>PCC_InvocableMethods</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Account_and_related_Approver_psam</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>action</name>
+            <value>
+                <elementReference>ApprovalAction</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comments</name>
+            <value>
+                <elementReference>ApprovalComment</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>regId</name>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_InvocableMethods</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is to update process instance record.</description>
+        <name>Approve_Process_Instance_Record_When_PSAM_Uncovered</name>
+        <label>Approve Process Instance Record When PSAM Uncovered</label>
+        <locationX>1370</locationX>
+        <locationY>890</locationY>
+        <actionName>PCC_InvocableMethods</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>PCComplete</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_for_Pre_Approved_Status</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>action</name>
+            <value>
+                <elementReference>ApprovalAction</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comments</name>
+            <value>
+                <elementReference>ApprovalComment</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>regId</name>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PCC_InvocableMethods</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Email</name>
+        <label>Email</label>
+        <locationX>3130</locationX>
+        <locationY>1214</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>update_DR_records</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+            <value>
+                <elementReference>ListOfEmailAddresses</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dealreg_partner@intel.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Deal Submitted by Partner with Covered End Customer</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>NotificationTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Accepted_By</name>
+        <label>Accepted By</label>
+        <locationX>578</locationX>
+        <locationY>1214</locationY>
+        <assignmentItems>
+            <assignToReference>AcceptedById</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Account_and_related_Approver.Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_DR_record_after_second_level_approval</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Accepted_By_Owner</name>
+        <label>Accepted By Owner</label>
+        <locationX>842</locationX>
+        <locationY>1214</locationY>
+        <assignmentItems>
+            <assignToReference>AcceptedById</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.Core_Partner_Account_Id__r.Owner.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_DR_record_after_second_level_approval</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Accepted_By_PA_Owner</name>
+        <label>Accepted By PA Owner</label>
+        <locationX>3658</locationX>
+        <locationY>1214</locationY>
+        <assignmentItems>
+            <assignToReference>AcceptedById</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId.Core_Partner_Account_Id__r.Owner.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_DR_Record_when_PSAM_covered</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Accepted_By_PSAM</name>
+        <label>Accepted By PSAM</label>
+        <locationX>3394</locationX>
+        <locationY>1214</locationY>
+        <assignmentItems>
+            <assignToReference>AcceptedById</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Account_and_related_Approver.Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_DR_Record_when_PSAM_covered</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Store email address for Partner Account Owner and End Customer Account Owner</description>
+        <name>Get_Email_Addresses</name>
+        <label>Get Email Addresses</label>
+        <locationX>3130</locationX>
+        <locationY>890</locationY>
+        <assignmentItems>
+            <assignToReference>ListOfEmailAddresses</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>recordId.Core_End_Customer_Account_Id__r.Owner.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>get_intel_logo_link</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>NO</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Check_Deal_or_Design</name>
+        <label>Check Deal or Design</label>
+        <locationX>1733</locationX>
+        <locationY>674</locationY>
+        <defaultConnector>
+            <targetReference>PCComplete</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Deal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.PCC_Registration_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Partner_Account</targetReference>
+            </connector>
+            <label>is Deal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This step is to check whether PSAM is covered or uncovered</description>
+        <name>Check_Partner_Account</name>
+        <label>Check Partner Account</label>
+        <locationX>1304</locationX>
+        <locationY>782</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Partner_Account_Covered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_Partner_Account_Id__r.Core_Covered_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approve_Process_Instance_Record</targetReference>
+            </connector>
+            <label>Partner Account Covered</label>
+        </rules>
+        <rules>
+            <name>Partner_Account_Uncovered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_Partner_Account_Id__r.Core_Covered_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approve_Process_Instance_Record_When_PSAM_Uncovered</targetReference>
+            </connector>
+            <label>Partner Account Uncovered</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Project</name>
+        <label>Check Project</label>
+        <locationX>2736</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>isAuthorized_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>is Deal</defaultConnectorLabel>
+        <rules>
+            <name>Is_Design</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.PCC_Registration_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Deal Registration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Products_Record</targetReference>
+            </connector>
+            <label>Is Design?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Data_Quality_Check</name>
+        <label>Data Quality Check?</label>
+        <locationX>3922</locationX>
+        <locationY>782</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>End_Customer_Account_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Yes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_End_Customer_Account_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_End_Customer_Account_Id__r.Core_Covered_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Email_Addresses</targetReference>
+            </connector>
+            <label>End Customer Account Selected</label>
+        </rules>
+        <rules>
+            <name>PSAM_covered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_Partner_Account_Id__r.Core_Covered_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Yes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approve_Process_Instance_Record_when_PSAM_covered</targetReference>
+            </connector>
+            <label>PSAM covered</label>
+        </rules>
+        <rules>
+            <name>PSAM_Uncovered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_Partner_Account_Id__r.Core_Covered_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Yes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approve_Instance_Record</targetReference>
+            </connector>
+            <label>PSAM Uncovered</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_End_Customer_Account_Present</name>
+        <label>Is End Customer Account Present</label>
+        <locationX>3658</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Check_End_Customer_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Is Present</defaultConnectorLabel>
+        <rules>
+            <name>Not_Present</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_End_Customer_Account_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_End_Customer_Account_RecordType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>InactiveAccount</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>End_Customer_Check</targetReference>
+            </connector>
+            <label>Not Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_precheck_complete</name>
+        <label>Is precheck complete?</label>
+        <locationX>1393</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>Check_Project</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Complete the precheck</defaultConnectorLabel>
+        <rules>
+            <name>precheck_complete</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Core_Design_Registration_Status_Nm__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Precheck Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PCcompleted</targetReference>
+            </connector>
+            <label>precheck complete</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Yes_Selected</name>
+        <label>Is Yes Selected</label>
+        <locationX>4450</locationX>
+        <locationY>674</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Yes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Data_Quality_Check</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isAuthorized_User</name>
+        <label>isAuthorized User?</label>
+        <locationX>4450</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Unauthorized_Error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes1</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>userId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>recordId.Core_Accepted_By_Id__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>userId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>recordId.Core_Accepted_By_Id__r.DelegatedApproverId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_End_Customer_Account_Present</targetReference>
+            </connector>
+            <label>Yes?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Mapping_Present</name>
+        <label>Mapping Present?</label>
+        <locationX>710</locationX>
+        <locationY>1106</locationY>
+        <defaultConnector>
+            <targetReference>Accepted_By_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Use Partner Account Owner</defaultConnectorLabel>
+        <rules>
+            <name>Override_Approver</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_and_related_Approver</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Accepted_By</targetReference>
+            </connector>
+            <label>Override Approver</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Mapping_Present_PSAM</name>
+        <label>Mapping Present - PSAM ?</label>
+        <locationX>3526</locationX>
+        <locationY>1106</locationY>
+        <defaultConnector>
+            <targetReference>Accepted_By_PA_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Use Partner Account Owner</defaultConnectorLabel>
+        <rules>
+            <name>Override_Approver_PSAM</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_and_related_Approver</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Accepted_By_PSAM</targetReference>
+            </connector>
+            <label>Override Approver - PSAM</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validate_products</name>
+        <label>Validate products</label>
+        <locationX>1023</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>update_DR_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Complete Precheck</defaultConnectorLabel>
+        <rules>
+            <name>DR_not_present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Products_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ErrorMsgForProducts</targetReference>
+            </connector>
+            <label>DR Not present</label>
+        </rules>
+    </decisions>
+    <description>This is QA Version - L2 Approver Changed Logic Added</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>currentyear</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR(TODAY()))</expression>
+    </formulas>
+    <formulas>
+        <name>RunningDateTime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>userId</name>
+        <dataType>String</dataType>
+        <expression>CASESAFEID({!$User.Id})</expression>
+    </formulas>
+    <formulas>
+        <name>When</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>DDR Pre-Check complete {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DDR Pre-Check complete</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Log_Entry</name>
+        <label>Create Log Entry</label>
+        <locationX>2338</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>PCComplete_Exception</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <elementReference>Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <elementReference>Project</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <elementReference>Scope</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <elementReference>Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>When</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <elementReference>Object</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_for_deal_accepted_status</name>
+        <label>Create Log Entry for deal accepted status</label>
+        <locationX>1106</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Exception_For_Deal_Status</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <elementReference>Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <elementReference>Project</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <elementReference>Scope</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <elementReference>Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>When</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <elementReference>Object</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_for_Pre_Approved_Status</name>
+        <label>Create Log Entry for Pre Approved Status</label>
+        <locationX>1634</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Exception_for_pre_approved_status</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <elementReference>Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <elementReference>Project</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <elementReference>Scope</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <elementReference>Severity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>When</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <elementReference>Object</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Account_and_related_Approver</name>
+        <label>Get Account and related Approver</label>
+        <locationX>710</locationX>
+        <locationY>998</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Mapping_Present</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Label</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Core_Partner_Account_Id__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Account_and_related_Approver_psam</name>
+        <label>Get Account and related Approver - psam</label>
+        <locationX>3526</locationX>
+        <locationY>998</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Mapping_Present_PSAM</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Label</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Core_Partner_Account_Id__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_intel_logo_link</name>
+        <label>get intel logo link</label>
+        <locationX>3130</locationX>
+        <locationY>998</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_internal_record_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Intel_Logo_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_internal_record_link</name>
+        <label>get internal record link</label>
+        <locationX>3130</locationX>
+        <locationY>1106</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PCC_Internal_Record_Link</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>LabelConfiguration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Products_Record</name>
+        <label>Get Products Record</label>
+        <locationX>1023</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Validate_products</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>PCComplete_Exception</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Design_Registration_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Design_Product_Status_Nm__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Design_Product_Status_Nm__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_Design_Registration_Product__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Deal record status and Accepted by.</description>
+        <name>Update_DR_record_after_second_level_approval</name>
+        <label>Update DR record after second level approval</label>
+        <locationX>710</locationX>
+        <locationY>1406</locationY>
+        <connector>
+            <targetReference>PCComplete</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Accepted_By_Id__c</field>
+            <value>
+                <elementReference>AcceptedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Deal accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Intel_Technical_Owner_Id__c</field>
+            <value>
+                <elementReference>AcceptedById</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Deal Status and Accepted By Field.</description>
+        <name>Update_DR_Record_when_PSAM_covered</name>
+        <label>Update DR Record when PSAM covered</label>
+        <locationX>3526</locationX>
+        <locationY>1406</locationY>
+        <connector>
+            <targetReference>PCComplete</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Log_Entry_for_deal_accepted_status</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Accepted_By_Id__c</field>
+            <value>
+                <elementReference>AcceptedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Deal accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Intel_Technical_Owner_Id__c</field>
+            <value>
+                <elementReference>AcceptedById</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Deal status and accepted by Field.</description>
+        <name>Update_DR_Record_When_PSAM_Uncovered</name>
+        <label>Update DR Record When PSAM Uncovered</label>
+        <locationX>4186</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>PCComplete</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Log_Entry_for_Pre_Approved_Status</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Pre-Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_DR_records</name>
+        <label>update DR records</label>
+        <locationX>1733</locationX>
+        <locationY>566</locationY>
+        <connector>
+            <targetReference>Check_Deal_or_Design</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Log_Entry</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Pre-Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Check_End_Customer_Account</name>
+        <label>Check End Customer Account</label>
+        <locationX>4450</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Is_Yes_Selected</targetReference>
+        </connector>
+        <fields>
+            <name>DisplayWarning</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Please ensure you have completed the verification activities. Clicking on this button will&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;a. Send an email to the PSAM and Account executive of the end customer if applicable&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;b. Route this deal to the second level approver&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Are_you_ok_to_proceed</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Are you sure you want to continue?</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Continue</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>End_Customer_Check</name>
+        <label>End Customer Check</label>
+        <locationX>2866</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_SuccMsg</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(37, 37, 37);&quot;&gt;Please set a valid end customer account to proceed.&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>ErrorMsgForProducts</name>
+        <label>ErrorMsgForProducts</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>NoProducts</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;There are no products added for this DR&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Exception_For_Deal_Status</name>
+        <label>Exception For Deal Status</label>
+        <locationX>1106</locationX>
+        <locationY>1106</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>ExceptionMsg</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0);&quot;&gt;There is an issue processing the record. Please raise a support ticket.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Exception_for_pre_approved_status</name>
+        <label>Exception for pre approved status</label>
+        <locationX>1634</locationX>
+        <locationY>1106</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Close</backButtonLabel>
+        <fields>
+            <name>Exception_Msg</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0);&quot;&gt;There is an issue processing the record. Please raise a support ticket.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>PCComplete</name>
+        <label>PCComplete</label>
+        <locationX>2736</locationX>
+        <locationY>1982</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>SuccMsg</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Pre-Check is Successfully Completed&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>PCComplete_Exception</name>
+        <label>PCComplete_Exception</label>
+        <locationX>2338</locationX>
+        <locationY>782</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Exception_Msg_PCComplete</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0);&quot;&gt;There is an issue processing the record. Please raise a support ticket.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>PCcompleted</name>
+        <label>PCcompleted</label>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Message</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Pre-Check is already completed.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Unauthorized_Error</name>
+        <label>Unauthorized Error</label>
+        <locationX>5242</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Unauthrised</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Oxygen, Ubuntu, &amp;quot;Fira Sans&amp;quot;, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, sans-serif; color: rgb(23, 43, 77);&quot;&gt;You are not authorized to perform this action.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>1267</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_precheck_complete</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>InactiveAccount</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Inactive Account</text>
+    </textTemplates>
+    <textTemplates>
+        <name>NotificationTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;table class=&quot;body&quot; role=&quot;none&quot; style=&quot;background: #f3f3f3; margin: 0px; padding: 0px; width: 99.8817%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0px;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot; role=&quot;none&quot; &gt;
+&lt;td align=&quot;center&quot; role=&quot;none&quot;  class=&quot;center&quot; valign=&quot;top&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; hyphens: none; border-collapse: collapse !important; width: 100%;&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;div align=&quot;center&quot; class=&quot;float-center&quot;&gt;&lt;center style=&quot;width: 100%; min-width: 670px;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;float-center&quot; style=&quot;margin: 0px auto; padding: 0px; width: 100%; text-align: center; vertical-align: top; float: none; border-collapse: collapse; max-width: 670px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;container&quot; style=&quot;background: #f3f3f3; margin: 0px auto; padding: 0px; width: 670px; text-align: inherit; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse header&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #0071c5;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table class=&quot;row header-content&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;mobile-padding small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 0px 20px; width: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th style=&quot;margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;&quot;&gt;
+&lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;New Deal Submitted for Review for Covered End Customer&lt;/h1&gt;
+&lt;/th&gt;
+&lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
+&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;/th&gt;
+&lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;row module full-width&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0; background-color: #fefefe;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;&quot;&gt;
+&lt;table style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+ Hello {!recordId.Core_End_Customer_Account_Id__r.Owner.FirstName},
+&lt;br&gt;
+&lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
+A deal has been submitted for review and you are listed as the Account Executive for the end customer.   Upon deal approval, you will be listed as part of the opportunity team, providing the ability to monitor the deal through the sales cycle.
+&lt;br&gt;
+&lt;br&gt;
+No action is required from you at this time.
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Registration Number: &lt;/b&gt;{!recordId.Name} 
+&lt;br&gt;
+&lt;b&gt;Deal Registration Name: &lt;/b&gt;{!recordId.Core_Design_Registration_Nm__c}
+&lt;br&gt;
+&lt;b&gt;Partner Account: &lt;/b&gt;{!recordId.Core_Partner_Account_Id__r.Name}
+&lt;br&gt;
+&lt;b&gt;End Customer Account: &lt;/b&gt;{!recordId.Core_End_Customer_Account_Id__r.Name}  
+&lt;br&gt;
+&lt;br&gt;
+For more details, you can access the deal registration record &lt;a href={!get_internal_record_link.Value__c}{!recordId.Id}&gt;here&lt;/a&gt;.
+&lt;br&gt;
+&lt;br&gt;
+If you don&apos;t have access, please click &lt;a href=https://salescrmtraining.intel.com/sales-tools/sales-crm/deal-registration-on-the-intel-partner-portal/deal-registration-how-to-access/&gt;here&lt;/a&gt;.
+&lt;br&gt;
+&lt;br&gt;
+&lt;/p&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+
+
+
+
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;span class=&quot;remove-absolute&quot; style=&quot;display: block;&quot; elqid=&quot;8645&quot; elqtype=&quot;DynamicContent&quot;&gt; &lt;/span&gt;
+
+&lt;table class=&quot;spacer&quot; style=&quot;padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0; background-color: #f3f3f3;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;padding: 0px; text-align: left; vertical-align: top;&quot;&gt;
+&lt;td height=&quot;10&quot; style=&quot;margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 10px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;body footer_elq&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; width: 100%; height: 100%; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td align=&quot;center&quot; class=&quot;center&quot; valign=&quot;top&quot; style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;div&gt;
+&lt;table align=&quot;center&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; max-width: 600px !important; border-spacing: 0;&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;td style=&quot;background: 0px 0px; margin: 0px; padding: 0px; border: 0px solid transparent; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;
+&lt;table class=&quot;row collapse mobile-padding&quot; style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; width: 100%; text-align: left; vertical-align: top; display: table; border-collapse: collapse; position: relative; border-spacing: 0;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr style=&quot;background: 0px 0px; padding: 0px; border: 0px solid transparent; text-align: left; vertical-align: top; border-collapse: collapse;&quot;&gt;
+&lt;th class=&quot;small-12 large-12 columns first last&quot; style=&quot;background: 0px 0px; margin: 0px auto; padding: 0px 0px 20px; border: 0px solid transparent; width: 680px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse;&quot;&gt;
+&lt;table align=&quot;center&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 670px;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5&quot; &gt;
+&lt;table width=&quot;100%&quot; class=&quot;cq-rte-forcedborder&quot; style=&quot;border: #d3d3d3; border-collapse: collapse;&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;&quot;&gt;This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;© {!currentyear} Intel Corporation&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;&quot;&gt;Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/homepage.html target=&quot;_blank&quot; _rte_href=https://www.intel.com/content/www/us/en/homepage.html&gt;www.Intel.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;auto-style1&quot; valign=&quot;top&quot; style=&quot;font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;&quot;&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html&gt;Privacy&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;|&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;a style=&quot;color: #ffffff; text-decoration: none;&quot; href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html _rte_href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html&gt;Cookies&lt;/a&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;&lt;/div&gt;
+&lt;/center&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>AcceptedById</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Text Parameter to call invocable method</description>
+        <name>ApprovalAction</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Approve</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Approval comment parameter we are passing to call invocable method</description>
+        <name>ApprovalComment</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>Approved</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>ChatterMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>ChatterMsgHelp</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>currentItem_Post_to_Chatter_Message_Help</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>LabelConfiguration__mdt</objectType>
+    </variables>
+    <variables>
+        <name>ListOfEmailAddresses</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Object</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Core_Design_Registration__c</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Origin</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>DDR Pre-check Complete Flow</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Project</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>DDR Registration</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_Design_Registration__c</objectType>
+    </variables>
+    <variables>
+        <name>Scope</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>DDR Precheck Complete Flow</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Severity</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>High</stringValue>
+        </value>
+    </variables>
+</Flow>

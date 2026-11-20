@@ -1,0 +1,111 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "50f22dc1-3950-4131-930a-167e50d0e3ff",
+  "label" : "Account Transfer Log Detail",
+  "regions" : [ {
+    "id" : "606bc1d7-5a24-4396-8998-ca6763999686",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "52fe1cb0-d97f-4585-a88c-eb6a471cfe37",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7249995e-2766-4a99-a095-373bfa3f4ea9",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "9f1e04e6-98ee-479f-8dd1-0bd7f1fcaf45",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "dc3bb558-d2f6-4a18-ba4c-2110687e2d70",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "DETAILS"
+          }, {
+            "UUID" : "82445fac-c6eb-45f7-84d8-6e01f9d35c01",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "RELATED"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "9f1e04e6-98ee-479f-8dd1-0bd7f1fcaf45",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "5c1afaf7-a237-4f7e-a1a4-7c574a09e31c",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "dc3bb558-d2f6-4a18-ba4c-2110687e2d70",
+        "regionLabel" : "DETAILS",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "fieldsToMask" : "",
+            "internalUserName" : "Intel System User",
+            "objectApiName" : "Core_MDF_Budget_Transfer_Log__c",
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_HistoryComponent",
+          "id" : "ce2a7ac6-55d2-4004-997a-3f7dcc41d287",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "82445fac-c6eb-45f7-84d8-6e01f9d35c01",
+        "regionLabel" : "RELATED",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "17385d05-0c79-44f2-bfc3-bb552412fdd5",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d2e1f7e7-bcf7-4754-a2b4-03b7110420e3",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "70c0f606-43cf-463e-88b9-210e2a365e53",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a3g"
+}

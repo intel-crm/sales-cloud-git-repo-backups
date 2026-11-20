@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_47339422</developerName>
+        <masterLabel>Opportunity Conversion Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Design</sourceValue>
+            </sourceValues>
+            <value>Converted</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design Win</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>Cancelled</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_24779219</developerName>
+        <masterLabel>Owner Manager</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Dietmar Rohlf</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Matthias Todd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Markus Gabler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Christoph Johann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Todd, Matthias</sourceValue>
+            </sourceValues>
+            <value>Dietmar Rohlf</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Louise Summerton</sourceValue>
+            </sourceValues>
+            <value>Louise Summerton</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Guy Bar-Ner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bar-Ner, Guy</sourceValue>
+            </sourceValues>
+            <value>Guy Bar-Ner</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Simon Wilyman</sourceValue>
+            </sourceValues>
+            <value>Simon Wilyman</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Eric Levander</sourceValue>
+            </sourceValues>
+            <value>Eric Levander</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Mediha Kayacan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Firas Alfanney</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of frans j pieterse</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Ediz Altun</sourceValue>
+            </sourceValues>
+            <value>Mediha Kayacan</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Fabian De Pasquale</sourceValue>
+            </sourceValues>
+            <value>Fabian de Pasquale</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Eran Gal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee ofMaciej Osiecki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Uros Huzjak</sourceValue>
+            </sourceValues>
+            <value>Juan C Carrera</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Artur Dlugosz</sourceValue>
+            </sourceValues>
+            <value>Artur Dlugosz</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_62021469</developerName>
+        <masterLabel>Owner Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Sign for Com - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA Sign for Com - Manager</sourceValue>
+            </sourceValues>
+            <value>VSC Sign for Com</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA TIM - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA TIM - Manager</sourceValue>
+            </sourceValues>
+            <value>VSC TIM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Teleperformance - Employee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VSC EMEA Teleperformance - Manager</sourceValue>
+            </sourceValues>
+            <value>VSC Teleperformance</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VSC EMEA Marketing Center - Employee</sourceValue>
+            </sourceValues>
+            <value>VSC Marketing</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Edwin Peters</sourceValue>
+            </sourceValues>
+            <value>Edwin Peters</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Eran Gal</sourceValue>
+            </sourceValues>
+            <value>Eran Gal</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee ofMaciej Osiecki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Maciej Osiecki</sourceValue>
+            </sourceValues>
+            <value>Maciej Osiecki</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Uros Huzjak</sourceValue>
+            </sourceValues>
+            <value>Uros Huzjak</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <value>Yulia Smelkova</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>STATUS</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Lead.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_24779219</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>CONVERTED</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Rejection__c</field>
+    </columns>
+    <columns>
+        <field>COMPANY_ACCT</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>CONVERTED_DATE</field>
+    </columns>
+    <columns>
+        <field>OPP_OWNER</field>
+    </columns>
+    <columns>
+        <field>OPP_NAME</field>
+    </columns>
+    <columns>
+        <field>OPP_ACCT_NAME</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Qualified Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>OSC,iotg,APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ROLE_DISPLAY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Smelkova,Eran Gal,Williams,Czekaj,szman,Drazkowski,Garcia Comin,Peters,Galyamov,Osiecki,Carrera,Huzjak,VSC EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Lead.Lead</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_62021469</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA Lead State</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

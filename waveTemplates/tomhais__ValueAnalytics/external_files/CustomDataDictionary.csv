@@ -1,0 +1,6 @@
+PAGE_APP_NAME,PAGE_ENTITY_TYPE,PARENT_UI_ELEMENT,TARGET_UI_ELEMENT,COMPONENT_NAME,UI_EVENT_SOURCE,ConcatComponentEvent,Event,Event Label,Event Description
+LightningSales,Opportunity,tab-bar,tab-bar-content__tab,customTab1,click,LightningSales - Opportunity - tab-bar - tab-bar-content__tab - customTab1 - click,Click,Embedded Analytics,The user clicked on the Analytics tab on the Opportunity record page.
+LightningService,Case,tab-bar,tab-bar-content__tab,customTab2,click,LightningService - Case - tab-bar - tab-bar-content__tab - customTab2 - click,Click,Stock Checker,The user clicked on the Stock Checker tab on the Case record page.
+LightningSales,Account,tab-bar,tab-bar-content__tab,customTab1,click,LightningSales - Account - tab-bar - tab-bar-content__tab - customTab1 - click,Click,Embedded Analytics,The user clicked on the Analytics tab on the Account record page.
+LightningService,Account,tab-bar,tab-bar-content__tab,customTab3,click,LightningService - Account - tab-bar - tab-bar-content__tab - customTab3 - click,Click,Maps,The user clicked on the Maps tab on the Account record page.
+,,,,,,ApexClass.ApexMethod,Click,Some L-type Apex method,Part of an LWC not using LightningLogger

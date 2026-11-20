@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Email_Alert</name>
+        <label>Email Alert</label>
+        <locationX>1777</locationX>
+        <locationY>46</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Email_Alert2</name>
+        <label>Email Alert</label>
+        <locationX>1795</locationX>
+        <locationY>229</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_11_A2</name>
+        <label>Email Alert</label>
+        <locationX>1609</locationX>
+        <locationY>1427</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myRule_13</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_15_A2</name>
+        <label>Email Alert</label>
+        <locationX>1774</locationX>
+        <locationY>1943</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_17_A2</name>
+        <label>Email Alert</label>
+        <locationX>2038</locationX>
+        <locationY>2051</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_1_A2</name>
+        <label>Email Alert</label>
+        <locationX>454</locationX>
+        <locationY>587</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Create_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Create_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_3_A2</name>
+        <label>Email Alert</label>
+        <locationX>718</locationX>
+        <locationY>695</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_7_A2</name>
+        <label>Email Alert</label>
+        <locationX>1176</locationX>
+        <locationY>898</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>myRule_9</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Comment_Update_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>myRule_9_A2</name>
+        <label>Email Alert</label>
+        <locationX>1246</locationX>
+        <locationY>1319</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>True_External_Close</name>
+        <label>True External Close</label>
+        <locationX>997</locationX>
+        <locationY>625</locationY>
+        <assignmentItems>
+            <assignToReference>varExternalCloseScheduler</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>True_Schedule_Path2</name>
+        <label>True Schedule Path2</label>
+        <locationX>1354</locationX>
+        <locationY>1626</locationY>
+        <assignmentItems>
+            <assignToReference>varSchedulerExternalClosePending10days</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_External_Close_Pending_10days_True</name>
+        <label>Check External - Close Pending @10days True</label>
+        <locationX>1273</locationX>
+        <locationY>235</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Schedule_var_true_External_Close_Pending_10days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSchedulerExternalClosePending10days</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Email_Text</targetReference>
+            </connector>
+            <label>Check Schedule var true External - Close Pending @10days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_External_Close_True</name>
+        <label>check External Close True</label>
+        <locationX>1265</locationX>
+        <locationY>58</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>check_VAR_External_Close_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varExternalCloseScheduler</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Email_TextSchedulerPath</targetReference>
+            </connector>
+            <label>check External Close True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1</name>
+        <label>External Create</label>
+        <locationX>716</locationX>
+        <locationY>371</locationY>
+        <defaultConnector>
+            <targetReference>myRule_3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External Create</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External Create</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_11</name>
+        <label>External - Close Pending</label>
+        <locationX>1741</locationX>
+        <locationY>1211</locationY>
+        <defaultConnector>
+            <targetReference>myRule_13</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External - Close Pending</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_11</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External - Close Pending</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_13</name>
+        <label>External - Close Pending @10days</label>
+        <locationX>1706</locationX>
+        <locationY>1614</locationY>
+        <defaultConnector>
+            <targetReference>myRule_15</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External - Close Pending @10days</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_13</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_13</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>True_Schedule_Path2</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External - Close Pending @10days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_15</name>
+        <label>External Support Assigned</label>
+        <locationX>2196</locationX>
+        <locationY>1677</locationY>
+        <defaultConnector>
+            <targetReference>myRule_17</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External Support Assigned</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_15</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_15</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_15_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External Support Assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_17</name>
+        <label>External Partner Comment Update</label>
+        <locationX>2361</locationX>
+        <locationY>1867</locationY>
+        <defaultConnectorLabel>FALSE_External Partner Comment Update</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_17</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_17</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_17_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External Partner Comment Update</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_3</name>
+        <label>External Update Contact</label>
+        <locationX>977</locationX>
+        <locationY>479</locationY>
+        <defaultConnector>
+            <targetReference>myRule_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External Update Contact</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External Update Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_5</name>
+        <label>External Close</label>
+        <locationX>1260</locationX>
+        <locationY>512</locationY>
+        <defaultConnector>
+            <targetReference>myRule_7</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External Close</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>True_External_Close</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External Close</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_7</name>
+        <label>External Comment Update -Contact</label>
+        <locationX>1509</locationX>
+        <locationY>682</locationY>
+        <defaultConnector>
+            <targetReference>myRule_9</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_External Comment Update -Contact</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_External Comment Update -Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_9</name>
+        <label>Ext Cmt Update Non-Contact</label>
+        <locationX>1505</locationX>
+        <locationY>1040</locationY>
+        <defaultConnector>
+            <targetReference>myRule_11</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_Ext Cmt Update Non-Contact</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_Ext Cmt Update Non-Contact</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the Core IPS Case Notif External PB R4.2 process using multiple criteria.
+Process Builder to send IPS notifications - External</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_TRUE_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(       
+             NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       OR(  {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+		         {!$Record.RecordType.developerName=} 
+                                           $Label.Core_IPS_GECRecordTypeName),   
+                  NOT( ISBLANK({!$Record.ContactId} )),
+                  NOT(ISNULL({!$Record.ContactId} )) , 
+                 ISNEW(),
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+              OR(    ISPICKVAL({!$Record.Status}, &apos;New&apos;),
+			  ISPICKVAL({!$Record.Status}, &apos;On Hold&apos;)  ) 
+               
+   )</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_11</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+              NOT(ISNULL({!$Record.ContactId} )) , 
+              NOT( ISBLANK({!$Record.ContactId} )),
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Contact.Core_IPS_Active__c} = TRUE, 
+		         {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+			          ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ,
+             ISPICKVAL({!$Record.Core_Sub_Status__c} , &apos;Close-Pending&apos;) ,
+                AND(   
+                                ISCHANGED({!$Record.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!$Record.Core_Latest_Comment_Time_Stamp__c}))
+                               
+	                    ),
+                                       
+             ISPICKVAL({!$Record.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+
+        
+
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_13</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+              NOT(ISNULL({!$Record.ContactId} )) , 
+              NOT( ISBLANK({!$Record.ContactId} )),
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Contact.Core_IPS_Active__c} = TRUE, 
+		         {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+			 ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ,
+             ISPICKVAL({!$Record.Core_Sub_Status__c} , &apos;Close-Pending&apos;) 
+
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_15</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(       
+             NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	     {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+		  
+                 /* NOT( ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  )),
+                  NOT(ISNULL({!$Record.Core_IPS_Partner_Sup_Owner__c}  )) , */
+
+              /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS_Partner_Sup_Owner__r.IsActive=true}),
+
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+              OR(    ISPICKVAL({!$Record.Status}, &apos;New&apos;),
+			  ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ) ,
+              ISCHANGED( {!$Record.Core_IPS_Partner_Sup_Owner__c} )
+               
+   )</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_17</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+            /*   NOT(ISNULL({!$Record.Core_IPS_Partner_Sup_Owner__c} )) , 
+              NOT( ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c})), */
+
+           /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS_Partner_Sup_Owner__r.IsActive=true}),
+
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!$Record.Status}, &apos;New&apos;),
+			          ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ) ,
+             
+              AND(   
+                                ISCHANGED({!$Record.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!$Record.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!$Record.Core_Latest_Case_Comment_Type__c} , &apos;Private to Partner&apos;)
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+	     NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)),  
+             {!$Record.RecordType.developerName=} 
+                                                   $Label.Core_IPS_CaseCreateRecordType_Name, 
+              NOT(ISNULL({!$Record.ContactId} )) , 
+              NOT( ISBLANK({!$Record.ContactId} )),
+	      {!$Record.Core_IPS_Is_Notification_Active__c}  = TRUE,
+              {!$Record.Contact.Core_IPS_Active__c} = TRUE,
+              {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,
+              {!$Record.Core_IPS_Customer_Visible__c} = TRUE,       
+                 OR(       ISPICKVAL({!$Record.Status}, &apos;New&apos;),
+			       ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ),
+            ISCHANGED( {!$Record.Contact.Id} )
+                 
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(    
+               NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       OR(  {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+                         {!$Record.RecordType.developerName=} 
+                                           $Label.Core_IPS_ClosedCase_RecordType_Name,
+		         {!$Record.RecordType.developerName=} 
+                                           $Label.Core_IPS_GECRecordTypeName),
+              NOT(ISNULL({!$Record.ContactId} )) , 
+              NOT( ISBLANK({!$Record.ContactId} )),
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+
+	        ISPICKVAL({!$Record.Status}, &apos;Closed&apos;)
+                       
+ 
+   )</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+               NOT(ISNULL({!$Record.ContactId} )) , 
+              NOT( ISBLANK({!$Record.ContactId} )),
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!$Record.Status}, &apos;New&apos;),
+			          ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL({!$Record.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED({!$Record.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!$Record.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!$Record.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+      
+
+
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( 
+NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)), 
+	       {!$Record.RecordType.developerName=}
+                                           $Label.Core_IPS_CaseCreateRecordType_Name,
+        
+                   OR(      {!$Record.Count_Ext_Interested_Parties__c} &gt; 0,
+                           /* NOT( ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  )) */
+                            /*Null checks and user active checks on  case Core_IPS_Partner_Sup_Owner__c field added by karthick- US113974*/ 				
+IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS_Partner_Sup_Owner__r.IsActive=true})
+                         ),
+                             
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+                       OR(    ISPICKVAL({!$Record.Status}, &apos;New&apos;),
+			          ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ) ,
+             NOT(  ISPICKVAL({!$Record.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
+              AND(   
+                                ISCHANGED({!$Record.Core_Latest_Comment_Time_Stamp__c}),
+                                NOT(ISBLANK({!$Record.Core_Latest_Comment_Time_Stamp__c}))                
+	                    ),
+                                       
+             ISPICKVAL({!$Record.Core_Latest_Case_Comment_Type__c} , &apos;Public to Customers&apos; )
+      
+
+
+)</expression>
+    </formulas>
+    <label>Core IPS Case Notif External PB R4.2_3</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myRule_11_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1609</locationX>
+        <locationY>1319</locationY>
+        <connector>
+            <targetReference>myRule_11_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Close-Pending Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_15_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1774</locationX>
+        <locationY>1835</locationY>
+        <connector>
+            <targetReference>myRule_15_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Assigned PSO to Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_17_A1</name>
+        <label>Update Email Text</label>
+        <locationX>2038</locationX>
+        <locationY>1943</locationY>
+        <connector>
+            <targetReference>myRule_17_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has New Partner Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_1_A1</name>
+        <label>Update Email Text</label>
+        <locationX>454</locationX>
+        <locationY>479</locationY>
+        <connector>
+            <targetReference>myRule_1_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Created Case </stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_3_A1</name>
+        <label>Update Email Text</label>
+        <locationX>718</locationX>
+        <locationY>587</locationY>
+        <connector>
+            <targetReference>myRule_3_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Updated Contact on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_7_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1170</locationX>
+        <locationY>753</locationY>
+        <connector>
+            <targetReference>myRule_7_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has New Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_9_A1</name>
+        <label>Update Email Text</label>
+        <locationX>1246</locationX>
+        <locationY>1211</locationY>
+        <connector>
+            <targetReference>myRule_9_A2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has New Comment on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Email_Text</name>
+        <label>Update Email Text</label>
+        <locationX>1561</locationX>
+        <locationY>226</locationY>
+        <connector>
+            <targetReference>Email_Alert2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Close-Pending Reminder on Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Email_TextSchedulerPath</name>
+        <label>Update Email Text</label>
+        <locationX>1503</locationX>
+        <locationY>47</locationY>
+        <connector>
+            <targetReference>Email_Alert</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Closed Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>590</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>myRule_1</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>External_Close_Path</name>
+            <connector>
+                <targetReference>check_External_Close_True</targetReference>
+            </connector>
+            <label>External Close Scheduled Path</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>LastModifiedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>External_Close_Pending_10days</name>
+            <connector>
+                <targetReference>Check_External_Close_Pending_10days_True</targetReference>
+            </connector>
+            <label>External - Close Pending @10days Scheduler Path</label>
+            <offsetNumber>10</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_IPS_Date_Time_Close_Pending__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varExternalCloseScheduler</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varSchedulerExternalClosePending10days</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+</Flow>

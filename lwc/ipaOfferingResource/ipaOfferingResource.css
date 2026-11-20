@@ -1,0 +1,96 @@
+.file-info {
+  font-size: .875rem;
+}
+
+.file-info:empty {
+  display: none;
+}
+
+.title-container h3.p {
+  display: inline;
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 0 0 .5rem;
+}
+
+.offering-resource-container {
+  display: inline;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+}
+
+.video-thumbnail-play {
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 2rem;
+  height: 50%;
+  inset: 0 0 0 0;
+  margin: auto;
+  position: absolute;
+  width: 50%;
+}
+
+.text-card {
+  padding-top: .25rem;
+}
+
+.typeSpace {
+  padding-right: 1.5rem;
+}
+
+.slds-size_3-of-3 {
+  width: calc(75% - 1.5rem);
+}
+
+.resource-description {
+  padding-top: .75rem;
+}
+
+.title {
+  padding-bottom: 8px;
+}
+
+.placeHolder-image {
+  text-align: center;
+  width: 100%;
+}
+
+.image-container,
+.placeHolder-image {
+  margin-bottom: .5rem;
+  width: 100%;
+}
+
+.image-container img,
+.placeHolder-image img {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .offering-resource-title-wrapper {
+    display: flex;
+  }
+
+  .image-container,
+  .placeHolder-image {
+    margin-right: .5rem;
+    max-width: 200px;
+    min-width: 200px;
+  }
+
+  .resource-wrapper {
+    display: flex;
+  }
+
+  .videoheight {
+    height:80vh;
+  }
+}

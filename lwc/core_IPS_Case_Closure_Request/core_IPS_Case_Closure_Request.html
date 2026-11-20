@@ -1,0 +1,241 @@
+<template>
+<template if:true={caseClosureAccess}>
+
+    <template if:true={openmodel}>
+        <div class="slds-theme_default">
+
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate header">Request Case
+                            Closure</h2>
+                    </header>
+
+                    <template if:true={showError}>
+                       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-grid  slds-wrap">
+                                <div
+                                    class="slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-small-size--1-of-1 slds-p-around--xx-small">
+                                    <div
+                                        class="slds-medium-size--12-of-12 slds-large-size--12-of-12 slds-small-size--1-of-1 slds-p-around--xx-small">
+                                        <template if:true={picklistValuesStatus.data}>
+
+                                            <div class=" slds-m-around_medium " align="left">
+                                                <lightning-combobox value={picklistValuesStatus.data.values} label="Status"
+                                                    field-level-help={helpText}
+                                                    options={picklistValuesStatus.data.values} placeholder="Open"
+                                                    onchange={handleComboboxChange} disabled={disableMe} varaint="label-stacked" dropdown-alignment="Top-left">
+                                                </lightning-combobox>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div> 
+                                <div
+                                    class="slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-small-size--1-of-1 slds-p-around--xx-small">
+                                    <template if:true={picklistValues.data}>
+                                        <div class="slds-m-around_medium" align="left">
+                                            
+                                            <lightning-combobox value={value} options={picklistValues.data.values}
+                                                label="Sub-Status"
+                                                field-level-help={helpText}
+                                                placeholder="Close-Pending" 
+                                                onchange={handleComboboxChange} disabled={disableMe}>
+                                            </lightning-combobox>
+
+                                        </div>
+                                    </template>
+                                </div>
+                                <div
+                                    class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+
+                                    <template if:true={picklistValuesClosure.data}>
+                                        <div class="slds-m-around_medium" align="left">
+                                            <lightning-combobox value={CaseClosurePicklistValue}
+                                                options={picklistValuesClosure.data.values}
+                                                placeholder="Select an Option" label="Case Closure"
+                                                onchange={handleComboboxChange} required="true"></lightning-combobox>
+
+                                        </div>
+                                    </template>
+                                </div> 
+                                
+				     <div class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+
+                                    <template if:true={picklistValuesSOR.data}>
+                                        <div style="position:relative">
+                                             <div class="slds-form-element">
+                                                 <div class="slds-m-around_medium" align="left" >
+                                                     <label for="combobox-id" class="slds-form-element__label" >
+                                                        Source Of Resolution (SOR) 
+                                                    </label>
+                                                     <div class="slds-form-element__icon" style="position:relative; z-index:10000 !important;"> 
+                                                        <lightning-icon icon-name="utility:info" class=" slds-m-vertical_none slds-m-left_none"
+                                                                onmouseover={openModal} onmouseout={closeModal} size="xx-small" >
+                                                            </lightning-icon>
+                                            
+                                      
+                                                        <template if:true={isModalOpen}>
+                                                            <section aria-label="Dialog title" aria-describedby="popover-body-id" class="slds-popover " role="dialog" style="position:absolute;  margin-top:-16px; margin-left: 16px;" >
+                                                                <div class="slds-popover slds-popover_tooltip slds-nubbin_left-top custom-help-text-box " role="dialog">
+                                                                    <div class="slds-popover__body" align="left">
+                                                                        <lightning-formatted-rich-text value={tooltipContent}></lightning-formatted-rich-text>
+                                                                    </div>
+                                                                </div>
+                                                            </section> 
+                                                        </template>
+                                                    </div>
+                                                   <div class="slds-form-element__control "  > 
+                                                        <lightning-combobox value={sourceOfResolutionValue}
+                                                        options={picklistValuesSOR.data.values}
+                                                        variant="label-hidden"
+                                                        placeholder="Select an Option"
+                                                        disabled={disableSOR}
+                                                        id="combobox-id"
+                                                        onchange={handleSourceOfResolution}></lightning-combobox>
+                                                     </div> 
+                                                  </div>
+                                            </div>
+                                         </div>
+                                    </template>
+                                </div>
+                               
+                                <div
+                                    class="slds-size--12-of-12 slds-medium-size--12-of-12 slds-large-size--12-of-12 slds-p-around--xx-small">
+                                    <div class="form-group" align="left">
+                            
+                                        <lightning-input-rich-text label-visible=true 
+                                            required ="true"
+                                            label="Comment to Customer"
+                                            field-level-help={helpText}
+                                            class="slds-m-around_medium" onchange={handleCommentToCust} >
+                                        </lightning-input-rich-text>
+                                    </div>
+                                </div>
+                                <div
+                                    class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+                                    <div class="form-group" align="left">
+        
+                                        <lightning-textarea name="caseClosureDetails" 
+                                            value = {caseClosureDetailsValue}
+                                            label="Case Closure Details"
+                                            class="slds-m-around_medium" onchange={handleChangeCaseClosure} required={setRequired}>
+                                        </lightning-textarea>
+                                    </div>
+                                </div> 
+                               
+                                <div
+                                    class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+                                    <div class="form-group" align="left">
+                                        
+                                        <lightning-textarea name="input1" 
+                                        label="Knowledge Base Link" value={knowledgeBaselinkValue}
+                                            field-level-help={helpText}
+                                            class="slds-m-around_medium" onchange={handleKnowledgeBase}>
+                                     
+                                            </lightning-textarea>
+                                        </div>
+                                     </div>
+                              
+                                <div
+                                    class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+                                    <div class="form-group" align="left">
+                                            <lightning-textarea  field-level-help={label.Core_IPS_Promblem_helptext}
+                                             label="Problem Statement" value={problemStatementValue}
+                                             class="slds-m-around_medium" maxlength="32768" onchange={handleProblemStatement}>
+                                            </lightning-textarea>
+                                        </div>
+                                     </div>
+                              
+                                    <div
+                                        class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+                                        <div class="form-group" align="left">
+                                           <lightning-textarea field-level-help={label.Core_IPS_Rsolution_helptext}
+                                           label="Resolution" value={resolutionValue}
+                                           class="slds-m-around_medium"  maxlength="32768" onchange={handleResolution}>
+                                           </lightning-textarea>
+                                         </div>
+                                    </div>
+                                   
+                                    <div
+                                        class="slds-size--6-of-12 slds-medium-size--6-of-12 slds-large-size--6-of-12 slds-p-around--xx-small">
+                                        <div class="form-group" align="left">
+                                        
+                                       
+                                        <lightning-input name="BugDoc" type="string" value= {bugFixValue}
+                                        label="Bug/Doc Fix ID"
+                                        field-level-help="May contain a reference to an item that resolved the Case e.g. bug fix ID, Doc #, SW Version, ..."
+                                             class="slds-m-around_medium" onchange={handleBugFix}>
+                                       </lightning-input>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <footer class="slds-modal__footer">
+                            <div class="slds-align_absolute-center">
+                                <lightning-button disabled={isSaveEnabled} slot="actions" variant="brand" label="Save"
+                                    title="Save" onclick={saveRequest}>
+                                </lightning-button>
+                                <lightning-button disabled={isVisible} slot="actions" label="Cancel" title="Cancel"
+                                    class="slds-m-left_medium" onclick={closeQuickAction}>
+                                </lightning-button>
+                            </div>
+                            <div if:true={isLoaded}>
+                                <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+                            </div>
+                        </footer> 
+                    </template>
+                   
+                    <template if:false={showError} style="background-color: white;">
+                        <div class="modal-backdrop slds-align_absolute-center">
+                            Errors:- {showErrormessage}
+                        </div>
+                    </template>
+                    <template if:true={isUpdatePresent}>
+                        <c-crudcmp input-s-object-list-sent={inputSObjectListCase} operation='Update'> </c-crudcmp>
+                    </template>
+                    <template if:true={isInserPresent}>
+                        <c-crudcmp input-s-object-list-sent={inputSObjectListSent} operation='insert'> </c-crudcmp>
+                    </template>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+
+
+
+</template>
+<template if:false={caseClosureAccess}>
+    <template if:true={openmodel}>
+    </template>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+         <!-- modal header start -->
+           <header class="slds-modal__header">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                
+              </button>
+              <h1 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate"><b>Insufficient Privileges </b></h1>
+           </header>
+       
+           <!-- modal body start -->
+           <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                <div class="accessMsg" align="left">
+                 <p>You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary. For more information, <a href="https://help.salesforce.com/s/htdoor?instance=NA104&language=en_US&loc=help&release=236.19.4&showSplash=true&target=admin_insufficient_privileges_flowchart.htm" target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p>
+                </div>
+            </div>
+ 
+           <!-- modal footer start-->
+           <footer class="slds-modal__footer">
+              <button class="slds-button slds-button_neutral" onclick={closeQuickAction}>Cancel</button>
+           </footer>
+        
+        </div>
+     </section>
+     <div class="slds-backdrop slds-backdrop_open"></div>
+  <!-- modal end -->
+ 
+</template>
+</template>

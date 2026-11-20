@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome to the Developer Zone Premiere - Pending Approval - Eng</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUENGENRLR_DZP</name>
+    <style>none</style>
+    <subject>Intel Registration Confirmation - Developer Zone Premier Account</subject>
+    <textOnly>Intel Registration Confirmation - Developer Zone Premier Account
+
+Pending Approval
+
+Your Application is Pending Approval
+
+
+Welcome {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+Thank you for registering for a Developer Zone Premier Account.If you don&apos;t yet have a Corporate Non-Disclosure Agreement (CNDA) signed with Intel, it may take up to ten business days to review your request. You will receive a status update within three business days.
+
+While your application is pending, you can engage with the Developer Zone in the following ways:
+
+Post a question or comment to our community forums
+Bookmark and follow content of interest. Access your bookmark list in MyIntel.
+Development software downloads
+Manage your Intel® software license and registration using the License and Entitlement Manager
+Access the collaboration platform where developers can share projects: Intel® DevMesh.
+Enter contests
+Sign up for events: Developer Community and Events.
+Access performance testing applications
+Access developer training at Intel Learn.
+
+Please retain this email for future reference and note that Premier access is associated with this email address {!PRM_Registration_Request__c.PRM_Email_ID__c} only.Your password should be protected as confidential. Your password should be protected as confidential information. Your use of the password and Intel’s websites are governed by Intel’s Terms of Use..
+
+If you have any questions, please contact us.
+
+Sincerely,
+Developer Zone Registration Administrator
+
+Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.
+
+
+Intel is committed to protecting your privacy. For more Information, please see the Intel Privacy Notice. Intel Cookie Notice.
+
+Legal Information | Trademarks | © Intel Corporation.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

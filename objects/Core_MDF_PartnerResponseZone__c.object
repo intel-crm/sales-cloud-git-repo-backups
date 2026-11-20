@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Capture the Zone based on ZV,PV1,PV2,PV4</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Effective_End_Quarter_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective End Quarter</label>
+        <length>7</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Effective_Start_Quarter_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective Start Quarter</label>
+        <length>7</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV1_Percent_Recovery__c</fullName>
+        <description>Percentage to be recovered from PV1 Claim</description>
+        <externalId>false</externalId>
+        <label>PV1 Percent Recovery</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV2_Percent_Recovery__c</fullName>
+        <description>Percentage of PV2 Claims</description>
+        <externalId>false</externalId>
+        <label>PV2 Percent Recovery</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV4_Percent_Recovery__c</fullName>
+        <description>Percentage of PV4 Claims</description>
+        <externalId>false</externalId>
+        <label>PV4 Percent Recovery</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ZV_Percent_Recovery__c</fullName>
+        <description>Percentage of Zero Value Claims</description>
+        <externalId>false</externalId>
+        <label>ZV Percent Recovery</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Zone_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Core_MDF_Partner_Response_Zone</label>
+    <visibility>Public</visibility>
+</CustomObject>

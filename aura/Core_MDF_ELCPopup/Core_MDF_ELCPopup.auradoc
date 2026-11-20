@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>Documentation</aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		This is a Event and ELC popup which shows up the reminder so that user could select his choice.
+	</aura:example>
+</aura:documentation>

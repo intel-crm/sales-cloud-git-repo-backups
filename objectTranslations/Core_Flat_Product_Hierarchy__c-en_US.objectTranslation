@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Flat Product Hierarchy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Flat Product Hierarchy</value>
+    </caseValues>
+    <fields>
+        <label><!-- EPM Hierarchy ID --></label>
+        <name>Core_EPM_Hierarchy_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- EPM Hierarchy Name --></label>
+        <name>Core_EPM_Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1 EPM ID --></label>
+        <name>Core_L1_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1 EPM Name --></label>
+        <name>Core_L1_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 EPM ID --></label>
+        <name>Core_L2_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 EPM Name --></label>
+        <name>Core_L2_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L3 EPM ID --></label>
+        <name>Core_L3_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L3 EPM Name --></label>
+        <name>Core_L3_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 EPM ID --></label>
+        <name>Core_L4_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 EPM Name --></label>
+        <name>Core_L4_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 EPM ID --></label>
+        <name>Core_L5_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 EPM Name --></label>
+        <name>Core_L5_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique ID --></label>
+        <name>Core_Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_iPaaS_Load_ID --></label>
+        <name>Core_iPaaS_Load_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

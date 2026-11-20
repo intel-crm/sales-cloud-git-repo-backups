@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_CCV__c$Id</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Customer_Financials__r$Core_Customer_Profit__c</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Customer_Financials__r$Core_Customer_Revenue__c</field>
+    </columns>
+    <columns>
+        <field>Core_CCV__c.Customer_Financials__r$Core_Financials_Year__c</field>
+    </columns>
+    <description>Data set for CCv Template Customer Financials detail</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_CCV__c$Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CCV Customer Finances[Financials]</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_CCV_Customer_Financials_Report_Type__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_CCV__c.Customer_Financials__r$Core_Financials_Year__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_CCV__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

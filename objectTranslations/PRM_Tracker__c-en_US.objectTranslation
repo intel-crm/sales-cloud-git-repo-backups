@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Tracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tracker</value>
+    </caseValues>
+    <fields>
+        <label><!-- One Partner Inbound Message --></label>
+        <name>One_Partner_Inbound_Message__c</name>
+        <relationshipLabel><!-- Tracker --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Completed? --></label>
+        <name>PRM_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Groupby Id --></label>
+        <name>PRM_Groupby_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Comma separated auto numbers of integration log records --></help>
+        <label><!-- Integration Logs --></label>
+        <name>PRM_Integration_Logs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Outbound Message --></label>
+        <name>PRM_Integration_Outbound_Message__c</name>
+        <relationshipLabel><!-- Tracker --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Location account name --></label>
+        <name>PRM_LOC_account_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Account --></label>
+        <name>PRM_Location_Account__c</name>
+        <relationshipLabel><!-- Tracker --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Comma separated auto numbers of log entries --></help>
+        <label><!-- Log Entries --></label>
+        <name>PRM_Log_Entries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Merge field 1 --></label>
+        <name>PRM_Merge_field_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Merge field 2 --></label>
+        <name>PRM_Merge_field_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Display Name --></label>
+        <name>PRM_Milestone_Display_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone --></label>
+        <name>PRM_Milestone__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID Recommendation --></label>
+        <name>PRM_OPID_Recommendation__c</name>
+        <relationshipLabel><!-- Tracker --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- OPID --></label>
+        <name>PRM_OPID__c</name>
+        <relationshipLabel><!-- Tracker (OPID) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- OPID account name --></label>
+        <name>PRM_OPID_account_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type__c</name>
+        <picklistValues>
+            <masterLabel>OPID Recommendation</masterLabel>
+            <translation><!-- OPID Recommendation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Updates</masterLabel>
+            <translation><!-- OPID Updates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Updates 1PID</masterLabel>
+            <translation><!-- OPID Updates 1PID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- entitlementIds --></label>
+        <name>prm_entitlement_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- skip tracker --></label>
+        <name>prm_skip_tracker__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

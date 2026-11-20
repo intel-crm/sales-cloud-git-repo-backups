@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ForecastingFilterCondition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <colName>00N3b0000073iPy</colName>
+    <fieldName>Core_Opportunity_Coverage_Nm__c</fieldName>
+    <forecastingFilter>FF_Intel_Led_Opportunity_Revenue0hl3b000000GmaYAAS859907258698006</forecastingFilter>
+    <forecastingSourceDefinition>7sy3b000000GmaJ</forecastingSourceDefinition>
+    <isProtected>false</isProtected>
+    <masterLabel>FFC_Intel_Led_Opportunity_Revenue0r03b000000GmaJAAS139890084712522</masterLabel>
+    <operation>equals</operation>
+    <sortOrder>1</sortOrder>
+    <value>Intel-Led Opportunity</value>
+</ForecastingFilterCondition>

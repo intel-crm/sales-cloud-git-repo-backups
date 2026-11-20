@@ -1,0 +1,38 @@
+<template>  
+    <div class="slds-box slds-theme_default"> 
+      <lightning-spinner if:true={isLoading} alternative-text="Loading"></lightning-spinner>
+      <template lwc:if={showComponent}>
+      <div class="slds-m-around_medium"> 
+      <lightning-input type="text" value={title} label ="Short Description" onchange={onNameChange} required ="true"></lightning-input>
+        <lightning-textarea name="desc" value={descp} label="Description" onchange={onDescriptionChange} ></lightning-textarea>  
+        <!--<lightning-input label="Urgency" field-name="Urgency__c" onchange={onDescriptionChange}> </lightning-input>-->
+        <template if:true={stageValues.data}>
+        <lightning-combobox name="urg" label="Urgency" value={value} placeholder="Select Urgency" options={stageValues.data.values} onchange={handleChange}></lightning-combobox>
+
+      </template>
+      <template if:true={programValues.data}>
+        <lightning-combobox name="prgrm" label="Program Type" default="IPA" value={prType} placeholder="Select Program Type" options={programValues.data.values} onchange={prgmHandleChange} required ="true"></lightning-combobox>
+      </template>
+        <lightning-input type="file" onchange={onFileUpload} multiple accept=".jpg,.jpeg,.pdf,.png,.xlsx" name="uploadFile" label="Upload File">  
+        </lightning-input> 
+        <template lwc:if={attachedFiles.length}>
+          <ul>
+            <template for:each={attachedFiles} for:item="file">
+              <li key={file}>
+                <span class="green-tick"></span> {file}
+              </li>
+            </template>
+          </ul>
+        </template> 
+      </div>  
+      <div class="slds-align_absolute-center">    
+        <lightning-button label="Submit" onclick={saveCase}>  
+        </lightning-button>  
+      </div> 
+    </template>  
+   <template lwc:else>
+      You dont have neccessary permission to create incident!
+    </template>
+    <lightning-spinner if:true={isLoadingSave} alternative-text="Loading"></lightning-spinner>
+    </div>  
+  </template>

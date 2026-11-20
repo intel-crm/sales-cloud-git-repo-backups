@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>allInternalUsers</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>PCC_Deal_Reg_Partner_Group</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Account</field>
+        <field>Core_Product_Segment__c</field>
+        <field>Core_Product_Application__c</field>
+        <field>TotalOpportunityQuantity</field>
+        <field>Amount</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_Opp_Approved_By</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Core_Opp_Approved_Date</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_5__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Opportunity Approved for Design Win</label>
+        <name>Opportunity_Approved_for_Design_Win</name>
+    </approvalStep>
+    <description>Opportunity approval process. Allows submission for approval if all of the following are true: Submitter is Owner/Technical Owner/Creator or System Admin/Data Ops, Record Type is Opportunity, Compliance Status is not On Hold (any reason) or Not Approved, Stage is not Lost/Cancelled, and there&apos;s either at least one Pending product or no products at all, if opportunity doesn&apos;t have a &quot;Write In product&quot; associated and it is a PCC (Partner-Led) opportunity.</description>
+    <emailTemplate>Core_Opportunity_Management/Core_Oppty_PCC_Deal_Won</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(
+	OR(
+		$User.Username = Core_Technical_Owner__r.Username,
+		$User.Username = Owner.Username, 
+		$User.Username = CreatedBy.Username, 
+		$Profile.Name = &apos;System Administrator&apos;, 
+		$Profile.Name = &apos;Data Ops&apos;
+		),
+	NOT(
+		OR(
+			ISPICKVAL(Core_Compliance_Status__c, &apos;On Hold – Review in Progress&apos;),
+			ISPICKVAL(Core_Compliance_Status__c, &apos;On Hold – Government Authorization Needed&apos;),
+			ISPICKVAL(Core_Compliance_Status__c, &apos;Not Approved&apos;)
+			)
+		),
+	NOT(
+		OR(
+			ISPICKVAL(StageName, &apos;Lost&apos;),
+			ISPICKVAL(StageName, &apos;Production Lost&apos;), 
+			ISPICKVAL(StageName, &apos;Production Cancelled&apos;), 
+			ISPICKVAL(StageName, &apos;Cancelled&apos;),
+			ISPICKVAL(StageName, &apos;Design Win&apos;)
+			)
+		),	
+	Core_Write_In_Product_Count__c = 0,
+	OR(
+		Core_Pending_Product_Count__c &gt; 0, 
+		Core_Product_Count__c = 0
+		),
+	NOT(Core_Product_At_Risk__c),
+	!Core_Decimal_Check__c, 
+	Account.RecordType.Name = &apos;Intel Account&apos;,
+	AND(
+		ISPICKVAL(Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;),
+		ISPICKVAL(Core_Coverage_Type_Nm__c , &apos;Deal Registration&apos;) 
+		)
+	)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Core_Opp_Approval_Status_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Core_Opp_Set_Approved_Sales_Group</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Override_CloseDate_On_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Core_Opp_Approval_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Core_PCC_OpportunityRejection</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Core_Opp_Approval_Status_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Core_Opp_Store_Submitter_Email</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Core_Opp_Update_Date_Submitted_for_Appro</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Core Opp Approval - Partner Led Deal</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>2</processOrder>
+    <recallActions>
+        <action>
+            <name>Core_Opp_Approval_Status_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

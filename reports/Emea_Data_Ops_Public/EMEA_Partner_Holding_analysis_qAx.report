@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Account.Core_Account_Cnt__c:SUM/User.User_Unique__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Ratio</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_30684249</developerName>
+        <masterLabel>ROLE</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermediate_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Partner_Alliance_Program__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Prime_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Group_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group_Preview__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Group_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Department__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Preview__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Unified_Hierarchy_View__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CNDA_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Open_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Is_Opportunity_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_MDF_CoMarketingActive__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_PSG_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Channel_Program__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(USERS.NAME = &quot;Jakub Rak&quot;, &quot;DR&quot;, 
+IF(Account.Core_Account_Owner_Manager__c = &quot;Malhar Thakkar&quot;, &quot;ISV Strategy Partner&quot;,
+ IF(Account.Core_Account_Owner_Manager__c = &quot;Ryan Olson&quot;, &quot;INB Intel Network Builder&quot;,
+ IF(AND(OR(Account.Core_Account_Owner_Manager__c = &quot;Gosia Dzul&quot;, Account.Core_Account_Owner_Manager__c = &quot;Christine Harrison&quot;), TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Partner-Led Account&quot;), &quot;DR&quot;,
+  IF(AND(OR(Account.Core_Account_Owner_Manager__c = &quot;Gosia Dzul&quot;, Account.Core_Account_Owner_Manager__c = &quot;Christine Harrison&quot;), TEXT(Account.Core_Account_Primary_Coverage__c)!=&quot;Partner-Led Account&quot;), &quot;DR team - not Partner Led&quot;,
+ IF(Account.Core_Account_Owner_Manager__c = &quot;Simon Windsor&quot;, &quot;EMEA Inside Scale program&quot;,
+ IF(OR(Account.Core_Account_Owner_Manager__c = &quot;Simon Wilyman&quot;, Account.Core_Account_Owner_Manager__c = &quot;Paolo Righi&quot;), &quot;EMEA NEX Longtail&quot;,
+ IF(OR(CONTAINS(Account.Core_Account_Owner_Department__c, &quot;PSG&quot;),CONTAINS(Account.Core_Account_Owner_Department__c, &quot;Altera&quot;)), &quot;PSG&quot;, 
+ IF(CONTAINS(Account.Core_Account_Owner_Department__c, &quot;RealSense&quot;), &quot;RealSense&quot;,
+ IF(USERS.NAME = &quot;Alexey Ivanov&quot;, &quot;Alexey Ivanov&quot;,
+ IF(USERS.NAME = &quot;Uncovered Account&quot;, &quot;Uncovered&quot;, 
+ IF(USERS.NAME = &quot;A&amp;E Account Owner&quot;, &quot;A&amp;E Account Owner&quot;,
+ IF(TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Partner-led Account&quot;, &quot;Other Partner-led&quot;, 
+ IF(TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Other-led Account&quot;, &quot;Other Other-led&quot;,
+ IF(TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Not Covered Account&quot;, &quot;Other Not Covered&quot;, &quot;Other&quot;)))))))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Explanation</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Deactivated__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Partner Led</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CDF1</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DR,EMEA Inside Scale program,EMEA NEX Longtail,INB Intel Network Builder,ISV Strategy Partner,PSG,RealSense</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Account_Owner_Manager_Email__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_B2B_Entitlement__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA Partner Holding analysis - keep</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

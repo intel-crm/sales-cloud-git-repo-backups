@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "7facb7e2-b0c1-47e6-9dbf-134c4882b985",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Payment_Related_List__c",
+  "id" : "2cc77ca3-c660-41cd-b45d-e014febfc5c5",
+  "label" : "Payment Related List",
+  "objectApiName" : "Core_MDF_Payment__c",
+  "routeType" : "relatedlist-a4J",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-payment"
+}

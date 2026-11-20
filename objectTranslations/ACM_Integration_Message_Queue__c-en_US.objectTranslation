@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ACM Integration Message Queue</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ACM Integration Message Queues</value>
+    </caseValues>
+    <fields>
+        <label><!-- Additional Content --></label>
+        <name>Additional_Content__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Type --></label>
+        <name>Content_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content --></label>
+        <name>Content__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Filter --></label>
+        <name>Custom_Filter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Description --></label>
+        <name>Error_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message Status --></label>
+        <name>Message_Status__c</name>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Module Name --></label>
+        <name>Module_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Type --></label>
+        <name>Queue_Type__c</name>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Retry Count --></label>
+        <name>Retry_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System --></label>
+        <name>Source_System__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

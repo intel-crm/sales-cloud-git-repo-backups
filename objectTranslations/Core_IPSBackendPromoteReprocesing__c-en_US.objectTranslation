@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPSBackendPromoteReprocesing</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPSBackendPromoteReprocesing</value>
+    </caseValues>
+    <fields>
+        <label><!-- Group Lookup Name --></label>
+        <name>Core_Group_Lookup_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sequence Number --></label>
+        <name>Core_Sequence_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Translate Value --></label>
+        <name>Core_Translate_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

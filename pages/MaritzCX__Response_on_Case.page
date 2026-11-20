@@ -1,0 +1,77 @@
+<!-- This apex page displays Survey Response section on Case detail page with custom question labels
+	Last Modified By: Nakul C (19-Oct-2016) Fixed security issues
+-->
+<apex:page standardController="Case" extensions="MaritzCX.ResponseonCaseController" sidebar="false" showHeader="false"> 
+<apex:includeScript value="{!$Resource.MaritzCX__View_Response_Link}"/>
+<script type='text/javascript' language='javascript'>
+    function deleteResponse()
+    {
+        try{
+            if (confirm("Are you sure?")) {
+                delResponse();
+            }
+         }catch(err){delResponse();}        
+    }
+</script>
+
+<apex:form >
+    <apex:outputPanel rendered="{!isResponseDeleted}">
+        <apex:pageMessages />   
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!NOT(isResponseDeleted)}">
+    <apex:outputPanel rendered="{!flscheck}">
+            <apex:pageMessages id="msg" />
+    </apex:outputPanel>
+    <apex:pageBlock id="mainblock" rendered="{!NOT(flscheck)}">
+        <apex:actionFunction action="{!URLFOR($Action.Survey_Response__c.Delete,responseId ,[retURL=URLFOR('/apex/Response_on_Case?id='+JSINHTMLENCODE(objectId))])}" name="delResponse"/>          
+            <apex:outputText rendered="{!responseObjList.size <= 0}" value="{!$Label.maritzcx__no_records_to_display}" escape="true"></apex:outputText>                  
+
+            <apex:pageBlockTable value="{!responseObjList}" var="resObj" rendered="{!responseObjList.size > 0}">
+                <apex:column headerValue="Action" style="padding-top:1em;vertical-align: top;">
+                    <apex:commandLink value="{!$Label.maritzcx__edit}" id="editBtn" action="{!URLFOR($Action.Survey_Response__c.Edit,JSINHTMLENCODE(responseId) ,[retURL=URLFOR($Action.Case.View,JSINHTMLENCODE(objectId))])}" target="_parent" style="color:#015ba7;text-decoration: none;" rendered="{!$ObjectType.MaritzCX__Survey_Response__c.updateable}"/>
+                 &nbsp;| &nbsp;                      
+                    <apex:commandLink value="{!$Label.maritzcx__del}" id="delBtn"  onclick="deleteResponse();return false;" style="color:#015ba7;text-decoration: none;" rendered="{!$ObjectType.MaritzCX__Survey_Response__c.deletable}"/>
+                </apex:column>
+                <apex:repeat value="{!configCols}" var="c">                                           
+                    <apex:column headerValue="{!$Label.maritzcx__response_completed_date}" style="padding-top:1em;vertical-align: top;" rendered="{!c == '1'}">                         
+                        <apex:outputText value="{!resObj.ResponseDate}" escape="true"> </apex:outputText>&nbsp;
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.maritzcx__response_table_survey}" style="padding-top:1em;vertical-align: top;" rendered="{!c == '2'}">                                                  
+                        <a href="/{!JSENCODE(resObj.surveyId)}" target="_blank"><apex:outputText value="{!resObj.surveyName}" escape="true"> </apex:outputText>&nbsp;</a>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.maritzcx__metric_name}" rendered="{!c == '3'}">                          
+                        <apex:dataTable value="{!resObj.metricDetails}" var="m">
+                            <apex:column >
+                                <apex:outputText title="{!m.metricName}" value="{!if(len(m.metricName) > 20, LEFT(m.metricName, 20)+'...', m.metricName)}" escape="true"> </apex:outputText>&nbsp;
+                            </apex:column>   
+                        </apex:dataTable>                                    
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.maritzcx__response_table_response}" rendered="{!c == '4'}">                          
+                        <apex:dataTable value="{!resObj.metricDetails}" var="m">
+                            <apex:column >
+                                <apex:outputText title="{!m.response}" value="{!if(len(m.response) > 50, LEFT(m.response, 50)+'...', m.response)}" escape="true"> </apex:outputText>&nbsp;
+                        </apex:column>   
+                        </apex:dataTable>                                    
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.maritzcx__chart}" rendered="{!c == '5'}">                          
+                        <apex:dataTable value="{!resObj.metricDetails}" var="m">
+                            <apex:column >
+                            	<apex:variable var="mbar" value="{!m.metricBar}"/>
+                                <apex:outputText value="{!mbar}" escape="false"> </apex:outputText>&nbsp;
+                            </apex:column>   
+                        </apex:dataTable>                                    
+                    </apex:column>                    
+                    <apex:column headerValue="{!$Label.maritzcx__view_response}" style="padding-top:1em;vertical-align: top;" rendered="{!c == '6'}">
+                    	<apex:outputLink value="#" rendered="{!resObj.viewResponseVisible}" onclick="viewResponse('{!JSENCODE($Setup.MaritzCX__AlPublic__c.MaritzCX__NamespacePrefix__c)}','{!JSENCODE(resObj.mcxResponseId)}')">
+                        	<apex:outputText value="{!$Label.maritzcx__view_response}"></apex:outputText>
+                        </apex:outputLink>
+                    </apex:column>
+                </apex:repeat>                                                          
+            </apex:pageBlockTable>                                  
+    </apex:pageBlock>
+    </apex:outputPanel>
+</apex:form>
+</apex:page>

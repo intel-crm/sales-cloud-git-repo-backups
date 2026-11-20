@@ -1,0 +1,95 @@
+{
+  "defaultCode" : "en_US",
+  "defaultLabel" : "English (US)",
+  "id" : "5e677672-5204-4da6-bcfb-83da30b23927",
+  "languages" : [ {
+    "countryCode" : "CN",
+    "fallbackLanguageId" : null,
+    "id" : "e544034b-cb0f-4973-be69-f97a02ff5090",
+    "isActive" : true,
+    "label" : "Chinese (Simplified) - &amp;amp;#20013;&amp;amp;#25991;&amp;amp;#65288;&amp;amp;#31616;&amp;amp;#20307;&amp;amp;#65289; (CN)",
+    "languageCode" : "zh",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "2f7ae1f1-5a85-4c59-a20c-1b84e61f6665",
+    "isActive" : true,
+    "label" : "Japanese - &#26085;&#26412;&#35486;",
+    "languageCode" : "ja",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "609091e6-2104-4dcd-9737-8623d551a1f3",
+    "isActive" : true,
+    "label" : "French - fran&ccedil;ais",
+    "languageCode" : "fr",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "14bdbc9d-674d-49ee-80ad-d3276837bb81",
+    "isActive" : true,
+    "label" : "German - Deutsch",
+    "languageCode" : "de",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "13215a1c-375b-48f4-946f-7f4cd8676514",
+    "isActive" : true,
+    "label" : "Korean - &#54620;&#44397;&#50612;",
+    "languageCode" : "ko",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "754487f0-7136-4a00-8177-94f566d2b1e0",
+    "isActive" : true,
+    "label" : "Spanish - espa&ntilde;ol",
+    "languageCode" : "es",
+    "type" : "language"
+  }, {
+    "countryCode" : "MX",
+    "fallbackLanguageId" : null,
+    "id" : "7161dede-eaad-43cc-b0bf-ffd236934b60",
+    "isActive" : true,
+    "label" : "Spanish (Mexico) - espa&ntilde;ol (MX)",
+    "languageCode" : "es",
+    "type" : "language"
+  }, {
+    "countryCode" : "TW",
+    "fallbackLanguageId" : null,
+    "id" : "baabed6e-2c61-48a6-8733-4481cc396ba2",
+    "isActive" : true,
+    "label" : "Chinese (Traditional) - &#20013;&#25991;&#65288;&#32321;&#39636;&#65289; (TW)",
+    "languageCode" : "zh",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "0f7bfc5f-130d-4ed8-92d1-fd431169230c",
+    "isActive" : true,
+    "label" : "Italian - italiano",
+    "languageCode" : "it",
+    "type" : "language"
+  }, {
+    "countryCode" : null,
+    "fallbackLanguageId" : null,
+    "id" : "f8ecc931-8b62-4f6a-8da5-7bdc30e58702",
+    "isActive" : true,
+    "label" : "Russian - &#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;",
+    "languageCode" : "ru",
+    "type" : "language"
+  }, {
+    "countryCode" : "BR",
+    "fallbackLanguageId" : null,
+    "id" : "0a738f00-4c24-40bb-9853-c8cc50423d70",
+    "isActive" : true,
+    "label" : "Portuguese (Brazil) - portugu&ecirc;s (BR)",
+    "languageCode" : "pt",
+    "type" : "language"
+  } ],
+  "type" : "languageContainer"
+}

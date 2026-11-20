@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>To insert Quote and Quote line records from Opportunity for Financial Incentive.</description>
+        <name>Pricing_FI_Quote_QL_Creation</name>
+        <label>Pricing FI Quote QL Creation</label>
+        <locationX>176</locationX>
+        <locationY>170</locationY>
+        <actionName>Pricing_FinancialIncentive_BusinessLogic</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>oppIds</name>
+            <value>
+                <elementReference>$Record.Pricing_FI_Opportunity_IDs_txt__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pricing_FinancialIncentive_BusinessLogic</nameSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Pricing FI Quote and QL Creation - Subscribe Event {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pricing FI Quote and QL Creation - Subscribe Event</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Pricing_FI_Quote_QL_Creation</targetReference>
+        </connector>
+        <flowRunAsUser>TriggeringUser</flowRunAsUser>
+        <object>Pricing_FI_Quote_and_QL_Creation__e</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

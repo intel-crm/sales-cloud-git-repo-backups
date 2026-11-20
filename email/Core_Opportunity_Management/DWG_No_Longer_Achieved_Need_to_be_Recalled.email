@@ -1,0 +1,81 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="1" >
+<![CDATA[<p class="MsoNormal"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">The KPI
+associated with your employee’s approved Deal Win Goal (DWG) is no longer
+achieved.&nbsp; <a href="{!Core_Goal__c.Link}">Click HERE</a> to review the DWG
+and associated Opportunity.</span></p>
+
+<p class="MsoNormal" style="font-family: arial;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">AR:</span><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp; </span><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">Please review your DWG and determine if
+action should be taken (e.g. recalled, cancelled).</span><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;&nbsp;&nbsp; </span><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">If the DWG remains in "No KPI
+Achieved" status, you will be contacted during the next Commissions Audit
+cycle.</span><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;</span><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">&nbsp;</span></p><p class="MsoNormal" style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><b style="font-size: 12pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">Deal Win Goal Name:</span></b><span style="font-size: 12pt; font-family: &quot;Intel Clear&quot;, sans-serif;">&nbsp;{!Core_Goal__c.Name}</span></p><p class="MsoNormal" style="font-family: arial;"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">Deal Win Goal Owner:&nbsp;</span></b><font face="Intel Clear, sans-serif">{!Core_Goal__c.Core_Goal_Owner__c}</font></p><p class="MsoNormal" style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><b><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">Category:&nbsp;</span></b><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">{!Core_Goal__c.Core_Goal_Category__c}</span><span style="font-family: Arial, sans-serif;"><o:p></o:p></span></p><p class="MsoNormal" style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><b><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">KPI Name:&nbsp;</span></b><span style="font-family: &quot;Intel Clear&quot;, sans-serif;">{!Core_Goal__c.Core_Goal_BU_Focus_Area__c}<o:p></o:p></span></p><p class="MsoNormal" style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><b style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Opportunity Name:&nbsp;</span></b><font style="" face="Arial, sans-serif"><o:p></o:p>{!Core_Goal__c.Core_Opportunity__c}</font></p><p class="MsoNormal" style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font><span style="font-family: Arial, sans-serif;"><o:p></o:p></span></p><p style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt; margin: 0in 0in 0.0001pt;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class="MsoNormal" style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-family: &quot;Intel Clear&quot;, sans-serif; font-size: 12pt;">Guidance
+on common triggers and associated mitigation for DWGs that no longer have a
+‘KPI Achieved’ status, see below.&nbsp;&nbsp;</span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Trigger
+#1:&nbsp; The associated opportunity was
+reversed (approval revoked) in order to add a missing team member.<o:p></o:p></span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mitigation:&nbsp; Opportunity Owner should add the additional
+team member(s) and resubmit the Opportunity for review.&nbsp; Ideally the ‘resubmit and managerial
+review/approval’ cycle should be completed as quickly as possible (~5 business
+days) to avoid Commissions audit follow up.&nbsp;&nbsp;
+Once the approval is complete, the DWG will become achieved again and no
+further action is required.<o:p></o:p></span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Trigger
+#2:&nbsp;&nbsp; Additional product(s) have been
+added to an opportunity where the existing products that achieved the same KPI
+had already been approved.&nbsp;&nbsp; <o:p></o:p></span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mitigation:&nbsp;&nbsp; Manager must recall the DWG approval (this
+must be done for each email notification received) and then the Opportunity or
+Technical Owner must submit the new products on the opportunity for
+approval.&nbsp; Once these additional products
+are approved, and the KPI on the DWG matches, the DWG can be resubmitted.&nbsp;&nbsp;&nbsp; <o:p></o:p></span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">Trigger
+#3:&nbsp;&nbsp; Changes to any of the opportunity
+fields that are used to execute the KPIs (including but not limited to Solution
+Area, Product Segment, etc.).&nbsp;&nbsp; <o:p></o:p></span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mitigation:&nbsp;&nbsp;&nbsp; Please refer to the KPI Execution Tables
+(on the SalesKPI.intel.com site) to validate if the opportunity still meets the
+KPI criteria.&nbsp;&nbsp; If it does not, you can
+confirm what changed by checking out the ‘Approval &amp; History’ tab on the
+opportunity and scrolling down to ‘Opportunity Field History’.&nbsp;&nbsp; This will also identify who made the change
+and when.&nbsp;&nbsp; If the change was made in
+error, it should be corrected.&nbsp; If the
+change is correct, then the DWG approval should be recalled.&nbsp;&nbsp;&nbsp; <o:p></o:p></span></p><p class="MsoNormal" style="margin-left:.5in"><span style="font-family:&quot;Intel Clear&quot;,sans-serif"><br></span></p><p class="MsoNormal"><span style="font-family:&quot;Intel Clear&quot;,sans-serif">If you
+have additional questions, please log an Ask A Question (AAQ), select the
+‘Sales CRM’ topic, and attach this email along with your inquiry for the most
+efficient resolution.&nbsp;&nbsp;&nbsp; If you have any
+questions regarding Commission implications, please use AAQ and select the ‘Ask
+Commissions’ topic.&nbsp;&nbsp;<o:p></o:p></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt;"><br></p>
+
+<p style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-family: Calibri, sans-serif;">_______________________________________________________________________<o:p></o:p></span></p>
+
+<p style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-size:7.5pt;
+font-family:&quot;Intel Clear Light&quot;,sans-serif;color:#666666">This message contains
+Intel Confidential information and should be handled in accordance with your
+Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone
+other than the intended recipient is unauthorized. If you are not the intended
+recipient (or responsible for delivery of the message to such person), you may
+not use, copy, distribute, or deliver this message or any part of its contents
+or take any action in reliance on it, and in such case, you should destroy this
+message. <o:p></o:p></span></p>
+
+<p style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-size: 11pt; font-family: Calibri, sans-serif;">&nbsp;<o:p></o:p></span></p>
+
+<p style="font-family: arial; color: rgb(0, 0, 0); font-size: 12pt; margin: 0in 0in 0.0001pt;"><span style="font-size:7.5pt;
+font-family:&quot;Intel Clear Light&quot;,sans-serif;color:#666666">Copyright ©Intel
+Corporation. All rights reserved. Intel Corporation, 2200 Mission College
+Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA </span><a href="http://www.intel.com/"><span style="font-size:7.5pt;font-family:&quot;Intel Clear Light&quot;,sans-serif">www.intel.com</span></a><span style="font-size:7.5pt;font-family:&quot;Intel Clear Light&quot;,sans-serif;color:#666666">
+(408) 765-8080</span><span style="font-size: 7.5pt; font-family: &quot;Intel Clear Light&quot;, sans-serif;"><o:p></o:p></span></p>]]></td>
+</tr>
+</table>

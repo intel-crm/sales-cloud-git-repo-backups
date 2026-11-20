@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_IPS_Backend_System_Custom_Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_IPS_Backend_System_Custom_Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Backend_System_Name --></label>
+        <name>Backend_System_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend_Sysytem_url --></label>
+        <name>Backend_Sysytem_url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deassociate --></label>
+        <name>Deassociate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default_Value --></label>
+        <name>Default_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direction --></label>
+        <name>Direction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source_Field --></label>
+        <name>Source_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source_Value --></label>
+        <name>Source_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support_Email --></label>
+        <name>Support_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support_Update --></label>
+        <name>Support_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target_Field --></label>
+        <name>Target_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target_System --></label>
+        <name>Target_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target_Value --></label>
+        <name>Target_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- UnMapped --></label>
+        <name>UnMapped__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

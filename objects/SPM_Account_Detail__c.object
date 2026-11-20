@@ -1,0 +1,2008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Account_Detail_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Account_Detail_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Coverage_Type__c</fields>
+        <fields>Region__c</fields>
+        <fields>DR__c</fields>
+        <fields>VP__c</fields>
+        <fields>GM__c</fields>
+        <label>Account Detail Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account_OW_Manager__c</fullName>
+        <externalId>false</externalId>
+        <label>Account OW Manager</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Owner_WWID__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Owner WWID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Owner__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Owner</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CIM_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>CIM ID</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_CST_Is_Active_Planning_Period__c</fullName>
+        <formula>SPM_Customer_ID__r.CRM_CST_Active_Planning_Period__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Active Planning Period</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CST_Account_Owner_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Added for POC--TWC3123-6522 -- CST: Analysis -Expand cust/acc inclusion threshold by account primary coverage in CST [Dev]</description>
+        <label>New Account Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CST_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CST_Umbrella_Group_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Umbrella Group ID</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CST_Umbrella_Group_Name__c</fullName>
+        <label>Umbrella Group Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CST_Unified_Global_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Unified Global ID</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CST_Unified_Global_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Unified Global Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CST_Unified_Hierarchy__c</fullName>
+        <label>Unified Hierarchy</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>United States</fullName>
+                    <default>false</default>
+                    <label>United States</label>
+                </value>
+                <value>
+                    <fullName>Intermediate</fullName>
+                    <default>false</default>
+                    <label>Intermediate</label>
+                </value>
+                <value>
+                    <fullName>Global</fullName>
+                    <default>false</default>
+                    <label>Global</label>
+                </value>
+                <value>
+                    <fullName>France</fullName>
+                    <default>false</default>
+                    <label>France</label>
+                </value>
+                <value>
+                    <fullName>Spain</fullName>
+                    <default>false</default>
+                    <label>Spain</label>
+                </value>
+                <value>
+                    <fullName>United Kingdom</fullName>
+                    <default>false</default>
+                    <label>United Kingdom</label>
+                </value>
+                <value>
+                    <fullName>Not Unified</fullName>
+                    <default>false</default>
+                    <label>Not Unified</label>
+                </value>
+                <value>
+                    <fullName>Japan</fullName>
+                    <default>false</default>
+                    <label>Japan</label>
+                </value>
+                <value>
+                    <fullName>Canada</fullName>
+                    <default>false</default>
+                    <label>Canada</label>
+                </value>
+                <value>
+                    <fullName>India</fullName>
+                    <default>false</default>
+                    <label>India</label>
+                </value>
+                <value>
+                    <fullName>Mexico</fullName>
+                    <default>false</default>
+                    <label>Mexico</label>
+                </value>
+                <value>
+                    <fullName>Location: South Korea</fullName>
+                    <default>false</default>
+                    <label>Location: South Korea</label>
+                </value>
+                <value>
+                    <fullName>Sweden</fullName>
+                    <default>false</default>
+                    <label>Sweden</label>
+                </value>
+                <value>
+                    <fullName>Philippines</fullName>
+                    <default>false</default>
+                    <label>Philippines</label>
+                </value>
+                <value>
+                    <fullName>Malaysia</fullName>
+                    <default>false</default>
+                    <label>Malaysia</label>
+                </value>
+                <value>
+                    <fullName>Singapore</fullName>
+                    <default>false</default>
+                    <label>Singapore</label>
+                </value>
+                <value>
+                    <fullName>Germany</fullName>
+                    <default>false</default>
+                    <label>Germany</label>
+                </value>
+                <value>
+                    <fullName>Location: United States</fullName>
+                    <default>false</default>
+                    <label>Location: United States</label>
+                </value>
+                <value>
+                    <fullName>Greece</fullName>
+                    <default>false</default>
+                    <label>Greece</label>
+                </value>
+                <value>
+                    <fullName>Taiwan</fullName>
+                    <default>false</default>
+                    <label>Taiwan</label>
+                </value>
+                <value>
+                    <fullName>Argentina</fullName>
+                    <default>false</default>
+                    <label>Argentina</label>
+                </value>
+                <value>
+                    <fullName>Belgium</fullName>
+                    <default>false</default>
+                    <label>Belgium</label>
+                </value>
+                <value>
+                    <fullName>Ecuador</fullName>
+                    <default>false</default>
+                    <label>Ecuador</label>
+                </value>
+                <value>
+                    <fullName>Finland</fullName>
+                    <default>false</default>
+                    <label>Finland</label>
+                </value>
+                <value>
+                    <fullName>Location: Argentina</fullName>
+                    <default>false</default>
+                    <label>Location: Argentina</label>
+                </value>
+                <value>
+                    <fullName>Peru</fullName>
+                    <default>false</default>
+                    <label>Peru</label>
+                </value>
+                <value>
+                    <fullName>China</fullName>
+                    <default>false</default>
+                    <label>China</label>
+                </value>
+                <value>
+                    <fullName>Chile</fullName>
+                    <default>false</default>
+                    <label>Chile</label>
+                </value>
+                <value>
+                    <fullName>Location: Germany</fullName>
+                    <default>false</default>
+                    <label>Location: Germany</label>
+                </value>
+                <value>
+                    <fullName>Nigeria</fullName>
+                    <default>false</default>
+                    <label>Nigeria</label>
+                </value>
+                <value>
+                    <fullName>Italy</fullName>
+                    <default>false</default>
+                    <label>Italy</label>
+                </value>
+                <value>
+                    <fullName>Lithuania</fullName>
+                    <default>false</default>
+                    <label>Lithuania</label>
+                </value>
+                <value>
+                    <fullName>Location: Taiwan</fullName>
+                    <default>false</default>
+                    <label>Location: Taiwan</label>
+                </value>
+                <value>
+                    <fullName>Norway</fullName>
+                    <default>false</default>
+                    <label>Norway</label>
+                </value>
+                <value>
+                    <fullName>Czechia</fullName>
+                    <default>false</default>
+                    <label>Czechia</label>
+                </value>
+                <value>
+                    <fullName>Denmark</fullName>
+                    <default>false</default>
+                    <label>Denmark</label>
+                </value>
+                <value>
+                    <fullName>Bangladesh</fullName>
+                    <default>false</default>
+                    <label>Bangladesh</label>
+                </value>
+                <value>
+                    <fullName>Ireland</fullName>
+                    <default>false</default>
+                    <label>Ireland</label>
+                </value>
+                <value>
+                    <fullName>Thailand</fullName>
+                    <default>false</default>
+                    <label>Thailand</label>
+                </value>
+                <value>
+                    <fullName>Morocco</fullName>
+                    <default>false</default>
+                    <label>Morocco</label>
+                </value>
+                <value>
+                    <fullName>Hong Kong</fullName>
+                    <default>false</default>
+                    <label>Hong Kong</label>
+                </value>
+                <value>
+                    <fullName>Ukraine</fullName>
+                    <default>false</default>
+                    <label>Ukraine</label>
+                </value>
+                <value>
+                    <fullName>Location: Japan</fullName>
+                    <default>false</default>
+                    <label>Location: Japan</label>
+                </value>
+                <value>
+                    <fullName>Israel</fullName>
+                    <default>false</default>
+                    <label>Israel</label>
+                </value>
+                <value>
+                    <fullName>South Korea</fullName>
+                    <default>false</default>
+                    <label>South Korea</label>
+                </value>
+                <value>
+                    <fullName>Uruguay</fullName>
+                    <default>false</default>
+                    <label>Uruguay</label>
+                </value>
+                <value>
+                    <fullName>Estonia</fullName>
+                    <default>false</default>
+                    <label>Estonia</label>
+                </value>
+                <value>
+                    <fullName>Indonesia</fullName>
+                    <default>false</default>
+                    <label>Indonesia</label>
+                </value>
+                <value>
+                    <fullName>Guatemala</fullName>
+                    <default>false</default>
+                    <label>Guatemala</label>
+                </value>
+                <value>
+                    <fullName>Location: Finland</fullName>
+                    <default>false</default>
+                    <label>Location: Finland</label>
+                </value>
+                <value>
+                    <fullName>Tunisia</fullName>
+                    <default>false</default>
+                    <label>Tunisia</label>
+                </value>
+                <value>
+                    <fullName>Saudi Arabia</fullName>
+                    <default>false</default>
+                    <label>Saudi Arabia</label>
+                </value>
+                <value>
+                    <fullName>Switzerland</fullName>
+                    <default>false</default>
+                    <label>Switzerland</label>
+                </value>
+                <value>
+                    <fullName>Turkiye</fullName>
+                    <default>false</default>
+                    <label>Turkiye</label>
+                </value>
+                <value>
+                    <fullName>Brazil</fullName>
+                    <default>false</default>
+                    <label>Brazil</label>
+                </value>
+                <value>
+                    <fullName>Poland</fullName>
+                    <default>false</default>
+                    <label>Poland</label>
+                </value>
+                <value>
+                    <fullName>Australia</fullName>
+                    <default>false</default>
+                    <label>Australia</label>
+                </value>
+                <value>
+                    <fullName>Bulgaria</fullName>
+                    <default>false</default>
+                    <label>Bulgaria</label>
+                </value>
+                <value>
+                    <fullName>Austria</fullName>
+                    <default>false</default>
+                    <label>Austria</label>
+                </value>
+                <value>
+                    <fullName>Costa Rica</fullName>
+                    <default>false</default>
+                    <label>Costa Rica</label>
+                </value>
+                <value>
+                    <fullName>El Salvador</fullName>
+                    <default>false</default>
+                    <label>El Salvador</label>
+                </value>
+                <value>
+                    <fullName>Egypt</fullName>
+                    <default>false</default>
+                    <label>Egypt</label>
+                </value>
+                <value>
+                    <fullName>South Africa</fullName>
+                    <default>false</default>
+                    <label>South Africa</label>
+                </value>
+                <value>
+                    <fullName>Colombia</fullName>
+                    <default>false</default>
+                    <label>Colombia</label>
+                </value>
+                <value>
+                    <fullName>Pakistan</fullName>
+                    <default>false</default>
+                    <label>Pakistan</label>
+                </value>
+                <value>
+                    <fullName>Vietnam</fullName>
+                    <default>false</default>
+                    <label>Vietnam</label>
+                </value>
+                <value>
+                    <fullName>Netherlands</fullName>
+                    <default>false</default>
+                    <label>Netherlands</label>
+                </value>
+                <value>
+                    <fullName>Location: Peru</fullName>
+                    <default>false</default>
+                    <label>Location: Peru</label>
+                </value>
+                <value>
+                    <fullName>Paraguay</fullName>
+                    <default>false</default>
+                    <label>Paraguay</label>
+                </value>
+                <value>
+                    <fullName>Anguilla</fullName>
+                    <default>false</default>
+                    <label>Anguilla</label>
+                </value>
+                <value>
+                    <fullName>Yemen</fullName>
+                    <default>false</default>
+                    <label>Yemen</label>
+                </value>
+                <value>
+                    <fullName>Senegal</fullName>
+                    <default>false</default>
+                    <label>Senegal</label>
+                </value>
+                <value>
+                    <fullName>Jersey</fullName>
+                    <default>false</default>
+                    <label>Jersey</label>
+                </value>
+                <value>
+                    <fullName>Djibouti</fullName>
+                    <default>false</default>
+                    <label>Djibouti</label>
+                </value>
+                <value>
+                    <fullName>Fiji</fullName>
+                    <default>false</default>
+                    <label>Fiji</label>
+                </value>
+                <value>
+                    <fullName>Turkey</fullName>
+                    <default>false</default>
+                    <label>Turkey</label>
+                </value>
+                <value>
+                    <fullName>Malawi</fullName>
+                    <default>false</default>
+                    <label>Malawi</label>
+                </value>
+                <value>
+                    <fullName>Iraq</fullName>
+                    <default>false</default>
+                    <label>Iraq</label>
+                </value>
+                <value>
+                    <fullName>Afghanistan</fullName>
+                    <default>false</default>
+                    <label>Afghanistan</label>
+                </value>
+                <value>
+                    <fullName>Cambodia</fullName>
+                    <default>false</default>
+                    <label>Cambodia</label>
+                </value>
+                <value>
+                    <fullName>Jordan</fullName>
+                    <default>false</default>
+                    <label>Jordan</label>
+                </value>
+                <value>
+                    <fullName>Maldives</fullName>
+                    <default>false</default>
+                    <label>Maldives</label>
+                </value>
+                <value>
+                    <fullName>Rwanda</fullName>
+                    <default>false</default>
+                    <label>Rwanda</label>
+                </value>
+                <value>
+                    <fullName>Sudan</fullName>
+                    <default>false</default>
+                    <label>Sudan</label>
+                </value>
+                <value>
+                    <fullName>Sri Lanka</fullName>
+                    <default>false</default>
+                    <label>Sri Lanka</label>
+                </value>
+                <value>
+                    <fullName>Algeria</fullName>
+                    <default>false</default>
+                    <label>Algeria</label>
+                </value>
+                <value>
+                    <fullName>Togo</fullName>
+                    <default>false</default>
+                    <label>Togo</label>
+                </value>
+                <value>
+                    <fullName>Slovakia</fullName>
+                    <default>false</default>
+                    <label>Slovakia</label>
+                </value>
+                <value>
+                    <fullName>Reunion</fullName>
+                    <default>false</default>
+                    <label>Reunion</label>
+                </value>
+                <value>
+                    <fullName>Angola</fullName>
+                    <default>false</default>
+                    <label>Angola</label>
+                </value>
+                <value>
+                    <fullName>San Marino</fullName>
+                    <default>false</default>
+                    <label>San Marino</label>
+                </value>
+                <value>
+                    <fullName>Qatar</fullName>
+                    <default>false</default>
+                    <label>Qatar</label>
+                </value>
+                <value>
+                    <fullName>Albania</fullName>
+                    <default>false</default>
+                    <label>Albania</label>
+                </value>
+                <value>
+                    <fullName>Madagascar</fullName>
+                    <default>false</default>
+                    <label>Madagascar</label>
+                </value>
+                <value>
+                    <fullName>Ghana</fullName>
+                    <default>false</default>
+                    <label>Ghana</label>
+                </value>
+                <value>
+                    <fullName>Myanmar</fullName>
+                    <default>false</default>
+                    <label>Myanmar</label>
+                </value>
+                <value>
+                    <fullName>Nicaragua</fullName>
+                    <default>false</default>
+                    <label>Nicaragua</label>
+                </value>
+                <value>
+                    <fullName>Sierra Leone</fullName>
+                    <default>false</default>
+                    <label>Sierra Leone</label>
+                </value>
+                <value>
+                    <fullName>Benin</fullName>
+                    <default>false</default>
+                    <label>Benin</label>
+                </value>
+                <value>
+                    <fullName>Bahamas</fullName>
+                    <default>false</default>
+                    <label>Bahamas</label>
+                </value>
+                <value>
+                    <fullName>Curacao</fullName>
+                    <default>false</default>
+                    <label>Curacao</label>
+                </value>
+                <value>
+                    <fullName>Belarus</fullName>
+                    <default>false</default>
+                    <label>Belarus</label>
+                </value>
+                <value>
+                    <fullName>Malta</fullName>
+                    <default>false</default>
+                    <label>Malta</label>
+                </value>
+                <value>
+                    <fullName>Kuwait</fullName>
+                    <default>false</default>
+                    <label>Kuwait</label>
+                </value>
+                <value>
+                    <fullName>American Samoa</fullName>
+                    <default>false</default>
+                    <label>American Samoa</label>
+                </value>
+                <value>
+                    <fullName>Timor-Leste</fullName>
+                    <default>false</default>
+                    <label>Timor-Leste</label>
+                </value>
+                <value>
+                    <fullName>Tuvalu</fullName>
+                    <default>false</default>
+                    <label>Tuvalu</label>
+                </value>
+                <value>
+                    <fullName>Somalia</fullName>
+                    <default>false</default>
+                    <label>Somalia</label>
+                </value>
+                <value>
+                    <fullName>Macao SAR China</fullName>
+                    <default>false</default>
+                    <label>Macao SAR China</label>
+                </value>
+                <value>
+                    <fullName>Tajikistan</fullName>
+                    <default>false</default>
+                    <label>Tajikistan</label>
+                </value>
+                <value>
+                    <fullName>Puerto Rico</fullName>
+                    <default>false</default>
+                    <label>Puerto Rico</label>
+                </value>
+                <value>
+                    <fullName>Martinique</fullName>
+                    <default>false</default>
+                    <label>Martinique</label>
+                </value>
+                <value>
+                    <fullName>Cayman Islands</fullName>
+                    <default>false</default>
+                    <label>Cayman Islands</label>
+                </value>
+                <value>
+                    <fullName>Isle of Man</fullName>
+                    <default>false</default>
+                    <label>Isle of Man</label>
+                </value>
+                <value>
+                    <fullName>Croatia</fullName>
+                    <default>false</default>
+                    <label>Croatia</label>
+                </value>
+                <value>
+                    <fullName>Burundi</fullName>
+                    <default>false</default>
+                    <label>Burundi</label>
+                </value>
+                <value>
+                    <fullName>Andorra</fullName>
+                    <default>false</default>
+                    <label>Andorra</label>
+                </value>
+                <value>
+                    <fullName>Bolivia</fullName>
+                    <default>false</default>
+                    <label>Bolivia</label>
+                </value>
+                <value>
+                    <fullName>Gabon</fullName>
+                    <default>false</default>
+                    <label>Gabon</label>
+                </value>
+                <value>
+                    <fullName>Dem. Rep. Congo</fullName>
+                    <default>false</default>
+                    <label>Dem. Rep. Congo</label>
+                </value>
+                <value>
+                    <fullName>Suriname</fullName>
+                    <default>false</default>
+                    <label>Suriname</label>
+                </value>
+                <value>
+                    <fullName>Turkmenistan</fullName>
+                    <default>false</default>
+                    <label>Turkmenistan</label>
+                </value>
+                <value>
+                    <fullName>Location: China</fullName>
+                    <default>false</default>
+                    <label>Location: China</label>
+                </value>
+                <value>
+                    <fullName>Russian Fed</fullName>
+                    <default>false</default>
+                    <label>Russian Fed</label>
+                </value>
+                <value>
+                    <fullName>Congo</fullName>
+                    <default>false</default>
+                    <label>Congo</label>
+                </value>
+                <value>
+                    <fullName>Liechtenstein</fullName>
+                    <default>false</default>
+                    <label>Liechtenstein</label>
+                </value>
+                <value>
+                    <fullName>Laos</fullName>
+                    <default>false</default>
+                    <label>Laos</label>
+                </value>
+                <value>
+                    <fullName>Bhutan</fullName>
+                    <default>false</default>
+                    <label>Bhutan</label>
+                </value>
+                <value>
+                    <fullName>Monaco</fullName>
+                    <default>false</default>
+                    <label>Monaco</label>
+                </value>
+                <value>
+                    <fullName>Panama</fullName>
+                    <default>false</default>
+                    <label>Panama</label>
+                </value>
+                <value>
+                    <fullName>Venezuela</fullName>
+                    <default>false</default>
+                    <label>Venezuela</label>
+                </value>
+                <value>
+                    <fullName>Iceland</fullName>
+                    <default>false</default>
+                    <label>Iceland</label>
+                </value>
+                <value>
+                    <fullName>Oman</fullName>
+                    <default>false</default>
+                    <label>Oman</label>
+                </value>
+                <value>
+                    <fullName>North Korea</fullName>
+                    <default>false</default>
+                    <label>North Korea</label>
+                </value>
+                <value>
+                    <fullName>Cyprus</fullName>
+                    <default>false</default>
+                    <label>Cyprus</label>
+                </value>
+                <value>
+                    <fullName>Gibraltar</fullName>
+                    <default>false</default>
+                    <label>Gibraltar</label>
+                </value>
+                <value>
+                    <fullName>Cote d&apos;Ivoire</fullName>
+                    <default>false</default>
+                    <label>Cote d&apos;Ivoire</label>
+                </value>
+                <value>
+                    <fullName>Aruba</fullName>
+                    <default>false</default>
+                    <label>Aruba</label>
+                </value>
+                <value>
+                    <fullName>Georgia</fullName>
+                    <default>false</default>
+                    <label>Georgia</label>
+                </value>
+                <value>
+                    <fullName>Zimbabwe</fullName>
+                    <default>false</default>
+                    <label>Zimbabwe</label>
+                </value>
+                <value>
+                    <fullName>Montenegro</fullName>
+                    <default>false</default>
+                    <label>Montenegro</label>
+                </value>
+                <value>
+                    <fullName>Guam</fullName>
+                    <default>false</default>
+                    <label>Guam</label>
+                </value>
+                <value>
+                    <fullName>Mongolia</fullName>
+                    <default>false</default>
+                    <label>Mongolia</label>
+                </value>
+                <value>
+                    <fullName>Azerbaijan</fullName>
+                    <default>false</default>
+                    <label>Azerbaijan</label>
+                </value>
+                <value>
+                    <fullName>Libya</fullName>
+                    <default>false</default>
+                    <label>Libya</label>
+                </value>
+                <value>
+                    <fullName>Dominican Rep.</fullName>
+                    <default>false</default>
+                    <label>Dominican Rep.</label>
+                </value>
+                <value>
+                    <fullName>Armenia</fullName>
+                    <default>false</default>
+                    <label>Armenia</label>
+                </value>
+                <value>
+                    <fullName>Honduras</fullName>
+                    <default>false</default>
+                    <label>Honduras</label>
+                </value>
+                <value>
+                    <fullName>Uganda</fullName>
+                    <default>false</default>
+                    <label>Uganda</label>
+                </value>
+                <value>
+                    <fullName>French Guiana</fullName>
+                    <default>false</default>
+                    <label>French Guiana</label>
+                </value>
+                <value>
+                    <fullName>Namibia</fullName>
+                    <default>false</default>
+                    <label>Namibia</label>
+                </value>
+                <value>
+                    <fullName>Zambia</fullName>
+                    <default>false</default>
+                    <label>Zambia</label>
+                </value>
+                <value>
+                    <fullName>Ethiopia</fullName>
+                    <default>false</default>
+                    <label>Ethiopia</label>
+                </value>
+                <value>
+                    <fullName>Jamaica</fullName>
+                    <default>false</default>
+                    <label>Jamaica</label>
+                </value>
+                <value>
+                    <fullName>Latvia</fullName>
+                    <default>false</default>
+                    <label>Latvia</label>
+                </value>
+                <value>
+                    <fullName>Eswatini</fullName>
+                    <default>false</default>
+                    <label>Eswatini</label>
+                </value>
+                <value>
+                    <fullName>Brunei</fullName>
+                    <default>false</default>
+                    <label>Brunei</label>
+                </value>
+                <value>
+                    <fullName>Seychelles</fullName>
+                    <default>false</default>
+                    <label>Seychelles</label>
+                </value>
+                <value>
+                    <fullName>Uzbekistan</fullName>
+                    <default>false</default>
+                    <label>Uzbekistan</label>
+                </value>
+                <value>
+                    <fullName>North Macedonia</fullName>
+                    <default>false</default>
+                    <label>North Macedonia</label>
+                </value>
+                <value>
+                    <fullName>Kyrgyzstan</fullName>
+                    <default>false</default>
+                    <label>Kyrgyzstan</label>
+                </value>
+                <value>
+                    <fullName>Faroe Islands</fullName>
+                    <default>false</default>
+                    <label>Faroe Islands</label>
+                </value>
+                <value>
+                    <fullName>Mozambique</fullName>
+                    <default>false</default>
+                    <label>Mozambique</label>
+                </value>
+                <value>
+                    <fullName>Belize</fullName>
+                    <default>false</default>
+                    <label>Belize</label>
+                </value>
+                <value>
+                    <fullName>Kenya</fullName>
+                    <default>false</default>
+                    <label>Kenya</label>
+                </value>
+                <value>
+                    <fullName>Lebanon</fullName>
+                    <default>false</default>
+                    <label>Lebanon</label>
+                </value>
+                <value>
+                    <fullName>Slovenia</fullName>
+                    <default>false</default>
+                    <label>Slovenia</label>
+                </value>
+                <value>
+                    <fullName>Tanzania</fullName>
+                    <default>false</default>
+                    <label>Tanzania</label>
+                </value>
+                <value>
+                    <fullName>Botswana</fullName>
+                    <default>false</default>
+                    <label>Botswana</label>
+                </value>
+                <value>
+                    <fullName>Luxembourg</fullName>
+                    <default>false</default>
+                    <label>Luxembourg</label>
+                </value>
+                <value>
+                    <fullName>New Zealand</fullName>
+                    <default>false</default>
+                    <label>New Zealand</label>
+                </value>
+                <value>
+                    <fullName>Greenland</fullName>
+                    <default>false</default>
+                    <label>Greenland</label>
+                </value>
+                <value>
+                    <fullName>Haiti</fullName>
+                    <default>false</default>
+                    <label>Haiti</label>
+                </value>
+                <value>
+                    <fullName>Portugal</fullName>
+                    <default>false</default>
+                    <label>Portugal</label>
+                </value>
+                <value>
+                    <fullName>Cameroon</fullName>
+                    <default>false</default>
+                    <label>Cameroon</label>
+                </value>
+                <value>
+                    <fullName>Romania</fullName>
+                    <default>false</default>
+                    <label>Romania</label>
+                </value>
+                <value>
+                    <fullName>Nepal</fullName>
+                    <default>false</default>
+                    <label>Nepal</label>
+                </value>
+                <value>
+                    <fullName>Kazakhstan</fullName>
+                    <default>false</default>
+                    <label>Kazakhstan</label>
+                </value>
+                <value>
+                    <fullName>Serbia</fullName>
+                    <default>false</default>
+                    <label>Serbia</label>
+                </value>
+                <value>
+                    <fullName>Burkina Faso</fullName>
+                    <default>false</default>
+                    <label>Burkina Faso</label>
+                </value>
+                <value>
+                    <fullName>Bermuda</fullName>
+                    <default>false</default>
+                    <label>Bermuda</label>
+                </value>
+                <value>
+                    <fullName>Bahrain</fullName>
+                    <default>false</default>
+                    <label>Bahrain</label>
+                </value>
+                <value>
+                    <fullName>Hungary</fullName>
+                    <default>false</default>
+                    <label>Hungary</label>
+                </value>
+                <value>
+                    <fullName>Mauritius</fullName>
+                    <default>false</default>
+                    <label>Mauritius</label>
+                </value>
+                <value>
+                    <fullName>Moldova</fullName>
+                    <default>false</default>
+                    <label>Moldova</label>
+                </value>
+                <value>
+                    <fullName>Mali</fullName>
+                    <default>false</default>
+                    <label>Mali</label>
+                </value>
+                <value>
+                    <fullName>Location: Singapore</fullName>
+                    <default>false</default>
+                    <label>Location: Singapore</label>
+                </value>
+                <value>
+                    <fullName>Location: Vietnam</fullName>
+                    <default>false</default>
+                    <label>Location: Vietnam</label>
+                </value>
+                <value>
+                    <fullName>Location: Hong Kong</fullName>
+                    <default>false</default>
+                    <label>Location: Hong Kong</label>
+                </value>
+                <value>
+                    <fullName>Dominica</fullName>
+                    <default>false</default>
+                    <label>Dominica</label>
+                </value>
+                <value>
+                    <fullName>Location: Brazil</fullName>
+                    <default>false</default>
+                    <label>Location: Brazil</label>
+                </value>
+                <value>
+                    <fullName>Location: Sweden</fullName>
+                    <default>false</default>
+                    <label>Location: Sweden</label>
+                </value>
+                <value>
+                    <fullName>Location: Mexico</fullName>
+                    <default>false</default>
+                    <label>Location: Mexico</label>
+                </value>
+                <value>
+                    <fullName>Location: United Kingdom</fullName>
+                    <default>false</default>
+                    <label>Location: United Kingdom</label>
+                </value>
+                <value>
+                    <fullName>Location: France</fullName>
+                    <default>false</default>
+                    <label>Location: France</label>
+                </value>
+                <value>
+                    <fullName>Location: New Zealand</fullName>
+                    <default>false</default>
+                    <label>Location: New Zealand</label>
+                </value>
+                <value>
+                    <fullName>Location: Canada</fullName>
+                    <default>false</default>
+                    <label>Location: Canada</label>
+                </value>
+                <value>
+                    <fullName>Location: Israel</fullName>
+                    <default>false</default>
+                    <label>Location: Israel</label>
+                </value>
+                <value>
+                    <fullName>Location: Spain</fullName>
+                    <default>false</default>
+                    <label>Location: Spain</label>
+                </value>
+                <value>
+                    <fullName>Utd.Arab Emir.</fullName>
+                    <default>false</default>
+                    <label>Utd.Arab Emir.</label>
+                </value>
+                <value>
+                    <fullName>French Poly.</fullName>
+                    <default>false</default>
+                    <label>French Poly.</label>
+                </value>
+                <value>
+                    <fullName>Brit.Ind.Oc.Ter</fullName>
+                    <default>false</default>
+                    <label>Brit.Ind.Oc.Ter</label>
+                </value>
+                <value>
+                    <fullName>Brit.Virgin Is.</fullName>
+                    <default>false</default>
+                    <label>Brit.Virgin Is.</label>
+                </value>
+                <value>
+                    <fullName>Minor Outl.Isl.</fullName>
+                    <default>false</default>
+                    <label>Minor Outl.Isl.</label>
+                </value>
+                <value>
+                    <fullName>Christmas Islnd</fullName>
+                    <default>false</default>
+                    <label>Christmas Islnd</label>
+                </value>
+                <value>
+                    <fullName>Palestine,State</fullName>
+                    <default>false</default>
+                    <label>Palestine,State</label>
+                </value>
+                <value>
+                    <fullName>Bosnia-Herz.</fullName>
+                    <default>false</default>
+                    <label>Bosnia-Herz.</label>
+                </value>
+                <value>
+                    <fullName>Trinidad,Tobago</fullName>
+                    <default>false</default>
+                    <label>Trinidad,Tobago</label>
+                </value>
+                <value>
+                    <fullName>C Africa Rpblic</fullName>
+                    <default>false</default>
+                    <label>C Africa Rpblic</label>
+                </value>
+                <value>
+                    <fullName>Location: Malaysia</fullName>
+                    <default>false</default>
+                    <label>Location: Malaysia</label>
+                </value>
+                <value>
+                    <fullName>Location: Norway</fullName>
+                    <default>false</default>
+                    <label>Location: Norway</label>
+                </value>
+                <value>
+                    <fullName>Location: Italy</fullName>
+                    <default>false</default>
+                    <label>Location: Italy</label>
+                </value>
+                <value>
+                    <fullName>Location: India</fullName>
+                    <default>false</default>
+                    <label>Location: India</label>
+                </value>
+                <value>
+                    <fullName>Location: Netherlands</fullName>
+                    <default>false</default>
+                    <label>Location: Netherlands</label>
+                </value>
+                <value>
+                    <fullName>Location: Panama</fullName>
+                    <default>false</default>
+                    <label>Location: Panama</label>
+                </value>
+                <value>
+                    <fullName>Location: Ecuador</fullName>
+                    <default>false</default>
+                    <label>Location: Ecuador</label>
+                </value>
+                <value>
+                    <fullName>Location: Belgium</fullName>
+                    <default>false</default>
+                    <label>Location: Belgium</label>
+                </value>
+                <value>
+                    <fullName>Location: Lithuania</fullName>
+                    <default>false</default>
+                    <label>Location: Lithuania</label>
+                </value>
+                <value>
+                    <fullName>Location: Switzerland</fullName>
+                    <default>false</default>
+                    <label>Location: Switzerland</label>
+                </value>
+                <value>
+                    <fullName>Location: Poland</fullName>
+                    <default>false</default>
+                    <label>Location: Poland</label>
+                </value>
+                <value>
+                    <fullName>Location: Indonesia</fullName>
+                    <default>false</default>
+                    <label>Location: Indonesia</label>
+                </value>
+                <value>
+                    <fullName>Location: Ireland</fullName>
+                    <default>false</default>
+                    <label>Location: Ireland</label>
+                </value>
+                <value>
+                    <fullName>Location: Slovakia</fullName>
+                    <default>false</default>
+                    <label>Location: Slovakia</label>
+                </value>
+                <value>
+                    <fullName>Location: Turkiye</fullName>
+                    <default>false</default>
+                    <label>Location: Turkiye</label>
+                </value>
+                <value>
+                    <fullName>Location: Colombia</fullName>
+                    <default>false</default>
+                    <label>Location: Colombia</label>
+                </value>
+                <value>
+                    <fullName>Location: Australia</fullName>
+                    <default>false</default>
+                    <label>Location: Australia</label>
+                </value>
+                <value>
+                    <fullName>Location: Denmark</fullName>
+                    <default>false</default>
+                    <label>Location: Denmark</label>
+                </value>
+                <value>
+                    <fullName>Location: Hungary</fullName>
+                    <default>false</default>
+                    <label>Location: Hungary</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CST_Unified_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Unified ID</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <label>Semi-Annual Temp Account Category</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CST_Customer_Category</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <label>Comments</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Past_Year_Sales__c</fullName>
+        <label>Past Year Sales</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Coverage_Type__c</fullName>
+        <label>Account Primary Coverage</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel Led</fullName>
+                    <default>false</default>
+                    <label>Intel-led Account</label>
+                </value>
+                <value>
+                    <fullName>Partner Led</fullName>
+                    <default>false</default>
+                    <label>Partner-led Account</label>
+                </value>
+                <value>
+                    <fullName>Uncovered</fullName>
+                    <default>false</default>
+                    <label>Not Covered Account</label>
+                </value>
+                <value>
+                    <fullName>Other-led Account</fullName>
+                    <default>false</default>
+                    <label>Other-led Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>SPM_Customer_ID__r.SPM_Customer_Name__c</formula>
+        <label>SPM_Customer_ID__c</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_FeedbackId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Feedback</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>SPM_Account_Feedback__c.Feedback_Type__c</field>
+                <operation>equals</operation>
+                <value>DR</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>SPM_Account_Feedback__c</referenceTo>
+        <relationshipLabel>Account Detail</relationshipLabel>
+        <relationshipName>Account_Detail</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>DR_Feedback__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( DR_FeedbackId__r.Feedback_Type__c , &apos;DR&apos;) ,   TEXT(DR_FeedbackId__r.Feedback__c) , &apos;&apos;)</formula>
+        <label>DR Feedback</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Director</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Feedback_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Feedback Id</label>
+        <referenceTo>SPM_Account_Feedback__c</referenceTo>
+        <relationshipLabel>Account Detail (Feedback Id)</relationshipLabel>
+        <relationshipName>Account_Detail3</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Feedback__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Feedback_Id__r.Feedback__c)</formula>
+        <label>Feedback</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GM_FeedbackId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account Feedback</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>SPM_Account_Feedback__c.Feedback_Type__c</field>
+                <operation>equals</operation>
+                <value>GM</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>SPM_Account_Feedback__c</referenceTo>
+        <relationshipLabel>Account Detail (Account Feedback)</relationshipLabel>
+        <relationshipName>Account_Detail2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GM_Feedback__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( DR_FeedbackId__r.Feedback_Type__c , &apos;GM&apos;) ,TEXT(DR_FeedbackId__r.Feedback__c ),&apos;&apos;)</formula>
+        <label>GM Feedback</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>GM / TA</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail3</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Inactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Inactive</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Industry__c</fullName>
+        <externalId>false</externalId>
+        <label>Industry</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Legal_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Legal Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>New Account</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Old_Account_Primary_Coverage__c</fullName>
+        <description>This Field is used to track the original value of the record</description>
+        <externalId>false</externalId>
+        <label>Old Account Primary Coverage</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_Account_owner__c</fullName>
+        <description>This Field is used to check the original value of the record</description>
+        <externalId>false</externalId>
+        <label>Old Account owner</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_Sales_Group__c</fullName>
+        <description>This Field is used to track the original value of the record</description>
+        <externalId>false</externalId>
+        <label>Old Sales Group</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_Semi_Annual_Temp_Account_Category__c</fullName>
+        <description>This Field is used to track the original value of the record</description>
+        <externalId>false</externalId>
+        <label>Old Semi-Annual Temp Account Category</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Past_Year_Wins__c</fullName>
+        <label>Past Year Wins</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prime_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Prime Account Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Geo</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Regional_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Regional Lead</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SF_Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>SF Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Detail</relationshipLabel>
+        <relationshipName>Account_Detail</relationshipName>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SPM_Customer_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Customer ID</label>
+        <referenceTo>SPM_Customer_Detail__c</referenceTo>
+        <relationshipLabel>Account Detail</relationshipLabel>
+        <relationshipName>Account_Detail</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Group</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Region</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TA_GM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>TA-GM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TA_VP__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>TA-VP / TA-CM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Team_Members__c</fullName>
+        <label>Team Members</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>VP_FeedbackId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account Feedback</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>SPM_Account_Feedback__c.Feedback_Type__c</field>
+                <operation>equals</operation>
+                <value>VP</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>SPM_Account_Feedback__c</referenceTo>
+        <relationshipLabel>Account Detail (Account Feedback)</relationshipLabel>
+        <relationshipName>Account_Detail1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>VP_Feedback__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(DR_FeedbackId__r.Feedback_Type__c, &apos;VP&apos;),TEXT( DR_FeedbackId__r.Feedback__c ),&apos;&apos;  )</formula>
+        <label>VP Feedback</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VP__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>VP / Country Manager / TA</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Detail2</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>X2nd_level_Manager__c</fullName>
+        <externalId>false</externalId>
+        <label>2nd level Manager</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Account Detail</label>
+    <listViews>
+        <fullName>Account_Owners_modified_in_last_30_days</fullName>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <columns>NAME</columns>
+        <columns>SPM_Customer_ID__c</columns>
+        <columns>SF_Account__c</columns>
+        <columns>Account_Owner__c</columns>
+        <columns>Coverage_Type__c</columns>
+        <columns>Category__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Region__c</columns>
+        <columns>CST_Region__c</columns>
+        <columns>Country__c</columns>
+        <columns>Industry__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CST_Account_Owner_Id__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <filters>
+            <field>LAST_UPDATE</field>
+            <operation>equals</operation>
+            <value>LAST_N_DAYS:30</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Account Owners modified in last 30 days</label>
+    </listViews>
+    <listViews>
+        <fullName>Accounts_without_Owner</fullName>
+        <columns>NAME</columns>
+        <columns>SPM_Customer_ID__c</columns>
+        <columns>SF_Account__c</columns>
+        <columns>CST_Account_Owner_Id__c</columns>
+        <columns>Coverage_Type__c</columns>
+        <columns>Category__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Region__c</columns>
+        <columns>CST_Region__c</columns>
+        <columns>Country__c</columns>
+        <columns>Industry__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Account_Owner__c</field>
+            <operation>equals</operation>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Accounts without Owner</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>SPM_Customer_ID__c</columns>
+        <columns>SF_Account__c</columns>
+        <columns>Account_Owner__c</columns>
+        <columns>Coverage_Type__c</columns>
+        <columns>Category__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Region__c</columns>
+        <columns>CST_Region__c</columns>
+        <columns>Country__c</columns>
+        <columns>Industry__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ACD-{000000}</displayFormat>
+        <label>Account Detail ID</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Detail</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <searchResultsAdditionalFields>SPM_Customer_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SF_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_Owner__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Coverage_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sales_Group__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Region__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CST_Region__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Industry__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

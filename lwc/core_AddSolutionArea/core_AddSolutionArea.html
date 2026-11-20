@@ -1,0 +1,293 @@
+<!--
+  @description       : 
+  @author            : Gaurav Kurwade
+  @group             : 
+  @last modified on  : 07-07-2022
+  @last modified by  : gauravx.kurwade@intel.com
+-->
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div> 
+    <!-- Start TWC3123-5794 -->
+    <template if:false={isPCC}>
+            <div class="slds-box">
+                <h1 slot="title">
+                    {label.hideTabMessage}          
+                </h1>
+            </div>
+    </template>
+    <!--End  TWC3123-5794 -->
+    <template if:true={isPCC}> <!-- TWC3123-5794 -->
+        <lightning-card>
+	        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_2-of-3">
+                <h1 slot="title">
+                    <lightning-icon icon-name="standard:account" size="small"></lightning-icon> Solutions for Opportunity          
+                </h1>
+            </div>
+    <!--START---line no-32-42--DO NOT MIGRATE and REMOVE, ADDED FOR NEW SOLUTION POC--Commented as of now for higher orgs migration---->
+        <!--<div class="slds-col slds-size_1-of-3">
+                <div class = "LWCbutton slds-m-right_medium">
+                    <lightning-button   variant="Neutral"
+                                    label="Request Creation of new Solution"
+                                    title="Request Creation of new Solution"
+                                    slot="actions"
+                                    onclick={newSolution} >
+                    </lightning-button>
+                </div>  
+            </div>-->
+    <!--END----line no-32-42--DO NOT MIGRATE and REMOVE, ADDED FOR NEW SOLUTION POC--Commented as of now for higher orgs migration---->
+        </div>
+<!--START---line no-44-119--DO NOT MIGRATE and REMOVE, ADDED FOR NEW SOLUTION POC--Commented as of now for higher orgs migration---->
+        <!--<template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" style= "padding:var(--lwc-squareIconLargeBoundary,3rem) 0 !important; max-width: 60rem !important; width:60% !important;">
+                  <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h6 class="slds-text-heading_medium slds-hyphenate">New Solution: Requested Solutions</h6>
+                </header>  
+                    <div class="slds-modal__content slds-p-around_small" id="modal-content-id-3">
+                        <div class="container">
+                              <div if:true={isShow}>
+                                <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+                                </lightning-spinner>
+                              </div>
+                            <div class="row">
+                             <lightning-accordion active-section-name={activeSectionNames}>
+                                <lightning-record-edit-form object-api-name="Core_Solution_Areas__c" 
+                                      record-type-id="012Df000003vVmgIAE"
+                                      density = "Comfy"
+                                      onload={handleLoad} 
+                                      onsubmit={handleSubmit}
+                                      onsuccess={handleSuccess} 
+                                      onerror={handleError}
+                                      data-id="newRequestedSolution">
+                                  <lightning-messages></lightning-messages>                    
+                                  <template if:true={uiRecordToDisplay}> 
+                                      <lightning-layout multiple-rows="true">
+                                          <lightning-layout-item size="12">
+                                              <template for:each={uiRecordToDisplay} for:item="section">
+                                                  <template if:true={section.showSection}> 
+                                                      <lightning-accordion-section key={section.id} name={section.id} label={section.heading}>
+                                                          <lightning-layout multiple-rows="true">
+                                                              <template for:each={section.layoutRows} for:item="layoutRow">
+                                                                  <template for:each={layoutRow.layoutItems} for:item="layoutItem">
+                                                                      <template for:each={layoutItem.layoutComponents} for:item="layoutComponent">
+                                                                          <template if:true={layoutComponent.showField}>  
+                                                                              <lightning-layout-item key={layoutComponent.apiName} size="12" padding="horizontal-small">
+                                                                                  <lightning-input-field field-name={layoutComponent.apiName} required={layoutItem.required} readonly={layoutItem.disabled}>{layoutItem.disabled}</lightning-input-field>
+                                                                              </lightning-layout-item>
+                                                                          </template> 
+                                                                      </template>
+                                                                  </template>
+                                                              </template>
+                                                          </lightning-layout>
+                                                           
+                                                          <div if:true={isOpportunity} class="slds-p-left_small slds-p-right_small"> 
+                                                                <lightning-input-field field-name="Opportunity__c" required=true value={recordId}></lightning-input-field>
+                                                          </div>
+                                                      </lightning-accordion-section>
+                                                     </template> 
+                                              </template>
+                                          </lightning-layout-item>
+                                      </lightning-layout>
+                                  </template> 
+                               <hr>
+                              <div class="myFooter slds-align_absolute-center">
+                                <lightning-button class="slds-p-left_small slds-p-bottom_small" label="Cancel" title="Cancel" onclick={closeModal} ></lightning-button>  
+                                <lightning-button class="slds-p-left_small slds-p-bottom_small" variant="brand" label="Submit" title="Submit" type="submit"> </lightning-button>
+                              </div>
+               
+                                </lightning-record-edit-form>
+                              </lightning-accordion> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>-->
+<!--END----line no-38-44-119--DO NOT MIGRATE and REMOVE, ADDED FOR NEW SOLUTION POC--Commented as of now for higher orgs migration---->
+
+        <!--<template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">		    
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Request for New Solutions</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" >
+                    <lightning-textarea class="textAreaCSS"
+                    required message-when-value-missing="Please enter the description" value={body} onchange={handleBodyChange} label="Please enter the details for New Soluion" max-length="300"></lightning-textarea>
+                </div>
+            
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={handleEmailRequest} title="Sent" disabled={disableBtn}>Send</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>-->
+    <lightning-record-view-form record-id={recordId} object-api-name="Opportunity">
+         <p class="slds-p-horizontal_small">
+         <b> Search Solutions </b> <lightning-helptext content="Limited set of solutions are initially loaded. Search for the desired Solution(s); The results will dynamically update as you type one or more search terms. For help with search terms please visit: goto/opportunitysolution"></lightning-helptext>           
+         </p>
+        <table class="slds-table slds-table_cell-buffer">          
+                <tr>
+                    <th class="" scope="col">
+                         <template  if:true={TypeOptions_AWL}>
+                        <lightning-combobox name="Search_Appln_wkld" label="Application/Workload"  value={AWL_Search}  options={TypeOptions_AWL} onchange={searchSolutionAreaAction_AWL}> </lightning-combobox> 
+                        </template>
+                      </th>                     
+                      <th class="" scope="col">
+                          <template  if:true={TypeOptions_IUC}>
+                            <lightning-combobox name="Search_Indus_usecase" label="Industry Use Case(s)" value={IUC_Search} options={TypeOptions_IUC} onchange={searchSolutionAreaAction_IUC}> </lightning-combobox> 
+                         </template>
+                        </th>
+
+                         <th class="" scope="col">
+                        <template  if:true={TypeOptions_TE}>
+                        <lightning-combobox name="Search_Tech_enabled" label="Technology Enabled" value={TE_Search}  options={TypeOptions_TE} onchange={searchSolutionAreaAction_TE}> </lightning-combobox> 	
+                        </template>
+                      </th>
+                       
+                </tr>
+                <tr>
+                    <th class="sol_ptr_search" scope="col">
+                        
+                        <lightning-input name="Search_Sol_Partner" label="Solution Partners" type="search" class="slds-m-bottom_small" value={Sa_SP_Search}  onchange={searchSolutionAreaAction_SP}> </lightning-input> 	
+                       
+                      </th>
+                      <th class="sol_txt_search" scope="col">
+                        
+
+                        <p class="slds-form-element__label">
+                            Solution Search Text <lightning-helptext content={label.searchHelpText}></lightning-helptext>           
+                         </p>
+                         <lightning-input style="margin-top: -20px;" name="Search_Txt" varient="label-hidden" type="search" value={SaAreaType} onchange={searchSolutionAreaText}></lightning-input>
+                        
+                        </th>
+                         <th class="rest_btn" scope="col">                 			  
+                     <lightning-button   variant="Neutral"
+                                    label="Reset Search"
+                                    title="Reset Search"
+                                    slot="actions"
+                                    onclick={handleClearEntry}                                                                      
+                                     >
+                    </lightning-button>													
+                      </th>                      
+                </tr>
+	</table>	 
+       
+         <div class="slds-p-around--medium">
+            <div class="slds-scrollable" style="height:500px;">
+            <lightning-datatable
+                data-id="table"
+                key-field="Id"
+                data={availablesolutions}
+                columns={columns}
+                onrowaction = {callRowAction}
+                selected-rows={allSelectedRows}
+                onrowselection={handleSelected}  column-widths-mode="auto"> 
+                
+            </lightning-datatable>          
+            </div>
+            </br>
+
+            <template if:true={isRecordOpen}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                      <!-- Modal/Popup Box LWC header here -->
+                      <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalPopUp}>
+                            <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h1 class="slds-text-heading_large slds-hyphenate">Solution</h1>
+                    </header>  
+                        <!-- Modal/Popup Box LWC body starts here -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            
+                                <div class="container">
+                                    <div class="row">
+                                   <lightning-record-form
+                                    record-id={recId}
+                                    object-api-name="Core_Solution_Areas__c"
+                                    fields={partnersol}
+                                    density="auto"
+         
+                                    columns="2"
+                                    mode="readonly">
+
+                                    </lightning-record-form>
+                                  <!--  <lightning-record-view-form
+                                    record-id={recId} object-api-name="Core_Solution_Areas__c">
+                                    <lightning-output-field field-name={partnersol}></lightning-output-field>
+                                    </lightning-record-view-form> -->
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+            <!--<div class = "Pagination-div">
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button 
+                            label="Previous" 
+                            icon-name="utility:chevronleft" 
+                            onclick={previousHandler}> 
+                        </lightning-button> 
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        Page {page} of {totalPage} with total Records {totalRecountCount}
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button 
+                            label="Next" 
+                            icon-name="utility:chevronright" 
+                            icon-position="right"
+                            onclick={nextHandler}> 
+                        </lightning-button> 
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>-->
+            </br>
+            <div class = "LWCbutton">
+            <lightning-button   variant="Neutral"
+                                label="Create Opportunity Solution"
+                                title="Create Opportunity Solution"
+                                onclick={getSelectedSolStorage} 
+                                slot="actions"
+                                icon-name="utility:check" disabled={disableBool}>
+            </lightning-button>
+            </div>
+         </div>  
+        
+ <br/> <br/>
+    </lightning-record-view-form>
+     </lightning-card>
+    </template>
+</template>

@@ -1,0 +1,44 @@
+.custom-card-container {
+    border: 1px solid #d8dde6;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.AlignCheck{
+    align-items: right;
+    padding-right: 0.3cm;
+}
+
+.errMsg{
+    color: red;
+}
+
+.btnAlign{
+    align-items: center;
+}
+
+.noAccMsg{
+    color: red;
+    font-weight: 450;
+    font-size: medium;
+}
+
+.cardHeading{
+    font-weight: 500;
+}
+
+.custom-title-container {
+    background-color: #f3f3f3; 
+    padding: 1 rem;
+    border-radius: 4px;
+}
+
+.pagination-buttons {
+    margin-top: 1rem;
+}
+
+.pageDetails{
+    font-size: medium;
+    font-weight: 400;
+}

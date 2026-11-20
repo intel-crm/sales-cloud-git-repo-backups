@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Embedded OSA/OSAM</description>
+    <filter>
+        <criteriaItems>
+            <column>LEAD_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2017 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>12/31/2017 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>COUNTRY_CODE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AUS,BGD,KHM,IND,IDN,JPN,MYS,MMR,NPL,NZL,PAK,PHL,SGP,LKA,TWN,THA,KOR,VNM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jae Jiun Koo,Jamie Ng,Kelvin Lum,Ming Han Niam,Rathi Govindasamy,Shik Chen Ng,Swee Sing Kok,Wei Jing Tan,Takahiro Katayama,Kam Boon Hee,Yoshiki Usami,Meihua Wu,Caseen Sze,Christine Khor,Clifford Tan,George Neah,Hong Dinh Do,I&apos;ng Chin Tan,Jason Kay Siah Ang,JASON WEI LOONG ONG,Rachel Chu,Siti Nuranisah Binti Jamaludin,Siu Chone Cheah,Weeraporn PIENPITAK,stephanie teoh</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>LEAD_STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CAMPAIGN_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Campaign Lead OSC 2017</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLead</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+</Report>

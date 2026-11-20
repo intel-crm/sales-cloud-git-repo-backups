@@ -1,0 +1,45 @@
+<aura:documentation>
+  <aura:description>
+    <p>Search Bar</p>
+
+    <a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l0-marketplace?language=en_US">
+      Preview in L0 page - full width search bar
+    </a>
+    <br/>
+    <a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l1-offerings?language=en_US">
+      Preview in L1 Offering page - full width search bar
+    </a>
+    <br/>
+    <a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l1-partners?language=en_US">
+      Preview in L1 Partner page - full width search bar
+    </a>
+    <br/>
+    <a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l2?language=en_US">
+      Preview in L2 Search - left search bar
+    </a>
+    <br/>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/11/2019</p>
+    <p>CurrentVersion: 2.3</p>
+    <hr />
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+    <p>Search Bar Inner Component used in L2/ L1/L0 This dispatches search request as well as type ahead requests from the
+      server</p>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr />
+    <p>Change Log</p>
+    <br />
+    <p>1.1</p>
+    <p>Updated css</p>
+    <br />
+    <p>2.0</p>
+    <p>Big refactor - search from L0/L1 pages functionality</p>
+    <p>2.2</p>
+    <p>Type ahead bug fix</p>
+    <p>2.3</p>
+    <p>768-1280 L2 Page ui update</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

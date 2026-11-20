@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="User Details" icon-name="standard:user">
+        <lightning-record-edit-form object-api-name="User" record-id={currentUserId} onsuccess={handleSuccess} onerror={handleError}>
+            <div class="slds-form_horizontal slds-form slds-grid slds-wrap slds-p-around_medium">
+                <lightning-output-field field-name="Name" class="slds-size_1-of-2"></lightning-output-field>
+                <lightning-output-field field-name="Email" class="slds-size_1-of-2"></lightning-output-field>
+                <div class="slds-size_1-of-2">
+                    <div class="slds-form-element">
+                        <span class="slds-form-element__label">Account Name</span>
+                        <div class="slds-form-element__control">
+                            <lightning-formatted-text value={accountNameValue}>
+                            </lightning-formatted-text>
+                        </div>
+                    </div>
+                </div>
+                <lightning-input-field field-name="CommunityNickname"
+                                       name="CommunityNickname" 
+                                       class="slds-size_1-of-2"
+                                       onchange={handleChange}>
+                </lightning-input-field>
+                <div class="slds-m-top_medium slds-align_absolute-center">
+                    <button class="slds-button slds-button_neutral" onclick={handleReset}>Cancel</button>
+                    <button class="slds-button slds-button_brand"
+                            onclick={handleSave}
+                            type= "submit">
+                            <template if:true = {isSpinner}>
+                                    Saving...
+                            </template>
+                            <template if:false ={isSpinner}>
+                                Save
+                            </template>
+                    </button>
+                </div>
+                <template if:true={isSpinner}>
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </template>
+                <template if:true={isCancelSpinner}>
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </template>
+            </div>
+
+        </lightning-record-edit-form>
+
+    </lightning-card>
+
+</template>

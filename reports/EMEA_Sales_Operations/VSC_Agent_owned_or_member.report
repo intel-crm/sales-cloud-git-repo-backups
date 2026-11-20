@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Business_Partner_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CPM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CPM_ID_message__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CPM_ID_255__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_Intel_Ultimate_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ITP_ID__c</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 or 2 or 3 or 4</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>TOMASZ CZEKAJ,MACIEJ NAROJCZYK,HESHAM AHMED,MICHAL POTEREK,Anastasiia Lukina,Katarzyna Makowska,Joanna Florczak,Marek Szarkowski,YAGANAH AMIRI,LORENZO BARABUCCI,GILBERT R BARQUERO,Jalaj Batta,RAFIQUL CHOWDHURY,VITAL DEHENN,NATALIA ENI,Hariharasudan Ganesan,STEFAN HESSLER,JABER,NOUHAD,Jakob Janzen,DOMINIC A JERRIHO,SASCHA KLINGELHOFER,Ozcan Kucukbal,FRANK KUTH,Drissia Laazar,ISMAEL LEDESMA RODRIGUEZ,ASTRID MADER,ANTOINE PERIGNON,HILDEGARD PISOKE,LUKAS PODSIEDLIK,FRANK REHBERG,Deniz Sahin,ABDALLAH SALIM,Johanne Salla,SERHAN SÖZMAN,KONSTANTINIDIS STEFANOS,Aamir Sultan,MOHAMED ZAMIL,ZAKHAR ALESHKO,TATIANA BUGREZOVA,EKATERINA CHERNOVA,MARIA DEMACHEVA,SVETLANA DOROVSKIKH,TATIANA FEDOTOVA,YULIA KARGAPOLTSEVA,TATIANA KISEL,EKATERINA MINKOVA,IVAN PANKOV,MIKHAIL POLOZOV,EKATERINA POPOVA,ANNA SHKUROVA,DARIA SHUTOVA,ANASTASIA SMYSLOVA,OLGA SPERANSKAYA,KSENIA ZABEGALOVA,NATALIA ZAITSEVA,EKATERINA SMIRNOVA,OKSANA SMOLINA,Hany Dhannoon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Eric Yapi,Orna Borek,Philippe Bruss,Dagmar Huerter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>TOMASZ CZEKAJ,MACIEJ NAROJCZYK,HESHAM AHMED,MICHAL POTEREK,Anastasiia Lukina,Katarzyna Makowska,Joanna Florczak,Marek Szarkowski,YAGANAH AMIRI,LORENZO BARABUCCI,GILBERT R BARQUERO,Jalaj Batta,RAFIQUL CHOWDHURY,VITAL DEHENN,NATALIA ENI,Hariharasudan Ganesan,STEFAN HESSLER,JABER,NOUHAD,Jakob Janzen,DOMINIC A JERRIHO,SASCHA KLINGELHOFER,Ozcan Kucukbal,FRANK KUTH,Drissia Laazar,ISMAEL LEDESMA RODRIGUEZ,ASTRID MADER,ANTOINE PERIGNON,HILDEGARD PISOKE,LUKAS PODSIEDLIK,FRANK REHBERG,Deniz Sahin,ABDALLAH SALIM,Johanne Salla,SERHAN SÖZMAN,KONSTANTINIDIS STEFANOS,Aamir Sultan,MOHAMED ZAMIL,ZAKHAR ALESHKO,TATIANA BUGREZOVA,EKATERINA CHERNOVA,MARIA DEMACHEVA,SVETLANA DOROVSKIKH,TATIANA FEDOTOVA,YULIA KARGAPOLTSEVA,TATIANA KISEL,EKATERINA MINKOVA,IVAN PANKOV,MIKHAIL POLOZOV,EKATERINA POPOVA,ANNA SHKUROVA,DARIA SHUTOVA,ANASTASIA SMYSLOVA,OLGA SPERANSKAYA,KSENIA ZABEGALOVA,NATALIA ZAITSEVA,EKATERINA SMIRNOVA,OKSANA SMOLINA,Hany Dhannoon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Eric Yapi,Orna Borek,Philippe Bruss,Dagmar Huerter</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>VSC Agent owned or member</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

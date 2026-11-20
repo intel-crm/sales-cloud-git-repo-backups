@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_5177523</developerName>
+        <masterLabel>Vendor Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Core_Vendor__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>HP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HPE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>hp-hp</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Enterprise Services, LLC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP HQ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett Packard Enterprise Company</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett-Packard Enterprise Company</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HEWLETT PACKARD GERMANY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Enterprise</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Inc.</sourceValue>
+            </sourceValues>
+            <value>HP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DELL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL COMPUTER SA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL COMPUTER GMBH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL INTERNATIONAL INCORPORATED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL SA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL U S A CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>dell computers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL COMPUTADORES DO BRASIL LTDA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dell Computadores do Brasil Ltda.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL INC.</sourceValue>
+            </sourceValues>
+            <value>DELL</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>HUAWEI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HUAWEI Americas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HUAWEI HQ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HUAWEI TECHNOLOGIES COMPANY LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>huawei technologies de Mexico</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Huawei Technologies Service GmbH</sourceValue>
+            </sourceValues>
+            <value>Huawei</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NOKIA OYJ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NOKIA SOLUTIONS AND NETWORKS JAPAN CORP.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia México, S.A. de C.V.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia Networks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia Solutions and Networks International Holding GmbH</sourceValue>
+            </sourceValues>
+            <value>Nokia</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>KONTRON AG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>KONTRON CANADA INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kontron Asia Pacific Design Sdn. Bhd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kontron embedded computers GmbH</sourceValue>
+            </sourceValues>
+            <value>Kontron</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>MYUNGIN INNO CO., LTD</sourceValue>
+            </sourceValues>
+            <value>Myungin Inno</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS INC.</sourceValue>
+            </sourceValues>
+            <value>Cisco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ERICSSON AB</sourceValue>
+            </sourceValues>
+            <value>Ericsson</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SUPER MICRO COMPUTER, INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SUPER MICRO COMPUTER, INC.</sourceValue>
+            </sourceValues>
+            <value>Super Micro</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_5177523</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_KPI_Date__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Tiny</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Vendor__c</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Oppty_Count__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Country__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdFamily__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_INF_KPI_ProdClass__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <description>09.01.17</description>
+    <filter>
+        <booleanFilter>(1 AND 2 AND 3 AND (4 or 5 or 6) AND 7 AND 8)</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Communications,Telecommunications</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2.Core_Code_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>skylake</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2.Core_Inf_KPI_ProdGroup__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Skylake,Purley,SKX,gold,silver,bronze</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRODUCT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Skylake,SKX,Gold,Silver,Bronze</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending,Win Submitted,Win Approved,Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2.Core_Product_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Processors</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_Status__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_5177523</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CoSP Purley Pipeline by Vendor</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2026-11-20</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-20</startDate>
+    </timeFrameFilter>
+</Report>

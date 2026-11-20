@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AccountAccessLevel</fullName>
+    </fields>
+    <fields>
+        <fullName>AccountId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CaseAccessLevel</fullName>
+    </fields>
+    <fields>
+        <fullName>ContactAccessLevel</fullName>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Category__c</fullName>
+        <inlineHelpText>Customer categorization and selling motion to evaluate Customers and to determine proper SMG coverage model.</inlineHelpText>
+        <label>Account Category Owner</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Device Builder - MNC</fullName>
+                    <default>false</default>
+                    <label>Device Builder - MNC</label>
+                </value>
+                <value>
+                    <fullName>Device Builder - Regional OxM</fullName>
+                    <default>false</default>
+                    <label>Device Builder - Regional OxM</label>
+                </value>
+                <value>
+                    <fullName>Distributors (IA)</fullName>
+                    <default>false</default>
+                    <label>Distributors (IA)</label>
+                </value>
+                <value>
+                    <fullName>End Customer</fullName>
+                    <default>false</default>
+                    <label>End Customer</label>
+                </value>
+                <value>
+                    <fullName>Hyperscaler (AWS, Azure, GCP)</fullName>
+                    <default>false</default>
+                    <label>Hyperscaler (AWS, Azure, GCP)</label>
+                </value>
+                <value>
+                    <fullName>Regional Co-Sell Partners</fullName>
+                    <default>false</default>
+                    <label>Regional Co-Sell Partners</label>
+                </value>
+                <value>
+                    <fullName>Reseller - Branded Disti</fullName>
+                    <default>false</default>
+                    <label>Reseller - Branded Disti</label>
+                </value>
+                <value>
+                    <fullName>Reseller - Named Billing Accounts</fullName>
+                    <default>false</default>
+                    <label>Reseller - Named Billing Accounts</label>
+                </value>
+                <value>
+                    <fullName>Reseller - Retailers</fullName>
+                    <default>false</default>
+                    <label>Reseller - Retailers</label>
+                </value>
+                <value>
+                    <fullName>Solution Enabler (SI, ISV, CSP, MSP)</fullName>
+                    <default>false</default>
+                    <label>Solution Enabler (SI, ISV, CSP, MSP)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>OpportunityAccessLevel</fullName>
+    </fields>
+    <fields>
+        <fullName>TeamMemberRole</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>UserId</fullName>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>

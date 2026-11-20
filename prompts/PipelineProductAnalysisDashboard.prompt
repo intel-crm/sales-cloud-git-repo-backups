@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Pipeline Product Analysis Dashboard</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/product-analysis-dashboard/</actionButtonLink>
+        <body>&lt;p&gt;The Product Analysis Dashboard provides analysis of Opportunities from a Product perspective. It can be used to view products by Opportunity level, top 10, top 20 accounts, status (strategic, at risk, won), and more. A user can:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Look at major &lt;strong&gt;Deal or Design Win Opportunities&lt;/strong&gt; for a product, then filter by application, vertical markets, or sales group,&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Focus in on Opportunities for a product&lt;/strong&gt; in a particular timeframe or sales stage,&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Project (based on a product)&lt;/strong&gt; the Opportunity forecast by quarter,&lt;/li&gt;&lt;li&gt;Drill into an Opportunity by sales, sales manager, seller, or even by a customer or a vendor.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Some data set usability features:&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;All of these &lt;strong&gt;filters are multi select &lt;/strong&gt;and can be organized in many different outputs depending on the focus area:&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Dashboard Tabs&lt;/strong&gt;: &lt;strong&gt;Overview &lt;/strong&gt;(default), &lt;strong&gt;Top Accounts&lt;/strong&gt; and &lt;strong&gt;Strategic Opportunities (&lt;/strong&gt;BU only).&lt;/li&gt;&lt;li&gt;Using the Top Account graph, you can &lt;strong&gt;dig into the At Risk Opportunities&lt;/strong&gt; for a given account.&lt;/li&gt;&lt;li&gt;Using the &lt;strong&gt;Strategic Opportunities&lt;/strong&gt; tab,&amp;nbsp;sellers, BU/BU Category stakeholders and Intel Leadership are able to&amp;nbsp;focus on strategic opportunities (territory or WW visibility is required in order to use this tab).&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Won/Open/Lost/Cancelled  Toggle&lt;/strong&gt; : Click to view metrics at a glance for Won, Open, Lost or Cancelled Opportunities.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Deal/Design, or At Risk Toggle&lt;/strong&gt;: Click to view metrics at a glance for Deal or Design Opportunities, or for Opportunities that are At Risk.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Graphs&lt;/strong&gt;: Reminder that you can click on a section of a graph to filter content based on that metric.&amp;nbsp;The data in the Quick Reference and Table section will also be filtered on that metric. You can reset the data by clicking the same section or use the dashboard refresh button.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Pipeline Product Analysis Dashboard</description>
+        <displayType>DockedComposer</displayType>
+        <header>Pipeline</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Pipeline Product Analysis Dashboard</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Product Analysis Dashboard</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

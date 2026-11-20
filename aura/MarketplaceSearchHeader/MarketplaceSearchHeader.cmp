@@ -1,0 +1,78 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes"  extends="c:MarketplaceRedux" >
+    <aura:attribute name="storeName" type="String" default="Search" />
+    
+    <aura:attribute name="sortByField" type="string"/>
+    <aura:attribute name="searchString" type="string" />
+    <aura:attribute name="searchType" type="string" />
+    <aura:attribute name="searchLoading" type="boolean" default="true" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <div>
+        <div class="{!(v.appState.Settings.currentSldsBreakPoint == 'x-large' ? 'container ': '') + ' slds-p-top_medium slds-p-horizontal_medium'}">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="7">
+                    <aura:if isTrue="{! !v.searchLoading }">
+                        <c:MarketplaceSearchAppliedFilterList	/>
+                    </aura:if>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="5" class="right-align slds-p-bottom_medium ">
+                    <aura:if isTrue="{!v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+                        
+                        <aura:if isTrue="{!or(v.searchType == 'product', v.searchType == 'partner')}">
+                            <div class="sortByContainer">
+                                <div >
+                              
+                                  <label for="sortByField">{!$Label.c.CORE_PMP_Sort_By}</label>
+                                    <select
+                                            class="darkSelect"
+                                            id="sortByField"
+                                            name="sortByField"
+                                            aura:id="sortByField"
+                                            value="{!v.sortByField}"
+                                            onchange="{!c.handleSortBy}">
+                                       <!-- <option value="">{!$Label.c.PMP_Search_Choose_One}</option>-->
+                                        <aura:if isTrue="{!v.state.searchType == 'product'}">                                           
+                                            <option value="LatestPublishedFirst">{!$Label.c.PMP_Latest_Published_First}</option>
+                                            <option value="LatestPublishedLast">{!$Label.c.PMP_Latest_Published_Last} </option>
+                                          <!--  <option value="ProductAscending">{!$Label.c.PMP_Alphabetically_Asc_A_Z}</option> -->
+                                           <!-- <option value="ProductDescending">{!$Label.c.PMP_Alphabetically_Desc_Z_A}</option> --> <!-- Commented since product aplphabetic sorting is under discussion - Prabuddh -->
+                                            <option value="Featured" selected="selected">{!$Label.c.PMP_Featured}</option>                                             
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.state.searchType == 'partner'}">
+                                            <option value="PartnertAscending">{!$Label.c.PMP_Alphabetically_Asc_A_Z}</option>
+                                            <option value="PartnerDescending">{!$Label.c.PMP_Alphabetically_Desc_Z_A}</option>
+                                            
+                                        </aura:if>
+                                    </select> 
+                                </div>
+                            </div> 
+                        </aura:if>
+                    </aura:if>
+                    <aura:if isTrue="{! v.appState.Settings.currentScreenSize == 'desktop'}">
+                        <aura:if isTrue="{!v.state.listDisplayType == 'list'}">
+                            <button onclick="{!c.handleDisplayCard}" class="darkButton" title="{!$Label.c.PMP_Grid_Display}" aria-label="{!$Label.c.PMP_Grid_Display}">
+                                <lightning:icon iconName="utility:apps"
+                                                class="cursor"
+                                                size="x-small"/>
+                            </button>
+                        </aura:if>
+                        <aura:if isTrue="{!v.state.listDisplayType == 'card'}">
+                            <button onclick="{!c.handleDisplayList}"  class="darkButton" title="{!$Label.c.PMP_List_Display}" aria-label="{!$Label.c.PMP_List_Display}">
+                                <lightning:icon iconName="utility:list"
+                                                class="cursor"
+                                                size="x-small"/>
+                            </button>
+                        </aura:if>
+                    </aura:if>
+                    <c:MarketplaceShareOut url="/search"/>
+                    <aura:if isTrue="{!and(v.state.showMapButton, v.appState.Settings.currentSldsBreakPoint == 'x-large')}">
+                        <c:IntelButton>{!$Label.c.PMP_View_Map}</c:IntelButton>
+                    </aura:if>
+                    
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </div>
+</aura:component>

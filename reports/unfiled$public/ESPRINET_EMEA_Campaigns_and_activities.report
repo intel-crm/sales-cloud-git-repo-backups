@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$ChannelPartner</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_End_Date__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Focus_Area_nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Reserved_Amount_txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign.Core_MDF_Market__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Status</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Planned,In Progress,Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>In-Progress,Pending Review,Planned,Revision Required</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_Closure_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Manual,Auto,No Internal Approval,No External Approval,Auto - Missed Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Draft,Pending Review,Pending Approval,Revision Required,Planned,In-Progress,Declined,Closed,Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Plan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.StartDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>6/28/2025</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$ChannelPartner</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IPA - Esprinet</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>2025 ESPRINET EMEA Camp&amp;activities</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Co_Marketing_Activities_with_Campaign__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>PartnerFundRequest$Core_MDF_Focus_Area_nm__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

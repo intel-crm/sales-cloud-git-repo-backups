@@ -1,0 +1,10 @@
+.THIS .displayWhite {
+   color: white;
+ }
+
+.THIS .customTooltip {
+    position: absolute; 
+    top: 0px; 
+    right: 15px; 
+    background-color: orange;
+}

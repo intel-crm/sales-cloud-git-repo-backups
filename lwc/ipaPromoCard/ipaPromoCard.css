@@ -1,0 +1,49 @@
+:host {
+  width: 100%;
+}
+
+/* NOTE: defaults to vertical on mobile / tablet */
+.promo-card-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.promo-card-image img {
+  width: 100%;
+}
+
+.promo-card-image {
+  padding-bottom: 1.5rem;
+}
+
+.promo-card-body-description {
+  padding: .5rem 0 0 0;
+}
+
+@media (min-width: 768px) {
+  .promo-card-container[data-display-type='horizontal'] {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .promo-card-container[data-display-type='horizontal'] .promo-card-image {
+    flex: 1;
+  }
+
+  .promo-card-container[data-display-type='horizontal'] .promo-card-body {
+    flex: 2;
+  }
+
+  .promo-card-image[data-display-type='horizontal'] {
+    padding-bottom: 0;
+    padding-right: 1.5rem;
+  }
+
+  .promo-card-cta {
+    padding-bottom: .25rem;
+  }
+}

@@ -1,0 +1,29 @@
+<aura:documentation>
+	<aura:description>
+
+    <p>Button Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 5/30/2019</p>
+    <p>CurrentVersion: 1.5</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>Version: 1.1</p>
+		<p> increased font to 16px</p>
+		<p>Version: 1.1</p>
+		<p>Added inline style with less padding</p>
+		<p>Added full width style</p>
+    <p>1.11 - bug fix</p>
+    <p>1.5 - Add whiteDisabled Button style</p>
+
+
+
+    <!-- CHANGELOG -->
+
+  </aura:description>
+</aura:documentation>

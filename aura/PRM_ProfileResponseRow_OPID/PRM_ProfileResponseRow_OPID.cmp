@@ -1,0 +1,73 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!--attributes -->
+    <aura:attribute name="res" type="Object" />
+    <aura:attribute name="saveResponse" type="List" />
+    <aura:attribute name="deleteResponse" type="List" />
+    <aura:attribute name="objResponse" type="PRM_Profile_Responses__c" default="{'sobjectType':'PRM_Profile_Responses__c', 'PRM_Response_Txt__c':'', 'PRM_Account_Id__c':'', 'PRM_Profile_Questions_Id__c':'', 'PRM_Profile_Answer_Id__c':'','PRM_Reason_Text__c':''}"/>
+    <aura:attribute name="recordId" type="String" default=""/>
+    <aura:attribute name="multiResponse" type="String" default=""/>
+    <aura:attribute name="isDisable" type="Boolean" default="false"/>
+    <aura:attribute name="DisclaimerValue" type="Boolean" default="false"/>
+    <aura:attribute name="booleanResponse" type="Boolean"/>
+    <aura:attribute name="displayvalue" type="string"/>
+    <aura:attribute name="today" type="Date" default=""/>
+    
+    <!--handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.res.response.PRM_Response_Txt__c}"  action="{!c.handleValueChange}"/>
+    <aura:handler name="change" value="{!v.res.response.PRM_Reason_Text__c}"  action="{!c.handleValueChange}"/>
+    
+    
+    <!-- DOM Starts here -->
+    <tr class="slds-hint-parent">
+        <th data-label="Question" scope="row">
+            <div class="slds-truncate" title="question">
+                {!v.res.question.PRM_Question_Display_Txt__c }                           
+            </div>
+        </th>
+        <td data-label="Answer">
+            <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_Status_date'}">
+                <lightning:input type= "Date" aura:id="pointStatusDat" value= "{!v.res.response.PRM_Response_Txt__c}"  disabled="true"/>
+                <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>
+                
+            </aura:if>
+            <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_Status'}">
+                <lightning:input type= "text" aura:id="pointStatus" value= "{!v.res.response.PRM_Response_Txt__c}"  disabled="true"/>
+                <lightning:textarea label="Reason Text" aura:id="comments"  value= "{!v.res.response.PRM_Reason_Text__c}" />
+                <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>                
+            </aura:if>
+            
+            <aura:if isTrue="{!v.res.question.PRM_Question_Type_Nm__c == 'Boolean'}">
+                <lightning:input type="checkbox" aura:id="checkbox" checked="{!v.res.response.PRM_Response_Txt__c}" value = "{!v.res.response.PRM_Response_Txt__c}" disabled="{!v.isDisable}" />
+                <!--{!v.res.response.PRM_Response_Txt__c} XYZ-->
+                <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_Component_point'}" >
+                    <lightning:input type= "date" aura:id="componentdate" value="{!v.res.response.PRM_Response_Txt__c}"  disabled="{!v.isDisable}"/>
+                    <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>
+                </aura:if>
+                <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_Branded_Point'}" >
+                    <lightning:input type= "date" aura:id="brandeddate" value= "{!v.res.response.PRM_Response_Txt__c}"  disabled="{!v.isDisable}"/>
+                    <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_ODM_Whitebox_Point'}" >
+                    <lightning:input type= "date" aura:id="odmdate" value= "{!v.res.response.PRM_Response_Txt__c}"  disabled="{!v.isDisable}"/>
+                    <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_Opt_In'}">                 
+                    <lightning:input type="date" aura:id="expdate" class="field" value="{!v.res.response.PRM_Response_Txt__c}" displayDatePicker="true" disabled="true"/>                  
+                    <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>
+                </aura:if>
+                
+                
+                <aura:if isTrue="{!v.res.question.PRM_Question_Cd__c == 'PRM_Point_Not_Eligible'}">
+                    <lightning:input type= "date" aura:id="pointsnoteligibledate" value= "{!v.res.response.PRM_Response_Txt__c}"  disabled="{!v.isDisable}"/>
+                    <lightning:textarea label="Reason Text" aura:id="reasontext"  value= "{!v.res.response.PRM_Reason_Text__c}" rows="3" />
+                    <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>
+                </aura:if>
+            </aura:if>	
+            
+        </td>
+    </tr>
+    <!-- DOM ends here -->
+</aura:component>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREUNAZHO</name>
+    <style>none</style>
+    <subject>您的英特尔®; Cloud Insider 应</subject>
+    <textOnly>收到英特尔® Cloud Insider 计划申请
+
+尊敬的  {!PRM_Registration_Request__c.PRM_First_Name__c}  {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+感谢您提交英特尔® Cloud Insider 计划申请。我们将在 5 个工作日内审核您的申请。如果您有任何疑问，请通过以下电子邮箱与我们联系：programs@intel.com。
+
+
+感谢您有意加入英特尔® Cloud Insider 计划。
+
+
+顺祝商祺！
+英特尔® Cloud Insider 计划管理员。
+您的解决方案。我们的技术。共同打造更加智能的世界。
+
+© {!$Label.PRM_CurrentYear} 英特尔公司版权所有。保留所有权利。英特尔和英特尔标识是英特尔公司或其子公司在美国和/或其他国家的商标。
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.Intel.com
+您可以通过更新个人资料设置随时取消订阅： {!$Label.PRM_MyIntelProfileURL}
+隐私 | Cookie | *商标</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Group History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Group Histories</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Period --></label>
+        <name>Period__c</name>
+        <picklistValues>
+            <masterLabel>1H2023SalesGroup</masterLabel>
+            <translation><!-- 1H2023SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2024SalesGroup</masterLabel>
+            <translation><!-- 1H2024SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2025SalesGroup</masterLabel>
+            <translation><!-- 1H2025SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2026SalesGroup</masterLabel>
+            <translation><!-- 1H2026SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2027SalesGroup</masterLabel>
+            <translation><!-- 1H2027SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2028SalesGroup</masterLabel>
+            <translation><!-- 1H2028SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2029SalesGroup</masterLabel>
+            <translation><!-- 1H2029SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2030SalesGroup</masterLabel>
+            <translation><!-- 1H2030SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2031SalesGroup</masterLabel>
+            <translation><!-- 1H2031SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2032SalesGroup</masterLabel>
+            <translation><!-- 1H2032SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2033SalesGroup</masterLabel>
+            <translation><!-- 1H2033SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2034SalesGroup</masterLabel>
+            <translation><!-- 1H2034SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1H2035SalesGroup</masterLabel>
+            <translation><!-- 1H2035SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2017SalesGroup</masterLabel>
+            <translation><!-- 2017SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2021SalesGroup</masterLabel>
+            <translation><!-- 2021SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2022SalesGroup</masterLabel>
+            <translation><!-- 2022SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2023SalesGroup</masterLabel>
+            <translation><!-- 2H2023SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2024SalesGroup</masterLabel>
+            <translation><!-- 2H2024SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2025SalesGroup</masterLabel>
+            <translation><!-- 2H2025SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2026SalesGroup</masterLabel>
+            <translation><!-- 2H2026SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2027SalesGroup</masterLabel>
+            <translation><!-- 2H2027SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2028SalesGroup</masterLabel>
+            <translation><!-- 2H2028SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2029SalesGroup</masterLabel>
+            <translation><!-- 2H2029SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2030SalesGroup</masterLabel>
+            <translation><!-- 2H2030SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2031SalesGroup</masterLabel>
+            <translation><!-- 2H2031SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2032SalesGroup</masterLabel>
+            <translation><!-- 2H2032SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2033SalesGroup</masterLabel>
+            <translation><!-- 2H2033SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2034SalesGroup</masterLabel>
+            <translation><!-- 2H2034SalesGroup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2H2035SalesGroup</masterLabel>
+            <translation><!-- 2H2035SalesGroup --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Group Preview --></label>
+        <name>Sales_Group_Preview__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>Sales_Group__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

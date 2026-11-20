@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate workflow rule</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_MDF_Chnl_Prog_UniqueId_PopulationFormula</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE($Record.Name &amp; TEXT($Record.Core_MDF_Technical_Program_Name__c), &apos; &apos;, &apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate</label>
+    <migratedFromWorkflowRuleName>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>To populate the channel program unique ID field with the combination of Name and Technical Program Name</description>
+        <name>Core_MDF_Channel_Program_UniqueId_Auto_Populate</name>
+        <label>Channel Program UniqueId Auto Populate</label>
+        <locationX>456</locationX>
+        <locationY>383</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Channel_Program_Unique_Id_nm__c</field>
+            <value>
+                <elementReference>Core_MDF_Chnl_Prog_UniqueId_PopulationFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Core_MDF_Channel_Program_UniqueId_Auto_Populate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>null</stringValue>
+            </value>
+        </filters>
+        <object>ChannelProgram</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

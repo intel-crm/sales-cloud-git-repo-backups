@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <acrossGroupingContext>OpportunityLineItem.Core_KPI_Date__c</acrossGroupingContext>
+        <calculatedFormula>(PARENTGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_BU_Short_Name_Old__c, OpportunityLineItem.Core_KPI_Date__c)
+-PREVGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_KPI_Date__c))/PREVGROUPVAL(OpportunityLineItem.Core_Approved_Total_Price__c:SUM, OpportunityLineItem.Core_KPI_Date__c)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Short_Name_Old__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>% Growth</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ccg,dcg,iotg,nsg,ntg,psg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MJ 2016 17 summary</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2017-12-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-12-27</startDate>
+    </timeFrameFilter>
+</Report>

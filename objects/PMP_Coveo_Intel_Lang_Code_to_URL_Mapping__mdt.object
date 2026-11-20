@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata containing language code to base URL(to intel.com) mapping</description>
+    <fields>
+        <fullName>BaseURL__c</fullName>
+        <description>Field Containing URLs corresponding to the language code</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>BaseURL</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LanguageCode__c</fullName>
+        <description>Field Containing language code</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>LanguageCode</label>
+        <length>10</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SFDCLanguageCode__c</fullName>
+        <description>Language code extracted from SFDC in case the code is not available in PrefIetf Lang cookie.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SFDCLanguageCode</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tab__c</fullName>
+        <description>Field containing the tab name to which the URL will navigate</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Tab</label>
+        <length>150</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP Coveo Intel Lang Code to URL Mapping</label>
+    <pluralLabel>PMP Coveo Intel Lang Code to URL Mapping</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

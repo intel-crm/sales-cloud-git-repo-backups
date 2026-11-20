@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Access &amp; Entitlement - Grant Access</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/create-or-edit-account-contacts/#contact-role-tab-5</actionButtonLink>
+        <body>&lt;p&gt;To grant access to contacts, you must have a profile that is or includes &lt;strong&gt;Access and Entitlement&lt;/strong&gt; and you must be an account owner and an account team member of the account to which the contact is associated.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To grant access to a contact,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;From the &lt;strong&gt;Contact &lt;/strong&gt;&lt;em&gt;detail &lt;/em&gt;page, click &lt;strong&gt;Grant Access&lt;/strong&gt;. The &lt;em&gt;Grant Access&lt;/em&gt; window opens.&lt;/li&gt;&lt;li&gt;Locate and expand (+) the entitlements that you would like to modify (or click the &lt;strong&gt;Expand All&lt;/strong&gt; button). The &lt;strong&gt;Search &lt;/strong&gt;field on the page can be used in order to locate an entitlement.&lt;/li&gt;&lt;li&gt;Select the checkboxes for the application(s) that you would like your contact to have access to.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt;.&amp;nbsp;&lt;/li&gt;&lt;/ol&gt;&lt;ul&gt;&lt;li&gt;To revoke access, simply deselect the check box(es) and click Save.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;On the &lt;em&gt;Contact Entitlements&lt;/em&gt; page, the &lt;strong&gt;Pending &lt;/strong&gt;status appears under the &lt;strong&gt;Status &lt;/strong&gt;column on the application you selected until your grant access request is completed. Once the request is processed it will say &lt;strong&gt;Complete&lt;/strong&gt; under the application status.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To obtain access to Intel Applications for yourself or other internal users, you must submit a request via Intel’s Access Governance System (AGS). Refer to the &lt;a href=&quot;https://salescrm.intel.com/training-and-help/salescrm-functionality/how-to-apply-for-sales-crm-access-2/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;How to Apply&lt;/a&gt; training page for more information.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Access &amp; Entitlement - Grant Access</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Access &amp; Entitlement - Grant Access</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Access &amp; Entitlement - Grant Access</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327633241112</videoLink>
+    </promptVersions>
+</Prompt>

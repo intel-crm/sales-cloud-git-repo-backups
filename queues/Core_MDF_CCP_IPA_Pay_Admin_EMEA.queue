@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>AGS_CCP IPA Pay Admin EMEA</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_IPA_EMEA_Pay_Admin</publicGroup>
+        </publicGroups>
+        <users>
+            <user>11748587@intel.com.crm</user>
+            <user>james.oliver@intel.com.crm.crmprod</user>
+            <user>11957001@intel.com.crm</user>
+            <user>11966056@intel.com.crm</user>
+            <user>11794891@intel.com.crm</user>
+            <user>11581070@intel.com.crm</user>
+            <user>11889451@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PartnerFundClaim</sobjectType>
+    </queueSobject>
+</Queue>

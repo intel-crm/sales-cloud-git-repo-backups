@@ -1,0 +1,14 @@
+.THIS.edit-storefront-section {
+    display: inline-block;
+}
+
+.THIS.edit-storefront-section .slds-icon_container {
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid t(blue);
+    padding: 3px;
+}
+
+.THIS.edit-storefront-section .slds-icon-text-default {
+    fill: t(blue);
+}

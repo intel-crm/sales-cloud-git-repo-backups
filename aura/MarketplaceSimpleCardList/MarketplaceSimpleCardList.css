@@ -1,0 +1,137 @@
+.THIS {
+  width: 100%;
+  margin: 0;
+}
+
+.THIS .simple-card-list-card {
+  display: flex;
+}
+
+/* .THIS .simple-card-list-card:nth-child(3n+1) {
+  padding-left: 0;
+}
+
+.THIS .simple-card-list-card:nth-child(3n) {
+  padding-right: 0;
+}
+
+.THIS .simple-card-list-card:nth-child(3n + 2){
+  padding: 0 6px;
+} */
+
+
+.THIS .view-all-wrapper {
+  margin: 0px auto;
+  width: 100%;
+  text-align: center;
+}
+
+.THIS .view-all-wrapper .slds-icon-utility-chevrondown {
+  display: inline-block;
+  padding: 10px 10px 0px 0px;
+}
+
+.THIS .view-all-wrapper-container {
+  display: inline-block;
+  padding: 10px;
+}
+
+.THIS .view-all-wrapper .slds-icon-text-default {
+  fill: t(blue);
+  width: 12px;
+  height: 12px;
+}/* Added width & height via merge 09/11 - Prabuddh */
+
+.THIS .line-copy-right {
+  width: 200px;
+  height: 1px;
+  border-style: solid;
+  border-width: 1px;
+  border-image-source: linear-gradient(to right, #c8c8c8, rgba(151, 151, 151, 0));
+  border-image-slice: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.THIS .line-copy-left {
+  width: 200px;
+  height: 1px;
+  border-style: solid;
+  border-width: 1px;
+  border-image-source: linear-gradient(to left, #c8c8c8, rgba(151, 151, 151, 0));
+  border-image-slice: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  .THIS {
+    width: auto;
+  }
+
+  .THIS .line-copy-right {
+    width: 90px;
+  }
+
+  .THIS .line-copy-left {
+    width: 90px;
+  }
+
+  /* .THIS .simple-card-list-card:nth-child(odd) {
+    padding-left: 0!important;
+    padding-right: 0!important;
+  }
+
+  .THIS .simple-card-list-card:nth-child(even) {
+    padding-left: 0!important;
+    padding-right: 0!important;
+  }
+
+  .THIS .simple-card-list-card:nth-child(3n+1) {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .THIS .simple-card-list-card:nth-child(3n) {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .THIS .simple-card-list-card:nth-child(3n + 2){
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  } */
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .THIS {
+    width: auto;
+  }
+
+  .THIS .simple-card-list-card {
+    width: 50%;
+  }
+/* 
+  .THIS .simple-card-list-card:nth-child(odd) {
+    padding-left: 0 !important;
+  }
+
+  .THIS .simple-card-list-card:nth-child(even) {
+    padding-right: 0 !important;
+  }
+
+  .THIS .simple-card-list-card:nth-child(3n+1) {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .THIS .simple-card-list-card:nth-child(3n) {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .THIS .simple-card-list-card:nth-child(3n + 2){
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  } */
+}

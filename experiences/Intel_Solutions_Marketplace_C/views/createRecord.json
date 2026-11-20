@@ -1,0 +1,43 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "3a8158d0-80bf-487c-8cea-d46989fd3d87",
+  "label" : "Create Record",
+  "regions" : [ {
+    "id" : "9d03ea68-a2c8-4993-b805-d16350bf0614",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "actionApiName" : "{!actionApiName}"
+      },
+      "componentName" : "forceCommunity:createRecordForm",
+      "id" : "966d39ec-81c3-4e03-9551-321a2c43f660",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7920be55-1e15-499a-966f-bc49edebf53a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "CreateRecord"
+      },
+      "componentName" : "c:MarketplaceAnalyticsPageview",
+      "id" : "4963ca12-753a-42fe-a5eb-7a4955a05095",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5c82f2d9-70a3-49ce-86d8-8b348418d82e",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "createrecord"
+}

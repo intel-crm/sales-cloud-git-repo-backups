@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Affiliate</fullName>
+        <default>false</default>
+        <label>Affiliate</label>
+    </customValue>
+    <customValue>
+        <fullName>Banner/Display</fullName>
+        <default>false</default>
+        <label>Banner/Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Catalog/Brochure</fullName>
+        <default>false</default>
+        <label>Catalog/Brochure</label>
+    </customValue>
+    <customValue>
+        <fullName>Circular</fullName>
+        <default>false</default>
+        <label>Circular</label>
+    </customValue>
+    <customValue>
+        <fullName>Connected IPOS</fullName>
+        <default>false</default>
+        <label>Connected IPOS</label>
+    </customValue>
+    <customValue>
+        <fullName>Content Library</fullName>
+        <default>false</default>
+        <label>Content Library</label>
+    </customValue>
+    <customValue>
+        <fullName>DCF SMF</fullName>
+        <default>false</default>
+        <label>DCF SMF</label>
+    </customValue>
+    <customValue>
+        <fullName>Demonstration</fullName>
+        <default>false</default>
+        <label>Demonstration</label>
+    </customValue>
+    <customValue>
+        <fullName>Direct Mail</fullName>
+        <default>false</default>
+        <label>Direct Mail</label>
+    </customValue>
+    <customValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </customValue>
+    <customValue>
+        <fullName>End Cap</fullName>
+        <default>false</default>
+        <label>End Cap</label>
+    </customValue>
+    <customValue>
+        <fullName>Giveaway</fullName>
+        <default>false</default>
+        <label>Giveaway</label>
+    </customValue>
+    <customValue>
+        <fullName>Insert/Outsert/Flyer</fullName>
+        <default>false</default>
+        <label>Insert/Outsert/Flyer</label>
+    </customValue>
+    <customValue>
+        <fullName>IPOS/ePOS</fullName>
+        <default>false</default>
+        <label>IPOS/ePOS</label>
+    </customValue>
+    <customValue>
+        <fullName>Landing Experience</fullName>
+        <default>false</default>
+        <label>Landing Experience</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Generation</fullName>
+        <default>false</default>
+        <label>Lead Generation</label>
+    </customValue>
+    <customValue>
+        <fullName>Listing Page Branding</fullName>
+        <default>false</default>
+        <label>Listing Page Branding</label>
+    </customValue>
+    <customValue>
+        <fullName>Mobile App</fullName>
+        <default>false</default>
+        <label>Mobile App</label>
+    </customValue>
+    <customValue>
+        <fullName>Operational Support</fullName>
+        <default>false</default>
+        <label>Operational Support</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Collateral)</fullName>
+        <default>false</default>
+        <label>Other (Collateral)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Direct Mail)</fullName>
+        <default>false</default>
+        <label>Other (Direct Mail)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (IndustryPartner.com)</fullName>
+        <default>false</default>
+        <label>Other (IndustryPartner.com)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (In-Store Promotion)</fullName>
+        <default>false</default>
+        <label>Other (In-Store Promotion)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Joint Event)</fullName>
+        <default>false</default>
+        <label>Other (Joint Event)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Member.com)</fullName>
+        <default>false</default>
+        <label>Other (Member.com)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (NonPartner.com)</fullName>
+        <default>false</default>
+        <label>Other (NonPartner.com)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Out-Of-Store Promotion)</fullName>
+        <default>false</default>
+        <label>Other (Out-Of-Store Promotion)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Personnel)</fullName>
+        <default>false</default>
+        <label>Other (Personnel)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Promotion)</fullName>
+        <default>false</default>
+        <label>Other (Promotion)</label>
+    </customValue>
+    <customValue>
+        <fullName>Poster/Sign/Banner</fullName>
+        <default>false</default>
+        <label>Poster/Sign/Banner</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Champion</fullName>
+        <default>false</default>
+        <label>Product Champion</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Page Branding</fullName>
+        <default>false</default>
+        <label>Product Page Branding</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Page Carousel</fullName>
+        <default>false</default>
+        <label>Product Page Carousel</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Page Content</fullName>
+        <default>false</default>
+        <label>Product Page Content</label>
+    </customValue>
+    <customValue>
+        <fullName>Promo/Landing Page</fullName>
+        <default>false</default>
+        <label>Promo/Landing Page</label>
+    </customValue>
+    <customValue>
+        <fullName>Promoter</fullName>
+        <default>false</default>
+        <label>Promoter</label>
+    </customValue>
+    <customValue>
+        <fullName>Recommendation Tool</fullName>
+        <default>false</default>
+        <label>Recommendation Tool</label>
+    </customValue>
+    <customValue>
+        <fullName>Retargeting - Banner/Display</fullName>
+        <default>false</default>
+        <label>Retargeting - Banner/Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Retargeting - Text Ad</fullName>
+        <default>false</default>
+        <label>Retargeting - Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Reviews/Ratings</fullName>
+        <default>false</default>
+        <label>Reviews/Ratings</label>
+    </customValue>
+    <customValue>
+        <fullName>Riser</fullName>
+        <default>false</default>
+        <label>Riser</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Kit</fullName>
+        <default>false</default>
+        <label>Sales Kit</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Onsite</fullName>
+        <default>false</default>
+        <label>Sales Onsite</label>
+    </customValue>
+    <customValue>
+        <fullName>Search</fullName>
+        <default>false</default>
+        <label>Search</label>
+    </customValue>
+    <customValue>
+        <fullName>Search - Banner/Display</fullName>
+        <default>false</default>
+        <label>Search - Banner/Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Search - Shopping</fullName>
+        <default>false</default>
+        <label>Search - Shopping</label>
+    </customValue>
+    <customValue>
+        <fullName>Search - Sponsored Brand</fullName>
+        <default>false</default>
+        <label>Search - Sponsored Brand</label>
+    </customValue>
+    <customValue>
+        <fullName>Search - Text Ad</fullName>
+        <default>false</default>
+        <label>Search - Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Search - Top Products</fullName>
+        <default>false</default>
+        <label>Search - Top Products</label>
+    </customValue>
+    <customValue>
+        <fullName>Shop in Shop</fullName>
+        <default>false</default>
+        <label>Shop in Shop</label>
+    </customValue>
+    <customValue>
+        <fullName>Shopper Review</fullName>
+        <default>false</default>
+        <label>Shopper Review</label>
+    </customValue>
+    <customValue>
+        <fullName>Signage</fullName>
+        <default>false</default>
+        <label>Signage</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Media - Banner/Display</fullName>
+        <default>false</default>
+        <label>Social Media - Banner/Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Media - Post</fullName>
+        <default>false</default>
+        <label>Social Media - Post</label>
+    </customValue>
+    <customValue>
+        <fullName>Streaming/Content Mkt</fullName>
+        <default>false</default>
+        <label>Streaming/Content Mkt</label>
+    </customValue>
+    <customValue>
+        <fullName>Text Ad</fullName>
+        <default>false</default>
+        <label>Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Traffic Driver + Landing Page</fullName>
+        <default>false</default>
+        <label>Traffic Driver + Landing Page</label>
+    </customValue>
+    <customValue>
+        <fullName>Video</fullName>
+        <default>false</default>
+        <label>Video</label>
+    </customValue>
+    <customValue>
+        <fullName>Zone</fullName>
+        <default>false</default>
+        <label>Zone</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (EcosystemPartner.com)</fullName>
+        <default>false</default>
+        <label>Other (EcosystemPartner.com)</label>
+    </customValue>
+    <customValue>
+        <fullName>Banner/Display Ad</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Banner/Display Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Television</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Television</label>
+    </customValue>
+    <customValue>
+        <fullName>Streaming</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Streaming</label>
+    </customValue>
+    <customValue>
+        <fullName>Podcast</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Podcast</label>
+    </customValue>
+    <customValue>
+        <fullName>Radio</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Radio</label>
+    </customValue>
+    <customValue>
+        <fullName>Seed Unit</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Seed Unit</label>
+    </customValue>
+    <customValue>
+        <fullName>Proof of Concept</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Proof of Concept</label>
+    </customValue>
+    <customValue>
+        <fullName>Magazine/Newspaper</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Telemarketing)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other (Telemarketing)</label>
+    </customValue>
+    <customValue>
+        <fullName>Case Study</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Case Study</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo/hardware cloud instance</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo/hardware cloud instance</label>
+    </customValue>
+    <customValue>
+        <fullName>Billboard/Transit</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Cinema</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>Video Screen</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Migration)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other (Migration)</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Hardware/Cloud Instance</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo Hardware/Cloud Instance</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Trial Instance)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other (Trial Instance)</label>
+    </customValue>
+    <customValue>
+        <fullName>Searchandizing - Banner/Display</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Searchandizing - Banner/Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Sales Event)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other (Sales Event)</label>
+    </customValue>
+    <customValue>
+        <fullName>Deal Registration Incentive</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Deal Registration Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Design Win Incentive</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Design Win Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Free Text Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Free Text Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Content)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other (Content)</label>
+    </customValue>
+    <masterLabel>Activity Sub Type</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

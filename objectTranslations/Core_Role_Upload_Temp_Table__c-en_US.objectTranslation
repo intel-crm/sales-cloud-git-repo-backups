@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Role Upload Temp Table</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Role Upload Temp Table</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Manager First Name --></label>
+        <name>Core_Account_Manager_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Manager Last Name --></label>
+        <name>Core_Account_Manager_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Manager Role Id --></label>
+        <name>Core_Account_Manager_Role_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Manager Role Name --></label>
+        <name>Core_Account_Manager_Role_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Manager WWID --></label>
+        <name>Core_Account_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subordinate First Name --></label>
+        <name>Core_Subordinate_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subordinate Last Name --></label>
+        <name>Core_Subordinate_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subordinate Leaf Node --></label>
+        <name>Core_Subordinate_Leaf_Node__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subordinate Role Id --></label>
+        <name>Core_Subordinate_Role_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subordinate Role Name --></label>
+        <name>Core_Subordinate_Role_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subordinate WWID --></label>
+        <name>Core_Subordinate_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Level --></label>
+        <name>Core_Top_Level__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_Top_Level_Button --></label>
+        <name>Core_Top_Level_Button</name>
+    </webLinks>
+</CustomObjectTranslation>

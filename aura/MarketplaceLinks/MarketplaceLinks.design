@@ -1,0 +1,5 @@
+<design:component>
+	  <design:attribute name="type" label="Type" datasource="keymetrics,leads,offerings" default="keymetrics"/>
+	  <design:attribute name="title" label="Title"/>
+
+</design:component>

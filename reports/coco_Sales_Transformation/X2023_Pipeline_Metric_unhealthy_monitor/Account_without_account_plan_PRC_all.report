@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Plans1__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_Account_Owner_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Plans1__r$Plan_Name__c</field>
+    </columns>
+    <description>batch current FQ</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC Hosted Sales Group,PRC Partner Holding,PRC Sales Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Account without account plan-PRC all</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_With_or_Without_Account_Plan__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$Core_Batch_Run_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

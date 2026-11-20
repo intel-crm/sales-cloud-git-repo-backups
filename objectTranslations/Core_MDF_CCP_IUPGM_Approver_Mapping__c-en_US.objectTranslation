@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP IUPGM Approver Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP IUPGM Approver Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Classification Applicable --></label>
+        <name>Core_MDF_Activity_Classification_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Stage --></label>
+        <name>Core_MDF_Approval_Stage_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type Access --></label>
+        <name>Core_MDF_Budget_Type_Access_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Core_MDF_Role_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

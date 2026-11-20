@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This metadata contains field api names of taxonomy data objects(Category, Specification and Specification Value) for different user locales</description>
+    <fields>
+        <fullName>PMP_Field_APINm__c</fullName>
+        <description>This field contains API field names of the taxonomy data(i.e Category, Specification and Specification Value) for different user locales</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field contains API field names of the taxonomy data(i.e Category, Specification and Specification Value) for different user locales</inlineHelpText>
+        <label>PMP_Field_APINm</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Field_Nm__c</fullName>
+        <description>This field contains field labels of taxonomy data(i.e Category, Specification and Specification Value)</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field contains field labels of taxonomy data(i.e Category, Specification and Specification Value)</inlineHelpText>
+        <label>PMP_Field_Nm</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Language_Nm__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Language Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Locale_Nm__c</fullName>
+        <description>This field contains the locale name</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field contains the locale name</inlineHelpText>
+        <label>PMP_Locale_Nm</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>en_US</fullName>
+                    <default>true</default>
+                    <label>en_US</label>
+                </value>
+                <value>
+                    <fullName>zh_CN</fullName>
+                    <default>false</default>
+                    <label>zh_CN</label>
+                </value>
+                <value>
+                    <fullName>ja_JP</fullName>
+                    <default>false</default>
+                    <label>ja_JP</label>
+                </value>
+                <value>
+                    <fullName>ja</fullName>
+                    <default>false</default>
+                    <label>ja</label>
+                </value>
+                <value>
+                    <fullName>zhHansCN</fullName>
+                    <default>false</default>
+                    <label>zhHansCN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Object_Nm__c</fullName>
+        <description>This field contains the name of the object type(i.e category, specification and specification value)</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field contains the name of the object type(i.e category, specification and specification value)</inlineHelpText>
+        <label>PMP_Object_Nm</label>
+        <length>60</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_Locale_To_FieldAPINm_Mapping</label>
+    <pluralLabel>PMP_Locale_To_FieldAPINm_Mapping</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

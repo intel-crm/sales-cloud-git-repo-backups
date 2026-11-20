@@ -1,0 +1,38 @@
+.mybutton{   
+    --slds-c-button-text-color:Red;
+    --slds-c-button-color-background:yellow;
+    --slds-c-button-color-background-hover:white;
+    --slds-c-button-text-color-hover:black;
+    --slds-c-button-spacing-inline-end:0.5rem;
+  --slds-c-button-spacing-inline-start:0.5rem;
+  }
+  .mybutton1{   
+    --slds-c-button-text-color:white;
+    --slds-c-button-color-background:rgb(71, 177, 97);;
+    --slds-c-button-color-background-hover:white;  
+    --slds-c-button-text-color-hover:black;
+    --slds-c-button-spacing-inline-end:0.5rem;
+  --slds-c-button-spacing-inline-start:0.5rem;
+  }
+  .mybutton2{   
+    --slds-c-button-color-background-hover:rgb(194, 187, 187);
+  --slds-c-button-text-color-hover:black;
+  --slds-c-button-spacing-inline-end:0.5rem;
+  --slds-c-button-spacing-inline-start:0.5rem;
+  }
+  .levelcolor{
+    color: rgb(27, 83, 113);
+    background-color: darkseagreen;
+    border-radius: 2rem;
+  }
+  .labelcolor{
+    background-color: #717188;
+    color: white;
+    border-radius: 2rem;
+  }
+  .toggle-icon-inactive{
+    border-left: 5px solid maroon;
+  }
+  .toggle-icon-active{
+    border-left: 5px solid green;
+  }

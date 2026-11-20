@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Michelle Holthaus</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_10607996_Roxanne_Koester</name>
+    <opportunityAccessLevel>Read</opportunityAccessLevel>
+    <parentRole>EMP_10509822_Michelle_Johnston</parentRole>
+</Role>

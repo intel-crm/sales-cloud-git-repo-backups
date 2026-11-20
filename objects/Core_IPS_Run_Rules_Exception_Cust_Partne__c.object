@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>This is to Manage exception for
+1&gt; Manage &quot;Enable /Disable&quot; Contact as Customer
+2&gt; Manage disable Account as Customer/Partner  or enable &quot;Partner&quot;</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Run_Validation_Rule__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Run Validation Rule</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>IPS Run Rule Exception - Cust and Partn</label>
+    <visibility>Protected</visibility>
+</CustomObject>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Products Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Products Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Available for New Designs --></label>
+        <name>Core_Avail_for_New_Designs__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Operation Code --></label>
+        <name>Core_BU_Operation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Organization Name --></label>
+        <name>Core_Business_Org_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name EPM ID --></label>
+        <name>Core_Code_Name_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Core_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Count --></label>
+        <name>Core_CoreCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code Short Name --></label>
+        <name>Core_Division_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code --></label>
+        <name>Core_Division_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- EPM Term Type --></label>
+        <name>Core_EPM_Term_Type_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>Core_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family Name --></label>
+        <name>Core_Family_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Product Name --></label>
+        <name>Core_Forecast_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code Short Name --></label>
+        <name>Core_Group_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code --></label>
+        <name>Core_Group_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy ID --></label>
+        <name>Core_Hierarchy_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Name --></label>
+        <name>Core_Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS Visible Flag - External --></label>
+        <name>Core_IPS_Visible_Flag_External__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel vPro Platform Eligibility --></label>
+        <name>Core_Intel_vPro_Platform_Eligibility__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>Core_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsLatest --></label>
+        <name>Core_IsLatest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Indicator --></label>
+        <name>Core_Is_Custom_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is IQR Visible --></label>
+        <name>Core_Is_IQR_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Class --></label>
+        <name>Core_Item_Class_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Id --></label>
+        <name>Core_Item_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signal Code --></label>
+        <name>Core_Item_Signal_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Component Category --></label>
+        <name>Core_Item_Sub_Component_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1 EPM ID --></label>
+        <name>Core_L1_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L1 EPM Name --></label>
+        <name>Core_L1_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 EPM ID --></label>
+        <name>Core_L2_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 EPM Name --></label>
+        <name>Core_L2_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L3 EPM ID --></label>
+        <name>Core_L3_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L3 EPM Name --></label>
+        <name>Core_L3_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 EPM ID --></label>
+        <name>Core_L4_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 EPM Name --></label>
+        <name>Core_L4_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 EPM ID --></label>
+        <name>Core_L5_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 EPM Name --></label>
+        <name>Core_L5_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Line Of Business Description --></label>
+        <name>Core_Line_Of_Business_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Line of Business --></label>
+        <name>Core_Line_of_Business__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max TDP --></label>
+        <name>Core_Max_TDP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Memory Capacity --></label>
+        <name>Core_Mem_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core OPN --></label>
+        <name>Core_OPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pipeline Launch Date --></label>
+        <name>Core_Pipeline_Launch_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Config EPM ID --></label>
+        <name>Core_Platform_Config_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Config --></label>
+        <name>Core_Platform_Config__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform EPM ID --></label>
+        <name>Core_Platform_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Name --></label>
+        <name>Core_Platform_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processing Status --></label>
+        <name>Core_Processing_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>Core_Processor_Number_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Processor --></label>
+        <name>Core_Processor_Number_Ta_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family EPM ID --></label>
+        <name>Core_Product_Family_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Core_Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group EPM ID --></label>
+        <name>Core_Product_Group_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group --></label>
+        <name>Core_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name EPM ID --></label>
+        <name>Core_Product_Name_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Core_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product_Org --></label>
+        <name>Core_Product_Org__c</name>
+        <picklistValues>
+            <masterLabel>FPH</masterLabel>
+            <translation><!-- FPH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation><!-- Sales --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Series EPM ID --></label>
+        <name>Core_Product_Series_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Core_Product_Series__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>Core_Product_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type EPM ID --></label>
+        <name>Core_Product_Type_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profit Center Description --></label>
+        <name>Core_Profit_Center_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profit Center --></label>
+        <name>Core_Profit_Center__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Visible Flag --></label>
+        <name>Core_Sales_Visible_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stable Image Platform Program Version --></label>
+        <name>Core_StableImagePlatformProgVer_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique ID --></label>
+        <name>Core_Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Segment --></label>
+        <name>Core_Vertical_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivation Date --></label>
+        <name>Deactivation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is MMID Blank --></label>
+        <name>Is_MMID_Blank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Log comments on Product Deactivation --></help>
+        <label><!-- Log Comments --></label>
+        <name>Log_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Code --></label>
+        <name>Status_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Value --></label>
+        <name>Unique_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is to log the Deactivation reasons for a Product --></help>
+        <label><!-- Logging Type --></label>
+        <name>core_Logging_Type__c</name>
+        <picklistValues>
+            <masterLabel>Load Id Deactivation</masterLabel>
+            <translation><!-- Load Id Deactivation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPN Deactivation</masterLabel>
+            <translation><!-- OPN Deactivation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Status Deactivation</masterLabel>
+            <translation><!-- Status Deactivation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>iPaaS_Load_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Notes_Sharing_To_GAC_User</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Notes Sharing To GAC User</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Notes_Sharing_To_L3_Maintenance</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Notes Sharing To L3 Maintenance</label>
+        <sharedTo>
+            <group>Core_MDF_AGS_CCP_L3_Maintenance_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Notes_Sharing_to_L2_Maintenance</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Notes Sharing to L2 Maintenance</label>
+        <sharedTo>
+            <group>Core_MDF_AGS_CCP_L2_Maintenance_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Notes_Sharing_to_PIC_Reviewer</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Notes Sharing to PIC Reviewer</label>
+        <sharedTo>
+            <group>Core_MDF_AGS_CCP_PIC_Reviewer</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_CCFB_Notes</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share CCFB Notes</label>
+        <sharedTo>
+            <group>COre_MDF_CCP_CCFB_Internal_Notes</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_CCF_Notes</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share CCF Notes</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_Internal_Notes</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_DCF_Notes</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share DCF Notes</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_Internal_Notes</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_IPA_Notes</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share IPA Notes</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_Internal_Notes</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_RMF_Notes</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share RMF Notes</label>
+        <sharedTo>
+            <group>COre_MDF_CCP_RMF_Internal_Notes</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_SPCF_Notes</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share SPCF Notes</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_Internal_Notes</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_Name_nm__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-Marketing Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Entitlement Subordinates</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Entitlement Subordinates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Entitlement Id --></label>
+        <name>Core_Entitlement_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>Core_Entitlement_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Subordinate Id --></label>
+        <name>Core_Entitlement_Subordinate_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Subordinate Name --></label>
+        <name>Core_Entitlement_Subordinate_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is CNDA True --></label>
+        <name>Core_Is_CNDA_True__c</name>
+    </fields>
+    <fields>
+        <help><!-- Upon checked, the subordinate will be assigned to a contact with Non-ODM Account. --></help>
+        <label><!-- Is Non ODM --></label>
+        <name>Core_Is_ODM_False__c</name>
+    </fields>
+    <fields>
+        <help><!-- Upon checked, the subordinate will be assigned to a contact with ODM Account. --></help>
+        <label><!-- Is ODM --></label>
+        <name>Core_Is_ODM_True__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,4 @@
+<aura:component implements="lightning:availableForFlowActions,force:lightningQuickAction,force:hasRecordId">
+    <aura:attribute name="type" type="string" default="success" />
+    <aura:attribute name="messageText" type="string" />
+</aura:component>

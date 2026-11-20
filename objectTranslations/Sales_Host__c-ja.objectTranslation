@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ホスト情報</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Sales_Account__c</name>
+        <relationshipLabel><!-- Host Information --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Help on how to determine Computer Type --></label>
+        <name>Sales_CompType_URL_del__c</name>
+    </fields>
+    <fields>
+        <help>コンパニオン・コンピューター ID は、ガード ID (T または S で始まる 9 桁の数字) または NIC ID (16 進数 12 文字) のみ</help>
+        <label>コンパニオン・コンピューター ID 1</label>
+        <name>Sales_Companion_Server1_Txt__c</name>
+    </fields>
+    <fields>
+        <help>コンパニオン・コンピューター ID は、ガード ID (T または S で始まる 9 桁の数字) または NIC ID (16 進数 12 文字) のみ</help>
+        <label>コンパニオン・コンピューター ID 2</label>
+        <name>Sales_Companion_Server2_Txt__c</name>
+    </fields>
+    <fields>
+        <label>プライマリー・コンピューター名</label>
+        <name>Sales_Computer_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label>プライマリー・コンピューターの種類</label>
+        <name>Sales_Computer_Type__c</name>
+        <picklistValues>
+            <masterLabel>GUARD ID</masterLabel>
+            <translation><!-- GUARD ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HOST ID</masterLabel>
+            <translation><!-- HOST ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NIC ID</masterLabel>
+            <translation><!-- NIC ID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>プライマリー管理者</label>
+        <name>Sales_Contact__c</name>
+        <relationshipLabel>ホスト情報</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Host Is Created From Custom Page --></label>
+        <name>Sales_Host_Is_Created_From_Custom_Page__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsTemporaryLicense --></label>
+        <name>Sales_IsTemporaryLicense__c</name>
+    </fields>
+    <fields>
+        <label>コンピューター ID</label>
+        <name>Sales_Legacy_Host_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Altera Software Licenses (intel.com) --></help>
+        <label><!-- Help on how to determine Computer Type --></label>
+        <name>Sales_LicenseType_URL_del__c</name>
+    </fields>
+    <fields>
+        <label>ライセンスタイプ</label>
+        <name>Sales_License_Type__c</name>
+        <picklistValues>
+            <masterLabel>FIXED</masterLabel>
+            <translation><!-- FIXED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOAT</masterLabel>
+            <translation><!-- FLOAT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>プライマリー管理者のメール</label>
+        <name>Sales_Primary_Admin_Email__c</name>
+    </fields>
+    <fields>
+        <label>プライマリー管理者名</label>
+        <name>Sales_Primary_Admin_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Computer ID - Dont Use --></label>
+        <name>Sales_Primary_Computer_ID_Txt__c</name>
+    </fields>
+    <fields>
+        <label>リダンダント・サーバー ID 1</label>
+        <name>Sales_Redundant_Server1_Txt__c</name>
+    </fields>
+    <fields>
+        <label>リダンダント・サーバー ID 2</label>
+        <name>Sales_Redundant_Server2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Sales_Type__c</name>
+    </fields>
+    <fields>
+        <help>コンピューターのアクティブ化または非アクティブ化を行うには、右上のドロップダウン・メニューの「ホストのアクティブ化 / 非アクティブ化」を使用してください。</help>
+        <label>アクティブ</label>
+        <name>Sales_isActiveHost__c</name>
+    </fields>
+    <fields>
+        <label>臨時 NIC ID</label>
+        <name>Temporary_NIC_ID__c</name>
+    </fields>
+    <nameFieldLabel>主要コンピューター ID</nameFieldLabel>
+    <recordTypes>
+        <label>新しいコンピューター</label>
+        <name>Sales_NewHost</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Please enter the Computer Name --></errorMessage>
+        <name>Sales_EnterComputerNameOnHostCreation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>固定ライセンスのコンピューターのコンピューターの種類には、ガード ID または NIC ID を使用します。</errorMessage>
+        <name>Sales_Fixed_GUARD_NIC_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>固定ライセンスを使用しているコンピューターには、リダンダント・サーバーを追加することはできません。オプションでコンパニオン・コンピューターを追加することができます。</errorMessage>
+        <name>Sales_Fixed_Lic_Red_Server_NotAllowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>浮動ライセンスのコンピューターのプライマリー・コンピューターの種類には、NIC ID または HOST ID を使用します。</errorMessage>
+        <name>Sales_Float_HOST_NIC_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>双方のリダンダント・サーバー ID を指定する必要があります。</errorMessage>
+        <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>この画面から新規ホストを追加する権限がありません。</errorMessage>
+        <name>Sales_HostCreation_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>コンパニオン・コンピューター ID のコンピューターの種類が無効です</errorMessage>
+        <name>Sales_Valid_Companion_Server_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>プライマリー・コンピューター ID が無効です。ホスト ID: 8 桁の 16 進数 - 12345678 / NIC ID: 12 桁の 16 進数 - 123456789101 / ガード ID (ドングル): T または S のプレフィックスに続く 9 桁の数字 - T000000001</errorMessage>
+        <name>Sales_Valid_PrimaryComputerID</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>リダンダント・サーバー ID のコンピューターの種類が無効です</errorMessage>
+        <name>Sales_Valid_Redundant_Server_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>固定ライセンスを使用しているコンピューターに、臨時 NIC ID を設定することはできません。</errorMessage>
+        <name>Temporary_NIC_ID_Validation_Fixed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>臨時 NIC ID は、12 桁の 16 進数で構成されます。</errorMessage>
+        <name>Temporary_NIC_ID_Validation_Float</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,52 @@
+.THIS .blade1 {
+    background-color: var(--lightestGray);
+}
+
+.THIS .blade2 {
+    background-color: var(--bladeBackground);
+}
+
+.THIS .blade7 {
+    background-color: var(--bladeBackgroundBlue);
+}
+
+.THIS .blade3 {
+    background-color: var(--white);
+}
+
+.THIS .container {
+    width: 100%;
+}
+
+
+@media (min-width: 768px) {
+    .THIS .container {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .THIS .container {
+        width: 980px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1280px) {
+    .THIS .container {
+        width: 1220px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1680px) {
+    .THIS .container {
+        width: 1610px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}

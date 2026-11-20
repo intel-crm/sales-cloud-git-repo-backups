@@ -1,0 +1,44 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="disabled" type="boolean" default="false" />
+  <aura:attribute name="name" type="string" />
+  <aura:attribute name="label" type="string" default=""/>
+  <aura:attribute name="tabindex" type="string" default=""/>
+  <aura:attribute name="linkLabel" type="string" />
+  <aura:attribute name="linkLabelHref" type="string" />
+  <aura:attribute name="type" type="string" default="button" />
+  <aura:attribute name="href" type="string" />
+  <aura:attribute name="openInNewTab" type="boolean" default="false" />
+  <aura:attribute name="icon" type="string" />
+  <aura:attribute name="iconPosition" type="string" default="left" />
+  <aura:attribute name="iconSize" type="string" default="x-small" />
+  <aura:attribute name="class" type="string" default="" />
+  <aura:attribute name="buttonClass" type="string" default="" />
+  <aura:attribute name="onclick" type="object" default="" />
+  <aura:attribute name="communityLink" type="string" />
+  <aura:attribute name="screenReader" type="string" />
+    
+  <span class="{!v.class}">
+    <button
+      class="{!join(' ', (v.body.length > 0 ? 'has-body' : ''), (v.icon ? 'has-icon' : ''), (v.buttonClass ? v.buttonClass : ''))}"
+      name="{!v.name}" type="{!v.type}" disabled="{!v.disabled}" onclick="{!c.handleClick}" tabindex="{!v.tabindex}" aria-label="{!v.screenReader}">
+        <aura:if isTrue="{!and(v.icon, v.iconPosition == 'left')}">
+             
+        <lightning:icon iconName="{!v.icon}" color="white" size="{!v.iconSize}"/>
+      </aura:if>
+
+      {!v.body.length > 0 ? v.body : v.label}
+ 
+      <aura:if isTrue="{!and(v.icon, v.iconPosition == 'right')}">
+           
+        <lightning:icon class="slds-m-left_x-small" iconName="{!v.icon}" color="white" size="{!v.iconSize}"/>
+      </aura:if>
+    </button>
+
+    <aura:if isTrue="{!v.linkLabel}">
+         
+      <a class="slds-m-left_medium" href="{!v.linkLabelHref}">{!v.linkLabel}</a>
+    </aura:if>
+  </span>
+
+</aura:component>

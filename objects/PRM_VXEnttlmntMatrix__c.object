@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup field for entitlement matrix</description>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Business_Types__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Business Types</label>
+        <referenceTo>Business_Types__c</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Communities__c</fullName>
+        <label>Communities</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel® Cloud Insider Partner</fullName>
+                    <default>false</default>
+                    <label>Intel® Cloud Insider Partner</label>
+                </value>
+                <value>
+                    <fullName>Intel® FPGA Partner</fullName>
+                    <default>false</default>
+                    <label>Intel® FPGA Partner</label>
+                </value>
+                <value>
+                    <fullName>Intel® IOT Solution Partner</fullName>
+                    <default>false</default>
+                    <label>Intel® IOT Solution Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_AGS_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>PRM_Entitlement_Id__r.Core_AGS_Role_Id__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AGS Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Approval_Type_Nm__c</fullName>
+        <label>Approval Type</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Automatic</fullName>
+                    <default>false</default>
+                    <label>Automatic</label>
+                </value>
+                <value>
+                    <fullName>Manual</fullName>
+                    <default>false</default>
+                    <label>Manual</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Channel_Program_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Partner Program</label>
+        <referenceTo>ChannelProgram</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Channel_Program_Level_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Partner Tier</label>
+        <referenceTo>ChannelProgramLevel</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Contact_Relationship_Id__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Contact Relationship</label>
+        <referenceTo>PRM_ContactRelationships__c</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix_CR</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Entitlement_Id__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Entitlement</label>
+        <referenceTo>Core_Entitlement__c</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix_Ent</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_IPARefreshCheck__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IPA Refresh</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_IPA_Partner_Role_Nm__c</fullName>
+        <label>Partner Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Cloud &amp; Comms Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Solution Integrator</fullName>
+                    <default>false</default>
+                    <label>Solution Integrator</label>
+                </value>
+                <value>
+                    <fullName>Guest</fullName>
+                    <default>false</default>
+                    <label>Guest</label>
+                </value>
+                <value>
+                    <fullName>Builder</fullName>
+                    <default>false</default>
+                    <label>Builder</label>
+                </value>
+                <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Original Equipment Manufacturer (OEM)</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>Sponsor</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Sponsor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_IsActive_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>IsActive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Benefit_Id__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Partner Benefit</label>
+        <referenceTo>PRM_PartnerBenefit__c</referenceTo>
+        <relationshipLabel>Entitlement Matrix</relationshipLabel>
+        <relationshipName>Entitlement_Matrix_PB</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Role_Nm__c</fullName>
+        <label>Partner Role Old</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <label>Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Cloud &amp; Comms Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Solution Integrator</fullName>
+                    <default>false</default>
+                    <label>Service Integrator</label>
+                </value>
+                <value>
+                    <fullName>Sponsor</fullName>
+                    <default>false</default>
+                    <label>Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
+                    <default>false</default>
+                    <label>Original Equipment Manufacturer (OEM)</label>
+                </value>
+                <value>
+                    <fullName>Guest</fullName>
+                    <default>false</default>
+                    <label>Guest</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>OEM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OEM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <label>Entitlement Matrix</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <columns>PRM_Partner_Benefit_Id__c</columns>
+        <columns>PRM_AGS_Role__c</columns>
+        <columns>PRM_Contact_Relationship_Id__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>PRM_Approval_Type_Nm__c</columns>
+        <columns>PRM_IsActive_Ind__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_Channel_Program_Level_Id__c</columns>
+        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Entitlement_Matrix_IPA_Refresh</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_AGS_Role__c</columns>
+        <columns>PRM_Approval_Type_Nm__c</columns>
+        <columns>PRM_Contact_Relationship_Id__c</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <columns>PRM_IsActive_Ind__c</columns>
+        <columns>PRM_Partner_Benefit_Id__c</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
+        <columns>PRM_Channel_Program_Level_Id__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_IPARefreshCheck__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Entitlement Matrix - IPA Refresh</label>
+    </listViews>
+    <listViews>
+        <fullName>IQR_Entitlements</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <columns>PRM_AGS_Role__c</columns>
+        <columns>Account__c</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_IsActive_Ind__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Channel_Program_Id__c</field>
+            <operation>equals</operation>
+            <value>Intel Quote Request</value>
+        </filters>
+        <label>IQR Entitlements</label>
+    </listViews>
+    <listViews>
+        <fullName>PRM_Entitlements_With_Benefits</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Partner_Benefit_Id__c</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <columns>PRM_AGS_Role__c</columns>
+        <columns>PRM_Contact_Relationship_Id__c</columns>
+        <columns>PRM_Approval_Type_Nm__c</columns>
+        <columns>PRM_IsActive_Ind__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>PRM_Channel_Program_Level_Id__c</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Entitlements With Benefits</label>
+    </listViews>
+    <listViews>
+        <fullName>PRM_Entitlements_Without_Benefits</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <columns>PRM_Contact_Relationship_Id__c</columns>
+        <columns>PRM_AGS_Role__c</columns>
+        <columns>PRM_Approval_Type_Nm__c</columns>
+        <columns>PRM_IsActive_Ind__c</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_Channel_Program_Level_Id__c</columns>
+        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_IPA_Partner_Role_Nm__c</field>
+            <operation>equals</operation>
+            <value>Original Equipment Manufacturer (OEM)</value>
+        </filters>
+        <filters>
+            <field>PRM_Contact_Relationship_Id__c</field>
+            <operation>equals</operation>
+            <value>Employee</value>
+        </filters>
+        <label>Entitlements Without Benefits</label>
+    </listViews>
+    <listViews>
+        <fullName>Partner_Community_Entitlements</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Approval_Type_Nm__c</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Partner Community Entitlements</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Em-{000}</displayFormat>
+        <label>Entitlement Matrix Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Entitlement Matrix</pluralLabel>
+    <recordTypes>
+        <fullName>Community_Entitlements</fullName>
+        <active>true</active>
+        <label>Community Entitlements</label>
+        <picklistValues>
+            <picklist>Communities__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Approval_Type_Nm__c</picklist>
+            <values>
+                <fullName>Automatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>EBR_Entitlements</fullName>
+        <active>true</active>
+        <description>To configure entitlements for Entitlements based programs based on business types and accounts</description>
+        <label>EBR Entitlements</label>
+        <picklistValues>
+            <picklist>Communities__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Approval_Type_Nm__c</picklist>
+            <values>
+                <fullName>Automatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>IQR_Entitlements</fullName>
+        <active>true</active>
+        <description>To configure entitlements for IQR program based on email domains and accounts</description>
+        <label>IQR Entitlements</label>
+        <picklistValues>
+            <picklist>Communities__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Approval_Type_Nm__c</picklist>
+            <values>
+                <fullName>Automatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PRM_EntitlementWithBenefits</fullName>
+        <active>true</active>
+        <label>EntitlementWithBenefits</label>
+        <picklistValues>
+            <picklist>Communities__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Approval_Type_Nm__c</picklist>
+            <values>
+                <fullName>Automatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PRM_EntitlementWithoutBenefits</fullName>
+        <active>true</active>
+        <label>EntitlementWithoutBenefits</label>
+        <picklistValues>
+            <picklist>Communities__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Approval_Type_Nm__c</picklist>
+            <values>
+                <fullName>Automatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Standard</fullName>
+        <active>true</active>
+        <label>Standard</label>
+        <picklistValues>
+            <picklist>Communities__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Approval_Type_Nm__c</picklist>
+            <values>
+                <fullName>Automatic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Partner_Role_Nm__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

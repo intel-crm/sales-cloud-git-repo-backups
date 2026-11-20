@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Scorecard --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Scorecard --></value>
+    </caseValues>
+    <fields>
+        <label><!-- 3rd Party --></label>
+        <name>Core_MDF_3rd_Party_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Generated Attribution Comments --></label>
+        <name>Core_MDF_AI_Attribution_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Recommended Attribution Score --></label>
+        <name>Core_MDF_AI_Attribution_Score_Nm__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Audit Findings Summary --></label>
+        <name>Core_MDF_AI_Audit_Summary_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Comments --></label>
+        <name>Core_MDF_AI_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Generated Engagement Comments --></label>
+        <name>Core_MDF_AI_Engagement_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Recommended Engagement Score --></label>
+        <name>Core_MDF_AI_Engagement_Score_Nm__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI PII Present --></label>
+        <name>Core_MDF_AI_PII_Present_Nm__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI POC Strength --></label>
+        <name>Core_MDF_AI_POC_Strength_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Credit/Debit Memo</masterLabel>
+            <translation><!-- Credit/Debit Memo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invoice/Receipt</masterLabel>
+            <translation><!-- Invoice/Receipt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-financial document</masterLabel>
+            <translation><!-- Non-financial document --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Generated POP Comments --></label>
+        <name>Core_MDF_AI_POP_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Recommended POP Score --></label>
+        <name>Core_MDF_AI_POP_Score_Nm__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Processing Status --></label>
+        <name>Core_MDF_AI_Processing_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Processing Completed</masterLabel>
+            <translation><!-- AI Processing Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Processing Failed</masterLabel>
+            <translation><!-- AI Processing Failed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Recommend For Investigation --></label>
+        <name>Core_MDF_AI_Recommend_Investigation_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Términos acordados</label>
+        <name>Core_MDF_Agreed_Terms_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Sí</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Attribution Comments --></label>
+        <name>Core_MDF_Attribution_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Atribución</label>
+        <name>Core_MDF_Attribution_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attribution PV --></label>
+        <name>Core_MDF_Attribution_PV_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Baseline --></label>
+        <name>Core_MDF_Baseline_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Caso</label>
+        <name>Core_MDF_Case_Id__c</name>
+        <relationshipLabel><!-- Scorecards --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Amount --></label>
+        <name>Core_MDF_Claim_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Confirmed Irregularity --></label>
+        <name>Core_MDF_Confirmed_Irregularity_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consistency --></label>
+        <name>Core_MDF_Consistency_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Entrada de datos</label>
+        <name>Core_MDF_Data_Entry_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Sí</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Engagement Comments --></label>
+        <name>Core_MDF_Engagement_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Participación</label>
+        <name>Core_MDF_Engagement_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement PV --></label>
+        <name>Core_MDF_Engagement_PV_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Highlight in Partnership Review --></label>
+        <name>Core_MDF_Highlight_Partner_Review_Ind__c</name>
+    </fields>
+    <fields>
+        <help>Monto de la recuperación manual (MR). Lo que esto significa para usted: Esta cantidad será recuperada.</help>
+        <label>Cantidad de recuperación manual (USD)</label>
+        <name>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Possible Amount --></label>
+        <name>Core_MDF_Max_Possible_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Modified --></label>
+        <name>Core_MDF_Modified_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIC Accuracy --></label>
+        <name>Core_MDF_PIC_Accuracy_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>PII Presente</label>
+        <name>Core_MDF_PII_Present_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Sí</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- POC Strength --></label>
+        <name>Core_MDF_POC_Strength_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Credit/Debit Memo</masterLabel>
+            <translation><!-- Credit/Debit Memo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invoice/Receipt</masterLabel>
+            <translation><!-- Invoice/Receipt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-financial document</masterLabel>
+            <translation><!-- Non-financial document --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- POP Comments --></label>
+        <name>Core_MDF_POP_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- POP PV --></label>
+        <name>Core_MDF_POP_PV_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Punto de compra (POP)</label>
+        <name>Core_MDF_POP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Closed Quarter --></label>
+        <name>Core_MDF_Previous_Closed_Quarter_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Feedback Comments --></label>
+        <name>Core_MDF_Process_Feedback_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter --></label>
+        <name>Core_MDF_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recommend For Investigation --></label>
+        <name>Core_MDF_Recommended_investigation_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redaction --></label>
+        <name>Core_MDF_Redaction_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Derecho de recuperación (USD)</label>
+        <name>Core_MDF_Right_to_Recover_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Puntaje</label>
+        <name>Core_MDF_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Advice --></label>
+        <name>Core_MDF_Support_Advice_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Variance --></label>
+        <name>Core_MDF_Variance_Nm__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Virtual Corp Account --></label>
+        <name>Core_MDF_Virtual_Corp_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Virtual Corp Account Name --></label>
+        <name>Core_MDF_Virtual_Corp_Account_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weighted PV Amount --></label>
+        <name>Core_MDF_Weighted_PV_Amt__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Scorecard Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Manual Recovery Amount (USD) cannot exceed Requested Amount (USD) - Excess Requested Amount (USD) --></errorMessage>
+        <name>Core_MDF_Manual_Recovery_Amt_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter positive numeric values. --></errorMessage>
+        <name>Core_MDF_Manual_Recovery_Amt_Neg_Check</name>
+    </validationRules>
+</CustomObjectTranslation>

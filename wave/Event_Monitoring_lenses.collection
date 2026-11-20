@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveAnalyticAssetCollection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <collectionType>static</collectionType>
+    <color>#fcc003</color>
+    <description>Useful lenses from various queries/reports I&apos;ve been asked to run</description>
+    <folder>Event_Monitoring_lenses</folder>
+    <items>
+        <asset>Account_360_tab_clicks</asset>
+        <assetType>Lens</assetType>
+        <sortOrder>500</sortOrder>
+    </items>
+    <label>Event Monitoring lenses</label>
+    <masterLabel>Event Monitoring lenses</masterLabel>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10557526@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+</WaveAnalyticAssetCollection>

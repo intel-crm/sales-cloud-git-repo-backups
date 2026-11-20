@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>IQR_Letterhead</letterhead>
+    <name>IQR_Error_Notification_Template</name>
+    <style>freeForm</style>
+    <subject>AR: {!Core_Log_Entry__c.Core_Message__c}</subject>
+    <textOnly>An error has occurred from {!Core_Log_Entry__c.Core_Project__c} application.
+
+Below are the details:
+Log ID: {!Core_Log_Entry__c.Name}
+Origin: {!Core_Log_Entry__c.Core_Origin__c}
+Severity: {!Core_Log_Entry__c.Core_Severity__c}
+
+Error Details: {!Core_Log_Entry__c.Core_Details__c}
+
+To view details click here
+
+________________________________________________________
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+
+
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

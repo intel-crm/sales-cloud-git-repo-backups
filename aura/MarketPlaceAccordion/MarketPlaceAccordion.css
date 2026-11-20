@@ -1,0 +1,140 @@
+.THIS {
+}
+/*Changed as part of US613071[h3 to h4]*/
+.THIS .accordionSectionHeader h4,
+.THIS .accordionSectionHeader h4 a {
+  font-size: 1em;
+  line-height: 1.25;
+}
+
+/* THEMES (attribute: v.theme) */
+/* default */
+.THIS.accordionTheme-white .accordionSection,
+.THIS.accordionTheme-default .accordionSection {
+  border-color: t(lightGray);
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-style: solid;
+}
+.THIS.accordionTheme-white .accordionSection:last-child,
+.THIS.accordionTheme-dark .accordionSection:last-child,
+.THIS.accordionTheme-default .accordionSection:last-child {
+  border-bottom-width: 1px;
+}
+.THIS.accordionTheme-white .accordionSectionHeader,
+.THIS.accordionTheme-default .accordionSectionHeader {
+  color: t(darkGray);
+  padding-left: 0;
+}
+/*Changed as part of US613071[h3 to h4]*/
+.THIS.accordionTheme-white .accordionSectionHeader h4 a:hover,
+.THIS.accordionTheme-white .accordionSectionHeader h4 a:active,
+.THIS.accordionTheme-white .accordionSectionHeader h4 a,
+.THIS.accordionTheme-default .accordionSectionHeader h4 a:hover,
+.THIS.accordionTheme-default .accordionSectionHeader h4 a:active,
+.THIS.accordionTheme-default .accordionSectionHeader h4 a {
+  color: t(darkGray);
+}
+.THIS.accordionTheme-white .accordionSectionHeader a:hover .icon .slds-icon use,
+.THIS.accordionTheme-white .accordionSectionHeader a:active .icon .slds-icon use,
+.THIS.accordionTheme-white .accordionSectionHeader a .icon  .slds-icon use,
+.THIS.accordionTheme-default .accordionSectionHeader a:hover .icon  .slds-icon use,
+.THIS.accordionTheme-default .accordionSectionHeader a:active .icon  .slds-icon use,
+.THIS.accordionTheme-default .accordionSectionHeader a .icon  .slds-icon use {
+  fill: t(darkBlue);
+}
+
+
+.THIS.accordionTheme-dark .accordionSection {
+  border-color: t(darkestGray);
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-style: solid;
+}
+
+.THIS.accordionTheme-dark .accordionSectionHeader {
+  color: t(white);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+/*Changed as part of US613071[h3 to h4]*/
+.THIS.accordionTheme-dark .accordionSectionHeader h4 a:hover,
+.THIS.accordionTheme-dark .accordionSectionHeader h4 a:active,
+.THIS.accordionTheme-dark .accordionSectionHeader h4 a {
+  color: t(white);
+}
+.THIS.accordionTheme-dark .accordionSectionHeader a:hover .icon .slds-icon use,
+.THIS.accordionTheme-dark .accordionSectionHeader a:active .icon .slds-icon use,
+.THIS.accordionTheme-dark .accordionSectionHeader a .icon  .slds-icon use {
+  fill: t(white);
+}
+
+
+.THIS.accordionTheme-white .accordionSectionHeader.open {
+  background-color: t(white);
+}
+
+/*Changed as part of US613071[h3 to h4]*/
+.THIS.boldHeading .accordionSectionHeader h4 a{
+  font-weight: bold;
+}
+
+/* resource */
+.THIS.accordionTheme-resource .accordionSection {
+  background-color: t(white);
+  border-bottom: 1px solid t(lightGray);
+  margin: 2px 0;
+  padding: 6px;
+}
+.THIS.accordionTheme-resource .accordionSection:last-child {
+  border-bottom-color: transparent;
+}
+.THIS.accordionTheme-resource .accordionSectionHeader {
+  color: t(darkGray);
+}
+
+.THIS.accordionTheme-resource .accordionSectionHeader .slds-icon use {
+  fill: t(darkBlue);
+}
+
+
+/* cards */
+.THIS.accordionTheme-cards .accordionSection {
+  background-color: t(white);
+  margin: 2px 0;
+  padding: 6px;
+}
+.THIS.accordionTheme-cards .intelOnlyFooter {
+  display: none;
+}
+
+/*Changed as part of US613071[h3 to h4]*/
+.THIS.accordionTheme-cards .accordionSectionHeader h4 a {
+  color: t(darkGray);
+  font-size: 1.750em; /*28px;*/
+  line-height: 1.11;
+}
+
+.THIS.accordionTheme-cards .accordionSectionHeader a:hover .icon .slds-icon use,
+.THIS.accordionTheme-cards .accordionSectionHeader a:active .icon .slds-icon use,
+.THIS.accordionTheme-cards .accordionSectionHeader a .icon .slds-icon use {
+  fill: t(darkBlue);
+}
+
+/* highlight */
+.THIS.accordionTheme-highlight .accordionSectionHeader {
+  border: 1px solid t(lightestGray);
+  color: t(darkGray);
+}
+
+.THIS.accordionTheme-highlight .accordionSectionHeader.open {
+  background-color: t(lightestGray);
+}
+
+.THIS.accordionTheme-highlight .accordionSectionHeader .slds-icon use {
+  fill: t(darkBlue);
+}

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_38057701</developerName>
+        <masterLabel>EV Complete vs Pending</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>PRM_Registration_Request__c.Email_Verification_Status__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>SUCCESS</sourceValue>
+            </sourceValues>
+            <value>EV Success</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EXPIRED _IM1_/resource/EVExpiredStatusExclamationMark_IM2_alert_IM3__30_IM4_30_IM5_</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PENDING</sourceValue>
+            </sourceValues>
+            <value>EV Pending/Expired</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CUST_CREATED_DATE</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Person_Phone_Number__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Email_ID__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Account_URL__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Partner_Role__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Status__c</field>
+    </columns>
+    <columns>
+        <field>CUST_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_EmailVerifiedDateTime__c</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Contact_Country__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_First_Name__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Last_Name__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&amp; Ispickval(PRM_Registration_Request__c.PRM_Status__c,&quot;Approved&quot;) &amp;&amp; PRM_Registration_Request__c.PRM_Auto_Approve_rpt_txt__c == &quot;True&quot;,&quot;Request Auto Approved&quot;,
+IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&amp; Ispickval(PRM_Registration_Request__c.PRM_Status__c,&quot;Approved&quot;) &amp;&amp; PRM_Registration_Request__c.PRM_Auto_Approve_rpt_txt__c == &quot;False&quot;,&quot;Request Manual Approved&quot;,
+IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&amp; Ispickval(PRM_Registration_Request__c.PRM_Status__c,&quot;New&quot;),&quot;Pending Request&quot;,
+IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Email Verification Request&quot; &amp;&amp; !ISBLANK(PRM_Registration_Request__c.PRM_EmailVerifiedDateTime__c),&quot;New Request-EV Completed&quot;,
+IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Email Verification Request&quot; &amp;&amp; ISBLANK(PRM_Registration_Request__c.PRM_EmailVerifiedDateTime__c),&quot;New Request-Pending EV&quot;,
+IF((PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Email Verification Request&quot; || PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot;)&amp;&amp; Ispickval(PRM_Registration_Request__c.PRM_Status__c,&quot;Rejected&quot;),&quot;Rejected Request&quot;,&quot;Rejected Request&quot;))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Record Type for Report purpose</description>
+        <developerName>CDF1</developerName>
+        <label>Record Type</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>For PRC IPA REG Dashboard</description>
+    <filter>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.PRM_Salesforce_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>ipatest,Intel-test,测试公司,测试,test</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2023 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.PRM_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.PRM_Legal_Agreements__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>excludes</operator>
+            <value>PSG_TANDC,DZP_TANDC,IQR_TANDC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IPA Admins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>a613b0000005teH,a613b0000005teR,a613b0000005teM,a613b0000005teC,a613b0000005tJ1,a613b0000005soO,a613b0000005qWg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.PRM_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CN,HK,MO,CHN</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CUST_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pending NEW Self Registration by month</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$PRM_Registration_Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2023-01-01</startDate>
+    </timeFrameFilter>
+</Report>

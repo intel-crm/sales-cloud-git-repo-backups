@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Commissionable Employee</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Commissionable Employees</value>
+    </caseValues>
+    <fields>
+        <label><!-- Employee WWID --></label>
+        <name>CPT_Employee_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>CPT_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>CPT_Full_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>CPT_Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Role --></label>
+        <name>CPT_Job_Role__c</name>
+        <picklistValues>
+            <masterLabel>Account Executive</masterLabel>
+            <translation><!-- Account Executive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Developer, Sales</masterLabel>
+            <translation><!-- Business Developer, Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Development Manager, Sales</masterLabel>
+            <translation><!-- Business Development Manager, Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Solutions Architect, Sales</masterLabel>
+            <translation><!-- Cloud Solutions Architect, Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Sales Manager</masterLabel>
+            <translation><!-- Digital Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Sales Representative</masterLabel>
+            <translation><!-- Digital Sales Representative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Applications Engineer</masterLabel>
+            <translation><!-- Field Applications Engineer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Sales Manager</masterLabel>
+            <translation><!-- Field Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Sales Manager</masterLabel>
+            <translation><!-- Industry Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Technical Sales Specialist</masterLabel>
+            <translation><!-- Industry Technical Sales Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Market Development Manager</masterLabel>
+            <translation><!-- Market Development Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Sales Account Manager</masterLabel>
+            <translation><!-- Partner Sales Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Sales Account Manager, Retail</masterLabel>
+            <translation><!-- Partner Sales Account Manager, Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Sales Manager</masterLabel>
+            <translation><!-- Partner Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Principal Engineer, Cloud Solutions Arch Sales</masterLabel>
+            <translation><!-- Principal Engineer, Cloud Solutions Arch Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Principal Engineer, Industry Technical Sales</masterLabel>
+            <translation><!-- Principal Engineer, Industry Technical Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Principal Engineer, Sales Applications Eng</masterLabel>
+            <translation><!-- Principal Engineer, Sales Applications Eng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Principal Engineer, Solutions Arch Sales</masterLabel>
+            <translation><!-- Principal Engineer, Solutions Arch Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Principal Engineer, Technical Sales</masterLabel>
+            <translation><!-- Principal Engineer, Technical Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Sales Specialist</masterLabel>
+            <translation><!-- SMG Sales Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Account Manager</masterLabel>
+            <translation><!-- Sales Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Applications Engineer</masterLabel>
+            <translation><!-- Sales Applications Engineer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Development Account Manager</masterLabel>
+            <translation><!-- Sales Development Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Development Account Mgr</masterLabel>
+            <translation><!-- Sales Development Account Mgr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Development Rep</masterLabel>
+            <translation><!-- Sales Development Rep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Sales Account Executive</masterLabel>
+            <translation><!-- Software Sales Account Executive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Sales Manager</masterLabel>
+            <translation><!-- Software Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solutions Architect, Sales</masterLabel>
+            <translation><!-- Solutions Architect, Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr Principal Engineer - Sales</masterLabel>
+            <translation><!-- Sr Principal Engineer - Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr Principal Engineer, Industry Tech. Sales Spec.</masterLabel>
+            <translation><!-- Sr Principal Engineer, Industry Tech. Sales Spec. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr Principal Engineer, Sales Applications Engineer</masterLabel>
+            <translation><!-- Sr Principal Engineer, Sales Applications Engineer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr Principal Engineer, Solution Architect Sales</masterLabel>
+            <translation><!-- Sr Principal Engineer, Solution Architect Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr Principal Engineer, Tech. Sales Specialist ​</masterLabel>
+            <translation><!-- Sr Principal Engineer, Tech. Sales Specialist ​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr. Principal Engineer, Cloud Solutions Arch Sales</masterLabel>
+            <translation><!-- Sr. Principal Engineer, Cloud Solutions Arch Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr. Principal Engineer, Solutions Arch Sales</masterLabel>
+            <translation><!-- Sr. Principal Engineer, Solutions Arch Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Sales Manager</masterLabel>
+            <translation><!-- Technical Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Sales Specialist</masterLabel>
+            <translation><!-- Technical Sales Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP, Business Unit Sales - Commissioned</masterLabel>
+            <translation><!-- VP, Business Unit Sales - Commissioned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP, Global Accounts</masterLabel>
+            <translation><!-- VP, Global Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP, Regional Sales - Commissioned</masterLabel>
+            <translation><!-- VP, Regional Sales - Commissioned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>CPT_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager WWID --></label>
+        <name>CPT_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Manager of the Commissionable Employee. This user becomes the owner of Quota Setup record of the Employee. --></help>
+        <label><!-- Manager --></label>
+        <name>CPT_Manager__c</name>
+        <relationshipLabel><!-- Commissionable Employees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>CPT_Plan_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Job --></label>
+        <name>CPT_Platform_Job__c</name>
+        <picklistValues>
+            <masterLabel>Account Executive</masterLabel>
+            <translation><!-- Account Executive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BU Products</masterLabel>
+            <translation><!-- BU Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP Sales Development Account Manager</masterLabel>
+            <translation><!-- CSP Sales Development Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP Account Executive</masterLabel>
+            <translation><!-- CoSP Account Executive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP Industry Technical Specialists</masterLabel>
+            <translation><!-- CoSP Industry Technical Specialists --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Country Manager</masterLabel>
+            <translation><!-- Country Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct GSA FSM</masterLabel>
+            <translation><!-- Direct GSA FSM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct GSA TSM</masterLabel>
+            <translation><!-- Direct GSA TSM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct/Indirect FSM</masterLabel>
+            <translation><!-- Direct/Indirect FSM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End-User &amp; nwCSP</masterLabel>
+            <translation><!-- End-User &amp; nwCSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GSA Sales Account Manager</masterLabel>
+            <translation><!-- GSA Sales Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GSA Sales Application Engineer (SAE)</masterLabel>
+            <translation><!-- GSA Sales Application Engineer (SAE) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Distribution PSAM</masterLabel>
+            <translation><!-- Global Distribution PSAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global ISV</masterLabel>
+            <translation><!-- Global ISV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Retail PSAM</masterLabel>
+            <translation><!-- Global Retail PSAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SI PSAM</masterLabel>
+            <translation><!-- Global SI PSAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indirect Account Sales Account Manager (SAM)</masterLabel>
+            <translation><!-- Indirect Account Sales Account Manager (SAM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indirect Account Sales Application Engineer (SAE)</masterLabel>
+            <translation><!-- Indirect Account Sales Application Engineer (SAE) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Technical Specialists</masterLabel>
+            <translation><!-- Industry Technical Specialists --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi-Partner with Disti PSAM (NSP, SI, ISV</masterLabel>
+            <translation><!-- Multi-Partner with Disti PSAM (NSP, SI, ISV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National SP PSAM</masterLabel>
+            <translation><!-- National SP PSAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Partner Acquisition (Disruptor ISV) PSAM</masterLabel>
+            <translation><!-- New Partner Acquisition (Disruptor ISV) PSAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM Sales Development Account Manager</masterLabel>
+            <translation><!-- OEM Sales Development Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform Job</masterLabel>
+            <translation><!-- Platform Job --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional/National Distribution</masterLabel>
+            <translation><!-- Regional/National Distribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Sales Dvelopment Account Manager</masterLabel>
+            <translation><!-- Retail Sales Dvelopment Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDM Consumption OEM Mgr</masterLabel>
+            <translation><!-- SDM Consumption OEM Mgr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SI PSAM</masterLabel>
+            <translation><!-- SI PSAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSS</masterLabel>
+            <translation><!-- TSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSS Manager</masterLabel>
+            <translation><!-- TSS Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>nwCSP Account Executive</masterLabel>
+            <translation><!-- nwCSP Account Executive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quota Period --></label>
+        <name>CPT_Quota_Period__c</name>
+        <relationshipLabel><!-- Commissionable Employees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Compensation Plan --></label>
+        <name>CPT_Sales_Compensation_Plan__c</name>
+        <relationshipLabel><!-- Commissionable Employees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>CPT_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org --></label>
+        <name>CPT_Sales_Org__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Team --></label>
+        <name>CPT_Sales_Team__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Field not editable --></errorMessage>
+        <name>CPT_Prevent_Fname_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Field not editable --></errorMessage>
+        <name>CPT_Prevent_Lname_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Field not editable --></errorMessage>
+        <name>CPT_Prevent_WWID_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This record is locked. Contact Commissions Admin with questions. --></errorMessage>
+        <name>CPT_Restrict_Update_OnLockedRecord</name>
+    </validationRules>
+</CustomObjectTranslation>

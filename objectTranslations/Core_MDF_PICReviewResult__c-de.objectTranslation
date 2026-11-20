@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- PIC Review Detail --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Confidence Score --></label>
+        <name>Core_MDF_AI_Confidence_Score_Nm__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI PIC Review Detail Id --></label>
+        <name>Core_MDF_AI_PIC_Review_Detail_Id__c</name>
+        <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Agree with AI Response ? --></label>
+        <name>Core_MDF_AI_Response_Agreement_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Agree</masterLabel>
+            <translation><!-- Agree --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disagree</masterLabel>
+            <translation><!-- Disagree --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partially Agree</masterLabel>
+            <translation><!-- Partially Agree --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Anmerkungen</label>
+        <name>Core_MDF_Comment_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>Core_MDF_External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback to AI/Agent --></label>
+        <name>Core_MDF_Feedback_To_AI_Agent_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Files Affected --></label>
+        <name>Core_MDF_FilesAffected_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Portuguese) --></label>
+        <name>Core_MDF_IssuePortuguese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Russian) --></label>
+        <name>Core_MDF_IssueRussian_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (English) --></label>
+        <name>Core_MDF_Issue_English_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (French) --></label>
+        <name>Core_MDF_Issue_French_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (German) --></label>
+        <name>Core_MDF_Issue_German_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Italian) --></label>
+        <name>Core_MDF_Issue_Italian_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Japanese) --></label>
+        <name>Core_MDF_Issue_Japanese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Korean) --></label>
+        <name>Core_MDF_Issue_Korean_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Mexican Spanish) --></label>
+        <name>Core_MDF_Issue_MexicanSpanish_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Simplified Chinese) --></label>
+        <name>Core_MDF_Issue_SimplifiedChinese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Spanish) --></label>
+        <name>Core_MDF_Issue_Spanish_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Traditional Chinese) --></label>
+        <name>Core_MDF_Issue_TraditionalChinese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Manual Response Equal AI Response? --></label>
+        <name>Core_MDF_ManualResp_Equal_AIResp_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIC Review --></label>
+        <name>Core_MDF_PIC_Review_id__c</name>
+        <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Check --></label>
+        <name>Core_MDF_QuestionEnglish_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Core_MDF_Question_id__c</name>
+        <relationshipLabel><!-- PIC Review Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>Core_MDF_Response_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactics --></label>
+        <name>Core_MDF_Tactics_nm__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- PIC Review Detail Name --></nameFieldLabel>
+</CustomObjectTranslation>

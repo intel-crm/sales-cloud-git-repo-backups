@@ -1,0 +1,46 @@
+.allContent {
+font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+line-height: 1.5;
+}
+
+.ad-inner-container {
+background-color: #0068b5;
+background-repeat: no-repeat;
+color: var(--white);
+position: relative;
+width: 100%;
+font-family: "intel-one","intel-clear",Helvetica,Arial,sans-serif;
+font-weight: 300;
+font-style: normal;
+font-size: 10px;
+padding: 2.1rem 2rem;
+position: relative;
+text-align: center;
+}
+.header-content {
+font-size: 20px;
+color: white;
+} 
+
+.content-container {
+font-family: "intel-one","intel-clear",Helvetica,Arial,sans-serif;
+padding: 1.1rem 1rem;
+position: relative;
+text-align: center;
+background-color: white;
+}
+.thank-you-container {
+font-size: 20px;
+padding: 20px;
+margin: 10px;
+font-weight: 300;
+font-style: normal;
+
+}
+.disclaimer-content{
+font-size: 15px;
+padding: 20px;
+margin: 10px;
+font-weight: 200;
+font-style: normal;
+}

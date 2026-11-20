@@ -1,0 +1,177 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 12-28-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+
+<template>
+
+   <!-- <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    <c-ipa-contact-partner-form></c-ipa-contact-partner-form>
+
+    <div onsearch={handleSearch}
+        oncleardraftfilters={handleClearDraftFilters}
+        onfilterchange={handleFilterChange}
+        ontoggleprerelease={handleTogglePreRelease}>
+        
+        <template if:true={searchError}>
+            <c-core-intc-modal is-open>
+                <div slot="header"><h1 class="color-white">{labels.searchError}</h1></div>
+                <div slot="body" class="slds-p-around_large">
+                    <div class="slds-text-align_center">
+                        <p>{labels.searchErrorProcessingSearch}</p>
+                        <p>{labels.searchErrorPleaseTryAgain}</p>
+                        <p class="slds-p-top_large utility-type">{searchError}</p>
+                    </div>
+                </div>
+            </c-core-intc-modal>
+        </template>
+
+        <template if:true={showCountryWarningModal}>
+            <c-core-intc-modal data-id="country-warning" is-open is-quickview slim no-close-on-click hide-close>
+                <div slot="header">
+                    <h3 class="color-white slds-text-align_center">{labels.countryWarningHeading}</h3>
+                </div>
+                <div slot="body" class="slds-p-around_large bg-lightest-gray slds-text-align_center">
+                    <label for="country" class="slds-p-bottom_large">{labels.countryWarning}</label>
+                    <select name="country" id="country">
+                        <option disabled selected value>{labels.countryWarningSelect}</option>
+                        <template for:each={countrySelectOptions} for:item="option">
+                            <option key={option.label} value={option.value}>
+                                {option.label}
+                            </option>
+                        </template>
+                    </select>
+                    <div class="slds-p-bottom_medium"></div>
+                </div>
+                <div class="slds-text-align_center slds-p-vertical_medium slds-p-horizontal_large" slot="footer">
+                    <button class="button button-primary button-full-width" onclick={handleApplyCountry}>{labels.apply}</button>
+                </div>
+            </c-core-intc-modal>
+        </template>
+
+        <template if:true={showCategoryModal}>
+            <c-core-intc-modal is-open onclose={handleCloseMobileModalX}>
+                <div slot="header">
+                    <h3 class="color-white slds-text-align_left">{labels.filterCategoryHeading}</h3>
+                </div>
+                <div slot="body" class="slds-p-around_medium bg-lightest-gray fill-modal-height">
+                    <template for:each={categoryChildren} for:item="categoryChild">
+                        <div key={categoryChild.id}>
+                            <c-ipa-link label={categoryChild.label} object-page={categoryApiName} record-id={categoryChild.id} onclick={handleCategoryLinkClick}></c-ipa-link>
+                        </div>
+                    </template>
+                </div>
+            </c-core-intc-modal>
+        </template>
+
+        <template if:true={showFiltersMobile}>
+            <c-core-intc-modal is-open full-screen onclose={handleCloseMobileModalX}>
+                <div slot="header">
+                    <h3 class="color-white slds-text-align_left">{labels.filterModalHeading}</h3>
+                </div>
+                <div slot="body" class="bg-lightest-gray slds-is-relative fill-modal-height">
+                    <template if:true={taxonomyLoaded}>
+                        <c-ipa-search-filters
+                            category-record={categoryRecord}
+                            includes-pre-release={includesPreRelease}
+                            pre-release-value={draftPreReleaseValue}
+                            sort-by-options={sortByOptions}
+                            version="mobile"
+                            onclosemobile={handleCloseMobileModal}
+                            search-params={searchParams}
+                            search-response={searchResponse}
+                            search-response-filters={searchResponseFilters}
+                            draft-filters={draftFilters}>
+                        </c-ipa-search-filters>
+                    </template>                
+                </div>
+            </c-core-intc-modal>
+        </template>
+
+        <c-ipa-search-header
+            onsearch={handleSearch}
+            search-params={searchParams}
+            search-response={searchResponse}
+            category-record-label={categoryRecordLabel}>
+        </c-ipa-search-header>
+
+        <div class="slds-grid slds-wrap slds-is-relative" data-is-loading={loading}>
+            <template if:false={taxonomyLoaded}>
+                <lightning-spinner alternative-text="Loading data..." style="opacity: 0.5;"></lightning-spinner>
+            </template>
+            <div class="filters-main-container slds-size_12-of-12 slds-large-size_3-of-12">
+                <div class="filter-grouping-container slds-p-bottom_medium">
+                    <h2 class="h4 truncate-1 slds-p-bottom_medium slds-show_large">
+                        {labels.filterKeywordHeading}
+                    </h2>
+                    <c-core-intc-search onkeywordinput={handleSearchByKeyword} onclearkeyword={handleClearKeyword} placeholder={labels.filterKeywordPlaceholder} keyword-value={keywordValue}></c-core-intc-search>
+                    <div class="slds-grid slds-grid_vertical-align-center mobile-filters-buttons slds-p-top_medium slds-p-bottom_small slds-hide_large">
+                        <template if:true={showCategoryFilterMobile}>
+                            <div class="slds-grow mobile-filters-button slds-text-align_center" onclick={handleOpenMobileCategory}>
+                                <div>{labels.mobileButtonCategory}</div>
+                                <div class="text-bold truncate-1 slds-p-horizontal_medium">{categoryRecord.label}</div>
+                            </div>
+                        </template>
+                        <div class="slds-grow mobile-filters-button slds-text-align_center" onclick={handleOpenMobileFilters}>
+                            <div><span>{labels.mobileButtonFilter}</span></div>
+                        </div>
+                    </div>
+                </div>
+                <template if:true={showCategoryFilterDesktop}>
+                    <div class="filter-grouping-container">
+                        <div role="button" tabindex="0" class="slds-grid slds-grid_vertical-align-center filter-grouping"
+                            aria-expanded={categoryExpanded} aria-controls="categories-filter"
+                            onclick={handleToggleCategoryGrouping} onkeydown={handleToggleCategoryGroupingAccessibility}>
+                            <div class="slds-grow">
+                                <h2 class="h4 slds-m-vertical_medium truncate-2">{labels.filterCategoryHeading}</h2>
+                            </div>
+                            <div class="filter-grouping-icon">
+                                <template if:false={categoryExpanded}>
+                                    <span class="intel-icon fa-angle-down"></span>
+                                </template>
+                                <template if:true={categoryExpanded}>
+                                    <span class="intel-icon fa-angle-up"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div id="categories-filter" class="grouping-categories slds-p-bottom_medium" data-expanded={categoryExpanded}>
+                            <template for:each={categoryChildren} for:item="categoryChild">
+                                <div key={categoryChild.id}>
+                                    <c-ipa-link label={categoryChild.label} do-analytics=”false” object-page={categoryApiName} record-id={categoryChild.id} prevent onclick={handleCategoryLinkClick}></c-ipa-link>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={breakpoint.isDesktop}>
+                    <template if:true={taxonomyLoaded}>
+                        <c-ipa-search-filters
+                            category-record={categoryRecord}
+                            includes-pre-release={includesPreRelease}
+                            pre-release-value={draftPreReleaseValue}
+                            sort-by-options={sortByOptions}
+                            hide-view-more-filters={hideViewMoreFilters}
+                            search-params={searchParams}
+                            search-response={searchResponse}
+                            search-response-filters={searchResponseFilters}
+                            draft-filters={draftFilters}>
+                        </c-ipa-search-filters>
+                    </template>
+                </template>
+            </div>
+            <div class="slds-m-bottom_x-large slds-is-relative slds-size_12-of-12 slds-large-size_9-of-12">
+                <c-ipa-search-results
+                    default-heading={labels.searchResultsHeading}
+                    group-results={groupSearchResults}
+                    show-recommended-results={showRecommendedResults}
+                    onsearch={handleSearch}
+                    search-params={searchParams}
+                    search-response={searchResponse}>
+                </c-ipa-search-results>
+            </div>
+        </div>
+    </div> -->
+</template>

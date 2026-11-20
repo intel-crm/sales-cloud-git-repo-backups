@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;font-family: arial,helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;color: #000000;&quot;&gt;Please be aware of Salesforce &lt;/span&gt;&lt;b&gt;&lt;span style=&quot;color: red;&quot;&gt;DOWNTIME&lt;/span&gt;&lt;/b&gt; &lt;span style=&quot;color: #000000;&quot;&gt;on Friday, March 16&lt;sup&gt;th&lt;/sup&gt; from 6:30pm -8:30pm PDT.&lt;br&gt; &lt;br&gt;This downtime enables Salesforce URL changes to simplify our architecture and increase performance for our users.​&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;font-family: arial,helvetica,sans-serif;&quot;&gt;From: &lt;span style=&quot;color: #0000FF;&quot;&gt;https://&lt;b&gt;shnintelsf2crm.intel.myshn.net&lt;/b&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;font-family: arial,helvetica,sans-serif;&quot;&gt;To: &lt;span style=&quot;color: #0000FF;&quot;&gt;https://&lt;b&gt;intel.my.salesforce.com&lt;/b&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;font-family: arial,helvetica,sans-serif;&quot;&gt;In preparation for this change, please update any Salesforce browser bookmarks including Salesforce reports.&lt;/span&gt;&lt;/span&gt;&lt;br&gt; </body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>wide</width>
+</HomePageComponent>

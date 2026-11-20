@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_Send_Email_To_PSG_Leads</name>
+    <style>none</style>
+    <subject>New Lead For You</subject>
+    <textOnly>WE HAVE A NEW LEAD FOR YOU
+
+Hello
+
+Great news—we have a new lead that may interest you. To take action on it and help ensure the quality of leads
+we send you, please log in and accept or reject it within 30 days.
+
+Wishing you continued success
+
+The Intel Lead Management Team
+
+LEAD SUMMARY (for full details, follow the review links below)
+
+Lead Name :{!Lead.Name}
+
+Lead Company :{!Lead.Company}
+
+Lead Notes :{!Lead.Core_Lead_Notes__c}
+
+Review Lead
+
+Can’t access the link above?
+
+https://intel.com/contend/www/us/products/docs/processors/9th-gen-core-processors-brief.html
+
+Questions? Let our Partner Admin Team help:partnerleads@intel.com
+
+This message was sent to you as an important business communication related to your current relationship with Intel Corporation© 2019 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.comPrivacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

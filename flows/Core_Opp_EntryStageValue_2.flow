@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Opp_EntryStageValue workflow rule
+Workflow rule description: The &quot;Opportunity Entry Stage&quot; field should capture the first value assigned to the opportunity &quot;Stage&quot; when an opportunity is first opened.&quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Opp_Update_Converted_Created_DateFormula</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE($Record.CreatedDate)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Opp_UpdateEntryStageFormula</name>
+        <dataType>String</dataType>
+        <expression>TEXT( $Record.StageName )</expression>
+    </formulas>
+    <label>Core_Opp_EntryStageValue_2</label>
+    <migratedFromWorkflowRuleName>Core_Opp_EntryStageValue</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>DE28888 : Update the Converted Created Date to created date ensuring only date part is captured and in User&apos;s time zone
+•The &quot;Opportunity Entry Stage&quot; field should capture the first value assigned to the opportunity &quot;Stage&quot; when an opportunity is first opened.</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <inputAssignments>
+            <field>Core_Converted_Created_Date__c</field>
+            <value>
+                <elementReference>Core_Opp_Update_Converted_Created_DateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Entry_Stage__c</field>
+            <value>
+                <elementReference>Core_Opp_UpdateEntryStageFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

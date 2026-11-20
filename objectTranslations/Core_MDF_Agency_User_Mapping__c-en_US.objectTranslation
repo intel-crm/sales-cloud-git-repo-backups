@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Agency User Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Agency User Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Agency User Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_MDF_User__c</name>
+        <relationshipLabel><!-- Agency User Mappings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The User field or the Account Field should not be empty. --></errorMessage>
+        <name>Core_MDF_CCP_UserOrAccShouldNotBeEmpty</name>
+    </validationRules>
+</CustomObjectTranslation>

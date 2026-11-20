@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Project Test Classes</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Project Test Classes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Class Id --></label>
+        <name>DP_EAT_Class_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compound Key Text --></label>
+        <name>DP_EAT_Compound_Key_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exclude test class for test runs --></label>
+        <name>DP_EAT_Exclude_test_class_for_test_runs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Name --></label>
+        <name>DP_EAT_Project_Name__c</name>
+        <relationshipLabel><!-- Project Test Classes --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

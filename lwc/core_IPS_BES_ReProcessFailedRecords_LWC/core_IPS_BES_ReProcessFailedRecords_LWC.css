@@ -1,0 +1,30 @@
+/* Add your custom CSS styles here */
+
+/* Example: Change the background color */
+:host {
+    background-color: #f0f0f0;
+}
+
+/* Customize combobox and input fields */
+.slds-form-element__label {
+    font-weight: bold;
+    color: #333;
+}
+
+.slds-form-element__control {
+    margin-top: 10px;
+}
+
+/* Customize buttons */
+.slds-button-group {
+    text-align: center;
+}
+
+/* Adjust spacing and margins */
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+.slds-m-around_medium {
+    margin: 1rem;
+}

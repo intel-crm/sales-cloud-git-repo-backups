@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PricebookEntry$Product2</field>
+    </columns>
+    <columns>
+        <field>PricebookEntry$Core_Product_Name_EPM_ID__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PricebookEntry$IsActive</field>
+    </columns>
+    <columns>
+        <field>PricebookEntry$Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>PricebookEntry$Product2.Core_OPN__c</field>
+    </columns>
+    <columns>
+        <field>PricebookEntry$Pricebook2</field>
+    </columns>
+    <description>Intel FPGA Products with no Std Price Book Entry</description>
+    <filter>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <column>PricebookEntry$Product2.Core_Product_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Intel® FPGAs</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PricebookEntry$Pricebook2</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Products with no Std Price Book Entry</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PSG_Products_with_Pricebook_Entries__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PricebookEntry$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

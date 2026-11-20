@@ -1,0 +1,80 @@
+<template>  
+    <div class="main">
+    <lightning-card class="title" title={label.Sales_Contact_Customer_Title} >
+            <p class="slds-p-horizontal_small slds-text-align_left">{label.Sales_Case_Question}</p>
+        &nbsp;
+        <div class="radiobutton">
+            <lightning-radio-group name="myOptions"
+                options={myoptions}
+                value={value}
+                onchange={getSelection}
+                class="my-radio-group">
+            </lightning-radio-group>
+        </div>
+            <div class="slds-p-around_medium">
+                <p><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Technical_Issue} onclick={viewRecord}></lightning-button></p>
+                <!--<p  ><lightning-formatted-url style="color: rgb(61, 161, 243);"  value="www.intel.com" label="Have a Technical Issue/Question?"  target="_blank"></lightning-formatted-url></p>-->
+            </div>
+            <template  if:true={isOption1}>
+                <div>
+                    <p class="slds-p-horizontal_small" ><b>{label.Sales_Feature_Message}</b> </p>
+                            <p class="slds-p-horizontal_small How" > <b><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_stepbystepGuidance} onclick={viewHowto} ></lightning-button></b></p>
+                            <p class="slds-p-horizontal_small Frequently"><b><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Frequentlyaskedquestions} onclick={viewFrequentlyQue} ></lightning-button> </b></p>
+                            
+                </div>
+                 
+                <div>
+                    <p class="slds-p-horizontal_small"><b>{label.Sales_Case_Navigation}</b> </p>     
+                    
+
+                        <p class="slds-p-horizontal_small Renewal">  <b><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Renewal_License_Label} onclick={viewRnewalAddSeatLicenseLink}></lightning-button></b></p>
+                        <p class="slds-p-horizontal_small Add"> <b><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Add_seat_license} onclick={viewRnewalAddSeatLicenseLink}></lightning-button> </b></p>
+                        <div class="slds-p-horizontal_small">
+                            <p><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Help_Eval_Free_Emp} onclick={viewURL}></lightning-button></p>
+                            <!--<p  ><lightning-formatted-url style="color: rgb(61, 161, 243);"  value="www.intel.com" label="Have a Technical Issue/Question?"  target="_blank"></lightning-formatted-url></p>-->
+                        </div>
+                        
+                    <p class="slds-p-horizontal_small"><b> <lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_contactCustomerSupport} onclick={viewRecord1}></lightning-button> </b> </p>     
+                </div>
+                <template if:true={NonIpsCaseCreation}>
+
+                    <c-Sales_-Non-Ips-Contact-Customer-Service></c-Sales_-Non-Ips-Contact-Customer-Service>
+
+                </template>
+            </template>
+            <template if:true={isOption2}>
+                <div>
+                 <p class="slds-p-horizontal_small"> <b>{label.Sales_Case_New_Subcription} <lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_distributor} onclick={viewcontactdistributor} ></lightning-button></b></p>
+                </div>
+                <p class="slds-p-horizontal_small"><b>{label.Sales_Case_You_Can_Also}</b> </p>
+                <div>
+                    <p class="slds-p-horizontal_small days" >
+                         <b style="color:red">{label.Sales_Getafree} </b>
+                    <lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Case_30days} onclick={viewdaytriallicense}></lightning-button></p>
+                </div>
+                <div>
+                    <p class="slds-p-horizontal_small Quartus">
+                    <b style="color:red">{label.Sales_Getafree} </b>  
+                    <lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Case_Quartus} onclick={viewquartusWebeditionx}></lightning-button><br></p>
+                </div>
+                <div>
+                    <p class="slds-p-horizontal_small Maxplus">
+                    <b style="color:red">{label.Sales_Getafree} </b> 
+                    <lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Case_Maxplus} onclick={viewMaxplusIIlicense}></lightning-button><br></p>
+                </div>
+                <div class="slds-p-horizontal_small">
+                    <p><lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Help_Eval_Free_Emp} onclick={viewURL}></lightning-button></p>
+                    <!--<p  ><lightning-formatted-url style="color: rgb(61, 161, 243);"  value="www.intel.com" label="Have a Technical Issue/Question?"  target="_blank"></lightning-formatted-url></p>-->
+                </div>
+                <div>
+                    <p class="slds-p-horizontal_small"><b>{label.Sales_Case_looking_Something} <lightning-button style="color: rgb(61, 161, 243);" variant="Base" label={label.Sales_Contact_Customer_Title_New} onclick={viewRecord1}></lightning-button></b></p>
+                </div>
+                <template if:true={NonIpsCaseCreation}>
+
+                    <c-Sales_-Non-Ips-Contact-Customer-Service></c-Sales_-Non-Ips-Contact-Customer-Service>
+
+                </template>
+            </template>  
+    </lightning-card>
+</div>
+ </template>

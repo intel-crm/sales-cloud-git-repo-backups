@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>CCP Retail ASMO LAR Fin Mgr Escl Que</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Esc</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Escalation__c</sobjectType>
+    </queueSobject>
+</Queue>

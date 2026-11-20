@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_MDF_Update_Bank_Program_Value workflow rule</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_MDF_Update_the_Bank_Program_ValueFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Client_CoMarketing_Fund&quot;),&quot;Client;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),&quot;Datacenter;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),&quot;Service Provider Co-Marketing Fund;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),&quot;Client Co-Marketing Fund Boost;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Retail_Marketing_Funds&quot;),&quot;Retail Marketing Funds;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Intel_Partner_Alliance&quot;),&quot;Intel Partner Alliance;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Ecosystem_Extension_Fund&quot;),&quot;Ecosystem Extension Fund;&quot;,NULL)+
+IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),&quot;Co-GTM;&quot;,NULL)</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_Update_Bank_Program_Value {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_Update_Bank_Program_Value</label>
+    <migratedFromWorkflowRuleName>Core_MDF_Update_Bank_Program_Value</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_MDF_Update_the_Bank_Program_Value</name>
+        <label>Update the Bank Program Value</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Program_Value__c</field>
+            <value>
+                <elementReference>Core_MDF_Update_the_Bank_Program_ValueFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_MDF_Update_the_Bank_Program_Value</targetReference>
+        </connector>
+        <filterFormula>OR(ISNEW(),ISCHANGED({!$Record.Core_MDF_Program__c}))</filterFormula>
+        <object>Core_MDF_Bank__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

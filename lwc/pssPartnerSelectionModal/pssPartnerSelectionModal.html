@@ -1,0 +1,86 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+    <!--<template if:true={openModal}>
+        <c-core-intc-modal is-open no-close-on-click onclose={closePartnerModal}>
+            <div key={heading} slot="header">
+                <h3 class="color-white">
+                    <template if:true={isPartnerProgram}>
+                        {labels.solutionDetails}
+                    </template>
+                    <template if:false={isPartnerProgram}>
+                        {labels.partnerDetails}
+                    </template>
+                </h3>
+            </div>
+            <div slot="body">
+                <template if:true={isPartnerProgram}>
+                    <div class="selectPartner slds-p-horizontal_small slds-p-vertical_x-small slds-text-align_left slds-size_12-of-12 slds-medium-size_6-of-12">
+                        <c-core-intc-select name={labels.chooseSolutionProgram} label={labels.chooseSolutionProgram}
+                            required-option-label={labels.chooseOneLabel} required-error-text={labels.programRequiredLabel}
+                            options={programOptions} onchange={handleProgramChange} required>
+                        </c-core-intc-select>
+                    </div>
+                </template>
+                <template if:false={isPartnerProgram}>
+                    <template if:false={isEmployee}> -->
+                        <!--Typeahead Search option for Admin ONLY--> 
+                    <!-- <div class="selectPartner slds-p-horizontal_small slds-p-vertical_x-small slds-text-align_left slds-size_12-of-12 slds-medium-size_6-of-12">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-03">
+                                <abbr class="slds-required" title="required">* </abbr>{labels.partnerName}</label>
+                        </div>
+                        <c-core-intc-search placeholder={labels.partnerName}
+                            show-filter-search-input-spinner-icon={currentlySearching} debounce-leading is-typeahead
+                            typeahead-options={typeaheadOptions} typeahead-no-results={noResultsFound} show-typeahead="true"
+                            onclearkeyword={handleClearKeyword} onfinishedtyping={handleFinishedTyping} keyword-value={selectedPartnerLabel} 
+                            onselectedoption={handleSelectedOption}>
+                        </c-core-intc-search>
+                    </div>
+                </template> -->
+                <!--Autopopulate the Partner Names for Intel Sales User instead of Typeahead search -->
+                <!-- <template if:true={isEmployee}> -->
+                    <!--Dropdown Select if more than one Partner else Output text of the single MPI -->
+                    <!-- <template if:true={selectAllowed}>
+                        <div class="selectPartner slds-p-horizontal_small slds-p-vertical_x-small slds-text-align_left slds-size_12-of-12 slds-medium-size_6-of-12">
+                        <c-core-intc-select name={labels.partnerName} label={labels.partnerName}
+                                    required-option-label={labels.chooseOneLabel} required-error-text={labels.partnerNameRequired}
+                                    options={typeaheadOptions} onchange={handlePartnerChange} required>
+                        [</c-core-intc-select>
+                        </div> 
+                    </template>
+                    <template if:false={selectAllowed}>
+                        <div class="selectPartner slds-p-horizontal_small slds-p-vertical_x-small slds-text-align_left slds-size_12-of-12 slds-medium-size_6-of-12">
+                        {labels.partnerName}:<lightning-formatted-text value={selectedPartnerName} ></lightning-formatted-text>
+                        </div>
+                    </template>
+                </template>
+                    <div class="selectPartner slds-p-horizontal_small slds-p-vertical_x-small slds-text-align_left slds-size_12-of-12 slds-medium-size_6-of-12">
+                            <template if:true={isSpinner}>
+                                <div class="customSpinner">
+                                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                                </div>
+                            </template>
+                            <template if:false={isSpinner}>
+                                <c-core-intc-select name={labels.contactNameLabel} label={labels.contactNameLabel}
+                                    required-option-label={labels.chooseOneLabel} required-error-text={labels.contactRequiredLabel}
+                                    options={contactOptions} onchange={handleContactChange} disabled={isContactDisabled} required>
+                                </c-core-intc-select>
+                            </template>
+                    </div>
+                </template>
+            </div>
+            <div slot="footer" class="slds-p-around_medium slds-text-align_right">
+                <lightning-button class="slds-m-right_medium" label={labels.cancelLabel} onclick={closeModal}>
+                </lightning-button>
+                <template if:true={isPartnerProgram}>
+                    <lightning-button class="slds-m-right_x-small" variant="brand" label={labels.submitLabel}
+                    onclick={onPartnerSubmission} disabled={isPrpgramSubmitDisabled}></lightning-button>
+                </template>
+                <template if:false={isPartnerProgram}>
+                    <lightning-button class="slds-m-right_x-small" variant="brand" label={labels.submitLabel}
+                    onclick={onSubmit} disabled={isSubmitBtnDisabled}></lightning-button>
+                </template>
+            </div>
+        </c-core-intc-modal>
+    </template> -->
+</template>

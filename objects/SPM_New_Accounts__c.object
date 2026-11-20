@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CM_Feedback__c</fullName>
+        <label>Country Manager Feedback</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_CST_Is_Active_Planning_Period__c</fullName>
+        <externalId>false</externalId>
+        <label>Is Active Planning Period</label>
+        <length>16</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_CST_Planning_Period__c</fullName>
+        <externalId>false</externalId>
+        <label>Is Inactive Planning Period</label>
+        <length>16</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Company_URL__c</fullName>
+        <label>Company URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Coverage__c</fullName>
+        <defaultValue>&quot;Intel led&quot;</defaultValue>
+        <label>Account Primary Coverage</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel led</fullName>
+                    <default>true</default>
+                    <label>Intel-led Account</label>
+                </value>
+                <value>
+                    <fullName>Partner-led Account</fullName>
+                    <default>false</default>
+                    <label>Partner-led Account</label>
+                </value>
+                <value>
+                    <fullName>Other-led Account</fullName>
+                    <default>false</default>
+                    <label>Other-led Account</label>
+                </value>
+                <value>
+                    <fullName>Not Covered Account</fullName>
+                    <default>false</default>
+                    <label>Not Covered Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_category__c</fullName>
+        <label>Semi-Annual Temp Account Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CST_Customer_Category</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>GM_Feedback__c</fullName>
+        <label>GM Feedback</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GTM_Model__c</fullName>
+        <label>GTM Model</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core</fullName>
+                    <default>true</default>
+                    <label>Core</label>
+                </value>
+                <value>
+                    <fullName>Growth</fullName>
+                    <default>false</default>
+                    <label>Growth</label>
+                </value>
+                <value>
+                    <fullName>Growth-VBS</fullName>
+                    <default>false</default>
+                    <label>Growth-VBS</label>
+                </value>
+                <value>
+                    <fullName>Growth/VBS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Growth/VBS</label>
+                </value>
+                <value>
+                    <fullName>Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Specialty</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>New_Account_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>New Account Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>New_Accounts</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Sales_Group__c</fullName>
+        <label>New Sales Group</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Americas US Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas US Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Brazil Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Brazil Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Mexico Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Mexico Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Canada Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Canada Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas ELAR Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas ELAR Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Japan Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Japan Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Korea Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Korea Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Taiwan Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Taiwan Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Southeast Asia Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Southeast Asia Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Australia &amp; New Zealand Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Australia &amp; New Zealand Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>EMEA Sales Group</fullName>
+                    <default>false</default>
+                    <label>EMEA Sales Group</label>
+                </value>
+                <value>
+                    <fullName>EMEA Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>EMEA Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>PRC Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>PRC Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>PRC Sales Group</fullName>
+                    <default>false</default>
+                    <label>PRC Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Partner Led</fullName>
+                    <default>false</default>
+                    <label>Americas Partner Led</label>
+                </value>
+                <value>
+                    <fullName>EMEA Partner Led</fullName>
+                    <default>false</default>
+                    <label>EMEA Partner Led</label>
+                </value>
+                <value>
+                    <fullName>APJ Partner Led</fullName>
+                    <default>false</default>
+                    <label>APJ Partner Led</label>
+                </value>
+                <value>
+                    <fullName>PRC Partner Led</fullName>
+                    <default>false</default>
+                    <label>PRC Partner Led</label>
+                </value>
+                <value>
+                    <fullName>Undefined</fullName>
+                    <default>false</default>
+                    <label>Undefined</label>
+                </value>
+                <value>
+                    <fullName>India Partner Led</fullName>
+                    <default>false</default>
+                    <label>India Partner Led</label>
+                </value>
+                <value>
+                    <fullName>India Sales Group</fullName>
+                    <default>false</default>
+                    <label>India Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ India Sales Group</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>APJ India Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Global Solutions &amp; Services Sales Group</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Global Solutions &amp; Services Sales Group</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reasoning__c</fullName>
+        <label>Reasoning</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SF_Account_Updated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>SF Account Updated</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SF_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>SF Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>New_Accounts</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Team_Members__c</fullName>
+        <defaultValue>&quot;NA&quot;</defaultValue>
+        <inlineHelpText>Please enter the email address</inlineHelpText>
+        <label>Team Members</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>UCD_Global_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Unified Global Customer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VP_Feedback__c</fullName>
+        <label>VP Feedback</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>New Customer</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>SF_Account__c</columns>
+        <columns>Company_URL__c</columns>
+        <columns>New_Account_Owner__c</columns>
+        <columns>Customer_category__c</columns>
+        <columns>New_Sales_Group__c</columns>
+        <columns>GTM_Model__c</columns>
+        <columns>Team_Members__c</columns>
+        <columns>Reasoning__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>VP_Feedback__c</columns>
+        <columns>CM_Feedback__c</columns>
+        <columns>GM_Feedback__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>NA-{000000}</displayFormat>
+        <label>New Account ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>New Customers</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <listViewButtons>CRM_Update_New_Customer</listViewButtons>
+        <massQuickActions>Approve</massQuickActions>
+        <massQuickActions>Reject</massQuickActions>
+        <searchResultsAdditionalFields>Account_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SF_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Company_URL__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>New_Account_Owner__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer_category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Reasoning__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VP_Feedback__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CM_Feedback__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GM_Feedback__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>CRM_VBS_No_Null_Coverage_Field</fullName>
+        <active>true</active>
+        <description>Account Primary Coverage cannot be None.</description>
+        <errorConditionFormula>(ISBLANK(TEXT(Coverage__c)) || ISBLANK(TEXT(Coverage__c)))</errorConditionFormula>
+        <errorMessage>Account Primary Coverage cannot be None.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SF_Account_or_Account_name_is_mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF((SF_Account__c == NULL &amp;&amp; Account_Name__c==NULL),TRUE,FALSE)</errorConditionFormula>
+        <errorMessage>Either provide an existing SF Account or provide a new customer name.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>URL_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+  NOT(ISBLANK( Company_URL__c )), 
+  NOT(REGEX(Company_URL__c ,&quot;^((http|https)://)??(www[.])??([a-zA-Z0-9]|-)+?([.][a-zA-Z0-9(-|/|=|?)??]+?)+?$&quot;))
+)</errorConditionFormula>
+        <errorDisplayField>Company_URL__c</errorDisplayField>
+        <errorMessage>Please enter a valid URL.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CRM_Update_New_Customer</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>CRM Update</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/CST_Account_Update_New_Customers</url>
+    </webLinks>
+</CustomObject>

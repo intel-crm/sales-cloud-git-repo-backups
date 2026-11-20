@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_93433445</developerName>
+        <masterLabel>DCS Regions</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Anna Hermansson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Louise Summerton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MATTHEW BIRCH</sourceValue>
+            </sourceValues>
+            <value>DCS NEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Guy Bar-Ner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jorge Cordova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ilan Turjeman</sourceValue>
+            </sourceValues>
+            <value>DCS SEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Matthias Todd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Markus Gabler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Christoph Johann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mike H Cato</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dietmar Rohlf</sourceValue>
+            </sourceValues>
+            <value>DCS CEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eric Levander</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jon Jadersten</sourceValue>
+            </sourceValues>
+            <value>DCS Services Providers</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Fabian De Pasquale</sourceValue>
+            </sourceValues>
+            <value>DCS WEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Robert Szekely</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Artur Dlugosz</sourceValue>
+            </sourceValues>
+            <value>DCS HPC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Valery Bochkaryov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>natalia galyan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>eugene bakunov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alexey Ivanov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Victoria Yevtoushenko</sourceValue>
+            </sourceValues>
+            <value>DCS RCIS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Simon Wilyman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>luca romani</sourceValue>
+            </sourceValues>
+            <value>DCS Channels and Platforms director</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ediz Altun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Firas Alfanney</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mediha Kayacan</sourceValue>
+            </sourceValues>
+            <value>DCS META</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Uros Huzjak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maciej Osiecki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edwin Peters</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edward R Galyamov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Eran Gal</sourceValue>
+            </sourceValues>
+            <value>DCS OSC</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_91423722</developerName>
+        <masterLabel>Days create to submit</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Opportunity_Create_to_Submit_LOV__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Within 30 Days</sourceValue>
+            </sourceValues>
+            <value>&lt;30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Within 60 Days</sourceValue>
+            </sourceValues>
+            <value>31-60 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Within 90 Days</sourceValue>
+            </sourceValues>
+            <value>61-90 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>More than 90 Days</sourceValue>
+            </sourceValues>
+            <value>90+ Days</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStackedTo100</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OWNER_MANAGER</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_91423722</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>BucketField_93433445</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Geographical_Territory__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Manufacturing_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Country__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Partner_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Partner_Alliance_Program__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_MAG_Account__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_IoT__c</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Segments__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Vertical_Sector__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Competitor_Architecture__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Migrations_Winbacks__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Entry_Stage__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Export_Compliance_Block_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Reason_for_Deletion__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Flag_for_Deletion__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>BucketField_93433445</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>DCS META</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER_MANAGER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_91423722</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>META - % Create to Submit</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

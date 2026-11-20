@@ -1,0 +1,17 @@
+<template>
+      <lightning-card title={tablename} icon-name="custom:custom28" ></lightning-card>  
+  <template if:true={licenseData}>
+  <div slot="footer">
+   <lightning-card>
+   <lightning-layout>
+   <lightning-layout-item class="slds-p-left_none slds-p-right_none slds-m-left_none slds-m-right_none">
+     <div style="height: 200px;">
+      <lightning-datatable key-field="id" data={licenses} columns={columns} hide-checkbox-column>
+      </lightning-datatable>
+      </div>  
+     </lightning-layout-item>
+   </lightning-layout>
+</lightning-card>
+  </div>
+</template>
+</template>

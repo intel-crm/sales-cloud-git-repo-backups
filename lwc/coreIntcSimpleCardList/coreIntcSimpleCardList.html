@@ -1,0 +1,9 @@
+<template>
+    <div class="simple-card-list-container" data-desktop-cols={desktopCols}>
+        <template for:each={cardListData} for:item="card">
+            <div class="simple-card-list-item" key={card.key}>
+                <c-core-intc-simple-card card={card} card-template-type={cardTemplateType} large-heading={largeHeading} theme={theme} type={type}></c-core-intc-simple-card>
+            </div>
+        </template>
+    </div>
+</template>

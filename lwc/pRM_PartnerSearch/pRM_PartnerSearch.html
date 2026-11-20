@@ -1,0 +1,260 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:true={showPage}>
+        <template if:true={authValue.isAuthorised}>
+            <!-- <lightning-card> -->
+            <!-- <h3 class="slds-p-bottom_large largefont">{label.partnerSearch}</h3> -->
+            <div class="slds-p-top_xx-large">
+                <div class="spinner">
+                    <template if:true={showSpinner}>
+                        <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+                    </template>
+                </div>
+            </div>
+
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item class="slds-p-bottom_large slds-size_8-of-12">
+                    <lightning-input required="true" variant="label-hidden" name="searchInput" type="search"
+                        onchange={changeInput} placeholder={label.search} class="inputError">
+                    </lightning-input>
+                    <p class="belowText">{label.searchMessage}</p>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <strong class="required">*</strong>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout>
+                <lightning-layout-item class="slds-p-bottom_large slds-size_4-of-12">
+                    <button class="slds-button slds-button_brand" title="Search" onclick={searchDistributors}>
+                        {label.search}
+                    </button>
+                    <button class="slds-button slds-button_brand" title="Reset" onclick={handleResetAll}>
+                        {label.reset}
+                    </button>
+                </lightning-layout-item>
+            </lightning-layout>
+            <!-- </lightning-card> -->
+
+            <template if:true={isShowContent}>
+                <!-- <lightning-card> -->
+                <lightning-layout>
+                    <p class="filter">{label.filters}</p>
+                    <lightning-layout-item class="country">
+                        <p class="comboLabel">{label.country}</p>
+                        <lightning-combobox class="filterName" name="country" label="Country"
+                            value={label.allDefaultPicklistValue} placeholder={label.allDefaultPicklistValue}
+                            options={countryList} onchange={changeCountry} variant="label-hidden"></lightning-combobox>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item class="tier">
+                        <p class="comboLabel">{label.tier}</p>
+                        <lightning-combobox class="filterName" name="tier" label="Tier"
+                            value={label.allDefaultPicklistValue} placeholder={label.allDefaultPicklistValue}
+                            options={tierOptions} onchange={changeTier} variant="label-hidden"></lightning-combobox>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <template if:true={isShowTable}>
+                    <div class="myDataTable slds-p-around_x-large">
+                        <c-partnersearchcustomtypes class="slds-table_striped" hide-checkbox-column="true"
+                            key-field="accountId" data={accountList} columns={columnsTable} onlinkclicked={handleClick}
+                            sorted-by={sortBy} sorted-direction={sortDirection} onsort={handleAccountSort}>
+                        </c-partnersearchcustomtypes>
+                    </div>
+                </template>
+                <template if:false={isShowTable}>
+                    <p class="noRecords slds-p-top_x-large slds-p-bottom_x-large">
+                        {label.noRecords}
+                    </p>
+                </template>
+                <!-- </lightning-card> -->
+            </template>
+            <template if:false={isShowContent}>
+                <template if:false={noRecordsMessageOnLoad}>
+                    <p class="centeralign slds-p-top_small">
+                        {label.noRecords}
+                    </p>
+                </template>
+                <template if:true={noRecordsMessageOnLoad}> </template>
+            </template>
+
+            <template if:true={showPopup}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    class="slds-modal slds-modal_large slds-fade-in-open popup">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                    size="small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">{label.close}</span>
+                            </button>
+                            <h3>{label.accountDetails}</h3>
+                        </header>
+                        <div class="slds-modal__content">
+                            <div class="slds-var-m-left_small">
+                                <template if:true={accountDetail}>
+                                    <!-- <lightning-card title=""> -->
+                                    <lightning-layout multiple-rows="true">
+                                        <lightning-layout-item flexibility="auto" class="slds-p-top_x-small" size="12">
+                                            <lightning-layout>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.accName}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.accountName}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.accNumber}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.accountNumber}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.partnerRole}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.partnerRole}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.partnerTier}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.partnerTier}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+
+                                        <lightning-layout-item flexibility="auto" size="12">
+                                            <lightning-layout>
+                                                <lightning-layout-item class="slds-truncate slds-p-around_x-small"
+                                                    size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.prAddress}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.primaryAddress}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.website}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.website}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <label class="headingtext">{label.ipaAccepted}</label>
+                                                    <br />
+                                                    <lightning-input name="ipaTCAccepted" readonly="true"
+                                                        type="checkbox" checked={accountDetail.ipaTCAccepted}
+                                                        value={accountDetail.ipaTCAccepted} disabled="true">
+                                                    </lightning-input>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+
+                                        <lightning-layout-item flexibility="auto" size="9">
+                                            <lightning-layout>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="4">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.trainingcredits}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            <lightning-formatted-number class="fontColor" value={trainingConversion.value} maximum-fraction-digits={trainingConversion.decimals} minimum-fraction-digits="0"></lightning-formatted-number>  
+                                                            <span class="performance-value-text">{trainingConversion.text}</span>
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="4">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.pointsSatus}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.pointStatus}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+
+                                        <lightning-layout-item flexibility="auto" size="12">
+                                            <lightning-layout>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.CNDANumber}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.cndaNumber}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.affiliation}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.affiliation}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item class="slds-p-around_x-small" size="3">
+                                                    <div class="slds-form-element">
+                                                        <label class="headingtext">{label.DZP}</label>
+                                                        <br />
+                                                        <div class="slds-form-element__control detailstext">
+                                                            {accountDetail.dzpBenefit}
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+
+                                    <!-- </lightning-card> -->
+                                    <template if:true={showPartnerDetailsTable}>
+                                        <div class="myTable slds-p-right_large">
+                                            <lightning-datatable class="slds-table_striped" hide-checkbox-column="true"
+                                                data={accountDetail.partnerDetails} columns={contactColumns}
+                                                key-field="partnerAdminId" sorted-by={sortBy}
+                                                sorted-direction={sortDirection} onsort={handleContactSort}>>
+                                            </lightning-datatable>
+                                        </div>
+                                    </template>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template>
+        </template>
+
+        <template if:false={authValue.isAuthorised}>
+            <div>
+                <p class="centeralign slds-p-top_large">
+                    {label.ipaLookupError}&nbsp;
+                    <lightning-formatted-url value={label.ipaChatSupport} label={label.ipaLookupCustomerSupport}
+                        target="_blank"></lightning-formatted-url>.
+                </p>
+            </div>
+        </template>
+    </template>
+</template>

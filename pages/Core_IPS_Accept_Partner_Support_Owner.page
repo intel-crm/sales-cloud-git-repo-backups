@@ -1,0 +1,17 @@
+<apex:page standardController="case" extensions="Core_IPS_Accept_Part_Support_Controller" action="{!updateOwner}">
+    <script>
+        (function(){
+            alert('{!JSENCODE(HTMLENCODE(errorMessage))}'); /* US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability */
+            document.location.href='/IPS/{!JSENCODE(case.id)}';
+        })();
+    </script>
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" >
+            <apex:outputLabel value="{!errorMessage}" style="color: blue;font-size: initial;"></apex:outputLabel>
+        </apex:pageBlockSection>
+        <apex:form style="text-align: center;" >
+            <apex:commandButton value="Go back" action="{!goBack}"/>
+        </apex:form>
+        
+    </apex:pageBlock>
+</apex:page>

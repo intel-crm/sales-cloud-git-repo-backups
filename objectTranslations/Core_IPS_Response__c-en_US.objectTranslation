@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Environment Detail Response</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Environment Detail Responses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Agent Only --></label>
+        <name>Core_IPS_Agent_Only__c</name>
+    </fields>
+    <fields>
+        <help><!-- Defined Master Answer to which the response belongs --></help>
+        <label><!-- Core Answer --></label>
+        <name>Core_IPS_Answer_Master__c</name>
+        <relationshipLabel><!-- Core Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Environment Detail Answer --></label>
+        <name>Core_IPS_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Core_IPS_Case__c</name>
+        <relationshipLabel><!-- Environment Detail Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Language code in which the question and answer was displayed and captured --></help>
+        <label><!-- Language --></label>
+        <name>Core_IPS_Language__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used only for NPS reporting
+-1 : Detractor
+0 : Passive
+1 : Promotor --></help>
+        <label><!-- NPS Category Indicator --></label>
+        <name>Core_IPS_NPS_Category_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Numeric Answer --></label>
+        <name>Core_IPS_Numeric_Answer__c</name>
+    </fields>
+    <fields>
+        <help><!-- Defined Master Question to which the response belongs --></help>
+        <label><!-- Core Question --></label>
+        <name>Core_IPS_Question_Master__c</name>
+        <relationshipLabel><!-- Core Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Environment Detail Question --></label>
+        <name>Core_IPS_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Survey Type --></label>
+        <name>Core_IPS_Survey_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

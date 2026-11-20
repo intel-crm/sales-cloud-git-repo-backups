@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+
+    <c:opportunityTakeOwnership recordId="{!v.recordId}" onpopupclose="{!c.closeModal}"></c:opportunityTakeOwnership> 
+    
+</aura:component>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>AI Inference</masterLabel>
+        <translation>AI 推理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inference – Datacenter</masterLabel>
+        <translation>AI 推理 – 数据中心</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inferencing</masterLabel>
+        <translation><!-- AI Inferencing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inferencing – Edge</masterLabel>
+        <translation>AI 推理 – 边缘</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Client Mainstream Mini PC</masterLabel>
+        <translation>客户端主流迷你电脑</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Networking - Data &amp; Security</masterLabel>
+        <translation>云网络 - 数据与安全</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connectivity</masterLabel>
+        <translation><!-- Connectivity --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator</masterLabel>
+        <translation>创作者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DaaS (PCaaS)</masterLabel>
+        <translation><!-- DaaS (PCaaS) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Data &amp; Network Security</masterLabel>
+        <translation>数据与网络安全</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deep Learning Inferencing</masterLabel>
+        <translation>深度学习推理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deep Learning Training</masterLabel>
+        <translation>深度学习训练</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Early Access / Product Launch</masterLabel>
+        <translation>抢险访问 / 产品发布</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Compute and Modularity</masterLabel>
+        <translation>边缘计算和模块化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise Cloud Networking &amp; Security</masterLabel>
+        <translation>企业云网络和安全</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Extend Platform Leadership</masterLabel>
+        <translation>扩展平台领导力</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Fixed/Wireless Access</masterLabel>
+        <translation>固定/无线访问</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gamer Days</masterLabel>
+        <translation>游戏玩家日</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming Enthusiast</masterLabel>
+        <translation>游戏爱好者</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Performance Compute</masterLabel>
+        <translation>高性能计算</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Speed Connectivity</masterLabel>
+        <translation>高速连接</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Accessibility</masterLabel>
+        <translation>IRTI：无障碍性</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Climate &amp; Sustainability</masterLabel>
+        <translation>IRTI：气候和可持续性</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Education</masterLabel>
+        <translation>IRTI：教育</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Health &amp; Life Sciences</masterLabel>
+        <translation>IRTI：健康和生命科学</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Social Equity &amp; Human Rights</masterLabel>
+        <translation>IRTI：社会公平和人权</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Accelerated (Solutions)</masterLabel>
+        <translation>英特尔加速（解决方案）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance AI Accelerator</masterLabel>
+        <translation>英特尔® 合作伙伴联盟 AI 加速器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance Edge Accelerator</masterLabel>
+        <translation>英特尔® 合作伙伴联盟边缘加速器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance Networking Accelerator</masterLabel>
+        <translation>英特尔® 合作伙伴联盟网络加速器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IoT Edge AI - IoT/Vision/Video</masterLabel>
+        <translation>物联网边缘人工智能 - 物联网/视觉/视频</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IoT Edge AI - Networking/Security</masterLabel>
+        <translation>物联网边缘人工智能 - 网络/安全</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Leading Edge FPGA</masterLabel>
+        <translation>领先 FPGA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manageability</masterLabel>
+        <translation>可管理性</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Services</masterLabel>
+        <translation>托管服务</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Market Ready Solution/RFP Ready Kit</masterLabel>
+        <translation>市场就绪解决方案/RFP 就绪套件</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi-Access Edge Computing</masterLabel>
+        <translation>多接入边缘计算 (MEC)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi/Hybrid Cloud Networking (SASE)</masterLabel>
+        <translation><!-- Multi/Hybrid Cloud Networking (SASE) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - 5G</masterLabel>
+        <translation>网络 - 5G</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - Radio Access Networks/vRAN/oRAN</masterLabel>
+        <translation>网络 - 无线接入网络/vRAN/oRAN</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - Visual Cloud/Video</masterLabel>
+        <translation>网络 - 视觉云/视频</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - private wireless networks</masterLabel>
+        <translation>网络 - 专用无线网络</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>None</masterLabel>
+        <translation>无</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>On Prem Networking – Data &amp; Security</masterLabel>
+        <translation>本地网络 – 数据和安全</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>P5G &amp; MEC​</masterLabel>
+        <translation><!-- P5G &amp; MEC​ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Private Wireless Networks</masterLabel>
+        <translation>专用无线网络</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks (RAN)</masterLabel>
+        <translation>无线接入网络 (RAN)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Skills for Innovation</masterLabel>
+        <translation>创新技能</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Acceleration: MRS, RRK</masterLabel>
+        <translation><!-- Solution Acceleration: MRS, RRK --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Aggregation</masterLabel>
+        <translation><!-- Solution Aggregation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Scale (IPA Accelerators)</masterLabel>
+        <translation>解决方案规模（IPA 加速器）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Scale (MRS/RRK and AI ISV PW)</masterLabel>
+        <translation>解决方案规模（MRS/RRK 和 AI ISV PW）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sustainability</masterLabel>
+        <translation>可持续性</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Visual Cloud</masterLabel>
+        <translation>视觉云</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Intel Preference</masterLabel>
+        <translation>赢取英特尔优先权</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Performance &amp; Sell Up</masterLabel>
+        <translation>获胜绩效和销售</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Volume</masterLabel>
+        <translation>获胜量</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wireless Core</masterLabel>
+        <translation><!-- Wireless Core --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>eSports</masterLabel>
+        <translation>电子竞技</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vRAN</masterLabel>
+        <translation><!-- vRAN --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,21 @@
+<template>
+    <template if:true={haserror}>
+        <div>{label.Core_MDF_ApplicationErrorMessage}</div>
+    </template>
+    <template if:true={isValidPOPdata}>
+        <lightning-layout class="slds-page-header slds-page-header--object-home slds-var-m-top_medium">
+            <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+                <div class="page-section page-header">
+                    <h1 class="slds-text-heading--label">{displayHeader}</h1>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout horizontal-align="spread" multiple-rows="true">
+            <lightning-layout-item flexibility="grow" size="12" small-device-size="12" medium-device-size="12"
+                large-device-size="12" padding="none">
+                <br />
+                <lightning-formatted-rich-text value={result} disabled></lightning-formatted-rich-text>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+</template>

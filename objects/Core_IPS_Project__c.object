@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <comment>Overriding to enable redirection based on user profiles.</comment>
+        <content>core_IPS_ProjectLandingPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>core_IPS_ProjectLandingPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>Core_New_IPSProject</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Premier_Support_Project_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Premier_Support_Project_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>IPS_Project_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>IPS_Project_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Core_Status__c</fields>
+        <fields>OwnerId</fields>
+        <label>IPS Project Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>IPS Project</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Core_IPS_Global_Search_Field_Result</fullName>
+        <description>This  Field set  will  used  to add and remove the Fields from search result</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Global Search Field Result</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>IpsProjectFieldSet</fullName>
+        <description>Visualforce Page - Core_IPS_Lookup_Page_Syed</description>
+        <displayedFields>
+            <field>Core_IPS_Project_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>yy_IpsProjectFieldSet</label>
+    </fieldSets>
+    <fields>
+        <fullName>Core_IPS_EnableMemberasInterestedParties__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Adds all Premier Support Project Members as External Interested Parties on Cases created</inlineHelpText>
+        <label>Enable Members as Interested Parties</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Enable_ISTasInterested_Parties__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>Adds all Intel Support Team members as Internal Interested Parties</inlineHelpText>
+        <label>Enable IST as Interested Parties</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_GroupId__c</fullName>
+        <externalId>false</externalId>
+        <label>GroupId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Group_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Name</label>
+        <length>45</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Intel_Support_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Intel Support Owner is the Intel Representative that is in charge of all Pre-Sales Support functionality. This person is typically the technical owner and/or sales representative.</description>
+        <inlineHelpText>Representative who is the default support owner for new Cases created on the Project</inlineHelpText>
+        <label>Intel Support Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Premier_Support_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_InternalGroupId__c</fullName>
+        <description>Store the Public Group Id for Intel Support Team group</description>
+        <externalId>false</externalId>
+        <label>InternalGroupId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Legacy_Collab_Team_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Used for linking legacy Collaboration Teams to new IPS Cloud Project ID&apos;s</description>
+        <externalId>true</externalId>
+        <label>Legacy Collab Team ID</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Partner_Support_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>Partner FAE from project members list will become the default Partner Support Owner (PSO) for new Cases created on Project. PSO will get email notifications whenever a case is updated. For more details refer to Projects Training topic on the home page.</inlineHelpText>
+        <label>Partner Support Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Premier_Support_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Private__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is required to make a Project Private</description>
+        <label>Private</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Project_ID__c</fullName>
+        <description>Unique IPS Project object Identifier related to IPS Projects on Case</description>
+        <displayFormat>IPJ-{000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Premier Support Project ID</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Remove_Notification_Details__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>This will strip text within emails for the Case Subject, Description and Comments</inlineHelpText>
+        <label>Remove Notification Details</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Support_Level__c</fullName>
+        <label>Support Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tier 1</fullName>
+                    <default>false</default>
+                    <label>Tier 1</label>
+                </value>
+                <value>
+                    <fullName>Tier 2</fullName>
+                    <default>false</default>
+                    <label>Tier 2</label>
+                </value>
+                <value>
+                    <fullName>Tier 3</fullName>
+                    <default>false</default>
+                    <label>Tier 3</label>
+                </value>
+                <value>
+                    <fullName>Tier 4</fullName>
+                    <default>false</default>
+                    <label>Tier 4</label>
+                </value>
+                <value>
+                    <fullName>ROW</fullName>
+                    <default>false</default>
+                    <label>ROW</label>
+                </value>
+                <value>
+                    <fullName>Top Opps</fullName>
+                    <default>false</default>
+                    <label>Top Opps</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Unique_Project_Number__c</fullName>
+        <displayFormat>Proj-{0000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Unique Project Number</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Update_PSO__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/IPS/apex/Core_IPS_UpdatePSO_Page?id=&quot;&amp;Id,&quot;Click Here&quot;,&quot;_top&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Update PSO</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MPNDA__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>An Multiparty Non-Disclosure Agreement is mandatory when more than one Account is added to a project. Use N/A when only one Account is added.</inlineHelpText>
+        <label>MPNDA</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Number_of_Accounts__c</fullName>
+        <label>Number of Accounts</label>
+        <summaryForeignKey>Core_IPS_Account__c.Core_IPS_Project__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_Number_of_Opportunities__c</fullName>
+        <label>Number of Opportunities</label>
+        <summaryForeignKey>Core_IPS_Opportunity__c.Core_IPS_Project__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_Number_of_Products__c</fullName>
+        <label>Number of Products</label>
+        <summaryForeignKey>Core_IPS_Product__c.Core_IPS_Project__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_Number_of_Users__c</fullName>
+        <label>Number of Active Member</label>
+        <summaryFilterItems>
+            <field>Core_IPS_Project_Member__c.Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_IPS_Project_Member__c.Core_IPS_Project__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Description__c</fullName>
+        <label>Project Description</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Status__c</fullName>
+        <label>Status</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Submitted Pending</fullName>
+                    <default>false</default>
+                    <label>Submitted Pending</label>
+                </value>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Intel_Support_Team_Count__c</fullName>
+        <description>To count number of intel support members</description>
+        <label>Number of Active IST</label>
+        <summaryFilterItems>
+            <field>Core_IPS_Intel_Support_Team__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_IPS_Intel_Support_Team__c.Core_IPS_Project__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sub_Region__c</fullName>
+        <label>Sub Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Region__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ANZ</fullName>
+                    <default>false</default>
+                    <label>ANZ</label>
+                </value>
+                <value>
+                    <fullName>CEE</fullName>
+                    <default>false</default>
+                    <label>CEE</label>
+                </value>
+                <value>
+                    <fullName>CER</fullName>
+                    <default>false</default>
+                    <label>CER</label>
+                </value>
+                <value>
+                    <fullName>IJKK</fullName>
+                    <default>false</default>
+                    <label>IJKK</label>
+                </value>
+                <value>
+                    <fullName>KOREA</fullName>
+                    <default>false</default>
+                    <label>KOREA</label>
+                </value>
+                <value>
+                    <fullName>LAR</fullName>
+                    <default>false</default>
+                    <label>LAR</label>
+                </value>
+                <value>
+                    <fullName>META</fullName>
+                    <default>false</default>
+                    <label>META</label>
+                </value>
+                <value>
+                    <fullName>NAR</fullName>
+                    <default>false</default>
+                    <label>NAR</label>
+                </value>
+                <value>
+                    <fullName>NEUR</fullName>
+                    <default>false</default>
+                    <label>NEUR</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>RCIS</fullName>
+                    <default>false</default>
+                    <label>RCIS</label>
+                </value>
+                <value>
+                    <fullName>ROA</fullName>
+                    <default>false</default>
+                    <label>ROA</label>
+                </value>
+                <value>
+                    <fullName>SA</fullName>
+                    <default>false</default>
+                    <label>SA</label>
+                </value>
+                <value>
+                    <fullName>SEA</fullName>
+                    <default>false</default>
+                    <label>SEA</label>
+                </value>
+                <value>
+                    <fullName>SEUR</fullName>
+                    <default>false</default>
+                    <label>SEUR</label>
+                </value>
+                <value>
+                    <fullName>TAIWAN</fullName>
+                    <default>false</default>
+                    <label>TAIWAN</label>
+                </value>
+                <value>
+                    <fullName>WEUR</fullName>
+                    <default>false</default>
+                    <label>WEUR</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>ANZ</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>IJKK</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>KOREA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>ROA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>SA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>SEA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>TAIWAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>LAR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>NAR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>CEE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>CER</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>META</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>NEUR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>RCIS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>SEUR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEA</controllingFieldValue>
+                <valueName>WEUR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PRC</controllingFieldValue>
+                <valueName>PRC</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <label>Premier Support Project</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Project_ID__c</columns>
+        <columns>Core_IPS_GroupId__c</columns>
+        <columns>Core_MPNDA__c</columns>
+        <columns>Core_Number_of_Accounts__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Core_Number_of_Products__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Core_Status__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_Projects_Active</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Project_ID__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_MPNDA__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <filters>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Active Projects</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All_Projects_External</fullName>
+        <columns>Core_IPS_Project_ID__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Project_Description__c</columns>
+        <columns>Core_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+        <label>All Projects</label>
+        <sharedTo>
+            <allPartnerUsers></allPartnerUsers>
+            <group>Core_PG_IPS_External_Customer</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_000_Core_IPS_Project</fullName>
+        <columns>NAME</columns>
+        <filterScope>Queue</filterScope>
+        <label>IPS - Org - Test Org 0</label>
+        <language>en_US</language>
+        <queue>Core_IPS_Org_000</queue>
+        <sharedTo>
+            <group>Core_IPS_Org_000</group>
+            <group>Core_IPS_Org_014</group>
+            <group>Core_PG_IT_Admin</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>Premier Support Project Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Premier Support Projects</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Active</fullName>
+        <active>true</active>
+        <label>Active</label>
+        <picklistValues>
+            <picklist>Core_IPS_Support_Level__c</picklist>
+            <values>
+                <fullName>ROW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier 4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Top Opps</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Region__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Region__c</picklist>
+            <values>
+                <fullName>ANZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CEE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>META</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEUR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RCIS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ROA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEUR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TAIWAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WEUR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_IPS_Project_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Project_Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Project_ID__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Project_ID__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Core_MPNDA__c</searchFilterFields>
+        <searchFilterFields>Core_Status__c</searchFilterFields>
+        <searchFilterFields>OWNER.FIRST_NAME</searchFilterFields>
+        <searchFilterFields>OWNER.LAST_NAME</searchFilterFields>
+        <searchFilterFields>CREATEDBY_USER</searchFilterFields>
+        <searchFilterFields>CREATED_DATE</searchFilterFields>
+        <searchFilterFields>Core_IPS_Legacy_Collab_Team_ID__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_IPS_Project_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>CORE_IPS_INTELSUPPORTTEAM_COUNT</fullName>
+        <active>true</active>
+        <description>To display error message when intel support team count is exceeded 50</description>
+        <errorConditionFormula>AND( 
+		ISCHANGED(Core_IPS_Enable_ISTasInterested_Parties__c),
+  Core_IPS_Enable_ISTasInterested_Parties__c = TRUE, 
+		Intel_Support_Team_Count__c &gt;50
+)</errorConditionFormula>
+        <errorMessage>Cannot enable more than 50 IST members in bulk. Please enable them individually from related records</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CORE_IPS_PROJECTMEMBER_COUNT</fullName>
+        <active>true</active>
+        <description>To Display error message when project member count  is exceeded 50</description>
+        <errorConditionFormula>AND( 
+		ISCHANGED(Core_IPS_EnableMemberasInterestedParties__c),
+		Core_IPS_EnableMemberasInterestedParties__c = TRUE, 
+		Core_Number_of_Users__c &gt; 50
+)</errorConditionFormula>
+        <errorMessage>Cannot enable more than 50 Project members in bulk. Please enable them individually from related records</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_PreventCheckingPrivate</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED( Core_IPS_Private__c ) &amp;&amp; $User.Id !=  OwnerId &amp;&amp;  ISPICKVAL( Core_Status__c , &apos;Draft&apos;) &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_System_Admin_Profile_Name &amp;&amp;  
+$Profile.Name &lt;&gt; $Label.Core_IPS_IT_Admin_Profile &amp;&amp; $Setup.Core_IPS_Run_Rules_Exception_Admin__c.Run_Validation_Rule__c</errorConditionFormula>
+        <errorMessage>Only an Intel Project Owner may edit the Private setting</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Private_Project_Owner_Check</fullName>
+        <active>true</active>
+        <description>Core_IPS_Private_Project_Owner_Check</description>
+        <errorConditionFormula>AND(Core_IPS_Private__c, 
+								NOT(
+								    OR(
+																CONTAINS($Label.Core_IPS_Agent_Profile_Ids, LEFT( Owner:User.ProfileId , 15)),
+											    	CONTAINS($Label.Core_IPS_Agent_Partner_Profile_id, LEFT( Owner:User.ProfileId , 15))
+												)
+								 ),
+				    OR( 
+												ISCHANGED( Core_Status__c),
+											 ISCHANGED( OwnerId )
+								  ),
+				    OR( 
+												ISPICKVAL( Core_Status__c, &quot;Active&quot;),
+											 ISPICKVAL( Core_Status__c, &quot;Submitted Pending&quot;)
+								   )
+							)</errorConditionFormula>
+        <errorMessage>The Owner of a Private Project must be an IPS Agent in order to set the Status to Active.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Project_MPNDA_Mandatory</fullName>
+        <active>true</active>
+        <description>MPNDA is mandatory on addition of more than one Account</description>
+        <errorConditionFormula>AND(Core_Number_of_Accounts__c &gt;1,ISBLANK(Core_MPNDA__c ) )</errorConditionFormula>
+        <errorMessage>A valid MPNDA is required prior to adding secondary Accounts to a Premier Support Project</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Project_StatusAtProjCreate</fullName>
+        <active>true</active>
+        <description>Project Status should not be other than Draft at the time of creation of Project</description>
+        <errorConditionFormula>AND (ISNEW(), NOT(ISPICKVAL(PRIORVALUE(Core_Status__c), &quot;Draft&quot;)),TEXT($User.UserType)!=$Label.Core_IPS_Partner_Community_User_Type,TEXT($User.UserType)!= $Label.Core_IPS_CustCommPlus_UserType )</errorConditionFormula>
+        <errorMessage>Status must be set to Draft when creating a Project</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Project_Status_field_edit</fullName>
+        <active>true</active>
+        <description>Project status field can&apos;t be changed to &quot;Draft&quot; value once the project record is active</description>
+        <errorConditionFormula>AND(
+$Profile.Name!=$Label.Core_IPS_DataMigration_ProfileName,
+ISCHANGED(Core_Status__c),
+NOT(ISPICKVAL(PRIORVALUE(Core_Status__c), &quot;Draft&quot;)),
+ISPICKVAL(Core_Status__c, &quot;Draft&quot;)
+)</errorConditionFormula>
+        <errorDisplayField>Core_Status__c</errorDisplayField>
+        <errorMessage>Project Status value can&apos;t be changed to Draft once the project is active.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Restrict_Changing_Private</fullName>
+        <active>true</active>
+        <description>This is to Restrict Changing the Private Checkbox When the Project is not in Draft Status</description>
+        <errorConditionFormula>ISCHANGED( Core_IPS_Private__c ) &amp;&amp; NOT(  ISPICKVAL(Core_Status__c , &apos;DRAFT&apos;)) &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name</errorConditionFormula>
+        <errorMessage>Premier Support Projects must be in the Draft state when being set to Private</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SubRegionNotNullIfRegionExistedOnNewProj</fullName>
+        <active>true</active>
+        <description>Sub-Region is required when creating / Updating the Project with a specified Region</description>
+        <errorConditionFormula>AND(
+NOT(ISBLANK(TEXT(Region__c))),
+ISBLANK(TEXT(Sub_Region__c)),
+NOT(ISCHANGED(Core_Number_of_Products__c)),
+NOT(ISCHANGED(Core_Number_of_Users__c))
+)</errorConditionFormula>
+        <errorDisplayField>Sub_Region__c</errorDisplayField>
+        <errorMessage>Sub-Region is required when creating / Updating the Project with a specified Region</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_IPS_Update_Support_Owners</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Update Support Owners</masterLabel>
+        <openType>noSidebar</openType>
+        <page>Core_IPS_AddProjSupportOwner</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>core_Submit</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Submit</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_IPS_submitProject</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

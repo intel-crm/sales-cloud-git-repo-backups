@@ -1,0 +1,90 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "078b5b58-ab23-4505-8e85-e8588811d7e4",
+  "label" : "Campaign Detail",
+  "regions" : [ {
+    "id" : "9c72c6ca-e16b-4fde-88c2-1773fd8f9005",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "ff8cb061-93a6-4219-830f-201238e6cd8f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3a530a70-cf4c-483c-bc18-6ee240f92c04",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "97bc8059-eb15-48cc-9b93-09b03ffe3816",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bab4cbf7-5151-438a-9a0f-96591e5a1c86",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "3d7299a1-65b4-4a6b-88fb-212c183a11d4",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "b0840df8-6c7f-4bc2-9cd5-b2bdcfcfadb4",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "180fec39-b21a-4d0f-bdc0-37ce48ed8db5",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "ced1ea16-9cae-41da-a367-9c0a11b26fbd",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "95f37f87-c694-45e1-9616-f9d702e8a7d0",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "8ce86174-f466-46cd-924e-fa21de3c804f",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "282c60aa-a2c5-48b3-9b0a-c5840b1bcc30",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "4a423e8c-5bce-4f21-9fd3-aae17b34a64d",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "56519a3d-dd13-4940-a120-1386b870bd0c",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "0e25cac9-bca5-43ba-8ed6-750d5045d595",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "ce9d4129-f3da-4156-8c29-84a958474f54",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "6e96e894-7572-4bfe-9549-5a4ea72dec32",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "77a68492-1a21-4ffe-b30a-65a8e54b3ac8",
+    "regionName" : "blade9",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "detail-701"
+}

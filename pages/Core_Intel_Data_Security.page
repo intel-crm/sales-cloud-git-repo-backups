@@ -1,0 +1,11 @@
+<apex:page showHeader="false" sidebar="false"  lightningStylesheets="true">
+<apex:slds /> 
+    <!-- Insert style sheet references here -->
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
+    <!-- End stylesheet references -->
+    
+    <!--Not Approved for Restricted Secret-Level or Higher  -->
+    * Sales CRM is not approved for content that is classified Intel Top Secret (ITS).
+    For exceptions access this <a href="/apex/Core_Intel_Confidential_Exceptions" target="_top">link</a>.
+</apex:page>

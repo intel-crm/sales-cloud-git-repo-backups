@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Milestone Map</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Milestone Map</value>
+    </caseValues>
+    <fields>
+        <label><!-- New Area --></label>
+        <name>Core_New_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Focus --></label>
+        <name>Core_New_Focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Use Case --></label>
+        <name>Core_New_Use_Case__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Area --></label>
+        <name>Core_Old_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Focus --></label>
+        <name>Core_Old_Focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Use Case --></label>
+        <name>Core_Old_Use_Case__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

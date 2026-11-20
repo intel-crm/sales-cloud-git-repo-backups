@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-06-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <Lightning-layout>
+        <lightning-layout-item>
+            <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
+                <div class="slds-p-left_xx-small">
+                    <lightning-button-icon variant="brand" icon-name="utility:download" alternative-text={exportBtnLbl}
+                        onclick={handleExport} disabled={isDataAvailable} class="slds-button">
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </lightning-layout-item>
+    </Lightning-layout>
+
+</template>

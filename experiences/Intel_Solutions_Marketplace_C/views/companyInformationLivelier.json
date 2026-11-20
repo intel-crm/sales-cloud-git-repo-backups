@@ -1,0 +1,140 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "0333fee7-060b-47d1-8904-8de6bb43e150",
+  "label" : "Company Information livelier",
+  "regions" : [ {
+    "id" : "b0bd41b6-15c3-49a3-bf63-67e788612ce2",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "2385d07c-6077-47cf-aa5f-99ccdf6ca722",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8c6a6826-fd87-43d8-92f7-fcef6fd7dbf6",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"PartnerDetailPage\",\"title\":\"PartnerDetail Page\"}",
+        "communityName" : "Marketplace",
+        "includeCanonical" : true
+      },
+      "componentName" : "c:ipaBreadcrumbsAnalytics",
+      "id" : "654e66a3-e757-4cf0-8e09-cb15db582033",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "142cfffb-d371-4cfd-af00-c9a5572f89bd",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "48ae5a35-d175-4c90-84d4-219799a7af2a",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "1a736970-772a-4799-b710-563d1ad31700",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "3719c916-88e4-43b5-8c8d-a382c42b9ad1",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:ipaStorefrontDetail",
+      "id" : "0d54172c-f4b5-4546-811f-f0900cb32bb7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "ctaCommPage" : "",
+        "ctaExternalURL" : "",
+        "theme" : "dark"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "0ff17015-787e-4dbf-94a7-ff38a11a86cc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "80df5b9d-cb4f-4f11-ba01-c907302e5b24",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "3bc3ae50-255a-4c71-8dc5-b331ce1f1126",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6fde20dc-3de1-4121-85cc-cfa0b6f222f6",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "cda66028-fc31-4a1f-a871-7a54f2a5a4fd",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "500b4d2e-34c9-471c-9928-2d5ba577c2c1",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "7e597148-25e1-4f18-b07f-7d280b9a9a0b",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "a7beb289-3e36-4866-b1d1-d4ca890cc2d6",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "3de01017-7e53-4176-b2df-7cbce987c0a9",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "id" : "f60d1e4b-aae8-439c-8cde-78ea857fd277",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "View partner details from {!Record._Title} on Intel® Solutions Marketplace.",
+        "title" : "{!Record._Title} - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "342db850-5b86-4627-9bbd-8a48921305fd",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "44ed037c-47d2-4b10-bf9b-728217d9852a",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "detail-a5S"
+}

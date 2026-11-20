@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_7870234</developerName>
+        <masterLabel>IOTG Segment</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Core_Vertical_Market__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Retail &amp; Hospitality</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Education</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Financial Services / Banking</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hospitality</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Small Medium Business</sourceValue>
+            </sourceValues>
+            <value>RBHE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Manufacturing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manufacturing / Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Energy (Utilities, Oil &amp; Gas, Solar &amp; Wind)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Energy (Oil &amp; Gas, Utilities, Solar &amp; Wind)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <value>ISD</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Health and Life Sciences</sourceValue>
+            </sourceValues>
+            <value>Healthcare</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Transportation</sourceValue>
+            </sourceValues>
+            <value>Transportation</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Smart Cities</sourceValue>
+            </sourceValues>
+            <value>DSS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Automotive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cloud Service Providers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Comms Service Providers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Consumer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Federal and Aerospace</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Government</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Service Providers (Cloud and Comms)</sourceValue>
+            </sourceValues>
+            <value>Don&apos;t put</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Distributor__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Embedded / IOT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>IOTG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yang Chen,Yan Chang</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner_Email_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>wei.da.liu@intel.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>OPP  Analysis-create in 2021&amp;2022</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2021-01-01</startDate>
+    </timeFrameFilter>
+</Report>

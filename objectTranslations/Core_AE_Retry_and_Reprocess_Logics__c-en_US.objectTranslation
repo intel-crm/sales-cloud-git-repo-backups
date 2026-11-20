@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>A&amp;E Retry and Reprocess Logics</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>A&amp;E Retry and Reprocess Logics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Error Contains --></label>
+        <name>Core_Error_Contains__c</name>
+    </fields>
+    <fields>
+        <label><!-- Logic Name --></label>
+        <name>Core_Logic_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum Attempts --></label>
+        <name>Core_Maximum_Attempts__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

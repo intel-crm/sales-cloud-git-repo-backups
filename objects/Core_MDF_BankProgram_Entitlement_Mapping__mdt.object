@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This will contain the mapping between the Bank Program name and the Entitlement Name.</description>
+    <fields>
+        <fullName>Core_MDF_Bank_Program_Name__c</fullName>
+        <description>This will contain the program name from the Bank object.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Bank Program Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Entitlement_Name__c</fullName>
+        <description>This will contain the name of the Entitlement that will be searched in the Contact Entitlement records.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Permission_Set_Name__c</fullName>
+        <description>This will contain the name of the Permission Set for CCF/DCF.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Permission Set Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>BankProgram Entitlement Mapping</label>
+    <listViews>
+        <fullName>All_fields</fullName>
+        <columns>Core_MDF_Bank_Program_Name__c</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>Core_MDF_Entitlement_Name__c</columns>
+        <columns>Core_MDF_Permission_Set_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All fields</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>BankProgram Entitlement Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

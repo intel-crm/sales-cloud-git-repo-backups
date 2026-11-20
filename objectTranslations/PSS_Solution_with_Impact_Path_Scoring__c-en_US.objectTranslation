@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution with Impact Path Scoring</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution with Impact Path Scorings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Impact Path Scoring Criteria --></label>
+        <name>PSS_Impact_Path_Scoring_Criteria__c</name>
+        <relationshipLabel><!-- Solution with Impact Path Scorings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Impact Path Score --></label>
+        <name>PSS_Question_Impact_Path_Score__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

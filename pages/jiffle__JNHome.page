@@ -1,0 +1,68 @@
+<apex:page >
+    <apex:include pageName="jiffle__JNSFClassicCSSReset" />
+    <apex:include pageName="jiffle__JNGlobals" />
+    <script>
+			if(!window._showCookieBanner){
+				(function (w, s, d, r, e, n) {
+					(w[s] = w[s] || {
+						readyListeners: [],
+						onReady: function (e) {
+							w[s].readyListeners.push(e);
+						},
+					}),
+						((e = d.createElement('script')).async = 1),
+						(e.src = r),
+						(n = d.getElementsByTagName('script')[0]).parentNode.insertBefore(e, n);
+				})(
+					window,
+					'sumoLogicOpenTelemetryRum',
+					document,
+					'https://rum.sumologic.com/sumologic-rum-v4.3.0.js', // pin the exact version
+				);
+				window.sumoLogicOpenTelemetryRum.onReady(function () {
+					window.sumoLogicOpenTelemetryRum.initialize({
+						collectionSourceUrl: 'https://rum-collectors.us2.sumologic.com/receiver/v1/rum/ZaVnC4dhaV1xcxtnhTxWrqLR55w7QiN03imiO4baKP-2DA4O6Y_1BgGTGkQxL0umhjTBEIH2UfAFXjEJD3k8BGaXb9YGRq7cX-tW1Iegf33PeeVQueatkQ==',
+						serviceName: 'selfserve',
+						applicationName: 'salesforce-app',
+						samplingProbability: 0, // 0 as we're not collecting traces for now.
+						collectErrors: false, // Collect manually using recordError() to avoid false positives.
+						defaultAttributes: {
+							package_version: window._packageVersion,
+          		company_base_url: window._sfJiffleCompanyBaseUrl,
+						}
+					});
+				});
+			}
+
+			window.CKEDITOR_BASEPATH = "{!URLFOR($Resource.uinextCkeditor, '/')}";
+		</script>
+    <style type="text/css">
+        html {
+            box-sizing: border-box;
+        }
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        body {
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .anchor-primary a {
+            color: #0096ff;
+        }
+
+        .menuButton.jiffleZIndexOverride {
+            z-index: 0;
+        }
+        
+    </style>
+    <div class="selfserve-ui">
+        <div id="root"></div>
+    </div>
+    <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.selfserve, 'main.js')}"></script>
+</apex:page>

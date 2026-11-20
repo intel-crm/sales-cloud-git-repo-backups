@@ -1,0 +1,35 @@
+<aura:component>
+
+    <aura:attribute name="iconType" type="String" default="lightning" description="Can be 'lightning', 'fontawesome','svg', or  'image'" />
+    <aura:attribute name="iconName" type="String" description="If 'lightning' or 'fontawesome' this is the name of the icon. If 'svg' this is the path within the resource." />
+    <aura:attribute name="svgResource" type="String" default="PMP_Resources" description="Used for 'svg' Icon Type To point to the resource file of the iconName" />
+    <aura:attribute name="imgUrl" type="String" description="Static image source URL" />
+
+    <aura:attribute name="iconColor" type="String" description="optional background color for icon"/>
+
+    <span class="{!join(' ', v.iconColor ? 'bg-' + v.iconColor : '', 'isgIcon')}">
+        <aura:if isTrue="{!v.iconType == 'lightning'}">
+            <lightning:icon class="lightningIcon" iconName="{!v.iconName}" />
+        </aura:if>
+
+        <aura:if isTrue="{!v.iconType == 'fontawesome'}">
+            <span class="recode50">
+                <span class="{!join(' ', 'icon', v.iconName)}" />
+            </span>
+        </aura:if>
+        <aura:if isTrue="{! v.iconType == 'svg'}">
+            <div class="svgImageContainer">
+                <img src="{! $Resource.PMP_Resources + v.iconName}" />
+            </div>
+        </aura:if>
+        <aura:if isTrue="{!v.imgUrl}">
+            <div class="iconImageContainer">
+                <img src="{!v.imgUrl}" />
+            </div>
+        </aura:if>
+
+
+    </span>
+
+
+</aura:component>

@@ -1,0 +1,52 @@
+.THIS .pill {
+  border-radius: 4px;
+  border: 1px solid t(lightestGray);
+  font-size: 0.875em;
+}
+.THIS .pillContainer {
+  margin-top: 0.75em;
+}
+.THIS .pillContainer:not(:first-child) {
+  margin-left: 0.75em;
+}
+
+.THIS .pill .slds-icon {
+  cursor: pointer;
+  transform: translateY(-1px);
+  width: 1em;
+  fill : #0071c5;
+}
+
+.THIS .slds-combobox input {
+  font-size: 0.82em;
+}
+
+.THIS .slds-combobox .slds-icon-utility-down .slds-icon {
+  height: 0.8em;
+  width: 0.8em;
+  fill: t(darkGray); /*Fixed as part of UAT Issue*/
+}
+
+.THIS .slds-combobox .slds-listbox__option-icon .slds-icon {
+  height: 1.2em;
+  width: 1.2em;
+}
+.THIS .slds-combobox .slds-listbox__option-icon .slds-icon use {
+  fill: t(blue);
+}
+
+/* for required multipicklist */
+.THIS .isRequired label::before {
+  color: t(sfRedError);
+  content: '*';
+  margin-right: 4px;
+}
+
+.THIS .slds-combobox .errorMessage {
+  color: t(sfRedError);
+  font-size: 0.75em;
+}
+
+.THIS div.slds-listbox__option.highlight {
+  background: #B4D5FE !important;
+}

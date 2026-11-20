@@ -1,0 +1,12 @@
+<apex:page StandardController="Core_Design_Registration_Product__c">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <apex:form >
+        <apex:outputPanel >
+            <h2 style="font-weight:bold;font-size:medium;font-size:14px;text-align: -webkit-center;">
+                <apex:pageMessage id="msg" escape="0" summary="{!$Label.Target_Resale_Price_Message}" severity="WARNING" strength="2"/>
+            </h2>
+        </apex:outputPanel>
+        
+    </apex:form>
+</apex:page>

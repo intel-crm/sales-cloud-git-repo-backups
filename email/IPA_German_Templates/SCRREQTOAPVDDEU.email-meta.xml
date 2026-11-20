@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDDEU</name>
+    <style>none</style>
+    <subject>Herzlichen Glückwunsch zu Ihrem neuen Intel® Cloud Insider-Status</subject>
+    <textOnly>Ihr Antrag wurde genehmigt!
+
+Willkommen. {!Account.Name} ist ab sofort Mitglied bei Intel® Cloud Insider! Unter intel.com/cloudinsider finden Sie Marketingmaterialien, Verkaufstools und weitere Informationen zu Ihren Sonderleistungen. Wenn Sie Ihrem Konto einen Kollegen hinzufügen möchten, rufen Sie dazu bitte Ihr Firmenprofil unter Mein Konto auf. {!$Label.PRM_MyIntelProfileURL}
+
+
+Fragen? Wenden Sie sich bitte unter programs@intel.com an den Support für Intel® Cloud Insider oder hier
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. Alle Rechte vorbehalten. Intel und das Intel-Logo sind Marken der Intel Corporation oder ihrer Tochtergesellschaften in den USA und/oder anderen Ländern.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Sie können sich jederzeit abmelden, indem Sie Ihre Profileinstellungen unter  {!$Label.PRM_MyIntelProfileURL} aktualisieren.
+Datenschutz | Cookies | *Marken</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

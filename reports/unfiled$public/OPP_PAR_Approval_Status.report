@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Opportunity__c.Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Core_IPS_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Core_IPS_Supported_ProductsName__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Core_IPS_Request_Justification__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Core_IPS_Premier_Support_Project__c.Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Core_IPS_Premier_Support_Project__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c$Core_IPS_Support_Org__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>OPP-PAR Approval Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity_Par__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_IPS_Opportunity_PAR__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

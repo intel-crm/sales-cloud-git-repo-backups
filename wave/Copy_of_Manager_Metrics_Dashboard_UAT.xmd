@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <field>lens_12.Manager_nm</field>
+        <isDerived>false</isDerived>
+        <label>Manager Name</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Confidence_Snapshot__1.Manager_nm</field>
+        <isDerived>false</isDerived>
+        <label>Manager Name</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_10.Manager_nm</field>
+        <isDerived>false</isDerived>
+        <label>Manager Name</label>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_9.Snapshot_Date_Month</field>
+        <isDerived>false</isDerived>
+        <label>Month</label>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_13.Snapshot_Date_Month</field>
+        <isDerived>false</isDerived>
+        <label>Month</label>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_13.Manager_nm</field>
+        <isDerived>false</isDerived>
+        <label>Manager Name</label>
+        <sortIndex>5</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Last_Month_Metric_1.Manager_nm</field>
+        <isDerived>false</isDerived>
+        <label>Manager Name</label>
+        <sortIndex>6</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>D</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_1.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>7</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_1.C</field>
+        <isDerived>false</isDerived>
+        <sortIndex>8</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>actual_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_1.actual_color</field>
+        <isDerived>false</isDerived>
+        <sortIndex>9</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>D</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Metris_details_1.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>10</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>A</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Commit_Snapshot_Deta_1.C</field>
+        <isDerived>false</isDerived>
+        <sortIndex>11</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_15.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>12</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_15.Manager_nm</field>
+        <isDerived>false</isDerived>
+        <label>Manager Name</label>
+        <sortIndex>13</sortIndex>
+    </dimensions>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_12.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_12.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Confidence_Snapshot__1.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Confidence_Snapshot__1.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_11.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_11.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>5</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_10.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>6</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_10.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>7</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_9.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>8</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_9.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>9</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_14.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>10</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_13.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>11</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Last_Month_Metric_1.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>12</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1.Delta</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>13</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>actual_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_1.Actual</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>14</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>actual_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Metris_details_1.Actual</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>15</sortIndex>
+    </measures>
+    <measures>
+        <field>Metris_details_1.Delta</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>16</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Commit_Snapshot_Deta_1.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>17</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>text_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_15.Metric</field>
+        <formatCustomFormat>[&quot;#%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>18</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Copy_of_Manager_Metrics_Dashboard_UAT</waveVisualization>
+</WaveXmd>

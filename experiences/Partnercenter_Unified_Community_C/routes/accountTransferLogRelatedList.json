@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "4b3b8d9e-bdec-4400-871d-b967f6ee35fa",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Account_Transfer_Log_Related_List__c",
+  "id" : "077cfc12-a347-4161-9be1-01fee8ff717c",
+  "label" : "Account Transfer Log Related List",
+  "objectApiName" : "Core_MDF_Budget_Transfer_Log__c",
+  "routeType" : "relatedlist-a3g",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-budget-transfer-log"
+}

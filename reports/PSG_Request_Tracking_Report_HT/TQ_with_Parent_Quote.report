@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>SBQQ__QuoteLine__c.core_cpq_navigate_to_dw__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.core_cpq_quote_type_nm__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.core_cpq_active_cb__c</field>
+    </columns>
+    <description>To find out parent quote number of each TQs.</description>
+    <filter>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.core_cpq_quote_type_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Transfer Pricing</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>PBI Data TQ with Parent Quote#</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$SBQQ__Quote__c$SBQQ__QuoteLine__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SBQQ__Quote__c.core_cpq_approved_on_dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ISVC Integration Warranty</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ISVC Integration Warranties</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>PRM_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID AWR --></label>
+        <name>PRM_OPIDAWR__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID SLA --></label>
+        <name>PRM_OPIDSLA__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID SWR --></label>
+        <name>PRM_OPIDSWR__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PRM_One_Partner_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

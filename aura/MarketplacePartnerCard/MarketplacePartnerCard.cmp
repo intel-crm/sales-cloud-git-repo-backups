@@ -1,0 +1,282 @@
+<aura:component controller="PMP_SearchMarketplaceController" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome">
+    
+    <aura:attribute name="minHeight" type="Integer" default="0" />
+    <aura:attribute name="buttonFooterminHeight" type="Integer" default="0" />
+    <aura:attribute name="storeName" type="string" default="Search" />
+    <aura:attribute name="displayType" type="String" default="" />
+    <aura:attribute name="partner" type="Object" />
+    <aura:attribute name="product" type="Object" />
+    
+    <aura:attribute name="isCompanyInformation" type="boolean" default="false"/> <!-- added by kartik as part of defect DE77473 -->
+    
+    <aura:attribute name="mdaId" type="string" default="" />
+    <aura:attribute name="isProductCard" type="boolean" default="false" />
+    
+    <aura:attribute name="id" type="String" default="" />
+    <aura:attribute name="showType" type="boolean" default="false" />
+    <aura:attribute name="imageUrl" type="String" default="https://www.intel.com/content/dam/products/hero/foreground/p4800x-2-5-inch-front-flat-16x9.png.rendition.intel.web.181.102.png" />
+    <aura:attribute name="title" type="String" default="Title" />
+    <aura:attribute name="description" type="String" default="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel blandit nunc. Ut ut consequat." />
+    <!--<aura:attribute name="attributes" type="Object[]" default="[
+      {specialty:'Category', types: ['Cloud', 'IOT', 'Education']},
+      {specialty:'Program Membership', types: ['Lorem Ipsum']},
+        ]"/>-->
+    <aura:attribute name="attributes" type="Object[]" />
+    <aura:attribute name="dataObj" type="Object" default="{id: '', contactByEmail: false, contactByForm: true, requestAQuote: false}"/>
+    
+    <!-- Optional Display Controls -->
+    <aura:attribute name="displayAttributes" type="boolean" default="true" />
+    <aura:attribute name="displayContactPartner" type="boolean" default="true" />
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="displayAllCompanyOffering" type="boolean" default="false" /> -->
+    <aura:attribute name="displayCardDescription" type="boolean" default="false" />
+    <!-- Optional Card Attribute Count Limit -->
+    <aura:attribute name="enableAttributeCountLimit" type="boolean" default="true" />
+    <aura:attribute name="attributeCountLimit" type="Integer" default="2" />
+    
+    <aura:attribute name="editEnabled" type="boolean" default="false" />
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="allOfferingsUrl" type="string" /> -->
+    <aura:attribute name="orientation" type="String" default="stretchWidth" description="internal" />
+    
+    <aura:attribute name="renderAttribute" type="boolean" default="false" description="Internal Render Delay"/>
+    <aura:attribute name="onImageLoaded" type="Object" description="Event that fires after product image has loaded. Mainly used by CardList for min height"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="userDetails" type="object" />
+    
+    
+    <div class="{! v.displayType  + ' partnerItem flexCol' }">
+        <div class="itemWrap" >
+            <div class="flexCol">
+                <aura:if isTrue="{!v.displayType == 'card'}">
+                    <div  class="itemWrap2" aura:id="itemWrap2">  <!-- style="{! 'min-height:'+(v.minHeight)+'px;'}"-->
+                        <div class="slds-grid slds-wrap slds-is-relative" >
+                            
+                            <aura:if isTrue="{!v.showType}">
+                                <div class="slds-size_12-of-12">
+                                       <div class="partnerTag"><!--Changed as part of US613071-->
+                                        {!$Label.c.PMP_Card_Partner}
+                                    </div>
+                                </div>
+                            </aura:if>
+                            
+                            <div class="media slds-m-bottom_medium slds-size_12-of-12">
+                                <div class="mediaWrap">
+                                    <!-- TODO USE recordId and objectApiName once record pages are setup
+        <c:IntelLink recordId="{!v.id}" objectApiName="PMP_partner__c">
+         <img src="{!v.imageUrl}" alt="" />
+        </c:IntelLink> -->
+                                    <c:IntelLink recordId="{!v.partner.id}" objectApiName="PMP_Company__c" >
+                                        <div class="{!join(' ', 'imageContainer', v.orientation)}">
+                                            <img src="{!v.imageUrl}" alt="" onload="{!c.handleOnImageLoad}"/>
+                                        </div>
+                                    </c:IntelLink>
+                                </div>
+                            </div>
+                        </div>
+                        <aura:if isTrue="{!or (v.title, v.displayCardDescription)}">
+                           <div class="slds-m-bottom_medium indent slds-size_12-of-12">
+                                <aura:if isTrue="{!v.title}">
+                                    <h3 class="intel-clear-light slds-m-bottom_medium hideTextOverflow">
+                                        <!-- TODO USE recordId and objectApiName once record pages are setup
+                                              <c:IntelLink recordId="{!v.id}" objectApiName="Pmp partner__c">
+                                               <img src="{!v.imageUrl}" alt="" />
+                                              </c:IntelLink> -->
+                                        
+                                        <c:IntelLink  label="{!v.title}"  recordId="{!v.partner.id}" objectApiName="PMP_Company__c" 
+                                                     class="intel-clear-light " truncate="50"/>
+                                    </h3>
+                                </aura:if>
+                                <aura:if isTrue="{!v.displayCardDescription}">
+                                    <aura:if isTrue="{! !empty(v.description) }">
+                                        <div class="slds-m-bottom_medium descriptionBlock hideTextOverflow">
+                                            <lightning:formattedRichText value="{!v.description}" />
+                                        </div>
+                                    </aura:if>
+                                    
+                                    <!-- Optional List Feature -->
+                                    <aura:if isTrue="{! and(empty(v.description), !empty(v.dataObj.featureList))}">
+                                        <div class="featureList">
+                                            <ul>
+                                                <aura:iteration items="{!v.dataObj.featureList}" var="featureItemList"
+                                                                indexVar="idx1">
+                                                    
+                                                    <aura:if isTrue="{! 3 > idx1 }">
+                                                        <li>
+                                                            <aura:iteration items="{!featureItemList}" var="item"
+                                                                            indexVar="idx">
+                                                                <aura:if
+                                                                         isTrue="{! or (!v.enableAttributeCountLimit, v.attributeCountLimit >= idx+1 )}">
+                                                                    {! idx > 0 ? ', ': ''} {! item }
+                                                                    <aura:if
+                                                                             isTrue="{! and (v.enableAttributeCountLimit, idx+1 == v.attributeCountLimit, featureItemList.length > v.attributeCountLimit ) }">
+                                                                        <span class="countOver"> (+{!
+                                                                            featureItemList.length -
+                                                                            v.attributeCountLimit})</span>
+                                                                    </aura:if>
+                                                                </aura:if>
+                                                            </aura:iteration>
+                                                        </li>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                                <aura:if
+                                                         isTrue="{! and(v.dataObj.featureList, v.dataObj.featureList.length > 3)}">
+                                                    <li>...</li>
+                                                </aura:if>
+                                            </ul>
+                                        </div>
+                                    </aura:if>
+                                </aura:if>
+                            </div>
+                        </aura:if>
+                        <aura:if isTrue="{!and(v.displayAttributes, v.renderAttribute)}">
+                            <div class="slds-m-bottom_medium indent slds-size_12-of-12">
+                                <c:MarketplaceCardAttributes attributes="{!v.attributes}"
+                                                             editEnabled="{!v.editEnabled}"
+                                                             enableCountLimit="{!v.enableAttributeCountLimit}"
+                                                             countLimit="{!v.attributeCountLimit}"
+                                                             mdaId="{!v.mdaId}"
+                                                             isProductCard="false"
+                                                             isCompanyInformation="{!v.isCompanyInformation}"/>
+                            </div>
+                        </aura:if>
+                        
+                    </div>
+                    
+                    <div class="buttonFooter slds-size_12-of-12" aura:id="buttonFooter"> <!--style="{! 'min-height:'+(v.buttonFooterminHeight)+'px;'}"-->
+                        <aura:if isTrue="{!v.displayContactPartner}">
+                            <div class="indent slds-p-bottom_x-large slds-size_12-of-12" aura:id="cta">
+                                
+                                <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" isLoggedIn="{!!v.dataObj.isGuest}" languagePreference="{!v.partner.leadLangPreference}" dataObj="{!v.dataObj}" />
+                            </div>
+                        </aura:if>
+                        <!-- IPA2.0 + US TWC4497-1631 -->
+                        <!-- <aura:if isTrue="{!v.displayAllCompanyOffering}">
+                            <div class="indent slds-p-bottom_x-large slds-size_12-of-12" >
+                                <c:IntelButton communityLink="{!v.allOfferingsUrl}" class="full-width">
+                                    {!$Label.c.PMP_All_Company_Offerings}
+                                </c:IntelButton>
+                            </div>
+                        </aura:if> -->
+                    </div>
+                    
+                    
+                </aura:if>
+                
+                <aura:if isTrue="{!v.displayType == 'list'}">
+                    <aura:if isTrue="{!v.showType}">
+                        <div class="relative slds-size_12-of-12">
+                            <div class="partnerTag"><!--Changed as part of US613071-->
+                                {!$Label.c.PMP_Card_Partner}
+                            </div>
+                        </div>
+                    </aura:if>
+                    <!-- Show Split View Here ALso -->
+                    <div class="itemWrap2">
+                        <div class="slds-grid slds-wrap fill-height slds-wrap">
+                            <div class="slds-size_12-of-12 slds-medium-size_4-of-12">
+                                <div class="mediaWrap ">
+                                    <!-- TODO USE recordId and objectApiName once record pages are setup
+        <c:IntelLink recordId="{!v.id}" objectApiName="PMP_partner__c">
+         <img src="{!v.imageUrl}" alt="" />
+        </c:IntelLink> -->
+                                    <c:IntelLink   recordId="{!v.partner.id}" objectApiName="PMP_Company__c">
+                                        <div class="{!join(' ', 'imageContainer', v.orientation)}">
+                                            <img src="{!v.imageUrl}" alt="" />
+                                        </div>
+                                    </c:IntelLink>
+                                </div>
+                                
+                                <aura:if isTrue="{!and(v.displayContactPartner, v.renderAttribute)}">
+                                    <div class="slds-show--medium slds-m-top_medium">
+                                         <c:MarketplaceContactPartner isLoggedIn="{!!v.dataObj.isGuest}" languagePreference="{!v.partner.leadLangPreference}" dataObj="{!v.dataObj}"/>
+                                    </div>
+                                </aura:if>
+                            </div>
+                            <div class="indent slds-size_12-of-12 slds-medium-size_5-of-12">
+                                <aura:if isTrue="{!v.title}">
+                                    <h3 class="intel-clear-light slds-m-bottom_medium hideTextOverflow">
+                                        <!-- TODO USE recordId and objectApiName once record pages are setup
+         <c:IntelLink recordId="{!v.id}" objectApiName="partner__c">
+          <img src="{!v.imageUrl}" alt="" />
+         </c:IntelLink> -->
+                                        <c:IntelLink  label="{!v.title}"  recordId="{!v.partner.id}" objectApiName="PMP_Company__c" class="intel-clear-light" 
+                                                     truncate="50"/>
+                                    </h3>
+                                </aura:if>
+                                <aura:if isTrue="{!v.displayCardDescription}">
+                                <aura:if isTrue="{! !empty(v.description) }">
+                                    <div class="slds-m-bottom_medium descriptionBlock hideTextOverflow">
+                                        <lightning:formattedRichText value="{!v.description}" />
+                                    </div>
+                                </aura:if>
+                                
+                                <!-- Optional List Feature -->
+                                <aura:if isTrue="{! and(empty(v.description), !empty(v.dataObj.featureList))}">
+                                    <div class="featureList">
+                                        <ul>
+                                            <aura:iteration items="{!v.dataObj.featureList}" var="featureItemList"
+                                                            indexVar="idx1">
+                                                
+                                                <aura:if isTrue="{! 3 > idx1 }">
+                                                    <li>
+                                                        <aura:iteration items="{!featureItemList}" var="item"
+                                                                        indexVar="idx">
+                                                            <aura:if
+                                                                     isTrue="{! or (!v.enableAttributeCountLimit, v.attributeCountLimit >= idx+1 )}">
+                                                                {! idx > 0 ? ', ': ''} {! item }
+                                                                <aura:if
+                                                                         isTrue="{! and (v.enableAttributeCountLimit, idx+1 == v.attributeCountLimit, featureItemList.length > v.attributeCountLimit ) }">
+                                                                    <span class="countOver"> (+{! featureItemList.length
+                                                                        - v.attributeCountLimit})</span>
+                                                                </aura:if>
+                                                            </aura:if>
+                                                        </aura:iteration>
+                                                    </li>
+                                                </aura:if>
+                                            </aura:iteration>
+                                            <aura:if
+                                                     isTrue="{! and(v.dataObj.featureList, v.dataObj.featureList.length > 3)}">
+                                                <li>...</li>
+                                            </aura:if>
+                                        </ul>
+                                    </div>
+                                </aura:if>
+                                    </aura:if>
+                            </div>
+                            
+                            <div class="indent slds-size_12-of-12 slds-medium-size_3-of-12">
+                                <aura:if isTrue="{!and(v.displayAttributes, v.renderAttribute)}">
+                                    <c:MarketplaceCardAttributes attributes="{!v.attributes}" editEnabled="{!v.editEnabled}" partnerId = "{!v.id}"
+                                                                 enableCountLimit="{!v.enableAttributeCountLimit}"
+                                                                 countLimit="{!v.attributeCountLimit}"
+                                                                 isCompanyInformation="{!v.isCompanyInformation}"/>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!and(v.displayContactPartner, v.renderAttribute)}">
+                                    <div class="slds-hide--medium">
+                                        <c:MarketplaceContactPartner isLoggedIn="{!!v.dataObj.isGuest}" languagePreference="{!v.partner.leadLangPreference}" dataObj="{!v.dataObj}"/>
+                                    </div>
+                                </aura:if>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttonFooter" aura:id="buttonFooter"></div>
+                    
+                </aura:if>
+                
+            </div>
+        </div>
+        <div class="{!join(' ', 'intelOnlyFooter')}">  <!--, v.displayType == 'list' ? 'slds-hide' : '')}"-->
+            <span class="slds-hidden">
+                <!-- SPACE FOR EQUAL FOOTER w/ PRODUCT CARD -->
+                 <!-- PMP_Offer_Only_Visible_in_Intel -->
+                <!-- {!$Label.c.PMP_Offer_Only_Visible_in_Intel} -->
+            </span>
+        </div>
+    </div>
+    
+    
+    
+</aura:component>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>CPT_Quota_Period_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CPT_Quota_Period_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CPT_Quota_Period_Compact_Layout</fullName>
+        <fields>CPT_Quota_Period__c</fields>
+        <fields>CPT_Start_Date__c</fields>
+        <fields>CPT_End_Date__c</fields>
+        <fields>CPT_Locked_Status__c</fields>
+        <label>CPT Quota Period Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to store Commissionable Quota Periods. Each Period represents a window where the Manager will enter the Assignments and Quota Numbers for their Employees. There will be only one Period active at a time.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>CPT_End_Date__c</fullName>
+        <description>The End Date of the Quota Period.</description>
+        <label>End Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Inactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if the record is Inactive.</description>
+        <label>Inactive</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Locked_Status__c</fullName>
+        <description>No Lock: Everyone can update the Quota Setup Record.
+Soft Lock: Admin can update the Quota Setup Record.
+Hard Lock: No one can update the Quota Setup Record.</description>
+        <inlineHelpText>No Lock: Everyone can update the Quota Setup Record.
+Soft Lock: Admin can update the Quota Setup Record.
+Hard Lock: No one can update the Quota Setup Record.</inlineHelpText>
+        <label>Locked Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No Lock</fullName>
+                    <default>true</default>
+                    <label>No Lock</label>
+                </value>
+                <value>
+                    <fullName>Soft Lock</fullName>
+                    <default>false</default>
+                    <label>Soft Lock</label>
+                </value>
+                <value>
+                    <fullName>Hard Lock</fullName>
+                    <default>false</default>
+                    <label>Hard Lock</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Quota_Period__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Unique Name given to the Quota Period.</description>
+        <externalId>false</externalId>
+        <label>Quota Period</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Start_Date__c</fullName>
+        <description>The Start Date of the Quota Period.</description>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Quota Period</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Start_Date__c</columns>
+        <columns>CPT_End_Date__c</columns>
+        <columns>CPT_Locked_Status__c</columns>
+        <columns>CPT_Inactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_Inactive__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>All Records</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Inactive_Quota_Period</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Locked_Status__c</columns>
+        <columns>CPT_Start_Date__c</columns>
+        <columns>CPT_End_Date__c</columns>
+        <columns>CPT_Inactive__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_Inactive__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Inactive Quota Periods</label>
+    </listViews>
+    <nameField>
+        <displayFormat>QP-{0000}</displayFormat>
+        <label>Quota Period ID</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Quota Periods</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <searchResultsAdditionalFields>CPT_Quota_Period__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Locked_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CPT_Inactive__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

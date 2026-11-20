@@ -1,0 +1,140 @@
+<apex:page controller="Core_Contact_Entitlement_Log_Tool_Ctrllr" tabStyle="Contact" title="Contact Entitlement Log/Debug Tool"
+           action="{!init}" docType="html-5.0">
+    <apex:includeScript value="{!$Resource.Core_Jquery}" />
+    <apex:sectionHeader title="Contact Entitlement" subtitle="Log/Debug Tool" />
+    <apex:pageMessages id="pageMessages" />
+    <hr class="lightWeightDivider" />
+    
+    <apex:form >
+        <apex:pageBlock title="Search across all relevant Contact Entitlement objects">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!search}" value="Search"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="Contact" collapsible="false">
+                <apex:inputText label="Salesforce ID" value="{!contactId}" />
+                <apex:inputText label="Enterprise ID" value="{!enterpriseId}" />
+                <apex:inputText label="ERPM Person ID" value="{!erpmPersonId}" />
+                <apex:inputText label="Email" value="{!emailAddr}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Messages/Log Entries" collapsible="false">
+                <apex:input type="datetime-local" label="Start (Local)" value="{!startDateTime}" />
+                <apex:input type="datetime-local" label="End (Local)" value="{!endDateTime}" />
+                <apex:selectList label="Message Types" value="{!messageTypes}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!messageOptions}"/>
+                </apex:selectList>
+                <apex:selectList label="Inbound Processing Status" value="{!statusValue}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!statusOptions}"/>
+                </apex:selectList>
+                <apex:inputText label="Outbound Message ID" value="{!outboundMessageId}" />
+                <apex:inputText label="Inbound Message ID" value="{!inboundMessageId}" />
+                <apex:inputText label="Log Entry ID" value="{!logEntryId}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <!-- MUCH MORE TO BE ADDED IN THE SECTIONS BELOW HERE --->
+        <apex:pageBlock title="Results (limit {!recordLimit} records per object)" rendered="{!showResults}">
+            <apex:pageBlockSection title="Contacts" rendered="{!showContacts}">
+                <apex:pageBlockTable value="{!contacts}" var="row">
+                    <apex:column headerValue="Id">
+                        <a href="/{!row.Id}">{!row.Name}</a>
+                    </apex:column>
+                    <apex:column headerValue="Email / IDs">
+                        {!row.Email}<br/>
+                        {!row.Core_eRPM_Person_Id__c}<br/>
+                        {!row.Core_Enterprise_Id__c}
+                    </apex:column>
+                    <apex:column value="{!row.Core_Login_Status__c}"/>
+                    <apex:column value="{!row.Core_ERPM_Integration_Status__c}"/>
+                    <apex:column value="{!row.Core_ERPM_Integration_Message__c}"/>
+                    <apex:column value="{!row.Core_AGS_Integration_Status__c}"/>
+                    <apex:column value="{!row.Core_AGS_Integration_Message__c}"/>
+                    <apex:column value="{!MID(TEXT(row.LastModifiedDate),6,2)}/{!MID(TEXT(row.LastModifiedDate),9,2)} {!MID(TEXT(row.LastModifiedDate),12,8)}"
+                                 headerValue="Last Modified (GMT)"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputText rendered="{!(!showContacts)}" value="No Contact records found<br/>" escape="false"/>
+            
+            <apex:pageBlockSection title="Contact Entitlements" rendered="{!showContactEntitlements}">
+                <apex:pageBlockTable value="{!contactEntitlements}" var="row">
+                    <apex:column value="{!row.Id}"/>
+                    <apex:column value="{!row.Core_Contact_Id__c}"/>
+                    <apex:column value="{!row.Core_Entitlement_Id__c}"/>
+                    <apex:column value="{!row.Core_Type__c}"/>
+                    <apex:column value="{!row.Core_Selected__c}"/>
+                    <apex:column value="{!row.Core_From_Source__c}"/>
+                    <apex:column value="{!row.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__c}"/>
+                    <apex:column value="{!row.Core_Entitlement_Id__r.Core_AGS_Role_Id__c}"/>
+                    <apex:column value="{!row.Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputText rendered="{!(!showContactEntitlements)}" value="<br/>No Contact Entitlement records found<br/><br/>" escape="false"/>
+            
+            <apex:pageBlockSection title="Outbound Messages" rendered="{!showOutboundMessages}">
+                <apex:pageBlockTable value="{!outboundMessages}" var="row" >
+                    <apex:column value="{!row.Id}"/>
+                    <apex:column value="{!MID(TEXT(row.LastModifiedDate),6,2)}/{!MID(TEXT(row.LastModifiedDate),9,2)} {!MID(TEXT(row.LastModifiedDate),12,8)}"
+                                 headerValue="Last Modified (GMT)"/>
+                    <apex:column value="{!row.Core_MessageType__c}"/>
+                    <apex:column value="{!row.Core_Payload__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputText rendered="{!(!showOutboundMessages)}" value="<br/>No Outbound Message records found<br/><br/>" escape="false"/>
+            
+            <apex:pageBlockSection title="Inbound Messages" rendered="{!showInboundMessages}">
+                <apex:pageBlockTable value="{!inboundMessages}" var="row">
+                    <apex:column value="{!row.Id}"/>
+                    <apex:column value="{!MID(TEXT(row.LastModifiedDate),6,2)}/{!MID(TEXT(row.LastModifiedDate),9,2)} {!MID(TEXT(row.LastModifiedDate),12,8)}"
+                                 headerValue="Last Modified (GMT)"/>
+                    <apex:column value="{!row.Core_Source_System__c} {!row.Core_Message_Type__c}" headerValue="Source System + Message Type"/>
+                    <apex:column value="{!row.Core_Processing_Status__c}"/>
+                    <apex:column value="{!row.Core_Payload__c}"/>
+                    <apex:column value="{!row.Core_Exception_Message__c}"/>
+                    <apex:column value="{!row.Core_Log_Entry__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputText rendered="{!(!showInboundMessages)}" value="<br/>No Inbound Message records found<br/><br/>" escape="false"/>
+            
+            <apex:pageBlockSection title="Consolidated Message History" rendered="{!showMessageHistory}">
+                <apex:pageBlockTable value="{!messageHistory}" var="row">
+                    <apex:column value="{!row.recordId}" headerValue="Id"/>
+                    <apex:column value="{!MID(TEXT(row.LastModifiedDate),6,2)}/{!MID(TEXT(row.LastModifiedDate),9,2)} {!MID(TEXT(row.LastModifiedDate),12,8)}"
+                                 headerValue="Last Modified (GMT)"/>
+                    <apex:column value="{!row.objectType}" headerValue="Object Type"/>
+                    <apex:column value="{!row.status}" headerValue="Status / Severity"/>
+                    <apex:column value="{!row.title}" headerValue="Message Type / Title"/>
+                    <apex:column value="{!row.details}" headerValue="Payload / Details"/>
+                    <apex:column value="{!row.objectId}" headerValue="Object Id"/>
+                    <apex:column value="{!row.tags}" headerValue="Tags"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputText rendered="{!(!showMessageHistory)}" value="<br/>No Consolidated Message History to show<br/><br/>" escape="false"/>
+            
+            <apex:pageBlockSection title="Log Entries" rendered="{!showLogEntries}">
+                <apex:pageBlockTable value="{!logEntries}" var="row">
+                    <apex:column value="{!row.Id}"/>
+                    <apex:column value="{!MID(TEXT(row.LastModifiedDate),6,2)}/{!MID(TEXT(row.LastModifiedDate),9,2)} {!MID(TEXT(row.LastModifiedDate),12,8)}"
+                                 headerValue="Last Modified (GMT)"/>
+                    <apex:column value="{!row.Core_Severity__c}"/>
+                    <apex:column value="{!row.Core_Message__c}"/>
+                    <apex:column value="{!row.Core_Details__c}"/>
+                    <apex:column value="{!row.Core_sObjectType__c}"/>
+                    <apex:column value="{!row.Core_sObjectId__c}"/>
+                    <apex:column value="{!row.Core_Tags__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputText rendered="{!(!showLogEntries)}" value="<br/>No Log Entries found<br/><br/>" escape="false"/>
+            
+            <!--apex:outputText rendered="{!showNoRecordsFound}" value="No records found"/-->
+            
+            <apex:pageBlockSection title="SOQL Statements Executed" collapsible="true" columns="1">
+                <apex:outputText value="{!contactSoql}"/>
+                <apex:outputText value="{!contactEntitlementSoql}"/>
+                <apex:outputText value="{!outboundMessageSoql}"/>
+                <apex:outputText value="{!inboundMessageSoql}"/>
+                <apex:outputText value="{!logEntrySoql}"/>
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

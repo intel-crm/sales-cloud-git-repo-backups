@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Milestone Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Milestone Stage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Milestone ID --></label>
+        <name>Core_Milestone_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Map ID --></label>
+        <name>Core_Milestone_Map_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Area --></label>
+        <name>Core_New_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Description --></label>
+        <name>Core_New_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Focus --></label>
+        <name>Core_New_Focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Milestone --></label>
+        <name>Core_New_Milestone__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Use Case --></label>
+        <name>Core_New_Use_Case__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Area --></label>
+        <name>Core_Old_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Description --></label>
+        <name>Core_Old_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Focus --></label>
+        <name>Core_Old_Focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Milestone --></label>
+        <name>Core_Old_Milestone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Use Case --></label>
+        <name>Core_Old_Use_Case__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

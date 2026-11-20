@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Legal Agreement Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Legal Agreement Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Design-Deal Registration --></label>
+        <name>PCC_Design_Deal_Registration__c</name>
+        <relationshipLabel><!-- Account Legal Agreement Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Legal Agreements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Agreement Signed Date --></label>
+        <name>PRM_Agreement_Sign_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signed By --></label>
+        <name>PRM_Contact__c</name>
+        <relationshipLabel><!-- Partner Legal Agreement Association --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legal Agreement Name Text --></label>
+        <name>PRM_Legal_Agreement_Name_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>PRM_Notes_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Agreement --></label>
+        <name>PRM_Partner_Agreement_Id__c</name>
+        <relationshipLabel><!-- Partner Legal Agreement Association --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Agreement Name --></label>
+        <name>PRM_Partner_Agreement_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signed By Email --></label>
+        <name>PRM_Signed_By_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signed By Name --></label>
+        <name>PRM_Signed_By_Name__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

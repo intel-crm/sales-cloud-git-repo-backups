@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_All_Users_CCP_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share to all internal user</description>
+        <label>All Users - CCP Internal</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Title</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Datacenter,Ecosystem Extension Fund,Client,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Claim_Support_L1</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Claim Support L1 Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SUPPORT_L1_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Title</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Partner_Fund_Claim_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Partner Fund Claim - CCP Claim Case Reviewer Internal</description>
+        <label>Partner Fund Claim - CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Title</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_Claims_To_CDB_Intg_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule is to share the PartnerFundClaims to CDB Integration User</description>
+        <label>Core_MDF_Share_Claims_To_CDB_Intg_User</label>
+        <sharedTo>
+            <group>Core_AI_CDB_Integrations_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Type_Txt__c</field>
+            <operation>equals</operation>
+            <value>Claim</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Status__c</field>
+            <operation>equals</operation>
+            <value>PIC Pending</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_IPA_Claims_with_Payment_Adm_Mgr</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share IPA Claims with Payment Adm Mgr</label>
+        <sharedTo>
+            <group>AGS_CCP_Payment_Admin_Manager</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance Proposal Based,Intel Partner Alliance Account Based</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_IPA_Claims_with_Payment_Admins</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share IPA Claims with Payment Admins</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_Payment_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance Proposal Based,Intel Partner Alliance Account Based</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Share_RMF_ASMO_Claims_with_APJ_Payment_Admins</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing rule to share all the RMF Claims with APJ Payment Admins.</description>
+        <label>Share RMF Claims with Payment Admins</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_APJ_Pay_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Title</field>
+            <operation>notEqual</operation>
+            <value>{empty}</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Region_Cd__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_VAT_Eligibility_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,151 @@
+<template>
+	<template if:true={ismodal}>
+		<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<lightning-button-icon class="slds-modal__close" title="Close" icon-name="utility:close" icon-class="slds-button__icon_large" onclick={handleModalClose} style="top:0;position:relative;"></lightning-button-icon>
+				<br />
+				<div class="slds-modal__header">
+					<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">{modalheader}</h1>
+				</div>
+				<div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+					<div>
+						<div class="progress-bar">
+							<template for:each={steps} for:item="step">
+								<div key={step.label} class={step.class}>
+									<div class="circle"></div>
+									<div class="label">{step.label}</div>
+								</div>
+							</template>
+						</div>
+					</div>
+					<template lwc:if={errorScreen}>
+						<div style="display:flex;justify-content:center;padding: 5%;flex-direction: column;">
+							<lightning-formatted-rich-text value={errorMessage}></lightning-formatted-rich-text>
+							<div style="margin-top: 2%;display: flex;justify-content: flex-end;">
+								<button class="slds-button slds-button_neutral" aria-label="Previous" onclick={handleModalClose}>Cancel</button>
+							</div>
+						</div>
+					</template>
+					<template lwc:if={productSection}>
+						<div class="slds-card slds-card__body slds-card__body_inner">
+							<!-- <template if:true={haveExternalContact}><div class="demo-only" style="padding:0.5rem;background:#16325c"><div class="slds-text-color_inverse">Service Cloud contact record with your email
+										address
+										found! Case will be created against it.
+									</div></div></template><template if:false={haveExternalContact}><div class="demo-only" style="padding:0.5rem;background:#16325c"><div class="slds-text-color_inverse">
+										No Service Cloud contact record detected with your email address.
+										It appears this is your first personal case with ICS. <br />
+										A contact and account record will automatically be created for you in Service Cloud, to submit cases against.
+									</div></div></template><br /> -->
+							<div class="slds-form-element">
+								<label class="slds-form-element__label" for="text-input-id-46">
+									<abbr class="slds-required" title="required">* </abbr>Case Subject (One-line Summary) </label>
+								<div class="slds-form-element__control">
+									<input type="text" id="text-input-id-46" placeholder="Case Subject" required="" class="slds-input" maxlength="75" onchange={handleSubject} value={caseSubject} />
+								</div>
+							</div>
+							<br />
+							<div class="slds-form-element">
+								<label class="slds-form-element__label" for="textarea-id-01">
+									<abbr class="slds-required" title="required">* </abbr>Describe the issue in as much detail as possible </label>
+								<div class="slds-form-element__control">
+									<textarea id="textarea-id-01" required="" placeholder="Describe the issue..." class="slds-textarea" maxlength="10000" onchange={handleDescription}>{caseDesc}</textarea>
+								</div>
+							</div>
+							<br />
+						</div>
+						<div class="slds-modal__footer">
+							<button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleModalClose}>Cancel</button>
+							<button class="slds-button slds-button_brand" onclick={handleNext} disabled={disableButton}>Next</button>
+						</div>
+					</template>
+					<template lwc:if={environmentSection}>
+						<div class="slds-card slds-card__body slds-card__body_inner">
+							<template if:true={environmentDetailQuestion}>
+								<template for:each={mapOfQuestionAnswer} for:item="index">
+									<div key={index.Id}>
+										<div if:true={index.typeTextArea}>
+											<lightning-textarea label={index.question} value={value} placeholder="Provide your answer here..." data-questionid={index.externalId} onchange={handleChange} required={index.required}></lightning-textarea>
+										</div>
+										<div if:true={index.typeTextBox}>
+											<lightning-input label={index.question} value={value} placeholder="Provide your answer here..." data-questionid={index.externalId} onchange={handleChange} required={index.required} maxlength="255"></lightning-input>
+										</div>
+										<div if:true={index.typePicklist}>
+											<lightning-combobox name="progress" label={index.question} value={value} placeholder="Select Progress" options={index.answers} data-questionid={index.externalId} onchange={handleChange} required={index.required}></lightning-combobox>
+										</div>
+										<br />
+									</div>
+								</template>
+							</template>
+							<template lwc:if={isContact}>
+								<h2 class="slds-card__header-title">Phone Number</h2>
+								<div class="slds-grid slds-gutters">
+									<div class="slds-col">
+										<lightning-input label={labels.ContactLabel} type="tel" value={phoneNumber} onchange={handlePhoneNumberChange} required></lightning-input>
+									</div>
+								</div>
+								<div class="slds-form-element__help" id="error-message-id-51">ex: +4151112222</div>
+							</template>
+						</div>
+						<div class="slds-modal__footer">
+							<button class="slds-button slds-button_neutral" aria-label="Previous" onclick={handleBackFunctionality}>Previous</button>
+							<button class="slds-button slds-button_brand" onclick={handleCaseCreation} disabled={disableButton}>Create Case</button>
+						</div>
+					</template>
+					<template lwc:if={caseCreationSection}>
+						<template if:true={caseCreationSpinner}>
+							<br />
+							<div style="height:6rem;background-color:#16325c;position:relative">
+								<div class="slds-spinner_container">
+									<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_inverse">
+										<span class="slds-assistive-text">Loading</span>
+										<div class="slds-spinner__dot-a"></div>
+										<div class="slds-spinner__dot-b"></div>
+									</div>
+								</div>
+							</div>
+						</template>
+						<template if:true={caseCreationCreated}>
+							<article class="slds-card">
+								<div class="slds-card__body slds-card__body_inner">
+									<div class="slds-media__body" style="display:flex;">
+										<h2 class="slds-card__header-title" style="flex-basis: 75%;">
+											<span> Thank You! <br /> Your Support Request has been submitted. </span>
+										</h2>
+										<button class="slds-button slds-button_brand" onclick={handleNavigation} disabled={disableButton} style="flex-basis: 25%;display:flex;justify-content: center;">Go To Case</button>
+									</div>
+									<br />
+									<div class="slds-media__body">
+										<h2 class="slds-text-longform">
+											<a class="slds-text-body_regular slds-truncate" title="Ask a Question" onclick={handleModalClose}>
+												<span>Return to Ask a Question Page</span>
+											</a>
+										</h2>
+									</div>
+									<br />
+									<div class="slds-card__body slds-card__body_inner">
+										<article class="slds-card slds-card_boundary">
+											<div class="slds-card__header slds-grid">
+												<div class="slds-media__body" style="font-size: 16px;font-weight: 500;"> Next steps </div>
+											</div>
+											<div class="slds-card__body slds-card__body_inner">
+												<ul style="padding-left: 3%;list-style-type: unset;font-size: 14px">
+													<li>{labels.NextStep1} {emailAddress} </li>
+													<li>{labels.NextStep2}</li>
+													<li>{labels.NextStep31} <a onclick={handleModalClose}>Ask a Question Page</a> {labels.NextStep33} </li>
+													<li>{labels.NextStep4}</li>
+												</ul>
+											</div>
+											<div class="slds-card__header slds-grid slds-media__body" style="font-size: 14px;font-weight: 400;margin-bottom: 2%;"> Regards, <br> Intel Support Team </div>
+										</article>
+									</div>
+								</div>
+							</article>
+						</template>
+					</template>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+		<lightning-flow if:true={isflowReady} flow-api-name='Case_Create_AAQ_Cases' flow-input-variables={inputVariables} onstatuschange={handleStatusChange} style="display : none;padding: 2%;margin-top: -5%;"></lightning-flow>
+	</template>
+</template>

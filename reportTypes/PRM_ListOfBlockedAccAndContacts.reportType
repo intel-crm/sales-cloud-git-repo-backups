@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>PRM_SBC_Account_Search_Configuration__c</baseObject>
+    <category>admin</category>
+    <deployed>true</deployed>
+    <description>This report is used to show list of accounts and contacts blocked</description>
+    <label>PRM_ListOfBlockedAccAndContacts</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c</field>
+            <table>PRM_SBC_Account_Search_Configuration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Contact__c</field>
+            <table>PRM_SBC_Account_Search_Configuration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_isActive__c</field>
+            <table>PRM_SBC_Account_Search_Configuration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Type__c</field>
+            <table>PRM_SBC_Account_Search_Configuration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_duplicateCheck__c</field>
+            <table>PRM_SBC_Account_Search_Configuration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Comments__c</field>
+            <table>PRM_SBC_Account_Search_Configuration__c</table>
+        </columns>
+        <masterLabel>IPA Admin Configurations</masterLabel>
+    </sections>
+</ReportType>

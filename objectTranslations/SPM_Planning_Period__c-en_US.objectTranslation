@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Planning Period</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Planning Periods</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active Period --></label>
+        <name>Active_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Feedback End --></label>
+        <name>BU_Feedback_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Feedback Start --></label>
+        <name>BU_Feedback_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Feedback End --></label>
+        <name>DR_Feedback_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Feedback Start --></label>
+        <name>DR_Feedback_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- GM Feedback End --></label>
+        <name>GM_Feedback_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- GM Feedback Start --></label>
+        <name>GM_Feedback_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locked Status --></label>
+        <name>Locked_Status__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Planning Period --></label>
+        <name>Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- VP Feedback End --></label>
+        <name>VP_Feedback_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- VP Feedback Start --></label>
+        <name>VP_Feedback_Start__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,48 @@
+<aura:component>
+
+    <aura:attribute name="fitToContent" type="Boolean" default="false" />
+    <aura:attribute name="isOpen" type="String" default="false" />
+    <aura:attribute name="heading" type="String" default="" />
+    <aura:attribute name="useSlimMobileHeader" type="Boolean" default="false" />
+    <aura:attribute name="closeModalCallback" type="Object" />
+
+    <aura:method name="scrollTo" action="{!c.handleScrollTo}">
+        <aura:attribute name="yPos" type="Integer" default="0" />
+    </aura:method>
+
+    <div class="{!join(' ', 'slds-m-around_xx-large', v.useSlimMobileHeader ? 'slimMobileHeader' : '', v.fitToContent ? 'fitToContent' : '' )}">
+        <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <aura:if isTrue="{!v.heading}">
+                        <header class="slds-modal__header">
+                            <div class="close-heading">
+                                <a class="close"
+                                   href="javascript:void(0)" aria-label="Close" onclick="{!c.closeModal}">
+                                    <lightning:icon class="icn" iconName="utility:close" size="medium" />
+                                </a>
+                            </div>
+                           <!-- <h2 id="modal-heading-01">{!v.heading}</h2>-->
+                            <h3 class="color-white truncate" id="modal-heading-01">{!v.heading}</h3><!---Changed as a part of US613071[TA1369311] by Megha-->
+                        </header>
+                    </aura:if>
+                    <div aura:id="modalContent" class="slds-modal__content" id="modal-content-id-1">
+                        <aura:if isTrue="{!!v.heading}">
+                            <div class="close-heading">
+                                <a class="close" href="javascript:void(0)" aria-label="Close" onclick="{!c.closeModal}">
+                                    <lightning:icon class="icn" iconName="utility:close" size="medium" />
+                                </a>
+                            </div>
+                        </aura:if>
+
+                        {!v.body}
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+
+</aura:component>

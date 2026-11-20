@@ -1,0 +1,24 @@
+<template>
+    <h3 class="slds-m-bottom_medium">{title}</h3>
+    <div class="message-list" role="table" >
+        <div role="rowgroup">
+            <div role="row">  
+        <div class="message-header">
+            <div class="subject"  role="columnheader" >{label.subject}</div>
+            <!-- <div class="type mobile-hide">{label.type}</div>-->
+            <div class="date mobile-hide"  role="columnheader" >{label.date}</div>
+            <div class="toggle"></div>
+        </div>
+    </div>
+    
+</div>
+        <template for:each={messages} for:item="message">
+            <div role="rowgroup" key={message.messageId}>
+                <div role="row">
+            <c-ipa-partner-message message={message} role="cell" key={message.messageId}></c-ipa-partner-message>
+        </div></div>
+        </template>
+    </div>
+
+
+</template>

@@ -1,0 +1,26 @@
+<aura:component>
+    <aura:attribute name="disabled" type="boolean" default="false" description="Indicates if the button should be disabled." />
+    <aura:attribute name="enabled" type="boolean" default="true" description="Indicates if the button should be enabled." />
+    <aura:attribute name="intelButtonClass" type="string" default="inline leftButton" description="CSS classes to apply to the IntelButton." />
+    <aura:attribute name="objectApiName" type="string" default="" description="The objectApiName to use for the IntelLink." />
+    <aura:attribute name="page" type="string" default="" description="The page to use for the IntelLink." />
+    <aura:attribute name="recordId" type="string" default="" description="The recordId to use for the IntelLink." />
+    <aura:attribute name="text" type="string" default="" description="The button text." />
+    <aura:attribute name="type" type="string" default="desktop" description="Indicates if this is for the mobile or desktop display." />
+    <aura:attribute name="url" type="string" default="" description="The url to use for the IntelLink." />
+    <aura:attribute name="useNavigateToURL" type="boolean" default="false" description="The useNavigateToURL to use for the IntelLink." />
+
+    <aura:if isTrue="{!v.disabled == true}" >
+        <aura:if isTrue="{!v.type == 'desktop'}" >
+            <c:IntelButton class="{!v.intelButtonClass}" disabled="{!v.disabled}" tabindex="-1">{!v.text}</c:IntelButton>
+        </aura:if>
+        <aura:if isTrue="{!v.type == 'mobile'}" >
+            <a><c:IntelButton class="{!v.intelButtonClass}" disabled="{!v.disabled}" tabindex="-1">{!v.text}</c:IntelButton></a>
+        </aura:if>
+    </aura:if>
+    <aura:if isTrue="{!v.disabled == false}" >
+        <c:IntelLink objectApiName="{!v.objectApiName}" page="{!v.page}" recordId="{!v.recordId}" url="{!v.url}" useNavigateToURL="{!v.useNavigateToURL}" tabindex="-1">
+            <c:IntelButton class="{!v.intelButtonClass}" disabled="{!v.disabled}" buttonClass="white">{!v.text}</c:IntelButton>
+        </c:IntelLink>
+    </aura:if>
+</aura:component>

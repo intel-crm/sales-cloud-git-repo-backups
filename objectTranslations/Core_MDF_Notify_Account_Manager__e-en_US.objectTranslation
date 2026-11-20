@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Notify Account Manager</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Notify Account Manager</value>
+    </caseValues>
+    <fields>
+        <label><!-- Escalation Id --></label>
+        <name>Core_MDF_Escalation_Id_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- errorMessage --></label>
+        <name>Core_MDF_errorMessage_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- isBusinessError --></label>
+        <name>Core_MDF_isBusinessError_ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

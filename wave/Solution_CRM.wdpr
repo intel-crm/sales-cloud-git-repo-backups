@@ -1,0 +1,659 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OpportunityProducts.Product_Code", "op.Core_Product_Segment__c", "Core_Sales_Groups__c", "Core_Technical_Owner__c", "OpportunityProducts.Opportunity.Account.Owner.Name", "Opportunit.OpportunityId", "OpportunityAccount.Core_Unified_Intermediate_Customer_Name__c", "Opportunit.Name", "StageName", "op.OpportunityId", "KPIDateYear", "Name", "Core_Consumption_Market__c", "OpportunityPartner.Core_Partner_Role__c", "OpportunityProducts.Opportunity.Core_Opp_Strategic_Opportunity__c", "op.Core_BU_Short_Name__c", "OpportunityProducts.Opportunity.TeamMembers.User.Manager.Manager.Name", "KPIQuarter", "Opportunit.Core_KPI_Date__c", "OpportunityProducts.Opportunity.TechOwner.Name", "OpportunityName", "OppAccountUser.OppOwnerManagerName", "Opportunit.Id", "Opportunit.Core_Status__c", "OpportunityProducts.Core_KPI_Date__c", "OpportunityProducts.Opportunity.TeamMembers.User.Name", "op.Product2Id", "CloseDate", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Name", "sales_group", "OpportunityPartner.AccountPartner.Name", "Id", "op.Core_Status__c", "AccountName", "Core_Technical_Owner_Manager__c", "OpportunityProducts.Opportunity.Owner.Manager.Manager.Name", "Core_Product_Application__c", "OwnerId", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Manager.Name", "OpportunityProducts.Opportunity.TechOwner.Manager.Manager.Name", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Name", "OpportunityProducts.Opportunity.Owner.ManagerId", "OpportunityProducts.Opportunity.TeamMembers.User.Manager.Name", "OppForecastJoin.Core_Forecast__c", "op.CoreKPIDateYear", "OpportunityProducts.Opportunity.TechOwner.ManagerId", "OpportunityAccount.Core_Unified_Global_Customer_Name__c", "OpportunityProducts.Opportunity.Core_Opportunity_Type__c", "OpportunityProducts.Opportunity.OpportunityPartner.Core_Partner_Type__c", "OpportunityProducts.Opportunity.TechOwner.Manager.Name", "OpportunityProducts.Opportunity.Owner.Manager.Name", "OpportunityPartner.AccountPartner.Core_Unified_Global_Customer_Name__c", "OpportunityProducts.Opportunity.CloseDate", "OpportunityProducts.Opportunity.Owner.Name", "BU.op.Core_Product_Segment__c", "Opportunit.Core_KPI_Total_Price__c", "BU.op.Core_Lost_Total_Price__c", "op.Core_Lost_Total_Price__c", "Amount", "op.Core_KPI_Total_Price__c", "OpportunityProducts.Opportunity.Core_Days_from_Opportunity_Create_to_Su__c", "OpportunityProducts.Opportunity.Core_Wins_Oppty__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "CommitOppProdWithNoPrd",
+          "name" : "CommitOppProdWithNoPrd"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_NM", "SOLUTION_ID", "CORE_CONTENT_LINK_NM", "CORE_END_CUSTOMER_SOLUTION_IND", "CORE_SOLUTION_DESCRIPTION_DSC", "CORE_SOLUTION_OWNER_EMAIL_NM", "CORE_SOLUTION_TITLE_NM", "CORE_SOLUTION_TYPE_NM", "CORE_VERSION_NBR", "CORE_REGION_DEPLOYED_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_TECHNOLOGY_ENABLED_C_SPLIT_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_TECHNOLOGY",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_TECHNOLOGY"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_INDUSTRY_C_SPLIT_NM", "MVIEW_TS" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_INDUSTRY",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_INDUSTRY"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_INDUSTRY_USE_CASE_C_SPLIT_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_INDUSTRY_USE_CASE",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_INDUSTRY_USE_CASE"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_APPLICATION_WORKLOAD_SPLIT_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_APPLICATION_WORKLOAD",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_APPLICATION_WORKLOAD"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OPP_ID", "SOLUTION_ID", "MVIEW_TS" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "FACT_OPPORTUNITY_SOLUTION",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "FACT_OPPORTUNITY_SOLUTION"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET4", "JOIN7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_Industry",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET5", "JOIN1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_Industry_Use_Case",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET6", "JOIN2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_Application_Workload",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "LOAD_DATASET7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_opp",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET1", "JOIN4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Opportunit.OpportunityId" ],
+        "rightQualifier" : "Solution_OpportunityProducts",
+        "rightKeys" : [ "Solution_opp.OPP_ID" ]
+      }
+    },
+    "LOAD_DATASET8" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "PARTNER_ID", "PARTNER_NAME", "PARTNER_NOTES", "PARTNER_ROLE", "PARTNER_SALESPERSON", "PARTNER_CREATED_DATE", "PARTNER_CREATED_BY", "CRE_USR_NM", "CIM_ID", "IU_ID", "IU_NM", "PARTNER_ACCOUNT_ID", "OPP_ID" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_PTNR",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_PTNR"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "JOIN5", "LOAD_DATASET8" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Opportunit.OpportunityId" ],
+        "rightQualifier" : "Parter_Solution_Products",
+        "rightKeys" : [ "OPP_ID" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA7" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Solution_CRM1",
+          "name" : "Solution_CRM1",
+          "folderName" : "Pipeline_Management"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "JOIN6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Opportunity_Name",
+          "label" : "Opportunity Name",
+          "formulaExpression" : "\"Name\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "StageSorted",
+          "label" : "StageSorted",
+          "formulaExpression" : "(case when StageName = 'Qualify' then '1 - Qualify' when StageName = 'Define' then '2 - Define' when StageName = 'Develop' then '3 - Develop' when StageName = 'Design' then '4 - Design' when StageName = 'Design Win' then '5 - Design Win' when StageName = 'Production Win' then '6 - Production Win' when StageName = 'Production Lost' then '7 - Production Lost' when StageName = 'Production Cancelled' then '8 - Production Cancelled' when StageName = 'Lost' then '9 - Lost' when StageName = 'Cancelled' then '91 - Cancelled'  else '99 - No Match' end)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Status_Name",
+          "label" : "Status Name",
+          "formulaExpression" : "case when \"Opportunit.Core_Status__c\" = 'Production Win' then 'Won' when \"Opportunit.Core_Status__c\" = 'Production Lost' then 'Won' when \"Opportunit.Core_Status__c\" = 'Production Cancelled' then 'Won' when \"Opportunit.Core_Status__c\" = 'Win Approved' then 'Won' when \"Opportunit.Core_Status__c\" = 'Lost' then 'Lost' when \"Opportunit.Core_Status__c\" = 'Cancelled' then 'Lost' when \"Opportunit.Core_Status__c\" = 'Pending' then 'Open' when \"Opportunit.Core_Status__c\" = 'On Hold' then 'Open' when \"Opportunit.Core_Status__c\" = 'Win Submitted' then 'Open' else \"Opportunit.Core_Status__c\" end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Partner_Name",
+          "label" : "Partner Name",
+          "formulaExpression" : "\"Parter_Solution_Products.PARTNER_NAME\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Application_Workload",
+          "label" : "Application Workload",
+          "formulaExpression" : "\"Solution_OpportunityProducts.CORE_APPLICATION_WORKLOAD_SPLIT_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Tech_Enable",
+          "label" : "Tech Enable",
+          "formulaExpression" : "\"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.CORE_TECHNOLOGY_ENABLED_C_SPLIT_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA6" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Industry_Use_Cases",
+          "label" : "Industry Use Cases",
+          "formulaExpression" : "\"Solution_OpportunityProducts.Solution_Application_Workload.CORE_INDUSTRY_USE_CASE_C_SPLIT_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA7" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Solution_Name",
+          "label" : "Solution Name",
+          "formulaExpression" : "\"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.Solution_technology.SOLUTION_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET3", "LOAD_DATASET2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_technology",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET1" : {
+        "label" : "CommitOppProdWithNoPrd",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET2" : {
+        "label" : "DIM_SOLUTION",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET3" : {
+        "label" : "DIM_SOLUTION_TECHNOLOGY",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET4" : {
+        "label" : "DIM_SOLUTION_INDUSTRY",
+        "type" : "LOAD_DATASET",
+        "top" : 672,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET5" : {
+        "label" : "DIM_SOLUTION_INDUSTRY_USE_CASE",
+        "type" : "LOAD_DATASET",
+        "top" : 812,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET6" : {
+        "label" : "DIM_SOLUTION_APPLICATION_WORKLOAD",
+        "type" : "LOAD_DATASET",
+        "top" : 952,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET7" : {
+        "label" : "FACT_OPPORTUNITY_SOLUTION",
+        "type" : "LOAD_DATASET",
+        "top" : 1092,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN1" : {
+        "label" : "Solution_Industry: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 392
+      },
+      "JOIN2" : {
+        "label" : "Solution_Industry_Use_Case: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 532
+      },
+      "JOIN3" : {
+        "label" : "Solution_Application_Workload: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 672
+      },
+      "JOIN4" : {
+        "label" : "Solution_opp: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 812
+      },
+      "JOIN5" : {
+        "label" : "Solution_OpportunityProducts: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 952
+      },
+      "LOAD_DATASET8" : {
+        "label" : "DIM_PTNR",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN6" : {
+        "label" : "Parter_Solution_Products: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 1092
+      },
+      "OUTPUT0" : {
+        "label" : "Output 0",
+        "type" : "OUTPUT",
+        "top" : 532,
+        "left" : 1232
+      },
+      "TRANSFORM0" : {
+        "label" : "Transform 0",
+        "type" : "TRANSFORM",
+        "top" : 672.4,
+        "left" : 1232,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opportunity_Name"
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "StageSorted"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Status Name"
+          },
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Partner Name"
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Application Workload"
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Tech Enable"
+          },
+          "FORMULA6" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Industry Use Cases"
+          },
+          "FORMULA7" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Solution Name"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "FORMULA1"
+        }, {
+          "source" : "FORMULA1",
+          "target" : "FORMULA2"
+        }, {
+          "source" : "FORMULA2",
+          "target" : "FORMULA3"
+        }, {
+          "source" : "FORMULA3",
+          "target" : "FORMULA4"
+        }, {
+          "source" : "FORMULA4",
+          "target" : "FORMULA5"
+        }, {
+          "source" : "FORMULA5",
+          "target" : "FORMULA6"
+        }, {
+          "source" : "FORMULA6",
+          "target" : "FORMULA7"
+        } ]
+      },
+      "JOIN7" : {
+        "label" : "Join 7",
+        "type" : "JOIN",
+        "top" : 532,
+        "left" : 252
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN1",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN5",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET8",
+      "target" : "JOIN6"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "JOIN6",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN7"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN7"
+    }, {
+      "source" : "JOIN7",
+      "target" : "JOIN1"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

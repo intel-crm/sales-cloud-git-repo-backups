@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>CCP DCF Prog Admin Escalations L2 Que</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_DCF_Prog_Admin_Escl_L2_Grp</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Escalation__c</sobjectType>
+    </queueSobject>
+</Queue>

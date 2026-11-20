@@ -1,0 +1,288 @@
+<aura:component controller = "Core_MDF_ApprovalCriteriaHelper" implements="lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="approvalCriteria" type="Core_MDF_Criteria__c" default="{'sobjectType':'Core_MDF_Criteria__c'}"/>
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="isDisabled" type="Boolean" default="false"/>
+    <aura:attribute name="options" type="String[]"/>
+    <aura:attribute name="allObjects" type="String[]"/>
+    <aura:attribute name="operatorOptions" type="String[]"/>
+    <aura:attribute name="isDisplaySave" type="boolean"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.approvalCriteria.Core_MDF_Object_Type__c}" action="{!c.getFields}"/>
+    
+    <aura:registerEvent name="navEvt" type="force:navigateToSObject"/>    
+    <div class="slds-modal__header">
+        <center><h4>Approval Criteria Details</h4></center>
+        <br></br>
+        <center><table style="width:50%">
+            <tr>
+                <td style="width:50%;padding: 0 8px 8px 0;">    			
+                    <ui:inputSelect label="Object Type" aura:id="selectedObject" class="slds-input" change ="{!c.getFields}" value="{!v.approvalCriteria.Core_MDF_Object_Type__c}" required ="true">
+                        <aura:iteration items="{!v.allObjects}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value ==v.approvalCriteria.Core_MDF_Object_Type__c }"/>
+                        </aura:iteration>
+                    </ui:inputSelect>
+                </td>
+                <td style="width:50%;padding: 0 8px 8px 0;">
+                    <lightning:input label="Description"  value="{!v.approvalCriteria.Core_MDF_Sub_Type__c}" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50%;padding: 0 8px 8px 0;">    
+                    <lightning:helptext content="This field holds the approval process unique name."/>
+                    <lightning:input label="Approval Process" value="{!v.approvalCriteria.Core_MDF_Approval_Process__c}" />
+                    
+                </td>
+                <td style="width:50%;padding: 0 8px 8px 0;">
+                    <lightning:helptext content="At least one active Approver is required to make Approval Criteria Active."/>
+                    <lightning:input label="Active" type="checkbox" checked="{!v.approvalCriteria.Core_MDF_Active__c}"/>
+                    
+                </td> 
+            </tr>
+            <tr>
+                <td style="width:50%;padding: 0 8px 8px 0;">
+                    <lightning:input label="Number of steps" value="{!v.approvalCriteria.Core_MDF_Number_Of_Steps__c}" />
+                </td>        
+                <td style="width:50%;padding: 0 8px 8px 0;">				
+                    <ui:inputSelect label="Approval Type" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Approval_Type__c}">
+                        <option text="Single" value="Single" selected="{!v.approvalCriteria.Core_MDF_Approval_Type__c=='Single'}"/>
+                        <option text="Multiple" value="Multiple" selected="{!v.approvalCriteria.Core_MDF_Approval_Type__c=='Multiple'}"/>
+                    </ui:inputSelect>
+                </td> 
+            </tr>
+            <tr>
+                <td style="width:50%;padding: 0 8px 8px 0;">    
+                    <lightning:helptext content="This is a optional field and used only for Approval Criteria Automation"/>
+                    <lightning:input label="Approval Criteria Automation Reference Code" value="{!v.approvalCriteria.Core_MDF_Approval_Criteria_Ref_Code_txt__c}" disabled="{!v.isDisabled}" />
+                </td>
+            </tr>
+            </table></center>
+        
+        <center><table style="width:50%">
+            <br></br>
+            
+            <h3>Approval Criteria 1</h3>
+            <tr>            
+                <td style="width:27%;padding: 0 8px 8px 0;">       			
+                    <ui:inputSelect label="Field" aura:id="selectField1" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_1__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value==v.approvalCriteria.Core_MDF_Field_Name_1__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">        
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_1__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value==v.approvalCriteria.Core_MDF_Operator_1__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">                		
+                    <lightning:input label="Value" value="{!v.approvalCriteria.Core_MDF_Value_1__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 2</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field"  class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_2__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_2__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_2__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_2__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_2__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 3</h3>
+            <tr>			
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" aura:id="selectField1" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_3__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_3__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">        
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_3__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_3__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">               
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_3__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 4</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_4__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_4__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_4__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_4__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_4__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 5</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_5__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_5__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_5__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_5__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">				
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_5__c}" />
+                </td>
+            </tr><br></br> 
+            
+            <h3>Approval Criteria 6</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_6__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_6__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_6__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_6__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">				
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_6__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 7</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_7__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_7__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_7__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_7__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">				
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_7__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 8</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_8__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_8__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_8__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_8__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">				
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_8__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 9</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_9__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_9__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_9__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_9__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">				
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_9__c}" />
+                </td>
+            </tr><br></br>
+            
+            <h3>Approval Criteria 10</h3>
+            <tr>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Field" class="slds-input"  value="{!v.approvalCriteria.Core_MDF_Field_Name_10__c}">
+                        <aura:iteration items="{!v.options}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Field_Name_10__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">
+                    <ui:inputSelect label="Operator" class="slds-input" value="{!v.approvalCriteria.Core_MDF_Operator_10__c}">
+                        <aura:iteration items="{!v.operatorOptions}" var="item">
+                            <option text="{!item.label}" value="{!item.value}" selected="{!item.value == v.approvalCriteria.Core_MDF_Operator_10__c}"/>
+                        </aura:iteration>
+                    </ui:inputSelect>            
+                </td>
+                <td style="width:27%;padding: 0 8px 8px 0;">				
+                    <lightning:input label ="Value" value="{!v.approvalCriteria.Core_MDF_Value_10__c}" />
+                </td>
+            </tr><br></br>
+            
+            </table></center>
+        
+        <!--Test-	<center><lightning:button class="slds-button slds-button_brand" type="submit" label="Manage Criteria Rule" onclick="{!c.callComponent}" /></center>-->
+        
+ 	
+        
+        
+        <center>
+            <lightning:button class="slds-button slds-button_brand" type="submit" label="Cancel" onclick="{!c.cancel}" />
+            <lightning:button class="slds-button slds-button_brand" type="submit" label="Save" onclick="{!c.create}" />
+        </center>
+        
+    </div>
+    
+</aura:component>

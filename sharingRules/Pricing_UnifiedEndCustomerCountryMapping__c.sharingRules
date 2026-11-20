@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Pricing_Unified_End_Customer_Country_Internal_Rule</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>To Share Unified End Customer Country Mapping Record to internal Users.</description>
+        <label>Pricing Unified End Customer Country Internal Rule</label>
+        <sharedTo>
+            <group>Pricing_All_Internal_Tender_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

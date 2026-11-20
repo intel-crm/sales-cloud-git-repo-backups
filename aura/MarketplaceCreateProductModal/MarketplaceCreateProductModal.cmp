@@ -1,0 +1,159 @@
+<aura:component ></aura:component>
+ 
+<!-- IPA2.0 + US TWC4497-1631 -->
+<!-- extends="c:MarketplaceBaseComponent" implements="forceCommunity:availableForAllPageTypes" controller="MarketplaceCreateProductController">
+        <aura:attribute name="isOpen" type="boolean" default="false"/>
+        <aura:attribute name="category" type="string"/>
+        <aura:attribute name="viewAll" type="boolean" />
+        <aura:attribute name="categories" type="Object[]" default="[]" /> -->
+        <!--Set previousPage to true if you want to navigate to previous page or false if you want to close the modal-->
+        <!-- <aura:attribute name="previousPage" type="boolean" default="true"/>
+     	<aura:attribute name="solutionToastMessage" type="boolean" default="false"/>
+   	    <aura:attribute name="solution" type="boolean" default="false"/>
+        <aura:attribute name="cancelredirect" type="boolean" default="false"/>
+
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        <div class="slds-m-around_xx-large"> -->
+            <!--<lightning:button variant="brand"
+                              label="How to Create an Offering"
+                              title="How to Create an Offering"
+                              onclick="{! c.openModal }" />-->
+            <!-- <aura:if isTrue="{!v.isOpen}">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+                            <header class="slds-modal__header">
+                                <div class="create-offering close-heading">
+                                    <a class="close" href="#" aria-label="Close" onclick="{!c.closeModal}">
+                                            <lightning:icon class="icn" iconName="utility:close" size="small" />
+                                    </a>
+                                </div>
+                                <h2 id="modal-heading-01">{!$Label.c.PMP_CreateOffering_CreateANewOffering}</h2>
+                                <div class="slds-progress-wrapper">
+                                        <ul class="progressbar">
+                                                <li class="active"><p>{!$Label.c.PMP_CreateOffering_CreateYourOffering}</p></li>
+                                                <li><p>{!$Label.c.PMP_CreateOffering_SubmitYourOffering}</p></li>
+                                                <li><p>{!$Label.c.PMP_CreateOffering_IntelReviewsOffering}</p></li>
+                                                <li><p>{!$Label.c.PMP_CreateOffering_UpdateForApproval}</p></li>
+                                                <li><p>{!$Label.c.PMP_CreateOffering_OfferingPostedMarketplace}</p></li>
+                                                <li><p>{!$Label.c.PMP_CreateOffering_OfferingTranslation}</p></li>
+                                        </ul>
+                                </div>
+                            </header>
+                            <div aura:id="category-cards-wrapper" class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <p>{!$Label.c.PMP_CreateOffering_ChooseYourOffering}</p>
+
+                                <lightning:layout class="offering-container slds-wrap">
+                                    <aura:iteration items="{!v.categories}" var="item">
+
+                                        <lightning:layoutItem class="offering-category-wrapper" size="12" mediumDeviceSize="6" largeDeviceSize="2">
+                                                <div aura:id="{!item.name}" id="{!item.engName}" onclick="{!c.handleSelectCategory}">
+                                                    <div class="offering-category-card">
+                                                        <a href="javascript:void(0);">
+                                                            <img src="{!item.icon}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="offering-category-title">
+                                                        <a class="h5" href="javascript:void(0);">{!item.name}</a>
+                                                        <p>{!item.description}</p>
+                                                    </div>
+                                                </div>
+                                        </lightning:layoutItem>
+                                    </aura:iteration>
+                                </lightning:layout>
+                            </div>
+                        </aura:if>
+                        <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'medium' || v.appState.Settings.currentSldsBreakPoint == 'small'}">
+                            <header class="slds-modal__header">
+                                <div class="create-offering close-heading">
+                                    <h3 class="heading-28 color-white">Offer Creation Process</h3>
+                                    <a class="close" href="#" aria-label="Close" onclick="{!c.closeModal}">
+                                            <lightning:icon class="icn" iconName="utility:close" size="small" />
+                                    </a>
+                                </div>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <p class="create-offering-tagline">{!$Label.c.PMP_CreateOffering_ChooseYourOffering}</p>
+                                <aura:iteration items="{!v.categories}" var="item">
+                                    <div aura:id="{!item.name}" id="{!item.engName}" onclick="{!c.handleSelectCategory}">
+                                        <div class="slds-grid category-card">
+                                            <div class="category-card-list-image-wrapper">
+                                                <img alt="" src="{!item.icon}"/>
+                                            </div>
+                                            <div class="product-category-name slds-size_8-of-12">
+                                                <div>
+                                                    <p>
+                                                        <span class="h6">{!item.name}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aura:iteration>
+                                <div class="horizontal-gray-border"></div>
+                                <h5>{!$Label.c.PMP_CreateOffering_CreateANewOffering}</h5>
+                                <div class="slds-progress slds-p-horizontal_medium slds-progress_vertical">
+                                        <ol class="slds-progress__list">
+                                        <li class="slds-progress__item slds-is-active">
+                                                <div class="slds-progress__marker">
+                                                    <span class="slds-assistive-text">Active</span>
+                                                </div>
+                                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_CreateYourOffering}</div>
+                                        </li>
+                                        <li class="slds-progress__item">
+                                            <div class="slds-progress__marker"></div>
+                                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_SubmitYourOffering}</div>
+                                        </li>
+                                          <li class="slds-progress__item">
+                                            <div class="slds-progress__marker"></div>
+                                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_IntelReviewsOffering}</div>
+                                          </li>
+                                          <li class="slds-progress__item">
+                                            <div class="slds-progress__marker"></div>
+                                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_UpdateForApproval}</div>
+                                          </li>
+                                          <li class="slds-progress__item">
+                                            <div class="slds-progress__marker"></div>
+                                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_OfferingPostedMarketplace}</div>
+                                          </li>
+                                        </ol>
+                                        <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" role="progressbar">
+                                          <span class="slds-assistive-text">Progress: 25%</span>
+                                        </div>
+                                      </div>
+                            </div>
+                        </aura:if>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+        </div>
+    
+    <div class="slds-m-around_xx-large"> -->
+        <!--Use aura:if tag to display/hide popup based on solutionToastMessage value-->  
+        <!-- <aura:if isTrue="{!v.solutionToastMessage}"> -->
+             
+            <!-- Modal/Popup Box starts here-->
+            <!-- <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container"> -->
+				<!-- Modal/Popup Box Header Starts here-->
+                    <!-- <header class="slds-modal__header slds-modal__header_empty">
+                       <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closesolutionToastMessage }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                    </header> -->
+                    <!--Modal/Popup Box Body Starts here-->
+                    <!-- <div class="slds-modal__content slds-p-around_medium solution-submission-modal-style" id="modal-content-id-1">
+                        <p><ui:outputText value="{!$Label.c.PSS_Solution_Redirect_Modalbox_Message}"/><br/>
+                        <a href="javascript:void(0)" class="link-style" onclick="{!c.closesolutionToastMessage}">Cancel redirect</a>
+                        </p>
+                    </div> -->
+                    <!--Modal/Popup Box Footer Starts here-->
+                <!-- </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+    </aura:component> -->

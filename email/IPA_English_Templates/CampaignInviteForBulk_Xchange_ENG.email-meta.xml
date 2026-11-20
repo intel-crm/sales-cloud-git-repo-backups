@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Campaign Invite Exchange Template</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CampaignInviteForBulk_Xchange_ENG</name>
+    <style>none</style>
+    <subject>Thank you for visiting us at Xchange.  More details on joining the Intel® Partner Alliance are inside!</subject>
+    <textOnly>IPU learning campaign
+
+Here&apos;s why you should join the Intel Partner Alliance today
+The Intel® Partner Alliance membership gives you exclusive business-building opportunities, like entry to our global marketplace, advanced training, and promotional support—all tailored to your needs.
+Not only that but, once you sign up for IPA, you will receive 1,000 Welcome Bonus Points. Look out for more exciting and upcoming happenings we have in-store for you in the next 7 Days!
+
+Benefits of being an IPA Member:</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,46 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "91c491d9-96fa-46d0-8ffa-b762d1508451",
+  "label" : "PartnerFundAllocation",
+  "regions" : [ {
+    "id" : "e2b99778-43e8-4e3f-aa90-83946e5dc53d",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_MDF_PartnerFundAllocation",
+      "id" : "dd5cce1f-c2b6-4f65-8cc5-bbdafd93db34",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "99381047-fd8d-4bcf-a15d-28f7a2bec6a3",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "9fb2102b-6b5d-40b2-8862-17a2e010679a",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "PartnerFundAllocation"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "56433fc9-861c-457b-8347-946314f3f214",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ab8008df-6c70-4037-8dfb-5141472401f2",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partner-fund-allocations"
+}

@@ -1,0 +1,15 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:registerEvent name="appEvent" type="c:MarketplacePageEvent"/>
+    <aura:attribute name="questionId" type="String" description="FAQ Question id to open" />
+    <div>
+        <!-- <div class="tooltip slds-m-right_xx-small slds-clearfix" >
+            <lightning:icon iconName="utility:info" size="small" alternativeText="info"/>
+            <div class="tooltip-container">
+                <div class="tooltip-content slds-p-vertical_x-small slds-p-horizontal_small">
+                    Contact John Doe 555-555-5555
+                </div>
+            </div>
+        </div> -->
+        <a  href="javascript:void(0);" onclick="{!c.handleFAQJump}" class="heading-13">Need help with leads?</a>
+    </div>
+</aura:component>

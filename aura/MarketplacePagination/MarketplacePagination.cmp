@@ -1,0 +1,55 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+
+	<aura:attribute name="rangeFirst" type="integer" />
+	<aura:attribute name="rangeLast" type="integer" />
+	<aura:attribute name="currentPage" type="integer"  />
+	<aura:attribute name="totalPages" type="integer" />
+	<aura:attribute name="totalResults" type="integer" />
+    
+	<aura:attribute name="onPageChange" type="Object" />
+	
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<div>
+		<div class="slds-show_medium slds-p-bottom_large slds-clearfix">
+			<div class="pageDisplayLeftStatus">
+                <!--{!$Label.c.PMP_Showing}&nbsp;{!v.rangeFirst}&nbsp;{!$Label.c.PMP_to}&nbsp;{!v.rangeLast}&nbsp;{!$Label.c.Core_PMP_of}&nbsp;{!v.totalResults}&nbsp;{!$Label.c.PMP_results}-->
+                {!format($Label.c.PMP_Showing_Results,v.rangeFirst,v.rangeLast,v.totalResults)}
+			</div>
+			<div class="pageDisplayRightStatus">
+				<aura:if isTrue="{!v.currentPage gt 1}">
+					<a onclick="{!c.handlePrevPage}" class="slds-m-right_medium" href="javascript:void(0);">{!$Label.c.Core_PMP_Previous}</a>
+				</aura:if>
+				<!--{!$Label.c.CORE_PMP_Page}&nbsp;<input onchange="{!c.handlePageInput}" onkeydown="{!c.handleKeyDown}" class="pageDisplayInput" value="{!v.currentPage}" />&nbsp;{!format($Label.c.PMP_Page_Of,v.totalPages)}-->
+                {!$Label.c.CORE_PMP_Page}&nbsp;:&nbsp;<input onchange="{!c.handlePageInput}" onkeydown="{!c.handleKeyDown}" class="pageDisplayInput" value="{!v.currentPage}" />&nbsp;/&nbsp;{!v.totalPages}
+				<aura:if isTrue="{!v.currentPage lt v.totalPages}">
+					<a onclick="{!c.handleNextPage}" class="slds-m-left_medium" href="javascript:void(0);">{!$Label.c.Core_PMP_Next}</a>
+				</aura:if>
+			</div>
+		</div>
+
+		<div class="slds-hide_medium slds-p-bottom_large">
+			<div class="slds-text-align_center slds-p-vertical_small pageDisplayStatus">
+				<!--{!$Label.c.PMP_Showing}&nbsp;{!v.rangeFirst}&nbsp;{!$Label.c.PMP_to}&nbsp;{!v.rangeLast}&nbsp;{!$Label.c.Core_PMP_of}&nbsp;{!v.totalResults}&nbsp;{!$Label.c.PMP_results}-->
+                {!format($Label.c.PMP_Showing_Results,v.rangeFirst,v.rangeLast,v.totalResults)}
+			</div>
+			<div class="slds-text-align_center slds-p-vertical_small">
+				<aura:if isTrue="{!v.currentPage gt 1}">
+					<a onclick="{!c.handlePrevPage}" class="slds-m-right_medium" href="javascript:void(0);">
+						<lightning:icon class="iconBlue" iconName="utility:chevronleft" />
+					</a>
+				</aura:if>
+
+				<!--{!$Label.c.CORE_PMP_Page}&nbsp;<input onchange="{!c.handlePageInput}" onkeydown="{!c.handleKeyDown}" class="pageDisplayInput" value="{!v.currentPage}" />&nbsp;
+				{!format($Label.c.PMP_Page_Of,v.totalPages)}-->
+                {!$Label.c.CORE_PMP_Page}&nbsp;:&nbsp;<input onchange="{!c.handlePageInput}" onkeydown="{!c.handleKeyDown}" class="pageDisplayInput" value="{!v.currentPage}" />&nbsp;/&nbsp;{!v.totalPages}
+				<aura:if isTrue="{!v.currentPage lt v.totalPages}">
+					<a onclick="{!c.handleNextPage}" class="slds-m-left_medium" href="javascript:void(0);">
+						<lightning:icon class="iconBlue" iconName="utility:chevronright" />
+					</a>
+				</aura:if>
+			</div>
+		</div>
+
+	</div>
+
+</aura:component>

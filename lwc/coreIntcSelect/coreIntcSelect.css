@@ -1,0 +1,13 @@
+label abbr,
+label[data-show-label='false'],
+.slds-form-element__help {
+  display: none;
+}
+
+label[data-is-required='true'] abbr {
+  display: inline-block;
+}
+
+.slds-has-error .slds-form-element__help {
+  display: block;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Account_Attributes__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Attributes</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AccountInformation</fullName>
+                    <default>true</default>
+                    <label>AccountInformation</label>
+                </value>
+                <value>
+                    <fullName>AccountAddressInformation</fullName>
+                    <default>false</default>
+                    <label>AccountAddressInformation</label>
+                </value>
+                <value>
+                    <fullName>ParentAccountInfomation</fullName>
+                    <default>false</default>
+                    <label>ParentAccountInfomation</label>
+                </value>
+                <value>
+                    <fullName>AccountMasteredDetails</fullName>
+                    <default>false</default>
+                    <label>AccountMasteredDetails</label>
+                </value>
+                <value>
+                    <fullName>AccountComplianceDetails</fullName>
+                    <default>false</default>
+                    <label>AccountComplianceDetails</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Field_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field API Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Object_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Response Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>UCD Business Organization API</label>
+    <listViews>
+        <fullName>UCD_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Field_API_Name__c</columns>
+        <columns>Response_Name__c</columns>
+        <columns>Object_Name__c</columns>
+        <columns>Account_Attributes__c</columns>
+        <columns>DeveloperName</columns>
+        <filterScope>Everything</filterScope>
+        <label>UCD View</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>UCD Business Organization APIs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

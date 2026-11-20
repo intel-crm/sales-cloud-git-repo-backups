@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>[22/Jan/25] Flow to populate unique value combination of employee and period</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CPT_Employee_and_Period</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.CPT_Employee__r.CPT_Quota_Period__c} &amp; &apos; - &apos; &amp; {!$Record.CPT_Employee__c}</expression>
+    </formulas>
+    <formulas>
+        <name>CPT_Sales_OKR_Picklist</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT({!$Record.CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Sales_OKR__c}) &lt;&gt; &apos;0%&apos;, &quot;Sales OKR&quot;, NULL)</expression>
+    </formulas>
+    <interviewLabel>CPT Quota Setup - Before Insert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CPT Quota Setup - Before Insert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>...###</description>
+        <name>CPT_populate_the_unique_emp_and_period_value</name>
+        <label>populate the unique emp and period value</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>CPT_Unique_Identifier__c</field>
+            <value>
+                <elementReference>CPT_Employee_and_Period</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CPT_populate_the_unique_emp_and_period_value</targetReference>
+        </connector>
+        <object>CPT_Quota_Setup__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>ISO_field_Check</name>
+        <label>ISO field Check</label>
+        <locationX>545</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_valid_for_ISO_assignment</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_IPS_Intel_Support_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_IPS_Intel_Support_Owner__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.PRM_IPARegistration_Integration_UserId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1</targetReference>
+            </connector>
+            <label>Contact valid for ISO assignment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1</name>
+        <label>Update ISO as Owner for Intel Contact</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>myRule_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_Update ISO as Owner for Intel Contact</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>TRUE_Update ISO as Owner for Intel Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_5</name>
+        <label>Check for IPA User</label>
+        <locationX>446</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>FALSE_Check for IPA User</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_TRUE_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>TRUE_Check for IPA User</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the IPS Contact - Create process using multiple criteria.
+Actions for Contact Creation</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_1_Formula_9069842413</name>
+        <dataType>String</dataType>
+        <expression>IF( 
+	ISPICKVAL({!$Record.Owner.UserType}, &apos;PowerPartner&apos;),
+	null,
+	{!$Record.OwnerId
+})</expression>
+    </formulas>
+    <formulas>
+        <name>formula_2_myRule_1_A1_3588102276</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.CreatedById }</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.RecordType.DeveloperName=&apos;Core_Intel_Contact&apos;} &amp;&amp; {!$Record.Core_IPS_Intel_Support_Owner__r.Id != $Label.PRM_IPARegistration_Integration_UserId }</expression>
+    </formulas>
+    <formulas>
+        <name>formula_TRUE_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>!ISPICKVAL({!$Record.CreatedBy.UserType }, &apos;Standard&apos;) &amp;&amp; {!$Record.Core_IPS_Intel_Support_Owner__r.Id = $Label.PRM_IPARegistration_Integration_UserId }</expression>
+    </formulas>
+    <label>IPS Contact - Create_1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myRule_1_A1</name>
+        <label>Core_Update_ISO_to_ContactOwner</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>formula_1_Formula_9069842413</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_IPS_Intel_Support_Owner__c</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_3588102276</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>myRule_5_A1</name>
+        <label>Remove ISO</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_IPS_Intel_Support_Owner__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>419</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ISO_field_Check</targetReference>
+        </connector>
+        <object>Contact</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Host Information</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Host Information</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Sales_Account__c</name>
+        <relationshipLabel><!-- Host Information --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Help on how to determine Computer Type --></label>
+        <name>Sales_CompType_URL_del__c</name>
+    </fields>
+    <fields>
+        <help>Companion Computer ID can be either Guard ID (T or S followed by 9 digits) or NIC ID (12 hexadecimal characters) only</help>
+        <label><!-- Companion Computer ID 1 --></label>
+        <name>Sales_Companion_Server1_Txt__c</name>
+    </fields>
+    <fields>
+        <help>Companion Computer ID can be either Guard ID (T or S followed by 9 digits) or NIC ID (12 hexadecimal characters) only</help>
+        <label><!-- Companion Computer ID 2 --></label>
+        <name>Sales_Companion_Server2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Computer Name --></label>
+        <name>Sales_Computer_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Computer Type --></label>
+        <name>Sales_Computer_Type__c</name>
+        <picklistValues>
+            <masterLabel>GUARD ID</masterLabel>
+            <translation><!-- GUARD ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HOST ID</masterLabel>
+            <translation><!-- HOST ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NIC ID</masterLabel>
+            <translation><!-- NIC ID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin --></label>
+        <name>Sales_Contact__c</name>
+        <relationshipLabel><!-- Host Information --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Host Is Created From Custom Page --></label>
+        <name>Sales_Host_Is_Created_From_Custom_Page__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsTemporaryLicense --></label>
+        <name>Sales_IsTemporaryLicense__c</name>
+    </fields>
+    <fields>
+        <label>Legacy Host Id</label>
+        <name>Sales_Legacy_Host_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Altera Software Licenses (intel.com) --></help>
+        <label><!-- Help on how to determine Computer Type --></label>
+        <name>Sales_LicenseType_URL_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Type --></label>
+        <name>Sales_License_Type__c</name>
+        <picklistValues>
+            <masterLabel>FIXED</masterLabel>
+            <translation><!-- FIXED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOAT</masterLabel>
+            <translation><!-- FLOAT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Email --></label>
+        <name>Sales_Primary_Admin_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Name --></label>
+        <name>Sales_Primary_Admin_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Computer ID - Dont Use --></label>
+        <name>Sales_Primary_Computer_ID_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redundant Server ID 1 --></label>
+        <name>Sales_Redundant_Server1_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redundant Server ID 2 --></label>
+        <name>Sales_Redundant_Server2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Sales_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please use Activate/ Deactivate Computer button from the drop down at the right corner above for  Activating or Deactivating the Computer --></help>
+        <label><!-- Active --></label>
+        <name>Sales_isActiveHost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temporary NIC ID --></label>
+        <name>Temporary_NIC_ID__c</name>
+    </fields>
+    <recordTypes>
+        <label>New Computer</label>
+        <name>Sales_NewHost</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please enter the Computer Name --></errorMessage>
+        <name>Sales_EnterComputerNameOnHostCreation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Computer Type can either be a Guard ID or a NIC ID for a fixed license type computer.</errorMessage>
+        <name>Sales_Fixed_GUARD_NIC_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>For computers using a fixed license, you cannot add redundant servers. You can optionally add companion computers.</errorMessage>
+        <name>Sales_Fixed_Lic_Red_Server_NotAllowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Computer Type can either be a NIC ID or a HOST ID for computers using a floating license.</errorMessage>
+        <name>Sales_Float_HOST_NIC_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>For FLOAT License Type, either none or both Redundant Servers must be added to a host &amp; cannot add Companion Computer for FLOAT license type.</errorMessage>
+        <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not authorized to add a New Host from this screen. --></errorMessage>
+        <name>Sales_HostCreation_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Invalid computer type for companion computer IDs</errorMessage>
+        <name>Sales_Valid_Companion_Server_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Invalid primary computer ID. HOST ID: Eight hexadecimal digits - 12345678 / NIC ID: 12 hexadecimal digits - 123456789101 / GUARD ID (Dongle) : T or S prefix followed by nine digits - T000000001</errorMessage>
+        <name>Sales_Valid_PrimaryComputerID</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Invalid computer type for redundant server IDs</errorMessage>
+        <name>Sales_Valid_Redundant_Server_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Temporary NIC ID cannot be set for computers using a fixed license.</errorMessage>
+        <name>Temporary_NIC_ID_Validation_Fixed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Temporary NIC ID should consist of 12 hexadecimal characters.</errorMessage>
+        <name>Temporary_NIC_ID_Validation_Float</name>
+    </validationRules>
+</CustomObjectTranslation>

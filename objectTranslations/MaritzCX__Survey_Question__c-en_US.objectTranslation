@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CEP Survey Question</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CEP Survey Questions</value>
+    </caseValues>
+    <fields>
+        <label><!-- ALG Survey Id --></label>
+        <name>MaritzCX__ALG_Survey_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- ALG Survey Question Id --></label>
+        <name>MaritzCX__ALG_Survey_Question_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>MaritzCX__Is_Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- The label can be overridden to display on Response lists. --></help>
+        <label><!-- Question Label --></label>
+        <name>MaritzCX__Question_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Type --></label>
+        <name>MaritzCX__Question_Type__c</name>
+        <picklistValues>
+            <masterLabel>comments 1</masterLabel>
+            <translation><!-- comments 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>comments 2</masterLabel>
+            <translation><!-- comments 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>key metric 1</masterLabel>
+            <translation><!-- key metric 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>key metric 2</masterLabel>
+            <translation><!-- key metric 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>metric 1</masterLabel>
+            <translation><!-- metric 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>metric 2</masterLabel>
+            <translation><!-- metric 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Survey --></label>
+        <name>MaritzCX__Survey__c</name>
+        <relationshipLabel><!-- Survey Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>MaritzCX__question__c</name>
+    </fields>
+    <nameFieldLabel>CEP Survey Question Name</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

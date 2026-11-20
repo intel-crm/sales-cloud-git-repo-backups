@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Value Exchange Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Value Exchange Data</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Value Exchange Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Date --></label>
+        <name>PRM_Change_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Market Type --></label>
+        <name>PRM_Country_Market_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Count --></label>
+        <name>PRM_Design_Registration_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- From --></label>
+        <name>PRM_From_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Changed Indicator --></label>
+        <name>PRM_IsChanged_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- MP Solutions Count --></label>
+        <name>PRM_MP_Solutions_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- MP Solutions Count --></label>
+        <name>PRM_MP_Solutions_Count_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Employees Done Training --></label>
+        <name>PRM_Number_Of_Employees_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner Id --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- Value Exchange Data (One Partner Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role Check --></label>
+        <name>PRM_Partner_Role_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percent to next tier --></label>
+        <name>PRM_Percent_to_next_tier_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed Date Time --></label>
+        <name>PRM_Processed_Date_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Source --></label>
+        <name>PRM_Revenue_Source_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Amount --></label>
+        <name>PRM_Sales_Amount_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Amount --></label>
+        <name>PRM_Sales_Amount_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Calculation Group --></label>
+        <name>PRM_Sales_Calculation_Group_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales to next tier --></label>
+        <name>PRM_Sales_To_Next_Tier_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales To Next Tier --></label>
+        <name>PRM_Sales_To_Next_Tier_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales to next tier percent --></label>
+        <name>PRM_Sales_to_next_tier_percent_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sum of Training Credits --></label>
+        <name>PRM_Sum_of_Training_Credits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>PRM_Tier_Id__c</name>
+        <relationshipLabel><!-- Value Exchange Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Measurement Period --></label>
+        <name>PRM_TimePeriod_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Q4 2025 - Q3 2026</masterLabel>
+            <translation><!-- Q4 2025 - Q3 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2026 - Q3 2027</masterLabel>
+            <translation><!-- Q4 2026 - Q3 2027 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- To --></label>
+        <name>PRM_To_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Nbr Achieved Competency --></label>
+        <name>PRM_Total_Achieved_Competency_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Nbr Achieved Competency --></label>
+        <name>PRM_Total_Achieved_Competency_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Sales Out Units --></label>
+        <name>PRM_Total_Sales_Out_Units_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Sales Out Units --></label>
+        <name>PRM_Total_Sales_Out_Units_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Credit Points Count --></label>
+        <name>PRM_Training_Credit_Points_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Credit Points Count --></label>
+        <name>PRM_Training_Credit_Points_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training credits to next tier --></label>
+        <name>PRM_Training_Credits_to_Next_Tier_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training credits to next tier percent --></label>
+        <name>PRM_Training_credit_to_next_tier_per_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training credits to next tier --></label>
+        <name>PRM_Training_credits_tier_report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type Of Solutions --></label>
+        <name>PRM_Type_Of_Solutions_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value Exchange External Id --></label>
+        <name>PRM_Value_Exchange_ext_id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,231 @@
+<apex:component controller="Core_MultiselectController">
+    
+    <apex:attribute name="leftLabel" description="Label on left listbox."
+                    type="String" required="true" />
+    <apex:attribute name="rightLabel" description="Label on right listbox."
+                    type="String" required="true" />
+    <apex:attribute name="size" description="Size of listboxes."
+                    type="Integer" required="true" />
+    <apex:attribute name="width" description="Width of listboxes."
+                    type="String" required="true" />
+    <apex:attribute name="showUpDownButtons" description="Should Up/Down buttons be displayed or not."
+                    type="Boolean" required="false" default="true"/>
+    
+    <apex:attribute name="isLightning" type="boolean" required="true" description="this is used to identify lightning or classic"/>
+    
+    <apex:attribute name="leftOptions"
+                    description="Options list for left listbox." type="SelectOption[]"
+                    required="true" assignTo="{!leftOptions}" />
+    <apex:attribute name="rightOptions"
+                    description="Options list for right listbox." type="SelectOption[]"
+                    required="true" assignTo="{!rightOptions}" />
+    
+    <apex:outputPanel id="multiselectPanel" layout="block" styleClass="duelingListBox" rendered="{!!isLightning}">
+        <table class="layout" style="width:100%;">
+            <tbody>
+                <tr>
+                    <td class="selectCell">
+                        <apex:outputPanel layout="block" styleClass="selectTitle">
+                            <!-- 
+Visualforce prepends the correct prefix to the outputLabel's 
+'for' attribute
+-->
+                            <apex:outputLabel value="{!leftLabel}" 
+                                              for="multiselectPanel:leftList" />
+                        </apex:outputPanel>
+                        <div>
+                            <select id="{!$Component.multiselectPanel}:leftList" 
+                                    class="multilist" multiple="multiple" size="{!size}" 
+                                    style="width:200px;">
+                                <apex:repeat value="{!leftOptions}" var="option">
+                                    <option value="{!option.value}">{!option.label}</option>
+                                </apex:repeat>
+                            </select>
+                        </div>
+                    </td>
+                    <td class="buttonCell">
+                        <br/><br/>
+                        <apex:outputPanel layout="block" styleClass="text slds-button slds-button_neutral">
+                            <apex:outputLink value="javascript:moveSelectedOptions('{!$Component.multiselectPanel}:leftList', 
+                                                    '{!$Component.multiselectPanel}:rightList', '{!$Component.leftHidden}', 
+                                                    '{!$Component.rightHidden}');"
+                                             id="btnRight" styleClass="slds-button slds-button_neutral">
+                                <apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon slds-button slds-button_neutral"
+                                            title="Add" />
+                            </apex:outputLink>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="block" styleClass="text slds-button slds-button_neutral">
+                            <apex:outputLink value="javascript:moveSelectedOptions('{!$Component.multiselectPanel}:rightList', 
+                                                    '{!$Component.multiselectPanel}:leftList', '{!$Component.rightHidden}', 
+                                                    '{!$Component.leftHidden}');"
+                                             id="btnLeft" styleClass="slds-button slds-button_neutral">
+                                <apex:image value="/s.gif" alt="Remove"
+                                            styleClass="leftArrowIcon slds-button slds-button_neutral" title="Remove" />
+                            </apex:outputLink>
+                        </apex:outputPanel>
+                    </td>
+                    <td class="selectCell">
+                        <apex:outputPanel layout="block" styleClass="selectTitle">
+                            <apex:outputLabel value="{!rightLabel}" for="multiselectPanel:rightList" />
+                        </apex:outputPanel>
+                        <div>
+                            <select id="{!$Component.multiselectPanel}:rightList" 
+                                    class="multilist" multiple="multiple" size="{!size}" 
+                                    style="width:200px;">
+                                <apex:repeat value="{!rightOptions}" var="option">
+                                    <option value="{!option.value}">{!option.label}</option>
+                                </apex:repeat>
+                            </select>
+                        </div>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <apex:inputHidden value="{!leftOptionsHidden}" id="leftHidden" />
+        <apex:inputHidden value="{!rightOptionsHidden}" id="rightHidden" />
+    </apex:outputPanel>
+    
+    <apex:outputPanel id="multiselectPanelLightning" layout="block" styleClass="duelingListBox" rendered="{!isLightning}">
+        
+        <div class="slds-dueling-list">
+            <div class="slds-assistive-text" id="drag-live-region" aria-live="assertive"></div>
+            <div class="slds-assistive-text" id="option-drag-label">Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.</div>
+            <div class="slds-dueling-list__column">
+                <span class="slds-form-element__label" id="label-83">{!leftLabel}</span>
+                <div style="width:14rem;height:inherit;">
+                    <select id="{!$Component.multiselectPanelLightning}:leftLightning" multiple="multiple" style="height: inherit;min-width: 14rem;min-height: 9rem;">
+                        <apex:repeat value="{!leftOptions}" var="option">
+                            <option value="{!option.value}" >{!option.label}</option>
+                        </apex:repeat>
+                    </select>
+                </div>
+            </div>
+            <div class="slds-dueling-list__column" style="padding-top: 2rem;">
+                <apex:outputLink styleClass="slds-button slds-button_icon slds-button_icon-container" title="Move Selection to Second Category" value="javascript:moveSelectedOptions('{!$Component.multiselectPanelLightning}:leftLightning', '{!$Component.multiselectPanelLightning}:rightLightning', '{!$Component.leftHiddenLightning}', '{!$Component.rightHiddenLightning}');">
+                    <apex:image url="{!$Resource.Core_RightIcon}" alt="Add"/>
+                </apex:outputLink>
+                <apex:outputLink styleClass="slds-button slds-button_icon slds-button_icon-container" title="Move Selection to First Category" value="javascript:moveSelectedOptions('{!$Component.multiselectPanelLightning}:rightLightning', '{!$Component.multiselectPanelLightning}:leftLightning', '{!$Component.rightHiddenLightning}', '{!$Component.leftHiddenLightning}');">
+                    <apex:image url="{!$Resource.Core_LeftIcon}" alt="Remove"/>
+                </apex:outputLink>
+            </div>
+            <div class="slds-dueling-list__column">
+                <span class="slds-form-element__label" id="label-84">{!rightLabel}</span>
+                <div style="width:14rem;height:inherit;">
+                    <select id="{!$Component.multiselectPanelLightning}:rightLightning" multiple="multiple" style="height: inherit;min-width: 14rem;min-height: 9rem;">
+                        <apex:repeat value="{!rightOptions}" var="option">
+                            <option value="{!option.value}">{!option.label}</option>
+                        </apex:repeat>
+                    </select>
+                </div>
+            </div>
+            
+        </div>
+        
+        <apex:inputHidden value="{!leftOptionsHidden}" id="leftHiddenLightning" />
+        <apex:inputHidden value="{!rightOptionsHidden}" id="rightHiddenLightning" />
+    </apex:outputPanel>
+    <script type="text/javascript">
+    if (!buildOutputString) {
+        // Create a string from the content of a listbox
+        var buildOutputString = function(listBox, hiddenInput) {
+            var str = '';
+            
+            for ( var x = 0; x < listBox.options.length; x++) {
+                str += encodeURIComponent(listBox.options[x].value) + '&'
+                + encodeURIComponent(listBox.options[x].text) + '&';
+            }
+            str.length--;
+            
+            hiddenInput.value = str.slice(0, -1);
+        }
+        }
+    
+    if (!moveSelectedOptions) {
+        // Move the selected options in the idFrom listbox to the idTo
+        // listbox, updating the corresponding strings in idHdnFrom and
+        // idHdnTo
+        var moveSelectedOptions = function(idFrom, idTo, idHdnFrom, idHdnTo) {
+            listFrom = document.getElementById(idFrom);
+            listTo = document.getElementById(idTo);
+            
+            for ( var x = 0; x < listTo.options.length; x++) {
+                listTo.options[x].selected = false;
+            }
+            
+            for ( var x = 0; x < listFrom.options.length; x++) {
+                if (listFrom.options[x].selected == true) {
+                    listTo.appendChild(listFrom.options[x]);
+                    x--;
+                }
+            }
+            
+            listTo.focus();
+            
+            buildOutputString(listFrom, document.getElementById(idHdnFrom));
+            buildOutputString(listTo, document.getElementById(idHdnTo));
+        }
+        }
+    
+    if (!slideSelectedOptionsUp) {
+        // Slide the selected options in the idList listbox up by one position,
+        // updating the corresponding string in idHidden
+        var slideSelectedOptionsUp = function(idList, idHidden) {
+            listBox = document.getElementById(idList);
+            
+            var len = listBox.options.length;
+            
+            if (len > 0 && listBox.options[0].selected == true) {
+                return;
+            }
+            
+            for ( var x = 1; x < len; x++) {
+                if (listBox.options[x].selected == true) {
+                    listBox.insertBefore(listBox.options[x],
+                                         listBox.options[x - 1]);
+                }
+            }
+            
+            listBox.focus();
+            
+            buildOutputString(listBox, document.getElementById(idHidden));
+        }
+        }
+    
+    if (!slideSelectedOptionsDown) {
+        // Slide the selected options in the idList listbox down by one position,
+        // updating the corresponding string in idHidden
+        var slideSelectedOptionsDown = function(idList, idHidden) {
+            listBox = document.getElementById(idList);
+            
+            var len = listBox.options.length;
+            
+            if (len > 0 && listBox.options[len - 1].selected == true) {
+                return;
+            }
+            
+            for ( var x = listBox.options.length - 2; x >= 0; x--) {
+                if (listBox.options[x].selected == true) {
+                    listBox.insertBefore(listBox.options[x + 1],
+                                         listBox.options[x]);
+                }
+            }
+            
+            listBox.focus();
+            
+            buildOutputString(listBox, document.getElementById(idHidden));
+        }
+        }
+    
+    // initialize the string representations
+    buildOutputString(document.getElementById('{!$Component.multiselectPanel}:leftList'), 
+                      document.getElementById('{!$Component.leftHidden}'));
+    buildOutputString(document.getElementById('{!$Component.multiselectPanel}:rightList'), 
+                      document.getElementById('{!$Component.rightHidden}'));
+    
+    buildOutputString(document.getElementById('{!$Component.multiselectPanelLightning}:leftLightning'), 
+                      document.getElementById('{!$Component.leftHiddenLightning}'));
+    buildOutputString(document.getElementById('{!$Component.multiselectPanelLightning}:rightLightning'), 
+                      document.getElementById('{!$Component.rightHiddenLightning}'));
+    </script>
+</apex:component>

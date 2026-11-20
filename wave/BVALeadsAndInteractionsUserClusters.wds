@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDataset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <application>Value_Analytics</application>
+    <masterLabel>BVA Leads And Interactions User Clusters</masterLabel>
+    <templateAssetSourceName>BVALeadsAndInteractionsUserClusters_tp</templateAssetSourceName>
+    <type>default</type>
+</WaveDataset>

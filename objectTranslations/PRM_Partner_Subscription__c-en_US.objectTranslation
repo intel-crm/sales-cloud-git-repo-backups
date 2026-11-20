@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Subscription</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Subscriptions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Community --></label>
+        <name>PRM_Community__c</name>
+        <picklistValues>
+            <masterLabel>Intel® Cloud Insider Partner</masterLabel>
+            <translation><!-- Intel® Cloud Insider Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® FPGA Partner</masterLabel>
+            <translation><!-- Intel® FPGA Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® IOT Solution Partner</masterLabel>
+            <translation><!-- Intel® IOT Solution Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Code --></label>
+        <name>PRM_Subscription_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PRM_Subscription_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Type --></label>
+        <name>PRM_Subscription_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Alliance Co-Marketing (MDF) Opportunities for Intel Technology Provider</masterLabel>
+            <translation><!-- Alliance Co-Marketing (MDF) Opportunities for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Solutions - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Industry Solutions - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newsletter - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Newsletter - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newsletters - Distributor for Intel Technology Provider</masterLabel>
+            <translation><!-- Newsletters - Distributor for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Research and Survey Invitation Emails - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Partner Research and Survey Invitation Emails - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Points Communications - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Points Communications - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product and Solution Information and Promotions - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Product and Solution Information and Promotions - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training and Event Invitations - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Training and Event Invitations - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinars - Distributor for Intel Technology Provider</masterLabel>
+            <translation><!-- Webinars - Distributor for Intel Technology Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinars - ITP for Intel Technology Provider</masterLabel>
+            <translation><!-- Webinars - ITP for Intel Technology Provider --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

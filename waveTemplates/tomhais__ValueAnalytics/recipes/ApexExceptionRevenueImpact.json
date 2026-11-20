@@ -1,0 +1,2620 @@
+{
+  "name" : "ApexExceptionRevenueImpact",
+  "label" : "BVA Apex Exception Revenue Impact",
+  "scheduleExpression" : null,
+  "publishingTarget" : "DATASET",
+  "format" : "R3",
+  "scheduleType" : "EventDriven",
+  "recipeDefinition" : {
+    "version" : "60.0",
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "User.Country",
+            "User.FirstName",
+            "EVENT_TYPE",
+            "SessionEndFlag",
+            "APP_NAME",
+            "USER_ID",
+            "User.Roles.ParentRolesPath",
+            "DataDictionary.Event",
+            "ORGANIZATION_ID",
+            "PAGE_APP_NAME",
+            "User.Department",
+            "RECORD_ID",
+            "User.Name",
+            "TargetURL",
+            "TIMESTAMP_DERIVED",
+            "SequenceNumberS",
+            "USER_TYPE",
+            "User.Roles.Id",
+            "RELATED_LIST",
+            "PageChangeFlagDim",
+            "PageName",
+            "REQUEST_ID",
+            "SourceObjectType",
+            "User.Division",
+            "User.Profile.Name",
+            "User.Roles.ParentRoleMultiField",
+            "InteractionDateTime",
+            "ComponentName",
+            "User.Profile.Id",
+            "User.Profile.UserType",
+            "USER_ID_DERIVED",
+            "PAGE_ENTITY_TYPE",
+            "User.ProfileId",
+            "DataDictionary.Event_Label",
+            "PAGE_URL",
+            "User.Id",
+            "User.Roles.Name",
+            "DataDictionary.Description",
+            "PAGE_ENTITY_ID",
+            "RECORD_TYPE",
+            "SourceRecordId",
+            "EFFECTIVE_PAGE_TIME",
+            "TotalSessionTime",
+            "SequenceNumber",
+            "PageChangeFlag",
+            "StallTime",
+            "TimeToAction",
+            "Exceptions.RowCount",
+            "ClickCount",
+            "RecordException"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Union Logs Adoption",
+            "name" : "${App.Datasets.BVA_UnionLogsAdoption_tp.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "EXTRACT1" : {
+        "action" : "extractGrains",
+        "sources" : [
+          "FILTER11"
+        ],
+        "parameters" : {
+          "grainExtractions" : [ ]
+        }
+      },
+      "AGGREGATE3" : {
+        "action" : "aggregate",
+        "sources" : [
+          "EXTRACT1"
+        ],
+        "parameters" : {
+          "aggregations" : [
+            {
+              "action" : "SUM",
+              "source" : "RecordException",
+              "name" : "SUM_RecordException",
+              "label" : "Sum of Record Exception"
+            }
+          ],
+          "groupings" : [
+            "PAGE_ENTITY_ID"
+          ],
+          "pivots" : [ ],
+          "nodeType" : "STANDARD"
+        }
+      },
+      "FILTER0" : {
+        "action" : "filter",
+        "sources" : [
+          "LOAD_DATASET0"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "PageName",
+              "operator" : "EQUAL",
+              "operands" : [
+                "Account",
+                "Case",
+                "Event",
+                "Opportunity",
+                "OpportunityContactRole",
+                "Task",
+                "OpportunityLineItem"
+              ]
+            },
+            {
+              "type" : "NUMBER",
+              "field" : "RecordException",
+              "operator" : "EQUAL",
+              "operands" : [
+                "1"
+              ]
+            }
+          ]
+        }
+      },
+      "LOAD_DATASET1" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "OwnerId",
+            "Id",
+            "Name"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Account",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Account"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "LOAD_DATASET2" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "CreatedDate",
+            "Id",
+            "AccountId",
+            "Name",
+            "Amount",
+            "IsClosed",
+            "IsWon",
+            "OwnerId"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Opportunity",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Opportunity"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "LOAD_DATASET3" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "OwnerId",
+            "Id",
+            "AccountId",
+            "Name"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Contact",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Contact"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "LOAD_DATASET4" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "OwnerId",
+            "Id",
+            "CaseNumber",
+            "AccountId",
+            "Status",
+            "IsClosed"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Case",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Case"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "LOAD_DATASET5" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "FirstName",
+            "Profile.Name",
+            "Roles.Name",
+            "Roles.ParentRoleMultiField",
+            "Name",
+            "Department",
+            "Username",
+            "Country",
+            "Division",
+            "Id"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Users Profiles Roles",
+            "name" : "${App.Datasets.BVA_UsersProfilesRoles_tp.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN2" : {
+        "action" : "join",
+        "sources" : [
+          "FILTER1",
+          "LOAD_DATASET5"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [ ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "OwnerId"
+          ],
+          "rightQualifier" : "Owner",
+          "rightKeys" : [
+            "Id"
+          ]
+        }
+      },
+      "JOIN3" : {
+        "action" : "join",
+        "sources" : [
+          "FILTER9",
+          "LOAD_DATASET5"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [ ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "OwnerId"
+          ],
+          "rightQualifier" : "Owner",
+          "rightKeys" : [
+            "Id"
+          ]
+        }
+      },
+      "JOIN4" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET1",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "JOIN5" : {
+        "action" : "join",
+        "sources" : [
+          "FILTER10",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "JOIN6" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET3",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "JOIN7" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET4",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "LOAD_DATASET6" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "Id",
+            "WhoId",
+            "WhatId",
+            "AccountId",
+            "OwnerId",
+            "CreatedDate"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Event",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Event"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "LOAD_DATASET7" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "CreatedDate",
+            "Id",
+            "WhoId",
+            "WhatId",
+            "OwnerId"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Task",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Task"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN10" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET6",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "JOIN11" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET7",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "LOAD_DATASET8" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "OpportunityId",
+            "CreatedDate",
+            "CreatedById",
+            "Id"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "OpportunityContactRole",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "OpportunityContactRole"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN13" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET8",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "FILTER1" : {
+        "action" : "filter",
+        "sources" : [
+          "FORMULA14"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "OppHighRiskErrorCount",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            },
+            {
+              "type" : "NUMBER",
+              "field" : "OppMediumRiskErrorCount",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ],
+          "filterBooleanLogic" : "1 OR 2"
+        }
+      },
+      "FILTER2" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN6"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Exceptions.SUM_RecordException",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "LOAD_DATASET9" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "CreatedById",
+            "Id",
+            "OpportunityId",
+            "TotalPrice"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "OpportunityLineItem",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "OpportunityLineItem"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN15" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET9",
+          "AGGREGATE3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Exceptions.PAGE_ENTITY_ID"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Exceptions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "FILTER3" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN7"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Exceptions.SUM_RecordException",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "FILTER4" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN10"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Exceptions.SUM_RecordException",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "FILTER5" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN11"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Exceptions.SUM_RecordException",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "FILTER6" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN13"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Exceptions.SUM_RecordException",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "FILTER8" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN15"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Exceptions.SUM_RecordException",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "JOIN16" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN5",
+          "FILTER8"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "OLIExceptions.CreatedById",
+              "OLIExceptions.OpportunityId",
+              "OLIExceptions.Owner.ProfileId",
+              "OLIExceptions.Owner.UserRoleId",
+              "OLIExceptions.Owner.FirstName",
+              "OLIExceptions.Owner.Profile.Name",
+              "OLIExceptions.Owner.Roles.Name",
+              "OLIExceptions.Owner.Roles.ParentRoleMultiField",
+              "OLIExceptions.Owner.Name",
+              "OLIExceptions.Owner.Roles.Id",
+              "OLIExceptions.Owner.Roles.ParentRolesPath",
+              "OLIExceptions.Owner.Department",
+              "OLIExceptions.Owner.Roles.ParentRoleId",
+              "OLIExceptions.Owner.Profile.UserType",
+              "OLIExceptions.Owner.Profile.Id",
+              "OLIExceptions.Owner.Country",
+              "OLIExceptions.Owner.Roles.DeveloperName",
+              "OLIExceptions.Owner.Division",
+              "OLIExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "OLIExceptions",
+          "rightKeys" : [
+            "OpportunityId"
+          ]
+        }
+      },
+      "FORMULA0" : {
+        "action" : "formula",
+        "sources" : [
+          "JOIN19"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "OppMediumRiskRecordCount",
+              "label" : "OppMediumRiskRecordCount",
+              "formulaExpression" : "case when size(\"EventExceptions.Id\") = -1 then 0 else size(\"EventExceptions.Id\") end\r\n + \r\ncase when size(\"TaskExceptions.Id\") = -1 then 0 else size(\"TaskExceptions.Id\") end \r\n+ \r\ncase when size(\"OppContExceptions.Id\") = -1 then 0 else size(\"OppContExceptions.Id\") end",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA1" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA0"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "OppMediumRiskErrorCount",
+              "label" : "OppMediumRiskErrorCount",
+              "formulaExpression" : "\"EventExceptions.Exceptions.SUM_RecordException\" + \"TaskExceptions.Exceptions.SUM_RecordException\" + \"OppContExceptions.Exceptions.SUM_RecordException\"",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA2" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA1"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "OppHighRiskRecordCount",
+              "label" : "OppHighRiskRecordCount",
+              "formulaExpression" : "1 + case when size(\"OLIExceptions.Id\")=-1 then 0 else size(\"OLIExceptions.Id\") end",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA3" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA2"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "OppHighRiskErrorCount",
+              "label" : "OppHighRiskErrorCount",
+              "formulaExpression" : "\"Exceptions.SUM_RecordException\" + \"OLIExceptions.Exceptions.SUM_RecordException\"",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA4" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA3"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "GeneralGrouping",
+              "label" : "GeneralGrouping",
+              "formulaExpression" : "'Opportunities'",
+              "precision" : 50,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA14" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA4"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "HighRiskAmount",
+              "label" : "HighRiskAmount",
+              "formulaExpression" : "case \r\n    when \"OLIExceptions.Exceptions.SUM_RecordException\" = 0 AND \"Exceptions.SUM_RecordException\" = 0 then 0 \r\n    when \"OLIExceptions.Exceptions.SUM_RecordException\" != 0 AND \"Exceptions.SUM_RecordException\" = 0 then \"OLIExceptions.TotalPrice\" \r\n    when \"OLIExceptions.Exceptions.SUM_RecordException\" = 0 AND \"Exceptions.SUM_RecordException\" != 0 then Amount \r\n    when \"OLIExceptions.Exceptions.SUM_RecordException\" != 0 AND \"Exceptions.SUM_RecordException\" != 0 then Amount \r\n    else 0\r\nend",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "JOIN17" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN16",
+          "FILTER4"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "EventExceptions.WhoId",
+              "EventExceptions.WhatId",
+              "EventExceptions.AccountId",
+              "EventExceptions.OwnerId",
+              "EventExceptions.CreatedDate",
+              "EventExceptions.Owner.ProfileId",
+              "EventExceptions.Owner.UserRoleId",
+              "EventExceptions.Owner.FirstName",
+              "EventExceptions.Owner.Profile.Name",
+              "EventExceptions.Owner.Roles.Name",
+              "EventExceptions.Owner.Roles.ParentRoleMultiField",
+              "EventExceptions.Owner.Name",
+              "EventExceptions.Owner.Roles.Id",
+              "EventExceptions.Owner.Roles.ParentRolesPath",
+              "EventExceptions.Owner.Department",
+              "EventExceptions.Owner.Roles.ParentRoleId",
+              "EventExceptions.Owner.Profile.UserType",
+              "EventExceptions.Owner.Profile.Id",
+              "EventExceptions.Owner.Country",
+              "EventExceptions.Owner.Roles.DeveloperName",
+              "EventExceptions.Owner.Division",
+              "EventExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "EventExceptions",
+          "rightKeys" : [
+            "WhatId"
+          ]
+        }
+      },
+      "JOIN18" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN17",
+          "FILTER5"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "TaskExceptions.CreatedDate",
+              "TaskExceptions.WhoId",
+              "TaskExceptions.WhatId",
+              "TaskExceptions.OwnerId",
+              "TaskExceptions.Owner.ProfileId",
+              "TaskExceptions.Owner.UserRoleId",
+              "TaskExceptions.Owner.FirstName",
+              "TaskExceptions.Owner.Profile.Name",
+              "TaskExceptions.Owner.Roles.Name",
+              "TaskExceptions.Owner.Roles.ParentRoleMultiField",
+              "TaskExceptions.Owner.Name",
+              "TaskExceptions.Owner.Roles.Id",
+              "TaskExceptions.Owner.Roles.ParentRolesPath",
+              "TaskExceptions.Owner.Department",
+              "TaskExceptions.Owner.Roles.ParentRoleId",
+              "TaskExceptions.Owner.Profile.UserType",
+              "TaskExceptions.Owner.Profile.Id",
+              "TaskExceptions.Owner.Country",
+              "TaskExceptions.Owner.Roles.DeveloperName",
+              "TaskExceptions.Owner.Division",
+              "TaskExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "TaskExceptions",
+          "rightKeys" : [
+            "WhatId"
+          ]
+        }
+      },
+      "JOIN19" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN18",
+          "FILTER6"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "OppContExceptions.OpportunityId",
+              "OppContExceptions.CreatedDate",
+              "OppContExceptions.CreatedById",
+              "OppContExceptions.Owner.ProfileId",
+              "OppContExceptions.Owner.UserRoleId",
+              "OppContExceptions.Owner.FirstName",
+              "OppContExceptions.Owner.Profile.Name",
+              "OppContExceptions.Owner.Roles.Name",
+              "OppContExceptions.Owner.Roles.ParentRoleMultiField",
+              "OppContExceptions.Owner.Name",
+              "OppContExceptions.Owner.Roles.Id",
+              "OppContExceptions.Owner.Roles.ParentRolesPath",
+              "OppContExceptions.Owner.Department",
+              "OppContExceptions.Owner.Roles.ParentRoleId",
+              "OppContExceptions.Owner.Profile.UserType",
+              "OppContExceptions.Owner.Profile.Id",
+              "OppContExceptions.Owner.Country",
+              "OppContExceptions.Owner.Roles.DeveloperName",
+              "OppContExceptions.Owner.Division",
+              "OppContExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "OppContExceptions",
+          "rightKeys" : [
+            "OpportunityId"
+          ]
+        }
+      },
+      "EXTRACT2" : {
+        "action" : "extractGrains",
+        "sources" : [
+          "FILTER1"
+        ],
+        "parameters" : {
+          "grainExtractions" : [ ]
+        }
+      },
+      "AGGREGATE5" : {
+        "action" : "aggregate",
+        "sources" : [
+          "EXTRACT2"
+        ],
+        "parameters" : {
+          "aggregations" : [
+            {
+              "action" : "SUM",
+              "source" : "OppHighRiskErrorCount",
+              "name" : "AccSUmOppHighRiskErrorCount",
+              "label" : "AccSumOppHighRiskErrorCount"
+            },
+            {
+              "action" : "SUM",
+              "source" : "OppMediumRiskErrorCount",
+              "name" : "AccSumOppMediumRiskErrorCount",
+              "label" : "AccSumOppMediumRiskErrorCount"
+            },
+            {
+              "action" : "SUM",
+              "source" : "OppHighRiskRecordCount",
+              "name" : "AccSUmOppHighRiskRecordCount",
+              "label" : "AccSumOppHighRiskRecordCount"
+            },
+            {
+              "action" : "SUM",
+              "source" : "OppMediumRiskRecordCount",
+              "name" : "AccSumOppMediumRiskRecordCount",
+              "label" : "AccSumOppMediumRiskRecordCount"
+            },
+            {
+              "action" : "SUM",
+              "source" : "HighRiskAmount",
+              "name" : "SumHighRiskAmount",
+              "label" : "Sum of HighRiskAmount"
+            },
+            {
+              "action" : "AVG",
+              "source" : "HighRiskAmount",
+              "name" : "AverageHighRiskAmount",
+              "label" : "Average HighRiskAmount"
+            },
+            {
+              "action" : "MIN",
+              "source" : "HighRiskAmount",
+              "name" : "MinimumHighRiskAmount",
+              "label" : "Minimum HighRiskAmount"
+            },
+            {
+              "action" : "UNIQUE",
+              "source" : "OwnerId",
+              "name" : "OppImpactedUsers",
+              "label" : "OppImpactedUsers"
+            }
+          ],
+          "groupings" : [
+            "AccountId"
+          ],
+          "pivots" : [ ],
+          "nodeType" : "STANDARD"
+        }
+      },
+      "JOIN20" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN4",
+          "FILTER2"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "ContactExceptions.AccountId",
+              "ContactExceptions.Name",
+              "ContactExceptions.Owner.FirstName",
+              "ContactExceptions.Owner.Profile.Name",
+              "ContactExceptions.Owner.Roles.Name",
+              "ContactExceptions.Owner.Roles.ParentRoleMultiField",
+              "ContactExceptions.Owner.Name",
+              "ContactExceptions.Owner.Department",
+              "ContactExceptions.Owner.Username",
+              "ContactExceptions.Owner.Country",
+              "ContactExceptions.Owner.Division",
+              "ContactExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "ContactExceptions",
+          "rightKeys" : [
+            "AccountId"
+          ]
+        }
+      },
+      "JOIN21" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN20",
+          "FILTER3"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "CaseExceptions.CaseNumber",
+              "CaseExceptions.AccountId",
+              "CaseExceptions.Status",
+              "CaseExceptions.IsClosed",
+              "CaseExceptions.Owner.FirstName",
+              "CaseExceptions.Owner.Profile.Name",
+              "CaseExceptions.Owner.Roles.Name",
+              "CaseExceptions.Owner.Roles.ParentRoleMultiField",
+              "CaseExceptions.Owner.Name",
+              "CaseExceptions.Owner.Department",
+              "CaseExceptions.Owner.Username",
+              "CaseExceptions.Owner.Country",
+              "CaseExceptions.Owner.Division",
+              "CaseExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "CaseExceptions",
+          "rightKeys" : [
+            "AccountId"
+          ]
+        }
+      },
+      "JOIN22" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN21",
+          "FILTER4"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "EventExceptions.WhoId",
+              "EventExceptions.WhatId",
+              "EventExceptions.AccountId",
+              "EventExceptions.CreatedDate",
+              "EventExceptions.Owner.FirstName",
+              "EventExceptions.Owner.Profile.Name",
+              "EventExceptions.Owner.Roles.Name",
+              "EventExceptions.Owner.Roles.ParentRoleMultiField",
+              "EventExceptions.Owner.Name",
+              "EventExceptions.Owner.Department",
+              "EventExceptions.Owner.Username",
+              "EventExceptions.Owner.Country",
+              "EventExceptions.Owner.Division",
+              "EventExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "EventExceptions",
+          "rightKeys" : [
+            "AccountId"
+          ]
+        }
+      },
+      "JOIN23" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN22",
+          "FILTER5"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "TaskExceptions.CreatedDate",
+              "TaskExceptions.WhoId",
+              "TaskExceptions.WhatId",
+              "TaskExceptions.Owner.FirstName",
+              "TaskExceptions.Owner.Profile.Name",
+              "TaskExceptions.Owner.Roles.Name",
+              "TaskExceptions.Owner.Roles.ParentRoleMultiField",
+              "TaskExceptions.Owner.Name",
+              "TaskExceptions.Owner.Department",
+              "TaskExceptions.Owner.Username",
+              "TaskExceptions.Owner.Country",
+              "TaskExceptions.Owner.Division",
+              "TaskExceptions.Owner.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "TaskExceptions",
+          "rightKeys" : [
+            "WhatId"
+          ]
+        }
+      },
+      "FORMULA6" : {
+        "action" : "formula",
+        "sources" : [
+          "JOIN25"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "AccLowRiskRecordCount",
+              "label" : "AccLowRiskRecordCount",
+              "formulaExpression" : "case when size(\"ContactExceptions.Id\") = -1 then 0 else size(\"ContactExceptions.Id\") end \r\n    + \r\ncase when size(\"CaseExceptions.Id\") = -1 then 0 else size(\"CaseExceptions.Id\") end \r\n    +\r\ncase when size(\"EventExceptions.Id\") = -1 then 0 else size(\"EventExceptions.Id\") end\r\n    + \r\ncase when size(\"TaskExceptions.Id\") = -1 then 0 else size(\"TaskExceptions.Id\") end",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA7" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA6"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "AccountLowRiskErrorCount",
+              "label" : "AccountLowRiskErrorCount",
+              "formulaExpression" : "\"ContactExceptions.Exceptions.SUM_RecordException\" + \"CaseExceptions.Exceptions.SUM_RecordException\" + \"EventExceptions.Exceptions.SUM_RecordException\" + \"TaskExceptions.Exceptions.SUM_RecordException\"",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA8" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA7"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "AccountHighRiskRecordCount",
+              "label" : "AccountHighRiskRecordCount",
+              "formulaExpression" : "\"OppExceptions.AccSUmOppHighRiskRecordCount\"    ",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA9" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA8"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "AccountHighRiskErrorCount",
+              "label" : "AccountHighRiskErrorCount",
+              "formulaExpression" : "\"OppExceptions.AccSUmOppHighRiskErrorCount\"",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA10" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA9"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "AccountHighRiskImpactedUsers",
+              "label" : "AccountHighRiskImpactedUsers",
+              "formulaExpression" : "\"OppExceptions.OppImpactedUsers\"",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA11" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA10"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "AccountLowRiskImpactedUsers",
+              "label" : "AccountLowRiskImpactedUsers",
+              "formulaExpression" : "case when size(\"ContactExceptions.OwnerId\") = -1 then 0 else size(\"ContactExceptions.OwnerId\") end +\r\ncase when size(\"CaseExceptions.OwnerId\") = -1 then 0 else size(\"CaseExceptions.OwnerId\") end + \r\ncase when size(\"EventExceptions.OwnerId\") = -1 then 0 else size(\"EventExceptions.OwnerId\") end + \r\ncase when size(\"TaskExceptions.OwnerId\") = -1 then 0 else size(\"TaskExceptions.OwnerId\") end \r\n+ 1",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA12" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA11"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "GeneralGrouping",
+              "label" : "GeneralGrouping",
+              "formulaExpression" : "'Accounts'",
+              "precision" : 50,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "JOIN24" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN23",
+          "AGGREGATE5"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "OppExceptions.AccountId"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "OppExceptions",
+          "rightKeys" : [
+            "AccountId"
+          ]
+        }
+      },
+      "FORMULA13" : {
+        "action" : "formula",
+        "sources" : [
+          "JOIN24"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "TotalAccountErrors",
+              "label" : "TotalAccountErrors",
+              "formulaExpression" : "\"Exceptions.SUM_RecordException\" + \"ContactExceptions.Exceptions.SUM_RecordException\" + \"CaseExceptions.Exceptions.SUM_RecordException\" + \"EventExceptions.Exceptions.SUM_RecordException\" + \"TaskExceptions.Exceptions.SUM_RecordException\" + \"OppExceptions.AccSUmOppHighRiskRecordCount\" + \"OppExceptions.AccSumOppMediumRiskRecordCount\"",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FILTER9" : {
+        "action" : "filter",
+        "sources" : [
+          "FORMULA13"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "TotalAccountErrors",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "EXTRACT5" : {
+        "action" : "extractGrains",
+        "sources" : [
+          "FILTER10"
+        ],
+        "parameters" : {
+          "grainExtractions" : [ ]
+        }
+      },
+      "AGGREGATE11" : {
+        "action" : "aggregate",
+        "sources" : [
+          "EXTRACT5"
+        ],
+        "parameters" : {
+          "aggregations" : [
+            {
+              "action" : "SUM",
+              "source" : "Amount",
+              "name" : "TotalAmount",
+              "label" : "TotalAmount"
+            },
+            {
+              "action" : "AVG",
+              "source" : "Amount",
+              "name" : "AverageAmount",
+              "label" : "AverageAmount"
+            },
+            {
+              "action" : "MAX",
+              "source" : "Amount",
+              "name" : "MaximumAmount",
+              "label" : "MaximumAmount"
+            },
+            {
+              "action" : "MIN",
+              "source" : "Amount",
+              "name" : "MinimumAmount",
+              "label" : "MinimumAmount"
+            },
+            {
+              "action" : "COUNT",
+              "name" : "AllOpps",
+              "label" : "AllOpps"
+            }
+          ],
+          "groupings" : [
+            "AccountId"
+          ],
+          "pivots" : [ ],
+          "nodeType" : "STANDARD"
+        }
+      },
+      "JOIN25" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN3",
+          "AGGREGATE11"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [ ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "GeneralOppStats",
+          "rightKeys" : [
+            "AccountId"
+          ]
+        }
+      },
+      "OUTPUT0" : {
+        "action" : "save",
+        "sources" : [
+          "FORMULA12"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Accounts Impacted By Errors",
+            "name" : "${App.Datasets.BVAAccountsImpactedByErrors_tp.Name}",
+            "folderName" : "${App.Folder.FullyQualifiedName}"
+          },
+          "measuresToCurrencies" : [ ]
+        }
+      },
+      "OUTPUT1" : {
+        "action" : "save",
+        "sources" : [
+          "JOIN2"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Opportunies Impacted By Errors",
+            "name" : "${App.Datasets.BVAOpportuniesImpactedByErrors_tp.Name}",
+            "folderName" : "${App.Folder.FullyQualifiedName}"
+          },
+          "measuresToCurrencies" : [ ]
+        }
+      },
+      "FILTER10" : {
+        "action" : "filter",
+        "sources" : [
+          "LOAD_DATASET2"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "IsClosed",
+              "operator" : "EQUAL",
+              "operands" : [
+                "false"
+              ]
+            }
+          ]
+        }
+      },
+      "FORMULA15" : {
+        "action" : "formula",
+        "sources" : [
+          "FILTER10"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "AllGrouping",
+              "label" : "AllGrouping",
+              "formulaExpression" : "'All'",
+              "precision" : 3,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA16" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA15"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "AllGrouping"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "CreatedDate",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "DATETIME",
+              "name" : "EarliestOppDate",
+              "label" : "EarliestOppDate",
+              "formulaExpression" : "first_value(CreatedDate)",
+              "format" : "dd/MM/yyyy",
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA17" : {
+        "action" : "formula",
+        "sources" : [
+          "FILTER0"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "AllGrouping",
+              "label" : "AllGrouping",
+              "formulaExpression" : "'All'",
+              "precision" : 3,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "JOIN26" : {
+        "action" : "join",
+        "sources" : [
+          "FORMULA17",
+          "FORMULA16"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "AllGrouping",
+              "OppTimeframe.CreatedDate",
+              "OppTimeframe.Id",
+              "OppTimeframe.AccountId",
+              "OppTimeframe.Name",
+              "OppTimeframe.Amount",
+              "OppTimeframe.IsClosed",
+              "OppTimeframe.IsWon",
+              "OppTimeframe.OwnerId",
+              "OppTimeframe.AllGrouping"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "AllGrouping"
+          ],
+          "rightQualifier" : "OppTimeframe",
+          "rightKeys" : [
+            "AllGrouping"
+          ]
+        }
+      },
+      "FORMULA18" : {
+        "action" : "formula",
+        "sources" : [
+          "JOIN26"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "OppTimeframe.EarliestOppDate_formula",
+              "label" : "EarliestOppCreationDelta",
+              "formulaExpression" : "datediff(InteractionDateTime, \"OppTimeframe.EarliestOppDate\")",
+              "precision" : 18,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FILTER11" : {
+        "action" : "filter",
+        "sources" : [
+          "FORMULA18"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "OppTimeframe.EarliestOppDate_formula",
+              "operator" : "GREATER_OR_EQUAL",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ui" : {
+      "nodes" : {
+        "LOAD_DATASET0" : {
+          "label" : "BVA Union Logs Adoption",
+          "type" : "LOAD_DATASET",
+          "top" : 252,
+          "left" : 112.30000000000001,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "AGGREGATE2" : {
+          "label" : "ExceptionsByRecord",
+          "description" : "",
+          "type" : "AGGREGATE",
+          "top" : 251.89999999999998,
+          "left" : 951.9,
+          "graph" : {
+            "EXTRACT1" : null,
+            "AGGREGATE3" : null
+          },
+          "connectors" : [
+            {
+              "source" : "EXTRACT1",
+              "target" : "AGGREGATE3"
+            }
+          ]
+        },
+        "FILTER0" : {
+          "label" : "FilterObjectsAndExceptions",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 252.3,
+          "left" : 252.10000000000002
+        },
+        "LOAD_DATASET1" : {
+          "label" : "Account",
+          "type" : "LOAD_DATASET",
+          "top" : 672.1,
+          "left" : 951.9,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "LOAD_DATASET2" : {
+          "label" : "Opportunity",
+          "type" : "LOAD_DATASET",
+          "top" : 392,
+          "left" : 111.69999999999999,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "LOAD_DATASET3" : {
+          "label" : "Contact",
+          "type" : "LOAD_DATASET",
+          "top" : 812.1,
+          "left" : 951.9,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "LOAD_DATASET4" : {
+          "label" : "Case",
+          "type" : "LOAD_DATASET",
+          "top" : 952.1,
+          "left" : 951.9,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "LOAD_DATASET5" : {
+          "label" : "BVA Users Profiles Roles",
+          "type" : "LOAD_DATASET",
+          "top" : 531.9,
+          "left" : 2211.9,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN2" : {
+          "label" : "OpportunityOwner",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 391.9,
+          "left" : 2211.9
+        },
+        "JOIN3" : {
+          "label" : "AccountOwner",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 671.9,
+          "left" : 2211.9
+        },
+        "JOIN4" : {
+          "label" : "JoinAccountException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 672,
+          "left" : 1092
+        },
+        "JOIN5" : {
+          "label" : "JoinOpportunityException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 252,
+          "left" : 1232
+        },
+        "JOIN6" : {
+          "label" : "JoinContactException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 812,
+          "left" : 1092
+        },
+        "JOIN7" : {
+          "label" : "JoinCaseException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 952,
+          "left" : 1092
+        },
+        "LOAD_DATASET6" : {
+          "label" : "Event",
+          "type" : "LOAD_DATASET",
+          "top" : 1092,
+          "left" : 952,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "LOAD_DATASET7" : {
+          "label" : "Task",
+          "type" : "LOAD_DATASET",
+          "top" : 1372.7,
+          "left" : 952,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN10" : {
+          "label" : "JoinEventException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 1092.2,
+          "left" : 1092
+        },
+        "JOIN11" : {
+          "label" : "JoinTaskException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 1232,
+          "left" : 1092.1
+        },
+        "LOAD_DATASET8" : {
+          "label" : "OpportunityContactRole",
+          "type" : "LOAD_DATASET",
+          "top" : 1512.7,
+          "left" : 952,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN13" : {
+          "label" : "JoinOppContactException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 1372,
+          "left" : 1092
+        },
+        "FILTER1" : {
+          "label" : "FilterOppExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 391.9,
+          "left" : 1931.9
+        },
+        "FILTER2" : {
+          "label" : "FilterContactExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 812.4,
+          "left" : 1232
+        },
+        "LOAD_DATASET9" : {
+          "label" : "OpportunityLineItem",
+          "type" : "LOAD_DATASET",
+          "top" : 392,
+          "left" : 952,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN15" : {
+          "label" : "JoinOLIException",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 392.1,
+          "left" : 1092
+        },
+        "FILTER3" : {
+          "label" : "FilterCaseExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 951.8,
+          "left" : 1231.9
+        },
+        "FILTER4" : {
+          "label" : "FilterEventExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 1091.8,
+          "left" : 1231.9
+        },
+        "FILTER5" : {
+          "label" : "FilterTaskExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 1232,
+          "left" : 1232
+        },
+        "FILTER6" : {
+          "label" : "FilterOppContExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 1372,
+          "left" : 1232
+        },
+        "FILTER8" : {
+          "label" : "FilterOLIExcept",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 392.1,
+          "left" : 1232
+        },
+        "JOIN16" : {
+          "label" : "JoinOppOLI",
+          "description" : "The MVF for OLIExceptions.Id is limited to 32k chars which equates to 1777 records; which is an upper limit.",
+          "type" : "JOIN",
+          "top" : 252.60000000000002,
+          "left" : 1371.9
+        },
+        "TRANSFORM0" : {
+          "label" : "OppOLITTransforms",
+          "description" : "",
+          "type" : "TRANSFORM",
+          "top" : 391.9,
+          "left" : 1791.9,
+          "graph" : {
+            "FORMULA0" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "OppMediumRiskRecordCount"
+            },
+            "FORMULA1" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "OppMediumRiskErrorCount"
+            },
+            "FORMULA2" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "OppHighRiskRecordCount"
+            },
+            "FORMULA3" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "OppHighRiskErrorCount"
+            },
+            "FORMULA4" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "GeneralGrouping"
+            },
+            "FORMULA14" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "HighRiskAmountCalc"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA0",
+              "target" : "FORMULA1"
+            },
+            {
+              "source" : "FORMULA1",
+              "target" : "FORMULA2"
+            },
+            {
+              "source" : "FORMULA2",
+              "target" : "FORMULA3"
+            },
+            {
+              "source" : "FORMULA3",
+              "target" : "FORMULA4"
+            },
+            {
+              "source" : "FORMULA4",
+              "target" : "FORMULA14"
+            }
+          ]
+        },
+        "JOIN17" : {
+          "label" : "JoinOppEvent",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 392.6,
+          "left" : 1371.9
+        },
+        "JOIN18" : {
+          "label" : "JoinOppTask",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 392.5,
+          "left" : 1511.9
+        },
+        "JOIN19" : {
+          "label" : "JoinOppContRole",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 391.9,
+          "left" : 1651.9
+        },
+        "AGGREGATE4" : {
+          "label" : "AccOppAggregates",
+          "description" : "Counts the number of records, errors, and opportunity amounts per account.",
+          "type" : "AGGREGATE",
+          "top" : 531.9,
+          "left" : 1931.9,
+          "graph" : {
+            "EXTRACT2" : null,
+            "AGGREGATE5" : null
+          },
+          "connectors" : [
+            {
+              "source" : "EXTRACT2",
+              "target" : "AGGREGATE5"
+            }
+          ]
+        },
+        "JOIN20" : {
+          "label" : "JoinAccountContact",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 672.9,
+          "left" : 1232
+        },
+        "JOIN21" : {
+          "label" : "JoinAccountCase",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 672,
+          "left" : 1372
+        },
+        "JOIN22" : {
+          "label" : "JoinAccountEvent",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 671.8,
+          "left" : 1511.9
+        },
+        "JOIN23" : {
+          "label" : "JoinAccountTask",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 671.9,
+          "left" : 1651.9
+        },
+        "TRANSFORM1" : {
+          "label" : "AccountTransforms",
+          "description" : "",
+          "type" : "TRANSFORM",
+          "top" : 811.9,
+          "left" : 2351.9,
+          "graph" : {
+            "FORMULA6" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "AccLowRiskRecordCount"
+            },
+            "FORMULA7" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "AccountLowRiskErrorCount"
+            },
+            "FORMULA8" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "AccountHighRiskRecordCount"
+            },
+            "FORMULA9" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "AccountHighRiskErrorCount"
+            },
+            "FORMULA10" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "AccountHighRiskImpactedUsers"
+            },
+            "FORMULA11" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "AccountLowRiskImpactedUsers"
+            },
+            "FORMULA12" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "GeneralGrouping"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA6",
+              "target" : "FORMULA7"
+            },
+            {
+              "source" : "FORMULA7",
+              "target" : "FORMULA8"
+            },
+            {
+              "source" : "FORMULA8",
+              "target" : "FORMULA9"
+            },
+            {
+              "source" : "FORMULA9",
+              "target" : "FORMULA10"
+            },
+            {
+              "source" : "FORMULA10",
+              "target" : "FORMULA11"
+            },
+            {
+              "source" : "FORMULA11",
+              "target" : "FORMULA12"
+            }
+          ]
+        },
+        "JOIN24" : {
+          "label" : "JoinAccountOpps",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 671.9,
+          "left" : 1791.9
+        },
+        "TRANSFORM2" : {
+          "label" : "DetermineImpactedAccounts",
+          "description" : "",
+          "type" : "TRANSFORM",
+          "top" : 671.9,
+          "left" : 1931.9,
+          "graph" : {
+            "FORMULA13" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "TotalAccountErrors"
+            }
+          },
+          "connectors" : [ ]
+        },
+        "FILTER9" : {
+          "label" : "OnlyImpactedAccounts",
+          "description" : "Any account where the total sum of any related error is greater than zero.",
+          "type" : "FILTER",
+          "top" : 671.9,
+          "left" : 2071.9
+        },
+        "AGGREGATE10" : {
+          "label" : "AccountOpportunityStats",
+          "description" : "",
+          "type" : "AGGREGATE",
+          "top" : 531.9,
+          "left" : 2351.9,
+          "graph" : {
+            "EXTRACT5" : null,
+            "AGGREGATE11" : null
+          },
+          "connectors" : [
+            {
+              "source" : "EXTRACT5",
+              "target" : "AGGREGATE11"
+            }
+          ]
+        },
+        "JOIN25" : {
+          "label" : "JoinImpactedAccountsOppAggs",
+          "description" : "Brings in the overall pipeline and revenue figures per account.",
+          "type" : "JOIN",
+          "top" : 671.9,
+          "left" : 2351.9
+        },
+        "OUTPUT0" : {
+          "label" : "ImpactedAccounts",
+          "description" : "",
+          "type" : "OUTPUT",
+          "top" : 951.9,
+          "left" : 2351.9
+        },
+        "OUTPUT1" : {
+          "label" : "Impacted Opps",
+          "description" : "",
+          "type" : "OUTPUT",
+          "top" : 391.9,
+          "left" : 2351.9
+        },
+        "FILTER10" : {
+          "label" : "OnlyOpenOpps",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 392.1,
+          "left" : 252.2
+        },
+        "TRANSFORM3" : {
+          "label" : "OppTimeframeCheck",
+          "description" : "Get the earliest date of open opps, so we can filter on any exceptions after this date.",
+          "type" : "TRANSFORM",
+          "top" : 392,
+          "left" : 392,
+          "graph" : {
+            "FORMULA15" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "All"
+            },
+            "FORMULA16" : {
+              "label" : "EarliestOppDate"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA15",
+              "target" : "FORMULA16"
+            }
+          ]
+        },
+        "TRANSFORM4" : {
+          "label" : "PreOppGrouping",
+          "description" : "Group by All and join EarliestOppDate",
+          "type" : "TRANSFORM",
+          "top" : 252.3,
+          "left" : 392.1,
+          "graph" : {
+            "FORMULA17" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "All"
+            }
+          },
+          "connectors" : [ ]
+        },
+        "JOIN26" : {
+          "label" : "JoinEarliestOppDate",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 252.10000000000002,
+          "left" : 532
+        },
+        "TRANSFORM5" : {
+          "label" : "OppDateChecker",
+          "description" : "",
+          "type" : "TRANSFORM",
+          "top" : 252,
+          "left" : 672,
+          "graph" : {
+            "FORMULA18" : {
+              "parameters" : {
+                "type" : "DATE_DIFFERENCE_UI"
+              },
+              "label" : "Return Duration Between Dates"
+            }
+          },
+          "connectors" : [ ]
+        },
+        "FILTER11" : {
+          "label" : "OnlyErrorsSinceOppCreatedDate",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 252,
+          "left" : 812
+        }
+      },
+      "connectors" : [
+        {
+          "source" : "FILTER10",
+          "target" : "JOIN5"
+        },
+        {
+          "source" : "FILTER1",
+          "target" : "JOIN2"
+        },
+        {
+          "source" : "JOIN5",
+          "target" : "JOIN16"
+        },
+        {
+          "source" : "JOIN3",
+          "target" : "JOIN25"
+        },
+        {
+          "source" : "FILTER9",
+          "target" : "JOIN3"
+        },
+        {
+          "source" : "LOAD_DATASET1",
+          "target" : "JOIN4"
+        },
+        {
+          "source" : "LOAD_DATASET9",
+          "target" : "JOIN15"
+        },
+        {
+          "source" : "LOAD_DATASET8",
+          "target" : "JOIN13"
+        },
+        {
+          "source" : "LOAD_DATASET7",
+          "target" : "JOIN11"
+        },
+        {
+          "source" : "LOAD_DATASET6",
+          "target" : "JOIN10"
+        },
+        {
+          "source" : "LOAD_DATASET4",
+          "target" : "JOIN7"
+        },
+        {
+          "source" : "LOAD_DATASET3",
+          "target" : "JOIN6"
+        },
+        {
+          "source" : "JOIN4",
+          "target" : "JOIN20"
+        },
+        {
+          "source" : "FILTER11",
+          "target" : "AGGREGATE2"
+        },
+        {
+          "source" : "LOAD_DATASET0",
+          "target" : "FILTER0"
+        },
+        {
+          "source" : "LOAD_DATASET5",
+          "target" : "JOIN2"
+        },
+        {
+          "source" : "LOAD_DATASET5",
+          "target" : "JOIN3"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN4"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN5"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN6"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN7"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN10"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN11"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN13"
+        },
+        {
+          "source" : "JOIN6",
+          "target" : "FILTER2"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "JOIN15"
+        },
+        {
+          "source" : "JOIN7",
+          "target" : "FILTER3"
+        },
+        {
+          "source" : "JOIN10",
+          "target" : "FILTER4"
+        },
+        {
+          "source" : "JOIN11",
+          "target" : "FILTER5"
+        },
+        {
+          "source" : "JOIN13",
+          "target" : "FILTER6"
+        },
+        {
+          "source" : "JOIN15",
+          "target" : "FILTER8"
+        },
+        {
+          "source" : "FILTER8",
+          "target" : "JOIN16"
+        },
+        {
+          "source" : "JOIN19",
+          "target" : "TRANSFORM0"
+        },
+        {
+          "source" : "JOIN16",
+          "target" : "JOIN17"
+        },
+        {
+          "source" : "FILTER4",
+          "target" : "JOIN17"
+        },
+        {
+          "source" : "JOIN17",
+          "target" : "JOIN18"
+        },
+        {
+          "source" : "FILTER5",
+          "target" : "JOIN18"
+        },
+        {
+          "source" : "JOIN18",
+          "target" : "JOIN19"
+        },
+        {
+          "source" : "FILTER6",
+          "target" : "JOIN19"
+        },
+        {
+          "source" : "FILTER2",
+          "target" : "JOIN20"
+        },
+        {
+          "source" : "JOIN20",
+          "target" : "JOIN21"
+        },
+        {
+          "source" : "FILTER3",
+          "target" : "JOIN21"
+        },
+        {
+          "source" : "JOIN21",
+          "target" : "JOIN22"
+        },
+        {
+          "source" : "FILTER4",
+          "target" : "JOIN22"
+        },
+        {
+          "source" : "JOIN22",
+          "target" : "JOIN23"
+        },
+        {
+          "source" : "FILTER5",
+          "target" : "JOIN23"
+        },
+        {
+          "source" : "JOIN23",
+          "target" : "JOIN24"
+        },
+        {
+          "source" : "AGGREGATE4",
+          "target" : "JOIN24"
+        },
+        {
+          "source" : "JOIN24",
+          "target" : "TRANSFORM2"
+        },
+        {
+          "source" : "TRANSFORM2",
+          "target" : "FILTER9"
+        },
+        {
+          "source" : "JOIN25",
+          "target" : "TRANSFORM1"
+        },
+        {
+          "source" : "TRANSFORM1",
+          "target" : "OUTPUT0"
+        },
+        {
+          "source" : "JOIN2",
+          "target" : "OUTPUT1"
+        },
+        {
+          "source" : "TRANSFORM0",
+          "target" : "FILTER1"
+        },
+        {
+          "source" : "FILTER1",
+          "target" : "AGGREGATE4"
+        },
+        {
+          "source" : "LOAD_DATASET2",
+          "target" : "FILTER10"
+        },
+        {
+          "source" : "FILTER10",
+          "target" : "AGGREGATE10"
+        },
+        {
+          "source" : "AGGREGATE10",
+          "target" : "JOIN25"
+        },
+        {
+          "source" : "FILTER10",
+          "target" : "TRANSFORM3"
+        },
+        {
+          "source" : "FILTER0",
+          "target" : "TRANSFORM4"
+        },
+        {
+          "source" : "TRANSFORM4",
+          "target" : "JOIN26"
+        },
+        {
+          "source" : "TRANSFORM3",
+          "target" : "JOIN26"
+        },
+        {
+          "source" : "JOIN26",
+          "target" : "TRANSFORM5"
+        },
+        {
+          "source" : "TRANSFORM5",
+          "target" : "FILTER11"
+        }
+      ],
+      "hiddenColumns" : [ ]
+    },
+    "runMode" : "full"
+  },
+  "lastTime" : null
+}

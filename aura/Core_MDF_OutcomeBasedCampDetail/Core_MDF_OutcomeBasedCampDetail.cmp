@@ -1,0 +1,393 @@
+<aura:component controller="Core_MDF_OutcomeBasedCampDetailCntllr" 
+                implements="flexipage:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable,forceCommunity:availableForAllPageTypes" 
+                access="global">
+    <!-- Attributes -->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="showReadOnly" type="Boolean" default="true" />
+    <aura:attribute name="hasAccess" type="Boolean" default="false" />
+    <aura:attribute name="accessChecked" type="Boolean" default="false" />
+    <aura:attribute name="isInternalPage" type="Boolean" default="true" />
+	<aura:attribute name="showInternalNoteForm" type="Boolean" default="false" />
+    <aura:attribute name="internalNoteTitle" type="String" default="" />
+    <aura:attribute name="internalNoteBody" type="String" default="" />
+    <aura:attribute name="internalNoteError" type="String" default="" />
+    <aura:attribute name="internalNoteSaveAndNew" type="Boolean" default="false" />
+    <aura:attribute name="isSavingInternalNote" type="Boolean" default="false" />
+    <aura:attribute name="internalNoteEditId" type="String" default="" />
+    <aura:attribute name="isEditingInternalNote" type="Boolean" default="false" />
+    <aura:attribute name="internalNotesList" type="List" default="[]" />
+    <aura:attribute name="internalNotesCount" type="Integer" default="0" />
+    <aura:attribute name="canCreateInternalNote" type="Boolean" default="false" />
+    <aura:attribute name="canUpdateInternalNote" type="Boolean" default="false" />
+    <aura:attribute name="canDeleteInternalNote" type="Boolean" default="false" />
+    <aura:attribute name="showAllInternalNotes" type="Boolean" default="false" />
+    <aura:attribute name="allNotesSearchTerm" type="String" default="" />
+    <aura:attribute name="filteredInternalNotesList" type="List" default="[]" />
+    <aura:attribute name="allNotesPagedList" type="List" default="[]" />
+    <aura:attribute name="allNotesPageSize" type="Integer" default="10" />
+    <aura:attribute name="allNotesCurrentPage" type="Integer" default="1" />
+    <aura:attribute name="allNotesTotalPages" type="Integer" default="1" />
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.accessChecked}">
+
+        <aura:if isTrue="{!v.isInternalPage}">
+
+            <aura:if isTrue="{!not(v.hasAccess)}">
+                
+                <div class="slds-card record-layout-load-error-container">
+                    <div class="slds-p-around_medium">
+                        <p class="slds-text-title_bold slds-p-bottom_small">
+                            Looks like there's a problem.</p>
+                        <p class="slds-p-bottom_x-small">Unfortunately, there was a problem. Please try again. If the problem continues, get in touch with your administrator with the error ID shown here and any other related details.</p>
+                        <p class="slds-p-bottom_x-small">You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary.</p>
+                    </div>
+                </div>
+
+            </aura:if>
+        </aura:if>
+        
+        <!-- Show content only when user has access and recordId exists -->
+        <aura:if isTrue="{!and(not(empty(v.recordId)),(v.hasAccess))}">
+            <div class="slds-page-header slds-m-bottom_medium">
+                <div class="slds-page-header__row">
+                    <div class="slds-page-header__col-title">
+                        <c:Core_MDF_Compact_Layout
+                            recordId="{!v.recordId}"
+                            objAPIName="PartnerFundRequest"
+                            fieldAPIName="Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c"
+                            fieldAPIoperator=""
+                            isCompactLayout="Yes"
+                            controllingObj=""/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slds-grid slds-wrap slds-gutters">
+                <!-- Left Column - Details -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:card>
+                        <!-- Details Header inside the card -->
+                        <div class="slds-text-heading_small" style="font-weight: bold; margin: 8px 16px 4px 16px;">
+                            {!$Label.c.Core_MDF_Activity_Creation_Detail_Section}
+                        </div>
+                        <hr style="border: 0; height: 1px; background: #dddbda; margin: 0 16px 16px 16px;"/>
+                        
+                        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_CustomLayoutConfig
+                                    recordId="{!v.recordId}"
+                                    objAPIName="PartnerFundRequest"
+                                    fieldAPIName="Core_MDF_Proposal_Based_Ind__c"
+                                    operator=""
+                                    fieldAPIoperator=""
+                                    isSectionVisible="Yes"
+                                    isCompactLayout="No"
+                                    recordTypeName=""
+                                    standardFieldAlign="No"
+                                    hasToRetainDecimalValues=""/>
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_Activity_Purpose_Comp recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}" />
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_Tactics_Form recordId="{!v.recordId}" isDetail="{!v.showReadOnly}"/>
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_DisplayProducts recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}"/>
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_Outcome_Based_Acc_Node recordId="{!v.recordId}" isReadOnly="{!v.showReadOnly}"/>
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:Core_MDF_Activity_Upload_File recordId="{!v.recordId}" />
+                            </div>
+                        </div>
+                    </lightning:card>
+                </div>
+                
+                <!-- Right Column - Related -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:card>
+                        <!-- Related Header inside the card -->
+                        <div class="slds-text-heading_small" style="font-weight: bold; margin: 8px 16px 4px 16px;">
+                            {!$Label.c.Core_MDF_Outcome_Based_Related_Section}
+                        </div>
+                        <hr style="border: 0; height: 1px; background: #dddbda; margin: 0 16px 16px 16px;"/>
+                        
+                        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_Display_Approval_Details recordId="{!v.recordId}" />
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:Core_MDF_PFR_Approval recordId="{!v.recordId}" />   
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_FileRepository recordId="{!v.recordId}" />
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_ApprovalHistoryRelatedList 
+                                    recordId="{!v.recordId}" 
+                                    identifierTextField1="Core_MDF_Program__c" 
+                                    identifierTextField2=""       
+                                    identifierCheckboxField1="Core_MDF_Proposal_Based_Ind__c"
+                                    identifierCheckboxField2="" />
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_HistoryComponent
+                                    objectApiName="PartnerFundRequest"
+                                    recordId="{!v.recordId}" 
+                                    internalUserName="Intel System User" 
+                                    fieldsToMask=""  />
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <c:core_MDF_GenricReleatedList
+                                    recordId="{!v.recordId}" 
+                                    childObjectApi="PartnerFundClaim"
+                                    relationshipField="RequestId"
+                                    title="Claims" 
+                                    fields="Title,Core_MDF_Claim_Ref_Number__c,Core_MDF_Status__c,Amount"/>
+                            </div>
+                            <!-- Internal Notes Container -->
+                            <aura:if isTrue="{!v.isInternalPage}">
+                                    <div class="slds-m-bottom_medium">
+                                <div class="slds-box slds-p-around_none internal-notes-container">
+                                    <div class="slds-card">
+                                        <div class="slds-card__header slds-grid">
+                                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                <div class="slds-media__figure">
+                                                    <img src="/img/icon/t4v35/standard/custom_120.png" alt="Internal Notes" class="internal-notes-standard-icon"/>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <h2 class="slds-card__header-title"><span>Internal Notes ({!v.internalNotesCount})</span></h2>
+                                                </div>
+                                            </header>
+                                            <div class="slds-no-flex">
+                                                <aura:if isTrue="{!v.canCreateInternalNote}">
+                                                    <lightning:button variant="neutral" label="New" onclick="{!c.handleNewInternalNote}"/>
+                                                </aura:if>
+                                            </div>
+                                        </div>
+                                        <div class="slds-card__body slds-p-vertical_none">
+                                            <aura:if isTrue="{!v.internalNotesList.length > 0}">
+                                                <div class="slds-scrollable_x">
+                                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout">
+                                                        <thead>
+                                                            <tr class="slds-line-height_reset">
+                                                                <th scope="col"><div class="slds-truncate" title="Name">Name</div></th>
+                                                                <th scope="col"><div class="slds-truncate" title="Title">Title</div></th>
+                                                                <th scope="col"><div class="slds-truncate" title="Comments">Comments</div></th>
+                                                                <th scope="col"><div class="slds-truncate" title="Created By">Created By</div></th>
+                                                                <th scope="col" class="internal-note-action-header">
+                                                                    <span class="slds-assistive-text">Actions</span>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <aura:iteration items="{!v.internalNotesList}" var="note">
+                                                                <tr>
+                                                                    <td><a href="javascript:void(0);" class="slds-truncate slds-text-link note-name-link" title="{!note.Name}" data-id="{!note.Id}" onclick="{!c.handleOpenNoteRecord}">{!note.Name}</a></td>
+                                                                    <td><div class="slds-truncate" title="{!note.Title}">{!note.Title}</div></td>
+                                                                    <td>
+                                                                        <aura:if isTrue="{!note.Comments}">
+                                                                            <lightning:formattedRichText class="note-comments" value="{!note.Comments}"/>
+                                                                        <aura:set attribute="else"><span>-</span></aura:set>
+                                                                        </aura:if>
+                                                                    </td>
+                                                                    <td><div class="slds-truncate" title="{!note.CreatedByName}">{!note.CreatedByName}</div></td>
+                                                                    <td class="internal-note-action-cell">
+                                                                        <aura:if isTrue="{!or(v.canUpdateInternalNote, v.canDeleteInternalNote)}">
+                                                                            <lightning:buttonMenu alternativeText="Show actions"
+                                                                                                  iconName="utility:down"
+                                                                                                  iconSize="x-small"
+                                                                                                  variant="bare"
+                                                                                                  class="internal-note-action-menu"
+                                                                                                  menuAlignment="right"
+                                                                                                  onselect="{!c.handleInternalNoteRowAction}">
+                                                                                <aura:if isTrue="{!v.canUpdateInternalNote}">
+                                                                                    <lightning:menuItem label="Edit" value="{!'EDIT:' + note.Id}"/>
+                                                                                </aura:if>
+                                                                                <aura:if isTrue="{!v.canDeleteInternalNote}">
+                                                                                    <lightning:menuItem label="Delete" value="{!'DELETE:' + note.Id}"/>
+                                                                                </aura:if>
+                                                                            </lightning:buttonMenu>
+                                                                        <aura:set attribute="else">
+                                                                            <span>-</span>
+                                                                        </aura:set>
+                                                                        </aura:if>
+                                                                    </td>
+                                                                </tr>
+                                                            </aura:iteration>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="slds-p-around_small slds-text-align_center">
+                                                    <a href="javascript:void(0);" class="slds-text-link" onclick="{!c.handleViewAllNotes}">View All</a>
+                                                </div>
+                                            <aura:set attribute="else">
+                                                <div class="slds-p-around_medium slds-text-align_center">
+                                                    <p class="slds-text-body_small slds-text-color_weak">No internal notes found.</p>
+                                                </div>
+                                            </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Internal Notes Container -->
+                          </aura:if> 
+                            
+                        </div>
+                    </lightning:card>
+                </div>
+            </div>
+        </aura:if>
+    </aura:if>
+
+    <!-- New Internal Note Modal -->
+    <aura:if isTrue="{!v.showInternalNoteForm}">
+        <div role="dialog" tabindex="-1" aria-labelledby="noteModalHeader" aria-describedby="noteModalContent" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" variant="bare-inverse" class="slds-modal__close" size="large" alternativeText="Close" onclick="{!c.handleCancelNote}"/>
+                    <h2 id="noteModalHeader" class="slds-modal__title slds-hyphenate">{!v.isEditingInternalNote ? 'Edit Internal Note' : 'New Internal Note'}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="noteModalContent">
+                    <aura:if isTrue="{!not(empty(v.internalNoteError))}">
+                        <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small" role="alert">
+                            <span class="slds-assistive-text">Error</span>
+                            <h2>{!v.internalNoteError}</h2>
+                        </div>
+                    </aura:if>
+                    <lightning:recordEditForm aura:id="noteForm" objectApiName="Core_MDF_Notes__c" onsuccess="{!c.handleInternalNoteSaveSuccess}" onerror="{!c.handleInternalNoteSaveError}">
+                        <div class="slds-form-element slds-m-bottom_medium">
+                            <label class="slds-form-element__label note-title-label" for="noteTitle"><span class="required-info-note">*</span> Title</label>
+                            <div class="slds-form-element__control">
+                                <lightning:input aura:id="noteTitle" name="noteTitle" value="{!v.internalNoteTitle}" messageWhenValueMissing="Title is required"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-m-bottom_medium">
+                            <label class="slds-form-element__label comments-label" for="noteBody">Comments</label>
+                            <div class="slds-form-element__control">
+                                <lightning:inputRichText aura:id="noteBody" class="comments-textarea" value="{!v.internalNoteBody}" placeholder="Add comments..."/>
+                            </div>
+                        </div>
+                    </lightning:recordEditForm>
+                </div>
+                <footer class="slds-modal__footer slds-text-align_center">
+                    <lightning:button variant="neutral" label="Cancel" onclick="{!c.handleCancelNote}"/>
+                    <aura:if isTrue="{!not(v.isEditingInternalNote)}">
+                        <lightning:button class="slds-m-left_small" variant="neutral" label="Save &amp; New" onclick="{!c.handleSaveAndNewNote}" disabled="{!v.isSavingInternalNote}"/>
+                    </aura:if>
+                    <lightning:button class="slds-m-left_small" variant="brand" label="Save" onclick="{!c.handleSaveNote}" disabled="{!v.isSavingInternalNote}"/>
+                </footer>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+    <!-- View All Internal Notes Modal -->
+     <aura:if isTrue="{!v.isInternalPage}">
+        <aura:if isTrue="{!v.showAllInternalNotes}">
+        <div role="dialog" tabindex="-1" aria-labelledby="allNotesModalHeader" aria-describedby="allNotesModalContent" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container slds-modal_large">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" variant="bare-inverse" class="slds-modal__close" size="large" alternativeText="Close" onclick="{!c.handleCloseViewAllNotes}"/>
+                    <h2 id="allNotesModalHeader" class="slds-modal__title slds-hyphenate">All Internal Notes ({!v.internalNotesCount})</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="allNotesModalContent">
+                    <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-m-bottom_small">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                            <lightning:input type="search" name="allNotesSearch" label="Search" value="{!v.allNotesSearchTerm}" placeholder="Search by Name, Title, Comments, Created By" onchange="{!c.handleAllNotesSearchChange}"/>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-text-align_right slds-m-top_small">
+                            <p class="slds-text-body_small slds-text-color_weak">Showing {!v.allNotesPagedList.length} of {!v.filteredInternalNotesList.length}</p>
+                        </div>
+                    </div>
+                    <div class="slds-scrollable_x">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col"><div class="slds-truncate" title="Name">Name</div></th>
+                                    <th scope="col"><div class="slds-truncate" title="Title">Title</div></th>
+                                    <th scope="col"><div class="slds-truncate" title="Comments">Comments</div></th>
+                                    <th scope="col"><div class="slds-truncate" title="Created By">Created By</div></th>
+                                    <th scope="col" class="internal-note-action-header">
+                                        <span class="slds-assistive-text">Actions</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:if isTrue="{!v.filteredInternalNotesList.length > 0}">
+                                    <aura:iteration items="{!v.allNotesPagedList}" var="note">
+                                        <tr>
+                                            <td><a href="javascript:void(0);" class="slds-truncate slds-text-link" title="{!note.Name}" data-id="{!note.Id}" onclick="{!c.handleOpenNoteRecord}">{!note.Name}</a></td>
+                                            <td><div class="slds-truncate" title="{!note.Title}">{!note.Title}</div></td>
+                                            <td>
+                                                <aura:if isTrue="{!note.Comments}">
+                                                    <lightning:formattedRichText value="{!note.Comments}"/>
+                                                <aura:set attribute="else"><span>-</span></aura:set>
+                                                </aura:if>
+                                            </td>
+                                            <td><div class="slds-truncate" title="{!note.CreatedByName}">{!note.CreatedByName}</div></td>
+                                            <td class="internal-note-action-cell">
+                                                <aura:if isTrue="{!or(v.canUpdateInternalNote, v.canDeleteInternalNote)}">
+                                                    <lightning:buttonMenu alternativeText="Show actions"
+                                                                          iconName="utility:down"
+                                                                          iconSize="x-small"
+                                                                          variant="bare"
+                                                                          class="internal-note-action-menu"
+                                                                          menuAlignment="right"
+                                                                          onselect="{!c.handleInternalNoteRowAction}">
+                                                        <aura:if isTrue="{!v.canUpdateInternalNote}">
+                                                            <lightning:menuItem label="Edit" value="{!'EDIT:' + note.Id}"/>
+                                                        </aura:if>
+                                                        <aura:if isTrue="{!v.canDeleteInternalNote}">
+                                                            <lightning:menuItem label="Delete" value="{!'DELETE:' + note.Id}"/>
+                                                        </aura:if>
+                                                    </lightning:buttonMenu>
+                                                <aura:set attribute="else">
+                                                    <span>-</span>
+                                                </aura:set>
+                                                </aura:if>
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                <aura:set attribute="else">
+                                    <tr><td colspan="5"><div class="slds-p-around_small slds-text-align_center slds-text-color_weak">No notes match your search.</div></td></tr>
+                                </aura:set>
+                                </aura:if>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <p class="slds-text-body_small slds-text-color_weak">Page {!v.allNotesCurrentPage} of {!v.allNotesTotalPages}</p>
+                        <div>
+                            <lightning:button variant="neutral" label="Previous" onclick="{!c.handleAllNotesPrevPage}" disabled="{!v.allNotesCurrentPage == 1}"/>
+                            <lightning:button class="slds-m-left_x-small" variant="neutral" label="Next" onclick="{!c.handleAllNotesNextPage}" disabled="{!v.allNotesCurrentPage == v.allNotesTotalPages}"/>
+                            <lightning:button class="slds-m-left_small" variant="neutral" label="Close" onclick="{!c.handleCloseViewAllNotes}"/>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+     </aura:if>
+    
+
+</aura:component>

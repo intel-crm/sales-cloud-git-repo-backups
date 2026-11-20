@@ -1,0 +1,82 @@
+<template>
+    <div class="slds-p-around_small" style="background-color: #5875aa;color: white; font-size: 1.5rem;">
+        <b>Case Attachments</b>  
+   </div>
+    <div class="slds-p-around_medium" style="background-color: white; color: Black;">
+         <b>In case you decide to Upload Files, please do not 'Return to Case' until the Upload Progress bar shows 100% completion </b>
+          
+    </div>
+    <div class="slds-align_absolute-center" style="background-color: white;">
+        <input onclick={handlenaviagateattachment} type="button" class="retCaseBtn" value="Return to Case"></input>
+    </div>
+    <div class="slds-p-around_medium" style="background-color: white;">
+        <lightning-accordion allow-multiple-sections-open="true" active-section-name="A" class="accordionClass">
+            <template for:each={caseDetails} for:item="ccc">                                    
+                <lightning-accordion-section   name="A"  label="Case Details" key={ccc}>     
+                    <table class="greycolor">
+                        <thead>
+                            <tr class="cmtHeader">
+                                <th class="slds-p-around_medium" >
+                                    <div style=" font-size:0.9rem"> Classification:  &nbsp;&nbsp; {classification}</div>
+                                </th>
+                                <th class="slds-p-around_medium" style="  padding-left: 340px;">
+                                <!-- slds-p-around_medium-->
+                                    <div style=" font-size:0.9rem"> Status:   &nbsp;&nbsp; {status}</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    
+                            <tr class="greycolor" key={ccc.Subject}>
+                                <td class="slds-p-around_medium" scope="col"> 
+                                    Case Number:  &nbsp;&nbsp; {ccc.CaseNumber} 
+                
+                                </td>
+                                <td class="slds-p-around_medium" scope="col" style="padding-left: 340px;"> 
+                                    Sub Status:   &nbsp;&nbsp;  {ccc.Core_Sub_Status__c} 
+                                </td>
+                            </tr>
+                            <tr class="greycolor" key={ccc.Core_Sub_Status__c}>
+                                <td class="slds-p-around_medium" > 
+                                    Subject: &nbsp;&nbsp; {ccc.Subject} 
+                                </td>
+                                <td class="slds-p-around_medium" style=" padding-left: 340px;"> 
+                                    Premier Support Project Name: &nbsp;&nbsp; {ccc.Core_IPS_Project_Case__c} 
+                                </td>
+                            </tr>
+                            <tr class="greycolor" key={ccc.core_Account_Name__c}>
+                                <td class="slds-p-around_medium" > 
+                                    Account Name: &nbsp;&nbsp; {ccc.core_Account_Name__c} 
+                                </td>
+                                <td class="slds-p-around_medium" style=" padding-left: 340px;"> 
+                                    Product Name: &nbsp;&nbsp; {ccc.Core_IPS_Product_name__c} 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                                                                          
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+    </div>
+    <div if:true={publicFile}  style=" background-color: white;"> 
+        <div class="slds-align_absolute-center" style="font-size: 1.5rem; color:Green; font-style: italic"> <b>Uploaded Files will be Public to Customers </b> </div> <br/>
+        
+        <!--<div class="slds-align_absolute-center"> -->
+            <div align="center"><div style="font-size: 110%; font-style: italic; font-weight: bold">
+                <lightning-formatted-rich-text value={fileAttachMsg}></lightning-formatted-rich-text>&nbsp; <a href="mailto:export.customer@intel.com"><font color="blue">{fileMailMsg}</font></a>
+            </div></div>
+        
+    </div>
+    <div if:true={privatePartner} class="slds-align_absolute-center" style="font-size: 1.5rem; color:Green; background-color: white; font-style: italic">
+        <b>Uploaded Files will be Private to Partners </b> 
+    </div>
+    <div if:true={privateIntel} class="slds-align_absolute-center" style="font-size: 1.5rem; color:Green; background-color: white; font-style: italic">
+        <b>Uploaded Files will be Private to Intel </b> 
+    </div>
+    <div class="slds-p-around_medium" style="background-color: white;">
+        <div class="slds-p-around_medium">
+            <iframe src={attachurl} frameborder="0" height="600px" width="100%" style="overflow:hidden"></iframe>
+        </div>
+        
+    </div>
+</template>

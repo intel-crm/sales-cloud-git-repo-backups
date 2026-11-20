@@ -1,0 +1,346 @@
+<!-------------------------------------------------------------------------------------------
+* VF Page     : Core_AccountRecommendations
+* Created Date: 05/05/2015
+* Function    : Visualforce Page for SMART What integration, to present product recommendations
+*               for an account, and accept input on their usefulness
+* Modification Log:
+* Developer          Date             Description
+* --------------------------------------------------------------------------------------
+* Dave Hood          05/05/2015       Original Version
+-------------------------------------------------------------------------------------------->
+
+<apex:page standardController="Core_Account_Recommendations__c" extensions="Core_AccountRecommendations_Controller"
+           showHeader="true" sidebar="true" applyHtmlTag="true" applyBodyTag="true" action="{!onLoad}"
+           title="Product Recommendations" tabStyle="Account">
+    
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
+    
+    <apex:outputLabel value="{!Core_Account_Recommendations__c.Core_Account__c}" rendered="false"/>
+    <apex:outputLabel value="{!Core_Account_Recommendations__c.Core_Recommendations_Viewed__c}" rendered="false"/>
+    
+    &nbsp;
+    <apex:pageMessages />
+    
+    <apex:form rendered="{!isAccessAllowed}">
+        
+        <table columns="3" style="width:100%">
+            <tr>
+                <td style="width:80px">
+                    <apex:image value="{!$Resource.Core_AccountPage}" style="vertical-align:top" />
+                </td>
+                <td style="font-size:22px">
+                    SMART Product Recommendations:<br/>
+                    <apex:commandLink action="{!goToAccount}" value="{!acct.Name}" style="vertical-align:top" />
+                </td>
+                <td style="text-align:center;width:220px">
+                    <apex:pageBlock >
+                        <apex:outputPanel style="font-weight:bold;font-size:1.10em">
+                            Have SMART questions?<br/>
+                            Contact <a href="mailto:smartteam@intel.com">SMART</a> team!
+                        </apex:outputPanel>
+                    </apex:pageBlock>
+                </td>
+            </tr>
+        </table>
+        
+        <br/>
+        <apex:pageBlock >
+            
+            <div style="margin-top:8px; font-weight:bold; font-size: 1.30em">
+                Product Recommendations
+            </div>
+            
+            <apex:outputPanel layout="block" style="margin-top:8px" id="recommendationsTable">
+                <table class="recordTypeInfo infoTable" style="border-collapse:collapse;width:100%">
+                    <tr class="headerRow">
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Reseller's Feedback
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Recommendation Based On
+                        </th>
+                        <th>
+                            Recommendation Last Update
+                        </th>
+                        <th>
+                            Last Handled By
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_1_Name__c}
+                        </td>
+                        <td>
+                            <apex:selectList value="{!Core_Account_Recommendations__c.Core_Feedback_1_Indicator__c}" multiselect="false" size="1">
+                                <apex:selectOptions value="{!feedbackOptions}"/>
+                                <apex:actionSupport event="onchange" action="{!saveFeedback}" status="saveStatus1" reRender="rec1User"/>
+                            </apex:selectList>
+                            <apex:actionstatus id="saveStatus1" startText="Saving..." stopText="" />
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_1_Sell_Type__c}
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_1_Based_On__c}
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Model_Timestamp__c}
+                        </td>
+                        <td>
+                            <apex:outputPanel id="rec1User" >
+                                <a href="/{!Core_Account_Recommendations__c.Core_Feedback_1_User__c}"><apex:outputText value="{!feedback1User.Name}"/></a>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_2_Name__c}
+                        </td>
+                        <td>
+                            <apex:selectList value="{!Core_Account_Recommendations__c.Core_Feedback_2_Indicator__c}" multiselect="false" size="1">
+                                <apex:selectOptions value="{!feedbackOptions}"/>
+                                <apex:actionSupport event="onchange" action="{!saveFeedback}" status="saveStatus2" reRender="rec2User"/>
+                            </apex:selectList>
+                            <apex:actionstatus id="saveStatus2" startText="Saving..." stopText="" />
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_2_Sell_Type__c}
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_2_Based_On__c}
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Model_Timestamp__c}
+                        </td>
+                        <td>
+                            <a href="/{!Core_Account_Recommendations__c.Core_Feedback_2_User__c}">
+                                <apex:outputText value="{!feedback2User.Name}" id="rec2User"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="last">
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_3_Name__c}
+                        </td>
+                        <td>
+                            <apex:selectList value="{!Core_Account_Recommendations__c.Core_Feedback_3_Indicator__c}" multiselect="false" size="1">
+                                <apex:selectOptions value="{!feedbackOptions}"/>
+                                <apex:actionSupport event="onchange" action="{!saveFeedback}" status="saveStatus3" reRender="rec3User"/>
+                            </apex:selectList>
+                            <apex:actionstatus id="saveStatus3" startText="Saving..." stopText="" />
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_3_Sell_Type__c}
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Product_Recommended_3_Based_On__c}
+                        </td>
+                        <td>
+                            {!Core_Account_Recommendations__c.Core_Model_Timestamp__c}
+                        </td>
+                        <td>
+                            <a href="/{!Core_Account_Recommendations__c.Core_Feedback_3_User__c}">
+                                <apex:outputText value="{!feedback3User.Name}" id="rec3User"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+            
+        </apex:pageBlock>
+        
+    </apex:form>
+    <br/>
+    <apex:panelGrid style="width:100%;" columns="2" rendered="{!isAccessAllowed}">
+        <apex:outputPanel style="width:50%">
+            <apex:pageBlock >
+                
+                <div style="margin-top:8px; font-weight:bold; font-size: 1.30em">
+                    Sales History
+                </div>
+                
+                <apex:outputPanel rendered="{!!((Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
+                    
+                    <div style="margin-top:8px; font-weight:bold; font-size: 1.30em; text-align:center">
+                        Top Branded Sales
+                    </div>
+                    
+                    <div style="margin-top:8px">
+                        <table class="recordTypeInfo infoTable" style="width:100%;border-collapse:collapse;">
+                            <tr class="headerRow">
+                                <th>
+                                    Product Name
+                                </th>
+                                <th>
+                                    Last Purchase Units
+                                </th>
+                                <th>
+                                    Last Purchase Date
+                                </th>
+                                <th>
+                                    Last 12 Months Units
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Item__c}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c}
+                                </td>
+                                <td>
+                                    {!LEFT(Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Dt__c, 4)}-
+                                    {!RIGHT(Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Dt__c, 2)}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Total_Qty__c}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c}
+                                </td>
+                                <td>
+                                    {!LEFT(Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Dt__c, 4)}-
+                                    {!RIGHT(Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Dt__c, 2)}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Total_Qty__c}
+                                </td>
+                            </tr>
+                            <tr class="last">
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c}
+                                </td>
+                                <td>
+                                    {!LEFT(Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Dt__c, 4)}-
+                                    {!RIGHT(Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Dt__c, 2)}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Total_Qty__c}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:outputPanel>
+                
+                <apex:outputPanel rendered="{!!((Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
+                    &nbsp;<br/>
+                    <div style="margin-top:8px; font-weight:bold; font-size: 1.30em; text-align:center">
+                        Top Component Sales
+                    </div>
+                    
+                    <div style="margin-top:8px">
+                        <table class="recordTypeInfo infoTable" style="width:100%;border-collapse:collapse;">
+                            <tr class="headerRow">
+                                <th>
+                                    Product Name
+                                </th>
+                                <th>
+                                    Last Purchase Units
+                                </th>
+                                <th>
+                                    Last Purchase Date
+                                </th>
+                                <th>
+                                    Last 12 Months Units
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Item__c}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c}
+                                </td>
+                                <td>
+                                    {!LEFT(Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Dt__c, 4)}-
+                                    {!RIGHT(Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Dt__c, 2)}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Total_Qty__c}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c}
+                                </td>
+                                <td>
+                                    {!LEFT(Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Dt__c, 4)}-
+                                    {!RIGHT(Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Dt__c, 2)}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Total_Qty__c}
+                                </td>
+                            </tr>
+                            <tr class="last">
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c}
+                                </td>
+                                <td>
+                                    {!LEFT(Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Dt__c, 4)}-
+                                    {!RIGHT(Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Dt__c, 2)}
+                                </td>
+                                <td>
+                                    {!Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Total_Qty__c}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:outputPanel>
+                
+                <apex:outputPanel rendered="{!((Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c == '') &&
+                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
+                    <p>&nbsp;</p>
+                    No sales history found in the past year
+                    <p>&nbsp;</p>
+                </apex:outputPanel>
+                
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:outputPanel style="width:50%">
+            <div style="margin-left:20px">
+                <chatter:feed entityId="{!Core_Account_Recommendations__c.Id}" showPublisher="true"/>
+            </div>
+        </apex:outputPanel>
+    </apex:panelGrid>
+    
+</apex:page>

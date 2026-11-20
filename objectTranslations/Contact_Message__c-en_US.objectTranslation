@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Messages</value>
+    </caseValues>
+    <fields>
+        <label><!-- ACM Integration Queue --></label>
+        <name>ACM_Integration_Queue__c</name>
+        <relationshipLabel><!-- Contact Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Contact Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inbound Message Status --></label>
+        <name>Core_Inbound_Message_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message Type --></label>
+        <name>Core_Message_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inbound Message --></label>
+        <name>Inbound_Message__c</name>
+        <relationshipLabel><!-- Contact Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Outbound Message --></label>
+        <name>Outbound_Message__c</name>
+        <relationshipLabel><!-- Contact Messages --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

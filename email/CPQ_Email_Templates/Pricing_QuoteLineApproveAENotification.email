@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Tenders IQR Quote Missing Opportunity ID" recipientType="User" relatedToType="SBQQ__QuoteLine__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_QuoteLineApproveAENotification quoteLineRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

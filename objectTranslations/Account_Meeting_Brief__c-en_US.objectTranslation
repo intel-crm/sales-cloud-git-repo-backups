@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Meeting Brief</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Meeting Briefs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Account Meeting Briefs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Select the appropriate event. If no match,  select Other and provide details in the Other Event field --></help>
+        <label><!-- Event --></label>
+        <name>Core_Account_Brief_Event__c</name>
+        <picklistValues>
+            <masterLabel>Board of Advisors</masterLabel>
+            <translation><!-- Board of Advisors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computex</masterLabel>
+            <translation><!-- Computex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Electronics Show (CES)</masterLabel>
+            <translation><!-- Consumer Electronics Show (CES) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Executive Business Review</masterLabel>
+            <translation><!-- Executive Business Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel 360</masterLabel>
+            <translation><!-- Intel 360 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Extreme Masters (IEM)</masterLabel>
+            <translation><!-- Intel Extreme Masters (IEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Science &amp; Engineering Fair (ISEF)</masterLabel>
+            <translation><!-- International Science &amp; Engineering Fair (ISEF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile World Congress (MWC)</masterLabel>
+            <translation><!-- Mobile World Congress (MWC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Retail Federation (NRF)</masterLabel>
+            <translation><!-- National Retail Federation (NRF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (describe in Other Event Field)</masterLabel>
+            <translation><!-- Other (describe in Other Event Field) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Connect</masterLabel>
+            <translation><!-- Partner Connect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Executive Conference (REC)</masterLabel>
+            <translation><!-- Retail Executive Conference (REC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supercomputing</masterLabel>
+            <translation><!-- Supercomputing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Brief Grid PPT --></label>
+        <name>Core_Account_Brief_Grid_PPT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Brief Grid Word --></label>
+        <name>Core_Account_Brief_Word_GridAction__c</name>
+    </fields>
+    <fields>
+        <help><!-- Recent history of customer’s business  in relation to the meeting (e.g. cultural points, initiatives, info and products). --></help>
+        <label><!-- Background &amp; Recent Meeting History --></label>
+        <name>Core_Account_Meeting_Background_Meeting__c</name>
+    </fields>
+    <fields>
+        <help><!-- Intel Business Summary (revenue, design win $ or MSS, CPU net ASP, CPU Vol [KU] etc.) --></help>
+        <label><!-- Intel Business Summary --></label>
+        <name>Core_Account_Meeting_Business_Summary__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer contact for the account meeting --></help>
+        <label><!-- Main Customer Contact --></label>
+        <name>Core_Account_Meeting_Customer_Contact__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date of the event --></help>
+        <label><!-- Meeting Date --></label>
+        <name>Core_Account_Meeting_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Suggested dress code for the event --></help>
+        <label><!-- Dress Code --></label>
+        <name>Core_Account_Meeting_Dress__c</name>
+        <picklistValues>
+            <masterLabel>Business Attire</masterLabel>
+            <translation><!-- Business Attire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Casual</masterLabel>
+            <translation><!-- Business Casual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other attire ( include details in &apos;Other Event&apos; field)</masterLabel>
+            <translation><!-- Other attire ( include details in &apos;Other Event&apos; field) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The end time of the event --></help>
+        <label><!-- End Time --></label>
+        <name>Core_Account_Meeting_End_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- High-level overview of current engagement (e.g what&apos;s happening, what we are going to focus on) --></help>
+        <label><!-- Executive Summary --></label>
+        <name>Core_Account_Meeting_Exec_Summary__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer Hot Button Issue 1 --></help>
+        <label><!-- Hot Button Issue 1 --></label>
+        <name>Core_Account_Meeting_Hot_Button_Issue_1__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer Hot Button Issue 2 --></help>
+        <label><!-- Hot Button Issue 2 --></label>
+        <name>Core_Account_Meeting_Hot_Button_Issue_2__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer Hot Button Issue 3 --></help>
+        <label><!-- Hot Button Issue 3 --></label>
+        <name>Core_Account_Meeting_Hot_Button_Issue_3__c</name>
+    </fields>
+    <fields>
+        <help><!-- The main Intel employee that is chairing/organzing the meeting. --></help>
+        <label><!-- Intel Main Contact/Meeting Chair --></label>
+        <name>Core_Account_Meeting_Intel_Contact__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the primary language that will be used during the event --></help>
+        <label><!-- Language --></label>
+        <name>Core_Account_Meeting_Language__c</name>
+        <picklistValues>
+            <masterLabel>Chinese Simplified</masterLabel>
+            <translation><!-- Chinese Simplified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese Traditional</masterLabel>
+            <translation><!-- Chinese Traditional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Canada)</masterLabel>
+            <translation><!-- English (Canada) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Great Britain)</masterLabel>
+            <translation><!-- English (Great Britain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English (Ireland)</masterLabel>
+            <translation><!-- English (Ireland) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation><!-- French --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French (Canada)</masterLabel>
+            <translation><!-- French (Canada) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation><!-- German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hebrew</masterLabel>
+            <translation><!-- Hebrew --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesian</masterLabel>
+            <translation><!-- Indonesian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian</masterLabel>
+            <translation><!-- Italian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation><!-- Korean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polish</masterLabel>
+            <translation><!-- Polish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese</masterLabel>
+            <translation><!-- Portuguese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian</masterLabel>
+            <translation><!-- Russian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation><!-- Spanish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (LAR)</masterLabel>
+            <translation><!-- Spanish (LAR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish (Spain)</masterLabel>
+            <translation><!-- Spanish (Spain) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai</masterLabel>
+            <translation><!-- Thai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkish</masterLabel>
+            <translation><!-- Turkish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnamese</masterLabel>
+            <translation><!-- Vietnamese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Provide as much detail as necessary to find the location:  e.g. Address, City, State/Province Postal Code, Country and/or building/conference room number. --></help>
+        <label><!-- Location --></label>
+        <name>Core_Account_Meeting_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hot Button Issue Response 1 --></label>
+        <name>Core_Account_Meeting_Response_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hot Button Issue Response 2 --></label>
+        <name>Core_Account_Meeting_Response_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hot Button Issue Response 3 --></label>
+        <name>Core_Account_Meeting_Response_3__c</name>
+    </fields>
+    <fields>
+        <help><!-- The start time of the event --></help>
+        <label><!-- Start Time --></label>
+        <name>Core_Account_Meeting_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tone of the meeting (e.g. bridge building, hostile, friendly, exploratory, etc.) --></help>
+        <label><!-- Tone --></label>
+        <name>Core_Account_Meeting_Tone__c</name>
+    </fields>
+    <fields>
+        <help><!-- Allows user to link to existing opportunities --></help>
+        <label><!-- Opportunity 1 --></label>
+        <name>Core_Brief_Existing_Opportunity_1__c</name>
+        <relationshipLabel><!-- Account Meeting Briefs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 2 --></label>
+        <name>Core_Brief_Existing_Opportunity_2__c</name>
+        <relationshipLabel><!-- Account Meeting Briefs (Existing Opportunity 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 3 --></label>
+        <name>Core_Brief_Existing_Opportunity_3__c</name>
+        <relationshipLabel><!-- Account Meeting Briefs (Existing Opportunity 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Used for notes on the opportunity --></help>
+        <label><!-- Opportunity 1 - Notes --></label>
+        <name>Core_Brief_Existing_Opportunity_Note_1__c</name>
+    </fields>
+    <fields>
+        <help><!-- Notes for existing opportunity --></help>
+        <label><!-- Opportunity 2 - Notes --></label>
+        <name>Core_Brief_Existing_Opportunity_Note_2__c</name>
+    </fields>
+    <fields>
+        <help><!-- Notes for existing opportunities --></help>
+        <label><!-- Opportunity 3 - Notes --></label>
+        <name>Core_Brief_Existing_Opportunity_Note_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Brief_Geo__c</name>
+    </fields>
+    <fields>
+        <help><!-- An identifiable and unique name containing the date of the meeting and the account name. Do not include confidential information. --></help>
+        <label><!-- Account Meeting Brief Name --></label>
+        <name>Core_Executive_Brief_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Executive Name --></label>
+        <name>Core_Executive_Name__c</name>
+        <picklistValues>
+            <masterLabel>Alex Grbic</masterLabel>
+            <translation><!-- Alex Grbic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amir Faintuch</masterLabel>
+            <translation><!-- Amir Faintuch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ann B. Kelleher</masterLabel>
+            <translation><!-- Ann B. Kelleher --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brian Krzanich</masterLabel>
+            <translation><!-- Brian Krzanich --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CJ Bruno</masterLabel>
+            <translation><!-- CJ Bruno --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Christian Morales</masterLabel>
+            <translation><!-- Christian Morales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Christin Eisenschmid</masterLabel>
+            <translation><!-- Christin Eisenschmid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dan McNamara</masterLabel>
+            <translation><!-- Dan McNamara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diane Bryant</masterLabel>
+            <translation><!-- Diane Bryant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doug Davis</masterLabel>
+            <translation><!-- Doug Davis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doug Fisher</masterLabel>
+            <translation><!-- Doug Fisher --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Erhaan Shaikh</masterLabel>
+            <translation><!-- Erhaan Shaikh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Frank Jones</masterLabel>
+            <translation><!-- Frank Jones --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greg Baur</masterLabel>
+            <translation><!-- Greg Baur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greg Pearson</masterLabel>
+            <translation><!-- Greg Pearson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gregory M. Bryant</masterLabel>
+            <translation><!-- Gregory M. Bryant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jason Grebe</masterLabel>
+            <translation><!-- Jason Grebe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jeff McCrea</masterLabel>
+            <translation><!-- Jeff McCrea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jeff Tripaldi</masterLabel>
+            <translation><!-- Jeff Tripaldi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>John Sakamoto</masterLabel>
+            <translation><!-- John Sakamoto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>John Vossoughi</masterLabel>
+            <translation><!-- John Vossoughi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jonathan Ballon</masterLabel>
+            <translation><!-- Jonathan Ballon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Josh M. Walden</masterLabel>
+            <translation><!-- Josh M. Walden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mark Nelson</masterLabel>
+            <translation><!-- Mark Nelson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maurits Tichelman</masterLabel>
+            <translation><!-- Maurits Tichelman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Michelle Johnston</masterLabel>
+            <translation><!-- Michelle Johnston --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Naveen G. Rao</masterLabel>
+            <translation><!-- Naveen G. Rao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Navin Shenoy</masterLabel>
+            <translation><!-- Navin Shenoy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ravishankar Kuppuswamy</masterLabel>
+            <translation><!-- Ravishankar Kuppuswamy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rebecca Brown</masterLabel>
+            <translation><!-- Rebecca Brown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rob Crooke</masterLabel>
+            <translation><!-- Rob Crooke --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robby Swinnen</masterLabel>
+            <translation><!-- Robby Swinnen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rose Schooler</masterLabel>
+            <translation><!-- Rose Schooler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rupal Shah</masterLabel>
+            <translation><!-- Rupal Shah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sandra Rivera</masterLabel>
+            <translation><!-- Sandra Rivera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shannon Poulin</masterLabel>
+            <translation><!-- Shannon Poulin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sohail U. Ahmed</masterLabel>
+            <translation><!-- Sohail U. Ahmed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stacy J. Smith</masterLabel>
+            <translation><!-- Stacy J. Smith --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Steven A. Long</masterLabel>
+            <translation><!-- Steven A. Long --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Steven L. Fund</masterLabel>
+            <translation><!-- Steven L. Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thomas P. Lantzsch</masterLabel>
+            <translation><!-- Thomas P. Lantzsch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Venkata Murthy Renduchintala</masterLabel>
+            <translation><!-- Venkata Murthy Renduchintala --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Executive - Other --></label>
+        <name>Core_Executive_Other__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of Intel Main Contact --></help>
+        <label><!-- Intel Main Contact Mobile Number --></label>
+        <name>Core_Intel_Contact_Mobile_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Capture new opportunities in a free form text --></help>
+        <label><!-- New Opportunities (Notes) --></label>
+        <name>Core_New_Opportunities_Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the time zone for this event --></help>
+        <label><!-- Time Zone --></label>
+        <name>Core_Time_Zone__c</name>
+        <picklistValues>
+            <masterLabel>(GMT) GMT</masterLabel>
+            <translation><!-- (GMT) GMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Africa West Central</masterLabel>
+            <translation><!-- (GMT+01:00) Africa West Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Europe Central</masterLabel>
+            <translation><!-- (GMT+01:00) Europe Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Europe Western</masterLabel>
+            <translation><!-- (GMT+01:00) Europe Western --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Greenwich (London)</masterLabel>
+            <translation><!-- (GMT+01:00) Greenwich (London) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+01:00) Romance</masterLabel>
+            <translation><!-- (GMT+01:00) Romance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Africa South</masterLabel>
+            <translation><!-- (GMT+02:00) Africa South --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Egypt</masterLabel>
+            <translation><!-- (GMT+02:00) Egypt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Europe Eastern</masterLabel>
+            <translation><!-- (GMT+02:00) Europe Eastern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) FLE</masterLabel>
+            <translation><!-- (GMT+02:00) FLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) GTB</masterLabel>
+            <translation><!-- (GMT+02:00) GTB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+02:00) Israel</masterLabel>
+            <translation><!-- (GMT+02:00) Israel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Africa Eastern</masterLabel>
+            <translation><!-- (GMT+03:00) Africa Eastern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arab</masterLabel>
+            <translation><!-- (GMT+03:00) Arab --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Arabic</masterLabel>
+            <translation><!-- (GMT+03:00) Arabic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:00) Russian</masterLabel>
+            <translation><!-- (GMT+03:00) Russian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+03:30) Iran</masterLabel>
+            <translation><!-- (GMT+03:30) Iran --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Arabian</masterLabel>
+            <translation><!-- (GMT+04:00) Arabian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:00) Caucasus</masterLabel>
+            <translation><!-- (GMT+04:00) Caucasus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+04:30) Afghanistan</masterLabel>
+            <translation><!-- (GMT+04:30) Afghanistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Asia Western</masterLabel>
+            <translation><!-- (GMT+05:00) Asia Western --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:00) Ekaterinburg</masterLabel>
+            <translation><!-- (GMT+05:00) Ekaterinburg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:30) India</masterLabel>
+            <translation><!-- (GMT+05:30) India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:30) Sri Lanka</masterLabel>
+            <translation><!-- (GMT+05:30) Sri Lanka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+05:45) Nepal</masterLabel>
+            <translation><!-- (GMT+05:45) Nepal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Asia Central</masterLabel>
+            <translation><!-- (GMT+06:00) Asia Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:00) Asia North Central</masterLabel>
+            <translation><!-- (GMT+06:00) Asia North Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+06:30) Myanmar</masterLabel>
+            <translation><!-- (GMT+06:30) Myanmar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Asia North</masterLabel>
+            <translation><!-- (GMT+07:00) Asia North --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+07:00) Asia South East</masterLabel>
+            <translation><!-- (GMT+07:00) Asia South East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) AUS Western</masterLabel>
+            <translation><!-- (GMT+08:00) AUS Western --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Asia North East</masterLabel>
+            <translation><!-- (GMT+08:00) Asia North East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) China</masterLabel>
+            <translation><!-- (GMT+08:00) China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Malay Peninsula</masterLabel>
+            <translation><!-- (GMT+08:00) Malay Peninsula --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+08:00) Taipei</masterLabel>
+            <translation><!-- (GMT+08:00) Taipei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Korea</masterLabel>
+            <translation><!-- (GMT+09:00) Korea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Tokyo</masterLabel>
+            <translation><!-- (GMT+09:00) Tokyo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:00) Yakutsk</masterLabel>
+            <translation><!-- (GMT+09:00) Yakutsk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:30) AUS Central [Adelaide]</masterLabel>
+            <translation><!-- (GMT+09:30) AUS Central [Adelaide] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+09:30) AUS Central [Darwin]</masterLabel>
+            <translation><!-- (GMT+09:30) AUS Central [Darwin] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) AUS Eastern [Brisbane]</masterLabel>
+            <translation><!-- (GMT+10:00) AUS Eastern [Brisbane] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) AUS Eastern [Sydney]</masterLabel>
+            <translation><!-- (GMT+10:00) AUS Eastern [Sydney] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Tasmania</masterLabel>
+            <translation><!-- (GMT+10:00) Tasmania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) Vladivostok</masterLabel>
+            <translation><!-- (GMT+10:00) Vladivostok --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+10:00) West Pacific</masterLabel>
+            <translation><!-- (GMT+10:00) West Pacific --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+11:00) Central Pacific</masterLabel>
+            <translation><!-- (GMT+11:00) Central Pacific --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) Fiji</masterLabel>
+            <translation><!-- (GMT+12:00) Fiji --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+12:00) New Zealand</masterLabel>
+            <translation><!-- (GMT+12:00) New Zealand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT+13:00) Tonga</masterLabel>
+            <translation><!-- (GMT+13:00) Tonga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-01:00) Azores</masterLabel>
+            <translation><!-- (GMT-01:00) Azores --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-01:00) Cape Verde</masterLabel>
+            <translation><!-- (GMT-01:00) Cape Verde --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-02:00) Mid-Atlantic</masterLabel>
+            <translation><!-- (GMT-02:00) Mid-Atlantic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Brasilia</masterLabel>
+            <translation><!-- (GMT-03:00) Brasilia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Eastern SA</masterLabel>
+            <translation><!-- (GMT-03:00) Eastern SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:00) Greenland</masterLabel>
+            <translation><!-- (GMT-03:00) Greenland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-03:30) Newfoundland</masterLabel>
+            <translation><!-- (GMT-03:30) Newfoundland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Atlantic [Canada]</masterLabel>
+            <translation><!-- (GMT-04:00) Atlantic [Canada] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Pacific SA</masterLabel>
+            <translation><!-- (GMT-04:00) Pacific SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Venezuela</masterLabel>
+            <translation><!-- (GMT-04:00) Venezuela --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-04:00) Western SA</masterLabel>
+            <translation><!-- (GMT-04:00) Western SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Eastern [US &amp; Canada]</masterLabel>
+            <translation><!-- (GMT-05:00) Eastern [US &amp; Canada] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) Indiana [East]</masterLabel>
+            <translation><!-- (GMT-05:00) Indiana [East] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-05:00) SA Pacific</masterLabel>
+            <translation><!-- (GMT-05:00) SA Pacific --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central America</masterLabel>
+            <translation><!-- (GMT-06:00) Central America --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Central [US &amp; Canada]</masterLabel>
+            <translation><!-- (GMT-06:00) Central [US &amp; Canada] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Mexico</masterLabel>
+            <translation><!-- (GMT-06:00) Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-06:00) Saskatchewan</masterLabel>
+            <translation><!-- (GMT-06:00) Saskatchewan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Arizona</masterLabel>
+            <translation><!-- (GMT-07:00) Arizona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mountain [Mexico]</masterLabel>
+            <translation><!-- (GMT-07:00) Mountain [Mexico] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-07:00) Mountain [US &amp; Canada]</masterLabel>
+            <translation><!-- (GMT-07:00) Mountain [US &amp; Canada] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-08:00) Pacific [US &amp; Canada]</masterLabel>
+            <translation><!-- (GMT-08:00) Pacific [US &amp; Canada] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-09:00) Alaska</masterLabel>
+            <translation><!-- (GMT-09:00) Alaska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-10:00) Hawaii</masterLabel>
+            <translation><!-- (GMT-10:00) Hawaii --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-11:00) Samoa</masterLabel>
+            <translation><!-- (GMT-11:00) Samoa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(GMT-12:00) Dateline</masterLabel>
+            <translation><!-- (GMT-12:00) Dateline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coordinated Universal Time (UTC)</masterLabel>
+            <translation><!-- Coordinated Universal Time (UTC) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Brief company description (e.g.  revenue, key partners, latest news, press releases) --></help>
+        <label><!-- Customer Overview --></label>
+        <name>Customer_Overview__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity1 Risk Created Date --></label>
+        <name>Existing_Opportunity1_Risk_Created_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the Risk Reason for the Selected Opportunity --></help>
+        <label><!-- Opportunity 1 Risk Reason --></label>
+        <name>Existing_Opportunity_1_Risk_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 1 Support Completed --></label>
+        <name>Existing_Opportunity_1_Support_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 1 Support Requested --></label>
+        <name>Existing_Opportunity_1_Support_Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 2 Risk Created Date --></label>
+        <name>Existing_Opportunity_2_Risk_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 2 Risk Reason --></label>
+        <name>Existing_Opportunity_2_Risk_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 2 Support Completed --></label>
+        <name>Existing_Opportunity_2_Support_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 2 Support Requested --></label>
+        <name>Existing_Opportunity_2_Support_Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 3 Risk Created Date --></label>
+        <name>Existing_Opportunity_3_Risk_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 3 Risk Reason --></label>
+        <name>Existing_Opportunity_3_Risk_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 3 Support Completed --></label>
+        <name>Existing_Opportunity_3_Support_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity 3 Support Requested --></label>
+        <name>Existing_Opportunity_3_Support_Requested__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you select &apos;Other&apos; for Event, please provide event details in this field, including dress code. --></help>
+        <label><!-- Other Event --></label>
+        <name>Other_Event__c</name>
+    </fields>
+    <sharingReasons>
+        <label><!-- Account Team Member --></label>
+        <name>Account_Team_Member</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Time format need to be HH:MM AM/PM. --></errorMessage>
+        <name>Check_Time_format</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill in the location for this meeting. --></errorMessage>
+        <name>Check_if_event_is_empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Time format need to be HH:MM AM/PM. --></errorMessage>
+        <name>Core_Check_time</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Intel Account is permitted on this field. Please select Intel Account and retry again. --></errorMessage>
+        <name>Core_Prevent_Account_AMB</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Lex_AccMeetingBrief_Share --></label>
+        <name>Core_Lex_AccMeetingBrief_Share</name>
+    </webLinks>
+</CustomObjectTranslation>

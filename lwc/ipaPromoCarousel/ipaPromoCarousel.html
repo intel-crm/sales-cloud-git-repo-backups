@@ -1,0 +1,26 @@
+<template>
+    <div class="promo-carousel-component-wrapper">
+        <template if:true={heading}>
+            <h4>{heading}</h4>
+        </template>
+        <c-core-intc-carousel name="PromoCarousel"
+            items-per-page-mobile={cardsPerPageMobile}
+            items-per-page-tablet={cardsPerPageTablet}
+            items-per-page-desktop={cardsPerPageDesktop}>
+            <div slot="content" class="promo-wrapper">
+                <template for:each={promos} for:item="promo" for:index="index">
+                    <div data-carousel-item={index} key={promo.key}>
+                        <div class="promo-card-container" data-promo-count={count}>
+                            <c-ipa-promo-card
+                                hide-learn-more-link={hideLearnMoreLinks}
+                                promo={promo}
+                                display-type={displayType}
+                                onimageloaded={handleImageLoad}>
+                            </c-ipa-promo-card>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </c-core-intc-carousel>
+    </div>
+</template>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_85354728</developerName>
+        <masterLabel>Geo Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CUST_OWNER_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Jon Jen Tan</sourceValue>
+            </sourceValues>
+            <value>ANZ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Akimori Ikeda</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yukikazu Kato</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Takuji Yamasaki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tatsuhiko Demura</sourceValue>
+            </sourceValues>
+            <value>JPN Field</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Naoto Mori</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shigeyuki Shoda</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kenichi Komatsubara</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Takuo Ishizaki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kota Makari</sourceValue>
+            </sourceValues>
+            <value>JPN OSC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Christine Want Sent Khor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>kelvin lum</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ming Han Niam</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sharisse Wong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jamie Ng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kanad Shripad Joshi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Swee Sing Kok</sourceValue>
+            </sourceValues>
+            <value>Regional</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>RYAN PIEN</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Morris Sun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Patrick Tang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Melissa Shih</sourceValue>
+            </sourceValues>
+            <value>DCS Regional</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Clint Ahn</sourceValue>
+            </sourceValues>
+            <value>Korea</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sudhir Khurana</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shailendra O Miglani</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hareesh Shankrappa</sourceValue>
+            </sourceValues>
+            <value>SA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Hung Choong Hwang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chi Fei Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Guan Boon Tan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pichaya Limpivest</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Natalie Saw</sourceValue>
+            </sourceValues>
+            <value>SEA</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>FK_$Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <field>Core_Opportunity_Partner__c.Core_Partner__c</field>
+    </columns>
+    <columns>
+        <field>FK_OPP_ID</field>
+    </columns>
+    <columns>
+        <field>FK_OPP_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_OPP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_Intel_Platform__c</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_ADDR1_CITY</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_ADDR1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_ADDR1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_OPP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Opportunity_Partner__c.Core_Partner_Part_Number__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_SSD__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_Competitor_Architecture__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_IoT__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_Operating_System__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_Opportunity_Partner__c.Core_Partner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>aaeon,adi,adlink,advantech,artesyn,avalue,axiomtek,congatec,dell,dfi,eurotech,evoc,gemalto,gigabyte,ibase,iei,kontron,lanner,nexcom,norco,onyx,portwell,radisys,sbs,supermicro,telit,topstar,toshiba,venture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>includes</operator>
+            <value>Embedded</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>12/28/2014</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>12/26/2015</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_OPP_STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>FK_OPP_CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_85354728</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>APJ Co-Selling All (By Simon)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Opportunity_Partner__c@Core_Opportunity_Partner__c.Core_Opportunity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_Opportunity_Partner__c.Core_Partner__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

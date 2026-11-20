@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Approved_Unit_Qty__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_ECAP_Price_Amt__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Draft,New,In Progress,In Review,Pending,Approved,Denied,Presented,Accepted,Rejected,Submitted,Won,Lost,Cancelled,Recalled,Not Yet Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Status_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Draft,Pending Intel Field Review,Pending Further Intel Review,Approved,Rejected,Won,Lost,Revised,Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$SBQQ__Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Dell</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$Pricing_Region_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$Pricing_End_Customer_Country_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>United Kingdom</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>! H2&apos;22 - H1&apos;23 UK Server Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Quote_with_Performance_Metrics__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
+        <endDate>2023-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2023-01-01</startDate>
+    </timeFrameFilter>
+</Report>

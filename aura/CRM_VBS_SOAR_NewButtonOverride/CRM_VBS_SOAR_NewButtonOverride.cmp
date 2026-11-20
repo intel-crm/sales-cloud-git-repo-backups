@@ -1,0 +1,5 @@
+<aura:component implements="force:hasRecordId,lightning:actionOverride,lightning:isUrlAddressable" access="global" >
+    <aura:attribute name="recordId" type="String"/>  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <c:crm_VBS_SOAR_AddProducts recordId="{!v.pageReference.state.c__recordId}"/>
+</aura:component>

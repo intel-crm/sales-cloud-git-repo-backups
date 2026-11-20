@@ -1,0 +1,41 @@
+<aura:documentation>
+	<aura:description>
+    <p>Compare Tray Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/19/2019</p>
+    <p>CurrentVersion: 1.6</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>Structure of compare tray items:</p>
+<pre>{
+	id: '001i000001AWbWugta', 					// record Id
+	name: 'The Name of Some Product',
+	imageUrl: 'https://....',
+	// TODO: how to address categories.. tbd
+	attributes: [
+		{
+			name: 'Category',
+			types: [
+				{ name: 'Software', id: '001i000001AWbW' },
+				{ name: 'Category2', id: 'someotherID' }
+			]
+		}
+	]
+}</pre>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.1 - bug fix</p>
+    <br/>
+		<p>1.2</p>
+		<p>Style changes, adds notification under button</p>
+		<br/>
+		<p>1.3, 1.4</p>
+		<p>Looking at structure of compare tray data... TBD w/ action items re: compare</p>
+    <br/>
+    <p>1.5, 1.6 - bug fix with tray full warning message</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

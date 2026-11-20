@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUACCTADD_Korean</name>
+    <style>none</style>
+    <subject>인텔® 파트너 얼라이언스 등록을 완료하는 데 필요한 조치</subject>
+    <textOnly>인텔® 파트너 얼라이언스 등록을 완료하는 데 필요한 조치
+
+
+
+
+{!Contact.FirstName},
+
+축하합니다, 회사 관리자나 인텔 관리자가 귀하를 인텔® 파트너 얼라이언스 계정에 추가했습니다! 몇 단계만 거치면 등록이 완료됩니다.
+
+아래 프로필 정보가 생성되었습니다.
+
+이메일 주소: {!Contact.Email}
+회사 이름: {{ACCOUNTNAME}}
+인텔® 파트너 얼라이언스 비즈니스 ID: {{ACCOUNTNUMBER}}
+
+
+아래 링크를 클릭하여 등록을 완료하십시오.
+
+
+{{ButtonText}}
+
+
+위 링크에 액세스할 수 없습니까?
+{{EVLINK}}
+문의 사항이 있는 경우 {{SUPPORTLINK}}에 문의하십시오.
+귀하가 프로그램에 참여하시기를 기대하고 있겠습니다!
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보 취급방침 | 쿠키
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

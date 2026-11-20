@@ -1,0 +1,41 @@
+:host {
+  padding: 0;
+  margin: 2.5rem 0;
+  display: block;
+}
+.simple-card-list-container {
+  align-items: normal;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.simple-card-list-item {
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  margin: 0;
+  padding: 12px;
+}
+
+.simple-card-list-container {
+  padding: 1.125rem 12px;
+  background: var(--white);
+}
+@media screen and (max-width: 767px) {
+  :host {
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .simple-card-list-item {
+    flex: 0 0 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .simple-card-list-item {
+    flex: 0 0 33.33%;
+}
+}

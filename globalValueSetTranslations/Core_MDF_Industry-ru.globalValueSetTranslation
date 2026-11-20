@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Accommodation and Food Services</masterLabel>
+        <translation>Гостиницы и общественное питание</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Agriculture</masterLabel>
+        <translation>Сельское хозяйство</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Amusement and Gambling</masterLabel>
+        <translation>Развлечения и азартные игры</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arts and Entertainment</masterLabel>
+        <translation>Искусство и развлечения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+        <translation>Искусство, развлечения и отдых</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive</masterLabel>
+        <translation>Автомобильная промышленность</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive (Non Manufacturing)</masterLabel>
+        <translation>Автомобильная отрасль (не производство)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B2B general</masterLabel>
+        <translation>B2B, общее</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B2C, no industry</masterLabel>
+        <translation>B2C, без отрасли</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Communications</masterLabel>
+        <translation>Коммуникационная продукция</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Construction</masterLabel>
+        <translation>Строительство</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Defense and Space</masterLabel>
+        <translation>Оборона и космическое пространство</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education</masterLabel>
+        <translation>Образование</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy and Utilities</masterLabel>
+        <translation>Энергетика и коммунальные услуги</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Finance and Insurance</masterLabel>
+        <translation>Финансовые услуги и страхование</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>Игровой процесс</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government</masterLabel>
+        <translation>Государственные учреждения</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Health &amp; Life Sciences</masterLabel>
+        <translation>Медико-биологические науки</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Healthcare</masterLabel>
+        <translation>Здравоохранение</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manufacturing</masterLabel>
+        <translation>Производство</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Media</masterLabel>
+        <translation>Носитель рекламы</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NA</masterLabel>
+        <translation>нет данных</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Not For Profit</masterLabel>
+        <translation>Некоммерческие организации</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Другое</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Professional and Business Services</masterLabel>
+        <translation>Профессиональные и коммерческие услуги</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+        <translation>Недвижимость, аренда и лизинг</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retail</masterLabel>
+        <translation>Розничная торговля</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Robotics</masterLabel>
+        <translation>Робототехника</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software</masterLabel>
+        <translation>Программное обеспечение</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software and Services</masterLabel>
+        <translation>ПО и сервисы</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telecommunications</masterLabel>
+        <translation>Телекоммуникации</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Transportation and Warehouse</masterLabel>
+        <translation>Транспортировка и хранение</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Transportation, Travel and Warehousing</masterLabel>
+        <translation>Транспорт, путешествия и складское хранение</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

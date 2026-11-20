@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for the LEAD WF
+
+&apos; Core_Lead_Update_Stage_Changed_Date_Time &apos;</description>
+        <name>Core_Lead_Update_Stage_Changed_Date_Time</name>
+        <label>Core_Lead_Update_Stage_Changed_Date_Time</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Lead_Update_Stage_Changed_Date_TimeTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Lead_Update_Stage_Changed_Date_Time</targetReference>
+            </connector>
+            <label>Core_Lead_Update_Stage_Changed_Date_TimeTRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the LEAD WF 
+
+&apos;Core_Lead_Update_State_Changed_Date_Time&apos;</description>
+        <name>Core_Lead_Update_State_Changed_Date_Time</name>
+        <label>Core_Lead_Update_State_Changed_Date_Time</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_Update_Stage_Changed_Date_Time</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Lead_Update_State_Changed_Date_TimeTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_State__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Lead_Update_State_Change_Date_Time</targetReference>
+            </connector>
+            <label>Core_Lead_Update_State_Changed_Date_TimeTRUE</label>
+        </rules>
+    </decisions>
+    <description>for the WF &apos; Core_Lead_Update_State_Changed_Date_Time &apos;
+and &apos;Core_Lead_Update_Stage_Changed_Date_Time</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_Lead_Update_Stage/State_Changed_Date_Time {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Update_Stage/State_Changed_Date_Time</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_Lead_Update_State_Change_Date_Time</name>
+        <label>Core_Lead_Update_State_Change_Date_Time</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_Stage_Changed_Date_Time</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State_Change_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdateCore_Lead_Update_Stage_Changed_Date_Time</name>
+        <label>FieldUpdateCore_Lead_Update_Stage_Changed_Date_Time</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>Core_Lead_Stage_Change_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_State_Changed_Date_Time</targetReference>
+        </connector>
+        <filterFormula>(ISCHANGED({!$Record.Core_Lead_State__c}) || ISCHANGED({!$Record.Status}) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>20</activeVersionNumber>
+    <description>TWC3123-4680 --Opportunity Team Member : Mandate the Description field and Validation at Design Stage
+v4- During creation of a new Opportunity Team Member record, system to default the Opportunity Team Member Role Name at the Description field.
+v6- check new record and desc is blank or  team mem role changed and desc is blank
+v14-for partner user, default partner in desc
+V15-entry criteria changed</description>
+    <masterLabel>Core_Oppty_TeamMember_DescUpdate</masterLabel>
+</FlowDefinition>

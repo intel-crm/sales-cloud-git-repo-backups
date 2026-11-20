@@ -1,0 +1,29 @@
+<aura:documentation>
+	<aura:description>
+
+    <p>Compare Tray -- reducer subcomponent</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/19/2019</p>
+    <p>CurrentVersion: 2.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>CompareTray -- reducer subcomponent</p>
+    <p>Store structure:</p>
+
+<pre>{
+  items: []
+}</pre>
+
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <br/>
+    <p>1.1 -- adds clearCompareTray </p>
+    <p>2.0 - new structure to match ISGRedux v. 3.0</p>
+    <p>2.1 - bug fixes w/ notification message</p>
+
+  </aura:description>
+</aura:documentation>

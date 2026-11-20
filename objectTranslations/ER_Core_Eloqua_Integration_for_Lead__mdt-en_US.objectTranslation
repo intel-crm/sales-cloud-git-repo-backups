@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ER_Core Eloqua Integration for Lead</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ER_Core Eloqua Integration for Leads</value>
+    </caseValues>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Core_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

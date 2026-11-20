@@ -1,0 +1,141 @@
+<aura:component controller="MarketplaceTopicsImageUploader" extends="c:MarketplaceCreateProductFormInputBase" implements="forceCommunity:availableForAllPageTypes">
+    <!--https://www.lightningdesignsystem.com/components/file-selector/-->
+    <!--https://developer.salesforce.com/docs/component-library/bundle/lightning:input/example#lightningcomponentdemo:exampleInputFile-->
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="label" type="string" default="{!$Label.c.PMP_Image_Upload}" description="Label for the input" />
+    <aura:attribute name="recordIdForUpload" type="string" required="true" description="Record ID for the image uploads (Offering Id)" />
+    <aura:attribute name="maxUploads" type="integer" default="5" description="Maximum number of images allowed" />
+    <aura:attribute name="acceptableFormats" type="String[]" default="['.png', '.gif', '.jpg', '.jpeg']" description="Comma separated list of acceptable extension formats"/>
+    <aura:attribute name="disclaimer1" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer1}" />
+    <aura:attribute name="disclaimer2" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer2}" />
+    <aura:attribute name="disclaimer3" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer3}" />
+    <aura:attribute name="disclaimer4" type="String" default="{!$Label.c.PMP_Form_Image_Uploader_Disclaimer4}" />
+	<aura:attribute name="prefixUrl" type="string" default="/sfc/servlet.shepherd/version/download/"/>
+    <aura:attribute name="method" type="Aura.action"/>
+    <aura:attribute name="livesInsideModal" type="Boolean" default="false" />
+    <!-- Internal attributes -->
+    <aura:attribute name="logoCheck" type="boolean" default="false" />
+    <aura:attribute name="showInvalid" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="isLoading" type="Boolean" default="false" description="Internal" />
+    <aura:attribute name="images" type="Object[]" description="Internal" />
+    <aura:attribute name="imageToDelete" type="Integer" description="Internal" />
+    <aura:attribute name="showDeleteConfirm" type="Boolean" default="false" description="Internal" />
+    <aura:attribute name="deleteCallback" type="Object" description="Internal" />
+    <aura:attribute name="deleting" type="Boolean" default="false" description="Internal" />
+    <aura:attribute name="isIE" type="Boolean" default="false" description="Internal" />
+    
+    <!-- added by Nikhil as part of US583440-->
+    <aura:attribute name="isEvent" type="Boolean" default="false"/> 
+    <aura:attribute name="language" type="String"/>
+    <!-- end-->
+    <aura:method name="reportValidity" action="{!c.handleReportValidity}" />    
+     <!--Added By raj (ONYX) US357476-->
+    <aura:attribute name="error" type="string"/>
+    <aura:attribute name="hasError" type="boolean" default="false"/>
+    <!--Added By Priya (ONYX) -->
+    <aura:attribute name="totalGalleryCount" type="integer" description="Holds the count of Gallery images/videos" />
+
+    <!--Added By Pranjal -->
+    <aura:attribute name="showFileExceeded" type="boolean" default="false"/>
+    
+
+    <div class="{!join(' ', 'slds-show_inline-block', v.required ? 'isRequired' : '', v.showInvalid ? 'isInvalid' : '', v.disabled ? 'isDisabled' : '')}">
+      <label class="uploaderLabel slds-form-element__label slds-m-bottom_medium" for="fileUploader">
+        {!v.label}
+      </label>
+      <div class="borderDashed slds-p-around_medium slds-is-relative" data-disabled="{!or(v.disabled, v.images.length >= v.maxUploads)}">
+        <aura:if isTrue="{!v.isLoading}">
+          <lightning:spinner alternativeText="Loading images..." />
+        </aura:if>
+        <lightning:fileUpload 
+                              name="fileUploader"
+                              multiple="false"
+                              accept="{! v.isIE ? null :v.acceptableFormats}"
+                              recordId="{!v.recordIdForUpload}"
+                              onuploadfinished="{!c.handleUploadFinished }"/>
+
+        <p class="disclaimer-text slds-m-top_medium">{!v.disclaimer1}</p>
+        <aura:if isTrue="{!v.disclaimer2}">
+          <p class="disclaimer-text">{!v.disclaimer2}</p>
+        </aura:if>        
+        <aura:if isTrue="{!v.disclaimer3}">
+          <p class="disclaimer-text">{!v.disclaimer3}</p>
+        </aura:if>
+        
+
+        <aura:if isTrue="{!v.showInvalid}">
+          <p class="slds-m-top_small error-text">{!v.errorMessage}</p>
+        </aura:if>
+        <aura:if isTrue="{!v.showFileExceeded}">
+          <p class="slds-m-top_small error-text">{!v.errorMessage}</p>
+        </aura:if>
+        
+        <lightning:layout multipleRows="true" pullToBoundary="medium">
+          <aura:iteration items="{!v.images}" var="image" indexVar="i">  
+            <lightning:layoutItem size="12" class="minImageDisplayWidth" mediumDeviceSize="4" padding="around-medium">
+              <div class="borderedContainer slds-is-relative">
+                <aura:if isTrue="{!and(v.deleting, v.imageToDelete == i)}">
+                  <lightning:spinner alternativeText="Deleting image..." />
+                </aura:if>
+                <div class="imageContainer slds-text-align_center">
+                    
+                            <img src="{!v.prefixUrl + image.versionId}"/>
+                        
+                   
+                  <!--<img src="{!image.url}" />-->
+                </div>
+                <lightning:layout horizontalAlign="spread" class="titleContainer slds-p-around_small">
+                  <lightning:layoutItem flexibility="no-flex">
+                      <lightning:icon iconName="doctype:image" class="slds-m-right_small"/>
+                  </lightning:layoutItem>
+                  <lightning:layoutItem flexibility="grow" class="slds-truncate">
+                      {!image.title}
+                  </lightning:layoutItem>
+                  <lightning:layoutItem flexibility="no-flex" class="slds-m-left_small">
+                    <span data-idx="{!i}" onclick="{!c.handleDownloadImage}">
+                      <lightning:icon iconName="utility:download" class="slds-m-right_small" />
+                    </span>
+                    <span class="disabledIcon" data-idx="{!i}" onclick="{!c.handleDeleteImage}">
+                      <lightning:icon iconName="utility:delete" />
+                    </span>
+                  </lightning:layoutItem>
+                </lightning:layout>
+                <!--Added By Pranjal : TWC4497-41 starts-->
+                <aura:if isTrue="{!v.label!=$Label.c.PMP_Edit_Storefront_Logo_Label}">
+                    <lightning:layout horizontalAlign="spread" class="slds-p-around_small">
+                      <label class="uploaderLabel slds-form-element__label slds-m-bottom_medium" for="alttext">
+                        {!$Label.c.PMP_Alt_Text}&nbsp;{!$Label.c.PMP_Max_100_characters}
+                      <lightning:input type="text"  name="{!'alttext'+i}" required="true" value="{!image.altText}" maxlength="100" pattern="{!v.regex}" />
+                      <p class="altTextDisclaimer">{!v.disclaimer4}</p>
+                    </label>
+                    </lightning:layout>
+              </aura:if>
+                <!--Added By Pranjal : TWC4497-41 ends-->
+              </div>
+            </lightning:layoutItem>
+          </aura:iteration>
+
+        </lightning:layout>
+      </div>
+
+      <aura:if isTrue="{!v.showDeleteConfirm}">
+        <c:IntelDialog
+          modalInModal="{!v.livesInsideModal}"
+          modalHeader="{!$Label.c.PMP_Form_Image_Uploader_Del_Confirm_Heading}"
+          modalMessage="{!$Label.c.PMP_Form_Image_Uploader_Del_Confirm}"
+          onclose="{!v.deleteCallback}"
+          showCancelButton="true"
+          />
+      </aura:if>
+      
+    </div>    
+    <!-- Added By raj (ONYX) US357476 to show error message on UI-->
+    <aura:if isTrue="{!v.hasError}">
+        <div class="slds-text-color_error slds-p-left_x-small">
+             {!v.error}
+        </div>
+    </aura:if>
+
+</aura:component>

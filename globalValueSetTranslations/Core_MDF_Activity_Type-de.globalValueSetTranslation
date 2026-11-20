@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Affiliate/ Referral Programs</masterLabel>
+        <translation><!-- Affiliate/ Referral Programs --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner Ad</masterLabel>
+        <translation><!-- Banner Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Banner/Display Ad</masterLabel>
+        <translation>Banner-/Display-Anzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Benchmarking</masterLabel>
+        <translation><!-- Benchmarking --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Benchmarks</masterLabel>
+        <translation><!-- Benchmarks --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Billboard/Transit</masterLabel>
+        <translation>Plakatwerbung/Außenwerbung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Bundle Offer</masterLabel>
+        <translation>Käufer – Bundle-Angebot</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Other</masterLabel>
+        <translation>Käufer – Sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Reward/Frequency</masterLabel>
+        <translation>Käufer – Prämie/Frequenz</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Buyer - Sweepstakes</masterLabel>
+        <translation>Käufer – Gewinnspiel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Case Study</masterLabel>
+        <translation>Praxisbeispiel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Catalog/Brochure</masterLabel>
+        <translation>Katalog/Broschüre</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Online Display</masterLabel>
+        <translation>Online-Display-Werbung des (CP)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Owned Event</masterLabel>
+        <translation>Event des Channel-Partners</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Participation in Third-Party Event</masterLabel>
+        <translation>Teilnahme an Event von Dritten des (CP)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner Website Online Ad</masterLabel>
+        <translation>Channel-Partner Website-Anzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cinema</masterLabel>
+        <translation>Kinowerbung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud/Platform Trial</masterLabel>
+        <translation>Cloud-/Plattform-Testversion</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collateral</masterLabel>
+        <translation>Infomaterial (Collateral)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Collateral - Other</masterLabel>
+        <translation>Infomaterial (Collateral) – sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content</masterLabel>
+        <translation>Inhalte</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Content Creation</masterLabel>
+        <translation>Inhalt-Erstellung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deal Investment</masterLabel>
+        <translation>Deal-Investition</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demo Hardware</masterLabel>
+        <translation>Demo-Hardware</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Demo Hardware/Cloud Instance</masterLabel>
+        <translation>Demo-Hardware/Cloud-Instanz</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Video Screen</masterLabel>
+        <translation>Digitalvideo-Werbung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Direct Mail</masterLabel>
+        <translation>Direct Mailing</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Display/Video Ad</masterLabel>
+        <translation>Display-/Videoanzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EcosystemPartner.com</masterLabel>
+        <translation><!-- EcosystemPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Email</masterLabel>
+        <translation>E-Mail</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Engineering</masterLabel>
+        <translation><!-- Engineering --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Graphic Ad</masterLabel>
+        <translation>Grafikwerbung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In store Point of Sale - IPOS</masterLabel>
+        <translation><!-- In store Point of Sale - IPOS --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Store Promotion</masterLabel>
+        <translation>Werbeaktion im Verkaufsraum</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IndustryPartner.com</masterLabel>
+        <translation><!-- IndustryPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insert/Outsert/Flyer</masterLabel>
+        <translation><!-- Insert/Outsert/Flyer --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intelligent Point-of-Sale (iPOS)</masterLabel>
+        <translation><!-- Intelligent Point-of-Sale (iPOS) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Joint Engineering/Optimization</masterLabel>
+        <translation>Gemeinsames Engineering/Optimierung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Joint Event</masterLabel>
+        <translation>Gemeinsame Veranstaltung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Generation</masterLabel>
+        <translation><!-- Lead Generation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Nurturing</masterLabel>
+        <translation><!-- Lead Nurturing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDF Recepient - Owned</masterLabel>
+        <translation><!-- MDF Recepient - Owned --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MDF Recipient Demonstrations (External)</masterLabel>
+        <translation><!-- MDF Recipient Demonstrations (External) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Magazine and Newspaper</masterLabel>
+        <translation><!-- Magazine and Newspaper --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Magazine/Newspaper</masterLabel>
+        <translation>Zeitschrift/Zeitung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Event</masterLabel>
+        <translation>Veranstaltung für Teilnehmer</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Owned Event</masterLabel>
+        <translation>Event des teilnehmenden Unternehmens</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Participation in Third-Party Event</masterLabel>
+        <translation>Mitw. des teiln. Untern. an Event v. 3.</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member Website Online Display</masterLabel>
+        <translation>Online-Display (MW)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Member.com</masterLabel>
+        <translation><!-- Member.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Migration</masterLabel>
+        <translation><!-- Migration --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Newsletter</masterLabel>
+        <translation><!-- Newsletter --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NonPartner.com</masterLabel>
+        <translation><!-- NonPartner.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Bundle</masterLabel>
+        <translation>Angebots – Bundle</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Contest</masterLabel>
+        <translation>Angebots – Wettbewerb</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Other</masterLabel>
+        <translation>Angebot – Sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Rewards</masterLabel>
+        <translation>Angebot - Prämien</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Sweepstakes</masterLabel>
+        <translation>Angebots – Gewinnspiel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Offer - Target</masterLabel>
+        <translation>Angebots – Ziel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Ad - Retargeting Banner Ad</masterLabel>
+        <translation><!-- Online Ad - Retargeting Banner Ad --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Display</masterLabel>
+        <translation>Online-Display-Werbung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Marketing</masterLabel>
+        <translation><!-- Online Marketing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Video Spot</masterLabel>
+        <translation>Online-Video-Werbespot</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Audio)</masterLabel>
+        <translation>Sonstiges (Audio)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Broadcast)</masterLabel>
+        <translation>Sonstiges (TV- und Radiospots)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Digital)</masterLabel>
+        <translation>Sonstiges (Digital)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Event)</masterLabel>
+        <translation>Sonstiges (Veranstaltung)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (OOH)</masterLabel>
+        <translation>Sonstiges (außer Haus)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Out Of Home)</masterLabel>
+        <translation>Sonstiges (Out-Of-Home)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Print)</masterLabel>
+        <translation>Sonstiges (Print)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Production)</masterLabel>
+        <translation>Sonstiges (Produktion)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Sales Readiness)</masterLabel>
+        <translation>Sonstiges (Vertriebsreife)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Tech Exploration)</masterLabel>
+        <translation>Sonstiges (Techn. Recherche)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Technical Sales)</masterLabel>
+        <translation>Sonstiges (Technischer Vertrieb)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other (Video)</masterLabel>
+        <translation>Sonstiges (Video)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Out-of-Store Promotion</masterLabel>
+        <translation>Werbeaktion außerhalb des Verkaufsraums</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Outcome-Based</masterLabel>
+        <translation>Ergebnisbasiert</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Personnel</masterLabel>
+        <translation>Personal</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Podcast</masterLabel>
+        <translation><!-- Podcast --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Poster/Sign/Banner</masterLabel>
+        <translation>Poster/Aushängeschild/Banner</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion</masterLabel>
+        <translation>Werbeaktion</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion - Non-Retail</masterLabel>
+        <translation>Verkaufsförderung – außerhalb des Einzelhandels</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion - Retail</masterLabel>
+        <translation>Verkaufsförderung – Einzelhandel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Proof of Concept</masterLabel>
+        <translation>Proof-of-Concept</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio</masterLabel>
+        <translation>Hörfunk</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Ad - out of store</masterLabel>
+        <translation><!-- Radio Ad - out of store --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Contest</masterLabel>
+        <translation>SPIF – Wettbewerb</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Meeting Target</masterLabel>
+        <translation><!-- SPIF - Meeting Target --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Other</masterLabel>
+        <translation>SPIF – Sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Target</masterLabel>
+        <translation>SPIF – Target</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPIF - Volume</masterLabel>
+        <translation>SPIF – Volume</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Event</masterLabel>
+        <translation>Verkaufsevent</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Ad</masterLabel>
+        <translation>Suchanzeige (SEM)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Graphic Ad</masterLabel>
+        <translation>Suche (SEM) Grafikanzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search (SEM) Text Ad</masterLabel>
+        <translation>Suche (SEM) Textanzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+        <translation><!-- Search Engine Marketing (SEM) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seed Unit</masterLabel>
+        <translation>Demogerät</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Contest SPIF</masterLabel>
+        <translation>Verkäufer – Verkaufswettbewerb/SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Other</masterLabel>
+        <translation>Verkäufer – Sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Per Instance SPIF</masterLabel>
+        <translation>Verkäufer – pro Instanz SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Per Unit SPIF</masterLabel>
+        <translation>Verkäufer – SPIF pro Einheit</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Seller - Target SPIF</masterLabel>
+        <translation>Verkäufer – Zielgerichteter SPIF</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Ad</masterLabel>
+        <translation>Social-Media-Anzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Graphic Ad</masterLabel>
+        <translation>Social-Media-Grafikanzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Online Display</masterLabel>
+        <translation><!-- Social Online Display --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Post</masterLabel>
+        <translation>Beitrag in einem sozialen Network</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Text Ad</masterLabel>
+        <translation>Social-Media-Textanzeige</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Social Video Ad</masterLabel>
+        <translation>Social-Media-Videoclip</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Development</masterLabel>
+        <translation>Lösungsentwicklung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Streaming</masterLabel>
+        <translation><!-- Streaming --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>System Demo</masterLabel>
+        <translation>Systemvorführung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TV</masterLabel>
+        <translation><!-- TV --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telemarketing</masterLabel>
+        <translation><!-- Telemarketing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Television</masterLabel>
+        <translation>Fernsehen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Text Ad</masterLabel>
+        <translation>Textwerbung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Third Party Event</masterLabel>
+        <translation>Veranstaltung von Drittanbieter</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Third-party.com</masterLabel>
+        <translation><!-- Third-party.com --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Blog Post</masterLabel>
+        <translation><!-- Thirdparty.com - Blog Post --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Retargeting</masterLabel>
+        <translation><!-- Thirdparty.com - Retargeting --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - SEM</masterLabel>
+        <translation><!-- Thirdparty.com - SEM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thirdparty.com - Social Post</masterLabel>
+        <translation><!-- Thirdparty.com - Social Post --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training Incentive</masterLabel>
+        <translation>Schulungsanreiz</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training/Meeting</masterLabel>
+        <translation>Schulung/Meeting</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Trial Instance</masterLabel>
+        <translation>Testinstanz</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video Ad</masterLabel>
+        <translation>Videoclip</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Video Screen</masterLabel>
+        <translation>Videobildschirm</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Content</masterLabel>
+        <translation>Web-Inhalt</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Page</masterLabel>
+        <translation>Webseite</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>iREP</masterLabel>
+        <translation><!-- iREP --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

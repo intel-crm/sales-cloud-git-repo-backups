@@ -1,0 +1,10 @@
+.THIS .buttonWrap {
+  white-space: nowrap !important;
+}
+.THIS .textWrap {
+    white-space: pre-wrap !important;
+}
+
+.THIS .add-margin {
+  margin-top: 10px;
+}

@@ -1,0 +1,50 @@
+<apex:page showHeader="false">
+<style>
+    body {
+        margin-left: 40px; /* Adjust this value for desired tab space */
+    }
+    
+    .center {
+        text-align: center;
+        margin-top: 15vh; /* Adjust this value to position the content */
+        padding: 20px; /* Adjust padding as needed */
+        font-size: 20px; /* Adjust font size as needed */
+    }
+    
+    .center p {
+        margin: 0;
+    }
+    
+    .center a.link {
+        color: blue; /* Change URL color to blue */
+        font-size: 22px; /* Increase font size of the URL */
+    }
+    
+    .content-text {
+        font-size: 19px; /* Increased by 3 points from default 16px */
+    }
+    
+    .content-text ul {
+        font-size: 19px; /* Apply same font size to list items */
+    }
+</style>
+
+<div class="left">
+    <p style="margin-bottom: 10px;">
+        <span style="font-size: 40px"><b>Intel® Partner Alliance Refresh</b></span>
+        <br/><br/><br/>
+    </p>
+    
+    <div class="content-text">
+        <p>
+            Intel® Partner Alliance Refresh: Simplified, More Value, Continuous Innovation. We are transitioning your Intel® Partner Alliance experience, and our sites are under construction.
+            <br/>
+        </p>
+        
+        <ul>
+            <li>Experience it beginning October 13th</li>
+            <li>Learn about Refresh: <a href="https://www.intel.com/content/www/us/en/partner-alliance/membership/overview.html">Intel® Partner Alliance Membership Benefits</a></li>
+        </ul>
+    </div>
+</div>
+</apex:page>

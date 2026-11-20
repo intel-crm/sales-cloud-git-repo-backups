@@ -1,0 +1,79 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------
+* Page Name  : Core_IPS_UpdatePSO_Page 
+* Version     : 1.0
+* Created Date: 22 Nov 2018
+* Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* vamsi                   22-Nov-2018               Page to display the drop down to select the Project suport owner 
+----------------------------------------------------------------------------------------------------------------------------------------->
+<apex:page standardController="Core_IPS_Project__c" extensions="Core_IPS_UpdatePSO_Controller" id="page" showHeader="false" title="Project Support Owners">
+    
+    <style>
+        .pbSubheader { text-align: center; padding: 6px; font-size: 100%; }
+        .helpOrb{ position: relative !important; right:0 !important; }
+        .nodata { background-color:#fff; border: 1px solid #ccc; padding: 5px; }
+    </style>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.js')}"/>
+    
+    <script type="text/javascript">    
+    function searchOnEnter(type, ev)
+    {
+        if (window.event)
+            ev=window.event;
+        
+        var keyCode;
+        if (ev.keyCode)
+            keyCode=ev.keyCode;
+        else
+            keyCode=ev.charCode;
+        
+        if (keyCode == 13)
+        {
+            var elem_class;
+            if(type=='iso') elem_class = '.srchISOButton';
+            else if(type=='pso') elem_class = '.srchPSOButton';
+            $(elem_class).click();
+            return false;
+        }
+        else
+            return true;
+    }    
+   
+    </script>
+    <div class="splashStatus" id="splashDiv">
+        <div class="circle"><img src="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.gif')}"/></div>
+        <div class="txt">{!$Label.Core_IPS_Load_gif_Text}</div>
+    </div>
+    <div class="lightbox"></div>
+    <!--apex:sectionHeader subtitle="Project - {!Core_IPS_Project__c.Name}" title="Update Support Owners"/-->
+    <apex:form id="form">
+                
+        <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>
+        
+        <apex:pageBlock rendered="{!!renderPage}">
+            <apex:pageMessage title="{!renderMessage}" severity="ERROR"></apex:pageMessage>
+            <apex:commandButton value="Go Back" action="{!cancel}" rendered="{!$CurrentPage.Parameters.id!=null}"/>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Project - {!Core_IPS_Project__c.Name}" rendered="{!renderPage}">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!SaveRedirect}" status="splashStatus"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" status="splashStatus"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageMessages id="pgmsg"/>
+            <apex:pageBlockSection >
+                 <apex:outputPanel layout="block" id="psosection">
+                    <apex:pageBlockSection title="Select Partner Support Owner" collapsible="false" columns="1" >
+                     <apex:selectList size="1" value="{!selectedUser}">
+                  PSO : <apex:selectOptions value="{!userList }"/>
+    </apex:selectList>   
+                </apex:pageBlockSection>
+                 </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,4744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Activate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Activate</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Activate</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Approve</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Approve</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Approve</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CreateRampSchedule</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CreateRampSchedule</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CreateRampSchedule</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Deactivate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Deactivate</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Deactivate</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewReduction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewReduction</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewReduction</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>OrderAdjustment</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>OrderAdjustment</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>OrderAdjustment</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ReduceOrder</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ReduceOrder</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ReduceOrder</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Sales_Compact_Layout</fullName>
+        <fields>OrderNumber</fields>
+        <fields>AccountId</fields>
+        <fields>ContractId</fields>
+        <fields>EffectiveDate</fields>
+        <fields>Status</fields>
+        <fields>TotalAmount</fields>
+        <label>Sales Compact Layout</label>
+    </compactLayouts>
+    <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>AccountId</fullName>
+        <lookupFilter>
+            <active>false</active>
+            <errorMessage>On Account Field on Order, For Partner/Evaluation License Order, you can use only an Active Intel Account &amp; For other order types, Please check if the Sold To(Stocking) / End Customer(Non-Stocking) Account&apos;s Parent Account is an Active Intel Account.</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Intel Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Deactivated__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AccountNumber</fullName>
+    </fields>
+    <fields>
+        <fullName>ActivatedById</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ActivatedDate</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>BillToContactId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BillingAddress</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CompanyAuthorizedById</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CompanyAuthorizedDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ContractEndDate</fullName>
+    </fields>
+    <fields>
+        <fullName>ContractId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContractName</fullName>
+    </fields>
+    <fields>
+        <fullName>CustomerAuthorizedById</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CustomerAuthorizedDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>EffectiveDate</fullName>
+        <inlineHelpText>Please note that this field shows the Order Creation date and should not be modified and any changes to this field is being tracked.</inlineHelpText>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>EndDate</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>IsReductionOrder</fullName>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OpportunityId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OrderItemCount__c</fullName>
+        <label>OrderItemCount</label>
+        <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>OrderReferenceNumber</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OriginalOrderId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PoDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>PoNumber</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Pricebook2Id</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SBQQ__Contracted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if the order is contracted.</description>
+        <inlineHelpText>Indicates if the order is contracted.</inlineHelpText>
+        <label>Contracted</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SBQQ__ContractingMethod__c</fullName>
+        <deprecated>false</deprecated>
+        <description>&quot;By Subscription End Date&quot; creates a separate Contract for each unique Subscription End Date, containing only those Subscriptions. &quot;Single Contract&quot; creates one Contract containing all Subscriptions, regardless of their End Dates.</description>
+        <inlineHelpText>&quot;By Subscription End Date&quot; creates a separate Contract for each unique Subscription End Date, containing only those Subscriptions. &quot;Single Contract&quot; creates one Contract containing all Subscriptions, regardless of their End Dates.</inlineHelpText>
+        <label>Contracting Method</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>SBQQ__ContractingMethod</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SBQQ__OrderBookings__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Total amount of all order product bookings.</description>
+        <inlineHelpText>Total amount of all order product bookings.</inlineHelpText>
+        <label>Order Bookings</label>
+        <summarizedField>OrderItem.SBQQ__OrderProductBookings__c</summarizedField>
+        <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>SBQQ__PaymentTerm__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The payment term for this order.</description>
+        <inlineHelpText>The payment term for this order.</inlineHelpText>
+        <label>Payment Term</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>SBQQ__PaymentTerm</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SBQQ__PriceCalcStatusMessage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The price calculation status message.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The price calculation status message</inlineHelpText>
+        <label>Price Calculation Status Message</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SBQQ__PriceCalcStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The order price calculation  job status.  It is set by the system.</description>
+        <inlineHelpText>Indicates the order price calculation job status.  It is set by the system.</inlineHelpText>
+        <label>Price Calculation Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>SBQQ__JobStatus</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SBQQ__Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The quote where the order is created from.</description>
+        <inlineHelpText>The quote where the order is created from.</inlineHelpText>
+        <label>Quote</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SBQQ__RenewalTerm__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Specify the term of the renewal. By default, it matches the original contract term.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the term of the renewal. By default, it matches the original contract term.</inlineHelpText>
+        <label>Renewal Term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SBQQ__RenewalUpliftRate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Rate of renewal price increases.</description>
+        <inlineHelpText>Rate of renewal price increases.</inlineHelpText>
+        <label>Renewal Uplift (%)</label>
+        <precision>11</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>SBQQ__TaxAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The estimated tax amount</description>
+        <inlineHelpText>The estimated tax amount</inlineHelpText>
+        <label>Estimated Tax</label>
+        <summarizedField>OrderItem.SBQQ__TaxAmount__c</summarizedField>
+        <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Airbill_Number_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Airbill #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Amend_Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Amend Contract</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Amend Orders</relationshipLabel>
+        <relationshipName>Orders1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Cancelled_Quote_No__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Cancelled Order Quote No</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>Orders (Cancelled Quote No)</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Cancelled_Reason_Dsc__c</fullName>
+        <label>Cancelled Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Contract_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Contract</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Corporate_Order__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Corporate Order</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Cost_Center__c</fullName>
+        <label>Cost Center</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Type</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>65525 - Sample</fullName>
+                    <default>false</default>
+                    <label>65525 - Sample</label>
+                </value>
+                <value>
+                    <fullName>#NA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>#NA</label>
+                </value>
+                <value>
+                    <fullName>PSG SMG SR 150 SNM</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PSG SMG SR 150 SNM</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AETC 185</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AETC 185</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AETC EU02</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AETC EU02</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AHK 175</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AHK 175</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AHK AP01</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AHK AP01</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AJP 187</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AJP 187</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AJP JP01</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AJP JP01</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AU 100</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AU 100</label>
+                </value>
+                <value>
+                    <fullName>SAP Samples-AU AM03</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SAP Samples-AU AM03</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <valueName>65525 - Sample</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Disty_Channel_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Disty Channel</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_ERP_Entry_Date_Dt__c</fullName>
+        <label>ERP Entry Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_ERP_SO_Txt__c</fullName>
+        <externalId>true</externalId>
+        <label>ERP SO #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Cust_Acct_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>End Cust Acct Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Cust_PO_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>End Cust PO #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Account_2_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Account 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>End Customer Account</label>
+        <lookupFilter>
+            <active>false</active>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <errorMessage>Please select a valid End Customer Account.</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Direct Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Direct_Account_Type_Nm__c</field>
+                <operation>equals</operation>
+                <value>End Customer,Ship to</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.ParentId</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Direct_Account_Active_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Orders (End Customer Account)</relationshipLabel>
+        <relationshipName>Orders5</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_City_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Country_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Province_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Province</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Region_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Region</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_State_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Street2_Dsc__c</fullName>
+        <label>Address Line 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Street_Dsc__c</fullName>
+        <label>Address Line 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_End_Customer_Zip_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Header_Special_Instructions_Dsc__c</fullName>
+        <label>Header Special Instructions</label>
+        <length>500</length>
+        <trackHistory>true</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sales_Incoterms_Txt__c</fullName>
+        <label>Incoterms</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_Direct_Incoterms</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Invoice_Number_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice #</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_IsPriceChanged__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsPriceChanged</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_IsRenewal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Renewal Order</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Is_Recalled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This will be true if the recall is successful from SAP.</description>
+        <label>Is Recalled</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Is_Verified__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Verified</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Legacy_Order_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field stores the Id from Seibel as part of migration</description>
+        <externalId>true</externalId>
+        <label>Legacy Order Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Reason__c</fullName>
+        <label>Order Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Non Stocking Order</fullName>
+                    <default>true</default>
+                    <label>Non Stocking Order</label>
+                </value>
+                <value>
+                    <fullName>Stocking Order</fullName>
+                    <default>false</default>
+                    <label>Stocking Order</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Sub_Type__c</fullName>
+        <label>Order Sub Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Type</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Dev Kit/PAC ES with license (Quartus and/or ARM) order</fullName>
+                    <default>false</default>
+                    <label>Dev Kit/PAC ES with license (Quartus and/or ARM) order</label>
+                </value>
+                <value>
+                    <fullName>ARM standalone license order</fullName>
+                    <default>false</default>
+                    <label>ARM standalone license order</label>
+                </value>
+                <value>
+                    <fullName>Standalone license order</fullName>
+                    <default>false</default>
+                    <label>Standalone license order</label>
+                </value>
+                <value>
+                    <fullName>Corporate Order</fullName>
+                    <default>false</default>
+                    <label>Corporate Order</label>
+                </value>
+                <value>
+                    <fullName>FPGA university program license request</fullName>
+                    <default>false</default>
+                    <label>FPGA university program license request</label>
+                </value>
+                <value>
+                    <fullName>Partner license order</fullName>
+                    <default>false</default>
+                    <label>Partner license order</label>
+                </value>
+                <value>
+                    <fullName>Evaluation license order</fullName>
+                    <default>false</default>
+                    <label>Evaluation license order</label>
+                </value>
+                <value>
+                    <fullName>Amend Non Commercial</fullName>
+                    <default>false</default>
+                    <label>Amend Non Commercial</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <valueName>Corporate Order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
+                <valueName>FPGA university program license request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
+                <valueName>Partner license order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
+                <valueName>Evaluation license order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Non Commercial Order</controllingFieldValue>
+                <valueName>Amend Non Commercial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <valueName>Dev Kit/PAC ES with license (Quartus and/or ARM) order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <valueName>ARM standalone license order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Sample Order</controllingFieldValue>
+                <controllingFieldValue>Licensed Tool Order</controllingFieldValue>
+                <valueName>Standalone license order</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Original_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Original Order</label>
+        <referenceTo>Order</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_PO_Number_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>PO #</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Payment_Terms__c</fullName>
+        <label>Payment Term</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_Direct_Payment_Terms</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Req_Ship_Date_Dt__c</fullName>
+        <label>Req. Ship Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Retry_Count__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>This will populate based on the retry count attempt max of order to submit record to SAP</description>
+        <externalId>false</externalId>
+        <label>Retry Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_SAP_OrderCancelledReason__c</fullName>
+        <label>Cancel Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>00</fullName>
+                    <default>false</default>
+                    <label>Assigned by the System (Internal)</label>
+                </value>
+                <value>
+                    <fullName>01</fullName>
+                    <default>false</default>
+                    <label>01 Lost to Competitor</label>
+                </value>
+                <value>
+                    <fullName>02</fullName>
+                    <default>false</default>
+                    <label>02 Project Canceled</label>
+                </value>
+                <value>
+                    <fullName>03</fullName>
+                    <default>false</default>
+                    <label>03 Project Pushed Out</label>
+                </value>
+                <value>
+                    <fullName>04</fullName>
+                    <default>false</default>
+                    <label>04 Delivery Issue</label>
+                </value>
+                <value>
+                    <fullName>05</fullName>
+                    <default>false</default>
+                    <label>05 Material Substitution</label>
+                </value>
+                <value>
+                    <fullName>06</fullName>
+                    <default>false</default>
+                    <label>06 Quality</label>
+                </value>
+                <value>
+                    <fullName>07</fullName>
+                    <default>false</default>
+                    <label>07 Administrative</label>
+                </value>
+                <value>
+                    <fullName>08</fullName>
+                    <default>false</default>
+                    <label>08 Customer Request</label>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10 Credit Rejection</label>
+                </value>
+                <value>
+                    <fullName>11</fullName>
+                    <default>false</default>
+                    <label>11 Sales Document Expiration</label>
+                </value>
+                <value>
+                    <fullName>14</fullName>
+                    <default>false</default>
+                    <label>14 Material Conversion</label>
+                </value>
+                <value>
+                    <fullName>17</fullName>
+                    <default>false</default>
+                    <label>17 Partner Backlog Swamp</label>
+                </value>
+                <value>
+                    <fullName>18</fullName>
+                    <default>false</default>
+                    <label>18 MNC Transfer</label>
+                </value>
+                <value>
+                    <fullName>20</fullName>
+                    <default>false</default>
+                    <label>Contract Rejection</label>
+                </value>
+                <value>
+                    <fullName>21</fullName>
+                    <default>false</default>
+                    <label>21 ZWK2 Batch Auto Complete</label>
+                </value>
+                <value>
+                    <fullName>23</fullName>
+                    <default>false</default>
+                    <label>23 0QTY PP Received from DATT</label>
+                </value>
+                <value>
+                    <fullName>Y1</fullName>
+                    <default>false</default>
+                    <label>GPEO Item Cancellation</label>
+                </value>
+                <value>
+                    <fullName>YA</fullName>
+                    <default>false</default>
+                    <label>Reject Cost Type DMR</label>
+                </value>
+                <value>
+                    <fullName>ZR</fullName>
+                    <default>false</default>
+                    <label>RBA Sub Item Suppression</label>
+                </value>
+                <value>
+                    <fullName>24</fullName>
+                    <default>false</default>
+                    <label>Administrative</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_SAP_Order_Date__c</fullName>
+        <description>This is populated from SAP response.</description>
+        <label>SAP Order Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Sales_Org_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Org</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Sched_Date_Dt__c</fullName>
+        <label>Scheduled Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_Account_2_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Account 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_City_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_Country_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_Province_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Province</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_State_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_Street2_Dsc__c</fullName>
+        <label>Address Line 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_Street_Dsc__c</fullName>
+        <label>Address Line 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_ShipTo_Zip_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Ship_Date_Dt__c</fullName>
+        <label>Ship Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Ship_To_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Ship To Account</label>
+        <lookupFilter>
+            <active>false</active>
+            <errorMessage>Please select a valid Ship To Account.</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Direct Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Direct_Account_Type_Nm__c</field>
+                <operation>equals</operation>
+                <value>Ship To</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.ParentId</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Direct_Account_Active_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Orders (Ship To Account)</relationshipLabel>
+        <relationshipName>Orders3</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Ship_To_Acct_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship To Acct Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Ship_to_Region_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship to Region</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Shipment_Number_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Shipment #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Shipping_Condition_Txt__c</fullName>
+        <label>Shipping Condition</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_Direct_Shipping_Condition</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Shipping_Instructions_Dsc__c</fullName>
+        <label>Shipping Instructions</label>
+        <length>2000</length>
+        <trackHistory>true</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_Account_2_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Account 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_City_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_Country_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_Province_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Province</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_State_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_Street2_Dsc__c</fullName>
+        <label>Address Line 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_Street_Dsc__c</fullName>
+        <label>Address Line 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_SoldTo_Zip_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Sold_To_Account_Region_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Sales_Sold_To_Account__r.Core_Geo__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sold To Account Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Sold_To_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Sold To Account</label>
+        <lookupFilter>
+            <active>false</active>
+            <errorMessage>Please select a valid Sold To Account.</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Direct Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Direct_Account_Type_Nm__c</field>
+                <operation>equals</operation>
+                <value>Sold To</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.ParentId</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Direct_Account_Active_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Sold_To_Acct_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Sold To Acct Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Sync_Comments_Txt__c</fullName>
+        <inlineHelpText>It will store the comments from SAP</inlineHelpText>
+        <label>Sync Comments</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sales_status__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Status</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft Order</fullName>
+                    <default>true</default>
+                    <label>Draft Order</label>
+                </value>
+                <value>
+                    <fullName>Order Cancelled</fullName>
+                    <default>false</default>
+                    <label>Order Cancelled</label>
+                </value>
+                <value>
+                    <fullName>SAP Order Creation Failed</fullName>
+                    <default>false</default>
+                    <label>SAP Order Creation Failed</label>
+                </value>
+                <value>
+                    <fullName>SAP Resubmission In Progress</fullName>
+                    <default>false</default>
+                    <label>SAP Resubmission In Progress</label>
+                </value>
+                <value>
+                    <fullName>SAP Order Shipped</fullName>
+                    <default>false</default>
+                    <label>SAP Order Shipped</label>
+                </value>
+                <value>
+                    <fullName>Order created successfully</fullName>
+                    <default>false</default>
+                    <label>Order created successfully</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Draft</controllingFieldValue>
+                <valueName>Draft Order</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Draft</controllingFieldValue>
+                <valueName>Order Cancelled</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Draft</controllingFieldValue>
+                <valueName>SAP Order Creation Failed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Draft</controllingFieldValue>
+                <valueName>SAP Resubmission In Progress</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Activated</controllingFieldValue>
+                <valueName>SAP Order Shipped</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Activated</controllingFieldValue>
+                <valueName>Order created successfully</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ShipToContactId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ShippingAddress</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TotalAmount</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>AllActivatedOrders</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORDERS.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>A</value>
+        </filters>
+        <label>All Activated Orders</label>
+    </listViews>
+    <listViews>
+        <fullName>AllDraftOrders</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORDERS.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>D</value>
+        </filters>
+        <label>All Draft Orders</label>
+    </listViews>
+    <listViews>
+        <fullName>AllOrders</fullName>
+        <columns>ORDERS.ORDER_NUMBER</columns>
+        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_Sold_To_Account__c</columns>
+        <columns>Sales_Ship_To_Account__c</columns>
+        <columns>Sales_End_Customer_Account__c</columns>
+        <columns>ORDERS.TYPE</columns>
+        <columns>Sales_PO_Number_Txt__c</columns>
+        <columns>Sales_Req_Ship_Date_Dt__c</columns>
+        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Order_Reason__c</columns>
+        <columns>SBQQ__Quote__c</columns>
+        <columns>Sales_Corporate_Order__c</columns>
+        <columns>ORDERS.CREATED_DATE</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Orders</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Commercial_Orders</fullName>
+        <columns>ORDERS.ORDER_NUMBER</columns>
+        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_Sold_To_Account__c</columns>
+        <columns>Sales_Ship_To_Account__c</columns>
+        <columns>Sales_End_Customer_Account__c</columns>
+        <columns>ORDERS.TYPE</columns>
+        <columns>Sales_PO_Number_Txt__c</columns>
+        <columns>Sales_Req_Ship_Date_Dt__c</columns>
+        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Order_Reason__c</columns>
+        <columns>SBQQ__Quote__c</columns>
+        <columns>Sales_Corporate_Order__c</columns>
+        <columns>ORDERS.CREATED_DATE</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORDERS.TYPE</field>
+            <operation>equals</operation>
+            <value>Licensed Tool Order</value>
+        </filters>
+        <label>All Commercial Orders</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Non_commercial_Orders</fullName>
+        <columns>ORDERS.ORDER_NUMBER</columns>
+        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_Sold_To_Account__c</columns>
+        <columns>Sales_Ship_To_Account__c</columns>
+        <columns>Sales_End_Customer_Account__c</columns>
+        <columns>ORDERS.TYPE</columns>
+        <columns>Sales_PO_Number_Txt__c</columns>
+        <columns>Sales_Req_Ship_Date_Dt__c</columns>
+        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Order_Reason__c</columns>
+        <columns>SBQQ__Quote__c</columns>
+        <columns>Sales_Corporate_Order__c</columns>
+        <columns>ORDERS.CREATED_DATE</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORDERS.TYPE</field>
+            <operation>equals</operation>
+            <value>Non Commercial Order</value>
+        </filters>
+        <label>All Non-commercial Orders</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Sample_Orders</fullName>
+        <columns>ORDERS.ORDER_NUMBER</columns>
+        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_Sold_To_Account__c</columns>
+        <columns>Sales_Ship_To_Account__c</columns>
+        <columns>Sales_End_Customer_Account__c</columns>
+        <columns>ORDERS.TYPE</columns>
+        <columns>Sales_PO_Number_Txt__c</columns>
+        <columns>Sales_Req_Ship_Date_Dt__c</columns>
+        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Order_Reason__c</columns>
+        <columns>SBQQ__Quote__c</columns>
+        <columns>Sales_Corporate_Order__c</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <columns>ORDERS.CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORDERS.TYPE</field>
+            <operation>equals</operation>
+            <value>Sample Order</value>
+        </filters>
+        <label>All Sample Orders</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>My_Orders</fullName>
+        <columns>ORDERS.ORDER_NUMBER</columns>
+        <columns>ORDERS.STATUS</columns>
+        <columns>Sales_Sold_To_Account__c</columns>
+        <columns>Sales_Ship_To_Account__c</columns>
+        <columns>Sales_End_Customer_Account__c</columns>
+        <columns>ORDERS.TYPE</columns>
+        <columns>Sales_PO_Number_Txt__c</columns>
+        <columns>Sales_Req_Ship_Date_Dt__c</columns>
+        <columns>ORDERS.TOTAL_AMOUNT</columns>
+        <columns>Sales_ERP_SO_Txt__c</columns>
+        <columns>Sales_Order_Reason__c</columns>
+        <columns>SBQQ__Quote__c</columns>
+        <columns>Sales_Corporate_Order__c</columns>
+        <columns>ORDERS.CREATED_DATE</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Orders</label>
+        <language>en_US</language>
+    </listViews>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Sales_Order_Record</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Sales_Compact_Layout</compactLayoutAssignment>
+        <description>Default Record type for all Order Records</description>
+        <label>Order Record</label>
+        <picklistValues>
+            <picklist>SBQQ__ContractingMethod__c</picklist>
+            <values>
+                <fullName>By Subscription End Date</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single Contract</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PaymentTerm__c</picklist>
+            <values>
+                <fullName>Due on receipt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 30</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Net 45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 60</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 90</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PriceCalcStatus__c</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Needed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Started</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Queued</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Cost_Center__c</picklist>
+            <values>
+                <fullName>65525 - Sample</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Incoterms_Txt__c</picklist>
+            <values>
+                <fullName>AM1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CPT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Costs and freight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DDP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deliverd at Place</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered Duty Unpaid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered ex quay %28duty paid%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered ex ship</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FCA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FOB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hand Carry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PCT</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Order_Reason__c</picklist>
+            <values>
+                <fullName>Non Stocking Order</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Stocking Order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Order_Sub_Type__c</picklist>
+            <values>
+                <fullName>ARM standalone license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Amend Non Commercial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dev Kit%2FPAC ES with license %28Quartus and%2For ARM%29 order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Evaluation license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA university program license request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standalone license order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Payment_Terms__c</picklist>
+            <values>
+                <fullName>1%25 30%2C 30 days Due NET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>125</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30 days due net at End of Mth</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ALL CREDIT CARDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Baseline date- End of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIA CASHIERS CHECK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DBB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I55</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N31</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N32</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N34</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N38</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N39</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N41</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N42</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N43</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N44</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N46</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N49</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N51</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N52</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N53</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N54</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N56</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N57</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N58</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N59</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 15 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 30DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 41DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 45DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 47DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 48DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 53DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 60 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 75 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 90 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pay immediately w%2Fo deduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>X</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_SAP_OrderCancelledReason__c</picklist>
+            <values>
+                <fullName>00</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>02</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>04</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>06</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>07</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>08</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>21</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Shipping_Condition_Txt__c</picklist>
+            <values>
+                <fullName>0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1Q</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5O</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>61</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>62</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>63</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>64</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Q</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6X</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Y</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>99</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A00 DHL-DANZAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A10 ACE CARGO EXP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A15 AIR CARGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A25 AIR PARCEL POST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A56 AIR %26 GROUND WORLD TRANSPORT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D00 DHL AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D01 DHL GROUND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D04 DACHAIN INTL EXP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D20 DIMERCO EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F00 FEDEX STANDARD OVERNIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F01 FEDEX PRIORITY OVERNIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F02 FEDEX EXPRESS SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F04 FEDEX 2DAY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F05 FEDEX GROUND U%2ES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F06 FEDEX INT%27L PRIORITY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEDEX INTERNATIONAL ECONOMY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G15 GREAT WORLD EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H00 HAND CARRY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H26 HCT TRANSPORTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K00 KINTETSU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K10 KAMINO INTERNATIONAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K20 KWE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>M30 MARINE-LAND-AIR TRANSPORTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S50 SECURITY EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SCHENKER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T25 TRUCK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T36 TISCO CUSTOMS SERVICE CO LTD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T70 TEAM AIRFREIGHT CORP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U00 UPS GROUND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U01 UPS WORLDWIDE EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U02 UPS 2 DAY AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U03 UPS NEXT DAY AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U04 UPS 3 DAY SELECT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U05 UPS NEXT DAY AIR SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U06 UPS WORLDWIDE EXPEDITED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U07 UPS SUPPLY CHAIN SOLUTIONS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U08 UPS WORLDWIDE SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U10 U-FREIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U16 U-FREIGHT TAIWAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y00 YELLOW FREIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y07 YUSEN AIR %26 SEA SERVICE CO LTD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZZZ DEFAULT FREIGHT METHOD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_status__c</picklist>
+            <values>
+                <fullName>Draft Order</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Order Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order created successfully</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP Order Creation Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP Order Shipped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP Resubmission In Progress</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Activated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Licensed Tool Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non Commercial Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sample Order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Sales_Read_Only_Record</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Sales_Compact_Layout</compactLayoutAssignment>
+        <description>When Order Activated or Cancelled, then Record type of Order will change to this Record type.</description>
+        <label>Read Only Record</label>
+        <picklistValues>
+            <picklist>SBQQ__ContractingMethod__c</picklist>
+            <values>
+                <fullName>By Subscription End Date</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single Contract</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PaymentTerm__c</picklist>
+            <values>
+                <fullName>Due on receipt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 30</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Net 45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 60</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Net 90</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SBQQ__PriceCalcStatus__c</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Needed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Started</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Queued</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Cost_Center__c</picklist>
+            <values>
+                <fullName>65525 - Sample</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Incoterms_Txt__c</picklist>
+            <values>
+                <fullName>AM1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CPT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Costs and freight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DDP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deliverd at Place</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered Duty Unpaid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered ex quay %28duty paid%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivered ex ship</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FCA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FOB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hand Carry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PCT</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Order_Reason__c</picklist>
+            <values>
+                <fullName>Non Stocking Order</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Stocking Order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Order_Sub_Type__c</picklist>
+            <values>
+                <fullName>ARM standalone license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Amend Non Commercial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dev Kit%2FPAC ES with license %28Quartus and%2For ARM%29 order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Evaluation license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA university program license request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner license order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standalone license order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Payment_Terms__c</picklist>
+            <values>
+                <fullName>1%25 30%2C 30 days Due NET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>125</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30 days due net at End of Mth</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ALL CREDIT CARDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Baseline date- End of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIA CASHIERS CHECK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DBB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I55</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N31</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N32</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N34</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N38</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N39</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N41</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N42</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N43</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N44</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N46</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N49</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N51</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N52</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N53</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N54</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N56</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N57</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N58</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N59</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 15 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 30DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 41DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 45DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 47DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 48DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 53DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 60 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 75 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NET 90 DAYS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pay immediately w%2Fo deduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>X</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_SAP_OrderCancelledReason__c</picklist>
+            <values>
+                <fullName>00</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>02</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>04</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>06</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>07</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>08</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>21</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>YA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Shipping_Condition_Txt__c</picklist>
+            <values>
+                <fullName>0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1Q</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5O</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>61</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>62</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>63</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>64</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6G</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6P</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Q</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6U</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6V</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6W</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6X</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Y</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6Z</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>99</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A00 DHL-DANZAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A10 ACE CARGO EXP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A15 AIR CARGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A25 AIR PARCEL POST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A56 AIR %26 GROUND WORLD TRANSPORT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D00 DHL AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D01 DHL GROUND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D04 DACHAIN INTL EXP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D20 DIMERCO EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F00 FEDEX STANDARD OVERNIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F01 FEDEX PRIORITY OVERNIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F02 FEDEX EXPRESS SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F04 FEDEX 2DAY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F05 FEDEX GROUND U%2ES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F06 FEDEX INT%27L PRIORITY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEDEX INTERNATIONAL ECONOMY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G15 GREAT WORLD EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H00 HAND CARRY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H26 HCT TRANSPORTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K00 KINTETSU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K10 KAMINO INTERNATIONAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K20 KWE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>M30 MARINE-LAND-AIR TRANSPORTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S50 SECURITY EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SCHENKER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T25 TRUCK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T36 TISCO CUSTOMS SERVICE CO LTD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T70 TEAM AIRFREIGHT CORP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U00 UPS GROUND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U01 UPS WORLDWIDE EXPRESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U02 UPS 2 DAY AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U03 UPS NEXT DAY AIR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U04 UPS 3 DAY SELECT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U05 UPS NEXT DAY AIR SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U06 UPS WORLDWIDE EXPEDITED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U07 UPS SUPPLY CHAIN SOLUTIONS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U08 UPS WORLDWIDE SAVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U10 U-FREIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>U16 U-FREIGHT TAIWAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y00 YELLOW FREIGHT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y07 YUSEN AIR %26 SEA SERVICE CO LTD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZZZ DEFAULT FREIGHT METHOD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_status__c</picklist>
+            <values>
+                <fullName>Draft Order</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Order Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order created successfully</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP Order Creation Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP Order Shipped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP Resubmission In Progress</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Activated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Licensed Tool Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non Commercial Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sample Order</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>ORDERS.ORDER_NUMBER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SALES.ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ORDERS.STATUS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ORDERS.TOTAL_AMOUNT</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>ORDERS.ORDER_NUMBER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.OWNERALIAS</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ORDERS.ORDER_NUMBER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTRACT.OWNERALIAS</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>ORDERS.ORDER_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SALES.ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ORDERS.TOTAL_AMOUNT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ORDERS.EFFECTIVE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ORDERS.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTRACT.CONTRACT_NUMBER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_PSG_Cancelled_Reason_On_Order</fullName>
+        <active>true</active>
+        <description>Cannot cancel order without providing Cancellation reason</description>
+        <errorConditionFormula>IF( ISPICKVAL(Sales_status__c, &apos;Order Cancelled&apos;) &amp;&amp; ISBLANK( Sales_Cancelled_Reason_Dsc__c ), true, false)</errorConditionFormula>
+        <errorMessage>Cannot cancel order without providing Cancellation reason</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Cannot_Skip_Stage_Value</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+Sales_Is_Recalled__c=False,
+(AND(ISPICKVAL( PRIORVALUE (Status),&quot;Activated&quot;),ISPICKVAL(Status,&quot;Draft&quot;))))</errorConditionFormula>
+        <errorDisplayField>Status</errorDisplayField>
+        <errorMessage>You are not allowed go back to Previous stage</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_END_Customer_Account</fullName>
+        <active>false</active>
+        <description>End Customer Account is mandatory for non-stocking orders.</description>
+        <errorConditionFormula>AND( 
+OR(ISPICKVAL( Status , &apos;Activated&apos;), 
+Sales_Is_Verified__c = True
+),
+ISPICKVAL(Sales_Order_Reason__c, &apos;Non Stocking Order&apos;),
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+OR(
+ISBLANK(Sales_End_Customer_Account__c),
+ISBLANK(Sales_End_Customer_Street_Dsc__c),
+ISBLANK(Sales_End_Customer_City_Txt__c),
+ISBLANK(Sales_End_Customer_State_Txt__c),
+ISBLANK(Sales_End_Customer_Country_Txt__c),
+ISBLANK(Sales_End_Customer_Zip_Txt__c),
+ISBLANK(Sales_End_Customer_Province_Txt__c)
+)
+)</errorConditionFormula>
+        <errorMessage>Cannot activate non stocking order without providing End Customer Account and Address details.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Mandatory_Fields</fullName>
+        <active>false</active>
+        <description>Mandatory fields according to order types</description>
+        <errorConditionFormula>OR(AND(
+OR(ISPICKVAL( Status , &apos;Activated&apos;),
+Sales_Is_Verified__c = True
+),
+NOT(ISPICKVAL(Sales_status__c,&apos;SAP Order Creation Failed&apos;)),
+OR(
+ISBLANK(TEXT(Type)),
+ISBLANK(TEXT(Sales_Order_Sub_Type__c))
+)
+),
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+NOT(ISPICKVAL(Type,&quot;Non Commercial Order&quot;)),
+OR(
+ISBLANK(Sales_Ship_To_Account__c),
+ISBLANK(TEXT(Sales_Shipping_Condition_Txt__c )),
+ISBLANK(TEXT(Sales_Incoterms_Txt__c)),
+ISBLANK(Sales_ShipTo_Street_Dsc__c),
+ISBLANK(Sales_ShipTo_City_Txt__c),
+ISBLANK(Sales_ShipTo_State_Txt__c),
+ISBLANK(Sales_ShipTo_Province_Txt__c),
+ISBLANK(Sales_ShipTo_Zip_Txt__c),
+ISBLANK(Sales_ShipTo_Country_Txt__c),
+ISBLANK( Sales_SoldTo_Street_Dsc__c ),
+ISBLANK( Sales_SoldTo_City_Txt__c ),
+ISBLANK( Sales_SoldTo_State_Txt__c ),
+ISBLANK( Sales_SoldTo_Province_Txt__c ),
+ISBLANK( Sales_SoldTo_Zip_Txt__c ),
+ISBLANK( Sales_SoldTo_Country_Txt__c )
+)
+),
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+OR(
+ISBLANK( Sales_PO_Number_Txt__c ),
+ISNULL(Sales_Req_Ship_Date_Dt__c),
+ISBLANK(Pricebook2Id)
+)
+)
+)</errorConditionFormula>
+        <errorMessage>All Mandatory fields should be filled to activate the order-1.Order Type/Sub Type 2.Ship to Account 3.Po Number 4.Shipping Condition 5.Incoterms 6.Req Ship Date 7.PriceBook 8.Sold To and Ship To Address.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Mandatory_Fields_Sample_Order</fullName>
+        <active>true</active>
+        <description>Cost Center is mandatory for sample order</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
+OR(ISPICKVAL( Status , &apos;Activated&apos;),
+ Sales_Is_Verified__c = True
+),
+ISPICKVAL( Type , &apos;Sample Order&apos;),
+ISBLANK(TEXT(Sales_Cost_Center__c)),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Cost_Center__c</errorDisplayField>
+        <errorMessage>Cost Center is mandatory for sample order</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Order_Type_on_Order</fullName>
+        <active>false</active>
+        <description>View that Order Type is defaulted as &quot;Partner License Order&quot; and cannot be changed</description>
+        <errorConditionFormula>AND
+( ISCHANGED(  Type  )
+, OR
+  ( ISPICKVAL( PRIORVALUE(  Type  ), &apos;Partner license order&apos; )
+    
+  )
+)</errorConditionFormula>
+        <errorDisplayField>Type</errorDisplayField>
+        <errorMessage>Order Type is defaulted and cannot be changed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Partner_License_Order_Mandatory</fullName>
+        <active>false</active>
+        <description>Mandatory fields for Partner license order</description>
+        <errorConditionFormula>AND(
+OR(ISPICKVAL( Status , &apos;Activated&apos;),
+ Sales_Is_Verified__c = True
+),
+ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;),
+OR(
+ISNULL(Sales_Req_Ship_Date_Dt__c),
+ISBLANK(Pricebook2Id),
+ISBLANK(TEXT(Type)),
+ISBLANK(TEXT(Sales_Order_Sub_Type__c))
+)
+)</errorConditionFormula>
+        <errorMessage>All Mandatory fields should be filled to activate the order :-
+1. Req Ship Date
+2. Price Book</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Valid_Quote_Filter_On_Order</fullName>
+        <active>true</active>
+        <description>This Validation rule which check quote selected on order should be active ,approved and  should have quote type as non non-budgetary. Else it will not allow to save record with non satisfying quotes.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,AND( NOT(ISBLANK(SBQQ__Quote__c)) ,
+OR( NOT(SBQQ__Quote__r.core_cpq_active_cb__c),
+NOT(ISPICKVAL( SBQQ__Quote__r.SBQQ__Status__c , &quot;Approved&quot;)) ),
+OR(NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)),Sales_Is_Verified__c)
+))</errorConditionFormula>
+        <errorDisplayField>SBQQ__Quote__c</errorDisplayField>
+        <errorMessage>Please make sure the selected quote is Active and Approved</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_PSG_Valid_Req_Ship_Date_On_Order</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(Sales_Req_Ship_Date_Dt__c    &lt;   TODAY(),
+NOT( ISPICKVAL(Sales_status__c	, &apos;Order Cancelled&apos;) ),
+OR( Not( Sales_Is_Verified__c ) , NOT( ISPICKVAL( PRIORVALUE( Status ) , &apos;Activated&apos;) )),
+$Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c=false
+ )</errorConditionFormula>
+        <errorMessage>Req. Ship date should be present or future date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SBQQ__Cannot_Contract_New_Order</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISNEW(), SBQQ__Contracted__c)</errorConditionFormula>
+        <errorDisplayField>SBQQ__Contracted__c</errorDisplayField>
+        <errorMessage>Can&apos;t contract the order. Activate the order and try again.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_EndCustAcc_Reqd</fullName>
+        <active>true</active>
+        <description>End Customer Account field is required to Activate Non-Stocking order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR(ISPICKVAL( Status , &apos;Activated&apos;),
+Sales_Is_Verified__c = True
+),
+ISPICKVAL(Sales_Order_Reason__c, &apos;Non Stocking Order&apos;),
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+ISBLANK(Sales_End_Customer_Account__c),
+NOT(ISPICKVAL( PRIORVALUE( Status ) , &apos;Activated&apos;) )
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_End_Customer_Account__c</errorDisplayField>
+        <errorMessage>End Customer Account field is required to Activate Non-Stocking order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_Incoterms_Reqd</fullName>
+        <active>true</active>
+        <description>Incoterms field is required to Activate the order for license ,sample, fpga university order</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;),AND(ISPICKVAL(Type,&quot;Non Commercial Order&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;FPGA university program license request&quot;))),
+NOT(ISBLANK( Sales_Ship_To_Account__c )),
+ISBLANK(TEXT(Sales_Incoterms_Txt__c)),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Incoterms_Txt__c</errorDisplayField>
+        <errorMessage>Incoterms field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_PONumber_Reqd</fullName>
+        <active>true</active>
+        <description>PO# field is required to Activate the order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+ISBLANK( Sales_PO_Number_Txt__c ),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_PO_Number_Txt__c</errorDisplayField>
+        <errorMessage>PO# field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_Pricebook_Reqd</fullName>
+        <active>true</active>
+        <description>Price Book field is required to Activate the order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+ISBLANK(Pricebook2Id)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Pricebook2Id</errorDisplayField>
+        <errorMessage>Price Book field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_ReqShipDate_Reqd</fullName>
+        <active>true</active>
+        <description>Req. Ship Date field is required to Activate the order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+ISNULL(Sales_Req_Ship_Date_Dt__c),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Req_Ship_Date_Dt__c</errorDisplayField>
+        <errorMessage>Req. Ship Date field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_ShipToAcc_Reqd</fullName>
+        <active>true</active>
+        <description>Ship To Account field is required to Activate the order for license, sample ,non-commercial( fpga university order , corporate order)</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR( ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;),AND(ISPICKVAL(Type,&quot;Non Commercial Order&quot;),OR(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;FPGA university program license request&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Corporate Order&quot;)))),
+ISBLANK(Sales_Ship_To_Account__c),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Ship_To_Account__c</errorDisplayField>
+        <errorMessage>Ship To Account field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_SubType_Reqd</fullName>
+        <active>true</active>
+        <description>Order Sub Type field is required to Activate the order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR(ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+NOT(ISPICKVAL(Sales_status__c,&apos;SAP Order Creation Failed&apos;)),
+NOT(ISBLANK(TEXT( Type ))),
+ISBLANK(TEXT(Sales_Order_Sub_Type__c)),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Order_Sub_Type__c</errorDisplayField>
+        <errorMessage>Order Sub Type field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_ActivateOrd_Type_Reqd</fullName>
+        <active>true</active>
+        <description>Order Type field is required to Activate the order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR(ISPICKVAL( Status , &apos;Activated&apos;), Sales_Is_Verified__c = True ),
+NOT(ISPICKVAL(Sales_status__c,&apos;SAP Order Creation Failed&apos;)),
+ISBLANK(TEXT(Type)),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Type</errorDisplayField>
+        <errorMessage>Order Type field is required to Activate the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Amend_Non_Commercial_Order_SubType</fullName>
+        <active>false</active>
+        <description>User can set  the Amend non Commercial order sub type only if the order has quote and Quotes&apos;s type is amendment.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+	AND(
+		ISPICKVAL(Type,&apos;Non Commercial Order&apos;),ISPICKVAL(Sales_Order_Sub_Type__c, &apos;Amend Non Commercial&apos;) ,
+		OR(
+			AND(
+				SBQQ__Quote__c != NULL , NOT(ISPICKVAL(SBQQ__Quote__r.SBQQ__Type__c, &apos;Amendment&apos;))
+			),
+			AND(
+				NOT(ISPICKVAL(Sales_status__c,&apos;Order Cancelled&apos;)), SBQQ__Quote__c == NULL
+			)
+		)
+	)
+)</errorConditionFormula>
+        <errorMessage>User can set the order sub type as  Amend Non Commercial only incase of amend order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Cannot_Activate_Order_Manually</fullName>
+        <active>true</active>
+        <description>Once Order pushed to SAP and order creation failed, It cannot be Activated manually.(Except for Non-Commercial Order)</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+OR(
+AND(
+Sales_Is_Verified__c = false,
+ISPICKVAL(PRIORVALUE(Sales_status__c), &apos;Draft Order&apos;),
+ISPICKVAL(Status, &apos;Activated&apos;)
+),
+AND(
+NOT(ISPICKVAL(Type, &apos;Non Commercial Order&apos;)),
+ISPICKVAL(PRIORVALUE(Sales_status__c) ,&apos;SAP Order Creation Failed&apos;),
+NOT(ISBLANK(Sales_Sync_Comments_Txt__c)),
+ISPICKVAL(Status, &apos;Activated&apos;)
+)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_status__c</errorDisplayField>
+        <errorMessage>Cannot Activate Order Manually In case of &apos;Draft Order&apos; or &apos;SAP order Creation Failed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Cant_SubmitToSAP_WithoutOrderItem</fullName>
+        <active>true</active>
+        <description>Order should have atleast one Order Product inorder to Submit to SAP</description>
+        <errorConditionFormula>AND( 
+NOT( ISPICKVAL( Sales_status__c , &apos;SAP Order Creation Failed&apos;) ),
+NOT( ISPICKVAL( Sales_status__c , &apos;Order Cancelled&apos;) ),
+Sales_Is_Verified__c = True ,   
+OrderItemCount__c = 0
+)</errorConditionFormula>
+        <errorMessage>Order should have atleast one Order Product inorder to Submit to SAP.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Corporate_Reason_Default</fullName>
+        <active>true</active>
+        <description>when order type is &quot;Licensed Tool Order&quot; and Sub Type is Corporate Order then Order reason is defaulted to &quot;Non Stocking&quot; and cannot be changed</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, IF(ISPICKVAL(Type,&apos;Licensed Tool Order&apos;) &amp;&amp; ISPICKVAL(Sales_Order_Sub_Type__c,&apos;Corporate Order&apos;)
+ &amp;&amp; ISPICKVAL(Sales_Order_Reason__c , &quot;Stocking Order&quot;) &amp;&amp; (OR(  Sales_Is_Verified__c , NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))), true, false))</errorConditionFormula>
+        <errorMessage>Corporate Order cannot have Stocking Order Reason</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_EC_Validation_External_Account</fullName>
+        <active>true</active>
+        <description>If Sold to account is an External account(Disti channel 01/02), You can&apos;t use Ship to account as an EC account for non-stocking order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
+ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
+NOT(ISBlank(Sales_Ship_To_Account__c)),
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+(OR((Sales_Sold_To_Account__r.Core_Direct_Distributor_Channel_Nm__c = &apos;01&apos;) ,
+(Sales_Sold_To_Account__r.Core_Direct_Distributor_Channel_Nm__c = &apos;02&apos;))
+),
+OR(ISPICKVAL(Sales_End_Customer_Account__r.Core_Direct_Account_Type_Nm__c ,&apos;Ship To&apos;) ,Sales_End_Customer_Account__c = Sales_Ship_To_Account__c),
+OR(ISPICKVAL(Status,&apos;Draft&apos;),
+Sales_Is_Verified__c=true,
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+))
+)</errorConditionFormula>
+        <errorMessage>Sold to account is an External account, You can&apos;t use Ship to account as an End customer account.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_EC_Validation_Internal_Account</fullName>
+        <active>false</active>
+        <description>If the sold to account is an internal account (Disti Channel 04) and order reason is non-stocking, you can use only Internal Ship to accounts as an end customer account</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
+ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
+NOT(ISBlank(Sales_Ship_To_Account__c)),
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+(Sales_Sold_To_Account__r.Core_Direct_Distributor_Channel_Nm__c = &apos;04&apos;) ,
+NOT((Sales_Ship_To_Account__r.Core_Direct_Distributor_Channel_Nm__c = &apos;04&apos;)) ,
+OR(
+AND(NOT(Sales_End_Customer_Account__r.Core_Direct_Distributor_Channel_Nm__c=&apos;04&apos;),ISPICKVAL(Sales_End_Customer_Account__r.Core_Direct_Account_Type_Nm__c ,&apos;Ship To&apos;)),Sales_End_Customer_Account__c = Sales_Ship_To_Account__c),
+OR(ISPICKVAL(Status,&apos;Draft&apos;),Sales_Is_Verified__c=true,NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
+))
+)</errorConditionFormula>
+        <errorMessage>Sold to account is an Internal account, You can use only Internal Ship to account as an end customer account.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Mandatory_Accounts_For_Order</fullName>
+        <active>false</active>
+        <description>For License ,Sample , Non-commercial(FPGA University, Corporate) all 3 accounts (sold to ,ship to , end customer ) are mandatory.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+NOT(ISBLANK(TEXT(Type))),
+NOT(ISBLANK(TEXT(Sales_Order_Sub_Type__c))),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;),AND(ISPICKVAL(Type,&quot;Non Commercial Order&quot;),OR(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;FPGA university program license request&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Corporate Order&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Amend Non Commercial&quot;)))),
+OR(ISBLANK(Sales_Sold_To_Account__c) ,ISBLANK(Sales_Ship_To_Account__c),AND(ISPICKVAL(Sales_Order_Reason__c, &apos;Non Stocking Order&apos;),ISBLANK(Sales_End_Customer_Account__c))
+), (OR( Sales_Is_Verified__c ,
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))))
+)
+)</errorConditionFormula>
+        <errorMessage>Sold to ,ship to and end customer accounts are mandatory .</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_OrderCreation_OrderReason_Reqd</fullName>
+        <active>true</active>
+        <description>Order Reason field is mandatory for Licensed tool order and Sample order in-order to create a order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+ISNEW(),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;)),
+ISBLANK(TEXT(Sales_Order_Reason__c))
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Order_Reason__c</errorDisplayField>
+        <errorMessage>Order Reason field is required to create the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_OrderCreation_PONumber_Reqd</fullName>
+        <active>true</active>
+        <description>PO Number field is mandatory for Licensed tool order and Sample order in-order to create a order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+ISNEW(),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;)),
+ISBLANK(Sales_PO_Number_Txt__c)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_PO_Number_Txt__c</errorDisplayField>
+        <errorMessage>PO# field is required to create the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_OrderCreation_ShipToAcc_Reqd</fullName>
+        <active>true</active>
+        <description>Ship To Account field is mandatory for Licensed tool order ,Sample order and FPGA University program license  order  in-order to create a order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+ISNEW(),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;),AND(ISPICKVAL(Type,&quot;Non Commercial Order&quot;),ISPICKVAL(Sales_Order_Sub_Type__c,&quot;FPGA university program license request&quot;))),
+ISBLANK(Sales_Ship_To_Account__c)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Ship_To_Account__c</errorDisplayField>
+        <errorMessage>Ship To Account field is required to create the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_OrderCreation_SoldToAcc_Reqd</fullName>
+        <active>true</active>
+        <description>Sold To Account field is mandatory for Licensed tool order and Sample order in-order to create a order.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+ISNEW(),
+OR( ISPICKVAL(Type,&quot;Licensed Tool Order&quot;), ISPICKVAL(Type,&quot;Sample Order&quot;)),
+ISBLANK(Sales_Sold_To_Account__c)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Sold_To_Account__c</errorDisplayField>
+        <errorMessage>Sold To Account field is required to create the order.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_PO_Number</fullName>
+        <active>true</active>
+        <description>PO# cannot exceed 21 characters and cannot contain &amp; in it.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False ,AND(
+OR( 
+LEN( Sales_PO_Number_Txt__c ) &gt; 21 ,
+CONTAINS(Sales_PO_Number_Txt__c, &apos;&amp;&apos;)
+),OR( Sales_Is_Verified__c , NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
+))</errorConditionFormula>
+        <errorDisplayField>Sales_PO_Number_Txt__c</errorDisplayField>
+        <errorMessage>PO# cannot exceed 21 characters and cannot contain &apos;&amp;&apos; in it.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_PSG_Order_Reason</fullName>
+        <active>false</active>
+        <description>You cannot have Stocking Order Reason for Non Commercial order type.</description>
+        <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, false, IF( ISPICKVAL(Type,&quot;Non Commercial Order&quot;) 
+&amp;&amp; ISPICKVAL( Sales_Order_Reason__c , &quot;Stocking Order&quot;), true, false))</errorConditionFormula>
+        <errorDisplayField>Sales_Order_Reason__c</errorDisplayField>
+        <errorMessage>You cannot have Stocking Order Reason for Non Commercial order type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Quote_Mandatory</fullName>
+        <active>false</active>
+        <description>Quote is mandatory for corporate orders.</description>
+        <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+AND(
+OR(
+Sales_Is_Verified__c = true,
+AND((ISPICKVAL( Status , &quot;Activated&quot;)),
+NOT(ISPICKVAL (Sales_status__c, &quot;Order Cancelled by SAP&quot;))),
+NOT(ISPICKVAL (Sales_status__c, &quot;Order Cancelled&quot;))
+),
+ISPICKVAL( Sales_Order_Sub_Type__c , &quot;Corporate Order&quot;),
+ISBLANK( SBQQ__Quote__c ),
+ISBLANK(Sales_Cancelled_Quote_No__c )
+)
+)</errorConditionFormula>
+        <errorDisplayField>SBQQ__Quote__c</errorDisplayField>
+        <errorMessage>Quote is mandatory for corporate orders.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_RestrictFields_Validation</fullName>
+        <active>false</active>
+        <description>Cannot edit Stage, Order start date, Account and also cannot edit Order Products on Orders that are Cancelled And in SAP Resubmission In Progress.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
+OR( AND(ISPICKVAL( PRIORVALUE(Sales_status__c) , &apos;SAP Resubmission In Progress&apos;),Sales_Is_Verified__c = False), ISPICKVAL( PRIORVALUE(Sales_status__c) , &apos;Order Cancelled&apos;) ),
+OR(
+ISCHANGED( Status ),
+ISCHANGED( AccountId ),
+ISCHANGED( EffectiveDate ),
+ISCHANGED( OrderItemCount__c )
+)
+))</errorConditionFormula>
+        <errorMessage>Cannot edit Stage, Order start date, Account and also cannot edit Order Products on Orders that are Cancelled And in SAP Resubmission In Progress.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Restrict_Non_Commercial_Status</fullName>
+        <active>true</active>
+        <description>If Order type is &apos;Non Commercial Order&apos; user not allowed to set status as a &apos;SAP Order Creation Failed&apos;.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
+ISPICKVAL(Type, &apos;Non Commercial Order&apos;),
+ISPICKVAL(Status ,&apos;Draft&apos;),
+OR(
+ISPICKVAL(Sales_status__c ,&apos;SAP Order Creation Failed&apos;),
+ISPICKVAL(Sales_status__c ,&apos;SAP Resubmission In Progress&apos;)
+)
+))</errorConditionFormula>
+        <errorMessage>In &apos;Non Commercial Order&apos; should not allowed Status as &apos;SAP Order Creation Failed&apos; and &apos;SAP Resubmission In Progress&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Ship_to_EC_Account_Validation</fullName>
+        <active>true</active>
+        <description>If Order reason is Non stocking order and SAP ship to acc selected on an order has SAP Ship To End Customer associated to it then the EC acc chosen on the order should be same as SAP Ship to EC associated with the SAP ship to acc</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False ,AND(
+NOT(ISPICKVAL(Sales_Order_Sub_Type__c,&quot;Partner license order&quot;)),
+ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
+NOT(ISBlank(Sales_Ship_To_Account__c)),
+NOT(ISBlank(Sales_End_Customer_Account__c)),
+NOT(ISBlank( Sales_Ship_To_Account__r.Core_Direct_Ship_To_End_Customer_Id__c)),
+NOT( Sales_End_Customer_Account__r.Core_Direct_Account_Id__c=Sales_Ship_To_Account__r.Core_Direct_Ship_To_End_Customer_Id__c),
+NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
+)</errorConditionFormula>
+        <errorMessage>End customer account chosen on the order should be same as SAP Ship to End Customer associated with the SAP ship to account.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Validation_Shipping_Instruction</fullName>
+        <active>false</active>
+        <description>The Shipping instruction of sample order should be defaulted from the ship to account but should be editable.</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, FALSE,
+AND(
+OR(
+AND(
+OR( ISPICKVAL( PRIORVALUE(Type) ,&apos;Licensed Tool Order&apos;), ISPICKVAL( PRIORVALUE(Type) ,&apos;Non Commercial Order&apos;) ),
+NOT( ISPICKVAL( Type ,&apos;Sample Order&apos;) ),
+ISCHANGED( Sales_Shipping_Instructions_Dsc__c )
+),
+AND(
+OR( ISPICKVAL( Type ,&apos;Licensed Tool Order&apos;), ISPICKVAL( Type ,&apos;Non Commercial Order&apos;) ),
+Sales_Shipping_Instructions_Dsc__c != Sales_Ship_To_Account__r.Core_Direct_Shipping_Instruction_Txt__c
+)
+),
+NOT(ISCHANGED( Sales_Ship_To_Account__c )),
+NOT(ISPICKVAL( Status,&apos;Activated&apos;))
+)
+)</errorConditionFormula>
+        <errorMessage>Shipping Instruction cannot be edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_cancelled_reason</fullName>
+        <active>false</active>
+        <description>Cannot add Cancelled reason if order is not cancelled.</description>
+        <errorConditionFormula>AND(
+ISPICKVAL(  Status  , &apos;Draft&apos;),
+NOT(ISPICKVAL(Sales_status__c , &apos;Order Cancelled&apos;)),
+NOT( ISBLANK( Sales_Cancelled_Reason_Dsc__c ) )
+)</errorConditionFormula>
+        <errorDisplayField>Sales_Cancelled_Reason_Dsc__c</errorDisplayField>
+        <errorMessage>Cannot add Cancelled reason if order is not cancelled.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_checkActivePricebook</fullName>
+        <active>true</active>
+        <description>Check if User selects an Active Pricebook</description>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False ,AND(Pricebook2.IsActive = FALSE,
+  (OR(  Sales_Is_Verified__c ,ISPICKVAL( PRIORVALUE(Status) , &apos;Activated&apos;) )) 
+))</errorConditionFormula>
+        <errorMessage>Can not select an Inactive Pricebook</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>SBQQ__EditOrderProducts</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Edit Order Products</masterLabel>
+        <openType>noSidebar</openType>
+        <page>SBQQ__OrderLineSelector</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>myRule_1_A1</name>
+        <label>Benefit Association Check</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>01p3b0000012mTBNotFound</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accountInfoIds</name>
+            <value>
+                <elementReference>formula_1_myRule_1_A1_8460645509</elementReference>
+            </value>
+        </inputParameters>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>PMP_Create_Offering_Alerts process using Send Email for Create Offering criteria.
+Used to send email to all users based on benefit association</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_1_myRule_1_A1_8460645509</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.PRM_Account_Id__c} + &apos;|&apos; + &apos;Email_For_Create_Offering&apos;</expression>
+    </formulas>
+    <interviewLabel>PMP_Create_Offering_Alerts_1 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PMP_Create_Offering_Alerts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <filterFormula>({!$Record.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c} = &apos;BFTMKTPLED&apos; )&amp;&amp;((ISNEW()||  ISCHANGED({!$Record.PRM_Status_Nm__c}))&amp;&amp;(ISPICKVAL ({!$Record.PRM_Status_Nm__c}, &apos;Active&apos;)))</filterFormula>
+        <object>PRM_AccountBenefitAssociation__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

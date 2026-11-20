@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_Budget_Cap_All_Users_CCP_Internal_Read_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Budget Cap All Users - CCP Internal Read Write</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>Null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>IPA Budget Type Cap</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Cap_CCP_CCFB_ALL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Budget Cap records to CCP CCFB All Group based on CCFB program - Read / Write</description>
+        <label>Budget Cap CCP CCFB ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFB_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000KywA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Cap_CCP_CCF_ALL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Budget Cap CCP CCF ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaSe</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Cap_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Budget Cap - CCP Claim Case Reviewer Internal</description>
+        <label>Budget Cap - CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>Null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>IPA Budget Type Cap</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Cap_CCP_DCF_ALL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Budget Cap CCP DCF ALL</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaSZ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Cap_CCP_SPCF_ALL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Budget Cap CCP SPCF ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaUp</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

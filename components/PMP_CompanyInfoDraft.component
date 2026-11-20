@@ -1,0 +1,153 @@
+<apex:component access="global" controller="PMP_EmailTemplateController">
+    <html>
+        <style>
+            /* -Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            
+            /*h1{
+            font-family: Intel Clear !important;  
+            } */
+        </style>
+        
+        <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
+       
+        <apex:attribute name="partnerType" type="String" description="type of the partner in company"/>
+        <body>
+            <!-- Header Banner -->
+            <c:PMP_Global_Header message="Welcome: Get started with Intel® Partner Showcase - complete your {!partnerType}"/>
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <table width="75%">    
+                <!-- Email Body -->
+                <tr>
+                    <td style="padding-left:50px;">
+                        <br/>Hello<br/><br/>
+                        Make sure your company is visible in the new Intel® Partner Showcase! Since your {!partnerType} is still in draft mode, it will need to be completed and submitted to be seen by our global audience.
+                        
+                       <br/><br/>
+                        The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. As a partner, you can <!--explore offerings and --> <!--IPA2.0 TW-->network with other Intel partners. End customers and partners will be able to quickly locate and connect with you, creating leads.
+                        <br/>
+                       </td>
+                </tr>
+                        
+                        
+                       <!-- CTA -->
+                <tr>
+                    <td style="padding-left:50px;">
+                        Please use the link and follow the instructions below to complete and submit your {!partnerType} for Intel review and to get it published.<br/><br/>
+                        <b>INSTRUCTIONS</b><br/>
+                        <ol>
+                         <li>Go to the Showcase&nbsp;<apex:outputLink value="https://www.intel.com/content/www/us/en/partner/showcase/overview.html" styleClass="intelBlue">Home Page</apex:outputLink>.</li>
+                         <li>Click on the User Icon to login.</li>
+                         <li>Enter email and complete MFA to successfully login.</li>
+                         <li>Click on Manage Storefront button.</li>
+                         <li>Click the pencil icon.</li>
+                         <li>Fill all the required information and check all boxes that apply to your storefront.</li>
+                         <li>Click Next at the bottom right of each dialog box to proceed to the next tab.</li>
+                         <li>Submit your storefront to Intel for review.</li>
+                        </ol>
+                        Thanks for your prompt attention,<br/><br/>
+                        The Intel® Partner Showcase Team <br/> <br/>
+                    </td>
+                </tr>
+                <!-- CTA --> 
+                   <!-- <tr>
+                    <td style="padding-left:50px;">    
+                       
+                        Thanks for your prompt attention,<br/><br/>
+                        The Intel® Partner Showcase Team <br/><br/>
+                       <!-- <b>{!partnerType} Name: {!partnerData.Name}</b><br/> 
+                        
+                        
+                    </td>
+                </tr>-->
+                <!-- Email Body -->
+                
+                <!-- Progress Indication 
+<tr>
+<td style="height:50; text-align:center;">
+<apex:image id="bodyImageId" url="{!bodyURL}"/>
+</td>
+</tr>
+<!-- Progress Indication -->
+                <!-- Next Best Step -->
+               
+                <!-- Next Best Step -->
+                <!-- Questions/Contact -->
+                <tr>
+                    <td style="padding-left:50px;">  
+                        Questions? Reach out to Showcase Admin Team at:<br/>
+                        <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                            {!$Label.PMP_MailTo}
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr>
+                <!-- Questions/Contact -->
+                <!-- Marketplace Help & FAQ -->
+                <!-- <tr>    
+<td style="text-align:center">
+For FAQs and pro-tips on using Intel Solutions Marketplace, please visit 
+<apex:outputLink value="www.intel.com" styleClass="intelBlue">
+Marketplace Help
+</apex:outputLink><br/><br/>
+</td>
+</tr>-->
+                <!-- Marketplace Help & FAQ -->
+            </table>                 
+            <!-- Email content -->
+            
+            <!-- Global Footer -->
+            <c:PMP_Global_Footer />
+            <!-- <c:PMP_PartnerFooterComponent /> -->
+            <!-- Global Footer -->
+            
+        </body>
+    </html>
+</apex:component>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>3M,7-ELEVEN,Abbott Labs,AbbVie,Activision Blizzard,None,Adobe,Agilent Technologies,Airbnb,Akamai,Allstate,Ally Financial,American Airlines,American Electric Power,Ameriprise Financial,AmerisourceBergen,Amgen,Anthem,Applied Materials,Arista,Ascension,Baker Hughes,Bank of America,Best Buy,Black Knight,BlackRock,Bloomberg,Blue Cross Blue Shield,Box,bp,Broadcom,CH Robinson,Cadence Design Systems,Caesars Entertainment,Capital Group,Cardinal Health System,Cargill,Carnival Corporation,Caterpillar,CBRE,Centene,Chevron,Cigna,Citadel,CloudFlare,CommonSpirit Health,ConocoPhillips,Costco,Crowdstrike,Cummins,CVS Health,Danaher,Datto,DaVita,Delta,DoorDash,Dropbox,Duke Energy,Ebay,Edison International,Eli Lilly,Emerson,Epic Systems,Etsy,Expedia,Exxon Mobil,Meta,Farmers Insurance,Fidelity,Fifth Third Bank,Fiserv,Ford,Fox,General Mills,General Motors,Gilead,Global Payments,Godaddy,HEB,Halliburton,HCA Healthcare,Hertz,Hilton,Honeywell,Humana,Illumina,Intermountain Healthcare,InterSystems,Intuit,IQVIA,Jabil,Jacobs Engineering,Johnson &amp; Johnson,JPMorgan Chase,Kimberly-Clark,Koch Industries,Microsoft,Lowes,Marriott,MassMutual,Mastec,Mastercard,McDonalds,McKesson,Medtronic,Memorial Hermann,Merck &amp; Co,MetLife,Micron Technology,Morgan Stanley,NASDAQ,Nationwide</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Navy Federal Credit Union,Comcast,NCR,Netflix,Nextera Energy,Nike,Northern Trust,NRG Energy,Omnicom Group,UnitedHealth Group,Paypal,PepsiCo,None,Phillips 66,Pinterest,Principal Financial,Procter and Gamble,Progressive,Providence,Prudential Financial,Publix,Rackspace,Raymond James Financial,Tencent,S and P Global,Sabre,Salesforce,Schlumberger,Seagate,ServiceNow,Siemens,Sony,Southern Company,Southwest Airlines,Morgan Stanley,State Farm,State Street,Stripe,Susquehanna,Sutter Health,Synopsys,Take Two Interactive,Target,Tesla,Texas Instruments,Textron,ADM,BNY Mellon,Coke,Goldman Sachs,The Hartford,Home Depot,TJX,The Trade Desk,Thermo Fisher Scientific,TIAA,Travelers,Truist,Two Sigma,Tyson Foods,Uber,UBS,United Continental Holdings,UNFI,UPS,USAA,Valero,Visa,Walgreens,Walmart,AT&amp;T,Wells Fargo,Western Digital,Xcel Energy,Yahoo,Zillow,Zoom</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>200 Accounts with IDs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

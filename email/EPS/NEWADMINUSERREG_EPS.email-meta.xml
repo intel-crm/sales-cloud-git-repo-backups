@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Intel Enrollment Confirmation</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>NEWADMINUSERREG_EPS</name>
+    <style>none</style>
+    <subject>Approval of your Intel® SDP Support Center Application</subject>
+    <textOnly>Intel Registration Confirmation
+
+Verify your e-mail
+
+Action Required
+
+This notice is to inform you that a profile has been created for you by an Intel Representative because of your interest in Intel® On Demand Web Services - Test
+
+
+Please retain this e-mail for future reference.
+
+E-mail Address: {!Contact.Email}
+
+What you need to do
+
+Please follow this link to complete your account set up or copy the URL into your browser.
+
+Your use of Intel&apos;s websites are governed by Intel&apos;s Terms and Conditions of Use linked from the bottom of each respective site&apos;s web pages.
+
+If you feel you have received this e-mail in error, please contact us  here.
+
+Visit this  link any time to manage your profile.
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+
+Intel is committed to protecting your privacy. For more information,
+please see the Intel Privacy Notice.
+
+Legal Information | Trademarks © Intel Corporation. All rights reserved.
+*Other names and brands may be claimed as the property of others.
+**Intel is not responsible for content of sites outside our intranet.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,15 @@
+{
+  "type" : "sfdc_cms__image",
+  "title" : "Business Outcome",
+  "contentBody" : {
+    "sfdc_cms:media" : {
+      "source" : {
+        "mimeType" : "image/png",
+        "ref" : "0sNHo000000ChuL",
+        "type" : "file",
+        "size" : 12501
+      }
+    }
+  },
+  "urlName" : "business-outcome"
+}

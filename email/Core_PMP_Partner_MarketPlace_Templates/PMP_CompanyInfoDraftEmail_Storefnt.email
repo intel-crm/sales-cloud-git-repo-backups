@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Welcome: Get Started with Intel® Partner Showcase." recipientType="User" relatedToType="PMP_Company__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_CompanyInfoDraft partnerRecordId="{!relatedTo.Id}"  partnerType="storefront"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

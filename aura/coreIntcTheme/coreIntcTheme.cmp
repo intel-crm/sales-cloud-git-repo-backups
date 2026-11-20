@@ -1,0 +1,68 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="coreIntcTheme">
+  <aura:attribute name="dynamicRequire" type="Aura.Component[]"/>
+  <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+  <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+  <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+  
+  <aura:attribute name="additionalCss" type="string" default=""/>
+  <aura:attribute name="coreIntcErrorConfig" type="string" default=""/>
+  <aura:attribute name="renderDynamicRequire" type="boolean" default="false"/>
+  <aura:attribute name="showNavBar" type="boolean" required="false" default="false"/>
+  <aura:attribute name="showProfileMenu" type="boolean" required="false" default="false"/>
+  <aura:attribute name="showSearch" type="boolean" required="false" default="false"/>
+  <aura:attribute name="splitCssFiles" type="boolean" required="false" default="false"/>
+  
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:if isTrue="{!!v.splitCssFiles}">
+    <ltng:require styles="{!$Resource.Core_INTC + '/theme/styles/corebundle.min.css'}"></ltng:require>
+    <aura:set attribute="else">
+      <ltng:require styles="{!join(',',
+        $Resource.Core_INTC + '/theme/styles/aaFonts.css',
+        $Resource.Core_INTC + '/theme/styles/alerts.css',
+        $Resource.Core_INTC + '/theme/styles/buttons.css',
+        $Resource.Core_INTC + '/theme/styles/colors.css',
+        $Resource.Core_INTC + '/theme/styles/globalIconCodes.css',
+        $Resource.Core_INTC + '/theme/styles/headings.css',
+        $Resource.Core_INTC + '/theme/styles/icons.css',
+        $Resource.Core_INTC + '/theme/styles/inputs.css',
+        $Resource.Core_INTC + '/theme/styles/links.css',
+        $Resource.Core_INTC + '/theme/styles/recordPages.css',
+        $Resource.Core_INTC + '/theme/styles/responsive.css',
+        $Resource.Core_INTC + '/theme/styles/tabs.css',
+        $Resource.Core_INTC + '/theme/styles/typography.css',
+        $Resource.Core_INTC + '/theme/styles/variables.css'
+      )}" />
+    </aura:set>
+  </aura:if>
+
+  <aura:if isTrue="{!v.renderDynamicRequire}">
+    {!v.dynamicRequire}
+  </aura:if>
+
+
+  <c:IntelCoreCommunity />
+  <c:coreIntcErrorHandler config="{!v.coreIntcErrorConfig}" />
+
+  <aura:if isTrue="{!v.showSearch}">
+    <div class="searchRegion">
+      {!v.search}
+    </div>
+  </aura:if>
+
+  <aura:if isTrue="{!v.showProfileMenu}">
+    <div class="profileMenuRegion">
+      {!v.profileMenu}
+    </div>
+  </aura:if>
+
+  <aura:if isTrue="{!v.showNavBar}">
+    <div class="navigation">
+      {!v.navBar}
+    </div>
+  </aura:if>
+
+  <div class="mainContentArea">
+    {!v.body}
+  </div>
+</aura:component>

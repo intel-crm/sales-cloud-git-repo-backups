@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Custom Metadata is used to map the Record Type Names of Claim, Activity and Allocation corresponding to the Channel Program</description>
+    <fields>
+        <fullName>Core_MDF_Activity_Close_Days__c</fullName>
+        <description>Stores the cut off days after when the activity status to be set to closed</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Close Days</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_RecordType_txt__c</fullName>
+        <description>This field is used to store the Activity&apos;s Record Type Developer Name Based on the Channel Program</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Activity Record Type Developer Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Allocation_RecordType_txt__c</fullName>
+        <description>This field is used to store the Allocation&apos;s Record Type Developer Name Based on the Channel Program</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Allocation Record Type Developer Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Cap Record Type Developer Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program_Name_txt__c</fullName>
+        <description>This field is used to store the Channel Program Name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Program Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ClaimStage_RecordType_txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Claim Stage Record Type Developer Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Activity_Name_Swap_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field will indicate the sequence of Activity and Claim Title during claim creation.</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Claim Activity Name Swap</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_RecordType_txt__c</fullName>
+        <description>This field is used to store the Claim&apos;s Record Type Developer Name Based on the Channel Program</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Claim Record Type Developer Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Fund_Reservation_chk__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This field is used to check whether the Fund Reservation Functionality is enabled for the corresponding Channel Program</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Fund Reservation</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_External_Master_Group_Name_Txt__c</fullName>
+        <description>Stores the external master group name specific to the program.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>External Master Group Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Internal_Master_Group_Name_Txt__c</fullName>
+        <description>Stores the internal master group name specific to the program.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Internal Master Group Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_POP_Mandatory_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is to check if pop submission is mandatory for claim submission</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>POP Mandatory</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_RecordType_txt__c</fullName>
+        <description>This field is used to store the Payment&apos;s Record Type Developer Name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Payment Record Type Developer Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Region_cd__c</fullName>
+        <description>Contains the Regions for program for which sub geo is required</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Region</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_isProgramBased_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isProgramBased</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_isProposalBased__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To indicate if it is a proposal based record type</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isProposalBased</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>ClaimActivityAllocationRecordtypeMapping</label>
+    <listViews>
+        <fullName>All_Columns</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Core_MDF_Activity_Close_Days__c</columns>
+        <columns>Core_MDF_Activity_RecordType_txt__c</columns>
+        <columns>Core_MDF_Allocation_RecordType_txt__c</columns>
+        <columns>Core_MDF_Channel_Program_Name_txt__c</columns>
+        <columns>Core_MDF_Channel_Program_txt__c</columns>
+        <columns>Core_MDF_Claim_RecordType_txt__c</columns>
+        <columns>Core_MDF_ClaimStage_RecordType_txt__c</columns>
+        <columns>Core_MDF_Payment_RecordType_txt__c</columns>
+        <columns>Core_MDF_Enable_Fund_Reservation_chk__c</columns>
+        <columns>IsProtected</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Columns</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>ClaimActivityAllocationRecordtypeMapping</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

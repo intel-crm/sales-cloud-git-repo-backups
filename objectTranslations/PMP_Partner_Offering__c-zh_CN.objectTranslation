@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Offering</value>
+    </caseValues>
+    <fields>
+        <label><!-- Offering Power 1 --></label>
+        <name>Offering_Power_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active Step --></label>
+        <name>PMP_Active_Step_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Admin Email --></label>
+        <name>PMP_Admin_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Admin Name --></label>
+        <name>PMP_Admin_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check box to see if a newly created Offering is with a particular Intel MP Admin or not --></help>
+        <label><!-- Admin Reviewing New Offering --></label>
+        <name>PMP_Admin_New_Offering_Review_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- All Categories --></label>
+        <name>PMP_All_Categories_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Archival 7 Days Reminder Date --></label>
+        <name>PMP_Archival_Seven_Day_Reminder_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Archival 3 Days Reminder Date --></label>
+        <name>PMP_Archival_Three_Day_Reminder_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Segments are auto derived values based on selected category (IoT/Client/Server) --></help>
+        <label>合作伙伴计划部分</label>
+        <name>PMP_Business_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation>客户端计算</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation>数据中心</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Programmable Gate Array</masterLabel>
+            <translation><!-- Field Programmable Gate Array --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation>物联网和嵌入式产品</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>类别</label>
+        <name>PMP_Category_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Information --></label>
+        <name>PMP_Company_Id__c</name>
+        <relationshipLabel><!-- Partner Offerings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Current Step --></label>
+        <name>PMP_Current_Step_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Logged in user --></label>
+        <name>PMP_Current_User_Offering_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Edit/Clone Offering --></label>
+        <name>PMP_Edit_Clone_Offering__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field holds the language code in which offering details are Edited --></help>
+        <label><!-- Edit Language --></label>
+        <name>PMP_Edit_Language_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- FAE Review Four Day Reminder Dt --></label>
+        <name>PMP_FAE_Review_Four_Day_Reminder_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- FAE Review Two Day Reminder Dt --></label>
+        <name>PMP_FAE_Review_Two_Day_Reminder_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Featured Offering --></label>
+        <name>PMP_Featured_Offering_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Featured --></label>
+        <name>PMP_Featured__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Application Engineer --></label>
+        <name>PMP_Field_Application_Engineer_Id__c</name>
+        <relationshipLabel><!-- Partner Offerings (Field Application Engineer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Email of market Place Admin --></help>
+        <label><!-- Intel MP Admin Email --></label>
+        <name>PMP_Intel_Admin_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Marketplace Admin --></label>
+        <name>PMP_Intel_Admin_Id__c</name>
+        <relationshipLabel><!-- Partner Offerings (Intel Marketplace Admin) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Full Name of the Intel Market Place Admin --></help>
+        <label><!-- Intel MP Admin Name --></label>
+        <name>PMP_Intel_Admin_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Converted --></label>
+        <name>PMP_Is_Converted_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Not Available On MP --></label>
+        <name>PMP_Is_Not_Available_On_MP_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Notified --></label>
+        <name>PMP_Is_Notified_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if this Offering has been created by an ODM (Original Device Manufacturer) Partner. This flag is set when the Offering is created. --></help>
+        <label><!-- Is ODM --></label>
+        <name>PMP_Is_ODM_Ind__c</name>
+    </fields>
+    <fields>
+        <label>已发布</label>
+        <name>PMP_Is_Published_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Offering Date --></label>
+        <name>PMP_Offering_Create_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Creator Name --></label>
+        <name>PMP_Offering_Creator_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering FAE Status --></label>
+        <name>PMP_Offering_FAE_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Accepted by FAE</masterLabel>
+            <translation>FAE 已接受</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>已批准</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending FAE approval</masterLabel>
+            <translation>等待 FAE 批准</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation>已拒绝</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update required</masterLabel>
+            <translation>需要更新</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- A unique user friendly identifier of the offering. --></help>
+        <label><!-- Offering Id --></label>
+        <name>PMP_Offering_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Input Language --></label>
+        <name>PMP_Offering_Language_Nm__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation>英文</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation>日语</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation>简体中文</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- To count the Chat messages --></help>
+        <label><!-- Offering Messages Count --></label>
+        <name>PMP_Offering_Messages_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field to display if chat messages are present. --></help>
+        <label><!-- Offering Messages --></label>
+        <name>PMP_Offering_Messages_Link_Txt__c</name>
+    </fields>
+    <fields>
+        <label>产品/产品解决方案名称</label>
+        <name>PMP_Offering_Nm_Hyperlink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering Review  Status --></label>
+        <name>PMP_Offering_Review_Status_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the date when last the  status of the Offering has changed to current status value --></help>
+        <label><!-- Last Status Update Date --></label>
+        <name>PMP_Offering_Status_Update_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering Submitter UserId --></label>
+        <name>PMP_Offering_Submitter_UserId__c</name>
+        <relationshipLabel><!-- Partner Offerings (Offering Submitter UserId) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Update Required --></label>
+        <name>PMP_Offering_Update_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Description of the offering --></help>
+        <label><!-- Partner Offering Description --></label>
+        <name>PMP_Partner_Offering_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Offering End Date --></label>
+        <name>PMP_Partner_Offering_End_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- PIM Product/Offering Id --></help>
+        <label><!-- Partner Offering Identifier --></label>
+        <name>PMP_Partner_Offering_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Offering Lifecycle Status Txt --></label>
+        <name>PMP_Partner_Offering_LifecycleStatus_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Status of the offering before being available on portal --></help>
+        <label>合作伙伴产品/产品解决方案生命周期状态</label>
+        <name>PMP_Partner_Offering_Lifecycle_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Admin Review</masterLabel>
+            <translation>管理员审核</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>已批准</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Archived</masterLabel>
+            <translation><!-- Archived --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation>草稿</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Approval</masterLabel>
+            <translation>批准中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation>全新</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Published</masterLabel>
+            <translation>已发布</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation>已拒绝</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation><!-- Retired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Required</masterLabel>
+            <translation>需要更新</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Offering Name --></help>
+        <label><!-- Partner Offering Name --></label>
+        <name>PMP_Partner_Offering_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Offering Source Id --></help>
+        <label><!-- Offering Source Id --></label>
+        <name>PMP_Partner_Offering_Source_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Offering Start Date --></label>
+        <name>PMP_Partner_Offering_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Gives the PIM status of Offering --></help>
+        <label><!-- Partner Offering Sync Status --></label>
+        <name>PMP_Partner_Offering_Sync_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>In Sync</masterLabel>
+            <translation>同步</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Out of Sync</masterLabel>
+            <translation>不同步</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Tag line or Catchy line for the offering --></help>
+        <label><!-- Partner Offering Tag Line Text --></label>
+        <name>PMP_Partner_Offering_Tag_Line_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Deciding factor for the offerings to be visible to Partner or Intel Employees or to Everyone --></help>
+        <label><!-- Partner Offering Visibility Name --></label>
+        <name>PMP_Partner_Offering_Visibility_Nm__c</name>
+        <picklistValues>
+            <masterLabel>All Access - Available to the Public</masterLabel>
+            <translation>完全访问 - 向公众开放</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Restricted Access - Intel Pre-Release Product</masterLabel>
+            <translation>受限访问 - 英特尔预发布产品</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Provide an explanation of the changes you are making. This will help other authors understand your motivations --></help>
+        <label><!-- Revision Log Message --></label>
+        <name>PMP_Partner_Revision_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pre Release Check --></label>
+        <name>PMP_Pre_Release_Check_Nm__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Pre Release Item Count --></label>
+        <name>PMP_Pre_Release_Item_Count_Num__c</name>
+    </fields>
+    <fields>
+        <label><!-- Published Copy Id --></label>
+        <name>PMP_Published_Copy_Id_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for Retired --></label>
+        <name>PMP_Reason_for_Retired_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field contains all comments history --></help>
+        <label><!-- Review Comment History --></label>
+        <name>PMP_Review_Comment_History_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field captures comments for approval --></help>
+        <label><!-- Add Review Comments --></label>
+        <name>PMP_Review_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering Name --></label>
+        <name>PMP_Review_Offering__c</name>
+    </fields>
+    <fields>
+        <label>子类别</label>
+        <name>PMP_Sub_Category_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Topic Count --></label>
+        <name>PMP_Topic_Count__c</name>
+    </fields>
+    <fields>
+        <label>语言状态</label>
+        <name>PMP_Translated_Languages__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation>英文</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation>日语</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simplified Chinese</masterLabel>
+            <translation>简体中文</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>翻译状态</label>
+        <name>PMP_Translation_Lifecycle_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation>完整</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation>进行中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Translation Queue</masterLabel>
+            <translation>在翻译队列中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation>不适用</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Translation Status --></label>
+        <name>PMP_Translation_Status__c</name>
+    </fields>
+    <fields>
+        <label>查看产品/产品解决方案</label>
+        <name>PMP_View_Offerings__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date field to exclude weekends for 1 week SLA reminders workflows --></help>
+        <label><!-- 1 Week SLA Workflow Date --></label>
+        <name>PMP_Workflow_One_Week_Trigger_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the date relevant to reminder Workflows helping in calculating weekdays --></help>
+        <label><!-- 3 Days SLA WorkFlow Date --></label>
+        <name>PMP_Workflow_Three_Day_Trigger_Dt__c</name>
+    </fields>
+    <fields>
+        <label>工作副本 ID</label>
+        <name>PMP_Working_Copy_Id__c</name>
+        <relationshipLabel>合作伙伴产品/产品解决方案</relationshipLabel>
+    </fields>
+    <nameFieldLabel>标题</nameFieldLabel>
+    <recordTypes>
+        <label><!-- Default Record Type --></label>
+        <name>Default_Record_Type</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- An offering can be Rejected only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
+        <name>PMP_Reject_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An offering can be sent for Update only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
+        <name>PMP_Update_Offering_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

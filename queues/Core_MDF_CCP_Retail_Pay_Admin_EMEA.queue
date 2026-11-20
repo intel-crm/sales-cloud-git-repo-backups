@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>AGS_CCP Retail Pay Admin EMEA</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_Retail_EMEA_Pay_Admin</publicGroup>
+        </publicGroups>
+        <users>
+            <user>dennis.potter@intel.com.crm.crmprod</user>
+            <user>12096027@intel.com.crm</user>
+            <user>11794891@intel.com.crm</user>
+            <user>larry.hill@intel.com.crm.crmprod</user>
+            <user>11581070@intel.com.crm</user>
+            <user>retail-marketingfund-payment-administrator@intel.com.crm</user>
+            <user>12020083@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PartnerFundClaim</sobjectType>
+    </queueSobject>
+</Queue>

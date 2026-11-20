@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Premier Support Project Member</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Premier Support Project Members</value>
+    </caseValues>
+    <fields>
+        <help><!-- Adds member as an Interested Party on New or Open Cases --></help>
+        <label><!-- Add as Case Interested Party --></label>
+        <name>Add_as_Case_Interested_Party__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Core_IPS_ContactName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_IPS_Contact_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Core_IPS_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact IPS Active --></label>
+        <name>Core_IPS_Contact_IPS_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Core_IPS_Contact__c</name>
+        <relationshipLabel><!-- Premier Support Project Members --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Premier Support Project --></label>
+        <name>Core_IPS_Project__c</name>
+        <relationshipLabel><!-- Premier Support Project Members --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Provisioning Date --></label>
+        <name>Core_IPS_Provisioning_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- isFutureonInsert --></label>
+        <name>Core_IPS_isFuture_onInsert__c</name>
+    </fields>
+    <fields>
+        <label><!-- isFutureonUpdate --></label>
+        <name>Core_IPS_isFuture_onUpdate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selective Member --></label>
+        <name>Core_Selective_Member__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_User__c</name>
+        <relationshipLabel><!-- Premier Support Project Members --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot remove the owner of a project.  If you would like to remove this user from this project, change the owner first to someone else. --></errorMessage>
+        <name>Core_IPS_Inactivating_ProjectOwner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- User value cannot be changed. --></errorMessage>
+        <name>Core_IPS_PreventUserLookupChange</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Members_For_External_Customers --></label>
+        <name>Add_Members_For_External_Customers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Add_Members --></label>
+        <name>Core_IPS_Add_Members</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New --></label>
+        <name>New</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Remove_Members --></label>
+        <name>Remove_Members</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,172 @@
+<template>
+    <template if:true={isShow}>
+        <!-- <lightning-card title="" class="my-card "> -->
+            <lightning-record-view-form object-api-name={objAPIName}>
+                 <lightning-layout multiple-rows="true" class={campaignCSS}>
+                    <lightning-accordion class="customAccordion" allow-multiple-sections-open active-section-name={activeSections}>
+                        <template for:each={objectFields} for:item="fld">
+                            <div class="x-accordion-heading" key={fld.key}>
+                                <template if:true={sectionVisible}>
+                                    <lightning-accordion-section name={fld.key} label={fld.key} key={fld.key} class="slds-p-top_small"> 
+                                        <lightning-layout multiple-rows="true">
+                                            <template for:each={fld.value} for:item="fldMapval">
+                                                <template if:true={fldMapval.isAccessible}>
+                                                    <template if:true={fldMapval.isVisible}>
+                                                    <lightning-layout-item alignment-bump={fldMapval.position}
+                                                        flexibility="no-grow" size={fldMapval.noOfColumns}
+                                                        padding="horizontal-small"
+                                                        small-device-size={fldMapval.noOfColumns}
+                                                        medium-device-size={fldMapval.noOfColumns}
+                                                        large-device-size={fldMapval.noOfColumns} key={fldMapval.label}>
+                                                        <label class="slds-form-element__label slds-p-left_xx-small">
+                                                            <span class="slds-m-right_xx-small">{fldMapval.label}</span>
+                                                            <template if:true={fldMapval.helpText}>
+                                                                <lightning-helptext content={fldMapval.helpText}>
+                                                                </lightning-helptext>
+                                                            </template>
+                                                        </label>
+                                                        <template if:true={fldMapval.value}>
+                                                            <div
+                                                                class="slds-border_bottom slds-p-horizontal_small inputValue textWrap">
+                                                                <template if:true={fldMapval.istextField}>
+                                                                    {fldMapval.value}
+                                                                </template>
+                                                                <template if:true={fldMapval.isRichTextField}>
+                                                                    <lightning-formatted-rich-text
+                                                                        value={fldMapval.value}>
+                                                                    </lightning-formatted-rich-text>
+                                                                </template>
+                                                                <template if:true={fldMapval.isreferenceField}>
+                                                                    <!--Tooltip-->
+                                                                    <div style="display:none;position: absolute;opacity:0;margin-top: -28px;margin-left: 132px"
+                                                                        class="ModelTooltip"
+                                                                        data-id={fldMapval.value.index}>
+                                                                        <c-core_-M-D-F_-Hover-For-Custom-Layout-Config
+                                                                            recordid={fldMapval.value.parentObjectId}
+                                                                            name={fldMapval.value.parentObjectName}
+                                                                            value={fldMapval.value.urlName}
+                                                                            tabicon={fldMapval.value.tabIcon}>
+                                                                        </c-core_-M-D-F_-Hover-For-Custom-Layout-Config>
+                                                                    </div>
+                                                                    <lightning-formatted-url value={fldMapval.value.url}
+                                                                        label={fldMapval.value.urlName}
+                                                                        onmouseout={handleMouseout}
+                                                                        onmouseover={handleMouseover}
+                                                                        data-id={fldMapval.value.index}>
+                                                                    </lightning-formatted-url>
+                                                                </template>
+                                                                <!-- <template if:true={fldMapval.isDateField}>
+                                                            {fldMapval.value.date}
+                                                        </template> -->
+                                                                <template if:true={fldMapval.isbooleanField}>
+                                                                    <template
+                                                                        if:true={fldMapval.value.booleanFieldValue}>
+                                                                        <lightning-input type="checkbox"
+                                                                            data-id="checkbox"
+                                                                            checked={fldMapval.value.booleanFieldValue}
+                                                                            variant="label-hidden" readonly="true"
+                                                                            disabled="true">
+                                                                        </lightning-input>
+                                                                    </template>
+                                                                    <template
+                                                                        if:false={fldMapval.value.booleanFieldValue}>
+                                                                        <lightning-input type="checkbox"
+                                                                            data-id="checkbox" variant="label-hidden"
+                                                                            readonly="true" disabled="true">
+                                                                        </lightning-input>
+                                                                    </template>
+                                                                </template>
+                                                            </div>
+                                                        </template>
+                                                        <template if:false={fldMapval.value}>
+                                                            <div
+                                                                class="slds-border_bottom slds-p-horizontal_x-small blankInputValue">
+                                                            </div>
+                                                        </template>
+                                                    </lightning-layout-item>
+                                                </template>
+                                                </template>
+                                            </template>
+                                        </lightning-layout>
+                                    </lightning-accordion-section>
+                                </template>
+                                <template if:false={sectionVisible}>
+                                    <!--<lightning-accordion-section name={fld.key} label={fld.key} key={fld.key}>-->
+                                    <lightning-layout multiple-rows="true">
+                                        <template for:each={fld.value} for:item="fldMapval">
+                                            <template if:true={fldMapval.isAccessible}>
+                                                <lightning-layout-item alignment-bump={fldMapval.position}
+                                                    flexibility="no-grow" size={fldMapval.noOfColumns}
+                                                    padding="horizontal-small" small-device-size={fldMapval.noOfColumns}
+                                                    medium-device-size={fldMapval.noOfColumns}
+                                                    large-device-size={fldMapval.noOfColumns} key={fldMapval.label} class={fldMapval.location}>
+                                                    <label class="slds-form-element__label slds-p-left_xx-small">
+                                                        <span class="slds-m-right_xx-small">{fldMapval.label}</span>
+                                                        <template if:true={fldMapval.helpText}>
+                                                            <lightning-helptext content={fldMapval.helpText} class="helpText">
+                                                            </lightning-helptext>
+                                                        </template>
+                                                    </label>
+                                                    <template if:true={fldMapval.value}>
+                                                        <div
+                                                            class="slds-border_bottom slds-p-horizontal_small inputValue textWrap">
+                                                            <template if:true={fldMapval.istextField}>
+                                                                {fldMapval.value}
+                                                            </template>
+                                                            <template if:true={fldMapval.isreferenceField}>
+                                                                <!--Tooltip-->
+                                                                <div style="display:none;position: absolute;opacity:0;margin-top: -28px;margin-left: 132px"
+                                                                    class="ModelTooltip"
+                                                                    data-id={fldMapval.value.index}>
+                                                                    <c-core_-M-D-F_-Hover-For-Custom-Layout-Config
+                                                                        recordid={fldMapval.value.parentObjectId}
+                                                                        name={fldMapval.value.parentObjectName}
+                                                                        value={fldMapval.value.urlName}
+                                                                        tabicon={fldMapval.value.tabIcon}>
+                                                                    </c-core_-M-D-F_-Hover-For-Custom-Layout-Config>
+                                                                </div>
+                                                                <lightning-formatted-url value={fldMapval.value.url}
+                                                                    label={fldMapval.value.urlName} 
+                                                                    onmouseout={handleMouseout}
+                                                                    onmouseover={handleMouseover}
+                                                                    data-id={fldMapval.value.index}>
+                                                                </lightning-formatted-url>
+                                                            </template>
+                                                            <!-- <template if:true={fldMapval.isDateField}>
+                                                                {fldMapval.value.date}
+                                                            </template> -->
+                                                            <template if:true={fldMapval.isbooleanField}>
+                                                                <template if:true={fldMapval.value.booleanFieldValue}>
+                                                                    <lightning-input type="checkbox" data-id="checkbox"
+                                                                        checked={fldMapval.value.booleanFieldValue}
+                                                                        variant="label-hidden" readonly="true"
+                                                                        disabled="true">
+                                                                    </lightning-input>
+                                                                </template>
+                                                                <template if:false={fldMapval.value.booleanFieldValue}>
+                                                                    <lightning-input type="checkbox" data-id="checkbox"
+                                                                        variant="label-hidden" readonly="true"
+                                                                        disabled="true"></lightning-input>
+                                                                </template>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                    <template if:false={fldMapval.value}>
+                                                        <div
+                                                            class="slds-border_bottom slds-p-horizontal_x-small blankInputValue">
+                                                        </div>
+                                                    </template>
+                                                </lightning-layout-item>
+                                            </template>
+                                        </template>
+                                    </lightning-layout>
+                                    <!--</lightning-accordion-section>-->
+                                </template>
+                            </div>
+                        </template>
+                    </lightning-accordion>
+                </lightning-layout>
+            </lightning-record-view-form>
+        <!-- </lightning-card> -->
+    </template>
+</template>

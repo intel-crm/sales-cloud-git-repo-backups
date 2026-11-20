@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Core_D_B_Industry_1__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Standard_Industry_Classification_1__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Alternate_Language_Name__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>EMILY ASHBY,BRIAN AVSEC,VINCENT BONAVENTURA,LINDA BOYSEL,HAL BRIDGES,HOWARD BUTLER,RICH CAHILL,SANDRA CAMPBELL,MICHAEL CARDOSO,ROHIT CHANDRACHUD,SHEKAR CHANDRASHEKAR,YUEN-YEE CHU,RALPH CISNEROS,JANET COITO,EDWARD COMEAU,OWEN DELEON,ASHISH DESAI,JOHN DICOSOLA,JEFF DORENKOTT,SEAN DRESEL,FRANCOIS DUBUC,PAULA DURAND,BEN ESPOSITO,CHRIS ESSER,KEVIN FADAIE,CHUCK FADER,JIM FELIX,NICK FINAMORE JR,ERIC FISHER,ANGELITO FORTES,DOUGLAS FOSTER,RODNEY FRAZER,BILL GABEHART,KEVIN GALLAGHER,STEPHANE GAUTHIER,WINSTON GAW,CHRISTOPHER GENTILE,LAURA GERK,DANIEL GIANDUSO,VICTORIA GODSOE,MIRIAM GONZALES,RAMRAJ GOTTIPARTHY,STEVE GOULD,KEVIN GREAVES,AMY GUESNER,SUREENA GUPTA,JOHN HAAG,TOMMY HABEEB,TIM HAGEN,JIM HARDY,ROBERT HEDRICK,SHERI HERZOG,NANCY HINES,EMILY HINTON,MICHAEL HO,BRIAN HOLLEY,JEFFREY HOLMBECK,SCOTT HOUGHTON,MIKIO ICHIBA,BRIAN KAHLIG,BRIAN KANG,CHRIS KIM,BRADLEY KINARD,KIRSTIN KITA,ALI KOZAK,JOE KRAUS,JOSEPH KRENSAVAGE,JEROLD KUN</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Abby Schaeffer,Adam Martinak,Brian Jarvis,Cody Covey,Gregg Zeutzius,Gregory Thomson,Jeff Berthold,John Brynildson,Kristopher Sundby,Marco Ching,Matthew Harrison,Meredith Jaeger,Mike Roberts,Nivi Singh,Richard Mason,Roger Lyman,Samuel Ryan,Scott Phillips,Steven Call,Steve Niemi,Tracy Johnson,Will Stewart</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,BOB LAMB,LEIF LARSON,WILL LIN,ROB LUSCHENAT,ADRIAN MACIAS,RICK MADORMO,GREGORY MARA,CHRISTOPHER MARTIN,KIM MARTIN,SUSANNAH MARTIN,ELVIA MARTINEZ,SCOTT MASEPOHL,ROSS MCGARITY,GEOFFREY MILLER,KERI MILLER,BOB MILNER,BRIAN MINK,ALBERTO MIRARCHI,ANTHONY MOLEE,NIGEL MONTGOMERY,GRANT MORGAN,JACOB MOULTON,MARK MOYER,WILLIAM MOYER,GREG NASH,CHRIS NEAL,CYNTHIA NELSON,DAN NGUYEN,TIEN NGUYEN,JEFF NIGH,AMANDA NOE,MARGARET NOLIN,ANTHONY OLIVERI,CARMINE PAGANO,RAJESH PATEL,JEFF PATHMAN,JENNIFER PECKHAM,JASON PETERS,SID PETERS,STACI PLOPAN,RAY PRADO,ADAM PRENGLER,DIRK PURFURST,MICHAEL RATHER,HAMISH RAWNSLEY,MATTHEW REBSOM,PRASAD REDDY,DON REICHERT,SETH REINHART,DAVID RICHARD,GABE RIZER,BETH ROBBINS,GREG ROBERTS,MICHELLE ROBICHEAUX,IVAN RUSH,MARK RUSSEL,DOUG RYDBERG,MICHAEL SAMORI,RAY SCHOUTEN,RYAN SCOVILLE,AVINASH SHARMA,DAVID SHIH,MARCI SHIHINSKI,SHAWN SLOCKERS,RICK SORK,ROBERT SPURR,PAUL STEVENSON,VINCE STUEVE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,RYAN TEKERLEK,GABRIEL TORRES,GEORGE TOTOLOS,JULIE TRAN,AMANDA TRENT,CHRIS VARLAMOS,STEFANKA VON BRZESKI,KENNETH WAKAMOTO,JOHN WEBSTER,JOHN WEISENBERGER,KEVIN WELDON,DALON WESTERGREEN,TIM WHITING,JOHN WILLE,RONALD WINDOM,MARK WINTER,BRADFORD WRIGHT,FARZAD YOUSEFI,MARK YOUSIK,GILBERT ZEIDAN,JIAN (MARK) ZHONG,TERRY ZUMWALT,STEVEN ZURLO</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Account Team PSG Check  Public</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Pipeline Commit Dashboard</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrm.intel.com/training-and-help/reporting/pipeline-management-dashboard/#tab-id-7</actionButtonLink>
+        <body>&lt;p&gt;Commit (Forecast) dashboard is focused on opportunities, with a decision date in the current quarter, that you are confident you can win. In the beginning of each quarter, identify the opportunities that you are committing to win in the quarter using this criterion:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Commit&lt;/strong&gt;: Committing to closure in the quarter.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Best Case&lt;/strong&gt;: Likely but not fully committed.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Low Certainty:&lt;/strong&gt;&amp;nbsp;Might not win due to multiple factors.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;The dashboard provides a breakdown of your COMMITTED opportunities. Individual metrics can be viewed by Sales Group, Manager, or Opportunity Owner. An opportunity summary table is provided to easily identify which opportunities are contributing to the metrics.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Pipeline Commit Dashboard</description>
+        <displayType>DockedComposer</displayType>
+        <header>Pipeline</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Pipeline Commit Dashboard</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Commit (Forecast) Dashboard</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -1,0 +1,27 @@
+<apex:page >
+
+
+  <div style = "padding-left: 30px">
+
+     <apex:image url="{!$Label.IPS_Community_500_Error}"></apex:image> 
+
+     
+     <br></br>
+     <br></br>
+     <br></br>
+
+     <h2  style="text-align:left;"><font size = "18">Error 500</font></h2>
+
+     <br />
+    
+
+     <p>Intel&reg; Premier Support Portal encountered an error and couldn't complete your request.  Please either try again later or contact <a href="mailto:ips.support@intel.com">support</a></p>
+    
+
+     <br />
+
+     <p> We apologize for any inconvenience this may cause and appreciate your patience.</p>
+     
+  </div>
+
+</apex:page>

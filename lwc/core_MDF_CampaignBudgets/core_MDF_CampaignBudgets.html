@@ -1,0 +1,180 @@
+<template>
+    <lightning-card title={campaignBudgetsLabel}>
+        <template if:false={isEEFProg}>
+           <template if:false={isCoGTMProg}>
+            <template if:true={budgetsExist}>
+                <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th aria-label={budgetNameLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_6-of-12" scope="col">
+                                <p class="slds-cell-wrap" title={budgetNameLabel}>{budgetNameLabel}</p>
+                            </th>
+                            <th aria-label={budgetAmountLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_1-of-12 slds-large-size_2-of-12" scope="col">
+                                <p class="slds-cell-wrap" title={budgetAmountLabel}>{budgetAmountLabel}</p>
+                            </th>
+                            <th aria-label={reimbursementRateLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_1-of-12 slds-large-size_2-of-12" scope="col">
+                                <p class="slds-cell-wrap p5" title={reimbursementRateLabel}>{reimbursementRateLabel}</p>
+                            </th>
+                                <th aria-label={reimbursementAmountLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_1-of-12 slds-large-size_2-of-12 " scope="col">
+                                <p class="slds-cell-wrap p5" title={reimbursementAmountLabel}>{reimbursementAmountLabel}</p>
+                            </th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<template if:true={showForm}>-->
+                        <template for:each = {campaignBudgets} for:item = "item" for:index="indexVar">
+                            <tr key ={item.budgetName} aria-selected="false" class="slds-hint-parent">
+                                <td role="gridcell" tabindex="0">
+                                    <div class="slds-text" style="white-space: pre-wrap;" title={item.budgetName}>{item.budgetName}</div>
+                                </td>
+                                <td role="gridcell">
+                                    <div class="" title={item.budgetAmount}>
+                                        <!-- US1017349 - changes start: Added extra condition to enable editing Budget Amount -->
+                                        <template if:true={enableBudgetAmountEdit}>
+                                            <lightning-input type="number"
+                                                name="Budget Amount" 
+                                                class="budgamtcmp"
+                                                variant="label-hidden"
+                                                formatter="currency"
+                                                step="0.01" maxlength="16"
+                                                value={item.budgetAmount} 
+                                                onchange={handleChange}
+                                                data-id={indexVar}                                               
+                                                data-cmp={item.budgetId}
+                                                >
+                                            </lightning-input>
+                                        </template>
+                                        
+                                        <template if:false={enableBudgetAmountEdit}>
+                                            <lightning-input type="number"
+                                                name="Budget Amount" 
+                                                variant="label-hidden"
+                                                formatter="currency"
+                                                step="0.01" maxlength="16"
+                                                value={item.budgetAmount} 
+                                                onchange={handleChange}
+                                                data-id={indexVar}
+                                                disabled={item.disable}
+                                            >
+                                            </lightning-input>
+                                        </template>
+                                        <!-- US1017349 - changes end -->
+                                    </div>
+                                </td>
+                            
+                            
+                                <td role="gridcell">
+                                    <div class="" title={item.budgetRR}>
+                                        <lightning-combobox
+                                            name={item.budgetType}
+                                            variant="label-hidden"
+                                            value={item.budgetRR}
+                                            options={item.options}
+                                            onfocus={setCustomRRValues}
+                                            onchange={handleChange}
+                                            data-id={indexVar}
+                                            disabled={item.disable}
+                                            > 
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                                <td role="gridcell">
+                                    <div class="" title={item.budgetRAmount}>
+                                        <template if:false={isEdited}> 
+                                            <lightning-input type="number" 
+                                                name="Reimbursement Amount" 
+                                                variant="label-hidden"
+                                                formatter="currency"
+                                                step="0.01" maxlength="16"
+                                                value={item.budgetRAmount} 
+                                                disabled="true"
+                                                data-id={indexVar}
+                                                >
+                                            </lightning-input>
+                                        </template>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                        <!--</template>-->
+                    </tbody>
+                </table>
+            </template>
+           </template>
+        </template>
+        <template if:true={isEEFProg}>
+            <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th aria-label={budgetNameLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_6-of-12" scope="col">
+                            <p class="slds-cell-wrap" title={budgetNameLabel}>{budgetNameLabel}</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<template if:true={showForm}>-->
+                    <template for:each = {campaignBudgets} for:item = "item" for:index="indexVar">
+                        <tr key ={item.budgetName} aria-selected="false" class="slds-hint-parent">
+                            <td role="gridcell" tabindex="0">
+                                <div class="slds-text" style="white-space: pre-wrap;" title={item.budgetName}>{item.budgetName}</div>
+                            </td>
+                        </tr>
+                    </template>
+                    <!--</template>-->
+                </tbody>
+            </table>
+        </template>
+        <template if:true={isCoGTMProg}>
+            <template if:true={budgetsExist}>
+                <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th aria-label={budgetNameLabel} style="overflow: hidden;vertical-align: top;"  class="slds-is-resizable slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_6-of-12" scope="col">
+                                <p class="slds-cell-wrap" title={budgetNameLabel}>{budgetNameLabel}</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each = {campaignBudgets} for:item = "item" for:index="indexVar">
+                            <tr key ={item.budgetName} aria-selected="false" class="slds-hint-parent">
+                                <td role="gridcell" tabindex="0">
+                                    <div class="slds-text" style="white-space: pre-wrap;" title={item.budgetName}>{item.budgetName}</div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+        </template>
+        <template if:true={legacyCampaign}>
+            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                <lightning-formatted-text value={campaignBudgetsLegacyError}></lightning-formatted-text>
+            </lightning-layout-item>
+        </template>
+        <template if:false={legacyCampaign}>
+            <template if:false={budgetsExist}>
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                    <lightning-formatted-text value={campaignBudgetsNoBudgetsWarning}></lightning-formatted-text>
+                </lightning-layout-item>
+            </template>
+        </template>
+        <template if:true={negativeValueError}>
+            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                <lightning-formatted-text class="customHelptext" value="Enter only positive numeric values"></lightning-formatted-text>
+            </lightning-layout-item>
+        </template>
+        <template if:true={budgetAmountError}>
+            <br/><br/>
+            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                <lightning-formatted-text class="customHelptext" value={budgetAmountErrMsg}></lightning-formatted-text>
+            </lightning-layout-item>
+        </template>
+        <template if:true={budgetAmountActivityError}>
+            <br/><br/>
+            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                <lightning-formatted-text class="customHelptext" value={budgetAmountActivityErrorMsg}></lightning-formatted-text>
+            </lightning-layout-item>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Resolution_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Closure__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Category_and_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Support_Level__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Account_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product__c</field>
+    </columns>
+    <description>IPS analysis 
+- since 2021 January to 2023 Dec ~ Total 163 cases (refined with logic filter)
+- since 2021 January to 2023 Dec ~ Total 64 cases (without category/subcategory)
+- since 2021 January to 2023 Sept ~ Total 58 cases (without category/subcategory)</description>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>fpga</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SUBJECT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>oneAPI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Category_and_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>oneapi</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>oneAPI FPGA Y2021~2023</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2023-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-12-27</startDate>
+    </timeFrameFilter>
+</Report>

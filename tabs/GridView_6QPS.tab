@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The Tab has the 6 Quarter Product Schedule Grid View</description>
+    <frameHeight>600</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>6QPS - GridView</label>
+    <motif>Custom18: Form</motif>
+    <url>/apex/gblite__Grid?gname=6QPS+-+GridView</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

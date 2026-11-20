@@ -1,0 +1,274 @@
+{
+  "version" : "58.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_MDF_AccountCompany__c", "Core_MDF_Region_Cd__c", "Core_MDF_Claim_Review_Case__c.Core_MDF_Status__c", "Core_MDF_Activity_End_Date__c", "Core_MDF_Country_Location_nm__c", "Core_MDF_Reimbursement_Percent__c", "Core_MDF_Claim_Review_Case__c", "Core_MDF_Activity_Types__c", "Core_MDF_Status__c", "Core_MDF_Claim_Review_Case__c.Core_MDF_Review_Case_Status__c", "Core_MDF_Ad_Run_End_Date__c", "Core_MDF_Program__c", "Core_MDF_Currency__c", "Core_MDF_Brand__c", "Core_MDF_CreatedBy_Nm__c", "Core_MDF_Activity_Start_Date__c", "Core_MDF_Media_Vehicle__c", "Core_MDF_Activity_Category__c", "Core_MDF_Ad_Run_Start_Date__c", "Core_MDF_Target_Audience__c", "Id", "Core_MDF_Duplicate_Claim__c", "Core_MDF_Requested_Reimbursement_Amt__c", "Core_MDF_Audit_Adjustment_Amount__c", "Core_MDF_Total_Claim_Offsets__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Claims Data for Audit Prediction",
+          "name" : "Claims_Data_for_Audit_Prediction"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FILTER0" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Core_MDF_Claim_Review_Case__c",
+          "operator" : "IS_NOT_NULL",
+          "operands" : [ ]
+        }, {
+          "type" : "TEXT",
+          "field" : "Core_MDF_Claim_Review_Case__c.Core_MDF_Review_Case_Status__c",
+          "operator" : "IS_NOT_NULL",
+          "operands" : [ ]
+        }, {
+          "type" : "TEXT",
+          "field" : "Core_MDF_AccountCompany__c",
+          "operator" : "NOT",
+          "operands" : [ "A&E Test Account JJ" ]
+        } ]
+      }
+    },
+    "LOWERCASE0" : {
+      "action" : "formula",
+      "sources" : [ "FILTER0" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "Core_MDF_Media_Vehicle__c_lowercase",
+          "newProperties" : {
+            "name" : "Core_MDF_Media_Vehicle__c"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "Core_MDF_Media_Vehicle__c" ]
+        }
+      },
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_Media_Vehicle__c_lowercase",
+          "label" : "Media Vehicle",
+          "formulaExpression" : "lower(Core_MDF_Media_Vehicle__c)"
+        } ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "LOWERCASE0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Core_MDF_Activity_Start_Date__c_formula",
+          "label" : "Activity Duration",
+          "formulaExpression" : "datediff(Core_MDF_Activity_End_Date__c, Core_MDF_Activity_Start_Date__c)",
+          "precision" : 18,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "Core_MDF_Ad_Run_Start_Date__c_formula",
+          "label" : "Ad Run Duration",
+          "formulaExpression" : "datediff(Core_MDF_Ad_Run_End_Date__c, Core_MDF_Ad_Run_Start_Date__c)",
+          "precision" : 18,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_AccountCompany__c_formula",
+          "label" : "Modified Case Status",
+          "formulaExpression" : "case 'Core_MDF_Claim_Review_Case__c.Core_MDF_Review_Case_Status__c'\r\n\twhen 'Compliant'\r\n\tthen \r\ncase Core_MDF_Audit_Adjustment_Amount__c\r\n\twhen 0\r\n\tthen 'Core_MDF_Claim_Review_Case__c.Core_MDF_Review_Case_Status__c'\r\n\telse\r\n\t'Non-compliant'\r\nend\r\n\telse\r\n'Core_MDF_Claim_Review_Case__c.Core_MDF_Review_Case_Status__c'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_AccountCompany__c_formula1",
+          "label" : "Account Bucket",
+          "formulaExpression" : "case \r\nCore_MDF_AccountCompany__c\r\n\twhen 'DELL INC.'\r\n\tthen \r\n    'BIG' \r\nelse\r\ncase\r\nCore_MDF_AccountCompany__c\r\n\twhen 'HP INC.'\r\n\tthen \r\n    'BIG' \r\nelse\r\ncase\r\nCore_MDF_AccountCompany__c\r\n\twhen 'Lenovo (Beijing) Limited'\r\n\tthen \r\n    'BIG' \r\n\telse\r\ncase\r\nCore_MDF_AccountCompany__c\r\n\twhen 'ACER INCORPORATED'\r\n\tthen \r\n    'MEDIUM'\r\nelse\r\ncase\r\nCore_MDF_AccountCompany__c\r\n\twhen 'ASUSTEK COMPUTER INCORPORATION'\r\n\tthen \r\n    'MEDIUM'\r\nELSE\r\ncase\r\nCore_MDF_AccountCompany__c\r\n\twhen 'Hewlett Packard Enterprise Company'\r\n\tthen \r\n    'MEDIUM'\r\nelse\r\n'LOW'\r\nEND\r\nend\r\nend\r\nend\r\nend\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_AccountCompany__c_formula2",
+          "label" : "CountryYearKey",
+          "formulaExpression" : "concat(Core_MDF_Country_Location_nm__c, substr(Core_MDF_Ad_Run_Start_Date__c, 0, 4))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_Media_Vehicle__c_formula",
+          "label" : "Modified Media Vehicle",
+          "formulaExpression" : "case Core_MDF_Media_Vehicle__c\r\n    when coalesce(Core_MDF_Media_Vehicle__c, NULL)\r\n    then Core_MDF_Media_Vehicle__c\r\n    else\r\n    'na'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Claims Data for Audit Prediction Dataset v3",
+          "name" : "Claims_Data_for_Audit_Prediction_Dataset",
+          "folderName" : "SharedApp"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "Claims Data for Audit Prediction",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "FILTER0" : {
+        "label" : "Filter",
+        "type" : "FILTER",
+        "top" : 112,
+        "left" : 252
+      },
+      "TRANSFORM0" : {
+        "label" : "Transform",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 392,
+        "graph" : {
+          "LOWERCASE0" : {
+            "parameters" : {
+              "type" : "LOWER_UI"
+            }
+          },
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "DATE_DIFFERENCE_UI"
+            }
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "DATE_DIFFERENCE_UI"
+            }
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            }
+          },
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            }
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            }
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            }
+          }
+        },
+        "connectors" : [ {
+          "source" : "LOWERCASE0",
+          "target" : "FORMULA0"
+        }, {
+          "source" : "FORMULA0",
+          "target" : "FORMULA1"
+        }, {
+          "source" : "FORMULA1",
+          "target" : "FORMULA2"
+        }, {
+          "source" : "FORMULA3",
+          "target" : "FORMULA4"
+        }, {
+          "source" : "FORMULA5",
+          "target" : "FORMULA3"
+        }, {
+          "source" : "FORMULA2",
+          "target" : "FORMULA5"
+        } ]
+      },
+      "OUTPUT0" : {
+        "label" : "Output",
+        "type" : "OUTPUT",
+        "top" : 112,
+        "left" : 672
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET0",
+      "target" : "FILTER0"
+    }, {
+      "source" : "FILTER0",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "OUTPUT0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

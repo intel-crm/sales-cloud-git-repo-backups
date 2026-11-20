@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>지급 문서</value>
+    </caseValues>
+    <fields>
+        <label>계좌 이름</label>
+        <name>Core_MDF_Account_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved File Id --></label>
+        <name>Core_MDF_Approved_File_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the payment document approved for sending to GSPO. --></help>
+        <label><!-- Approved Payment Document --></label>
+        <name>Core_MDF_Approved_File_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Reminder Sent --></label>
+        <name>Core_MDF_ClaimSubRemNotificationSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Reminder Date --></label>
+        <name>Core_MDF_ClaimSubmitterReminder_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>지급 문서와 관련된 클레임을 나타냅니다.</help>
+        <label>청구</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>고객이 업로드해야 하는 결제 문서의 유형을 나타냅니다.</help>
+        <label>문서 유형</label>
+        <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_VAT_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Date --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Sent --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Sent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- RSM Reminder Sent --></label>
+        <name>Core_MDF_RSMRemNotificationSent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- RSM Reminder Date --></label>
+        <name>Core_MDF_RSMReminderDate_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>세금 미포함 환급 금액</help>
+        <label>환급 금액</label>
+        <name>Core_MDF_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <help>지급 문서의 상태</help>
+        <label>문서 상태</label>
+        <name>Core_MDF_Status_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>승인됨</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>취소됨</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>거부됨</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>보류 중인 문서</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revision Required</masterLabel>
+            <translation>수정 필요</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Review</masterLabel>
+            <translation>검토 중</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Claim --></label>
+        <name>Core_MDF_Sub_Claim_Id__c</name>
+        <relationshipLabel><!-- Payment Documents (Sub Claim) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>세금 금액</help>
+        <label>세금 금액</label>
+        <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <help>지급 문서와 관련된 거래/송장 번호</help>
+        <label>세금 청구 번호</label>
+        <name>Core_MDF_VAT_Invoice_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <help>환급 금액에 적용되는 세율</help>
+        <label>세금(%)</label>
+        <name>Core_MDF_VAT_Per__c</name>
+    </fields>
+    <fields>
+        <label>결제 문서 지침</label>
+        <name>Core_MDF_Vat_Inv_Guide_Link__c</name>
+    </fields>
+    <nameFieldLabel>문서 ID</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Payment Document Record Type --></description>
+        <label><!-- Payment Document --></label>
+        <name>Core_MDF_Payment_Document</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Submit for Approval Record Type --></description>
+        <label><!-- Submit for Approval --></label>
+        <name>Core_MDF_Submit_for_Approval</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage>세금 청구 번호는 현재 상태로 편집할 수 없습니다.</errorMessage>
+        <name>Core_MDF_PreventInvNoEditAfterApproval</name>
+    </validationRules>
+</CustomObjectTranslation>

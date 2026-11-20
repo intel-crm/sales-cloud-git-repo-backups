@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>国立研究開発法人 海上・港湾・航空技術研究所 海上技術安全研究所 Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>国立研究開発法人 海上・港湾・航空技術研究所 海上技術安全研究所 Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Admin</parentRole>
+</Role>

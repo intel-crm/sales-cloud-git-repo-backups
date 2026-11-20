@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_CallOut_Details</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_CallOut_Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- CallOut BearerKey --></label>
+        <name>PMP_CallOut_BearerKey_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut MarketPlace TailURL --></label>
+        <name>PMP_CallOut_MarketPlace_TailURL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut Method --></label>
+        <name>PMP_CallOut_Method_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut Name --></label>
+        <name>PMP_CallOut_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut Offerings TailURL --></label>
+        <name>PMP_CallOut_Offerings_TailURL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut Organization Id Value --></label>
+        <name>PMP_CallOut_Organization_Id_Value_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut Partner TailURL --></label>
+        <name>PMP_CallOut_Partner_TailURL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut Result Count --></label>
+        <name>PMP_CallOut_Result_Count_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut SearchHub --></label>
+        <name>PMP_CallOut_SearchHub_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CallOut URL --></label>
+        <name>PMP_CallOut_URL_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

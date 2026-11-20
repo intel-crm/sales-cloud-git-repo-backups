@@ -1,0 +1,5 @@
+<design:component>
+   		<design:attribute name="target" label="External URL" 
+                          default="https://ngiip5-qa.cps.intel.com/branding?CCF=true" 
+                          description="Enter External URL" />
+</design:component>

@@ -1,0 +1,3 @@
+.slds-spinner:before, .slds-spinner:after, .slds-spinner__dot-a:before, .slds-spinner__dot-b:before, .slds-spinner__dot-a:after, .slds-spinner__dot-b:after {
+    background: #0e63ac;
+}

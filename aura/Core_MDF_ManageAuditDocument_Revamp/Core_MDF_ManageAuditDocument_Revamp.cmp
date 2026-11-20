@@ -1,0 +1,323 @@
+<aura:component controller="Core_MDF_AuditDocumentHelper_Revamp"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable,lightning:hasPageReference"
+    access="global">
+    <aura:attribute name="userInfo" type="string"
+        description="Stores the userinfo of logged in user used for dummy storage" />
+    <aura:attribute name="editClaimId" type="Id" />
+    <aura:attribute name="recordIdForPop" type="Id" default="{!v.editClaimId != null ? v.editClaimId : v.recordId}" />
+    <aura:attribute name="accept" type="List" description="list of file formats which are allowed to upload" />
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]" default="[]" />
+    <aura:attribute name="spinner" type="boolean" default="false" />
+    <aura:attribute name="auditDocumentDetailsWrapper" type="object" default="null" />
+    <aura:attribute name="existingDocList" type="Core_MDF_Audit_Document__c[]" default="[]" />
+    <aura:attribute name="claimRefName" type="string" description="Holds the claim batch record claim name" />
+    <aura:attribute name="disableUploadFilesButton" type="boolean" default="false"
+        description="To disable the upload files button" />
+    <aura:attribute name="disableManageDocumentButton" default="true" type="boolean"
+        description="To disable the manage document button" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default=""
+        description="Stores the recordtypeDeveloperName from the parent component" />
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim" />
+    <aura:attribute name="budgetType" type="String" default=""
+        description="Stores the value of budget type from the parent component" />
+    <aura:attribute name="isFileUploadOnClaimCreation" type="Boolean" default="false" />
+    <aura:attribute name="sobjectType" type="String" default="{!v.sObjectName}" />
+    <aura:attribute name="isManageDocEnabled" type="boolean" default="false"
+        description="Boolean value will be used to display manage button" />
+    <aura:attribute name="typeOfDocuments" type="List" default="[]"
+        description="Stores the concatenated value of document type and Value" />
+    <aura:attribute name="documentTypeNames" type="String" default=""
+        description="Stores the types of document in a string" />
+    <aura:attribute name="requiredDocumentTypes" type="string"
+        description="Stores the available document types for claim" />
+    <aura:attribute name="requiredDocumentTypesList" type="List" default="[]"
+        description="Stores the required document types - document submission is mandatory" />
+    <aura:attribute name="reqMandatoryDocTypesToCreateAClaim" type="List" default="[]"
+        description="Stores the required  mandatory document types - to enable submit button" />
+    <aura:attribute name="isOpen" type="boolean" default="false"
+        description="Boolean value will be used to open/close the model" />
+    <aura:attribute name="isAllMandatoryDocumentTypesSubmitted" type="boolean" default="false"
+        description="Flag to indicate the mandatory document types submission"></aura:attribute>
+    <aura:attribute name="selectedDocumentTypesOfAllAuditDocuments" type="List"
+        description="List to store the document types selected for a claim"></aura:attribute>
+    <aura:attribute name="isAnyOneDocumentTypeSelectedOnEachDocument" type="boolean" default="false"
+        description="set to true when atleast one document type is selected while uploading files" />
+    <aura:attribute name="displayUploadedFiles" type="boolean" default="false" description="" />
+    <aura:attribute name="isDeleteClicked" type="boolean" default="false"
+        description="Boolean value will be used to display Delete confirmation message" />
+    <aura:attribute name="selectedDocumentId" type="string" default="" />
+    <aura:attribute name="selectedDocumentName" type="string" default="" />
+    <aura:attribute name="selectedDocumentIndex" type="string" default="" />
+    <aura:attribute name="isDocSubmissionMandatory" default="false" type="boolean"
+        description="indicates whether the document submission is mandatory or not during create and clone of the claim" />
+    <aura:attribute name="isClaimEdit" type="boolean" default="false"
+        description="Indicates the edit scenario of claim" />
+    <aura:attribute name="contentDocumentIds" type="List" default="[]"
+        description="To Store the contentDocumentIds of the uploaded documents" />
+    <aura:attribute name="programName" type="String"
+        description="to store the program value in case of claim create and clone" />
+    <aura:attribute name="showUploadFileSection" type="Boolean" default="false"
+        description="To display Upload files and Manage Document button" />
+    <aura:attribute name="showDeleteOption" type="Boolean" default="false" />
+    <aura:attribute name="isThirdPartyClaim" type="boolean"
+        description="indicates whether the claim belongs to 3rd party or not" />
+    <aura:attribute name="isClaimEligibleForPICReview" type="Boolean" default="false" />
+    <aura:attribute name="actyPOPDescReq" type="Boolean" default="false" />
+    <aura:attribute name="isBulkClaim" type="Boolean" default="false" />
+    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false"/> <!--anushya-->
+    <aura:attribute name="isOutcomeBasedActivity" type="Boolean" default="false"/> <!--anushya-->
+    <aura:attribute name="existingAuditDocuments" type="Object[]" description="Holds the existing documents" />
+    <aura:attribute name="isCoGTMProgram" type="Boolean" default="false" />
+    <!--register event-->
+    <aura:registerEvent name="Core_MDF_ThirdPartyPOPEvent" type="c:Core_MDF_ThirdPartyPOPEvent" />
+    <aura:registerEvent name="enableSubmitButtonEvent" type="c:Core_MDF_EnableSubmitbuttonEvent" />
+    <!--handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Handler for the checkbox change event is defined below -->
+    <aura:handler event="c:Core_MDF_checkboxChangeEvent" action="{!c.checkSubmitEnable}" name="checkboxChangeEvent" />
+    <!--spinner Implementation-->
+    <aura:if isTrue="{!v.spinner}">
+        <lightning:spinner alternativeText="Loading" class="spnr" />
+    </aura:if>
+    <div class="auditDocumentRevamp">
+        <div class="slds-text-align_center">
+            <!--Mandatory Verbiage for all claims-->
+            <div>
+                <lightning:formattedRichText style="color:red" value="{!$Label.c.Core_MDF_AllClaim_ManditoryVerbiage}">
+                </lightning:formattedRichText>
+            </div>
+            <!-- Third Party Message-->
+            <aura:if isTrue="{!v.isThirdPartyClaim}">
+                <div>
+                    <lightning:icon iconName="utility:warning" alternativeText="Warning!" title="Warning"
+                        variant="warning" size="small" />
+                    <span style="color:red"
+                        class="slds-var-m-left_xx-small">{!$Label.c.Core_MDF_ThirdPartyPOPMessage}</span>
+                </div>
+            </aura:if>
+        </div>
+        <!--For IPA add POP Descirption Component -->
+        <aura:if isTrue="{!v.actyPOPDescReq}">
+            <c:core_MDF_POP_Details recordIdinput="{!v.simpleNewClaim.RequestId}"
+                objectApiNameinput="PartnerFundRequest" displayLabel="POP" />
+        </aura:if>
+        <div class="slds-text-align_center">
+            <h2 id="header1" class="slds-text-heading_small slds-var-m-top_small">
+                <aura:if isTrue="{!v.isBulkClaim}">
+                    <span>{!$Label.c.Core_MDF_Proof_of_Performance_Document_Submission}</span><span>&nbsp; -
+                        &nbsp;</span>
+                    <span>{!v.claimRefName}</span>
+                    <aura:set attribute="else">
+                        {!$Label.c.Core_MDF_Proof_of_Performance_Document_Submission}
+                    </aura:set>
+                </aura:if>
+            </h2>
+        </div>
+        <!--Disabled Document list table-->
+        <lightning:layout>
+            <aura:if isTrue="{!v.showUploadFileSection}">
+                <lightning:layoutItem padding="around-small">
+                    <div class="slds-var-m-bottom_small" style="font-size: 12px;">
+                        <lightning:icon iconName="utility:info" alternativeText="Info" size="x-small" class="slds-var-m-right_x-small"/>
+                        <span style="color: #0070d2;">{!$Label.c.Core_MDF_Max_File_Upload_Message}</span>
+                    </div>
+                    <div class="slds-grid" style="align-items: flex-start;">
+                        <div class="slds-col_bump-right">
+                            <lightning:fileUpload accept="{!v.accept}" onuploadfinished="{!c.handleUploadFinished}" multiple="true" aura:id="lightningfileUpload" disabled="{!v.disableUploadFilesButton}" />
+                        </div>
+                        <div class="slds-col slds-var-m-left_medium" style="padding-top: 20px;">
+                            <lightning:button variant="neutral" onclick="{!c.openModal}"
+                                label="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                title="{!$Label.c.Core_MDF_Manage_Document_Button_Label}"
+                                disabled="{!v.disableManageDocumentButton}" />
+                        </div>
+                    </div>
+                </lightning:layoutItem>
+            </aura:if>
+        </lightning:layout>
+        <aura:if isTrue="{!v.displayUploadedFiles}">
+            <aura:if isTrue="{!not(empty(v.auditDocument))}">
+                <div class="slds-var-p-around_medium uploadedFiles" id="modal-content-id-1">
+                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                        <aura:if isTrue="{!v.requiredDocumentTypes.length}">
+                            <p class="slds-var-m-bottom_medium slds-float_left" style="color:red">
+                                *{!$Label.c.Core_MDF_Mandatory_Document_Types}:
+                                {!v.requiredDocumentTypes}</p>
+                        </aura:if>
+                    </aura:if>
+                    <table class="slds-table_bordered table-align">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="slds-truncate">
+                                        <label>{!$Label.c.Core_MDF_Document_Title}</label>
+                                    </div>
+                                </th>
+                                <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                    <aura:iteration items="{!v.typeOfDocuments}" var="type" indexVar="index">
+                                        <th>
+                                            <div class="slds-col_padded">
+                                                <center><label>{!type.documentNameLabel}</label></center>
+                                            </div>
+                                        </th>
+                                    </aura:iteration>
+                                    <th>
+                                        <div class="slds-col_padded">
+                                            <div class="slds-truncate" title="Delete"></div>
+                                        </div>
+                                    </th>
+                                </aura:if>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.auditDocument}" var="file" indexVar="indx">
+                                <tr class="slds-hint-parent">
+                                    <td data-label="{!$Label.c.Core_MDF_Document_Title}">
+
+                                        <div class="slds-cell-wrap truncate-filename"
+                                            title="{!file.Core_MDF_Document_Title__c}">
+                                            <a href="{!'/'+file.Core_MDF_Document_Id__c}" target="_blank"
+                                                download="{!file.Core_MDF_Document_Title__c}">
+                                                {!file.Core_MDF_Document_Title__c} </a>
+                                        </div>
+
+                                    </td>
+                                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                        <aura:iteration items="{!v.typeOfDocuments}" var="item" indexVar="indx">
+                                            <td>
+                                                <center><label>
+                                                        <c:Core_MDF_AuraIfAdvanced
+                                                            checkboxName="{!(file.Core_MDF_Document_Id__c+';#'+item.documentName)}"
+                                                            documentTypes="{!file.Core_MDF_Document_Types__c}"
+                                                            element="{!item.documentName}" disabled="true"
+                                                            checkboxvalue="{!item.value}" />
+                                                    </label></center>
+                                            </td>
+                                        </aura:iteration>
+                                    </aura:if>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </aura:if>
+        </aura:if>
+
+        <!--Modal to display the uploaded documents for document type selection-->
+        <aura:if isTrue="{!v.isOpen}">
+            <div class="slds-var-m-around_xx-large">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <aura:if isTrue="{!or(v.isCoGTMProgram, v.isOutcomeBasedAccountBasedAct)}">
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_CoGTM_Manage_Document_Header}</h2>
+                                <aura:set attribute="else">
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_Manage_Document_Header}</h2>
+                                </aura:set>
+                            </aura:if>
+                            <!--<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                {!$Label.c.Core_MDF_Manage_Document_Header}</h2>-->
+                        </header>
+                        <div class="slds-modal__content slds-var-p-around_large documentTypeSelectionPopup" id="modal-content-id-1">
+                            <aura:if isTrue="{!and(not(v.isOutcomeBasedAccountBasedAct), not(v.isCoGTMProgram), v.requiredDocumentTypes.length)}"> <!--added by ajinkya -->
+                                <!--<aura:if isTrue="{!v.requiredDocumentTypes.length}" ><dk change-->
+                                <p class="slds-var-m-bottom_medium slds-float_left" style="color:red">
+                                    *{!$Label.c.Core_MDF_Mandatory_Document_Types}:
+                                    {!v.requiredDocumentTypes}</p>
+                            </aura:if>
+                            <center>
+                                <table class="table-align">
+                                    <tr>
+                                        <th>
+                                            <label>{!$Label.c.Core_MDF_Document_Title}</label>
+                                        </th>
+                                        <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                        <aura:iteration items="{!v.typeOfDocuments}" var="type" indexVar="index">
+                                            <td>
+                                                <center>
+                                            <th>
+                                                <center><label>{!type.documentNameLabel}</label></center>
+                                            </th>
+                            </center>
+                            </td>
+                            </aura:iteration>
+                            </aura:if>
+                            </tr>
+                            <aura:iteration items="{!v.auditDocument}" var="file" indexVar="indx">
+                                <tr class="slds-hint-parent">
+                                    <td data-label="{!$Label.c.Core_MDF_Document_Title}">
+                                        <div class="slds-cell-wrap truncate-filename"
+                                            title="{!file.Core_MDF_Document_Title__c}">
+                                            {!file.Core_MDF_Document_Title__c}
+                                        </div>
+                                    </td>
+                                    <aura:if isTrue="{!and(not(v.isCoGTMProgram), not(v.isOutcomeBasedAccountBasedAct))}">
+                                    <aura:iteration items="{!v.typeOfDocuments}" var="item" indexVar="indx">
+                                        <td>
+                                            <center><label>
+                                                    <c:Core_MDF_AuraIfAdvanced
+                                                        checkboxName="{!(file.Core_MDF_Document_Id__c+';#'+item.documentName)}"
+                                                        documentTypes="{!file.Core_MDF_Document_Types__c}"
+                                                        element="{!item.documentName}" checkboxvalue="{!item.value}" />
+                                                </label></center>
+                                        </td>
+                                    </aura:iteration>
+                                     </aura:if>
+                                    <aura:if
+                                        isTrue="{!or(and(v.showDeleteOption, file.isNewDocument), (v.auditDocumentDetailsWrapper.isClaimCreate))}">
+                                        <td>
+                                            <a onclick="{!c.deleteSelected}" data-Id="{!file.Core_MDF_Document_Id__c}"
+                                                data-index="{!indx}" name="{!file.Core_MDF_Document_Title__c}">
+                                                <lightning:buttonIcon variant="info" iconName="utility:delete"
+                                                    class="slds-icon slds-icon_small" iconClass="dark" size="small"
+                                                    alternativeText="Delete" />
+                                                <span class="slds-assistive-text">Delete
+                                                    Icon</span>
+                                            </a>
+                                        </td>
+                                    </aura:if>
+                                </tr>
+                            </aura:iteration>
+                            </table>
+                            </center>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning:button class="slds-button slds-button_brand" type="submit"
+                                label="{!$Label.c.Core_MDF_Save}" title="{!$Label.c.Core_MDF_Save}"
+                                onclick="{!c.save}" />
+                        </footer>
+                    </div>
+                    <!--Delete confirmation popup-->
+                    <aura:if isTrue="{!v.isDeleteClicked}">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                            class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container deletePopup">
+                                <div class="slds-modal__content slds-text-align_center">
+                                    <div class="slds-var-p-around_medium slds-var-m-top_small slds-var-m-bottom_large">
+                                        <lightning:icon iconName="utility:warning" alternativeText="Warning!"
+                                            variant="warning" size="small" class="warningIcon"/>
+                                        <span class="slds-var-m-left_xx-small">{!$Label.c.Core_MDF_Pop_Document_Delete}
+                                            - {!v.selectedDocumentName}</span>
+                                    </div>
+                                    <div class="slds-var-p-around_medium   slds-align_absolute-center slds-var-m-bottom_small">
+                                        <lightning:button aura:id="yesButton" variant="brand"
+                                            label="{!$Label.c.Core_MDF_Cancel_Claim_Yes}"
+                                            title="{!$Label.c.Core_MDF_Cancel_Claim_Yes}"
+                                            onclick="{!c.handleConfirmYes}" />
+                                        <lightning:button aura:id="noButton" variant="neutral"
+                                            label="{!$Label.c.Core_MDF_Cancel_Claim_No}"
+                                            title="{!$Label.c.Core_MDF_Cancel_Claim_No}"
+                                            onclick="{!c.handleConfirmNo}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

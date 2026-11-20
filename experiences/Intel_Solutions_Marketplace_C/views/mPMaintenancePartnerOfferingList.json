@@ -1,0 +1,59 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "a1999a1d-5324-4c82-9c75-54311654549b",
+  "label" : "MP Maintenance-Partner Offering List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "081ef643-d89f-4aa2-b925-6305b75f5349",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "29af066c-915e-44c3-bf08-88194092e8a6",
+        "zh_cn" : "4bb3702a-d533-47ef-b106-339d2a990e70"
+      },
+      "renditions" : [ {
+        "id" : "4bb3702a-d533-47ef-b106-339d2a990e70",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "29af066c-915e-44c3-bf08-88194092e8a6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "37ff44fb-03db-401b-8c87-bae0e59f3fbb",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "aeecc648-0379-4099-9506-e96c72c61dfb",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "90cd23b4-d0c3-42e7-9ed3-6ec55bc19de4",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a5b"
+}

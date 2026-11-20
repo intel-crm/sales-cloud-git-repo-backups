@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Temp Dunn Bradstreet</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Temp Dunn Bradstreets</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account__c</name>
+        <relationshipLabel><!-- Temp Dunn Bradstreets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Annual Revenue --></label>
+        <name>Core_Annual_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Fax --></label>
+        <name>Core_DB_Fax__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Phone --></label>
+        <name>Core_DB_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed --></label>
+        <name>Core_Processed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Industry Classification 1 --></label>
+        <name>Core_Standard_Industry_Classification_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Industry Classification 2 --></label>
+        <name>Core_Standard_Industry_Classification_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Industry Classification 3 --></label>
+        <name>Core_Standard_Industry_Classification_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Industry Classification 4 --></label>
+        <name>Core_Standard_Industry_Classification_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Industry Classification 5 --></label>
+        <name>Core_Standard_Industry_Classification_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Industry Classification 6 --></label>
+        <name>Core_Standard_Industry_Classification_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trade Style Name --></label>
+        <name>Core_Trade_Style_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

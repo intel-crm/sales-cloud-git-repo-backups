@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities Add or Edit Products</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/add-or-edit-a-product/</actionButtonLink>
+        <body>&lt;p&gt;1.&amp;nbsp;From the &lt;em&gt;Opportunity Details &lt;/em&gt;page, in the&lt;em&gt; Products related section&lt;/em&gt;,&lt;strong&gt; &lt;/strong&gt;click down arrow and choose &lt;strong&gt;Add Product&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2.&amp;nbsp;The &lt;em&gt;Add Products&lt;/em&gt; popup window&lt;em&gt; &lt;/em&gt;opens for you to&lt;strong&gt; &lt;/strong&gt;search by keyword. A list of products will be offered. If the product you are searching for doesn’t appear, click the magnifying glass for a comprehensive list.&lt;/p&gt;&lt;p&gt;(Note:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;To review detailed information for a product, click the product name to open the Price Book Entry page.&lt;/li&gt;&lt;li&gt;For&lt;em&gt; vPro eligible products&lt;/em&gt;, refer to the vPro eligible Product lookup feature.)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;3.&amp;nbsp;Select the product(s) by clicking the selection box&lt;strong&gt; &lt;/strong&gt;next to the name, and click &lt;strong&gt;Next&lt;/strong&gt; to continue.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;When adding products to Design Opportunity, review the Available for New Designs column to identify which products are available for New Designs and which are not.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;4.&amp;nbsp;The &lt;em&gt;Edit Selected Products&lt;/em&gt; popup window opens. You can enter the &lt;strong&gt;Quantity &lt;/strong&gt;and &lt;strong&gt;Sales Price&lt;/strong&gt;, if needed. Scroll to the right to enter &lt;strong&gt;Vendor&lt;/strong&gt; (For SSDs, don’t enter “Intel”. Enter the&lt;strong&gt; OEM/LOEM &lt;/strong&gt;of the systems with SSDs), &lt;strong&gt;Competitor OEM&lt;/strong&gt;, or&lt;strong&gt; Competitor OEM Product&lt;/strong&gt;, if applicable.&amp;nbsp;(Note: For Deal Opportunities, it is important to add your vendor at the Product Level.)&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;5.&amp;nbsp;Click &lt;strong&gt;Save &lt;/strong&gt;to add the product(s) and return to the &lt;em&gt;Opportunity Details&lt;/em&gt; page. A confirmation message will be provided.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Opportunities Add or Edit Products</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities Add or Edit Products</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Adding one or more Products</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327551639112</videoLink>
+    </promptVersions>
+</Prompt>

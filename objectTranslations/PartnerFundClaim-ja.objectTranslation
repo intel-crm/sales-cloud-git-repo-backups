@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>請求</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Claim Fields for AI PIC --></label>
+        <name>Core_MDF_Claim_Fields_For_AI_PIC</name>
+    </fieldSets>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>償還金額 (米ドル)</value>
+        </caseValues>
+        <name>partnerfundclaim_amount</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>アカウント</value>
+        </caseValues>
+        <name>partnerfundclaim_channelpartner</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>請求履歴</value>
+        </caseValues>
+        <name>partnerfundclaim_history</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>請求 ID</value>
+        </caseValues>
+        <name>partnerfundclaim_id</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>請求名</value>
+        </caseValues>
+        <name>partnerfundclaim_name</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>活動</value>
+        </caseValues>
+        <name>partnerfundclaim_request</name>
+    </fields>
+    <fields>
+        <help>値が選択されている場合、サードパーティーのドキュメントが必要です</help>
+        <label>サードパーティー POP ドキュメントが必要</label>
+        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label>ASP (平均販売価格) 成長率 (米ドル)</label>
+        <name>Core_MDF_ASP_Growth_amt__c</name>
+    </fields>
+    <fields>
+        <help>請求に関連付ける企業</help>
+        <label>アカウント (企業)</label>
+        <name>Core_MDF_AccountCompany__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_MDF_Account_Name_nm__c</name>
+    </fields>
+    <fields>
+        <help>この共同マーケティング活動のカテゴリー</help>
+        <label>活動カテゴリー</label>
+        <name>Core_MDF_Activity_Category__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動の終了日</help>
+        <label>活動終了日</label>
+        <name>Core_MDF_Activity_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Prior to Claiming --></label>
+        <name>Core_MDF_Activity_Prior_to_Claiming_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Prior to Occuring --></label>
+        <name>Core_MDF_Activity_Prior_to_Occuring_Nbr__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動の開始日</help>
+        <label>活動開始日</label>
+        <name>Core_MDF_Activity_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Status --></label>
+        <name>Core_MDF_Activity_Status_nm__c</name>
+    </fields>
+    <fields>
+        <help>この共同マーケティング活動が関連付けらているサブタイプ</help>
+        <label>活動サブタイプ</label>
+        <name>Core_MDF_Activity_SubType_nm__c</name>
+    </fields>
+    <fields>
+        <help>この共同マーケティング活動が関連付けらているタイプ</help>
+        <label>活動タイプ</label>
+        <name>Core_MDF_Activity_Types__c</name>
+    </fields>
+    <fields>
+        <help>実行終了日</help>
+        <label>実行終了日</label>
+        <name>Core_MDF_Ad_Run_End_Date__c</name>
+    </fields>
+    <fields>
+        <help>実行開始日</help>
+        <label>実行開始日</label>
+        <name>Core_MDF_Ad_Run_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount Percentage --></label>
+        <name>Core_MDF_Amount_Percentage__c</name>
+    </fields>
+    <fields>
+        <help>適用される付加価値税の割合</help>
+        <label>適用される付加価値税の割合</label>
+        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
+        <picklistValues>
+            <masterLabel>0%</masterLabel>
+            <translation><!-- 0% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20%</masterLabel>
+            <translation><!-- 20% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21%</masterLabel>
+            <translation><!-- 21% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8%</masterLabel>
+            <translation><!-- 8% --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approval Stage --></label>
+        <name>Core_MDF_Approval_Stage_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Manager</masterLabel>
+            <translation><!-- Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Approver</masterLabel>
+            <translation><!-- Technical Approver --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approval Step Counter --></label>
+        <name>Core_MDF_Approval_Step_Counter_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Audit check completed --></label>
+        <name>Core_MDF_Aud_chk_completed_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Check InProgress --></label>
+        <name>Core_MDF_AuditSelectionInProgress__c</name>
+    </fields>
+    <fields>
+        <help>監査後に調整された金額</help>
+        <label>調整金額 (米ドル)</label>
+        <name>Core_MDF_Audit_Adjustment_Amount__c</name>
+    </fields>
+    <fields>
+        <help>請求が審査対象に選択された場合にチェックされます</help>
+        <label>レビューの保留</label>
+        <name>Core_MDF_Audit_Hold__c</name>
+    </fields>
+    <fields>
+        <help><!-- The type of audit process --></help>
+        <label><!-- Review Type --></label>
+        <name>Core_MDF_Audit_Type__c</name>
+    </fields>
+    <fields>
+        <label>平均ビュー時間 (秒)</label>
+        <name>Core_MDF_Average_View_Time_nbr__c</name>
+    </fields>
+    <fields>
+        <label>ページの平均時間 (秒)</label>
+        <name>Core_MDF_Average_time_on_Page_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Review Selection Completed --></label>
+        <name>Core_MDF_BackendReviewSelection_Ind__c</name>
+    </fields>
+    <fields>
+        <label>銀行の設定情報</label>
+        <name>Core_MDF_BankSetUpInformation_txt__c</name>
+    </fields>
+    <fields>
+        <help>請求が銀行ドキュメント保留の対象となるかどうかを確認します。</help>
+        <label><!-- Bank Document Hold Eligibility --></label>
+        <name>Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c</name>
+    </fields>
+    <fields>
+        <help>選択した銀行の国が RCIS 国の 1 つであり、請求が支払い処理に関する銀行文書の作成を待機中の場合にチェックされます</help>
+        <label>銀行書類保留</label>
+        <name>Core_MDF_Bank_Doc_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank Legal Entity Code --></label>
+        <name>Core_MDF_Bank_Legal_Entity_Code_cd__c</name>
+    </fields>
+    <fields>
+        <help>請求の支払い先となる銀行の通称</help>
+        <label>銀行</label>
+        <name>Core_MDF_Bank__c</name>
+        <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>請求バッチ番号</label>
+        <name>Core_MDF_Batch_Nbr__c</name>
+    </fields>
+    <fields>
+        <help>市販されているインテル ブランド</help>
+        <label>ブランド</label>
+        <name>Core_MDF_Brand__c</name>
+    </fields>
+    <fields>
+        <label>ブランド</label>
+        <name>Core_MDF_Brand_nm__c</name>
+    </fields>
+    <fields>
+        <help>予算の種類</help>
+        <label>予算タイプ</label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動の予算タイプ</help>
+        <label>予算タイプ</label>
+        <name>Core_MDF_Budget_Type_Options_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Review Result Positive Indicator --></label>
+        <name>Core_MDF_CRR_Positive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- CSP Intel-Based Revenue --></label>
+        <name>Core_MDF_CSP_Intel_Based_Revenue_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- C Type Indicator --></label>
+        <name>Core_MDF_C_Type_Ind__c</name>
+    </fields>
+    <fields>
+        <help>この請求が関連しているキャンペーンを表示します。</help>
+        <label>キャンペーン</label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cap Type --></label>
+        <name>Core_MDF_Cap_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Channel Led Activity</masterLabel>
+            <translation>チャネルパートナー主導の活動</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Variable Reimbursement Incentive Applied</masterLabel>
+            <translation><!-- Variable Reimbursement Incentive Applied --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Claim Approval Date --></label>
+        <name>Core_MDF_Claim_Approval_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Batch Stage --></label>
+        <name>Core_MDF_Claim_Batch_Stage__c</name>
+        <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>請求に関するメモ (自由形式)</help>
+        <label>請求コメント</label>
+        <name>Core_MDF_Claim_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Creation Duration (Mins) --></label>
+        <name>Core_MDF_Claim_Creation_Dur_Min_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Creation Duration --></label>
+        <name>Core_MDF_Claim_Creation_Duration_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim evaluation in progress --></label>
+        <name>Core_MDF_Claim_EvalInProgress_Ind__c</name>
+    </fields>
+    <fields>
+        <label>請求の保留タイプ</label>
+        <name>Core_MDF_Claim_Hold_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Super Claim --></label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Previous Status --></label>
+        <name>Core_MDF_Claim_Previous_Status__c</name>
+        <picklistValues>
+            <masterLabel>Adjusted</masterLabel>
+            <translation><!-- Adjusted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation><!-- Denied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold</masterLabel>
+            <translation><!-- Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PIC Pending</masterLabel>
+            <translation><!-- PIC Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid</masterLabel>
+            <translation><!-- Paid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid and PIC Pending</masterLabel>
+            <translation><!-- Paid and PIC Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid and Pending Documents</masterLabel>
+            <translation><!-- Paid and Pending Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid and Resubmission Required</masterLabel>
+            <translation><!-- Paid and Resubmission Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Clearance Processing</masterLabel>
+            <translation><!-- Payment Clearance Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Due</masterLabel>
+            <translation><!-- Payment Due --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Account Manager Clarification</masterLabel>
+            <translation><!-- Pending Account Manager Clarification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Available Funds</masterLabel>
+            <translation>基金待ち</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Clarification</masterLabel>
+            <translation><!-- Pending Clarification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation><!-- Pending Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Payment</masterLabel>
+            <translation><!-- Pending Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Review</masterLabel>
+            <translation><!-- Pending Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queued for Payment</masterLabel>
+            <translation><!-- Queued for Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resubmission Required</masterLabel>
+            <translation><!-- Resubmission Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resubmission Window Closed</masterLabel>
+            <translation><!-- Resubmission Window Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>請求についてメンバーが使用する参照用 ID</help>
+        <label>請求 ID</label>
+        <name>Core_MDF_Claim_Ref_Number__c</name>
+    </fields>
+    <fields>
+        <label>案件レビュー</label>
+        <name>Core_MDF_Claim_Review_Case__c</name>
+        <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter --></label>
+        <name>Core_MDF_Claim_Submitter_Id__c</name>
+        <relationshipLabel><!-- Claims (Claim Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments (Approver only) --></label>
+        <name>Core_MDF_Comments_Appvr_Only_txt__c</name>
+    </fields>
+    <fields>
+        <label>リード当たりのコスト (米ドル)</label>
+        <name>Core_MDF_Cost_Per_Lead_amt__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動が実施された国</help>
+        <label>国 / 地域</label>
+        <name>Core_MDF_Country_Location__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動が実施された国</help>
+        <label>国 / 地域</label>
+        <name>Core_MDF_Country_Location_nm__c</name>
+    </fields>
+    <fields>
+        <label>作成者</label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <help>請求が基準保留の対象となる場合にチェックされます</help>
+        <label>インテルによる保留</label>
+        <name>Core_MDF_Criteria_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Hold # --></label>
+        <name>Core_MDF_Criteria_Hold_No_Id__c</name>
+        <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Intel Hold Ref # --></label>
+        <name>Core_MDF_Criteria_Hold_Ref_No_Txt__c</name>
+    </fields>
+    <fields>
+        <help>償還可能金額が請求された費用証明ドキュメントの通貨</help>
+        <label>費用証明の通貨</label>
+        <name>Core_MDF_Currency__c</name>
+    </fields>
+    <fields>
+        <label>導入数量</label>
+        <name>Core_MDF_Deployment_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label>配布方法</label>
+        <name>Core_MDF_Distribution_txt__c</name>
+        <picklistValues>
+            <masterLabel>In-store</masterLabel>
+            <translation><!-- In-store --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newspaper insert</masterLabel>
+            <translation><!-- Newspaper insert --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Last Date for Document Submission --></help>
+        <label><!-- Doc Sub Due Date --></label>
+        <name>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Doc Hold to Review Hold --></label>
+        <name>Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Hold Eligibility --></label>
+        <name>Core_MDF_Document_Hold_Eligibility_Ind__c</name>
+    </fields>
+    <fields>
+        <help>請求が POP ドキュメント提出対象として選択され、顧客によるドキュメントのアップロードを待機中の場合にチェックされます</help>
+        <label>ドキュメント保留</label>
+        <name>Core_MDF_Document_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <help>この日までにドキュメントが受領・確認されない場合、請求の支払い処理は行なわれません。</help>
+        <label>ドキュメントの提出期限日</label>
+        <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Submission Missed --></label>
+        <name>Core_MDF_Document_Submission_Missed_Ind__c</name>
+    </fields>
+    <fields>
+        <help>請求締め切り日までの残り日数。</help>
+        <label>請求締め切り日までの残り日数</label>
+        <name>Core_MDF_Due_Date_nbr__c</name>
+    </fields>
+    <fields>
+        <label>重複請求</label>
+        <name>Core_MDF_Duplicate_Claim__c</name>
+    </fields>
+    <fields>
+        <label>EFT 番号</label>
+        <name>Core_MDF_EFT_Number_txt__c</name>
+    </fields>
+    <fields>
+        <help>銀行の ESD 保留インジケーターが正しい場合にチェックされます</help>
+        <label>銀行/ESD 保留</label>
+        <name>Core_MDF_ESD_Hold__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eligible for PIC --></label>
+        <name>Core_MDF_Eligible_for_PIC__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Time --></label>
+        <name>Core_MDF_EndTime_dtm__c</name>
+    </fields>
+    <fields>
+        <help>この請求に関連したエスカレーション ID があれば確認してください</help>
+        <label>エスカレーション ID</label>
+        <name>Core_MDF_Escalation_Id__c</name>
+        <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>推定広告サイズ</label>
+        <name>Core_MDF_Estimated_Ad_Size_nbr__c</name>
+    </fields>
+    <fields>
+        <help>活動費用制限を超えた場合に申請金額から差し引かれる金額。これは償還金額 (USD) に影響します。</help>
+        <label>超過申請金額 (米ドル)</label>
+        <name>Core_MDF_Excess_Requested_Amount__c</name>
+    </fields>
+    <fields>
+        <help>為替レートは、請求提出日に基づいて適用されます</help>
+        <label>為替レート</label>
+        <name>Core_MDF_Exchange_rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flagged For Review --></label>
+        <name>Core_MDF_FlaggedForAudit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flagged For Bank Document Hold --></label>
+        <name>Core_MDF_FlaggedForBankDocHold_Ind__c</name>
+    </fields>
+    <fields>
+        <label>周波数</label>
+        <name>Core_MDF_Frequency_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has Sub Claims --></label>
+        <name>Core_MDF_Has_Sub_Claims_Ind__c</name>
+    </fields>
+    <fields>
+        <label>画面数</label>
+        <name>Core_MDF_How_many_screens_nbr__c</name>
+    </fields>
+    <fields>
+        <label>インテルによる手動の保留のコメント</label>
+        <name>Core_MDF_Intel_Manual_Hold_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <help>内部ユーザーが請求を保留にした場合にチェックされます</help>
+        <label>インテルによる手動の保留</label>
+        <name>Core_MDF_Intel_Manual_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label>インテルのスピーカーシップ/セッション数</label>
+        <name>Core_MDF_Intel_Speakerships_Sessions_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Verifier --></label>
+        <name>Core_MDF_Intel_Verifier_Id__c</name>
+    </fields>
+    <fields>
+        <help>償還可能金額が請求された費用証明ドキュメントの日付</help>
+        <label>費用証明の日付</label>
+        <name>Core_MDF_Invoice_Date__c</name>
+    </fields>
+    <fields>
+        <help>償還可能金額が請求された費用証明ドキュメントの番号</help>
+        <label>費用証明の番号</label>
+        <name>Core_MDF_Invoice_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsClaimReviewEscalation --></label>
+        <name>Core_MDF_IsClaimReviewEscalation_Ind__c</name>
+    </fields>
+    <fields>
+        <label>最終更新者</label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label>最終リカバリー日</label>
+        <name>Core_MDF_Last_Recovery_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Reviewed By --></label>
+        <name>Core_MDF_Last_Reviewed_By_id__c</name>
+        <relationshipLabel><!-- Claims (Last Reviewed By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Latest Review Cycle Number --></label>
+        <name>Core_MDF_Latest_Review_Cycle_Number_nbr__c</name>
+    </fields>
+    <fields>
+        <label>リード数量</label>
+        <name>Core_MDF_Lead_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Claim --></label>
+        <name>Core_MDF_Legacy_Claim_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Reminder --></label>
+        <name>Core_MDF_Legacy_Reminder_txt__c</name>
+        <picklistValues>
+            <masterLabel>Maximum Attempts Reached</masterLabel>
+            <translation><!-- Maximum Attempts Reached --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reminder 1</masterLabel>
+            <translation><!-- Reminder 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reminder 2</masterLabel>
+            <translation><!-- Reminder 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reminder 3</masterLabel>
+            <translation><!-- Reminder 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Log Info --></label>
+        <name>Core_MDF_Log_Info_txt__c</name>
+    </fields>
+    <fields>
+        <label>雑誌 / 新聞</label>
+        <name>Core_MDF_Magazine_Newspaper_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manual Audit Staging --></label>
+        <name>Core_MDF_Manaul_Audit_Staging_Ind__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動に使用されたメディア</help>
+        <label>メディア</label>
+        <name>Core_MDF_Media_Vehicle__c</name>
+    </fields>
+    <fields>
+        <label>メンバーによる保留のコメント</label>
+        <name>Core_MDF_Member_Manual_Hold_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <help>メンバーが請求を保留にした場合にチェックされます</help>
+        <label>メンバーによる保留</label>
+        <name>Core_MDF_Member_Manual_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label>メトリックス</label>
+        <name>Core_MDF_Metrics_txt__c</name>
+    </fields>
+    <fields>
+        <help>この請求に関連するエンゲージメント数を入力してください。</help>
+        <label>エンゲージメント数</label>
+        <name>Core_MDF_NoOfEngagements_Nbr__c</name>
+    </fields>
+    <fields>
+        <help>この請求に関連するインプレッション数を入力してください。例えば、テレビ放送の場合、インプレッション数は広告の放送回数となります。</help>
+        <label>インプレッション数</label>
+        <name>Core_MDF_NoOfImpressions_Nbr__c</name>
+    </fields>
+    <fields>
+        <help>この請求に関連するリード数を入力してください。</help>
+        <label>リード数</label>
+        <name>Core_MDF_NoOfLeads_Nbr__c</name>
+    </fields>
+    <fields>
+        <help>この請求に関連するトライアル版の有効化数を入力してください。</help>
+        <label>トライアル版の有効化数</label>
+        <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>専用のリソース数</label>
+        <name>Core_MDF_No_Dedicated_Resources_nbr__c</name>
+    </fields>
+    <fields>
+        <label>アクティブ化されたインスタンスの数</label>
+        <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
+    </fields>
+    <fields>
+        <label>コール数</label>
+        <name>Core_MDF_No_of_Calls_nbr__c</name>
+    </fields>
+    <fields>
+        <label>獲得コンタクト数</label>
+        <name>Core_MDF_No_of_Contacts_Reached_nbr__c</name>
+    </fields>
+    <fields>
+        <label>コンバージョン数</label>
+        <name>Core_MDF_No_of_Conversions_nbr__c</name>
+    </fields>
+    <fields>
+        <label>日数</label>
+        <name>Core_MDF_No_of_Days_nbr__c</name>
+    </fields>
+    <fields>
+        <label>登録されたディール数</label>
+        <name>Core_MDF_No_of_Deals_Registered_nbr__c</name>
+    </fields>
+    <fields>
+        <label>専用スタッフ人数</label>
+        <name>Core_MDF_No_of_Dedicated_Personnel_nbr__c</name>
+    </fields>
+    <fields>
+        <label>導入数</label>
+        <name>Core_MDF_No_of_Deployments_nbr__c</name>
+    </fields>
+    <fields>
+        <label>デザインウィン数</label>
+        <name>Core_MDF_No_of_Design_Wins_nbr__c</name>
+    </fields>
+    <fields>
+        <label>ダウンロード数</label>
+        <name>Core_MDF_No_of_Downloads_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Emails Opened --></label>
+        <name>Core_MDF_No_of_Emails_Opened_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of End caps --></label>
+        <name>Core_MDF_No_of_End_caps_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>予想される参加人数</label>
+        <name>Core_MDF_No_of_Expected_Participants_nbr__c</name>
+    </fields>
+    <fields>
+        <label>トレーニングを受けた人数</label>
+        <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
+    </fields>
+    <fields>
+        <label>インスタンス数</label>
+        <name>Core_MDF_No_of_Instance_nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the number of Leads related to the Claim. --></help>
+        <label>リード数</label>
+        <name>Core_MDF_No_of_Leads_nbr__c</name>
+    </fields>
+    <fields>
+        <label>アクセス数</label>
+        <name>Core_MDF_No_of_Page_Views_nbr__c</name>
+    </fields>
+    <fields>
+        <label>配置数</label>
+        <name>Core_MDF_No_of_Placements_nbr__c</name>
+    </fields>
+    <fields>
+        <label>受信者数</label>
+        <name>Core_MDF_No_of_Recipients_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Risers --></label>
+        <name>Core_MDF_No_of_Risers_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Signages --></label>
+        <name>Core_MDF_No_of_Signages_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>研修生数</label>
+        <name>Core_MDF_No_of_Trainees_nbr__c</name>
+    </fields>
+    <fields>
+        <label>完了したトレーニング数</label>
+        <name>Core_MDF_No_of_Trainings_Completed_nbr__c</name>
+    </fields>
+    <fields>
+        <label>ユニークリスナー数</label>
+        <name>Core_MDF_No_of_Unique_Listeners_nbr__c</name>
+    </fields>
+    <fields>
+        <label>ユニークビジター数</label>
+        <name>Core_MDF_No_of_Unique_Visitors_nbr__c</name>
+    </fields>
+    <fields>
+        <label>販売されたユニット数</label>
+        <name>Core_MDF_No_of_Units_Sold_nbr__c</name>
+    </fields>
+    <fields>
+        <label>ビュー数</label>
+        <name>Core_MDF_No_of_Views_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Visits --></label>
+        <name>Core_MDF_No_of_Visits_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Zones --></label>
+        <name>Core_MDF_No_of_Zones_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of placemats --></label>
+        <name>Core_MDF_No_of_placemats_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of screens with IPOS --></label>
+        <name>Core_MDF_No_of_screens_with_IPOS_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of screens with connected IPOS --></label>
+        <name>Core_MDF_No_of_screens_with_con_IPOS_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of stores with video --></label>
+        <name>Core_MDF_No_of_stores_with_video_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of video impressions --></label>
+        <name>Core_MDF_No_of_video_impressions_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>受賞者数</label>
+        <name>Core_MDF_Num_of_Potential_Winners_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Recoveries --></label>
+        <name>Core_MDF_Number_Of_Recoveries_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>販売件数</label>
+        <name>Core_MDF_Number_Sold_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>参加者人数</label>
+        <name>Core_MDF_Number_of_Attendees_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>発行数</label>
+        <name>Core_MDF_Number_of_Circulation_nbr__c</name>
+    </fields>
+    <fields>
+        <label>クリック数</label>
+        <name>Core_MDF_Number_of_Clicks_nbr__c</name>
+    </fields>
+    <fields>
+        <label>配信数</label>
+        <name>Core_MDF_Number_of_Delivered_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Distributed --></label>
+        <name>Core_MDF_Number_of_Distributed_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Locations --></label>
+        <name>Core_MDF_Number_of_Locations_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Promoter days --></label>
+        <name>Core_MDF_Number_of_Promoter_days_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>RSP 数</label>
+        <name>Core_MDF_Number_of_RSPs_nbr__c</name>
+    </fields>
+    <fields>
+        <label>受信者数</label>
+        <name>Core_MDF_Number_of_Recipient_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Reviews/Ratings --></label>
+        <name>Core_MDF_Number_of_Reviews_nbr__c</name>
+    </fields>
+    <fields>
+        <label>店舗数</label>
+        <name>Core_MDF_Number_of_Stores_nbr__c</name>
+    </fields>
+    <fields>
+        <label>オープンレート</label>
+        <name>Core_MDF_Open_Rate_txt__c</name>
+    </fields>
+    <fields>
+        <help>このトランザクション / インボイスの償還対象外の費用の合計 (取引通貨)</help>
+        <label>償還不可能な費用 (現地通貨)</label>
+        <name>Core_MDF_OtherCostsnotReimbursable_Local__c</name>
+    </fields>
+    <fields>
+        <label>その他の数量</label>
+        <name>Core_MDF_Other_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>測定可能な指標である数値を入力する必要があります</help>
+        <label>その他</label>
+        <name>Core_MDF_Others_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Based Camp Ind --></label>
+        <name>Core_MDF_OutcomeBased_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language Locale Key --></label>
+        <name>Core_MDF_Owner_LanguageLocaleKey_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Language Locale Key --></label>
+        <name>Core_MDF_Owner_Language_Locale_Key_txt__c</name>
+    </fields>
+    <fields>
+        <label>担当者</label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner UserType --></label>
+        <name>Core_MDF_Owner_UserType_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIC Review Completed --></label>
+        <name>Core_MDF_PIC_Review_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Paid By Payment Type --></label>
+        <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Admin Reminder Date --></label>
+        <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <help>銀行が保留の場合にチェックされます</help>
+        <label>保留中の支払い</label>
+        <name>Core_MDF_Payment_Hold_ind__c</name>
+    </fields>
+    <fields>
+        <label>支払い番号</label>
+        <name>Core_MDF_Payment_Id__c</name>
+        <relationshipLabel>プログラム</relationshipLabel>
+    </fields>
+    <fields>
+        <label>支払い実行日</label>
+        <name>Core_MDF_Payment_Made_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Rollback Reason --></label>
+        <name>Core_MDF_Payment_Rollback_Reason_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business Request</masterLabel>
+            <translation><!-- Business Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment File Generation Issue</masterLabel>
+            <translation><!-- Payment File Generation Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Run Issue</masterLabel>
+            <translation><!-- Payment Run Issue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Payment Type --></label>
+        <name>Core_MDF_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label>インテル・デバイス数</label>
+        <name>Core_MDF_Percentage_of_Intel_Devices_pct__c</name>
+        <picklistValues>
+            <masterLabel>100</masterLabel>
+            <translation><!-- 100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50</masterLabel>
+            <translation><!-- 50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55</masterLabel>
+            <translation><!-- 55 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60</masterLabel>
+            <translation><!-- 60 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>65</masterLabel>
+            <translation><!-- 65 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70</masterLabel>
+            <translation><!-- 70 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>75</masterLabel>
+            <translation><!-- 75 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80</masterLabel>
+            <translation><!-- 80 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>85</masterLabel>
+            <translation><!-- 85 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90</masterLabel>
+            <translation><!-- 90 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>配置</label>
+        <name>Core_MDF_Placement_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IdealModelResult --></label>
+        <name>Core_MDF_Pred_IdealModelResult__c</name>
+    </fields>
+    <fields>
+        <label><!-- ModelTimeStamp --></label>
+        <name>Core_MDF_Pred_ModelTimeStamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- PredictionResult --></label>
+        <name>Core_MDF_Pred_PredictionResult__c</name>
+    </fields>
+    <fields>
+        <label><!-- PredictionScore --></label>
+        <name>Core_MDF_Pred_PredictionScore__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability --></label>
+        <name>Core_MDF_Pred_Probability__c</name>
+    </fields>
+    <fields>
+        <label><!-- ThresholdFlag --></label>
+        <name>Core_MDF_Pred_ThresholdFlag__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Predictive Review Error --></label>
+        <name>Core_MDF_Predictive_Audit_Error__c</name>
+    </fields>
+    <fields>
+        <label><!-- Predictive Review Retries --></label>
+        <name>Core_MDF_Predictive_Audit_Retries__c</name>
+    </fields>
+    <fields>
+        <help>処理優先設定は、請求がバックエンド・レビュー対象として選択されている場合に適用されます。 
+支払いを受けてから決済する – キャッシュフローを加速するのに最適です。支払いを受けるまでの時間を優先し、将来の回収の可能性を残します。 
+決済してから支払いを受ける – 支払い後の回収を最小限に抑えるのに最適です。支払い前の最終判断を優先し、将来の回復のリスクを軽減します。</help>
+        <label>処理設定</label>
+        <name>Core_MDF_Processing_Preference_nm__c</name>
+        <picklistValues>
+            <masterLabel>Get paid, then settle</masterLabel>
+            <translation>支払いを受けてから決済する</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Settle, then get paid</masterLabel>
+            <translation>決済してから支払いを受ける</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>請求が関連しているプログラム。</help>
+        <label>プログラム</label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposal Based Ind --></label>
+        <name>Core_MDF_Proposal_Based_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity of (Impressions, instances) --></label>
+        <name>Core_MDF_Quantity_of_Impression__c</name>
+    </fields>
+    <fields>
+        <help>キャンペーンの開始から現在までの数量を入力します (0 の場合や、最後にレポートされた時点から変更がない場合でも)。</help>
+        <label>現在までの数量</label>
+        <name>Core_MDF_Quantity_to_Date_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter Number and Year --></label>
+        <name>Core_MDF_Quarter_Year_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queued Hold Email Sent --></label>
+        <name>Core_MDF_Queued_Email_Sent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Approval Date --></label>
+        <name>Core_MDF_RMF_Claim_Approval_Dt__c</name>
+    </fields>
+    <fields>
+        <help>請求がインテルによる手動の保留またはインテルの保留のいずれかである場合にチェックされます</help>
+        <label>インテルによる保留</label>
+        <name>Core_MDF_RMF_Intel_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last POP Submission Date --></label>
+        <name>Core_MDF_RMF_Last_POP_Submission_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Comments --></label>
+        <name>Core_MDF_RecentInternalComments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recommend for Claim Review? --></label>
+        <name>Core_MDF_Recommend_For_ClaimReview__c</name>
+    </fields>
+    <fields>
+        <label>リカバリーのために保留</label>
+        <name>Core_MDF_Recovery_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <help>国 / 地域名</help>
+        <label>地域</label>
+        <name>Core_MDF_Region_Cd__c</name>
+    </fields>
+    <fields>
+        <help>この取引 / 請求書で償還対象となる合計金額 (取引通貨)</help>
+        <label>償還可能な金額 (現地通貨)</label>
+        <name>Core_MDF_Reimbursable_TransactionAmt_Loc__c</name>
+    </fields>
+    <fields>
+        <help>この取引 / 請求書で償還対象となる合計金額 (米ドル)</help>
+        <label>償還可能な金額 (米ドル)</label>
+        <name>Core_MDF_Reimbursable_Transaction_Amount__c</name>
+    </fields>
+    <fields>
+        <help>この請求に適用される償還率</help>
+        <label>償還率 (%)</label>
+        <name>Core_MDF_Reimbursement_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reprocess Claim --></label>
+        <name>Core_MDF_Reprocess_Claim__c</name>
+    </fields>
+    <fields>
+        <help>該当する償還率適用後の償還申請額</help>
+        <label>申請金額 (米ドル)</label>
+        <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label>販売されたユニット数の収益 (米ドル)</label>
+        <name>Core_MDF_Revenue_of_Units_Sold_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Hold Rule --></label>
+        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
+    </fields>
+    <fields>
+        <label>1 時間ごとに実行</label>
+        <name>Core_MDF_Runs_per_hour_nbr__c</name>
+    </fields>
+    <fields>
+        <label>ソーシャルメディアのいいね/ 共有数</label>
+        <name>Core_MDF_Social_Media_Engagements_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Time --></label>
+        <name>Core_MDF_StartTime_dtm__c</name>
+    </fields>
+    <fields>
+        <help>請求のステータス</help>
+        <label>請求のステータス</label>
+        <name>Core_MDF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Adjusted</masterLabel>
+            <translation>調整</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>キャンセル済み</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation>終了済み</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>否認</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation>草案</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold</masterLabel>
+            <translation>保留</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PIC Pending</masterLabel>
+            <translation>PIC 保留中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid</masterLabel>
+            <translation>支払い済み</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid and PIC Pending</masterLabel>
+            <translation>支払い済みかつ PIC 保留中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid and Pending Documents</masterLabel>
+            <translation>支払い済みかつドキュメント提出待ち</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid and Resubmission Required</masterLabel>
+            <translation>支払い済みかつ再送信が必要</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Clearance Processing</masterLabel>
+            <translation>決済処理のプロセシング</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Due</masterLabel>
+            <translation>支払い予定</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Account Manager Clarification</masterLabel>
+            <translation>アカウントマネージャーの説明が保留中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Available Funds</masterLabel>
+            <translation>基金待ち</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Clarification</masterLabel>
+            <translation>説明待ち</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>ドキュメント提出待ち</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Payment</masterLabel>
+            <translation>支払い手続き中</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Review</masterLabel>
+            <translation>レビュー待ち</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queued for Payment</masterLabel>
+            <translation><!-- Queued for Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resubmission Required</masterLabel>
+            <translation>再送信が必要です</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resubmission Window Closed</masterLabel>
+            <translation>再送信期間が終了しました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>提出完了</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Void</masterLabel>
+            <translation><!-- Void --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Sub Region Name --></help>
+        <label><!-- Sub Region --></label>
+        <name>Core_MDF_Sub_Region_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Alert --></label>
+        <name>Core_MDF_Submit_For_Approval_Alert_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Super Claim Status --></label>
+        <name>Core_MDF_Super_Claim_Status_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- SurePay Processed Ind --></label>
+        <name>Core_MDF_SurePay_Processed_Ind__c</name>
+    </fields>
+    <fields>
+        <label>テレビチャンネル</label>
+        <name>Core_MDF_TV_Channel_s_txt__c</name>
+    </fields>
+    <fields>
+        <help>共同マーケティング活動の対象</help>
+        <label>ターゲット層</label>
+        <name>Core_MDF_Target_Audience__c</name>
+    </fields>
+    <fields>
+        <help>この取引 / 請求書の合計税額 (取引通貨)</help>
+        <label>税 (現地通貨)</label>
+        <name>Core_MDF_Taxes_Local__c</name>
+    </fields>
+    <fields>
+        <label>動画の最後までの時間</label>
+        <name>Core_MDF_Time_video_to_last_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check the box for claim to go straight to pay. Uncheck the box to determine if the claim should be audited. --></help>
+        <label><!-- Straight to Pay --></label>
+        <name>Core_MDF_To_Be_Audited_Ind__c</name>
+    </fields>
+    <fields>
+        <help>調整相殺による「申請金額 (USD)」の減額分 (USD)</help>
+        <label>合計相殺金額 (USD)</label>
+        <name>Core_MDF_Total_Claim_Offsets__c</name>
+    </fields>
+    <fields>
+        <help>回収により「償還可能金額 (米ドル)」 から差し引かれる金額。</help>
+        <label>合計請求回収額 (米ドル)</label>
+        <name>Core_MDF_Total_Claim_Recovery_Amount__c</name>
+    </fields>
+    <fields>
+        <help>トランザクション / インボイスの合計額 (取引通貨)</help>
+        <label>合計金額 (現地通貨)</label>
+        <name>Core_MDF_Total_Invoice_Amount_Local__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Review Duration(Minutes) --></label>
+        <name>Core_MDF_Total_Review_Duration_Mins_nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
+        <label><!-- Total Offset Amount (USD) --></label>
+        <name>Core_MDF_Total_SubClaim_Offset_Amt__c</name>
+    </fields>
+    <fields>
+        <label>請求のタイプ</label>
+        <name>Core_MDF_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Adjustment</masterLabel>
+            <translation><!-- Adjustment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim</masterLabel>
+            <translation>請求</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>ページのタイプ</label>
+        <name>Core_MDF_Type_of_Page_txt__c</name>
+        <picklistValues>
+            <masterLabel>Colour double page spread</masterLabel>
+            <translation><!-- Colour double page spread --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colour half page</masterLabel>
+            <translation><!-- Colour half page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colour page</masterLabel>
+            <translation><!-- Colour page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mono double page spread</masterLabel>
+            <translation><!-- Mono double page spread --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mono half page</masterLabel>
+            <translation><!-- Mono half page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mono page</masterLabel>
+            <translation><!-- Mono page --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>リソースのタイプ</label>
+        <name>Core_MDF_Type_of_Resource_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>Core_MDF_URL_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account ID --></label>
+        <name>Core_MDF_Ultimate_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Global ID --></label>
+        <name>Core_MDF_Unified_Global_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Global Name --></label>
+        <name>Core_MDF_Unified_Global_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Amount --></label>
+        <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <help>請求が VAT の対象であるかを判断します</help>
+        <label><!-- VAT Eligibility --></label>
+        <name>Core_MDF_VAT_Eligibility_Ind__c</name>
+    </fields>
+    <fields>
+        <help>請求が支払い書類の処理対象に選択された場合にチェックされます</help>
+        <label>支払いドキュメントのレビュー保留</label>
+        <name>Core_MDF_VAT_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <help>「はい」を選ぶと VAT プロセスが選択されます。VAT プロセスを選択しない場合は、「いいえ」を選んでください。</help>
+        <label>請求書の種類</label>
+        <name>Core_MDF_VAT_Opt_In__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation>なし</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
+            <translation>第三者による支払いの償還請求 (純コストのみ)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
+            <translation>インテルへのサービス請求書 (VAT が適用される場合があります)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>あり</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>請求書の種類</label>
+        <name>Core_MDF_VAT_Opt_In_txt__c</name>
+    </fields>
+    <fields>
+        <label>開催場所</label>
+        <name>Core_MDF_Where_to_take_place_txt__c</name>
+        <picklistValues>
+            <masterLabel>In-store</masterLabel>
+            <translation>店舗内</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside</masterLabel>
+            <translation><!-- Inside --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online</masterLabel>
+            <translation>オンライン広告</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Out of store</masterLabel>
+            <translation>店舗外</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outside</masterLabel>
+            <translation><!-- Outside --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Owner swapped with submitter --></label>
+        <name>Core_MDF_owner_swapped_withsubmitter_ind__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
+        <label>チャネル MDF アカウントベース</label>
+        <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- CCF Program Record Type --></description>
+        <label>クライアント</label>
+        <name>Core_MDF_Client_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- CCF Boost Program Record Type --></description>
+        <label><!-- Client Co-Marketing Fund Boost --></label>
+        <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for Co-GTM Program --></description>
+        <label><!-- Co-GTM --></label>
+        <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- DCF Program Record Type --></description>
+        <label>データセンター</label>
+        <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for CCP EEF Program --></description>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- IPA Account Based Record Type --></description>
+        <label><!-- Intel Partner Alliance Account Based --></label>
+        <name>Core_MDF_IPA_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- IPA Program Type --></description>
+        <label><!-- Intel Partner Alliance Proposal Based --></label>
+        <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- It will be used for Retail Co-Marketing purposes --></description>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- SPCF Program Record Type --></description>
+        <label><!-- Service Provider Co-Marketing Fund --></label>
+        <name>Core_MDF_Service_Provider_Co_Marketing_Fund</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- This claim cannot be reprocessed --></errorMessage>
+        <name>Claim_cannot_be_reprocessed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>合計金額を 0 より大きい数値で入力してください</errorMessage>
+        <name>Core_MDF_Amount_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An application error occurred. Please try again. If error still persists, please contact Support Services. --></errorMessage>
+        <name>Core_MDF_BlockPendingReviewToDraft</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>請求に記載できる開始日と終了日の期間は 3 カ月以内です。</errorMessage>
+        <name>Core_MDF_ClaimEndDateBetween3Months</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>必須フィールドを入力してください。実行開始日、実行終了日、処理設定、費用証明の通貨、費用証明の日付、費用証明の番号、償還不可能な費用 (現地通貨)、税 (現地通貨)、合計金額 (現地通貨)、国 / 地域</errorMessage>
+        <name>Core_MDF_Claim_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>請求可能な期間が過ぎているため、この請求を作成または更新することはできません。請求は実行終了日から 6 カ月以内に提出する必要があります。</errorMessage>
+        <name>Core_MDF_Claim_Window</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An Adjustment may not be Closed when no Offsets exist, but it may be Cancelled --></errorMessage>
+        <name>Core_MDF_Close_Adjustment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>償還不可能な費用の金額がゼロ以上のものを入力してください</errorMessage>
+        <name>Core_MDF_CostNotReimbursable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>実行終了日には未来の日付を指定できません</errorMessage>
+        <name>Core_MDF_EndDateFutureValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>活動の推定日付範囲内の実行終了日を入力してください。</errorMessage>
+        <name>Core_MDF_EndDateValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>成果ベースのキャンペーンの推定日付範囲内の実行終了日を入力してください。</errorMessage>
+        <name>Core_MDF_EndDateValidation_OutcomeBased</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>成果ベースのキャンペーンのアカウントが無効であるため、この成果ベースのキャンペーンを使用することはできません</errorMessage>
+        <name>Core_MDF_InactiveAccountValidation_Outco</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot use this Activity as the account over the Activity is inactive --></errorMessage>
+        <name>Core_MDF_Inactive_Account_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>費用証明の日付を将来の日付にすることはできません</errorMessage>
+        <name>Core_MDF_Invoice_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Amount of a Negative Claim cannot be greater than 0 --></errorMessage>
+        <name>Core_MDF_NegativeClaimAmountVal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment Id is mandatory for Pending Payment Claims --></errorMessage>
+        <name>Core_MDF_PaymentId_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>償還可能な金額を 0 より大きい数値で入力してください</errorMessage>
+        <name>Core_MDF_Reimbursable_Transaction_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>申請された金額を 0 より大きい数値で入力してください</errorMessage>
+        <name>Core_MDF_RequestedReimbursementAmt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>請求に関連付けられている MDF インテル® パートナー・アライアンス活動が拒否されているため、請求を作成できません。</errorMessage>
+        <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>ステータスが「終了済み」/「キャンセル」の成果ベースのキャンペーンでは、請求を作成することはできません。</errorMessage>
+        <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>このエスカレーションで請求が既に作成されています。追加の請求を提出する必要がある場合は、新しいエスカレーションを提起してください。</errorMessage>
+        <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>この操作に必要な権限がありません</errorMessage>
+        <name>Core_MDF_Restrict_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
+        <name>Core_MDF_Restrict_Claim_Creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>「進行中」成果ベースのキャンペーンの承認が必要なため、請求の作成がブロックされています。</errorMessage>
+        <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>ステータスが「終了済み」/「キャンセル」の活動では、請求を作成することはできません。</errorMessage>
+        <name>Core_MDF_Restrict_ClaimforClosedActivity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Super Claims having sub claims can be set to only Draft, Submitted or Rejected status. --></errorMessage>
+        <name>Core_MDF_Restrict_Status_For_Super_Claim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Claim Status cannot be updated in its current status --></errorMessage>
+        <name>Core_MDF_Restrict_Status_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>請求金額は、エスカレーションで承認された金額を超えることはできません。</errorMessage>
+        <name>Core_MDF_RetailAmtLessThanEscalationAmt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Numeric fields must be greater than or equal to zero  --></errorMessage>
+        <name>Core_MDF_SPCF_Negative_Number_Val</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>実行開始日には未来の日付を指定できません</errorMessage>
+        <name>Core_MDF_StartDateFutureValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>活動の推定日付範囲内の実行開始日を入力してください。</errorMessage>
+        <name>Core_MDF_StartDateValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>成果ベースのキャンペーンの推定日付範囲内の実行開始日を入力してください。</errorMessage>
+        <name>Core_MDF_StartDateValidation_Outcome</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>実行開始日は、実行終了日を超えることはできません</errorMessage>
+        <name>Core_MDF_StartDate_EndDate_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>税額がゼロ以上のものを入力してください</errorMessage>
+        <name>Core_MDF_TaxesLocal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Bank is not applicable for this Claim due to the Budget Type provided. --></errorMessage>
+        <name>Core_MDF_ValidateBank</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

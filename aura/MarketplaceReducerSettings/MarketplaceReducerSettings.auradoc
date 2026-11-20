@@ -1,0 +1,25 @@
+<aura:documentation>
+	<aura:description>
+    <p>Settings -- reducer subcomponent</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/12/2019</p>
+    <p>CurrentVersion: 2.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>Store structure:</p>
+
+<pre>{
+  currentScreenSize: 'mobile' // 'mobile' &lt; 768px, 'desktop' &gt; 768px
+}</pre>
+
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <p>2.0 - new structure to match ISGRedux v. 3.0</p>
+
+
+  </aura:description>
+</aura:documentation>

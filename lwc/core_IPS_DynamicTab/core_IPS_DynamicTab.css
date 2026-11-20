@@ -1,0 +1,18 @@
+.header {
+    background: #1a315b;
+    color: white;
+    padding: 15px;
+}
+.mainHeading{
+    background: #1a315b;
+    color: white;
+}
+.modalheader{
+    background: #1a315b;
+    color: white;
+    padding: 5px;
+  
+}
+:host {
+    display: inline;
+}

@@ -1,0 +1,190 @@
+<template>
+    <div class="slds-grid slds-wrap custom-container">
+        <div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+        <div class="slds-size_3-of-5 slds-max-small-size_1-of-1">
+        <header class="slds-text-heading--large slds-align--absolute-center header">
+            <h2>Case Comments</h2>
+        </header>
+        <lightning-card >
+            <div class="containerC">
+                <div class="form">
+                    <div class="slds-m-top_small slds-m-bottom_medium">
+                        <h2 class="slds-text-heading_small slds-m-bottom_small">
+                
+                        </h2>
+                        <div class="" style="margin-left:35%;margin-top:2%;">
+                            <lightning-button variant="brand" label="Save Comment" title="Primary action" onclick={handleClick}
+                                class="slds-m-left_x-small" disabled ={hideButton}></lightning-button>
+                            <lightning-button label="Cancel" title="Primary action" onclick={handleCancel}
+                                class="slds-m-left_x-small"></lightning-button>
+                        </div>
+                        <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection}
+                            active-section-name="Comments" allow-multiple-sections-open>
+                            <lightning-accordion-section name="CaseDetails" label="Case details">
+                                <div class="slds-box slds-theme_default">
+                                <lightning-record-view-form record-id={recordId} object-api-name="Case">
+                                    <!--<div class="slds-box slds-theme_default">-->
+                                       <lightning-layout multiple-rows="true">
+                                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6">
+                                            <lightning-output-field field-name="Core_IPS_Classification__c">
+                                            </lightning-output-field>
+                                        </lightning-layout-item>
+                                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6"> 
+                                       
+                                        <lightning-output-field field-name="Status">
+                                        </lightning-output-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6">
+                                        <lightning-output-field field-name="CaseNumber">
+                                        </lightning-output-field>
+                                    </lightning-layout-item>
+                                   
+                                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6"> 
+                                        <lightning-output-field field-name="Core_Sub_Status__c">
+                                        </lightning-output-field>
+                                   </lightning-layout-item>
+                                   <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6"> 
+                                    <lightning-output-field field-name="Subject">
+                                    </lightning-output-field>
+                                   </lightning-layout-item>
+                                
+                                   <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6">
+                                    <lightning-record-view-form record-id={caseProjId} object-api-name="Core_IPS_Project__c">
+                                        <lightning-output-field field-name="Name">
+                                        </lightning-output-field>
+                                    </lightning-record-view-form>
+                                    </lightning-layout-item>
+                                <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6"> 
+                                    <lightning-output-field field-name="core_Account_Name__c">
+                                    </lightning-output-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" small-device-size="6" medium-device-size="6" large-device-size="6"> 
+                                <lightning-output-field field-name="Core_IPS_Product__c">
+                                </lightning-output-field>
+                        </lightning-layout-item>
+                                  </lightning-layout>    
+                            
+                                </lightning-record-view-form></div>
+                            </lightning-accordion-section>
+                            <lightning-accordion-section name="Description" label="Description">
+                                <lightning-record-view-form record-id={recordId} object-api-name="Case">
+                                    <div class="slds-box slds-theme_default">
+                                        <lightning-output-field field-name="Core_Issue_Description__c">
+                                        </lightning-output-field>
+                                    </div>
+                                    </lightning-record-view-form>
+                            </lightning-accordion-section>
+                            <lightning-accordion-section name="Comments" label="Comments">
+                                <div style="margin-left:1%;">
+                                <template if:true={showOptions} for:each={TransformedOptions} for:item="item">
+                                    <fieldset key={item.value} style="display: block; float: left;">
+                                        <div class="slds-form-element__control">
+                                            <span class="slds-radio">
+                                                <input name="radiogroup" id={item.value} type="radio" checked={item.isChecked} value={item.value} onchange={handleCommentTypeChange}/>
+                                                <label class="slds-radio__label" for={item.value}>
+                                                    <span class="slds-radio_faux"></span>
+                                                    <span class="slds-form-element__label">{item.label}</span>
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </fieldset>
+                                </template>
+                        
+                                </div>
+                                <br/><br/>
+                                <h6> Note: If you are pasting images into this field, the size limit is 1MB</h6>
+                            
+                            <lightning-input-rich-text
+                                value={richtext} 
+                                class="richText"
+                                onchange={handleRichTextChange} message-when-bad-input={errorMessage} valid={validity} >
+                            </lightning-input-rich-text> 
+                    <!--            <lightning-input-rich-text value={richtext} class="richText" onchange={handleTestRichTextChange} message-when-bad-input={errorMessage}  valid={validity}>
+                                </lightning-input-rich-text>  
+                           
+                             <lightning-input-rich-text onchange={handleTestRichTextChange1}></lightning-input-rich-text>   -->
+            
+                            </lightning-accordion-section>
+                            <lightning-accordion-section name="recentComments" label=" Recent Comments">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control slds-p-around_x-small">
+                                          <input type="text" id="text-input-id-1" placeholder="Enter Text to be searched" class="slds-input" onchange={searchTextChangeHandler}/>
+                                        </div>
+                                        <div class="slds-p-around_x-small">
+                                            <button class="slds-button slds-button_neutral" onclick={searchButtonHandler}>Search</button>
+                                            <button class="slds-button slds-button_neutral" onclick={resetButtonHandler}>Reset</button>
+                                        </div>
+                                    </div>
+                                    <div style="height:2.5rem" class="slds-align_absolute-center" if:true={show}>
+                                        <output style="font-weight:bold;color:red;font-size:18px;font-family:Salesforce-Sans">No records to display</output>
+                                    </div>
+                                    <div>
+                                        <template if:true ={hasRendered}>
+            <lightning-accordion allow-multiple-sections-open active-section-name={sectionNames} class="accordionClass">
+                <!-- Start - US943890 - Updated to apply the background colour to comments based on type of comment. -->
+                <template for:each={commentDataTableData} for:item="comm">
+                    <template if:true={comm.isExternal}>
+                        
+                        <lightning-accordion-section class="blueColor" name={comm.Id} label={comm.CaseAuthorizeName}
+                            key={comm}>
+                            <div style="padding:10px;font-size: 13px;">
+                                <lightning-formatted-rich-text class="withoutBold" value={comm.Comment}></lightning-formatted-rich-text>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                    <template if:false={comm.isExternal}>
+                        
+                        <lightning-accordion-section class="greyColor" name={comm.Id} label={comm.CaseAuthorizeName}
+                            key={comm}>
+                            <div style="padding:10px;font-size: 13px;">
+                                <lightning-formatted-rich-text class="withoutBold" value={comm.Comment}></lightning-formatted-rich-text>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                </template>
+                <!-- End - US943890 -->
+            </lightning-accordion>
+        </template>  
+                                    </div>
+                            </lightning-accordion-section>
+                            <lightning-accordion-section name="premierSupportCaseAttachments" label="Premier Support Case Attachments">
+                                <div style="height: 300px;">
+                                    <template if:true={atDataselected}>
+                                        <lightning-datatable
+                                        key-field="id"
+                                        data={attDataTableData}
+                                        columns={attColumns}
+                                        onrowaction={handleRowActions}>
+                                </lightning-datatable>
+                                    </template>
+                                </div>                      
+                            </lightning-accordion-section>
+                            <lightning-accordion-section name="intrestedParteis" label="Interested Parties">
+                                <div style="height: 300px;">
+                                    <template if:true={dataselected}>
+                                        <lightning-datatable
+                                        key-field="id"
+                                        data={dataTableData}
+                                        columns={columns}>
+                                </lightning-datatable>
+                                    </template>
+                                </div>                   
+                            </lightning-accordion-section>
+                        </lightning-accordion>  
+                    </div>
+                    </div>
+                    </div>
+                    <div class="" style="margin-left:35%;margin-top:2%;">
+                        <lightning-button variant="brand" label="Save Comment" title="Primary action" onclick={handleClick}
+                            class="slds-m-left_x-small" disabled ={hideButton}></lightning-button>
+                        <lightning-button label="Cancel" title="Primary action" onclick={handleCancel}
+                            class="slds-m-left_x-small"></lightning-button>
+                    </div>
+        </lightning-card>
+        </div></div>
+        <template if:true={spinnerOn}>
+            <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+          </template>
+    
+    
+</template>

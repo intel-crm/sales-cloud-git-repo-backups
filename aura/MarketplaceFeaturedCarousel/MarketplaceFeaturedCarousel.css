@@ -1,0 +1,17 @@
+.THIS .slds-tabs_default {
+  background: transparent;
+}
+.THIS .tabSet {
+  background: transparent;
+
+}
+
+.THIS .isg-tab-content {
+  padding-top: 25px;
+}
+
+.THIS .spinnerContainer {
+  height: 650px;
+  width: 100%;
+  position: relative;
+}

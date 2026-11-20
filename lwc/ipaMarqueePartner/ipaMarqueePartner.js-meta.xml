@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    <apiVersion>49.0</apiVersion>
+    
+    <isExposed>true</isExposed>
+    
+    <masterLabel>IPA Marquee Partner</masterLabel>
+    
+    <targets>
+        
+        <target>lightningCommunity__Page</target>
+        
+        <target>lightningCommunity__Default</target>
+        
+    </targets>
+    
+    <targetConfigs>
+        
+        <targetConfig targets="lightningCommunity__Default">
+            
+            <property name="marqueeDataSource" type="String" default="Design Attributes" label="Data Source" datasource="Design Attributes,  Benefit Service"/>
+            
+            <property name="pageType" type="String" default="BenefitService" label="Page Type"/>
+            
+            <property name="title" type="String" default="Lorem Ipsum Title" label="Title"/>
+            
+            <property name="subtitle" type="String" default="Lorem Ipsum Subtitle" label="Subtitle"/>
+            
+            <property name="description" type="String" default="" label="Description"/>
+            
+
+            <property name="rightButtonLabel" type="String" default="" label="Right Panel Button Label"/>
+            
+            <property name="rightButtonExternalUrl" type="String" default="" label="Right Panel Button External Url"/>
+            
+            <property name="rightButtonCommPage" type="String" default="" label="Right Panel Button Community Page (API name)"/>
+            
+
+            <property name="rightCta1Label" type="String" default="" label="Right Panel CTA1 Label"/>
+            
+            <property name="rightCta1ExternalUrl" type="String" default="" label="Right Panel CTA1 External Url"/>
+            
+            <property name="rightCta1CommPage" type="String" default="" label="Right Panel CTA1 Community Page (API name)"/>
+            
+
+            <property name="rightCta2Label" type="String" default="" label="Right Panel CTA2 Label"/>
+            
+            <property name="rightCta2ExternalUrl" type="String" default="" label="Right Panel CTA2 External Url"/>
+            
+            <property name="rightCta2CommPage" type="String" default="" label="Right Panel CTA2 Community Page (API name)"/>
+            
+            <property name="analyticsPageType" type="String" default="" label="Analytics data in JSON string format"/>
+            
+        </targetConfig>
+        
+    </targetConfigs>
+    
+</LightningComponentBundle>

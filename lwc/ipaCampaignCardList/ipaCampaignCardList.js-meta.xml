@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Campaign Card List</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Heading" description="NOTE: Only use this design attribute if heading is static across all events. Otherwise if left blank the heading will be set dynamically through the Campaign Service component response." name="heading" type="string"/>
+            <property label="Card List Type" name="listType" type="string" datasource="partner,product"/>
+            <property label="Show Loading State?" description="If this is checked it will show loading cards (and hide the heading) while card data is being fetched. Note, if no results come back the entire component will then be hidden." name="showLoading" type="boolean"/>
+            <property label="Marketplace Event Id" description="Use Campaign (Marketplace Event) Detail Page Record Id: {!recordId}" name="campaign" type="string" default="{!recordId}"/>
+            <property label="Theme Variation" name="theme" type="String" datasource="default,inverse"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

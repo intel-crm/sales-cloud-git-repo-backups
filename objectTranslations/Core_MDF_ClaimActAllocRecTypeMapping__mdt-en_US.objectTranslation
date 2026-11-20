@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ClaimActivityAllocationRecordtypeMapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ClaimActivityAllocationRecordtypeMapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Close Days --></label>
+        <name>Core_MDF_Activity_Close_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Record Type Developer Name --></label>
+        <name>Core_MDF_Activity_RecordType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allocation Record Type Developer Name --></label>
+        <name>Core_MDF_Allocation_RecordType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Cap Record Type Developer Name --></label>
+        <name>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Name --></label>
+        <name>Core_MDF_Channel_Program_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Name --></label>
+        <name>Core_MDF_Channel_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Stage Record Type Developer Name --></label>
+        <name>Core_MDF_ClaimStage_RecordType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Activity Name Swap --></label>
+        <name>Core_MDF_Claim_Activity_Name_Swap_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Record Type Developer Name --></label>
+        <name>Core_MDF_Claim_RecordType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Fund Reservation --></label>
+        <name>Core_MDF_Enable_Fund_Reservation_chk__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Master Group Name --></label>
+        <name>Core_MDF_External_Master_Group_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Master Group Name --></label>
+        <name>Core_MDF_Internal_Master_Group_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- POP Mandatory --></label>
+        <name>Core_MDF_POP_Mandatory_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Record Type Developer Name --></label>
+        <name>Core_MDF_Payment_RecordType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- isProgramBased --></label>
+        <name>Core_MDF_isProgramBased_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- isProposalBased --></label>
+        <name>Core_MDF_isProposalBased__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

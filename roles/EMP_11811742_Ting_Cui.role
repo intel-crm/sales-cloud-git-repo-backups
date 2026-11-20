@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP OF Gogo Jing Gou</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11811742_Ting Cui</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10719372_Gogo_Jing_Gou</parentRole>
+</Role>

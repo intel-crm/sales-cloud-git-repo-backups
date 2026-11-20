@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Contacts Deactivate A Contact</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/create-or-edit-account-contacts/#Deactivated_Contacts</actionButtonLink>
+        <body>&lt;p&gt;If a contact on your account has left the company, you can process the deactivation without needing to go through &lt;a href=&quot;https://salescrm.intel.com/support-and-help-2/#tab-id-6&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ask a Question&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;IMPORTANT! &lt;/strong&gt;ONLY deactivate the contact if you truly know they have left the company, or are from an embargoed country.&amp;nbsp;If you deactivate a contact that is on the account for entitlement purposes, you will strip their access.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To deactivate a contact,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Access the Account page, and navigate to the &lt;strong&gt;Contacts &lt;/strong&gt;section. Click the drop-down menu arrow next to the contact name and select &lt;strong&gt;Edit&lt;/strong&gt;. If you don’t see the contact name listed, click &lt;strong&gt;View All &lt;/strong&gt;to see a list of all contacts.&lt;/li&gt;&lt;li&gt;From the &lt;em&gt;Edit &lt;/em&gt;window for the contact, scroll down to the &lt;strong&gt;Additional Information&lt;/strong&gt; section and click on the &lt;strong&gt;Deactivation Requested &lt;/strong&gt;checkbox and identify a &lt;strong&gt;Deactivation Reason&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This will immediately deactivate the contact from the account.&amp;nbsp;On the page for the Account, the &lt;strong&gt;Deactivated Contacts&lt;/strong&gt; section will identify the contacts that have been deactivated.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Contacts Deactivate A Contact</description>
+        <displayType>DockedComposer</displayType>
+        <header>Contacts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Contacts Deactivate A Contact</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Contact</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Deactivate A Contact</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

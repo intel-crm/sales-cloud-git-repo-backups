@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Will be appearing for IPA Final Outcome based claim</description>
+    <height>300</height>
+    <label>Submit for Payment Clearance</label>
+    <lightningComponent>Core_MDF_SubmitClaimToPICProcess</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

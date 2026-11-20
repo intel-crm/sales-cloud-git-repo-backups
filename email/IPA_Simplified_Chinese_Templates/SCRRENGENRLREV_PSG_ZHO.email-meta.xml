@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>PSG Licensing</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_PSG_ZHO</name>
+    <style>none</style>
+    <subject>Verify your email address</subject>
+    <textOnly>验证您的电子邮件地址
+
+尊敬的 {!PRM_Registration_Request__c.PRM_First_Name__c}，
+
+感谢您提交英特尔® 自助服务许可中心注册申请。我们需要先确保此电子邮件地址归您所有，方可处理您的申请。如果未能在 45 天内验证您的电子邮件地址，系统将删除您的注册申请，因此您需要提交新的申请。
+
+请保存您的登录信息以供未来参考：
+
+用户名: {{USERNAME}}
+电子邮件地址: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+您的密码应该像机密一样受到保护。在英特尔网站上使用此密码受英特尔使用条款和条件（链接来自各个网站的网页底部）约束。
+
+
+立即验证
+
+无法访问上面的链接？
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-ciqa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/support/programmable/forms/fpga-sslc-email-verified.html
+
+
+请注意此链接 24 小时后失效
+
+
+谢谢！
+您的英特尔® PSG SSLC 团队
+
+
+此消息作为英特尔® 可编程解决方案事业集团与您的FPGA软件和/或 IP许可权相关的重要业务通信发送。
+© {!$Label.PRM_CurrentYear} 英特尔公司
+英特尔公司, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.cn
+隐私条款&amp;verbar;Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

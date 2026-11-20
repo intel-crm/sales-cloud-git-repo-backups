@@ -1,0 +1,136 @@
+<apex:component access="global"><!--controller="PMP_OfferingEmailAlertsController">-->
+<!--    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+--> 
+           <!-- h1{
+            font-family: Intel Clear !important;  
+            } -->
+<!--        </style>
+        
+        
+        <body>-->
+            <!-- Header Banner -->
+<!--            <c:PMP_Global_Header message="Action Required: Please create offerings for your published storefront"/>-->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+<!--            <table width="75%">    -->
+                <!-- Email Body -->
+ <!--               <tr>
+                    <td style="padding-left:50px;">
+                        <br/>Hello<br/><br/>-->
+                        <!--We’ve noticed you haven’t added any offering/s to your storefront. Our team wants to ensure you have every opportunity to fully promote your company and solution/s.-->
+ <!--                       We recently let you know that your Intel® Partner Showcase storefront has been published. This means you can now list your offerings to heighten your storefront with customers and Intel Partners.
+                        <br/><br/>-->
+                        <!--Intel often promotes offerings on Intel.com. Partners who list their offering/s tend to receive more contact from potential customers than those who do not. 
+                        <br/><br/>
+                        Use to the link below to access your Showcase storefront and manage your offering/s today. You can also tap into your dashboard where you can view and run reports on key data such as page views, leads, and their sources.-->
+<!--                        Please use the link below to create offerings for your storefront and submit them for Intel review and publishing.  You will find a video within the Intel® Partner Showcase Help that guides you through creating an offering.
+                        <br/>                      
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left:50px;">
+                        <p><apex:outputLink value="{!createOfferingURL}" styleClass="intelBlue">Create offerings </apex:outputLink></p>
+                        
+                    </td>
+                </tr>-->
+                <!-- CTA -->
+<!--                <tr>
+                    <td style="padding-left:50px;">     
+                        
+                        Thanks for your prompt attention,<br/><br/>
+                        The Intel® Partner Showcase Team <br/><br/>
+                    </td>
+                </tr>-->
+                <!-- Email Body -->
+                
+                <!-- Progress Indication 
+<tr>
+<td style="height:50; text-align:center;">
+<apex:image id="bodyImageId" url="{!bodyURL}"/>
+</td>
+</tr>-->
+<!-- Progress Indication -->
+                <!-- Next Best Step -->
+                
+                <!-- Next Best Step -->
+                <!-- Questions/Contact -->
+<!--                <tr>
+                    <td style="padding-left:50px;">  
+                        Questions? Reach out to Showcase Admin Team at: <br/>
+                        <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                            {!$Label.PMP_MailTo}
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr>-->
+                <!-- Questions/Contact -->
+                <!-- Marketplace Help & FAQ -->
+                <!-- <tr>    
+<td style="text-align:center">
+For FAQs and pro-tips on using Intel® Partner Showcase, please visit 
+<apex:outputLink value="www.intel.com" styleClass="intelBlue">
+Showcase Help
+</apex:outputLink><br/><br/>
+</td>
+</tr>-->
+                <!-- Marketplace Help & FAQ -->
+<!--            </table>        -->         
+            <!-- Email content -->
+            
+            <!-- Global Footer -->
+<!--            <c:PMP_Global_Footer />-->
+            <!-- <c:PMP_PartnerFooterComponent /> -->
+            <!-- Global Footer -->
+            
+<!--        </body>
+    </html>-->
+</apex:component>

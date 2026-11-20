@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Pricing_Field_Set_Nm__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Set Name</label>
+        <length>60</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Hide_Blank_Fields_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Hide Blank Fields?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_IQR_Product_Type_Pkl__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IQR Product Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client</fullName>
+                    <default>true</default>
+                    <label>Client</label>
+                </value>
+                <value>
+                    <fullName>Data Center GPU</fullName>
+                    <default>false</default>
+                    <label>Data Center GPU</label>
+                </value>
+                <value>
+                    <fullName>Default</fullName>
+                    <default>false</default>
+                    <label>Default</label>
+                </value>
+                <value>
+                    <fullName>Optane™ PMem</fullName>
+                    <default>false</default>
+                    <label>Optane™ PMem</label>
+                </value>
+                <value>
+                    <fullName>Optane™ SSD</fullName>
+                    <default>false</default>
+                    <label>Optane™ SSD</label>
+                </value>
+                <value>
+                    <fullName>Data Center Xeon® CPU</fullName>
+                    <default>false</default>
+                    <label>Data Center Xeon® CPU</label>
+                </value>
+                <value>
+                    <fullName>Small Volume Quotes - Data Center Xeon® CPU</fullName>
+                    <default>false</default>
+                    <label>Small Volume Quotes - Data Center Xeon® CPU</label>
+                </value>
+                <value>
+                    <fullName>Ethernet</fullName>
+                    <default>false</default>
+                    <label>Ethernet</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_IsRPM_User__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is RPM User</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>True</fullName>
+                    <default>true</default>
+                    <label>True</label>
+                </value>
+                <value>
+                    <fullName>False</fullName>
+                    <default>false</default>
+                    <label>False</label>
+                </value>
+                <value>
+                    <fullName>Default</fullName>
+                    <default>false</default>
+                    <label>Default</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_Is_Active_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Is_Internal_User_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Internal User</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Is_Partner_User_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Partner User</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Section_Label_Pkl__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Section Label</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Additional Details</fullName>
+                    <default>true</default>
+                    <label>Additional Details</label>
+                </value>
+                <value>
+                    <fullName>Assumed Competitive Offering</fullName>
+                    <default>false</default>
+                    <label>Assumed Competitive Offering</label>
+                </value>
+                <value>
+                    <fullName>Consumption Parameters</fullName>
+                    <default>false</default>
+                    <label>Consumption Parameters</label>
+                </value>
+                <value>
+                    <fullName>My Deals</fullName>
+                    <default>false</default>
+                    <label>My Deals</label>
+                </value>
+                <value>
+                    <fullName>Payment</fullName>
+                    <default>false</default>
+                    <label>Payment</label>
+                </value>
+                <value>
+                    <fullName>Performance Metric</fullName>
+                    <default>false</default>
+                    <label>Performance Metric</label>
+                </value>
+                <value>
+                    <fullName>Proposed Intel Solution</fullName>
+                    <default>false</default>
+                    <label>Proposed Intel Solution</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_Section_Order__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Section Order</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Pricing FieldSet PageLayout Config</label>
+    <pluralLabel>Pricing FieldSet PageLayout Configs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

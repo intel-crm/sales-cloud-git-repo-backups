@@ -1,0 +1,68 @@
+<aura:component access="global" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickActionWithoutHeader"
+                controller ="Core_MDF_checkSObjectCRUDPermission">
+    <!--Style-->
+    <aura:html tag="style">
+        .slds-modal__container{
+        height :90%;
+        width: 90%;
+        max-width: 90rem;
+        }
+        .modal-body{
+        height : 600px !important;
+        max-height: 600px !important;
+        }
+        
+        .customFooter{
+        display: inline !important;
+        }
+    </aura:html>
+    
+    <!-- To Check whether User Can Clone a record -->
+    <aura:handler name="init" value="{!this}" action="{!c.checkObjectPermission}"/>
+    
+    <!-- Attributes to identify if clone lightning component was called -->
+    <aura:attribute type="Boolean" name="objectCreatePermission" Default="false" 
+                    description="Checks the permission for the CRUD user" />
+    <aura:attribute type="Boolean" name="showErrorCondition" Default="false" 
+                    description="Checks the permission for the CRUD user" />
+    <aura:attribute type="Boolean" name="cloneAttribute" Default="true" 
+                    description="Controls the Clone Part In CreateEditPFR Component" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default=""
+                    description="Stores the recordtypeName from the parent component" />
+    <aura:attribute name="recordtypeName" type="String" default=""
+                    description="Stores the recordtypeName from the parent component" />
+     <aura:attribute name="propBasedIndicator" type="boolean" default="false" />
+     <aura:attribute name="isOutcomeBased" type="Boolean" default="false"/>
+
+            <!-- Component Starting If User Has Read Access -->
+            <aura:if isTrue ="{!v.objectCreatePermission}" >
+                <div class="divCss">
+              
+                    <!-- EOL - Commented below condition associated to Channel MDF Program and added updated condition -->
+            <!--      <aura:if isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_Channel_MDF,and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,not(v.propBasedIndicator)))}"> -->
+                      <aura:if isTrue="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,not(v.propBasedIndicator))}">
+                        <aura:if isTrue ="{!not(v.isOutcomeBased)}" >
+                            <c:Core_MDF_CreateEditActivity checkCloneAttribute ="{!v.cloneAttribute}"  checkCloneRecordId ="{!v.recordId}"/>
+                        </aura:if>
+                        <aura:if isTrue ="{!v.isOutcomeBased}" >
+                            <c:Core_MDF_CreateEditOutcomeBasedActivity checkCloneAttribute ="{!v.cloneAttribute}"  checkCloneRecordId ="{!v.recordId}" recordtypeName = "{!v.recordtypeName}"/>
+                        </aura:if>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!and(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,v.propBasedIndicator)}">
+                        <div align="center"><c:Core_MDF_ErrorMessage type="error" message="{!$Label.c.Core_MDF_CloneAccessError}" /></div>
+                    </aura:if>
+                    
+                    <!-- EOL - Commented below condition associated to Channel MDF Program and added updated condition -->
+            <!--      <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_Channel_MDF,v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType)}"> -->
+                      <aura:if isTrue="{!(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType)}">
+                        <c:Core_Intel_createEditPFR checkCloneAttribute ="{!v.cloneAttribute}"  checkCloneRecordId ="{!v.recordId}"/>
+                    </aura:if>  
+                </div>
+            </aura:if>
+            <aura:if isTrue ="{!v.showErrorCondition}" >
+                <div align="center"><c:Core_MDF_ErrorMessage type="error" message="{!$Label.c.Core_MDF_CloneAccessError}" /></div>
+            </aura:if>
+        <!-- </aura:set>
+    </aura:if> -->	
+</aura:component>

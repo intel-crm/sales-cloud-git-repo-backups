@@ -1,0 +1,211 @@
+<apex:page Standardcontroller="CampaignMember" extensions="Core_Campaign_Member_Creator,Core_Salesout_Search_Controller" sidebar="false"
+           contentType="{!contentType1}" cache="true" action="{!initialLoadTargetAccounts}" >
+    <style type = "text/css">
+        .colHeaderNumeric {
+            text-align:center;
+        }     
+
+        .colNumeric {
+            text-align:right;
+        }
+
+        .spin
+        {
+            position:relative;
+            left:52%;
+            top:3px;
+            height:20px;
+            width:20px;
+        }        
+    </style>
+    <apex:form >
+        <!--  SALESOUT SEARCH PAGE HEADER  -->
+        <apex:outputPanel rendered="{!showCSV}">
+            <br/>
+            <apex:outputPanel Rendered="{!showCSV}">
+                <apex:panelGrid columns="2">
+                    <apex:outputPanel style="float:left">
+                        <apex:image value="{!$Resource.Core_SearchIcon}" width="50px;" />
+                    </apex:outputPanel>
+                    <apex:outputPanel style="float:left">
+                        <apex:outputText style="font-size:22px;" value="{!$Label.Core_Channel_Data_Search}"/>
+                        <br/>
+                        <apex:outputText style="font-weight:bold;" value="{!$Label.Core_Search_Criteria}"/>
+                    </apex:outputPanel>
+                </apex:panelGrid>
+                <br/>         
+            </apex:outputPanel>
+    
+            <apex:pageBlock id="outputRecordPageBlock">
+                <apex:outputPanel rendered="{!showCSV}">
+                    <br/>
+                    <apex:pageMessage escape="true" rendered="{!bcampMemberPresent}" severity="info" strength="1" title="No new Campaign Members created for this selection."></apex:pageMessage>
+                    <apex:pageMessage escape="true" rendered="{!bcampaignIdPresent}" severity="info" strength="1" title="Please select Campaign."></apex:pageMessage>   
+                    <apex:pageMessage escape="true" rendered="{!exportInProcess}" severity="info" strength="1" title="Request submitted – permissions being granted."></apex:pageMessage> 
+                    <apex:pageMessage escape="true" rendered="{!allBatchUsed}" severity="info" strength="1" title="All resources are in use. Please re-try later."></apex:pageMessage> 
+                    <br/>    
+                </apex:outputPanel>
+    
+                <apex:outputPanel rendered="{!showCSV && showCampaignSelector}">
+                    <apex:pageblockSection title="Campaign" columns="6" rendered="{!(NOT(ISNULL(lstTargetAccountDisplay)))}">   
+                        <apex:pageblocksectionItem >                    
+                            <apex:outputLabel value="Select Campaign" style="float:right; margin-top:12px; font-size:1.1em"/>
+                            <apex:inputField value="{!uCampaignId.campaignId}" required="False" style="margin-top:10px"/>
+                        </apex:pageblocksectionItem>
+                        <apex:pageblocksectionItem >
+                            <apex:commandButton value="Create Campaign Members" action="{!campaignMember1}" style="margin-top:10px;margin-left:-30%"/>
+                        </apex:pageblocksectionItem>
+                    </apex:pageblockSection>
+                    <br/>    
+                </apex:outputPanel>
+                
+                <apex:pageblockSection id="outputRecordPageBlock" title="Search Results" rendered="{!(NOT(ISNULL(lstTargetAccountDIsplay)))}">            
+                    
+                    <apex:pageblocksectionItem >    
+            
+                        <apex:outputPanel Rendered="{!showCSV}">
+                            <div align="right">
+                                 <br/> 
+                                 <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
+                                 <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
+                                 <apex:actionstatus id="counterStatusForMidwayNavigation">
+                                     <apex:facet name="start">
+                                         <apex:image url="/img/loading32.gif" width="20px" />
+                                     </apex:facet>
+                                 </apex:actionstatus>  
+                                 &nbsp;&nbsp;                
+                                 <apex:commandButton value="First" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                                 &nbsp;&nbsp;
+                                 <apex:commandButton value="Previous" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                                 &nbsp;&nbsp;
+                                 <apex:commandButton value="Next" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                                 &nbsp;&nbsp;
+                                 <apex:commandButton value="Last" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                            </div>
+                            <br/>
+                            <div align="center">
+                               <!--
+                               <apex:commandButton value="Access to Reports"   action="{!exportToReports}" reRender="outputRecordPageBlock" onclick="if(!confirm('Operation may take several minutes to complete.  Click [OK] to continue.')){return;}" rendered="{!disablebutton}"/>
+                               -->
+                               <apex:commandButton value="Remove Selected Accounts" action="{!deleteRecord}"  reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                               <apex:commandButton value="Export to Excel"          action="{!exportTargetList}"/>
+                               <apex:commandButton value="Return To Search"         action="{!returnToSearchPage}"/>
+                            </div>
+                         </apex:outputPanel>                   
+                    </apex:pageblocksectionItem>                    
+                    
+                    <br/>
+                    <apex:pageblocksectionItem >    
+                        <apex:outputPanel >
+                            <apex:pageBlockTable var="dataRecord" value="{!lstTargetAccountDisplay}">        
+                                <apex:column >
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Account Name {!IF(sortHeader.sortExpression== 'Name', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="Name" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <!-- <apex:outputText value="{!dataRecord.AccountInstance.Name}"/> -->
+                                    <apex:commandLink action="{!channelSalesData}" value="{!dataRecord.Name}">
+                                       <apex:param value="{!dataRecord.Id}" assignTo="{!selectedAccountId}" name="selectedAccountId"/>
+                                   </apex:commandLink>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Owner First Name {!IF(sortHeader.sortExpression== 'Owner.FirstName', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="Owner.FirstName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <apex:outputText value="{!dataRecord.firstName}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Owner Last Name {!IF(sortHeader.sortExpression== 'Owner.LastName', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="Owner.LastName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <apex:outputText value="{!dataRecord.lastName}"/>
+                                </apex:column>
+                                <apex:column headerValue="Account Type" >
+                                    <!-- SOQL Constraint - cannot sort on Multi-Select Picklist -->
+                                    <apex:outputText value="{!dataRecord.accountType}"/>
+                                </apex:column>
+                                <apex:column headerValue="Sales Segment" width="{!sColumnSize}%;">
+                                    <!-- SOQL Constraint - cannot sort on Multi-Select Picklist -->
+                                    <apex:outputText value="{!dataRecord.salesSegment}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Account Tier {!IF(sortHeader.sortExpression== 'Core_Account_Tier__c', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="Core_Account_Tier__c" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <apex:outputText value="{!dataRecord.accountTier}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Industry {!IF(sortHeader.sortExpression== 'Industry', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="Industry" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <apex:outputText value="{!dataRecord.Industry}"/>
+                                </apex:column>
+                                <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Sales Out Units {!IF(sortHeader.sortExpression== 'components', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="components" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                          
+                                    </apex:facet>                                    
+                                    <apex:outputText value="{0, number, integer}">
+                                        <apex:param value="{!dataRecord.components}"/>
+                                    </apex:outputText>                                                                        
+                                </apex:column>
+                                <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Sales Out {!IF(sortHeader.sortExpression== 'componentsUnitCosts', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="componentsUnitCosts" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <apex:outputText value="{0, number, currency}">
+                                        <apex:param value="{!dataRecord.componentsUnitCosts}"/>
+                                    </apex:outputText>                                                                     
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header"> 
+                                        <apex:commandLink action="{!simpleSort}" value="Program Membership {!IF(sortHeader.sortExpression== 'membershipTier', sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                            <apex:param value="membershipTier" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                        </apex:commandLink>                                                                                         
+                                    </apex:facet>                                     
+                                    <apex:outputText value="{!dataRecord.membershipTier}"/>
+                                </apex:column>
+                                <apex:column headerValue="Select Account">                    
+                                    <apex:inputCheckbox value="{!dataRecord.isSelected}"/>
+                                </apex:column>               
+                            </apex:pageBlockTable>                                         
+                            <apex:outputPanel Rendered="{!showCSV}">
+                                <div align="center">
+                                    <br/> 
+                                    <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
+                                    <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
+                                    <apex:actionstatus id="counterStatusForBottomNavigation">
+                                       <apex:facet name="start">
+                                           <apex:image url="/img/loading32.gif" width="20" />
+                                       </apex:facet>
+                                    </apex:actionstatus>  
+                                    &nbsp;&nbsp;                
+                                    <apex:commandButton value="First" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
+                                                        status="counterStatusForBottomNavigation"/>&nbsp;&nbsp;
+                                    <apex:commandButton value="Previous" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
+                                                        status="counterStatusForBottomNavigation"/>&nbsp;&nbsp;
+                                    <apex:commandButton value="Next" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
+                                                        status="counterStatusForBottomNavigation"/>&nbsp;&nbsp;
+                                    <apex:commandButton value="Last" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
+                                                        status="counterStatusForBottomNavigation"/>
+                                </div>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageblocksectionItem>                                                        
+                </apex:pageblockSection>
+            </apex:pageBlock> 
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

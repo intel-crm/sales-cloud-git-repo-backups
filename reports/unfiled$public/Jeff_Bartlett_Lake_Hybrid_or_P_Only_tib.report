@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_57921357</developerName>
+        <masterLabel>Hyrbrid or P-Only</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Hybrid</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>P-Only</sourceValue>
+            </sourceValues>
+            <value>Hybrid or P-Only</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 211TE (20M Cache, up to 4.80 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 7 Processor 251E (36M Cache, up to 5.60 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 3 Processor 201E (12M Cache, up to 4.80 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 7 Processor 251TE (36M Cache, up to 5.40 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 211E (20M Cache, up to 4.90 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 221E (24M Cache, up to 5.20 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 221TE (24M Cache, up to 5.00 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 3 Processor 201TE (12M Cache, up to 4.60 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 211EF (20M Cache, up to 4.90 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 3 Processor 201EF (12M Cache, up to 4.80 GHz)</sourceValue>
+            </sourceValues>
+            <value>Hybrid</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 213PE (24M Cache, up to 5.20 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 223PQE (24M Cache, up to 5.50 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 9 Processor 273PTE (36M Cache, up to 5.50 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 9 Processor 273PE (36M Cache, up to 5.70 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 223PTE (24M Cache, up to 5.40 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 7 Processor 253PTE (33M Cache, up to 5.40 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 9 Processor 273PQE (36M Cache, up to 5.90 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 7 Processor 253PE (33M Cache, up to 5.50 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 213PTE (24M Cache, up to 5.20 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 223PE (24M Cache, up to 5.40 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 7 Processor 253PQE (33M Cache, up to 5.70 GHz)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Core™ 5 Processor 213PEF (24M Cache, up to 5.20 GHz)</sourceValue>
+            </sourceValues>
+            <value>P-Only</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_57921357</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Product2.Core_Code_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Bartlett Lake</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Jeff - Bartlett Lake Hybrid or P Only</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

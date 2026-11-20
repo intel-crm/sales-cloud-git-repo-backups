@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Modify UK</name>
+    <style>none</style>
+    <subject>Business account update</subject>
+    <textOnly>Business Account Update
+
+
+!%UserFirstName%!,
+
+This notice is to inform you that an individual has modified the options for sharing Intel® Partner Alliance programme information with the selected Intel® Authorised Distributors and/or Intel® Approved Suppliers (Service Providers).
+
+Business Account Name: !%AccountName%!
+Account Number: !%AccountNumber%!
+Primary Contact Who Made the Selection(s): !%UserEmailAddr%!
+Date: !%DateSigned%!
+Service Provider(s) Selected: !%Distributors%!
+Authorisation: I hereby authorise Intel to share with the Service Provider(s) information about my Intel® Technology Provider Programme account to help manage my benefits. I also authorise Intel to allow them to make points redemptions on my behalf (not available in APJ).
+
+
+If you do not approve of this action or feel that an error has been made, you can modify the selections or opt out.
+If you have any questions, please contact us at programs@intel.com.
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

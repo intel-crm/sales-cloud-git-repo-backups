@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Industrial_Solution_Builder_Specialty_TUR</name>
+    <style>none</style>
+    <subject>Intel® Ortağı İş Birliği Endüstriyel Çözüm Üretici Uzmanlığı</subject>
+    <textOnly>Kalifiye Olduğunuz İçin Tebrikler!
+
+
+{!Contact.FirstName},
+
+Intel® Ortağı İş Birliği Endüstriyel Çözüm Üretici Uzmanlığı&apos;na hoş geldiniz! Yeterlliliğe sahip bir IoT Uzmanı olarak, IoT Endüstriyel Çözüm Üretici sektöründeki işletmenizi büyütmenize yardımcı olmak amacıyla tasarlanan daha fazla avantajdan* faydalanabilirsiniz:
+
+Özel bir program rozeti
+Özel Pazar Geliştirme Fonları
+Intel® Endüstriyel Çözüm Üreticisi forumuna katılma
+Özel etkinlik davetleri ve karşılaştırma fırsatları
+
+Erişim ayrıcalıkları
+
+
+*Avantajlar, konuma göre farklılık gösterebilir.
+
+Intel iş ortakları köklü bir inovasyon geçmişine sahiptir. Intel® Ortağı İş Birliği sayesinde, veri merkezli ekonomide çözüm oluşturma sürecini hızlandırmanıza yardımcı olabiliriz. Birlikte bağlantı kurabilir, yeniliklere imza atabilir ve büyüyebiliriz. Sıradışı fırsatları gerçeğe dönüştürebiliriz.
+
+Üyeliğinizi optimize etme konusunda yardım ve destek almak için https://www.intel.com/content/www/tr/tr/partner-alliance/help/overview.html adresini ziyaret edin.
+
+
+Teşekkür ederiz,
+Intel® Ortağı İş Birliği ekibiniz
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

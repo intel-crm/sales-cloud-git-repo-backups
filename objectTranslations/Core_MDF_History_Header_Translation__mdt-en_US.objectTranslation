@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>History Header Translation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>History Header Translations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_History_Header_Translation --></label>
+        <name>Core_MDF_History_Header_Translation_nm__c</name>
+        <picklistValues>
+            <masterLabel>ACTUAL METRICS</masterLabel>
+            <translation><!-- ACTUAL METRICS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Transfer Logs History</masterLabel>
+            <translation><!-- Account Transfer Logs History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account User History</masterLabel>
+            <translation><!-- Account User History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget History</masterLabel>
+            <translation><!-- Budget History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Adjustment Requests History</masterLabel>
+            <translation><!-- Claim Adjustment Requests History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim History</masterLabel>
+            <translation><!-- Claim History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Offsets History</masterLabel>
+            <translation><!-- Claim Offsets History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity History</masterLabel>
+            <translation><!-- Co-Marketing Activity History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disbursement Status</masterLabel>
+            <translation><!-- Disbursement Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Criteria List History</masterLabel>
+            <translation><!-- Hold Criteria List History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>METRICS</masterLabel>
+            <translation><!-- METRICS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLANNED METRICS</masterLabel>
+            <translation><!-- PLANNED METRICS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP Requirements</masterLabel>
+            <translation><!-- POP Requirements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Fund Allocations History</masterLabel>
+            <translation><!-- Partner Fund Allocations History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Group Mapping History</masterLabel>
+            <translation><!-- Partner Group Mapping History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Breakdown</masterLabel>
+            <translation><!-- Payment Breakdown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Details</masterLabel>
+            <translation><!-- Payment Details --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment History</masterLabel>
+            <translation><!-- Payment History --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Run History</masterLabel>
+            <translation><!-- Payment Run History --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please provide the Object&apos;s API name. --></help>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_obj_nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

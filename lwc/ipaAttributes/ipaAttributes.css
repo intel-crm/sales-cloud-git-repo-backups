@@ -1,0 +1,11 @@
+.attributes-container[data-separator] .attribute-value {
+  display: inline-block;
+}
+
+.attributes-container[data-separator] .attribute-value:last-child .attribute-separator {
+  display: none;
+}
+
+.attributes-container[data-display-inline="true"] {
+  display: inline;
+}

@@ -1,0 +1,88 @@
+<!--IPA2.0: US-TWC729-7976-->
+<aura:component >
+</aura:component>
+<!--<aura:component Controller="PSS_PartnerResponsePageCtrl" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="quesAnsObj" type="Object[]" />
+    <aura:attribute name="responseWrapper" type="PSS_PartnerResponsePageCtrl.partnerResponseWrapper" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="isDetailActive" type="Boolean" />
+    <aura:attribute name="isPreviewActive" type="Boolean" default="false" />
+    <aura:attribute name="isAdminReviewActive" type="Boolean" default="false" />
+    <aura:attribute name="surveyurl" type="string" />
+    <aura:attribute name="solutionValidation" type="integer" />
+    <aura:attribute name="solutionStatus" type="String" default="" />
+    <aura:attribute name="showModal" type="boolean" default="false" description="Internal" />
+    <aura:attribute name="modalInfo" type="object" description="Internal" />
+    <aura:attribute name="modalCallback" type="object" description="Internal" />
+    <aura:attribute name="tabVisibility" type="Boolean" default="false" />
+    
+    <aura:registerEvent name="appEvent" type="c:PSS_HandleAdminReview"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:PSS_SolutionSubmitEvent" action="{!c.handleSolutionSubmitEvent}" />
+
+    <aura:if isTrue="{!v.responseWrapper.isAdmin}">
+        <div class="slds-p-around_x-large main-wrapper">
+        <div class="slds-path ">
+            <div class="slds-grid slds-path__track">
+                <div class="slds-grid slds-path__scroller-container">
+                    <div class="slds-path__scroller" role="application">
+                        <div class="slds-path__scroller_inner">
+                            <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+                                <aura:if isTrue="{!v.responseWrapper.isAdmin}">
+                                    <aura:if isTrue="{!v.tabVisibility}">
+                                        <li class="slds-path__item slds-is-current slds-is-active" role="presentation" onclick="{!c.handleDetailClick}">
+                                            <a aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-1" role="option" tabindex="0">
+                                                <span class="slds-path__stage">
+                                
+                                                    <span class="slds-assistive-text">Current Stage:</span>
+                                                </span>
+                                                <span class="slds-path__title">Solution Details</span>
+                                            </a>
+                                        </li>
+                                
+                                        <li class="slds-path__item slds-is-current slds-is-active" role="presentation" onclick="{!c.handleAdminReviewClick}">
+                                            <a aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-3" role="option" tabindex="-1">
+                                                <span class="slds-path__stage">
+                                
+                                                </span>
+                                                <span class="slds-path__title">Admin Review</span>
+                                            </a>
+                                        </li>
+                                   </aura:if>
+                                </aura:if>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+                                
+        
+        <aura:if isTrue="{!and(v.isAdminReviewActive,v.responseWrapper.isAdmin)}">          
+            <div class="slds-p-top_large">
+                
+                <c:PSS_AdminReviewPage SurveyId="{!v.recordId}"/>
+            </div>
+        </aura:if>
+    </div>
+    </aura:if>
+    <aura:if isTrue="{!!v.isAdminReviewActive}">
+        <div class="contain">
+            <span class="color-red slds-m-right_xxx-small" >*</span>&nbsp;{!$Label.c.PMP_Create_Offering_Form_Required}    
+        </div>    
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showModal}">
+        <c:IntelDialog
+                       modalHeader="{!v.modalInfo.header}"
+                       modalMessage="{!v.modalInfo.message}"
+                       onclose="{!v.modalCallback}"
+                       showCancelButton="{!v.modalInfo.showCancelButton}"
+                       />
+    </aura:if>
+    
+
+
+</aura:component>-->

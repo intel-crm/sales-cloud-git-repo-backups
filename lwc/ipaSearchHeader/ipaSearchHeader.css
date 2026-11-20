@@ -1,0 +1,116 @@
+.search-header-container {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--lightGray);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 0;
+}
+
+.clear-all {
+  font-size: .75rem;
+}
+
+.filters-applied-container,
+.filters-count-sort-share-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 60%;
+}
+
+.filter-label {
+  margin-bottom: .625rem;
+}
+
+.filter-label.clear {
+  margin-left: .625rem;
+}
+
+.pill {
+  background-color: transparent;
+  border: 1px solid var(--carbon-tint1);
+  border-radius: 0;
+  display: inline-block;
+  font-size: .813rem;
+  font-weight: normal;
+  line-height: 1.231;
+  margin-bottom: .625rem;
+  margin-right: .3rem;
+  padding: .4rem 3rem .4rem .625rem;
+  position: relative;
+}
+
+.pill:last-child {
+  margin-right: 1rem;
+}
+
+.pill .pill-cancel {
+  cursor: pointer;
+  display: block;
+  height: .625rem;
+  position: absolute;
+  right: .625rem;
+  top: 0;
+  top: 50%;
+  transform: translateY(-90%);
+  width: .625rem;
+  z-index: 2;
+}
+
+.pill[data-count="0"] .pill-count {
+  display: none;
+}
+
+.pill .slds-icon-text-default {
+  height: .625rem;
+  width: .625rem;
+}
+
+.sort-by-select {
+  margin: 0 1rem;
+  min-width: 8rem;
+}
+
+/* Mobile & Tablet Styles */
+@media only screen and (max-width: 767px) {
+  .filters-count-sort-share-container {
+    padding: 0 1rem;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .search-header-container {
+    border-bottom: 0;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .filters-applied-container {
+    display: none;
+  }
+
+  .filters-count-sort-share-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .total-results-container {
+    align-items: baseline;
+    display: flex;
+  }
+
+  .total-results-container p {
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .filters-applied-container {
+    margin-bottom: -.625rem;
+  }
+}

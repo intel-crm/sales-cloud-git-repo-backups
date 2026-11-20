@@ -1,0 +1,124 @@
+<template>
+
+    <div class="modal-filters-container" onfilterchange={handleFilterChange}>
+        <div class="modal-filters-groupings-container">
+            <template if:true={includesPreRelease}>
+                <lightning-input type="checkbox" checked={preReleaseValue}
+                    label={labels.includesPreRelease}
+                    onchange={handleTogglePreRelease}>
+                </lightning-input>
+            </template>
+            <template for:each={filterGroupings} for:item="grouping">
+                <template if:true={grouping.hasFiltersWithResults}>
+                    <div key={grouping.key} class="filter-grouping-container slds-is-relative">
+                        <template if:true={loading}>
+                            <lightning-spinner alternative-text={labels.loading}></lightning-spinner>
+                        </template>
+                        <div role="button" tabindex="0" class="filter-grouping cursor-pointer slds-grid slds-grid_vertical-align-center"
+                            data-key={grouping.key} onclick={handleToggleGrouping} onkeydown={handleToggleGroupingAccessibility}
+                            aria-expanded={grouping.expanded} aria-controls={grouping.key}>
+                            <div class="slds-grow">
+                                <h4 class="slds-m-vertical_medium truncate-3">{grouping.label}</h4>
+                            </div>
+                            <div class="filter-grouping-right-container">
+                                <span class="selected-filters-count color-medium-gray text-bold"
+                                    data-count={grouping.selectedFiltersCount}>
+                                    {grouping.selectedFiltersCount}</span>
+                                <template if:false={grouping.expanded}>
+                                    <span class="fa-angle-down"></span>
+                                </template>
+                                <template if:true={grouping.expanded}>
+                                    <span class="fa-angle-up"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <div role="tablist" id={grouping.key} aria-label={grouping.label} class="search-filters-container" data-expanded={grouping.expanded}>
+                            <template for:each={grouping.filters} for:item="filter">
+                                <template if:true={filter.hasResults}>
+                                    <div role="tab" tabindex="-1" key={filter.key} class="search-filter-container slds-p-bottom_x-small" data-selected={filter.selected} aria-selected={filter.selected} aria-controls={filter.label}>
+                                        <div role="button" tabindex="0" aria-label={filter.label} class="search-filter cursor-pointer" data-key={filter.key}
+                                            onclick={handleSelectFilterInModal} onkeydown={handleSelectFilterInModalAccessibility}>
+                                            <div class="filter-label-container slds-is-relative">
+                                                <span class="truncate-2">{filter.label}</span>
+                                                <span class="selected-filters-count color-medium-gray text-bold"
+                                                    data-count={filter.selectedFiltersCount}>
+                                                    {filter.selectedFiltersCount}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+        
+        <div class="modal-filters-filter-container slds-is-relative" data-rendered={renderModalFilterNodes}>
+            <template if:false={renderModalFilterNodes}>
+                <lightning-spinner alternative-text={labels.loading}></lightning-spinner>
+            </template>
+            <template if:true={renderModalFilterNodes}>
+                <div class="scroll-top-filter-modal"></div>
+                <div role="tabpanel" aria-labelledby={selectedFilter.label} tabindex="0" class="search-filter-nodes slds-p-left_large">
+                    <template if:true={forceShowModalFilterNodesSpinner}>
+                        <div class="force-spinner">
+                            <lightning-spinner alternative-text="Rendering..."></lightning-spinner>
+                        </div>
+                    </template>
+                    <h4 class="slds-m-vertical_medium vertical-center">
+                        {selectedFilter.label}
+                        <span class="selected-filters-count color-medium-gray text-bold"
+                            data-count={selectedFilter.selectedFiltersCount}>
+                            {selectedFilter.selectedFiltersCount}
+                        </span>
+                    </h4>
+                    <div class="select-all-container slds-p-top_xx-small slds-p-bottom_small" data-hide={selectedFilter.hideSelectAllLinks}>
+                        <span role="link" tabindex="0" class="link-text text-upcase text-bold filters-small-text"
+                            data-filter-name={selectedFilter.name}
+                            data-is-draft="true"
+                            onclick={handleSelectAll}
+                            onkeydown={handleSelectAllAccessibility}>
+                            {labels.selectAll}
+                        </span>
+                        <span class="slds-m-horizontal_small">|</span>
+                        <span role="link" tabindex="0" class="link-text text-upcase text-bold filters-small-text"
+                            data-filter-name={selectedFilter.name}
+                            data-is-draft="true"
+                            onclick={handleDeSelectAll}
+                            onkeydown={handleDeSelectAllAccessibility}>
+                            {labels.deselectAll}
+                        </span>
+                    </div>
+                    <template if:true={selectedFilter.hasSearch}>
+                        <div class="search-container slds-m-bottom_large slds-is-relative">
+                            <c-core-intc-search show-filter-search-input-spinner-icon={showFilterSearchInputSpinnerIcon}
+                                onfinishedtyping={handleFilterSearchInputChange} 
+                                onclearkeyword={handleFilterSearchInputChange} 
+                                placeholder={labels.filterSearchInputPlaceholder} 
+                                keyword-value={searchKeywordValue} ></c-core-intc-search>
+                            <template if:true={largeDataHighlightedResultCount}>
+                                <div class="utility-type text-bold slds-m-top_small">
+                                    <span class="slds-p-vertical_xx-small slds-p-horizontal_x-small highlighted-results-count">
+                                        {largeDataHighlightedResultCount} {labels.results}
+                                    </span>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <c-ipa-search-filter-node
+                        filter={selectedFilter}
+                        role={selectedFilter.ariaRole}
+                        aria-label={selectedFilter.label}
+                        is-draft
+                        show-pre-release={preReleaseValue}
+                        search-params={searchParams}
+                        search-response-filters={searchResponseFilters}>
+                    </c-ipa-search-filter-node>
+                </div>
+            </template>
+        </div>
+    </div>
+
+</template>

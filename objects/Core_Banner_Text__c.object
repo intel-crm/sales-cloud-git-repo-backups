@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Banner_Text_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This custom object helps users to customize data which they see in home page</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_CRM_Project__c</fullName>
+        <label>Project</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CRM</fullName>
+                    <default>false</default>
+                    <label>CRM</label>
+                </value>
+                <value>
+                    <fullName>CCP</fullName>
+                    <default>false</default>
+                    <label>CCP</label>
+                </value>
+                <value>
+                    <fullName>IQR</fullName>
+                    <default>false</default>
+                    <label>IQR</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_End_Date__c</fullName>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Label_de_txt__c</fullName>
+        <label>German Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_es_MX_txt__c</fullName>
+        <label>Spanish Mex Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_es_txt__c</fullName>
+        <label>Spanish Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_fr_txt__c</fullName>
+        <label>French Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_it_txt__c</fullName>
+        <label>Italian Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_ja_txt__c</fullName>
+        <label>Japnese Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_ko_txt__c</fullName>
+        <label>Korean Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_pt_BR_txt__c</fullName>
+        <label>Portugese Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_ru_txt__c</fullName>
+        <label>Russian Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_zh_CN_txt__c</fullName>
+        <label>Chinese Sim Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Label_zh_TW_txt__c</fullName>
+        <label>Chinese Trad Label Trans</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Start_Date__c</fullName>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Text_Message__c</fullName>
+        <label>Text Message</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>core_CRM_type__c</fullName>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Home Page</fullName>
+                    <default>false</default>
+                    <label>Home Page</label>
+                </value>
+                <value>
+                    <fullName>KPI Header</fullName>
+                    <default>false</default>
+                    <label>KPI Header</label>
+                </value>
+                <value>
+                    <fullName>KPI Body</fullName>
+                    <default>false</default>
+                    <label>KPI Body</label>
+                </value>
+                <value>
+                    <fullName>Home Page Default</fullName>
+                    <default>false</default>
+                    <label>Home Page Default</label>
+                </value>
+                <value>
+                    <fullName>KPI Header Default</fullName>
+                    <default>false</default>
+                    <label>KPI Header Default</label>
+                </value>
+                <value>
+                    <fullName>KPI Body Default</fullName>
+                    <default>false</default>
+                    <label>KPI Body Default</label>
+                </value>
+                <value>
+                    <fullName>Community Home</fullName>
+                    <default>false</default>
+                    <label>Community Home</label>
+                </value>
+                <value>
+                    <fullName>General</fullName>
+                    <default>false</default>
+                    <label>General</label>
+                </value>
+                <value>
+                    <fullName>Common</fullName>
+                    <default>false</default>
+                    <label>Common</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>core_isActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isActive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Banner Text</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_CRM_Project__c</columns>
+        <columns>core_isActive__c</columns>
+        <columns>core_CRM_type__c</columns>
+        <columns>Core_Start_Date__c</columns>
+        <columns>Core_End_Date__c</columns>
+        <columns>Core_Text_Message__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Home_Page</fullName>
+        <columns>NAME</columns>
+        <columns>Core_CRM_Project__c</columns>
+        <columns>core_isActive__c</columns>
+        <columns>core_CRM_type__c</columns>
+        <columns>Core_Start_Date__c</columns>
+        <columns>Core_End_Date__c</columns>
+        <columns>Core_Text_Message__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>core_CRM_type__c</field>
+            <operation>equals</operation>
+            <value>Home Page</value>
+        </filters>
+        <label>Home Page</label>
+    </listViews>
+    <listViews>
+        <fullName>KPI_Body</fullName>
+        <columns>NAME</columns>
+        <columns>Core_CRM_Project__c</columns>
+        <columns>core_isActive__c</columns>
+        <columns>core_CRM_type__c</columns>
+        <columns>Core_Start_Date__c</columns>
+        <columns>Core_End_Date__c</columns>
+        <columns>Core_Text_Message__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>core_CRM_type__c</field>
+            <operation>equals</operation>
+            <value>KPI Body</value>
+        </filters>
+        <label>KPI Body</label>
+    </listViews>
+    <listViews>
+        <fullName>KPI_Header</fullName>
+        <columns>NAME</columns>
+        <columns>Core_CRM_Project__c</columns>
+        <columns>core_isActive__c</columns>
+        <columns>core_CRM_type__c</columns>
+        <columns>Core_Start_Date__c</columns>
+        <columns>Core_End_Date__c</columns>
+        <columns>Core_Text_Message__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>core_CRM_type__c</field>
+            <operation>equals</operation>
+            <value>KPI Header</value>
+        </filters>
+        <label>KPI Header</label>
+    </listViews>
+    <nameField>
+        <label>Banner Text Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Banner Text</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <searchResultsAdditionalFields>Core_CRM_Project__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Text_Message__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_CRM_type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_isActive__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Core_StartDate_EndDate_Validation</fullName>
+        <active>true</active>
+        <description>To validate the Start date is greater than the End date</description>
+        <errorConditionFormula>IF(
+Core_Start_Date__c &gt; Core_End_Date__c ,
+TRUE, FALSE
+)</errorConditionFormula>
+        <errorMessage>Start date cannot be greater than End date</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

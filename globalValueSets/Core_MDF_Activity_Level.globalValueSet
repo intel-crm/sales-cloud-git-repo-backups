@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Super Activity</fullName>
+        <default>false</default>
+        <label>Super Activity</label>
+    </customValue>
+    <customValue>
+        <fullName>Sub Activity</fullName>
+        <default>false</default>
+        <label>Sub Activity</label>
+    </customValue>
+    <description>Used for Outcome-Based Campaigns</description>
+    <masterLabel>Activity Level</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

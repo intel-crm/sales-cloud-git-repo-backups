@@ -1,0 +1,34 @@
+.THIS .slds-modal__close {
+  box-shadow: none;
+  border: none;
+}
+
+.THIS .collapseHeader {
+  border: 0;
+  height: 0;
+  padding: 0;
+}
+
+.THIS header, .THIS footer {
+  background: t(white);
+  border: 0;
+}
+
+.THIS footer span:not(:first-child) {
+  margin-left: 1em;
+}
+
+.THIS.modalInModal .slds-modal__container {
+  height: auto;
+  width: 70%;
+  left: 15%;
+  top: 5em;
+  position: absolute;
+}
+.THIS.modalInModal .slds-modal__header {
+  width: 100% !important;
+}
+.THIS.modalInModal .slds-modal__content {
+  width: 100% !important;
+  height: auto !important;
+}

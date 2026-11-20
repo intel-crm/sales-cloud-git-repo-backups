@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Profile Question</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Profile Questions</value>
+    </caseValues>
+    <fields>
+        <label><!-- InActive Indicator --></label>
+        <name>PRM_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Profile Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Display Order --></label>
+        <name>PRM_Display_Order_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Order --></label>
+        <name>PRM_Display_Order_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- InActive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Type --></label>
+        <name>PRM_Partner_Type_Id__c</name>
+        <relationshipLabel><!-- Partner Profile Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Code --></label>
+        <name>PRM_Question_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Display Text --></label>
+        <name>PRM_Question_Display_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Display Type --></label>
+        <name>PRM_Question_Display_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>BOTH</masterLabel>
+            <translation><!-- BOTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXTERNAL</masterLabel>
+            <translation><!-- EXTERNAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INTERNAL</masterLabel>
+            <translation><!-- INTERNAL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Question Display Type --></label>
+        <name>PRM_Question_Display_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>BOTH</masterLabel>
+            <translation><!-- BOTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXTERNAL</masterLabel>
+            <translation><!-- EXTERNAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INTERNAL</masterLabel>
+            <translation><!-- INTERNAL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Question Type --></label>
+        <name>PRM_Question_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Boolean</masterLabel>
+            <translation><!-- Boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiselect</masterLabel>
+            <translation><!-- Multiselect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text</masterLabel>
+            <translation><!-- Text --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Textarea</masterLabel>
+            <translation><!-- Textarea --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Question Type --></label>
+        <name>PRM_Question_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Boolean</masterLabel>
+            <translation><!-- Boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiselect</masterLabel>
+            <translation><!-- Multiselect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text</masterLabel>
+            <translation><!-- Text --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Textarea</masterLabel>
+            <translation><!-- Textarea --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

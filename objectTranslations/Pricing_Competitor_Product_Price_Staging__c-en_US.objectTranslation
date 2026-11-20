@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Competitor Product Price Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Competitor Products Price Staging</value>
+    </caseValues>
+    <fields>
+        <help><!-- Type of workload into which the products included in the quote will be integrated. --></help>
+        <label><!-- Application --></label>
+        <name>Pricing_Application_Staging_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP</masterLabel>
+            <translation><!-- CoSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstations</masterLabel>
+            <translation><!-- Workstations --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product Name --></label>
+        <name>Pricing_Competitor_Product_Name_Staging__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Meet Comp Price --></label>
+        <name>Pricing_Final_Meet_Comp_Price_Staging__c</name>
+    </fields>
+    <fields>
+        <label><!-- List Price --></label>
+        <name>Pricing_List_Price_Staging__c</name>
+    </fields>
+    <fields>
+        <label><!-- Median Meet Comp Discount --></label>
+        <name>Pricing_Median_Meet_Comp_Disty_Staging__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Pricing_Region_Staging_Nm__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

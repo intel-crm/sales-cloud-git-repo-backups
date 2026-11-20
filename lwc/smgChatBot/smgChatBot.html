@@ -1,0 +1,155 @@
+<template>
+    <div class="slds-tabs_scoped">
+        <!-- Tab Navigation -->
+        <ul class="slds-tabs_scoped__nav" role="tablist">
+            <!-- VITA Tab - Only visible with permission -->
+            <!--<template if:true={showVitaTab}> -->
+                <li class="slds-tabs_scoped__item" role="presentation">
+                    <a 
+                        class={activeVitaTabClass} 
+                        href="#vita" 
+                        role="tab" 
+                        tabindex="0" 
+                        aria-selected={isVitaActive}
+                        aria-controls="vita-tab-content"
+                        data-value="vita"
+                        onclick={handleTabChange}
+                    >
+                        {vitaTabLabel}
+                    </a>
+                </li>
+            <!--</template> -->
+            <!-- Sales CRM Tab - Only visible with permission -->
+            <template if:true={showSalesCrmTab}>
+                <li class="slds-tabs_scoped__item" role="presentation">
+                    <a 
+                        class={activeSalesCrmTabClass} 
+                        href="#salescrm" 
+                        role="tab" 
+                        tabindex="0" 
+                        aria-selected={isSalesCrmActive}
+                        aria-controls="salescrm-tab-content"
+                        data-value="salescrm"
+                        onclick={handleTabChange}
+                    >
+                        {salesCrmTabLabel}
+                    </a>
+                </li>
+            </template>
+            <!-- IGPT Tab - Always visible -->
+            <li class="slds-tabs_scoped__item" role="presentation">
+                <a 
+                    class={activeIgptTabClass} 
+                    href="#igpt" 
+                    role="tab" 
+                    tabindex="0" 
+                    aria-selected={isIgptActive}
+                    aria-controls="igpt-tab-content"
+                    data-value="igpt"
+                    onclick={handleTabChange}
+                >
+                    IGPT
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="slds-tabs_scoped__content">
+            <!-- IGPT Tab Content - Only show when IGPT tab is active -->
+            <template if:true={isIgptActive}>
+                <div 
+                    id="igpt-tab-content" 
+                    class="slds-tabs_scoped__content slds-show"
+                    role="tabpanel" 
+                    aria-labelledby="igpt-tab"
+                >
+                    <iframe 
+                        src={igptUrl} 
+                        width="100%"
+                        frameborder="0" 
+                        class="smg-chatbot-iframe"
+                        title="IGPT Chat Interface"
+                    ></iframe>
+                </div>
+            </template>
+
+            <!-- Sales CRM Tab Content - Only show when Sales CRM tab is active and user has permission -->
+            <template if:true={isSalesCrmActive}>
+                <template if:true={showSalesCrmTab}>
+                    <div 
+                        id="salescrm-tab-content" 
+                        class="slds-tabs_scoped__content slds-show"
+                        role="tabpanel" 
+                        aria-labelledby="salescrm-tab"
+                    >
+                        <iframe 
+                            src={salesCrmUrl} 
+                            width="100%"
+                            frameborder="0" 
+                            class="smg-chatbot-iframe"
+                            title="Sales CRM Chat Interface"
+                        ></iframe>
+                    </div>
+                </template>
+            </template>
+
+            <!-- VITA Tab Content - Only show when VITA tab is active -->
+            <template if:true={isVitaActive}>
+                <template if:true={showVitaTab}>
+                    <div 
+                        id="vita-tab-content" 
+                        class="slds-tabs_scoped__content slds-show"
+                        role="tabpanel" 
+                        aria-labelledby="vita-tab"
+                    >
+                        <iframe 
+                            src={vitaUrl} 
+                            width="100%"
+                            frameborder="0" 
+                            class="smg-chatbot-iframe"
+                            title="VITA Chat Interface"
+                        ></iframe>
+                    </div>
+                </template>
+                
+                <!-- VITA Access Denied Message - Show when user doesn't have permission -->
+                <template if:false={showVitaTab}>
+                    <div 
+                        id="vita-access-denied" 
+                        class="slds-tabs_scoped__content slds-show access-denied-container-centered"
+                        role="tabpanel" 
+                        aria-labelledby="vita-tab"
+                    >
+                        <div class="slds-illustration slds-illustration_large">
+                            <div class="slds-m-vertical_large slds-text-align_center">
+                                <div class="slds-illustration__svg">
+                                    <svg class="slds-illustration__svg slds-illustration__svg_large" viewBox="0 0 454 218" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <path fill="#B0ADAB" d="M0 150h454v68H0z"/>
+                                            <g transform="translate(145 8)">
+                                                <ellipse fill="#D8D8D8" fill-rule="nonzero" cx="81.5" cy="131" rx="81.5" ry="13"/>
+                                                <path fill="#FFFFFF" fill-rule="nonzero" d="M39 129h85v3H39z"/>
+                                                <path d="M29,50 L29,104.5 C29,111.404 34.596,117 41.5,117 L122.5,117 C129.404,117 135,111.404 135,104.5 L135,50" fill="#E8E5E0" fill-rule="nonzero"/>
+                                                <circle fill="#C8C6C4" fill-rule="nonzero" cx="82" cy="83.5" r="30.5"/>
+                                                <path fill="#FEFEFE" d="M82 65.172A6.828 6.828 0 1 1 82 78.828a6.828 6.828 0 0 1 0-13.656zM82 85.656a3.344 3.344 0 1 1 0 6.688 3.344 3.344 0 0 1 0-6.688z"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 class="slds-text-heading_medium slds-m-bottom_small slds-text-align_center">{vitaErrorMessageHeader}</h3>
+                                <p class="slds-text-body_regular slds-text-color_weak slds-m-bottom_small slds-text-align_center">
+                                    {vitaErrorMessageBody} <a href={vitaErrorMessageHyperlink} target="_blank" rel="noopener noreferrer" class="vita-link">{vitaErrorMessageHyperlinkText}</a>
+                                </p>
+                                <!--
+                                <p class="slds-text-body_regular slds-text-color_weak slds-m-bottom_medium slds-text-align_center">
+                                    {vitaTabSecondLineError} <a href={vitaTabHyperlink} target="_blank" rel="noopener noreferrer" class="vita-link">{vitaTabHyperlinkText}</a> {vitaTabThirdLineError}
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </div>
+</template>

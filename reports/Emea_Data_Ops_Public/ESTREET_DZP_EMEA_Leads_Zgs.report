@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Email_Txt__c</field>
+    </columns>
+    <columns>
+        <field>FK_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>FK_$Lead.Core_Last_Activity_Date__c</field>
+    </columns>
+    <columns>
+        <field>FK_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>FK_LEAD_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Lead_Status__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Lead.Core_Lead_State__c</field>
+    </columns>
+    <description>by email address</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_Inquiry__c.Core_Inquiry_Source_ID_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>WW_DeveloperEmbedded_CNDA Request_CNDA Request for RDC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Inquiry__c.Core_Region__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>! ESTREET DZP - EMEA Leads</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Inquiry__c@Core_Inquiry__c.Core_Lead_Inquiries__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST90</interval>
+    </timeFrameFilter>
+</Report>

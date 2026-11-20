@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>R3_Email 2_cnvrg.io_090623</name>
+    <relatedEntityType>Contact</relatedEntityType>
+    <style>none</style>
+    <subject>Ready to get more ROI for your AI investments?</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

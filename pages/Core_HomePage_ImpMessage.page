@@ -1,0 +1,23 @@
+<apex:page controller="Core_HomePage_Messages" action="{!getBannerTextMsg}" >
+    <apex:includeLightning />
+    <apex:slds />
+    <div style="font-family: Calibri,sans-serif ;margin-left: -10px;" >
+        <apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme3'}">
+  <!-- <p>
+      Core_Banner_Imp_Message
+    </p>   -->
+    <apex:outputText escape="false" value="<b>Hi {!$User.FirstName}! </b>{!$Label.Core_Banner_Imp_Message}" style="font-size:14.0pt"></apex:outputText>
+    <apex:outputText escape="false" value="{!IF(message != NULL, message ,'')}"></apex:outputText>
+        </apex:outputPanel>
+    </div>
+<apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
+            <div style="font-family: Salesforce Sans,Arial, sans-serif;align:" >
+              <!--  <p>
+       Important Information
+    </p>   -->    
+    <apex:outputText escape="false" value="<b>Hi {!$User.FirstName}! </b>{!$Label.Core_Banner_Imp_Message}" style="font-size:14.0pt"></apex:outputText>
+    <apex:outputText escape="false" value="{!IF(message != NULL, message ,'')}"></apex:outputText>
+    </div>
+    </apex:outputPanel>
+  
+</apex:page>

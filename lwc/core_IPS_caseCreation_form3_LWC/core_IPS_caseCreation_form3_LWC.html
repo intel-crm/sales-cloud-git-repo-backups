@@ -1,0 +1,755 @@
+<template>
+    <c-core_-i-p-s_-coveo-event-on-submit_-lex></c-core_-i-p-s_-coveo-event-on-submit_-lex>
+    <template if:true={createmode}>
+        <div class="divclass">
+            <h1 class="selectpjthead">IPS Case</h1>
+            <div class="slds-m-horizontal_x-large">
+                <div class="slds-progress barSize2">
+                    <ol class="slds-progress__list">
+                        <li class="slds-progress__item slds-is-completed">
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon"
+                                title="Complete">
+                                <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                    <img class="progressbarIcon" src={progressbarImg}   />
+                                </div>
+                            </span>
+                        </li>
+                        <li class="slds-progress__item slds-is-completed">
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon"
+                                title="Complete">
+                                <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                    <img class="progressbarIcon" src={progressbarImg}   />
+                                </div>
+                            </span>
+                        </li>
+                        <li class="slds-progress__item slds-is-active">
+                            <div class="slds-progress__marker"></div>
+                        </li>
+                    </ol>
+                    <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100"
+                        aria-valuenow="0" role="progressbar">
+                        <span class="slds-progress-bar__value barProgress2"></span>
+                    </div>
+                </div>
+                <lightning-layout-item size=8>
+                    <div class="progressText slds-grid slds-grid_align-spread">
+                        <div class="slds-col firstLabel">Case Details</div>
+                        <div class="slds-col middleLabel">Check for Answers</div>
+                        <div class="slds-col lastLabel">
+                            <p class="progressActiveText">Case Creation</p>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </div>
+        </div>
+        <div class="mobileCss">
+            <div class="slds-grid slds-wrap">
+                <div class="headline slds-col">
+                    <span>
+                        Case information
+                    </span>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap casecreationvalign">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <p class="subHeadline">Project</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    {casedatainfo.projectName}
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap casecreationvalign">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <p class="subHeadline">Product</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    {casedatainfo.ProductName}
+                </div>
+            </div>
+            <template if:true={checkProdVarient}>
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <p class="subHeadline">Product Variant</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        {casedatainfo.productvariantName}
+                    </div>
+                </div>
+            </template>
+<div class="line"></div>
+<div class="slds-grid slds-wrap">
+    <div class="headline slds-col">
+        <span>
+                        Case Details
+                    </span>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Subject</p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <div>
+            <lightning-input data-id="subjectField" class="subjectInput" value={subject} onchange={handleChange} max-length="255" onfocus={handleOnFocus}></lightning-input>
+        </div>
+        <template if:true={isRequiredSubject}>
+            <span class="requiredField"> {label.Core_IPS_Required} </span>
+        </template>
+       
+
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_4-of-12 desalign">
+        <p class="subHeadline">Case Description</p>
+    </div>
+   
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-form-element__control validate"> 
+        <div class="descIput">
+            <lightning-input-rich-text data-id="descriptionFeild" value={myVal} onchange={handleChange} required = 'true' onfocus={handleOnFocus}></lightning-input-rich-text>
+        </div>
+        <template if:true={isRequiredDesc}>
+            <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+        </template>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Case Type</p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <span>
+            <lightning-combobox data-id="CaseType" class="caseTypeInput" name="CaseType" value={value}
+                placeholder="Please Select" options={CaseTypeOptions} onchange={handleChange} onfocus={handleOnFocus}>
+            </lightning-combobox>
+        </span>
+        <template if:true={iscaseTypeValid}>
+            <p class="slds-text-color_error">{label.Core_IPS_BugAssist_Validation}</p>
+        </template>
+        <template if:true={isRequiredCaseType}>
+            <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+        </template>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline"> Severity <lightning-icon icon-name="utility:help" alternative-text="help-text" size="xx-small" onclick={openSeverityhelptextModal} title="Severity-help-text">
+        </lightning-icon></p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3" style="position: relative;">
+        <span>
+            <lightning-combobox data-id="Severity" class="inputs validate" name="Severity" value={severityValue}
+                placeholder="Please Select" options={caseSeverityoptions} onchange={handleChange} onfocus={handleOnFocus} variant='label-hidden'>
+            </lightning-combobox>
+        </span>
+      <!-- <p class="Severityalign">
+            <lightning-formatted-url value="https://www.intel.com/content/www/us/en/design/support/ips/training/case-type-and-severity.html#severity" tooltip="Go to https://www.intel.com/content/www/us/en/design/support/ips/training/case-type-and-severity.html#severity"
+                label="Definitions" target="_blank"></lightning-formatted-url>
+        </p> --> 
+
+    </div>
+</div>
+<template if:true={isOpenSeverityModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header contactHeader">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close" onclick={closeSeverityhelptextModal}>
+                                    <lightning-icon icon-name="utility:close" alternative-text="close" 
+                                        size="small"></lightning-icon>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                                <h2 id="modal-heading-02"
+                                    class="slds-float_left slds-text-heading_medium slds-hyphenate">
+                                    <span style="color:white; font-weight:bold">Severity
+                                        Information</span>
+                                </h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                                <template if:true={isCasetypeEmpty}>
+                                    <b>Please select a Case Type to view Severity Information.</b>
+                                </template>
+                                <template if:false={isCasetypeEmpty}>
+                                    <template if:true={isSeverity_Debug}>
+                                        <table>
+                                            <tr>
+                                                <th><b>Debug-Severity</b></th>
+                                                <th><b>Definition</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Critical</td>
+                                                <td>Manufacturing lines down or significant risk of delay to customer schedule.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>High</td>
+                                                <td>Impending impact to customer manufacturing, validation, or schedule.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medium</td>
+                                                <td>A loss of functionality or deviation from documented specification that has no immediate 
+                                                    impact to your manufacturing, validation, or schedule.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Low</td>
+                                                <td>Product missing minor functionality or specification. No impact to schedules.</td>
+                                            </tr>
+                                        </table>
+                                    </template>
+                                    <template if:true={isSeverity_Question}>
+                                        <table>
+                                            <tr>
+                                                <th><b>Question-Severity</b></th>
+                                                <th><b>Definition</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Critical</td>
+                                                <td>Without clarification this will slip the schedule past Intel's launch or next release.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>High</td>
+                                                <td>Depending on the clarification this may slip the schedule past Intel's launch or next release.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medium</td>
+                                                <td></td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Low</td>
+                                                <td>Curious how something works, would not block schedule or launch.</td>
+                                            </tr>
+                                        </table>
+                                    </template>
+                                    <template if:true={isSeverity_Feature}>
+                                        <table>
+                                            <tr>
+                                                <th><b>Feature-Severity</b></th>
+                                                <th><b>Definition</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Critical</td>
+                                                <td>Customer’s Business/Marketing says this is required for launch or the next release.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>High</td>
+                                                <td>Customer’s Business/Marketing prefers this for launch or next release.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medium</td>
+                                                <td>Customer’s Business/Marketing says this is required for the next generation launch or the release.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Low</td>
+                                                <td>Customer’s Business Marketing recommends this for the next generation launch or the 
+                                                    release.</td>
+                                            </tr>
+                                        </table>
+                                    </template>
+                                    <template if:true={isSeverity_Design}>
+                                        <table>
+                                            <tr>
+                                                <th><b>Design-Severity</b></th>
+                                                <th><b>Definition</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Critical</td>
+                                                <td>Due to a business or validation decision customer needs this faster than normal time frame.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>High</td>
+                                                <td>Needed in a normal time frame.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medium</td>
+                                                <td>Whenever Intel can handle the request.</td>
+                                            </tr> 
+                                            <tr>
+                                                <td style="color:white;"> empty text  </td>
+                                                <td style="color:white;">  empty text </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Low</td>
+                                                <td>This is a request beyond the usual 2 submits. If Intel has time the customer would prefer a review.</td>
+                                            </tr>
+                                        </table>
+                                    </template>
+                                </template>
+                            </div>
+                            </div>
+                            </section>
+</template>
+<template if:true={showSeverityReason}>
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <p class="subHeadline">Severity Reason </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-3">
+                        <div class="severityInput">
+                            <lightning-textarea data-id="SeverityReason"   name="SeverityReason" 
+                                value={severityReasondefValue} onchange={handleChange} max-length="255" onfocus={handleOnFocus}>
+                            </lightning-textarea>
+                        </div>
+                        <template if:true={severityRsnReq}>
+                            <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Customer Reference ID<span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+            <lightning-helptext content="If you have already entered this case in your internal case management tool, you can use your internal identification to track your case by entering it here.">
+            </lightning-helptext>
+        </p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+        <lightning-input data-id="custmerreference" class="inputs" onchange={handleChange} max-length="255">
+        </lightning-input>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">End Customer<span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+            <lightning-helptext content="If you are submitting the case on behalf of another company, please fill in the company's name here.">
+            </lightning-helptext>
+        </p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+        <lightning-input data-id="endcustomer" class="inputs" onchange={handleChange} max-length="120">
+        </lightning-input>
+    </div>
+</div>
+<template if:true={agentCheck}>
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <p class="subHeadline">Partner Supported Owner
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+
+                        <lightning-input data-id="endcustomer" class="inputs" value={partnerSupportOwner}
+                            disabled="true">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <p class="subHeadline">
+                            <template if:true={booleanRequired}>
+                                Partner Supported Account
+                            </template>
+                            <template if:false={booleanRequired}>
+                                Partner Supported Account<span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                            </template>
+                        </p>
+</div>
+<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+    <lightning-combobox name="progress" class="inputs PSArequired" value={value} placeholder="Select Support Account" options={partnerSupportedAccount} onchange={handleChangePartnerAccount}>
+    </lightning-combobox>
+    <template if:true={isPSArequired} >
+        <p class="slds-text-color_error">{label.Core_IPS_Required}</p> 
+    </template>
+</div>
+</div>
+</template>
+<template if:true={CaseCategoryoptions}>
+       <template if:true={renderProductCategory}>
+
+                <div class="line"></div>
+                <div class="slds-grid slds-wrap">
+                    <div class="headline slds-col">
+                        <span>
+                            Product/Project Info
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="slds-grid slds-wrap casecreationvalign casecatboxalign">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <span class="subHeadline">Case Category</span>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <span class="categoryInput">
+
+                        <lightning-combobox class="inputs validate" name="CaseCategory" value={CaseCategoryy} data-id="categoryReq"
+                             options={CaseCategoryoptions} onchange={handleChangeCategory} onfocus={handleOnFocus}>
+                        </lightning-combobox>
+                    </span>
+                    <template if:true={categoryReq}>
+                        <span class="requiredsubcategory"> {label.Core_IPS_Required} </span>
+                    </template>
+                    </div>
+                    
+                </div>
+            </template>
+ </template>
+            
+<template if:true={showSubCategories}>
+                    
+                <div class="slds-p-top_small slds-grid slds-wrap casecreationvalign casecatboxalign">
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <span class="subHeadline">Case Sub-Category</span>
+                        </div>
+                        <span class="subCategoryInput">
+                        <lightning-combobox data-id="subCategory" class="inputs" name="CaseSubcategory" value={CaseSubcategoryy}
+                                 options={CaseSubcategoryoptions}
+                                onchange={handleChangeRenderSubCategoryedq} onfocus={handleOnFocus}></lightning-combobox>
+                        </span>
+                        <template if:true={subCategoryReq}>
+                            <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+                        </template>
+                </div>
+ </template>
+           <!--- </template>-->
+<!-- Environmental Details START-->
+<div class="line"></div>
+<div class="headline slds-col">
+    <span>Environmental Details</span>
+</div>
+<div class="headline1">
+    <div class="Edqbuttonwidth">
+        <template if:true={casedatainfo.showProdEdqs}>
+                        <c-dynamic-form-builder fields={casedatainfo.prodEdqRecs} iscommunity={communityCheck}
+                            data-id="prodEDQ" execution-mode="create" case-id={recordId}
+                            supported-product-id={passSupportedProductID}>
+                        </c-dynamic-form-builder>
+                    </template>
+        <template if:true={showcubcatedqs}>
+                        <c-dynamic-form-builder fields={subcatrecedqs} iscommunity={communityCheck} data-id="subCatEDQ"
+                            execution-mode="create" case-id={recordId} supported-product-id={passSupportedProductID}>
+                        </c-dynamic-form-builder>
+                    </template>
+    </div>
+</div>
+<!-- Environmental Details END -->
+<template if:true={hideButton}>
+                <div class="slds-grid slds-wrap casecreationvalign">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"></div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                        <!-- <input type="button" class="btn" value="coveo button" onclick={sendEventTOCoveo}></input> -->
+                        <input type="button" class="btn" value="Create Case" onclick={handleCreateCase}></input>
+                    </div>
+                </div>
+            </template>
+
+</div>
+</template>
+<template if:true={sslcmode}>
+        <div>
+            <div class="slds-grid slds-wrap">
+                <div class="headline slds-col">
+                    <span>
+                        Military, intelligence, nuclear/biochemical, or space (MINDS) Information
+                    </span>
+                </div>
+                <p style="font-weight: bolder;">&emsp;&emsp;&ensp;
+                    Your My Preferences tab indicates the following default settings. Please edit as appropriate for
+                    THIS
+                    case.
+                </p>
+            </div>
+            <div class="slds-grid slds-wrap casecreationvalign">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <p class="subHeadline">Is THIS case related to the use of Intel® Products and Solutions in regards
+                        to
+                        military, intelligence, nuclear/biochemical, defense, or space (MINDS) items?</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <div></br>
+                        <lightning-input type="checkbox" label="Yes" name="yeschecked" onchange={handleChangeMINDS}
+                            checked={showboolean1}></lightning-input>
+                    </div>
+                    &emsp;
+                    <div></br>
+                        <lightning-input type="checkbox" label="No" name="nochecked" onchange={handleChangeMINDS}
+                            checked={showboolean2}></lightning-input>
+                    </div>
+                </div>
+            </div></br>
+            <div class="slds-grid slds-wrap casecreationvalign">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                   
+                    <span class="subHeadline">I am submitting this case from
+                    Country/Region:</span>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <span style="width: 100%;"></br>
+                        <div class="countrySSLCInput">
+                            <lightning-combobox name="CountryRegion" class="inputs" value={selectedCountryValue}
+                                options={countryOptions} onchange={handlePicklistChange} onfocus={handleOnFocus} placeholder={select} data-id="countryField">
+                            </lightning-combobox>
+                            {contactCountry}
+                        </div>
+                    </span>
+                    <template if:true={countrySSLCReq}>
+                        <span class="requiredField"> {label.Core_IPS_Required} </span>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="headline slds-col"><span>Case information</span></div>
+        </div>
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <p class="subHeadline">Project</p>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 projectName">
+                </br>{Projectdefault}
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <p class="subHeadline">Product</p>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                </br>
+                {Assetdefault}
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="slds-grid slds-wrap">
+            <div class="headline slds-col"><span>Case Details</span></div>
+        </div>
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <p class="subHeadline">Subject</p>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                </br>
+                <div class="subjectSSLC">
+                    <lightning-input data-id="subjectField" class="subjectInputSSLC" value="" onchange={handleChangesubject} onfocus={handleOnFocus}>
+                    </lightning-input>
+                </div>
+                <template if:true={isRequiredSubjectSSLC}>
+                    <span class="requiredField"> {label.Core_IPS_Required} </span>
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <p class="subHeadline">Case Description </p>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                </br>
+                <div class="descInputSSLC">
+                    <lightning-input-rich-text  class ="descInputSSLC" data-id="descriptionFeildSSLC"  value={descriptiondefault}
+                    onchange={handleChange} valid={descValid} onfocus={handleOnFocus}></lightning-input-rich-text>
+                </div>
+                <template if:true={descriptionSSLC}>
+                    <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <p class="subHeadline">Case Type</p>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <span class="caseTypeSSLC">
+                    <lightning-combobox data-id="CaseType" class="inputs" name="CaseType" value={CaseTypedefault}
+                        placeholder="Please Select" options={CaseTypeOptions} onchange={handleChangecasetype}>
+                    </lightning-combobox>
+                </span>
+                <template if:true={caseTypeInputSSLC}>
+                    <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <p class="subHeadline">Severity</p>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                <span>
+                    <lightning-combobox data-id="SeveritySSLC" class="inputs" name="Severity" value={severitydefValue}
+                        placeholder="Please Select" options={defaultcaseSeverityoptions} onchange={handlesevdefChange}>
+                    </lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <template if:true={sslcSeverityReason}>
+            <div class="slds-grid slds-wrap casecreationvalign">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <p class="subHeadline">Severity Reason</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <span class="SeverityReasonSSLC">
+                        <lightning-textarea data-id="SeverityReason"   class="inputs" name="SeverityReason"
+                            value={severityReasonValue} onchange={handlesslcChange} onfocus={handleOnFocus}>
+                        </lightning-textarea>
+                    </span>
+                    <template if:true={severityResSSLC}>
+                        <p class="slds-text-color_error">{label.Core_IPS_Required}</p>
+                    </template>
+                </div>
+            </div>
+        </template>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Customer Reference ID<span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span></p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+        <lightning-input data-id="custmerreference" class="custmerreference" onchange={handleChangerefsslc}>
+        </lightning-input>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">End Customer<span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span></p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+        <lightning-input data-id="endcustomer" class="endcustomer" onchange={handleChangeendsslc}>
+        </lightning-input>
+    </div>
+</div>
+<div class="line"></div>
+<div class="slds-grid slds-wrap ">
+    <div class="headline slds-col">
+        <span>Product/Project Info</span>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign casecatboxalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Case Category</p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <span style="width: 100%;"> 
+            <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                <div class="slds-col slds-size_1-of-12"></div>
+                <div class="slds-col slds-size_9-of-12">
+                    <div class="categorySSLC">
+                        <lightning-combobox  data-id="categoryReq" name="progress" value={Case_Categorydefaultid}
+                            options={caseCategoryOptions}
+                            onchange={handleChangedefaultCategory} onfocus={handleOnFocus}>
+                        </lightning-combobox>
+                    </div>
+                    <template if:true={categoryReqSSLC}>
+                        <p class="requiredsubcategory">{label.Core_IPS_Required}</p>
+                     </template>
+                </div>
+                
+                <div class="slds-size_2-of-12"></div>
+            </div>
+        </span>
+    </div>
+</div>
+<div class="slds-grid slds-wrap casecreationvalign casecatboxalign">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <p class="subHeadline">Case Subcategory</p>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <span style="width: 100%;">
+                    <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                        <div class="slds-col slds-size_1-of-12"></div>
+                        <div class="clds-col slds-size_9-of-12">
+                            <div class="subCategorySSLC">
+                                <lightning-combobox name="progress" value={CaseSubcategoryDetaildefalutid}
+                                    options={CaseSubDefaultcategoryoptions} data-id="subcategorySSLC"
+                                    onchange={handleChangeDefaultSubCategoryedq} onfocus={handleOnFocus}>
+                                </lightning-combobox>
+                            </div>
+                            <template if:true={subCategoryReqSSLC}>
+                                <span class="requiredsubcategory"> {label.Core_IPS_Required} </span>
+                            </template>
+                        </div>
+                        <div class="slds-size_2-of-12"></div>
+                    </div>
+                </span>
+    </div>
+</div>
+<!-- Environmental Details -->
+<div class="line"></div>
+<div class="slds-col">
+    <div class="headline">
+        <span>Environmental Details</span>
+    </div>
+    <div style="width: 62%; padding-left:30px">
+        <c-dynamic-form-builder fields={defaultprodEdqRecs} iscommunity={communityCheck} data-id="prodEDQ" execution-mode="create" case-id={recordId} supported-product-id={Supported_ProductdefaultID}>
+        </c-dynamic-form-builder>
+        <c-dynamic-form-builder fields={defaultsubcatrecedqs} iscommunity={communityCheck} data-id="subCatEDQ" execution-mode="create" case-id={recordId} supported-product-id={Supported_ProductdefaultID} mode={mode}>
+        </c-dynamic-form-builder>
+    </div>
+    <div class="slds-grid slds-wrap casecreationvalign">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"></div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+            
+            <input type="button" class="btn" value="Create Case" onclick={hanldeSaveDefaultReport}></input>
+        </div>
+    </div>
+</div>
+</template>
+<template if:true={spinnerOn}>
+        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+    </template>
+
+</template>

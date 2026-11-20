@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Par Support Org Admin</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Par Support Org Admins</value>
+    </caseValues>
+    <fields>
+        <label><!-- Admin --></label>
+        <name>Core_IPS_Admin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity PAR --></label>
+        <name>Core_IPS_Opportunity_Par__c</name>
+        <relationshipLabel><!-- Opportunity Par Support Org Admins --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Org Admin Id --></label>
+        <name>Core_IPS_Org_Admin_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin --></label>
+        <name>Core_IPS_Primary_Admin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org --></label>
+        <name>Core_IPS_Product_Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org Admin --></label>
+        <name>Core_IPS_Support_Org_Admin__c</name>
+        <relationshipLabel><!-- Opportunity Par Support Org Admins --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

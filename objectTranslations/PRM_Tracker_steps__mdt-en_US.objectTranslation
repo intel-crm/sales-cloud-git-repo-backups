@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Tracker step</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tracker steps</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active? --></label>
+        <name>PRM_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conditional Display --></label>
+        <name>PRM_Conditional_Display__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failed Step? --></label>
+        <name>PRM_Failed_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Display Name --></label>
+        <name>PRM_Milestone_Display_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>PRM_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Skippable step? --></label>
+        <name>PRM_Skippable_step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type__c</name>
+        <picklistValues>
+            <masterLabel>OPID Recommendation</masterLabel>
+            <translation><!-- OPID Recommendation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Updates</masterLabel>
+            <translation><!-- OPID Updates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Updates 1PID</masterLabel>
+            <translation><!-- OPID Updates 1PID --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

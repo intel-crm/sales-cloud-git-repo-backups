@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_Company_Under_Review_Template_for_Admin</name>
+    <style>none</style>
+    <subject>The Storefront {!PMP_Company__c.Name} is getting reviewed by Intel MP Admin.</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

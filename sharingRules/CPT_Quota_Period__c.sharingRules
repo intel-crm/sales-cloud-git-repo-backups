@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>CPT_Quota_Period_Admin</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records with Read/Write access.</description>
+        <label>CPT Quota Period - Admin</label>
+        <sharedTo>
+            <group>CPT_PG_Commission_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CPT_Quota_Period_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all records with Read access.</description>
+        <label>CPT Quota Period - User</label>
+        <sharedTo>
+            <group>CPT_PG_Commission_User</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CPT_Quota_Period__c</field>
+            <operation>notEqual</operation>
+            <value>Archived</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

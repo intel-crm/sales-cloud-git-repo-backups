@@ -1,0 +1,29 @@
+<template>
+      <lightning:card>
+<div class="slds-m-around_medium" record-id={recordId}>
+    <lightning-combobox
+            name="Core_Status__c"
+            label="Status"
+            value={oppSupportStatus}
+            options={statusValues}
+            onchange={handleChange}
+            required
+    ></lightning-combobox>
+    </div>
+    <p>
+      {status}
+    </p>
+    <div class="slds-m-around_medium">
+    <legend class="slds-form-element__legend slds-form-element__label">NOTE:</legend><br><br>
+    
+    <p><lightning-formatted-text  value="  Submitted : Support request has been created but not dispositioned by an assigner." ></lightning-formatted-text></p></p>
+    <p><lightning-formatted-text  value="  Pending   : Support request has been approved by an assigner with resources assigned, but resources have not accepted the assignment yet." ></lightning-formatted-text></p></p>
+    <p><lightning-formatted-text  value="  Approved  : Support request has been accepted by assigner and all resources have accepted their assignments are now listed on the opportunity team member list." ></lightning-formatted-text></p></p>
+    </div>
+    <br>
+        <div class="slds-float_right slds-p-bottom_x-small slds-p-right_x-small">
+            <lightning-button variant="brand" type="submit" label="Save" onclick={saveRecord}></lightning-button>
+            <lightning-button variant="neutral" label="Cancel" class="slds-m-left_x-small" onclick={handleCancel}></lightning-button>
+        </div>
+</lightning:card>
+</template>

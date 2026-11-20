@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>License Admin Delegate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>License Admin Delegates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Legacy Delegate Contact Id --></label>
+        <name>Sales_Legacy_DelegateContact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy Primary Contact Id --></label>
+        <name>Sales_Legacy_PrimaryContact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admin Contact --></label>
+        <name>Sales_License_DlgAdmin_Contact__c</name>
+        <relationshipLabel><!-- License Delegate Admin --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admin Email Address --></label>
+        <name>Sales_License_DlgAdmin_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admin First Name --></label>
+        <name>Sales_License_DlgAdmin_FirstName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admin Last Name --></label>
+        <name>Sales_License_DlgAdmin_LastName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admin Email --></label>
+        <name>Sales_License_Dlg_Adm_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admin Full Name --></label>
+        <name>Sales_License_Dlg_Adm_FullName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Contact --></label>
+        <name>Sales_License_PrimaryAdmin_Contact__c</name>
+        <relationshipLabel><!-- License Primary Admin --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Email Address --></label>
+        <name>Sales_License_PrimaryAdmin_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin First Name --></label>
+        <name>Sales_License_PrimaryAdmin_FirstName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Last Name --></label>
+        <name>Sales_License_PrimaryAdmin_LastName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Sales_License_isActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Logged In User Primary Admin --></label>
+        <name>Sales_LoggedInUserPrimaryAdmin__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Delegate Admin Contact and Primary Admin Contact cannot be same. --></errorMessage>
+        <name>Sales_Same_Primary_Delegate_NotAllowed</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CONTACT_ID</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>CONTACT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_IPS_Intel_Support_Owner__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Segment__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 or 2) or (3 or 4)</booleanFilter>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Kenneth Cuy,Paulo Quaresma,Chloe New,Robert Lawrence Kline,NHAT THANH NGUYEN,Simon Lee,Richard Thomas Jolin,Harry Ingman,Greg Williams,Janice Lin,Sandeep Sandhu,Mei Ling Loi,Sylvia Saw Ai Ong,YU ZHANG,Zawani Mohamad Yusof,Yan Wang,Jeffrey Peet,Ke Xin Han,William Wu,Chris Jackson,Amber Tsai,Sales.CRM.WW. Data.Operations,Milly Joo Lee Yeap,Cindy Wang,Daniela Kaelin,Sonia Mejia,Herman Wynn,Connie Lopez,Brian Greve,Natalia Segeda,Elly Pedersen,Marishka ODINIUS,Amanda Walker,Lily Wu,Paolo Messina,Joanna T Rowe,Zz Zhang,Yuanyuan Huang,Koh Hui Toh,Joy Anderson,Charlotte Megan White,Niral Shahpatel,Morgan Hartley,PAUL O&apos;HALLORAN,Tracey Finch,Mei Lydia Vaughn,Natasha Kelly,Jessie Chan,Sharon Tsai,Hannah Wells,DataOps01 Test,Zaki Qayoumi,Wei-Tan Chen,SHENAZ HAQUE,Jeffrey Lau,Josie Xing,Shaun Starr,Deepti Padiyar,Guilherme Mezavilla,Darui Jiang,Roger Wick,Kondwani Crawford,Samy Affo,Heather Perez,Beth Barrett,Joyce Liu,Chirag Shah,Chandni Pawar,Joshua Lind,Stacey Rice,Tian Xia,Matt Albert</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Shardul Golwalkar,Linda North,Su Min Tan,Tian Sang,Michelle Jeffery,Chinenye Agbodike,Chai Yin Wong,Ayako Yasaki,Rebecca McKay,Hiroko Otsuki,Bo Yin,Sarah Webber,yanfeng chen,Sandra L Bowstead,Christina Wall,Wai Hung Ho,Veronica Lin,Kevin Conroy,Judy Defazio,ANNA ZHIVOVA-ZAKSHEVSKA,XINYU FU,Rajeev Dubey,Agency Managed,Kae Kobayashi,Lili Wu</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact.Core_IPS_Intel_Support_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Kenneth Cuy,Paulo Quaresma,Chloe New,Robert Lawrence Kline,NHAT THANH NGUYEN,Simon Lee,Richard Thomas Jolin,Harry Ingman,Greg Williams,Janice Lin,Sandeep Sandhu,Mei Ling Loi,Sylvia Saw Ai Ong,YU ZHANG,Zawani Mohamad Yusof,Yan Wang,Jeffrey Peet,Ke Xin Han,William Wu,Chris Jackson,Amber Tsai,Sales.CRM.WW. Data.Operations,Milly Joo Lee Yeap,Cindy Wang,Daniela Kaelin,Sonia Mejia,Herman Wynn,Connie Lopez,Brian Greve,Natalia Segeda,Elly Pedersen,Marishka ODINIUS,Amanda Walker,Lily Wu,Paolo Messina,Joanna T Rowe,Zz Zhang,Yuanyuan Huang,Koh Hui Toh,Joy Anderson,Charlotte Megan White,Niral Shahpatel,Morgan Hartley,PAUL O&apos;HALLORAN,Tracey Finch,Mei Lydia Vaughn,Natasha Kelly,Jessie Chan,Sharon Tsai,Hannah Wells,DataOps01 Test,Zaki Qayoumi,Wei-Tan Chen,SHENAZ HAQUE,Jeffrey Lau,Josie Xing,Shaun Starr,Deepti Padiyar,Guilherme Mezavilla,Darui Jiang,Roger Wick,Kondwani Crawford,Samy Affo,Heather Perez,Beth Barrett,Joyce Liu,Chirag Shah,Chandni Pawar,Joshua Lind,Stacey Rice,Tian Xia,Matt Albert</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact.Core_IPS_Intel_Support_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Shardul Golwalkar,Linda North,Su Min Tan,Tian Sang,Michelle Jeffery,Chinenye Agbodike,Chai Yin Wong,Ayako Yasaki,Rebecca McKay,Hiroko Otsuki,Bo Yin,Sarah Webber,yanfeng chen,Sandra L Bowstead,Christina Wall,Wai Hung Ho,Veronica Lin,Kevin Conroy,Judy Defazio,ANNA ZHIVOVA-ZAKSHEVSKA,XINYU FU,Rajeev Dubey,Agency Managed,Kae Kobayashi,Lili Wu</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Data Ops Contact Object Ownership</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Account.Core_Geo__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

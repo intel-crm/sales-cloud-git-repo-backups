@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PMP_Company__c$Name</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c$PMP_Company_Lifecycle_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c$PMP_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>PMP_Company__c$PMP_Account_Dsc__c</field>
+    </columns>
+    <description>This Report is used for identifying the Partners With Out Desription</description>
+    <filter>
+        <criteriaItems>
+            <column>PMP_Company__c$PMP_Is_Published_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Partners and their Description</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Comp_Info_With_Translations__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PMP_Company__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

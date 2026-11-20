@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>Retail User</audienceName>
+    <container>Partnercenter Unified Community</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>admin</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <isEnabled>true</isEnabled>
+                <permissionName>Core_MDF_RMF_USER</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AnyCriterionMatches</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>61769fa4-956d-4b01-8fe7-e5fa8b5e243b$#$975c4217-cd0a-4feb-99d8-b3ba0a508f4c</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Newsletters_HTML_Editor_3_Component</targetValue>
+        </target>
+        <target>
+            <groupName>e7358f37-eb7a-4354-9fd6-5f12415cd445$#$836d0810-320e-4203-b3d3-275820c67510</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Bran_Your_Products_HTML_Editor_2_Component</targetValue>
+        </target>
+        <target>
+            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$559386b9-a333-4348-a43a-43fb5e77a2d5</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_7_Component</targetValue>
+        </target>
+        <target>
+            <groupName>9c79fbf8-f999-4f12-96ba-72f6920eb245$#$44cbd9a6-28c4-470c-81e8-666e96274276</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Home_core_MDF_dynamicURLsOnCommunity_4_Component</targetValue>
+        </target>
+    </targets>
+</Audience>

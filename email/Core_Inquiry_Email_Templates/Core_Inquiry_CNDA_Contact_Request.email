@@ -1,0 +1,26 @@
+Hi {!Core_Inquiry__c.OwnerFirstName},</br><br/>
+
+You are receiving this alert because this person has requested access to the Resource and Design Center and needs CNDA verification/creation. Please take a look at the details below and reach out within three business days to enable access (if applicable).<br/><br/>
+
+<a class="primary" href="{!$Label.Core_Inquiry_Lead_Link}/{!Core_Inquiry__c.Core_Contact_InquiriesId__c}">Click here to see this person’s full profile in Salesforce CRM »</a>  <br/><br/>
+
+<b>Here are the person’s details:</b></br></br>
+
+First Name: {!Core_Inquiry__c.Core_First_Name_Txt__c}</br>
+Last Name: {!Core_Inquiry__c.Core_Last_Name_Txt__c}</br>
+Company:{!Core_Inquiry__c.Core_AccountName__c}</br>
+Job Title: {!Core_Inquiry__c.Core_Title_Txt__c}</br>
+Phone Number: {!Core_Inquiry__c.Core_Phone_Txt__c}</br>
+Email: {!Core_Inquiry__c.Core_Email_Txt__c}</br>
+How they found us originally: {!Core_Inquiry__c.Core_Contact_Lead_Source__c}</br></br>
+
+<b>Some details about their Inquiry:</b></br></br>
+
+Area of Interest: {!Core_Inquiry__c.Core_Product_Interest_Txt__c}<br>
+Purchase Timeframe: {!Core_Inquiry__c.Core_Project_Timeframe__c}</br>
+Project Details: {!Core_Inquiry__c.Core_Inquiry_Notes_Txt__c}</br></br>
+
+Please remember to log any calls or emails you make when engaging with this person. If you have questions regarding how to manage any Lead/Inquiry assigned to you, please <a href="https://salescrm.intel.com/training-and-help/lead-management/">visit our Sales CRM training website</a></br></br>
+
+Sincerely,</br>
+Your Marketing Automation Team

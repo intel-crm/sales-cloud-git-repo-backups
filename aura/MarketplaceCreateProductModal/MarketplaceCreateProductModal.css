@@ -1,0 +1,328 @@
+/* IPA2.0 + US TWC4497-1631 */
+/* .THIS .create-offering a.close {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.THIS .slds-modal {
+    position: absolute;
+}
+
+.THIS .create-offering a .slds-icon {
+    width: 1.5em;
+    height: 1.5em;
+    --iconColor: white;
+}
+
+.THIS .create-offering a .slds-icon use {
+    fill: t(white);
+}
+
+.THIS .slds-modal__header {
+    background-color: t(blue);
+    border-radius: 0;
+}
+
+.THIS .slds-modal__header h2 {
+    color: t(white);
+    padding-top: 15px;
+}
+
+.THIS .slds-modal__content {
+    background-color: t(lightestGray);
+    overflow: visible;
+}
+
+.THIS .slds-modal__content p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 200;
+    margin: 20px 0;
+}
+
+.THIS .offering-container {
+    justify-content: center;
+}
+
+.THIS .offering-category-title {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.THIS .offering-category-title p {
+    font-size: .8em;
+}
+
+.THIS .offering-category-title a {
+    color: t(blue);
+}
+
+.THIS .slds-modal__content:last-child {
+    border-radius: 0;
+}
+
+.THIS .slds-modal__container {
+    display: block;
+    width: 90%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: 0px auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    top: 20px;
+    right: 0;
+}
+
+.THIS .slds-progress-wrapper {
+    display: flex;
+    margin: 40px 0;
+    justify-content: center;
+}
+
+.THIS .progressbar {
+    display: flex;
+    justify-content: center;
+}
+
+.THIS .progressbar li {
+    list-style-type: none;
+    width: 20%;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+.THIS .progressbar li.active p {
+    padding-top: 0;
+}
+.THIS .progressbar li p {
+    color: white;
+    padding: 5px 15px;
+}
+.THIS .progressbar li:before {
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border: 3px solid t(white);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: t(blue);
+    content: ' \25CF';
+    font-size: 0px;
+}
+.THIS .progressbar li:after {
+    width: 80%;
+    height: 4px;
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -39%;
+    background-color: t(white);
+}
+.THIS .progressbar li:first-child:after {
+    content: none;
+}
+.THIS .progressbar li.active:before {
+    background-color: t(white);
+    margin-top: -5px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.THIS .offering-category-wrapper {
+    margin: 10px;
+}
+
+.THIS .offering-category-card {
+    height: 280px; */
+    /*height changed from 208px to 280px to accomodate solution's image(do not modify)*/
+    /* width: 100%;
+    max-width: 212px;
+    background: t(white);
+    display: flex;
+    margin: 0px auto;
+    padding:1.5em;
+}
+
+.THIS .offering-category-card:hover {
+    border: 4px solid t(digitalBlue);
+}
+
+.THIS .offering-category-card a {
+    align-items: center;
+    display: flex;
+    margin: 0px auto;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.THIS .solution-submission-modal-style{
+    background-color: #FFD100;	
+    color: #262626;
+    font-family: intel clear;
+    font-size: 1rem;
+    text-align: center;
+}
+.THIS .link-style{
+    color: #262626;
+    text-decoration: underline;
+} */
+/*media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .THIS .offering-category-wrapper {
+        width: 25%;
+    }
+}*/
+
+/* @media only screen and (max-width: 768px) {
+    .THIS .slds-modal__container {
+        display: block;
+        overflow: hidden;
+        max-height: none;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        top: 0;
+    }
+
+    .THIS .slds-modal__content {
+        overflow: hidden;
+    }
+
+    .THIS .slds-modal__content p {
+        margin: 10px 0;
+    }
+
+    .THIS .create-offering a.close {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+      }
+}
+
+@media only screen and (max-width: 1024px) {
+    .THIS .slds-modal__container {
+        display: block;
+        overflow: hidden;
+        max-height: none;
+        height: auto;
+    }
+
+    .THIS .slds-modal__content {
+        overflow: hidden;
+    }
+
+    .THIS .offering-category-wrapper {
+        width: 25%;
+    }
+
+    .THIS .offering-category-card {
+        height: 184px;
+        width: 184px;
+    }
+
+    .THIS .slds-modal__header {
+        height: auto;
+    }
+
+    .THIS .slds-modal__header h4 {
+        color: t(white);
+    }
+
+    .THIS .slds-modal__content h5 {
+        color: t(darkGray);
+        padding-top: 40px;
+        width: 90%;
+        text-align: center;
+    }
+
+    .THIS .ISGSimpleCardList {
+        padding-bottom: 40px;
+        border-bottom: 2px solid #d8d8d8;
+    }
+
+    .THIS .progressbar li p {
+        color: white;
+        padding: 5px;
+    }
+
+    .THIS .slds-progress_vertical .slds-progress__item_content {
+        margin-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .THIS .slds-progress__item.slds-is-active .slds-progress__marker {
+        box-shadow: none;
+        background: t(lightGray);
+        border-color: t(lightGray);
+    }
+
+    .THIS .slds-progress__item .slds-progress__marker {
+        border-color: t(lightGray);
+        background: t(lightestGray);
+    }
+
+    .THIS .slds-progress_vertical .slds-progress__item:before {
+        bottom: 80%;
+    }
+    .THIS .slds-progress_vertical .slds-progress__item:after {
+        top: 80%;
+    }
+
+    .THIS .category-card {
+        background: t(white);
+        margin: 5px 0;
+    }
+
+    .THIS .horizontal-gray-border {
+        margin: 40px 0 0 0;
+        border-bottom: 2px solid t(lightGray);
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    .THIS .category-card-list-image-wrapper {
+        align-items: center;
+        display: flex; 
+        height: 158px;*/
+        /*height changed from 107px to 158px to accomodate solution's image(do not modify)*/
+        /* justify-content: center;
+        width: 107px;
+    }
+
+    .THIS .product-category-name {
+        align-items: center;
+        display: flex;
+        justify-content: left;
+        padding: 0 0 0 20px;
+    }
+
+    .THIS .product-category-name span {
+        color: t(blue);
+    }
+
+    .THIS .create-offering-tagline {
+        font-size: 1em !important;
+        padding: 10px 0 15px 0 !important;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1255px) {
+    .THIS .offering-category-card {
+        height: 150px;
+    }
+} */

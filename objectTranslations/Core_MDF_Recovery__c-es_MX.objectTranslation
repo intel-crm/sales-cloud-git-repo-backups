@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Recuperación</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Recuperación</value>
+    </caseValues>
+    <fields>
+        <label>Importe (USD)</label>
+        <name>Core_MDF_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Reclamación</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Puntuación de asociación</label>
+        <name>Core_MDF_PartnershipGradeMaintenance_Nbr__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recovered Budget --></label>
+        <name>Core_MDF_Recovered_Budget_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Liquidar y luego recibir el pago</label>
+        <name>Core_MDF_Sure_Pay_Ind__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
+</CustomObjectTranslation>

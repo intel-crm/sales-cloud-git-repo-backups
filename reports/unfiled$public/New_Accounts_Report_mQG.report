@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Aseminfor,Affirmed Networks,Groupe Bull,Thomson,Bleujour,World Of Computers,Droege Group,Amazon,Amazon (AWS),Asem,allot communications,Argos,Penta,SchneiderElectric,Sweden Government,Asus,Barcelona Supercomputing Cente,Canonical,Ab,Logicom,Elko,Cdw,MediaMarkt,Centre National Recherche Scientifique,PLGRID,Cisco,Cityfibre,Fidelity,Nigeria Government,Zain,Rectron,Bouygues Telecom,Coolblue,Ireland Government,Coop,RAI,Currys Group,Rewe Gruppe,Thyssenkrupp,Heidenhain,Dell,Deutsche Lufthansa,Midea,El Corte Ingles,Walmart,Edeka Zentrale And,Euronics,Expert,Fahem,Fujitsu,UKFast,Google (GCP),Portugal Government,Harman,Hcl Technologies,Hinas,Government of Hungary,Veoneer,Criteo,HPE,HPI,Industria Diseno Textil,Industry Fusion Foundation (IFF),Insight,Jarir,Jdg,Jeulich,Jlp,Jp Sa Couto,Komplett,Darktrace,Lenovo,Mellanox Technologies Ltd.,Microsoft Azure + Client + ISV,Milestone Systems,Aveniq,Monster Focus,Bytes Software Services,Cloud4C,ITQ Nederland,National Grid,Other African Government,Red Hat,Rozetka,Pc Componentes Y Multimedia Sl,Sas,Sc Dante International Sa,Vatan Computer,Other Africa Government,Tata Consultancy Services,Carrefour,Tech Mahindra,Standard Chartered Plc UK,Te Connectivity,Kazakhstan Gov</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Huawei,Orgsell,Commerzbank,Towers Watson,XtX Markets,Gresearch,Standard Chartered Bank,Adidas,Verne,Turkcell,UN,Oman Govt,Kuwait Govt,MAGNETI MARELLI SPA,SCUDERIA TORO ROSSO,FERRARI,Aava,APPLIED MATERIALS ISRAEL,BrightSign LLC,Hiper Global,Radware,TQ Group,BAB Distribution GmbH,EERA ELEKTRONIK,Proshop ApS,Wave Distribution,Sophos Group plc,Teridion,Al Nahil,Alpha Data,Crayon,EMAK,Gruppo Project,Integrated Solutions,SVA,Teamwork</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ucdnameandid</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

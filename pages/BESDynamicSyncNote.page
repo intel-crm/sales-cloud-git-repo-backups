@@ -1,0 +1,23 @@
+<apex:page standardController="Core_IPS_Backend_System2__c" extensions="Core_IPS_BES_IPassDataSync">
+    <style>
+        div {
+        	border-top	:2px solid red;
+        	border-bottom	:2px solid red;
+        	border-left	:2px solid red;
+        	border-right	:2px solid red;
+        	background-color:yellow;
+        	width: 90%;
+        	height: 50%
+        }
+        h3 {
+		color:blue;
+        }
+    </style>
+   	<apex:outputText rendered="{!IF(show,true,false)}">
+       	<div align ="center">
+           	<h3>
+                <apex:outputText value="{!$Label.Core_IPS_BES_Message}" />
+            </h3> 
+        </div>
+     </apex:outputText>
+</apex:page>

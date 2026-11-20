@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDEXT_VN</name>
+    <style>none</style>
+    <subject>Chào mừng bạn đến với Liên minh Đối tác Intel®</subject>
+    <textOnly>Công ty của bạn đã được đăng ký
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Xin chúc mừng bạn đã trở thành đối tác trong Liên minh Đối tác Intel®! Công ty của bạn khớp với tài khoản hiện có, vì vậy, bạn đã được thêm vào hồ sơ công ty sau đây trong Liên minh Đối tác Intel®:
+Tên Công Ty: {!Account.Name}
+ID doanh nghiệp: {!Account.AccountNumber}
+
+Đăng nhập để xem chi tiết hồ sơ của bạn trong Liên minh Đối tác Intel®.
+
+Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
+
+Truy cập https://www.intel.com/content/www/vn/vi/partner-alliance/help/overview.html để giúp bạn bắt đầu.
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

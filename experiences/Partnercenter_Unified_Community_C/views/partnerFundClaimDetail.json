@@ -1,0 +1,593 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "9472fbf9-d01d-41e0-aaad-24ee4313bf0f",
+  "label" : "Partner Fund Claim Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_PFC_EditButton",
+      "id" : "c80f70dd-e404-44e2-a846-b714f02d3e1e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "</br>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "59f6fdf0-3cfe-4203-ab5f-a365e4c1ec63",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "fieldAPIName" : "Core_MDF_Proposal_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Claim_Id__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Campaign_Id__c",
+        "isCompactLayout" : "Yes",
+        "objAPIName" : "PartnerFundClaim"
+      },
+      "componentName" : "c:Core_MDF_Compact_Layout",
+      "id" : "7c5296a0-d5ea-48a3-8e24-5b42ad503f67",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "810c09d9-2841-48dd-a34a-d6aa67c91a09",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "279f98e7-ae86-468e-b4e6-a53bd0388ed3",
+        "es" : "2987b45a-224a-4e48-a48e-1fb3c5a254b0",
+        "es_mx" : "9381230b-24c7-4ffe-ac26-75259f945b63",
+        "fr" : "f45c7cd6-828e-4f06-8296-ba8f2a31465c",
+        "it" : "f5439551-e1bd-4a7a-a694-88ba62066163",
+        "ja" : "61317b3b-5c5f-4d72-a68b-795b6828a021",
+        "ko" : "36974a87-272c-442c-b906-f3fb7afb6519",
+        "pt_br" : "816d7a72-04aa-490b-9d4e-1bd1d79efc6e",
+        "ru" : "9be39a0f-2f5c-4707-8298-5754147548b3",
+        "zh_cn" : "f6c57c6c-a72e-486b-8efd-219dcd9dec9a",
+        "zh_tw" : "801e514d-f0c7-4b6c-8d36-2dd1bef47b12"
+      },
+      "renditions" : [ {
+        "id" : "2987b45a-224a-4e48-a48e-1fb3c5a254b0",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "279f98e7-ae86-468e-b4e6-a53bd0388ed3",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9381230b-24c7-4ffe-ac26-75259f945b63",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f45c7cd6-828e-4f06-8296-ba8f2a31465c",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f5439551-e1bd-4a7a-a694-88ba62066163",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "61317b3b-5c5f-4d72-a68b-795b6828a021",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "36974a87-272c-442c-b906-f3fb7afb6519",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "816d7a72-04aa-490b-9d4e-1bd1d79efc6e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9be39a0f-2f5c-4707-8298-5754147548b3",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f6c57c6c-a72e-486b-8efd-219dcd9dec9a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "801e514d-f0c7-4b6c-8d36-2dd1bef47b12",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "backgroundColor" : "#ffffff",
+        "fontSize" : "14",
+        "fontWeight" : "normal",
+        "iconName" : "utility:info",
+        "iconVariant" : "neutral",
+        "recordId" : "{!recordId}",
+        "showIcon" : true,
+        "textAlign" : "left",
+        "textColor" : "#0469C1",
+        "textContent" : "Core_MDF_SuccessMsg",
+        "visibilityCriteria" : "Core_MDF_Status__c = 'Submitted' and Core_MDF_OutcomeBased_Ind__c = True and Core_MDF_Campaign_Id__c = null and Core_MDF_Super_Claim_Status_nm__c = null"
+      },
+      "componentName" : "c:core_MDF_staticTextDisplay",
+      "id" : "d6303635-95cc-4a1d-b47b-f901a63c108d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:core_MDF_ClaimAmountExceedingLimitMessage",
+      "id" : "e61d9d8e-94e2-4149-957f-1b10bb712a0e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "304610a0-e268-476f-9406-114b296be3d3",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "f1eea85f-288c-4c52-a2ad-bc1fd5726d29",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "ba647e19-a76b-4ab9-8120-059b75b18b08",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "DETAILS"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "f1eea85f-288c-4c52-a2ad-bc1fd5726d29",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:Core_MDF_POPWrapperComponent",
+          "id" : "c55f0a21-73ba-4e24-b845-cfcda7524d59",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "568c8496-6e8d-48cc-b962-9a2d89031988",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "fieldAPIName" : "Core_MDF_Proposal_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Claim_Id__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Campaign_Id__c",
+            "hasToRetainDecimalValues" : "Yes",
+            "isCompactLayout" : "No",
+            "isSectionVisible" : "Yes",
+            "objAPIName" : "PartnerFundClaim",
+            "recordId" : "{!recordId}",
+            "standardFieldAlign" : "Yes"
+          },
+          "componentName" : "c:core_MDF_CustomLayoutConfig",
+          "id" : "8c0ae6eb-9748-4180-9cda-161085d78797",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "displayHeader" : "Actual_Metrics",
+            "objectApiName" : "PartnerFundClaim",
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_KPIDetailSection",
+          "id" : "ea779884-3d2c-415d-8cb3-8fd3f3b98e6f",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_DisplayProducts",
+          "id" : "e7f6ac38-f18e-4c32-8271-5d2af736186e",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_Campaign_Purpose_Detail",
+          "id" : "d329ba6b-8de3-43e8-8ac8-fb27bad4d3ce",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "editable" : false,
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_Tactics_Matric",
+          "id" : "571c7b39-86be-4ed6-8165-832cd0db7ec9",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "editable" : false,
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_Tactic_Spending",
+          "id" : "41f2424c-dbc0-4935-8162-0e4ccf37b011",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "additionalCriteria" : "",
+            "criteriaFieldAPIName" : "Core_MDF_Claim_Id__c",
+            "recordId" : "{!recordId}",
+            "relatedobjectApiName" : "PartnerFundClaim",
+            "sharingFlag" : "",
+            "strFields" : "ChannelPartnerId,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Status__c,Core_MDF_Claim_Hold_Type_txt__c,Core_MDF_Bank__c,Core_MDF_VAT_Opt_In__c",
+            "strLabels" : ",,Disbursement_Status,,,",
+            "tableHeader" : "Payment_Breakdown"
+          },
+          "componentName" : "c:core_MDF_Custom_Related_List",
+          "id" : "eb2e59ed-21d9-4760-bf39-de4e565ec3a0",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "backgroundColor" : "#ffffff",
+            "fontSize" : "14",
+            "fontWeight" : "normal",
+            "iconName" : "utility:info",
+            "iconVariant" : "neutral",
+            "recordId" : "{!recordId}",
+            "showIcon" : true,
+            "textAlign" : "left",
+            "textColor" : "#0469C1",
+            "textContent" : "Core_MDF_PaymentBreakdownStatus_StaticText",
+            "visibilityCriteria" : "Core_MDF_Has_Sub_Claims_Ind__c = True"
+          },
+          "componentName" : "c:core_MDF_staticTextDisplay",
+          "id" : "34ff7ab4-0d4d-44f1-a54f-e3fc7d549f1f",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "additionalCriteria" : "",
+            "criteriaFieldAPIName" : "Core_MDF_Claim_Id__c",
+            "recordId" : "{!recordId}",
+            "relatedobjectApiName" : "PartnerFundClaim",
+            "sharingFlag" : "",
+            "strFields" : "ChannelPartnerId,Core_MDF_Payment_Id__c,Core_MDF_Payment_Made_Dt__c,Core_MDF_EFT_Number_txt__c",
+            "strLabels" : "",
+            "tableHeader" : "Payment_Details"
+          },
+          "componentName" : "c:core_MDF_Custom_Related_List",
+          "id" : "45e4aae2-8e6d-416d-a7e9-6de93568b7a6",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "ba647e19-a76b-4ab9-8120-059b75b18b08",
+        "regionLabel" : "DETAILS",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7e1c16d5-93f2-4c57-83b3-92da2e8a0e36",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_MDF_SiteAdobeAnalyticsSupport",
+      "id" : "a9d31117-ddb0-457e-a0ca-1bd2d3496add",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3d909ade-3a23-4a59-afea-7d7c29b7213b",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "40b4ae98-db3a-45dc-9c07-88b99e7cfd98",
+      "renditionMap" : {
+        "de" : "bcde90d1-ce4f-40b4-b066-2ba7d84bc672",
+        "es" : "a65330e5-6063-4676-8dfb-624761bc996d",
+        "es_mx" : "f2348c0c-292d-430a-90ca-a2ac6c7e23f9",
+        "fr" : "de23d95c-0c88-4c45-8d76-2c9abc004b19",
+        "it" : "22e3b0a6-05b2-4229-89f3-104e5004daab",
+        "ja" : "3e07cb32-e5bb-4382-a589-66caf6873352",
+        "ko" : "6000a707-c59f-42a5-9940-92a1b2c2ce22",
+        "pt_br" : "a738680a-7896-4aab-81ab-ad373b5eec13",
+        "ru" : "46080418-a6c9-402c-bf98-3ac900d7923d",
+        "zh_cn" : "c27bd609-bbff-4f3d-abd8-5fae63596b6d",
+        "zh_tw" : "691a3fb9-0fac-4321-b996-a266a4d71ae7"
+      },
+      "renditions" : [ {
+        "id" : "a65330e5-6063-4676-8dfb-624761bc996d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bcde90d1-ce4f-40b4-b066-2ba7d84bc672",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f2348c0c-292d-430a-90ca-a2ac6c7e23f9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "de23d95c-0c88-4c45-8d76-2c9abc004b19",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "22e3b0a6-05b2-4229-89f3-104e5004daab",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3e07cb32-e5bb-4382-a589-66caf6873352",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6000a707-c59f-42a5-9940-92a1b2c2ce22",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a738680a-7896-4aab-81ab-ad373b5eec13",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "46080418-a6c9-402c-bf98-3ac900d7923d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c27bd609-bbff-4f3d-abd8-5fae63596b6d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "691a3fb9-0fac-4321-b996-a266a4d71ae7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "063f69ad-fa88-4d9f-914c-edee8b2d4709",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "29daff3e-a225-4cd1-9782-d4888289b54e",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "db115391-d0c3-4f20-b3c3-2253cee4bf8a",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "RELATED"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "29daff3e-a225-4cd1-9782-d4888289b54e",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:Core_MDF_ProposalApproval",
+          "id" : "f582bf60-69ca-48b4-b88c-9a283d468a41",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_PICReviewDetails",
+          "id" : "445a978a-ea1b-4d77-a065-3171317c64a7",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Case_Review_Documents__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "ebcca0c8-78ce-4017-a561-b10b11d417f6",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "identifierCheckboxField1" : "",
+            "identifierCheckboxField2" : "",
+            "identifierTextField1" : "Core_MDF_Program__c",
+            "identifierTextField2" : "",
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_ApprovalHistoryRelatedList",
+          "id" : "fecc606e-9e73-4f22-9e37-cbd0b7c23a8a",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "fieldsToMask" : "Core_MDF_Claim_Submitter_Id__c;Core_MDF_Last_Reviewed_By_id__c",
+            "internalUserName" : "Intel System User",
+            "objectApiName" : "PartnerFundClaim",
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_HistoryComponent",
+          "id" : "862534c2-22b2-4c7a-bf55-528abf81284b",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Claim_Recoveries__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "ec4403de-48cb-46a9-bdaf-5c6e551ca726",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Claim_Offsets__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "180cc6f1-dbc5-47b3-a10a-e29c4b515773",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Claim_Offset__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "81eea20a-002a-4427-aaa4-a7d1ea71565f",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Claim_Adjustment_Requests__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "70f1a0b8-f311-4bc5-b0b2-cc7b4cf117eb",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Claim_Adjustment_Requests1__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "7be0c2cf-09d1-4e7f-97bd-63d60449f617",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Claim_VAT_Documents__r",
+            "relatedListComponentOverride" : "NONE",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "6b0806c8-aed2-4c9f-8844-0b397d6ee8a1",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "db115391-d0c3-4f20-b3c3-2253cee4bf8a",
+        "regionLabel" : "RELATED",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "db88be72-ae4f-43f0-985e-b730ecd4fefb",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-0RB"
+}

@@ -1,0 +1,145 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "39439fcb-e73d-4e19-a0fb-5abbc00ef72e",
+  "label" : "Search",
+  "regions" : [ {
+    "id" : "58556f8c-e54b-41e8-ae0c-87e29fc1251b",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "scopes" : [ {
+          "isPublic" : true,
+          "name" : "PartnerFundRequest"
+        }, {
+          "isPublic" : false,
+          "name" : "Campaign"
+        }, {
+          "isPublic" : true,
+          "name" : "Account"
+        }, {
+          "isPublic" : true,
+          "name" : "SBQQ__Quote__c"
+        }, {
+          "isPublic" : true,
+          "name" : "PartnerFundClaim"
+        }, {
+          "isPublic" : true,
+          "name" : "Case"
+        }, {
+          "isPublic" : true,
+          "name" : "Contact"
+        }, {
+          "isPublic" : true,
+          "name" : "Core_AGS_Role__c"
+        } ],
+        "searchTerm" : "{!searchString}",
+        "showTopResults" : true
+      },
+      "componentName" : "forceCommunity:search",
+      "id" : "2aaee139-1bf4-4073-8082-fbfa798fbf22",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "604fb67d-a107-4040-b1ce-e2bca9ba0436",
+        "es" : "34a08f30-13db-4f4f-a4e4-09dc5048eb6d",
+        "es_mx" : "c7a6b73e-8d0d-4bf6-9e67-0716480c42cc",
+        "fr" : "8186b59d-f417-4383-bfbe-e7f2e9880289",
+        "it" : "82ead0f0-8905-4eb5-a2ba-54673a1c1019",
+        "ja" : "4b6a6d08-10ce-41d1-941c-3b90ec248db6",
+        "ko" : "a080f172-be74-469e-b2e4-9166128a0977",
+        "pt_br" : "1dcf2a79-3a26-4aa8-a07f-2bda82e36b84",
+        "pt_pt" : "95f1a920-32b9-47d8-a051-ede81620b3c6",
+        "ru" : "666a4cc9-ac9a-48b4-b195-c5039fcab0e5",
+        "zh_cn" : "b6400009-d754-476a-8a8c-c4de6580946d",
+        "zh_tw" : "9ac9e20b-a285-4b87-87b4-8bd9cef3a5ea"
+      },
+      "renditions" : [ {
+        "id" : "b6400009-d754-476a-8a8c-c4de6580946d",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "666a4cc9-ac9a-48b4-b195-c5039fcab0e5",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "95f1a920-32b9-47d8-a051-ede81620b3c6",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4b6a6d08-10ce-41d1-941c-3b90ec248db6",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "82ead0f0-8905-4eb5-a2ba-54673a1c1019",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8186b59d-f417-4383-bfbe-e7f2e9880289",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c7a6b73e-8d0d-4bf6-9e67-0716480c42cc",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "604fb67d-a107-4040-b1ce-e2bca9ba0436",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a080f172-be74-469e-b2e4-9166128a0977",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "34a08f30-13db-4f4f-a4e4-09dc5048eb6d",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1dcf2a79-3a26-4aa8-a07f-2bda82e36b84",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9ac9e20b-a285-4b87-87b4-8bd9cef3a5ea",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "770207a0-5960-46f7-b2f7-f23c87227a85",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "0b9eadad-1980-4943-a9c4-8d40ae1f39e9",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "global-search"
+}

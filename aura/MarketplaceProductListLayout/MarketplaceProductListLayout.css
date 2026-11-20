@@ -1,0 +1,81 @@
+.THIS .padding-button {
+    padding-top: 30px;
+}
+
+.THIS > .container {
+  padding-bottom: 50px;
+}
+
+.THIS > .container:empty {
+    padding-bottom: 0;
+}
+
+.THIS .marquee {
+    background-color: t(darkBlue);
+}
+
+.THIS h2.listTitle {
+  display: none;
+}
+
+.THIS .forceBaseListView thead th,
+.THIS .forceBaseListView tbody td,
+.THIS .forceBaseListView tbody th {
+  text-align: center;
+}
+
+.THIS .forceEntityIcon {
+  display: none;
+}
+
+.THIS .forceCommunityRecordListDesktop .slds-page-header__title {
+  font-size: 2em;
+}
+
+.THIS .forceListViewManagerHeader .forceListViewPicker .triggerLinkText {
+  color: t(darkGray);
+  font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 200;
+  line-height: 1.3;
+}
+
+.THIS .slds-media__figure {
+  margin: 0;
+}
+
+@media (min-width: 768px)
+    {
+    .THIS .container {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 992px)
+    {
+    .THIS .container {
+        width: 970px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1200px)
+{
+    .THIS .container {
+        width: 1170px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1650px)
+    {
+    .THIS .container {
+        width: 1610px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}

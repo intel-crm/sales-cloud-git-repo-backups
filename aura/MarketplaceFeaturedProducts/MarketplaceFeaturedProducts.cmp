@@ -1,0 +1,20 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="L1 Featured Products">
+	<!-- private/internal -->
+	<aura:attribute name="featuredProducts" type="object[]" default="[]"/>
+
+	<aura:attribute name="displayCardAttributes" type="boolean" default="false" />
+	<aura:attribute name="displayByPartner" type="boolean" default="false" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<div class="slds-p-vertical_x-large" style="overflow-y: hidden;">
+		<h4 class="slds-m-bottom_small slds-m-horizontal_medium slds-hide_medium">{!$Label.c.PMP_L1_Featured_Products}</h4>
+		<h4 class="slds-m-bottom_medium slds-show_medium">{!$Label.c.PMP_L1_Featured_Products}</h4>
+		<c:MarketplaceCardCarousel
+			 featuredProducts="{!v.featuredProducts}"
+			 displayCardAttributes="true"
+			 displayByPartner="true"
+			 />
+	</div>
+
+</aura:component>

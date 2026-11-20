@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ER_Email_Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ER_Email_Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- BusinessType --></label>
+        <name>BusinessType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Event --></label>
+        <name>Business_Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlements --></label>
+        <name>Entitlements__c</name>
+    </fields>
+    <fields>
+        <label><!-- Folder Name --></label>
+        <name>Folder_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Input Parameter --></label>
+        <name>Input_Parameter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Template Name --></label>
+        <name>Template_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Design Registration Product List</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Design Registration Products List</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available for New Designs --></label>
+        <name>Core_Avail_for_New_Designs__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Operation Code --></label>
+        <name>Core_BU_Operation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Core_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Product Id --></label>
+        <name>Core_Design_Product_Id__c</name>
+        <relationshipLabel><!-- Design Registration Products List --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Design Product Name --></label>
+        <name>Core_Design_Product_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Product Status --></label>
+        <name>Core_Design_Product_Status_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Eligible --></label>
+        <name>Core_Design_Registration_Eligible_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPGA Product Type --></label>
+        <name>Core_FPGA_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Name --></label>
+        <name>Core_Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Class --></label>
+        <name>Core_Item_Class_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Orderable --></label>
+        <name>Core_Item_Orderable_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quotable --></label>
+        <name>Core_Item_Quotable_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Signal Code --></label>
+        <name>Core_Item_Signal_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN --></label>
+        <name>Core_OPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Visible --></label>
+        <name>Core_Partner_Visible_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Name --></label>
+        <name>Core_Platform_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Density Value --></label>
+        <name>Core_Product_Density_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Core_Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group --></label>
+        <name>Core_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Org --></label>
+        <name>Core_Product_Org__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Core_Product_Series__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>Core_Product_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Visible Flag --></label>
+        <name>Core_Sales_Visible_Flag__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

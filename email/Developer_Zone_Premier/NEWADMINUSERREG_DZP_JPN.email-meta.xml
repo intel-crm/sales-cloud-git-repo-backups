@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome email for DZP with Email Verification - Japanese JPN- (Admin)</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>NEWADMINUSERREG_DZP_JPN</name>
+    <style>none</style>
+    <subject>インテル デベロッパー・ゾーンのプレミアアカウントが承認されました</subject>
+    <textOnly>インテル® デベロッパー・ゾーンのプレミアアカウントが承認されました
+
+インテル® デベロッパー・ゾーン・プレミアへようこそ
+
+
+ようこそ {!Contact.Name} 様、
+
+インテル® デベロッパー・ゾーンのプレミアアカウントに登録されました。
+
+インテル® デベロッパー・ゾーンのプレミアアカウントへのリクエストが承認されました。このリンクを使用してインテル® デベロッパー・ゾーンにサインインしてください。
+
+インテル® デベロッパー・ゾーン・プレミアへのアクセスが、このアカウントに設定されました。
+
+メールアドレス: {!Contact.Email}
+
+このメールは今後必要になる場合がありますので、保存しておいてください。
+
+パスワードは秘密情報として保護してください。パスワードとインテルのウェブサイトの使用に関しては、各サイトのウェブページの一番下よりリンクされているインテルの利用規約が適用されます。
+
+ご質問がある場合は、インテルにお問い合わせください。
+
+利用可能なマーケティング・サブスクリプションを含む、プロファイルの管理を行うには、マイ・インテルにアクセスしてください。
+
+このメッセージには返信しないでください。これは自動応答です。引き続き当社からのメールを受信できるように、アドレス帳に当社を追加してください。
+
+
+インテルはお客様のプライバシーを保護することに全力を尽くしています。詳細については、インテルのプライバシー通知を参照してください。インテルの Cookie に関する通知。
+
+法務情報 &amp;verbar; 商標 &amp;verbar; © Intel Corporation</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

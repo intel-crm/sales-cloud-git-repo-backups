@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="Core_MDF_HistoryComponent">
+    <apiVersion>63.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+     <!-- Configuring the design attributes --><targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <supportedFormFactors>
+                <supportedFormFactor type="Small" />
+                <supportedFormFactor type="Large" />
+            </supportedFormFactors>
+            <property name="internalUserName" type="String" default="Intel System User" label="Enter the default system user name"/>
+            <property name="fieldsToMask" type="String" label="Enter the fields which has to be masked on UI except Owner"/>
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" default="{!recordId}"/>
+            <property name="objectApiName" type="String" default="{!objectApiName}"/>
+            <property name="internalUserName" type="String" default="Intel System User" label="Enter the default system user name"/>
+            <property name="fieldsToMask" type="String" label="Enter the fields which has to be masked on UI except Owner"/>
+        </targetConfig> 
+    </targetConfigs>
+  
+</LightningComponentBundle>

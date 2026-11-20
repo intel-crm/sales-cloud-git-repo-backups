@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sobject Share Record</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sobject Share Records</value>
+    </caseValues>
+    <fields>
+        <label><!-- Action --></label>
+        <name>Core_IPS_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Id --></label>
+        <name>Core_IPS_Contact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer User Id --></label>
+        <name>Core_IPS_Customer_User_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- RowCause --></label>
+        <name>Core_IPS_RowCause__c</name>
+    </fields>
+    <fields>
+        <label><!-- SobjectAccessLevel --></label>
+        <name>Core_IPS_SobjectAccessLevel__c</name>
+    </fields>
+    <fields>
+        <label><!-- SobjectId --></label>
+        <name>Core_IPS_SobjectId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sobject Type --></label>
+        <name>Core_IPS_Sobject_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_IPS_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- UserOrGroupId --></label>
+        <name>Core_IPS_UserOrGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner User Id --></label>
+        <name>Partner_User_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

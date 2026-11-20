@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Whenever Core_Account_Type__c is changed, update Core_PMP_Membership_Change_Ind__c to True</description>
+    <environments>Default</environments>
+    <interviewLabel>PMP_Account_Update_Membership_Change_Ind {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PMP_Account_Update_Membership_Change_Ind</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Membership_changed_indicator_to_True</name>
+        <label>Update Membership changed indicator to True</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Core_PMP_Membership_Change_Ind__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Membership_changed_indicator_to_True</targetReference>
+        </connector>
+        <filterFormula>AND( ISCHANGED({!$Record.Core_Account_Type__c}),
+OR({!$Record.RecordType.DeveloperName} = &quot;Core_Partner_Account_Group&quot;,
+AND(
+{!$Record.RecordType.DeveloperName} = &quot;Mastered_Account&quot;,
+{!$Record.Core_IPA_One_Partner_Id__c} = &apos;&apos;)))</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

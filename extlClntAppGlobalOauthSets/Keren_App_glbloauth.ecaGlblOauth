@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://www.salesforce.com</callbackUrl>
+    <certificate>MIIEJzCCAw+gAwIBAgIUL0Au5AAUALbQ5WBhzspvj8aPK2IwDQYJKoZIhvcNAQEL
+BQAwgbsxCzAJBgNVBAYTAk1YMRAwDgYDVQQIDAdKYWxpc2NvMRAwDgYDVQQHDAda
+YXBvcGFuMRowGAYDVQQKDBFJbnRlbCBDb3Jwb3JhdGlvbjEaMBgGA1UECwwRRGF0
+YSBDZW50ZXIgR3JvdXAxHzAdBgNVBAMMFktlcmVuIERlbGdhZG8gTmFrYWthd2Ex
+LzAtBgkqhkiG9w0BCQEWIGtlcmVuLmRlbGdhZG8ubmFrYWthd2FAaW50ZWwuY29t
+MB4XDTI2MDkyMzE5MjIwNFoXDTI3MDkyMzE5MjIwNFowgbsxCzAJBgNVBAYTAk1Y
+MRAwDgYDVQQIDAdKYWxpc2NvMRAwDgYDVQQHDAdaYXBvcGFuMRowGAYDVQQKDBFJ
+bnRlbCBDb3Jwb3JhdGlvbjEaMBgGA1UECwwRRGF0YSBDZW50ZXIgR3JvdXAxHzAd
+BgNVBAMMFktlcmVuIERlbGdhZG8gTmFrYWthd2ExLzAtBgkqhkiG9w0BCQEWIGtl
+cmVuLmRlbGdhZG8ubmFrYWthd2FAaW50ZWwuY29tMIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEAosV0m9diPDRAwMq+sRHIjn9IRFExwZlXqcdiMBKa9EdF
+I+FhJGwEM9QTH2DlA1iTdhVwdzeNMt6osSaTpyCSgmqFUvUUqydIpBeWuO8NiaYA
+R8wraornx5qPuk2PDLgtyxqALl2trgqY7YkTnWAmTNecXlTJNk3Apsa3qYm8vDiG
+0L2HzzkG0vDZv6S3v4NgayCkMwK+qFDuRI+zdywbbsy8qNsTNPwakKEJXKkIoizh
+V7OPUz2gM/ffD+Hpc6iF4MU0VIAII/IWu/4VqrK43E5/Az6Keisske/j6LMXxhZg
+oyt/sO7MR7Yqas+MBVmMgLfNSOOHo4bh9vo1TCVdGQIDAQABoyEwHzAdBgNVHQ4E
+FgQUSUZtUaOSQI5b7/z4oGmjQnaZwdkwDQYJKoZIhvcNAQELBQADggEBAE9egKVp
+kGMRMYNK1uMaXSjKsUPpHWnyqPaK0PBmWT1oEj6I91Q4F8WY/11h5Hwc61v5y+aK
+Yh7pgC/l7AsENHDSgJ3wlNCY4g1p45w06oOjmBIWQ3D6J8TugcM5t5L3ToC2fOHO
+vzKIP++BpRK/2TJrrpTisBBfvYMsfZV14+DDvIKHPBs86lyxb/cJ6xtxF/frvbe1
+c1SCODuRxzEZrcHhLnRTb0Fcr0I+dRr4tthjXaBJVY1pLHFzQHdYU2cdBDfoJ+ep
+uR/dnOZclAh0Vfmq3BMcOtJZWkhhDv3ruNpkMKmobo5xQpSHEi9rcsS3TycixJuq
+PU7MADULL8+ihQ0=</certificate>
+    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6t9OicirC_S0SupmSim.nYxzG3Ygr6v.hCpQ2uMWv.oseh8Ep4k7NgO952dv</consumerKey>
+    <externalClientApplication>Keren_App</externalClientApplication>
+    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Keren_App_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

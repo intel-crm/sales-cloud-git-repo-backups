@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores default values for quota setup fields based on plan codes.</description>
+    <fields>
+        <fullName>CPT_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Default_Value__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Default Value</label>
+        <length>10</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_QuotaSetup_Field_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>QuotaSetup Field Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Sales_KPI_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Sales KPI Type</label>
+        <length>20</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Quota Setup Plan Default</label>
+    <listViews>
+        <fullName>Quota_Setup_Plan_Defaults</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>CPT_Sales_KPI_Type__c</columns>
+        <columns>CPT_QuotaSetup_Field_Name__c</columns>
+        <columns>CPT_Default_Value__c</columns>
+        <columns>CPT_Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Quota Setup Plan Defaults</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Quota Setup Plan Defaults</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

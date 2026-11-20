@@ -1,0 +1,80 @@
+<template>
+    <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    <div class="card">
+        <div class="header">
+            <template if:false={isOffering}>
+                <div class="card-date utility-type text-normal">{card.createdDate}</div>
+                <div class="card-title" data-has-tagline={hasTagline}>
+                    <h3 class="p text-bold">
+                        <c-ipa-link external-url={card.externalUrl} label={card.title} hide-icon></c-ipa-link>
+                    </h3>
+                </div>
+            </template>
+            <template if:true={isOffering}>
+                <template if:true={card.featured}>
+                    <div class="slds-m-bottom_x-small">
+                        <lightning-badge label={labels.badgeTagline} class="badge"></lightning-badge>
+                    </div>
+                </template>
+                <div class="card-title" data-has-tagline={hasTagline}>
+                    <h3 class="p text-bold">
+                        <c-ipa-link object-page="PMP_Partner_Offering__c" record-id={card.id} label={card.title}></c-ipa-link>
+                    </h3>
+                </div>
+                <template if:true={card.tagline}>
+                    <div class="tagline">{card.tagline}</div>
+                </template>
+            </template>
+            <template if:true={card.imageUrl}>
+                <div class="image-container">
+                    <template if:true={isOffering}>
+                        <c-ipa-link object-page="PMP_Partner_Offering__c" record-id={card.id} aria-skip>
+                            <img class="slds-align_absolute-center" src={card.imageUrl} alt={card.imageAlt}/>
+                        </c-ipa-link>
+                    </template>
+                    <template if:false={isOffering}>
+                        <c-ipa-link external-url={card.externalUrl} aria-skip hide-icon>
+                            <img class="slds-align_absolute-center" src={card.imageUrl} alt={card.imageAlt}/>
+                        </c-ipa-link>
+                    </template>
+                </div>
+            </template>
+        </div>
+        <div class="body" data-has-image={hasImage}>
+            <div class={descriptionClass}>{card.description}</div>
+            <template if:true={card.categories}>
+                <div class="card-categories-section"> 
+                    <template for:each={card.categories} for:item="category">
+                        <div key={category.key} class='card-category'>
+                            <div class="text-bold card-category-label">{labels.categoryLabel}:</div>
+                            <div class="card-attributes">
+                                <c-ipa-attributes
+                                    key={category.key}
+                                    values={category.values}
+                                    separator={category.separator}
+                                    attribute-class="slds-p-vertical_xx-small"
+                                    display-inline>
+                                </c-ipa-attributes>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+        <div class="footer">
+            <div class="learn-more">
+                <template if:true={isOffering}>
+                    <c-ipa-link object-page="PMP_Partner_Offering__c" record-id={card.id} label={labels.learnMore}>
+                    </c-ipa-link>
+                </template>
+                <template if:false={isOffering}>
+                    <c-ipa-link external-url={card.externalUrl} label={labels.learnMore} hide-icon>
+                    </c-ipa-link>
+                </template>
+            </div>
+            <div class="slds-text-align_right">
+                <c-ipa-share email-body={card.title} email-link={shareLink}></c-ipa-share>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,102 @@
+<template>
+
+    <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    <template if:true={showJumps}>
+        <button class="jump beginning" onclick={jumpTo} data-jump-to="end">{jumpEndText}</button>
+    </template>
+    <div class="carousel-wrapper" onkeydown={handleKeydown} data-hide-indicators={hideIndicators} data-page-count={pageCount} data-variant={variant}>
+        <div class="carousel-container" id={name} data-loading={loadingPageSpinner}>
+            <template if:true={withPaddles}>
+                <div class="carousel-paddle-left">
+                    <template if:false={isGallery}>
+                        <span class="carousel-paddle-filler"></span>
+                    </template>
+                    <a href="#" class="carousel-paddle" data-direction="left"
+                        onclick={handlePaddleClick} tabindex={paddleTabIndex} role="button" aria-label={previousPaddleText}>
+                        <template if:true={isGallery}>
+                            <span class="fa-left-open"></span>
+                        </template>
+                        <template if:false={isGallery}>
+                            <lightning-icon icon-name="utility:back" size="x-small"></lightning-icon>
+                        </template>
+                    </a>
+                </div>
+            </template>
+            <template if:true={loadingPageSpinner}>
+                <lightning-spinner alternative-text={loadingPage}></lightning-spinner>
+            </template>
+            <div class="carousel-content-container" data-speed={speed}
+                ontouchstart={handleTouchStart}
+                ontouchend={handleTouchEnd}>
+                <div class="carousel-content">
+                    <slot name="content" onslotchange={handleSlotChange}></slot>
+                </div>
+            </div>
+            <template if:true={withPaddles}>
+                <div class="carousel-paddle-right">
+                    <a href="#" class="carousel-paddle" data-direction="right"
+                        onclick={handlePaddleClick} tabindex={paddleTabIndex} role="button" aria-label={nextPaddleText}>
+                        <template if:true={isGallery}>
+                            <span class="fa-right-open"></span>
+                        </template>
+                        <template if:false={isGallery}>
+                            <lightning-icon icon-name="utility:forward" size="x-small"></lightning-icon>
+                        </template>
+                    </a>
+                    <template if:false={isGallery}>
+                        <span class="carousel-paddle-filler"></span>
+                    </template>
+                </div>
+            </template>
+        </div>
+
+        <div class="carousel-indicators-wrapper">
+          <div class="carousel-indicators-container slds-grid"
+              data-breakpoint={breakpoint.name}
+              data-variant={variant}
+              data-is-modal={isModal}>
+              <div class={leftFooterClass}>
+                  <slot name="footer-left" onslotchange={handleFooterSlotChange}></slot>
+              </div>
+              <ul class="carousel-indicators" role="tablist">
+                  <template for:each={indicators} for:item="page" for:index="idx">
+                      <li class="carousel-indicator" role="presentation" key={page.key}>
+                          <a data-page={page.page}
+                              data-index={idx}
+                              data-is-media={page.isMedia}
+                              data-variant={variant}
+                              onclick={handleChangePage}
+                              onfocus={handleIndicatorFocus}
+                              class={page.class}
+                              href="javascript:void(0);"
+                              role="tab"  
+                              aria-selected={page.ariaSelected}
+                              aria-controls={page.ariaControls}
+                              title={page.title}>
+                              <span class="slds-assistive-text">{page.assistiveText}</span>
+                              <template if:true={page.isMedia}>
+                                  <img src={page.imageUrl} role="presentation">
+                              </template>
+                              <template if:true={page.isVideo}>
+                                  <span class="fa-icons_functional_video-70"> </span>
+                              </template>
+                          </a>
+                      </li>
+                  </template>
+              </ul>
+              <div class={rightFooterClass}>
+                  <slot name="footer-right" onslotchange={handleFooterSlotChange}></slot>
+              </div>
+          </div>
+          <button class={leftIndicatorPaddleClasses} onclick={handleIndicatorPaddleClick} data-is-modal={isModal} data-direction="left" aria-hidden="true" tabindex="-1">
+            <span class="fa-left-open indicator-paddle"></span>
+          </button>
+          <button class={rightIndicatorPaddleClasses} onclick={handleIndicatorPaddleClick} data-is-modal={isModal} data-direction="right" aria-hidden="true" tabindex="-1">
+              <span class="fa-right-open indicator-paddle"></span>
+          </button>
+        </div>
+    </div>
+    <template if:true={showJumps}>
+        <button class="jump end" data-jump-to="beginning" onclick={jumpTo}>{jumpBeginText}</button>
+    </template>
+</template>

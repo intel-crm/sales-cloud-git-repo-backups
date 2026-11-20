@@ -1,0 +1,16 @@
+a {
+  outline-offset: .25rem;
+}
+
+/* selected category filters lose link blue */
+a[data-selected="true"] {
+  color: inherit;
+}
+
+lightning-input {
+  word-break: break-word;
+}
+
+h2 {
+  border-bottom: 1px solid var(--lightGray);
+}

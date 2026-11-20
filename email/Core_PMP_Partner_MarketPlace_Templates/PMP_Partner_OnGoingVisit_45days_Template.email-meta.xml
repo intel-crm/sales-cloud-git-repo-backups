@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <available>true</available>
+    <description>Email to users who haven&apos;t logged into Marketplace since last 45 days</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>PMP_Partner_OnGoingVisit_45days_Template</name>
+    <style>none</style>
+    <subject>Innovation is waiting on Intel® Solutions Marketplace</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

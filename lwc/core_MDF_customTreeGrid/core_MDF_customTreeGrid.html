@@ -1,0 +1,106 @@
+<template>
+    <!-- Search Starts-->
+    <template if:true={isSearchEnabled}>
+        <div class="slds-grid slds-gutters slds-wrap slds-var-p-bottom_x-small">
+            <div class="slds-col slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_12-of-12 slds-var-p-left_small">
+                <template if:true={isShowHelpText}>
+                    <lightning-helptext content={helpText}></lightning-helptext>
+                </template>
+                <lightning-input type="text" placeholder={search} name="search" onchange={searchData} variant="label-hidden"></lightning-input>
+            </div>
+        </div>
+    </template>
+    <!-- Search Ends-->
+    <!-- Table Starts -->
+    <div data-id="scrollablediv" class="slds-scrollable slds-box slds-border_right slds-border_bottom slds-border_left" >
+        <div class="slds-grid slds-gutters slds-wrap" style="background-color: white;">
+            <!-- Table Header Starts -->
+            <div class="slds-col slds-size_1-of-1">
+                <template if:true={showTableHeader}>
+                    <div class="slds-grid slds-gutters slds-wrap slds-border_top slds-border_bottom slds-p-top_x-small slds-p-bottom_x-small">
+                        <template if:true={showCheckbox}>
+                            <div class="slds-col slds-size_1-of-12 slds-medium-size_1-of-12 slds-large-size_1-of-12 slds-align-middle" > <!-- style="width:2.25rem;" -->
+                                <!-- <div class="slds-form-element">
+                                    <div class="slds-form-element__control">-->
+                                        <label class="slds-checkbox slds-p-left_x-small"> 
+                                            <input type="checkbox" id="selectAll" name="selectAll" onchange={selectAllRows} />
+                                            <span class="slds-checkbox_faux"></span>
+                                            <!-- <span class="slds-form-element__label text"></span> -->
+                                        </label>
+                                    <!--</div>
+                                </div> -->
+                            </div>
+                        </template>
+                        <template for:each={columns} for:item="column">
+                            <div class="slds-col slds-size_11-of-12 slds-medium-size_11-of-12 slds-large-size_11-of-12 slds-align-middle" key={column.fieldName} title={column.title}>
+                                <div class="slds-truncate">
+                                    {column.label}
+                                </div>
+                            </div >
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <!-- Table Header Ends -->
+
+            <!-- Table Body Starts -->
+            <template if:true={treeData}>
+                <template for:each={treeData} for:item="row">
+                    <div key={row.name} class="slds-col slds-size_1-of-1 ">
+                        <div class="slds-grid slds-gutters slds-wrap slds-border_top slds-border_bottom slds-p-top_x-small slds-p-bottom_x-small">
+                            <template if:true={showCheckbox}>
+                                <div key={row.name} class="slds-col slds-size_1-of-12 slds-medium-size_1-of-12 slds-large-size_1-of-12 slds-align-middle" style="padding-left: 1rem;" > <!-- style="width:2.25rem;" -->
+                                    <label class="slds-checkbox slds-p-left_x-small">
+                                        <input type="checkbox" id={row.name} name={row.name} checked={row.isChecked} value={row.name} onchange={getSelectedRow} disabled={disableAll} />
+                                        <span class="slds-checkbox_faux"></span>
+                                    </label> 
+                                </div>
+                            </template>
+                            <template for:each={columns} for:item="column">
+                                <div key={column.fieldName} class="slds-col slds-size_11-of-12 slds-medium-size_11-of-12 slds-large-size_11-of-12 slds-align-middle">
+                                    <div class="slds-truncate" title={row.productName}>
+                                        <template if:true={row._children}>
+                                            <span onclick={toggleSection} data-aura-id="colorSection" style="cursor: pointer;">
+                                                <lightning-icon icon-name="utility:switch" alternative-text="button icon" size="x-small" class="slds-section__title-action-icon slds-button__icon_left" access-key={row.name}></lightning-icon>
+                                            </span>
+                                        </template>
+                                        {row.productName}
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <!-- For Child rows starts -->
+                    <template if:true={row._children}>
+                        <div key={row.name} data-id={row.name} class="slds-hide" style="width: -webkit-fill-available;">
+                        <template for:each={row._children} for:item="child">
+                            <div key={child.Id} class="slds-col slds-size_1-of-1">
+                                <div class="slds-grid slds-gutters slds-wrap slds-border_top slds-border_bottom slds-p-top_x-small slds-p-bottom_x-small">
+                                    <template if:true={showCheckbox}>
+                                        <div key={child.Id} class="slds-col slds-size_1-of-12 slds-medium-size_1-of-12 slds-large-size_1-of-12 slds-align-middle" style="padding-left: 1rem;"  ><!-- style="width:2.25rem;" -->
+                                            <label class="slds-checkbox slds-p-left_x-small"> 
+                                                <input type="checkbox" data-id={child.Id} id={child.Id} name={child.Id} checked={child.isChecked} value={child.Id} onchange={getSelectedRow} disabled={disableAll} />
+                                                <span class="slds-checkbox_faux"></span>
+                                            </label>
+                                        </div>
+                                    </template>
+                                    <template for:each={columns} for:item="column">
+                                        <div key={column.fieldName} class="slds-col slds-size_11-of-12 slds-medium-size_11-of-12 slds-large-size_11-of-12 slds-align-middle" style="padding-left: 2.3rem;">
+                                            <div class="slds-truncate" title={child.Name}>
+                                                {child.Name}
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                        </div>
+                    </template>
+                    <!-- For Child rows ends -->
+                </template>
+            </template>
+            <!-- Table Body Ends -->
+        </div>
+    </div>
+    <!-- Table Ends -->
+</template>

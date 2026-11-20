@@ -1,0 +1,101 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "9cc4f096-3282-47f4-9668-e69e28677aa1",
+  "label" : "Payment Document Detail",
+  "regions" : [ {
+    "id" : "72256b55-c0a7-4405-86b9-42b4eb68d992",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "6079f4fd-2ef7-4785-b485-97227917feed",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "none",
+        "tab3Type" : "none",
+        "tab4Type" : "none",
+        "timelineTabLabel" : ""
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "d599f600-7313-4695-a700-fe229307a0da",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:core_MDF_Info_Banner",
+      "id" : "907b25be-0d50-4ed5-a9c4-2815d5f04634",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Related",
+        "discussionsTabLabel" : "",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "",
+        "tab1Type" : "related",
+        "tab2Type" : "none",
+        "tab3Type" : "none",
+        "tab4Type" : "none",
+        "timelineTabLabel" : ""
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "ca0a2dd5-74f3-4874-a1cf-df1fab30d045",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "fieldsToMask" : "",
+        "internalUserName" : "Intel System User",
+        "objectApiName" : "Core_MDF_Claim_VAT_Info__c",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:core_MDF_HistoryComponent",
+      "id" : "2223be14-81cb-4539-ad6b-52e3efde96c5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f1ff2ecc-884c-455f-8a6d-fc3c1e184f9a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fffbddc2-a857-4dd4-9c20-80ba3b66373c",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "06ae17fe-811e-482a-9421-c02e320ae776",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6ba5ac00-9434-48f7-b018-c4f86e6405f0",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a8k"
+}

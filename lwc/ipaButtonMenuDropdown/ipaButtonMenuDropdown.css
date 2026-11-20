@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+}
+
+button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  --iconColor: var(--white);
+  --iconSize: .85rem;
+}
+
+button lightning-icon {
+  margin-left: .55rem;
+}
+
+ul {
+  background-color: var(--white);
+  border: 1px solid var(--lightGray);
+  border-top-width: 0;
+  width: 100%;
+}
+
+li {
+  padding: .5rem;
+  width: calc(100% - 1rem);
+}

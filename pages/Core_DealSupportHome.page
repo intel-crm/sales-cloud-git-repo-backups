@@ -1,0 +1,430 @@
+<!-- **************************************************************************************
+    Apex Page Name:  Core_DealSupportHome
+    Version     : 1.0 
+    Created Date: 06 NOV 2014
+    Function    : Seeds Page to View Seeds based on Opportunity Id OR Account Id OR WWID
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Srikant Joshi             11/07/2014              Original Version
+    * Harshith M L              20/07/2014              Table alignment,URL updates for Webservice
+    ************************************************************************************* -->
+    <apex:page controller="Core_DealSupportHomeController" sidebar="{!IF(sAcctRecName != '' || sOppRecName != '',false,true)}" showHeader="{!IF(sAcctRecName != '' || sOppRecName != '',false,true)}" docType="html-5.0" tabStyle="Core_Deal_Support__tab" standardStylesheets="true" title="{!$Label.Core_DealSupportViewTitle}" action="{!init}">
+    <style>
+        .tabDepotOrder
+        {
+            position:relative;left:20px;
+        }
+        
+        .accountDepotOrder
+        {
+            position:relative;left:38px;
+        }
+        
+        .tabProductName
+        {
+            position:relative;left:20px;
+        }
+        
+        .accountProductName
+        {
+            position:relative;left:35px;
+        }
+        
+        .tabEstimatedShipDate
+        {
+            position:relative;left:21px;
+        }
+        
+        .accountEstimatedShipDate
+        {
+            position:relative;left:32px;
+        }
+        
+        .tabRequestedDeliveryDate
+        {
+            position:relative;left:21px;
+        }
+        
+        .accountRequestedDeliveryDate
+        {
+            position:relative;left:32px;
+        }
+        
+        .tabDeliveryStatus
+        {
+            position:relative;left:23px;
+        }
+        
+        .accountDeliveryStatus
+        {
+            position:relative;left:32px;
+        }
+        
+        .tabPickupDate
+        {
+            position:relative;left:22px;
+        }
+        
+        .accountPickupDate
+        {
+            position:relative;left:32px;
+        }
+        
+        .tabRequestor
+        {
+            position:relative;left:22px;
+        }
+        
+        .accountRequestor
+        {
+            position:relative;left:32px;
+        }
+        
+        .tabRequestedQuantity
+        {
+            position:relative;left:22px;
+        }
+        
+        .accountRequestedQuantity
+        {
+            position:relative;left:32px;
+        }
+        
+        .accountAccountName
+        {
+            position:relative;left:32px;
+        }
+        
+        .tabAccountName
+        {
+            position:relative;left:23px;
+        }
+        
+        .tabOpportunityName
+        {
+            position:relative;left:24px;
+        }
+        
+        .accountOpportunityName
+        {
+            position:relative;left:32px;
+        }
+        
+    </style>
+        <script type='text/javascript'> 
+            function setFocusOnLoad() {};
+            function openOrderSeed(url){
+                if (isIE()) { // bypass checks because ie cant make cross domain requests without relaxing security
+                    openPopup(url);
+                }
+                else{
+                    var http = new XMLHttpRequest();
+                    try
+                    {
+                      http.open('GET', '{!$Label.Core_Intel_Network_Resource}', false);
+                      http.send();
+                      openPopup(url);
+                    }
+                    catch (error)
+                    {
+                      alert('An error has occured. Please make sure you are on the Intel network');
+                    }
+                }
+            }
+            function openPopup(url){
+                newWin=window.open(url, 'Popup','height=500,width=1000,left=100,top=100,scrollbars=yes,toolbar=no,status=no, resizable=yes');
+                if (window.focus) 
+                {
+                newWin.focus();
+                }
+            }
+            function isIE() {
+              var ua = window.navigator.userAgent;
+              var msie = ua.indexOf("MSIE ");
+              return (msie > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
+            }
+            function runOnEnter(ev) 
+            { 
+                if (window.event && window.event.keyCode == 13 || ev.which == 13) 
+                { 
+                    applyFilters(); 
+                    return false; 
+                } 
+                else 
+                { 
+                    return true; 
+                } 
+            } 
+       </script> 
+       <!-- Insert style sheet references here -->
+        <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
+        <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />    
+        <apex:outputPanel >
+                 <table width="300px">
+                     <tr>
+                         <td width="40px">
+                             <apex:image value="{!$Resource.Core_PencilIcon}" width="30px;" />
+                         </td>
+                         <td width="100px" style="position:relative;left:-30px;">
+                             <apex:outputText style="font-weight:bold;" value="{!IF(sWWID == NULL,$Label.Core_Deal_Support,'')}"/><br/>
+                             <apex:outputText style="font-size:22px;" value="{!IF(sWWID != NULL,$Label.Core_Deal_Support,IF(sOppRecName != null,sOppRecName,sAcctRecName))}" />
+                         </td>
+                     </tr>
+                 </table>
+             <br/>       
+        </apex:outputPanel>
+        
+        <apex:form >
+            <!-- End stylesheet references -->
+            <apex:pageBlock tabStyle="Core_Deal_Support__tab" id="pageblk">
+                <br/><br/>
+                <!-- Use TabPanel for including tabstyle -->
+                <apex:tabPanel switchType="client" selectedTab="tabOpps" id="theTabPanel" tabClass="activeTab" inactiveTabClass="inactiveTab" style="position:relative;top:-20px">      
+                    <apex:tab label="Seeds" name="tabOpps" id="tabOpps" labelWidth="120" >  
+                    <apex:actionFunction name="applyFilters" action="{!searchSeed}" reRender="pageblk" status="counterStatus"/>
+                    <!-- Button for Order Seeds -->
+                    <br/>
+                    <apex:commandButton value="{!$Label.Core_Order_Seeds_Button}"  onClick="openOrderSeed('{!orderSeedsAccount}');return false" rendered="{!If(sOppRecName == NULL && sAcctRecName != NULL && sCimId!= '', true, false)}" /> 
+                    <apex:commandButton value="{!$Label.Core_Order_Seeds_Button}" onClick="openOrderSeed('{!orderSeedsOpportunity}');return false" rendered="{!If(sOppRecName != NULL, true, false)}" /> 
+                    <apex:commandButton value="{!$Label.Core_Order_Seeds_Button}" onClick="openOrderSeed('{!orderSeedsTab}');return false" rendered="{!If(sWWID != NULL, true, false) }" /> 
+                    <br/><br/>
+                    
+                    <apex:pageMessages rendered="{!bErrorFlag}"/>
+                  
+                    <apex:outputPanel rendered="{!NOT(bUserHasAccess)}">
+                        <apex:pageMessage severity="INFO" title="Access Denied" summary="User doesn't have access to view the page."></apex:pageMessage>
+                    </apex:outputPanel>
+                    <br/>
+                        <apex:pageBlockSection title="{!$Label.Core_Section_Seeds_Section}" collapsible="false" rendered="{!bRenderFlag}">
+                          <apex:panelGrid columns="10"> 
+                           
+                            <apex:inputText value="{!sSearchText}"  size="{!IF( sWWID != NULL,8,8)}" html-placeholder="Order No" 
+                                    styleClass="{!IF(sWWID != NULL,'tabDepotOrder','accountDepotOrder')}" onkeypress="return runOnEnter(event);"/>
+                                    
+                            <apex:inputText value="{!sSearchText1}" size="{!IF(sWWID != NULL,34,48)}" html-placeholder="Product Name" 
+                            styleClass="{!IF(sWWID != NULL,'tabProductName','accountProductName')}" onkeypress="return runOnEnter(event);"/> 
+                            
+                            <apex:inputText value="{!sSearchText2}" size="{!IF(sWWID != NULL,8,11)}"  html-placeholder="Estimated Ship Date"  
+                            styleClass="{!IF(sWWID != NULL,'tabEstimatedShipDate','accountEstimatedShipDate')}" onkeypress="return runOnEnter(event);"/> 
+                            
+                            <apex:inputText value="{!sSearchText3}" size="{!IF(sWWID != NULL,8,12)}" html-placeholder="Delivery Date"  
+                            styleClass="{!IF(sWWID != NULL,'tabRequestedDeliveryDate','accountRequestedDeliveryDate')}" onkeypress="return runOnEnter(event);"/>
+                            
+                                                   
+                            <apex:inputText value="{!sSearchText4}" size="{!IF(sWWID != NULL,15,15)}" html-placeholder="Delivery Status"  
+                            styleClass="{!IF(sWWID != NULL,'tabDeliveryStatus','accountDeliveryStatus')}" onkeypress="return runOnEnter(event);"/> 
+                            
+                            
+                            <apex:inputText value="{!sSearchText5}" size="{!IF(sWWID != NULL,8,11)}" html-placeholder="Pickup Date" 
+                            styleClass="{!IF(sWWID != NULL,'tabPickupDate','accountPickupDate')}" onkeypress="return runOnEnter(event);"/> 
+                            
+                            
+                            <apex:inputText value="{!sSearchText6}" size="{!IF(sWWID != NULL,9,11)}" html-placeholder="Requestor"  
+                            styleClass="{!IF(sWWID != NULL,'tabRequestor','accountRequestor')}" onkeypress="return runOnEnter(event);"/>
+                            
+                            <apex:inputText value="{!sSearchText7}" size="{!IF(sWWID != NULL,6,9)}" html-placeholder="Requested Quantity"  
+                            styleClass="{!IF(sWWID != NULL,'tabRequestedQuantity','accountRequestedQuantity')}" onkeypress="return runOnEnter(event);"/>
+                            
+                            
+                            <apex:inputText value="{!sSearchText8}" size="{!IF(sWWID != NULL,14,IF(sOppRecName!= NULL,21,0))}" html-placeholder="Account Name" 
+                            onkeypress="return runOnEnter(event);" styleClass="{!IF(sWWID != NULL,'tabAccountName',IF(sOppRecName!= NULL,'accountAccountName',''))}"  
+                            rendered="{!IF(sOppRecName!= NULL || sWWID != NULL, true,false)}"/>
+                            
+                            
+                            <apex:inputText value="{!sSearchText9}" size="{!IF(sWWID != NULL,15,IF(sAcctRecName != NULL,21,0))}" html-placeholder="Opportunity Name"  
+                            onkeypress="return runOnEnter(event);"  styleClass="{!IF(sAcctRecName != NULL || sWWID != NULL,'tabOpportunityName','accountOpportunityName')}" 
+                            rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}"/>
+                           
+                            </apex:panelGrid>
+                           
+                            <br/>                      
+                             
+                            <apex:commandButton action="{!searchSeed}" reRender="pageblk" value="Apply Filters" status="counterStatus" style="position:relative;left:50%;"/>
+                                <apex:actionstatus id="counterStatus">
+                                    <apex:facet name="start">
+                                        <apex:image url="/img/loading32.gif" style="position:relative;left:-560px;height:20px;width:20px;"/>
+                                    </apex:facet>
+                                </apex:actionstatus>
+                            </apex:pageblocksection>
+                            
+                            <!-- Table for Rendering Apex Object Records -->
+                            <apex:pageBlockTable value="{!lstResSeedWebserviceWrapperInstance}" var="seed" id="table1" style="width:100%" frame="box" columns="11" columnsWidth="2%,2%,16%,5%,5%,6%,5%,5%,3%,8%,8%"
+                            rendered="{!bRenderFlag}">
+                                <apex:column >
+                                <apex:actionstatus id="counterStatus1">
+                                <apex:facet name="start">
+                                    <apex:image url="/img/loading32.gif" height="12" width="12"/>
+                                </apex:facet>
+                            </apex:actionstatus>
+                                    <apex:commandLink status="counterStatus1" reRender="pageblk">
+                                      <!--   <apex:actionSupport event="onclick"  reRender="table1"/>
+                                       <apex:image id="theImage" url="{!IF(!seed.bRenderCSection,$Resource.UpsideCollapsibleV2,$Resource.CollapsibleV2)}" width="10" height="10" /> -->
+                                             <apex:image url="{!URLFOR($Resource.Core_CollapsibleImages  , 'CollapsibleV2.png')}" width="10" height="10" rendered="{!seed.bRenderCSection}"/>   
+                                             <apex:image url="{!URLFOR($Resource.Core_CollapsibleImages  , 'UpsideCollapsibleV2.png')}" width="10" height="10" rendered="{!NOT(seed.bRenderCSection)}"/>
+                                         <apex:param name="nickName"
+                                        value="{!!seed.bRenderCSection}"
+                                        assignTo="{!seed.bRenderCSection}"/>
+                                    </apex:commandLink> 
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        Demo Deport<br/>
+                                        Order #
+                                        </div>
+                                    </apex:facet>
+                                    <apex:commandlink onclick="openPopup('{!demoDepotURL}' + 'WONo='+{!seed.Ordernumber});return false;" value="{!seed.Ordernumber}" />
+                                </apex:column>
+                                
+                                <apex:column style="width:120px;text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        {!$Label.Core_ProductName}
+                                        </div>
+                                    </apex:facet>
+                                    <apex:outputText value="{!seed.productname}" style="width:120px;"/>
+                                </apex:column>
+                                              
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        Estimated<br/>
+                                        Ship Date
+                                        </div>
+                                    </apex:facet>
+                                    <apex:outputText value="{!seed.EstimatedShipDate}" />
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        Requested<br/>
+                                        Delivery Date
+                                        </div>
+                                    </apex:facet>
+                                   
+                                    <apex:outputText value="{!seed.RequestedDeliveryDate}"/>
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        {!$Label.Core_DeliverStatus}
+                                        </div>
+                                    </apex:facet>
+                                   
+                                    <apex:outputText value="{!seed.lineItemStatus}"/>
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        {!$Label.Core_PickupDate}
+                                        </div>
+                                    </apex:facet>
+                                   
+                                    <apex:outputText value="{!seed.returnPickupDate}"/>
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        {!$Label.Core_Requestor}
+                                        </div>
+                                    </apex:facet>
+                                   
+                                    <apex:outputText value="{!seed.Requestor}"/>
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        Requested<br/>
+                                        Quantity
+                                        </div>
+                                    </apex:facet>
+                                    <apex:outputText value="{!seed.requestedQty}" />
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        {!$Label.Core_Account_Name}
+                                        </div>
+                                    </apex:facet>
+                                    <apex:outputText value="{!seed.AccountName}"/>
+                                </apex:column>
+                                
+                                <apex:column style="text-align:center;" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}">
+                                    <apex:facet name="header">
+                                        <div style="text-align:center;">
+                                        {!$Label.Core_Opportunity_Name}
+                                        </div>
+                                    </apex:facet>
+                                    <apex:outputText value="{!seed.OpportunityName}"/>
+                                </apex:column>
+                                
+                                console.log('{!seed.bRenderCSection}');
+                           
+                                <!-- Use a seperate section to render sub section --> 
+                                <apex:column breakBefore="true"  id="theColmn" width="1250" colspan="14">                                
+                                   <!-- <apex:outputPanel id="thePageblk" layout="none" >  -->
+                                       <apex:outputPanel style="min-height:450px;max-height:700px;height:450px;overflow:auto;" >
+                                        <apex:pageBlockSection columns="3" rendered="{!seed.bRenderCSection}" >
+                                              
+                                                        <apex:pageBlockSectionItem rendered="{!seed.bRenderCSection}"> 
+                                                            <apex:outputPanel style="min-height:450px;max-height:700px;height:450px;display:block;overflow:auto;"> 
+                                                            <apex:pageBlockSection title="{!$Label.Core_Section_Seed_Detail}" columns="1" collapsible="false"  >
+                                                            
+                                                                <b>{!$Label.Core_ItemsSent}</b><br/><apex:outputText value="{!seed.productName}" id="username" html-placeholder="Enter a value"/><br/>  
+                                                                <b>{!$Label.Core_QuantitySent}</b><br/><apex:outputText value="{!seed.shippedQty}"  html-placeholder="Enter a value"/><br/>
+                                                                <b>{!$Label.Core_ProductDetail}</b><br/><apex:outputText value="{!seed.productDesc}{!seed.productListDesc}" escape="false" />
+                                                                                                    
+                                                            </apex:pageBlockSection>
+                                                            </apex:outputPanel> 
+                                                            
+                                                        </apex:pageBlockSectionItem>
+                                                   
+                                                        <apex:pageBlockSectionItem rendered="{!seed.bRenderCSection}">   
+                                                        <apex:outputPanel style="min-height:450px;max-height:700px;height:450px;display:block;overflow:auto;">
+                                                        <apex:pageBlockSection title="{!$Label.Core_Section_Shipping_Detail}" columns="1" collapsible="false" >
+                                                        
+                                                            <b>{!$Label.Core_ShippingTo}</b><br/>{!seed.attentionName}<br/>
+                                                                {!seed.companyName}<br/>{!seed.streetAddress1}<br/>{!seed.streetAddress2}
+                                                                <br/>{!seed.City}<br/>{!seed.State}<br/>{!seed.Zipcode}<br/>{!seed.Country}<br/><br/>
+                                                            <b>{!$Label.Core_DateShipped}</b><br/><apex:outputText value="{!seed.actualShipDate}" html-placeholder="Enter a value"/><br/>
+                                                            <b>{!$Label.Core_OrderStatus}</b><br/><apex:outputText value="{!seed.orderStatus}" html-placeholder="Enter a value" />
+                                                            
+                                                        </apex:pageBlockSection>
+                                                        </apex:outputPanel>
+                                                        
+                                                        </apex:pageBlockSectionItem>
+                                                   
+                                                        <apex:pageBlockSectionItem rendered="{!seed.bRenderCSection}">   
+                                                        <apex:outputPanel style="min-height:450px;max-height:700px;height:450px;display:block;overflow:auto;"> 
+                                                        <apex:pageBlockSection title="{!$Label.Core_Section_Notes}" columns="1" collapsible="false"> 
+                                                        
+                                                            <b>{!$Label.Core_Section_Notes}</b> <br/><apex:outputText value="{!seed.notes}"  html-placeholder="{!$Label.Core_EnterValue}" /><br/>
+                                                            <b>{!$Label.Core_Submitter}</b> <br/><apex:outputText value="{!seed.Submitter}"  html-placeholder="{!$Label.Core_EnterValue}" /><br/>
+                                                            <br/><apex:outputText value="<b>{!$Label.Core_Account_ID_Name}</b><br/><br/>{!seed.AccountID}"  escape="false" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}" /><br/>
+                                                            <br/><apex:outputText value="<b>{!$Label.Core_Opportunity_ID_Name}</b><br/><br/>{!seed.OpportunityID}"  escape="false" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}" />
+                    
+                                                        </apex:pageBlockSection>
+                                                        </apex:outputPanel>
+                                                        </apex:pageBlockSectionItem> 
+                                                                                 
+                                        </apex:pageBlockSection>
+                                     </apex:outputPanel>  
+                                  <!-- </apex:outputPanel> --> 
+                                </apex:column>    
+                                                    
+                            </apex:pageBlockTable>
+                        
+                    </apex:tab> 
+                   
+                </apex:tabPanel>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:page>

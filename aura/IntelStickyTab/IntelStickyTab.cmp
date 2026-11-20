@@ -1,0 +1,11 @@
+<aura:component>
+	<aura:attribute name="active" type="boolean" default="false" />
+	<aura:attribute name="label" type="string" required="true" />
+    <aura:attribute name="id" type="string"/>
+    <aura:attribute name="anchorId" type="string" />
+   
+	<div id="{!v.anchorId}">
+		{!v.body}
+	</div>
+
+</aura:component>

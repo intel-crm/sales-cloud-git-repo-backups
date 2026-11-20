@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Core_MDF_Internal_CSC_User</fullName>
+        <default>false</default>
+        <label>Core_MDF_Internal_CSC_User</label>
+    </customValue>
+    <masterLabel>Subscription Custom Permissions</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

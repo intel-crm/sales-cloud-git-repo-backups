@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Error Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Error Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Error Code --></label>
+        <name>A_E_Error_Code_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Description --></label>
+        <name>A_E_Error_Description_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Steps --></label>
+        <name>A_E_Next_Steps_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

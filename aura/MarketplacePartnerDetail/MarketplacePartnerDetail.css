@@ -1,0 +1,167 @@
+.THIS .sectionFooter {
+  padding: 20px 0 20px 0;
+}
+
+.THIS .moveUp1px {
+  transform: translateY(-1px);
+}
+
+.THIS .card-heading-padding {
+  padding: 25px 20px 20px 20px;
+}
+
+.THIS .list.productItem h3 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.125;
+  margin-bottom: .5em;
+}
+.THIS .list.productItem h3 a {
+  font-weight: bold;
+}
+
+.THIS .x-large {
+    height: 400px;
+}
+
+
+/* .THIS .cardListItem .card.productItem  {
+  border-bottom: 1px solid t(lightGray);
+}
+.THIS .cardListItem:last-child .card.productItem  {
+  border-bottom: 0 none;
+} */
+.THIS .intelOnlyFooter {
+  display: none;
+}
+.THIS .cardList {
+  background: t(white);
+  margin: 0;
+}
+
+.THIS .cardListItem .list .mediaWrap  {
+  border: 0 none;
+}
+
+.THIS .borderBottom {
+  border-bottom: 1px solid t(lightGray);
+}
+.THIS .borderTop {
+  border-top: 1px solid t(lightGray);
+}
+.THIS .noBorderTop {
+  border-top: 0 none;
+}
+.THIS .whiteBg {
+  background-color: t(white);
+}
+.THIS .grayBg {
+  background-color: t(lightestGray);
+}
+
+
+.THIS .list.productItem {
+  margin: 0 15px;
+  padding-bottom: 0;
+}
+.THIS .list.productItem .itemWrap {
+  padding-bottom: 20px;
+}
+.THIS .cardListItem .list.productItem  {
+  border-bottom: 1px solid t(lightGray);
+}
+.THIS .cardListItem:last-child .list.productItem  {
+  border-bottom: 0 none;
+}
+
+/* .THIS .card.productItem {
+  background: transparent;
+} */
+.THIS .manageOfferingLink {
+  font-size: 1rem;
+  float: right;
+  transform: translateY(-3px); /* bug ID-3757 */
+}
+.THIS .manageOfferingFullWidth button {
+  width: 100%;
+}
+.THIS .mainContainer {
+  position: relative;
+}
+.THIS .mainSpinner .slds-spinner {
+  top: 15em;
+}
+/*Edit pencil component styles*/
+.THIS .cMarketplaceEditPencilCmp {
+  float: right;
+  font-size: 16px;
+  margin-top: -2px;
+}
+.THIS h2 .cMarketplaceEditPencilCmp {
+  margin-top: 5px;
+}
+.THIS .editPencilWrap {
+  min-height: 40px;
+}
+.THIS.notificationLink:first-of-type .notificationBanner {
+  margin-top: 35px;
+}
+.THIS.notificationLink .notificationBanner {
+  margin-top: 10px;
+}
+
+.THIS .stand-alone-edit-icon .cMarketplaceEditPencilCmp {
+  float: none;
+  text-align: right;
+  display: block;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .THIS .cMarketplaceCompareCheckbox {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+  }
+
+  .THIS .cMarketplacePartnerCard.card .mediaWrap {
+    display: none;
+  }
+  /*added below style as part of merge change[13/11]*/
+  .THIS .padding-desktop-right-none {
+    padding-right: 0;
+  }
+
+  .THIS .padding-desktop-bottom-none {
+    padding-bottom: 0;
+  }
+
+}
+
+/*IE Edge Fix ID-3807*/
+@supports (-ms-ime-align:auto) {
+  .THIS a:focus {
+    outline: #5E9ED6 solid 2px;
+  }
+
+  .THIS a.linkItem:focus {
+    outline: transparent solid 2px;
+  }
+}
+
+.THIS .slds-icon-utility-close{
+    float: right !important;
+}
+.THIS .slds-icon{
+    fill: #ffffff;
+}
+
+ /*  paddingtop created as part of the US-US788273*/
+.THIS.padding-top{
+    padding-top: 1.75rem;
+}
+ /*  padding-top-small created as part of the US-US788273*/
+.THIS.padding-top-small{
+    padding-top: 0.25rem;
+}

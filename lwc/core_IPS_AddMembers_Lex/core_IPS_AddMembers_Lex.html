@@ -1,0 +1,65 @@
+<template>
+    
+    <div if:true={spinner}>
+		<lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+		<div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+	</div>
+    <div if:false={spinner}> 
+        <div class="card">      
+        <lightning-card>
+        <lightning-accordion allow-multiple-sections-open active-section-name= "{sections}">
+            <div if:true={showTable}>
+            <lightning-accordion-section name="A" label="Existing Members" class="slds-accordion"><br/>
+                <div style="height: 300px;" class="myTable">
+                <lightning-datatable
+                    key-field="id"
+                    columns={columns}
+                    data={existingMemList}
+                    hide-checkbox-column
+                    enable-infinite-loading
+                    onloadmore={loadMoreData}
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}>
+                </lightning-datatable>
+                </div>
+            </lightning-accordion-section> 
+        </div>
+        <div if:true={projAccess}>
+            <div class="slds-border_top"><lightning-card icon-name="utility:info" title={activeMembMsg} class="membMsg"></lightning-card></div>
+            <lightning-accordion-section name="B" label="Add Members">
+                <lightning-Input type="search" placeholder="Search Members..." onchange={handleKeyChange}></lightning-input>
+                    <div if:true={searchMsg}><p>Please enter at least 3 characters.</p></div> <br/>
+                
+                <div if:true={switchView} style="height: 300px;">
+                    <lightning-datatable
+                        key-field="id"
+                        columns={columns}
+                        data={memberList}
+                        enable-infinite-loading
+                        onloadmore={handleLoadMore}
+                        onrowselection={getSelectedMember}
+                        default-sort-direction={defaultSortDirection}
+                        sorted-direction={addSortDirection}
+                        sorted-by={sortedBy}
+                        onsort={handleMemberSort}>
+                    </lightning-datatable>
+                    </div><br/>
+                <div if:false={switchView}><br/><p>No matching records found</p><br/></div><br/>
+            
+                
+                <div align="center">
+                    <lightning-button label="Add" variant="brand" onclick={addMember} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button label="Add and Done" variant="brand" onclick={addMemberDone} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button label="Cancel" onclick={cancel} class="slds-m-left_x-small"></lightning-button>
+                </div>  
+            </lightning-accordion-section>
+        </div>
+        <div if:false={projAccess}>
+            <!--&nbsp;&nbsp;<div class="errorMsg"> <lightning-card title={errorMessage}></lightning-card></div><br/><br/>-->
+            <br/><div align="center"><lightning-button label="Back to Project" onclick={cancel} class="slds-m-left_x-small"></lightning-button></div>
+        </div>
+        </lightning-accordion>
+    </lightning-card></div></div>
+    </template>

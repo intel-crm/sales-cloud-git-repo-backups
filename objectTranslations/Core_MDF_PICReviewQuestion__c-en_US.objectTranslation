@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PIC Review Question</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PIC Review Questions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Applicable to All Budget Types --></label>
+        <name>Core_MDF_All_Budget_Types_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applicable to all Programs --></label>
+        <name>Core_MDF_All_Programs_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Date --></label>
+        <name>Core_MDF_EffectiveDate_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ineffective Date --></label>
+        <name>Core_MDF_IneffectiveDate_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue(French) --></label>
+        <name>Core_MDF_Issue_French_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue(Mexican Spanish) --></label>
+        <name>Core_MDF_Issue_Mexican_Spanish_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Portuguese) - 1 --></label>
+        <name>Core_MDF_Issue_Portuguese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Russian) - 1 --></label>
+        <name>Core_MDF_Issue_Russian_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Simplified Chinese) - 1 --></label>
+        <name>Core_MDF_Issue_Simplified_Chinese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Traditional Chinese) - 1 --></label>
+        <name>Core_MDF_Issue_Traditional_Chinese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (German) - 2 --></label>
+        <name>Core_MDF_Issue_ed_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (German) - 3 --></label>
+        <name>Core_MDF_Issue_ed_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (German) - 4 --></label>
+        <name>Core_MDF_Issue_ed_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (German) --></label>
+        <name>Core_MDF_Issue_ed_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (External) - 2 --></label>
+        <name>Core_MDF_Issue_en_US_External_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (External) - 3 --></label>
+        <name>Core_MDF_Issue_en_US_External_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (External) - 4 --></label>
+        <name>Core_MDF_Issue_en_US_External_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue(External) --></label>
+        <name>Core_MDF_Issue_en_US_External_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Spanish) -  2 --></label>
+        <name>Core_MDF_Issue_es_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Spanish)  -  3 --></label>
+        <name>Core_MDF_Issue_es_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Spanish)  - 4 --></label>
+        <name>Core_MDF_Issue_es_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Mexican Spanish) - 2 --></label>
+        <name>Core_MDF_Issue_es_MX_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Mexican Spanish) - 3 --></label>
+        <name>Core_MDF_Issue_es_MX_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Mexican Spanish) - 4 --></label>
+        <name>Core_MDF_Issue_es_MX_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Mexican Spanish) --></label>
+        <name>Core_MDF_Issue_es_MX_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Spanish) --></label>
+        <name>Core_MDF_Issue_es_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (French) - 2 --></label>
+        <name>Core_MDF_Issue_fr_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (French) - 3 --></label>
+        <name>Core_MDF_Issue_fr_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (French) - 4 --></label>
+        <name>Core_MDF_Issue_fr_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (French) --></label>
+        <name>Core_MDF_Issue_fr_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Italian) - 2 --></label>
+        <name>Core_MDF_Issue_it_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Italian) - 3 --></label>
+        <name>Core_MDF_Issue_it_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Italian) - 4 --></label>
+        <name>Core_MDF_Issue_it_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Italian) --></label>
+        <name>Core_MDF_Issue_it_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Japanese) - 2 --></label>
+        <name>Core_MDF_Issue_ja_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Japanese) - 3 --></label>
+        <name>Core_MDF_Issue_ja_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Japanese) - 4 --></label>
+        <name>Core_MDF_Issue_ja_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Japanese) --></label>
+        <name>Core_MDF_Issue_ja_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Korean) - 2 --></label>
+        <name>Core_MDF_Issue_ko_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Korean) - 3 --></label>
+        <name>Core_MDF_Issue_ko_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Korean) - 4 --></label>
+        <name>Core_MDF_Issue_ko_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Korean) --></label>
+        <name>Core_MDF_Issue_ko_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Portuguese) - 2 --></label>
+        <name>Core_MDF_Issue_pt_BR_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Portuguese) - 3 --></label>
+        <name>Core_MDF_Issue_pt_BR_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Portuguese) - 4 --></label>
+        <name>Core_MDF_Issue_pt_BR_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Portuguese) --></label>
+        <name>Core_MDF_Issue_pt_BR_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Russian) - 2 --></label>
+        <name>Core_MDF_Issue_ru_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Russian) - 3 --></label>
+        <name>Core_MDF_Issue_ru_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Russian) - 4 --></label>
+        <name>Core_MDF_Issue_ru_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Russian) --></label>
+        <name>Core_MDF_Issue_ru_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Simplified Chinese) - 2 --></label>
+        <name>Core_MDF_Issue_zh_CN_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Simplified Chinese) - 3 --></label>
+        <name>Core_MDF_Issue_zh_CN_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Simplified Chinese) - 4 --></label>
+        <name>Core_MDF_Issue_zh_CN_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Simplified Chinese) --></label>
+        <name>Core_MDF_Issue_zh_CN_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Traditional Chinese) - 2 --></label>
+        <name>Core_MDF_Issue_zh_TW_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Traditional Chinese) - 3 --></label>
+        <name>Core_MDF_Issue_zh_TW_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Traditional Chinese) - 4 --></label>
+        <name>Core_MDF_Issue_zh_TW_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Traditional Chinese) --></label>
+        <name>Core_MDF_Issue_zh_TW_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Based Indicator --></label>
+        <name>Core_MDF_Outcome_Based_Indicator_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Question --></label>
+        <name>Core_MDF_Parent_Question__c</name>
+        <relationshipLabel><!-- PIC Review Questions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Issue (External) - 1 --></label>
+        <name>Core_MDF_Question_English_External_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question (English) - 1 --></label>
+        <name>Core_MDF_Question_English_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question File Type --></label>
+        <name>Core_MDF_Question_File_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>General</masterLabel>
+            <translation><!-- General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX</masterLabel>
+            <translation><!-- NEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Attribution</masterLabel>
+            <translation><!-- Proof of Attribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Branding</masterLabel>
+            <translation><!-- Proof of Branding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Cost</masterLabel>
+            <translation><!-- Proof of Cost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Execution</masterLabel>
+            <translation><!-- Proof of Execution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third Party</masterLabel>
+            <translation><!-- Third Party --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Issue (French) - 1 --></label>
+        <name>Core_MDF_Question_French_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (German) - 1 --></label>
+        <name>Core_MDF_Question_German_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Italian) - 1 --></label>
+        <name>Core_MDF_Question_Italian_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Japanese) - 1 --></label>
+        <name>Core_MDF_Question_Japanese_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Korean) - 1 --></label>
+        <name>Core_MDF_Question_Korean_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Mexican Spanish) - 1 --></label>
+        <name>Core_MDF_Question_Mexican_Spanish_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue (Spanish) - 1 --></label>
+        <name>Core_MDF_Question_Spanish_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question (English) - 2 --></label>
+        <name>Core_MDF_Question_en_US_2_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question (English) - 3 --></label>
+        <name>Core_MDF_Question_en_US_3_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question (English) - 4 --></label>
+        <name>Core_MDF_Question_en_US_4_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question (English) --></label>
+        <name>Core_MDF_Question_en_US_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Order --></label>
+        <name>Core_MDF_Sort_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Question Indicator --></label>
+        <name>Core_MDF_Sub_Question_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Third Party Indicator --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

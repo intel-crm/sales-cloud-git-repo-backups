@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Rest Api response status codes, status messages, error messages</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Code__c</fullName>
+        <description>RestAPI custom code</description>
+        <externalId>false</externalId>
+        <label>Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Context_of_Error__c</fullName>
+        <externalId>false</externalId>
+        <label>Context of Error</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Http_Status_Code__c</fullName>
+        <description>Http status reponse codes</description>
+        <externalId>false</externalId>
+        <label>Http Status Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Log_Entry__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Log Entry</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Message__c</fullName>
+        <description>Error message for the RestAPI</description>
+        <label>Message</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_RestAPI_Error_Severity__c</fullName>
+        <externalId>false</externalId>
+        <label>Core RestAPI Error Severity</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>RestAPI Response codes</label>
+    <listViews>
+        <fullName>All_Data</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Code__c</columns>
+        <columns>Core_Context_of_Error__c</columns>
+        <columns>Core_RestAPI_Error_Severity__c</columns>
+        <columns>Core_Http_Status_Code__c</columns>
+        <columns>Core_Log_Entry__c</columns>
+        <columns>Core_Message__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Data</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

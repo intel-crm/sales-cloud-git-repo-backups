@@ -1,0 +1,5 @@
+{!Approval_Requesting_User.Name} has requested your approval for the following Goal: {!Core_Goal__c.Link} 
+
+Deal Win Goal Name: {!Core_Goal__c.Name} 
+
+Please click this link to approve or reject this record.

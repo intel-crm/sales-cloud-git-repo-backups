@@ -1,0 +1,1219 @@
+{
+  "version" : "63.0",
+  "nodes" : {
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Dashboard_Name",
+          "label" : "Dashboard Name",
+          "formulaExpression" : "case \r\n    when contains(\"PAGE_URL\",'0FK3b000000XoM9GAK') then 'Pipeline Management Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000kATVGA2') then 'OBSM'\r\n    when contains(\"PAGE_URL\",'0FK3b000000PKkOGAW') then 'Executive SMG Pipeline Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000kATaGAM') then 'Solution CRM'\r\n    when contains(\"PAGE_URL\",'0FK3b000000kAPOGA2') then 'Tech Resources Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000XomWGAS') then 'Pipeline Analysis Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000CjT1GAK') then 'Product Analysis Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000CjQMGA0') then 'Sales Manager Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000CjQHGA0') then 'Seller Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000kAPTGA2') then 'VoC Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000kAPJGA2') then 'Account Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b00000003xjGAA') then 'Opportunity Analysis Dashboard'\r\n    when contains(\"PAGE_URL\",'0FKHo0000009P6AOAU') then 'Lighthouse and Strategic Opportunities'\r\n    when contains(\"PAGE_URL\",'0FKHo0000009Pq1OAE') then 'VBS Pipeline Revenue Forecast'\r\n    when contains(\"PAGE_URL\",'0FKHo0000009PprOAE') then 'VBS Annual Recurring Revenue'\r\n    when contains(\"PAGE_URL\",'0FKHo0000009PpZOAU') then 'VBS Management Dashboard'\r\n    when contains(\"PAGE_URL\",'0FK3b000000bo1HGAQ') then '1H24 Bonus Tracking Dashboard'\r\n    when contains(\"PAGE_URL\",'0FKHo0000009PpTOAU') then '2H24 Bonus Tracking Dashboard'\r\n    when contains(\"PAGE_URL\",'0FKHo0000009Py0OAE') then 'Manager Metrics Dashboard'\r\nEND",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN4" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DashboardAccess_Dataset",
+          "name" : "DashboardAccess_Dataset",
+          "folderName" : "Usage_Tracking"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FILTER0" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Dashboard_Name",
+          "operator" : "IS_NOT_NULL",
+          "operands" : [ ]
+        } ]
+      }
+    },
+    "EXTRACT0" : {
+      "action" : "extractGrains",
+      "sources" : [ "APPEND3" ],
+      "parameters" : {
+        "grainExtractions" : [ {
+          "source" : "TIMESTAMP_DERIVED",
+          "targets" : [ {
+            "name" : "TIMESTAMP_DERIVED_DAY",
+            "label" : "TIMESTAMP_DERIVED Day",
+            "grainType" : "DAY"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_MONTH",
+            "label" : "TIMESTAMP_DERIVED Month",
+            "grainType" : "MONTH"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_QUARTER",
+            "label" : "TIMESTAMP_DERIVED Quarter",
+            "grainType" : "QUARTER"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_WEEK",
+            "label" : "TIMESTAMP_DERIVED Week",
+            "grainType" : "WEEK"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_YEAR",
+            "label" : "TIMESTAMP_DERIVED Year",
+            "grainType" : "YEAR"
+          } ]
+        } ]
+      }
+    },
+    "AGGREGATE1" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT0" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "Dashboard_Name",
+          "name" : "UNIQUE_Dashboard_Name",
+          "label" : "Unique Dashboard Name"
+        } ],
+        "groupings" : [ "USER_ID", "Dashboard_Name", "TIMESTAMP", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_MONTH", "TIMESTAMP_DERIVED_QUARTER", "TIMESTAMP_DERIVED_WEEK", "TIMESTAMP_DERIVED_YEAR", "USER_ID_DERIVED", "EVENT_TYPE" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "EXTRACT1" : {
+      "action" : "extractGrains",
+      "sources" : [ "AGGREGATE1" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE3" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT1" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "Dashboard_Name",
+          "name" : "UNIQUE_Dashboard_Name1",
+          "label" : "Unique Dashboard Name"
+        } ],
+        "groupings" : [ "USER_ID", "Dashboard_Name", "TIMESTAMP", "TIMESTAMP_DERIVED_YEAR", "TIMESTAMP_DERIVED_WEEK", "TIMESTAMP_DERIVED_MONTH", "USER_ID_DERIVED", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_QUARTER", "EVENT_TYPE" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "UserRoleId", "Id", "Username", "LastName", "FirstName", "Name" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "UserRole",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "UserRole"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET3", "LOAD_DATASET4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "UserRoleId" ],
+        "rightQualifier" : "UserRole",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "AGGREGATE3", "JOIN0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "USER_ID_DERIVED" ],
+        "rightQualifier" : "Join0",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FILTER1" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET7" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "PAGE_ENTITY_TYPE",
+          "operator" : "EQUAL",
+          "operands" : [ "Account", "Opportunity" ]
+        }, {
+          "type" : "TEXT",
+          "field" : "PARENT_UI_ELEMENT",
+          "operator" : "EQUAL",
+          "operands" : [ "tab-bar" ]
+        } ]
+      }
+    },
+    "EXTRACT2" : {
+      "action" : "extractGrains",
+      "sources" : [ "FILTER1" ],
+      "parameters" : {
+        "grainExtractions" : [ {
+          "source" : "TIMESTAMP_DERIVED",
+          "targets" : [ {
+            "name" : "TIMESTAMP_DERIVED_DAY",
+            "label" : "TIMESTAMP_DERIVED Day",
+            "grainType" : "DAY"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_MONTH",
+            "label" : "TIMESTAMP_DERIVED Month",
+            "grainType" : "MONTH"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_QUARTER",
+            "label" : "TIMESTAMP_DERIVED Quarter",
+            "grainType" : "QUARTER"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_WEEK",
+            "label" : "TIMESTAMP_DERIVED Week",
+            "grainType" : "WEEK"
+          }, {
+            "name" : "TIMESTAMP_DERIVED_YEAR",
+            "label" : "TIMESTAMP_DERIVED Year",
+            "grainType" : "YEAR"
+          } ]
+        } ]
+      }
+    },
+    "AGGREGATE5" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT2" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "PAGE_URL",
+          "name" : "UNIQUE_PAGE_URL",
+          "label" : "Unique PAGE_URL"
+        } ],
+        "groupings" : [ "PAGE_URL", "PAGE_ENTITY_ID", "PAGE_ENTITY_TYPE", "ORGANIZATION_ID", "USER_ID_DERIVED", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_MONTH", "TIMESTAMP_DERIVED_QUARTER", "TIMESTAMP_DERIVED_WEEK", "TIMESTAMP_DERIVED_YEAR", "TIMESTAMP", "COMPONENT_NAME" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "OUTPUT1" : {
+      "action" : "save",
+      "sources" : [ "JOIN5" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityAccess_Dataset_test",
+          "name" : "OpportunityAccess_Dataset_test"
+        }
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "AGGREGATE5", "JOIN0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "USER_ID_DERIVED" ],
+        "rightQualifier" : "User",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "EXTRACT3" : {
+      "action" : "extractGrains",
+      "sources" : [ "APPEND2" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE7" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT3" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "PAGE_URL",
+          "name" : "UNIQUE_PAGE_URL1",
+          "label" : "Unique PAGE_URL"
+        } ],
+        "groupings" : [ "User.FirstName", "User.UserRole.Id", "User.UserRoleId", "TIMESTAMP_DERIVED_WEEK", "ORGANIZATION_ID", "User.Username", "TIMESTAMP", "USER_ID_DERIVED", "PAGE_ENTITY_TYPE", "User.Name", "User.LastName", "PAGE_URL", "User.Id", "TIMESTAMP_DERIVED_MONTH", "PAGE_ENTITY_ID", "TIMESTAMP_DERIVED_QUARTER", "User.UserRole.Name", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_YEAR", "COMPONENT_NAME" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "EXTRACT4" : {
+      "action" : "extractGrains",
+      "sources" : [ "APPEND1" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE9" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT4" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "UNIQUE",
+          "source" : "Dashboard_Name",
+          "name" : "UNIQUE_Dashboard_Name",
+          "label" : "Unique Dashboard Name"
+        } ],
+        "groupings" : [ "Join0.FirstName", "TIMESTAMP_DERIVED_WEEK", "USER_ID", "TIMESTAMP_DERIVED_MONTH", "Join0.LastName", "Join0.Name", "Join0.UserRoleId", "TIMESTAMP", "TIMESTAMP_DERIVED_QUARTER", "Join0.UserRole.Name", "Join0.Username", "Dashboard_Name", "Join0.UserRole.Id", "USER_ID_DERIVED", "Join0.Id", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_YEAR", "EVENT_TYPE" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "CLIENT_IP", "PARENT_UI_ELEMENT", "CONNECTION_TYPE", "User.Country", "EVENT_TYPE", "APP_NAME", "USER_ID", "UI_EVENT_TYPE", "OS_NAME", "CLIENT_GEO", "ORGANIZATION_ID", "PAGE_APP_NAME", "User.Department", "User.Username", "CLIENT_ID", "BROWSER_VERSION", "DEVICE_PLATFORM", "SDK_VERSION", "TIMESTAMP", "RECORD_ID", "DEVICE_MODEL", "USER_AGENT", "User.Name", "PAGE_CONTEXT", "TARGET_UI_ELEMENT", "TIMESTAMP_DERIVED", "UI_EVENT_ID", "USER_TYPE", "BROWSER_NAME", "DEVICE_ID", "SDK_APP_VERSION", "UI_EVENT_SOURCE", "RELATED_LIST", "GRANDPARENT_UI_ELEMENT", "User.City", "REQUEST_ID", "User.Division", "User.IsActive", "User.Profile.Name", "USER_ID_DERIVED", "COMPONENT_NAME", "PAGE_ENTITY_TYPE", "SESSION_KEY", "DEVICE_SESSION_ID", "PAGE_URL", "User.User.Role.Name", "PAGE_ENTITY_ID", "RECORD_TYPE", "OS_VERSION", "LOGIN_KEY", "SDK_APP_TYPE", "UI_EVENT_TIMESTAMP", "PAGE_START_TIME", "UI_EVENT_SEQUENCE_NUM", "DURATION" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "LightningInteractionWithUsers",
+          "name" : "LightningInteractionWithUsers"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET9" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Join0.FirstName", "TIMESTAMP_DERIVED_WEEK", "USER_ID", "TIMESTAMP_DERIVED_MONTH", "Join0.LastName", "Join0.Name", "Join0.UserRoleId", "TIMESTAMP", "TIMESTAMP_DERIVED_QUARTER", "Join0.UserRole.Name", "Join0.Username", "Dashboard_Name", "Join0.UserRole.Id", "USER_ID_DERIVED", "Join0.Id", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_YEAR", "UNIQUE_Dashboard_Name", "EVENT_TYPE" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "DashboardAccess_Dataset",
+          "name" : "DashboardAccess_Dataset"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "APPEND1" : {
+      "action" : "appendV2",
+      "sources" : [ "LOAD_DATASET9", "JOIN1" ],
+      "parameters" : {
+        "fieldMappings" : [ {
+          "top" : "Join0.FirstName",
+          "bottom" : "Join0.FirstName"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_WEEK",
+          "bottom" : "TIMESTAMP_DERIVED_WEEK"
+        }, {
+          "top" : "USER_ID",
+          "bottom" : "USER_ID"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_MONTH",
+          "bottom" : "TIMESTAMP_DERIVED_MONTH"
+        }, {
+          "top" : "Join0.LastName",
+          "bottom" : "Join0.LastName"
+        }, {
+          "top" : "Join0.Name",
+          "bottom" : "Join0.Name"
+        }, {
+          "top" : "Join0.UserRoleId",
+          "bottom" : "Join0.UserRoleId"
+        }, {
+          "top" : "TIMESTAMP",
+          "bottom" : "TIMESTAMP"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_QUARTER",
+          "bottom" : "TIMESTAMP_DERIVED_QUARTER"
+        }, {
+          "top" : "Join0.UserRole.Name",
+          "bottom" : "Join0.UserRole.Name"
+        }, {
+          "top" : "Join0.Username",
+          "bottom" : "Join0.Username"
+        }, {
+          "top" : "Dashboard_Name",
+          "bottom" : "Dashboard_Name"
+        }, {
+          "top" : "Join0.UserRole.Id",
+          "bottom" : "Join0.UserRole.Id"
+        }, {
+          "top" : "USER_ID_DERIVED",
+          "bottom" : "USER_ID_DERIVED"
+        }, {
+          "top" : "Join0.Id",
+          "bottom" : "Join0.Id"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_DAY",
+          "bottom" : "TIMESTAMP_DERIVED_DAY"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_YEAR",
+          "bottom" : "TIMESTAMP_DERIVED_YEAR"
+        }, {
+          "top" : "UNIQUE_Dashboard_Name",
+          "bottom" : "UNIQUE_Dashboard_Name1"
+        }, {
+          "top" : "EVENT_TYPE",
+          "bottom" : "EVENT_TYPE"
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "AGGREGATE7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "PAGE_TYPE",
+          "label" : "PAGE_TYPE",
+          "formulaExpression" : "CASE\r\n   WHEN UPPER(\"PAGE_ENTITY_TYPE\") = 'ACCOUNT' THEN 'Account'\r\n   ELSE 'Opportunity'\r\nEND",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "SUB_PAGE",
+          "label" : "SUB_PAGE",
+          "formulaExpression" : "CASE\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'activityTab' THEN 'Activity'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'collaborateTab' THEN 'Chatter'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'customTab' THEN 'Approval & History'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'customTab2' THEN '6QPS'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'customTab3' THEN 'At Risk'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'customTab4' THEN 'Content'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'customTab5' THEN 'Insights'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'detailTab' THEN 'Details'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'flexipage_tab' THEN 'Opportunity Solutions'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'flexipage_tab2' THEN 'Support Status'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'flexipage_tab4' THEN 'PAI'\r\n   WHEN \"PAGE_TYPE\" = 'Opportunity' AND \"COMPONENT_NAME\" = 'flexipage_tab6' THEN 'Activity Timeline'\r\n\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'activityTab' THEN 'Activity'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'chatter' THEN 'chatter'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'collaborateTab' THEN 'Chatter'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'customTab' THEN 'Approval & History'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'customTab2' THEN 'Membership'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'customTab3' THEN 'Legal'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'customTab4' THEN 'History'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'customTab5' THEN 'customTab5'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'detailTab' THEN 'Details'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab' THEN 'Unified Customer'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab1' THEN 'flexipage_tab1'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab2' THEN 'Account360'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab4' THEN 'Pipeline and Opportunity Overview'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = '' THEN 'Revenue'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab6' THEN 'PAI'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab9' THEN 'Brief/Plans'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab10' THEN 'flexipage_tab10'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab11' THEN 'flexipage_tab11'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab12' THEN 'flexipage_tab12'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab13' THEN 'flexipage_tab13'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab14' THEN 'flexipage_tab14'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab15' THEN 'flexipage_tab15'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab16' THEN 'flexipage_tab16'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab17' THEN 'flexipage_tab17'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab20' THEN 'Customer Intelligence'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab21' THEN 'News'\r\n   WHEN \"PAGE_TYPE\" = 'Account' AND \"COMPONENT_NAME\" = 'flexipage_tab5' THEN 'Revenue'\r\n   \r\n   ELSE \"COMPONENT_NAME\"\r\nEND",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "PAGE_TYPE", "PAGE_ENTITY_TYPE", "User.FirstName", "User.Name", "User.UserRole.Id", "User.UserRoleId", "User.LastName", "TIMESTAMP_DERIVED_WEEK", "PAGE_URL", "User.Id", "TIMESTAMP_DERIVED_MONTH", "ORGANIZATION_ID", "User.Username", "PAGE_ENTITY_ID", "TIMESTAMP", "TIMESTAMP_DERIVED_QUARTER", "User.UserRole.Name", "SUB_PAGE", "USER_ID_DERIVED", "COMPONENT_NAME", "TIMESTAMP_DERIVED_DAY", "TIMESTAMP_DERIVED_YEAR", "UNIQUE_PAGE_URL1" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityAccess_Dataset",
+          "name" : "OpportunityAccess_Dataset"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "APPEND2" : {
+      "action" : "appendV2",
+      "sources" : [ "LOAD_DATASET10", "JOIN2" ],
+      "parameters" : {
+        "fieldMappings" : [ {
+          "top" : "PAGE_ENTITY_TYPE",
+          "bottom" : "PAGE_ENTITY_TYPE"
+        }, {
+          "top" : "User.FirstName",
+          "bottom" : "User.FirstName"
+        }, {
+          "top" : "User.Name",
+          "bottom" : "User.Name"
+        }, {
+          "top" : "User.UserRole.Id",
+          "bottom" : "User.UserRole.Id"
+        }, {
+          "top" : "User.UserRoleId",
+          "bottom" : "User.UserRoleId"
+        }, {
+          "top" : "User.LastName",
+          "bottom" : "User.LastName"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_WEEK",
+          "bottom" : "TIMESTAMP_DERIVED_WEEK"
+        }, {
+          "top" : "PAGE_URL",
+          "bottom" : "PAGE_URL"
+        }, {
+          "top" : "User.Id",
+          "bottom" : "User.Id"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_MONTH",
+          "bottom" : "TIMESTAMP_DERIVED_MONTH"
+        }, {
+          "top" : "ORGANIZATION_ID",
+          "bottom" : "ORGANIZATION_ID"
+        }, {
+          "top" : "User.Username",
+          "bottom" : "User.Username"
+        }, {
+          "top" : "PAGE_ENTITY_ID",
+          "bottom" : "PAGE_ENTITY_ID"
+        }, {
+          "top" : "TIMESTAMP",
+          "bottom" : "TIMESTAMP"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_QUARTER",
+          "bottom" : "TIMESTAMP_DERIVED_QUARTER"
+        }, {
+          "top" : "User.UserRole.Name",
+          "bottom" : "User.UserRole.Name"
+        }, {
+          "top" : "USER_ID_DERIVED",
+          "bottom" : "USER_ID_DERIVED"
+        }, {
+          "top" : "COMPONENT_NAME",
+          "bottom" : "COMPONENT_NAME"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_DAY",
+          "bottom" : "TIMESTAMP_DERIVED_DAY"
+        }, {
+          "top" : "TIMESTAMP_DERIVED_YEAR",
+          "bottom" : "TIMESTAMP_DERIVED_YEAR"
+        }, {
+          "top" : "UNIQUE_PAGE_URL1",
+          "bottom" : "UNIQUE_PAGE_URL"
+        } ]
+      }
+    },
+    "FILTER2" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "COMPONENT_NAME",
+          "operator" : "EQUAL",
+          "operands" : [ "activityTab", "chatter", "collaborateTab", "customTab", "customTab2", "customTab3", "customTab4", "customTab5", "detailTab", "flexipage_tab", "flexipage_tab1", "flexipage_tab10", "flexipage_tab11", "flexipage_tab12", "flexipage_tab13", "flexipage_tab14", "flexipage_tab15", "flexipage_tab16", "flexipage_tab17", "flexipage_tab2", "flexipage_tab20", "flexipage_tab21", "flexipage_tab4", "flexipage_tab6", "flexipage_tab9", "flexipage_tab5" ]
+        } ]
+      }
+    },
+    "LOAD_DATASET11" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_User_Geo__c", "Id", "Title" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "FILTER2", "LOAD_DATASET11" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "User.Id" ],
+        "rightQualifier" : "UserJ",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "AGGREGATE9", "LOAD_DATASET11" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Join0.Id" ],
+        "rightQualifier" : "UserJ",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET12" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "CLIENT_IP", "User.Country", "EVENT_TYPE", "User.City", "USER_ID", "REQUEST_ID", "URI", "ORGANIZATION_ID", "User.Division", "User.IsActive", "User.Department", "User.Profile.Name", "User.Username", "TIMESTAMP", "WAVE_SESSION_ID", "RECORD_ID", "TYPE", "USER_ID_DERIVED", "User.Name", "SESSION_KEY", "VIEW_MODE", "TAB_ID", "URI_ID_DERIVED", "TIMESTAMP_DERIVED", "User.User.Role.Name", "LOGIN_KEY", "NUM_CLICKS", "NUM_SESSIONS", "WAVE_TIMESTAMP", "TOTAL_TIME", "CPU_TIME", "READ_TIME", "RUN_TIME" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "WaveInteractionWithUsers",
+          "name" : "WaveInteractionWithUsers"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Dashboard_Name",
+          "label" : "Dashboard Name",
+          "formulaExpression" : "case \r\n    when contains(\"TAB_ID\",'0FK3b000000XoM9GAK') then 'Pipeline Management Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000kATVGA2') then 'OBSM'\r\n    when contains(\"TAB_ID\",'0FK3b000000PKkOGAW') then 'Executive SMG Pipeline Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000kATaGAM') then 'Solution CRM'\r\n    when contains(\"TAB_ID\",'0FK3b000000kAPOGA2') then 'Tech Resources Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000XomWGAS') then 'Pipeline Analysis Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000CjT1GAK') then 'Product Analysis Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000CjQMGA0') then 'Sales Manager Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000CjQHGA0') then 'Seller Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000kAPTGA2') then 'VoC Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000kAPJGA2') then 'Account Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b00000003xjGAA') then 'Opportunity Analysis Dashboard'\r\n    when contains(\"TAB_ID\",'0FKHo0000009P6AOAU') then 'Lighthouse and Strategic Opportunities'\r\n    when contains(\"TAB_ID\",'0FKHo0000009Pq1OAE') then 'VBS Pipeline Revenue Forecast'\r\n    when contains(\"TAB_ID\",'0FKHo0000009PprOAE') then 'VBS Annual Recurring Revenue'\r\n    when contains(\"TAB_ID\",'0FKHo0000009PpZOAU') then 'VBS Management Dashboard'\r\n    when contains(\"TAB_ID\",'0FK3b000000bo1HGAQ') then '1H24 Bonus Tracking Dashboard'\r\n    when contains(\"TAB_ID\",'0FKHo0000009PpTOAU') then '2H24 Bonus Tracking Dashboard'\r\n    when contains(\"TAB_ID\",'0FKHo0000009Py0OAE') then 'Manager Metrics Dashboard'\r\nEND",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "PAGE_ENTITY_ID",
+          "label" : "PAGE_ENTITY_ID",
+          "formulaExpression" : "case \r\n    when contains(\"TAB_ID\",'0FK3b000000XoM9GAK') then '0FK3b000000XoM9GAK'\r\n    when contains(\"TAB_ID\",'0FK3b000000kATVGA2') then '0FK3b000000kATVGA2'\r\n    when contains(\"TAB_ID\",'0FK3b000000PKkOGAW') then '0FK3b000000PKkOGAW'\r\n    when contains(\"TAB_ID\",'0FK3b000000kATaGAM') then '0FK3b000000kATaGAM'\r\n    when contains(\"TAB_ID\",'0FK3b000000kAPOGA2') then '0FK3b000000kAPOGA2'\r\n    when contains(\"TAB_ID\",'0FK3b000000XomWGAS') then '0FK3b000000XomWGAS'\r\n    when contains(\"TAB_ID\",'0FK3b000000CjT1GAK') then '0FK3b000000CjT1GAK'\r\n    when contains(\"TAB_ID\",'0FK3b000000CjQMGA0') then '0FK3b000000CjQMGA0'\r\n    when contains(\"TAB_ID\",'0FK3b000000CjQHGA0') then '0FK3b000000CjQHGA0'\r\n    when contains(\"TAB_ID\",'0FK3b000000kAPTGA2') then '0FK3b000000kAPTGA2'\r\n    when contains(\"TAB_ID\",'0FK3b000000kAPJGA2') then '0FK3b000000kAPJGA2'\r\n    when contains(\"TAB_ID\",'0FK3b00000003xjGAA') then '0FK3b00000003xjGAA'\r\n    when contains(\"TAB_ID\",'0FKHo0000009P6AOAU') then '0FKHo0000009P6AOAU'\r\n    when contains(\"TAB_ID\",'0FKHo0000009Pq1OAE') then '0FKHo0000009Pq1OAE'\r\n    when contains(\"TAB_ID\",'0FKHo0000009PprOAE') then '0FKHo0000009PprOAE'\r\n    when contains(\"TAB_ID\",'0FKHo0000009PpZOAU') then '0FKHo0000009PpZOAU'\r\n    when contains(\"TAB_ID\",'0FK3b000000bo1HGAQ') then '0FK3b000000bo1HGAQ'\r\n    when contains(\"TAB_ID\",'0FKHo0000009PpTOAU') then '0FKHo0000009PpTOAU'\r\n    when contains(\"TAB_ID\",'0FKHo0000009Py0OAE') then '0FKHo0000009Py0OAE'\r\nEND",
+          "precision" : 40,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FILTER3" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "Dashboard_Name",
+          "operator" : "IS_NOT_NULL",
+          "operands" : [ ]
+        }, {
+          "type" : "TEXT",
+          "field" : "TYPE",
+          "operator" : "EQUAL",
+          "operands" : [ "dashboard" ]
+        } ]
+      }
+    },
+    "APPEND3" : {
+      "action" : "appendV2",
+      "sources" : [ "FILTER0", "FILTER3" ],
+      "parameters" : {
+        "fieldMappings" : [ {
+          "top" : "CLIENT_IP",
+          "bottom" : "CLIENT_IP"
+        }, {
+          "top" : "CONNECTION_TYPE",
+          "bottom" : "TYPE"
+        }, {
+          "top" : "User.Country",
+          "bottom" : "User.Country"
+        }, {
+          "top" : "EVENT_TYPE",
+          "bottom" : "EVENT_TYPE"
+        }, {
+          "top" : "USER_ID",
+          "bottom" : "USER_ID"
+        }, {
+          "top" : "ORGANIZATION_ID",
+          "bottom" : "ORGANIZATION_ID"
+        }, {
+          "top" : "User.Department",
+          "bottom" : "User.Department"
+        }, {
+          "top" : "User.Username",
+          "bottom" : "User.Username"
+        }, {
+          "top" : "TIMESTAMP",
+          "bottom" : "TIMESTAMP"
+        }, {
+          "top" : "User.Name",
+          "bottom" : "User.Name"
+        }, {
+          "top" : "TIMESTAMP_DERIVED",
+          "bottom" : "TIMESTAMP_DERIVED"
+        }, {
+          "top" : "User.City",
+          "bottom" : "User.City"
+        }, {
+          "top" : "REQUEST_ID",
+          "bottom" : "REQUEST_ID"
+        }, {
+          "top" : "User.Division",
+          "bottom" : "User.Division"
+        }, {
+          "top" : "User.IsActive",
+          "bottom" : "User.IsActive"
+        }, {
+          "top" : "User.Profile.Name",
+          "bottom" : "User.Profile.Name"
+        }, {
+          "top" : "USER_ID_DERIVED",
+          "bottom" : "USER_ID_DERIVED"
+        }, {
+          "top" : "SESSION_KEY",
+          "bottom" : "SESSION_KEY"
+        }, {
+          "top" : "User.User.Role.Name",
+          "bottom" : "User.User.Role.Name"
+        }, {
+          "top" : "PAGE_ENTITY_ID",
+          "bottom" : "PAGE_ENTITY_ID"
+        }, {
+          "top" : "LOGIN_KEY",
+          "bottom" : "LOGIN_KEY"
+        }, {
+          "top" : "Dashboard_Name",
+          "bottom" : "Dashboard_Name"
+        } ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "FILTER4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "PageView.USER_ID", "PageView.PAGE_ENTITY_TYPE_lowercase" ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "User.Id" ],
+        "rightQualifier" : "PageView",
+        "rightKeys" : [ "USER_ID_DERIVED" ]
+      }
+    },
+    "LOAD_DATASET13" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "USER_ID_DERIVED", "USER_ID", "PAGE_ENTITY_TYPE", "PAGE_ENTITY_ID" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "LightningPageViewWithUsers",
+          "name" : "LightningPageViewWithUsers"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOWERCASE0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "PAGE_ENTITY_TYPE_lowercase",
+          "label" : "lower(PAGE_ENTITY_TYPE)",
+          "formulaExpression" : "lower(PAGE_ENTITY_TYPE)",
+          "precision" : 255
+        } ]
+      }
+    },
+    "FILTER4" : {
+      "action" : "filter",
+      "sources" : [ "LOWERCASE0" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "PAGE_ENTITY_TYPE_lowercase",
+          "operator" : "STARTS_WITH",
+          "operands" : [ "executive_meeting_brief", "account_plan", "account_pulse", "account_status" ]
+        } ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "TRANSFORM0" : {
+        "label" : "Transform 0",
+        "type" : "TRANSFORM",
+        "top" : 391.3,
+        "left" : 392.4,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Dashboard_Name"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "OUTPUT0" : {
+        "label" : "DashboardAccess_Dataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 392,
+        "left" : 1792
+      },
+      "FILTER0" : {
+        "label" : "Filter 0",
+        "type" : "FILTER",
+        "top" : 391.3,
+        "left" : 532.4
+      },
+      "AGGREGATE0" : {
+        "label" : "Aggregate 0",
+        "type" : "AGGREGATE",
+        "top" : 392.2,
+        "left" : 812,
+        "graph" : {
+          "EXTRACT0" : null,
+          "AGGREGATE1" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT0",
+          "target" : "AGGREGATE1"
+        } ]
+      },
+      "AGGREGATE2" : {
+        "label" : "Aggregate 2",
+        "type" : "AGGREGATE",
+        "top" : 391.9,
+        "left" : 952,
+        "graph" : {
+          "EXTRACT1" : null,
+          "AGGREGATE3" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT1",
+          "target" : "AGGREGATE3"
+        } ]
+      },
+      "LOAD_DATASET3" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 812,
+        "left" : 392,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET4" : {
+        "label" : "UserRole",
+        "type" : "LOAD_DATASET",
+        "top" : 672,
+        "left" : 392.3,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN0" : {
+        "label" : "Join 0",
+        "type" : "JOIN",
+        "top" : 672,
+        "left" : 532
+      },
+      "JOIN1" : {
+        "label" : "Join 1",
+        "type" : "JOIN",
+        "top" : 392.2,
+        "left" : 1092
+      },
+      "FILTER1" : {
+        "label" : "Filter 1",
+        "type" : "FILTER",
+        "top" : 251.3,
+        "left" : 392.4
+      },
+      "AGGREGATE4" : {
+        "label" : "Aggregate 4",
+        "type" : "AGGREGATE",
+        "top" : 251.3,
+        "left" : 532.4,
+        "graph" : {
+          "EXTRACT2" : null,
+          "AGGREGATE5" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT2",
+          "target" : "AGGREGATE5"
+        } ]
+      },
+      "OUTPUT1" : {
+        "label" : "OpportunityAccess_Dataset_test",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252,
+        "left" : 1652
+      },
+      "JOIN2" : {
+        "label" : "Join 2",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 672
+      },
+      "AGGREGATE6" : {
+        "label" : "Aggregate 6",
+        "type" : "AGGREGATE",
+        "top" : 252.3,
+        "left" : 952,
+        "graph" : {
+          "EXTRACT3" : null,
+          "AGGREGATE7" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT3",
+          "target" : "AGGREGATE7"
+        } ]
+      },
+      "AGGREGATE8" : {
+        "label" : "Aggregate 8",
+        "type" : "AGGREGATE",
+        "top" : 392.2,
+        "left" : 1372,
+        "graph" : {
+          "EXTRACT4" : null,
+          "AGGREGATE9" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT4",
+          "target" : "AGGREGATE9"
+        } ]
+      },
+      "LOAD_DATASET7" : {
+        "label" : "LightningInteractionWithUsers",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 251.89999999999998,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET9" : {
+        "label" : "DashboardAccess_Dataset",
+        "type" : "LOAD_DATASET",
+        "top" : 532.3,
+        "left" : 1232,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "APPEND1" : {
+        "label" : "Append 1",
+        "type" : "APPEND",
+        "top" : 392,
+        "left" : 1232
+      },
+      "TRANSFORM1" : {
+        "label" : "Transform 1",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 1092,
+        "graph" : {
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "PAGE_TYPE"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "SUB_PAGE"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA1",
+          "target" : "FORMULA2"
+        } ]
+      },
+      "LOAD_DATASET10" : {
+        "label" : "OpportunityAccess_Dataset",
+        "type" : "LOAD_DATASET",
+        "top" : 112.1,
+        "left" : 812.2,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "APPEND2" : {
+        "label" : "Append 2",
+        "type" : "APPEND",
+        "top" : 252,
+        "left" : 812
+      },
+      "FILTER2" : {
+        "label" : "Filter 2",
+        "type" : "FILTER",
+        "top" : 252,
+        "left" : 1232
+      },
+      "LOAD_DATASET11" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 532.2,
+        "left" : 1371.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN3" : {
+        "label" : "Join 3",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 1372
+      },
+      "JOIN4" : {
+        "label" : "Join 4",
+        "type" : "JOIN",
+        "top" : 392.2,
+        "left" : 1512
+      },
+      "LOAD_DATASET12" : {
+        "label" : "WaveInteractionWithUsers",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 252.10000000000002,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM2" : {
+        "label" : "Transform 2",
+        "type" : "TRANSFORM",
+        "top" : 532,
+        "left" : 392,
+        "graph" : {
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Dashboard_Name"
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "PAGE_ENTITY_ID"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA3",
+          "target" : "FORMULA4"
+        } ]
+      },
+      "FILTER3" : {
+        "label" : "Filter 3",
+        "type" : "FILTER",
+        "top" : 532,
+        "left" : 532
+      },
+      "APPEND3" : {
+        "label" : "Append 3",
+        "type" : "APPEND",
+        "top" : 391,
+        "left" : 672
+      },
+      "JOIN5" : {
+        "label" : "Join 5",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 1512
+      },
+      "LOAD_DATASET13" : {
+        "label" : "LightningPageViewWithUsers",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 1232,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM3" : {
+        "label" : "Transform 3",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 1372,
+        "graph" : {
+          "LOWERCASE0" : {
+            "parameters" : {
+              "type" : "LOWER_UI"
+            },
+            "label" : "Make Lowercase"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "FILTER4" : {
+        "label" : "Filter 4",
+        "type" : "FILTER",
+        "top" : 112,
+        "left" : 1512
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET9",
+      "target" : "APPEND1"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "FILTER0"
+    }, {
+      "source" : "APPEND3",
+      "target" : "AGGREGATE0"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN0"
+    }, {
+      "source" : "AGGREGATE2",
+      "target" : "JOIN1"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN1"
+    }, {
+      "source" : "FILTER1",
+      "target" : "AGGREGATE4"
+    }, {
+      "source" : "AGGREGATE0",
+      "target" : "AGGREGATE2"
+    }, {
+      "source" : "AGGREGATE4",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN4",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "FILTER1"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "JOIN1",
+      "target" : "APPEND1"
+    }, {
+      "source" : "AGGREGATE6",
+      "target" : "TRANSFORM1"
+    }, {
+      "source" : "LOAD_DATASET10",
+      "target" : "APPEND2"
+    }, {
+      "source" : "JOIN2",
+      "target" : "APPEND2"
+    }, {
+      "source" : "APPEND2",
+      "target" : "AGGREGATE6"
+    }, {
+      "source" : "APPEND1",
+      "target" : "AGGREGATE8"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "FILTER2"
+    }, {
+      "source" : "FILTER2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN5",
+      "target" : "OUTPUT1"
+    }, {
+      "source" : "AGGREGATE8",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET11",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET12",
+      "target" : "TRANSFORM2"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "FILTER3"
+    }, {
+      "source" : "FILTER0",
+      "target" : "APPEND3"
+    }, {
+      "source" : "FILTER3",
+      "target" : "APPEND3"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN5"
+    }, {
+      "source" : "FILTER4",
+      "target" : "JOIN5"
+    }, {
+      "source" : "LOAD_DATASET13",
+      "target" : "TRANSFORM3"
+    }, {
+      "source" : "TRANSFORM3",
+      "target" : "FILTER4"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

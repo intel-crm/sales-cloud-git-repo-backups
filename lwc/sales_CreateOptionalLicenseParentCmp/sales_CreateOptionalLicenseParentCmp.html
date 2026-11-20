@@ -1,0 +1,44 @@
+<template>
+
+    <template if:true={acessCheck}>
+        <lightning-quick-action-panel header={label.Sales_CreateOptnLic}>
+        <div class="slds-align_absolute-center" style="height:7rem" >
+            <p style="font-size: larger;color: red">{label.Sales_AccessCheckMsg}</p>
+        </div>  
+    </lightning-quick-action-panel>
+    </template>
+    <template if:true={flag}>     
+    <template if:false={isCOS_Telesales}>
+        <lightning-quick-action-panel header={label.Sales_CreateOptnLic}>
+        <div class="slds-align_absolute-center" style="height:7rem" >
+            <p style="font-size: larger;color: red">You are not authorize to Add Optional Product. Please reach out to COS/Telesales for adding any Optional Product.</p>
+        </div>  
+    </lightning-quick-action-panel>
+    </template>
+<template if:true={isCOS_Telesales}>
+    <template if:true={callanothercomp}>
+        <lightning-quick-action-panel header={label.Sales_CreateOptnLic}>
+            <template if:true={loadEvalutionScreen}>
+                <c-Sales_-Create-Option-Product-For-Evalution-License parent-licprod-id={parentLicRecId}
+                    parent-lic-id={parentLicProdId} >
+                </c-Sales_-Create-Option-Product-For-Evalution-License>
+            </template>
+            <template if:false={loadEvalutionScreen}>
+                <c-sales_option-product-license-creation license-row-from-parent={licenseRow}
+                    oncloseoptionmodalevent={closeOptionModalAndRefreshAction}
+                    oncreateoptionlicense={showProcessOptionLicense} onbuttonclickedevent={handleButtonClicked}>
+                </c-sales_option-product-license-creation>
+                <div slot="footer">
+                    <template if:true={licenseRow.hasOptionProduct}>
+                        <button disabled={buttonClicked} class="slds-button slds-button_neutral" onclick={generateOptionLicense}>{label.Sales_createLic_HTML}
+                        </button>
+                    </template>
+                    <button class="slds-button slds-button_brand" onclick={closeProcessModalAction}>{label.Sales_OrderClose}</button>
+                </div>
+            </template>
+            
+        </lightning-quick-action-panel>
+    </template>
+</template>
+</template>
+</template>

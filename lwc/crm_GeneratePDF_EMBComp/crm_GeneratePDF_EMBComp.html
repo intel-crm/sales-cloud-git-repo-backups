@@ -1,0 +1,25 @@
+<template>
+    <!-- Main Modal Content -->
+    <header class="slds-modal__header">
+        <h1 class="slds-modal__title slds-hyphenate" id="modal-heading-01">Create Brief Document</h1>
+    </header>
+
+    <!-- Modal Body -->
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <div class="slds-text-align_center">
+            <div class="slds-m-bottom_large">
+                <p class="slds-text-body_regular">
+                    Executive Brief will be generated and saved to the Files section.
+                </p>
+            </div>      
+        </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <footer class="slds-modal__footer">
+        <lightning-button label="Cancel" onclick={handleCancel} variant="neutral" class="slds-m-right_small">
+        </lightning-button>
+        <lightning-button label="OK" onclick={handleValidate} variant="brand" disabled={loading}>
+        </lightning-button>
+    </footer>
+</template>

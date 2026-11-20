@@ -1,0 +1,13 @@
+<template>
+    <lightning-card  icon-name="standard:account">
+        <template if:true={hasAccess}>
+            <iframe 
+            src={fullUrl} height="600px" width="100%">
+            </iframe>
+        </template>
+        <template if:true={noAccess}>
+            <p>Sorry, you do not have access to this dashboard. Please work with your IT team.</p>
+        </template>
+            
+    </lightning-card>
+</template>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PartnerAssist Opt-In RUS</name>
+    <style>none</style>
+    <subject>Обновление корпоративной учетной записи</subject>
+    <textOnly>Обновление корпоративной учетной записи
+
+
+!%UserFirstName%!,,
+
+Информируем вас о том, что кто-то решил начать делиться информацией о программе Intel® Partner Alliance с выбранными авторизованными дистрибьюторами Intel® Authorized Distributor и/или утвержденными поставщиками Intel® Approved Supplier (поставщиками услуг).
+
+Имя корпоративной учетной записи: !%AccountName%!
+Номер счета: !%AccountNumber%!
+Основное контактное лицо, которое сделало выбор: !%UserEmailAddr%!
+Дата: !%DateSigned%!
+Выбранный(-е) поставщик(-и) услуг: !%Distributors%!
+Разрешение: настоящим я разрешаю Intel делиться с поставщиками услуг информацией о моей учетной записи в программе поставщиков технологий Intel® для более эффективного управления моими преимуществами. Я также разрешаю Intel предоставить им право выполнять списания баллов от моего имени (недоступно в APJ).
+
+
+Если вы не одобряете это действие или считаете, что произошла ошибка, вы можете изменить выбор или отказаться.
+Если у вас есть вопросы, свяжитесь с нами по адресу programs@intel.com.
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

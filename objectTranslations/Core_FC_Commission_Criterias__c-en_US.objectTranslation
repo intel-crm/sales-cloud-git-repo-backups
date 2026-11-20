@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>FC Commission Criterias</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>FC Commission Criterias</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Tier --></label>
+        <name>Core_Account_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Focus --></label>
+        <name>Core_BU_Focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Short Name --></label>
+        <name>Core_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Type --></label>
+        <name>Core_Opportunity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Quarter End Date --></label>
+        <name>Core_Schedule_Quarter_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Quarter Start Date --></label>
+        <name>Core_Schedule_Quarter_Start_Date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

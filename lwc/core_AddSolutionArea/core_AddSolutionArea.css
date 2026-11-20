@@ -1,0 +1,38 @@
+.dummy{
+	color : black;
+}
+.LWCbutton {
+	margin-top: 10px;
+    --sds-c-button-text-color: #0084ff;
+	float: right;
+}
+.lightning-helptext{
+margin-top: 2px;	
+}
+.textAreaCSS {
+	--sds-c-textarea-sizing-min-height:150px;
+}
+
+.sol_ptr_search {
+	padding-top: 2px;
+	padding-bottom: 0px;
+}
+
+.sol_txt_search {
+	vertical-align: text-bottom;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.rest_btn {
+	padding-top: 12px;
+	padding-bottom: 0px;
+}
+.buttonPos{
+	position: fixed;
+}
+.myFooter { 
+	width: 100%;  
+	bottom: 80px; 
+	background-color: white; 
+}

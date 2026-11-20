@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Core_Prospect__c.Core_BusinessOrganizationNm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Prospect__c.Core_URLElectronicAddressTxt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Prospect__c.Core_Notes_Txt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Prospect__c.Core_Disqualification_Reason_Pkt__c</field>
+    </columns>
+    <description>Presents Sales AI prospects</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_Prospect__c.Core_Source_Pkt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales AI</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Prospect__c.Core_Status_Pkt__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sales AI Prospects report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Prospect__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CUST_CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_Prospect__c.Core_Claimed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

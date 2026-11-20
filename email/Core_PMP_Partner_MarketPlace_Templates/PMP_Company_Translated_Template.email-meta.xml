@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <available>true</available>
+    <description>Template to send email when storefront changes are initiated for translation and published</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_Company_Translated_Template_for_Owner</name>
+    <style>none</style>
+    <subject>Translated &amp; Published: Your  Storefront</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

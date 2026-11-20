@@ -1,0 +1,49 @@
+<template>
+    <div class="textAlignDesign">
+        <a class="IPA_DZS_RDC" onclick={handleDZPClick}>{label.DZPBladeCustomLink}</a>
+        <div class="custom-tooltip" onmouseover={showTooltip} onmouseout={hideTooltip}>
+            <lightning-icon 
+                class="custom-info-icon"
+                icon-name="utility:info" 
+                size="x-small"
+                variant="error">
+            </lightning-icon>
+            <div class={tooltipClass} role="tooltip">{label.DZPCstlinkToolTip}</div>
+        </div>
+        <div class="IPA_DZS_RDC_Min">{label.DZPPopUpShortMsg}</div>
+    </div>
+    <template if:true={showDZPPopup}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-label="modal content"
+            class="slds-modal slds-modal_small slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div
+                    class="slds-modal__content slds-p-vertical_small slds-p-horizontal_medium slds-modal__content_headless">
+                    <div class="spinner-container">
+                        <template if:true={showSpinner}>
+                            <lightning-spinner alternative-text="Loading" variant="brand"
+                                size="medium"></lightning-spinner>
+                        </template>
+                    </div>
+                    <div class="popupHeading slds-p-vertical_medium">{label.DZPPopUpMsg}</div>
+                    <div class="slds-p-bottom_medium">
+                        <lightning-formatted-rich-text
+                            value={label.DZPDisclaimerContent}></lightning-formatted-rich-text>
+                    </div>
+                    <lightning-layout class="slds-align_absolute-center">
+                        <lightning-layout-item class="slds-p-bottom_medium">
+                            <button class="slds-button slds-button_brand slds-m-right_small" title="Search"
+                                onclick={handleConfirmPopup}>
+                                {label.confirm}
+                            </button>
+                            <button class="slds-button slds-button_neutral slds-m-left_small" title="Cancel"
+                                onclick={handleCancelPopup}>
+                                {label.cancel}
+                            </button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+</template>

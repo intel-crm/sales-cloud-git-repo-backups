@@ -1,0 +1,208 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "c:PCC_DDRLayout",
+  "dataProviders" : [ ],
+  "id" : "4ddaeb31-6f2e-46bd-9014-1d46baf3962e",
+  "label" : "DDR",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l2",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel Design Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "1dea56ea-66ae-4771-b6e7-f97daf948a19",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4e295e75-bc70-4ec1-9909-695bf490c541",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "fe82263d-c5ef-4fbd-a585-f1d7b63c1832",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "disableManageEvents" : true,
+        "disableManageLeads" : true,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : true,
+        "disableManagedMPPartners" : true,
+        "disableViewDashboard" : true,
+        "fullWidth" : true,
+        "portal" : "Partner Admin",
+        "showAllButtons" : false
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "8be3ea6e-9f89-4071-8e04-91bc236dcd4e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7dcc0f4c-5836-4951-8650-b7c255265fab",
+    "regionName" : "navigationMenu",
+    "type" : "region"
+  }, {
+    "id" : "f7e8ac22-246d-4ff1-a93c-cd280fa014e1",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "14ebb182-953b-45be-975d-acce6cc0946a",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "697e457a-40a9-4e6b-9970-120acfe74215",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "0753c238-60b3-4a92-881e-8537d694bbe8",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Design-Opportunity"
+          }, {
+            "UUID" : "947326a8-d2f4-4bd2-8baa-bd3ba2ac5a72",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Design Registration"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "697e457a-40a9-4e6b-9970-120acfe74215",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "height" : "485",
+            "recordId" : "Core_DDR_External_Design_Opportunity_Dashboard"
+          },
+          "componentName" : "forceCommunity:dashboard",
+          "id" : "6437bfa6-26d7-4577-860c-e6fe159c67b6",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "height" : "485",
+            "recordId" : "Trailhead_Overview"
+          },
+          "componentName" : "forceCommunity:dashboard",
+          "id" : "00395e82-59ca-4cb0-be55-55102ecc064d",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "0753c238-60b3-4a92-881e-8537d694bbe8",
+        "regionLabel" : "Design-Opportunity",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "height" : "850",
+            "recordId" : "lMnRRmQzGUhCMscCETYQinISGqUFet"
+          },
+          "componentName" : "forceCommunity:dashboard",
+          "id" : "290aee0c-52bf-483d-a14a-c1bd52f72bc4",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "947326a8-d2f4-4bd2-8baa-bd3ba2ac5a72",
+        "regionLabel" : "Design Registration",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b07c3f06-8ff0-4306-8617-e8cc3d8431f0",
+    "regionName" : "leftSection",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div>\n\n    <div style = \"padding: 15px;\"></div>\n\n    <div style=\"background-color: #ffffff; border-radius:3px;border-style: solid;border-color: #d6d6d6;border-width: 0.1px\">\n\n        <h2>Intel Design Registration</h2>\n\n        <ul>\n            <li><a href=\"https://www.intel.com/content/www/us/en/secure/content-details/846887/content-details.html\">Design Registration Training</a></li>\n\t\t\t<li><a href=\"https://www.intel.com/content/www/us/en/secure/content-details/846891/content-details.html\">Bulk Upload References</a></li>            \n\t\t\t<li><a href=\"mailto:smg.customer.support@intel.com\">Design Registration Support</a></li>\n            <li><a href=\"https://partner-admin.intel.com/s/report/00O3b000007pjdnEAA/tool-registerable-product-list?queryScope=everything\">Tool Registerable product list - Embedded IOT</a></li>\n        </ul>\n        <h2>\n            Intel Premier Support</h2>\n        <ul>\n            <li><a href=\"https://premiersupport.intel.com/IPS\">Click here for IPS Portal</a></li>\n        </ul>\n\n\n        <h2>Other Links</h2>\n\n        <ul>\n            <li><a href=\"https://www-ssl.intel.com/content/www/us/en/secure/profile/my-intel.html#/myapps\">My Intel Business Applications & Tools</a></li>\n        </ul>\n\n    </div>\n\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "787a1f5c-cae9-434e-a929-4d5a2ec8bf82",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a3a371a9-4b07-4110-a62c-2f677f10982b",
+    "regionName" : "rightSection",
+    "type" : "region"
+  }, {
+    "id" : "dcb2ad15-ee57-4f15-8fa5-ce000f544ae8",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "45ae8b65-7260-4449-b8a2-fa88c70fbcf7",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "885e399d-15d9-4103-bd17-45d4f7abf7b0",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "9872c2c6-0452-49b4-b79a-056e9a21032c",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "51a2dd6e-71fc-45f4-ad6b-c9ad6057670a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ef11588c-3a51-422c-a822-47bba14482ea",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "c5cff14b-8f9e-4bbb-a32a-df49a1d20361",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "3de86da1-c96c-40dc-9eba-1f21684dd946",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Design Registration"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "500556db-f441-4ba1-8e7a-a8b24d989854",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8450c4b4-e3ea-42a8-af7c-d945658d9a4d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "type" : "view",
+  "viewType" : "custom-ddr"
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktDataConnection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessType>Shared</accessType>
+    <connectionMethod>Ingress</connectionMethod>
+    <connectionStatus>ACTIVE</connectionStatus>
+    <connectorName>MarketingDataConnector</connectorName>
+    <externalRecordIdentifier>38f6aa5a-fe06-4543-aacb-ee14050631c7</externalRecordIdentifier>
+    <isActivityEnabled>false</isActivityEnabled>
+    <isSentosEnabled>false</isSentosEnabled>
+    <masterLabel>MarketingDataConnection</masterLabel>
+    <parameters>
+        <fullName>MarketingDataConnector_orgId</fullName>
+        <paramName>orgId</paramName>
+        <value>core/prod/00Do0000000aRcfEAE</value>
+    </parameters>
+    <shouldAutoCreatePolicies>false</shouldAutoCreatePolicies>
+</MktDataConnection>

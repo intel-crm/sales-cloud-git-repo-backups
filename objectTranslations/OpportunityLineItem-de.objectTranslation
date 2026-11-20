@@ -1,0 +1,4343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Deal Desk --></label>
+        <name>sbaa__DealDesk</name>
+    </fieldSets>
+    <fields>
+        <label><!-- DW Approved Unified Global Customer Name --></label>
+        <name>CRM_DW_App_UCD_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Unified Global Customer Name --></label>
+        <name>CRM_PW_App_UCD_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account name of the Opportunity --></help>
+        <label><!-- Account Name --></label>
+        <name>Core_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Advanced Technology --></label>
+        <name>Core_Advanced_Technology__c</name>
+        <picklistValues>
+            <masterLabel>INTEL® Optane™ DC SSD First Implementation</masterLabel>
+            <translation><!-- INTEL® Optane™ DC SSD First Implementation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INTEL® VPRO™ TECHNOLOGY</masterLabel>
+            <translation><!-- INTEL® VPRO™ TECHNOLOGY --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- DW Approved BU Product Segment --></label>
+        <name>Core_Approved_BU_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved BU Short Name --></label>
+        <name>Core_Approved_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved By --></label>
+        <name>Core_Approved_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved Commissionable? --></label>
+        <name>Core_Approved_Commissionable__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the manager approved the win --></help>
+        <label><!-- DW Manager Approved Date --></label>
+        <name>Core_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Decision Date --></label>
+        <name>Core_Approved_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved KPI Product Group --></label>
+        <name>Core_Approved_KPI_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved List Price --></label>
+        <name>Core_Approved_List_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Opportunity Product Segment --></label>
+        <name>Core_Approved_Opp_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Opportunity Owner --></label>
+        <name>Core_Approved_Opportunity_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Opportunity Product Application --></label>
+        <name>Core_Approved_Opportunity_Product_App__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved Prime Account Name --></label>
+        <name>Core_Approved_Prime_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved Quantity --></label>
+        <name>Core_Approved_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved Sales Price --></label>
+        <name>Core_Approved_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Technical Owner --></label>
+        <name>Core_Approved_Technical_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved Total Price --></label>
+        <name>Core_Approved_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved User Id --></label>
+        <name>Core_Approved_User_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Status --></label>
+        <name>Core_At_Risk_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed: Support Not Provided</masterLabel>
+            <translation><!-- Closed: Support Not Provided --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed: Support Provided</masterLabel>
+            <translation><!-- Closed: Support Provided --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- At Risk --></label>
+        <name>Core_At_Risk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available for New Designs --></label>
+        <name>Core_Available_for_New_Designs__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Mapping record --></label>
+        <name>Core_BU_Mapping_record__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- BU is not assigned which could cause an error for commissions. If the problem still exists after 24 hrs, please contact Product Support via AAQ --></help>
+        <label><!-- New BU Product Segment --></label>
+        <name>Core_BU_ProductSegment__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Product Segment_New --></label>
+        <name>Core_BU_Product_Segment_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Product Segment Old --></label>
+        <name>Core_BU_Product_Segment_Old__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Product Segment --></label>
+        <name>Core_BU_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <help><!-- BU is not assigned which could cause an error for commissions. If the problem still exists after 24 hrs, please contact Product Support via AAQ --></help>
+        <label><!-- New BU Short Name --></label>
+        <name>Core_BU_ShortName__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Short Name Old --></label>
+        <name>Core_BU_Short_Name_Old__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Short Name --></label>
+        <name>Core_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Shortname_New --></label>
+        <name>Core_BU_Shortname_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- BypassFlow --></label>
+        <name>Core_BypassFlow__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the Opportunity Owner claims a Win, Loss, or Cancel --></help>
+        <label><!-- DW Claim Date --></label>
+        <name>Core_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product --></label>
+        <name>Core_Competitor_Product__c</name>
+        <picklistValues>
+            <masterLabel>200Gb HDR</masterLabel>
+            <translation><!-- 200Gb HDR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A10</masterLabel>
+            <translation><!-- A10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A100</masterLabel>
+            <translation><!-- A100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A16</masterLabel>
+            <translation><!-- A16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A2</masterLabel>
+            <translation><!-- A2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A30</masterLabel>
+            <translation><!-- A30 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Chip</masterLabel>
+            <translation><!-- AI Chip --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Athlon</masterLabel>
+            <translation><!-- AMD Athlon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Athlon Gold</masterLabel>
+            <translation><!-- AMD Athlon Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Athlon Silver</masterLabel>
+            <translation><!-- AMD Athlon Silver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Banded Kestral</masterLabel>
+            <translation><!-- AMD Banded Kestral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Bergamo</masterLabel>
+            <translation><!-- AMD Bergamo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD E series</masterLabel>
+            <translation><!-- AMD E series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD EPYC 3000</masterLabel>
+            <translation><!-- AMD EPYC 3000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD EPYC 7xx1 (Naples 2S)</masterLabel>
+            <translation><!-- AMD EPYC 7xx1 (Naples 2S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD EPYC 7xx1P (Naples 1S)</masterLabel>
+            <translation><!-- AMD EPYC 7xx1P (Naples 1S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD FireRo</masterLabel>
+            <translation><!-- AMD FireRo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Genoa</masterLabel>
+            <translation><!-- AMD Genoa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Genoa-X</masterLabel>
+            <translation><!-- AMD Genoa-X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Horned Owl</masterLabel>
+            <translation><!-- AMD Horned Owl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD MI210</masterLabel>
+            <translation><!-- AMD MI210 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD MI250</masterLabel>
+            <translation><!-- AMD MI250 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD MI300</masterLabel>
+            <translation><!-- AMD MI300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD MI325</masterLabel>
+            <translation><!-- AMD MI325 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD MI350</masterLabel>
+            <translation><!-- AMD MI350 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD MI400</masterLabel>
+            <translation><!-- AMD MI400 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Milan</masterLabel>
+            <translation><!-- AMD Milan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Radeon Instinct</masterLabel>
+            <translation><!-- AMD Radeon Instinct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Rome 7xx2 (Rome 2S)</masterLabel>
+            <translation><!-- AMD Rome 7xx2 (Rome 2S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Rome 7xx2P (Rome 1S)</masterLabel>
+            <translation><!-- AMD Rome 7xx2P (Rome 1S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen  5</masterLabel>
+            <translation><!-- AMD Ryzen  5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen (Desktop)</masterLabel>
+            <translation><!-- AMD Ryzen (Desktop) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen 3</masterLabel>
+            <translation><!-- AMD Ryzen 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen 7</masterLabel>
+            <translation><!-- AMD Ryzen 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen Mobile (Rave Ridge)</masterLabel>
+            <translation><!-- AMD Ryzen Mobile (Rave Ridge) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen Pro (DT)</masterLabel>
+            <translation><!-- AMD Ryzen Pro (DT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen Pro (Mobile)</masterLabel>
+            <translation><!-- AMD Ryzen Pro (Mobile) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Ryzen Threadripper</masterLabel>
+            <translation><!-- AMD Ryzen Threadripper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Seattle</masterLabel>
+            <translation><!-- AMD Seattle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Siena</masterLabel>
+            <translation><!-- AMD Siena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Turin</masterLabel>
+            <translation><!-- AMD Turin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Turin-D</masterLabel>
+            <translation><!-- AMD Turin-D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Vega</masterLabel>
+            <translation><!-- AMD Vega --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Venice</masterLabel>
+            <translation><!-- AMD Venice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD Venice-D</masterLabel>
+            <translation><!-- AMD Venice-D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMD: Radeon</masterLabel>
+            <translation><!-- AMD: Radeon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - IPAD</masterLabel>
+            <translation><!-- ARM - IPAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - IPAD Pro</masterLabel>
+            <translation><!-- ARM - IPAD Pro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - Mediatek</masterLabel>
+            <translation><!-- ARM - Mediatek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - Nvidia</masterLabel>
+            <translation><!-- ARM - Nvidia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - Qualcomm</masterLabel>
+            <translation><!-- ARM - Qualcomm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - Rockchip</masterLabel>
+            <translation><!-- ARM - Rockchip --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM - iPad Air</masterLabel>
+            <translation><!-- ARM - iPad Air --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARM: Broadcom</masterLabel>
+            <translation><!-- ARM: Broadcom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon - Graviton</masterLabel>
+            <translation><!-- Amazon - Graviton --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon - Graviton 2</masterLabel>
+            <translation><!-- Amazon - Graviton 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon - Graviton 3</masterLabel>
+            <translation><!-- Amazon - Graviton 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon - Graviton 4</masterLabel>
+            <translation><!-- Amazon - Graviton 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon Inferentia</masterLabel>
+            <translation><!-- Amazon Inferentia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon Tranium</masterLabel>
+            <translation><!-- Amazon Tranium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ampere A1</masterLabel>
+            <translation><!-- Ampere A1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ampere Astra</masterLabel>
+            <translation><!-- Ampere Astra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ampere eMAG</masterLabel>
+            <translation><!-- Ampere eMAG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B100</masterLabel>
+            <translation><!-- B100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B200</masterLabel>
+            <translation><!-- B200 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B300</masterLabel>
+            <translation><!-- B300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blackberry</masterLabel>
+            <translation><!-- Blackberry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bluefield</masterLabel>
+            <translation><!-- Bluefield --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bull</masterLabel>
+            <translation><!-- Bull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPLD</masterLabel>
+            <translation><!-- CPLD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Centriq</masterLabel>
+            <translation><!-- Centriq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectX-3</masterLabel>
+            <translation><!-- ConnectX-3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectX-4</masterLabel>
+            <translation><!-- ConnectX-4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectX-5</masterLabel>
+            <translation><!-- ConnectX-5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSP</masterLabel>
+            <translation><!-- DSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSP-OMAP</masterLabel>
+            <translation><!-- DSP-OMAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet NIC: Broadcom</masterLabel>
+            <translation><!-- Ethernet NIC: Broadcom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet NIC: Mellanox</masterLabel>
+            <translation><!-- Ethernet NIC: Mellanox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet Switching: Broadcom</masterLabel>
+            <translation><!-- Ethernet Switching: Broadcom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet Switching: Mellanox</masterLabel>
+            <translation><!-- Ethernet Switching: Mellanox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Excel Values</masterLabel>
+            <translation><!-- Excel Values --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Accelerator</masterLabel>
+            <translation><!-- FPGA Accelerator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA System</masterLabel>
+            <translation><!-- FPGA System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-AT40KAL</masterLabel>
+            <translation><!-- FPGA-AT40KAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix UltraScale+ XCAU10P </masterLabel>
+            <translation><!-- FPGA-Artix UltraScale+ XCAU10P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix UltraScale+ XCAU15P </masterLabel>
+            <translation><!-- FPGA-Artix UltraScale+ XCAU15P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix UltraScale+ XCAU20P </masterLabel>
+            <translation><!-- FPGA-Artix UltraScale+ XCAU20P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix UltraScale+ XCAU25P </masterLabel>
+            <translation><!-- FPGA-Artix UltraScale+ XCAU25P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A100T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A100T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A12T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A12T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A15T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A15T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A200T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A200T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A25T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A25T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A35T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A35T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A50T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A50T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Artix-7 XC7A75T</masterLabel>
+            <translation><!-- FPGA-Artix-7 XC7A75T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-CROSSLINK</masterLabel>
+            <translation><!-- FPGA-CROSSLINK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-17</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-19</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-20</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-21</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-22</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-22 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-23</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-23 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-24</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Certus-NX-LFD2NX-40</masterLabel>
+            <translation><!-- FPGA-Certus-NX-LFD2NX-40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-CoolRunner-II</masterLabel>
+            <translation><!-- FPGA-CoolRunner-II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-LIA-MD6000-80</masterLabel>
+            <translation><!-- FPGA-Crosslink-LIA-MD6000-80 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-LIA-MD6000-81</masterLabel>
+            <translation><!-- FPGA-Crosslink-LIA-MD6000-81 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-LIF-MD6000-36</masterLabel>
+            <translation><!-- FPGA-Crosslink-LIF-MD6000-36 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-LIF-MD6000-64</masterLabel>
+            <translation><!-- FPGA-Crosslink-LIF-MD6000-64 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-LIF-MD6000-80</masterLabel>
+            <translation><!-- FPGA-Crosslink-LIF-MD6000-80 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-LIF-MD6000-81</masterLabel>
+            <translation><!-- FPGA-Crosslink-LIF-MD6000-81 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-NX-LIFCL-17</masterLabel>
+            <translation><!-- FPGA-Crosslink-NX-LIFCL-17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Crosslink-NX-LIFCL-40</masterLabel>
+            <translation><!-- FPGA-Crosslink-NX-LIFCL-40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-EASYPATH</masterLabel>
+            <translation><!-- FPGA-EASYPATH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2 ECP2-12</masterLabel>
+            <translation><!-- FPGA-ECP2 ECP2-12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2 ECP2-20</masterLabel>
+            <translation><!-- FPGA-ECP2 ECP2-20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2 ECP2-35</masterLabel>
+            <translation><!-- FPGA-ECP2 ECP2-35 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2 ECP2-50</masterLabel>
+            <translation><!-- FPGA-ECP2 ECP2-50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2 ECP2-6</masterLabel>
+            <translation><!-- FPGA-ECP2 ECP2-6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2 ECP2-70</masterLabel>
+            <translation><!-- FPGA-ECP2 ECP2-70 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2M ECP2M-100</masterLabel>
+            <translation><!-- FPGA-ECP2M ECP2M-100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2M ECP2M-20</masterLabel>
+            <translation><!-- FPGA-ECP2M ECP2M-20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2M ECP2M-35</masterLabel>
+            <translation><!-- FPGA-ECP2M ECP2M-35 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2M ECP2M-50</masterLabel>
+            <translation><!-- FPGA-ECP2M ECP2M-50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP2M ECP2M-70</masterLabel>
+            <translation><!-- FPGA-ECP2M ECP2M-70 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP3 ECP3-150</masterLabel>
+            <translation><!-- FPGA-ECP3 ECP3-150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP3 ECP3-17</masterLabel>
+            <translation><!-- FPGA-ECP3 ECP3-17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP3 ECP3-35</masterLabel>
+            <translation><!-- FPGA-ECP3 ECP3-35 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP3 ECP3-70</masterLabel>
+            <translation><!-- FPGA-ECP3 ECP3-70 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP3 ECP3-95</masterLabel>
+            <translation><!-- FPGA-ECP3 ECP3-95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5U-12</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5U-12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5U-25</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5U-25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5U-45</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5U-45 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5U-85</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5U-85 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5UM-25</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5UM-25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5UM-45</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5UM-45 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5UM-85</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5UM-85 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5UM5G-25</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5UM5G-25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5UM5G-45</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5UM5G-45 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ECP5 LFE5UM5G-85</masterLabel>
+            <translation><!-- FPGA-ECP5 LFE5UM5G-85 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Fusion Mixed AFS090</masterLabel>
+            <translation><!-- FPGA-Fusion Mixed AFS090 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Fusion Mixed AFS1500</masterLabel>
+            <translation><!-- FPGA-Fusion Mixed AFS1500 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Fusion Mixed AFS250</masterLabel>
+            <translation><!-- FPGA-Fusion Mixed AFS250 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Fusion Mixed AFS600</masterLabel>
+            <translation><!-- FPGA-Fusion Mixed AFS600 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-GW1N GW1N-1</masterLabel>
+            <translation><!-- FPGA-GW1N GW1N-1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-GW1N GW1N-2</masterLabel>
+            <translation><!-- FPGA-GW1N GW1N-2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-GW1N GW1N-4</masterLabel>
+            <translation><!-- FPGA-GW1N GW1N-4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-GW1N GW1N-6</masterLabel>
+            <translation><!-- FPGA-GW1N GW1N-6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-GW1N GW1N-9</masterLabel>
+            <translation><!-- FPGA-GW1N GW1N-9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Nano AGLN010</masterLabel>
+            <translation><!-- FPGA-Igloo Nano AGLN010 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Nano AGLN0125</masterLabel>
+            <translation><!-- FPGA-Igloo Nano AGLN0125 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Nano AGLN020</masterLabel>
+            <translation><!-- FPGA-Igloo Nano AGLN020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Nano AGLN060</masterLabel>
+            <translation><!-- FPGA-Igloo Nano AGLN060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Nano AGLN250</masterLabel>
+            <translation><!-- FPGA-Igloo Nano AGLN250 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Plus AGLP030</masterLabel>
+            <translation><!-- FPGA-Igloo Plus AGLP030 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Plus AGLP060</masterLabel>
+            <translation><!-- FPGA-Igloo Plus AGLP060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo Plus AGLP125</masterLabel>
+            <translation><!-- FPGA-Igloo Plus AGLP125 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL030</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL030 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL060</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL1000</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL1000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL125</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL125 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL250</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL250 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL400</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL400 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGL600</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGL600 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGLE3000</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGLE3000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo/e AGLE600</masterLabel>
+            <translation><!-- FPGA-Igloo/e AGLE600 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL005</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL005 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL010</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL010 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL025</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL050</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL050 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL060</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL090</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL090 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Igloo2 M2GL150</masterLabel>
+            <translation><!-- FPGA-Igloo2 M2GL150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-KINETIS</masterLabel>
+            <translation><!-- FPGA-KINETIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU025</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU035</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU035 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU040</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU040 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU060</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU085</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU085 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU095</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU095 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale XCKU115</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale XCKU115 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale+ XCKU11P</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale+ XCKU11P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale+ XCKU13P</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale+ XCKU13P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale+ XCKU15P</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale+ XCKU15P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale+ XCKU3P</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale+ XCKU3P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale+ XCKU5P</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale+ XCKU5P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex UltraScale+ XCKU9P</masterLabel>
+            <translation><!-- FPGA-Kintex UltraScale+ XCKU9P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K160T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K160T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K325T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K325T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K355T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K355T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K410T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K410T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K420T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K420T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K480T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K480T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XC7K70T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XC7K70T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XCE7K325T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XCE7K325T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XCE7K355T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XCE7K355T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XCE7K410T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XCE7K410T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XCE7K420T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XCE7K420T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Kintex-7 XCE7K480T</masterLabel>
+            <translation><!-- FPGA-Kintex-7 XCE7K480T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Mach-NX-LFMNX-50</masterLabel>
+            <translation><!-- FPGA-Mach-NX-LFMNX-50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-1200</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-1200 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-1200U</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-1200U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-2000</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-2000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-2000U</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-2000U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-256</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-256 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-4000</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-4000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-640</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-640 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-640U</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-640U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX02 X02-7000</masterLabel>
+            <translation><!-- FPGA-MachX02 X02-7000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03D-4300</masterLabel>
+            <translation><!-- FPGA-MachX03D-4300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03D-9400</masterLabel>
+            <translation><!-- FPGA-MachX03D-9400 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3L-1300</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3L-1300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3L-2100</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3L-2100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3L-4300</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3L-4300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3L-640</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3L-640 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3L-6900</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3L-6900 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3LF-1300</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3LF-1300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3LF-2100</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3LF-2100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3LF-4300</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3LF-4300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3LF-640</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3LF-640 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachX03L XO3LF-6900</masterLabel>
+            <translation><!-- FPGA-MachX03L XO3LF-6900 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachXO LCMXO1200</masterLabel>
+            <translation><!-- FPGA-MachXO LCMXO1200 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachXO LCMXO2280</masterLabel>
+            <translation><!-- FPGA-MachXO LCMXO2280 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachXO LCMXO256</masterLabel>
+            <translation><!-- FPGA-MachXO LCMXO256 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-MachXO LCMXO640</masterLabel>
+            <translation><!-- FPGA-MachXO LCMXO640 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-NEXTREME</masterLabel>
+            <translation><!-- FPGA-NEXTREME --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-POWERPC</masterLabel>
+            <translation><!-- FPGA-POWERPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-PSOC</masterLabel>
+            <translation><!-- FPGA-PSOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ProASIC Plus</masterLabel>
+            <translation><!-- FPGA-ProASIC Plus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ProASIC3</masterLabel>
+            <translation><!-- FPGA-ProASIC3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ProASIC3 nano</masterLabel>
+            <translation><!-- FPGA-ProASIC3 nano --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ProASIC3E</masterLabel>
+            <translation><!-- FPGA-ProASIC3E --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ProASIC3L</masterLabel>
+            <translation><!-- FPGA-ProASIC3L --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-QURIQ</masterLabel>
+            <translation><!-- FPGA-QURIQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SC/M</masterLabel>
+            <translation><!-- FPGA-SC/M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SPEEDCORE</masterLabel>
+            <translation><!-- FPGA-SPEEDCORE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SPEEDSTER</masterLabel>
+            <translation><!-- FPGA-SPEEDSTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SPLD</masterLabel>
+            <translation><!-- FPGA-SPLD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion A2F060</masterLabel>
+            <translation><!-- FPGA-SmartFusion A2F060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion A2F200</masterLabel>
+            <translation><!-- FPGA-SmartFusion A2F200 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion A2F500</masterLabel>
+            <translation><!-- FPGA-SmartFusion A2F500 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S005</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S005 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S010</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S010 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S025</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S050</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S050 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S060</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S090</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S090 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-SmartFusion2 M2S150</masterLabel>
+            <translation><!-- FPGA-SmartFusion2 M2S150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-3</masterLabel>
+            <translation><!-- FPGA-Spartan-3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-3 DSP</masterLabel>
+            <translation><!-- FPGA-Spartan-3 DSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-3A</masterLabel>
+            <translation><!-- FPGA-Spartan-3A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-3AN</masterLabel>
+            <translation><!-- FPGA-Spartan-3AN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-3E</masterLabel>
+            <translation><!-- FPGA-Spartan-3E --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 LXT XC6SLX100T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 LXT XC6SLX100T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 LXT XC6SLX150T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 LXT XC6SLX150T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 LXT XC6SLX25T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 LXT XC6SLX25T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 LXT XC6SLX45T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 LXT XC6SLX45T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 LXT XC6SLX75T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 LXT XC6SLX75T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX100</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX100T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX100T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX150</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX150T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX150T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX16</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX25</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX25T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX25T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX4</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX45</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX45 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX45T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX45T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX75</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX75 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX75T</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX75T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-6 XC6SLX9</masterLabel>
+            <translation><!-- FPGA-Spartan-6 XC6SLX9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-7 XC7S100</masterLabel>
+            <translation><!-- FPGA-Spartan-7 XC7S100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-7 XC7S15</masterLabel>
+            <translation><!-- FPGA-Spartan-7 XC7S15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-7 XC7S25</masterLabel>
+            <translation><!-- FPGA-Spartan-7 XC7S25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-7 XC7S50</masterLabel>
+            <translation><!-- FPGA-Spartan-7 XC7S50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-7 XC7S6</masterLabel>
+            <translation><!-- FPGA-Spartan-7 XC7S6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Spartan-7 XC7S75</masterLabel>
+            <translation><!-- FPGA-Spartan-7 XC7S75 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ULC</masterLabel>
+            <translation><!-- FPGA-ULC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Core XCVC1352</masterLabel>
+            <translation><!-- FPGA-Versal AI Core XCVC1352 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Core XCVC1702</masterLabel>
+            <translation><!-- FPGA-Versal AI Core XCVC1702 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Core XCVC1802</masterLabel>
+            <translation><!-- FPGA-Versal AI Core XCVC1802 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Core XCVC1902</masterLabel>
+            <translation><!-- FPGA-Versal AI Core XCVC1902 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Core XCVC2602</masterLabel>
+            <translation><!-- FPGA-Versal AI Core XCVC2602 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Core XCVC2802</masterLabel>
+            <translation><!-- FPGA-Versal AI Core XCVC2802 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE1752</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE1752 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE2002</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE2002 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE2102</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE2102 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE2202</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE2202 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE2302</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE2302 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE2602</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE2602 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal AI Edge XCVE2802</masterLabel>
+            <translation><!-- FPGA-Versal AI Edge XCVE2802 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM1102</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM1102 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM1302</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM1302 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM1402</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM1402 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM1502</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM1502 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM1802</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM1802 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM2302</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM2302 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM2502</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM2502 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVM2902</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVM2902 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1102</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1102 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1202</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1202 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1402</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1402 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1502</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1502 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1552</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1552 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1702</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1702 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Versal Prime XCVP1802</masterLabel>
+            <translation><!-- FPGA-Versal Prime XCVP1802 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU065</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU065 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU080</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU080 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU095</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU095 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU125</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU125 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU160</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU160 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU190</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU190 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale XCVU440</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale XCVU440 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCKU19P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCKU19P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU11P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU11P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU13P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU13P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU23P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU23P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU27P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU27P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU29P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU29P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU31P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU31P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU33P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU33P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU35P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU35P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU37P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU37P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU3P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU3P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU45P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU45P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU47P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU47P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU57P </masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU57P  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU5P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU5P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU7P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU7P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex UltraScale+ XCVU9P</masterLabel>
+            <translation><!-- FPGA-Virtex UltraScale+ XCVU9P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-4 LX</masterLabel>
+            <translation><!-- FPGA-Virtex-4 LX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-4 SX</masterLabel>
+            <translation><!-- FPGA-Virtex-4 SX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-5 FXT</masterLabel>
+            <translation><!-- FPGA-Virtex-5 FXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-5 LX</masterLabel>
+            <translation><!-- FPGA-Virtex-5 LX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-5 LXT</masterLabel>
+            <translation><!-- FPGA-Virtex-5 LXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-5 SXT</masterLabel>
+            <translation><!-- FPGA-Virtex-5 SXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-5 TXT</masterLabel>
+            <translation><!-- FPGA-Virtex-5 TXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-6 CXT</masterLabel>
+            <translation><!-- FPGA-Virtex-6 CXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-6 HXT</masterLabel>
+            <translation><!-- FPGA-Virtex-6 HXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-6 LX</masterLabel>
+            <translation><!-- FPGA-Virtex-6 LX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-6 LXT</masterLabel>
+            <translation><!-- FPGA-Virtex-6 LXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-6 SXT</masterLabel>
+            <translation><!-- FPGA-Virtex-6 SXT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 HT XC7VH580T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 HT XC7VH580T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 HT XC7VH870T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 HT XC7VH870T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 T XC7V2000T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 T XC7V2000T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 T XC7V585T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 T XC7V585T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 T XCE7V585T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 T XCE7V585T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX1140T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX1140T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX330T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX330T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX415T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX415T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX485T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX485T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX550T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX550T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX690T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX690T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XC7VX980T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XC7VX980T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XCE7VX330T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XCE7VX330T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XCE7VX415T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XCE7VX415T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XCE7VX485T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XCE7VX485T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XCE7VX550T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XCE7VX550T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XCE7VX690T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XCE7VX690T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Virtex-7 XT XCE7VX980T</masterLabel>
+            <translation><!-- FPGA-Virtex-7 XT XCE7VX980T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-XC9500XL</masterLabel>
+            <translation><!-- FPGA-XC9500XL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-XP2 XP2-17</masterLabel>
+            <translation><!-- FPGA-XP2 XP2-17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-XP2 XP2-30</masterLabel>
+            <translation><!-- FPGA-XP2 XP2-30 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-XP2 XP2-40</masterLabel>
+            <translation><!-- FPGA-XP2 XP2-40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-XP2 XP2-5</masterLabel>
+            <translation><!-- FPGA-XP2 XP2-5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-XP2 XP2-8</masterLabel>
+            <translation><!-- FPGA-XP2 XP2-8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU21DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU21DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU25DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU25DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU27DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU27DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU28DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU28DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU29DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU29DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU39DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU39DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU42DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU42DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU43DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU43DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU46DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU46DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU47DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU47DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU48DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU48DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ RFSoC XCZU49DR</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ RFSoC XCZU49DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU11EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU11EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU15EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU15EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU17EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU17EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU19EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU19EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU1CG </masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU1CG  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU1EG </masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU1EG  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU2EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU2EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU3EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU3EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU4EV</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU4EV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU5EV</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU5EV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU6EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU6EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU7EV</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU7EV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq UltraScale+ XCZU9EG</masterLabel>
+            <translation><!-- FPGA-Zynq UltraScale+ XCZU9EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7010</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7010 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7015</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7015 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7020</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7030</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7030 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7035</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7035 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7045</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7045 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000 Z-7100</masterLabel>
+            <translation><!-- FPGA-Zynq-7000 Z-7100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000S Z-7007S</masterLabel>
+            <translation><!-- FPGA-Zynq-7000S Z-7007S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000S Z-7012S</masterLabel>
+            <translation><!-- FPGA-Zynq-7000S Z-7012S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-Zynq-7000S Z-7014S</masterLabel>
+            <translation><!-- FPGA-Zynq-7000S Z-7014S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 HX HX1K</masterLabel>
+            <translation><!-- FPGA-iCE40 HX HX1K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 HX HX4K</masterLabel>
+            <translation><!-- FPGA-iCE40 HX HX4K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 HX HX8K</masterLabel>
+            <translation><!-- FPGA-iCE40 HX HX8K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LM LM1K</masterLabel>
+            <translation><!-- FPGA-iCE40 LM LM1K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LM LM2K</masterLabel>
+            <translation><!-- FPGA-iCE40 LM LM2K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LM LM4K</masterLabel>
+            <translation><!-- FPGA-iCE40 LM LM4K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LP LP1K</masterLabel>
+            <translation><!-- FPGA-iCE40 LP LP1K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LP LP384</masterLabel>
+            <translation><!-- FPGA-iCE40 LP LP384 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LP LP4K</masterLabel>
+            <translation><!-- FPGA-iCE40 LP LP4K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LP LP640</masterLabel>
+            <translation><!-- FPGA-iCE40 LP LP640 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 LP LP8K</masterLabel>
+            <translation><!-- FPGA-iCE40 LP LP8K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 Ultra iCE5LP2K</masterLabel>
+            <translation><!-- FPGA-iCE40 Ultra iCE5LP2K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 Ultra iCE5LP4K</masterLabel>
+            <translation><!-- FPGA-iCE40 Ultra iCE5LP4K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 UltraLite UL1K</masterLabel>
+            <translation><!-- FPGA-iCE40 UltraLite UL1K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 UltraLite UL640</masterLabel>
+            <translation><!-- FPGA-iCE40 UltraLite UL640 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 UltraLite iCE5LP1K</masterLabel>
+            <translation><!-- FPGA-iCE40 UltraLite iCE5LP1K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 UltraPlus UP3K</masterLabel>
+            <translation><!-- FPGA-iCE40 UltraPlus UP3K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-iCE40 UltraPlus UP5K</masterLabel>
+            <translation><!-- FPGA-iCE40 UltraPlus UP5K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ispMACH 4000V/B/C/Z</masterLabel>
+            <translation><!-- FPGA-ispMACH 4000V/B/C/Z --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA-ispMACH 4000ZE</masterLabel>
+            <translation><!-- FPGA-ispMACH 4000ZE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FT - 2000</masterLabel>
+            <translation><!-- FT - 2000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firetail</masterLabel>
+            <translation><!-- Firetail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GB100</masterLabel>
+            <translation><!-- GB100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GB200</masterLabel>
+            <translation><!-- GB200 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GB300</masterLabel>
+            <translation><!-- GB300 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GPFS/IBM</masterLabel>
+            <translation><!-- GPFS/IBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geode</masterLabel>
+            <translation><!-- Geode --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GlusterFS</masterLabel>
+            <translation><!-- GlusterFS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Google Axion</masterLabel>
+            <translation><!-- Google Axion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Google TPU</masterLabel>
+            <translation><!-- Google TPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>H100</masterLabel>
+            <translation><!-- H100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>H200</masterLabel>
+            <translation><!-- H200 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HDR100</masterLabel>
+            <translation><!-- HDR100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hi1612</masterLabel>
+            <translation><!-- Hi1612 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hi1616</masterLabel>
+            <translation><!-- Hi1616 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hi1620</masterLabel>
+            <translation><!-- Hi1620 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Huawei Modem</masterLabel>
+            <translation><!-- Huawei Modem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hygon 3100 (2S)</masterLabel>
+            <translation><!-- Hygon 3100 (2S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hygon 5100 (2S)</masterLabel>
+            <translation><!-- Hygon 5100 (2S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hygon 7100 (2S)</masterLabel>
+            <translation><!-- Hygon 7100 (2S) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IB: DDR and 10GbE</masterLabel>
+            <translation><!-- IB: DDR and 10GbE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IB: FDR and 40GbE</masterLabel>
+            <translation><!-- IB: FDR and 40GbE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IB: FDR10 &amp; 10GbE</masterLabel>
+            <translation><!-- IB: FDR10 &amp; 10GbE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IB: QDR and 10GbE</masterLabel>
+            <translation><!-- IB: QDR and 10GbE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM - Power 590 (P5)</masterLabel>
+            <translation><!-- IBM - Power 590 (P5) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM - Power 595 (P6)</masterLabel>
+            <translation><!-- IBM - Power 595 (P6) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM - S/3xx</masterLabel>
+            <translation><!-- IBM - S/3xx --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM - z-Series Mainframe</masterLabel>
+            <translation><!-- IBM - z-Series Mainframe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cell</masterLabel>
+            <translation><!-- IBM Cell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indigenous</masterLabel>
+            <translation><!-- Indigenous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel (Value CPU)</masterLabel>
+            <translation><!-- Intel (Value CPU) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kirin</masterLabel>
+            <translation><!-- Kirin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L40</masterLabel>
+            <translation><!-- L40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L40S</masterLabel>
+            <translation><!-- L40S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MCU</masterLabel>
+            <translation><!-- MCU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MCU-SPEAR</masterLabel>
+            <translation><!-- MCU-SPEAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSFT Cobalt</masterLabel>
+            <translation><!-- MSFT Cobalt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MacBook</masterLabel>
+            <translation><!-- MacBook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MacBook Air</masterLabel>
+            <translation><!-- MacBook Air --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mainframe</masterLabel>
+            <translation><!-- Mainframe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MediaTek Comms</masterLabel>
+            <translation><!-- MediaTek Comms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MediaTek SoC</masterLabel>
+            <translation><!-- MediaTek SoC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NVidia Xavier</masterLabel>
+            <translation><!-- NVidia Xavier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetXtreme</masterLabel>
+            <translation><!-- NetXtreme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Cards</masterLabel>
+            <translation><!-- Network Cards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia Fermi</masterLabel>
+            <translation><!-- Nvidia Fermi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia Kepler</masterLabel>
+            <translation><!-- Nvidia Kepler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia Pascal</masterLabel>
+            <translation><!-- Nvidia Pascal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia TESLA</masterLabel>
+            <translation><!-- Nvidia TESLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia Volta</masterLabel>
+            <translation><!-- Nvidia Volta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OcteanTX2</masterLabel>
+            <translation><!-- OcteanTX2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OcteonTX</masterLabel>
+            <translation><!-- OcteonTX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opteron</masterLabel>
+            <translation><!-- Opteron --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other(provide details via &apos;Other Competitor/Product&apos;)</masterLabel>
+            <translation><!-- Other(provide details via &apos;Other Competitor/Product&apos;) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P100</masterLabel>
+            <translation><!-- P100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P4</masterLabel>
+            <translation><!-- P4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P40</masterLabel>
+            <translation><!-- P40 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POWER DISCRETE</masterLabel>
+            <translation><!-- POWER DISCRETE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POWER MODULE</masterLabel>
+            <translation><!-- POWER MODULE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POWER PMIC</masterLabel>
+            <translation><!-- POWER PMIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POWER10</masterLabel>
+            <translation><!-- POWER10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PanFS-Panasas</masterLabel>
+            <translation><!-- PanFS-Panasas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picasso</masterLabel>
+            <translation><!-- Picasso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power 7</masterLabel>
+            <translation><!-- Power 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power 7+</masterLabel>
+            <translation><!-- Power 7+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power 8</masterLabel>
+            <translation><!-- Power 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power 8+</masterLabel>
+            <translation><!-- Power 8+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power 9</masterLabel>
+            <translation><!-- Power 9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power9 - SO</masterLabel>
+            <translation><!-- Power9 - SO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power9 - SU</masterLabel>
+            <translation><!-- Power9 - SU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RISC</masterLabel>
+            <translation><!-- RISC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renoir</masterLabel>
+            <translation><!-- Renoir --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSDs</masterLabel>
+            <translation><!-- SSDs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shenwei</masterLabel>
+            <translation><!-- Shenwei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SoC</masterLabel>
+            <translation><!-- SoC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SoC with AI engine</masterLabel>
+            <translation><!-- SoC with AI engine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SoC with NN engine</masterLabel>
+            <translation><!-- SoC with NN engine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solarflare 8000 Series</masterLabel>
+            <translation><!-- Solarflare 8000 Series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solarflare XtremeScale (X2522/X2541)</masterLabel>
+            <translation><!-- Solarflare XtremeScale (X2522/X2541) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sparc</masterLabel>
+            <translation><!-- Sparc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>StarDragon2400</masterLabel>
+            <translation><!-- StarDragon2400 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tensor Processing Unit</masterLabel>
+            <translation><!-- Tensor Processing Unit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ThunderX2 (Vulcan)</masterLabel>
+            <translation><!-- ThunderX2 (Vulcan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ThunderX3</masterLabel>
+            <translation><!-- ThunderX3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown At This Time</masterLabel>
+            <translation><!-- Unknown At This Time --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V100</masterLabel>
+            <translation><!-- V100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIA</masterLabel>
+            <translation><!-- VIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iPad</masterLabel>
+            <translation><!-- iPad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iPad Pro</masterLabel>
+            <translation><!-- iPad Pro --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Competitor --></label>
+        <name>Core_Competitor__c</name>
+        <picklistValues>
+            <masterLabel>AMD</masterLabel>
+            <translation><!-- AMD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ANALOG DEVICES</masterLabel>
+            <translation><!-- ANALOG DEVICES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATMEL</masterLabel>
+            <translation><!-- ATMEL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acer</masterLabel>
+            <translation><!-- Acer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alibaba</masterLabel>
+            <translation><!-- Alibaba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon</masterLabel>
+            <translation><!-- Amazon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ambarella</masterLabel>
+            <translation><!-- Ambarella --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ampere</masterLabel>
+            <translation><!-- Ampere --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple</masterLabel>
+            <translation><!-- Apple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asus</masterLabel>
+            <translation><!-- Asus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atos</masterLabel>
+            <translation><!-- Atos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baidu</masterLabel>
+            <translation><!-- Baidu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcom</masterLabel>
+            <translation><!-- Broadcom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHANNEL</masterLabel>
+            <translation><!-- CHANNEL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CTE</masterLabel>
+            <translation><!-- CTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CYPRESS SEMICONDUCTOR</masterLabel>
+            <translation><!-- CYPRESS SEMICONDUCTOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cambricon</masterLabel>
+            <translation><!-- Cambricon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco</masterLabel>
+            <translation><!-- Cisco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell</masterLabel>
+            <translation><!-- Dell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ericsson</masterLabel>
+            <translation><!-- Ericsson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fujitsu</masterLabel>
+            <translation><!-- Fujitsu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GE LINEAGE</masterLabel>
+            <translation><!-- GE LINEAGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GOWIN</masterLabel>
+            <translation><!-- GOWIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Google/Alphabet</masterLabel>
+            <translation><!-- Google/Alphabet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPE</masterLabel>
+            <translation><!-- HPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPE/Cray</masterLabel>
+            <translation><!-- HPE/Cray --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPI</masterLabel>
+            <translation><!-- HPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HiSilicon</masterLabel>
+            <translation><!-- HiSilicon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hitachi</masterLabel>
+            <translation><!-- Hitachi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Huawei</masterLabel>
+            <translation><!-- Huawei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hygon</masterLabel>
+            <translation><!-- Hygon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM</masterLabel>
+            <translation><!-- IBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INFINEON</masterLabel>
+            <translation><!-- INFINEON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INTERSIL CORPORATION</masterLabel>
+            <translation><!-- INTERSIL CORPORATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indigenous</masterLabel>
+            <translation><!-- Indigenous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LATTICE</masterLabel>
+            <translation><!-- LATTICE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LINEAR TECHNOLOGY</masterLabel>
+            <translation><!-- LINEAR TECHNOLOGY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOCAL OEM</masterLabel>
+            <translation><!-- LOCAL OEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lenovo</masterLabel>
+            <translation><!-- Lenovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MACOM</masterLabel>
+            <translation><!-- MACOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MICREL</masterLabel>
+            <translation><!-- MICREL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MICROSEMI</masterLabel>
+            <translation><!-- MICROSEMI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MPS</masterLabel>
+            <translation><!-- MPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marvell Technology</masterLabel>
+            <translation><!-- Marvell Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MediaTek</masterLabel>
+            <translation><!-- MediaTek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mellanox</masterLabel>
+            <translation><!-- Mellanox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Micron</masterLabel>
+            <translation><!-- Micron --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft</masterLabel>
+            <translation><!-- Microsoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEC</masterLabel>
+            <translation><!-- NEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NXP</masterLabel>
+            <translation><!-- NXP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nvidia</masterLabel>
+            <translation><!-- Nvidia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTHER POWER VENDOR</masterLabel>
+            <translation><!-- OTHER POWER VENDOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle</masterLabel>
+            <translation><!-- Oracle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (provide details via &apos;Other Competitor/Product&apos;)</masterLabel>
+            <translation><!-- Other (provide details via &apos;Other Competitor/Product&apos;) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PANASONIC</masterLabel>
+            <translation><!-- PANASONIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Penguin</masterLabel>
+            <translation><!-- Penguin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualcomm</masterLabel>
+            <translation><!-- Qualcomm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quanta</masterLabel>
+            <translation><!-- Quanta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RICHTECH</masterLabel>
+            <translation><!-- RICHTECH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROHM</masterLabel>
+            <translation><!-- ROHM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renesas</masterLabel>
+            <translation><!-- Renesas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rockchip</masterLabel>
+            <translation><!-- Rockchip --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SILERGY</masterLabel>
+            <translation><!-- SILERGY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STMICRO</masterLabel>
+            <translation><!-- STMICRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samsung</masterLabel>
+            <translation><!-- Samsung --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sugan/Dawning</masterLabel>
+            <translation><!-- Sugan/Dawning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sun Microsystems</masterLabel>
+            <translation><!-- Sun Microsystems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SuperMicro</masterLabel>
+            <translation><!-- SuperMicro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TDK</masterLabel>
+            <translation><!-- TDK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEXAS INSTRUMENTS</masterLabel>
+            <translation><!-- TEXAS INSTRUMENTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technicolor</masterLabel>
+            <translation><!-- Technicolor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tencent</masterLabel>
+            <translation><!-- Tencent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toshiba</masterLabel>
+            <translation><!-- Toshiba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown At This Time</masterLabel>
+            <translation><!-- Unknown At This Time --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wiwynn</masterLabel>
+            <translation><!-- Wiwynn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wyse</masterLabel>
+            <translation><!-- Wyse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XILINX</masterLabel>
+            <translation><!-- XILINX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>e-Auction</masterLabel>
+            <translation><!-- e-Auction --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Created from CPQ --></label>
+        <name>Core_Created_from_CPQ__c</name>
+    </fields>
+    <fields>
+        <help><!-- If this is a Design Oppty type, select the product category for the product.  If this is a Deal Oppty, product categories will be based on the Product Type field which is auto-populated and will be grouped into the appropriate product categories for you. --></help>
+        <label><!-- Design Product Category --></label>
+        <name>Core_Design_Product_Category__c</name>
+        <picklistValues>
+            <masterLabel>CCG: CPU</masterLabel>
+            <translation><!-- CCG: CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG: non-CPU (SOW)</masterLabel>
+            <translation><!-- CCG: non-CPU (SOW) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG: CPU</masterLabel>
+            <translation><!-- DCG: CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG: non-CPU (SOW)</masterLabel>
+            <translation><!-- DCG: non-CPU (SOW) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOTG: Gateway</masterLabel>
+            <translation><!-- IOTG: Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOTG: Other</masterLabel>
+            <translation><!-- IOTG: Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSG: Other</masterLabel>
+            <translation><!-- NSG: Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSG: PCIE</masterLabel>
+            <translation><!-- NSG: PCIE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Design/Deal Registration Product --></label>
+        <name>Core_Design_Registration_Product_Id__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Division Code --></label>
+        <name>Core_Division_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division --></label>
+        <name>Core_Division__c</name>
+        <picklistValues>
+            <masterLabel>ATM</masterLabel>
+            <translation><!-- ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AdminDiv</masterLabel>
+            <translation><!-- AdminDiv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCDiv</masterLabel>
+            <translation><!-- CCDiv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CD</masterLabel>
+            <translation><!-- CD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIDIV</masterLabel>
+            <translation><!-- CIDIV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORP Div</masterLabel>
+            <translation><!-- CORP Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPG Div</masterLabel>
+            <translation><!-- CPG Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPLG Div</masterLabel>
+            <translation><!-- CPLG Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSIG Adm</masterLabel>
+            <translation><!-- CSIG Adm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CrpIA Dv</masterLabel>
+            <translation><!-- CrpIA Dv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG CPU</masterLabel>
+            <translation><!-- DCG CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCPU Div</masterLabel>
+            <translation><!-- DCPU Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DEG Div</masterLabel>
+            <translation><!-- DEG Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DHED</masterLabel>
+            <translation><!-- DHED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DPD Biz</masterLabel>
+            <translation><!-- DPD Biz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DRD</masterLabel>
+            <translation><!-- DRD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DT Div</masterLabel>
+            <translation><!-- DT Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECG Adm</masterLabel>
+            <translation><!-- ECG Adm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECPD EMD</masterLabel>
+            <translation><!-- ECPD EMD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EPD</masterLabel>
+            <translation><!-- EPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESS</masterLabel>
+            <translation><!-- ESS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ETS WPRD</masterLabel>
+            <translation><!-- ETS WPRD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FF</masterLabel>
+            <translation><!-- FF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPD</masterLabel>
+            <translation><!-- FPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GPMO</masterLabel>
+            <translation><!-- GPMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HQ Div</masterLabel>
+            <translation><!-- HQ Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IAD</masterLabel>
+            <translation><!-- IAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICF DIV</masterLabel>
+            <translation><!-- ICF DIV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDS</masterLabel>
+            <translation><!-- IDS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IFL</masterLabel>
+            <translation><!-- IFL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IL Div</masterLabel>
+            <translation><!-- IL Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IM</masterLabel>
+            <translation><!-- IM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISD Biz</masterLabel>
+            <translation><!-- ISD Biz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MCPD</masterLabel>
+            <translation><!-- MCPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MMD</masterLabel>
+            <translation><!-- MMD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MOCS DIV</masterLabel>
+            <translation><!-- MOCS DIV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MPG</masterLabel>
+            <translation><!-- MPG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>McAD</masterLabel>
+            <translation><!-- McAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NBD</masterLabel>
+            <translation><!-- NBD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NBI</masterLabel>
+            <translation><!-- NBI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ND</masterLabel>
+            <translation><!-- ND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ND Div</masterLabel>
+            <translation><!-- ND Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSG Div</masterLabel>
+            <translation><!-- NSG Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTD</masterLabel>
+            <translation><!-- NTD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OND</masterLabel>
+            <translation><!-- OND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPD</masterLabel>
+            <translation><!-- OPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTC Div</masterLabel>
+            <translation><!-- OTC Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PCACG</masterLabel>
+            <translation><!-- PCACG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PCCG Adm</masterLabel>
+            <translation><!-- PCCG Adm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEG Admn</masterLabel>
+            <translation><!-- PEG Admn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PerC Div</masterLabel>
+            <translation><!-- PerC Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSD</masterLabel>
+            <translation><!-- RSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SG Div</masterLabel>
+            <translation><!-- SG Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPD</masterLabel>
+            <translation><!-- SPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPO Div</masterLabel>
+            <translation><!-- SPO Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Systems</masterLabel>
+            <translation><!-- Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TCD</masterLabel>
+            <translation><!-- TCD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UPSD</masterLabel>
+            <translation><!-- UPSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VPG Div</masterLabel>
+            <translation><!-- VPG Div --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WPO</masterLabel>
+            <translation><!-- WPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WiFi</masterLabel>
+            <translation><!-- WiFi --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Financial Incentive Eligible --></label>
+        <name>Core_Financial_Incentive_Eligible_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- Form Factor for the opportunity --></help>
+        <label><!-- Form Factor --></label>
+        <name>Core_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code --></label>
+        <name>Core_Group_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group --></label>
+        <name>Core_Group__c</name>
+        <picklistValues>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BCG</masterLabel>
+            <translation><!-- BCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG</masterLabel>
+            <translation><!-- CCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHG</masterLabel>
+            <translation><!-- CHG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORP</masterLabel>
+            <translation><!-- CORP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORPG&amp;A</masterLabel>
+            <translation><!-- CORPG&amp;A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSIG</masterLabel>
+            <translation><!-- CSIG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CloudGrp</masterLabel>
+            <translation><!-- CloudGrp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CorpI Gp</masterLabel>
+            <translation><!-- CorpI Gp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG CPU</masterLabel>
+            <translation><!-- DCG CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DEG</masterLabel>
+            <translation><!-- DEG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPG</masterLabel>
+            <translation><!-- FPG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health</masterLabel>
+            <translation><!-- Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IFL</masterLabel>
+            <translation><!-- IFL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IL</masterLabel>
+            <translation><!-- IL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IM</masterLabel>
+            <translation><!-- IM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IMC</masterLabel>
+            <translation><!-- IMC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPG</masterLabel>
+            <translation><!-- IPG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISG</masterLabel>
+            <translation><!-- ISG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MCHG</masterLabel>
+            <translation><!-- MCHG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MPG</masterLabel>
+            <translation><!-- MPG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>McAfee</masterLabel>
+            <translation><!-- McAfee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NBKG</masterLabel>
+            <translation><!-- NBKG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NDG</masterLabel>
+            <translation><!-- NDG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NVMSG</masterLabel>
+            <translation><!-- NVMSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PCCGAdmi</masterLabel>
+            <translation><!-- PCCGAdmi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEG Adm</masterLabel>
+            <translation><!-- PEG Adm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PHG</masterLabel>
+            <translation><!-- PHG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PerC-Grp</masterLabel>
+            <translation><!-- PerC-Grp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG</masterLabel>
+            <translation><!-- SMG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPO</masterLabel>
+            <translation><!-- SPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSG EG</masterLabel>
+            <translation><!-- SSG EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSG PSG</masterLabel>
+            <translation><!-- SSG PSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SVPG</masterLabel>
+            <translation><!-- SVPG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBG</masterLabel>
+            <translation><!-- TBG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TCG</masterLabel>
+            <translation><!-- TCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TMG</masterLabel>
+            <translation><!-- TMG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UPSG</masterLabel>
+            <translation><!-- UPSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WNG</masterLabel>
+            <translation><!-- WNG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WPRD G</masterLabel>
+            <translation><!-- WPRD G --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Intel vPro Platform Eligibility --></label>
+        <name>Core_Intel_vPro_Platform_Eligibility__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsPCCOpportunity? --></label>
+        <name>Core_IsPCCOpportunity_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Product EOL --></label>
+        <name>Core_Is_Product_EOL__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Business Industry Function --></label>
+        <name>Core_KPI_Business_Industry_Function__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - CPU $ --></label>
+        <name>Core_KPI_CPU_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - CPU Units --></label>
+        <name>Core_KPI_CPU_Units__c</name>
+    </fields>
+    <fields>
+        <help><!-- The KPI Date provides a SINGLE, Unified date field that is used to report the results for any status.  This date combines the Claim Date when there is a Claim Date otherwise for pending products, the Opportunity Decision Date is used. --></help>
+        <label><!-- KPI - Date --></label>
+        <name>Core_KPI_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Days Design Win to Production Win --></label>
+        <name>Core_KPI_Days_DesignWin_to_ProductionWin__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Non CPU $ --></label>
+        <name>Core_KPI_Non_CPU_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Product Group --></label>
+        <name>Core_KPI_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - Production Date --></label>
+        <name>Core_KPI_Production_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The KPI Total Quantity contains the product quantity.  For products with a status of Approved, Lost or Cancelled the  Approved Quantity is used.  For products that are Pending or On Hold, the Quantity is used. --></help>
+        <label><!-- KPI - Quantity --></label>
+        <name>Core_KPI_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - SPG Target(U) --></label>
+        <name>Core_KPI_SPG_Target_U__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI - SPG(U) --></label>
+        <name>Core_KPI_SPG_U__c</name>
+    </fields>
+    <fields>
+        <help><!-- The KPI Total Price contains the product total price.  For products with a status of Approved, Lost or Cancelled the  Approved Total Price is used.  For products that are Pending or On Hold, the Total Price is used. --></help>
+        <label><!-- KPI - Total Price --></label>
+        <name>Core_KPI_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loss/Cancel Details --></label>
+        <name>Core_Loss_Cancel_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- The main reason the opportunity product was Lost or Cancelled. This field is not editable unless the opportunity stage is Lost or Cancelled. --></help>
+        <label><!-- Loss/Cancel Reason --></label>
+        <name>Core_Loss_Cancel_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Another IA Bid Selected </masterLabel>
+            <translation><!-- Another IA Bid Selected  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Discontinued Project </masterLabel>
+            <translation><!-- Customer Discontinued Project  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Reg. Product Swap </masterLabel>
+            <translation><!-- Design Reg. Product Swap  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entered in Error </masterLabel>
+            <translation><!-- Entered in Error  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed Audit </masterLabel>
+            <translation><!-- Failed Audit  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feature/Performance </masterLabel>
+            <translation><!-- Feature/Performance  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel No Longer Pursuing </masterLabel>
+            <translation><!-- Intel No Longer Pursuing  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (refer to Loss Details) </masterLabel>
+            <translation><!-- Other (refer to Loss Details)  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP Unobtainable </masterLabel>
+            <translation><!-- POP Unobtainable  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price </masterLabel>
+            <translation><!-- Price  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Schedule </masterLabel>
+            <translation><!-- Product Schedule  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply </masterLabel>
+            <translation><!-- Supply  --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Lost Sales Price for a single unit --></help>
+        <label><!-- Lost Sales Price --></label>
+        <name>Core_Lost_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lost Sales Price x Quantity --></help>
+        <label><!-- Lost Total Price --></label>
+        <name>Core_Lost_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lost to Open Flag --></label>
+        <name>Core_Lost_to_Open_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Normalized Product Name --></label>
+        <name>Core_Normalized_Product_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the name of the OEM or LOEM if you put &apos;Other&apos; in the OEM/LOEM field --></help>
+        <label><!-- OEM/LOEM - Other (do not use) --></label>
+        <name>Core_OEM_LOEM_Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM/LOEM (do not use) --></label>
+        <name>Core_OEM_LOEM__c</name>
+        <picklistValues>
+            <masterLabel>Aaeon</masterLabel>
+            <translation><!-- Aaeon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acer</masterLabel>
+            <translation><!-- Acer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advance Computer</masterLabel>
+            <translation><!-- Advance Computer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple</masterLabel>
+            <translation><!-- Apple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Appro</masterLabel>
+            <translation><!-- Appro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aquarius</masterLabel>
+            <translation><!-- Aquarius --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asus</masterLabel>
+            <translation><!-- Asus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atipa</masterLabel>
+            <translation><!-- Atipa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Axioo</masterLabel>
+            <translation><!-- Axioo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BGH</masterLabel>
+            <translation><!-- BGH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangho</masterLabel>
+            <translation><!-- Bangho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bull</masterLabel>
+            <translation><!-- Bull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCE-Accept</masterLabel>
+            <translation><!-- CCE-Accept --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHANNEL</masterLabel>
+            <translation><!-- CHANNEL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Amazon Web Services</masterLabel>
+            <translation><!-- CSP: Amazon Web Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Autonomic Resources Cloud</masterLabel>
+            <translation><!-- CSP: Autonomic Resources Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Century Link</masterLabel>
+            <translation><!-- CSP: Century Link --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Cirrity</masterLabel>
+            <translation><!-- CSP: Cirrity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Cloud Dynamics</masterLabel>
+            <translation><!-- CSP: Cloud Dynamics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Expedient</masterLabel>
+            <translation><!-- CSP: Expedient --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: GoGrid</masterLabel>
+            <translation><!-- CSP: GoGrid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Google</masterLabel>
+            <translation><!-- CSP: Google --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: IBM Softlayer</masterLabel>
+            <translation><!-- CSP: IBM Softlayer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Joyent</masterLabel>
+            <translation><!-- CSP: Joyent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Kio Networks</masterLabel>
+            <translation><!-- CSP: Kio Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Locaweb</masterLabel>
+            <translation><!-- CSP: Locaweb --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Microsoft Azure</masterLabel>
+            <translation><!-- CSP: Microsoft Azure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Mirantis</masterLabel>
+            <translation><!-- CSP: Mirantis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: OVH</masterLabel>
+            <translation><!-- CSP: OVH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Other</masterLabel>
+            <translation><!-- CSP: Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Peer 1 Networking</masterLabel>
+            <translation><!-- CSP: Peer 1 Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Rackspace</masterLabel>
+            <translation><!-- CSP: Rackspace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: ScaleMatrix</masterLabel>
+            <translation><!-- CSP: ScaleMatrix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: UOL</masterLabel>
+            <translation><!-- CSP: UOL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Verizon</masterLabel>
+            <translation><!-- CSP: Verizon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: Virtustream</masterLabel>
+            <translation><!-- CSP: Virtustream --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP: iLand</masterLabel>
+            <translation><!-- CSP: iLand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CTE</masterLabel>
+            <translation><!-- CTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Casper Bilgisayar Sistemleri A.S</masterLabel>
+            <translation><!-- Casper Bilgisayar Sistemleri A.S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ciara</masterLabel>
+            <translation><!-- Ciara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco NW</masterLabel>
+            <translation><!-- Cisco NW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Systems</masterLabel>
+            <translation><!-- Cisco Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compumax</masterLabel>
+            <translation><!-- Compumax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cray</masterLabel>
+            <translation><!-- Cray --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dawning</masterLabel>
+            <translation><!-- Dawning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell</masterLabel>
+            <translation><!-- Dell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diebold</masterLabel>
+            <translation><!-- Diebold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECS</masterLabel>
+            <translation><!-- ECS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMC</masterLabel>
+            <translation><!-- EMC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fujitsu</masterLabel>
+            <translation><!-- Fujitsu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fujitsu Siemens</masterLabel>
+            <translation><!-- Fujitsu Siemens --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gemtek</masterLabel>
+            <translation><!-- Gemtek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gigabyte</masterLabel>
+            <translation><!-- Gigabyte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HCL</masterLabel>
+            <translation><!-- HCL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HP</masterLabel>
+            <translation><!-- HP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTC</masterLabel>
+            <translation><!-- HTC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haier</masterLabel>
+            <translation><!-- Haier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hitachi</masterLabel>
+            <translation><!-- Hitachi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Huawei</masterLabel>
+            <translation><!-- Huawei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM</masterLabel>
+            <translation><!-- IBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel</masterLabel>
+            <translation><!-- Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Itautec</masterLabel>
+            <translation><!-- Itautec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JPIK</masterLabel>
+            <translation><!-- JPIK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Koi</masterLabel>
+            <translation><!-- Koi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kontron</masterLabel>
+            <translation><!-- Kontron --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kraftway</masterLabel>
+            <translation><!-- Kraftway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LG</masterLabel>
+            <translation><!-- LG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LGE</masterLabel>
+            <translation><!-- LGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOCAL OEM</masterLabel>
+            <translation><!-- LOCAL OEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Langchao</masterLabel>
+            <translation><!-- Langchao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lanix</masterLabel>
+            <translation><!-- Lanix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lenovo</masterLabel>
+            <translation><!-- Lenovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lufac</masterLabel>
+            <translation><!-- Lufac --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>McAfee</masterLabel>
+            <translation><!-- McAfee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft</masterLabel>
+            <translation><!-- Microsoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motorola</masterLabel>
+            <translation><!-- Motorola --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mustek</masterLabel>
+            <translation><!-- Mustek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NDG</masterLabel>
+            <translation><!-- NDG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEC</masterLabel>
+            <translation><!-- NEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetApp</masterLabel>
+            <translation><!-- NetApp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nokia</masterLabel>
+            <translation><!-- Nokia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nokia Solutions Network (NSN)</masterLabel>
+            <translation><!-- Nokia Solutions Network (NSN) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nor-Tech</masterLabel>
+            <translation><!-- Nor-Tech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Micro</masterLabel>
+            <translation><!-- Northern Micro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Olidata</masterLabel>
+            <translation><!-- Olidata --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle</masterLabel>
+            <translation><!-- Oracle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PC Smart</masterLabel>
+            <translation><!-- PC Smart --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pacific</masterLabel>
+            <translation><!-- Pacific --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panasonic</masterLabel>
+            <translation><!-- Panasonic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Penguin</masterLabel>
+            <translation><!-- Penguin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philips</masterLabel>
+            <translation><!-- Philips --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Positivo</masterLabel>
+            <translation><!-- Positivo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Powerleader</masterLabel>
+            <translation><!-- Powerleader --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qbex</masterLabel>
+            <translation><!-- Qbex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quanta</masterLabel>
+            <translation><!-- Quanta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Redbarn</masterLabel>
+            <translation><!-- Redbarn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGI</masterLabel>
+            <translation><!-- SGI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STI - Semp Toshiba</masterLabel>
+            <translation><!-- STI - Semp Toshiba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samsung</masterLabel>
+            <translation><!-- Samsung --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seneca Data</masterLabel>
+            <translation><!-- Seneca Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sharp</masterLabel>
+            <translation><!-- Sharp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sony</masterLabel>
+            <translation><!-- Sony --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sun Microsystems</masterLabel>
+            <translation><!-- Sun Microsystems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supermicro</masterLabel>
+            <translation><!-- Supermicro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TG</masterLabel>
+            <translation><!-- TG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tongfang</masterLabel>
+            <translation><!-- Tongfang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toshiba</masterLabel>
+            <translation><!-- Toshiba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unisys</masterLabel>
+            <translation><!-- Unisys --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vestel</masterLabel>
+            <translation><!-- Vestel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Viglen</masterLabel>
+            <translation><!-- Viglen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wipro Technologies</masterLabel>
+            <translation><!-- Wipro Technologies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZT Systems</masterLabel>
+            <translation><!-- ZT Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZTE</masterLabel>
+            <translation><!-- ZTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zyrex</masterLabel>
+            <translation><!-- Zyrex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>e-Auction</masterLabel>
+            <translation><!-- e-Auction --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operating Systems --></label>
+        <name>Core_Operating_Systems__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Opportunity Coverage --></label>
+        <name>Core_Opp_Approved_Oppty_Coverage__c</name>
+    </fields>
+    <fields>
+        <label><!-- DW Approved Sales Group --></label>
+        <name>Core_Opp_Approved_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Type --></label>
+        <name>Core_Opp_OpportunityType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Segment --></label>
+        <name>Core_Opp_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner Email --></label>
+        <name>Core_Opportunity_Owner_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product ID --></label>
+        <name>Core_Opportunity_Product_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Vendor Prime --></label>
+        <name>Core_Opportunity_Product_Vendor_Prime__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use this field to provide details If you have selected ‘Other’ for either Competitor or Product.   The information you provide will be used to inform future additions to the lists. --></help>
+        <label><!-- Other Competitor/Product --></label>
+        <name>Core_OtherCompetitor_Product_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owning BU Short Name --></label>
+        <name>Core_Owning_BU_ShortName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owning BU Short Name --></label>
+        <name>Core_Owning_BU_Short_Name_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved BU Product Segment --></label>
+        <name>Core_PW_Approved_BU_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved BU Short Name --></label>
+        <name>Core_PW_Approved_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved By --></label>
+        <name>Core_PW_Approved_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Commissionable? --></label>
+        <name>Core_PW_Approved_Commissionable__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved KPI Product Group --></label>
+        <name>Core_PW_Approved_KPI_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Prime Account Name --></label>
+        <name>Core_PW_Approved_Prime_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Quantity --></label>
+        <name>Core_PW_Approved_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Sales Group --></label>
+        <name>Core_PW_Approved_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Sales Price --></label>
+        <name>Core_PW_Approved_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Approved Total Price --></label>
+        <name>Core_PW_Approved_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- PW Lost Price --></label>
+        <name>Core_PW_Lost_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the manager approved the Production Win --></help>
+        <label><!-- PW Manager Approved Date --></label>
+        <name>Core_PW_Manager_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Editable post Design Win. Value used to calculate 6QPS post Design Win --></help>
+        <label><!-- Production Quantity --></label>
+        <name>Core_PW_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Editable post Design Win. Value used to calculate 6QPS post Design Win --></help>
+        <label><!-- Production Sales Price --></label>
+        <name>Core_PW_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prime Account Name --></label>
+        <name>Core_Prime_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product2 Division --></label>
+        <name>Core_Product2_Division__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Application --></label>
+        <name>Core_Product_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Risk Owner --></label>
+        <name>Core_Product_Risk_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Segment --></label>
+        <name>Core_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Production Cancelled Sales Price --></label>
+        <name>Core_Production_Cancelled_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the Opportunity Owner claims a Win, Loss, or Cancel --></help>
+        <label><!-- PW Claim Date --></label>
+        <name>Core_Production_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Production Lost Sales Price --></label>
+        <name>Core_Production_Lost_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- This price is used to calculate PW Total Price from PW Quantity and sale price. --></help>
+        <label><!-- Production Total Price --></label>
+        <name>Core_Production_Win_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line End Date --></label>
+        <name>Core_QL_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Start Date --></label>
+        <name>Core_QL_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Quantity --></label>
+        <name>Core_QL_Unit_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Cancellation Date --></label>
+        <name>Core_Quote_Line_Cancellation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Number --></label>
+        <name>Core_Quote_Line_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Status --></label>
+        <name>Core_Quote_Line_Status_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Category --></label>
+        <name>Core_Risk_Category__c</name>
+        <picklistValues>
+            <masterLabel>FYI Only</masterLabel>
+            <translation><!-- FYI Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Requested</masterLabel>
+            <translation><!-- Support Requested --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Create Date --></label>
+        <name>Core_Risk_Create_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Detail --></label>
+        <name>Core_Risk_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk End Date --></label>
+        <name>Core_Risk_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Risk Priority --></label>
+        <name>Core_Risk_Priority__c</name>
+        <picklistValues>
+            <masterLabel>1 Red Flag – Mission Critical, SMG Staff Attention</masterLabel>
+            <translation><!-- 1 Red Flag – Mission Critical, SMG Staff Attention --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 High - Vital to Opportunity, Action Required</masterLabel>
+            <translation><!-- 2 High - Vital to Opportunity, Action Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 Medium – Unusual Risk, Action Required</masterLabel>
+            <translation><!-- 3 Medium – Unusual Risk, Action Required --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Reason --></label>
+        <name>Core_Risk_Reason1__c</name>
+        <picklistValues>
+            <masterLabel>Risk - Lack of Tech Support</masterLabel>
+            <translation><!-- Risk - Lack of Tech Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Pricing</masterLabel>
+            <translation><!-- Risk - Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Pricing Meetcomp</masterLabel>
+            <translation><!-- Risk - Pricing Meetcomp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Product Feature/Quality/Performance</masterLabel>
+            <translation><!-- Risk - Product Feature/Quality/Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Product Roadmap/Schedule</masterLabel>
+            <translation><!-- Risk - Product Roadmap/Schedule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Supply</masterLabel>
+            <translation><!-- Risk - Supply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Supply: Sample</masterLabel>
+            <translation><!-- Risk - Supply: Sample --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk - Supply: System Build</masterLabel>
+            <translation><!-- Risk - Supply: System Build --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Reason2 --></label>
+        <name>Core_Risk_Reason2__c</name>
+        <picklistValues>
+            <masterLabel>Application Enablement/Software Tuning</masterLabel>
+            <translation><!-- Application Enablement/Software Tuning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COVID-19</masterLabel>
+            <translation><!-- COVID-19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competition</masterLabel>
+            <translation><!-- Competition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feature Gap</masterLabel>
+            <translation><!-- Feature Gap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS-Support</masterLabel>
+            <translation><!-- IPS-Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation><!-- Legal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MINDS Escalation (former MAG)</masterLabel>
+            <translation><!-- MINDS Escalation (former MAG) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OS Support</masterLabel>
+            <translation><!-- OS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (refer to “Risk Details”)</masterLabel>
+            <translation><!-- Other (refer to “Risk Details”) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRT</masterLabel>
+            <translation><!-- PRT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance / Power Gap</masterLabel>
+            <translation><!-- Performance / Power Gap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing</masterLabel>
+            <translation><!-- Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing - MeetComp</masterLabel>
+            <translation><!-- Pricing - MeetComp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Modification/Special SKU</masterLabel>
+            <translation><!-- Product Modification/Special SKU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quality</masterLabel>
+            <translation><!-- Quality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Roadmap</masterLabel>
+            <translation><!-- Roadmap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule Slip</masterLabel>
+            <translation><!-- Schedule Slip --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply</masterLabel>
+            <translation><!-- Supply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Expertise</masterLabel>
+            <translation><!-- Technical Expertise --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SPG Planning Segment (Legacy) --></label>
+        <name>Core_SPG_Planning_Segment_Legacy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Price Note --></label>
+        <name>Core_Sales_Price_Note__c</name>
+    </fields>
+    <fields>
+        <label><!-- Software Stack --></label>
+        <name>Core_Software_Stack__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delete In Progress (&lt;15 min)</masterLabel>
+            <translation><!-- Delete In Progress (&lt;15 min) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Post-Win</masterLabel>
+            <translation><!-- Post-Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Cancelled</masterLabel>
+            <translation><!-- Production Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Lost</masterLabel>
+            <translation><!-- Production Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Win Approved</masterLabel>
+            <translation><!-- Production Win Approved --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Support Granted Date --></label>
+        <name>Core_Support_Granted_Not_Entrance_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Not Granted Date --></label>
+        <name>Core_Support_Not_Granted_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Not Provided Date --></label>
+        <name>Core_Support_Not_Provided_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Provided Date --></label>
+        <name>Core_Support_Provided_Not_Entrance_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commissionable? --></label>
+        <name>Core_System_Commissionable__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Competitor Empty Flag --></label>
+        <name>Core_System_Competitor_Empty_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Owner Email --></label>
+        <name>Core_Technical_Owner_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will be used to calculate Opportunity Revenue ( CRM_Opportunity_Revenue__c ) on Opportunity Object --></help>
+        <label><!-- Total Amount --></label>
+        <name>Core_Total_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Global Customer Name --></label>
+        <name>Core_UCD_Global_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Opportunity Product Vendor --></label>
+        <name>Core_UCD_Opportunity_Product_Vendor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor Group --></label>
+        <name>Core_Vendor_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor Inactive --></label>
+        <name>Core_Vendor_InActive__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lookup field to the Account object for Vendor of an Opportunity Product --></help>
+        <label><!-- Vendor --></label>
+        <name>Core_Vendor__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Vertical Market --></label>
+        <name>Core_Vertical_Market__c</name>
+    </fields>
+    <fields>
+        <label><!-- Write In Product Flag --></label>
+        <name>Core_Write_In_Product_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Write In Product Name --></label>
+        <name>Core_Write_In_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failed DDR RecordID --></label>
+        <name>Failed_DDR_RecordID__c</name>
+    </fields>
+    <fields>
+        <help>ID des Opportunity-Produkts, das aus dem Paket dieses Produkts stammt.</help>
+        <label><!-- Parent ID --></label>
+        <name>SBQQ__ParentID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line --></label>
+        <name>SBQQ__QuoteLine__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Gibt den Abonnementtyp zum Bestimmen der Vertragspreise an.</help>
+        <label><!-- Subscription Type --></label>
+        <name>SBQQ__SubscriptionType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>sbaa__ApprovalStatus__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Genehmigt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation>Ausstehend</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation>Widerrufen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation>Abgelehnt</translation>
+        </picklistValues>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- Auditors do not have permission to add new products OR  delete products OR update any fields other than the Audit Section Fields on opportunity --></errorMessage>
+        <name>CRM_Restrict_OppAuditorsEdit_OLI</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity Product cannot be updated when there is a SOAR Process Pending/Qualified. --></errorMessage>
+        <name>CRM_VBS_Status_Change_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product status cannot be updated as specified as the product is flagged at risk. Please navigate to the At Risk tab to either uncheck the At Risk checkbox or disposition the Risk Status to a “Closed” state. --></errorMessage>
+        <name>Core_AtRisk_NewOrInProgress</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This product is locked and not available for edit due to POP Audit Failure.  Please contact smg.pop.audit.team@intel.com with any questions. --></errorMessage>
+        <name>Core_Cannot_Recall_Cancel_Failed_Audit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to do this action. Please contact your system administrator. --></errorMessage>
+        <name>Core_Cannot_Set_Cancel_Failed_Audit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Win/Lost/Cancelled Stages are not applicable for Deal Opportunity. --></errorMessage>
+        <name>Core_DealOppty_PWStage_OpptyProd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product not available for new designs.  Please select a product that is marked available for new designs on the selection page. --></errorMessage>
+        <name>Core_DesignFlag_True_For_OppType_Design</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot;Write In Product Name&quot; can&apos;t be changed after approval. --></errorMessage>
+        <name>Core_Lock_Field_After_Opp_ApprovalDesign</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- These fields can&apos;t be changed after approval:
+1. Write In Product Name
+2. Quantity
+3. Sales Price --></errorMessage>
+        <name>Core_Lock_Field_After_Opp_Approval_Deal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Loss/Cancel Details is required if Stage is set to Lost or Production Lost or Cancelled or Production Cancelled --></errorMessage>
+        <name>Core_Loss_Cancel_Details_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Loss/Cancel Reason is required if Stage is set to Lost or Production Lost or Cancelled or Production Cancelled --></errorMessage>
+        <name>Core_Loss_Cancel_Reason_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product cannot be added to Opportunities with a Stage of Lost or Cancelled. --></errorMessage>
+        <name>Core_No_Product_Lost_Cancel_oppty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- In order to add a product after Design Win Stage, you must change the (Product) Status to Post Win --></errorMessage>
+        <name>Core_No_Product_Post_Approval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product is lost/Cancel/Production Lost/Production Cancelled you can not modify --></errorMessage>
+        <name>Core_Not_Allow_Lost_Products_At_Risk</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cancelled Status cannot be selected on an Opportunity Product , Please select Lost Status instead --></errorMessage>
+        <name>Core_OppProdPrevent_Cancel</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please recall submission to add product --></errorMessage>
+        <name>Core_OppProd_NoNewPrdOnSubmittedOppty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Sales Price/Quantity cannot be updated on Lost, Cancelled, Production Lost, Production Cancelled, and Deleted products. --></errorMessage>
+        <name>Core_OppProd_PW_Quantity_SalesPrice</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval. --></errorMessage>
+        <name>Core_OppProd_Production_Cancelled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval --></errorMessage>
+        <name>Core_OppProd_Production_Lost</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Products must be win approved before going to production. --></errorMessage>
+        <name>Core_OppProd_Production_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When Product Status is Changed from PW Approved to any other before approval Status(i.e OnHold, Pending, Lost, Cancelled) - Production Win stage can be only reversed to Design Win Stage. --></errorMessage>
+        <name>Core_OppProd_Production_Win</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required if Stage is Lost, Cancelled, Production Lost, or Production Cancelled --></errorMessage>
+        <name>Core_OppProd_Reason_if_Lost</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Competitor is required if Product Status is Lost/Production Lost. --></errorMessage>
+        <name>Core_OppProd_Req_Competitor_OEM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Competitor Product is required if Product Status is Lost/Production Lost. --></errorMessage>
+        <name>Core_OppProd_Req_Competitor_OEM_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required if OEM/LOEM is Other --></errorMessage>
+        <name>Core_OppProd_Req_OEM_Other</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales price and Quantity cannot be updated on Lost, Cancelled, Production Lost, Production Cancelled, and Deleted products --></errorMessage>
+        <name>Core_OppProd_Sales_Price</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- One or more products is At Risk and/or has an ineligible Status for deletion. Please edit your request and resubmit --></errorMessage>
+        <name>Core_OppProd_To_Be_Delete</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- To set the product back to pending, submitter can use the Recall Approval Request button in the Approval History section or the approving manager can reject the approval request. --></errorMessage>
+        <name>Core_OppProd_WinSub_To_Pend</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval --></errorMessage>
+        <name>Core_OppProd_Win_Approved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required for write in products --></errorMessage>
+        <name>Core_OppProd_Write_In_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to edit the Opportunity Product after it is marked for Delete In Progress (&lt;15 min).
+Please add a new product. --></errorMessage>
+        <name>Core_OppProduct_PreventUpdateToBeDeleted</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Vendor that you are attempting to relate this Opportunity Product to is not Intel Account. Please choose an Intel Account --></errorMessage>
+        <name>Core_OppProduct_Prevent_Inactive_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- New products cannot be added to the Opportunity. Please contact your Intel representative to make a change. --></errorMessage>
+        <name>Core_Opp_Prevent_Product_Add_PCCDealReg</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Deletion of Opportunity Products is restricted. If this product needs to be deleted, please contact your Intel representative. --></errorMessage>
+        <name>Core_Opp_Prevent_Product_Del_By_Partner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Deletion of Opportunity Products is restricted. Please contact your Intel representative to make a change. --></errorMessage>
+        <name>Core_Opp_Prevent_Product_Del_PCCDealReg</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not add opportunity products/can not edit sales price, quantity on product --></errorMessage>
+        <name>Core_Opp_Restrict_SME_add_edit_products</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Win/Production Cancelled/Production Lost/On Hold/Post-Win are not applicable for Partner Opportunities. --></errorMessage>
+        <name>Core_PCCDealOppty_PWStage_OpptyProd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot modify/update the quantity. --></errorMessage>
+        <name>Core_PCCDealOppty_Prevent_Qty_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity product status cannot be reversed to open stages from Lost/Cancelled --></errorMessage>
+        <name>Core_PCC_Restrict_Status_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product cancellation is restricted. If this product needs to be cancelled, please contact your Intel representative. --></errorMessage>
+        <name>Core_Pcc_deal_product_cancel_restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Post-Win product can be added only on Design Win &amp; Production Win Opportunities --></errorMessage>
+        <name>Core_Post_Win_Product_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit Opportunity Product. Please contact system admin. --></errorMessage>
+        <name>Core_PreventLine_Edit_BUCollaborator_Usr</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot add Products with Sales Visible Flag as False --></errorMessage>
+        <name>Core_Prevent_Non_Sales_Visible_Flag_Rec</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- After approval,ONLY “Production Win”, “Production Lost” or “Production Cancelled” status is allowed.For any other change, please use the Reverse button on the Opportunity header. --></errorMessage>
+        <name>Core_Restrict_Manual_Reversal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please input a value greater than $0 for the Sales Price. --></errorMessage>
+        <name>Core_SalesPrice_GreaterThanZero_PCC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please input non-negative value for Sales Price --></errorMessage>
+        <name>Core_SalesPrice_NonNegative</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales price and Quantity cannot be updated after Design Win Approval. --></errorMessage>
+        <name>Core_SalesPrice_Quantity_CantBe_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Win Approved on Opportunity Product can be changed by Low Touch Admin Users only. --></errorMessage>
+        <name>PW_Approved_Only_LowTouch_Admin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Win Quantity / Production Win Sales Price Cannot be blank --></errorMessage>
+        <name>PW_Quantity_SalesPrice_Cannot_Be_Blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Quantity can be updated only after “ Win Approved ” Products. --></errorMessage>
+        <name>PW_Quantity_not_editable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Production Sales Price can be updated only after “ Win Approved ” Products. --></errorMessage>
+        <name>PW_Sales_Price_not_editable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity field only supports natural numbers.  Edit Quantity field(s) by removing the decimal/negative/zero value to enable saving. --></errorMessage>
+        <name>Quantity_only_supports_whole_numbers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit the fields after Design Win --></errorMessage>
+        <name>Restrict_Partner_and_ISR_field_edit_PW</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Edit_Product_Attributes --></label>
+        <name>Core_Edit_Product_Attributes</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Product_Credit --></label>
+        <name>Core_Product_Credit</name>
+    </webLinks>
+</CustomObjectTranslation>

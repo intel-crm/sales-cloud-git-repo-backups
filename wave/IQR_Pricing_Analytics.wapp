@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folder>IQR_Pricing_Analytics</folder>
+    <masterLabel>IQR Pricing Analytics</masterLabel>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11454661@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11579289@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>Pricing_All_Pricing_Analytics_Group</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>Pricing_All_Pricing_ReadOnly_Users_Group</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>Pricing_Manager_Group</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </shares>
+</WaveApplication>

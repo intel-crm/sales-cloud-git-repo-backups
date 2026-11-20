@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_81890894</developerName>
+        <masterLabel>Milestone Points</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Core_Solution_Milestone__c.Core_Milestone__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Enabled SW Production GA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Concept/Program Solidification</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>POC / POT / Lab Trial</sourceValue>
+            </sourceValues>
+            <value>1.0x Weight</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Govt. Policy / RFx Influenced</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pilot / Live Trial</sourceValue>
+            </sourceValues>
+            <value>1.5x Weight</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Deployment / Delivery</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Offering / Units Comm Available</sourceValue>
+            </sourceValues>
+            <value>1.8x Weight</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_81890894</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Core_Solution_Milestone__c.Core_Milestone__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Milestone_Type__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Milestone_Focus_Area__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Milestone_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Milestone_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_Solution_Milestone__c.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,Cancelled,Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_81890894</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Solution_Milestone__c.Core_Status__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Solution_Milestone__c.Core_Milestone__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>(ALL) Submitted + Pending Milestones FQ</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Core_Solution_Milestone__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

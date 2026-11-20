@@ -1,0 +1,78 @@
+<template>
+    <template if:true={isLoaded}>
+        <lightning-card title="Account Details" icon-name="standard:account">
+            <div class="slds-p-around_medium">
+                <div class="slds-grid slds-wrap slds-gutters">
+                    
+                    <!-- Account Name -->
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label">Account Name</label>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{accountData.name}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Account Number -->
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label">Account Number</label>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{accountData.accountNumber}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Core IPA Badge Tier -->
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label">IPA Badge Tier</label>
+                            <div class="slds-form-element__control">
+                                <span class="slds-form-element__static">{accountData.badgeTier}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRM IPA Badge Tier Date -->
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label">IPA Badge Tier Date</label>
+                            <div class="slds-form-element__control">
+                                <lightning-formatted-date-time 
+                                    value={accountData.badgeTierDate}
+                                    year="numeric" 
+                                    month="short" 
+                                    day="2-digit">
+                                </lightning-formatted-date-time>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- Core User Defined Website -->
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label">Website</label>
+                            <div class="slds-form-element__control">
+                                <template if:true={accountData.userDefinedWebsite}>
+                                    <lightning-formatted-url 
+                                        value={accountData.userDefinedWebsite}
+                                        target="_blank">
+                                    </lightning-formatted-url>
+                                </template>
+                                <template if:false={accountData.userDefinedWebsite}>
+                                    <span class="slds-form-element__static">No website available</span>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+    
+    <template if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading account details..."></lightning-spinner>
+    </template>
+</template>

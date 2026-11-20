@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PSS_Access_Request_Status_Nm__c</fullName>
+        <label>Access Request Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Core Team Review</fullName>
+                    <default>false</default>
+                    <label>Core Team Review</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Pass Along</fullName>
+                    <default>false</default>
+                    <label>Pass Along</label>
+                </value>
+                <value>
+                    <fullName>RRK Submitted</fullName>
+                    <default>false</default>
+                    <label>RRK Submitted</label>
+                </value>
+                <value>
+                    <fullName>RRK Enhancement</fullName>
+                    <default>false</default>
+                    <label>RRK Enhancement</label>
+                </value>
+                <value>
+                    <fullName>Cancelled Offer</fullName>
+                    <default>false</default>
+                    <label>Cancelled Offer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_Application_On_Nm__c</fullName>
+        <label>Application On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Asset &amp; Operations Optimization</fullName>
+                    <default>false</default>
+                    <label>Asset &amp; Operations Optimization</label>
+                </value>
+                <value>
+                    <fullName>Control Optimization &amp; Autonomy</fullName>
+                    <default>false</default>
+                    <label>Control Optimization &amp; Autonomy</label>
+                </value>
+                <value>
+                    <fullName>Energy Monitoring &amp; Management</fullName>
+                    <default>false</default>
+                    <label>Energy Monitoring &amp; Management</label>
+                </value>
+                <value>
+                    <fullName>Environment Monitoring</fullName>
+                    <default>false</default>
+                    <label>Environment Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Human Wellness Monitoring</fullName>
+                    <default>false</default>
+                    <label>Human Wellness Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Interactive Media</fullName>
+                    <default>false</default>
+                    <label>Interactive Media</label>
+                </value>
+                <value>
+                    <fullName>Logistics &amp; Tracking</fullName>
+                    <default>false</default>
+                    <label>Logistics &amp; Tracking</label>
+                </value>
+                <value>
+                    <fullName>Machine Condition Monitoring</fullName>
+                    <default>false</default>
+                    <label>Machine Condition Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Product Inspection</fullName>
+                    <default>false</default>
+                    <label>Product Inspection</label>
+                </value>
+                <value>
+                    <fullName>Situational Monitoring</fullName>
+                    <default>false</default>
+                    <label>Situational Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_Business_Opportunity_Txt__c</fullName>
+        <label>Business Opportunity</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_Cloud_Service_Provider_Nm__c</fullName>
+        <label>Cloud Service Provider</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alibaba Cloud</fullName>
+                    <default>false</default>
+                    <label>Alibaba Cloud</label>
+                </value>
+                <value>
+                    <fullName>Amazon Web Services</fullName>
+                    <default>false</default>
+                    <label>Amazon Web Services</label>
+                </value>
+                <value>
+                    <fullName>Google Cloud Platform</fullName>
+                    <default>false</default>
+                    <label>Google Cloud Platform</label>
+                </value>
+                <value>
+                    <fullName>IBM Cloud</fullName>
+                    <default>false</default>
+                    <label>IBM Cloud</label>
+                </value>
+                <value>
+                    <fullName>JCloud/JD.com</fullName>
+                    <default>false</default>
+                    <label>JCloud/JD.com</label>
+                </value>
+                <value>
+                    <fullName>Microsoft Azure</fullName>
+                    <default>false</default>
+                    <label>Microsoft Azure</label>
+                </value>
+                <value>
+                    <fullName>Private/On-Premises</fullName>
+                    <default>false</default>
+                    <label>Private/On-Premises</label>
+                </value>
+                <value>
+                    <fullName>SAP Cloud Platform</fullName>
+                    <default>false</default>
+                    <label>SAP Cloud Platform</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_Company_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Company</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSS_Company_URL__c</fullName>
+        <label>Company URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PSS_CreatedDate_dt__c</fullName>
+        <label>CreatedDate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PSS_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSS_Expected_Date_of_Completion_dt__c</fullName>
+        <label>Expected Date of Completion</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PSS_IOTG_Business_Unit_Nm__c</fullName>
+        <label>IOTG Business Unit</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ISD</fullName>
+                    <default>false</default>
+                    <label>ISD</label>
+                </value>
+                <value>
+                    <fullName>RBHE</fullName>
+                    <default>false</default>
+                    <label>RBHE</label>
+                </value>
+                <value>
+                    <fullName>VMC</fullName>
+                    <default>false</default>
+                    <label>VMC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_Internal_Division_Mapping_Nm__c</fullName>
+        <label>Internal Division Mapping</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CSP RRK</fullName>
+                    <default>false</default>
+                    <label>CSP RRK</label>
+                </value>
+                <value>
+                    <fullName>ISV</fullName>
+                    <default>false</default>
+                    <label>ISV</label>
+                </value>
+                <value>
+                    <fullName>DSS-Video</fullName>
+                    <default>false</default>
+                    <label>DSS-Video</label>
+                </value>
+                <value>
+                    <fullName>ISD</fullName>
+                    <default>false</default>
+                    <label>ISD</label>
+                </value>
+                <value>
+                    <fullName>RSD</fullName>
+                    <default>false</default>
+                    <label>RSD</label>
+                </value>
+                <value>
+                    <fullName>Aggregators</fullName>
+                    <default>false</default>
+                    <label>Aggregators</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_LastModifiedDate_dt__c</fullName>
+        <label>LastModifiedDate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PSS_Market_Value_Txt__c</fullName>
+        <label>Market Value</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSS_Other_Industry_Nm__c</fullName>
+        <label>Other Industry</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Agriculture</fullName>
+                    <default>false</default>
+                    <label>Agriculture</label>
+                </value>
+                <value>
+                    <fullName>Banking/Financial Services</fullName>
+                    <default>false</default>
+                    <label>Banking/Financial Services</label>
+                </value>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Energy</fullName>
+                    <default>false</default>
+                    <label>Energy</label>
+                </value>
+                <value>
+                    <fullName>Gaming &amp; Entertainment</fullName>
+                    <default>false</default>
+                    <label>Gaming &amp; Entertainment</label>
+                </value>
+                <value>
+                    <fullName>Government</fullName>
+                    <default>false</default>
+                    <label>Government</label>
+                </value>
+                <value>
+                    <fullName>Health &amp; Life Sciences</fullName>
+                    <default>false</default>
+                    <label>Health &amp; Life Sciences</label>
+                </value>
+                <value>
+                    <fullName>Hospitality</fullName>
+                    <default>false</default>
+                    <label>Hospitality</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_Partner_Type_Nm__c</fullName>
+        <label>Partner Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Aggregators</fullName>
+                    <default>false</default>
+                    <label>Aggregators</label>
+                </value>
+                <value>
+                    <fullName>ISV</fullName>
+                    <default>false</default>
+                    <label>ISV</label>
+                </value>
+                <value>
+                    <fullName>DSS</fullName>
+                    <default>false</default>
+                    <label>DSS</label>
+                </value>
+                <value>
+                    <fullName>3rd Party</fullName>
+                    <default>false</default>
+                    <label>3rd Party</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_Phone__c</fullName>
+        <label>Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>PSS_Primary_Use_Case_Nm__c</fullName>
+        <label>Primary Use Case</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Asset &amp; Operations Optimization</fullName>
+                    <default>false</default>
+                    <label>Asset &amp; Operations Optimization</label>
+                </value>
+                <value>
+                    <fullName>Control Optimization &amp; Autonomy</fullName>
+                    <default>false</default>
+                    <label>Control Optimization &amp; Autonomy</label>
+                </value>
+                <value>
+                    <fullName>Energy Monitoring &amp; Management</fullName>
+                    <default>false</default>
+                    <label>Energy Monitoring &amp; Management</label>
+                </value>
+                <value>
+                    <fullName>Environment Monitoring</fullName>
+                    <default>false</default>
+                    <label>Environment Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Human Wellness Monitoring</fullName>
+                    <default>false</default>
+                    <label>Human Wellness Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Interactive Media</fullName>
+                    <default>false</default>
+                    <label>Interactive Media</label>
+                </value>
+                <value>
+                    <fullName>Logistics &amp; Tracking</fullName>
+                    <default>false</default>
+                    <label>Logistics &amp; Tracking</label>
+                </value>
+                <value>
+                    <fullName>Machine Condition Monitoring</fullName>
+                    <default>false</default>
+                    <label>Machine Condition Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Product Inspection</fullName>
+                    <default>false</default>
+                    <label>Product Inspection</label>
+                </value>
+                <value>
+                    <fullName>Situational Monitoring</fullName>
+                    <default>false</default>
+                    <label>Situational Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_Prioritization_Nm__c</fullName>
+        <label>Prioritization</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_Region_For_Solution_Nm__c</fullName>
+        <label>Region For Solution</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Africa/Middle East</fullName>
+                    <default>false</default>
+                    <label>Africa/Middle East</label>
+                </value>
+                <value>
+                    <fullName>Europe</fullName>
+                    <default>false</default>
+                    <label>Europe</label>
+                </value>
+                <value>
+                    <fullName>Americas</fullName>
+                    <default>false</default>
+                    <label>Americas</label>
+                </value>
+                <value>
+                    <fullName>Southeast Asia</fullName>
+                    <default>false</default>
+                    <label>Southeast Asia</label>
+                </value>
+                <value>
+                    <fullName>Asia/Pacific/Japan</fullName>
+                    <default>false</default>
+                    <label>Asia/Pacific/Japan</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>Australia/New Zealand</fullName>
+                    <default>false</default>
+                    <label>Australia/New Zealand</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_SolutionId_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Solution Id</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>OIR Config tables</relationshipLabel>
+        <relationshipName>SolutionIds</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PSS_Solution_Description_Txt__c</fullName>
+        <label>Solution Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PSS_Solution_Provider_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Provider Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSS_Solution_Title_Txt__c</fullName>
+        <label>Solution Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PSS_Solution_Vertical_Nm__c</fullName>
+        <label>Solution Vertical</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>Smart City</fullName>
+                    <default>false</default>
+                    <label>Smart City</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Industrial/Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Industrial/Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSS_Target_Application_On_Txt__c</fullName>
+        <label>Target Application On</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>OIR Config table</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PSS_Access_Request_Status_Nm__c</columns>
+        <columns>PSS_Email__c</columns>
+        <columns>PSS_Solution_Provider_Name_Txt__c</columns>
+        <columns>PSS_Solution_Title_Txt__c</columns>
+        <columns>PSS_Solution_Vertical_Nm__c</columns>
+        <columns>PSS_Solution_Description_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>OIR-{0000}</displayFormat>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>OIR Config tables</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>

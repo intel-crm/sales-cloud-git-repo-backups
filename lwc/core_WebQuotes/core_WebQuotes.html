@@ -1,0 +1,70 @@
+<template>
+    <div class="slds-page-header" style="border: 1px solid #D3D3D3;">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <lightning-icon
+                icon-name="custom:custom93"
+                title="Web Quotes"
+                size="small"
+              ></lightning-icon>
+            </div>
+            <div class="slds-media__body slds-p-top_xx-small">
+              <div class="slds-page-header__name slds-page-header__name-title">
+                <h1>
+                  <span class="strong-text" style="font-size:16px;"
+                    >Web Quotes {countWebqoute}</span>
+                </h1>
+              </div>
+            </div>
+          </div>
+          <template if:false={noData}>
+            <p class="slds-page-header__name-meta slds-p-top_x-small">
+              {itemCount}
+            </p>
+          </template>
+        </div>
+      </div>
+    </div>
+    <template if:true={bQuotesErrorFlag}>
+      <div class="slds-box">
+        <div class="slds-align_absolute-center">
+          <div
+            class="slds-notify slds-notify_alert slds-alert_error"
+            style="--slds-c-alert-color-background: #cc0000;"
+            role="alert"
+          >
+            <lightning-icon
+              icon-name="utility:error"
+              alternative-text="Error"
+              title="Error"
+              size="small"
+              style="--slds-c-icon-color-foreground: white;"
+            ></lightning-icon>
+            &nbsp;
+            <h2 style="text-align: left;">
+              <p class="strong-text">Error :</p>
+              {bQuotesErrorMessage}
+            </h2>
+            <br />
+          </div>
+          <br /><br />
+        </div>
+        <br />
+      </div>
+    </template>
+    <template if:false={noData}>
+      <div style="border: 1px solid #D3D3D3;">
+        <lightning-datatable
+          key-field="id"
+          hide-checkbox-column="true"
+          show-row-number-column
+          data={webQuotes}
+          columns={columns}
+          column-widths-mode="auto"
+        >
+        </lightning-datatable>
+      </div>
+    </template>
+  </template>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Escalation_CCFB_Read_Only_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Budget Escalation CCFB Read Only All</label>
+        <sharedTo>
+            <group>Core_MDF_CCFB_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Budget</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000KywA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Escalation_CCF_Read_Only_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Budget_Escalation CCF Read Only All</label>
+        <sharedTo>
+            <group>Core_MDF_CCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Budget</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaSe</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Escalation_DCF_Read_Only_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Budget Escalation DCF Read Only All</label>
+        <sharedTo>
+            <group>Core_MDF_DCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Budget</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaSZ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Budget_Escalation_SPCF_Read_Only_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Budget Escalation SPCF Read Only All</label>
+        <sharedTo>
+            <group>Core_MDF_SPCF_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Budget</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaUp</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_All_CCP_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of Escalation records to All CCP Internal - Read/Write</description>
+        <label>Escalation All CCP Internal</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Escalation_Name_txt__c</field>
+            <operation>notEqual</operation>
+            <value>Null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_CCP_CCFB_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of escalation records to CCFB All Internal based on CCFB program - Read/Write</description>
+        <label>Escalation CCP CCFB All</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFB_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000KywA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_CCP_CCF_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of escalation records to CCF All Internal based on CCF program - Read/Write</description>
+        <label>Escalation CCP CCF All</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaSe</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Escalation - CCP Claim Case Reviewer Internal</description>
+        <label>Escalation - CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Escalation_Name_txt__c</field>
+            <operation>notEqual</operation>
+            <value>Null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_CCP_DCF_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of escalation records to DCF All Internal based on DCF program - Read/Write</description>
+        <label>Escalation CCP DCF All</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaSZ</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Escalation_CCP_SPCF_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing of escalation records to CCF All Internal based on CCF program - Read/Write</description>
+        <label>Escalation CCP SPCF All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>contains</operation>
+            <value>0Pk1J000000CaUp</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

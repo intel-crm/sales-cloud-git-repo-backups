@@ -1,0 +1,52 @@
+<aura:component></aura:component>
+<!-- IPA2.0 + US TWC4497-1631 -->
+
+<!-- extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+        <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'large' || v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+                <div class="slds-progress-wrapper">
+                        <ul class="progressbar">
+                                <li class="checkmark progressbar-success"><lightning:icon iconName="utility:success" size="x-small" /><p>{!$Label.c.PMP_CreateOffering_CreateYourOffering}</p></li>
+                                <li class="checkmark progressbar-success"><lightning:icon iconName="utility:success" size="x-small" /><p>{!$Label.c.PMP_CreateOffering_SubmitYourOffering}</p></li>
+                                <li class="active progressbar-success"><p>{!$Label.c.PMP_CreateOffering_IntelReviewsOffering}</p></li>
+                                <li><p>{!$Label.c.PMP_CreateOffering_UpdateForApproval}</p></li>
+                                <li><p>{!$Label.c.PMP_CreateOffering_OfferingPostedMarketplace}</p></li>
+                                <li><p>{!$Label.c.PMP_CreateOffering_OfferingTranslation}</p></li>
+                        </ul>
+                </div>
+        </aura:if>
+        <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'medium' || v.appState.Settings.currentSldsBreakPoint == 'small'}">
+                <div class="slds-progress slds-p-horizontal_medium slds-progress_vertical">
+                        <ol class="slds-progress__list">
+                        <li class="slds-progress__item">
+                                <div class="slds-progress__marker checkmark">
+                                                <lightning:icon iconName="utility:success" size="x-small" />
+                                </div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_CreateYourOffering}</div>
+                        </li>
+                        <li class="slds-progress__item">
+                                <div class="slds-progress__marker checkmark">
+                                                <lightning:icon iconName="utility:success" size="x-small" />
+                                </div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_SubmitYourOffering}</div>
+                        </li>
+                        <li class="slds-progress__item slds-is-active">
+                                        <div class="slds-progress__marker">
+                                                <span class="slds-assistive-text">Active</span>
+                                        </div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_IntelReviewsOffering}</div>
+                                </li>
+                                <li class="slds-progress__item">
+                                <div class="slds-progress__marker"></div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_UpdateForApproval}</div>
+                                </li>
+                                <li class="slds-progress__item">
+                                <div class="slds-progress__marker"></div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{!$Label.c.PMP_CreateOffering_OfferingPostedMarketplace}</div>
+                                </li>
+                        </ol>
+                        <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" role="progressbar">
+                                <span class="slds-assistive-text">Progress: 25%</span>
+                        </div>
+                </div>
+</aura:if>
+</aura:component> -->

@@ -1,0 +1,95 @@
+.THIS {
+  width: 100%;
+  position: relative;
+  background-color: var(--white);
+}
+
+
+.THIS .sliderButton {
+  background-color: rgba(0,0,0,0.5);
+  cursor: pointer;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  width: 40px;
+  z-index:1;
+}
+.THIS .linkList {
+  width: 100%;
+  overflow: hidden;
+  position:relative;
+}
+.THIS .linkList:before {
+  display: block;
+  content: '';
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  position: absolute;
+  border-bottom: 1px solid t(lightGray);
+}
+
+.THIS .innerLinkList {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+  -webkit-overflow-scrolling: touch;
+  transition: transform .2s ease-in-out;
+  
+}
+.THIS .linkItem {
+  text-align: center;
+  flex: 0 0 auto;
+  line-height: 2em;
+  white-space: nowrap;
+  position: relative;
+  font-weight: 400;
+  padding: 0 20px;
+}
+.THIS .linkItem:after {
+  display: block;
+  content: '';
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  position: absolute;
+}
+
+.THIS .linkItem:hover:after {
+  background-color: t(digitalBlue);
+  height: .125rem;
+  transition: height 300ms;
+}
+
+.THIS .linkItem.active {
+  color: t(darkGray);
+}
+
+.THIS .linkItem.active:after {
+  background-color: t(digitalBlue);
+  height: 0.313em;
+}
+
+.THIS .sliderButton:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.THIS .sliderButton:first-child {
+  left: 0;
+}
+
+.THIS .sliderButton:last-child {
+  right: 0;
+}
+
+.THIS .sliderButton .slds-icon {
+  height: 1em;
+  transform: translateY(0.5em);
+  width: 1em;
+}
+
+.THIS .sliderButton .slds-icon use {
+  fill: t(white);
+}

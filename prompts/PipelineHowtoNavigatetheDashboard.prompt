@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Pipeline How to Navigate the Dashboard</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/analytics-dashboard-navigation-and-functionality/#General_Dashboard_Navigation_and_Functionality</actionButtonLink>
+        <body>&lt;p&gt;Navigate to various dashboard data sets using the tabs across the top:&amp;nbsp;&lt;strong&gt;Overview, Team Opportunity, Breakout, At Risk, Opportunity Creation, KPI&amp;nbsp;&lt;/strong&gt;and&amp;nbsp;&lt;strong&gt;Pipeline Confidence.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filters and Toggles:&amp;nbsp;&lt;/strong&gt;Data provided in the visual section can be filtered by using filters and toggles on the left hand side of the dashboard:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;When using the data filters on the left hand side, you can toggle between a Weighted (Wtd) and Unweighted (Unwtd) or by Calendar Year or Fiscal Year.&amp;nbsp;&amp;nbsp;&lt;/li&gt;&lt;li&gt;Various filters are provided on the left to isolate data.&amp;nbsp;&lt;strong&gt;IMPORTANT&lt;/strong&gt;:&lt;strong&gt;&amp;nbsp;If you establish filters, it will be applied to all the different dashboard tabs within the Pipeline Management Dashboard. Either change back or click refresh button.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;When filters are added, the dashboard header will show as “Modified” and identify the filters in place.&lt;span style=&quot;color: rgb(255, 255, 255);&quot;&gt;&amp;nbsp;Remember, these filters will remain when you switch data set tabs.&amp;nbsp;&lt;/span&gt;&amp;nbsp;&lt;strong&gt;Click the refresh button to release the filters.&lt;/strong&gt;&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Visual Toggles&lt;/strong&gt;: Within the visual section, you can:&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Use Toggles to change the view&lt;/li&gt;&lt;li&gt;Filter the content by clicking on the graphs. When you click a section, it will remain in color and other data points will be in grey.&amp;nbsp;Click the data point again to return to all&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Opportunities list&lt;/strong&gt;: A list/table of Opportunities, that are included in your graphical data, is provided below the visual section.&amp;nbsp;If you hover over the Opportunity or Account name, you can open the record or perform certain operations.&amp;nbsp;&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Pipeline How to Navigate the Dashboard</description>
+        <displayType>DockedComposer</displayType>
+        <header>Pipeline</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Pipeline How to Navigate the Dashboard</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>How to Navigate the Dashboard</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6328093630112</videoLink>
+    </promptVersions>
+</Prompt>

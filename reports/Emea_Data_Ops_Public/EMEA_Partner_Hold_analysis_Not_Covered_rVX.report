@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Account.Core_Account_Cnt__c:SUM/User.User_Unique__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Ratio</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_1249027</developerName>
+        <masterLabel>Has open revenue?</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Account.Core_Open_Revenue_For_Account__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>No open revenue</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+            </sourceValues>
+            <value>Open revenue</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_30684249</developerName>
+        <masterLabel>ROLE</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <columns>
+        <field>BucketField_1249027</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_B2B_Entitlement__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermediate_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Partner_Alliance_Program__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Prime_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Group_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Group_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Preview__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Unified_Hierarchy_View__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Open_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Is_Opportunity_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_MDF_CoMarketingActive__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_PSG_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Channel_Program__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Maurits Tichelman&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Torsten Kahrmann&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Tal Elgar&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Simon Wilyman&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Elizabeth Collett&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Richard Peel&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Patricia Pozuelo Real&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Norberto Carrascal&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Jost Henning Eid&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Christine Harrison&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Paolo Righi&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Georgios Kardaras&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Tatiana Mingazova&quot;),
+&quot;Partners&quot;, 
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Sonja Pierer&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Stephanie Loock&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Simon Windsor&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Gosia Dzul&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Edwin Peters&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Katarzyna Bielak&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;GALIN DIMOV&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Kareem Eletreby&quot;),
+&quot;Digital Sales&quot;,
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Javier Galiana&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Stephanie GOHIER&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Jesus Sanchez Paniagua&quot;),
+&quot;Consumer&quot;,
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Steve Shakespeare&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Andreas Timm&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Ivana Jordanova&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Dieter Hoffend&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;ERWAN MONTAUX&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Helene De La Gastine&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Iain Beckingham&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Pippa Chick&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Sven Beckmann&quot;),
+&quot;EPS&quot;, 
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Jean-Laurent Philippe&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Sarah Robinson&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Antonino Albarran&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Adam Roe&quot;),
+&quot;EMEA CTO&quot;,
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Matthew Ward&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Karsten Fels&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Joachim Aertebjerg&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Marie Pinon&quot;),
+&quot;EMEA COE&quot;,
+&quot;Not EMEA sales team&quot;))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>EMEA Sales Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Other: Not Covered (with Owner)</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Deactivated__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Partner Led</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Core_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Malhar Thakkar,Ryan Olson,Paolo Righi,Simon Windsor,Simon Wilyman</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Department__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Altera,PSG,RealSense</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Uncovered account,A&amp;E Account Owner,Alexey Ivanov</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Primary_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Not Covered Account</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Account_Owner_Department__c</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>USERS.NAME</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>EMEA Partner Hold analysis - Not Covered</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

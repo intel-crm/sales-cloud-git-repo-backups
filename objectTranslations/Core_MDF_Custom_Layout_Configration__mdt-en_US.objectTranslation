@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom Layout Configration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Layout Configrations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Buttons Config Details --></label>
+        <name>Core_MDF_Buttons_Config_Details_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Core_MDF_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Status --></label>
+        <name>Core_MDF_Record_Status_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tab Icons Details --></label>
+        <name>Core_MDF_Tab_Icons_Details_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

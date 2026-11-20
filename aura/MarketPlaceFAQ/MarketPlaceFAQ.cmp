@@ -1,0 +1,64 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="headingLabel" type="string" default="{!$Label.c.PMP_MP_FAQ_Heading}" description="Heading label" />
+  <aura:attribute name="allMarketPlaceHelpLabel" type="string" default="{!$Label.c.PMP_All_Marketplace_Help}" description="Help link label" />
+  <aura:attribute name="data" type="object[]" description="Format of data is 'question' (String), 'answer' (Rich Text), and 'qid' (String)"/>
+  <aura:attribute name="dataFromAEMWS" type="object[]" description="Format of data is 'question' (String), 'answer' (Rich Text), and 'qid' (String)"/>
+  <aura:attribute name="paddingHorizontal" type="boolean" default="true" description="Specify padding for different page layouts"/>
+  <aura:attribute name="inverse" type="boolean" default="false" description="Specify variant for page layout width. Locked in page container if set to 'true'." />
+  <aura:attribute name="theme" type="string" default="default" description="Currently there are two FAQ themes: default, white" />
+  <aura:attribute name="pageName" type="string" description="Holds the current page name"/>
+  <aura:attribute name="loggedInInfo" type="boolean" default="true" description="boolean value true for 
+                               logged in user and false for ananyomous user"/>
+
+  <aura:attribute name="faqTitle" type="string" />
+  <aura:attribute name="siteMapUrl" type="string" />
+  <aura:attribute name="helpUrl" type="string" />
+  <aura:attribute name="helpLabel" type="string" />
+  <aura:attribute name="showSiteMap" type="boolean" default="false" />
+    
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+  <aura:handler event="c:MarketplacePageEvent"  action="{!c.handlePageEvent}"/>
+  <c:coreIntcSso aura:id="ssoLibrary" />
+ 
+  <aura:if isTrue="{!!empty(v.data)}">
+    <div class="{! 'slds-p-vertical_medium' + (v.paddingHorizontal ? ' slds-p-horizontal_medium' : '') + (v.inverse ? ' whiteBg' : '')}">
+      <div class="{!(v.inverse ? 'container' : '')}">
+        <h2 class="h4 slds-p-vertical_large">{!v.headingLabel}<a name="faq" aria-label="{!$Label.c.PMP_FAQ_Section}"></a></h2>
+
+        <c:MarketPlaceAccordion allowMultipleSectionsOpen="true" theme="{!v.theme}" class="boldHeading">
+          <aura:iteration items="{!v.data}" var="faqset" indexVar="idx">
+                <aura:iteration items="{!faqset.questions}" var="faq" indexVar="idx">
+                      <c:MarketPlaceAccordionSection name="{!'faq-' + idx}" label="{!faq.question}" aura:id="accordion" id="{!faq.qid}">
+                          <div class="slds-p-vertical_medium">
+                            <lightning:formattedRichText value="{!faq.answer}" /> <!-- mgdanies: force migration update 5/4/20 -->
+                          </div>
+                  </c:MarketPlaceAccordionSection>  
+                </aura:iteration>
+            </aura:iteration>
+        </c:MarketPlaceAccordion>
+        
+      
+        <aura:iteration items="{!v.dataFromAEMWS}" var="faqWS" indexVar="idx">  
+        {!faqWS}
+        </aura:iteration>
+    
+
+        <div class="slds-p-vertical_medium">
+          <c:IntelLink url="{!v.helpUrl}">
+            {!v.helpLabel} <span class="fa-angle-right"></span>
+          </c:IntelLink>   
+        
+          <!-- <aura:if isTrue="{!v.showSiteMap}">
+            <c:IntelLink url="{!v.siteMapUrl}" class="slds-float_right siteMap">
+              {!$Label.c.PMP_SiteMap_Link} <span class="fa-angle-right"></span>
+            </c:IntelLink>
+          </aura:if> -->
+        </div>
+
+      </div>
+    </div>
+
+  </aura:if>
+</aura:component>

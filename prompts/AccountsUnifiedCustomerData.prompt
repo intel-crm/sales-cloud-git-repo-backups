@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Unified Customer Data</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/account-details/#Unified_Customer_Data</actionButtonLink>
+        <body>&lt;p&gt;Unified Customer Data (UCD) fields are available from an account record on a separate tab called &lt;strong&gt;Unified Customer&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;UCD provides a foundational customer hierarchy and data attributes to serve as the one master source for Customer. When used with data sets, UCD fields provide a simplified customer view, and better organized account structure by grouping many records to one customer. The Unified Hierarchy is a common, core hierarchy designed to enable a connected customer view across SMG systems. It is comprised of customer hierarchy values that include:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Unified Global Customer (representing the parent org.)&lt;/li&gt;&lt;li&gt;Unified Intermediate Customer (representing subsidiaries)&lt;/li&gt;&lt;li&gt;Unified Country Customer (representing branch locations)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The &lt;strong&gt;Unified ID&lt;/strong&gt; field and all other &lt;strong&gt;Unified &lt;/strong&gt;fields are searchable using the &lt;strong&gt;Search &lt;/strong&gt;area (example search term: &lt;em&gt;Customer Name + Global or Customer Name + Intermediate&lt;/em&gt; or simply the Unified ID). When performing a search, you can also identify which accounts are associated to a Unified Customer by using the &lt;strong&gt;Unified Hierarchy&lt;/strong&gt; column within the search results or by using the &lt;strong&gt;Refine By &lt;/strong&gt;search filters&amp;nbsp;(click on &lt;strong&gt;Accounts&lt;/strong&gt; on the &lt;strong&gt;Search Results&lt;/strong&gt; panel to access these filters).&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Unified Customer Data</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Unified Customer Data</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Unified Customer Data (UCD)</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

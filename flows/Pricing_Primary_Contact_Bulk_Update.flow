@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Pricing_Invoke_Method_to_Update_Primary_Contact</name>
+        <label>Invoke Method to Update Primary Contact</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <actionName>Pricing_BulkUpdatePrimarycontact_Batch</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Pricing_Error_Verification</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>newPrimaryContactInput</name>
+            <value>
+                <elementReference>Pricing_New_Primary_Contact_Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>oldPrimaryContactInput</name>
+            <value>
+                <elementReference>Pricing_Old_Primary_Contact_Email</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pricing_BulkUpdatePrimarycontact_Batch</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>Pricing_Error_Msg</assignToReference>
+            <name>output</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Pricing_Error_Verification</name>
+        <label>Error Verification</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Pricing_Display_Success_Msg</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Pricing_Verify_the_Error_Msg</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Pricing_Error_Msg</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pricing_Display_Error</targetReference>
+            </connector>
+            <label>Is Error Msg</label>
+        </rules>
+    </decisions>
+    <description>Flow to replace Primary contacts on Quote in Bulk.</description>
+    <environments>Default</environments>
+    <interviewLabel>Primary Contact Bulk Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Primary Contact Bulk Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Perform_Bulk_Update_on_Primary_Contact</name>
+        <label>Perform Bulk Update on Primary Contact</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Pricing_Invoke_Method_to_Update_Primary_Contact</targetReference>
+        </connector>
+        <fields>
+            <name>Pricing_Old_Primary_Contact_Email</name>
+            <dataType>String</dataType>
+            <fieldText>Provide the old Primary Contact Email to be replaced</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <validationRule>
+                <errorMessage>&lt;p&gt;{!Pricing_Email_Validation_Msg}&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND(REGEX( {!Pricing_Old_Primary_Contact_Email} , &quot;(\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)(;\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)*&quot;))</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>Pricing_New_Primary_Contact_Email</name>
+            <dataType>String</dataType>
+            <fieldText>Provide the new Primary Contact Email to be updated</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <validationRule>
+                <errorMessage>&lt;p&gt;{!Pricing_Email_Validation_Msg}&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND(REGEX( {!Pricing_New_Primary_Contact_Email} , &quot;(\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)(;\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)*&quot;))</formulaExpression>
+            </validationRule>
+        </fields>
+        <nextOrFinishButtonLabel>Perform Bulk Action</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Pricing_Display_Error</name>
+        <label>Display Error</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Error_Msg</name>
+            <fieldText>&lt;p&gt;{!Pricing_Error_Msg}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Pricing_Display_Success_Msg</name>
+        <label>Display Success Msg</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Display_Success_Msg</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(23, 43, 77);&quot;&gt;Updates are currently processing. When complete, you will receive an email with the results of the update.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Perform_Bulk_Update_on_Primary_Contact</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Pricing_Email_Validation_Msg</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Please provide a valid Email Address&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>Pricing_Error_Msg</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <classificationThreshold>0.45751980973996315</classificationThreshold>
+    <label>Maximize Modified Case Status</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Duration</label>
+        <name>Core_MDF_Activity_Start_Date__c_formula</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Brand</label>
+        <name>Core_MDF_Brand__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Ad Run Duration</label>
+        <name>Core_MDF_Ad_Run_Start_Date__c_formula</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Category</label>
+        <name>Core_MDF_Activity_Category__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Requested Amount (USD)</label>
+        <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
+        <type>Number</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Country/Region</label>
+        <name>Core_MDF_Country_Location_nm__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Program</label>
+        <name>Core_MDF_Program__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account (Company)</label>
+        <name>Core_MDF_AccountCompany__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Media Vehicle</label>
+        <name>Core_MDF_Media_Vehicle__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Target Audience</label>
+        <name>Core_MDF_Target_Audience__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Type</label>
+        <name>Core_MDF_Activity_Types__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Region</label>
+        <name>Core_MDF_Region_Cd__c</name>
+        <type>Text</type>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Modified Case Status</label>
+        <name>Core_MDF_AccountCompany__c_formula</name>
+        <type>Text</type>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Core_MDF_AccountCompany__c_formula</predictedField>
+    <predictionType>Classification</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <trainingMetrics>{&quot;r2&quot;:0.391313814028594,&quot;nobs&quot;:9664,&quot;nullDeviance&quot;:10732.717749938285,&quot;residualDegreesOfFreedom&quot;:7636,&quot;type&quot;:&quot;BinomialGLM&quot;,&quot;gini&quot;:0.7471819491369598,&quot;meanPerClassError&quot;:0.21932233737947485,&quot;logloss&quot;:0.3625641995962149,&quot;auc&quot;:0.8735909745684799,&quot;residualDeviance&quot;:7007.640849795641,&quot;confusionMatrices&quot;:{&quot;thresholds&quot;:[0.45751980973996315],&quot;tns&quot;:[6958],&quot;tps&quot;:[1261],&quot;totalPositives&quot;:1612,&quot;totalNegatives&quot;:8052},&quot;rmse&quot;:0.33493785771053214,&quot;aic&quot;:11063.64084979564,&quot;nullDegreesOfFreedom&quot;:9663,&quot;mse&quot;:0.11218336852772066}</trainingMetrics>
+</DiscoveryAIModel>

@@ -1,0 +1,130 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component ></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif , Intel Clear;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            .borderClass{
+            border: 1px solid black;
+}-->
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+            
+        <!-- </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body>-->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Thank you for your submission to the Intel® Partner Showcase"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        Hello,<br/><br/>
+                        Your submission is in process and will be ready for your review shortly (Approximately 1 hour, depending on the complexity of your offering).<br/><br/>
+                    </td>
+                </tr> -->
+                
+                <!-- Offering URL START-->
+                <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        <apex:outputLink value="{!loginHomePageURL}" styleClass="intelBlue">Sign into Intel® Partner Showcase</apex:outputLink>&nbsp;to review your&nbsp;<apex:outputLink value="{!PublishedOfferingURL}" styleClass="intelBlue">Offering </apex:outputLink> and take the next steps to complete the publishing process.<br/><br/>
+                    </td>
+                </tr> -->
+				<!-- Offering URL END-->
+                
+                <!-- Questions/Contact START-->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact END-->
+                
+                <!-- <tr>    
+                    <td style="padding-left:50px;">
+                        Thank you,<br/><br/>
+                        Your Intel® Partner Alliance team <br/> <br/>
+                    </td>
+                </tr> -->
+                
+                <!-- <tr>    
+                    <td style="padding-left:50px;">
+                        Would you like to submit another solution?<br/>
+                        <apex:outputLink value="{!createSolutionURL}" styleClass="intelBlue">
+                            Submit another solution
+                        </apex:outputLink><br/>
+                    </td>
+                </tr> -->
+                <!-- Next Best Step -->
+                <!-- Email shared with -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        This email may be shared with others in your organization. You may see the full list of who the solution is shared with in the Solution Summary page.<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink><br/> <br/>
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+            <!-- </table>-->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+     
+</apex:component>  -->

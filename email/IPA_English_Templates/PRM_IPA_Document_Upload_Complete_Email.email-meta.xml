@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload Complete Email</name>
+    <style>none</style>
+    <subject>Intel Partner Alliance: Business License File Uploaded</subject>
+    <textOnly>Hi,  
+
+The Business License File is shared for following registration requests and available for your review:  
+
+{hyperlinks}  
+
+Thank you</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

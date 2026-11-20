@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Internal_SPCF_User</name>
+    </customPermissions>
+    <description>Internal User for SPCF Program</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CCP Internal SPCF User</label>
+    <license>Salesforce</license>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundAllocation.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+</PermissionSet>

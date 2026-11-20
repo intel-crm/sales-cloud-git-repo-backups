@@ -1,0 +1,71 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "6f1e2912-b0dc-4939-a797-ce21a468ce6a",
+  "label" : "Design Registration L5 Product Mapping Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "637b9d98-4925-4121-b037-256b452735ee",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3d502346-4221-4548-9467-95afe53b6618",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "0537ed9b-e41e-4ac3-a30e-94ac9ee63418",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "7323334e-2345-4b17-83c7-813c8cc75bbc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b3bd2eee-8d22-4335-81cf-52a80acdc7ca",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "9c4f6405-03a5-491e-a6cd-9abbdfbcbaa0",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ff3fcacf-80e8-4811-aa99-066f28c088da",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4956abb3-61ad-4b66-976a-3644555372fd",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "1057e8fa-56bd-4864-a3dd-d9ba2f482c4e",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "type" : "view",
+  "viewType" : "detail-a4c"
+}

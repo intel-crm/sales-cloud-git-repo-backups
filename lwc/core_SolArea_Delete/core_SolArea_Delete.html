@@ -1,0 +1,21 @@
+<template>
+<lightning-quick-action-panel header="Please Mark Solution for Delete">
+    <lightning-record-edit-form record-id={recordId}
+                                object-api-name={objectApiName}
+                                onsuccess={handleSuccess}>
+                       
+                                <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                <lightning-output-field field-name="Name"></lightning-output-field>
+                                </div>
+                                <div class="slds-col">
+                                <lightning-input-field type="checkbox" field-name="isDeleted__c"></lightning-input-field>
+                                </div>                                    
+                                </div>
+                                <div class="leftbutton" style="float: right">
+                                    <lightning-button variant="neutral" label="Cancel"></lightning-button>
+        <lightning-button variant="brand" class="slds-m-left_x-small" label="Delete" type="submit"></lightning-button>
+                                </div>  
+    </lightning-record-edit-form>
+</lightning-quick-action-panel>
+</template>

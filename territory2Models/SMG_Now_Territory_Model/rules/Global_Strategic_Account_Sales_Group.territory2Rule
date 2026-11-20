@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <name>Global Strategic Account Sales Group</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.Core_Sales_Groups__c</field>
+        <operation>equals</operation>
+        <value>Global Strategic Account Sales Group,Global Accounts Sales Group</value>
+    </ruleItems>
+</Territory2Rule>

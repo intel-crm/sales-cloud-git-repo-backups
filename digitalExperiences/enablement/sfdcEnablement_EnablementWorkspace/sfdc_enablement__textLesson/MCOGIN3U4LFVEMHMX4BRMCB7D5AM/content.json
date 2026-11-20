@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Deployed Solution & Continued Support",
+  "contentBody" : {
+    "description" : "Opportunity is won and its now time to kick off into production! ",
+    "sections" : [ {
+      "content" : "<div>Now that the project is kicked off, your customer will still have sustaining support from the TSS and Habana BU teams. Once the solution is deployed at the customer, the support and sustaining model moves into a production environment. The process for sustaining support is the same through the Jira Service Desk.</div>",
+      "keyConcept" : "Project Kick Off to Production",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1
+  },
+  "urlName" : "deployed-solution-continued-support"
+}

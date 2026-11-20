@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Cancelled</masterLabel>
+        <translation>已取消</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Closed</masterLabel>
+        <translation>已結案</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Declined</masterLabel>
+        <translation>已拒絕</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Draft</masterLabel>
+        <translation>草稿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress</masterLabel>
+        <translation>進行中</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress Pending Approval</masterLabel>
+        <translation>進行中，等待批准</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress Pending Review</masterLabel>
+        <translation>進行中，等待審查</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress Revision Required</masterLabel>
+        <translation>進行中，需要修訂</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pending Approval</masterLabel>
+        <translation>待核准</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pending Review</masterLabel>
+        <translation>審核未決</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Planned</masterLabel>
+        <translation>已規劃的</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revision Required</masterLabel>
+        <translation>需要修訂</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

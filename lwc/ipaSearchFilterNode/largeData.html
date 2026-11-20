@@ -1,0 +1,100 @@
+<template>
+
+    <template if:false={isDraft}>
+        <template for:each={childFilters} for:item="filter">
+            <div key={filter.key}
+                role="button"
+                tabindex="0"
+                aria-label={filter.label}
+                data-modal-data={filter.key}
+                onclick={handleOpenModal}
+                onkeydown={handleOpenModalAccessibility} 
+                class="slds-p-vertical_x-small">
+                <span class="link-text">{filter.label}</span>
+                <span class="slds-m-left_x-small">({filter.count})</span>
+            </div>
+        </template>
+    </template>
+
+    <template if:true={isDraft}>
+        <template for:each={childFilters} for:item="filter">
+            <div class="search-filter-node" key={filter.id} data-count={filter.count}>
+                <div class="search-filter-node-checkbox-container slds-p-vertical_xx-small">
+                    <span class="cursor-pointer slds-m-right_small"
+                        role="treeitem"
+                        tabindex="0"
+                        aria-label={labels.toggleFilterTreeNodeAria}
+                        aria-controls={filter.key}
+                        aria-expanded={filter.expanded}
+                        data-visible={filter.hasVisibleChildren}
+                        data-key={filter.key}
+                        data-expanded={filter.expanded}
+                        onclick={handleToggleExpandFilter}
+                        onkeydown={handleToggleExpandFilterAccessibility}>
+                        <lightning-icon icon-name={filter.expandedIcon} size="small"></lightning-icon>
+                    </span>
+                    <div class="search-filter-node-checkbox-label-wrapper">
+                        <label class="search-filter-node-checkbox-container">
+                            <lightning-input
+                                type="checkbox"
+                                data-variant="dark"
+                                data-filter-id={filter.value}
+                                class={checkboxClasses}
+                                checked={filter.selected}
+                                value={filter.value}
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <div class="search-filter-label">
+                                <span data-highlighted={filter.highlighted}>{filter.label}</span>
+                            </div>
+                            <template if:true={filter.prerelease}>
+                                <div class="search-filter-prerelease">
+                                    {labels.prerelease}
+                                </div>
+                            </template>
+                        </label>
+                        <div class="search-filter-label-container" data-show={filter.hasVisibleChildren}>
+                            <div class="search-filter-cta-container">
+                                <span role="button" tabindex="0"
+                                    class="link-text text-upcase text-bold text-small"
+                                    data-filter-id={filter.value}
+                                    data-action="select"
+                                    aria-label={labels.selectAll}
+                                    onclick={handleSelectOrDeselectAll}
+                                    onkeydown={handleSelectOrDeselectAllAccessibility}>
+                                    {labels.selectAll}
+                                </span>
+                                <span class="slds-p-horizontal_xx-small color-light-gray">|</span>
+                                <span role="button" tabindex="0"
+                                    class="link-text text-upcase text-bold text-small"
+                                    data-filter-id={filter.value}
+                                    data-action="deselect"
+                                    aria-label={labels.deselectAll}
+                                    onclick={handleSelectOrDeselectAll}
+                                    onkeydown={handleSelectOrDeselectAllAccessibility}>
+                                    {labels.deselectAll}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <template if:true={filter.rendered}>
+                    <div class="large-data-node slds-m-left_small" data-expanded={filter.expanded} id={filter.key}>
+                        <c-ipa-search-filter-node
+                            filter={filter}
+                            role={filter.ariaRole}
+                            aria-label={filter.label}
+                            is-draft={isDraft}
+                            search-params={searchParams}
+                            search-response-filters={searchResponseFilters}
+                            show-pre-release={showPreRelease}
+                            onsetrendering={handleSetRendering}
+                            draft-filters={draftFilters}>
+                        </c-ipa-search-filter-node>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </template>
+
+</template>

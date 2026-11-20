@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionSubtype>Action</actionSubtype>
+    <description>to set line item status inactive if user has edit permission</description>
+    <label>Inactivate LineItem</label>
+    <lightningWebComponent>core_IPS_InActive_Product_Access_LineItem_LEX</lightningWebComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningWebComponent</type>
+</QuickAction>

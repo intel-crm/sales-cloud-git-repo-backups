@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_POL</name>
+    <style>none</style>
+    <subject>Witamy w programie Intel® Partner Alliance</subject>
+    <textOnly>Witamy w programie Intel® Partner Alliance
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Witamy! {!Account.Name} jest teraz partnerem w programie Intel® Partner Alliance.
+Zacznij rozwijać swoją firmę poprzez wykorzystanie zalet programu, obejmujących:
+
+Obsługę klienta firmy Intel oferującą globalną pomoc w zakresie wszelkich problemów technicznych, dotyczących gwarancji i programu partnerskiego
+Szkolenia i seminaria internetowe z wiodącym w branży programem nauczania, oferowane przez Intel® Partner University
+Rozległą sieć partnerów i rynek do współpracy nad rozwiązaniami opartymi na danych
+Ułatwiony marketing dzięki dostosowywalnym materiałom i narzędziom dla sprzedawców
+Dostęp do Intel® Developer Zone
+
+
+Zaloguj się na stronie https://crmqa3-intelcloudcrm.cs37.force.com/ipa, by wyświetlić swoje korzyści oraz nimi zarządzać.
+
+Zaloguj się na stronie https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary, by wyświetlić swoją rolę.
+
+
+Historia partnerów firmy Intel w zakresie innowacji jest długa. Za pomocą programu Intel® Partner Alliance pomożemy Ci przyspieszyć opracowywanie rozwiązań dla gospodarki opartej na danych. Razem możemy stwarzać nowe, niezwykłe możliwości dzięki połączeniu sił, wprowadzaniu innowacji i wspólnemu rozwojowi.
+Odwiedź stronę https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html, by uzyskać dalszą pomoc dotyczącą rozpoczęcia korzystania z programu.
+
+Dziękujemy.
+Twój zespół Intel® Partner Alliance
+
+Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.pl
+Prywatność | Pliki cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

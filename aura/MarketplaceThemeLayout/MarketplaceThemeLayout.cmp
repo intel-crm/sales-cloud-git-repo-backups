@@ -1,0 +1,38 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Marketplace Custom Theme Layout">
+  <aura:attribute name="devCssBundle" type="String" default="minified" />
+	<aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+  <aura:attribute name="portal" type="String" access="global"/>
+  <aura:attribute name="coreIntcErrorConfig" type="string" />
+  
+  <!-- Uses Static Resource For Styleshseets: PsMpResources -->
+  <aura:if isTrue="{!v.devCssBundle=='files'}">
+    <ltng:require styles="{!join(',',
+        $Resource.PMP_Resources + '/styles/accordions.css',
+        $Resource.PMP_Resources + '/styles/alerts.css',
+        $Resource.PMP_Resources + '/styles/buttons.css',
+        $Resource.PMP_Resources + '/styles/colors.css',
+        $Resource.PMP_Resources + '/styles/headings.css',
+        $Resource.PMP_Resources + '/styles/icons.css',
+        $Resource.PMP_Resources + '/styles/inputs.css',
+        $Resource.PMP_Resources + '/styles/links.css',
+        $Resource.PMP_Resources + '/styles/responsive.css',
+        $Resource.PMP_Resources + '/styles/site-global-icons-ipa-codes.css',
+        $Resource.PMP_Resources + '/styles/typography.css',
+        $Resource.PMP_Resources + '/styles/variables.css'
+    )}" />
+  </aura:if>
+  <aura:if isTrue="{!v.devCssBundle=='minified-sourcemaps'}">
+    <ltng:require styles="{!$Resource.PMP_Resources + '/styles-min/marketplace-sm.min.css'}"></ltng:require>
+  </aura:if>
+  <aura:if isTrue="{!v.devCssBundle=='minified'}">
+    <ltng:require styles="{!$Resource.PMP_Resources + '/styles-min/marketplace.min.css'}"></ltng:require>
+  </aura:if>
+  <div class="marketplaceTheme">
+      <c:IntelCoreCommunity />
+      <c:coreIntcErrorHandler config="{!v.coreIntcErrorConfig}" />
+      <c:MarketplaceUnsupportedBrowser />
+      <div class="mainContentArea">
+          {!v.body}
+      </div>
+  </div>
+</aura:component>

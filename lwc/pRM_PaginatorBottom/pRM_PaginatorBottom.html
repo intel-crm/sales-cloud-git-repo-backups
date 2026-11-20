@@ -1,0 +1,22 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item>
+            <lightning-button variant="brand" label={fBtnLbl} icon-name="utility:chevronleft" onclick={handleFirst}
+                disabled={showFirstButton}>
+            </lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button variant="brand" label={prevBtnLbl} icon-name="utility:back" onclick={handlePrevious}
+                disabled={showFirstButton} class="slds-m-left_x-small"></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="grow"></lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button variant="brand" label={nextBtnLbl} icon-name="utility:forward" icon-position="right"
+                onclick={handleNext} disabled={showLastButton}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button variant="brand" label={lBtnLbl} icon-name="utility:chevronright" icon-position="right"
+                onclick={handleLast} disabled={showLastButton} class="slds-m-left_x-small"></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Digital Media</masterLabel>
+        <translation>Médias numériques</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event</masterLabel>
+        <translation>Événement</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Funded Headcount</masterLabel>
+        <translation>Employés financés</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Incentive</masterLabel>
+        <translation>Offre incitative</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lead Cultivation</masterLabel>
+        <translation>Développement des prospects</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Legacy Media</masterLabel>
+        <translation>Médias traditionnels</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retail Activation</masterLabel>
+        <translation>Activation commerciale</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Activation</masterLabel>
+        <translation>Activation technique</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training</masterLabel>
+        <translation>Formation</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Support Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Support Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- BU --></label>
+        <name>Core_BU__c</name>
+        <picklistValues>
+            <masterLabel>AI TSS Support</masterLabel>
+            <translation><!-- AI TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG ECG TSS Support</masterLabel>
+            <translation><!-- CCG ECG TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG TSS Support​</masterLabel>
+            <translation><!-- CCG TSS Support​ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DAIS TSS Support</masterLabel>
+            <translation><!-- DAIS TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI TSS Support</masterLabel>
+            <translation><!-- DCAI TSS Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTG TSS Support​</masterLabel>
+            <translation><!-- NTG TSS Support​ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>Core_OSM_Record_Type__c</name>
+        <picklistValues>
+            <masterLabel>COE</masterLabel>
+            <translation><!-- COE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSA</masterLabel>
+            <translation><!-- CSA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSS</masterLabel>
+            <translation><!-- TSS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Center of Excellence --></label>
+        <name>Core_Opp_Center_of_Excellence__c</name>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence (AI)</masterLabel>
+            <translation><!-- Artificial Intelligence (AI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Service Providers</masterLabel>
+            <translation><!-- Comms Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Services Industry</masterLabel>
+            <translation><!-- Financial Services Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Life Sciences</masterLabel>
+            <translation><!-- Health and Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sustainability</masterLabel>
+            <translation><!-- Sustainability --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_Opportunity_Support_Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>Core_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo Region --></label>
+        <name>Geo_Region__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Opportunity Support Mappings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

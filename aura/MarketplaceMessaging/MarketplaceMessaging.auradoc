@@ -1,0 +1,20 @@
+<aura:documentation>
+    <aura:description>
+        <p>ISG Messaging Component</p>
+        
+        <!-- LAST UPDATED DATE / VERSION -->
+        <p>Last Updated: 6/03/2019</p>
+        <p>CurrentVersion: 1.0</p>
+        <hr/>
+        <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+        <!--Added as part of US613071-->
+        <p>Given the Record ID and User ID the messages will be retrieved from the aura handler. The User ID will then be matched with the series of messages to signify who the current user is when rendering the messages.
+            It will also be used when posting a message. 
+        </p>
+        <!-- CHANGELOG ADD ANY UPDATES HERE -->
+        <hr/>
+        <p>Change Log</p>
+        
+        <!-- CHANGELOG -->
+    </aura:description>
+</aura:documentation>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ERPM-SF-MAPPING SETTING</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ERPM-SF-MAPPING SETTINGS</value>
+    </caseValues>
+    <fields>
+        <label><!-- Entitlement Rank --></label>
+        <name>Entitlement_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mappting_Type --></label>
+        <name>Mappting_Type__c</name>
+        <picklistValues>
+            <masterLabel>Address</masterLabel>
+            <translation><!-- Address --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit</masterLabel>
+            <translation><!-- Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biz Org Type</masterLabel>
+            <translation><!-- Biz Org Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EngagementStatus</masterLabel>
+            <translation><!-- EngagementStatus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPA Partner Specialty</masterLabel>
+            <translation><!-- IPA Partner Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Role</masterLabel>
+            <translation><!-- Partner Role --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship_Entitlement</masterLabel>
+            <translation><!-- Relationship_Entitlement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationships</masterLabel>
+            <translation><!-- Relationships --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier</masterLabel>
+            <translation><!-- Tier --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SF-KeyValue --></label>
+        <name>SF_KeyValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- eRPM-EngagementCodes --></label>
+        <name>eRPM_EngagementCodes__c</name>
+        <picklistValues>
+            <masterLabel>CSPx2</masterLabel>
+            <translation><!-- CSPx2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA</masterLabel>
+            <translation><!-- ISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP</masterLabel>
+            <translation><!-- ITP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- eRPM-KeyValue --></label>
+        <name>eRPM_KeyValue__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

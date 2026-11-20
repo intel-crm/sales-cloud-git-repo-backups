@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>Core_AAQC_Commissions_Inquiry_Details</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Ask Commissions: Object to Store some  Information from the Case</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Commision_Info_FieldSet</fullName>
+        <description>Used in Core_AAQC_Case_Ask_Commissions_Layout page</description>
+        <displayedFields>
+            <field>Core_AAQC_Case_Detail__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_AAQC_Subject__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_AAQC_Resolution_Comments__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Commision_Info_FieldSet</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Core_AAQC_Commision_Info_FieldSet</fullName>
+        <description>Used in Core_AAQC_Case_Ask_Commissions_Layout page</description>
+        <displayedFields>
+            <field>Core_AAQC_Case_Detail__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_AAQC_Subject__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_AAQC_Resolution_Comments__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Commision_Info_FieldSet</label>
+    </fieldSets>
+    <fields>
+        <fullName>Change_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/&apos;+Core_AAQC_Case__c+&apos;/a?retURL=&apos;+Id, &apos;Click Here&apos;, &apos;_self&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Change Owner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Allow_My_Manager_to_See__c</fullName>
+        <formula>Core_AAQC_Case__r.Core_AAQC_Allow_My_Manager_to_See__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Allow my manager to interact with case</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Cancellation_Reason__c</fullName>
+        <description>Used To Store Cancellation Reason Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Core_AAQC_Case__r.Core_AAQC_Cancellation_Reason__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>When creating a new case keep as --None--
+When editing a case to cancel it change as appropriate</inlineHelpText>
+        <label>Cancellation Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Case_Detail__c</fullName>
+        <description>Ask Commissions- Case Details to specify details of Category selected</description>
+        <inlineHelpText>Please provide as much detail as possible to help us answer you quickly, 
+such as: 
+-Commissions month/relevant dates 
+-Pay element(s) involved 
+-Account(s) 
+-Other data points e.g. Quota 
+-Commissions cloud report or screen being used</inlineHelpText>
+        <label>Case Details</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>9</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Case_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Core_AAQC_Case__r.Owner:Queue.QueueName !=null,Core_AAQC_Case__r.Owner:Queue.QueueName,  Core_AAQC_Case__r.Owner:User.LastName+&apos; &apos;+Core_AAQC_Case__r.Owner:User.FirstName )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Case_Record_Type__c</fullName>
+        <description>Used To Store Record Type Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Record Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>Commissions_Cases</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Category__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Core_AAQC_Case__r.Core_AAQC_Category__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>1. Commissions Calculation/Accuracy 
+2. Pay Plan, Terms &amp; Conditions, Policies 
+3. Due Dates, Payment Timing 
+4. Setup-Elements, Quota, Assignments 
+5. How do I, System Issue 
+6. Performance to Quota, Credited Results 
+7. RD-Calculation, Turn off/on</inlineHelpText>
+        <label>Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Commissions_Severity__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_AAQC_Case__r.Core_AAQC_Commissions_Severity__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Commissions Severity</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Date_Time_Closed__c</fullName>
+        <description>Used To StoreClosed Date Of  Ask Commissions Case</description>
+        <formula>Core_AAQC_Case__r.ClosedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Date/Time Closed</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Date_Time_Opened__c</fullName>
+        <description>Used To Store Created Date Of  Ask Commissions Case</description>
+        <formula>Core_AAQC_Case__r.CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Date/Time Opened</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_On_Behalf_Of__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/&apos;+Core_AAQC_Case__r.Core_AAQC_On_Behalf_Of__c, Core_AAQC_Case__r.Core_AAQC_On_Behalf_Of__r.FirstName + &apos; &apos;+ Core_AAQC_Case__r.Core_AAQC_On_Behalf_Of__r.LastName,&quot;_blank &quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>On Behalf Of</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Rally_ID__c</fullName>
+        <description>Used To Store Rally ID Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Core_AAQC_External_Reference_No__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rally ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Related_Case_Comments__c</fullName>
+        <description>Used To Store Related Case Comments Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Core_AAQC_Related_Case_Notes__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Related Case Comments</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Related_Case_ID__c</fullName>
+        <description>Used To Store Related Case ID# Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Core_AAQC_Related_Case_Number__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Related Case ID#</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Requestor_Department__c</fullName>
+        <description>Used To Store Requestor Department Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Requestor_WWID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Requestor Department</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Requestor_Manager__c</fullName>
+        <description>Used To Store Requestor Manager Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Core_AAQC_Requestor_Manager__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Requestor Manager</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Requestor_User_Region__c</fullName>
+        <description>Used To Store Requestor User Region Of  Ask Commissions Case</description>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Core_AAQC_Requestor_User_Region__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Requestor User Region</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Requestor_WWID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Case__r.Requestor_WWID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Requestor WWID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Resolution_Comments__c</fullName>
+        <description>Ask Commissions- to Provide comments related to Resolution Selected in Resolution field</description>
+        <label>Resolution Comments</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Resolution_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Core_AAQC_Case__r.Core_AAQC_Resolution_Type__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Resolution Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Status__c</fullName>
+        <description>Used To Store The Status Of Case</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_AAQC_Case__r.Status)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_AAQC_Subject__c</fullName>
+        <description>Ask Commissions:To Store The Subject Of The Case</description>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Commissions Inquiry</label>
+    <nameField>
+        <displayFormat>CC-{0000000000}</displayFormat>
+        <label>Commissions Inquiry #</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Commissions Inquiries</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_AAQC_Back_To_Commissions_Home_Page</fullName>
+        <availability>online</availability>
+        <description>Ask Commissions - Button to take user back to landing page</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Back To Commissions Home Page</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>window.location.href = encodeURI(&quot;{!$Label.Core_AAQC_Landing_Page_Link}&quot;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_AAQC_Edit</fullName>
+        <availability>online</availability>
+        <description>Clicking on this to redirect user to visualforce of Case in Edit form</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Edit</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/Core_AAQC_Case_Ask_Commissions_Layout?id={!Core_AAQC_Commissions_Case__c.Core_AAQC_CaseId__c}&amp;TypeOfPAge=Edit&amp;retURL={!Core_AAQC_Commissions_Case__c.Core_AAQC_CaseId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Edit</fullName>
+        <availability>online</availability>
+        <description>Clicking on this to redirect user to visualforce of Case in Edit form</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Edit</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/Core_AAQC_Case_Ask_Commissions_Layout?id={!Core_AAQC_Commissions_Case__c.Core_AAQC_CaseId__c}&amp;TypeOfPAge=Edit</url>
+    </webLinks>
+</CustomObject>

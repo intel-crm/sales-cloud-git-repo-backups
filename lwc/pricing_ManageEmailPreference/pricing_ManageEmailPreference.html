@@ -1,0 +1,66 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-06-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="User Preferences" icon-name="standard:email">
+        <template lwc:if={isSpinner}>
+            <!-- <div class="spinnerPadding">-->
+            <lightning-spinner alternative-text="Loading..." size="medium" variant="brand">
+            </lightning-spinner>
+            <!--</div>-->
+        </template>
+        <template lwc:else>
+            <template lwc:if={isTender}>
+                <div class="slds-p-horizontal_small" style="margin: 1rem;">
+                    <div class="slds-grid slds-gutters" style=" margin-bottom: 1rem; border-bottom: solid 1px;">
+                        <div class="slds-col slds-size_10-of-12">
+                            <span>Notification</span>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12">
+                            <span>Opt In/Out</span>
+                        </div>
+                    </div>
+                    <template for:each={notificationOptMap} for:item="notification">
+                        <div key={notification.id} class="slds-grid slds-gutters" style=" margin-bottom: 1rem;">
+                            <div class=" slds-col slds-size_10-of-12">
+                                <span>{notification.notificationName}</span>
+                                <template if:true={notification.errorMsg}>
+                                    <br />
+                                    <span style="color: red;font-size: 10px;">{notification.errorMsg}</span>
+                                </template>
+                            </div>
+                            <div class="slds-col slds-size_2-of-12">
+                                <template if:true={notification.optInOut}>
+                                    <lightning-input type="toggle" style="width: fit-content;" checked
+                                        name={notification.notificationName} onchange={onOptinToggle}
+                                        message-toggle-active="" message-toggle-inactive="">
+                                    </lightning-input>
+                                </template>
+                                <template if:false={notification.optInOut}>
+                                    <lightning-input type="toggle" style="width: fit-content;"
+                                        name={notification.notificationName} onchange={onOptinToggle}
+                                        message-toggle-active="" message-toggle-inactive="">
+                                    </lightning-input>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                    <div class="slds-col" style="text-align: center;">
+                        <lightning-button variant="brand" label="Save" title="Save" onclick={handleSave}
+                            class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="slds-table_edit_container" style=" text-align: center; margin-top: 5px;">
+                    There are no Notification to opt-In/opt-out
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+
+</template>

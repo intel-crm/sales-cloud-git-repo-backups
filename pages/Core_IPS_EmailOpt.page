@@ -1,0 +1,61 @@
+<apex:page controller="Core_IPS_EmailOptController" sidebar="false">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Submit" action="{!SubmitChoice}" />
+                <apex:commandButton value="Cancel" action="{!Cancel}" />
+            </apex:pageBlockButtons>
+            <!--<apex:pageBlockSection title="{!$Label.Core_IPS_PreferencesMessage_SecHeader}" collapsible="true" columns="1">
+                <apex:pageBlockSectionItem >
+                <apex:outputlabel value="{!$Label.Core_IPS_EmailOptMessage}" style="align:center;" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>-->
+            
+            <apex:pageBlockSection title="{!$Label.Core_IPS_EmailPreferences_SecHeader}" rendered="{!EmailOptIn}" collapsible="true" columns="1">
+                <apex:pageBlockSectionItem >
+                <apex:outputlabel value="{!$Label.Core_IPS_EmailOptMessage}" style="align:center;" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Core_IPS_EmailOptIn}" />
+                </apex:pageBlockSectionItem>
+                <!--<apex:pageBlockSectionItem >
+
+                </apex:pageBlockSectionItem>--->
+                <apex:pageBlockSectionItem >
+                    <apex:selectcheckboxes value="{!SelectedChoice}">
+                        <apex:selectOptions value="{!options}" />
+                    </apex:selectcheckboxes>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="{!$Label.Core_IPS_EmailPreferences_SecHeader}" rendered="{!EmailOptOut}" collapsible="true" columns="1">
+                <apex:pageBlockSectionItem >
+                <apex:outputlabel value="{!$Label.Core_IPS_EmailOptMessage}" style="align:center;" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Core_IPS_EmailOptOut}" />
+                </apex:pageBlockSectionItem>
+                <!--<apex:pageBlockSectionItem >
+
+                </apex:pageBlockSectionItem>--->
+                <apex:pageBlockSectionItem >
+                    <apex:selectcheckboxes value="{!SelectedChoice}">
+                        <apex:selectOptions value="{!options}"></apex:selectOptions>
+                    </apex:selectcheckboxes>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="{!$Label.Core_IPS_TimeZone_SecHeader}"  collapsible="true" columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Core_IPS_TimeZoneMessage}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:inputField id="usertimeZone" value="{!Usr.TimeZoneSidKey }"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

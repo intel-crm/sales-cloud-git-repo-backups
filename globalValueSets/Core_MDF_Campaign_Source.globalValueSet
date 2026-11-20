@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Campaign</fullName>
+        <default>false</default>
+        <label>Campaign</label>
+    </customValue>
+    <customValue>
+        <fullName>Target Setting</fullName>
+        <default>false</default>
+        <label>Target Setting</label>
+    </customValue>
+    <masterLabel>Campaign Source</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

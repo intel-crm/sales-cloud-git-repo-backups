@@ -1,0 +1,39 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "b671eebf-5d0d-467f-843b-2db6c02e5da7",
+  "label" : "Marketplace Event Related List",
+  "regions" : [ {
+    "id" : "1a86ffc3-0da4-4253-888c-7ea27a92371f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "1c3a1d62-83c7-4452-8c4d-eb8c589a0719",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2ac47f76-d06f-4ec6-8454-69880e3cb436",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "4f93c549-47b0-438c-b492-578d9e90a23c",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a6R"
+}

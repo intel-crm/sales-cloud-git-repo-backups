@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Registration Tracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Registration Trackers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- AGD ID Updated --></label>
+        <name>PRM_AGD_ID_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account__c</name>
+        <relationshipLabel><!-- Registration Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- GetProfile API Called --></label>
+        <name>PRM_Attempted_for_IPA__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM CallOut for Dup Check --></label>
+        <name>PRM_CIM_CallOut_for_Dup_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Step --></label>
+        <name>PRM_Current_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>PRM_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Log --></label>
+        <name>PRM_Integration_Log__c</name>
+        <relationshipLabel><!-- Registration Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Last Milestone DateTime --></label>
+        <name>PRM_Last_Milestone_DateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Log Entries --></label>
+        <name>PRM_Log_Entries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>PRM_Registration_Type__c</name>
+        <picklistValues>
+            <masterLabel>Admin Invite</masterLabel>
+            <translation><!-- Admin Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Admin Partner Invite</masterLabel>
+            <translation><!-- Admin Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto Granted IPA for DZP</masterLabel>
+            <translation><!-- Auto Granted IPA for DZP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Add</masterLabel>
+            <translation><!-- Bulk Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Invite</masterLabel>
+            <translation><!-- Bulk Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Partner Invite</masterLabel>
+            <translation><!-- External Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite</masterLabel>
+            <translation><!-- Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Registration</masterLabel>
+            <translation><!-- Self Registration --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Registration --></label>
+        <name>PRM_Registration__c</name>
+        <relationshipLabel><!-- Registration Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SBC Callout Time --></label>
+        <name>PRM_SBC_Callout_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Step Number --></label>
+        <name>PRM_Step_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Time Taken between Previous Milestone and current Milestone --></help>
+        <label><!-- Time Taken --></label>
+        <name>PRM_Time_Difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Loggedin Time --></label>
+        <name>PRM_User_Loggedin_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_contact__c</name>
+        <relationshipLabel><!-- Registration Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>Stage__c</name>
+        <picklistValues>
+            <masterLabel>ACR Assigned</masterLabel>
+            <translation><!-- ACR Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACR Not Assigned</masterLabel>
+            <translation><!-- ACR Not Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACR Yet to Assign</masterLabel>
+            <translation><!-- ACR Yet to Assign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ack_Mail_Sent</masterLabel>
+            <translation><!-- Ack_Mail_Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ack_Mail_UnSent</masterLabel>
+            <translation><!-- Ack_Mail_UnSent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Admin Reg Initiated</masterLabel>
+            <translation><!-- Admin Reg Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved with Error</masterLabel>
+            <translation><!-- Approved with Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID Creation Failed</masterLabel>
+            <translation><!-- Azure B2B ID Creation Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID Creation Pending</masterLabel>
+            <translation><!-- Azure B2B ID Creation Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID Creation Retried</masterLabel>
+            <translation><!-- Azure B2B ID Creation Retried --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID Creation Successful</masterLabel>
+            <translation><!-- Azure B2B ID Creation Successful --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID creation Retry Failure</masterLabel>
+            <translation><!-- Azure B2B ID creation Retry Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID creation Retry Pending</masterLabel>
+            <translation><!-- Azure B2B ID creation Retry Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azure B2B ID creation Retry Success</masterLabel>
+            <translation><!-- Azure B2B ID creation Retry Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit Assigned</masterLabel>
+            <translation><!-- Benefit Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit Entitlement Assigned</masterLabel>
+            <translation><!-- Benefit Entitlement Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit Entitlement Not Assigned</masterLabel>
+            <translation><!-- Benefit Entitlement Not Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit Entitlement Yet to Assign</masterLabel>
+            <translation><!-- Benefit Entitlement Yet to Assign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit Not Assigned</masterLabel>
+            <translation><!-- Benefit Not Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit_Yet_to_Assign</masterLabel>
+            <translation><!-- Benefit_Yet_to_Assign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Invite Initiated</masterLabel>
+            <translation><!-- Bulk Invite Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DUP Check Failure</masterLabel>
+            <translation><!-- DUP Check Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DUP Check Pending</masterLabel>
+            <translation><!-- DUP Check Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DUP Check Success</masterLabel>
+            <translation><!-- DUP Check Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV Completed</masterLabel>
+            <translation><!-- EV Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV Pending</masterLabel>
+            <translation><!-- EV Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV Sent</masterLabel>
+            <translation><!-- EV Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV UnSent</masterLabel>
+            <translation><!-- EV UnSent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entitlement Assigned</masterLabel>
+            <translation><!-- Entitlement Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entitlement Not Assigned</masterLabel>
+            <translation><!-- Entitlement Not Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entitlement Yet to Assign</masterLabel>
+            <translation><!-- Entitlement Yet to Assign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Partner Invite Initiated</masterLabel>
+            <translation><!-- External Partner Invite Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GetProfile</masterLabel>
+            <translation><!-- GetProfile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest redemption complete</masterLabel>
+            <translation><!-- Guest redemption complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest redemption pending</masterLabel>
+            <translation><!-- Guest redemption pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invite Completed</masterLabel>
+            <translation><!-- Invite Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invite Pending</masterLabel>
+            <translation><!-- Invite Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invite Sent</masterLabel>
+            <translation><!-- Invite Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invite UnSent</masterLabel>
+            <translation><!-- Invite UnSent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Assigned</masterLabel>
+            <translation><!-- OPID Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Not Assigned</masterLabel>
+            <translation><!-- OPID Not Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite Initiated</masterLabel>
+            <translation><!-- Partner Invite Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registration Initiated</masterLabel>
+            <translation><!-- Registration Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registration Submitted</masterLabel>
+            <translation><!-- Registration Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC Callout Made</masterLabel>
+            <translation><!-- SBC Callout Made --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscription Added</masterLabel>
+            <translation><!-- Subscription Added --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscription Not Added</masterLabel>
+            <translation><!-- Subscription Not Added --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscription Yet to Assign</masterLabel>
+            <translation><!-- Subscription Yet to Assign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Logged into Partner Portal</masterLabel>
+            <translation><!-- User Logged into Partner Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Yet to login</masterLabel>
+            <translation><!-- User Yet to login --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for Approval</masterLabel>
+            <translation><!-- Waiting for Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welcome Email Sent</masterLabel>
+            <translation><!-- Welcome Email Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welcome Email Unsent</masterLabel>
+            <translation><!-- Welcome Email Unsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welcome Email Yet to Send</masterLabel>
+            <translation><!-- Welcome Email Yet to Send --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

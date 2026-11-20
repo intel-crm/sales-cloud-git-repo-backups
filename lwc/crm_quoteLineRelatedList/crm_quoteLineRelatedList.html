@@ -1,0 +1,19 @@
+<template>
+    <div class="borderaround">
+    <div class="slds-border_bottom slds-p-around_medium bg">
+        <div class="slds-card__header slds-grid slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure"><lightning-icon size="small" icon-name="custom:custom93" alternative-text="custom:custom93" title="custom:custom93"></lightning-icon></div>
+           <template if:true={objname}> <h2 class="slds-card__header-title">Financial Incentive Quote <template if:true={qlLength}>({qlsize})</template> </h2></template>
+           <template if:false={objname}><h2 class="slds-card__header-title">Financial Incentive Quote Line <template if:true={qlLength}>({qlsize})</template></h2></template>
+        </div>
+    </div>
+    <template if:false={qlLength}>
+            <lightning-datatable
+                    key-field="Id"
+                    data={copyQuoteline}
+                    columns={columns}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+    </template>
+    </div>
+</template>

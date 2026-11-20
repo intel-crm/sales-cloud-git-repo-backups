@@ -1,0 +1,12 @@
+.banner-carousel-content-wrapper {
+  width: 100%;
+}
+
+.ipaBannerCarousel-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0;
+  width: 100%;
+}

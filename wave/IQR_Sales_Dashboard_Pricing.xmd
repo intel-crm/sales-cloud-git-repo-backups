@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <field>Pricing_Volume_Excep_1.SystematicTenderLimitation_Account.Name</field>
+        <isDerived>false</isDerived>
+        <label>Account</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <measures>
+        <field>Quantities_and_volum_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Won Quantity</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>Quantities_and_volum_1.C</field>
+        <isDerived>false</isDerived>
+        <label>Claimed Quantity</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>Quantities_and_volum_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Approved Quantity</label>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>Quantities_and_volum_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Requested Quantity</label>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_9_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Quote Line Count</label>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_11_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Quote Line Count</label>
+        <sortIndex>5</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_12_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Quote Line Count</label>
+        <sortIndex>6</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_11_3.A</field>
+        <isDerived>false</isDerived>
+        <label>Quote Line Count</label>
+        <sortIndex>7</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_10_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Quote Line Count</label>
+        <sortIndex>8</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>IQR_Sales_Dashboard_Pricing</waveVisualization>
+</WaveXmd>

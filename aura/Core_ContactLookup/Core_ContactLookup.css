@@ -1,0 +1,28 @@
+.THIS .searchFooterSec{
+    margin-top : 10px;
+    margin-left: 200px;
+}
+
+.THIS .noResultFoundSec{
+    margin-left: 25px;
+}
+
+.THIS .createContactBtnCls{
+}
+
+.THIS .loadEntitlementBtnCls{
+}
+
+.THIS .displayCmp {
+    display: block;
+}
+
+
+.THIS .hideCmp {
+    display: none;
+}
+
+.THIS .displayButton {
+    left: 475px;
+    top: 17px;
+}

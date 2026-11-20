@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Reminder to disposition Open Partner Leads</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_Partner_Lead_PastDue</letterhead>
+    <name>Partner Lead Disposition Reminder</name>
+    <style>freeForm</style>
+    <subject>Past-due Intel leads need your prompt attention</subject>
+    <textOnly>Dear Partner:
+
+Recently, we notified you about a number of potential business opportunities that came from your partnership with Intel. Our records indicate that you have not yet followed up on some of these leads.
+
+Here are the leads that are awaiting your action:
+
+(Lead.FirstBucket)(Lead.SecondBucket)(Lead.ThirdBucket) 
+Please click the following link to access these leads now:
+https://partners.intel.com 
+
+For training or support on how to handle these contacts, visit the following link: 
+https://partners.seek.intel.com/SupportPage 
+
+Thank you for acting on these past-due contacts. We look forward to sending additional qualified leads your way.
+
+©Intel Corporation. All rights reserved.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

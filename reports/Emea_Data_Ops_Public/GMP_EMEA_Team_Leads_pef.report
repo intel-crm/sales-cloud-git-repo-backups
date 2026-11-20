@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Age_of_Lead__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Time_Unqualified_to_SAL__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Time_SAL_to_SQL__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_SQL_Count__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Adib Rajji,Agl Gallego Lopez,Aissa Sow,Aj Alabduljabbar,Alex Santos,Alexander Pashkevich,Amit Golani,Anders Huge,Andrea Piccioni,Andrea Toigo,Andrzej Jankowski,Anna Hermansson,Anne Mieke Driessen,Arek Hruszowiec,Artur Dlugosz,Biagio Gurrieri,Bogdan Rauta,Carol Razzouk,Cem Isik,Claudio Bellini,Davide Torrice,Dcolomor Colomo Romeo,DJ Gianduso,Ediz Altun,Frans Pieterse,Fredrik Tjernberg,George M Rimikis,Griet Aertgeerts,Guy Janssens,Hannes Steyn,Hasse Weinzierl,Hussein ElBadry,Ilan Hochman,Ivan Alvarez Peña,Jaakko Kiviluoto,Jacques Cesbron,Jafar Abdelhamid,Jaime Forero,Joao Fidalgo,Johan Liden,Jonas Astrom,Jorge Cordova,Jorge Lang Palmero,KARIM BIBI TRIKI,Katarzyna Chentko,Kim Sterkendries,Kobus De Beer,Luc Marquet,Luuk Verink,Maayan Ronen,Marco Iacopini,Marco Rosso,Martin Meier,Martin Varbuchta,Mascha Mosorka,Matty Bakkeren,Mikael Borg,Milan Spalevic,Mirna Merhi,Nawras Sawsou,Nir Shafir,Nitesh Doolabh,Nour Zaki,Ofir Ben Yosef,Olabanji Womiloju,Paolo Ossola,Paolo R. Canepa,Paolo Righi,Patrick Denis,Patrick Messmer,Pawel Magott,Przemyslaw Papuzynski,Raúl Iglesias Camara,Ravza Bek,Rich Sutherland,Robert Adamski,Sameh Helmy,Samson Ihemekwele,Silvia Invernici,Silvio Biolatto,Sven Beckmann,Tasso Panagou,Thor Dahlstedt,Tiago Terrivel,Tom Schoemaker,Tomasz Hodakowski,Tommi Raitio,Twino Twinomugisha,Uri C Baron</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Henk Van Den Eeckhout,EMP of Milan Spalevic,EMP of Norberto Carrascal,EMP of Tommi Raitio,EMP of Artur Dlugosz,EMP of Colin MacHale,EMP of Mike Creutzer,EMP of Andrea Toigo,EMP of Mediha Kayacan,EMP of Sven Beckmann,EMP of Jacques Cesbron,EMP of Ali Kucuk,EMP of Krzysztof Jonak,EMP of Jesus Sanchez Paniagua,EMP of Anna Kazmierczak,EMP of Maurits Tichelman</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Valnea Andriani,Wojciech Bosek,Zaid Ghattas</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Ahmed Ibrahim,Aleksey Miroshnichenko,Alessandra Padovani,Alexey Belogortsev,Ali Kucuk,Amy Signorini,Andrea Luiselli,Andrzej Galan,Anna Kazmierczak,ANNA PATTERSON,Arnold Verhoeven,Bartek Piasecki,Bruno Riva,Capucine Bourges,Carey Williams,CLARE CLARKE,Colin MacHale,David Farrow,Elizabeth Collett,Erwin Van Meer,Gabi Maksymiuk,Georgios Kardaras,Gordon McGeachie,Heidi Skov,Henk Van Den Eeckhout,Ignacio Jimenez,Javier Galiana,Jesus Sanchez Paniagua,Joachim Aertebjerg,John Bradley,Koray Yildiz,Kris Rodolf,Krzysztof Jonak,Ledda Valdivieso,Lucas Wallet,Mahmut Meral,Massimo Pauletto,Mediha Kayacan,Mike Creutzer,MOHAMED FAHMY,Mustafa Abu Shanab,Nathan Reddy,Nicola Reina,Norberto Carrascal,Patricia Pozuelo Real,Pavel Plotitsyn,Peter Gleissner,Qaiser Waraich,Richard Peel,Sarah Munro,Serkan Civlik,Simone Lose,Torhild Wilberg,Videsha Proothveerajh</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalWeek</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GMP EMEA_Team_Leads (not inside sales)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

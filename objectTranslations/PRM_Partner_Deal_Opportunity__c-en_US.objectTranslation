@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Deal Opportunity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Deal Opportunities</value>
+    </caseValues>
+    <fields>
+        <label><!-- BU Segment --></label>
+        <name>PRM_BU_Segment__c</name>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOT/Edge</masterLabel>
+            <translation><!-- IOT/Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PC Client</masterLabel>
+            <translation><!-- PC Client --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cloud Value (ARR) #1 --></label>
+        <name>PRM_Cloud_Value_ARR_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cloud Value (ARR) #2 --></label>
+        <name>PRM_Cloud_Value_ARR_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Registered --></label>
+        <name>PRM_Date_Registered__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win Incentive - Total --></label>
+        <name>PRM_Deal_Win_Incentive_Total__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide Intel or End customer Deal account. --></help>
+        <label><!-- End Customer Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please provide Intel or End customer Deal account or Requested Account. --></errorMessage>
+            <informationalMessage><!-- End customer account record type should be Intel account or End Customer Deal Account or Requested Account --></informationalMessage>
+        </lookupFilter>
+        <name>PRM_End_Customer_Account__c</name>
+        <relationshipLabel><!-- Partner Deal Opportunities (End Customer Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Customer Country --></label>
+        <name>PRM_End_Customer_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>PRM_End_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Website --></label>
+        <name>PRM_End_Customer_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Budget --></label>
+        <name>PRM_Estimated_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Decision Date --></label>
+        <name>PRM_Estimated_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Software Value (ARR) --></label>
+        <name>PRM_Estimated_Software_Value_ARR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impartner ID --></label>
+        <name>PRM_Impartner_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel-Powered Cloud #1 --></label>
+        <name>PRM_Intel_Powered_Cloud_1__c</name>
+        <picklistValues>
+            <masterLabel>Gaudi-Based Public Cloud</masterLabel>
+            <translation><!-- Gaudi-Based Public Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Cloud</masterLabel>
+            <translation><!-- Public Cloud --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Intel-Powered Cloud #2 --></label>
+        <name>PRM_Intel_Powered_Cloud_2__c</name>
+        <picklistValues>
+            <masterLabel>Gaudi-Based Public Cloud</masterLabel>
+            <translation><!-- Gaudi-Based Public Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Cloud</masterLabel>
+            <translation><!-- Public Cloud --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Intel Product 1 --></label>
+        <name>PRM_Intel_Product_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Product 2 --></label>
+        <name>PRM_Intel_Product_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Product 3 --></label>
+        <name>PRM_Intel_Product_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Product 4 --></label>
+        <name>PRM_Intel_Product_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Product 5 --></label>
+        <name>PRM_Intel_Product_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Product Notes --></label>
+        <name>PRM_Intel_Product_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Value --></label>
+        <name>PRM_Intel_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM --></label>
+        <name>PRM_OEM__c</name>
+        <picklistValues>
+            <masterLabel>Cisco</masterLabel>
+            <translation><!-- Cisco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell</masterLabel>
+            <translation><!-- Dell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPE</masterLabel>
+            <translation><!-- HPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lenovo</masterLabel>
+            <translation><!-- Lenovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetApp</masterLabel>
+            <translation><!-- NetApp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pure Storage</masterLabel>
+            <translation><!-- Pure Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supermicro</masterLabel>
+            <translation><!-- Supermicro --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>PRM_Opportunity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Summary --></label>
+        <name>PRM_Opportunity_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Is ISV --></label>
+        <name>PRM_Partner_Account_Is_ISV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account --></label>
+        <name>PRM_Partner_Account__c</name>
+        <relationshipLabel><!-- Partner Deal Opportunities (Partner Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact --></label>
+        <name>PRM_Partner_Contact__c</name>
+        <relationshipLabel><!-- Partner Deal Opportunities (Partner Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product 1 - Projected Quantity --></label>
+        <name>PRM_Product_1_Projected_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 1 - Quantity Fulfilled --></label>
+        <name>PRM_Product_1_Quantity_Fulfilled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 2 - Projected Quantity --></label>
+        <name>PRM_Product_2_Projected_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 2 - Quantity Fulfilled --></label>
+        <name>PRM_Product_2_Quantity_Fulfilled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 3 - Projected Quantity --></label>
+        <name>PRM_Product_3_Projected_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 3 - Quantity Fulfilled --></label>
+        <name>PRM_Product_3_Quantity_Fulfilled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 4 - Projected Quantity --></label>
+        <name>PRM_Product_4_Projected_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 4 - Quantity Fulfilled --></label>
+        <name>PRM_Product_4_Quantity_Fulfilled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 5 - Projected Quantity --></label>
+        <name>PRM_Product_5_Projected_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product 5 - Quantity Fulfilled --></label>
+        <name>PRM_Product_5_Quantity_Fulfilled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Opportunity --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select Intel-Led opportunity --></errorMessage>
+            <informationalMessage><!-- Please search for Intel-Led Opportunity --></informationalMessage>
+        </lookupFilter>
+        <name>PRM_Sales_Opportunity__c</name>
+        <relationshipLabel><!-- Partner Deal Opportunities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>PRM_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Closed Lost</masterLabel>
+            <translation><!-- Closed Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 1: Registered</masterLabel>
+            <translation><!-- Stage 1: Registered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 2: Progressed</masterLabel>
+            <translation><!-- Stage 2: Progressed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 3: Closed Won</masterLabel>
+            <translation><!-- Stage 3: Closed Won --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- What is the Deployment Architecture? --></label>
+        <name>PRM_What_is_the_Deployment_Architecture__c</name>
+        <picklistValues>
+            <masterLabel>Cloud Only</masterLabel>
+            <translation><!-- Cloud Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hybrid</masterLabel>
+            <translation><!-- Hybrid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On-Prem Only</masterLabel>
+            <translation><!-- On-Prem Only --></translation>
+        </picklistValues>
+    </fields>
+    <sharingReasons>
+        <label><!-- Account Team Access --></label>
+        <name>Account_Team_Access</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Opportunity_Owner_Access --></label>
+        <name>Opportunity_Owner_Access</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

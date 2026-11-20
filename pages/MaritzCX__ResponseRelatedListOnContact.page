@@ -1,0 +1,124 @@
+<!-- This page is used to display Response related list on Contact details page 
+    Last Modified By: Ankur(24-Oct-2016) 
+-->
+<apex:page standardController="Contact" extensions="MaritzCX.ResponseRelatedListCon" sidebar="false" showHeader="false">
+    <apex:includeScript value="{!$Resource.MaritzCX__View_Response_Link}"/>
+    <script type="text/javascript">
+        //Function to open Visualizations page in window
+        function openDashboard(recordId){
+            recordId = encodeURI(recordId);
+            if(recordId!=''){
+                var pageName='visualizations';    
+                var screenWidth = window.screen.width;
+                var screenHeight = window.screen.height;
+                var windowWidth = screenWidth * (0.825);
+                var adjScrWidth;
+                var adjScrHeight;
+                adjScrWidth = (screenWidth / 2) - (windowWidth / 2);
+                adjScrHeight = (screenHeight / 2) - (275);
+                var reportWindow = window.open('/apex/'+'{!JSENCODE($Setup.AlPublic__c.NamespacePrefix__c)}'+'__'+pageName+'?id='+recordId, 'Dashboard', 'status=no,height=360,width='+windowWidth+',resizable=0,left=' + adjScrWidth + ',top=' + adjScrHeight + ',screenX=' + adjScrWidth + ',screenY=' + adjScrHeight + ',toolbar=no,menubar=no,scrollbars=0,location=no,directories=no,titlebar=no,menubar=no');
+                reportWindow.focus();
+            }
+        }
+        //Function to Delete the Response from Relatedlist
+        function delRes(responseId)
+        {                      
+            responseId = encodeURI(responseId);           
+            if(confirm('Are you sure?'))
+            {                
+                delResponse(responseId);
+                return false;
+            }
+            else
+                return false;
+        }                
+    </script>
+    <apex:outputPanel rendered="{!flscheck}">
+            <apex:pageMessages id="msg" />
+    </apex:outputPanel>
+    <apex:form >          
+        <apex:pageBlock rendered="{!NOT(flscheck)}">  
+                                
+            <apex:actionFunction action="{!refreshGrid}" name="queryByPage" reRender="myPanel,myButtons,pageNumSec" >
+                <apex:param name="firstParam" assignTo="{!selectedPage}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!deleteResponse}" name="delResponse" reRender="myPanel,myButtons,pageNumSec"> 
+                <apex:param name="resId" value="" />
+            </apex:actionFunction>           
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton id="btnDashboard" alt="Dashboard" value=" {!$Label.maritzcx__dashboard_button_label} " onclick="openDashboard('{!JSENCODE(Contact.Id)}')" styleClass="menuButton" rerender="btnDashboard" />                 
+            </apex:pageBlockButtons>
+            <apex:outputPanel >
+                <apex:outputLabel style="font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" escape="true"  value="{!$Label.maritzcx__survey}: "/>
+                <apex:selectList id="surveyFilter" required="true" value="{!surveyFilterId}" size="1"  disabled="{!surveyFilterId=='none'}">
+                    <apex:selectOptions value="{!surveyList}"/>
+                    <apex:actionSupport action="{!surveyFilterChange}" event="onchange" reRender="myPanel,myButtons"/>
+                </apex:selectList>
+            </apex:outputPanel><br></br><br></br>
+              <apex:outputPanel id="myPanel">
+                <apex:outputText rendered="{!configCols.size <= 0}" value="{!$Label.maritzcx__no_columns_selected_on_configuration_page}" escape="true"></apex:outputText>
+                  <apex:outputText rendered="{!responseObjList.size <= 0  && configCols.size > 0}" value="{!$Label.maritzcx__no_records_to_display}" escape="true"></apex:outputText>
+                  <apex:pageBlockTable value="{!responseObjList}" var="resObj" rendered="{!responseObjList.size > 0 && configCols.size > 0}">
+                      <apex:column headerValue="Action" style="padding-top:1em;vertical-align: top;">
+                           <apex:commandLink action="{!editResponse}" value="{!$Label.maritzcx__edit}" target="_parent" style="color:#015ba7;text-decoration: none;" rendered="{!$ObjectType.MaritzCX__Survey_Response__c.updateable}">
+                              <apex:param name="resId" value="{!resObj.responseId}"/>
+                          </apex:commandLink>
+                          &nbsp; | &nbsp;                      
+                          <apex:commandLink value="{!$Label.maritzcx__del}" style="color:#015ba7;text-decoration: none;" rendered="{!$ObjectType.MaritzCX__Survey_Response__c.deletable}" onClick="delRes('{!JSENCODE(resObj.responseId)}');" reRender="test">                              
+                         </apex:commandLink>
+                      </apex:column>
+                      <apex:repeat value="{!configCols}" var="c">                                           
+                      <apex:column headerValue="{!$Label.maritzcx__response_completed_date}" style="padding-top:1em;vertical-align: top;" rendered="{!c == '1'}">                         
+                          <apex:outputText value="{!resObj.ResponseDate}" escape="true"> </apex:outputText>&nbsp;
+                      </apex:column>
+                      <apex:column headerValue="{!$Label.maritzcx__response_table_survey}" style="padding-top:1em;vertical-align: top;" rendered="{!c == '2'}">                                                  
+                          <a href="/{!JSENCODE(resObj.surveyId)}" target="_blank"><apex:outputText title="{!resObj.surveyName}" value="{!if(len(resObj.surveyName) > 20, LEFT(resObj.surveyName, 20)+'...', resObj.surveyName)}" escape="true"> </apex:outputText>&nbsp;</a>
+                      </apex:column>                                            
+                      <apex:column headerValue="{!$Label.maritzcx__metric_name}" rendered="{!c == '3'}">                          
+                              <apex:dataTable value="{!resObj.metricDetails}" var="m">
+                                   <apex:column >
+                                       <apex:outputText title="{!m.metricName}" value="{!if(len(m.metricName) > 20, LEFT(m.metricName, 20)+'...', m.metricName)}" escape="true"> </apex:outputText>&nbsp;
+                                   </apex:column>   
+                              </apex:dataTable>                                    
+                      </apex:column>
+                      <apex:column headerValue="{!$Label.maritzcx__response_table_response}" rendered="{!c == '4'}">                          
+                              <apex:dataTable value="{!resObj.metricDetails}" var="m">
+                                   <apex:column >
+                                       <apex:outputText title="{!m.response}" value="{!if(len(m.response) > 50, LEFT(m.response, 50)+'...', m.response)}" escape="true"> </apex:outputText>&nbsp;
+                                   </apex:column>   
+                              </apex:dataTable>                                    
+                      </apex:column>
+                      <apex:column headerValue="{!$Label.maritzcx__chart}" rendered="{!c == '5'}">                          
+                              <apex:dataTable value="{!resObj.metricDetails}" var="m">
+                                   <apex:column >
+                                       <apex:variable var="mBar" value="{!m.metricBar}"/>
+                                       <apex:outputText value="{!mBar}&nbsp;" escape="false"> </apex:outputText>
+                                   </apex:column>                                 </apex:dataTable>                                    
+                      </apex:column> 
+                      <apex:column headerValue="{!$Label.maritzcx__view_response}" style="padding-top:1em;vertical-align: top;" rendered="{!c == '6'}">
+                          <apex:outputLink value="#" rendered="{!resObj.viewResponseVisible}" onclick="viewResponse('{!JSENCODE($Setup.MaritzCX__AlPublic__c.MaritzCX__NamespacePrefix__c)}','{!JSENCODE(resObj.mcxResponseId)}')">
+                              <apex:outputText value="{!$Label.maritzcx__view_response}"></apex:outputText>
+                          </apex:outputLink>
+                      </apex:column>
+                      </apex:repeat>                                                          
+                  </apex:pageBlockTable>                  
+              </apex:outputPanel>                                        
+              <apex:outputPanel id="myButtons">                 
+                  <apex:outputPanel rendered="{!responseObjList.size > 0 && configCols.size > 0}">                  
+                      <apex:commandButton title="Previous" value="Previous" action="{!Previous}" reRender="myPanel,myButtons,pageNumSec" disabled="{!disablePrevious}"/>
+                      <apex:commandButton title="First" value="First" disabled="{!IF(1 = currentPage,true,false)}" style="{!IF(1 = currentPage,'color:#015ba7;','color:#000000')}" action="{!prepareResponseData}" reRender="myPanel,myButtons,pageNumSec" onclick="queryByPage('1');return false;"/>
+                      <apex:outputText value="..." rendered="{!totalPages > 2}" escape="true"></apex:outputText>
+                      <apex:repeat value="{!visiblePages}" var="t">                      
+                          <apex:commandButton title="Page{!t}" value=" {!t} "  rendered="{!IF((t!=1 && t!=totalPages),true,false)}" disabled="{!IF(t = currentPage,true,false)}" style="{!IF(t = currentPage,'color:#015ba7;','color:#000000')}" onclick="queryByPage('{!t}');return false;"/>                      
+                      </apex:repeat>
+                      <apex:outputText value="..." rendered="{!totalPages > 2}"></apex:outputText>
+                      <apex:commandButton title="{!lastPageNum}" value="{!lastPageNum}" disabled="{!IF(lastPageNum = currentPage,true,false)}" rendered="{!recNum > 2000}" style="{!IF(lastPageNum = currentPage,'color:#015ba7;','color:#000000')}" action="{!prepareResponseData}" reRender="myPanel,myButtons,pageNumSec" onclick="queryByPage('{!JSENCODE(TEXT(lastPageNum))}');return false;"/>
+                      <apex:commandButton title="Last" value="Last" disabled="{!IF(totalPages = currentPage,true,false)}" rendered="{!recNum < 2000}" style="{!IF(totalPages = currentPage,'color:#015ba7;','color:#000000')}" action="{!prepareResponseData}" reRender="myPanel,myButtons,pageNumSec" onclick="queryByPage('{!JSENCODE(TEXT(totalPages))}');return false;"/>
+                      <apex:commandButton title="Next" value="Next" action="{!Next}" reRender="myPanel,myButtons,pageNumSec" disabled="{!IF(disableNext || (currentPage = lastPageNum),true,false)}"/>
+                      <apex:commandButton title="View 2000+" value="View 2000+" rendered="{!recNum > 2000}" onclick="window.top.location='/{!JSENCODE(responseObjPrefix)}'; return false;"/>
+                      <apex:outputText value="Showing Page # {!pageNumber} of {!totalPages}" style="float:right;padding-top:0.5em;" id="pageNumSec"/>
+                </apex:outputPanel>
+              </apex:outputPanel>                        
+        </apex:pageBlock>     
+    </apex:form> 
+</apex:page>

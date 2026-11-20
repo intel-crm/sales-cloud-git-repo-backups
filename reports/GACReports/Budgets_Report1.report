@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerMarketingBudget$Core_MDF_Budget_Partner__c.Core_MDF_CoMarketing_Ultimate_Account__c.Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget$Amount</field>
+    </columns>
+    <description>For Rev-500 IPE purpose</description>
+    <filter>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Program__c.Core_MDF_Technical_Program_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client CoMarketing Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$StartDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2024</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$EndDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>12/31/2024</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Budget_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>OEM CMP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Budget_Partner__c.Core_MDF_CoMarketing_Ultimate_Account__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>test</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Budgets Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Budgets__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerMarketingBudget$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

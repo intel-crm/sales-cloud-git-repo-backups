@@ -1,0 +1,5595 @@
+{
+  "name" : "Service_Value_Analytics_tp",
+  "label" : "Service Value Analytics",
+  "description" : "Take a business, KPI-led view of how your Service users interact with your customer data.  Understand what components on the page are used by high-productivity users, and what unused components may be beneficial to users who are still learning.",
+  "folder" : {
+    "id" : "${App.Folder.Id}"
+  },
+  "dateVersion" : 1,
+  "mobileDisabled" : false,
+  "xmd" : {
+    "measures" : [
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.C",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.F",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.G",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.H",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.I",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseSummary_1.J",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_2.F",
+        "format" : {
+          "delimiters" : { },
+          "customFormat" : "[\"#,###\",1]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_2.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_2.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_2.C",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_2.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_2.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_1.F",
+        "format" : {
+          "delimiters" : { },
+          "customFormat" : "[\"#,###\",1]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_1.C",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "ClusterUsers_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseUserClusters_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseUserClusters_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "CaseUserClusters_1.C",
+        "format" : {
+          "delimiters" : { }
+        }
+      }
+    ],
+    "derivedDimensions" : [ ],
+    "organizations" : [ ],
+    "showDetailsDefaultFields" : [ ],
+    "dates" : [ ],
+    "derivedMeasures" : [ ],
+    "dimensions" : [ ]
+  },
+  "state" : {
+    "dataSourceLinksInfo" : {
+      "enableAutomaticLinking" : false,
+      "excludeRelationships" : [ ],
+      "links" : [
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Id"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "PAGE_ENTITY_ID"
+            }
+          ],
+          "label" : "CaseId",
+          "name" : "Link_20208"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "TIMESTAMP_DERIVED"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "LastModifiedDate"
+            }
+          ],
+          "label" : "Date",
+          "name" : "Link_26945"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "User.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Owner.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Owner.Name"
+            }
+          ],
+          "label" : "User",
+          "name" : "Link_26996"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Owner.Roles.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "User.Roles.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Owner.Roles.Name"
+            }
+          ],
+          "label" : "Role",
+          "name" : "Link_6350"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Owner.Profile.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "User.Profile.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Owner.Profile.Name"
+            }
+          ],
+          "label" : "Profile",
+          "name" : "Link_6382"
+        }
+      ]
+    },
+    "filters" : [
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "User.Name"
+        ],
+        "label" : "User",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Cases.Type"
+        ],
+        "label" : "Market",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Cases.Origin"
+        ],
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "PAGE_ENTITY_TYPE"
+        ],
+        "label" : "Object",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "User.Profile.Name"
+        ],
+        "label" : "Profile",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "User.Roles.Name"
+        ],
+        "label" : "Role",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "InteractionDateTime"
+        ],
+        "label" : "Date",
+        "locked" : false,
+        "operator" : ">=<="
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "SESSION_KEY"
+        ],
+        "label" : "Session",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "PageName"
+        ],
+        "label" : "Page Name",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "CaseNumber"
+        ],
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Type"
+        ],
+        "locked" : false,
+        "operator" : "in"
+      }
+    ],
+    "gridLayouts" : [
+      {
+        "maxWidth" : 1300,
+        "name" : "Default",
+        "numColumns" : 49,
+        "pages" : [
+          {
+            "label" : "ServicePerformance",
+            "name" : "520889ec-8fd7-4a54-8e5d-c3145b946334",
+            "navigationHidden" : false,
+            "widgets" : [
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_6",
+                "row" : 0,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgb(240, 244, 247)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_5",
+                "row" : 3,
+                "rowspan" : 9,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "rgb(0, 112, 210)",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 4
+                }
+              },
+              {
+                "colspan" : 8,
+                "column" : 40,
+                "name" : "link_8",
+                "row" : 134,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#963CE9",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "filterpanel_2",
+                "row" : 7,
+                "rowspan" : 5,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_1",
+                "row" : 194,
+                "rowspan" : 11,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "rgba(230, 236, 242, 0)",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_10",
+                "row" : 129,
+                "rowspan" : 5,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#7D98B3",
+                  "borderEdges" : [
+                    "top",
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 14,
+                "name" : "text_14",
+                "row" : 129,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 15,
+                "column" : 25,
+                "name" : "text_15",
+                "row" : 134,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#7D98B3",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "chart_11",
+                "row" : 138,
+                "rowspan" : 36,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 9,
+                "column" : 38,
+                "name" : "text_19",
+                "row" : 3,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 12,
+                "column" : 1,
+                "name" : "text_20",
+                "row" : 3,
+                "rowspan" : 4,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "chart_7",
+                "row" : 174,
+                "rowspan" : 20,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 21,
+                "column" : 1,
+                "name" : "text_21",
+                "row" : 134,
+                "rowspan" : 4,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#7D98B3",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_11",
+                "row" : 12,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "top",
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 15,
+                "name" : "text_23",
+                "row" : 12,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "pillbox_1",
+                "row" : 16,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#FFFFFF",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_1",
+                "row" : 19,
+                "rowspan" : 28,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 14,
+                "column" : 17,
+                "name" : "text_1",
+                "row" : 132,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 25,
+                "column" : 23,
+                "name" : "chart_1",
+                "row" : 53,
+                "rowspan" : 39,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_3",
+                "row" : 48,
+                "rowspan" : 5,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#7D98B3",
+                  "borderEdges" : [
+                    "top",
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 14,
+                "name" : "text_2",
+                "row" : 48,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 22,
+                "column" : 13,
+                "name" : "text_3",
+                "row" : 51,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 1,
+                "name" : "table_2",
+                "row" : 56,
+                "rowspan" : 14,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_4",
+                "row" : 97,
+                "rowspan" : 31,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 1,
+                "name" : "table_5",
+                "row" : 72,
+                "rowspan" : 23,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 22,
+                "column" : 0,
+                "name" : "container_12",
+                "row" : 53,
+                "rowspan" : 42,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_13",
+                "row" : 95,
+                "rowspan" : 34,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 1,
+                "name" : "text_4",
+                "row" : 54,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 1,
+                "name" : "text_5",
+                "row" : 70,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 20,
+                "column" : 1,
+                "name" : "text_6",
+                "row" : 95,
+                "rowspan" : 2,
+                "widgetStyle" : {
+                  "backgroundColor" : "#16325C",
+                  "borderColor" : "#54698d",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              }
+            ]
+          },
+          {
+            "label" : "Holding",
+            "name" : "437c06ca-d39c-40c3-b50c-c52060dc9283",
+            "navigationHidden" : false,
+            "widgets" : [
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_3",
+                "row" : 15,
+                "rowspan" : 6,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              }
+            ]
+          }
+        ],
+        "rowHeight" : "fine",
+        "selectors" : [ ],
+        "style" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "backgroundColor" : "#FFFFFF",
+          "cellSpacingX" : 0,
+          "cellSpacingY" : 0,
+          "fit" : "fitwidth",
+          "gutterColor" : "rgb(240, 244, 247)"
+        },
+        "version" : 1.0
+      }
+    ],
+    "layouts" : [ ],
+    "steps" : {
+      "ClusterUsers_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ClusterUsers",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "A",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "COUNT_Rows"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Age"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Interactions.TotalClicks"
+                  ],
+                  "name" : "C"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "SUM_Interactions.UniqueSessionKey"
+                  ],
+                  "name" : "D"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Interactions.UNIQUE_ComponentName"
+                  ],
+                  "name" : "E"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Interactions.SumStallTime"
+                  ],
+                  "name" : "F"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "OwnerId_clustering"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#54698d",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#16325c",
+              "fontColor" : "#ffffff",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "A",
+              "B",
+              "C",
+              "F",
+              "D",
+              "E",
+              "OwnerId_clustering"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#000000",
+              "fontColor" : "#ffffff",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#54698d",
+            "innerMinorBorderColor" : "#54698d",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "pivoted" : false,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 4
+          },
+          "type" : "table"
+        }
+      },
+      "Owner_Name_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "Owner_Name_1",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "unique",
+                "Id",
+                "A"
+              ],
+              [
+                "unique",
+                "Id",
+                "B"
+              ],
+              [
+                "avg",
+                "Age",
+                "C"
+              ],
+              [
+                "avg",
+                "Age",
+                "D"
+              ],
+              [
+                "avg",
+                "Interactions.TotalClicks",
+                "E"
+              ],
+              [
+                "avg",
+                "Interactions.UNIQUE_ComponentName",
+                "F"
+              ],
+              [
+                "avg",
+                "Interactions.UniqueUserCount",
+                "G"
+              ],
+              [
+                "sum",
+                "Interactions.TotalClicks",
+                "H"
+              ],
+              [
+                "sum",
+                "Interactions.SumStallTime",
+                "I"
+              ],
+              [
+                "avg",
+                "Interactions.SumStallTime",
+                "J"
+              ]
+            ],
+            "columns" : [
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "unique",
+                      "Id"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ],
+                  "filters" : [
+                    [
+                      "IsClosed",
+                      [
+                        "false"
+                      ],
+                      "in"
+                    ]
+                  ],
+                  "order" : [
+                    [
+                      -1,
+                      {
+                        "ascending" : false,
+                        "inner" : false
+                      }
+                    ]
+                  ]
+                },
+                "header" : "Open"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "unique",
+                      "Id"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ],
+                  "filters" : [
+                    [
+                      "IsClosed",
+                      [
+                        "true"
+                      ],
+                      "in"
+                    ]
+                  ]
+                },
+                "header" : "Closed"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "Age"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ],
+                  "filters" : [
+                    [
+                      "IsClosed",
+                      [
+                        "false"
+                      ],
+                      "in"
+                    ]
+                  ]
+                },
+                "header" : "Avg Age Open"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "Age"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ],
+                  "filters" : [
+                    [
+                      "IsClosed",
+                      [
+                        "true"
+                      ],
+                      "in"
+                    ]
+                  ]
+                },
+                "header" : "Avg Age Closed"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "Interactions.TotalClicks"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ]
+                },
+                "header" : "Avg Click Count"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "Interactions.UNIQUE_ComponentName"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ]
+                },
+                "header" : "Avg UI Features"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "Interactions.UniqueUserCount"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ]
+                },
+                "header" : "Avg Agents"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "sum",
+                      "Interactions.TotalClicks"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ]
+                },
+                "header" : "Click Count"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "sum",
+                      "Interactions.SumStallTime"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ]
+                },
+                "header" : "Total Time"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "Interactions.SumStallTime"
+                    ]
+                  ],
+                  "groups" : [
+                    "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+                  ]
+                },
+                "header" : "Avg Time"
+              }
+            ],
+            "groups" : [
+              "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [ ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "UserInteractionHeatm_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "UserInteractionHeatmap",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 2000,
+            "groups" : [
+              "SequenceNumberS",
+              "ComponentName"
+            ],
+            "filters" : [
+              [
+                "PageName",
+                [
+                  ""
+                ],
+                "not in"
+              ],
+              [
+                "UI_EVENT_SOURCE",
+                [
+                  "click"
+                ],
+                "in"
+              ],
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningInteraction"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : true,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "bottom-center",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "highColor" : "#009DDF",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "lowColor" : "#E2F4FC",
+            "visualizationType" : "heatmap",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "fontSize" : 14,
+              "label" : "What is the sequence of clicks on page components?",
+              "align" : "center",
+              "subtitleLabel" : "How long does it take to complete the next action?"
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "color" : [
+                "count"
+              ],
+              "x" : [
+                "SequenceNumberS"
+              ],
+              "y" : [
+                "ComponentName"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "y" : {
+              "showTitle" : false,
+              "showAxis" : true,
+              "title" : "Component Name"
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "LightningPageViewHea_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "LightningPageViewHeatmap",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 1000,
+            "groups" : [
+              "SequenceNumberS",
+              "PageName"
+            ],
+            "filters" : [
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningPageView"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : true,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "bottom-center",
+              "inside" : true
+            },
+            "axisMode" : "multi",
+            "highColor" : "#009DDF",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "lowColor" : "#E2F4FC",
+            "visualizationType" : "heatmap",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "fontSize" : 14,
+              "label" : "When and Where do users navigate about the app?",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "color" : [
+                "count"
+              ],
+              "x" : [
+                "SequenceNumberS"
+              ],
+              "y" : [
+                "PageName"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Journey Step"
+            },
+            "y" : {
+              "showTitle" : false,
+              "showAxis" : true,
+              "title" : "Object or Page Name"
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "ClusterUsers_2" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ClusterUsers",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "A",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "COUNT_Rows"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Age"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Interactions.TotalClicks"
+                  ],
+                  "name" : "C"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "SUM_Interactions.UniqueSessionKey"
+                  ],
+                  "name" : "D"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Interactions.UNIQUE_ComponentName"
+                  ],
+                  "name" : "E"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "SUM_Interactions.SumStallTime"
+                  ],
+                  "name" : "F"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#54698d",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#16325c",
+              "fontColor" : "#ffffff",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "A",
+              "B",
+              "C",
+              "F",
+              "D",
+              "E",
+              "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#000000",
+              "fontColor" : "#ffffff",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#54698d",
+            "innerMinorBorderColor" : "#54698d",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "pivoted" : false,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 4
+          },
+          "type" : "table"
+        }
+      },
+      "UserInteractionHeatm_2" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "UserInteractionEndHeatmap",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 2000,
+            "groups" : [
+              "SequenceNumberS",
+              "ComponentName"
+            ],
+            "filters" : [
+              [
+                "SessionEndFlag",
+                [
+                  "End"
+                ],
+                "in"
+              ],
+              [
+                "UI_EVENT_SOURCE",
+                [
+                  "click"
+                ],
+                "in"
+              ],
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningInteraction"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : true,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "bottom-center",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "highColor" : "#009DDF",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "lowColor" : "#E2F4FC",
+            "visualizationType" : "heatmap",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "fontSize" : 14,
+              "label" : "What is the last component a user interacts with before leaving their session?",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "color" : [
+                "count"
+              ],
+              "x" : [
+                "SequenceNumberS"
+              ],
+              "y" : [
+                "ComponentName"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "y" : {
+              "showTitle" : false,
+              "showAxis" : true,
+              "title" : "Component Name"
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "LightningPageViewHea_2" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "LightningPageEndHeatmap",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 1000,
+            "groups" : [
+              "SequenceNumberS",
+              "PageName"
+            ],
+            "filters" : [
+              [
+                "SessionEndFlag",
+                [
+                  "End"
+                ],
+                "in"
+              ],
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningPageView"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : true,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "bottom-center",
+              "inside" : true
+            },
+            "axisMode" : "multi",
+            "highColor" : "#009DDF",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "lowColor" : "#E2F4FC",
+            "visualizationType" : "heatmap",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "fontSize" : 14,
+              "label" : "Where and When do users typically end their session?",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "color" : [
+                "count"
+              ],
+              "x" : [
+                "SequenceNumberS"
+              ],
+              "y" : [
+                "PageName"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Journey Step"
+            },
+            "y" : {
+              "showTitle" : false,
+              "showAxis" : true,
+              "title" : "Object or Page Name"
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "GroupingToggle_1" : {
+        "broadcastFacet" : true,
+        "columns" : {
+          "Value" : {
+            "type" : "string"
+          },
+          "Display" : {
+            "type" : "string"
+          }
+        },
+        "label" : "GroupingToggle",
+        "selectMode" : "singlerequired",
+        "start" : {
+          "Display" : [
+            "Profile"
+          ]
+        },
+        "type" : "staticflex",
+        "values" : [
+          {
+            "Display" : "Profile",
+            "Value" : "Owner.Profile.Name"
+          },
+          {
+            "Display" : "Role",
+            "Value" : "Owner.Roles.Name"
+          },
+          {
+            "Display" : "Owner",
+            "Value" : "Owner.Name"
+          },
+          {
+            "Display" : "Origin",
+            "Value" : "Origin"
+          },
+          {
+            "Display" : "Type",
+            "Value" : "Type"
+          },
+          {
+            "Display" : "Status",
+            "Value" : "Status"
+          },
+          {
+            "Display" : "Reason",
+            "Value" : "Reason"
+          },
+          {
+            "Display" : "Case Number",
+            "Value" : "CaseNumber"
+          }
+        ]
+      },
+      "InteractionsScatter_2" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "OriginScatter",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "sum",
+                "Interactions.SUMTimeToAction"
+              ],
+              [
+                "sum",
+                "Interactions.TotalClicks"
+              ],
+              [
+                "sum",
+                "Age"
+              ],
+              [
+                "unique",
+                "Id"
+              ],
+              [
+                "sum",
+                "Interactions.UniqueSessionKey"
+              ],
+              [
+                "sum",
+                "Interactions.SumStallTime"
+              ],
+              [
+                "sum",
+                "Interactions.UniqueUserCount"
+              ]
+            ],
+            "groups" : [
+              "Origin"
+            ],
+            "aggregateFilters" : [ ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [
+                    "sum_Interactions.SUMTimeToAction",
+                    "sum_Interactions.TotalClicks",
+                    "sum_Age",
+                    "unique_Id",
+                    "sum_Interactions.UniqueSessionKey",
+                    "sum_Interactions.SumStallTime",
+                    "sum_Interactions.UniqueUserCount"
+                  ],
+                  "showNullValues" : true,
+                  "customizeLegend" : true,
+                  "showPercentage" : true,
+                  "showDimensions" : false,
+                  "showMeasures" : false,
+                  "dimensions" : [
+                    "Owner.Name"
+                  ]
+                },
+                "description" : "Each bubble represents the sum of measures for cases owned by [Owner.Name]. The total time to complete actions on their cases was [sum_Interactions.SUMTimeToAction] seconds, over a total of [sum_Interactions.TotalClicks] clicks. The total age of their cases is [sum_Age], spread across [unique_Id] cases,  [sum_Interactions.UniqueSessionKey] sessions. Total time spent waiting after performing these actions is [sum_Interactions.SumStallTime] seconds. Finally, a total of [sum_Interactions.UniqueUserCount] users interacted with their cases."
+              }
+            },
+            "visualizationType" : "scatter",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "Effort by Origin",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "radiusRatio" : 5,
+            "columnMap" : {
+              "r" : [
+                "sum_Age"
+              ],
+              "x" : [
+                "sum_Interactions.SUMTimeToAction"
+              ],
+              "y" : [
+                "sum_Interactions.TotalClicks"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "Origin"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Total time completing actions",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "y" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Number of Interactions",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "ViewsByPage" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ViewsByPage",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 20,
+            "groups" : [
+              "PageName"
+            ],
+            "filters" : [
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningPageView"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "exclude",
+          "steps" : [
+            "InteractionsDistribu_1"
+          ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "centerText" : "",
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : false,
+              "show" : true,
+              "customSize" : 40,
+              "position" : "right-top",
+              "inside" : false
+            },
+            "showMeasureTitle" : false,
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "pie",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "fontSize" : 14,
+              "label" : "Top 20 Pages",
+              "align" : "left",
+              "subtitleLabel" : "Page Views"
+            },
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "parameters" : { },
+              "chartsPerLine" : 4
+            },
+            "inner" : 60,
+            "columnMap" : {
+              "trellis" : [ ],
+              "dimension" : [
+                "PageName"
+              ],
+              "plots" : [
+                "count"
+              ]
+            },
+            "showActionMenu" : true,
+            "centerValueType" : "none",
+            "valueType" : "percent",
+            "theme" : "wave",
+            "applyConditionalFormatting" : false
+          },
+          "type" : "chart"
+        }
+      },
+      "CaseUserClusters_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "CaseUserClusters",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "OwnerId_clustering",
+              "filters" : [ ],
+              "ascending" : true
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "sum",
+                    "SUM_Interactions.SumStallTime"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "SUM_Interactions.TotalClicks"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "SUM_Age"
+                  ],
+                  "name" : "C"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "OwnerId_clustering"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVACasesAndInteractionsUserClusters_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "sync",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "scatter",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "Distribution of Effort by Clusters",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "radiusRatio" : 5,
+            "columnMap" : {
+              "r" : [
+                "C"
+              ],
+              "x" : [
+                "A"
+              ],
+              "y" : [
+                "B"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "OwnerId_clustering"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "y" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "Case_Details_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "Case Details",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 100,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : "Origin",
+                  "name" : "Origin"
+                },
+                {
+                  "field" : "Age",
+                  "name" : "Age"
+                },
+                {
+                  "field" : "Interactions.SumStallTime",
+                  "name" : "Interactions.SumStallTime"
+                },
+                {
+                  "field" : "Interactions.TotalClicks",
+                  "name" : "Interactions.TotalClicks"
+                },
+                {
+                  "field" : "Interactions.UniqueSessionKey",
+                  "name" : "Interactions.UniqueSessionKey"
+                },
+                {
+                  "field" : "Interactions.UNIQUE_ComponentName",
+                  "name" : "Interactions.UNIQUE_ComponentName"
+                },
+                {
+                  "field" : "Interactions.UniqueUserCount",
+                  "name" : "Interactions.UniqueUserCount"
+                },
+                {
+                  "field" : "CaseNumber",
+                  "name" : "CaseNumber"
+                },
+                {
+                  "field" : "Reason",
+                  "name" : "Reason"
+                },
+                {
+                  "field" : "Type",
+                  "name" : "Type"
+                },
+                {
+                  "field" : "Priority",
+                  "name" : "Priority"
+                },
+                {
+                  "field" : "Status",
+                  "name" : "Status"
+                },
+                {
+                  "field" : "Owner.Name",
+                  "name" : "Owner.Name"
+                },
+                {
+                  "field" : "Owner.Profile.Name",
+                  "name" : "Owner.Profile.Name"
+                },
+                {
+                  "field" : "Owner.Roles.Name",
+                  "name" : "Owner.Roles.Name"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e1e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#f2f6fa",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "CaseNumber",
+              "Origin",
+              "Type",
+              "Reason",
+              "Priority",
+              "Status",
+              "Owner.Name",
+              "Owner.Profile.Name",
+              "Owner.Roles.Name",
+              "Age",
+              "Interactions.SumStallTime",
+              "Interactions.TotalClicks",
+              "Interactions.UniqueSessionKey",
+              "Interactions.UNIQUE_ComponentName",
+              "Interactions.UniqueUserCount"
+            ],
+            "customBulkActions" : [ ],
+            "evenRowColor" : "#f2f6fa",
+            "header" : {
+              "backgroundColor" : "#e4ecf2",
+              "fontColor" : "#5c7a99",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a9b7c7",
+            "innerMinorBorderColor" : "#e1e5ee",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "oddRowColor" : "#ffffff",
+            "showActionMenu" : true,
+            "showRowIndexColumn" : true,
+            "totals" : true,
+            "verticalPadding" : 4
+          },
+          "type" : "table"
+        }
+      },
+      "InteractionsDistribu_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "InteractionsDistribution",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 20,
+            "groups" : [
+              "ComponentName"
+            ],
+            "filters" : [
+              [
+                "UI_EVENT_SOURCE",
+                [
+                  "click"
+                ],
+                "in"
+              ],
+              [
+                "PageName",
+                [
+                  ""
+                ],
+                "not in"
+              ],
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningInteraction"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "centerText" : "",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : false,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "showMeasureTitle" : false,
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "pie",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "Top 20 Components",
+              "align" : "left",
+              "subtitleLabel" : "User Clicks"
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "inner" : 60,
+            "columnMap" : {
+              "trellis" : [ ],
+              "dimension" : [
+                "ComponentName"
+              ],
+              "plots" : [
+                "count"
+              ]
+            },
+            "showActionMenu" : true,
+            "centerValueType" : "none",
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "percent",
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "CaseSummary_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "CaseSummary",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "unique",
+                    "Id"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "Interactions.AvgStallTime"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "Interactions.AvgTimeToAction"
+                  ],
+                  "name" : "C"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "Interactions.SumStallTime"
+                  ],
+                  "name" : "D"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "Interactions.SUMTimeToAction"
+                  ],
+                  "name" : "E"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "Interactions.TotalClicks"
+                  ],
+                  "name" : "F"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "Interactions.TotalClicks"
+                  ],
+                  "name" : "G"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "Interactions.UniqueSessionKey"
+                  ],
+                  "name" : "H"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "Interactions.UniqueSessionKey"
+                  ],
+                  "name" : "I"
+                },
+                {
+                  "field" : [
+                    "avg",
+                    "Interactions.UniqueUserCount"
+                  ],
+                  "name" : "J"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "all"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#a8b7c7",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "A",
+              "F",
+              "G",
+              "H",
+              "I",
+              "J",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#16325c",
+              "fontColor" : "#ffffff",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#54698d",
+            "innerMinorBorderColor" : "#a8b7c7",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "InteractionsScatter_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "InteractionsScatter",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "sum",
+                "Interactions.SUMTimeToAction"
+              ],
+              [
+                "sum",
+                "Interactions.TotalClicks"
+              ],
+              [
+                "sum",
+                "Age"
+              ],
+              [
+                "unique",
+                "Id"
+              ],
+              [
+                "sum",
+                "Interactions.UniqueSessionKey"
+              ],
+              [
+                "sum",
+                "Interactions.SumStallTime"
+              ],
+              [
+                "sum",
+                "Interactions.UniqueUserCount"
+              ]
+            ],
+            "groups" : [
+              "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+            ],
+            "aggregateFilters" : [ ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [
+                    "sum_Interactions.SUMTimeToAction",
+                    "sum_Interactions.TotalClicks",
+                    "sum_Age",
+                    "unique_Id",
+                    "sum_Interactions.UniqueSessionKey",
+                    "sum_Interactions.SumStallTime",
+                    "sum_Interactions.UniqueUserCount"
+                  ],
+                  "showNullValues" : true,
+                  "customizeLegend" : true,
+                  "showPercentage" : true,
+                  "showDimensions" : false,
+                  "showMeasures" : false,
+                  "dimensions" : [
+                    "Owner.Name"
+                  ]
+                },
+                "description" : "Each bubble represents the sum of measures for cases owned by [Owner.Name]. The total time to complete actions on their cases was [sum_Interactions.SUMTimeToAction] seconds, over a total of [sum_Interactions.TotalClicks] clicks. The total age of their cases is [sum_Age], spread across [unique_Id] cases,  [sum_Interactions.UniqueSessionKey] sessions. Total time spent waiting after performing these actions is [sum_Interactions.SumStallTime] seconds. Finally, a total of [sum_Interactions.UniqueUserCount] users interacted with their cases."
+              }
+            },
+            "visualizationType" : "scatter",
+            "title" : {
+              "fontSize" : 16,
+              "subtitleFontSize" : 12,
+              "label" : "Distribution of Effort",
+              "align" : "center",
+              "subtitleLabel" : "How much time is spent performing how many interactions?"
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "radiusRatio" : 5,
+            "columnMap" : {
+              "r" : [ ],
+              "x" : [
+                "sum_Interactions.SUMTimeToAction"
+              ],
+              "y" : [
+                "sum_Interactions.TotalClicks"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "Origin"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Total time completing actions",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "y" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Number of Interactions",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "ClicksPerCaseTimelin_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ClicksPerCaseTimeline",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*",
+                "A"
+              ],
+              [
+                "unique",
+                "PAGE_ENTITY_ID",
+                "B"
+              ],
+              [
+                "count",
+                "*",
+                "C"
+              ]
+            ],
+            "columns" : [
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "limit" : 20,
+                  "groups" : [
+                    [
+                      "InteractionDateTime_Year",
+                      "InteractionDateTime_Month",
+                      "InteractionDateTime_Day"
+                    ]
+                  ],
+                  "order" : [
+                    [
+                      -1,
+                      {
+                        "ascending" : false
+                      }
+                    ]
+                  ]
+                },
+                "header" : "Clicks"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "unique",
+                      "PAGE_ENTITY_ID"
+                    ]
+                  ],
+                  "limit" : 20,
+                  "groups" : [
+                    [
+                      "InteractionDateTime_Year",
+                      "InteractionDateTime_Month",
+                      "InteractionDateTime_Day"
+                    ]
+                  ]
+                },
+                "header" : "Number of Records"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "limit" : 20,
+                  "groups" : [
+                    [
+                      "InteractionDateTime_Year",
+                      "InteractionDateTime_Month",
+                      "InteractionDateTime_Day"
+                    ]
+                  ],
+                  "formula" : "A/B"
+                },
+                "header" : "Clicks Per Record"
+              }
+            ],
+            "groups" : [
+              [
+                "InteractionDateTime_Year",
+                "InteractionDateTime_Month",
+                "InteractionDateTime_Day"
+              ]
+            ],
+            "filters" : [
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningInteraction"
+                ],
+                "in"
+              ],
+              [
+                "PAGE_ENTITY_TYPE",
+                [
+                  "Case"
+                ],
+                "in"
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "multi",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "stack" : false,
+            "showPoints" : true,
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "top-center",
+              "inside" : false
+            },
+            "axisMode" : "dual",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "time-combo",
+            "missingValue" : "connect",
+            "timeAxis" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "plots" : {
+              "A" : {
+                "mark" : "dot"
+              },
+              "B" : {
+                "mark" : "line"
+              },
+              "C" : {
+                "mark" : "line"
+              }
+            },
+            "columnMap" : {
+              "timeAxis" : [
+                "InteractionDateTime_Year~~~InteractionDateTime_Month~~~InteractionDateTime_Day"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "compactNumber",
+            "valueTypeOnLine" : "none",
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "EventDictionary_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.LightningInteraction_Data_Dictionary.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "EventDictionary",
+        "query" : {
+          "query" : {
+            "values" : [
+              "Description"
+            ],
+            "filters" : [
+              [
+                "Event_Label",
+                [ ],
+                "isnotnull"
+              ],
+              [
+                "Event_Label",
+                [
+                  "{{cell(ClicksByComponent_1.selection, 0, \"ComponentName\").asString()}}"
+                ],
+                "in"
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12
+            },
+            "columnProperties" : { },
+            "columns" : [ ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : true,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "OriginScatter_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_CasesAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ReasonScatter",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "sum",
+                "Interactions.SUMTimeToAction"
+              ],
+              [
+                "sum",
+                "Interactions.TotalClicks"
+              ],
+              [
+                "sum",
+                "Age"
+              ],
+              [
+                "unique",
+                "Id"
+              ],
+              [
+                "sum",
+                "Interactions.UniqueSessionKey"
+              ],
+              [
+                "sum",
+                "Interactions.SumStallTime"
+              ],
+              [
+                "sum",
+                "Interactions.UniqueUserCount"
+              ]
+            ],
+            "groups" : [
+              "Reason"
+            ],
+            "aggregateFilters" : [ ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [
+                    "sum_Interactions.SUMTimeToAction",
+                    "sum_Interactions.TotalClicks",
+                    "sum_Age",
+                    "unique_Id",
+                    "sum_Interactions.UniqueSessionKey",
+                    "sum_Interactions.SumStallTime",
+                    "sum_Interactions.UniqueUserCount"
+                  ],
+                  "showNullValues" : true,
+                  "customizeLegend" : true,
+                  "showPercentage" : true,
+                  "showDimensions" : false,
+                  "showMeasures" : false,
+                  "dimensions" : [
+                    "Owner.Name"
+                  ]
+                },
+                "description" : "Each bubble represents the sum of measures for cases owned by [Owner.Name]. The total time to complete actions on their cases was [sum_Interactions.SUMTimeToAction] seconds, over a total of [sum_Interactions.TotalClicks] clicks. The total age of their cases is [sum_Age], spread across [unique_Id] cases,  [sum_Interactions.UniqueSessionKey] sessions. Total time spent waiting after performing these actions is [sum_Interactions.SumStallTime] seconds. Finally, a total of [sum_Interactions.UniqueUserCount] users interacted with their cases."
+              }
+            },
+            "visualizationType" : "scatter",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "Effort by Case Reason",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "radiusRatio" : 5,
+            "columnMap" : {
+              "r" : [
+                "sum_Age"
+              ],
+              "x" : [
+                "sum_Interactions.SUMTimeToAction"
+              ],
+              "y" : [
+                "sum_Interactions.TotalClicks"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "Reason"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Total time completing actions",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "y" : {
+              "sqrtScale" : false,
+              "showZero" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Number of Interactions",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "LatestDate_1" : {
+        "broadcastFacet" : true,
+        "groups" : [ ],
+        "label" : "LatestDate",
+        "numbers" : [ ],
+        "query" : "q = load \"${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.FullyQualifiedName}\";\nq = foreach q generate date_to_string(toDate(InteractionDateTime_sec_epoch), \"yyyy-MM-dd\") as 'LatestDate';\nq = order q by 'LatestDate' desc;\nq = limit q 1;",
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "strings" : [ ],
+        "type" : "saql",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "hbar",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "compactNumber",
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "ClicksByComponent_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ClicksByComponent",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*",
+                "A"
+              ],
+              [
+                "unique",
+                "PAGE_ENTITY_ID",
+                "B"
+              ],
+              [
+                "count",
+                "*",
+                "C"
+              ],
+              [
+                "avg",
+                "StallTime",
+                "D"
+              ],
+              [
+                "avg",
+                "TimeToAction",
+                "E"
+              ],
+              [
+                "unique",
+                "USER_ID_DERIVED",
+                "F"
+              ]
+            ],
+            "columns" : [
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "limit" : 50,
+                  "groups" : [
+                    "ComponentName"
+                  ],
+                  "order" : [
+                    [
+                      -1,
+                      {
+                        "ascending" : false
+                      }
+                    ]
+                  ]
+                },
+                "header" : "Clicks"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "unique",
+                      "PAGE_ENTITY_ID"
+                    ]
+                  ],
+                  "limit" : 50,
+                  "groups" : [
+                    "ComponentName"
+                  ]
+                },
+                "header" : "Related Records"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "limit" : 50,
+                  "formula" : "A/B",
+                  "groups" : [
+                    "ComponentName"
+                  ]
+                },
+                "header" : "Clicks Per Record"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "StallTime"
+                    ]
+                  ],
+                  "limit" : 50,
+                  "groups" : [
+                    "ComponentName"
+                  ]
+                },
+                "header" : "StallTime"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "avg",
+                      "TimeToAction"
+                    ]
+                  ],
+                  "limit" : 50,
+                  "groups" : [
+                    "ComponentName"
+                  ]
+                },
+                "header" : "TimeToAction"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "unique",
+                      "USER_ID_DERIVED"
+                    ]
+                  ],
+                  "limit" : 50,
+                  "groups" : [
+                    "ComponentName"
+                  ]
+                },
+                "header" : "Users"
+              }
+            ],
+            "groups" : [
+              "ComponentName"
+            ],
+            "filters" : [
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningInteraction"
+                ],
+                "in"
+              ],
+              [
+                "PageName",
+                [
+                  "Case"
+                ],
+                "in"
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : false,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [
+                    "A",
+                    "B",
+                    "C"
+                  ],
+                  "showNullValues" : false,
+                  "customizeLegend" : false,
+                  "showPercentage" : false,
+                  "showDimensions" : false,
+                  "showMeasures" : false,
+                  "dimensions" : [
+                    "Component"
+                  ]
+                }
+              }
+            },
+            "visualizationType" : "hbar",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "trellis" : [ ],
+              "dimensionAxis" : [
+                "ComponentName"
+              ],
+              "plots" : [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "compactNumber",
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : 30,
+              "showAxis" : true,
+              "title" : "Component Name",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "Cases_Origin_4_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "AppViews",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "limit" : 20,
+            "groups" : [
+              "SourceObjectType"
+            ],
+            "filters" : [
+              [
+                "EVENT_TYPE",
+                [
+                  "LightningPageView"
+                ],
+                "in"
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "exclude",
+          "steps" : [
+            "InteractionsDistribu_1",
+            "ViewsByPage"
+          ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "centerText" : "",
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : false,
+              "show" : true,
+              "customSize" : 40,
+              "position" : "right-top",
+              "inside" : false
+            },
+            "showMeasureTitle" : false,
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "pie",
+            "title" : {
+              "subtitleFontSize" : 11,
+              "fontSize" : 14,
+              "label" : "Top 20 Source Objects",
+              "align" : "left",
+              "subtitleLabel" : "Page Views"
+            },
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "parameters" : { },
+              "chartsPerLine" : 4
+            },
+            "inner" : 60,
+            "columnMap" : {
+              "trellis" : [ ],
+              "dimension" : [
+                "SourceObjectType"
+              ],
+              "plots" : [
+                "count"
+              ]
+            },
+            "showActionMenu" : true,
+            "centerValueType" : "none",
+            "valueType" : "percent",
+            "theme" : "wave",
+            "applyConditionalFormatting" : false
+          },
+          "type" : "chart"
+        }
+      }
+    },
+    "widgetStyle" : {
+      "backgroundColor" : "#FFFFFF",
+      "borderColor" : "#54698d",
+      "borderEdges" : [ ],
+      "borderRadius" : 0,
+      "borderWidth" : 1
+    },
+    "widgets" : {
+      "text_19" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Data as of [LatestDate]"
+              }
+            ],
+            "values" : {
+              "LatestDate" : {
+                "field" : "LatestDate",
+                "sourceType" : "result",
+                "step" : "LatestDate_1"
+              }
+            }
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "container_13" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "text_14" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#16325c",
+                  "size" : "20px"
+                },
+                "insert" : "Case Page UI Feature Adoption"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_15" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#cd96ff"
+                },
+                "insert" : "Want to know more about what each component is? Visit the:"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "container_1" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_2" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "center",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_3" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_4" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_5" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_6" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "text_3" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#e6ecf2",
+                  "size" : "12px"
+                },
+                "insert" : "Are there different behaviours that can be grouped and described by specific clusters?"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_2" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#e6ecf2",
+                  "size" : "20px"
+                },
+                "insert" : "Cluster Analysis"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_5" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "2) Select a User by clicking on any number in the table (avgs below)"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "chart_7" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "stack" : false,
+          "showPoints" : true,
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : false,
+            "show" : true,
+            "customSize" : "auto",
+            "position" : "top-center",
+            "inside" : false
+          },
+          "axisMode" : "dual",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [ ],
+                "showNullValues" : true,
+                "customizeLegend" : false,
+                "showPercentage" : true,
+                "showDimensions" : true,
+                "showMeasures" : true,
+                "dimensions" : [ ]
+              }
+            }
+          },
+          "visualizationType" : "time-combo",
+          "missingValue" : "cumulative",
+          "timeAxis" : {
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : ""
+          },
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "plots" : {
+            "A" : {
+              "mark" : "dot"
+            },
+            "B" : {
+              "mark" : "line"
+            },
+            "C" : {
+              "mark" : "line"
+            }
+          },
+          "columnMap" : {
+            "timeAxis" : [
+              "InteractionDateTime_Year~~~InteractionDateTime_Month~~~InteractionDateTime_Day"
+            ],
+            "trellis" : [ ],
+            "plots" : [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "showActionMenu" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "valueType" : "compactNumber",
+          "valueTypeOnLine" : "none",
+          "theme" : "colorblindEnhanced",
+          "step" : "ClicksPerCaseTimelin_1",
+          "compactDecimalDigits" : -1,
+          "applyConditionalFormatting" : true
+        },
+        "type" : "chart"
+      },
+      "text_4" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "1) Select a Cluster on the scatter plot (avgs below)"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "chart_1" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "bins" : {
+            "breakpoints" : {
+              "high" : 100,
+              "low" : 0
+            },
+            "bands" : {
+              "high" : {
+                "color" : "#008000",
+                "label" : ""
+              },
+              "low" : {
+                "color" : "#B22222",
+                "label" : ""
+              },
+              "medium" : {
+                "color" : "#ffa500",
+                "label" : ""
+              }
+            }
+          },
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : true,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "sync",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [ ],
+                "showNullValues" : true,
+                "customizeLegend" : false,
+                "showPercentage" : true,
+                "showDimensions" : true,
+                "showMeasures" : true,
+                "dimensions" : [ ]
+              }
+            }
+          },
+          "visualizationType" : "scatter",
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "Distribution of Effort by Clusters",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "binValues" : false,
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "radiusRatio" : 5,
+          "columnMap" : {
+            "r" : [
+              "C"
+            ],
+            "x" : [
+              "A"
+            ],
+            "y" : [
+              "B"
+            ],
+            "trellis" : [ ],
+            "plots" : [
+              "OwnerId_clustering"
+            ]
+          },
+          "showActionMenu" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "x" : {
+            "sqrtScale" : false,
+            "showZero" : true,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "y" : {
+            "sqrtScale" : false,
+            "showZero" : true,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "theme" : "colorblindEnhanced",
+          "step" : "CaseUserClusters_1",
+          "compactDecimalDigits" : -1,
+          "dimensionAxis" : {
+            "showTitle" : true,
+            "customSize" : "auto",
+            "showAxis" : true,
+            "title" : "",
+            "icons" : {
+              "useIcons" : false,
+              "iconProps" : {
+                "fit" : "cover",
+                "column" : "",
+                "type" : "round"
+              }
+            }
+          },
+          "applyConditionalFormatting" : true
+        },
+        "type" : "chart"
+      },
+      "text_6" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "3) Review the engagement and productivity details for each record owned by that user."
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_1" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#16325c",
+                  "size" : "12px"
+                },
+                "insert" : "Select a Case Owner above to view their feature adoption."
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "filterpanel_2" : {
+        "parameters" : {
+          "filterItemOptions" : {
+            "backgroundColor" : "#FFFFFF",
+            "borderColor" : "#54698d",
+            "borderRadius" : 4,
+            "borderWidth" : 1,
+            "propertyColor" : "#54698D",
+            "valueColor" : "#16325C"
+          },
+          "filters" : [ ],
+          "itemsPerRow" : 9,
+          "showAllFilters" : true,
+          "title" : {
+            "separatorColor" : "#54698d",
+            "text" : {
+              "align" : "left",
+              "color" : "#091A3E",
+              "label" : "Filters"
+            },
+            "visible" : false
+          }
+        },
+        "type" : "filterpanel"
+      },
+      "link_3" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "Page_Default"
+          },
+          "destinationType" : "page",
+          "fontSize" : 16,
+          "includeState" : false,
+          "text" : "Button title",
+          "textAlignment" : "center",
+          "textColor" : "#0070D2"
+        },
+        "type" : "link"
+      },
+      "filterpanel_1" : {
+        "parameters" : {
+          "filterItemOptions" : {
+            "backgroundColor" : "#FFFFFF",
+            "borderColor" : "#54698d",
+            "borderRadius" : 4,
+            "borderWidth" : 1,
+            "propertyColor" : "#54698D",
+            "valueColor" : "#16325C"
+          },
+          "filters" : [ ],
+          "itemsPerRow" : 6,
+          "showAllFilters" : true,
+          "title" : {
+            "separatorColor" : "#54698d",
+            "text" : {
+              "align" : "left",
+              "color" : "#091A3E",
+              "label" : ""
+            },
+            "visible" : true
+          }
+        },
+        "type" : "filterpanel"
+      },
+      "link_4" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "Page_Default"
+          },
+          "destinationType" : "page",
+          "fontSize" : 16,
+          "includeState" : false,
+          "text" : "Close",
+          "textAlignment" : "center",
+          "textColor" : "#0070D2"
+        },
+        "type" : "link"
+      },
+      "link_1" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "Page_Default"
+          },
+          "destinationType" : "page",
+          "fontSize" : 16,
+          "includeState" : false,
+          "text" : "Close",
+          "textAlignment" : "center",
+          "textColor" : "#0070D2"
+        },
+        "type" : "link"
+      },
+      "link_2" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "Page_Grid_Expansion"
+          },
+          "destinationType" : "page",
+          "fontSize" : 16,
+          "includeState" : false,
+          "text" : "Open",
+          "textAlignment" : "center",
+          "textColor" : "#0070D2"
+        },
+        "type" : "link"
+      },
+      "text_21" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Select a bar below to see the action description:"
+              },
+              {
+                "attributes" : {
+                  "size" : "12px",
+                  "color" : "#54698d"
+                },
+                "insert" : "[Description]"
+              }
+            ],
+            "values" : {
+              "Description" : {
+                "field" : "Description",
+                "sourceType" : "result",
+                "step" : "EventDictionary_1"
+              }
+            }
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_20" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#091a3e",
+                  "size" : "24px"
+                },
+                "insert" : "Service Value Analytics"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_23" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#e6ecf2",
+                  "size" : "20px"
+                },
+                "insert" : "Service Performance"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "table_1" : {
+        "parameters" : {
+          "borderColor" : "#a8b7c7",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#ffffff",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [ ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#16325c",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#54698d",
+          "innerMinorBorderColor" : "#a8b7c7",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "Owner_Name_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "table_2" : {
+        "parameters" : {
+          "borderColor" : "#54698d",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#16325c",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "A",
+            "B",
+            "C",
+            "F",
+            "D",
+            "E",
+            "OwnerId_clustering"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#000000",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#54698d",
+          "innerMinorBorderColor" : "#54698d",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "pivoted" : false,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "ClusterUsers_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "table_3" : {
+        "parameters" : {
+          "borderColor" : "#e1e5ee",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#f2f6fa",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "A",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "customBulkActions" : [ ],
+          "evenRowColor" : "#f2f6fa",
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#e4ecf2",
+            "fontColor" : "#5c7a99",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#a9b7c7",
+          "innerMinorBorderColor" : "#e1e5ee",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "oddRowColor" : "#ffffff",
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "CaseSummary_1",
+          "totals" : true,
+          "verticalPadding" : 8
+        },
+        "type" : "table"
+      },
+      "table_4" : {
+        "parameters" : {
+          "borderColor" : "#54698d",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#16325c",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "CaseNumber",
+            "Origin",
+            "Type",
+            "Reason",
+            "Priority",
+            "Status",
+            "Owner.Name",
+            "Owner.Profile.Name",
+            "Owner.Roles.Name",
+            "Age",
+            "Interactions.SumStallTime",
+            "Interactions.TotalClicks",
+            "Interactions.UniqueSessionKey",
+            "Interactions.UNIQUE_ComponentName",
+            "Interactions.UniqueUserCount"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#000000",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#54698d",
+          "innerMinorBorderColor" : "#54698d",
+          "interactions" : [ ],
+          "maxColumnWidth" : 300,
+          "minColumnWidth" : 40,
+          "mode" : "variable",
+          "numberOfLines" : 1,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "Case_Details_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "link_7" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "Page_Grid_Expansion"
+          },
+          "destinationType" : "page",
+          "fontSize" : 16,
+          "includeState" : false,
+          "text" : "Open",
+          "textAlignment" : "center",
+          "textColor" : "#0070D2"
+        },
+        "type" : "link"
+      },
+      "table_5" : {
+        "parameters" : {
+          "borderColor" : "#54698d",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#16325c",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "A",
+            "B",
+            "C",
+            "F",
+            "D",
+            "E",
+            "{{cell(GroupingToggle_1.selection, 0, \"Value\").asString()}}"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#000000",
+            "fontColor" : "#ffffff",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#54698d",
+          "innerMinorBorderColor" : "#54698d",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "pivoted" : false,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "ClusterUsers_2",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "link_8" : {
+        "parameters" : {
+          "destinationLink" : {
+            "tooltip" : "Google Doc",
+            "url" : "https://docs.google.com/presentation/d/1fR1ubUzmiH9e3jw6i8dnLDPD3AJtMngCO7l05UydgNY/"
+          },
+          "destinationType" : "url",
+          "fontSize" : 16,
+          "includeState" : false,
+          "text" : "Visual Data Dictionary",
+          "textAlignment" : "center",
+          "textColor" : "#C6D3E1"
+        },
+        "type" : "link"
+      },
+      "pillbox_1" : {
+        "parameters" : {
+          "compact" : false,
+          "exploreLink" : false,
+          "fontSize" : 12,
+          "selectedTab" : {
+            "backgroundColor" : "#E6ECF2",
+            "borderColor" : "#FFFFFF",
+            "borderEdges" : [ ],
+            "borderWidth" : 0,
+            "textColor" : "#16325C"
+          },
+          "showActionMenu" : true,
+          "step" : "GroupingToggle_1",
+          "textColor" : "#7D98B3"
+        },
+        "type" : "pillbox"
+      },
+      "container_12" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_11" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_10" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "chart_11" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "bins" : {
+            "breakpoints" : {
+              "high" : 100,
+              "low" : 0
+            },
+            "bands" : {
+              "high" : {
+                "color" : "#008000",
+                "label" : ""
+              },
+              "low" : {
+                "color" : "#B22222",
+                "label" : ""
+              },
+              "medium" : {
+                "color" : "#ffa500",
+                "label" : ""
+              }
+            }
+          },
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : false,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "multi",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "showNullValues" : false,
+                "customizeLegend" : false,
+                "showPercentage" : false,
+                "showDimensions" : false,
+                "showMeasures" : false,
+                "dimensions" : [
+                  "Component"
+                ]
+              }
+            }
+          },
+          "visualizationType" : "hbar",
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "binValues" : false,
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "columnMap" : {
+            "trellis" : [ ],
+            "dimensionAxis" : [
+              "ComponentName"
+            ],
+            "plots" : [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ]
+          },
+          "showActionMenu" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "valueType" : "compactNumber",
+          "theme" : "colorblindEnhanced",
+          "step" : "ClicksByComponent_1",
+          "compactDecimalDigits" : -1,
+          "dimensionAxis" : {
+            "showTitle" : true,
+            "customSize" : 30,
+            "showAxis" : true,
+            "title" : "Component Name",
+            "icons" : {
+              "useIcons" : false,
+              "iconProps" : {
+                "fit" : "cover",
+                "column" : "",
+                "type" : "round"
+              }
+            }
+          },
+          "applyConditionalFormatting" : true
+        },
+        "type" : "chart"
+      }
+    }
+  }
+}

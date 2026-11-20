@@ -1,0 +1,193 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes"  access="global" extends="c:MarketplaceRedux" description="Search Bar Inner Component used in L2/ L1/L0 This dispatches search request as well as type ahead requests from the
+                                                                                                                                server">
+    <aura:set attribute="storeName" value="Search" />
+    <aura:dependency resource="markup://force:navigateToSObject" type="EVENT"/>
+    <aura:attribute name="debugMode" type="boolean" default="false" description="Debug mode setting"/>
+    <aura:attribute name="showKeywordInDropdown" type="boolean" default="false" description="Setting to show Search Keyword in typeahead" />
+    <aura:attribute name="showSearchAllMarketplace" type="boolean" default="false" description="Setting to show Search Keyword in All Marketplace within typeahead" />
+    <aura:attribute name="showSearchAllProducts" type="boolean" default="false" description="Setting to show Search Keyword in All Products within typeahead" />
+    <aura:attribute name="showSearchAllPartners" type="boolean" default="false" description="Setting to show Search Keyword in All Partners within typeahead" />
+    <aura:attribute name="searchAllMarketplaceLabel" type="string" description="Label for Typeahead All Marketplace - in All Marketplace"/>
+    <aura:attribute name="searchAllProductsLabel" type="string" description="Label for Typeahead All Products - in All Marketplace > All Products"/>
+    <aura:attribute name="searchAllPartnersLabel" type="string" description="Label for Typeahead All Partners - in All Marketplace > All Partners"/>
+    
+    <aura:attribute name="searchString" type="string" description="Internal Component State for storing redux searchString"/>
+    <aura:attribute name="searchQuery" type="string" description="Internal Component State for storing input box search string"/>
+    <aura:attribute name="_searchQuery" type="string" description="Internal Component State" />
+    <aura:attribute name="timer" type="object"/>
+    <aura:attribute name="searchType" type="string" description="Design Setting Search Type all/product/partner"/>
+    <aura:attribute name="page" type="string" description="to differentiate between search bar on home page and search page"/>
+    
+    <aura:attribute name="searchLoading" type="boolean" default="false" description="Internal component state"/>
+    <aura:attribute name="searchClearVisible" type="boolean" default="false" description="Internal component state"/>
+    
+    <aura:attribute name="refreshPageOnSearch" type="boolean" default="false" description="Refresh URL on Search" />
+    
+    <aura:attribute name="searchPlaceholderText" type="string" description="Search Placeholder Text"/>
+    <aura:attribute name="searchPlaceholderTextOverride" type="string" description="Design Setting Text to Override - Search Placeholder Text"/>
+    
+    <aura:attribute name="typeAheadOptionsVisible" type="Boolean"  default="false" description="Internal component state"/>
+    <aura:attribute name="typeAheadOptions" type="Object[]" description="Internal component state" />
+    
+    <aura:attribute name="handleClose" type="Object" description="Internal component state"/>
+    
+    <aura:handler name="change" value="{!v.searchString}" action="{!c.handleSearchStringChange}"/>
+    <aura:handler name="change" value="{!v.searchType}" action="{!c.handleSearchTypeChange}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <c:MarketplaceAnalyticsData aura:id="analyticsData" /><!-- component having the Web analytics logic -->
+    
+    <div class="searchForm slds-m-bottom_small" onkeyup="{!c.handleKeyUp}" onkeydown="{!c.handleKeyDown}">
+        <form class="search item" onsubmit="{!c.handleSearchSubmit}" autocomplete="off">
+            <button type="submit" class="searchButton icon" title="{!$Label.c.PMP_Search}" aria-label="{!$Label.c.PMP_Search}" onfocus="{!c.handleClose}">
+                <lightning:icon iconName="utility:search"
+                                size="x-small"/>
+            </button>
+            
+            <label for="search" class="searchLabel"  >
+                <span class="slds-hide">{!$Label.c.PMP_Search}</span>
+                <c:MarketplaceSearchBarInput
+                                             aura:id="searchInputField"
+                                             id="search"
+                                             type="text"
+                                             title="{!$Label.c.PMP_Search}"
+                                             name="searchQuery"
+                                             value="{!v.searchQuery}"
+                                             placeholder="{!v.searchPlaceholderText}"
+                                             onblur="{!v.handleClose}"                                
+                                             />
+            </label>
+            <aura:if isTrue="{!v.searchQuery != ''}">
+                <button type="reset" class="searchClear" aria-label="clear"  onclick="{!c.handleSearchClear}">
+                    <lightning:icon iconName="utility:clear"
+                                    size="x-small"/>
+                </button>
+            </aura:if>
+        </form>
+        <aura:if isTrue="{!v.typeAheadOptionsVisible == true}">
+            <!--<aura:if isTrue="{!v.typeAheadOptions.length == 0}">
+     <lightning:spinner size="small" alternativeText="Loading search suggestions..." />
+    </aura:if> -->
+            <aura:if isTrue="{!v.typeAheadOptions.length > 0}">
+                <div class="typeAheadOptions slds-text-align_left">
+                    <ul>
+                        <!--
+                        <aura:if isTrue="{!v.showKeywordInDropdown}">
+                            <li>
+                                <a href="javascript:void(0)"
+                                   data-category="null"
+                                   data-search-type="{!v.searchType}"
+                                   data-keyword="{!v._searchQuery}"
+                                   onclick="{!c.handleSelectOption}"
+                                   onblur="{!c.handleClose}">
+                                    <span class="typeAheadTerm">{!v._searchQuery}</span>
+                                </a>
+                            </li>
+                        </aura:if>
+                        -->
+                        <aura:iteration items="{!v.typeAheadOptions}" var="typeAhead" indexVar="i">
+                            <!-- IPA2.0 + US TWC4497-1631 -->
+                            <!-- <aura:if isTrue="{!and(typeAhead.partnerOptions.length == 0, typeAhead.offeringOptions.length == 0)}"> -->
+                            <aura:if isTrue="{!and(typeAhead.partnerOptions.length == 0)}">
+                                <div class="slds-align_absolute-center slds-m-top_small">No Match found</div>
+                            </aura:if>
+                            <!-- IPA2.0 + US TWC4497-1631 -->
+                            <!-- <aura:if isTrue="{!or(typeAhead.partnerOptions.length > 0, typeAhead.offeringOptions.length > 0)}"> -->
+                            <aura:if isTrue="{!or(typeAhead.partnerOptions.length > 0)}">
+                                <!-- IPA2.0 + US TWC4497-1631 -->
+                                <!-- <span style="font-weight: bold;">Offerings:</span>
+                                <aura:if isTrue="{!typeAhead.offeringOptions.length == 0}">
+                                    <div class="slds-m-around_x-small">No Match found</div>
+                                </aura:if> -->
+                                <!-- IPA2.0 + US TWC4497-1631 -->
+                                <!-- <aura:iteration items="{!typeAhead.offeringOptions}" var="offering" indexVar="o">
+                                    <li>
+                                        <a aura:id="typeaheadOption" href="javascript:void(0)"
+                                           data-record-id="{!offering.recordId}"
+                                           data-category="{!offering.category.categoryId}"
+                                           data-category-title="{!offering.category.categoryName}"
+                                           data-category-description="{!offering.category.categoryDescription}"
+                                           data-index="{!o}"
+                                           data-search-type="{!offering.searchType}"
+                                           data-keyword="{!offering.keyword}"
+                                           data-label="{!offering.label}"
+                                           onclick="{!c.handleSelectOption}"
+                                           onblur="{!c.handleClose}">
+                                            <span class="{!'typeAheadTerm' + (offering.indent ? ' slds-m-left_medium' : '')}">
+                                                {!offering.label}
+                                            </span>
+                                        </a>
+                                    </li>
+                                </aura:iteration> -->
+                                <!-- IPA2.0 + US TWC4497-1631 -->
+                                <!-- <aura:if isTrue="{!typeAhead.offeringOptions.length > 0}">
+                                    <a href="javascript:void(0)" 
+                                       aura:id="typeaheadOption"
+                                       data-searchtype="product" 
+                                       onclick="{!c.handleSearch}" 
+                                       onblur="{!c.handleClose}" 
+                                       class="anchorCls">
+                                        View All Offering matches
+                                    </a>
+                                </aura:if> -->
+                                <span style="font-weight: bold;">Partners:</span>
+                                <aura:if isTrue="{!typeAhead.partnerOptions.length == 0}">
+                                    <div class="slds-m-around_x-small">No Match found</div>
+                                </aura:if>
+                                <aura:iteration items="{!typeAhead.partnerOptions}" var="partner" indexVar="p">
+                                    <li>
+                                        <a aura:id="typeaheadOption" href="javascript:void(0)"
+                                           data-record-id="{!partner.recordId}"
+                                           data-category="{!partner.category.categoryId}"
+                                           data-category-title="{!partner.category.categoryName}"
+                                           data-category-description="{!partner.category.categoryDescription}"
+                                           data-index="{!p}"
+                                           data-search-type="{!partner.searchType}"
+                                           data-keyword="{!partner.keyword}"
+                                           data-label="{!partner.label}"
+                                           onclick="{!c.handleSelectOption}"
+                                           onblur="{!c.handleClose}">
+                                            <span class="{!'typeAheadTerm' + (partner.indent ? ' slds-m-left_medium' : '')}">
+                                                {!partner.label}
+                                            </span>
+                                        </a>
+                                    </li>
+                                </aura:iteration>
+                                <aura:if isTrue="{!typeAhead.partnerOptions.length > 0}">
+                                    <a href="javascript:void(0)" 
+                                       aura:id="typeaheadOption"
+                                       data-searchtype="partner" 
+                                       onclick="{!c.handleSearch}"  
+                                       onblur="{!c.handleClose}" 
+                                       class="anchorCls">
+                                        View All Partner matches
+                                    </a>
+                                </aura:if>
+                                <aura:set attribute="else">
+                                    <li>
+                                        <a aura:id="typeaheadOption" href="javascript:void(0)"
+                                           data-record-id="{!typeAhead.recordId}"
+                                           data-category="{!typeAhead.category.categoryId}"
+                                           data-category-title="{!typeAhead.category.categoryName}"
+                                           data-category-description="{!typeAhead.category.categoryDescription}"
+                                           data-index="{!i}"
+                                           data-search-type="{!typeAhead.searchType}"
+                                           data-label="{!typeAhead.label}"
+                                           data-keyword="{!typeAhead.keyword}"
+                                           onclick="{!c.handleSelectOption}"
+                                           onblur="{!c.handleClose}">
+                                            <span class="{!'typeAheadTerm' + (typeAhead.indent ? ' slds-m-left_medium' : '')}">
+                                                {!typeAhead.label}
+                                            </span>
+                                        </a>
+                                    </li>
+                                </aura:set>
+                            </aura:if>
+                        </aura:iteration>
+                    </ul>
+                </div>
+            </aura:if>
+        </aura:if>
+    </div>
+</aura:component>

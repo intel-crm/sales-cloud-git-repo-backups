@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Account.Core_Account_Cnt__c:SUM/User.User_Unique__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Ratio</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_30684249</developerName>
+        <masterLabel>ROLE</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermediate_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Unified_Hierarchy_View__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Open_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Is_Opportunity_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_MDF_CoMarketingActive__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_PSG_Account__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_B2B_Entitlement__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Hong Zhao&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Ye Zong&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Ling Lu&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;bao liu&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Yidong Wang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Qing Yan&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Guoji Chang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Sophia Zhang Zhang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Fang Chen&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Zhiyuan Bai&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Yu Fan&quot;),
+&quot;CCG&quot;,
+
+IF(OR(
+Account.Core_Account_Owner_Manager__c=&quot;Howard Chang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Kai Hu&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Yali Liang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Wanjie Wang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Kai Hu&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Carol Qin&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Jim Gong&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Ryan Sun&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Jim Gong&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Hongbo Cui&quot;),
+    &quot;CISG&quot;,
+    
+    
+IF(OR(
+Account.Core_Account_Owner_Manager__c=&quot;Matt Zhou&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Hans P. Chuang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Dan Lin Chen&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Gavin Gao&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Chen Guang Yang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Yong Li&quot;),
+    &quot;DCAI OEM &amp; Telco&quot;,
+    
+    
+IF(OR(
+Account.Core_Account_Owner_Manager__c=&quot;Hua Bai&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Yang Chen&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Dingjia Cai&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Yiping Liu&quot;),
+&quot;ISG&quot;, 
+    
+    
+IF(OR(
+Account.Core_Account_Owner_Manager__c=&quot;Gerry Mao&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Arthur Yang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Wei Guo&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;John Li&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Jay Yu&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Andrew Jiang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;heng zhang&quot;),
+    &quot;NEX&quot;, 
+        
+IF(OR(
+Account.Core_Account_Owner_Manager__c=&quot;Victoria Yang&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Bin Liu&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Eric Tang&quot;),
+&quot;STSG&quot;, 
+
+IF(OR(
+Account.Core_Account_Owner_Manager__c=&quot;Tao Yan&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Gary Gao&quot;,
+Account.Core_Account_Owner_Manager__c=&quot;Geng Xia&quot;),
+&quot;TEG&quot;, 
+
+
+    
+&quot;Other&quot;)))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <booleanFilter>(1 AND 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Uncovered Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC Hosted Sales Group,PRC Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Primary_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel-led Account</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>USERS.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>PRC Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

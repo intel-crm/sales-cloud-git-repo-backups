@@ -1,0 +1,215 @@
+<template>
+               
+        
+       
+   <lightning-card  title={selectedQuarterClaim}> 
+
+
+      <!--Modal Popup-->
+      <div class="slds-p-bottom_small">
+         <lightning-button class="slds-modal__content slds-p-left_medium slds-p-bottom_medium" variant="brand" label={summaryBreakDown}
+               title="Open popup" onclick={showModalBox} 
+               disabled={hideSummBreakdown}>
+         </lightning-button>
+         <lightning-button if:true={showOffsetButton} class="slds-modal__content slds-p-left_large" variant="brand" label={setRecoveryOffset}
+                           title={setRecoveryOffset} disabled={disableOffsetButton} onclick={showOffsetModalBox}>
+         </lightning-button>
+      </div>
+  
+   
+    
+   <!-- modal start -->      
+   <template if:true={isShowModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+       <div class="slds-modal__container custom-width">
+        <!-- modal header start -->
+          <header class="slds-modal__header">
+             <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={hideModalBox}>
+                <lightning-icon icon-name="utility:close"
+                   alternative-text="close"
+                   size="small" ></lightning-icon>
+                <span class="slds-assistive-text">{closeLabel}</span>
+             </button>
+             <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{amountSummary}</h2>
+          </header>
+     
+          <!-- modal body start -->
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                <table>
+                
+                     <tr key={psdList.id}>
+                        <th >{budgetTypeLabel}</th>
+                        <th>{regionLabel}</th>
+                        <th>{recoveryAmtForSelQuarter}</th>
+                        <th>{carryFwdAmtForPrevQtr}</th>
+                        <th>{amountRecovered}</th>
+                        <th>{recoveryOffsetAmt}</th>
+                        <th>{commentsHeaderText}</th>
+                     </tr>
+                     <template for:each={psdList} for:item="ps">
+                        <tr key={ps.id} >
+                           <td>{ps.budgetType} </td>
+                           <td>{ps.region} </td>
+                           <td>{ps.totalAmt}</td>
+                           <td>{ps.carryOverAmt}</td>
+                           <td>{ps.recoveredAmt}</td>
+                           <td>{ps.recoveryOffsetAmt}</td>
+                           <td if:true={ps.showrecoveryOffsetDetails}><a href="javascript:void(0);" onclick={handleLinkClick} data-key={ps.id}>{commentsLinkText}</a></td>
+                           <td if:false={ps.showrecoveryOffsetDetails}></td>
+                        </tr> 
+                     </template>
+                          
+                    
+                </table>
+          </div>
+   
+
+          <!-- modal footer start-->
+          <footer class="slds-modal__footer">
+             <button class="slds-button slds-button_neutral" onclick={hideModalBox}>{closeLabel}</button>
+          </footer>
+       
+       </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+ </template>
+ <!-- modal end -->
+
+ <!-- modal start -->
+ <template if:true={showOffsetModel}>
+   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container offsetTable">
+         <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeOffsetModal}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close"
+                     size="small"></lightning-icon>
+                  <span class="slds-assistive-text">{closeLabel}</span>
+            </button>
+            <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">{recoveryOffset}</h2>
+         </header>
+         <div class="slds-modal__content" id="modal-content-id-3">
+            <div class="slds-p-around_medium">
+               <table class="slds-table slds-table_bordered">
+                  <thead>
+                     <tr class="slds-line-height_reset slds-grid slds-wrap offsetHeaderRow">
+                        <th scope="col" class="slds-col slds-size_2-of-12">{budgetTypeLabel}</th>
+                        <th scope="col" class="slds-col slds-size_2-of-12">{regionLabel}</th>
+                        <th scope="col" class="slds-col slds-size_3-of-12">{recoveryOffsetLabel}</th>
+                        <th scope="col" class="slds-col slds-size_5-of-12">{commentsHeaderText}</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <template for:each={offsetDetailsToRender} for:item="offsetRecord">
+                        <tr key={offsetRecord.key} class="slds-grid offsetTableRow">
+                           <td class="slds-col slds-size_2-of-12">
+                              <div class="slds-p-top_medium">{offsetRecord.value.budgetType}</div>
+                           </td>
+                           <td class="slds-col slds-size_2-of-12">
+                              <div class="slds-p-top_medium">{offsetRecord.value.region}</div>
+                           </td>
+                           <td class="slds-col slds-size_3-of-12">
+                              <div class={offsetRecord.value.errorClass}>
+                              <lightning-input type="number" step="0.01"
+                                 value={offsetRecord.value.offsetAmount} data-key={offsetRecord.key}
+                                 onchange={handleAmountChange}>
+                              </lightning-input></div>
+                              <div class="slds-text-body_small">{savedRecoveryOffsetAmountLabel}: {offsetRecord.value.initialOffsetAmount}</div>
+                           </td>
+                           <td class="slds-col slds-size_5-of-12">
+                              <lightning-textarea class="slds-p-bottom_small" value={offsetRecord.value.offsetComments}
+                                 data-key={offsetRecord.key} maxlength="5000" onchange={handleCommentChange}>
+                              </lightning-textarea>
+                           </td>
+                        </tr>
+                        <template if:true={offsetRecord.value.hasError}>
+                           <div class="rowError" key={offsetRecord.errorRowKey}>
+                              {offsetRecord.value.errorMessage}
+                           </div>
+                        </template>
+                     </template>
+                  </tbody>
+               </table>
+            </div>
+               <footer class="slds-modal__footer">
+                  <lightning-button label={cancelButtonLabel} title={cancelButtonLabel} onclick={closeOffsetModal} class="slds-m-left_x-small"></lightning-button>
+                  <lightning-button variant="brand" label={submitButtonLabel} title={submitButtonLabel} disabled={disableOffsetSubmitButton} onclick={handleClick} class="slds-float_right slds-m-left_x-small"></lightning-button>
+               </footer>
+         </div>
+      </div>
+   </section>
+   <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- modal end -->
+
+<!-- modal start -->
+<template if:true={showOffsetConfirmationModel}>
+   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+         <header class="slds-modal__header modal-heading-04">
+            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeOffsetModals}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close"
+                     size="small"></lightning-icon>
+                  <span class="slds-assistive-text">{closeLabel}</span>
+            </button>
+            <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate" >{recoveryOffset}</h2>
+         </header>
+         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-4">
+            <div class="slds-p-bottom_small">{recoveryOffsetconfimMsg}</div>
+            <footer class="slds-modal__footer">
+               <lightning-button label={noButtonLabel} title={noButtonLabel} onclick={closeOffsetModals} class="slds-m-left_x-small"></lightning-button>
+               <lightning-button label={yesButtonLabel} title={yesButtonLabel} onclick={saveRecord} class="slds-float_right slds-m-left_x-small" variant="brand"></lightning-button>
+            </footer>
+         </div>
+      </div>
+   </section>
+   <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- modal end -->
+
+<!-- modal start -->
+<template if:true={showCommentPopup}>
+   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+         <header class="slds-modal__header modal-heading-04">
+            <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeCommentPopup}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close"
+                     size="small"></lightning-icon>
+                  <span class="slds-assistive-text">{closeLabel}</span>
+            </button>
+            <h2 id="modal-heading-05" class="slds-text-heading_medium slds-hyphenate" >{commentsPopUpHeaderText}</h2>
+         </header>
+         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-5">
+            <div class="slds-p-bottom_small">{commentToShowInPopup}</div>
+         </div>
+         <!-- modal footer start-->
+         <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral" onclick={closeCommentPopup}>{closeLabel}</button>
+         </footer>
+      </div>
+   </section>
+   <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- modal end -->
+
+<!--Modal Popup-->
+         <template if:true={showRecoveryMessage}>
+            <div class="slds-m-top_small slds-m-left_medium slds-m-bottom_medium">
+               {surePayRecForCurrQuarter} ({currentQuarterYear}) = <strong>{surePayRecoveryAmount}</strong>
+            </div>
+         </template>
+
+         <div style="height:500px;">
+            <lightning-datatable
+            class="seventyfive-percent"
+            key-field="id"
+            data={data}
+            columns={columns}
+            hide-checkbox-column>
+            </lightning-datatable>
+         </div>
+         
+       
+</lightning-card>
+
+</template>

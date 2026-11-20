@@ -1,0 +1,29 @@
+<template>
+    <template if:true={displayText}>
+        <div class="status-text" style="color:red;text-align:center">
+            <p>{label.PCC_DraftStatusMessage}</p>
+        </div>
+    </template>
+    <template if:true={inactivePicklist}>
+        <div class="status-text" style="color:red;text-align:center">
+            <p>The value present on the fields - {inactivePicklists} are Inactive.Please update the values on the Design and proceed further.</p>
+        </div>
+    </template>
+    <template if:true={displayDealStatus}>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <div class="infotext slds-box slds-box_x-small">
+                    <lightning-formatted-rich-text value={label.PCC_DealDraftStatusMessage}></lightning-formatted-rich-text>
+                </div>
+            </div>
+            <div>
+                <c-p-c-c_-submit-deal-error-pane record-id={recordId}></c-p-c-c_-submit-deal-error-pane>
+            </div>
+        </div>
+    </template>
+    <template if:true={showWarning}>
+        <div class="status-text" style="color:red;text-align:center">
+            <p>The product segment on opportunity is not valid for Embedded IOT designs. Please update the product segment on Opportunity record before adding the product on the DR.</p>
+        </div>
+    </template>
+</template>

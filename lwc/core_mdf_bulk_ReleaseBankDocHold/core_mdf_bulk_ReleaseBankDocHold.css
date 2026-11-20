@@ -1,0 +1,16 @@
+.backgroundInverse {
+    position: relative;
+    background-color: #16325c;
+    height: 840px;
+}
+.c-container {
+    border: 1px solid #d8dde6;
+    margin-top: 50px;
+}
+
+ .custom-box {
+    text-align: center;
+    background-color: #f4f6f9;
+    padding: 1rem;
+    border: 1px solid #d8dde6;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>CMDF User</audienceName>
+    <container>Partnercenter Unified Community</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <isEnabled>true</isEnabled>
+                <permissionName>Core_MDF_CMDF_USER</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <profile>admin</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AnyCriterionMatches</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$7913d841-6092-479d-ab63-90ee9ca96e20</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_12_Component</targetValue>
+        </target>
+        <target>
+            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$2fab2b7d-1d09-4c9a-bd0f-41c8c3c081c5</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_11_Component</targetValue>
+        </target>
+        <target>
+            <groupName>9c79fbf8-f999-4f12-96ba-72f6920eb245$#$786f3736-9869-49bc-87a4-c02f6203cf56</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Home_core_MDF_dynamicURLsOnCommunity_6_Component</targetValue>
+        </target>
+    </targets>
+</Audience>

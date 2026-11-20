@@ -1,0 +1,171 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_Survey
+Version     : 1.0 
+Created Date: Aug 23 2017
+Function    : Visualforce Page to Submit survey after close case 
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Amritesh                   08/23/2017               Created
+* Amritesh                   01/19/2018               Updated
+* Amritesh                   06/19/2018               Updated - US107855
+------------------------------------------------------------------------------------------------------------>
+<apex:page controller="Core_IPS_Survey_Controller" title="Intel Premier Support Survey - Case {!CaseNumber}" showHeader="false" cache="false">
+    
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, 'survey_style.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, SUBSTITUTE(surveyType,' ','_')&'_survey_style.css')}"/>
+    <style>     
+        <!-- TWC745-80 -- 24-08-21 -- Start -- Sai Krishna -- Updating old Survey Page for customer feedaback -->
+        <apex:outputPanel layout="none">
+            .answer2 .selectradio-input td:nth-child(1) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_SadEmoji}') " " "Strongly Disagree"  }  
+        </apex:outputPanel>
+        <apex:outputPanel layout="none">
+            .answer2 .selectradio-input td:nth-child(3) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_NeutralEmoji}') "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Neither"  } 
+        </apex:outputPanel>
+        <apex:outputPanel layout="none">
+            .answer2 .selectradio-input td:nth-child(5) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_HappyEmoji}') " " "Strongly &nbsp;&nbsp;Agree"}
+        </apex:outputPanel>
+        <!-- TWC745-80 -- 24-08-21 -- End -- Sai Krishna -- Updating old Survey Page for customer feedaback -->
+        <apex:outputPanel rendered="{!surveyType=='Customer'}" layout="none">
+            .answer7:before { content:url('{!$Resource.Core_IPS_Survey_Rating_Image}');  }
+        </apex:outputPanel>
+	<apex:outputText value="{!HTMLENCODE(containerCSS)}" escape="false" />
+    </style>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Survey,'jquery1124min.js')}"/>
+    <script>function setFocusOnLoad() {}
+    </script>
+    <div class="mainContent {!SUBSTITUTE(surveyType,' ','_')}"> 
+        <apex:form >
+            <!-- Survey Logo -->
+            <div class="logocontainer">                
+                <apex:image value="{!$Resource[logoImageResource]}" rendered="{!NOT(ISBLANK(logoImageResource))}"/>
+            </div>
+            
+            <apex:pageMessages escape="false"></apex:pageMessages>
+            
+            <apex:outputPanel rendered="{!showMainContent}">       
+                <div class="subsection">
+                    <!-- Header -->
+                    <div class="surveyheader">                        
+                        <apex:outputText value="{!$Label[surveyHeaderLabel]}" escape="false" rendered="{!NOT(ISBLANK(surveyHeaderLabel))}">
+                            <apex:param value="{!casenumber}"/>
+                        </apex:outputText>
+                    </div>                          
+                    
+                    <apex:variable value="{!0}" var="index"/>
+                    <!-- List of Questions -->
+                    <apex:dataTable cellpadding="5" cellspacing="0" value="{!lstQuestions}" var="ques" styleClass="surveyQuesTable">
+                        <apex:column >
+                            <apex:variable value="{!index+1}" var="index"/>
+                            <div class="ques_ans_wrap qa_wrap{!ques.orderNo}">
+                                <div class="question_wrap ques{!ques.orderNo}">                                    
+                                    {!index}.&nbsp;&nbsp;
+                                    <apex:outputText value="{!ques.question}"/>                                    
+                                </div>
+                                
+                                <div class="answer_wrap answer{!ques.orderNo} {!IF(ques.isRequired,'required','')}">
+                                    <div class="float-left">
+                                    <!-- Answer Inputs-->                               
+                                    <apex:outputPanel rendered="{!ques.answerType=='textarea'}" layout="block">
+                                        <apex:inputTextarea value="{!ques.answer}" cols="50" rows="5" html-maxlength="5000" styleClass="textarealong-input input-answer"/>
+                                    </apex:outputPanel>
+                                    
+                                    <apex:selectList rendered="{!ques.answerType=='picklist'}" value="{!ques.answer}" size="1" styleClass="picklist-input input-answer">
+                                        <apex:selectOptions value="{!ques.options}"></apex:selectOptions>
+                                    </apex:selectList>  
+                                    
+                                    <apex:selectRadio rendered="{!ques.answerType=='rowselect'}" value="{!ques.answer}" styleClass="selectradio-input">
+                                        <apex:selectOptions value="{!ques.options}"></apex:selectOptions>
+                                    </apex:selectRadio>
+                                    
+                                    <apex:outputPanel rendered="{!ques.answerType=='freetext'}" layout="block" styleClass="text-input">
+                                        <apex:inputText value="{!ques.answer}" styleClass="input-answer"/>
+                                    </apex:outputPanel>  
+                                    </div>
+                                    <!-- Added as part of US107855 - Amritesh -->
+                                    <div class="float-left valign-top">
+                                        <apex:outputPanel rendered="{!ques.isRequired}" layout="none"><br/>&nbsp;&nbsp;<font color="red">*required</font></apex:outputPanel>   
+                                        <apex:outputPanel styleClass="custom_errmsg" layout="none" rendered="{!NOT(ISBLANK(ques.errorMsg))}">
+                                            <apex:outputText value="{!HTMLENCODE(JSENCODE(ques.errorMsg))}" escape="false" />
+                                        </apex:outputPanel>
+                                    </div>
+                                </div>
+                            </div>
+                        </apex:column>                        
+                    </apex:dataTable>  
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="buttonContainer">                      
+                    <apex:commandButton value="Submit" action="{!captureSurvey}" styleClass="submitbutton" onclick="return validate_input()"/>
+                
+                </div>
+                
+                <!-- Footer -->
+                <div class="surveyfooter">
+                    <apex:outputText value="{!$Label[surveyFooterLabel]}" escape="false" rendered="{!NOT(ISBLANK(surveyFooterLabel))}"/>                   
+                </div>
+                
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+    
+    <apex:outputPanel layout="none" rendered="{!isSuccess}">
+        <!-- Script to close the window -->
+        <script>
+            window.onload = function () { 
+                setTimeout(closewindow , 3000); 
+            }
+            function closewindow(){window.open('','_parent','');window.close();}
+        </script>
+    </apex:outputPanel>
+        
+    <!-- Updated By Amritesh  1/19/2018  US79635 -->
+    <apex:outputPanel layout="none" rendered="{!!isSuccess}">
+    <script>       
+    function validate_input() {
+        /* Updated US107855 - Amritesh -start */
+        //validate if required input are not filled
+        var isRequiredEmpty = false;
+        if($(".answer_wrap.required").length>0) { 
+            if($(".answer_wrap.required .selectradio-input").find("input[type='radio']:checked").length==0) {
+                isRequiredEmpty = true;
+                alert('{!$Label.Core_IPS_Survey_Question_Required_Message}');
+                isSubmit = false;
+                return false;
+            }
+        }
+        $(".answer_wrap.required .input-answer").each(function(index) {
+            if($(this).val()=='' || $(this).val()==null) {
+                isRequiredEmpty = true;
+                alert('{!$Label.Core_IPS_Survey_Question_Required_Message}');
+                isSubmit = false;            
+                return false;
+            }
+        });        
+        if(isRequiredEmpty) {
+            isSubmit = false;
+            return false;
+        }
+        /* Updated US107855 - Amritesh - end */
+        //validate if any input is not filled
+        var isAnyFilled = false;
+        $(".input-answer").each(function(){
+            if($(this).val()!='' && $(this).val()!=null) {
+                isAnyFilled = true;
+            }
+        });
+        if($(".selectradio-input").find("input[type='radio']:checked").length>0) {
+            isAnyFilled = true;
+        }
+        if(!isAnyFilled) {
+            var conf = window.confirm("You have not provided any details, Are you sure to Continue ?");
+            return conf;
+        }
+        return isAnyFilled;
+    }
+    
+    
+    </script>
+    </apex:outputPanel>
+</apex:page>

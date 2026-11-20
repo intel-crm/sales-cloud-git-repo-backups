@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>AI Inference</masterLabel>
+        <translation>AI 추론</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inference – Datacenter</masterLabel>
+        <translation>AI 추론 – 데이터센터</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inferencing</masterLabel>
+        <translation><!-- AI Inferencing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Inferencing – Edge</masterLabel>
+        <translation>AI 추론 – 에지</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Client Mainstream Mini PC</masterLabel>
+        <translation>클라이언트 메인스트림 미니 PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Networking - Data &amp; Security</masterLabel>
+        <translation>클라우드 네트워킹 - 데이터 및 보안</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connectivity</masterLabel>
+        <translation><!-- Connectivity --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator</masterLabel>
+        <translation>제작자</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DaaS (PCaaS)</masterLabel>
+        <translation>DaaS(PCaaS)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Data &amp; Network Security</masterLabel>
+        <translation>데이터 및 네트워크 보안</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deep Learning Inferencing</masterLabel>
+        <translation>딥 러닝 추론</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Deep Learning Training</masterLabel>
+        <translation>딥 러닝 교육</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Early Access / Product Launch</masterLabel>
+        <translation>조기 액세스 / 제품 출시</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Compute and Modularity</masterLabel>
+        <translation>에지 컴퓨팅 및 모듈성</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise Cloud Networking &amp; Security</masterLabel>
+        <translation>엔터프라이즈 클라우드 네트워킹 및 보안</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Extend Platform Leadership</masterLabel>
+        <translation>플랫폼 리더십 확장</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Fixed/Wireless Access</masterLabel>
+        <translation>고정/무선 액세스</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gamer Days</masterLabel>
+        <translation>게이머 데이즈</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming Enthusiast</masterLabel>
+        <translation>게이머 챔피언</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Performance Compute</masterLabel>
+        <translation>고성능 컴퓨팅</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Speed Connectivity</masterLabel>
+        <translation>고속 연결</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Accessibility</masterLabel>
+        <translation>IRTI: 접근성</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Climate &amp; Sustainability</masterLabel>
+        <translation>IRTI: 기후 및 지속 가능성</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Education</masterLabel>
+        <translation>IRTI: 교육</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Health &amp; Life Sciences</masterLabel>
+        <translation>IRTI: 의료 및 생명 과학</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IRTI: Social Equity &amp; Human Rights</masterLabel>
+        <translation>IRTI: 사회적 형평성 및 인권</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Accelerated (Solutions)</masterLabel>
+        <translation>인텔 가속화(솔루션)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance AI Accelerator</masterLabel>
+        <translation>인텔® 파트너 얼라이언스 AI 가속기</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance Edge Accelerator</masterLabel>
+        <translation>인텔® 파트너 얼라이언스 에지 가속기</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Partner Alliance Networking Accelerator</masterLabel>
+        <translation>인텔® 파트너 얼라이언스 네트워킹 가속기</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IoT Edge AI - IoT/Vision/Video</masterLabel>
+        <translation>IoT 에지 AI - IoT/비전/비디오</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IoT Edge AI - Networking/Security</masterLabel>
+        <translation>IoT 에지 AI - 네트워킹/보안</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Leading Edge FPGA</masterLabel>
+        <translation>최첨단 FPGA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manageability</masterLabel>
+        <translation>관리 효율성</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Services</masterLabel>
+        <translation>관리 서비스</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Market Ready Solution/RFP Ready Kit</masterLabel>
+        <translation>마켓 레디 솔루션/RFP 레디 키트</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi-Access Edge Computing</masterLabel>
+        <translation>MEC(Multi-Access Edge Computing)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi/Hybrid Cloud Networking (SASE)</masterLabel>
+        <translation><!-- Multi/Hybrid Cloud Networking (SASE) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - 5G</masterLabel>
+        <translation>네트워킹 - 5G</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - Radio Access Networks/vRAN/oRAN</masterLabel>
+        <translation>네트워킹 - 무선 액세스 네트워크/vRAN/oRAN</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - Visual Cloud/Video</masterLabel>
+        <translation>네트워킹 - 비주얼 클라우드/비디오</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking - private wireless networks</masterLabel>
+        <translation>네트워킹 - 프라이빗 무선 네트워크</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>None</masterLabel>
+        <translation>없음</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>On Prem Networking – Data &amp; Security</masterLabel>
+        <translation>온프레미스 네트워킹 – 데이터 및 보안</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>P5G &amp; MEC​</masterLabel>
+        <translation><!-- P5G &amp; MEC​ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Private Wireless Networks</masterLabel>
+        <translation>프라이빗 무선 네트워크</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks (RAN)</masterLabel>
+        <translation>무선 액세스 네트워크(RAN)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Skills for Innovation</masterLabel>
+        <translation><!-- Skills for Innovation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Acceleration: MRS, RRK</masterLabel>
+        <translation><!-- Solution Acceleration: MRS, RRK --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Aggregation</masterLabel>
+        <translation><!-- Solution Aggregation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Scale (IPA Accelerators)</masterLabel>
+        <translation>솔루션 확장(IPA 가속기)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution Scale (MRS/RRK and AI ISV PW)</masterLabel>
+        <translation>솔루션 규모(MRS/RRK 및 AI ISV PW)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sustainability</masterLabel>
+        <translation>유지 가능성</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Visual Cloud</masterLabel>
+        <translation>비주얼 클라우드</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Intel Preference</masterLabel>
+        <translation>인텔 선호도 획득</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Performance &amp; Sell Up</masterLabel>
+        <translation>성능 획득 및 판매</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Volume</masterLabel>
+        <translation>볼륨 획득</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wireless Core</masterLabel>
+        <translation><!-- Wireless Core --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>eSports</masterLabel>
+        <translation>e스포츠</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vRAN</masterLabel>
+        <translation><!-- vRAN --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

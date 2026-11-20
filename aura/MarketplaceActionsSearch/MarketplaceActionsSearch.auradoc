@@ -1,0 +1,21 @@
+<aura:documentation>
+	<aura:description>
+		<p>Search Actions Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/29/2019</p>
+    <p>CurrentVersion: 1.03</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+		<p>Stores Redux actions for the product/partner search</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+	</aura:description>
+</aura:documentation>

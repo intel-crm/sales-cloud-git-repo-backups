@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION_JPN</name>
+    <style>none</style>
+    <subject>インテル® パートナー・アライアンスのアカウントに新しいユーザーが追加されました</subject>
+    <textOnly>アカウントの詳細確認のお願い
+
+{!UserName} 様、
+
+インテルの担当者または御社のほかのコンタクトにより、{!Account.Name} 様のインテル® テクノロジー・プロバイダーのアカウントにユーザーが追加されました。
+
+会社名: {!Account.Name}
+ビジネス ID: {!Account.AccountNumber}
+追加されたコンタクト: Eメール {!ContactEmail}
+役割 (職種): {!AcrRoles}
+
+この更新を承認していない場合、ログインしてこの連絡先を削除してください。
+
+ご質問がおありの場合は、次にお問い合わせください: https://signin.intel.com/ContactUs?Culture=ja-jp
+
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+プライバシー・ポリシー  |  Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

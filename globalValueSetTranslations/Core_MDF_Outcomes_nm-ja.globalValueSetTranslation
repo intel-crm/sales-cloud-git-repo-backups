@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Brand Awareness</masterLabel>
+        <translation><!-- Brand Awareness --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consideration</masterLabel>
+        <translation><!-- Consideration --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Design Wins</masterLabel>
+        <translation>デザインウィン</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>その他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Preference</masterLabel>
+        <translation><!-- Preference --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Intent</masterLabel>
+        <translation><!-- Purchase Intent --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Billings</masterLabel>
+        <translation>収益 - ビリング</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Consumption / ARR</masterLabel>
+        <translation>収益 - コンサンプション / ARR</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Deal Wins</masterLabel>
+        <translation>収益 - ディールウィン</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Pipelines/Opportunities</masterLabel>
+        <translation>収益 - パイプライン / 商談</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Share of Voice</masterLabel>
+        <translation><!-- Share of Voice --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Deal Wins</masterLabel>
+        <translation>ボリューム - ディールウィン</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Leads</masterLabel>
+        <translation>ボリューム - リード</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Pipeline/Opportunities</masterLabel>
+        <translation>ボリューム - パイプライン / 商談</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Units</masterLabel>
+        <translation>ボリューム - ユニット</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

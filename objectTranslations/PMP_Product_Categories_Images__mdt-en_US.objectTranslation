@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_Product_Categories_Images</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_Product_Categories_Images</value>
+    </caseValues>
+    <fields>
+        <label><!-- PIM_Category_Id --></label>
+        <name>PIM_Category_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

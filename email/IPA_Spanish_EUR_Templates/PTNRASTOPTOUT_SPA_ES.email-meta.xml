@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Opt-out SPA_ES</name>
+    <style>none</style>
+    <subject>Actualización de la cuenta de empresa</subject>
+    <textOnly>Actualización de la cuenta de empresa
+
+
+!%UserFirstName%!:
+
+Esta notificación tiene el propósito de informarle de que alguien ha seleccionado dejar de compartir la información del programa Intel® Technology Provider con los Distribuidores Intel® autorizados y/o los Proveedores Intel® Aprobados (Proveedores de servicios) seleccionados.
+
+Nombre de cuenta de empresa: !%AccountName%!
+Número de cuenta: !%AccountNumber%!
+Contacto principal que ha hecho la/s selección/es: !%UserEmailAddr%!
+Fecha: !%DateSigned%!
+Proveedor/es de servicios seleccionado/s: !%Distributors%!
+Autorización: Por la presente, autorizo a Intel a compartir con el/los Proveedor/es de servicios información sobre mi cuenta del programa Intel® Technology Provider para ayudar a administrar mis ventajas. También autorizo a Intel a permitir que hagan cambios de puntos en mi nombre (no disponible en la región Asia-Pacífico y Japón).
+
+
+Si no aprueba esta acción o considera que se ha cometido un error, puede modificar las selecciones o darse de baja.
+Si tiene alguna duda, póngase en contacto con nosotros en programs@intel.com.
+
+Gracias,
+su equipo de la Alianza Intel® para socios
+
+Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
+
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Department__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(CONTAINS(
+&quot;Americas Hosted Sales Group,APJ Hosted Sales Group,EMEA Hosted Sales Group,PRC Hosted Sales Group&quot;,
+TRIM(TEXT(Account.Core_Sales_Groups__c))), &quot;RH&quot;,
+IF(CONTAINS(
+&quot;Americas Brazil Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Mexico Sales Group,Americas US Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,EMEA Sales Group,India Sales Group,PRC Sales Group&quot;,
+TRIM(TEXT(Account.Core_Sales_Groups__c))), &quot;NP&quot;,
+IF(CONTAINS(
+&quot;Americas Partner Led,APJ Partner Led,EMEA Partner Led,India Partner Led,PRC Partner Led&quot;,
+TRIM(TEXT(Account.Core_Sales_Groups__c))), &quot;PL&quot;,
+&quot;U&quot;)))
+
++CASE(TEXT(Account.Core_Account_Level__c),
+&quot;Level 1&quot;, &quot;12&quot;,
+&quot;Level 2&quot;, &quot;12&quot;,
+&quot;Level 3&quot;, &quot;3&quot;,
+&quot;Error&quot;)
+
++CASE(TEXT(Account.Core_Account_Primary_Coverage__c),
+&quot;Intel Covered&quot;, &quot;IC&quot;,
+&quot;Indirect Covered&quot;, &quot;IND&quot;,
+&quot;Not Covered&quot;, &quot;NC&quot;,
+&quot;Error&quot;)
+
++IF(ISBLANK(TRIM(TEXT(Account.Core_Account_Category__c))), &quot;B&quot;, &quot;V&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Index</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Department__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>PSG,Altera,Programmable Solutions,Divestiture CW-DO NOT DELETE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Account_Level__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Level Scan</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

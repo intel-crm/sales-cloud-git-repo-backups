@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Status &amp; Ownership Duration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Status &amp; Ownership Durations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Hours --></label>
+        <name>Business_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- COG --></label>
+        <name>COG__c</name>
+    </fields>
+    <fields>
+        <label><!-- Calculated Business Seconds --></label>
+        <name>Calculated_Business_Seconds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Calculated Seconds --></label>
+        <name>Calculated_Seconds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalated Level --></label>
+        <name>Escalated_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- From --></label>
+        <name>From__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Assigned Queue --></label>
+        <name>Last_Assigned_Queue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent --></label>
+        <name>Parent__c</name>
+        <relationshipLabel><!-- Status &amp; Ownership Durations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Status --></label>
+        <name>Sub_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Days --></label>
+        <name>Total_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Hours --></label>
+        <name>Total_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Until --></label>
+        <name>Until__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

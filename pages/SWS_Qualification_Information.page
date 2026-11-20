@@ -1,0 +1,16 @@
+<apex:page standardController="Lead">
+    <div style="font-size: 1.2rem;">
+        <p>
+            We are following the PACTT framework and need your assistance to complete the following fields for compliance:
+        </p>
+        <p>
+            <span style="color:#e46c0a; font-size: 1.2rem;">Confirmed Pain Point</span>, 
+            <span style="color:#e46c0a; font-size: 1.2rem;">Confirmed Authority</span>, 
+            <span style="color:#e46c0a; font-size: 1.2rem;">Confirmed Product of Interest</span>, 
+            <span style="color:#e46c0a; font-size: 1.2rem;">Confirmed Project Timeframe</span>, 
+            <span style="color:#e46c0a; font-size: 1.2rem;">Confirmed Budget</span>, and 
+            <span style="color:#e46c0a; font-size: 1.2rem;">Confirmed Budget Amount</span> 
+            before conversion.
+        </p>
+    </div>
+</apex:page>

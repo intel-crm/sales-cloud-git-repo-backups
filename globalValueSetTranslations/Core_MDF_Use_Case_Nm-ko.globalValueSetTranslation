@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+        <translation>자산 및 운영 최적화</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+        <translation>제어 최적화 및 자율</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+        <translation>에너지 모니터링 및 관리</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Environment Monitoring</masterLabel>
+        <translation>환경 모니터링</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>General Purpose</masterLabel>
+        <translation>일반 용도</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Human Wellness Monitoring</masterLabel>
+        <translation>인간의 건강 모니터링</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Interactive Media</masterLabel>
+        <translation>대화형 미디어</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Logistics &amp; Tracking</masterLabel>
+        <translation>물류 및 추적</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Condition Monitoring</masterLabel>
+        <translation>기계 상태 모니터링</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Inspection</masterLabel>
+        <translation>제품 검사</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Situational Monitoring</masterLabel>
+        <translation>상태 모니터링</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

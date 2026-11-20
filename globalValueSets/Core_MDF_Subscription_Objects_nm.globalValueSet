@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>PFC - PartnerFundClaim</fullName>
+        <default>false</default>
+        <label>Claim</label>
+    </customValue>
+    <customValue>
+        <fullName>PFR - PartnerFundRequest</fullName>
+        <default>false</default>
+        <label>Activity</label>
+    </customValue>
+    <customValue>
+        <fullName>CS - Case</fullName>
+        <default>false</default>
+        <label>Case</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Recovery</fullName>
+        <default>false</default>
+        <label>Recovery</label>
+    </customValue>
+    <masterLabel>Subscription Modules</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

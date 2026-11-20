@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Pior_Val</name>
+        <label>Assign Pior_Val</label>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>Prior_Val</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record__Prior</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Cur_Val</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TMName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.User.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>If_Team_Member_Role_is_Opportunity_Owner_or_Technical_Owner</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Blank_out_Description_Of_Contribution_for_Previous_Opp_Owner_or_Tech_Owner</name>
+        <label>Blank out Description Of Contribution for Previous Opp Owner or Tech Owner</label>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Description_of_Contribution__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Whenever a partner user get added into Team through automation, then description of contribution should populate with &apos;Partner&apos;</description>
+        <name>Update_Partner_in_Description</name>
+        <label>Update Partner in Description</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Description_of_Contribution__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Partner</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_TM_Description</name>
+        <label>Update TM Description</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Description_of_Contribution__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.TeamMemberRole</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>If user added is partner user then populate &apos;Partner&apos; in the description of contribution by default.</description>
+        <name>If_Team_Member_is_Partner</name>
+        <label>If Team Member is Partner?</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Pior_Val</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>no</defaultConnectorLabel>
+        <rules>
+            <name>yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.User.Profile.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Partner</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Description_of_Contribution__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Update_Partner_in_Description</targetReference>
+            </connector>
+            <label>yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Team_Member_Role_is_Opportunity_Owner_or_Technical_Owner</name>
+        <label>If Team Member Role is Opportunity Owner or Technical Owner</label>
+        <locationX>578</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>TeamMember_Role_is_Opportunity_Owner_or_Technical_Owner</name>
+            <conditionLogic>(1 OR 2 ) AND (3 or 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Technical Owner </stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Opportunity Owner </stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Description_of_Contribution__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_TM_Description</targetReference>
+            </connector>
+            <label>TeamMember  Role is Opportunity Owner or Technical Owner</label>
+        </rules>
+        <rules>
+            <name>Opportunity_Owner_or_Technical_Owner_Changed_to_Other_Role</name>
+            <conditionLogic>(1 OR 2) AND (3 OR 4 OR  5 OR  6) AND 7</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.TeamMemberRole</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Opportunity Owner </stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.TeamMemberRole</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Technical Owner</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Technical Owner (100%)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Technical Owner</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Opportunity Owner </stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Opportunity Owner  (100%)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Blank_out_Description_Of_Contribution_for_Previous_Opp_Owner_or_Tech_Owner</targetReference>
+            </connector>
+            <label>Opportunity Owner or Technical Owner Changed to Other Role</label>
+        </rules>
+    </decisions>
+    <description>TWC3123-4680 --Opportunity Team Member : Mandate the Description field and Validation at Design Stage
+v4- During creation of a new Opportunity Team Member record, system to default the Opportunity Team Member Role Name at the Description field.
+v6- check new record and desc is blank or  team mem role changed and desc is blank
+v14-for partner user, default partner in desc
+v19- Defaulting logic for opp owner and technical owner, Blank out for Previous Opp Owner and Tech Owner</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CheckIfOpportunityOwnerChanged</name>
+        <dataType>Boolean</dataType>
+        <expression>ISCHANGED({!$Record.Opportunity.Owner.Id})</expression>
+    </formulas>
+    <interviewLabel>Core_Oppty_TeamMember_DescUpdate {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Oppty_TeamMember_DescUpdate</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_Team_Member_is_Partner</targetReference>
+        </connector>
+        <object>OpportunityTeamMember</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>Cur_Val</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityTeamMember</objectType>
+    </variables>
+    <variables>
+        <name>Prior_Val</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityTeamMember</objectType>
+    </variables>
+    <variables>
+        <name>TMName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

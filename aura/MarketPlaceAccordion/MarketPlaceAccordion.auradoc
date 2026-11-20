@@ -1,0 +1,28 @@
+<aura:documentation>
+	<aura:description>
+
+    <a href="https://intel--ipasrqa--sitepreview.cs41.force.com/styleguide/s/components-accordion">
+      View in Styleguide
+    </a>
+
+    <br/>
+    <p>This component is based off the Salesforce native Accordion lightning component.</p>
+
+
+    <hr/>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 7/23/2019</p>
+    <p>CurrentVersion: 1.2</p>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.11 - updated Font size to use ems vs px</p>
+		<p>1.1 - Added resource accordion theme</p>
+    <!-- CHANGELOG -->
+
+  </aura:description>
+</aura:documentation>

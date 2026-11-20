@@ -1,0 +1,24 @@
+<aura:documentation>
+	<aura:description>
+    <p>Edit Storefront Wizard - Main Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 7/02/2019</p>
+    <p>CurrentVersion: 1.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>Input components keep track of their own validity / error messages.</p>
+    <p>This Form component keeps track of overall form validity (Back/Next) buttons.</p>
+		<p>See the documentation for <code>ISGCreateOfferingFormInputBase</code>
+			for more about the input components, and how they inter.</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+    <p></p>
+
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

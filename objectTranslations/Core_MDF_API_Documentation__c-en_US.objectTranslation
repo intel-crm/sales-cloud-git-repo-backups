@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core API Documentation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core API Documentation</value>
+    </caseValues>
+    <fields>
+        <help><!-- e.g., /services/apexrest/v1.0/activity?action=create --></help>
+        <label><!-- API Endpoint --></label>
+        <name>API_Endpoint__c</name>
+    </fields>
+    <fields>
+        <help><!-- GET, POST, PUT, DELETE, PATCH --></help>
+        <label><!-- API Method --></label>
+        <name>API_Method__c</name>
+    </fields>
+    <fields>
+        <help><!-- e.g., PFR Activity API, Campaign Creation API --></help>
+        <label><!-- API Name --></label>
+        <name>API_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- e.g., Activity Management, Campaign Management, Metadata, File Management --></help>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default --></label>
+        <name>Default__c</name>
+    </fields>
+    <fields>
+        <help><!-- Describe the functionality and purpose --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Example: 2026-01-01 - 2026-12-31 --></help>
+        <label><!-- EOL --></label>
+        <name>EOL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Is_Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Create, Read, Update, Delete, Query --></help>
+        <label><!-- Operation Name --></label>
+        <name>Operation_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide JSON formatted request example --></help>
+        <label><!-- Request Body Example --></label>
+        <name>Request_Body_Example__c</name>
+    </fields>
+    <fields>
+        <help><!-- Example: Core_API_PFR_Activity_Create_Request --></help>
+        <label><!-- Request Static Resource Name --></label>
+        <name>Request_Static_Resource_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide JSON formatted response example --></help>
+        <label><!-- Response Example --></label>
+        <name>Response_Example__c</name>
+    </fields>
+    <fields>
+        <help><!-- Example: Core_API_PFR_Activity_Create_Response --></help>
+        <label><!-- Response Static Resource Name --></label>
+        <name>Response_Static_Resource_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- 200, 201, 400, 404, 500, etc. --></help>
+        <label><!-- Response Status Code --></label>
+        <name>Response_Status_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Order --></label>
+        <name>Sort_Order__c</name>
+    </fields>
+    <fields>
+        <help><!-- e.g., 1.0.0 --></help>
+        <label><!-- Version --></label>
+        <name>Version__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

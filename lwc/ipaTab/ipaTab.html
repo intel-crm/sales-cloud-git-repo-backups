@@ -1,0 +1,7 @@
+<template>
+    <div role="tabpanel" tabindex={tabIndex} class="tab-container" data-is-active={active}>
+        <template if:true={isActivated}>
+            <slot></slot>
+        </template>
+    </div>
+</template>

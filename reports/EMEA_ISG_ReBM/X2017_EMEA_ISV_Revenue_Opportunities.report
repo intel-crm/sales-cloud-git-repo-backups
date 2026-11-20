@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_48917505</developerName>
+        <masterLabel>Account</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>SAP - Germany</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAP</sourceValue>
+            </sourceValues>
+            <value>SAP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>VMWare Polska</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VMware Spain, S.L.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>VMware UK</sourceValue>
+            </sourceValues>
+            <value>VMware</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>RED HAT SL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Red Hat GmbH</sourceValue>
+            </sourceValues>
+            <value>Red Hat</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SAS Institute GmbH</sourceValue>
+            </sourceValues>
+            <value>SAS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>.GIGASPACES TECHNOLOGIES LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>AMDOCS (ISRAEL) LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>AMDOCS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NUTANIX, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cooperative Society Nutanix U.A.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MIRANTIS INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HyTrust</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Citrix Systems Sweden AB</sourceValue>
+            </sourceValues>
+            <value>Tier 2</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Michal Kowalik,Tasso Panagou,Kristin Lampka,Uri C Baron,Milan Spalevic</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Mirantis,Nutanix,SAP,Redhat,red hat,VMware,HyTrust,SAS,Citrix,Amdocs,Gigaspaces</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_48917505</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2017 EMEA ISV Revenue Opportunities</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

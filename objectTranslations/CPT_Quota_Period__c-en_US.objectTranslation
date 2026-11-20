@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quota Period</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quota Periods</value>
+    </caseValues>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>CPT_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>CPT_Inactive__c</name>
+    </fields>
+    <fields>
+        <help><!-- No Lock: Everyone can update the Quota Setup Record.
+Soft Lock: Admin can update the Quota Setup Record.
+Hard Lock: No one can update the Quota Setup Record. --></help>
+        <label><!-- Locked Status --></label>
+        <name>CPT_Locked_Status__c</name>
+        <picklistValues>
+            <masterLabel>Hard Lock</masterLabel>
+            <translation><!-- Hard Lock --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Lock</masterLabel>
+            <translation><!-- No Lock --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soft Lock</masterLabel>
+            <translation><!-- Soft Lock --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quota Period --></label>
+        <name>CPT_Quota_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>CPT_Start_Date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

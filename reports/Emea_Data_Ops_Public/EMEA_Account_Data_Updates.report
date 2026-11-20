@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Group_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Level__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Account_Owner_Active__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Department__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sub_Industry__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Customer_Address__CountryCode__s</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Business_Party_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Level_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Comment_Preview__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    ISBLANK(Account.Core_Group_Id__c),
+    IF(
+        ISBLANK(Account.Core_Unified_Global_Customer_Name__c),
+        ACCOUNT.NAME,
+        Account.Core_Unified_Global_Customer_Name__c
+    ),
+    IF(Account.Core_Group_Id__c = &quot;55&quot;, &quot;Austria Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;56&quot;, &quot;Belgium Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;57&quot;, &quot;Denmark Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;221&quot;, &quot;Egypt Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;222&quot;, &quot;EU&quot;,
+    IF(Account.Core_Group_Id__c = &quot;237&quot;, &quot;EU Govt ? Research&quot;,
+    IF(Account.Core_Group_Id__c = &quot;58&quot;, &quot;Finland Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;59&quot;, &quot;France Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;235&quot;, &quot;France Govt - Research&quot;,
+    IF(Account.Core_Group_Id__c = &quot;60&quot;, &quot;Germany Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;234&quot;, &quot;Germany Govt - Research&quot;,
+    IF(Account.Core_Group_Id__c = &quot;223&quot;, &quot;Hungary Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;224&quot;, &quot;Ireland Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;61&quot;, &quot;Italy Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;226&quot;, &quot;Kenya Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;227&quot;, &quot;Kuwait Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;62&quot;, &quot;Netherlands Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;63&quot;, &quot;Norway Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;229&quot;, &quot;Oman Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;64&quot;, &quot;Other African Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;65&quot;, &quot;Poland Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;66&quot;, &quot;Qatar Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;231&quot;, &quot;Romania Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;67&quot;, &quot;Saudi Arabia Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;238&quot;, &quot;Saudi Arabia Government - Research&quot;,
+    IF(Account.Core_Group_Id__c = &quot;68&quot;, &quot;South Africa Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;69&quot;, &quot;Spain Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;70&quot;, &quot;Sweden Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;239&quot;, &quot;Switzerland Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;232&quot;, &quot;Turkey Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;71&quot;, &quot;UAE Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;233&quot;, &quot;UK Government&quot;,
+    IF(Account.Core_Group_Id__c = &quot;236&quot;, &quot;UK Govt - Research&quot;,
+    ACCOUNT.NAME
+    )))))))))))))))))))))))))))))))
+)))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Unique Customer Name</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7 OR 8 OR 9)</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Department__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>PSG,Altera,Programmable Solutions</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,APJ,ASMO,EMEA,INDIA,PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager_Email__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>maurits.tichelman@intel.com,torsten.kahrmann@intel.com,georgios.kardaras@intel.com,javier.galiana@intel.com,joost.weppner@intel.com,norberto.m.carrascal@intel.com,patricia.pozuelo.real@intel.com,shadi.shidvash@intel.com,edwin.peters@intel.com,jesus.sanchez.paniagua@intel.com,serkan.civlik@intel.com,joachim.aertebjerg@intel.com,elizabeth.collett@intel.com,tatiana.mingazova@intel.com,frans.j.pieterse@intel.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager_Email__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>taha.khalifa@intel.com,sonja.pierer@intel.com,andreas.timm@intel.com,simon.wilyman@intel.com,galin.dimov@intel.com,marie.thery@intel.com,sven.beckmann@intel.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager_Email__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>philip.van.de.mortel@intel.com,matthew.penny@intel.com,jaspal.bhogal@intel.com,franco.lombardi@intel.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager_Email__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>rami.vaittinen@intel.com,johan.elfsson@intel.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager_Email__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>katarzyna.bielak@intel.com,alexey.ivanov@intel.com,adam.j.roe@intel.com,jean-laurent.philippe@intel.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager_Email__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>dermot.hargaden@intel.com</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>EMEA Dermot&apos;s org Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="Quote Group" icon-name="standard:groups">
+        <template if:false={isDPMLegalFinanceUser}>
+        <lightning-button label={buttonTitle} onclick={invokeLinkQuotesComp} slot="actions" variant="brand">
+        </lightning-button>
+    </template>
+        <div style="width: auto; height: auto;">
+            <template if:true={errorMsg}>
+                <div class="errorClass">
+                    {errorMsg}
+                </div>
+            </template>
+            <div class="slds-p-top_small" style="height: auto; width: auto">
+                <div class="slds-p-bottom_small slds-p-top_small">
+                    <lightning-datatable key-field="id" data={quoteGroupList} columns={dataTableColumns}
+                        sorted-by={sortBy} default-sort-direction={defaultSortDirection}
+                        sorted-direction={sortDirection} onsort={handleSortdata} hide-checkbox-column="true">
+                    </lightning-datatable><br /><br />
+                    <!--<lightning-button label={buttonTitle} onclick={invokeLinkQuotesComp}
+                        class="slds-align_absolute-center" style="width: auto; padding-right: 5px;" variant="brand">
+                    </lightning-button>-->
+                    <div class="slds-text-align_center" style="width: auto">
+                        <template if:true={hasRecords}>
+                            <lightning-button label="First" icon-name="utility:left" icon-position="left"
+                                onclick={onFirstQG} disabled={disablePreviousButtom}></lightning-button>
+                            <lightning-button label="Previous" icon-name="utility:chevronleft" icon-position="left"
+                                onclick={onPreviousQG} disabled={disablePreviousButtom}>
+                            </lightning-button>
+                            <span class="slds-var-p-horizontal_x-small">
+                                Page {currentPageNumber} of {totalPages}
+                            </span>
+                        </template>
+                        <span class="slds-var-p-horizontal_x-small">
+                            Number of records: {totalNoOfRecords}
+                        </span>
+                        <template if:true={hasRecords}>
+                            <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                                onclick={onNextQG} disabled={disableNextButtom}>
+                            </lightning-button>
+                            <lightning-button label="Last" icon-name="utility:right" icon-position="right"
+                                onclick={onLastQG} disabled={disableNextButtom}></lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+    <template if:true={showLinkComp}>
+        <section aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width:100%;height:100%;">
+                <!--<header class="slds-modal__header">-->
+                    <lightning-button-icon icon-name="utility:close" alternative-text="Close this window" size="large"
+                        onclick={closeModal} class="slds-modal__close">
+                    </lightning-button-icon>
+                    <!--<h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Link Quotes</h2>-->
+                <!--</header>-->
+                <div class="slds-modal__content slds-p-around_small slds-is-relative" id="modal-content-id-1">
+                    <c-pricing-link-quotes-component recordidfromgrp={recordId} onclosemodalevent={closeModal}></c-pricing-link-quotes-component>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

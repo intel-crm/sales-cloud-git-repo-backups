@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>Core_MDF_CoMarketing</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_SPCF_USER</name>
+    </customPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>SPCF USER</label>
+    <license>Partner Community</license>
+    <recordTypeVisibilities>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Claim_SPCF_Batch_Record</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_PFRCustomPicklist__c.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_Payment__c.Core_MDF_Service_Provider_Co_Marketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundAllocation.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundClaim.Core_MDF_Service_Provider_Co_Marketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundRequest.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterEnabledForUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewRoles</name>
+    </userPermissions>
+</PermissionSet>

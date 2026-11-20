@@ -1,0 +1,137 @@
+<template>
+    <div class={classes.containerClass}>
+        
+        <div>
+            <template for:each={adhocAlerts} for:item="adhocAlert" >
+                <div key={adhocAlert.uniqueId} class="adhocClass" >
+                    {adhocAlert.label}  </div>
+            </template>
+        </div>   
+        <!-- <div>
+                <template for:each={adhocAlerts} for:item="adhocAlert" >    
+                    <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+                            active-section-name={activeSections} key={adhocAlert.uniqueId} >
+                        <lightning-accordion-section  label={adhocAlert.label} class="accordionClass" >
+                            <div key={adhocAlert.uniqueId}  title={adhocAlert.uniqueId}>{adhocAlert.adcDescription}</div>        
+                        </lightning-accordion-section>
+                    </lightning-accordion> 
+                </template>
+        </div>       -->
+        <h3 class="slds-p-horizontal_large icon-container">
+            <template if:true={faIcon}>
+                <span class={classes.iconClass}></span>
+            </template>
+            <span class="label">{title}</span>
+        </h3>
+    
+        <div class="slds-grid slds-p-top_medium benefit-columns">
+        <template if:true={isMetricsEmpty}>
+            <div class="description-container largecolumn"> <!-- Utkarsh - 904 - Created new class to give more width to description container in case matric container is not present. -->
+                <template for:each={alerts} for:item="alert">
+                    <div class="alert-item icon-container slds-m-bottom_medium" key={alert.id}><span class={classes.attentionClass}></span><p class="label">{alert.label}</p></div>
+                </template>
+                <p>{description}</p>
+            </div>
+        </template>
+        <template if:false={isMetricsEmpty}>
+                <div class="description-container column">
+                    <template for:each={alerts} for:item="alert">
+                        <div class="alert-item icon-container slds-m-bottom_medium" key={alert.id}><span class={classes.attentionClass}></span><p class="label">{alert.label}</p></div>
+                    </template>
+                    <p>{description}</p>
+                </div>
+        </template>
+        <template if:false={isMetricsEmpty}> <!-- Utkarsh - 904 - Made changes to render matrics dyanamically. -->
+                <div class="metrics column">
+                    <template for:each={metrics} for:item="metric">
+                        <div key={metric.id}>
+                            <template if:false={metric.isEmpty}>
+                                <div class="metric-container" >
+                                    <div class="metric-value">
+                                        {metric.value}<span class="unit">{metric.unit}</span>
+                                    </div>
+                                    <div class="metric-text">
+                                        <p>
+                                            {metric.label}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                            <!--<template if:false={ifs.singleCtaButton}>
+                                <template if:true={metric.link.externalUrl}>
+                                    <div class="metric-cta">
+                                        <c-ipa-link external-url={metric.link.externalUrl} community-page={metric.link.communityPage}  object-page={metric.link.objectPage} record-id={metric.link.recordId} hide-icon="true">
+                                            <lightning-button class="button-arrow" label={metric.link.label} variant="neutral" tabindex="-1"></lightning-button>
+                                        </c-ipa-link>
+                                    </div>
+                                </template>
+                            </template>-->
+                            <template if:false={ifs.hasCombinedFooter}>
+                                <template if:true={metric.description}>
+                                    <div class="metric-footer">{metric.description}</div>
+                                </template>
+                            </template>
+                        </div>
+                    </template>
+                
+                
+                    <template if:true={ifs.hasCombinedFooter}>
+                        <template for:each={combinedFooter} for:item="footer">
+                            <div class="metric-footer" key={footer}>{footer}</div>
+                        </template>
+                    </template>
+                </div>
+            </template>
+            <div class="links-container column">
+                <template for:each={metrics} for:item="metric">
+                    <div key={metric.id}>
+                        <template if:false={ifs.singleCtaButton}>
+                            <template if:true={metric.link.externalUrl}>
+                                <div class="metric-cta">
+                                    <c-ipa-link external-url={metric.link.externalUrl} community-page={metric.link.communityPage}  object-page={metric.link.objectPage} record-id={metric.link.recordId} hide-icon="true">
+                                        <lightning-button class="button-arrow" label={metric.link.label} variant="neutral" tabindex="-1"></lightning-button>
+                                    </c-ipa-link>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={ifs.singleCtaButton}>
+                    <div class="metric-cta">
+                        <c-ipa-link external-url={ctaButton.externalUrl} community-page={ctaButton.communityPage}  object-page={ctaButton.objectPage} record-id={ctaButton.recordId} hide-icon="true">
+                            <lightning-button class="button-arrow" label={ctaButton.label} variant="neutral" tabindex="-1"></lightning-button>
+                        </c-ipa-link>
+                    </div>
+                </template>
+                <template for:each={links} for:item="link">
+                    <div class="link-out slds-m-bottom_small" key={link.id} >
+                        <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage} object-page={link.objectPage} record-id={link.recordId} hide-icon="false" ></c-ipa-link>
+                    </div>
+                </template>
+        <template if:true={isIPA_DZS_RDC_Benefit}>
+            <c-p-r-m_-dzp-registration></c-p-r-m_-dzp-registration>
+        </template>
+            </div>
+        </div>
+        
+        <template if:true={ifs.hasContacts}>
+            <div class="slds-p-horizontal_large">
+                <h3>{contacts.label}</h3>
+                <div class="contact-card-list">
+                    <template for:each={contactList} for:item="card">
+                        <div class="contact-card-list-item" key={card.id}>
+                            <c-core-intc-simple-card card={card} card-template-type={cardStyle} theme="gray" type="contact-card" large-heading=true oncorelinkclick={handleLinkClick}>
+                                <div slot="body" class="core-card-description slds-p-top_large">
+                                    <p>{card.bodyTitle}</p>
+                                    <p>{card.role}</p>
+                                    <p>{card.phone}</p>
+                                    <c-ipa-link caret label={label.sendEmail} external-url={card.emailHref}></c-ipa-link>
+                                </div>
+                            </c-core-intc-simple-card>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

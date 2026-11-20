@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECBNFTENTHUZHT</name>
+    <style>none</style>
+    <subject>Intel® 夥伴聯盟電競玩家電腦專長</subject>
+    <textOnly>恭喜您符合資格了！
+
+
+{!Contact.FirstName}您好，
+
+恭喜您成為 Intel® 通路夥伴電競玩家電腦專家！
+
+在全球超過十億的電腦遊戲玩家以及快速成長的市場下，您可以利用 Intel 擴大客戶群並帶來更多收入。
+
+立即善加利用您可以享有的所有福利，包括：
+
+
+銷售搭載 Intel® Core™ X、K 和 H 系列處理器的產品可參加額外的點數促銷活動
+在 Intel® 通路夥伴網頁上電競玩家電腦專長的名稱與能見度
+Intel 專家的技術網路研討會
+世界級的遊戲與軟體套件
+所在地區的電競活動通行證
+
+若要開始使用，請回信至 ITP-enthusiast-pc@intel.com，並包含以下資訊：
+
+
+電競玩家電腦專家的主要聯絡人
+名稱：
+電子郵件：
+
+
+關於其他的銷售與促銷資料
+郵寄地址：
+電話：
+
+享用福利
+
+
+*不同地區的福利可能不盡相同。
+
+Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
+
+請造訪 https://www.intel.com/content/www/tw/zh/partner-alliance/help/overview.html 取得將您的會員資格效益最大化的協助與說明。
+
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

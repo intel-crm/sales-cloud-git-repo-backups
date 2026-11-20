@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Report_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Report Name</label>
+        <length>40</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Report_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Report_URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Account 330</label>
+    <listViews>
+        <fullName>Core_Account_330_Custom_Settings</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Report_Name__c</columns>
+        <columns>Core_Report_URL__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Account 330 Custom Settings</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

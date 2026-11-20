@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Commissions Inquiry</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Commissions Inquiries</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Commision_Info_FieldSet --></label>
+        <name>Commision_Info_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Commision_Info_FieldSet --></label>
+        <name>Core_AAQC_Commision_Info_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Change Owner --></label>
+        <name>Change_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow my manager to interact with case --></label>
+        <name>Core_AAQC_Allow_My_Manager_to_See__c</name>
+    </fields>
+    <fields>
+        <help><!-- When creating a new case keep as - - None- - 
+When editing a case to cancel it change as appropriate --></help>
+        <label><!-- Cancellation Reason --></label>
+        <name>Core_AAQC_Cancellation_Reason__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide as much detail as possible to help us answer you quickly, 
+such as: 
+-Commissions month/relevant dates 
+-Pay element(s) involved 
+-Account(s) 
+-Other data points e.g. Quota 
+-Commissions cloud report or screen being used --></help>
+        <label><!-- Case Details --></label>
+        <name>Core_AAQC_Case_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner --></label>
+        <name>Core_AAQC_Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Record Type --></label>
+        <name>Core_AAQC_Case_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Core_AAQC_Case__c</name>
+        <relationshipLabel><!-- Commissions Inquiries --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 1. Commissions Calculation/Accuracy 
+2. Pay Plan, Terms &amp; Conditions, Policies 
+3. Due Dates, Payment Timing 
+4. Setup-Elements, Quota, Assignments 
+5. How do I, System Issue 
+6. Performance to Quota, Credited Results 
+7. RD-Calculation, Turn off/on --></help>
+        <label><!-- Category --></label>
+        <name>Core_AAQC_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commissions Severity --></label>
+        <name>Core_AAQC_Commissions_Severity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date/Time Closed --></label>
+        <name>Core_AAQC_Date_Time_Closed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date/Time Opened --></label>
+        <name>Core_AAQC_Date_Time_Opened__c</name>
+    </fields>
+    <fields>
+        <label><!-- On Behalf Of --></label>
+        <name>Core_AAQC_On_Behalf_Of__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rally ID --></label>
+        <name>Core_AAQC_Rally_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Case Comments --></label>
+        <name>Core_AAQC_Related_Case_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Case ID# --></label>
+        <name>Core_AAQC_Related_Case_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor Department --></label>
+        <name>Core_AAQC_Requestor_Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor Manager --></label>
+        <name>Core_AAQC_Requestor_Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor User Region --></label>
+        <name>Core_AAQC_Requestor_User_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor WWID --></label>
+        <name>Core_AAQC_Requestor_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution Comments --></label>
+        <name>Core_AAQC_Resolution_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution Type --></label>
+        <name>Core_AAQC_Resolution_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_AAQC_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Core_AAQC_Subject__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_AAQC_Back_To_Commissions_Home_Page --></label>
+        <name>Core_AAQC_Back_To_Commissions_Home_Page</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_AAQC_Edit --></label>
+        <name>Core_AAQC_Edit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Edit --></label>
+        <name>Edit</name>
+    </webLinks>
+</CustomObjectTranslation>

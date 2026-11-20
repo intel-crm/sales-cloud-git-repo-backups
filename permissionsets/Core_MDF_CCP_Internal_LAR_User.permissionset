@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Internal_LAR_User</name>
+    </customPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CCP Internal LAR User</label>
+    <license>Salesforce</license>
+</PermissionSet>

@@ -1,0 +1,1440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send Admin Review Email to Intel Admin when Marketing profile Information records is updated to status to &apos;Admin Review&apos;</description>
+        <name>Admin_Review_Email_to_Intel_Admin</name>
+        <label>Admin Review Email to Intel Admin</label>
+        <locationX>50</locationX>
+        <locationY>1536</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Submit_Mail_To_Recent_Submitter</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Admin Review Email to Intel Admin when Marketing profile Information records is updated to status to &apos;Admin Review&apos;</description>
+        <name>Admin_Review_Email_to_Intel_Admin_0</name>
+        <label>Admin Review Email to Intel Admin</label>
+        <locationX>50</locationX>
+        <locationY>2112</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Submit_Mail_To_Recent_Submitter_0</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This Action is send Approved And Published Email Alert To Recent Submitter</description>
+        <name>Approved_And_Published_Email_Alert_To_Recent_Submitter</name>
+        <label>Approved And Published Email Alert To Recent Submitter</label>
+        <locationX>50</locationX>
+        <locationY>3600</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>verify_whether_to_send_partner_rejected_email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Approved_Template_for_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is to email is to send enhanced benefit</description>
+        <name>Enhanced_Benefit_Email_Alert</name>
+        <label>Enhanced Benefit Email Alert</label>
+        <locationX>50</locationX>
+        <locationY>6216</locationY>
+        <actionName>PMP_SendEmailAlertsForCompanyInfo</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>CompanyInfoIds</name>
+            <value>
+                <elementReference>Formula_Input_parameter_Enhanced_Benefit_Email</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForCompanyInfo</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is to send new company info email</description>
+        <name>New_Company_Info_Email</name>
+        <label>New Company Info Email</label>
+        <locationX>50</locationX>
+        <locationY>5544</locationY>
+        <actionName>PMP_SendEmailAlertsForCompanyInfo</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>verify_whether_to_send_translation_approved_email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>CompanyInfoIds</name>
+            <value>
+                <elementReference>Formula_Input_for_New_Company_Info_Mail</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForCompanyInfo</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is send Non English Resubmit notification to recent submitters</description>
+        <name>Non_English_Resubmit_Notification_To_Submitter</name>
+        <label>Non-English_Resubmit_Notification_To_Submitter</label>
+        <locationX>50</locationX>
+        <locationY>5208</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Existing_Email_Logs</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Resubmit_NonEnglish_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action will send Reject Alert To Recent Submitter</description>
+        <name>Reject_Alert_To_Recent_Submitter</name>
+        <label>Reject Alert To Recent Submitter</label>
+        <locationX>50</locationX>
+        <locationY>4056</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Verify_whether_to_send_resubmit_email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Reject_Template_for_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This Actions send resubmit notificatin to the submitter</description>
+        <name>Resubmit_Notification_To_Submitter</name>
+        <label>Resubmit_Notification_To_Submitter</label>
+        <locationX>50</locationX>
+        <locationY>4632</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>verify_whether_to_send_Non_English_resubmit_email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Resubmit_Template_for_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is to send resubmit email for admin</description>
+        <name>Resubmitted_Email_for_Admin</name>
+        <label>Resubmitted Email for Admin</label>
+        <locationX>50</locationX>
+        <locationY>4512</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Resubmit_Notification_To_Submitter</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is to send resubmit email for admin</description>
+        <name>Resubmitted_Email_for_Admin_0</name>
+        <label>Resubmitted Email for Admin</label>
+        <locationX>50</locationX>
+        <locationY>5088</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Non_English_Resubmit_Notification_To_Submitter</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Resubmitted_Email_for_MP_Admin_Group</name>
+        <label>Resubmitted Email for MP Admin Group</label>
+        <locationX>314</locationX>
+        <locationY>4164</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Resubmit_Notification_To_Submitter</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Resubmitted_Email_for_MP_Admin_Group_non_english_flow</name>
+        <label>Resubmitted Email for MP Admin Group non english flow</label>
+        <locationX>314</locationX>
+        <locationY>4872</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Non_English_Resubmit_Notification_To_Submitter</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Email to Intel admin if the Intel admin is changed for the partner</description>
+        <name>Send_Email_If_Intel_Admin_is_changed</name>
+        <label>Send Email If Intel Admin is changed</label>
+        <locationX>50</locationX>
+        <locationY>2688</locationY>
+        <actionName>PMP_Company__c.PMP_Company_Under_Review_Alert_To_Admin</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Verify_If_Update_Required_to_send_partner_Edit_email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_Company__c.PMP_Company_Under_Review_Alert_To_Admin</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This mail is used to send update required Email when partner status is changed to partner</description>
+        <name>Send_Update_Required_Email</name>
+        <label>Send Update Required Email</label>
+        <locationX>50</locationX>
+        <locationY>3144</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Verify_to_send_Approved_Email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Edit_Template_for_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Send Email Update to the recent submitter</description>
+        <name>Submit_Mail_To_Recent_Submitter</name>
+        <label>Submit Mail To Recent Submitter</label>
+        <locationX>50</locationX>
+        <locationY>1656</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Verify_to_send_Email_for_any_Non_English_Storefront_changes_to_Intel_Admin</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Submit_Template_for_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Non English Submit Mail To Recent Submitter</description>
+        <name>Submit_Mail_To_Recent_Submitter_0</name>
+        <label>Non English Submit Mail To Recent Submitter</label>
+        <locationX>50</locationX>
+        <locationY>2232</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Verfiy_If_Intel_Admin_is_changed_for_Partner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Submit_NonEnglish_Owner</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>This action is to send Translation Approved Email Alert</description>
+        <name>Translation_Approved_Email_Alert</name>
+        <label>Translation Approved Email Alert</label>
+        <locationX>50</locationX>
+        <locationY>5880</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>verify_whether_to_send_enhanced_benefit_email</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_Company_Translated_Template</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>10 Day(s) Reminder Emails for Company &apos;Update Required&apos;</description>
+        <name>X10_Day_s_Reminder_Emails_for_Company_Update_Required</name>
+        <label>10 Day(s) Reminder Emails for Company &apos;Update Required&apos;</label>
+        <locationX>1106</locationX>
+        <locationY>408</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_CompanyUpdateReqSecondNotification</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>3 Day(s) Reminder Emails for Company &apos;Update Required&apos;</description>
+        <name>X3_Day_s_Reminder_Emails_for_Company_Update_Required</name>
+        <label>3 Day(s) Reminder Emails for Company &apos;Update Required&apos;</label>
+        <locationX>578</locationX>
+        <locationY>408</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_CompanyUpdateReqFirstNotification</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>If_No_Existing_Emails_for_this_Company</name>
+        <label>If No Existing Emails for this Company</label>
+        <locationX>182</locationX>
+        <locationY>5088</locationY>
+        <defaultConnector>
+            <targetReference>verify_whether_to_send_translation_approved_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_If_no_existing_emails</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Email_Logs</leftValueReference>
+                <operator>IsEmpty</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>New_Company_Info_Email</targetReference>
+            </connector>
+            <label>Check If no existing emails</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is 10 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</description>
+        <name>Is_10_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</name>
+        <label>Is 10 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</label>
+        <locationX>1238</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Entry_Criteria_10_Day_s_Company_Update_Required_Reminder_Emails</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Lifecycle_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Required</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Status_Update_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Workflow_One_Week_Trigger_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Partner_Submitter_UserId__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Partner_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X10_Day_s_Reminder_Emails_for_Company_Update_Required</targetReference>
+            </connector>
+            <label>Entry Criteria : 10 Day(s) Company &apos;Update Required&apos; Reminder Emails</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is 3 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</description>
+        <name>Is_3_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</name>
+        <label>Is 3 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</label>
+        <locationX>710</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Entry_Criteria_3_Day_s_Company_Update_Required_Reminder_Emails</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Lifecycle_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Required</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Workflow_Three_Day_Trigger_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Status_Update_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Partner_Submitter_UserId__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Partner_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X3_Day_s_Reminder_Emails_for_Company_Update_Required</targetReference>
+            </connector>
+            <label>Entry Criteria : 3 Day(s) Company &apos;Update Required Reminder&apos; Emails</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is used to Verify If Intel Admin is changed for Partner and then send email</description>
+        <name>Verfiy_If_Intel_Admin_is_changed_for_Partner</name>
+        <label>Verify If Intel Admin is changed for Partner</label>
+        <locationX>182</locationX>
+        <locationY>2448</locationY>
+        <defaultConnector>
+            <targetReference>Verify_If_Update_Required_to_send_partner_Edit_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont send Email and Continue</defaultConnectorLabel>
+        <rules>
+            <name>Send_Email_When_Intel_Admin_is_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Intel_Admin_Changed_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0_0</targetReference>
+            </connector>
+            <label>Send Email When Intel Admin is changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Send Email to intel Admin If all the following conditions met:
+		i) PMP_Company_Lifecycle_Status_Nm__c is &apos;Admin Review&apos; and PMP_Company_Lifecycle_Status_Nm__c is changed
+		ii) Not a new record
+		iii) PMP_Is_Updated_Ind__c is false, i.e Not benefit revoked
+		iv) PMP_Company_Information_Language_Nm__c is &apos;English&apos;</description>
+        <name>Verify_Admin_Review_Email_can_be_sent_to_Intel_Admin</name>
+        <label>Verify Admin Review Email can be sent to Intel Admin</label>
+        <locationX>182</locationX>
+        <locationY>1296</locationY>
+        <defaultConnector>
+            <targetReference>Verify_to_send_Email_for_any_Non_English_Storefront_changes_to_Intel_Admin</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont Send Email,Continue</defaultConnectorLabel>
+        <rules>
+            <name>Send_Admin_Review_Email_to_Intel_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaSendAdminReviewEmailIntelAdmin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date</targetReference>
+            </connector>
+            <label>Send Admin Review Email to Intel Admin</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_if_the_IntelMarketplaceadmin_user_is_active</name>
+        <label>Verify if the IntelMarketplaceadmin user is active</label>
+        <locationX>182</locationX>
+        <locationY>4056</locationY>
+        <defaultConnector>
+            <targetReference>Resubmitted_Email_for_MP_Admin_Group</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>If Intelmarketplaceadmin is inactive,send email to group</defaultConnectorLabel>
+        <rules>
+            <name>If_IntelMarketplaceadmin_is_active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Intel_Admin_Id__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Resubmitted_Email_for_Admin</targetReference>
+            </connector>
+            <label>If IntelMarketplaceadmin is active</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_if_the_IntelMarketplaceadmin_user_is_activenon_english</name>
+        <label>Verify if the IntelMarketplaceadmin user is activenon english</label>
+        <locationX>182</locationX>
+        <locationY>4764</locationY>
+        <defaultConnector>
+            <targetReference>Resubmitted_Email_for_MP_Admin_Group_non_english_flow</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>If Intelmarketplaceadmin is inactive,send email to group</defaultConnectorLabel>
+        <rules>
+            <name>If_IntelMarketplaceadmin_is_active_nonenglish</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Intel_Admin_Id__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Resubmitted_Email_for_Admin_0</targetReference>
+            </connector>
+            <label>If IntelMarketplaceadmin is active nonenglish</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Verify If partner status is Update Required to send partner Edit email</description>
+        <name>Verify_If_Update_Required_to_send_partner_Edit_email</name>
+        <label>Verify If Update Required to send partner Edit email</label>
+        <locationX>182</locationX>
+        <locationY>2904</locationY>
+        <defaultConnector>
+            <targetReference>Verify_to_send_Approved_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont Send Email, Continue</defaultConnectorLabel>
+        <rules>
+            <name>Send_Email_to_partner_to_update_require</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Update_Required_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0_0_0</targetReference>
+            </connector>
+            <label>Send Email to partner to update require</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is used to verify whether one partner Id Sync</description>
+        <name>Verify_One_Partner_Id_Sync</name>
+        <label>Verify One Partner Id Sync</label>
+        <locationX>182</locationX>
+        <locationY>288</locationY>
+        <defaultConnector>
+            <targetReference>verify_update_last_updated_date_of_storefront</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Sync Required</defaultConnectorLabel>
+        <rules>
+            <name>Sync_Parnter_Id</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Opid_Sfid_Ref_Txt__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.PMP_Opid_Sfid_Txt__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sync_One_PartnerId_Ref</targetReference>
+            </connector>
+            <label>Sync Parnter Id</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is to verify whether Approved and published Email could be sent to partners</description>
+        <name>Verify_to_send_Approved_Email</name>
+        <label>Verify to send Approved Email</label>
+        <locationX>182</locationX>
+        <locationY>3360</locationY>
+        <defaultConnector>
+            <targetReference>verify_whether_to_send_partner_rejected_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Send_Approved_and_published_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Approved_and_Published_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0_0_0_0</targetReference>
+            </connector>
+            <label>Send Approved and published Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Verify to send Email for any Non-English Storefront changes to Intel Admin</description>
+        <name>Verify_to_send_Email_for_any_Non_English_Storefront_changes_to_Intel_Admin</name>
+        <label>Verify to send Email for any Non-English Storefront changes to Intel Admin</label>
+        <locationX>182</locationX>
+        <locationY>1872</locationY>
+        <defaultConnector>
+            <targetReference>Verfiy_If_Intel_Admin_is_changed_for_Partner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont Send Email and Continue</defaultConnectorLabel>
+        <rules>
+            <name>Send_Email_for_Non_English_Storefront_changes_to_Intel_Admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Non_English_Storefront_Changes</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0</targetReference>
+            </connector>
+            <label>Send Email for Non-English Storefront changes to Intel Admin</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This is to store status published date of storefront</description>
+        <name>Verify_to_store_status_published_date_of_storefront</name>
+        <label>Verify to store status published date of storefront</label>
+        <locationX>182</locationX>
+        <locationY>960</locationY>
+        <defaultConnector>
+            <targetReference>Verify_Admin_Review_Email_can_be_sent_to_Intel_Admin</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Update required</defaultConnectorLabel>
+        <rules>
+            <name>Store_status_published_date_of_storefront</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Lifecycle_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_date_when_status_is_changed_to_published</targetReference>
+            </connector>
+            <label>Store status published date of storefront</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision used to Verify to whether to send New Company Info Creation Email</description>
+        <name>Verify_to_whether_to_send_New_Company_Info_Creation_Email</name>
+        <label>Verify to whether to send New Company Info Creation Email</label>
+        <locationX>182</locationX>
+        <locationY>5424</locationY>
+        <defaultConnector>
+            <targetReference>verify_whether_to_send_translation_approved_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>send_New_Company_Info_Creation_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_New_Company_Information_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_No_Existing_Emails_for_this_Company</targetReference>
+            </connector>
+            <label>send New Company Info Creation Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is used to verify whether to update last status update date of storefront details</description>
+        <name>verify_update_last_updated_date_of_storefront</name>
+        <label>verify update last updated date of storefront</label>
+        <locationX>182</locationX>
+        <locationY>624</locationY>
+        <defaultConnector>
+            <targetReference>Verify_to_store_status_published_date_of_storefront</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No update required</defaultConnectorLabel>
+        <rules>
+            <name>update_last_updated_date_of_storefront</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Last_Update_Date_Strorefront</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>store_latest_updated_date_of_storefront_details</targetReference>
+            </connector>
+            <label>update last updated date of storefront</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is to send verify whether to send enhanced benefit email</description>
+        <name>verify_whether_to_send_enhanced_benefit_email</name>
+        <label>verify whether to send enhanced benefit email</label>
+        <locationX>182</locationX>
+        <locationY>6096</locationY>
+        <defaultConnectorLabel>Dont send Email, Continue</defaultConnectorLabel>
+        <rules>
+            <name>send_enhanced_benefit_email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Enhanced_Benefit_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Enhanced_Benefit_Email_Alert</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>send enhanced benefit email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is used to verify whether to send Non English resubmit email</description>
+        <name>verify_whether_to_send_Non_English_resubmit_email</name>
+        <label>verify whether to send Non English resubmit email</label>
+        <locationX>182</locationX>
+        <locationY>4848</locationY>
+        <defaultConnector>
+            <targetReference>Get_Existing_Email_Logs</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont send email,Continue</defaultConnectorLabel>
+        <rules>
+            <name>send_Non_English_resubmit_email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Non_English_Resubmit</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0_0_0_0_0_0_0</targetReference>
+            </connector>
+            <label>Send Non English resubmit email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is used to verify whether to send partner rejected email</description>
+        <name>verify_whether_to_send_partner_rejected_email</name>
+        <label>verify whether to send partner rejected email</label>
+        <locationX>182</locationX>
+        <locationY>3816</locationY>
+        <defaultConnector>
+            <targetReference>Verify_whether_to_send_resubmit_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont send Email, Continue</defaultConnectorLabel>
+        <rules>
+            <name>Send_Partner_rejected_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Rejected_Email_To_Partner</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0_0_0_0_0</targetReference>
+            </connector>
+            <label>Send Partner rejected Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This Decision is used to Verify whether to send resubmit email</description>
+        <name>Verify_whether_to_send_resubmit_email</name>
+        <label>Verify whether to send resubmit email</label>
+        <locationX>182</locationX>
+        <locationY>4272</locationY>
+        <defaultConnector>
+            <targetReference>verify_whether_to_send_Non_English_resubmit_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Dont send Email, Continue</defaultConnectorLabel>
+        <rules>
+            <name>Send_Resubmit_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Resubmit_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Status_Update_Date_0_0_0_0_0_0</targetReference>
+            </connector>
+            <label>Send Resubmit Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision is used to verify whether to send translation approved email</description>
+        <name>verify_whether_to_send_translation_approved_email</name>
+        <label>verify whether to send translation approved email</label>
+        <locationX>182</locationX>
+        <locationY>5760</locationY>
+        <defaultConnector>
+            <targetReference>verify_whether_to_send_enhanced_benefit_email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>send_translation_approved_email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_Translation_Approved_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Translation_Approved_Email_Alert</targetReference>
+            </connector>
+            <label>send translation approved email</label>
+        </rules>
+    </decisions>
+    <description>Company Process Automation</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>This formula is used verify whether Approved and published Email could be sent to partners</description>
+        <name>Formula_Approved_and_Published_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},&apos;Approved&apos;)  &amp;&amp; NOT(ISNEW() ) &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c})</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to verify whether to send enhanced benefit email</description>
+        <name>Formula_Enhanced_Benefit_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>(ISNEW() &amp;&amp; ISPICKVAL({!$Record.PMP_Partner_Benefit_Type__c} , &apos;Solutions Marketplace Enhanced&apos;)||ISPICKVAL({!$Record.PMP_Partner_Benefit_Type__c} , &apos;Solutions Marketplace Enhanced&apos;) ) &amp;&amp; {!$Record.PMP_Is_Working_Copy_Ind__c} = true</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to pass input parameter to the new company info email apex class</description>
+        <name>Formula_Input_for_New_Company_Info_Mail</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.PMP_Published_Copy_Id__c} +&quot;|&quot; + &quot;New_CompanyInfo_CreationEmail&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used for passing input parameter for enhanced benefit email</description>
+        <name>Formula_Input_parameter_Enhanced_Benefit_Email</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Id} +&quot;|&quot; + &quot;Email_For_Create_Offering&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to verify and send an email if intel admin is changed for the partner</description>
+        <name>Formula_Intel_Admin_Changed_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},&apos;Admin Review&apos;) &amp;&amp; ISCHANGED({!$Record.PMP_Intel_Admin_Id__c}) &amp;&amp; NOT(ISNEW() )
+ &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c})</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to update last updated date of storefront details.</description>
+        <name>Formula_Last_Update_Date_Strorefront</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(AND(ISCHANGED( {!$Record.PMP_Company_Lifecycle_Status_Nm__c}), ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c}, &apos;Admin Review&apos;)), AND(ISCHANGED( {!$Record.PMP_Company_Lifecycle_Status_Nm__c}),ISPICKVAL( {!$Record.PMP_Company_Lifecycle_Status_Nm__c}, &apos;Published&apos;),NOT(ISBLANK({!$Record.PMP_Working_Copy_Id__c}))))</expression>
+    </formulas>
+    <formulas>
+        <description>This Formula is used to verify whether to send new company information email</description>
+        <name>Formula_New_Company_Information_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW() &amp;&amp; ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c}, &apos;Draft&apos;)  &amp;&amp; {!$Record.PMP_Is_Working_Copy_Ind__c} = true</expression>
+    </formulas>
+    <formulas>
+        <description>This Formula is used to verify whether to send Non English resubmit email</description>
+        <name>Formula_Non_English_Resubmit</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},&apos;Admin Review&apos;), NOT(ISNEW()) )  &amp;&amp;({!$Record.PMP_Is_Updated_Ind__c} = True)
+ &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c})
+&amp;&amp; NOT(ISPICKVAL({!$Record.PMP_Company_Information_Language_Nm__c} , &apos;English&apos;)  )</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to verify the Non-english Storefront changes which will be used to verify whether to send an email to IntelAdmin</description>
+        <name>Formula_Non_English_Storefront_Changes</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c} ,  &apos;Admin Review&apos;), NOT(ISNEW()) )  
+ &amp;&amp;({!$Record.PMP_Is_Updated_Ind__c} = False)
+ &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c}) 
+&amp;&amp;NOT(ISPICKVAL({!$Record.PMP_Company_Information_Language_Nm__c} , &apos;English&apos;) )</expression>
+    </formulas>
+    <formulas>
+        <description>This formula to verify if opid sfid in sync iwth opid sfid ref</description>
+        <name>Formula_Opid_Sfid_Sync</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.PMP_Opid_Sfid_Txt__c} = {!$Record.PMP_Opid_Sfid_Ref_Txt__c}</expression>
+    </formulas>
+    <formulas>
+        <description>This Formula is used to verify whether to send partner rejected email</description>
+        <name>Formula_Rejected_Email_To_Partner</name>
+        <dataType>Boolean</dataType>
+        <expression>ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},&apos;Rejected&apos;)  &amp;&amp; NOT(ISNEW() ) &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c})</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to verifty whether to send resubmit Email for the partner</description>
+        <name>Formula_Resubmit_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c} ,  &apos;Admin Review&apos;), NOT(ISNEW()) )  &amp;&amp;({!$Record.PMP_Is_Updated_Ind__c} = True)
+ &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c}) 
+ &amp;&amp;ISPICKVAL({!$Record.PMP_Company_Information_Language_Nm__c}, &apos;English&apos;)</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to verify whether to send translation approved email</description>
+        <name>Formula_Translation_Approved_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},&apos;Approved&apos;)  &amp;&amp; NOT(ISNEW() ) &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c}) &amp;&amp; INCLUDES({!$Record.PMP_Partner_Segment_Nm__c},&apos;Internet of Things and Embedded&apos;)</expression>
+    </formulas>
+    <formulas>
+        <description>This formula is used to Verify If Partner Status is Update Required to send partner Edit email</description>
+        <name>Formula_Update_Required_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},&apos;Update Required&apos;)  &amp;&amp; NOT(ISNEW() )   &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Formula to verify and Send Admin Review Email to intel Admin If all the following conditions met:
+		i) PMP_Company_Lifecycle_Status_Nm__c is &apos;Admin Review&apos; andPMP_Company_Lifecycle_Status_Nm__c is changed
+		ii) Not a new record
+		iii) PMP_Is_Updated_Ind__c is false, i.e Not benefit revoked
+		iv) PMP_Company_Information_Language_Nm__c is &apos;English&apos;</description>
+        <name>FormulaSendAdminReviewEmailIntelAdmin</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISPICKVAL({!$Record.PMP_Company_Lifecycle_Status_Nm__c},  &apos;Admin Review&apos;), NOT(ISNEW()))  
+ &amp;&amp;({!$Record.PMP_Is_Updated_Ind__c} = False)
+ &amp;&amp; ISCHANGED({!$Record.PMP_Company_Lifecycle_Status_Nm__c}) 
+ &amp;&amp;ISPICKVAL({!$Record.PMP_Company_Information_Language_Nm__c}, &apos;English&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>Test_Formula_Last_Updated_Date_Storefront</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.PMP_Last_Updated_Date_Dt__c} = Today()</expression>
+    </formulas>
+    <formulas>
+        <name>Test_Formula_published_Storefront_Date</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.PMP_Company_Status_Published_Date_Dt__c} = Today()</expression>
+    </formulas>
+    <interviewLabel>PMP_CompanyProcessAutomation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PMP_CompanyProcessAutomation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Existing_Email_Logs</name>
+        <label>Get Existing Email Logs</label>
+        <locationX>336</locationX>
+        <locationY>4872</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_to_whether_to_send_New_Company_Info_Creation_Email</targetReference>
+        </connector>
+        <filterLogic>(1 OR 3) AND 2</filterLogic>
+        <filters>
+            <field>PMP_Company__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PMP_Published_Copy_Id__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email_Template_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PMP_CompanyInfoDraftEmail_Profile</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PMP_Company__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PMP_Working_Copy_Id__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PRM_EmailLog__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>This is to store latest updated date of storefront details</description>
+        <name>store_latest_updated_date_of_storefront_details</name>
+        <label>store latest updated date of storefront details</label>
+        <locationX>50</locationX>
+        <locationY>744</locationY>
+        <connector>
+            <targetReference>Verify_to_store_status_published_date_of_storefront</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>PMP_Last_Updated_Date_Dt__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>This action is to Sync opid sfid Ref with  opid sfid on Company record</description>
+        <name>Sync_One_PartnerId_Ref</name>
+        <label>Sync One PartnerId Ref</label>
+        <locationX>50</locationX>
+        <locationY>408</locationY>
+        <connector>
+            <targetReference>verify_update_last_updated_date_of_storefront</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>PMP_Opid_Sfid_Ref_Txt__c</field>
+            <value>
+                <elementReference>$Record.PMP_Opid_Sfid_Txt__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>This is to update date when status is changed to published</description>
+        <name>update_date_when_status_is_changed_to_published</name>
+        <label>update date when status is changed to published</label>
+        <locationX>50</locationX>
+        <locationY>1080</locationY>
+        <connector>
+            <targetReference>Verify_Admin_Review_Email_can_be_sent_to_Intel_Admin</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>PMP_Company_Status_Published_Date_Dt__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>1416</locationY>
+        <connector>
+            <targetReference>Admin_Review_Email_to_Intel_Admin</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>1992</locationY>
+        <connector>
+            <targetReference>Admin_Review_Email_to_Intel_Admin_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>2568</locationY>
+        <connector>
+            <targetReference>Send_Email_If_Intel_Admin_is_changed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0_0_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>3024</locationY>
+        <connector>
+            <targetReference>Send_Update_Required_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0_0_0_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>3480</locationY>
+        <connector>
+            <targetReference>Approved_And_Published_Email_Alert_To_Recent_Submitter</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0_0_0_0_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>3936</locationY>
+        <connector>
+            <targetReference>Reject_Alert_To_Recent_Submitter</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0_0_0_0_0_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>4392</locationY>
+        <connector>
+            <targetReference>Verify_if_the_IntelMarketplaceadmin_user_is_active</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
+        <name>Update_Last_Status_Update_Date_0_0_0_0_0_0_0</name>
+        <label>Update Last Status Update Date</label>
+        <locationX>50</locationX>
+        <locationY>4968</locationY>
+        <connector>
+            <targetReference>Verify_if_the_IntelMarketplaceadmin_user_is_activenon_english</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Admin Review</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PMP_Company_Status_Update_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>584</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Verify_One_Partner_Id_Sync</targetReference>
+        </connector>
+        <object>PMP_Company__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Action_After_3_Business_Days</name>
+            <connector>
+                <targetReference>Is_3_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</targetReference>
+            </connector>
+            <label>Action  After 3 Business Days</label>
+            <maxBatchSize>1</maxBatchSize>
+            <offsetNumber>3</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>PMP_Workflow_Three_Day_Trigger_Dt__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Action_After_10_Business_Days</name>
+            <connector>
+                <targetReference>Is_10_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</targetReference>
+            </connector>
+            <label>Action  After 10 Business Days</label>
+            <maxBatchSize>1</maxBatchSize>
+            <offsetNumber>10</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>PMP_Workflow_One_Week_Trigger_Dt__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

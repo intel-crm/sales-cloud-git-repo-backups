@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Content Document Link</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Content Document Link</value>
+    </caseValues>
+    <fields>
+        <label><!-- ContentDocument ID --></label>
+        <name>ContentDocumentId__c</name>
+        <relationshipLabel><!-- Content Document Link --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Content Document --></label>
+        <name>Core_Content_Document__c</name>
+        <relationshipLabel><!-- Content Document Link --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Linked Entity ID --></label>
+        <name>LinkedEntityId__c</name>
+        <relationshipLabel><!-- Content Document Link --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

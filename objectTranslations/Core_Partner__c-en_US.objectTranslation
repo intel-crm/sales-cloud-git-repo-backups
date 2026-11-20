@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partners</value>
+    </caseValues>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>Core_Partner__c</name>
+        <relationshipLabel><!-- Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Core_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud Service Provider</masterLabel>
+            <translation><!-- Cloud Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DMR</masterLabel>
+            <translation><!-- DMR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design House</masterLabel>
+            <translation><!-- Design House --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMS</masterLabel>
+            <translation><!-- EMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESF Firm</masterLabel>
+            <translation><!-- ESF Firm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded Board Manufacturer</masterLabel>
+            <translation><!-- Embedded Board Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fellow Traveler</masterLabel>
+            <translation><!-- Fellow Traveler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV/OSV</masterLabel>
+            <translation><!-- ISV/OSV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITO</masterLabel>
+            <translation><!-- ITO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOEM</masterLabel>
+            <translation><!-- LOEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM</masterLabel>
+            <translation><!-- ODM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM</masterLabel>
+            <translation><!-- OEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retailer</masterLabel>
+            <translation><!-- Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Integrator</masterLabel>
+            <translation><!-- System Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEM</masterLabel>
+            <translation><!-- TEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telco/Service Provider</masterLabel>
+            <translation><!-- Telco/Service Provider --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

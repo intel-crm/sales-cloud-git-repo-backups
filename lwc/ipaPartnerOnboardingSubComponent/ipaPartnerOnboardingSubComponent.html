@@ -1,0 +1,22 @@
+<template>
+    <template if:true={ifs.isLinkOut}>
+        <c-ipa-link external-url={linkData.externalUrl} community-page={linkData.communityPage}  object-page={linkData.objectPage} record-id={linkData.recordId} hide-icon="true">
+            <slot name="tile"></slot>
+        </c-ipa-link>
+    </template>
+        <template if:true={ifs.isViewConfirmation}>
+            <c-ipa-partner-modal-view-confirmation step={step}  onmarkstepcomplete={markStepComplete}>
+                <div slot="tile"><slot name="tile"></slot></div>
+            </c-ipa-partner-modal-view-confirmation>
+        </template>
+        <template if:true={ifs.isTermsAndConditions}>
+            <c-ipa-partner-modal-terms-and-conditons step={step}  onmarkstepcomplete={markStepComplete}>
+            <div slot="tile"><slot name="tile"></slot></div>
+            </c-ipa-partner-modal-terms-and-conditons>
+        </template>
+        <template if:true={ifs.isCommunitiesPicklist}>
+            <c-ipa-partner-modal-communities step={step}  onmarkstepcomplete={markStepComplete}>
+                <div slot="tile"><slot name="tile"></slot></div>
+            </c-ipa-partner-modal-communities>
+        </template>
+</template>

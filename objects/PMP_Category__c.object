@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Category object holds information on Category, Industry, Application to which an offering can be related to.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Core_PMP_Locale__c</fullName>
+        <description>Helps segregate the Categories and display based on user locale</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Helps segregate the Categories and display based on user locale</inlineHelpText>
+        <label>Locale</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Category Active (or) Inactive indicator</description>
+        <inlineHelpText>Category Active (or) Inactive indicator</inlineHelpText>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Ancestor_Category_Cd__c</fullName>
+        <description>Gives the hierarchical display of Ancestor PIM Category Ids with &apos;|&apos; separator</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c)),PMP_Parent_Category_Id__r.PMP_Partner_Product_Category_Cd__c, 
+&quot;&quot;)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Gives the hierarchical display of Ancestor PIM Category Ids with &apos;|&apos; separator</inlineHelpText>
+        <label>Ancestor Category Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Ancestor_Category_Chinese_Nm__c</fullName>
+        <description>Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c,
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c,
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c,
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c,
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c)),PMP_Parent_Category_Id__r.PMP_Category_Chinese_Nm__c,
+&quot;&quot;)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator</inlineHelpText>
+        <label>Ancestor Category Name (Chinese)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Ancestor_Category_Japanese_Nm__c</fullName>
+        <description>Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c)),PMP_Parent_Category_Id__r.PMP_Category_Japanese_Nm__c, 
+&quot;&quot;)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator</inlineHelpText>
+        <label>Ancestor Category Name (Japanese)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Ancestor_Category_Nm__c</fullName>
+        <description>Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.Name, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.Name, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.Name, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name)), PMP_Parent_Category_Id__r.PMP_Parent_Category_Id__r.Name + &quot;|&quot; + PMP_Parent_Category_Id__r.Name, 
+IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name, 
+&quot;&quot;)))))</formula>
+        <inlineHelpText>Gives the hierarchical display of Ancestor PIM Category Names with &apos;|&apos; separator</inlineHelpText>
+        <label>Ancestor Category Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Business_Segment_Nm__c</fullName>
+        <description>Can hold any of the three segments (IoT,Personal Computers,Server)</description>
+        <inlineHelpText>A set of business segments that the offering can belong to.</inlineHelpText>
+        <label>Business Segments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IoT</fullName>
+                    <default>false</default>
+                    <label>Internet of Things and Embedded</label>
+                </value>
+                <value>
+                    <fullName>Server</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Personal Computers</fullName>
+                    <default>false</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Field Programmable Gate Array</fullName>
+                    <default>false</default>
+                    <label>Field Programmable Gate Array</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Category_Chinese_Dsc__c</fullName>
+        <description>description of category in Chinese language</description>
+        <inlineHelpText>description of category in Chinese language</inlineHelpText>
+        <label>Description (Chinese)</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Category_Chinese_Nm__c</fullName>
+        <description>Name of Category in Chinese language</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Category in Chinese language</inlineHelpText>
+        <label>Category Name (Chinese)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Category_Display_Sequence_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Category Display Sequence</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Category_Image_URL_Txt__c</fullName>
+        <description>URL for Category Image</description>
+        <inlineHelpText>URL for Category Image</inlineHelpText>
+        <label>Category Image URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Category_Japanese_Dsc__c</fullName>
+        <description>description of a category in Japanese language</description>
+        <inlineHelpText>description of a category in Japanese language</inlineHelpText>
+        <label>Description (Japanese)</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Category_Japanese_Nm__c</fullName>
+        <description>Name of Category in Japanese language</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Category in Japanese language</inlineHelpText>
+        <label>Category Name (Japanese)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_ChildMandatory_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if the child for this category is mandatory or not</description>
+        <inlineHelpText>Indicates if the child for this category is mandatory or not</inlineHelpText>
+        <label>Is Child Mandatory</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Display_Type_Nm__c</fullName>
+        <description>Type of control to be displayed for the category selection (Radio/Checkbox)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of control to be displayed for the category selection (Radio/Checkbox)</inlineHelpText>
+        <label>Display Type</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Parent_Category_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Self lookup to Category object</description>
+        <inlineHelpText>Self lookup to Category object</inlineHelpText>
+        <label>Parent Category</label>
+        <referenceTo>PMP_Category__c</referenceTo>
+        <relationshipLabel>Categories</relationshipLabel>
+        <relationshipName>Categories</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Offering_Category_Dsc__c</fullName>
+        <description>Description of the category</description>
+        <inlineHelpText>Description of the category</inlineHelpText>
+        <label>Partner Offering Category Description</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Product_Category_Cd__c</fullName>
+        <description>Category Id from PIM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Category Id from PIM</inlineHelpText>
+        <label>PIM Category Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Product_Category_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>A unique Id with combination of PIM Category Id and Locale</description>
+        <externalId>true</externalId>
+        <inlineHelpText>A unique Id with combination of PIM Category Id and Locale</inlineHelpText>
+        <label>PIM External Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Product_Parent_Category_Cd__c</fullName>
+        <description>Parent Category Id from PIM. Needed for building tree structure</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent Category Id from PIM.</inlineHelpText>
+        <label>PIM Parent Category Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Tool_Tip_Chinese_Txt__c</fullName>
+        <description>Tool Tip for category in chinese</description>
+        <inlineHelpText>Tool Tip for category in chinese</inlineHelpText>
+        <label>Tool Tip Chinese</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Tool_Tip_English_Txt__c</fullName>
+        <description>Tool Tip about the category</description>
+        <inlineHelpText>Tool Tip about the category</inlineHelpText>
+        <label>Tool Tip English</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Tool_Tip_Japanese_Txt__c</fullName>
+        <description>Tool Tip  for category in Japanese</description>
+        <inlineHelpText>Tool Tip  for category in Japanese</inlineHelpText>
+        <label>Tool Tip Japanese</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_Industry&quot;) , &apos;Industry&apos;, 
+   IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_Industry&quot;) , &apos;Industry&apos;, 
+      IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_APP&quot;) , &apos;Use Cases&apos;, 
+         IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_APP&quot;) , &apos;Use Cases&apos;, 
+           IF(CONTAINS(PMP_Ancestor_Category_Cd__c, &quot;NPP_01_TYPE&quot;) , &apos;Category&apos;, 
+              IF(CONTAINS(PMP_Partner_Product_Category_Cd__c, &quot;NPP_01_TYPE&quot;) , &apos;Category&apos;, &apos;&apos;))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Category</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Parent_Category_Id__c</columns>
+        <columns>PMP_Active_Ind__c</columns>
+        <columns>PMP_Partner_Product_Category_Cd__c</columns>
+        <columns>PMP_Partner_Product_Parent_Category_Cd__c</columns>
+        <columns>PMP_Ancestor_Category_Nm__c</columns>
+        <columns>PMP_Partner_Product_Category_Key__c</columns>
+        <columns>PMP_Ancestor_Category_Cd__c</columns>
+        <columns>Type__c</columns>
+        <columns>PMP_Business_Segment_Nm__c</columns>
+        <columns>PMP_Display_Type_Nm__c</columns>
+        <columns>Core_PMP_Locale__c</columns>
+        <columns>PMP_Category_Display_Sequence_Nbr__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Partner Offering Category Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Categories</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

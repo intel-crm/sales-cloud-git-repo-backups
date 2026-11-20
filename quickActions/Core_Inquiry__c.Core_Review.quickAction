@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Review button to change the Status and Reviewed by Rep fields to Review and True values respectively on click of review button</description>
+    <height>250</height>
+    <label>Mark as Reviewed</label>
+    <lightningComponent>Core_ReviewButton</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

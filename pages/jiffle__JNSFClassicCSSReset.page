@@ -1,0 +1,105 @@
+<apex:page >
+ <style type="text/css">
+ 
+      /* Below CSS rules override the default salesforce CSS loaded in classic mode (i.e extended.css, common.css files etc) i.e those rules in element_selectors_of_salesforce_classic_styles.css  */
+
+      .selfserve-ui :where(td) {
+        margin: unset;
+        color: unset;
+        font-family: unset;
+      }
+      
+      .selfserve-ui :where(h1, h2, h3, h4, h5, h6) {
+        font-weight: unset;
+        font-family: unset;
+        font-size: unset;
+        margin: unset;
+        display: unset;
+      }
+
+      .selfserve-ui :where(button) {
+        color: unset;
+        margin: unset;
+        padding: unset;
+        border: unset;
+        border-bottom-color: unset;
+        background: unset;
+        font-weight: unset;
+        font-size: unset;
+        -moz-border-radius: unset;
+        -webkit-border-radius: unset;
+        border-radius: unset;
+      }
+
+      .selfserve-ui :where(button:active) {
+        background-position: unset;
+        border-color: unset;
+        border-bottom-color: unset;
+      }
+
+      .selfserve-ui :where(th) {
+        text-align: unset;
+        font-weight: unset;
+        white-space: unset;
+      }
+
+      .selfserve-ui :where(form) {
+        margin: unset;
+        padding: unset;
+      }
+
+      .selfserve-ui :where(textarea) {
+        font-family: unset;
+        font-size: unset;
+      }
+
+      .selfserve-ui :where(select) {
+        color: unset;
+      }
+      
+      .selfserve-ui :where(select:disabled) {
+        color: unset;
+      }
+
+      .selfserve-ui :where(select option, select optgroup) {
+        font-size: unset;
+      }
+
+      .selfserve-ui :where(img) {
+        border: unset;
+      }
+
+      .selfserve-ui :where(dl) {
+        margin-left: unset;
+      }
+      
+      .selfserve-ui :where(dt) {
+        font-weight: unset;
+      }
+      
+      .selfserve-ui :where(fieldset legend) {
+        font-weight: unset;;
+        color: unset;
+      }
+      
+      .selfserve-ui :where(fieldset ul) {
+        padding: unset;
+      }
+      
+      .selfserve-ui :where(ul li, ol li) {
+        margin-left: unset;
+        padding-left: unset;
+      }
+      
+      .selfserve-ui :where(input) {
+        padding-top: unset;
+      }
+      
+    </style>
+<link
+      rel="stylesheet"
+      href="https://use.typekit.net/yfj1bkb.css"
+      media="print"
+      onload="this.media='all'"
+    />
+</apex:page>

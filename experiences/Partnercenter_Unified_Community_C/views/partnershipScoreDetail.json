@@ -1,0 +1,215 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsThreeCol444Layout",
+  "dataProviders" : [ ],
+  "id" : "ce18166f-834d-4075-988d-3e34bfd7c9f7",
+  "label" : "Partnership Score Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "showHeader" : true
+      },
+      "componentName" : "c:core_MDF_Recovery_Dashboard",
+      "id" : "ab5d0a3c-79ab-4ffa-a770-b9819a5ad442",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1b854bf6-d8f1-4542-89aa-d91771474957",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Claims_Reviewed",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "31d73cfb-0d6e-4477-8283-ac91ebdaa2f5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Partial_Value_Score_Recovery",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "8e1e0a7a-136b-4fe9-90e3-3b71de80ddc0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Attribution_1_Claims",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "81348023-ea79-470b-a7f2-81eaa4bb25ff",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Attribution_0_Claims",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "a480f457-bc8c-4d55-b576-816f1c530e9b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "96c82cdf-18ab-4457-bcf2-fc7573d65c1d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "169c028f-b116-4bf6-a5df-362ff464ac26",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "3dbb9ba7-97ff-4379-9961-c01724c61c47",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e798518b-b456-462a-af2b-b13196b1b521",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Reviewed_Claims_Details",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "3da4e168-fe10-4c13-bc3f-ec815fb05221",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Zero_Value_Score_Recovery",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "330c8ad8-438c-4a44-908d-3258d8a4f8d0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_POP_1_Claims",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "fc539698-36c2-40eb-b938-4695ccf55be1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_POP_0_Claims",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "dbf879db-efad-4f48-b6d3-111e677def31",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "381c0ce8-6b0e-4ddc-ad3f-01c450d6a106",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Partnership_Score_Details",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "077e8ad2-a4b3-4bed-bd9b-22271c5725a6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Claims_with_Manual_Recovery",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "7911dd90-b5c3-4eb0-9a02-c24ecd87280b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Engagement_1_Claims",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "aa375325-b975-4563-9d32-5299f822ab83",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c.Id",
+        "reportId" : "Core_MDF_Engagement_0_Claims",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "e6e5e0f1-c2d7-4c5c-98db-db4d099100bb",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8a1a2307-74c8-46c1-8e83-60e00a3ed926",
+    "regionName" : "sidebarAlt",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-aCo"
+}

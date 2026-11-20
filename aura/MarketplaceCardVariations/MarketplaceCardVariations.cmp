@@ -1,0 +1,52 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" extends="c:MarketplaceRedux" >
+    <aura:attribute name="featuredProductsTab1" type="object[]" default="[]"/>
+    <aura:attribute name="featuredProductsTab2" type="object[]" default="[]"/>
+    <aura:attribute name="listDisplayType" type="string" default="card"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="slds-clearfix">
+        <h4 class="slds-p-vertical_large slds-float_left">Display Type = {!v.listDisplayType == 'card' ? 'Card View' : 'List View'}</h4>
+        <div class="slds-float_right slds-p-vertical_large">
+            <aura:if isTrue="{! v.appState.Settings.currentScreenSize == 'desktop'}">
+                <aura:if isTrue="{!v.listDisplayType == 'list'}">
+                    <button onclick="{!c.handleDisplayCard}" class="darkButton" title="{!$Label.c.PMP_Grid_Display}" aria-label="{!$Label.c.PMP_Grid_Display}">
+                        <lightning:icon iconName="utility:apps"
+                            class="cursor"
+                            size="x-small"/>
+                    </button>
+                </aura:if>
+                <aura:if isTrue="{!v.listDisplayType == 'card'}">
+                    <button onclick="{!c.handleDisplayList}"  class="darkButton" title="{!$Label.c.PMP_List_Display}" aria-label="{!$Label.c.PMP_List_Display}">
+                            <lightning:icon iconName="utility:list"
+                                class="cursor"
+                                size="x-small"/>
+                    </button>
+                </aura:if>
+            </aura:if>
+        </div>
+    </div>
+    <c:MarketplaceCardList
+        results="{!v.featuredProductsTab1}"
+        displayCardType="true"
+        cardHeightMatch="true"
+        displayContactPartner="false"
+        displayAttributes="true"
+        displayCardDescription="true"
+        displayByPartner="true"
+        showAddToCompare="false"
+        displayType="{!v.listDisplayType}"
+        largeDeviceOverride="3"
+        />
+        <c:MarketplaceCardList
+            results="{!v.featuredProductsTab2}"
+            displayCardType="false"
+            cardHeightMatch="false"
+            displayContactPartner="true"
+            displayAttributes="true"
+            displayCardDescription="true"
+            displayByPartner="true"
+            showAddToCompare="true"
+            displayType="{!v.listDisplayType}"
+            largeDeviceOverride="3"
+        />
+</aura:component>

@@ -1,0 +1,326 @@
+<apex:page docType="html-5.0" sidebar="false" showHeader="false" controller="espy.FlexQueueMultiselectController"  standardStylesheets="false" manifest="/apex/CacheManifest" >
+    <apex:slds />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" />
+
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"/>
+
+    <apex:includeScript value="https://www.google.com/jsapi"/>
+    <apex:includeScript value="https://www.gstatic.com/charts/loader.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css"/>  
+    
+    <!--<body style="background-color: #d4dae0 !important;">-->
+    <body>
+        <div id="wrapper" class="active">
+            <div class ="tour1 "></div>
+            <!-- Sidebar 
+            <c:BM_sidepane />  -->          
+            <!-- Page content -->
+            <c:BM_header />
+            <div class="page-content inset">
+                <div id="contentDiv">
+                    <div class="row ">
+                        <div class="col-md-5">
+                            <div class="panel panel-default tour2" style="min-height: 538px;">
+                                <div class="panel-heading panel-header" >
+                                    <h3 class="panel-title">Re-Prioritize Flex Queue</h3>
+                                </div>
+                                <div class="panel-body" align="center" style="width:300px;"> 
+                                    <apex:form >
+                                       <!-- <div align="right" >
+                                            <apex:commandButton value="Save" action="{!save}" style="width:110px;"/>
+                                        </div> -->
+                                        <c:MultiselectPicklist leftLabel="Available Batch Jobs"
+                                            leftOption="{!allFlexQueues}"
+                                            rightLabel="Selected Batch Jobs"
+                                            rightOption="{!selectedFlexQueues}"
+                                            size="14"
+                                            width="185px;border:1px solid grey;max-height: 350px;"/>
+                                           <div align="right"  >
+                                           &nbsp;
+                                           </div>  
+                                        <div align="right"  >                                                        
+                                            <apex:commandButton value="Save" action="{!save}" style="width:110px;font-size: 1.5rem;"/>
+                                        </div>                                                
+                                    </apex:form>                                    
+                                    <apex:outputText >{!message}</apex:outputText>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-md-7"> 
+                            <div class="panel panel-default tour3" style="min-height: 538px;">
+                                <div class="panel-heading panel-header" >
+                                    <h3 class="panel-title">Flex Queue (Holding Status)</h3>
+                                </div>
+                                <div class="panel-body" ALIGN="CENTER" style="">
+                                    <!-- panel2: long running batches --> 
+                                    <apex:form >
+                                        <apex:messages />
+                                        <apex:pageBlock >
+                                            <apex:pageBlockTable value="{!flexQBlock}" var="items">
+                                                    <apex:column headervalue="Job Name" style="text-align:center !important;">
+                                                        <apex:outputtext value="{!items.AsyncApexJob.ApexClass.Name}"/>
+                                                    </apex:column>
+                                                    <apex:column headervalue="Job Position" style="text-align:center;">
+                                                        <apex:outputtext value="{!items.JobPosition + 1}"/>
+                                                    </apex:column>                                                  
+                                                    <apex:column headervalue="Action" style="text-align:center;">
+                                                        <apex:commandLink action="{!reprioritizeJob}" value="Move To Top" >
+                                                            <apex:param name="jobID"  value="{!items.AsyncApexJobId}" assignTo="{!jobID}"/>                                                         
+                                                        </apex:commandLink>
+                                                    </apex:column>          
+                                            </apex:pageBlockTable>
+                                            <apex:outputText rendered="{!(flexQBlock.size = 0)}"  style="color:red"   value="There are no flex Queue Items to display." />
+                                        </apex:pageBlock>
+                                    </apex:form>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>                               
+                </div>
+                <script type="text/javascript">
+                    <!-- date reset -->
+                    /*long running batches bar chart*/
+                    $( document ).ready(function() {});   
+                </script>
+                <style>
+                .no-padding{
+                    padding:0px;
+                }
+                .no-padding-right{
+
+                    padding-right:0px;
+                }
+                .border-right{
+                    border-right-width: thin;
+                    border-right-color: #ccc;
+                    border-right-style: solid;
+                }
+                .google-visualization-tooltip {  padding: 1px !important;   } 
+                .google-visualization-tooltip-item-list { padding: 0px !important;  margin:0px !important;}
+                .google-visualization-tooltip-item      { padding: 0px !important;  margin:0px !important;  }
+
+
+                </style>        
+            </div>                       
+        </div>
+    </body>
+              
+    <style>
+        .shadow-me{
+            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+        }
+        #wrapper {
+          padding-left: 250px;
+          transition: all 0.4s ease 0s;
+        }
+
+        #wrapper.active {
+          padding-left: 0;
+        }
+
+        #wrapper.active #sidebar-wrapper {
+          left: 0;
+        }
+
+        #page-content-wrapper {
+          width: 100%;
+        }
+        
+        .content-header h1 {
+          margin: 0;
+          margin-left: 20px;
+          /*line-height: 65px;*/
+          display: inline-block;
+        }
+
+        #menu-toggle {
+            text-decoration: none;
+        }
+
+        .btn-menu {
+          color: #000;
+        } 
+
+        .inset {
+          padding: 1px 5px 5px 5px;
+          
+        }
+
+        @media (max-width:767px) {
+
+        #wrapper {
+          padding-left: 0;
+        }
+
+        #sidebar-wrapper {
+          left: 0;
+        }
+
+        #wrapper.active {
+          position: relative;
+          left: 250px;
+        }
+
+        #wrapper.active #sidebar-wrapper {
+          left: 250px;
+          width: 250px;
+          transition: all 0.4s ease 0s;
+        }
+
+        #menu-toggle {
+          display: inline-block;
+        }
+
+        .inset {
+          padding: 15px;
+        }
+
+        }
+        /*custom*/
+        .sidebar-seffect{
+            background-color: #444444;
+            -moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            -webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+            zoom: 1;
+        }
+        
+        
+        /*override-bootstrap*/
+        .panel-body{
+                min-height: 234px;
+        }
+
+        /* completed status trend up-down*/
+
+        .up-arrow-active{
+            color: #13be13 !important;
+            font-weight: bolder;
+
+        }
+        .down-arrow-active{
+            content:"\21C2";
+            color: red;
+            font-weight: bolder;
+        }
+        .up-arrow-inactive{
+            content: "\21BF";
+            color: #ccc;
+            font-weight: bolder;
+        }
+        .down-arrow-inactive{
+            content:"\21C2";
+            color: #ccc;
+            font-weight: bolder;
+        }
+        .panel-header{
+            font-size: 20px ;
+            color: #6b6b6b !important;
+        }
+        /*reset*/
+        ul li {
+            margin:0px;
+        }
+        .panel-default > .panel-heading{
+            color: #0c0577 !important;
+    background-color: #ccd3ff !important;
+        }
+        .panel{
+            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2) !important;
+        }
+        select option{
+            padding: 10px;
+            font-size: 12px;
+            color: #0000ab;
+            border-bottom: 1px solid lightgrey;
+        }
+        .selectTitle{
+            background-color: #2260c2;
+            color: #fff;
+            border-radius: 5px 5px 0px 0px;
+            font-size: 14px;
+        }
+        #contentDiv{
+            background: linear-gradient(to right bottom,#f4effe 50%,#fff 50%);
+            margin: 20px;
+        }
+        body .pbBody table.list tr.headerRow td, body .pbBody table.list tr.headerRow th{
+            background-color:#2260c2;
+            color: #fff;
+            border-radius: 5px 5px 0 0;
+        }
+        .bPageBlock{
+            border: none !important;
+            background: #fff;
+        }
+        .apexp .bPageBlock.apexDefaultPageBlock .pbBody{
+            margin: 0px 10px;
+        }
+        .pbBody{
+            max-height: 40rem;
+            overflow-y: scroll;
+        }
+        body .pbBody table.list tr th, body .pbBody table.list tr td {
+            border: 1px solid #dcd5d5;
+            color: #0000ab;
+        }
+        .pbBody a{
+            color: #0000ab;
+        }
+        .panel-title{
+            font-size: 0.9em !important;
+        }
+        .selectTitle label{
+            padding: 1rem;
+        }
+        .layout tbody tr td{
+            font-size: 1.2rem;
+        }
+        .list thead tr th div, .list tbody tr td{
+            font-size: 1.3rem;  
+            padding: 0.8rem;      
+        }
+    </style>
+    <script>    
+    // Instance the tour
+        var tour = new Tour({
+        steps: [
+          {
+            element: ".tour1",
+            placement: 'bottom',
+            backdrop:   false,
+            title: "Flex Queue Page",
+            content: "Information about Flex Queue Page."
+          },
+          {
+            element: ".tour2",
+            placement: 'right',
+            title: "Flex Queue (Holding Status)",
+            content: "Information about Flex Queue (Holding Status)."
+          },
+          {
+            element: ".tour3",
+            placement: 'left',
+            title: "Re-Prioritize Flex Queue",
+            content: "Information about Re-Prioritize Flex Queue."
+          }
+        ],
+          backdrop: true,
+          backdropPadding: 1,
+          storage: true // change it to false to always display the tour
+        });
+        
+        tour.init();
+        tour.start();
+    </script>
+
+</apex:page>

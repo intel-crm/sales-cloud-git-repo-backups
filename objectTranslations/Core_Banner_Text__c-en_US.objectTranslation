@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Banner Text</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Banner Text</value>
+    </caseValues>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Core_CRM_Project__c</name>
+        <picklistValues>
+            <masterLabel>CCP</masterLabel>
+            <translation><!-- CCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRM</masterLabel>
+            <translation><!-- CRM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IQR</masterLabel>
+            <translation><!-- IQR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- German Label Trans --></label>
+        <name>Core_Label_de_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Mex Label Trans --></label>
+        <name>Core_Label_es_MX_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spanish Label Trans --></label>
+        <name>Core_Label_es_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- French Label Trans --></label>
+        <name>Core_Label_fr_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Italian Label Trans --></label>
+        <name>Core_Label_it_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japnese Label Trans --></label>
+        <name>Core_Label_ja_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Korean Label Trans --></label>
+        <name>Core_Label_ko_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portugese Label Trans --></label>
+        <name>Core_Label_pt_BR_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russian Label Trans --></label>
+        <name>Core_Label_ru_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Sim Label Trans --></label>
+        <name>Core_Label_zh_CN_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Trad Label Trans --></label>
+        <name>Core_Label_zh_TW_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text Message --></label>
+        <name>Core_Text_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>core_CRM_type__c</name>
+        <picklistValues>
+            <masterLabel>Common</masterLabel>
+            <translation><!-- Common --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community Home</masterLabel>
+            <translation><!-- Community Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General</masterLabel>
+            <translation><!-- General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Page</masterLabel>
+            <translation><!-- Home Page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Page Default</masterLabel>
+            <translation><!-- Home Page Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI Body</masterLabel>
+            <translation><!-- KPI Body --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI Body Default</masterLabel>
+            <translation><!-- KPI Body Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI Header</masterLabel>
+            <translation><!-- KPI Header --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI Header Default</masterLabel>
+            <translation><!-- KPI Header Default --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>core_isActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Start date cannot be greater than End date --></errorMessage>
+        <name>Core_StartDate_EndDate_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

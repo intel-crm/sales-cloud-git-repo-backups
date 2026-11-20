@@ -1,0 +1,19 @@
+.customSpinner {
+    display: inline-block;
+    margin-left: 15px;
+    position: sticky;
+    vertical-align: middle;
+    width: 20px;
+  }
+  
+  .customContainer{
+    width: 90% !important;
+    max-width: 90% !important;
+    
+  }
+  
+  .customHeight{
+    height: 75% !important;
+    max-height: 75% !important;
+    
+  }

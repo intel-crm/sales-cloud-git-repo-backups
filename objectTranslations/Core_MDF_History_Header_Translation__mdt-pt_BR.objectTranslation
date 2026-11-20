@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_History_Header_Translation --></label>
+        <name>Core_MDF_History_Header_Translation_nm__c</name>
+        <picklistValues>
+            <masterLabel>ACTUAL METRICS</masterLabel>
+            <translation>ACTUAL METRICS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Transfer Logs History</masterLabel>
+            <translation>Histórico de logs de transferências da conta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account User History</masterLabel>
+            <translation>Histórico da conta do usuário</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget History</masterLabel>
+            <translation>Histórico do orçamento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Adjustment Requests History</masterLabel>
+            <translation>Histórico das solicitações de ajuste da solicitação</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim History</masterLabel>
+            <translation>Histórico da solicitação</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Offsets History</masterLabel>
+            <translation>Histórico de compensações de solicitações</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity History</masterLabel>
+            <translation>Histórico de atividades de marketing conjunto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disbursement Status</masterLabel>
+            <translation>Estado de Desembolso</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Criteria List History</masterLabel>
+            <translation>Histórico de listas de critérios de retenção</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>METRICS</masterLabel>
+            <translation>METRICS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLANNED METRICS</masterLabel>
+            <translation>PLANNED METRICS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP Requirements</masterLabel>
+            <translation>Requisitos de POP</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Fund Allocations History</masterLabel>
+            <translation>Histórico das alocações de recursos do parceiro</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Group Mapping History</masterLabel>
+            <translation>Histórico de mapeamento do grupo de parceiros</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Breakdown</masterLabel>
+            <translation>Detalhamento de pagamento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Details</masterLabel>
+            <translation>Detalhes do pagamento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment History</masterLabel>
+            <translation>Histórico de pagamento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Run History</masterLabel>
+            <translation>Histórico de execução de pagamentos</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please provide the Object&apos;s API name. --></help>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_obj_nm__c</name>
+    </fields>
+    
+</CustomObjectTranslation>

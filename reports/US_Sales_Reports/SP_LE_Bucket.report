@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_86073441</developerName>
+        <masterLabel>CAB Split</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <value>Large Enterprise</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CDW Canada Corp</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CDW Corporation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CDW UK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CompuCom Canada</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CompuCom Systems</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COMPUGEN INC</sourceValue>
+            </sourceValues>
+            <value>Solution Provider</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Family__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Series__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Vendor__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>1</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Unique Opportunity</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Solution Provider,Large Enterprise</description>
+    <filter>
+        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>6qps,consumption</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Americas,EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Partner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>CDW,CDW Canada,Compucom,Compugen,Computacenter,Connection,Insight,NWN,Positivo,SHI,Staples Tech Solutions,Sterling,UDT,Zones,Accenture,Atea,Bechtle,Cancom,Capgemini,Dustin,Infosys,Synaxon AG,Tata Consultancy Services (TCS),Econocom,SCC France</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>EXPEDITORS INTERNATIONAL OF WASHINGTON,INC.,General Dynamics Land Systems - Sterling Heights,TOSHIBA GLOBAL COMMERCE SOLUTIONS,UNIVERSITY OF WASHINGTON,Yorkshire Building Society,American Airlines,American Express,Archer Daniels Midland,AT&amp;T,Bank Of America,Bank of New York Mellon,CHRobinson,Citadel,Davita,Delta Air Lines,Elementary Perceiver and Memorizer (EPAM),General Motors,Goldman Sachs,GSK,Koch Industries,PwC,Quantlab Financial,Scripps Health,SHI,Sodexo,Southern California Edison,Synopsis,Teleperformance,Verizon,Wells Fargo,Fidelity,CVS Health,Mastercard,Amazon,Tecnológico de Monterrey,Barclays,British Petroleum Company,BT,Citibank,Coca-Cola,HSBC,Lloyds Banking,London Stock Exchange,LUPC (London Universities Purchasing Consortium),Morgan Stanley,Natwest,Shell,Xerox,ASML</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Solution Provider CAB</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-01-01</startDate>
+    </timeFrameFilter>
+</Report>

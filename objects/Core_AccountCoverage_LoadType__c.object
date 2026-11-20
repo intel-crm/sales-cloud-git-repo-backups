@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Core AccountCoverage LoadType</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_LoadType__c</fullName>
+        <description>LoadType</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LoadType</inlineHelpText>
+        <label>LoadType</label>
+        <length>55</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>AccountCoverage LoadType</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Core_LoadType__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+    </listViews>
+    <visibility>Protected</visibility>
+</CustomObject>

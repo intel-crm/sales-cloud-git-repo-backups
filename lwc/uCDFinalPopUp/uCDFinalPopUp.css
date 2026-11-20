@@ -1,0 +1,21 @@
+.opidParentClass {
+	height: 450px;
+}
+.opidMessage{
+	color : black;
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-top: 100px;
+}
+.opidTitle{
+	color : black;
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    padding-top: 20px;
+}

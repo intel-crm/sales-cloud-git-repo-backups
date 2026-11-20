@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Scheduler Optimizer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Scheduler Optimizer</value>
+    </caseValues>
+    <fields>
+        <label><!-- LastmodifiedTime --></label>
+        <name>espy__LastmodifiedTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- On/Off Switch --></label>
+        <name>espy__On_Off_Switch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduler Job Name --></label>
+        <name>espy__Scheduler_Job_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time in Minutes(0-59) --></label>
+        <name>espy__Time_in_Minutes_0_59__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "003478e6-3d9b-4061-be14-5de31bc32e5d",
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "configurationTags" : [ ],
+  "devName" : "manage_personnel__c",
+  "id" : "f071acc5-b4f4-438a-8dbc-d86a8ddcbde1",
+  "label" : "Manage Personnel",
+  "pageAccess" : "RequiresLogin",
+  "routeType" : "custom-manage-personnel",
+  "type" : "route",
+  "urlPrefix" : "manage-personnel"
+}

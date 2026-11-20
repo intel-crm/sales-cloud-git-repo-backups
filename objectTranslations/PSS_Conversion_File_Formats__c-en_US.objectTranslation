@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Conversion File Formats</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Conversion File Formats</value>
+    </caseValues>
+    <fields>
+        <label><!-- File Format --></label>
+        <name>PSS_File_Format_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive indicator --></label>
+        <name>PSS_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resource Type --></label>
+        <name>PSS_Resource_Type_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

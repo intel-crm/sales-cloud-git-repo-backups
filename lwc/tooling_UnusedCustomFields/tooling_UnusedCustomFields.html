@@ -1,0 +1,65 @@
+<!-- Main Template - Unused Custom Fields Component -->
+<template>
+
+	<!-- Lightning Card - Displays the title and icon -->
+	<lightning-card title="Unused Custom Fields" icon-name="utility:detach"
+		class="slds-m-around_small slds-card__header slds-grid">
+
+		<!-- Export Button - Exports data to CSV -->
+		<c-export-as-c-s-v-lwc export-data={data} slot="actions" newdata-set-name="Unused Custom Fields Report">
+		</c-export-as-c-s-v-lwc>
+
+		<!-- Container for the content -->
+		<div class="slds-box">
+
+			<!-- Total Unused Custom Fields -->
+			<p class="slds-p-around_small"> Total Unused Custom Fields : {count}</p>
+
+			<!-- Lightning Layout to organize the content -->
+			<lightning-layout>
+				<template if:true={hasData}>
+					<!-- Lightning Layout Item with datatable for displaying the list of unused custom fields -->
+					<lightning-layout-item size="" flexibility="auto">
+
+						<!-- Datatable - Displays the data in a tabular format -->
+						<lightning-datatable class="slds-table_bordered slds-table_col-bordered" key-field="Id"
+							data={tableData} columns={columns} show-row-number-column="true" hide-checkbox-column="true"
+							default-sort-direction={sortedDirection} sorted-direction={sortDirection}
+							sorted-by={sortedBy} onsort={updateColumnSorting}>
+						</lightning-datatable>
+
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+
+			<!-- Pagination Controls - Show buttons for navigating through data -->
+			<div class="slds-p-around_small slds-align_absolute-center">
+				<!-- Previous Button - Go to previous page -->
+				<lightning-button variant="brand" label={prevBtnLbl} onclick={handlePrevious} disabled={loadPrev}
+					style=" background-color: white; padding-right: 2px;">
+				</lightning-button>
+				<!-- Showing current page number and total number of data items -->
+				<p class="slds-p-around_small">Showing {showingOfTotal} of {data.length}</p>
+				<!-- Next Button - Go to next page -->
+				<lightning-button variant="brand" label={nextBtnLbl} onclick={handleNext} disabled={loadMore}
+					style="background-color: white;">
+				</lightning-button>
+			</div>
+		</div>
+
+		<!-- Information Message - Displayed when there is no data -->
+		<div class="slds-align_absolute-center">
+			<template if:false={hasData}>
+				<p>All Custom Fields are Used</p>
+			</template>
+		</div>
+
+		<!-- Loading Spinner - Shown while data is being fetched -->
+		<div>
+			<template if:true={loading}>
+				<lightning-spinner size="small" alternative-text="Loading..."></lightning-spinner>
+			</template>
+		</div>
+
+	</lightning-card>
+</template>

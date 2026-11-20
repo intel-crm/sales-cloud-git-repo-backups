@@ -1,0 +1,1306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <defaultAction>openSfdcRecord</defaultAction>
+        <field>LighthouseStrategic__7.Name</field>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Rolling_4Q_Cumulativ_6.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Rolling_4Q_Cumulativ_5.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Rolling_4Q_Cumulativ_4.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Rolling_4Q_Cumulativ_3.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Rolling_4Q_Cumulativ_2.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>5</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Rolling_4Q_Cumulativ_1.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>6</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_12.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>7</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_6.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>8</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_8.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>9</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_14.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>10</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_4.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>11</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_3.OppPartner.AccountPartner.Core_Unified_Global_Customer_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Partner Unified Global Customer Name</label>
+        <sortIndex>12</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_10.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>13</sortIndex>
+    </dimensions>
+    <measures>
+        <field>lens_1.B</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Count of Opps</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_Commit.max</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_Commit.min</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_Commit.input</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <measures>
+        <field>Other_Commit.max</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>5</sortIndex>
+    </measures>
+    <measures>
+        <field>Other_Commit.min</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>6</sortIndex>
+    </measures>
+    <measures>
+        <field>Other_Commit.input</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>7</sortIndex>
+    </measures>
+    <measures>
+        <field>PRC_Commit.max</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>8</sortIndex>
+    </measures>
+    <measures>
+        <field>PRC_Commit.min</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>9</sortIndex>
+    </measures>
+    <measures>
+        <field>PRC_Commit.input</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>10</sortIndex>
+    </measures>
+    <measures>
+        <field>APJ_Commit.max</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>11</sortIndex>
+    </measures>
+    <measures>
+        <field>APJ_Commit.min</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>12</sortIndex>
+    </measures>
+    <measures>
+        <field>APJ_Commit.input</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>13</sortIndex>
+    </measures>
+    <measures>
+        <field>EMEA_Commit.max</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>14</sortIndex>
+    </measures>
+    <measures>
+        <field>EMEA_Commit.min</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>15</sortIndex>
+    </measures>
+    <measures>
+        <field>EMEA_Commit.input</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>16</sortIndex>
+    </measures>
+    <measures>
+        <field>AMER_Commit.max</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>17</sortIndex>
+    </measures>
+    <measures>
+        <field>AMER_Commit.min</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>18</sortIndex>
+    </measures>
+    <measures>
+        <field>AMER_Commit.input</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>19</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_Other_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>20</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_Other_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>21</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_Other_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>22</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_Other_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>23</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_APJ_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>24</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_APJ_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>25</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_APJ_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>26</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_APJ_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>27</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_GSA_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>28</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_GSA_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>29</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_GSA_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>30</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_GSA_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>31</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_PRC_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>32</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_PRC_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>33</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_PRC_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>34</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_PRC_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>35</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_EMEA_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>36</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_EMEA_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>37</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_EMEA_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>38</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_EMEA_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>39</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>40</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>41</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>42</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>43</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#335779</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>backgroundColor</property>
+            <referenceField>A</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#335779</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>A</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>LighthouseStrategic__7.A</field>
+        <isDerived>false</isDerived>
+        <label>Created Opps</label>
+        <sortIndex>44</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#E8963B</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>backgroundColor</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#E8963B</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>LighthouseStrategic__7.B</field>
+        <isDerived>false</isDerived>
+        <label>At Risk</label>
+        <sortIndex>45</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#00B531</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>backgroundColor</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#00B531</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>C</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>LighthouseStrategic__7.C</field>
+        <isDerived>false</isDerived>
+        <label>Won Opps</label>
+        <sortIndex>46</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#98B1FF</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>backgroundColor</property>
+            <referenceField>F</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#98B1FF</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>F</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>LighthouseStrategic__7.F</field>
+        <isDerived>false</isDerived>
+        <label>Pushed Opps</label>
+        <sortIndex>47</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#E6ECF2</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>backgroundColor</property>
+            <referenceField>D</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#E6ECF2</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>D</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>LighthouseStrategic__7.D</field>
+        <isDerived>false</isDerived>
+        <label>Cancelled Opps</label>
+        <sortIndex>48</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#E84340</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>backgroundColor</property>
+            <referenceField>E</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#E84340</formatValue>
+                <operator>==</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>1.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>E</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>LighthouseStrategic__7.E</field>
+        <isDerived>false</isDerived>
+        <label>Lost Opps</label>
+        <sortIndex>49</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_2.A</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>50</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>51</sortIndex>
+    </measures>
+    <measures>
+        <field>Closed___60_Days_det_3.A</field>
+        <isDerived>false</isDerived>
+        <label>Age</label>
+        <sortIndex>52</sortIndex>
+    </measures>
+    <measures>
+        <field>Closed___60_Days_det_3.B</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>53</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_8.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>54</sortIndex>
+    </measures>
+    <measures>
+        <field>Rolling_4Q_Cumulativ_6.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>55</sortIndex>
+    </measures>
+    <measures>
+        <field>Rolling_4Q_Cumulativ_5.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>56</sortIndex>
+    </measures>
+    <measures>
+        <field>Rolling_4Q_Cumulativ_4.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>57</sortIndex>
+    </measures>
+    <measures>
+        <field>Rolling_4Q_Cumulativ_3.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>58</sortIndex>
+    </measures>
+    <measures>
+        <field>Rolling_4Q_Cumulativ_2.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>59</sortIndex>
+    </measures>
+    <measures>
+        <field>Rolling_4Q_Cumulativ_1.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>60</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_12.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>61</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_6.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>62</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_8.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>63</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_14.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>64</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_4.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>65</sortIndex>
+    </measures>
+    <measures>
+        <field>Close___60_Days_summ_2.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>66</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_9.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>67</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_3.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>68</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_10.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>69</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_By_Customer_DELL_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>70</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_By_Customer_AMZN_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>71</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_By_Customer_MSFT_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>72</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_By_Customer_GOOG_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>73</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_By_Customer_HPI_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>74</sortIndex>
+    </measures>
+    <measures>
+        <field>GSA_By_Customer_Leno_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>75</sortIndex>
+    </measures>
+    <measures>
+        <field>Cancel_Lost_for_Prev_7.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunity Count</label>
+        <sortIndex>76</sortIndex>
+    </measures>
+    <measures>
+        <field>Detail_Table_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Product count</label>
+        <sortIndex>77</sortIndex>
+    </measures>
+    <measures>
+        <field>Detail_Table_1.B</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>78</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_3.A</field>
+        <isDerived>false</isDerived>
+        <label># of Opps</label>
+        <sortIndex>79</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_AMER_1.A</field>
+        <isDerived>false</isDerived>
+        <label>No Products</label>
+        <sortIndex>80</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_AMER_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Past Due</label>
+        <sortIndex>81</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_AMER_1.C</field>
+        <isDerived>false</isDerived>
+        <label>&gt;3 Pushes</label>
+        <sortIndex>82</sortIndex>
+    </measures>
+    <measures>
+        <field>Unhealthy_Opps_AMER_1.D</field>
+        <isDerived>false</isDerived>
+        <label>Q&amp;D</label>
+        <sortIndex>83</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_6.overall_label</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>84</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_6.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>opps_unhealthy</label>
+        <sortIndex>85</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_6.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence %</label>
+        <sortIndex>86</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_6.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Count_Opps</label>
+        <sortIndex>87</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_2.overall_label</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>88</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_2.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Count_Opps</label>
+        <sortIndex>89</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_2.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence %</label>
+        <sortIndex>90</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_2.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>opps_unhealthy</label>
+        <sortIndex>91</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_1.overall_label</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>92</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_1.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Count_Opps</label>
+        <sortIndex>93</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_1.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence %</label>
+        <sortIndex>94</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_1.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>opps_unhealthy</label>
+        <sortIndex>95</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_3.overall_label</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>96</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_3.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>opps_unhealthy</label>
+        <sortIndex>97</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_3.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence %</label>
+        <sortIndex>98</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_3.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Count_Opps</label>
+        <sortIndex>99</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_4.overall_label</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>100</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_4.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Count_Opps</label>
+        <sortIndex>101</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_4.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence %</label>
+        <sortIndex>102</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_4.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>opps_unhealthy</label>
+        <sortIndex>103</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_5.overall_label</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>104</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_5.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>opps_unhealthy</label>
+        <sortIndex>105</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_5.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence %</label>
+        <sortIndex>106</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1_5.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Count_Opps</label>
+        <sortIndex>107</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>At Risk</bin>
+                <formatValue>#E8963B</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Cancelled</bin>
+                <formatValue>#C6D3E1</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Lost</bin>
+                <formatValue>#E84340</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Open</bin>
+                <formatValue>#335779</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>Won</bin>
+                <formatValue>#00B531</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>opp_status</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>Rolling_Pipeline_Cur_10.A</field>
+        <isDerived>false</isDerived>
+        <sortIndex>108</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Executive_SMG_Pipeline_Dashboard_UAT</waveVisualization>
+</WaveXmd>

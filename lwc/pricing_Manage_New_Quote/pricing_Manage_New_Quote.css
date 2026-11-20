@@ -1,0 +1,25 @@
+.containerWidth{
+    width:45% !important;
+}
+
+.errorClass{
+    background: red;
+    color: white;
+    padding: 1rem;
+}
+
+.messageColorRed{
+    color: red;
+}
+
+.messageColorBlue{
+    color: #0068B5;
+}
+
+.blue-text {
+    color: #0068B5;
+}
+
+.red-text {
+    color: red;
+}

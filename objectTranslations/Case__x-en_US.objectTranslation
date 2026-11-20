@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Case External</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cases External</value>
+    </caseValues>
+    <fields>
+        <help><!-- Identifies Sub Origin created for &quot;Social&quot; cases --></help>
+        <label><!-- Sub Origin --></label>
+        <name>API_Origin_c__c</name>
+        <picklistValues>
+            <masterLabel>Bilibili</masterLabel>
+            <translation><!-- Bilibili --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discord</masterLabel>
+            <translation><!-- Discord --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GitHub</masterLabel>
+            <translation><!-- GitHub --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graphics</masterLabel>
+            <translation><!-- Graphics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instagram</masterLabel>
+            <translation><!-- Instagram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reddit</masterLabel>
+            <translation><!-- Reddit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stack Overflow</masterLabel>
+            <translation><!-- Stack Overflow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SupportApp</masterLabel>
+            <translation><!-- SupportApp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TikTok</masterLabel>
+            <translation><!-- TikTok --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VK</masterLabel>
+            <translation><!-- VK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WeChat</masterLabel>
+            <translation><!-- WeChat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Weibo</masterLabel>
+            <translation><!-- Weibo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YouTube</masterLabel>
+            <translation><!-- YouTube --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>AccountId__c</name>
+        <relationshipLabel><!-- Cases External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Number --></label>
+        <name>CaseNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed Date --></label>
+        <name>ClosedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>ContactEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Cases External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide details of the service request/issue. --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Contact Center --></label>
+        <name>ICS_WR_Target_Contact_Center_c__c</name>
+        <picklistValues>
+            <masterLabel>AAQ Contact Center</masterLabel>
+            <translation><!-- AAQ Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APAC RMA Contact Center</masterLabel>
+            <translation><!-- APAC RMA Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO RMA Contact Center</masterLabel>
+            <translation><!-- ASMO RMA Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bucharest Contact Center</masterLabel>
+            <translation><!-- Bucharest Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Costa Rica Contact Center (Sykes)</masterLabel>
+            <translation><!-- Costa Rica Contact Center (Sykes) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA RMA Contact Center</masterLabel>
+            <translation><!-- EMEA RMA Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India Bangalore A Contact Center</masterLabel>
+            <translation><!-- India Bangalore A Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India Bangalore B Contact Center</masterLabel>
+            <translation><!-- India Bangalore B Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan RMA Contact Center</masterLabel>
+            <translation><!-- Japan RMA Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kulim Contact Center</masterLabel>
+            <translation><!-- Kulim Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manila Contact Center</masterLabel>
+            <translation><!-- Manila Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Penang Contact Center</masterLabel>
+            <translation><!-- Penang Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSG Contact Center</masterLabel>
+            <translation><!-- SSG Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shanghai Contact Center</masterLabel>
+            <translation><!-- Shanghai Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TATA Contact Center</masterLabel>
+            <translation><!-- TATA Contact Center --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flag used to indicate that a new email has been received from or a customercare online case management message has been posted by the customer. --></help>
+        <label><!-- New Customer Message --></label>
+        <name>New_Email_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Origin --></label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Chat</masterLabel>
+            <translation><!-- Chat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chatter</masterLabel>
+            <translation><!-- Chatter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community</masterLabel>
+            <translation><!-- Community --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jive</masterLabel>
+            <translation><!-- Jive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social</masterLabel>
+            <translation><!-- Social --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WeChat</masterLabel>
+            <translation><!-- WeChat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Portal</masterLabel>
+            <translation><!-- Web Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web To Case</masterLabel>
+            <translation><!-- Web To Case --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Owner ID --></label>
+        <name>OwnerId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Owner__c</name>
+        <relationshipLabel><!-- Cases External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Case ID --></label>
+        <name>ParentId__c</name>
+        <relationshipLabel><!-- Cases External --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Cases External --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Reason for status explanations can be found here: https://soco.intel.com/docs/DOC-1985645#comment-201987749 (Note: internal Intel network access required to view the document) --></help>
+        <label><!-- Reason for Status --></label>
+        <name>Reason_for_Status_c__c</name>
+        <picklistValues>
+            <masterLabel>Abandoned by Customer</masterLabel>
+            <translation><!-- Abandoned by Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Abandoned by Intel</masterLabel>
+            <translation><!-- Abandoned by Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed by EHM L3</masterLabel>
+            <translation><!-- Closed by EHM L3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed by Jive</masterLabel>
+            <translation><!-- Closed by Jive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embargoed Country/RPL/MINDS</masterLabel>
+            <translation><!-- Embargoed Country/RPL/MINDS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalated</masterLabel>
+            <translation><!-- Escalated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Process</masterLabel>
+            <translation><!-- In-Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Process (Re-Opened)</masterLabel>
+            <translation><!-- In-Process (Re-Opened) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Process (Request to Close)</masterLabel>
+            <translation><!-- In-Process (Request to Close) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Business Process</masterLabel>
+            <translation><!-- Internal Business Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Issue Resolved (Customer Confirmed)</masterLabel>
+            <translation><!-- Issue Resolved (Customer Confirmed) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provided (Not Confirmed)</masterLabel>
+            <translation><!-- Solution Provided (Not Confirmed) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spam/Test/Duplicate</masterLabel>
+            <translation><!-- Spam/Test/Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred to Another Intel Group</masterLabel>
+            <translation><!-- Transferred to Another Intel Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred to OEM/Place of Purchase</masterLabel>
+            <translation><!-- Transferred to OEM/Place of Purchase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unable to Support</masterLabel>
+            <translation><!-- Unable to Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting For Customer</masterLabel>
+            <translation><!-- Waiting For Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Type ID --></label>
+        <name>RecordTypeId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Severity --></label>
+        <name>Severity_c__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto-Closed</masterLabel>
+            <translation><!-- Auto-Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Reopened</masterLabel>
+            <translation><!-- Case Reopened --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close Pending</masterLabel>
+            <translation><!-- Close Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close Requested</masterLabel>
+            <translation><!-- Close Requested --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Follow Up</masterLabel>
+            <translation><!-- Closed - Follow Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed: Final</masterLabel>
+            <translation><!-- Closed: Final --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Action Required</masterLabel>
+            <translation><!-- Customer Action Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>De-escalated</masterLabel>
+            <translation><!-- De-escalated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivered</masterLabel>
+            <translation><!-- Delivered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Docked</masterLabel>
+            <translation><!-- Docked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EHM Escalation</masterLabel>
+            <translation><!-- EHM Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalated</masterLabel>
+            <translation><!-- Escalated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation, in Progress</masterLabel>
+            <translation><!-- Escalation, in Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exception</masterLabel>
+            <translation><!-- Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Forum Waiting</masterLabel>
+            <translation><!-- Forum Waiting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Process</masterLabel>
+            <translation><!-- In Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Customer Message</masterLabel>
+            <translation><!-- New Customer Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open, Unsubmitted</masterLabel>
+            <translation><!-- Open, Unsubmitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Carrier Booking</masterLabel>
+            <translation><!-- Pending Carrier Booking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RMA Authorized</masterLabel>
+            <translation><!-- RMA Authorized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipped</masterLabel>
+            <translation><!-- Shipped --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted, Pending Action</masterLabel>
+            <translation><!-- Submitted, Pending Action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted, Pending Approval</masterLabel>
+            <translation><!-- Submitted, Pending Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Translation Request</masterLabel>
+            <translation><!-- Translation Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for Customer</masterLabel>
+            <translation><!-- Waiting for Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Feature Request</masterLabel>
+            <translation><!-- Feature Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Problem</masterLabel>
+            <translation><!-- Problem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Question</masterLabel>
+            <translation><!-- Question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical</masterLabel>
+            <translation><!-- Technical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warranty</masterLabel>
+            <translation><!-- Warranty --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

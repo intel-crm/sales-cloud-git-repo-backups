@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permission for FinanceManager, FinanceUser,ClaimCaseReviewer,ClaimCaseManager</description>
+    <isLicensed>false</isLicensed>
+    <label>Core_MDF_FinanceMgr_FinanceUser_ClaimCaseRev_ClaimCaseMgr</label>
+</CustomPermission>

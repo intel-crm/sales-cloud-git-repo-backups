@@ -1,0 +1,5 @@
+.table-container {
+    height: 205px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}

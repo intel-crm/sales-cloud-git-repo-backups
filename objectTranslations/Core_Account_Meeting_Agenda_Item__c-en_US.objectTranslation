@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Meeting Agenda Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Meeting Agenda Items</value>
+    </caseValues>
+    <fields>
+        <help><!-- The agenda presenter --></help>
+        <label><!-- Presenter --></label>
+        <name>Core_Account_Management_Agenda_Presenter__c</name>
+    </fields>
+    <fields>
+        <help><!-- The agenda topic --></help>
+        <label><!-- Agenda Topic --></label>
+        <name>Core_Account_Meeting_Agenda_Topic__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Meeting Brief --></label>
+        <name>Core_Account_Meeting_Brief__c</name>
+        <relationshipLabel><!-- Meeting Agenda Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Time of the Agenda Items --></help>
+        <label><!-- Time --></label>
+        <name>Core_Account_Meeting_Items_Date_and_Time__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please format the time in ##:## AM/PM --></errorMessage>
+        <name>Check_for_valid_time</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_New_Agenda_Item --></label>
+        <name>Core_New_Agenda_Item</name>
+    </webLinks>
+</CustomObjectTranslation>

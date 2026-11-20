@@ -1,0 +1,65 @@
+<template>
+    <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+
+    <div>
+        <template if:true={isHubSpoke}>
+            <div class="slds-hide_medium">
+                <c-core-intc-hub-spoke headline={label.quickView} onopen={handleOpenEvent} onclose={handleCloseEvent} >
+                    <template if:true={isQuickView}>
+                    <div class="slds-align_absolute-center" style="height: 2.5rem;" slot="link" tabindex="0" role="button" aria-pressed="false" aria-label={label.ariaQuickView}>
+                        <span class="quick-view-text link-text text-bold text-upcase">
+                            {label.quickView}
+                            <span class="slds-m-left_small intel-icon fa-button-quickview-expand"></span>
+                        </span>
+                    </div>
+                </template>
+                <template if:false={isQuickView}>
+                    <button class="link-text" slot='link'>{modalButtonLabel}</button>
+                </template>
+                    <div slot="content">
+                        <slot name="header"></slot>
+                        <slot name="body"></slot>
+                    </div>
+                </c-core-intc-hub-spoke>
+            </div>
+        </template>
+
+        <template if:false={isHubSpoke}>
+            <div class="quick-view-modal">
+                <template if:true={isQuickView}>
+                <div class="slds-align_absolute-center" style="height: 2.5rem;">
+                    <span onclick={handleOpenQuickView} onkeydown={handleBtnKeyDown} tabindex="0" role="button" aria-pressed="false" aria-label={label.ariaQuickView}>
+                        <span class="quick-view-text link-text text-bold text-upcase">
+                            {label.quickView}
+                            <span class="slds-m-left_small intel-icon fa-button-quickview-expand"></span>
+                        </span>
+                    </span>
+                </div>
+            </template>
+            <template if:false={isQuickView}>
+                <button class="link-text" onclick={handleOpenQuickView} onkeydown={handleBtnKeyDown}>
+                    {modalButtonLabel}
+                </button>
+            </template>
+            <c-core-intc-modal
+                    is-quickview={isQuickView}
+                    slim={isSlim}
+                    close-icon-inverse={displayIconInverse}
+                    onopen={handleOpenEvent}
+                    onclose={handleCloseEvent}
+                    modal-title={modalTitle} 
+                >
+                    <template if:true={hasEyebrow}>
+                        <div slot="header">
+                            <slot name="header" slot="header"></slot>
+                        </div>
+                    </template>
+                    <div slot="body">
+                        <slot name="body"></slot>
+                    </div>
+                </c-core-intc-modal>
+            </div>
+        </template>
+    </div>
+
+</template>

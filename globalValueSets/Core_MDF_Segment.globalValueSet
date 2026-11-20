@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Chipsets</fullName>
+        <default>false</default>
+        <label>Chipsets</label>
+    </customValue>
+    <customValue>
+        <fullName>Ethernet Products</fullName>
+        <default>false</default>
+        <label>Ethernet Products</label>
+    </customValue>
+    <customValue>
+        <fullName>Graphics</fullName>
+        <default>false</default>
+        <label>Graphics</label>
+    </customValue>
+    <customValue>
+        <fullName>Memory and Storage</fullName>
+        <default>false</default>
+        <label>Memory and Storage</label>
+    </customValue>
+    <customValue>
+        <fullName>Processors</fullName>
+        <default>false</default>
+        <label>Processors</label>
+    </customValue>
+    <customValue>
+        <fullName>Technologies</fullName>
+        <default>false</default>
+        <label>Technologies</label>
+    </customValue>
+    <customValue>
+        <fullName>Solid-State Drives</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Solid-State Drives</label>
+    </customValue>
+    <masterLabel>Segment</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

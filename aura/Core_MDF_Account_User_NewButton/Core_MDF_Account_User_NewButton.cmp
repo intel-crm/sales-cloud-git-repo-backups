@@ -1,0 +1,27 @@
+<!-- Component Used to Show the New Button on the Community for Partner Fund Claim-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride"
+    access="global" controller="Core_MDF_checkSObjectCRUDPermission">
+    <!-- Handler function for fetching value on the load of the component -->
+    <aura:handler name="init" value="{!this}" action="{!c.checkObjectPermission}" />
+
+    <!-- Attribute Initialization -->
+    <aura:attribute type="Boolean" name="CheckNew" Default="false" description="Controls the rendering of the create component on click of the button" />
+    <aura:attribute type="Boolean" name="objectCreatePermission" Default="false" description="Checks the permission for the CRUD user" />
+
+    <!--Onclick Of the Button To Open the PNUM UI -->
+    <aura:if isTrue="{!v.CheckNew}">
+        <c:Core_MDF_AccountUserContainer/>
+    </aura:if>
+
+    <!-- Show New Button Only if the object has CRUD Permission -->
+    <aura:if isTrue="{!v.objectCreatePermission}">
+        <lightning:layout horizontalAlign="spread" multipleRows="true">
+            <lightning:layoutItem flexibility="grow" size="12" smallDeviceSize="12" mediumDeviceSize="12"
+                largeDeviceSize="12">
+                <div class="slds-float_right">
+                    <lightning:button label="{!$Label.c.Core_MDF_New}" title="New" onclick="{! c.handleClick }" />
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-col slds-float_right"><!--PAGE NAVIGATION-->
+        <div style={controlPagination} class="paginatorPad">
+       
+                <span style={controlPrevious}>
+                    <lightning-button-icon icon-name="utility:left" variant="bare" size="large" alternative-text={formLabels.PRM_PrevPage} onclick={previousPage} tooltip={formLabels.PRM_PrevPage}></lightning-button-icon>
+                </span>
+                <label class="slds-text-color_weak slds-p-horizontal_xx-small" for="pageNum"><b>{formLabels.PRM_PageGrid}:</b></label> 
+                <input type="number" id="pageNum" value={pageNumber} maxlength="4" onchange={handlePageNumberChange} class="customInput commPaginationFont"  title={formLabels.PRM_GoToPage}></input>
+                <span>&nbsp;/&nbsp;{totalPages}</span>
+                <span style={controlNext}>
+                    <lightning-button-icon icon-name="utility:right" variant="bare" size="large" alternative-text={formLabels.PRM_NextPage} onclick={nextPage} class="slds-p-horizontal_x-small" tooltip={formLabels.PRM_NextPage}></lightning-button-icon>
+                </span>
+        </div>
+    </div>
+</template>

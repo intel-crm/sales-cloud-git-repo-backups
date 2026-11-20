@@ -1,0 +1,61 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+  <aura:attribute name="storeName" type="string" default="Search" />
+  <aura:attribute name="selectedFilters" type="Object" default="{}" />
+  <aura:attribute name="searchString" type="string" />
+  <aura:attribute name="hasFilters" type="boolean" default="false" />
+
+  <aura:attribute name="filters" type="Object[]" default="{}" />
+
+  <aura:attribute name="renderList" type="object[]" default="[]" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div class="badges">
+      <aura:if isTrue="{!v.appState.Settings.currentSldsBreakPoint == 'x-large'}">
+        <!-- X-Large Only -->
+        <div class="resultsInfo">
+          <span class="results-total">
+              
+              <aura:if isTrue="{!or(v.searchString != '', v.renderList.length > 0)}">
+                {!format($Label.c.PMP_Search_Results_For,v.state.searchResultsCount)}
+                  <aura:set attribute="else">
+                      {!format($Label.c.PMP_Search_Results,v.state.searchResultsCount)}
+                  </aura:set>
+              </aura:if>
+          </span>
+        </div>
+        <aura:if isTrue="{!not(empty(v.searchString))}">
+          <div class="badge">
+            {!v.searchString}
+            <span class="cancel"
+              aria-label="Remove"
+              onclick="{!c.handleClearSearch}">
+              <lightning:icon iconName="utility:close" class="cursor" size="x-small"/>
+            </span>
+          </div>
+        </aura:if>
+        <aura:iteration items="{!v.renderList}" var="tag">
+            <div class="badge">
+              {!tag.name}
+              <span class="cancel" aria-label="Remove"
+                data-id="{!tag.id}"
+                data-tag-list-id="{!tag.tagListId}"
+                data-parent-id="{!tag.parentId}"
+                data-has-children="{!tag.hasChildren}"
+                onclick="{!c.handleRemoveTag}">
+                <lightning:icon iconName="utility:close" class="cursor" size="x-small"/>
+              </span>
+            </div>
+        </aura:iteration>
+
+        <aura:set attribute="else">
+          <!-- Mobile -->
+          <div class="resultsInfo">
+            <span class="results-total">
+                {!v.state.searchResultsCount}&nbsp;{!$Label.c.PMP_results}
+            </span>
+          </div>
+        </aura:set>
+    </aura:if>
+
+  </div>
+</aura:component>

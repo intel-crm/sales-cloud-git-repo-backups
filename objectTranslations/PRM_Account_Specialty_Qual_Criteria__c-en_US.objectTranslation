@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Specialty Qualitative Criteria</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Specialty Qualitative Criteria</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Specialty Association --></label>
+        <name>PRM_Account_Specialty_Association_Id__c</name>
+        <relationshipLabel><!-- Account Specialty Qualitative Criteria --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active Check --></label>
+        <name>PRM_Active_Check_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Criteria --></label>
+        <name>PRM_Specialty_Criteria_Id__c</name>
+        <relationshipLabel><!-- Account Specialty Qualitative Criteria --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>PRM_Value_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

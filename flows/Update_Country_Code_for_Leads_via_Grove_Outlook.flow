@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Update Country Code for Leads via Grove {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Country Code for Leads via Grove Outlook</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_value_from_Country_Code_Mapping</name>
+        <label>Get value from Country Code Mapping</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Country_Code</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Country_Code__c</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>$Record.Country</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Country</elementReference>
+            </value>
+        </filters>
+        <object>Core_Country_Code_Mapping__c</object>
+        <outputAssignments>
+            <assignToReference>v_3digitCountryCode</assignToReference>
+            <field>ISO_Code__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Country_Code</name>
+        <label>Update Country Code</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>CountryCode</field>
+            <value>
+                <elementReference>v_3digitCountryCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_value_from_Country_Code_Mapping</targetReference>
+        </connector>
+        <filterFormula>IF(AND(AND(LEN({!$Record.Country})&gt;1,{!$Record.Country}!=&apos;&apos;),{!$Record.RecordType.Name}=&apos;Sales Lead&apos; ) ,TRUE,FALSE)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>holds the ISO Code for the related Country Name from Country Code Mapping</description>
+        <name>v_3digitCountryCode</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

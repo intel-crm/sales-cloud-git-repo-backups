@@ -1,0 +1,28 @@
+<apex:page controller="jiffle.JNNamespace">
+	
+	<script type="text/javascript">
+		window._isSalesforce = true
+		window._sfJiffleCompanyBaseUrl = '{!baseURL}'
+		window.isECSEnabled = {!ecsConfigValue};
+		window._showCookieBanner = {!showCookieBanner};
+		window._packageVersion = '{!packageVersion}';
+
+		Visualforce.remoting.Manager.invokeAction(
+			'{!$RemoteAction.JNNamespace.getJNNamespace}',
+			function (result, event) {
+				console.log(result, event);
+				if (event.status) {
+					window.sfdcNameSpace = result.jnNameSpace;
+				}
+				else {
+					window.sfdcNameSpace = '';
+				}
+			},
+			{ escape: true }
+		);
+
+		window.isLightningExperience = () => {
+			return window.self !== window.top
+		}
+	</script>
+</apex:page>

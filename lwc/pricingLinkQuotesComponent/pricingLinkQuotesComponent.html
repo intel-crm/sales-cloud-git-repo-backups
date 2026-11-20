@@ -1,0 +1,153 @@
+<!--
+  @description       : 
+  @author            : Bharath Chandrashekar
+  @group             : 
+  @last modified on  : 07-03-2023
+  @last modified by  : Bharath Chandrashekar
+-->
+<template>
+    <template if:true={showRecsGrid}>
+        <header class="slds-modal__header">
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Link Quotes</h2>
+        </header>
+    </template>
+    <template if:false={showRecsGrid}>
+        <lightning-card title="Link Quotes" icon-name="standard:groups">
+            <template if:false={isUnlink}>
+                <lightning-button label="Remove Link" onclick={removeQuoteLink} slot="actions" variant="brand">
+                </lightning-button>
+            </template>
+        </lightning-card>
+    </template>
+    <div>
+        <template if:true={isSpinner}>
+            <lightning-spinner alternative-text="Loading..." variant="brand">
+            </lightning-spinner>
+        </template>
+        <div style="height: auto; width: auto">
+            <template if:true={errorMsg}>
+                <div class="errorClass">
+                    {errorMsg}
+                </div>
+            </template>
+            <template if:false={showRecsGrid}>
+                <div class="slds-p-top_small" style="height: auto; width: auto">
+                    <div class="slds-p-bottom_small slds-p-top_small">
+                        <lightning-datatable key-field="quoteNumber" data={quoteGroupList} columns={dataTableColumns}
+                            selected-rows={selectedRowsArr} onrowselection={handleRowUnlinkAction} sorted-by={sortBy}
+                            default-sort-direction={defaultSortDirection} sorted-direction={sortDirection}
+                            onsort={handleSortGroupData}>
+                        </lightning-datatable><br />
+
+                        <div class="slds-text-align_center">
+                            <template if:true={hasRecords}>
+                                <lightning-button label="First" icon-name="utility:left" icon-position="left"
+                                    onclick={onFirstQG} disabled={disablePreviousButtom}></lightning-button>
+                                <lightning-button label="Previous" icon-name="utility:chevronleft" icon-position="left"
+                                    onclick={onPreviousQG} disabled={disablePreviousButtom}>
+                                </lightning-button>
+                                <span class="slds-var-p-horizontal_x-small">
+                                    Page {currentPageNumber} of {totalPages}
+                                </span>
+                            </template>
+                            <span class="slds-var-p-horizontal_x-small">
+                                Number of records: {totalNoOfRecords}
+                            </span>
+                            <template if:true={hasRecords}>
+                                <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                                    onclick={onNextQG} disabled={disableNextButtom}>
+                                </lightning-button>
+                                <lightning-button label="Last" icon-name="utility:right" icon-position="right"
+                                    onclick={onLastQG} disabled={disableNextButtom}></lightning-button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={showRecsGrid}>
+                <template if:true={noQuoteRecords}>
+                    <div class="slds-table_edit_container" style=" text-align: center; color: red; ">
+                        {noQuotesErrMsg}
+                    </div>
+                </template>
+                <template if:false={noQuoteRecords}>
+                    <div class="slds-grid slds-wrap" style="height: 5rem; width: auto">
+                        <div class="slds-col" style="padding-top: 10px; padding-bottom: 8px;">
+                            {label.toolTip}
+                        </div>
+                        <div class="slds-size_3-of-8 slds-p-right_x-small" style="padding-top: 1.46rem;">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <div class="slds-combobox_container">
+                                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                                            aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                                            <div data-key="searchdiv"
+                                                class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                                role="none">
+                                                <input type="text" value={searchKey} onkeyup={handleKeyChange}
+                                                    class="slds-input slds-combobox__input slds-has-focus"
+                                                    id="combobox-id-2" aria-autocomplete="list"
+                                                    aria-controls="listbox-id-2" role="textbox"
+                                                    placeholder="Search..." />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-size_3-of-12">
+                            <div class="slds-form-element__control">
+                                <lightning-combobox name="search" label="Search Criteria" value={searchVal}
+                                    options={options} class="comboboxClass" onchange={handleSearchCriteria}>
+                                </lightning-combobox>
+                            </div>
+                        </div>
+                        <div class="slds-size_2-of-12"
+                            style="width: auto; padding-top: 1.45rem;padding-left: 10px;padding-right: 4px;">
+                            <lightning-button label="Search" onclick={handleSearch}
+                                style="width: auto; padding-right: 4px;" variant="brand"></lightning-button>
+                            <lightning-button label="Link Quote" onclick={handleLinkQuotes}
+                                style="width: auto; padding-right: 4px;" variant="brand"></lightning-button>
+                            <lightning-button label="Reset" onclick={handleReset} variant="brand"></lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="slds-p-top_small" style="width: auto">
+                    <template if:false={noQuoteRecords}>
+                        <div class="slds-p-bottom_small slds-p-top_small">
+                            <lightning-datatable key-field="quoteNumber" data={quoteList} columns={dataTableColumns}
+                                selected-rows={selectedRowsArr} onrowselection={handleRowAction} sorted-by={sortBy}
+                                default-sort-direction={defaultSortDirection} sorted-direction={sortDirection}
+                                onsort={handleSortData}>
+                            </lightning-datatable>
+                        </div>
+                    </template>
+
+                    <div class="slds-text-align_center">
+                        <template if:true={hasRecords}>
+                            <lightning-button label="First" icon-name="utility:left" icon-position="left"
+                                onclick={onFirst} disabled={disablePreviousButtom}></lightning-button>
+                            <lightning-button label="Previous" icon-name="utility:chevronleft" icon-position="left"
+                                onclick={onPrevious} disabled={disablePreviousButtom}>
+                            </lightning-button>
+                            <span class="slds-var-p-horizontal_x-small">
+                                Page {currentPageNumber} of {totalPages}
+                            </span>
+                        </template>
+                        <span class="slds-var-p-horizontal_x-small">
+                            Number of records: {totalNoOfRecords}
+                        </span>
+                        <template if:true={hasRecords}>
+                            <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                                onclick={onNext} disabled={disableNextButtom}>
+                            </lightning-button>
+                            <lightning-button label="Last" icon-name="utility:right" icon-position="right"
+                                onclick={onLast} disabled={disableNextButtom}></lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

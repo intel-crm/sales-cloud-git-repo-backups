@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Qualify</fullName>
+        <color>#FF6600</color>
+        <default>false</default>
+        <label>Qualify</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>15</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Define</fullName>
+        <color>#FFCC66</color>
+        <default>false</default>
+        <label>Define</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>25</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Develop</fullName>
+        <color>#66FFFF</color>
+        <default>false</default>
+        <label>Develop</label>
+        <closed>false</closed>
+        <forecastCategory>BestCase</forecastCategory>
+        <probability>50</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Design</fullName>
+        <color>#3366FF</color>
+        <default>false</default>
+        <label>Design</label>
+        <closed>false</closed>
+        <forecastCategory>Forecast</forecastCategory>
+        <probability>75</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Design Win</fullName>
+        <color>#33CC00</color>
+        <default>false</default>
+        <label>Design Win</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Production Win</fullName>
+        <color>#006600</color>
+        <default>false</default>
+        <description>Production win stage</description>
+        <label>Production Win</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Lost</fullName>
+        <color>#CC0000</color>
+        <default>false</default>
+        <label>Lost</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <color>#F96FB7</color>
+        <default>false</default>
+        <label>Cancelled</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Group</fullName>
+        <color>#FFFFFF</color>
+        <default>false</default>
+        <label>Group</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Production Lost</fullName>
+        <color>#FFCC33</color>
+        <default>false</default>
+        <label>Production Lost</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Production Cancelled</fullName>
+        <color>#00CCCC</color>
+        <default>false</default>
+        <label>Production Cancelled</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Group Open</fullName>
+        <color>#FFFF66</color>
+        <default>false</default>
+        <label>Group Open</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Group Cancelled</fullName>
+        <color>#3333FF</color>
+        <default>false</default>
+        <label>Group Cancelled</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Group Closed</fullName>
+        <default>false</default>
+        <label>Group Closed</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+</StandardValueSet>

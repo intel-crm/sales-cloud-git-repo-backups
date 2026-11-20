@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Email Handler</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Email Handler</value>
+    </caseValues>
+    <fields>
+        <label><!-- Marketing Profile Information --></label>
+        <name>PMP_Marketing_Profile_Information__c</name>
+        <relationshipLabel><!-- Email Handler --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Suppressed Email Description --></label>
+        <name>PMP_Suppressed_Email_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_Contact__c</name>
+        <relationshipLabel><!-- Email Handler --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Email_Handler_Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested For Suppression</masterLabel>
+            <translation><!-- Requested For Suppression --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Email Id --></label>
+        <name>PRM_Email_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Email Suppressed Time --></label>
+        <name>PRM_Email_Suppressed_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emails to be Suppressed --></label>
+        <name>PRM_Emails_to_be_Suppressed__c</name>
+        <picklistValues>
+            <masterLabel>Benefit Email</masterLabel>
+            <translation><!-- Benefit Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Verification Email (EV Email)</masterLabel>
+            <translation><!-- Email Verification Email (EV Email) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upgrade Email</masterLabel>
+            <translation><!-- Upgrade Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welcome Email</masterLabel>
+            <translation><!-- Welcome Email --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Event --></label>
+        <name>PRM_Event__c</name>
+        <picklistValues>
+            <masterLabel>Admin Invite</masterLabel>
+            <translation><!-- Admin Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Admin Registration</masterLabel>
+            <translation><!-- Admin Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit Addition</masterLabel>
+            <translation><!-- Benefit Addition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Add</masterLabel>
+            <translation><!-- Bulk Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Invite</masterLabel>
+            <translation><!-- Bulk Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Partner Invite</masterLabel>
+            <translation><!-- External Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite</masterLabel>
+            <translation><!-- Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Registration</masterLabel>
+            <translation><!-- Self Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Addition</masterLabel>
+            <translation><!-- Specialty Addition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upgrade Request</masterLabel>
+            <translation><!-- Upgrade Request --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Suppress Email In this Event --></help>
+        <label><!-- Suppress Email --></label>
+        <name>PRM_Suppress_Email__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

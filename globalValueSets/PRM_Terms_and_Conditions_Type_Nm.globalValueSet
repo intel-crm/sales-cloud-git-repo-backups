@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Consent</fullName>
+        <default>false</default>
+        <label>Consent</label>
+    </customValue>
+    <customValue>
+        <fullName>IPA Terms and Conditions</fullName>
+        <default>false</default>
+        <label>IPA Terms and Conditions</label>
+    </customValue>
+    <masterLabel>Terms and Conditions Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

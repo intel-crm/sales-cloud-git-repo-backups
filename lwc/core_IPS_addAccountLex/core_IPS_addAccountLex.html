@@ -1,0 +1,60 @@
+<template>
+    <div if:true={spinner}>
+		<lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+		<div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+	</div>
+    <div if:false={spinner}>
+        <lightning-card>
+            <lightning-accordion allow-multiple-sections-open active-section-name= "{activeSections}">
+                <lightning-accordion-section name="A" label="Selected Accounts" class="slds-accordion">
+                    <div if:true={showExAcc} style="height: 300px;">
+                    <lightning-datatable
+                        key-field="Id"
+                        columns={existColumns}
+                        data={existingData}
+                        sorted-direction={existingSortDirection}
+                        sorted-by={existingSortedBy}
+                        onsort={handleSortExisting}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                    </div>
+                    <div if:false={showExAcc}><br/><p>No data available</p><br/></div>
+                </lightning-accordion-section>
+                <div if:true={projAccess}>
+                <lightning-accordion-section name="B" label="Add Account" class="slds-accordion">
+                    <div class="slds-border_top"><lightning-card icon-name="utility:info" title={Project_AllMemberType_Msg} class="membMsg"></lightning-card></div>
+                    <div>
+                        <lightning-Input type="search" placeholder="Search Accounts..." onchange={handleKeyChange}></lightning-input>
+                        <div if:true={searchMsg}><p>Please enter at least 3 characters.</p></div>
+                    </div></br>
+                    <div if:true={showTable} style="height: 300px;">
+                        <div if:true={loading}>
+                            <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+                        </div>
+                        <c-custom-data-table 
+                            key-field="accid" 
+                            data={accountsData} 
+                            columns={columns} 
+                            enable-infinite-loading
+                            onloadmore={handleLoadMore}
+                            onrowselection={getSelected}
+                            selected-rows={clonedSelectedIds}
+                            onpicklistchanged={picklistChanged}
+                            sorted-by={sortedBy}
+                            sorted-direction={customsortDirection} 
+                            onsort={handleAccountSort}>
+                        </c-custom-data-table>
+                    </div>
+                    <div if:false={showTable}><br/><p>No matching records found</p><br/></div><br/>
+                    <div if:true={showButton} align="center">
+                        <lightning-button data-key="Add" label="Add" variant="brand" title="Non-primary action" onclick={handleAdd} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button data-key="AddDone" label="Add and Done" variant="brand" title="Non-primary action" onclick={handleAdd} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button label="Cancel" title="Non-primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </lightning-accordion-section>
+                </div>
+                <div if:false={projAccess}> <br/> <div align="center"><lightning-button label="Back to Project" title="Non-primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button></div> </div>
+            </lightning-accordion>
+        </lightning-card>
+    </div>
+</template>

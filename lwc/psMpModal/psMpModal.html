@@ -1,0 +1,45 @@
+<template>
+    <div class="slds-theme_default">
+        <!-- <lightning-button label="Show Modal" variant="brand" onclick={openModal}></lightning-button> -->
+        <!--TODO ADD STYLES-->
+        <!-- <div class="{!join(' ', 'slds-m-around_xx-large', v.useSlimMobileHeader ? 'slimMobileHeader' : '', v.fitToContent ? 'fitToContent' : '' )}"></div> -->
+        <template if:true={isOpen}>
+        <div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <template if:true={hasHeader}>
+                        <header class="slds-modal__header">
+                            <div class="close-heading">
+                                <a class="modal close iconWhite"
+                                   href="javascript:void(0)" aria-label="Close" onclick={closeModal}>
+                                   <lightning-icon icon-name="utility:close" size="medium"></lightning-icon>
+                                </a>
+                            </div>
+                            <!--NAMED SLOTS-->
+                            <slot name="header"><p>Header content missing.</p></slot>
+                        </header>
+                    </template>
+                    <template if:true={hasBody}>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <template if:false={hasHeader}>
+                                <div class="close-heading">
+                                    <a class="close" href="javascript:void(0)" aria-label="Close" onclick={closeModal}>
+                                        <lightning-icon icon-name="utility:close" size="medium"></lightning-icon>
+                                    </a>
+                                </div>
+                            </template>
+                            <slot name="body"><p>Body content missing.</p></slot>
+                        </div>
+                    </template>
+                    <template if:true={hasFooter}>
+                        <footer class="slds-modal__footer">
+                            <slot name="footer"><p>Footer content missing.</p></slot>
+                        </footer>
+                    </template>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        </template>
+    </div>
+</template>

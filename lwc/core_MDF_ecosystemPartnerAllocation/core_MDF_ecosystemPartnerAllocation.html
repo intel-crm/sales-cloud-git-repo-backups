@@ -1,0 +1,89 @@
+<template>
+    <template if:true={showComponent}>
+        <lightning-layout class="slds-page-header slds-page-header--object-home">
+            <lightning-layout-item padding="horizontal-small" size="6" style="width:inherit;">
+                <div class="page-section page-header">
+                    <h1 class="slds-text-heading_label">
+                        {Ecosystem_Percentage_Allocation}
+                    </h1>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+        <div class="slds-m-around_medium">
+            <div class="scrollable-table">
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                        <tr>
+                            <th class="col-ecosystem header-bg">{EcoSystem_Partner}</th>
+                            <th class="col-percent header-bg">{Percentage}</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Editable Mode -->
+                    <template if:false={isReadOnly}>
+                        <tbody>
+                            <template for:each={ecosystemRows} for:item="row" for:index="index">
+                                <tr key={row.id} class={row.rowClass}>
+                                    <!-- Ecosystem Partner -->
+                                    <td class="col-ecosystem compact-input">
+                                        <div class="input-with-errors">
+                                            <lightning-input
+                                                type="text"
+                                                variant="label-hidden"
+                                                value={row.ecosystemPartner}
+                                                disabled="true">
+                                            </lightning-input>
+                                        </div>
+
+                                        <!-- Ecosystem Partner Errors -->
+                                        <div class="error-container">
+                                            <template if:true={row.errorEcosystem}>
+                                                <div class="custom-error">Ecosystem Partner is required</div>
+                                            </template>
+                                        </div>
+                                    </td>
+
+                                    <!-- Percentage -->
+                                    <td class="col-percent compact-input">
+                                        <div class="input-with-errors">
+                                            <lightning-input
+                                                type="number"
+                                                variant="label-hidden"
+                                                min="0"
+                                                max="100"
+                                                step="1"
+                                                data-index={index}
+                                                value={row.percent}
+                                                onchange={handlePercentChange}
+                                                onblur={handlePercentBlur}>
+                                            </lightning-input>
+                                        </div>
+
+                                        <div class="error-container">
+                                            <template if:true={row.showTotalPercentError}>
+                                                <div class="custom-error">{PercentageEqualHundredError}</div>
+                                            </template>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </template>
+
+                    <!-- Read-Only Mode -->
+                    <template if:true={isReadOnly}>
+                        <tbody>
+                            <template for:each={ecosystemRows} for:item="row">
+                                <tr key={row.id}>
+                                    <td>{row.ecosystemPartner}</td>
+                                    <td>{row.formattedPercent}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </template>
+                </table>
+            </div>
+        </div>
+    </template>
+</template>

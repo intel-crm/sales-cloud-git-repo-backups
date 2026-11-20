@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Region_Cd__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundRequest$Core_MDF_NEX_Ind__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,Adjusted,Cancelled,Closed,Denied,Hold,Paid,Payment Due,Pending Available Fund,Pending Documents,Pending Payment,Void</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_NEX_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_Types__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EcosystemPartner.com,Joint Event,Member.com,NonPartner.com,Podcast,Seller - Contest SPIF,Streaming,Telemarketing,Third Party Event</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Claimed Activities no NEX Checkbox</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activities_with_Claims_and_Cases__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest.PartnerFundClaims$Core_MDF_Ad_Run_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <available>true</available>
+    <description>When the Opportunity Support Team Member is added notify the CSA/TSS Resource Assigned</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity Support Team Submit</name>
+    <style>none</style>
+    <subject>Assigned Opportunity Support Request ()-</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

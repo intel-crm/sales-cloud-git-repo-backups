@@ -1,0 +1,444 @@
+<apex:page docType="html-5.0" sidebar="false" showHeader="false" controller="espy.BatchMonitoringDashboardController"  standardStylesheets="false">
+    <apex:slds />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" />
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"/>
+    <apex:includeScript value="https://www.google.com/jsapi"/>
+    <apex:includeScript value="https://www.gstatic.com/charts/loader.js"/>  
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css"/>  
+        <style> 
+        .btn {
+          background: #3498db;
+          background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+          background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+          background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+          background-image: -o-linear-gradient(top, #3498db, #2980b9);
+          background-image: linear-gradient(to bottom, #3498db, #2980b9);
+          -webkit-border-radius: 28;
+          -moz-border-radius: 28;
+          border-radius: 28px;
+          font-family: Arial;
+          color: #ffffff;
+          font-size: 12px;
+          padding: 3px 7px 3px 7px;
+          text-decoration: none;
+        }
+        .btn:hover {
+          background: #2260c2;
+          background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+          color: #fff;
+          text-decoration: none;
+        } 
+        .panel-default > .panel-heading{
+            color: #0c0577 !important;
+            background-color: #ccd3ff !important;
+        }
+        .panel{
+            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2) !important;
+        }
+       
+    </style>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <body >
+        <apex:form id="theForm">
+         <script>
+             function DescheduleClass(clsname,cron) {
+                var answer = confirm("Do You Want to De-Schedule Class :"+ clsname)
+                 if (answer){
+                    document.getElementById('{!$Component.theForm}').elements['{!$Component.hiddenField2}'].value = clsname;
+                    document.getElementById('{!$Component.theForm}').elements['{!$Component.hiddenField3}'].value = cron;
+                    deschedulecls();
+                  }
+              }
+          </script>
+          <script>
+              function RescheduleClass(clsname,cron) {
+                     var answer = confirm("Do You Want to Re-Schedule Class : "+ clsname)
+                     if (answer){
+                         document.getElementById('{!$Component.theForm}').elements['{!$Component.hiddenField}'].value = clsname;
+                         document.getElementById('{!$Component.theForm}').elements['{!$Component.hiddenField1}'].value = cron;
+                         reschedulecls();
+                     }
+                }
+          </script>
+           <script>
+                function showpopup(showerr,ErrorMsg){
+                    if(showerr){
+                        if(ErrorMsg!='')
+                           alert(ErrorMsg);
+                        else 
+                           alert('Process Completed');
+                           window.location.reload();
+                    }
+                }
+          </script>
+         
+            <apex:inputHidden value="{!inputValue}" id="hiddenField"/>
+            <apex:inputHidden value="{!inputValue2}" id="hiddenField1"/>
+            <apex:actionFunction action="{!rescheduleclass}" name="reschedulecls" oncomplete="showpopup('{!showerr}','{!ErrorMsg}');"/>
+            <apex:inputHidden value="{!inputValue3}" id="hiddenField2"/>
+            <apex:inputHidden value="{!inputValue4}" id="hiddenField3"/>
+            <apex:actionFunction action="{!descheduleclass}" name="deschedulecls" oncomplete="showpopup('{!showerr}','{!ErrorMsg}');"/>
+            <div id="wrapper" class="active">
+                <div class="tour1 tour4"></div>
+                <!--<c:BM_sidepane />-->
+                <c:BM_header />
+                <div class="page-content inset" data-spy="scroll" >
+                    <div class="" style="margin-left:2px;margin-right:0px;">
+                        <div class="row ">
+                            <div class="col-md-3">
+                                <div class="panel panel-default tour2">
+                                    <div class="panel-heading  panel-header" >
+                                        <h3 class="panel-title">Scheduled Batches</h3>
+                                    </div>
+                                    <div class="panel-body text-container" id="scheduled-batches" >
+                                        <apex:repeat value="{!ScheduledBatchJobList}" var="ex" rendered="true">
+                                            <div class='issue issue_e1' id="{!ex.name}"  onclick="navigateTomethod('{!ex.name}');">
+                                                <span style="padding-left:6px"> {!ex.name} </span>
+                                            </div>
+                                        </apex:repeat>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                               <apex:outputPanel id="details" rendered="true">
+                                    <div class="row">
+                                        <script>console.log('{!TotalJobItemss}'+'{!processedd}');</script>
+                                        <div class="col-md-3 reduce-pad">
+                                            <div class="panel info-bg shadow-header text-right">
+                                                <div class="panel-body">
+                                                    <div class="huge card-text-white">{! IF(TotalJobItemss != null, TotalJobItemss,0)}</div>
+                                                    <div class="card-text-white">TotalJobItems</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 reduce-pad">
+                                            <div class="panel  success-bg shadow-header text-right">
+                                                <div class="panel-body">
+                                                    <div class="huge card-text-white">{! IF(Statuss!= null, Statuss,0)}</div>
+                                                    <div class="card-text-white">Status</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 reduce-pad">
+                                            <div class="panel danger-bg shadow-header text-right">
+                                                <div class="panel-body">
+                                                    <div class="huge card-text-white">{! IF(failuree != null, failuree,0)}</div>
+                                                    <div class="card-text-white">Failure</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 reduce-pad">
+                                            <div class="panel  warning-bg shadow-header text-right">
+                                                <div class="panel-body" style="line-height: 24px;">
+                                                    <div class="huge1 card-text-white">{! IF(NextFireTimee != null, LEFT(TEXT(NextFireTimee),19),'--NA')}</div>
+                                                    <div class="card-text-white">Next Fire Time</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="padding-right: 12px;padding-left: 12px;">
+                                            <div class="panel panel-default tour3">
+                                                <div class="panel-heading panel-header" >
+                                                    <h3 class='panel-title'>
+                                                        <span class="badge info-bg"> Scheduler </span>{!schbatchclassname} &nbsp; &nbsp;
+                                                        <span class="badge default-bg"> Batch Class </span> {!batchclassname} &nbsp; &nbsp;
+                                                        <apex:commandButton action="{!Reschedule}"  value="Re-scheduler"  styleClass="btn" oncomplete="RescheduleClass('{!schbatchclassname}','{!CronExpressn}');" rendered="{! IF(batchCountOnNotesJSON == null, true,false)}"/>
+                                                        <apex:commandButton action="{!Deletescheduler}" value="De-Scheduler" styleClass="btn" oncomplete="DescheduleClass('{!schbatchclassname}','{!CronExpressn}');" rendered="{! IF(batchCountOnNotesJSON == null, false,true)}"/>
+                                        
+                                                    </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <apex:outputPanel rendered="{! IF(batchCountOnNotesJSON !=null, true,false)}">
+                                                    <div>
+                                                        <canvas id="lastLogs" height="102"/>
+                                                    </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{! IF(batchCountOnNotesJSON == null, true,false)}"><p> <p>Batch is not scheduled.Kindly reschedule the batch using below Step</p><p>1. Go to Developer Console</p>
+                                                    <p>2. Execute the below command in Asynchronous Window</p> <p> system.schedule({!SchClassid},'{!CronExpressn}',new ({!SchClassid}));</p></p></apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <apex:actionFunction action="{!navigateTo}" name="navigateTomethod" reRender="details,info,updateBatchLogMapScript" oncomplete="drawChart4batchLogMap();">
+                <apex:param name="ClassName" value="" assignTo="{!schbatchclassname}"/>
+            </apex:actionFunction>
+        </apex:form>
+    </body>
+    
+    <style>
+        .shadow-me {
+          box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+        }
+
+        #wrapper {
+          padding-left: 250px;
+          transition: all 0.4s ease 0s;
+        }
+
+        #wrapper.active {
+          padding-left: 0;
+        }
+
+        #wrapper.active #sidebar-wrapper {
+          left: 0;
+        }
+        
+
+        .btn-menu {
+          color: #000;
+        }
+
+        .inset {
+          padding: 20px;
+          background: linear-gradient(to right bottom,#f4effe 50%,#fff 50%);
+       
+        }
+
+        @media (max-width:767px) {
+          #wrapper {
+            padding-left: 0;
+          }
+
+          #sidebar-wrapper {
+            left: 0;
+          }
+
+          #wrapper.active {
+            position: relative;
+            left: 250px;
+          }
+
+          #wrapper.active #sidebar-wrapper {
+            left: 250px;
+            width: 250px;
+            transition: all 0.4s ease 0s;
+          }
+
+          #menu-toggle {
+            display: inline-block;
+          }
+
+          .inset {
+            padding: 15px;
+          }
+        }
+
+        
+
+        .shadow-header {
+          -webkit-box-shadow: 3px 4px 13px -2px rgba(0,0,0,0.47);
+          -moz-box-shadow: 3px 4px 13px -2px rgba(0,0,0,0.47);
+          box-shadow: 3px 4px 13px -2px rgba(0,0,0,0.47);
+        }
+
+        .issue_e1 {
+          line-height: 34px;
+        }
+
+        .danger-bg {
+          background-color: #ff5722 !important;
+        }
+
+        .success-bg {
+          background-color: #5cb85c !important;
+        }
+
+        .info-bg {
+          background-color: #5bc0de !important;
+        }
+
+        .warning-bg {
+          background-color: #f0ad4e !important;
+        }
+
+        .default-bg {
+          background-color: #337ab7 !important;
+        }
+
+        .huge {
+          font-size: 20px;
+          font-weight: bold;
+        }
+        
+        huge1{
+            font-size: 12px;
+            font-weight: bold
+        }
+
+        .card-text-white {
+          color: #fff;
+        }
+
+        .reduce-pad {
+          padding: 0px 12px 2px 12px;
+        }
+
+        #scheduled-batches div {
+          list-style: none;
+        }
+
+        #scheduled-batches div:hover {
+          background-color: #2260c2 !important;
+          font-weight: bolder;
+          cursor: pointer;
+          color: #fff;
+        }
+
+        #scheduled-batches>div:first-child {
+          background-color: #2abdaf;
+        }
+
+        .text-container {
+          padding-right: 0px;
+          padding-left: 0px;
+          font-size: 13px;
+          max-height: 78vh;
+          overflow-y: auto;
+          overflow-x: auto;
+        }
+
+        .panel-header {
+          font-family: 'Roboto', sans-serif;
+          font-size: 20px;
+          color: #6b6b6b;
+        }
+    </style>
+    <apex:outputPanel id="updateBatchLogMapScript">
+        <script>
+        function drawChart4batchLogMap(){        
+            var batchLogMap = '{!batchCountOnNotesJSON}';
+            var batchLogMap_jsonObj= JSON.parse(batchLogMap);
+            //console.log('batchLogMap : '+batchLogMap + '---json--')
+            var batchLogMap_labels = []; // ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
+            var batchLogMap_data =  []; //[12, 19, 3, 5, 2, 3];
+            for(var key in batchLogMap_jsonObj){
+                batchLogMap_labels.push(key);
+                batchLogMap_data.push(batchLogMap_jsonObj[key]);
+            }            
+            var options = {
+              type: 'line',
+              data: {
+                labels: batchLogMap_labels,
+                datasets: [
+                    {
+                      label: 'Frequency',
+                      data: batchLogMap_data,
+                      borderWidth: 4,
+                      pointBorderWidth: 8,
+                      pointRadius: 4,
+                      pointHoverRadius: 6,
+                      pointHoverBorderWidth: 10,
+                      backgroundColor: 'rgba(82, 190, 128, 0.83)'
+                    }
+                    ]
+              },
+              options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            min:60,
+                            // Show all labels
+                            autoSkip: false,                            
+                            callback: function(tick) {
+                                var characterLimit = 10;
+                                if (tick.length >= characterLimit) {
+                                   return tick.slice(0, tick.length).substr(0, characterLimit);
+                                }
+                                return tick;
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        reverse: false
+                    }
+                  }]
+                },
+                tooltips: {
+                    callbacks: {
+                        title: function(tooltipItem){
+                            return this._data.labels[tooltipItem[0].index].substr(0,10);
+                        }
+                    }
+                }
+              }
+            }
+            var ctx = document.getElementById('lastLogs').getContext('2d');
+            new Chart(ctx, options);
+        }
+    </script>
+    </apex:outputPanel>
+    <script>
+      /*trigger click on page load to show first chart.*/
+        $("document").ready(function() { 
+        setTimeout(function() {   
+            $("#scheduled-batches>div:first-child").trigger('click');
+            },6);
+            
+        $('#scheduled-batches div').click(function(){
+            $('#scheduled-batches div').css("background-color", "#fff");
+            $(this).css("background-color", "#00bcd4");
+            });
+        });     
+    </script>
+        <!-- script code for Page Tour -->
+    <script>    
+    // Instance the tour
+        var tour = new Tour({
+        steps: [
+          {
+            element: ".tour1",
+            placement: 'bottom',
+            backdrop:   false,
+            title: " Scheduled Apex ",
+            content: "Information about Scheduled Apex Page."
+          },
+          {
+            element: ".tour2",
+            placement: 'right',
+            title: "Scheduled Batches",
+            content: "Information about Scheduled Batches."
+          },
+          {
+            element: ".tour3",
+            placement: 'left',
+            title: "Name of Component",
+            content: "Information about Component."
+          },
+          {
+            element: ".tour4",
+            placement: 'bottom',
+            title: "Flex Holding",
+            path: "/apex/flexQueueDetail"
+          }          
+        ],
+          backdrop: true,
+          backdropPadding: 1,
+          storage: window.localStorage// change it to false to always display the tour
+        });
+        
+        tour.init();
+        tour.start();
+    </script>
+</apex:page>

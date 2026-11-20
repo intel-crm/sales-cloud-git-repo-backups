@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Chipsets</masterLabel>
+        <translation>Chipsätze</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ethernet Products</masterLabel>
+        <translation>Ethernet-Produkte</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Graphics</masterLabel>
+        <translation><!-- Graphics --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Memory and Storage</masterLabel>
+        <translation>Arbeitsspeicher und Datenspeicher</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Processors</masterLabel>
+        <translation>Prozessoren</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technologies</masterLabel>
+        <translation>Technik</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Today&apos;s batch run status</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Batch_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Batch Status</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Service_Response__c</fullName>
+        <description>Mule Service Response</description>
+        <label>Service Response</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>AccountCoverage Batch Status</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Core_Batch_Status__c</columns>
+        <columns>Core_Service_Response__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+    </listViews>
+    <visibility>Protected</visibility>
+</CustomObject>

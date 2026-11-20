@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Entitlement Conflict Policy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Entitlement Conflict Policy</value>
+    </caseValues>
+    <fields>
+        <label><!-- Entitlement Id --></label>
+        <name>Entitlement_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Validation --></label>
+        <name>System_Validation__c</name>
+    </fields>
+    <fields>
+        <label><!-- UI Validation --></label>
+        <name>UI_Validation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation Message --></label>
+        <name>Validation_Message__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

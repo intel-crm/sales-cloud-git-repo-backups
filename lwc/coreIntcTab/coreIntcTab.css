@@ -1,0 +1,19 @@
+.tab-container {
+  display: none;
+}
+
+.tab-container[data-is-active='true'] {
+  display: block;
+}
+
+.stacked-heading {
+  display: none;
+  padding: 1.5rem 0 1rem;
+}
+
+@media (max-width: 767px) {
+  .tab-container[data-stack-mobile='true'],
+  .tab-container[data-stack-mobile='true'] .stacked-heading {
+    display: block;
+  }
+}

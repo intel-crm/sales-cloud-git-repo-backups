@@ -1,0 +1,20 @@
+<aura:documentation>
+	<aura:description>
+    <p>L2 Marquee Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 2/12/2019</p>
+    <p>CurrentVersion: 1.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<br/>
+		<p>1.1</p>
+		<p>Adds some comments re: custom labels, todos down the road</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

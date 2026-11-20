@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Pricing_Approval_Response_Date_Month__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Approved_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Approved_Date_dt__c )),
+1, &apos;01&apos;,
+2, &apos;02&apos;,
+3, &apos;03&apos;,
+4, &apos;04&apos;,
+5, &apos;05&apos;,
+6, &apos;06&apos;,
+7, &apos;07&apos;,
+8, &apos;08&apos;,
+9, &apos;09&apos;,
+10, &apos;10&apos;,
+11, &apos;11&apos;,
+12, &apos;12&apos;,
+null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approved/Rejected Month(Gregorian)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Approval_Response_Date_Quarter__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Approved_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Approved_Date_dt__c )),
+1, &apos;Q1&apos;,
+2, &apos;Q1&apos;,
+3, &apos;Q1&apos;,
+4, &apos;Q2&apos;,
+5, &apos;Q2&apos;,
+6, &apos;Q2&apos;,
+7, &apos;Q3&apos;,
+8, &apos;Q3&apos;,
+9, &apos;Q3&apos;,
+10, &apos;Q4&apos;,
+11, &apos;Q4&apos;,
+12, &apos;Q4&apos;,
+null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approved/Rejected Quarter(Gregorian)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_ApprovedRejectedMonth__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(LEN(Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c) = 6, SUBSTITUTE(Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c,&apos;-&apos;, &apos;-0&apos;),Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Month_Txt__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approved/Rejected Month</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_ApprovedRejectedQuarter__c</fullName>
+        <externalId>false</externalId>
+        <formula>Pricing_TPT_Quote_Line_Number__r.Pricing_Approved_Rejected_Quarter__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approved/Rejected Quarter</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_First_SubmissionToResponse_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>First Submission to Response Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_First_Submitted_Date_Month__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Original_Submitted_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Original_Submitted_Date_dt__c )),
+1, &apos;01&apos;,
+2, &apos;02&apos;,
+3, &apos;03&apos;,
+4, &apos;04&apos;,
+5, &apos;05&apos;,
+6, &apos;06&apos;,
+7, &apos;07&apos;,
+8, &apos;08&apos;,
+9, &apos;09&apos;,
+10, &apos;10&apos;,
+11, &apos;11&apos;,
+12, &apos;12&apos;,
+null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>First Submitted Date - Month</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_First_Submitted_Date_Quarter__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Original_Submitted_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Original_Submitted_Date_dt__c )),
+1, &apos;Q1&apos;,
+2, &apos;Q1&apos;,
+3, &apos;Q1&apos;,
+4, &apos;Q2&apos;,
+5, &apos;Q2&apos;,
+6, &apos;Q2&apos;,
+7, &apos;Q3&apos;,
+8, &apos;Q3&apos;,
+9, &apos;Q3&apos;,
+10, &apos;Q4&apos;,
+11, &apos;Q4&apos;,
+12, &apos;Q4&apos;,
+null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>First Submitted Date - Quarter</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Last_Submission_to_Response_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Submission to Response Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Last_Submitted_Date_Month__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Submitted_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Submitted_Date_dt__c )),
+1, &apos;01&apos;,
+2, &apos;02&apos;,
+3, &apos;03&apos;,
+4, &apos;04&apos;,
+5, &apos;05&apos;,
+6, &apos;06&apos;,
+7, &apos;07&apos;,
+8, &apos;08&apos;,
+9, &apos;09&apos;,
+10, &apos;10&apos;,
+11, &apos;11&apos;,
+12, &apos;12&apos;,
+null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last Submitted Date - Month</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Last_Submitted_Date_Quarter__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR (DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Submitted_Date_dt__c ))) +&apos;-&apos;+ CASE(MONTH(DATEVALUE( Pricing_TPT_Quote_Line_Number__r.Pricing_Last_Submitted_Date_dt__c )),
+    1, &apos;Q1&apos;,
+    2, &apos;Q1&apos;,
+    3, &apos;Q1&apos;,
+    4, &apos;Q2&apos;,
+    5, &apos;Q2&apos;,
+    6, &apos;Q2&apos;,
+    7, &apos;Q3&apos;,
+    8, &apos;Q3&apos;,
+    9, &apos;Q3&apos;,
+    10, &apos;Q4&apos;,
+    11, &apos;Q4&apos;,
+    12, &apos;Q4&apos;,
+    null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last Submitted Date - Quarter</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Quote_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Pricing_TPT_Quote_Line_Number__r.SBQQ__Quote__r.Name</formula>
+        <label>Pricing Quote Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Stage_Changed_by_Me_chk__c</fullName>
+        <formula>Pricing_TPT_To_Stage_Actor_Nm__c = $User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage Changed by Me</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Age__c</fullName>
+        <externalId>false</externalId>
+        <label>Status Time (in days, hrs, mins, secs)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Aggregate_Role_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Aggregate Role Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Change_Request_QuoteLine_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Change Request QuoteLine</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Change_Time__c</fullName>
+        <label>Status End Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Current_QL_Approver__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Line Approver at Change</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_From_Actor_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>From Stage Actor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Quote_Line_Number__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Quote Line Number</label>
+        <referenceTo>SBQQ__QuoteLine__c</referenceTo>
+        <relationshipLabel>Quote Line Status Changes</relationshipLabel>
+        <relationshipName>Quote_Line_Status_Changes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Role_Aggregate_cb__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Role Aggregate</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Set_Time__c</fullName>
+        <label>Status Start Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Share_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>First Time Share Required</description>
+        <inlineHelpText>First Time Share Required</inlineHelpText>
+        <label>Share Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Status_From__c</fullName>
+        <label>From Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <color>#0B6FCE</color>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Pending Intel Field Review</fullName>
+                    <color>#78C953</color>
+                    <default>false</default>
+                    <label>Pending Intel Field Review</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review</fullName>
+                    <color>#E27001</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <color>#A845DC</color>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <color>#FF0000</color>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Won</fullName>
+                    <color>#A53711</color>
+                    <default>false</default>
+                    <label>Won</label>
+                </value>
+                <value>
+                    <fullName>Lost</fullName>
+                    <color>#66E9BD</color>
+                    <default>false</default>
+                    <label>Lost</label>
+                </value>
+                <value>
+                    <fullName>Revised</fullName>
+                    <color>#0B24BE</color>
+                    <default>false</default>
+                    <label>Revised</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review-Requested</fullName>
+                    <color>#FFFF66</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review-Requested</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review-Submitted</fullName>
+                    <color>#FFCC33</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review-Submitted</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review-Offer</fullName>
+                    <color>#33CC00</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review-Offer</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <color>#FF6666</color>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Status_Name__c</fullName>
+        <label>To Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <color>#0B6FCE</color>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Pending Intel Field Review</fullName>
+                    <color>#78C953</color>
+                    <default>false</default>
+                    <label>Pending Intel Field Review</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review</fullName>
+                    <color>#E27001</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <color>#A845DC</color>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <color>#FF0000</color>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Won</fullName>
+                    <color>#A53711</color>
+                    <default>false</default>
+                    <label>Won</label>
+                </value>
+                <value>
+                    <fullName>Lost</fullName>
+                    <color>#66E9BD</color>
+                    <default>false</default>
+                    <label>Lost</label>
+                </value>
+                <value>
+                    <fullName>Revised</fullName>
+                    <color>#0B24BE</color>
+                    <default>false</default>
+                    <label>Revised</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review-Requested</fullName>
+                    <color>#FFFF66</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review-Requested</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review-Submitted</fullName>
+                    <color>#FFCC33</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review-Submitted</label>
+                </value>
+                <value>
+                    <fullName>Pending Further Intel Review-Offer</fullName>
+                    <color>#33CC00</color>
+                    <default>false</default>
+                    <label>Pending Further Intel Review-Offer</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <color>#FF6666</color>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Status_Time_Days__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Pricing_TPT_Status_Time__c &lt; 24.00, &quot;0 Day&quot;,
+IF(Pricing_TPT_Status_Time__c &gt;= 24.00 &amp;&amp; Pricing_TPT_Status_Time__c &lt; 48.00, &quot;1 Day&quot;,
+IF(Pricing_TPT_Status_Time__c &gt;= 48.00 &amp;&amp; Pricing_TPT_Status_Time__c &lt; 72.00, &quot;2 Days&quot;,
+IF(Pricing_TPT_Status_Time__c &gt;= 72.00 &amp;&amp; Pricing_TPT_Status_Time__c &lt; 96.00, &quot;3 Days&quot;,
+IF(Pricing_TPT_Status_Time__c &gt;= 96.00 &amp;&amp; Pricing_TPT_Status_Time__c &lt; 144.00, &quot;4-5 Days&quot;,
+IF(Pricing_TPT_Status_Time__c &gt;= 144.00 &amp;&amp; Pricing_TPT_Status_Time__c &lt; 240.00, &quot;6-9 Days&quot;,
+IF(Pricing_TPT_Status_Time__c &gt; 240.00, &quot;9+ Days&quot;,
+NULL)))))))</formula>
+        <label>Status Time (days)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Status_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Status Time (numeric hours)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Submitted_By__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Pricing_TPT_User_Role__c == &quot;OEM&quot; &amp;&amp; TEXT(Pricing_TPT_Status_From__c) == &quot;Draft&quot; &amp;&amp; TEXT(Pricing_TPT_Status_Name__c) == &quot;Pending Intel Field Review&quot;, Pricing_TPT_Current_QL_Approver__c,
+IF(Pricing_TPT_User_Role__c == &quot;SDM&quot; &amp;&amp; TEXT(Pricing_TPT_Status_From__c) == &quot;Draft&quot; &amp;&amp; TEXT(Pricing_TPT_Status_Name__c) == &quot;Pending Further Intel Review&quot;, Pricing_TPT_Current_QL_Approver__c,
+NULL))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitted By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_Submitted_Date__c</fullName>
+        <formula>IF(Pricing_TPT_User_Role__c == &quot;OEM&quot; &amp;&amp; TEXT(Pricing_TPT_Status_From__c) == &quot;Draft&quot; &amp;&amp; TEXT(Pricing_TPT_Status_Name__c) == &quot;Pending Intel Field Review&quot;, Pricing_TPT_Set_Time__c,
+IF(Pricing_TPT_User_Role__c == &quot;SDM&quot; &amp;&amp; TEXT(Pricing_TPT_Status_From__c) == &quot;Draft&quot; &amp;&amp; TEXT(Pricing_TPT_Status_Name__c) == &quot;Pending Further Intel Review&quot;, Pricing_TPT_Set_Time__c,
+NULL))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submitted Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_To_Stage_Actor_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>To Stage Actor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_TPT_User_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>User Role</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Revision_QuoteLine__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Revision QuoteLine</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Quote Line Status Age</label>
+    <listViews>
+        <fullName>Pricing_TPT_Admin_Queue_Pricing_Quote_Line_Status_Age</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Pricing TPT Admin Queue</label>
+        <queue>Pricing_TPT_Admin_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>QuoteLine Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Quote Line Status Ages</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Pricing_Financial_Incentive_TPT</fullName>
+        <active>true</active>
+        <description>Represents TPT data for Financial Incentive</description>
+        <label>Financial Incentive</label>
+        <picklistValues>
+            <picklist>Pricing_TPT_Status_From__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review-Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review-Requested</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review-Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Intel Field Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revised</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Won</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Pricing_TPT_Status_Name__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review-Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review-Requested</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Further Intel Review-Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Intel Field Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revised</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Won</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,114 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerLayout",
+  "dataProviders" : [ ],
+  "id" : "29aa8ac5-d6bd-43fb-931b-3f7a2fde4070",
+  "label" : "Partner Message List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"RecentMessages\",\"title\":\"Recent Messages\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "#",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "#",
+        "rightCta1Label" : "Company Profile",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "#",
+        "rightCta2Label" : "My Intel Profile",
+        "subtitle" : "",
+        "title" : "Partner Benefits"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "cbeca7ec-81c0-4586-be15-c31cc577f7c4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b8b666f1-452a-4483-810e-1271f28258af",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "3cf2eaa4-8b38-47fb-9510-8943dd80f6ff",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "0a0b9ba9-17ea-417d-b65b-fee5eae950a3",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaPartnerMessagesViewAll",
+      "id" : "a0e54bae-6973-4422-a0c7-87af592ffdbd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "66de94a5-bc79-443a-b3e3-6f28801c567a",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "ec66dba7-2794-4edb-8df2-b1f98c7a7e1e",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "2bc1157d-6def-4258-8820-511cd89af915",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "faa8e8a7-f19d-4dd9-add4-768547f539fe",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "2108bf96-6fbf-4297-ade1-f2b8d29f97c9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "84797b14-748f-4a4f-a53b-e8dde02fd2b6",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "1a43607e-eac8-4742-8e18-d5ad22f6adcf",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "727b4c9a-1a32-4de8-bdc8-2eaf0d6a7e66",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "5fe9c4c2-c002-408e-9038-0c2a39370af7",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "becebb9d-43c7-49dc-871b-13f90294eacb",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Recent Messages\"/>\n<meta name=\"pageType\" content=\"RecentMessages\"/>",
+        "description" : "",
+        "title" : "Recent Messages"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "44ffc4e3-cf03-4388-89eb-5c5a05f24086",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a088850d-098b-4016-bfb2-cb062dbea7df",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-partner-message-list"
+}

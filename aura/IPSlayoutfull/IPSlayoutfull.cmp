@@ -1,0 +1,139 @@
+<aura:component implements="forceCommunity:layout" description="IPS Page Layout" access="global">
+    
+    <aura:attribute name="bannerBlade" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade0" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade5" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade6" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade7" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade8" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade9" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="compareTray" type="Aura.Component[]" required="false"></aura:attribute>
+    
+    <div>
+        
+        <div class="bannerBlade">
+            <!--{!v.bannerBlade}-->
+            <!--<c:Core_IPS_Header></c:Core_IPS_Header>-->
+            <c:core_IPS_Header_LWC></c:core_IPS_Header_LWC>
+        </div>
+        
+        <div class="marquee">
+            {!v.marquee}
+        </div>
+        
+        <div class="blade3">
+            <div class="container">
+                {!v.blade0}
+            </div>
+        </div>
+        
+        <div class="blade1">
+            <div class="container">
+                {!v.blade1}
+                
+            </div>
+        </div>
+        
+        <div class="blade3">
+            <div class="container">
+                {!v.blade8}
+            </div>
+        </div>
+        
+        <div class="blade1">
+            <div class="container">
+                {!v.blade9}
+            </div>
+        </div>
+        
+        <div class="blade2">
+            <div class="container">
+                {!v.blade2}
+            </div>
+        </div>
+        
+        <div class="blade7">
+            <div class="container">
+                {!v.blade7}
+            </div>
+        </div>
+        
+        <div class="blade3">
+            <div class="container">
+                {!v.blade3}
+            </div>
+        </div>
+        
+        <div class="blade4">
+            {!v.blade4}
+        </div>
+        
+        <div class="compareTray">
+            {!v.compareTray}
+        </div>
+        
+        <div class="blade1">
+            <div class="container">
+                {!v.blade5}
+            </div>
+        </div>
+        
+        <div class="blade3">
+            <div class="container">
+                {!v.blade6}
+            </div>
+        </div>
+        <!-- FOOTER -->
+		<!--
+        <footer role="contentinfo"  class="slds-p-around_large" style="background:#e7e7e7;">
+            
+            
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_2-of-12" style="padding-top:95px;">
+                    <span style="margin-left:40px;"><img style="width:80px;" alt="Intel Footer Logo" src="{!$Resource.intelFooterLogo}" title="Intel Footer Logo" /> </span>
+                </div>
+                <div class="slds-col slds-size_10-of-12 slds-p-top_large slds-p-bottom_large">
+                    <div style="font-size:15px;">
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/company-overview/company-overview.html">Company Information</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/corporate-responsibility/corporate-responsibility.html">Our Commitment</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/diversity/diversity-at-intel.html">Diversity &amp; Inclusion</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/blogs-communities-social.html">Communities</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intc.com/investor-relations/default.aspx">Investor Relations</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/company-overview/contact-us.html">Contact Us</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/newsroom/home.html">Newsroom</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <div><a class="colorback" href="https://www.intel.com/content/www/us/en/jobs/jobs-at-intel.html">Jobs</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                    </div><br/>
+                    <div class="topnav" >
+                        <a class="slds-m-right_small IconColorBack" href="https://www.facebook.com/Intel"><i class="fa fa-facebook"></i></a>
+                        <a class="slds-m-right_small IconColorBack" href="https://twitter.com/intel"><i class="fa fa-twitter"></i></a>
+                        <a class="slds-m-right_small IconColorBack" href="https://www.linkedin.com/company/intel-corporation"><i class="fa fa-linkedin"></i></a>
+                        <a class="slds-m-right_small IconColorBack" href="https://www.youtube.com/user/channelintel?sub_confirmation=1"><i class="fa fa-youtube"></i></a>
+                        <a class="slds-m-right_small IconColorBack" href="https://www.instagram.com/intel/"><i class="fa fa-instagram"></i></a>
+                    </div><br/>
+                    <div>
+                        &copy; Intel Corporation  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/legal/trademarks.html">*Trademarks</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html">Cookies</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/corporate-responsibility/statement-combating-modern-slavery.html">Supply Chain Transparency</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="colorback" href="https://www.intel.com/content/www/us/en/siteindex.html">Site Map</a>
+                    </div>
+                    <br/>
+                    <div class="slds-p-right_large">
+                        Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <a class="colorback" href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055"><u>Notice and Disclamers</u></a>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a class="colorback" href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+                    </div>
+                </div>
+            </div>
+            
+        </footer>        
+        -->
+        <!-- / FOOTER -->
+        
+    </div>
+</aura:component>

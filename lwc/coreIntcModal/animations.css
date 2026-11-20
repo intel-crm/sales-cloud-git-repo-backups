@@ -1,0 +1,29 @@
+[data-fade-display] {
+  display: none;
+}
+
+[data-fade-display='true'] {
+  display: block;
+}
+
+[data-fade] {
+  opacity: 0;
+  transition-duration: 500ms;
+  transition-property: opacity;
+}
+
+[data-fade='true'] {
+  opacity: 1;
+}
+
+[data-fade-out='fast']:not([data-fade='true']) {
+  transition-duration: 300ms;
+}
+
+[data-animation-speed='fast'] {
+  transition-duration: 300ms;
+}
+
+[data-animation-speed='slow'] {
+  transition-duration: 700ms;
+}

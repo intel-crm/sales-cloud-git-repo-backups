@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_sObjectType__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_sObjectId__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_Details__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_Origin__c</field>
+    </columns>
+    <columns>
+        <field>Core_Log_Entry__c.Core_Message__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_Log_Entry__c.Core_Origin__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Delta Load</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Log_Entry__c.Core_Message__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Failed</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>SF-Azure Delta Load Failure</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Log_Entry__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Log_Entry__c.Core_When__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SWS Bypass Validation Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SWS Bypass Validation Rule</value>
+    </caseValues>
+    <fields>
+        <label><!-- Allow Creator --></label>
+        <name>Allow_Creator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bypass --></label>
+        <name>Bypass__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Batch Update --></label>
+        <name>Last_Batch_Update__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

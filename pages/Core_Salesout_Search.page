@@ -1,0 +1,362 @@
+<!-------------------------------------------------------------------------------------------
+VF Page     : Core_Salesout_Search
+Version     : 1.0 
+Created Date: 9/14/2015
+Function    : Secure dynamic search of salesout data.
+Modification Log :
+* Developer                  Date                   Description
+* ----------------------------------------------------------------------------                 
+* Brian Matthews             9/14/2015              Original Version
+-------------------------------------------------------------------------------------------->
+
+<apex:page id="thePage" title="Channel Data Search" docType="html-5.0" sidebar="true" standardStylesheets="true" readOnly="true"
+           standardController="CampaignMember" extensions="Core_Salesout_Search_Controller,Core_Campaign_Member_Creator">
+
+    <apex:includeScript value="{!$Resource.Core_Jquery}"/>  
+    <apex:includeScript value="{!$Resource.Core_JqueryUIBlock}"/> 
+        
+    <style>
+        .sectionLabel
+        {
+            font-size: 18px;        
+        }
+        .searchAndClear
+        {
+            float: left; 
+            margin-left: 40%;
+        }
+                
+        .lightWeightDivider
+        {
+            border-width: 1px; 
+            border-style: solid; 
+            border-color: #EEEEEE;            
+        }
+    
+        .heavyWeightDivider
+        {
+            border-width: 2px; 
+            border-style: solid;
+        }
+        
+        .searchMessageStyle
+        {
+            width: 400px;
+        }
+                
+        .spin
+        {
+            position:relative;
+            left:52%;
+            top:3px;
+            height:20px;
+            width:20px;
+        }        
+    </style>
+    
+    <script type="text/javascript">    
+        function setFocusOnLoad() {}      
+        
+        function loadDropDowns()
+        {
+            reloadDropDowns();
+        }
+          
+    </script>    
+
+    <apex:form id="theForm">
+        <apex:ActionFunction name="reloadDropDowns" action="{!clearFilters}" rerender="thePageBlock"/>
+
+
+        <!--  SALESOUT SEARCH PAGE HEADER  -->        
+        <br/>
+        <apex:panelGrid columns="2">
+            <apex:outputPanel style="float:left">
+                <apex:image value="{!$Resource.Core_SearchIcon}" width="50px;" />
+            </apex:outputPanel>
+            <apex:outputPanel style="float:left">
+                <apex:outputText style="font-size:22px;" value="{!$Label.Core_Channel_Data_Search}"/>
+                <br/>
+                <apex:outputText style="font-weight:bold;" value="{!$Label.Core_Search_Criteria}"/>
+            </apex:outputPanel>
+        </apex:panelGrid>
+        <br/>       
+
+
+         <apex:pageMessages />
+        
+         <!-- Section to show the error message if doesnot enter search criteria -->
+         <apex:outputPanel id="errorMessage" rendered="{!searchShowMessage}">
+             <apex:outputPanel styleClass="searchMessageStyle" layout="block">
+                 <br/>
+                     <apex:pageMessage escape="true" title="{!searchMessage}" severity="{!searchSeverity}" strength="1" ></apex:pageMessage>
+                 <br/>
+             </apex:outputPanel>
+         </apex:outputPanel>
+
+
+        <apex:pageBlock id="thePageBlock" tabStyle="Opportunity">
+        
+            <br/>
+            <apex:outputPanel style="float:left">
+                <apex:outputText styleClass="sectionLabel" value="{!$Label.Core_Sales_Out}"/>
+            </apex:outputPanel>
+            <br/>
+
+            <hr class="lightWeightDivider" style="margin-top: 10px;"/>
+
+            <apex:pageBlockSection title="Step 1. Specify Sales Out Criteria">
+                <table class="declarativeFilterTable">
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:outputLabel style="font-weight: bold">Field</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold">Operator</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold">Value</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold"> </apex:outputLabel>
+                    </apex:pageBlockSection>          
+                    
+                    <!--  SALESOUT FIELD I  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soField1}" style="width:126px">
+                                <apex:selectOptions value="{!lstDefaultField1}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soOp1}" style="width:123px">
+                                <apex:selectOptions value="{!lstDateOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soValue1}" style="width:173px">
+                                <apex:selectOptions value="{!lstPeriodRange}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>     
+                    <br/>                                     
+
+                    <!--  SALESOUT FIELD II  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soField2}">
+                                <apex:selectOptions value="{!lstSalesOutFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soOp2}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!soValue2}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>                                          
+                    <br/>                                     
+
+                    <!--  SALESOUT FIELD III  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soField3}">
+                                <apex:selectOptions value="{!lstSalesOutFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!soOp3}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!soValue3}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>                                          
+                </table>            
+            </apex:pageBlockSection>            
+
+            <br/>
+            <br/>
+            <apex:outputPanel style="float:left">
+                <apex:outputText styleClass="sectionLabel" value="{!$Label.Core_Program_Membership}"/>
+            </apex:outputPanel>
+            <br/>
+
+            <hr class="lightWeightDivider" style="margin-bottom: -10px; margin-top: 10px;"/>
+
+            <apex:pageBlockSection title="Step 2. Specify Sales Program Membership Criteria">
+                <table class="declarativeFilterTable">
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:outputLabel style="font-weight: bold">Field</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold">Operator</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold">Value</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold"> </apex:outputLabel>
+                    </apex:pageBlockSection>                                          
+
+                    <!--  PROGRAM MEMBERSHIP FIELD I  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!pmField1}">
+                                <apex:selectOptions value="{!lstProgramMembershipFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!pmOp1}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!pmValue1}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>     
+                    <br/>                                     
+
+                    <!--  PROGRAM MEMBERSHIP FIELD II  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!pmField2}">
+                                <apex:selectOptions value="{!lstProgramMembershipFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!pmOp2}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!pmValue2}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>                                          
+                    <br/>                                     
+
+                    <!--  PROGRAM MEMBERSHIP FIELD III  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!pmField3}">
+                                <apex:selectOptions value="{!lstProgramMembershipFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!pmOp3}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!pmValue3}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>                                          
+                </table>          
+            </apex:pageBlockSection>            
+
+            <br/>
+            <br/>
+            <apex:outputPanel style="float:left">
+                <apex:outputText styleClass="sectionLabel" value="{!$Label.Core_Account}"/>
+            </apex:outputPanel>
+            <br/>
+
+            <hr class="lightWeightDivider" style="margin-bottom: -10px;margin-top: 10px;"/>
+
+            <apex:pageBlockSection title="Step 3. Specify Account Criteria">
+                <table class="declarativeFilterTable">
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:outputLabel style="font-weight: bold">Field</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold">Operator</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold">Value</apex:outputLabel>
+                        <apex:outputLabel style="font-weight: bold"> </apex:outputLabel>
+                    </apex:pageBlockSection>                                          
+
+                    <!--  ACCOUNT FIELD I  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!acField1}">
+                                <apex:selectOptions value="{!lstAccountFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!acOp1}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!acValue1}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>     
+                    <br/>                                     
+
+                    <!--  ACCOUNT FIELD II  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!acField2}">
+                                <apex:selectOptions value="{!lstAccountFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!acOp2}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!acValue2}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>                                          
+                    <br/>                                     
+
+                    <!--  ACCOUNT FIELD III  -->                              
+                    <apex:pageBlockSection columns="4" html-style="width:600px; margin-top:-8px; margin-bottom:-8px">
+                        <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!acField3}">
+                                <apex:selectOptions value="{!lstAccountFields}"/>
+                            </apex:selectList>         
+                        </apex:pageblockSectionItem>                                      
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:selectList size="1" value="{!acOp3}">
+                                <apex:selectOptions value="{!lstComparisonOperators}"/>
+                            </apex:selectList>          
+                        </apex:pageblockSectionItem>                                     
+                        <apex:pageblockSectionItem dataStyle="max-width:0px" labelStyle="max-width:0px">
+                            <apex:input value="{!acValue3}"/>
+                        </apex:pageblockSectionItem>
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel >AND</apex:outputLabel>
+                        </apex:pageblockSectionItem>
+                    </apex:pageBlockSection>                                          
+                </table>          
+            </apex:pageBlockSection>            
+
+            <hr class="heavyWeightDivider colorChoice primaryPalette"/>
+            
+            <!--  SEARCH AND CLEAR BUTTONS  -->          
+            <div class="searchAndClear">
+                <apex:commandButton id="SearchButton"       value="Search"         action="{!search}"        status="counterStatus"/> 
+                <apex:commandButton id="clearFiltersButton" value="Clear Filters"  action="{!clearFilters}"  immediate="True"/> 
+                <!--<apex:commandButton id="loadtraining"       value="Brian Training" action="{!loadSalesoutAccountIdsTraining}"/>-->
+                <apex:actionstatus id="counterStatus">
+                    <apex:facet name="start">
+                        <apex:image url="/img/loading32.gif" width="20" />
+                    </apex:facet>
+                </apex:actionstatus>                  
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,52 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="partnerId" type="string"/>
+    <aura:attribute name="loggedInAdmin" type="string"/>
+    <aura:attribute name="admins" type="Object[]"/>
+    <aura:attribute name="currentStatus" type="String"/>
+    <aura:attribute name="statusList" type="Object[]"/>
+    <aura:attribute name="submittedBy" type="string" default="Parter Admin"/>
+    <aura:attribute name="submittedOn" type="string" default="20-May-2019"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:layout horizontalAlign="left" verticalAlign="start" multipleRows="true">
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+            <aura:if isTrue="{!v.loggedInAdmin}">
+                <c:MarketplaceFormDropdown label="Select Admin" value="{!v.loggedInAdmin}" options="{!v.admins}"/>  
+            </aura:if>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+           <!-- <lightning:select  class="" aura:id="status" name="select" label="Storefront Status" required="false" onchange="{! c.handleChange }" value="{!v.currentStatus}" variant="label-inline">
+                <aura:iteration items="{!v.statusList}" var="status">
+                    <option text="{!status}" value="{!status}"></option>
+                </aura:iteration>
+            </lightning:select> -->
+            <aura:if isTrue="{!v.currentStatus}">
+                <c:MarketplaceFormDropdown label="Storefront Status" value="{!v.currentStatus}" options="{!v.statusList}"/>  
+            </aura:if>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+            <div class="other-admin-font"> {!$Label.c.PMP_Assigned_to_Admin}:
+                {!v.loggedInAdmin}
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <br/>
+    <lightning:layout horizontalAlign="left">
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+            <div class="admin-partner-font">Storefront Changes submitted on:</div>
+            {!v.submittedOn}
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+            <div class="admin-partner-font">Storefront Changes submitted by:</div>
+            {!v.submittedBy}
+        </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout>
+        <lightning:layoutItem flexibility="auto" class="right-align">
+            <span onclick="{!c.saveAdminChanges}">
+                <lightning:button label="Save"/>
+            </span>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

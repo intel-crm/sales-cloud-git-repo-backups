@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>For the Lead WF
+
+Core_PartnerLead_Default_Values
+Core_Reject_flag_update</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>F_1stDate</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( NOW() ) + 8</expression>
+    </formulas>
+    <formulas>
+        <name>F_2ndDate</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( NOW() ) + 15</expression>
+    </formulas>
+    <formulas>
+        <name>F_3rdDate</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( NOW() ) + 22</expression>
+    </formulas>
+    <formulas>
+        <name>F_4thDate</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE( NOW() ) + 29</expression>
+    </formulas>
+    <interviewLabel>Core_PartnerLead_TWO {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_PartnerLead_TWO</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>for the Lead WF 
+
+&apos;Core_SetReminderDays&apos;</description>
+        <name>FieldUpdates_Core_SetReminderDays</name>
+        <label>FieldUpdates Core_SetReminderDays</label>
+        <locationX>588</locationX>
+        <locationY>377</locationY>
+        <inputAssignments>
+            <field>Core_1st_Reminder__c</field>
+            <value>
+                <elementReference>F_1stDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_2nd_Reminder__c</field>
+            <value>
+                <elementReference>F_2ndDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_3rd_Reminder__c</field>
+            <value>
+                <elementReference>F_3rdDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_4th_Reminder__c</field>
+            <value>
+                <elementReference>F_4thDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>Unclaimed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Status__c</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>PRL</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>460</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>FieldUpdates_Core_SetReminderDays</targetReference>
+        </connector>
+        <filterFormula>{!$Record.RecordType.DeveloperName} = &apos;Partner_Lead&apos; &amp;&amp;  NOT(ISPICKVAL({!$Record.Core_Lead_State__c},&apos;Terminated&apos;))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

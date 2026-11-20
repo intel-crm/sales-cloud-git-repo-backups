@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <available>true</available>
+    <description>Email Template to send Email to Executive Meeting Brief Requestor on Final Status on click of Send Email button</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Executive Meeting Brief Final Email</name>
+    <style>none</style>
+    <subject>Executive Meeting Brief Ready for Review {relatedTo.Id}-{relatedTo.Name}</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

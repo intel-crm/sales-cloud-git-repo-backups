@@ -1,0 +1,64 @@
+<apex:page controller="Core_IPS_RemovePSO_Batch_Handler" sidebar="true"  showHeader="true">
+    
+    <apex:form >
+       
+        <apex:detail subject="{!idVar}" relatedList="true" title="true"/>
+         
+        <apex:outputPanel id="tstpopup">
+             
+            <apex:outputPanel styleClass="popupBackground" rendered="{!dispPopup}"/>    <!-- layout="block" rendered="{!dispPopup }"-->
+            <apex:outputPanel styleClass="custPopup" rendered="{!removePop}">       <!-- layout="block"  rendered="{!dispPopup }"-->
+                 <center>
+                 {!$Label.Remove_PSO_Confirmation}<br/><br/>
+                
+                <apex:commandButton value="{!$Label.Remove_PSO_From_Case_Using_Batch}" style="left:0px;position:relative;font-size: 15px;"  action="{!runBatch}"/>  <!-- rerender="tstpopup" -->
+                <apex:commandButton value="{!$Label.Go_Back_To_Detailed_Page}" style="left:10px;position:relative;font-size: 15px;" action="{!Finished}"/>
+            </center>
+           </apex:outputPanel>
+            <apex:outputPanel styleClass="custPopup" rendered="{!if(errorPOP==true,true,false)}">
+                <apex:pageMessages />
+                <center> 
+                <apex:commandButton value="{!$Label.Remove_PSO_Alert_Message}" style="left:10px;position:relative;font-size: 15px;" action="{!Finished}"/>
+                </center>
+                </apex:outputPanel>   
+            
+            <apex:outputPanel styleClass="custPopup" rendered="{!if(successPOP==true,true,false)}">
+                <apex:pageMessages />
+                <center>  
+                <apex:commandButton value="{!$Label.Remove_PSO_Alert_Message}" style="left:10px;position:relative;font-size: 15px;" action="{!Finished}"/>
+             </center>
+                </apex:outputPanel>    
+        </apex:outputPanel>
+      
+        
+        
+    </apex:form>
+    
+    <style type="text/css">
+        .custPopup{
+        background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        z-index: 9999;
+        left: 50%;
+        padding:10px;
+        position: absolute;
+        width: 500px;
+        margin-left: -250px;
+        top:100px;
+        }
+        .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+        }
+        
+    </style>
+    
+</apex:page>

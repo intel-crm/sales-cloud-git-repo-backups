@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <available>true</available>
+    <description>To Notify External User/Customer to approve/reject activity</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Notify_IPAAccountBased</name>
+    <style>none</style>
+    <subject>MDF Activity Status:</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

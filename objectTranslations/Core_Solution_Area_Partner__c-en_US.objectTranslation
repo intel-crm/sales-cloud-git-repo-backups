@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Partner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Partners</value>
+    </caseValues>
+    <fields>
+        <label><!-- Solutions --></label>
+        <name>Core_Solution_Area__c</name>
+        <relationshipLabel><!-- Solution Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Solution Partner Role --></label>
+        <name>Core_Solution_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Co-Design</masterLabel>
+            <translation><!-- Co-Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Selling</masterLabel>
+            <translation><!-- Co-Selling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End Customer</masterLabel>
+            <translation><!-- End Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fulfillment</masterLabel>
+            <translation><!-- Fulfillment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Scale</masterLabel>
+            <translation><!-- Solution Scale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vendor</masterLabel>
+            <translation><!-- Vendor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Partner --></label>
+        <name>Core_Solution_Partner__c</name>
+        <relationshipLabel><!-- Solution Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Solution Partner Type --></label>
+        <name>Solution_Partner_Type__c</name>
+        <picklistValues>
+            <masterLabel>Cloud Service Provider</masterLabel>
+            <translation><!-- Cloud Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Service Provider (CSP)</masterLabel>
+            <translation><!-- Cloud Service Provider (CSP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DMR</masterLabel>
+            <translation><!-- DMR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design House</masterLabel>
+            <translation><!-- Design House --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMS</masterLabel>
+            <translation><!-- EMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESF Firm</masterLabel>
+            <translation><!-- ESF Firm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronic Manufacturing Services</masterLabel>
+            <translation><!-- Electronic Manufacturing Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronic Manufacturing Services (EMS)</masterLabel>
+            <translation><!-- Electronic Manufacturing Services (EMS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded Board Manufacturer</masterLabel>
+            <translation><!-- Embedded Board Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End Customer</masterLabel>
+            <translation><!-- End Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV/OSV</masterLabel>
+            <translation><!-- ISV/OSV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor (ISV)</masterLabel>
+            <translation><!-- Independent Software Vendor (ISV) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOEM</masterLabel>
+            <translation><!-- LOEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Solution Integrator</masterLabel>
+            <translation><!-- National Solution Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Solution Integrator (NSI)</masterLabel>
+            <translation><!-- National Solution Integrator (NSI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Solution Provider</masterLabel>
+            <translation><!-- National Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Solution Provider (NSP)</masterLabel>
+            <translation><!-- National Solution Provider (NSP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational Technology System Integrator (OTSI)</masterLabel>
+            <translation><!-- Operational Technology System Integrator (OTSI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Design Manufacturer</masterLabel>
+            <translation><!-- Original Design Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Design Manufacturer (ODM)</masterLabel>
+            <translation><!-- Original Design Manufacturer (ODM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer</masterLabel>
+            <translation><!-- Original Equipment Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Publisher</masterLabel>
+            <translation><!-- Publisher --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller</masterLabel>
+            <translation><!-- Reseller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retailer</masterLabel>
+            <translation><!-- Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integration (SI/ITO/bVAR)</masterLabel>
+            <translation><!-- Solution Integration (SI/ITO/bVAR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEM</masterLabel>
+            <translation><!-- TEM --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

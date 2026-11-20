@@ -1,0 +1,12 @@
+<aura:component
+    implements="forceCommunity:layout"
+    description="IPA Partner Onboarding Layout"
+    access="global"
+>
+    <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
+    <div>
+        <div class="marquee">
+             {!v.mainFullWidth}
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,2942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Case Compact Layout --></label>
+        <name>Case_Compact_Layout</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Case_Info_Case_Ask_Commissions_FieldSet --></label>
+        <name>Case_Info_Case_Ask_Commissions_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Customer Case Fields --></label>
+        <name>Core_Customer_Case_Fields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Clone Case Field Set --></label>
+        <name>Core_IPS_Clone_Case_Field_Set</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Global Search Field Result --></label>
+        <name>Core_IPS_Global_Search_Field_Result</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core_IPS_Request_Case_Closure_FieldSet --></label>
+        <name>Core_IPS_Request_Case_Closure_FieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Core Internal Case Fields --></label>
+        <name>Core_Internal_Case_Fields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Customer Case Fields Optional --></label>
+        <name>Customer_Case_Fields_Optional</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Miscellaneous_Info_Ask_Commissions_FieldSet --></label>
+        <name>Miscellaneous_Info_Ask_Commissions_Field</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Case Assignment --></label>
+        <name>Case_Assignment__c</name>
+    </fields>
+    <fields>
+        <help><!-- By selecting this option, you will allow your manager to see all information linked to this case, receive update notifications, and add case comments for commission purposes. You can deselect this option at any time which will remove this access from you. --></help>
+        <label><!-- Allow my manager to interact with case --></label>
+        <name>Core_AAQC_Allow_My_Manager_to_See__c</name>
+    </fields>
+    <fields>
+        <help><!-- When creating a new case keep as - - None- - 
+When editing a case to cancel it change as appropriate --></help>
+        <label><!-- Cancellation Reason --></label>
+        <name>Core_AAQC_Cancellation_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Commissions Office already resolved</masterLabel>
+            <translation><!-- Commissions Office already resolved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opened in error     </masterLabel>
+            <translation><!-- Opened in error      --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel> Found answer to question</masterLabel>
+            <translation><!--  Found answer to question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel> Question is no longer valid</masterLabel>
+            <translation><!--  Question is no longer valid --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Age In Days (Exclude Weekends) --></label>
+        <name>Core_AAQC_Case_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Auto Close --></label>
+        <name>Core_AAQC_Case_Auto_Close__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Close VF Page Hyperlink --></label>
+        <name>Core_AAQC_Case_Close_VF_Page_Hyperlink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case comment id --></label>
+        <name>Core_AAQC_Case_Comment_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Created by&apos;s Profile --></label>
+        <name>Core_AAQC_Case_Created_by_s_Profile__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide Pertinent information:
+Commission Cycle/Month
+Pay Element(s)
+Report being used
+Pay Plan concerns-Recoverable Draw-Termination
+HR Data, Setup? Element Setup? Quota?
+Due dates
+Commission Cloud concern:workflow-reporting
+Specify screens used --></help>
+        <label><!-- Case Details --></label>
+        <name>Core_AAQC_Case_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- 1. Commissions Calculation/Accuracy 
+2. Pay Plan, Terms &amp; Conditions, Policies 
+3. Due Dates, Payment Timing 
+4. Setup-Elements, Quota, Assignments 
+5. How do I, System Issue 
+6. Performance to Quota, Credited Results 
+7. RD-Calculation, Turn off/on --></help>
+        <label><!-- Category --></label>
+        <name>Core_AAQC_Category__c</name>
+        <picklistValues>
+            <masterLabel>1. Pay Calculation</masterLabel>
+            <translation><!-- 1. Pay Calculation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2. Pay Plan/Policy</masterLabel>
+            <translation><!-- 2. Pay Plan/Policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3. Schedule/Deadlines</masterLabel>
+            <translation><!-- 3. Schedule/Deadlines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4. Setup</masterLabel>
+            <translation><!-- 4. Setup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5. System Use</masterLabel>
+            <translation><!-- 5. System Use --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6. Element Performance</masterLabel>
+            <translation><!-- 6. Element Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7. Recoverable Draw</masterLabel>
+            <translation><!-- 7. Recoverable Draw --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Commission Inquiry Id Hyperlink --></label>
+        <name>Core_AAQC_Commission_InquiryId_Hyperlink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commission Inquiry Id --></label>
+        <name>Core_AAQC_Commission_Inquiry_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commissions Age in days --></label>
+        <name>Core_AAQC_Commissions_Age_in_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commissions Severity --></label>
+        <name>Core_AAQC_Commissions_Severity__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Commissions Subject --></label>
+        <name>Core_AAQC_Commissions_Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By Name --></label>
+        <name>Core_AAQC_Created_By_FullName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created by’s Manager Email --></label>
+        <name>Core_AAQC_Created_by_s_Manager_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rally ID --></label>
+        <name>Core_AAQC_External_Reference_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inquiry Details --></label>
+        <name>Core_AAQC_F_Inquiry_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initial Response Date &amp; Time --></label>
+        <name>Core_AAQC_Initial_Response_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inquiry Details --></label>
+        <name>Core_AAQC_Inquiry_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Ask Commission Case Commnt --></label>
+        <name>Core_AAQC_Latest_Case_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- OBO My Cases View --></label>
+        <name>Core_AAQC_OBO_My_Cases_View__c</name>
+    </fields>
+    <fields>
+        <label><!-- On Behalf Of --></label>
+        <name>Core_AAQC_On_Behalf_Of__c</name>
+        <relationshipLabel><!-- Cases (On Behalf Of) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Owner Updated --></label>
+        <name>Core_AAQC_Owner_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Case Comments --></label>
+        <name>Core_AAQC_Related_Case_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Case ID# --></label>
+        <name>Core_AAQC_Related_Case_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested for --></label>
+        <name>Core_AAQC_Requested_for__c</name>
+        <relationshipLabel><!-- Cases (Requested for) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Requestor Department --></label>
+        <name>Core_AAQC_Requestor_Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor Manager --></label>
+        <name>Core_AAQC_Requestor_Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor User Region --></label>
+        <name>Core_AAQC_Requestor_User_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution CE Set-up Sub-type --></label>
+        <name>Core_AAQC_Resolution_CE_Sub_type__c</name>
+        <picklistValues>
+            <masterLabel>Etc</masterLabel>
+            <translation><!-- Etc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pay element changed</masterLabel>
+            <translation><!-- Pay element changed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Persona / Mgr Change</masterLabel>
+            <translation><!-- Persona / Mgr Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quota changed / corrected</masterLabel>
+            <translation><!-- Quota changed / corrected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Start date corrected</masterLabel>
+            <translation><!-- Start date corrected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TCT corrected</masterLabel>
+            <translation><!-- TCT corrected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Resolution Training Sub Type --></label>
+        <name>Core_AAQC_Resolution_Training_Sub_Type__c</name>
+        <picklistValues>
+            <masterLabel>&lt;BLANK&gt;</masterLabel>
+            <translation><!-- &lt;BLANK&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DWG overachievement</masterLabel>
+            <translation><!-- DWG overachievement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Etc</masterLabel>
+            <translation><!-- Etc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI&apos;s</masterLabel>
+            <translation><!-- KPI&apos;s --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payroll schedules</masterLabel>
+            <translation><!-- Payroll schedules --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recoverable Draw</masterLabel>
+            <translation><!-- Recoverable Draw --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitting manual results</masterLabel>
+            <translation><!-- Submitting manual results --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Understanding reports</masterLabel>
+            <translation><!-- Understanding reports --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Resolution Type --></label>
+        <name>Core_AAQC_Resolution_Type__c</name>
+        <picklistValues>
+            <masterLabel>Access Issue</masterLabel>
+            <translation><!-- Access Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CE Setup Fixed</masterLabel>
+            <translation><!-- CE Setup Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defect Deferred</masterLabel>
+            <translation><!-- Defect Deferred --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defect To Be Addressed</masterLabel>
+            <translation><!-- Defect To Be Addressed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhancement Request Deferred</masterLabel>
+            <translation><!-- Enhancement Request Deferred --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhancement Request to be Addressed</masterLabel>
+            <translation><!-- Enhancement Request to be Addressed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual Adjustment</masterLabel>
+            <translation><!-- Manual Adjustment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New/Updated Policy</masterLabel>
+            <translation><!-- New/Updated Policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pay Reconciliation</masterLabel>
+            <translation><!-- Pay Reconciliation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Not Responding to Info Required</masterLabel>
+            <translation><!-- User Not Responding to Info Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workflow Data Issue</masterLabel>
+            <translation><!-- Workflow Data Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workflow Trigger/Delete</masterLabel>
+            <translation><!-- Workflow Trigger/Delete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Root cause analysis by Commissions Office Admin during Case Closure --></help>
+        <label><!-- Root Cause Category --></label>
+        <name>Core_AAQC_Root_Cause_Category__c</name>
+        <picklistValues>
+            <masterLabel>Change Request</masterLabel>
+            <translation><!-- Change Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defect</masterLabel>
+            <translation><!-- Defect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>How Do I</masterLabel>
+            <translation><!-- How Do I --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Setup</masterLabel>
+            <translation><!-- Setup --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Case Created by Logged in User --></label>
+        <name>Core_AAQC_case_created_by_loggedin_user__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Account_Geo__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer]
+Please indicate the type of support you are requesting. --></help>
+        <label><!-- Case Type --></label>
+        <name>Core_CaseType__c</name>
+        <picklistValues>
+            <masterLabel>Debug Request</masterLabel>
+            <translation><!-- Debug Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Review</masterLabel>
+            <translation><!-- Design Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feature Request</masterLabel>
+            <translation><!-- Feature Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Question</masterLabel>
+            <translation><!-- Question --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Closure --></label>
+        <name>Core_Case_Closure__c</name>
+        <picklistValues>
+            <masterLabel>Customer &gt; 3rd Party</masterLabel>
+            <translation><!-- Customer &gt; 3rd Party --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Abandoned</masterLabel>
+            <translation><!-- Customer &gt; Abandoned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; BIOS Vendor</masterLabel>
+            <translation><!-- Customer &gt; BIOS Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Change Request</masterLabel>
+            <translation><!-- Customer &gt; Change Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Community/Forum Supported</masterLabel>
+            <translation><!-- Customer &gt; Community/Forum Supported --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Configuration</masterLabel>
+            <translation><!-- Customer &gt; Configuration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Documentation Guidance</masterLabel>
+            <translation><!-- Customer &gt; Documentation Guidance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Duplicate</masterLabel>
+            <translation><!-- Customer &gt; Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Error/Fix</masterLabel>
+            <translation><!-- Customer &gt; Error/Fix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Hardware</masterLabel>
+            <translation><!-- Customer &gt; Hardware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; License Request</masterLabel>
+            <translation><!-- Customer &gt; License Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Manufacturing</masterLabel>
+            <translation><!-- Customer &gt; Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; OS Vendor</masterLabel>
+            <translation><!-- Customer &gt; OS Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Software</masterLabel>
+            <translation><!-- Customer &gt; Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; SysInt Vendor</masterLabel>
+            <translation><!-- Customer &gt; SysInt Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Tool Vendor</masterLabel>
+            <translation><!-- Customer &gt; Tool Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer &gt; Updated Version</masterLabel>
+            <translation><!-- Customer &gt; Updated Version --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Answered General Inquiry</masterLabel>
+            <translation><!-- Intel &gt; Answered General Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Customized Solution</masterLabel>
+            <translation><!-- Intel &gt; Customized Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Deferred To Future Project</masterLabel>
+            <translation><!-- Intel &gt; Deferred To Future Project --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Design Consultation</masterLabel>
+            <translation><!-- Intel &gt; Design Consultation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Design Review</masterLabel>
+            <translation><!-- Intel &gt; Design Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Documentation Missing</masterLabel>
+            <translation><!-- Intel &gt; Documentation Missing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Documentation Updated</masterLabel>
+            <translation><!-- Intel &gt; Documentation Updated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Expected Behavior</masterLabel>
+            <translation><!-- Intel &gt; Expected Behavior --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Firmware Fix</masterLabel>
+            <translation><!-- Intel &gt; Firmware Fix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Hardware Fix</masterLabel>
+            <translation><!-- Intel &gt; Hardware Fix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Known Issue</masterLabel>
+            <translation><!-- Intel &gt; Known Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Manufacturing</masterLabel>
+            <translation><!-- Intel &gt; Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; No Fix/Not To Be Fixed</masterLabel>
+            <translation><!-- Intel &gt; No Fix/Not To Be Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Not Reproducible</masterLabel>
+            <translation><!-- Intel &gt; Not Reproducible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Not Supported/Not POR</masterLabel>
+            <translation><!-- Intel &gt; Not Supported/Not POR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Performance Optimization</masterLabel>
+            <translation><!-- Intel &gt; Performance Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Regression</masterLabel>
+            <translation><!-- Intel &gt; Regression --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Resolved via Prior Case</masterLabel>
+            <translation><!-- Intel &gt; Resolved via Prior Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Silicon Fix</masterLabel>
+            <translation><!-- Intel &gt; Silicon Fix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Software Fix</masterLabel>
+            <translation><!-- Intel &gt; Software Fix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel &gt; Unknown Fix</masterLabel>
+            <translation><!-- Intel &gt; Unknown Fix --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is an optional field to be used by the Case Owning Agent/Admin on an as needed basis. --></help>
+        <label><!-- Case Co-Owner --></label>
+        <name>Core_Case_Co_Owner__c</name>
+        <relationshipLabel><!-- Cases (Case Co-Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Category ID --></label>
+        <name>Core_Case_Issue_Category__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Sub Category ID --></label>
+        <name>Core_Case_Issue_Sub_Category__c</name>
+        <relationshipLabel><!-- Cases (Issue Sub Category) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Owner/Co-Owner is Logged in User --></label>
+        <name>Core_Case_Owner_CoOwner_is_Log_in_User__c</name>
+    </fields>
+    <fields>
+        <help><!-- Case Closure Details is a Comment visible by anyone with access to the case internally (not visible to Customer) and will be entered during closure of a case --></help>
+        <label><!-- Case Closure Details --></label>
+        <name>Core_Case_Resolution_Reason__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Closure Comment --></label>
+        <name>Core_Closure_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Core_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Core_ConEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Core_Contact_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer]
+If you have already entered this case in your internal case management tool, you can use your internal identification to track your case by entering it here. --></help>
+        <label><!-- Customer Reference ID --></label>
+        <name>Core_Customer_Reference_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer]
+If you are submitting the case on behalf of another company, please fill in the company&apos;s name here. --></help>
+        <label><!-- End Customer --></label>
+        <name>Core_End_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environment Details --></label>
+        <name>Core_Environment_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Case Category --></label>
+        <name>Core_External_Issue_Category__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Case Subcategory --></label>
+        <name>Core_External_Issue_Subcategory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedbacks --></label>
+        <name>Core_Feedbacks__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Response Completed --></label>
+        <name>Core_First_Response_Completed__c</name>
+    </fields>
+    <fields>
+        <help><!-- Succinctly describe the issue and impact to Intel and/or customer.Note that with the addition of the other fields below,this should be relatively static, description of the problem.  Status updates, recent results, etc. should go in the other fields,below --></help>
+        <label><!-- Executive Summary --></label>
+        <name>Core_Hot_Issue_Qts_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- What is new since last update? --></label>
+        <name>Core_Hot_Issue_Qts_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- What is expected in next 48 hrs? --></label>
+        <name>Core_Hot_Issue_Qts_4__c</name>
+    </fields>
+    <fields>
+        <help><!-- One sentence or so, describing whether you need any help from other people or groups in order to move this issue along towards completion. --></help>
+        <label><!-- What help, if any, is needed? --></label>
+        <name>Core_Hot_Issue_Qts_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hot Issue  (PAE Use Only) --></label>
+        <name>Core_Hot_Issue__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use the drop-down menus to set these stoplight (red/yellow/green) values. --></help>
+        <label><!-- Customer/Intel Disposition&amp;Debug Progres --></label>
+        <name>Core_Hot_Issues_qts_2__c</name>
+        <picklistValues>
+            <masterLabel>Green</masterLabel>
+            <translation><!-- Green --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red</masterLabel>
+            <translation><!-- Red --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yellow</masterLabel>
+            <translation><!-- Yellow --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_IPSPortal_Check --></label>
+        <name>Core_IPSPortal_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_IPS_Account_Sub_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Age in days --></label>
+        <name>Core_IPS_Age__c</name>
+    </fields>
+    <fields>
+        <help><!-- Most recently assigned Queue --></help>
+        <label><!-- Last Assigned Queue --></label>
+        <name>Core_IPS_Assigned_Queue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promote Status --></label>
+        <name>Core_IPS_BES_Promote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Done</masterLabel>
+            <translation><!-- Done --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Yet Promoted</masterLabel>
+            <translation><!-- Not Yet Promoted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promote</masterLabel>
+            <translation><!-- Promote --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Successfully</masterLabel>
+            <translation><!-- Sent Successfully --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Backend Fields UpdatedAt PreVal --></label>
+        <name>Core_IPS_BK_Flds_UpdatedAt_PreVal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Fields UpdatedAt --></label>
+        <name>Core_IPS_BK_Flds_UpdatedAt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend ID --></label>
+        <name>Core_IPS_Backed_ID_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_IPS_BackendID --></label>
+        <name>Core_IPS_BackendID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend ID Guid --></label>
+        <name>Core_IPS_Backend_ID_Guid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend ID --></label>
+        <name>Core_IPS_Backend_ID_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Local ID --></label>
+        <name>Core_IPS_Backend_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Case Previous Status --></help>
+        <label><!-- Backend Previous Status --></label>
+        <name>Core_IPS_Backend_Previous_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Promote DT --></label>
+        <name>Core_IPS_Backend_Promote_DT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Promote Success DT --></label>
+        <name>Core_IPS_Backend_Promote_Success_DT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Promote Turnaround --></label>
+        <name>Core_IPS_Backend_Promote_Turnaround__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Rev --></label>
+        <name>Core_IPS_Backend_Rev__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System Agent Email --></label>
+        <name>Core_IPS_Backend_System_Agent_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System Agent Name --></label>
+        <name>Core_IPS_Backend_System_Agent_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System --></label>
+        <name>Core_IPS_Backend_System__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- May contain a reference to an item that resolved the Case e.g., bug fix ID, Doc #, SW version, ... --></help>
+        <label><!-- Bug/Doc Fix ID --></label>
+        <name>Core_IPS_Bug_Doc_Fix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source of Resolution (SOR) --></label>
+        <name>Core_IPS_CaseSource_of_Resolution__c</name>
+        <picklistValues>
+            <masterLabel>AI Assistant</masterLabel>
+            <translation><!-- AI Assistant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARK/MARK</masterLabel>
+            <translation><!-- ARK/MARK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BU design review</masterLabel>
+            <translation><!-- BU design review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domain Expert</masterLabel>
+            <translation><!-- Domain Expert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FAE</masterLabel>
+            <translation><!-- FAE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISvC</masterLabel>
+            <translation><!-- ISvC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KDB Portal</masterLabel>
+            <translation><!-- KDB Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 1</masterLabel>
+            <translation><!-- Level 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 3</masterLabel>
+            <translation><!-- Level 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QMDS</masterLabel>
+            <translation><!-- QMDS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RDC</masterLabel>
+            <translation><!-- RDC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software KIT</masterLabel>
+            <translation><!-- Software KIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TNT design review</masterLabel>
+            <translation><!-- TNT design review --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Date/Time Escalated --></label>
+        <name>Core_IPS_Case_Escalated_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Email --></label>
+        <name>Core_IPS_Case_Owner_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Group --></label>
+        <name>Core_IPS_Case_Owner_Groups__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Name --></label>
+        <name>Core_IPS_Case_Owner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner --></label>
+        <name>Core_IPS_Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case URL --></label>
+        <name>Core_IPS_Case_URL__c</name>
+    </fields>
+    <fields>
+        <help><!-- Linking Parent to children Case relationships --></help>
+        <label><!-- Related Case(s) --></label>
+        <name>Core_IPS_Case__c</name>
+        <relationshipLabel><!-- Cases (Related Case(s)) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Category and Subcategory --></label>
+        <name>Core_IPS_Category_and_Subcategory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Classification --></label>
+        <name>Core_IPS_Classification__c</name>
+        <picklistValues>
+            <masterLabel>Intel Confidential</masterLabel>
+            <translation><!-- Intel Confidential --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy Intel Restricted Secret</masterLabel>
+            <translation><!-- Legacy Intel Restricted Secret --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Copy --></label>
+        <name>Core_IPS_Clone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed Case Migration --></label>
+        <name>Core_IPS_Closed_Case_Migration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_IPS_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- CopyFlag --></label>
+        <name>Core_IPS_Copy_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Copy --></label>
+        <name>Core_IPS_Copy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Count Internal Interested Parties --></label>
+        <name>Core_IPS_Count_Int_Interested_Parties__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please select the primary location in which the contact will be submitting Cases on Intel® Premier Support --></help>
+        <label><!-- Country/Region --></label>
+        <name>Core_IPS_Country_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_IPS_CreatedBy$User --></label>
+        <name>Core_IPS_CreatedBy_User__c</name>
+    </fields>
+    <fields>
+        <help><!-- Hide Case from Customers if unchecked --></help>
+        <label><!-- Customer Visible --></label>
+        <name>Core_IPS_Customer_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date/Time Close-Pending --></label>
+        <name>Core_IPS_Date_Time_Close_Pending__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date/Time Promoted to Backend --></label>
+        <name>Core_IPS_Done_TimeStamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- EDQ Filter Responses --></label>
+        <name>Core_IPS_EDQ_Filtering_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- EDQ Filter Questions --></label>
+        <name>Core_IPS_EDQ_Filtering_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core IPS Embargoed State --></label>
+        <name>Core_IPS_Embargoed_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalated Level --></label>
+        <name>Core_IPS_Escalated_Level__c</name>
+        <picklistValues>
+            <masterLabel>Consult Domain Expert</masterLabel>
+            <translation><!-- Consult Domain Expert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consult Engineering</masterLabel>
+            <translation><!-- Consult Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consult Level 1 / Front Line</masterLabel>
+            <translation><!-- Consult Level 1 / Front Line --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consult Level 2</masterLabel>
+            <translation><!-- Consult Level 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consult Level 3</masterLabel>
+            <translation><!-- Consult Level 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domain Expert</masterLabel>
+            <translation><!-- Domain Expert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domain Expert (Direct)</masterLabel>
+            <translation><!-- Domain Expert (Direct) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 1 / Front Line</masterLabel>
+            <translation><!-- Level 1 / Front Line --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 3</masterLabel>
+            <translation><!-- Level 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Supported Product --></label>
+        <name>Core_IPS_Ext_Supported_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environment Details --></label>
+        <name>Core_IPS_External_Environment_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Attachment Flag --></label>
+        <name>Core_IPS_File_Attachment_Flag__c</name>
+    </fields>
+    <fields>
+        <help><!-- If potential MINDS usage is a concern, check this box to request a GEC review  (MINDS = Military, Intelligence, Nuclear/Biochemical, Defense, or Space) --></help>
+        <label><!-- MINDS Use --></label>
+        <name>Core_IPS_GEC_Case__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if the Case has ever gone through a GEC review --></help>
+        <label><!-- GEC --></label>
+        <name>Core_IPS_GEC_Flag__c</name>
+    </fields>
+    <fields>
+        <help><!-- To be edited by the Intel Support Owner. --></help>
+        <label><!-- GEC Review Status --></label>
+        <name>Core_IPS_GEC_Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>MINDS Questionnaire Completed</masterLabel>
+            <translation><!-- MINDS Questionnaire Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MINDS Questionnaire Required</masterLabel>
+            <translation><!-- MINDS Questionnaire Required --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- To be edited only by the GEC team. --></help>
+        <label><!-- Compliance Status --></label>
+        <name>Core_IPS_GEC_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved with Guardrails</masterLabel>
+            <translation><!-- Approved with Guardrails --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Approved</masterLabel>
+            <translation><!-- Not Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold - GEC Review in Progress</masterLabel>
+            <translation><!-- On Hold - GEC Review in Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold - Government Authorization Needed</masterLabel>
+            <translation><!-- On Hold - Government Authorization Needed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Disposition --></label>
+        <name>Core_IPS_HC_Customer_Disposition__c</name>
+        <picklistValues>
+            <masterLabel>Escalating</masterLabel>
+            <translation><!-- Escalating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Satisfied</masterLabel>
+            <translation><!-- Satisfied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting</masterLabel>
+            <translation><!-- Waiting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Debug Progress --></label>
+        <name>Core_IPS_HC_Debug_Progress__c</name>
+        <picklistValues>
+            <masterLabel>Blocked</masterLabel>
+            <translation><!-- Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Root Caused</masterLabel>
+            <translation><!-- Root Caused --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Working</masterLabel>
+            <translation><!-- Working --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Succinctly describe the issue and impact to Intel and/or customer.Note that with the addition of the other fields below,this should be relatively static, description of the problem.  Status updates, recent results, etc. should go in the other fields,below --></help>
+        <label><!-- Executive Summary --></label>
+        <name>Core_IPS_HC_Executive_Summary__c</name>
+    </fields>
+    <fields>
+        <help><!-- One sentence or so, describing whether you need any help from other people or groups in order to move this issue along towards completion. --></help>
+        <label><!-- Help Needed --></label>
+        <name>Core_IPS_HC_Help_Needed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hot Case --></label>
+        <name>Core_IPS_HC_Hot_Issue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Disposition --></label>
+        <name>Core_IPS_HC_Intel_Disposition__c</name>
+        <picklistValues>
+            <masterLabel>Likely Bug</masterLabel>
+            <translation><!-- Likely Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Possible Bug</masterLabel>
+            <translation><!-- Possible Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unlikely Bug</masterLabel>
+            <translation><!-- Unlikely Bug --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Latest Update --></label>
+        <name>Core_IPS_HC_Latest_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Actions --></label>
+        <name>Core_IPS_HC_Next_Actions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_IPS_HSD_Article_Type --></label>
+        <name>Core_IPS_HSD_Article_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Internal notes visible only to Agents --></help>
+        <label><!-- Internal Note --></label>
+        <name>Core_IPS_Internal_Note__c</name>
+    </fields>
+    <fields>
+        <help><!-- Marks whether notification is turned on for Case (Checked). If unchecked no notifications will be sent. (Mostly migration need so that large amounts of Notifications will not be sent during migration) --></help>
+        <label><!-- Is Notification Active --></label>
+        <name>Core_IPS_Is_Notification_Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is automated based on certain creation systems and manual for others when created manually --></help>
+        <label><!-- Case Source --></label>
+        <name>Core_IPS_Issue_source__c</name>
+        <picklistValues>
+            <masterLabel>API</masterLabel>
+            <translation><!-- API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B2B API</masterLabel>
+            <translation><!-- B2B API --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Backend System</masterLabel>
+            <translation><!-- Backend System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Community</masterLabel>
+            <translation><!-- Community --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Portal</masterLabel>
+            <translation><!-- Customer Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Migration</masterLabel>
+            <translation><!-- Data Migration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICS Contact Center</masterLabel>
+            <translation><!-- ICS Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Portal</masterLabel>
+            <translation><!-- Internal Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy IPS</masterLabel>
+            <translation><!-- Legacy IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Licensing</masterLabel>
+            <translation><!-- Licensing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telephone</masterLabel>
+            <translation><!-- Telephone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>n/a</masterLabel>
+            <translation><!-- n/a --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Knowledge Base Link --></label>
+        <name>Core_IPS_Knowledge_Base_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Update --></label>
+        <name>Core_IPS_Last_Update__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Legacy ID --></label>
+        <name>Core_IPS_Legacy_IPS_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MINDS Questionnaire --></label>
+        <name>Core_IPS_MAG_Questionnaire__c</name>
+    </fields>
+    <fields>
+        <help><!-- By selecting this checkbox, you are confirming that Cases submitted on Intel® Premier Support are related to the use of Intel Products regarding military, intelligence, nuclear/biochemical, defense, or space items --></help>
+        <label><!-- MINDS --></label>
+        <name>Core_IPS_Minds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System --></label>
+        <name>Core_IPS_New_Backend_System__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- New Comment Flag --></label>
+        <name>Core_IPS_New_Comment_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notification Case Comment --></label>
+        <name>Core_IPS_Notif_Case_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner&apos;s 2nd Manager --></label>
+        <name>Core_IPS_Owner_2nd_Manager__c</name>
+        <relationshipLabel><!-- Cases (Owner&apos;s 2nd Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Owner&apos;s Manager --></label>
+        <name>Core_IPS_Owner_Manager__c</name>
+        <relationshipLabel><!-- Cases (Owner&apos;s Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A project needs to be created between Customer and Partner FAE Account for the Partner FAE to be assigned PSO on a case. PSO will get email notifications whenever the case is updated.  For more details refer to Projects Training topic on the home page. --></help>
+        <label><!-- Partner Support Owner --></label>
+        <name>Core_IPS_Partner_Sup_Owner__c</name>
+        <relationshipLabel><!-- Cases (Partner Support Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Status_ReadOnly --></label>
+        <name>Core_IPS_Partner_status_ReadOnly__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project ID --></label>
+        <name>Core_IPS_Premier_Support_Project_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority Reason --></label>
+        <name>Core_IPS_Priority_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Business Impact</masterLabel>
+            <translation><!-- Business Impact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competition</masterLabel>
+            <translation><!-- Competition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Delay</masterLabel>
+            <translation><!-- Design Delay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liability</masterLabel>
+            <translation><!-- Liability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Stopped</masterLabel>
+            <translation><!-- Production Stopped --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reliability</masterLabel>
+            <translation><!-- Reliability --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Private Project --></label>
+        <name>Core_IPS_Private_Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Problem Statement --></label>
+        <name>Core_IPS_Problem_Statement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Organization --></label>
+        <name>Core_IPS_Product_Org1__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Support Org Number --></label>
+        <name>Core_IPS_Product_Org_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_IPS_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Core_IPS_Product_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer]
+Projects enable different teams, often from different companies, to collaborate on cases. When creating a new case related to a project you can select this during case creation. You can create new projects under the Premier Support Projects tab. --></help>
+        <label><!-- Project --></label>
+        <name>Core_IPS_Project_Case__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Promote Count Inbound --></label>
+        <name>Core_IPS_Promote_Count_Inbound__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promote Count Outbound --></label>
+        <name>Core_IPS_Promote_Count_Outbound__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reopen Date --></label>
+        <name>Core_IPS_Reopen_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reopen Flag --></label>
+        <name>Core_IPS_Reopen_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution --></label>
+        <name>Core_IPS_Resolution__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will strip text within emails for the Case Subject, Description and Comments --></help>
+        <label><!-- Remove Notification Details --></label>
+        <name>Core_IPS_Restricted_Secret_Content__c</name>
+    </fields>
+    <fields>
+        <help><!-- Automated checkbox when a self-assigned Case is created --></help>
+        <label><!-- No Contact Assigned --></label>
+        <name>Core_IPS_Self_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date/Time Sent to Backend --></label>
+        <name>Core_IPS_Sent_TimeStamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter First Name --></label>
+        <name>Core_IPS_Submitter_First_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Support Level for routing purpose. --></help>
+        <label><!-- Support Level --></label>
+        <name>Core_IPS_Support_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Account --></label>
+        <name>Core_IPS_Supported_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Contact --></label>
+        <name>Core_IPS_Supported_Contact__c</name>
+        <relationshipLabel><!-- Cases (Supported Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Supported Product --></label>
+        <name>Core_IPS_Supported_Product__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Survey Captured --></label>
+        <name>Core_IPS_Survey_Captured__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Account --></label>
+        <name>Core_IPS_UserAccount_Case__c</name>
+    </fields>
+    <fields>
+        <label><!-- email_text --></label>
+        <name>Core_IPS_email_text__c</name>
+    </fields>
+    <fields>
+        <label><!-- isNextResponseActive --></label>
+        <name>Core_IPS_isNextResponseActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Support Owner --></label>
+        <name>Core_Intel_Sup_Owner__c</name>
+        <relationshipLabel><!-- Cases (Intel Support Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- [Customer]
+Note : If you are pasting images into this field, the size limit is 100KB. --></help>
+        <label><!-- Case Description --></label>
+        <name>Core_Issue_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Agent Comment Submitter --></label>
+        <name>Core_Last_Agent_Case_Comment_Submitter__c</name>
+        <relationshipLabel><!-- Cases (Latest Agent Comment Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Latest Agent Comment --></label>
+        <name>Core_Last_Agent_Case_Comment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Time stamp when comment created or updated. --></help>
+        <label><!-- Latest Agent Comment Time Stamp --></label>
+        <name>Core_Last_Agent_Comment_Time_Stamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Public Comment Submitter Name --></label>
+        <name>Core_Last_Case_Comment_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last creator/updater of public case comment. --></help>
+        <label><!-- Latest Public Comment Submitter --></label>
+        <name>Core_Last_Case_Comment_Submitter__c</name>
+        <relationshipLabel><!-- Cases (Latest Public Comment Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Timestamp when comment created or updated --></help>
+        <label><!-- Latest Comment Timestamp --></label>
+        <name>Core_Last_Case_Comment_Timestamp__c</name>
+    </fields>
+    <fields>
+        <help><!-- NOT TO BE VISIBLE ON LAYOUT --></help>
+        <label><!-- Latest Comment --></label>
+        <name>Core_Last_Case_Comment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last creator/updater of {public || private} case comment. --></help>
+        <label><!-- Latest Private Comment Submitter --></label>
+        <name>Core_Last_Private_Case_Comment_Submitter__c</name>
+        <relationshipLabel><!-- Cases (Latest Private Comment Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Timestamp when comment created or updated --></help>
+        <label><!-- Latest Private Comment Time Stamp --></label>
+        <name>Core_Last_Private_Case_Comment_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Private Comment --></label>
+        <name>Core_Last_Private_Case_Comment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Captures the latest case comment type made . --></help>
+        <label><!-- Latest Case Comment Type --></label>
+        <name>Core_Latest_Case_Comment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Private to Agents</masterLabel>
+            <translation><!-- Private to Agents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private to Intel</masterLabel>
+            <translation><!-- Private to Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private to Partner</masterLabel>
+            <translation><!-- Private to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public to Customers</masterLabel>
+            <translation><!-- Public to Customers --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Contains the latest comment made on the case --></help>
+        <label><!-- Latest Case Comment --></label>
+        <name>Core_Latest_Case_Comment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Latest Submitter of the comment on the case --></help>
+        <label><!-- Latest Comment Submitter --></label>
+        <name>Core_Latest_Comment_Submitter__c</name>
+        <relationshipLabel><!-- Cases (Latest Comment Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Captures the time of the last comment made on the case --></help>
+        <label><!-- Latest Comment Time Stamp --></label>
+        <name>Core_Latest_Comment_Time_Stamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Latest Private Comment Submitter Name --></label>
+        <name>Core_Latest_Private_Comment_Name__c</name>
+    </fields>
+    <fields>
+        <help>Die Firma, auf die sich die Antragsprüfung bezieht</help>
+        <label>Konto (Firma)</label>
+        <name>Core_MDF_AccountCompany_txt__c</name>
+    </fields>
+    <fields>
+        <label>Aktionsname</label>
+        <name>Core_MDF_ActivityName__c</name>
+    </fields>
+    <fields>
+        <label>Aktionskategorie</label>
+        <name>Core_MDF_Activity_Category__c</name>
+    </fields>
+    <fields>
+        <label>Abschlussdatum der Werbemaßnahme</label>
+        <name>Core_MDF_Activity_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity ID --></label>
+        <name>Core_MDF_Activity_ID__c</name>
+    </fields>
+    <fields>
+        <label>Beginn der Werbemaßnahme</label>
+        <name>Core_MDF_Activity_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Start Date and End Date --></label>
+        <name>Core_MDF_Activity_Start_and_End_Date__c</name>
+    </fields>
+    <fields>
+        <label>Untergruppe der Werbemaßnahme</label>
+        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label>Art der Marketingaktivität</label>
+        <name>Core_MDF_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label>Enddatum der Werbeschaltung</label>
+        <name>Core_MDF_Ad_Run_End_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label>Beginn der Werbeschaltung</label>
+        <name>Core_MDF_Ad_Run_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Review Closure Note --></label>
+        <name>Core_MDF_AddClaimReviewClosure_Note_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Case Closure Note --></label>
+        <name>Core_MDF_AddInternalCaseClosureNotes_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Adjustment Amount (Local Currency) --></label>
+        <name>Core_MDF_Adjustment_Amount_Local__c</name>
+    </fields>
+    <fields>
+        <help>Berichtigungsbetrag (lokal) * Wechselkurs</help>
+        <label>Berichtigungsbetrag (USD)</label>
+        <name>Core_MDF_Adjustment_Amount_USD_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Berichtigungsbetrag (lokal) * Wechselkurs</help>
+        <label>Berichtigungsbetrag (USD)</label>
+        <name>Core_MDF_Adjustment_Amount_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Type --></label>
+        <name>Core_MDF_AuditType_nm__c</name>
+        <picklistValues>
+            <masterLabel>Document Hold</masterLabel>
+            <translation><!-- Document Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Einstein Prediction</masterLabel>
+            <translation><!-- Einstein Prediction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Immediate Rules</masterLabel>
+            <translation><!-- Immediate Rules --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual</masterLabel>
+            <translation><!-- Manual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual Selection</masterLabel>
+            <translation><!-- Manual Selection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Predictive Selection</masterLabel>
+            <translation><!-- Predictive Selection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Random</masterLabel>
+            <translation><!-- Random --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Random Selection</masterLabel>
+            <translation><!-- Random Selection --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Audit Reopen Count --></label>
+        <name>Core_MDF_Audit_Reversal_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Markenbezeichnung</label>
+        <name>Core_MDF_Brand__c</name>
+    </fields>
+    <fields>
+        <label><!-- Brand --></label>
+        <name>Core_MDF_Brand_nm__c</name>
+    </fields>
+    <fields>
+        <label>Budgettyp</label>
+        <name>Core_MDF_Budget_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Business Client Acceleration - MDF</masterLabel>
+            <translation>Business-Client-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF 1.0</masterLabel>
+            <translation><!-- CCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Specialties MDF</masterLabel>
+            <translation><!-- Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF 1.0</masterLabel>
+            <translation><!-- DCF 1.0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
+            <translation>Datenzentrische Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation>Globale Ericsson-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation>Globale IBM-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation>Globale Microsoft-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation>Globale Nokia-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation>Globale Red-Hat-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation>Globale SAP-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation>Globale SAS-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation>Globale Suse-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation>Globale VMware-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation>ISV-Scale-Beschleunigung - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Premier - MDF</masterLabel>
+            <translation>Internet der Dinge Premier – MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT Targeted - MDF</masterLabel>
+            <translation>Internet der Dinge gezielt – MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF</masterLabel>
+            <translation><!-- MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDF+</masterLabel>
+            <translation><!-- MDF+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
+            <translation>ODM-Entwicklungssplan – Client-MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM CMP</masterLabel>
+            <translation><!-- OEM CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSA MD</masterLabel>
+            <translation><!-- RSA MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail MDF</masterLabel>
+            <translation><!-- Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Client MDF</masterLabel>
+            <translation>SOEM-Client - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM Data Center MDF</masterLabel>
+            <translation>SOEM-Rechenzentrum - MDF</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP AI MDF</masterLabel>
+            <translation><!-- SP AI MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Cloud MDF</masterLabel>
+            <translation><!-- SP Cloud MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP DaaS MDF</masterLabel>
+            <translation><!-- SP DaaS MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Enthusiast MDF</masterLabel>
+            <translation><!-- SP Enthusiast MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP HPC MDF</masterLabel>
+            <translation><!-- SP HPC MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Industry SB MDF</masterLabel>
+            <translation><!-- SP Industry SB MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP MS MDF</masterLabel>
+            <translation><!-- SP MS MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Optane Client MDF</masterLabel>
+            <translation><!-- SP Optane Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Optane DC MDF</masterLabel>
+            <translation><!-- SP Optane DC MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Video MDF</masterLabel>
+            <translation><!-- SP Video MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Visual Retail MDF</masterLabel>
+            <translation><!-- SP Visual Retail MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CMP</masterLabel>
+            <translation><!-- Service Provider CMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value Exchange</masterLabel>
+            <translation><!-- Value Exchange --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Multiplication of Transaction amount local and Reimbursement rate --></help>
+        <label><!-- Calculated Reimbursable Amount Local --></label>
+        <name>Core_MDF_CalcReimbursableAmountLocal_amt__c</name>
+    </fields>
+    <fields>
+        <label>Name der Werbekampagne</label>
+        <name>Core_MDF_CampaignName__c</name>
+    </fields>
+    <fields>
+        <label>Abschlussdatum der Kampagne</label>
+        <name>Core_MDF_Campaign_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign ID --></label>
+        <name>Core_MDF_Campaign_ID__c</name>
+    </fields>
+    <fields>
+        <label>Beginn der Kampagne</label>
+        <name>Core_MDF_Campaign_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicator for whether or not this Activity is Ecosystem Partner Led, and will thus be subject to the CP Spending Limit --></help>
+        <label>Vom Partner aus dem Tech-Umfeld geleit.?</label>
+        <name>Core_MDF_Channel_Partner_Led_ind__c</name>
+    </fields>
+    <fields>
+        <help>Das Programm, auf das sich die Antragsprüfung bezieht</help>
+        <label>Programm</label>
+        <name>Core_MDF_Channel_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Completion --></label>
+        <name>Core_MDF_Checklist_Completion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Review Closure Note History --></label>
+        <name>Core_MDF_ClaimReviewClosureHistory_txt__c</name>
+    </fields>
+    <fields>
+        <label>Antragssumme (USD)</label>
+        <name>Core_MDF_Claim_Amount_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Case Reviewer --></label>
+        <lookupFilter>
+            <errorMessage><!-- The selected user is not part of Claim Case Reviewer group. --></errorMessage>
+        </lookupFilter>
+        <name>Core_MDF_Claim_Case_Reviewer_Lookup__c</name>
+        <relationshipLabel><!-- Cases (Claim Case Reviewer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Action Due Date --></label>
+        <name>Core_MDF_Claim_Case_Reviewer__c</name>
+    </fields>
+    <fields>
+        <label>Wechselkurs</label>
+        <name>Core_MDF_Claim_Conversion_Exchange_Rate__c</name>
+    </fields>
+    <fields>
+        <label>Antragsdatum</label>
+        <name>Core_MDF_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label>Antrags-ID</label>
+        <name>Core_MDF_Claim_ID__c</name>
+    </fields>
+    <fields>
+        <label>Nachweis der Kostenwährung</label>
+        <name>Core_MDF_Claim_Local_Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim_Lookup_Id__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nummer des Antrags</label>
+        <name>Core_MDF_Claim_Number__c</name>
+    </fields>
+    <fields>
+        <label>Letzter Hinweis zur Antragsprüfung</label>
+        <name>Core_MDF_Claim_Review_Closure_Note__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Submitter Language --></label>
+        <name>Core_MDF_Claim_Submitter_Language__c</name>
+    </fields>
+    <fields>
+        <label>Nachricht des Antragstellers</label>
+        <name>Core_MDF_Claim_Submitter_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label>Antragsteller</label>
+        <name>Core_MDF_Claim_Submitter__c</name>
+        <relationshipLabel><!-- Cases (Claim Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Steuern (lokal)</label>
+        <name>Core_MDF_Claim_Taxes_Local__c</name>
+    </fields>
+    <fields>
+        <label>Abschlussanmerkung</label>
+        <name>Core_MDF_Closure_Note_txt__c</name>
+    </fields>
+    <fields>
+        <label>Land/Region</label>
+        <name>Core_MDF_Country_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Entry Correction Note --></label>
+        <name>Core_MDF_Data_Correction_Note_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Grund für Korrektur der Datumseingabe</label>
+        <name>Core_MDF_Data_Entry_CorrectionReason_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Grund für Korrektur der Datumseingabe</label>
+        <name>Core_MDF_Data_Entry_Correction_Cd__c</name>
+        <picklistValues>
+            <masterLabel>Activity Start &amp; End Date</masterLabel>
+            <translation><!-- Activity Start &amp; End Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity Type</masterLabel>
+            <translation><!-- Activity Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ad Run Start &amp; End Date</masterLabel>
+            <translation><!-- Ad Run Start &amp; End Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amount</masterLabel>
+            <translation><!-- Amount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Country/Region</masterLabel>
+            <translation><!-- Country/Region --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Currency</masterLabel>
+            <translation><!-- Currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Program</masterLabel>
+            <translation><!-- Marketing Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media Vehicle</masterLabel>
+            <translation><!-- Media Vehicle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member/CP LED</masterLabel>
+            <translation><!-- Member/CP LED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Type</masterLabel>
+            <translation><!-- Product Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Cost Date</masterLabel>
+            <translation><!-- Proof of Cost Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Cost Number</masterLabel>
+            <translation><!-- Proof of Cost Number --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Korrektur der Dateneingabe</label>
+        <name>Core_MDF_Data_Entry_Correction__c</name>
+    </fields>
+    <fields>
+        <label>Tage SLA verbleiben</label>
+        <name>Core_MDF_Days_SLA_Remaining__c</name>
+    </fields>
+    <fields>
+        <label><!-- Doc Hold to Review Hold --></label>
+        <name>Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Termin zum Einreichen der Unterlagen</label>
+        <name>Core_MDF_DocumentSubmissionDeadlineDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Requested Date --></label>
+        <name>Core_MDF_Document_Requested_Date_dtm__c</name>
+    </fields>
+    <fields>
+        <label>Termin zum Einreichen der Unterlagen</label>
+        <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dollar Amount --></label>
+        <name>Core_MDF_Dollar_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Earlier Quarter Closed Date --></label>
+        <name>Core_MDF_Earlier_Quarter_Closed_Dt__c</name>
+    </fields>
+    <fields>
+        <help>Der Betrag, der vom beantragten Betrag abgezogen wird, wenn er das Aktivitätsausgabelimit überschreitet. Dies wirkt sich auf den Kostenerstattungsbetrag (USD) aus.</help>
+        <label>Überschüssiger Betrag (USD)</label>
+        <name>Core_MDF_Excess_Requested_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Beantragter Betrag (USD) – Überschreitung des beantragten Betrags (USD) – Berichtigungsbetrag (USD)</help>
+        <label>Erstattungsbetrag (USD)</label>
+        <name>Core_MDF_Final_Reimbursement_Amount_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Case Closure Note --></label>
+        <name>Core_MDF_Internal_Case_Closure_Notes__c</name>
+    </fields>
+    <fields>
+        <help>Das Datum auf dem POC-Dokument, wofür der erstattungsfähige Betrag beantragt wird</help>
+        <label>Datum des Kostennachweises</label>
+        <name>Core_MDF_Invoice_Date__c</name>
+    </fields>
+    <fields>
+        <help>Die Nummer auf dem POC-Dokument, für das der erstattungsfähige Betrag beantragt wird</help>
+        <label>Kostennachweisnummer</label>
+        <name>Core_MDF_Invoice_Number_txt__c</name>
+    </fields>
+    <fields>
+        <help>Manueller Rückforderungsbetrag (MR). Was das für Sie bedeutet: Dieser Betrag wird zurückgefordert.</help>
+        <label>Manueller Wiederherstellungsbetrag (USD)</label>
+        <name>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Werbeträger</label>
+        <name>Core_MDF_Media_Vehicle_txt__c</name>
+    </fields>
+    <fields>
+        <label>Weitere Unterlagen erforderlich</label>
+        <name>Core_MDF_More_Documentation_Required__c</name>
+    </fields>
+    <fields>
+        <label>Nichterfüllung von Compliance</label>
+        <name>Core_MDF_Non_Compliance_Reason_txt__c</name>
+    </fields>
+    <fields>
+        <label>Nicht erstattungsfähige Kosten(lokal)</label>
+        <name>Core_MDF_OtherCostsnotReimbursableLocal__c</name>
+    </fields>
+    <fields>
+        <label><!-- PGM Internal Group Id --></label>
+        <name>Core_MDF_PGM_Internal_Group_Id_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIC Review Completed --></label>
+        <name>Core_MDF_PIC_Review_Completed_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pending Document Flag --></label>
+        <name>Core_MDF_Pending_Document_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Closed Date --></label>
+        <name>Core_MDF_Previous_Closed_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Priorität der Werbemaßnahme</label>
+        <name>Core_MDF_Priority__c</name>
+    </fields>
+    <fields>
+        <label>Produkttyp für die Werbemaßnahme</label>
+        <name>Core_MDF_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label>Anzahl der (AdImpressions, Fälle)</label>
+        <name>Core_MDF_QuantityofImpressionsinstances__c</name>
+    </fields>
+    <fields>
+        <label>Grund für Anforderung weiterer Dokumente</label>
+        <name>Core_MDF_ReasonForMoreDocumentation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for Cancellation --></label>
+        <name>Core_MDF_Reason_for_Cancellation_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region-SubRegion --></label>
+        <name>Core_MDF_Region_SubRegion_txt__c</name>
+    </fields>
+    <fields>
+        <help>Gesamtbetrag (lokal) - Steuern (lokal) - Nicht erstattungsfähige Kosten(lokal)</help>
+        <label>Erstattungsfähiger Betrag (lokal)</label>
+        <name>Core_MDF_ReimbursableTransactionAmount__c</name>
+    </fields>
+    <fields>
+        <help>Erstattungsfähiger Betrag (lokal) * Kostenerstattungsanteil</help>
+        <label>Erstattungsfähiger Betrag (USD)</label>
+        <name>Core_MDF_Reimbursable_Amount_USD__c</name>
+    </fields>
+    <fields>
+        <label>Kostenerstattungsanteil (%)</label>
+        <name>Core_MDF_Reimbursement_Rate__c</name>
+    </fields>
+    <fields>
+        <label>Benachrichtigungs-Erinnerung</label>
+        <name>Core_MDF_Reminder_Notification_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reimbursable Amount (USD) * Reimbursement Rate (%) --></help>
+        <label>Beantragter Betrag (USD)</label>
+        <name>Core_MDF_Requested_Amount_USD_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Erstattungsfähiger Betrag (USD) * Kostenerstattungsanteil (%)</help>
+        <label>Beantragter Betrag (USD)</label>
+        <name>Core_MDF_Requested_Reimbursement_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Status des Überprüfungsfalls</label>
+        <name>Core_MDF_Review_Case_Status__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation>Entspricht den Anforderungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-compliant</masterLabel>
+            <translation>Nicht den Regeln entsprechend</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PIC Review Completed</masterLabel>
+            <translation>PIC Bewertung abgeschlossen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review Completed</masterLabel>
+            <translation>Überprüfung abgeschlossen</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Recht auf Rückforderung (USD)</label>
+        <name>Core_MDF_Right_to_Recover_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Days --></label>
+        <name>Core_MDF_SLA_Days_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Start Date --></label>
+        <name>Core_MDF_SLA_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scorecard Score --></label>
+        <name>Core_MDF_Scorecard_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Status des Überprüfungsfalls</label>
+        <name>Core_MDF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Adjusted</masterLabel>
+            <translation>Berichtigt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Genehmigt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>Storniert</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation>Entspricht den Anforderungen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>Abgelehnt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-compliant</masterLabel>
+            <translation>Nicht den Regeln entsprechend</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PIC Review Completed</masterLabel>
+            <translation>PIC Bewertung abgeschlossen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>Unterlagen fehlen noch</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Response</masterLabel>
+            <translation>Ausstehende Reaktion</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review Completed</masterLabel>
+            <translation>Überprüfung abgeschlossen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Review</masterLabel>
+            <translation>Wird geprüft</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Fonds für strategisches Marketing</label>
+        <name>Core_MDF_Strategic_Marketing_Fund_Ind__c</name>
+    </fields>
+    <fields>
+        <label>Zielpublikum</label>
+        <name>Core_MDF_Target_Audience__c</name>
+    </fields>
+    <fields>
+        <label>Technologie</label>
+        <name>Core_MDF_Technology__c</name>
+    </fields>
+    <fields>
+        <label>Gesamtbetrag (lokal)</label>
+        <name>Core_MDF_TotalTransactionAmountLocal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
+        <label>Summe der Verrechnungsbeträge (USD)</label>
+        <name>Core_MDF_Total_Offset_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- isClaimCaseReviewer --></label>
+        <name>Core_MDF_isClaimCaseReviewer_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Response Due Date --></label>
+        <name>Core_Next_Response_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Response Due Reason --></label>
+        <name>Core_Next_Response_Due_Reason__c</name>
+    </fields>
+    <fields>
+        <help><!-- A project needs to be created between Customer and Partner FAE Account, so Partner FAE can pick the right Customer Account for the case. To understand projects please refer to the Premier Support Projects Training topic on the home page. --></help>
+        <label><!-- Partner Supported Account --></label>
+        <name>Core_Partner_Supported_Account__c</name>
+        <relationshipLabel><!-- Cases (Partner Supported Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Platform Name --></label>
+        <name>Core_Platform_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org --></label>
+        <name>Core_Product_Organization__c</name>
+    </fields>
+    <fields>
+        <label>Produkttyp</label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Variant --></label>
+        <name>Core_Product_Variant__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promote Status --></label>
+        <name>Core_Promote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Done</masterLabel>
+            <translation><!-- Done --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Yet Promoted</masterLabel>
+            <translation><!-- Not Yet Promoted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promote</masterLabel>
+            <translation><!-- Promote --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Successfully</masterLabel>
+            <translation><!-- Sent Successfully --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Type Bucket --></label>
+        <name>Core_Record_Type_Bucket__c</name>
+    </fields>
+    <fields>
+        <label><!-- Report User --></label>
+        <name>Core_Report_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Case Close --></label>
+        <name>Core_Request_Case_Close__c</name>
+        <picklistValues>
+            <masterLabel>Close Case</masterLabel>
+            <translation><!-- Close Case --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Severity Reason --></label>
+        <name>Core_Severity_Reason__c</name>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Severity --></label>
+        <name>Core_Severity__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- [Customer] --></help>
+        <label><!-- Sub Status --></label>
+        <name>Core_Sub_Status__c</name>
+        <picklistValues>
+            <masterLabel>2nd Level Support Investigating</masterLabel>
+            <translation><!-- 2nd Level Support Investigating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close-Pending</masterLabel>
+            <translation><!-- Close-Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deferred</masterLabel>
+            <translation><!-- Deferred --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Team Investigating</masterLabel>
+            <translation><!-- Design Team Investigating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate Issue</masterLabel>
+            <translation><!-- Duplicate Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalated to Engineering</masterLabel>
+            <translation><!-- Escalated to Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed</masterLabel>
+            <translation><!-- Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GEC Hold</masterLabel>
+            <translation><!-- GEC Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid</masterLabel>
+            <translation><!-- Invalid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investigating</masterLabel>
+            <translation><!-- Investigating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reopened - Customer Request</masterLabel>
+            <translation><!-- Reopened - Customer Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reproduced</masterLabel>
+            <translation><!-- Reproduced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for Customer Clarification*</masterLabel>
+            <translation><!-- Waiting for Customer Clarification* --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for Customer Verification*</masterLabel>
+            <translation><!-- Waiting for Customer Verification* --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for Ingredient*</masterLabel>
+            <translation><!-- Waiting for Ingredient* --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Owner --></label>
+        <name>Core_System_Owner__c</name>
+        <picklistValues>
+            <masterLabel>Backend System</masterLabel>
+            <translation><!-- Backend System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Trigger Next Response --></label>
+        <name>Core_Trigger_Next_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- JSON Format --></label>
+        <name>Core_jsonfield__c</name>
+    </fields>
+    <fields>
+        <label><!-- Count Ext Interested Parties --></label>
+        <name>Count_Ext_Interested_Parties__c</name>
+    </fields>
+    <fields>
+        <label><!-- UsageAnalytics VisitId --></label>
+        <name>CoveoV2__VisitId__c</name>
+    </fields>
+    <fields>
+        <label><!-- UsageAnalytics VisitorId --></label>
+        <name>CoveoV2__VisitorId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Hot Case Enabled --></label>
+        <name>Date_and_time_of_hot__c</name>
+    </fields>
+    <fields>
+        <label><!-- Do you have SST log to upload --></label>
+        <name>Do_you_have_SST_log_to_upload__c</name>
+    </fields>
+    <fields>
+        <help><!-- This box should be manually checked when an agent needs help from the HSD Team on a case --></help>
+        <label><!-- Escalate To Factory --></label>
+        <name>Escalate_To_Factory__c</name>
+    </fields>
+    <fields>
+        <label><!-- HSD Mirror Reason --></label>
+        <name>HSD_Mirror_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- HSD Mirror Status --></label>
+        <name>HSD_Mirror_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS Mirror Status --></label>
+        <name>IPS_Mirror_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS_Mirror_SubStatus --></label>
+        <name>IPS_Mirror_SubStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Partner --></label>
+        <name>ImpartnerPRM__NotifyPartner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account --></label>
+        <name>ImpartnerPRM__PartnerAccount__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact --></label>
+        <name>ImpartnerPRM__PartnerContact__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Last Modified Date --></label>
+        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- ALG Survey Response Id --></label>
+        <name>MaritzCX__ALG_Response_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- ALG Survey Id --></label>
+        <name>MaritzCX__ALG_Survey_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Alert Rule Criteria --></label>
+        <name>MaritzCX__Alert_Rule_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engineering Req Number --></label>
+        <name>MaritzCX__EngineeringReqNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Potential Liability --></label>
+        <name>MaritzCX__PotentialLiability__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>MaritzCX__Product__c</name>
+        <picklistValues>
+            <masterLabel>GC1020</masterLabel>
+            <translation><!-- GC1020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC1040</masterLabel>
+            <translation><!-- GC1040 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC1060</masterLabel>
+            <translation><!-- GC1060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC3020</masterLabel>
+            <translation><!-- GC3020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC3040</masterLabel>
+            <translation><!-- GC3040 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC3060</masterLabel>
+            <translation><!-- GC3060 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC5020</masterLabel>
+            <translation><!-- GC5020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC5040</masterLabel>
+            <translation><!-- GC5040 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GC5060</masterLabel>
+            <translation><!-- GC5060 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>MaritzCX__Respondent_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Deleted From MaritzCX --></label>
+        <name>MaritzCX__Response_Deleted_From_MaritzCX__c</name>
+    </fields>
+    <fields>
+        <label><!-- View Response --></label>
+        <name>MaritzCX__Response_View_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Violation --></label>
+        <name>MaritzCX__SLAViolation__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Survey --></label>
+        <name>MaritzCX__Survey_Id__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MaritzCX Survey Response --></label>
+        <name>MaritzCX__Survey_Response_Id__c</name>
+        <relationshipLabel><!-- Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Survey to be sent for Invitation --></label>
+        <name>MaritzCX__Survey_to_be_sent_for_Invitation__c</name>
+        <picklistValues>
+            <masterLabel>Allegiance Performance Survey</masterLabel>
+            <translation><!-- Allegiance Performance Survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Allegiance Relationship Survey</masterLabel>
+            <translation><!-- Allegiance Relationship Survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Allegiance Transnational Survey</masterLabel>
+            <translation><!-- Allegiance Transnational Survey --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason for not providing the SST Log --></label>
+        <name>Reason_for_not_providing_the_SST_Log__c</name>
+        <picklistValues>
+            <masterLabel>Case Type is not “Debug Request&quot;</masterLabel>
+            <translation><!-- Case Type is not “Debug Request&quot; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unable to collect Intel® SST log</masterLabel>
+            <translation><!-- Unable to collect Intel® SST log --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Requestor WWID --></label>
+        <name>Requestor_WWID__c</name>
+    </fields>
+    <fields>
+        <label>Kontobezeichnung</label>
+        <name>core_Account_Name__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- CEP Case --></description>
+        <label><!-- CEP Case --></label>
+        <name>CEP_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Use this Record type for Creating Commissions Related Cases --></description>
+        <label><!-- Ask Commissions Case --></label>
+        <name>Core_AAQC_Case_recordType</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- IPS case created by an internal user with no assigned contact. --></description>
+        <label><!-- IPS No Assigned Contact Case --></label>
+        <name>Core_IPS_Case_Create_Self_Assigned</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Audit --></label>
+        <name>Core_MDF_Audit</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Audit Closed --></label>
+        <name>Core_MDF_Audit_Closed</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type used with Account &amp; Contact assignment --></description>
+        <label><!-- IPS Case Create --></label>
+        <name>IPS_Case_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- IPS Closed Case --></label>
+        <name>IPS_Closed_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- IPS GEC ReadOnly --></label>
+        <name>IPS_GEC_ReadOnly</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Only Admins Can Close the Case --></errorMessage>
+        <name>Core_AAQC_FAE_Should_Not_Close_Case</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Enter Resolution Type --></errorMessage>
+        <name>Core_AAQC_Mandatory_Field_for_Admin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Enter Reason For Cancellation --></errorMessage>
+        <name>Core_AAQC_Mandatory_Field_for_FAE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select some value in &apos;Root Cause Category&apos; field. --></errorMessage>
+        <name>Core_AAQC_RootCauseField_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Insufficient Privilege to change the Owner --></errorMessage>
+        <name>Core_AAQC_SalesRepBbDual_NoTransferCases</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case Status Cannot be Changed Back to Draft --></errorMessage>
+        <name>Core_AAQC_Status_Cannot_Revert_to_Draft</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case Status Cannot be Changed Back to New --></errorMessage>
+        <name>Core_AAQC_Status_shouldNot_Revert_to_New</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to change Status and Sub Status of closed case. --></errorMessage>
+        <name>Core_IPS_Cannot_Open_Closed_Case</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to change the existing Backend system --></errorMessage>
+        <name>Core_IPS_Case_Backend_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Backend System does not support restricted Content --></errorMessage>
+        <name>Core_IPS_Case_Backend_Restricted_content</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Classification cannot be changed when Public --></errorMessage>
+        <name>Core_IPS_Case_Classification</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Enter the Case Closure Details. --></errorMessage>
+        <name>Core_IPS_Case_Closure_Details</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- GEC profile users should only be able to change the GEC Status. --></errorMessage>
+        <name>Core_IPS_Case_GEC_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You have selected an external user. The case owner can only be an internal Intel user or another Partner Agent. --></errorMessage>
+        <name>Core_IPS_Case_Owner_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case Status cannot be changed for GEC Cases. --></errorMessage>
+        <name>Core_IPS_Case_Status_Update_For_GEC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to modify this field. --></errorMessage>
+        <name>Core_IPS_Case_Status_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This case has been Closed and cannot be updated.  You can select the Copy button to copy the case, or you can create a new case. --></errorMessage>
+        <name>Core_IPS_Closed_Status_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot hide Case from Customer if already visible --></errorMessage>
+        <name>Core_IPS_Customer_Visible</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot enable Customer Visible for No Assigned Contact Case --></errorMessage>
+        <name>Core_IPS_Customer_Visible_Prevent_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select Escalated Level --></errorMessage>
+        <name>Core_IPS_Escalated_Level_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case cannot be assigned to another owner as long as GEC status is not Approved. --></errorMessage>
+        <name>Core_IPS_GEC_Case_Owner_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- MAG Review Request Status, GEC &amp; Compliance Status are non editable for closed cases. --></errorMessage>
+        <name>Core_IPS_GEC_CloseCase_Field_NotEditable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case Status cannot be changed for GEC Cases. --></errorMessage>
+        <name>Core_IPS_GEC_Status_ReadOnly</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill the Date Hot Case Enabled or Once  Date Hot Case Enabled has been provided you cannot remove --></errorMessage>
+        <name>Core_IPS_HotCase</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- PSG migrated cases legacy source value can not be changed. --></errorMessage>
+        <name>Core_IPS_Legacy_Visibility_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please do not modify the Record as it  is closed --></errorMessage>
+        <name>Core_IPS_Migrated_Close_Case</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- As this case has been closed for more than 30 days it can no longer be reopened. Please submit a new case if you need further support. --></errorMessage>
+        <name>Core_IPS_Restrict_ReOpen_After_30_Days</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to change Sub Status of Closed Case. --></errorMessage>
+        <name>Core_IPS_Sub_Status_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Decrease Impact Amounts so that sum multiplied by Reimbursement Rate is less than or equal to the difference of Requested Amount and Excess Requested Amount. --></errorMessage>
+        <name>Core_MDF_Adjustment_Amount_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete all checklist items before selecting case status. --></errorMessage>
+        <name>Core_MDF_Checklist_Completion</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Data Entry Correction checkbox should be Checked if any Data Entry Correction Reason is Selected Or Any Data Entry Correction Note is entered. --></errorMessage>
+        <name>Core_MDF_Data_Entry_Correction_Checked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one Data Entry Correction Reason must be selected or Data Entry Correction box unchecked. --></errorMessage>
+        <name>Core_MDF_Data_Entry_Correction_cd_Null</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Data Entry Correction note must be entered or Data Entry Correction box unchecked. --></errorMessage>
+        <name>Core_MDF_Data_Entry_Correction_is_True</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Review case status cannot be updated if the case is closed --></errorMessage>
+        <name>Core_MDF_ErrorOnUpdatingClosedCaseStatus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Der Status des Überprüfungsfalls kann nicht mehr als zwei Mal auf „Unterlagen fehlen noch“ zurückgesetzt werden.</errorMessage>
+        <name>Core_MDF_Pending_Document_Flag</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You have no authorization to open or close a claim case review --></errorMessage>
+        <name>Core_MDF_RestrictStatusUpdate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case cannot be created manually. --></errorMessage>
+        <name>Core_MDF_Restrict_Case_Creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Claim Review cannot be closed without completing the Score Card --></errorMessage>
+        <name>Core_MDF_Scorecard_Completion</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please note that the Adjustment Amount is less than the Claim amount. Kindly make sure this is a valid Non-Compliant. --></errorMessage>
+        <name>Core_MDF_ValidateAdjAmt_NonCompliant</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Im Falle einer Beanstandung darf der Berichtigungsbetrag (USD) nicht so hoch sein wie der beantragte Erstattungsbetrag (USD) bzw. diesen nicht übersteigen und nicht kleiner als null sein.      </errorMessage>
+        <name>Core_MDF_ValidateAdjustmentAmount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status of the cases under GEC review cannot be changed --></errorMessage>
+        <name>Core_ips_Case_status_change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to create or update record related to Org 025 --></errorMessage>
+        <name>IPS_Altera_Go_Live_Case_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The response that originated this case has been deleted from the MaritzCX platform. As a result, this case cannot be updated. --></errorMessage>
+        <name>MaritzCX__Prevent_MaritzCX_Case_Update</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Attach_File --></label>
+        <name>Attach_File</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Case_Export --></label>
+        <name>Case_Export</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_AAQC_Back_to_commissions_home_page --></label>
+        <name>Core_AAQC_Back_to_commissions_home_page</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Case_List_Export --></label>
+        <name>Core_Case_List_Export</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Accept_Case --></label>
+        <name>Core_IPS_Accept_Case</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Accept_Case_Portal --></label>
+        <name>Core_IPS_Accept_Case_Portal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Agent_Request_Case_Closure --></label>
+        <name>Core_IPS_Agent_Request_Case_Closure</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Case_Reopen --></label>
+        <name>Core_IPS_Case_Reopen</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Copy --></label>
+        <name>Core_IPS_Copy</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Edit_Environment_Details --></label>
+        <name>Core_IPS_Edit_Environment_Details</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Escalate --></label>
+        <name>Core_IPS_Escalate</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_External_Close_Case --></label>
+        <name>Core_IPS_External_Close_Case</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_External_New_Comment --></label>
+        <name>Core_IPS_External_New_Comment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Invalid --></label>
+        <name>Core_IPS_Invalid</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_New_Comment --></label>
+        <name>Core_IPS_New_Comment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Request_Case_Closure --></label>
+        <name>Core_IPS_Request_Case_Closure</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Sales_Rep_Close_Case --></label>
+        <name>Core_IPS_Sales_Rep_Close_Case</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_MDF_Activity_Record --></label>
+        <name>Core_MDF_Activity_Record</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_MDF_Campaign_Record --></label>
+        <name>Core_MDF_Campaign_Record</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_MDF_Claim_Record --></label>
+        <name>Core_MDF_Claim_Record</name>
+    </webLinks>
+    <webLinks>
+        <label>Werbemaßnahme-Aufzeichnung</label>
+        <name>Core_MDF_Ext_Activity_Record</name>
+    </webLinks>
+    <webLinks>
+        <label>Kampagne-Aufzeichnung</label>
+        <name>Core_MDF_Ext_Campaign_Record</name>
+    </webLinks>
+    <webLinks>
+        <label>Antrag-Aufzeichnung</label>
+        <name>Core_MDF_Ext_Claim_Record</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ExportPDF --></label>
+        <name>ExportPDF</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Interested_Party --></label>
+        <name>Manage_Interested_Party</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- UpsellCrosssellOpportunity --></label>
+        <name>MaritzCX__UpsellCrosssellOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Response --></label>
+        <name>MaritzCX__View_Response</name>
+    </webLinks>
+</CustomObjectTranslation>

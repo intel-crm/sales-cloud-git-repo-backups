@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Visual_Display_Solutions_Specialty_THA</name>
+    <style>none</style>
+    <subject>ความเชี่ยวชาญด้านโซลูชันการแสดงภาพสำหรับ Intel® Partner Alliance</subject>
+    <textOnly>ขอแสดงความยินดีที่มีคุณสมบัติตามเกณฑ์ที่กำหนด!
+
+
+{!Contact.FirstName},
+
+ยินดีต้อนรับสู่ ความเชี่ยวชาญด้านโซลูชันการแสดงภาพสำหรับ Intel® Partner Alliance! ในฐานะผู้เชี่ยวชาญด้าน IoT ที่ได้รับการรับรอง คุณมีสิทธิได้รับสิทธิประโยชน์พิเศษที่ออกแบบมาเพื่อช่วยให้คุณสร้างธุรกิจ IoT ของคุณให้เติบโต ได้แก่:
+
+เงินทุนเพื่อพัฒนาทางการตลาดที่กำหนด
+โอกาสในการรวมการตลาดเนื้อหากับแผนการขายเข้าด้วยกัน
+คำเชิญกิจกรรมสุดพิเศษและโอกาสในการจับคู่กับลูกค้า
+
+เข้าถึงสิทธิประโยชน์
+
+
+*สิทธิประโยชน์อาจแตกต่างกันไปตามภูมิภาค
+
+พาร์ทเนอร์ Intel มีประวัติการพัฒนานวัตกรรมมายาวนาน และด้วย Intel® Partner Alliance เราจะช่วยคุณเร่งสร้างโซลูชันสำหรับเศรษฐกิจแบบรวมศูนย์ข้อมูล เมื่อร่วมมือกัน เราจะสามารถเชื่อมต่อ สร้างสรรค์ และเติบโต ซึ่งสร้างโอกาสพิเศษให้เป็นไปได้
+
+เข้าไปที่ https://www.intel.com/content/www/th/th/partner-alliance/help/overview.html หากต้องการความช่วยเหลือหรือขอคำแนะนำเกี่ยวกับสิทธิประโยชน์สมาชิกของคุณ
+
+
+ขอขอบคุณ
+ทีม Intel® Partner Alliance ของคุณ
+
+ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
+ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

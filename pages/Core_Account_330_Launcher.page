@@ -1,0 +1,42 @@
+<apex:page standardController="Account" >
+    <!--  <apex:pageMessages />
+    <apex:Form id="thePage" rendered="{!isAccessAllowed}">
+        <apex:outputPanel id="thePanel" rendered="{!isNotBlankCpmId && isStandardOffset}">
+            <apex:iframe src="{!iframeSource}" scrolling="true" height="600px" width="100%" 
+                         html-style="display:inline; margin-top:32px"/>
+        </apex:outputPanel>                        
+        <apex:outputPanel id="thePanelMembers" rendered="{!isNotBlankCpmId && (isStandardOffset == FALSE)}">
+            <apex:iframe src="{!iframeSource}" scrolling="true" height="600px" width="100%" 
+                         html-style="display:inline; margin-top:60px"/>
+        </apex:outputPanel>                        
+        <apex:outputPanel rendered="{!(isNotBlankCpmId == FALSE)}">
+            <h1 style="font-size: 1.5em; position: absolute; top: 110px">CPM ID is blank</h1>
+        </apex:outputPanel>   
+        
+        <apex:pageBlock html-style="position: absolute; top: 2px; left: 230px; right: 10px">        
+            <apex:facet name="header" >
+                <div style="margin-left:13px; margin-top:8px; font-weight:bold">
+                    <div style="font-size: 1.30em">
+                        <h1>Account 330 Reports</h1>
+                    </div>
+                </div>            
+            </apex:facet>
+            
+            <div style="font-size: 1.20em; margin-left:1px; margin-bottom: 10px">
+                <h1 style="margin-right:40px"><a href="/{!accountId}">{!accountName}</a></h1>     
+                <apex:outputText style="font-size: 0.6em; margin-right:4px" rendered="{!(isMultipleCpmId == TRUE)}">Cpm Id: </apex:outputText>
+                <apex:selectList value="{!cpmId}" multiselect="false" style="width:100px; font-size:0.9em;" size="1" rendered="{!(isMultipleCpmId == TRUE)}">
+                    <apex:selectOptions value="{!cpmChoices}"/>
+                </apex:selectList> 
+            </div>
+            
+            <apex:commandButton style="width:100px" value="Sales Units"     action="{!loadSalesUnits}"      reRender="thePage"/>
+            <apex:commandButton style="width:100px" value="Sales Revenue"   action="{!loadSalesRevenue}"    reRender="thePage"/>
+            <apex:commandButton style="width:100px" value="Product Units"   action="{!loadProductUnits}"    reRender="thePage"/>
+            <apex:commandButton style="width:100px" value="Product Revenue" action="{!loadProductRevenue}"  reRender="thePage"/>
+            <apex:commandButton style="width:100px" value="Branded Units"   action="{!loadBrandedUnits}"    reRender="thePage"/>
+            <apex:commandButton style="width:100px" value="Branded Revenue" action="{!loadBrandedRevenue}"  reRender="thePage"/>
+            <apex:commandButton style="width:100px" value="Membership"      action="{!loadMembership}"      reRender="thePage"/>
+        </apex:pageBlock>
+    </apex:Form>-->
+</apex:page>

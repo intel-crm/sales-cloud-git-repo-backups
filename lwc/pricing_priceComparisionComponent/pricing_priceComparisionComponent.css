@@ -1,0 +1,19 @@
+.gridElement {
+    padding-left: 10px;
+}
+
+.dataTabletoDisplay {
+    padding: 5px;
+}
+
+.gridText {
+    padding-right: 10px;
+}
+
+.gridfilter {
+    padding: 10px;
+}
+
+.gridBox {
+    max-width: auto;
+}

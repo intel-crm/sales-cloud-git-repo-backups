@@ -1,0 +1,248 @@
+<template>
+    <lightning-card title={lightningcardTitle} icon-name={iconName}>
+        <template if:true={isCurUsrOrgAdminMember}>
+            <template if:true={isEditEnabled}>
+                <!-- <div class="slds-form slds-grid slds-gutters"> -->
+                    <div class="slds-align_absolute-center">
+                        <lightning-button variant="brand" label="Edit" onclick={changeModeToEdit} title="Edit">
+                        </lightning-button>
+                        <lightning-button variant="brand" label="Delete" onclick={deleteRec} class="slds-m-left_medium"
+                            title="Delete">
+                        </lightning-button>
+                    </div>
+                <!--</div> -->
+            </template>
+        </template>
+        <!-- View section starts -->
+        <template if:false={isEditClicked}>
+            <div class="slds-grid slds-wrap slds-grid--pull-padded slds-p-around_medium">
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small ">
+                        <span class="slds-form-element__label" title="MAP Record">MAP Record</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapUniqueName}>{mapUniqueName}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                        <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                            <span class="slds-form-element__label" title="Owner">Owner</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static" title={ownerName}><a href={owner}>{ownerName}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="MAP Name">MAP Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapName}>{mapName}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Support Org Name">Support Org Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={supportOrgName}>{supportOrgName}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Description">Description</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapDescription}>{mapDescription}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Product Focus Area">Product Focus Area</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={productFocusArea}>{productFocusArea}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Access Flag">Access Flag</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapAccessFlag}>{mapAccessFlag}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Support Org">Support Org</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={supportOrgNM}><a href={supportOrg}>{supportOrgNM}</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Created By">Created By</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={createdByName}><a href={createdBy} >{createdByName}</a>, {createdDate} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Last Modified By">Last Modified By</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={lastModifiedByName}><a href={lastModifiedBy} >{lastModifiedByName}</a>, {lastModifiedDate} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- View section ends -->
+        <!-- Edit section starts -->
+        <template if:true={isEditClicked}>    
+                <div class="slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Save" title="Save" onclick={handleSave}>
+                    </lightning-button>
+                    <lightning-button variant="brand" label="Cancel" class="slds-m-left_medium" title="Cancel" onclick={handleCancel2}>
+                    </lightning-button>
+                </div>
+            <div class="slds-grid slds-wrap slds-grid--pull-padded slds-p-around_medium">
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small ">
+                        <span class="slds-form-element__label" title="MAP Record">MAP Record</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapUniqueName}>{mapUniqueName}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                        <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                            <span class="slds-form-element__label" title="Owner">Owner</span>
+                            <div class="slds-form-element__control">
+                                <!-- <c-custom-lookup onselectedrec={handleOwnerChange} selected-record={selectedOwner} iconname="standard:user" object-name="User" searchfield="Name"></c-custom-lookup> -->
+                                <div class="slds-form-element__static" title={ownerName}><a href={owner}>{ownerName}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around-small">
+                        <span class="slds-form-element__label" title="MAP Name">MAP Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapName}>
+                                <lightning-input variant="label-hidden" value={mapName} name="mapName" onchange={handleMapNameChange}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--x-small">
+                        <span class="slds-form-element__label" title="Support Org Name">Support Org Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={supportOrgName}>
+                                    <div class="slds-form-element__static" title={supportOrgName}>{supportOrgName}</div>
+                                <!-- <lightning-input variant="label-hidden" value={supportOrgName} name="supportOrgName" onchange={handleSupportOrgNameChange}></lightning-input> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around-small">
+                        <span class="slds-form-element__label" title="Description">Description</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapDescription}>
+                                <lightning-input variant="label-hidden" value={mapDescription} name="mapDescription" onchange={handleDescriptionChange}></lightning-input> 
+                                <!-- <lightning-textarea value={mapDescription} placeholder="Description" name="mapDescription" onchange={handleDescriptionChange} max-length="255"></lightning-textarea> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--x-small">
+                        <span class="slds-form-element__label" title="Product Focus Area">Product Focus Area</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={productFocusArea}>
+                                <!-- <lightning-input variant="label-hidden" value={productFocusArea} name="productFocusArea"></lightning-input>-->
+                                <div class="slds-form-element__static" title={productFocusArea}>{productFocusArea}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={mapAccessFlag}>
+                              
+                               <lightning-combobox name="Access Flag" label="Access Flag" placeholder="Choose Access Flag" value={mapAccessFlag}
+        onchange={handleAccessFlagChange} options={accessFlagOptions}>
+    </lightning-combobox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Support Org">Support Org</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={supportOrgNM}>
+                                <!-- <c-custom-lookup onselectedrec={handleSupportOrgChange} selected-record={selectedSupportedOrg} iconname="standard:product" object-name="Core_IPS_Product_Organization__c" searchfield="Name"></c-custom-lookup> -->
+                                <div class="slds-form-element__static" title={supportOrgNM}><a href={supportOrg}>{supportOrgNM}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Created By">Created By</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={createdByName}><a href={createdBy} >{createdByName}</a>, {createdDate} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-p-around--xxx-small">
+                        <span class="slds-form-element__label" title="Last Modified By">Last Modified By</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static" title={lastModifiedByName}><a href={lastModifiedBy} >{lastModifiedByName}</a>, {lastModifiedDate}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Edit section ends -->
+    </lightning-card>
+    <template if:true={spinnerOn}>
+        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+    </template>
+
+    <!-- Related list ::: Product Access : Products :: Start  -->
+    <div class="slds-m-top_medium">
+        <!-- <c-products-related-list></c-products-related-list> 
+        <c-core-ips-map-products-related-list></c-core-ips-map-products-related-list> -->
+        <c-core_-i-p-s_-map-products-related-list></c-core_-i-p-s_-map-products-related-list>
+    </div>
+    <!-- Related list ::: Product Access : Products :: End  -->
+
+    <!-- Related list ::: Product Access : Accouns :: Start  -->
+    <div class="slds-m-top_medium">
+        <!-- <c-accounts-related-list></c-accounts-related-list> 
+        <c-core-ips-map-accounts-related-list></c-core-ips-map-accounts-related-list>-->
+        <c-core_-i-p-s_-map-accounts-related-list></c-core_-i-p-s_-map-accounts-related-list>
+    </div>
+    <!-- Related list ::: Product Access : Accouns :: End  -->
+
+    <!-- Related list ::: Product Access Line Items :: Start  -->
+    <div class="slds-m-top_medium">
+        <!-- <c-line-item-related-list></c-line-item-related-list> - ->
+        <c-core-ips-map-line-item-related-list></c-core-ips-map-line-item-related-list> -->
+        <c-core_-i-p-s_-map-line-item-related-list></c-core_-i-p-s_-map-line-item-related-list>
+    </div>
+    <!-- Related list ::: Product Access Line Items :: End  -->
+
+    <!-- Related list ::: Product Access History :: Start  -->
+    <div class="slds-m-top_medium">
+        <c-map-history-component></c-map-history-component>
+    </div>
+    <!-- Related list ::: Product Access History :: End  -->
+</template>

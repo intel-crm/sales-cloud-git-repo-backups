@@ -1,0 +1,100 @@
+<template>
+    <lightning-card title={FUNDING_RESOURCES}>
+        <div class="slds-scrollable_x">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>{ACCOUNT_NODE}</th>
+                            <th>{NODE_AMOUNT}</th>
+                            <th>{STATUS}</th>
+                            <th>{BANK} <abbr class="slds-required" title="required">*</abbr></th>
+                            <th>{INVOICE_TYPE}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template if:false={isEditorClone}>
+                        <template for:each={accountNodes} for:item="node">
+                            <tr key={node.accountNodeId}>
+                                <td class="cell-account-node"><span class="truncate" title={node.accountNodeName}>{node.accountNodeName}</span></td>                                
+                                <td>{node.nodeAmount}</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <div class="input-wrapper">
+                                        <lightning-combobox
+                                            data-field="bank"
+                                            data-node-id={node.accountNodeId}
+                                            value={node.selectedBank}
+                                            placeholder={SELECT}
+                                            options={node.banks}
+                                            required
+                                            variant="label-hidden"                                        
+                                            onchange={handleBankChange}
+                                            disabled={node.disableBankField}
+                                            onblur={handleBankBlur}
+                                            onfocus={handleBankFocus}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-wrapper">
+                                        <lightning-combobox data-vat
+                                            data-node-id={node.accountNodeId}
+                                            value={node.vatValue}
+                                            placeholder={SELECT}
+                                            options={node.vatOptions}
+                                            required={node.isVatRequired}
+                                            variant="label-hidden"                                        
+                                            onchange={handleVatChange}
+                                            disabled={node.vatDisabled}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                    <template if:true={isEditorClone}>
+                        <template for:each={subClaims} for:item="node">
+                            <tr key={node.claimId}>
+                                <td class="cell-account-node"><span class="truncate" title={node.accountNodeName}>{node.accountNodeName}</span></td>
+                                <td>{node.nodeAmount}</td>
+                                <td>{node.status}</td>
+                                <td>
+                                    <div class="input-wrapper">
+                                        <lightning-combobox
+                                            data-field="bank"
+                                            data-node-id={node.claimId}
+                                            data-nodeacc-id={node.accountId}
+                                            value={node.selectedBank}
+                                            placeholder={SELECT}
+                                            options={node.banks}
+                                            required
+                                            variant="label-hidden"
+                                            onchange={handleBankChange}  
+                                            disabled={node.disableBankField}
+                                            onblur={handleBankBlur}
+                                            onfocus={handleBankFocus}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-wrapper">
+                                        <lightning-combobox data-vat
+                                            data-node-id={node.claimId}
+                                            value={node.vatValue}
+                                            placeholder={SELECT}
+                                            options={node.vatOptions}
+                                            required={node.isVatRequired}
+                                            variant="label-hidden"                                         
+                                            onchange={handleVatChange}
+                                            disabled={node.vatDisabled}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                    </tbody>
+                </table>
+        </div>
+    </lightning-card>
+</template>

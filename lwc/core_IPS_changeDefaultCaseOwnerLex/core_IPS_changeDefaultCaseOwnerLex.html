@@ -1,0 +1,112 @@
+<template>
+    <div class="slds-is-relative"><div if:true={spinner}></div></div>
+    <div if:false={spinner}> 
+    <div if:true={userAccess}>     
+    <div if:true={projAccess}> 
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+    <div class="slds-text-heading_medium slds-text-align_center slds-m-bottom_medium">Change Default Case Owner</div>
+    <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+        <lightning-accordion-section name="Selected" label="Selected Default Case Owner" class="slds-accordion">
+            </br>
+            <div if:true={isData}>
+                <div if:true={isUserData}>
+                    <table>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr>
+                            <td>{recValue.firstName}</td>
+                            <td>{recValue.lastName}</td>
+                            <td>{recValue.email}</td>
+                        <td>
+                            <lightning-button  onclick={handleRemove} label="Remove"></lightning-button>
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+                <div if:false={isUserData}>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Developer Name</th>
+                        </tr>
+                        <tr>
+                            <td>{recValue.name}</td>
+                            <td>{recValue.developerName}</td>
+                            <td>
+                                <lightning-button onclick={handleRemove} label="Remove"></lightning-button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div if:false={isData}>
+                No Default Case Owner
+            </div>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="Search" label="Search Case Owner" class="slds-accordion">
+            <div class="slds-grid slds-gutters" >
+                <div class="slds-col slds-size_1-of-4"> 
+                    <lightning-combobox value={value} options={options} onchange={handleChange}></lightning-combobox>
+                </div> &nbsp; &nbsp;
+                <div class="slds-col slds-size_2-of-4"> 
+                    <lightning-Input type="search" placeholder="Search..." onchange={handleKeyChange}></lightning-input>
+                        <div if:true={searchMsg}><p>Please enter at least 3 characters.</p></div>
+                </div>
+                <div class="slds-col slds-size_1-of_4">
+                    <br>
+                    <lightning-button label="Search" disabled={disableBtn} onclick ={onButtonClick}></lightning-button>&nbsp;
+                    <lightning-helptext content="You can add an User or a Queue as default case owner"></lightning-helptext>
+                </div>
+              </div></br>
+            <div if:true ={showResult}>
+                <div if:true={switchView} style="height:300px;" >
+                    <lightning-datatable
+                    key-field="Id"
+                    columns={userColumns}
+                    data={data}
+                    max-row-selection = "1"
+                    onrowselection ={getSelected}>    
+                    </lightning-datatable>
+                </div>
+                <div if:false={switchView} style="height:300px;">
+                    <lightning-datatable
+                    key-field="Id"
+                    columns={queueColumns}
+                    data={qData}
+                    max-row-selection = "1"
+                    onrowselection ={getQSelected}
+                    ></lightning-datatable>
+                </div>
+            </div>
+            <div if:false={showResult}>
+                <div if:true={searchKey}> <p>No User Found.</p> </div>
+            </div><br/>
+        </lightning-accordion-section>
+    </lightning-accordion></div>
+    <div class="slds-modal__footer">
+        <div align="center">
+            <template if:true={showAdd}>
+                <lightning-button label="Add" variant="brand" title="Non-primary action" onclick={handleAdd} class="slds-m-left_x-small"></lightning-button>
+            </template>
+            <lightning-button label="Cancel" title="Non-primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+        </div></div>
+</div>
+<div if:false={projAccess}>
+    <div align="center" class="error">
+        &nbsp;&nbsp;&nbsp;<lightning-card title='Do not have access to update.'></lightning-card><br/>
+        <lightning-button label="Go Back" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button><br/><br/>
+    </div>
+</div></div>
+<div if:false={userAccess}>
+    <lightning-card>
+        <div class="privilegeMsg"><p>Insufficient Privileges</p></div><br/>
+        <div class="accessMsg"><p>You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary. For more information, <a href="https://help.salesforce.com/s/login/?startURL=%2Fapex%2Fhtdoor%3Floc%3Dhelp%26target%3Dadmin_insufficient_privileges_flowchart.htm%26language%3Den_US%26release%3D236.18.1%26instance%3DCS92%26showSplash%3Dtrue&ec=302&inst=Hx" target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p></div><br/>
+        <div align="center"><lightning-button label="Go Back" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button></div><br/><br/>
+    
+</lightning-card>
+</div>
+</div>
+</template>

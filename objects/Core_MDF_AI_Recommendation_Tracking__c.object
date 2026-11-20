@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Provides a complete audit log of AI assistance during MDF Partner Fund Request submissions and approvals.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_AI_Confidence_Score__c</fullName>
+        <description>A numeric score representing the AI model&apos;s confidence level in the generated recommendation. Higher values indicate stronger certainty. Used to assess recommendation quality and calibrate AI trust thresholds.</description>
+        <externalId>false</externalId>
+        <label>AI Confidence Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Recommendation_Details__c</fullName>
+        <description>A JSON-serialized payload containing supplementary metadata about the AI recommendation, including the group ID, source type, field path, target object, and target record key. Used for deep auditing and traceability.</description>
+        <label>AI Recommendation Details</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Recommendation__c</fullName>
+        <description>The field label of the MDF activity field for which the AI generated a recommendation. Provides a human-readable identifier for the recommendation context (e.g., &quot;Campaign Description&quot;).</description>
+        <externalId>false</externalId>
+        <label>AI Recommendation</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Source_Files__c</fullName>
+        <description>Stores the names or references of uploaded files that were used as input by the AI engine to generate the recommendation. Populated when AI Source Type is File or Combined.</description>
+        <label>AI Source Files</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Source_Type__c</fullName>
+        <label>AI Source Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>File</fullName>
+                    <default>false</default>
+                    <label>File</label>
+                </value>
+                <value>
+                    <fullName>Approval Process</fullName>
+                    <default>false</default>
+                    <label>Approval Process</label>
+                </value>
+                <value>
+                    <fullName>Description</fullName>
+                    <default>false</default>
+                    <label>Description</label>
+                </value>
+                <value>
+                    <fullName>Combined</fullName>
+                    <default>false</default>
+                    <label>Combined</label>
+                </value>
+                <value>
+                    <fullName>IUPGM_Chatbot</fullName>
+                    <default>false</default>
+                    <label>IUPGM Chatbot</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Suggested_Value__c</fullName>
+        <description>The field value recommended by the AI engine based on the analyzed input (description, files, or both). This is the raw AI output before any user action is taken.</description>
+        <label>AI Suggested Value</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity_Last_Modified_Date__c</fullName>
+        <description>The last modified timestamp of the associated MDF activity at the time the AI recommendation was processed. Used to correlate AI interactions with the activity&apos;s editing timeline.</description>
+        <label>Activity Last Modified Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Activity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Reference to the Partner Fund Request (MDF activity) for which the AI recommendation was generated. Links this tracking record back to the originating funding request.</description>
+        <label>Activity</label>
+        <referenceTo>PartnerFundRequest</referenceTo>
+        <relationshipLabel>AI Recommendation Trackings</relationshipLabel>
+        <relationshipName>AI_Recommendation_Trackings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Approval_Stage__c</fullName>
+        <description>The approval stage of the Partner Fund Request at the time the AI recommendation was generated. Enables analysis of AI usage patterns across different stages of the MDF approval workflow.</description>
+        <externalId>false</externalId>
+        <label>Approval Stage</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Decision_Date__c</fullName>
+        <description>The date and time when the user made a decision on the AI recommendation. Captured at the moment of save to enable time-series analysis of AI adoption trends.</description>
+        <label>Decision Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Final_Saved_Value__c</fullName>
+        <description>The value ultimately saved on the target record after all user interactions, including any edits made after applying the AI suggestion. Reflects the true outcome of the AI recommendation flow.</description>
+        <label>Final Saved Value</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Error_Detail__c</fullName>
+        <label>IUPGM Error Detail</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>IUPGM Program</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Response_Time_ms__c</fullName>
+        <externalId>false</externalId>
+        <label>IUPGM Response Time (ms)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Role_Requested__c</fullName>
+        <externalId>false</externalId>
+        <label>IUPGM Role Requested</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IUPGM_Staging_Record__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>IUPGM Staging Record</label>
+        <referenceTo>Core_MDF_IUPGM_Request_Staging__c</referenceTo>
+        <relationshipLabel>AI Chatbot Logs</relationshipLabel>
+        <relationshipName>AI_Chatbot_Logs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Recommendation_Used__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates whether the user chose to apply the AI recommendation to the field. True when the suggestion was accepted (with or without subsequent edits). Used as a primary AI adoption metric.</description>
+        <label>Recommendation Used</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_User_Decision__c</fullName>
+        <description>Records the explicit decision made by the user regarding the AI recommendation (e.g., Accepted, Rejected, Modified). Complements the Recommendation Used flag with a descriptive outcome label.</description>
+        <externalId>false</externalId>
+        <label>User Decision</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Salesforce user who interacted with the AI recommendation — either applying, modifying, or dismissing it. Used for user-level adoption and behavior analysis.</description>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>AI_Recommendation_Trackings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>AI Recommendation Tracking</label>
+    <nameField>
+        <displayFormat>AI-{00000}</displayFormat>
+        <label>AI Tracking Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>AI Recommendation Trackings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

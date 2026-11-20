@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>SWS_Lead_Activity__c.SWS_Activity_is_Completed__c:SUM / RowCount</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Success Percent</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_48479161</developerName>
+        <masterLabel>Demo Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>SWS_Lead_Activity__c.SWS_Status__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>New</sourceValue>
+            </sourceValues>
+            <value>1.New Lead Demo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Completed</sourceValue>
+            </sourceValues>
+            <value>2.Completed Lead Demo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>3.Cancelled Lead Demo</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_48479161</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>SWS_Lead_Activity__c.SWS_Lead_Stage_when_Closed__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Lead_Activity__c.SWS_Status__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Lead_Activity__c.SWS_Scheduled_Date__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>SWS_Lead_Activity__c.SWS_Activity_Completed_Date__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Lead_Activity__c.SWS_Lead_Source__c</field>
+    </columns>
+    <columns>
+        <field>FK_LEAD_FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_LEAD_STATUS</field>
+    </columns>
+    <columns>
+        <field>FK_$Lead.SWS_Quarter__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    ISPICKVAL(SWS_Lead_Activity__c.SWS_Status__c, &apos;New&apos;),
+    CASE(
+        TEXT(SWS_Lead_Activity__c.SWS_Lead_Stage__c),
+        &apos;Marketing Qualified Lead&apos;, &apos;1.Marketing Qualified Lead&apos;,
+        &apos;Sales Accepted Lead&apos;, &apos;2.Sales Accepted Lead&apos;,
+        &apos;Sales Qualified Lead&apos;, &apos;3.Sales Qualified Lead&apos;,
+        &apos;&apos;
+    ),
+    CASE(
+        TEXT(SWS_Lead_Activity__c.SWS_Lead_Stage_when_Closed__c),
+        &apos;Marketing Qualified Lead&apos;, &apos;1.Marketing Qualified Lead&apos;,
+        &apos;Sales Accepted Lead&apos;, &apos;2.Sales Accepted Lead&apos;,
+        &apos;Sales Qualified Lead&apos;, &apos;3.Sales Qualified Lead&apos;,
+        &apos;&apos;
+    )
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Shows lead stage based on activity status</description>
+        <developerName>CDF1</developerName>
+        <label>Lead stage</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>SWS_Lead_Activity__c.SWS_Activity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SWS_Lead_Activity__c.SWS_Activity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SWS_Lead_Activity__c.SWS_Activity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SWS_Lead_Activity__c.SWS_Activity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>SWS_Lead_Activity__c.SWS_Lead_Stage__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_48479161</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SWS_Lead_Activity__c.SWS_Activity__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Track  Demo calls by Lead Stage</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SWS_Lead_Activity__c@SWS_Lead_Activity__c.SWS_Lead__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SWS_Lead_Activity__c.SWS_Scheduled_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,9 @@
+<aura:component >
+	<aura:method name="formAnalyticsData" action="{!c.formAnalyticsData}">
+    </aura:method>
+    
+    <aura:method name="formQuickSearchDetail" action="{!c.formQuickSearchDetail}">
+    </aura:method>
+    
+    <c:ipaAnalyticsService aura:id="analyticsLibrary" />
+</aura:component>

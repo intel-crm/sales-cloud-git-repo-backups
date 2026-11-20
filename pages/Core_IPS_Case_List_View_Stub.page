@@ -1,0 +1,32 @@
+<apex:page standardController="Case" recordSetVar="placeHolderRecordSetVar" extensions="Core_IPS_Case_List_View_Export" tabStyle="Case" lightningStylesheets="true">
+    <apex:sectionHeader title="Case List Export" subtitle="{!filterName}"/>
+    <apex:pageMessages id="pageMessages"/>    
+    <hr class="lightWeightDivider"/>              
+    <apex:Form >
+        <br/>
+
+        <!-- The actual Excel export need to come from a commandlink.  -->
+        <!-- The command button is simply for a disabled-state visual. -->
+        <!--
+        <apex:commandLink value="Export to Excel" action="{!exportToExcel}" rendered="{!isExcelExportActive}" styleClass="btn" target="_blank" style="text-decoration:none;padding-top:4px;padding-bottom:4px;" charset="charset=UTF-8"/>
+        <apex:commandButton value="Export to Excel" disabled="true"         rendered="{!isExcelExportActive == false}"/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        -->
+
+        <!-- The actual CSV export need to come from a commandlink.    -->
+        <!-- The command button is simply for a disabled-state visual. -->
+        <apex:commandButton value="Export to CSV" action="{!exportToCSV}" rendered="{!isCSVExportActive}" styleClass="slds-button slds-button_brand" style="text-decoration:none;padding-top:4px;padding-bottom:4px;"/>
+        <apex:commandButton value="Export to CSV" disabled="true" rendered="{!isCSVExportActive == false}"/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <!-- The actual PDF export need to come from a commandlink.    -->
+        <!-- The command button is simply for a disabled-state visual. -->
+        <!--
+        <apex:commandButton value="Export to PDF" action="{!exportToExcel}" styleClass="btn" style="text-decoration:none" disabled="{!isPDFExportActive == false}"/>
+        <apex:commandButton value="Export to PDF" disabled="true"           rendered="{!isExcelExportActive == false}"/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        -->        
+        
+        <apex:commandButton value="Return to Case List" action="{!returnToPage}"  styleClass="btn" style="text-decoration:none;padding-top:4px;padding-bottom:4px;"/>
+    </apex:Form>
+</apex:page>

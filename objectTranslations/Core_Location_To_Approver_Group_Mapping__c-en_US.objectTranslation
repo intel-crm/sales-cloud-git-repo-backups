@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Location To Approver Group Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Location To Approver Group Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver Group Name --></label>
+        <name>Core_Approver_Group_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Code --></label>
+        <name>Core_Country_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group --></label>
+        <name>Core_Product_Group_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- State Code --></label>
+        <name>Core_State_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

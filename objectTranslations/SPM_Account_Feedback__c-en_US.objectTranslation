@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Feedback</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Feedback</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>Account_ID__c</name>
+        <relationshipLabel><!-- Account Feedbacks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Name (Link) --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Primary Coverage --></label>
+        <name>Account_Primary_Coverage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Break from  AI Group --></label>
+        <name>Break_from_AI_Group__c</name>
+        <relationshipLabel><!-- Account Feedbacks (Break from  AI Group) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Country Manager Feedback --></label>
+        <name>CRM_CST_CM_Feedback__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Id --></label>
+        <name>CRM_CST_Customer_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Director Feedback --></label>
+        <name>CRM_CST_DR_Feedback__c</name>
+        <picklistValues>
+            <masterLabel>Add to Intel led</masterLabel>
+            <translation><!-- Add to Intel led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Ownership</masterLabel>
+            <translation><!-- Change Ownership --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Other Led</masterLabel>
+            <translation><!-- Change to Other Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Partner</masterLabel>
+            <translation><!-- Change to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Uncovered</masterLabel>
+            <translation><!-- Change to Uncovered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partial</masterLabel>
+            <translation><!-- Partial --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback by RA --></label>
+        <name>CRM_CST_Feedback_by_RA__c</name>
+    </fields>
+    <fields>
+        <label><!-- GM Feedback --></label>
+        <name>CRM_CST_GM_Feedback__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>CRM_CST_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active Planning Period --></label>
+        <name>CRM_CST_Is_Active_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Semi-Annual Account Category --></label>
+        <name>CRM_CST_New_Core_Account_Category__c</name>
+        <picklistValues>
+            <masterLabel>Distributors</masterLabel>
+            <translation><!-- Distributors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Branded Disti</masterLabel>
+            <translation><!-- Region Branded Disti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Direct OxM Accts (non-T30)</masterLabel>
+            <translation><!-- Region Direct OxM Accts (non-T30) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Named B2B End User</masterLabel>
+            <translation><!-- Region Named B2B End User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Named Billings Accts</masterLabel>
+            <translation><!-- Region Named Billings Accts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Co-Sell Partners</masterLabel>
+            <translation><!-- Regional Co-Sell Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional GSI/ISV/MSP</masterLabel>
+            <translation><!-- Regional GSI/ISV/MSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Retailer</masterLabel>
+            <translation><!-- Regional Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic Acct/Country Opportunity</masterLabel>
+            <translation><!-- Strategic Acct/Country Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top 30 Global Billings</masterLabel>
+            <translation><!-- Top 30 Global Billings --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Inactive Planning Period --></label>
+        <name>CRM_CST_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>CRM_CST_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- VP Feedback --></label>
+        <name>CRM_CST_VP_Feedback__c</name>
+        <picklistValues>
+            <masterLabel>Add to Intel led</masterLabel>
+            <translation><!-- Add to Intel led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Ownership</masterLabel>
+            <translation><!-- Change Ownership --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Other Led</masterLabel>
+            <translation><!-- Change to Other Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Partner</masterLabel>
+            <translation><!-- Change to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Uncovered</masterLabel>
+            <translation><!-- Change to Uncovered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partial</masterLabel>
+            <translation><!-- Partial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback Propagated By --></label>
+        <name>CST_Feedback_Propagated_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Semi-Annual Temp Account Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Account Primary Coverage --></label>
+        <name>Coverage_Type__c</name>
+        <picklistValues>
+            <masterLabel>Intel-led Account</masterLabel>
+            <translation><!-- Intel-led Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Covered Account</masterLabel>
+            <translation><!-- Not Covered Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other-led Account</masterLabel>
+            <translation><!-- Other-led Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner-led Account</masterLabel>
+            <translation><!-- Partner-led Account --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Name --></label>
+        <name>Customer_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Name (Link) --></label>
+        <name>Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback Type --></label>
+        <name>Feedback_Type__c</name>
+        <picklistValues>
+            <masterLabel>Country Manager</masterLabel>
+            <translation><!-- Country Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DR</masterLabel>
+            <translation><!-- DR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GM</masterLabel>
+            <translation><!-- GM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP</masterLabel>
+            <translation><!-- VP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback --></label>
+        <name>Feedback__c</name>
+        <picklistValues>
+            <masterLabel>Add to Intel led</masterLabel>
+            <translation><!-- Add to Intel led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Ownership</masterLabel>
+            <translation><!-- Change Ownership --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Other Led</masterLabel>
+            <translation><!-- Change to Other Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Partner</masterLabel>
+            <translation><!-- Change to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change to Uncovered</masterLabel>
+            <translation><!-- Change to Uncovered --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GTM Model --></label>
+        <name>GTM_Model__c</name>
+        <picklistValues>
+            <masterLabel>Core</masterLabel>
+            <translation><!-- Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth</masterLabel>
+            <translation><!-- Growth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth-VBS</masterLabel>
+            <translation><!-- Growth-VBS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Merge to AI Group --></label>
+        <name>Merge_to_AI_Group__c</name>
+        <relationshipLabel><!-- Account Feedbacks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- New Account Owner --></label>
+        <name>New_Account_Owner__c</name>
+        <relationshipLabel><!-- Account Feedback --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- New Sales Group --></label>
+        <name>New_Sales_Group__c</name>
+        <picklistValues>
+            <masterLabel>APJ Australia &amp; New Zealand Sales Group</masterLabel>
+            <translation><!-- APJ Australia &amp; New Zealand Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Hosted Sales Group</masterLabel>
+            <translation><!-- APJ Hosted Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ India Sales Group</masterLabel>
+            <translation><!-- APJ India Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Japan Sales Group</masterLabel>
+            <translation><!-- APJ Japan Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Korea Sales Group</masterLabel>
+            <translation><!-- APJ Korea Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Partner Led</masterLabel>
+            <translation><!-- APJ Partner Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Southeast Asia Sales Group</masterLabel>
+            <translation><!-- APJ Southeast Asia Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Taiwan Sales Group</masterLabel>
+            <translation><!-- APJ Taiwan Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas Brazil Sales Group</masterLabel>
+            <translation><!-- Americas Brazil Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas Canada Sales Group</masterLabel>
+            <translation><!-- Americas Canada Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas ELAR Sales Group</masterLabel>
+            <translation><!-- Americas ELAR Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas Hosted Sales Group</masterLabel>
+            <translation><!-- Americas Hosted Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas Mexico Sales Group</masterLabel>
+            <translation><!-- Americas Mexico Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas Partner Led</masterLabel>
+            <translation><!-- Americas Partner Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas US Sales Group</masterLabel>
+            <translation><!-- Americas US Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Hosted Sales Group</masterLabel>
+            <translation><!-- EMEA Hosted Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Partner Led</masterLabel>
+            <translation><!-- EMEA Partner Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Sales Group</masterLabel>
+            <translation><!-- EMEA Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Solutions &amp; Services Sales Group</masterLabel>
+            <translation><!-- Global Solutions &amp; Services Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC Hosted Sales Group</masterLabel>
+            <translation><!-- PRC Hosted Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC Partner Led</masterLabel>
+            <translation><!-- PRC Partner Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC Sales Group</masterLabel>
+            <translation><!-- PRC Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undefined</masterLabel>
+            <translation><!-- Undefined --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason for change --></label>
+        <name>Reason_for_change__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>SF_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- SF Account Updated --></label>
+        <name>SF_Account_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Members --></label>
+        <name>Team_Members__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified ID --></label>
+        <name>Unified_ID__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Country Manager Feedback --></label>
+        <name>CM_Feedback</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- DR Feedback --></label>
+        <name>DR_Feedback</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- GM Feedback --></label>
+        <name>GM_Feedback</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- VP Feedback --></label>
+        <name>VP_Feedback</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- GTM Model cannot be None. --></errorMessage>
+        <name>CRM_VBS_No_Null_GTM_Model_Field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot modify other&apos;s feedback. --></errorMessage>
+        <name>Cannot_Modify_Others_Feedback</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- CRM_Update --></label>
+        <name>CRM_Update</name>
+    </webLinks>
+</CustomObjectTranslation>

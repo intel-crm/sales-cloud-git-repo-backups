@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECBNFTCLOUDTUR</name>
+    <style>none</style>
+    <subject>Intel® Ortağı İş Birliği Bulut Veri Merkezi Uzmanlığı</subject>
+    <textOnly>Kalifiye Olduğunuz İçin Tebrikler!
+
+
+{!Contact.FirstName},
+
+Intel® Ortağı İş Birliği Bulut Veri Merkezi Uzmanlığı Avantajlarına Hoş Geldiniz! Yeterliliğe sahip bir Bulut Veri Merkezi Uzmanı olarak buluttaki işletmenizi geliştirmenize yardımcı olmak üzere tasarlanmış özel ayrıcalıklardan* yararlanabilirsiniz. Bunlardan bazıları:
+
+Bulut Veri Merkezi Uzmanı unvanı
+Şirketinizin bir Bulut Uzmanı olarak Intel tarafından tanıtımı
+Müşteri eşleştirme fırsatları
+Bulut için Intel® Sunucu Ürünlerini satın alırken ek puanlar
+Intel® Bulut Kaynaklarına Erişin
+Sektör etkinliklerine ve eğitim oturumlarına öncelikli davetler
+Intel® Platform Testing Services&apos;a Erişim
+
+Başlamak için lütfen aşağıdaki bilgileri ITP-CLOUD@intel.com adresine iletin:
+
+
+Bulut Uzmanlığı için birincil irtibat kişisi
+Ad:
+E-posta:
+
+
+Satış ve promosyonla ilgili daha fazla malzeme için
+Posta Adresi:
+Telefon:
+
+Erişim ayrıcalıkları
+
+
+*Avantajlar, konuma göre farklılık gösterebilir.
+
+Intel iş ortakları köklü bir inovasyon geçmişine sahiptir. Intel® Ortağı İş Birliği sayesinde, veri merkezli ekonomide çözüm oluşturma sürecini hızlandırmanıza yardımcı olabiliriz. Birlikte bağlantı kurabilir, yeniliklere imza atabilir ve büyüyebiliriz. Sıradışı fırsatları gerçeğe dönüştürebiliriz.
+
+Üyeliğinizi optimize etme konusunda yardım ve destek almak için https://www.intel.com/content/www/tr/tr/partner-alliance/help/overview.html adresini ziyaret edin.
+
+
+Teşekkür ederiz,
+Intel® Ortağı İş Birliği ekibiniz
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

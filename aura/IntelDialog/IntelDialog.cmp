@@ -1,0 +1,47 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+
+        <aura:attribute name="cancelButtonText" type="string" default="{!$Label.c.Core_PMP_Cancel}"/>
+        <aura:attribute name="confirmButtonText" type="string" default="{!$Label.c.PMP_Okay}"/>
+        <aura:attribute name="showCancelButton" type="boolean" default="true"/>
+		
+    	<aura:attribute name="modalInModal" type="Boolean" default="false" />
+    
+        <aura:attribute name="modalHeader" type="string"/>
+        <aura:attribute name="modalMessage" type="string"/>
+        <aura:attribute name="onclose" type="object" />
+
+        <div class="{!join(' ', 'slds-m-around_xx-large', v.modalInModal ? 'modalInModal' : '') }">
+            <!--###### MODAL BOX Start######-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- ###### MODAL BOX HEADER Start ######-->
+                        <header class="{!'slds-modal__header' + (v.modalHeader ? '' : ' collapseHeader')}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{! c.closeModal }"
+                                                  alternativeText="close"
+                                                  class="slds-modal__close"/>
+                            <h4 id="modal-heading-01" class="heading-24">
+                              {!v.modalHeader}
+                            </h4>
+                        </header>
+                        <!--###### MODAL BOX BODY Part Start######-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p>{!v.modalMessage}</p>
+                        </div>
+
+                        <footer class="slds-modal__footer slds-p-bottom_medium">
+                            <aura:if isTrue="{!v.showCancelButton}">
+                                <span onclick="{! c.handleCancelAction }">
+                                    <c:IntelButton class="gray inline largeMobile">{!v.cancelButtonText}</c:IntelButton>
+                                </span>
+                            </aura:if>
+                            <span onclick="{!c.handleConfirmAction }">
+                                <c:IntelButton class="largeMobile">{!v.confirmButtonText}</c:IntelButton>
+                            </span>
+
+                        </footer>
+                    </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+</aura:component>

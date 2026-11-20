@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Assigned_To_User_Region__c</fullName>
+        <externalId>false</externalId>
+        <formula>Owner:User.Core_User_Geo__c</formula>
+        <label>Assigned To - User Region</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_To_User_manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>Owner:User.Manager.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Assigned To - User manager</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_ID__c</fullName>
+        <description>Populated during task generation from Sales Campaigns, so we can use it later to prevent duplicate tasks (for a specific account) from being created</description>
+        <externalId>false</externalId>
+        <label>Account ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Activity_Source__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <description>This hidden field defaults to Unknown. When a task or event is created manually, this is automatically set to Manual. This field is only otherwise set by automation.</description>
+        <label>Activity Source</label>
+        <required>false</required>
+        <securityClassification>Internal</securityClassification>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>6QPS</fullName>
+                    <default>false</default>
+                    <label>6QPS</label>
+                </value>
+                <value>
+                    <fullName>Groove</fullName>
+                    <default>false</default>
+                    <label>Groove</label>
+                </value>
+                <value>
+                    <fullName>LinkedIn</fullName>
+                    <default>false</default>
+                    <label>LinkedIn</label>
+                </value>
+                <value>
+                    <fullName>Manual</fullName>
+                    <default>false</default>
+                    <label>Manual</label>
+                </value>
+                <value>
+                    <fullName>PMP</fullName>
+                    <default>false</default>
+                    <label>PMP</label>
+                </value>
+                <value>
+                    <fullName>Seismic</fullName>
+                    <default>false</default>
+                    <label>Seismic</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>true</default>
+                    <label>Unknown</label>
+                </value>
+                <value>
+                    <fullName>Automated</fullName>
+                    <default>false</default>
+                    <label>Automated</label>
+                </value>
+                <value>
+                    <fullName>Marketo</fullName>
+                    <default>false</default>
+                    <label>Marketo</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Activity_Type__c</fullName>
+        <label>Activity Type</label>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Promotion</fullName>
+                    <default>false</default>
+                    <label>Promotion</label>
+                </value>
+                <value>
+                    <fullName>Recommendation</fullName>
+                    <default>false</default>
+                    <label>Recommendation</label>
+                </value>
+                <value>
+                    <fullName>Profiling/Survey</fullName>
+                    <default>false</default>
+                    <label>Profiling/Survey</label>
+                </value>
+                <value>
+                    <fullName>Membership</fullName>
+                    <default>false</default>
+                    <label>Membership</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Call_Result__c</fullName>
+        <label>Call Result</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Call Back Later</fullName>
+                    <default>false</default>
+                    <label>Call Back Later</label>
+                </value>
+                <value>
+                    <fullName>Invalid Number</fullName>
+                    <default>false</default>
+                    <label>Invalid Number</label>
+                </value>
+                <value>
+                    <fullName>Left a Message</fullName>
+                    <default>false</default>
+                    <label>Left a Message</label>
+                </value>
+                <value>
+                    <fullName>Not Interested</fullName>
+                    <default>false</default>
+                    <label>Not Interested</label>
+                </value>
+                <value>
+                    <fullName>Quality Conversation</fullName>
+                    <default>false</default>
+                    <label>Quality Conversation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Call_Script_API_Name__c</fullName>
+        <description>API Name of the call script attached to this task, used to construct the URL to the call script, e.g. Core_Call_Script_2015_Q4_Promotion_Generic</description>
+        <externalId>false</externalId>
+        <label>Call Script API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Call_Script_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Call Script ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Last_Touch_Marketing_Activity__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Touch Marketing Activity</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Source_of_Activity__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <description>A custom, read-only field on both Activity and Event records which provides a singular reportable field indicating the source of this activity record, when known. If the Activity Source field is populated with a valid source, that value is replicated here. Otherwise, a formula attempts to derive the source.</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(TEXT(Core_Activity_Source__c) != &apos;Unknown&apos;,TEXT(Core_Activity_Source__c) != &apos;&apos;),TEXT(Core_Activity_Source__c),
+IF(BEGINS(UPPER(Subject), &apos;PERFORM ACCOUNT TEAM AUDIT&apos;), &apos;Account Team Audit&apos;,
+IF(BEGINS(UPPER(Subject), &apos;6QPS&apos;), &apos;6QPS&apos;,
+IF(BEGINS(UPPER(Subject), &apos;ACCOUNT OWNERSHIP CHANGE REQUEST&apos;), &apos;Account Ownership Change Request&apos;,
+IF(OR(BEGINS(UPPER(Subject), &apos;EMAIL ALERT SENT TO ADMIN FOR REVIEW (OFFERING EDITOR - UPDATED EXISTING OFFERING)&apos;), BEGINS(UPPER(Subject), &apos;EMAIL SENT ASKING FOR UPDATE REQUIRED ON EXISTING OFFERING TO OFFERING EDITOR&apos;), BEGINS(UPPER(Subject), &apos;EMAIL SENT FOR FUTURE PUBLISHING OFFERING&apos;), BEGINS(UPPER(Subject), &apos;EMAIL SENT FOR PUBLISHED OFFERING&apos;), BEGINS(UPPER(Subject), &apos;EMAIL SENT TO OFFERING PARTNER OFFERING EDITOR&apos;)),&apos;Offering&apos;,
+IF(CONTAINS(UPPER(Subject), &apos;SENT VIA LIVESEND TO&apos;), &apos;Seismic&apos;,
+IF(TEXT(Core_Activity_Source__c)==&apos;&apos; , &apos;Unknown&apos;,&apos;Unknown&apos;
+)))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Source of Activity</label>
+        <required>false</required>
+        <securityClassification>Internal</securityClassification>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Subtype_of_Activity__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <description>A custom, read-only field on both Activity and Event records which provides a singular reportable field indicating the specific subtype of activity being recorded.</description>
+        <externalId>false</externalId>
+        <formula>IF(TEXT(ActivitySubtype) == &apos;Email&apos;,&apos;Email&apos;, 
+IF(TEXT(ActivitySubtype) == &apos;Call&apos;,&apos;Voice Call&apos;, 
+IF(TEXT(ActivitySubtype) == &apos;Event&apos;,&apos;Meeting&apos;, TEXT(Core_Task_Type__c))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Subtype of Activity</label>
+        <required>false</required>
+        <securityClassification>Internal</securityClassification>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Task_Type__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <description>Indicates the specific subtype of activity being recorded. For example: BU/Expert Engagement or Sample/Seed Sent</description>
+        <inlineHelpText>Indicates the specific subtype of activity being recorded. For example: BU/Expert Engagement or Sample/Seed Sent</inlineHelpText>
+        <label>Task Subtype</label>
+        <required>false</required>
+        <securityClassification>Internal</securityClassification>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BU/Expert Engagement</fullName>
+                    <default>false</default>
+                    <label>BU/Expert Engagement</label>
+                </value>
+                <value>
+                    <fullName>LinkedIn Navigator</fullName>
+                    <default>false</default>
+                    <label>LinkedIn Navigator</label>
+                </value>
+                <value>
+                    <fullName>Next Customer Yes</fullName>
+                    <default>false</default>
+                    <label>Next Customer Yes</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>POC</fullName>
+                    <default>false</default>
+                    <label>POC</label>
+                </value>
+                <value>
+                    <fullName>Sample/Seed Sent</fullName>
+                    <default>false</default>
+                    <label>Sample/Seed Sent</label>
+                </value>
+                <value>
+                    <fullName>Voice Call</fullName>
+                    <default>false</default>
+                    <label>Voice Call</label>
+                </value>
+                <value>
+                    <fullName>LI InMail</fullName>
+                    <default>false</default>
+                    <label>LI InMail</label>
+                </value>
+                <value>
+                    <fullName>LI Message</fullName>
+                    <default>false</default>
+                    <label>LI Message</label>
+                </value>
+                <value>
+                    <fullName>LI Call</fullName>
+                    <default>false</default>
+                    <label>LI Call</label>
+                </value>
+                <value>
+                    <fullName>Meeting</fullName>
+                    <default>false</default>
+                    <label>Meeting</label>
+                </value>
+                <value>
+                    <fullName>Seismic LiveSend</fullName>
+                    <default>false</default>
+                    <label>Seismic LiveSend</label>
+                </value>
+                <value>
+                    <fullName>Seismic Download</fullName>
+                    <default>false</default>
+                    <label>Seismic Download</label>
+                </value>
+                <value>
+                    <fullName>Seismic Add To Workspace</fullName>
+                    <default>false</default>
+                    <label>Seismic Add To Workspace</label>
+                </value>
+                <value>
+                    <fullName>Seismic Add to Cart</fullName>
+                    <default>false</default>
+                    <label>Seismic Add to Cart</label>
+                </value>
+                <value>
+                    <fullName>Seismic Post to Chatter</fullName>
+                    <default>false</default>
+                    <label>Seismic Post to Chatter</label>
+                </value>
+                <value>
+                    <fullName>LI ConnectReq</fullName>
+                    <default>false</default>
+                    <label>LI ConnectReq</label>
+                </value>
+                <value>
+                    <fullName>Complete Current and Future State Analysis</fullName>
+                    <default>false</default>
+                    <label>Complete Current and Future State Analysis</label>
+                </value>
+                <value>
+                    <fullName>Articulate Prioritized Problem Statements and Desired Business Results</fullName>
+                    <default>false</default>
+                    <label>Articulate Prioritized Problem Statements and Desired Business Results</label>
+                </value>
+                <value>
+                    <fullName>Define and Document Success Criteria and Decision Process</fullName>
+                    <default>false</default>
+                    <label>Define and Document Success Criteria and Decision Process</label>
+                </value>
+                <value>
+                    <fullName>Conduct Testing and Review Results</fullName>
+                    <default>false</default>
+                    <label>Conduct Testing and Review Results</label>
+                </value>
+                <value>
+                    <fullName>Complete Competitor Threat Mitigation</fullName>
+                    <default>false</default>
+                    <label>Complete Competitor Threat Mitigation</label>
+                </value>
+                <value>
+                    <fullName>Post Proof of Performance (PoP)</fullName>
+                    <default>false</default>
+                    <label>Post Proof of Performance (PoP)</label>
+                </value>
+                <value>
+                    <fullName>Complete Win Analysis</fullName>
+                    <default>false</default>
+                    <label>Complete Win Analysis</label>
+                </value>
+                <value>
+                    <fullName>Complete Case Study Analysis</fullName>
+                    <default>false</default>
+                    <label>Complete Case Study Analysis</label>
+                </value>
+                <value>
+                    <fullName>Push Reason</fullName>
+                    <default>false</default>
+                    <label>Push Reason</label>
+                </value>
+                <value>
+                    <fullName>Manager Bonus Approval</fullName>
+                    <default>false</default>
+                    <label>Manager Bonus Approval</label>
+                </value>
+                <value>
+                    <fullName>Demo Booked</fullName>
+                    <default>false</default>
+                    <label>Demo Booked</label>
+                </value>
+                <value>
+                    <fullName>Marketo Task</fullName>
+                    <default>false</default>
+                    <label>Marketo Task</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Type_of_Activity__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <description>A custom, read-only field on both Activity and Event records which provides a singular reportable field indicating whether the logged record is an Email, Call, Task, or Event.</description>
+        <externalId>false</externalId>
+        <formula>TEXT(ActivitySubtype)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type of Activity</label>
+        <required>false</required>
+        <securityClassification>Internal</securityClassification>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CventEvents__Attendee__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <label>Attendee</label>
+        <referenceTo>CventEvents__Attendee__c</referenceTo>
+        <relationshipLabel>Tasks</relationshipLabel>
+        <relationshipName>Activities</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CventEvents__EventTitle__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__r.CventEvents__pkg_Title__c, &quot;&quot;) &amp; HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__c, CventEvents__Event__r.CventEvents__pkg_Title__c)</formula>
+        <label>Cvent Event</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CventEvents__Event__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <label>Cvent Event Number</label>
+        <referenceTo>CventEvents__Event__c</referenceTo>
+        <relationshipLabel>Tasks</relationshipLabel>
+        <relationshipName>Activities</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>jiffle__Meeting_UUID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>UUID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>MyActivities</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>MyDelegatedActivities</fullName>
+        <filterScope>Delegated</filterScope>
+        <label>My Delegated Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>MyTeamsActivities</fullName>
+        <filterScope>Team</filterScope>
+        <label>My Team&apos;s Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>TodaysTasks</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>TASK.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TOMORROW</value>
+        </filters>
+        <label>Today&apos;s Tasks</label>
+    </listViews>
+    <listViews>
+        <fullName>UpcomingEvents</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>greaterThan</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>Upcoming Events</label>
+    </listViews>
+    <searchLayouts>
+        <searchResultsAdditionalFields>TASK.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHO_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHAT_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.DUE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+        <searchResultsCustomButtons>Log_Expert_Engagement</searchResultsCustomButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <webLinks>
+        <fullName>Log_Expert_Engagement</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Log Expert Engagement</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!Event.CreatedDate}</url>
+    </webLinks>
+</CustomObject>

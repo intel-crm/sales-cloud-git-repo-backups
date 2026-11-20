@@ -1,0 +1,131 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "01a5b72d-f8c6-40ef-a684-d7b8745dc90d",
+  "label" : "Bank Related List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "fieldsToMask" : "Owner",
+        "internalUserName" : "Intel System User",
+        "objectApiName" : "{!objectApiName}",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:core_MDF_HistoryComponent",
+      "id" : "fc78a97d-240b-44a6-8f3a-6407a1e4ba81",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d47c1643-3040-44ea-b8e0-0715a7d3f66f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!parentRecordId}",
+        "relatedListName" : "{!relatedListName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "790096be-97ff-4a8a-a0ee-35e5dc7ce848",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "725eb58f-185e-4769-9549-54880635fa20",
+        "es" : "9de1d89e-f29d-4ddf-a26e-dc461ea0d942",
+        "es_mx" : "55f93f16-6500-417b-99dc-7b839b765825",
+        "fr" : "c2deafe4-0e2b-4555-a05a-c04f4c741973",
+        "it" : "a8c5ac6d-8c00-4285-9c22-f0a08b57edb2",
+        "ja" : "5596c3ee-0ae4-4ffc-961e-cefec1f4d156",
+        "ko" : "9c88e050-050a-469a-b5a9-bf3d3d9ffbf1",
+        "pt_br" : "afd9660e-46b7-4a74-80d1-64c30d3925bb",
+        "ru" : "f7e93267-ec0b-405a-8f34-61b30a23be4a",
+        "zh_cn" : "b26c2db3-3377-47ae-8614-cf08f5b634b1",
+        "zh_tw" : "1a5534cd-ca8c-42b6-a8da-b0c4f6c6dd90"
+      },
+      "renditions" : [ {
+        "id" : "9de1d89e-f29d-4ddf-a26e-dc461ea0d942",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "725eb58f-185e-4769-9549-54880635fa20",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "55f93f16-6500-417b-99dc-7b839b765825",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c2deafe4-0e2b-4555-a05a-c04f4c741973",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a8c5ac6d-8c00-4285-9c22-f0a08b57edb2",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5596c3ee-0ae4-4ffc-961e-cefec1f4d156",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9c88e050-050a-469a-b5a9-bf3d3d9ffbf1",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "afd9660e-46b7-4a74-80d1-64c30d3925bb",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f7e93267-ec0b-405a-8f34-61b30a23be4a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b26c2db3-3377-47ae-8614-cf08f5b634b1",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1a5534cd-ca8c-42b6-a8da-b0c4f6c6dd90",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "66475da1-4482-4990-abce-3d59b8d21beb",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "79a19651-441f-4dfe-82a6-2cc5041e1e33",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a40"
+}

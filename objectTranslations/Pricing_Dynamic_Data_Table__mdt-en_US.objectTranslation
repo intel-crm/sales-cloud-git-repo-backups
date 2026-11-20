@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Dynamic Data Table</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Dynamic Data Tables</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field Label --></label>
+        <name>Pricing_Field_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Pricing_Field_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Query --></label>
+        <name>Pricing_Query__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>Pricing_Record_Type_Pkl__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center GPU</masterLabel>
+            <translation><!-- Data Center GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Data Center Xeon® CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet</masterLabel>
+            <translation><!-- Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Incentive</masterLabel>
+            <translation><!-- Financial Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ PMem</masterLabel>
+            <translation><!-- Optane™ PMem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ SSD</masterLabel>
+            <translation><!-- Optane™ SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Volume Quotes - Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Small Volume Quotes - Data Center Xeon® CPU --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Search Column --></label>
+        <name>Pricing_SearchColumn_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Where Clause --></label>
+        <name>Pricing_Where_Clause__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

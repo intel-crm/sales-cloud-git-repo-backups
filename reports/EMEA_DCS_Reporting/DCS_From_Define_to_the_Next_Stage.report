@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_75970220</developerName>
+        <masterLabel>DCS Regions</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Louise Summerton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Anna Hermansson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MATTHEW BIRCH</sourceValue>
+            </sourceValues>
+            <value>DCS NEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Guy Bar-Ner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jorge Cordova</sourceValue>
+            </sourceValues>
+            <value>DCS SEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Christoph Johann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dietmar Rohlf</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Markus Gabler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Matthias Todd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mike H Cato</sourceValue>
+            </sourceValues>
+            <value>DCS CEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eric Levander</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jon Jadersten</sourceValue>
+            </sourceValues>
+            <value>DCS Services Providers</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Fabian De Pasquale</sourceValue>
+            </sourceValues>
+            <value>DCS WEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Artur Dlugosz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Szekely</sourceValue>
+            </sourceValues>
+            <value>DCS CEE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Alexey Ivanov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Valery Bochkaryov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Victoria Yevtoushenko</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>eugene bakunov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>natalia galyan</sourceValue>
+            </sourceValues>
+            <value>DCS RCIS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Simon Wilyman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>luca romani</sourceValue>
+            </sourceValues>
+            <value>DCS Channels &amp; Platforms</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ediz Altun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Firas Alfanney</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mediha Kayacan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>frans j pieterse</sourceValue>
+            </sourceValues>
+            <value>DCS META</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Edward R Galyamov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edwin Peters</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Eran Gal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maciej Osiecki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Uros Huzjak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <value>DCS OSC</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_90219484</developerName>
+        <masterLabel>To Stage Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Qualify</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Define</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Develop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design</sourceValue>
+            </sourceValues>
+            <value>To Open Stage</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Design Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <value>To Won Stage</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>To Lost Stage</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Opportunity.Core_Oppty_Count__c</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStackedTo100</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_75970220</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>FROM_OPPORTUNITY_STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_CHANGE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Segments__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Team_Geos__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>OPP_CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_STAGE_CHANGE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Oppty_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FROM_OPPORTUNITY_STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Define</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_CHANGE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_75970220</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Other</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_90219484</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>To Lost Stage</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_75970220</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>DCS From Define to the Next Stage</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityHistory</reportType>
+    <scope>all</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-20</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-20</startDate>
+    </timeFrameFilter>
+</Report>

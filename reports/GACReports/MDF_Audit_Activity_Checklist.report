@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerFundRequest$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Attribution_Variance_Pos_txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Attribution_Variance_Neg_txt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Government_Nexus__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Activity_Description__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundRequest$Core_MDF_Activity_Reimbursement_Amt_nbr__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_ToBeClosedDate__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>MDF Audit - Activity Checklist</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Activity_and_Campaign_with_Budget_Cap__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>PartnerFundRequest$Core_MDF_ToBeClosedDate__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundRequest$Core_MDF_ToBeClosedDate__c</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

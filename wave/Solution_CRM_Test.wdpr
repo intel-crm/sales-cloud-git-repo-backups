@@ -1,0 +1,1346 @@
+{
+  "version" : "60.0",
+  "nodes" : {
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OpportunityProducts.Core_Risk_Priority__c", "op.Core_At_Risk__c", "OpportunityProducts.Core_At_Risk_Status__c", "op.Core_Product_Segment__c", "Core_Sales_Groups__c", "Core_Technical_Owner__c", "OpportunityProducts.Opportunity.Account.Owner.Name", "Opportunit.OpportunityId", "OpportunityAccount.Core_Unified_Intermediate_Customer_Name__c", "Opportunit.Name", "StageName", "op.OpportunityId", "KPIDateYear", "Name", "Core_Consumption_Market__c", "OpportunityPartner.Core_Partner_Role__c", "OpportunityProducts.Opportunity.Core_Opp_Strategic_Opportunity__c", "op.Core_BU_Short_Name__c", "OpportunityProducts.Opportunity.TeamMembers.User.Manager.Manager.Name", "KPIQuarter", "Opportunit.Core_KPI_Date__c", "OpportunityProducts.Opportunity.TechOwner.Name", "OpportunityName", "OppAccountUser.OppOwnerManagerName", "Opportunit.Id", "Opportunit.Core_Status__c", "OpportunityProducts.Core_KPI_Date__c", "OpportunityProducts.Opportunity.TeamMembers.User.Name", "op.Product2Id", "CloseDate", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Name", "sales_group", "OpportunityPartner.AccountPartner.Name", "Id", "op.Core_Status__c", "AccountName", "Core_Technical_Owner_Manager__c", "OpportunityProducts.Opportunity.Owner.Manager.Manager.Name", "Core_Product_Application__c", "OwnerId", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Manager.Name", "OpportunityProducts.Opportunity.TechOwner.Manager.Manager.Name", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Name", "OpportunityProducts.Opportunity.Owner.ManagerId", "OpportunityProducts.Opportunity.TeamMembers.User.Manager.Name", "OppForecastJoin.Core_Forecast__c", "OpportunityProducts.Product_Code", "op.CoreKPIDateYear", "OpportunityProducts.Opportunity.TechOwner.ManagerId", "OpportunityAccount.Core_Unified_Global_Customer_Name__c", "OpportunityProducts.Opportunity.Core_Opportunity_Type__c", "OpportunityProducts.Opportunity.OpportunityPartner.Core_Partner_Type__c", "OpportunityProducts.Opportunity.TechOwner.Manager.Name", "OpportunityProducts.Opportunity.Owner.Manager.Name", "OpportunityPartner.AccountPartner.Core_Unified_Global_Customer_Name__c", "OpportunityProducts.Opportunity.CloseDate", "OpportunityProducts.Opportunity.Owner.Name", "BU.op.Core_Product_Segment__c", "Opportunit.Core_KPI_Total_Price__c", "BU.op.Core_Lost_Total_Price__c", "op.Core_Lost_Total_Price__c", "Amount", "op.Core_KPI_Total_Price__c", "OpportunityProducts.Opportunity.Core_Days_from_Opportunity_Create_to_Su__c", "OpportunityProducts.Opportunity.Core_Wins_Oppty__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "CommitOppProdWithNoPrd",
+          "name" : "CommitOppProdWithNoPrd"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_NM", "SOLUTION_ID", "CORE_CONTENT_LINK_NM", "CORE_END_CUSTOMER_SOLUTION_IND", "CORE_SOLUTION_DESCRIPTION_DSC", "CORE_SOLUTION_OWNER_EMAIL_NM", "CORE_SOLUTION_TITLE_NM", "CORE_SOLUTION_TYPE_NM", "CORE_VERSION_NBR", "CORE_REGION_DEPLOYED_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_TECHNOLOGY_ENABLED_C_SPLIT_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_TECHNOLOGY",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_TECHNOLOGY"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_INDUSTRY_C_SPLIT_NM", "MVIEW_TS" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_INDUSTRY",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_INDUSTRY"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_INDUSTRY_USE_CASE_C_SPLIT_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_INDUSTRY_USE_CASE",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_INDUSTRY_USE_CASE"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SOLUTION_ID", "CORE_APPLICATION_WORKLOAD_SPLIT_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_SOLUTION_APPLICATION_WORKLOAD",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_SOLUTION_APPLICATION_WORKLOAD"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OPP_ID", "SOLUTION_ID" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "FACT_OPPORTUNITY_SOLUTION",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "FACT_OPPORTUNITY_SOLUTION"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET3", "LOAD_DATASET2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_technology",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET4", "JOIN0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_Industry",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET5", "JOIN1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_Industry_Use_Case",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET6", "JOIN2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_Application_Workload",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "LOAD_DATASET7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOLUTION_ID" ],
+        "rightQualifier" : "Solution_opp",
+        "rightKeys" : [ "SOLUTION_ID" ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET1", "JOIN4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Opportunit.OpportunityId" ],
+        "rightQualifier" : "Solution_OpportunityProducts",
+        "rightKeys" : [ "Solution_opp.OPP_ID" ]
+      }
+    },
+    "LOAD_DATASET8" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "PARTNER_ID", "PARTNER_NAME", "PARTNER_NOTES", "PARTNER_ROLE", "PARTNER_SALESPERSON", "PARTNER_CREATED_DATE", "PARTNER_CREATED_BY", "CRE_USR_NM", "CIM_ID", "IU_ID", "IU_NM", "PARTNER_ACCOUNT_ID", "OPP_ID" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_PTNR",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_PTNR"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "JOIN5", "LOAD_DATASET8" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Opportunit.OpportunityId" ],
+        "rightQualifier" : "Parter_Solution_Products",
+        "rightKeys" : [ "OPP_ID" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA21" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Solution_CRM_Test",
+          "name" : "Solution_CRM_Test",
+          "folderName" : "Strategic_Opportunities"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "JOIN10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Opportunity_Name",
+          "label" : "Opportunity Name",
+          "formulaExpression" : "\"Name\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "StageSorted",
+          "label" : "StageSorted",
+          "formulaExpression" : "(case when StageName = 'Qualify' then '1 - Qualify' when StageName = 'Define' then '2 - Define' when StageName = 'Develop' then '3 - Develop' when StageName = 'Design' then '4 - Design' when StageName = 'Design Win' then '5 - Design Win' when StageName = 'Production Win' then '6 - Production Win' when StageName = 'Production Lost' then '7 - Production Lost' when StageName = 'Production Cancelled' then '8 - Production Cancelled' when StageName = 'Lost' then '9 - Lost' when StageName = 'Cancelled' then '91 - Cancelled'  else '99 - No Match' end)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Status_Name",
+          "label" : "Status Name",
+          "formulaExpression" : "case when \"Opportunit.Core_Status__c\" = 'Production Win' then 'Won' when \"Opportunit.Core_Status__c\" = 'Production Lost' then 'Won' when \"Opportunit.Core_Status__c\" = 'Production Cancelled' then 'Won' when \"Opportunit.Core_Status__c\" = 'Win Approved' then 'Won' when \"Opportunit.Core_Status__c\" = 'Lost' then 'Lost' when \"Opportunit.Core_Status__c\" = 'Cancelled' then 'Lost' when \"Opportunit.Core_Status__c\" = 'Pending' then 'Open' when \"Opportunit.Core_Status__c\" = 'On Hold' then 'Open' when \"Opportunit.Core_Status__c\" = 'Win Submitted' then 'Open' else \"Opportunit.Core_Status__c\" end",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Partner_Name",
+          "label" : "Partner Name",
+          "formulaExpression" : "\"Parter_Solution_Products.PARTNER_NAME\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA3" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Application_Workload",
+          "label" : "Application Workload",
+          "formulaExpression" : "\"Solution_OpportunityProducts.CORE_APPLICATION_WORKLOAD_SPLIT_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Tech_Enable",
+          "label" : "Tech Enable",
+          "formulaExpression" : "\"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.CORE_TECHNOLOGY_ENABLED_C_SPLIT_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA6" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Industry_Use_Cases",
+          "label" : "Industry Use Cases",
+          "formulaExpression" : "\"Solution_OpportunityProducts.Solution_Application_Workload.CORE_INDUSTRY_USE_CASE_C_SPLIT_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA7" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Solution_Name",
+          "label" : "Solution Name",
+          "formulaExpression" : "\"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.Solution_technology.SOLUTION_NM\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA8" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "isVBS",
+          "label" : "Is VBS",
+          "formulaExpression" : "case when \"Opp_VBS.Core_VBS_Status__c\" in ('Pending', 'SOAR 1 Qualified', 'Approved') then 'VBS' else null end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA9" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA8" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "isAI",
+          "label" : "Is AI",
+          "formulaExpression" : "case \r\n    when (((\r\n        (contains(\"Opportunit.Name\", 'Gaudi') or contains(\"Opportunit.Name\", 'GPU Flex') or contains(\"Opportunit.Name\", 'Developer Cloud')) and \"Opp_VBS.Core_has_Solution__c\" = 'true'\r\n        )\r\n        or ((contains(\"Opportunit.Name\", 'Xeon') or contains(\"Opportunit.Name\", 'Arc') or contains(\"Opportunit.Name\", 'Core') or contains(\"Opportunit.Name\", 'OpenVino') or contains(\"Opportunit.Name\", 'oneAPI'))\r\n        and (contains(Application_Workload, 'AI Inference') or contains(Application_Workload, 'AI Training') or contains(Application_Workload, 'AI on Xeon') or contains(\"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.CORE_TECHNOLOGY_ENABLED_C_SPLIT_NM\", 'oneAPI') or contains(\"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.CORE_TECHNOLOGY_ENABLED_C_SPLIT_NM\", 'OpenVino')))\r\n        )\r\n        or (contains(\"Opportunit.Name\", 'Core') and contains(\"Opportunit.Name\", 'Ultra') and startsWith(Solution_Name, 'AI PC'))\r\n        )\r\n then 'AI' else null end\r\n\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA10" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA9" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "VBS_AI2",
+          "label" : "solution VBS/AI",
+          "formulaExpression" : "case \r\n    when isAI = 'AI' and isVBS = 'VBS' \r\n    then 'VSB/AI' \r\n    when isAI = 'AI' \r\n    then 'AI' \r\n    when isVBS = 'VBS' \r\n    then 'VBS' \r\nelse '-' end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA11" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Status_RYOG_pre",
+          "label" : "Status",
+          "formulaExpression" : "case \r\n    when  StageName in ('Lost','Cancelled')\r\n    then 'Red'\r\n    when \"Opp_VBS.Core_At_Risk__c\" = 'true' \r\n    then 'Yellow'\r\n    else 'Green' \r\nend ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA12" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "VBSAIlen",
+          "label" : "VBSAI Len",
+          "formulaExpression" : "char_length(VBS_AI2)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA13" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "risk_num",
+          "label" : "Risk #",
+          "formulaExpression" : "substr(\"OpportunityProducts.Core_Risk_Priority__c\", 1, 1)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "TO_MEASURE0" : {
+      "action" : "typeCast",
+      "sources" : [ "FORMULA13" ],
+      "parameters" : {
+        "fields" : [ {
+          "name" : "risk_num",
+          "newProperties" : {
+            "label" : "Risk # To Number",
+            "name" : "risk_num_to_measure",
+            "typeProperties" : {
+              "type" : "NUMBER",
+              "scale" : 0,
+              "precision" : 18
+            }
+          }
+        } ]
+      }
+    },
+    "FORMULA22" : {
+      "action" : "formula",
+      "sources" : [ "TO_MEASURE0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "sales_grouping",
+          "label" : "Sales Grouping",
+          "formulaExpression" : "case \r\n    when contains(\"Opp_VBS.Core_Sales_Groups__c\", 'Americas') then 'Americas'\r\n    when contains(\"Opp_VBS.Core_Sales_Groups__c\", 'APJ') then 'APJ'\r\n    when contains(\"Opp_VBS.Core_Sales_Groups__c\", 'EMEA') then 'EMEA'\r\n    when contains(\"Opp_VBS.Core_Sales_Groups__c\", 'PRC') then 'PRC'\r\n    when contains(\"Opp_VBS.Core_Sales_Groups__c\", 'Global') then 'GSS'\r\n    else 'Other'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "LOAD_DATASET9" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Sales_Groups__c", "Id", "Core_Status_Update__c", "Core_At_Risk__c", "Core_has_Solution__c", "Core_VBS_Status__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Opportunity",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Opportunity"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN7" : {
+      "action" : "join",
+      "sources" : [ "JOIN6", "LOAD_DATASET9" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Opp_VBS",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FILTER1" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA22" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "VBS_AI2",
+          "operator" : "NOT",
+          "operands" : [ "-" ]
+        } ]
+      }
+    },
+    "FILTER2" : {
+      "action" : "filter",
+      "sources" : [ "FORMULA22" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "TEXT",
+          "field" : "OpportunityProducts.Core_Risk_Priority__c",
+          "operator" : "EQUAL",
+          "operands" : [ "1 Red Flag – Mission Critical, SMG Staff Attention", "2 High - Vital to Opportunity, Action Required", "3 Medium – Unusual Risk, Action Required" ]
+        } ]
+      }
+    },
+    "EXTRACT0" : {
+      "action" : "extractGrains",
+      "sources" : [ "FILTER2" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE1" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT0" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "MIN",
+          "source" : "risk_num_to_measure",
+          "name" : "MIN_risk_num_to_measure",
+          "label" : "Minimum Risk # To Number"
+        } ],
+        "groupings" : [ "Id" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "EXTRACT1" : {
+      "action" : "extractGrains",
+      "sources" : [ "FILTER1" ],
+      "parameters" : {
+        "grainExtractions" : [ ]
+      }
+    },
+    "AGGREGATE3" : {
+      "action" : "aggregate",
+      "sources" : [ "EXTRACT1" ],
+      "parameters" : {
+        "aggregations" : [ {
+          "action" : "MAX",
+          "source" : "VBSAIlen",
+          "name" : "MAX_VBSAIlen",
+          "label" : "Maximum VBSAI Len"
+        } ],
+        "groupings" : [ "Id" ],
+        "pivots" : [ ],
+        "nodeType" : "STANDARD"
+      }
+    },
+    "JOIN8" : {
+      "action" : "join",
+      "sources" : [ "FORMULA22", "AGGREGATE1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Aggregate0",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "JOIN9" : {
+      "action" : "join",
+      "sources" : [ "JOIN8", "AGGREGATE3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Aggregate2",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "FORMULA14" : {
+      "action" : "formula",
+      "sources" : [ "JOIN9" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "VBS_AI",
+          "label" : "Opp VBS/AI",
+          "formulaExpression" : "case \r\n    when \"Aggregate2.MAX_VBSAIlen\" = 6 then 'VBS/AI'\r\n    when \"Aggregate2.MAX_VBSAIlen\" = 3 then 'VBS'\r\n    when \"Aggregate2.MAX_VBSAIlen\" = 2 then 'AI'\r\n    else 'Other'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA15" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA14" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Status_RYOG",
+          "label" : "Status",
+          "formulaExpression" : "case \r\n    when  StageName in ('Lost','Cancelled')\r\n    then 'Gray'\r\n    when \"Aggregate0.MIN_risk_num_to_measure\" = 1 then 'Red'\r\n    when \"Aggregate0.MIN_risk_num_to_measure\" = 2 \r\n    then 'Orange' \r\n    when \"Aggregate0.MIN_risk_num_to_measure\" = 3 \r\n    then 'Yellow'\r\n    else 'Green' \r\nend ",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA16" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA15" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Status_shortened",
+          "label" : "Status Shortened",
+          "formulaExpression" : "substr(\"Opp_VBS.Core_Status_Update__c\",1,150)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA17" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "riskpriority",
+          "label" : "Risk Priority",
+          "formulaExpression" : "case when \"OpportunityProducts.Core_Risk_Priority__c\" is null then '-' else \"OpportunityProducts.Core_Risk_Priority__c\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA18" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA17" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "RiskReason",
+          "label" : "Risk Reason",
+          "formulaExpression" : "case when \"LineItem.Core_Risk_Reason1__c\" is null then '-' else \"LineItem.Core_Risk_Reason1__c\" end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA19" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA18" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "riskdetail",
+          "label" : "Risk Detail",
+          "formulaExpression" : "case when \"LineItem.Core_Risk_Detail__c\" is null then '-' else \"LineItem.Core_Risk_Detail__c\" end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA20" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA19" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "solutiondescription",
+          "label" : "Solution Description",
+          "formulaExpression" : "case when \"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.Solution_technology.CORE_SOLUTION_DESCRIPTION_DSC\" is null then '-' else \"Solution_OpportunityProducts.Solution_Application_Workload.Solution_Industry_Use_Case.Solution_Industry.Solution_technology.CORE_SOLUTION_DESCRIPTION_DSC\" end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA21" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA20" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "StatusSquare",
+          "label" : "Status",
+          "formulaExpression" : "'■'",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Risk_Reason1__c", "Core_Risk_Detail__c", "Core_Risk_Priority__c", "Id", "Quantity" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "OpportunityLineItem",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "OpportunityLineItem"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN10" : {
+      "action" : "join",
+      "sources" : [ "JOIN7", "LOAD_DATASET10" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Opportunit.Id" ],
+        "rightQualifier" : "LineItem",
+        "rightKeys" : [ "Id" ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET1" : {
+        "label" : "CommitOppProdWithNoPrd",
+        "type" : "LOAD_DATASET",
+        "top" : 250.2,
+        "left" : 952,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET2" : {
+        "label" : "DIM_SOLUTION",
+        "type" : "LOAD_DATASET",
+        "top" : 250.2,
+        "left" : 252,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET3" : {
+        "label" : "DIM_SOLUTION_TECHNOLOGY",
+        "type" : "LOAD_DATASET",
+        "top" : 390.2,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET4" : {
+        "label" : "DIM_SOLUTION_INDUSTRY",
+        "type" : "LOAD_DATASET",
+        "top" : 250.2,
+        "left" : 392,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET5" : {
+        "label" : "DIM_SOLUTION_INDUSTRY_USE_CASE",
+        "type" : "LOAD_DATASET",
+        "top" : 250.3,
+        "left" : 532,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET6" : {
+        "label" : "DIM_SOLUTION_APPLICATION_WORKLOAD",
+        "type" : "LOAD_DATASET",
+        "top" : 250.2,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET7" : {
+        "label" : "FACT_OPPORTUNITY_SOLUTION",
+        "type" : "LOAD_DATASET",
+        "top" : 250.3,
+        "left" : 812,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN0" : {
+        "label" : "Solution_technology: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 252
+      },
+      "JOIN1" : {
+        "label" : "Solution_Industry: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 392
+      },
+      "JOIN2" : {
+        "label" : "Solution_Industry_Use_Case: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.3,
+        "left" : 532
+      },
+      "JOIN3" : {
+        "label" : "Solution_Application_Workload: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 672
+      },
+      "JOIN4" : {
+        "label" : "Solution_opp: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.3,
+        "left" : 812
+      },
+      "JOIN5" : {
+        "label" : "Solution_OpportunityProducts: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 952
+      },
+      "LOAD_DATASET8" : {
+        "label" : "DIM_PTNR",
+        "type" : "LOAD_DATASET",
+        "top" : 250.2,
+        "left" : 1092,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN6" : {
+        "label" : "Parter_Solution_Products: augment",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 1092
+      },
+      "OUTPUT0" : {
+        "label" : "Output 0",
+        "type" : "OUTPUT",
+        "top" : 392.2,
+        "left" : 2071.6
+      },
+      "TRANSFORM0" : {
+        "label" : "Transform 0",
+        "type" : "TRANSFORM",
+        "top" : 392,
+        "left" : 1512,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opportunity_Name"
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "StageSorted"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Status Name"
+          },
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Partner Name"
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Application Workload"
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Tech Enable"
+          },
+          "FORMULA6" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Industry Use Cases"
+          },
+          "FORMULA7" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Solution Name"
+          },
+          "FORMULA8" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA9" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA10" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA11" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA12" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA13" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "TO_MEASURE0" : {
+            "label" : "To Number"
+          },
+          "FORMULA22" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "FORMULA1"
+        }, {
+          "source" : "FORMULA1",
+          "target" : "FORMULA2"
+        }, {
+          "source" : "FORMULA2",
+          "target" : "FORMULA3"
+        }, {
+          "source" : "FORMULA3",
+          "target" : "FORMULA4"
+        }, {
+          "source" : "FORMULA4",
+          "target" : "FORMULA5"
+        }, {
+          "source" : "FORMULA5",
+          "target" : "FORMULA6"
+        }, {
+          "source" : "FORMULA6",
+          "target" : "FORMULA7"
+        }, {
+          "source" : "FORMULA7",
+          "target" : "FORMULA8"
+        }, {
+          "source" : "FORMULA8",
+          "target" : "FORMULA9"
+        }, {
+          "source" : "FORMULA9",
+          "target" : "FORMULA10"
+        }, {
+          "source" : "FORMULA10",
+          "target" : "FORMULA11"
+        }, {
+          "source" : "FORMULA11",
+          "target" : "FORMULA12"
+        }, {
+          "source" : "FORMULA12",
+          "target" : "FORMULA13"
+        }, {
+          "source" : "FORMULA13",
+          "target" : "TO_MEASURE0"
+        }, {
+          "source" : "TO_MEASURE0",
+          "target" : "FORMULA22"
+        } ]
+      },
+      "LOAD_DATASET9" : {
+        "label" : "Opportunity",
+        "type" : "LOAD_DATASET",
+        "top" : 250.2,
+        "left" : 1232,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN7" : {
+        "label" : "Join 7",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 1232
+      },
+      "FILTER1" : {
+        "label" : "Filter 1",
+        "type" : "FILTER",
+        "top" : 532,
+        "left" : 1512
+      },
+      "FILTER2" : {
+        "label" : "Filter 2",
+        "type" : "FILTER",
+        "top" : 252,
+        "left" : 1512
+      },
+      "AGGREGATE0" : {
+        "label" : "Aggregate 0",
+        "type" : "AGGREGATE",
+        "top" : 252.2,
+        "left" : 1651.6,
+        "graph" : {
+          "EXTRACT0" : null,
+          "AGGREGATE1" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT0",
+          "target" : "AGGREGATE1"
+        } ]
+      },
+      "AGGREGATE2" : {
+        "label" : "Aggregate 2",
+        "type" : "AGGREGATE",
+        "top" : 531.7,
+        "left" : 1792,
+        "graph" : {
+          "EXTRACT1" : null,
+          "AGGREGATE3" : null
+        },
+        "connectors" : [ {
+          "source" : "EXTRACT1",
+          "target" : "AGGREGATE3"
+        } ]
+      },
+      "JOIN8" : {
+        "label" : "Join 8",
+        "type" : "JOIN",
+        "top" : 392.2,
+        "left" : 1651.6
+      },
+      "JOIN9" : {
+        "label" : "Join 9",
+        "type" : "JOIN",
+        "top" : 392.2,
+        "left" : 1791.6
+      },
+      "TRANSFORM1" : {
+        "label" : "Transform 1",
+        "type" : "TRANSFORM",
+        "top" : 392.2,
+        "left" : 1931.6,
+        "graph" : {
+          "FORMULA14" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA15" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA16" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA17" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA18" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA19" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA20" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA21" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA14",
+          "target" : "FORMULA15"
+        }, {
+          "source" : "FORMULA15",
+          "target" : "FORMULA16"
+        }, {
+          "source" : "FORMULA16",
+          "target" : "FORMULA17"
+        }, {
+          "source" : "FORMULA17",
+          "target" : "FORMULA18"
+        }, {
+          "source" : "FORMULA18",
+          "target" : "FORMULA19"
+        }, {
+          "source" : "FORMULA19",
+          "target" : "FORMULA20"
+        }, {
+          "source" : "FORMULA20",
+          "target" : "FORMULA21"
+        } ]
+      },
+      "LOAD_DATASET10" : {
+        "label" : "OpportunityLineItem",
+        "type" : "LOAD_DATASET",
+        "top" : 252.10000000000002,
+        "left" : 1372,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN10" : {
+        "label" : "Join 10",
+        "type" : "JOIN",
+        "top" : 390.2,
+        "left" : 1372
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN1"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN1",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN5",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET8",
+      "target" : "JOIN6"
+    }, {
+      "source" : "JOIN10",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "JOIN6",
+      "target" : "JOIN7"
+    }, {
+      "source" : "LOAD_DATASET9",
+      "target" : "JOIN7"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "FILTER1"
+    }, {
+      "source" : "FILTER2",
+      "target" : "AGGREGATE0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "FILTER2"
+    }, {
+      "source" : "FILTER1",
+      "target" : "AGGREGATE2"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "JOIN8"
+    }, {
+      "source" : "AGGREGATE0",
+      "target" : "JOIN8"
+    }, {
+      "source" : "JOIN8",
+      "target" : "JOIN9"
+    }, {
+      "source" : "AGGREGATE2",
+      "target" : "JOIN9"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "JOIN9",
+      "target" : "TRANSFORM1"
+    }, {
+      "source" : "JOIN7",
+      "target" : "JOIN10"
+    }, {
+      "source" : "LOAD_DATASET10",
+      "target" : "JOIN10"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

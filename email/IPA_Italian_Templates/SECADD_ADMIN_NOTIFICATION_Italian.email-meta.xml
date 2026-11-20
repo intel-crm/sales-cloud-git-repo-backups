@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SECADD_ADMIN_NOTIFICATION_Italian</name>
+    <style>none</style>
+    <subject>Verifica la tua richiesta Intel® Partner Alliance</subject>
+    <textOnly>Richiesta in attesa di verifica
+
+{!UserName},
+
+ti preghiamo di verificare la seguente richiesta: aggiungi {{CONTACTEMAILID}} al tuo account {{ACCOUNTNAME}} come contatto.
+
+Accedi per approvare o rifiutare la richiesta.
+
+
+Grazie.
+Il tuo team Intel® Partner Alliance
+
+Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

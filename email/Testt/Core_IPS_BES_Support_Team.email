@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hi Support Team,]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div><b>Please find the issue details:</b></div><div><br></div><div><div style="font-size: 12pt;"><b style="font-size: 12pt;">Error link:</b><span style="font-size: 12pt;">&nbsp;</span><font face="arial">{!Core_IPS_BES_Error_Log__c.Link}</font></div><div style="font-size: 12pt;"><b>Error code</b>:&nbsp;{!Core_IPS_BES_Error_Log__c.Core_IPS_Error_Code__c}</div><div style="font-size: 12pt;"><b>Error&nbsp;</b><b style="font-size: 12pt;">Outbound:&nbsp;</b><font face="arial" style="font-size: 12pt;">{!Core_IPS_BES_Error_Log__c.Core_IPS_Outbound_Message_Id__c}</font></div><div style="font-size: 12pt;"><b style="font-size: 12pt;">Status:&nbsp;</b><font face="arial">{!Core_IPS_BES_Error_Log__c.Core_IPS_Status__c}</font></div><div style="font-size: 12pt;"><b>Description:</b>&nbsp;{!Core_IPS_BES_Error_Log__c.Core_IPS_Error_Description__c}</div><div style="font-size: 12pt;"><b style="font-size: 12pt;">Case:&nbsp;</b><font face="arial">{!Core_IPS_BES_Error_Log__c.Core_IPS_ObjectIds__c}</font></div><div style="font-size: 12pt;"><br></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

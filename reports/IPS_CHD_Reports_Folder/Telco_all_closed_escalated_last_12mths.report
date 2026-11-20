@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_44768113</developerName>
+        <masterLabel>BL</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Telco-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-Unassigned</sourceValue>
+            </sourceValues>
+            <value>BL Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Cable-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-WW</sourceValue>
+            </sourceValues>
+            <value>BL Cable</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Comp-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Convergate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-ETH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-SHDSL</sourceValue>
+            </sourceValues>
+            <value>BL Comp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Retail-WW</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Cable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Telco</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi</sourceValue>
+            </sourceValues>
+            <value>BL Wi-Fi</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_21199437</developerName>
+        <masterLabel>Support Level</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <value>Front Line</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Domain Expert</sourceValue>
+            </sourceValues>
+            <value>Domain Expert</value>
+        </values>
+        <values>
+            <value>Engineering</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_63958195</developerName>
+        <masterLabel>promoted</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_Promote_Status__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Failed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Promote</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Progress</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sent Successfully</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Not Yet Promoted</sourceValue>
+            </sourceValues>
+            <value>no</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Done</sourceValue>
+            </sourceValues>
+            <value>yes</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Support_Level__c</field>
+    </columns>
+    <columns>
+        <field>OPEN</field>
+    </columns>
+    <columns>
+        <field>CLOSED</field>
+    </columns>
+    <columns>
+        <field>Case.Core_CaseType__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Escalated_Level__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_63958195</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CASE_ID</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Promote_Status__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Backend_ID_URL__c</field>
+    </columns>
+    <description>upon request of UW</description>
+    <filter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Connected Home Division</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>CHD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Escalated_Level__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Development/Engineering,Escalate to Development/Engineering,Engineering,Consult Engineering</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATEONLY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_MONTHS:12</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_CaseType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Feature Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Unassigned</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>CHD - Telco</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_44768113</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CLOSED_DATEONLY</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>Telco - all closed escalated last 12mths</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

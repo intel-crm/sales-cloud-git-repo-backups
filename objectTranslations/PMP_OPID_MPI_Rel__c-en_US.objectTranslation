@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>OPID MPI Relationship</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>OPID MPI Relationships</value>
+    </caseValues>
+    <fields>
+        <label><!-- Marketing Profile Id --></label>
+        <name>Core_Marketing_Profile_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account MPI Unique ID --></label>
+        <name>PMP_Account_MPI_Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active OPID Associations --></label>
+        <name>PMP_Active_OPID_Associations__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is PagAccount --></label>
+        <name>PMP_Is_PagAccount_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Profile Information ID --></label>
+        <lookupFilter>
+            <errorMessage><!-- MPI must be a published copy and have a Benefit --></errorMessage>
+        </lookupFilter>
+        <name>PMP_Marketing_Profile_Id__c</name>
+        <relationshipLabel><!-- OPID MPI Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account/OPID --></label>
+        <name>PMP_One_Partner_ID__c</name>
+        <relationshipLabel><!-- OPID MPI Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Relation Last Deactivated date --></label>
+        <name>PMP_RelLastDeactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront Published Copy --></label>
+        <name>PMP_Storefront_Published_Copy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront Working Copy --></label>
+        <name>PMP_Storefront_Working_Copy__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

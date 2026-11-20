@@ -1,0 +1,50 @@
+<aura:component implements="force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" 
+access="global" controller="PCC_Submit_DesignRegistrationController">
+    <!-- Attributes -->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="showSubmit" type="Boolean" default="false" />
+    <aura:attribute name="showWarning" type="Boolean" default="false" />
+    <aura:attribute name="showException" type="Boolean" default="false" />
+    <aura:attribute name="disableButton" type="Boolean" default="false" />
+    
+    <aura:attribute name="SubmitForApprovalValue" type="String" />
+    <aura:attribute name="ProductNotAvailableValue" type="String" />
+    <aura:attribute name="dRSubmissionMsgValue" type="String" />
+    <aura:attribute name="dRExceptionMsgValue" type="String" />
+
+    <!-- Controller Initialization -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- Display message and buttons -->
+    <aura:if isTrue="{!or(v.showSubmit, v.showWarning)}">
+        <div class="slds-text-align_center">
+            <div class="slds-border_bottom slds-var-p-bottom_medium">
+                {!v.SubmitForApprovalValue}
+            </div>
+            <div class="slds-text-heading_small slds-var-p-top_medium">
+                <aura:if isTrue="{!v.showSubmit}">
+                    <p>{!v.dRSubmissionMsgValue}</p>
+                </aura:if>
+                <aura:if isTrue="{!v.showWarning}">
+                    <p>{!v.ProductNotAvailableValue}</p>
+                </aura:if>
+            </div>
+        </div>
+        <div class="slds-float_right slds-var-p-top_medium">
+           <aura:if isTrue="{!v.showSubmit}">
+                <lightning:button label="Ok" onclick="{!c.handleYesClick}" class="slds-button slds-button_brand" disabled="{!v.disableButton}" />
+            </aura:if>
+
+            <lightning:button label="Cancel" variant="brand" onclick="{!c.cancelPopup}" />
+        </div>
+        
+    </aura:if>
+    <aura:if isTrue="{!v.showException}">
+        <div class="slds-text-heading_small slds-var-p-top_medium">
+            <p>{!v.dRExceptionMsgValue}</p>
+        </div>
+        <div class="slds-float_right slds-var-p-top_medium">
+            <lightning:button label="Cancel" variant="brand" onclick="{!c.cancelPopup}" />
+        </div>
+    </aura:if>
+</aura:component>

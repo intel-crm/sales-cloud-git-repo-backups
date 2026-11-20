@@ -1,0 +1,23 @@
+.view-mode {
+   pointer-events: none;
+    padding: 1rem;
+
+}
+.dropdown {
+    border: 1px solid #d8dde6;
+    max-height: 220px;
+    overflow-y: auto;
+    background: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f3f3f3;
+}

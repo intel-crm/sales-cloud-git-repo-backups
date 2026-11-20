@@ -1,0 +1,16 @@
+<design:component label="Marketplace Search Bar Full Width">
+
+  <design:attribute name="debugMode" label="Debug Mode (won't redirect)" />
+	<design:attribute name="displayType" label="Display Type" datasource="all,product,partner" />
+  <design:attribute name="searchPlaceholderTextOverride" label="Search Placeholder Text (Override search type defaults)" />
+  <design:attribute name="showKeywordInDropdown" label="Show Keyword in Dropdown"/>
+
+  <design:attribute name="showSearchAllMarketplace" label="Show Search in All Marketplace"/>
+  <design:attribute name="searchAllMarketplaceLabel" label="Search All Marketplace Label"/>
+
+  <design:attribute name="showSearchAllProducts" label="Show Search in All Products"/>
+  <design:attribute name="searchAllProductsLabel" label="Search All Products Label"/>
+
+  <design:attribute name="showSearchAllPartners" label="Show Search in All Partners"/>
+  <design:attribute name="searchAllPartnersLabel" label="Search All Partners Label"/>
+</design:component>

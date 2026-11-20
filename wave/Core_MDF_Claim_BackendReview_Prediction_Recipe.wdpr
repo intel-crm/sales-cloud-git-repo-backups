@@ -1,0 +1,212 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "FILTER0" : {
+      "action" : "filter",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "filterExpressions" : [ {
+          "type" : "NUMBER",
+          "field" : "Core_MDF_Claim_Case_PIC.Core_MDF_CycleNumber_nbr__c",
+          "operator" : "GREATER_THAN",
+          "operands" : [ "0" ]
+        }, {
+          "type" : "TEXT",
+          "field" : "Core_MDF_AccountCompany__c",
+          "operator" : "NOT",
+          "operands" : [ "A&E Test Account JJ", "Bristal org_CCPTest" ]
+        } ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "FILTER0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_Claim_Budget_Type",
+          "label" : "Claim Budget Type",
+          "formulaExpression" : "case\r\n    when Core_MDF_Program__c = 'Client Co-Marketing Fund Boost'\r\n    then 'CCFB'\r\n    when Core_MDF_Program__c = 'Service Provider Co-Marketing Fund'\r\n    then 'SPCF'\r\n    else\r\n    Core_MDF_Budget_Type_Options_Nm__c\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "BUCKET0" : {
+      "action" : "bucket",
+      "sources" : [ "FORMULA0" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "Core_MDF_Claim_Review_Case_Score_Buket",
+          "newProperties" : {
+            "typeProperties" : {
+              "type" : "TEXT",
+              "length" : 4
+            }
+          }
+        } ]
+      },
+      "parameters" : {
+        "fields" : [ {
+          "name" : "Core_MDF_Claim_Review_Case_Score_Buket",
+          "label" : "Claim Score",
+          "type" : "TEXT",
+          "bucketsSetup" : {
+            "isPassthroughEnabled" : false,
+            "sourceField" : {
+              "name" : "Core_MDF_Claim_Review_Case.Core_MDF_Scorecard_Score_Nbr__c",
+              "type" : "NUMBER"
+            },
+            "buckets" : [ {
+              "value" : "LOW",
+              "rangeEnd" : 4.0
+            }, {
+              "value" : "HIGH",
+              "rangeStart" : 4.0
+            } ]
+          }
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "BUCKET0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_Claim_Risk_Level",
+          "label" : "Risk Level",
+          "formulaExpression" : "case \r\n\twhen Core_MDF_Claim_Review_Case_Score_Buket = 'LOW'\r\n\tthen 'HIGH RISK'\r\n    when Core_MDF_Claim_Review_Case_Score_Buket = 'HIGH' and \"Core_MDF_Claim_Review_Case.Core_MDF_Manual_Recovery_Amount_USD_Amt__c\" < 0.00\r\n    then 'HIGH RISK'\r\n\telse\r\n\t'LOW RISK'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_MDF_Claim_Submitted_By_ID",
+          "label" : "Claim Submitted By",
+          "formulaExpression" : "case Core_MDF_Claim_Submitter_Id__c\r\n    when coalesce(Core_MDF_Claim_Submitter_Id__c, NULL)\r\n\tthen Core_MDF_Claim_Submitter_Id__c\r\n\telse\r\n\tCreatedById\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Claim Backend Review Prediction Dataset",
+          "name" : "Core_MDF_Claim_BackendReview_Prediction_Dataset",
+          "folderName" : "CoMarketing"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_MDF_Program__c", "Core_MDF_AccountCompany__c", "Core_MDF_Claim_Case_PIC.Id", "Core_MDF_Region_Cd__c", "Core_MDF_Country_Location_nm__c", "Core_MDF_Claim_Review_Case.Core_MDF_Status__c", "Core_MDF_PIC_Review_Completed__c", "Core_MDF_Legacy_Claim_Ind__c", "Core_MDF_Claim_Review_Case__c", "Core_MDF_Claim_Review_Case.Core_MDF_Claim_Lookup_Id__c", "CreatedById", "Core_MDF_Activity_Category__c", "Core_MDF_Activity_Types__c", "Core_MDF_Claim_Review_Case.Core_MDF_Review_Case_Status__c", "Core_MDF_Claim_Review_Case.CaseNumber", "Core_MDF_Claim_Submitter_Id__c", "Id", "Core_MDF_Budget_Type_Options_Nm__c", "Core_MDF_Claim_Case_PIC.Core_MDF_Review_Status_nm__c", "Core_MDF_Requested_Reimbursement_Amt__c", "Core_MDF_Claim_Case_PIC.Core_MDF_CycleNumber_nbr__c", "Core_MDF_Claim_Review_Case.Core_MDF_Scorecard_Score_Nbr__c", "Core_MDF_Claim_Review_Case.Core_MDF_Manual_Recovery_Amount_USD_Amt__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Core_MDF_Claim_Prediction_Draft",
+          "name" : "Core_MDF_ClaimData_Draft_for_Prediction"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "FILTER0" : {
+        "label" : "Filter out claims with no PIC cycle count associated",
+        "description" : "",
+        "type" : "FILTER",
+        "top" : 112,
+        "left" : 252
+      },
+      "TRANSFORM0" : {
+        "label" : "Derive the Low and High Risk score for each claim",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 392,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "BUCKET0" : {
+            "label" : "Bucket"
+          },
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "BUCKET0"
+        }, {
+          "source" : "BUCKET0",
+          "target" : "FORMULA1"
+        }, {
+          "source" : "FORMULA1",
+          "target" : "FORMULA2"
+        } ]
+      },
+      "OUTPUT0" : {
+        "label" : "Prepare Final Dataset for Prediction",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 112,
+        "left" : 532
+      },
+      "LOAD_DATASET0" : {
+        "label" : "Core_MDF_Claim_Prediction_Draft",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "FILTER0",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET0",
+      "target" : "FILTER0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

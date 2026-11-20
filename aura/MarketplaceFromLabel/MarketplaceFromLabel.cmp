@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : Pranjal R 
+  @group             : 
+  @last modified on  : 05-06-2022
+  @last modified by  : Pranjal R
+  Modifications Log 
+  Ver   Date         Author     Modification
+  1.0   05-06-2022   Pranjal R   Initial Version
+-->
+<aura:component>
+    <aura:attribute name="label" type="string" default=""/>
+    <span class= "slds-p-left_medium textlabel">
+        {!v.label}
+    </span>
+</aura:component>

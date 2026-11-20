@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BM Level</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BM Levels</value>
+    </caseValues>
+    <fields>
+        <label><!-- BM Level --></label>
+        <name>core_cpq_bm_level_nm__c</name>
+        <picklistValues>
+            <masterLabel>Level 1</masterLabel>
+            <translation><!-- Level 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 3</masterLabel>
+            <translation><!-- Level 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 4</masterLabel>
+            <translation><!-- Level 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 5</masterLabel>
+            <translation><!-- Level 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BM Name --></label>
+        <name>core_cpq_bm_name__c</name>
+        <relationshipLabel><!-- BM Levels --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- BM Level --></label>
+        <name>core_cpq_bm_level</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

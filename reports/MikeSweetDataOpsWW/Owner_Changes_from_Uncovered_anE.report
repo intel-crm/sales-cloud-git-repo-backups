@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_96427172</developerName>
+        <masterLabel>Edited by Data Ops or Other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Ashton Baker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindy Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Herman Wynn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Sweet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paulo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yan Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Kline</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonia Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Jolin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ke Xin Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Amber Tsai</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Meico Hsiao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yue Xin Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jeffrey Peet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Daniela Kaelin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jiang Feng Pan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alvin Sunny</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sales.CRM.WW. Data.Operations</sourceValue>
+            </sourceValues>
+            <value>Sales.CRM.WW. Data.Operations</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>LineGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_96427172</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>field_key</field>
+    </columns>
+    <columns>
+        <field>OLDVAL</field>
+    </columns>
+    <columns>
+        <field>NEWVAL</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <description>Data Ops v Other</description>
+    <filter>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Owner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OLDVAL</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Uncovered Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>integration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Deactivated__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_96427172</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Owner Changes from Uncovered</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
+    </timeFrameFilter>
+</Report>

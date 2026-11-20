@@ -1,0 +1,21 @@
+.containerHeight{
+    height : 400px;
+}
+.titleAllignment{
+    text-align: center;
+}
+.setZindex{
+    z-index:15; 
+    width: max-content;
+}
+.helpTextStyle{
+    position: absolute; 
+    width: max-content; 
+    background-color : #113568;
+    color :  white;
+}
+.adjustWidth{
+    width:fit-content;
+    min-width:250px;
+    width: -moz-fit-content;
+}

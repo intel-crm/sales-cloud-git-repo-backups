@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>hold the sales price in different variables</description>
+        <name>Get_Sales_Price</name>
+        <label>Get Sales Price</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Lost_Sales_Price__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.UnitPrice</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.UnitPrice</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>setBypassCheck_False</name>
+        <label>setBypassCheck False</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_BypassFlow__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Sales_Price</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>setBypassCheck_True</name>
+        <label>setBypassCheck True</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_BypassFlow__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Sales_Price</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>getRecord</name>
+        <label>getRecord</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>setBypassCheck_True</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>checkbypass_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_BypassFlow__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>setBypassCheck_False</targetReference>
+            </connector>
+            <label>checkbypass True</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Update Lost Sale Price {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Lost Sale Price</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>getRecord</targetReference>
+        </connector>
+        <filterFormula>IF(
+	ISNEW(), OR(
+		ISPICKVAL({!$Record.Core_Status__c}, &quot;Lost&quot;), ISPICKVAL({!$Record.Core_Status__c}, &quot;Cancelled&quot;) ),  
+	AND( ISCHANGED({!$Record.Core_Status__c}), NOT(ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Lost&quot;)),  
+NOT(ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Cancelled&quot;)),
+
+NOT(ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Production Lost&quot;)),  
+NOT(ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Production Cancelled&quot;)),
+
+  OR( ISPICKVAL({!$Record.Core_Status__c}, &quot;Lost&quot;), 
+ISPICKVAL({!$Record.Core_Status__c}, &quot;Cancelled&quot;))))</filterFormula>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>NowSalesPrice</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>2</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <description>holds the previous sales price</description>
+        <name>PrivSalesPrice</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

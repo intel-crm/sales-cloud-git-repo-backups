@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_42984781</developerName>
+        <masterLabel>Age Bucket</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>AGE</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>30</to>
+            </sourceValues>
+            <value>0-30</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+                <to>100</to>
+            </sourceValues>
+            <value>31-100</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>100</from>
+            </sourceValues>
+            <value>100+</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_16473616</developerName>
+        <masterLabel>Product Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Bay Trail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Apollo Lake</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Braswell</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cherry Trail-IoT</sourceValue>
+            </sourceValues>
+            <value>Atom</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Haswell DC ULT BGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Haswell DT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Haswell M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ibex Peak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivy Bridge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivy Bridge DT (Socket H2) 80W</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ivy Bridge QC SV BGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kaby Lake H</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kaby Lake S</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kaby Lake U</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Broadwell H</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Broadwell U</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake H CPU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake PCH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake S CPU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Skylake U CPU</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sandy Bridge DT (Socket H2)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sandy Bridge QC SV BGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrandale</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lynx Point</sourceValue>
+            </sourceValues>
+            <value>Core</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Diamondville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edisonville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gladden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Grangeville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Grantley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Greenlow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Harrisonville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Legacy Intel® Xeon® Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>River Forest</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Romley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Springville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Purley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Denverton NS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Broadwell DE</sourceValue>
+            </sourceValues>
+            <value>Server</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lynx Point M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Panther Point</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake H</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake S</sourceValue>
+            </sourceValues>
+            <value>Core.</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Powerville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® 10 Gigabit Ethernet Network Connection</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fortville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sageville</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coppervale</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Niantic</sourceValue>
+            </sourceValues>
+            <value>Ethernet</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_49085381</developerName>
+        <masterLabel>Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STATUS</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>On Hold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CEP On Hold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CEP Waiting for Customer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CEP Action Plan Created</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CEP Action Plan Executed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>CLOSED</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_78867658</developerName>
+        <masterLabel>age in days bucket</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>9</to>
+            </sourceValues>
+            <value>&lt;10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>9</from>
+                <to>14</to>
+            </sourceValues>
+            <value>10-14</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>14</from>
+                <to>29</to>
+            </sourceValues>
+            <value>15-29</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>29</from>
+                <to>44</to>
+            </sourceValues>
+            <value>30-44</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>44</from>
+                <to>59</to>
+            </sourceValues>
+            <value>45-59</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>59</from>
+                <to>89</to>
+            </sourceValues>
+            <value>60-89</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>89</from>
+            </sourceValues>
+            <value>90+</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_49085381</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_42984781</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Closure Rate</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.core_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <description>All Close IPS cases (&gt;30 days) on EAP platform in Embedded queue.</description>
+    <filter>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_Org1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-007</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_49085381</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_42984781</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EAP Closure Rate</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList@Case.Core_Case_Issue_Sub_Category__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

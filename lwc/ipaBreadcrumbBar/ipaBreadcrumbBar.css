@@ -1,0 +1,58 @@
+.breadcrumbContainer {
+  background-color: var(--white);
+  border: 1px solid var(--lightGray);
+  font-size: .875rem;
+}
+
+.breadcrumbInstance {
+  display: inline-block;
+  position: relative;
+}
+
+.breadcrumbLink {
+  color: var(--blue);
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.breadcrumbPopup {
+  background-color: var(--white);
+  border: 1px solid var(--lightGray);
+  display: none;
+  left: 5px;
+  padding: 10px 0;
+  position: absolute;
+  z-index: 100;
+}
+
+.breadcrumbPopup a {
+  cursor: pointer;
+  display: block;
+  padding: 3px 10px;
+}
+
+.breadcrumbPopup a:hover {
+  background-color: var(--lightGray);
+  color: var(--darkBlue);
+}
+
+.breadcrumbPopup span {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 10px 10px 3px 10px;
+}
+
+.breadcrumbPopup > div:first-child {
+  border-bottom: 1px solid var(--lightGray);
+}
+
+.breadcrumbSeparator {
+  float: right;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.breadcrumbText {
+  padding: 5px 10px;
+}

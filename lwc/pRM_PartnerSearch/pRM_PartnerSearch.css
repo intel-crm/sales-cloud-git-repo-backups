@@ -1,0 +1,91 @@
+.slds-modal__container {
+    max-width: 70rem !important;
+    width: 85% !important;
+    max-height: 90rem !important;
+    height: 90% !important;
+}
+
+.largefont {
+    /* font-size: 1.375rem; */
+    font-weight: 200;
+    line-height: 1.75rem;
+    color: #262626;
+    padding-left: 2rem;
+}
+
+.slds-button_brand,
+.slds-button {
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.1s linear, background-color 0.1s linear !important;
+    padding: 0.625rem 1rem;
+    font-size: 1rem;
+    height: 2rem;
+    background-color: var(--buttonPrimary, #0071c5) !important;
+    width: max-content;
+}
+
+.detailstext {
+    font-size: 0.938rem;
+    word-break: break-all;
+    white-space: break-spaces;
+}
+
+.headingtext {
+    font-size: 0.938rem;
+    font-weight: 600;
+}
+
+.comboLabel {
+    color: #262626;
+}
+
+.centeralign {
+    text-align: center;
+}
+
+.resultfont {
+    font-size: large;
+    font-weight: bold;
+}
+
+.popup {
+    height: 43.75rem;
+}
+
+.required {
+    color: red;
+    padding-left: 0.125rem;
+}
+
+.partnerAdmin {
+    padding-top: 0.375rem;
+    /* white-space: pre-wrap; */
+}
+
+.belowText {
+    font-style: normal;
+    font-size: 13px;
+    padding-top: 5px;
+}
+
+.filter {
+    padding-top: 28px;
+    font-weight: bolder;
+    padding-left: 240px;
+    padding-right: 40px;
+    font-size: large;
+}
+
+.country {
+    padding-right: 40px;
+}
+
+.filterName {
+    width: 20rem;
+}
+
+.noRecords {
+    text-align: center;
+    color: #555;
+}

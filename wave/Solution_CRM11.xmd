@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataset>Solution_CRM1</dataset>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>StageSorted</field>
+        <fullyQualifiedName>StageSorted</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>Stage (Sorted)</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <members>
+            <label>Group</label>
+            <member>0 - Group</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <label>Production Cancelled</label>
+            <member>8 - Production Cancelled</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <label>Production Lost</label>
+            <member>7 - Production Lost</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <label>Production Win</label>
+            <member>6 - Production Win</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <label>Design Win</label>
+            <member>5 - Design Win</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <label>Design</label>
+            <member>4 - Design</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <label>Develop</label>
+            <member>3 - Develop</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <label>Define</label>
+            <member>2 - Define</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <label>Qualify</label>
+            <member>1 - Qualify</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <members>
+            <label>Cancelled</label>
+            <member>91 - Cancelled</member>
+            <sortIndex>9</sortIndex>
+        </members>
+        <members>
+            <label>Lost</label>
+            <member>9 - Lost</member>
+            <sortIndex>10</sortIndex>
+        </members>
+        <origin>StageSorted</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Opportunit.Name</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordDisplayFields>
+            <recordDisplayField>Opportunit.Name</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opportunit.OpportunityId</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityName</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordDisplayFields>
+            <recordDisplayField>OpportunityName</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opportunit.OpportunityId</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Opportunity_Name</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordDisplayFields>
+            <recordDisplayField>Opportunity_Name</recordDisplayField>
+            <sortIndex>0</sortIndex>
+        </recordDisplayFields>
+        <recordIdField>Opportunit.OpportunityId</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+</WaveXmd>

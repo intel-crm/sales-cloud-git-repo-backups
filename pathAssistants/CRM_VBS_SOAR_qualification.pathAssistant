@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>CRM_VBS_SOAR__c</entityName>
+    <fieldName>CRM_VBS_SOAR_Stage__c</fieldName>
+    <masterLabel>SOAR qualification</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Deal Overview &lt;/li&gt;&lt;li&gt;Commercial, Financial, and Technical Implication &lt;/li&gt;&lt;li&gt;Determine the resources that business agrees to resource for this deal and progress to SOAR2&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>SOAR1 - Qualification/Sign-On</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Develop Strategy &lt;/li&gt;&lt;li&gt;Work the deal with assigned resources &lt;/li&gt;&lt;li&gt;Gain Stakeholders pre-approval &lt;/li&gt;&lt;li&gt;Iterate as necessary &lt;/li&gt;&lt;li&gt;If deal varies greatly from SOAR1,resend to new SOAR1&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>SOAR2 - Strategize &amp; Build The Bid</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Deal summary with financials, RAID, technical concerns, and next steps to Intel stakeholders &lt;/li&gt;&lt;li&gt;Intel Stakeholders will approve the bid to be presented to customer or may require going back to SOAR2&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>SOAR3 - Gain Intel Approval</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Present to Customer &lt;/li&gt;&lt;li&gt;Customer agrees to deal or provides feedback &lt;/li&gt;&lt;li&gt;Depending on feedback, this could trigger going back to SOAR2 or SOAR1&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>SOAR4 - Present to Customer</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;Feedback on the entire bid engagement (win or lose) is discussed and shared with the stakeholders and made available for product, service, process, or any other improvements&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>SOAR5 - Lessons Learned</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

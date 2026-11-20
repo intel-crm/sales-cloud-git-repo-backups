@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Modify Chinese</name>
+    <style>none</style>
+    <subject>商業帳戶更新</subject>
+    <textOnly>商業帳戶更新
+
+
+!%UserFirstName%!,  您好，
+
+這則通知茲此通知您，有人已經修改了與選定的 Intel® 授權代理商和/或 Intel® 認可的供應商（服務供應商）分享 Intel® 夥伴聯盟計畫的選項。
+
+商業帳戶名稱： !%AccountName%!
+帳號： !%AccountNumber%!
+做出選擇的主要聯絡人： !%UserEmailAddr%!
+日期： !%DateSigned%!
+特定的服務供應商： !%Distributors%!
+授權：本人茲此授權 Intel 與服務供應商分享關於我 Intel® 通路夥伴計畫帳戶的資訊，以協助管理我的各項福利。本人還授權 Intel，得以代替我兌換點數（在亞太地區無法這麼做）。
+
+
+如果您未批准這項行動，或是您認為有地方出錯，您可以修改選項或選擇退出。
+如果您有疑問，請寫信至 programs@intel.com. 與我們聯絡。
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

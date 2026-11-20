@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>All</masterLabel>
+        <translation><!-- All --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business</masterLabel>
+        <translation><!-- Business --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business Owners/SMB</masterLabel>
+        <translation><!-- Business Owners/SMB --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business owners</masterLabel>
+        <translation>Proprietários de empresas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>C-Suite</masterLabel>
+        <translation>Suíte C</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Channel Partner</masterLabel>
+        <translation><!-- Channel Partner --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial</masterLabel>
+        <translation>Comercial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consultant/Influencer</masterLabel>
+        <translation>Consultor/influenciador</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer</masterLabel>
+        <translation>Consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Mainstream</masterLabel>
+        <translation>Consumidor - Convencional</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Premium</masterLabel>
+        <translation>Consumidor - Premium</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator</masterLabel>
+        <translation>Criador</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DIY</masterLabel>
+        <translation>DIY (Faça você mesmo)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Developer</masterLabel>
+        <translation>Desenvolvedor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Distributors</masterLabel>
+        <translation>Distribuidores</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Customers (edge computing)</masterLabel>
+        <translation>Clientes de borda (computação de borda)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education</masterLabel>
+        <translation>Educação</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education Professionals</masterLabel>
+        <translation>Profissionais de educação</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Employees</masterLabel>
+        <translation>Funcionários</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise</masterLabel>
+        <translation>Empresarial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enthusiast Gaming</masterLabel>
+        <translation><!-- Enthusiast Gaming --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Entry Gaming</masterLabel>
+        <translation>Jogos de entrada</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gamer</masterLabel>
+        <translation><!-- Gamer --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>Jogos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government</masterLabel>
+        <translation>Governo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government agency heads</masterLabel>
+        <translation>Diretores de agências governamentais</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government/Public Sector</masterLabel>
+        <translation>Governo/Setor público</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Healthcare</masterLabel>
+        <translation>Assistência médica</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IT Decision Maker</masterLabel>
+        <translation>Tomador de decisão de TI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IT Manager</masterLabel>
+        <translation><!-- IT Manager --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Large Business</masterLabel>
+        <translation>Grandes empresas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Line of Business</masterLabel>
+        <translation>Linha de negócios</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer (Overwhelmed)</masterLabel>
+        <translation><!-- Mainstream Consumer (Overwhelmed) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
+        <translation>Consumidor tradicional — Conhecimento</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
+        <translation>Consumidor tradicional — Sobrecarregado</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
+        <translation>Consumidor tradicional — Com conhecimento em tecnologia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Business</masterLabel>
+        <translation>Empresa gerenciada</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manufacturer/OEM</masterLabel>
+        <translation>Fabricante/OEM</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mid Market</masterLabel>
+        <translation>Médio porte</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mobile Go Getter</masterLabel>
+        <translation>Empreendedor móvel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
+        <translation><!-- Modern Consumer (Knowledgeable) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Outro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Partner Sales Force</masterLabel>
+        <translation>Força de Vendas de Parceiros</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Partner </masterLabel>
+        <translation>Parceiro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project / program managers</masterLabel>
+        <translation>Gerentes de projeto / programa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchasing</masterLabel>
+        <translation>Compras</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Reseller</masterLabel>
+        <translation>Revendedor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Leaders</masterLabel>
+        <translation>Líderes de vendas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Security managers</masterLabel>
+        <translation>Gerentes de segurança</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Senior Business Decision Maker</masterLabel>
+        <translation>Responsável pelas Decisões de Negócios Sênior</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small Business</masterLabel>
+        <translation>Pequenas empresas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small and Medium Business</masterLabel>
+        <translation>Pequenas e médias empresas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solutions Architect</masterLabel>
+        <translation>Arquiteto de soluções</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sr. Business Decision Maker</masterLabel>
+        <translation>Tomador de decisões de negócios sênior</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>System Integrators</masterLabel>
+        <translation>Integradores de sistemas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technical Influencer</masterLabel>
+        <translation>Influenciador Técnico</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Unmanaged Small Business</masterLabel>
+        <translation>Pequena empresa não gerenciada</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

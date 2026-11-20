@@ -1,0 +1,21 @@
+<aura:component >
+    
+    <aura:attribute name="articleList" type="Object[]" required="true" default="[]" ></aura:attribute>
+	<aura:attribute name="mdaId" type="string" default="" />
+    <aura:attribute name="Header" type="string" default="" />
+	<!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="offeringId" type="Id"/> -->
+    <ul class="resourceList">
+	<aura:iteration items="{!v.articleList}" var="item" indexVar="idx">
+			<li class="slds-p-around_medium">
+					<h4 class="heading-14">{! item.publishedDate} </h4>
+                <!--<p><c:IntelLink url="{!item.linkUrl}" openInBlank="{! item.openInNewTab}">{! item.title}</c:IntelLink></p>-->
+				<!-- IPA2.0 + US TWC4497-1631 -->
+                <!-- <p><c:IntelLink openInBlank="true" partnerMDAId="{!v.mdaId}" offeringId="{!v.offeringId}" LabelHeader="{!v.Header}" title="{! item.title}" url="{!item.link}" >{! item.title}</c:IntelLink></p> -->
+                <p><c:IntelLink openInBlank="true" partnerMDAId="{!v.mdaId}" LabelHeader="{!v.Header}" title="{! item.title}" url="{!item.link}" >{! item.title}</c:IntelLink></p>
+
+			</li>
+	</aura:iteration>
+	</ul>
+    
+</aura:component>

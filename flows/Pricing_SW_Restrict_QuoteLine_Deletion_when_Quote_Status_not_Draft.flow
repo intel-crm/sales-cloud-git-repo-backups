@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Opp_Product_Status_Lost_Error_Message</name>
+        <label>Opp Product Status Lost Error Message</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>{!$Label.Pricing_SW_OppProductStatusLostRestrictQLDeletion}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Quote_Status_Not_Draft_Error_Message</name>
+        <label>Quote Status Not Draft Error Message</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>{!$Label.Pricing_SW_RestrictQuoteLineDeletion}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Is_Quote_Status_not_Draft</name>
+        <label>Is Quote Status not Draft?</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opp_Product_Status_Lost_Restrict_QL_Deletion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Products_with_Lost_Status.Opportunity.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.SBQQ__Quote__r.SBQQ__Opportunity2__r.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Quote__r.SBQQ__Primary__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Opp_Product_Status_Lost_Error_Message</targetReference>
+            </connector>
+            <label>Opp Product Status Lost Restrict QL Deletion</label>
+        </rules>
+        <rules>
+            <name>Quote_Status_Not_Draft_Restrict_QL_Deletion</name>
+            <conditionLogic>1</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Software_Quote_Records.SBQQ__Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Status_Not_Draft_Error_Message</targetReference>
+            </connector>
+            <label>Quote Status Not Draft Restrict QL Deletion</label>
+        </rules>
+    </decisions>
+    <description>1.When Quote Status is not Draft and trying to delete quote lines then will get an error message that Quote Line cannot be deleted
+2.When Opportunity Product is in Lost Status then the quote line deletion is restricted.</description>
+    <environments>Default</environments>
+    <interviewLabel>Software Restrict QuoteLine Deletion when Quote Status not Draft {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pricing_SW Restrict QuoteLine Deletion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Opportunity_Products_with_Lost_Status</name>
+        <label>Get Opportunity Products with Lost Status</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Quote_Status_not_Draft</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SBQQ__Quote__r.SBQQ__Opportunity2__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityLineItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Software_Quote_Records</name>
+        <label>Get Software Quote Records</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Opportunity_Products_with_Lost_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SBQQ__Quote__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>SBQQ__Quote__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Software_Quote_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Software &amp; Services</stringValue>
+            </value>
+        </filters>
+        <object>SBQQ__QuoteLine__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

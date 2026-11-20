@@ -1,0 +1,46 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "f4e68240-d16e-4801-8532-9d8639aa96f2",
+  "label" : "Batch Claim Upload",
+  "regions" : [ {
+    "id" : "b8919069-271d-46fc-926b-03e87360f048",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_BulkClaim",
+      "id" : "778fd63c-0fbc-417f-b97b-8a36fb6df5b3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "42219804-7170-4d99-8d25-46a6f3e5285d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e3ef21ce-9450-4801-bac5-a4f015e13a3d",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Batch Claim Upload"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e3f67387-7f30-41ff-babb-1516bb81ac54",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ab15a93c-141d-468f-83a5-e9d5febda861",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-batch-claim-upload"
+}

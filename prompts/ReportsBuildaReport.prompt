@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Reports Build a Report</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/building-a-report/</actionButtonLink>
+        <body>&lt;p&gt;Custom reports can be built in Sales CRM to suit individual business needs.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To build a report,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;From the &lt;strong&gt;Reports&lt;/strong&gt; tab, click &lt;strong&gt;New Report&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Choose a &lt;em&gt;Report Type&lt;/em&gt;. The Report Type that is selected determines which data sets are available to include in a report. For example, to create a report with opportunity product detail, the Opportunities with Products report type would be selected.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Start Report&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Refine the report using the report builder (refer to the &lt;strong&gt;Refining a Report &lt;/strong&gt;section below).&lt;/li&gt;&lt;li&gt;When finished building the report, select &lt;strong&gt;Run&lt;/strong&gt; to update results.&lt;/li&gt;&lt;li&gt;If changes are needed to be made after initially running the report, click &lt;strong&gt;Edit&lt;/strong&gt; to go back to the report edit page.&lt;/li&gt;&lt;li&gt;When the report is in good form, click&amp;nbsp;&lt;strong&gt;Save&lt;/strong&gt; to save your report. A popup window is provided in order to name the report and to select a Folder in which the report should be included in.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Refining a Report&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Use the Report Builder to refine your report:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Click the hidden &lt;strong&gt;Fields&lt;/strong&gt; section to view all fields (click the right-pointing arrow located next to the &lt;strong&gt;Outline&lt;/strong&gt; panel). Scroll through or use the search area to find fields.&amp;nbsp;Drag and drop fields into the report.&lt;/li&gt;&lt;li&gt;The &lt;strong&gt;Outline&lt;/strong&gt; panel contains the default view. From this view, rows can be grouped and columns can be viewed that are included in the report. To change the location of a column, move the column within the list to where that data should appear in the report. Using this panel, the option to group Row data and receive count information is also available. When using groups, the option to view in chart format is available.&lt;/li&gt;&lt;li&gt;Each column in the report has a menu that provides the ability to sort or group the report accordingly.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Reports Build a Report</description>
+        <displayType>DockedComposer</displayType>
+        <header>Reports</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Reports Build a Report</masterLabel>
+        <publishedDate>2024-02-02</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Report</targetPageKey1>
+        <targetPageKey2>home</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Build a Report</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327834458112</videoLink>
+    </promptVersions>
+</Prompt>

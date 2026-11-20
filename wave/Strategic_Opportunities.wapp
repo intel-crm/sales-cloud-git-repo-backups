@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folder>Strategic_Opportunities</folder>
+    <masterLabel>Lighthouse and Strategic Opportunities</masterLabel>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11406802@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10578860@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11863192@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+</WaveApplication>

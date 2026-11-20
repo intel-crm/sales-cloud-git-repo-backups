@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <matchingRules>
+        <fullName>CRM_DuplicateCheckForLinkedOpp</fullName>
+        <description>Duplicate check for Linked Opportunity where Opportunity From and To cannot have more than one linked reason</description>
+        <label>DuplicateCheckForLinkedOpp</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>CRM_UniqueLinkedOppty__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+</MatchingRules>

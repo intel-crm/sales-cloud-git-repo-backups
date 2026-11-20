@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Olga Espira_EXCEPTION</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11712499_Austin_Skinner_EXCEPTION_role_Olga_Espira_no expiration</name>
+    <opportunityAccessLevel>Read</opportunityAccessLevel>
+    <parentRole>EMP_10707150_Olga_Espira</parentRole>
+</Role>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Chatter_post_oppty</name>
+        <label>Chatter post for Oppty</label>
+        <locationX>789</locationX>
+        <locationY>737</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <stringValue>@[{!ChatterPost}] Create Renewal Opportunity</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Contract_fields</name>
+        <label>Check Contract fields</label>
+        <locationX>578</locationX>
+        <locationY>471</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contract_fields_present</name>
+            <conditionLogic>(1 AND 2) OR (1 AND (9 OR 10 OR 11) AND (4 OR 5 OR 6 OR 7)) OR (8 AND 3 AND (4 OR 5 OR 6 OR 7))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Potential__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR4 Contract Signed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Core_Deal_Opportunity</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_Contract_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_Total_Contract_Value__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_Contract_Lifetime_in_Months__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_Annual_Recurring_Revenue__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Potential__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR1 Un-qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR3 Denied</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR4 Contract Not Signed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Approved_Contract_Values</targetReference>
+            </connector>
+            <label>Contract fields present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_contract_start_date</name>
+        <label>Check contract start date</label>
+        <locationX>577</locationX>
+        <locationY>751</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>contract_start_date_present</name>
+            <conditionLogic>(1 AND 2 AND 3) AND ((4 AND (5 OR 7 OR 8 OR 9)) OR 6)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CRM_VBS_Contract_Start_Date__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Renewal_Opportunity_Id__r.Core_Opportunity_ID__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Coverage_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Intel-Led Opportunity</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Potential__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR4 Contract Signed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Potential__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR1 Un-qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR3 Denied</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR4 Contract Not Signed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Chatter_post_oppty</targetReference>
+            </connector>
+            <label>contract start date present and Renewal opp not present</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_Opp_Stage_DesignWin workflow rule
+Workflow rule description: Set the stage to design win when approved if the prior stage was not Production Win.&quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ChatterPost</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.OwnerId}</expression>
+    </formulas>
+    <label>Core_Opp_Stage_DesignWin</label>
+    <migratedFromWorkflowRuleName>Core_Opp_Stage_DesignWin</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update Stage to Design Win upon approval</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>584</locationX>
+        <locationY>335</locationY>
+        <connector>
+            <targetReference>Check_Contract_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Design Win</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Approved_Contract_Values</name>
+        <label>Update Approved Contract Values</label>
+        <locationX>584</locationX>
+        <locationY>605</locationY>
+        <connector>
+            <targetReference>Check_contract_start_date</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CRM_Approved_Annual_Recurring_Revenue__c</field>
+            <value>
+                <elementReference>$Record.CRM_VBS_Annual_Recurring_Revenue__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Approved_Contract_Lifetime_in_Months__c</field>
+            <value>
+                <elementReference>$Record.CRM_VBS_Contract_Lifetime_in_Months__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Approved_Contract_Start_Date__c</field>
+            <value>
+                <elementReference>$Record.CRM_VBS_Contract_Start_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Approved_Total_Contract_Value__c</field>
+            <value>
+                <elementReference>$Record.CRM_VBS_Total_Contract_Value__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND(ISCHANGED({!$Record.Core_Approval_Status__c}),   ISPICKVAL({!$Record.Core_Approval_Status__c}, &apos;Approved&apos;),   NOT(ISPICKVAL({!$Record.StageName}, &apos;Production Win&apos;)) )</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

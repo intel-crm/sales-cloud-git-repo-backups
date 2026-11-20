@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://oneai.intel.com/api/actions/7BrP541msDHBEVP0xXQNg/oauth/callback</callbackUrl>
+    <certificate>MIIDEzCCAfugAwIBAgIUI8ELvSAvFX2JVVMN4pzgwAVLCXMwDQYJKoZIhvcNAQEL
+BQAwGTEXMBUGA1UEAwwOU2FsZXNmb3JjZS1KV1QwHhcNMjYwOTE3MTY1NTA5WhcN
+MzYwOTE0MTY1NTA5WjAZMRcwFQYDVQQDDA5TYWxlc2ZvcmNlLUpXVDCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBAKWoiROs6jjguiNc+tO5HkoCgGIbSZ1L
+N3o1leuBov4S1Q5x2FisAuOLdX76ZpuV1MlH1pFtv5wfeV8WdbPON0Fr8gamz9QC
+qrMVzLCoTZjP8KyNLrvS3WQ9frpAtKNsLEMV5+0Im4RaqqCie2ShZSPauuKXyuAQ
+fArv86D5e0PirziahPHFU/6CFZi+VHN7fAniJ2Pzgmz8r1lYEs3Cx6GJYUWP00PO
+axHhcbpBsRE+OGBRuoT5mdCymxxtcCyLwUWdvwMufSwHZrwZCj3PejwTec+xY6e5
+/+rrXaT4Z209XBFRElwoRUqurZ0AZ7IcyUBK3XAQVhSoIATI7+yIepcCAwEAAaNT
+MFEwHQYDVR0OBBYEFN3141mgh9/+xPOXMa20dFA1XZ+oMB8GA1UdIwQYMBaAFN31
+41mgh9/+xPOXMa20dFA1XZ+oMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQEL
+BQADggEBAA4lZOQ4/Xrgo6loH64zxoY2MIvP30jwaNYpPRwJLZhrqpn8mqx2m7ks
+DhY8Az23jjAu8fohdU/KQeTzX7WArfHg0UxRQZtQV3OL4/ZgLT7tUuNlnUN+76Nk
++Dra3YVjn7Z4K5KeyjtijuR9tDCE1r6Bk/3kIxGrjH520meJBlHRxc2UXN/erLIM
+WA1xo8OZVWwKXlYW/Gl/JnjHYonU9rL3WXxMXRYjR/cx4WF1pJacqk+gNDw4VOQq
+g9xwyWNDIcyQ/ImmbTYxBZW8hisWVnHrNk1U1VLSo+ujHqRGz0E3ZHBRR+Sa/d57
+nBSK0WkejUJrsTYd+WDSJ4D0gDYQ2FM=</certificate>
+    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6rD_5a6NQAfWwmmA9QZR655i_Vca1LDg8TqF4oFkw5BNKqO7r4Kx_MznaNbx</consumerKey>
+    <externalClientApplication>IPS_AI_Agent_Integration</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>true</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>IPS_AI_Agent_Integration_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

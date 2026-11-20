@@ -1,0 +1,202 @@
+<template>
+    <c-custom-toast
+        message-list={errorList}
+        notification-type="error"
+        time-out="1000"
+        header-message="Can't save records with errors."
+        ></c-custom-toast>
+<!-------------------------------1st SCREEN FOR CHOOSING PRODUCTS FROM PRICEBOOKENTRY----------------------------------------------------------->   
+  <template if:true={showProductModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+      <div class="slds-modal__container" >
+      <!-- modal header start -->
+        <header class="slds-modal__header">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeProductModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Products</h2>
+          <div class="slds-text-align_center slds-text-color_weak slds-p-top_x-small">Price Book: Standard Price Book</div>
+        </header>
+      <!-- modal body start }-->
+        <div class="slds-modal__content slds-p-horizontal_small">
+          <div class="autocompleteWrapper slds-grow">
+            <lightning-input type="search" placeholder="Search Products..." name="Search_Txt" value={searchKey} minlength="3" message-when-too-short="Minimum of 3 characters required to search" onkeyup={handleSearch}></lightning-input>
+          </div>
+          <br>
+          <div if:true={rowSelerror} data-id="focusOnErrorBannerId" style="color:crimson;">{rowSelerror}</div>
+          <div if:false={showBackToResultsButton}>
+            <button class="slds-button" disabled={disableButton} onclick={showSelectedRecords}>
+              <div class="itemColor slds-p-bottom_xx-small" style="font-size: 13px;">Show Selected ({rowCount})</div>
+            </button> 
+            <div if:true={hasData} class="slds-table_bordered slds-is-relative" style="height:400px;">
+              <!--<div if:true={spinner} class="slds-align_absolute-center">
+                <lightning-spinner alternative-text="Loading" variant="brand" size="medium" style="height:400px;"></lightning-spinner>
+              </div>-->
+              <div class ="slds-scrollable_x" style="height:50rem;width:150rem" tabindex="0">
+                <lightning-datatable key-field="Id" 
+                            data-id="table"
+                            data={productData}
+                            columns={productColumns}
+                            onrowselection={handleRowSelection}
+                            max-row-selection="50"
+                            column-widths-mode="fixed"
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onsort={onHandleSort}
+                            load-more-offset="20"
+                            enable-infinite-loading
+                            onloadmore={loadMoreDataHandler}
+                            selected-rows={preselectedRows}
+                            max-column-width="1000px"
+                            >
+                </lightning-datatable>
+              </div>
+            </div>
+            <div if:false={hasData} class="box">
+              <div if:true={noData} class="box">
+                  No items to display.
+              </div>
+              <div if:false={noData} class="box">
+              </div>
+            </div>
+            <div if:true={spinner} class="slds-align_absolute-center">
+                <lightning-spinner alternative-text="Loading" variant="brand" size="medium" style="height:400px;top:32%;"></lightning-spinner>
+            </div>
+          </div>
+          <div if:true={showBackToResultsButton}>
+           <button class="slds-button" onclick={showAll}>
+             <div class="itemColor slds-p-bottom_xx-small" style="font-size: 13px;">Back to Results</div>
+           </button> 
+           <div class="slds-table_bordered slds-is-relative" style="height:400px;">
+             <lightning-datatable key-field="Id" 
+                            data-id="table2"
+                            data={selectedData}
+                            columns={productColumns}
+                            onrowselection={handleSelectedRowSelection}
+                            selected-rows={selection}
+                            >  
+              </lightning-datatable>
+           </div>
+          </div> 
+        </div>
+        <!-- modal footer start-->
+        <footer class="slds-modal__footer">
+            <lightning-button class="slds-p-left_small slds-p-bottom_small" label="Cancel" onclick={closeProductModal}></lightning-button>
+            <lightning-button class="slds-p-left_small slds-p-bottom_small" label="Next" onclick={showSpinner} variant="brand" disabled={disableBool}></lightning-button>
+        </footer>
+       
+      </div>
+    </section>
+   <div class="slds-backdrop slds-backdrop"  role="presentation"></div> 
+  </template>
+
+ <!-------------------------------2nd SCREEN FOR MULTIPLE SOAR PRODUCTS CREATION---------------------------------------------------------------->   
+  <template if:true={showQuantityModal} class="slds-is-relative">  
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open slds-modal_large">
+      <div class="slds-modal__container">
+      <!-- modal header start -->
+        <header class="slds-modal__header">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeQuantityModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Edit Selected SOAR Products</h2>
+        </header>
+      <!-- modal body start -->
+        <div class="slds-modal__content box-container" > 
+          <div class="slds-is-relative" style="height:500px;">
+            <div if:true={showLoading} class="slds-align_absolute-center">
+              <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+            </div>
+            <div class="card-container" style="width:1500px;">
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered" style='padding : 0;'>
+                        <thead>
+                        <tr class="slds-line-height_reset">
+                           <th scope="col" style="width:0px">
+                                <span class="slds-truncate" title="RowNo"></span>
+                            </th>
+                            <th class="slds-border_right" scope="col" style="width:20px">
+                              <div if:true={hasErrors}>
+                                <span class="slds-truncate hiden" title="Error">hey</span>                            
+                              </div>
+                            </th>
+                            <th class="slds-border_right" scope="col" style="width:350px;">
+                                <span class="slds-truncate" title="Product Name">Product Name</span>
+                            </th>  
+                            <th class="slds-border_right" scope="col" style="width:220px;">
+                                <span class="slds-required">*</span>
+                                <span class="slds-truncate" title="Sales Price">Sales Price</span>
+                            </th>
+                            <th class="slds-border_right" scope="col" style="width:220px;">
+                                <span class="slds-required">*</span>
+                                <span class="slds-truncate" title="Quantity">Quantity</span>
+                            </th>
+                            <th class="slds-border_right" scope="col" style="width:270px;">
+                                <span class="slds-truncate" title="Vendor">Vendor</span>
+                            </th>
+                            <th class="slds-border_right" scope="col" style="width:300px;">
+                                <span class="slds-truncate" title="Write in Product Name">Write in Product Name</span>
+                            </th>
+                            <th class="slds-border_right" scope="col">
+                                <span class="slds-truncate" title="Remove"></span>
+                            </th>
+                        </tr>
+                        </thead>
+                      </table>  
+              <template for:each={mapRecord} for:item="row" for:index="index"> 
+                  <lightning-record-edit-form key={row.Id}  object-api-name="CRM_VBS_Product__c">
+                    <lightning-messages> </lightning-messages>
+                   <div class="slds-grid">
+                      <div class="slds-col slds-p-left_small slds-p-vertical_small" padding="around-small" style="width:20px"> 
+                        {row.Id} 
+                      </div>
+                      <div if:true={hasErrors} class="slds-p-vertical_small" style="width:30px">
+                        <template if:true={row.ErrorField} >
+                          <lightning-icon icon-name="utility:error" alternative-text="error" variant="error" size="x-small"></lightning-icon>
+                        </template>
+                        <div if:false={row.ErrorField}>
+                          <lightning-icon icon-name="utility:sync" size="x-small" class="hiden"></lightning-icon>
+                        </div>
+                      </div>
+                      <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small" style="width:350px">
+                          <lightning-input-field  field-name="CRM_VBS_Product__c" variant="label-hidden" name={index} value={row.key} disabled></lightning-input-field>
+                      </div>
+                      <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small" style="width:200px;">
+                        <lightning-input-field   field-name="CRM_VBS_UnitPrice__c" variant="label-hidden" name={index} value={row.value} onchange={handlePriceChange} required> </lightning-input-field>
+                      </div>
+                      <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small" style="width:200px;">
+                        <lightning-input-field   field-name="CRM_VBS_Quantity__c" variant="label-hidden" class="validate" name={index} value={quantity} onchange={handleQuantityChange} required></lightning-input-field>
+                        <div if:true={row.ErrorMsg} data-id="focusOnErrorBannerId" style="color:crimson; font-size: 11px;">{row.ErrorMsg}</div>
+                      </div>
+                      <!--<div class="slds-col ">
+                        <lightning-input-field   field-name="CRM_VBS_TotalPrice__c" variant="label-stacked" name={index} required value={totalprice} onchange={handleTPChange}></lightning-input-field>
+                      </div>-->
+                      <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small" style="width:250px;">
+                        <lightning-input-field   field-name="CRM_VBS_Vendor__c" variant="label-hidden" name={index} value={vendor} onchange={handleVendorChange}></lightning-input-field>
+                      </div>
+                      <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small" style="width:280px;">
+                        <lightning-input-field   field-name="CRM_VBS_Write_In_Product_Name__c" variant="label-hidden" name={index} value={wip} onchange={handleWIPChange}></lightning-input-field>
+                      </div>
+                      <div class="slds-col slds-p-vertical_x-small" padding="around-small" width="2px">
+                          <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" class="slds-m-around_medium" title="Delete" size="medium" access-key={row.Id} id={index} name="remove" onclick={removeRow} disabled={disableBool}></lightning-button-icon> 
+                      </div>                  
+                   </div>
+                   <hr style='margin:-0.5px -1px -1px;'/>
+                  </lightning-record-edit-form>
+              </template>
+            </div>
+          </div> 
+      </div>
+      <!-- modal footer start-->
+      <footer class="slds-modal__footer">
+          <lightning-button class="slds-p-left_small slds-p-bottom_small slds-float_left" label="Back" onclick={showProductModalPopup}></lightning-button>
+          <lightning-button class="slds-p-left_small slds-p-bottom_small" label="Cancel" onclick={closeQuantityModal}></lightning-button>
+          <lightning-button class="slds-float_right slds-p-left_small slds-p-bottom_small" label="Save" onclick={saveData} variant="brand"></lightning-button>
+      </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

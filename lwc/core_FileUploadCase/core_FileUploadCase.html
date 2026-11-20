@@ -1,0 +1,38 @@
+<template>
+    <!-- Spinner -->
+    <div if:true={showSpinner}>
+      <lightning-spinner
+         alternative-text="Loading..." variant="brand" class="slds-is-fixed">
+      </lightning-spinner>
+    </div>
+    <!-- UploadFile View -->
+   <lightning-card  variant="Narrow"  title="Upload a file" icon-name="utility:file">
+      <div class="slds-var-p-around_small slds-align_absolute-center">
+         <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-medium" size="12" medium-device-size="12" large-device-size="12">
+               <lightning-input label="File" name="file uploader"
+                  onchange={handleFileChange} type="file"
+                  accept=".jpg, .csv, .png, .doc, .pdf"
+                  field-level-help="File formats such as jpg, csv, png, doc and pdf only supported."
+                  variant = "label-hidden" multiple>
+               </lightning-input>
+               <br>
+               <template if:true={filesData}>
+                  <template for:each={filesData} for:item="item" for:index="index">
+                     <span class="slds-pill" key={item.indexNumber}>
+                        <lightning-icon icon-name="utility:file" alternative-text="File" size="x-small" variant="success" title="File" class="slds-pill__icon_container"></lightning-icon>
+                        <span class="slds-pill__label" title="Full pill label verbiage mirrored here">{item.fileName}</span>
+                        <lightning-button-icon icon-name="utility:close" data-index={item.indexNumber} onclick={removeFile} alternative-text="Remove file" variant="bare" class="slds-m-left_x-small green-utility-icon  red-background-icon" ></lightning-button-icon>
+                     </span>
+                  </template>
+               </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-var-p-top_small">
+               <lightning-button class="slds-align_absolute-center" variant="brand" label="Add file"
+                  onclick={uploadFile}>
+               </lightning-button>
+            </lightning-layout-item>
+         </lightning-layout>
+      </div>
+   </lightning-card>
+</template>

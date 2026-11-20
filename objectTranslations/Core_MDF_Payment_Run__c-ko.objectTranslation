@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Payment Run --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_Id__c</name>
+        <relationshipLabel><!-- Payment Run --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Names --></label>
+        <name>Core_MDF_Account_Names__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Execution End Date --></label>
+        <name>Core_MDF_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Details --></label>
+        <name>Core_MDF_ErrorDetails_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Files Name --></label>
+        <name>Core_MDF_Files_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- GSPO Notification Sent On --></label>
+        <name>Core_MDF_GSPO_Notification_Sent_On_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_MDF_Geo_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Out of Cycle Payment? --></label>
+        <name>Core_MDF_Is_OOC_Payment_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Job Id --></label>
+        <name>Core_MDF_PaymentJob_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Nature --></label>
+        <name>Core_MDF_Payment_Nature_nm__c</name>
+        <picklistValues>
+            <masterLabel>Contra CSAR</masterLabel>
+            <translation><!-- Contra CSAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contra Revenue</masterLabel>
+            <translation><!-- Contra Revenue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contra Vistex</masterLabel>
+            <translation><!-- Contra Vistex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expense</masterLabel>
+            <translation><!-- Expense --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Payment Run for Claims --></label>
+        <name>Core_MDF_Payment_Run_for_Claims_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Types --></label>
+        <name>Core_MDF_Payment_Types_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment run for Accounts --></label>
+        <name>Core_MDF_Payment_run_for_Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Id__c</name>
+        <relationshipLabel><!-- Payment Run (Channel Program) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- If this option is selected, all the accounts you have access to at the time of the scheduling/initiating the payment run will be included. --></help>
+        <label><!-- Run For All Accounts --></label>
+        <name>Core_MDF_Run_For_All_Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Run Now --></label>
+        <name>Core_MDF_Run_Now_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Run Date Time --></label>
+        <name>Core_MDF_ScheduleRun_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Notification --></label>
+        <name>Core_MDF_Send_Notification_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Execution Start Date --></label>
+        <name>Core_MDF_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Run Status --></label>
+        <name>Core_MDF_Status_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-progress</masterLabel>
+            <translation><!-- In-progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Geo --></label>
+        <name>Core_MDF_Subgeo_Txt__c</name>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAR</masterLabel>
+            <translation><!-- NAR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- VAT Claims Exist --></label>
+        <name>Core_MDF_VAT_Claims_Exist_Ind__c</name>
+    </fields>
+    <nameFieldLabel><!-- Payment Run Number --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- Client Co-Marketing Fund Boost --></label>
+        <name>Client_Co_Marketing_Fund_Boost</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client CMP --></label>
+        <name>Client_Co_Marketing_Fund_CMP</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client MDF --></label>
+        <name>Client_Co_Marketing_Fund_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Co-Engineering --></label>
+        <name>Co_Engineering</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Intel Partner Alliance MDF --></label>
+        <name>Core_MDF_Intel_Partner_Alliance_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Co-Marketing --></label>
+        <name>Core_MDF_PaymentRunRecordType</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Datacenter CMP --></label>
+        <name>Data_Center_Co_Marketing_Fund_CMP</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Datacenter MDF --></label>
+        <name>Data_Center_Co_Marketing_Fund_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Service Provider Co-Marketing Fund --></label>
+        <name>Service_Provider_Co_Marketing_Fund</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Please select Account(s) to proceed with the payment run --></errorMessage>
+        <name>Core_MDF_AccountsFieldMandatoryCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Atleast one option needs to be selected, please select either “Run for All Accounts” option or select an account from the “Account” lookup by typing in the account name. --></errorMessage>
+        <name>Core_MDF_Accounts_Not_Selected</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>실행 시작일이 실행 종료일 이후일 수 없습니다</errorMessage>
+        <name>Core_MDF_Ad_Run_StartDate_EndDate_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment Nature cannot be changed in this status. --></errorMessage>
+        <name>Core_MDF_BlockPaymentNatureChange</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Send Notification can be checked only for EMEA/APJ Payment Run records and it cannot be edited. --></errorMessage>
+        <name>Core_MDF_IPAValidationOnSendNotification</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only one option can be selected at any time, please select either “Run for All Accounts” option or select an account from the “Account” lookup by typing in the account name. --></errorMessage>
+        <name>Core_MDF_Mutually_Exclude_Account_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The User does not have Permission to Create Payment Run for Selected Geo. --></errorMessage>
+        <name>Core_MDF_PaymentRun_Geo_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment schedule date/time cannot be in past --></errorMessage>
+        <name>Core_MDF_PaymentScheduleDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment Run record cannot be edited in its current status --></errorMessage>
+        <name>Core_MDF_Payment_Run_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Program field is mandatory and cannot be blank. --></errorMessage>
+        <name>Core_MDF_ProgramFieldNullCheckValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have permission to create a Payment Run for the selected Program. Contact support for further assistance. --></errorMessage>
+        <name>Core_MDF_Program_Permission_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You will not be able to edit this Payment Run as you do not have access to the Budget type of the selected payment run. --></errorMessage>
+        <name>Core_MDF_Record_Edit_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select single Payment Nature --></errorMessage>
+        <name>Core_MDF_Restrict_Multiple_PaymentNature</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select ‘Run Now’ to run payment run instantly or enter a date to schedule a payment run. --></errorMessage>
+        <name>Core_MDF_Retail_Schedule_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sub Geo is not applicable for selected Program --></errorMessage>
+        <name>Core_MDF_ValidateSubGeoForCCPPrograms</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Send Notification can be checked only for Retail EMEA MDF Payment Run records and it cannot be edited. --></errorMessage>
+        <name>Core_MDF_ValidationOnSendNotification</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select single budget type Value --></errorMessage>
+        <name>RMF_Multi_user</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

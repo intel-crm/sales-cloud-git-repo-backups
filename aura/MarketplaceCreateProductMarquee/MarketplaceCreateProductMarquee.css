@@ -1,0 +1,23 @@
+.THIS {
+    color: t(white);
+    width: 100%;
+    position: relative;
+    min-height: 110px;
+    height: 110px;
+}
+
+.THIS .fill-height {
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    /* .THIS {
+        min-height: 350px;
+        height: 350px;
+    } */
+}
+
+
+.THIS h1 {
+    color: t(white);
+}

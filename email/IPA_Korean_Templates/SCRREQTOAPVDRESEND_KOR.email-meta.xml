@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Retrigger Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRESEND_KOR</name>
+    <style>none</style>
+    <subject>인텔® 파트너 얼라이언스 신청서 작성</subject>
+    <textOnly>거의 다 왔습니다!
+
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+신청서를 제출해 주셔서 감사합니다. {!PRM_Registration_Request__c.PRM_Email_ID__c} 에 대한 프로필이 생성되었으며 이제 몇 단계만 더 거치면 인텔® 파트너 얼라이언스 파트너로 지정됩니다.
+
+
+계정을 활성화하고 혜택 활용을 시작하려면 계정 정보를 작성하고 법적 요건 섹션을 작성하십시오.
+
+
+지금 완료하기
+
+위 링크에 액세스할 수 없습니까?
+
+https://www.intel.com/www/kr/ko/secure/partner/forms/ipa-account-search.html.
+
+질문이 있는 경우, programs@intel.com에 문의하십시오.
+
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인보호 정책 | 쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

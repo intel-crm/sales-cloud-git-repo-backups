@@ -1,0 +1,232 @@
+:host {
+    margin: 1.5rem auto;
+    display: block;
+}
+.ipabenefit-card-container {
+    background: var( --white)
+}
+
+.accordionClass{
+    --sds-c-accordion-heading-font-size:1.076rem;
+    --sds-c-accordion-heading-text-color:var(--green);
+    --sds-c-accordion-heading-text-color-hover:var(--green);
+     margin-left: 1.02rem; 
+     margin-right: 24rem;
+} 
+.adhocClass{
+     margin-left: 1.52rem; 
+     margin-right: 24rem;
+     color: var(--status-success-it);
+     font-weight: bold;
+    font-size: 1.3rem!important;
+    }
+
+/*.THIS lightning-primitive-icon {
+    display: none;
+}
+
+.slds-accordion__summary-action-icon {
+    border-radius: 10rem;
+    border-color: rgb(179, 27, 27);
+    color: violet;
+}
+
+.slds-button__icon {
+    border-radius: 10rem;
+    border-color: rgb(179, 27, 27);
+    color: violet;
+}
+
+.slds-button__icon_left {
+    border-radius: 10rem;
+    border-color: rgb(179, 27, 27);
+    color: violet;
+}
+
+.slds-icon {
+    border-radius: 10rem;
+    border-color: rgb(179, 27, 27);
+    color: violet;
+}
+.slds-icon_x-small{
+    border-radius: 10rem;
+    border-color: rgb(179, 27, 27);
+    color: violet;
+}
+.slds-icon-text-default {
+    border-radius: 10rem;
+    border-color: rgb(179, 27, 27);
+    color: violet;
+}
+
+.slds-accordion__summary-heading{
+    color: blueviolet;
+}
+
+.THIS .slds-accordion__summary-heading > button__icon > span {
+    order: 1;
+    }
+.THIS .slds-accordion__summary-heading > button__icon > lightning_primitive-icon {
+        order: 2;
+        }   
+
+.THIS lightning-icon.some-indicator > lightning-primitive-icon > svg > use{
+    fill: green;
+}*/
+
+.slds-accordion__summary-action {
+    font-size: 1.080rem; 
+    color: black;
+}
+.ipabenefit-card-container.has-alerts {
+    border-top: .5rem solid var(--green);
+}
+
+.ipabenefit-card-container.has-adhocalerts {
+    border-top: .5rem solid var(--status-success-it);
+}
+
+h2 .icon.fa-graduation-cap-1 {
+    margin-right: 1rem; 
+}
+h2 [class^="fa-"]:before, h2 [class*=" fa-"]:before {
+    margin: 0;
+    font-size: 1.875rem;
+}
+h3 .icon,
+h2 .icon {
+    color: var(--classic-blue);
+}
+
+.icon-container {
+    display: flex;
+}
+.icon-container .label {
+   flex-grow: 1;
+}
+
+.alert-icon {
+    background: var(--moss);
+    color: var(--white);
+    border-radius: 50%;
+    margin-right: 0.8125rem;
+    padding: 2px;
+    height: 22px;
+    width: 22px;
+    font-size: 0.8125rem;
+    position: relative;
+}
+.alert-icon:before {
+    margin: 0;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 46%;
+    left: 50%;
+    margin: 0;
+}
+
+.metric-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+.metric-value {
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 2.00rem;
+    text-align: right;
+    /* padding-right: 1rem; */
+    width: 30%;
+}
+.metric-text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    /* border-left: 1px solid  var(--lightGray); */
+    padding-left: 1rem;
+    display: flex;
+    justify-content: end;/* Utkarsh - Added to avoid overlap of training data.*/
+}
+.metric-footer {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25;
+}
+.metric-value .unit {
+    font-size: .875rem;
+}
+.metric-text p {
+    align-self: center;
+}
+.metric-cta {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.links-container::before {
+    border-top: 1px solid var(--lightGray);
+    padding-bottom: 1.5rem;
+    content: " ";
+    display: block;
+}
+.column {
+    width: 100%;
+    padding: 0 1.5rem 1.5rem; 
+}
+
+.benefit-columns {
+    flex-direction: column;
+}
+
+.contact-card-list {
+    align-items: normal;
+    background: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1rem;
+    margin-left: -1rem;
+}
+
+.contact-card-list-item {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    margin: 0;
+    padding: 1rem;
+
+}
+.link-out {
+    line-height: 1.25;
+}
+@media only screen and (max-width: 767px) {
+    .column {
+        padding: 0 1.5rem .5rem 1.5rem; 
+    }a
+    .description-container {
+        padding-bottom: 1.5rem;
+    }
+    .links-container {
+        padding-bottom: .25rem;
+    }
+}
+
+@media (min-width: 48em) {
+    .benefit-columns {
+        flex-direction: row;
+    }
+    .column {
+        width: 33%;
+        padding: 0 1.5rem;
+    }
+    .largecolumn { /*Utkarsh - 904 - Created new class to give more width to description container in case matric container is not present.*/
+        width: 66%;
+        padding: 0 1.5rem;
+    }
+    .links-container {
+        border-left: 1px solid var(--lightGray);
+    }
+    .links-container::before {
+        display: none;
+    }
+    .contact-card-list-item {
+        flex: 0 0 50%;
+    }
+}

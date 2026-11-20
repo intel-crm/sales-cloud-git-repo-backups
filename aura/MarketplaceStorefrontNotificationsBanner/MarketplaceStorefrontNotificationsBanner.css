@@ -1,0 +1,79 @@
+/*Updated the changes as part of US613048 for code merge*/
+.THIS svg {
+  transform: translateY(-1px); /* bug fix w vertical centering */
+}
+
+.THIS .linkText {
+  color: t(darkBlue);
+  text-decoration: underline;
+}
+.THIS .linkText:hover {
+  text-decoration: none;
+}
+/*Updated the changes till here as part of US613048 for code merge*/
+.THIS.notificationBanner {
+    background-color: t(green);
+    padding: 5px 0;
+    align-items: center;
+    margin-top: 35px;
+     /* below line is commented as part of the US-US788273*/
+    /*margin-bottom: 10px;*/                    
+
+    
+}
+.THIS .message {
+  color: t(charcoal);
+}
+.THIS.cursorPointer {
+    cursor: pointer;
+}
+.THIS .rightAlign {
+  text-align: right;
+}
+.THIS.notificationBanner p {
+    color: t(charcoal);
+}
+
+.THIS .slds-icon {
+    height: 1em !important;
+    margin: 0 15px;
+    width: 1em !important;
+}
+.THIS .slds-icon use {
+    fill: t(charcoal) !important;
+}
+
+.THIS .slds-icon-text-default {
+    fill: t(charcoal);
+}
+
+.THIS .fullWidth {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .THIS.notificationBanner p {
+        padding-left: 3em;
+        padding-right: 1em;
+    }
+    .THIS .messageContainer {
+      position: relative;
+    }
+    .THIS .iconContainer {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    .THIS .message {
+      margin-left: 40px;
+      display: inline-block;
+    }
+    .THIS .linkText {
+      padding-right:.5rem;
+    }
+}
+@media (min-width: 768px) {
+  .THIS .linkText {
+    padding-right:1.5rem;
+  }
+}

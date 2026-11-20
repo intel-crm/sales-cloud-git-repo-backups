@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIID0zCCArugAwIBAgIIGGAHmbBnlDgwDQYJKoZIhvcNAQELBQAwgYgxCzAJBgNVBAYTAkNOMRAw
+DgYDVQQIEwdTaWNodWFuMRAwDgYDVQQHEwdDaGVuZ2R1MQ8wDQYDVQQKEwZMZW5vdm8xDDAKBgNV
+BAsTA01TTzETMBEGA1UEAxMKQnl0ZSBTd2lmdDEhMB8GCSqGSIb3DQEJARYSYnN3aWZ0MkBsZW5v
+dm8uY29tMB4XDTI2MDgyMDEwMzAwMVoXDTI3MDgyMDEwMzAwMVowgYgxCzAJBgNVBAYTAkNOMRAw
+DgYDVQQIEwdTaWNodWFuMRAwDgYDVQQHEwdDaGVuZ2R1MQ8wDQYDVQQKEwZMZW5vdm8xDDAKBgNV
+BAsTA01TTzETMBEGA1UEAxMKQnl0ZSBTd2lmdDEhMB8GCSqGSIb3DQEJARYSYnN3aWZ0MkBsZW5v
+dm8uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyK5kS77azQ6LE5yIwytFcfFF
+EOF2ULu0zwrpESuhgLd001aYzFl/qa0SdqneCKLVMkBbXx39p91tiBwZTY2Fu8h2wH4lvXLjTWbJ
+LxFV8asgazh6k9qX9lOOgXfh33T/MIe8AbLK4zJB1hSbBjHT5Iy3cSDSfmvBYsJr614WKwteBbOl
+eVxxi8cmmNL9FhTKmAJyKtGWaWNraa79SNrJcJY9M6a4S0uujprxcKiCD3sY5+VpCDaoS7YmZjso
+rUJ5pPYZm7zBplrOQJY2S1VgLk48e9q30FaNn2RYOSrTR+8Mhu3PjYuntDWAI940a5hnvXzCeYFW
+hFQQNvBy+p0J5QIDAQABoz8wPTAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIHgDAdBgNVHQ4E
+FgQUSim6mu46BvaGnNvZavHQFBDctrQwDQYJKoZIhvcNAQELBQADggEBAAbvToMzpmQ1yiyHh7WL
+n0DhpxeSFTyXpfgvBy9OUAhFbIRinKMAH5ayrxvygp0Nd+Y4fhOOUHwwfiwXB9HXRCn6pr7YESp0
+NNGOafrwVjOgw5ixnpf23JWbJR2ZugTCZt3BAmH+KDXkc/6F/MKkeNPvTlilj+3k7wtuHPssdPlX
+R6Zwef1oe2dvQrx7UpCAwUC351XESvtC/e7RxIfDFnsjQGydxeyP6AXVecxWucogLbvapCq7cQhx
+7eC1EfLBft4jGZu2ce8pTsOR7740pneCH4xrCr3/2CcoGgwhHmttqhzJDHBq3GCq+Wj9etDM30j1
+QB3aSu2GntZicsbN5/I=</certificate>
+    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hvf6qMCFR5vSKshKq_kNQk8rdaWJRccER40OY_Kl.FilJXFFQ==</consumerKey>
+    <externalClientApplication>IPIC_Lenovo_B2B</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>IPIC_Lenovo_B2B_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

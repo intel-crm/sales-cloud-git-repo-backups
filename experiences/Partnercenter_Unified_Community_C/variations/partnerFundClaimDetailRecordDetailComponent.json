@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "8e24112c-0069-4d04-b22e-fc9955bf1a0b",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "568c8496-6e8d-48cc-b962-9a2d89031988",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Partner_Fund_Claim_Detail_Record_Detail_Component",
+  "id" : "9a3ee783-10ba-47a4-b7a9-98b82051974a",
+  "type" : "experienceVariation"
+}

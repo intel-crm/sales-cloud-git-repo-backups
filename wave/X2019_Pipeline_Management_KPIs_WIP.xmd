@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>ph_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Pending_Opportunitie_1.Health Status</field>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>pd_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Pending_Opportunitie_1.Past Due</field>
+        <isDerived>false</isDerived>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>i_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Pending_Opportunitie_1.Inactive</field>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>lq_color</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Pending_Opportunitie_1.Low Velocity</field>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>3 - Production Win</bin>
+                <formatValue>rgb(0, 102, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>6 - Develop</bin>
+                <formatValue>rgb(134, 255, 255)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>5 - Design</bin>
+                <formatValue>rgb(66, 134, 255)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>4 - Design Win</bin>
+                <formatValue>rgb(51, 204, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>7 - Define</bin>
+                <formatValue>rgb(255, 242, 134)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>8 - Qualify</bin>
+                <formatValue>rgb(255, 134, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>5</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>9 - Cancelled</bin>
+                <formatValue>rgb(249, 111, 183)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>6</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>9 - Lost</bin>
+                <formatValue>rgb(204, 0, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>7</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>metrics.stage_sorted</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>FiscalKPIChartFormat_1.ALL</field>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <measures>
+        <conditionalFormatting>
+            <formattingBins>
+                <bin>3 - Production Win</bin>
+                <formatValue>rgb(0, 102, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>0</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>6 - Develop</bin>
+                <formatValue>rgb(134, 255, 255)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>1</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>5 - Design</bin>
+                <formatValue>rgb(66, 134, 255)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>2</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>4 - Design Win</bin>
+                <formatValue>rgb(51, 204, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>3</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>7 - Define</bin>
+                <formatValue>rgb(255, 242, 134)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>4</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>8 - Qualify</bin>
+                <formatValue>rgb(255, 134, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>5</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>9 - Cancelled</bin>
+                <formatValue>rgb(249, 111, 183)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>6</sortIndex>
+            </formattingBins>
+            <formattingBins>
+                <bin>9 - Lost</bin>
+                <formatValue>rgb(204, 0, 0)</formatValue>
+                <label xsi:nil="true"/>
+                <sortIndex>7</sortIndex>
+            </formattingBins>
+            <property>chartColor</property>
+            <referenceField>metrics.stage_sorted</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>categories</type>
+        </conditionalFormatting>
+        <field>FiscalKPIChartFormat_1.KPI</field>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>X2019_Pipeline_Management_KPIs_WIP</waveVisualization>
+</WaveXmd>

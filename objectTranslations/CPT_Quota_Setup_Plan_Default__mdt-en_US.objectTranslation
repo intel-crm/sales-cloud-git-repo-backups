@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quota Setup Plan Default</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quota Setup Plan Defaults</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>CPT_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Value --></label>
+        <name>CPT_Default_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuotaSetup Field Name --></label>
+        <name>CPT_QuotaSetup_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales KPI Type --></label>
+        <name>CPT_Sales_KPI_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

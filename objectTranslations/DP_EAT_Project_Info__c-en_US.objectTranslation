@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Project Info</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Project Info</value>
+    </caseValues>
+    <fields>
+        <help><!-- Enter comma separated email IDs to get notification with test run results. --></help>
+        <label><!-- Email Addresses --></label>
+        <name>DP_EAT_Email_Addresses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Id --></label>
+        <name>DP_EAT_Job_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Status --></label>
+        <name>DP_EAT_Job_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compilation Failures in last run --></label>
+        <name>DP_EAT_Number_of_Compilation_Failures__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Test Classes in last run --></label>
+        <name>DP_EAT_Number_of_last_ran_Test_Classes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Test Methods in last run --></label>
+        <name>DP_EAT_Number_of_last_ran_Test_Methods__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Tests Failed in last run --></label>
+        <name>DP_EAT_Number_of_last_ran_Tests_Failed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Tests Passed in last run --></label>
+        <name>DP_EAT_Number_of_last_ran_Tests_Passed__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter minutes in which the selected test classes will run completely. --></help>
+        <label><!-- Pause Time in minutes --></label>
+        <name>DP_EAT_Pause_Time_in_minutes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter comma separated prefix strings. --></help>
+        <label><!-- Prefixes --></label>
+        <name>DP_EAT_Prefixes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Key Contact 1 --></label>
+        <name>DP_EAT_Project_Key_Contact_1__c</name>
+        <relationshipLabel><!-- Project Info (Project Key Contact 1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Project Key Contact 2 --></label>
+        <name>DP_EAT_Project_Key_Contact_2__c</name>
+        <relationshipLabel><!-- Project Info (Project Key Contact 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Result Summary --></label>
+        <name>DP_EAT_Result_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Run related apex tests daily --></label>
+        <name>DP_EAT_Run_related_apex_tests_daily__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>DP_EAT_Send_Email__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- If Send Email is checked, fill Email Addresses to receive Email notification with Test Run Results Report. --></errorMessage>
+        <name>Email_Addresses_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Email Addresses field should contain comma separated Email IDs without any space. --></errorMessage>
+        <name>No_space_in_Email_Addresses_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Prefixes field should contain comma separated Prefix strings without any space. --></errorMessage>
+        <name>No_space_in_Prefixes_field</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- DP_EAT_Execute_Test_Runs --></label>
+        <name>DP_EAT_Execute_Test_Runs</name>
+    </webLinks>
+</CustomObjectTranslation>

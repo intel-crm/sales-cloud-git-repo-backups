@@ -1,0 +1,280 @@
+{
+  "appPageId" : "d8192ff4-927d-4111-88f9-7186fcbb1b52",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "7e120d13-b193-4787-94c7-2244ed71ac3d",
+  "label" : "Login Error",
+  "regions" : [ {
+    "id" : "4ead0468-aec9-413d-baf0-be85f0c20d21",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"text-align: center;\">Invalid Page</div>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "4aac2402-22cb-4b05-9728-eda852b948be",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "1fe57955-fb63-4350-a0a1-27b6d5ca6cb3",
+        "es" : "4160c0e1-419c-4af5-ab46-cd4789d4f6e7",
+        "es_mx" : "f5b727b1-f2ad-4336-a17f-ff9a2e95637e",
+        "fr" : "fea3f075-f96d-45b1-b252-8d078bc67e1e",
+        "it" : "54f515e5-cfdc-4ae0-91f8-3f4ecb9b7999",
+        "ja" : "750dae6a-4060-4430-9c4d-2432c5a47335",
+        "ko" : "fe66abfd-4fbc-477a-affa-66bb9e40ad17",
+        "pt_br" : "e4e667af-0c32-4910-9498-5e315c9177d8",
+        "pt_pt" : "e89f2557-111a-4ff1-811d-cff3e1103d81",
+        "ru" : "f495dccb-9dbd-4860-a3f9-ce512edd085b",
+        "zh_cn" : "d99443cc-49e5-4a97-b8e6-3b47c02b3464",
+        "zh_tw" : "1b8ce389-10a4-4661-be24-51422cd7f758"
+      },
+      "renditions" : [ {
+        "id" : "d99443cc-49e5-4a97-b8e6-3b47c02b3464",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">无效页面</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f495dccb-9dbd-4860-a3f9-ce512edd085b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">Неверная страница</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e89f2557-111a-4ff1-811d-cff3e1103d81",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">P&aacute;gina inv&aacute;lida</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "750dae6a-4060-4430-9c4d-2432c5a47335",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">無効なページ</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "54f515e5-cfdc-4ae0-91f8-3f4ecb9b7999",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">Pagina non valida</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fea3f075-f96d-45b1-b252-8d078bc67e1e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">Page non valide</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f5b727b1-f2ad-4336-a17f-ff9a2e95637e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">P&aacute;gina no v&aacute;lida</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1fe57955-fb63-4350-a0a1-27b6d5ca6cb3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">Ung&uuml;ltige Seite</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fe66abfd-4fbc-477a-affa-66bb9e40ad17",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">유효하지 않은 페이지</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4160c0e1-419c-4af5-ab46-cd4789d4f6e7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">P&aacute;gina no v&aacute;lida</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e4e667af-0c32-4910-9498-5e315c9177d8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">P&aacute;gina inv&aacute;lida</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1b8ce389-10a4-4661-be24-51422cd7f758",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">無效的頁面</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "99e64542-0d36-40d8-b3ee-dca3b907d227",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3e796992-5825-4591-8607-4604858de10f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Login Error"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "2f9d9f54-a2d9-41cc-a920-2849c7edae80",
+      "renditionMap" : {
+        "de" : "047a5203-cded-4b60-832d-67bce5a0a309",
+        "es" : "c35b49a7-9eb8-42ac-8249-ea589bf62030",
+        "es_mx" : "8f66ad94-f8d6-4606-b814-94efa4996a68",
+        "fr" : "fbf65f16-cd8b-4041-9586-ce7aa3303351",
+        "it" : "8638e4ad-64d7-421f-ba28-ef65fee0cc21",
+        "ja" : "5372e324-fb2c-40b2-8915-4487cc5244b6",
+        "ko" : "e2dd26d8-ae5a-4029-8ca7-2f842f17e069",
+        "pt_br" : "39c23893-f0f0-445f-97d4-2cad9c611cbf",
+        "pt_pt" : "5da199fb-bbe1-47b1-a38f-a88ad34d535b",
+        "ru" : "41bcb8f5-d380-4827-8602-1721a98d4c76",
+        "zh_cn" : "5b7ee514-351f-470a-bcef-ccfa95ed0c58",
+        "zh_tw" : "fdb8f990-1ad2-4883-9f7d-cdd6630d2097"
+      },
+      "renditions" : [ {
+        "id" : "5b7ee514-351f-470a-bcef-ccfa95ed0c58",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "41bcb8f5-d380-4827-8602-1721a98d4c76",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5da199fb-bbe1-47b1-a38f-a88ad34d535b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5372e324-fb2c-40b2-8915-4487cc5244b6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8638e4ad-64d7-421f-ba28-ef65fee0cc21",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fbf65f16-cd8b-4041-9586-ce7aa3303351",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8f66ad94-f8d6-4606-b814-94efa4996a68",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "047a5203-cded-4b60-832d-67bce5a0a309",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e2dd26d8-ae5a-4029-8ca7-2f842f17e069",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c35b49a7-9eb8-42ac-8249-ea589bf62030",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "39c23893-f0f0-445f-97d4-2cad9c611cbf",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fdb8f990-1ad2-4883-9f7d-cdd6630d2097",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login Error",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "559d91bc-c3ec-4eed-ab59-1a9896bc2544",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Login",
+  "type" : "view",
+  "viewType" : "login-error"
+}

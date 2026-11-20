@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Node Attribute</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Node Attributes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_id__c</name>
+        <relationshipLabel><!-- Account Node Attributes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contra Revenue GL# Override --></label>
+        <name>Core_MDF_CSAR_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer NonPO GL# Override --></label>
+        <name>Core_MDF_Customer_NonPO_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Contra Revenue GL# --></label>
+        <name>Core_MDF_Default_CSAR_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Customer NonPO GL# --></label>
+        <name>Core_MDF_Default_Cust_NonPO_GL_Acc_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Expense GL# --></label>
+        <name>Core_MDF_Default_NonPO_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>Core_MDF_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contra Revenue GL# --></label>
+        <name>Core_MDF_Final_CSAR_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer NonPO GL# --></label>
+        <name>Core_MDF_Final_Cust_NonPO_GL_Acc_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense GL# --></label>
+        <name>Core_MDF_Final_NonPO_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense GL# Override --></label>
+        <name>Core_MDF_NonPO_GL_Account_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_id__c</name>
+        <relationshipLabel><!-- Account Node Attributes --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- Co-Marketing Node Attribute --></label>
+        <name>Core_MDF_CoMarketing_Node_Attribute</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type created to store GL Account Mappings --></description>
+        <label><!-- GL Account Mapping --></label>
+        <name>Core_MDF_GL_Account_Mapping</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The account is not associated with the selected program. Please select a valid Program --></errorMessage>
+        <name>Core_MDF_AccountID_and_Program_match</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only positive whole numbers allowed --></errorMessage>
+        <name>Core_MDF_Validate_CSAR_nbr_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only positive whole numbers allowed --></errorMessage>
+        <name>Core_MDF_Validate_CustNonPO_nbr_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only positive whole numbers allowed --></errorMessage>
+        <name>Core_MDF_Validate_NonPO_nbr_field</name>
+    </validationRules>
+</CustomObjectTranslation>

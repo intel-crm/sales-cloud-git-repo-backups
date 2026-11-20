@@ -1,0 +1,190 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "b88e34fc-dac6-48e7-a285-9d54c2b52631",
+  "label" : "Partners by Specialty",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"PartnersBySpecialty\",\"title\":\"Partners By Specialty\"}",
+        "backgroundVariant" : "mosaic-l1",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Find Intel® Partner Alliance partners with expertise in a specific area or segment",
+        "title" : "Partners by Specialty"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "ff6b2310-da70-467c-b5c8-9563b66b299d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "4db25871-c5c3-46db-81c5-84313624704b",
+        "zh_cn" : "a4419ef9-372a-42f9-88a0-6212bc5c8a50"
+      },
+      "renditions" : [ {
+        "id" : "4db25871-c5c3-46db-81c5-84313624704b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "特定の分野やセグメントについて専門的な知識を持つインテル® パートナー・アライアンスのパートナーを検索します",
+            "title" : "スペシャリスト・グループ "
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a4419ef9-372a-42f9-88a0-6212bc5c8a50",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "查找在特定领域或细分市场具备专业技术的英特尔® 合作伙伴联盟中的合作伙伴",
+            "title" : "按专业技术分类的合作伙伴"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "c96fae0e-3054-4463-879f-7a7e61de0fab",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cardStyle" : "Icon Horizontal",
+        "limitRecordsValue" : "All",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "showFeaturedOnly" : false,
+        "showHeading" : false,
+        "showIcon" : false,
+        "showViewAllLink" : false,
+        "taxonomy" : "PartnerSpecialties",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "f6357947-9f69-47ab-a324-902ba9325e63",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e56ab95e-dbaf-497e-9f7e-df6885a59683",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "dc960333-97fe-4239-914c-9409d96bef7a",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "0efd712a-2f6d-41db-b202-48e6838ba0bc",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaCommPage" : "",
+        "ctaExternalURL" : "",
+        "ctaLabel" : "Learn More",
+        "subtitle" : "Gain expertise, take advantage of special promotions, marketing tools, and other valuable benefits of being a member.",
+        "theme" : "dark",
+        "title" : "Join the Intel® Partner Alliance"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "dffa7d6a-7fd7-4435-b702-eb0159ee114f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ba67d290-0295-4c79-8974-6500327870a0",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareTray",
+      "id" : "d2844490-e5f6-4557-9eb0-1ebb936f52ad",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "cbed784a-1147-4786-a7b1-e0c773621e23",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Partners by Specialty\"/> \n<meta name=\"keywords\" content=\"partners by specialty, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"PartnersBySpecialty\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace partner offerings by specialty on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "title" : "Partners by Specialty - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "920d6947-6c8d-4bdd-bf35-5b044320b655",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2fe7378-ca2f-4144-bc16-4ce16fc9e3ae",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "0e5246e7-0d79-420f-b0e5-2e02fec6b4f7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b6b05180-4aa2-4c75-a780-2d85b0da5178",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "32ca47a4-765c-47f1-a442-8f4c29aaf18f",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "f62165a3-e4ed-4ab0-b976-7e81eae4cb59",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "481432f1-15e6-40d3-a1c1-a9575313c70f",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "d7961d75-effd-4432-9bad-8002521768e9",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "e0b2a993-5791-43c7-81b9-8af25527cbcb",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "0a144736-2301-47e0-ab37-91821fa3f6c2",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "2a044c08-5d11-47af-8337-c3f6a59fa281",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "9519aab7-2c0a-42fe-b9f7-448da7865ecf",
+    "regionName" : "blade10",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-partners-by-specialty"
+}

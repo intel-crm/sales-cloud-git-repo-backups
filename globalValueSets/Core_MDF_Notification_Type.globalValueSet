@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>PFC_PIC_FAIL_RWC</fullName>
+        <default>false</default>
+        <label>PIC Failure when resubmission window is closed</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_CLM_SCR</fullName>
+        <default>false</default>
+        <label>Claim Score</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_PIC_FAIL_RESUB_REQ</fullName>
+        <default>false</default>
+        <label>PIC Failure when activity is still open</label>
+    </customValue>
+    <customValue>
+        <fullName>PFR_REM_FOR_UNCLM_ACTS</fullName>
+        <default>false</default>
+        <label>Reminder for the Unclaimed Activities</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_WKLY_EMAIL_PAID_CLMS</fullName>
+        <default>false</default>
+        <label>Weekly email for the paid claims</label>
+    </customValue>
+    <customValue>
+        <fullName>CASE_WKLY_EMAIL_CLM_SCR</fullName>
+        <default>false</default>
+        <label>Weekly email for the claim score</label>
+    </customValue>
+    <customValue>
+        <fullName>PFC_WKLY_EMAIL_PIC_COMPL</fullName>
+        <default>false</default>
+        <label>Weekly email for the PIC completion</label>
+    </customValue>
+    <customValue>
+        <fullName>RecoveryIntAccMngrNotification</fullName>
+        <default>false</default>
+        <label>Recovery data load notification</label>
+    </customValue>
+    <masterLabel>Notification Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

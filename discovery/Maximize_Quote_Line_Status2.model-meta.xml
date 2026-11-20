@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <classificationThreshold>0.516100771896237</classificationThreshold>
+    <label>Maximize Quote Line Status</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Application</label>
+        <name>QuoteAndQuoteLine.Pricing_Server_Deal_Type_Nm__c</name>
+        <type>Text</type>
+        <values>Enterprise</values>
+        <values>HPC</values>
+        <values>CSP</values>
+        <values>CoSP</values>
+        <values>Other</values>
+        <values>Storage</values>
+        <values>Other_1</values>
+        <values>null</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Quantity</label>
+        <name>Pricing_Unit_Qty__c</name>
+        <type>Number</type>
+        <values>0.0___52.0</values>
+        <values>52.0___116.0</values>
+        <values>116.0___245.0</values>
+        <values>245.0___500.0</values>
+        <values>500.0___787.0</values>
+        <values>787.0___1147.0</values>
+        <values>1147.0___2000.0</values>
+        <values>2000.0___3744.0</values>
+        <values>3744.0___8761.0</values>
+        <values>8761.0___4.5E8</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Competitor Product</label>
+        <name>Pricing_Competetor_Product__c</name>
+        <type>Text</type>
+        <values>a8V3b000000YSFyEAO</values>
+        <values>a8V3b000000YSEQEA4</values>
+        <values>a8V3b000000VQXfEAO</values>
+        <values>a8V3b00000073W4EAI</values>
+        <values>a8V3b00000073VGEAY</values>
+        <values>a8V3b000000YSEeEAO</values>
+        <values>a8V3b00000073WEEAY</values>
+        <values>a8V3b000000YSEPEA4</values>
+        <values>a8V3b0000010Fw5EAE</values>
+        <values>a8V3b000001BTMxEAO</values>
+        <values>a8V3b00000073VLEAY</values>
+        <values>a8V3b0000010Fw2EAE</values>
+        <values>a8V3b000001BTNHEA4</values>
+        <values>a8V3b000000YSEgEAO</values>
+        <values>a8V3b000000VQXIEA4</values>
+        <values>a8V3b000001BTNLEA4</values>
+        <values>a8V3b000000YSEdEAO</values>
+        <values>a8V3b000000YSEiEAO</values>
+        <values>a8V3b000000VQXZEA4</values>
+        <values>a8V3b000000VQXeEAO</values>
+        <values>a8V3b000000YSEhEAO</values>
+        <values>a8V3b000001BTNCEA4</values>
+        <values>a8V3b000001BTNDEA4</values>
+        <values>a8V3b0000015rcFEAQ</values>
+        <values>a8V3b000001BTN2EAO</values>
+        <values>a8V3b000001IpwCEAS</values>
+        <values>a8V3b00000073W9EAI</values>
+        <values>a8V3b0000010FvwEAE</values>
+        <values>a8V3b000000YSEbEAO</values>
+        <values>a8V3b00000073WGEAY</values>
+        <values>a8V3b000001IpwBEAS</values>
+        <values>a8V3b000001IpvlEAC</values>
+        <values>a8V3b000001IpgLEAS</values>
+        <values>a8V3b000000YSEREA4</values>
+        <values>a8V3b000001IpvaEAC</values>
+        <values>a8V3b000001BTNMEA4</values>
+        <values>a8V3b000001IpguEAC</values>
+        <values>a8V3b0000010Fw1EAE</values>
+        <values>a8V3b000000VQXdEAO</values>
+        <values>a8V3b000000VQXnEAO</values>
+        <values>a8V3b000001IpvjEAC</values>
+        <values>a8V3b000000YSEaEAO</values>
+        <values>a8V3b000000VQXoEAO</values>
+        <values>a8V3b000000YSEcEAO</values>
+        <values>a8V3b000000VQWHEA4</values>
+        <values>a8V3b0000010FvvEAE</values>
+        <values>a8V3b000000VQXYEA4</values>
+        <values>a8V3b000001Ipg6EAC</values>
+        <values>a8V3b00000073VmEAI</values>
+        <values>a8V3b000000VQWREA4</values>
+        <values>a8V3b000000YSEkEAO</values>
+        <values>a8V3b000000YSEYEA4</values>
+        <values>a8V3b000000YSEOEA4</values>
+        <values>a8V3b000000VQXJEA4</values>
+        <values>a8V3b000000VQWDEA4</values>
+        <values>a8V3b000000YSElEAO</values>
+        <values>a8V3b000001BTN7EAO</values>
+        <values>a8V3b000000VQWJEA4</values>
+        <values>a8V3b000001BTN6EAO</values>
+        <values>a8V3b000001IpwAEAS</values>
+        <values>a8V3b00000073WJEAY</values>
+        <values>a8V3b000001IpvbEAC</values>
+        <values>a8V3b000001BTNBEA4</values>
+        <values>a8V3b000000VQWbEAO</values>
+        <values>a8V3b0000015rcAEAQ</values>
+        <values>a8V3b000000VQWSEA4</values>
+        <values>a8VHo000000CoiGMAS</values>
+        <values>a8V3b000000YSENEA4</values>
+        <values>a8V3b0000015rcKEAQ</values>
+        <values>a8V3b0000010Fw3EAE</values>
+        <values>a8V3b000000YSEjEAO</values>
+        <values>a8V3b00000073VQEAY</values>
+        <values>a8V3b000000VQW4EAO</values>
+        <values>a8V3b000000VQXjEAO</values>
+        <values>a8V3b000001BTMwEAO</values>
+        <values>a8V3b000000YSEZEA4</values>
+        <values>a8V3b000000YSDmEAO</values>
+        <values>a8V3b00000073WBEAY</values>
+        <values>a8V3b000001BTN8EAO</values>
+        <values>a8V3b000000VQXMEA4</values>
+        <values>a8V3b000000VQXKEA4</values>
+        <values>a8V3b000000YSETEA4</values>
+        <values>a8V3b000001IpvoEAC</values>
+        <values>a8V3b000000VQXEEA4</values>
+        <values>a8V3b000000YSDiEAO</values>
+        <values>a8V3b00000073WTEAY</values>
+        <values>a8V3b000000YSDoEAO</values>
+        <values>a8V3b0000010FvqEAE</values>
+        <values>a8V3b000001IpixEAC</values>
+        <values>a8V3b000000VQWPEA4</values>
+        <values>a8VHo000000CnJUMA0</values>
+        <values>a8V3b000000YSDkEAO</values>
+        <values>a8V3b000001IpgpEAC</values>
+        <values>a8V3b000001IpgJEAS</values>
+        <values>a8V3b000000VQXDEA4</values>
+        <values>a8V3b000001IpgjEAC</values>
+        <values>a8V3b000000YSDpEAO</values>
+        <values>a8V3b000000YSEWEA4</values>
+        <values>a8V3b000000YSEfEAO</values>
+        <values>a8V3b000000YSEXEA4</values>
+        <values>Other</values>
+        <values>null</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Product Name</label>
+        <name>QlWithProduct.Name</name>
+        <type>Text</type>
+        <values>Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Core™ Ultra 5 Processor 135U (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6342 Processor (36M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i5-13500 Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6348 Processor (42M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6326 Processor (24M Cache, 2.90 GHz)</values>
+        <values>Intel® Core™ i5-1245U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Core™ i7-13700 Processor (30M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Platinum 8358 Processor (48M Cache, 2.60 GHz)</values>
+        <values>Intel® Core™ i5-13500T Processor (24M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-12500 Processor (18M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Xeon® Silver 4314 Processor (24M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ Ultra 7 Processor 165U (12M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6338 Processor (48M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6346 Processor (36M Cache, 3.10 GHz)</values>
+        <values>Intel® Xeon® Gold 5318Y Processor (36M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6248R Processor (35.75M Cache, 3.00 GHz)</values>
+        <values>Intel® Core™ Ultra 7 Processor 165H (24M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6354 Processor (39M Cache, 3.00 GHz)</values>
+        <values>Intel® Core™ i7-12700 Processor (25M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Core™ i7-1370P Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Core™ i7 processor 14700 (33M Cache, up to 5.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6334 Processor (18M Cache, 3.60 GHz)</values>
+        <values>Intel® Xeon® Silver 4310 Processor (18M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5 processor 14500 (24M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Xeon® Gold 5317 Processor (18M Cache, 3.00 GHz)</values>
+        <values>Intel® Core™ i5-12500T Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8462Y+ Processor (60M Cache, 2.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6336Y Processor (36M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i5-1350P Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6226R Processor (22M Cache, 2.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6444Y Processor (45M Cache, 3.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6442Y Processor (60M Cache, 2.60 GHz)</values>
+        <values>Intel® Core™ i3-12100 Processor (12M Cache, up to 4.30 GHz)</values>
+        <values>Intel® Xeon® Gold 5320 Processor (39M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i5-1235U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Core™ i5-13400 Processor (20M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-12400 Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8362 Processor (48M Cache, 2.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6330 Processor (42M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i7-1355U Processor (12M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Core™ i5 processor 14500T (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ Ultra 5 Processor 125U (12M Cache, up to 4.30 GHz)</values>
+        <values>Intel® Core™ i3-13100 Processor (12M Cache, up to 4.50 GHz)</values>
+        <values>Intel® Core™ i7-1265U Processor (12M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6426Y Processor (37.5M Cache, 2.50 GHz)</values>
+        <values>Intel® Core™ i7-13800H Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5218 Processor (22M Cache, 2.30 GHz)</values>
+        <values>Intel® Xeon® Gold 6338N Processor (48M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6240R Processor (35.75M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Silver 4316 Processor (30M Cache, 2.30 GHz)</values>
+        <values>Write In Product</values>
+        <values>Intel® Xeon® Silver 4309Y Processor (12M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i5-1145G7 Processor (8M Cache, up to 4.40 GHz, with IPU)</values>
+        <values>Intel® Xeon® Platinum 8480+ Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i7-13700T Processor (30M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Xeon® Gold 5218R Processor (27.5M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6542Y Processor (60M Cache, 2.90 GHz)</values>
+        <values>Intel® Core™ i5-13400T Processor (20M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6430 Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 5220R Processor (35.75M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6448Y Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 5418Y Processor (45M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6258R Processor (38.5M Cache, 2.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6448H Processor (60M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Gold 5315Y Processor (12M Cache, 3.20 GHz)</values>
+        <values>Intel® Core™ i3-13100T Processor (12M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6230R Processor (35.75M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz, with IPU)</values>
+        <values>Intel® Core™ i3-1215U Processor (10M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8380 Processor (60M Cache, 2.30 GHz)</values>
+        <values>Intel® Xeon® Gold 6548Y+ Processor (60M Cache, 2.50 GHz)</values>
+        <values>Intel® Xeon® Gold 6240 Processor (24.75M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6230 Processor (27.5M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ Ultra 5 Processor 135H (18M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6330N Processor (42M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Platinum 8352Y Processor (48M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6242R Processor (35.75M Cache, 3.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6434 Processor (22.5M Cache, 3.70 GHz)</values>
+        <values>Intel® Core™ i7-13850HX Processor (30M Cache, up to 5.30 GHz)</values>
+        <values>Intel® Xeon® Platinum 8468 Processor (105M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6248 Processor (27.5M Cache, 2.50 GHz)</values>
+        <values>Intel® Xeon® Silver 4216 Processor (22M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i3-12100T Processor (12M Cache, up to 4.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6238R Processor (38.5M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Silver 4214 Processor (16.5M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz)</values>
+        <values>Intel® Processor N100 (6M Cache, up to 3.40 GHz)</values>
+        <values>Intel® Xeon® Silver 4214R Processor (16.5M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i5-12400T Processor (18M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Core™ Ultra 7 Processor 155U (12M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6254 Processor (24.75M Cache, 3.10 GHz)</values>
+        <values>Intel® Xeon® Platinum 8260 Processor (35.75M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8358P Processor (48M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6438Y+ Processor (60M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i7-12700T Processor (25M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Xeon® Silver 4208 Processor (11M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Silver 4210R Processor (13.75M Cache, 2.40 GHz)</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account</label>
+        <name>Pricing_OEM_Account_Nm__c</name>
+        <type>Text</type>
+        <values>DELL U S A CORPORATION</values>
+        <values>Lenovo (Beijing) Limited</values>
+        <values>Hewlett Packard Enterprise Company</values>
+        <values>HP Inc</values>
+        <values>SUPER MICRO COMPUTER, INC.</values>
+        <values>CISCO SYSTEMS INC.</values>
+        <values>Dynabook Inc.</values>
+        <values>xFusion Digital Technologies Co., Ltd.</values>
+        <values>Fujitsu Client Computing Limited (Lenovo/FCCL)</values>
+        <values>New H3C Information Technologies Co., Ltd</values>
+        <values>INSPUR (BEIJING) ELECTRONIC INFORMATIONINDUSTRY CO., LTD.</values>
+        <values>ACER INCORPORATED</values>
+        <values>FUJITSU LIMITED</values>
+        <values>Nettrix Information Industry Co., Ltd</values>
+        <values>ZTE CORPORATION</values>
+        <values>ASUSTEK COMPUTER INCORPORATION</values>
+        <values>IEIT SYSTEMS Co., LTD</values>
+        <values>GIGA-BYTE TECHNOLOGY CO., LTD.</values>
+        <values>Positivo Tecnologia SA</values>
+        <values>QUANTA COMPUTER INC.</values>
+        <values>Montage Technology Co., Ltd.</values>
+        <values>INVENTEC CORPORATION</values>
+        <values>NEC PERSONAL COMPUTERS,LTD.</values>
+        <values>BULL</values>
+        <values>FOXCONN TECHNOLOGY CO., LTD.</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>End Customer Sales Geography</label>
+        <name>QuoteAndQuoteLine.Pricing_Region_Nm__c</name>
+        <type>Text</type>
+        <values>EMEA</values>
+        <values>APJ</values>
+        <values>ASMO</values>
+        <values>PRC</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved ECAP Price</label>
+        <name>Pricing_ECAP_Price_Dup_Amt__c</name>
+        <type>Number</type>
+        <values>6.59___147.01</values>
+        <values>147.01___172.91</values>
+        <values>172.91___193.98</values>
+        <values>193.98___285.99</values>
+        <values>285.99___372.2</values>
+        <values>372.2___860.87</values>
+        <values>860.87___1270.23</values>
+        <values>1270.23___1854.72</values>
+        <values>1854.72___2424.38</values>
+        <values>2424.38___33200.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Competitor Product Name</label>
+        <name>QlWithProductAndCompProd.Name</name>
+        <type>Text</type>
+        <values>Write In Product</values>
+        <values>2S AMD EPYC 7313 (128M Cache, 16C, 3.0GHz/3.7GHz) 155W</values>
+        <values>AMD Ryzen 5 PRO 5650G (6C, 4.4 GHz, 65W)</values>
+        <values>2S AMD EPYC 7513 (128M Cache, 32C, 2.6GHz/3.65GHz) 200W</values>
+        <values>2S AMD EPYC 7453  (64M Cache, 28C, 2.75GHz/3.45GHz) 225W</values>
+        <values>2S AMD EPYC 7352 (128M Cache, 24C, 2.3GHz/3.2GHz) 155W</values>
+        <values>2S AMD EPYC 7443 (128M Cache, 24C, 2.85GHz/4.0GHz) 200W</values>
+        <values>2S AMD EPYC 7413 (128M Cache, 24C, 2.65GHz/3.6GHz) 180W</values>
+        <values>AMD Ryzen 5 PRO 7530U (6C, 4.5GHZ, 15W)</values>
+        <values>2S AMD EPYC 9334 (128M Cache, 32C, 2.7GHz/3.9GHz) 210W</values>
+        <values>2S AMD EPYC 7543 (256M Cache, 32C, 2.8GHz/3.7GHz) 225W</values>
+        <values>AMD Ryzen 5 7530U (6C, 4.5GHZ, 15W)</values>
+        <values>2S AMD EPYC 9124 (64M Cache, 16C, 3.0GHz/3.7GHz) 200W</values>
+        <values>2S AMD EPYC 7302 (128M Cache, 16C, 3GHz/3.3GHz) 155W</values>
+        <values>AMD Ryzen 5 Pro 6650U (6C, 4.5GHz, 15W)</values>
+        <values>2S AMD EPYC 9354 (256M Cache, 32C, 3.25GHz/3.8GHz) 280W</values>
+        <values>2S AMD EPYC 7402 (128M Cache, 24C, 2.8GHz/3.35GHz) 180W</values>
+        <values>2S AMD EPYC 7272 (64M Cache, 12C, 2.9GHz/3.2GHz) 120W</values>
+        <values>AMD Ryzen 7 PRO 5750G (8C, 4.6 GHz, 65W)</values>
+        <values>AMD Ryzen 5 5600G (6C, 4.4 GHz, 65W)</values>
+        <values>2S AMD EPYC 7282 (64M Cache, 16C, 2.8GHz/3.2GHz) 120W</values>
+        <values>2S AMD EPYC 9254 (128M Cache, 24C, 2.9GHz/4.15GHz) 200W</values>
+        <values>2S AMD EPYC 9224 (64M Cache, 24C, 2.5GHz/3.7GHz) 200W</values>
+        <values>AMD Ryzen 5 PRO 5650GE (6C, 4.4 GHz, 35W)</values>
+        <values>2S AMD EPYC 9454 (256M Cache, 48C, 2.75GHz/3.8GHz) 290W</values>
+        <values>AMD Ryzen 5 8540U (6C, 4.9GHz, 28W)</values>
+        <values>2S AMD EPYC 74F3 (256M Cache, 24C, 3.2GHz/4.0GHz) 240W</values>
+        <values>AMD Ryzen 7 PRO 7730U (8C, 4.5GHZ, 15W)</values>
+        <values>2S AMD EPYC 7452 (128M Cache, 32C, 2.35GHz/3.35GHz) 155W</values>
+        <values>2S AMD EPYC 7343 (128M Cache, 16C, 3.20GHz/3.9GHz) 190W</values>
+        <values>AMD Ryzen 5 8640U (6C, 4.9GHz, 28W)</values>
+        <values>AMD Ryzen 7 8840U (8C, 5.1GHz, 28W)</values>
+        <values>AMD Ryzen 5 PRO 7540U (6C, 4.9GHz, 15W)</values>
+        <values>2S AMD EPYC 72F3 (256M Cache, 8C, 3.7GHz/4.1GHz) 180W</values>
+        <values>AMD Ryzen 5 8600G (6C, 5.0GHz, 65W)</values>
+        <values>2S AMD EPYC 9174F (256M Cache, 16C, 4.1GHz/4.4GHz) 320W</values>
+        <values>AMD Ryzen 7 PRO 7840U (8C, 5.1GHz, 15W)</values>
+        <values>AMD Ryzen 7 7730U (8C, 4.5GHZ, 15W)</values>
+        <values>AMD Ryzen 5 5600GE (6C, 4.4 GHz, 35W)</values>
+        <values>AMD Ryzen 3 5300G (4C, 4.2 GHz, 65W)</values>
+        <values>AMD Ryzen 7 8700G (8C, 5.1GHz, 65W)</values>
+        <values>2S AMD EPYC 7502 (128M Cache, 32C, 2.5GHz/3.35GHz) 180W</values>
+        <values>AMD Ryzen 3 PRO 5350G (4C, 4.2 GHz, 65W)</values>
+        <values>2S AMD EPYC 7F72 (192M Cache, 24C, 3.2GHz/3.7GHz) 240W</values>
+        <values>AMD Ryzen 5 PRO 6650U (6C, 4.5GHz, 28W)</values>
+        <values>AMD Ryzen 5 7535U (6C, 4.55HZ, 28W)</values>
+        <values>AMD Ryzen 7 5700G (8C, 4.6 GHz, 65W)</values>
+        <values>AMD Ryzen 5 PRO 7640U (6C, 4.9GHz, 15W)</values>
+        <values>2S AMD EPYC 7643 (256M Cache, 48C, 2.30GHz/3.60GHz) 225W</values>
+        <values>AMD Ryzen 5 PRO 5675U (6C, 4.3GHz, 15W)</values>
+        <values>2S AMD EPYC 7262 (128M Cache, 8C, 3.2GHz/3.4GHz) 155W</values>
+        <values>2S AMD EPYC 7542 (128M Cache, 32C, 2.9GHz/3.4GHz) 225W</values>
+        <values>2S AMD EPYC 75F3 (256M Cache, 32C, 2.95GHz/4.0GHz) 280W</values>
+        <values>AMD Ryzen 5 5625U (6C, 4.3GHz, 28W)</values>
+        <values>AMD Ryzen 7 PRO 6850U (8C, 4.7GHz, 28W)</values>
+        <values>2S AMD EPYC 7252 (64M Cache, 8C, 3.1GHz/3.2GHz) 120W</values>
+        <values>2S AMD EPYC 9374F (256M Cache, 32C, 3.85GHz/4.3GHz) 320W</values>
+        <values>AMD Ryzen 5 5600U (6C, 4.2GHz, 15W)</values>
+        <values>2S AMD EPYC 9534</values>
+        <values>AMD Ryzen 7 8840HS (8C, 5.1GHz, 28W)</values>
+        <values>AMD Ryzen 5 8500G (6C, 5.0GHz, 65W)</values>
+        <values>2S AMD EPYC 73F3 (256M Cache, 16C, 3.50GHz/4.0GHz) 240W</values>
+        <values>2S AMD EPYC 9354</values>
+        <values>AMD Ryzen 5 5500U (6C, 4GHz, 15W)</values>
+        <values>AMD Ryzen 7 PRO 5750GE (8C, 4.6 GHz, 35W)</values>
+        <values>AMD Ryzen 5 PRO 8500G (6C, 5GHZ, 65W)</values>
+        <values>AMD Ryzen 5 PRO 5650U (6C, 4.2GHz, 15W)</values>
+        <values>7663</values>
+        <values>AMD Ryzen 3 PRO 5350GE (4C, 4.2 GHz, 35W)</values>
+        <values>AMD Ryzen 3 7330U (4C, 4.3GHZ, 15W)</values>
+        <values>2S AMD EPYC 7F32 (128M Cache, 8C, 3.7GHz/3.9GHz) 180W</values>
+        <values>7713P</values>
+        <values>AMD Ryzen 7 PRO 6850H (8C, 4.7GHz, 45W)</values>
+        <values>AMD Ryzen 3 5300GE (4C, 4.2 GHz, 35W)</values>
+        <values>2S AMD EPYC 9654 (384M Cache, 96C, 2.4GHz/3.7GHz) 360W</values>
+        <values>2S AMD EPYC 7532 (256M Cache, 32C, 2.4GHz/3.3GHz) 200W</values>
+        <values>2S AMD EPYC 9274F (256M Cache, 24C, 4.05GHz/4.3GHz) 320W</values>
+        <values>1S AMD EPYC 7272 (64M Cache, 12C, 2.9GHz/3.2GHz) 120W</values>
+        <values>1S AMD EPYC 7313P (128M Cache, 16C, 3.0GHz/3.7GHz) 155W</values>
+        <values>AMD Ryzen 5 5625U (6C, 4.3GHz, 15W)</values>
+        <values>AMD Ryzen 5 5600U (6C, 4.2GHz, 28W)</values>
+        <values>2S AMD EPYC 7742 (256M Cache, 64C, 2.25GHz/3.4GHz) 225W</values>
+        <values>AMD Ryzen 3 8300G (4C, 4.9GHz, 65W)</values>
+        <values>AMD Ryzen 7 Pro 6850U (8C, 4.7GHz, 15W)</values>
+        <values>AMD EPYC 7352 (128M Cache, 24C, 2.3GHz/3.2GHz) 155W</values>
+        <values>1S AMD EPYC 7543P (256M Cache, 32C, 2.8GHz/3.7GHz) 225W</values>
+        <values>1S AMD EPYC 7262 (128M Cache, 8C, 3.2GHz/3.4GHz) 155W</values>
+        <values>AMD Ryzen 7 7735U (8C, 4.75GHZ, 28W)</values>
+        <values>AMD Ryzen 5 7600 (6C, 5.1GHz, 65W)</values>
+        <values>AMD Ryzen 7 PRO 5850U (8C, 4.4GHz, 15W)</values>
+        <values>AMD Ryzen 7 PRO 8700GE (8C, 3.6GHz, 35W)</values>
+        <values>AMD Ryzen 7 7840U (8C, 5.1GHz, 28W)</values>
+        <values>1S AMD EPYC 7302 (128M Cache, 16C, 3GHz/3.3GHz) 155W</values>
+        <values>AMD Ryzen 7 PRO 7745 (8C, 5.3GHz, 65W)</values>
+        <values>AMD Ryzen 7 6800U (8C, 4.7GHz, 15W)</values>
+        <values>1S AMD EPYC 7252 (64M Cache, 8C, 3.1GHz/3.2GHz) 120W</values>
+        <values>AMD Ryzen 7 7840HS (8C, 5.1GHz, 35W)</values>
+        <values>2S AMD EPYC 7642 (256M Cache, 48C, 2.3GHz/3.3GHz) 225W</values>
+        <values>2S AMD EPYC 7F52 (256M Cache, 16C, 3.5GHz/3.9GHz) 240W</values>
+        <values>2S AMD EPYC 7552 (256M Cache, 48C, 2.2GHz/3.3GHz) 200W</values>
+        <values>Other</values>
+        <values>null</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Intel Account Executive Email</label>
+        <name>QuoteAndQuoteLine.Pricing_Intel_Account_Exec_Email_Txt__c</name>
+        <type>Text</type>
+        <values>heiner.genzken@intel.com</values>
+        <values>ozkan.ozdikici@intel.com</values>
+        <values>kahina.bazizi@intel.com</values>
+        <values>deep.s.mahangi@intel.com</values>
+        <values>agustin.gallego@intel.com</values>
+        <values>katarzyna.makowska@intel.com</values>
+        <values>anders.huge@intel.com</values>
+        <values>antoine.alfero@intel.com</values>
+        <values>bogdan.stefan.pop@intel.com</values>
+        <values>alan.chien@intel.com</values>
+        <values>matthias.beldzik@intel.com</values>
+        <values>vitor.martinez@intel.com</values>
+        <values>davide.torrice@intel.com</values>
+        <values>stecy.rigaut@intel.com</values>
+        <values>sheldon.prince@intel.com</values>
+        <values>nadja.schiffl@intel.com</values>
+        <values>jason.gauthier@intel.com</values>
+        <values>francisco.bueno@intel.com</values>
+        <values>alicja.gargas@intel.com</values>
+        <values>michael.t.moretti@intel.com</values>
+        <values>adib.rajji@intel.com</values>
+        <values>stefano.roma@intel.com</values>
+        <values>oliver.roos@intel.com</values>
+        <values>yongjian.lin@intel.com</values>
+        <values>gilles.karolkowski@intel.com</values>
+        <values>gerhard.lesch@intel.com</values>
+        <values>oliver.freundel@intel.com</values>
+        <values>piotr.kwiatkowski@intel.com</values>
+        <values>yin.li@intel.com</values>
+        <values>jean.pierre.chavez@intel.com</values>
+        <values>eslam.kandiel@intel.com</values>
+        <values>tomasz.hodakowski@intel.com</values>
+        <values>arndt.mitwer@intel.com</values>
+        <values>vivien.lu@intel.com</values>
+        <values>tarek.rahal@intel.com</values>
+        <values>claudio.bellini@intel.com</values>
+        <values>natalia.zaorska-czerwonka@intel.com</values>
+        <values>thor.dahlstedt@intel.com</values>
+        <values>marwen.mosbah@intel.com</values>
+        <values>ahmad.a.alabduljabbar@intel.com</values>
+        <values>melanie.fekete@intel.com</values>
+        <values>luuk.verink@intel.com</values>
+        <values>hannah.freimark@intel.com</values>
+        <values>matt.pavlovic@intel.com</values>
+        <values>simon.morse@intel.com</values>
+        <values>carlos.pelaez@intel.com</values>
+        <values>juan.demaestri@intel.com</values>
+        <values>florian.ranner@intel.com</values>
+        <values>angelo.correa-denoncourt@intel.com</values>
+        <values>christian.schmidt@intel.com</values>
+        <values>jessica.lv@intel.com</values>
+        <values>jinjiang.liu@intel.com</values>
+        <values>fransiskus.leonardus@intel.com</values>
+        <values>petteri.heino@intel.com</values>
+        <values>wendy.tolls@intel.com</values>
+        <values>kang.a.li@intel.com</values>
+        <values>matthew.r.pearson@intel.com</values>
+        <values>guodong.xiong@intel.com</values>
+        <values>kimberly.kelly@intel.com</values>
+        <values>agnieszka.kujawa@intel.com</values>
+        <values>sara.bodin@intel.com</values>
+        <values>julie.zhao@intel.com</values>
+        <values>robert.adamski@intel.com</values>
+        <values>ahmad.alqabbat@intel.com</values>
+        <values>simon.windsor@intel.com</values>
+        <values>bob.huang@intel.com</values>
+        <values>katsumi.yazawa@intel.com</values>
+        <values>rick.hack@intel.com</values>
+        <values>andrew.degnan@intel.com</values>
+        <values>robert.maskell@intel.com</values>
+        <values>natalia.makarova@intel.com</values>
+        <values>cristian.oliveira@intel.com</values>
+        <values>magdalena.witke@intel.com</values>
+        <values>jeff.walnock@intel.com</values>
+        <values>juan.polo@intel.com</values>
+        <values>kimiaki.shinbori@intel.com</values>
+        <values>alastair.duncan@intel.com</values>
+        <values>mario.buritica@intel.com</values>
+        <values>austin.davis@intel.com</values>
+        <values>yg.kim@intel.com</values>
+        <values>dimitrios.filippopoulos@intel.com</values>
+        <values>ingy.abbas@intel.com</values>
+        <values>alexandre.chauvin@intel.com</values>
+        <values>carlo.grilli@intel.com</values>
+        <values>timon.kehrl@intel.com</values>
+        <values>paul.a.baines@intel.com</values>
+        <values>colin.crawford@intel.com</values>
+        <values>andrew.gaidano@intel.com</values>
+        <values>duc.dang@intel.com</values>
+        <values>david.e.rodriguez@intel.com</values>
+        <values>eduard.spiegel@intel.com</values>
+        <values>david.garza.marin@intel.com</values>
+        <values>linda.l.kenworthy@intel.com</values>
+        <values>markus.widmer@intel.com</values>
+        <values>jade.moon@intel.com</values>
+        <values>kuo.liao@intel.com</values>
+        <values>sh.lee@intel.com</values>
+        <values>viktoriia.burgart@intel.com</values>
+        <values>kawa.y.chang@intel.com</values>
+        <values>georgia.stubbs@intel.com</values>
+        <values>Other</values>
+        <values>null</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Quantity</label>
+        <name>Pricing_Approved_Unit_Qty__c</name>
+        <type>Number</type>
+        <values>1.0___51.0</values>
+        <values>51.0___115.0</values>
+        <values>115.0___240.0</values>
+        <values>240.0___499.0</values>
+        <values>499.0___782.0</values>
+        <values>782.0___1119.0</values>
+        <values>1119.0___2000.0</values>
+        <values>2000.0___3726.0</values>
+        <values>3726.0___8577.0</values>
+        <values>8577.0___900000.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>CompetitorProductNameAndProductName</label>
+        <name>CompetitorProductNameAndProductName</name>
+        <type>Text</type>
+        <values>Write In Product,Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>AMD Ryzen 5 PRO 7530U (6C, 4.5GHZ, 15W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Write In Product,Intel® Core™ Ultra 5 Processor 135U (12M Cache, up to 4.40 GHz)</values>
+        <values>2S AMD EPYC 7313 (128M Cache, 16C, 3.0GHz/3.7GHz) 155W,Intel® Xeon® Gold 6326 Processor (24M Cache, 2.90 GHz)</values>
+        <values>Write In Product,Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650G (6C, 4.4 GHz, 65W),Intel® Core™ i5-13500 Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>2S AMD EPYC 7443 (128M Cache, 24C, 2.85GHz/4.0GHz) 200W,Intel® Xeon® Gold 6342 Processor (36M Cache, 2.80 GHz)</values>
+        <values>AMD Ryzen 5 Pro 6650U (6C, 4.5GHz, 15W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>2S AMD EPYC 7543 (256M Cache, 32C, 2.8GHz/3.7GHz) 225W,Intel® Xeon® Platinum 8358 Processor (48M Cache, 2.60 GHz)</values>
+        <values>2S AMD EPYC 7513 (128M Cache, 32C, 2.6GHz/3.65GHz) 200W,Intel® Xeon® Gold 6348 Processor (42M Cache, 2.60 GHz)</values>
+        <values>AMD Ryzen 7 PRO 5750G (8C, 4.6 GHz, 65W),Intel® Core™ i7-13700 Processor (30M Cache, up to 5.20 GHz)</values>
+        <values>AMD Ryzen 5 7530U (6C, 4.5GHZ, 15W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>AMD Ryzen 5 8540U (6C, 4.9GHz, 28W),Intel® Core™ Ultra 5 Processor 135U (12M Cache, up to 4.40 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>Write In Product,Intel® Core™ Ultra 7 Processor 165H (24M Cache, up to 5.00 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650G (6C, 4.4 GHz, 65W),Intel® Core™ i5-13500T Processor (24M Cache, up to 4.60 GHz)</values>
+        <values>AMD Ryzen 5 7530U (6C, 4.5GHZ, 15W),Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>2S AMD EPYC 7313 (128M Cache, 16C, 3.0GHz/3.7GHz) 155W,Intel® Xeon® Silver 4314 Processor (24M Cache, 2.40 GHz)</values>
+        <values>AMD Ryzen 7 8840U (8C, 5.1GHz, 28W),Intel® Core™ Ultra 7 Processor 165U (12M Cache, up to 4.90 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650G (6C, 4.4 GHz, 65W),Intel® Core™ i5-12500 Processor (18M Cache, up to 4.60 GHz)</values>
+        <values>AMD Ryzen 5 8640U (6C, 4.9GHz, 28W),Intel® Core™ Ultra 5 Processor 135U (12M Cache, up to 4.40 GHz)</values>
+        <values>AMD Ryzen 7 PRO 7730U (8C, 4.5GHZ, 15W),Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>AMD Ryzen 5 PRO 7540U (6C, 4.9GHz, 15W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-13500 Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>AMD Ryzen 7 8700G (8C, 5.1GHz, 65W),Intel® Core™ i7 processor 14700 (33M Cache, up to 5.40 GHz)</values>
+        <values>Write In Product,Intel® Core™ Ultra 7 Processor 165U (12M Cache, up to 4.90 GHz)</values>
+        <values>2S AMD EPYC 7413 (128M Cache, 24C, 2.65GHz/3.6GHz) 180W,Intel® Xeon® Gold 6342 Processor (36M Cache, 2.80 GHz)</values>
+        <values>2S AMD EPYC 72F3 (256M Cache, 8C, 3.7GHz/4.1GHz) 180W,Intel® Xeon® Gold 6334 Processor (18M Cache, 3.60 GHz)</values>
+        <values>2S AMD EPYC 9254 (128M Cache, 24C, 2.9GHz/4.15GHz) 200W,Intel® Xeon® Gold 6442Y Processor (60M Cache, 2.60 GHz)</values>
+        <values>2S AMD EPYC 7453  (64M Cache, 28C, 2.75GHz/3.45GHz) 225W,Intel® Xeon® Gold 6330 Processor (42M Cache, 2.00 GHz)</values>
+        <values>Write In Product,Intel® Core™ i7-1370P Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-13500T Processor (24M Cache, up to 4.60 GHz)</values>
+        <values>2S AMD EPYC 7272 (64M Cache, 12C, 2.9GHz/3.2GHz) 120W,Intel® Xeon® Silver 4310 Processor (18M Cache, 2.10 GHz)</values>
+        <values>2S AMD EPYC 9124 (64M Cache, 16C, 3.0GHz/3.7GHz) 200W,Intel® Xeon® Gold 6426Y Processor (37.5M Cache, 2.50 GHz)</values>
+        <values>AMD Ryzen 5 5600G (6C, 4.4 GHz, 65W),Intel® Core™ i5-12500 Processor (18M Cache, up to 4.60 GHz)</values>
+        <values>2S AMD EPYC 7343 (128M Cache, 16C, 3.20GHz/3.9GHz) 190W,Intel® Xeon® Gold 6346 Processor (36M Cache, 3.10 GHz)</values>
+        <values>Write In Product,Intel® Core™ i7-13800H Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>AMD Ryzen 7 PRO 5750G (8C, 4.6 GHz, 65W),Intel® Core™ i7-12700 Processor (25M Cache, up to 4.90 GHz)</values>
+        <values>2S AMD EPYC 7453  (64M Cache, 28C, 2.75GHz/3.45GHz) 225W,Intel® Xeon® Gold 6348 Processor (42M Cache, 2.60 GHz)</values>
+        <values>AMD Ryzen 3 PRO 5350G (4C, 4.2 GHz, 65W),Intel® Core™ i3-13100 Processor (12M Cache, up to 4.50 GHz)</values>
+        <values>AMD Ryzen 3 5300G (4C, 4.2 GHz, 65W),Intel® Core™ i3-12100 Processor (12M Cache, up to 4.30 GHz)</values>
+        <values>2S AMD EPYC 7513 (128M Cache, 32C, 2.6GHz/3.65GHz) 200W,Intel® Xeon® Platinum 8358 Processor (48M Cache, 2.60 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-1245U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>2S AMD EPYC 9354 (256M Cache, 32C, 3.25GHz/3.8GHz) 280W,Intel® Xeon® Platinum 8462Y+ Processor (60M Cache, 2.80 GHz)</values>
+        <values>AMD Ryzen 5 8600G (6C, 5.0GHz, 65W),Intel® Core™ i5 processor 14500 (24M Cache, up to 5.00 GHz)</values>
+        <values>2S AMD EPYC 9174F (256M Cache, 16C, 4.1GHz/4.4GHz) 320W,Intel® Xeon® Gold 6444Y Processor (45M Cache, 3.60 GHz)</values>
+        <values>Write In Product,Intel® Core™ i7-13700 Processor (30M Cache, up to 5.20 GHz)</values>
+        <values>2S AMD EPYC 7352 (128M Cache, 24C, 2.3GHz/3.2GHz) 155W,Intel® Xeon® Gold 5318Y Processor (36M Cache, 2.10 GHz)</values>
+        <values>AMD Ryzen 7 PRO 7840U (8C, 5.1GHz, 15W),Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>AMD Ryzen 5 PRO 7530U (6C, 4.5GHZ, 15W),Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>AMD Ryzen 5 Pro 6650U (6C, 4.5GHz, 15W),Intel® Core™ i5-1245U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>2S AMD EPYC 7513 (128M Cache, 32C, 2.6GHz/3.65GHz) 200W,Intel® Xeon® Gold 6338N Processor (48M Cache, 2.20 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650GE (6C, 4.4 GHz, 35W),Intel® Core™ i5-13500T Processor (24M Cache, up to 4.60 GHz)</values>
+        <values>2S AMD EPYC 7413 (128M Cache, 24C, 2.65GHz/3.6GHz) 180W,Intel® Xeon® Gold 6336Y Processor (36M Cache, 2.40 GHz)</values>
+        <values>2S AMD EPYC 7513 (128M Cache, 32C, 2.6GHz/3.65GHz) 200W,Intel® Xeon® Gold 6338 Processor (48M Cache, 2.00 GHz)</values>
+        <values>2S AMD EPYC 7302 (128M Cache, 16C, 3GHz/3.3GHz) 155W,Intel® Xeon® Gold 6226R Processor (22M Cache, 2.90 GHz)</values>
+        <values>AMD Ryzen 5 5600G (6C, 4.4 GHz, 65W),Intel® Core™ i5-12400 Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>2S AMD EPYC 7443 (128M Cache, 24C, 2.85GHz/4.0GHz) 200W,Intel® Xeon® Gold 6354 Processor (39M Cache, 3.00 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650GE (6C, 4.4 GHz, 35W),Intel® Core™ i5-13400T Processor (20M Cache, up to 4.40 GHz)</values>
+        <values>AMD Ryzen 7 5700G (8C, 4.6 GHz, 65W),Intel® Core™ i7-12700 Processor (25M Cache, up to 4.90 GHz)</values>
+        <values>2S AMD EPYC 7453  (64M Cache, 28C, 2.75GHz/3.45GHz) 225W,Intel® Xeon® Gold 5320 Processor (39M Cache, 2.20 GHz)</values>
+        <values>AMD Ryzen 5 PRO 6650U (6C, 4.5GHz, 28W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>AMD Ryzen 7 8840HS (8C, 5.1GHz, 28W),Intel® Core™ Ultra 7 Processor 165H (24M Cache, up to 5.00 GHz)</values>
+        <values>Write In Product,Intel® Core™ Ultra 5 Processor 125U (12M Cache, up to 4.30 GHz)</values>
+        <values>2S AMD EPYC 7313 (128M Cache, 16C, 3.0GHz/3.7GHz) 155W,Intel® Xeon® Gold 5317 Processor (18M Cache, 3.00 GHz)</values>
+        <values>2S AMD EPYC 7352 (128M Cache, 24C, 2.3GHz/3.2GHz) 155W,Intel® Xeon® Gold 5220R Processor (35.75M Cache, 2.20 GHz)</values>
+        <values>2S AMD EPYC 7543 (256M Cache, 32C, 2.8GHz/3.7GHz) 225W,Intel® Xeon® Platinum 8362 Processor (48M Cache, 2.80 GHz)</values>
+        <values>AMD Ryzen 5 PRO 7640U (6C, 4.9GHz, 15W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>AMD Ryzen 7 7730U (8C, 4.5GHZ, 15W),Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>Write In Product,Intel® Core™ i7 processor 14700 (33M Cache, up to 5.40 GHz)</values>
+        <values>2S AMD EPYC 7302 (128M Cache, 16C, 3GHz/3.3GHz) 155W,Intel® Xeon® Gold 5317 Processor (18M Cache, 3.00 GHz)</values>
+        <values>2S AMD EPYC 9334 (128M Cache, 32C, 2.7GHz/3.9GHz) 210W,Intel® Xeon® Gold 6430 Processor (60M Cache, 2.10 GHz)</values>
+        <values>2S AMD EPYC 7F72 (192M Cache, 24C, 3.2GHz/3.7GHz) 240W,Intel® Xeon® Gold 6248R Processor (35.75M Cache, 3.00 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-12500 Processor (18M Cache, up to 4.60 GHz)</values>
+        <values>AMD Ryzen 5 7535U (6C, 4.55HZ, 28W),Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>2S AMD EPYC 9224 (64M Cache, 24C, 2.5GHz/3.7GHz) 200W,Intel® Xeon® Gold 5418Y Processor (45M Cache, 2.00 GHz)</values>
+        <values>2S AMD EPYC 9254 (128M Cache, 24C, 2.9GHz/4.15GHz) 200W,Intel® Xeon® Gold 6542Y Processor (60M Cache, 2.90 GHz)</values>
+        <values>2S AMD EPYC 7282 (64M Cache, 16C, 2.8GHz/3.2GHz) 120W,Intel® Xeon® Gold 5218 Processor (22M Cache, 2.30 GHz)</values>
+        <values>2S AMD EPYC 9454 (256M Cache, 48C, 2.75GHz/3.8GHz) 290W,Intel® Xeon® Platinum 8468 Processor (105M Cache, 2.10 GHz)</values>
+        <values>2S AMD EPYC 7453  (64M Cache, 28C, 2.75GHz/3.45GHz) 225W,Intel® Xeon® Gold 6342 Processor (36M Cache, 2.80 GHz)</values>
+        <values>AMD Ryzen 5 8600G (6C, 5.0GHz, 65W),Intel® Core™ i5 processor 14500T (24M Cache, up to 4.80 GHz)</values>
+        <values>2S AMD EPYC 7282 (64M Cache, 16C, 2.8GHz/3.2GHz) 120W,Intel® Xeon® Silver 4314 Processor (24M Cache, 2.40 GHz)</values>
+        <values>AMD Ryzen 3 7330U (4C, 4.3GHZ, 15W),Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz, with IPU)</values>
+        <values>2S AMD EPYC 7413 (128M Cache, 24C, 2.65GHz/3.6GHz) 180W,Intel® Xeon® Gold 5318Y Processor (36M Cache, 2.10 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-1350P Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>AMD Ryzen 5 5600G (6C, 4.4 GHz, 65W),Intel® Core™ i5-13400 Processor (20M Cache, up to 4.60 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5675U (6C, 4.3GHz, 15W),Intel® Core™ i5-1245U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>AMD Ryzen 5 PRO 7640U (6C, 4.9GHz, 15W),Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>2S AMD EPYC 74F3 (256M Cache, 24C, 3.2GHz/4.0GHz) 240W,Intel® Xeon® Gold 6348 Processor (42M Cache, 2.60 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5 processor 14500T (24M Cache, up to 4.80 GHz)</values>
+        <values>AMD Ryzen 7 7730U (8C, 4.5GHZ, 15W),Intel® Core™ i7-1355U Processor (12M Cache, up to 5.00 GHz)</values>
+        <values>AMD Ryzen 5 5600G (6C, 4.4 GHz, 65W),Intel® Core™ i5-13500 Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>2S AMD EPYC 75F3 (256M Cache, 32C, 2.95GHz/4.0GHz) 280W,Intel® Xeon® Platinum 8362 Processor (48M Cache, 2.80 GHz)</values>
+        <values>Write In Product,Intel® Core™ i5-12500T Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650G (6C, 4.4 GHz, 65W),Intel® Core™ i5-13400 Processor (20M Cache, up to 4.60 GHz)</values>
+        <values>2S AMD EPYC 7402 (128M Cache, 24C, 2.8GHz/3.35GHz) 180W,Intel® Xeon® Gold 6248R Processor (35.75M Cache, 3.00 GHz)</values>
+        <values>Write In Product,Intel® Core™ Ultra 5 Processor 135H (18M Cache, up to 4.60 GHz)</values>
+        <values>Write In Product,Intel® Core™ i7-1355U Processor (12M Cache, up to 5.00 GHz)</values>
+        <values>2S AMD EPYC 7313 (128M Cache, 16C, 3.0GHz/3.7GHz) 155W,Intel® Xeon® Gold 6226R Processor (22M Cache, 2.90 GHz)</values>
+        <values>AMD Ryzen 5 PRO 5650GE (6C, 4.4 GHz, 35W),Intel® Core™ i5-12500T Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Other</values>
+        <values>null</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>QuoteAndQuoteLine.Proposal Due Date</label>
+        <name>QuoteAndQuoteLine.Pricing_Bid_Dt__c</name>
+        <type>Date</type>
+        <values>May</values>
+        <values>June</values>
+        <values>April</values>
+        <values>July</values>
+        <values>October</values>
+        <values>November</values>
+        <values>September</values>
+        <values>August</values>
+        <values>March</values>
+        <values>December</values>
+        <values>February</values>
+        <values>January</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Quote Line Status</label>
+        <name>Pricing_Status_Nm__c</name>
+        <type>Text</type>
+        <values>Won</values>
+        <values>Lost</values>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Pricing_Status_Nm__c</predictedField>
+    <predictionType>Classification</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <trainingMetrics>{&quot;r2&quot;:0.22168848590875978,&quot;nobs&quot;:52239,&quot;nullDeviance&quot;:52375.72711651809,&quot;residualDegreesOfFreedom&quot;:49822,&quot;type&quot;:&quot;BinomialGLM&quot;,&quot;gini&quot;:0.6297657542786106,&quot;meanPerClassError&quot;:0.40717631444633073,&quot;logloss&quot;:0.38813003660184187,&quot;auc&quot;:0.8148828771393053,&quot;residualDeviance&quot;:40551.049964087244,&quot;confusionMatrices&quot;:{&quot;thresholds&quot;:[0.516100771896237],&quot;tns&quot;:[2962],&quot;tps&quot;:[40071],&quot;totalPositives&quot;:47591,&quot;totalNegatives&quot;:4648},&quot;rmse&quot;:0.35332030395167646,&quot;aic&quot;:45385.049964087244,&quot;nullDegreesOfFreedom&quot;:52238,&quot;mse&quot;:0.12483523718450505}</trainingMetrics>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;QuoteAndQuoteLine.Pricing_Bid_Dt__c&quot;,&quot;sourceFieldName&quot;:&quot;QuoteAndQuoteLine.Pricing_Bid_Dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>QuoteAndQuoteLine.Pricing_Bid_Dt__c</sourceFieldNames>
+        <targetFieldNames>QuoteAndQuoteLine.Pricing_Bid_Dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+</DiscoveryAIModel>

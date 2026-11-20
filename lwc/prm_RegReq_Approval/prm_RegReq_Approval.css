@@ -1,0 +1,13 @@
+.errorMsg{
+    font-size: medium;
+    font-weight: 400;
+}
+
+.errorMsgList{
+    font-size: medium;
+    font-weight: 700;
+}
+
+ul:not(.browser-default) li {
+    list-style-type: disc;
+}

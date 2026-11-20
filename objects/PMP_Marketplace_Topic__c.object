@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Marketplace_Topic_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Marketplace_Topic_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to hold list of allowed topics and their corresponding translations for topic name and descriptions</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PMP_Event_Banner_Language_Mapping__c</fullName>
+        <description>This field is used to map the language related to event</description>
+        <label>Event Banner Language Mapping</label>
+        <length>25500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Event_Banner_Language__c</fullName>
+        <description>This field is used to store the language related to event banner</description>
+        <label>Event Banner Language</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>Simplified Chinese</fullName>
+                    <default>false</default>
+                    <label>Simplified Chinese</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Event_Chinese_Tagline__c</fullName>
+        <description>Holds chinese tagline for this event</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds chinese tagline for this event</inlineHelpText>
+        <label>Event Chinese Tagline</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Event_Japanese_Tagline__c</fullName>
+        <description>Holds the Japanese Tagline for the Event</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the Japanese Tagline for the Event</inlineHelpText>
+        <label>Event Japanese Tagline</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Event_Learn_More_Link_Txt__c</fullName>
+        <description>Holds the URL value for learn more link</description>
+        <label>Event Learn More Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Event_Screen_Reader_Txt__c</fullName>
+        <description>Holds the event CTA button screen reader values which will be used for assistance.</description>
+        <label>Event Screen Reader Text</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This field is used to check whether topic is Active</description>
+        <inlineHelpText>This field is used to check whether topic is Active</inlineHelpText>
+        <label>Is Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketplace_Event_End_Dt__c</fullName>
+        <description>Holds the information for event end date.</description>
+        <inlineHelpText>Holds the information for event end date.</inlineHelpText>
+        <label>Marketplace Event End Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketplace_Event_Id__c</fullName>
+        <description>Holds the related Marketplace Event Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the related Marketplace Event Id</inlineHelpText>
+        <label>Marketplace Event Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketplace_Event_Start_Dt__c</fullName>
+        <description>Holds the information for event start date.</description>
+        <inlineHelpText>Holds the information for event start date.</inlineHelpText>
+        <label>Marketplace Event Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketplace_Event_Status__c</fullName>
+        <description>Holds the information of event status</description>
+        <formula>( NOW() &gt;=   DATETIMEVALUE(PMP_Marketplace_Event_Start_Dt__c))  &amp;&amp; (NOW() &lt;=   DATETIMEVALUE(PMP_Marketplace_Event_End_Dt__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Marketplace Event Status</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketplace_Event_Tagline__c</fullName>
+        <description>Holds the information for Event Tagline.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the information for Event Tagline.</inlineHelpText>
+        <label>Marketplace Event Tagline</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketplace_Topic_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field is used to store the Topic Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to store the Topic Name</inlineHelpText>
+        <label>Marketplace Topic Name</label>
+        <length>80</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Chinese_Dsc__c</fullName>
+        <description>This field will have the Chinese topic Description</description>
+        <inlineHelpText>This field will have the Chinese topic Description</inlineHelpText>
+        <label>Topic Chinese Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Chinese_Nm__c</fullName>
+        <description>This field will have the Chinese Topic Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field will have the Chinese Topic Name</inlineHelpText>
+        <label>Topic Chinese Name</label>
+        <length>99</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_English_Dsc__c</fullName>
+        <description>This field will have the english topic Description</description>
+        <inlineHelpText>This field will have the english topic Description</inlineHelpText>
+        <label>Topic English Description</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>This field used to store the topic Id</description>
+        <externalId>true</externalId>
+        <inlineHelpText>This field used to store the topic Id</inlineHelpText>
+        <label>Topic Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Japanese_Dsc__c</fullName>
+        <description>This field will have the Japanese topic Description</description>
+        <inlineHelpText>This field will have the Japanese topic Description</inlineHelpText>
+        <label>Topic Japanese Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Japanese_Nm__c</fullName>
+        <description>This field will have the Japanese topic title</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field will have the Japanese topic title</inlineHelpText>
+        <label>Topic Japanese Name</label>
+        <length>99</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Type__c</fullName>
+        <description>Holds information about the type of Topic</description>
+        <inlineHelpText>Holds information about the type of Topic</inlineHelpText>
+        <label>Topic Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Featured Topic</fullName>
+                    <default>false</default>
+                    <label>Featured Topic</label>
+                </value>
+                <value>
+                    <fullName>Event Topic</fullName>
+                    <default>false</default>
+                    <label>Event Topic</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Marketplace Topic</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Marketplace_Topic_Name__c</columns>
+        <columns>PMP_Topic_Id__c</columns>
+        <columns>PMP_Topic_Type__c</columns>
+        <columns>PMP_Is_Active_Ind__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>TOPIC-{0000}</displayFormat>
+        <label>Topic Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Marketplace Topics</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>End_Date_cannot_be_before_Start_Date</fullName>
+        <active>true</active>
+        <description>End Date cannot be before Start Date</description>
+        <errorConditionFormula>PMP_Marketplace_Event_End_Dt__c &lt;
+PMP_Marketplace_Event_Start_Dt__c</errorConditionFormula>
+        <errorDisplayField>PMP_Marketplace_Event_End_Dt__c</errorDisplayField>
+        <errorMessage>End Date cannot be before Start Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_Cannot_Change_Topic_Type</fullName>
+        <active>true</active>
+        <description>Topic Type cannot be changed</description>
+        <errorConditionFormula>NOT(ISNEW())  &amp;&amp;  ISCHANGED( PMP_Topic_Type__c )</errorConditionFormula>
+        <errorDisplayField>PMP_Topic_Type__c</errorDisplayField>
+        <errorMessage>Topic Type cannot be modified</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP_Topic_Name_Cannot_Be_Changed</fullName>
+        <active>true</active>
+        <description>Market Place Topic Name cannot be changed</description>
+        <errorConditionFormula>NOT(ISNEW()) &amp;&amp; ISCHANGED(  PMP_Marketplace_Topic_Name__c  )</errorConditionFormula>
+        <errorDisplayField>PMP_Marketplace_Topic_Name__c</errorDisplayField>
+        <errorMessage>Marketplace Topic Name Cannot be changed</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

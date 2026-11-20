@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_16301649</developerName>
+        <masterLabel>BU Name</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>CUST_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CCG vPro Adoption Technologies Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Technology Adoption Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Tiger Lake + Rocket Lake-S Design #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Partner-Led Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Public Sector Deal $</sourceValue>
+            </sourceValues>
+            <value>CCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DCG AI Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Adjacencies Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Compute Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Optane DCPMM Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Networking Comms Design $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Networking Design $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Comms Infrastructure Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Comms Infrastructure Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Strategic Next Gen Design #</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>IOTG Biz Consumption-Led Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG ISD Deal Other #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Partner-Led Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Partner-Led Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG RSD Deal Other #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Transformational Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Video (All Verticals) Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG VMC Deal Other #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG All Arch Conversion Design $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG All Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG All Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG All Design $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Design-Secondary $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IOTG Workload Consolidation (All Verticals) Deal #</sourceValue>
+            </sourceValues>
+            <value>IOTG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NSG All Design $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NSG NAND Datacenter Cloud Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NSG Optane Datacenter Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NSG NAND Datacenter Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NSG Optane Datacenter Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NSG Partner Enablement Deal #</sourceValue>
+            </sourceValues>
+            <value>NSG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG All Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG All Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG All Design $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG Cloud-Enterprise-Storage Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG IOT Deal $</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG NFV-Comms Deal $</sourceValue>
+            </sourceValues>
+            <value>PSG</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>LAST_STAGE_CHANGE_DATE</field>
+    </columns>
+    <description>Pipeline Dashboard. List of  opportunities with the KPIs and BU</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>US Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Halversen,wood,swyers,oldfield,merjanian,covey</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER_MANAGER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_16301649</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>US INSIDE Pipeline wKPI BU</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Core_Opportunity_KPI__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2022-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
+    </timeFrameFilter>
+</Report>

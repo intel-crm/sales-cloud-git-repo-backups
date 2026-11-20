@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_5336917</developerName>
+        <masterLabel>Account Grouping</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ADVANTECH CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ADLINK TECHNOLOGY INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IEI INTEGRATION CORP.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IBASE TECHNOLOGY INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GETAC CORP.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENNOCONN CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEXCOM INTERNATIONAL CO., LTD.</sourceValue>
+            </sourceValues>
+            <value>T1-eODM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>WISTRON CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PEGATRON CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COMPAL ELECTRONICS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>QUANTA COMPUTER INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FOXCONN TECHNOLOGY CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GIGA-BYTE TECHNOLOGY CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MICRO-STAR INTERNATIONAL CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ASROCK INC.</sourceValue>
+            </sourceValues>
+            <value>PC-ODM</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Partner_Alliance_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>ATE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>iotg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending,Win Submitted,On Hold</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_5336917</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2017 IOTG ATE-TW Pending Unweighted</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

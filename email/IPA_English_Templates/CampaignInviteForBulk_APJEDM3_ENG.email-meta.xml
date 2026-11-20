@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>campaign invite for APJ EDM3</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CampaignInviteForBulk_APJEDM3_ENG</name>
+    <style>none</style>
+    <subject>Join the Intel® Partner Alliance today!</subject>
+    <textOnly>OTSI Learn to Win
+
+Dear {!Contact.FirstName},
+Unable to open the course links in our previous email? Not to worry. Please use the refreshed links provided below to access your chosen Intel® Partner University training courses.
+Intel® Partner Alliance membership gives you exclusive business-building opportunities, like entry to our global showcase, advanced training, and promotional support—all tailored to your needs.
+
+OTSI Value Exchange Accelerator: Partner Journey
+
+Sign up for the Intel® Partner Alliance and join the OTSI Learn to Win Campaign. Complete any three of the following Intel® Partner University Training courses and stand a chance to win USD 50 before October 7, 2022  (extended)*.
+Intel® Partner University Training Courses (Updated):
+
+1.  IT/OT Convergence Webinar
+2.  Harvesting Value from AI Investments for Manufacturing
+3.  IoT Digital Transformation for Manufacturing Webinar
+4.  Technical Best Practices for IoT and AI Video with Intel
+5.  Realize Leading Smart Hospital Use Cases: Data-Driven Imaging, Telehealth, and Device Security
+6.  Integrating Transformative IoT Digital Signage: Technical Offerings with Intel
+
+Join Intel® Partner Alliance Now
+
+Please visit the support page for assistance required while registering for Intel® Partner Alliance.
+*Terms &amp; Conditions apply. Promotion expires on October 7, 2022. Stand a chance to win USD 50 when you Join Intel® Partner Alliance.
+
+© Intel Corporation. Intel, the Intel logo, and other Intel marks are trademarks of Intel Corporation or its subsidiaries.
+Other names and brands may be claimed as the property of others.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

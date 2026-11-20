@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION</name>
+    <style>none</style>
+    <subject>New user added to Intel® Partner Alliance account</subject>
+    <textOnly>An individual has been added to your Account
+
+{!Contact.FirstName},
+
+{!Contact.FirstName}{!Contact.LastName} has been added to {!Account.Name}&apos;s Intel® Partner Alliance account.
+
+Company Name: {!Account.Name}
+Business ID: {!Account.AccountNumber}
+Contact Added Email: {!ContactEmail}
+Relationship (Role): {!AcrRoles}
+
+Click Here to see more details.
+
+For any questions, please contact Support
+
+Thank you,
+Your Intel® Partner Alliance team	
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© 2023 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Privacy | Cookies
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,15 @@
+<template>
+
+    <div class="marquee-outer-container" data-background-color={backgroundColor} data-background-variant={backgroundVariant}>
+        <div class="marquee-inner-container container" data-alignment={alignment}>
+            <div class="marquee-main-content">
+                <h1 class="title color-white">{title}</h1>
+                <slot name="subtitle"></slot>
+            </div>
+            <div class="marquee-right-content">
+                <slot name="right"></slot>
+            </div>
+        </div>
+    </div>
+
+</template>

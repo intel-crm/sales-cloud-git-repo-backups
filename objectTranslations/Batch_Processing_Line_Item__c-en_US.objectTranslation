@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Processing Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Processing Line Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Processing --></label>
+        <name>Batch_Processing__c</name>
+        <relationshipLabel><!-- Batch Processing Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Log --></label>
+        <name>Change_Log__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Log --></label>
+        <name>Core_Change_Log__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Deletes --></label>
+        <name>Core_Number_of_Deletes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Inserts --></label>
+        <name>Core_Number_of_Inserts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Updates --></label>
+        <name>Core_Number_of_Updates__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Log --></label>
+        <name>Exception_Log__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Type --></label>
+        <name>Object_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Object Id --></label>
+        <name>Related_Object_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Exception</masterLabel>
+            <translation><!-- Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failure</masterLabel>
+            <translation><!-- Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

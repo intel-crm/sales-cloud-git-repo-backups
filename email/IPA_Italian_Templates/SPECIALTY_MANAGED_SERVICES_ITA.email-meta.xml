@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_MANAGED_SERVICES_ITA</name>
+    <style>none</style>
+    <subject>Vantaggi specifici per servizi gestiti Intel® Partner Alliance</subject>
+    <textOnly>Congratulazioni per la qualificazione!
+
+
+{!Contact.FirstName},
+
+ti diamo il benvenuto ai vantaggi specifici dei servizi gestiti Intel® Partner Alliance! Come membro qualificato dei vantaggi specifici dei servizi gestiti, hai diritto a vantaggi speciali* ideati per aiutarti a fornire e implementare le tue soluzioni, tra cui:
+
+Designazione di specialista dei servizi gestiti
+Promozione Intel della tua azienda come specialista dei servizi gestiti
+Altri punti di incentivo Intel
+Inviti prioritari a eventi del settore e sessioni di formazione
+Accesso a Intel® Platform Testing Services
+
+Per iniziare, ti preghiamo di rispondere a ITP-MS@intel.com  con le seguenti informazioni:
+
+
+Contatto principale per le comunicazioni dello specialista dei servizi gestiti
+Nome:
+E-mail:
+
+
+Per ulteriori materiali di vendita e promozione
+Indirizzo postale:
+Telefono:
+
+Accedi ai vantaggi
+
+
+* I vantaggi potrebbero variare a seconda dell&apos;area geografica.
+
+I partner di Intel hanno una lunga tradizione di innovazione e con Intel® Partner Alliance saremo in grado di aiutarti a realizzare più rapidamente soluzioni per l&apos;economia incentrata sui dati. Insieme possiamo collaborare, incentivare innovazione e sviluppo e cogliere opportunità straordinarie.
+
+Visita  https://www.intel.com/content/content/www/it/it/partner-alliance/help/overview.html per ottenere assistenza e orientamento sull&apos;ottimizzazione della tua iscrizione.
+
+
+Grazie.
+Il tuo team Intel® Partner Alliance
+
+Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

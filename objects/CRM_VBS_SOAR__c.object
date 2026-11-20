@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>CRM_VBS_Annual_Recurring_Revenue__c</fullName>
+        <description>The sum of the highest rolling 12 month period of committed/guaranteed revenue (if there is a convenience clause, only amounts up to convenience clause date are includable). Could it be blank for non-renewal based contracts? Possible, enter zero</description>
+        <inlineHelpText>The sum of the highest rolling 12 month period of committed/guaranteed revenue (if there is a convenience clause, only amounts up to convenience clause date are includable).</inlineHelpText>
+        <label>Annual Recurring Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Contract_Lifetime_in_Months__c</fullName>
+        <description>Contract duration</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract duration</inlineHelpText>
+        <label>Contract Lifetime in Months</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Contract_Start_Date__c</fullName>
+        <description>Contract Start Date</description>
+        <inlineHelpText>Contract Start Date</inlineHelpText>
+        <label>Contract Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Opportunity_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Region</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Other_Notes__c</fullName>
+        <label>Other Notes</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Primary_Lawyer__c</fullName>
+        <defaultValue>(&quot;Unknown - I don’t know who my legal partner is&quot;)</defaultValue>
+        <inlineHelpText>SOAR-1 qualified deals must add a lawyer to core team. Please connect with an Intel lawyer and select the lawyer that you are working with.  If you need help getting connected to a lawyer, select: “Unknown (I don’t know who my legal partner is)”</inlineHelpText>
+        <label>Primary Lawyer</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ Legal - Arpita Sen</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Arpita Sen</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Hilbert Lee</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Hilbert Lee</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Karol Goh</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Karol Goh</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Mary Kwok</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Mary Kwok</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Puja Malhotra</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Puja Malhotra</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Sridhar HN</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Sridhar HN</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Troy Van Orman</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Troy Van Orman</label>
+                </value>
+                <value>
+                    <fullName>APJ Legal - Wei-Chi Chen</fullName>
+                    <default>false</default>
+                    <label>APJ Legal - Wei-Chi Chen</label>
+                </value>
+                <value>
+                    <fullName>CCG Legal - Adam Kaplan</fullName>
+                    <default>false</default>
+                    <label>CCG Legal - Adam Kaplan</label>
+                </value>
+                <value>
+                    <fullName>CCG Legal - Amy Saack</fullName>
+                    <default>false</default>
+                    <label>CCG Legal - Amy Saack</label>
+                </value>
+                <value>
+                    <fullName>CCG Legal - Dave McAbee</fullName>
+                    <default>false</default>
+                    <label>CCG Legal - Dave McAbee</label>
+                </value>
+                <value>
+                    <fullName>CCG Legal - Kelly Kozich</fullName>
+                    <default>false</default>
+                    <label>CCG Legal - Kelly Kozich</label>
+                </value>
+                <value>
+                    <fullName>CCG Legal - Kevin Brady</fullName>
+                    <default>false</default>
+                    <label>CCG Legal - Kevin Brady</label>
+                </value>
+                <value>
+                    <fullName>CCG Legal - Miriam Ezrachi</fullName>
+                    <default>false</default>
+                    <label>CCG Legal - Miriam Ezrachi</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Barry Fang</fullName>
+                    <default>false</default>
+                    <label>China Legal - Barry Fang</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Betty Li</fullName>
+                    <default>false</default>
+                    <label>China Legal - Betty Li</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Dimo Wang</fullName>
+                    <default>false</default>
+                    <label>China Legal - Dimo Wang</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Flora Jiang</fullName>
+                    <default>false</default>
+                    <label>China Legal - Flora Jiang</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Liang Wang</fullName>
+                    <default>false</default>
+                    <label>China Legal - Liang Wang</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Mile Zhao</fullName>
+                    <default>false</default>
+                    <label>China Legal - Mile Zhao</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Oliver Lin</fullName>
+                    <default>false</default>
+                    <label>China Legal - Oliver Lin</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Quan Zhou</fullName>
+                    <default>false</default>
+                    <label>China Legal - Quan Zhou</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Xin Xiang</fullName>
+                    <default>false</default>
+                    <label>China Legal - Xin Xiang</label>
+                </value>
+                <value>
+                    <fullName>China Legal - Xuan Zheng</fullName>
+                    <default>false</default>
+                    <label>China Legal - Xuan Zheng</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Andrea Watson</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Andrea Watson</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Jim Glore</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Jim Glore</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Jinelle Yien</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Jinelle Yien</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Kim Peterson Evans</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Kim Peterson Evans</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Lilian Yen</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Lilian Yen</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Mark Fahey</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Mark Fahey</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Matt Hulse</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Matt Hulse</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Mike Labbee</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Mike Labbee</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Sonoo Ching</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Sonoo Ching</label>
+                </value>
+                <value>
+                    <fullName>DCAI Legal - Theresa Ravelo</fullName>
+                    <default>false</default>
+                    <label>DCAI Legal - Theresa Ravelo</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Alex Duterque</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Alex Duterque</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Anna Stupiggia</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Anna Stupiggia</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Celia Nash</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Celia Nash</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Claudia Schulke</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Claudia Schulke</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Dana Zloof</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Dana Zloof</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - David Rose</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - David Rose</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Giuseppe Daurelio</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Giuseppe Daurelio</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Sergey Morozov</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Sergey Morozov</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Steffi Pors</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Steffi Pors</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Valerie Dupre</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Valerie Dupre</label>
+                </value>
+                <value>
+                    <fullName>EMEA Legal - Victoria Hair</fullName>
+                    <default>false</default>
+                    <label>EMEA Legal - Victoria Hair</label>
+                </value>
+                <value>
+                    <fullName>LatAm Legal - Ivan Mora</fullName>
+                    <default>false</default>
+                    <label>LatAm Legal - Ivan Mora</label>
+                </value>
+                <value>
+                    <fullName>LatAm Legal - Rocio Madrigal Salazar</fullName>
+                    <default>false</default>
+                    <label>LatAm Legal - Rocio Madrigal Salazar</label>
+                </value>
+                <value>
+                    <fullName>NEX Legal - Brian Dietzel</fullName>
+                    <default>false</default>
+                    <label>NEX Legal - Brian Dietzel</label>
+                </value>
+                <value>
+                    <fullName>NEX Legal - Jocelyn De Grandpre</fullName>
+                    <default>false</default>
+                    <label>NEX Legal - Jocelyn De Grandpre</label>
+                </value>
+                <value>
+                    <fullName>NEX Legal - Jonna Anderson</fullName>
+                    <default>false</default>
+                    <label>NEX Legal - Jonna Anderson</label>
+                </value>
+                <value>
+                    <fullName>NEX Legal - Morgan Wiest</fullName>
+                    <default>false</default>
+                    <label>NEX Legal - Morgan Wiest</label>
+                </value>
+                <value>
+                    <fullName>NEX Legal - Romy Drysdale</fullName>
+                    <default>false</default>
+                    <label>NEX Legal - Romy Drysdale</label>
+                </value>
+                <value>
+                    <fullName>SATG Legal - Brian Dietzel</fullName>
+                    <default>false</default>
+                    <label>SATG Legal - Brian Dietzel</label>
+                </value>
+                <value>
+                    <fullName>SATG Legal - Clarita Uchendu</fullName>
+                    <default>false</default>
+                    <label>SATG Legal - Clarita Uchendu</label>
+                </value>
+                <value>
+                    <fullName>SATG Legal - Katia Gondarenko</fullName>
+                    <default>false</default>
+                    <label>SATG Legal - Katia Gondarenko</label>
+                </value>
+                <value>
+                    <fullName>SATG Legal - Mike Proksch</fullName>
+                    <default>false</default>
+                    <label>SATG Legal - Mike Proksch</label>
+                </value>
+                <value>
+                    <fullName>SATG Legal - Pam Clark-Meister</fullName>
+                    <default>false</default>
+                    <label>SATG Legal - Pam Clark-Meister</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Adrian Fontecilla</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Adrian Fontecilla</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Chad Brooker</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Chad Brooker</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Heather Bell</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Heather Bell</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Joel Willard</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Joel Willard</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Katie Glynn</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Katie Glynn</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Kristina Holm</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Kristina Holm</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Lindsay Lutz</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Lindsay Lutz</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Melissa Boge</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Melissa Boge</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Parrish Pynn</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Parrish Pynn</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Rob Kim</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Rob Kim</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Roisin Comerford</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Roisin Comerford</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Sergio Gonzalez</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Sergio Gonzalez</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Stacy Ruegilin</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Stacy Ruegilin</label>
+                </value>
+                <value>
+                    <fullName>SMG Legal - Taryn Williams</fullName>
+                    <default>false</default>
+                    <label>SMG Legal - Taryn Williams</label>
+                </value>
+                <value>
+                    <fullName>U.S. Fed Legal - Dave Yee</fullName>
+                    <default>false</default>
+                    <label>U.S. Fed Legal - Dave Yee</label>
+                </value>
+                <value>
+                    <fullName>U.S. Fed Legal - Jesse Williams</fullName>
+                    <default>false</default>
+                    <label>U.S. Fed Legal - Jesse Williams</label>
+                </value>
+                <value>
+                    <fullName>U.S. Fed Legal - John Williamson</fullName>
+                    <default>false</default>
+                    <label>U.S. Fed Legal - John Williamson</label>
+                </value>
+                <value>
+                    <fullName>Unknown - I don’t know who my legal partner is</fullName>
+                    <default>false</default>
+                    <label>Unknown - I don’t know who my legal partner is</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Primary_VBS_Offering_Category__c</fullName>
+        <description>Choose the appropriate Primary category this VBS offering belongs to</description>
+        <inlineHelpText>Choose the appropriate Primary category this VBS offering belongs to</inlineHelpText>
+        <label>Primary VBS Offering Category</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Managed Services</fullName>
+                    <default>false</default>
+                    <label>Managed Services</label>
+                </value>
+                <value>
+                    <fullName>Platform Software</fullName>
+                    <default>false</default>
+                    <label>Platform Software</label>
+                </value>
+                <value>
+                    <fullName>Paid Support Services</fullName>
+                    <default>false</default>
+                    <label>Paid Support Services</label>
+                </value>
+                <value>
+                    <fullName>Optimization Software</fullName>
+                    <default>false</default>
+                    <label>Optimization Software</label>
+                </value>
+                <value>
+                    <fullName>On-demand</fullName>
+                    <default>false</default>
+                    <label>On-demand</label>
+                </value>
+                <value>
+                    <fullName>Semi-custom</fullName>
+                    <default>false</default>
+                    <label>Semi-custom</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Deep Silicon Partnership</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Deep Silicon Partnership</label>
+                </value>
+                <value>
+                    <fullName>Paid Partnerships</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Paid Partnerships</label>
+                </value>
+                <value>
+                    <fullName>Paid Services</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Paid Services</label>
+                </value>
+                <value>
+                    <fullName>Performance Optimization</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Performance Optimization</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_QB_Resource__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>PM + Intel System skills + Financial metrics - Skilled individuals (one pool of global resources, may include regional resource)</description>
+        <inlineHelpText>Owner leading the VBS SOAR Process</inlineHelpText>
+        <label>Quarter Back</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>SOARs</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_SOAR_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>SOARs</relationshipLabel>
+        <relationshipName>SOARs</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_SOAR_Stage__c</fullName>
+        <label>SOAR Stage</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SOAR1 - Qualification/Sign-On</fullName>
+                    <default>false</default>
+                    <label>SOAR1 - Qualification/Sign-On</label>
+                </value>
+                <value>
+                    <fullName>SOAR2 - Strategize &amp; Build The Bid</fullName>
+                    <default>false</default>
+                    <label>SOAR2 - Strategize &amp; Build The Bid</label>
+                </value>
+                <value>
+                    <fullName>SOAR3 - Gain Intel Approval</fullName>
+                    <default>false</default>
+                    <label>SOAR3 - Gain Intel Approval</label>
+                </value>
+                <value>
+                    <fullName>SOAR4 - Present to Customer</fullName>
+                    <default>false</default>
+                    <label>SOAR4 - Present to Customer</label>
+                </value>
+                <value>
+                    <fullName>SOAR5 - Lessons Learned</fullName>
+                    <default>false</default>
+                    <label>SOAR5 - Lessons Learned</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_SOAR_VBS_Decision__c</fullName>
+        <description>Key Decisions at various SOAR Stages</description>
+        <inlineHelpText>Key Decisions at various SOAR Stages</inlineHelpText>
+        <label>SOAR VBS Decision</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SOAR1 Qualified</fullName>
+                    <default>false</default>
+                    <label>SOAR1 Qualified</label>
+                </value>
+                <value>
+                    <fullName>SOAR1 Un-qualified</fullName>
+                    <default>false</default>
+                    <label>SOAR1 Un-qualified</label>
+                </value>
+                <value>
+                    <fullName>SOAR3 Approved</fullName>
+                    <default>false</default>
+                    <label>SOAR3 Approved</label>
+                </value>
+                <value>
+                    <fullName>SOAR3 Denied</fullName>
+                    <default>false</default>
+                    <label>SOAR3 Denied</label>
+                </value>
+                <value>
+                    <fullName>SOAR4 Contract Signed</fullName>
+                    <default>false</default>
+                    <label>SOAR4 Contract Signed</label>
+                </value>
+                <value>
+                    <fullName>SOAR4 Contract Not Signed</fullName>
+                    <default>false</default>
+                    <label>SOAR4 Contract Not Signed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_Total_Contract_Value__c</fullName>
+        <description>Intel Committed/guaranteed revenue over the lifetime of contract</description>
+        <inlineHelpText>Intel Committed/guaranteed revenue over the lifetime of contract</inlineHelpText>
+        <label>Total Contract Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CRM_VBS_VBS_Explore_Re_Use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>VBS Offering that could be re-used as a template for future similar VBS Opportunities</description>
+        <inlineHelpText>VBS Offering that could be re-used as a template for future similar VBS Opportunities</inlineHelpText>
+        <label>VBS Explore Re-Use</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>SOAR</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CRM_VBS_SOAR_Opportunity__c</columns>
+        <columns>CRM_VBS_SOAR_Stage__c</columns>
+        <columns>CRM_VBS_QB_Resource__c</columns>
+        <columns>CRM_VBS_Primary_VBS_Offering_Category__c</columns>
+        <columns>CRM_VBS_SOAR_VBS_Decision__c</columns>
+        <columns>CRM_VBS_Contract_Start_Date__c</columns>
+        <columns>CRM_VBS_Contract_Lifetime_in_Months__c</columns>
+        <columns>CRM_VBS_Total_Contract_Value__c</columns>
+        <columns>CRM_VBS_Annual_Recurring_Revenue__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>SOAR-{00000}</displayFormat>
+        <label>SOAR Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>SOARs</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>CRM_VBS_SOAR_Stage__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_VBS_SOAR_VBS_Decision__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_VBS_QB_Resource__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_VBS_Primary_VBS_Offering_Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CRM_VBS_SOAR_Opportunity__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>CRM_VBS_Annual_Recurring_Revenue</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,CRM_VBS_Annual_Recurring_Revenue__c &gt; CRM_VBS_Total_Contract_Value__c)</errorConditionFormula>
+        <errorMessage>Annual Recurring Revenue should be always less than or equal to Total Contract Revenue</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Approved_Stage3_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+IF( ISCHANGED( CRM_VBS_SOAR_VBS_Decision__c ) &amp;&amp;  ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c , &apos;SOAR3 Approved&apos;) &amp;&amp;  NOT(ISPICKVAL( CRM_VBS_SOAR_Stage__c , &apos;SOAR3 - Gain Intel Approval&apos;)) ,TRUE,FALSE
+))</errorConditionFormula>
+        <errorMessage>SOAR VBS Decision can be set as SOAR3 Approved only in SOAR3 stage.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Approved_to_Contract_Change</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+IF( ISCHANGED( CRM_VBS_SOAR_VBS_Decision__c ) &amp;&amp; ( ISPICKVAL( CRM_VBS_SOAR_VBS_Decision__c , &apos;SOAR4 Contract Signed&apos;) ||  ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c, &apos;SOAR4 Contract Not Signed&apos;)) &amp;&amp;
+NOT(ISPICKVAL(PRIORVALUE(CRM_VBS_SOAR_VBS_Decision__c ), &apos;SOAR3 Approved&apos;)) ,TRUE,FALSE)
+)</errorConditionFormula>
+        <errorMessage>SOAR4 Contract Signed/Not Signed status applicable only for SOAR3 Approved.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Check_Perm_For_Contract_Fields</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,IF(AND(OR(ISCHANGED( CRM_VBS_Annual_Recurring_Revenue__c ), ISCHANGED( CRM_VBS_Contract_Lifetime_in_Months__c), ISCHANGED( CRM_VBS_Contract_Start_Date__c ) , ISCHANGED( CRM_VBS_Total_Contract_Value__c )), $User.Id != CRM_VBS_QB_Resource__c, $Profile.Name != &quot;Data Ops&quot;, NOT($Permission.CRM_SOAR_Committee)) , TRUE, FALSE))</errorConditionFormula>
+        <errorDisplayField>CRM_VBS_Annual_Recurring_Revenue__c</errorDisplayField>
+        <errorMessage>You do not have access to change the contract information. Only the assigned Quarter Back/SOAR Committee/Data Ops can do it.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Contract_Fields_Check</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, AND(
+NOT(ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c,&apos;Contract Signed&apos;)),NOT(ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c,&apos;Contract Not Signed&apos;))
+, ISCHANGED(CRM_VBS_SOAR_Stage__c),
+OR(
+ISPICKVAL(CRM_VBS_SOAR_Stage__c, &apos;SOAR4 - Present to Customer&apos;),
+ISPICKVAL(CRM_VBS_SOAR_Stage__c,&apos;SOAR5 - Lessons Learned&apos;))
+))</errorConditionFormula>
+        <errorDisplayField>CRM_VBS_SOAR_VBS_Decision__c</errorDisplayField>
+        <errorMessage>Please select SOAR VBS Decision as either &quot;Contract Signed&quot; or &quot;Contract Not Signed&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Contract_Signed_Not_Signed_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+ISCHANGED(CRM_VBS_SOAR_VBS_Decision__c),
+OR(
+ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c,&apos;SOAR4 Contract Signed&apos;),
+ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c,&apos;SOAR4 Contract Not Signed&apos;)
+),
+NOT(ISPICKVAL(CRM_VBS_SOAR_Stage__c, &apos;SOAR4 - Present to Customer&apos;))
+)
+)</errorConditionFormula>
+        <errorMessage>SOAR4 Contract Signed/Not Signed can be set only in SOAR4 stage.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Contract_Start_Date</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,IF( AND(ISCHANGED( CRM_VBS_Contract_Start_Date__c ), CRM_VBS_Contract_Start_Date__c &lt;=  CRM_VBS_SOAR_Opportunity__r.Decision_Date__c ) , TRUE, FALSE))</errorConditionFormula>
+        <errorMessage>Contract Start Date should be greater than opportunity decision date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Contract_Value_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, AND (CRM_VBS_Contract_Lifetime_in_Months__c &gt;12 , CRM_VBS_Total_Contract_Value__c &lt;= CRM_VBS_SOAR_Opportunity__r.Amount))</errorConditionFormula>
+        <errorMessage>Total Contract Value should be greater than Design Win Amount for Contracts greater than 12months lifetime.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_QB_Resource_check</fullName>
+        <active>false</active>
+        <description>Quarter Back must be assigned before setting SOAR VBS Decision as SOAR1 Qualified</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, AND( ISCHANGED( CRM_VBS_SOAR_VBS_Decision__c ), ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c , &apos;SOAR1 Qualified&apos;),
+OR(ISNULL(CRM_VBS_QB_Resource__c) , ISBLANK(CRM_VBS_QB_Resource__c) ) ))</errorConditionFormula>
+        <errorDisplayField>CRM_VBS_QB_Resource__c</errorDisplayField>
+        <errorMessage>Quarter Back must be assigned before setting SOAR VBS Decision as SOAR1 Qualified</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Restrict_Primary_Lawyer_Change</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+	IF( ISCHANGED( CRM_VBS_Primary_Lawyer__c ) &amp;&amp;  
+	NOT(OR($User.Id = CRM_VBS_QB_Resource__c,$Permission.CRM_SOAR_Committee,$Profile.Name= &quot;Data Ops&quot;)), TRUE, FALSE))</errorConditionFormula>
+        <errorMessage>You do not have access to change the Primary Lawyer. Only the assigned Quarter Back/ SOAR Committee/ Data Ops can do it.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Restrict_Stage_Decision_Change</fullName>
+        <active>false</active>
+        <description>VBS Stage and Decision can be changed by QB Resource/SOAR Committee/Data Ops when Opportunity is Open.</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,IF((ISCHANGED(CRM_VBS_SOAR_Stage__c) || ISCHANGED(CRM_VBS_SOAR_VBS_Decision__c)) &amp;&amp;  NOT(OR($User.Id = CRM_VBS_QB_Resource__c,$Permission.CRM_SOAR_Committee,$Profile.Name= &quot;Data Ops&quot;)) &amp;&amp; (OR(ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName,&apos;Qualify&apos;),ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName,&apos;Define&apos;),ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName,&apos;Develop&apos;),ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName,&apos;Design&apos;))), TRUE, FALSE))</errorConditionFormula>
+        <errorMessage>You do not have access to change the Stage or VBS decision. Only the assigned Quarter Back/ SOAR Committee/ Data Ops can do it.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_SOAR1_to_Approved_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,IF(  ISCHANGED(CRM_VBS_SOAR_VBS_Decision__c) &amp;&amp;  ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c, &apos;SOAR3 Approved&apos;) &amp;&amp;
+NOT(ISPICKVAL(PRIORVALUE(CRM_VBS_SOAR_VBS_Decision__c ), &apos;SOAR1 Qualified&apos;)), TRUE,FALSE ))</errorConditionFormula>
+        <errorMessage>Only SOAR1 Qualified records can be set as SOAR3 Approved.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_StageChange</fullName>
+        <active>false</active>
+        <description>use not able to update stage if decision is Unqlified</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE ,(ISCHANGED(CRM_VBS_SOAR_Stage__c) &amp;&amp; ISPICKVAL(CRM_VBS_SOAR_VBS_Decision__c , &apos;SOAR1 Un-qualified&apos;)) )</errorConditionFormula>
+        <errorDisplayField>CRM_VBS_SOAR_VBS_Decision__c</errorDisplayField>
+        <errorMessage>You cannot update stage for Un-qualified record</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Stage_Restriction_Opp_Lost</fullName>
+        <active>false</active>
+        <description>SOAR Committee/Data Ops can change the Stage when Opportunity is Lost.</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+IF(
+ISCHANGED(CRM_VBS_SOAR_Stage__c) &amp;&amp; 
+NOT(OR($Permission.CRM_SOAR_Committee,$Profile.Name= &quot;Data Ops&quot;)) &amp;&amp; 
+ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName,&apos;Lost&apos;),TRUE,FALSE)
+)</errorConditionFormula>
+        <errorMessage>You do not have access to modify the Stage. Only SOAR Committee/ Data Ops can do it.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Stage_Updation_Restrcit_For_DW</fullName>
+        <active>true</active>
+        <description>Can move the VBS Stage to &apos;SOAR5 - Lessons Learned&apos; if the Opportunity is DW/PW/PL/PC.</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+IF(
+AND(OR(ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName, &apos;Design Win&apos;),ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName, &apos;Production Win&apos;),ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName, &apos;Production Lost&apos;),ISPICKVAL(CRM_VBS_SOAR_Opportunity__r.StageName, &apos;Production Cancelled&apos;)), NOT(ISPICKVAL( CRM_VBS_SOAR_Stage__c , &apos;SOAR5 - Lessons Learned&apos;)),
+ISCHANGED(CRM_VBS_SOAR_Stage__c)),TRUE,FALSE))</errorConditionFormula>
+        <errorMessage>This Opportunity is currently in the &apos;Closed&apos; stage. To revert it to a different SOAR stage, please change the status of the opportunity back to an &apos;Open&apos; stage.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Valid_ARR_Contract_Value</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(AND(ISCHANGED(CRM_VBS_Annual_Recurring_Revenue__c ),CRM_VBS_Annual_Recurring_Revenue__c &lt;0),AND(ISCHANGED( CRM_VBS_Total_Contract_Value__c ),CRM_VBS_Total_Contract_Value__c &lt;0))</errorConditionFormula>
+        <errorMessage>Please enter a valid amount.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_Valid_Contract_Lifetime</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( ISCHANGED(CRM_VBS_Contract_Lifetime_in_Months__c),CRM_VBS_Contract_Lifetime_in_Months__c &lt; 0
+)</errorConditionFormula>
+        <errorDisplayField>CRM_VBS_Contract_Lifetime_in_Months__c</errorDisplayField>
+        <errorMessage>Please enter a numeric value.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

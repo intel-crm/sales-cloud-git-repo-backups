@@ -1,0 +1,67 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6eaff4e9-a3a3-49ca-bc43-441d382c4c65",
+  "label" : "Marketplace Partner Program Related List",
+  "regions" : [ {
+    "id" : "9dc63824-46ec-4445-94f8-d063ad4245c8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "47044d2d-f253-48b4-9779-bb45115d9e7d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "82b52f96-7666-4efe-ae26-61ed72eb5b3f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "09498d35-099f-4135-81c4-2b403a690caf",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "id" : "91f9e3d2-84d3-48cd-a4eb-f4580f0e793f",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "e2ad4abc-68d1-4bc7-ae04-df989f89d8b7",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "1b6f86d9-44fc-448d-a2fc-16205b106ea6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "fca35571-7ff2-4aa3-aabb-7aa0d49d994e",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "64b53dee-8f49-4d11-8440-5874c372cbe1",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "c93bc4fb-e5be-44db-a953-0571961a2b72",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "774d7983-656d-41cb-b23b-e8fbde608c33",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a72"
+}

@@ -1,0 +1,79 @@
+<aura:component controller="PMP_SearchMarketplaceController" extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome"><!-- Controller added by Nikhil -->
+    
+    <aura:attribute name="label" type="string" default="{!$Label.c.PMP_Contact_Partner}" />
+    <aura:attribute name="theme" type="string" default="normal" />
+    <aura:attribute name="toggle" type="boolean" default="false" />
+    <aura:attribute name="singleItem" type="boolean" default="false" description="Internal component state"/>
+    <aura:attribute name="loggedin" type="boolean" default="false" description="MOCK Option Only Ignore when implementing"/>
+    
+    <aura:attribute name="closeTimeoutId" type="Integer" default="0" description="Internal component state"/>
+    <aura:attribute name="languagePreference" type="String" default=""/>
+    <aura:attribute name="localUserDetails" type="object" description="Internal"  />
+    <aura:attribute name="storeName" type="string" default="Settings" /> 
+    <aura:attribute name="loading" type="boolean" default="false" />
+    <aura:attribute name="onActiveTab" type="object"/>
+    <aura:attribute name="id" type="string"/>
+    <aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="productData" type="Object" default="{
+                                                              title: ''
+                                                              }" />
+    <aura:attribute name="partner" type="Object"/>
+    
+    <aura:attribute name="dataObj" type="Map" default="{
+                                                       id: '11111',
+                                                       contactByEmail: 'false',
+                                                       contactByForm: 'true',
+                                                       requestAQuote: 'true',
+                                                       }" />
+    <aura:attribute name = "isLoggedIn" type="boolean" default="false" />
+    
+    <aura:attribute name="renderOverlay" type="boolean" default="true" />
+    
+    <aura:handler name="change" value="{!v.dataObj}" action="{!c.handleDataChange}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <c:MarketplaceAnalyticsData aura:id="analyticsData" />
+    
+    <div class="{! (v.toggle ? 'open': '') + ' theme-'+ v.theme}" aura:id="outerElement">
+        <button onclick="{!c.openContactLinks}">
+            {! v.label}
+            <aura:if isTrue="{! and(v.toggle, !v.singleItem) }">
+                <lightning:icon iconName="utility:chevronup" class="shiftUp icon-white" size="x-small" />
+            </aura:if>
+            
+            <aura:if isTrue="{! and(v.toggle == false, !v.singleItem) }">
+                <lightning:icon iconName="utility:chevrondown" class="shiftUp icon-white" size="x-small" />
+            </aura:if>
+        </button>
+                
+            <aura:if isTrue="{! and(!v.singleItem, v.renderOverlay) }">
+            	<div class="partner-overlay slds-hide" aura:id="partnerOverlay">
+                <div class="valign-middle"> <!-- slds-p-bottom_medium -->
+                    <ul>
+                        <aura:if isTrue="{! v.dataObj.contactByEmail}">
+                            <li><a onclick="{!c.handleContactByEmail}" >{!$Label.c.PMP_Contact_By_Email}</a></li>
+                        </aura:if>
+                        <aura:if isTrue="{! v.dataObj.contactByForm}">
+                            
+                            <li><a onclick="{!c.handleContactByForm}" >{!$Label.c.PMP_Ask_A_Question}</a></li>
+                            
+                            
+                            
+                        </aura:if>
+                        <aura:if isTrue="{! v.dataObj.requestAQuote}">
+                            
+                            <li><a onclick="{!c.handleRequestAQuote}" >{!$Label.c.PMP_Request_A_Quote}</a></li>
+                            
+                            
+                        </aura:if>
+                        
+                    </ul>
+                </div>
+            </div>
+            </aura:if>
+            
+            
+        
+        
+    </div>
+</aura:component>

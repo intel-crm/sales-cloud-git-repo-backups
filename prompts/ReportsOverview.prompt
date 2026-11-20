@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Reports Overview</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/</actionButtonLink>
+        <body>&lt;p&gt;Sales CRM reporting is designed with “self-service” functionality, allowing you to create your own reports. To help you get started, you have been given access to standard reports that have been pre-built to assist you with specific areas of your job. These reports can be used as-is, copied and customized.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You can use as-is, or copy and customize them to better meet your needs.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Report/home?0.promptId=ReportsNavigatingReports&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Navigating Reports&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Report/home?0.promptId=ReportsBuildaReport&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Build a Report&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Report/home?0.promptId=ReportsRelativeDateValueFilterCriteria&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Relative Date Value: Filter Criteria&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Report/home?0.promptId=ReportsAccessandShareReportFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Access and Share Report Folders&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Also, see &lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineOverview&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pipeline Reporting&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>3</delayDays>
+        <description>Reports Overview and Help</description>
+        <displayType>DockedComposer</displayType>
+        <header>Reports</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Reports Overview</masterLabel>
+        <publishedDate>2024-02-02</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Report</targetPageKey1>
+        <targetPageKey2>home</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Reports Overview and Help</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

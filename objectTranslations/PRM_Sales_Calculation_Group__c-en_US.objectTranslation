@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Calculation Group</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Calculation Groups</value>
+    </caseValues>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Source --></label>
+        <name>PRM_Revenue_Source_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Component Purchases</masterLabel>
+            <translation><!-- Component Purchases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Purchases</masterLabel>
+            <translation><!-- Direct Purchases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM Purchases</masterLabel>
+            <translation><!-- ODM Purchases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Purchases</masterLabel>
+            <translation><!-- System Purchases --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Calculation Group --></label>
+        <name>PRM_Sales_Calculation_Group_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Branded Client</masterLabel>
+            <translation><!-- Branded Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branded Server</masterLabel>
+            <translation><!-- Branded Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ChAMP</masterLabel>
+            <translation><!-- ChAMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Supplier</masterLabel>
+            <translation><!-- Channel Supplier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Sell</masterLabel>
+            <translation><!-- Co-Sell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Component</masterLabel>
+            <translation><!-- Component --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct</masterLabel>
+            <translation><!-- Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR bVAR</masterLabel>
+            <translation><!-- LAR bVAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSI or NSP</masterLabel>
+            <translation><!-- NSI or NSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC SMS</masterLabel>
+            <translation><!-- PRC SMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC SMS (XOEM)</masterLabel>
+            <translation><!-- PRC SMS (XOEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGP</masterLabel>
+            <translation><!-- SGP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOEM self-reported</masterLabel>
+            <translation><!-- SOEM self-reported --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

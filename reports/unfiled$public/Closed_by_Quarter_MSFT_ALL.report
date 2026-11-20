@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_7980020</developerName>
+        <masterLabel>Account</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT.NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ARROW CENTRAL EUROPE GMBH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW CENTRAL EUROPE GmbH c/o ARROW ELECTRONICS (UK) LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW COMPONENTS SWEDEN AB</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS ASIA (S) PTE LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS RUS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS TAIWAN LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS, INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ARROW ELECTRONICS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Asia Pacific (HK)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Central Europe GmbH_E</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Electronics Canada Ltd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Electronics India Pvt. Ltd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Electronics Korea Ltd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Enterprise Computing Solutions Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arrow Rapac</sourceValue>
+            </sourceValues>
+            <value>Arrow</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>MACNICA CYTECH LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MACNICA CYTECH PTE. LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MACNICA DHW LTDA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Macnica Americas, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Macnica Cytech Pte Ltd.</sourceValue>
+            </sourceValues>
+            <value>Macnica</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DIGI-KEY CORPORATION</sourceValue>
+            </sourceValues>
+            <value>Digi-key</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Mouser Electronics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mouser Electronics, Inc.</sourceValue>
+            </sourceValues>
+            <value>Mouser</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_98509923</developerName>
+        <masterLabel>Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-EMIF</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-Enpirion</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-HSIO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-MAG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-SOCO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-ASMO-unassigned</sourceValue>
+            </sourceValues>
+            <value>DSS NA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <value>DSS PG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Board-Design!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-CQE!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-EMIF!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HLD!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-SI!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-SJ-Software!</sourceValue>
+            </sourceValues>
+            <value>DSE NA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG-PG-CQE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Config!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-EMIF!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Embedded!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-FPGA!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-HSIO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IO!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-IP!</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-PG-Software!</sourceValue>
+            </sourceValues>
+            <value>DSE PG</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CLOSED_DATEONLY</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_98509923</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Opened Cases by Month</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <filter>
+        <booleanFilter>(1 OR 4) AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Microsoft</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>United States,Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>PSG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_End_Customer__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Microsoft</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_98509923</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Closed by Quarter - MSFT - ALL</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
+    </timeFrameFilter>
+</Report>

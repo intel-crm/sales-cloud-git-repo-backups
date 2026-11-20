@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_Account_Phone__c</fullName>
+        <label>Account Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Core_Account__c</fullName>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.Name</field>
+                <operation>notEqual</operation>
+                <value>Direct Account</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Profiles</relationshipLabel>
+        <relationshipName>Account_Profiles</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_10__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 10</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_11__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 11</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_12__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 12</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_13__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 13</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_14__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 14</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_15__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 15</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_16__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 16</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_17__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 17</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_18__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 18</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_19__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 19</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_20__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 20</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_21__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 21</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_22__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 22</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_23__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 23</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_24__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 24</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_25__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 25</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_26__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 26</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_27__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 27</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_28__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 28</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 5</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 6</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 7</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 8</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Answer_9__c</fullName>
+        <externalId>false</externalId>
+        <label>Answer 9</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Benefit_Level_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Level 1</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Benefit_Level_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Level 2</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Business_ID__c</fullName>
+        <description>Business Id</description>
+        <externalId>false</externalId>
+        <label>Business ID</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Company_DBA__c</fullName>
+        <externalId>false</externalId>
+        <label>Company DBA</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Company_URL__c</fullName>
+        <label>Company URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Core_External_ID__c</fullName>
+        <externalId>true</externalId>
+        <label>External_ID</label>
+        <length>50</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_National_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>National ID</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_10__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Others (Who do you sell to?)&quot;, 
+2, &quot;Thinking only of your Intel business (Hardware, Software or Services), what is the percentage share of Embedded?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 10</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_11__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;How did you hear about the Intel® Technology Provider Program?&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Transportation?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 11</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_12__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Other way you heard about the Intel Technology Provider Partner Program&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Industrial?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 12</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_13__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Desktop systems we built and sold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Retail?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 13</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_14__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Desktop systems we bought and resold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Communication?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 14</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_15__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Notebook systems we built and sold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets – Government/Aerospace?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 15</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_16__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Notebook systems we bought and resold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Medical?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 16</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_17__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Tablet systems we built and sold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage    share between the following markets - Smart Home &amp; buildings?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 17</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_18__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Tablet systems we bought and resold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Security?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 18</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_19__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Phone systems we built and sold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what is the percentage share between the following markets - Education?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 19</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_1__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;What is your company’s primary focus?&quot;, 
+2, &quot;Of the following, what is the % breakdown of your company’s business as related to Intel based solutions - integrate.&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_20__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Phone systems we bought and resold&quot;, 
+2, &quot;Of your TOTAL Embedded business, what percentage is based on Intel Architecture?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 20</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_21__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Server systems we built and sold&quot;, 
+2, &quot;Of your TOTAL business (Intel + All Other) what is the percentage breakdown of the products that your company offers- Hardware?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 21</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_22__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Server systems we bought and resold&quot;, 
+2, &quot;Of your TOTAL business (Intel + All Other) what is the percentage breakdown of the products that your company offers- Software?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 22</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_23__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Non-PC processor-based hardware we built and sold&quot;, 
+2, &quot;Of your TOTAL business (Intel + All Other) what is the percentage breakdown of the products that your company offers- Managed services?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 23</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_24__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;# Non-PC processor-based hardware we bought and resold&quot;, 
+2, &quot;Of your TOTAL business (Intel + All Other) what is the percentage breakdown of the products that your company offers- Cloud services?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 24</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_25__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Which of the following methods do you use to sell your products or services?&quot;, 
+2, &quot;Which of the following methods do you use to sell your technology products or services - Retails storefronts?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 25</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_26__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Other method you use to sell your products and services&quot;, 
+2, &quot;Which of the following methods do you use to sell your technology products or services - ecommerce or online sales?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 26</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_27__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;&quot;, 
+2, &quot;Which of the following methods do you use to sell your technology products or services - Outbound telesales?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 27</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_28__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;&quot;, 
+2, &quot;Which of the following methods do you use to sell your technology products or services - Direct Sales force?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 28</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_2__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;What is your company&apos;s \&quot;other\&quot; primary focus?&quot;, 
+2, &quot;Of the following, what is the % breakdown of your company’s business as related to Intel based solutions -   resell.&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_3__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Does your business build, re-sell, and/or recommend Desktop&quot;, 
+2, &quot;Thinking only of your Intel business (Hardware, Software or Services), what is the percentage share of Traditional Compute Products?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 3</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_4__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Does your business build, re-sell, and/or recommend Notebooks&quot;, 
+2, &quot;Of your TOTAL Traditional Compute Product business, what is the percentage share between following market - Consumers?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 4</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_5__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Does your business build, re-sell, and/or recommend Tablets&quot;, 
+2, &quot;Of your TOTAL Traditional Compute Product business, what is the percentage share between following market - SMB (small/med business 1-500 employees?)&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 5</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_6__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Does your business build, re-sell, and/or recommend Phones&quot;, 
+2, &quot;Of your TOTAL Traditional Compute Product business, what is the percentage share between following market - Large business/Enterprises (500+ employees)?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 6</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_7__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Does your business build, re-sell, and/or recommend Servers&quot;, 
+2, &quot;Of your TOTAL Traditional Compute Product business, what is the percentage share between following market - Education (private &amp; government education)?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 7</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_8__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Does your business build, re-sell, and/or recommend other processor based hardware (Digital displays, Point of Sale, etc.)&quot;, 
+2, &quot;Of your TOTAL Traditional Compute Product business, what is the percentage share between following market – Government?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 8</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Profile_Question_9__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (Core_Version__c, 
+1, &quot;Who do you sell to?&quot;, 
+2, &quot;Of your TOTAL Traditional Compute Product business, what is the percentage share between following market - Healthcare?&quot;, 
+NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Question 9</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Version</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Account Profile</label>
+    <nameField>
+        <displayFormat>AP-{000000000}</displayFormat>
+        <label>Account Profile Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Profiles</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_EOT</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>EOT</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://erpm.intel.com/EOT</url>
+    </webLinks>
+</CustomObject>

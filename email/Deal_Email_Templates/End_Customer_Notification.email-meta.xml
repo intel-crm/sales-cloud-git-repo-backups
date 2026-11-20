@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>This template is used to send notification to PSAM and Partner Account Owner</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>End Customer Notification</name>
+    <style>none</style>
+    <subject>Notification</subject>
+    <textOnly>This is to notify that a deal is currently being reviewed between the accounts listed below 
+
+Partner account name : PartnerAccountName
+End customer account name : EndCustomerAccountName</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

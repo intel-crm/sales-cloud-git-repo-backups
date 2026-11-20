@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Retrigger Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRESEND_IND</name>
+    <style>none</style>
+    <subject>Selesaikan permohonan Intel® Partner Alliance Anda</subject>
+    <textOnly>Anda Hampir Selesai!
+
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Terima kasih sudah mengirim permohonan Anda. Profil telah dibuat untuk {!PRM_Registration_Request__c.PRM_Email_ID__c} dan Anda sebentar lagi akan menjadi mitra Intel® Partner Alliance.
+
+
+Untuk mengaktifkan akun Anda dan mulai menikmati manfaatnya, silakan selesaikan mengisi informasi akun Anda dan lengkapi bagian persyaratan hukum.
+
+
+Selesaikan sekarang
+
+Tidak dapat mengakses link di atas?
+
+https://www.intel.com/content/www/id/id/secure/partner/forms/ipa-account-search.html.
+
+Jika ada pertanyaan, silakan hubungi kami di programs@intel.com.
+
+Terima kasih,
+Tim Intel® Partner Alliance Anda
+
+
+
+Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privasi | Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

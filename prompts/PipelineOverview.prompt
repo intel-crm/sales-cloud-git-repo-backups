@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Pipeline Overview</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/</actionButtonLink>
+        <body>&lt;p&gt;Pipeline Reporting will be referenced and discussed during weekly review meetings.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineHowtoAccessDashboards&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;How to Access Analytics Studio Dashboards&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineHowtoNavigatetheDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;How to Navigate the Dashboard&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineDashboardTabDescriptions&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pipeline Mgmt Dashboard - Tab Descriptions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineHowtoCreateaCustomTab&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;How to Create a Custom Tab&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineConfidenceDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pipeline Confidence&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineSellerDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Seller Dashboard&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineProductAnalysisDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Product Analysis Dashboard&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;Feedback and additional training topic suggestions are always welcome. Please submit feedback using the &lt;/em&gt;&lt;a href=&quot;https://apps.powerapps.com/play/e/default-46c98d88-e344-4ed4-8496-4ed7712e255d/a/0e0443c7-4dc4-46f5-b1be-c4bf1c156214?tenantId=46c98d88-e344-4ed4-8496-4ed7712e255d&amp;amp;hint=481092a6-2444-4179-a3a1-27faa8a7658e&amp;amp;sourcetime=1695038604051&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Sales Excellence Intake Request Form&lt;/em&gt;&lt;/a&gt;&lt;em&gt;. &lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>3</delayDays>
+        <description>Pipeline Overview and Help</description>
+        <displayType>DockedComposer</displayType>
+        <header>Pipeline</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Pipeline Overview</masterLabel>
+        <publishedDate>2025-03-05</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>30</timesToDisplay>
+        <title>Pipeline Reporting</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

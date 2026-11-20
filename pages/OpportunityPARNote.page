@@ -1,0 +1,22 @@
+<apex:page standardController="Core_IPS_Opportunity_PAR__c" extensions="Core_IPS_OppParNote">
+    <style>
+        div {
+        	border-top		:2px solid red;
+        	border-bottom	:2px solid red;
+        	border-left		:2px solid red;
+        	border-right	:2px solid red;
+        	background-color:yellow;
+        	width: 64%;
+        }
+        h3 {
+			color:blue;
+        }
+    </style>
+   	<apex:outputText rendered="{!IF(show,true,false)}">
+       	<div>
+           	<h3>
+               	Note: Premier Support Project will be in draft status.
+            </h3> 
+        </div>
+     </apex:outputText>
+</apex:page>

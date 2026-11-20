@@ -1,0 +1,27 @@
+<aura:documentation>
+	<aura:description>
+    <p>Create Offering Form FILE UPLOADER Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 7/30/2019</p>
+    <p>CurrentVersion: 2.2</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>CSS NOTE: to get this SF native uploader zIndex to show above the Intel Header properly
+      CSS is added at the community settings level...</p>
+
+<pre>.DESKTOP.uiModal.open {
+    z-index: 10000 !important;
+}
+.PHONE .forceMobileOverlay,
+.TABLET .forceMobileOverlay {
+    z-index: 1050 !important;
+}</pre>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

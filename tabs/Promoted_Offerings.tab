@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Promoted Offering Tabs show all Published Offerings related to selected Category to which Intel Admins can set it as Featured Offering.</description>
+    <frameHeight>800</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>Promoted Offerings</label>
+    <motif>Custom55: Books</motif>
+    <url>/apex/gblite__Grid?gname=Promoted Offerings</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

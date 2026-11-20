@@ -1,0 +1,58 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="IPA Custom Theme - Marketplace 2.0">
+
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+
+    <aura:attribute name="devIconFont" type="boolean" />
+    <aura:attribute name="devCssBundle" type="boolean" />
+    <aura:attribute name="removeNavigation" type="boolean" />
+    <aura:attribute name="coreIntcErrorConfig" type="string" />
+
+    <aura:if isTrue="{!!v.devIconFont}">
+        <ltng:require styles="{!$Resource.IpaResources + '/fonts/site-global-icons-ipa/css/site-global-icons-ipa.css'}"></ltng:require>
+        <aura:set attribute="else">
+            <ltng:require styles="{!$Resource.IpaResources + '/fonts/site-global-icons-ipa/css/site-global-icons-ipa-codes.css'}"></ltng:require>
+        </aura:set>
+    </aura:if>
+
+    <aura:if isTrue="{!!v.devCssBundle}">
+        <ltng:require styles="{!join(',',
+            $Resource.IpaResources + '/styles/animations.css',
+            $Resource.IpaResources + '/styles/alerts.css',
+            $Resource.IpaResources + '/styles/buttons.css',
+            $Resource.IpaResources + '/styles/colors.css',
+            $Resource.IpaResources + '/styles/headings.css',
+            $Resource.IpaResources + '/styles/icons.css',
+            $Resource.IpaResources + '/styles/inputs.css',
+            $Resource.IpaResources + '/styles/links.css',
+            $Resource.IpaResources + '/styles/recordPages.css',
+            $Resource.IpaResources + '/styles/responsive.css',
+            $Resource.IpaResources + '/styles/tabs.css',
+            $Resource.IpaResources + '/styles/typography.css',
+            $Resource.IpaResources + '/styles/variables.css'
+        )}" />
+        <aura:set attribute="else">
+            <ltng:require styles="{!$Resource.IpaResources + '/styles/ipabundle.min.css'}"></ltng:require>
+        </aura:set>
+    </aura:if>
+
+    <div>
+        <c:IntelCoreCommunity />
+        <c:coreIntcErrorHandler config="{!v.coreIntcErrorConfig}" />
+        <c:IPAIE11UnsupportedBrowser />
+
+        <!-- <c:ipaRegionMapping disableLanguageToast="{!false}"></c:ipaRegionMapping> -->
+
+        <c:IPADynamicComponentLoader></c:IPADynamicComponentLoader>
+
+        <aura:if isTrue="{!!v.removeNavigation}">
+            <div class="navigation">
+                {!v.navBar}
+            </div>
+        </aura:if>
+
+        <div class="mainContentArea">
+            {!v.body}
+        </div>
+
+    </div>
+</aura:component>

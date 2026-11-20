@@ -1,0 +1,16 @@
+.paddingbottom{
+    padding-bottom: 4rem;
+}
+.paddingtop{
+    padding-top:0.5rem;
+}
+.marginhorizotal{
+    margin-right:5rem;
+    margin-left: 5rem;
+}
+.spinnerSize{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Descriptive Feature</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Descriptive Features</value>
+    </caseValues>
+    <fields>
+        <label><!-- Consumer Sales System --></label>
+        <name>Core_Consumer_Sales_system__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feature Name --></label>
+        <name>Core_Feature_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feature Set --></label>
+        <name>Core_Feature_Set__c</name>
+        <relationshipLabel><!-- Descriptive Features --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Feature Type --></label>
+        <name>Core_Feature_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Multi Select --></label>
+        <name>Core_Multi_Select__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Descriptive Features --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Platform BU --></label>
+        <name>Core_Platform_BU__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_EditDescriptiveFeatures --></label>
+        <name>Core_EditDescriptiveFeatures</name>
+    </webLinks>
+</CustomObjectTranslation>

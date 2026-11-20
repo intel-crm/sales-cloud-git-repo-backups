@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Lei Guo</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_12121314_Rixian_Yin</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11637753_Lei_Guo</parentRole>
+</Role>

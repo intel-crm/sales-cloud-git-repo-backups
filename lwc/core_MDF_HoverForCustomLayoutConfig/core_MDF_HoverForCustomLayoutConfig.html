@@ -1,0 +1,22 @@
+<template>
+    <section class="slds-popover slds-popover_panel slds-nubbin_left-top" role="dialog">
+        <!-- <lightning-button title="Close dialog" icon-name="utility:close" size="small"
+         class="slds-m-left_large" onclick={handleClick}></lightning-button> -->
+        <div class="slds-popover__header">
+            <header class="slds-media slds-media_center slds-m-bottom_small">
+                <span class="slds-icon_container slds-media__figure">
+                    <lightning-icon icon-name={tabicon} onclick={handleClick} class="slds-m-left_x-small" slot="media"></lightning-icon>
+                </span>
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading_medium slds-hyphenate" id="panel-heading-id">
+                        <a href="#">{value}</a>
+                    </h2>
+                </div>
+            </header>
+        </div>
+        <div class="slds-popover__body" style="background-color:rgb(243, 243, 243)">
+            <lightning-record-form record-id={recordid} object-api-name={name} layout-type="Compact" columns="1"
+                mode="readonly"> </lightning-record-form>
+        </div>
+    </section>
+</template>

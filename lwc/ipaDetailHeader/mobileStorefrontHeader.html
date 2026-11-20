@@ -1,0 +1,53 @@
+<template>
+  <div class="slds-grid slds-wrap mobile-wrapper">
+    <div class="slds-col slds-size_1-of-1 mobile-header-title">
+      <div class="img-container slds-p-around_x-small slds-m-right_x-small">
+        <img src={logoUrl} alt="[Logo]" class="logo"></img>
+      </div>
+      <h1 class="h2">{headline}</h1>
+      <div class="social-share-container">
+        <c-ipa-share email-body={headline}></c-ipa-share>
+      </div>
+    </div>
+    <div class="slds-col slds-size_1-of-1 header-wrapper">
+      <div class="tagline slds-m-top_large">{tagline}</div>
+      <div class="badges-container slds-m-top_x-small">
+        <template for:each={formattedBadges} for:item="badge">
+          <div class="badge-container slds-m-top_x-small" key={badge.name}>
+            <template if:true = {badge.iconClass}>
+              <span class={badge.iconClass}></span>
+            </template>
+            <template if:true = {badge.image}>
+              <img src={badge.image} class="specialty-img" aria-hidden="true"></img>
+            </template>
+            <div class="slds-m-left_x-small badge-name">{badge.name}</div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+  <template if:true={contactPartnerVisible}>
+    <c-ipa-sticky full-width>
+      <div slot="sticky">
+          <div class="sticky-container">
+            <div class="sticky-contact-button slds-p-vertical_medium slds-m-horizontal_medium">
+              <c-ipa-contact-partner-button
+                analytics-details={contactPartnerAnalyticsDetails}
+                modal-data={contactPartnerModalData}
+              >
+              </c-ipa-contact-partner-button>            
+            </div>
+          </div>
+      </div>
+      <div slot="content">
+        <div class="contact-button slds-m-top_medium slds-m-bottom_x-small">
+          <c-ipa-contact-partner-button
+            analytics-details={contactPartnerAnalyticsDetails}
+            modal-data={contactPartnerModalData}
+          >
+          </c-ipa-contact-partner-button>  
+        </div>
+      </div>
+    </c-ipa-sticky>
+  </template>
+</template>

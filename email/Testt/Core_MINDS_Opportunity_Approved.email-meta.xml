@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to owner when MINDS opportunity is approved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MINDS Opportunity Review Completed by GEC</name>
+    <style>none</style>
+    <subject>GEC Approved your  Opportunity ID {!Opportunity.Id} Account Name {!Account.Name}</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

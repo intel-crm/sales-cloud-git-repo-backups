@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Assist Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Assist Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- CIM Id --></label>
+        <name>Core_CIM_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Description --></label>
+        <name>Core_Error_Description_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed Time --></label>
+        <name>Core_Processed_Time_DteTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Counter --></label>
+        <name>Core_Retry_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_SA_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Stores the Sales Assist Value from AI Sales for the related Account --></help>
+        <label><!-- Sales Assist Value --></label>
+        <name>Core_Sales_Assist_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status_Pkt__c</name>
+        <picklistValues>
+            <masterLabel>Failure</masterLabel>
+            <translation><!-- Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unified Id --></label>
+        <name>Core_Unified_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_IPS_APIAuthSettingPlugin</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_IPS_APIAuthSettingPlugins</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Token URL --></label>
+        <name>Access_Token_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Auth URL --></label>
+        <name>Auth_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Callback URL --></label>
+        <name>Callback_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumer Key --></label>
+        <name>Consumer_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consumer Secret --></label>
+        <name>Consumer_Secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redirect Url Suffix --></label>
+        <name>Redirect_Url_Suffix__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Field --></label>
+        <name>Test_Field__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

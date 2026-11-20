@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PartnerMarketingBudget$Core_MDF_Budget_Partner__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$Core_MDF_Budget_Status__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$Core_MDF_Program_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$Core_MDF_Approver_1__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget$Amount</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerMarketingBudget$Core_MDF_Decrease_Budget_Amount_Amt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>PartnerMarketingBudget$LastModifiedDate</field>
+    </columns>
+    <description>Budgets to be Released, two weeks old.</description>
+    <filter>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Budget_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$LastModifiedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>N_DAYS_AGO:14</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerMarketingBudget$Core_MDF_Budget_Partner__c.Core_MDF_CoMarketing_Ultimate_Account__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,test_company1,北京苏尔泰科技有限公司-CST_CCPTest</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CCP_DQ Budgets to be Released</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Budgets__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>PartnerMarketingBudget$LastModifiedDate</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>PartnerMarketingBudget$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

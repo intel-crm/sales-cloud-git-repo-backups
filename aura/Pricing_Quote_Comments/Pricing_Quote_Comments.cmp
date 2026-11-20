@@ -1,0 +1,7 @@
+<aura:component controller="Pricing_CommentsController"
+  implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction"
+  access="global">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="quoteStatus" type="String" />
+  <c:pricing_CommentsComponent recordId="{!v.recordId}" quoteStatus="{!v.quoteStatus}" />
+</aura:component>

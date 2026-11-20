@@ -1,0 +1,11 @@
+.textarea {
+  height: 15rem;
+  /* width: 49.5rem; */
+  width: 100%;
+  border-color: #ffffff;
+  ;
+}
+
+.font-class{
+  font-size: 10px;
+}

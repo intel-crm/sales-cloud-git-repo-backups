@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Benefit Group Benefit Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Benefit Group Benefit Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Benefit Group --></label>
+        <lookupFilter>
+            <errorMessage><!-- You cannot assign benefit to inactive Benefit Group --></errorMessage>
+        </lookupFilter>
+        <name>PRM_Benefit_Group_Id__c</name>
+        <relationshipLabel><!-- Benefit Group Benefit Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Benefit --></label>
+        <lookupFilter>
+            <errorMessage><!-- You cannot assign inactivated Benefit --></errorMessage>
+        </lookupFilter>
+        <name>PRM_Benefit_Id__c</name>
+        <relationshipLabel><!-- Benefit Group Benefit Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Live</masterLabel>
+            <translation><!-- Live --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be same or prior to the Start Date. --></errorMessage>
+        <name>PRM_Restrict_End_Date_Prior_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Inactive Indicator cannot set while associating Benefit to a Benefit Group --></errorMessage>
+        <name>PRM_Restrict_Inactive_BGBA_Creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be less than Today&apos;s Date --></errorMessage>
+        <name>PRM_Restrict_Past_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date cannot be less than Today&apos;s Date --></errorMessage>
+        <name>PRM_Restrict_Past_Start_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

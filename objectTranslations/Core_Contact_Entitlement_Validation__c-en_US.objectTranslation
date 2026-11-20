@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Entitlement Validation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Entitlement Validation</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account English Only Name --></label>
+        <name>Core_Account_English_Only_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Owner Role --></label>
+        <name>Core_Account_Owner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified ID --></label>
+        <name>Core_Business_Party_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- CNDA --></label>
+        <name>Core_CNDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact English Only Name --></label>
+        <name>Core_Contact_English_Only_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Id --></label>
+        <name>Core_Entitlement_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>Core_Entitlement_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- ODM Checked --></label>
+        <name>Core_ODM_Checked__c</name>
+    </fields>
+    <fields>
+        <label><!-- ODM Unchecked --></label>
+        <name>Core_ODM_Unchecked__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG WOM --></label>
+        <name>Core_PSG_WOM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Personal Email Domain --></label>
+        <name>Core_Personal_Email_Domain__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support_Owner --></label>
+        <name>Core_Support_Owner__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

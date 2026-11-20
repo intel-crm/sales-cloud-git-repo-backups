@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Vrushabh
+  @group             : 
+  @last modified on  : 02-08-2024
+  @last modified by  : Vrushabh
+-->
+<template>
+    <template lwc:if={showHoldPannel}>
+        <div data-id="mainDiv" class="slds-card slds-has-cushion">
+            <template lwc:if={isPricingOnHold}>
+                <p class="slds-text-title_bold slds-text-color_error slds-text-align_center">
+                    This quote is On Hold.
+                </p>
+                <p class="slds-text-color_default slds-text-align_center slds-text-body_regular">
+                    Send an email to&nbsp;
+                    <a href={mailToText}>
+                        Corp Security (DealValidation@intel.com)
+                    </a>.
+                </p>
+            </template>
+
+            <template lwc:if={showAccountComments}>
+                <p class="slds-text-color_default slds-text-align_center slds-text-body_regular">
+                    <lightning-icon icon-name="utility:warning" alternative-text="Warning!" variant="warning" size="x-small"></lightning-icon>
+                    <b> Additional Requirements(s): </b> {accountComments}
+                </p>
+            </template>
+        </div>
+    </template>
+</template>

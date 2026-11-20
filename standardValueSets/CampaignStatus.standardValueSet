@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Aborted</fullName>
+        <default>false</default>
+        <label>Aborted</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Campaign Accepted</fullName>
+        <default>false</default>
+        <label>Campaign Accepted</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Declined</fullName>
+        <default>false</default>
+        <label>Declined</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Draft</fullName>
+        <default>false</default>
+        <label>Draft</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending Approval</fullName>
+        <default>false</default>
+        <label>Pending Approval</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending Review</fullName>
+        <default>false</default>
+        <label>Pending Review</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Planned</fullName>
+        <default>true</default>
+        <label>Planned</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Proposal Accepted</fullName>
+        <default>false</default>
+        <label>Proposal Accepted</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Revision Required</fullName>
+        <default>false</default>
+        <label>Revision Required</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Submitted</fullName>
+        <default>false</default>
+        <label>Submitted</label>
+    </standardValue>
+</StandardValueSet>

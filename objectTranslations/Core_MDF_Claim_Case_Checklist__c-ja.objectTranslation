@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Claim Case Checklist --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Checklist Status --></label>
+        <name>Core_MDF_AI_Checklist_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation><!-- Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Compliant</masterLabel>
+            <translation><!-- Non-Compliant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Generated Comments --></label>
+        <name>Core_MDF_AI_Generated_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case_ID --></label>
+        <name>Core_MDF_Case_ID__c</name>
+        <relationshipLabel><!-- Claim Case Checklists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Review Findings --></label>
+        <name>Core_MDF_Case_Review_Findings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Category --></label>
+        <name>Core_MDF_Checklist_Category__c</name>
+        <picklistValues>
+            <masterLabel>Attribution</masterLabel>
+            <translation><!-- Attribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branding</masterLabel>
+            <translation><!-- Branding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documentation</masterLabel>
+            <translation><!-- Documentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engagement</masterLabel>
+            <translation><!-- Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP</masterLabel>
+            <translation><!-- POP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submission</masterLabel>
+            <translation><!-- Submission --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Checklist Description --></label>
+        <name>Core_MDF_Checklist_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Item --></label>
+        <name>Core_MDF_Checklist_Item__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Line Number --></label>
+        <name>Core_MDF_Checklist_Line_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Status --></label>
+        <name>Core_MDF_Checklist_Status__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation><!-- Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Compliant</masterLabel>
+            <translation><!-- Non-Compliant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Claim Case Review Findings --></label>
+        <name>Core_MDF_Claim_Case_Review_Findings__c</name>
+        <picklistValues>
+            <masterLabel>Activity date mismatch</masterLabel>
+            <translation>活動の日付が一致しません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity not completely delivered/partially delivered</masterLabel>
+            <translation>活動が完全には実施されていないか、一部しか実施されていません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anti-corruption policy not met</masterLabel>
+            <translation>腐敗防止ポリシーに従っていません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balanced branding not met</masterLabel>
+            <translation>均等なブランディングを満たしていません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boost Ad Tagline not met</masterLabel>
+            <translation>ブースト広告タグラインの条件が満たされていない</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brand image violation</masterLabel>
+            <translation>ブランドの画像違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branding documents altered</masterLabel>
+            <translation>ブランディングに関するドキュメントが変更されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims outside of 6 months claiming window</masterLabel>
+            <translation>請求が 6 カ月の請求期限を過ぎています</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims outside of claiming window</masterLabel>
+            <translation>申請期間外の申請です</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitive element violation</masterLabel>
+            <translation>競合他社要素の違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consistency Issue</masterLabel>
+            <translation>整合性の問題があります</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost documents altered</masterLabel>
+            <translation>費用のドキュメントが変更されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost documents altered/not valid</masterLabel>
+            <translation>コスト・ドキュメントが変更されました / 無効です</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate claims</masterLabel>
+            <translation>重複請求</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible Product/Solution Not Prominent/Missing</masterLabel>
+            <translation>対象製品 / ソリューションが不明です / 存在しません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible ad space error</masterLabel>
+            <translation>対象広告スペースエラー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embargo countries</masterLabel>
+            <translation>輸出禁止国</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event prior approval violation</masterLabel>
+            <translation>イベントの事前承認の違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event prior approval violation. Pre-review documentation violation</masterLabel>
+            <translation>イベントの事前承認の違反。事前審査の書類の違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exceeds Gift &amp; Entertainment guide</masterLabel>
+            <translation>贈答品や接待に関するガイドライン遵守違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution date mismatch</masterLabel>
+            <translation>実施日の不一致</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel Mention</masterLabel>
+            <translation>インテル言及が正しくありません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel Processor Brands</masterLabel>
+            <translation>不適切なインテル・プロセッサー・ブランド</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel logo/sig ID</masterLabel>
+            <translation>不適切なインテルのロゴ / シグネチャー ID</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect LED selection</masterLabel>
+            <translation>不適切な LED の選択</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Product Executed</masterLabel>
+            <translation>不正な製品が実行されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Program Selected</masterLabel>
+            <translation>不適切なプログラムの選択</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect activity type/category</masterLabel>
+            <translation>不適切な活動タイプ / カテゴリー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect country submission</masterLabel>
+            <translation>不正な国名の送信</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect country submission/ Multiple countries submission</masterLabel>
+            <translation>不適切な提出国 / 複数の提出国</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect/missing Additional Attribution</masterLabel>
+            <translation>追加属性が正しくありません / 存在しません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect/missing Intel mention</masterLabel>
+            <translation>インテルの言及が不適切または言及がありません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Artwork Violation</masterLabel>
+            <translation>インテル・アートワークの侵害</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel code name violation</masterLabel>
+            <translation>インテルの開発コード名の違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel logo/sig ID altered</masterLabel>
+            <translation>インテルのロゴ / シグネチャー ID が変更されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid POC amount</masterLabel>
+            <translation>費用証明 (POC) の金額が正しくありません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid POC currency</masterLabel>
+            <translation>費用証明 (POC) の通貨が無効</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid rate card/calculation</masterLabel>
+            <translation>無効なレート表 / 計算</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Intel Presence</masterLabel>
+            <translation>インテルの存在感が欠けています</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Landing Page Branding violation</masterLabel>
+            <translation>ランディング・ページのブランド違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal Review violation</masterLabel>
+            <translation>リーガルチェック違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing documents</masterLabel>
+            <translation>ドキュメントの不足</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple invoices submission in one claim</masterLabel>
+            <translation>1 件の請求に複数の請求書が提出されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Negative brand impact</masterLabel>
+            <translation>ブランドへのネガティブな影響</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-eligible Intel product brand</masterLabel>
+            <translation>対象外のインテル製品ブランド</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-eligible product/solution</masterLabel>
+            <translation>非対象製品 / ソリューション</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-reimbursable costs</masterLabel>
+            <translation>償還対象外の費用</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not promoting brand in positive manner</masterLabel>
+            <translation>肯定的な方法でブランドを宣伝していません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation>その他</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC date mismatch</masterLabel>
+            <translation>費用証明 (POC) の日付が一致しません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC detail submission error</masterLabel>
+            <translation>費用証明 (POC) 詳細の提出エラー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POE documents altered</masterLabel>
+            <translation>POE ドキュメントが変更されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP contain redaction</masterLabel>
+            <translation>POP に修正があります</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP not in acceptable format</masterLabel>
+            <translation>実績証明 (POP) が許容する形式ではありません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Path to Purchase prerequisite not met</masterLabel>
+            <translation>購入に至るまでの前提条件を満たしていません</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promoting Non-Intel Product</masterLabel>
+            <translation>非インテル製品のプロモーション</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Execution altered</masterLabel>
+            <translation>実施証明が変更されました</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualified Processor Brands violation</masterLabel>
+            <translation>認定プロセッサーのブランド違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPIF underperformed</masterLabel>
+            <translation>SPIF が未達成です</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third-party logos violation</masterLabel>
+            <translation>第三者ブランドロゴの違反</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trademark infringement</masterLabel>
+            <translation>商標権の侵害</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Underperformed metrics/Not Meeting FMV</masterLabel>
+            <translation>未達成のメトリックスまたは FMV</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unsupported domains</masterLabel>
+            <translation>サポートしていないドメイン</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_MDF_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completion Percentage --></label>
+        <name>Core_MDF_Completion_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact Amount Summation --></label>
+        <name>Core_MDF_Impact_Amount_Summation_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact Amount(Local) --></label>
+        <name>Core_MDF_Impact_Amount__c</name>
+    </fields>
+    <nameFieldLabel><!-- Claim Case Checklist Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Enter Impact Amount (local) greater than or equal to 0 --></errorMessage>
+        <name>Core_MDF_Validate_NonCompliant_Responses</name>
+    </validationRules>
+</CustomObjectTranslation>

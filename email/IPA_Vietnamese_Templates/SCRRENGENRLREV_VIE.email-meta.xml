@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_VIE</name>
+    <style>none</style>
+    <subject>Xác nhận địa chỉ email của bạn</subject>
+    <textOnly>Xác Nhận Địa Chỉ Email Của Bạn
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Cảm ơn bạn đã gửi đơn tham gia Liên minh Đối tác Intel®.
+Trước khi xử lý đơn, chúng tôi cần đảm bảo địa chỉ email này là của bạn. Nếu địa chỉ email của bạn không được xác minh trong vòng 30 ngày, đơn của bạn sẽ bị xóa khỏi hệ thống của chúng tôi và bạn sẽ phải nộp lại đơn mới.
+
+
+Xác minh ngay
+
+Không thể truy cập liên kết trên?
+https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;target=https://ciqa.intel.com/content/www/us/en/secure/partner/forms/ipa-account-search.html
+
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

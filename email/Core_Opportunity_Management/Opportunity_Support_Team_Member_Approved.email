@@ -1,0 +1,145 @@
+<messaging:emailTemplate subject="{!'Assignment '+relatedTo.Core_Status__c+' Opportunity Support Request ('+LEFT(relatedTo.RecordType.Name,3)+'): '+relatedTo.Opportunity__r.Account.Name+' - '+relatedTo.Opportunity__r.Name}" recipientType="User" relatedToType="Core_Opportunity_Support__c">
+<messaging:htmlEmailBody >
+ <table style="background-color: #0071c5;" width="100%">
+   <tbody>
+    <tr>
+      <td style="padding-left: 50px; border: none;">
+        <div style="color: white;">
+          <h1>Assignment {!relatedTo.Core_Status__c} : Opportunity Support Request {!(LEFT(relatedTo.RecordType.Name,3))}!</h1>
+         </div>
+        </td>
+        <td style="border: none; padding-right: 20px;" align="right">
+        <apex:image url="https://intel.my.salesforce.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        </td>
+        </tr>
+        </tbody>
+ </table>
+ 
+  
+  <table style="font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+  <tr>
+    <td>
+     Dear {!(LEFT(relatedTo.RecordType.Name,3))} Assigner,<br/><br/>
+     The {!(LEFT(relatedTo.RecordType.Name,3))} has approved your assignment to support the Opportunity below. Please assign another resource by clicking the link to the Opportunity Support Request below. <br/>
+     <br/>
+     </td>
+    </tr> 
+  </table>
+   <table style="border: 1px solid #d3d3d3;font-size: 14px;font-family:intel clear;;padding-left:50px" width="100%">
+  <tr>
+    <td>
+       <p>
+       <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}{!relatedTo.Id}" style="font-size: 14px"> Click Here</a>
+
+       to see additional information on this Opportunity Support Request.<br /><br /></p>
+     </td>
+    </tr> 
+    <tr>
+    <td>
+       <p>
+       <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}{!relatedTo.Opportunity__r.Id}" style="font-size: 14px"> Click Here</a>
+
+       to see additional information on this Opportunity.<br /><br /></p>
+     </td>
+    </tr> 
+  </table>
+   <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+  <tr>
+    <td>
+    Opportunity  Information
+     </td>
+    </tr> 
+  </table>
+  
+   
+   <table style="font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+     <tbody>
+   <tr>
+    <td style="font-family:intel clear;" width="40%">Account Name : {!relatedTo.Opportunity__r.Account.Name}</td>
+    <td style="font-family:intel clear;" width="40%"> Opportunity Name : {!relatedTo.Opportunity__r.Name}</td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">Stage : {!relatedTo.Opportunity__r.StageName}</td>
+     <td style="font-family:intel clear;" width="40%"> Decision Date : 
+     <apex:outputText value="{0, date, d'/'MM'/'yyyy}">
+     <apex:param value="{!relatedTo.Opportunity__r.CloseDate}" /> 
+     </apex:outputText></td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">SalesGroup : {!relatedTo.Opportunity__r.Core_Sales_Groups__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Opportunity Type : {!relatedTo.Opportunity__r.Core_Opportunity_Type__c}</td>
+   </tr>
+   
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Opportunity Owner :  {!relatedTo.Opportunity__r.Owner.Name}</td>
+     <td style="font-family:intel clear;" width="40%"> Product Segment :  {!relatedTo.Opportunity__r.Core_Product_Segment__c}</td>
+   </tr>
+   
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Technical Owner :  {!relatedTo.Opportunity__r.Core_Technical_Owner__r.Name}</td>
+     <td style="font-family:intel clear;" width="40%"> Product Application :  {!relatedTo.Opportunity__r.Core_Product_Application__c}</td>
+   </tr>
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Amount : {!relatedTo.Opportunity__r.Amount}</td>
+     <td style="font-family:intel clear;" width="40%"> Vertical Market : {!relatedTo.Opportunity__r.Core_Consumption_Market__c}</td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">Competitive Architecture: {!relatedTo.Opportunity__r.Core_Competitive_Architecture__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Probability(%) : {!relatedTo.Opportunity__r.Probability}</td>
+   </tr>
+   </tbody>
+   </table>
+      
+    <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+  <tr>
+    <td>
+    Opportunity Support Request Details 
+     </td>
+    </tr> 
+  </table>
+  
+   <table style="border-collapse: seperate;font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+     <tbody>
+   <tr>
+    <td style="border: 1px solid #cecfd5;width:10%;" width="30%">{!(LEFT(relatedTo.RecordType.Name,3))} Resource Assigned </td>
+    <td style="border: 1px solid #cecfd5;width:10%;" width="70%">
+    <apex:repeat var="cx" value="{!relatedTo.Core_Opportunity_Support_Team__r}">
+    {!cx.Core_Opportunity_Support_Team_Member__r.Name}
+    </apex:repeat>   
+    </td>
+   </tr>
+    <tr>
+    <td style="border: 1px solid #cecfd5;width:10%;" width="30%"> Approved Reason </td>
+    <td style="border: 1px solid #cecfd5;width:10%;" width="70%">
+       
+    </td>
+   </tr>
+      </tbody>
+   </table>
+  
+      
+ 
+      
+ 
+  
+     
+    <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+      <tr>
+    <td>
+    
+     <p style="text-align: center;font-size: 12px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation<br/>&copy;
+ {! YEAR( TODAY() )} Intel Corporation<br />
+ Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br/>
+ <a href="http://www.intel.com">www.intel.com</a><br/>
+ <a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+ 
+      </td>
+     </tr>
+     </table>
+     
+    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

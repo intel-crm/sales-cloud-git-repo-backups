@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_nm__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,168 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "3cb25101-b18c-4b4c-bd2c-42cde40efd23",
+  "label" : "AccountTransfer",
+  "regions" : [ {
+    "id" : "d3b5294e-5afa-4fe9-b571-d239c7a12258",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_BudgetTransfer",
+      "id" : "0dd7b986-e1de-4dbe-b2f6-d46dc99a3876",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "302df671-aee2-4957-a93c-80f5b16c5079",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "f8bb1d79-ea80-4312-863e-0202e6fa7d10",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "AccountTransfer"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "eb28031c-b740-4720-b7ee-d138087c9528",
+      "renditionMap" : {
+        "de" : "a5303eb9-343b-41c5-809f-b8540099103d",
+        "es" : "6714c0fc-c989-405c-ac60-d5ecfdc3183a",
+        "es_mx" : "7ca0f5d8-3c83-4ad6-8167-eb515134bf3f",
+        "fr" : "6990df54-162f-486e-925b-71c5df872826",
+        "it" : "6ec34356-782e-4e56-bfc5-0174436d0544",
+        "ja" : "d0a4035f-53a4-4c95-a646-644efbbdb7b1",
+        "ko" : "5313f8a7-31d1-4cbe-b63c-2e0b28d3070a",
+        "pt_br" : "31597683-c6a2-446a-be0b-a5db034e79df",
+        "pt_pt" : "0972285f-7c24-4b6f-b136-72eb8950e11b",
+        "ru" : "853cf8c2-c4ab-46c5-bf9a-6d8d73e09b44",
+        "zh_cn" : "6175c7ba-505a-49f8-beaa-515d330f8cfb",
+        "zh_tw" : "dc599767-d6a3-4ac7-b7a0-88bb7347f884"
+      },
+      "renditions" : [ {
+        "id" : "6175c7ba-505a-49f8-beaa-515d330f8cfb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "853cf8c2-c4ab-46c5-bf9a-6d8d73e09b44",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0972285f-7c24-4b6f-b136-72eb8950e11b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d0a4035f-53a4-4c95-a646-644efbbdb7b1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6ec34356-782e-4e56-bfc5-0174436d0544",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6990df54-162f-486e-925b-71c5df872826",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7ca0f5d8-3c83-4ad6-8167-eb515134bf3f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a5303eb9-343b-41c5-809f-b8540099103d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5313f8a7-31d1-4cbe-b63c-2e0b28d3070a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6714c0fc-c989-405c-ac60-d5ecfdc3183a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "31597683-c6a2-446a-be0b-a5db034e79df",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "dc599767-d6a3-4ac7-b7a0-88bb7347f884",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "AccountTransfer",
+            "title" : "AccountTransfer"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5aa551cd-490f-4ba9-9647-90d128dbe16f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-accounttransfer"
+}

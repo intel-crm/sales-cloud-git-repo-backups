@@ -1,0 +1,456 @@
+<template>
+    <template if:true={loaded}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--small slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </template>
+    <template if:false={loaded}>
+        <div style="padding: 5px !important;" class="slds-grid">
+            <div class="slds-text-heading_medium slds-align_left slds-size_2-of-6" style="padding: 5px;">
+                New Request
+            </div>
+            <lightning-input type="checkbox" label="Submitting request for myself" value=true checked name="self"
+                class="self slds-size_2-of-6" style="padding: 7px;" onchange={handleSelfSelectionchange}>
+            </lightning-input>
+            <lightning-input type="checkbox" label="Submitting request for Others" value=false name="others"
+                class="others slds-size_2-of-6" style="padding: 7px;" onchange={handleSelfSelectionchange}>
+            </lightning-input>
+        </div>
+        <lightning-record-edit-form object-api-name='Account_Create_Request__c' layout-type="Full" columns="2"
+            onsuccess={handleSuccess} onsubmit={handleSubmit} onerror={handleError} onload={handleLoad}>
+            <template if:true={selected}>
+                <div class=" slds-theme--shade" style="padding: 5px;">
+                    <div class="slds-text-heading_small">
+                        <b>Requesting For</b>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_2-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none"
+                    style="padding: 5px;margin-bottom:10px">
+                    <c-lwc-custom-lookup-user-generic required={selected} onremove={selectedRecord}
+                        onselected={selectedRecord}>
+                    </c-lwc-custom-lookup-user-generic>
+                </div>
+
+            </template>
+            <lightning-card>
+                <div class=" slds-theme--shade" style="padding: 5px;">
+                    <div class="slds-text-heading_small">
+                        <b>Account Information</b>
+                    </div>
+                </div>
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <abbr title="required" class="slds-required">*</abbr>
+                        <Label for="accName">Customer Name - English</Label>
+                        <lightning-input-field class="Name" id="accName" field-name="Account_Name__c"
+                            onchange={handleFieldChange} required variant="label-hidden">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="processType" field-name="Process_Type__c" value={acctreasontrail}
+                            disabled>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+
+                        <lightning-input-field field-name="Core_Alternate_Name_Language__c"
+                            onchange={handleFieldChange}>
+
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <Label for="locallang">Customer Name - Local Language</Label>
+                        <lightning-input-field field-name="Core_Alternate_Language_Name__c" class="AltLangName"
+                            id='locallang' onchange={handleFieldChange} value={accountNameLocalLan}
+                            disabled={disabledLocalLang} variant="label-hidden" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="digitalIdentifier" field-name="Digital_Identifier_Type__c"
+                            onchange={handleFieldChange} required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <template if:false={disabledDigital}>
+                            <abbr title="required" class="slds-required">*</abbr>
+                        </template>
+                        <Label for="digital">Digital Identifier Value</Label>
+                        <lightning-helptext content="If a customer website cannot be found, you can enter N/A">
+                        </lightning-helptext>
+                        <lightning-input-field class="digitalIdentifierVal" field-name="Digital_Identifier_Value__c"
+                            id='digital' onchange={handleFieldChange} value={digitalIdentifierVal}
+                            disabled={disabledDigital} variant="label-hidden" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="Industry" field-name="Industry__c" onchange={handleFieldChange}
+                            required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="SubIndustry" field-name="Core_Sub_Industry__c"
+                            onchange={handleFieldChange} required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <template if:true={displaySalesgroup}>
+                        <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                            medium-device-size="6" small-device-size="12">
+                            <lightning-input-field value={Value} class="SalesGrp" field-name="Core_Sales_Groups__c"
+                                onchange={handleFieldChange} required>
+                            </lightning-input-field>
+                        </lightning-layout-item>
+                    </template>
+
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="TaxId" field-name="Tax_Id__c" onchange={handleFieldChange}>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="AccountCoverage" field-name="Core_Account_Primary_Coverage__c"
+                            onchange={handleFieldChange} required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="AccountCategory" field-name="Core_Account_Category__c"
+                            onchange={handleFieldChange} required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="AccountLevel" field-name="Core_Account_Level__c"
+                            onchange={handleFieldChange}>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+
+                </lightning-layout>
+
+                <div class=" slds-theme--shade" style="padding: 5px;">
+                    <div class="slds-text-heading_small">
+                        <b>Address Information</b>
+                    </div>
+                </div>
+
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="12" large-device-size="12"
+                        medium-device-size="12" small-device-size="12">
+                        <abbr title="required" class="slds-required">*</abbr>
+                        <Label for="address">Primary Address</Label>
+                        <lightning-input-address class="Address" field-name="Address__c" id="address"
+                            street-label="Primary Street" city-label="Primary City"
+                            country-label="Primary Country/Region" province-label="Primary State/Province"
+                            postal-code-label="Primary Postal Code" street={addressAddress.street}
+                            city={addressAddress.city} country={addressAddress.Country}
+                            province={addressAddress.province} postal-code={addressAddress.postalCode}
+                            country-options={getCountryOptions} province-options={getStateOptions}
+                            onchange={pickListChangeHandler}></lightning-input-address>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" large-device-size="12"
+                        medium-device-size="12" small-device-size="12">
+                        <lightning-input-field class="Region" field-name="Core_Geo__c" disabled>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <div class=" slds-theme--shade" style="padding: 5px;">
+                    <div class="slds-text-heading_small">
+                        <b>Additional Attributes</b>
+                    </div>
+                </div>
+
+                <lightning-layout multiple-rows="true">
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="UmbrellaGrp" field-name="Core_Umbrella_Group__c"
+                            onchange={handleFieldChange} required={isUmbrellaGroupRequired}
+                            disabled={disableUmbrellaGroup}>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field class="globaAcct" field-name="Global_Account__c"
+                            onchange={handleFieldChange} required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field field-name="Requestor_WWID__c" value={UserWWID} disabled="true">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field field-name="Requestor_Name__c" value={UserName} disabled="true">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="12">
+                        <lightning-input-field field-name="Requestor_Email__c" value={UserEmail} disabled="true">
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <!-- <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                        <lightning-input-field field-name="OwnerId" value={OwnerId} disabled="true" hidden>
+                        </lightning-input-field> 
+                    </lightning-layout-item>  -->
+                </lightning-layout>
+                <div>
+                    <!-- <div if:true={loaded}>
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                </div> -->
+                    <div class="inlineFooter">
+
+                        <lightning-button-group>
+                            <lightning-button label="Back" onclick={handleBackButtonClick}>
+                            </lightning-button>
+                            <lightning-button variant="brand" type="submit" label="Submit" onclick={handleSubmit1}
+                                disabled={showDuplicates}>
+                            </lightning-button>
+
+
+                        </lightning-button-group>
+                    </div>
+
+                </div>
+                <!-- 
+                <template if:true={loaded}>
+                    <lightning-spinner alternative-text="Loading" ></lightning-spinner>
+                </template>
+                -->
+            </lightning-card>
+
+        </lightning-record-edit-form>
+
+        <template if:true={showModal}>
+            <div class="background-overlay"></div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__content slds-is-relative"></div>
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_small slds-hyphenate">Verify Address</h2>
+                        <lightning-icon class="slds-modal__close" icon-name="utility:close" onclick={closedModal}>
+                        </lightning-icon>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_small" onclick={handleDeselectAddress}>
+                        <template if:true={hasCleansedAddress}>
+                            <div class="slds-m-bottom_small slds-text-align_center slds-text-color_weak">
+                                Click an address to select it, then click Proceed
+                            </div>
+                            <div class="slds-grid slds-gutters slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class={cleansedBoxClass} data-option="cleansed" onclick={handleAddressBoxClick}
+                                        style="height: 100%; cursor: pointer;">
+                                        <div class="slds-text-title_caps slds-text-color_weak slds-m-bottom_small">
+                                            <b>Loqate Cleansed Address</b>
+                                        </div>
+                                        <p style="color:rgb(27, 150, 255)">{cleansedAddress.streetName}</p>
+                                        <p style="color:rgb(27, 150, 255)">
+                                            {cleansedAddress.cityName},&nbsp;{cleansedAddress.stateName}&nbsp;{cleansedAddress.postalCode}
+                                        </p>
+                                        <p style="color:rgb(27, 150, 255)">{cleansedAddress.countryName}</p>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class={userInputBoxClass} data-option="userInput"
+                                        onclick={handleAddressBoxClick} style="height: 100%; cursor: pointer;">
+                                        <div class="slds-text-title_caps slds-text-color_weak slds-m-bottom_small">
+                                            <b>Address As Entered</b>
+                                        </div>
+                                        <p style="color:rgb(27, 150, 255)">{userEnteredAddress.streetName}</p>
+                                        <p style="color:rgb(27, 150, 255)">
+                                            {userEnteredAddress.cityName},&nbsp;{userEnteredAddress.stateName}&nbsp;{userEnteredAddress.postalCode}
+                                        </p>
+                                        <p style="color:rgb(27, 150, 255)">{userEnteredAddress.countryName}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:false={hasCleansedAddress}>
+                            <p style="color:rgb(41, 43, 44);text-align: center; font-weight: bold;">No matching address
+                                found.
+                                Please verify the entered address before proceeding with request submission.</p>
+                            <div class="slds-grid slds-gutters slds-wrap slds-grid_align-center slds-m-top_small">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class={userInputBoxClass} data-option="userInput"
+                                        onclick={handleAddressBoxClick} style="height: 100%; cursor: pointer;">
+                                        <div class="slds-text-title_caps slds-text-color_weak slds-m-bottom_small">
+                                            <b>Address As Entered</b>
+                                        </div>
+                                        <p style="color:rgb(27, 150, 255)">{userEnteredAddress.streetName}</p>
+                                        <p style="color:rgb(27, 150, 255)">
+                                            {userEnteredAddress.cityName},&nbsp;{userEnteredAddress.stateName}&nbsp;{userEnteredAddress.postalCode}
+                                        </p>
+                                        <p style="color:rgb(27, 150, 255)">{userEnteredAddress.countryName}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <lightning-button-group>
+                                    <lightning-button label="Cancel" onclick={closedModal}></lightning-button>
+                                    <lightning-button variant="brand" label="Proceed" onclick={submitRequest}>
+                                    </lightning-button>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template if:true={spinLoad}>
+            <lightning-spinner class="slds-is-fixed" alternative-text="Loading1"></lightning-spinner>
+        </template>
+        <template if:true={showDuplicates}>
+            <div class=" slds-theme--shade" style="padding: 10px;">
+                <div class="slds-text-heading_small">
+                    <b>Matching Results</b>
+                </div>
+            </div>
+            <div class="slds-text-color_error" style="padding-left: 14px; padding-top:8px;">ERROR! Account Match Found
+            </div>
+            <div style="padding-left: 14px;">
+                <lightning-formatted-rich-text value={ErrorMsg}></lightning-formatted-rich-text>
+            </div>
+            <template if:true={accountDuplicate}>
+                <div class="slds-p-around_medium">
+                    <p style="font-size: 16px; margin-bottom:8px; font-weight: bold;">Accounts</p>
+                    <lightning-datatable key-field="Id" data={formattedRecordsAccount} columns={acctColumns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </template>
+            <template if:true={accountRequestDuplicate}>
+                <div class="slds-p-around_medium">
+                    <p style="font-size: 16px; margin-bottom:8px; font-weight: bold;">PENDING Requests in Account
+                        Request Queue</p>
+                    <lightning-datatable key-field="Id" data={formattedRecordsAccountRequest}
+                        columns={accRequestColumns} hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </template>
+        </template>
+        <template if:true={isOpenModal}>
+            <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container custom-container">
+
+                    <!-- Header -->
+                    <header class="slds-modal__header custom-header">
+                        <div class="header-content">
+                            <lightning-icon icon-name="utility:success" size="small" class="header-icon"
+                                alternative-text="KYC">
+                            </lightning-icon>
+
+                            <h2 class="slds-text-heading_medium">
+                                KYC Compliance Review Required
+                            </h2>
+                        </div>
+
+                        <button
+                        class="slds-button slds-button_icon slds-modal__close"
+                        onclick={handleCancel}
+                    >
+                        <lightning-icon
+                            icon-name="utility:close"
+                            size="small"
+                            alternative-text="Close">
+                        </lightning-icon>
+                    </button>
+                    </header>
+
+                    <!-- Body -->
+                    <div class="slds-modal__content slds-p-around_large">
+
+                        <!-- Info Banner -->
+                        <div class="info-box">
+                            <lightning-icon icon-name="utility:info" size="small" alternative-text="Info">
+                            </lightning-icon>
+                            <span>
+                            Please review applicable KYC guide, materials, Export Compliance guidance and related resources before creating a new account.
+                        </span>
+                        </div>
+
+
+                        <!-- Resource Card -->
+                        <div class="resource-card slds-m-top_large">
+                            <div class="resource-left">
+                                <div class="resource-icon">
+                                    <lightning-icon icon-name="utility:link" size="medium">
+                                    </lightning-icon>
+                                </div>
+
+                                <div>
+                                    <a href="https://intel.sharepoint.com/sites/Trade/SitePages/KYC.aspx"
+                                        target="_blank" class="resource-title">
+                                        KYC Resources Center
+                                    </a>
+
+                                    <p class="resource-description">
+                                        Access guides, training materials, and compliance
+                                        documentation.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <lightning-icon icon-name="utility:chevronright" size="x-small">
+                            </lightning-icon>
+                        </div>
+
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="slds-modal__footer">
+
+                        <lightning-button variant="brand" label="Proceed" onclick={handleProceed}
+                            class="slds-m-left_small">
+                        </lightning-button>
+                    </footer>
+
+                </div>
+            </section>
+
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+    </template>
+
+
+</template>

@@ -1,0 +1,129 @@
+<aura:component controller="PMP_SearchMarketplaceController" implements="forceCommunity:availableForAllPageTypes" extends="c:MarketplaceRedux" description="Promotion Carousel">
+    <aura:attribute name="storeName" type="string" default="Settings"/>
+    
+    <!-- uses redux for screen size responsiveness -->
+    <!-- private/internal -->
+    <aura:attribute name="screenResizeHandler" type="boolean" default="false" description="Internal component state"/>
+    <aura:attribute name="loading" type="boolean" default="false" description="Internal component state"/>
+    <aura:attribute name="currentPage" type="integer" default="1" description="Internal component state"/>
+    <aura:attribute name="touchSettings" type="object" description="Internal component state"/>
+    <aura:attribute name="touchData" type="object" description="Internal component state"/>
+    
+    <aura:attribute name="class" type="string" default=""/>
+    <aura:attribute name="promotionData" type="object[]"  description="data array that contains the images entries. please see documentation tab for data structure" />
+    
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.promotionData}" action="{!c.handleDataChange}" />
+    
+    <div class="{! v.class }">
+        <lightning:layout horizontalAlign="spread" multipleRows="true" class="">
+            <aura:if isTrue="{! or (v.loading, v.promotionData.length == 0)}">
+                <lightning:layoutItem>
+                    <lightning:spinner alternativeText="{!$Label.c.PMP_L1_Featured_Products_Loading}" size="small" />
+                </lightning:layoutItem>
+                
+                <aura:set attribute="else">
+                    <lightning:layoutItem size="12" class="hideOverflow slds-p-vertical_medium">
+                        <div aura:id="carouselPosition" class="carouselPosition" ontouchstart="{!c.handleTouchStart}" ontouchend="{!c.handleTouchEnd}">
+                            <aura:iteration items="{!v.promotionData}" var="promo">
+                                <div class="carouselCard slds-m-horizontal_medium">
+                                    <div aura:id="card" class="innerCard">
+                                        <lightning:layout aura:id="touchContainer" multipleRows="true" class="{!(v.appState.Settings.currentScreenSize == 'mobile' ? '' : 'slds-grid_vertical-align-center')}">
+                                            <aura:if isTrue="{! promo.imageUrl != ''}">
+                                                <!-- Image left || Force on mobile-->
+                                                <aura:if isTrue="{! or(promo.imagePosition == 'left', v.appState.Settings.currentScreenSize == 'mobile' )}">
+                                                    <lightning:layoutItem size="12" mediumDeviceSize="6" class="imageContainer imgleft">
+                                                        <img src="{! promo.imageUrl }" />
+                                                    </lightning:layoutItem>
+                                                </aura:if>
+                                                
+                                                <lightning:layoutItem size="12" mediumDeviceSize="6" class="{!promo.imagePosition == 'left' ? 'imgleft textContainer' : 'imgright textContainer'}">
+                                                    <h3 class="heading-28 color-blue slds-m-bottom_x-small">{! promo.title }</h3>
+                                                    <p class="slds-m-bottom_medium"><lightning:formattedRichText value="{! promo.body }"></lightning:formattedRichText></p>
+                                                    <!--<c:IntelLink url="{! promo.ctaLink }" openInBlank="true">{!promo.ctaLabel}</c:IntelLink>-->
+                                              <!--   <c:IntelLink page="search" searchParams="{!promo.searchParams}">
+                                                        <c:IntelButton openInNewTab="true" >{! promo.ctaLabel }</c:IntelButton>
+                                                    </c:IntelLink>  -->
+                                                  
+                                                  <c:IntelLink  recordId="{! promo.ctaLink }" objectApiName="PMP_Marketplace_Event__c" eventPage="true" eventName="{! promo.promotionName }"> 
+                                                      <c:IntelButton screenReader="{! promo.eventScreenReader}" >{! promo.ctaLabel }</c:IntelButton> 
+                                                  </c:IntelLink> 
+                                                  
+                                                    <!-- <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop' }">
+                <a href="{! promo.ctaLink }" target="_blank">{! promo.ctaLabel }</a>
+
+                <aura:set attribute="else">
+                 <c:IntelButton href="{! promo.ctaLink }" openInNewTab="true" class="inline">{! promo.ctaLabel }</c:IntelButton>
+                </aura:set>
+               </aura:if> -->
+                                                </lightning:layoutItem>
+                                                
+                                                <!-- Image Right only on Desktop-->
+                                                <aura:if isTrue="{! and( promo.imagePosition == 'right', v.appState.Settings.currentScreenSize == 'desktop' )}">
+                                                    <lightning:layoutItem size="12" mediumDeviceSize="6"  padding="horizontal-medium" class="imageContainer imgright">
+                                                        <img src="{! promo.imageUrl }" />
+                                                    </lightning:layoutItem>
+                                                </aura:if>
+                                                
+                                                <aura:set attribute="else">
+                                                    <!-- No Image -->
+                                                    <lightning:layoutItem size="12" class="textContainer">
+                                                        <h3 class="heading-28 color-blue slds-m-bottom_x-small">{! promo.title }</h3>
+                                                        <p class="slds-m-bottom_medium"><lightning:formattedRichText value="{! promo.body }"></lightning:formattedRichText></p>
+                                                     <!--  <c:IntelLink page="search" searchParams="{!promo.searchParams}">
+                                                            <c:IntelButton openInNewTab="true" >{! promo.ctaLabel }</c:IntelButton>
+                                                        </c:IntelLink>  -->
+                                                       <c:IntelLink recordId="{! promo.ctaLink }" objectApiName="PMP_Marketplace_Event__c" eventPage="true" eventName="{! promo.promotionName }" >
+                                                           <c:IntelButton screenReader="{! promo.eventScreenReader}">{! promo.ctaLabel }</c:IntelButton>
+                                                    	</c:IntelLink> 
+    
+                                                        <!-- <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop' }">
+                 <a href="{! promo.ctaLink }" target="_blank">{! promo.ctaLabel }</a>
+
+                 <aura:set attribute="else">
+                  <c:IntelButton href="{! promo.ctaLink }" openInNewTab="true" class="inline">{! promo.ctaLabel }</c:IntelButton>
+                 </aura:set>
+                </aura:if> -->
+                                                    </lightning:layoutItem>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                        </lightning:layout>
+                                    </div>
+                                </div>
+                            </aura:iteration>
+                        </div>
+                    </lightning:layoutItem>
+                    <aura:if isTrue="{!v.promotionData.length gt 1}"> <!-- Used aura:if in place of slds-hide US622399 Prabuddh-->
+                    	<lightning:layoutItem size="12" class="slds-text-align_center carouselIndicatorWrap">
+                        <ul class="slds-carousel__indicators" role="tablist">
+                            <aura:iteration items="{!v.promotionData}" var="promo" indexVar="i">
+                                <li class="slds-carousel__indicator" role="presentation">
+                                    
+                                    <a id="{!'indicator-id-0' + (i+1)}"
+                                       aura:id="carouselBubble"
+                                       onclick="{!c.handleChangePage}"
+                                       data-page="{!(i+1)}"
+                                       class="{!'slds-carousel__indicator-action ' + (v.currentPage == (i+1) ? 'slds-is-active' :'')}"
+                                       href="javascript:void(0);"
+                                       role="tab"
+                                       tabindex="{!(i+1)}"
+                                       aria-selected="{! v.currentPage == (i+1) }"
+                                       aria-controls="{!'content-id-0' + (i+1)}"
+                                       title="{!'Feature Products - page ' + (i+1)}">
+                                        <span class="slds-assistive-text">{!$Label.c.PMP_L1_Featured_Products} {!(i+1)}</span>
+                                    </a>
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                    </lightning:layoutItem>
+                    
+                    </aura:if>
+                    
+                </aura:set>
+            </aura:if>
+        </lightning:layout>
+    </div>
+    
+</aura:component>

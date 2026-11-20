@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_BatchCustomSetting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_BatchCustomSetting</value>
+    </caseValues>
+    <fields>
+        <label><!-- PRM_ChannelProgramLevel --></label>
+        <name>PRM_ChannelProgramLevel__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_EntitlementsNotToInactivate --></label>
+        <name>PRM_EntitlementsNotToInactivate__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_LastExecutedTime --></label>
+        <name>PRM_LastExecutedTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_MP_Benefits --></label>
+        <name>PRM_MP_Benefits__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Manual_Benefits --></label>
+        <name>PRM_Manual_Benefits__c</name>
+    </fields>
+    <fields>
+        <label><!-- NoOfBatchEntRecords --></label>
+        <name>PRM_NoOfBatchEntRecords__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_NoOfRecords --></label>
+        <name>PRM_NoOfRecords__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_PartnerRole --></label>
+        <name>PRM_PartnerRole__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_PartnerType --></label>
+        <name>PRM_PartnerType__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_SchedulingHour --></label>
+        <name>PRM_SchedulingHour__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Total_sales_value --></label>
+        <name>PRM_Total_sales_value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

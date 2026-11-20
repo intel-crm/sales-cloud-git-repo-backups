@@ -1,0 +1,10 @@
+<apex:page standardController="Case" extensions="Core_IPS_Case_Escalation" action="{!changeOwner}">
+    <apex:form >
+        <apex:pageblock id="pblock">
+            <apex:pageMessages id="errors"></apex:pageMessages> 
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Return" action="{!CancelAction}"/>             
+                 </apex:pageBlockButtons>
+        </apex:pageblock>         
+    </apex:form>
+</apex:page>

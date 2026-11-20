@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Client</masterLabel>
+        <translation>Cliente</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+        <translation>Aceleração do Fundo de Marketing Conjunto para Cliente</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Co-GTM</masterLabel>
+        <translation><!-- Co-GTM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Datacenter</masterLabel>
+        <translation>Datacenter</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ecosystem Extension Fund</masterLabel>
+        <translation>Fundo de extensão do ecossistema</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Partner Alliance</masterLabel>
+        <translation><!-- Intel Partner Alliance --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retail Marketing Funds</masterLabel>
+        <translation><!-- Retail Marketing Funds --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+        <translation>Fundo de mktg. conj. p/ prov. de serviço</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

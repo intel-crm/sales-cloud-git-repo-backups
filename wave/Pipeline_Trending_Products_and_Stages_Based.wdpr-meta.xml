@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveRecipe xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <dataflow>Pipeline_Trending_Products_and_Stages_Based</dataflow>
+    <format>R3</format>
+    <masterLabel>Pipeline Trending Products and Stages Based</masterLabel>
+</WaveRecipe>

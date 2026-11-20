@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sridhar.swaminathan@intel.com</contactEmail>
+    <label>PCC Eastronics B2B</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIID+zCCAuOgAwIBAgIULBBHaWsI8mahXlmxdiYRytXuhwkwDQYJKoZIhvcNAQELBQAwgYwxCzAJBgNVBAYTAklMMQ8wDQYDVQQIDAZJU1JBRUwxETAPBgNVBAcMCFRFTCBBVklWMRMwEQYDVQQKDApFQVNUUk9OSUNTMQswCQYDVQQLDAJJVDETMBEGA1UEAwwKRUFTWC5DTy5JTDEiMCAGCSqGSIb3DQEJARYTSU5URUxBUElARUFTWC5DTy5JTDAeFw0yNDAyMDExNDA2MDZaFw0yNzA4MjQxNDA2MDZaMIGMMQswCQYDVQQGEwJJTDEPMA0GA1UECAwGSVNSQUVMMREwDwYDVQQHDAhURUwgQVZJVjETMBEGA1UECgwKRUFTVFJPTklDUzELMAkGA1UECwwCSVQxEzARBgNVBAMMCkVBU1guQ08uSUwxIjAgBgkqhkiG9w0BCQEWE0lOVEVMQVBJQEVBU1guQ08uSUwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDmdjKqB+Pz1jAi8ZtDsnLHYW/+S3z+k4kkoHEdMLbXMVVTmKtnRSFXSigbHj5bv8whTTXBDCCpXrRGXjJPGqJAgRDnlKH6KXeJIcuWg8XFf6EB5IktFwtdGOyLlLVuYxrLz3vKKPRpU/UreHOMdPXnewrgB3WKRoQk6qqSH4voVDWJgvKh1pDQydtbIWnK336yIxw4hCq5uXzWPviG4hZQXNB1cf4dKcIG/eNMJHZheuJZ/Qu12CnNtSbekrP0q1vHSMxMhWoGmPc7Kd5OO1CA/gk259Q+aT1n/+TtRgcmDox80Lslh/06Rx7PgjsOsddKGgKS7u9BHkOz3Ysgic4zAgMBAAGjUzBRMB0GA1UdDgQWBBT6HTUG1tIwMY8gTi8s53M1XLC3tTAfBgNVHSMEGDAWgBT6HTUG1tIwMY8gTi8s53M1XLC3tTAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBDCdRWTM8vnU5USZgSMoB+5aT9S2BzByef8QFP6JSkxpv2OhbVRPUReE9e+r/UVbxNU0jFC9Jmr7Iscd/iU76mA4rV9eNeLGIOKOmrWQ3R3CkvwpHiDxGKRGPK/yqz5Wz2znasdHxiyn2A+g3m8cBQJzRWOpdl4IOaWqKDOHRA90yJOJ+JOFBLKXhXCwEuZPGBM8ueK+/Vr63x48xGbm7ZmhuriPV8sFI9Ao2ahgxyUMagEHaXvAnQlqjrODvJc/fVSiQ3a3xND78B/BFtUlfVt6X94pb51Z5zj4T5muzPV7/NosBdjh1m3XAGSgIGz3exZf5Lsk+bTQEsB2uSoZ9i</certificate>
+        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lOvppMXu1M56eMQhqrmxX8kXGun1S5kEL4Fj9BmKN5mqOzMdoy8OVE1qLxA</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PCC Eastronics</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

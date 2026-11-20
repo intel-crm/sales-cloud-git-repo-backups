@@ -1,0 +1,10 @@
+<aura:component implements="force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" > 
+    <aura:html tag="style">
+	.slds-modal__container {
+        width: 75% !important;
+        max-width: 75% !important;
+	}
+	</aura:html>
+	<aura:attribute name="recordId" type="String"/>
+    <c:pccNewDesignRegProductLwc drId="{!v.recordId}" onclosequickmodal="{!c.handleClose}"></c:pccNewDesignRegProductLwc>
+</aura:component>

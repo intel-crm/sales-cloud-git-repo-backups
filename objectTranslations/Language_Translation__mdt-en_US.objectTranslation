@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Language Translation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Language Translations</value>
+    </caseValues>
+    <fields>
+        <label><!-- DEU --></label>
+        <name>DEU__c</name>
+    </fields>
+    <fields>
+        <label><!-- ENG --></label>
+        <name>ENG__c</name>
+    </fields>
+    <fields>
+        <label><!-- ENU --></label>
+        <name>ENU__c</name>
+    </fields>
+    <fields>
+        <label><!-- ESP --></label>
+        <name>ESP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FRA --></label>
+        <name>FRA__c</name>
+    </fields>
+    <fields>
+        <label><!-- FRC --></label>
+        <name>FRC__c</name>
+    </fields>
+    <fields>
+        <label><!-- IND --></label>
+        <name>IND__c</name>
+    </fields>
+    <fields>
+        <label><!-- ITA --></label>
+        <name>ITA__c</name>
+    </fields>
+    <fields>
+        <label><!-- JPN --></label>
+        <name>JPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- KOR --></label>
+        <name>KOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- POL --></label>
+        <name>POL__c</name>
+    </fields>
+    <fields>
+        <label><!-- POR --></label>
+        <name>POR__c</name>
+    </fields>
+    <fields>
+        <label><!-- RUS --></label>
+        <name>RUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPA --></label>
+        <name>SPA__c</name>
+    </fields>
+    <fields>
+        <label><!-- THA --></label>
+        <name>THA__c</name>
+    </fields>
+    <fields>
+        <label><!-- TUR --></label>
+        <name>TUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- VIE --></label>
+        <name>VIE__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZHO --></label>
+        <name>ZHO__c</name>
+    </fields>
+    <fields>
+        <label><!-- ZHT --></label>
+        <name>ZHT__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

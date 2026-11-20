@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Specialty/Select Benefit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Specialities/Select Benefits</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Level --></label>
+        <name>PRM_Access_Level_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Private</masterLabel>
+            <translation><!-- Private --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PRM_Description_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding BU --></label>
+        <name>PRM_Funding_BU_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Automotive Sales Group</masterLabel>
+            <translation><!-- Automotive Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Sales Group</masterLabel>
+            <translation><!-- CCG Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCG Sales Group</masterLabel>
+            <translation><!-- DCG Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP APJ Sales Territory</masterLabel>
+            <translation><!-- GMP APJ Sales Territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Americas Sales Territory</masterLabel>
+            <translation><!-- GMP Americas Sales Territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Brazil Sales Group</masterLabel>
+            <translation><!-- GMP Brazil Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP EMEA Sales Territory</masterLabel>
+            <translation><!-- GMP EMEA Sales Territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP France Sales Group</masterLabel>
+            <translation><!-- GMP France Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Germany Sales Group</masterLabel>
+            <translation><!-- GMP Germany Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP India Sales Group</masterLabel>
+            <translation><!-- GMP India Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Japan Sales Group</masterLabel>
+            <translation><!-- GMP Japan Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Korea Sales Group</masterLabel>
+            <translation><!-- GMP Korea Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Mexico Sales Group</masterLabel>
+            <translation><!-- GMP Mexico Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Russia Sales Group</masterLabel>
+            <translation><!-- GMP Russia Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP Taiwan Sales Group</masterLabel>
+            <translation><!-- GMP Taiwan Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GMP UK Sales Group</masterLabel>
+            <translation><!-- GMP UK Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOTG Sales Group</masterLabel>
+            <translation><!-- IOTG Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC Sales Group</masterLabel>
+            <translation><!-- PRC Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Sales Group</masterLabel>
+            <translation><!-- US Sales Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undefined</masterLabel>
+            <translation><!-- Undefined --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantitative Criteria --></label>
+        <name>PRM_Quantitative_Criteria_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Required --></label>
+        <name>PRM_Renewal_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>PRM_Role_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Num of Accounts --></label>
+        <name>PRM_Target_Num_of_Accounts_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>PRM_Tier_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member</masterLabel>
+            <translation><!-- Member --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Titanium</masterLabel>
+            <translation><!-- Titanium --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Select Benefits --></label>
+        <name>PRM_Select_Benefits</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Specialty --></label>
+        <name>PRM_Specialty</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be prior or same as Start Date. --></errorMessage>
+        <name>PRM_Restrict_End_Date_Prior_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Date cannot be less than Today&apos;s Date --></errorMessage>
+        <name>PRM_Restrict_Past_End_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,30 @@
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%; 
+}
+table {
+    width: 100%;  
+    max-width: 100%;  
+    table-layout: fixed;
+    overflow-x: auto;
+}
+
+.input-wrapper {
+    min-height: 2rem;
+}
+.col-account-node {
+  width: 40%;
+  max-width: 40%;
+}
+.cell-account-node {
+  width: 40%;
+  max-width: 40%;
+}
+.truncate {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

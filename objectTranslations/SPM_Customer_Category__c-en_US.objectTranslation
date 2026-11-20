@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Customer Category</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Customer Categories</value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Group ID --></label>
+        <name>AI_Group_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Detail --></label>
+        <name>Account_Detail__c</name>
+        <relationshipLabel><!-- Customer Categories --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Owners --></label>
+        <name>Account_Owners__c</name>
+    </fields>
+    <fields>
+        <label><!-- All BUs Indirect Branded&amp;Compt Past 12M --></label>
+        <name>All_BUs_Indirect_Branded_Compt_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU --></label>
+        <name>BU__c</name>
+        <picklistValues>
+            <masterLabel>AXG</masterLabel>
+            <translation><!-- AXG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All</masterLabel>
+            <translation><!-- All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG</masterLabel>
+            <translation><!-- CCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI</masterLabel>
+            <translation><!-- DCAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX</masterLabel>
+            <translation><!-- NEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG</masterLabel>
+            <translation><!-- PSG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CCG Indirect Branded Revenue Past Year --></label>
+        <name>CCG_Indirect_Branded_Revenue_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCG Indirect Component Revenue Past Year --></label>
+        <name>CCG_Indirect_Component_Revenue_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active Planning Period --></label>
+        <name>CRM_CST_Is_Active_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Inactive Planning Period --></label>
+        <name>CRM_CST_Planning_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Semi-Annual Temp Account Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Co-Sell Revenue Past Year --></label>
+        <name>Co_Sell_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component &amp; Co-Sell Revenue Past QTR --></label>
+        <name>Component_Co_Sell_Revenue_Last_QTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component &amp; Co-Sell YoY Growth --></label>
+        <name>Component_Co_Sell_YoY_Growth__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component Revenue Past Year --></label>
+        <name>Component_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compt Co-Sell Design Win Weighted AVG 3Y --></label>
+        <name>Compt_Co_Sell_Design_Win_Weighted_AVG_3Y__c</name>
+    </fields>
+    <fields>
+        <label><!-- Branded Revenue (Past Year)​ --></label>
+        <name>Core_Branded_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Revenue​ --></label>
+        <name>Core_Company_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win (Past Year) --></label>
+        <name>Core_Deal_win_opps_past_year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Wins Revenue Past Year --></label>
+        <name>Core_Design_Wins_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Win (Past Year) --></label>
+        <name>Core_Design_win_opps_past_year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Revenue (Past Year) - All BU --></label>
+        <name>Core_DirectRevenue_Past_12_months_All_BU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Revenue (Past Year) - CCG --></label>
+        <name>Core_Direct_Revenue_Past_12_months_CCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Revenue (Past Year)-DCAI --></label>
+        <name>Core_Direct_Revenue_Past_12_months_DCAI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Revenue (Past Year) - NEX --></label>
+        <name>Core_Direct_Revenue_Past_12_months_NEX__c</name>
+    </fields>
+    <fields>
+        <label><!-- DistiSalesOut(Past 12 mnt) - #OfCustomer --></label>
+        <name>Core_DistiSalesOutPast12_mnt_ofCustomer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales Out (Past 12 months) - Other --></label>
+        <name>Core_DistiSalesOutPast_12_monthsOther__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales Out (Past 12 months)-All BUs --></label>
+        <name>Core_DistiSalesOutPast_12_months_All_BUs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales Out (Past 12 months) - DCAI --></label>
+        <name>Core_DistiSalesOutPast_12_months_DCAI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales Out (Past 12 months) - CCG --></label>
+        <name>Core_Disti_Sales_Out_Past_12_months_CCG__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales Out (Past 12 months) - NEX --></label>
+        <name>Core_Disti_Sales_Out_Past_12_months_NEX__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI / BU / COE Reasoning --></label>
+        <name>Core_Explanation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forbes 2000 Rank --></label>
+        <name>Core_Forbes_2000_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fortune 500 Rank --></label>
+        <name>Core_Fortune_500_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gaming Units --></label>
+        <name>Core_Gaming_Units__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSS Excluding apple --></label>
+        <name>Core_MSS_Excluding_apple__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSS YoY Points Change --></label>
+        <name>Core_MSS_YoY_Points_Change__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSS --></label>
+        <name>Core_MSS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nationals Revenue (Past Year)​ --></label>
+        <name>Core_Nationals_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of employees​ --></label>
+        <name>Core_Number_of_employees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of units --></label>
+        <name>Core_Number_of_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open Opps (Weighted Revenue)​ --></label>
+        <name>Core_Open_Opps_Weighted_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- % of revenue out of region revenue --></label>
+        <name>Core_Per_ofRevenueOutOfRegionRevenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- 6QPS Revenue (Past Year) --></label>
+        <name>Core_QPS_Revenue_Summary_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- RPS_coverage --></label>
+        <name>Core_RPS_coverage__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI / BU / COE Recommendation --></label>
+        <name>Core_Recommendation__c</name>
+        <picklistValues>
+            <masterLabel>Add</masterLabel>
+            <translation><!-- Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consider for Intel led</masterLabel>
+            <translation><!-- Consider for Intel led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consider for Intel led, Recommended for Intel Led by BU DCAI</masterLabel>
+            <translation><!-- Consider for Intel led, Recommended for Intel Led by BU DCAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consider for Intel led, Recommended for Intel Led by COE HLS</masterLabel>
+            <translation><!-- Consider for Intel led, Recommended for Intel Led by COE HLS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consider for Partner led</masterLabel>
+            <translation><!-- Consider for Partner led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consider for Partner led, Recommended for Intel Led by COE HLS</masterLabel>
+            <translation><!-- Consider for Partner led, Recommended for Intel Led by COE HLS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consider for Partner led, Recommended for Partner Led by BU NEX</masterLabel>
+            <translation><!-- Consider for Partner led, Recommended for Partner Led by BU NEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Move to Partner</masterLabel>
+            <translation><!-- Move to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommended for Intel Led by BU DCAI</masterLabel>
+            <translation><!-- Recommended for Intel Led by BU DCAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommended for Intel Led by COE HLS</masterLabel>
+            <translation><!-- Recommended for Intel Led by COE HLS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommended for Intel Led by COE HLS, Recommended for Intel Led by BU DCAI</masterLabel>
+            <translation><!-- Recommended for Intel Led by COE HLS, Recommended for Intel Led by BU DCAI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommended for Intel Led by COE Security</masterLabel>
+            <translation><!-- Recommended for Intel Led by COE Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommended for Partner Led by BU NEX</masterLabel>
+            <translation><!-- Recommended for Partner Led by BU NEX --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units IA YoY --></label>
+        <name>Core_SO_PC_Units_IA_YoY__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units IA --></label>
+        <name>Core_SO_PC_Units_IA__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units TAM YoY --></label>
+        <name>Core_SO_PC_Units_TAM_YoY__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC Units TAM --></label>
+        <name>Core_SO_PC_Units_TAM__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO PC core units --></label>
+        <name>Core_SO_PC_core_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO component units --></label>
+        <name>Core_SO_component_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO core i3/i5 units --></label>
+        <name>Core_SO_core_i3_i5_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO core i7/i9 units --></label>
+        <name>Core_SO_core_i7_i9_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO evo units --></label>
+        <name>Core_SO_evo_units__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO gross platform revenue YoY --></label>
+        <name>Core_SO_gross_platform_revenue_YoY__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO gross platform revenue --></label>
+        <name>Core_SO_gross_platform_revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silicon TAM --></label>
+        <name>Core_Silicon_Spend__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Direct Revenue (Past Year) --></label>
+        <name>Core_Total_Direct_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Global Customer Name --></label>
+        <name>Core_UCD_Global_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Design win opps​(Weighted AVG 3) --></label>
+        <name>Core_YearlyDesignWin_opps_Weighted_AVG_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Contract Revenue​ --></label>
+        <name>Core_Yearly_Contract_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Sell-to Win (5 Years AVG) --></label>
+        <name>Core_Yearly_Revenue_5_Years_AVG__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Revenue (Weighted AVG 3 Years) --></label>
+        <name>Core_Yearly_Revenue_Weighted_AVG_3_Years__c</name>
+    </fields>
+    <fields>
+        <label><!-- bVAR Revenue​ (Past Year) --></label>
+        <name>Core_bVAR_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Countries --></label>
+        <name>Countries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Primary Coverage --></label>
+        <name>Coverage__c</name>
+        <picklistValues>
+            <masterLabel>Intel-led Account</masterLabel>
+            <translation><!-- Intel-led Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Covered Account</masterLabel>
+            <translation><!-- Not Covered Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other-led Account</masterLabel>
+            <translation><!-- Other-led Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner-led Account</masterLabel>
+            <translation><!-- Partner-led Account --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Name --></label>
+        <name>Customer_Detail__c</name>
+        <relationshipLabel><!-- Customer Categories --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Name --></label>
+        <name>Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- DCAI Indirect Branded Revenue Past Year --></label>
+        <name>DCAI_Indirect_Branded_Revenue_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- DCAI Indirect Compt Revenue Past Year --></label>
+        <name>DCAI_Indirect_Compt_Revenue_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Revenue (NGRP) (12 months) --></label>
+        <name>Direct_Revenue_NGRP_12_months__c</name>
+    </fields>
+    <fields>
+        <label><!-- GTM Model --></label>
+        <name>GTM_Model__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industries --></label>
+        <name>Industry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Name --></label>
+        <name>Manager_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- NEX Indirect Component Revenue Past Year --></label>
+        <name>NEX_Indirect_Component_Revenue_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Indirect Branded Customers Past 12M --></label>
+        <name>No_of_Indirect_Branded_Customers_Past12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Indirect Compt Customers Past 12M --></label>
+        <name>No_of_Indirect_Compt_Customers_Past_12M__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Accounts --></label>
+        <name>Number_of_Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Location --></label>
+        <name>Primary_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- UCD Global Name --></label>
+        <name>UCD_Global_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- 2nd Level Manager Name --></label>
+        <name>X2nd_Level_Manager_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

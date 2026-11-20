@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account ERPM Engagement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account ERPM Engagements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account_Id__c</name>
+        <relationshipLabel><!-- ERPM Engagements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ERPM Account Number --></label>
+        <name>Core_ERPM_Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERPM Business Attributes --></label>
+        <name>Core_ERPM_Business_Attributes__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERPM Engagement --></label>
+        <name>Core_ERPM_Engagement_Id__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Extended Questions --></label>
+        <name>Core_Extended_Questions__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

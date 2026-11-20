@@ -1,0 +1,238 @@
+{
+  "version" : "61.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ID", "HIERARCHY_NM", "TEAM_MEMBER_ID", "TEAM_MEMBER_NM", "TEAM_MEMBER_ROLE_NM", "TEAM_MEMBER_MANAGER_ID", "TEAM_MEMBER_MANAGER_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DIM_HIERARCHY",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "DIM_HIERARCHY"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "APPEND0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Hierarchy_Dataset",
+          "name" : "Hierarchy_Dataset",
+          "folderName" : "Development"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "JOIN0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Role_nm",
+          "label" : "Role",
+          "formulaExpression" : "case\r\n\twhen TEAM_MEMBER_ID != TEAM_MEMBER_MANAGER_ID and TEAM_MEMBER_ROLE_NM = 'Owner'\r\n\tthen 'Owner'\r\n\twhen TEAM_MEMBER_ID != TEAM_MEMBER_MANAGER_ID and TEAM_MEMBER_ROLE_NM = 'Team Member'\r\n\tthen 'Team Member'\r\n    when TEAM_MEMBER_ID != TEAM_MEMBER_MANAGER_ID and TEAM_MEMBER_ROLE_NM = 'Technical Owner'\r\n\tthen 'Technical Owner'\r\n\telse\r\n\tnull\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "JOIN0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Role_nm",
+          "label" : "Role",
+          "formulaExpression" : "case\r\n\twhen TEAM_MEMBER_ID != TEAM_MEMBER_MANAGER_ID and TEAM_MEMBER_ROLE_NM in ('Owner','Team Member', 'Technical Owner')\r\n\tthen 'Any of the Above'\r\n\telse\r\n\tnull\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "APPEND0" : {
+      "action" : "appendV2",
+      "sources" : [ "FORMULA0", "FORMULA1" ],
+      "parameters" : {
+        "fieldMappings" : [ {
+          "top" : "ID",
+          "bottom" : "ID"
+        }, {
+          "top" : "HIERARCHY_NM",
+          "bottom" : "HIERARCHY_NM"
+        }, {
+          "top" : "TEAM_MEMBER_ID",
+          "bottom" : "TEAM_MEMBER_ID"
+        }, {
+          "top" : "TEAM_MEMBER_NM",
+          "bottom" : "TEAM_MEMBER_NM"
+        }, {
+          "top" : "TEAM_MEMBER_ROLE_NM",
+          "bottom" : "TEAM_MEMBER_ROLE_NM"
+        }, {
+          "top" : "TEAM_MEMBER_MANAGER_ID",
+          "bottom" : "TEAM_MEMBER_MANAGER_ID"
+        }, {
+          "top" : "TEAM_MEMBER_MANAGER_NM",
+          "bottom" : "TEAM_MEMBER_MANAGER_NM"
+        }, {
+          "top" : "Role_nm",
+          "bottom" : "Role_nm"
+        } ]
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET0", "LOAD_DATASET1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "TEAM_MEMBER_ID" ],
+        "rightQualifier" : "User_Employee",
+        "rightKeys" : [ "Core_WWID__c" ]
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "ManagerId", "Core_WWID__c", "Core_Manager__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "DIM_HIERARCHY",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT0" : {
+        "label" : "Output 0",
+        "type" : "OUTPUT",
+        "top" : 251.8,
+        "left" : 1089.9
+      },
+      "TRANSFORM0" : {
+        "label" : "Roles",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 252.60000000000002,
+        "left" : 532.5,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Role_nm"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "TRANSFORM1" : {
+        "label" : "Any of the Above Role",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 532.2,
+        "left" : 532,
+        "graph" : {
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Role_nm"
+          }
+        },
+        "connectors" : [ ]
+      },
+      "APPEND0" : {
+        "label" : "All the roles",
+        "description" : "",
+        "type" : "APPEND",
+        "top" : 252.89999999999998,
+        "left" : 811.5
+      },
+      "JOIN0" : {
+        "label" : "User_Employee",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 532.3,
+        "left" : 252
+      },
+      "LOAD_DATASET1" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET0",
+      "target" : "JOIN0"
+    }, {
+      "source" : "APPEND0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "APPEND0"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "APPEND0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "TRANSFORM1"
+    } ],
+    "hiddenColumns" : [ {
+      "fieldName" : "ManagerId",
+      "objectType" : "connectedDataset",
+      "objectName" : "SFDC_LOCAL$User"
+    }, {
+      "fieldName" : "Core_WWID__c",
+      "objectType" : "connectedDataset",
+      "objectName" : "SFDC_LOCAL$User"
+    } ]
+  },
+  "runMode" : "full"
+}

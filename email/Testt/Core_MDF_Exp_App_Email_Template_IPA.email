@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="Exception is waiting for action" recipientType="User" relatedToType="Core_MDF_Exception__c" language="en_US">
+<messaging:htmlEmailBody >
+ <html>
+    <body>
+  <div style="font-size:14px;font-family:Calibri">  
+    <p>Action Required</p>                   
+
+       <p>Dear Intel Employee,</p>
+
+          <p>The following exception has been submitted and requires Intel review:</p>
+          <ul>
+           <li>Exception Number - <apex:outputLink value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}"> {!RelatedTo.Name}</apex:outputLink></li>
+
+             <li>Exception Reason - {!RelatedTo.Core_MDF_Exception_Reason_nm__c}</li>
+
+               <li>Exception Name - {!RelatedTo.Core_MDF_Name_of_Exception_nm__c}</li>
+
+                 <li>Program -  Intel Partner Alliance</li>
+
+                   <li>Issue Description - {!RelatedTo.Core_MDF_Issue_Description_dsc__c}</li>
+                      </ul>
+
+                     Thank you,
+                       <br></br>
+                     Intel Partner Alliance Program Team                   
+                       </div>
+        </body>
+   </html>
+ </messaging:htmlEmailBody>
+</messaging:emailTemplate>

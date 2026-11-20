@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>SendEmailClaimOwner</name>
+        <label>SendEmailClaimOwner</label>
+        <locationX>972</locationX>
+        <locationY>273</locationY>
+        <actionName>Core_MDF_PIC_SendEmailToClaimOwner</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>addReminderInSubject</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>claimIds</name>
+            <value>
+                <elementReference>GetClaimHistoryRecords.PartnerFundClaimId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>notifyPartnerUser</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_PIC_SendEmailToClaimOwner</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_CreatedDate_Diffrence</name>
+        <label>Check CreatedDate Diffrence</label>
+        <locationX>658</locationX>
+        <locationY>390</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CreatedDateMod5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DateDiffCheck</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailClaimOwner</targetReference>
+            </connector>
+            <label>CreatedDateMod5</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>DateDiffCheck</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+  DATEVALUE({!GetClaimHistoryRecords.CreatedDate}) &lt;&gt; TODAY(),
+  WEEKDAY(TODAY()) &gt;= 2,
+  WEEKDAY(TODAY()) &lt;= 6,
+  MOD(
+    CASE(
+      WEEKDAY(DATEVALUE({!GetClaimHistoryRecords.CreatedDate})),
+      1, /* Sunday - Start counting from Monday */
+        MAX(0, TODAY() - DATEVALUE({!GetClaimHistoryRecords.CreatedDate}) - 
+        2 * FLOOR((TODAY() - DATEVALUE({!GetClaimHistoryRecords.CreatedDate})) / 7) - 1),
+      7, /* Saturday - Start counting from Monday */
+        MAX(0, TODAY() - DATEVALUE({!GetClaimHistoryRecords.CreatedDate}) - 
+        2 * FLOOR((TODAY() - DATEVALUE({!GetClaimHistoryRecords.CreatedDate}) + 1) / 7) - 2),
+      /* Weekdays */
+        TODAY() - DATEVALUE({!GetClaimHistoryRecords.CreatedDate}) - 
+        2 * FLOOR((TODAY() - DATEVALUE({!GetClaimHistoryRecords.CreatedDate}) + WEEKDAY(DATEVALUE({!GetClaimHistoryRecords.CreatedDate})) - 2) / 7)
+    ),
+    5
+  ) = 0
+)</expression>
+    </formulas>
+    <interviewLabel>Outcome Claim Auto Reminder {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Outcome Claim Auto Reminder</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetClaimHistoryRecords</name>
+        <label>GetClaimHistoryRecords</label>
+        <locationX>364</locationX>
+        <locationY>387</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_CreatedDate_Diffrence</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PartnerFundClaimId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Field</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_MDF_Status__c</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PartnerFundClaimHistory</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>566</locationX>
+        <locationY>44</locationY>
+        <connector>
+            <targetReference>GetClaimHistoryRecords</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Intel Partner Alliance</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending Account Manager Clarification</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_OutcomeBased_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>PartnerFundClaim</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-10-13</startDate>
+            <startTime>21:30:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

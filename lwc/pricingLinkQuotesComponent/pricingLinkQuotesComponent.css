@@ -1,0 +1,18 @@
+.errorClass{
+    background: red;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.comboboxClass {
+    max-width: unset !important;
+    width: unset !important;
+}
+
+.comboboxClass:focus, .comboboxClass:active {
+    outline: 0;
+    border-color: rgb(21, 137, 238); /* This is the blue color of the border */
+    background-color: rgb(255, 255, 255);
+    /*box-shadow: 0 0 3px #0070d2; /* This is the blue color of the shadow */
+}

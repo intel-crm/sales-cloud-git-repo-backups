@@ -1,0 +1,56 @@
+<aura:component controller="CustomerDisclaimer" implements="forceCommunity:themeLayout" access="global" description="Partnercenter Community Template - Protected">
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>	
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="templateHeader" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="templateFooter" type="Aura.Component[]" required="false"/>
+    
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <style>
+        .slds-modal {
+    	    margin-top:70px;  
+        }
+    </style>
+    
+    <div id="recode50header" class="no-animate"></div> 
+    <div>
+        <lightning:layout>
+            <lightning:layoutItem size="12">
+                <div  class="intel-navigation">
+                    {!v.navBar}
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+
+        <lightning:layout class="search-panel">
+            <lightning:layoutItem size="4"></lightning:layoutItem>             
+            <lightning:layoutItem size="4" class="intel-searcharea">
+                <div  class="searchArea">
+                    {!v.search}
+                </div>
+            </lightning:layoutItem>            
+            <lightning:layoutItem size="4"></lightning:layoutItem>
+        </lightning:layout>
+
+        
+        
+        <lightning:layout>
+            <lightning:layoutItem size="1"></lightning:layoutItem>                    
+            <lightning:layoutItem size="10">
+                <div  class="intel-content-area">
+                    {!v.body}
+                </div>
+            </lightning:layoutItem>                
+            <lightning:layoutItem size="1"></lightning:layoutItem>
+        </lightning:layout>  
+
+    </div>
+
+    <div> <c:core_MDF_Feedback> </c:core_MDF_Feedback> </div>
+
+    <div id="recode50footer"> </div>
+    
+   
+</aura:component>

@@ -1,0 +1,91 @@
+<template>
+    <!--Core_IPS_caseCreation_form1_LWC  start-->
+    <template if:true={showcasedetails_form1}>
+        <div data-id="redDiv">
+        </div>
+        <div>
+        </div>
+        <div class="rectangle">
+            <lightning-button variant="neutral" onclick={handleNavigateBackfrom1toHome} label="< Back"
+                title="Back to dashboard" class="noBorder"></lightning-button>
+        </div>
+        <c-core_-i-p-s_case-creation_form1_-l-w-c oncaseinfodata={handlecaseEventData} ongetcatrecedqs={handlecateedq}
+            ongetmode={handlemode} casedata={caseInfo} projectdata={project}
+            premiersupportprojectdata={premiersupportproject} onsstuploadevent = {handleSSTFileUploadEvent}> </c-core_-i-p-s_case-creation_form1_-l-w-c>
+        <!-- Added onsstuploadevent = {handleSSTFileUploadEvent} to the above line as part of BugAssist -->
+            <!-- Search For Answers -->
+        <template if:false={sslcmode}>
+            <!-- START - Added by Deepaksai as part of BugAssit -->
+            <template if:true={isWaitingBugAssistForResponse}>
+                <div class="slds-text-align_center slds-text-color_error">{waitingForResponseMessage}</div>
+            </template>
+            <!-- END - Added by Deepaksai as part of BugAssit -->
+
+            <div class="slds-p-bottom_small btnContainer">
+                <div style="padding-left: calc(58% - 186px);">
+                    <input onclick={handleNavigateform1toform2} type="button" style="width:180px" class="btn"
+                        value="Check for Answers"></input>
+                </div>
+            </div>
+            <!-- Give Feedback -->
+            <div class="slds-p-bottom_small">
+                <div class="slds-p-around_large">
+        
+                </div>
+            </div>
+        </template>
+
+</template>
+<!--Core_IPS_caseCreation_form1_LWC  End-->
+
+
+<!--core_IPS_caseCreation_Form_Full  start-->
+<div style="background-color: #e9e9e9;">
+    <template if:true={showcheckAnswers_form2}>
+            <div data-id="yellowDiv">
+            </div>
+            <div>
+            </div>
+            <div class="rectangle">
+                <lightning-button onclick={handleNavigateBackfrom2tofrom1} label="< Back" title="Back to dashboard"
+                    class="noBorder"></lightning-button>
+            </div>
+            <c-core_-i-p-s_case-creation_-form_-full user-group-roles={userRoles} caseinfodata={caseInfoStringfy}
+                onclickofcontinuecasecreation={handleContinueToCaseCreation}></c-core_-i-p-s_case-creation_-form_-full>
+            <div class="slds-p-bottom_small" align="right" style="padding-right:70px ; background: #f7f7f7;">
+                <input onclick={handleNavigatefrom2tofrom3} type="button" class="btn" align="right"
+                    value="Continue to Case Creation"></input>
+            </div>
+        </template>
+</div>
+<!--core_IPS_caseCreation_Form_Full  End-->
+
+<!--Core_IPS_caseCreation_form3_LWC  start-->
+<template if:true={showcaseCreation_form3}>
+        <div data-id="greenDiv">
+        </div>
+        <div>
+        </div>
+        <div class="rectangle">
+            <template if:true={sslcNavigation}>
+                <lightning-button onclick={handleNavigateBackfrom3tofrom2} label="< Back" title="Back to dashboard"
+                    class="noBorder"></lightning-button>
+            </template>
+<template if:false={sslcNavigation}>
+                <lightning-button onclick={handleBacktoHomefromsslc} label="< Back" title="Back to dashboard"
+                    class="noBorder"></lightning-button>
+            </template>
+
+
+</div>
+<c-core_-i-p-s_case-creation_form3_-l-w-c casedatainfo={caseInfo} subcatrecedqs={subCatRecEdqs} showcubcatedqs={showSubCatEdqs} oncasedataform={handlecasedataform3} defectedobjectid={deflectedid}>
+</c-core_-i-p-s_case-creation_form3_-l-w-c>
+</template>
+<!--Core_IPS_caseCreation_form3_LWC  End-->
+<div>
+    <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+</div>
+<template if:true={showSpinner}>
+    <lightning-spinner alternative-text="Loading" ></lightning-spinner>
+</template>
+</template>

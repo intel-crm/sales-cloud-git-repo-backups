@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Core_Inquiry__c</entityName>
+    <fieldName>Core_Inquiry_Status_Pkt__c</fieldName>
+    <masterLabel>Inquiry Status Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Name</fieldNames>
+        <fieldNames>Core_Company_Txt__c</fieldNames>
+        <fieldNames>Core_Title_Txt__c</fieldNames>
+        <fieldNames>Core_Inquiry_Type_Pkt__c</fieldNames>
+        <fieldNames>Core_Inquiry_Priority_Pkt__c</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Overview: &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt; &lt;/b&gt;A new Inquiry has been created for this person and assigned to you. This person has requested Sales follow up and should be contacted within one business day, or appears highly engaged with marketing and may be worth contacting. &lt;/p&gt;&lt;p&gt;&lt;b&gt;Actions:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;1.&lt;span style=&quot;font-size: 7pt;&quot;&gt;     &lt;/span&gt;Review the Inquiry information below&lt;/p&gt;&lt;p&gt;2.&lt;span style=&quot;font-size: 7pt;&quot;&gt;     &lt;/span&gt;Click “Reviewed by Rep” button&lt;/p&gt;&lt;p&gt;&lt;b&gt;Best Practices&lt;/b&gt;&lt;/p&gt;&lt;p&gt; Please remember to log any calls or emails you make when engaging with this person. &lt;/p&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Core_Inquiries</recordTypeName>
+</PathAssistant>

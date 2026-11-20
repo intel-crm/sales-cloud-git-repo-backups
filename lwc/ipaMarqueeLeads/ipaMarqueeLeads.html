@@ -1,0 +1,10 @@
+<template>
+  <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
+  <c-ipa-marquee-default alignment={alignment} title={title} background-variant={backgroundVariant}>
+      <div slot="subtitle">
+          <template if:true={subtitle}>
+              <p class="subtitle color-white">{subtitle}</p>
+          </template>
+      </div>
+  </c-ipa-marquee-default>
+</template>

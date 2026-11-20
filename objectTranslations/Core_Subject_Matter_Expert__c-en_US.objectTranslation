@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subject Matter Expert</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subject Matter Experts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Domains --></label>
+        <name>Core_Domains__c</name>
+        <picklistValues>
+            <masterLabel>Big Data and Analytics</masterLabel>
+            <translation><!-- Big Data and Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud</masterLabel>
+            <translation><!-- Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Applications</masterLabel>
+            <translation><!-- Enterprise Applications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC, Server, and Storage</masterLabel>
+            <translation><!-- HPC, Server, and Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Strategy and Management</masterLabel>
+            <translation><!-- IT Strategy and Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure</masterLabel>
+            <translation><!-- Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things</masterLabel>
+            <translation><!-- Internet of Things --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managing Enterprise Client Devices</masterLabel>
+            <translation><!-- Managing Enterprise Client Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other IT</masterLabel>
+            <translation><!-- Other IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workplace Transformation</masterLabel>
+            <translation><!-- Workplace Transformation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>Core_First_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last name for the subject matter expert --></help>
+        <label><!-- Last Name --></label>
+        <name>Core_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Date --></label>
+        <name>Core_SME_Certification_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_SME_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_SME_Country__c</name>
+        <picklistValues>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Costa Rica</masterLabel>
+            <translation><!-- Costa Rica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hong Kong</masterLabel>
+            <translation><!-- Hong Kong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ireland</masterLabel>
+            <translation><!-- Ireland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Israel</masterLabel>
+            <translation><!-- Israel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malaysia</masterLabel>
+            <translation><!-- Malaysia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mexico</masterLabel>
+            <translation><!-- Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poland</masterLabel>
+            <translation><!-- Poland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russia</masterLabel>
+            <translation><!-- Russia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom</masterLabel>
+            <translation><!-- United Kingdom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States</masterLabel>
+            <translation><!-- United States --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnam</masterLabel>
+            <translation><!-- Vietnam --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Core_SME_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_SME_Geo__c</name>
+        <picklistValues>
+            <masterLabel>APAC</masterLabel>
+            <translation><!-- APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJKK</masterLabel>
+            <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAR</masterLabel>
+            <translation><!-- LAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Group --></label>
+        <name>Core_SME_Group__c</name>
+        <picklistValues>
+            <masterLabel>Enterprise Applications &amp; Appl</masterLabel>
+            <translation><!-- Enterprise Applications &amp; Appl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INFORMATION SECURITY</masterLabel>
+            <translation><!-- INFORMATION SECURITY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT DMZ COMPLIANCE</masterLabel>
+            <translation><!-- IT DMZ COMPLIANCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Infrastructure Engineering</masterLabel>
+            <translation><!-- IT Infrastructure Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT OPERATIONS</masterLabel>
+            <translation><!-- IT OPERATIONS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT STRATEGY OFFICE</masterLabel>
+            <translation><!-- IT STRATEGY OFFICE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MANUFACTURING IT</masterLabel>
+            <translation><!-- MANUFACTURING IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Development IT</masterLabel>
+            <translation><!-- Product Development IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SALES &amp; MARKETING IT</masterLabel>
+            <translation><!-- SALES &amp; MARKETING IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUPPLY CHAIN IT</masterLabel>
+            <translation><!-- SUPPLY CHAIN IT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Manager Name --></label>
+        <name>Core_SME_Manager_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Core_SME_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recertification Date --></label>
+        <name>Core_SME_Recertification_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Site Code --></label>
+        <name>Core_SME_Site_Code__c</name>
+        <picklistValues>
+            <masterLabel>AN</masterLabel>
+            <translation><!-- AN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AZ</masterLabel>
+            <translation><!-- AZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA</masterLabel>
+            <translation><!-- BA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CD</masterLabel>
+            <translation><!-- CD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CR</masterLabel>
+            <translation><!-- CR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DL</masterLabel>
+            <translation><!-- DL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FM</masterLabel>
+            <translation><!-- FM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GK</masterLabel>
+            <translation><!-- GK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HK</masterLabel>
+            <translation><!-- HK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IJ</masterLabel>
+            <translation><!-- IJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IR</masterLabel>
+            <translation><!-- IR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IS</masterLabel>
+            <translation><!-- IS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KM</masterLabel>
+            <translation><!-- KM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MC</masterLabel>
+            <translation><!-- MC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MU</masterLabel>
+            <translation><!-- MU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC</masterLabel>
+            <translation><!-- NC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ND</masterLabel>
+            <translation><!-- ND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NH</masterLabel>
+            <translation><!-- NH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NM</masterLabel>
+            <translation><!-- NM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NN</masterLabel>
+            <translation><!-- NN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OR</masterLabel>
+            <translation><!-- OR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PG</masterLabel>
+            <translation><!-- PG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SC</masterLabel>
+            <translation><!-- SC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SG</masterLabel>
+            <translation><!-- SG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SH</masterLabel>
+            <translation><!-- SH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SW</masterLabel>
+            <translation><!-- SW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TK</masterLabel>
+            <translation><!-- TK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VE</masterLabel>
+            <translation><!-- VE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VS</masterLabel>
+            <translation><!-- VS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_SME_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Active</masterLabel>
+            <translation><!-- Non-Active --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- WWID --></label>
+        <name>Core_SME_WWID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

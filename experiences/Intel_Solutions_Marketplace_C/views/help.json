@@ -1,0 +1,155 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "2e564bc0-ec13-478a-89bd-b5e2380356ef",
+  "label" : "help",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : false,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "06cd6623-801d-4d3d-b83b-f274fc677391",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"Help\",\"title\":\"Help\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Help"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "fc4abda0-69f7-4617-8ab9-c099cd92cd32",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "50f16fc5-f4c4-4510-809b-20f38da33e09",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "f329b21f-d823-4792-b77a-6a83e4d9b59d",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "pageType" : "marketplacehelp"
+      },
+      "componentName" : "c:MarketplaceHelpAndTraining",
+      "id" : "cd393117-5466-4686-9695-d958dddee4f1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "741b87e0-70cf-45dc-9076-5075cf2e97f7",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "5ac05180-ac46-461c-b167-3e53c930f779",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceFAQs",
+      "id" : "2757be1f-f353-486a-aab1-9c7eef8c9f43",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "89054e7d-14d3-43a8-b27b-3616c20c8688",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "790eef28-e693-4071-bb88-d63b7f40096c",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "ff1e6f1c-05d8-46be-8f48-55d3386a7fb4",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "e0a39dbe-242d-4447-bcb6-1f9aa8c2b786",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "e2256d2a-944a-4d66-ba58-f003b6e15b51",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "b2dc268d-b896-4616-9a9a-e1c38abd0b31",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "537c57cc-9326-4962-8a51-ea0843aa23fd",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "e48083fc-b550-4cae-9f21-3f93b100c835",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b699cca5-3bab-464f-8146-90dc01828545",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "c3bd42a3-10d5-4d31-a97f-9733d83e419e",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Help\"/> \n<meta name=\"keywords\" content=\"help, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"Help\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find help on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "Help - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4a917ce1-8fa9-4763-a40b-7fd6f18ebb98",
+      "renditionMap" : {
+        "ja" : "c98556c9-e8b0-4fe5-879e-7357ecde2c39",
+        "zh_cn" : "d9e2bb44-d58c-4fff-91b5-a2aac7b63807"
+      },
+      "renditions" : [ {
+        "id" : "d9e2bb44-d58c-4fff-91b5-a2aac7b63807",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c98556c9-e8b0-4fe5-879e-7357ecde2c39",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "f514e887-c052-41c3-852e-a49fd4a05dea",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-help"
+}

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "8f4cbe32-a21c-4705-93eb-4fe073da445e",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Payment_Document_Related_List__c",
+  "id" : "f8ffe9d2-0dfe-41e4-b5ff-6a061f478bab",
+  "label" : "Payment Document Related List",
+  "objectApiName" : "Core_MDF_Claim_VAT_Info__c",
+  "routeType" : "relatedlist-a8k",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-claim-vat-info"
+}

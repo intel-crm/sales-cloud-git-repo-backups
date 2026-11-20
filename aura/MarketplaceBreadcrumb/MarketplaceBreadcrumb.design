@@ -1,0 +1,3 @@
+<design:component label="Marketplace Breadcrumb">
+  <design:attribute name="theme" label="Theme" datasource="light,dark" default="light"/>
+</design:component>

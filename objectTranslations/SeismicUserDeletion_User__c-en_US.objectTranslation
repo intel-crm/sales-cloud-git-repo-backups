@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SeismicUserDeletion_User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SeismicUserDeletion_Users</value>
+    </caseValues>
+    <fields>
+        <label><!-- Deleted In Lessonly --></label>
+        <name>Deleted_In_Lessonly__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted In Seismic --></label>
+        <name>Deleted_In_Seismic__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lessonly ID --></label>
+        <name>Lessonly_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Load ID --></label>
+        <name>Load_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Seismic ID --></label>
+        <name>Seismic_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

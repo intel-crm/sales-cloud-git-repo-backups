@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Aborted</masterLabel>
+        <translation>Opération annulée</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Campaign Accepted</masterLabel>
+        <translation>Campagne acceptée</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cancelled</masterLabel>
+        <translation>Annulé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Completed</masterLabel>
+        <translation>Terminé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Declined</masterLabel>
+        <translation>Refusé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Draft</masterLabel>
+        <translation>Brouillon</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In Progress</masterLabel>
+        <translation>En cours</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pending Approval</masterLabel>
+        <translation>En attente d&apos;approbation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pending Review</masterLabel>
+        <translation>En attente d&apos;examen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Planned</masterLabel>
+        <translation>Planifié</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Proposal Accepted</masterLabel>
+        <translation>Proposition acceptée</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revision Required</masterLabel>
+        <translation>Révision requise</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Submitted</masterLabel>
+        <translation>Soumis</translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_OPP_AMOUNT</field>
+    </columns>
+    <description>Include both won and open opportunities</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP APJ Sales Territory</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opportunity_Partner__c.Core_Partner_Role__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Co-Selling</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_OPP_STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Group,Group Open,Group Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opportunity_Partner__c.Core_Partner_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ISA Co-Selling</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Distributor,Intel Authorized Distributor (IAD)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.Core_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>FK_OPP_CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Opportunity.Core_Approval_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Opportunity_Partner__c.Core_Partner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ISA Cosell Partner Opportunities</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Opportunity_Partner__c@Core_Opportunity_Partner__c.Core_Opportunity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
+        <endDate>2021-12-25</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-06</startDate>
+    </timeFrameFilter>
+</Report>

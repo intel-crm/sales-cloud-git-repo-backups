@@ -1,0 +1,157 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text={label.loadingLabel}></lightning-spinner>
+    </template>
+    <template if:false={showSpinner}>
+        <div class="slds-card">
+            <div class="slds-card">
+                <lightning-layout class="slds-page-header slds-page-header--object-home" id="header" multiple-rows="true">
+                    <lightning-layout-item>
+                        <lightning-icon icon-name="standard:hierarchy" class="icn"></lightning-icon>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="11" padding="horizontal-small">
+                        <div class="page-section page-header">
+                            <h1 class="slds-text-heading_label">{label.coMarketingAccounts}</h1>
+                            <h2 class="slds-text-heading_medium"><b>{label.accountsHierarchy}</b></h2>
+                        </div>
+                    </lightning-layout-item><br />
+                    <lightning-layout-item flexibility="auto">
+                        <div class="slds-float_left"><br /><br />
+                            <template if:true={accountsToDisplay}>
+                                {totalDisplayedAccounts} {label.intelAccounts}
+                            </template>
+                        </div>
+                        <template if:true={showSearchBox}>
+                            <div class="slds-float_right">
+                                <lightning-input type="search" placeholder={label.searchAccounts}
+                                    onchange={fetchSearchedRecords}></lightning-input>
+                            </div>
+                        </template>
+    
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+    
+            
+    
+    
+    
+            <div class="slds-card slds-var-p-around_small">
+                <template if:false={showSpinner}>
+                    <div class="slds-var-p-bottom_x-small">
+                        <lightning-icon icon-name="utility:warning" class="icn" size="x-small" variant="warning"
+                            style="background-position: left center;"></lightning-icon>&nbsp;
+                        <span style="font-size: 14px">{label.nodeVisibilityWarningLabel}</span>
+                    </div>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <template for:each={accountsToDisplay} for:item="item">
+                            <div key={item.Id} class="slds-box slds-box_xx-small"
+                                style="background-color:rgb(248, 248, 248);">
+                                <lightning-accordion-section name={item.Id} label={item.Name} key={item.Id}>
+                                    <!--View Details and set Partner score Button implementation-->
+                                    <lightning-button-group slot="actions" name={item.Id} class="slds-m-left_medium">
+                                        <lightning-button label="View Details" onclick={navigateToRecordViewPage}
+                                            data-name={item.Id}></lightning-button>
+                                        <template if:true={showSetPartnerScoreButton}>
+                                            <lightning-button label="Set Partner Score"
+                                                onclick={navigateToPartnerScoreCreateModal} data-name={item.Id}>
+                                            </lightning-button>
+                                        </template>
+                                    </lightning-button-group>
+                                    <c-account-hierarchy_-tree-grid ultimate-account-id={item.Id}
+                                        ultimate-account-name={item.Name} salesforce-baseurl={salesforceBaseurl}
+                                        enable-scroll="true">
+                                    </c-account-hierarchy_-tree-grid>
+                                </lightning-accordion-section>
+                            </div>
+                        </template>
+                    </lightning-accordion>
+                    <br />
+                    <c-paginator id="paginatorComponent" records={allUltimateAccounts}
+                        total-records={allUltimateAccounts.length} onpaginatorchange={handleRecordsOnPageChange}>
+                    </c-paginator>
+                </template>
+            </div>
+    
+        </div>
+    </template>
+    
+
+    <!--Modal/Popup to create Partner Score Maintenance-->
+    <template if:true={showPopupToCreatePartnerScore}>
+
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <!--spinner-->
+            <template if:true={showSpinnerForPartnerScore}>
+                <lightning-spinner alternative-text={label.loadingLabel}></lightning-spinner>
+            </template>
+
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close"
+                        title="Close" onclick={closePartnerScoreCreateModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        {label.Core_MDF_Partnerscore_Score_Title}</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-record-edit-form object-api-name="Core_MDF_Partnership_Score__c">
+                        <lightning-input-field field-name="Core_MDF_Account_Id__c" value={accountId} disabled>
+                        </lightning-input-field>
+                        <lightning-input-field field-name="Core_MDF_Channel_Program_Id__c" required="">
+                        </lightning-input-field>
+                        <lightning-input-field field-name="Core_MDF_Year_nm__c" required=""></lightning-input-field>
+                        <lightning-input-field field-name="Core_MDF_Quarter_nm__c" required=""></lightning-input-field>
+                        <lightning-input-field field-name="Core_MDF_Partnership_Score_Nbr__c" required="">
+                        </lightning-input-field>
+                    </lightning-record-edit-form>
+                    <lightning-button type="submit" label="Submit" class="slds-float_right slds-var-p-top_medium"
+                        variant="brand" onclick={submitPartnershipScore}></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!--Modal/Popup display on duplicate entry-->
+    <template if:true={showPopupToScoreDetails}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close"
+                        title="Close" onclick={closePartnerScoreViewReportModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
+                        {label.Core_MDF_Partnership_Score_Duplicate_Record_Exists}</h2>
+                </header>
+
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-text-align_center slds-p-around_medium" id="modal-content-id-2">
+                    <div class="slds-align_absolute-center">
+                        <lightning-icon icon-name="utility:warning" alternative-text="Warning!" title="Warning"
+                            size="x-small" variant="warning" class="slds-var-m-right_xx-small"></lightning-icon>
+                        <p class="">{label.Core_MDF_Partnership_Score_Duplicate_Error}</p>
+                    </div>
+                    </br>
+                    <lightning-button label="Go to Score details" title="Go to Score details" class="slds-align_absolute-center"
+                        onclick={navigateToScoreDetails} variant="brand"></lightning-button>
+                    </br>
+                </div>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

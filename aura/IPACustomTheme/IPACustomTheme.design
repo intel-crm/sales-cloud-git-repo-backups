@@ -1,0 +1,8 @@
+<design:component >
+
+    <design:attribute name="devIconFont" label="Use Header Icon Font" description="Ensure this is checked in a Production environment to use the icon font from the Intel Header instead of the development ipaResources static resource version."></design:attribute>
+    <design:attribute name="devCssBundle" label="Use CSS Minified Bundle" description="Ensure this is checked in a Production environment to use the minified CSS bundle from the ipaResources static resource."></design:attribute>
+    <design:attribute name="removeNavigation" label="Remove Navigation Bar" description="Ensure this is checked in a Production environment to remove the navigation bar from the page."></design:attribute>
+    <design:attribute name="coreIntcErrorConfig" label="JSON Configuration String for coreIntcErrorHandler" description="JSON string used to set the configuration for how the coreIntcErrorHandler processes errors."></design:attribute>
+
+</design:component>

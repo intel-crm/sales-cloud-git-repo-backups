@@ -1,0 +1,19 @@
+<template>
+  <template if:true={noError}>
+    <a class={anchorClasses} href={href} onclick={handleClick} title={anchorTitle} aria-label={ariaLabelValue} target={anchorTarget}>
+      <template if:false={hasSlotContent}>
+        {label}
+      </template>
+      <slot class={slotClass} onslotchange={handleSlotChange}></slot>
+      <template if:false={anchorHideIcon}>
+        <span class="core-link-icon-wrapper">
+          &nbsp;<span class={iconClasses}>
+            <template if:true={salesforceIconName}>
+              <lightning-icon icon-name={salesforceIconName} size="xx-small" class="core-link-salesforce-icon"></lightning-icon>
+            </template>
+          </span>
+        </span>
+      </template>
+    </a>
+  </template>
+</template>

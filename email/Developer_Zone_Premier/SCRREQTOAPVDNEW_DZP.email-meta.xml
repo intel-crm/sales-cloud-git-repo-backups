@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome email for DZP</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_DZP</name>
+    <style>none</style>
+    <subject>Welcome to Developer Zone Premier</subject>
+    <textOnly>Developer Zone Premier Account Approved
+
+Approval Email
+
+Welcome to Developer Zone Premier
+
+
+Welcome {!Contact.Name},
+
+Your request for a Developer Zone Premier account is approved and includes the following benefits:
+
+1.	Secure access to pre-release software
+2.	Secure access to pre-release specifications, documentation, and roadmaps
+3.	Secure access to custom training and certification
+4.	Hardware testing support
+
+Visit the Developer Zone to get started and Manage your profile, including available marketing subscriptions via My Intel
+
+As a reminder, you are obligated to treat Intel’s Confidential Information carefully by either the confidentiality obligations contained in Section 4 of the Intel Partner Alliance Terms and Conditions or by the active CNDA in place between your Company and Intel.  Please be aware that you must uphold those obligations  as recipient of Developer Zone Premier access.
+
+
+Please retain this email for future reference and note that Premier access is associated with this email address {!PRM_Registration_Request__c.PRM_Email_ID__c} only. Your password should be protected as confidential information. Your use of the password and Intel’s websites are governed by Intel’s Terms of Use.
+
+If you have any questions, please contact us.
+
+Sincerely, Developer Zone Registration Administrator
+
+Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.
+
+
+Intel is committed to protecting your privacy. For more Information, please see the Intel Privacy Notice. Intel Cookie Notice.
+
+Legal Information | Trademarks |  ©  Intel Corporation.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

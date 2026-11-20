@@ -1,0 +1,114 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:EPUM_ManagePersonnelLayout",
+  "dataProviders" : [ ],
+  "id" : "29a9cd4b-e47f-470b-a4b5-ee846e06c97a",
+  "label" : "Manage Personnel NewTest",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"ManagePersonnel\",\"title\":\"Manage Personnel\"}",
+        "description" : "",
+        "marqueeDataSource" : "Design Attributes",
+        "pageType" : "BenefitService",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "",
+        "title" : "Manage Personnel New"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "0ee40b10-1aaa-45c1-bbec-8f795815a929",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9634bb21-09be-4be3-839e-640f38b696ca",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "40bbd460-341e-4fa5-b745-65e0c0cfa3f3",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ePUM_SearchContactLWC_newLayout",
+      "id" : "6a2e6124-723b-43b3-b180-31b4bf5d4a61",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f39e3e0d-19a1-459a-a55f-d26b009765cb",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "f9e32bd5-2199-47a8-b2a9-d3dbc821b402",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "e2c0ba68-b4a5-4a0d-8750-e808a6c3a828",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "5c243092-40a5-45fb-8544-25a88bc30c8c",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ePUM_SearchContactLWC",
+      "id" : "cdde0343-5fc5-4ff6-869b-d934a0dd7533",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6916c097-f45a-4c58-aff1-5de05fbd7cd4",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "b7146640-d77a-4131-a9e1-f61bd012b540",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "6fc5c763-65b2-46e6-8122-323819963496",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "71956b37-9565-43bd-9f0a-438850567e19",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "e7737119-d7a2-44dd-ba32-a45d4ae928d5",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "d0f2dbcc-504a-490f-bd3a-95ec3e5b5fd0",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Manage Personnel NewTest"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f62f453a-773e-4681-9afd-901079f2fd57",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1325489d-db46-4ce4-b890-1b612ae3e087",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-manage-personnel-newtest"
+}

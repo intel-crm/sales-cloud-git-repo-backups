@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Event Translation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Event Translations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Chinese Static Text --></label>
+        <name>PMP_Chinese_Static_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chinese Text --></label>
+        <name>PMP_Chinese_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- English Text --></label>
+        <name>PMP_English_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>PMP_Field_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Description</masterLabel>
+            <translation><!-- Description --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagline</masterLabel>
+            <translation><!-- Tagline --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Japanese Text --></label>
+        <name>PMP_Japanese_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Event Id --></label>
+        <name>PMP_Marketplace_Event_Id__c</name>
+        <relationshipLabel><!-- Marketplace Event Translations --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

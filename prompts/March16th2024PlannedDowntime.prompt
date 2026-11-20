@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>March 16th 2024 Planned Downtime</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>Find more details HERE</actionButtonLabel>
+        <actionButtonLink>https://help.salesforce.com/s/articleView?id=000386834&amp;type=1</actionButtonLink>
+        <body>&lt;p&gt;Sales CRM will be in READ-ONLY mode from 7PM PT to 11PM PT on March 16.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;High-level limitations will include submitting or reviewing opportunities, running or creating reports, or using chatter.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2024-03-17</endDate>
+        <experience>Lightning</experience>
+        <isPublished>true</isPublished>
+        <masterLabel>March 16th 2024 Planned Downtime</masterLabel>
+        <publishedDate>2024-03-13</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2024-03-13</startDate>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Planned Downtime</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

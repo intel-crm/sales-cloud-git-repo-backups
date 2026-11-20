@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_44768113</developerName>
+        <masterLabel>BL</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Telco-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-Unassigned</sourceValue>
+            </sourceValues>
+            <value>BL Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Cable-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-WW</sourceValue>
+            </sourceValues>
+            <value>BL Cable</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Comp-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Convergate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-ETH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-SHDSL</sourceValue>
+            </sourceValues>
+            <value>BL Comp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Retail-WW</sourceValue>
+            </sourceValues>
+            <value>BL Retail</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_97159314</developerName>
+        <masterLabel>age clustered</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>20</to>
+            </sourceValues>
+            <value>&lt;20days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>20</from>
+                <to>40</to>
+            </sourceValues>
+            <value>&lt;40days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>40</from>
+                <to>60</to>
+            </sourceValues>
+            <value>&lt;60days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+                <to>120</to>
+            </sourceValues>
+            <value>&lt;120days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>120</from>
+                <to>180</to>
+            </sourceValues>
+            <value>&lt;180days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>180</from>
+            </sourceValues>
+            <value>&gt;180days</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Last_Update__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Backend_ID_URL__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(((1 AND (2 OR (3 AND 4) OR (5 AND 6))) AND 7) AND 8) AND 9</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>CHD - Telco-AMR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRIORITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Critical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRIORITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>High</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Age__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>40</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRIORITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Medium,Low</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Age__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>80</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_Sub_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed,Close-Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_CaseType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Feature Request</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PRIORITY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>IPS Telco AMR - weekly Age Alert!</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Case.Core_IPS_Age__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

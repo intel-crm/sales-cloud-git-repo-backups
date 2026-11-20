@@ -1,0 +1,2419 @@
+{
+  "activeBrandingSetId" : "44e3655c-18cb-4e57-b78c-ff10c8fa4a08",
+  "customCSS" : ".slds-card__header[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] {\n    padding: .75rem 0.5rem 0;\n}\n\n.slds-path .slds-path__mark-complete {\n\tdisplay: none !important;\n}\n\ndiv.extraSpace[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] {\n    margin-left:0.8rem !important;\n}\n\n.forceRelatedListPreviewGrid.forceBaseListView[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] thead[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] th[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] {\n    height: 0;\n    padding: 0;\n}\n.forceBaseListView thead th[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] {\n    position: initial;}\n\ndiv.fixedCellHeight[c-core_MDF_HistoryComponent_core_MDF_HistoryComponent] {\n    top: .5rem;\n    min-height: 0;\n    padding-left: 0.5rem;\n    margin-left:0.8rem;\n\t\n}\n\nlistContent{\n    z-index:100;\n}\n\na[title=\"Export List View\"] {\n    display : none !important;\n    padding:0 !important;\n} \n\na[title=\"Case List Export\"] {\n    display : none !important;\n    padding:0 !important;\n} \n\n.cCore_MDF_ExportListView.ExportListButton {\n\tposition: absolute;\n    right: 10px;\n    z-index: 101;\n    top: -25px;\n}\n\n@font-face {\n    font-family: \"intel-clear\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: normal;\n}\n\n\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: italic;\n}\n\n\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: italic;\n}\n\n\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: normal;\n}\n\n\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: italic;\n}\n\n\n@font-face {\n      font-family:\"intel-clear-headline\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.eot\");\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.eot?#iefix\") format(\"embedded-opentype\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.woff2\") format(\"woff2\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.woff\") format(\"woff\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.ttf\") format(\"truetype\");\n      font-weight:400;\n      font-style:normal\n}\n.tooltip[force-listViewManagerSearchBar_listViewManagerSearchBar] {\n     z-index: 6001 !important;\n}",
+  "developerName" : "prm",
+  "id" : "c30d7951-5fde-4b59-bd34-2f783a042e37",
+  "label" : "Partner Central",
+  "layouts" : {
+    "DobmlYmiN84caZOB8BHMgJAbJ4nFxo" : "16ba08ad-9935-400c-9f49-6c95a8986470",
+    "Inner" : "e44af60e-cbf9-47b7-8682-85b623a8a043",
+    "Login" : "3feb11ca-8999-43c0-8e78-6f97b3b97ea7",
+    "ServiceNotAvailable" : "3932392a-2d6e-47b4-990d-a80c9afac0bc",
+    "UZCcUM7RrkAmecPHEHV92nmWVEl5Dw" : "8eff5c4d-7ee6-4c9f-9570-08303739a25d"
+  },
+  "type" : "theme",
+  "views" : [ {
+    "componentAttributes" : { },
+    "componentName" : "salesforceIdentity:loginBody2",
+    "id" : "3feb11ca-8999-43c0-8e78-6f97b3b97ea7",
+    "label" : "Login",
+    "regions" : [ {
+      "id" : "f78f9781-2e80-49f3-952b-658e24bce0f2",
+      "regionName" : "header",
+      "type" : "region"
+    }, {
+      "id" : "5aaa21c8-4316-47a4-a813-148f9570ac23",
+      "regionName" : "content",
+      "type" : "region"
+    }, {
+      "id" : "9f0f1fbf-c3af-4aaa-a07a-119eea02e63c",
+      "regionName" : "footer",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : { },
+    "componentName" : "c:PartnerCommunityTemplate_Protected",
+    "id" : "e44af60e-cbf9-47b7-8682-85b623a8a043",
+    "label" : "Default",
+    "regions" : [ {
+      "id" : "2203174a-f5b6-4eee-9341-7ac3104171d4",
+      "regionName" : "customHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "maxAutoCompleteResults" : 5,
+          "searchLabel" : "Search My Program data...",
+          "searchObjects" : [ {
+            "isPublic" : true,
+            "name" : "Core_AGS_Role__c"
+          } ]
+        },
+        "componentName" : "forceCommunity:globalSearchInput",
+        "id" : "749ce090-8d53-4303-9e9f-b23baed0d446",
+        "renditionMap" : {
+          "de" : "d18b3943-a763-4178-897d-607cdc0bdc82",
+          "es" : "0f7f46d7-30ec-4260-a4a4-87dd856a3eaf",
+          "es_mx" : "708b45a6-94ba-4010-9cc2-76c8d470ca2e",
+          "fr" : "cfd6ce7f-423e-4960-a8e6-eb1384a08a49",
+          "it" : "3a54bc24-b3a4-4cc2-a4f0-f1c690ab4c11",
+          "ja" : "11ea55ee-d414-4ee2-8fff-7e51ba0376d5",
+          "ko" : "f717a16a-0d94-425b-9c31-e1d3139c71be",
+          "pt_br" : "79428374-6d5d-455b-be13-ffac024957bb",
+          "pt_pt" : "d3940f55-6c72-4ddd-826e-e05ac3bda370",
+          "ru" : "e0b302ec-1411-4469-bb95-4b4d9d92d68d",
+          "zh_cn" : "8bddce0b-6799-41d2-bc43-5cc335e8d221",
+          "zh_tw" : "7af51e44-a8b9-4643-a0b7-12eef56bf6ca"
+        },
+        "renditions" : [ {
+          "id" : "8bddce0b-6799-41d2-bc43-5cc335e8d221",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "搜索我的计划数据...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e0b302ec-1411-4469-bb95-4b4d9d92d68d",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Поиск по моим данным...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "d3940f55-6c72-4ddd-826e-e05ac3bda370",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Pesquisar...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "11ea55ee-d414-4ee2-8fff-7e51ba0376d5",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "自分のプログラムのデータを検索",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3a54bc24-b3a4-4cc2-a4f0-f1c690ab4c11",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Ricerca nei miei dati del programma...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "cfd6ce7f-423e-4960-a8e6-eb1384a08a49",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Rechercher dans les données de mon programme...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "708b45a6-94ba-4010-9cc2-76c8d470ca2e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Buscar datos de Mi programa...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "d18b3943-a763-4178-897d-607cdc0bdc82",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Daten in Mein Programm suchen ...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "f717a16a-0d94-425b-9c31-e1d3139c71be",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "내 프로그램 데이터 검색...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "0f7f46d7-30ec-4260-a4a4-87dd856a3eaf",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Buscar en los datos de Mi programa...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "79428374-6d5d-455b-be13-ffac024957bb",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Procurar os dados do Meu programa...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7af51e44-a8b9-4643-a0b7-12eef56bf6ca",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "搜尋「我的計畫」資料...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "7afb5a42-1253-4483-872d-6edcb2e5a1e8",
+      "regionName" : "search",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "accountManagementLabel" : "Account Management",
+          "communityBuilderLabel" : "Community Builder",
+          "communitySetupLabel" : "Community Setup",
+          "contactSupportLabel" : "Contact Support",
+          "filterName" : "MyCases",
+          "homeLabel" : "Home",
+          "includeContactSupport" : false,
+          "includeMessages" : false,
+          "loginLabel" : "Login",
+          "logoutLabel" : "Logout",
+          "myAccountLabel" : "My Account",
+          "showAccountManagement" : false,
+          "showUserSettings" : false,
+          "userSettingsLabel" : "My Settings",
+          "viewProfileLabel" : "My Profile"
+        },
+        "componentName" : "selfService:userProfileMenu",
+        "id" : "8cb09950-4b84-4184-84ec-8d79d5253afa",
+        "renditionMap" : {
+          "de" : "c95efa5c-26f7-4abc-8093-bb5c0f226bd8",
+          "es" : "5936be29-047f-4326-be75-6db4a1ea08fc",
+          "es_mx" : "f1aabfe3-4339-4982-89bc-f55f5e01463b",
+          "fr" : "8dfa524a-70fd-4b0c-8bc5-157363d77f0f",
+          "it" : "903acb0d-efec-4b0f-9c97-b0240bddea9c",
+          "ja" : "ea12c370-7b98-4538-b562-ad6f6130857e",
+          "ko" : "357faa60-cec7-45ac-9d64-2fb8ed961b9e",
+          "pt_br" : "0a54c4c3-b4f0-4690-8246-3b7144127db1",
+          "pt_pt" : "9a8bf448-2599-4245-bb2d-e5eb2d8d8dd7",
+          "ru" : "dc48e663-9402-4568-a36f-0fb8d86dcd4e",
+          "zh_cn" : "44765819-3acb-488b-b8a4-8cfaefbeb79d",
+          "zh_tw" : "16af7f5c-1a04-459e-8cdd-cf5ffecd79e6"
+        },
+        "renditions" : [ {
+          "id" : "44765819-3acb-488b-b8a4-8cfaefbeb79d",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "客户管理",
+              "communityBuilderLabel" : "社区构建者",
+              "communitySetupLabel" : "社区设置",
+              "contactSupportLabel" : "联系支持部门",
+              "homeLabel" : "主页",
+              "loginLabel" : "登录",
+              "logoutLabel" : "注销",
+              "myAccountLabel" : "我的账户",
+              "userSettingsLabel" : "我的设置",
+              "viewProfileLabel" : "我的资料"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "dc48e663-9402-4568-a36f-0fb8d86dcd4e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Управление учетными записями",
+              "communityBuilderLabel" : "Конструктор сообщества",
+              "communitySetupLabel" : "Настройки сообщества",
+              "contactSupportLabel" : "Служба поддержки",
+              "homeLabel" : "Главная страница",
+              "loginLabel" : "Вход",
+              "logoutLabel" : "Выход",
+              "myAccountLabel" : "Моя учетная запись",
+              "userSettingsLabel" : "Мои настройки",
+              "viewProfileLabel" : "Мой профиль"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "9a8bf448-2599-4245-bb2d-e5eb2d8d8dd7",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gerenciamento de contas",
+              "communityBuilderLabel" : "Criador de comunidades",
+              "communitySetupLabel" : "Configura&ccedil;&atilde;o da comunidade",
+              "contactSupportLabel" : "Contatar o suporte",
+              "homeLabel" : "P&aacute;gina inicial",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Desconectar",
+              "myAccountLabel" : "Minha conta",
+              "userSettingsLabel" : "Minhas configura&ccedil;&otilde;es",
+              "viewProfileLabel" : "Meu perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ea12c370-7b98-4538-b562-ad6f6130857e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "アカウント管理",
+              "communityBuilderLabel" : "コミュニティーの作成",
+              "communitySetupLabel" : "コミュニティーの設定",
+              "contactSupportLabel" : "サポートに問い合わせ",
+              "homeLabel" : "ホーム",
+              "loginLabel" : "ログイン",
+              "logoutLabel" : "ログアウト",
+              "myAccountLabel" : "アカウント",
+              "userSettingsLabel" : "設定",
+              "viewProfileLabel" : "プロファイル"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "903acb0d-efec-4b0f-9c97-b0240bddea9c",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gestione account",
+              "communityBuilderLabel" : "Community builder",
+              "communitySetupLabel" : "Configurazione della community",
+              "contactSupportLabel" : "Contattate il supporto",
+              "homeLabel" : "Home",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Logout",
+              "myAccountLabel" : "Il mio account",
+              "userSettingsLabel" : "Le mie impostazioni",
+              "viewProfileLabel" : "Il mio profilo"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8dfa524a-70fd-4b0c-8bc5-157363d77f0f",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gestion des comptes",
+              "communityBuilderLabel" : "Cr&eacute;ateur de communaut&eacute;",
+              "communitySetupLabel" : "Configuration de la communaut&eacute;",
+              "contactSupportLabel" : "Contacter l&apos;assistance",
+              "homeLabel" : "Accueil",
+              "loginLabel" : "Connexion",
+              "logoutLabel" : "D&eacute;connexion",
+              "myAccountLabel" : "Mon compte",
+              "userSettingsLabel" : "Mes param&egrave;tres",
+              "viewProfileLabel" : "Mon profil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "f1aabfe3-4339-4982-89bc-f55f5e01463b",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Administraci&oacute;n de cuenta",
+              "communityBuilderLabel" : "Desarrollador de la comunidad",
+              "communitySetupLabel" : "Configuraci&oacute;n de la comunidad",
+              "contactSupportLabel" : "Contactar a la asistencia",
+              "homeLabel" : "P&aacute;gina principal",
+              "loginLabel" : "Inicio de sesi&oacute;n",
+              "logoutLabel" : "Cerrar sesi&oacute;n",
+              "myAccountLabel" : "Mi cuenta",
+              "userSettingsLabel" : "Mi configuraci&oacute;n",
+              "viewProfileLabel" : "Mi perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c95efa5c-26f7-4abc-8093-bb5c0f226bd8",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Kontoverwaltung",
+              "communityBuilderLabel" : "Community Builder",
+              "communitySetupLabel" : "Community-Setup",
+              "contactSupportLabel" : "Support kontaktieren",
+              "homeLabel" : "Homepage",
+              "loginLabel" : "Einloggen",
+              "logoutLabel" : "Ausloggen",
+              "myAccountLabel" : "Mein Konto",
+              "userSettingsLabel" : "Meine Einstellungen",
+              "viewProfileLabel" : "Mein Profil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "357faa60-cec7-45ac-9d64-2fb8ed961b9e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "계정 관리",
+              "communityBuilderLabel" : "커뮤니티 빌더",
+              "communitySetupLabel" : "커뮤니티 설정",
+              "contactSupportLabel" : "지원팀 연락처",
+              "homeLabel" : "홈",
+              "loginLabel" : "로그인",
+              "logoutLabel" : "로그아웃",
+              "myAccountLabel" : "내 계정",
+              "userSettingsLabel" : "내 설정",
+              "viewProfileLabel" : "내 프로필"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5936be29-047f-4326-be75-6db4a1ea08fc",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gesti&oacute;n de cuentas",
+              "communityBuilderLabel" : "Creador de la comunidad",
+              "communitySetupLabel" : "Configuraci&oacute;n de la comunidad",
+              "contactSupportLabel" : "Contactar con asistencia t&eacute;cnica",
+              "homeLabel" : "Inicio",
+              "loginLabel" : "Iniciar sesi&oacute;n",
+              "logoutLabel" : "Cerrar sesi&oacute;n",
+              "myAccountLabel" : "Mi cuenta",
+              "userSettingsLabel" : "Mi configuraci&oacute;n",
+              "viewProfileLabel" : "Mi perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "0a54c4c3-b4f0-4690-8246-3b7144127db1",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gerenciamento de contas",
+              "communityBuilderLabel" : "Criador de comunidades",
+              "communitySetupLabel" : "Configura&ccedil;&atilde;o da comunidade",
+              "contactSupportLabel" : "Contatar o suporte",
+              "homeLabel" : "P&aacute;gina inicial",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Desconectar",
+              "myAccountLabel" : "Minha conta",
+              "userSettingsLabel" : "Minhas configura&ccedil;&otilde;es",
+              "viewProfileLabel" : "Meu perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "16af7f5c-1a04-459e-8cdd-cf5ffecd79e6",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "帳戶管理",
+              "communityBuilderLabel" : "社區建設者",
+              "communitySetupLabel" : "社區設置",
+              "contactSupportLabel" : "聯絡支援部門",
+              "homeLabel" : "首頁",
+              "loginLabel" : "登錄",
+              "logoutLabel" : "登出",
+              "myAccountLabel" : "我的帳戶",
+              "userSettingsLabel" : "我的設置",
+              "viewProfileLabel" : "我的資料"
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "3e74242a-72f2-4437-af3f-3e03d55486bb",
+      "regionName" : "profileMenu",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "NavigationMenuEditorRefresh" : "Default_Navigation3",
+          "alignment" : "left",
+          "showAppLauncher" : false,
+          "showBackLabel" : false,
+          "showHomeLink" : true
+        },
+        "componentName" : "forceCommunity:multiLevelNavigationWrapper",
+        "id" : "a7d5c4c1-2283-435b-98c3-01e6c844dc80",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "c3b0c807-783a-45c5-8258-b6b71732d1b9",
+      "regionName" : "navBar",
+      "type" : "region"
+    }, {
+      "id" : "e602fcc9-292c-4e73-9eab-ced203a98d53",
+      "regionName" : "customRegion",
+      "type" : "region"
+    }, {
+      "id" : "2ac45b72-5ca2-4713-bb1e-8b7b6a9b5905",
+      "regionName" : "footer",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:IntelHeader",
+        "id" : "8e27c090-372e-47eb-9ce4-4352aeacf0c2",
+        "renditionMap" : {
+          "de" : "b4d23b1c-b449-455f-a3b0-a9f65ead8184",
+          "es" : "850f94fb-bd79-4437-9f18-24d2cf74eb17",
+          "es_mx" : "ecc94102-7649-463d-87d7-df62a6f9f83d",
+          "fr" : "04895635-6cd6-4f1c-a271-9aea46a169e9",
+          "it" : "ce317a8c-7b37-424f-ad52-7efd089fd83a",
+          "ja" : "46f7370f-35c2-4bca-89fe-21fcc84cd62f",
+          "ko" : "cd9929ff-ffff-48f2-a8d7-f3fc6849821e",
+          "pt_br" : "5f9c01c1-9449-44e9-82d6-741163145fd8",
+          "pt_pt" : "aa722dde-4c17-4853-829b-36f74d328da7",
+          "ru" : "ee326936-25b9-4b67-802b-34bf2ea85c97",
+          "zh_cn" : "43922b1f-97a2-43b3-aafd-4c9435b999cb",
+          "zh_tw" : "4e8689ea-a231-4da0-a200-2525998b902d"
+        },
+        "renditions" : [ {
+          "id" : "43922b1f-97a2-43b3-aafd-4c9435b999cb",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ee326936-25b9-4b67-802b-34bf2ea85c97",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "aa722dde-4c17-4853-829b-36f74d328da7",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "46f7370f-35c2-4bca-89fe-21fcc84cd62f",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ce317a8c-7b37-424f-ad52-7efd089fd83a",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "04895635-6cd6-4f1c-a271-9aea46a169e9",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ecc94102-7649-463d-87d7-df62a6f9f83d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b4d23b1c-b449-455f-a3b0-a9f65ead8184",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "cd9929ff-ffff-48f2-a8d7-f3fc6849821e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "850f94fb-bd79-4437-9f18-24d2cf74eb17",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5f9c01c1-9449-44e9-82d6-741163145fd8",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4e8689ea-a231-4da0-a200-2525998b902d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "bannerText" : "A place where you can easily find solutions and ask questions",
+          "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+          "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+          "pageType" : "",
+          "showSubTopics" : true,
+          "title" : "Welcome!",
+          "uniqueNameOrId" : ""
+        },
+        "componentName" : "forceCommunity:headline",
+        "id" : "7298f724-9045-46c5-8bc2-cf773c10bb01",
+        "renditionMap" : {
+          "de" : "6a8c1edc-cc27-4ff1-bdd1-054ff523be6c",
+          "es" : "b8dba413-6d51-49af-b096-1eb387778b0f",
+          "es_mx" : "fdfe3c0e-7e13-43ab-9493-c699757d0d6d",
+          "fr" : "1c5c92b1-5f41-4eae-b1b2-d814a45f61da",
+          "it" : "4366669c-07c7-4150-bb43-52d839dcdfef",
+          "ja" : "265b8af3-e375-4612-afcf-e334db1b3c65",
+          "ko" : "ea87ead8-22a1-4255-93d1-c5da919a157f",
+          "pt_br" : "1b72209d-09de-4813-bf10-fcb602844313",
+          "ru" : "87237882-ab2a-46a0-b8ad-3927a6d7c91a",
+          "zh_cn" : "7b8fb31d-7906-4f97-8cc7-be09f0a599a2",
+          "zh_tw" : "7f4417ca-6b2a-4d7c-8baf-8a4ad66b8b62"
+        },
+        "renditions" : [ {
+          "id" : "6a8c1edc-cc27-4ff1-bdd1-054ff523be6c",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Hier k&ouml;nnen Sie L&ouml;sungen finden und Fragen stellen",
+              "bannerTextWithKnowledge" : "Informieren Sie sich anhand weiterer <a href=\"javascript:void(0)\" class=\"headlineArticles\">Artikel</a> und <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">Diskussionen</a> zu diesem Thema.",
+              "bannerTextWithoutKnowledge" : "Hier finden Sie weitere <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">Diskussionen</a> zu diesem Thema.",
+              "title" : "Willkommen!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b8dba413-6d51-49af-b096-1eb387778b0f",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Un lugar donde puede encontrar soluciones y formular preguntas f&aacute;cilmente",
+              "bannerTextWithKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineArticles\">art&iacute;culos</a> y <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">conversaciones</a> sobre este tema.",
+              "bannerTextWithoutKnowledge" : "Explore otras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">conversaciones</a> sobre este tema.",
+              "title" : "¡Bienvenido/a!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fdfe3c0e-7e13-43ab-9493-c699757d0d6d",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Un lugar donde puede encontrar soluciones y formular preguntas f&aacute;cilmente",
+              "bannerTextWithKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineArticles\">art&iacute;culos</a> y <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">debates</a> sobre este tema.",
+              "bannerTextWithoutKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">debates</a> sobre este tema.",
+              "title" : "Bienvenido"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "1c5c92b1-5f41-4eae-b1b2-d814a45f61da",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Un endroit o&ugrave; vous pouvez facilement trouver des solutions et poser des questions",
+              "bannerTextWithKnowledge" : "Consultez d&apos;autres <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> et <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> &agrave; ce sujet.",
+              "bannerTextWithoutKnowledge" : "Consultez d&apos;autres <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> &agrave; ce sujet.",
+              "title" : "Bienvenue&nbsp;!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4366669c-07c7-4150-bb43-52d839dcdfef",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Una risorsa in cui potete trovare facilmente soluzioni e fare domande",
+              "bannerTextWithKnowledge" : "Esplorate altri <a href=\"javascript:void(0)\" class=\"headlineArticles\">articoli</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussioni</a> su questo argomento.",
+              "bannerTextWithoutKnowledge" : "Esplorate altre <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussioni</a> su questo argomento.",
+              "title" : "Benvenuti!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "265b8af3-e375-4612-afcf-e334db1b3c65",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "問題解決方法の検索や問い合わせが容易",
+              "bannerTextWithKnowledge" : "このトピックに関するほかの<a href=\"javascript:void(0)\" class=\"headlineArticles\">記事</a>と<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">ディスカッション</a>を見る。",
+              "bannerTextWithoutKnowledge" : "このトピックに関するほかの<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">ディスカッション</a>を見る。",
+              "title" : "ようこそ"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ea87ead8-22a1-4255-93d1-c5da919a157f",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "이곳에서는 쉽게 솔루션을 찾고 질문을 할 수 있습니다",
+              "bannerTextWithKnowledge" : "이 주제에 대한 다른 <a href=\"javascript:void(0)\" class=\"headlineArticles\">문서</a>와 <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">토론</a>을 탐색합니다.",
+              "bannerTextWithoutKnowledge" : "이 주제에 대한 다른 <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">토론</a>을 탐색합니다.",
+              "title" : "환영합니다!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "1b72209d-09de-4813-bf10-fcb602844313",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Um local que permite encontrar solu&ccedil;&otilde;es e fazer perguntas com facilidade",
+              "bannerTextWithKnowledge" : "Veja outros <a href=\"javascript:void(0)\" class=\"headlineArticles\">artigos</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+              "bannerTextWithoutKnowledge" : "Veja outras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+              "title" : "Bem-vindo!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "87237882-ab2a-46a0-b8ad-3927a6d7c91a",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Место, где вы можете с легкостью находить решения и задавать вопросы",
+              "bannerTextWithKnowledge" : "Ознакомьтесь с другими <a href=\"javascript:void(0)\" class=\"headlineArticles\">статьями</a> и <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">обсуждениями</a> по этой теме.",
+              "bannerTextWithoutKnowledge" : "Ознакомьтесь с другими <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">обсуждениями </a> по этой теме.",
+              "title" : "Приветствуем вас!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7b8fb31d-7906-4f97-8cc7-be09f0a599a2",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "在该处您可以方便地找到解决方案和提出问题",
+              "bannerTextWithKnowledge" : "探索有关此主题的其他<a href=\"javascript:void(0)\" class=\"headlineArticles\">文章</a>和<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">讨论</a>。",
+              "bannerTextWithoutKnowledge" : "探索有关此主题的其他<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">讨论</a>。",
+              "title" : "欢迎！"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7f4417ca-6b2a-4d7c-8baf-8a4ad66b8b62",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "能夠輕鬆找到解決方案和提問的地方",
+              "bannerTextWithKnowledge" : "探索與這個主題有關的其它<a href=\"javascript:void(0)\" class=\"headlineArticles\">文章</a>和<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">討論</a>。",
+              "bannerTextWithoutKnowledge" : "探索與這個主題有關的其它<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">討論</a>。",
+              "title" : "歡迎！"
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "52310801-4891-4b80-ae02-94660cc99a17",
+      "regionName" : "templateHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:IntelFooter",
+        "id" : "b4c33e8c-919c-45e7-a0a7-fa612031aaea",
+        "renditionMap" : {
+          "de" : "80900d05-5dd6-4a0a-ba5b-7bcb4cf0bb63",
+          "es" : "4ec3d090-8035-4fd4-b368-71e0fcc01557",
+          "es_mx" : "aa065e8c-3591-4525-b78e-c8c4523b7da0",
+          "fr" : "78fb2a25-821f-42ab-b595-33c5c6dcdd2c",
+          "it" : "e6f184fe-cd33-4ac4-9ca3-6b2539ff991e",
+          "ja" : "7d5005c7-7aeb-4abf-b18c-243ac6f1eae4",
+          "ko" : "050319c7-89dd-4be8-a030-16240eb890e8",
+          "pt_br" : "7d476912-056d-4fc1-8b21-751c3990c6ec",
+          "pt_pt" : "bb869eff-6726-4af9-8a2d-cae3c23a2168",
+          "ru" : "762e44e6-b7d4-4ed2-92c4-bf53e3731236",
+          "zh_cn" : "adbb0454-1f7d-4f2d-bc89-9f2c46b11384",
+          "zh_tw" : "efa0c8b8-8f29-4bf1-8a16-1a8a2ccab01e"
+        },
+        "renditions" : [ {
+          "id" : "adbb0454-1f7d-4f2d-bc89-9f2c46b11384",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "762e44e6-b7d4-4ed2-92c4-bf53e3731236",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "bb869eff-6726-4af9-8a2d-cae3c23a2168",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7d5005c7-7aeb-4abf-b18c-243ac6f1eae4",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e6f184fe-cd33-4ac4-9ca3-6b2539ff991e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "78fb2a25-821f-42ab-b595-33c5c6dcdd2c",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "aa065e8c-3591-4525-b78e-c8c4523b7da0",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "80900d05-5dd6-4a0a-ba5b-7bcb4cf0bb63",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "050319c7-89dd-4be8-a030-16240eb890e8",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4ec3d090-8035-4fd4-b368-71e0fcc01557",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7d476912-056d-4fc1-8b21-751c3990c6ec",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "efa0c8b8-8f29-4bf1-8a16-1a8a2ccab01e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "59e108ae-ca81-4fa9-bb14-450db4a19df6",
+      "regionName" : "templateFooter",
+      "type" : "region"
+    }, {
+      "id" : "2d47f664-c0f6-47e1-be9d-64afed810c20",
+      "regionName" : "pageHeader",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : { },
+    "componentName" : "c:PartnerCommunityTemplate_Public",
+    "id" : "16ba08ad-9935-400c-9f49-6c95a8986470",
+    "label" : "Public",
+    "regions" : [ {
+      "id" : "a4dfbd44-7de8-404f-b743-f83c9d1de88c",
+      "regionName" : "customHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "maxAutoCompleteResults" : 5,
+          "searchLabel" : "Search my data",
+          "searchObjects" : [ {
+            "isPublic" : false,
+            "name" : "Campaign"
+          }, {
+            "isPublic" : true,
+            "name" : "Core_Marketing_Activity__c"
+          }, {
+            "isPublic" : true,
+            "name" : "Core_AGS_Role__c"
+          } ]
+        },
+        "componentName" : "forceCommunity:globalSearchInput",
+        "id" : "3fa1b168-7b60-49ce-b69c-70a8b6df8418",
+        "renditionMap" : {
+          "de" : "33200be6-b511-468d-899d-7cef2be755a8",
+          "es" : "63f8e63c-dc65-4546-a108-1cc4d2885df2",
+          "es_mx" : "84194701-f702-4a8e-b9fa-2622c1c537f0",
+          "fr" : "2336ae90-1c8f-40f2-815f-344fcf9b4407",
+          "it" : "879a6b16-1d19-4170-ae33-c9e082093784",
+          "ja" : "d89075c5-9330-469e-a0b2-3f873a2f0d3a",
+          "ko" : "fbd79d1a-764c-41bf-9b0a-71117cd3945b",
+          "pt_br" : "5edaef03-d96d-451c-981f-79a96045cc6e",
+          "pt_pt" : "7c10e3b0-d2aa-4a44-be9a-32c1b3046df7",
+          "ru" : "fcbb2ca6-f464-4be6-8798-5b885b21391c",
+          "zh_cn" : "1b6ec978-aea1-4296-8f6b-28b6fc749f5a",
+          "zh_tw" : "f1e51c89-9f5b-4312-877e-c9505ede3b21"
+        },
+        "renditions" : [ {
+          "id" : "33200be6-b511-468d-899d-7cef2be755a8",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Daten durchsuchen",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "1b6ec978-aea1-4296-8f6b-28b6fc749f5a",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "搜索我的数据",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fcbb2ca6-f464-4be6-8798-5b885b21391c",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Поиск по моим данным",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7c10e3b0-d2aa-4a44-be9a-32c1b3046df7",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Procurar meus dados",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "d89075c5-9330-469e-a0b2-3f873a2f0d3a",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "自分のデータを検索",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "879a6b16-1d19-4170-ae33-c9e082093784",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Cerca i miei dati",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "2336ae90-1c8f-40f2-815f-344fcf9b4407",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Rechercher mes donn&eacute;es",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "84194701-f702-4a8e-b9fa-2622c1c537f0",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Buscar mis datos",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fbd79d1a-764c-41bf-9b0a-71117cd3945b",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "내 데이터 검색",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "63f8e63c-dc65-4546-a108-1cc4d2885df2",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Buscar en mis datos",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5edaef03-d96d-451c-981f-79a96045cc6e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Procurar meus dados",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "f1e51c89-9f5b-4312-877e-c9505ede3b21",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "搜索我的數據",
+              "searchObjects" : "[{\"name\":\"Campaign\",\"isPublic\":false},{\"name\":\"Core_Marketing_Activity__c\",\"isPublic\":true},{\"name\":\"Core_AGS_Role__c\",\"isPublic\":true}]"
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "614798e5-a1cf-4530-9d07-247ae032573f",
+      "regionName" : "search",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "accountManagementLabel" : "Account Management",
+          "communityBuilderLabel" : "Community Builder",
+          "communitySetupLabel" : "Community Setup",
+          "contactSupportLabel" : "Contact Support",
+          "filterName" : "MyCases",
+          "homeLabel" : "Home",
+          "includeContactSupport" : false,
+          "includeMessages" : false,
+          "loginLabel" : "Login",
+          "logoutLabel" : "Logout",
+          "myAccountLabel" : "My Account",
+          "showAccountManagement" : false,
+          "showUserSettings" : false,
+          "userSettingsLabel" : "My Settings",
+          "viewProfileLabel" : "My Profile"
+        },
+        "componentName" : "selfService:userProfileMenu",
+        "id" : "7da4954b-74d3-4553-ad33-5ee9a1e1fa03",
+        "renditionMap" : {
+          "de" : "b149f44f-afb6-48aa-8ccf-efbec3b38969",
+          "es" : "eee49f09-69fd-473a-9e59-46d3cce776c6",
+          "es_mx" : "356a1dc1-7378-46f7-a183-8d1a7ab338e3",
+          "fr" : "798c6bb9-62e2-48f6-be14-e9211839c078",
+          "it" : "b6494826-c2ff-4336-abb3-b56b6dd0ba99",
+          "ja" : "a6603232-69c4-4850-b5dd-e2586e7835a2",
+          "ko" : "e999a75f-3310-4314-9783-cf77b3e3f1c4",
+          "pt_br" : "670c8a6f-dd7d-46c9-9ac5-058c69c7721a",
+          "pt_pt" : "14d62c10-d80e-475e-998a-1f332dc88500",
+          "ru" : "12884ad9-41c2-4b55-89d2-66b440bfa486",
+          "zh_cn" : "a612c829-8586-4f51-a54c-6e40def5f2c5",
+          "zh_tw" : "cf56edc4-570c-472d-b65c-50e83adb712c"
+        },
+        "renditions" : [ {
+          "id" : "a612c829-8586-4f51-a54c-6e40def5f2c5",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "客户管理",
+              "communityBuilderLabel" : "社区构建者",
+              "communitySetupLabel" : "社区设置",
+              "contactSupportLabel" : "联系支持部门",
+              "homeLabel" : "主页",
+              "loginLabel" : "登录",
+              "logoutLabel" : "注销",
+              "myAccountLabel" : "我的账户",
+              "userSettingsLabel" : "我的设置",
+              "viewProfileLabel" : "我的资料"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "12884ad9-41c2-4b55-89d2-66b440bfa486",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Управление учетными записями",
+              "communityBuilderLabel" : "Конструктор сообщества",
+              "communitySetupLabel" : "Настройки сообщества",
+              "contactSupportLabel" : "Служба поддержки",
+              "homeLabel" : "Главная страница",
+              "loginLabel" : "Вход",
+              "logoutLabel" : "Выход",
+              "myAccountLabel" : "Моя учетная запись",
+              "userSettingsLabel" : "Мои настройки",
+              "viewProfileLabel" : "Мой профиль"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "14d62c10-d80e-475e-998a-1f332dc88500",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gerenciamento de contas",
+              "communityBuilderLabel" : "Criador de comunidades",
+              "communitySetupLabel" : "Configura&ccedil;&atilde;o da comunidade",
+              "contactSupportLabel" : "Contatar o suporte",
+              "homeLabel" : "P&aacute;gina inicial",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Desconectar",
+              "myAccountLabel" : "Minha conta",
+              "userSettingsLabel" : "Minhas configura&ccedil;&otilde;es",
+              "viewProfileLabel" : "Meu perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a6603232-69c4-4850-b5dd-e2586e7835a2",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "アカウント管理",
+              "communityBuilderLabel" : "コミュニティーの作成",
+              "communitySetupLabel" : "コミュニティーの設定",
+              "contactSupportLabel" : "サポートに問い合わせ",
+              "homeLabel" : "ホーム",
+              "loginLabel" : "ログイン",
+              "logoutLabel" : "ログアウト",
+              "myAccountLabel" : "アカウント",
+              "userSettingsLabel" : "設定",
+              "viewProfileLabel" : "プロファイル"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b6494826-c2ff-4336-abb3-b56b6dd0ba99",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gestione account",
+              "communityBuilderLabel" : "Community builder",
+              "communitySetupLabel" : "Configurazione della community",
+              "contactSupportLabel" : "Contattate il supporto",
+              "homeLabel" : "Home",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Logout",
+              "myAccountLabel" : "Il mio account",
+              "userSettingsLabel" : "Le mie impostazioni",
+              "viewProfileLabel" : "Il mio profilo"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "798c6bb9-62e2-48f6-be14-e9211839c078",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gestion des comptes",
+              "communityBuilderLabel" : "Cr&eacute;ateur de communaut&eacute;",
+              "communitySetupLabel" : "Configuration de la communaut&eacute;",
+              "contactSupportLabel" : "Contacter l&apos;assistance",
+              "homeLabel" : "Accueil",
+              "loginLabel" : "Connexion",
+              "logoutLabel" : "D&eacute;connexion",
+              "myAccountLabel" : "Mon compte",
+              "userSettingsLabel" : "Mes param&egrave;tres",
+              "viewProfileLabel" : "Mon profil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "356a1dc1-7378-46f7-a183-8d1a7ab338e3",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Administraci&oacute;n de cuenta",
+              "communityBuilderLabel" : "Desarrollador de la comunidad",
+              "communitySetupLabel" : "Configuraci&oacute;n de la comunidad",
+              "contactSupportLabel" : "Contactar a la asistencia",
+              "homeLabel" : "P&aacute;gina principal",
+              "loginLabel" : "Inicio de sesi&oacute;n",
+              "logoutLabel" : "Cerrar sesi&oacute;n",
+              "myAccountLabel" : "Mi cuenta",
+              "userSettingsLabel" : "Mi configuraci&oacute;n",
+              "viewProfileLabel" : "Mi perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b149f44f-afb6-48aa-8ccf-efbec3b38969",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Kontoverwaltung",
+              "communityBuilderLabel" : "Community Builder",
+              "communitySetupLabel" : "Community-Setup",
+              "contactSupportLabel" : "Support kontaktieren",
+              "homeLabel" : "Homepage",
+              "loginLabel" : "Einloggen",
+              "logoutLabel" : "Ausloggen",
+              "myAccountLabel" : "Mein Konto",
+              "userSettingsLabel" : "Meine Einstellungen",
+              "viewProfileLabel" : "Mein Profil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e999a75f-3310-4314-9783-cf77b3e3f1c4",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "계정 관리",
+              "communityBuilderLabel" : "커뮤니티 빌더",
+              "communitySetupLabel" : "커뮤니티 설정",
+              "contactSupportLabel" : "지원팀 연락처",
+              "homeLabel" : "홈",
+              "loginLabel" : "로그인",
+              "logoutLabel" : "로그아웃",
+              "myAccountLabel" : "내 계정",
+              "userSettingsLabel" : "내 설정",
+              "viewProfileLabel" : "내 프로필"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "eee49f09-69fd-473a-9e59-46d3cce776c6",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gesti&oacute;n de cuentas",
+              "communityBuilderLabel" : "Creador de la comunidad",
+              "communitySetupLabel" : "Configuraci&oacute;n de la comunidad",
+              "contactSupportLabel" : "Contactar con asistencia t&eacute;cnica",
+              "homeLabel" : "Inicio",
+              "loginLabel" : "Iniciar sesi&oacute;n",
+              "logoutLabel" : "Cerrar sesi&oacute;n",
+              "myAccountLabel" : "Mi cuenta",
+              "userSettingsLabel" : "Mi configuraci&oacute;n",
+              "viewProfileLabel" : "Mi perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "670c8a6f-dd7d-46c9-9ac5-058c69c7721a",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gerenciamento de contas",
+              "communityBuilderLabel" : "Criador de comunidades",
+              "communitySetupLabel" : "Configura&ccedil;&atilde;o da comunidade",
+              "contactSupportLabel" : "Contatar o suporte",
+              "homeLabel" : "P&aacute;gina inicial",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Desconectar",
+              "myAccountLabel" : "Minha conta",
+              "userSettingsLabel" : "Minhas configura&ccedil;&otilde;es",
+              "viewProfileLabel" : "Meu perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "cf56edc4-570c-472d-b65c-50e83adb712c",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "帳戶管理",
+              "communityBuilderLabel" : "社區建設者",
+              "communitySetupLabel" : "社區設置",
+              "contactSupportLabel" : "聯絡支援部門",
+              "homeLabel" : "首頁",
+              "loginLabel" : "登錄",
+              "logoutLabel" : "登出",
+              "myAccountLabel" : "我的帳戶",
+              "userSettingsLabel" : "我的設置",
+              "viewProfileLabel" : "我的資料"
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "e4fcd406-970a-43c6-9515-90c35fe9ae16",
+      "regionName" : "profileMenu",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "NavigationMenuEditorRefresh" : "",
+          "hideAppLauncher" : true,
+          "hideHomeText" : false
+        },
+        "componentName" : "forceCommunity:globalNavigation",
+        "id" : "977db795-f157-47dc-a309-72aadfb210ea",
+        "renditionMap" : {
+          "de" : "32f79134-6d95-4722-be5e-a88f63cda0e7",
+          "es" : "4a3856f8-2563-44ff-a6d0-ff52a36c8f5c",
+          "es_mx" : "fb541a3b-9a76-476f-a846-96c23446ca1d",
+          "fr" : "e5ab02b0-5f72-46f7-b9f4-1f2bbb3b06cc",
+          "it" : "3560f675-2ed0-4b89-8d94-13418d69420e",
+          "ja" : "16b2e5fc-3189-45ad-918e-9e8c435400ff",
+          "ko" : "b29162b0-e607-4237-b0e4-a4d776954f95",
+          "pt_br" : "fb2d64c8-2b34-4efe-8f2e-69c4790e6608",
+          "pt_pt" : "a7c6fae2-4942-4a62-98ca-00551581c5db",
+          "ru" : "6c63a05e-c7ca-44c3-b5f4-dde0632b97d2",
+          "zh_cn" : "a58a5229-e261-4d0a-9ef7-a34426709466",
+          "zh_tw" : "c56d1033-9591-4e65-a735-a743c9120dc2"
+        },
+        "renditions" : [ {
+          "id" : "a58a5229-e261-4d0a-9ef7-a34426709466",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "6c63a05e-c7ca-44c3-b5f4-dde0632b97d2",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a7c6fae2-4942-4a62-98ca-00551581c5db",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "16b2e5fc-3189-45ad-918e-9e8c435400ff",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3560f675-2ed0-4b89-8d94-13418d69420e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e5ab02b0-5f72-46f7-b9f4-1f2bbb3b06cc",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fb541a3b-9a76-476f-a846-96c23446ca1d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "32f79134-6d95-4722-be5e-a88f63cda0e7",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b29162b0-e607-4237-b0e4-a4d776954f95",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4a3856f8-2563-44ff-a6d0-ff52a36c8f5c",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fb2d64c8-2b34-4efe-8f2e-69c4790e6608",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c56d1033-9591-4e65-a735-a743c9120dc2",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "5e3c19e8-e3d3-4288-84a4-4a3f84e43f57",
+      "regionName" : "navBar",
+      "type" : "region"
+    }, {
+      "id" : "afb8cbb4-19c7-4f8b-9548-621cf3cb76f5",
+      "regionName" : "customRegion",
+      "type" : "region"
+    }, {
+      "id" : "9e21163a-e6a7-477e-8f07-7b03ec2809b2",
+      "regionName" : "footer",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:IntelHeader",
+        "id" : "13d10ea8-5279-46b6-9f37-8aeacdea4dc0",
+        "renditionMap" : {
+          "de" : "e2247786-ecf9-4094-b57d-bda8d304ecab",
+          "es" : "c04e5400-7087-4377-906f-a3059e78c145",
+          "es_mx" : "b80d0a5d-c588-4f78-8e5a-845f43ed2a83",
+          "fr" : "49906538-8b84-4b71-b7b8-b4dd38baa894",
+          "it" : "7a469f97-f56e-4795-bc8b-57bc5225dd7d",
+          "ja" : "550746c4-000f-422c-86a5-95ba4ba38ade",
+          "ko" : "e4d2e634-1d58-4290-a968-01e9802cf545",
+          "pt_br" : "4d553949-b312-424c-a96c-abeae33e225d",
+          "pt_pt" : "c25e3f77-1eb6-429b-b0a8-167654fd72ac",
+          "ru" : "8aef4ee3-2328-4202-a630-810d527db13d",
+          "zh_cn" : "80e663fc-a651-4179-ab40-2db42338920d",
+          "zh_tw" : "79047e7f-77d0-413d-9a7b-f0ac57e7ff6b"
+        },
+        "renditions" : [ {
+          "id" : "80e663fc-a651-4179-ab40-2db42338920d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8aef4ee3-2328-4202-a630-810d527db13d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c25e3f77-1eb6-429b-b0a8-167654fd72ac",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "550746c4-000f-422c-86a5-95ba4ba38ade",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7a469f97-f56e-4795-bc8b-57bc5225dd7d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "49906538-8b84-4b71-b7b8-b4dd38baa894",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b80d0a5d-c588-4f78-8e5a-845f43ed2a83",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e2247786-ecf9-4094-b57d-bda8d304ecab",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e4d2e634-1d58-4290-a968-01e9802cf545",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c04e5400-7087-4377-906f-a3059e78c145",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4d553949-b312-424c-a96c-abeae33e225d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "79047e7f-77d0-413d-9a7b-f0ac57e7ff6b",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "ddda5857-9e34-4fee-b23c-2718efa25733",
+      "regionName" : "templateHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:IntelFooter",
+        "id" : "63a370ff-2e5a-41d8-a1f2-cb456d3b39ff",
+        "renditionMap" : {
+          "de" : "013ea01f-7f5c-452a-9434-79ddd3040dde",
+          "es" : "7a257384-b179-4256-8c0f-7e2f58782c2a",
+          "es_mx" : "4f51e9f6-f5b3-4f41-88df-a5c2c4fc883a",
+          "fr" : "10fdba88-602e-4e56-b95d-297c5e5bc90e",
+          "it" : "a7d824f8-49eb-4b15-87f2-6d7f0c8378b9",
+          "ja" : "2f13f508-912f-49d4-a8da-fa0231efb877",
+          "ko" : "5d8e4157-1c92-44b5-9f3f-48295eca826e",
+          "pt_br" : "db9b8df1-4498-4af4-8c83-cf59f0742a3d",
+          "pt_pt" : "4dc856c6-222c-462e-a9ec-b01f11828ec8",
+          "ru" : "8f007cd6-b0d6-40a9-a1a5-03a8e556806b",
+          "zh_cn" : "e2462f8c-0f39-415e-bbe3-7582d66e3842",
+          "zh_tw" : "047e4cb5-29ae-4950-98e8-30f956629ce9"
+        },
+        "renditions" : [ {
+          "id" : "e2462f8c-0f39-415e-bbe3-7582d66e3842",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8f007cd6-b0d6-40a9-a1a5-03a8e556806b",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4dc856c6-222c-462e-a9ec-b01f11828ec8",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "2f13f508-912f-49d4-a8da-fa0231efb877",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a7d824f8-49eb-4b15-87f2-6d7f0c8378b9",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "10fdba88-602e-4e56-b95d-297c5e5bc90e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4f51e9f6-f5b3-4f41-88df-a5c2c4fc883a",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "013ea01f-7f5c-452a-9434-79ddd3040dde",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5d8e4157-1c92-44b5-9f3f-48295eca826e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7a257384-b179-4256-8c0f-7e2f58782c2a",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "db9b8df1-4498-4af4-8c83-cf59f0742a3d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "047e4cb5-29ae-4950-98e8-30f956629ce9",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "880bf17b-5a69-40e8-a9c5-8780e1344497",
+      "regionName" : "templateFooter",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "IsDefaultHeaderHidden" : false,
+      "IsDefaultHeaderPositionFixed" : true,
+      "IsDefaultNotificationsHidden" : false,
+      "IsSearchBarHidden" : false
+    },
+    "componentName" : "siteforce:prmBody",
+    "id" : "8eff5c4d-7ee6-4c9f-9570-08303739a25d",
+    "label" : "Standard",
+    "regions" : [ {
+      "id" : "2f97e24b-3a4c-449f-aea4-ee7253456700",
+      "regionName" : "customHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "maxAutoCompleteResults" : 5,
+          "searchLabel" : "Search My Program data...",
+          "searchObjects" : ""
+        },
+        "componentName" : "forceCommunity:globalSearchInput",
+        "id" : "490c57ba-feca-4c17-8e23-947f8569a6ea",
+        "renditionMap" : {
+          "de" : "e3ed7912-2950-473e-a9f9-f58f0ab84eb6",
+          "es" : "e1855f75-b6b5-486f-9e73-20e3f8df8842",
+          "es_mx" : "44c53696-bba4-4a0b-b7bf-c8115a4c3336",
+          "fr" : "e385b5a1-5edd-4d38-8272-1036722c931d",
+          "it" : "1c557689-a3bd-428b-8aa0-f3b31c9be515",
+          "ja" : "e3510623-3081-4553-acd2-40a1b9bcde45",
+          "ko" : "a64a555c-27d5-44eb-83ce-c8e680277805",
+          "pt_br" : "afed2676-b6b6-450c-ac00-d3c48a4da29f",
+          "pt_pt" : "b93eb54a-ba2d-4a7b-b775-3e7a4c7479e4",
+          "ru" : "fbdf3bd3-4cfd-4132-9313-07c8dbc114f3",
+          "zh_cn" : "d2a25f55-8291-4a80-8f17-fe3d51ca62bc",
+          "zh_tw" : "52428695-fd59-48e0-bab8-f3d40c79a365"
+        },
+        "renditions" : [ {
+          "id" : "d2a25f55-8291-4a80-8f17-fe3d51ca62bc",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "搜索我的计划数据...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fbdf3bd3-4cfd-4132-9313-07c8dbc114f3",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Поиск по моим данным...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b93eb54a-ba2d-4a7b-b775-3e7a4c7479e4",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Pesquisar...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e3510623-3081-4553-acd2-40a1b9bcde45",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "自分のプログラムのデータを検索",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "1c557689-a3bd-428b-8aa0-f3b31c9be515",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Ricerca nei miei dati del programma...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e385b5a1-5edd-4d38-8272-1036722c931d",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Rechercher dans les donn&eacute;es de Mon programme...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "44c53696-bba4-4a0b-b7bf-c8115a4c3336",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Buscar datos de Mi programa...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e3ed7912-2950-473e-a9f9-f58f0ab84eb6",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Daten in &bdquo;Mein Programm&ldquo; suchen...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a64a555c-27d5-44eb-83ce-c8e680277805",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "내 프로그램 데이터 검색...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e1855f75-b6b5-486f-9e73-20e3f8df8842",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Buscar en los datos de Mi programa...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "afed2676-b6b6-450c-ac00-d3c48a4da29f",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "Procurar os dados do Meu programa...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "52428695-fd59-48e0-bab8-f3d40c79a365",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "maxAutoCompleteResults" : "5",
+              "searchLabel" : "搜尋「我的計畫」資料...",
+              "searchObjects" : ""
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "07548979-ced6-431b-abd0-d827837760fb",
+      "regionName" : "search",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "accountManagementLabel" : "Account Management",
+          "communityBuilderLabel" : "Community Builder",
+          "communitySetupLabel" : "Community Setup",
+          "contactSupportLabel" : "Contact Support",
+          "filterName" : "MyCases",
+          "homeLabel" : "Home",
+          "includeContactSupport" : false,
+          "includeMessages" : false,
+          "loginLabel" : "Login",
+          "logoutLabel" : "Logout",
+          "myAccountLabel" : "My Account",
+          "showAccountManagement" : false,
+          "showUserSettings" : false,
+          "userSettingsLabel" : "My Settings",
+          "viewProfileLabel" : "My Profile"
+        },
+        "componentName" : "selfService:userProfileMenu",
+        "id" : "60223059-6c88-457b-9d75-5c7df003e514",
+        "renditionMap" : {
+          "de" : "5bdeb5db-37a4-457a-82cb-2bfdd4ef37dd",
+          "es" : "7e6bf839-d7b8-4e64-8cb0-02f438d862aa",
+          "es_mx" : "6cff7275-338a-45d2-a3b1-3a93574dc5c5",
+          "fr" : "1e2bbec0-3e10-46e5-a3af-b5df015d74e7",
+          "it" : "b63b910a-d427-4e7b-8497-29e3993fdd3c",
+          "ja" : "a1344d0f-587a-47a9-9f31-d35d959b55bd",
+          "ko" : "7db57c6a-d59a-474f-b8f5-fe81887ccd21",
+          "pt_br" : "7bfadef1-00ae-43bb-8f5b-d2af611af46e",
+          "pt_pt" : "f667e73b-2250-449d-b027-73f2a4d1db6e",
+          "ru" : "9ef8e2bb-761d-4702-9e8b-aaef90158412",
+          "zh_cn" : "9dd17007-55d5-4361-86b3-e1d300b5a82c",
+          "zh_tw" : "b41cff36-e7c8-4635-9bd1-7f879defd734"
+        },
+        "renditions" : [ {
+          "id" : "9dd17007-55d5-4361-86b3-e1d300b5a82c",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "客户管理",
+              "communityBuilderLabel" : "社区构建者",
+              "communitySetupLabel" : "社区设置",
+              "contactSupportLabel" : "联系支持部门",
+              "homeLabel" : "主页",
+              "loginLabel" : "登录",
+              "logoutLabel" : "注销",
+              "myAccountLabel" : "我的账户",
+              "userSettingsLabel" : "我的设置",
+              "viewProfileLabel" : "我的资料"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "9ef8e2bb-761d-4702-9e8b-aaef90158412",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Управление учетными записями",
+              "communityBuilderLabel" : "Конструктор сообщества",
+              "communitySetupLabel" : "Настройки сообщества",
+              "contactSupportLabel" : "Служба поддержки",
+              "homeLabel" : "Главная страница",
+              "loginLabel" : "Вход",
+              "logoutLabel" : "Выход",
+              "myAccountLabel" : "Моя учетная запись",
+              "userSettingsLabel" : "Мои настройки",
+              "viewProfileLabel" : "Мой профиль"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "f667e73b-2250-449d-b027-73f2a4d1db6e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gerenciamento de contas",
+              "communityBuilderLabel" : "Criador de comunidades",
+              "communitySetupLabel" : "Configura&ccedil;&atilde;o da comunidade",
+              "contactSupportLabel" : "Contatar o suporte",
+              "homeLabel" : "P&aacute;gina inicial",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Desconectar",
+              "myAccountLabel" : "Minha conta",
+              "userSettingsLabel" : "Minhas configura&ccedil;&otilde;es",
+              "viewProfileLabel" : "Meu perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a1344d0f-587a-47a9-9f31-d35d959b55bd",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "アカウント管理",
+              "communityBuilderLabel" : "コミュニティーの作成",
+              "communitySetupLabel" : "コミュニティーの設定",
+              "contactSupportLabel" : "サポートに問い合わせ",
+              "homeLabel" : "ホーム",
+              "loginLabel" : "ログイン",
+              "logoutLabel" : "ログアウト",
+              "myAccountLabel" : "アカウント",
+              "userSettingsLabel" : "設定",
+              "viewProfileLabel" : "プロファイル"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b63b910a-d427-4e7b-8497-29e3993fdd3c",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gestione account",
+              "communityBuilderLabel" : "Community builder",
+              "communitySetupLabel" : "Configurazione della community",
+              "contactSupportLabel" : "Contattate il supporto",
+              "homeLabel" : "Home",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Logout",
+              "myAccountLabel" : "Il mio account",
+              "userSettingsLabel" : "Le mie impostazioni",
+              "viewProfileLabel" : "Il mio profilo"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "1e2bbec0-3e10-46e5-a3af-b5df015d74e7",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gestion des comptes",
+              "communityBuilderLabel" : "Cr&eacute;ateur de communaut&eacute;",
+              "communitySetupLabel" : "Configuration de la communaut&eacute;",
+              "contactSupportLabel" : "Contacter l&apos;assistance",
+              "homeLabel" : "Accueil",
+              "loginLabel" : "Connexion",
+              "logoutLabel" : "D&eacute;connexion",
+              "myAccountLabel" : "Mon compte",
+              "userSettingsLabel" : "Mes param&egrave;tres",
+              "viewProfileLabel" : "Mon profil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "6cff7275-338a-45d2-a3b1-3a93574dc5c5",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Administraci&oacute;n de cuenta",
+              "communityBuilderLabel" : "Desarrollador de la comunidad",
+              "communitySetupLabel" : "Configuraci&oacute;n de la comunidad",
+              "contactSupportLabel" : "Contactar a la asistencia",
+              "homeLabel" : "P&aacute;gina principal",
+              "loginLabel" : "Inicio de sesi&oacute;n",
+              "logoutLabel" : "Cerrar sesi&oacute;n",
+              "myAccountLabel" : "Mi cuenta",
+              "userSettingsLabel" : "Mi configuraci&oacute;n",
+              "viewProfileLabel" : "Mi perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5bdeb5db-37a4-457a-82cb-2bfdd4ef37dd",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Kontoverwaltung",
+              "communityBuilderLabel" : "Community Builder",
+              "communitySetupLabel" : "Community-Setup",
+              "contactSupportLabel" : "Support kontaktieren",
+              "homeLabel" : "Homepage",
+              "loginLabel" : "Einloggen",
+              "logoutLabel" : "Ausloggen",
+              "myAccountLabel" : "Mein Konto",
+              "userSettingsLabel" : "Meine Einstellungen",
+              "viewProfileLabel" : "Mein Profil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7db57c6a-d59a-474f-b8f5-fe81887ccd21",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "계정 관리",
+              "communityBuilderLabel" : "커뮤니티 빌더",
+              "communitySetupLabel" : "커뮤니티 설정",
+              "contactSupportLabel" : "지원팀 연락처",
+              "homeLabel" : "홈",
+              "loginLabel" : "로그인",
+              "logoutLabel" : "로그아웃",
+              "myAccountLabel" : "내 계정",
+              "userSettingsLabel" : "내 설정",
+              "viewProfileLabel" : "내 프로필"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7e6bf839-d7b8-4e64-8cb0-02f438d862aa",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gesti&oacute;n de cuentas",
+              "communityBuilderLabel" : "Creador de la comunidad",
+              "communitySetupLabel" : "Configuraci&oacute;n de la comunidad",
+              "contactSupportLabel" : "Contactar con asistencia t&eacute;cnica",
+              "homeLabel" : "Inicio",
+              "loginLabel" : "Iniciar sesi&oacute;n",
+              "logoutLabel" : "Cerrar sesi&oacute;n",
+              "myAccountLabel" : "Mi cuenta",
+              "userSettingsLabel" : "Mi configuraci&oacute;n",
+              "viewProfileLabel" : "Mi perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "7bfadef1-00ae-43bb-8f5b-d2af611af46e",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "Gerenciamento de contas",
+              "communityBuilderLabel" : "Criador de comunidades",
+              "communitySetupLabel" : "Configura&ccedil;&atilde;o da comunidade",
+              "contactSupportLabel" : "Contatar o suporte",
+              "homeLabel" : "P&aacute;gina inicial",
+              "loginLabel" : "Login",
+              "logoutLabel" : "Desconectar",
+              "myAccountLabel" : "Minha conta",
+              "userSettingsLabel" : "Minhas configura&ccedil;&otilde;es",
+              "viewProfileLabel" : "Meu perfil"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b41cff36-e7c8-4635-9bd1-7f879defd734",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "accountManagementLabel" : "帳戶管理",
+              "communityBuilderLabel" : "社區建設者",
+              "communitySetupLabel" : "社區設置",
+              "contactSupportLabel" : "聯絡支援部門",
+              "homeLabel" : "首頁",
+              "loginLabel" : "登錄",
+              "logoutLabel" : "登出",
+              "myAccountLabel" : "我的帳戶",
+              "userSettingsLabel" : "我的設置",
+              "viewProfileLabel" : "我的資料"
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "e63e5976-145f-4f47-854d-decd9c48f30c",
+      "regionName" : "profileMenu",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "NavigationMenuEditorRefresh" : "",
+          "hideAppLauncher" : true,
+          "hideHomeText" : false
+        },
+        "componentName" : "forceCommunity:globalNavigation",
+        "id" : "1127ff2c-682a-4a89-9596-157eacb78728",
+        "renditionMap" : {
+          "de" : "f4653ae5-03c5-47d7-95e3-8a5a7631bf81",
+          "es" : "15da71d6-7696-4c42-9265-aef05ecf869e",
+          "es_mx" : "c60b3d7c-3704-49c0-9b66-92a38dad550f",
+          "fr" : "aee0fc1b-3075-4e81-a064-0f879ec5594d",
+          "it" : "86e10e39-98e0-4c62-9747-e3027ee7bd35",
+          "ja" : "1ad7cbc4-b587-46bb-9b58-6ad9eab1b30c",
+          "ko" : "e2898803-5f98-4768-9340-29e2057afc5b",
+          "pt_br" : "a7f96ff5-4ff9-4424-a7f9-2c001c667a29",
+          "pt_pt" : "d1d767d1-0b3c-4026-8f4c-c2f68c748dd9",
+          "ru" : "c76277e2-f01b-4b7f-80ef-5665c3d40e9d",
+          "zh_cn" : "0b1be8d9-4ac3-4746-b92c-ad3dff693d65",
+          "zh_tw" : "8d7cd12e-eefb-484b-b6fa-cfaddd196311"
+        },
+        "renditions" : [ {
+          "id" : "0b1be8d9-4ac3-4746-b92c-ad3dff693d65",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c76277e2-f01b-4b7f-80ef-5665c3d40e9d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "d1d767d1-0b3c-4026-8f4c-c2f68c748dd9",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "1ad7cbc4-b587-46bb-9b58-6ad9eab1b30c",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "86e10e39-98e0-4c62-9747-e3027ee7bd35",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "aee0fc1b-3075-4e81-a064-0f879ec5594d",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c60b3d7c-3704-49c0-9b66-92a38dad550f",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "f4653ae5-03c5-47d7-95e3-8a5a7631bf81",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e2898803-5f98-4768-9340-29e2057afc5b",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "15da71d6-7696-4c42-9265-aef05ecf869e",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a7f96ff5-4ff9-4424-a7f9-2c001c667a29",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8d7cd12e-eefb-484b-b6fa-cfaddd196311",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "6f5eb7b1-f522-43aa-8ea9-582433d07df8",
+      "regionName" : "navBar",
+      "type" : "region"
+    }, {
+      "id" : "4424d78c-12b9-4239-94f9-769b4b5fa19e",
+      "regionName" : "customRegion",
+      "type" : "region"
+    }, {
+      "id" : "30d6e7a9-499e-4d08-a8e0-c9ee3c756615",
+      "regionName" : "footer",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:IntelHeader",
+        "id" : "f8289f90-9c88-47dd-813a-b9012fe38e3b",
+        "renditionMap" : {
+          "de" : "8324cbd1-bc95-4bd7-ac1b-546641266969",
+          "es" : "22a82fd0-91a1-49fc-8c11-efce11ca90d0",
+          "es_mx" : "bb667e77-e27b-4218-86c3-5161c3e42ddc",
+          "fr" : "e0126ec7-3359-4c95-bdc5-dcb63e49f151",
+          "it" : "3b213c3d-178c-433f-8583-7e3b2cf443d7",
+          "ja" : "46e44ed0-0f0a-46a1-b352-b5b04aa03de1",
+          "ko" : "3b6e4f82-7c96-4ca8-b83c-1c7db5f8992c",
+          "pt_br" : "381adbec-6893-4cf8-9387-e4f28a3069f8",
+          "pt_pt" : "19da2d0c-1a7d-4a50-b77b-da0832ee2745",
+          "ru" : "b9d526db-f9ef-40f9-951e-0cf5fe0b7dab",
+          "zh_cn" : "1b32bccb-a29e-4bc3-b219-dc25a814ff6b",
+          "zh_tw" : "520a5426-c05d-4a74-abd0-2a187a153fea"
+        },
+        "renditions" : [ {
+          "id" : "1b32bccb-a29e-4bc3-b219-dc25a814ff6b",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b9d526db-f9ef-40f9-951e-0cf5fe0b7dab",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "19da2d0c-1a7d-4a50-b77b-da0832ee2745",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "46e44ed0-0f0a-46a1-b352-b5b04aa03de1",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3b213c3d-178c-433f-8583-7e3b2cf443d7",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e0126ec7-3359-4c95-bdc5-dcb63e49f151",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "bb667e77-e27b-4218-86c3-5161c3e42ddc",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8324cbd1-bc95-4bd7-ac1b-546641266969",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3b6e4f82-7c96-4ca8-b83c-1c7db5f8992c",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "22a82fd0-91a1-49fc-8c11-efce11ca90d0",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "381adbec-6893-4cf8-9387-e4f28a3069f8",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "520a5426-c05d-4a74-abd0-2a187a153fea",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "bannerText" : "A place where you can easily find solutions and ask questions",
+          "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+          "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+          "pageType" : "",
+          "showSubTopics" : true,
+          "title" : "Welcome!",
+          "uniqueNameOrId" : ""
+        },
+        "componentName" : "forceCommunity:headline",
+        "id" : "95be512b-3fc4-451d-83cf-0659f68caafe",
+        "renditionMap" : {
+          "de" : "f981c330-110f-45c7-9c0a-5064e172e90f",
+          "es" : "e60326f2-4d76-4a0f-8f75-cdfc7b9cdec2",
+          "es_mx" : "8d22e131-b279-47c4-8d0b-f65b94ebd752",
+          "fr" : "983c883b-2147-41c1-876e-e2d262aa0ba8",
+          "it" : "3bad849c-df15-442e-842d-3961cafd9129",
+          "ja" : "0a9a0dc8-2283-4e51-a68e-a40f704eb344",
+          "ko" : "ac753a29-f6a4-4914-8db6-085dae0b87e5",
+          "pt_br" : "204b39d7-6c11-4233-aa0e-b5e68e957c0b",
+          "ru" : "a8abc9ff-46ec-4b7f-a2e0-1e631cb910b5",
+          "zh_cn" : "3046a69b-1e74-45b6-b88d-bf0dbc65ffbe",
+          "zh_tw" : "eb16e258-291d-431a-b976-bee25afcf0dd"
+        },
+        "renditions" : [ {
+          "id" : "f981c330-110f-45c7-9c0a-5064e172e90f",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Hier k&ouml;nnen Sie L&ouml;sungen finden und Fragen stellen",
+              "bannerTextWithKnowledge" : "Informieren Sie sich anhand weiterer <a href=\"javascript:void(0)\" class=\"headlineArticles\">Artikel</a> und <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">Diskussionen</a> zu diesem Thema.",
+              "bannerTextWithoutKnowledge" : "Hier finden Sie weitere <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">Diskussionen</a> zu diesem Thema.",
+              "title" : "Willkommen!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e60326f2-4d76-4a0f-8f75-cdfc7b9cdec2",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Un lugar donde puede encontrar soluciones y formular preguntas f&aacute;cilmente",
+              "bannerTextWithKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineArticles\">art&iacute;culos</a> y <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">conversaciones</a> sobre este tema.",
+              "bannerTextWithoutKnowledge" : "Explore otras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">conversaciones</a> sobre este tema.",
+              "title" : "¡Bienvenido/a!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8d22e131-b279-47c4-8d0b-f65b94ebd752",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Un lugar donde puede encontrar soluciones y formular preguntas f&aacute;cilmente",
+              "bannerTextWithKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineArticles\">art&iacute;culos</a> y <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">debates</a> sobre este tema.",
+              "bannerTextWithoutKnowledge" : "Explore otros <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">debates</a> sobre este tema.",
+              "title" : "Bienvenido"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "983c883b-2147-41c1-876e-e2d262aa0ba8",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Un endroit o&ugrave; vous pouvez facilement trouver des solutions et poser des questions",
+              "bannerTextWithKnowledge" : "Consultez d&apos;autres <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> et <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> &agrave; ce sujet.",
+              "bannerTextWithoutKnowledge" : "Consultez d&apos;autres <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> &agrave; ce sujet.",
+              "title" : "Bienvenue&nbsp;!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3bad849c-df15-442e-842d-3961cafd9129",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Una risorsa in cui potete trovare facilmente soluzioni e fare domande",
+              "bannerTextWithKnowledge" : "Esplorate altri <a href=\"javascript:void(0)\" class=\"headlineArticles\">articoli</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussioni</a> su questo argomento.",
+              "bannerTextWithoutKnowledge" : "Esplorate altre <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussioni</a> su questo argomento.",
+              "title" : "Benvenuti!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "0a9a0dc8-2283-4e51-a68e-a40f704eb344",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "問題解決方法の検索や問い合わせが容易",
+              "bannerTextWithKnowledge" : "このトピックに関するほかの<a href=\"javascript:void(0)\" class=\"headlineArticles\">記事</a>と<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">ディスカッション</a>を見る。",
+              "bannerTextWithoutKnowledge" : "このトピックに関するほかの<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">ディスカッション</a>を見る。",
+              "title" : "ようこそ"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ac753a29-f6a4-4914-8db6-085dae0b87e5",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "이곳에서는 쉽게 솔루션을 찾고 질문을 할 수 있습니다",
+              "bannerTextWithKnowledge" : "이 주제에 대한 다른 <a href=\"javascript:void(0)\" class=\"headlineArticles\">문서</a>와 <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">토론</a>을 탐색합니다.",
+              "bannerTextWithoutKnowledge" : "이 주제에 대한 다른 <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">토론</a>을 탐색합니다.",
+              "title" : "환영합니다!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "204b39d7-6c11-4233-aa0e-b5e68e957c0b",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Um local que permite encontrar solu&ccedil;&otilde;es e fazer perguntas com facilidade",
+              "bannerTextWithKnowledge" : "Veja outros <a href=\"javascript:void(0)\" class=\"headlineArticles\">artigos</a> e <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+              "bannerTextWithoutKnowledge" : "Veja outras <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discuss&otilde;es</a> sobre este t&oacute;pico.",
+              "title" : "Bem-vindo!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a8abc9ff-46ec-4b7f-a2e0-1e631cb910b5",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "Место, где вы можете с легкостью находить решения и задавать вопросы",
+              "bannerTextWithKnowledge" : "Ознакомьтесь с другими <a href=\"javascript:void(0)\" class=\"headlineArticles\">статьями</a> и <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">обсуждениями</a> по этой теме.",
+              "bannerTextWithoutKnowledge" : "Ознакомьтесь с другими <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">обсуждениями </a> по этой теме.",
+              "title" : "Приветствуем вас!"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3046a69b-1e74-45b6-b88d-bf0dbc65ffbe",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "在该处您可以方便地找到解决方案和提出问题",
+              "bannerTextWithKnowledge" : "探索有关此主题的其他<a href=\"javascript:void(0)\" class=\"headlineArticles\">文章</a>和<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">讨论</a>。",
+              "bannerTextWithoutKnowledge" : "探索有关此主题的其他<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">讨论</a>。",
+              "title" : "欢迎！"
+            }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "eb16e258-291d-431a-b976-bee25afcf0dd",
+          "renditionValue" : {
+            "componentAttributes" : {
+              "bannerText" : "能夠輕鬆找到解決方案和提問的地方",
+              "bannerTextWithKnowledge" : "探索與這個主題有關的其它<a href=\"javascript:void(0)\" class=\"headlineArticles\">文章</a>和<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">討論</a>。",
+              "bannerTextWithoutKnowledge" : "探索與這個主題有關的其它<a href=\"javascript:void(0)\" class=\"headlineDiscussions\">討論</a>。",
+              "title" : "歡迎！"
+            }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "fe8cdf0b-579a-43cb-96d5-6c606037a45b",
+      "regionName" : "templateHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:IntelFooter",
+        "id" : "cc1fd69b-6371-4af7-8ac2-84a6d1e7ccba",
+        "renditionMap" : {
+          "de" : "973dfb28-e6ba-4358-8c48-c9dd3694d8fe",
+          "es" : "cc96ba4a-e764-4410-949d-db8861172db8",
+          "es_mx" : "05d5ffc9-566f-4333-a4b1-7c79feca3604",
+          "fr" : "847663cc-cfe6-4b55-adde-fde2854fffd4",
+          "it" : "74a402b2-0a4b-4575-9973-77b506231cc5",
+          "ja" : "b0e8c37c-0fba-421a-ad96-e5f485ac6acd",
+          "ko" : "d5ef8258-9a21-480b-bb25-daccdae441d5",
+          "pt_br" : "addf68c4-ac2e-4961-ab59-29eec7db3080",
+          "pt_pt" : "82420710-338d-4d13-8230-879bf2417e45",
+          "ru" : "5037531e-209a-4877-941a-17834d881444",
+          "zh_cn" : "f9224f05-9646-42ce-8f82-4e25350c48d9",
+          "zh_tw" : "ea581f0c-1b69-4f92-b702-db9ef90684d4"
+        },
+        "renditions" : [ {
+          "id" : "f9224f05-9646-42ce-8f82-4e25350c48d9",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5037531e-209a-4877-941a-17834d881444",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "82420710-338d-4d13-8230-879bf2417e45",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b0e8c37c-0fba-421a-ad96-e5f485ac6acd",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "74a402b2-0a4b-4575-9973-77b506231cc5",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "847663cc-cfe6-4b55-adde-fde2854fffd4",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "05d5ffc9-566f-4333-a4b1-7c79feca3604",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "973dfb28-e6ba-4358-8c48-c9dd3694d8fe",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "d5ef8258-9a21-480b-bb25-daccdae441d5",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "cc96ba4a-e764-4410-949d-db8861172db8",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "addf68c4-ac2e-4961-ab59-29eec7db3080",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "ea581f0c-1b69-4f92-b702-db9ef90684d4",
+          "renditionValue" : {
+            "componentAttributes" : { }
+          },
+          "type" : "renditionComponent"
+        } ],
+        "type" : "component"
+      } ],
+      "id" : "582b204b-e3c6-4b84-9630-050fa58998e2",
+      "regionName" : "templateFooter",
+      "type" : "region"
+    }, {
+      "id" : "600d25aa-64a0-4bf6-b597-16d67d3ef0ea",
+      "regionName" : "pageHeader",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "fixedPageWidth" : 1170,
+      "headerBgColor" : "rgba(0, 0, 0, 0)",
+      "isHeaderPinned" : false,
+      "isHeroUnderHeader" : false,
+      "isPageWidthFixed" : true,
+      "showHeader" : true,
+      "showHero" : true
+    },
+    "componentName" : "siteforce:themeLayoutStarter",
+    "id" : "3932392a-2d6e-47b4-990d-a80c9afac0bc",
+    "label" : "ServiceNotAvailable",
+    "regions" : [ {
+      "id" : "42c9fa23-fcb7-4406-aaa5-06a7c3a8cd7b",
+      "regionName" : "themeHeader",
+      "type" : "region"
+    }, {
+      "id" : "7e78a27f-3e4c-4c88-9fef-d42a8b5f3a32",
+      "regionName" : "themeFooter",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  } ]
+}

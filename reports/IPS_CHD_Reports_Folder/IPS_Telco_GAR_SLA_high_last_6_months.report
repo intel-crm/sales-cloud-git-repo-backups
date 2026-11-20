@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_44768113</developerName>
+        <masterLabel>BL</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Assigned_Queue__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Telco-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Telco-Unassigned</sourceValue>
+            </sourceValues>
+            <value>BL Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Cable-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Cable-WW</sourceValue>
+            </sourceValues>
+            <value>BL Cable</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Comp-AMR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Convergate</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-ETH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GAR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-GER</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-Media</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD - Comp-SHDSL</sourceValue>
+            </sourceValues>
+            <value>BL Comp</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD - Retail-WW</sourceValue>
+            </sourceValues>
+            <value>BL Retail</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Cable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Retail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHD – WiFi-Telco</sourceValue>
+            </sourceValues>
+            <value>Wifi</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_11579770</developerName>
+        <masterLabel>SLA high prio</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case.Core_IPS_Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>60</to>
+            </sourceValues>
+            <value>&lt;= 60 days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+            </sourceValues>
+            <value>&gt; 60 days</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CLOSED_DATEONLY</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_11579770</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CASE_ID</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Backend_ID_URL__c</field>
+    </columns>
+    <description>for BauSheng</description>
+    <filter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Connected Home Division</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRIORITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>High</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATEONLY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_MONTHS:6</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>CHD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_CaseType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Feature Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>guolei,lixiahua,hujiang,leungk,ngandy,tangyin,yanpingz</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CLOSED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_11579770</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>IPS Telco GAR - SLA high last 6 months</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

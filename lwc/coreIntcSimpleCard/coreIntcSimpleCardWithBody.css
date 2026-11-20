@@ -1,0 +1,87 @@
+:host {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+lightning-icon {
+  --iconColor: var(--gray);
+}
+
+c-core-intc-link {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.core-card-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.theme-default.core-card-container {
+  background-color: var(--white);
+}
+
+.theme-gray.core-card-container {
+  background-color: var(--buttonGray);
+}
+
+.core-card-title-container {
+  border-bottom: 1px solid var(--lightGray);
+  display: flex;
+  justify-content: left;
+}
+
+.core-card-image img {
+  box-sizing: content-box;
+  height: 2rem;
+  max-height: 100%;
+  max-width: 100%;
+  padding: 1.5rem 1rem 1.5rem 1.5rem;
+}
+
+.core-card-icon-container .fa-wrap {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  height: 100%;
+  justify-content: center;
+  padding: 0 1rem 0 1.5rem;
+}
+
+.core-card-icon-container [class^="fa-"]::before,
+.core-card-icon-container [class*=" fa-"]::before {
+  margin: 0;
+}
+
+.core-card-title {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: left;
+  padding: 1.5rem 1rem 1.5rem 0;
+}
+
+.core-card-body-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.core-card-body-container slot {
+  display: block;
+  padding-top: 1rem;
+}
+
+.core-card-description,
+.core-card-body-container c-core-intc-link {
+  padding-top: 1.5rem;
+}
+
+.core-card-description {
+  flex-grow: 1;
+  flex-shrink: 0;
+}

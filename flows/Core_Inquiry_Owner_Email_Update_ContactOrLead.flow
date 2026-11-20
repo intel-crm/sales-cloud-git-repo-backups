@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <formulas>
+        <name>Core_Lead_Contact_Owner_Email_UpdationFormula</name>
+        <dataType>String</dataType>
+        <expression>IF( $Record.Core_Lead_Inquiries__c &lt;&gt; NULL, IF($Record.Core_Lead_Inquiries__r.Owner:User.Email&lt;&gt; NULL, $Record.Core_Lead_Inquiries__r.Owner:User.Email, null),IF($Record.Core_Contact_Inquiries__c &lt;&gt; NULL, IF($Record.Core_Contact_Inquiries__r.Owner.Email&lt;&gt; NULL, $Record.Core_Contact_Inquiries__r.Owner.Email,null),null))</expression>
+    </formulas>
+    <interviewLabel>Core Inquiry Owner Email Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Inquiry Owner Email Update ContactOrLead</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_the_Lead_Contact_Owner_Email</name>
+        <label>Update the Lead/Contact Owner Email</label>
+        <locationX>347</locationX>
+        <locationY>370</locationY>
+        <inputAssignments>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <value>
+                <elementReference>Core_Lead_Contact_Owner_Email_UpdationFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_the_Lead_Contact_Owner_Email</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Core_Inquiry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

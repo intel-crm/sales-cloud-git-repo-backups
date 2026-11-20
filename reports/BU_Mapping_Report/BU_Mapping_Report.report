@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>IF(PARENTGROUPVAL(TOTAL_PRICE:SUM, OpportunityLineItem.Core_BU_Product_Segment_Old__c)=TOTAL_PRICE:SUM,1,0)</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment_New__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Price Comparison</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PREVGROUPVAL(TOTAL_PRICE:SUM, OpportunityLineItem.Core_BU_Product_Segment_New__c)</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment_New__c</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>prev group 2</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PARENTGROUPVAL(TOTAL_PRICE:SUM, OpportunityLineItem.Core_BU_Product_Segment_Old__c)</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA3</developerName>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment_New__c</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>parent group 2</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PREVGROUPVAL(TOTAL_PRICE:SUM, OpportunityLineItem.Core_BU_Product_Segment_Old__c)</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA4</developerName>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment_Old__c</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Group 1 prev</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PARENTGROUPVAL(TOTAL_PRICE:SUM, GRAND_SUMMARY)</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA5</developerName>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment_Old__c</downGroupingContext>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Group 1parent</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <columns>
+        <field>OpportunityLineItem.Core_Opportunity_Product_ID__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Shortname_New__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Division__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <description>This report is used to test the SFDC BU mapping with the IAH Mapping results</description>
+    <filter>
+        <criteriaItems>
+            <column>HASOPPLINEITEM</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_New__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>BU Mapping Report</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>LINEITEM_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

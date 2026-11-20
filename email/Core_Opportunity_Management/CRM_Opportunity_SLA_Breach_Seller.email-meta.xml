@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email sent to Opportunity Owner when SLA is breached</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity SLA Breach Seller</name>
+    <style>none</style>
+    <subject>Weekly Summary: Opportunities Requiring Updates in Sales CRM</subject>
+    <textOnly>Weekly Summary: Opportunities Requiring Updates in Sales CRM
+
+Weekly Summary: Opportunities Requiring Updates in Sales CRM
+
+Hello [NAME] ,
+
+Our records show that several of your opportunities have exceeded the SLA for their current pipeline stage and require updates in Sales CRM.
+
+To help you stay current and maintain pipeline accuracy, we&apos;ve compiled a list of opportunities that may need attention below. Please review each one and update the required fields to ensure they can progress through the pipeline.
+
+Opportunities Requiring Action:
+[REQUIRED_FIELDS]
+
+You can view all opportunities currently breaching SLAs in the following report: Opportunity Report
+
+This weekly summary is intended as a gentle reminder to help maintain data quality and pipeline visibility.
+
+Thank you for your prompt attention to this matter.
+
+Sales Excellence</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

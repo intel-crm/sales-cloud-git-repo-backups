@@ -1,0 +1,71 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+    <!-- <div class="slds-form-element">
+        <div class="slds-grid slds-var-p-bottom_small">
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-combobox label={label.topTaxonomyLabel} value={selectedTopTaxonomy}
+                    placeholder="--select one--" options={comboboxoptions} onchange={handleTaxonomySelection}>
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-5"></div>
+            <div class="slds-col slds-size_1-of-3">
+                <label class="slds-form-element__label">{label.relevantOptions}</label>
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        <div class={ComputedDivClass} aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                role="none" onclick={handleToggleMultipleDropdown}>
+                                <input type="text" onblur={handleCloseMultipleDropdown} class={ComputedInputClass}
+                                    id={optionName} autocomplete="off" role="textbox" placeholder={placeholder}
+                                    readonly />
+                                <span
+                                    class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                    <lightning-icon icon-name="utility:down" size="x-small"></lightning-icon>
+                                </span>
+                            </div>
+                            <div if:true={Expr1}>
+                                <div class="errorMessage slds-var-p-vertical_xxx-small">{errorMessage}</div>
+                            </div>
+                            <div id={optionName}
+                                class="slds-dropdown slds-dropdown_length-with-icon-5 slds-dropdown_fluid"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template iterator:option={ComputedOptions}>
+                                        <li key={option.value.Id} class="slds-listbox__item" data-idx={option.index}
+                                            onmousedown={preventBlur} onclick={handleSelectMultipleOption}>
+                                            <div id={option.value.ComputedId} class={option.value.ComputedClass}
+                                                role="option">
+                                                <span class="slds-media__figure slds-listbox__option-icon">
+                                                    <div if:true={option.value.selected}>
+                                                        <lightning-icon icon-name="utility:check"></lightning-icon>
+                                                    </div>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    <span class="slds-truncate" title={option.value.Name}>
+                                                        {option.value.Name}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <template for:each={uoptions} for:item='opt'>
+                    <div if:true={opt.selected} key={opt.Id}>
+                        <div class="slds-col slds-size_3-of-3">
+                            <span class="pill slds-var-p-vertical_xx-small slds-var-p-horizontal_small">
+                                <span>{opt.Name}</span>
+                                <span class="slds-var-m-left_medium" data-val={opt.Id} onclick={handleRemovePill}>
+                                    <lightning-icon icon-name="utility:clear"></lightning-icon>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div> -->
+</template>

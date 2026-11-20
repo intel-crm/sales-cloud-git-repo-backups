@@ -1,0 +1,465 @@
+td, table th {
+    padding: 1%; 
+}
+tr {
+    background:#eef1f2;
+}
+tr td, th {
+    border-bottom:#ccc 1px solid; 
+}
+.modal {
+    display: none;
+}
+
+.imgAAQ{
+	max-width: 195px;
+	height: 45px;
+	
+}
+
+.tooltip-container {
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+    margin-right: 5px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    width: 180px;
+}
+
+.tooltip-container1 {
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+    margin-right: 5px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    width: 120px;
+}
+
+.tooltip-text {
+    visibility: hidden; 
+    max-width: 150px;;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: auto;
+    height: fit-content;
+    margin-left: 10%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    color: #1797c0;
+}
+
+.tooltip-container1:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    color: #1797c0;
+}
+
+
+
+
+
+
+
+.aaq-main-container {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: #fff;
+    border-left: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.aaq-table {
+    width: 100%;
+}
+
+.chat-right-panel {
+    position: absolute;
+    top: 0rem; /* Adjust to match header height */
+    left: 20%;
+    right: 0;
+    width: 80%;
+    height: 70%;
+    z-index: 1; /* Lower than header */
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    min-width: 300px;
+    min-height: 300px;
+    pointer-events: auto;
+}
+
+.chat-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #1797c0;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.close-chat-panel {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Style the 'Please Select a Topic' header to match 'Ask a Question' */
+/* Add a class to the th element in your HTML, e.g. <th class="aaq-header-cell"> */
+.aaq-header-cell {
+    background: #f4f6f9 !important;
+    color: #16325c !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #e0e0e0 !important;
+    padding: 24px 32px 16px 32px !important;
+    letter-spacing: 0.5px;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.aaq-id h1 {
+    color: #16325c;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Modal Overlay */
+.draggable-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+}
+
+/* Modal Container */
+.resizable-modal {
+  max-width: 900px;
+  width: 90vw;
+  min-width: 400px;
+  min-height: 300px;
+  padding: 0;
+  position: absolute;
+  z-index: 2001;
+  resize: both;
+  overflow: auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* Modal Header */
+.draggable-handle {
+  cursor: move;
+  margin: 0;
+  padding: 16px 24px 8px 24px;
+  background: #f4f6f9;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  user-select: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.slds-modal__title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #16325c;
+}
+
+/* Close Button */
+.custom-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Modal Content */
+.slds-modal__content {
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 200px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chat Iframe */
+.chat-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Remove extra space above/below modal */
+.slds-modal__container {
+  margin: 0;
+}
+
+.slds-backdrop_open {
+  z-index: 1999;
+}
+
+/* OneAI Chat Button Custom Style */
+.oneai-chat-btn {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  min-width: 195px;
+  max-width: 195px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+.oneai-chat-btn-img {
+  height: 45px;
+  width: 195px;
+  display: block;
+  object-fit: contain;
+  margin-right: 0;
+}
+
+/* OneAI Banner Style */
+.oneai-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #e6f7fb;
+  border: 1px solid #b3e0f7;
+  border-radius: 6px;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  margin: 0;
+  font-size: 14px;
+  color: #16325c;
+  gap: 0.5rem;
+  white-space: nowrap;
+  max-width: 100%;
+  min-height: 32px;
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.oneai-banner-text {
+  white-space: nowrap;
+  word-break: normal;
+  display: inline;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.oneai-banner-link {
+  color: #1797c0;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+.oneai-banner-link:hover {
+  color: #0d99ff;
+  text-decoration: underline;
+}
+.oneai-banner-info {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  color: #1797c0;
+  font-size: 18px;
+  background: #d0f0fa;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  justify-content: center;
+}
+
+/* Adjust the parent flex container for the header ratio */
+.slds-template__container > table > tr > th > div[style*="display:flex"] {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+.slds-template__container > table > tr > th > div[style*="display:flex"] > div:nth-child(1) {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  flex: 0 0 260px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slds-template__container > table > tr > th > div[style*="display:flex"] > div:nth-child(1) h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 0 20px;
+}
+.slds-template__container > table > tr > th > div[style*="display:flex"] > div:nth-child(2) {
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.slds-template__container > table > tr > th > div[style*="display:flex"] > div:nth-child(3) {
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  flex: 0 0 220px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+/* OneAI Tooltip Styles */
+.oneai-tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+.oneai-tooltip-text {
+  visibility: hidden;
+  min-width: 260px;
+  max-width: 320px;
+  background: #222;
+  color: #fff;
+  text-align: left;
+  border-radius: 2px;
+  padding: 10px 16px;
+  position: absolute;
+  z-index: 100;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 15px;
+  font-weight: 100;
+  box-shadow: 0 4px 16px rgba(22,50,92,0.10);
+  border: 1px solid #b0b0b0;
+  pointer-events: none;
+  white-space: normal;
+  line-height: 1.5;
+}
+.oneai-tooltip-container:hover .oneai-tooltip-text,
+.oneai-tooltip-container:focus-within .oneai-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+.oneai-tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 32px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #b0b0b0 transparent transparent transparent;
+  filter: drop-shadow(0 2px 2px rgba(22,50,92,0.10));
+}
+.oneai-tooltip-text::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 33px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: #222 transparent transparent transparent;
+  z-index: 1;
+}
+
+/* Updated Modal Styles for Centering and Sizing */
+.slds-modal__container.modal-container {
+  max-width: 80vw;
+  width: 80vw;
+  min-width: 320px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+.slds-modal.slds-fade-in-open.modal-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+}
+
+.oneai-chat-btn:hover,
+.slds-button:hover,
+.slds-button:focus {
+  cursor: pointer;
+}
+
+.oneai-chat-btn,
+.slds-button {
+  cursor: pointer !important;
+}
+
+.aaq-row-pr2 td {
+  padding-right: 2px !important;
+}

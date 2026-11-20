@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>REGISTRATION_REQUEST_REJECTED_EV_POR</name>
+    <style>none</style>
+    <subject>A solicitação de registro é rejeitada</subject>
+    <textOnly>A solicitação de registro é rejeitada
+
+
+
+Olá {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+Recebemos sua recente solicitação de registro para o Programa Intel® Partner Alliance. Após a verificação, a solicitação foi rejeitada pelos seguintes motivos:
+
+{!PRM_Registration_Request__c.PRM_Reject_Reason__c}
+
+Se você pensa que esta decisão foi equivocada ou gostaria de nos fornecer mais informações, entre em contato conosco por meio de programs@intel.com.
+
+
+Atenciosamente,
+Sua equipe Intel® Partner Alliance
+
+
+Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com.br
+Privacidade | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

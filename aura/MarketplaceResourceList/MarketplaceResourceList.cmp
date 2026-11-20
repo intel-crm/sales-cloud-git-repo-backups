@@ -1,0 +1,26 @@
+<aura:component >
+	<aura:attribute name="resouceList" type="Object[]" required="true" default="[]"  />
+    <aura:attribute name="mdaId" type="string" default="" />
+    <aura:attribute name="Header" type="string" default="" />
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="offeringId" type="Id"/> -->
+    
+    <ul class="resourceList">
+       
+	<aura:iteration items="{!v.resouceList}" var="item" indexVar="idx">
+        <li class="slds-p-around_x-small">
+<!-- IPA2.0 + US TWC4497-1631 -->
+            <c:ipaOfferingResource
+            	title="{! item.title}"
+                description="{! item.description}"
+                url="{! item.linkUrl}"
+                resourceType="{! item.type}"
+                fileType="{! item.fileType}"
+                fileSize="{! item.fileSize}"
+                downloadUrl="{!item.downloadUrl}"/> 
+                
+         </li>   
+	</aura:iteration>
+	</ul>
+
+</aura:component>

@@ -1,0 +1,38 @@
+.slds-accordion{
+	--slds-c-accordion-color-border:#1a315b;
+	--slds-c-accordion-heading-text-color:white;
+	--slds-c-accordion-heading-hover-text-color:white;
+	--slds-c-accordion-summary-color-background:#41619B;
+	--slds-c-accordion-heading-font-size:17px;
+	--slds-c-accordion-section-spacing-block-start:2px;
+	--slds-c-accordion-section-spacing-block-end:2px;
+    width:100%;
+}
+.membMsg{
+	color:red;
+}
+.slds-border_top{
+	border-top:1px solid black;
+}
+
+.slds-card{
+	width:100%;
+}
+.card{
+	--slds-C-card-color-background: red;
+}
+.THIS .cols thead th span{
+	background-color: yellow;
+	color:red;
+}
+.errorMsg{
+	color:red;
+	font-weight:bold;
+	font-size: 25px;
+}
+.myTable table>thead>tr>th>lightning-primitive-header-factory>span>a .slds-truncate{
+	color:green;
+  }
+  .myTable .slds-truncate{
+	  color:red;
+  }

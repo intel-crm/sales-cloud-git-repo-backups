@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>1-(Opportunity.Core_Pipeline_Heath__c:SUM/Opportunity.Core_Opportunity_Count__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Calculation of Pipeline Health</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Health %</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_95655541</developerName>
+        <masterLabel>Managers</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Henk Van Den Eeckhout</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Sven Beckmann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Tommi Raitio</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Joachim Aertebjerg</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Videsha Proothveerajh</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Norberto Carrascal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Norberto  Carrascal</sourceValue>
+            </sourceValues>
+            <value>Business Consumption</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Artur Dlugosz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Milan Spalevic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Owain Harries</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Colin MacHale</sourceValue>
+            </sourceValues>
+            <value>Distribution</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Andrea Toigo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of MIke Creutzer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Krzysztof Jonak</sourceValue>
+            </sourceValues>
+            <value>Billings</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Anna Kazmierczak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Ali Kucuk</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Jesus Sanchez Paniagua</sourceValue>
+            </sourceValues>
+            <value>Consumer</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Alexis Garea</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Eran Gal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Jaroslaw Tomala</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Krzysztof Janicki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Mariusz Jadwiszczok</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <value>Inside Sales</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Past_Due__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Inactive__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Low_Velocity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Pipeline_Heath__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>STAGE_DURATION</field>
+    </columns>
+    <columns>
+        <field>LAST_STAGE_CHANGE_DATE</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Push_Counter__c</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Business_Unit_Territory__c</field>
+    </columns>
+    <description>RT: Opportunities</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>EMEA Sales Territory</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>EMP of Artur Dlugosz,EMP of Milan Spalevic,EMP of Owain Harries,EMP of Colin MacHale</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_95655541</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ROLLUP_DESCRIPTION</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pipeline Oppty Health EMEA - Dist</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Opportunity.Core_Business_Unit_Territory__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

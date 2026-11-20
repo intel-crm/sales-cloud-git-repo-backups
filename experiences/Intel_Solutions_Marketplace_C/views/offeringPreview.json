@@ -1,0 +1,90 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "2f42fb42-11f9-4596-9c91-d4524bcb19a7",
+  "label" : "offering preview",
+  "regions" : [ {
+    "id" : "83649803-4f06-4a03-8533-ff51a792f7da",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceProductPreview",
+      "id" : "72d7ff35-ac96-4510-89a1-58c6ef8f574f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ea3caf21-d1de-4181-9688-241740fca598",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "ffcf01b9-1eeb-4343-a12b-655e0501f3ee",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "1935c6c9-4a60-4cdb-9aca-ead231f70a6d",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "e5524530-9f03-4d70-807f-c5ec2bac5d60",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "dfcb97e1-4a79-4a0d-92db-4649216cca8e",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "e056a7c1-3ef6-4197-a919-942e82891830",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "be23b56e-f00a-4653-bc1f-e294e5d9214a",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "d8e0ab5a-3f45-43ca-8e7d-614dddff0df1",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "fe51bf07-161c-4c8a-9e0f-4d55d7d0def7",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "6ab4c3ad-d840-4170-9d0a-6e801f172953",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "b847ec51-b0bc-4dfc-887e-7b2896481e76",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Offering Preview\"/> \n<meta name=\"keywords\" content=\"sf,mp,offering preview\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Preview your products and solution offerings on Intel® Solutions Marketplace.",
+        "title" : "Offering Preview -  Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "9ea9cc6e-8a18-4ed4-9582-30e934499912",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0e7382d1-4f2f-4070-9eb5-c280fffe694b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "e7c826db-c6a4-4845-ac80-887f56af2fdd",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "d16806b4-8a0e-46db-9a82-da07ce7e7956",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offering"
+}

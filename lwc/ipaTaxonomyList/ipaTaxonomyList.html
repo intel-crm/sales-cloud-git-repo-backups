@@ -1,0 +1,65 @@
+<template>
+
+    <div class="taxonomy-list-container slds-is-relative"
+        data-border-top={separatorAbove}
+        data-border-bottom={separatorBelow}
+        data-padding-top={paddingAbove}
+        data-padding-bottom={paddingBelow}
+        data-has-header={showHeader}>
+
+        <template if:true={loading}>
+            <lightning-spinner class="zIndexStandardPageHigher" alternative-text="Loading..." size="small"></lightning-spinner>
+        </template>
+
+        <template if:false={loading}>
+            <template if:true={showHeader}>
+                <div class="taxonomy-list-header">
+                    <template if:true={showIcon}>
+                        <template if:true={icon}>
+                            <div><img src={icon}></div>
+                        </template>
+                    </template>
+                    <div class="slds-grow">
+                        <template if:true={showHeading}>
+                            <h3 data-has-icon={showIcon} class={headingClasses}>{heading}</h3>
+                        </template>
+                    </div>
+                    <template if:true={showViewAllLink}>
+                        <div class="slds-show_large">
+                            <c-ipa-link
+                                class-name={classes}
+                                community-page={viewAllLink.communityPage} 
+                                object-page={viewAllLink.objectPage}
+                                record-id={viewAllLink.recordId}
+                                label={viewAllLink.label}
+                                caret>
+                            </c-ipa-link>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        
+            <div class="taxonomy-list-body" data-has-header={showHeader}>
+                <c-core-intc-simple-card-list
+                    desktop-cols={cardListDesktopCols}
+                    card-list-data={cardListData}
+                    card-template-type={cardStyle}
+                    oncorelinkclick={handleLinkClick}>
+                </c-core-intc-simple-card-list>
+                <template if:true={showViewAllLink}>
+                    <div class="slds-hide_large">
+                        <c-ipa-link
+                            class-name={classes}
+                            community-page={viewAllLink.communityPage} 
+                            object-page={viewAllLink.objectPage}
+                            record-id={viewAllLink.recordId}
+                            label={viewAllLink.label}
+                            caret>
+                        </c-ipa-link>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+
+</template>

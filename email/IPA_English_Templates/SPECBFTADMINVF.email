@@ -1,0 +1,25 @@
+<messaging:emailTemplate subject="Benefits assigned/removed from Benefit Group" recipientType="User" relatedToType="PRM_Benefit_Group_Benefit_Association__c">
+<messaging:htmlEmailBody > 
+<html>
+<body>
+Hello,
+<br/><br/>
+
+This is to notify that the following benefits have been added/removed from the {!relatedTo.PRM_Benefit_Group_Id__r.Name}
+<br/><br/>
+New Additions:
+
+{!if(relatedTo.PRM_InActive_Ind__c==false, relatedTo.PRM_Benefit_Id__r.Name, "")}
+<br/><br/>
+Removal:
+
+{!if(relatedTo.PRM_InActive_Ind__c==true, relatedTo.PRM_Benefit_Id__r.Name, "")}
+
+<br/><br/>
+
+Thank You
+</body>
+</html>
+</messaging:htmlEmailBody>
+<!--</messaging:plainTextEmailBody> -->
+</messaging:emailTemplate>

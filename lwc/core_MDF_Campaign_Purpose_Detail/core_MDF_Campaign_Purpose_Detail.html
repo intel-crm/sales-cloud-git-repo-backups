@@ -1,0 +1,81 @@
+<template>
+    <template if:true={showCampaignPurpose}>
+        <!--<div class="slds-box slds-theme_default">-->
+            <div class="slds-p-top_small">
+                <div class="slds-box slds-theme_default custom-box">
+                    <!--<lightning-card title={campaignPurposeHeader}>-->
+                    <lightning-card title={tableHeader}>
+                        <div class="slds-scrollable_x">
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-m-top_small">
+                            <thead>
+                                <tr>
+                                    <th>{data.outcomeMetricLabel}</th>
+                                    <th>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span>
+                                                {data.baselineQuantityLabel}
+                                            </span>
+                                            <lightning-helptext if:true={data.baselineQuantityHelpText} content={data.baselineQuantityHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span>
+                                                {data.goalQuantityLabel}
+                                            </span>
+                                            <lightning-helptext if:true={data.goalQuantityHelpText} content={data.goalQuantityHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span>
+                                                {data.quantityToDateLabel}
+                                            </span>
+                                            <lightning-helptext if:true={data.quantityToDateHelpText} content={data.quantityToDateHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span>
+                                                {data.outcomeCriteriaLabel}
+                                            </span>
+                                            <lightning-helptext if:true={data.outcomeCriteriaHelpText} content={data.outcomeCriteriaHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                        </div>                      
+                                    </th>
+                                    <th>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span>
+                                                {data.baselinePeriodLabel}
+                                            </span>
+                                            <lightning-helptext if:true={data.baselinePeriodHelpText} content={data.baselinePeriodHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                        </div>                      
+                                    </th>
+                                    <th>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span>
+                                                {data.resultValueLabel}
+                                            </span>
+                                            <lightning-helptext if:true={data.resultValueHelpText} content={data.resultValueHelpText} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                        </div>                      
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{data.outcomeMetric}</td>
+                                    <td>{data.baselineQuantity}</td>
+                                    <td>{data.goalQuantity}</td>
+                                    <td>{data.quantityToDate}</td>
+                                    <td>{data.outcomeCriteria}</td>
+                                    <td>{data.baselinePeriod}</td>
+                                    <td>{data.resultValue}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </lightning-card>
+                </div>
+            </div>
+        <!--</div>-->
+    </template>
+</template>

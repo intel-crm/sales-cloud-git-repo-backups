@@ -1,0 +1,6 @@
+<design:component label="Marketplace Search Filters">
+    
+    <design:attribute name="searchType" label="Search Type" datasource="all,partner,product,none"/>
+    <design:attribute name="categoryId" label="Category ID" />
+    
+</design:component>

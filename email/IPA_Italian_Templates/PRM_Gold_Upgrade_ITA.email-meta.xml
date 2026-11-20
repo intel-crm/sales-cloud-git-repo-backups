@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_ITA</name>
+    <style>none</style>
+    <subject>Benvenuto a Intel® Partner Alliance Gold</subject>
+    <textOnly>Intel® Partner Alliance Gold
+
+
+
+{!Contact.FirstName},
+
+Abbiamo apportato alcuni fantastici cambiamenti e modificato i criteri del Programma Intel® Partner Alliance migliorando i vantaggi per i clienti aziendali. Per questo, la tua azienda è passata al livello Intel® Partner Alliance Gold. Congratulazioni!
+
+Ecco alcuni vantaggi incrementali a cui avrai diritto come Gold member:
+
+Badge Gold
+Advanced Warranty Replacement
+Più opportunità di guadagnare e riscattare punti
+Accesso e possibilità di pubblicare sulll&apos;Intel® Solutions Marketplace
+
+
+Inoltre, la nuova esperienza Intel® Partner University è ricca di entusiasmanti novità, tra cui:
+
+Un aggiornamento completo dell&apos;esperienza digitale
+Percorsi di formazione personalizzati
+Un nuovo sistema di valutazione dei contenuti per aiutare i partner a trovare e seguire i contenuti meglio valutati da colleghi e colleghe.
+
+
+Inoltre, ora forniamo ai nostri partner una selezione di trend e novità del settore, appositamente curata dai data scientist del team Intel&apos;s Market Sizing and Forecasting.
+
+Non perderti le novità e i miglioramenti dell&apos;esperienza utente dell&apos;Intel® Solutions Marketplace:
+
+Un nuovo aspetto e una navigazione del sito più semplice
+Un&apos;esperienza migliorata per la creazione di connessioni e lead tra i partner
+Funzionalità di ricerca complessive migliorate
+
+
+Con Intel® Partner Alliance cerchiamo costantemente di fornire più valore e vantaggi per consentire alla tua azienda di crescere nell&apos;ambiente odierno. Scopri di più Intel® Partner Alliance e fai progredire la tua azienda.
+
+
+Inizia oggi stesso
+
+
+
+Grazie,
+Il tuo team Intel® Partner Alliance
+
+
+Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
+© 2023 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

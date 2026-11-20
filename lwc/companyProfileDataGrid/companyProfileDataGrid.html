@@ -1,0 +1,53 @@
+<template>
+	<div class="spinner">
+		<template if:true={isLoading}>
+			<lightning-spinner alternative-text="Loading" variant="brand" size="medium"> </lightning-spinner>
+		</template>
+	</div>
+	<template if:true={rowCount}>
+		<div class="slds-col slds-size_12-of-12" style="margin-top: 40px;"></div>
+		<div class="slds-col slds-size_12-of-12 sectionInfo">
+			<div class="subHeadingComp">{formLabels.PRM_Contacts_Awaiting_Approval}</div>
+		</div>
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-size_12-of-12">
+				<!-- <div class="dataTableScale" >
+                             <lightning-datatable
+                                  key-field="RecordId"
+                                  data={ldtData}
+                                  columns={columns}
+                                  hide-checkbox-column="true"
+                                  sorted-by={sortBy}
+                                  sorted-direction={sortDirection}
+                                  onsort={doSorting}
+                                  onrowaction={handleRowAction}
+                                  
+                                > 
+                                </lightning-datatable>
+						  </div> -->
+
+				<div class="slds-scrollable scrollerSize">
+					<template if:true={showTable}>
+						<c-pagination
+							show-search-box="true"
+							search-place-holder-text={formLabels.PRM_SearchNameEmail}
+							onpaginatorchange={handlePaginatorChange}
+						>
+						</c-pagination>
+						<c-responsive-datatable
+							pk-field="RecordId"
+							column-config={columns}
+							row-data={recordsToDisplay}
+							onheaderclick={doSorting}
+							onapprove={handleRowAction}
+							onreject={handleRowAction}
+						></c-responsive-datatable>
+						<c-pagination-grid-footer records={ldtData} total-records={ldtData.length} onpaginatorchangefooter={handlePaginatorChangeFooter}></c-pagination-grid-footer>
+					</template>
+				</div>
+			</div>
+		</div>
+		<c-confirmation-message-dialog registration-request={registrationObj} showmodel={openmodel} onreject={onRejectHandler} oncancel={onCancelHandler}>
+		</c-confirmation-message-dialog>
+	</template>
+</template>

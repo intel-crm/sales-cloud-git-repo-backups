@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>Basic, Api, Web, RefreshToken, OpenID</commaSeparatedOauthScopes>
+    <externalClientApplication>ImpartnerPRM__Impartner_PRM</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>Impartner_PRM_oauth</label>
+    <oauthLink>00D1a000000KFK3:888Qj0000005FG9</oauthLink>
+</ExtlClntAppOauthSettings>

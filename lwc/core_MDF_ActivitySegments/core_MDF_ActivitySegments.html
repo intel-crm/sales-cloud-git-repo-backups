@@ -1,0 +1,377 @@
+<template>
+    <lightning-layout class="slds-page-header slds-page-header--object-home">
+        <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+         <div class="page-section page-header">
+           <h1 class="slds-text-heading_label">{spifSectionHeader}</h1>
+         </div>
+        </lightning-layout-item>
+    </lightning-layout>        
+    <div if:false={isValid} class="slds-p-around_xx-small slds-text-color_error slds-text-align_center">
+        <p>{noSPIFErrorMsg}</p>
+     </div>
+    <c-core_-m-d-f_-activity-segment-mapping program={activityProgram} activity-type={activityType} selected-segment={selectedSegment} segment-name-list={segmentNameList} onaddsegment={addSegment} all-selected-product-ids={allSelectedProductIds} counter={counter} account-id={ultimateAccountId}></c-core_-m-d-f_-activity-segment-mapping>
+<!--
+    <lightning-accordion allow-multiple-sections-open active-section-name={activeSection}>
+        <template for:each={segmentList} for:item="segmentRec">
+            <lightning-accordion-section key={segmentRec.Core_MDF_Segment_Name_nm__c} name={segmentRec.Core_MDF_Segment_Name_nm__c} label={segmentRec.Segment_Label}>
+                <lightning-button-icon name={segmentRec.Core_MDF_Segment_Name_nm__c} slot="actions" icon-name="utility:delete" alternative-text="Delete" class="slds-var-m-left_xx-small" title="Delete" onclick={removeSegment}></lightning-button-icon>
+                <c-core_-m-d-f_-activity-segment-mapping program={activityProgram} activity-type={activityType} selected-segment={segmentRec} is-edit={isEdit} oncollapsesection={closeSection} onaddsegment={addSegment}></c-core_-m-d-f_-activity-segment-mapping>
+            </lightning-accordion-section>
+        </template>
+        
+    </lightning-accordion>
+-->
+
+<!--
+    <lightning-accordion allow-multiple-sections-open active-section-name={activeSection}>
+        <template for:each={sagmentNameItemsMap} for:item="keyValue">
+            <lightning-accordion-section key={keyValue.key} name={keyValue.key} label={keyValue.key}>
+                <lightning-accordion allow-multiple-sections-open active-section-name={activeSection}>
+                    <template for:each={keyValue.value} for:item="segmentRec">
+                        <lightning-accordion-section key={segmentRec.segmentId} name={segmentRec.segmentId} label={segmentRec.Segment_Label}>
+                            <lightning-button-icon name={segmentRec.segmentId} slot="actions" icon-name="utility:delete" alternative-text="Delete" class="slds-var-m-left_xx-small" title="Delete" onclick={removeSegment}></lightning-button-icon>
+                            <c-core_-m-d-f_-activity-segment-mapping program={activityProgram} activity-type={activityType} selected-segment={segmentRec} is-edit={isEdit} oncollapsesection={closeSection} onaddsegment={addSegment} all-selected-product-ids={allSelectedProductIds}></c-core_-m-d-f_-activity-segment-mapping>
+                        </lightning-accordion-section>
+                    </template>
+                </lightning-accordion>
+            </lightning-accordion-section>
+        </template>
+        
+    </lightning-accordion> -->
+
+    <br />
+    <template if:true={showTable}>
+        <!-- <div class="slds-scrollable_x">
+            <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th aria-label={segmentStr} style="overflow: hidden;text-align: center;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                            <span class="slds-truncate" title={segmentStr}>{segmentStr}</span>
+                        </th>
+                        <th aria-label={productFamilyStr} style="overflow: hidden;text-align: center;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                            <span class="slds-truncate" title={productFamilyStr}>{productFamilyStr}</span>
+                        </th>
+                        <th aria-label={productsStr} style="overflow: hidden;text-align: center;"  class="slds-is-resizable slds-col slds-large-size_3-of-12" scope="col">
+                            <span class="slds-truncate" title={productsStr}>{productsStr}</span>
+                        </th>
+                        <template if:true={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                            <th aria-label={minimumForecastVolume} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                <span class="slds-truncate" title={minimumForecastVolume} style="white-space: pre-wrap;word-break: break-word;">{minimumForecastVolume}</span>
+                            </th>
+                        </template>
+                        <template if:true={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                            <th aria-label={spifAmount} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                <span class="slds-truncate" title={spifAmount} style="white-space: pre-wrap;word-break: break-word;">{spifAmount}</span>
+                            </th>
+                        </template>
+                        <template if:true={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                            <th aria-label={maximumBundledVolume} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                <span class="slds-truncate" title={maximumBundledVolume} style="white-space: pre-wrap;word-break: break-word;">{maximumBundledVolume}</span>
+                            </th>
+                        </template>
+                        <template if:true={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                            <th aria-label={maximumCostOfBundle} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                <span class="slds-truncate" title={maximumCostOfBundle} style="white-space: pre-wrap;word-break: break-word;">{maximumCostOfBundle}</span>
+                            </th>
+                        </template>
+                        <template if:true={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                            <th aria-label={estimatedShareOfSPIF} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                <span class="slds-truncate" title={estimatedShareOfSPIF} style="white-space: pre-wrap;word-break: break-word;">{estimatedShareOfSPIF}</span>
+                            </th>
+                        </template>
+                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                            <th aria-label="SPIF Notes (Internal only)" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                <span class="slds-truncate" title="SPIF Notes (Internal only)" style="white-space: pre-wrap;word-break: break-word;">SPIF Notes (Internal only)</span>
+                            </th>
+                        </template>
+                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                            <th aria-label={spifNotesStr} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                <span class="slds-truncate" title={spifNotesStr} style="white-space: pre-wrap;word-break: break-word;">{spifNotesStr}</span>
+                            </th>
+                        </template>
+                        <th aria-label="Actions" style="overflow: hidden;text-align: center;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                            <span class="slds-truncate" title="Actions">Actions</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={segmentWithValuesMap} for:item="segment">
+                        <tr key = {segment.key} class="slds-hint-parent" style="white-space: pre-wrap;word-break: break-word;">
+                            <td title={segment.key} role="gridcell" style="white-space: pre-wrap;word-break: break-word;">
+                                {segment.key}
+                            </td>
+                            <td title={segment.productFamily} role="gridcell" style="white-space: pre-wrap;word-break: break-word;">
+                                <div class="" style="max-height: 7rem;overflow: auto;">{segment.productFamily}</div>
+                            </td>
+                            <td title={segment.products} role="gridcell" style="white-space: pre-wrap;word-break: break-word;">
+                                <div class="" style="max-height: 7rem;overflow: auto;">{segment.products}</div>
+                            </td>
+                            <template if:true={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_Minimum_Forecast_Volume_nbr__c} role="gridcell">
+                                    {segment.segmentFieldVal.Core_MDF_Minimum_Forecast_Volume_nbr__c}
+                                </td>
+                            </template>
+                            <template if:true={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c} role="gridcell">
+                                    {segment.segmentFieldVal.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}
+                                </td>
+                            </template>
+                            <template if:true={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_Maximum_Bundled_Volume_nbr__c} role="gridcell">
+                                    {segment.segmentFieldVal.Core_MDF_Maximum_Bundled_Volume_nbr__c}
+                                </td>
+                            </template>
+                            <template if:true={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_Maximum_Cost_of_Bundle_nbr__c} role="gridcell">
+                                    {segment.segmentFieldVal.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}
+                                </td>
+                            </template>
+                            <template if:true={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_Estimated_Share_of_SPIF_amt__c} role="gridcell">
+                                    {segment.segmentFieldVal.Core_MDF_Estimated_Share_of_SPIF_amt__c}
+                                </td>
+                            </template>
+                            <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_SPIF_Notes_internal_only_txt__c} role="gridcell" style="white-space: pre-wrap;word-break: break-all;">
+                                    <div class="" style="max-height: 7rem;overflow: auto;">{segment.segmentFieldVal.Core_MDF_SPIF_Notes_internal_only_txt__c}</div>
+                                </td>
+                            </template>
+                            <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                                <td title={segment.segmentFieldVal.Core_MDF_SPIF_Notes_txt__c} role="gridcell" style="white-space: pre-wrap;word-break: break-all;">
+                                    <div class="" style="max-height: 7rem;overflow: auto;">{segment.segmentFieldVal.Core_MDF_SPIF_Notes_txt__c}</div>
+                                </td>
+                            </template>
+                            <td role="gridcell">
+                                <div class="slds-p-around_medium lgc-bg">
+                                    <lightning-button-icon icon-name="utility:edit" name={segment.id} variant="brand" alternative-text="Edit" class="slds-m-left_xx-small" title="Edit" onclick={showEditSegmentCmp}></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:delete" name={segment.id} variant="brand" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete" onclick={removeSegment}></lightning-button-icon>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr key ={segment.id} class="slds-hint-parent">
+                            <td role="gridcell" colspan="6" style="border:0;">
+                                <div key ={segment.id} data-id={segment.id} class="slds-hide">
+                                    <c-core_-m-d-f_-activity-segment-mapping key={segment.id} name={segment.id} program={activityProgram} activity-type={activityType} selected-segment={segment.segmentRec} is-edit={isEdit} oncollapsesection={closeSection} onaddsegment={addSegment} all-selected-product-ids={allSelectedProductIds}></c-core_-m-d-f_-activity-segment-mapping>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div> -->
+
+        <!--<table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">-->
+            <!--<tbody>-->
+                <template for:each={segmentWithValuesMap} for:item="segment">
+                    <!--<tr key = {segment.key} style="outline: thin solid;">
+                        <td>-->
+                    <div key = {segment.key} style="outline: thin solid;outline-color: rgb(203,203,203);">
+                        <div key = {segment.key} style="background-color: rgb(243, 242,242);">
+                            &nbsp;&nbsp;<span  class="slds-truncate" title={segment.key} style="font-weight: bold;" >{segment.key}</span>
+                        </div>
+                            <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                                <tr key = {segment.key} class="slds-line-height_reset">
+                                    <th aria-label="Actions" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                        <span class="slds-truncate" title="Actions" style="font-weight: bold;">Actions</span>
+                                    </th>
+                                    <th aria-label={productFamilyStr} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                        <span class="slds-truncate" title={productFamilyStr} style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">{productFamilyStr}</span>
+                                    </th>
+                                    <th aria-label={productsStr} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_6-of-12" scope="col">
+                                        <span class="slds-truncate" title={productsStr} style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">{productsStr}</span>
+                                    </th>
+                                    <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                                            <th aria-label="Incentive Notes (Internal only)" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                <span class="slds-truncate" title="Incentive Notes (Internal only)" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">Incentive Notes (Internal only)</span>
+                                            </th>
+                                            <th aria-label={spifNotesStr} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                <span class="slds-truncate" title={spifNotesStr} style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">{spifNotesStr}</span>
+                                            </th>
+                                        </template>
+                                    </template>
+                                    <template if:false={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                        <th aria-label="Incentive Notes (Internal only)" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_4-of-12" scope="col">
+                                            <span class="slds-truncate" title="Incentive Notes (Internal only)" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">Incentive Notes (Internal only)</span>
+                                        </th>
+                                    </template>
+                                    </template>
+                                    <template if:false={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                       <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}> 
+                                        <th aria-label={spifNotesStr} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_4-of-12" scope="col">
+                                            <span class="slds-truncate" title={spifNotesStr} style="white-space: pre-wrap;word-break: break-word;font-weight: bold;">{spifNotesStr}</span>
+                                        </th>
+                                    </template>
+                                    </template>
+                                </tr>
+                                <tr key = {segment.key} class="slds-hint-parent" style="white-space: pre-wrap;word-break: break-word;">
+                                    <td role="gridcell" rowspan="2">
+                                        <div style="padding-left: 0.5rem;">
+                                            <lightning-button-icon icon-name="utility:edit" name={segment.id} variant="brand" alternative-text="Edit" class="slds-m-left_xx-small" title="Edit" onclick={showEditSegmentRow}></lightning-button-icon><br/><br/>
+                                            <lightning-button-icon icon-name="utility:delete" name={segment.id} variant="brand" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete" onclick={removeSegment}></lightning-button-icon>
+                                        </div>
+                                    </td>
+                                    <td title={segment.productFamily} role="gridcell" style="white-space: pre-wrap;word-break: break-word;">
+                                        <div class="slds-scrollable_x" style="max-height: 7rem;overflow: auto;">{segment.productFamily}</div>
+                                    </td>
+                                    <td title={segment.products} role="gridcell" style="white-space: pre-wrap;word-break: break-word;">
+                                        <div class="slds-scrollable_x" style="max-height: 7rem;overflow: auto;">{segment.products}</div>
+                                    </td>
+                                    <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                                            <td title={segment.segmentFieldVal.Core_MDF_SPIF_Notes_internal_only_txt__c} role="gridcell" style="white-space: pre-wrap;word-break: break-all;">
+                                                <div class="slds-scrollable_x" style="max-height: 7rem;overflow: auto;">{segment.segmentFieldVal.Core_MDF_SPIF_Notes_internal_only_txt__c}</div>
+                                            </td>
+                                            <td title={segment.segmentFieldVal.Core_MDF_SPIF_Notes_txt__c} role="gridcell" style="white-space: pre-wrap;word-break: break-all;">
+                                                <div class="slds-scrollable_x" style="max-height: 7rem;overflow: auto;">{segment.segmentFieldVal.Core_MDF_SPIF_Notes_txt__c}</div>
+                                            </td>
+                                        </template>
+                                    </template>
+                                    <template if:false={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                        <td title={segment.segmentFieldVal.Core_MDF_SPIF_Notes_internal_only_txt__c} role="gridcell" style="white-space: pre-wrap;word-break: break-all;">
+                                            <div class="slds-scrollable_x" style="max-height: 7rem;overflow: auto;">{segment.segmentFieldVal.Core_MDF_SPIF_Notes_internal_only_txt__c}</div>
+                                        </td>
+                                    </template>
+                                    </template>
+                                    <template if:false={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                                        <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}> 
+                                        <td title={segment.segmentFieldVal.Core_MDF_SPIF_Notes_txt__c} role="gridcell" style="white-space: pre-wrap;word-break: break-all;">
+                                            <div class="slds-scrollable_x" style="max-height: 7rem;overflow: auto;">{segment.segmentFieldVal.Core_MDF_SPIF_Notes_txt__c}</div>
+                                        </td>
+                                    </template>
+                                    </template>
+                                </tr>
+                                <tr key = {segment.key}>
+                                    <td colspan="5" style="padding: 0;">
+                                    <div style="background-color: rgb(243, 242,242);">
+                                        &nbsp;&nbsp;<span  class="slds-truncate" title={spifMetrics} style="font-weight: bold;" >{spifMetrics}</span>
+                                    </div>
+                                    <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                                        <tr key = {segment.key}>
+                                            <template if:true={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                                            
+                                                <th aria-label={minimumForecastVolume} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                                    <span class="slds-truncate" title={minimumForecastVolume} style="white-space: pre-wrap;word-break: break-word;">{minimumForecastVolume}</span>
+                                                </th>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                                                <th aria-label={spifAmount} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                                    <span class="slds-truncate" title={spifAmount} style="white-space: pre-wrap;word-break: break-word;">{spifAmount}</span>
+                                                </th>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                                                <th aria-label={maximumBundledVolume} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                                    <span class="slds-truncate" title={maximumBundledVolume} style="white-space: pre-wrap;word-break: break-word;">{maximumBundledVolume}</span>
+                                                </th>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                                                <th aria-label={maximumCostOfBundle} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                                    <span class="slds-truncate" title={maximumCostOfBundle} style="white-space: pre-wrap;word-break: break-word;">{maximumCostOfBundle}</span>
+                                                </th>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                                                <th aria-label={estimatedShareOfSPIF} style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_1-of-12" scope="col">
+                                                    <span class="slds-truncate" title={estimatedShareOfSPIF} style="white-space: pre-wrap;word-break: break-word;">{estimatedShareOfSPIF}</span>
+                                                </th>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                                                <th aria-label="" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                    <span class="slds-truncate" title="" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;"></span>
+                                                </th>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                                                <th aria-label="" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                    <span class="slds-truncate" title="" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;"></span>
+                                                </th>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                                                <th aria-label="" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                    <span class="slds-truncate" title="" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;"></span>
+                                                </th>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                                                <th aria-label="" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                    <span class="slds-truncate" title="" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;"></span>
+                                                </th>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                                                <th aria-label="" style="overflow: hidden;"  class="slds-is-resizable slds-col slds-large-size_2-of-12" scope="col">
+                                                    <span class="slds-truncate" title="" style="white-space: pre-wrap;word-break: break-word;font-weight: bold;"></span>
+                                                </th>
+                                            </template>
+                                        </tr>
+                                        <tr key = {segment.key}>
+                                            <template if:true={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                                                
+                                                <td title={segment.segmentFieldVal.Core_MDF_Minimum_Forecast_Volume_nbr__c} role="gridcell">
+                                                    {segment.segmentFieldVal.Core_MDF_Minimum_Forecast_Volume_nbr__c}
+                                                   
+                                                </td>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                                                <td title={segment.segmentFieldVal.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c} role="gridcell">
+                                                    {segment.segmentFieldVal.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}
+                                                </td>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                                                <td title={segment.segmentFieldVal.Core_MDF_Maximum_Bundled_Volume_nbr__c} role="gridcell">
+                                                    {segment.segmentFieldVal.Core_MDF_Maximum_Bundled_Volume_nbr__c}
+                                                </td>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                                                <td title={segment.segmentFieldVal.Core_MDF_Maximum_Cost_of_Bundle_nbr__c} role="gridcell">
+                                                    {segment.segmentFieldVal.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}
+                                                </td>
+                                            </template>
+                                            <template if:true={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                                                <td title={segment.segmentFieldVal.Core_MDF_Estimated_Share_of_SPIF_amt__c} role="gridcell">
+                                                    {segment.segmentFieldVal.Core_MDF_Estimated_Share_of_SPIF_amt__c}
+                                                </td>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                                                <td title="" role="gridcell"></td>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                                                <td title="" role="gridcell"></td>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                                                <td title="" role="gridcell"></td>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                                                <td title="" role="gridcell"></td>
+                                            </template>
+                                            <template if:false={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                                                <td title="" role="gridcell"></td>
+                                            </template>
+                                        </tr>
+                                    </table>
+                                    </td>
+                                </tr>
+                                <template if:true={segment.isEdit}>
+                                    <tr key ={segment.id} class="slds-hint-parent">
+                                        <td role="gridcell" colspan="6" style="border:0;">
+                                            <div key ={segment.id} data-id={segment.id} >
+                                                <!--<div key = {segment.key} style="background-color: rgb(243, 242,242);"> class="slds-hide"
+                                                    &nbsp;&nbsp;<span  class="slds-truncate" title={segment.key} style="font-weight: bold;" >&nbsp;</span>
+                                                </div> -->
+                                                <c-core_-m-d-f_-activity-segment-mapping key={segment.id} name={segment.id} program={activityProgram} activity-type={activityType} selected-segment={segment.segmentRec} is-edit={isEdit} oncollapsesection={closeSection} onhideeditsection={hideEditSection} onaddsegment={addSegment} all-selected-product-ids={allSelectedProductIds} account-id={ultimateAccountId}></c-core_-m-d-f_-activity-segment-mapping>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table>
+                        <!--</td>
+                    </tr>-->
+                    </div>
+                    <div key = {segment.key} style="line-height: 0.5;">&nbsp;</div>
+                </template>
+            <!--</tbody>
+        </table>-->
+    </template>
+    <template if:true={showSPIFErrorMsg}>
+        <lightning-formatted-text style="color:red; font-style:italic" value={spifAmountErrMsg}></lightning-formatted-text>
+    </template>
+</template>

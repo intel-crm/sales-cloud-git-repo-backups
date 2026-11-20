@@ -1,0 +1,97 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component access="global"></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {PSS_Solution_Submitter_UserId_Id__c
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+}-->
+            
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+            
+        <!-- </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Solution Declined"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        <br/>Hello, <br/><br/>
+                        Thank you for submitting your solution, {!solutionData.PSS_Proposal_Name_Txt__c}, to Intel® Partner Alliance. Our records indicate that your submission was considered for&nbsp;<apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink>.<br/><br/>
+                        Unfortunately, your solution does not meet the qualification criteria. For the specific details read&nbsp;<apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}" styleClass="intelBlue">this message from your Intel representative</apex:outputLink>.<br/><br/>
+                        Sincerely,<br/><br/>
+                        Your Intel® Partner Alliance team <br/><br/>
+                        
+                    </td>
+                </tr> -->
+                
+                <!-- Email shared with -->
+                 <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        This email may be shared with others in your organization. You may see the full list of who the solution is shared with in the Solution Summary page.<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink> <br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+                
+                <!-- Email Body -->
+                
+                <!-- CTA -->
+                <!--<tr>
+                    <td style="padding-left:50px;">      
+                        <p><apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}" styleClass="intelBlue">View solution preview</apex:outputLink></p>
+                    </td>
+                </tr>-->
+                <!-- CTA -->      
+                
+                <!-- Next Best Step -->
+               <!-- <tr>    
+                    <td style="padding-left:50px;">
+                        Would you like to submit another solution?<br/>
+                        <apex:outputLink value="{!createSolutionURL}" styleClass="intelBlue">
+                            Create another solution for submission  
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr>-->
+                <!-- Next Best Step -->
+                
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

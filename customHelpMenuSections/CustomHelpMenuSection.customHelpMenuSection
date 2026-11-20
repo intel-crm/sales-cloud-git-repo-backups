@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomHelpMenuSection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customHelpMenuItems>
+        <linkUrl>https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Account/list?0.promptId=AccountsOverview</linkUrl>
+        <masterLabel>Accounts</masterLabel>
+        <sortOrder>1</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Contact/list?0.promptId=ContactsOverview</linkUrl>
+        <masterLabel>Contacts</masterLabel>
+        <sortOrder>2</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Opportunity/list?0.promptId=OpportunitiesOverview</linkUrl>
+        <masterLabel>Opportunities</masterLabel>
+        <sortOrder>3</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Report/home?0.promptId=ReportsOverview</linkUrl>
+        <masterLabel>Reports</masterLabel>
+        <sortOrder>4</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Dashboard/home?0.promptId=DashboardsOverview</linkUrl>
+        <masterLabel>Dashboards</masterLabel>
+        <sortOrder>5</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineOverview</linkUrl>
+        <masterLabel>Pipeline</masterLabel>
+        <sortOrder>6</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://salescrm.intel.com/training-and-help/</linkUrl>
+        <masterLabel>Related: SalesCRM Training</masterLabel>
+        <sortOrder>7</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://goto/smgsalesconnect</linkUrl>
+        <masterLabel>Related: SMG Sales Connect</masterLabel>
+        <sortOrder>8</sortOrder>
+    </customHelpMenuItems>
+    <masterLabel>In-App Guidance</masterLabel>
+</CustomHelpMenuSection>

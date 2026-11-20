@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>The MAP/PAR header object is used to capture details regarding IPS product access.  It can be created by a Support Org Admin (MAP - Managed Access Policy) for multiple accounts &amp; multiple products or it can be requested (PAR-Product Access Request) for a single account to have access to multiple products.
+
+This object will have related Line Items that capture the unique Account/Supported Product/Support Org combinations.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_IPS_MAP_Access_Flag__c</fullName>
+        <description>It is to easily identify who can see the MAP and how users request to add an Account to the MAP. It is  automatically calculated based on the MAP&apos;s Supported Products (SP)</description>
+        <label>Access Flag</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approval Required</fullName>
+                    <default>false</default>
+                    <label>Approval Required</label>
+                </value>
+                <value>
+                    <fullName>Auto Approve</fullName>
+                    <default>false</default>
+                    <label>Auto Approve</label>
+                </value>
+                <value>
+                    <fullName>Par Hidden</fullName>
+                    <default>false</default>
+                    <label>Par Hidden</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_MAP_Count_Supp_acct__c</fullName>
+        <description>This field is created for history tracking of total number of supported accounts under MAP.</description>
+        <externalId>false</externalId>
+        <label># Supported Accounts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_MAP_Count_Supp_prod__c</fullName>
+        <description>This field is created for history tracking of total number of supported products under MAP.</description>
+        <externalId>false</externalId>
+        <label># Supported Products</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_MAP_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Name__c</fullName>
+        <description>Name of the MAP.  Not used by PAR.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Naming Convention:   Org - Product/Platform Grouping - Geo - Team
+(example:  &quot;DCG - Skylake - All - None&quot;)</inlineHelpText>
+        <label>MAP Name</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Organization__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Unique ID of the Support Org that owns this MAP/PAR record</description>
+        <inlineHelpText>Unique ID of the Support Org that owns this MAP/PAR record</inlineHelpText>
+        <label>Support Org</label>
+        <referenceTo>Core_IPS_Product_Organization__c</referenceTo>
+        <relationshipLabel>Product Access</relationshipLabel>
+        <relationshipName>MAP_PARs</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Status__c</fullName>
+        <description>MAP Status intended to allow for ACTIVE or INACTIVE values.  This will not be used in Release 1 but we expect it to drive functionality in release 2</description>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Submitter_Comments__c</fullName>
+        <description>Used by PAR only.  This field captures the comments that the PAR creator enters on the PAR VF page.   We will not show these on the header but they get copied programmatically to all line items related to the header</description>
+        <inlineHelpText>Please include information that will help assess approval - for example a brief explanation of the Account&apos;s design or application and if known, the division or team expected to support the Account on the Product(s) being requested.</inlineHelpText>
+        <label>Submitter Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Org_Name__c</fullName>
+        <description>Name of the Support Org that owns this MAP/PAR record</description>
+        <externalId>false</externalId>
+        <formula>Core_Product_Organization__r.Core_IPS_Support_Org_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Name of the Support Org that owns this MAP/PAR record</inlineHelpText>
+        <label>Support Org Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_isPARRequest__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Boolean used by MAP/PAR VF page logic to determine if an asset should be created or not.   If we keep this, we should consider renaming it to a more useful name.</description>
+        <label>isPARRequest</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Product Access</label>
+    <listViews>
+        <fullName>Core_IPS_Org_000_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - Org - Test Org 0</label>
+        <queue>Core_IPS_Org_000</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_001_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CC</label>
+        <queue>Core_IPS_Org_001</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_002_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CCG-SPG</label>
+        <queue>Core_IPS_Org_002</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_003_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CCD</label>
+        <queue>Core_IPS_Org_003</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_004_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CRD-WSS</label>
+        <queue>Core_IPS_Org_004</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_005_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - CHD</label>
+        <queue>Core_IPS_Org_005</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_006_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - DCG</label>
+        <queue>Core_IPS_Org_006</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_007_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - EMBED</label>
+        <queue>Core_IPS_Org_007</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_008_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - DAL SDK</label>
+        <queue>Core_IPS_Org_008</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_009_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NSG</label>
+        <queue>Core_IPS_Org_009</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_010_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - PRC ADC</label>
+        <queue>Core_IPS_Org_010</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_011_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - SP</label>
+        <queue>Core_IPS_Org_011</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_012_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - HPC</label>
+        <queue>Core_IPS_Org_012</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_013_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - TSD</label>
+        <queue>Core_IPS_Org_013</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_014_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - Org - Test Org 14</label>
+        <queue>Core_IPS_Org_014</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_016_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NDG</label>
+        <queue>Core_IPS_Org_016</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_017_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - ICDG-CPEG</label>
+        <queue>Core_IPS_Org_017</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_018_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - BCP</label>
+        <queue>Core_IPS_Org_018</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_019_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - WCS</label>
+        <queue>Core_IPS_Org_019</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_020_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NGS</label>
+        <queue>Core_IPS_Org_020</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_021_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - NTG PerC</label>
+        <queue>Core_IPS_Org_021</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_022_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - ADG</label>
+        <queue>Core_IPS_Org_022</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_023_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - IAGS</label>
+        <queue>Core_IPS_Org_023</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_024_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - ICS</label>
+        <queue>Core_IPS_Org_024</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_025_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - PSG</label>
+        <queue>Core_IPS_Org_025</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_026_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - IOG</label>
+        <queue>Core_IPS_Org_026</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_027_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - AXG-XCC</label>
+        <queue>Core_IPS_Org_027</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_028_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS-SMG</label>
+        <queue>Core_IPS_Org_028</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_IPS_Org_029_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS - IGT</label>
+        <queue>Core_IPS_Org_029</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>IAR-{0000000000}</displayFormat>
+        <label>Access Record</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Product Access</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MAP</fullName>
+        <active>true</active>
+        <description>Used for MAP</description>
+        <label>MAP</label>
+        <picklistValues>
+            <picklist>Core_IPS_MAP_Access_Flag__c</picklist>
+            <values>
+                <fullName>Approval Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Auto Approve</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Par Hidden</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_PAR</fullName>
+        <active>true</active>
+        <description>Used for PAR</description>
+        <label>PAR</label>
+        <picklistValues>
+            <picklist>Core_IPS_MAP_Access_Flag__c</picklist>
+            <values>
+                <fullName>Approval Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Auto Approve</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Par Hidden</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Support_Org_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Product_Organization__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATEDBY_USER.ALIAS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER.ALIAS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Product_Organization__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
+        <searchFilterFields>Core_Name__c</searchFilterFields>
+        <searchFilterFields>Core_Product_Organization__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Product_Organization__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_Require_Record_Type_Value</fullName>
+        <active>true</active>
+        <description>Require that MAP/PAR have a record type value when being created. This will help prevent users from creating them via the OOTB screens.</description>
+        <errorConditionFormula>RecordType.Name = NULL</errorConditionFormula>
+        <errorMessage>No value supplied for Record Type.
+
+Please use the [Create Product Access] button from Support Org or Account detail pages to create new Product Access records.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

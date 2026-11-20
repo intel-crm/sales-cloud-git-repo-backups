@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MilestoneType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Specific to IPS Cases.
+Used for Managing and Tracking Next Response for IPS Cases.</description>
+    <recurrenceType>recursIndependently</recurrenceType>
+</MilestoneType>

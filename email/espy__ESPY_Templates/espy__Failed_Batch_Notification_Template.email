@@ -1,0 +1,39 @@
+<p>Hello Team,</p>
+
+<p>
+This is an <strong>automated alert</strong> to notify you that one or more
+<strong>Batch Apex jobs have failed</strong> in the Salesforce org.
+</p>
+
+<p>Below are the details:</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;">
+    <tr style="background-color:#f3f3f3;">
+        <th>Class Name</th>
+        <th>Job Id</th>
+        <th>Status</th>
+        <th>Created Date</th>
+        <th>Submitted By</th>
+    </tr>
+    {!FAILED_BATCH_TABLE}
+</table>
+
+<br/>
+
+<p><strong>Recommended Actions:</strong></p>
+<ul>
+    <li>Navigate to <strong>Setup → Apex Jobs</strong></li>
+    <li>Review the failure details and debug logs</li>
+    <li>Identify the root cause and fix the issue</li>
+    <li>Reschedule the batch job if necessary</li>
+</ul>
+
+<p>
+This notification is generated automatically based on
+<strong>configured monitoring settings</strong>.
+</p>
+
+<p>
+Regards,<br/>
+<strong>Salesforce Automation System</strong>
+</p>

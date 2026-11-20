@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Store responses based on Core Question</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_IPS_Agent_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Identify if response should be visible only to Agent</description>
+        <label>Agent Only</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Answer_Master__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Defined Master Answer to which the response belongs</description>
+        <inlineHelpText>Defined Master Answer to which the response belongs</inlineHelpText>
+        <label>Core Answer</label>
+        <referenceTo>Core_IPS_Answer__c</referenceTo>
+        <relationshipLabel>Core Responses</relationshipLabel>
+        <relationshipName>Core_Responses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Answer__c</fullName>
+        <description>Answer captured</description>
+        <label>Environment Detail Answer</label>
+        <length>5000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Case__c</fullName>
+        <description>Response for the Case it belongs</description>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Environment Detail Responses</relationshipLabel>
+        <relationshipName>Core_IPS_Responses</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Language__c</fullName>
+        <defaultValue>&apos;ENG&apos;</defaultValue>
+        <description>Language code in which the question and answer was displayed and captured</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Language code in which the question and answer was displayed and captured</inlineHelpText>
+        <label>Language</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_NPS_Category_Indicator__c</fullName>
+        <description>Used only for NPS reporting
+-1 : Detractor
+0 : Passive
+1 : Promotor</description>
+        <externalId>false</externalId>
+        <formula>IF(ISNUMBER(Core_IPS_Answer_Master__r.Core_IPS_Answer__c),
+
+  IF( VALUE(Core_IPS_Answer_Master__r.Core_IPS_Answer__c)&lt;=6, -1,
+
+    IF(VALUE(Core_IPS_Answer_Master__r.Core_IPS_Answer__c)=7 || 
+    VALUE(Core_IPS_Answer_Master__r.Core_IPS_Answer__c)=8, 0,
+
+      IF(VALUE(Core_IPS_Answer_Master__r.Core_IPS_Answer__c)&gt;=9, 1, null)
+    )
+  )
+, null)</formula>
+        <inlineHelpText>Used only for NPS reporting
+-1 : Detractor
+0 : Passive
+1 : Promotor</inlineHelpText>
+        <label>NPS Category Indicator</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Numeric_Answer__c</fullName>
+        <description>Capture numeric answer from response.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISNUMBER(Core_IPS_Answer_Master__r.Core_IPS_Answer__c),VALUE(Core_IPS_Answer_Master__r.Core_IPS_Answer__c),
+IF(Core_IPS_Answer_Master__r.Core_IPS_Answer__c  =  &quot;Yes&quot;,1,
+IF(Core_IPS_Answer_Master__r.Core_IPS_Answer__c  =  &quot;No&quot;,0,
+IF( NOT(ISBLANK(Core_IPS_Answer_Master__r.Core_IPS_Answer__c)),1,
+NULL
+))))</formula>
+        <label>Numeric Answer</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Question_Master__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Defined Master Question to which the response belongs</description>
+        <inlineHelpText>Defined Master Question to which the response belongs</inlineHelpText>
+        <label>Core Question</label>
+        <referenceTo>Core_IPS_Question__c</referenceTo>
+        <relationshipLabel>Core Responses</relationshipLabel>
+        <relationshipName>Core_Responses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Question__c</fullName>
+        <description>Question Text to which the response belongs</description>
+        <externalId>false</externalId>
+        <formula>Core_IPS_Question_Master__r.Core_IPS_Question__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Environment Detail Question</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Survey_Type__c</fullName>
+        <description>Survey Type if the Question is from Survey</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_IPS_Question_Master__r.Core_IPS_Survey_Type__c)</formula>
+        <label>Survey Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Environment Detail Response</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Case__c</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Answer__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Resp-{000000}</displayFormat>
+        <label>Response No</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Environment Detail Responses</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_IPS_Answer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Case__c</customTabListAdditionalFields>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

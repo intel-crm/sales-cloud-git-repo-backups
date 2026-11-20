@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_92946268</developerName>
+        <masterLabel>Product Focus</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>PRODUCT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ WAV500 Wi-Fi Chipset</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ WAV300 Wi-Fi Chipsets</sourceValue>
+            </sourceValues>
+            <value>WAV</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX100 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX200 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX220 Network Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX300 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX330 Network Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX350 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX550 Network Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX200 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX200LD Line Driver</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX220 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX220LD Line Drivers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX318 DSL Frontend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX320 DSL Frontend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ VRX518 DSL Frontend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FALC™ ONT GPONSFU Chipsets</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FALC™ ONT GPONSFP Chipsets</sourceValue>
+            </sourceValues>
+            <value>GRX/ VRX/FalcON</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PRODUCT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>wav,grx,vrx,puma,falc</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>startsWith</operator>
+            <value>Foxconn</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_92946268</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPPORTUNITY_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CHD - Jari 2016</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

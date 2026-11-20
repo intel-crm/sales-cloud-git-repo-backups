@@ -1,0 +1,44 @@
+<template>
+  <template if:true={hasModalOpenedBefore}>
+    <div class="modal-main-container"
+      data-fade={showModal}
+      data-fade-out="fast"
+      data-fade-display={isModalOpen}
+      data-is-quickview={isQuickview}
+      data-is-gallery={isGalleryOverlay}
+      data-slim={slim}
+      onkeydown={handleAllKeyDown}>
+      <div role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open" onclick={handleClickBackdrop} aria-labelledby="photo-dialog_title">
+        <template if:true={modalTitle}>
+          <h2 id="photo-dialog_title" class="slds-assistive-text">{modalTitle}</h2>
+        </template>
+        <div class="slds-modal__container" data-close-icon-inverse={closeIconInverse}>
+          <template if:true={hideClose}>
+            <lightning-button variant='brand' class="slds-assistive-text core-focus-start" label={labels.completeModal} onblur={handleBlurFirst}></lightning-button>
+          </template>
+          <header class={headerClass}>
+            <template if:true={closeHeaderClass}>
+              <a class={closeHeaderClass} aria-role="button" aria-label={labels.closeModal} tabindex="0" data-keydown-action="close" onclick={handleCloseModal} onblur={handleBlurFirst}>
+                <span class="fa-cancel-thin"></span>
+              </a>
+            </template>
+            <slot name="header" onslotchange={handleSlotChange}></slot>
+          </header>
+          <div class={bodyClass}>
+            <template if:true={closeBodyClass}>
+              <a class={closeBodyClass} aria-role="button" aria-label={labels.closeModal} tabindex="0" data-keydown-action="close" onclick={handleCloseModal} onblur={handleBlurFirst}>
+                <span class="fa-cancel-thin"></span>
+              </a>
+            </template>
+            <slot name="body" onslotchange={handleSlotChange}></slot>
+          </div>
+          <footer class={footerClass}>
+            <slot name="footer" onslotchange={handleSlotChange}></slot>
+          </footer>
+          <lightning-button variant='brand' class="slds-assistive-text core-focus-end" label={labels.returnStartModal} onclick={focusFirstElement} onblur={handleBlurLast}></lightning-button>
+        </div>
+      </div>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+  </template>
+</template>

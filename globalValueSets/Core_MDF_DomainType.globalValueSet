@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>EcosystemPartner.com</fullName>
+        <default>false</default>
+        <label>EcosystemPartner.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Member.com</fullName>
+        <default>false</default>
+        <label>Member.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <description>Store Domain Type Names</description>
+    <masterLabel>Domain Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

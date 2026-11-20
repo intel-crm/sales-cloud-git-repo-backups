@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$Name</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$Id</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$Content__c</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$Module_Name__c</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$Message_Status__c</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$Error_Description__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>ACM_Integration_Message_Queue__c$Retry_Count__c</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>ACM_Integration_Message_Queue__c$CreatedDate</field>
+    </columns>
+    <description>Message Status:Error
+&amp;
+Module Name :COVERAGE_UPDATE</description>
+    <filter>
+        <criteriaItems>
+            <column>ACM_Integration_Message_Queue__c$Message_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Error</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACM_Integration_Message_Queue__c$Module_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>COVERAGE_UPDATE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACM_Integration_Message_Queue__c$LastModifiedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_DAYS:3</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Vega Monitoring:Acc. cov. update issues</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ACM_Integration_Message_Queue__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>ACM_Integration_Message_Queue__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

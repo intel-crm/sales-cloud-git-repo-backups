@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>espy__Batch_Monitoring_Letterhead</letterhead>
+    <name>Batch Monitoring Email Notification Deleted Scheduler</name>
+    <style>freeForm</style>
+    <subject>&apos;The Scheduler has been removed : &apos; +{!espy__Batch_Monitoring__c.Name}</subject>
+    <textOnly>Hi Team,
+
+The Scheduled batch  {!espy__Batch_Monitoring__c.Name} has been deleted. Kindly look into the issue.
+
+To Reschedule the scheduler , Kindly follow the below steps :
+
+1. Login to Salesforce
+2. Go to Developer Console , Open Asynchronous window
+3. Execute the below command.
+   system.schedule({!espy__Batch_Monitoring__c.Name},{!espy__Batch_Monitoring__c.espy__CronExpression__c},new {!espy__Batch_Monitoring__c.Name}());
+
+Regards
+Support  Team.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

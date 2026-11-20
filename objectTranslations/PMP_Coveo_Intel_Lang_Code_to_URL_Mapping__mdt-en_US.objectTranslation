@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP Coveo Intel Lang Code to URL Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP Coveo Intel Lang Code to URL Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- BaseURL --></label>
+        <name>BaseURL__c</name>
+    </fields>
+    <fields>
+        <label><!-- LanguageCode --></label>
+        <name>LanguageCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFDCLanguageCode --></label>
+        <name>SFDCLanguageCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tab --></label>
+        <name>Tab__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

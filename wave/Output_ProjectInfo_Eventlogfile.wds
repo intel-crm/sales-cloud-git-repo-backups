@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDataset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <application>ApexExceptionApp</application>
+    <description>Created from the DP_Apex Handled Exceptions recipe.</description>
+    <masterLabel>Output- ProjectInfo- Eventlogfile</masterLabel>
+    <type>default</type>
+</WaveDataset>

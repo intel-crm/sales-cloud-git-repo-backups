@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_25346800</developerName>
+        <masterLabel>CCG</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>CUST_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>CCG Gateway Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Performance Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Public Sector Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG Unite Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Adoption Technologies Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CCG vPro Deal #</sourceValue>
+            </sourceValues>
+            <value>CCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DCG Comms Infrastructure Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG 5G Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Cloud Infra &amp; App Acceleration Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise &amp; Gov&apos;t Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise Analytics Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise DC Cloud Modern Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Enterprise High Perf Compute Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Cloud New Services Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG AI on Intel for Deep Learning Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Cloud New Rev Streams Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG High Speed Ethernet Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG Select Solutions Deal #</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DCG/NSG Optane Persistent Memory &amp; SSD Deal #</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NSG NAND Datacenter Deal #</sourceValue>
+            </sourceValues>
+            <value>NSG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG All Deal #</sourceValue>
+            </sourceValues>
+            <value>PSG</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_84399145</developerName>
+        <masterLabel>KPI Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Design Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Qualify</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Define</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Develop</sourceValue>
+            </sourceValues>
+            <value>Pending</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Opportunity.Core_Technical_Owner__c</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Quantity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_By__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Achieved__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>CCG Public Sector Deal $,CCG vPro Deal $,DCG Adjacencies Deal $,NSG NAND Datacenter Cloud Deal $,DCG Data Center Optane Deal $,DCG Cloud &amp; Enterprise Transformation Compute Deal $</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win,Production Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>joachim</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Achieved__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CUST_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Joachim 2021 DW Goal Approved KPI</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>closedwon</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>gt90</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Core_Opportunity_KPI__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Opportunity.Core_Approved_Date__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

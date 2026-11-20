@@ -1,0 +1,105 @@
+<aura:component extends="c:MarketplaceRedux" controller="MarketplaceMessagingController">
+    
+    <aura:set attribute="storeName" value="Settings" /> <!-- Merged on 09/11 - Prabuddh -->	
+   <!-- <aura:attribute name="storeName" type="string" default="Settings" /> -->
+	
+   
+    <aura:attribute name="isPartner" type="boolean" default="false" /> 
+    <aura:attribute name="loading" type="boolean" default="true" />
+    <aura:attribute name="heading" type="string" default="Messages about your Storefront" />
+    <aura:attribute name="messages" type="Object[]" default="[]" />
+    <aura:attribute name="userID" type="String" default="11111" />
+    <aura:attribute name="messageEmpty" type="boolean" default="true" />
+    <aura:attribute name="mobileToggleChat" type="boolean" default="false" />
+    <aura:attribute name="mobileFirstToggle" type="boolean" default="true" />
+    <aura:attribute name="author" type="String"/>
+	<aura:attribute name="channel" type="String" default=""/>
+    
+    <aura:attribute name="recordId" type="string" default="12345" />
+    <aura:attribute name="onSendClick" type="Object" default="" />
+    <aura:attribute name="scrollUp" type="boolean" default="true" />
+
+    <aura:attribute name="_debounceSearchTimer" type="object" />
+    <aura:attribute name="_debounceCount" type="integer" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:method name="show" action="{!c.handleShow}"></aura:method>
+    
+    <div class="slds-p-around_small">
+        <aura:if isTrue="{! v.appState.Settings.currentScreenSize == 'desktop'}">
+            <h3 class="intel-clear heading-20">{! v.heading }</h3> 
+            <aura:set attribute="else">
+                <h3 class="intel-clear accordionSectionHeader heading-20">
+                    <a href="javascript:void(0);" onclick="{!c.handleToggleOpen}">
+                        {! v.heading }
+                        <span class="icon">
+                        <lightning:icon iconName="{!v.mobileToggleChat ? 'utility:chevronup' : 'utility:chevrondown'}" />
+                        </span>
+                    </a>
+                </h3>
+            </aura:set>
+        </aura:if>
+
+
+        <div class="{! join( ' ', and(v.appState.Settings.currentScreenSize == 'mobile' , v.mobileToggleChat )? 'slds-show' : 'slds-show_medium', ' slds-p-top_medium chat-container')}">
+            <aura:if isTrue="{! v.loading }">
+                <lightning:spinner alternativeText="Loading..." />
+            </aura:if>
+
+            <a href="javascript:void(0)" onclick="{!c.handleScrollUp}"
+                class="{! join(' ', 'heading-13', 'messageUp color-blue', v.scrollUp ? '':'disabled')}">
+                <lightning:icon iconName="utility:chevronup" size="x-small" class="slds-m-right_x-small" />
+                {!$Label.c.PMP_Messaging_MessageHistory}</a>
+
+            <section role="log" class="slds-chat" aura:id="slds-chat" onscroll="{!c.handleScroll}">
+                <ul class="slds-chat-list">
+                    <aura:iteration items="{!v.messages}" var="item">
+                        <aura:if isTrue="{!item.type == 'status'}">
+                            <!-- Status -->
+                            <li class="slds-chat-listitem slds-chat-listitem_event">
+                                <div class="slds-chat-event">
+                                    <div class="slds-chat-event__body">
+                                        <p>{! item.message}
+                                            <ui:outputDateTime value="{! item.timestamp}" format=" • M.D.yy • h:mm a" />
+                                        </p>
+                                    </div>
+                                    <div class="slds-chat-event__rule"></div>
+                                </div>
+                            </li>
+                            <aura:set attribute="else">
+                                <!-- Message Type -->
+                                <li class="{! 'slds-chat-listitem slds-chat-listitem_' + (v.userID == item.userID ? 'outbound': 'inbound')}">
+                                    <div class="slds-chat-message">
+                                        <div class="slds-chat-message__body">
+                                            <div
+                                                class="{! 'slds-chat-message__text slds-chat-message__text_' + (v.userID == item.userID ? 'outbound': 'inbound')}">
+                                                <span>{! item.message}
+                                                </span>
+                                            </div>
+                                            <div class="slds-chat-message__meta">
+                                                {! item.author}
+                                                <ui:outputDateTime value="{! item.timestamp}"
+                                                    format=" • M.D.yy • h:mm a" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </aura:set>
+                        </aura:if>
+                    </aura:iteration>
+                </ul>
+            </section>
+            <div class="slds-grid chat-box-container">
+                <div class="col slds-p-right_small chat-box">
+                    <input type="text" name="chat" value="" placeholder="{!$Label.c.PMP_Messaging_PostAMessage}" aura:id="usermessage"
+                        onkeyup="{! c.handleKeyDown}" />
+                </div>
+                <div class="col button">
+                    <c:IntelButton onclick="{!v.onSendClick}" disabled="{!v.messageEmpty}" class="whiteDisabled">{!$Label.c.PMP_Messaging_Send}
+                    </c:IntelButton>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</aura:component>

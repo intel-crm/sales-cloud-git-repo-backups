@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_External_Email_Notification_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>External Email Notification</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_IPS_Case_Interested_Party__c.Core_IPS_External_Email_Notification_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IPS_Case_Interested_Party__c.Core_IPS_External_Email_Notification_New_EA</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Core_IPS_Internal_Email_Notification_New_EA</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Internal Email Notification</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_IPS_Case_Interested_Party__c.Core_IPS_Internal_Email_Notification_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IPS_Case_Interested_Party__c.Core_IPS_Internal_Email_Notification_New_EA</nameSegment>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>External Type</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Internal Type</label>
+        </rules>
+    </decisions>
+    <description>While interested party member add in case team mail will send to Recently Added Member.</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND (
+	ISPICKVAL([Core_IPS_Case_Interested_Party__c].Type__c ,&apos;External&apos;),
+
+	NOT(ISBLANK( [Core_IPS_Case_Interested_Party__c].User__c)),
+	
+	[Core_IPS_Case_Interested_Party__c].Case__c.Core_IPS_Is_Notification_Active__c = TRUE,
+
+	[Core_IPS_Case_Interested_Party__c].Case__c.Core_IPS_Customer_Visible__c = TRUE,
+
+	[Core_IPS_Case_Interested_Party__c].Case__c.RecordType.DeveloperName = $Label.Core_IPS_CaseCreateRecordType_Name,
+
+	OR( ISPICKVAL([Core_IPS_Case_Interested_Party__c].Case__c.Status, &apos;New&apos;) ,
+		ISPICKVAL([Core_IPS_Case_Interested_Party__c].Case__c.Status, &apos;Open&apos;) 
+	),
+  
+	IF( ISBLANK([Core_IPS_Case_Interested_Party__c].Contact__c), FALSE, 
+		AND( [Core_IPS_Case_Interested_Party__c].Contact__c.Core_IPS_Active__c = TRUE,
+			 [Core_IPS_Case_Interested_Party__c].Contact__c.Core_IPS_Email_Opt_Out__c = FALSE
+		)
+	),
+	
+	[Core_IPS_Case_Interested_Party__c].Core_IPS_Project_Interested_Party__c = FALSE
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+	ISPICKVAL({!myVariable_current.Type__c} ,&apos;External&apos;),
+
+	NOT(ISBLANK( {!myVariable_current.User__c})),
+	
+	{!myVariable_current.Case__r.Core_IPS_Is_Notification_Active__c} = TRUE,
+
+	{!myVariable_current.Case__r.Core_IPS_Customer_Visible__c} = TRUE,
+
+	{!myVariable_current.Case__r.RecordType.DeveloperName} = {!$Label.Core_IPS_CaseCreateRecordType_Name},
+
+	OR( ISPICKVAL({!myVariable_current.Case__r.Status}, &apos;New&apos;) ,
+		ISPICKVAL({!myVariable_current.Case__r.Status}, &apos;Open&apos;) 
+	),
+  
+	IF( ISBLANK({!myVariable_current.Contact__c}), FALSE, 
+		AND( {!myVariable_current.Contact__r.Core_IPS_Active__c} = TRUE,
+			 {!myVariable_current.Contact__r.Core_IPS_Email_Opt_Out__c} = FALSE
+		)
+	),
+	
+	{!myVariable_current.Core_IPS_Project_Interested_Party__c} = FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND (
+	ISPICKVAL([Core_IPS_Case_Interested_Party__c].Type__c ,&apos;Internal&apos;),
+
+	NOT(ISBLANK([Core_IPS_Case_Interested_Party__c].User__c)),
+	
+	[Core_IPS_Case_Interested_Party__c].Case__c.Core_IPS_Is_Notification_Active__c = TRUE,
+
+	OR([Core_IPS_Case_Interested_Party__c].Case__c.RecordType.DeveloperName = $Label.Core_IPS_CaseCreateRecordType_Name,
+	   [Core_IPS_Case_Interested_Party__c].Case__c.RecordType.DeveloperName = $Label.Core_IPS_NoAssignedContactRecordType_Name,
+	   [Core_IPS_Case_Interested_Party__c].Case__c.RecordType.DeveloperName = $Label.Core_IPS_GECRecordTypeName
+	),
+
+	OR( ISPICKVAL([Core_IPS_Case_Interested_Party__c].Case__c.Status, &apos;New&apos;),
+		ISPICKVAL([Core_IPS_Case_Interested_Party__c].Case__c.Status, &apos;Open&apos;),
+		ISPICKVAL([Core_IPS_Case_Interested_Party__c].Case__c.Status, &apos;On Hold&apos;) 
+	),
+
+	[Core_IPS_Case_Interested_Party__c].Core_IPS_Project_Interested_Party__c = FALSE
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+	ISPICKVAL({!myVariable_current.Type__c} ,&apos;Internal&apos;),
+
+	NOT(ISBLANK({!myVariable_current.User__c})),
+	
+	{!myVariable_current.Case__r.Core_IPS_Is_Notification_Active__c} = TRUE,
+
+	OR({!myVariable_current.Case__r.RecordType.DeveloperName} = {!$Label.Core_IPS_CaseCreateRecordType_Name},
+	   {!myVariable_current.Case__r.RecordType.DeveloperName} = {!$Label.Core_IPS_NoAssignedContactRecordType_Name},
+	   {!myVariable_current.Case__r.RecordType.DeveloperName} = {!$Label.Core_IPS_GECRecordTypeName}
+	),
+
+	OR( ISPICKVAL({!myVariable_current.Case__r.Status}, &apos;New&apos;),
+		ISPICKVAL({!myVariable_current.Case__r.Status}, &apos;Open&apos;),
+		ISPICKVAL({!myVariable_current.Case__r.Status}, &apos;On Hold&apos;) 
+	),
+
+	{!myVariable_current.Core_IPS_Project_Interested_Party__c} = FALSE
+)</expression>
+    </formulas>
+    <interviewLabel>Core_IPS_Email_Notification_For_Interested_Party_New_EA-4_InterviewLabel</interviewLabel>
+    <label>IPS Email Notification For Interested Party New EA</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Core_IPS_Case_Interested_Party__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onCreateOnly</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Obsolete</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_IPS_Case_Interested_Party__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_IPS_Case_Interested_Party__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+</Flow>

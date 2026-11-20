@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_36979438</developerName>
+        <masterLabel>Taiwan</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Technical_Owner__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Jonas Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sam Kuo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sandy Lee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bruce Lung</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jason Tsai</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Eugene Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jason Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Steven Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bing Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jeff Ho</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Tsao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jari Chung</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>David Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Howard Kuan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Matt Su</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Amos Wu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stephen Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Calvin Shih</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Terry Yang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alvin T Chen</sourceValue>
+            </sourceValues>
+            <value>Taiwan</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>BucketField_36979438</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Steve Yang - oppty count by FAE</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

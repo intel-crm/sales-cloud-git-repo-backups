@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Flow</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Flows</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>CoveoV2__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- FirstSteps --></label>
+        <name>CoveoV2__FirstSteps__c</name>
+    </fields>
+    <fields>
+        <label><!-- FlowAPIName --></label>
+        <name>CoveoV2__FlowAPIName__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

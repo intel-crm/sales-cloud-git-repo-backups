@@ -1,0 +1,40 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerOnboardingLayout",
+  "dataProviders" : [ ],
+  "id" : "3e374a9e-f479-4b10-9d4e-11a9263b8d0e",
+  "label" : "Natural Grouping",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "type" : "Natural Grouping"
+      },
+      "componentName" : "c:ipaPartnerOnboarding",
+      "id" : "846944b1-7f5f-4ef0-bb21-9f34d05abde0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2442f01f-09ed-4343-ad45-18adc6113245",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Natural Grouping"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "26705e83-79c4-4996-b297-db12448a42b1",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8b8b90f0-e3d2-4ea3-98d7-7f916901dd85",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-natural-grouping"
+}

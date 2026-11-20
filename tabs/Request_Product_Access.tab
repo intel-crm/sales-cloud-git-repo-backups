@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is uesd for Request Product Access button on Account Object in LEX</description>
+    <label>Request Product Access</label>
+    <lwcComponent>core_IPS_Create_PAR_Lex</lwcComponent>
+    <motif>Custom70: Handsaw</motif>
+</CustomTab>

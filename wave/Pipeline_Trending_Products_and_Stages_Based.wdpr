@@ -1,0 +1,173 @@
+{
+  "version" : "66.0",
+  "nodes" : {
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Opportunity",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Opportunity",
+          "mode" : "SYNCED"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Opportunity.Account.AccountPartner.BillingCountry", "Opportunity.Account.AccountPartner.Industry", "Opportunity.Owner.UniqueUserName", "Stage.IsWon", "Stage.IsClosed", "validToDate.fiscalyearnumber", "ValidFromDate", "ValidToDate_Fiscal", "ValidToDate", "ValidFromDate_Fiscal", "validFromDate.fiscalmonthnumber", "validToDate.fiscalmonthnumber", "validFromDate.fiscalyearnumber", "CloseDate", "CloseDateFiscal.fiscalmonthnumber", "Id", "OpportunityCreatedDate", "OpportunityId", "Opportunity.CloseDate", "StageName", "Opportunity.Owner.UserManager.Name", "CloseDate_Fiscal", "CreatedDate" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "PipelineTrendingStageBased_1",
+          "name" : "PipelineTrendingStageBased_1"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        },
+        "preserveCurrencyFields" : [ ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Opportunity.Type", "Opportunity.Core_Opp_Strategic_Opportunity__c", "Opportunity.Core_Coverage_Type_Nm__c", "Opportunity.Opportunity_Focus__c", "Opportunity.Core_VBS_Status__c", "Account.AccountPartner.Core_Unified_Global_Customer_Name__c", "Account.AccountPartner.Core_Unified_Intermediate_Customer_Name__c", "Core_BU_Short_Name__c", "Core_Vertical_Market__c", "Account.AccountName", "Opportunity.Core_Product_Application__c", "CoreKPIDateQuarter", "OpportunityProductsHierarchy.TECHICALOWNER_ID", "OpportunityProductsHierarchy.ID", "OpportunityProductsHierarchy.TEAMMEMBER_HIERARCHY_TXT_MvHierarchy", "Core_KPI_Date__c", "Owner.UniqueUserName", "Core_Product_Type__c", "OpportunityId", "OpportunityProductsHierarchy.OWNER_HIERARCHY_TXT", "Product.Core_Code_Name__c", "OpportunityProductsHierarchy.ANYOFABOVE_HIERARCHY_NM_MvHierarchy", "OpportunityProductsHierarchy.TEAMMEMBER_HIERARCHY_TXT", "OpportunityProductsHierarchy.TECHICALOWNER_NM", "Account.Core_Partner_Role__c", "Account.AccountPartner.BillingCountry", "OpportunityProductsHierarchy.OWNER_NM", "OpportunityProductsHierarchy.TECHICALOWNER_HIERARCHY_TXT_MvHierarchy", "OpportunityProductsHierarchy.TEAMMEMBER_ID", "Account.AccountPartner.Industry", "OpportunityProductsHierarchy.OWNER_HIERARCHY_TXT_MvHierarchy", "Opportunity.Core_Sales_Groups__c", "OpportunityProductsHierarchy.OWNER_ID", "OpportunityProductsHierarchy.TEAMMEMBER_NM", "Account.AccountPartner.Name", "Product.Name", "Product.Family", "OpportunityProductsHierarchy.TECHICALOWNER_HIERARCHY_TXT", "Product.Id", "OpportunityProductsHierarchy.ANYOFABOVE_HIERARCHY_NM", "UnitPrice", "TotalPrice", "ListPrice", "Core_KPI_Total_Price__c", "Quantity", "Total_ListPrice" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "PipelineTrendingProductsBased_1",
+          "name" : "PipelineTrendingProductsBased_1"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "JOIN2", "LOAD_DATASET3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OppProduct.OpportunityId" ],
+        "rightQualifier" : "OppStage",
+        "rightKeys" : [ "OpportunityId" ]
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET2", "LOAD_DATASET4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "OppProduct",
+        "rightKeys" : [ "OpportunityId" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN1" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Combined Trending Products Stages",
+          "name" : "CombinedTrendingProductsStages"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET2" : {
+        "label" : "Opportunity",
+        "type" : "LOAD_DATASET",
+        "top" : 252.1,
+        "left" : 112.7,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET3" : {
+        "label" : "PipelineTrendingStageBased_1",
+        "type" : "LOAD_DATASET",
+        "top" : 112.5,
+        "left" : 112.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET4" : {
+        "label" : "PipelineTrendingProductsBased_1",
+        "type" : "LOAD_DATASET",
+        "top" : 392.1,
+        "left" : 112.4,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN1" : {
+        "label" : "OppOppProdStage",
+        "type" : "JOIN",
+        "top" : 252.4,
+        "left" : 392.1
+      },
+      "JOIN2" : {
+        "label" : "OppOppProd",
+        "type" : "JOIN",
+        "top" : 252.1,
+        "left" : 251.8
+      },
+      "OUTPUT0" : {
+        "label" : "Combined Trending Products Stages",
+        "type" : "OUTPUT",
+        "top" : 252.2,
+        "left" : 532.2
+      }
+    },
+    "connectors" : [ {
+      "source" : "JOIN2",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN1",
+      "target" : "OUTPUT0"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

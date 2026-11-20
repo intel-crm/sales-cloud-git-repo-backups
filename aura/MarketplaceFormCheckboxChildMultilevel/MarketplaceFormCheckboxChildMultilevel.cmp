@@ -1,0 +1,143 @@
+<aura:component description="Child component for MarketplaceFormCheckboxMultilevel">
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:attribute name="checkbox" type="object" />
+  <aura:attribute name="disabled" type="Boolean" default="false" />
+  <aura:attribute name="topLevel" type="boolean" default="false" />
+  <aura:attribute name="onchange" type="object" />
+  <aura:attribute name="additionalValues" type="Object" />
+  <!-- Toggle Collapsible Type and Clear Filters -->
+  <aura:attribute name="collapsible" type="boolean" default="false" />
+  <aura:attribute name="clearFilters" type="boolean" default="false" />
+  <aura:attribute name="expandedSections" type="object" default="false" description="sections that are set to be expanded "/>
+  <aura:attribute name="isExpanded" type="boolean" default="false" />
+  <aura:attribute name="theme" type="string" default="default" description="Can be 'default', 'filter'" />
+
+  <aura:attribute name="ontogglesection" type="object" />
+  <aura:attribute name="onclearfilter" type="object" />
+  <aura:attribute name="onselectfilter" type="object" />
+
+  <aura:handler name="change" value="{!v.expandedSections}" action="{!c.handleExpandedChange}" />
+
+
+  <aura:attribute name="touched" type="Boolean" default="false" description="Internal" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+
+  <div class="{!join(' ' , 'childCheckbox', (v.topLevel ? 'topLevel' : ''), (v.clearFilters ? 'clearFilters' : ''), (v.collapsible ? 'collapsible' : ''), 'theme-'+ v.theme)}" data-uniqid="{!v.checkbox.uniqId}">
+
+    <aura:if isTrue="{!v.checkbox.subType == 'text'}">
+        <c:MarketplaceFormInputText
+          aura:id="textInput"
+          class="{!join(' ', 'checkboxPadding', 'slds-m-vertical_xx-small', v.checkbox.highlight ? 'highlight slds-p-vertical_xx-small' : '', v.checkbox.firstResult ? 'firstResult' : '')}"
+          label="{!v.checkbox.label}"
+          refId="{!v.checkbox.value}"
+          subType="{!v.checkbox.textSubType}"
+          value="{!v.checkbox.textValue}"
+          disabled="{!v.disabled}"
+          updateFormCallback="{!v.onchange}"
+          />
+    </aura:if>
+
+    <aura:if isTrue="{!v.checkbox.subType == 'radio'}">
+        <c:MarketplaceFormRadio
+          aura:id="RadioInput"
+          class="{!join(' ', 'checkboxPadding', 'slds-m-vertical_xx-small', v.checkbox.highlight ? 'highlight slds-p-vertical_xx-small' : '', v.checkbox.firstResult ? 'firstResult' : '')}"
+          label="{!v.checkbox.label}"
+          refId="{!v.checkbox.value}"
+          options="{!v.checkbox.radioOptions}"
+          value="{!v.checkbox.radioValue}"
+          disabled="{!v.disabled}"
+          updateFormCallback="{!v.onchange}" />
+    </aura:if>
+
+    <aura:if isTrue="{!or(v.checkbox.subType == 'checkbox', !v.checkbox.subType) }">
+      <div class="{!join(' ', 'checkboxPadding', 'slds-m-vertical_xx-small', v.checkbox.highlight ? 'highlight slds-p-vertical_xx-small' : '', v.checkbox.firstResult ? 'firstResult' : '', v.checkbox.prerelease ? 'prerelease': '')}">
+      <aura:if isTrue="{! and(v.collapsible, !empty(v.checkbox.children) ,v.checkbox.children.length > 1) }">
+        <a href="javascript:void()" class="color-dark-gray toggle" onclick="{!c.handleToggleSection}">
+          <span class="toggleIcon">
+            <lightning:icon
+              class="slds-m-right_xx-small cursor"
+              iconName="{!v.isExpanded ? 'utility:dash' : 'utility:add'}" />
+          </span>
+        </a>  
+      </aura:if> 
+      <lightning:input
+        aura:id="checkboxInput"
+        name="{!v.checkbox.uniqId}"
+        class="{!join(' ', v.checkbox.firstResult ? 'firstResult' : '', v.collapsible ? 'collapsible-input': '')}"
+        type="checkbox"
+        disabled="{!v.disabled}"
+        checked="{!v.checkbox.checked}"
+        label="{!v.checkbox.label}"
+        onchange="{!c.handleChange}" />
+        <aura:if isTrue="{!v.checkbox.prerelease}">
+          <span class="prereleaseLabel">{!$Label.c.PMP_Create_Offering_Prerelease_Label}</span>
+        </aura:if>
+        <aura:if isTrue="{! and(!empty(v.checkbox.children) ,v.checkbox.children.length > 1) }">
+          <span class="filterOptions slds-m-left_medium">
+            <a class="{!join(' ', 'filter selectFilter', v.appState.settings.currentSldsBreakPoint != 'x-large' ? 'color-white text-underline' : '')}" onclick="{!c.handleSelectFilter}" href="javascript:void()">{!$Label.c.Core_PMP_Select_All}</a> | 
+            <a class="{!join(' ', 'filter clearFilter', v.appState.settings.currentSldsBreakPoint != 'x-large' ? 'color-white text-underline' : '')}" onclick="{!c.handleClearFilter}" href="javascript:void()"> {!$Label.c.Core_PMP_Deselect_All}</a>
+          </span>
+        </aura:if>
+      </div>
+
+
+    </aura:if>
+
+
+    <aura:if isTrue="{! or(!v.collapsible, and(v.collapsible, v.isExpanded))}">
+      <aura:iteration items="{!v.checkbox.children}" var="child">
+        <aura:if isTrue="{!child.subType == 'text'}">
+          <div class="childTextInputPadding">
+            <c:MarketplaceFormInputText
+              aura:id="childTextInput"
+              class="{!join(' ', 'checkboxPadding', child.highlight ? 'textHighlight' : '', child.firstResult ? 'firstResult' : '')}"
+              label="{!child.label}"
+              refId="{!child.value}"
+              subType="{!child.textSubType}"
+              value="{!child.textValue}"
+              disabled="{!v.disabled}"
+              updateFormCallback="{!v.onchange}"
+              />
+            </div>
+        </aura:if>
+
+
+        <aura:if isTrue="{!child.subType == 'radio'}">
+          <div class="childRadioInputPadding">
+            <c:MarketplaceFormRadio
+              aura:id="childRadio"
+              class="{!join(' ', 'checkboxPadding', child.highlight ? 'radioHighlight' : '', child.firstResult ? 'firstResult' : '')}"
+              label="{!child.label}"
+              refId="{!child.value}"
+              options="{!child.radioOptions}"
+              value="{!child.radioValue}"
+              disabled="{!v.disabled}"
+              updateFormCallback="{!v.onchange}"
+              />
+            </div>
+        </aura:if>
+
+        <aura:if isTrue="{!!child.subType}">
+            <c:MarketplaceFormCheckboxChildMultilevel
+              aura:id="checkbox"
+              checkbox="{!child}"
+              disabled="{!v.disabled}"
+              onchange="{!v.onchange}" 
+              collapsible="{!v.collapsible}"
+              clearFilters="{!v.clearFilters}"
+              ontogglesection="{!v.ontogglesection}"
+              onclearfilter="{!v.onclearfilter}"
+              onselectfilter="{!v.onselectfilter}"
+              expandedSections="{!v.expandedSections}"
+              theme="{!v.theme}"
+              />
+        </aura:if>
+      </aura:iteration>
+    </aura:if>
+</div>
+
+</aura:component>

@@ -1,0 +1,87 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" extends="c:MarketplaceRedux" description="Single Item Promotion">
+	<aura:set attribute="storeName" value="Settings" />
+
+	<aura:attribute name="currentScreenSize" type="string" description="Internal component state"/>
+	<aura:attribute name="loading" type="boolean" default="false" description="Internal component state"/>
+	<aura:attribute name="heading" type="string" default="" description="Component Heading" />
+
+	<aura:attribute name="p1ImageUrl" type="String" default="" description="Promotion 1 Image 810px x 456 Minimum "/>
+	<aura:attribute name="p1Title" type="String" default="" description="Promotion 1  Title Text" />
+	<aura:attribute name="p1SubTitle" type="String" default="" description="Promotion 1 Sub Title Text" />
+	<aura:attribute name="p1CtaLink" type="String" default="" description="Promotion 1 CTA Link URL"/>
+	<aura:attribute name="p1CtaLabel" type="String" default="" description="Promotion 1  CTA Label"/>
+
+	<aura:attribute name="p2ImageUrl" type="String" default="" description="Promotion 2 Image 810px x 456 Minimum "/>
+	<aura:attribute name="p2Title" type="String" default="" description="Promotion 2Title Text" />
+	<aura:attribute name="p2SubTitle" type="String" default="" description="Promotion 2 Sub Title Text" />
+	<aura:attribute name="p2CtaLink" type="String" default="" description="Promotion 2 CTA Link URL"/>
+	<aura:attribute name="p2CtaLabel" type="String" default="" description="Promotion 2 CTA Label"/>
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<div class="{! (v.currentScreenSize == 'mobile' ? 'mobile': 'desktop') + ' promotionTwoItem' }">
+        <!--changed as part of US613071(h2 to h4)-->
+		<h4 class="{! (v.currentScreenSize == 'mobile' ? 'slds-p-horizontal_medium': '') + ' heading-28 color-darkgray slds-m-bottom_medium'}">{! v.heading }</h4>
+
+		<lightning:layout horizontalAlign="spread" multipleRows="true">
+
+					<lightning:layoutItem size="12" class=" ">
+							<lightning:layout multipleRows="true">
+									<!-- Promotion 1 -->
+									<lightning:layoutItem size="12" mediumDeviceSize="6" class="promo-0">
+											<div aura:id="card" class="card">
+												<aura:if isTrue="{! v.currentScreenSize == 'mobile' }">
+													<div class="image">
+														<img src="{! v.p1ImageUrl }" />
+													</div>
+													<div class="textContainer ">
+                                                        <!--changed as part of US613071(Removed heading-35 intel-clear-pro)-->
+														<h3 class="slds-m-bottom_medium color-blue">{! v.p1Title }</h3>
+														<p class="slds-m-bottom_medium">{! v.p1SubTitle }</p>
+														<c:IntelButton href="{! v.p1CtaLink }" openInNewTab="true" class="inline">{! v.p1CtaLabel }</c:IntelButton>
+													</div>
+													<aura:set attribute="else">
+														<div class="bgImageContainer" style="{! 'background-image: url(&quot;' + v.p1ImageUrl +  '&quot;)' }">
+                                                            <!--changed as part of US613071(Removed heading-35 intel-clear-pro and added color-white)-->
+															<h3 class="slds-m-bottom_medium color-white">{! v.p1Title }</h3>
+															<p class="slds-m-bottom_medium color-white">{! v.p1SubTitle }</p>
+															<a href="{! v.p1CtaLink }" target="_blank">{! v.p1CtaLabel } <lightning:icon iconName="utility:chevronright"
+								              class="cursor slds-m-left_xx-small icon-xxx-small"
+								              size="x-small"/></a>
+														</div>
+													</aura:set>
+												</aura:if>
+											</div>
+										</lightning:layoutItem>
+										<!-- Promotion 2 -->
+										<lightning:layoutItem size="12" mediumDeviceSize="6" class="promo-1">
+												<div aura:id="card" class="card">
+													<aura:if isTrue="{! v.currentScreenSize == 'mobile' }">
+														<div class="image">
+															<img src="{! v.p2ImageUrl }" />
+														</div>
+														<div class="textContainer ">
+                                              <!--changed as part of US613071(Removed heading-35 intel-clear-pro)-->              
+															<h3 class="slds-m-bottom_medium color-blue">{! v.p2Title }</h3>
+															<p class="slds-m-bottom_medium">{! v.p2SubTitle }</p>
+															<c:IntelButton href="{! v.p2CtaLink }" openInNewTab="true" class="inline">{! v.p2CtaLabel }</c:IntelButton>
+														</div>
+														<aura:set attribute="else">
+															<div class="bgImageContainer" style="{! 'background-image: url(&quot;' + v.p2ImageUrl +  '&quot;)' }">
+                                                                 <!--changed as part of US613071(Removed heading-35 intel-clear-pro and added color-white)--> 
+																<h3 class="slds-m-bottom_medium color-white">{! v.p2Title }</h3>
+																<p class="slds-m-bottom_medium color-white">{! v.p2SubTitle }</p>
+																<a href="{! v.p2CtaLink }" target="_blank">{! v.p2CtaLabel } <lightning:icon iconName="utility:chevronright"
+									              class="slds-m-left_xx-small cursor icon-xx-small"
+									              size="xx-small"/></a>
+															</div>
+														</aura:set>
+													</aura:if>
+												</div>
+										</lightning:layoutItem>
+							</lightning:layout>
+					</lightning:layoutItem>
+	</lightning:layout>
+</div>
+
+</aura:component>

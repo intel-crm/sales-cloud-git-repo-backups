@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SW Demo Activity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SW Demo Activities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Completed Date --></label>
+        <name>SWS_Activity_Completed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>SWS_Activity__c</name>
+        <picklistValues>
+            <masterLabel>Demo</masterLabel>
+            <translation><!-- Demo --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Activity is Completed --></label>
+        <name>SWS_Activity_is_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>SWS_Campaign__c</name>
+        <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>SWS_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Converted --></label>
+        <name>SWS_Lead_Converted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Source --></label>
+        <name>SWS_Lead_Source__c</name>
+        <picklistValues>
+            <masterLabel>Conference</masterLabel>
+            <translation><!-- Conference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eloqua Scoring Model</masterLabel>
+            <translation><!-- Eloqua Scoring Model --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDC Credit Request</masterLabel>
+            <translation><!-- IDC Credit Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound Email Inquiry</masterLabel>
+            <translation><!-- Inbound Email Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Customer Support</masterLabel>
+            <translation><!-- Intel Customer Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Website</masterLabel>
+            <translation><!-- Intel Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>List Purchase</masterLabel>
+            <translation><!-- List Purchase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Call</masterLabel>
+            <translation><!-- Outbound Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Program</masterLabel>
+            <translation><!-- Partner Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portal</masterLabel>
+            <translation><!-- Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospecting - Existing Account</masterLabel>
+            <translation><!-- Prospecting - Existing Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospecting - New Account</masterLabel>
+            <translation><!-- Prospecting - New Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral - Employee</masterLabel>
+            <translation><!-- Referral - Employee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral – Partner/Disti/Third Party</masterLabel>
+            <translation><!-- Referral – Partner/Disti/Third Party --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales AI</masterLabel>
+            <translation><!-- Sales AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scoring Model</masterLabel>
+            <translation><!-- Scoring Model --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Selling</masterLabel>
+            <translation><!-- Social Selling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation><!-- Web --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar</masterLabel>
+            <translation><!-- Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website</masterLabel>
+            <translation><!-- Website --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Lead stage when the activity was booked. --></help>
+        <label><!-- Activity Creation Stage --></label>
+        <name>SWS_Lead_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Contact - No Opportunity</masterLabel>
+            <translation><!-- Contact - No Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Qualified Lead</masterLabel>
+            <translation><!-- Marketing Qualified Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Accepted Lead</masterLabel>
+            <translation><!-- Sales Accepted Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Qualified Lead</masterLabel>
+            <translation><!-- Sales Qualified Lead --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Lead stage when the activity is either &apos;Completed&apos; or &apos;Cancelled&apos;. --></help>
+        <label><!-- Activity Closed Stage --></label>
+        <name>SWS_Lead_Stage_when_Closed__c</name>
+        <picklistValues>
+            <masterLabel>Contact - No Opportunity</masterLabel>
+            <translation><!-- Contact - No Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Qualified Lead</masterLabel>
+            <translation><!-- Marketing Qualified Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Accepted Lead</masterLabel>
+            <translation><!-- Sales Accepted Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Qualified Lead</masterLabel>
+            <translation><!-- Sales Qualified Lead --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>SWS_Lead__c</name>
+        <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>SWS_Opportunity__c</name>
+        <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Ensure the selected product matches one of the values from the lead’s Product Interest. --></help>
+        <label><!-- Product Interest --></label>
+        <name>SWS_Product_Interest__c</name>
+        <picklistValues>
+            <masterLabel>Ethernet Controllers</masterLabel>
+            <translation><!-- Ethernet Controllers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber AI Studio</masterLabel>
+            <translation><!-- Intel Tiber AI Studio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber App-Level Optimization</masterLabel>
+            <translation><!-- Intel Tiber App-Level Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber Developer Cloud</masterLabel>
+            <translation><!-- Intel Tiber Developer Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber Trust Services</masterLabel>
+            <translation><!-- Intel Tiber Trust Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Atom™ Processors</masterLabel>
+            <translation><!-- Intel® Atom™ Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Core™ Processors</masterLabel>
+            <translation><!-- Intel® Core™ Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® EP80579 Integrated Processor</masterLabel>
+            <translation><!-- Intel® EP80579 Integrated Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Gaudi Learning Server</masterLabel>
+            <translation><!-- Intel® Gaudi Learning Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Max Series GPU</masterLabel>
+            <translation><!-- Intel® Max Series GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Quark SoC</masterLabel>
+            <translation><!-- Intel® Quark SoC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Processors</masterLabel>
+            <translation><!-- Intel® Xeon® Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Xeon® Scalable processor</masterLabel>
+            <translation><!-- Intel® Xeon® Scalable processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jupyter Notebook</masterLabel>
+            <translation><!-- Jupyter Notebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple platforms</masterLabel>
+            <translation><!-- Multiple platforms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power Products</masterLabel>
+            <translation><!-- Power Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic</masterLabel>
+            <translation><!-- Programmable Logic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solid State Drives (SSD)</masterLabel>
+            <translation><!-- Solid State Drives (SSD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Scheduled Date --></label>
+        <name>SWS_Scheduled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Demo Status --></label>
+        <name>SWS_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Task Closed by --></label>
+        <name>SWS_Task_Closed_by__c</name>
+        <relationshipLabel><!-- SW Demo Activities --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

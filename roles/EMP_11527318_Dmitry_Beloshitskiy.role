@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Inactive account</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11527318_Dmitry_Beloshitskiy</name>
+    <opportunityAccessLevel>Read</opportunityAccessLevel>
+    <parentRole>Inactive_Accounts_Role</parentRole>
+</Role>

@@ -1,0 +1,18 @@
+lightning-icon {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+.quick-view-text {
+  font-size: .90625rem;
+}
+
+@media (min-width: 768px) {
+  .quick-view-text {
+    font-size: .75rem;
+  }
+}
+
+.slds-align_absolute-center {
+  height: 2.5rem;
+}

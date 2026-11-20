@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Supported_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Supported_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Supported_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Supported_Layout</fullName>
+        <fields>Core_Product__c</fields>
+        <fields>Core_Product_Organization__c</fields>
+        <fields>Core_Flag_Status__c</fields>
+        <label>Supported Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fieldSets>
+        <fullName>SupportedProductFieldSet</fullName>
+        <description>Visualforce Page - Core_IPS_Lookup_Page_Syed</description>
+        <displayedFields>
+            <field>Core_Product__r.Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Organization__r.Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Code_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Application__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_IPS_Public_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>SupportedProductFieldSet</label>
+    </fieldSets>
+    <fields>
+        <fullName>Code_Name_Hidden_Evaluate_NA__c</fullName>
+        <description>Hidden field. Not to be shown on any layouts. Input - Core_Code_Name_Hidden_Insert_Spaces 
+Output - If codename contains &apos;N/A,&apos; or &apos;N/A&apos;, replace it with space. Else return the value of Core_Code_Name_Hidden_Evaluate_NOCONA (codename with spaces &amp; commas and after NOCONA removed).</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(Code_Name_Hidden_Evaluate_NOCONA__c, &apos;N/A,&apos;), 
+SUBSTITUTE(Code_Name_Hidden_Evaluate_NOCONA__c, &apos;N/A,&apos;, &apos;&apos;), 
+IF (CONTAINS(Code_Name_Hidden_Evaluate_NOCONA__c, &apos;N/A&apos;), SUBSTITUTE (Code_Name_Hidden_Evaluate_NOCONA__c, &apos;N/A&apos;, &apos;&apos;), Code_Name_Hidden_Evaluate_NOCONA__c) 
+)</formula>
+        <label>Code Name Hidden Evaluate NA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Name_Hidden_Evaluate_NOCONA__c</fullName>
+        <description>Hidden field. Not to be shown on any layouts. 
+Input - Core_Code_Name_Hidden_Insert_Spaces
+Output - If codename contains &apos;NOCONA,&apos; or &apos;NOCONA&apos;, replace it with space. Else return the value of Core_Code_Name_Hidden_Insert_Spaces (codename with spaces &amp; commas).</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA,&apos;),
+    SUBSTITUTE(Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA,&apos;, &apos;&apos;),
+IF (CONTAINS(Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA&apos;), SUBSTITUTE (Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA&apos;, &apos;&apos;), Core_Code_Name_Hidden_Insert_Spaces__c)
+)</formula>
+        <label>Code Name Hidden Evaluate NOCONA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Code_Name_Hidden_Insert_Spaces__c</fullName>
+        <description>Hidden field. Not to be shown on any layout. Input: Product2.Codename field . Output: 2 things - replaces semi colon delimiter in the Code Name with commas. Also inserts spaces between 2 consecutive code names.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(Core_Product__r.Core_Code_Name__c, &apos;;&apos;),
+    SUBSTITUTE(Core_Product__r.Core_Code_Name__c, &apos;;&apos;, &apos;, &apos;), Core_Product__r.Core_Code_Name__c)</formula>
+        <label>Code Name Hidden Insert Spaces</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Code_Name__c</fullName>
+        <description>Final codename field. Is shown on Supported Product layout &amp; value is copied over to Asset &amp; Case. Input - Code_Name_Hidden_Evaluate_NA. Output - code name with spaces &amp; commas inserted and truncated to first 255 characters.</description>
+        <externalId>false</externalId>
+        <formula>LEFT(Code_Name_Hidden_Evaluate_NA__c, 255)</formula>
+        <inlineHelpText>Derived from Product master data. Read only field.</inlineHelpText>
+        <label>Code Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_EOIS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to expire assets related to this Product</description>
+        <inlineHelpText>Check this to expire related assets</inlineHelpText>
+        <label>EOIS</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Flag_Status__c</fullName>
+        <description>This is to show the access setting for each Supported Product</description>
+        <inlineHelpText>A value is mandatory for this field.</inlineHelpText>
+        <label>Access Flag</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Par Hidden</fullName>
+                    <default>true</default>
+                    <label>Par Hidden</label>
+                </value>
+                <value>
+                    <fullName>Approval Required</fullName>
+                    <default>false</default>
+                    <label>Approval Required</label>
+                </value>
+                <value>
+                    <fullName>Auto Approve</fullName>
+                    <default>false</default>
+                    <label>Auto Approve</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Code_Name__c</fullName>
+        <description>Updated through a Workflow Rule. Used in SOSL (Product Search). Not shown on layouts.</description>
+        <externalId>false</externalId>
+        <label>Code Name for Search</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Is_Show_Variant__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Enable Product Variant</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Opportunity_PAR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity PAR</label>
+        <referenceTo>Core_IPS_Opportunity_PAR__c</referenceTo>
+        <relationshipLabel>Supported Products</relationshipLabel>
+        <relationshipName>Supported_Products</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Public_Product__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field if checked indicates that the product is a public product</description>
+        <inlineHelpText>This field if checked indicates that the product is a public product;
+This field value cannot be changed once checked as Public Product.</inlineHelpText>
+        <label>Public Product?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Platform_Name__c</fullName>
+        <description>Derived from Product master data. Read only field.</description>
+        <externalId>false</externalId>
+        <label>Platform Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Prod_EPM_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Product__r.Core_Unique_ID__c</formula>
+        <inlineHelpText>Shown on Save. Inherited from the Product Master record. Cannot be edited.</inlineHelpText>
+        <label>Product EPM ID_DONOTUSE</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Application__c</fullName>
+        <description>This is the description for the Intel Support Org that supports this product</description>
+        <externalId>false</externalId>
+        <formula>Core_Product_Organization__r.Core_Organization_Description__c</formula>
+        <inlineHelpText>This is the description for the Intel Support Org that supports this product</inlineHelpText>
+        <label>Product Focus Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_EPM_ID__c</fullName>
+        <description>Shown on Save. Inherited from the Product Master record. Cannot be edited.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Shown on Save. Inherited from the Product Master record. Cannot be edited.</inlineHelpText>
+        <label>Product EPM ID</label>
+        <length>128</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Launch_Date__c</fullName>
+        <description>Derived from Pipeline Launch Date in the SFDC Product object</description>
+        <formula>Core_Product__r.Core_Pipeline_Launch_Date__c</formula>
+        <inlineHelpText>Derived from the Pipeline Launch Date in Enterprise data. Cannot be edited by IPS Admins.</inlineHelpText>
+        <label>Product Launch Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Product_Organization__c</fullName>
+        <label>Support Org ID</label>
+        <referenceTo>Core_IPS_Product_Organization__c</referenceTo>
+        <relationshipLabel>Supported Products</relationshipLabel>
+        <relationshipName>Supported_Products</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>Reference to the Master Data product.</inlineHelpText>
+        <label>Product Name</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <errorMessage>Product Master Data record is not IPS Visible. Exit this screen and request Data Ops to set Product to IPS Visible.</errorMessage>
+            <filterItems>
+                <field>Product2.Core_Sales_Visible_Flag__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_IPS_Visible_Flag__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <infoMessage>Only &quot;IPS Visible&quot; products are shown for adding to IPS Support Orgs.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Supported Products</relationshipLabel>
+        <relationshipName>Supported_Products</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Launch_Date__c</fullName>
+        <description>A read/write field that can be edited by the Support Org admin to capture the start of the Support life cycle of a particular product. The value varies by Support Org. This is not the same as the Product Launch Date which comes from Enterprise product data.</description>
+        <inlineHelpText>A read/write field that can be edited by a Support Org admin to capture the start of the Support life cycle of a product. The value varies by Support Org.</inlineHelpText>
+        <label>Support Launch Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Org_Name__c</fullName>
+        <description>Support Org Name to be used on Asset layouts.</description>
+        <externalId>false</externalId>
+        <formula>Core_Product_Organization__r.Core_IPS_Support_Org_Name__c</formula>
+        <label>Support Org Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Supported_Prod_Name__c</fullName>
+        <description>Formula field that obtains it&apos;s value from the standard Product object Name field.</description>
+        <externalId>false</externalId>
+        <formula>Core_Product__r.Name</formula>
+        <inlineHelpText>Shown on Save. Copied from the Product Master Data name. Cannot be edited.</inlineHelpText>
+        <label>Supported Product Name DO NOT USE</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Supported_Product_Alias__c</fullName>
+        <description>Field editable by Support Org Admins. Add nicknames or other easily recognizable names to enable search on Case.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Editable by the Support Org Admin. Add nicknames or easily recognizable names to enable search on Case.</inlineHelpText>
+        <label>Alias</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Supported_Product_Name__c</fullName>
+        <description>Identical to EPM Product Name. Copied from EPM Product Name on Save. Cannot be edited.</description>
+        <inlineHelpText>Copied from EPM Product Name on Save. Cannot be edited.</inlineHelpText>
+        <label>Supported Product Name</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Supported_Product_Tag__c</fullName>
+        <description>A free form text field used by Support Org Admins to group products around security sensitivity within their Product Life Cycle phase. Possible values include “Early Access”,  “Hot” or “Focus”, “Pre-Launch”, “Post-Launch”, “Revenue”, “Sustaining” etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used by Support Org Admins to group products around security sensitivity within their Product Life Cycle phase. Possible values include “Early Access”,  “Hot” or “Focus”, “Pre-Launch”, “Post-Launch”, “Revenue”, “Sustaining”.</inlineHelpText>
+        <label>Search/Reporting Tag</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Unique_Supported_Product__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Hidden field. 
+Contains the concatenation of Supported Org ID (SFDC ID) and the Product EPM ID. 
+Set to unique to ensure a single EPM ID can be added to a Support Org only once.</description>
+        <externalId>false</externalId>
+        <label>Unique Supported Product</label>
+        <length>128</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Supported Product</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Supported_Product_Name__c</columns>
+        <columns>Core_Product_EPM_ID__c</columns>
+        <columns>Core_Product__c</columns>
+        <columns>Core_Code_Name__c</columns>
+        <columns>Core_Product_Organization__c</columns>
+        <columns>Core_Support_Org_Name__c</columns>
+        <columns>Core_Unique_Supported_Product__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>SP-{0000000000}</displayFormat>
+        <label>Supported Product ID</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Supported Products</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Core_Product_EPM_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Supported_Product_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Flag_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Support_Launch_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Product_Launch_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Product_Organization__c</customTabListAdditionalFields>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Core_Supported_Product_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Product_Organization__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Support_Org_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Product_Application__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Flag_Status__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>Core_Support_Org_Name__c</lookupFilterFields>
+        <lookupFilterFields>Core_Supported_Product_Name__c</lookupFilterFields>
+        <lookupFilterFields>Core_Code_Name__c</lookupFilterFields>
+        <lookupFilterFields>Core_Platform_Name__c</lookupFilterFields>
+        <lookupFilterFields>Core_Supported_Product_Alias__c</lookupFilterFields>
+        <lookupFilterFields>Core_EOIS__c</lookupFilterFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Supported_Product_Name__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Core_Product_Organization__c</searchFilterFields>
+        <searchFilterFields>Core_Flag_Status__c</searchFilterFields>
+        <searchFilterFields>Core_Product__c</searchFilterFields>
+        <searchFilterFields>Core_Supported_Product_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_Supported_Product_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Product__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Flag_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Product_Organization__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Support_Org_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Product_Application__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Code_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Supported_Product_Alias__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_IPS_Cannot_Update_Supp_Prod_Header</fullName>
+        <active>true</active>
+        <description>On an existing Supported Product record, prevent re-lookup to Product MD. Any Product MD name changes will flow thru via a trigger update. Allow updates to other Supp Prod data elements like EOIS, Status, Alias etc.</description>
+        <errorConditionFormula>ISCHANGED(  Core_Product__c  )</errorConditionFormula>
+        <errorDisplayField>Core_Product__c</errorDisplayField>
+        <errorMessage>Product name on an existing record cannot be updated. Create a new Supported Product instead.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Cannot_change_Access_Flag</fullName>
+        <active>false</active>
+        <description>Cannot change the value for access flag for a public product</description>
+        <errorConditionFormula>AND( IF( Core_IPS_Public_Product__c = true, true, false) , ISCHANGED( Core_Flag_Status__c ) )</errorConditionFormula>
+        <errorDisplayField>Core_Flag_Status__c</errorDisplayField>
+        <errorMessage>Cannot change the value of Access Flag as it is a public product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Cannot_change_Public_Product</fullName>
+        <active>true</active>
+        <description>To restrict reverting from Public Product</description>
+        <errorConditionFormula>AND(
+	OR(
+		AND(Core_IPS_Public_Product__c=FALSE, PRIORVALUE(Core_IPS_Public_Product__c)=TRUE),
+		AND(
+			ISCHANGED( Core_Flag_Status__c ), 			TEXT(PRIORVALUE(Core_Flag_Status__c))= $Label.Core_IPS_General_Public_Product, 
+			NOT(ISPICKVAL(Core_Flag_Status__c, &apos;EOIS&apos;))
+		)
+	),
+	$Setup.Core_IPS_Run_Rules_Exception_Admin__c.Run_Validation_Rule__c
+)</errorConditionFormula>
+        <errorDisplayField>Core_Flag_Status__c</errorDisplayField>
+        <errorMessage>Once Set to as Public Product, cannot revert back</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Prevent_EOIS_Removal</fullName>
+        <active>true</active>
+        <description>This validation rule will prevent the clearing of the EOIS checkbox on a Supported Product.  We are preventing this in R1 because of the impact it can have on MAP/PAR</description>
+        <errorConditionFormula>AND(
+	OR(
+		AND(Core_EOIS__c=FALSE, PRIORVALUE(Core_EOIS__c)=TRUE),
+		AND(ISCHANGED( Core_Flag_Status__c ), ISPICKVAL( PRIORVALUE(Core_Flag_Status__c), &apos;EOIS&apos;))
+	), 
+	$Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;,
+ $Setup.Core_IPS_Run_Rules_Exception_Admin__c.Run_Validation_Rule__c
+)</errorConditionFormula>
+        <errorDisplayField>Core_Flag_Status__c</errorDisplayField>
+        <errorMessage>Once set to EOIS, you cannot clear the EOIS value from a Supported Product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Restrict_009_SupportedProduct</fullName>
+        <active>true</active>
+        <errorConditionFormula>( ISNEW() || ISCHANGED( Core_Product_Organization__c ) )&amp;&amp;( Core_Product_Organization__c == $Label.Core_IPS_NSG_Support_Org_ID )</errorConditionFormula>
+        <errorMessage>This Support Org not in use, cannot add or update Product to this Org.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_VPH_Check_PublicProduct</fullName>
+        <active>true</active>
+        <errorConditionFormula>Core_Product__r.Core_Hierarchy_ID__c &lt;&gt; &apos;43&apos;
+&amp;&amp; 
+(ISCHANGED( Core_IPS_Public_Product__c ) || ISNEW() )&amp;&amp; Core_IPS_Public_Product__c</errorConditionFormula>
+        <errorDisplayField>Core_IPS_Public_Product__c</errorDisplayField>
+        <errorMessage>Only Valid Product Hierarchy can be made as Public Product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_VPLCH_Restrict_PublicProduct</fullName>
+        <active>true</active>
+        <description>Restrict Valid Platform Codename Hierarchy from making public product</description>
+        <errorConditionFormula>Core_Product__r.Core_Hierarchy_ID__c = &apos;59&apos;
+&amp;&amp;
+(ISCHANGED( Core_IPS_Public_Product__c ) ||  ISNEW() )&amp;&amp; Core_IPS_Public_Product__c</errorConditionFormula>
+        <errorDisplayField>Core_IPS_Public_Product__c</errorDisplayField>
+        <errorMessage>Cannot make Valid Platform Codename Hierarchy Product as public product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Product_Name_Cant_Be_Null</fullName>
+        <active>true</active>
+        <description>Prevent saving a Supported Product record if Product name is NULL.</description>
+        <errorConditionFormula>ISBLANK(Core_Product__c)</errorConditionFormula>
+        <errorDisplayField>Core_Product__c</errorDisplayField>
+        <errorMessage>Product Name cannot be blank.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Case_Categories</fullName>
+        <availability>online</availability>
+        <description>this is used for adding case caetgories on supported product</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Add Case Categories</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/lightning/n/Add_Case_Categories?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Environment_Details_LEX</fullName>
+        <availability>online</availability>
+        <description>TO Add EDQ To supprted Product</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add Environment Details</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/lightning/n/AddProductEDQ?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Copy_Categories_EDQ_Lex</fullName>
+        <availability>online</availability>
+        <description>this is used for copying categories and edq&apos;s to selected supported product</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Copy Categories &amp; EDQ&apos;s</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/lightning/n/CopyCategories_EDQ?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Add_Issue_categories</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Case Categories</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_addIssueCategories</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_EDO_under_Sub_Cat</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>EDO under Sub Cat</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://intel--crmsb14.cs21.my.salesforce.com/00Oq0000000SKiw</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_IPS_Copy_Categories_EnvironmentDetails</fullName>
+        <availability>online</availability>
+        <description>Copy Environment Details Questions, Case Categories, Sub Categories to another Supported Product</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Copy Categories &amp; EDQs</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_IPS_Copy_EnvironmentDetails</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_IPS_Set_to_General</fullName>
+        <availability>online</availability>
+        <description>Set Access flag to General (ALL Access!)</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Set to General</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/41.0/connection.js&quot;)} 
+
+
+// Get the record
+var SP = new sforce.SObject(&quot;Core_IPS_Supported_Product__c&quot;); 
+SP.id = &quot;{!Core_IPS_Supported_Product__c.Id}&quot;; 
+
+// If current status is EOIS=TRUE
+if(&quot;{!Core_IPS_Supported_Product__c.Core_EOIS__c}&quot; === &quot;1&quot;) {
+ alert(&quot;Once set to EOIS, you cannot clear the EOIS value from a Supported Product.&quot;);
+}
+
+// If current status is Public Product=TRUE
+else if(&quot;{!Core_IPS_Supported_Product__c.Core_IPS_Public_Product__c}&quot; === &quot;1&quot;) {
+ alert(&quot;Supported Product is already set as {!$Label.Core_IPS_General_Public_Product}. No change will be made.&quot;);
+}
+else{
+
+var cnfrm = window.confirm(&apos;**WARNING**  \nSetting the Access Flag to General (ALL Access!) will open up access to every IPS active customer allowing them to potentially create Cases with this Supported Product!  This setting cannot be undone!  \n\nAre you sure you want to set this Supported Product\&apos;s Access Flag to General (ALL Access!)?&apos;);
+
+if (cnfrm) {
+    var supprod = new sforce.SObject(&quot;Core_IPS_Supported_Product__c&quot;);
+    supprod.Id = &apos;{!Core_IPS_Supported_Product__c.Id}&apos;;
+    supprod.Core_Flag_Status__c = &apos;{!$Label.Core_IPS_General_Public_Product}&apos;;
+    supprod.Core_IPS_Public_Product__c = true;
+    result = sforce.connection.update([supprod]);
+    if (result[0].success == &apos;true&apos;) {
+        location.reload();
+    } else {
+        console.log(result[0].errors);
+        var exceptionMsg = &apos;&apos;;
+        if(result[0].errors instanceof Array) {
+			for(var i=0;i&lt;result[0].errors.length;i++)
+				exceptionMsg += result[0].errors[i].message + &apos;\n\n&apos; ;
+        }
+        else { 
+			exceptionMsg = result[0].errors.message; 		
+		}
+        if (exceptionMsg == null || exceptionMsg == &apos;&apos;)
+            exceptionMsg = &apos;Something went wrong, Please contact Support Team !!&apos;;
+		alert(exceptionMsg);
+    }
+}
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Supported_Product_Make_EOIS</fullName>
+        <availability>online</availability>
+        <description>This button will change the EOIS value from FALSE to TRUE.</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Set to EOIS</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+
+// Get the record
+var SP = new sforce.SObject(&quot;Core_IPS_Supported_Product__c&quot;); 
+SP.id = &quot;{!Core_IPS_Supported_Product__c.Id}&quot;; 
+
+// If current status is EOIS=TRUE
+if(&quot;{!Core_IPS_Supported_Product__c.Core_EOIS__c}&quot; === &quot;1&quot;) {
+ alert(&quot;Supported Product is already set to EOIS. No change will be made.&quot;);
+}
+
+// current status is EOIS=FALSE
+else {
+
+	function confirmEOIS() {
+ //ask if they are sure 
+	 var isConfirm = confirm(&quot;**WARNING**  \nSetting the Access Flag to EOIS (End Of Interactive Support) can only be undone by KTBR!  \n\nAre you sure you want to set this Supported Product\&apos;s Access Flag to EOIS?&quot;);
+	 if (isConfirm) return true; 
+ return false; 
+}
+
+//if they say OK then save the change
+	if (confirmEOIS()) {
+	 // change status to EOIS and Access Flag to EOIS
+	 SP.Core_Flag_Status__c=&apos;EOIS&apos;;
+ SP.Core_EOIS__c = &quot;1&quot;;
+ // update the record
+ result = sforce.connection.update([SP]);
+	 if (result[0].success == &apos;true&apos;) {
+ //reload the page to show the updated status if the save was successful
+ window.location.reload();
+		} else {
+			console.log(result[0].errors);
+        var exceptionMsg = &apos;&apos;;
+        if(result[0].errors instanceof Array) {
+			for(var i=0;i&lt;result[0].errors.length;i++)
+				exceptionMsg += result[0].errors[i].message + &apos;\n\n&apos; ;
+        }
+        else { 
+			exceptionMsg = result[0].errors.message; 		
+		}
+			if (exceptionMsg == null || exceptionMsg == &apos;&apos;)
+				exceptionMsg = &apos;Something went wrong, Please contact Support Team !!&apos;;
+			alert(exceptionMsg);
+		}	 
+}
+}</url>
+    </webLinks>
+</CustomObject>

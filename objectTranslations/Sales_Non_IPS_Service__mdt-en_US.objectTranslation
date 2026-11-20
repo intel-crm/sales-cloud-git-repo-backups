@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Non IPS Service</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales Non IPS Services</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of License Issue --></label>
+        <name>Type_of_License_Issue__c</name>
+        <picklistValues>
+            <masterLabel>Having an issue in generating Employee or Evaluation or No-Cost or Legacy Licenses?</masterLabel>
+            <translation><!-- Having an issue in generating Employee or Evaluation or No-Cost or Legacy Licenses? --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I am getting errors generating a license file</masterLabel>
+            <translation><!-- I am getting errors generating a license file --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I am getting errors renewing a license</masterLabel>
+            <translation><!-- I am getting errors renewing a license --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can&apos;t assign or remove product to/from a computer</masterLabel>
+            <translation><!-- I can&apos;t assign or remove product to/from a computer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can&apos;t generate a companion or temporary license</masterLabel>
+            <translation><!-- I can&apos;t generate a companion or temporary license --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can&apos;t see/find a product</masterLabel>
+            <translation><!-- I can&apos;t see/find a product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can&apos;t update License User/delegate admin</masterLabel>
+            <translation><!-- I can&apos;t update License User/delegate admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I can’t merge or split licenses</masterLabel>
+            <translation><!-- I can’t merge or split licenses --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

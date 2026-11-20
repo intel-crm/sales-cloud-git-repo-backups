@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Deal Win Goal EOLd</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Deal Win Goals EOLd</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approved KPI Revenue --></label>
+        <name>Core_Approved_KPI_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bypass Submission --></label>
+        <name>Core_Bypass_Submission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win Goal Id --></label>
+        <name>Core_Deal_Win_Goal_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win Goal Owner Email --></label>
+        <name>Core_Deal_Win_Goal_Owner_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win Goal Owner Manager Email --></label>
+        <name>Core_Deal_Win_Goal_Owner_Manager_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Win Goal Owner Manager --></label>
+        <name>Core_Deal_Win_Goal_Owner_Manager__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date the goal was last &apos;Accepted&apos; by the Owner. --></help>
+        <label><!-- Accept Date --></label>
+        <name>Core_Goal_Accept_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the individual who approved the Deal Win Goal. --></help>
+        <label><!-- Approved By --></label>
+        <name>Core_Goal_Approved_By__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date the goal was last approved by the manager. --></help>
+        <label><!-- Approve Date --></label>
+        <name>Core_Goal_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>Core_Goal_Approver__c</name>
+        <relationshipLabel><!-- Deal Win Goals EOLd (Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Select the Tier 1 BU KPI with which the goal is aligned. --></help>
+        <label><!-- KPI Name --></label>
+        <name>Core_Goal_BU_Focus_Area__c</name>
+        <picklistValues>
+            <masterLabel>CCG Commercial Deal Revenue $</masterLabel>
+            <translation><!-- CCG Commercial Deal Revenue $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Strategic Next Gen Design #</masterLabel>
+            <translation><!-- CCG Strategic Next Gen Design # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG vPro Platform Deal Revenue $</masterLabel>
+            <translation><!-- CCG vPro Platform Deal Revenue $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Growth Deal $</masterLabel>
+            <translation><!-- DC Growth Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Strategic Next Gen Design #</masterLabel>
+            <translation><!-- DC Strategic Next Gen Design # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Compute Deal $</masterLabel>
+            <translation><!-- DCAI Compute Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Deal (Sell-To) $</masterLabel>
+            <translation><!-- NEX Deal (Sell-To) $ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select &apos;Assigned&apos; if you are the primary AE/ITS responsible for delivering KPI as part of your base quota. Select &apos;Team Member&apos; if helping to complete the goal, and select &apos;Overachievement&apos; if applicable per the Overachievement guidance. --></help>
+        <label><!-- Category --></label>
+        <name>Core_Goal_Category__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation><!-- Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Overachievement</masterLabel>
+            <translation><!-- Overachievement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Team Member</masterLabel>
+            <translation><!-- Team Member --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Date the goal was last submitted for approval by the Owner. --></help>
+        <label><!-- Claim Date --></label>
+        <name>Core_Goal_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commissionable? --></label>
+        <name>Core_Goal_Commissionable__c</name>
+    </fields>
+    <fields>
+        <help><!-- The criteria which should be met to achieve the goal. This is a system populated field based on KPI selected. --></help>
+        <label><!-- Criteria --></label>
+        <name>Core_Goal_Criteria__c</name>
+        <picklistValues>
+            <masterLabel>Please refer to https://saleskpi.intel.com/</masterLabel>
+            <translation><!-- Please refer to https://saleskpi.intel.com/ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- KPI Achieved Flag --></label>
+        <name>Core_Goal_KPI_Achieved_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Match Flag --></label>
+        <name>Core_Goal_KPI_Match_Flag__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field Help: 1.No KPI Match: Opportunity doesn’t meet KPI criteria- - &gt;CAN’T submit  2.KPI Not Achieved: Opportunity meets KPI criteria but not yet ‘win approved’- - &gt;CAN’T submit  3.KPI Achieved: Opportunity meets KPI criteria &amp; ‘win approved’- - &gt;CAN submit. --></help>
+        <label><!-- Match Opportunity KPI? --></label>
+        <name>Core_Goal_Match_Opportunity_KPI__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter a name that uniquely defines the goal --></help>
+        <label><!-- Name --></label>
+        <name>Core_Goal_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunities Added History --></label>
+        <name>Core_Goal_Opportunities_Added_History__c</name>
+    </fields>
+    <fields>
+        <help><!-- A list of the opportunity IDs that were associated with the Deal Win Goal at the time of approval. --></help>
+        <label><!-- Opportunities at Approval --></label>
+        <name>Core_Goal_Opportunities_at_Approval__c</name>
+    </fields>
+    <fields>
+        <help><!-- If an opportunity is associated with the goal, this will be automatically checked. --></help>
+        <label><!-- Opportunity Identified? --></label>
+        <name>Core_Goal_Opportunity_Identified__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Account Name --></label>
+        <name>Core_Goal_Oppty_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Amount --></label>
+        <name>Core_Goal_Oppty_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Approval Status --></label>
+        <name>Core_Goal_Oppty_Approval_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Approved Date --></label>
+        <name>Core_Goal_Oppty_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Decision Date --></label>
+        <name>Core_Goal_Oppty_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner Full Name --></label>
+        <name>Core_Goal_Oppty_Owner_FullName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner --></label>
+        <name>Core_Goal_Oppty_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Region --></label>
+        <name>Core_Goal_Oppty_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Sales Group --></label>
+        <name>Core_Goal_Oppty_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Solution Area --></label>
+        <name>Core_Goal_Oppty_Solution_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Stage --></label>
+        <name>Core_Goal_Oppty_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Technical Owner --></label>
+        <name>Core_Goal_Oppty_Technical_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner WWID --></label>
+        <name>Core_Goal_Owner_WWID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Individual responsible for achieving and receiving credit for the Deal Win Goal (DWG), typically the user who created the DWG. --></help>
+        <label><!-- Owner --></label>
+        <name>Core_Goal_Owner__c</name>
+        <relationshipLabel><!-- Deal Win Goals EOLd (Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- FIELD KEY:  DRAFT: new (can&apos;t submit); ACCEPTED: Manager accepts DWG (can&apos;t submit); APPROVED: Manager has approved DWG (can submit ONLY if Oppty is approved); CANCELLED: DWG has been cancelled (can be put back to Draft status); more at goto/dealwingoals --></help>
+        <label><!-- Status --></label>
+        <name>Core_Goal_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- KPI Revenue Difference --></label>
+        <name>Core_KPI_Revenue_Difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Revenue Update --></label>
+        <name>Core_KPI_Revenue_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Revenue --></label>
+        <name>Core_KPI_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MatchOppKPI_2ndPrev_Backend --></label>
+        <name>Core_MatchOppKPI_2ndPrev_Backend__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MatchOppKPI_Backend --></label>
+        <name>Core_MatchOppKPI_Backend__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MatchOppKPI_Prev_Backend --></label>
+        <name>Core_MatchOppKPI_Prev_Backend__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Deal Win Goals EOLd --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recall Comments --></label>
+        <name>Core_Recall_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validate KPI Flag --></label>
+        <name>Core_Validate_KPI_Flag__c</name>
+    </fields>
+    <sharingReasons>
+        <label><!-- Core_Deal_Win_Goal --></label>
+        <name>Core_Deal_Win_Goal</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The Status cannot be left BLANK --></errorMessage>
+        <name>Core_Goal_Status_cannot_be_blank</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Goal_Clone --></label>
+        <name>Core_Goal_Clone</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Goal_Credit --></label>
+        <name>Core_Goal_Credit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Lex_DWG_Sharing --></label>
+        <name>Core_Lex_DWG_Sharing</name>
+    </webLinks>
+</CustomObjectTranslation>

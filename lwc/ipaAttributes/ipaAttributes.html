@@ -1,0 +1,28 @@
+<template>
+    <div class="attributes-container" data-separator={separator} data-display-inline={displayInline}>
+        <template for:each={formattedAttributes} for:item="attr">
+            <div key={attr.key} class={attr.class}>
+                <template if:true={attr.isLink}>
+                    <c-ipa-link label={attr.label}
+                        preview={attr.preview}
+                        object-page={attr.objectPage}
+                        record-id={attr.recordId}
+                        search-params={attr.searchParams}
+                        external-url={attr.externalUrl}>
+                    </c-ipa-link>
+                </template>
+                <template if:false={attr.isLink}>
+                    <lightning-formatted-rich-text
+                        disable-linkify
+                        value={attr.label}
+                    ></lightning-formatted-rich-text>
+                </template>
+                <template if:true={separator}>
+                    <span class="attribute-separator slds-p-horizontal_xx-small">
+                        {separator}
+                    </span>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,89 @@
+<template>
+    <lightning-card title="Corp Account/Agency Set Up">
+
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-gutters">
+
+                <!-- Lookup -->
+                <div class="slds-col slds-size_1-of-3">
+                    <c-core_-m-d-f_-custom-lookup
+                        label="Search Account"
+                        obj-name="Account"
+                        icon-name="standard:account"
+                        search-placeholder="Search Accounts..."
+                        filter={accountQueryFilter}
+                        onlookupselected={handleAccountFilterChange}>
+                    </c-core_-m-d-f_-custom-lookup>
+                </div>
+
+                <!-- Request Button -->
+                <template if:true={showRequestButton}>
+                    <div class="slds-col slds-size_auto slds-m-top_large">
+                        <span class="slds-m-right_small">
+                            Can't find your account?
+                        </span>
+                        <lightning-button 
+                            label="Request New Account"
+                            variant="brand"
+                            size="small"
+                            onclick={handleAccountRequest}>
+                        </lightning-button>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+
+        <!-- Program Dropdown -->
+        <template if:true={showProgramDropdown}>
+            <div class="slds-p-around_medium slds-size_1-of-3">
+                <lightning-combobox
+                    label="Select Program"
+                    options={programOptions}
+                    value={selectedProgram}
+                    onchange={handleProgramChange}>
+                </lightning-combobox>
+            </div>
+        </template>
+
+        <!-- Spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+
+        <!-- Table -->
+        <template if:true={showTable}>
+            <!-- Refresh Button -->
+            <div class="slds-grid slds-grid_align-end slds-p-around_small">
+                <lightning-button 
+                    label="Refresh"
+                    icon-name="utility:refresh"
+                    variant="neutral"
+                    onclick={handleRefresh}>
+                </lightning-button>
+            </div>
+            <lightning-datatable
+                key-field="Id"
+                data={accounts}
+                columns={columns}
+                wrap-text-max-lines="5"
+                hide-checkbox-column
+                show-row-number-column
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+        <!-- VC → Program Table -->
+        <template if:true={showVcTable}>
+            <lightning-card title="Program to Virtual Corp Mapping">
+                <div class="slds-p-around_medium">
+                    <lightning-datatable
+                        key-field="program"
+                        data={vcProgramTableData}
+                        columns={vcColumns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+        </template>
+    </lightning-card>
+</template>

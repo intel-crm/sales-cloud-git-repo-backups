@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity KPI Batch Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity KPI Batch Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity_ID_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity KPI Batch ID --></label>
+        <name>Core_Opportunity_KPI_Batch_ID_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Stage --></label>
+        <name>Core_Opportunity_Stage_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

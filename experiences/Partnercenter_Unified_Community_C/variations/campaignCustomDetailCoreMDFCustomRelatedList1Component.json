@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "e2db71e5-ba7f-4e0d-bc2b-c28b724b43da",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "e39d6198-d5f1-4b09-8c72-9a7164623b24",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Campaign_Custom_Detail_core_MDF_Custom_Related_List_1_Component",
+  "id" : "8d9a3093-c1da-436d-a69e-727a22642020",
+  "type" : "experienceVariation"
+}

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Offering Resource</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Offering Resources</value>
+    </caseValues>
+    <fields>
+        <label><!-- Alt Text --></label>
+        <name>PMP_Alt_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Account ID --></label>
+        <name>PMP_BrightCoveVideoAccountID__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Id --></label>
+        <name>PMP_BrightCoveVideoId__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Job Id --></label>
+        <name>PMP_BrightCoveVideoJobId__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Thumbnail URL --></label>
+        <name>PMP_BrightCoveVideoThumbnail_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Extension --></label>
+        <name>PMP_BrightCove_Video_Extension_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delete BrightCove Video --></label>
+        <name>PMP_Delete_BrightCove_Video_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Source Id --></label>
+        <name>PMP_External_Source_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Size --></label>
+        <name>PMP_File_Size_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Integration Status --></label>
+        <name>PMP_Integration_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Aborted</masterLabel>
+            <translation><!-- Aborted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Integration Status Reason --></label>
+        <name>PMP_Integration_Status_Reason_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Offering Gallery Video --></label>
+        <name>PMP_Offering_Gallery_Video_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Master Detail to the Offering object --></help>
+        <label><!-- Offering --></label>
+        <name>PMP_Offering_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Resources --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Offering Image --></label>
+        <name>PMP_Partner_Offering_Image__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the URL link of the offering resources (Data Sheet/Product Brief) --></help>
+        <label><!-- Partner Offering Resource URL Text --></label>
+        <name>PMP_Partner_Offering_Resource_URL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resource Description --></label>
+        <name>PMP_Resource_Description_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ordering Sequence --></label>
+        <name>PMP_Resource_Sequence_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the type of the offering resource --></help>
+        <label><!-- Resource Type --></label>
+        <name>PMP_Resource_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Additional Resources</masterLabel>
+            <translation><!-- Additional Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Sheet</masterLabel>
+            <translation><!-- Data Sheet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demo</masterLabel>
+            <translation><!-- Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diagram</masterLabel>
+            <translation><!-- Diagram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOT Solutions Aggregator</masterLabel>
+            <translation><!-- IOT Solutions Aggregator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Image</masterLabel>
+            <translation><!-- Image --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Brief</masterLabel>
+            <translation><!-- Product Brief --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reference Architecture</masterLabel>
+            <translation><!-- Reference Architecture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success Story</masterLabel>
+            <translation><!-- Success Story --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thumbnail Image</masterLabel>
+            <translation><!-- Thumbnail Image --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tutorials</masterLabel>
+            <translation><!-- Tutorials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>URL</masterLabel>
+            <translation><!-- URL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video</masterLabel>
+            <translation><!-- Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Page</masterLabel>
+            <translation><!-- Web Page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar</masterLabel>
+            <translation><!-- Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>White Paper</masterLabel>
+            <translation><!-- White Paper --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Video Title --></label>
+        <name>PMP_Video_Title_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

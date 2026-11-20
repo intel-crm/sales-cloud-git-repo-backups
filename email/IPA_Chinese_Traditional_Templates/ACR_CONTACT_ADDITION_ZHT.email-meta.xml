@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_ADDITION_ZHT</name>
+    <style>none</style>
+    <subject>Intel® 夥伴聯盟帳戶新增了使用者</subject>
+    <textOnly>確認帳戶詳細資料
+
+{!UserName} 您好，
+
+有人透過 Intel 代表或貴公司的其他聯絡人加入{!Account.Name}的 Intel® 夥伴聯盟帳號。
+
+公司名稱： {!Account.Name}
+企業 ID： {!Account.AccountNumber}
+加入的聯絡人：電子郵件為 {!ContactEmail}
+關係（職位）： {!AcrRoles}
+
+若您並未批准這項更新，請登入並移除這個聯絡人。
+
+如果您有問題，請與我們聯繫 https://signin.intel.com/ContactUs?Culture=zh-TW
+
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel 公司，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

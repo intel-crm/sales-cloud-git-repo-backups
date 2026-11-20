@@ -1,0 +1,40 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e2a5a72d-6ac3-41ac-ae48-284e6e46517a",
+  "label" : "ERPM Engagement List",
+  "regions" : [ {
+    "id" : "8aaa49de-87a5-4d35-a584-1b7280da5549",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showDisplay" : "showall",
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "737c18a3-398f-4680-bb10-a75699516dc5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1f53dd3c-4859-4cf8-9494-11a0ee1cea38",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "f0b0e37c-196c-4b6d-a378-cfd50fad23de",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a2T"
+}

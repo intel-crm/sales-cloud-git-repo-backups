@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>IQR Release Notification WW50</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>What&apos;s New</actionButtonLabel>
+        <actionButtonLink>https://salescrm.intel.com/ww50-2022-release-update/</actionButtonLink>
+        <body>&lt;p&gt;A new Bulk actions capability has been added to IQR.&amp;nbsp;The following enhancements are now available:&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bulk SDM Approval/Rejection&lt;/li&gt;&lt;li&gt;Bulk Update of AE or SDM&lt;/li&gt;&lt;li&gt;Bulk Deal Creation for RPMs&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;For more information please click &lt;a href=&quot;https://salescrm.intel.com/ww50-2022-release-update/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</body>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2022-12-31</endDate>
+        <header>Welcome to Intel Quote Request</header>
+        <isPublished>false</isPublished>
+        <masterLabel>IQR Release Notification WW50</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2022-12-08</startDate>
+        <targetPageKey1>SBQQ__Quote__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Did you know…</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>PE to listen to standard insert/update</description>
+    <eventType>HighVolume</eventType>
+    <fields>
+        <fullName>Core_MDF_Object_ID__c</fullName>
+        <description>Stores the modified ID</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Object ID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Updated_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator to denote scorecard is edited</description>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Updated</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Listener PE</label>
+    <pluralLabel>Listener PE</pluralLabel>
+    <publishBehavior>PublishAfterCommit</publishBehavior>
+</CustomObject>

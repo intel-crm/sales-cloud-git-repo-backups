@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>报销申请批量</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Claim Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>报销申请批量状态</label>
+        <name>Core_MDF_ClaimBatch_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation>发生故障</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>有待文档</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>已提交</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation>成功</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>报销申请批量状态</label>
+        <name>Core_MDF_Claim_Batch_Status_Nm__c</name>
+    </fields>
+    <fields>
+        <label>报销申请数量（已提交）</label>
+        <name>Core_MDF_Claim_Count_InProgress_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>申请数量（待处理文件）</label>
+        <name>Core_MDF_Claim_Count_Pending_Document__c</name>
+    </fields>
+    <fields>
+        <label>报销申请计数（失败）</label>
+        <name>Core_MDF_Claim_Fail_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>报销申请计数（通过）</label>
+        <name>Core_MDF_Claim_Pass_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>报销申请计数（总数）</label>
+        <name>Core_MDF_Claim_Total_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>创建者</label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label>最后修改者</label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label>所有者</label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label>计划</label>
+        <name>Core_MDF_Program_Id__c</name>
+        <relationshipLabel><!-- Claim Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>Core_MDF_Send_Email__c</name>
+    </fields>
+    <nameFieldLabel>报销申请批量名称</nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Routing Criterion</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Routing Criteria</value>
+    </caseValues>
+    <fields>
+        <label><!-- Auto Promote --></label>
+        <name>Core_IPS_Auto_Promote__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System No Restricted Secret --></label>
+        <name>Core_IPS_Back_Sys_No_Restricted_Secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System Deactivated --></label>
+        <name>Core_IPS_Backend_System_Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System --></label>
+        <name>Core_IPS_Backend_System__c</name>
+        <relationshipLabel><!-- Routing Criteria --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Core_IPS_Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default --></label>
+        <name>Core_IPS_Default__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_IPS_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue --></label>
+        <name>Core_IPS_Queue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Product EIOS Status --></label>
+        <name>Core_IPS_SP_EIOS_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Organization --></label>
+        <name>Core_IPS_Support_Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Product Name --></label>
+        <name>Core_IPS_Supported_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Product --></label>
+        <name>Core_IPS_Supported_Product__c</name>
+        <relationshipLabel><!-- Routing Criteria --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please add Backend System Name as prefix for the Backend Supported Product Map ID. --></errorMessage>
+        <name>Core_IPS_Backend_Supported_Prod_NameRule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Supported Product defined for the Support Org associated with the Backend System --></errorMessage>
+        <name>Core_IPS_Backend_Validate_Supported_Prod</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Both product and Queue field can not be empty. --></errorMessage>
+        <name>Core_IPS_Queue_Prod_Field_NullCheck</name>
+    </validationRules>
+</CustomObjectTranslation>

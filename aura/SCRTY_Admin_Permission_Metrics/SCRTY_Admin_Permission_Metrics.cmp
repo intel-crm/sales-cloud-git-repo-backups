@@ -1,0 +1,49 @@
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome" access="global" controller="SCRTY_Admin_Permission_Metrics" >
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="object[]"/>
+    <aura:attribute name="sortedBy" type="String" default="countProfiles"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>	
+    <!--<aura:attribute name="userInfoMap" type = "object"/>
+    <aura:attribute name="customMetaDataMap" type = "Map"/>-->
+    <aura:attribute name="dataValueMap" type = "Map"/>
+     <!--aura handler with waiting and donewaiting events-->
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:attribute name="userMap" type = "Map"/>
+
+    <!--<aura:attribute name="customMetaDataList" type="List"/> -->
+    <aura:attribute name="fields" type="String"/>
+
+    <!--loading spinner start-->
+    <div class="exampleHolder">
+        <lightning:spinner aura:id="mySpinner" class="slds-hide"/>
+    </div>
+    <!-- Loading spinner end-->
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <div style = "height: 100%"> 
+        <lightning:datatable keyField="id"
+                             data="{! v.data }"
+                             columns="{! v.columns }"
+                             hideCheckboxColumn="true"
+                             class = "table-test"
+                             onsort="{!c.updateColumnSorting}"
+                             sortable = "true"
+                             sortedBy="{!v.sortedBy}"  
+                        	 sortedDirection="{!v.sortedDirection}"
+                             onrowaction="{! c.handleRowAction }"
+
+                             /> 
+         
+    </div>  
+        
+    <div style= "text-align: center;background-color: white;width: 100%; padding: 0 0 0 10%; margin: 0; height: 30px;">
+            <a>Red</a><b>: # of Active Users > {!$Label.c.SCRTY_Dashboard_Threshold_Count_High}</b>   &nbsp;
+            <s>Yellow</s><b>: # of Active Users is between {!$Label.c.SCRTY_Dashboard_Threshold_Count_Low} - {!$Label.c.SCRTY_Dashboard_Threshold_Count_High} </b> &nbsp; 
+            <u>Green</u> <b>: # of Active Users less then {!$Label.c.SCRTY_Dashboard_Threshold_Count_Low} </b>
+           
+        
+    </div>
+     
+    
+                                                            
+</aura:component>

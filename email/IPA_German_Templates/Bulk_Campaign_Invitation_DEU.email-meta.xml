@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Bulk_Campaign_Invitation_DEU</name>
+    <style>none</style>
+    <subject>Als Nutzer der Developer Zone Premier sind Sie jetzt berechtigt, der Intel Partner Alliance beizutreten!</subject>
+    <textOnly>Als Nutzer der Developer Zone Premier sind Sie jetzt berechtigt, der Intel® Partner Alliance beizutreten!
+
+Profitieren Sie neben den Vorzügen der Developer Zone Premier von weiteren Vorteilen!
+
+Werden Sie Teil der
+Intel® Partner Alliance
+
+Vorname: {!Contact.FirstName}
+
+Nachname: {!Contact.LastName}
+
+Benutzername (E-Mail-Adresse): {!Contact.Email}
+
+Die Berechtigung der Developer Zone Premier ermöglicht den Zugang zu vertraulichen Ressourcen und sicheren Inhalten von Intel und ist jetzt ein Vorteil der Intel® Partner Alliance. Als geschätzter Nutzer der Developer Zone Premier sind Sie jetzt berechtigt, dem Intel® Partner Alliance-Programm beizutreten.
+
+Ihr Unternehmen ist bereits ein geschätztes Mitglied der Intel® Partner Alliance. Dies ist eine Möglichkeit für Sie, sich Ihren Kollegen anzuschließen, die bereits am Programm teilnehmen, und Zugang zu exklusiven, hochgeschätzten Vorteilen zu erhalten. Ein paar Beispiele:
+
+Sie erhalten Zugang zu über 800 erstklassigen Kursen und mehr als 30 Kompetenzen und Zertifizierungen, Einblicke in die Branche und Geschäftsprognosen – wertvolles Wissen dank der Intel® Partner University.
+Sammeln Sie Prämienpunkte durch qualifizierende Intel Käufe und geschäftsfördernde Aktivitäten. Lösen Sie Prämienpunkte für wertvolle Geschäftszwecke ein.
+Speziell zusammengestellte, branchenspezifische und aufgabenorientierte Aktivierungszonen mit den Ressourcen, um Produkte und Lösungen basierend auf Intel® Technik zu entwickeln, zu vermarkten und zu verkaufen.
+Bewerben Sie Ihre Lösungen in unserem Intel® Partner Showcase über Ihre personalisierte Ladenfront, um sich mit Tausenden von Partnern und Ihren Endkunden im gesamten Technologieumfeld zu verbinden.
+
+Wenn Sie sich jetzt als Ansprechpartner anmelden, erhalten Sie 100 Prämienpunkte* für Ihr Unternehmen und können direkt von sämtlichen Vorteilen der Intel® Partner Alliance und der Developer Zone Premier profitieren.
+
+Führen Sie diese kurzen und einfachen Schritte aus:
+
+Klicken Sie auf Jetzt teilnehmen und folgen Sie den Anweisungen**, um sich mit dem Konto Ihres Unternehmens zu verbinden.
+Nach der Bestätigung erhalten Sie eine E-Mail, um sich bei der Intel® Partner Alliance anzumelden.
+
+Entdecken Sie alle Vorteile des Programms. Werden Sie jetzt Teil der Intel® Partner Alliance.
+
+Jetzt teilnehmen
+
+Benötigen Sie Hilfe bei der Registrierung als Partner? Support kontaktieren.
+
+*Muss für Prämienpunkte qualifiziert sein. Siehe Zulassungsbedingungen.
+
+*Hilfe für Azure Multi-Faktor-Authentifizierung (MFA)
+
+Werden Sie Mitglied der Intel® Partner Alliance Gruppe auf LinkedIn
+
+© 2024 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Datenschutz &amp;verbar; Cookies &amp;verbar; *Marken &amp;verbar; Abmelden</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

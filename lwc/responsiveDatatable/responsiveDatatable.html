@@ -1,0 +1,86 @@
+<template>
+	
+	<table class="slds-table slds-table_bordered slds-border_left slds-border_right slds-max-medium-table_stacked customTable">
+		<thead>
+			<tr class="slds-text-heading_label">
+				<template for:each={columnConfig} for:item="col">
+					<th key={col.fieldName} data-header={col.fieldName} scope="col" class={col.class}>
+						<template if:false={col.sortable}><span class="customWrapHeaderNonSortable">{col.label}</span></template>
+						<template if:true={col.sortable}>
+							<div class="customWrapHeader" data-header={col.fieldName} onclick={onHeaderClick}>
+								<span data-header={col.fieldName}>{col.label}</span>
+								<template if:true={showNorecord}>
+									<div style="float: right;">
+										<template if:true={arrowSelection}> <lightning-icon icon-name="utility:arrowup" size="xx-small" variant="brand"></lightning-icon></template>
+										<template if:false={arrowSelection}> <lightning-icon icon-name="utility:arrowdown" size="xx-small" variant="brand"></lightning-icon></template>
+									</div>
+								</template>
+							</div>
+						</template>
+					</th>
+				</template>
+			</tr>
+		</thead>
+		<tbody if:true={rows}>
+			<template for:each={rows} for:item="row" for:index="idx">
+				<tr class="slds-hint-parent" data-pk={row.pk} key={row.pk} onclick={onRowClick}>
+					<template for:each={row.data} for:item="colData">
+						<td class={colData.class} data-label={colData.label} key={colData.columnId}>
+							<span class={row.addCurrentUserCss}>
+								<template if:true={colData.isPhone}>
+									<lightning-formatted-phone value={colData.value}></lightning-formatted-phone>
+								</template>
+								<template if:true={colData.isEmail}>
+									<lightning-formatted-email value={colData.value}></lightning-formatted-email>
+								</template>
+								<template if:true={colData.isOther}>
+									<lightning-formatted-text value={colData.value}></lightning-formatted-text>
+								</template>
+								<template if:true={colData.showHelpText}>
+									<lightning-helptext style="padding-top: 0px !important;" content={formLabels.PRM_Pending_Action_Icon}></lightning-helptext>
+								</template>
+								<template if:true={colData.isButton}>
+									<template if:true={colData.isApproveDisabled}>
+										<lightning-button-icon
+											disabled
+											icon-name="utility:check"
+											variant="brand"
+											class="slds-m-left_xx-small"
+											data-reqid={row.pk}
+											data-name={colData.value}
+										></lightning-button-icon>
+									</template>
+									<template if:false={colData.isApproveDisabled}>
+										<lightning-button-icon
+											icon-name="utility:check"
+											variant="brand"
+											class="slds-m-left_xx-small"
+											onclick={approveHandler}
+											data-reqid={row.pk}
+											data-name={colData.value}
+											tooltip={formLabels.PRM_Approve}
+										></lightning-button-icon>
+									</template>
+									<lightning-button-icon
+										icon-name="utility:close"
+										class="slds-m-left_xx-small"
+										onclick={rejectHandler}
+										data-reqid={row.pk}
+										data-name={colData.value}
+										tooltip={formLabels.PRM_Reject}
+									></lightning-button-icon>
+								</template>
+								<template if:true={colData.isDate}>
+									<lightning-formatted-date-time value={colData.value}></lightning-formatted-date-time>
+								</template>
+							</span>
+						</td>
+					</template>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+	<template if:false={showNorecord}>
+		<div class="error"><label>{formLabels.PRM_LA_No_Data}</label></div>
+	</template>
+</template>

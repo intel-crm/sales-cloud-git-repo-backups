@@ -1,0 +1,23 @@
+<!---
+/**************************************************************************************
+Vf page Name:  Core_Msg_OnKPIUpdate
+Version     : 1.0 
+Created Date: 19/12/2018
+Description : Display a warning message on Opportunity detail section below the Pre Submit Check field.
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Sougata Sarkar           19/12/2018               Initial Revision
+
+--->
+<apex:page standardController="Opportunity" showHeader="false" applyHtmlTag="false"> 
+    <apex:form >
+        <apex:outputPanel rendered="true">
+            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
+                <div  style="font-weight:bold;color:blue;font-size:10px;">{!$Label.Core_Msg_OnKPIUpdate_Label}: <a href="http:goto/matchingKPIs" target="_blank">goto/matchingKPIs</a> for details</div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+                <div  style="font-weight:bold;color:blue;font-size:10px;">{!$Label.Core_Msg_OnKPIUpdate_Label}: <a href="http:goto/matchingKPIs" target="_blank">goto/matchingKPIs</a> for details</div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

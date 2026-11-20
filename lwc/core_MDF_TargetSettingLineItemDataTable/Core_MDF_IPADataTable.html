@@ -1,0 +1,79 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="custom:custom71"
+                            alternative-text="Line Item"
+                            title="Line Item">
+                        </lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name"
+                            style="display: inline-block;">
+                            <div
+                                class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate"
+                                     style="padding: 5px;" title={tableHeader}>{tableHeader} ({totalRecords})</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+      <!--  <div style="height: min-content">
+            <template if:true={data}>
+                <c-core_-m-d-f_-target-setting-custom-picklist
+                    key-field="Id"
+                    data={recordsToDisplay} 
+                    columns={columns} 
+                    onvalueselect={handleSelection}
+                    draft-values={draftValues} 
+                    oncellchange={handleCellChange}
+                    onsave={handleSave}
+                    oncancel={handleCancel}
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={onHandleSort}
+                    hide-checkbox-column>
+                </c-core_-m-d-f_-target-setting-custom-picklist>
+            </template>
+        </div> -->
+
+        <div style="height: min-content">
+            <lightning-datatable
+                key-field="Id"
+                data={recordsToDisplay}
+                columns={ipaColumns}
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={onHandleSort}
+                onvalueselect={handleSelection}
+                draft-values={draftValues} 
+                oncellchange={handleCellChange}
+                onsave={handleSave}
+                oncancel={handleCancel}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </div>
+
+            <!--PAGE NAVIGATION-->
+            <div class="slds-box slds-theme_default">
+            <div class="slds-align_absolute-center">
+                <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+                <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous" alternative-text="Previous" onclick={previousPage}></lightning-button>
+                &nbsp;&nbsp;
+                <span class="slds-badge">Showing {pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+                &nbsp;
+                <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next" alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+                <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last" alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+            </div>
+        </div>
+</template>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PRM_SBC_Account_Search_Configuration__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>PRM_SBC_Account_Search_Configuration__c$PRM_Contact__c</field>
+    </columns>
+    <columns>
+        <field>PRM_SBC_Account_Search_Configuration__c$PRM_isActive__c</field>
+    </columns>
+    <columns>
+        <field>PRM_SBC_Account_Search_Configuration__c$PRM_Type__c</field>
+    </columns>
+    <columns>
+        <field>PRM_SBC_Account_Search_Configuration__c$PRM_Comments__c</field>
+    </columns>
+    <description>This report is used to show list of blocked accounts and contacts</description>
+    <filter>
+        <criteriaItems>
+            <column>PRM_SBC_Account_Search_Configuration__c$PRM_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account_Blocked,Contact_Blocked</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>New ListOfBlockedAccAndContacts Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PRM_ListOfBlockedAccAndContacts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+</Report>

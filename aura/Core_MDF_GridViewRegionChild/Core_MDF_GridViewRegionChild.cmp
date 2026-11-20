@@ -1,0 +1,98 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="RegionwiseInstance" type="Core_MDF_Regionwise_Campaign_Budget__c"/>    
+    <aura:attribute name="isSecondYearCampaign" type="Boolean" default = "false"/>
+    <aura:attribute name="showSaveCancelBtn" type="boolean"/>
+    <aura:attribute name="FYEditMode" type="boolean" default="false" />
+    <aura:attribute name="SYEditMode" type="boolean" default="false" />
+    <aura:attribute name="regionEditable" type="Boolean"/>
+    
+    
+    
+    <!-- Table Row -->  
+    <tr class="slds-text-title_caps">
+        <td><div class="slds-truncate">{!v.RegionwiseInstance.Core_MDF_Region__c}</div></td>
+        <td ondblclick="{!c.inlineEditFYBudget}" class="slds-cell-edit">
+            <span class="slds-grid slds-grid_align-spread">
+                <!-- show input and output section based on boolean flag --> 
+                <aura:if isTrue="{!v.FYEditMode == false}">
+                    <!-- Aditya -->
+                    <span class="slds-truncate" title="FYBudget">
+                        <lightning:formattedNumber 
+                            value="{!v.RegionwiseInstance.Core_MDF_First_Year_Budget__c}"
+                            style="currency" 
+                            currencyCode="USD"/>
+                    </span>
+                    <aura:if isTrue="{!v.regionEditable == true}">
+                        <button onclick="{!c.inlineEditFYBudget}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit FYBudget">
+                            <lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+                        </button>
+                    </aura:if>
+                    <!-- Inline Edit Section in else case-->  
+                    <aura:set attribute="else">
+                        <section  tabindex="0" class="slds-popover slds-popover_edit" role="dialog" style="position: absolute; top: 0px">
+                            <!--   <div class="slds-popover__body"> -->
+                            <div class="slds-form-element slds-grid slds-wrap">
+                                <div class="slds-form-element__control slds-grow">
+                                    
+                                    <lightning:input type="number" class="slds-input_borders"
+                                                  aura:id="FYinputId"
+                                                  onblur="{!c.closeFYBudgetBox}"
+                                                  onchange="{!c.onFYBudgetChange}"                                                      
+                                                  value="{!v.RegionwiseInstance.Core_MDF_First_Year_Budget__c}" />
+                                    
+                                </div>
+                            </div>
+                            <!--  </div> -->
+                            <span id="form-end" tabindex="0"></span>
+                        </section>  
+                    </aura:set>  
+                </aura:if> 
+            </span>
+        </td>
+        <aura:if isTrue = "{!v.isSecondYearCampaign}">
+            <td ondblclick="{!c.inlineEditSYBudget}" class="slds-cell-edit">
+                <span class="slds-grid slds-grid_align-spread">
+                    <!-- show input and output section based on boolean flag --> 
+                    <aura:if isTrue="{!v.SYEditMode == false}">
+                        <!-- Aditya -->
+                        <span class="slds-truncate" title="SYBudget">
+                            <lightning:formattedNumber 
+                                value="{!v.RegionwiseInstance.Core_MDF_Second_Year_Budget__c}"
+                                style="currency"
+                                currencyCode="USD"/>
+                        </span>
+                        <aura:if isTrue="{!v.regionEditable == true}">
+                            <button onclick="{!c.inlineEditSYBudget}" class="slds-button slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit SYBudget">
+                                <lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+                            </button>
+                        </aura:if>
+                        
+                        <!-- Inline Edit Section in else case-->  
+                        <aura:set attribute="else">
+                            <section  tabindex="0" class="slds-popover slds-popover_edit" role="dialog" style="position: absolute; top: 0px">
+                                <!--     <div class="slds-popover__body"> -->
+                                <div class="slds-form-element slds-grid slds-wrap">
+                                    <div class="slds-form-element__control slds-grow">
+                                        
+                                        <lightning:input type="number" class="slds-input_borders"
+                                                      formatter="currency" step="0.01"
+                                                      aura:id="SYBudgetId"
+                                                      onblur="{!c.closeSYBudgetBox}"
+                                                      onchange ="{!c.onSYBudgetChange}"                                                      
+                                                      value="{!v.RegionwiseInstance.Core_MDF_Second_Year_Budget__c}" />
+                                        
+                                    </div>
+                                </div>
+                                <!--   </div> -->
+                                <span id="form-end" tabindex="0"></span>
+                            </section>  
+                        </aura:set>  
+                    </aura:if> 
+                </span>
+            </td>
+            
+        </aura:if>
+    </tr>
+    
+    
+</aura:component>

@@ -1,0 +1,17 @@
+<aura:component controller="PMP_SearchMarketplaceController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="documentId" type="String"/>
+    <aura:attribute name="language" type="String"/>
+    <aura:attribute name="languageOptions" type="Object[]"/>
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:layout multipleRows="true" >
+        <lightning:layoutItem size="12" mediumDeviceSize="12">
+            <c:MarketplaceFormDropdown label="Select language" options="{!v.languageOptions}" value="{!v.language}" required="true"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" mediumDeviceSize="12">
+            <c:MarketplaceFormImageUploader disclaimer1="" language="{!v.language}" recordIdForUpload= "{!v.recordId}" isEvent="true" disabled="{!!v.language}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

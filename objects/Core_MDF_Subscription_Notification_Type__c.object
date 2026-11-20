@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This fields indicates whether selected Notification type is active or not.</description>
+        <label>Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Applicable_CustomPermissions_nm__c</fullName>
+        <label>Applicable Custom Permissions</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_Custom_Permissions_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Applicable_PermissionSet_Grp_nm__c</fullName>
+        <label>Applicable Permission Set Groups</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_PermissionSet_Grp_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Applicable_PermissionSets_nm__c</fullName>
+        <label>Applicable Permission Sets</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_PermissionSets_nm</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Retail_Account_Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_RMF_PRC_Claim_Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_CSC_Claim_Submitter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Applicable_Profiles_nm__c</fullName>
+        <label>Applicable Profiles</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_Profiles_nm</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>IT Admin</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>System Administrator</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Conflict_PermissionSets_nm__c</fullName>
+        <label>Conflict Permission Sets</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_PermissionSets_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Conflict_Profiles_nm__c</fullName>
+        <label>Conflict Profiles</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_Profiles_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Description_txt__c</fullName>
+        <description>To store information about the selected notification type.</description>
+        <inlineHelpText>Detail about the selected notification type.</inlineHelpText>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Email_Template_Name_nm__c</fullName>
+        <description>To store email template link used to send this notification.</description>
+        <inlineHelpText>Email Template used to send selected Notification type.</inlineHelpText>
+        <label>Email Template Name</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Help_Text_txt__c</fullName>
+        <description>This field holds the description of the notification to be shown on subscription UI.</description>
+        <inlineHelpText>This text will be visible on Subscription UI.</inlineHelpText>
+        <label>Help Text</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mandate_CustomPermissions_nm__c</fullName>
+        <label>Mandate Custom Permissions</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_Custom_Permissions_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mandate_PermissionSet_Grp_nm__c</fullName>
+        <label>Mandate Permission Set Groups</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subs_PermissionSet_Grp_nm</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mandate_PermissionSets_nm__c</fullName>
+        <label>Mandate Permission Sets</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_PermissionSets_nm</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Retail_Account_Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_RMF_PRC_Claim_Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_CSC_Claim_Submitter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mandate_Profiles_nm__c</fullName>
+        <label>Mandate Profiles</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_Profiles_nm</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>IT Admin</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>System Administrator</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Notification_Type_API_nm__c</fullName>
+        <description>This field holds list of Notification types.</description>
+        <externalId>false</externalId>
+        <label>Notification Type API Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Notification_Type_Label_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Notification Type Label</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Notification_Type_nm__c</fullName>
+        <description>This field holds list of Notification types.</description>
+        <inlineHelpText>Notification Name</inlineHelpText>
+        <label>Notification Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Object_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Notification_Type</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
+                <valueName>PFC_PIC_FAIL_RWC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
+                <valueName>PFC_CLM_SCR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
+                <valueName>PFC_PIC_FAIL_RESUB_REQ</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
+                <valueName>PFC_WKLY_EMAIL_PAID_CLMS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PFC - PartnerFundClaim</controllingFieldValue>
+                <valueName>PFC_WKLY_EMAIL_PIC_COMPL</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PFR - PartnerFundRequest</controllingFieldValue>
+                <valueName>PFR_REM_FOR_UNCLM_ACTS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CS - Case</controllingFieldValue>
+                <valueName>CASE_WKLY_EMAIL_CLM_SCR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>REC - Recovery</controllingFieldValue>
+                <valueName>RecoveryIntAccMngrNotification</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_nm__c</fullName>
+        <description>To store object API name</description>
+        <externalId>false</externalId>
+        <label>Module API Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Label_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Module Label</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_nm__c</fullName>
+        <description>To store object name</description>
+        <label>Module</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Project_Application_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Subscription_Objects_nm</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>PFC - PartnerFundClaim</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>PFR - PartnerFundRequest</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>CS - Case</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Co-Marketing Platform</controllingFieldValue>
+                <valueName>REC - Recovery</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Project_Application_nm__c</fullName>
+        <description>To store which Application/Project is using this Subscription record.</description>
+        <label>Project/Application</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Project_Application_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <label>Subscription Notification Type</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>A-{0000}</displayFormat>
+        <label>Subscription Notification Type Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Subscription Notification Types</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Subscription_Based_Notification_Record_Type</fullName>
+        <active>true</active>
+        <label>Subscription Based Notification Record Type</label>
+        <picklistValues>
+            <picklist>Core_MDF_Applicable_CustomPermissions_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Internal_CSC_User</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Applicable_PermissionSet_Grp_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Claim_Case_Reviewer_Manager_Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Applicable_PermissionSets_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_CCP_CSC_Claim_Submitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_Internal_CSC_User</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Applicable_Profiles_nm__c</picklist>
+            <values>
+                <fullName>IT Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Administrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Conflict_PermissionSets_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Internal_CSC_User</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Conflict_Profiles_nm__c</picklist>
+            <values>
+                <fullName>IT Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Administrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Mandate_CustomPermissions_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Internal_CSC_User</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Mandate_PermissionSet_Grp_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_Claim_Case_Reviewer_Manager_Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Mandate_PermissionSets_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_CCP_CSC_Claim_Submitter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_Internal_CSC_User</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Mandate_Profiles_nm__c</picklist>
+            <values>
+                <fullName>IT Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Administrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Notification_Type_nm__c</picklist>
+            <values>
+                <fullName>CASE_WKLY_EMAIL_CLM_SCR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFC_CLM_SCR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFC_PIC_FAIL_RESUB_REQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFC_PIC_FAIL_RWC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFC_WKLY_EMAIL_PAID_CLMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFC_WKLY_EMAIL_PIC_COMPL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFR_REM_FOR_UNCLM_ACTS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RecoveryIntAccMngrNotification</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Object_nm__c</picklist>
+            <values>
+                <fullName>CS - Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFC - PartnerFundClaim</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PFR - PartnerFundRequest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REC - Recovery</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Project_Application_nm__c</picklist>
+            <values>
+                <fullName>CRM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Co-Marketing Platform</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

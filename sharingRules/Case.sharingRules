@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_AAQC_Ask_Commisions_RW_Access_to_Admins</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Using this role based on Record type condition to share case Record to Admin users as R/W permission</description>
+        <label>Ask Commisions RW Access to Admins</label>
+        <sharedTo>
+            <group>Core_AAQC_Admin_Group_for_All_Admins</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ask Commissions Case</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_ALLCases_R_to_GEC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read access to all cases for GEC folks</description>
+        <label>IPS ALLCases R to GEC</label>
+        <sharedTo>
+            <group>Core_All_Global_Export_Compliance</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS GEC ReadOnly,IPS Case Create,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_AllCases_R_Only_to_Sales</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This will provide anyone in the Public Group to have All IPS Case Read Access</description>
+        <label>Core IPS AllCases R Only to Sales</label>
+        <sharedTo>
+            <group>Core_IPS_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS GEC ReadOnly,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_Altera_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Core IPS Altera Cases</label>
+        <sharedTo>
+            <group>IPS_Altera</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_Product_Type__c</field>
+            <operation>equals</operation>
+            <value>Intel® FPGAs</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_Case_RW_to_AllDataOps</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This one generic Rule gives R/W ACCESS to all IPS Cases to all Data Ops</description>
+        <label>Core IPS Case RW to AllDataOps</label>
+        <sharedTo>
+            <group>Core_PG_Data_Ops</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS Case Create,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_Case_RW_to_AllIPSAgents</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule has been specially added to provide R/W Access to IPS Agent to Case as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
+        <label>Core IPS Case RW to AllIPSAgents</label>
+        <sharedTo>
+            <role>EMP_11298293_Kenta_Ueda</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS GEC ReadOnly,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_Case_RW_to_AllIPSUsers</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This one generic Rule gives R/W ACCESS to all IPS Cases to all internal IPS users</description>
+        <label>Core IPS Case RW to AllIPSUsers</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>IPS_Product_Org_Admin</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS GEC ReadOnly,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_Case_RW_to_Sales_Rep_Dual</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This provides the few specific people in the Public Group &quot;Core_IPS_Case_RW_to_Sales_Rep_Dual&quot; R/W access to all cases in the system</description>
+        <label>Core IPS Case RW to Sales Rep Dual</label>
+        <sharedTo>
+            <group>Core_PG_Sales_Rep_BB_Dual_IPS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_GECCases_RW_to_GEC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>T</description>
+        <label>IPS GECCases RW to GEC</label>
+        <sharedTo>
+            <group>Core_All_Global_Export_Compliance</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS GEC ReadOnly</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_GEC_Approved_Case_RW_to_GEC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This would provide only the GEC folks to have R/W access to the following scenario
+a.	Rec Type GEC status = “Approved” and Case Status &lt;&gt; “Closed”.</description>
+        <label>IPS GEC Approved Case RW to GEC</label>
+        <sharedTo>
+            <group>Core_All_Global_Export_Compliance</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS Case Create</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>IsClosed</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_Public_Read_Case</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>IPS Public Read Case</label>
+        <sharedTo>
+            <group>Core_IPS_Public_Read</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Case_Sharing_for_CDB</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share the case records with CDB Integration user</description>
+        <label>Case Sharing for CDB</label>
+        <sharedTo>
+            <group>Core_AI_CDB_Integrations_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Audit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Status__c</field>
+            <operation>equals</operation>
+            <value>Under Review</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Claim_Case_Reviewer_CCP</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Claim Case Reviewer - CCP Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Audit,Audit Closed</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Temp_IPS_Case_Read_Write_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Temp Rule : IPS Case R/W access to Few Geo Sales/Data Ops.</description>
+        <label>IPS Case Read/Write Temp Rule</label>
+        <sharedTo>
+            <group>Core_IPS_Case_Read_Write</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS GEC ReadOnly,IPS Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IPS_Auditor_Sharing_Rule</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>IPS Auditor Sharing Rule</label>
+        <sharedTo>
+            <group>Auditor_Public_Group_IPS_Case_Read_Onl</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private_Project__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS GEC ReadOnly,IPS Closed Case</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

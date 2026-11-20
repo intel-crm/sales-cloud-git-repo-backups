@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This custom permission is used to restrict the view of MDF/MDF+ budgets for Finance user/manager during budget transfer</description>
+    <isLicensed>false</isLicensed>
+    <label>CCP Internal Finance User/Manager</label>
+</CustomPermission>

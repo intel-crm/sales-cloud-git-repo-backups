@@ -1,0 +1,17 @@
+<template>
+
+    <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    <div class={containerClasses} data-carousel={carousel} data-cards-per-row={cardsPerRow}>
+        <template for:each={cards} for:item="card">
+            <div class="card-list-item" key={card.key}>
+                <c-ipa-card
+                    card={card}
+                    lazyload
+                    is-loading={card.isLoading}
+                    hide-add-to-compare={hideAddToCompare}
+                    hide-image-variation={withoutImages}></c-ipa-card>
+            </div>
+        </template>
+    </div>
+
+</template>

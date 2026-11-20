@@ -1,0 +1,21 @@
+<template>
+  <div class="marginhorizotal">
+    <template if:false={isLoaded}>
+      <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <lightning-card variant="narrow">
+      <div class="slds-text-heading_large slds-text-align_center paddingbottom paddingtop">Terms And Conditions</div>
+        <div class="slds-grid slds-p-horizontal_large">
+          <div class="slds-col">
+            <input type="checkbox" name="tAndC" id="checkbox-unique-id" value="checkbox-unique-id" onclick={handleSelection}/>
+          </div>  
+          <div class="slds-col slds-p-horizontal_large">
+           <!--{label.termsLabel_Part1}<a href="/partneradmin/s/deal-terms-and-conditions"><b> here </b> </a> {label.termsLabel_Part2}-->
+           <lightning-formatted-rich-text value={label.termsLabel_Part1}></lightning-formatted-rich-text> 
+           <br>Click <a href="deal-terms-and-conditions" target="_blank"><b> here </b> </a> to view the Terms &amp; conditions.
+          </div>
+        </div>
+        <lightning-button variant="brand" label="Proceed to Deal Registration" title="Proceed" onclick={handleTermsAndConditions} disabled={btnVisibility} class="paddingtop slds-m-left_x-small slds-align_absolute-center"></lightning-button>
+      </lightning-card>
+  </div>
+</template>

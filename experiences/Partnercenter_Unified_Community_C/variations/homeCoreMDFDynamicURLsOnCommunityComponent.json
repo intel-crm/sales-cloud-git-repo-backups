@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "fa31a7b7-391c-4963-bca3-40e9c87fb4bb",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "dfc22d5f-840f-46a5-aa9d-df2c2fcd0360",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Home_core_MDF_dynamicURLsOnCommunity_Component",
+  "id" : "e3311176-07cb-4c04-be32-1d6fa11baf4b",
+  "type" : "experienceVariation"
+}

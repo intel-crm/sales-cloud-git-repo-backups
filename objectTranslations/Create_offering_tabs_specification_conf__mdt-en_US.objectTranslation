@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Create offering tabs specification conf</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Create offering tabs specifications conf</value>
+    </caseValues>
+    <fields>
+        <label><!-- Accordion Type --></label>
+        <name>Accordion_Type__c</name>
+        <picklistValues>
+            <masterLabel>accordion</masterLabel>
+            <translation><!-- accordion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>default</masterLabel>
+            <translation><!-- default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>search</masterLabel>
+            <translation><!-- search --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Display Order --></label>
+        <name>Display_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsAccordion --></label>
+        <name>IsAccordion__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsSearchable --></label>
+        <name>IsSearchable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Label --></label>
+        <name>PMP_Field_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tab --></label>
+        <name>Tab__c</name>
+        <picklistValues>
+            <masterLabel>Tab1</masterLabel>
+            <translation><!-- Tab1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tab2</masterLabel>
+            <translation><!-- Tab2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tab3</masterLabel>
+            <translation><!-- Tab3 --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

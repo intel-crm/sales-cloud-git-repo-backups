@@ -1,0 +1,85 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+	
+	<aura:set attribute="storeName" value="Search" />
+	
+	<aura:attribute name="url" type="string" default=""/>
+	<aura:attribute name="title" type="string" default="{!$Label.c.PMP_Share_Title}"/>
+	<aura:attribute name="theme" type="string" default="normal"/>
+	<aura:attribute name="toggle" type="boolean" default="false"/>
+	<aura:attribute name="isIE11" type="boolean" default="false"/>
+
+
+	<aura:attribute name="mailto" type="string" default=""/>
+	<aura:attribute name="linkedin" type="string" default=""/>
+	<aura:attribute name="twiter" type="string" default=""/>
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:handler name="change" value="{!v.url}" action="{!c.handleUrlChange}" />
+
+    <div class="{! (v.toggle ? 'open': '') + ' theme-'+ v.theme}" >
+        <button class="darkButton" title="{!$Label.c.PMP_Share_Copy}" aria-label="{!$Label.c.PMP_Share_Copy}" onclick="{!c.handleCopy}">
+            <lightning:icon iconName="utility:copy"
+                            class="cursor"
+                            size="x-small"/>
+        </button>
+        
+        <input aura:id="shareUrl" class="shareUrl" value="{!v.url}" tabIndex="-1"/>
+    </div>
+
+
+    <!-- ***************************Commented by Hemanta as it's not MVP *********************************
+
+    <div class="{! (v.toggle ? 'open': '') + ' theme-'+ v.theme}" >
+		<button class="darkButton" title="{!$Label.c.PMP_Share}" aria-label="{!$Label.c.PMP_Share}" onclick="{!c.handleToggleContactLinks}">
+ 				<lightning:icon iconName="utility:socialshare"
+					class="cursor"
+					size="x-small"/>
+		</button>
+		<input aura:id="shareUrl" class="shareUrl" value="{!v.url}" tabIndex="-1"/>
+        
+        
+		<div class="share-overlay slds-hide" aura:id="shareOverlay">
+			<div class="close"><a href="javascript:void(0);" onclick="{!c.handleToggleContactLinks}">Close  <lightning:icon iconName="utility:chevronup"
+			                class="slds-m-right_x-small cursor"
+			                size="x-small"/></a></div>
+			<div class="valign-middle slds-p-vertical_small slds-p-horizontal_medium share-links">
+				<ul>
+					<li><a onclick="{!c.handleCopy}" class="copy">
+						<lightning:icon iconName="utility:copy"
+					 								class="slds-m-right_small cursor"
+					 								size="x-small"/>
+						{!$Label.c.PMP_Share_Copy}</a></li>
+					<li><a href="{! v.mailto }" class="email"> <lightning:icon iconName="utility:email"
+					                class="slds-m-right_small cursor"
+					                size="x-small"/> {!$Label.c.PMP_Share_Email}</a></li>
+
+					<li><a href="{! v.linkedin }" target="_blank" class="linkedin">
+						<aura:if isTrue="{!v.isIE11}">
+								<img class="slds-m-right_small cursor" src="{!$Resource.PMP_Resources + '/images/share/linkedin.png'}"/>
+								<aura:set attribute="else">
+									<lightning:icon
+										        class="slds-m-right_small cursor"
+	 													src="{!$Resource.PMP_Resources + '/images/share/linkedin.svg#linkedin'}"/>
+								</aura:set>
+						</aura:if>
+						{!$Label.c.PMP_Share_LInkedIn}</a></li>
+					<li><a href="{! v.twiter }" target="_blank" class="twitter">
+							<aura:if isTrue="{!v.isIE11}">
+								<img class="slds-m-right_small cursor" src="{!$Resource.PMP_Resources + '/images/share/twitter.png'}"/>
+								<aura:set attribute="else">
+										<lightning:icon
+											class="slds-m-right_small cursor"
+											src="{!$Resource.PMP_Resources + '/images/share/twitter.svg#twitter-white'}"/>
+								</aura:set>
+							</aura:if>
+
+							{!$Label.c.PMP_Share_Twitter}</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	-->
+
+
+</aura:component>

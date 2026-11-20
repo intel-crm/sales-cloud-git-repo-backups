@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Intel® Partner Alliance HPC Data Center Specialty</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_HPC_DATA_CENTER_FRA</name>
+    <style>none</style>
+    <subject>Spécialité Centre de données et calcul intensif (HPC) de l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Félicitations, vous vous qualifiez !
+
+
+{!Contact.FirstName},
+
+Bienvenue dans la Spécialité Centre de données et calcul intensif (HPC) de l&apos;Alliance partenaire Intel® ! En tant que spécialiste Centre de données et calcul intensif (HPC), vous avez droit à des avantages spéciaux* conçus pour vous aider à développer et à mettre en œuvre vos solutions de calcul intensif, notamment :
+
+Désignation de spécialiste Calcul intensif et datacenter
+Promotion de votre entreprise en tant que spécialiste Calcul intensif
+Assistance technique préalable aux ventes
+Offres de points supplémentaires pour les spécialistes Centre de données et calcul intensif (HPC)
+Invitations prioritaires aux événements de l&apos;industrie et aux sessions de formation
+Possibilité de recevoir des échantillons de produits à l&apos;avance
+Accès aux services de test de plateformes Intel®
+
+Pour commencer, veuillez fournir les informations suivantes à ITP-HPC@intel.com :
+
+
+Contact principal pour les communications envoyées aux spécialistes HPC
+Nom :
+E-mail :
+
+
+Pour obtenir du matériel de vente et de promotion supplémentaire
+Adresse postale :
+Téléphone :
+
+Accéder aux avantages
+
+
+*Les avantages peuvent varier d&apos;une région à l&apos;autre.
+
+Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
+
+Visitez le site https://www.intel.com/content/www/fr/fr/partner-alliance/help/overview.html pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion
+
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

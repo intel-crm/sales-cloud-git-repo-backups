@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subscription Notification Type</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subscription Notification Types</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applicable Custom Permissions --></label>
+        <name>Core_MDF_Applicable_CustomPermissions_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applicable Permission Set Groups --></label>
+        <name>Core_MDF_Applicable_PermissionSet_Grp_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applicable Permission Sets --></label>
+        <name>Core_MDF_Applicable_PermissionSets_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applicable Profiles --></label>
+        <name>Core_MDF_Applicable_Profiles_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conflict Permission Sets --></label>
+        <name>Core_MDF_Conflict_PermissionSets_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conflict Profiles --></label>
+        <name>Core_MDF_Conflict_Profiles_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Detail about the selected notification type. --></help>
+        <label><!-- Description --></label>
+        <name>Core_MDF_Description_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Email Template used to send selected Notification type. --></help>
+        <label><!-- Email Template Name --></label>
+        <name>Core_MDF_Email_Template_Name_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- This text will be visible on Subscription UI. --></help>
+        <label><!-- Help Text --></label>
+        <name>Core_MDF_Help_Text_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandate Custom Permissions --></label>
+        <name>Core_MDF_Mandate_CustomPermissions_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandate Permission Set Groups --></label>
+        <name>Core_MDF_Mandate_PermissionSet_Grp_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandate Permission Sets --></label>
+        <name>Core_MDF_Mandate_PermissionSets_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandate Profiles --></label>
+        <name>Core_MDF_Mandate_Profiles_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notification Type API Name --></label>
+        <name>Core_MDF_Notification_Type_API_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notification Type Label --></label>
+        <name>Core_MDF_Notification_Type_Label_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Notification Name --></help>
+        <label><!-- Notification Type --></label>
+        <name>Core_MDF_Notification_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Module API Name --></label>
+        <name>Core_MDF_Object_API_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Module Label --></label>
+        <name>Core_MDF_Object_Label_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Module --></label>
+        <name>Core_MDF_Object_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project/Application --></label>
+        <name>Core_MDF_Project_Application_nm__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Subscription Based Notification Record Type --></label>
+        <name>Subscription_Based_Notification_Record_Type</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

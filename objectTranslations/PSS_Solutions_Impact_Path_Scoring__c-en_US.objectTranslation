@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solutions Impact Path Scoring</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solutions Impact Path Scorings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Select Benefit --></label>
+        <lookupFilter>
+            <errorMessage><!-- Select Benefits should be selected --></errorMessage>
+        </lookupFilter>
+        <name>GeTm_Admin_Suggested_Select_Benefit__c</name>
+        <relationshipLabel><!-- Solutions Impact Path Scorings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- IPA Tier --></label>
+        <name>GeTm_IPA_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Scoring --></label>
+        <name>PSS_Solution_Scoring__c</name>
+        <relationshipLabel><!-- Solutions Impact Path Scorings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

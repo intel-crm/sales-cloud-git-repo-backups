@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Considers opportunities that have moved to Design Win within the last 30 days. Measures # days between opportunity creation to Design Win. Goal is WW&gt;85%.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>BucketField_43835160</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/early_entry2</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Early Entry</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Target &gt;WW65% in Qualify and Define. This metric is a rolling 30-day summary based on the opportunity Created Date. Variation expected across business segments and customer types.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>BucketField_36848553</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/create_early_stage4</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Created Early Stage</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities in Develop/Design stages,w/Decision Date in current/next Q updated in the last 30 days [activity is defined as a change in Decision Date, Stage, Opportunity Value ($), Volume, Description or Status]. Goal for 2016 is &gt;WW65%.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Activity_Measure__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/active_wth_activity_last_30_days2</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Active</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future and past due decision dates. Excludes &quot;Win Submitted&quot; or &quot;Flag for Deletion&quot; status. Program goal of WW&gt;95% oppty with future decision dates.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Past_Due__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/future_decision1</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Future Decision Dates</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Donut</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future due decision dates 1 week in advance.</footer>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opt</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/past_due_opptys_within_1_week7</report>
+            <showPercentage>false</showPercentage>
+            <showTotal>true</showTotal>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Future Due 1 WEEK Notice</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Goals: Weekly (&gt;ww75%), Monthly (&gt;WW90%). Snapshot of &apos;Last Login Date&apos; taken once per week. &quot; - &quot; indicates users who have never logged in.</footer>
+            <groupingColumn>CUST_CREATED_DATE</groupingColumn>
+            <groupingColumn>BucketField_25332621</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Adoption Metrics (WoW) - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/login_weekly_osam_total</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>OSAM Login Weekly</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Goals: Weekly (&gt;ww75%), Monthly (&gt;WW90%). Snapshot of &apos;Last Login Date&apos; taken once per week. &quot; - &quot; indicates users who have never logged in.</footer>
+            <groupingColumn>CUST_CREATED_DATE</groupingColumn>
+            <groupingColumn>BucketField_25332621</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Adoption Metrics (WoW) - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/login_weekly_isam_total</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>ISAM/TL Login Weekly</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Considers opportunities that have moved to Design Win within the last 30 days. Measures # days between opportunity creation to Design Win. Goal is WW&gt;85%.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>BucketField_43835160</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/early_entry2</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Early Entry</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Target &gt;WW65% in Qualify and Define. This metric is a rolling 30-day summary based on the opportunity Created Date. Variation expected across business segments and customer types.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>BucketField_36848553</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/create_early_stage4</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Created Early Stage</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities in Develop/Design stages,w/Decision Date in current/next Q updated in the last 30 days [activity is defined as a change in Decision Date, Stage, Opportunity Value ($), Volume, Description or Status]. Goal for 2016 is &gt;WW65%.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Activity_Measure__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/active_wth_activity_last_30_days2</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Active vs Non Active Optys</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future and past due decision dates. Excludes &quot;Win Submitted&quot; or &quot;Flag for Deletion&quot; status. Program goal of WW&gt;95% oppty with future decision dates.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Past_Due__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/future_decision1</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Future Decision Dates</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future due decision dates 1 week in advance.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Past_Due__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opt</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/past_due_opptys_within_1_week7</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Future Due 1 WEEK Notice</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Goals: Weekly (&gt;ww75%), Monthly (&gt;WW90%). Snapshot of &apos;Last Login Date&apos; taken once per week. &quot; - &quot; indicates users who have never logged in.</footer>
+            <groupingColumn>CUST_OWNER_NAME</groupingColumn>
+            <groupingColumn>BucketField_25332621</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Adoption Metrics - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/login_weekly_osam</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>OSAM Login</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Goals: Weekly (&gt;ww75%), Monthly (&gt;WW90%). Snapshot of &apos;Last Login Date&apos; taken once per week. &quot; - &quot; indicates users who have never logged in.</footer>
+            <groupingColumn>CUST_OWNER_NAME</groupingColumn>
+            <groupingColumn>BucketField_25332621</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Adoption Metrics - %</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/login_weekly_isam1</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>ISAM/TL Login</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>11555795@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Considers opportunities that have moved to Design Win within the last 30 days. Measures # days between opportunity creation to Design Win. Goal is WW&gt;85%.</footer>
+            <groupingColumn>FULL_NAME</groupingColumn>
+            <groupingColumn>BucketField_43433880</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/early_entry_sales</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>LATE Entry</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Target &gt;WW65% in Qualify and Define. This metric is a rolling 30-day summary based on the opportunity Created Date. Variation expected across business segments and customer types.</footer>
+            <groupingColumn>FULL_NAME</groupingColumn>
+            <groupingColumn>BucketField_36848553</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/create_early_stage_sales1</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Created LATE Stage</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities in Develop/Design stages,w/Decision Date in current/next Q updated in the last 30 days [activity is defined as a change in Decision Date, Stage, Opportunity Value ($), Volume, Description or Status]. Goal for 2016 is &gt;WW65%.</footer>
+            <groupingColumn>FULL_NAME</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Activity_Measure__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/active_with_activity_last_30_days_s</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>NO Activity within Last 30 Days</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future and past due decision dates. Excludes &quot;Win Submitted&quot; or &quot;Flag for Deletion&quot; status. Program goal of WW&gt;95% oppty with future decision dates.</footer>
+            <groupingColumn>FULL_NAME</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Past_Due__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opty</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/future_decision_sales</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>PAST DUE Decision Dates</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarGrouped</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Shows opportunities with future due decision dates 1 week in advance.</footer>
+            <groupingColumn>FULL_NAME</groupingColumn>
+            <groupingColumn>Opportunity.Core_Opportunity_Past_Due__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>APJ OSSG Behavior Metrics - # opt</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_VSC_TDM/past_due_opptys_within_1_week7</report>
+            <showPercentage>false</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Future Due 1 WEEK Notice</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>11555795@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>Adoption &amp; Behavior Metrics - APJ OSSG Reseller</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

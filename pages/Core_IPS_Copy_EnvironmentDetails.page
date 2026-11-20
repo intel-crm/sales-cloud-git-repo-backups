@@ -1,0 +1,105 @@
+<!---------------------------------------------------------------------------------
+* Visualforce Name: Core_IPS_Copy_EnvironmentDetails
+* Function       : This Page copies all the Environment Details Operational, Case Categories, Case Subcategories to select supported product
+* Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Amritesh                    05/17/2018             Created
+* Amritesh                    10/04/2018             Modified - US186522
+------------------------------------------------------------------------------->
+<apex:page standardController="Core_IPS_Supported_Product__c" extensions="Core_IPS_Copy_EDQ_Controller" title="Copy Environment Details" id="page">
+    <style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 99; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    
+    /* Modal Content */
+    .modal-content {
+        margin: auto;
+        width: 300px;
+    }
+    .bPageBlock .pbTitle{ width:40%; }
+    </style>
+    
+    <script>
+    function select_sup_prod(prod_id) {
+        document.getElementById("page:form:selsupprod").value = prod_id;        
+    }
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+    </script>
+    
+    <apex:form id="form">
+        
+        <apex:inputHidden value="{!selectedSupProd}" id="selsupprod"/>        
+        
+        <!-- The Modal -->
+        <div id="confirmcopy" class="modal">            
+            <!-- Modal content -->
+            <div class="modal-content">
+                <apex:pageBlock >
+                    <p>The copy action will first delete all existing Category &amp; EDQ assignments if they exist - please confirm.</p>
+                    <div style="border-top: 1px solid #fff;padding: 10px 0 5px 0; margin-top: 10px; border-top-style: inset;">
+                        <center>
+                            <apex:commandButton action="{!copyDetails}" value="Confirm Copy" styleClass="copy_button"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <apex:commandButton action="{!cancel}" value="Cancel"/>
+                        </center>
+                    </div>                   
+                </apex:pageBlock>
+            </div>
+        </div>
+        
+        <apex:pageblock rendered="{!ErrorMessage!=null}">
+            <div align="center">
+                <apex:commandButton action="{!cancel}" value="Exit" />
+                <br/>
+                <apex:outputLabel value="{!ErrorMessage}" style="font-weight:bold"/> 
+            </div>
+        </apex:pageblock>
+        <!-- Changed title as per US186522-->
+        <apex:pageblock id="pageSection" rendered="{!ErrorMessage==null}" title="Select Supported Product to copy Categories & EDQs to">
+                        
+            <apex:pageMessages />
+               
+            <apex:pageblockButtons id="pgblockbtn">
+                <apex:commandButton onclick="openModal('confirmcopy'); return false;" value="Copy" styleClass="copy_button"/>
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+            </apex:pageblockButtons>
+            
+            <apex:pageBlockTable id="table" value="{!lstSupProd}" var="prod" >
+                <apex:column width="20">
+                    <apex:outputPanel layout="none" rendered="{!prod.Id!=selectedSupProd}">
+                        <input type="radio" name="prod" value="{!prod.Id}" onclick="select_sup_prod('{!prod.Id}');" />
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="none" rendered="{!prod.Id==selectedSupProd}">
+                        <input type="radio" name="prod" value="{!prod.Id}" onclick="select_sup_prod('{!prod.Id}');" checked="true"/>
+                    </apex:outputPanel>
+                </apex:column>
+                
+                <apex:column value="{!prod.Core_Supported_Product_Name__c}"/>
+
+                <apex:column value="{!prod.Name}"/>
+
+                <apex:column value="{!prod.Core_Flag_Status__c}"/>
+                
+            </apex:pageBlockTable>
+            
+        </apex:pageblock>
+    </apex:form>    
+</apex:page>

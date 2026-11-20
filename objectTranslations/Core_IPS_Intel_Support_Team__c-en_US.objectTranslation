@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Intel Support Team</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Intel Support Teams</value>
+    </caseValues>
+    <fields>
+        <help><!-- Adds member as an Interested Party on New or Open Cases --></help>
+        <label><!-- Add as Case Interested Party --></label>
+        <name>Add_as_Case_Interested_Party__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile --></label>
+        <name>Core_IPS_Profile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premier Support Project --></label>
+        <name>Core_IPS_Project__c</name>
+        <relationshipLabel><!-- Intel Support Teams --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_IPS_User__c</name>
+        <relationshipLabel><!-- Intel Support Teams --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- An Intel Support Team member cannot be made Inactive if currently the Project Owner. --></errorMessage>
+        <name>Restrict_PrivateProjOwner_Inactive_IST</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Intel_Support_Team_Members --></label>
+        <name>Add_Intel_Support_Team_Members</name>
+    </webLinks>
+</CustomObjectTranslation>

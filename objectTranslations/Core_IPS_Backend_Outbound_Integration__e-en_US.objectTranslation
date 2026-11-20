@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Backend Outbound Integration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Backend Outbound Integrations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Case id --></label>
+        <name>CCore_IPS_Case_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Id --></label>
+        <name>Comment_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attachment Id --></label>
+        <name>Core_IPS_Attachment_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outbound Message Id --></label>
+        <name>Outbound_Message_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,296 @@
+<aura:component controller="Core_MDF_BulkPOPUploadController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" 
+                access="global" >
+    <!--  this tag sets modal width -->
+    <aura:html tag="style">
+       .slds-modal__container {
+        min-width: 90vw;
+        }
+        #confirmation-modal {
+            min-width: 20vw;
+            width:30% !important;
+        }
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0 0rem !important;
+        }
+        .slds-modal__content{
+        height:auto !important;
+        max-height:auto !important;
+        overflow: visible !important;
+        }
+        .slds-popover {
+            position: absolute;
+        left: 175px;
+            top:5px;
+            bottom: 100%;
+        width: 700px;
+            height: fit-content;
+            padding: inherit;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-column-gap: 40px;
+        }
+    </aura:html> 
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="claimErrorMsg" type="String" />
+    <aura:attribute name="spinner" type="boolean" default="false" />
+    <aura:attribute name="isSaveDisabled" type="boolean" default="false" />
+     <aura:attribute name="isError" type="Boolean" default="false" />
+    <aura:attribute name="bulkClmStgRecData" type="Core_MDF_Claim_Batch_Stage__c[]"/>
+    <aura:attribute name="bulkClmStgRecColumns" type="List"/>
+    <aura:attribute name="clmBatchStgRecExists" type="Boolean" default="false"/>
+    <aura:attribute name="openPopUp" type="Boolean" default="false"/>
+    <aura:attribute name="clmBatchStgRec" type="Core_MDF_Claim_Batch_Stage__c"/>
+    <aura:attribute name="auditDocument" type="Core_MDF_Audit_Document__c[]"
+        default="{'sobjectType':'Core_MDF_Audit_Document__c'}" />
+    <aura:attribute name="budgetType" type="string" default="" />
+    <aura:attribute name="mouseHoverData" type="Core_MDF_Claim_Batch_Stage__c" />
+    <aura:attribute name="reId" type="Id" />
+    <aura:attribute name="togglehover" type="boolean" default="false"/>
+    <aura:attribute name="hoverRow" type="Integer" default="-1" />
+    <aura:attribute name="openManageAuditDocPopup" type="Boolean" default="false"
+        description="Flag to open and close the popup" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="simpleNewClaim" type="PartnerFundClaim" default="{ 'sobjectType': 'PartnerFundClaim',
+                                                                           'Description':'',
+                                                                           'Amount':'',
+                                                                           'Title':''
+                                                                           }" />
+
+    <!--Flag to map Core_MDF_Log_Info_txt__c field -->
+    <aura:attribute name="byPassLogInfoFieldMapping" type="Boolean" default="false" />
+
+    <!--Bulk POP Upload event - fired from Core_MDF_ManageAuditDocumentWrapperComponent-->
+    <aura:handler name="bulkPOPUploadEvent" event="c:Core_MDF_BulkPOPUploadEvent" action="{!c.prepareDocListAndClaimData}" />
+    <!--<lightning:card title="Bulk Upload POP"> -->
+    <header>
+       <div class="slds-modal__header slds-text-heading_medium">
+           {!$Label.c.Core_MDF_BulkUploadPopup_Header}
+     	</div>
+    </header>
+    <aura:if isTrue="{!v.spinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    <aura:set attribute="else">
+    <aura:if isTrue="{!v.clmBatchStgRecExists}">
+        <div class="slds-scrollable_y" style="height:20rem;width:100%">
+     <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-heading_label">
+                                <th scope="col" class="claimName">
+                                    <div class="slds-text-align_center truncate_claimName" title="{!$Label.c.Core_MDF_ClaimName}">{!$Label.c.Core_MDF_ClaimName}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_ActivityNumber}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_Activity_Type}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_CountryLocation}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_Total_Invoice_Amount_Local}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_Budget_Currency}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-text-align_center">{!$Label.c.Core_MDF_Upload_Documents}</div>
+                                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+            <aura:iteration items="{!v.bulkClmStgRecData}" var="claimrec" indexVar="index">
+                <tr data-selected-Index="{!index}">
+                                    <td class="claimName" onmouseenter="{!c.handleMouseHover}" data-index="{!index}" 
+                                                onmouseleave="{!c.handleMouseOut}" id="{!claimrec.Id}">
+                                        <div class="slds-text-align_center truncate_claimName">
+                                            <a  
+                                                tabindex="-1">{!claimrec.Core_MDF_Claim_Nm__c}</a>
+                                        </div>
+                        <aura:if isTrue="{!v.hoverRow==index}">
+                            <aura:if isTrue="{!v.togglehover==true}">
+                                                <div class="slds-popover slds-nubbin_left-top" role="tooltip" id="help">
+                                                   <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col slds-size_1-of-1">
+                                                        <div class="slds-align_absolute-center">
+                                                            <div class="slds-cell-wrap">
+                                                                <div style = "text-align:center">
+                                                    <span><b>{!$Label.c.Core_MDF_ClaimName} :</b>
+                                                      {!v.mouseHoverData.Core_MDF_Claim_Nm__c}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                       
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Bank_Id__r.Name))}">
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_Bank} :</b>
+                                                            {!v.mouseHoverData.Core_MDF_Bank_Id__r.Name}</span>
+                                                    	 </div>
+                                    </aura:if>
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                    <span><b>{!$Label.c.Core_MDF_ActivityNumber} :</b>
+                                                        {!v.mouseHoverData.Core_MDF_Activity_Nbr__c}</span>
+                                                       </div>
+                                                        <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_ActivityCategory__c))}">
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                    <span><b>{!$Label.c.Core_MDF_ActivityCategory} :</b>
+                                                        {!v.mouseHoverData.Core_MDF_ActivityCategory__c}</span>
+                                                       </div>
+                                    </aura:if>
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Activity_SubType_nm__c))}">
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_Activity_Sub_Type_nm} :</b>
+                                                            {!v.mouseHoverData.Core_MDF_Activity_SubType_nm__c}</span>
+                                                    	</div>
+                                    </aura:if>
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                    <span><b>{!$Label.c.Core_MDF_ClaimStartDate} :
+                                                        </b>{!v.mouseHoverData.Core_MDF_Ad_Run_Start_Dt__c}</span>
+                                                       </div>
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                    <span><b>{!$Label.c.Core_MDF_ClaimEndDate} :
+                                                        </b>{!v.mouseHoverData.Core_MDF_Ad_Run_End_Dt__c}</span>
+                                                       </div>                                                       
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Inv_Receipt_Nbr__c))}">
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_Invoice_Number} :
+                                                            </b>{!v.mouseHoverData.Core_MDF_Inv_Receipt_Nbr__c}</span>
+                                                    	</div>
+                                    </aura:if>
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Inv_Receipt_Dt__c))}">
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_Invoice_Date} :
+                                                            </b>{!v.mouseHoverData.Core_MDF_Inv_Receipt_Dt__c}</span>
+                                                    	</div>
+                                    </aura:if>
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                    <span><b>{!$Label.c.Core_MDF_Total_Invoice_Amount_Local} :
+                                                        </b>{!v.mouseHoverData.Core_MDF_Total_Amt__c}</span>
+                                                       </div>                                                       
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Taxes_Local_Amt__c))}">
+                                                       <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_Taxes_Local} :
+                                                            </b>{!v.mouseHoverData.Core_MDF_Taxes_Local_Amt__c}</span>
+                                                   		</div>
+                                    </aura:if>
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Non_Reimbursable_Amt__c))}">
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_OtherCostsnotReimbursable_Local} :
+                                                            </b>{!v.mouseHoverData.Core_MDF_Non_Reimbursable_Amt__c}</span>
+                                                    	</div>
+                                                        </aura:if>                                                       
+                                                    <aura:if
+                                                        isTrue="{!not(empty(v.mouseHoverData.Core_MDF_Media_Vehicle_txt__c))}">
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                        <span><b>{!$Label.c.Core_MDF_Media_Vehicle} :
+                                                            </b>{!v.mouseHoverData.Core_MDF_Media_Vehicle_txt__c}</span>
+                                                        </div>
+                                    </aura:if>
+                                                <aura:if
+                                                    isTrue="{!not(empty(v.mouseHoverData.Core_MDF_VAT_Opt_In__c))}">
+                                                         <div class="slds-col slds-size_1-of-2">
+                                                    <span><b>{!$Label.c.Core_MDF_Vat_OptIn} : </b>
+                                                        {!v.mouseHoverData.Core_MDF_VAT_Opt_In__c}</span>
+                                                        </div>
+                                                </aura:if>
+                                </div>
+                                                </div>
+                            </aura:if>
+                        </aura:if>
+                    </td>
+                                    <td>
+                                        <div class="slds-text-align_center">{!claimrec.Core_MDF_Activity_Nbr__c}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_center">{!claimrec.Core_MDF_Activity_Type_Nm__c}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_center">{!claimrec.Core_MDF_Country_Location_nm__c}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_center">{!claimrec.Core_MDF_Total_Amt__c}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_center">{!claimrec.Core_MDF_Inv_Receipt_Cur_Cd__c}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_center" data-row-index="{!index}">
+                                            <lightning:button label="{!$Label.c.Core_MDF_Upload}"
+                                                iconName="utility:upload" onclick="{!c.uploadAction}" />
+                                        </div>
+                                    </td>
+                    
+                </tr>
+            </aura:iteration>
+                            
+        </tbody>
+                        
+    </table> 
+                    <br/><br/><br/><br/><br/>
+        </div>
+        <aura:set attribute="else">
+                    <h2 id="header43" class="slds-text-heading--small">
+                        <div class="slds-align_absolute-center">{!$Label.c.Core_MDF_Claims_NoPendingDocuments}</div>
+                    </h2>
+        </aura:set>
+    </aura:if>
+</aura:set>
+</aura:if>
+    <aura:if isTrue="{!v.openPopUp}">
+        <!--Manage Audit Document Section - Core_MDF_ManageAuditDocumentWrapperComponent-->
+        <c:Core_MDF_ManageAuditDocumentWrapperComponent
+            programName="{!v.clmBatchStgRec.Core_MDF_Batch_ID__r.Core_MDF_Program_Id__r.Name}"
+            budgetType="{!v.budgetType}" aura:id="manageAuditRevamp"
+            claimRefName="{!v.clmBatchStgRec.Core_MDF_Claim_Nm__c}" recordId="{!v.clmBatchStgRec.Id}"
+            claimDetails="{!v.simpleNewClaim}" openManageAuditDocPopup="{!v.openManageAuditDocPopup}"
+            isBulkClaim="true" />
+    </aura:if>
+
+    <!--Error Modal-->
+    <div class="slds-hide" aura:id="errorToast" style="height: 4rem;">
+        <div class="slds-notify_container errorModalMargin">
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                <div class="errorIcon ">
+                    <lightning:icon class="errorIcon" iconName="utility:error" alternativeText="Error!" variant="error"
+                        size="small" />
+                </div> 
+                <span class="slds-notify__content slds-p-right_large" >
+                    <h2 class="slds-text-heading_small ">{!v.claimErrorMsg}</h2>
+                </span>
+           
+                <span class="slds-notify__close slds-p-left_large">
+                    <button aura:id="toastCloseButton"
+                        class="slds-button slds-button_neutral slds-button_icon" title="Close"
+                        onclick="{!c.closeErrorToast}">
+                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!--</lightning:card>-->
+    <footer>
+        <div class="slds-modal__footer">
+            <lightning:button label="{!$Label.c.Core_MDF_Close}" variant="neutral" onclick="{!c.handleClose}">
+            </lightning:button>
+        </div>
+    </footer>
+</aura:component>

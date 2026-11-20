@@ -1,0 +1,303 @@
+.THIS .removeExtraSpace {
+    margin: 0;
+    display: inline-block;
+}
+
+.table-body-row:nth-child(odd){
+    background-color:#eee;
+}
+.table-body-row:hover {
+    background-color:#ccc;
+}
+.table-header {
+    background: #0e63ac;
+    color: #fff;
+}
+.rolesResp{
+    /*font-family: 'intel-clear';*/
+    font-weight: 200;
+    font-style: normal;
+    font-size: 28px;
+    color: #555555;
+    text-align: left;
+}
+.parRole{
+    /*font-family: 'intel-clear';*/
+    font-weight: 200;
+    font-style: normal;
+    font-size: 15px;
+    text-align: left; 
+}
+
+.areyousure{
+    /*font-family: "intel-clear" !important;*/
+    font-size: 2rem !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+}
+
+.searchContact ,.clearSearch{
+    font-size: 1rem;
+    /*line-height: 1.25rem;*/
+    border-radius: 4px;
+    transition: color 0.1s linear, background-color 0.1s linear !important;
+    padding: 0.625rem 1.5rem;
+    /*font-family: "intel-clear" !important;*/
+    font-size: 1rem;    
+    height: 2.6rem;
+}
+
+.searchContact{
+    background-color: var(--buttonPrimary, #0071C5) !important;     
+    
+    width: max-content;
+}
+
+.searchContactDiv{
+    padding-left: 1rem;
+    width: auto ;
+}
+
+.clearSearchDiv{
+    margin-left: 1rem;
+    width: auto ;
+}
+
+.selectRadio{
+    word-wrap: break-word;
+}
+
+.disblePrevNextButton{
+    color:#555555 ;
+}
+
+.prevNextButton{
+    padding: 0.75rem 0rem;
+}
+
+.prevNextButtonClass{
+    line-height: 1.25rem;
+    font-size: 1rem;
+    padding: 0.625rem 1rem;
+}
+
+.clearSearch{
+    width: max-content;
+    border: 1px solid var(--blue, #0071C5);
+    /*margin-left: 10px !important;*/
+}
+
+.cancelbutton{
+    border: 1px solid var(--blue, #0071C5);
+}
+
+.validationMsg {
+    align-self: center;
+}
+
+.pageTitle{
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.bgWhite{
+    background-color: white;
+}
+
+.validationmsg{
+    margin-bottom: 0;
+    margin-top: -20px; 
+    margin-left: 28px;
+ }
+
+ .centerAlign{
+    align-self: center;
+ }
+
+ .primaryAdminDelegate{
+    font-weight: bold;
+ }
+ .primaryAdmin{
+    font-weight: bold;
+}
+
+.searchInput{
+    height: 2.6rem;
+}
+
+.inviteAUserClass{
+    padding: 0rem 0.7rem;
+    height: 2.6rem;
+    width: max-content;
+}
+
+.overflowDataClass{
+    overflow-x: hidden;
+}
+
+.dataWidthFixClass{
+    width:auto;
+}
+
+.resAssignedHeader{
+    word-break: break-word;
+}
+
+.wrapDataClass{
+    word-break: break-word;
+}
+
+.sortingIconClass{
+    --sds-c-button-color-background:white;
+}
+
+.saveDiscardButton{
+    font-size: 1rem;
+    line-height: 1.25rem;
+    padding: 0.625rem 1rem;
+}
+
+a:hover {
+    color: #ea001f;
+  }
+
+.PageSizeComboBox{
+    height: 1rem;
+    width: 4rem;
+}
+
+/*
+@media not all and (min-resolution:.001dpcm) { 
+    @media {
+        .searchContact , .clearSearch{
+            padding: 0rem 1.5rem;
+        }
+    }
+}
+*/
+@media screen and (min-width: 992px) {
+    /*.validationMsg{
+      width: fit-content;
+    }*/
+}
+@media screen and (max-width: 800px) {
+    .mainCompMargin{
+        margin: 0rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .pageTitle{
+        padding-left:0.5rem !important;
+        padding-right:0.5rem !important;
+    }
+  }
+
+@media only screen and (max-width: 767px) {
+    .searchContactDiv {
+      padding-left: 0rem;
+    }
+    .overflowDataClass{
+        overflow-x: auto;
+    }
+    .dataWidthFixClass{
+        width:44rem;
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    .totalNoClass {
+      width:50%;
+      order: 2;
+    }
+    .prevNextButton{
+        width:100%;
+        order:1;
+    }
+    .pageNoClass{
+        width:50%;
+        order:3;
+    }
+  }
+
+  @media only screen and (max-width: 660px) and (min-width: 480px){
+    .validationMsg{
+        width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 520px) {
+    .clearSearch, .searchContact {
+        padding: .625rem 0.8rem;
+    }
+  }
+
+
+  @media only screen and (max-width: 479px) {
+    .searchContactDiv {
+      width: 100%;
+    }
+    .clearSearchDiv{
+        margin-left: 0rem;
+        width: 100%;
+    }
+    .clearSearch{
+        width: 100%;
+        height:3rem;
+        padding: .625rem 0.6rem;
+
+    }
+    .searchContact{
+        width: 100%;
+        height:3rem;
+        padding: .625rem 0.6rem;
+    }
+
+    .validationMsg{
+        padding-right: 0 !important;
+    }
+  }
+
+  @media only screen and (max-width: 399px) {
+    .searchContact{
+        padding: 0.625rem 0.3rem !important;
+    }
+
+    .clearSearch{
+        padding: 0.625rem 0.3rem !important;
+    }
+
+    .prevNextButtonClass{
+        padding: .625rem 0.5rem;
+    }
+  }
+
+@media only screen and (max-width: 350px) {
+    .saveDiscardButton{
+        font-size: 1rem;
+        line-height: 1.25rem;
+        padding: 0.625rem 0.6rem;
+    }
+}
+
+  
+
+  @media only screen and (max-width: 340px) {
+    .prevNextButton{
+        padding:0;
+    }
+  }
+
+  
+
+  @media screen and (min-width: 450px) {
+      .label{
+        width: max-content;
+      }
+
+  }
+
+  .slds-modal__content{
+    overflow: initial;
+}

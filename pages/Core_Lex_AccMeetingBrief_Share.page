@@ -1,0 +1,2 @@
+<apex:page StandardController="Account_Meeting_Brief__c" action="{!URLFOR($Action.Account_Meeting_Brief__c.Share,Account_Meeting_Brief__c.Id)}">
+</apex:page>

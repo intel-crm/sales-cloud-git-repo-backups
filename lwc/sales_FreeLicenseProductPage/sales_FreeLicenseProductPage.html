@@ -1,0 +1,226 @@
+<template>
+    <div style="margin-left: 4%; margin-right:4%;">
+        <div class="slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+            <div class="slds-region_medium" style="width:1000px; margin-left: 4%; cursor:default; pointer-events:none">
+                <div class="slds-path">
+                    <div class="slds-grid slds-path__track">
+                        <div class="slds-grid slds-path__scroller-container">
+                            <div class="slds-path__scroller">
+                                <div class="slds-path__scroller_inner">
+                                    <ul class="slds-path__nav " role="listbox" aria-orientation="horizontal" aria-labelledby="slds-path__stage-name">
+                                        <li class="slds-path__item slds-is-active slds-is-current" role="presentation">
+                                            <a aria-selected="true"  class="slds-path__link"  id="path-52" role="option" tabindex="0" aria-disabled="true">
+                                            <span class="slds-path__stage">
+                                            <span class="slds-assistive-text">Current Stage:</span>
+                                            </span>
+                                            <span class="slds-path__title">{label.Sales_Path1TextLabel}</span>
+                                            </a>
+                                        </li>
+                                        <li class="slds-path__item slds-is-incomplete" role="presentation">
+                                            <a aria-selected="false" class="slds-path__link" href="" id="path-54" role="option" tabindex="-1">
+                                            <span class="slds-path__stage">
+                                            </span>
+                                            <span class="slds-path__title">{label.Sales_Path2TextLabel}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-table_edit_container slds-is-relative slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+            <!--Custom Table starts here-->
+            <table class="slds-table_fixed-layout slds-table_resizable-cols slds-table slds-table_cell-buffer slds-table_bordered slds-border_left slds-border_right"  role="grid">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-cell_action-mode" scope="col"  style="width:3.25rem">
+                            <span id="column-group-header" class="slds-assistive-text">Choose a row</span>
+                            <div class="slds-th__action slds-th__action_form">
+                            </div>
+                        </th>
+                    
+                        <th aria-label="Web Description" aria-sort="none" class="slds-cell_action-mode  th-center" scope="col" style="text-align: left;">
+                            <!--<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">-->
+                                <div id="column1" class="resizable-column">
+                            <span class="slds-truncate slds-text-align_left" title="Web Description">{label.Sales_WebDescriptionProductPage}</span>
+                        </div>
+                        </th>
+                        <th aria-label="Maintainance Expiration" aria-sort="none" class="slds-cell_action-mode th-center" scope="col"  style="text-align: center;">
+                            <div id="column2" class="resizable-column">
+                                <span class="slds-truncate slds-text-align_left " title="Maintainance Expiration">
+                                    {label.Sales_MaintainanceExpirationProductPage}
+                                    <lightning-helptext style="position: relative; bottom: 3px;left: 2px;" content={label.Sales_MaintenanceExpirationProductPagetooltip}></lightning-helptext>
+                                </span>
+                            </div>
+                        </th>
+                        <th aria-label="License Expiration" aria-sort="none" class="slds-cell_action-mode th-center" scope="col" style="text-align: center;">
+                            <div id="column3" class="resizable-column">
+                                <span class="slds-truncate slds-text-align_center" title="License Expiration">
+                                    {label.Sales_LicenseExpirationProductPage}
+                                    <lightning-helptext style="position: relative; bottom: 3px;left: 2px;" content={label.Sales_LicenseExpirationProductPageTooltip}></lightning-helptext>
+                                </span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={result} for:item="product" >
+                        <tr key={product.Id} data-product-id={product.prodId} onclick={handleRowClick}>
+                            <th scope="col">
+                                <div class="container">
+
+                                    <label for={product.Id}  class="square">
+                                        <input
+                                            type="radio"
+                                            name="eachitem"
+                                            id={product.Id}
+                                            checked={product.checked} 
+                                            value={product.prodId}
+                                           
+                                            style="appearance:none"
+                                            data-radio-id={product.prodId}
+                                            />
+                                        <div class="circle"></div>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="text-wrp">{product.WebDesc}</div>
+                            </th>
+                            <th class="slds-text-align_center" scope="col">
+                                <div>{product.maintenenceExp}</div>
+                            </th>
+                            <th class="slds-text-align_center" scope="col">
+                                <div>{product.licExp}</div>
+                            </th>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="slds-p-top_medium top-brk" style="margin-left: 4%; margin-right: 4%">
+        <template if:true={showTable}>
+		<template if:true={showseats}>
+            <table class=" slds-table_fixed-layout slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered table" role="grid" style="margin-top: 1.5%; border: rgb(100, 99, 99); border-width:0.3px; border-style:solid;">
+                
+                    <thead>
+                        <th aria-label="Web Description" aria-sort="none" class="slds-cell_action-mode  th-center" scope="col" style="text-align: center; " colspan="2">
+                            <!--<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">-->
+                            <span class="slds-truncate slds-text-align_center" title="optional products">{label.Sales_SelectOptionalProductsProductPage}</span>
+                        </th>
+                       
+                    </thead>
+                
+            </table>
+			</template>
+            <!--slds-table_bordered-->
+			<template if:true={showseats}>
+                <div class="table-wrapper" style="margin-top : 2px; margin-bottom: -4px;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-border_left slds-border_top slds-border_bottom" style="margin-top : 2px;margin-bottom: -4px;">
+                            <tbody>
+                                <tr>
+                                    <th style="border-top:0.1em solid #e9e8e8; width:5px;background-color: #f3f4f6; " class=" slds-form slds-form-element slds-cell_action-mode">
+                                       <lightning-input class="my-checkbox slds-checkbox_faux" type="checkbox" checked={isOptionSelect} onchange={selectAllOptions}></lightning-input>
+                                    </th>
+                                    <th style="border-top:0.1em solid #e9e8e8;background-color: #f3f4f6; " class="slds-text-align_left slds-cell_action-mode text-mode" scope="col">
+                                       {label.Sales_SelectAllOptions}
+                                    </th>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            <div class="table-wrapper" style="margin-top : 2px;">
+            <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-border_left slds-border_top slds-border_bottom" style="margin-top : 2px;">
+                
+                <!--<template for:each={selectedProductOptions} for:item="option">
+                    <th class="slds-text-align_center" style="width:1.5px ">
+                        <input type="checkbox" data-id={option.Id} onchange={handleCheckboxChange}>
+                        
+                    </th>
+                    <th class="slds-text-align_left slds-cell_action-mode" scope="col" >
+                        {option.SBQQ__OptionalSKU__r.Name}
+                    </th>
+                    </tr>
+                    -->
+                <tbody>
+                    <template for:each={selectedProductOptions} for:item="option">
+                        <tr key={option.Id}>
+                            
+                                <th style="border-top:0.1em solid #e9e8e8; width:5px;" class=" slds-form slds-form-element slds-cell_action-mode">
+                                 <lightning-input class="my-checkbox slds-checkbox_faux" type="checkbox" data-id={option.Id} checked={option.checked} data-optionid={option.SBQQ__OptionalSKU__c} onchange={handleCheckboxChange}></lightning-input>
+                                </th>
+                                <th style="border-top:0.1em solid #e9e8e8;" class="slds-text-align_left slds-cell_action-mode" scope="col" >
+                                    {option.WebDesc}
+                                </th>
+                        </tr>
+                    </template>
+                </tbody>
+           
+            </table>
+            </div>
+			</template> <!--Mitesh-->
+            <div style="display: flex;align-items: baseline;">
+                <template if:true={inputDisable}>
+                    <div class="slds-p-top_medium input-wrapper" style="flex-basis:90%;    margin-top: 10px;">
+                        <label for="seats" class="input-label">
+                            <span class="required">*</span>{label.Sales_Numberofseatstest2}
+                           
+                            <lightning-helptext style="position:relative;margin-left:5px; right:-1.5px; top:-2.4px;"  content={label.Sales_NumberOfSeatsMax}></lightning-helptext>
+                        </label>
+                        <div class="input-field">
+                            <input
+                                type="number"
+                                id={pid}
+                                min="1"
+                                max="9999"
+                                value={defaultValue}
+                                disabled='True'
+                                />
+                            <div class="max-allowed-text"></div>
+                        </div>
+                    </div>
+                </template>
+                <template if:false={inputDisable}>
+                    <div class="slds-p-top_medium input-wrapper"  style="flex-basis:90%;    margin-top: 10px;">
+                        <label for="seats" class="input-label">
+                            <span class="required">*</span>{label.Sales_Numberofseatstest2}
+                            <lightning-helptext style="position:relative;margin-left:5px; right:-1.5px; top:-2.4px;" content={label.Sales_NumberOfSeatsMax}></lightning-helptext>
+                        </label>
+                        <div class="input-field1">
+                            <input
+                                type="number"
+                                id={pid}
+                                min="1"
+                                max="9999"
+                                oninput={handleSeatsInputChange}
+                                value={defaultValue}
+                                />
+                        </div>
+                        <div class="max-allowed-text"></div>
+                    </div>
+                </template>
+                <div style="margin-left: 4%">
+                    <template if:true={isNextButtonDisabled}>
+                        <div>
+                            <lightning-button label={label.Sales_NextProductPage} onclick={handleNextButtonClick} variant="brand" disabled={isNextButtonDisabled} title="Please select mandatory details" class="tooltip11">
+                            </lightning-button>
+                        </div>
+                    </template>
+                    <template if:false={isNextButtonDisabled}>
+                        <div>
+                            <lightning-button label={label.Sales_NextProductPage} onclick={handleNextButtonClick} variant="brand" disabled={isNextButtonDisabled}>
+                            </lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+<div style="margin-bottom:35px;"></div>
+</template>

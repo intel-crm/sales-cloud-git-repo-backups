@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_User_id__c</field>
+    </columns>
+    <description>RSM Mapping to Account Node for RMF</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Program_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Role_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_MDF_CCP_Internal_Retail_Account_Manager</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_MDF_CoMarketing_Ultimate_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>A&amp;E Test Account JJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>A&amp;E Test Account JJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Active_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Account.Core_MDF_CoMarketing_Ultimate_Account__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>RSM Mapping to Account Node for RMF</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_MDF_Int_Users_Partner_Geo_Mapping__c@Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Account_id__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_User_id__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,50 @@
+<!--
+  @description       : 
+  @author            : Sandeep Chamate
+  @group             : 
+  @last modified on  : 12-15-2023
+  @last modified by  : Sandeep Chamate
+-->
+<template>
+    <lightning-record-view-form object-api-name="SBQQ__QuoteLine__c" density="Comfy" record-id={recordId}>
+        <template for:each={formValues} for:item="obj">
+            <template if:false={obj.hideSectionLabel}>
+                <template if:false={obj.isConsumptionParameter}>
+                    <details key={obj.sectionLabel} class="slds-p-around_xx-small style" open>
+                        <summary class="slds-p-around_medium" onclick={handleClick} style="cursor: pointer">
+                            <span class="icon-container">
+                                <lightning-icon icon-name="utility:chevrondown" size="xx-small"
+                                    class="slds-p-left_medium slds-p-right_medium slds-p-top_x-small"></lightning-icon>
+                            </span>
+                            <span style="pointer-events: none">
+                                {obj.sectionLabel}
+                            </span>
+                        </summary>
+                        
+                        <div class="slds-grid slds-wrap slds-p-around_medium">
+                            <template for:each={obj.Fields} for:item="field">
+                                <div key={field.APIName} class="slds-col slds-size_1-of-2" style="padding-right: 2rem;">
+                                    <lightning-output-field field-name={field.APIName}
+                                        style="border-bottom: #e5e4e3 solid 1.5px;">
+                                    </lightning-output-field>
+                                </div>
+                            </template>
+                        </div>
+                    </details>     
+
+            </template>
+            </template>
+            <template if:true={obj.hideSectionLabel}>
+                <div class="slds-grid slds-wrap slds-var-p-around_medium" key={obj.sectionLabel}>
+                    <template for:each={obj.Fields} for:item="field">
+                        <div key={field.APIName} class="slds-col slds-size_1-of-2" style="padding-right: 2rem;">
+                            <lightning-output-field field-name={field.APIName}
+                                style="border-bottom: #e5e4e3 solid 1.5px;">
+                            </lightning-output-field>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </template>
+    </lightning-record-view-form>
+</template>

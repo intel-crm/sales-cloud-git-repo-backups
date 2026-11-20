@@ -1,0 +1,5 @@
+@import 'c/searchBoxStyle';
+
+.THIS.slds-current-color:focus{
+    color: red !important;
+}

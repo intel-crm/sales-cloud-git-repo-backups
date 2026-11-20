@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Trigger Execution</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Trigger Executions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class Name --></label>
+        <name>Class_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- If there is a profile ID specified here, the trigger code will not execute for anyone with that profile --></help>
+        <label><!-- Inactive for Profile --></label>
+        <name>Inactive_for_Profile__c</name>
+    </fields>
+    <fields>
+        <help><!-- If there is a user ID specified here, the trigger code will not execute for that user --></help>
+        <label><!-- Inactive for User --></label>
+        <name>Inactive_for_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trigger Events --></label>
+        <name>Trigger_Events__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Department__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Open_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>3M,7-ELEVEN,Abbott Labs,AbbVie,Activision Blizzard,Adobe,Agilent Technologies,Airbnb,Akamai,Allstate,Ally Financial,American Airlines,American Electric Power,Ameriprise Financial,AmerisourceBergen,Amgen,Anthem,Applied Materials,Arista,Ascension,Baker Hughes,Bank of America,Best Buy,Black Knight,BlackRock,Bloomberg,Blue Cross Blue Shield,Box,bp,Broadcom,CH Robinson,Cadence Design Systems,Caesars Entertainment,Capital Group,Cardinal Health System,Cargill,Carnival Corporation,Caterpillar,CBRE,Centene,Chevron,Cigna,Citadel,CloudFlare,CommonSpirit Health,ConocoPhillips,Costco,Crowdstrike,Cummins,CVS Health,Danaher,Datto,DaVita,Delta,DoorDash,Dropbox,Duke Energy,Ebay,Edison International,Eli Lilly,Emerson,Epic Systems,Etsy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>NASDAQ,Nationwide,Navy Federal Credit Union,Comcast,NCR,Netflix,Nextera Energy,Nike,Northern Trust,NRG Energy,Omnicom Group,UnitedHealth Group,Paypal,PepsiCo,Phillips 66,Pinterest,Principal Financial,Procter and Gamble,Progressive,Providence,Prudential Financial,Publix,Rackspace,Raymond James Financial,Tencent,S and P Global,Sabre,Salesforce,Schlumberger,Seagate,ServiceNow,Siemens,Sony,Southern Company,Southwest Airlines,Morgan Stanley,State Farm,State Street,Stripe,Susquehanna,Sutter Health,Synopsys,Take Two Interactive,Target,Tesla,Texas Instruments,Textron,ADM,BNY Mellon,Coke,Goldman Sachs,The Hartford,Home Depot,TJX,The Trade Desk,Thermo Fisher Scientific,TIAA,Travelers,Truist,Two Sigma,Tyson Foods,Uber,UBS,United Continental Holdings,UNFI,UPS,USAA,Valero,Visa,Walgreens,Walmart,AT&amp;T,Wells Fargo,Western Digital,Xcel Energy,Yahoo,Zillow,Zoom</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Cloud Optimizer TAL - all</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

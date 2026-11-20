@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Sets default user preferences on create</description>
+    <label>Set Default User Preferences</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_Update_Created_User_Preferences</name>
+        <label>Update Created User Preferences</label>
+        <locationX>411</locationX>
+        <locationY>271</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Username</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserName</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>UserPreferencesDisableAllFeedsEmail</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserPreferencesHideS1BrowserUI</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>User</object>
+    </recordUpdates>
+    <startElementReference>Core_Update_Created_User_Preferences</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>UserName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

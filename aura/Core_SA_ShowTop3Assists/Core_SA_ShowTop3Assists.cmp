@@ -1,0 +1,145 @@
+<aura:component controller="Core_SA_ServiceWrapper" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome">
+
+  	<aura:attribute name="headingLabel" type="string" default="Top 3 Assists" description="Heading label" />
+    
+   	<!--declare attributes-->
+    <aura:attribute name="accountId" type="string" />
+    <aura:attribute name="cimId" type="string" />
+    <aura:attribute name="recordId" type="String" />
+  	<aura:attribute name="userSessionData" type="Object" />
+  	<aura:attribute name="data" type="Object" />
+	<aura:attribute name="userWWID" type="String" />
+	<aura:attribute name="top3AssistsTitle" type="String" default="Assists" />
+	<aura:attribute name="viewMoreLinkTitle" type="String" default="View All" />
+    <aura:attribute name="width" type="String"/>
+    
+  	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:flexipageRegionInfo width="{!v.width}"/>
+    <!-- show or hide the component based on the JSON data value-->
+    <!--<aura:if isTrue="{!empty(v.data)}">-->
+    	<aura:renderIf isTrue="{!v.data.show}">
+			<article class="slds-card slds-card_boundary forceRelatedListCardDesktop">
+    			<div class="slds-grid slds-page-header forceRelatedListCardHeader">
+        			<header class="slds-media slds-media--center slds-has-flexi-truncate">
+                        <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                            <div class="extraSmall forceEntityIcon" style="background-color: #FCB95B">
+                                <span class="uiImage" data-aura-class="uiImage">
+									<img aura:id="TopAssistsIcon" class="icon " alt="Twitter News" title="Twitter News" src="{!$Label.c.Core_SA_IconPath}"/>                                
+                                </span>
+                            </div>
+                        </div>
+                        <div class="slds-media__body" style="margin-top: 2px;">
+                            <h2 class="slds-card__header-title">
+                                 <div aura:id="top_assist_top" data-source="top_assists_headline" class="" onclick="{!c.gotoURL}">
+                                    <a href="javascript:void(0)" class="slds-card__header-link slds-truncate" title="Twitter News">
+                                        <aura:if isTrue="{!v.data.total_count >= '3'}">
+                                        	<span>Twitter News ({!v.data.total_count}+)</span>
+                                        <aura:set attribute="else">
+                                            <!-- content renders if false -->
+                                        	<span>Twitter News ({!v.data.total_count})</span>      
+                                            </aura:set>
+                                        </aura:if>
+                                    </a>
+                                </div>                            
+                            </h2>
+                        </div>
+                    </header>
+                </div>
+                
+               <!-- Body of the card -->
+               <div class="slds-card__body slds-card__body_inner slds-grid slds-wrap">
+                        <aura:iteration items="{!v.data.AssistDetails}" var="assists" indexVar="key">
+  						<aura:if isTrue="{!v.width=='SMALL'}">
+                        	<div class= "slds-col slds-size_1-of-1">
+
+                            <span>
+                            <h3 class="primaryField">
+                                <div aura:id="top_assist_Title" data-source="top_assists" data-aid="{!assists.assist_id}" data-key="{!key}" class="outputLookupContainer forceOutputLookupWithPreview" onclick="{!c.gotoURL}">
+                                	<a class="textUnderline outputLookupLink slds-truncate" href="javascript:void(0)"  title="{!assists.title}"><aura:unescapedHtml value="{!assists.title}"/></a>
+                                </div>
+                            </h3>
+							<ul class="itemRows truncate slds-var-p-vertical_xx-small desktop forceImageRelatedListStencil forceRecordLayout">
+								<li class="tableRowGroup">
+									<div class="slds-list--horizontal forceListRecordItem">
+										<div class="slds-item--label slds-truncate recordCell" title="">{!assists.L1Key}:</div>
+                                        <div class="slds-item--detail slds-truncate recordCell">
+                                            <span class="uiOutputTextArea"><aura:unescapedHtml value="{!assists.L1Val}"/></span>
+                                        </div>
+                                    </div>
+                                </li>
+								<li class="tableRowGroup">
+									<div class="slds-list--horizontal forceListRecordItem">
+										<div class="slds-item--label slds-truncate recordCell" title="">{!assists.L2Key}:</div>
+                                        <div class="slds-item--detail slds-truncate recordCell">
+                                            <span class="uiOutputTextArea"><aura:unescapedHtml value="{!assists.L2Val}"/></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tableRowGroup">
+									<div class="slds-list--horizontal forceListRecordItem">
+										<div class="slds-item--label slds-truncate recordCell" title="">{!assists.L3Key}:</div>
+                                        <div class="slds-item--detail slds-truncate recordCell">
+                                            <span class="uiOutputTextArea"><aura:unescapedHtml value="{!assists.L3Val}"/></span>
+                                        </div>
+                                    </div>
+                                </li>                                
+							</ul>
+                            </span>
+                            </div>
+
+                    	<aura:set attribute="else">
+							<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+    						<div class="slds-box slds-box_x-small slds-m-around_x-small">
+                           	<span>
+                            <h3 class="primaryField">
+                                <div aura:id="top_assist_Title" data-source="top_assists" data-aid="{!assists.assist_id}" data-key="{!key}" class="outputLookupContainer forceOutputLookupWithPreview" onclick="{!c.gotoURL}">
+                                	<a class="textUnderline outputLookupLink slds-truncate" href="javascript:void(0)"  title="{!assists.title}"><aura:unescapedHtml value="{!assists.title}"/></a>
+                                </div>
+                            </h3>
+							<ul class="itemRows truncate slds-var-p-vertical_xx-small desktop forceImageRelatedListStencil forceRecordLayout">
+								<li class="tableRowGroup">
+									<div class="slds-list--horizontal forceListRecordItem">
+										<div class="slds-item--label slds-truncate recordCell" title="">{!assists.L1Key}:</div>
+                                        <div class="slds-item--detail slds-truncate recordCell">
+                                            <span class="uiOutputTextArea"><aura:unescapedHtml value="{!assists.L1Val}"/></span>
+                                        </div>
+                                    </div>
+                                </li>
+								<li class="tableRowGroup">
+									<div class="slds-list--horizontal forceListRecordItem">
+										<div class="slds-item--label slds-truncate recordCell" title="">{!assists.L2Key}:</div>
+                                        <div class="slds-item--detail slds-truncate recordCell">
+                                            <span class="uiOutputTextArea"><aura:unescapedHtml value="{!assists.L2Val}"/></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tableRowGroup">
+									<div class="slds-list--horizontal forceListRecordItem">
+										<div class="slds-item--label slds-truncate recordCell" title="">{!assists.L3Key}:</div>
+                                        <div class="slds-item--detail slds-truncate recordCell">
+                                            <span class="uiOutputTextArea"><aura:unescapedHtml value="{!assists.L3Val}"/></span>
+                                        </div>
+                                    </div>
+                                </li>                                
+							</ul>
+                            </span>						
+                            </div>
+                            </div>
+						</aura:set>
+                        </aura:if>
+                        </aura:iteration>        
+                </div>
+               
+                <footer class="slds-card__footer">
+                    <div aura:id="top_assist_bottom" data-source="top_assist_bottom" class="outputLookupContainer forceOutputLookupWithPreview" onclick="{!c.gotoURL}">
+                    	<a class="slds-card__footer-action" href="javascript:void(0)">View All
+                        	<span class="slds-assistive-text">Assists</span>
+                    	</a>
+                    </div>
+                </footer>
+  
+            </article>
+       </aura:renderIf>
+	<!-- </aura:if>-->
+</aura:component>

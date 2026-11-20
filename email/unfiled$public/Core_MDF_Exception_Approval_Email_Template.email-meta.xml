@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>CCP_letterhead</letterhead>
+    <name>Exception Approval Email Template</name>
+    <style>formalLetter</style>
+    <subject>Exception is waiting for action</subject>
+    <textOnly>Action Required
+
+Dear Intel employee,
+
+The following exception has been submitted and requires Intel review:
+Exception Number - {!Core_MDF_Exception__c.Name}
+Exception Reason - {!Core_MDF_Exception__c.Core_MDF_Exception_Reason_nm__c}
+Exception Name - {!Core_MDF_Exception__c.Core_MDF_Name_of_Exception_nm__c}
+Program - {!Core_MDF_Exception__c.Core_MDF_Program_nm__c}
+Issue Description - {!Core_MDF_Exception__c.Core_MDF_Issue_Description_dsc__c}
+
+
+
+Thank you,
+{!$Label.Core_MDF_Email_Signature}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

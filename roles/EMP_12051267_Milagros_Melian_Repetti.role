@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Mechy Tessari</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_12051267_Milagros_Melian_Repetti</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11573771_Mechy_Tessari</parentRole>
+</Role>

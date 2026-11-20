@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This metadata is used for all callout, we started with Coveo Callouts.</description>
+    <fields>
+        <fullName>PMP_CallOut_BearerKey_Txt__c</fullName>
+        <description>This field is to store the Callout Bearer key</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut BearerKey</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_MarketPlace_TailURL_Txt__c</fullName>
+        <description>This field is used to store the tail url of Marketplace home page</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut MarketPlace TailURL</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_Method_Txt__c</fullName>
+        <description>This field is to store the method of Callout (either GET or POST)</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut Method</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_Name_Txt__c</fullName>
+        <description>This field is used to store the namre of the service</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_Offerings_TailURL_Txt__c</fullName>
+        <description>This field is used to store the Offerings tail url</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut Offerings TailURL</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_Organization_Id_Value_Txt__c</fullName>
+        <description>This field is to store organizationIdValue</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut Organization Id Value</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_Partner_TailURL_Txt__c</fullName>
+        <description>This field is used to store the partner tail url</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut Partner TailURL</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_Result_Count_Txt__c</fullName>
+        <description>This field is to store the result count</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut Result Count</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_SearchHub_Txt__c</fullName>
+        <description>This field is to store the searchhub of the callout</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut SearchHub</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_CallOut_URL_Txt__c</fullName>
+        <description>This field is to save the callout url</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CallOut URL</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_CallOut_Details</label>
+    <pluralLabel>PMP_CallOut_Details</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

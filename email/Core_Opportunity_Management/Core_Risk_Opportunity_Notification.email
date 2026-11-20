@@ -1,0 +1,212 @@
+<messaging:emailTemplate subject="{!'Opportunity Risk Information: '+relatedTo.Account.Name+' - '+relatedTo.Name}" recipientType="User" relatedToType="Opportunity">
+<messaging:htmlEmailBody >
+ <table style="background-color: #0071c5;" width="100%">
+   <tbody>
+    <tr>
+      <td style="padding-left: 50px; border: none;">
+        <div style="color: white;">
+          <h1>Opportunity Risk Information!</h1>
+         </div>
+        </td>
+        <td style="border: none; padding-right: 20px;" align="right">
+        <apex:image url="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        </td>
+        </tr>
+        </tbody>
+ </table>
+ 
+  
+  <table style="font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+  <tr>
+    <td>
+     Dear Opportunity Owner  {!relatedTo.Owner.Name},<br/><br/>
+     The below Opportunity is marked as Risk, Please find the Opportunity Information below
+     </td>
+    </tr> 
+  </table>
+  
+    <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+  <tr>
+    <td>
+    Opportunity  Information
+     </td>
+    </tr> 
+  </table>
+  
+   
+   <table style="font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+     <tbody>
+   <tr>
+    <td style="font-family:intel clear;" width="40%">Account Name : {!relatedTo.Account.Name}</td>
+    <td style="font-family:intel clear;" width="40%"> Opportunity Name : {!relatedTo.Name}</td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">Stage : {!relatedTo.StageName}</td>
+     <td style="font-family:intel clear;" width="40%"> Decision Date : 
+     <apex:outputText value="{0, date, d'/'MM'/'yyyy}">
+     <apex:param value="{!relatedTo.CloseDate}" /> 
+     </apex:outputText></td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">SalesGroup : {!relatedTo.Core_Sales_Groups__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Opportunity Type : {!relatedTo.Core_Opportunity_Type__c}</td>
+   </tr>
+   
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Opportunity Owner :  {!relatedTo.Owner.Name}</td>
+     <td style="font-family:intel clear;" width="40%"> Product Segement :  {!relatedTo.Core_Product_Segment__c}</td>
+   </tr>
+   
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Technical Owner :  {!relatedTo.Core_Technical_Owner__r.Name}</td>
+     <td style="font-family:intel clear;" width="40%"> Product Application :  {!relatedTo.Core_Product_Application__c}</td>
+   </tr>
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Amount : {!relatedTo.Amount}</td>
+     <td style="font-family:intel clear;" width="40%"> Vertical Market : {!relatedTo.Core_Consumption_Market__c}</td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">Competitive Architecture: {!relatedTo.Core_Competitive_Architecture__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Probability(%) : {!relatedTo.Probability}</td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">Architecture Conversion : {!relatedTo.Core_Architecture_Conversion__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Solution Group : {!relatedTo.Core_Solution_Group__c}</td>
+   </tr>
+   
+   <tr>
+     <td style="font-family:intel clear;" width="40%">Loss/Cancel Reason : {!relatedTo.Core_Loss_Cancel_Reason__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Commisionable? : {!relatedTo.Core_Commissionable__c}</td>
+   </tr>
+   
+     <tr>
+     <td style="font-family:intel clear;" width="40%">Description : {!relatedTo.Description}</td>
+     <td style="font-family:intel clear;" width="40%"> Exclude from KPIs : {!relatedTo.Core_Exclude_From_KPIs__c}</td>
+   </tr>
+   
+    <tr>
+     <td style="font-family:intel clear;" width="40%">Status Update : {!relatedTo.Core_Status_Update__c}</td>
+     <td style="font-family:intel clear;" width="40%"> Loss/Cancel Details : {!relatedTo.Core_Loss_Cancel_Details__c}</td>
+   </tr>
+   
+   </tbody>
+   </table>
+      
+   <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+  <tr>
+    <td>
+    Opportunity Product Information
+     </td>
+    </tr> 
+  </table>
+<table style="border-collapse: collapse;font-family:intel clear;border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+ 
+  <thead >
+    <tr>
+      <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Product Name</th>
+      <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Status</th>
+      <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Claim Date</th>
+      <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Quantity</th>
+      <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">SalesPrice</th>
+      <th scope="col" style="border: 1px solid #cecfd5;padding: 10px 15px;">Total Price</th>
+    </tr>
+  </thead>
+  
+    <apex:repeat var="cz"  value="{!relatedTo.OpportunityLineItems}">
+
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #cecfd5;padding: 10px 15px;">{!cz.Product2.Name}</td>
+      <td style="border: 1px solid #cecfd5;padding: 10px 15px;">{!cz.Core_Status__c}</td>
+      <td style="border: 1px solid #cecfd5;padding: 10px 15px;">{!cz.Core_Claim_Date__c}</td>
+      <td style="border: 1px solid #cecfd5;padding: 10px 15px;">{!cz.Quantity}</td>
+      <td style="border: 1px solid #cecfd5;padding: 10px 15px;">{!cz.UnitPrice}</td>
+       <td style="border: 1px solid #cecfd5;padding: 10px 15px;">{!cz.TotalPrice}</td>
+    </tr>
+   
+  </tbody>
+  
+      
+    </apex:repeat>
+    
+   </table>
+      
+ <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+  <tr>
+    <td>
+    Opportunity Product Risk Information
+     </td>
+    </tr> 
+  </table>
+      
+  <table style="border-collapse: collapse;font-family:intel clear;border: 1px solid #d3d3d3;padding-top:5px;padding-bottom:5px;font-size: 14px;" width="100%">
+ 
+    <thead >
+    <tr>
+      <th scope="col" style="border: 1px solid #cecfd5;width:15%;">Product Name</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:5%;white-space: break-spaces;">BU Short Name</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:5%;white-space: break-spaces;">At Risk</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:10%;">Risk Reason</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:10%;">Risk Priority</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:10%;">Risk Status</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:15%;">Product Risk Owner</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:5%;white-space: break-spaces;">Risk Create Date</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:5%;white-space: break-spaces;">Risk End Date</th>
+      <th scope="col" style="border: 1px solid #cecfd5;width:20%;">Risk Detail</th>
+     </tr>
+  </thead>
+
+   <apex:repeat var="cx"  value="{!relatedTo.OpportunityLineItems}">
+   <apex:outputPanel rendered="{!cx.Core_At_Risk__c = true}">
+
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #cecfd5;white-space: break-spaces;padding-left:5px;">{!cx.Product2.Name}</td>
+      <td style="border: 1px solid #cecfd5;padding-left:5px;">{!cx.Core_BU_Short_Name__c}</td>
+      <td style="border: 1px solid #cecfd5;padding-left:5px;">{!cx.Core_At_Risk__c}</td>
+      <td style="border: 1px solid #cecfd5;padding-left:5px;">{!cx.Core_Risk_Reason1__c}</td>
+      <td style="border: 1px solid #cecfd5;padding-left:5px;">{!cx.Core_Risk_Priority__c}</td>
+      <td style="border: 1px solid #cecfd5;padding-left:5px;">{!cx.Core_At_Risk_Status__c}</td>
+      <td style="border: 1px solid #cecfd5;white-space: break-spaces;padding-left:5px;">{!cx.Core_Product_Risk_Owner__c}</td>
+      <td style="border: 1px solid #cecfd5;white-space: break-spaces;padding-left:5px;">{!cx.Core_Risk_Create_Date__c}</td>
+      <td style="border: 1px solid #cecfd5;white-space: break-spaces;padding-left:5px;">{!cx.Core_Risk_End_Date__c}</td>
+      <td style="border: 1px solid #cecfd5;white-space: break-spaces;padding-left:5px;">{!cx.Core_Risk_Detail__c}</td>
+    </tr>
+   
+  </tbody>    
+</apex:outputPanel>  
+  </apex:repeat>     
+</table>
+  
+     <table style="border: 1px solid #d3d3d3;font-size: 14px;font-family:intel clear;" width="100%">
+  <tr>
+    <td>
+       <p>
+       <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}{!relatedTo.Id}" style="font-size: 18px"> Click Here</a>
+
+       to see additional information on this opportunity.<br /><br /></p>
+     </td>
+    </tr> 
+  </table>
+     
+    <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
+      <tr>
+    <td>
+    
+     <p style="text-align: center;font-size: 12px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation<br/>&copy;
+ {! YEAR( TODAY() )} Intel Corporation<br />
+ Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br/>
+ <a href="http://www.intel.com">www.intel.com</a><br/>
+ <a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+ 
+      </td>
+     </tr>
+     </table>
+     
+    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

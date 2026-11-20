@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "e85a3f6e-9dd1-4fa4-87f5-37eb9aa6609a",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Claim_Batch_Record_Related_List__c",
+  "id" : "8a42cc88-e3e3-4740-926c-2aa89be4ee65",
+  "label" : "Claim Batch Record Related List",
+  "objectApiName" : "Core_MDF_Claim_Batch_Stage__c",
+  "routeType" : "relatedlist-a4N",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-claim-batch-stage"
+}

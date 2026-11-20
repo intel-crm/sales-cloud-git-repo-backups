@@ -1,0 +1,635 @@
+{
+  "appPageId" : "d8192ff4-927d-4111-88f9-7186fcbb1b52",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "febdcbc1-f86d-41f9-b26f-22d3034a31b7",
+  "label" : "Login",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "salesforceIdentity:communityLogo2",
+      "id" : "10918f9a-062e-447f-b955-7539c0e7273b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "abdfb40d-053e-40d7-b6c3-32b3b31fde85",
+        "es" : "2d11d0ba-d788-4b5c-a481-7b33484d1bfe",
+        "es_mx" : "0d17c9ea-3197-4f3f-bb7b-369d78ea9afa",
+        "fr" : "758062a5-3cce-425b-bfbc-46a3b59b9509",
+        "it" : "69d27061-aded-495b-98ba-2ef5fe535890",
+        "ja" : "b27ba9e2-242e-4c06-9ff8-3e54268ca48b",
+        "ko" : "09b663c3-8370-40a1-b78b-61536e0378ee",
+        "pt_br" : "0b22f951-dc7b-46db-957f-23fb372589a9",
+        "pt_pt" : "a680595e-92f1-41a8-9d16-22007784b1d9",
+        "ru" : "93e78ea5-63b6-49e0-b6e7-4723cbeb5c6e",
+        "zh_cn" : "2b50b5dd-1de2-4b3f-8690-6aa7bb38de80",
+        "zh_tw" : "b811249b-d13e-4616-be63-416c0244eaf2"
+      },
+      "renditions" : [ {
+        "id" : "2b50b5dd-1de2-4b3f-8690-6aa7bb38de80",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "93e78ea5-63b6-49e0-b6e7-4723cbeb5c6e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a680595e-92f1-41a8-9d16-22007784b1d9",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b27ba9e2-242e-4c06-9ff8-3e54268ca48b",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "69d27061-aded-495b-98ba-2ef5fe535890",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "758062a5-3cce-425b-bfbc-46a3b59b9509",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0d17c9ea-3197-4f3f-bb7b-369d78ea9afa",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "abdfb40d-053e-40d7-b6c3-32b3b31fde85",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "09b663c3-8370-40a1-b78b-61536e0378ee",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2d11d0ba-d788-4b5c-a481-7b33484d1bfe",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0b22f951-dc7b-46db-957f-23fb372589a9",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b811249b-d13e-4616-be63-416c0244eaf2",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "forgotPasswordLabel" : "Forgot your password?",
+        "forgotPasswordUrl" : "/ForgotPassword",
+        "loginButtonLabel" : "Log in",
+        "passwordLabel" : "Password",
+        "selfRegisterLabel" : "Not a member?",
+        "selfRegisterUrl" : "/SelfRegister",
+        "startUrl" : "",
+        "usernameLabel" : "Email"
+      },
+      "componentName" : "salesforceIdentity:loginForm2",
+      "id" : "e330611d-726a-42f6-b16e-fc9ee5dc7e22",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "43aeb3d2-96a7-42ce-aca2-8f2f31cca482",
+        "es" : "9034f781-a4df-43d1-bd16-07e9b42c40c6",
+        "es_mx" : "b46dca86-c6d9-4681-b355-2444110b4a46",
+        "fr" : "73782cb4-a35a-497d-84b6-2d79559fb549",
+        "it" : "2e121ed1-87b1-4f9f-a651-e91ec22cbac2",
+        "ja" : "c2fd38d3-8adc-454b-b07a-567e40f59f1e",
+        "ko" : "009887df-9667-4bd0-99c4-101f41d7ca9c",
+        "pt_br" : "af4101a1-7bcb-4508-ac9b-72df17b5c000",
+        "pt_pt" : "c66aa482-aded-4e1d-aa30-6590460b0f72",
+        "ru" : "5470b4b8-2264-470e-9068-d483beb2fe48",
+        "zh_cn" : "6cd8421e-7c0e-4d68-9c31-38ab1c95b846",
+        "zh_tw" : "35b9dac7-a013-41f3-9cb7-f72058aa52e6"
+      },
+      "renditions" : [ {
+        "id" : "6cd8421e-7c0e-4d68-9c31-38ab1c95b846",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "忘记了密码？",
+            "loginButtonLabel" : "登录",
+            "passwordLabel" : "密码",
+            "selfRegisterLabel" : "还不是会员？",
+            "usernameLabel" : "电子邮件"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5470b4b8-2264-470e-9068-d483beb2fe48",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "Забыли пароль?",
+            "loginButtonLabel" : "Вход",
+            "passwordLabel" : "Пароль",
+            "selfRegisterLabel" : "Еще не стали участником?",
+            "usernameLabel" : "Электронные рассылки"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c66aa482-aded-4e1d-aa30-6590460b0f72",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "Esqueceu sua senha?",
+            "loginButtonLabel" : "Fazer login",
+            "passwordLabel" : "Senha",
+            "selfRegisterLabel" : "N&atilde;o &eacute; membro?",
+            "usernameLabel" : "E-mail"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c2fd38d3-8adc-454b-b07a-567e40f59f1e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "パスワードをお忘れですか？",
+            "loginButtonLabel" : "ログイン",
+            "passwordLabel" : "パスワード",
+            "selfRegisterLabel" : "まだメンバーではない場合",
+            "usernameLabel" : "メールアドレス"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2e121ed1-87b1-4f9f-a651-e91ec22cbac2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "Password dimenticata?",
+            "loginButtonLabel" : "Accedi",
+            "passwordLabel" : "Password",
+            "selfRegisterLabel" : "Non siete iscritti al programma?",
+            "usernameLabel" : "E-mail"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "73782cb4-a35a-497d-84b6-2d79559fb549",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "Vous avez oubli&eacute; votre mot de passe&nbsp;?",
+            "loginButtonLabel" : "Se connecter",
+            "passwordLabel" : "Mot de passe",
+            "selfRegisterLabel" : "Pas encore membre&nbsp;?",
+            "usernameLabel" : "E-mail"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b46dca86-c6d9-4681-b355-2444110b4a46",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "¿Ha olvidado la contrase&ntilde;a?",
+            "loginButtonLabel" : "Iniciar sesi&oacute;n",
+            "passwordLabel" : "Contrase&ntilde;a",
+            "selfRegisterLabel" : "¿No es miembro?",
+            "usernameLabel" : "Correo electr&oacute;nico"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "43aeb3d2-96a7-42ce-aca2-8f2f31cca482",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "Passwort vergessen?",
+            "loginButtonLabel" : "Einloggen",
+            "passwordLabel" : "Passwort",
+            "selfRegisterLabel" : "Noch kein Programmteilnehmer?",
+            "usernameLabel" : "E-Mail"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "009887df-9667-4bd0-99c4-101f41d7ca9c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "암호를 잊어버리셨습니까?",
+            "loginButtonLabel" : "로그인",
+            "passwordLabel" : "암호",
+            "selfRegisterLabel" : "회원이 아니십니까?",
+            "usernameLabel" : "이메일"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9034f781-a4df-43d1-bd16-07e9b42c40c6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "¿Ha olvidado su contrase&ntilde;a?",
+            "loginButtonLabel" : "Iniciar sesi&oacute;n",
+            "passwordLabel" : "Contrase&ntilde;a",
+            "selfRegisterLabel" : "¿No es miembro?",
+            "usernameLabel" : "Correo electr&oacute;nico"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "af4101a1-7bcb-4508-ac9b-72df17b5c000",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "Esqueceu sua senha?",
+            "loginButtonLabel" : "Fazer login",
+            "passwordLabel" : "Senha",
+            "selfRegisterLabel" : "N&atilde;o &eacute; membro?",
+            "usernameLabel" : "E-mail"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "35b9dac7-a013-41f3-9cb7-f72058aa52e6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "forgotPasswordLabel" : "忘記了您的密碼嗎？",
+            "loginButtonLabel" : "登錄",
+            "passwordLabel" : "密碼",
+            "selfRegisterLabel" : "還不是成員嗎？",
+            "usernameLabel" : "電子郵件"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "headerText" : "",
+        "showHeader" : false
+      },
+      "componentName" : "salesforceIdentity:socialLogin2",
+      "id" : "9105a083-6787-4c5b-a865-11c59cb8b83d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "85f6a26b-ab6f-4124-b08c-29eb5795d34f",
+        "es" : "ec3fd90c-2cac-4a0f-9c43-bf768013402a",
+        "es_mx" : "783d7bc1-62fd-4099-b4e6-43d68b02d4ee",
+        "fr" : "706d7b98-5e08-4717-b717-eef6ed94bc8d",
+        "it" : "e77e797a-0d2f-4a04-8093-7feb1166c1cd",
+        "ja" : "7d5c1182-3bcf-4d55-aa83-186da19bf949",
+        "ko" : "496f9f46-8fcc-42d9-8195-895d0af854eb",
+        "pt_br" : "eba46919-4c99-4e17-82d5-4a8d3292414a",
+        "pt_pt" : "b2665fc3-f18c-4429-92df-a22eddf53df1",
+        "ru" : "07ef771e-7554-4f73-898c-a13f674a2809",
+        "zh_cn" : "a62b31fd-9564-439b-b8b6-e0c7a96c271e",
+        "zh_tw" : "ad5ce90b-3e04-49d0-9490-aee791c5129a"
+      },
+      "renditions" : [ {
+        "id" : "a62b31fd-9564-439b-b8b6-e0c7a96c271e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "07ef771e-7554-4f73-898c-a13f674a2809",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b2665fc3-f18c-4429-92df-a22eddf53df1",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7d5c1182-3bcf-4d55-aa83-186da19bf949",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e77e797a-0d2f-4a04-8093-7feb1166c1cd",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "706d7b98-5e08-4717-b717-eef6ed94bc8d",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "783d7bc1-62fd-4099-b4e6-43d68b02d4ee",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "85f6a26b-ab6f-4124-b08c-29eb5795d34f",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "496f9f46-8fcc-42d9-8195-895d0af854eb",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ec3fd90c-2cac-4a0f-9c43-bf768013402a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "eba46919-4c99-4e17-82d5-4a8d3292414a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ad5ce90b-3e04-49d0-9490-aee791c5129a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "employeeLoginLinkLabel" : "Are you an employee? Login here"
+      },
+      "componentName" : "salesforceIdentity:employeeLoginLink2",
+      "id" : "a5fed9c4-4823-44c6-9f04-588b055abb43",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "1f84aaed-8af0-4de9-8d74-c5c38d24d94a",
+        "es" : "c5a81442-66c2-40b1-b9e0-1e07c73a3392",
+        "es_mx" : "6c3ae103-3e25-4a6b-86ce-035cb4ef520c",
+        "fr" : "69b2d6c2-28c0-40aa-8584-2a38e9601034",
+        "it" : "6cf54ca5-b83e-4774-ae48-3e6bed7e2a6e",
+        "ja" : "fa7324d0-4de8-4d0a-8731-5975c09cecc2",
+        "ko" : "217afcfa-e17e-49fa-9ced-b8233b756597",
+        "pt_br" : "9ab7d0ad-a8d2-47a5-86f2-93618609b7b0",
+        "pt_pt" : "af0f9f1e-633d-4e37-997e-ac1184304ef8",
+        "ru" : "8b4800c5-69b4-4b6e-85e1-010c5e5914fa",
+        "zh_cn" : "ec0fb393-757c-40ae-a355-dcfc95aa7ec5",
+        "zh_tw" : "78226574-bf15-4f00-82d5-b6e25e88d484"
+      },
+      "renditions" : [ {
+        "id" : "ec0fb393-757c-40ae-a355-dcfc95aa7ec5",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "你是雇员吗？在此登录"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8b4800c5-69b4-4b6e-85e1-010c5e5914fa",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "Вы являетесь сотрудником? Вход на сайт"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "af0f9f1e-633d-4e37-997e-ac1184304ef8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "Voc&ecirc; &eacute; um empregado? Fa&ccedil;a seu login aqui."
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fa7324d0-4de8-4d0a-8731-5975c09cecc2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "あなたは従業員ですか? こちらからログインしてください"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6cf54ca5-b83e-4774-ae48-3e6bed7e2a6e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "Siete dei dipendenti? Effettuate il login qui"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "69b2d6c2-28c0-40aa-8584-2a38e9601034",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "&Ecirc;tes-vous un employ&eacute;&nbsp;? Connectez-vous ici"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6c3ae103-3e25-4a6b-86ce-035cb4ef520c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "¿Es usted un empleado? Inicie sesi&oacute;n aqu&iacute;"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1f84aaed-8af0-4de9-8d74-c5c38d24d94a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "Sind Sie ein Mitarbeiter? Hier einloggen"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "217afcfa-e17e-49fa-9ced-b8233b756597",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "직원이십니까? 여기서 로그인하세요"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c5a81442-66c2-40b1-b9e0-1e07c73a3392",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "¿Es un empleado? Inicie sesi&oacute;n aqu&iacute;"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9ab7d0ad-a8d2-47a5-86f2-93618609b7b0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "Voc&ecirc; &eacute; um empregado? Fa&ccedil;a seu login aqui."
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "78226574-bf15-4f00-82d5-b6e25e88d484",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "employeeLoginLinkLabel" : "您是一名員工嗎？請在此登錄"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "b4cd0de6-6ccc-4732-949b-03904abaa4aa",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Login"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ab633faa-dcc9-41cc-b606-6274eeb8b4ea",
+      "renditionMap" : {
+        "de" : "a1484696-64bf-4c3e-8edd-70a5e90aac59",
+        "es" : "238c7529-5467-49f0-8374-2d4c7f83982a",
+        "es_mx" : "7334cd72-2ed0-4bdd-bc8f-119f8eeb2b28",
+        "fr" : "fb2da4c5-b9b6-4aec-b22e-cfae735d847c",
+        "it" : "45554094-a597-4bf5-9a34-171ecdcf331f",
+        "ja" : "d41d7124-ccdc-40ae-a0ec-fc6cea834d22",
+        "ko" : "435579af-7971-4d66-961b-a6d61e86621d",
+        "pt_br" : "ceb035f9-0e9d-4c77-a8fc-a685e4bad0b4",
+        "pt_pt" : "dce63f48-28fe-44cf-83cd-bc74d45a5621",
+        "ru" : "a16cd770-825c-428d-85ef-f024334d8782",
+        "zh_cn" : "6da9474b-ee0b-4d60-b0d9-da8fd904609b",
+        "zh_tw" : "4a2072f1-3480-4a05-8a0c-3e12e5ef0f5f"
+      },
+      "renditions" : [ {
+        "id" : "6da9474b-ee0b-4d60-b0d9-da8fd904609b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a16cd770-825c-428d-85ef-f024334d8782",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "dce63f48-28fe-44cf-83cd-bc74d45a5621",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d41d7124-ccdc-40ae-a0ec-fc6cea834d22",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "45554094-a597-4bf5-9a34-171ecdcf331f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fb2da4c5-b9b6-4aec-b22e-cfae735d847c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7334cd72-2ed0-4bdd-bc8f-119f8eeb2b28",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a1484696-64bf-4c3e-8edd-70a5e90aac59",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "435579af-7971-4d66-961b-a6d61e86621d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "238c7529-5467-49f0-8374-2d4c7f83982a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ceb035f9-0e9d-4c77-a8fc-a685e4bad0b4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4a2072f1-3480-4a05-8a0c-3e12e5ef0f5f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Login",
+            "title" : "Login"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "9a49e8b7-0034-4dbd-a15f-b2f662698f36",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Login",
+  "type" : "view",
+  "viewType" : "login-home"
+}

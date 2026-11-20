@@ -1,0 +1,11 @@
+.dummy{
+	color : black;
+}
+.LWCbutton {
+	margin-top: 10px;
+    --sds-c-button-text-color: #0084ff;
+	float: right;
+}
+.lightning-helptext{
+margin-top: 2px;	
+}

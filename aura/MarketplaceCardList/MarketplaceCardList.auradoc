@@ -1,0 +1,21 @@
+<aura:documentation>
+	<aura:description>
+    <p>Card List Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/11/2019</p>
+    <p>CurrentVersion: 1.32</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>Version: 1.32</p>
+		<p>Bug Fixes</p>
+    <p>Version: 1.1</p>
+		<p>Added display type override used mainly on L3 that makes it not look at the state</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

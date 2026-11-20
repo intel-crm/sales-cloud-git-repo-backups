@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="pageType" label="Page Type" datasource="marketplacehelp,marketplacedashboard" default="marketplacedashboard"/>
+     <design:attribute name="viewAll" label="Show View All" />
+</design:component>

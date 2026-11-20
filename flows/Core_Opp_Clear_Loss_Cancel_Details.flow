@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Opp_Clear_Loss_Cancel_Details workflow rule
+Workflow rule description: Clears the Loss/Cancel Details text field if the Opportunity is changed from Lost or Cancelled to a stage other than Lost or Cancelled&quot;</description>
+    <environments>Default</environments>
+    <label>Core_Opp_Clear_Loss_Cancel_Details</label>
+    <migratedFromWorkflowRuleName>Core_Opp_Clear_Loss_Cancel_Details</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <inputAssignments>
+            <field>Core_Loss_Cancel_Details__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND(   OR(     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Lost&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Cancelled&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Production Lost&apos;),     ISPICKVAL(PRIORVALUE({!$Record.StageName}), &apos;Production Cancelled&apos;)   ),   NOT(OR(     ISPICKVAL({!$Record.StageName}, &apos;Lost&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Cancelled&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Production Lost&apos;),     ISPICKVAL({!$Record.StageName}, &apos;Production Cancelled&apos;)   )) )</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

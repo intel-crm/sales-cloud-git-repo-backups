@@ -1,0 +1,19 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase" implements="forceCommunity:availableForAllPageTypes">
+
+    <!--https://developer.salesforce.com/docs/component-library/bundle/lightning:textarea/example-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="label" type="string" />
+
+    <div class="{!join(' ', '', v.required ? 'isRequired' : 'isNotRequired')}">
+      <lightning:textarea aura:id="input"
+        required="{!v.required}"
+        disabled="{!v.disabled}"
+        name="{!v.name}"
+        label="{!v.label}"
+        value="{!v.value}"
+        onchange="{!c.handleChange}"/>
+    </div>
+
+
+</aura:component>

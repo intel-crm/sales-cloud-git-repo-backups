@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Request Topics</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Request Topics</value>
+    </caseValues>
+    <fields>
+        <help><!-- Date of the meeting --></help>
+        <label><!-- Date of Meeting --></label>
+        <name>Core_IT_Date_of_Meeting__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Topic --></label>
+        <name>Core_IT_Intel_Meeting_Topic_Name__c</name>
+        <picklistValues>
+            <masterLabel>Agile</masterLabel>
+            <translation><!-- Agile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Security</masterLabel>
+            <translation><!-- Application Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auditing</masterLabel>
+            <translation><!-- Auditing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Augmented Reality</masterLabel>
+            <translation><!-- Augmented Reality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BI Overview or Indepth</masterLabel>
+            <translation><!-- BI Overview or Indepth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BYOD - Bring Your Own Device</masterLabel>
+            <translation><!-- BYOD - Bring Your Own Device --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Big Data/BI case study</masterLabel>
+            <translation><!-- Big Data/BI case study --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMMI</masterLabel>
+            <translation><!-- CMMI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRM</masterLabel>
+            <translation><!-- CRM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Cloud Computing</masterLabel>
+            <translation><!-- Client Cloud Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Management</masterLabel>
+            <translation><!-- Client Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Platform</masterLabel>
+            <translation><!-- Client Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Refresh</masterLabel>
+            <translation><!-- Client Refresh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client SSD</masterLabel>
+            <translation><!-- Client SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Virtualization</masterLabel>
+            <translation><!-- Client Virtualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Client</masterLabel>
+            <translation><!-- Cloud Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Computing</masterLabel>
+            <translation><!-- Cloud Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Infrastructure</masterLabel>
+            <translation><!-- Cloud Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Operations</masterLabel>
+            <translation><!-- Cloud Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Overview/Strategy</masterLabel>
+            <translation><!-- Cloud Overview/Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Security</masterLabel>
+            <translation><!-- Cloud Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumerization</masterLabel>
+            <translation><!-- Consumerization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Design</masterLabel>
+            <translation><!-- DC Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Management &amp; Operation</masterLabel>
+            <translation><!-- DC Management &amp; Operation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Strategy &amp; Consolidation</masterLabel>
+            <translation><!-- DC Strategy &amp; Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Tour</masterLabel>
+            <translation><!-- DC Tour --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Protection</masterLabel>
+            <translation><!-- Data Protection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database</masterLabel>
+            <translation><!-- Database --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DevOps</masterLabel>
+            <translation><!-- DevOps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disaster Recovery</masterLabel>
+            <translation><!-- Disaster Recovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EAI/B2Bi/B2E</masterLabel>
+            <translation><!-- EAI/B2Bi/B2E --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Security</masterLabel>
+            <translation><!-- Enterprise Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ergo health employee safety</masterLabel>
+            <translation><!-- Ergo health employee safety --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Five Star</masterLabel>
+            <translation><!-- Five Star --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GEO fencing</masterLabel>
+            <translation><!-- GEO fencing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Systems Management or NOC</masterLabel>
+            <translation><!-- Global Systems Management or NOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HFE</masterLabel>
+            <translation><!-- HFE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hackathon Cloud</masterLabel>
+            <translation><!-- Hackathon Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hadoop(IDH) sharing</masterLabel>
+            <translation><!-- Hadoop(IDH) sharing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hybrid cloud</masterLabel>
+            <translation><!-- Hybrid cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IA Phone</masterLabel>
+            <translation><!-- IA Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IA Tablet</masterLabel>
+            <translation><!-- IA Tablet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOT in Manufacturing</masterLabel>
+            <translation><!-- IOT in Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOT overview</masterLabel>
+            <translation><!-- IOT overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Business Value</masterLabel>
+            <translation><!-- IT Business Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Business Value (not workshop)</masterLabel>
+            <translation><!-- IT Business Value (not workshop) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Factory Automation</masterLabel>
+            <translation><!-- IT Factory Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Innovation</masterLabel>
+            <translation><!-- IT Innovation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Sustainability</masterLabel>
+            <translation><!-- IT Sustainability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITFA Discussion</masterLabel>
+            <translation><!-- ITFA Discussion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITSP Compreshenive Planning</masterLabel>
+            <translation><!-- ITSP Compreshenive Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITSP Overview</masterLabel>
+            <translation><!-- ITSP Overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IaaS</masterLabel>
+            <translation><!-- IaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Identity and Access Management</masterLabel>
+            <translation><!-- Identity and Access Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incident Response</masterLabel>
+            <translation><!-- Incident Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Information/Knowledge Management</masterLabel>
+            <translation><!-- Information/Knowledge Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instant Messaging</masterLabel>
+            <translation><!-- Instant Messaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel IT Benchmarking</masterLabel>
+            <translation><!-- Intel IT Benchmarking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel IT Multi Year Planning</masterLabel>
+            <translation><!-- Intel IT Multi Year Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel IT Overview / IT APR Briefing</masterLabel>
+            <translation><!-- Intel IT Overview / IT APR Briefing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel IT Strategy</masterLabel>
+            <translation><!-- Intel IT Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LBS Location Based Systems</masterLabel>
+            <translation><!-- LBS Location Based Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lean</masterLabel>
+            <translation><!-- Lean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Localization globalization translation</masterLabel>
+            <translation><!-- Localization globalization translation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDM or MAM</masterLabel>
+            <translation><!-- MDM or MAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MITBV Workshop</masterLabel>
+            <translation><!-- MITBV Workshop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Master Data</masterLabel>
+            <translation><!-- Master Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile devices</masterLabel>
+            <translation><!-- Mobile devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network</masterLabel>
+            <translation><!-- Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-IA tablet or smartphone</masterLabel>
+            <translation><!-- Non-IA tablet or smartphone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODCA</masterLabel>
+            <translation><!-- ODCA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Collaboration Systems (such as MS SharePoint)</masterLabel>
+            <translation><!-- Online Collaboration Systems (such as MS SharePoint) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Openstack or open source in the cloud</masterLabel>
+            <translation><!-- Openstack or open source in the cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other rare topic and misc.</masterLabel>
+            <translation><!-- Other rare topic and misc. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Overview</masterLabel>
+            <translation><!-- Overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PaaS</masterLabel>
+            <translation><!-- PaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patching</masterLabel>
+            <translation><!-- Patching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peoplesoft</masterLabel>
+            <translation><!-- Peoplesoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Productivity Measurement &amp; Enhancement</masterLabel>
+            <translation><!-- Productivity Measurement &amp; Enhancement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Management</masterLabel>
+            <translation><!-- Project Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFID</masterLabel>
+            <translation><!-- RFID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RISC to IA</masterLabel>
+            <translation><!-- RISC to IA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Management</masterLabel>
+            <translation><!-- Risk Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Management &amp; Information Security</masterLabel>
+            <translation><!-- Risk Management &amp; Information Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics</masterLabel>
+            <translation><!-- Robotics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Business</masterLabel>
+            <translation><!-- SAP Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP HANA</masterLabel>
+            <translation><!-- SAP HANA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Technical</masterLabel>
+            <translation><!-- SAP Technical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDN</masterLabel>
+            <translation><!-- SDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDX</masterLabel>
+            <translation><!-- SDX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOA</masterLabel>
+            <translation><!-- SOA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOC/Security BI</masterLabel>
+            <translation><!-- SOC/Security BI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SaaS</masterLabel>
+            <translation><!-- SaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Serve BI</masterLabel>
+            <translation><!-- Self Serve BI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Consolidation</masterLabel>
+            <translation><!-- Server Consolidation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Hardware and Performance</masterLabel>
+            <translation><!-- Server Hardware and Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Management</masterLabel>
+            <translation><!-- Server Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Refresh</masterLabel>
+            <translation><!-- Server Refresh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server SSD</masterLabel>
+            <translation><!-- Server SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server Virtualization</masterLabel>
+            <translation><!-- Server Virtualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server/OS Security</masterLabel>
+            <translation><!-- Server/OS Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Desk or TAC or Help Desk</masterLabel>
+            <translation><!-- Service Desk or TAC or Help Desk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Management and Portfolio</masterLabel>
+            <translation><!-- Service Management and Portfolio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Six Sigma</masterLabel>
+            <translation><!-- Six Sigma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Computing</masterLabel>
+            <translation><!-- Social Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software general topic</masterLabel>
+            <translation><!-- Software general topic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Speech recognition &amp; human machine interface</masterLabel>
+            <translation><!-- Speech recognition &amp; human machine interface --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Chain Management</masterLabel>
+            <translation><!-- Supply Chain Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Systemic Innovation</masterLabel>
+            <translation><!-- Systemic Innovation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thermal management</masterLabel>
+            <translation><!-- Thermal management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Touch</masterLabel>
+            <translation><!-- Touch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UX general</masterLabel>
+            <translation><!-- UX general --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ultrabook</masterLabel>
+            <translation><!-- Ultrabook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Communications &amp; Messaging</masterLabel>
+            <translation><!-- Unified Communications &amp; Messaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visualization</masterLabel>
+            <translation><!-- Visualization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win 8</masterLabel>
+            <translation><!-- Win 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless technology</masterLabel>
+            <translation><!-- Wireless technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless/Mobile Security</masterLabel>
+            <translation><!-- Wireless/Mobile Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>XaaS</masterLabel>
+            <translation><!-- XaaS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>html5</masterLabel>
+            <translation><!-- html5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mobile app dev and strategy</masterLabel>
+            <translation><!-- mobile app dev and strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vPro</masterLabel>
+            <translation><!-- vPro --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Topic --></label>
+        <name>Core_IT_Intel_Meeting_Topic__c</name>
+        <picklistValues>
+            <masterLabel>Business Intelligence (Big Data)</masterLabel>
+            <translation><!-- Business Intelligence (Big Data) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Computing</masterLabel>
+            <translation><!-- Cloud Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration &amp; Productivity</masterLabel>
+            <translation><!-- Collaboration &amp; Productivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database</masterLabel>
+            <translation><!-- Database --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Venue Type --></label>
+        <name>Core_IT_Venue_Type__c</name>
+        <picklistValues>
+            <masterLabel>FTF at Account location</masterLabel>
+            <translation><!-- FTF at Account location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTF at Intel location</masterLabel>
+            <translation><!-- FTF at Intel location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTF at other offsite location</masterLabel>
+            <translation><!-- FTF at other offsite location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Off-line (like email)</masterLabel>
+            <translation><!-- Off-line (like email) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Sales</masterLabel>
+            <translation><!-- Online Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Teleconference</masterLabel>
+            <translation><!-- Teleconference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video conference</masterLabel>
+            <translation><!-- Video conference --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Support Request --></label>
+        <name>Core_Sales_Support_Request__c</name>
+        <relationshipLabel><!-- Request Topics --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

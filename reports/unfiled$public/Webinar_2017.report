@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Webinar&apos;s LCP 2017</description>
+    <filter>
+        <criteriaItems>
+            <column>CAMPAIGN_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Jan Monthly Webinar Series,Webinars Feb EN emails,April Webinars Series APAC (EN) - 12 Apr,Webinar Series APAC 26 Apr,May Webinars Series APAC (EN) - 17 May,May Webinars Series APAC (EN) - 31 May,June Webinars Series APAC (KR) Monthly Template - 9 June,June Webinars Series APAC (EN) - 14 June,June Webinars Series APAC (EN) - 30 June,July Webinars for ITPs in Bahasa,July Webinars Series APAC (EN) - 12 July,July Webinars Series APAC (EN) - 26 July</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>LEAD_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CAMPAIGN_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Webinar 2017</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignLead</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+</Report>

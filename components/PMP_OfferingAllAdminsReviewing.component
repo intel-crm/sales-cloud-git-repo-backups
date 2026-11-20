@@ -1,0 +1,18 @@
+<apex:component access="global"><!-- controller="PMP_OfferingEmailAlertsController">-->
+<!--    <html>
+        <apex:attribute name="offeringRecordId" type="Id" description="Offering Record Id" assignTo="{!offeringId}"/>
+        <body style = 'font-family: sans-serif'>
+            <p>
+                Hi Intel Showcase Admin, 
+
+            </p>
+            <p>             
+            
+                A new {!offeringData.Name} has been submitted by {!offeringData.PMP_Company_Id__c} and needs to be reviewed. 
+            </p>
+
+                Thanks, <br/>
+             <b>The Intel Partner Showcase Team</b> <br/> <br/>         
+        </body>
+    </html>-->
+</apex:component>

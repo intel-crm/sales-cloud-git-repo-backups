@@ -1,0 +1,160 @@
+<template>
+    <div class="slds-m-around_large">
+        <div if:false={isLoaded} class="slds-is-relative">
+            <lightning-spinner alternative-text="Loading...">
+            </lightning-spinner>
+        </div>
+    </div>
+
+    <template if:false={enableFeedback}>
+    <template if:false={showGenerateLicenseForm}>
+        <lightning-card title={formTitle} icon-name="standard:form">
+            <p slot="footer" style="text-align: initial;" class="slds-box">
+                <lightning-messages>
+                </lightning-messages>
+
+                <template if:true={isNotFloatProd}>
+                    <span>
+                        <p class="slds-m-bottom_medium">{errorMsg}</p>
+                    </span>
+                </template>
+
+                <template if:false={isNotFloatProd}>
+                    <label class="slds-float_left slds-p-top_medium" for="primaryAdm">{noOfSeatsLabel}</label>
+                    <abbr title="required" class="slds-float_left slds-required slds-p-top_medium">*</abbr>
+                    <lightning-input id="noOfSeats" onchange={inputChange} type="number" variant="label-hidden"
+                        required="true" value={noOfSeats} disabled={disableInput} style="width: 70%;"></lightning-input>
+                </template>
+
+                <template if:true={showTargetLicenses} class="slds-var-p-top_medium">
+                    <lightning-layout>
+                        <lightning-layout-item size="5">
+                        </br>
+                        <p style="padding-top: 4%;width: 171%;">{label.textinput}</p> 
+                      </lightning-layout-item>
+                        <lightning-layout-item size="7">
+
+                    <lightning-input id="filterByHost" style="width:46%;right:-56%" onchange={inputFilterChange} type="text" placeholder="Filter by Primary Computer ID/Name" class="slds-var-p-top_medium slds-p-bottom_small"
+                      value={searchStr}></lightning-input>
+                        </lightning-layout-item>
+                        </lightning-layout>   
+
+                      <div style="height: 150px;">                 
+                      <lightning-datatable  column-widths-mode="auto" class="slds-p-top_small" key-field="id" data={targetLicenses} columns={mergeSeatsCols} max-row-selection="1" onrowselection={handleTargetLicenseSelection}>
+                    </lightning-datatable>    
+                </div>
+                </template>
+
+                <template if:true={showSplitOptionsRadioBtn}>
+
+                    <lightning-radio-group name="radioGroup"
+                        label={label.Sales_number_Of_Server} options={options}
+                        value={radioBtnValue} type="radio" onchange={handleRadioBtnChange} required="true">
+                    </lightning-radio-group>
+
+                </template>
+
+                <template if:true={showOptionsToSplitMsg}>
+                    <span>
+                        <p class="slds-m-top_medium slds-m-bottom_medium">{label.Sales_SplitLicense_Success_Msg}</p>
+                    </span>
+
+                </template>
+
+                <template if:true={showOptionsToSplit} class="slds-p-top_large">
+                    <div style="height: 150px;" class="slds-p-top_x-small">
+                        <lightning-datatable column-widths-mode="auto" class="slds-p-top_small" key-field="id" data={data} columns={columns} onclick={handleclick}
+                            hide-checkbox-column="true" onrowaction={handleGenerateLicense}>
+                        </lightning-datatable>
+                    </div> 
+                </template>
+                <template if:false={isNotFloatProd}>
+                    <lightning-layout class="slds-p-top_large" horizontal-align="end">
+                        <lightning-layout-item flexibility="auto">
+                       
+                            <lightning-button label={label.Sales_OrderClose} variant="brand" onclick={handleCancelBtnClick}
+                                style="padding-left: 0.75rem;">
+                            </lightning-button>
+                            <template if:false={showOptionsToSplit}>
+                                <lightning-button variant="brand" name="next" label={nextBtnLabel}
+                                    style="padding-left: 0.75rem;" onclick={handleOnNextBtnClick}
+                                    disabled={isInvalidLicense}>
+                                </lightning-button>
+                            </template>
+                            <template if:true={showOptionsToSplit}>
+                                <lightning-button variant="brand" name="back" label={label.Sales_Back}
+                                    style="padding-left: 0.75rem;" onclick={handleOnBackBtnClick} disabled={disableBackBtn} >
+                                </lightning-button>
+                            </template>                            
+                            <template if:true={showOptionsToSplit}>
+                                <template if:false={splited}>
+                                <lightning-button variant="brand" name="confirm" label={label.Sales_Confirm}
+                                    style="padding-left: 0.75rem;" onclick={handleOnConfirmBtnClick}
+                                    disabled={isInvalidLicense} >
+                                </lightning-button>
+                                </template>
+                            </template>
+               
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+                <template if:true={isError}>
+                    <lightning-layout class="slds-p-top_large" horizontal-align="end">
+                        <lightning-layout-item flexibility="auto">                       
+                            <lightning-button label={label.Sales_OrderClose} variant="brand" onclick={handleCancelBtnClick}
+                                style="padding-left: 0.75rem;">
+                            </lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            </p>
+        </lightning-card>
+        <!-- Custom Pop Up -->
+
+        <template if:true={isModalOpen}>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                <div class="slds-modal__container" >
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            Confirmation</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b>{label.Sales_LicGeneration_Confirmation}</b></p>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}
+                            title="Cancel">Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+                    </footer>
+                </div>
+            </section>
+            <!-- To hide Previous Component -->
+           
+        </template>
+
+        <!-- End -->
+        <!-- 
+        <template if:true={createComputer}>
+            <c-sales_-Generate-Licence-Host-Selector  onclose={handleClose} activatecodeonload={licenseActivationCode} host-value={licenseHostValue} webdisplay-flag={lincenseWebDisplayFlag} record-id={licenseRecordId} existingcomputername={existingcomputername}
+            ></c-sales_-Generate-Licence-Host-Selector>
+        </template> -->
+        <!-- show create license component --> 
+        <!--feedback-->
+    </template>
+    </template>
+        <template if:true={enableFeedback}>                          
+            <c-sales_-event-feedback rec-id={recordId} capablity={capablity}>
+            </c-sales_-event-feedback>          
+        </template>         
+</template>

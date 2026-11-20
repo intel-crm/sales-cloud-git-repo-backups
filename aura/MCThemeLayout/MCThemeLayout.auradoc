@@ -1,0 +1,18 @@
+<aura:documentation>
+  <aura:description>
+    <p>Theme Layout Component (THEME LAYOUT)</p>
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 12/26/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr />
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <p>This component contains all Global CSS.</p>
+    <p>It also contains the tags for the Recode50 Header / Footer.</p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr />
+    <p>Change Log</p>
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

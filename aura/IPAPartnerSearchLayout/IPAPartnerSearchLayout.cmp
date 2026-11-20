@@ -1,0 +1,35 @@
+<aura:component
+    implements="forceCommunity:layout"
+    description="IPA Partner Search Layout with built in sticky tabs"
+    access="global"
+>
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1white" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2white" type="Aura.Component[]" required="false"></aura:attribute>
+    
+
+    <div>
+        <div class="marquee">
+          {!v.marquee}
+      </div>
+      <div class="container">
+        <div class="contentPanel">
+            {!v.main}
+        </div>
+    </div>      
+
+      <div class="bg-white">
+          <div class="container">
+              {!v.blade1white}
+          </div>
+      </div>
+      
+      <div class="bg-white">
+        <div class="container">
+            {!v.blade2white}
+        </div>
+    </div>
+      
+    </div>
+</aura:component>

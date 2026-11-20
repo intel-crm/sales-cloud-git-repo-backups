@@ -1,0 +1,72 @@
+<template>
+    <div if:true={spinner}>
+		<lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+		<div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+	</div>
+    <div if:false={spinner}>
+        <lightning-card>
+            <lightning-accordion allow-multiple-sections-open active-section-name= "{activeSections}">
+                <lightning-accordion-section name="Existing" label="Selected Team Members" class="slds-accordion">
+                    <div if:true={showTable} style="height: 300px;">
+                        <lightning-datatable
+                            key-field="Id"
+                            columns={columns}
+                            data={existingData}
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onsort={handleSort}
+                            hide-checkbox-column
+                        ></lightning-datatable>
+                    </div>
+                    <div if:false={showTable}>
+                        <br/><p>No records to display</p><br/>
+                    </div>
+                </lightning-accordion-section>
+                <lightning-accordion-section name="Add" label="Search Team Members" class="slds-accordion">
+                    <template if:true={hasAccess}>
+                        <div class="slds-grid">
+                            <div class="slds-col"> 
+                                <lightning-Input type="search" placeholder="Search..." onchange={handleKeyChange}></lightning-input>
+                                    <div if:true={searchMsg}><p>Please enter at least 3 characters.</p></div>
+                            </div> &nbsp; &nbsp;
+                            <div class="slds-col"> 
+                                <br>
+                                <lightning-button label="Search" disabled={disableBtn} onclick ={onButtonClick}></lightning-button>&nbsp;
+                                <lightning-helptext content={label.helpTxt}></lightning-helptext>
+                            </div>
+                        </div></br>
+                        <div if:true={showError}>
+                            <span style="align-content: center;">
+                                {errorMessage}
+                            </span>
+                        </div>
+                        <div if:true={hasData} style="height: 300px;">
+                            <lightning-datatable
+                                key-field="Id"
+                                columns={columns}
+                                data={searchData}
+                                onrowselection ={getSelected}
+                                default-sort-direction={defSortDirection}
+                                sorted-direction={sDirection}
+                                sorted-by={sBy}
+                                onsort={handleSorting}>
+                            </lightning-datatable>
+                        </div></br>
+                        <div align="center">
+                            <template if:true={showAdd}>
+                                <lightning-button label="Add" variant="brand" title="Non-primary action" onclick={handleAdd} class="slds-m-left_x-small"></lightning-button>
+                            </template>
+                            <lightning-button label="Exit" title="Non-primary action" onclick={handleExit} class="slds-m-left_x-small"></lightning-button>
+                        </div>
+                    </template><br/>
+                    <template if:false={hasAccess}>
+                        <div align="center">
+                            <lightning-button label="Back to Project" title="Non-primary action" onclick={handleExit} class="slds-m-left_x-small"></lightning-button>
+                        </div>
+                    </template>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </lightning-card>
+    </div>
+</template>

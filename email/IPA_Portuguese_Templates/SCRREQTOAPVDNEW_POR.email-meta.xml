@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_POR</name>
+    <style>none</style>
+    <subject>Ação necessária: ative o acesso ao seu programa de parceiros dentro de 45 dias</subject>
+    <textOnly>Parabéns, sua solicitação de adesão foi aprovada e processada!
+
+
+Boas-vindas ao programa Intel® Partner Alliance!
+
+Estamos entusiasmados por você participar de um ecossistema unificado projetado para permitir que os parceiros se conectem com o ecossistema Intel para acelerar soluções inovadoras que ofereçam resultados comerciais e impulsionem o crescimento
+
+Para garantir acesso ininterrupto à sua conta, faça login dentro de 45 dias após o recebimento deste e-mail. Ao fazer login, seu perfil será mantido ativo e vinculado à sua empresa.
+
+Com benefícios adaptados à sua empresa, você poderá:
+
+Impulsionar novas oportunidades de negócios com as ferramentas, treinamento e recursos mais recentes
+Ganhar e resgatar pontos em compras e atividades elegíveis
+Acelerar o sucesso de marketing e de vendas com os Fundos de desenvolvimento de mercado
+Aprender, prototipar e testar cargas de trabalho no software Intel® mais recente
+Expandir o conhecimento com treinamento de classe mundial na Intel® Partner University
+Criar produtos inovadores usando conteúdo de NDA, roteiros e ferramentas de desenvolvedor
+Lançar campanhas rapidamente com os ativos de marketing conjunto no Intel® Marketing Studio
+Obter leads qualificados com a vitrine de seu parceiro no Intel® Partner Showcase
+
+Faça logon para começar
+
+Clique  aqui se precisar de ajuda com o processo de login da Intel.
+
+
+
+Obrigado,
+Sua equipe do Intel® Partner Alliance
+
+Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com o Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054,EUA.www.intel.com
+Privacidade &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

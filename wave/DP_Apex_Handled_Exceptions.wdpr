@@ -1,0 +1,442 @@
+{
+  "version" : "58.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "CreatedDate", "Core_Class_Name__c", "Core_Exception__c", "Core_IPS_Object_Name__c", "LastModifiedDate" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Exceptions__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Exceptions__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "DP_EAT_Prefixes__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DP_EAT_Project_Info__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "DP_EAT_Project_Info__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Class_Name_Prefix",
+          "label" : "Class Name Prefix",
+          "formulaExpression" : "case\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Survey') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Partner') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Product') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Create') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Custom') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Cvent') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Data') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Delete') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Default') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Document') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Event') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Field') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Groove') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Install') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Metadata') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Nomination') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Opportunity') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Order') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Product') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Record') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Seismic') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Service') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Integration') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Contact') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Abstract') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Access') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Account') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Approval') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Approve') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Asset') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Async') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_ERPM') then 'Quest'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'ER_') then 'Quest'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Queueable') then 'Salesforce CPQ'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Quote') then 'Salesforce CPQ'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_UserContact') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_User') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Contact_Entitlement') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Contact_Entitlement_') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'epum') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'EPUM_') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_InboundContact') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Integrate_SF_RestService') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_IntegrationBoxB') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_IntegrationUtility') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_IntInboundMsgERPM') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Sales_Assist') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Schedule_Batch_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_XMLParser') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'ACM_') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'CIMAccount') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Acct_erpm_eng') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Batch_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Batch_Delete_Dup_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Batch_UnCovered_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_CIM') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_ConstantUtility') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Contact') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_ContactHandler') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_ERPM') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_ERPMInbound') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_InactiveAccount') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'ATF') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Attend') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Batch') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'BvD') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Calc') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Campaign') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Case') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Coach') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Column') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Comm') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Comp') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Config') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Connect') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Cons') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Content') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Contract') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_AAQC') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Batch_DDR') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'User') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Update') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Trail') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Temp') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Task') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Sync') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Survey') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Page') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'REST') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Remote') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Reltio') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Relat') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Page') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Orbis') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'NMT') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'JS') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'fflib') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Error') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Email') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Doc') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Product_') then 'Skyforce'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_DDR') then 'Ruby'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'DDR') then 'Ruby'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'PCC') then 'Ruby'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'PSS') then 'PSS'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'PSS_') then 'PSS'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Discount') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'DaScoop') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Cvent') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Cs') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_restAPI') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'SBQQ') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_KPI') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Opportunity') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Batch_Opportunity') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Opp') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Lead') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Update') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Solution') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Sales') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_Batch_DeleteInactiveKP') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_SA_') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'LeadShare') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'KPI') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_IPS') then 'Hercules'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'IPS_') then 'Hercules'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'PSG_') then 'PSG'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_PSG') then 'PSG'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Sales_') then 'PSG'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Pricing_') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'QuoteBusinessLogic') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Pricing') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'QuoteLineBusinessLogic') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'PRM_') then 'IPA'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'IPA') then 'IPA'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'UCD_') then 'UCD'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'PMP_') then 'Marketplace'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Marketplace') then 'Marketplace'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Intel_') then 'Generic'\r\n\r\nwhen startsWith(Core_Class_Name__c,'QuoteTrigger') then 'Generic'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'epum') then 'A&E'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'EPUM_') then 'A&E'\r\n\r\n \r\n\r\nwhen startsWith(Core_Class_Name__c,'Core_mdf') then 'CCP'\r\n\r\n \r\n\r\nend",
+          "precision" : 255,
+          "defaultValue" : "NA"
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "CreatedDateDifference",
+          "label" : "Created Date Difference",
+          "formulaExpression" : "datediff(now(), CreatedDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "DaysCategory",
+          "label" : "Days Category",
+          "formulaExpression" : "case \r\n    when \"CreatedDateDifference\" >= 0 and \"CreatedDateDifference\" < 31 \r\n    then '0-30 Days' \r\n when  \"CreatedDateDifference\" > 30 and \"CreatedDateDifference\" < 61 \r\n    then '31-60 Days' \r\n   when  \"CreatedDateDifference\" > 60 and \"CreatedDateDifference\" < 91 \r\n    then '61-90 Days' \r\n  when \"CreatedDateDifference\" > 90 and \"CreatedDateDifference\" < 181 \r\n    then '91-180 Days' \r\n    when  \"CreatedDateDifference\" > 180  \r\n    then 'More than 180 days'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "FORMULA3", "LOAD_DATASET1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "Class_Name_Prefix" ],
+        "rightQualifier" : "Project_Info",
+        "rightKeys" : [ "Name" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN0" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Output-CoreExceptionsObject",
+          "name" : "Output_CoreExceptionsObject",
+          "folderName" : "ApexExceptionApp"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "LastActivityDate", "LastViewedDate", "LastReferencedDate", "DP_EAT_Prefixes__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DP_EAT_Project_Info__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "DP_EAT_Project_Info__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT3" : {
+      "action" : "save",
+      "sources" : [ "LOAD_DATASET4" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Output- ProjectInfo- Eventlogfile",
+          "name" : "Output_ProjectInfo_Eventlogfile",
+          "folderName" : "ApexExceptionApp"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "LastViewedDate", "LastReferencedDate", "Core_Details__c", "Core_Message__c", "Core_Origin__c", "Core_Project__c", "Core_Severity__c", "Core_When__c", "Core_sObjectType__c", "Core_Retry_Counter__c", "Core_Next_Scheduled_Run__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Log_Entry__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Log_Entry__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "ProjectInfo",
+          "label" : "Project Info",
+          "formulaExpression" : "case\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Survey') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Partner') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Product') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Create') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Custom') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Cvent') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Data') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Delete') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Default') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Document') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Event') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Field') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Groove') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Install') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Metadata') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Nomination') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Opportunity') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Order') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Product') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Record') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Seismic') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Service') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Integration') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Contact') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Abstract') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Access') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Account') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Approval') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Approve') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Asset') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Async') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_ERPM') then 'Quest'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'ER_') then 'Quest'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Queueable') then 'Salesforce CPQ'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Quote') then 'Salesforce CPQ'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_UserContact') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_User') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Contact_Entitlement') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Contact_Entitlement_') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'epum') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'EPUM_') then 'Draco'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_InboundContact') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Integrate_SF_RestService') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_IntegrationBoxB') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_IntegrationUtility') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_IntInboundMsgERPM') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Sales_Assist') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Schedule_Batch_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_XMLParser') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'ACM_') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'CIMAccount') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Acct_erpm_eng') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Batch_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Batch_Delete_Dup_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Batch_UnCovered_Account') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_CIM') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_ConstantUtility') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Contact') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_ContactHandler') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_ERPM') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_ERPMInbound') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_InactiveAccount') then 'Vega'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'ATF') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Attend') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Batch') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'BvD') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Calc') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Campaign') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Case') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Coach') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Column') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Comm') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Comp') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Config') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Connect') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Cons') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Content') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Contract') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_AAQC') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Batch_DDR') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'User') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Update') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Trail') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Temp') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Task') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Sync') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Survey') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Page') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'REST') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Remote') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Reltio') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Relat') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Page') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Orbis') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'NMT') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'JS') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'fflib') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Error') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Email') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Doc') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Product_') then 'Skyforce'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_DDR') then 'Ruby'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'DDR') then 'Ruby'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'PCC') then 'Ruby'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'PSS') then 'PSS'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'PSS_') then 'PSS'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Discount') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'DaScoop') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Cvent') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Cs') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_restAPI') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'SBQQ') then 'Others'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_KPI') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Opportunity') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Batch_Opportunity') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Opp') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Lead') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Update') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Solution') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Sales') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_Batch_DeleteInactiveKP') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_SA_') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'LeadShare') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'KPI') then 'Unicorn'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_IPS') then 'Hercules'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'IPS_') then 'Hercules'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'PSG_') then 'PSG'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_PSG') then 'PSG'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Sales_') then 'PSG'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Pricing_') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'QuoteBusinessLogic') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Pricing') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'QuoteLineBusinessLogic') then 'Gravity'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'PRM_') then 'IPA'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'IPA') then 'IPA'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'UCD_') then 'UCD'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'PMP_') then 'Marketplace'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Marketplace') then 'Marketplace'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Intel_') then 'Generic'\r\n\r\nwhen startsWith( Core_Origin__c,'QuoteTrigger') then 'Generic'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'epum') then 'A&E'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'EPUM_') then 'A&E'\r\n\r\n \r\n\r\nwhen startsWith( Core_Origin__c,'Core_mdf') then 'CCP'\r\n\r\n \r\n\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "CreatedDateDifference",
+          "label" : "Created Date Difference",
+          "formulaExpression" : "datediff(now(), CreatedDate)",
+          "precision" : 10,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "DaysCategory",
+          "label" : "Days Category",
+          "formulaExpression" : "case \r\n    when \"CreatedDateDifference\" >= 0 and \"CreatedDateDifference\" < 31 \r\n    then '0-30 Days' \r\n when  \"CreatedDateDifference\" > 30 and \"CreatedDateDifference\" < 61 \r\n    then '31-60 Days' \r\n   when  \"CreatedDateDifference\" > 60 and \"CreatedDateDifference\" < 91 \r\n    then '61-90 Days' \r\n  when \"CreatedDateDifference\" > 90 and \"CreatedDateDifference\" < 181 \r\n    then '91-180 Days' \r\n    when  \"CreatedDateDifference\" > 180  \r\n    then 'More than 180 days'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "FORMULA5", "LOAD_DATASET6" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "ProjectInfo" ],
+        "rightQualifier" : "Project_Info",
+        "rightKeys" : [ "Name" ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "LastActivityDate", "LastViewedDate", "LastReferencedDate", "DP_EAT_Prefixes__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "DP_EAT_Project_Info__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "DP_EAT_Project_Info__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "OUTPUT4" : {
+      "action" : "save",
+      "sources" : [ "JOIN1" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OutputCoreEntryDataset",
+          "name" : "Output_Core_Entry_Dataset",
+          "folderName" : "ApexExceptionApp"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "Core_Exceptions__c",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET1" : {
+        "label" : "DP_EAT_Project_Info__c",
+        "type" : "LOAD_DATASET",
+        "top" : 252,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM1" : {
+        "label" : "CoreExceptionsLogTransform",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 112,
+        "left" : 252,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula - Class Name Prefix"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Created Date Difference"
+          },
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Created Date Category"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "FORMULA2"
+        }, {
+          "source" : "FORMULA2",
+          "target" : "FORMULA3"
+        } ]
+      },
+      "JOIN0" : {
+        "label" : "Join Core Exceptions with project info",
+        "description" : "Join Core Exceptions with project info",
+        "type" : "JOIN",
+        "top" : 112,
+        "left" : 392
+      },
+      "OUTPUT0" : {
+        "label" : "Output - CoreExceptionsObject",
+        "description" : "Output - CoreExceptionsObject",
+        "type" : "OUTPUT",
+        "top" : 112,
+        "left" : 532
+      },
+      "LOAD_DATASET4" : {
+        "label" : "DP_EAT_Project_Info__c",
+        "type" : "LOAD_DATASET",
+        "top" : 672.1,
+        "left" : 111.30000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT3" : {
+        "label" : "Output-StandaloneProjectInfo",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 672.2,
+        "left" : 393.1
+      },
+      "LOAD_DATASET5" : {
+        "label" : "Core_Log_Entry__c",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "TRANSFORM2" : {
+        "label" : "CoreEntryFormula",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 392,
+        "left" : 252,
+        "graph" : {
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Created Date Difference"
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Created Date Category"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA1",
+          "target" : "FORMULA4"
+        }, {
+          "source" : "FORMULA4",
+          "target" : "FORMULA5"
+        } ]
+      },
+      "JOIN1" : {
+        "label" : "CoreLogEntry_ProjectInfoJoin",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 392,
+        "left" : 392
+      },
+      "LOAD_DATASET6" : {
+        "label" : "DP_EAT_Project_Info__c",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "OUTPUT4" : {
+        "label" : "Output-CoreEntryObject",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 392,
+        "left" : 532
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET0",
+      "target" : "TRANSFORM1"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "OUTPUT3"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "TRANSFORM2"
+    }, {
+      "source" : "TRANSFORM2",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN1"
+    }, {
+      "source" : "JOIN1",
+      "target" : "OUTPUT4"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

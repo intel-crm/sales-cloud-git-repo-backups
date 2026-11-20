@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_31993093</developerName>
+        <masterLabel>Application</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Server - Public Cloud</sourceValue>
+            </sourceValues>
+            <value>Server - Public Cloud</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Server - On Prem</sourceValue>
+            </sourceValues>
+            <value>Server - On Prem</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Video (incl. Camera, NVR, AI Box, Video Server)</sourceValue>
+            </sourceValues>
+            <value>Video</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Server - Hybrid Cloud</sourceValue>
+            </sourceValues>
+            <value>Server - Hybrid Cloud</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Imaging Devices (not IP Camera based)</sourceValue>
+            </sourceValues>
+            <value>Imaging Devices</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Thin Client, Cloud Client</sourceValue>
+            </sourceValues>
+            <value>Thin Client, Cloud Client</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Diagnostic, Test &amp; Measurement Equipment</sourceValue>
+            </sourceValues>
+            <value>Diagnostic, Test &amp; Measurement Equip.</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Robotics: Mobile (AGV, AMR)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robotics: Stationary</sourceValue>
+            </sourceValues>
+            <value>Robotics</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Business Desktop</sourceValue>
+            </sourceValues>
+            <value>Business Desktop</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Embedded Board</sourceValue>
+            </sourceValues>
+            <value>Embedded Board</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ruggedized/Industrial/Vertical Grade PCs</sourceValue>
+            </sourceValues>
+            <value>Ruggedized/Industrial PCs</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_76187745</developerName>
+        <masterLabel>Product Application</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Server - Public Cloud</sourceValue>
+            </sourceValues>
+            <value>Server - Public Cloud</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Server - On Prem</sourceValue>
+            </sourceValues>
+            <value>Server - On Prem</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Server - Hybrid Cloud</sourceValue>
+            </sourceValues>
+            <value>Server - Hybrid Cloud</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Storage</sourceValue>
+            </sourceValues>
+            <value>Storage</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Video (incl. Camera, NVR, AI Box, Video Server)</sourceValue>
+            </sourceValues>
+            <value>Video</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Imaging Devices (not IP Camera based)</sourceValue>
+            </sourceValues>
+            <value>Imaging Devices</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Business Desktop</sourceValue>
+            </sourceValues>
+            <value>Business Desktop</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Network Appliance: Security</sourceValue>
+            </sourceValues>
+            <value>Security</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Intel_Platform__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <description>Show Segments and Models for the pipeline for Cloud &amp; DC Accelerator</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 7) AND 6</booleanFilter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Define,Design,Design Win,Develop,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_has_Solution__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Concatenated_Technology_Enabled__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>AMX (TMUL),AVX-512,Bfloat16,CNDP,Crypto NI,DDIO,DL Boost,DLB,DSA,HBM,HFNI,IAA,IAX,Intel Automation Tool-OCM,Intel Automation Tool-OCR,Intel DAOS,Intel Neural Compressor,Intel RHOC,ISA-Library,Network Certified Solutions (latest IA compute),OneAPI Base Toolkit,OneAPI AI Analytics Toolkit,OneAPI HPC Toolkit,OneAPI IOT Toolkit,OneAPI Rendering Toolkit,OpenVINO,Optane PMEM,QAT,RDT,SGX,SIOV,SST Speed Select,TADK,TDX,TME,VMD/VROC,VNNI,VRAN Boost,Xpdk (DPDK,IPDK,SPDK,etc)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Software-enable</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Concatenated_Application_workload__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>networking,inference</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Ryan Olson,Malhar Thakkar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Anju Saraswat,Olga Espira</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_31993093</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2024 Cloud &amp; DC Accel SW Enable Seg.</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_First_Customer_Ship_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

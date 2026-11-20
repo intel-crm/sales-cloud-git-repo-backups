@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>REGISTRATION_REQUEST_REJECTED_EV_FRA</name>
+    <style>none</style>
+    <subject>La demande d&apos;inscription est rejetée</subject>
+    <textOnly>La demande d&apos;inscription est rejetée
+
+
+
+Bonjour {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+Nous avons reçu votre récente demande d&apos;inscription au programme Alliance partenaire Intel®. Après vérification, la demande a été rejetée pour les raisons suivantes :
+
+{!PRM_Registration_Request__c.PRM_Reject_Reason__c}
+
+Si vous estimez que cette décision est erronée ou si vous souhaitez nous fournir des informations complémentaires, veuillez nous contacter à l&apos;adresse programs@intel.com.
+
+
+Sincères salutations,
+Votre équipe Alliance partenaire Intel®
+
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.fr
+Confidentialité | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

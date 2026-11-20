@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_42835502</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+        <values>
+            <value>GSS</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_42835502</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>OpportunityTeamMember.Core_Date_Added__c</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Description_of_Contribution__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+OWNER_MANAGER=&quot;Andy Wu&quot;,
+OWNER_MANAGER=&quot;Kate Feng&quot;,
+OWNER_MANAGER=&quot;Sandy Zhang&quot;,
+OWNER_MANAGER=&quot;Stanley Wang&quot;,
+OWNER_MANAGER=&quot;Yingli Xia&quot;,
+OWNER_MANAGER=&quot;James Zheng&quot;,
+OWNER_MANAGER=&quot;Hunter Li&quot;),
+&quot;TABB&quot;,
+
+
+IF(OR(
+    OWNER_MANAGER=&quot;Jim Gong&quot;,
+    OWNER_MANAGER=&quot;Hongbo Cui&quot;),
+&quot;CISG-Enterprise&quot;,
+
+IF(OR(
+    OWNER_MANAGER=&quot;Kai Hu&quot;),
+&quot;CISG-NWCSP&quot;,
+
+IF(OR(
+OWNER_MANAGER=&quot;Jay Yu&quot;,
+OWNER_MANAGER=&quot;Carol Qin&quot;,
+OWNER_MANAGER=&quot;Ryan Sun&quot;,
+OWNER_MANAGER=&quot;Wanjie Wang&quot;),
+&quot;CISG-Public&quot;,
+
+
+IF(OR(
+    OWNER_MANAGER=&quot;Dan Lin Chen&quot;,
+    OWNER_MANAGER=&quot;Yong Li&quot;,
+    OWNER_MANAGER=&quot;Amy Li Li&quot;,
+    OWNER_MANAGER=&quot;Kelvin Liu&quot;),
+&quot;DCAI OEM&quot;,
+
+IF(OR(
+    OWNER_MANAGER=&quot;Gavin Gao&quot;,
+OWNER_MANAGER=&quot;Chen Guang Yang&quot;,
+OWNER_MANAGER=&quot;Hans P. Chuang&quot;,
+    OWNER_MANAGER=&quot;Kuo Liao&quot;),
+&quot;Telco&quot;,
+
+IF(OR(
+    OWNER_MANAGER=&quot;Eric Tang&quot;,
+OWNER_MANAGER=&quot;Bin Liu&quot;,
+OWNER_MANAGER=&quot;Victoria Yang&quot;),
+&quot;STSG&quot;,
+
+IF(OR(
+    OWNER_MANAGER=&quot;Wei Guo&quot;,
+    OWNER_MANAGER=&quot;Grace Geng&quot;,
+    OWNER_MANAGER=&quot;Cloud Li&quot;,
+    OWNER_MANAGER=&quot;Gerry Mao&quot;,
+    OWNER_MANAGER=&quot;Arthur Yang&quot;,
+    OWNER_MANAGER=&quot;Hao Zhang&quot;,
+OWNER_MANAGER=&quot;Heng Zhang&quot;,
+OWNER_MANAGER=&quot;John Li&quot;,
+    OWNER_MANAGER=&quot;Ke Bi&quot;),
+&quot;NEX&quot;, 
+
+IF(OR(
+    OWNER_MANAGER=&quot;Yang Chen&quot;,
+    OWNER_MANAGER=&quot;Yiping Liu&quot;,
+OWNER_MANAGER=&quot;Yan Chang&quot;,
+OWNER_MANAGER=&quot;Karen S Zhang&quot;,
+OWNER_MANAGER=&quot;Yunxi Li&quot;,
+    OWNER_MANAGER=&quot;Alex Zhu&quot;),
+&quot;STSG&quot;, 
+
+
+IF(OR(
+    OWNER_MANAGER=&quot;Jianguang Liu&quot;),
+&quot;Huawei&quot;,
+
+IF(OR(
+Opportunity.Core_Technical_Owner_Manager__c=&quot;Gary Gao&quot;,
+Opportunity.Core_Technical_Owner_Manager__c=&quot;Tao Yan&quot;,
+Opportunity.Core_Technical_Owner_Manager__c=&quot;Yue Li&quot;,
+Opportunity.Core_Technical_Owner_Manager__c=&quot;Geng Xia&quot;,
+Opportunity.Core_Technical_Owner_Manager__c=&quot;Bo Liu&quot;,
+Opportunity.Core_Technical_Owner_Manager__c=&quot;Jimmy Wang&quot;),
+&quot;TEG&quot;,
+
+
+&quot;Other&quot;)))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>CSAs to added Opportunity Teams (no matter what process used) last Month by region</description>
+    <filter>
+        <criteriaItems>
+            <column>OpportunityTeamMember.Core_Date_Added__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Sarah Musick,Gopal Kandhasamy,Brian Caddell,Kiran Agrahara,Vijay Bandari,Sumesh Sukumar,Nishikant Singh,Steve Fowler,Vivek Kulkarni,Keith Sundberg,Rajiv Mandal,Ibett Acarapi,Samantha Cabrera Moscofian,Miguel Soto,Volga Simsek,Bhavani Salunkhe,Farid El Chalouhi,Marcel Brueckner,Ali Can Yurtseven,Marco Righini,Pedro Benito Mendoza,Swapnil Shah,Jimin Cai,Qingfeng Zhang,Marty Liang,Lianghou Xu,Emily Zhou,Tong Chen,Xingxian Luo,Xiaolei Ren,Myles Hu,John Kim,Abhishek Kumar Singh,Beny Ibrani,Mousumi Dash,Prabhas Harlapur,Jackie Lee,Seva Semouchin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_42835502</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>MEMBER_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2_CSAs to Opportunity Teams Last Month</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

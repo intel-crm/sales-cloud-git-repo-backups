@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AI Tracking</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>AI Trackings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Amount saved by user --></help>
+        <label><!-- Actual Amount --></label>
+        <name>Core_MDF_Actual_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Currency saved by user --></help>
+        <label><!-- Actual Currency --></label>
+        <name>Core_MDF_Actual_Currency_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Invoice date saved by user --></help>
+        <label><!-- Actual Invoice Date --></label>
+        <name>Core_MDF_Actual_Invoice_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- invoice number saved by user --></help>
+        <label><!-- Actual Invoice Number --></label>
+        <name>Core_MDF_Actual_Invoice_Number_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tax saved by user --></help>
+        <label><!-- Actual Tax --></label>
+        <name>Core_MDF_Actual_Tax_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- associated claim --></help>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- AI Trackings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Content Document --></label>
+        <name>Core_MDF_Content_Document_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Document content from analyzer --></help>
+        <label><!-- Extracted Content --></label>
+        <name>Core_MDF_Extracted_Content_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- No of Days Old --></label>
+        <name>Core_MDF_No_of_Days_Old_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Amount proposed by AI --></help>
+        <label><!-- Proposed Amount --></label>
+        <name>Core_MDF_Proposed_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposed Currency --></label>
+        <name>Core_MDF_Proposed_Currency_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Invoice date proposed by AI --></help>
+        <label><!-- Proposed Invoice Date --></label>
+        <name>Core_MDF_Proposed_Invoice_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Invoice number proposed by AI --></help>
+        <label><!-- Proposed Invoice Number --></label>
+        <name>Core_MDF_Proposed_Invoice_Number_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tax proposed by AI --></help>
+        <label><!-- Proposed Tax --></label>
+        <name>Core_MDF_Proposed_Tax_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Json string received from azure document intelligence --></help>
+        <label><!-- Result --></label>
+        <name>Core_MDF_Result_Txt__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

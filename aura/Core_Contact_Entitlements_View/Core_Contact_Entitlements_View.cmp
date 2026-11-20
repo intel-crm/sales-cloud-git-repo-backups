@@ -1,0 +1,53 @@
+<aura:component controller="Core_PartnerAdmin_Ent_Controller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"  access='global' >   
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute type="Core_Partner_Entitlement_Wrapper[]" name="contactEntitlementList"/>
+    <aura:attribute name="contactIdStr" type="String"/>
+    <aura:attribute name="recordNotFound" default="true" type="Boolean"/>
+    <aura:attribute name="errorMessageStr" type="String"/>
+    <aura:attribute name="entitlementStatusAttr" type="Object[]"/>
+    
+    <ltng:require scripts="{!$Resource.jQuery_3_4_1}"/>
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler event="c:Core_Contact_Ent_Event" action="{!c.displayEntitlements}" />
+	<!-- the container element determine the height of the datatable -->
+    <form class="slds-form--stacked">
+        <div class="placeHolderDiv"></div>
+        <div class="spinnerHolder slds-hide" aura:id="mySpinner"  >
+            <lightning:spinner/>
+        </div>
+        <div class="placeHolderDiv1">{!v.errorMessageStr}</div>
+        <div class="entitlementTable slds-hide" aura:id="entitlementTableDiv">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_8-of-12"> <b>{!$Label.c.Core_MDF_Entitlement_Name}</b> </div>
+                <div class="slds-col slds-size_2-of-12"> <b>{!$Label.c.Core_MDF_Status}</b>  </div>
+                <div class="slds-col slds-size_2-of-12"> <b>{!$Label.c.Core_MDF_Selected}</b>  </div>
+            </div>
+            <aura:iteration items="{!v.contactEntitlementList}" var="contactEntitlement" indexVar="index">
+                <div class="{!index%2 == 0 ? 'slds-grid slds-wrap even': 'slds-grid slds-wrap odd'}" id="{!contactEntitlement.idEntitlement}">
+                    <div class="slds-col slds-size_8-of-12">
+                        <span>{!contactEntitlement.strName}</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12"> 
+                        <!--Id value = {!contactEntitlement.status}-->
+                        <div class="{!(contactEntitlement.status == 'Processing')? 'slds-show': 'slds-hide'}">
+                            {!$Label.c.Core_MDF_Processing}
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12">
+                        <lightning:input type="checkbox" aura:id="entSelcheckbox" label="" checked="{!contactEntitlement.selected}" disabled="{!contactEntitlement.readOnly}" onchange="{!c.saveEntBtn}"/>
+                    </div>
+                </div> 
+            </aura:iteration>
+        </div>
+        <lightning:button label="{!$Label.c.Core_MDF_Save_Entitlements}" 
+                              class="slds-m-top--medium saveEntlButton"
+                              variant="brand"
+                              onclick="{!c.saveEntitlementChanges}"
+                          	  disabled="{!v.recordNotFound}"/>
+        <div class="placeHolderDiv"></div> <!-- Entitlement Settings-->
+    </form> 
+</aura:component>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Warranty Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Warranty Data</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Warranty Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- As of Date --></label>
+        <name>PRM_As_of_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Date Time --></label>
+        <name>PRM_Change_Date_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total AWR Remaining --></help>
+        <label><!-- AWR Remaining --></label>
+        <name>PRM_Number_Of_AWR_Remaining_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total AWR Allocated --></help>
+        <label><!-- AWR Allocated --></label>
+        <name>PRM_Number_Of_AWR_Used_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total SWR Remaining --></help>
+        <label><!-- SWR Remaining --></label>
+        <name>PRM_Number_Of_SWR_Remaining_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total SWR Allocated --></help>
+        <label><!-- SWR Allocated --></label>
+        <name>PRM_Number_Of_SWR_Used_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- Warranty Data (One Partner ID) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Warranty External Id --></label>
+        <name>PRM_Warranty_ext_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Visual_Display_Solutions_Specialty_KOR</name>
+    <style>none</style>
+    <subject>인텔® 파트너 얼라이언스 비주얼 디스플레이 솔루션 전문가</subject>
+    <textOnly>전문 자격 취득을 축하합니다!
+
+
+{!Contact.FirstName},
+
+인텔® 파트너 얼라이언스 비주얼 디스플레이 솔루션 전문가에 오신 것을 환영합니다! 적격 IoT 전문가인 여러분은 다음을 포함한 IoT 비주얼 디스플레이 솔루션 빌더 비즈니스의 성장을 지원하기 위해 만들어진 추가 혜택*을 받으실 수 있습니다.
+
+지정 시장 개발 펀드
+콘텐츠 마케팅 및 영업 플레이북에 포함될 기회
+전문가 행사 초대 및 고객과의 연결 기회
+
+혜택 이용
+
+
+*혜택은 지역에 따라 다를 수 있습니다.
+
+인텔 파트너는 오랜 기간 혁신을 주도해왔으며, 인텔® 파트너 얼라이언스를 통해 데이터 중심 경제를 위한 솔루션 구축 속도를 높이는 데 더 나은 지원을 제공할 것입니다. 우리는 함께 연결하고 혁신하며 성장하여 특별한 기회를 실현할 수 있습니다.
+
+멤버십 최적화에 대한 도움 및 지침은 https://www.intel.com/content/www/kr/ko/partner-alliance/help/overview.html을 참조하십시오.
+
+
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보 처리방침 | 쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

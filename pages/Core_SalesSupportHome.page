@@ -1,0 +1,780 @@
+<!--**************************************************************************************
+Apex Page Name:  Core_SalesSupportHome
+Version     : 1.0 
+Created Date: 01 JUN 2015
+Function    : Copy of Core_DealSupportHomeClone page, refactored for release 2.0. This
+will be Seeds + Samples + other sales support request types. For Seeds and Samples,
+users can view/request them based on Opportunity ID or Account ID or WWID.
+Modification Log :
+* Developer               Date                   Description
+* ----------------------------------------------------------------------------                 
+* Srikant Joshi           Jul 11, 2014           Original Version
+* Harshith M L            Jul 20, 2014           Table alignment, URL updates for Webservice
+* Srikant Joshi           Feb 18, 2015           Added the CSS Style and Javascript to the static resource
+* Dave Hood               Jun 01, 2015           Copied from Core_DealSupportHomeClone & updated for JAD
+* Derek Lindblom          Oct 07, 2015           Added IT@Intel for custom engagement
+* Dave Hood               Jan 11, 2016           Performance optimization and small tweaks to IT@Intel tab appearance/behavior
+* Accenture               Dec 5 , 2016            PSG Sales functionality
+* Rangesh Kona            Aug 1st, 2017          Sales Support Request - SMG/DRD Integration
+* Ashwin Dash             Jul 24, 2018           US103400 : Update SSG Support Request to Software Expert Support
+**************************************************************************************** -->
+<apex:page controller="Core_SalesSupportHomeController" sidebar="true" showHeader="true" docType="html-5.0" tabStyle="Core_Sales_Support__tab"
+           standardStylesheets="true" title="{!$Label.Core_SalesSupportViewTitle}" lightningStylesheets="true">
+    <!-- Insert style sheet references here -->
+    <apex:stylesheet value="{!URLFOR($Resource.Core_SalesSupportHomeCSS)}" />
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
+    
+    <!-- End stylesheet references -->
+    
+    <!-- Javascript includes and code -->
+    <apex:includeScript value="{!URLFOR($Resource.Core_SalesSupportHomeJS1)}" />
+    <script language="javascript">
+    // Fix issue with jQuery conflicts with tabPanel (http://salesforce.stackexchange.com/questions/23159/using-jquery-with-apextabpanel-in-visualforce)
+    // Needs to be here - won't work in javscript include
+    if ('jQuery' in window) jQuery.noConflict();
+   
+    function loadTab() {
+        console.log('**** inside load tab****');
+        if (document.getElementById('initialSeedsLoadingImage')) {
+            image = document.getElementById('initialSeedsLoadingImage');
+            image.parentNode.removeChild(image);
+        }
+        if (document.getElementById('initialSamplesLoadingImage')) {
+            image = document.getElementById('initialSamplesLoadingImage');
+            image.parentNode.removeChild(image);
+        }
+        console.log('**** current  tab**** {!sCurrentTab}');
+        if ('{!sCurrentTab}' == 'tabSeeds')
+            clickTab('tabSeeds','{!$Component.pageblk.seedsTable}','{!$Component.pageblk.seedsMessages}');
+        else if ('{!sCurrentTab}' == 'tabSamples')
+            clickTab('tabSamples','{!$Component.pageblk.samplesTable}','{!$Component.pageblk.samplesMessages}');
+            else if ('{!sCurrentTab}' == 'tabWebquotes')
+                clickTab('tabWebquotes','{!$Component.pageblk.pgBlkQuotesTable}','{!$Component.pageblk.quotesMessages}');
+    }
+    document.addEventListener( "DOMContentLoaded", loadTab, false );
+    </script>
+    <style>
+        .spinnerBg{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: 0.1;
+        z-index: 999999;
+        }
+        .spinner{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-image: url("/img/loading32.gif");  
+        background-size: 56px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        z-index: 9999999;
+        opacity: 1;
+        }
+        .ul{text-decoration:underline;}
+        
+    </style>
+    
+    <apex:outputPanel >
+        <table>
+            <tr>
+                <td class="gridtable2">
+                    <apex:image value="{!$Resource.Core_PencilIcon}" styleClass="gridtable2" />
+                </td>
+                <td class="gridtable">
+                    <apex:outputText styleClass="outputPn1" value="{!IF(sWWID == NULL,$Label.Core_Sales_Support,'')}"/><br/>
+                    <apex:outputText styleClass="outputPn2" value="{!IF(sWWID != NULL,$Label.Core_Sales_Support,IF(sOppRecName != null,sOppRecName,sAcctRecName))}" />
+                </td>
+            </tr>
+        </table>
+        <br/>       
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!NOT(bUserHasAccess)}">
+        <br/>
+        <apex:pageMessage severity="INFO" title="Access Denied" summary="User doesn't have access to view the page." strength="2"></apex:pageMessage>
+    </apex:outputPanel>
+    
+    <!-- SSG Support Request Changes Start -->
+    <apex:outputPanel rendered="{!showNavigationErrorMessage}" id="InCorrectNavigation">
+        <apex:pageMessage severity="FATAL" title="Error" summary="{!$Label.Core_SSR_Navigation_Error}" strength="2"></apex:pageMessage>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!showNoAccessMessage}" id="UserHasNoAccess">
+        <apex:pageMessage severity="FATAL" title="Error" summary="{!$Label.Core_SSR_User_Access_Error}" strength="2"></apex:pageMessage>
+    </apex:outputPanel>   
+    <!-- SSG Support Request Changes End -->
+    
+    <apex:outputPanel rendered="{!bAccountWithNoCIMID}">
+        <br/>
+        <apex:pageMessage rendered="{!ucdSwitch}" severity="INFO" title="Account is not mastered" strength="2"
+                          summary="This account has not been mastered, so has no Unified ID, and cannot have Sales Support requests placed against it."></apex:pageMessage>
+        <apex:pageMessage rendered="{!NOT(ucdSwitch)}" severity="INFO" title="Account is not mastered" strength="2"
+                          summary="This account has not been mastered, so has no CIM ID, and cannot have Sales Support requests placed against it."></apex:pageMessage>
+    </apex:outputPanel>
+    
+    <apex:form >
+                
+        <!-- Intel Altera Phase1:
+Code added on 12-5-2016.Calls the controller for Quote creation   -->
+        <apex:actionstatus id="seedsTabLoadStatus1" > 
+            <apex:facet name="start">
+                <div class="spinnerBg" />
+                <div class="spinner" />
+            </apex:facet>
+        </apex:actionstatus>
+        <!--<apex:actionFunction name="processOpportuntyQuote" status="seedsTabLoadStatus1" action="{!createPSGQuoteonSiebel}" rerender="pnlRequestTypeSection,theTabPanel" oncomplete="loadTab()"/>-->
+        <apex:actionFunction name="processSSGRequest" action="{!processSSGRequest}"></apex:actionFunction>
+        
+        
+        
+        <apex:pageBlock tabStyle="Core_Sales_Support__tab" id="pageblk" rendered="{!bUserHasAccess && NOT(bAccountWithNoCIMID)}">
+            <apex:outputPanel id="pnlRequestTypeSection" >
+                
+                <div style="margin-top:12px; font-weight:bold; font-size: 1.22em">
+                    Select Sales Support Request Type
+                </div>
+                <br/>
+                <!-- Intel Altera Phase1:
+Code added on 12-5-2016.Used for displaying the notification message on quote creation process  
+-->
+                <apex:pageMessages rendered="{!NOT(bOpportunityValidForQuoteCreation)}" escape="false"/>
+                
+                <apex:outputLabel for="existing__opp" value="Sales Support Request Type"
+                                  style="font-weight:bold;color:rgb(74, 74, 86);font-size: 11px" />&nbsp;&nbsp;&nbsp;
+                
+                <!-- Rendered condition added by Devashish - TWC3123-4227 -->
+                <apex:selectList id="salesSupportRequestType" size="1" rendered="{!IF(URLPMT == null || URLPMT == 'SystemBuild' || URLPMT == 'both', true, false)}">
+                    <!--apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/-->
+                    <apex:selectOption itemLabel="Order Seed" itemValue="Order Seed"/>
+                    <apex:selectOption itemLabel="Request Sample" itemValue="Request Sample"/>
+                    <apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/>
+                                   
+                    <!-- Intel Altera Phase1: code added on 12-5-2016 -->
+                    <!--<apex:selectOption rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>-->
+                    <apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>                      
+                    <apex:selectOption itemLabel="{!$Label.Core_Web_Quote_Label}" itemValue="{!$Label.Core_Web_Quote_Label}"/> 
+                </apex:selectList>
+                
+                <!-- Button for Ordering Seeds or Samples, rendered condition added by Devashish - TWC3123-4227 -->
+                <apex:commandButton value="Continue" rendered="{!IF(URLPMT == null || URLPMT == 'SystemBuild' || URLPMT == 'both', true, false)}"
+                                    onClick="newRequest('{!$Component.pageblk.salesSupportRequestType}', '{!sOppId}',
+                                             '{!JSENCODE(sOppRecName)}',
+                                             '{!sAcctId}', '{!orderSeedsURL}', '{!requestSamplesURL}', '{!UserRegion}', '{!UIthemedisplayed}',
+                                             '{!$Label.Core_Intel_Network_Resource}', '{!$Label.Core_IntelNetworkError}','{!$Label.Core_Premier_Support_URL }','{!$Label.Core_Web_Quote_URL}'); return false" /> 
+				
+                <!--Start - TWC3123-4227 - Devashish - Display Request type value based on ProductType -->
+                <apex:selectList id="salesSupportRequestType2" size="1" rendered="{!IF(URLPMT == 'Sample',true,false)}" >
+                    <apex:selectOption itemLabel="Request Sample" itemValue="Request Sample"/>
+                    <apex:selectOption itemLabel="Order Seed" itemValue="Order Seed"/>                    
+                    <apex:selectOption itemLabel="IT@Intel" itemValue="IT@Intel"/>
+                    <!--<apex:selectOption rendered="{!IF($Profile.Name == 'System Administrator',FALSE,bSalesSupportHomePageAccessible)}" itemLabel="{!$Label.Core_PSG_Quote_Label}" itemValue="{!$Label.Core_PSG_Quote_Label}"/>-->
+					<apex:selectOption itemLabel="{!$Label.Core_SSR_Support_Request}" itemValue="{!$Label.Core_SSR_Create_SSR}"/>  
+					<apex:selectOption itemLabel="{!$Label.Core_Web_Quote_Label}" itemValue="{!$Label.Core_Web_Quote_Label}"/> 
+            	</apex:selectList>
+                
+                <apex:commandButton value="Continue" rendered="{!IF(URLPMT == 'Sample',true,false)}"
+                                    onClick="newRequest('{!$Component.pageblk.salesSupportRequestType2}', '{!sOppId}',
+                                             '{!JSENCODE(sOppRecName)}',
+                                             '{!sAcctId}', '{!orderSeedsURL}', '{!requestSamplesURL}', '{!UserRegion}', '{!UIthemedisplayed}',
+                                             '{!$Label.Core_Intel_Network_Resource}', '{!$Label.Core_IntelNetworkError}','{!$Label.Core_Premier_Support_URL }','{!$Label.Core_Web_Quote_URL}'); return false" /> 
+                <!--End- TWC3123-4227 - Devashish - Display Request type value based on ProductType -->
+                &nbsp;
+                <br/><br/>
+
+                <h3 class="recordTypesHeading">Available Sales Support Request Types</h3>
+                <table class="recordTypeInfo infoTable" border="0" cellpadding="0" cellspacing="0">
+                    <tr class="headerRow"><TH class="recordTypeName" scope="col">Request Type</TH><TH class="recordTypeDescription" scope="col">Description</TH></tr>
+                    <tr><TH class="recordTypeName" scope="row">Order Seed</TH><td class="recordTypeDescription">Commercial/Prototype Devices (powered by Intel Demo Depot)&nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/seeds/" style="color:blue" target="new">Learn More</apex:outputLink></td></tr>
+                    <tr class="last"><TH class="recordTypeName" scope="row">Request Sample</TH><td class="recordTypeDescription">Components (powered by My Samples/SMS) &nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/managing-samples/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
+                    <tr><TH class="recordTypeName" scope="row">IT @ Intel</TH><td class="recordTypeDescription">Request IT @ Intel Support for Opportunities &nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/partnering-with-itintel/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
+                   
+                    <!-- Intel Altera Phase1:
+This Table row will be added only if the user has the access to the Sales support page 
+-->
+                    <!--<tr rendered="{!bSalesSupportHomePageAccessible}"><TH class="recordTypeName" scope="row">{!$Label.Core_PSG_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a PSG quote to be created in InteliQuote</td></tr>-->
+                    
+                    <tr><TH class="recordTypeName" scope="row">{!$Label.Core_SSR_Support_Request}</TH><td class="recordTypeDescription">Get expert software support for competitive and/or strategic opportunities.&nbsp; <apex:outputLink value="https://salescrm.intel.com/opportunity-management/ssg-sales-support/" style="color:blue"  target="new">Learn More</apex:outputLink></td></tr>
+                    <tr><TH class="recordTypeName" scope="row">{!$Label.Core_Web_Quote_Label}</TH><td class="recordTypeDescription" width="600px"> Request a WebQuote</td></tr>
+                </table>                
+                <br/><br/>
+            </apex:outputPanel> 
+            <apex:tabPanel switchType="client" value="{!sCurrentTab}" id="theTabPanel" tabClass="activeTab" inactiveTabClass="inactiveTab" styleClass="recordName">
+                
+                <apex:tab label="Seeds" name="tabSeeds" id="tabSeeds" labelWidth="120"
+                          onTabEnter="clickTab('tabSeeds','{!$Component.pageblk.seedsTable}','{!$Component.pageblk.seedsMessages}');">
+                    <apex:actionFunction name="pullSeeds" action="{!pullSeeds}" reRender="seedsPanel" status="seedsTabLoadStatus"/>
+                    
+                    <apex:actionstatus id="seedsTabLoadStatus" > 
+                        <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageTabLoading"/></apex:facet>
+                    </apex:actionstatus>
+                    
+                    <img id="initialSeedsLoadingImage" src="/img/loading32.gif" class="imageTabLoading"/>
+                    
+                    <apex:outputPanel id="seedsPanel">
+                        
+                        <apex:actionFunction name="applySeedsFilters" action="{!filterSeeds}" reRender="seedsPanel" status="seedsFilterStatus"/>
+                        
+                        <br/>
+                        <apex:pageMessages rendered="{!bSeedsErrorFlag}" id="seedsMessages" escape="false"/>
+                        
+                        <apex:outputPanel rendered="{!NOT(bSeedsRenderFlag)}">
+                            <br/><br/><br/><br/>
+                        </apex:outputPanel>
+                        
+                        <apex:pageBlockSection title="{!$Label.Core_Section_Seeds_Section}" collapsible="false" rendered="{!bSeedsRenderFlag}">
+                            <apex:panelGrid columns="10"> 
+                                
+                                <apex:inputText value="{!sSeedSearch[0]}"  size="{!IF(sWWID != NULL,7,8)}" html-placeholder="Order No" 
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/>
+                                
+                                <apex:inputText value="{!sSeedSearch[1]}" size="{!IF(sWWID != NULL,37,41)}" html-placeholder="Product Name" 
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/> 
+                                
+                                <apex:inputText value="{!sSeedSearch[2]}" size="{!IF(sWWID != NULL,8,10)}"  html-placeholder="Estimated Ship Date"  
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/> 
+                                
+                                <apex:inputText value="{!sSeedSearch[3]}" size="{!IF(sWWID != NULL,8,10)}" html-placeholder="Delivery Date"  
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/>
+                                
+                                <apex:inputText value="{!sSeedSearch[4]}" size="{!IF(sWWID != NULL,12,14)}" html-placeholder="Delivery Status"  
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/> 
+                                
+                                <apex:inputText value="{!sSeedSearch[5]}" size="{!IF(sWWID != NULL,8,10)}" html-placeholder="Pickup Date" 
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/> 
+                                
+                                <apex:inputText value="{!sSeedSearch[6]}" size="{!IF(sWWID != NULL,8,10)}" html-placeholder="Requester"  
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/>
+                                
+                                <apex:inputText value="{!sSeedSearch[7]}" size="{!IF(sWWID != NULL,6,7)}" html-placeholder="Req. Qty"  
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"/>
+                                
+                                <apex:inputText value="{!sSeedSearch[8]}" size="{!IF(sWWID != NULL,15,IF(sOppRecName!= NULL,19,0))}" html-placeholder="Account Name" 
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"
+                                                rendered="{!IF(sOppRecName!= NULL || sWWID != NULL, true,false)}"/>
+                                
+                                <apex:inputText value="{!sSeedSearch[9]}" size="{!IF(sWWID != NULL,15,IF(sAcctRecName != NULL,19,0))}" html-placeholder="Opportunity Name"  
+                                                styleClass="{!IF(sWWID != NULL,'userSeedFilter','accountSeedFilter')}" onkeypress="return runOnEnter(event, 'Seeds');"
+                                                rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}"/>
+                            </apex:panelGrid>
+                            
+                            <br/>
+                            <apex:commandButton action="{!filterSeeds}" reRender="seedsPanel" value="Apply Filters" status="seedsFilterStatus" styleClass="filterButton" />
+                            <apex:actionstatus id="seedsFilterStatus">
+                                <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageFilterLoading"/></apex:facet>
+                            </apex:actionstatus>
+                        </apex:pageblocksection>
+                        
+                        <!-- Table for rendering Seeds grid view -->
+                        <apex:pageBlockTable value="{!lstFilteredSeeds}" var="seed" id="seedsTable"  frame="box" columns="11"
+                                             columnsWidth="2%,2%,16%,5%,5%,6%,5%,5%,3%,8%,8%" rendered="{!bSeedsRenderFlag}">
+       						
+                            <apex:column >
+                                <apex:actionstatus id="expansionStatus">
+                                    <apex:facet name="start">
+                                        <apex:image url="/img/loading32.gif" height="12" width="12"/>
+                                    </apex:facet>
+                                </apex:actionstatus>
+                                <apex:commandLink status="expansionStatus" reRender="seedsPanel" action="{!toggleRendering}">
+                                    <apex:image url="{!URLFOR($Resource.Core_CollapsibleImages, 'CollapsibleV2.png')}" width="10" height="10" rendered="{!seed.bRenderCSection}"/>   
+                                    <apex:image url="{!URLFOR($Resource.Core_CollapsibleImages, 'UpsideCollapsibleV2.png')}" width="10" height="10" rendered="{!NOT(seed.bRenderCSection)}"/>
+                                    <apex:param name="renderToggle" value="{!!seed.bRenderCSection}" assignTo="{!seed.bRenderCSection}"/>
+                                </apex:commandLink> 
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        Demo Deport<br/>
+                                        Order #
+                                    </div>
+                                </apex:facet>
+                                <apex:commandlink onclick="openSalesSupportPopup('{!viewSeedURL}' + 'WONo='+{!seed.OrderNumber});return false;" value="{!seed.OrderNumber}" />
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentreProductName">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        {!$Label.Core_ProductName}
+                                    </div>
+                                </apex:facet>
+                                <apex:outputText value="{!seed.productname}" />
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        Estimated<br/>
+                                        Ship Date
+                                    </div>
+                                </apex:facet>
+                                <apex:outputText value="{!seed.EstimatedShipDate}" />
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        Requested<br/>
+                                        Delivery Date
+                                    </div>
+                                </apex:facet>
+                                
+                                <apex:outputText value="{!seed.RequestedDeliveryDate}"/>
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        {!$Label.Core_DeliverStatus}
+                                    </div>
+                                </apex:facet>
+                                
+                                <apex:outputText value="{!seed.lineItemStatus}"/>
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        {!$Label.Core_PickupDate}
+                                    </div>
+                                </apex:facet>
+                                
+                                <apex:outputText value="{!seed.returnPickupDate}"/>
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        {!$Label.Core_Requestor}
+                                    </div>
+                                </apex:facet>
+                                
+                                <apex:outputText value="{!seed.Requestor}"/>
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        Requested<br/>
+                                        Quantity
+                                    </div>
+                                </apex:facet>
+                                <apex:outputText value="{!seed.RequestedQty}" />
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        {!$Label.Core_Account_Name}
+                                    </div>
+                                </apex:facet>
+                               <!-- As part of TWC3123-6816 Added No Sales CRM account assigned text in the value-->
+                                <apex:outputText value="{!IF(seed.AccountName != NULL, seed.AccountName, 'No Sales CRM Account assigned')}"/>
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}">
+                                <apex:facet name="header">
+                                    <div Class="alignCentre">
+                                        {!$Label.Core_Opportunity_Name}
+                                    </div>
+                                </apex:facet>
+                                <apex:outputText value="{!seed.OpportunityName}"/>
+                            </apex:column>
+                            
+                            <!-- Use a separate section to render sub section --> 
+                            <apex:column breakBefore="true"  id="theColmn" width="1250" colspan="14">
+                                <apex:outputPanel styleClass="alignOutputPanel" >
+                                    <apex:pageBlockSection columns="3" rendered="{!seed.bRenderCSection}" >
+                                        
+                                        <apex:pageBlockSectionItem rendered="{!seed.bRenderCSection}"> 
+                                            <apex:outputPanel styleClass="alignOutputPanel1"> 
+                                                <apex:pageBlockSection title="{!$Label.Core_Section_Seed_Detail}" columns="1" collapsible="false"  >
+                                                    
+                                                    <b>{!$Label.Core_ItemsSent}</b><br/><apex:outputText value="{!seed.productName}" id="username" html-placeholder="Enter a value"/><br/>  
+                                                    <b>{!$Label.Core_QuantitySent}</b><br/><apex:outputText value="{!seed.shippedQty}"  html-placeholder="Enter a value"/><br/>
+                                                    <b>{!$Label.Core_ProductDetail}</b><br/><apex:outputText value="{!seed.productDesc}{!seed.productListDesc}" escape="false" />
+                                                    
+                                                </apex:pageBlockSection>
+                                            </apex:outputPanel> 
+                                            
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem rendered="{!seed.bRenderCSection}">   
+                                            <apex:outputPanel styleClass="alignOutputPanel1">
+                                                <apex:pageBlockSection title="{!$Label.Core_Section_Shipping_Detail}" columns="1" collapsible="false" >
+                                                    
+                                                    <b>{!$Label.Core_ShippingTo}</b><br/>{!seed.attentionName}<br/>
+                                                    {!seed.companyName}<br/>{!seed.streetAddress1}<br/>{!seed.streetAddress2}
+                                                    <br/>{!seed.City}<br/>{!seed.State}<br/>{!seed.Zipcode}<br/>{!seed.Country}<br/><br/>
+                                                    <b>{!$Label.Core_DateShipped}</b><br/><apex:outputText value="{!seed.actualShipDate}" html-placeholder="Enter a value"/><br/>
+                                                    <b>{!$Label.Core_OrderStatus}</b><br/><apex:outputText value="{!seed.orderStatus}" html-placeholder="Enter a value" />
+                                                    
+                                                </apex:pageBlockSection>
+                                            </apex:outputPanel>
+                                            
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem rendered="{!seed.bRenderCSection}">   
+                                            <apex:outputPanel styleClass="alignOutputPanel1"> 
+                                                <apex:pageBlockSection title="{!$Label.Core_Section_Notes}" columns="1" collapsible="false"> 
+                                                    
+                                                    <b>{!$Label.Core_Section_Notes}</b> <br/><apex:outputText value="{!seed.notes}"  html-placeholder="{!$Label.Core_EnterValue}" /><br/>
+                                                    <b>{!$Label.Core_Submitter}</b> <br/><apex:outputText value="{!seed.Submitter}"  html-placeholder="{!$Label.Core_EnterValue}" /><br/>
+                                                    <br/><apex:outputText value="<b>{!$Label.Core_Account_ID_Name}</b><br/><br/>{!seed.AccountID}"  escape="false" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}" /><br/>
+                                                    <br/><apex:outputText value="<b>{!$Label.Core_Opportunity_ID_Name}</b><br/><br/>{!seed.OpportunityID}"  escape="false" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}" />
+                                                    
+                                                </apex:pageBlockSection>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem> 
+                                        
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>  
+                                <!-- </apex:outputPanel> --> 
+                            </apex:column>    
+                            
+                        </apex:pageBlockTable>
+                        
+                    </apex:outputPanel>
+                    
+                </apex:tab>
+                
+                <apex:tab label="Samples" name="tabSamples" id="tabSamples" labelWidth="120"
+                          onTabEnter="clickTab('tabSamples','{!$Component.pageblk.samplesTable}','{!$Component.pageblk.samplesMessages}');">
+                    <apex:actionFunction name="pullSamples" action="{!pullSamples}" reRender="samplesPanel" status="samplesTabLoadStatus"/>
+                    
+                    <apex:actionstatus id="samplesTabLoadStatus">
+                        <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageTabLoading"/></apex:facet>
+                    </apex:actionstatus>
+                    
+                    <img id="initialSamplesLoadingImage" src="/img/loading32.gif" class="imageTabLoading"/>
+                    
+                    <apex:outputPanel id="samplesPanel">
+                        
+                        <apex:actionFunction name="applySamplesFilters" action="{!filterSamples}" reRender="samplesPanel" status="samplesFilterStatus"/>
+                        
+                        <br/>
+                        <apex:pageMessages rendered="{!bSamplesErrorFlag}" id="samplesMessages" escape="false"/>
+                        
+                        <apex:outputPanel rendered="{!NOT(bSamplesRenderFlag)}">
+                            <br/><br/><br/><br/>
+                        </apex:outputPanel>
+                        
+                        <apex:pageBlockSection title="Request Detail" collapsible="false" rendered="{!bSamplesRenderFlag}">
+                            <apex:panelGrid columns="12"> 
+                                
+                                <apex:inputText value="{!sSampleSearch[0]}" size="3" html-placeholder="Req. ID#" 
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples'));"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[1]}" size="2" html-placeholder="Line #" 
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[2]}" size="{!IF(sWWID != NULL,34,IF(sAcctRecName != NULL,37,43))}" html-placeholder="Product Name" 
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[3]}" size="{!IF(sWWID != NULL,9,IF(sAcctRecName != NULL,10,11))}" html-placeholder="Delivery Date"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[4]}" size="{!IF(sWWID != NULL,8,IF(sAcctRecName != NULL,9,10))}" html-placeholder="Status"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/> 
+                                
+                                <apex:inputText value="{!sSampleSearch[5]}" size="{!IF(sWWID != NULL,8,IF(sAcctRecName != NULL,8,11))}" html-placeholder="Requester"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[6]}" size="{!IF(sWWID != NULL,4,IF(sAcctRecName != NULL,5,6))}" html-placeholder="Req. Qty"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[7]}" size="{!IF(sWWID != NULL,4,IF(sAcctRecName != NULL,5,6))}" html-placeholder="Appr. Qty"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[8]}" size="{!IF(sWWID != NULL,11,IF(sOppRecName != NULL,13,''))}" html-placeholder="Account Name" 
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"
+                                                rendered="{!IF(sOppRecName!= NULL || sWWID != NULL, true,false)}"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[9]}" size="{!IF(sWWID != NULL,15,IF(sAcctRecName != NULL,15,''))}" html-placeholder="Opportunity Name" 
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');" 
+                                                rendered="{!IF(sAcctRecName!= NULL || sWWID != NULL, true,false)}"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[10]}" size="{!IF(sWWID != NULL,9,IF(sAcctRecName != NULL,16,''))}" html-placeholder="Opportunity Stage"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"
+                                                rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}"/>
+                                
+                                <apex:inputText value="{!sSampleSearch[11]}" size="{!IF(sWWID != NULL,8,IF(sAcctRecName != NULL,8,18))}" html-placeholder="Approver"  
+                                                styleClass="{!IF(sWWID != NULL,'userSampleFilter','accountSampleFilter')}" onkeypress="return runOnEnter(event, 'Samples');"/>
+                                
+                            </apex:panelGrid>
+                            
+                            <br/>
+                            <apex:commandButton action="{!filterSamples}" reRender="samplesPanel" value="Apply Filters" status="samplesFilterStatus" styleClass="filterButton" />
+                            <apex:actionstatus id="samplesFilterStatus">
+                                <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageFilterLoading"/></apex:facet>
+                            </apex:actionstatus>
+                        </apex:pageBlockSection>
+                        
+                        <!-- Table for rendering Samples grid view -->
+                        <apex:pageBlockTable value="{!lstFilteredSamples}" var="sample" id="samplesTable"  frame="box" columns="13"
+                                             columnsWidth="2%,2%,2%,16%,5%,5%,5%,2%,2%,6%,8%,5%,5%" rendered="{!bSamplesRenderFlag}">
+                            <apex:column >
+                                <apex:actionstatus id="sampleExpansionStatus">
+                                    <apex:facet name="start">
+                                        <apex:image url="/img/loading32.gif" height="12" width="12"/>
+                                    </apex:facet>
+                                </apex:actionstatus>
+                                <apex:commandLink status="sampleExpansionStatus" reRender="samplesPanel" action="{!toggleRendering}">
+                                    <apex:image url="{!URLFOR($Resource.Core_CollapsibleImages, 'CollapsibleV2.png')}" width="10" height="10" rendered="{!sample.bRenderCSection}"/>   
+                                    <apex:image url="{!URLFOR($Resource.Core_CollapsibleImages, 'UpsideCollapsibleV2.png')}" width="10" height="10" rendered="{!NOT(sample.bRenderCSection)}"/>
+                                    <apex:param name="renderToggle" value="{!!sample.bRenderCSection}" assignTo="{!sample.bRenderCSection}"/>
+                                </apex:commandLink>
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Request<br/> ID #</div></apex:facet>
+                                <apex:commandlink onclick="openSalesSupportPopup('{!viewSampleURL}' + 'RequestId='+{!sample.RequestID});return false;" value="{!sample.RequestID}" />
+                            </apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Line
+                                </div></apex:facet><apex:outputText value="{!sample.Line}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Product Name
+                                </div></apex:facet><apex:outputText value="{!sample.RequestedMM}"/>,
+                                <apex:outputText value="{!sample.RequestedEPMName}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Requested<br/> Delivery Date
+                                </div></apex:facet><apex:outputText value="{!sample.RDD}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Request<br/> Status
+                                </div></apex:facet><apex:outputText value="{!sample.Status}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Requester
+                                </div></apex:facet><apex:outputText value="{!sample.Requester}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Requested<br/> Quantity
+                                </div></apex:facet><apex:outputText value="{!sample.RequestQty}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Approved<br/> Quantity
+                                </div></apex:facet><apex:outputText value="{!sample.ApprovedQty}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true,false)}">
+                                <apex:facet name="header"><div Class="alignCentre">
+                                    Account<br/> Name
+                                    </div></apex:facet><apex:outputText value="{!sample.GridViewAccountName}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}">
+                                <apex:facet name="header"><div Class="alignCentre">
+                                    Opportunity Name
+                                    </div></apex:facet><apex:outputText value="{!sample.GridViewOpportunityName}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true,false)}">
+                                <apex:facet name="header"><div Class="alignCentre">
+                                    Opportunity<br/> Stage
+                                    </div></apex:facet><apex:outputText value="{!sample.GridViewOpportunityStage}"/></apex:column>
+                            
+                            <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                Approver
+                                </div></apex:facet><apex:outputText value="{!sample.ApproverName}"/></apex:column>
+                            
+                            <!-- Use a seperate section to render sub section --> 
+                            <apex:column breakBefore="true" width="1250" colspan="14">
+                                
+                                <apex:outputPanel styleClass="samplesDetailPanel" >
+                                    <apex:pageBlockSection columns="3" rendered="{!sample.bRenderCSection}" >
+                                        
+                                        <apex:pageBlockSectionItem rendered="{!sample.bRenderCSection}"> 
+                                            <apex:outputPanel styleClass="samplesDetailPanelColumn"> 
+                                                <apex:pageBlockSection title="Product Detail" columns="1" collapsible="false"  >
+                                                    
+                                                    <b>Approved Product</b><br/>
+                                                    <apex:outputText value="{!sample.ApprovedMM}, {!sample.ApprovedEPMName}" rendered="{!!ISBLANK(TRIM(sample.ApprovedMM))}"/>&nbsp;<br/>  
+                                                    <b>Approved Qty</b><br/>
+                                                    <apex:outputText value="{!sample.ApprovedQty}" /><br/> 
+                                                    <b>Approver Email</b><br/>
+                                                    <apex:outputText value="{!sample.ApproverEmail}" /><br/>
+                                                    <b>Product Detail</b><br/>
+                                                    {!(IF(trim(sample.ApprovedEPMName)!='',sample.ApprovedEPMName,sample.RequestedEPMName))}<br/>
+                                                    Socket: {!sample.Socket}<br/>
+                                                    Media: {!sample.Media}<br/>
+                                                    Stepping: {!sample.Stepping}<br/>
+                                                    MM: {!(IF(trim(sample.ApprovedMM)!='',sample.ApprovedMM,sample.RequestedMM))}<br/>
+                                                    QDF# {!sample.QDF}<br/>
+                                                    Ships in Boxes of {!sample.BoxQuantity}
+                                                    
+                                                </apex:pageBlockSection>
+                                            </apex:outputPanel> 
+                                            
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem rendered="{!sample.bRenderCSection}">   
+                                            <apex:outputPanel styleClass="samplesDetailPanelColumn">
+                                                <apex:pageBlockSection title="Shipping Information" columns="1" collapsible="false" >
+                                                    
+                                                    <b>Shipping To</b><br/>
+                                                    {!sample.Contact}<br/>{!sample.ShiptoCustomerName}<br/>{!sample.StreetAddress1}<br/>{!sample.StreetAddress2}<br/>
+                                                    {!sample.City}<br/>{!sample.StateName}<br/>{!sample.Zipcode}<br/>{!sample.Country}<br/><br/>
+                                                    <b>Date Shipped</b><br/>
+                                                    <apex:outputText value="{!sample.ActualShipDtm}" /><br/>
+                                                    <b>Shipment Tracking #</b><br/>
+                                                    <apex:outputText value="{!sample.TrackingIdForCarrier1Txt} {!sample.TrackingIdForCarrier2Txt} " />
+                                                    
+                                                </apex:pageBlockSection>
+                                            </apex:outputPanel>
+                                            
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem rendered="{!sample.bRenderCSection}">   
+                                            <apex:outputPanel styleClass="samplesDetailPanelColumn"> 
+                                                <apex:pageBlockSection title="Notes" columns="1" collapsible="false"> 
+                                                    
+                                                    <b>On Behalf Of</b> <br/><apex:outputText value="{!sample.OBO}" /><br/>
+                                                    <br/><apex:outputText value="<b>{!unifiedOrCimLabelSample}</b><br/><br/>{!sample.DetailViewCIMIDs}" escape="false" rendered="{!IF(sOppRecName != NULL || sWWID != NULL, true, false)}" /><br/>
+                                                    <br/><apex:outputText value="<b>Opportunity ID</b><br/><br/>{!sample.DetailViewOppIDs}" escape="false" rendered="{!IF(sAcctRecName != NULL || sWWID != NULL, true, false)}" />
+                                                    
+                                                </apex:pageBlockSection>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem> 
+                                        
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>  
+                            </apex:column>    
+                            
+                        </apex:pageBlockTable>
+                        
+                    </apex:outputPanel>
+                    
+                </apex:tab> 
+                
+                
+                <apex:tab label="IT@Intel" name="tabITIntel" id="tabITIntel" labelWidth="120"
+                          onTabEnter="clickTab('tabITIntel','','');">
+                    
+                    <iframe id="gridFrame0" scrolling="auto" height="600" width="100%" frameborder="0"
+                            src="/apex/gblite__Grid?gname=IT Intel Sales Support Requests&sh=0&ro=0&sbb=0">
+                    </iframe>
+                </apex:tab>
+                
+                <!--Intel Altera Phase1: 
+Below method is used for showing the PSG Quote History associated with Opportunity. --> 
+                <!--<apex:tab label="PSG Quotes" name="tabPSGQuote" id="tabPSGQuote"  labelWidth="120" onTabEnter="clickTab('tabPSGQuote','{!$Component.pageblk.pgBlkPSGQuoteTbl}','');"  rendered="{!bPSGQuoteTabVisible}" disabled="true">
+                    <apex:outputPanel id="psgQuoteHistoryPnl" >
+                        <apex:actionFunction name="pullPSGQuote" action="{!pullPSGQuoteHistory}" reRender="psgQuoteHistoryPnl" status="samplePSGQuoteLoadStatus"/>
+                        <apex:actionstatus id="samplePSGQuoteLoadStatus">
+                            <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageTabLoading"/></apex:facet>
+                        </apex:actionstatus>
+                        <div  class="PSGQuoteSection"> 
+                            <apex:outputPanel rendered="{!bPSGQuoteProcessingInfoDisp}">
+                                <div id="section-1" class="PSGQuoteSection1">
+                                    <apex:outputText value="{!$Label.Core_PSG_Quote_Request_Process_Message}" />
+                                </div>
+                            </apex:outputPanel>
+                            
+                            <div id="section-Heading" class="PSGQuoteSectionHeading"> <b>PSG Quote history </b> </div>
+                            <div id="section-2" >
+                                
+                                <apex:outputPanel >
+                                    
+                                    <apex:pageBlockTable value="{!lstPSGQuoteGenarationHistory}" var="item" id="pgBlkPSGQuoteTbl" border="1px">
+                                        <apex:column headerValue="RFQ ID" style="width:20%"> <apex:outputLink value="{!item.Core_Quote_URL__c}" target="_blank" id="quoteURL">{!item.Core_RFQ_ID__c}</apex:outputLink> </apex:column>
+                                        <apex:column headerValue="Quote Creation Date" value="{!item.CreatedDate}" style="width:20%" />
+                                        <apex:column headerValue="Status" value="{!item.Core_Message_Status__c}"  style="width:60%"/>
+                                    </apex:pageBlockTable> 
+                                    <div id="MessageDiv" class="PSGMessageDivSection"> 
+                                        <apex:outputText rendered="{!bPSGQuoteHistoryExist}" value="{!$Label.Core_PSG_History_No_Record_Found}" /> 
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:tab> -->
+                
+                <!-- SSG Support Request Grid Buddy Flow Changes Start -->
+                <!-- Display if User Navigates from Account Record -->
+                <apex:tab label="{!$Label.Core_SSR_Support_Request}" name="tabDRDSSR" id="tabDRDSSR1" labelWidth="180"
+                          onTabEnter="clickTab('tabDRDSSR','','');" rendered="{!sAcctId != ''}">
+                    <iframe id="gridFrame0" scrolling="auto" height="600" width="100%" frameborder="0"
+                            src="/apex/gblite__Grid?gname=Software Expert Support&sh=0&ro=0&sbb=0&fpf=core_opportunity__r.AccountId&fpv={!sAcctId}">
+                    </iframe>
+                </apex:tab>
+                
+                <!-- Display if User Navigates from Opportunity Record -->
+                <apex:tab label="{!$Label.Core_SSR_Support_Request}" name="tabDRDSSR" id="tabDRDSSR2" labelWidth="180"
+                          onTabEnter="clickTab('tabDRDSSR','','');" rendered="{!sOppId != ''}"> 
+                    <iframe id="gridFrame0" scrolling="auto" height="600" width="100%" frameborder="0"
+                            src="/apex/gblite__Grid?gname=Software Expert Support&sh=0&ro=0&sbb=0&fpf=core_opportunity__c&fpv={!sOppId}">
+                    </iframe>                  
+                </apex:tab>
+                
+                <!-- Display if User Navigates from Sales Support Tab -->
+                <apex:tab label="{!$Label.Core_SSR_Support_Request}" name="tabDRDSSR" id="tabDRDSSR3" labelWidth="180"
+                          onTabEnter="clickTab('tabDRDSSR','','');" rendered="{!AND(sOppId == '',sAcctId=='')}">  
+                    <iframe id="gridFrame0" scrolling="auto" height="600" width="100%" frameborder="0"
+                            src="/apex/gblite__Grid?gname=Software Expert Support&sh=0&ro=0&sbb=0&fpf=createdById&fpv={!userId}">
+                    </iframe>
+                </apex:tab>
+                <!-- SSG Support Request Grid Buddy Flow Changes End -->
+                  
+                <!-- to show related webquotes--> 
+                <apex:tab label="Related WebQuotes" name="tabWebquotes" id="tabWebquotes" labelWidth="120"
+                          onTabEnter="clickTab('tabWebquotes','{!$Component.pageblk.pgBlkQuotesTable}','{!$Component.pageblk.quotesMessages}');">
+                    <apex:actionFunction name="pullWebQuotes" action="{!pullWebQuotes}" reRender="quotesPanel" status="quotesTabLoadStatus"/>
+                    <apex:actionstatus id="quotesTabLoadStatus">
+                        <apex:facet name="start"><apex:image url="/img/loading32.gif" styleClass="imageTabLoading"/></apex:facet>
+                    </apex:actionstatus>
+                    
+                    
+                    <apex:outputPanel id="quotesPanel" >
+                        <br/>
+                        <apex:pageMessages rendered="{!bQuotesErrorFlag}" id="quotesMessages" escape="false"/>
+                        
+                        <div style="overflow-y: scroll; height: 200px;"> 
+                            <apex:pageBlockTable value="{!quotes}" var="item" id="pgBlkQuotesTable" rendered="{!bQuotesRenderFlag}" styleClass="fixheaders">
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    RFQ ID
+                                    </div></apex:facet><apex:outputLink value="{!item.quote_link}" styleClass="ul">{!item.quote_name}</apex:outputLink></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Creation Type
+                                    </div></apex:facet><apex:outputText value="{!item.creation_type}"/></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Creator
+                                    </div></apex:facet><apex:outputText value="{!item.creator}"/></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Product Description
+                                    </div></apex:facet><apex:outputText value="{!item.prd_dsc}"/></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Status 
+                                    </div></apex:facet><apex:outputText value="{!item.quote_status}"/></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    DPA Number
+                                    </div></apex:facet><apex:outputText value="{!item.dpa_number}"/></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    DPA Valid From
+                                    </div></apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!item.dpa_vld_fr_dt}" /></apex:outputText></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    DPA Expiry Date
+                                    </div></apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!item.dpa_expr_dt}" /></apex:outputText></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Approved Quantity
+                                    </div></apex:facet><apex:outputText value="{!item.approved_quantity}"/></apex:column>
+                                <!-- TWC4767-486 : WebQuote enhancements -->
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Disti Cost/Intel Price 
+                                    </div></apex:facet><apex:outputText value="{!item.intel_prc_sdc}"/></apex:column>
+                                <apex:column styleClass="alignCentre"><apex:facet name="header"><div Class="alignCentre">
+                                    Approved Price
+                                    </div></apex:facet><apex:outputText value="{!item.aprv_prc}"/></apex:column>
+                            </apex:pageBlockTable>
+                        </div>
+                    </apex:outputPanel>
+                </apex:tab>
+            </apex:tabPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

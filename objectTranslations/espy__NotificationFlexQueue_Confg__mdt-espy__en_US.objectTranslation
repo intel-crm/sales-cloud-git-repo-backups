@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>NotificationFlexQueue Confg</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>NotificationFlexQueue Confgs</value>
+    </caseValues>
+    <fields>
+        <label><!-- EmailSubject --></label>
+        <name>espy__EmailSubject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Body --></label>
+        <name>espy__Email_Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>espy__Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>espy__Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limit --></label>
+        <name>espy__Limit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timing --></label>
+        <name>espy__Timing__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

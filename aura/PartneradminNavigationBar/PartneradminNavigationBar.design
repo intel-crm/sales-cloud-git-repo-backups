@@ -1,0 +1,7 @@
+<design:component>
+    <design:attribute name="disableManageOfferings" label="Disable Manage Offerings" />
+    <design:attribute name="disableViewDashboard" label="Disable View Dashboard" />
+    <design:attribute name="disableManageLeads" label="Disable Manage Leads" />
+    <design:attribute name="disableManagedMPPartners" label="Disable Manage Marketplace Partners"/>
+    <design:attribute name="fullWidth" label="fullWidth" />
+</design:component>

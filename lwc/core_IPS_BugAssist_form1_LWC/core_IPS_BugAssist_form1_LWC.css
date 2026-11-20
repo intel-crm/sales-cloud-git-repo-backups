@@ -1,0 +1,37 @@
+.subHeadline {
+    /* width: 506px; */
+    margin: 0 15px 16px 9px;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    padding-top: 0;
+    letter-spacing: normal;
+    color: #262626;
+    text-align: left;
+}
+.casecreationvalign {
+    align-items: center;
+    margin-bottom: 20px;
+}
+.checkboxalign{
+    margin-left: 2px;
+}
+.comboRequiredField{
+    display: block;
+ color: #cc0000;
+ font-size: 14px;
+ /* margin-left: 10px; */
+margin-top: -20px;
+}
+.uploadedFileDetails{
+    margin: 0 15px 16px 9px;
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #262626;
+    text-align: left;
+    padding-top: 0;
+}

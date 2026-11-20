@@ -1,0 +1,72 @@
+<aura:component controller="Core_InactiveAccountonOpp" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="isOppInactive" type="Boolean" default= "false"/>
+    <aura:attribute name="onCheckOppAcc" type="Boolean" default= "false"/>
+    
+    <aura:attribute name="isVendor" type="Boolean" default= "false"/>
+    <aura:attribute name="onCheckVendor" type="Boolean" default= "false"/>
+    <aura:attribute name="quarterMisALign" type="Boolean" default="false"/>
+    <aura:attribute name="isOppPartner" type="Boolean" default= "false"/>
+    <aura:attribute name="onCheckOppPartner" type="Boolean" default= "false"/>
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+     <aura:attribute name="record" type="Object" />
+    <aura:attribute name="simpleRecord" type="Object" />
+    <aura:attribute name="recordError" type="String" />
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.simpleRecord}"
+                      layoutType="FULL"
+                      recordUpdated="{!c.handleRecordUpdated}" />
+
+	<aura:handler name="change" value="{!v.record}" action="{!c.handleRecordUpdated}" />
+    <!--<article class="slds-card slds-card_boundary forceRelatedListCardDesktop">
+        <div class="slds-grid slds-page-header forceRelatedListCardHeader">
+            <header class="slds-media slds-media-center slds-has-flexi-truncate">
+                <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                    <div class="extraSmall forceEntityIcon" >
+                        <lightning:icon iconName="utility:error" alternativeText="Error!" title="Error" />
+                        
+                    </div></div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        Inactive Account Information
+                    </h2></div>
+            </header>
+        </div>
+        
+        <lightning:card>
+            <div class="slds-p-left_medium">
+                <label class="slds-form-element__label" for="checkbox-unique-id-81">Is Opportunity Linked to an Inactive Account?</label>
+                <div class="slds-form-element__control">
+                    <span class="slds-checkbox slds-checkbox_standalone">
+                        <input type="checkbox" id="checkbox-unique-id-81" name="label" value="{!v.isOppInactive}" checked="{!v.isOppInactive}" disabled="true"/>
+                        <span class="slds-checkbox_faux"></span>
+                    </span>
+                </div>
+                <label class="slds-form-element__label" for="checkbox-unique-id-82">Is Opportunity Product has Inactive Vendor?</label>
+                <div class="slds-form-element__control">
+                    <span class="slds-checkbox slds-checkbox_standalone">
+                        <input type="checkbox" id="checkbox-unique-id-82" name="label" value="{!v.isVendor}" checked="{!v.isVendor}" disabled="true"/>
+                        <span class="slds-checkbox_faux"></span>
+                    </span>
+                </div>
+                <label class="slds-form-element__label" for="checkbox-unique-id-83">Is Opportunity Partner has Inactive Partner?</label>
+                <div class="slds-form-element__control">
+                    <span class="slds-checkbox slds-checkbox_standalone">
+                        <input type="checkbox" id="checkbox-unique-id-83" name="label" value="{!v.isOppPartner}" checked="{!v.isOppPartner}" disabled="true"/>
+                        <span class="slds-checkbox_faux"></span>
+                    </span>
+                </div>
+                
+                <ui:inputCheckbox aura:id="checkboxAttach"  label="Is Opportunity Linked to an Inactive Account?" value="{!v.isOppInactive}" disabled="true"/>
+                <br></br>
+                <ui:inputCheckbox aura:id="checkboxAttach"  label="Is Opportunity Product has Inactive Vendor?" value="{!v.isVendor}" disabled="true"/>
+                <br></br>
+                <ui:inputCheckbox aura:id="checkboxAttach"  label="Is Opportunity Partner has Inactive Partner?" value="{!v.isOppPartner}" disabled="true"/>
+                                
+            </div>
+        </lightning:card>
+    </article>-->
+</aura:component>

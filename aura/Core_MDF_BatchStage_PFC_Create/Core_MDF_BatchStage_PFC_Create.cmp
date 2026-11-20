@@ -1,0 +1,18 @@
+<aura:component controller="Core_MDF_BatchStageClaimController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:html tag="style">
+		<!--To hide standard quick action pop up-->
+		.slds-button.slds-button_icon.slds-modal__close.closeIcon.slds-button_icon-bare.slds-button_icon-inverse{
+			visibility: hidden;
+		}
+	</aura:html>
+     
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="claimRecordTypeDevName" type="String" default="" description="Stores the recordtypeDeveloperName" /> 
+    <aura:if isTrue="{!not(empty(v.claimRecordTypeDevName))}">
+    <c:Core_MDF_PFC_Create recordtypeDeveloperName = "{!v.claimRecordTypeDevName}" batchRecordId = "{!v.recordId}" />
+    <aura:set attribute="else">
+    <c:Core_MDF_PFR_RecordTypeSelectorComp batchRecordId = "{!v.recordId}" />
+    </aura:set>
+    </aura:if>
+</aura:component>

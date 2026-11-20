@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Asset &amp; Operations Optimization</fullName>
+        <default>false</default>
+        <label>Asset &amp; Operations Optimization</label>
+    </customValue>
+    <customValue>
+        <fullName>Control Optimization &amp; Autonomy</fullName>
+        <default>false</default>
+        <label>Control Optimization &amp; Autonomy</label>
+    </customValue>
+    <customValue>
+        <fullName>Energy Monitoring &amp; Management</fullName>
+        <default>false</default>
+        <label>Energy Monitoring &amp; Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Environment Monitoring</fullName>
+        <default>false</default>
+        <label>Environment Monitoring</label>
+    </customValue>
+    <customValue>
+        <fullName>General Purpose</fullName>
+        <default>false</default>
+        <label>General Purpose</label>
+    </customValue>
+    <customValue>
+        <fullName>Human Wellness Monitoring</fullName>
+        <default>false</default>
+        <label>Human Wellness Monitoring</label>
+    </customValue>
+    <customValue>
+        <fullName>Interactive Media</fullName>
+        <default>false</default>
+        <label>Interactive Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Logistics &amp; Tracking</fullName>
+        <default>false</default>
+        <label>Logistics &amp; Tracking</label>
+    </customValue>
+    <customValue>
+        <fullName>Machine Condition Monitoring</fullName>
+        <default>false</default>
+        <label>Machine Condition Monitoring</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Inspection</fullName>
+        <default>false</default>
+        <label>Product Inspection</label>
+    </customValue>
+    <customValue>
+        <fullName>Situational Monitoring</fullName>
+        <default>false</default>
+        <label>Situational Monitoring</label>
+    </customValue>
+    <description>Store Use Case values for IPA</description>
+    <masterLabel>Use Case</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

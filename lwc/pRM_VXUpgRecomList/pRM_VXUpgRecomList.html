@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Upgrade Recommendations" icon-name="custom:custom46">
+            <div slot="actions">
+                <lightning-combobox name={fieldLabel} label={fieldLabel} value={value}
+                    options={selectOptions} onchange={handleChange}></lightning-combobox>
+            </div>
+            <div class="container" style="height: 480px;" >
+            <lightning-datatable columns={columns} data={tempdata} key-field="key" hide-checkbox-column='true' show-row-number-column='false'
+                onrowaction={handleRowAction} onsave={handleSave} draft-values={draftValues}></lightning-datatable>
+            </div>
+            <template if:true={spinner}>
+                    <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+            </template>
+    </lightning-card>  
+</template>

@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Design-Deal Registration Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Design-Deal Registration Products</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- CPQ_Lookup --></label>
+        <name>CPQ_Lookup</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Active Status --></label>
+        <name>Core_Active_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Eligible Status --></label>
+        <name>Core_DR_Eligible_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- The status indicates whether the registration product line item is: pending, approved, rejected, or canceled. --></help>
+        <label><!-- DR Product Status --></label>
+        <name>Core_Design_Product_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expired</masterLabel>
+            <translation><!-- Expired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation><!-- Retired --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- No partner input --></help>
+        <label><!-- Design-Deal Registration --></label>
+        <name>Core_Design_Registration_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- System Design Registration Line ID --></label>
+        <name>Core_Design_Registration_Line_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design-Deal Registration Name --></label>
+        <name>Core_Design_Registration_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Owner --></label>
+        <name>Core_Design_Registration_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Stage --></label>
+        <name>Core_Design_Registration_Stage_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Customer Account Name --></label>
+        <name>Core_End_Customer_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer City --></label>
+        <name>Core_End_Customer_City_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer State/Province --></label>
+        <name>Core_End_Customer_Country_Subdivision_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>Core_End_Customer_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- The number of requested units --></help>
+        <label><!-- Quantity --></label>
+        <name>Core_Full_Year_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value (Full Production Year) --></label>
+        <name>Core_Full_Year_Value_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Technical Owner Mail --></label>
+        <name>Core_Intel_Technical_Owner_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Technical Owner --></label>
+        <name>Core_Intel_Technical_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locked --></label>
+        <name>Core_Locked_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Id --></label>
+        <name>Core_Opportunity_Product_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner FAE --></label>
+        <name>Core_Partner_FAE_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique identifier assigned to the registration by the Distributor. --></help>
+        <label><!-- Partner Tracking Number --></label>
+        <name>Core_Partner_Tracking_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of eligible product added to the Design Registration --></help>
+        <label><!-- Product --></label>
+        <name>Core_Product_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product List Price --></label>
+        <name>Core_Product_List_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the date through which orders placed for the products in this Design are eligible for higher margins. --></help>
+        <label><!-- Retired As Of --></label>
+        <name>Core_Retired_As_Of_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submission Type --></label>
+        <name>Core_Submission_Type__c</name>
+        <picklistValues>
+            <masterLabel>M2M</masterLabel>
+            <translation><!-- M2M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel. --></help>
+        <label><!-- Target Resale Price --></label>
+        <name>Core_Target_Resale_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_ThrowValidation --></label>
+        <name>Core_ThrowValidation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Resale Price Note --></label>
+        <name>DDR_Target_Resale_Price_Note__c</name>
+    </fields>
+    <fields>
+        <help><!-- Search Product by MMID or Old MMID or Ordering Code --></help>
+        <label><!-- MMID or Old MMID or Ordering code --></label>
+        <name>MMID_or_Ordering_code__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Additional Comments --></label>
+        <name>PCC_Additional_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner&apos;s competitor assumed to bid for this opportunity --></help>
+        <label><!-- Competitor Name --></label>
+        <name>PCC_Competitor_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Non-Intel based OEM that partner&apos;s competitor will bid for this opportunity. --></help>
+        <label><!-- Competitor OEM Name --></label>
+        <name>PCC_Competitor_OEM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product Provider --></label>
+        <name>PCC_Competitor_Product_Provider__c</name>
+    </fields>
+    <fields>
+        <help><!-- Non-Intel product underlying platform or system that partner&apos;s competitor will bid for this opportunity. --></help>
+        <label><!-- Competitor Product --></label>
+        <name>PCC_Competitor_Product__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Non-Intel based platform or system that partner&apos;s competitor will bid for this opportunity. --></help>
+        <label><!-- Competitor System Model --></label>
+        <name>PCC_Competitor_System_Model__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &apos;Write In Competitor OEM Name&apos; is selected in the Competitor OEM Name field, please enter the name of the unlisted Competitor OEM. If &apos;Write In Competitor OEM Name&apos; is not selected, leave this field blank. --></help>
+        <label><!-- Write In Competitor OEM Name --></label>
+        <name>PCC_Competitor_Write_In_OEM_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is to identify the Distributor Design Incentive(DDI) program pay rate at product level --></help>
+        <label><!-- DDI Program Pay Rate --></label>
+        <name>PCC_DDI_focused__c</name>
+        <picklistValues>
+            <masterLabel>Tier 1</masterLabel>
+            <translation><!-- Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 2</masterLabel>
+            <translation><!-- Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 3</masterLabel>
+            <translation><!-- Tier 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Deal Reg Eligible ? --></label>
+        <name>PCC_Deal_Eligible_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is to indicate if the product is eligible for the Distributor Design Incentive(DDI) payment --></help>
+        <label><!-- DDI Program Payment Eligible --></label>
+        <name>PCC_Eligible_for_DDI_Payment__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The type of device into which the product is integrated in --></help>
+        <label><!-- Form Factor --></label>
+        <name>PCC_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please select OEM provider --></help>
+        <label><!-- OEM Name --></label>
+        <name>PCC_OEM_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The is to indicate the expiration date of the Distributor Design Incentive(DDI) payment at product level --></help>
+        <label><!-- DDI Program Payment Expiration Date --></label>
+        <name>PCC_Payment_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please select products --></help>
+        <label><!-- Deal Product --></label>
+        <name>PCC_Product_Additional_Attribute__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Programs Eligible --></label>
+        <name>PCC_Programs_Eligible__c</name>
+    </fields>
+    <fields>
+        <help><!-- The requested end date of the product line item and last date consumption can happen --></help>
+        <label><!-- Quote Line Pricing End Date --></label>
+        <name>PCC_Quote_Line_Pricing_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The requested date on which the product line item pricing goes into effect and consumption of the product begins --></help>
+        <label><!-- Quote Line Pricing Start Date --></label>
+        <name>PCC_Quote_Line_Pricing_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recommended Customer Price --></label>
+        <name>PCC_Recommended_Customer_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>PCC_Record_Type_Drp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Standard Distributor Price --></label>
+        <name>PCC_Standard_Distributor_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- The OEM model name --></help>
+        <label><!-- System Model --></label>
+        <name>PCC_System_Model__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Total Price --></label>
+        <name>PCC_Total_Design_Registration_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &apos;Write In Product&apos; is selected in the Competitor Product field, please enter the name of the unlisted product. If &apos;Write In Product&apos; is not selected, leave this field blank. --></help>
+        <label><!-- Write In Competitor Product --></label>
+        <name>PCC_Write_In_Competitor_Product__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &apos;Write In OEM Name&apos; is selected in the OEM Name field, please enter the name of the unlisted OEM. If &apos;Write In OEM Name&apos; is not selected, leave this field blank. --></help>
+        <label><!-- Write In OEM Name --></label>
+        <name>PCC_Write_In_OEM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProductLookupValidate --></label>
+        <name>ProductLookupValidate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Selection information Message --></label>
+        <name>Product_Selection_information_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN Concatenation --></label>
+        <name>core_cpq_OPN_Concatenation_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Hierarchy --></label>
+        <name>core_cpq_product_hierarchy_txt__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Design Registration Product owned by Intel User. --></description>
+        <label><!-- Design Registration Product - Intel --></label>
+        <name>Core_Design_Registration_Product_Intel</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Design Registration Product locked for edits. --></description>
+        <label><!-- Design Registration Product - Locked --></label>
+        <name>Core_Design_Registration_Product_Locked</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Design Registration Product owned by Partner User. --></description>
+        <label><!-- Design Registration Product - Partner --></label>
+        <name>Core_Design_Registration_Product_Partner</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Deal Registration Products created by Internal Users --></description>
+        <label><!-- Deal Registration Product - Intel --></label>
+        <name>PCC_Deal_Registration_Product_Intel</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Deal Registration Product locked for edits. --></description>
+        <label><!-- Deal Registration Product - Locked --></label>
+        <name>PCC_Deal_Registration_Product_Locked</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Deal Registration Product owned by Partner User. --></description>
+        <label><!-- Deal Registration Product - Partner --></label>
+        <name>PCC_Deal_Registration_Product_Partner</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please enter the comments for rejection --></errorMessage>
+        <name>Core_Enter_Comments_for_Rejection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Editing the product is not allowed. If you want to make changes, please cancel the current product and submit a new one. --></errorMessage>
+        <name>DDR_Product_validation_Message</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Registrations for FPGA product group has been disabled. --></errorMessage>
+        <name>DDR_Restrict_FPGA_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required --></errorMessage>
+        <name>PCC_Competitor_System_Model_is_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Products cannot be added at this stage. --></errorMessage>
+        <name>PCC_Deal_Product_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required --></errorMessage>
+        <name>PCC_Deal_Product_is_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Inactive Product --></errorMessage>
+        <name>PCC_Deal_Product_shoud_be_active</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required --></errorMessage>
+        <name>PCC_Form_Factor_is_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Updating of Pricing Start / End Date is not allowed for Approved / Rejected / Cancelled Product  Line Item. --></errorMessage>
+        <name>PCC_Pricing_StartEndDate_Edit_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing End Date must be on/after to the current date --></errorMessage>
+        <name>PCC_Pricng_end_date_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line End Date should be on/before Deal Reg Pricing End Date --></errorMessage>
+        <name>PCC_Quote_Enddate_Lessthan_Pricing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing Start Date should be between Deal Reg Pricing Start Date/End Date --></errorMessage>
+        <name>PCC_Quote_Startdate_Greaterthan_Pricing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required --></errorMessage>
+        <name>PCC_System_Model_is_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Target Resale Price should not be blank or zero. --></errorMessage>
+        <name>PCC_TargetResalePrice_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Product is not eligible for DR submission. --></errorMessage>
+        <name>PCC_ValidationOnProductEligibility</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Write in Competitive Product name needs to be provided when the Competitor Product is Write In Product --></errorMessage>
+        <name>PCC_WriteInComProd_Name_req_if_selected</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In Competitor OEM Name&apos; is selected in the Competitor OEM Name field, the name of the unlisted Competitor OEM Name must be provided in the Write In Competitor OEM Name field. --></errorMessage>
+        <name>PCC_WriteInCom_OEMName_req_if_selected</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In Competitor OEM Name field is used to provide the name of a Competitor OEM missing from the Competitor OEM Name field. It must be blank unless the &apos; Write In Competitor OEM Name&apos; option is selected in the Competitor OEM Name field. --></errorMessage>
+        <name>PCC_WriteInCom_Product_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In Competitor Product field is used to provide the name of a product missing from the Competitor Product field. It must be blank unless the &apos;Write In Product&apos; option is selected in the Competitor Product field. --></errorMessage>
+        <name>PCC_WriteInComp_Prod_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In OEM Name&apos; is selected in the OEM Name field, the name of the unlisted OEM Name must be provided in the Write In OEM Name field. --></errorMessage>
+        <name>PCC_WriteInOEM_Name_req_if_selected</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In OEM Name field is used to provide the name of an OEM missing from the OEM Name field. It must be blank unless the &apos;Write In OEM Name&apos; option is selected in the OEM Name field. --></errorMessage>
+        <name>PCC_WriteInOEM_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing End Date should not be earlier than the Deal Reg Start Date --></errorMessage>
+        <name>PCC_end_dt_cant_be_mor_thn_hdr_strt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing Start Date cannot be more than Quote Line Pricing End Date --></errorMessage>
+        <name>PCC_strt_Dt_cant_be_mor_thn_end_dt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing Start Date must be on/after the current date --></errorMessage>
+        <name>PCC_strt_Dt_cant_be_mor_thn_today</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide value for either Product or MMID or Old MMID or Ordering code, but not both. At least one field must be filled in. --></errorMessage>
+        <name>Product_selection_error_message</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Products cannot be added or edited --></errorMessage>
+        <name>Restrict_new_addition_of_new_product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity must be greater than zero. --></errorMessage>
+        <name>Restrict_products_with_Zero_Qty</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Approve_Product --></label>
+        <name>Core_Approve_Product</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Approve_Product_Pending_Lex --></label>
+        <name>Core_Approve_Product_Pending_Lex</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Approve_Products_Pending --></label>
+        <name>Core_Approve_Products_Pending</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Reject_Product --></label>
+        <name>Core_Reject_Product</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Reject_Products_Pending --></label>
+        <name>Core_Reject_Products_Pending</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Reject_Products_Pending_Lex --></label>
+        <name>Core_Reject_Products_Pending_Lex</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Expired_all_button --></label>
+        <name>Expired_all_button</name>
+    </webLinks>
+</CustomObjectTranslation>

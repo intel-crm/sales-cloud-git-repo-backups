@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Error Logging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Errors Logging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Apex Class Name --></label>
+        <name>Core_MDF_Apex_Class_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Details --></label>
+        <name>Core_MDF_Details_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Message --></label>
+        <name>Core_MDF_Exception_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Core_MDF_Project_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id --></label>
+        <name>Core_MDF_Record_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Severity --></label>
+        <name>Core_MDF_Severity_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stack Trace --></label>
+        <name>Core_MDF_Stack_Trace_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Email --></label>
+        <name>Core_MDF_Support_Email_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Link --></label>
+        <name>Core_MDF_Support_Link_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tag --></label>
+        <name>Core_MDF_Tag_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

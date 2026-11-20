@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>EMBED - Wireless (ECG-PSE) WW</groups>
+    <groups>EMBED - L4 OneAPI ISD-ISBT MSDK VPL</groups>
+    <groups>EMBED - SW L2 OpenVINO-ISS-MSDK (PSE) WW</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) WW Xeon SoC</groups>
+    <groups>EMBED - Movidius WW</groups>
+    <groups>EMBED - PRD MX HDDL (GCS)</groups>
+    <groups>EMBED - L4 BIOS</groups>
+    <groups>EMBED - L4 Central HW Atom</groups>
+    <groups>EMBED - L4 Central HW Core</groups>
+    <groups>EMBED - L4 Central SW BIOS</groups>
+    <groups>EMBED - L4 Central SW VPU</groups>
+    <groups>EMBED - L4 Central SW Windows</groups>
+    <groups>EMBED - L4 Central SW Yocto Linux</groups>
+    <groups>EMBED - L4 FuSa</groups>
+    <groups>EMBED - L4 Graphics</groups>
+    <groups>EMBED - L4 Memory</groups>
+    <groups>EMBED - L4 Platform Debug</groups>
+    <groups>EMBED - L4 Power</groups>
+    <groups>EMBED - L4 PSE</groups>
+    <groups>EMBED - L4 Security</groups>
+    <groups>EMBED - L4 TCC-TSN</groups>
+    <groups>EMBED - L4 USB-Thunderbolt</groups>
+    <groups>EMBED - L4 Video</groups>
+    <groups>EMBED - L4 Virtualization</groups>
+    <groups>EMBED - L4 SI (Signal Integrity) Tools</groups>
+    <groups>EMBED - Metro AI Suite</groups>
+    <groups>EMBED - Ultra Cloud Client</groups>
+    <groups>EMBED - L4 Camera</groups>
+    <groups>EMBED - WWAN (ECG-PSE) WW</groups>
+    <groups>EMBED - L4 Ethernet</groups>
+    <groups>EMBED - L1 Intel Geti Platform (GCS)</groups>
+    <groups>EMBED - SW L3 OpenVINO (ECG-PSE) WW</groups>
+    <groups>EMBED - SW L3 Graphics (ECG-PSE) ASMO</groups>
+    <groups>EMBED - Elkhart Lake HW Central</groups>
+    <groups>EMBED - Wireless TSN (ECG-PSE) WW</groups>
+    <groups>EMBED - SW L3 (CASE) WW</groups>
+    <groups>EMBED - L4 Design Reviews</groups>
+    <groups>EMBED - Intel Platform License Manager</groups>
+    <groups>EMBED - SceneScape</groups>
+    <groups>EMBED - OpenVINO Pro</groups>
+    <groups>EMBED - L4 Deep Learning (DL)</groups>
+    <groups>EMBED - DG2 HW</groups>
+    <groups>EMBED - Intelligent Video Collab SDK</groups>
+    <groups>EMBED - L1 Connected EDU Kits</groups>
+    <groups>EMBED - Avionics Pre-OS Checker (APOSC)</groups>
+    <groups>EMBED - HW-SW L3 (ECSI) India</groups>
+    <groups>EMBED - L4 CASE Team Central</groups>
+    <groups>EMBED - HW L2 (ADC) EMEA POD</groups>
+    <groups>EMBED - Device Management TK</groups>
+    <groups>IPS - Org Admin - EMBED</groups>
+    <groups>OSC - APJ</groups>
+    <groups>EMBED - L1 (Contract) APJ</groups>
+    <groups>EMBED - L1 (Contract) ASMO-EMEA</groups>
+    <groups>EMBED - HW Central (ECG-PSE) WW</groups>
+    <groups>EMBED - HW L2 (ADC) ASMO Atom</groups>
+    <groups>EMBED - HW L2 (ADC) ASMO Core</groups>
+    <groups>EMBED - HW L2 (ADC) EMEA</groups>
+    <groups>EMBED - HW L2 (ADC) PRC</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) PRC</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) APJ Atom</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) ASMO Atom</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) ASMO Core</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) EMEA</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) Taiwan</groups>
+    <groups>EMBED - SW Central (ECG-PSE) WW</groups>
+    <groups>EMBED - SW L2 (PSE) WW</groups>
+    <groups>EMBED - SW L2 (ADC) PRC</groups>
+    <groups>EMBED - SW L3 (ICE DSS) PRC</groups>
+    <groups>EMBED - HW L3 (ECG-PSE) APJ Core</groups>
+    <label>IPS - Org Admin - EMBED</label>
+    <loginAccess>false</loginAccess>
+    <roles>IPS Product OrgAdmin</roles>
+    <roles>EMP_11298293_Kenta_Ueda</roles>
+</DelegateGroup>

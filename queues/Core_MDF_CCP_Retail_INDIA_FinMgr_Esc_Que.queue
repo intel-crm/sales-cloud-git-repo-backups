@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>wsm-postmaster@intel.com.invalid</email>
+    <name>CCP Retail INDIA Fin Mgr Escltns Que</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_Retail_INDIA_FinMgr_Esc_Grp</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Escalation__c</sobjectType>
+    </queueSobject>
+</Queue>

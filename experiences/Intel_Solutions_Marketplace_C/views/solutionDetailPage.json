@@ -1,0 +1,164 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceSolutionsLayout",
+  "dataProviders" : [ ],
+  "id" : "e1e4f75f-f8e8-4810-af2b-b3e54eab3c1f",
+  "label" : "Solution Detail Page",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "5943077a-873f-46fe-baf9-210019c42392",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5b3e814b-3de7-4216-9383-5dadaca99ec4",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"SolutionDetailPage\",\"title\":\"Solution Detail Page\"}",
+        "backgroundVariant" : "blue-steel-solid",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : true,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "My Solution"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "648e5586-b7e0-4e1a-8a45-5f8598a8211c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bbf8ab08-ae4e-4974-a55b-cb5fb71a3e2c",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pssSolutionDetail",
+      "id" : "0f292161-9715-45e6-aeae-dbaed8c7a782",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bccdf4ff-07cd-4402-99b8-4a289d1d1980",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "2e5205db-66b7-4dda-8e9b-cf6f6119040e",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "6677e978-7923-4cf9-a5b2-c48f2067789f",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "3ec848d3-bb73-4d1a-9f82-5ce3ba51274b",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "6acf4ad8-d43a-4329-98c2-6e2687823c2c",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "823a4876-9130-45ee-8831-72e970ac2829",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "54a38916-db77-4895-8936-fa9516f52a47",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "8d1a4fd5-d4a6-4d35-a19d-b590adc4113e",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "2c9749d2-49bf-429b-afeb-9a584e0c73c2",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "6dccfd85-f152-4dc9-88fa-bc4466b76f2a",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "016c841d-66fe-46b1-a858-8615d4ff7637",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Solution Detail Page\"/> \n<meta name=\"keywords\" content=\"sf,mp,solution detail page\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"SolutionDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "",
+        "title" : "Solution Detail Page - - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "26893503-f8d3-4b41-a310-2b76214bdcd6",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3324b23b-f594-41b5-8d6a-c9bb723130b4",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "01b8826d-3c59-4ca6-8dda-cb08512b276a",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "34a432f6-d9d5-4587-a813-f823f8ca6e55",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "07c510f1-7d2b-45ad-8a7c-403da8ce9040",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "ba89d824-66dd-49f1-825d-ccc715ba877e",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "2fdec657-54b0-42f8-862a-46d37a39f556",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "449ef74c-1848-450b-81a8-2fabb3631c5a",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "bab8bf24-09e9-46e0-9479-9cd43b2de55f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "daccf78a-bb45-43cf-9f40-cd06476cab42",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-solution-detail-page"
+}

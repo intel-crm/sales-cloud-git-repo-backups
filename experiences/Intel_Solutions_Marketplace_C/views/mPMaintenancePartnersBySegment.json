@@ -1,0 +1,74 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "11ff8ac6-9d8b-49bc-9989-0d8621b50d36",
+  "label" : "MP Maintenance-Partners by Segment",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "9a0e5a5d-6f70-4e83-b83d-93d4f37d2445",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "7aa472a3-58a4-4251-8da0-feddd8598101",
+        "zh_cn" : "1a6ca697-16e5-46ec-8f21-0bcd346475d4"
+      },
+      "renditions" : [ {
+        "id" : "1a6ca697-16e5-46ec-8f21-0bcd346475d4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7aa472a3-58a4-4251-8da0-feddd8598101",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "6ddac0ae-348e-42a7-a59c-be880f599499",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "597902a1-72aa-42ec-8531-1c123c66557a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "a0a016d5-1c5d-45fd-97bc-4ed6bf892761",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Partners by Segment\"/> \n<meta name=\"keywords\" content=\"partners by segment, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"PartnersBySegment\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace partner offerings by segment on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "Partners by Segment - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "15fd84fa-adc9-4bd6-8b14-161d78ab416e",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1177e46f-eebf-4df6-8230-68bed4a889a5",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partners-by-segment"
+}

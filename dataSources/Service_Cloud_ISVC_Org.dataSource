@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customConfiguration>{&quot;apiVersion&quot;:&quot;62.0&quot;,&quot;timeout&quot;:&quot;120&quot;,&quot;searchEnabled&quot;:&quot;true&quot;}</customConfiguration>
+    <isWritable>true</isWritable>
+    <label>Service_Cloud_ISVC_Org</label>
+    <namedCredential>Service_Cloud_NC</namedCredential>
+    <principalType>Anonymous</principalType>
+    <protocol>NoAuthentication</protocol>
+    <type>SfdcOrg</type>
+</ExternalDataSource>

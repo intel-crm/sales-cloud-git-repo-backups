@@ -1,0 +1,115 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+    
+    <aura:set attribute="storeName" value="CompareTray" />
+    <aura:attribute name="compareLabel" type="string" default="{!$Label.c.PMP_Compare}" />
+    <aura:attribute name="ofLabel" type="string" default="of" />
+    
+    <aura:attribute name="maxItemsToCompare" type="integer" default="4" />
+    <aura:attribute name="notificationMessage" type="string" />
+    <aura:handler name="change" value="{!v.notificationMessage}" action="{!c.handleNotification}" />
+    
+    
+    <aura:attribute name="items" type="object[]" />
+    <aura:attribute name="open" type="boolean" default="false" />
+    
+    <aura:attribute name="placeholders" type="object[]" default="true" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="{! v.items.length > 0 ? '' : 'hidden'}">
+        <div class="{! join(' ', 'compareTray', if(and(v.open, v.items.length > 0), 'open', '')) }">
+            
+            <div class="visibleTopSection">
+                <div class="compareButton slds-text-align_center slds-p-horizontal_large slds-p-top_small slds-p-bottom_small">
+                    <div>
+                        <span onclick="{!c.doSomething}">
+                            <!-- IPA2.0 + US TWC4497-1631 -->
+                            <!-- <c:IntelButton
+                                           disabled="{!if(v.items.length > 1, false, true)}"
+                                           communityLink="/compare-offerings" buttonClass="white">
+                                {!$Label.c.PMP_Compare}&nbsp;{!v.items.length}/{!v.maxItemsToCompare}
+                            </c:IntelButton> -->
+                        </span>
+                        <span onclick="{!c.handleOpenClose}">
+                            <lightning:icon iconName="{! and(v.open, v.items.length > 0) ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                            class="slds-m-left_medium cursor"
+                                            size="x-small"/>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="mobileClose" onclick="{!c.handleOpenClose}">
+                    <lightning:icon iconName="{! and(v.open, v.items.length > 0) ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                    class="slds-m-left_medium cursor"
+                                    size="x-small"/>
+                </div>
+                
+                <div class="notificationMessage slds-p-top_x-large slds-p-horizontal_x-large">
+                <aura:if isTrue="{!v.notificationMessage}">
+                    
+                        <lightning:layout horizontalAlign="{! v.appState.Settings.currentScreenSize == 'desktop' ? 'center': ''}" multipleRows="true">
+                            <lightning:layoutItem size="12" mediumDeviceSize="8" class="slds-show_medium slds-p-left_x-large slds-p-right_medium textNotificationMsg">
+                                {!v.notificationMessage}
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="12" mediumDeviceSize="8" class="slds-hide_medium slds-p-horizontal_medium textNotificationMsg">
+                                {!v.notificationMessage}
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    
+                </aura:if>
+                    
+                <aura:if isTrue="{!v.items.length > 1}">
+                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-p-around_small textNotificationBtn">
+                        <span onclick="{!c.handleClearAll}">
+                            <c:IntelButton buttonClass="white">{!$Label.c.PMP_CompareTray_Clear_All}</c:IntelButton>
+                        </span>
+                    </lightning:layoutItem>
+                </aura:if>
+                    
+                </div>
+                
+            </div>
+            <div class="tray-content">
+                <lightning:layout horizontalAlign="center" class="{! v.appState.Settings.currentScreenSize == 'desktop' ? 'slds-scrollable_y slds-p-vertical_medium' : '' }" multipleRows="true">
+                    <aura:iteration items="{!v.items}" var="item">
+                        <lightning:layoutItem class="padding-desktop-horizontal-medium padding-desktop-top-medium padding-desktop-bottom-medium compareList"  size="12" mediumDeviceSize="3">
+                            <div class="itemInTray">
+                                <div class="slds-text-align_center smallSeparatorBottom item-image">
+                                    <img src="{!item.imageUrl}" />
+                                </div>
+                                <div class="slds-p-around_medium item-label">
+                                    <!-- TODO ADD LINK TO PRODUCT routeLink... -->
+                                    <a class="textProductTitle" href="">{!item.title}</a>
+                                </div>
+                                <span data-id="{!item.id}" class="slds-p-around_small cursor removeIcon"
+                                      onclick="{!c.handleRemoveItem}">
+                                    <lightning:icon iconName="utility:close" size="small" />
+                                </span>
+                            </div>
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                    <aura:iteration items="{!v.placeholders}" var="i">
+                        <lightning:layoutItem class="padding-desktop-horizontal-medium padding-desktop-top-medium padding-desktop-bottom-medium compareList" size="12" mediumDeviceSize="3">
+                            <div class="slds-p-around_medium itemInTray placeholder"></div>
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>
+                <aura:if isTrue="{! v.appState.Settings.currentScreenSize != 'desktop'}">
+                    <div class="mobileTray slds-p-around_small">
+                        <span onclick="{!c.doSomething}">
+                            <!-- IPA2.0 + US TWC4497-1631 -->
+                            <!-- <c:IntelButton
+                                           disabled="{!if(v.items.length > 1, false, true)}"
+                                           href="/s/compare-offerings" buttonClass="white">
+                                {!$Label.c.PMP_Compare}&nbsp;{!v.items.length}/{!v.maxItemsToCompare}
+                            </c:IntelButton> -->
+                        </span>
+                    </div>
+                    
+                </aura:if>
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

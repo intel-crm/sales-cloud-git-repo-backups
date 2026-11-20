@@ -1,0 +1,19 @@
+<aura:component >
+	<aura:method name="addCanonicalLink" action="{!c.addCanonicalLink}">
+    </aura:method>
+    <aura:method name="getAnalyticsData" action="{!c.getAnalyticsData}">
+        <aura:attribute name="analyticsPageType" type="String" />
+    </aura:method>
+    <aura:method name="getMessageDomain" action="{!c.getMessageDomain}">
+    </aura:method>
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:method name="getOfferingId" action="{!c.getOfferingId}">
+        <aura:attribute name="sourceComponent" type="Object" />
+    </aura:method> -->
+    <aura:method name="getPartnerId" action="{!c.getPartnerId}">
+        <aura:attribute name="sourceComponent" type="Object" />
+    </aura:method>
+    <aura:method name="makeAnalyticsCall" action="{!c.makeAnalyticsCall}">
+        <aura:attribute name="messageData" type="Object" />
+    </aura:method>
+</aura:component>

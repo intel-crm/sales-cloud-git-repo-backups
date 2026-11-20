@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "LVM - Video summarization with CV and RAG-LLM now coined as LVM",
+  "contentBody" : {
+    "description" : "This demo is running on an Intel® Xeon® Scalable server with an Intel® Datacenter GPU Flex 170. Find related assets here.",
+    "sections" : [ {
+      "content" : "<div><span style=\"font-size: 13px;\">Demo and assets for use in external events hosted on Seismic:</span></div><div><br /></div><div><a style=\"font-size: 13px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://content.intel.com/824921\">&#xfeff;</a><a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://content.intel.com/824921\">https://content.intel.com/824921</a></div><div><br /></div><div>EDIT: List the docs in this link</div><div><br /></div>",
+      "keyConcept" : "Links to more docs",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1.0
+  },
+  "urlName" : "lvm---video-summarization-with-cv-and-rag-llm-now-coined-as-lvm"
+}

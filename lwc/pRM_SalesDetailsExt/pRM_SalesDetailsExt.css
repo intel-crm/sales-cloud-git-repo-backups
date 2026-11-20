@@ -1,0 +1,10 @@
+.THIS .myUniqueTable th {
+    text-align: center !important;
+}
+.link-text{
+    
+    text-align:center;
+    font: 2px;   
+    vertical-align: -webkit-baseline-middle;
+
+}

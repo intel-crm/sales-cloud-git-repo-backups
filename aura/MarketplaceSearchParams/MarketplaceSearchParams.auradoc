@@ -1,0 +1,23 @@
+<aura:documentation>
+	<aura:description>
+    <p>Search Params Component</p>
+		<p>This component manages the url search params.</p>
+		<br/>
+		<p>It does a first search with existing params, and has the ability to update params via pushState.</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 6/13/2019</p>
+    <p>CurrentVersion: 1.2</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.1 - adds support for page size design attribute</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

@@ -1,0 +1,232 @@
+<template>
+    <!--div style="height:4rem" if:true={isSpinnerLoaded}>
+        <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+    </div-->
+    <template if:false={confirmscreen}>
+        <!-- section for Account data starts here-->
+        <lightning-card title="Account Data" icon-name="custom:custom63">
+            <div class="slds-m-around_medium">
+
+                <lightning-layout multiple-rows="true" vertical-align="end">
+                    <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6"
+                        padding="around-small">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <lightning-input type="text" label="Search for Account" onchange={handleAccountName}>
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2"
+                        padding="around-small">
+                        <lightning-button label="Search" variant="brand" onclick={handleSearch}>
+                        </lightning-button> &nbsp;
+                        <lightning-button-icon icon-name="utility:filterList" alternative-text="Filter"
+                            onclick={openfilterModal} class="slds-m-left_xx-small">
+                        </lightning-button-icon>
+
+                    </lightning-layout-item>
+                </lightning-layout>
+
+
+                <div class="slds-scrollable">
+                    <div class="slds-grid slds-wrap">
+
+                        <template if:true={openfilterModel}>
+
+                            <div class="slds-grid slds-wrap alignGrid">
+                                <div class="slds-col slds-size_3-of-12">
+                                    <span>
+
+                                        <p class="slds-p-left_large">Partner Role:</p><br />
+                                        <div class="slds-select_container slds-p-left_large">
+                                            <select class="slds-select" id="select-01" onchange={onValueSelection}>
+                                                <option value="">---Select---</option>
+                                                <!--iterate all picklist values from wrapper list using for:each loop-->
+                                                <template for:each={partnerRoleValues.data} for:item="picklistItem">
+                                                    <option key={picklistItem.svalue} value={picklistItem.svalue}>
+                                                        {picklistItem.slabel}
+                                                    </option>
+                                                </template>
+                                            </select>
+                                        </div><br />
+                                    </span>
+                                </div>
+                                <div class="slds-col slds-size_3-of-12">
+                                    <span>
+                                        <p class="slds-p-left_large">Business Unit:</p><br />
+                                        <div class="slds-select_container slds-p-left_large">
+                                            <select class="slds-select" id="select-02" onchange={onAccTypeSelection}>
+                                                <option value="">---Select---</option>
+                                                <!--iterate all picklist values from wrapper list using for:each loop-->
+                                                <template for:each={accTypeValues.data} for:item="picklistItem">
+                                                    <option key={picklistItem.svalue} value={picklistItem.svalue}>
+                                                        {picklistItem.slabel}
+                                                    </option>
+                                                </template>
+                                            </select>
+                                        </div><br />
+                                    </span>
+                                </div>
+
+                                <!-- <div class="slds-grid slds-wrap">-->
+                                <div class="slds-col slds-size_3-of-12">
+                                    <span>
+                                        <p class="slds-p-left_large">Account Country:</p><br />
+                                        <div class="slds-select_container slds-p-left_large">
+                                            <select class="slds-select" id="select-03" onchange={onCountrySelection}>
+                                                <option value="">---Select---</option>
+                                                <!--iterate all picklist values from wrapper list using for:each loop-->
+                                                <template for:each={countryValues.data} for:item="picklistItem">
+                                                    <option key={picklistItem.svalue} value={picklistItem.svalue}>
+                                                        {picklistItem.slabel}
+                                                    </option>
+                                                </template>
+                                            </select>
+                                        </div><br />
+                                    </span>
+                                </div>
+                                <div class="slds-col slds-size_2-of-12">
+                                    <span>
+                                        <p class="slds-p-left_large">Tier:</p><br />
+                                        <div class="slds-select_container slds-p-left_large">
+                                            <select class="slds-select" id="select-04" onchange={handleChangeofValue}>
+                                                <option value="">---Select---</option>
+                                                <!--iterate all picklist values from wrapper list using for:each loop-->
+                                                <template for:each={TierValues.data} for:item="picklistItem">
+                                                    <option key={picklistItem.svalue} value={picklistItem.svalue}>
+                                                        {picklistItem.slabel}
+                                                    </option>
+                                                </template>
+                                            </select>
+                                        </div><br />
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="slds-align_absolute-center">
+                                <lightning-button label="Apply" variant="brand" onclick={handleFilter}>
+                                </lightning-button>
+                            </div>
+
+                        </template>
+
+                        <div if:true={isLoaded}>
+                            <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+                        </div>
+
+                        <template if:true={isSearchData}>
+                            <lightning-datatable data={searchData} columns={columns} key-field="id"
+                                selected-rows={selectedrows}>
+                            </lightning-datatable>
+
+                        </template>
+
+                    </div>
+                </div>
+
+                <div class="c-container slds-align_absolute-center">
+                    <lightning-layout horizontal-align="spread">
+                        <template if:true={isSearchData}>
+                            <lightning-layout-item padding="around-small">
+                                <lightning-button label="Add To Selected List" variant="brand" onclick={toggleSteps}>
+                                </lightning-button>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </div>
+                </br>
+                <template if:true={account.error}>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+
+    <!--template if:true={isApprovePending}>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Approval Pending List
+        </h3>
+    </!--template-->
+
+    <template if:true={isData}>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Selected List
+        </h3>
+    </template>
+
+    <template if:true={selectedRecordLst}>
+        <div class="slds-m-around_medium">
+            <!--div class="slds-scrollable_x">
+            <div class="slds-text-longform" style="width:100%"-->
+            <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout"
+                role="grid">
+                <template for:each={selectedRecordLst} for:item="sobKey" for:index="index">
+                    <c-prm-selected-partner-row key={sobKey.id} sob-key={sobKey} index={index} specialty={specialty}
+                        onmapvalue={mapValueChange} onmapcommentvalue={mapCommentValueChange}
+                        onmapsupemailvalue={mapSuppressEmailValueChange}
+                        onmapvaluechange={handleEvent} onallcheckboxvaluechange={handleAllCheckboxEvent}
+                        single-rec-checked={singleRecChecked} confirmscreen={confirmscreen} checked={checked}
+                        showcheckbox={showcheckboxInConfSc} lstofaccidandspcritid={lstaccIdandSpCrit}>
+                    </c-prm-selected-partner-row>
+
+                </template>
+
+            </table>
+            <!--/div>
+        </div-->
+        </div>
+        <br />
+    </template>
+
+
+    <template if:true={showSelectPartner}>
+        <lightning-layout vertical-align="start">
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="Add Partners" variant="brand" data-id="approved" onclick={confirmPartners}
+                    disabled={isAddPartner}>
+                </lightning-button>
+            </lightning-layout-item>
+
+            <template if:true={showDownloadButton}>
+                <lightning-layout vertical-align="start">
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button icon-name="utility:download" title="Download as CSV" onclick={downloadCSVFile}
+                            variant="brand">
+                        </lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="Remove Selected Partners" variant="brand" data-id="removed"
+                    onclick={deleteRecords} disabled={disabled}>
+                </lightning-button>
+            </lightning-layout-item>
+
+            <!--lightning-layout-item padding="around-small">
+                <lightning-button label="Add selected Criteria" variant="brand" data-id="removed"
+                    onclick={processSpCrit} disabled={isSpCritSelected}>
+                </lightning-button>
+            </lightning-layout-item-->
+
+        </lightning-layout>
+    </template>
+    <!--/br></br-->
+
+    <div if:true={confirmscreen}>
+        <lightning-layout vertical-align="start">
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="Approve" variant="brand" data-id="approve" onclick={approvePartners}
+                    disabled={isdisabled}>
+                </lightning-button>
+            </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="Back" variant="brand" data-id="back" onclick={onClickBack}>
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

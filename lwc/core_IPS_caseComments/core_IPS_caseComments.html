@@ -1,0 +1,67 @@
+<template>
+    <lightning-card title="Recent Comments">
+        <div class="slds-form-element">
+            <div class="slds-grid slds-wrap">
+                <div style="width: 78%;" > 
+                    <span>
+                        <c-core-ips-custom-lookup onselectedrec={handleEvent} records-to-search={records}
+                        searchfield-name={fieldName} query-execution-required="false"></c-core-ips-custom-lookup>
+                    </span> 
+                </div> &nbsp;
+                <div > 
+                    <span>
+                        <button class="slds-button slds-button_neutral" onclick={searchButtonHandler}>Search</button>
+                    </span> 
+                </div> &nbsp;
+                <div > 
+                    <span>
+                        <button class="slds-button slds-button_neutral" onclick={resetButtonHandler}>Reset</button>
+                    </span> 
+                </div>
+            </div>
+            <template if:true={showButton}>
+            <div class="slds-p-around_x-small">
+                <!-- Start - US943890 - Chandrashekar - Button for adding comment. -->
+                <button class="slds-button slds-button_neutral" onclick={handleNavigate}>Add Comment</button>
+                <!-- End - US943890 -->
+                <!-- Start - US943890 - Chandrashekar - Button to collapse or expand all comments. -->
+                <lightning-button-icon class="slds-float_right" icon-name="utility:collapse_all"
+                    onclick={handleCollapse}></lightning-button-icon>
+                <!-- End - US943890 -->
+            </div>
+            </template>
+        </div>
+        <div style="height:2.5rem" class="slds-align_absolute-center" if:true={show}>
+            <output style="font-weight:bold;color:red;font-size:18px;font-family:Salesforce-Sans">No records to
+                display</output>
+        </div>
+        <div>
+            <template if:true ={hasRendered}>
+            <lightning-accordion allow-multiple-sections-open active-section-name={sectionNames} class="accordionClass">
+                <!-- Start - US943890 - Updated to apply the background colour to comments based on type of comment. -->
+                <template for:each={commentDataTableData} for:item="comm">
+                    <template if:true={comm.isExternal}>
+                        
+                        <lightning-accordion-section class="blueColor" name={comm.Id} label={comm.CaseAuthorizeName}
+                            key={comm}>
+                            <div style="padding:10px;font-size: 13px;" class = "selectorText">
+                                <lightning-formatted-rich-text class="withoutBold" value={comm.Comment}>{comm.Comment}</lightning-formatted-rich-text>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                    <template if:false={comm.isExternal}>
+                        
+                        <lightning-accordion-section class="greyColor" name={comm.Id} label={comm.CaseAuthorizeName}
+                            key={comm}>
+                            <div style="padding:10px;font-size: 13px;">
+                                <lightning-formatted-rich-text class="withoutBold" value={comm.Comment}></lightning-formatted-rich-text>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                </template>
+                <!-- End - US943890 -->
+            </lightning-accordion>
+        </template>
+        </div>
+    </lightning-card>
+</template>

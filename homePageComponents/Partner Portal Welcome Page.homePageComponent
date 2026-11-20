@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;h1&gt;&lt;span style=&quot;font-size: 22px;&quot;&gt;&lt;span style=&quot;color: #0000CD;&quot;&gt;Welcome to Your Leads and Referrals&lt;/span&gt;&lt;/span&gt;&lt;/h1&gt;
+&lt;br&gt;&lt;br&gt;View and take action on leads quickly while your customers’ interest is at its highest. To start, log in now.&lt;br&gt;&lt;br&gt;&lt;b&gt;Steps to access leads&lt;/b&gt;&lt;br&gt;&lt;br&gt;1. Click “Leads” tab in top menu&lt;br&gt;2. Select a view to see all leads or a subset&lt;br&gt;3. Click “Go!” Button&lt;br&gt;&lt;br&gt;To learn how to get more out of your leads, &lt;a href=&quot;https://partners.seek.intel.com/training&quot;&gt;download our training materials&lt;/a&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; </body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>wide</width>
+</HomePageComponent>

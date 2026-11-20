@@ -1,0 +1,304 @@
+<aura:component controller="Core_OppProductsAtRisk_Ctrl" implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:isUrlAddressable" access="global" >
+   <!--aura attribute-->
+   <aura:attribute name="noneValue" type="String" default="-------"/>
+   <aura:attribute name="urlCall" type="boolean" default="false" />
+   <aura:attribute name="smgStaffAttentionValue" type="String" default="{!$Label.c.Core_AtRisk_RiskPriority_RedFlagSMGStaffAttention}"/>
+   <aura:attribute name="tempIndex" type="Integer" default=""/>
+   <aura:attribute name="tempValue" type="String"/>
+   <aura:attribute name="loaded" type="Boolean" default="false" />
+   <aura:attribute name="oppRecord" type="Opportunity"/>
+   <aura:attribute name="oppProductList" type="List"/>
+   <aura:attribute name="riskPriorityList" type="List"/>
+   <aura:attribute name="riskStatusList" type="List"/>
+   <aura:attribute name="riskDetailList" type="List"/>
+   <aura:attribute name="riskEndDateList" type="List"/>
+   <aura:attribute name="riskReason1" type="List"/>
+   <aura:attribute name="riskPriority" type="List"/>
+   <aura:attribute name="riskStatus" type="List"/>
+   <aura:attribute name="riskPriorityPopUp" type="Boolean" default="false"/>
+   <aura:attribute name="statusBackPopup" type="Boolean" default="false"/>
+   <aura:attribute name="atRiskUncheckPopup" type="Boolean" default="false"/>
+   <aura:attribute name="multiplePopupIndicator" type="Boolean" default="false"/>
+   <aura:attribute name="isMarkAll" type="Boolean" default="false"/>
+   <aura:attribute name="allAtRisk" type="Boolean" default="false"/>
+   <aura:attribute name="markAllAtRisk" type="Boolean" default="false"/>
+   <aura:attribute name="allRiskReason1" type="String"/>
+   <aura:attribute name="allRiskPriority" type="String"/>
+   <aura:attribute name="allRiskStatus" type="String"/>
+   <aura:attribute name="allProdRiskOwner" type="String"/>
+   <aura:attribute name="allRiskCreateDate" type="DateTime" />
+   <aura:attribute name="allRiskEndDate" type="DateTime" />
+   <aura:attribute name="allRiskDetail" type="String"/>
+   <aura:attribute name="statusLost" type="String" default="Lost"/>
+   <aura:attribute name="statusCancelled" type="String" default="Cancelled"/>
+   <aura:attribute name="statusprdLost" type="String" default="Production Lost"/>
+   <aura:attribute name="statusprdCancelled" type="String" default="Production Cancelled"/>
+   <aura:attribute name="isSave" type="Boolean" default="false"/> <!-- TWC3123-4227 -->
+   <aura:attribute name="isSupplySample" type="Boolean" default="false"/>  <!-- TWC3123-4227 -->
+   <aura:attribute name="isSupplySystemBuild" type="Boolean" default="false"/>  <!-- TWC3123-4227 -->
+   <aura:attribute name="isBoth" type="Boolean" default="false"/> <!-- TWC3123-4227 -->
+   <aura:attribute name="RiskReasonValue" type="String"/> <!-- TWC3123-4227 -->
+   <aura:attribute name="oppProductList2" type="List"/> <!-- TWC3123-4389 -->
+   <aura:attribute name="ButtonLabel" type="String"/> <!-- TWC3123-4227 -->
+   <aura:attribute name="SeedURL" type="String"/><!-- TWC3123-4920 -->
+   <aura:attribute name="SampleURL" type="String"/><!-- TWC3123-4920 -->
+   <aura:attribute name="isPCC" type="Boolean" default="false"/>  <!-- TWC3123-5794 -->
+
+   <!--Start TWC3123-4227 --> 
+   <aura:if isTrue="{!v.isSave}">
+      <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+         <div class="slds-modal__container">
+            <div class="slds-modal__header">
+               <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Confirmation Popup</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <aura:if isTrue="{!v.isSupplySample}">
+                	<p>{!$Label.c.Core_SupplySampleMessage}</p>
+                </aura:if>
+                <aura:if isTrue="{!v.isSupplySystemBuild}">
+                	<p>{!$Label.c.Core_SupplySystemBuildMessage}</p>
+            	</aura:if>
+                <aura:if isTrue="{!v.isBoth}">
+                	<p>{!$Label.c.Core_SampleSystemCommonMsg}</p>
+                </aura:if>
+            </div>
+            <div class="slds-modal__footer">
+                <lightning:button class="slds-button slds-button_neutral" onclick="{!c.closeConfirmationPopup}">Do this later</lightning:button>
+                <lightning:button label="{!v.ButtonLabel}"  class="slds-button slds-button_brand" onclick="{!c.gotoURL}"></lightning:button>
+            </div>
+         </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+   </aura:if>
+   <!--End TWC3123-4227 -->
+
+   <!--aura handler-->
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!!v.loaded}">
+        <lightning:spinner variant="brand" alternativeText="Loading" />
+    </aura:if>
+ 
+    <aura:if isTrue="{!v.isPCC}">  <!-- TWC3123-5794 -->
+        <div class="slds-grid slds-wrap" style="{!if(v.urlCall,'background-color: white;padding: 1%;','')}">
+            <aura:if isTrue="{!not(empty(v.oppProductList))}">
+                <div class="TopButtonCls">
+                    <lightning:button label="Save" title="Save" onclick="{!c.saveAction}" disabled="{!!v.loaded}"/>
+                    <lightning:button label="Cancel" title="Cancel" onclick="{!c.cancelAction}" disabled="{!!v.loaded}"/>
+                    <lightning:button label="{!$Label.c.Core_Mark_All_At_Risk_Button}" title="{!$Label.c.Core_Mark_All_At_Risk_Button}" onclick="{!c.openMarkAllPopup}" disabled="{!or(v.allAtRisk,!v.loaded)}"/>
+                </div>
+            </aura:if>
+             <aura:if isTrue="{!not(empty(v.oppProductList))}">
+               <div class="AtRiskCheckboxCls">
+                <div>
+                    <label class="slds-form-element__label LabelCls">Opportunity At Risk</label>
+                    <lightning:input type="checkbox" checked="{!v.oppRecord.Core_At_Risk__c}" class="ValueCls" disabled="true"/>
+                </div>
+            </div>
+			  </aura:if>
+            <aura:if isTrue="{!not(empty(v.oppProductList))}">
+              
+                <table class="slds-table slds-table_bordered" style="display: block;overflow-x: auto;">
+                    <thead>
+                        <tr class="TrCls">
+                            <th class="paddRight170 borderRight">Product</th>
+                            <th class="borderRight">BU</th>
+                            <th class="wordWrap borderRight">At Risk</th>
+                            <th class="paddRight100 borderRight">Risk Reason</th>
+                            <th class="paddRight100 borderRight">Risk Priority</th>
+                            <th class="paddRight100 borderRight">Risk Status</th>
+                            <th class="paddRight70 borderRight">Product Risk Owner</th>
+                            <th class="paddRight170 borderRight">Risk Detail</th>
+                            <th class="wordWrap borderRight">Risk Create Date</th>
+                            <th class="wordWrap">Risk End Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <aura:iteration items="{!v.oppProductList}" var="oppProduct" indexVar="index">
+                            <tr class="TrCls">
+                                <td class="boldCls wordWrap borderRight">{!oppProduct.productName}</td>
+                                <td class="borderRight">{!oppProduct.buShortName}</td>
+                                <td class="borderRight">
+                                    <lightning:input type="checkbox" tabindex="{!index}" name="atRiskCheck" checked="{!oppProduct.atRisk}" onchange="{!c.setAtRiskInOpportunity}" disabled="false"/>
+                                </td>
+                                <td class="borderRight">
+                                    <lightning:select aura:id="reasonID" value="{!oppProduct.riskReason1}" title="{!if(oppProduct.riskReason1 != v.noneValue,oppProduct.riskReason1,'')}" disabled="{!!oppProduct.atRisk}" tabindex="{!index}" onchange="{!c.onRiskReasonChange}">  <!-- TWC3123-4227 -->
+                                        <aura:iteration items="{!v.riskReason1}" var="option">
+                                            <option text="{!option}" value="{!option}" selected="{!if(option == oppProduct.riskReason1,true,false)}"/>
+                                        </aura:iteration>
+                                        <aura:if isTrue="{!and(oppProduct.riskReason1 != v.noneValue, oppProduct.isRiskReasonInActive)}">
+                                            <option text="{!oppProduct.riskReason1}" value="{!oppProduct.riskReason1}" selected="{!oppProduct.riskReason1}"/>
+                                        </aura:if>
+                                    </lightning:select>
+                                </td>
+                                <!--{!oppProduct.riskReason1}-->
+                                <td class="borderRight">
+                                    <lightning:select value="{!oppProduct.riskPriority}" title="{!if(oppProduct.riskPriority != v.noneValue,oppProduct.riskPriority,'')}" tabindex="{!index}" onchange="{!c.onRiskPriorityChange}" disabled="{!!oppProduct.atRisk}">
+                                        <aura:iteration items="{!v.riskPriority}" var="option">
+                                            <option text="{!option}" value="{!option}" selected="{!if(option == oppProduct.riskPriority,true,false)}"/>
+                                        </aura:iteration>
+                                        <aura:if isTrue="{!and(oppProduct.riskPriority != v.noneValue, oppProduct.isRiskPriorityInActive)}">
+                                            <option text="{!oppProduct.riskPriority}" value="{!oppProduct.riskPriority}" selected="{!oppProduct.riskPriority}"/>
+                                        </aura:if>
+                                    </lightning:select>
+                                </td>
+                                <td class="borderRight">
+                                    <lightning:select value="{!oppProduct.riskStatus}" title="{!if(oppProduct.riskStatus != v.noneValue,oppProduct.riskStatus,'')}" tabindex="{!index}" onchange="{!c.onRiskStatusChange}" disabled="{!!oppProduct.atRisk}">
+                                        <aura:iteration items="{!v.riskStatus}" var="option">
+                                            <option text="{!option}" value="{!option}" selected="{!if(option == oppProduct.riskStatus,true,false)}"/>
+                                        </aura:iteration>
+                                        <aura:if isTrue="{!and(oppProduct.riskStatus != v.noneValue, oppProduct.isRiskStatusInActive)}">
+                                            <option text="{!oppProduct.riskStatus}" value="{!oppProduct.riskStatus}" selected="{!oppProduct.riskStatus}"/>
+                                        </aura:if>
+                                    </lightning:select>
+                                </td>
+                                <td class="borderRight">
+                                    <lightning:input placeholder="name@domain" name="prodRiskOwner" value="{!oppProduct.prodRiskOwner}" title="{!oppProduct.prodRiskOwner}" tabindex="{!index}" maxlength="255" onchange="{!c.onRiskOwnerChange}" disabled="{!!oppProduct.atRisk}"/>
+                                </td>
+                                <td class="borderRight">
+                                    <lightning:textarea placeholder="Business Impact: &amp; Specific Ask:" name="riskDetail" value="{!oppProduct.riskDetail}" title="{!oppProduct.riskDetail}" maxlength="255" disabled="{!!oppProduct.atRisk}"/>
+                                </td>
+                                <td class="wordWrap borderRight">
+                                    <lightning:formattedDateTime value="{!oppProduct.riskCreateDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit" second="2-digit" hour12="true" timeZone="{!$Locale.timezone}"/>
+                                </td>
+                                <td class="wordWrap">
+                                    <lightning:formattedDateTime value="{!oppProduct.riskEndDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit" second="2-digit" hour12="true" timeZone="{!$Locale.timezone}"/>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </aura:if>
+            
+            <aura:if isTrue="{!not(empty(v.oppProductList))}">
+                <div class="BelowButtonCls">
+                    <lightning:button label="Save" title="Save" onclick="{!c.saveAction}" disabled="{!!v.loaded}"/>
+                    <lightning:button label="Cancel" title="Cancel" onclick="{!c.cancelAction}" disabled="{!!v.loaded}"/>
+                    <lightning:button label="{!$Label.c.Core_Mark_All_At_Risk_Button}" title="{!$Label.c.Core_Mark_All_At_Risk_Button}" onclick="{!c.openMarkAllPopup}" disabled="{!or(v.allAtRisk,!v.loaded)}"/>
+                </div>
+            </aura:if>
+        </div>
+        
+        <aura:if isTrue="{!or(or(v.riskPriorityPopUp,v.statusBackPopup),v.atRiskUncheckPopup)}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" style="width: 50%;max-width: 100%;">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{!c.closePopUp}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            Confirmation Popup
+                        </h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p style="font-size:medium;">
+                            <aura:if isTrue="{!v.riskPriorityPopUp}">
+                                {!$Label.c.Core_AtRisk_SMGStaffAttention}
+                            </aura:if>
+                            <aura:if isTrue="{!v.statusBackPopup}">
+                                {!$Label.c.Core_AtRisk_BackToInProgress}
+                            </aura:if>
+                            <aura:if isTrue="{!v.atRiskUncheckPopup}">
+                                {!$Label.c.Core_AtRisk_UncheckAtRisk}
+                            </aura:if>
+                        </p>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closePopUp}"/>
+                        <aura:if isTrue="{!v.riskPriorityPopUp}">
+                            <lightning:button variant="brand" label="Confirm" title="Confirm" onclick="{!c.confirmRiskPriority}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!v.statusBackPopup}">
+                            <lightning:button variant="brand" label="Confirm" title="Confirm" onclick="{!c.confirmRiskStatus}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!v.atRiskUncheckPopup}">
+                            <lightning:button variant="brand" label="Confirm" title="Confirm" onclick="{!c.confirmAtRiskUncheck}"/>
+                        </aura:if>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.isMarkAll}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" style="width: 80%;max-width: 100%;">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeMarkAllPopup}" alternativeText="close" variant="bare" size="large" class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            {!$Label.c.Core_Mark_All_At_Risk_Header}
+                        </h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <table class="slds-table slds-table_bordered">
+                            <thead>
+                                <tr class="TrCls">
+                                    <th class="wordWrap borderRight">At Risk</th>
+                                    <th class="paddRight100 borderRight">Risk Reason</th>
+                                    <th class="paddRight100 borderRight">Risk Priority</th>
+                                    <th class="paddRight100 borderRight">Risk Status</th>
+                                    <th class="paddRight70 borderRight">Product Risk Owner</th>
+                                    <th class="paddRight170 borderRight">Risk Detail</th>
+                                    <th class="wordWrap borderRight">Risk Create Date</th>
+                                    <th class="wordWrap">Risk End Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TrCls">
+                                    <td class="borderRight">
+                                        <lightning:input type="checkbox" checked="{!v.markAllAtRisk}" disabled="{!v.markAllAtRisk}"/>
+                                    </td>
+                                    <td class="borderRight">
+                                        <lightning:select value="{!v.allRiskReason1}" title="{!if(v.allRiskReason1 != v.noneValue,v.allRiskReason1,'')}" disabled="{!!v.markAllAtRisk}" onchange="{!c.onAllRiskReasonChange}">
+                                            <aura:iteration items="{!v.riskReason1}" var="option">
+                                                <option text="{!option}" value="{!option}" selected="{!if(option == v.allRiskReason1,true,false)}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </td>
+                                    <td class="borderRight">
+                                        <lightning:select value="{!v.allRiskPriority}" title="{!if(v.allRiskPriority != v.noneValue,v.allRiskPriority,'')}" onchange="{!c.onAllRiskPriorityChange}" disabled="{!!v.markAllAtRisk}">
+                                            <aura:iteration items="{!v.riskPriority}" var="option">
+                                                <option text="{!option}" value="{!option}" selected="{!if(option == v.allRiskPriority,true,false)}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </td>
+                                    <td class="borderRight">
+                                        <lightning:select value="{!v.allRiskStatus}" title="{!if(v.allRiskStatus != v.noneValue,v.allRiskStatus,'')}" onchange="{!c.onAllRiskStatusChange}" disabled="{!!v.markAllAtRisk}">
+                                            <aura:iteration items="{!v.riskStatus}" var="option">
+                                                <option text="{!option}" value="{!option}" selected="{!if(option == v.allRiskStatus,true,false)}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </td>
+                                    <td class="borderRight">
+                                        <lightning:input placeholder="name@domain" name="prodRiskOwner" value="{!v.allProdRiskOwner}" title="{!v.allProdRiskOwner}" maxlength="255" onchange="{!c.onAllRiskOwnerChange}" disabled="{!!v.markAllAtRisk}"/>
+                                    </td>
+                                    <td class="borderRight">
+                                        <lightning:textarea placeholder="Business Impact: &amp; Specific Ask:" name="riskDetail" value="{!v.allRiskDetail}" title="{!v.allRiskDetail}" maxlength="255" disabled="{!!v.markAllAtRisk}"/>
+                                    </td>
+                                    <td class="wordWrap borderRight">
+                                        <lightning:formattedDateTime value="{!v.allRiskCreateDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit" second="2-digit" hour12="true" timeZone="{!$Locale.timezone}"/>
+                                    </td>
+                                    <td class="wordWrap">
+                                        <lightning:formattedDateTime value="{!v.allRiskEndDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit" second="2-digit" hour12="true" timeZone="{!$Locale.timezone}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closeMarkAllPopup}"/>
+                        <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.saveAllAtRisk}" disabled="{!!v.markAllAtRisk}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        <!-- Start TWC3123-5794 -->
+        <aura:set attribute="else">
+            <div class="slds-box">
+                <h1>{!$Label.c.Core_HideAtRiskTab}</h1>
+            </div>   
+        </aura:set>
+    </aura:if>
+    <!--End TWC3123-5794 -->
+</aura:component>

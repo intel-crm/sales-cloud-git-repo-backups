@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Industrial_Solution_Builder_Specialty_ENG</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance Industrial Solution Builder Specialty</subject>
+    <textOnly>Congratulations on Qualifying!
+
+
+{!Contact.FirstName},
+
+Welcome to Intel® Partner Alliance Industrial Solution Builder Specialty! As a qualified IoT Specialist you are eligible for additive benefits that are designed to help you grow your IoT Industrial Solution Builder business, including:
+
+An exclusive program badge
+Designated Market Development Funds
+Presence in Intel® Industrial Solution Builder forum
+Special event invites and matchmaking opportunities
+
+Access benefits
+
+
+*Benefits may vary by geography.
+
+Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+
+Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

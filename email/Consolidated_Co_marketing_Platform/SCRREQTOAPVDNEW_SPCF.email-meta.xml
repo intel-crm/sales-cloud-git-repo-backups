@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SPCF welcome email English</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_SPCF</name>
+    <style>none</style>
+    <subject>Welcome to Service Provider Co-Marketing Fund (SPCF)</subject>
+    <textOnly>Welcome to OLO</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

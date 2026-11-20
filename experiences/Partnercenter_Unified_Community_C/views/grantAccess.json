@@ -1,0 +1,54 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "c0460ff6-f1ee-4245-adab-e15060e2e3dd",
+  "label" : "Grant Access",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_ContactLookup",
+      "id" : "0f333f4d-19b1-431c-b3f0-702ba9c97666",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "715e84f4-28ac-453c-820b-f790f2977c14",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_Contact_Entitlements_View",
+      "id" : "6a057017-7e89-48dc-a98f-d7c30e60ec16",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "859d12e2-61dd-4824-a3bc-134f9bc27209",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e9d797ad-11e6-4f75-b04c-090e6ff9d6c9",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Grant Access"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "7706d49d-621c-459c-ab92-13149e1f3d9b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c09b351b-658e-45d1-8f87-c1f2df716039",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-grant-access"
+}

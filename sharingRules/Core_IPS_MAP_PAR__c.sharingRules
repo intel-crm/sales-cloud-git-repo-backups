@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_ProdAccessReq_R_Only_to_Sales</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This Rule will provide Read ONLY  access for all Product access request to SELECT Sales Folks Public Group(Core_IPS_Read_Only)</description>
+        <label>Core IPS ProdAccessReq R Only to Sales</label>
+        <sharedTo>
+            <group>Core_IPS_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>PAR,MAP</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_ProdAccessReq_R_to_AllIPSUsers</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This Rule will provide Read ONLY  access for all Product access request to all IPS Folks( Org Admin/TME)</description>
+        <label>Core IPS ProdAccessReq R to AllIPSUsers</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>IPS_Product_Org_Admin</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>PAR,MAP</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_IPS_ProdAccess_R_to_IPS_Agent</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule has been specially added to provide Read Access to IPS Agent to Product Access as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
+        <label>Core IPS ProdAccess R to IPS Agent</label>
+        <sharedTo>
+            <role>EMP_11298293_Kenta_Ueda</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>PAR,MAP</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,48 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true" 
+                         subject="{!$Label.Core_MDF_OBC_IPA_Reminder_SubjectLine}"
+                         recipientType="User" 
+                         language="{!recipient.LanguageLocaleKey}"
+                         relatedToType="PartnerFundRequest">
+<messaging:htmlEmailBody >
+<html>
+    <body>
+        <p>
+              <span style="color: #ff0000;">
+                        <strong>
+                               {!$Label.Core_MDF_IPA_EmailTemp_ActionReq}
+                        </strong>
+                     </span>
+                 </p>
+        
+        <p><span>{!$Label.Core_MDF_EmailTemp_DearPartner}</span></p>
+        <p>{!$Label.Core_MDF_OBC_IPA_Reminder_EmailTemp_ExtBody}</p>
+       <p><span>
+    <strong>
+            <c:Core_MDF_ReportLinkComp reportName="Outcome-Based Campaign at Closure Risk" isExternalUser="true"/>
+    </strong> {!$Label.Core_MDF_OBC_IPA_Reminder_EmailTemp_Body1}
+</span></p>
+                        <p><span>
+                         {!$Label.Core_MDF_IPA_Reminder_EmailTemp_Body2}  
+                         <strong>
+                           <a href="{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}">
+                             {!$Label.Core_MDF_Program_Support}
+                           </a>&nbsp;
+                         </strong>
+                    </span>
+                    </p>
+        <p></p>
+        <p></p>
+        <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+        
+        <p><span>{!$Label.Core_MDF_Email_Signature}</span></p>
+        <p><span>&nbsp;</span></p>
+        <div style="font-family: Calibri;font-size: 11px;">
+        <p><em>{!$Label.Core_MDF_IPA_EmailTemp_Footer1}</em>&nbsp;<em>{!$Label.Core_MDF_IPA_EmailTemp_Footer2}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_IPA_EmailTemp_Footer4}</em></p>
+        <p>{!$Label.Core_MDF_EmailTemp_Claim_Footer3}&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">{!$Label.Core_MDF_IPA_EmailTemp_Footer3}</a>&nbsp;</strong>{!$Label.Core_MDF_EmailTemp_Claim_Footer4}</p>
+        <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Address}&nbsp;<br /><a href="https://www.intel.com/content/www/us/en/homepage.html">{!$Label.Core_MDF_EmailTemp_Footer3}</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">{!$Label.Core_MDF_EmailTemp_Footer4}&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">{!$Label.Core_MDF_EmailTemp_Footer5}</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">{!$Label.Core_MDF_EmailTemp_Footer6}</a>&nbsp;</p>
+        <p></p>
+        </div>
+    </body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

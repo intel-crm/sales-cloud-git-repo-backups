@@ -1,0 +1,8 @@
+A new Partner Agent (below) has been created against the Partner Agent Holding Account. 
+
+Contact Name: {!Contact.Name} 
+Contact Email: {!Contact.Email} 
+WWID: {!User.FederationIdentifier}
+Account: {!Account.Name} 
+
+Please move the contact from the Partner Agent Holding Account to the correct account they belong to.

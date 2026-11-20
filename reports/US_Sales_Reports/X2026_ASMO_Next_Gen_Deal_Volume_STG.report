@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>
+IF(
+  (Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000) &gt; 1,
+  IF(
+    (Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000) &gt;= 1.10,
+    1 + ((Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000 - 1.10) * 1) + 0.20,
+    1 + ((Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000 - 1) * 2)
+  ),
+  (Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000)
+)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Rate of Pay</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM/6200000</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>YTD Achievement %</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>
+(
+  IF(
+    (Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000) &gt; 1,
+    IF(
+      (Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000) &gt;= 1.10,
+      1 + ((Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000 - 1.10)) + 0.20,
+      1 + ((Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000 - 1) * 2)
+    ),
+    (Core_Oppty_KPI_New__c.Core_KPI_Quantity__c:SUM / 6200000)
+  )
+) * 0.25</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>STG Line Item Payout</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Opportunity.KPI_Opportunity__r$Core_KPI_Quantity__c</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Opportunity.KPI_Opportunity__r$Name</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.KPI_Opportunity__r$Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.KPI_Opportunity__r$Core_KPI_Quantity__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Core_KPI_Product_Group__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Lunar Lake,Panther Lake,Wildcat Lake,Granite Rapids Workstation</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Opportunity$Id</primaryTableColumn>
+        <relatedTable>OpportunityLineItem</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>Core_BU_Short_Name__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>CCG</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Opportunity$Id</primaryTableColumn>
+        <relatedTable>OpportunityLineItem</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
+    </crossFilters>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.KPI_Opportunity__r$Core_KPI_Quantity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.KPI_Opportunity__r$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CCG Next Gen Deal Volume</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Americas</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Partner</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.KPI_Opportunity__r$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2026 ASMO Next Gen Deal Volume STG</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_New_Opportunity_KPIs__c</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CloseDate</dateColumn>
+        <endDate>2026-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-01-01</startDate>
+    </timeFrameFilter>
+</Report>

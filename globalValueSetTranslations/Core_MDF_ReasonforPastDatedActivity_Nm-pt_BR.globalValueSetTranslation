@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Activity was discussed with Intel but not recorded in tool on time</masterLabel>
+        <translation><!-- Activity was discussed with Intel but not recorded in tool on time --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Activity was discussed with Intel but not recorded in tool on time. </masterLabel>
+        <translation><!-- Activity was discussed with Intel but not recorded in tool on time.  --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Activity was left as draft but never submitted</masterLabel>
+        <translation><!-- Activity was left as draft but never submitted --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Budget was not loaded/approved on time by Intel</masterLabel>
+        <translation><!-- Budget was not loaded/approved on time by Intel --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hierarchy option was not created on time by Intel</masterLabel>
+        <translation><!-- Hierarchy option was not created on time by Intel --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel’s tool suffered technical difficulties</masterLabel>
+        <translation><!-- Intel’s tool suffered technical difficulties --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Late approval of account’s MDF-related agreement</masterLabel>
+        <translation><!-- Late approval of account’s MDF-related agreement --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>New tool user (internal/external) ramping up</masterLabel>
+        <translation><!-- New tool user (internal/external) ramping up --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Onboarding new account</masterLabel>
+        <translation><!-- Onboarding new account --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Original activity was cancelled by mistake</masterLabel>
+        <translation><!-- Original activity was cancelled by mistake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Original activity was cancelled by mistake.</masterLabel>
+        <translation><!-- Original activity was cancelled by mistake. --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Original project was cancelled by mistake</masterLabel>
+        <translation>O projeto original foi cancelado por engano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project was discussed with Intel but not recorded in tool on time</masterLabel>
+        <translation>O projeto foi discutido com a Intel, mas não gravado na ferramenta a tempo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project was left as draft but never submitted</masterLabel>
+        <translation>O projeto foi deixado como rascunho, mas nunca enviado</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

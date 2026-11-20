@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>企劃案目的</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- IPA Campaign Purpose FieldSet --></label>
+        <name>Core_MDF_IPA_Campaign_Purpose_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help>基線期間描述了本活動前的一個時間點，當時基線值被捕捉或估算。舉例：如果這個活動會在八月結束，而基準值是在前一個八月被捕捉的，請選擇第一個選項。如果基準值為零，則選擇第一個選項。</help>
+        <label>基準期</label>
+        <name>Core_MDF_Baseline_Period_nm__c</name>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one half before</masterLabel>
+            <translation>與這次戰役同期，僅比此晚一半</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
+            <translation>與這次競選同期，前四分之一</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one year before</masterLabel>
+            <translation>與這次運動同一時期，就在一年前</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign Purpose Description --></label>
+        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
+    </fields>
+    <fields>
+        <help>我們定義為成功的成果指標的企劃案后價值。在執行前輸入。</help>
+        <label>目標值</label>
+        <name>Core_MDF_Goal_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>不含此企劃案的成果指標的預期值。在執行前輸入。</help>
+        <label>基準值</label>
+        <name>Core_MDF_Initial_Baseline_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>為成果指標增加具體性的詳細資訊（例如，“與去年同期相比，搭載第 4、第 5 和第 6 代Intel Xeon 處理器的伺服器產品上半年同期”）。在執行前輸入。</help>
+        <label>結果標準</label>
+        <name>Core_MDF_Outcome_Criteria_txt__c</name>
+    </fields>
+    <fields>
+        <label>成果指標</label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
+        <help>成果指標的企劃案后價值。企劃案完成後更新。</help>
+        <label>結果值</label>
+        <name>Core_MDF_Quantity_nbr__c</name>
+    </fields>
+    <nameFieldLabel><!-- Campaign Outcome Name --></nameFieldLabel>
+</CustomObjectTranslation>

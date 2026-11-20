@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Criteria Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Criteria Rules</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>Core_MDF_Approver__c</name>
+        <relationshipLabel><!-- Criteria Rules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>Core_MDF_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Type --></label>
+        <name>Core_MDF_Object_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operator --></label>
+        <name>Core_MDF_Operator__c</name>
+        <picklistValues>
+            <masterLabel>Any</masterLabel>
+            <translation><!-- Any --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Core_MDF_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

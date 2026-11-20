@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Pricing_End_Customer_Internal_Rule</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>To share the End Customer to Unified Account mapping record to internal user.</description>
+        <label>Pricing End Customer Internal Rule</label>
+        <sharedTo>
+            <group>Pricing_All_Internal_Tender_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Share_Write_In_End_Customer_with_All_External_Users</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share Write In End Customer with All External Users</label>
+        <sharedTo>
+            <allPartnerUsers></allPartnerUsers>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Write In End Customer</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

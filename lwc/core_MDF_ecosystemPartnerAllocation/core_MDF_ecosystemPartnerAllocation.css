@@ -1,0 +1,50 @@
+.scrollable-table {
+    max-height: 400px;
+    overflow-x: auto;
+    border: 1px solid #d8dde6;
+}
+
+.header-bg {
+    background-color: #f3f3f3;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.col-ecosystem {
+    width: 0%;
+    min-width: 200px;
+}
+
+.col-percent {
+    width: 0%;
+    min-width: 120px;
+}
+
+.compact-input {
+    padding: 0.25rem;
+}
+
+.input-with-errors {
+    margin-bottom: 0.25rem;
+}
+
+.error-container {
+    min-height: 1.2rem;
+}
+
+.custom-error {
+    color: #c23934;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.error-row {
+    background-color: #fef7f7;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}

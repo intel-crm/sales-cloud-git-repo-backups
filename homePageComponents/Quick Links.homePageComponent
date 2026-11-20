@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <links>My_Intel_Business_Applications_Tools</links>
+    <links>Intel_Premier_Support_Customer_Training</links>
+    <links>File_Downloads</links>
+    <links>Confidentiality_Statement</links>
+    <links>Core_Email_Opt_IN_OUT</links>
+    <links>Core_IPS_Resource_Design_Center</links>
+    <links>Core_IPS_Validation_Internet_Portal_VIP</links>
+    <pageComponentType>links</pageComponentType>
+</HomePageComponent>

@@ -1,0 +1,31 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="data" type="object[]" />
+    <aura:attribute name="theme" type="string" default="default"
+                    description="Currently there are three themes: default, white" />
+    <aura:attribute name="loggedInInfo" type="boolean" default="true" description="boolean value true for 
+                                                                                   logged in user and false for ananyomous user"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
+    <aura:if isTrue="{! !empty(v.data)}"> <!--added line #10 as part of code merge - 10/30-->
+        <div class="slds-p-bottom_medium">
+            <h3 class="heading-28 slds-p-top_xx-large slds-p-bottom_large padding-mobile-horizontal-medium">{!$Label.c.PMP_MarketplaceFAQ_Title}</h3>
+            <c:IntelStickyTabSet aura:id="isgtabs">
+                <aura:iteration items="{!v.data}" var="faqset" indexVar="idx">
+                    <c:IntelStickyTab label="{!faqset.title}">
+                        <h3 class="h4 slds-p-top_x-large slds-p-bottom_large">{!faqset.title}</h3>
+                        <c:MarketPlaceAccordion allowMultipleSectionsOpen="true" theme="{!v.theme}" class="slds-p-bottom_x-large boldHeading">
+                            <aura:iteration items="{!faqset.questions}" var="faq" indexVar="idx">
+                                <c:MarketPlaceAccordionSection name="{!'faq-' + idx}" label="{!faq.question}" aura:id="accordion" id="{!faq.qid}">
+                                    <div class="slds-p-bottom_medium slds-p-top_x-small ">
+                                        <lightning:formattedRichText value="{!faq.answer}" />
+                                    </div>
+                                </c:MarketPlaceAccordionSection>
+                            </aura:iteration>
+                        </c:MarketPlaceAccordion>   
+                    </c:IntelStickyTab>
+                </aura:iteration>
+            </c:IntelStickyTabSet>
+        </div>
+    </aura:if>
+</aura:component>

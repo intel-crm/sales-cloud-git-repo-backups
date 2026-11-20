@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>PartnerFundClaim.Request</joinTable>
+        </blockInfo>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Program__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Name</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Region_Cd__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Request.Core_MDF_Ultimate_Account_Name__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Activity_Types__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>PartnerFundClaim$Amount</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Status__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>PartnerFundClaim$Core_MDF_PIC_Review_Completed__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Ad_Run_Start_Date__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Core_MDF_Ad_Run_End_Date__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim$Request.Core_MDF_ToBeClosedDate__c</field>
+        </columns>
+        <columns>
+            <field>PartnerFundClaim.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</field>
+        </columns>
+        <filter>
+            <booleanFilter>2 AND (((3 OR 4) AND 1) OR 5 OR 6) AND 7</booleanFilter>
+            <criteriaItems>
+                <column>PartnerFundClaim$Request.Core_MDF_Intel_Activity_Owner_Id__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notEqual</operator>
+                <value></value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundClaim$Core_MDF_Status__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Hold,PIC Pending,Paid,Payment Due,Pending Available Fund,Pending Payment,Resubmission Required,Resubmission Window Closed</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundClaim$Core_MDF_Program__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Client Co-Marketing Fund</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundClaim$Core_MDF_Program__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Data Center Co-Marketing Fund</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundClaim$Core_MDF_Program__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Intel Partner Alliance</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundClaim$Core_MDF_Program__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Retail Marketing Funds</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PartnerFundClaim$Request.Core_MDF_Ultimate_Account_Name__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notContain</operator>
+                <value>A&amp;E Test Account JJ,Bristal org_CCPTest,Compute Brigade S A_CCPTest,Test_company,北京苏尔泰科技有限公司-CST_CCPTest</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>PartnerFundClaims with PIC Revie block 1</name>
+        <params>
+            <name>co</name>
+            <value>0</value>
+        </params>
+        <reportType>Core_MDF_PartnerFundClaims_with_PIC_Reviews__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>PartnerFundClaim.PIC_Reviews__r$Core_MDF_Review_Date_dt__c</dateColumn>
+            <interval>INTERVAL_LAST30</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>PartnerFundRequest</joinTable>
+        </blockInfo>
+        <columns>
+            <field>PartnerFundRequest$Name</field>
+        </columns>
+        <columns>
+            <field>PartnerFundRequest$Campaign</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>PartnerFundRequest$Core_MDF_Focus_Area_nm__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Networking &amp; Intelligent Edge</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Co-Marketing Activities with Cam block 1</name>
+        <params>
+            <name>co</name>
+            <value>0</value>
+        </params>
+        <reportType>Co_Marketing_Activities_with_Campaign__c</reportType>
+        <scope>user</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>PartnerFundRequest$Core_MDF_ToBeClosedDate__c</dateColumn>
+            <interval>INTERVAL_CURRENT</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>PartnerFundClaim.Request</joinTable>
+    </blockInfo>
+    <description>Claims and status after POP screening completion for all programs.</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundClaim$Request.Core_MDF_Activity_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>NEX Claim POP Screening Status Report</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_PartnerFundClaims_with_PIC_Reviews__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

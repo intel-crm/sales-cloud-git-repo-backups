@@ -1,0 +1,2212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Marketing_Profile_Information_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Marketing_Profile_Information_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Holds the editable information for Partner Accounts like Description, Logo. Has a lookup to Marketplace Designated Account</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PMP_Account_Address_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>/*
+PMP_Account_Id__r.Core_Address_Details__c
+
+if(LEN(PMP_Account_Id__r.BillingStreet)&gt;0, PMP_Account_Id__r.BillingStreet&amp; &quot; &quot; , &quot;&quot; ) &amp; BR() &amp;
+if(LEN(PMP_Account_Id__r.BillingCity)&gt;0, PMP_Account_Id__r.BillingCity&amp; &quot;, &quot; , &quot;&quot; )&amp;
+if(LEN(PMP_Account_Id__r.BillingState)&gt;0, PMP_Account_Id__r.BillingState&amp; &quot; &quot; , &quot;&quot; )&amp;
+if(LEN(PMP_Account_Id__r.BillingPostalCode)&gt;0, PMP_Account_Id__r.BillingPostalCode,&quot;&quot;) &amp; BR() &amp;
+If(LEN(PMP_Account_Id__r.BillingCountry) &gt;0, PMP_Account_Id__r.BillingCountry,&quot;&quot;)
+*/
+/* Commented By Subash for US686667
+IF(NOT(ISBLANK(PMP_Account_Id__r.BillingStreet)),        PMP_Account_Id__r.BillingStreet      + BR(), NULL) +
+IF(NOT(ISBLANK(PMP_Account_Id__r.BillingCity)),          PMP_Account_Id__r.BillingCity        + &quot;, &quot;, NULL) +
+IF(NOT(ISBLANK(PMP_Account_Id__r.BillingState)),         PMP_Account_Id__r.BillingState + &quot;, &quot;, NULL) +
+IF(NOT(ISBLANK(PMP_Account_Id__r.BillingPostalCode)),    PMP_Account_Id__r.BillingPostalCode + BR(), NULL) +
+IF(NOT(ISBLANK(PMP_Account_Id__r.BillingCountry)),       PMP_Account_Id__r.BillingCountry,            NULL)
+*/
+IF(NOT(ISBLANK(PMP_Partner_Primary_Street_Txt__c)),      PMP_Partner_Primary_Street_Txt__c + BR(), NULL) +
+IF(NOT(ISBLANK(PMP_Partner_Secondary_Street_Txt__c)),    PMP_Partner_Secondary_Street_Txt__c + BR(), NULL) +
+IF(NOT(ISBLANK(PMP_Partner_City_Txt__c)),                PMP_Partner_City_Txt__c + &quot;, &quot;, NULL) +
+IF(NOT(ISBLANK(PMP_Partner_State_Txt__c)),               PMP_Partner_State_Txt__c + &quot;, &quot;, NULL) +
+IF(NOT(ISBLANK(PMP_Partner_Zipcode_Txt__c)),             PMP_Partner_Zipcode_Txt__c + BR(), NULL) +
+IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt__c, NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Application__c</fullName>
+        <label>Application</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Artificial Intelligence</fullName>
+                    <default>false</default>
+                    <label>Artificial Intelligence</label>
+                </value>
+                <value>
+                    <fullName>Digital Security Surveillance</fullName>
+                    <default>false</default>
+                    <label>Digital Security Surveillance</label>
+                </value>
+                <value>
+                    <fullName>Digital Signage</fullName>
+                    <default>false</default>
+                    <label>Digital Signage</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing</fullName>
+                    <default>false</default>
+                    <label>High Performance Computing</label>
+                </value>
+                <value>
+                    <fullName>Interactive Whiteboard</fullName>
+                    <default>false</default>
+                    <label>Interactive Whiteboard</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things</fullName>
+                    <default>false</default>
+                    <label>Internet of Things</label>
+                </value>
+                <value>
+                    <fullName>Print Imaging and Office Automation</fullName>
+                    <default>false</default>
+                    <label>Print Imaging and Office Automation</label>
+                </value>
+                <value>
+                    <fullName>Smart City</fullName>
+                    <default>false</default>
+                    <label>Smart City</label>
+                </value>
+                <value>
+                    <fullName>Smart Home</fullName>
+                    <default>false</default>
+                    <label>Smart Home</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Video Management</fullName>
+                    <default>false</default>
+                    <label>Video Management</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Dsc__c</fullName>
+        <label>Description</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Marketing Profile Information</relationshipLabel>
+        <relationshipName>Company_Informations</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Industry__c</fullName>
+        <description>(Temporary Pick-list for partner&apos;s Industry till the Partner design and implementation gets closed.)</description>
+        <label>Industry</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Agriculture</fullName>
+                    <default>false</default>
+                    <label>Agriculture</label>
+                </value>
+                <value>
+                    <fullName>Apparel</fullName>
+                    <default>false</default>
+                    <label>Apparel</label>
+                </value>
+                <value>
+                    <fullName>Banking</fullName>
+                    <default>false</default>
+                    <label>Banking</label>
+                </value>
+                <value>
+                    <fullName>Biotechnology</fullName>
+                    <default>false</default>
+                    <label>Biotechnology</label>
+                </value>
+                <value>
+                    <fullName>Chemicals</fullName>
+                    <default>false</default>
+                    <label>Chemicals</label>
+                </value>
+                <value>
+                    <fullName>Communications</fullName>
+                    <default>false</default>
+                    <label>Communications</label>
+                </value>
+                <value>
+                    <fullName>Construction</fullName>
+                    <default>false</default>
+                    <label>Construction</label>
+                </value>
+                <value>
+                    <fullName>Consulting</fullName>
+                    <default>false</default>
+                    <label>Consulting</label>
+                </value>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Electronics</fullName>
+                    <default>false</default>
+                    <label>Electronics</label>
+                </value>
+                <value>
+                    <fullName>Energy</fullName>
+                    <default>false</default>
+                    <label>Energy</label>
+                </value>
+                <value>
+                    <fullName>Engineering</fullName>
+                    <default>false</default>
+                    <label>Engineering</label>
+                </value>
+                <value>
+                    <fullName>Entertainment</fullName>
+                    <default>false</default>
+                    <label>Entertainment</label>
+                </value>
+                <value>
+                    <fullName>Environmental</fullName>
+                    <default>false</default>
+                    <label>Environmental</label>
+                </value>
+                <value>
+                    <fullName>Finance</fullName>
+                    <default>false</default>
+                    <label>Finance</label>
+                </value>
+                <value>
+                    <fullName>Food &amp; Beverage</fullName>
+                    <default>false</default>
+                    <label>Food &amp; Beverage</label>
+                </value>
+                <value>
+                    <fullName>Government</fullName>
+                    <default>false</default>
+                    <label>Government</label>
+                </value>
+                <value>
+                    <fullName>Healthcare</fullName>
+                    <default>false</default>
+                    <label>Healthcare</label>
+                </value>
+                <value>
+                    <fullName>Hospitality</fullName>
+                    <default>false</default>
+                    <label>Hospitality</label>
+                </value>
+                <value>
+                    <fullName>Insurance</fullName>
+                    <default>false</default>
+                    <label>Insurance</label>
+                </value>
+                <value>
+                    <fullName>Machinery</fullName>
+                    <default>false</default>
+                    <label>Machinery</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Media</fullName>
+                    <default>false</default>
+                    <label>Media</label>
+                </value>
+                <value>
+                    <fullName>Not For Profit</fullName>
+                    <default>false</default>
+                    <label>Not For Profit</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+                <value>
+                    <fullName>Recreation</fullName>
+                    <default>false</default>
+                    <label>Recreation</label>
+                </value>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>Shipping</fullName>
+                    <default>false</default>
+                    <label>Shipping</label>
+                </value>
+                <value>
+                    <fullName>Technology</fullName>
+                    <default>false</default>
+                    <label>Technology</label>
+                </value>
+                <value>
+                    <fullName>Telecommunications</fullName>
+                    <default>false</default>
+                    <label>Telecommunications</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
+                <value>
+                    <fullName>Utilities</fullName>
+                    <default>false</default>
+                    <label>Utilities</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Program_Membership__c</fullName>
+        <description>Contains Information about the Program Membership of the Partners</description>
+        <label>Program Membership</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ISA - GENERAL</fullName>
+                    <default>false</default>
+                    <label>ISA - GENERAL</label>
+                </value>
+                <value>
+                    <fullName>Additional Partners</fullName>
+                    <default>false</default>
+                    <label>Additional Partners</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Region__c</fullName>
+        <description>Temporary field for Partner&apos;s Region , until the partner design and implementation is closed.</description>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INDIA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Specialty__c</fullName>
+        <description>Contains information of the partner&apos;s specialties</description>
+        <label>Specialty</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Artificial Intelligence</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Artificial Intelligence</label>
+                </value>
+                <value>
+                    <fullName>Artificial Intelligence Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Artificial Intelligence Specialist</label>
+                </value>
+                <value>
+                    <fullName>Artificial Intelligence Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Artificial Intelligence Specialty</label>
+                </value>
+                <value>
+                    <fullName>Cloud Data Center</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Cloud Data Center</label>
+                </value>
+                <value>
+                    <fullName>Cloud Data Center Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Cloud Data Center Specialist</label>
+                </value>
+                <value>
+                    <fullName>Cloud Data Center Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Cloud Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Device as a Service Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Device as a Service Specialist</label>
+                </value>
+                <value>
+                    <fullName>Enthusiast PC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Enthusiast PC</label>
+                </value>
+                <value>
+                    <fullName>Enthusiast PC Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Enthusiast PC Specialist</label>
+                </value>
+                <value>
+                    <fullName>Enthusiast PC Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Enthusiast PC Specialty</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing Data Center</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>High Performance Computing Data Center</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing Data Center Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>High Performance Computing Data Center Specialist</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing Data Center Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>High Performance Computing Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>High Performance Computing Specialist</label>
+                </value>
+                <value>
+                    <fullName>Industrial Solutions Builder Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Industrial Solutions Builder Specialist</label>
+                </value>
+                <value>
+                    <fullName>Industrial Solutions Builder Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Industrial Solutions Builder Specialty</label>
+                </value>
+                <value>
+                    <fullName>Intel(R) Optane Client Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel(R) Optane Client Specialist</label>
+                </value>
+                <value>
+                    <fullName>Intel(R) Optane Client Speciality</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel(R) Optane Client Speciality</label>
+                </value>
+                <value>
+                    <fullName>Intel(R) Optane Data Center Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel(R) Optane Data Center Specialist</label>
+                </value>
+                <value>
+                    <fullName>Intel(R) Optane Data Center Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel(R) Optane Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Intel(R) Optane Technology Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel(R) Optane Technology Specialist</label>
+                </value>
+                <value>
+                    <fullName>Intel(R) Optane Technology Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel(R) Optane Technology Specialty</label>
+                </value>
+                <value>
+                    <fullName>Intel® LOEM and ODM Partners</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® LOEM and ODM Partners</label>
+                </value>
+                <value>
+                    <fullName>Optane Client Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Client Specialist</label>
+                </value>
+                <value>
+                    <fullName>Optane Client Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Client Speciality</label>
+                </value>
+                <value>
+                    <fullName>Optane Data Center Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Data Center Specialist</label>
+                </value>
+                <value>
+                    <fullName>Optane Data Center Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Intel Optane Technology Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Technology Specialist</label>
+                </value>
+                <value>
+                    <fullName>Intel Optane Technology Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Technology Specialty</label>
+                </value>
+                <value>
+                    <fullName>LOEM-ODM Partner Program</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>LOEM-ODM Partner Program</label>
+                </value>
+                <value>
+                    <fullName>Machine Builder</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Machine Builder</label>
+                </value>
+                <value>
+                    <fullName>Machine Builder Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Machine Builder Specialist</label>
+                </value>
+                <value>
+                    <fullName>Managed Services Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Managed Services Specialist</label>
+                </value>
+                <value>
+                    <fullName>Networking Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Networking Specialist</label>
+                </value>
+                <value>
+                    <fullName>Retail Visual Solutions Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Retail Visual Solutions Specialist</label>
+                </value>
+                <value>
+                    <fullName>Retail Visual Solutions Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Retail Visual Solutions Specialty</label>
+                </value>
+                <value>
+                    <fullName>Specialty Benefits</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Specialty Benefits</label>
+                </value>
+                <value>
+                    <fullName>Specialty Partner</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Specialty Partner</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Video Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Video Specialist</label>
+                </value>
+                <value>
+                    <fullName>Video Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Video Specialty</label>
+                </value>
+                <value>
+                    <fullName>Visual Display Solutions Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Visual Display Solutions Specialist</label>
+                </value>
+                <value>
+                    <fullName>Visual Display Solutions Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Visual Display Solutions Specialty</label>
+                </value>
+                <value>
+                    <fullName>Visual Retail</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Visual Retail</label>
+                </value>
+                <value>
+                    <fullName>Visual Retail Specialist</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Visual Retail Specialist</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Sub_Region__c</fullName>
+        <label>Sub Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ANZ</fullName>
+                    <default>false</default>
+                    <label>ANZ</label>
+                </value>
+                <value>
+                    <fullName>CEE</fullName>
+                    <default>false</default>
+                    <label>CEE</label>
+                </value>
+                <value>
+                    <fullName>CER</fullName>
+                    <default>false</default>
+                    <label>CER</label>
+                </value>
+                <value>
+                    <fullName>IJKK</fullName>
+                    <default>false</default>
+                    <label>IJKK</label>
+                </value>
+                <value>
+                    <fullName>KOREA</fullName>
+                    <default>false</default>
+                    <label>KOREA</label>
+                </value>
+                <value>
+                    <fullName>LAR</fullName>
+                    <default>false</default>
+                    <label>LAR</label>
+                </value>
+                <value>
+                    <fullName>META</fullName>
+                    <default>false</default>
+                    <label>META</label>
+                </value>
+                <value>
+                    <fullName>NAR</fullName>
+                    <default>false</default>
+                    <label>NAR</label>
+                </value>
+                <value>
+                    <fullName>NEUR</fullName>
+                    <default>false</default>
+                    <label>NEUR</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+                <value>
+                    <fullName>RCIS</fullName>
+                    <default>false</default>
+                    <label>RCIS</label>
+                </value>
+                <value>
+                    <fullName>ROA</fullName>
+                    <default>false</default>
+                    <label>ROA</label>
+                </value>
+                <value>
+                    <fullName>SA</fullName>
+                    <default>false</default>
+                    <label>SA</label>
+                </value>
+                <value>
+                    <fullName>SEA</fullName>
+                    <default>false</default>
+                    <label>SEA</label>
+                </value>
+                <value>
+                    <fullName>SEUR</fullName>
+                    <default>false</default>
+                    <label>SEUR</label>
+                </value>
+                <value>
+                    <fullName>TAIWAN</fullName>
+                    <default>false</default>
+                    <label>TAIWAN</label>
+                </value>
+                <value>
+                    <fullName>WEUR</fullName>
+                    <default>false</default>
+                    <label>WEUR</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INDIA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Tag_Line__c</fullName>
+        <description>Tag line or Catchy line for the partner</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tag line or Catchy line for the partner</inlineHelpText>
+        <label>Tag Line</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Account_Website__c</fullName>
+        <description>Contain Information about the Web-Address of the Partner</description>
+        <label>Website</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Active_OPID_Cnt__c</fullName>
+        <description>This is roll up summary field to have the count of Active OPID related to the Market Profile Information Record</description>
+        <label>Active OPID Count</label>
+        <summaryFilterItems>
+            <field>PMP_OPID_MPI_Rel__c.Is_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PMP_OPID_MPI_Rel__c.PMP_Marketing_Profile_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Autofill_Txt__c</fullName>
+        <description>Status field indicating if the storefront was auto filled</description>
+        <label>Autofill Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Scraped</fullName>
+                    <default>false</default>
+                    <label>Scraped</label>
+                </value>
+                <value>
+                    <fullName>Mixed</fullName>
+                    <default>false</default>
+                    <label>Mixed</label>
+                </value>
+                <value>
+                    <fullName>LLM_Knowledge</fullName>
+                    <default>false</default>
+                    <label>LLM_Knowledge</label>
+                </value>
+                <value>
+                    <fullName>Not Processed</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Not Processed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Badge_Tier_Sequence_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( PMP_IPA_Badge_Tier_Txt__c == &apos;Titanium&apos;, 1, IF(PMP_IPA_Badge_Tier_Txt__c == &apos;Gold&apos;, 2, IF(PMP_IPA_Badge_Tier_Txt__c == &apos;Member&apos;, 3, 4)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IPA Badge Tier Ordering Sequence</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Benefit_Update_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field used for benefit downgrade/removal scenario. This Inactive flag will make sure such records are only accessible by MP admins and not appearing in search</description>
+        <label>MP Benefit Revoked?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Biz_Org_Type_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>PMP_Biz_Org_Type_Value_Txt__c</formula>
+        <label>Biz Org Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Biz_Org_Type_Value_Txt__c</fullName>
+        <description>This field is created to populate the biz org type from the all the related accounts - using apex logic</description>
+        <externalId>false</externalId>
+        <label>Biz Org Type Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Information_Language_Nm__c</fullName>
+        <label>Input Language</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>Simplified Chinese</fullName>
+                    <default>false</default>
+                    <label>Simplified Chinese</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Lead_Gen_Language_Nm__c</fullName>
+        <description>Language Preference which the partner want&apos;s to be contacted in.</description>
+        <label>Lead Generation Language Preference</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>Simplified Chinese</fullName>
+                    <default>false</default>
+                    <label>Simplified Chinese</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Lifecycle_Status_Nm__c</fullName>
+        <description>Status of Company Information before being shown in storefront</description>
+        <label>Transaction Lifecycle Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Admin Review</fullName>
+                    <default>false</default>
+                    <label>Admin Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Published</fullName>
+                    <default>false</default>
+                    <label>Published</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Update Required</fullName>
+                    <default>false</default>
+                    <label>Update Required</label>
+                </value>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Archived</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Archived</label>
+                </value>
+                <value>
+                    <fullName>Changes Resubmitted</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Changes Resubmitted</label>
+                </value>
+                <value>
+                    <fullName>Changes Submitted</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Changes Submitted</label>
+                </value>
+                <value>
+                    <fullName>In Approval</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>In Approval</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>New</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Resource__c</fullName>
+        <label>Company Resource</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Articles</fullName>
+                    <default>false</default>
+                    <label>Articles</label>
+                </value>
+                <value>
+                    <fullName>WhitePaper</fullName>
+                    <default>false</default>
+                    <label>WhitePaper</label>
+                </value>
+                <value>
+                    <fullName>News</fullName>
+                    <default>false</default>
+                    <label>News</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Review_Txt__c</fullName>
+        <description>This field capture comments for approval</description>
+        <inlineHelpText>This field capture comments for approval</inlineHelpText>
+        <label>Add Review Comments</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Status_Published_Date_Dt__c</fullName>
+        <description>This is to store published status date of storefront</description>
+        <label>Last Status Published Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Company_Status_Update_Dt__c</fullName>
+        <label>Last Status Update Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Data_Load_Identifier_Txt__c</fullName>
+        <description>To populate text required for data load activity</description>
+        <externalId>false</externalId>
+        <label>PMP Data Load Identifier</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Disti_Components_Nm__c</fullName>
+        <description>Used to store Distributor Component Values</description>
+        <label>Distributor  Components</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things and Embedded</fullName>
+                    <default>false</default>
+                    <label>Internet of Things and Embedded</label>
+                </value>
+                <value>
+                    <fullName>Field Programmable Gate Array</fullName>
+                    <default>false</default>
+                    <label>Field Programmable Gate Array</label>
+                </value>
+                <value>
+                    <fullName>Client Computing</fullName>
+                    <default>false</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Graphics</fullName>
+                    <default>false</default>
+                    <label>Graphics</label>
+                </value>
+                <value>
+                    <fullName>Client CPUs and NUC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Client CPUs and NUC</label>
+                </value>
+                <value>
+                    <fullName>NAND Storage and Memory</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NAND Storage and Memory</label>
+                </value>
+                <value>
+                    <fullName>Optane Storage and Memory</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Optane Storage and Memory</label>
+                </value>
+                <value>
+                    <fullName>Storage and Memory</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Storage and Memory</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Disti_Country_Coverage_Txt__c</fullName>
+        <description>Used to store distributor country values</description>
+        <label>Distributor Country Coverage</label>
+        <length>10000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Disti_Sys_Solutions_Nm__c</fullName>
+        <description>used to store distributor system and solution values</description>
+        <label>Distributor  System and Solutions</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things</fullName>
+                    <default>false</default>
+                    <label>Internet of Things</label>
+                </value>
+                <value>
+                    <fullName>Cloud Data Center</fullName>
+                    <default>false</default>
+                    <label>Cloud Data Center</label>
+                </value>
+                <value>
+                    <fullName>Discrete Graphic Cards</fullName>
+                    <default>false</default>
+                    <label>Discrete Graphic Cards</label>
+                </value>
+                <value>
+                    <fullName>Client Computing</fullName>
+                    <default>false</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Cloud Services</fullName>
+                    <default>false</default>
+                    <label>Cloud Services</label>
+                </value>
+                <value>
+                    <fullName>Client CPUs and NUC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Client CPUs and NUC</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things and Embedded</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Internet of Things and Embedded</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Enhanced_Login_Users_Txt__c</fullName>
+        <description>It stores user Ids for newly upgraded popup shown</description>
+        <externalId>false</externalId>
+        <label>Enhanced Login Users</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Field_Application_Engineer_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>created to stamp selected FAE user</description>
+        <label>Field Application Engineer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Company_Informations</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_IPA_Badge_Tier_Txt__c</fullName>
+        <description>This will show the highest tier among the OPID member’s tier</description>
+        <externalId>false</externalId>
+        <label>IPA Badge Tier</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Initial_Storefront_Submit_Date_Dt__c</fullName>
+        <description>To store the date when the first time changes are submitted in Storefront.</description>
+        <label>Initial Storefront Changes Submitted</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Intel_Admin_Email_Txt__c</fullName>
+        <description>This field will capture the Intel Marketplace Admin Email working on the offering</description>
+        <externalId>false</externalId>
+        <formula>PMP_Intel_Admin_Id__r.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Intel MP Admin Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Intel_Admin_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field will capture the Intel Marketplace Admin working on the offering</description>
+        <label>Intel Marketplace Admin</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Company_Informations1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Intel_Admin_Nm__c</fullName>
+        <externalId>false</externalId>
+        <formula>PMP_Intel_Admin_Id__r.FirstName + &quot; &quot; + PMP_Intel_Admin_Id__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Intel MP Admin Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Distributor_Ind__c</fullName>
+        <description>Used to fetch account partner role field and check if it contains distributor value.</description>
+        <formula>INCLUDES(PMP_Partner_Program_nm__c, &apos;Distributor&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Distributor</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Enabled_Lead_Gen_Nm__c</fullName>
+        <description>Contains Information regarding the enabling of Lead Generation for a Partner</description>
+        <label>Enable Lead Generation</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>True</fullName>
+                    <default>true</default>
+                    <label>True</label>
+                </value>
+                <value>
+                    <fullName>False</fullName>
+                    <default>false</default>
+                    <label>False</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Lead_Gen_Limited_Nm__c</fullName>
+        <description>Contains information if the lead generation is limited to intel partners</description>
+        <label>Limit Lead Generation to Intel Partners</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>True</fullName>
+                    <default>false</default>
+                    <label>True</label>
+                </value>
+                <value>
+                    <fullName>False</fullName>
+                    <default>true</default>
+                    <label>False</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Published_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Published</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Updated_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>True if record is updated for the second time</description>
+        <label>Is Updated</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Working_Copy_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Working Copy</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Last_Updated_Date_Dt__c</fullName>
+        <description>This field will store last updated date of company details</description>
+        <label>Last Updated Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketing_Profile_Id__c</fullName>
+        <description>A unique user friendly identifier of the marketing profile. This can be used to integrate with external systems like Eloqua, PIM etc.</description>
+        <displayFormat>MPID-{0000000}</displayFormat>
+        <externalId>false</externalId>
+        <inlineHelpText>A unique user friendly identifier of the marketing profile.</inlineHelpText>
+        <label>Marketing Profile Id</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>PMP_One_Partner_ID__c</fullName>
+        <description>Store the One Partner ID of the MDA Account</description>
+        <externalId>false</externalId>
+        <label>One Partner ID</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Opid_Sfid_Ref_Txt__c</fullName>
+        <description>This field is used as substitute for long text area field Opid Sfid so that it can be used in formula field (Temporary Purpose)</description>
+        <externalId>false</externalId>
+        <label>Opid Sfid Ref</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Opid_Sfid_Txt__c</fullName>
+        <description>This field is used to populate all the linked OPID Accounts on MPI</description>
+        <label>Opid Sfid</label>
+        <length>750</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Benefit_Type__c</fullName>
+        <description>Contain the Benefit assigned to the partner’s account</description>
+        <label>Marketplace Partner Benefit Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Solution Marketplace Basic Access</fullName>
+                    <default>false</default>
+                    <label>Solution Marketplace Basic Access</label>
+                </value>
+                <value>
+                    <fullName>Solutions Marketplace Basic Profile</fullName>
+                    <default>false</default>
+                    <label>Solutions Marketplace Basic Profile</label>
+                </value>
+                <value>
+                    <fullName>Solutions Marketplace Enhanced</fullName>
+                    <default>false</default>
+                    <label>Solutions Marketplace Enhanced</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_City_Txt__c</fullName>
+        <description>Used to store Partner&apos;s City Detail</description>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Country_Txt__c</fullName>
+        <description>Used to store Partner&apos;s Country Detail</description>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Inactive_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>UI field for Inactivating the MP profile/storefront for MP Admins. This will take care of scenario where MP Benefit exists at OPID level, but for any reason we don’t want to display the Partner. This Inactive flag will make sure such records are only accessible by MP admins and not appearing in search. MP Admins can activate later if needed and that should set the Account back to its earlier state as is.</description>
+        <label>Marketplace Partner Inactive</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Logo_Cnt__c</fullName>
+        <description>It holds how many thumbnails are available for Marketing Profile, 0 - No Logo; 1 - Logo Avaialble</description>
+        <label>Partner Logo Count</label>
+        <summaryFilterItems>
+            <field>PMP_Company_Resource__c.PMP_Company_Resource_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Thumbnail Image</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PMP_Company_Resource__c.PMP_Company_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Logo_Count__c</fullName>
+        <description>It holds how many thumbnails are available for Marketing Profile, 0 - No Logo; 1 - Logo Avaialble</description>
+        <label>Partner Logo Count</label>
+        <summaryFilterItems>
+            <field>PMP_Company_Resource__c.PMP_Company_Resource_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Thumbnail Image</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PMP_Company_Resource__c.PMP_Company_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Primary_Street_Txt__c</fullName>
+        <description>Used to store Partner&apos;s Primary Street Details</description>
+        <externalId>false</externalId>
+        <label>Primary Street</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Program_nm__c</fullName>
+        <label>Partner Program</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CSPx2</fullName>
+                    <default>false</default>
+                    <label>CSPx2</label>
+                </value>
+                <value>
+                    <fullName>Intel Premier Support</fullName>
+                    <default>false</default>
+                    <label>Intel Premier Support</label>
+                </value>
+                <value>
+                    <fullName>ISA</fullName>
+                    <default>false</default>
+                    <label>ISA</label>
+                </value>
+                <value>
+                    <fullName>ITP</fullName>
+                    <default>false</default>
+                    <label>ITP</label>
+                </value>
+                <value>
+                    <fullName>ODM-LOEM</fullName>
+                    <default>false</default>
+                    <label>ODM-LOEM</label>
+                </value>
+                <value>
+                    <fullName>Resource &amp; Design Center</fullName>
+                    <default>false</default>
+                    <label>Resource &amp; Design Center</label>
+                </value>
+                <value>
+                    <fullName>Additional Partners</fullName>
+                    <default>false</default>
+                    <label>Additional Partners</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Secondary_Street_Txt__c</fullName>
+        <description>Used to store Partner&apos;s Secondary Street Details</description>
+        <externalId>false</externalId>
+        <label>Secondary Street</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Segment_Nm__c</fullName>
+        <description>This field holds the partner segment value.</description>
+        <label>Partner Segment</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Internet of Things and Embedded</fullName>
+                    <default>false</default>
+                    <label>Internet of Things and Embedded</label>
+                </value>
+                <value>
+                    <fullName>Client Computing</fullName>
+                    <default>false</default>
+                    <label>Client Computing</label>
+                </value>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>Storage and Memory</fullName>
+                    <default>false</default>
+                    <label>Storage and Memory</label>
+                </value>
+                <value>
+                    <fullName>Field Programmable Gate Array</fullName>
+                    <default>false</default>
+                    <label>Field Programmable Gate Array</label>
+                </value>
+                <value>
+                    <fullName>Programmable Logic</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Programmable Logic</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_State_Txt__c</fullName>
+        <description>Used to store Partner&apos;s State Details</description>
+        <externalId>false</externalId>
+        <label>State/province</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Submitter_UserId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is used for storing the store front submitter user id.</description>
+        <label>Partner Submitter UserId</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Marketing_Profile_Informations</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Zipcode_Txt__c</fullName>
+        <description>Used to store Partner&apos;s Zipcode Detail</description>
+        <externalId>false</externalId>
+        <label>Zipcode</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Published_Copy_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Published Copy Id</label>
+        <referenceTo>PMP_Company__c</referenceTo>
+        <relationshipName>Company_Informations1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_ScrapStatusComment_Txt__c</fullName>
+        <description>Field which mentions any feedback or comments from Autofill batch</description>
+        <label>Scrap Status Comment</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Storefront_EditAccess_Ind__c</fullName>
+        <formula>OR((CONTAINS($User.ProfileId,  $Label.PMP_Partner_Profile_Id )
+					&amp;&amp;  NOT(ISBLANK($User.Core_IPA_One_Partner_Id__c))  &amp;&amp;CONTAINS(PMP_Opid_Sfid_Ref_Txt__c,$User.Core_IPA_One_Partner_Id__c)),$Permission.PMP_Manage_Partners )</formula>
+        <label>Storefront EditAccess Ind</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Storefront_SiteUrl__c</fullName>
+        <description>This field has link to Experience site Storefront Record</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+$Label.PMP_PartnerURL &amp; PMP_Published_Copy_Id__c,
+&quot;Edit/Approve Storefront&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Storefront SiteUrl</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Suppress_Email_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Admin uses this field to suppress post offering email, during enhanced benefit assignment.</description>
+        <label>Suppress Email</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Topic_Count__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Count the Topic Assignment under each Partner record.</description>
+        <externalId>false</externalId>
+        <label>Topic Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Translated_Languages_Txt__c</fullName>
+        <label>Language Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>Simplified Chinese</fullName>
+                    <default>false</default>
+                    <label>Simplified Chinese</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Translated_Languages__c</fullName>
+        <label>Language Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>false</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>Simplified Chinese</fullName>
+                    <default>false</default>
+                    <label>Simplified Chinese</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Translation_Lifecycle_Status_nm__c</fullName>
+        <label>Translation Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>true</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>In Translation Queue</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Complete</fullName>
+                    <default>false</default>
+                    <label>Complete</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_View_Partners_Txt__c</fullName>
+        <description>Checking for translated languages and highlighting the translated ones.</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(($Profile.Name=&quot;Partner&quot;), NOT(ISPICKVAL( PMP_Company_Lifecycle_Status_Nm__c, &quot;Approved&quot;))), &quot;ENG, CHN, JPN&quot;,
+(IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;English&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?language=en_US&quot;, &quot;ENG&quot;) , &quot;ENG&quot;)
+&amp; &quot;, &quot; &amp;
+IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;Simplified Chinese&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?language=zh_CN&quot;, &quot;CHN&quot;) , &quot;CHN&quot;)
+&amp; &quot;, &quot; &amp;
+IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;Japanese&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?language=JA&quot;, &quot;JPN&quot;) , &quot;JPN&quot;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>View Partners</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_View_Partners__c</fullName>
+        <description>Checking for translated languages and highlighting the translated ones.</description>
+        <externalId>false</externalId>
+        <formula>(IF (INCLUDES(PMP_Translated_Languages__c , &quot;English&quot;), HYPERLINK(&quot;&quot;, &quot;ENG&quot;) , &quot;ENG&quot;)
+&amp; &quot;, &quot; &amp;
+IF (INCLUDES(PMP_Translated_Languages__c , &quot;Simplified Chinese&quot;), HYPERLINK(&quot;&quot;, &quot;CHN&quot;) , &quot;CHN&quot;)
+&amp; &quot;, &quot; &amp;
+IF (INCLUDES(PMP_Translated_Languages__c , &quot;Japanese&quot;), HYPERLINK(&quot;&quot;, &quot;JPN&quot;) , &quot;JPN&quot;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>View Partners</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Workflow_One_Week_Trigger_Dt__c</fullName>
+        <formula>PMP_Company_Status_Update_Dt__c + CASE(PMP_Company_Lifecycle_Status_Nm__c,
+
+&apos;Draft&apos;, CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
+0,4,
+1,4,
+6,5,6),
+CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
+0,2,
+6,3,4))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Second SLA Workflow Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Workflow_Three_Day_Trigger_Dt__c</fullName>
+        <formula>PMP_Company_Status_Update_Dt__c + CASE(PMP_Company_Lifecycle_Status_Nm__c,
+
+&apos;Draft&apos;, CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
+4,4,
+5,4,
+6,3,2),
+CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
+3,2,
+4,2,
+5,2,
+6,1,
+0))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>First SLA WorkFlow Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Working_Copy_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Working Copy Id</label>
+        <referenceTo>PMP_Company__c</referenceTo>
+        <relationshipName>Company_Informations</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Marketing Profile Information</label>
+    <listViews>
+        <fullName>Admin_Review_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Company_Lifecycle_Status_Nm__c</columns>
+        <columns>PMP_Intel_Admin_Nm__c</columns>
+        <columns>PMP_View_Partners_Txt__c</columns>
+        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PMP_Is_Working_Copy_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Admin Review</value>
+        </filters>
+        <filters>
+            <field>PMP_Benefit_Update_Ind__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>Admin Review Queue</label>
+        <sharedTo>
+            <group>PMP_All_Intel_Admin_Users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Company_Lifecycle_Status_Nm__c</columns>
+        <columns>PMP_Account_Id__c</columns>
+        <columns>PMP_Intel_Admin_Id__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>PMP_Account_Program_Membership__c</columns>
+        <columns>PMP_Partner_Program_nm__c</columns>
+        <columns>PMP_Company_Information_Language_Nm__c</columns>
+        <columns>PMP_Account_Address_Txt__c</columns>
+        <columns>PMP_View_Partners_Txt__c</columns>
+        <columns>PMP_Company_Status_Published_Date_Dt__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PMP_Is_Working_Copy_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>PMP_Benefit_Update_Ind__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>All Partners</label>
+        <sharedTo>
+            <group>PMP_All_Intel_Admin_Users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Storefront_Admin_Review_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Company_Lifecycle_Status_Nm__c</columns>
+        <columns>PMP_Intel_Admin_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>PMP_Storefront_SiteUrl__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PMP_Is_Working_Copy_Ind__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
+            <operation>equals</operation>
+            <value>Admin Review</value>
+        </filters>
+        <filters>
+            <field>PMP_Benefit_Update_Ind__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>Storefront Admin Review Queue</label>
+        <sharedTo>
+            <group>PMP_All_Intel_Admin_Users</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>Partner Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Marketing Profile Information</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>New</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,34 @@
+.contact-image {
+  max-height: 97px;
+  max-width: 130px;
+  padding-right: 20px;
+}
+
+.contact-row {
+  margin-top: 35px;
+}
+
+.contact-row-container {
+  margin-top: -35px;
+}
+
+h5 {
+  color: #000000;
+  position: relative;
+  top: -3px;
+}
+
+@media (max-width: 767px) {
+  .contact-container {
+    padding-bottom: 25px;
+  }
+
+  .contact-image {
+    display: none;
+  }
+
+  .contact-row-container-mobile {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

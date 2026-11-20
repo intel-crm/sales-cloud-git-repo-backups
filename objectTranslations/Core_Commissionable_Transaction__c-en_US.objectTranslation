@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Commissionable Transaction</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Commissionable Transactions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account_ID__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved BU Product Segment --></label>
+        <name>Core_Approved_BU_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved BU Short Name --></label>
+        <name>Core_Approved_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved KPI Product Group --></label>
+        <name>Core_Approved_KPI_Prod_Grp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Prime Account Name --></label>
+        <name>Core_Approved_Prime_AccountName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Sales Group --></label>
+        <name>Core_Approved_Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved_Total_Price --></label>
+        <name>Core_Approved_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Transaction Id --></label>
+        <name>Core_Approved_Transaction_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Date --></label>
+        <name>Core_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- x Design Product Category --></label>
+        <name>Core_Design_Product_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee --></label>
+        <name>Core_Employee_ID__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Employee Name --></label>
+        <name>Core_Employee_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Product Schedule --></label>
+        <name>Core_Forecast_Product_Schedule__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Goal --></label>
+        <name>Core_Goal__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- KPI Id --></label>
+        <name>Core_KPI_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Approved Date --></label>
+        <name>Core_Last_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Area --></label>
+        <name>Core_Milestone_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Focus --></label>
+        <name>Core_Milestone_Focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone ID --></label>
+        <name>Core_Milestone_ID__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Milestone Name --></label>
+        <name>Core_Milestone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opportunity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner --></label>
+        <name>Core_Opportunity_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner WWID --></label>
+        <name>Core_Opportunity_Owner_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Team Member Role --></label>
+        <name>Core_Opportunity_Team_Member_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Type --></label>
+        <name>Core_Opportunity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Percent Contribution --></label>
+        <name>Core_Percent_Contribution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Product2_ID__c</name>
+        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approved Opportunity Product Segment --></label>
+        <name>Core_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source ID --></label>
+        <name>Core_Source_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Timestamp --></label>
+        <name>Core_Transaction_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Type --></label>
+        <name>Core_Transaction_Type__c</name>
+        <picklistValues>
+            <masterLabel>Consumption Revenue</masterLabel>
+            <translation><!-- Consumption Revenue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Milestone</masterLabel>
+            <translation><!-- Deal Milestone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Milestone</masterLabel>
+            <translation><!-- Design Milestone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Milestones</masterLabel>
+            <translation><!-- Opportunity Milestones --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Revenue</masterLabel>
+            <translation><!-- Opportunity Revenue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- WWID --></label>
+        <name>Core_WWID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

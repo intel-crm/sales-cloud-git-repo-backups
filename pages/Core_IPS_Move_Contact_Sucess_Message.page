@@ -1,0 +1,33 @@
+<apex:page standardController="contact">
+    <apex:form >
+        <apex:pageBlock >
+           <apex:outputPanel id="StatusProgressStarted" rendered="{!($CurrentPage.parameters.startBatch=='true')}" >
+                <div id="StatusMessage" style="text-align:center;" ><br/> <b style="font-size: large;color: blue;"> Request Submitted</b><br/><br/>
+                <b >
+                 <apex:outputPanel id="Casesmovetonewacc" rendered="{!$CurrentPage.parameters.currcontact='null'}">
+                    Your request to move contact <b style="color: blue;">"{!contact.name}"</b> from account <b style="color: blue;">"{!$CurrentPage.parameters.currAcc}" to "{!contact.account.name}" </b>is successfully submitted. You will get an email with the details of the IPS cases with no project moved from account <b style="color: blue;">"{!$CurrentPage.parameters.currAcc}"  to "{!contact.account.name}"</b>.<br/>
+                  
+                     </apex:outputPanel>
+                    <apex:outputPanel id="ContactNameDisplayed" rendered="{!$CurrentPage.parameters.currcontact!='null'}">
+                             <br/> 
+                             Your request to move contact <b style="color: blue;">"{!contact.name}"</b> from account <b style="color: blue;">"{!$CurrentPage.parameters.currAcc}" to "{!contact.account.name}" </b>is successfully submitted. You will get an email with the details of the IPS cases with no project moved from contact <b style="color: blue;">"{!contact.name}"  to "{!$CurrentPage.parameters.currcontact}"</b>.<br/>
+                    
+                   <!-- <b>All non Project based IPS case records have been moved to <b style="color: blue;"> "{!$CurrentPage.parameters.currcontact}"</b></b>
+                    -->
+                    
+                    </apex:outputPanel><br/><br/>
+                    Please don't initiate another request to move the contact unless necessary after you receive a success report via email.</b><br/><br/>
+                    <apex:commandButton value="Go To Contact" action="/{!contact.id}" />
+                </div>
+            </apex:outputPanel>
+            <apex:outputPanel id="StatusProgressDone" rendered="{!($CurrentPage.parameters.startBatch=='false')}" >
+                <div id="StatusMessage" style="text-align:center;" ><br/>
+                    <b style="font-size: large;color: blue;">Request Processed</b><br/><br/>
+                    <b >Your request to move contact <b style="color: blue;"> "{!contact.name}" </b>from account <b style="color: blue;">"{!$CurrentPage.parameters.currAcc}" to "{!contact.account.name}" </b> is successfully completed. <br/><br/></b>
+                    <b>All non Project based IPS case records have been moved.</b><br/><br/>
+                    <apex:commandButton value="Go To Contact" action="/{!contact.id}" />
+                </div>
+            </apex:outputPanel>
+       </apex:pageBlock>
+    </apex:form>
+ </apex:page>

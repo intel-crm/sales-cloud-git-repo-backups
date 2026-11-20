@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>used to send reminder from script</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CampaignInviteForBulk_Rem_ENG</name>
+    <style>none</style>
+    <subject>Join our Intel®  Partner Alliance Program!</subject>
+    <textOnly>We invite you to join our Intel Partner Alliance Program!
+
+Be a part of our growing network of ecosystem partners.  Get access to training,  developer resources, a global ecosystem, support, and more.
+
+Complete Your Registration Now
+
+Click to join
+
+First Name: {!Contact.FirstName}
+Last Name: {!Contact.LastName}
+Username (Email Address): {!Contact.Email}
+Note your email address is your username.
+
+Partner with us to maximize your opportunities, accelerate innovation and grow your business when you join the Intel®  Partner Alliance Program.
+
+Partners receive access to advanced training, developer and marketing resources, technical support, the Partner Showcase, and an exclusive network of ecosystem partners.
+
+Become a part of our growing partner ecosystem.
+
+Take a few moments to complete your registration and get started today.
+
+Click to join
+
+This link will expire in 24 hours – click the existing ‘Click to Join’ link to get a refreshed link.
+
+Reap the benefits of being an Intel partner, register for Intel® Partner Alliance and start with 1,000 points¹
+
+Not only does Intel® Partner Alliance offer a large variety of tools to help grow your business, but it also offers Points Benefits, with multiple opportunities to earn &amp; redeem points for eligible purchases, training, and other activities. If you haven’t registered, now is the perfect time. See the points terms and conditions.
+
+Need help signing up to be a partner?
+Contact support
+
+¹Must be Points eligible to qualify. See eligibility requirements.
+
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

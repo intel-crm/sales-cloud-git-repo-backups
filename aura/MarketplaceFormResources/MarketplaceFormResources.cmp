@@ -1,0 +1,11 @@
+<aura:component extends="c:MarketplaceCreateProductFormInputBase" implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+ 
+  <aura:attribute name="recordId" type="string"/>
+    
+  <div>
+      <c:ipaOfferingResourceManager recordId="{!v.recordId}"/>
+  </div>
+
+</aura:component>

@@ -1,0 +1,6 @@
+<apex:page standardController="Case" extensions="Core_Case_ActionEditController" action="{!redirect}"   >
+  <apex:detail inlineEdit="true" >
+  
+  </apex:detail>
+  
+</apex:page>

@@ -1,0 +1,8 @@
+<design:component >
+  <design:attribute name="additionalCss" label="JSON Configuration String to load additional CSS files" description="JSON Configuration String to load additional CSS files."></design:attribute>
+  <design:attribute name="coreIntcErrorConfig" label="JSON Configuration String for coreIntcErrorHandler" description="JSON string used to set the configuration for how the coreIntcErrorHandler processes errors."></design:attribute>
+  <design:attribute name="showNavBar" label="Display Salesforce navigation bar" description="Indicates if the Salesforce navigation bar should be shown."></design:attribute>
+  <design:attribute name="showProfileMenu" label="Display Salesforce profile menu" description="Indicates if the Salesforce profile menu should be shown."></design:attribute>
+  <design:attribute name="showSearch" label="Display Salesforce search bar" description="Indicates if the Salesforce search bar should be shown."></design:attribute>
+  <design:attribute name="splitCssFiles" label="Unbundle CSS files" description="Indicates if CSS files should be loaded individually instead of in the minified bundle."></design:attribute>
+</design:component>

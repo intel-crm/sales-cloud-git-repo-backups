@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>Lead_State_Rejected</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Rejected</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>Page_Header_Label</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Please enter the Rejection Reason/Comment</stringValue>
+        </value>
+    </constants>
+    <description>Flow to Reject Intel Leads. It asks for Rejection Reason, Rejection Comments. Updates Lead State to &apos;Rejected&apos;, Rejection Reason, Rejection Comments on the Lead record.</description>
+    <dynamicChoiceSets>
+        <name>Rejection_Reasons_Lead</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Core_System_Lead_Rejection_Reason__c</picklistField>
+        <picklistObject>Lead</picklistObject>
+    </dynamicChoiceSets>
+    <interviewLabel>Reject Intel Lead {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reject Intel Lead</label>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>488</locationX>
+        <locationY>281</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>vaLeadID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <elementReference>Lead_State_Rejected</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Rejection_Comments__c</field>
+            <value>
+                <elementReference>Rejection_Comment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Rejection__c</field>
+            <value>
+                <elementReference>Rejection_Reason</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <screens>
+        <name>Rejection_Screen</name>
+        <label>Rejection Screen</label>
+        <locationX>494</locationX>
+        <locationY>160</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+        <fields>
+            <name>Page_Header</name>
+            <fieldText>{!Page_Header_Label}</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Rejection_Reason</name>
+            <choiceReferences>Rejection_Reasons_Lead</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Rejection Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Rejection_Comment</name>
+            <fieldText>Rejection Comment</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Rejection_Screen</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>vaLeadID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

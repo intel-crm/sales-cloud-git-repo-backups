@@ -1,0 +1,58 @@
+<template>
+    <div if:true={showData}>
+        <div class="slds-align_absolute-center" style="background-color:#5875aa; height:50px;">
+            <h1 style="color:white; font-size:1.5rem;"><b>Add Case Sub Categories</b></h1>
+        </div>
+        <div class="slds-p-around_small" style="background-color:white;">
+            <lightning-layout>
+                <lightning-layout-item class="slds-p-around_small">
+            <!-- <div class="slds-p-around_small" > -->
+                <lightning-input type="search" onchange={subcatsearchbox}
+                    class="slds-m-bottom_small attachmentSearch" placeholder="Search Sub Categories" maxlength="70"
+                    style="width: 300px;"></lightning-input>
+                </lightning-layout-item>
+                <!-- <div class="slds-align_absolute-center"> -->
+                    <lightning-layout-item class="slds-align_absolute-center" >
+                    <lightning-button label="Add Sub Categories" onclick={addSubCatRecords}></lightning-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-button label="Exit" onclick={goTOCaseCatRecordPage}></lightning-button>
+                </lightning-layout-item>
+                <!-- </div>
+            </div> -->
+        </lightning-layout>
+            <div class="slds-p-around_small" >   
+                <div if:true={switchview} style="height: 25rem;">
+                    <lightning-datatable 
+                        key-field="Id" data={updatedTabledata} 
+                        columns={columns} onrowselection={handleRowActions}
+                        enable-infinite-loading ={isloading} onloadmore={handleLoadMore} show-row-number-column>
+                    </lightning-datatable>
+                </div> 
+                <div if:false={switchview} style="height: 25rem;">
+                    <lightning-datatable 
+                        key-field="Id" data={searchResult} 
+                        columns={columns} onrowselection={handleRowActions}
+                         show-row-number-column>
+                    </lightning-datatable>
+                </div>    
+            </div>
+            <div if:true={spinner}>
+                <lightning-spinner alternative-text="Loading" size="Medium"></lightning-spinner>
+            </div>
+        </div>
+    </div>
+    <div if:false={showData}>
+        <div class="slds-align_absolute-center" style="background-color:#5875aa; height:50px;">
+            <h1 style="color:white; font-size:1.5rem;"><b>Add Case Sub Categories</b></h1>
+        </div>
+        <div style="background-color:white;">
+            <br/>
+            <div class="slds-align_absolute-center" >
+                <lightning-button label="Exit" onclick={goTOCaseCatRecordPage}></lightning-button>
+            </div><br/>
+            <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                <h1><b>{Message}</b></h1>
+            </div>
+        </div>
+        
+    </div>
+</template>

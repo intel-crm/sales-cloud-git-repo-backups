@@ -1,0 +1,21 @@
+.slds-modal__container {
+    max-width: 40rem !important;
+    width: 15% !important;
+    max-height: 150rem !important;
+    height: 70%;
+    text-align: center;
+    font-size: large;
+    justify-content: center;
+    }
+
+
+.header{
+    font-size: larger;
+    font-weight: 500;
+}
+
+
+.optionText{
+    text-align:center ;
+    color: rgb(27, 26, 26);
+}

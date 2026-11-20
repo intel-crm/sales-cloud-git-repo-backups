@@ -1,0 +1,204 @@
+<template>
+    <!-- <form>
+        <div class="upload-disclaimer-text">
+            <label class="disclaimer1">{labels.disclaimer1}</label>
+        </div>
+        
+        <template if:true={displayInputFields}>
+            <template if:true={formattedVideos}>
+                <template for:each={formattedVideos} for:item="video">
+                    <section key={video.key} class="slds-grid slds-wrap" role="contentinfo" aria-label={video.sectionAria}>
+                        <div class="video-heading slds-grid slds-size_1-of-1">
+                            <h4 class="slds-size_11-of-12">
+                                <span>{labels.video} {video.videoNumber}</span>
+                            </h4>
+                            <div class="slds-size_1-of-12">
+                                <lightning-button-icon class="video-remove slds-float_right" icon-name="utility:delete"
+                                data-rnum={video.videoNumber} onclick={handleDeleteVideo} 
+                                alternative-text={video.deleteAria} onkeydown={handleDeleteVideoAccessibility} variant="bare">
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                    <div class="input-video-name slds-size_12-of-12 slds-medium-size_6-of-12 slds-var-m-top_medium">
+                        <lightning-input
+                            type="text"
+                            required
+                            name="title"
+                            data-focus={video.videoNumber}
+                            data-rnum={video.videoNumber}
+                            label={labels.videoTitle}
+                            onchange={handleValue}
+                            maxlength={maxTitleLength}
+                            value={video.title}>
+                        </lightning-input>
+                    </div>
+                
+                    <lightning-textarea
+                        class="slds-size_12-of-12 slds-var-m-top_medium"
+                        name="description"
+                        required
+                        data-rnum={video.videoNumber}
+                        label={labels.videoDescription}
+                        value={video.description}
+                        onchange={handleValue}
+                        maxlength={maxDescriptionLength}>
+                    </lightning-textarea>
+                    <template if:true={video.description}>
+                        <p class="slds-size_12-of-12 utility-type slds-var-m-top_xx-small text-bold">
+                            {video.descriptionCharsRemaining}
+                        </p>
+                    </template> 
+                    
+                    <div class="input-altText slds-size_12-of-12">
+                        <lightning-input
+                            type="text"
+                            required
+                            name="altText"
+                            data-focus={video.videoNumber}
+                            data-rnum={video.videoNumber}
+                            label={labels.altText}
+                            maxlength={maxTextLength}
+                            onchange={handleValue}
+                            value={video.altText}>
+                        </lightning-input>
+                        <p class="slds-form-element__help slds-size_12-of-12 slds-var-m-top_xx-small slds-var-m-bottom_xx-small">{labels.altTextHelp}</p>
+                        
+                    </div>
+            
+                    <div class="slds-size_12-of-12 ">
+                        <div class="slds-var-m-top_medium slds-var-m-bottom_xx-small">
+                            <span class="asterisk">*</span> {labels.upload}
+                        </div>
+                        <div class="input-video-upload-wrapper">    
+                            <div class="input-video-upload">
+                                <lightning-file-upload
+                                    accept={acceptedFormats}
+                                    aria-labelledby={video.uploadLabelID}
+                                    data-rnum={video.videoNumber}
+                                    data-focus={video.index}
+                                    name="upload"
+                                    onchange={handleValue}
+                                    onclick={handleUploadClick}
+                                    onuploadfinished={handleUploadVideo}
+                                    disabled={video.disabled}
+                                    record-id={offeringId}>
+                                </lightning-file-upload>
+                                
+                                <template if:true={video.assetHasErrors}>
+                                    <div class="slds-has-error">
+                                        <p class="slds-form-element__help">
+                                            <template if:true={video.errorFileNo}>
+                                                <span class="upload-error">{labels.errors.noOfFileError}</span>
+                                            </template>
+                                            <template if:true={video.errorFileSize}>
+                                                <span class="upload-error">{labels.errors.uploadFileSize}</span>
+                                            </template>
+                                            
+                                            <template if:true={video.errorFileNameSpecialChars}>
+                                                <span class="upload-error">{labels.errors.uploadFileSpecialChars}</span>
+                                            </template>
+                                            
+                                            <template if:true={video.errorFileNameLength}>
+                                                <span class="upload-error">{labels.errors.uploadFileNameLength}</span>
+                                            </template>
+                                            
+                                            <template if:true={video.errorFileExists}>
+                                                <span class="upload-error">{labels.errors.videoFileExists}</span>
+                                            </template>
+                                            <template if:true={video.titleEmpty}>
+                                                <span class="upload-error">{labels.errors.empty_Title}<br></span>
+                                            </template>
+                                            <template if:true={video.desEmpty}>
+                                                <span class="upload-error">{labels.errors.empty_Description}<br></span>
+                                            </template>
+                                            <template if:true={video.textEmpty}>
+                                                <span class="upload-error">{labels.errors.empty_Alt_Text}<br></span>
+                                            </template>
+                                        </p>
+                                    </div>
+                                </template>
+                            </div>
+                            <p class="slds-form-element__help slds-var-m-top_xx-small slds-var-m-bottom_large">
+                                <strong>{labels.uploadVideoHelpTextSize}</strong><br>
+                                {labels.uploadVideoHelpText}<br>
+                                {labels.uploadVideoHelpTextFileName}
+                            </p>
+
+                            <template if:true={video.uploadName}>
+                                <c-ipa-file-card
+                                    brightcove-thumbnail={video.videoThumbnail}
+                                    video-placeholder-thumbnail={videoPlaceholderImage}
+                                    alt-text={video.altText}
+                                    file-name={video.uploadName}
+                                    video-number={video.videoNumber}
+                                    upload-id="video.uploadId"
+                                    >
+                                    <span slot="actionButtons">
+                                        <lightning-button-icon 
+                                            class="remove-video-asset"
+                                            icon-name="utility:delete"
+                                            data-rnum={video.videoNumber} 
+                                            onclick={handleShowDeleteModal}
+                                            onkeydown={handleDeleteAssetIconAccessibility}
+                                            alternative-text={labels.deleteUploadFileAlt}
+                                            variant="bare">
+                                        </lightning-button-icon>
+                                    </span>
+                                </c-ipa-file-card>
+                        
+                                <c-core-intc-modal 
+                                    data-rnum={video.videoNumber}
+                                    is-quickview="true" 
+                                    slim="true" 
+                                    no-close-on-click="true">
+                                    
+                                    <div slot="body">
+                                        <h2 class="slds-var-p-around_medium slds-text-align_center">{labels.confirmDeleteTitle}</h2>
+                                        
+                                        <p class="slds-var-p-around_medium">{video.confirmDeleteText}</p>
+                                        
+                                        <div slot="footer" class="slds-var-p-around_medium slds-text-align_right">
+                                            <div class="modal-buttons">
+                                                <lightning-button 
+                                                    data-rnum={video.videoNumber}
+                                                    class="slds-var-m-right_medium" 
+                                                    label={labels.cancel} 
+                                                    onclick={handleCancelDeleteAsset}>
+                                                </lightning-button>
+                                                <lightning-button
+                                                    data-rnum={video.videoNumber}
+                                                    class="slds-var-m-right_medium" 
+                                                    label={labels.ok}
+                                                    variant="brand" 
+                                                    onclick={handleDeleteAsset}>
+                                                </lightning-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c-core-intc-modal>
+                            </template>
+                        </div>
+                    </div>
+                    <hr class="slds-size_12-of-12">
+                </section>
+            </template>
+        </template>
+    </template>
+        
+        <div class="slds-var-m-vertical_large" if:true={displayAddButton}>
+            <lightning-button label={labels.addVideo} onclick={handleAddVideo} icon-name="utility:add" onkeydown={handleAddVideoAccessibility}></lightning-button>
+            <template if:true={addVideoError}>
+                <div class="slds-has-error">
+                    <p class="slds-form-element__help slds-p-top_small">
+                        <template if:true={noofFileMore}>
+                                <span class="upload-error">{labels.errors.noOfFileError}<br></span>
+                        </template>
+                        <template if:true={addWrapper}>
+                            <span class="upload-error">{labels.errors.fillPrevOne}<br></span>
+                    </template>
+                </p></div>
+            </template>
+        </div> 
+
+    </form> -->
+</template>

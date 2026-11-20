@@ -1,0 +1,12 @@
+<template>
+    <template if:true={textcheck}>
+        <lightning-input type="text" class="inputdat" value={value} name={questionid}
+            required={isrequiredfield} label={fieldlabel} disabled={iseditable}>
+        </lightning-input>
+    </template>
+    <template if:true={textareacheck}>
+        <lightning-textarea name={fieldid} value={value} class="inputdat"
+            placeholder={placeholdertext} required={isrequiredfield} label={fieldlabel} disabled={iseditable}>
+        </lightning-textarea>
+    </template>
+</template>

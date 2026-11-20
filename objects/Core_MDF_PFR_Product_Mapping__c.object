@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Stores segment and products mapped to the respective segment for CCP. Used in Core_MDF_AccountProductMappingController(Price Review Maintenance Screen) and Core_MDF_ActivitySegmentMapping(SPIF Section in Activity Screen)</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_MDF_Criteria_For_Product_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Criteria for Product</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IsActive_ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>IsActive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Product_EPM_ID_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Product EPM ID</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Segment_ProductType_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Segment Product Type</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Show_All_Products_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Show All Products</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Product Mapping</label>
+    <visibility>Public</visibility>
+</CustomObject>

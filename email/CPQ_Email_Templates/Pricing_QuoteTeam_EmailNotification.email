@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="You have been added to IQR quote  {!relatedTo.Pricing_Quote_Id__r.Name}" recipientType="User" relatedToType="Pricing_Quote_Team__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_QuoteTeam_EmailNotification quoteTeamMemberId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,29 @@
+<apex:page standardController="Core_Account_Meeting_Objective__c"  extensions="Core_AMBRelatedObjs" recordSetVar="test" sidebar="false" lightningStylesheets="true">
+  <apex:includeLightning />
+  <apex:form >
+        <div id="lightning"></div>
+        
+        <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">            
+                <script>
+                    //US677993 : Security Scan Fixes - 5(Unencoded Formulas in Script Tags XSS), added JSENCODE to NewMeetingObjectivesUrl by Gopala Krishna Ch.
+                    window.top.location.href='{!JSENCODE(NewMeetingObjectivesUrl)}'
+                </script>
+            </apex:outputPanel>
+            
+            <!-- lightning -Theme4d—Modern “Lightning Experience” Salesforce theme-->
+            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">    
+                    
+                 <script type="text/javascript">
+                   //US677993 : Security Scan Fixes - 5(Unencoded Formulas in Script Tags XSS), added JSENCODE to ambId by Gopala Krishna Ch.
+                   sforce.one.createRecord('Core_Account_Meeting_Objective__c',null,{ 
+                   Account_Meeting_Brief__c : '{!JSENCODE(ambId)}'
+                });
+            
+            </script>
+                              
+            </apex:outputPanel>
+            
+           
+            
+            </apex:form>
+</apex:page>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveDataset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <application>Usage_Tracking</application>
+    <description>Created from the Dashboards_Access recipe.</description>
+    <masterLabel>OpportunityAccess_Dataset</masterLabel>
+    <type>default</type>
+</WaveDataset>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_AccountCompany__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Claim_Ref_Number__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Ad_Run_Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Ad_Run_End_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Payment__c.Partner_Fund_Claims__r$Amount</field>
+    </columns>
+    <description>Co-Marketing Payment Details
+For Rev-500 IPE purpose</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c$Core_MDF_Payment_Status_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending Payment,Paid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Type_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Claim</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_MDF_Payment__c.Partner_Fund_Claims__r$Core_MDF_Region_Cd__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA,PRC,APJ,ASMO</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Payment Details</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Co_Marketing_Payments_with_Claim__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_MDF_Payment__c$Core_MDF_Payment_Sent_Dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

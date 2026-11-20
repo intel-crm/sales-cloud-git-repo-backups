@@ -1,0 +1,20 @@
+<template>
+    <div class="banner-wrapper" data-banner-theme={bannerTheme}>
+        <lightning-icon icon-name={bannerIcon}
+            alternative-text={bannerIcon}
+            size="x-small"
+            title="x-small size"
+            class={bannerIconClass}>
+        </lightning-icon>
+        <p class="banner-message">{bannerMessage}</p>
+        <template if:true={edit}>
+            <c-ipa-link
+                aria-label={bannerLink.ariaLabel}
+                external-url={bannerLink.linkExternalUrl}
+                record-id={bannerLink.linkRecordId}
+                object-page={bannerLink.linkObjectPage}
+                community-page={bannerLink.linkCommunityPage}>
+            </c-ipa-link>
+        </template>
+    </div>
+</template>

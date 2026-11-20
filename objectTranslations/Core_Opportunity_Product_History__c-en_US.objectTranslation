@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Product History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Product History</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field --></label>
+        <name>Core_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Value --></label>
+        <name>Core_New_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Value --></label>
+        <name>Core_Old_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product ID --></label>
+        <name>Core_Opportunity_Product_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Name --></label>
+        <name>Core_Opportunity_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity Product History --></relationshipLabel>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

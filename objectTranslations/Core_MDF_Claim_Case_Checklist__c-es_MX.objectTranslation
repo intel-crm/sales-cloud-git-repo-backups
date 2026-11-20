@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Claim Case Checklist --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Claim Case Checklist --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Checklist Status --></label>
+        <name>Core_MDF_AI_Checklist_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation><!-- Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Compliant</masterLabel>
+            <translation><!-- Non-Compliant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Generated Comments --></label>
+        <name>Core_MDF_AI_Generated_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case_ID --></label>
+        <name>Core_MDF_Case_ID__c</name>
+        <relationshipLabel><!-- Claim Case Checklists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Review Findings --></label>
+        <name>Core_MDF_Case_Review_Findings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Category --></label>
+        <name>Core_MDF_Checklist_Category__c</name>
+        <picklistValues>
+            <masterLabel>Attribution</masterLabel>
+            <translation><!-- Attribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branding</masterLabel>
+            <translation><!-- Branding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documentation</masterLabel>
+            <translation><!-- Documentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engagement</masterLabel>
+            <translation><!-- Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP</masterLabel>
+            <translation><!-- POP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submission</masterLabel>
+            <translation><!-- Submission --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Checklist Description --></label>
+        <name>Core_MDF_Checklist_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Item --></label>
+        <name>Core_MDF_Checklist_Item__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Line Number --></label>
+        <name>Core_MDF_Checklist_Line_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Status --></label>
+        <name>Core_MDF_Checklist_Status__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation><!-- Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Compliant</masterLabel>
+            <translation><!-- Non-Compliant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Claim Case Review Findings --></label>
+        <name>Core_MDF_Claim_Case_Review_Findings__c</name>
+        <picklistValues>
+            <masterLabel>Activity date mismatch</masterLabel>
+            <translation>Discrepancia de la fecha de la actividad</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity not completely delivered/partially delivered</masterLabel>
+            <translation>Actividad no entregada por completo/parcialmente entregada</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anti-corruption policy not met</masterLabel>
+            <translation>No se ha cumplido con la política anticorrupción</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balanced branding not met</masterLabel>
+            <translation>No se ha cumplido con la promoción de marcas equilibrada</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boost Ad Tagline not met</masterLabel>
+            <translation>No se cumple el lema de la publicidad de refuerzo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brand image violation</masterLabel>
+            <translation>Incumplimiento de la imagen de la marca</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branding documents altered</masterLabel>
+            <translation>Documentos de marca alterados</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims outside of 6 months claiming window</masterLabel>
+            <translation>Reclamaciones fuera del período para realizar reclamaciones, de 6 meses.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims outside of claiming window</masterLabel>
+            <translation>Reclamos fuera de la ventana de reclamos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitive element violation</masterLabel>
+            <translation>Violación de elemento de competidor</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consistency Issue</masterLabel>
+            <translation>Problema de consistencia</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost documents altered</masterLabel>
+            <translation>Documentos de costo alterados</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost documents altered/not valid</masterLabel>
+            <translation>Documentos de costos alterados o no válidos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate claims</masterLabel>
+            <translation>Reclamos duplicados</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible Product/Solution Not Prominent/Missing</masterLabel>
+            <translation>Solución o producto elegible no prominente o faltante</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible ad space error</masterLabel>
+            <translation>Error de espacio en anuncio elegible</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embargo countries</masterLabel>
+            <translation>Países de prohibición</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event prior approval violation</masterLabel>
+            <translation>Violación de aprobación previa al evento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event prior approval violation. Pre-review documentation violation</masterLabel>
+            <translation>Violación de aprobación previa del evento. Prerevisar violación de la documentación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exceeds Gift &amp; Entertainment guide</masterLabel>
+            <translation>Excede la guía de obsequios y entretenimiento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution date mismatch</masterLabel>
+            <translation>Incompatibilidad de la fecha de ejecución</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel Mention</masterLabel>
+            <translation>Mención de Intel incorrecta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel Processor Brands</masterLabel>
+            <translation>Marcas de procesadores Intel incorrectas</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel logo/sig ID</masterLabel>
+            <translation>Logotipo/identificación mediante firma de Intel incorrectos</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect LED selection</masterLabel>
+            <translation>Selección incorrecta de LED</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Product Executed</masterLabel>
+            <translation>Ejecución de un producto incorrecto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Program Selected</masterLabel>
+            <translation>Programa seleccionado incorrecto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect activity type/category</masterLabel>
+            <translation>Categoría/tipo de actividad incorrecto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect country submission</masterLabel>
+            <translation>Presentación de país incorrecta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect country submission/ Multiple countries submission</masterLabel>
+            <translation>Presentación de país incorrecto/presentación de múltiples países</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect/missing Additional Attribution</masterLabel>
+            <translation>Atribución adicional faltante o incorrecta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect/missing Intel mention</masterLabel>
+            <translation>Mención de Intel ausente/incorrecta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Artwork Violation</masterLabel>
+            <translation>Infracción de material gráfico de Intel</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel code name violation</masterLabel>
+            <translation>Violación de nombre de código de Intel</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel logo/sig ID altered</masterLabel>
+            <translation>Se ha alterado un logotipo/una identificación mediante firma de Intel</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid POC amount</masterLabel>
+            <translation>Monto de POC no válido</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid POC currency</masterLabel>
+            <translation>Moneda de POC no válida</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid rate card/calculation</masterLabel>
+            <translation>Tarjeta de porcentaje/cálculo no válido</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Intel Presence</masterLabel>
+            <translation>Presencia de Intel insuficiente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Landing Page Branding violation</masterLabel>
+            <translation>Incumplimiento del desarrollo de la marca en la página de inicio</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal Review violation</masterLabel>
+            <translation>Incumplimiento de la revisión legal</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing documents</masterLabel>
+            <translation>Documentos faltantes</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple invoices submission in one claim</masterLabel>
+            <translation>Envío de múltiples facturas en una reclamación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Negative brand impact</masterLabel>
+            <translation>Impacto negativo en la marca</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-eligible Intel product brand</masterLabel>
+            <translation>Marca de producto Intel no elegible</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-eligible product/solution</masterLabel>
+            <translation>Solución o producto no elegible</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-reimbursable costs</masterLabel>
+            <translation>Costos no reembolsables</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not promoting brand in positive manner</masterLabel>
+            <translation>No se promueve la marca de manera positiva</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation>Otros</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC date mismatch</masterLabel>
+            <translation>Falta de coincidencia de fecha de POC</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC detail submission error</masterLabel>
+            <translation>Error en presentación de detalles de POC</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POE documents altered</masterLabel>
+            <translation>Documentos de POE alterados</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP contain redaction</masterLabel>
+            <translation>POP contiene la redacción</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP not in acceptable format</masterLabel>
+            <translation>POP en formato no aceptable</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Path to Purchase prerequisite not met</masterLabel>
+            <translation>No se ha cumplido con el prerrequisito de Vía de compra</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promoting Non-Intel Product</masterLabel>
+            <translation>Promoción de productos que no son de Intel</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Execution altered</masterLabel>
+            <translation>Comprobante de realización alterado</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualified Processor Brands violation</masterLabel>
+            <translation>Incumplimiento de las marcas de procesadores calificados</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPIF underperformed</masterLabel>
+            <translation>SPIF con desempeño insatisfactorio</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third-party logos violation</masterLabel>
+            <translation>Infracción relacionada con logotipos de terceros</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trademark infringement</masterLabel>
+            <translation>Infracción de marca comercial</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Underperformed metrics/Not Meeting FMV</masterLabel>
+            <translation>Métricas no alcanzadas/FMV no cumplido</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unsupported domains</masterLabel>
+            <translation>Dominios no admitidos</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_MDF_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completion Percentage --></label>
+        <name>Core_MDF_Completion_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact Amount Summation --></label>
+        <name>Core_MDF_Impact_Amount_Summation_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact Amount(Local) --></label>
+        <name>Core_MDF_Impact_Amount__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Claim Case Checklist Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Enter Impact Amount (local) greater than or equal to 0 --></errorMessage>
+        <name>Core_MDF_Validate_NonCompliant_Responses</name>
+    </validationRules>
+</CustomObjectTranslation>

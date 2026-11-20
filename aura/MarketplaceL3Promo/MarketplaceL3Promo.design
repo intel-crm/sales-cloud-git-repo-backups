@@ -1,0 +1,4 @@
+<design:component label="L3 Promo">
+  <design:attribute name="headline" label="Promo Headline" />
+  <design:attribute name="copy" label="Promo Copy" />
+</design:component>

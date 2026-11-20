@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Lead_Intel</letterhead>
+    <name>MQL Qualified Lead not in SAL</name>
+    <style>freeForm</style>
+    <subject>MQL is not claimed by Sales.</subject>
+    <textOnly>Dear {!Lead.OwnerFirstName},
+
+The lead {!Lead.Name} from {!Lead.Company} has been Qualified and assigned to you.
+
+Click here to visit this lead record in SFDC
+
+As a reminder, the following SLA’s are expected for any MQL lead:
+If a Lead has been Qualified and Reassigned to you, you must either &apos;Claim&apos; the Lead to move the Stage to SAL or disposition the Lead if you are not pursuing. This should be completed within 3 days of assignment.
+
+Leads move to a terminated state if there is no activity for 30 days and 90 days since the creation date.
+
+Thank you.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

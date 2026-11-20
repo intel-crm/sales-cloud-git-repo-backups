@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Opportunity kpi history should not be created on full refresh kpi.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>IsFullRefresh__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsFullRefresh</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core_KPI_FullRefresh_Check</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Scorecard__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Scorecard__c.Recovery_Summary__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Scorecard__c$Id</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Scorecard__c$Core_MDF_Previous_Closed_Quarter_nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Scorecard__c$Core_MDF_Quarter__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Scorecard__c.Recovery_Summary__r$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Blank</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Scorecard without Recovery Summary</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_MDF_Scorecard_with_Recovery_Summary__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+</Report>

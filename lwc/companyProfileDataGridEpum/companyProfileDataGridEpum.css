@@ -1,0 +1,35 @@
+.sectionHeading {
+	color: #555555;
+	font-size: 22px;
+}
+
+.subHeading {
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-left: 1.7rem;
+}
+
+.subHeadingComp {
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.dataTableScale {
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 400; */
+}
+
+@media screen and (max-width: 800px) {
+    .mainCompMargin{
+        margin: 0rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .pageTitle{
+        padding-left:0.5rem !important;
+        padding-right:0.5rem !important;
+    }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SECADD_ADMIN_NOTIFICATION_SPA_ES</name>
+    <style>none</style>
+    <subject>Revise la solicitud pendiente</subject>
+    <textOnly>Revise la solicitud pendiente
+
+{!UserName}:
+
+Por favor, revise la siguiente solicitud: Agregar a {{CONTACTEMAILID}} a su cuenta {{ACCOUNTNAME}} como contacto.
+
+Inicie sesión para aprobar o rechazar la solicitud .
+
+
+Gracias,
+su equipo de la Alianza Intel® para socios
+
+Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

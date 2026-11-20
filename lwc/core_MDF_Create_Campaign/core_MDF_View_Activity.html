@@ -1,0 +1,20 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+      active-section-name={activeSections}>
+      <lightning-accordion-section name="A" label="Information">
+        <template for:each={recToRender} for:item="rec">
+          
+            <div class="slds-form__item" role="listitem" key={recfield.name}>
+              <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                <span class="slds-form-element__label"></span>
+                  <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{rec.fieldValue}
+                    </div>
+                  </div>
+           
+              </div>
+            </div>
+         </template>
+      </lightning-accordion-section>
+    </lightning-accordion>
+    </template>

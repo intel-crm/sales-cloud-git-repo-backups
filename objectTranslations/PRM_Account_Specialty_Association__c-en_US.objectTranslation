@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Specialty Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Specialty Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select only IPA Accounts --></errorMessage>
+        </lookupFilter>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Account Specialty Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Type --></label>
+        <name>PRM_Account_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>PRM_Notes_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty/Select Benefit --></label>
+        <lookupFilter>
+            <errorMessage><!-- You cannot assign inactive specialty to an account --></errorMessage>
+        </lookupFilter>
+        <name>PRM_Specialty_Id__c</name>
+        <relationshipLabel><!-- Account Specialty Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Specialty_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Change Date --></label>
+        <name>PRM_Status_Change_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason --></label>
+        <name>PRM_Status_Reason_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suppress Email --></label>
+        <name>PRM_Suppress_Email__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Specialty association cannot be removed, use the inactive indicator to remove the specialty --></errorMessage>
+        <name>PRM_specialty_removal</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BES Inbound Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BES Inbound Messages</value>
+    </caseValues>
+    <fields>
+        <label><!-- BES Outbound --></label>
+        <name>Core_BES_Outbound__c</name>
+        <relationshipLabel><!-- BES Inbound Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inbound Message ID --></label>
+        <name>Core_IPS_Inbound_Message_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

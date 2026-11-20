@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Profile Region</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Profile Regions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Marketing Profile ID --></label>
+        <name>PMP_Company_Id__c</name>
+        <relationshipLabel><!-- Marketing  Profile Regions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>PMP_Company_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Region --></label>
+        <name>PMP_Company_Sub_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification --></label>
+        <name>PMP_Specification_Id__c</name>
+        <relationshipLabel><!-- Marketing Profile Regions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Specification Value --></label>
+        <name>PMP_Specification_Value__c</name>
+        <relationshipLabel><!-- Marketing Profile Regions --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

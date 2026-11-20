@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_IPS_Intel_Support_Owner__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>wayne_yao@smoothcompute.com,dijon_lou@smoothcompute.com,Alex_wu@smoothcompute.com,dylan_yu@smoothcompute.com,sorain_xu@smoothcompute.com,Lucas_zhang@smoothcompute.com,Gene_wang@smoothcompute.com,Tate_gu@smoothcompute.com,Hale_yin@smoothcompute.com,willis_wei@smoothcompute.com,Simon_wang@smoothcompute.com,Kent_zhang@smoothcompute.com,five_yu@smoothcompute.com,julian_zhang@smoothcompute.com,Nick_wu@smoothcompute.com,Levin_lu@smoothcompute.com,Gina_zhang@smoothcompute.com,Elk_sun@smoothcompute.com,Jett_zhu@smoothcompute.com,Hubert_huo@smoothcompute.com,Shelby_yang@smoothcompute.com,Ryan_zhu@smoothcompute.com,yuki_wang@smoothcompute.com,Eason.yan@smoothcompute.com,pony_ma@smoothcompute.com,robot_lei@smoothcompute.com,leon_han@smoothcompute.com,Leo_zhang@smoothcompute.com,Luna_wang@smoothcompute.com,royland_luo@smoothcompute.com,sean_dai@smoothcompute.com,Funkie_ying@smoothcompute.com,bob_zhou@smoothcompute.com,Dawn_dai@smoothcompute.com,orion_zhang@smoothcompute.com,fyre_liu@smoothcompute.com,shine_sun@smoothcompute.com,tle_xu@smoothcompute.com,neo_yang@smoothcompute.com,luka_jiang@smoothcompute.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMAIL</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ethan_zhou@smoothcompute.com,Bobbie_bie@smoothcompute.com,Ryan_li@smoothcompute.com,Jeff_wang@smoothcompute.com,tango_zhao@smoothcompute.com,jerry_feng@smoothcompute.com,gary_cen@smoothcompute.com,Howie_wang.@smoothcompute.com,Nora_meng@smoothcompute.com,Dewey_lin@smoothcompute.com,Nova_wang@smoothcompute.com,yang_ou@smoothcompute.com,Ryan_Han@smoothcompute.com,Kaim_zhu@smoothcompute.com,Harry_liu@smoothcompute.com,Podcast_zhai@smoothcompute.com,Eva_zhang@smoothcompute.com,CC_zeng@smoothcompute.com,peanut_feng@smoothcompute.com,ken_dong@smoothcompute.com,zir_wang@smoothcompute.com,Frye_wei@smoothcompute.com,steven_li@smoothcompute.com,vinsmoke_liu@smoothcompute.com,elio_zhang@smoothcompute.com,edward_lv@smoothcompute.com,evan_gu@smoothcompute.com,cherry_xu@smoothcompute.com,vivian_liu@smoothcompute.com,Noah_Liu@smoothcompute.com,costa_w@smoothcompute.com,Bruce_li@smoothcompute.com,Jason_li@smoothcompute.com,Rachel_sun@smoothcompute.com,Henry_he@smoothcompute.com,William_wang@smoothcompute.com,Blake_yue@smoothcompute.com,sunny_pang@smoothcompute.com,kevin_liu@smoothcompute.com,matthew_xue@smoothcompute.com</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Contact Report by Email - Smoothcompute</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

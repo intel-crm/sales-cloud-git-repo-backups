@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Marquee Marketplace</masterLabel>
+    <description>Customizable marquee component for the Level 0 (Home), Level 1, and Level 2 Marketplace Pages</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="dynamicMarquee" type="Boolean" default="false" label="Overwrite with dynamic data" description="Marquee values are overwritten with data from the Redux 'ui' store in the Application State. Example: L2 Category Pages"/>
+            <property name="backgroundVariant" type="String" default="classic-blue-gradient" label="Background Variant" datasource="mosaic-l0,mosaic-l1,mosaic-l2,classic-blue-gradient,blue-steel-solid"/>
+            <property name="title" type="String" default="Lorem Ipsum Title" label="Title"/>
+            <property name="subtitle" type="String" default="Lorem Ipsum Subtitle" label="Subtitle"/>
+            <property name="ctaLabel" type="String" default="Intel Home" label="CTA Label"/>
+            <property name="ctaExternalUrl" type="String" default="www.intel.com" label="CTA External Url"/>
+            <property name="showCaret" type="Boolean" default="false" label="Show Caret Icon?"/>
+            <property name="ctaCommPage" type="String" default="" label="CTA Community Page (API name)"/>
+            <property name="showSearch" type="Boolean" default="false" label="Show search?"/>
+            <property name="alignment" type="String" label="Select content alignment" datasource="left,center"/>
+            <property name="analyticsPageType" type="String" default="" label="Analytics data in JSON string format"/>
+            <property name="doAnalytics" type="Boolean" default="true" label="Make analytics call?"/>
+            <property name="isHomePage" type="Boolean" default="false" label="Is Home Page ?"/>
+            <property name="isOfferingPage" type="Boolean" default="true" label="Is Offering Page?"/>
+            <property name="isPartnerPage" type="Boolean" default="false" label="Is Partner Page?"/>
+            <property name="pageType" type="String" label="Select Page Type" datasource="Home,Partner,Offering"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

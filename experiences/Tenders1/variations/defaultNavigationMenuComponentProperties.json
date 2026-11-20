@@ -1,0 +1,15 @@
+{
+  "componentVariants" : [ {
+    "id" : "30c58320-7345-4082-9b36-399b95ac11a3",
+    "propertyOverrides" : {
+      "componentAttributes" : {
+        "NavigationMenuEditorRefresh" : "PSG_Menu"
+      }
+    },
+    "targetId" : "c1d970fe-30af-4a11-acd8-98157882684d",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Default_Navigation_Menu_Component_Properties",
+  "id" : "63e342c7-f6f0-4262-9641-cd687888f94c",
+  "type" : "experienceVariation"
+}

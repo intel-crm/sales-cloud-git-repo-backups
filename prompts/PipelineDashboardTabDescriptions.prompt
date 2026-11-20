@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Pipeline Dashboard (Tab Descriptions)</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/pipeline-management-dashboard/#Learn_about_the_Tabs</actionButtonLink>
+        <body>&lt;p&gt;The following data set tabs are provided within the Pipeline Management Dashboard:&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Overview&lt;/strong&gt;: Provides a quick view of your Pipeline by date and stage/size.&amp;nbsp;This dashboard is where you find the “snake ate the pig” chart!&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Team Opportunities&lt;/strong&gt;: Managers can get a view of their team’s Pipeline Contribution.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Breakout&lt;/strong&gt;: Reviews performance at the Product Line item level.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;At Risk&lt;/strong&gt;: View Opportunities that have 1 or more Products flagged At Risk.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Opportunity Creation&lt;/strong&gt;: Provides details regarding Opportunities created per month and their current stage.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Pipeline Confidence&lt;/strong&gt;: View Pipeline Confidence metrics. Individual metrics can be viewed by Sales Group, Managers, or Opportunity Owners. Opportunity summary table is also shown.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;KPIs&lt;/strong&gt;: View all Tier 1 Deal/Design KPIs in one place by Stage and Account impacting KPIs.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Pipeline Dashboard (Tab Descriptions)</description>
+        <displayType>DockedComposer</displayType>
+        <header>Pipeline</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Pipeline Dashboard (Tab Descriptions)</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Tab Descriptions</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

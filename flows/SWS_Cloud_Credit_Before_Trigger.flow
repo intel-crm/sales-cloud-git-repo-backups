@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Compute_Section_NA</name>
+        <label>Compute Section NA</label>
+        <locationX>182</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_HW_Compute_Quantity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Additional_compute_platform_details_Giveaway</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Compute_Service_Requirements__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Compute_Service_Requirements_Giveaway</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Coupon_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Standard – Covers 2 appr. weeks of continuous bare-metal system access</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Use_Case__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Use_Case_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Use_Case_Details_Giveaway</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Custom_Coupon_Request__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Custom_Coupon_Request_Giveaway</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Event_Compute_Environment_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Event_Compute_Environment_Details_GiveWay</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Is_Standard__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>One_Time_External_Event</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_End_Date_and_Num_of_Users</name>
+        <label>Update End Date and Num of Users</label>
+        <locationX>182</locationX>
+        <locationY>995</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Expiry_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_End_Date_for_OneTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_No_Of_User__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Num_Of_Users_for_OneTime</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_Submitter_Checkbox</name>
+        <label>Update Submitter Checkbox</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Submitter_Requster_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Submitter_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SubmitterFullName</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Is_Coupon_Give_Away</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Submitter_Details</name>
+        <label>Update Submitter Details</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Submitter_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.SWS_Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SWS_Submitter_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SubmitterFullName</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Is_Coupon_Give_Away</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Is_Coupon_Give_Away</name>
+        <label>Check Is Coupon Give Away</label>
+        <locationX>314</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>One_Time_External_Event</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Coupon_A_Give_Away</name>
+            <conditionLogic>1 AND 2</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SWS_Is_Giveaway__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CreatedById</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.PRM_IPARegistration_Integration_UserId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Compute_Section_NA</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Is Coupon A Give Away</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Submitter_Details</name>
+        <label>Check Submitter Details</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_Is_Coupon_Give_Away</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Submitter_Checkbox</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SWS_Submitter_Requster_Email__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SWS_First_Name__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SWS_Last_Name__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SWS_Email__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SWS_Email__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.SWS_Submitter_Email__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Submitter_Details</targetReference>
+            </connector>
+            <label>Check Submitter Checkbox</label>
+        </rules>
+        <rules>
+            <name>Check_Email_Address</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SWS_Email__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.SWS_Submitter_Email__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Submitter_Checkbox</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Check Email Address</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>One_Time_External_Event</name>
+        <label>One Time External Event</label>
+        <locationX>314</locationX>
+        <locationY>887</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Populate_End_Date_and_Num_of_Users</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SWS_Request_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>One_time_external_event</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SWS_Event_Start_Date__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.SWS_Event_Start_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SWS_Number_of_Participants__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.SWS_Number_of_Participants__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_End_Date_and_Num_of_Users</targetReference>
+            </connector>
+            <label>Populate End Date and Num of Users</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Additional_compute_platform_details_Giveaway</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.SWS_Is_Giveaway__c}, IF(ISBLANK({!$Record.SWS_HW_Compute_Quantity__c}),&apos;N/A&apos;,{!$Record.SWS_HW_Compute_Quantity__c}),{!$Record.SWS_HW_Compute_Quantity__c})</expression>
+    </formulas>
+    <formulas>
+        <name>Calculate_End_Date_for_OneTime</name>
+        <dataType>Date</dataType>
+        <expression>IF(ISPICKVAL({!$Record.SWS_Request_Type__c}, &apos;One_time_external_event&apos;), IF(ISBLANK({!$Record.SWS_Event_Start_Date__c}),{!$Record.SWS_Expiry_Date__c}, 
+	IF({!$Record__Prior.SWS_Event_Start_Date__c}={!$Record.SWS_Event_Start_Date__c},
+	 {!$Record.SWS_Expiry_Date__c},ADDMONTHS({!$Record.SWS_Event_Start_Date__c},3))), null)</expression>
+    </formulas>
+    <formulas>
+        <name>Calculate_Num_Of_Users_for_OneTime</name>
+        <dataType>Number</dataType>
+        <expression>IF(	ISPICKVAL({!$Record.SWS_Request_Type__c}, &apos;One_time_external_event&apos;), 
+	
+	IF(ISBLANK({!$Record.SWS_Number_of_Participants__c}), {!$Record.SWS_No_Of_User__c}, 
+		
+		IF(
+			
+					OR( 
+						NOT(ISNUMBER({!$Record.SWS_Number_of_Participants__c})),
+						AND(
+							NOT({!$Record__Prior.SWS_Number_of_Participants__c}={!$Record.SWS_Number_of_Participants__c}),
+							OR(
+								AND(
+									NOT(REGEX(({!$Record.SWS_Number_of_Participants__c}),&quot;^-?\\d+$&quot;)),
+									NOT(VALUE({!$Record.SWS_Number_of_Participants__c})=0)
+								),
+								OR(VALUE({!$Record.SWS_Number_of_Participants__c}) &lt; 1,VALUE({!$Record.SWS_Number_of_Participants__c}) &gt; 50)
+							)
+						)	
+					),
+		
+		{!$Record.SWS_No_Of_User__c},
+		
+		VALUE({!$Record.SWS_Number_of_Participants__c})  ))
+, null)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Compute_Service_Requirements_Giveaway</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.SWS_Is_Giveaway__c}, IF(ISBLANK({!$Record.SWS_Compute_Service_Requirements__c}),&apos;N/A&apos;,{!$Record.SWS_Compute_Service_Requirements__c}),{!$Record.SWS_Compute_Service_Requirements__c})</expression>
+    </formulas>
+    <formulas>
+        <name>Custom_Coupon_Request_Giveaway</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.SWS_Is_Giveaway__c}, IF(ISBLANK({!$Record.SWS_Custom_Coupon_Request__c}),&apos;N/A&apos;,{!$Record.SWS_Custom_Coupon_Request__c}),{!$Record.SWS_Custom_Coupon_Request__c})</expression>
+    </formulas>
+    <formulas>
+        <name>Event_Compute_Environment_Details_GiveWay</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.SWS_Is_Giveaway__c}, IF(ISBLANK({!$Record.SWS_Event_Compute_Environment_Details__c}),&apos;N/A&apos;,{!$Record.SWS_Event_Compute_Environment_Details__c}),{!$Record.SWS_Event_Compute_Environment_Details__c})</expression>
+    </formulas>
+    <formulas>
+        <name>SubmitterFullName</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.SWS_First_Name__c} + &apos; &apos; + {!$Record.SWS_Last_Name__c}</expression>
+    </formulas>
+    <formulas>
+        <name>Use_Case_Details_Giveaway</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.SWS_Is_Giveaway__c}, IF(ISBLANK({!$Record.SWS_Use_Case_Details__c}),&apos;N/A&apos;,{!$Record.SWS_Use_Case_Details__c}),{!$Record.SWS_Use_Case_Details__c})</expression>
+    </formulas>
+    <interviewLabel>SWS: Cloud Credit Before Trigger {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SWS: Cloud Credit Before Trigger</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Submitter_Details</targetReference>
+        </connector>
+        <object>SWS_Cloud_Credit_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

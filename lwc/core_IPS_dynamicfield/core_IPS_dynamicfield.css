@@ -1,0 +1,25 @@
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+.lgc-bg-inverse {
+    background-color: rgb(22, 50, 92);
+}
+/*Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area*/
+.showRequired {
+    border:2px solid #cc0000;
+    border-radius: 5px;
+    box-sizing: border-box;
+   
+}
+.required-asterisk {
+    color: #cc0000;
+ 
+}
+
+.lengtherr{
+    display: block;
+    color: #cc0000;
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+/*Sowmya end*/

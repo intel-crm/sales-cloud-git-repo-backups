@@ -1,0 +1,33 @@
+<apex:page controller="Core_AAQ_TabOverride_Controller" action="{!onLoadPage}">
+    <!--  Begin Default Content REMOVE THIS-->
+    <style>
+        
+        #AaqId td, table th {
+        padding: 1%; 
+        }
+        #AaqId tr {
+        background:#eef1f2;
+        }
+        #AaqId tr td, #AaqId th {
+        border-bottom:#ccc 1px solid; 
+        }
+        
+    </style>
+    
+       
+    <table id="AaqId" cellpadding="0" cellspacing="0" >
+        <tr><th  colspan="2" style="font-weight: bold;text-align: left;font-size:14px;padding-left:20px;background:#1797c0; color:#fff;">
+ <H1 style="position:relative;" > Please Select a Topic  </H1></th>
+ </tr>
+        
+        <apex:repeat var="profiles" value="{!categoryColumn}">
+            <tr><td>
+                <a href="{!profiles.Core_Profile_Url__c}" target="_blank" id="{!profiles.Name}">
+                    <!-- Image size previously  220 X 150 <H1>{!profiles.Name}</H1><br/>-->
+                    <apex:image url="{!URLFOR($Resource.Core_AAQImage, profiles.Core_Profile_Image__c)}" width="195 " height="45" /></a> </td><td style="vertical-align: middle;padding-left:30px;padding-top:15px;font-size:15px;text-align: justify;"><apex:outputText value="{!JSENCODE(profiles.Core_Description__c)}{!JSENCODE(profiles.Core_Description2__c)}" escape="false"/></td></tr>
+        </apex:repeat>
+    </table> 
+         <script type="text/javascript">
+            document.getElementById('Commisions').target='_self';
+       </script> 
+</apex:page>

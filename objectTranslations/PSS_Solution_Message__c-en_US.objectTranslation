@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Messages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Internal Message --></label>
+        <name>PSS_Internal_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- User --></help>
+        <label><!-- Message By User Id --></label>
+        <name>PSS_Message_By_Id__c</name>
+        <relationshipLabel><!-- Solution Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message By User Name --></label>
+        <name>PSS_Message_By_User_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- survey message --></help>
+        <label><!-- Message --></label>
+        <name>PSS_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Message Type --></help>
+        <label><!-- Message Type --></label>
+        <name>PSS_Message_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Message</masterLabel>
+            <translation><!-- Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Status</masterLabel>
+            <translation><!-- Status --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Survey Message Date --></help>
+        <label><!-- Message Date --></label>
+        <name>PSS_Message_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Survey result status --></help>
+        <label><!-- Survey Result Status --></label>
+        <name>PSS_Survey_Result_Status_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

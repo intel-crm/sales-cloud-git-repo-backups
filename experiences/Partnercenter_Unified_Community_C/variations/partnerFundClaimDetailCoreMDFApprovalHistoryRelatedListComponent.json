@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "3bcb9762-8b02-4d08-9670-dd4d79ae0c61",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "fecc606e-9e73-4f22-9e37-cbd0b7c23a8a",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Partner_Fund_Claim_Detail_core_MDF_ApprovalHistoryRelatedList_Component",
+  "id" : "fc2d3217-5a22-43eb-ac9e-9ea74ff3b9f8",
+  "type" : "experienceVariation"
+}

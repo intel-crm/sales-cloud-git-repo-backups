@@ -1,0 +1,86 @@
+:host {
+  width: 100%;
+}
+
+.banner-wrapper {
+  background: var(--daisy-tint1);
+  display: flex;
+  height: 6rem;
+  padding: .5rem 1rem 1rem .5rem;
+}
+
+.banner-wrapper h4 {
+  width: 76%;
+}
+
+.banner-img {
+  flex: 0 1 auto;
+  padding-right: 1rem;
+}
+
+.banner-img img {
+  max-height: 3rem;
+  max-width: 5.5rem;
+}
+
+.banner-link {
+  display: none;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .banner-img {
+    display: flex;
+  }
+
+  .banner-img img {
+    max-height: 5rem;
+    max-width: 9rem;
+  }
+
+  .banner-link {
+    display: block;
+    margin-left: auto;
+    text-align: right;
+    width: 35%;
+    --link: var(--black);
+    --linkHover: var(--black);
+  }
+
+  .banner-wrapper {
+    align-items: center;
+    height: 7.25rem;
+    justify-content: space-between;
+    max-height: unset;
+    padding: 1rem;
+  }
+
+  .banner-wrapper h4 {
+    width: 35%;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .banner-img {
+    display: flex;
+  }
+
+  .banner-img img {
+    max-height: 5.5rem;
+    max-width: 10rem;
+  }
+
+  .banner-link {
+    width: 40%;
+  }
+
+  .banner-wrapper {
+    height: 6.5rem;
+    padding: .5rem 1.5rem .5rem .5rem;
+  }
+
+  .banner-wrapper h4 {
+    width: 33%;
+  }
+}

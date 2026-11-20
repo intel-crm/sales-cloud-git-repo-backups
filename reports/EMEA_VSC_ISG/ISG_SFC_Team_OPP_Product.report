@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_24761292</developerName>
+        <masterLabel>Brands</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Core_Write_In_Product_Name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>HP  Tablet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Desktop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Laptop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Server</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HP Tablet</sourceValue>
+            </sourceValues>
+            <value>HP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Dell Desktop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dell Laptop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dell Netbook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dell Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dell Server</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dell Tablet</sourceValue>
+            </sourceValues>
+            <value>Dell</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Asus Chromebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Asus Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Asus Tablet</sourceValue>
+            </sourceValues>
+            <value>Asus</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Acer Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ACER SWITCH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Acer Chromebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Acer Desktop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Acer Tablet</sourceValue>
+            </sourceValues>
+            <value>Acer</value>
+        </values>
+        <values>
+            <value>Sony</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Samsung Tablet</sourceValue>
+            </sourceValues>
+            <value>Samsung</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Toshiba Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Toshiba Laptop</sourceValue>
+            </sourceValues>
+            <value>Toshiba</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>INTEL® EDISON BOARDS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>INTEL® ETHERNET CONTROLLER I210 SERIES</sourceValue>
+            </sourceValues>
+            <value>Intel</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lenovo 2-in-1</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo All-in-One</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Desktop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Tablet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Laptop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Server</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Tiny 900M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lenovo Ultrabook</sourceValue>
+            </sourceValues>
+            <value>Lenovo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Fujitsu Desktop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fujitsu Notebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fujitsu Ultrabook</sourceValue>
+            </sourceValues>
+            <value>Fujitsu</value>
+        </values>
+        <values>
+            <value>Apple</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <field>SERVICE_DATE</field>
+    </columns>
+    <columns>
+        <field>SERVICE_MONTH</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_CUSTOMER_ID</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_ACTIVE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <description>ISG SFC Team OPP#Product</description>
+    <filter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Petra Liening,Jalaj Batta,Emmanuel Musese</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Write_In_Product_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_24761292</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_Write_In_Product_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Country__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ISG SFC Team OPP#Product</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2016-05-06</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-04-03</startDate>
+    </timeFrameFilter>
+</Report>

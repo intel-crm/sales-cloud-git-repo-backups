@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Registration_Request_Acknowledgement_Email_JPN</name>
+    <style>none</style>
+    <subject>インテル® パートナー・アライアンス申請を受け取りました</subject>
+    <textOnly>申請を手続きしています
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} 様、
+
+
+申請をいただき、ありがとうございます。申請の手続きには 3 営業日ほどかかることをご了承ください。
+ご質問がある場合は、こちらへご連絡ください https://signin.intel.com/ContactUs?Culture=ja-jp。
+
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+プライバシー・ポリシー  |  Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

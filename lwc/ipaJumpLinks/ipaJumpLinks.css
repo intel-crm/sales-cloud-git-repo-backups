@@ -1,0 +1,24 @@
+button.active-section {
+  border-left: .3rem solid var(--energy-blue);
+  color: var(--carbon-shade2);
+}
+
+.border-non-active {
+  border-left: .3rem solid transparent;
+}
+
+.padding-link {
+  padding-left: 1.25rem;
+}
+
+.padding-top-link {
+  padding-top: .5rem;
+}
+
+.padding-bottom-link {
+  padding-bottom: .5rem;
+}
+
+.link-text-alignment {
+  text-align: left;
+}

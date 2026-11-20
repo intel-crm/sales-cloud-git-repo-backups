@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account_Status__c.Account__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Account_Status__c.Status_Update__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account_Status__c.Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Qwilt,Pindrop,Affirm,datadog,Elevenlabs,hubspot,shopify,tempus,Grammarly,Fireworks AI,Thinking Machines Lab,Klaviyo,Figma,Turboscale,OpenAI,reddit,pindrop,hippocratic AI,Roku,Samsara,Cursor,Discord,Docusign,Airtable,Kore.ai,SentinelOne,Turing,Vercel,Aisera,Chime,Duolingo,Observe.AI,Perplexity,Sharon AI,Smartling,Vertical Data,Anthropic,Character.AI,ReflectionAI,Cirrascale,Cognosphere,Dataminr,Netskope,Fluidstack</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account_Status__c.Core_Account_Status_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>N/A</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account_Status__c.Core_Account_Status_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>AI &amp; FF50 Account Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Status__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account_Status__c.Core_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

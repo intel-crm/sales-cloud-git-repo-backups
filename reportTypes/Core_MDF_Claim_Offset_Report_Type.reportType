@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Core_MDF_Claim_Offset__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Claim offset</description>
+    <label>Claim Offset</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_CreatedBy_Nm__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date offset (by offset claim #)</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offset amount (by offset claim #)</displayNameOverride>
+            <field>Core_MDF_Offset_Amount_Amt__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Offset_Claim_Nbr__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offset Claim #</displayNameOverride>
+            <field>Core_MDF_Offset_Claim_Nbr__c.Core_MDF_Claim_Ref_Number__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_AccountCompany__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Adjustment #</displayNameOverride>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Claim_Ref_Number__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Program</displayNameOverride>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c.Request.Core_MDF_Program__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Country_Location_nm__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Type</displayNameOverride>
+            <field>Core_MDF_Adjustment_Claim_Nbr__c.Core_MDF_Type_Txt__c</field>
+            <table>Core_MDF_Claim_Offset__c</table>
+        </columns>
+        <masterLabel>Claim Offsets</masterLabel>
+    </sections>
+</ReportType>

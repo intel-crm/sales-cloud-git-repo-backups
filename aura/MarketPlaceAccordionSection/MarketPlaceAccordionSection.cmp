@@ -1,0 +1,42 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="name" type="string" required="true" />
+  <aura:attribute name="id" type="string" />
+  <aura:attribute name="label" type="string" />
+  <aura:attribute name="class" type="string" />
+    
+  <aura:attribute name="headerClass" type="string" />
+  <aura:attribute name="open" type="boolean" default="false" description="Internal attribute only." />
+  <aura:attribute name="openOnInit" type="boolean" description="Expand section on init." />
+  <aura:attribute name="ontoggle" type="object" />
+
+  <aura:attribute name="hasCheckbox" type="boolean" />
+  <aura:attribute name="isCheckboxChecked" type="boolean" />
+  <aura:attribute name="checkboxCallback" type="object" />
+    
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div class="{! join(' ' , v.class ? v.class : '', 'accordionSection')}">
+    <div
+      class="{! join(' ', (v.open ? 'open' : ''), v.headerClass ? v.headerClass : '', 'accordionSectionHeader slds-p-around_small')}">
+      <h4 class="{!v.hasCheckbox ? 'hasCheckbox' : ''}">	          
+        <a href="javascript:void(0);" onclick="{!c.handleToggleOpen}">
+          <aura:if isTrue="{!v.hasCheckbox}">
+            <div onclick="{!c.ignoreParentClick}" class="slds-show_inline-block slds-p-bottom_xxx-small" style="transform: translateY(-1px);">
+              <lightning:input onchange="{!c.handleCheckbox}" name="{!v.label}" type="checkbox" checked="{!v.isCheckboxChecked}" variant="label-hidden" />
+            </div>
+          </aura:if>
+          {!v.label} 
+          <span class="icon">
+            <lightning:icon iconName="{!v.open ? 'utility:chevronup' : 'utility:chevrondown'}" />
+          </span>
+        </a>    
+      </h4>
+    </div>
+
+    <aura:if isTrue="{!v.open}">
+      {!v.body}
+    </aura:if>
+  </div>
+
+</aura:component>

@@ -1,0 +1,53 @@
+<aura:component extends="c:MarketplaceBaseComponent">
+
+  <aura:attribute name="activeStep" type="integer" description="The 'active' step is the farthest along but incomplete step in the wizard process."/>
+  <aura:attribute name="currentStep" type="integer" description="The 'current' step is the step currently being shown."/>
+  <aura:attribute name="currentStepValid" type="boolean" description="Tells if the current step is valid, and the user can proceed." />
+
+  <aura:attribute name="pathLabels" type="string[]" description="This tells the component the number of steps and their labels."/>
+  <aura:attribute name="onchange" type="object" description="This is a callback for selecting a progress step."/>
+
+  <aura:attribute name="scrollOffset" type="integer" default="0"  description="Internal component state"/>
+  <aura:attribute name="scrollable" type="boolean" default="false" description="Internal component state"/>
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:handler name="change" value="{!v.activeStep}" action="{!c.handleActiveChange}" />
+
+  <div class="{!v.appState.Settings.currentScreenSize == 'desktop' ? '' : 'slds-region_small'}">
+    <div class="{!(v.appState.Settings.currentScreenSize == 'desktop' ? '' : ' slds-has-overflow slds-grid slds-path__track')}">
+      <div class="slds-grid slds-path__scroller-container">
+        <div class="slds-path__scroller" role="application">
+          <div class="slds-path__scroller_inner">
+            <div class="{!v.appState.Settings.currentScreenSize == 'desktop' ? '' : ' slds-path__nav'}" aura:id="outer">
+              <ul class="slds-path__nav ulInner" aura:id="inner-scroll" role="tabset" aria-orientation="horizontal">
+                <aura:iteration items="{!v.pathLabels}" var="path" indexVar="i">
+                  <c:MarketplaceCreateProductProgressBarStep idx="{!i}"
+                    aura:id="progress-step"
+                    title="{!path}"
+                    active="{!i == v.activeStep}"
+                    complete="{!and(i lt v.activeStep, i != v.currentStep)}"
+                    incomplete="{!i gt v.activeStep}"
+                    current="{!i == v.currentStep}"
+                    onClickCallback="{!v.onchange}"
+                    />
+                </aura:iteration>
+              </ul>
+            </div>
+            <div class="slds-path__scroll-controls">
+              <button  class="slds-button slds-button_icon slds-button_icon-border-filled"  title="Scroll left" data-direction="prev" tabindex="-1" onclick="{!c.handlePaddleClick}">
+                <lightning:icon class="icn" iconName="utility:left" size="small" />
+                <span class="slds-assistive-text">Scroll left</span>
+              </button>
+              <button class="slds-button slds-button_icon slds-button_icon-border-filled" title="Scroll right" data-direction="next" tabindex="-1" onclick="{!c.handlePaddleClick}">
+                <lightning:icon class="icn" iconName="utility:right" size="small" />
+                <span class="slds-assistive-text">Scroll right</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</aura:component>

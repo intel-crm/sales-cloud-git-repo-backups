@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Child Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Child Batches</value>
+    </caseValues>
+    <fields>
+        <label><!-- ApexClassId --></label>
+        <name>espy__ApexClassId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ApexClassName --></label>
+        <name>espy__ApexClassName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asyncid --></label>
+        <name>espy__Asyncid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Monitoring --></label>
+        <name>espy__Batch_Monitoring__c</name>
+        <relationshipLabel><!-- Child Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CompletedDate --></label>
+        <name>espy__CompletedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- CreatedBy --></label>
+        <name>espy__CreatedBy__c</name>
+        <relationshipLabel><!-- Child Batches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CreatedDate --></label>
+        <name>espy__CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- CronExpression --></label>
+        <name>espy__CronExpression__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExtendedStatus --></label>
+        <name>espy__ExtendedStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- JobItemsProcessed --></label>
+        <name>espy__JobItemsProcessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- JobType --></label>
+        <name>espy__JobType__c</name>
+    </fields>
+    <fields>
+        <label><!-- NextFireTime --></label>
+        <name>espy__NextFireTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- NumberOfErrors --></label>
+        <name>espy__NumberOfErrors__c</name>
+    </fields>
+    <fields>
+        <label><!-- PreviousFireTime --></label>
+        <name>espy__PreviousFireTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>espy__Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- cronid --></label>
+        <name>espy__cronid__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

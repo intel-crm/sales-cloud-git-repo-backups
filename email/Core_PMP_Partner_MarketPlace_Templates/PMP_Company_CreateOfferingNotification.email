@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Action Required: You can now create Showcase Offering/s" recipientType="User" relatedToType="PMP_Company__c">
+    <messaging:htmlEmailBody >
+    
+        <c:PMP_PartnerCreateOffering partnerRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

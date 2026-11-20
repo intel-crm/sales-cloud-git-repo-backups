@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Quote Assigned Notification</name>
+    <style>none</style>
+    <subject>New Quote Assignement</subject>
+    <textOnly>Quote Assigned
+
+
+{!SBQQ__Quote__c.core_cpq_assigned_to_nm__c}
+
+A new Quote {!SBQQ__Quote__c.core_cpq_name_nm__c} is Assigned to you
+
+Quote assigned by: {!SBQQ__Quote__c.core_cpq_assigned_by_nm__c}
+
+
+Copyright © 2020 Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

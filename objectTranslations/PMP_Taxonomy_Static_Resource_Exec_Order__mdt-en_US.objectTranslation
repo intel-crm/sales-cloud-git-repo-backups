@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP Taxonomy Static Resource Exec Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP Taxonomy Static Resource Exec Orders</value>
+    </caseValues>
+    <fields>
+        <help><!-- Order of execution of taxonomy static resources --></help>
+        <label><!-- Execution Order --></label>
+        <name>Execution_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Static Resource Name --></label>
+        <name>Static_Resource_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

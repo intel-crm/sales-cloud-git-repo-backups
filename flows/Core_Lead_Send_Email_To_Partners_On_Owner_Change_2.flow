@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_Lead_Send_Email_To_Partners</name>
+        <label>Lead.Core_Lead_Send_Email_To_Partners</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <actionName>Lead.Core_Lead_Send_Email_To_Partners</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_Lead_Send_Email_To_Partners</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_the_Queue_Name</name>
+        <label>Check the Queue Name</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Queue.DeveloperName</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>QueueName</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Lead_Send_Email_To_Partners</targetReference>
+            </connector>
+            <label>Check Queue</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_Lead_Send_Email_To_Partners_On_Owner_Change workflow rule
+Workflow rule description: Workflow to send Email Notification to Partners when a lead is re-assigned from &apos;Invalid Partner Queue&apos; to another Partner Queue.&quot;</description>
+    <environments>Default</environments>
+    <label>Core_Lead_Send_Email_To_Partners_On_Owner_Change_2</label>
+    <migratedFromWorkflowRuleName>Core_Lead_Send_Email_To_Partners_On_Owner_Change</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Queue</name>
+        <label>Get Queue</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_the_Queue_Name</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner:Group.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Queue</targetReference>
+        </connector>
+        <filterFormula>AND  (  ISCHANGED({!$Record.OwnerId}),  PRIORVALUE({!$Record.OwnerId}) = CASESAFEID({!$Label.Core_Partner_Invalid_Queue_Id}),
+{!$Record.RecordType.Name} = &apos;Partner Lead&apos;, CONTAINS(TEXT({!$Record.Core_PSG_Lead__c}), &quot;PSG&quot;) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>QueueName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Core_PTNR</stringValue>
+        </value>
+    </variables>
+</Flow>

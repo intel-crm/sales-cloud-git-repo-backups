@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Core_MDF_Scorecard__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Scorecard with Recovery Dashboard</description>
+    <join>
+        <outerJoin>true</outerJoin>
+        <relationship>Recovery_Summary__r</relationship>
+    </join>
+    <label>Scorecard with Recovery Dashboard</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Name</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Previous_Closed_Quarter_nm__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Quarter__c</field>
+            <table>Core_MDF_Scorecard__c</table>
+        </columns>
+        <masterLabel>Scorecards</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Name</field>
+            <table>Core_MDF_Scorecard__c.Recovery_Summary__r</table>
+        </columns>
+        <masterLabel>Recovery Dashboard</masterLabel>
+    </sections>
+</ReportType>

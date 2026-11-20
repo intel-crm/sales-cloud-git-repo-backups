@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</name>
+        <label>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</label>
+        <locationX>577</locationX>
+        <locationY>466</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL_TRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdatesCore_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</targetReference>
+            </connector>
+            <label>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL_TRUE</label>
+        </rules>
+    </decisions>
+    <description>For LEAD WFs
+
+&apos; Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL &apos;
+&apos; Core_Lead_Reset_Lead_State_New &apos;</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>for the LEAD WF
+&apos;Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL&apos;</description>
+        <name>F_Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(  {!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,  ISCHANGED({!$Record.OwnerId}),  NOT(ISNULL({!$Record.Core_Meeting_Due_Date__c})),   ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;) )</expression>
+    </formulas>
+    <formulas>
+        <name>F_NULLDATETIME</name>
+        <dataType>DateTime</dataType>
+        <expression>NULL</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_ResetStateNew_OwnershipChangeTQL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_ResetStateNew_OwnershipChangeTQL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>for the Lead WF 
+
+&apos; Core_Lead_Reset_Lead_State_New &apos;</description>
+        <name>FieldUpdatesCore_Lead_Reset_Lead_State_New</name>
+        <label>FieldUpdatesCore_Lead_Reset_Lead_State_New</label>
+        <locationX>584</locationX>
+        <locationY>311</locationY>
+        <connector>
+            <targetReference>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Accepted__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Engaged__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_OnHold__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Open__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Rejected__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdatesCore_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</name>
+        <label>FieldUpdatesCore_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</label>
+        <locationX>313</locationX>
+        <locationY>465</locationY>
+        <inputAssignments>
+            <field>Core_Ownership_change_in_one_day_TQL__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>FieldUpdatesCore_Lead_Reset_Lead_State_New</targetReference>
+        </connector>
+        <filterFormula> AND( {!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,  ISCHANGED({!$Record.OwnerId} ))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

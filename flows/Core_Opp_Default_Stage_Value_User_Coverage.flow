@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Switch based on record types and created date</description>
+        <name>Switch</name>
+        <label>Switch</label>
+        <locationX>576</locationX>
+        <locationY>327</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>To_Assign_Opp_Default_Value</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CreatedDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012o0000000Gn17AAC</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012o0000000Gn19AAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Stage</targetReference>
+            </connector>
+            <label>To Assign Opp Default Value</label>
+        </rules>
+        <rules>
+            <name>Stamp_User_Coverage</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012o0000000Gn16AAC</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012o0000000Gn18AAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Update_Opportunity_Created_Coverage</targetReference>
+            </connector>
+            <label>Stamp User Coverage</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>F_StampUserCoverage</name>
+        <dataType>String</dataType>
+        <expression>TEXT( $Record.CreatedBy.Core_User_Coverage__c )</expression>
+    </formulas>
+    <interviewLabel>Core_StageValue_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Opp Default Stage Value &amp; User Coverage</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_Update_Opportunity_Created_Coverage</name>
+        <label>Core Update Opportunity Created Coverage</label>
+        <locationX>335</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Core_Opportunity_Created_Coverage_New__c</field>
+            <value>
+                <elementReference>F_StampUserCoverage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Stage</name>
+        <label>Update Stage</label>
+        <locationX>883</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Group Open</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Switch</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

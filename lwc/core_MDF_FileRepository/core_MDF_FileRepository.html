@@ -1,0 +1,97 @@
+<template>
+    <section class="repo-card">
+        <!-- Related List Header -->
+        <div class="slds-p-vertical_medium slds-p-horizontal_medium repo-header-related">
+            <lightning-icon icon-name="standard:file" size="small" class="header-icon">
+            </lightning-icon>
+            <span class="repo-header-text">
+                {mdfFileRepository}
+                <template if:true={files.length}>
+                    &nbsp;({files.length})
+                </template>
+            </span>
+        </div>
+        <div class="slds-p-bottom_medium">
+            <!-- Upload Section -->
+            <div class="slds-p-left_medium slds-p-bottom_medium">
+                <template if:true={hasFileManageAccess}>
+                    <template if:true={uploadAllowed}>
+                    <lightning-file-upload record-id={recordId} multiple class="upload-full"
+                        onuploadfinished={handleUploadFinished}>
+                    </lightning-file-upload>
+                </template>
+
+                </template>
+
+                <template if:false={uploadAllowed}>
+                    <div class="disabled-text slds-p-top_medium">
+                        {DocumentUploadDisabledMessage}
+                    </div>
+                </template>
+            </div>
+
+            <!-- Table -->
+            <template if:true={files.length}>
+                <div class="slds-p-horizontal_medium">
+                    <div class={tableContainerClass}>
+                        <lightning-datatable class={dataTableDetail} key-field="contentDocumentId" data={files} columns={columnsDetailPage}
+                            hide-checkbox-column onrowaction={handleRowAction} column-widths-mode="fixed">
+                        </lightning-datatable>
+                    </div>
+                    <template if:true={showViewAllButton}>
+                        <div class="view-all-container slds-m-top_x-small">
+                            <a class="slds-button slds-button_reset view-all-link" onclick={openModal}>
+                                {viewAll}
+                            </a>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template if:true={showNoRelatedFilesMessage}>
+                <div class="slds-p-vertical_medium slds-p-horizontal_medium empty-state">
+                    {NoMDFDocumentsUploadedMessage}
+                </div>
+            </template>
+        </div>
+    </section>
+    <!-- Modal -->
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">
+
+                <!-- Modal Header -->
+                <header class="slds-modal__header modal-header">
+                    <button class="slds-button slds-button_icon slds-modal__close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small">
+                        </lightning-icon>
+                    </button>
+                    <div>
+                        <lightning-icon icon-name="standard:file" size="small" class="header-icon slds-m-right_x-small">
+                        </lightning-icon>
+                        <span class="repo-header-text">
+                            {mdfFileRepository}
+                            <template if:true={files.length}>
+                                &nbsp;({files.length})
+                            </template>
+                        </span>
+                    </div>
+                </header>
+
+                <!-- Modal Body -->
+                <div class="slds-modal__content slds-p-around_small modal-body table-wrapper-popup">
+                    <lightning-datatable key-field="contentDocumentId" data={files} columns={columnsModal}
+                        hide-checkbox-column onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </div>
+
+                <!-- Modal Footer -->
+                <footer class="slds-modal__footer">
+                </footer>
+            </div>
+        </section>
+
+        <!-- Backdrop -->
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

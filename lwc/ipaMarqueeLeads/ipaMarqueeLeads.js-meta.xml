@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>49.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>IPA Marquee Leads</masterLabel>
+  <description>Customizable marquee component for Leads Pages</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="alignment" type="String" default="center" label="Select content alignment" datasource="left,center"/>
+      <property name="analyticsPageType" type="String" label="Analytics data in JSON string format"/>
+      <property name="backgroundVariant" type="String" default="classic-blue-gradient" label="Background Variant" datasource="mosaic-l0,mosaic-l1,mosaic-l2,classic-blue-gradient,blue-steel-solid"/>
+      <property name="recordId" type="String" label="Record Id" description="Automatically bind the page's record id to the component variable" default="{!recordId}"/>
+      <property name="subtitle" type="String" default="Lorem Ipsum Subtitle" label="Subtitle"/>
+      <property name="title" type="String" default="Lorem Ipsum Title" label="Title"/>
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

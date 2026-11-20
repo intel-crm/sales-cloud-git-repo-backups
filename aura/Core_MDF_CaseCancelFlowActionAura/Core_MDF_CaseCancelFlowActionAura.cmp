@@ -1,0 +1,7 @@
+<aura:component controller="Core_MDF_ClaimReviewCaseProcess" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:attribute name="recordId" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:flow aura:id="cancelCaseFlow" onstatuschange="{!c.handleStatusChange}" />
+</aura:component>

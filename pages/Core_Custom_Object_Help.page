@@ -1,0 +1,15 @@
+<apex:page showHeader="false" sidebar="false" readOnly="true"  setup="true" >
+<apex:includeLightning />
+<script type="text/javascript">
+function redirect(){   
+     if((typeof sforce !== 'undefined' )&&(typeof sforce.one !== 'undefined')){
+        sforce.one.navigateToURL('http://salescrm.intel.com');
+    }else{
+          window.location="http://salescrm.intel.com";
+     }
+}
+</script> 
+  <apex:form >
+     <body onLoad="redirect();"/><!--Call this method onloadpage to redirect the classis or lightning url-->
+   </apex:form>
+</apex:page>

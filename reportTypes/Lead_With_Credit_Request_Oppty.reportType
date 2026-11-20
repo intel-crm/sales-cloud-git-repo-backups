@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Lead</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>To Get Lead with Credit Request &amp; Oppty</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>Cloud_Credit_Requests__r</relationship>
+    </join>
+    <label>Lead With Credit Request &amp; Oppty</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional compute platform details</displayNameOverride>
+            <field>SWS_HW_Compute_Quantity__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amount</displayNameOverride>
+            <field>SWS_Coupon_Amount__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cloud Coupon Type</displayNameOverride>
+            <field>SWS_Coupon_Type__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cloud Credit Request ID</displayNameOverride>
+            <field>Id</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Cloud Credit Request Name</displayNameOverride>
+            <field>Name</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Community Program – Coupon Type</displayNameOverride>
+            <field>SWS_Community_Program_Coupon_Type__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Community Program Name</displayNameOverride>
+            <field>SWS_Community_Program_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company Name</displayNameOverride>
+            <field>SWS_Company_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Compute/Service Requirements</displayNameOverride>
+            <field>SWS_Compute_Service_Requirements__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cost Center</displayNameOverride>
+            <field>SWS_Cost_Center__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer&apos;s Country</displayNameOverride>
+            <field>SWS_Country__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Code</displayNameOverride>
+            <field>SWS_Coupon_Code__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Created On</displayNameOverride>
+            <field>SWS_Coupon_Created_On__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Creator</displayNameOverride>
+            <field>SWS_Coupon_Creator__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Expiration Date</displayNameOverride>
+            <field>SWS_Coupon_Expiration_Date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Redeemed</displayNameOverride>
+            <field>SWS_Redeemed__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Status</displayNameOverride>
+            <field>SWS_Coupon_Status__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Valid From</displayNameOverride>
+            <field>SWS_Coupon_Valid_From__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Value</displayNameOverride>
+            <field>SWS_Coupon_Value__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Create New Lead</displayNameOverride>
+            <field>SWS_Create_Lead__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Create New Lead</displayNameOverride>
+            <field>SWS_Create_Lead_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Custom Coupon Request</displayNameOverride>
+            <field>SWS_Custom_Coupon_Request__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event Compute Environment Details</displayNameOverride>
+            <field>SWS_Event_Compute_Environment_Details__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event End Date</displayNameOverride>
+            <field>SWS_Event_End_Date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event Name</displayNameOverride>
+            <field>SWS_Event_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event Start Date</displayNameOverride>
+            <field>SWS_Event_Start_Date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Date</displayNameOverride>
+            <field>SWS_Expiry_Date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Name</displayNameOverride>
+            <field>SWS_First_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Full Name</displayNameOverride>
+            <field>SWS_Full_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HW Compute Platform</displayNameOverride>
+            <field>SWS_HW_Compute_Platform_PL__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Request Error</displayNameOverride>
+            <field>SWS_Error__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Request Error Time</displayNameOverride>
+            <field>SWS_IDC_Error_Time__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IDC Response Time</displayNameOverride>
+            <field>SWS_IDC_Response_Time__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intel BU/Field/Sales Contact</displayNameOverride>
+            <field>SWS_Intel_BU_Field_Sales_Contact__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Locked?</displayNameOverride>
+            <field>SWS_Locked__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is the coupon for standard account?</displayNameOverride>
+            <field>SWS_Is_Standard__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Job Title</displayNameOverride>
+            <field>SWS_Job_Title__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Name</displayNameOverride>
+            <field>SWS_Last_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Redeemed Date</displayNameOverride>
+            <field>SWS_Last_redeemed_date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Participants</displayNameOverride>
+            <field>SWS_Number_of_Participants__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Redemptions</displayNameOverride>
+            <field>SWS_Number_of_Redemptions__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Resends</displayNameOverride>
+            <field>SWS_resend_email_click_count__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Users</displayNameOverride>
+            <field>SWS_No_Of_User__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Processing Team</displayNameOverride>
+            <field>SWS_Processing_Team__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejected By</displayNameOverride>
+            <field>SWS_Rejected_By__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejected On</displayNameOverride>
+            <field>SWS_Rejected_On__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rejection Justification</displayNameOverride>
+            <field>SWS_Request_Comment__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Email Address</displayNameOverride>
+            <field>SWS_Email__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Request Status</displayNameOverride>
+            <field>SWS_Request_Status_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Request Status</displayNameOverride>
+            <field>SWS_Request_Status__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Request Type</displayNameOverride>
+            <field>SWS_Request_Type__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Resend Email Timestamp</displayNameOverride>
+            <field>SWS_Resend_Email_Timestamp__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Resend Email User Name</displayNameOverride>
+            <field>SWS_Resend_Email_User_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Salesforce Opportunity ID</displayNameOverride>
+            <field>SWS_Salesforce_Opportunity_ID__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Date</displayNameOverride>
+            <field>SWS_Start_Date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitted By</displayNameOverride>
+            <field>SWS_Submitted_By__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitted On</displayNameOverride>
+            <field>SWS_Submitted_On__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitter Email Address</displayNameOverride>
+            <field>SWS_Submitter_Email__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitter Email same as Customer Email</displayNameOverride>
+            <field>SWS_Submitter_Requster_Email__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitter Name</displayNameOverride>
+            <field>SWS_Submitter_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitter Last Name</displayNameOverride>
+            <field>SWS_Submitter_Last_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SWS_RequestStatus_fm</displayNameOverride>
+            <field>SWS_RequestStatus_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Use Case</displayNameOverride>
+            <field>SWS_Use_Case__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Use Case Details</displayNameOverride>
+            <field>SWS_Use_Case_Details__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Conversion Status</displayNameOverride>
+            <field>SWS_Conversion_Status__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitter Email same as Requester Email</displayNameOverride>
+            <field>SWS_SameAsSubmitter_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>SWS_Contact__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SWS_Is_Submitted_For_Coupon</displayNameOverride>
+            <field>SWS_Is_Submitted_For_Coupon__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>redeemed_expired</displayNameOverride>
+            <field>SWS_redeemed_expired__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity</displayNameOverride>
+            <field>SWS_Opportunity_Related__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of Days taken For Coupon Generation</displayNameOverride>
+            <field>SWS_Duration_For_Coupon_Generation__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of Days taken For Coupon Rejection</displayNameOverride>
+            <field>SWS_Duration_For_Coupon_Rejection__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Request</displayNameOverride>
+            <field>SWS_coupon_request__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Response</displayNameOverride>
+            <field>SWS_coupon_response__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Redemption Response</displayNameOverride>
+            <field>SWS_Redemption_Response__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Valid From</displayNameOverride>
+            <field>SWS_Coupon_Valid_From_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Expiration Date</displayNameOverride>
+            <field>SWS_Coupon_Expiration_Date_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Created On</displayNameOverride>
+            <field>SWS_Coupon_Created_On_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Totally Redeemed</displayNameOverride>
+            <field>SWS_Totally_Redeemed__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of Days Awaiting submission</displayNameOverride>
+            <field>SWS_Duration_For_Awaiting_Submission__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event Country</displayNameOverride>
+            <field>SWS_Event_Country_Name__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Credit Request Type</displayNameOverride>
+            <field>SWS_Request_Type_fm__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Chosen</displayNameOverride>
+            <field>SWS_Product_Chosen__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Redeem Run Date</displayNameOverride>
+            <field>SWS_Last_Redeem_Run_Date__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IDC Error For Admin</displayNameOverride>
+            <field>SWS_IDCErrorForAdmin__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quarter</displayNameOverride>
+            <field>SWS_Quarter__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Coupon a Giveaway?</displayNameOverride>
+            <field>SWS_Is_Giveaway__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Event Information</displayNameOverride>
+            <field>SWS_Additional_Event_Information__c</field>
+            <table>Lead.Cloud_Credit_Requests__r</table>
+        </columns>
+        <masterLabel>Cloud Credit Requests</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity: Stage</displayNameOverride>
+            <field>ConvertedOpportunity.StageName</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity: Created Date</displayNameOverride>
+            <field>ConvertedOpportunity.CreatedDate</field>
+            <table>Lead</table>
+        </columns>
+        <masterLabel>Opportunity</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Name</displayNameOverride>
+            <field>FirstName</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Name</displayNameOverride>
+            <field>LastName</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Full Name</displayNameOverride>
+            <field>Name</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email</displayNameOverride>
+            <field>Email</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company</displayNameOverride>
+            <field>Company</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Stage</displayNameOverride>
+            <field>Status</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>SWS_LeadConverted_fm__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Owner Name</displayNameOverride>
+            <field>Core_Lead_Owner_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Lead</table>
+        </columns>
+        <masterLabel>Lead</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quarter</displayNameOverride>
+            <field>SWS_Quarter__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Software Lead</displayNameOverride>
+            <field>SWS_Software_Lead__c</field>
+            <table>Lead</table>
+        </columns>
+        <masterLabel>Leads</masterLabel>
+    </sections>
+</ReportType>

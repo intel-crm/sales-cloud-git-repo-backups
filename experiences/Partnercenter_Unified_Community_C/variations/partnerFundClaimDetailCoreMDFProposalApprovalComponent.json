@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "031b6da0-6994-432e-b229-8653b078f932",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "f582bf60-69ca-48b4-b88c-9a283d468a41",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Partner_Fund_Claim_Detail_Core_MDF_ProposalApproval_Component",
+  "id" : "63d616a6-a611-4f7a-91e9-b4880e13eceb",
+  "type" : "experienceVariation"
+}

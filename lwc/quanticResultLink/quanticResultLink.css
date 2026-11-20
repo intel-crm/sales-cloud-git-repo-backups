@@ -1,0 +1,6 @@
+a {
+  color: var(--color-text-link-active, #0068b5);
+  font-size: 1.375rem;
+  line-height: 1.27;
+  font-weight: normal;
+}

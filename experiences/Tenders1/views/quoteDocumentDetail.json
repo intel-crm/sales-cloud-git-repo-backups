@@ -1,0 +1,65 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "4dba03e5-31aa-45c7-8034-5322c63df6f9",
+  "label" : "Quote Document Detail",
+  "regions" : [ {
+    "id" : "654f5325-2236-41b3-b157-7b24ed99b1d2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "45b48336-00ff-47e8-9c4c-4f604c4f0d4d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "none",
+        "tab3Type" : "none",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "f64ed6be-78af-4c54-b2cc-f872c8acad34",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9bc56be1-8dbc-4d2b-8efc-2f88161ba679",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "eead5576-3c1c-484d-9932-d8d92c9c197d",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "3fff42f1-b514-4b2b-9b8c-0bc1fed94da7",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4f1d90ab-8c68-40cc-ba55-aa2038bf809d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a7w"
+}

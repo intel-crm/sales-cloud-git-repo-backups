@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Else_condition</name>
+        <label>Else condition</label>
+        <locationX>446</locationX>
+        <locationY>1343</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Else_condition_outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ElseConditionFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reset_the_Core_Lead_to_Opportunity</targetReference>
+            </connector>
+            <label>Else condition outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_stage_status_check</name>
+        <label>Lead stage &amp; status check</label>
+        <locationX>248</locationX>
+        <locationY>1223</locationY>
+        <defaultConnector>
+            <targetReference>Else_condition</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_stage_status_check_outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>PartnerRecordTypeFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_to_Opportunity_flag_Update</targetReference>
+            </connector>
+            <label>Lead stage &amp; status check outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>OnMarketing_Do_Not_Contact_Change</name>
+        <label>OnMarketing – Do Not Contact Change</label>
+        <locationX>248</locationX>
+        <locationY>767</locationY>
+        <defaultConnector>
+            <targetReference>Lead_stage_status_check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Changed_Marketing_Do_Not_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Marketing_Do_Not_Contact_Ind__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Marketing_Do_Not_Contact</targetReference>
+            </connector>
+            <label>Is Changed (Marketing - Do Not Contact)</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>OnSales_DoNot_Contact_Change</name>
+        <label>OnSales-DoNot Contact Change</label>
+        <locationX>248</locationX>
+        <locationY>311</locationY>
+        <defaultConnector>
+            <targetReference>OnMarketing_Do_Not_Contact_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Changed_Sales_Do_Not_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Do_not_call__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Sales_Do_Not_Contact_Date</targetReference>
+            </connector>
+            <label>Is Changed (Sales - Do Not Contact)</label>
+        </rules>
+    </decisions>
+    <description>Merged Core_Lead_Opportunity_Conversion and Core_Lead_Opportunity_Conversion Process Builders</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ElseConditionFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+ISPICKVAL({!$Record__Prior.Core_Lead_Status__c}, &quot;Disqualified&quot;),
+ISPICKVAL(({!$Record.Core_Lead_Status__c}), &quot;Accepted&quot;),
+OR(ISCHANGED({!$Record.Core_Lead_Status__c}),ISCHANGED({!$Record.Status}))
+)</expression>
+    </formulas>
+    <formulas>
+        <name>PartnerRecordTypeFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+ISPICKVAL(({!$Record.Core_Lead_Status__c}), &quot;Disqualified&quot;),
+OR(ISCHANGED({!$Record.Core_Lead_Status__c}),ISCHANGED({!$Record.Status}))
+)</expression>
+    </formulas>
+    <formulas>
+        <name>TimeFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Core Update Date Fields On Checkbox Toggle {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Update Date Fields On Checkbox Toggle Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Lead_to_Opportunity_flag_Update</name>
+        <label>Lead_to_Opportunity_flag_Update</label>
+        <locationX>50</locationX>
+        <locationY>1343</locationY>
+        <inputAssignments>
+            <field>Core_Lead_to_Opportunity_Conversion_flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Remove_Marketing_Do_Not_Contact_Date</name>
+        <label>Remove Marketing - Do Not Contact Date</label>
+        <locationX>116</locationX>
+        <locationY>1007</locationY>
+        <connector>
+            <targetReference>Lead_stage_status_check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Marketing_Do_Not_Contact_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Remove_Sales_Do_Not_Contact_Date</name>
+        <label>Remove Sales Do Not Contact Date</label>
+        <locationX>116</locationX>
+        <locationY>551</locationY>
+        <connector>
+            <targetReference>OnMarketing_Do_Not_Contact_Change</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Do_not_call__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Do_Not_Contact_Dtm__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Reset_the_Core_Lead_to_Opportunity</name>
+        <label>Reset the Core_Lead_to_Opportunity_</label>
+        <locationX>314</locationX>
+        <locationY>1463</locationY>
+        <inputAssignments>
+            <field>Core_Lead_to_Opportunity_Conversion_flag__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Marketing_Do_Not_Contact</name>
+        <label>Update Marketing – Do Not Contact</label>
+        <locationX>116</locationX>
+        <locationY>887</locationY>
+        <connector>
+            <targetReference>Remove_Marketing_Do_Not_Contact_Date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Marketing_Do_Not_Contact_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
+            <value>
+                <elementReference>TimeFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Sales_Do_Not_Contact_Date</name>
+        <label>Update Sales Do Not Contact  Date</label>
+        <locationX>116</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Remove_Sales_Do_Not_Contact_Date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Do_not_call__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Do_Not_Contact_Dtm__c</field>
+            <value>
+                <elementReference>TimeFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>OnSales_DoNot_Contact_Change</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

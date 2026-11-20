@@ -1,0 +1,27 @@
+<template>
+    <template if:true={isUpgradedPartnerAdmin}>
+        <c-ps-mp-modal has-header has-footer is-open={isOpen}>
+            <div slot="header">
+                <h2 class="color-white text-bold slds-m-top_x-large slds-m-horizontal_large" id="modal-heading-03">{label.welcomeHeadingEnhanced}</h2>
+                <p class="color-white">{label.highlightCompanyEnhanced}</p>
+            
+                <div class="slds-m-vertical_x-large slds-text-align_center slds-align_absolute-center" onclick={navigateToCreateOffering}>    
+                    <div style="cursor: pointer;"><div class={buttonCustomVariant}>{label.getStarted}</div></div>                   
+                </div>
+               <!--<p class="color-white slds-m-bottom_xx-large">Review the <c-ps-mp-link inverse community-page="terms-and-conditions" new-window>Intel Solutions Marketplace Terms &amp; Conditions</c-ps-mp-link></p> --> 
+            </div>
+            <div slot="footer">
+                <!--added by shahrukh to differentiate between footer messages for different users-->
+                <template if:true={isPartner}>
+                <p><lightning-formatted-rich-text value={label.PafooterText}></lightning-formatted-rich-text></p>
+                <!--<p>{label.didYouKnow} <c-ps-mp-link external-url={label.intelUrl}>{label.popUpFooterLink}</c-ps-mp-link></p>-->
+                </template>
+                <template if:false={isPartner}>
+                    <p><lightning-formatted-rich-text value={label.MsfooterText}></lightning-formatted-rich-text></p>
+                    <!--<p>{label.didYouKnow} <c-ps-mp-link external-url={label.intelUrl}>{label.popUpFooterLink}</c-ps-mp-link></p>-->
+                </template>
+
+            </div>
+        </c-ps-mp-modal>
+    </template>
+</template>

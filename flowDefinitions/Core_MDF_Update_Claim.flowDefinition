@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Prepayment Actions:
+ * Update Claim Adjustment Amount from Case when Case status is set as Complaint/Non Compliant
+* Compliant updates, recordtypelabelupdate
+* release Hold update
+* CompliantReleaseHold changes
+* When Claim is set to denied, update the Claim Adjustment amount to the Requested Amount (US388028)
+* Adding logic to release Claim from Hold even if Compliant Case has 0 Reimbursement Amount
+
+Post payment Actions:
+* Create Adjustment Request Record for case outcome Non-Compliant/Compliant With Adjustment Amount.
+* Release Hold update on Claim
+* Bypass Adjustment Amount validation while creating Negative Adjustment Request from Audit.</description>
+    <masterLabel>Core_MDF_Update_Claim</masterLabel>
+</FlowDefinition>

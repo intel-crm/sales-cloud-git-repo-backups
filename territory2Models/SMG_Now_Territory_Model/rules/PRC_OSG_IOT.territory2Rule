@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <name>PRC-OSG-IOT</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.Core_Sales_Groups__c</field>
+        <operation>equals</operation>
+        <value>PRC Sales Group</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Jacky Jia,Amy Tang Tang,Wen Rong Liu,Xingzheng Chen,Bo Cui,John Li,Bo Wu,Ti Zhang,Evyns Chan,Alice Zhang,Alex Zhu,Jerry Li,Leo Wang,Lingfei Xu,Min Wang,Huan Zhao,Xu Wang,Xing Liu,Feifei Yang,lijun zhao,Bin Wang,Shui Quan Mao,Yinyan Song,Chengyue Xiao,Yafeng Huang,Wuze Yan,Shaowei Ma,Bin Wang,Xing Liu,Jun Deng,Yunzhu Mao,Juan Hu,cui zuo,Yumei Luo,Ying Xiang,Feifei Yang,Chengyue Xiao,Xiaoli Tang,Xiangmei Jiao,Yan Zhang,Jin Xie,Ziqing Peng,lijun zhao</value>
+    </ruleItems>
+</Territory2Rule>

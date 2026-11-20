@@ -1,0 +1,552 @@
+<template>
+    <!--PIC Doc details-->
+    <div style="display: flex;overflow:visible" class="slds-var-m-top_large">
+        <div class="slds-var-m-right_medium slds-size_1-of-1  slds-var-p-left_large slds-var-p-right_large">
+            <template if:false={showSpinner}>
+                <!--Claim Review Documents-->
+                <template if:true={hasAuditDocuments}>
+                    <div class="slds-text-align_center slds-text-heading_small slds-var-m-bottom_medium">
+                        {label.claimReviewDocuments}</div>
+                    <table
+                        class="slds-table  slds-table_bordered  slds-table_col-bordered  slds-border_left slds-border_right slds-no-row-hover slds-table_fixed-layout fileTable">
+                        <thead>
+                            <tr class="slds-text-heading_label">
+                                <template if:false={isOutComeBasedSuperClaim}>
+                                    <th class="slds-size_1-of-3 slds-text-align_center" scope="col">{label.fileType}
+                                    </th>
+                                </template>
+                                <th class="slds-size_1-of-3 slds-text-align_center" scope="col">{label.fileName}</th>
+                                <th class="slds-size_1-of-3 slds-text-align_center" scope="col">{label.uploadedDate}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={auditDocuments} for:item="auditDoc" for:index="indexVar">
+                                <tr key={auditDoc.Id} class="documentTypeDetails">
+                                    <template if:false={isOutComeBasedSuperClaim}>
+                                        <td class="slds-size_1-of-3 slds-text-align_center document-type"
+                                            rowspan={auditDoc.rowSpan}>
+                                            <lightning-formatted-rich-text value={auditDoc.fileType}>
+                                            </lightning-formatted-rich-text>
+                                        </td>
+                                    </template>
+                                </tr>
+                                <template for:each={auditDoc.documentDetails} for:item="document">
+                                    <tr key={document.fileName}>
+                                        <td class="slds-size_1-of-3 slds-text-align_center truncate-fileNames"
+                                            title={document.documentName}>
+                                            <lightning-formatted-rich-text value={document.fileName}>
+                                            </lightning-formatted-rich-text>
+                                        </td>
+                                        <td class="slds-size_1-of-3 slds-text-align_center">
+                                            <lightning-formatted-rich-text value={document.uploadedDate}>
+                                            </lightning-formatted-rich-text>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                        </tbody>
+                    </table>
+                    <!--question table-->
+                    <template if:true={hasQuestionMetadataRecords}>
+                        <div class="slds-size_1-of-1">
+                            <!--download all claim review documents and start review-->
+
+                            <!-- Sham - added for AI Generated Response -->
+                            <template if:false={aiResponseRcvd}>
+                                <p class="slds-text-align_center slds-p-around_medium informative-text">
+                                    {aiErrorMsg}
+                                </p>
+                            </template>
+
+                            <div class="slds-var-m-top_large slds-var-m-bottom_medium slds-align_absolute-center">
+                                <lightning-button variant="radiant" label={label.downloadAllDocuments}
+                                    class="slds-var-m-right_large" onclick={downloadFiles}></lightning-button>
+                                <lightning-button variant="radiant" label={label.startPICReview}
+                                    class="slds-var-m-right_large" onclick={OnStartReview}
+                                    title="Please start the review to complete it" disabled={disableStartReview}>
+                                </lightning-button>
+
+                                <!-- Sham - added for AI Generated Response -->
+                                <template if:false={claimOutcomeBasedInd}>
+                                    <lightning-button variant="radiant" label="Generate AI Validation"
+                                        data-id="Generate AI Validation"
+                                        title="Please click to Generate latest AI Response" disabled={disableGenAIBtn}
+                                        onclick={handleGenerateAIValidation}>
+                                    </lightning-button>
+                                </template>
+                            </div>
+                            <!-- Added by VB - MDF POP Confidence Score Changes-->
+                            <template if:true={aiResponseRcvd}>
+                                <template if:true={overallAIConfScore}>
+                                    <div class="slds-var-m-top_large slds-var-m-bottom_medium slds-align_absolute-center">
+                                        <Strong>Overall AI Confidence Score:</Strong><span class="slds-var-m-left_small">{overallAIConfScore}</span>
+                                    </div>
+                                </template>
+                                <template if:false={overallAIConfScore}>
+                                    <div class="slds-var-m-top_large slds-var-m-bottom_medium slds-align_absolute-center">
+                                        <Strong>Overall AI Confidence Score:</Strong><span class="slds-var-m-left_small">AI Confidence Score isn’t available for this claim.</span>
+                                    </div>
+                                </template>
+                            </template>
+                            <!--PIC Review Questions and responses table-->
+                            <div class="table-dropdown">
+                                <table
+                                    class="slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right slds-no-row-hover slds-table_fixed-layout questions-table"
+                                    aria-label="audit-document-list">
+                                    <thead>
+                                        <tr class="slds-text-heading_label">
+                                            <th class="slds-size_1-of-8 slds-text-align_center srNO-col" scope="col">
+                                                Sr.No
+                                            </th>
+
+                                            <th class="slds-size_2-of-8 slds-text-align_center" scope="col">
+                                                {label.issues}
+                                            </th>
+                                            <th class="slds-size_2-of-8 slds-text-align_center" scope="col">
+                                                {label.response}
+                                            </th>
+                                            <!-- Roshan - Tactics -->
+                                            <template if:true={isOutcomeBasedClaim}>
+                                                <th class="slds-size_1-of-8 slds-text-align_center" scope="col">Tactics
+                                                </th>
+                                            </template>
+
+                                            <!-- Roshan - added for IPA OutcomeBased claims -->
+                                            <template if:true={isOutcomeBasedClaim}>
+                                                <th class="slds-size_1-of-8 slds-text-align_center" scope="col">Comments
+                                                </th>
+                                            </template>
+                                            <th class="slds-size_1-of-8 slds-text-align_center" scope="col">
+                                                {label.filesAffected}
+                                            </th>
+
+                                            <!-- Sham - added for AI Generated Response - Modified by VB for POP Confidence Score -->
+                                            <th class="slds-size_2-of-8 slds-text-align_center" scope="col">FEEDBACK
+                                                TO AI Response
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={questionMetadata} for:item="qnMdt">
+                                            <tr key={qnMdt.name} class={qnMdt.cssClassName}>
+                                                <td class="slds-size_1-of-8 srNO-col">
+                                                    <lightning-formatted-rich-text value={qnMdt.serialNumber}>
+                                                    </lightning-formatted-rich-text>
+                                                </td>
+                                                <td class="slds-size_1-of-8">
+                                                    <lightning-formatted-rich-text value={qnMdt.questionEnglish}>
+                                                    </lightning-formatted-rich-text>
+                                                </td>
+                                                <td class="slds-size_2-of-8 slds-text-align_center">
+                                                    <div class="response-radio-buttons">
+                                                        <lightning-radio-group name={qnMdt.name}
+                                                            options={responseOptions} value={qnMdt.response}
+                                                            onchange={handleResponseChange} disabled={disableResponse}
+                                                            type='radio'>
+                                                        </lightning-radio-group>
+
+                                                        <!-- Sham - added for AI Generated Response - Modified by VB for POP Confidence Score -->
+                                                        <template if:true={qnMdt.hasAIQnResponse}>
+                                                            <div class="ai-pill slds-m-vertical_small">
+                                                                <div class="slds-tooltip-trigger" tabindex="0">
+                                                                    <span class="pill-text-ai-prediction">
+                                                                        AI Response:</span> <span
+                                                                        class={qnMdt.aiQnResponseClass}><strong>{qnMdt.aiQnResponse}</strong></span>
+                                                                    <div role="tooltip"
+                                                                        class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left slds-var-m-bottom_medium">
+                                                                        <div
+                                                                            class="slds-popover__body custom-scroll-popover">
+                                                                            <!-- Not needed for now - Copy option 
+                                                                            <lightning-button-icon
+                                                                                icon-name="utility:copy" size="x-small"
+                                                                                class="slds-float_right"
+                                                                                variant="bare-inverse" onclick={copyComment}
+                                                                                data-text={qnMdt.aiQnComment} title="copy">
+                                                                            </lightning-button-icon> -->
+                                                                            <lightning-formatted-rich-text
+                                                                                value={qnMdt.aiQnComment}
+                                                                                style="white-space: pre-line">
+                                                                            </lightning-formatted-rich-text>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <template if:true={qnMdt.aiConfidenceScore}>
+                                                                    <span><strong>AI Confidence Score: </strong>{qnMdt.aiConfidenceScore}</span>
+                                                                </template>
+                                                                <template if:false={qnMdt.aiConfidenceScore}>
+                                                                    <span><strong>AI Confidence Score: </strong>AI Confidence Score Unavailable.</span>
+                                                                </template>
+                                                            </div>
+                                                            <div class="feedback-radio-buttons">
+                                                                <span>Do you Agree with AI Response?</span>
+                                                                <lightning-radio-group name={qnMdt.id}
+                                                                    options={aiFeedbackOptions} type='radio'
+                                                                    value={qnMdt.agreementToAIResponse}
+                                                                    onchange={handleAgreementToAIResponse}
+                                                                    disabled={disableResponse}>
+                                                                </lightning-radio-group>
+                                                            </div>
+                                                            <div class="display:inline-flex">
+
+                                                            </div>
+                                                        </template>
+
+
+                                                    </div>
+                                                </td>
+
+                                                <template if:true={isOutcomeBasedClaim}>
+                                                    <td class="slds-size_1-of-8">
+                                                        <template if:true={qnMdt.displayFileSelOnParent}>
+                                                            <template if:true={tacticsOptions.length}>
+                                                                <div class="slds-var-m-bottom_small">
+                                                                    <c-core_-m-d-f_-multi-select-picklist
+                                                                        values={tacticsOptions} id={qnMdt.name}
+                                                                        class="multiSelectFiles"
+                                                                        onselect={fetchSelectedTacticValues}
+                                                                        placeholder-text="Select Tactic(s)"
+                                                                        utilised-module={claimLabel}
+                                                                        no-of-values-got-selected-lable="Tactic(s) Selected">
+                                                                    </c-core_-m-d-f_-multi-select-picklist>
+                                                                </div>
+                                                            </template>
+                                                        </template>
+                                                    </td>
+                                                </template>
+
+                                                <template if:true={isOutcomeBasedClaim}>
+                                                    <td class="slds-size_1-of-8 slds-text-align_center">
+                                                        <template if:true={qnMdt.isOutcomeBasedComment}>
+                                                            <lightning-textarea name={qnMdt.name} value={qnMdt.comment}
+                                                                onchange={handleCommentChange}
+                                                                placeholder="Add a comment" maxlength="5000">
+                                                            </lightning-textarea>
+                                                        </template>
+                                                    </td>
+                                                </template>
+
+                                                <!--Files affected dropdown from Multi select Picklist lwc component-->
+                                                <td class="slds-size_1-of-8">
+                                                    <template if:true={qnMdt.displayFileSelOnParent}>
+                                                        <template if:true={qnMdt.fileNames.length}>
+                                                            <div class="slds-var-m-bottom_small">
+                                                                <c-core_-m-d-f_-multi-select-picklist
+                                                                    values={qnMdt.fileNames} id={qnMdt.name}
+                                                                    class="multiSelectFiles"
+                                                                    onselect={fetchSelectedValues}
+                                                                    placeholder-text="Select File(s)"
+                                                                    utilised-module={claimLabel} is-required=false
+                                                                    no-of-values-got-selected-lable="File(s) Selected">
+                                                                </c-core_-m-d-f_-multi-select-picklist>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </td>
+
+                                                <!-- Sham - added for AI Generated Response - Modified by VB for POP Confidence Score-->
+                                                <td class="slds-size_2-of-8 slds-text-align_left wrapword">
+
+                                                    <template if:true={aiResponseRcvd}>
+                                                        <lightning-textarea name={qnMdt.name}
+                                                            value={qnMdt.feedbackToAIResponse}
+                                                            placeholder="Add feedback to the AI Response"
+                                                            disabled={disableResponse} maxlength="10000"
+                                                            onchange={handleFeedbackCommentToAIRes}>
+                                                        </lightning-textarea>
+                                                    </template>
+                                                    <template if:false={aiResponseRcvd}>
+                                                        <lightning-textarea name={qnMdt.name}
+                                                            value={qnMdt.feedbackToAIResponse}
+                                                            placeholder="Add feedback to the AI Response"
+                                                            maxlength="10000" disabled>
+                                                        </lightning-textarea>
+                                                    </template>
+                                                </td>
+
+                                            </tr>
+                                            <template if:true={qnMdt.displaySubQue}>
+                                                <template for:each={qnMdt.subRows} for:item="subRow">
+                                                    <tr key={subRow.id} class="slds-text-color_weak">
+                                                        <td class="slds-size_1-of-8">
+                                                            <div class="slds-truncate"></div>
+                                                        </td>
+                                                        <td class="slds-size_2-of-8">
+                                                            <lightning-formatted-rich-text
+                                                                value={subRow.questionEnglish}>
+                                                            </lightning-formatted-rich-text>
+                                                        </td>
+                                                        <td class="slds-size_2-of-8 slds-text-align_center">
+                                                            <!-- Checkbox input for sub-row -->
+                                                            <div>
+                                                                <input type="checkbox" name={subRow.name}
+                                                                    value={subRow.id} onchange={handleCheckboxChange} />
+                                                            </div>
+
+                                                            <!-- Sham - added for AI Generated Response -Modified by VB for POP Confidence Score -->
+                                                            <template if:true={subRow.hasAIQnResponse}>
+                                                                <div class="ai-pill slds-m-vertical_small">
+                                                                    <div class="slds-tooltip-trigger" tabindex="0">
+                                                                        <span class="pill-text-ai-prediction">AI
+                                                                            Response:</span>
+                                                                        <span
+                                                                            class={subRow.aiQnResponseClass}><strong>{subRow.aiQnResponse}</strong></span>
+                                                                        <div role="tooltip"
+                                                                            class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left slds-var-m-bottom_medium">
+                                                                            <div
+                                                                                class="slds-popover__body custom-scroll-popover">
+                                                                                <lightning-formatted-rich-text
+                                                                                    value={subRow.aiQnComment}
+                                                                                    style="white-space: pre-line">
+                                                                                </lightning-formatted-rich-text>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <template if:true={subRow.aiConfidenceScore}>
+                                                                        <span><strong>AI Confidence Score: </strong>{subRow.aiConfidenceScore}</span>
+                                                                    </template>
+                                                                    <template if:false={subRow.aiConfidenceScore}>
+                                                                        <span><strong>AI Confidence Score: </strong>AI Confidence Score Unavailable.</span>
+                                                                    </template>
+                                                                </div>
+                                                                <div class="feedback-radio-buttons">
+                                                                    <span>Do you Agree with AI Response?</span>
+                                                                    <lightning-radio-group name={subRow.id}
+                                                                        options={aiFeedbackOptions} type='radio'
+                                                                        value={subRow.agreementToAIResponse}
+                                                                        onchange={handleAgreementToAIResponse}
+                                                                        disabled={disableResponse}>
+                                                                    </lightning-radio-group>
+                                                                </div>
+                                                            </template>
+                                                        </td>
+                                                        <template if:true={isOutcomeBasedClaim}>
+                                                            <td class="slds-size_1-of-8">
+                                                                <template if:true={qnMdt.displaySubQue}>
+                                                                    <template if:true={tacticsOptions.length}>
+                                                                        <div class="slds-var-m-bottom_small">
+                                                                            <c-core_-m-d-f_-multi-select-picklist
+                                                                                values={tacticsOptions} id={subRow.name}
+                                                                                class="multiSelectFiles"
+                                                                                onselect={fetchSelectedTacticValues}
+                                                                                disable-pickilst={subRow.name.isSelected}
+                                                                                placeholder-text="Select Tactic(s)"
+                                                                                utilised-module={claimLabel}
+                                                                                no-of-values-got-selected-lable="Tactic(s) Selected">
+                                                                            </c-core_-m-d-f_-multi-select-picklist>
+                                                                        </div>
+                                                                    </template>
+                                                                </template>
+                                                            </td>
+                                                        </template>
+
+                                                        <template if:true={isOutcomeBasedClaim}>
+                                                            <td class="slds-size_1-of-8">
+                                                                <template if:true={isOutcomeBasedComment}>
+                                                                    <lightning-textarea name={subRow.name}
+                                                                        value={subRow.comment}
+                                                                        onchange={handleCommentChange}
+                                                                        placeholder="Add a comment" maxlength="5000">
+                                                                    </lightning-textarea>
+                                                                </template>
+
+                                                            </td>
+                                                        </template>
+                                                        <td class="slds-size_1-of-8">
+                                                            <template if:true={subRow.fileNames.length}>
+                                                                <div class="slds-var-m-bottom_small">
+                                                                    <c-core_-m-d-f_-multi-select-picklist
+                                                                        values={subRow.fileNames} id={subRow.name}
+                                                                        class="multiSelectFiles"
+                                                                        onselect={fetchSelectedValues}
+                                                                        disable-pickilst={subRow.name.isSelected}
+                                                                        placeholder-text="Select File(s)"
+                                                                        utilised-module={claimLabel}
+                                                                        no-of-values-got-selected-lable="File(s) Selected">
+                                                                    </c-core_-m-d-f_-multi-select-picklist>
+                                                                </div>
+                                                            </template>
+                                                        </td>
+
+                                                        <!-- sham - added for AI Generated Response - Modified by VB for POP Confidence Score -->
+                                                        <td class="slds-size_2-of-8 slds-text-align_left">
+                                                            <template if:true={aiResponseRcvd}>
+                                                                <lightning-textarea name={subRow.name}
+                                                                    value={subRow.feedbackToAIResponse}
+                                                                    placeholder="Add feedback to the AI Response"
+                                                                    disabled={disableResponse} maxlength="10000"
+                                                                    onchange={handleFeedbackCommentToAIRes}>
+                                                                </lightning-textarea>
+                                                            </template>
+                                                            <template if:false={aiResponseRcvd}>
+                                                                <lightning-textarea name={subRow.name}
+                                                                    value={subRow.feedbackToAIResponse}
+                                                                    placeholder="Add feedback to the AI Response"
+                                                                    maxlength="10000" disabled>
+                                                                </lightning-textarea>
+                                                            </template>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                            </template>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--Internal comments input and recommend for audit review selection-->
+                            <div class="slds-grid slds-var-m-top_medium comments">
+                                <div class="internal-comments slds-size_1-of-2 slds-var-m-right_large">
+                                    <lightning-textarea name="internalComments" onchange={handleInternalComments}
+                                        id="textarea-id-01" label={label.picInternalComments} class="internalComments"
+                                        placeholder={label.picInternalCommentsplaceholder}>
+                                    </lightning-textarea>
+                                </div>
+                                <div class="slds-size_1-of-2 slds-var-m-top_large">
+                                    <lightning-input name="recommendForClaimReview" type="checkbox"
+                                        class="recommendForClaimReview" label={label.recommendForClaimReview}
+                                        onchange={handleAuditrecommendation}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+
+                            <!--complete Review-->
+                            <div class="slds-var-m-top_large slds-var-m-bottom_large">
+                                <lightning-button variant="radiant" label={label.completePICReview}
+                                    class="slds-align_absolute-center submitButton" onclick={handleSubmit}
+                                    disabled={disableCompleteReview}></lightning-button>
+                            </div>
+                        </div>
+                    </template>
+                    <!--this message is displayed when no issues are available-->
+                    <template if:false={hasQuestionMetadataRecords}>
+                        <div class="slds-text-heading_medium slds-var-m-top_medium slds-text-align_center">
+                            {label.noIssues}</div>
+                    </template>
+                </template>
+                <!--this message is displayed when no claim review documents are available-->
+                <template if:false={hasAuditDocuments}>
+                    <div
+                        class="slds-text-heading_medium slds-var-m-top_medium slds-var-m-bottom_medium slds-text-align_center">
+                        {label.noClaimReviewDocuments}</div>
+                </template>
+            </template>
+        </div>
+    </div>
+
+
+    <!--Confirmation modal popup-->
+    <div class="modal-popup">
+        <template if:true={enableConfirmationModalPopup}>
+            <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container confirmation-modal" id="confirmation-modal">
+                    <header class="slds-modal__header">{headerLabel}
+                    </header>
+                    <div class="slds-modal__content slds-var-p-around_medium slds-text-align_center">
+                        <div
+                            class="slds-var-p-right_small slds-var-p-left_small slds-var-m-top_small slds-var-m-bottom_small">
+                            <div>{label.confirmationPopupMessage1}</div>
+                            <table
+                                class="slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right slds-no-row-hover slds-table_fixed-layout slds-var-m-top_small confirmationPopup-table">
+                                <tbody>
+                                    <tr>
+                                        <template if:true={editedClaimAttributeLabels.length}>
+                                            <td class="slds-m-right_x-small slds-m-left_x-small">
+                                                {label.confirmationPopupLabel1}</td>
+                                            <td>
+                                                <template for:each={editedClaimAttributeLabels} for:item="item">
+                                                    <li key={item} title={item} class="slds-truncate">{item}</li>
+                                                </template>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <template if:true={managedExistingDocuments.length}>
+                                            <td class="slds-m-right_x-small slds-m-left_x-small">
+                                                {label.confirmationPopupLabel2}</td>
+                                            <td>
+                                                <template for:each={managedExistingDocuments} for:item="item">
+                                                    <li key={item} title={item} class="slds-truncate">{item}</li>
+                                                </template>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <template if:true={newlyAddedDocuments.length}>
+                                            <td class="slds-m-right_x-small slds-m-left_x-small">
+                                                {label.confirmationPopupLabel3}</td>
+                                            <td>
+                                                <template for:each={newlyAddedDocuments} for:item="item">
+                                                    <li key={item} title={item} class="slds-truncate">{item}</li>
+                                                </template>
+                                            </td>
+                                        </template>
+                                    </tr>
+
+                                    <!-- Roshan -->
+                                    <tr>
+                                        <template if:true={campPurposeChanged}>
+                                            <td>Campaign Purpose:</td>
+                                            <td>Campaign Purpose 'Quantity to Date' has been updated.</td>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <template if:true={tacticsMetricsChanged}>
+                                            <td>Tactic Metrics:</td>
+                                            <td>Tactic Metrics 'Values to Date' has been updated.</td>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <template if:true={tacticsSpendingChanged}>
+                                            <td>Tactic Spending:</td>
+                                            <td>Tactic Spending 'Spend This Period' has been updated.</td>
+                                        </template>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="slds-var-m-top_medium slds-var-m-bottom_medium">
+                            <div>{label.confirmationPopupMessage2}</div>
+                            <div>{label.confirmationPopupMessage3}</div>
+                        </div>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button variant="neutral" class="slds-var-m-right_small" label={label.radioYes}
+                            onclick={onContinueReviewCompletion}>
+                        </lightning-button>
+                        <lightning-button variant="neutral" label={label.radioNo} onclick={cancelReviewSubmission}>
+                        </lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </div>
+
+    <!--claim status change popup-->
+    <template if:true={isClaimStatusChanged}>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" id="claimStatuschange-modal">
+                <header class="slds-modal__header">{headerLabel}</header>
+                <div class="slds-modal__content slds-var-p-around_medium slds-text-align_center">
+                    <div class="slds-var-p-right_small slds-var-p-top_large slds-var-p-bottom_large">
+                        <span>{descriptionLabel} was completed on this claim by {claimReviewerName} while you were
+                            reviewing,
+                            your changes will not be saved.</span>
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" class="slds-var-m-right_small" label="OK"
+                        onclick={hidePICReviewScreen}>
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

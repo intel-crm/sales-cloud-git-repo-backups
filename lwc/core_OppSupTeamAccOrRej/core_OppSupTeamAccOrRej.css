@@ -1,0 +1,30 @@
+.customLink {
+	word-wrap: break-word;
+    word-break: break-word;       
+    color: blueviolet;
+    width: 25%;
+    border-bottom: 1px dotted;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1%;
+}
+/* For Scrolling */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+   display: none !important;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.4);
+}
+.borderbottom{
+    border-bottom: var(--lwc-borderWidthThin,1px) solid var(--slds-g-color-border-base-1, var(--lwc-colorBorder,rgb(229, 229, 229)));
+}
+.output{
+    border-bottom: 1px outset;
+    margin-right: 5%;
+}

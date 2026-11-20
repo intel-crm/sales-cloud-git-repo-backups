@@ -1,0 +1,299 @@
+<template>
+    <!-- Filters Section -->
+    <div class="slds-card slds-m-top_small">
+        <div class="slds-card__header slds-grid compact-header">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-utility-filterList" title={Filters}>
+                        <svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#filterList"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <span class="slds-truncate" title="Filters">{Filters}</span>
+                    </h2>
+                </div>
+                <div class="slds-no-flex">
+                    <lightning-button 
+                        variant="neutral" 
+                        label={ClearFilters}
+                        onclick={handleClearFilters}>
+                    </lightning-button>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body compact-filter-body-tight">
+            <div class="slds-grid slds-wrap slds-gutters">
+                <!-- Status Filter -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                    <lightning-combobox
+                        name="statusFilter"
+                        label={Status}
+                        value={selectedStatus}
+                        placeholder={SelectStatus}
+                        options={statusOptions}
+                        onchange={handleStatusChange}>
+                    </lightning-combobox>
+                </div>
+                
+                <!-- Program Filter 
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
+                    <lightning-combobox
+                        name="programFilter"
+                        label={Program}
+                        value={selectedProgram}
+                        placeholder={AllPrograms}
+                        options={programOptions}
+                        onchange={handleProgramChange}>
+                    </lightning-combobox>
+                </div>
+                -->
+                <!-- Budget Filter 
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5">
+                    <lightning-combobox
+                        name="budgetFilter"
+                        label={Budget}
+                        value={selectedBudget}
+                        placeholder={AllBudgets}
+                        options={budgetOptions}
+                        onchange={handleBudgetChange}>
+                    </lightning-combobox>
+                </div>
+                -->
+                <!-- Account Lookup Filter -->
+<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+    <div class="slds-form-element">
+        <label class="slds-form-element__label" for="account-lookup">{Account}</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+            <input 
+                id="account-lookup"
+                class="slds-input" 
+                type="text" 
+                placeholder={SearchAccount}
+                value={accountSearchTerm}
+                oninput={handleAccountSearch}
+                onfocus={handleAccountFocus}
+                onblur={handleAccountBlur}
+                data-id="accountInput" />
+        
+            <!-- Clear X icon when account is selected -->
+            <template if:true={showAccountClearButton}>
+                <button class="slds-input__icon slds-input__icon_right slds-button slds-button_icon clear-button" 
+                        type="button" 
+                        onclick={handleClearAccount}
+                        tabindex="-1">
+                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                </button>
+            </template>
+            
+            <!-- Search icon when no selection -->
+            <template if:false={showAccountClearButton}>
+                <span class="slds-input__icon slds-input__icon_right searchicon">
+                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#search"></use>
+                    </svg>
+                </span>
+            </template>
+        </div>
+        
+        <!-- Dropdown for search results -->
+        <template if:true={showAccountDropdown}>
+            <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" style="position: absolute; z-index: 1000; width: 100%;">
+                <ul class="slds-dropdown__list" role="listbox">
+                    <template for:each={accountSearchResults} for:item="account">
+                        <li key={account.id} class="slds-dropdown__item" role="presentation">
+                            <a href="#" class="slds-dropdown__link" role="option" 
+                               data-id={account.id} 
+                               data-name={account.title}
+                               onclick={handleAccountSelect}>
+                                <span class="slds-truncate" title={account.title}>
+                                    <span class="slds-text-body_regular">{account.title}</span>
+                                    <span class="slds-text-color_weak"> • {account.subtitle}</span>
+                                </span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+    </div>
+</div>
+                
+                <!-- Search Filter -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                    <div class="search-input-container">
+                        <lightning-input
+                            type="search"
+                            name="searchFilter"
+                            label={Search}
+                            placeholder={SearchPlaceholder}
+                            value={searchKey}
+                            onchange={handleSearchChange}
+                            onfocus={handleSearchFocus}
+                            onblur={handleSearchBlur}
+                            data-id="searchInput">
+                        </lightning-input>
+                        <template if:true={showSearchHelp}>
+                            <div class="slds-form-element__help slds-text-color_weak search-help-text">
+                                {SearchFilter}
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Table Section -->
+    <section class="slds-card slds-m-top_small">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-utility-table" title={OutcomeBasedCampaigns}>
+                        <svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#table"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <span class="slds-truncate" title={OutcomeBasedCampaigns}>{OutcomeBasedCampaigns}</span>
+                    </h2>
+                </div>
+            </header>
+        </div>
+
+        <div class="slds-card__body slds-card__body_inner">
+            <!-- Error Display -->
+            <template if:true={error}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">{Errortext}</span>
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Error">
+                        <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#error"></use>
+                        </svg>
+                    </span>
+                    <h2>{error}</h2>
+                </div>
+            </template>
+
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <div class="slds-align_absolute-center slds-p-around_large">
+                    <lightning-spinner size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Data Table -->
+            <template if:false={isLoading}>
+                <template if:true={hasActivities}>
+                    <div class="pagination-bar slds-grid slds-wrap slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_small">
+                        <div class="slds-text-body_small slds-text-color_weak">
+                            {paginationSummary}
+                        </div>
+                        <div class="slds-button-group" role="group" aria-label="Pagination">
+                            <lightning-button-icon
+                                icon-name="utility:jump_to_left"
+                                variant="border-filled"
+                                alternative-text="First page"
+                                title="First page"
+                                onclick={handleFirstPage}
+                                disabled={isPreviousDisabled}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:chevronleft"
+                                variant="border-filled"
+                                alternative-text="Previous page"
+                                title="Previous page"
+                                onclick={handlePreviousPage}
+                                disabled={isPreviousDisabled}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:chevronright"
+                                variant="border-filled"
+                                alternative-text="Next page"
+                                title="Next page"
+                                onclick={handleNextPage}
+                                disabled={isNextDisabled}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:jump_to_right"
+                                variant="border-filled"
+                                alternative-text="Last page"
+                                title="Last page"
+                                onclick={handleLastPage}
+                                disabled={isNextDisabled}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                    <div class="datatable-scroll">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={displayedActivities}
+                            columns={columns}
+                            hide-checkbox-column="true"
+                            onsort={handleSort}
+                            sorted-by={sortedBy}
+                            sorted-direction={sortedDirection}
+                            show-row-number-column="true">
+                        </lightning-datatable>
+                    </div>
+                    <div class="pagination-bar slds-grid slds-wrap slds-grid_align-spread slds-grid_vertical-align-center slds-m-top_small">
+                        <div class="slds-text-body_small slds-text-color_weak">
+                            {paginationSummary}
+                        </div>
+                        <div class="slds-button-group" role="group" aria-label="Pagination">
+                            <lightning-button-icon
+                                icon-name="utility:jump_to_left"
+                                variant="border-filled"
+                                alternative-text="First page"
+                                title="First page"
+                                onclick={handleFirstPage}
+                                disabled={isPreviousDisabled}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:chevronleft"
+                                variant="border-filled"
+                                alternative-text="Previous page"
+                                title="Previous page"
+                                onclick={handlePreviousPage}
+                                disabled={isPreviousDisabled}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:chevronright"
+                                variant="border-filled"
+                                alternative-text="Next page"
+                                title="Next page"
+                                onclick={handleNextPage}
+                                disabled={isNextDisabled}>
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:jump_to_right"
+                                variant="border-filled"
+                                alternative-text="Last page"
+                                title="Last page"
+                                onclick={handleLastPage}
+                                disabled={isNextDisabled}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </template>
+                
+                <!-- No Records Message displayed-->
+                <template if:false={hasActivities}>
+                    <div class="slds-align_absolute-center slds-p-around_large no-records-message">
+                        <template if:true={hasFiltersApplied}>
+                            <div class="slds-text-body_regular slds-text-color_weak">
+                                {CampaignFilterText}
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </section>
+</template>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Scheduler Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Scheduler Detail</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Class Name --></label>
+        <name>espy__Batch_Class_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Class id --></label>
+        <name>espy__Batch_Class_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>espy__Batch_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>espy__Deleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedular class Name --></label>
+        <name>espy__Schedular_class_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

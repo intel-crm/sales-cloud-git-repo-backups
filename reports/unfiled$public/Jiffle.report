@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r$jiffle__Meeting__c.jiffle__Event__c</field>
+    </columns>
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r$jiffle__Meeting__c.Name</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r.jiffle__Invites__r$jiffle__Attendee__c.jiffle__Attendee_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r.jiffle__Invites__r$jiffle__Contact__c.FirstName</field>
+    </columns>
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r.jiffle__Invites__r$jiffle__Contact__c.Email</field>
+    </columns>
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r$jiffle__Opportunity__c.Description</field>
+    </columns>
+    <columns>
+        <field>Account.jiffle__Meeting_Relations__r$jiffle__Campaign__c.Id</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Jifflenow Meetings</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>jiffle__Events_with_Meetings_and_Invites__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

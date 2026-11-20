@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>PSG Licensing</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_PSG_JPN</name>
+    <style>none</style>
+    <subject>Verify your email address</subject>
+    <textOnly>メールアドレスの認証
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} 様、
+
+インテル® セルフサービス・ライセンス・センターの登録を申請していただき、ありがとうございます。手続きを進める前に、メールアドレスを確認していただく必要があります。メールアドレスの確認が 45 日以内に完了しない場合、システムから登録が取り消され、新しい申請を再提出して再審査を受ける必要があります。
+
+今後必要になる場合がありますので、ログイン情報は保存しておいてください。
+
+ユーザー名: {{USERNAME}}
+メールアドレス: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+パスワードは秘密情報として保護してください。インテルのウェブサイトでこのパスワードを使用する際は、各サイトのウェブページ下部からリンクされているインテルの利用規約が適用されます。
+
+
+今すぐ確認する
+
+上のリンクにアクセスできない場合
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-ciqa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/support/programmable/forms/fpga-sslc-email-verified.html
+
+
+このリンクは 24 時間後に期限切れになりますのでご注意ください
+
+
+何卒よろしくお願いいたします。
+インテル® PSG SSLC チーム
+
+
+このメッセージは、インテル® プログラマブル・ソリューション・グループと FPGA ソフトウェアおよび/または IP ライセンス資格に関連する重要なコミュニケーションとしてお客様に送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.co.jp
+プライバシー &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

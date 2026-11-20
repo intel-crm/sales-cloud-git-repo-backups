@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount-CDF1:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Contact Count</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Inquiry_Type_Pkt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Inquiry_Source_Txt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Inquiry_Source_BU_Pkt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Lead_Inquiries__c</field>
+    </columns>
+    <columns>
+        <field>Core_Inquiry__c.Core_Contact_Inquiries__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(ISBLANK(Core_Inquiry__c.Core_Lead_Inquiries__c),0,1)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Lead Count</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <description>RT: Inquiry</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Week</dateGranularity>
+        <field>Core_Inquiry__c.Core_Inquiry_Date_Dte__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Inquiry__c.Core_Inquiry_Priority_Pkt__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Inquiry__c.Core_Inquiry_Status_Pkt__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Inquiries by WW</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Inquiry__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Inquiry__c.Core_Inquiry_Date_Dte__c</dateColumn>
+        <interval>INTERVAL_PREVCUR2Y</interval>
+    </timeFrameFilter>
+</Report>

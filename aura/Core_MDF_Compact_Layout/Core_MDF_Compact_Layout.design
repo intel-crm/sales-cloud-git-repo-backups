@@ -1,0 +1,7 @@
+<design:component>
+    <design:attribute name="objAPIName" datasource="Campaign,PartnerFundRequest,PartnerFundClaim"/>
+    <!--<design:attribute name="fieldAPIName" datasource="Core_MDF_Proposal_Based_Ind__c, Core_Mdf_Is_Outcome_Based_ind__c"/>-->
+	<design:attribute name="fieldAPIName"/><!--14820-->
+    <design:attribute name="fieldAPIoperator"/><!--14820-->
+    <design:attribute name="isCompactLayout" datasource="Yes, No"/>
+</design:component>

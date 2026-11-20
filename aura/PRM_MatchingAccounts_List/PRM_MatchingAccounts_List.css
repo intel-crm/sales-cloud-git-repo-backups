@@ -1,0 +1,50 @@
+.THIS .slds-truncate {
+    text-overflow: inherit;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    
+}
+
+.THIS #acc .slds-grid_align-spread{
+    margin-left:4%;
+}
+
+.THIS #acc .slds-table_header-fixed_container{
+    background-color : none; 
+    border-style: none;
+    border-width: 0px;
+    border-color: white;
+}
+
+.THIS #acc .slds-table_header-fixed {
+    visibility:hidden; 
+}
+
+.THIS .allign-text {
+    margin-left: 2%;
+}
+
+.THIS #acc .slds-scrollable_y{
+    background-color : white; 
+}
+.THIS #acc .slds-grid{
+    visibility:visible;
+    
+}
+
+.THIS #acc .slds-radio__label{
+    visibility:visible;
+}
+
+.THIS #reg .slds-radio__label{
+    visibility:hidden;
+}
+
+.THIS .table-align thead th span {
+    margin-left:2%;
+}
+
+.THIS #reg .slds-grid_align-spread{
+    margin-left:4%;
+}

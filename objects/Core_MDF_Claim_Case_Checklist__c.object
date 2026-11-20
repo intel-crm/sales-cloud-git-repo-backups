@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Custom object to hold the Checklist records for a Case.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_AI_Checklist_Status_Nm__c</fullName>
+        <description>Holds the Checklist Status suggested by AI</description>
+        <label>AI Checklist Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Compliant</fullName>
+                    <default>false</default>
+                    <label>Compliant</label>
+                </value>
+                <value>
+                    <fullName>Non-Compliant</fullName>
+                    <default>false</default>
+                    <label>Non-Compliant</label>
+                </value>
+                <value>
+                    <fullName>NA</fullName>
+                    <default>false</default>
+                    <label>NA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Generated_Comments_Txt__c</fullName>
+        <description>Holds the Checklist Comments suggested by AI</description>
+        <label>AI Generated Comments</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Case_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Case_ID</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Claim Case Checklists</relationshipLabel>
+        <relationshipName>Core_MDF_Claim_Case_Checklists</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Case_Review_Findings__c</fullName>
+        <description>Field is used to store the result of a Non-Compliant Checklist Item.</description>
+        <label>Case Review Findings</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Category__c</fullName>
+        <description>Picklist value to choose the status of a checklist item.</description>
+        <label>Checklist Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Branding</fullName>
+                    <default>false</default>
+                    <label>Branding</label>
+                </value>
+                <value>
+                    <fullName>Documentation</fullName>
+                    <default>false</default>
+                    <label>Documentation</label>
+                </value>
+                <value>
+                    <fullName>Submission</fullName>
+                    <default>false</default>
+                    <label>Submission</label>
+                </value>
+                <value>
+                    <fullName>Attribution</fullName>
+                    <default>false</default>
+                    <label>Attribution</label>
+                </value>
+                <value>
+                    <fullName>POP</fullName>
+                    <default>false</default>
+                    <label>POP</label>
+                </value>
+                <value>
+                    <fullName>Engagement</fullName>
+                    <default>false</default>
+                    <label>Engagement</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Description__c</fullName>
+        <description>Field to save the description of the Checklist Items.</description>
+        <label>Checklist Description</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Item__c</fullName>
+        <description>Field to store the Checklist Item.</description>
+        <label>Checklist Item</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Line_Number__c</fullName>
+        <description>Field is used for sorting the Checklist Items.</description>
+        <externalId>false</externalId>
+        <label>Checklist Line Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Checklist_Status__c</fullName>
+        <description>Field is used to store the status of the Checklist field.</description>
+        <label>Checklist Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Compliant</fullName>
+                    <default>false</default>
+                    <label>Compliant</label>
+                </value>
+                <value>
+                    <fullName>Non-Compliant</fullName>
+                    <default>false</default>
+                    <label>Non-Compliant</label>
+                </value>
+                <value>
+                    <fullName>NA</fullName>
+                    <default>false</default>
+                    <label>NA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Claim_Case_Review_Findings__c</fullName>
+        <description>This field stores the Non-Compliant values for Checklist items</description>
+        <label>Claim Case Review Findings</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Activity date mismatch</fullName>
+                    <default>false</default>
+                    <label>Activity date mismatch</label>
+                </value>
+                <value>
+                    <fullName>Activity not completely delivered/partially delivered</fullName>
+                    <default>false</default>
+                    <label>Activity not completely delivered/partially delivered</label>
+                </value>
+                <value>
+                    <fullName>Anti-corruption policy not met</fullName>
+                    <default>false</default>
+                    <label>Anti-corruption policy not met</label>
+                </value>
+                <value>
+                    <fullName>Balanced branding not met</fullName>
+                    <default>false</default>
+                    <label>Balanced branding not met</label>
+                </value>
+                <value>
+                    <fullName>Boost Ad Tagline not met</fullName>
+                    <default>false</default>
+                    <label>Boost Ad Tagline not met</label>
+                </value>
+                <value>
+                    <fullName>Brand image violation</fullName>
+                    <default>false</default>
+                    <label>Brand image violation</label>
+                </value>
+                <value>
+                    <fullName>Branding documents altered</fullName>
+                    <default>false</default>
+                    <label>Branding documents altered</label>
+                </value>
+                <value>
+                    <fullName>Claims outside of 6 months claiming window</fullName>
+                    <default>false</default>
+                    <label>Claims outside of 6 months claiming window</label>
+                </value>
+                <value>
+                    <fullName>Claims outside of claiming window</fullName>
+                    <default>false</default>
+                    <label>Claims outside of claiming window</label>
+                </value>
+                <value>
+                    <fullName>Competitive element violation</fullName>
+                    <default>false</default>
+                    <label>Competitive element violation</label>
+                </value>
+                <value>
+                    <fullName>Consistency Issue</fullName>
+                    <default>false</default>
+                    <label>Consistency Issue</label>
+                </value>
+                <value>
+                    <fullName>Cost documents altered</fullName>
+                    <default>false</default>
+                    <label>Cost documents altered</label>
+                </value>
+                <value>
+                    <fullName>Cost documents altered/not valid</fullName>
+                    <default>false</default>
+                    <label>Cost documents altered/not valid</label>
+                </value>
+                <value>
+                    <fullName>Duplicate claims</fullName>
+                    <default>false</default>
+                    <label>Duplicate claims</label>
+                </value>
+                <value>
+                    <fullName>Eligible ad space error</fullName>
+                    <default>false</default>
+                    <label>Eligible ad space error</label>
+                </value>
+                <value>
+                    <fullName>Eligible Product/Solution Not Prominent/Missing</fullName>
+                    <default>false</default>
+                    <label>Eligible Product/Solution Not Prominent/Missing</label>
+                </value>
+                <value>
+                    <fullName>Embargo countries</fullName>
+                    <default>false</default>
+                    <label>Embargo countries</label>
+                </value>
+                <value>
+                    <fullName>Event prior approval violation</fullName>
+                    <default>false</default>
+                    <label>Event prior approval violation</label>
+                </value>
+                <value>
+                    <fullName>Event prior approval violation. Pre-review documentation violation</fullName>
+                    <default>false</default>
+                    <label>Event prior approval violation. Pre-review documentation violation</label>
+                </value>
+                <value>
+                    <fullName>Exceeds Gift &amp; Entertainment guide</fullName>
+                    <default>false</default>
+                    <label>Exceeds Gift &amp; Entertainment guide</label>
+                </value>
+                <value>
+                    <fullName>Exceeds Gifts &amp; Entertainment guide</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Exceeds Gifts &amp; Entertainment guide</label>
+                </value>
+                <value>
+                    <fullName>Execution date mismatch</fullName>
+                    <default>false</default>
+                    <label>Execution date mismatch</label>
+                </value>
+                <value>
+                    <fullName>Incorrect/missing Additional Attribution</fullName>
+                    <default>false</default>
+                    <label>Incorrect/missing Additional Attribution</label>
+                </value>
+                <value>
+                    <fullName>Incorrect/missing Intel mention</fullName>
+                    <default>false</default>
+                    <label>Incorrect/missing Intel mention</label>
+                </value>
+                <value>
+                    <fullName>Incorrect activity type/category</fullName>
+                    <default>false</default>
+                    <label>Incorrect activity type/category</label>
+                </value>
+                <value>
+                    <fullName>Incorrect country submission</fullName>
+                    <default>false</default>
+                    <label>Incorrect country submission</label>
+                </value>
+                <value>
+                    <fullName>Incorrect country submission/ Multiple countries submission</fullName>
+                    <default>false</default>
+                    <label>Incorrect country submission/ Multiple countries submission</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Intel logo/sig ID</fullName>
+                    <default>false</default>
+                    <label>Incorrect Intel logo/sig ID</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Intel Mention</fullName>
+                    <default>false</default>
+                    <label>Incorrect Intel Mention</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Intel Processor Brands</fullName>
+                    <default>false</default>
+                    <label>Incorrect Intel Processor Brands</label>
+                </value>
+                <value>
+                    <fullName>Incorrect LED selection</fullName>
+                    <default>false</default>
+                    <label>Incorrect LED selection</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Product Executed</fullName>
+                    <default>false</default>
+                    <label>Incorrect Product Executed</label>
+                </value>
+                <value>
+                    <fullName>Incorrect Program Selected</fullName>
+                    <default>false</default>
+                    <label>Incorrect Program Selected</label>
+                </value>
+                <value>
+                    <fullName>Intel Artwork Violation</fullName>
+                    <default>false</default>
+                    <label>Intel Artwork Violation</label>
+                </value>
+                <value>
+                    <fullName>Intel code name violation</fullName>
+                    <default>false</default>
+                    <label>Intel code name violation</label>
+                </value>
+                <value>
+                    <fullName>Intel logo/sig ID altered</fullName>
+                    <default>false</default>
+                    <label>Intel logo/sig ID altered</label>
+                </value>
+                <value>
+                    <fullName>Invalid POC amount</fullName>
+                    <default>false</default>
+                    <label>Invalid POC amount</label>
+                </value>
+                <value>
+                    <fullName>Invalid POC currency</fullName>
+                    <default>false</default>
+                    <label>Invalid POC currency</label>
+                </value>
+                <value>
+                    <fullName>Invalid rate card/calculation</fullName>
+                    <default>false</default>
+                    <label>Invalid rate card/calculation</label>
+                </value>
+                <value>
+                    <fullName>Lack of Intel Presence</fullName>
+                    <default>false</default>
+                    <label>Lack of Intel Presence</label>
+                </value>
+                <value>
+                    <fullName>Landing Page Branding violation</fullName>
+                    <default>false</default>
+                    <label>Landing Page Branding violation</label>
+                </value>
+                <value>
+                    <fullName>Legal Review violation</fullName>
+                    <default>false</default>
+                    <label>Legal Review violation</label>
+                </value>
+                <value>
+                    <fullName>Missing documents</fullName>
+                    <default>false</default>
+                    <label>Missing documents</label>
+                </value>
+                <value>
+                    <fullName>Multiple invoices submission in one claim</fullName>
+                    <default>false</default>
+                    <label>Multiple invoices submission in one claim</label>
+                </value>
+                <value>
+                    <fullName>Negative brand impact</fullName>
+                    <default>false</default>
+                    <label>Negative brand impact</label>
+                </value>
+                <value>
+                    <fullName>Non-eligible Intel product brand</fullName>
+                    <default>false</default>
+                    <label>Non-eligible Intel product brand</label>
+                </value>
+                <value>
+                    <fullName>Non-eligible product/solution</fullName>
+                    <default>false</default>
+                    <label>Non-eligible product/solution</label>
+                </value>
+                <value>
+                    <fullName>Non-reimbursable costs</fullName>
+                    <default>false</default>
+                    <label>Non-reimbursable costs</label>
+                </value>
+                <value>
+                    <fullName>Not promoting brand in positive manner</fullName>
+                    <default>false</default>
+                    <label>Not promoting brand in positive manner</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+                <value>
+                    <fullName>Path to Purchase prerequisite not met</fullName>
+                    <default>false</default>
+                    <label>Path to Purchase prerequisite not met</label>
+                </value>
+                <value>
+                    <fullName>POC date mismatch</fullName>
+                    <default>false</default>
+                    <label>POC date mismatch</label>
+                </value>
+                <value>
+                    <fullName>POC detail submission error</fullName>
+                    <default>false</default>
+                    <label>POC detail submission error</label>
+                </value>
+                <value>
+                    <fullName>POE documents altered</fullName>
+                    <default>false</default>
+                    <label>POE documents altered</label>
+                </value>
+                <value>
+                    <fullName>POP contain redaction</fullName>
+                    <default>false</default>
+                    <label>POP contain redaction</label>
+                </value>
+                <value>
+                    <fullName>POP not in acceptable format</fullName>
+                    <default>false</default>
+                    <label>POP not in acceptable format</label>
+                </value>
+                <value>
+                    <fullName>Promoting Non-Intel Product</fullName>
+                    <default>false</default>
+                    <label>Promoting Non-Intel Product</label>
+                </value>
+                <value>
+                    <fullName>Proof of Execution altered</fullName>
+                    <default>false</default>
+                    <label>Proof of Execution altered</label>
+                </value>
+                <value>
+                    <fullName>Qualified Processor Brands violation</fullName>
+                    <default>false</default>
+                    <label>Qualified Processor Brands violation</label>
+                </value>
+                <value>
+                    <fullName>SPIF underperformed</fullName>
+                    <default>false</default>
+                    <label>SPIF underperformed</label>
+                </value>
+                <value>
+                    <fullName>Third-party logos violation</fullName>
+                    <default>false</default>
+                    <label>Third-party logos violation</label>
+                </value>
+                <value>
+                    <fullName>Trademark infringement</fullName>
+                    <default>false</default>
+                    <label>Trademark infringement</label>
+                </value>
+                <value>
+                    <fullName>Underperformed metrics/Not Meeting FMV</fullName>
+                    <default>false</default>
+                    <label>Underperformed metrics/Not Meeting FMV</label>
+                </value>
+                <value>
+                    <fullName>Unsupported domains</fullName>
+                    <default>false</default>
+                    <label>Unsupported domains</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comment__c</fullName>
+        <description>This field is used by the Claim Case Reviewer/Manager to record their comments on the Claim Case Review.</description>
+        <label>Comment</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Completion_Percentage__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>This fields gives the completion percentage of the Checklist</description>
+        <externalId>false</externalId>
+        <label>Completion Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Impact_Amount_Summation_nbr__c</fullName>
+        <description>Field stores the sum of all the Impact Amount from Checklist for a Case</description>
+        <externalId>false</externalId>
+        <label>Impact Amount Summation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Impact_Amount__c</fullName>
+        <description>This field stores the Impact Amount in local currency for Claim Case Review by the Claim Case Reviewer/Manager.</description>
+        <label>Impact Amount(Local)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>Claim Case Checklist</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Checklist #{0000}</displayFormat>
+        <label>Claim Case Checklist Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Claim Case Checklists</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_Validate_NonCompliant_Responses</fullName>
+        <active>true</active>
+        <description>Validates if every Non-Compliant Checklist response has an Impact Amount tied to it.</description>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Core_MDF_Checklist_Status__c, &apos;Non-Compliant&apos;),  ISNULL(Core_MDF_Impact_Amount__c) || Core_MDF_Impact_Amount__c &lt;0),true,false)</errorConditionFormula>
+        <errorMessage>Enter Impact Amount (local) greater than or equal to 0</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

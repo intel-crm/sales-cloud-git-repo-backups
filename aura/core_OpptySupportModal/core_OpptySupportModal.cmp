@@ -1,0 +1,16 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+   
+    <aura:html tag="style">
+        .cuf-content { padding: 0 0rem !important; } .slds-p-around--medium {
+        padding: 0rem !important; } .slds-modal__content{ height:unset !important;
+        max-height:unset !important; } .slds-modal__container{ max-width:80rem
+        !important; width:46% !important; height:800px px !important;
+        max-height:800px !important; }
+    </aura:html>
+    <aura:attribute name="recordId" type="Id"/>
+
+    <c:core_OpportunitySupport
+        recordId="{!v.recordId}"
+        onmodalclose="{!c.handleClose}"
+    ></c:core_OpportunitySupport>
+</aura:component>

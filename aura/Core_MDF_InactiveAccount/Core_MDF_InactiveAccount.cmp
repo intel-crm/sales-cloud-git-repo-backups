@@ -1,0 +1,75 @@
+<aura:component controller="Core_MDF_InactivateAccount" implements="force:lightningQuickAction,force:hasRecordId" access="global" >
+	<aura:attribute name = "isUserEligible" type = "Boolean" default="false"/>
+    <aura:attribute name = "isAccountNotEligibleForInactivation" type = "Boolean" default="false"/>
+    <aura:attribute name = "isAccounthasActiveTransac" type = "Boolean" default="false"/>
+    <aura:attribute name = "errorMsg" type = "String"/>
+    <aura:attribute name = "accountIsAutoTransferAccount" type = "String" default="" />
+    <aura:attribute name = "accounthasAllocation" type = "String" default="" />
+    <aura:attribute name = "accounthasActiveClaim" type = "String" default="" />
+    <aura:attribute name = "accounthasActivities" type = "String" default="" />
+    <aura:attribute name = "accounthasBankMapping" type = "String" default="" />
+    <aura:attribute name = "accounthasOpenEscalations" type = "String" default="" />
+    <aura:attribute name = "wrapperClassVar"  type = "Core_MDF_InactivateAccount"/>
+    <aura:attribute name="countOfClaimRecords" type="Integer" default="0"/>
+    <aura:attribute name="countOfActivityRecords" type="Integer" default="0"/>
+    <aura:attribute name="countOfCampaignRecords" type="Integer" default="0"/>
+    <aura:attribute name = "accounthasCampaigns" type = "String" default="" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="checkAccountEligibilty" value="{!v.recordId}" action="{!c.checkAccountEligibiltyForInactivation}"/>
+	<div>
+        <lightning:layout >
+             <aura:if isTrue="{!v.isUserEligible}">
+            	<lightning:layoutItem padding="around-small">
+				<div>
+                	<div class="slds-card slds-align_absolute-center"   >
+                        <lightning:icon iconName="utility:warning" variant="warning"/>
+                    	<div class="slds-p-around_medium slds-align_absolute-center">{!$Label.c.Core_MDF_Inactivate_Account_Warning_Message}</div>
+                	</div>
+                	<div class="slds-card">
+                   		<div class="slds-p-around_medium slds-align_absolute-center">
+                       		<lightning:button aura:id="yesButton" variant="brand" label="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" title="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" onclick="{!c.checkAccountEligibiltyForInactivation}"/>
+                       		<lightning:button aura:id="noButton" variant="neutral" label="{!$Label.c.Core_MDF_Cancel_Claim_No}" title="{!$Label.c.Core_MDF_Cancel_Claim_No}" onclick="{!c.closeModel }"/>   
+                   		</div>
+               		</div>
+            	</div>
+            	</lightning:layoutItem>
+			</aura:if>
+        </lightning:layout>
+    </div>
+    <aura:if isTrue="{!v.isAccountNotEligibleForInactivation}">
+        <div class="slds-card slds-align_absolute-center">
+            <p>{!v.errorMsg}</p>
+        </div> 
+    </aura:if>
+    <aura:if isTrue="{!v.isAccounthasActiveTransac}" >
+        <aura:if isTrue="{!not(empty(v.accountIsAutoTransferAccount))}">
+        <p>{!v.accountIsAutoTransferAccount}</p><br/>
+        </aura:if>
+        
+        <aura:if isTrue="{!not(empty(v.accounthasAllocation))}">
+        <p>{!v.accounthasAllocation}</p><br/>
+        </aura:if>
+        <aura:if isTrue="{!not(empty(v.accounthasCampaigns))}">
+            {!format($Label.c.Core_MDF_Account_has_Campaigns, v.countOfCampaignRecords)}
+            <br/><br/>  
+        </aura:if>
+        <aura:if isTrue="{!not(empty(v.accounthasActivities))}">
+            {!format($Label.c.Core_MDF_Account_has_activities, v.countOfActivityRecords)}
+            <br/><br/> 
+        </aura:if>
+        
+        <aura:if isTrue="{!not(empty(v.accounthasActiveClaim))}">
+             {!format($Label.c.Core_MDF_Account_has_active_claims, v.countOfClaimRecords)} 
+        	<br/><br/>
+        </aura:if>
+        
+        <aura:if isTrue="{!not(empty(v.accounthasBankMapping))}">
+            <p>{!v.accounthasBankMapping}</p><br/>  
+        </aura:if>
+        
+         <aura:if isTrue="{!not(empty(v.accounthasOpenEscalations))}">
+            <p>{!v.accounthasOpenEscalations}</p><br/>  
+        </aura:if>
+    </aura:if>
+</aura:component>

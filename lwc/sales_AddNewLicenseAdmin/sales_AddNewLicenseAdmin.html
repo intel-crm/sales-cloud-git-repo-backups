@@ -1,0 +1,60 @@
+<template>
+<div class="slds-m-around_large">  
+    <div if:false={isLoaded} class="slds-is-relative">  
+        <lightning-spinner alternative-text="Loading...">  
+        </lightning-spinner>  
+    </div>  
+    </div>  
+<lightning-card icon-name="standard:contact">
+    <p slot="footer">        
+    <lightning-record-edit-form id="admnForm" object-api-name="Sales_License_Admin_Delegate__c" layout-type="compact"  
+    horizontal-align="space" title="Admin Information" onsuccess={handleOnSuccess}  
+    onload={handleOnLoad} class="max-width: 450px;">  
+    <lightning-messages>  
+    </lightning-messages>  
+
+    <template if:true={isInternal}>
+        <label class="slds-float_left" for="primaryAdm">Primary Admin Contact</label>
+        <abbr title="required" class="slds-float_left slds-required">*</abbr> 
+        <lightning-input-field id="primaryAdm" onchange={handleInputFieldChange} field-name='Sales_License_PrimaryAdmin_Contact__c' variant="label-hidden" required="true"></lightning-input-field>  
+    </template>    
+ <!--<lightning-layout horizontal-align="spread">  -->
+      <!--  <lightning-layout-item flexibility="auto" >  -->
+        <label class="slds-float_left slds-p-top_medium" for="firstname">{label.Sales_FirstName}</label> 
+        <lightning-input-field id="firstname" onchange={handleInputFieldChange} field-name='Sales_License_DlgAdmin_FirstName_Txt__c' variant="label-hidden"></lightning-input-field>  
+     <!--   </lightning-layout-item>  -->
+      <!-- </lightning-layout> -->
+
+ <!--   <lightning-layout horizontal-align="spread">  -->
+     <!--   <lightning-layout-item flexibility="auto" >  -->
+        
+        <label class="slds-float_left slds-p-top_medium" for="lastname">{label.Sales_LastName}</label> 
+        <abbr title="required" class="slds-float_left slds-p-top_medium slds-required">*</abbr>
+        <lightning-input-field id="lastname" onchange={handleInputFieldChange} field-name='Sales_License_DlgAdmin_LastName_Txt__c' variant="label-hidden" required="true"></lightning-input-field>  
+     <!--   </lightning-layout-item>  -->
+ <!--   </lightning-layout>  -->
+<!--    <lightning-layout horizontal-align="spread">  -->
+      <!--  <lightning-layout-item flexibility="auto" >  -->      
+        <label class="slds-float_left slds-p-top_medium" for="email">{label.Sales_mail}</label> 
+        <abbr title="required" class="slds-float_left slds-p-top_medium slds-required">*</abbr>
+      <lightning-input-field id="email" onchange={handleInputFieldChange} field-name='Sales_License_DlgAdmin_Email_Txt__c' variant="label-hidden" required="true"></lightning-input-field>  
+
+      <!--  </lightning-layout-item>  -->
+    <!--  <lightning-layout-item flexibility="auto" >  
+        <lightning-input-field field-name='Core_Country_Region__c'></lightning-input-field>  
+        </lightning-layout-item>  -->
+ <!--   </lightning-layout>       -->
+    <lightning-layout class="slds-p-top_medium" horizontal-align="spread">  
+    <lightning-layout-item flexibility="auto" >  
+        <lightning-button variant="brand" name="save" label={label.Sales_SaveOrder_HTML}
+        style="padding-left: 0.75rem;" onclick={handleOnSubmitBtnClick}>  
+        </lightning-button>  
+        <lightning-button label={label.Sales_Cancel} variant="brand" onclick={navigateToListView}  
+        style="padding-left: 0.75rem;">  
+        </lightning-button>  
+    </lightning-layout-item>  
+    </lightning-layout>     
+    </lightning-record-edit-form>
+    </p>
+</lightning-card>
+</template>

@@ -1,0 +1,18 @@
+<aura:component controller="Core_AcceptReject_Lead_LexController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="public" >
+    <aura:attribute name="alertMessage" type="String" default=""/>
+    <aura:attribute name="leadObject" type="Lead"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!(v.alertMessage != '')}">
+        <div class="slds-text-heading_small" style="padding-top: 90px;">{!v.alertMessage}</div>
+        <aura:set attribute="else">
+            <ui:inputSelect aura:id="pickList" multiple="false" label="Rejection Reason" value="{!v.leadObject.Core_Rejection__c}" required="true"/>
+            <br/>
+            <ui:inputTextArea value="{!v.leadObject.Core_Rejection_Comments__c}" label="Rejection Comments" required="true"/>
+            <br/>
+            <div style="float: right;">
+            	<lightning:button label="Next" variant="brand" onclick="{!c.saveLead}"/>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>

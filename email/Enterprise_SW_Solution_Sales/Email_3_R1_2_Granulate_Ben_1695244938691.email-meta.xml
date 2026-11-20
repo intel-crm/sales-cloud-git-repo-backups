@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email 3_R1.2_Granulate Ben</name>
+    <relatedEntityType>Contact</relatedEntityType>
+    <style>none</style>
+    <subject>Solving Big Data Cost/Capacity Efficiency with Intel Granulate</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

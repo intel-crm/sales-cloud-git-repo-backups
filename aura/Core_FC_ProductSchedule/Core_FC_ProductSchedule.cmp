@@ -1,0 +1,331 @@
+<aura:component controller="Core_FC_ProductSchedule_Ctrl" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <!--aura attribute-->
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    <aura:attribute name="ltngRecUrl" type="String" default="/one/one.app#/sObject/" />
+    <aura:attribute name="myMap" type="Map" />
+    <aura:attribute name="fcWrapper" type="Core_FC_ProductSchedule_Ctrl.FCWrapper" />
+    <aura:attribute name="fcCustomSetting" type="Core_FC_Product_Schedule_Permission__c" />
+    <aura:attribute name="oppRecord" type="Opportunity" />
+    <aura:attribute name="quarterTotalList" type="List" />
+    <aura:attribute name="fcDisplayWrapList" type="List" />
+    <aura:attribute name="fcDisplayWrapListFinal" type="List" />
+    <aura:attribute name="dummyFcDisplayWrapList" type="List" />
+    <aura:attribute name="quarterStatusSet" type="Set" />
+    <aura:attribute name="dummyQuarterStatusSet" type="Set" />
+    <aura:attribute name="isClearAll" type="Boolean" default="false" />
+    <aura:attribute name="isSchedQuarter" type="Boolean" default="false" />
+    <aura:attribute name="isAddQuarter" type="Boolean" default="false" />
+    <aura:attribute name="isEditQuarter" type="Boolean" default="false" />
+    <aura:attribute name="isSubmitQuarter" type="Boolean" default="false" />
+    <aura:attribute name="canShowPostWinDelete" type = "Boolean" default = "false"/>
+    <!--Added By Hira-->
+    <aura:attribute name="quarterMisALign" type="Boolean" default="false"/>
+	<aura:attribute name="recalledFlag" type="Boolean" default="false"/>
+    <!--Added By Ketki-->
+    <aura:attribute name="isPartner" type="Boolean" default="false"/>
+    <aura:attribute name="oppCoverage" type="String" />
+    <aura:attribute name="coverageType" type="String"/>
+    <aura:attribute name="schQuantityError" type="Boolean" default="false"/>
+    <aura:attribute name="QuantityEditRestriction" type="Boolean" default="false"/>
+    <aura:attribute name="isOppLocked" type="Boolean" default="false"/>
+    <aura:attribute name="totalQuantityError" type="String"/>
+    <aura:attribute name="QuartersNotAligned" type="Boolean" default="false"/>
+    <aura:attribute name="isPCCDealOpp" type="Boolean" default="true"/>
+    <aura:attribute name="QLQuarterList" type="List" />
+    <aura:attribute name="ProdNoAura" type="Integer" />
+    <aura:attribute name="noErrorAura" type="Boolean" default="true"/>
+
+    <!--aura handler-->
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    
+    <!--override Toast CSS with external [.CSS] file.--> 
+    <ltng:require styles="{!$Resource.multilineToastCSS}" />
+    
+    <aura:if isTrue="{!!v.loaded}">
+        <lightning:spinner variant="brand" alternativeText="Loading" />
+    </aura:if>
+    <div class="slds-grid slds-wrap">
+        <aura:if isTrue="{!not(empty(v.fcDisplayWrapList))}">
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.fcWrapper.oppProductCount > 0}">
+                    <span style="text-align:center;width: 100%;font-size: large;">
+                        {!$Label.c.Core_FC_NoQPS}
+                    </span>
+                    <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Start_Scheduling__c)}">
+                        <lightning:button label="{!$Label.c.Core_Start_Scheduling_Button_and_Heading}" title="{!$Label.c.Core_Start_Scheduling_Button_and_Heading}" onclick="{!c.scheduleQuarter}"/>
+                    </aura:if>
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!v.loaded}">
+                            <span style="text-align:center;width: 100%;font-size: large;">
+                                {!$Label.c.Core_FC_No_6QPS_Message}
+                            </span>
+                        </aura:if>
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+            <div class="TopButtonCls">
+                <span style="display:inline-grid;float:left;">
+                    <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Start_Scheduling__c)}">
+                        <lightning:button label="{!$Label.c.Core_Start_Scheduling_Button_and_Heading}" title="{!$Label.c.Core_Start_Scheduling_Button_and_Heading}" onclick="{!c.scheduleQuarter}" disabled="{!!v.fcWrapper.canSchedQuarter}"/>
+                    </aura:if>
+                </span>
+                <span style="float:right;">
+                    <lightning:buttonGroup>
+                        <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Add_Quarter__c)}">
+                            <lightning:button label="{!$Label.c.Core_FC_AddQuarter_Btn}" title="{!$Label.c.Core_FC_AddQuarter_Btn}" onclick="{!c.addQuarterFunction}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Edit_All_Scheduled_Quantity__c)}">
+                            <lightning:button label="{!$Label.c.Core_FC_EditAll_Btn}" title="{!$Label.c.Core_FC_EditAll_Btn}" onclick="{!c.editQuarterFunction}"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!and(v.fcWrapper.isTechnicalOwner, !v.isPCCDealOpp, or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Submit_For_Scheduled_Quarter__c))}">
+                            <lightning:button label="{!$Label.c.Core_FC_SubmitQuarter_Btn}" title="{!$Label.c.Core_FC_SubmitQuarter_Btn}" onclick="{!c.openSubmitQuarterPopup}" disabled="{!!v.fcWrapper.canSubmitQuarter}"/>
+                        </aura:if>
+                        
+                          <aura:if isTrue="{!and(!!v.isPCCDealOpp,v.fcWrapper.isOwner, or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Submit_For_Scheduled_Quarter__c))}">
+                            <lightning:button label="{!$Label.c.Core_FC_SubmitQuarter_Btn}" title="{!$Label.c.Core_FC_SubmitQuarter_Btn}" onclick="{!c.openSubmitQuarterPopup}" disabled="{!!v.fcWrapper.canSubmitQuarter}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c,
+                                         or(and(!!v.isPCCDealOpp,v.fcWrapper.isManager),
+                                         and(!v.isPCCDealOpp,
+                                         or( v.fcWrapper.isDelegateManagerPCC,v.fcWrapper.isOwnerPCC ))))}">
+                            <lightning:buttonMenu alternativeText="Show menu" menuAlignment="right" variant="border-filled" class="slds-button_last" onselect="{!c.onMenuSelection}">
+                                <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Approve_Scheduled_Quarter__c, v.fcCustomSetting.Core_Reject_Scheduled_Quarter__c, v.fcCustomSetting.Core_Recall_Last_Approval__c)}">
+                                        <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Approve_Scheduled_Quarter__c)}">
+                                            <lightning:menuItem label="{!$Label.c.Core_FC_Approve_Btn}" value="AppSchedQuarter" disabled="{!!v.fcWrapper.canAppRejQuarter}"/>
+                                        </aura:if>
+                                        <aura:if isTrue="{!or(v.fcCustomSetting.Core_IsAdmin__c, v.fcCustomSetting.Core_Reject_Scheduled_Quarter__c)}">
+                                            <lightning:menuItem label="{!$Label.c.Core_FC_Reject_Btn}" value="RejSchedQuarter" disabled="{!!v.fcWrapper.canAppRejQuarter}"/>
+                                        </aura:if>
+                                    <aura:if isTrue="{!or(
+                                                        or(v.fcCustomSetting.Core_IsAdmin__c,v.fcCustomSetting.Core_Recall_Last_Approval__c),                                                        
+                                                        and(!!v.isPCCDealOpp,v.fcWrapper.isManager, v.fcCustomSetting.Core_IsAdmin__c),
+                                                        and(!v.isPCCDealOpp,
+                                                            or( v.fcWrapper.isDelegateManagerPCC,v.fcWrapper.isOwnerPCC )
+                                                            )
+                                                        )}">
+                                        <aura:if isTrue="{!v.fcWrapper.canAppRejQuarter}">
+                                            <lightning:menuItem label="{!$Label.c.Core_FC_Recall_Btn}" value="RecallLastApproval" disabled="true"/>
+                                            <aura:set attribute="else">
+                                                <lightning:menuItem label="{!$Label.c.Core_FC_Recall_Btn}" value="RecallLastApproval" disabled="{!!v.fcWrapper.canRecallApproval}"/>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:if>
+                                </aura:if>
+                                <!--<lightning:menuItem label="{!$Label.c.Core_FC_Commission_Report_Btn}" value="forecastCredit" disabled="false"/> -->
+                            </lightning:buttonMenu>
+                        </aura:if>
+                    </lightning:buttonGroup>
+                </span>
+            </div>
+            <table class="slds-table" style="display: block;overflow-x: auto;">
+                <thead>
+                    <tr>
+                        <th class="thClass" style="border-left: hidden;">Product Name</th>
+                        <aura:if isTrue="{!v.isPCCDealOpp}">
+                            <th class="thClass" >Post Win</th>
+                            <th class="thClass">Vendor</th>
+                        </aura:if>
+                        <aura:if isTrue="{!!v.isPCCDealOpp}">
+                            <th class="thClass">Product Quantity</th>
+                        </aura:if>
+                        <th class="thClass"></th>
+                        <aura:iteration items="{!v.quarterStatusSet}" var="qtStatus">
+                            <th class="thClass" style="{!if(qtStatus.quarterStatus == 'Approved','background-color:greenyellow;',if(qtStatus.quarterStatus == 'Submitted','background-color:yellow;','background-color:none;'))}">{!qtStatus.quarterName}</th>
+                        </aura:iteration>
+                        <th class="thClass" style="border-right: hidden;">{!$Label.c.Core_FC_LastModifiedDate}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.fcDisplayWrapList}" var="fcDisplayWrap">
+                        <tr style="{!if(fcDisplayWrap.validProduct,'','background-color: darkgray;')}">
+                            <td style="white-space:normal;border:1px solid lightgray;border-left: hidden;">
+                                <a href="{!v.ltngRecUrl+fcDisplayWrap.productId}" target="_blank">{!fcDisplayWrap.productName}</a>
+                            </td>
+                            <aura:if isTrue="{!v.isPCCDealOpp}">
+                                <td style="border:1px solid lightgray;">
+                                    <lightning:input type="checkbox" checked="{!fcDisplayWrap.isPostWin}" disabled="true" />
+                                </td>
+                                <td style="border:1px solid lightgray;">
+                                    <a href="{!v.ltngRecUrl+fcDisplayWrap.vendorId}" target="_blank">{!fcDisplayWrap.vendorName}</a>
+                                </td>
+                            </aura:if>
+                            <aura:if isTrue="{!!v.isPCCDealOpp}">
+                                <td style="border:1px solid lightgray;">
+                                     <span style="display:block;text-align:center;"><lightning:formattedNumber value="{!fcDisplayWrap.productQuantity}"/><br></br></span>
+                                </td>
+                            </aura:if>                            
+                            <td style="border:1px solid lightgray;">
+                                <span style="display:block;">Scheduled Quantity</span>
+                                <!--<aura:if isTrue="{!!v.isPartner}">-->
+                                <span style="display:block;">Scheduled Revenue</span>
+                            <!--</aura:if>-->
+                            </td>
+                            <aura:iteration items="{!fcDisplayWrap.scheduledList}" var="schedVal">
+                                <td style="border:1px solid lightgray;">
+                                    <!--<span style="display:block;text-align:center;">{!schedVal.scheduledQuantity}</span>
+                                    <span style="display:block;text-align:center;">${!schedVal.scheduledRevenue}</span>-->
+                                    <span style="display:block;text-align:center;"><lightning:formattedNumber value="{!schedVal.scheduledQuantity}"/><br></br></span>
+                                  <!--<aura:if isTrue="{!!v.isPartner}">-->
+                                  	<span style="display:block;text-align:center;">$<lightning:formattedNumber value="{!schedVal.scheduledRevenue}"/></span>
+                                  <!--</aura:if>-->
+								</td>
+                            </aura:iteration>
+                            <td style="border:1px solid lightgray;">
+                                <!--<span style="display:block;text-align:center;">{!fcDisplayWrap.totalQuantity}</span>
+                                <span style="display:block;text-align:center;">${!fcDisplayWrap.totalRevenue}</span>-->
+                                <span style="display:block;text-align:center;"><lightning:formattedNumber value="{!fcDisplayWrap.totalQuantity}"/><br></br></span>
+                                <!--<aura:if isTrue="{!!v.isPartner}">-->
+                                    <span style="display:block;text-align:center;">$<lightning:formattedNumber value="{!fcDisplayWrap.totalRevenue}"/></span>
+                                <!-- </aura:if>-->
+                            </td>
+                            <td style="border:1px solid lightgray;border-right: hidden;">
+                                <lightning:formattedDateTime value="{!fcDisplayWrap.lastModifiedDate}"/>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                    <!--<aura:if isTrue="{!!v.isPartner}">-->
+                    <tr>
+                        <aura:if isTrue="{!v.isPCCDealOpp}">
+                        	<td colspan="3"></td>
+                        </aura:if>
+                        <aura:if isTrue="{!!v.isPCCDealOpp}">
+                        	<td colspan="2"></td>
+                        </aura:if>
+                        <td style="font-weight: bold;text-align:center;border:1px solid lightgray;background-color:lightgray;">Total Revenue</td>
+                        <aura:iteration items="{!v.quarterTotalList}" var="qtTotal">
+                            <!--<td style="font-weight: bold;text-align:center;border:1px solid lightgray;background-color:lightgray;">${!qtTotal.value}</td>-->
+                            <td style="font-weight: bold;text-align:center;border:1px solid lightgray;background-color:lightgray;">$<lightning:formattedNumber value="{!qtTotal.value}"/></td>
+                        </aura:iteration>
+                        <td></td>
+                    </tr>
+                    <!--</aura:if>-->
+                </tbody>
+            </table>
+        </aura:if>
+    </div>
+    
+    <aura:if isTrue="{!v.isSchedQuarter}">
+        <c:Core_StartScheduling recordId="{!v.recordId}" isModalOpen="{!v.isSchedQuarter}"/>
+    </aura:if>
+    
+    <aura:if isTrue="{!or(v.isAddQuarter, v.isEditQuarter)}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 90%;max-width: 100%;">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeAddEditPopup}" alternativeText="close" variant="bare" size="large" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        <aura:if isTrue="{!v.isAddQuarter}">
+                            {!$Label.c.Core_FC_AddQuarter_Btn}
+                            <aura:set attribute="else">
+                                {!$Label.c.Core_FC_EditAll_Btn}
+                            </aura:set>
+                        </aura:if>
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <table class="slds-table" style="display: block;overflow-x: auto;">
+                        <thead>
+                            <tr>
+                                <aura:if isTrue="{!!v.isAddQuarter}">
+                                    <th class="thClass">Delete</th>
+                                </aura:if>
+                                <th class="thClass">Product Name</th>
+                                <aura:if isTrue="{!v.isPCCDealOpp}">
+                                    <th class="thClass">Post-Win</th>
+                                    <th class="thClass">Vendor</th>
+                                </aura:if>
+                                <aura:if isTrue="{!!v.isPCCDealOpp}">
+                                	<th class="thClass">Product Quantity</th>
+                                </aura:if>
+                                <th class="thClass"></th>
+                                <aura:iteration items="{!if(v.isAddQuarter,v.dummyQuarterStatusSet,v.quarterStatusSet)}" var="qtStatus">
+                                    <th class="thClass" style="{!if(qtStatus.quarterStatus == 'Approved','background-color:greenyellow;',if(qtStatus.quarterStatus == 'Submitted','background-color:yellow;','background-color:none;'))}">{!qtStatus.quarterName}</th>
+                                </aura:iteration>
+                                <th class="thClass" style="border-right: hidden;">{!$Label.c.Core_FC_LastModifiedDate}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!if(v.isAddQuarter,v.dummyFcDisplayWrapList,v.fcDisplayWrapList)}" var="fcDisplayWrap">
+                                <tr style="{!if(fcDisplayWrap.validProduct,'','background-color: darkgray;')}">
+                                    <aura:if isTrue="{!!v.isAddQuarter}">
+                                        <td style="white-space:normal;border:1px solid lightgray;border-left: hidden;" >
+                                          <lightning:input type="checkbox" checked="{!fcDisplayWrap.isDeleteSelected}" value ="{!fcDisplayWrap.isDeleteSelected}" onchange="{!c.handlePostWinCheckbox}" disabled="{!!fcDisplayWrap.canDelete}" />
+                                        </td>
+                                    </aura:if>
+                                    <td style="white-space:normal;border:1px solid lightgray;border-left: hidden;">
+                                        <a href="{!v.ltngRecUrl+fcDisplayWrap.productId}" target="_blank">{!fcDisplayWrap.productName}</a>
+                                    </td>
+                                    <aura:if isTrue="{!v.isPCCDealOpp}">
+                                        <td style="white-space:normal;border:1px solid lightgray;border-left: hidden;">
+                                        <lightning:input type="checkbox" checked="{!fcDisplayWrap.isPostWin}" disabled="true" />
+                                        </td>
+                                        <td style="border:1px solid lightgray;">
+                                            <a href="{!v.ltngRecUrl+fcDisplayWrap.vendorId}" target="_blank">{!fcDisplayWrap.vendorName}</a>
+                                        </td>
+                                    </aura:if>
+                                    <aura:if isTrue="{!!v.isPCCDealOpp}">
+                                        <td style="border:1px solid lightgray;">
+                                     		<span style="display:block;text-align:center;"><lightning:formattedNumber value="{!fcDisplayWrap.productQuantity}"/><br></br></span>
+                                        </td>
+                            		</aura:if> 
+                                    <td style="border:1px solid lightgray;">
+                                        <span style="display:block;">Scheduled Quantity</span>
+                                    </td>
+                                    <aura:iteration items="{!fcDisplayWrap.scheduledList}" var="schedVal">
+                                        <td style="border:1px solid lightgray;">
+                                            <aura:if isTrue="{!schedVal.access == 'Read'}">
+                                                <span style="display:block;text-align:center;">{!schedVal.scheduledQuantity}</span>
+                                                <aura:set attribute="else">
+                                                    <lightning:input type="number" name="schdQuantity" value="{!schedVal.scheduledQuantity}" />
+                                                </aura:set>
+                                            </aura:if>
+                                        </td>
+                                    </aura:iteration>
+                                    <td style="border:1px solid lightgray;">
+                                        <span style="display:block;text-align:center;">{!fcDisplayWrap.totalQuantity}</span>
+                                    </td>
+                                    <td style="border:1px solid lightgray;border-right: hidden;">
+                                        <lightning:formattedDateTime value="{!fcDisplayWrap.lastModifiedDate}"/>
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+                <footer class="slds-modal__footer">
+                    <aura:if isTrue="{!v.canShowPostWinDelete}">
+                        <lightning:button variant="destructive-text" label="Delete" onclick ="{!c.handlePostWinDelete}" title = 'Delete 6QPA for Post Win' class="slds-m-left_x-small"></lightning:button>
+                    </aura:if>
+                    
+                    <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closeAddEditPopup}"/>
+                    <lightning:button variant="neutral" label="Clear All Schedules" title="Clear All Schedules" onclick="{!c.clearAllSchedules}"/>
+                    <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.saveAllQuarter}" />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.isSubmitQuarter}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 35%;max-width: 100%;">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeSubmitQuarterPopup}" alternativeText="close" variant="bare" size="large" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                        Warning!
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="font-size:medium;">
+                    Once the current quarter is submitted and approved, no changes can be done to prior quarters. Click OK to proceed!
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closeSubmitQuarterPopup}"/>
+                    <lightning:button variant="brand" label="OK" title="OK" onclick="{!c.submitForApproval}" />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,9 @@
+.compare-checkbox-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+c-ipa-link {
+  margin-bottom: .5rem;
+}

@@ -1,0 +1,19 @@
+<apex:page Controller="Core_MDF_ExportToExcel"  tabStyle="{!IF(ObjName<>null,ObjName,"Account")}">
+    <apex:includeLightning /> 
+    <apex:sectionHeader title="List View Export" subtitle="{!filterName}"/>
+    <apex:pageMessages id="pageMessages"/>    
+    <hr class="lightWeightDivider"/>  
+    
+    <apex:Form rendered="{!if(isMobileView==false , true ,false)}">
+        <br/>
+        <apex:commandLink value="Export to Excel"   action="{!exportToExcel}" styleClass="btn" target="_blank" style="text-decoration:none;padding-top:4px;padding-bottom:4px;"  charset="charset=UTF-8"/>
+             
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <apex:commandLink value="Export to Csv"   action="{!exportToCsv}" styleClass="btn" target="_blank" style="text-decoration:none;padding-top:4px;padding-bottom:4px;" charset="charset=UTF-8"/>
+             
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <apex:commandButton value="Return to List View" action="{!returnToPage}"  styleClass="btn" style="text-decoration:none"/>
+   
+       </apex:Form>
+</apex:page>

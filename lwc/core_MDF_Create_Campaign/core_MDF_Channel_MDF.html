@@ -1,0 +1,1012 @@
+<template>
+    <div class="container">
+        <div if:true={isLoaded}>
+            <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+            <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        <header>
+            <template if:true={showForm}>
+                <div class="slds-card">
+                    <lightning-layout horizontal-align="center" multiple-rows="true">
+                        <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
+                            medium-device-size="10" large-device-size="10" padding="around-small">
+                            <div style="text-align: center;font-size: large;">{pageHeaderTxt}</div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </template>
+        </header>
+        <template if:true={showSPIFRestrictError}> 
+            <lightning-layout horizontal-align="center" multiple-rows="true">
+                <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
+                    medium-device-size="10" large-device-size="10" padding="around-small">
+            <div class="slds-box slds-theme--warning" style="text-align: center;">
+                <lightning-icon icon-name="utility:warning" size="medium"
+                alternative-text="Error" class="iconContainer"></lightning-icon> &nbsp;
+            <span class="slds-text-body_regular">
+                <lightning-formatted-rich-text value={spifWarningError}>
+                </lightning-formatted-rich-text>
+            </span>
+        </div> 
+            </lightning-layout-item>
+        </lightning-layout>    
+            </template>
+            <!--Added by Sai-->
+            <template if:true={showExtAccBasedChannelMdfRestrictError}> 
+                <lightning-layout horizontal-align="center" multiple-rows="true">
+                    <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
+                        medium-device-size="10" large-device-size="10" padding="around-small">
+                <div class="slds-box slds-theme--warning" style="text-align: center;">
+                    <lightning-icon icon-name="utility:warning" size="medium"
+                    alternative-text="Error" class="iconContainer"></lightning-icon> &nbsp;
+                    <span class="slds-text-body_regular">
+                        <lightning-formatted-rich-text value={extAccBasedCloneChannelMDFWarningError}>
+                        </lightning-formatted-rich-text>
+                    </span>
+                </div> 
+                </lightning-layout-item>
+                </lightning-layout>    
+            </template>
+            <!--End of Sai's code-->
+        <div class="body">
+            <template if:true={showForm}>
+                <div class="slds-card">
+                    
+                    <lightning-layout horizontal-align="center" multiple-rows="true">
+                        <lightning-layout-item flexibility="grow" size="12" small-device-size="12"
+                            medium-device-size="10" large-device-size="10" padding="around-small">
+                            <template if:true={error}>
+                                <lightning-layout horizontal-align="center" multiple-rows="true">
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <div class="slds-box slds-theme--error" style="text-align: center;">
+                                            <lightning-icon icon-name="utility:error" size="medium"
+                                                alternative-text="Error" class="iconContainer"></lightning-icon> &nbsp;
+                                            <span class="slds-text-body_regular">
+                                                <lightning-formatted-rich-text value={error}>
+                                                </lightning-formatted-rich-text>
+                                            </span>
+                                        </div>
+                                        
+                                    </lightning-layout-item>
+                                </lightning-layout>                               
+                            </template>
+
+                            <lightning-layout multiple-rows="true">
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-combobox name="Core_MDF_Program__c"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Program__c}
+                                            label={campaignFieldLabel.Core_MDF_Program__c}
+                                            value={campaignFieldValue.Core_MDF_Program__c}
+                                            disabled=true
+                                            options={campaignPicValues.Core_MDF_Program__c}
+                                            required={campaignRequiredFields.Core_MDF_Program__c}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+
+                                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                    medium-device-size="6" large-device-size="6" padding="around-small">
+                                    <template if:false={campaignFieldDisabled.Core_MDF_Account__c}>
+                                        <c-core_-m-d-f_-custom-lookup label={campaignFieldLabel.Core_MDF_Account__c}
+                                            required={campaignRequiredFields.Core_MDF_Account__c} obj-name="Account"
+                                            search-placeholder="Search Accounts..." icon-name="standard:account"
+                                            onlookupselected={handleSelectedAccount} filter={accountQueryFilter}
+                                            selected-record={selectedAccount}
+                                            disabled={campaignFieldDisabled.Core_MDF_Account__c}>
+                                        </c-core_-m-d-f_-custom-lookup>
+                                    </template>
+                                    <template if:true={campaignFieldDisabled.Core_MDF_Account__c}>
+                                        <lightning-input type="text" name="accName" value={selectedAccount.Name}
+                                            label={campaignFieldLabel.Core_MDF_Account__c}
+                                            required={campaignFieldLabel.Core_MDF_Account__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Account__c}></lightning-input>
+                                    </template>
+                                </lightning-layout-item>
+                                <template if:true={campaignFieldVisibility.Name}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="text" maxlength="80" name="Name"
+                                            field-level-help={campaignFieldHelpText.Name}
+                                            value={campaignFieldValue.Name} label= "Campaign Name"
+                                            required={campaignRequiredFields.Name}
+                                            disabled={campaignFieldDisabled.Name}
+                                            onchange={handleStandardFields}></lightning-input>
+                                    </lightning-layout-item>
+                                </template>                                
+                                <template if:true={campaignFieldVisibility.Name__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="text" maxlength="80" name="Name"
+                                            field-level-help={campaignFieldHelpText.Name__c}
+                                            value={campaignFieldValue.Name} label= "Campaign Name"
+                                            required={campaignRequiredFields.Name__c}
+                                            disabled={campaignFieldDisabled.Name__c}></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Description}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-textarea name="Description" maxlength="32000"
+                                            field-level-help={campaignFieldHelpText.Description}
+                                            value={campaignFieldValue.Description}
+                                            label={campaignFieldLabel.Description}
+                                            required={campaignRequiredFields.Description}
+                                            disabled={campaignFieldDisabled.Description}
+                                            onchange={handleStandardFields}></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Description__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-textarea name="Description" maxlength="32000"
+                                            field-level-help={campaignFieldHelpText.Description__c}
+                                            value={campaignFieldValue.Description}
+                                            label={campaignFieldLabel.Description__c}
+                                            required={campaignRequiredFields.Description__c}
+                                            disabled={campaignFieldDisabled.Description__c}></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>  
+
+                                <template if:true={campaignFieldVisibility.StartDate}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input class = "dateVal" 
+                                        type="date" 
+                                        name="StartDate" 
+                                        field-level-help={campaignFieldHelpText.StartDate} 
+                                        value={campaignFieldValue.StartDate} 
+                                        label={campaignFieldLabel.StartDate} 
+                                        required={campaignRequiredFields.StartDate} 
+                                        disabled={campaignFieldDisabled.StartDate}
+                                        onchange={handleDateChanges}></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.StartDate__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input class = "dateVal" 
+                                        type="date" 
+                                        name="StartDate" 
+                                        field-level-help={campaignFieldHelpText.StartDate__c} 
+                                        value={campaignFieldValue.StartDate} 
+                                        label={campaignFieldLabel.StartDate__c} 
+                                        required={campaignRequiredFields.StartDate__c} 
+                                        disabled={campaignFieldDisabled.StartDate__c}
+                                        onchange={handleDateChanges}></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.EndDate}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input class = "dateValidation" 
+                                        type="date" 
+                                        name="EndDate" 
+                                        field-level-help={campaignFieldHelpText.EndDate} 
+                                        value={campaignFieldValue.EndDate} 
+                                        label={campaignFieldLabel.EndDate} 
+                                        required={campaignRequiredFields.EndDate} 
+                                        disabled={campaignFieldDisabled.EndDate}
+                                        onchange={handleDateChanges}>
+                                        </lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.EndDate__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input class = "dateValidation" 
+                                        type="date" 
+                                        name="EndDate" 
+                                        field-level-help={campaignFieldHelpText.EndDate__c} 
+                                        value={campaignFieldValue.EndDate} 
+                                        label={campaignFieldLabel.EndDate__c} 
+                                        required={campaignRequiredFields.EndDate__c} 
+                                        disabled={campaignFieldDisabled.EndDate__c}
+                                        onchange={handleDateChanges}>
+                                        </lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={displayFiscalQuarter}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-rich-text value={fiscalQuarterText}></lightning-formatted-rich-text>
+                                        <p><lightning-formatted-text value={fiscalQuarterText2}></lightning-formatted-text></p>
+                                        <p><lightning-formatted-text value={fiscalQuarterText3}></lightning-formatted-text></p>
+                                        <div class="slds-card">
+                                            <lightning-layout horizontal-align="left" multiple-rows="true">
+                                                <lightning-layout-item flexibility="grow" size="12" small-device-size="12" medium-device-size="4" large-device-size="4" padding="around-small">
+                                                    <template for:each={fascalDetails} for:item="fd"><!--slds-table_cell-buffer slds-table_striped -->
+                                                        <table key={fd.quarter} style="width:100%" class="slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right" >
+                                                            <tr>
+                                                                <td>{fd.quarter}'{fd.year}</td>
+                                                                <td>{fd.startDate}</td>
+                                                                <td>{fd.endDate}</td>
+                                                            </tr>
+                                                        </table>
+                                                        </template>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Opal_Budget_Type_Txt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-combobox class="budType" name="Core_MDF_Opal_Budget_Type_Txt__c"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Opal_Budget_Type_Txt__c}
+                                            label={campaignFieldLabel.Core_MDF_Opal_Budget_Type_Txt__c}
+                                            source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value={campaignFieldValue.Core_MDF_Opal_Budget_Type_Txt__c}
+                                            options={budgetOptions}
+                                            onchange={handleBudgetTypeChange}
+                                            disabled={campaignFieldDisabled.Core_MDF_Opal_Budget_Type_Txt__c}
+                                            required={campaignRequiredFields.Core_MDF_Opal_Budget_Type_Txt__c}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+                                </template>
+                            <template if:true={accountBasedIndicatorCamp}>
+                                <template if:false={showAvailableBudgets}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">    
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={budgetWarning.Core_MDF_Opal_Budget_Type_Txt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={ccfBudgetWarningMessage}></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template> 
+                                <template if:true={selectPartnerBudgetTypeWarning.Core_MDF_Opal_Budget_Type_Txt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={selectPartnerBudgetTypeError}></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={showAvailableBudgets}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <c-core_-m-d-f_-campaign_-available_-budgets_-picklist picklistlabel={availableBudgetsLabel} 
+                                        values={availableBudgetValues} 
+                                        onbudgetselection={onBudgetSelection}
+                                        ></c-core_-m-d-f_-campaign_-available_-budgets_-picklist>
+                                       <br/>
+                                            <template if:true={startEndDateErr}> 
+                                            <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                            medium-device-size="12" large-device-size="12" padding="around-small">
+                                            <lightning-formatted-text class="customHelptext1"
+                                            value={startEndDateSoftWarning}></lightning-formatted-text>
+                                        </lightning-layout-item>
+                                    
+                                    </template>
+                                </lightning-layout-item>
+                                </template>
+                                <template if:true={availableBudgetWarning.Core_MDF_Opal_Budget_Type_Txt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={availableBudgetWarningMessage}></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+    
+                                <template if:true={showCampaignBudgets}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="12" padding="around-small" style="z-index: 1;">
+                                        <c-core_-m-d-f_-campaign-budgets campaign-budgets={campaignBudgets} oncampaignbudgets= {onCampaignBudgets}  onerror = {handleBudgetError} rec-mode={mode} rec-status={status} old-campaign-budgets={campaignBudgets} activity-budgets={budgetsOnActiveActivities} is-community={isCommunity} is-proposal-based={isProposalCampaign} campaign-field-values={campaignFieldValue} ></c-core_-m-d-f_-campaign-budgets>
+                                    </lightning-layout-item>
+                                </template>
+    
+                                <template if:true={noBudgetsWarning}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={campaignBudgetsError}></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={isBudgetAmountDecreased}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={budgetAmountDecreasedErr}></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Integrated_Campaign__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-combobox 
+                                            name="Core_MDF_Integrated_Campaign__c"
+                                            label={campaignFieldLabel.Core_MDF_Integrated_Campaign__c}
+                                            value={campaignFieldValue.Core_MDF_Integrated_Campaign__c}
+                                            options={campaignPicValues.Core_MDF_Integrated_Campaign__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Integrated_Campaign__c}
+                                            required={campaignRequiredFields.Core_MDF_Integrated_Campaign__c}
+                                            onchange={handleIntCampChange}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+                                </template> 
+                                <template if:true={campaignFieldVisibility.Core_MDF_Integrated_Campaign_Details__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-textarea 
+                                        name="Core_MDF_Integrated_Campaign_Details__c" 
+                                        maxlength="255" 
+                                        field-level-help={campaignFieldHelpText.Core_MDF_Integrated_Campaign_Details__c} 
+                                        value={campaignFieldValue.Core_MDF_Integrated_Campaign_Details__c} 
+                                        label={campaignFieldLabel.Core_MDF_Integrated_Campaign_Details__c} 
+                                        required={campaignRequiredFields.Core_MDF_Integrated_Campaign_Details__c} 
+                                        disabled={campaignFieldDisabled.Core_MDF_Integrated_Campaign_Details__c} ></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Strategic_Marketing_Fund_Ind__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="checkbox" 
+                                        name="Core_MDF_Strategic_Marketing_Fund_Ind__c"
+                                        field-level-help={campaignFieldHelpText.Core_MDF_Strategic_Marketing_Fund_Ind__c} 
+                                        checked={campaignFieldValue.Core_MDF_Strategic_Marketing_Fund_Ind__c} 
+                                        label={campaignFieldLabel.Core_MDF_Strategic_Marketing_Fund_Ind__c} 
+                                        required={campaignRequiredFields.Core_MDF_Strategic_Marketing_Fund_Ind__c} 
+                                        disabled={campaignFieldDisabled.Core_MDF_Strategic_Marketing_Fund_Ind__c}
+                                        ></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_External_Visibility_Date__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input class="memberVisibilityDate" type="date" name="Core_MDF_External_Visibility_Date__c" field-level-help={campaignFieldHelpText.Core_MDF_External_Visibility_Date__c} value={campaignFieldValue.Core_MDF_External_Visibility_Date__c} label={campaignFieldLabel.Core_MDF_External_Visibility_Date__c} required={campaignRequiredFields.Core_MDF_External_Visibility_Date__c} 
+                                        disabled={campaignFieldDisabled.Core_MDF_External_Visibility_Date__c}
+                                        onchange={handleDateChanges}></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Key_Performance_Indicator__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-textarea name="Core_MDF_Key_Performance_Indicator__c" maxlength="255" field-level-help={campaignFieldHelpText.Core_MDF_Key_Performance_Indicator__c} value={campaignFieldValue.Core_MDF_Key_Performance_Indicator__c} label={campaignFieldLabel.Core_MDF_Key_Performance_Indicator__c} required=true disabled={campaignFieldDisabled.Core_MDF_Key_Performance_Indicator__c} ></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={memberVisibilityValid}>
+                                    <lightning-formatted-text style="color:red; font-style:italic" flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small" value={memberVisibilityError}></lightning-formatted-text>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Hero_Product__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-textarea name="Core_MDF_Hero_Product__c" maxlength="255" field-level-help={campaignFieldHelpText.Core_MDF_Hero_Product__c} value={campaignFieldValue.Core_MDF_Hero_Product__c} label={campaignFieldLabel.Core_MDF_Hero_Product__c} required={campaignRequiredFields.Core_MDF_Hero_Product__c} disabled={campaignFieldDisabled.Core_MDF_Hero_Product__c} ></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Priority__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-combobox
+                                            class="Priority"
+                                            name="Core_MDF_Priority__c"
+                                            label={campaignFieldLabel.Core_MDF_Priority__c}
+                                            source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Priority__c}
+                                            options={campaignPicValues.Core_MDF_Priority__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Priority__c}
+                                            required={campaignRequiredFields.Core_MDF_Priority__c}
+                                            onchange={handlePriorityChange}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+                                </template>                          
+    
+                                <template if:true={campaignFieldVisibility.Core_MDF_Priority_2_nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-combobox
+                                            class="SecondPriority" 
+                                            name="Core_MDF_Priority_2_nm__c"
+                                            label={campaignFieldLabel.Core_MDF_Priority_2_nm__c}
+                                            source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Priority_2_nm__c}
+                                            options={campaignPicValues.Core_MDF_Priority_2_nm__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Priority_2_nm__c}
+                                            required={campaignRequiredFields.Core_MDF_Priority_2_nm__c}
+                                            onchange={handlePriorityChange}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+                                </template>
+    
+                                <template if:true={campaignFieldVisibility.Core_MDF_Priority_3_nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-combobox
+                                            class="ThirdPriority" 
+                                            name="Core_MDF_Priority_3_nm__c"
+                                            label={campaignFieldLabel.Core_MDF_Priority_3_nm__c}
+                                            source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Priority_3_nm__c}
+                                            options={campaignPicValues.Core_MDF_Priority_3_nm__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Priority_3_nm__c}
+                                            required={campaignRequiredFields.Core_MDF_Priority_3_nm__c}
+                                            onchange={handlePriorityChange}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={showLegacyFields}>
+                                    <template if:false={proposalBasedIndicatorCamp}>
+                                        <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                            <lightning-combobox
+                                                name="Core_MDF_Reimbursement_Rate__c"
+                                                field-level-help={campaignFieldHelpText.Core_MDF_Reimbursement_Rate__c}
+                                                label={campaignFieldLabel.Core_MDF_Reimbursement_Rate__c}
+                                                value={finalRRrate}
+                                                options={customRRValues}
+                                                onchange={handleReimbursementRateChange} 
+                                                disabled={campaignFieldDisabled.Core_MDF_Reimbursement_Rate__c} 
+                                                required={campaignRequiredFields.Core_MDF_Reimbursement_Rate__c}>
+                                            </lightning-combobox>
+                                        </lightning-layout-item>
+                                    </template>
+                                </template>
+                                <template if:true={showLegacyFields}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">    
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={campaignFieldVisibility.Core_MDF_Total_Campaign_Cost_Amt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="number" name="Core_MDF_Total_Campaign_Cost_Amt__c"
+                                            step="0.01" maxlength="16"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Total_Campaign_Cost_Amt__c}
+                                            value={campaignFieldValue.Core_MDF_Total_Campaign_Cost_Amt__c}
+                                            label={campaignFieldLabel.Core_MDF_Total_Campaign_Cost_Amt__c}
+                                            required={campaignRequiredFields.Core_MDF_Total_Campaign_Cost_Amt__c}
+                                            onchange={handleTotalCampaignCostChange} disabled="true">
+                                        </lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+
+
+                                <template if:true={campaignFieldVisibility.Core_MDF_Budget_Cap__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="number" name="Core_MDF_Budget_Cap__c" step="0.01"
+                                            maxlength="16"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Budget_Cap__c}
+                                            value={campaignFieldValue.Core_MDF_Budget_Cap__c}
+                                            label={campaignFieldLabel.Core_MDF_Budget_Cap__c}>
+                                        </lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={campaignFieldVisibility.Core_MDF_Reimbursement_Amt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="number" name="Core_MDF_Reimbursement_Amt__c" step="0.01"
+                                            maxlength="16"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Reimbursement_Amt__c}
+                                            value={campaignFieldValue.Core_MDF_Reimbursement_Amt__c}
+                                            label={campaignFieldLabel.Core_MDF_Reimbursement_Amt__c}
+                                            required={campaignRequiredFields.Core_MDF_Reimbursement_Amt__c}
+                                            disabled="true"></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Reimbursement_Amt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Region_cd__c"
+                                            label={campaignFieldLabel.Core_MDF_Region_cd__c} source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            options={campaignPicValues.Core_MDF_Region_cd__c}
+                                            required={campaignRequiredFields.Core_MDF_Region_cd__c} value={geoValue}
+                                            disabled={campaignFieldDisabled.Core_MDF_Region_cd__c}
+                                            onchange={showCountryoOnBasisOfGeo}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+
+                                    <template if:true={campaignFieldVisibility.Core_MDF_Market__c}>
+                                        <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                                            <lightning-input type="text" 
+                                            name="countryFilter" value="" 
+                                            label={countryFilterLabelTxt}
+                                            disabled={campaignFieldDisabled.Core_MDF_Market__c}
+                                            onchange={searchCountry}></lightning-input>
+                                        </lightning-layout-item>
+        
+                                        <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                            <lightning-dual-listbox name="Core_MDF_Market__c"
+                                                label={campaignFieldLabel.Core_MDF_Market__c}
+                                                source-label={sourceLabelStr}
+                                                selected-label={selectedLabelStr}
+                                                options={campaignPicValues.Core_MDF_Market__c}
+                                                required={campaignRequiredFields.Core_MDF_Market__c}
+                                                value ={countryValue}
+                                                disabled={campaignFieldDisabled.Core_MDF_Market__c}
+                                                onchange={selectedCountry}></lightning-dual-listbox>
+                                        </lightning-layout-item>
+                                    </template>
+                                    <!--DE114157: UAT Defect: Not able to create a campaign-->
+                                    <template if:true={countryError}>
+                                        <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                            <lightning-formatted-text class="customHelptext" value="Country/Region: too many items selected"></lightning-formatted-text>
+                                        </lightning-layout-item>
+                                    </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Audience__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Audience__c"
+                                            label={campaignFieldLabel.Core_MDF_Audience__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value={campaignFieldValue.Core_MDF_Audience__c}
+                                            options={campaignPicValues.Core_MDF_Audience__c}
+                                            required={campaignRequiredFields.Core_MDF_Audience__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Audience__c}
+                                            onchange={handleAudienceChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={othersHelpText.Core_MDF_Audience__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={campaignFieldVisibility.Core_MDF_Product_Type__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Product_Type__c"
+                                            label={campaignFieldLabel.Core_MDF_Product_Type__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value={campaignFieldValue.Core_MDF_Product_Type__c}
+                                            options={campaignPicValues.Core_MDF_Product_Type__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Product_Type__c}
+                                            required=true>
+                                        </lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Brand__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Brand__c"
+                                            label={campaignFieldLabel.Core_MDF_Brand__c} source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value={campaignFieldValue.Core_MDF_Brand__c}
+                                            options={campaignPicValues.Core_MDF_Brand__c}
+                                            required={campaignRequiredFields.Core_MDF_Brand__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Brand__c}
+                                            onchange={handleBrandChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={othersHelpText.Core_MDF_Brand__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Technology__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Technology__c"
+                                            label={campaignFieldLabel.Core_MDF_Technology__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value={campaignFieldValue.Core_MDF_Technology__c}
+                                            options={campaignPicValues.Core_MDF_Technology__c}
+                                            required={campaignRequiredFields.Core_MDF_Technology__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Technology__c}
+                                            onchange={handleTechnologyChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={othersHelpText.Core_MDF_Technology__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Activity_Category_Type__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Activity_Category_Type__c"
+                                            label={campaignFieldLabel.Core_MDF_Activity_Category_Type__c}
+                                            source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Activity_Category_Type__c}
+                                            options={campaignPicValues.Core_MDF_Activity_Category_Type__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Activity_Category_Type__c}
+                                            required={campaignRequiredFields.Core_MDF_Activity_Category_Type__c}
+                                            onchange={handleCategoryTypeChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                            </template>      
+                            <template if:true={proposalBasedIndicatorCamp}>
+                                <template if:true={campaignFieldVisibility.Core_MDF_Reimbursement_Rate__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="3" large-device-size="3" padding="around-small">
+                                        <lightning-combobox name="Reimbursement Rate"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Reimbursement_Rate__c}
+                                            label="Reimbursement Rate"
+                                            value={finalRRrate}
+                                            options={customRRValues}
+                                            onfocus={setcustomRRValues}
+                                            onchange={handleReimbursementRateChange}
+                                            disabled={campaignFieldDisabled.Core_MDF_Reimbursement_Rate__c}
+                                            required={campaignRequiredFields.Core_MDF_Reimbursement_Rate__c}>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={campaignFieldVisibility.Core_MDF_Custom_Reimbursement_Rate_pct__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="3" large-device-size="3" padding="around-small">
+                                        <lightning-input type="text" name="Core_MDF_Custom_Reimbursement_Rate_pct__c"
+                                             maxlength="7"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Custom_Reimbursement_Rate_pct__c}
+                                            value={campaignFieldValue.Core_MDF_Custom_Reimbursement_Rate_pct__c}
+                                            label={campaignFieldLabel.Core_MDF_Custom_Reimbursement_Rate_pct__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Custom_Reimbursement_Rate_pct__c}
+                                            onchange={handleCustomRRChange}
+                                            onblur={handleOnblurCrr}>
+                                        </lightning-input>
+                                        <template if:true={crrHelpText}>
+                                        <lightning-formatted-text class="customHelptext" value={crrMessage}></lightning-formatted-text>
+                                        </template>    
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={campaignFieldVisibility.Core_MDF_Total_Campaign_Cost_Amt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="number" name="Core_MDF_Total_Campaign_Cost_Amt__c"
+                                        step="0.01" maxlength="16"
+                                        field-level-help={campaignFieldHelpText.Core_MDF_Total_Campaign_Cost_Amt__c} 
+                                        value={campaignFieldValue.Core_MDF_Total_Campaign_Cost_Amt__c} 
+                                        label={campaignFieldLabel.Core_MDF_Total_Campaign_Cost_Amt__c} 
+                                        required={campaignRequiredFields.Core_MDF_Total_Campaign_Cost_Amt__c}
+                                            onchange={handleTotalCampaignCostChange} disabled="true">
+                                    </lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+
+                                
+                                <template if:true={campaignFieldVisibility.Core_MDF_Budget_Cap__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="number" name="Core_MDF_Budget_Cap__c" step="0.01"
+                                            maxlength="16"
+                                        field-level-help={campaignFieldHelpText.Core_MDF_Budget_Cap__c} 
+                                        value={campaignFieldValue.Core_MDF_Budget_Cap__c} 
+                                            label={campaignFieldLabel.Core_MDF_Budget_Cap__c}>
+                                    </lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Reimbursement_Amt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="number" name="Core_MDF_Reimbursement_Amt__c" step="0.01"
+                                            maxlength="16"
+                                        field-level-help={campaignFieldHelpText.Core_MDF_Reimbursement_Amt__c} 
+                                        value={campaignFieldValue.Core_MDF_Reimbursement_Amt__c} 
+                                        label={campaignFieldLabel.Core_MDF_Reimbursement_Amt__c} 
+                                        required={campaignRequiredFields.Core_MDF_Reimbursement_Amt__c}
+                                        disabled="true"></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                    medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Region_cd__c"
+                                        label={campaignFieldLabel.Core_MDF_Region_cd__c} source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            options={campaignPicValues.Core_MDF_Region_cd__c}
+                                        required={campaignRequiredFields.Core_MDF_Region_cd__c} value={geoValue}
+                                            disabled={campaignFieldDisabled.Core_MDF_Region_cd__c}
+                                            onchange={showCountryoOnBasisOfGeo}></lightning-dual-listbox>
+                                    </lightning-layout-item>  
+                                   
+                                <template if:true={campaignFieldVisibility.Core_MDF_Market__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="6" large-device-size="6" padding="around-small">
+                                        <lightning-input type="text" name="countryFilter" value=""
+                                        label={countryFilterLabelTxt}
+                                        disabled={campaignFieldDisabled.Core_MDF_Market__c}
+                                        onchange={searchCountry}></lightning-input>
+                                    </lightning-layout-item>
+        
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Market__c"
+                                            label={campaignFieldLabel.Core_MDF_Market__c} source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            options={campaignPicValues.Core_MDF_Market__c}
+                                            required={campaignRequiredFields.Core_MDF_Market__c} value={countryValue}
+                                            disabled={campaignFieldDisabled.Core_MDF_Market__c}
+                                            onchange={selectedCountry}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <!--DE114157: UAT Defect: Not able to create a campaign-->
+                                <template if:true={countryError}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext"
+                                            value="Country/Region: too many items selected"></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+				                <!--US1001761_[IPA Proposal] - Allow Country Selection Across Geo-->
+				                <template if:true={multipleGeoSelected}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptxt"
+                                            value={multipleCountriesSoftMsg}></lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+								
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Audience__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Audience__c"
+                                            label={campaignFieldLabel.Core_MDF_Audience__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Audience__c}
+                                            options={campaignPicValues.Core_MDF_Audience__c}
+                                            required={campaignRequiredFields.Core_MDF_Audience__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Audience__c}
+                                            onchange={handleAudienceChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={othersHelpText.Core_MDF_Audience__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+        
+                               <template if:true={campaignFieldVisibility.Core_MDF_Technology__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Technology__c"
+                                            label={campaignFieldLabel.Core_MDF_Technology__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Technology__c}
+                                            options={campaignPicValues.Core_MDF_Technology__c}
+                                            required={campaignRequiredFields.Core_MDF_Technology__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Technology__c}
+                                            onchange={handleTechnologyChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={othersHelpText.Core_MDF_Technology__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template> 
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Brand__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Brand__c"
+                                            label={campaignFieldLabel.Core_MDF_Brand__c} source-label={sourceLabelStr}
+                                            selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Brand__c}
+                                            options={campaignPicValues.Core_MDF_Brand__c}
+                                            required={campaignRequiredFields.Core_MDF_Brand__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Brand__c}
+                                            onchange={handleBrandChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:true={othersHelpText.Core_MDF_Brand__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_IPA_Priority_nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_IPA_Priority_nm__c"
+                                            label={campaignFieldLabel.Core_MDF_IPA_Priority_nm__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_IPA_Priority_nm__c}
+                                            options={campaignPicValues.Core_MDF_IPA_Priority_nm__c}
+                                            required={campaignRequiredFields.Core_MDF_IPA_Priority_nm__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_IPA_Priority_nm__c}
+                                            onchange={handleIPAPriorityChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={othersHelpText.Core_MDF_IPA_Priority_nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Product_Type__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Product_Type__c"
+                                            label={campaignFieldLabel.Core_MDF_Product_Type__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Product_Type__c}
+                                            options={campaignPicValues.Core_MDF_Product_Type__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Product_Type__c}
+                                            required={campaignRequiredFields.Core_MDF_Product_Type__c}>
+                                        </lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Ecosystem_Partner_Nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Ecosystem_Partner_Nm__c"
+                                            label={campaignFieldLabel.Core_MDF_Ecosystem_Partner_Nm__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Ecosystem_Partner_Nm__c}
+                                            options={campaignPicValues.Core_MDF_Ecosystem_Partner_Nm__c}
+                                            required={campaignRequiredFields.Core_MDF_Ecosystem_Partner_Nm__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Ecosystem_Partner_Nm__c}
+                                            onchange={handleEcosystemPartnerChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={othersHelpText.Core_MDF_Ecosystem_Partner_Nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template> 
+                                
+                                <template if:true={campaignFieldVisibility.Core_MDF_Industry_Nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-dual-listbox name="Core_MDF_Industry_Nm__c"
+                                            label={campaignFieldLabel.Core_MDF_Industry_Nm__c}
+                                            source-label={sourceLabelStr} selected-label={selectedLabelStr}
+                                            value ={campaignFieldValue.Core_MDF_Industry_Nm__c}
+                                            options={campaignPicValues.Core_MDF_Industry_Nm__c}
+                                            required={campaignRequiredFields.Core_MDF_Industry_Nm__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Industry_Nm__c}
+                                            onchange={handleIndustryChange}></lightning-dual-listbox>
+                                    </lightning-layout-item>
+                                </template>  
+        
+                                <template if:true={othersHelpText.Core_MDF_Industry_Nm__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-formatted-text class="customHelptext" value={othersMessage}>
+                                        </lightning-formatted-text>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Key_Performance_Indicator__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-textarea name="Core_MDF_Key_Performance_Indicator__c" maxlength="255"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Key_Performance_Indicator__c}
+                                            value={campaignFieldValue.Core_MDF_Key_Performance_Indicator__c}
+                                            label={campaignFieldLabel.Core_MDF_Key_Performance_Indicator__c}
+                                            required={campaignRequiredFields.Core_MDF_Key_Performance_Indicator__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Key_Performance_Indicator__c}>
+                                        </lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+                                
+                                <template if:true={campaignFieldVisibility.Core_MDF_Messaging__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-textarea name="Core_MDF_Messaging__c" maxlength="32768"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Messaging__c}
+                                            value={campaignFieldValue.Core_MDF_Messaging__c}
+                                            label={campaignFieldLabel.Core_MDF_Messaging__c}
+                                            required={campaignRequiredFields.Core_MDF_Messaging__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Messaging__c}></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template> 
+                              <template if:true={campaignFieldVisibility.Core_MDF_Campaign_Scoring_txt__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-input type="text" name="Core_MDF_Campaign_Scoring_txt__c" maxlength="250"
+                                            value={campaignFieldValue.Core_MDF_Campaign_Scoring_txt__c}
+                                            label={campaignFieldLabel.Core_MDF_Campaign_Scoring_txt__c}
+                                            required={campaignRequiredFields.Core_MDF_Campaign_Scoring_txt__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Campaign_Scoring_txt__c}></lightning-input>
+                                    </lightning-layout-item>
+                                </template>
+                               <template if:true={campaignFieldVisibility.Core_MDF_Comments_Internal_Only__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-textarea name="Core_MDF_Comments_Internal_Only__c" maxlength="255"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Comments_Internal_Only__c}
+                                            value={campaignFieldValue.Core_MDF_Comments_Internal_Only__c}
+                                            label={campaignFieldLabel.Core_MDF_Comments_Internal_Only__c}
+                                            required={campaignRequiredFields.Core_MDF_Comments_Internal_Only__c}
+                                            disabled={campaignFieldDisabled.Core_MDF_Comments_Internal_Only__c}>
+                                        </lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+        
+                                <template if:true={campaignFieldVisibility.Core_MDF_Comments__c}>
+                                    <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12"
+                                        medium-device-size="12" large-device-size="12" padding="around-small">
+                                        <lightning-textarea name="Core_MDF_Comments__c" maxlength="255"
+                                            field-level-help={campaignFieldHelpText.Core_MDF_Comments__c}
+                                            value={campaignFieldValue.Core_MDF_Comments__c}
+                                            label={campaignFieldLabel.Core_MDF_Comments__c} required={mandateComment}
+                                            disabled={campaignFieldDisabled.Core_MDF_Comments__c}></lightning-textarea>
+                                    </lightning-layout-item>
+                                </template> 
+                            </template>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </template>
+        </div>
+        <!--  //US1082871: [IPA MDF] - Campaign - Clone a Proposal  -->
+        <template if:true={checkIfClone}>
+            <div class="slds-card">
+                <lightning-layout class="slds-page-header slds-page-header--object-home" multiple-rows="true">
+                    <lightning-layout-item size="7" small-device-size="7" medium-device-size="9" large-device-size="10">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name="standard:client" alternative-text="Create Activities"
+                                    title="Create Activities"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <h1>
+                                    <span class="slds-page-header__title"> {cloneHeader} </span>
+                                </h1>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1"></lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </br>
+            <div class="slds-text-color_destructive slds-p-top_large"> {note} </div>
+            
+            <template for:each={activityListClone} for:item="rec">
+                <div class="slds-p-around_xx-small" key={rec.Title}>
+                    
+                    <lightning-card>
+                        <div class="slds-box checkval" data-id={rec.Id}>
+                           
+                            <lightning-layout>
+                            <lightning-layout-item size="1">    
+                                <lightning-input class="slds-p-left_xx-large slds-p-top_medium" type="checkbox"  name={rec.Id} data-id="actsinglerecord"   checked="true"> </lightning-input>
+                            </lightning-layout-item>
+                                <lightning-layout-item padding="slds-p-left_x-small" size="1" key={rec.Title}>
+                                    <div class="slds-p-top_medium slds-p-left_small">
+                                        <div style="display:inline-block;margin: right 10px;">
+                                            <lightning-button-icon icon-name="utility:edit" variant="brand"
+                                                class="slds-m-right_xx-small" name={rec} onclick={editActivityOnCamp}
+                                                alternative-text="Edit" title="Edit" size="small">
+                                            </lightning-button-icon><br />
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-top_medium slds-p-left_small">
+                                        <div style="display:stacked-block;margin: right 10px;">
+                                            <!--<lightning-button-icon icon-name="utility:delete" variant="brand" class="slds-m-right_xx-small" alternative-text="Delete" title="Delete"
+                                size="small">
+                            </lightning-button-icon>-->
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                               
+                               <lightning-layout-item padding="slds-p-right_large" size="10">
+                                   
+                                    <br/>
+                                    <div class="slds-hide" title={rec.Id} >
+                                        <template if:true={campaignDateRangeError}>
+                                        <font style="color: red;" >{campActDateerror}</font> 
+                                        </template>   
+                                        </div>
+                                        <br/>     
+                              <c-core_-m-d-f_-activity_-view data-id={rec.Id} title={rec.Id} rec={rec} expndetail={expandDetail}  supportedactivityfld={viewActivityFieldList}  ></c-core_-m-d-f_-activity_-view>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    </div>
+                </lightning-card>
+                </div>
+            </template>
+           
+        </template>
+        <footer>
+            <template if:true={showForm}>
+                <div class="slds-card">
+                    <lightning-layout horizontal-align="center" multiple-rows="true">
+                        <div style="padding: 1rem;">
+                            <lightning-button label={cancelBtnLabelTxt} title={cancelBtnLabelTxt}
+                                class="slds-var-m-left_x-small" onclick={handleCancel} disabled={btnDisabled.cancelBtn}>
+                            </lightning-button>
+                            <lightning-button variant="brand" label={saveBtnLabelTxt} title={saveBtnLabelTxt}
+                                class="slds-var-m-left_x-small" onclick={customSave} disabled={btnDisabled.saveBtn}>
+                            </lightning-button>
+                        </div>
+                    </lightning-layout>
+                </div>
+            </template>
+        </footer>
+    </div>
+</template>

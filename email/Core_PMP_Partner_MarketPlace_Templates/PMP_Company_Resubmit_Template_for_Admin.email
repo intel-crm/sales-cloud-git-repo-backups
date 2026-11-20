@@ -1,0 +1,7 @@
+Hi, 
+
+
+Storefront {!PMP_Company__c.Name} has been updated and needs to be reviewed. 
+
+Thanks 
+{!$User.FirstName} {!$User.LastName}

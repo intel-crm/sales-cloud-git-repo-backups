@@ -1,0 +1,73 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "26e27660-b370-45d7-bf38-c30980f84247",
+  "label" : "Activity Expanded View",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "ad158ef8-15be-4019-88e8-69893cb4328d",
+          "columns" : [ {
+            "UUID" : "b76c9c06-2225-479f-accf-e4b8f6270db3",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "ad158ef8-15be-4019-88e8-69893cb4328d",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "isCommunity" : true,
+            "recordId" : "",
+            "showCreateActivity" : true,
+            "showNewActivity" : true
+          },
+          "componentName" : "c:core_MDF_PFR_Grid",
+          "id" : "cbf50af5-6658-4958-81f1-38ef39482333",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "b76c9c06-2225-479f-accf-e4b8f6270db3",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c47e81be-7db1-44e2-9952-2cf98d47aad6",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Activity Expanded View"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "07f3ddc2-7a70-4d3f-93eb-ccaf1c6c8eb7",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6dd23a0a-5efa-4730-83d2-4c39e432ddff",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-activity-expanded-view"
+}

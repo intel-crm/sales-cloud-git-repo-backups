@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Opp_All_Products_Pending workflow rule
+Workflow rule description: When all won products are set back to pending and the stage is not &quot;Design&quot;, set the stage back to &quot;Design&quot;.&quot;</description>
+    <environments>Default</environments>
+    <label>Core_Opp_All_Products_Pending</label>
+    <migratedFromWorkflowRuleName>Core_Opp_All_Products_Pending</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Set the stage to Design</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Design</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND(   NOT(OR(ISPICKVAL({!$Record.StageName}, &apos;Design&apos;), ISPICKVAL({!$Record.StageName}, &apos;Qualify&apos;))),   {!$Record.Core_Won_Product_Count__c} = 0,   PRIORVALUE({!$Record.Core_Won_Product_Count__c}) &gt; 0 )</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

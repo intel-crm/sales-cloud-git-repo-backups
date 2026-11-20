@@ -1,0 +1,185 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "d68b9a63-693e-46dc-9c22-fafc72a1ba50",
+  "label" : "Company Information Detail",
+  "regions" : [ {
+    "id" : "1c4e2e90-91a8-4093-9f98-904b3cb5eebd",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "53485462-9e22-41d4-a82d-af8105c7ea03",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "75b45a5f-4608-466d-a88f-edfef917f21a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c476066c-694e-4eda-8449-682362f3cab4",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d0ba3912-aee9-4ddf-9611-3ee118a98a99",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"pageType\" content=\"PartnerDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"title\" content=\"PartnerDetailPage\"/> \n<meta name=\"keywords\" content=\"sf,mp,partner\"/>\n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>",
+        "description" : "View partner details from {!Record._Title} on Intel® Solutions Marketplace.",
+        "title" : "{!Record._Title} - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6f1cc28f-31cd-4f87-aef5-0502724e27fd",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a55ddcba-d478-4b81-8589-7f3fa652b370",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "abc79d41-055b-4e69-8550-1682f9c7f3ff",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"PartnerDetailPage\",\"title\":\"PartnerDetail Page\"}",
+        "bookmarkLabel" : "Bookmark",
+        "debugMode" : true,
+        "displayType" : "partner",
+        "showBreadcrumbs" : true,
+        "showEditPencil" : true,
+        "showSignIn" : true
+      },
+      "componentName" : "c:MarketplaceL3Marquee",
+      "id" : "0cdfe5f4-618d-4011-a01a-99b024c292ca",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c0aed255-80d5-4a56-bdf7-f1f990a8e1a3",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "showEditPencil" : true,
+        "showLeadGeneration" : true,
+        "showManageOffering" : true
+      },
+      "componentName" : "c:MarketplacePartnerDetail",
+      "id" : "05d68c29-b284-4c30-9b9c-6489259a4137",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "63a325f4-029f-4da6-9c8d-e4d73edc1835",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "fbfbdf93-960f-41fd-9d66-f116142c8f46",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "58806df5-9e20-448a-b048-e76a7e05931c",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "e55daccd-b325-45c2-93d7-6a7c18a847c5",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "88e3a838-7158-446e-9124-b6a83348053b",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "64e58414-2cd7-403d-8a5d-c62561439522",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaExternalURL" : "",
+        "theme" : "dark"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "8cac7747-a37c-473d-8dc2-d2ca761c0b0b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "db0dcbc1-670b-4a3a-a1ba-a06b9a46004d",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "2833fed3-bc85-4f70-8b9f-e321de2e5b22",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "633805b7-f337-4558-b44f-0ba55f6d9452",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareTray",
+      "id" : "d34bc368-cc52-46b1-987b-08f1679571d3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "919e57a7-39b1-4e4d-b0b7-f6c5338fccad",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "86c80434-c5f1-42f4-8b9f-99874882d449",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "41ce2fc7-ae04-4988-ac22-260214f409bd",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "83348d1c-d976-478b-afd1-2c9fb242c6cc",
+    "regionName" : "blade1white",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a5S"
+}

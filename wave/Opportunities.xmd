@@ -1,0 +1,3582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset>Opportunities</dataset>
+    <dates>
+        <alias>Last Modified Date</alias>
+        <dateFieldDay>LastModifiedDate_Day</dateFieldDay>
+        <dateFieldEpochDay>LastModifiedDate_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>LastModifiedDate_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>LastModifiedDate</dateFieldFullYear>
+        <dateFieldHour>LastModifiedDate_Hour</dateFieldHour>
+        <dateFieldMinute>LastModifiedDate_Minute</dateFieldMinute>
+        <dateFieldMonth>LastModifiedDate_Month</dateFieldMonth>
+        <dateFieldQuarter>LastModifiedDate_Quarter</dateFieldQuarter>
+        <dateFieldSecond>LastModifiedDate_Second</dateFieldSecond>
+        <dateFieldWeek>LastModifiedDate_Week</dateFieldWeek>
+        <dateFieldYear>LastModifiedDate_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Last Modified Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>0</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Nom Ratification Date</alias>
+        <dateFieldDay>Core_Nom_Ratification_Date__c_Day</dateFieldDay>
+        <dateFieldEpochDay>Core_Nom_Ratification_Date__c_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>Core_Nom_Ratification_Date__c_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>Core_Nom_Ratification_Date__c</dateFieldFullYear>
+        <dateFieldHour>Core_Nom_Ratification_Date__c_Hour</dateFieldHour>
+        <dateFieldMinute>Core_Nom_Ratification_Date__c_Minute</dateFieldMinute>
+        <dateFieldMonth>Core_Nom_Ratification_Date__c_Month</dateFieldMonth>
+        <dateFieldQuarter>Core_Nom_Ratification_Date__c_Quarter</dateFieldQuarter>
+        <dateFieldSecond>Core_Nom_Ratification_Date__c_Second</dateFieldSecond>
+        <dateFieldWeek>Core_Nom_Ratification_Date__c_Week</dateFieldWeek>
+        <dateFieldYear>Core_Nom_Ratification_Date__c_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Nom Ratification Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>1</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Production End Date</alias>
+        <dateFieldDay>Core_Production_End_Date__c_Day</dateFieldDay>
+        <dateFieldEpochDay>Core_Production_End_Date__c_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>Core_Production_End_Date__c_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>Core_Production_End_Date__c</dateFieldFullYear>
+        <dateFieldHour>Core_Production_End_Date__c_Hour</dateFieldHour>
+        <dateFieldMinute>Core_Production_End_Date__c_Minute</dateFieldMinute>
+        <dateFieldMonth>Core_Production_End_Date__c_Month</dateFieldMonth>
+        <dateFieldQuarter>Core_Production_End_Date__c_Quarter</dateFieldQuarter>
+        <dateFieldSecond>Core_Production_End_Date__c_Second</dateFieldSecond>
+        <dateFieldWeek>Core_Production_End_Date__c_Week</dateFieldWeek>
+        <dateFieldYear>Core_Production_End_Date__c_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Production End Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>2</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Last Activity Date</alias>
+        <dateFieldDay>Core_Last_Activity_Date__c_Day</dateFieldDay>
+        <dateFieldEpochDay>Core_Last_Activity_Date__c_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>Core_Last_Activity_Date__c_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>Core_Last_Activity_Date__c</dateFieldFullYear>
+        <dateFieldHour>Core_Last_Activity_Date__c_Hour</dateFieldHour>
+        <dateFieldMinute>Core_Last_Activity_Date__c_Minute</dateFieldMinute>
+        <dateFieldMonth>Core_Last_Activity_Date__c_Month</dateFieldMonth>
+        <dateFieldQuarter>Core_Last_Activity_Date__c_Quarter</dateFieldQuarter>
+        <dateFieldSecond>Core_Last_Activity_Date__c_Second</dateFieldSecond>
+        <dateFieldWeek>Core_Last_Activity_Date__c_Week</dateFieldWeek>
+        <dateFieldYear>Core_Last_Activity_Date__c_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Last Activity Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>3</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Approved Date</alias>
+        <dateFieldDay>Core_Approved_Date__c_Day</dateFieldDay>
+        <dateFieldEpochDay>Core_Approved_Date__c_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>Core_Approved_Date__c_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>Core_Approved_Date__c</dateFieldFullYear>
+        <dateFieldHour>Core_Approved_Date__c_Hour</dateFieldHour>
+        <dateFieldMinute>Core_Approved_Date__c_Minute</dateFieldMinute>
+        <dateFieldMonth>Core_Approved_Date__c_Month</dateFieldMonth>
+        <dateFieldQuarter>Core_Approved_Date__c_Quarter</dateFieldQuarter>
+        <dateFieldSecond>Core_Approved_Date__c_Second</dateFieldSecond>
+        <dateFieldWeek>Core_Approved_Date__c_Week</dateFieldWeek>
+        <dateFieldYear>Core_Approved_Date__c_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Approved Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>4</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Last Activity</alias>
+        <dateFieldDay>LastActivityDate_Day</dateFieldDay>
+        <dateFieldEpochDay>LastActivityDate_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>LastActivityDate_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>LastActivityDate</dateFieldFullYear>
+        <dateFieldHour>LastActivityDate_Hour</dateFieldHour>
+        <dateFieldMinute>LastActivityDate_Minute</dateFieldMinute>
+        <dateFieldMonth>LastActivityDate_Month</dateFieldMonth>
+        <dateFieldQuarter>LastActivityDate_Quarter</dateFieldQuarter>
+        <dateFieldSecond>LastActivityDate_Second</dateFieldSecond>
+        <dateFieldWeek>LastActivityDate_Week</dateFieldWeek>
+        <dateFieldYear>LastActivityDate_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Last Activity</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>5</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Created Date</alias>
+        <dateFieldDay>CreatedDate_Day</dateFieldDay>
+        <dateFieldEpochDay>CreatedDate_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>CreatedDate_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>CreatedDate</dateFieldFullYear>
+        <dateFieldHour>CreatedDate_Hour</dateFieldHour>
+        <dateFieldMinute>CreatedDate_Minute</dateFieldMinute>
+        <dateFieldMonth>CreatedDate_Month</dateFieldMonth>
+        <dateFieldQuarter>CreatedDate_Quarter</dateFieldQuarter>
+        <dateFieldSecond>CreatedDate_Second</dateFieldSecond>
+        <dateFieldWeek>CreatedDate_Week</dateFieldWeek>
+        <dateFieldYear>CreatedDate_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Created Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>6</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Date Submitted for Approval</alias>
+        <dateFieldDay>Core_Date_Submitted_for_Approval__c_Day</dateFieldDay>
+        <dateFieldEpochDay>Core_Date_Submitted_for_Approval__c_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>Core_Date_Submitted_for_Approval__c_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>Core_Date_Submitted_for_Approval__c</dateFieldFullYear>
+        <dateFieldHour>Core_Date_Submitted_for_Approval__c_Hour</dateFieldHour>
+        <dateFieldMinute>Core_Date_Submitted_for_Approval__c_Minute</dateFieldMinute>
+        <dateFieldMonth>Core_Date_Submitted_for_Approval__c_Month</dateFieldMonth>
+        <dateFieldQuarter>Core_Date_Submitted_for_Approval__c_Quarter</dateFieldQuarter>
+        <dateFieldSecond>Core_Date_Submitted_for_Approval__c_Second</dateFieldSecond>
+        <dateFieldWeek>Core_Date_Submitted_for_Approval__c_Week</dateFieldWeek>
+        <dateFieldYear>Core_Date_Submitted_for_Approval__c_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Date Submitted for Approval</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>7</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>First Customer Ship Date</alias>
+        <dateFieldDay>Core_First_Customer_Ship_Date__c_Day</dateFieldDay>
+        <dateFieldEpochDay>Core_First_Customer_Ship_Date__c_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>Core_First_Customer_Ship_Date__c_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>Core_First_Customer_Ship_Date__c</dateFieldFullYear>
+        <dateFieldHour>Core_First_Customer_Ship_Date__c_Hour</dateFieldHour>
+        <dateFieldMinute>Core_First_Customer_Ship_Date__c_Minute</dateFieldMinute>
+        <dateFieldMonth>Core_First_Customer_Ship_Date__c_Month</dateFieldMonth>
+        <dateFieldQuarter>Core_First_Customer_Ship_Date__c_Quarter</dateFieldQuarter>
+        <dateFieldSecond>Core_First_Customer_Ship_Date__c_Second</dateFieldSecond>
+        <dateFieldWeek>Core_First_Customer_Ship_Date__c_Week</dateFieldWeek>
+        <dateFieldYear>Core_First_Customer_Ship_Date__c_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>First Customer Ship Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>8</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>Decision Date</alias>
+        <dateFieldDay>CloseDate_Day</dateFieldDay>
+        <dateFieldEpochDay>CloseDate_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>CloseDate_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>CloseDate</dateFieldFullYear>
+        <dateFieldHour>CloseDate_Hour</dateFieldHour>
+        <dateFieldMinute>CloseDate_Minute</dateFieldMinute>
+        <dateFieldMonth>CloseDate_Month</dateFieldMonth>
+        <dateFieldQuarter>CloseDate_Quarter</dateFieldQuarter>
+        <dateFieldSecond>CloseDate_Second</dateFieldSecond>
+        <dateFieldWeek>CloseDate_Week</dateFieldWeek>
+        <dateFieldYear>CloseDate_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>Decision Date</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>9</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dates>
+        <alias>System Modstamp</alias>
+        <dateFieldDay>SystemModstamp_Day</dateFieldDay>
+        <dateFieldEpochDay>SystemModstamp_day_epoch</dateFieldEpochDay>
+        <dateFieldEpochSecond>SystemModstamp_sec_epoch</dateFieldEpochSecond>
+        <dateFieldFullYear>SystemModstamp</dateFieldFullYear>
+        <dateFieldHour>SystemModstamp_Hour</dateFieldHour>
+        <dateFieldMinute>SystemModstamp_Minute</dateFieldMinute>
+        <dateFieldMonth>SystemModstamp_Month</dateFieldMonth>
+        <dateFieldQuarter>SystemModstamp_Quarter</dateFieldQuarter>
+        <dateFieldSecond>SystemModstamp_Second</dateFieldSecond>
+        <dateFieldWeek>SystemModstamp_Week</dateFieldWeek>
+        <dateFieldYear>SystemModstamp_Year</dateFieldYear>
+        <firstDayOfWeek>-1</firstDayOfWeek>
+        <fiscalMonthOffset>0</fiscalMonthOffset>
+        <isYearEndFiscalYear>true</isYearEndFiscalYear>
+        <label>System Modstamp</label>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>10</sortIndex>
+        <type xsi:nil="true"/>
+    </dates>
+    <dimensions>
+        <field>Core_Opportunity_Entry_Stage__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Entry Stage</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.LastName</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner Last Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Prime_Account_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Prime Account Name</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.Core_WWID__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical Owner WWID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_Coverage__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Coverage</label>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Industry</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Industry</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Quarter</label>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingState</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing State</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Wireless_LAN__c</field>
+        <isDerived>false</isDerived>
+        <label>Wireless LAN</label>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.Core_WWID__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner WWID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityPartner.Id</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Partner Id</label>
+        <sortIndex>5</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.Name</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner Full Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>5</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityPartner.Name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Partner Name</label>
+        <sortIndex>6</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.Core_User_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>6</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityPartner.Core_Partner__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Partner Account</label>
+        <sortIndex>7</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.Core_WWID__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner WWID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>7</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityPartner.OwnerId</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Partner Owner Id</label>
+        <sortIndex>8</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Covered_Account__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Covered Account</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>8</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>PartnerTeamMember.Id</field>
+        <isDerived>false</isDerived>
+        <label>Partner Team Member Id</label>
+        <sortIndex>9</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.Name</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner Full Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>9</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>PartnerTeamMember.UserId</field>
+        <isDerived>false</isDerived>
+        <label>Partner Team Member User Id</label>
+        <sortIndex>10</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Account_Tier__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Tier</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>10</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Hour</label>
+        <sortIndex>11</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.Core_User_Sub_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner Sub-Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>11</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Technical_Owner__c</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner</label>
+        <sortIndex>12</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>12</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Second</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Second</label>
+        <sortIndex>13</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_CPM_ID__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account CPM ID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>13</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Second</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Second</label>
+        <sortIndex>14</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.LastName</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical Owner LastName</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>14</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>HasOpenActivity</field>
+        <isDerived>false</isDerived>
+        <label>Has Open Activity</label>
+        <sortIndex>15</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Is_Active__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Is Active</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>15</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Minute</label>
+        <sortIndex>16</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.Core_User_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>16</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Manufacturing_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Manufacturing Geo</label>
+        <sortIndex>17</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Sub_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Sub Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>17</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Compliance_Status__c</field>
+        <isDerived>false</isDerived>
+        <label>Compliance Status</label>
+        <sortIndex>18</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.Core_User_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical OwnerGeo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>18</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Owner__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner</label>
+        <sortIndex>19</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.Core_User_Sub_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical Owner Sub-Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>19</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Team_Geo_PRC__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Team Geo PRC</label>
+        <sortIndex>20</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.LastName</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner Last Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>20</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Month</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Month</label>
+        <sortIndex>21</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingPostalCode</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing PostalCode</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>21</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Z_Height__c</field>
+        <isDerived>false</isDerived>
+        <label>Z Height</label>
+        <sortIndex>22</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Sales_Segment__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Sales Segment</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>22</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Wireless_WAN__c</field>
+        <isDerived>false</isDerived>
+        <label>Wireless WAN</label>
+        <sortIndex>23</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_High_Priority_Account__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account High Priority Account</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>23</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Cellular_Reqs__c</field>
+        <isDerived>false</isDerived>
+        <label>Cellular Reqs</label>
+        <sortIndex>24</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Id</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account ID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>24</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_CPU__c</field>
+        <isDerived>false</isDerived>
+        <label>CPU</label>
+        <sortIndex>25</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.Name</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical Owner Full Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>25</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Products__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Products</label>
+        <sortIndex>26</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.Country</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical Owner Country</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>26</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Team_Geos__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Team Geos</label>
+        <sortIndex>27</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.Country</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner Country</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>27</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Managers (No Owners)</label>
+        <sortIndex>28</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.Core_User_Sub_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner Sub-Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>28</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_LAN__c</field>
+        <isDerived>false</isDerived>
+        <label>LAN</label>
+        <sortIndex>29</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Name</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>29</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_IoT__c</field>
+        <isDerived>false</isDerived>
+        <label>IoT</label>
+        <sortIndex>30</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingCountryCode</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing CountryCode</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>30</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Sales_Seg_Influencer__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Sales Seg. Influencer</label>
+        <sortIndex>31</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Approved_Account__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Approved Account</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>31</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Hour</label>
+        <sortIndex>32</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Physical_Location__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Physical Location</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>32</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>IsClosed</field>
+        <isDerived>false</isDerived>
+        <label>Closed</label>
+        <sortIndex>33</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_KPI_INF_No_Overlap__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>KPI - INF No Overlap</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>33</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Approved_Account__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Approved Account</label>
+        <sortIndex>34</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Partner_Alliance_Program_Member__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Partner Alliance Program Member</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>34</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Industry</field>
+        <isDerived>false</isDerived>
+        <label>Account Industry</label>
+        <sortIndex>35</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingStreet</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing Street</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>35</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.Country</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner Country</label>
+        <sortIndex>36</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Account_Owner__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>36</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_Owner__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner</label>
+        <sortIndex>37</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.OwnerId.FirstName</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Owner First Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>37</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Storm_Lake__c</field>
+        <isDerived>false</isDerived>
+        <label>Storm Lake</label>
+        <sortIndex>38</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>IsWon</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Won</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>38</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>RecordTypeId</field>
+        <isDerived>false</isDerived>
+        <label>Record Type ID</label>
+        <sortIndex>39</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.Country</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner Country</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>39</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Year</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Year</label>
+        <sortIndex>40</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingCity</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing City</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>40</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.UserId</field>
+        <isDerived>false</isDerived>
+        <label>Team Member User IDs (No Owners)</label>
+        <sortIndex>41</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_ITP__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account ITP</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>41</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner</label>
+        <showDetailsDefaultFieldIndex>3</showDetailsDefaultFieldIndex>
+        <sortIndex>42</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Geo__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Geo</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>42</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approval_Status__c</field>
+        <isDerived>false</isDerived>
+        <label>Approval Status</label>
+        <sortIndex>43</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Account_State_Province__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account State/Province</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>43</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Manager.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Managers Manager IDs</label>
+        <sortIndex>44</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>Core_Technical_Owner__c.FirstName</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Technical Owner FirstName</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>44</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Name</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Names</label>
+        <sortIndex>45</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingStateCode</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing StateCode</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>45</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Competitive_Architecture__c</field>
+        <isDerived>false</isDerived>
+        <label>Competitive Architecture</label>
+        <sortIndex>46</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_IPS_Active__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account IPS Active</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>46</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_At_Risk_Created_Date__c</field>
+        <isDerived>false</isDerived>
+        <label>At Risk Created Date</label>
+        <sortIndex>47</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Business_ID__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Business ID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>47</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Architecture_Conversion__c</field>
+        <isDerived>false</isDerived>
+        <label>Architecture Conversion</label>
+        <sortIndex>48</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Account_Country__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Country</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>48</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Core_WWID__c</field>
+        <isDerived>false</isDerived>
+        <label>Team Member WWIDs (No Owners)</label>
+        <sortIndex>49</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>OwnerId.FirstName</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Owner Full Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>49</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp</label>
+        <sortIndex>50</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Account_Legal_Name__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Legal Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>50</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Crystal_Ridge__c</field>
+        <isDerived>false</isDerived>
+        <label>Crystal Ridge</label>
+        <sortIndex>51</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Account_Type__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Type</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>51</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_Type__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Type</label>
+        <sortIndex>52</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Military_Aerospace_and_Government__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Military Aerospace and Government</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>52</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Manager.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Managers Managers (No Owners)</label>
+        <sortIndex>53</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Global_MNC_ODM_Account__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Global MNC/ODM Account</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>53</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Day</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Day</label>
+        <sortIndex>54</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_CIM_ID__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account CIM ID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>54</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Day</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Day</label>
+        <sortIndex>55</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.BillingCountry</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Billing Country</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>55</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Minute</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Minute</label>
+        <sortIndex>56</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>RecordTypeId.Name</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Record Type Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>56</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Screen_Size__c</field>
+        <isDerived>false</isDerived>
+        <label>Screen Size</label>
+        <sortIndex>57</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>AccountId.Core_Partner_Alliance_Program__c</field>
+        <isDerived>true</isDerived>
+        <isMultiValue>false</isMultiValue>
+        <label>Account Partner Alliance Program</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>57</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>StageSorted</field>
+        <isDerived>false</isDerived>
+        <label>Stage (Sorted)</label>
+        <members>
+            <color>#33CC00</color>
+            <member>2 - Design Win</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <color>#86FFFF</color>
+            <member>4 - Develop</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <color>#FF8600</color>
+            <member>6 - Qualify</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <color>#006600</color>
+            <member>1 - Production Win</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <color>#4286FF</color>
+            <member>3 - Design</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <color>#CCCCCC</color>
+            <member>0 - Group</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <color>#CC0000</color>
+            <member>7 - Lost</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <color>#FFF286</color>
+            <member>5 - Define</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <color>#F96FB7</color>
+            <member>8 - Cancelled</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <sortIndex>58</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Activity_Measure__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Activity Measure</label>
+        <sortIndex>59</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.Core_User_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner Sub-Geo</label>
+        <sortIndex>60</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Manager.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Managers Manager IDs (No Owners)</label>
+        <sortIndex>61</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Consumption_Market__c</field>
+        <isDerived>false</isDerived>
+        <label>Vertical Market</label>
+        <sortIndex>62</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Week</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Week</label>
+        <sortIndex>63</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_DMR__c</field>
+        <isDerived>false</isDerived>
+        <label>DMR</label>
+        <sortIndex>64</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Year</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Year</label>
+        <sortIndex>65</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_CIM_ID__c</field>
+        <isDerived>false</isDerived>
+        <label>Account CIM ID</label>
+        <sortIndex>66</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Create_to_Submit_LOV__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Create to Submit</label>
+        <sortIndex>67</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Second</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Second</label>
+        <sortIndex>68</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Products.Name</field>
+        <isDerived>false</isDerived>
+        <label>Product Names</label>
+        <sortIndex>69</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Minute</label>
+        <sortIndex>70</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Month</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Month</label>
+        <sortIndex>71</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner&apos;s Manager ID</label>
+        <sortIndex>72</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Cloud_Service_Provider__c</field>
+        <isDerived>false</isDerived>
+        <label>Cloud Service Provider</label>
+        <sortIndex>73</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Second</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Second</label>
+        <sortIndex>74</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate</field>
+        <isDerived>false</isDerived>
+        <label>Created Date</label>
+        <sortIndex>75</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>HasOverdueTask</field>
+        <isDerived>false</isDerived>
+        <label>Has Overdue Task</label>
+        <sortIndex>76</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_LOEM__c</field>
+        <isDerived>false</isDerived>
+        <label>LOEM</label>
+        <sortIndex>77</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Second</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Second</label>
+        <sortIndex>78</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Year</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Year</label>
+        <sortIndex>79</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Week</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Week</label>
+        <sortIndex>80</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Project_Phase__c</field>
+        <isDerived>false</isDerived>
+        <label>Project Phase</label>
+        <sortIndex>81</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Core_User_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Sub Geos</label>
+        <sortIndex>82</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Number_U2_Slots_NVMe__c</field>
+        <isDerived>false</isDerived>
+        <label>Number U2 Slots (NVMe)</label>
+        <sortIndex>83</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Service_Providers_Telco__c</field>
+        <isDerived>false</isDerived>
+        <label>Service Providers/Telco</label>
+        <sortIndex>84</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Day</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Day</label>
+        <sortIndex>85</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Sales_Seg_Reseller__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Sales Seg. Reseller/Channel</label>
+        <sortIndex>86</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner&apos;s Manager</label>
+        <sortIndex>87</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_ID_Chassis_Refresh__c</field>
+        <isDerived>false</isDerived>
+        <label>ID Chassis Refresh</label>
+        <sortIndex>88</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Distributor__c</field>
+        <isDerived>false</isDerived>
+        <label>Distributor</label>
+        <sortIndex>89</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Core_User_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner Geo</label>
+        <sortIndex>90</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_MAG_Account__c</field>
+        <isDerived>false</isDerived>
+        <label>MAG Account</label>
+        <sortIndex>91</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Second</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Second</label>
+        <sortIndex>92</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Team_Geo_APJ__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Team Geo APJ</label>
+        <sortIndex>93</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_WiFi__c</field>
+        <isDerived>false</isDerived>
+        <label>WiFi</label>
+        <sortIndex>94</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Security.Role.Roles</field>
+        <isDerived>false</isDerived>
+        <label>Record Access - Roles</label>
+        <sortIndex>95</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Military_Aerospace_and_Government__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Military Aerospace and Government</label>
+        <sortIndex>96</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Wireless_Display__c</field>
+        <isDerived>false</isDerived>
+        <label>Wireless Display</label>
+        <sortIndex>97</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Wireless_Gigabyte__c</field>
+        <isDerived>false</isDerived>
+        <label>Wireless Gigabyte</label>
+        <sortIndex>98</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Month</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Month</label>
+        <sortIndex>99</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_Tier__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Tier</label>
+        <sortIndex>100</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Compliance_Sub_Status__c</field>
+        <isDerived>false</isDerived>
+        <label>Compliance Sub-Status</label>
+        <sortIndex>101</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date</label>
+        <sortIndex>102</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Is_DCS__c</field>
+        <isDerived>false</isDerived>
+        <label>Is DCS?</label>
+        <sortIndex>103</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Manager IDs (No Owners)</label>
+        <sortIndex>104</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Manager.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner&apos;s Manager&apos;s Manager ID</label>
+        <sortIndex>105</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Day</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Day</label>
+        <sortIndex>106</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Day</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Day</label>
+        <sortIndex>107</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Partner_Alliance_Program_Member__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Partner Alliance Program Member</label>
+        <sortIndex>108</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Week</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Week</label>
+        <sortIndex>109</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Sales_Seg_Compute__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Sales Seg. Compute</label>
+        <sortIndex>110</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Sales_Seg_Distributor__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Sales Seg. Dist/Channel</label>
+        <sortIndex>111</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Ambient_Temp_Req__c</field>
+        <isDerived>false</isDerived>
+        <label>Ambient Temp Req</label>
+        <sortIndex>112</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Geographical_Territory__c</field>
+        <isDerived>false</isDerived>
+        <label>Geographical Territory</label>
+        <sortIndex>113</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Sales_Groups__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Sales Groups</label>
+        <sortIndex>114</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Military_Aerospace_Govmt_End_Use__c</field>
+        <isDerived>false</isDerived>
+        <label>Military, Aerospace, or Gov&apos;mt End Use?</label>
+        <sortIndex>115</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Innovation_Engine__c</field>
+        <isDerived>false</isDerived>
+        <label>Innovation Engine</label>
+        <sortIndex>116</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Publisher__c</field>
+        <isDerived>false</isDerived>
+        <label>Publisher</label>
+        <sortIndex>117</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_ITO__c</field>
+        <isDerived>false</isDerived>
+        <label>ITO</label>
+        <sortIndex>118</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Security_Software__c</field>
+        <isDerived>false</isDerived>
+        <label>Security Software</label>
+        <sortIndex>119</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Id</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity ID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordIdField>Id</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showDetailsDefaultFieldIndex>0</showDetailsDefaultFieldIndex>
+        <sortIndex>120</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_TEM__c</field>
+        <isDerived>false</isDerived>
+        <label>TEM</label>
+        <sortIndex>121</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Type__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Type</label>
+        <sortIndex>122</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Entry_SPP_US__c</field>
+        <isDerived>false</isDerived>
+        <label>Entry SPP (US$)</label>
+        <sortIndex>123</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Named_Strategic_Territory_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Named/Strategic Territory Name</label>
+        <sortIndex>124</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Security.Id</field>
+        <isDerived>false</isDerived>
+        <label>Record Access - User IDs</label>
+        <sortIndex>125</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Quarter</label>
+        <sortIndex>126</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Month</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Month</label>
+        <sortIndex>127</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.Core_User_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner Geo</label>
+        <sortIndex>128</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Product_Application__c</field>
+        <isDerived>false</isDerived>
+        <label>Product Application</label>
+        <sortIndex>129</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Quarter</label>
+        <sortIndex>130</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_SSD__c</field>
+        <isDerived>false</isDerived>
+        <label>SSD</label>
+        <sortIndex>131</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Minute</label>
+        <sortIndex>132</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>IsSplit</field>
+        <isDerived>false</isDerived>
+        <label>Is Split</label>
+        <sortIndex>133</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingCity</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing City</label>
+        <sortIndex>134</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_State_Province__c</field>
+        <isDerived>false</isDerived>
+        <label>Account State/Province</label>
+        <sortIndex>135</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Business_Unit_Territory__c</field>
+        <isDerived>false</isDerived>
+        <label>Business Unit Territory</label>
+        <sortIndex>136</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Design_House__c</field>
+        <isDerived>false</isDerived>
+        <label>Design House</label>
+        <sortIndex>137</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Week</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Week</label>
+        <sortIndex>138</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Year</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Year</label>
+        <sortIndex>139</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Owner_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner Sub Geo</label>
+        <sortIndex>140</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Day</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Day</label>
+        <sortIndex>141</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Quarter</label>
+        <sortIndex>142</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Core_User_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner Sub Geo</label>
+        <sortIndex>143</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity</label>
+        <sortIndex>144</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_IPS_Active__c</field>
+        <isDerived>false</isDerived>
+        <label>Account IPS Active</label>
+        <sortIndex>145</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_KPI_Business_Industry_Function__c</field>
+        <isDerived>false</isDerived>
+        <label>KPI - Business Industry Function</label>
+        <sortIndex>146</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Intel_Platform__c</field>
+        <isDerived>false</isDerived>
+        <label>Intel Platform</label>
+        <sortIndex>147</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingCountryCode</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing CountryCode</label>
+        <sortIndex>148</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Business_ID__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Business ID</label>
+        <sortIndex>149</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>EntryStageSorted</field>
+        <isDerived>false</isDerived>
+        <label>Entry Stage (Sorted)</label>
+        <sortIndex>150</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Core_WWID__c</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner WWID</label>
+        <sortIndex>151</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Physical_Location__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Physical Location</label>
+        <sortIndex>152</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Week</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Week</label>
+        <sortIndex>153</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Week</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Week</label>
+        <sortIndex>154</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Node_Manager__c</field>
+        <isDerived>false</isDerived>
+        <label>Node Manager</label>
+        <sortIndex>155</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Month</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Month</label>
+        <sortIndex>156</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Country</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner Country</label>
+        <sortIndex>157</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_ISV_OSV__c</field>
+        <isDerived>false</isDerived>
+        <label>ISV/OSV</label>
+        <sortIndex>158</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Minute</label>
+        <sortIndex>159</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Loss_Cancel_Details__c</field>
+        <isDerived>false</isDerived>
+        <label>Loss/Cancel Details</label>
+        <sortIndex>160</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Lead_Notes__c</field>
+        <isDerived>false</isDerived>
+        <label>Lead Notes</label>
+        <sortIndex>161</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LeadSource</field>
+        <isDerived>false</isDerived>
+        <label>Lead Source</label>
+        <sortIndex>162</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_DIMM_Per_CPU__c</field>
+        <isDerived>false</isDerived>
+        <label>DIMM per CPU</label>
+        <sortIndex>163</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Sub Geo</label>
+        <sortIndex>164</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Week</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Week</label>
+        <sortIndex>165</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date</label>
+        <sortIndex>166</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Year</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Year</label>
+        <sortIndex>167</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Current_Architecture__c</field>
+        <isDerived>false</isDerived>
+        <label>Current Architecture</label>
+        <sortIndex>168</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Stylus__c</field>
+        <isDerived>false</isDerived>
+        <label>Stylus</label>
+        <sortIndex>169</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Solution_Provider__c</field>
+        <isDerived>false</isDerived>
+        <label>Solution Provider</label>
+        <sortIndex>170</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Year</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Year</label>
+        <sortIndex>171</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Core_User_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner Geo</label>
+        <sortIndex>172</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Hour</label>
+        <sortIndex>173</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Chipset__c</field>
+        <isDerived>false</isDerived>
+        <label>Chipset</label>
+        <sortIndex>174</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>StageFunnel</field>
+        <isDerived>false</isDerived>
+        <label>Stage (Funnel)</label>
+        <members>
+            <color>#86FFFF</color>
+            <member>4 - Develop</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <color>#4286FF</color>
+            <member>5 - Design</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <color>#FF8600</color>
+            <member>2 - Qualify</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <color>#CC0000</color>
+            <member>1 - Lost</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <color>#33CC00</color>
+            <member>6 - Design Win</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <color>#CCCCCC</color>
+            <member>0 - Group</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <color>#006600</color>
+            <member>7 - Production Win</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <color>#F96FB7</color>
+            <member>0 - Cancelled</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <color>#FFF286</color>
+            <member>3 - Define</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <sortIndex>175</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Quarter</label>
+        <sortIndex>176</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Month</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Month</label>
+        <sortIndex>177</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Team_Geo_EMEA__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Team Geo EMEA</label>
+        <sortIndex>178</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_EMS__c</field>
+        <isDerived>false</isDerived>
+        <label>EMS</label>
+        <sortIndex>179</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Minute</label>
+        <sortIndex>180</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Second</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Second</label>
+        <sortIndex>181</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityStatus</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Status</label>
+        <sortIndex>182</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Year</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Year</label>
+        <sortIndex>183</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Geo_Initiative__c</field>
+        <isDerived>false</isDerived>
+        <label>Geo Initiative</label>
+        <sortIndex>184</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Manager.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Managers Managers</label>
+        <sortIndex>185</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Name</field>
+        <isDerived>false</isDerived>
+        <label>Account Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordIdField>Account.Id</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showDetailsDefaultFieldIndex>2</showDetailsDefaultFieldIndex>
+        <sortIndex>186</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_QuickAssist_Tech__c</field>
+        <isDerived>false</isDerived>
+        <label>QuickAssist Tech</label>
+        <sortIndex>187</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Software_Stack__c</field>
+        <isDerived>false</isDerived>
+        <label>Software Stack</label>
+        <sortIndex>188</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Core_User_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Geos (No Owners)</label>
+        <sortIndex>189</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Hour</label>
+        <sortIndex>190</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date</label>
+        <sortIndex>191</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Biz_MFA__c</field>
+        <isDerived>false</isDerived>
+        <label>Biz MFA</label>
+        <sortIndex>192</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Week</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Week</label>
+        <sortIndex>193</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Name</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner</label>
+        <sortIndex>194</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Second</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Second</label>
+        <sortIndex>195</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Manager.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner&apos;s Manager&apos;s Manager</label>
+        <sortIndex>196</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Participating_Geos__c</field>
+        <isDerived>false</isDerived>
+        <label>Participating Geos</label>
+        <sortIndex>197</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingPostalCode</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing Postal Code</label>
+        <sortIndex>198</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Partner_Alliance_Program__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Partner Alliance Program</label>
+        <sortIndex>199</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Product_Interest__c</field>
+        <isDerived>false</isDerived>
+        <label>Product Interest</label>
+        <sortIndex>200</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Second</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Second</label>
+        <sortIndex>201</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Voice_Assist__c</field>
+        <isDerived>false</isDerived>
+        <label>Voice Assist</label>
+        <sortIndex>202</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>IsDeleted</field>
+        <isDerived>false</isDerived>
+        <label>Deleted</label>
+        <sortIndex>203</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date</label>
+        <sortIndex>204</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Covered_Account__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Covered Account</label>
+        <sortIndex>205</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Sales_Segment__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Sales Segment</label>
+        <sortIndex>206</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Node_Controller__c</field>
+        <isDerived>false</isDerived>
+        <label>Node Controller</label>
+        <sortIndex>207</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Owner_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner Geo</label>
+        <sortIndex>208</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Second</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Second</label>
+        <sortIndex>209</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingCountry</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing Country</label>
+        <sortIndex>210</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Day</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Day</label>
+        <sortIndex>211</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Month</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Month</label>
+        <sortIndex>212</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.OwnerId</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner User ID</label>
+        <sortIndex>213</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Loss_Cancel_Reason__c</field>
+        <isDerived>false</isDerived>
+        <label>Loss/Cancel Reason</label>
+        <sortIndex>214</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Name</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Names (No Owners)</label>
+        <sortIndex>215</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_vPro__c</field>
+        <isDerived>false</isDerived>
+        <label>vPro</label>
+        <sortIndex>216</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Quarter</label>
+        <sortIndex>217</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Year</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Year</label>
+        <sortIndex>218</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Product_Segment__c</field>
+        <isDerived>false</isDerived>
+        <label>Product Segment</label>
+        <sortIndex>219</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Retailer__c</field>
+        <isDerived>false</isDerived>
+        <label>Retailer</label>
+        <sortIndex>220</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Week</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Week</label>
+        <sortIndex>221</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Quarter</label>
+        <sortIndex>222</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Id</field>
+        <isDerived>false</isDerived>
+        <label>Account ID</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordIdField>Account.Id</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <sortIndex>223</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Manager IDs</label>
+        <sortIndex>224</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Support_Completed__c</field>
+        <isDerived>false</isDerived>
+        <label>Support Completed</label>
+        <sortIndex>225</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Core_User_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Geos</label>
+        <sortIndex>226</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Day</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Day</label>
+        <sortIndex>227</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Second</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Second</label>
+        <sortIndex>228</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_OEM__c</field>
+        <isDerived>false</isDerived>
+        <label>OEM</label>
+        <sortIndex>229</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Standard_Customer_Refresh__c</field>
+        <isDerived>false</isDerived>
+        <label>Standard Customer Refresh</label>
+        <sortIndex>230</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Hour</label>
+        <sortIndex>231</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Solution_Focus__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Focus</label>
+        <sortIndex>232</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>StageName</field>
+        <isDerived>false</isDerived>
+        <label>Stage</label>
+        <members>
+            <color>#4286FF</color>
+            <member>Design</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <color>#CC0000</color>
+            <member>Lost</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <color>#CCCCCC</color>
+            <member>Group</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <color>#33CC00</color>
+            <member>Design Win</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <color>#86FFFF</color>
+            <member>Develop</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <color>#FFF286</color>
+            <member>Define</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <color>#FF8600</color>
+            <member>Qualify</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <color>#F96FB7</color>
+            <member>Cancelled</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <color>#006600</color>
+            <member>Production Win</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <showDetailsDefaultFieldIndex>5</showDetailsDefaultFieldIndex>
+        <sortIndex>233</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingState</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing State</label>
+        <sortIndex>234</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.Name</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner Name</label>
+        <sortIndex>235</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Geo_EMEA__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Geo EMEA</label>
+        <sortIndex>236</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Quarter</label>
+        <sortIndex>237</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Day</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Day</label>
+        <sortIndex>238</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Is_Active__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Is Active</label>
+        <sortIndex>239</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Manager.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner&apos;s Manager&apos;s Manager</label>
+        <sortIndex>240</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Reason_for_Deletion__c</field>
+        <isDerived>false</isDerived>
+        <label>Reason for Deletion</label>
+        <sortIndex>241</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nomination_Status__c</field>
+        <isDerived>false</isDerived>
+        <label>Nomination Status</label>
+        <sortIndex>242</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>AccountId</field>
+        <isDerived>false</isDerived>
+        <label>Account ID</label>
+        <sortIndex>243</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Business_Unit_Territory_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Business Unit Territory Name</label>
+        <sortIndex>244</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Name</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordIdField>Id</recordIdField>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showDetailsDefaultFieldIndex>1</showDetailsDefaultFieldIndex>
+        <sortIndex>245</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Wireless_Charge__c</field>
+        <isDerived>false</isDerived>
+        <label>Wireless Charge</label>
+        <sortIndex>246</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Minute</label>
+        <sortIndex>247</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date</label>
+        <sortIndex>248</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Display_Resolution__c</field>
+        <isDerived>false</isDerived>
+        <label>Display Resolution</label>
+        <sortIndex>249</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Security.Name</field>
+        <isDerived>false</isDerived>
+        <label>Record Access - Users</label>
+        <sortIndex>250</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Country</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner Country</label>
+        <sortIndex>251</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Thunderbolt__c</field>
+        <isDerived>false</isDerived>
+        <label>Thunderbolt</label>
+        <sortIndex>252</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Day</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Day</label>
+        <sortIndex>253</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_Legal_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Legal Name</label>
+        <sortIndex>254</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_System_Integrator__c</field>
+        <isDerived>false</isDerived>
+        <label>System Integrator</label>
+        <sortIndex>255</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Hour</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Hour</label>
+        <sortIndex>256</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Products.Core_Product_Type__c</field>
+        <isDerived>false</isDerived>
+        <label>Product Types</label>
+        <sortIndex>257</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Geographical_Territory_Name__c</field>
+        <isDerived>false</isDerived>
+        <label>Geographical Territory Name</label>
+        <sortIndex>258</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Status_Update__c</field>
+        <isDerived>false</isDerived>
+        <label>Status Update</label>
+        <sortIndex>259</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Year</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Year</label>
+        <sortIndex>260</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_ITP__c</field>
+        <isDerived>false</isDerived>
+        <label>Account ITP</label>
+        <sortIndex>261</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Flag_for_Deletion__c</field>
+        <isDerived>false</isDerived>
+        <label>Flag for Deletion</label>
+        <sortIndex>262</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Team_Geo_ASMO__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Team Geo ASMO</label>
+        <sortIndex>263</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Vertical_Sector__c</field>
+        <isDerived>false</isDerived>
+        <label>Vertical Sector</label>
+        <sortIndex>264</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Global_MNC_ODM_Account__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Global MNC/ODM Account</label>
+        <sortIndex>265</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Geo_APJ__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Geo APJ</label>
+        <sortIndex>266</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>RecordType.Name</field>
+        <isDerived>false</isDerived>
+        <label>RecordType.Name</label>
+        <sortIndex>267</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_ODM__c</field>
+        <isDerived>false</isDerived>
+        <label>ODM</label>
+        <sortIndex>268</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Graphics__c</field>
+        <isDerived>false</isDerived>
+        <label>Graphics</label>
+        <sortIndex>269</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Knights_Landing__c</field>
+        <isDerived>false</isDerived>
+        <label>Knights Landing</label>
+        <sortIndex>270</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Quarter</label>
+        <sortIndex>271</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingStreet</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing Street</label>
+        <sortIndex>272</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date</label>
+        <sortIndex>273</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CreatedDate_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Created Date Hour</label>
+        <sortIndex>274</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_ESF_Firm__c</field>
+        <isDerived>false</isDerived>
+        <label>ESF Firm</label>
+        <sortIndex>275</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Account_Country__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Country</label>
+        <sortIndex>276</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Quarter</label>
+        <sortIndex>277</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Hour</label>
+        <sortIndex>278</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Minute</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Minute</label>
+        <sortIndex>279</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Geo</label>
+        <sortIndex>280</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Project_Size__c</field>
+        <isDerived>false</isDerived>
+        <label>Project Size</label>
+        <sortIndex>281</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.UserId</field>
+        <isDerived>false</isDerived>
+        <label>Team Member User IDs</label>
+        <sortIndex>282</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_By__c</field>
+        <isDerived>false</isDerived>
+        <label>Approved By</label>
+        <sortIndex>283</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Security.Role.RolePath</field>
+        <isDerived>false</isDerived>
+        <label>Record Access - Role Path</label>
+        <sortIndex>284</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Core_User_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Sub Geos (No Owners)</label>
+        <sortIndex>285</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date</label>
+        <showDetailsDefaultFieldIndex>7</showDetailsDefaultFieldIndex>
+        <sortIndex>286</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Year</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Year</label>
+        <sortIndex>287</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Country</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Countries</label>
+        <sortIndex>288</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Hour</label>
+        <sortIndex>289</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Approved_Date__c_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date Minute</label>
+        <sortIndex>290</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Embedded_Board_Manufacturer__c</field>
+        <isDerived>false</isDerived>
+        <label>Embedded Board Manufacturer</label>
+        <sortIndex>291</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Project_Timeframe__c</field>
+        <isDerived>false</isDerived>
+        <label>Project Timeframe</label>
+        <sortIndex>292</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_SBA__c</field>
+        <isDerived>false</isDerived>
+        <label>SBA</label>
+        <sortIndex>293</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Past_Due__c</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Timing</label>
+        <sortIndex>294</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.Core_WWID__c</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner WWID</label>
+        <sortIndex>295</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Socket__c</field>
+        <isDerived>false</isDerived>
+        <label>Socket</label>
+        <sortIndex>296</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Technical_Owner_Manager__c</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner Manager</label>
+        <sortIndex>297</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>SystemModstamp_Hour</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp Hour</label>
+        <sortIndex>298</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Description</field>
+        <isDerived>false</isDerived>
+        <label>Description</label>
+        <sortIndex>299</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Lead_Conversion_Flag__c</field>
+        <isDerived>false</isDerived>
+        <label>Lead Conversion Flag</label>
+        <sortIndex>300</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Prior_Lost_Opportunity_Stage__c</field>
+        <isDerived>false</isDerived>
+        <label>Prior Lost Opportunity Stage</label>
+        <sortIndex>301</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Operating_System__c</field>
+        <isDerived>false</isDerived>
+        <label>Operating System</label>
+        <sortIndex>302</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OwnerId</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner User ID</label>
+        <sortIndex>303</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Core_User_Sub_Geo__c</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner Sub Geo</label>
+        <sortIndex>304</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner&apos;s Manager</label>
+        <sortIndex>305</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nominate_As__c</field>
+        <isDerived>false</isDerived>
+        <label>Nominate As</label>
+        <sortIndex>306</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastModifiedDate_Quarter</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date Quarter</label>
+        <sortIndex>307</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Private_Compliance_Comments__c</field>
+        <isDerived>false</isDerived>
+        <label>Private Compliance Comments</label>
+        <sortIndex>308</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.BillingStateCode</field>
+        <isDerived>false</isDerived>
+        <label>Account Billing State Code</label>
+        <sortIndex>309</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Form_Factor__c</field>
+        <isDerived>false</isDerived>
+        <label>Form Factor</label>
+        <sortIndex>310</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_End_Customer__c</field>
+        <isDerived>false</isDerived>
+        <label>End Customer</label>
+        <sortIndex>311</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Managers</label>
+        <sortIndex>312</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Named_Strategic__c</field>
+        <isDerived>false</isDerived>
+        <label>Named/Strategic Territory</label>
+        <sortIndex>313</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_CPM_ID__c</field>
+        <isDerived>false</isDerived>
+        <label>Account CPM ID</label>
+        <sortIndex>314</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_First_Customer_Ship_Date__c_Month</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date Month</label>
+        <sortIndex>315</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Month</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Month</label>
+        <sortIndex>316</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Geo_ASMO__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Geo ASMO</label>
+        <sortIndex>317</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Ultrabook__c</field>
+        <isDerived>false</isDerived>
+        <label>Ultrabook</label>
+        <sortIndex>318</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval Minute</label>
+        <sortIndex>319</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Reseller__c</field>
+        <isDerived>false</isDerived>
+        <label>Reseller</label>
+        <sortIndex>320</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>HasOpportunityLineItem</field>
+        <isDerived>false</isDerived>
+        <label>Has Line Item</label>
+        <sortIndex>321</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Month</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Month</label>
+        <sortIndex>322</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Core_High_Priority_Account__c</field>
+        <isDerived>false</isDerived>
+        <label>Account High Priority Account</label>
+        <sortIndex>323</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner&apos;s Manager ID</label>
+        <sortIndex>324</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Year</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Year</label>
+        <sortIndex>325</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Risk_Reason__c</field>
+        <isDerived>false</isDerived>
+        <label>Risk Reason</label>
+        <sortIndex>326</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Date_Submitted_for_Approval__c</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval</label>
+        <sortIndex>327</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembers.User.Core_WWID__c</field>
+        <isDerived>false</isDerived>
+        <label>Team Member WWIDs</label>
+        <sortIndex>328</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_End_Date__c_Day</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date Day</label>
+        <sortIndex>329</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Hour</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Hour</label>
+        <sortIndex>330</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_BlueTooth__c</field>
+        <isDerived>false</isDerived>
+        <label>BlueTooth</label>
+        <sortIndex>331</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Geo_PRC__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Geo PRC</label>
+        <sortIndex>332</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Nom_Ratification_Date__c_Week</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date Week</label>
+        <sortIndex>333</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner Manager User ID</label>
+        <sortIndex>334</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Support_Requested__c</field>
+        <isDerived>false</isDerived>
+        <label>Support Requested</label>
+        <sortIndex>335</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TeamMembersNoOwners.User.Country</field>
+        <isDerived>false</isDerived>
+        <label>Team Member Countries (No Owners)</label>
+        <sortIndex>336</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Country__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Country</label>
+        <sortIndex>337</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Opportunity_Sales_Seg_Embedded__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Sales Seg. Embedded</label>
+        <sortIndex>338</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>TechOwner.Manager.ManagerId</field>
+        <isDerived>false</isDerived>
+        <label>Technical Owner&apos;s Manager&apos;s Manager ID</label>
+        <sortIndex>339</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Compliance_Comments__c</field>
+        <isDerived>false</isDerived>
+        <label>Compliance Comments</label>
+        <sortIndex>340</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_GNSS_Global_Nav__c</field>
+        <isDerived>false</isDerived>
+        <label>GNSS (Global Nav)</label>
+        <sortIndex>341</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>LastActivityDate_Week</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Week</label>
+        <sortIndex>342</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Production_Lifecycle__c</field>
+        <isDerived>false</isDerived>
+        <label>Production Lifecycle</label>
+        <sortIndex>343</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Account.Owner.Manager.Name</field>
+        <isDerived>false</isDerived>
+        <label>Account Owner Manager Name</label>
+        <sortIndex>344</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Sales_Segments__c</field>
+        <isDerived>false</isDerived>
+        <label>Sales Segments</label>
+        <sortIndex>345</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Owner.Core_WWID__c</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Owner WWID</label>
+        <sortIndex>346</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Last_Activity_Date__c_Month</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date Month</label>
+        <sortIndex>347</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Ready_Mode__c</field>
+        <isDerived>false</isDerived>
+        <label>Ready Mode</label>
+        <sortIndex>348</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_LTE_Type__c</field>
+        <isDerived>false</isDerived>
+        <label>LTE Type</label>
+        <sortIndex>349</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>CloseDate_Minute</field>
+        <isDerived>false</isDerived>
+        <label>Decision Date Minute</label>
+        <sortIndex>350</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Core_Camera_3D__c</field>
+        <isDerived>false</isDerived>
+        <label>Camera</label>
+        <sortIndex>351</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Products.Core_Product_Application__c</field>
+        <isDerived>false</isDerived>
+        <label>Product Applications</label>
+        <sortIndex>352</sortIndex>
+    </dimensions>
+    <measures>
+        <field>Core_Volume__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Volume</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>AccountId.BillingLatitude</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <isDerived>true</isDerived>
+        <label>Account Billing Latitude</label>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Opportunity_Lost_U__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity Lost (U)</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>AccountId.AnnualRevenue</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <isDerived>true</isDerived>
+        <label>Account Annual Revenue</label>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>IsLost</field>
+        <formatCustomFormat>[&quot;##.#%&quot;,&quot;100&quot;]</formatCustomFormat>
+        <formatDecimalDigits>5</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Lost</label>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>AccountId.BillingLongitude</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <isDerived>true</isDerived>
+        <label>Account Billing Longitude</label>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Open_Products_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Open Products Count</label>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>Apttus_Proposal__Discount_Percent__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <isDerived>true</isDerived>
+        <label>Discount Percent</label>
+        <showInExplorer>false</showInExplorer>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Open_Oppty__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Open Oppty</label>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <measures>
+        <field>Account.BillingLatitude</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>15</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Account Billing Latitude</label>
+        <sortIndex>5</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Wins_Oppty__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Wins Oppty</label>
+        <sortIndex>6</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_First_Customer_Ship_Date__c_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date sec epoch</label>
+        <sortIndex>7</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Opportunity_Won__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity Won ($)</label>
+        <sortIndex>8</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Time_Till_Opportunity_Decision_Date__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Time Till Opportunity Decision Date</label>
+        <sortIndex>9</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_DW_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>DW Count</label>
+        <sortIndex>10</sortIndex>
+    </measures>
+    <measures>
+        <field>LastActivityDate_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date sec epoch</label>
+        <sortIndex>11</sortIndex>
+    </measures>
+    <measures>
+        <field>CreatedDate_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Created Date day epoch</label>
+        <sortIndex>12</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Approved_Date__c_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date day epoch</label>
+        <sortIndex>13</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Lost_Oppty__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Lost Oppty</label>
+        <sortIndex>14</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Oppty_Lost_Total_Price__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity Lost Total Price</label>
+        <sortIndex>15</sortIndex>
+    </measures>
+    <measures>
+        <field>IsCancelled</field>
+        <formatCustomFormat>[&quot;##.#%&quot;,&quot;100&quot;]</formatCustomFormat>
+        <formatDecimalDigits>5</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Cancelled</label>
+        <sortIndex>16</sortIndex>
+    </measures>
+    <measures>
+        <field>CloseDate_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Close Date sec epoch</label>
+        <sortIndex>17</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Date_Submitted_for_Approval__c_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval sec epoch</label>
+        <sortIndex>18</sortIndex>
+    </measures>
+    <measures>
+        <field>LastModifiedDate_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date day epoch</label>
+        <sortIndex>19</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Days_from_Opportunity_Create_to_Su__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Days from Opportunity Create to Submit</label>
+        <sortIndex>20</sortIndex>
+    </measures>
+    <measures>
+        <field>SystemModstamp_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp day epoch</label>
+        <sortIndex>21</sortIndex>
+    </measures>
+    <measures>
+        <field>Account.AnnualRevenue</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Account Annual Revenue</label>
+        <sortIndex>22</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Opportunity_Won_U__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity Won (U)</label>
+        <sortIndex>23</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Production_End_Date__c_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date day epoch</label>
+        <sortIndex>24</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Opportunity_Lost__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity Lost ($)</label>
+        <sortIndex>25</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Weighted_U__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Weighted (U)</label>
+        <sortIndex>26</sortIndex>
+    </measures>
+    <measures>
+        <field>LastActivityDate_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date day epoch</label>
+        <sortIndex>27</sortIndex>
+    </measures>
+    <measures>
+        <field>TotalOpportunityQuantity</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Quantity</label>
+        <sortIndex>28</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Push_Counter__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Push Counter</label>
+        <sortIndex>29</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_First_Customer_Ship_Date__c_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>First Customer Ship Date day epoch</label>
+        <sortIndex>30</sortIndex>
+    </measures>
+    <measures>
+        <field>ExpectedRevenue</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Weighted Revenue</label>
+        <sortIndex>31</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Last_Activity_Date__c_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date sec epoch</label>
+        <sortIndex>32</sortIndex>
+    </measures>
+    <measures>
+        <field>IsWon</field>
+        <formatCustomFormat>[&quot;##.#%&quot;,&quot;100&quot;]</formatCustomFormat>
+        <formatDecimalDigits>5</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Won</label>
+        <sortIndex>33</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Oppty_Approved_Total_Price__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity Approved Total Price</label>
+        <sortIndex>34</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Nom_Ratification_Date__c_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date day epoch</label>
+        <sortIndex>35</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Opportunity_U__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity (U)</label>
+        <sortIndex>36</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Oppty_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Oppty Count</label>
+        <sortIndex>37</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Date_Submitted_for_Approval__c_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Date Submitted for Approval day epoch</label>
+        <sortIndex>38</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Opportunity_U_Base__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Opportunity (U) Base</label>
+        <sortIndex>39</sortIndex>
+    </measures>
+    <measures>
+        <field>Amount</field>
+        <formatCustomFormat>[&quot;$#,###&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>2</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Amount</label>
+        <showDetailsDefaultFieldIndex>4</showDetailsDefaultFieldIndex>
+        <sortIndex>40</sortIndex>
+    </measures>
+    <measures>
+        <field>CloseDate_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Close Date day epoch</label>
+        <sortIndex>41</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Pending_Product_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Pending Product Count</label>
+        <sortIndex>42</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Won_Product_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Won Product Count</label>
+        <sortIndex>43</sortIndex>
+    </measures>
+    <measures>
+        <field>CreatedDate_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Created Date sec epoch</label>
+        <sortIndex>44</sortIndex>
+    </measures>
+    <measures>
+        <field>Probability</field>
+        <formatCustomFormat>[&quot;##.#%&quot;,&quot;100&quot;]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Probability (%)</label>
+        <showDetailsDefaultFieldIndex>6</showDetailsDefaultFieldIndex>
+        <sortIndex>45</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Production_Win_Oppty__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Production Win Oppty</label>
+        <sortIndex>46</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Production_End_Date__c_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Production End Date sec epoch</label>
+        <sortIndex>47</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Milestone_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Milestone Count</label>
+        <sortIndex>48</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Nom_Ratification_Date__c_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Nom Ratification Date sec epoch</label>
+        <sortIndex>49</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Product_Count__c</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>0</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Product Count</label>
+        <sortIndex>50</sortIndex>
+    </measures>
+    <measures>
+        <field>SystemModstamp_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>System Modstamp sec epoch</label>
+        <sortIndex>51</sortIndex>
+    </measures>
+    <measures>
+        <field>LastModifiedDate_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Last Modified Date sec epoch</label>
+        <sortIndex>52</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Last_Activity_Date__c_day_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Last Activity Date day epoch</label>
+        <sortIndex>53</sortIndex>
+    </measures>
+    <measures>
+        <field>Account.BillingLongitude</field>
+        <formatCustomFormat>[&quot;&quot;,1]</formatCustomFormat>
+        <formatDecimalDigits>15</formatDecimalDigits>
+        <isDerived>false</isDerived>
+        <label>Account Billing Longitude</label>
+        <sortIndex>54</sortIndex>
+    </measures>
+    <measures>
+        <field>Core_Approved_Date__c_sec_epoch</field>
+        <isDerived>false</isDerived>
+        <label>Approved Date sec epoch</label>
+        <sortIndex>55</sortIndex>
+    </measures>
+</WaveXmd>

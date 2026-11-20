@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>lens_3.Status_RYOG</field>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_3.VBS_AI</field>
+        <isDerived>false</isDerived>
+        <label>Type</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Opps_PRC_1.Status_RYOG</field>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Opps_PRC_1.VBS_AI</field>
+        <isDerived>false</isDerived>
+        <label>Type</label>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Opps_EMEA_1.Status_RYOG</field>
+        <isDerived>false</isDerived>
+        <sortIndex>4</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Opps_EMEA_1.VBS_AI</field>
+        <isDerived>false</isDerived>
+        <label>Type</label>
+        <sortIndex>5</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Opps_APJ_1.Status_RYOG</field>
+        <isDerived>false</isDerived>
+        <sortIndex>6</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Opps_APJ_1.VBS_AI</field>
+        <isDerived>false</isDerived>
+        <label>Type</label>
+        <sortIndex>7</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>lens_2.op.product.Name</field>
+        <isDerived>false</isDerived>
+        <label>Product Name</label>
+        <sortIndex>8</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Clone_of_Opps_AMER_1.Opportunity.Name</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Name</label>
+        <sortIndex>9</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Clone_of_Opps_AMER_1.Opportunity.Account.Name</field>
+        <isDerived>false</isDerived>
+        <label>Account Name</label>
+        <sortIndex>10</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Clone_of_Opps_AMER_1.VBS_AI</field>
+        <isDerived>false</isDerived>
+        <label>Type</label>
+        <sortIndex>11</sortIndex>
+    </dimensions>
+    <dimensions>
+        <conditionalFormatting>
+            <property>backgroundColor</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <conditionalFormatting>
+            <property>color</property>
+            <referenceField>Status_RYOG</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>raw</type>
+        </conditionalFormatting>
+        <field>Clone_of_Opps_AMER_1.Status_RYOG</field>
+        <isDerived>false</isDerived>
+        <sortIndex>12</sortIndex>
+    </dimensions>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#4269E9</formatValue>
+                <operator>&gt;</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>-1000.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>lens_3.B</field>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#4269E9</formatValue>
+                <operator>&gt;</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>-1000.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>Opps_PRC_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#4269E9</formatValue>
+                <operator>&gt;</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>-1000.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>Opps_EMEA_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#4269E9</formatValue>
+                <operator>&gt;</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>-1000.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>Opps_APJ_1.B</field>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Amount</label>
+        <sortIndex>4</sortIndex>
+    </measures>
+    <measures>
+        <field>Detail_Table_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Amount</label>
+        <sortIndex>5</sortIndex>
+    </measures>
+    <measures>
+        <field>Status_Detail_Table_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Amount</label>
+        <sortIndex>6</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_2.B</field>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>7</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_2.A</field>
+        <isDerived>false</isDerived>
+        <label>Qty</label>
+        <sortIndex>8</sortIndex>
+    </measures>
+    <measures>
+        <field>Solution_Description_1.A</field>
+        <isDerived>false</isDerived>
+        <label>Amount</label>
+        <sortIndex>9</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_4.Won Pipeline $</field>
+        <formatCustomFormat>[&quot;$#,###.00&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>10</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_4.Open Pipeline $</field>
+        <formatCustomFormat>[&quot;$#,###.00&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>11</sortIndex>
+    </measures>
+    <measures>
+        <conditionalFormatting>
+            <formattingPredicates>
+                <formatValue>#4269E9</formatValue>
+                <operator>&gt;</operator>
+                <sortIndex xsi:nil="true"/>
+                <value>-1000.0</value>
+            </formattingPredicates>
+            <property>color</property>
+            <referenceField>B</referenceField>
+            <sortIndex xsi:nil="true"/>
+            <type>single</type>
+        </conditionalFormatting>
+        <field>Clone_of_Opps_AMER_1.B</field>
+        <formatCustomFormat>[&quot;$#,###.00&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Total Price</label>
+        <sortIndex>12</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Lighthouse_Strategic_v3</waveVisualization>
+</WaveXmd>

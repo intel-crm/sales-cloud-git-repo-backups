@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <label>Maximize Approved ECAP Price</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account</label>
+        <name>Pricing_OEM_Account_Nm__c</name>
+        <type>Text</type>
+        <values>DELL U S A CORPORATION</values>
+        <values>Lenovo (Beijing) Limited</values>
+        <values>Hewlett Packard Enterprise Company</values>
+        <values>HP Inc</values>
+        <values>SUPER MICRO COMPUTER, INC.</values>
+        <values>xFusion Digital Technologies Co., Ltd.</values>
+        <values>CISCO SYSTEMS INC.</values>
+        <values>INSPUR (BEIJING) ELECTRONIC INFORMATIONINDUSTRY CO., LTD.</values>
+        <values>New H3C Information Technologies Co., Ltd</values>
+        <values>Fujitsu Client Computing Limited (Lenovo/FCCL)</values>
+        <values>ACER INCORPORATED</values>
+        <values>Dynabook Inc.</values>
+        <values>ZTE CORPORATION</values>
+        <values>Nettrix Information Industry Co., Ltd</values>
+        <values>ASUSTEK COMPUTER INCORPORATION</values>
+        <values>FUJITSU LIMITED</values>
+        <values>GIGA-BYTE TECHNOLOGY CO., LTD.</values>
+        <values>QUANTA COMPUTER INC.</values>
+        <values>Positivo Tecnologia SA</values>
+        <values>BULL</values>
+        <values>TSINGHUA TONGFANG ARTIFICIAL ENVIRONMENTCO., LTD</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Pricing End Date</label>
+        <name>Pricing_Approved_End_Date_Dt__c</name>
+        <type>Date</type>
+        <values>December</values>
+        <values>June</values>
+        <values>May</values>
+        <values>July</values>
+        <values>April</values>
+        <values>March</values>
+        <values>August</values>
+        <values>September</values>
+        <values>October</values>
+        <values>January</values>
+        <values>February</values>
+        <values>November</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Product</label>
+        <name>Pricing_Product_Nm__c</name>
+        <type>Text</type>
+        <values>01t3b000008MKLEAA4</values>
+        <values>01t3b000008MKLUAA4</values>
+        <values>01t3b000008MKL6AAO</values>
+        <values>01t3b000008Lz9SAAS</values>
+        <values>01t3b000006Xtx0AAC</values>
+        <values>01t3b0000088h6KAAQ</values>
+        <values>01t3b000008Lz9TAAS</values>
+        <values>01t3b000008Lw23AAC</values>
+        <values>01t3b0000069UwrAAE</values>
+        <values>01t3b0000069lsZAAQ</values>
+        <values>01t3b0000069UwnAAE</values>
+        <values>01t3b0000050MuRAAU</values>
+        <values>01t3b000008RQXsAAO</values>
+        <values>01t3b0000069UwvAAE</values>
+        <values>01t3b000008MKLaAAO</values>
+        <values>01t3b0000069UwjAAE</values>
+        <values>01t3b0000050MbtAAE</values>
+        <values>01t3b0000088h6NAAQ</values>
+        <values>01t3b000008RQPWAA4</values>
+        <values>01t3b0000069lsSAAQ</values>
+        <values>01t3b000006Xtx4AAC</values>
+        <values>01t3b0000069lsUAAQ</values>
+        <values>01t3b0000050Mc4AAE</values>
+        <values>01t3b0000050MuQAAU</values>
+        <values>01t3b000008RQPXAA4</values>
+        <values>01t3b000008MK5GAAW</values>
+        <values>01t3b0000050MuSAAU</values>
+        <values>01t3b000008MKLMAA4</values>
+        <values>01t3b000008MKLRAA4</values>
+        <values>01t3b0000069UwtAAE</values>
+        <values>01t3b000008MKLeAAO</values>
+        <values>01t3b000008MK4jAAG</values>
+        <values>01t3b0000050MuPAAU</values>
+        <values>01t3b000008Lz9OAAS</values>
+        <values>01t3b0000069UwgAAE</values>
+        <values>01t3b000008RQPPAA4</values>
+        <values>01t3b0000069UwoAAE</values>
+        <values>01t3b000006XtwyAAC</values>
+        <values>01t3b000008MK50AAG</values>
+        <values>01t3b0000069UwpAAE</values>
+        <values>01t3b000006XtwvAAC</values>
+        <values>01t3b0000069UwkAAE</values>
+        <values>01t3b000008RQPaAAO</values>
+        <values>01t3b000005odJDAAY</values>
+        <values>01t3b0000069aHSAAY</values>
+        <values>01t3b000008Lw27AAC</values>
+        <values>01t3b000008RQJdAAO</values>
+        <values>01t3b0000050P48AAE</values>
+        <values>01t3b000008Lz9QAAS</values>
+        <values>01t3b0000069UwsAAE</values>
+        <values>01t3b000008RQPRAA4</values>
+        <values>01t3b0000069lsdAAA</values>
+        <values>01t3b000008RQPZAA4</values>
+        <values>01t3b0000069UwwAAE</values>
+        <values>01t3b000008RizqAAC</values>
+        <values>01t3b000008RQPKAA4</values>
+        <values>01t3b0000050MbsAAE</values>
+        <values>01t3b0000088iXNAAY</values>
+        <values>01t3b0000069UwfAAE</values>
+        <values>01t3b000008RQPVAA4</values>
+        <values>01t3b0000088iXQAAY</values>
+        <values>01t3b000008Lw1zAAC</values>
+        <values>01t3b000005ZTzSAAW</values>
+        <values>01t3b000008RQPHAA4</values>
+        <values>01t3b000005odJCAAY</values>
+        <values>01t3b0000050Mc5AAE</values>
+        <values>01t3b000008RQPIAA4</values>
+        <values>01t3b000006Xtx5AAC</values>
+        <values>01t3b000006Xtx2AAC</values>
+        <values>01t3b0000050McHAAU</values>
+        <values>01t3b000008MK52AAG</values>
+        <values>01t3b000008MK4vAAG</values>
+        <values>01t3b000008MK4kAAG</values>
+        <values>01t3b000008Lz9UAAS</values>
+        <values>01t3b0000050Mc2AAE</values>
+        <values>01t3b000006XrVpAAK</values>
+        <values>01t3b000008Lz9RAAS</values>
+        <values>01t3b000005ZTzMAAW</values>
+        <values>01t3b000008RQPlAAO</values>
+        <values>01t3b000008MKLAAA4</values>
+        <values>01t3b000008MKLWAA4</values>
+        <values>01t3b000008RQPeAAO</values>
+        <values>01t3b000006Xtx1AAC</values>
+        <values>01t3b000008RQPLAA4</values>
+        <values>01t3b000008MK4xAAG</values>
+        <values>01t3b000005ZTzJAAW</values>
+        <values>01t3b000008MK54AAG</values>
+        <values>01t1J00000BAIKJQA5</values>
+        <values>01t3b0000088h6PAAQ</values>
+        <values>01t3b000008RQPUAA4</values>
+        <values>01t3b000005odJBAAY</values>
+        <values>01t3b000008RQPNAA4</values>
+        <values>01t3b000006XtwzAAC</values>
+        <values>01t3b000008RQPTAA4</values>
+        <values>01t3b000008Lz9VAAS</values>
+        <values>01t1J00000BdgOJQAZ</values>
+        <values>01t3b000008MK5LAAW</values>
+        <values>01t3b000005ZTzKAAW</values>
+        <values>01t1J00000BdgONQAZ</values>
+        <values>01t3b0000069UwhAAE</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Quantity</label>
+        <name>Pricing_Approved_Unit_Qty__c</name>
+        <type>Number</type>
+        <values>1.0___51.0</values>
+        <values>51.0___120.0</values>
+        <values>120.0___231.0</values>
+        <values>231.0___456.0</values>
+        <values>456.0___651.0</values>
+        <values>651.0___1000.0</values>
+        <values>1000.0___1957.0</values>
+        <values>1957.0___3071.0</values>
+        <values>3071.0___7539.0</values>
+        <values>7539.0___600000.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Product Name</label>
+        <name>SBQQ__ProductName__c</name>
+        <type>Text</type>
+        <values>Intel® Core™ i5-1345U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Core™ i7-1365U Processor (12M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Core™ i5-1335U Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-13500 Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i5-1245U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Core™ i5-12500 Processor (18M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-13500T Processor (24M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i7-13700 Processor (30M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6342 Processor (36M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i7-12700 Processor (25M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6326 Processor (24M Cache, 2.90 GHz)</values>
+        <values>Intel® Xeon® Gold 6348 Processor (42M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Platinum 8462Y+ Processor (60M Cache, 2.80 GHz)</values>
+        <values>Intel® Xeon® Silver 4314 Processor (24M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i7-1370P Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5318Y Processor (36M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6338 Processor (48M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i5-12500T Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6442Y Processor (60M Cache, 2.60 GHz)</values>
+        <values>Intel® Core™ i3-12100 Processor (12M Cache, up to 4.30 GHz)</values>
+        <values>Intel® Core™ i7-1265U Processor (12M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i5-12400 Processor (18M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8358 Processor (48M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6346 Processor (36M Cache, 3.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6444Y Processor (45M Cache, 3.60 GHz)</values>
+        <values>Intel® Xeon® Platinum 8480+ Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6354 Processor (39M Cache, 3.00 GHz)</values>
+        <values>Intel® Core™ i5-1350P Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Core™ i7-1355U Processor (12M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Xeon® Silver 4310 Processor (18M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i7-13800H Processor (24M Cache, up to 5.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6430 Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6330 Processor (42M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i3-13100 Processor (12M Cache, up to 4.50 GHz)</values>
+        <values>Intel® Xeon® Gold 5317 Processor (18M Cache, 3.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6426Y Processor (37.5M Cache, 2.50 GHz)</values>
+        <values>Intel® Xeon® Gold 6334 Processor (18M Cache, 3.60 GHz)</values>
+        <values>Intel® Core™ i5-1235U Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8468 Processor (105M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6336Y Processor (36M Cache, 2.40 GHz)</values>
+        <values>Intel® Core™ i3-1215U Processor (10M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 5320 Processor (39M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6448Y Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5-1145G7 Processor (8M Cache, up to 4.40 GHz, with IPU)</values>
+        <values>Intel® Xeon® Platinum 8362 Processor (48M Cache, 2.80 GHz)</values>
+        <values>Intel® Core™ i7-13700T Processor (30M Cache, up to 4.90 GHz)</values>
+        <values>Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz)</values>
+        <values>Intel® Xeon® Gold 6338N Processor (48M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i3-13100T Processor (12M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Xeon® Silver 4309Y Processor (12M Cache, 2.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6434 Processor (22.5M Cache, 3.70 GHz)</values>
+        <values>Intel® Core™ i7-12700T Processor (25M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6448H Processor (60M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Silver 4316 Processor (30M Cache, 2.30 GHz)</values>
+        <values>Intel® Core™ i3-1315U Processor (10M Cache, up to 4.50 GHz, with IPU)</values>
+        <values>Intel® Xeon® Gold 5418Y Processor (45M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i3-12100T Processor (12M Cache, up to 4.10 GHz)</values>
+        <values>Intel® Xeon® Gold 6330N Processor (42M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5315Y Processor (12M Cache, 3.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6438Y+ Processor (60M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i5-12400T Processor (18M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Core™ i5-13400 Processor (20M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Xeon® Gold 6248R Processor (35.75M Cache, 3.00 GHz)</values>
+        <values>Intel® Xeon® Gold 5415+ Processor (22.5M Cache, 2.90 GHz)</values>
+        <values>Intel® Core™ i5-1140G7 Processor (8M Cache, up to 4.20 GHz, with IPU)</values>
+        <values>Intel® Xeon® Platinum 8358P Processor (48M Cache, 2.60 GHz)</values>
+        <values>Intel® Xeon® Gold 5416S Processor (30M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i7-1270P Processor (18M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i7-1255U Processor (12M Cache, up to 4.70 GHz)</values>
+        <values>Intel® Xeon® Platinum 8380 Processor (60M Cache, 2.30 GHz)</values>
+        <values>Intel® Xeon® Platinum 8468V Processor (97.5M Cache, 2.40 GHz)</values>
+        <values>Intel® Xeon® Platinum 8458P Processor (82.5M Cache, 2.70 GHz)</values>
+        <values>Intel® Xeon® Gold 6454S Processor (60M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i5-13600 Processor (24M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Xeon® Platinum 8352Y Processor (48M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i7-12800H Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Core™ i5-13400T Processor (20M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 6226R Processor (22M Cache, 2.90 GHz)</values>
+        <values>Intel® Xeon® Silver 4416+ Processor (37.5M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 6458Q Processor (60M Cache, 3.10 GHz)</values>
+        <values>Intel® Core™ i7-13700H Processor (24M Cache, up to 5.00 GHz)</values>
+        <values>Intel® Core™ i5-1340P Processor (12M Cache, up to 4.60 GHz)</values>
+        <values>Intel® Core™ i5-1250P Processor (12M Cache, up to 4.40 GHz)</values>
+        <values>Intel® Xeon® Gold 5420+ Processor (52.5M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Platinum 8460Y+ Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Platinum 8470 Processor (105M Cache, 2.00 GHz)</values>
+        <values>Intel® Xeon® Gold 5218 Processor (22M Cache, 2.30 GHz)</values>
+        <values>Intel® Xeon® Gold 5218R Processor (27.5M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5-12600 Processor (18M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Gold 6438N Processor (60M Cache, 2.00 GHz)</values>
+        <values>Intel® Core™ i5-1135G7 Processor (8M Cache, up to 4.20 GHz)</values>
+        <values>Intel® Xeon® Gold 6418H Processor (60M Cache, 2.10 GHz)</values>
+        <values>Intel® Core™ i5-1235U Processor (12M Cache, up to 4.40 GHz, with IPU)</values>
+        <values>Intel® Xeon® Gold 6438M Processor (60M Cache, 2.20 GHz)</values>
+        <values>Intel® Core™ i5-13600T Processor (24M Cache, up to 4.80 GHz)</values>
+        <values>Intel® Xeon® Platinum 8490H Processor (112.5M Cache, 1.90 GHz)</values>
+        <values>Intel® Xeon® Silver 4210 Processor (13.75M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5220R Processor (35.75M Cache, 2.20 GHz)</values>
+        <values>Intel® Xeon® Gold 5318N Processor (36M Cache, 2.10 GHz)</values>
+        <values>Intel® Xeon® Silver 4216 Processor (22M Cache, 2.10 GHz)</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Last Submitted Date</label>
+        <name>Pricing_Last_Submitted_Date_dt__c</name>
+        <type>Date</type>
+        <values>June</values>
+        <values>May</values>
+        <values>July</values>
+        <values>April</values>
+        <values>March</values>
+        <values>August</values>
+        <values>February</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved Pricing Start Date</label>
+        <name>Pricing_Approved_Start_Date_Dt__c</name>
+        <type>Date</type>
+        <values>June</values>
+        <values>May</values>
+        <values>July</values>
+        <values>April</values>
+        <values>August</values>
+        <values>March</values>
+        <values>September</values>
+        <values>October</values>
+        <values>February</values>
+        <values>January</values>
+        <values>November</values>
+        <values>December</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Quote Line Status</label>
+        <name>Pricing_Status_Nm__c</name>
+        <type>Text</type>
+        <values>Approved</values>
+        <values>Won</values>
+        <values>Lost</values>
+        <values>Pending Further Intel Review</values>
+        <values>Cancelled</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Approved ECAP Price</label>
+        <name>Pricing_ECAP_Price_Amt__c</name>
+        <type>Number</type>
+        <values>15.0___12991.0</values>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Pricing_ECAP_Price_Amt__c</predictedField>
+    <predictionType>Regression</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Last_Submitted_Date_dt__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Last_Submitted_Date_dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Last_Submitted_Date_dt__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Last_Submitted_Date_dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Approved_Start_Date_Dt__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Approved_Start_Date_Dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Approved_Start_Date_Dt__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Approved_Start_Date_Dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+    <transformations>
+        <config>{&quot;targetFieldName&quot;:&quot;Pricing_Approved_End_Date_Dt__c&quot;,&quot;sourceFieldName&quot;:&quot;Pricing_Approved_End_Date_Dt__c&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;,&quot;type&quot;:&quot;ExtractMonthOfYear&quot;,&quot;version&quot;:1}</config>
+        <sourceFieldNames>Pricing_Approved_End_Date_Dt__c</sourceFieldNames>
+        <targetFieldNames>Pricing_Approved_End_Date_Dt__c</targetFieldNames>
+        <type>ExtractMonthOfYear</type>
+    </transformations>
+</DiscoveryAIModel>

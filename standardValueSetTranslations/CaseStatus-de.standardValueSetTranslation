@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Assigned</masterLabel>
+        <translation><!-- Assigned --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Awaiting Requestor’s Info</masterLabel>
+        <translation><!-- Awaiting Requestor’s Info --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Awaiting Resolution Confirmation</masterLabel>
+        <translation><!-- Awaiting Resolution Confirmation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CEP Action Plan Created</masterLabel>
+        <translation><!-- CEP Action Plan Created --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CEP Action Plan Executed</masterLabel>
+        <translation><!-- CEP Action Plan Executed --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CEP On Hold</masterLabel>
+        <translation><!-- CEP On Hold --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CEP Waiting for Customer</masterLabel>
+        <translation><!-- CEP Waiting for Customer --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cancelled</masterLabel>
+        <translation><!-- Cancelled --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Closed</masterLabel>
+        <translation>Abgeschlossen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Draft</masterLabel>
+        <translation><!-- Draft --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Escalated</masterLabel>
+        <translation><!-- Escalated --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>On Hold</masterLabel>
+        <translation><!-- On Hold --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Open</masterLabel>
+        <translation>Offen</translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

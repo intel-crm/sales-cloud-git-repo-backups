@@ -1,0 +1,30 @@
+.THIS .slds-form-element__label {
+  font-size: 1em !important;
+}
+.THIS .slds-rich-text-editor__toolbar{
+  display: none !important;  
+}
+.THIS .isRequired > .slds-form-element > .slds-form-element__label::before {
+  color: t(redError);
+  content: '*';
+  margin-right: 4px;
+}
+
+.THIS .isDisabled .slds-rich-text-editor {
+  position: relative;
+}
+.THIS .isDisabled .slds-rich-text-editor::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(160, 161, 163, 0.22);
+  z-index: 1;
+  cursor:not-allowed;
+}
+
+.THIS .slds-has-error .slds-form-element__help {
+  font-size: 0.875em;
+}

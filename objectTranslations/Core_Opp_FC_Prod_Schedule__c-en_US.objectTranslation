@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Forecast Product Schedule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Forecast Product Schedules</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approved BU Short Name --></label>
+        <name>Core_Approved_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Short Name --></label>
+        <name>Core_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Approved Sales Price --></label>
+        <name>Core_Core_FC_Appvd_SalesPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- 4Q Shed Quantity --></label>
+        <name>Core_FC_4Q_Shed_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- 4Q Shed Revenue --></label>
+        <name>Core_FC_4Q_Shed_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Product Segment --></label>
+        <name>Core_FC_BU_Product_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- 6QPS BU Short Name --></label>
+        <name>Core_FC_BU_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Last Modified Date --></label>
+        <name>Core_FC_Last_Modified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Stage --></label>
+        <name>Core_FC_OppStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>Core_FC_Opportunity_Product__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Vendor --></label>
+        <name>Core_FC_Vendor__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Forecast Old Claim Date --></label>
+        <name>Core_Forecast_Old_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is used to determine if the product is a post-win product --></help>
+        <label><!-- Is Post Win --></label>
+        <name>Core_Is_Post_Win__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Approval Manager --></label>
+        <name>Core_Opp_FC_Approval_Manager__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules (Forecast Approval Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Forecast Approval Status --></label>
+        <name>Core_Opp_FC_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid</masterLabel>
+            <translation><!-- Invalid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Forecast Approved By --></label>
+        <name>Core_Opp_FC_Approved_By__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules (Forecast Approved By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Forecast Approved Date --></label>
+        <name>Core_Opp_FC_Approved_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Claim Date --></label>
+        <name>Core_Opp_FC_Claim_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Delegated Approver --></label>
+        <name>Core_Opp_FC_Delegated_Approver__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules (Forecast Delegated Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opp_FC_Opportunity__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Forecast Product Sales Price --></label>
+        <name>Core_Opp_FC_Prod_Sales_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Opp_FC_Product__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Forecast Quantity --></label>
+        <name>Core_Opp_FC_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Quarter Date --></label>
+        <name>Core_Opp_FC_Quarter_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Quarter --></label>
+        <name>Core_Opp_FC_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Rejected By --></label>
+        <name>Core_Opp_FC_Rejected_By__c</name>
+        <relationshipLabel><!-- Forecast Product Schedules (Forecast Rejected By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Forecast Rejected Date --></label>
+        <name>Core_Opp_FC_Rejected_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Scheduled Revenue --></label>
+        <name>Core_Opp_FC_Sched_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Is Task Created --></label>
+        <name>Core_Opp_FC_isTaskCreated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Is Hidden --></label>
+        <name>Core_Opp_FC_isdeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Line Item RecordID --></label>
+        <name>Core_Opp_Line_Item_RecordID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

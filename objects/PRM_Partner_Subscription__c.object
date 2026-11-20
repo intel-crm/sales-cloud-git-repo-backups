@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PRM_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Inactive Indicator</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Community__c</fullName>
+        <label>Community</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel® Cloud Insider Partner</fullName>
+                    <default>false</default>
+                    <label>Intel® Cloud Insider Partner</label>
+                </value>
+                <value>
+                    <fullName>Intel® IOT Solution Partner</fullName>
+                    <default>false</default>
+                    <label>Intel® IOT Solution Partner</label>
+                </value>
+                <value>
+                    <fullName>Intel® FPGA Partner</fullName>
+                    <default>false</default>
+                    <label>Intel® FPGA Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_InActive_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Inactive Indicator</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Subscription_Cd__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Subscription Code</label>
+        <length>20</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Subscription_Dsc__c</fullName>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Subscription_Type_Nm__c</fullName>
+        <label>Subscription Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Points Communications - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Points Communications - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Newsletter - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Newsletter - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Product and Solution Information and Promotions - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Product and Solution Information and Promotions - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Training and Event Invitations - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Training and Event Invitations - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Partner Research and Survey Invitation Emails - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Partner Research and Survey Invitation Emails - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Alliance Co-Marketing (MDF) Opportunities for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Alliance Co-Marketing (MDF) Opportunities for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Webinars - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Webinars - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Industry Solutions - ITP for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Industry Solutions - ITP for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Webinars - Distributor for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Webinars - Distributor for Intel Technology Provider</label>
+                </value>
+                <value>
+                    <fullName>Newsletters - Distributor for Intel Technology Provider</fullName>
+                    <default>false</default>
+                    <label>Newsletters - Distributor for Intel Technology Provider</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Partner Subscription</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Subscription_Cd__c</columns>
+        <columns>PRM_Subscription_Type_Nm__c</columns>
+        <columns>PRM_InActive_Ind__c</columns>
+        <columns>PRM_Subscription_Dsc__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Partner Subscription Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Partner Subscriptions</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Standard</fullName>
+        <active>true</active>
+        <label>Standard</label>
+        <picklistValues>
+            <picklist>PRM_Community__c</picklist>
+            <values>
+                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE FPGA Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Subscription_Type_Nm__c</picklist>
+            <values>
+                <fullName>Alliance Co-Marketing %28MDF%29 Opportunities for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Solutions - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsletter - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsletters - Distributor for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Research and Survey Invitation Emails - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Points Communications - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product and Solution Information and Promotions - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training and Event Invitations - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinars - Distributor for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinars - ITP for Intel Technology Provider</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

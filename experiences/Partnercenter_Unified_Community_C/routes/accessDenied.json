@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "75b6b5f3-56fb-4d52-8a19-67adcb248f43",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "AccessDenied__c",
+  "id" : "60c0e2d9-21e2-4c7a-ac69-4ec5804ce441",
+  "label" : "AccessDenied",
+  "pageAccess" : "Public",
+  "routeType" : "custom-accessdenied",
+  "type" : "route",
+  "urlPrefix" : "accessdenied"
+}

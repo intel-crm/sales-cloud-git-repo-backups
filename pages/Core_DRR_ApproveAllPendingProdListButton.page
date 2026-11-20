@@ -1,0 +1,36 @@
+<!---
+/**************************************************************************************
+Vf page Name: Core_DRR_ApproveAllPendingProdListButton
+Version     : 1.0 
+Created Date: 6/6/2018
+Description :This vf page is used  in classic and lightning for List Button on Desgin Registraion related list.
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Rajesh infy Team            16/6/2017               Initial Revision
+
+--->
+<apex:page standardController="Core_Design_Registration_Product__c" recordSetVar="designRegProds" extensions="Core_DRR_ApproveAllPendingProducts" action="{!approvalAllpendingProd}">
+    <apex:slds />
+    <apex:includeLightning />    
+    <script>
+            $Lightning.use("c:Core_Accept_Partner_Lead_App", function() {
+             $Lightning.createComponent("c:Core_Accept_Partner_Lead",
+                                   { 
+                                       showMessage      : '{!alertMessage}',
+                                       listViewUrl      : '{!retUrl}'
+                                   },
+                                   "lightning",
+                                   function(cmp) {
+                                       document.getElementById('loading').style.display = 'none';
+                                   });
+                       });
+    </script>
+    <div id="loading">
+        <div role="status" class="slds-spinner slds-spinner_large slds-spinner_brand">
+              <span class="slds-assistive-text">Loading...</span>
+             <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+  <div id="lightning" />
+</apex:page>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Request Rejection Email for DZP Contacts</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTORJTDNEW_DZP</name>
+    <style>none</style>
+    <subject>Request Rejection Email for DZP Contacts</subject>
+    <textOnly>Intel Registration Confirmation
+
+
+Rejection Email
+
+Account Application Update
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+We appreciate your interest in Intel&apos;s Developer Zone. Upon review of your application, we regret to inform you that your request for a Premier Account has been declined. There are a variety of reasons why your request may have been declined, including but not limited to not meeting program criteria.  You may continue to use your Standard account to:
+
+Bookmark and subscribe to content.
+Attend events and webinars.
+Engage in the support forums
+Enter contests
+Access performance testing applications
+Access public documentation and resources
+Access development software downloads
+Access the Intel® Developer Cloud
+.	Manage newsletter and product update subscriptions
+
+If you feel your request was declined in error, please contact account assistance via phone (add) or email (add) for more information.
+
+Sincerely,
+Registration Administrator
+Developer Zone
+
+Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.
+
+
+Intel is committed to protecting your privacy. For more Information,
+please see the Intel Privacy Notice. Intel Cookie Notice.
+Legal Information | Trademarks | © Intel Corporation.
+
+!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

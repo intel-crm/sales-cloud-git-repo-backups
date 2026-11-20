@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Distributor</fullName>
+        <default>false</default>
+        <label>Distributor</label>
+    </standardValue>
+    <standardValue>
+        <fullName>EBM</fullName>
+        <default>false</default>
+        <label>EBM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>EMS</fullName>
+        <default>false</default>
+        <label>EMS</label>
+    </standardValue>
+    <standardValue>
+        <fullName>End User</fullName>
+        <default>false</default>
+        <label>End User</label>
+    </standardValue>
+    <standardValue>
+        <fullName>IPDC</fullName>
+        <default>false</default>
+        <label>IPDC</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ISV / OSV</fullName>
+        <default>false</default>
+        <label>ISV / OSV</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ODM</fullName>
+        <default>false</default>
+        <label>ODM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>OEM / LOEM</fullName>
+        <default>false</default>
+        <label>OEM / LOEM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>System Integrator</fullName>
+        <default>false</default>
+        <label>System Integrator</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TEM</fullName>
+        <default>false</default>
+        <label>TEM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Telco</fullName>
+        <default>false</default>
+        <label>Telco</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Service Provider</fullName>
+        <default>false</default>
+        <label>Service Provider</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Analyst</fullName>
+        <default>false</default>
+        <label>Analyst</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Competitor</fullName>
+        <default>false</default>
+        <label>Competitor</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Integrator</fullName>
+        <default>false</default>
+        <label>Integrator</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Investor</fullName>
+        <default>false</default>
+        <label>Investor</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner</fullName>
+        <default>false</default>
+        <label>Partner</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Press</fullName>
+        <default>false</default>
+        <label>Press</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prospect</fullName>
+        <default>false</default>
+        <label>Prospect</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reseller</fullName>
+        <default>false</default>
+        <label>Reseller</label>
+    </standardValue>
+</StandardValueSet>

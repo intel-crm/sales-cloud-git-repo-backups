@@ -1,0 +1,249 @@
+{
+  "activeBrandingSetId" : "ce01da21-7bb0-4f90-9b79-abeae501f5b4",
+  "customCSS" : "/* \nINTEL CLEAR fonts\n- These fonts are the property of Intel and to be used only by/for Intel web properties.\n*/\n\n@font-face {\n    font-family: \"intel-clear\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: normal;\n}\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: normal;\n}\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-italic.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: italic;\n}\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-bold-italic.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: italic;\n}\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: normal;\n}\n@font-face {\n    font-family: \"intel-clear\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.eot\");\n    src: url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.woff2\") format(\"woff2\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-latin-lite-italic.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: italic;\n}\n\n.recode50{\n      font-family:\"intel-clear\", \"arial\", \"helvetica\", sans-serif !important;\n}\n\n/* Intel Clear Pro (Headline) Font*/\n@font-face {\n      font-family:\"intel-clear-headline\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.eot\");\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.eot?#iefix\") format(\"embedded-opentype\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.woff2\") format(\"woff2\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.woff\") format(\"woff\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-headline.ttf\") format(\"truetype\");\n      font-weight:400;\n      font-style:normal\n}\n\n/* \nMap to \"intel-clear-headline\" for any element you wish the Headline font to be used. Be sure to always use intel-clear as its fallback.\nExample for Latin locales:\n.someclassobject {font-family:\"intel-clear-headline\", \"intel-clear\", \"arial\", \"helvetica\", sans-serif !important;}\n*/\n/*\n@font-face{\n    font-family:\"intel-clear-pro-lowercaseselect\";\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/IntelClearProLowercaseSelect_W_Bd.eot\");\n    src:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/IntelClearProLowercaseSelect_W_Bd.eot?#iefix\") format(\"embedded-opentype\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/IntelClearProLowercaseSelect_W_Bd.woff2\") format(\"woff2\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/IntelClearProLowercaseSelect_W_Bd.woff\") format(\"woff\"),url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/IntelClearProLowercaseSelect_W_Bd.ttf\") format(\"truetype\");\n    font-weight:normal;\n    font-style:normal\n}*/\n/* Intel Clear Pro (Headline) Font */\n@font-face {\n      font-family:\"IntelClearPro\";\n      src:url(\"/ipa/s/sfsites/c/resource/ISG_Resources/fonts/intel-clear/IntelClearPro_W_Bd.eot\") format(\"embedded-opentype\"),url(\"/ipa/s/sfsites/c/resource/ISG_Resources/fonts/intel-clear/IntelClearPro_W_Bd.woff2\") format(\"woff2\"),url(\"/ipa/s/sfsites/c/resource/ISG_Resources/fonts/intel-clear/IntelClearPro_W_Bd.woff\") format(\"woff\"),url(\"/ipa/s/sfsites/c/resource/ISG_Resources/fonts/intel-clear/IntelClearPro_W_Bd.ttf\") format(\"truetype\");\n      font-weight:700;\n      font-style:normal\n}\n\n/* CYRILLIC fonts */\n/* INTEL CLEAR fonts */\n@font-face {\n      font-family: \"intel-clear-cyrillic\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic.eot\");\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic.eot?#iefix\") format(\"embedded-opentype\"), url('https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic.woff') format('woff'), url('https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic.ttf') format('truetype');\n      font-weight: normal;\n      font-style: normal;\n}\n@font-face {\n    font-family: \"intel-clear-cyrillic\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-bold.eot\");\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-bold.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-bold.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-bold.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: normal;\n}\n@font-face {\n    font-family: \"intel-clear-cyrillic\";\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-light.eot\");\nsrc:url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-light.eot?#iefix\") format(\"embedded-opentype\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-light.woff\") format(\"woff\"), url(\"https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/us/en/Fonts/resources/intel-clear-cyrillic-light.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: normal;\n}",
+  "developerName" : "prm",
+  "id" : "20d8d692-f9b9-45af-98b4-044e753b7de2",
+  "label" : "Partner Central",
+  "layouts" : {
+    "2KE3afmnMxCIxUu6bfNoVXckOh87u7" : "92ee2e57-dca7-4bc1-ac4b-4c144e82cab6",
+    "Inner" : "05b65362-0f7f-489a-a120-9b24118e94bf",
+    "Login" : "85d0c962-f0db-4fd4-949b-6e39b28ff3b1",
+    "ServiceNotAvailable" : "4d2df425-70f8-4e32-ac1c-d10970b42b3c"
+  },
+  "type" : "theme",
+  "views" : [ {
+    "componentAttributes" : { },
+    "componentName" : "salesforceIdentity:loginBody2",
+    "id" : "85d0c962-f0db-4fd4-949b-6e39b28ff3b1",
+    "label" : "Login",
+    "regions" : [ {
+      "id" : "466211c6-4eda-4cdf-9461-799852d64abe",
+      "regionName" : "header",
+      "type" : "region"
+    }, {
+      "id" : "ca691a7b-1f4e-4219-98ef-4fe422afa530",
+      "regionName" : "content",
+      "type" : "region"
+    }, {
+      "id" : "8d3678d6-7f5e-414d-abbb-2103d646c993",
+      "regionName" : "footer",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : { },
+    "componentName" : "c:MCThemeLayout",
+    "id" : "05b65362-0f7f-489a-a120-9b24118e94bf",
+    "label" : "Default",
+    "regions" : [ {
+      "id" : "b4c3288f-1bba-4e5a-b884-368d6071c999",
+      "regionName" : "customHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "maxAutoCompleteResults" : 5,
+          "searchLabel" : "Search..",
+          "searchObjects" : [ {
+            "isPublic" : true,
+            "name" : "SBQQ__Quote__c"
+          }, {
+            "isPublic" : true,
+            "name" : "core_cpq_dpa_aln__c"
+          }, {
+            "isPublic" : false,
+            "name" : "SBQQ__QuoteLine__c"
+          } ]
+        },
+        "componentName" : "forceCommunity:globalSearchInput",
+        "id" : "6dadb621-7434-448b-84ee-0c7c3bd9f6ae",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "179c008c-833a-4142-a101-e3297452879d",
+      "regionName" : "search",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "accountManagementLabel" : "Account Management",
+          "communityBuilderLabel" : "Community Builder",
+          "communitySetupLabel" : "Community Setup",
+          "contactSupportLabel" : "Contact Support",
+          "filterName" : "MyCases",
+          "homeLabel" : "Home",
+          "includeContactSupport" : false,
+          "includeMessages" : false,
+          "loginLabel" : "Login",
+          "logoutLabel" : "Logout",
+          "myAccountLabel" : "My Account",
+          "showAccountManagement" : false,
+          "showUserSettings" : false,
+          "userSettingsLabel" : "My Settings",
+          "viewProfileLabel" : "My Profile"
+        },
+        "componentName" : "selfService:userProfileMenu",
+        "id" : "db9abc6d-bf9d-46a8-a9fa-d97935ac2bb7",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "105964e9-35db-408a-b592-f2d3770f39bb",
+      "regionName" : "profileMenu",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "NavigationMenuEditorRefresh" : "Default_Navigation6",
+          "hideAppLauncher" : true,
+          "hideHomeText" : false
+        },
+        "componentName" : "forceCommunity:globalNavigation",
+        "id" : "c1d970fe-30af-4a11-acd8-98157882684d",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "3c743d85-4af0-4afa-8607-98d60047a58f",
+      "regionName" : "navBar",
+      "type" : "region"
+    }, {
+      "id" : "6dae7d21-ab61-467d-b43d-9e3efdad91aa",
+      "regionName" : "customRegion",
+      "type" : "region"
+    }, {
+      "id" : "26bb7a78-d3e9-4bb3-9fe3-b2818418b935",
+      "regionName" : "footer",
+      "type" : "region"
+    }, {
+      "id" : "0bf82ee4-84c6-4555-979d-3814eacfafc0",
+      "regionName" : "templateHeader",
+      "type" : "region"
+    }, {
+      "id" : "a2eea78b-9df5-40a3-b5d1-0b38059911e1",
+      "regionName" : "templateFooter",
+      "type" : "region"
+    }, {
+      "id" : "00ed8616-ff30-4d7a-aa0b-aad51288abe0",
+      "regionName" : "newHeader",
+      "type" : "region"
+    }, {
+      "id" : "6deaa258-9c87-4f7e-9ba5-3c729bd98c79",
+      "regionName" : "userInfo",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : { },
+    "componentName" : "c:MCThemeLayout_Public",
+    "id" : "92ee2e57-dca7-4bc1-ac4b-4c144e82cab6",
+    "label" : "Public",
+    "regions" : [ {
+      "id" : "aa442738-1bc4-4b1c-bb1e-43fe8ee9ed72",
+      "regionName" : "customHeader",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "maxAutoCompleteResults" : 5,
+          "searchLabel" : "Search...",
+          "searchObjects" : [ {
+            "isPublic" : false,
+            "name" : "SBQQ__Quote__c"
+          } ]
+        },
+        "componentName" : "forceCommunity:globalSearchInput",
+        "id" : "6a55bf10-e741-4530-a84e-dacd2945eb2e",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "be95e58b-0a06-496f-9684-432dde76b661",
+      "regionName" : "search",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "accountManagementLabel" : "Account Management",
+          "communityBuilderLabel" : "Community Builder",
+          "communitySetupLabel" : "Community Setup",
+          "contactSupportLabel" : "Contact Support",
+          "filterName" : "MyCases",
+          "homeLabel" : "Home",
+          "includeContactSupport" : false,
+          "includeMessages" : false,
+          "loginLabel" : "Login",
+          "logoutLabel" : "Logout",
+          "myAccountLabel" : "My Account",
+          "showAccountManagement" : false,
+          "showUserSettings" : false,
+          "userSettingsLabel" : "My Settings",
+          "viewProfileLabel" : "My Profile"
+        },
+        "componentName" : "selfService:userProfileMenu",
+        "id" : "292c9590-d598-42f4-ad17-93754aa5f39c",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "7a8fad49-aadf-409d-a426-5da7c9926282",
+      "regionName" : "profileMenu",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "NavigationMenuEditorRefresh" : "",
+          "hideAppLauncher" : true,
+          "hideHomeText" : false
+        },
+        "componentName" : "forceCommunity:globalNavigation",
+        "id" : "85599bf3-0303-4393-b359-c10b7023840c",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "5bfc9b72-ef82-40b2-b64e-13ae0f0117f5",
+      "regionName" : "navBar",
+      "type" : "region"
+    }, {
+      "id" : "e130d900-899b-4a08-9f63-27c559b5fef4",
+      "regionName" : "customRegion",
+      "type" : "region"
+    }, {
+      "id" : "e21a3f54-a96b-43cf-9cdf-cb14695bc0a3",
+      "regionName" : "footer",
+      "type" : "region"
+    }, {
+      "id" : "4cd0d01e-c3d6-45ce-8890-52c796dfad12",
+      "regionName" : "templateHeader",
+      "type" : "region"
+    }, {
+      "id" : "143e7d5c-55ac-4865-bce4-0d5dddaaa51e",
+      "regionName" : "templateFooter",
+      "type" : "region"
+    }, {
+      "id" : "c42abc8b-ff01-4050-858b-f7800bcbc7bf",
+      "regionName" : "newHeader",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "fixedPageWidth" : 1170,
+      "headerBgColor" : "rgba(0, 0, 0, 0)",
+      "isHeaderPinned" : false,
+      "isHeroUnderHeader" : false,
+      "isPageWidthFixed" : true,
+      "showHeader" : true,
+      "showHero" : true
+    },
+    "componentName" : "siteforce:themeLayoutStarter",
+    "id" : "4d2df425-70f8-4e32-ac1c-d10970b42b3c",
+    "label" : "ServiceNotAvailable",
+    "regions" : [ {
+      "id" : "1411b504-4c0c-49e3-be69-992e65f701bf",
+      "regionName" : "themeHeader",
+      "type" : "region"
+    }, {
+      "id" : "5d7c3b64-c629-448b-ad97-aeaceb75a968",
+      "regionName" : "themeFooter",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  } ]
+}

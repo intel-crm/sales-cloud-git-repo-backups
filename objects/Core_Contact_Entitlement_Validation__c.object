@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Account_English_Only_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Account English Only Name</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Owner_Role__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Account Owner Role</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Business_Party_Id__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Unified ID</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_CIM_ID__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CIM ID</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_CNDA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CNDA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Contact_English_Only_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Contact English Only Name</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Entitlement_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Entitlement Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Entitlement_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Entitlement Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_ODM_Checked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>ODM Checked</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_ODM_Unchecked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>ODM Unchecked</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_WOM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>PSG WOM</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Personal_Email_Domain__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Personal Email Domain</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Owner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Support_Owner</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Contact Entitlement Validation</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Entitlement_Id__c</columns>
+        <columns>Core_Entitlement_Name__c</columns>
+        <columns>Core_Account_English_Only_Name__c</columns>
+        <columns>Core_Account_Owner_Role__c</columns>
+        <columns>Core_CIM_ID__c</columns>
+        <columns>Core_CNDA__c</columns>
+        <columns>Core_Contact_English_Only_Name__c</columns>
+        <columns>Core_ODM_Checked__c</columns>
+        <columns>Core_ODM_Unchecked__c</columns>
+        <columns>Core_Personal_Email_Domain__c</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <columns>Core_PSG_WOM__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <visibility>Protected</visibility>
+</CustomObject>

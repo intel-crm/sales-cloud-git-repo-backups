@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PartnerAssist Opt-In German</name>
+    <style>none</style>
+    <subject>Aktualisierung des Geschäftskontos</subject>
+    <textOnly>Aktualisierung des Geschäftskontos
+
+
+!%UserFirstName%!,,
+
+Mit dieser Benachrichtigung möchten wir Sie darauf hinweisen, dass eine Person die Option ausgewählt hat, Informationen aus dem Intel® Partner Alliance Programm mit autorisierten Distributoren (Intel® Authorized Distributors) und / oder von Intel zugelassenen Dienstleistungsunternehmen (Intel® Approved Suppliers) zu teilen.
+
+Name des Geschäftskontos: !%AccountName%!
+Account-Nummer: !%AccountNumber%!
+Hauptansprechpartner, der die Auswahl(en) trifft: !%UserEmailAddr%!
+Datum: !%DateSigned%!
+Ausgewählte(s) Dienstleistungsunternehmen: !%Distributors%!
+Ermächtigung: Hiermit ermächtige ich Intel, Informationen über mein Intel® Technology Provider-Programm Konto mit dem(n) Dienstleistungsunternehmen zu teilen, damit diese die Verwaltung meiner Prämien mitverwalten. Ebenso ermächtige ich Intel, ihnen zu erlauben Rücknahmeerlöse in meinem Namen zu tätigen (nicht verfügbar für APJ).
+
+
+Wenn Sie diese Aktion nicht genehmigt haben oder der Meinung sind, dass ein Fehler aufgetreten ist, können Sie die Auswahl anpassen oder diese Aktion stornieren.
+Kontaktieren Sie uns bei Fragen bitte unter programs@intel.com.
+
+Vielen Dank
+Ihr Intel® Partner Alliance Team
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© {!$Label.PRM_CurrentYear} Intel Corporation.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Datenschutz | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_DDR_Calculate_Partner_Region workflow rule
+Workflow rule description: &quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_DDR_Assign_Partner_RegionFormula</name>
+        <dataType>String</dataType>
+        <expression>TEXT($Record.Core_Partner_Account_Id__r.Core_Geo__c)</expression>
+    </formulas>
+    <interviewLabel>Core_DDR_Calculate_Partner_Region_Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_DDR_Calculate_Partner_Region_Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Geo_Location</name>
+        <label>Update Geo Location</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Core_Partner_Account_Region_Cd__c</field>
+            <value>
+                <elementReference>Core_DDR_Assign_Partner_RegionFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Geo_Location</targetReference>
+        </connector>
+        <filterFormula>AND (OR(ISNEW(), ISCHANGED({!$Record.Core_Partner_Account_Id__c})) , {!$Permission.PCC_Bypass_Automation} = False)</filterFormula>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,13 @@
+<design:component>
+	<design:attribute name="sObjectAPIName" label="Object API Name" description="The API name of the object to search." />
+	<design:attribute name="label" label="Field Label" description="The label shown above the lookup." />
+	<design:attribute name="pluralLabel" label="Plural Object Label" description="The plural label shown in the search results." />
+	<design:attribute name="instanceId" label="Instance ID" description="A unique identifier for this lookup instance." />
+	<design:attribute name="required" label="Required" />
+	<design:attribute name="helpText" label="Help Text" />
+	<design:attribute name="returnFields" label="Fields to Return" description="Comma-separated fields returned by the lookup query." />
+	<design:attribute name="searchFields" label="Search Fields" description="Comma-separated fields searched using the entered text." />
+	<design:attribute name="filterCriteria" label="Filter Criteria" description="SOQL WHERE clause fragment used to limit search results." />
+	<design:attribute name="selectedId" label="Selected Id" description="Selected record ID output for Flow." />
+	<design:attribute name="searchString" label="Selected Record Label" description="Selected record label retained when navigating back to this Flow screen." />
+</design:component>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2 xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <accountAccessLevel>Edit</accountAccessLevel>
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <customFields>
+        <name>Core_Global_MNC_ODM__c</name>
+        <value xsi:type="xsd:boolean">false</value>
+    </customFields>
+    <customFields>
+        <name>Core_Legacy_ID__c</name>
+        <value xsi:type="xsd:string">5E14</value>
+    </customFields>
+    <name>5E14 - EMEA INF RCIS</name>
+    <opportunityAccessLevel>Read</opportunityAccessLevel>
+    <parentTerritory>X4E04_EMEA_INF</parentTerritory>
+    <ruleAssociations>
+        <inherited>false</inherited>
+        <ruleName>EMEA_INF_RCIS</ruleName>
+    </ruleAssociations>
+    <territory2Type>Business_Unit</territory2Type>
+</Territory2>

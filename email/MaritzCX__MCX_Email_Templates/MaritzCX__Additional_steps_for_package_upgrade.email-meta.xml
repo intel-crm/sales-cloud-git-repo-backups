@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template will be used to send the details of steps to manually update the package version at MCX in case the automatic approach fails.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Additional steps for package upgrade</name>
+    <style>none</style>
+    <subject>Additional Steps Required for MaritzCX for Salesforce Package Upgrade</subject>
+    <textOnly>The MaritzCX platform failed to register the MaritzCX for Salesforce package upgrade. Please follow these instructions to complete the upgrade process:
+
+1. Log into your Admin account at MaritzCX.
+2. Go to ADMIN | Company Setup | Salesforce Integration.
+3. Under Salesforce Settings, click on the Refresh Package Version button.
+
+The new features will now be available.
+
+Additional Details
+Organization Id  :{!Organization.Id}
+Organization Name : {!Organization.Name}
+Organization URL :  {!Organization.instance}
+Installer Email :  {!User.Email}
+Error Messages :  {!Apex.errorMessages}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

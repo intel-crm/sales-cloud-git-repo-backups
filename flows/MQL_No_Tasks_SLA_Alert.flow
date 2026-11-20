@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>MAQL_One_Two_Four_Day_SLA_Expired_Email</name>
+        <label>MAQL_One_Two_Four_Day_SLA_Expired_Email</label>
+        <locationX>242</locationX>
+        <locationY>384</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Having_Tasks</name>
+        <label>Having Tasks</label>
+        <locationX>374</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Tasks</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Marketing Qualified Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Sub_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Attempting Contact</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Having_Tasks__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MAQL_One_Two_Four_Day_SLA_Expired_Email</targetReference>
+            </connector>
+            <label>No Tasks</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>MQL No Tasks SLA Alert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>MQL No Tasks SLA Alert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterFormula>AND(
+	{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+	OR( 
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;)
+		),
+     ISPICKVAL( {!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+     {!$Record.Core_Having_Tasks__c} = false
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>One_Day_Core_Business_Day_Calculation_c</name>
+            <connector>
+                <targetReference>Having_Tasks</targetReference>
+            </connector>
+            <label>One Day Core_Business_Day_Calculation__c</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>SWS_MQL_no_task_Calculation__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

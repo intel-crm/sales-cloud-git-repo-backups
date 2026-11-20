@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>ReportId</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>WorkspaceId</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>configName</name>
+                    <value>CST_Report</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>roles</name>
+                </componentInstanceProperties>
+                <componentName>custom_URL_Embed</componentName>
+                <identifier>c_custom_URL_Embed</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>CST_Customer_Report</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

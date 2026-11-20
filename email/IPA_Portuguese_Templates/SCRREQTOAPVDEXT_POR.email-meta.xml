@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDEXT_POR</name>
+    <style>none</style>
+    <subject>Bem-vindo à Intel® Partner Alliance</subject>
+    <textOnly>Sua empresa já está registrada
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Parabéns por ser um parceiro da Intel® Partner Alliance! Sua empresa corresponde a uma conta já existente, de modo que você foi adicionado ao seguinte perfil de empresa da Intel® Partner Alliance:
+Nome da empresa: {!Account.Name}
+ID da empresa: {!Account.AccountNumber}
+
+Entre em sua conta para visualizar os detalhes do seu perfil na Intel® Partner Alliance.
+
+Os parceiros da Intel têm um longo histórico de inovação e, com a Intel® Partner Alliance, nós ajudaremos você a acelerar a criação de soluções para a economia centrada em dados. Juntos, podemos nos conectar, inovar e crescer, possibilitando oportunidades extraordinárias.
+
+Acesse https://www.intel.com/content/www/br/pt/partner-alliance/help/overview.html para obter mais ajuda sobre como começar.
+
+Obrigado,
+Sua equipe Intel® Partner Alliance
+
+Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacidade | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

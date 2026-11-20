@@ -1,0 +1,74 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "40e0e0cd-6278-43f2-adef-7dda18bb1c95",
+  "label" : "Marketplace Partner Segment List",
+  "regions" : [ {
+    "id" : "513e26b4-189f-4b1c-8ba1-16390377a01e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "d93a2432-a844-46ce-a16e-7c84b4a58d16",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1c7392c0-d291-487c-a1ab-03be5e142e1d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6ebc9b4b-da05-483c-bd5e-6cbe7343e8f2",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "id" : "d4936bfa-0561-4cde-947c-c3638d3d0b70",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "f85d594c-a4cb-43ce-8762-7029c1df470b",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "1b0ade2b-1ee1-4a58-956c-1c2c43b1e4ba",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "3f600c29-8afc-461e-a06a-5e56f7dfec2b",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "f6b42cbc-ac5d-4af5-a06a-5d2cae474f9e",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "cc668865-2c70-4dd2-88bd-41fd0261db4b",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "c13fd8c1-51bc-4425-9a57-c03ecc20a7c5",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a96"
+}

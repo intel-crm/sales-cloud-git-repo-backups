@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_19048977</developerName>
+        <masterLabel>Quote Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>SBQQ__Quote__c.core_cpq_record_type__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Pricing Tender Client Quote - Edit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing Tender Client Quote - ReadOnly</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing Tender Client Quote - Submitted</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing Tender Quote - Edit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing Tender Quote - ReadOnly</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pricing Tender Quote - Submitted</sourceValue>
+            </sourceValues>
+            <value>Tender</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PSG Quote - Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG Quote - Contract Pricing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG Quote - Inactive Quotes</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG Quote - Read Only</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG Quote - Submitted</sourceValue>
+            </sourceValues>
+            <value>PSG</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>LineGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CUST_CREATED_DATE</groupingColumn>
+        <legendPosition>Bottom</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_19048977</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Customer_Reference_Id__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Region_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_End_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Project_Name_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__PrimaryContact__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Program_Type_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.core_cpq_record_type__c</field>
+    </columns>
+    <description>USED IN DASHBOARD: User Adoption Dashboard Prototype - CRM Data</description>
+    <filter>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.Pricing_Created_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_DAYS:365</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_DAYS:365</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>SBQQ__Quote__c.Pricing_Tender_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Quote_Submitted,SBQQ__Quote__c.Pricing_Tender_Client_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Client_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Client_Quote_Submitted,SBQQ__Quote__c.PSG_Quote_Approved,SBQQ__Quote__c.PSG_Quote_Cancelled,SBQQ__Quote__c.PSG_Quote_Contract_Pricing,SBQQ__Quote__c.PSG_Quote_Inactive_Quotes,SBQQ__Quote__c.PSG_Quote_New,SBQQ__Quote__c.PSG_Quote_ReadOnly,SBQQ__Quote__c.PSG_Quote_Submitted</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_19048977</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CUST_CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CRM Usage - Quotes Created by Month</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SBQQ__Quote__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SBQQ__Quote__c.core_cpq_approved_on_dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dashboards Overview</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/</actionButtonLink>
+        <body>&lt;p&gt;Sales CRM is designed with “self-service” functionality, allowing you to create your own dashboards. To help you get started, you have been given access to standard dashboards that have been pre-built to assist you with specific areas of your job. These dashboards can be used as-is, copied and customized.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You can use as-is, or copy and customize them to better meet your needs.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Dashboard/home?0.promptId=DashboardsNavigatingDashboards&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Navigating Dashboards&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Dashboard/home?0.promptId=DashboardsCreateaDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Create a Dashboard&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Dashboard/home?0.promptId=DashboardsCloneaDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Clone a Dashboard &lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/o/Dashboard/home?0.promptId=DashboardsFolloworSubscribetoaDashboard&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Follow or Subscribe to a Dashboard&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Also, see &lt;a href=&quot;https://intel.lightning.force.com/lightning/app/standard__LightningSales/page/home?0.promptId=PipelineOverview&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pipeline Reporting.&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Dashboards Overview and Help</description>
+        <displayType>DockedComposer</displayType>
+        <header>Dashboards</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Dashboards Overview</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Dashboard</targetPageKey1>
+        <targetPageKey2>home</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Dashboards Overview and Help</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

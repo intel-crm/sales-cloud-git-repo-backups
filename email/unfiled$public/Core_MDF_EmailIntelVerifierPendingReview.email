@@ -1,0 +1,58 @@
+<messaging:emailTemplate subject="{!RelatedTo.ChannelPartner.Name} Claim Approval Required"
+                         recipientType="User"
+                         relatedToType="PartnerFundClaim"
+                         renderUsingSystemContextWithoutSharing="true">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-size:14px; font-family:Calibri">
+                    <p><span style="color: #ff0000;"><strong>Action Required</strong></span></p>
+                    <p>Dear Intel employee,</p>
+                    <p>The following claim has been submitted and requires Intel review:</p>
+                    <ul>
+                        <li>Member Name: {!RelatedTo.ChannelPartner.Name}</li>
+                        <li>Claim #: {!RelatedTo.Core_MDF_Claim_Ref_Number__c}</li>
+                        <li>Claim Name: <a href="{!$Label.Core_MDF_PFRDetailLink}{!RelatedTo.Id}">{!RelatedTo.Title}</a></li>
+                        <li>Execution Start Date:
+                            <apex:outputText value="{0, date, MMMM d',' yyyy}">
+                                <apex:param value="{!RelatedTo.Core_MDF_Ad_Run_Start_Date__c}" />
+                            </apex:outputText>
+                        </li>
+                        <li>Execution End Date:
+                            <apex:outputText value="{0, date, MMMM d',' yyyy}">
+                                <apex:param value="{!RelatedTo.Core_MDF_Ad_Run_End_Date__c}" />
+                            </apex:outputText>
+                        </li>
+                        <li>Priority: {!RelatedTo.Core_MDF_Campaign_Id__r.Core_MDF_Priority__c}</li>
+                        <li>Engineering Activity: {!RelatedTo.Request.Core_MDF_Activity_Engineering_Nm__c}</li>
+                        <li>POP Requirement: {!RelatedTo.Request.Core_MDF_POP_Requirement_nm__c}</li>
+                        <li>Reimbursement Amount (USD):&nbsp;<apex:outputText value="{0,number,$#,##0.00}"><apex:param value="{!relatedTo.Core_MDF_Requested_Reimbursement_Amt__c}" /></apex:outputText></li>
+                    </ul>
+
+                    <p>{!RelatedTo.ChannelPartner.Name} has requested your approval for the following item:</p>
+                    <p><a href="{!$Label.Core_MDF_PFRDetailLink}{!RelatedTo.Id}">Click here</a></p>
+                    <p>Please click this link to approve or reject this claim</p>
+                    <p> 
+                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+                        {!$Label.Core_MDF_Email_Signature}<br/>                       
+                    </p>
+                   <img src="https://intel.file.force.com/servlet/servlet.ImageServer?id=015Ho000003gyPd&oid=00Do0000000aRcf&lastMod=1720070041000" alt="Intel Logo" width="120" height="48"> </img>
+                    <div style="font-size:11px;font-family:Calibri">
+                        <p>
+                            <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                         </p>
+                   </div> 
+                </div>
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

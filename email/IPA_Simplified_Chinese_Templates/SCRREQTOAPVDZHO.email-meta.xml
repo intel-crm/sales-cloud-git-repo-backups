@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDZHO</name>
+    <style>none</style>
+    <subject>恭喜您升级到新的英特尔® Cloud Insider 身份</subject>
+    <textOnly>您已获得了批准!
+
+欢迎! {!Account.Name} 现在是英特尔® Cloud Insider 会员！您可以访问 intel.com/cloudinsider 获取市场推广材料、销售工具和与您的权益相关的其他信息。如果您想将一名同事添加到您的帐户中，请在“我的帐户”下访问您的公司资料。{!$Label.PRM_MyIntelProfileURL}
+
+
+有疑问吗？请联系英特尔® Cloud Insider 支持，电子邮件地址为 programs@intel.com 或在这里
+
+版权所有@ {!$Label.PRM_CurrentYear} 英特尔公司。保留所有权利。英特尔和英特尔徽标是英特尔公司在美国和/或其他国家/地区的商标。
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+您可以通过更新个人资料设置随时取消订阅： {!$Label.PRM_MyIntelProfileURL}
+隐私 | Cookie | *商标</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

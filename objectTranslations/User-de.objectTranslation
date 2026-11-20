@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- CPQ_Lookup --></label>
+        <name>CPQ_Lookup</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PersonalInfo_EPIM --></label>
+        <name>PersonalInfo_EPIM</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Account Owner --></label>
+        <name>Core_Account_Owner__c</name>
+        <relationshipLabel><!-- Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Channel Ops will enter WWID of manager if  reporting manager is different than CDIS manager --></help>
+        <label><!-- Alternate Channel  Manager WWID --></label>
+        <name>Core_Alternate_Channel_Manager_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Count --></label>
+        <name>Core_Email_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Trigger Date --></label>
+        <name>Core_Email_Trigger_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Custom Field --></label>
+        <name>Core_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee Status Code --></label>
+        <name>Core_Employee_Status_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Employee Type Code --></label>
+        <name>Core_Employee_Type_Code__c</name>
+        <picklistValues>
+            <masterLabel>CTW</masterLabel>
+            <translation><!-- CTW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMP</masterLabel>
+            <translation><!-- EMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Badged</masterLabel>
+            <translation><!-- Non-Badged --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Federation ID --></label>
+        <name>Core_Federation_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner Id --></label>
+        <name>Core_IPA_One_Partner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Contact Partner Role --></label>
+        <name>Core_IPA_PartnerRole_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core IPS AccountId --></label>
+        <name>Core_IPS_AccountId__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActiveProxy --></label>
+        <name>Core_IPS_IsActiveProxy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Site Code --></label>
+        <name>Core_Intel_Site_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same and Federation Id is not empty, otherwise returns FALSE. Always returns TRUE for internal users. --></help>
+        <label><!-- Is FederationId Valid --></label>
+        <name>Core_Is_FederationId_Valid_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is HQ User --></label>
+        <name>Core_Is_HQ_User__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field that helps to identify if user is part of OSC or not part of OSC. --></help>
+        <label><!-- Is OSC? --></label>
+        <name>Core_Is_OSC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Field Update Date --></label>
+        <name>Core_Lead_Field_Update_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count of partner leads accepted by the current user in current year. --></help>
+        <label><!-- Leads Accepted Current Year --></label>
+        <name>Core_Leads_Accepted_Current_Year__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count of partner leads contacted by the current user in current year. --></help>
+        <label><!-- Leads Contacted Current Year --></label>
+        <name>Core_Leads_Contacted_Current_Year__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count of partner leads generated in current year. --></help>
+        <label><!-- Leads Generated Current Year --></label>
+        <name>Core_Leads_Generated_Current_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Leads InPursuit Current Year --></label>
+        <name>Core_Leads_InPursuit_Current_Year__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count of partner leads qualified by the current user in current year. --></help>
+        <label><!-- Leads Qualified Current Year --></label>
+        <name>Core_Leads_Qualified_Current_Year__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count of partner leads rejected by the current user in current year. --></help>
+        <label><!-- Leads Rejected Current Year --></label>
+        <name>Core_Leads_Rejected_Current_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Reclaimed on Creation --></label>
+        <name>Core_License_Reclaimed_on_Creation__c</name>
+    </fields>
+    <fields>
+        <label>Login-ID</label>
+        <name>Core_Login_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager --></label>
+        <name>Core_Manager__c</name>
+    </fields>
+    <fields>
+        <help><!-- Email ID Masking is only applicable for Sandbox, It has no effect in production system, Please  uncheck if you need to receive any notification from sandbox. --></help>
+        <label><!-- Mask EmailID (Only For SandBox) --></label>
+        <name>Core_Mask_Email_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Email --></label>
+        <name>Core_Send_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status In Denodo --></label>
+        <name>Core_Status_In_Denodo__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Country Code --></label>
+        <name>Core_User_Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Coverage --></label>
+        <name>Core_User_Coverage__c</name>
+        <picklistValues>
+            <masterLabel>AUDIT/SECURITY</masterLabel>
+            <translation><!-- AUDIT/SECURITY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C-SUITE</masterLabel>
+            <translation><!-- C-SUITE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARKETING</masterLabel>
+            <translation><!-- MARKETING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPERATIONS</masterLabel>
+            <translation><!-- OPERATIONS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SALES IC</masterLabel>
+            <translation><!-- SALES IC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SALES MANAGER</masterLabel>
+            <translation><!-- SALES MANAGER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SALES VP</masterLabel>
+            <translation><!-- SALES VP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- To add this field to the user search layout to see the additional details when searched for a particular user --></help>
+        <label><!-- User Details --></label>
+        <name>Core_User_Fields_Merged__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Region --></label>
+        <name>Core_User_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- User License --></label>
+        <name>Core_User_License__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_User Profile Name --></label>
+        <name>Core_User_Profile_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Sub Region --></label>
+        <name>Core_User_Sub_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Type Indicator --></label>
+        <name>Core_User_Type_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Type --></label>
+        <name>Core_User_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- WWID --></label>
+        <name>Core_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PMP_One_Partner_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_IPA Refresh --></label>
+        <name>PRM_IPA_Refresh__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Reclaimed --></label>
+        <name>Partner_License_Reclaimed__c</name>
+    </fields>
+    <fields>
+        <help>Passen Sie die Standardregisterkarte in der Seite &quot;Produkt nachschlagen&quot; an</help>
+        <label><!-- Default Product Lookup Tab --></label>
+        <name>SBQQ__DefaultProductLookupTab__c</name>
+        <picklistValues>
+            <masterLabel>Guided Selling</masterLabel>
+            <translation>Geführter Verkauf</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search Filters</masterLabel>
+            <translation>Suchfilter</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Verwenden Sie diese Option, um das CPQ-Diagnose-Tool zu aktivieren. Diese ist nur verfügbar, wenn die Organisationseinstellung aktiviert wurde. Wenden Sie sich an den Support, um diese Funktion zu aktivieren.</help>
+        <label><!-- Enable Diagnostic Tool --></label>
+        <name>SBQQ__DiagnosticToolEnabled__c</name>
+    </fields>
+    <fields>
+        <help>Aktivieren Sie diese Option, wenn Benutzer das Ausgabeformat von Angebotsdokumenten ändern dürfen sollen.</help>
+        <label><!-- Allow Output Format Change --></label>
+        <name>SBQQ__OutputFormatChangeAllowed__c</name>
+    </fields>
+    <fields>
+        <help>Wählen Sie &quot;Gefolgt&quot; aus, um Produkte, denen Sie in Chatter folgen, beim Hinzufügen zum Angebot vor anderen Produkten anzuzeigen.</help>
+        <label><!-- Product Sort Preference --></label>
+        <name>SBQQ__ProductSortPreference__c</name>
+        <picklistValues>
+            <masterLabel>Followed</masterLabel>
+            <translation>Gefolgt</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Aktivieren Sie diese Option, um jedes Mal alle Suchfilter und -ergebnisse zu entfernen, wenn Sie Produkte zu Ihren Angeboten hinzufügen. Andernfalls werden die vorherigen Auswahlen beibehalten.</help>
+        <label><!-- Reset Product Lookup --></label>
+        <name>SBQQ__ResetProductLookup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Theme --></label>
+        <name>SBQQ__Theme__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Unique --></label>
+        <name>User_Unique__c</name>
+    </fields>
+    <fields>
+        <label><!-- User_loggedIN --></label>
+        <name>User_loggedIN__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingAnonWebActivityList --></label>
+        <name>mkto_si__IsCachingAnonWebActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingBestBets --></label>
+        <name>mkto_si__IsCachingBestBets__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingEmailActivityList --></label>
+        <name>mkto_si__IsCachingEmailActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingGroupedWebActivityList --></label>
+        <name>mkto_si__IsCachingGroupedWebActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingInterestingMomentsList --></label>
+        <name>mkto_si__IsCachingInterestingMomentsList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingScoringList --></label>
+        <name>mkto_si__IsCachingScoringList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingStreamList --></label>
+        <name>mkto_si__IsCachingStreamList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingWatchList --></label>
+        <name>mkto_si__IsCachingWatchList__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsCachingWebActivityList --></label>
+        <name>mkto_si__IsCachingWebActivityList__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Sales Insight Welcome Counter --></label>
+        <name>mkto_si__Sales_Insight_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Search Option --></label>
+        <name>rtsync__User_Search_Option__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- you can&apos;t update this User --></errorMessage>
+        <name>Core_IPS_Prevent_Update_Customer_User</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- As a IPS Support Org Admin you don&apos;t have access to create/change any User Record --></errorMessage>
+        <name>Core_IPS_Prevent_Update_User_by_OrgAdmin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The following fields are sourced from CDIS and cannot be updated: Email Address, Alias (IDSID), First Name, Last Name, Phone, Mobile Phone, Manager, Department, Intel Site Code, User Country Code, Employee Type Code,Employee Status Code and Country. --></errorMessage>
+        <name>Core_Lock_CDIS_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- you can&apos;t update this User --></errorMessage>
+        <name>Core_Prevent_Update_Partner_User</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The User fields are sourced from CDIS and cannot be updated.Please contact your administrator for further help. --></errorMessage>
+        <name>Core_User_Validation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Select_Theme --></label>
+        <name>SBQQ__Select_Theme</name>
+    </webLinks>
+</CustomObjectTranslation>

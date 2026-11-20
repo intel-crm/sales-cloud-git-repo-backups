@@ -1,0 +1,64 @@
+<apex:page Standardcontroller="CampaignMember" extensions="Core_Campaign_Member_Creator" showHeader="false"
+           readOnly="true" cache="true" contentType="application/vnd.ms-excel#ChannelAccounts.xls">
+
+    <!-- SOLVES bad characters landing in Excel Spreadsheet.  Also, above, ShowHeader="false"  -->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    </head>
+
+    <br/>
+    <apex:outputPanel >
+        <apex:panelGrid columns="1">
+            <apex:outputPanel style="float:left">
+                <apex:outputText style="font-size:22px;font-weight:bold" value="Channel Data"/>
+                <br/>
+                <apex:outputText style="font-weight:bold;" value="Intel Confidential"/>
+            </apex:outputPanel>
+        </apex:panelGrid>
+        <br/>  
+    </apex:outputPanel>
+    
+    <apex:pageBlock mode="detail" title="Target Accounts">
+        <apex:pageBlockSection Columns="1" showHeader="false">
+            <apex:repeat value="{!thousandTargetExport}" var="block">
+                <apex:pageBlockTable value="{!block}" var="dataRecord" border="1" width="200%">
+                    <apex:column headerValue="Account Name" >
+                        <apex:outputText value="{!dataRecord.name}"/>
+                    </apex:column>
+                    <apex:column headerValue="Owner First Name" >
+                        <apex:outputText value="{!dataRecord.firstName}"/>
+                    </apex:column>
+                    <apex:column headerValue="Owner Last Name" >
+                        <apex:outputText value="{!dataRecord.lastName}"/>
+                    </apex:column>
+                    <apex:column headerValue="Account Type" >
+                        <apex:outputText value="{!dataRecord.accountType}"/>
+                    </apex:column>
+                    <apex:column headerValue="Sales Segment" width="{!sColumnSize}%;">
+                        <apex:outputText value="{!dataRecord.salesSegment}"/>
+                    </apex:column>
+                    <apex:column headerValue="Account Tier" >
+                        <apex:outputText value="{!dataRecord.accountTier}"/>
+                    </apex:column>
+                    <apex:column headerValue="Industry">
+                        <apex:outputText value="{!dataRecord.Industry}"/>
+                    </apex:column>
+                    <apex:column headerValue="Sales Out Units">
+                        <apex:outputText value="{!dataRecord.components}"/>
+                    </apex:column>
+                    <apex:column headerValue="Sales Out">
+                        <apex:outputText value="{0, number, currency}">
+                            <apex:param value="{!dataRecord.componentsUnitCosts}"/>
+                        </apex:outputText>                    
+                    </apex:column>
+                    <apex:column headerValue="Program Membership">
+                        <apex:outputText value="{!dataRecord.membershipTier}"/>
+                    </apex:column>
+                 </apex:pageBlockTable>
+            </apex:repeat>
+         </apex:pageBlockSection>
+    </apex:pageBlock> 
+    <br/>                           
+    <br/>
+    <br/>                            
+</apex:page>

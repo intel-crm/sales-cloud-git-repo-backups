@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Account</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Account Bank Mappings</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>Account_Bank_Mappings__r</relationship>
+    </join>
+    <label>Account Bank Mappings</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account: CoMarketing Ultimate Account</displayNameOverride>
+            <field>Core_MDF_CoMarketing_Ultimate_Account__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account: Account Name</displayNameOverride>
+            <field>Name</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: ID</displayNameOverride>
+            <field>Id</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Map Number</displayNameOverride>
+            <field>Name</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Core_MDF_Account__c</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AccountIdBankIdMapping</displayNameOverride>
+            <field>Core_MDF_AccountIdBankIdMapping__c</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active</displayNameOverride>
+            <field>Core_MDF_Active_ind__c</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bank</displayNameOverride>
+            <field>Core_MDF_Bank__c</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Program</displayNameOverride>
+            <field>Core_MDF_Program__c</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Owner Name</displayNameOverride>
+            <field>Owner.Name</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Owner Alias</displayNameOverride>
+            <field>Owner.Alias</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Owner Role</displayNameOverride>
+            <field>Owner.UserRole</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Created By</displayNameOverride>
+            <field>CreatedBy.Name</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Created Alias</displayNameOverride>
+            <field>CreatedBy.Alias</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Last Modified Alias</displayNameOverride>
+            <field>LastModifiedBy.Alias</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Last Activity Date</displayNameOverride>
+            <field>LastActivityDate</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Bank Mapping: Supplier ID</displayNameOverride>
+            <field>Core_MDF_Bank__c.Core_MDF_Supplier_Number__c</field>
+            <table>Account.Account_Bank_Mappings__r</table>
+        </columns>
+        <masterLabel>Account Bank Mapping: Info</masterLabel>
+    </sections>
+</ReportType>

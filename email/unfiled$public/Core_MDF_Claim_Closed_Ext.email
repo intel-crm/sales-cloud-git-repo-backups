@@ -1,0 +1,59 @@
+<messaging:emailTemplate recipientType="User"
+                         relatedToType="PartnerFundClaim"
+                         language="{!RelatedTo.Core_MDF_Owner_Language_Locale_Key_txt__c}"
+                         subject="{!$Label.Core_MDF_EmailTemp_Subj1}{!relatedTo.Core_MDF_Claim_Ref_Number__c}: {!relatedTo.Title} - {!$Label.Claim_Status_Closed_Subject}">
+                          
+                         
+    <messaging:htmlEmailBody >
+        <html>
+            <body>  <div style="font-size:14px;font-family:Calibri">  
+                                   <p style="color:red"> {!$Label.Core_MDF_Approved_Information_template} <br/> </p>
+                         
+                                   <p>      
+                                                {!$Label.Core_MDF_EmailTemp_DearIntelPartner} <br/>
+                                  </p>  
+                                   <p>          {!$Label.Claim_Status_set_Resubmission_Window_Closed}&nbsp;<apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!RelatedTo.Core_MDF_Claim_Ref_Number__c}</apex:outputLink>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Closed,$Label.Core_MDF_Activity_Closed)} <br/>
+                                                {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body5 }&nbsp;
+                                               
+                                               <apex:outputLink value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!$Label.Core_MDF_EmailTemp_Claim_URL1}</apex:outputLink>
+                                                      
+                                                {!$Label.Core_MDF_EmailTemp_Claim_Body3}          <br/>
+                                                 <ul>                                                     
+                                                      <li>{!$Label.Core_MDF_EmailTemp_AdjReq_Create_Body3}&nbsp;{!RelatedTo.Title}</li>
+                                                      <li>{!IF(RelatedTo.Request.Core_MDF_Is_Outcome_Based_Ind__c,$Label.Core_MDF_OutcomeBasedCampaign_Name & ' :',$Label.Core_MDF_EmailTemp_Claim_Activity_Name)}&nbsp;{!RelatedTo.Request.Title}<br/></li>
+                                                                                    
+                                                      <apex:outputPanel rendered="{!relatedTo.Core_MDF_Program__c !=  $Label.Core_MDF_Co_GTM_program_name}">                      
+                                                          <li>{!$Label.Core_MDF_EmailTemp_Claim_Country} {!RelatedTo.Core_MDF_Country_Location_nm__c} <br/>  </li> 
+                                                       </apex:outputPanel>
+                                                       
+                                                      <li>{!$Label.Core_MDF_Program} : {!RelatedTo.Core_MDF_Program__c} <br/>  </li>
+                                                      <apex:outputPanel rendered="{!IF(RelatedTo.Core_MDF_Budget_Type_Options_Nm__c != null,true,false)}"> 
+                                                      <li>{!$Label.Core_MDF_Budget_Type} : {!RelatedTo.Core_MDF_Budget_Type_Options_Nm__c } <br/>  </li>  
+                                                      </apex:outputPanel>
+                                                 </ul> 
+                                  <p> 
+                                                {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+                                                {!$Label.Core_MDF_Email_Signature} <br/>
+                       
+                                  </p>  
+                                   </p>
+                                   </div>
+                                   <div style="font-size:11px;font-family:Calibri">
+                                   <p>
+                                     <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                                           <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                           {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                            </p>         
+                    
+                    </div>         
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

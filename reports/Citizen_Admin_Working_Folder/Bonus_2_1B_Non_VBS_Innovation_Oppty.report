@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <description>Only 2024 net-new opportunities will count</description>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>OPPORTUNITY_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001KVYsN,006Ho00000VANU7,006Ho00000V9mhT,006Ho00000UzKFk,006Ho00000V0usd,0063b00001KVYsD,006Ho00000V9d0U,006Ho00000V17V4,0063b00001KVMbl,0063b00001KVXlV,006Ho00000V0uWE,006Ho00000V9zc9,0063b00001KVWkg,0063b00001KVT30,006Ho00000UzBsD,006Ho00000VAfv1,0063b00001KVXER,006Ho00000V0iZv,0063b00001KVPK1,006Ho00000VAJ3G,006Ho00000V8cWB,0063b00001KVYsS,0063b00001KVXB3,006Ho00000V1BB8,006Ho00000UzIoy,0063b00001KVNFp,006Ho00000V0diY,006Ho00000V12ZF,0063b00001KVNF1,0063b00001KVMzx,006Ho00000V9zsh,006Ho00000UkYdH,006Ho00000VAnUR,0063b00001KVW33,0063b00001KVMvk,0063b00001KVX4g,006Ho00000Uz9wc,006Ho00000V9Nb6,006Ho00000V9gCz,006Ho00000VAdL9,006Ho00000V8Hiv,006Ho00000V17U1,0063b00001KVWnL,006Ho00000V96DZ,006Ho00000V089z,006Ho00000V8o6J,0063b00001KVSXE,006Ho00000VAAEZ,006Ho00000VA0kt,006Ho00000V8xqa,0063b00001KVWyd,0063b00001KVSYW,0063b00001KVWCe,006Ho00000V0iaK,0063b00001KVU3Q,006Ho00000VAqQi,006Ho00000V8cYW,0063b00001KVZ0q,0063b00001KVNE8,0063b00001KVX4b,006Ho00000UkMTq,0063b00001KVZB0,0063b00001KVX71,0063b00001KVMzr,0063b00001KVP8K,0063b00001KVXtU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>006Ho00000Uz9wc,006Ho00000VArAl,0063b00001KVSA0,006Ho00000V96It,0063b00001KVX4W,0063b00001KVRZx,006Ho00000UkaFf,0063b00001KVSvG,0063b00001KVXjy,006Ho00000V0h4q,006Ho00000V8Xef,0063b00001KVX2f,006Ho00000V7v2S,0063b00001KVQ45,0063b00001KVNEc,006Ho00000V0h4v,006Ho00000V91VK,0063b00001KVUpU,006Ho00000VAqPz,0063b00001KVX4g,0063b00001KVXlV,006Ho00000V9Nb6,0063b00001KVSXE,006Ho00000V9gCz,006Ho00000V09WF,0063b00001KVNF1,0063b00001KVX4l,0063b00001KVUz5,0063b00001KVZ0q,006Ho00000V9Mpe,006Ho00000UzIdH</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Bonus #2/1B - Non VBS Innovation Oppty</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2024-06-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

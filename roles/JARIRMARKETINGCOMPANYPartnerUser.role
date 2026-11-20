@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>JARIR MARKETING COMPANY Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>JARIR MARKETING COMPANY Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10701062_Jafar_Abdelhamid</parentRole>
+</Role>

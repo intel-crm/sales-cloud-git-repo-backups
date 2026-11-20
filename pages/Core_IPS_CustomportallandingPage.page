@@ -1,0 +1,12 @@
+<apex:page showHeader="false" controller="Core_IPS_CustomportallandingPage" action="{!PageInit}">
+<script>
+console.log({!flag});
+//alert();
+//if({!flag}==false)
+//{
+//  parent.location.href ='/IPS/apex/Core_IPS_CustomerDisclaimer';
+//}
+
+</script>
+
+</apex:page>

@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>파트너 그룹 매핑</value>
+    </caseValues>
+    <fields>
+        <help><!-- The field stores the email domains of the partner user email ids that are allowed by a certain Account --></help>
+        <label><!-- Allowed Email Domains --></label>
+        <name>Core_Allowed_Email_Domains_txt__c</name>
+        <picklistValues>
+            <masterLabel>99ntc.com</masterLabel>
+            <translation><!-- 99ntc.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>aa.jp.fujitsu.com</masterLabel>
+            <translation><!-- aa.jp.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>acbz.com.br</masterLabel>
+            <translation><!-- acbz.com.br --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>accadis.net</masterLabel>
+            <translation><!-- accadis.net --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>accessus.biz</masterLabel>
+            <translation><!-- accessus.biz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>acer.com</masterLabel>
+            <translation><!-- acer.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>aceramericalatina.com</masterLabel>
+            <translation><!-- aceramericalatina.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>adk.jp</masterLabel>
+            <translation><!-- adk.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>adpeople.com</masterLabel>
+            <translation><!-- adpeople.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>affiniti.com.au</masterLabel>
+            <translation><!-- affiniti.com.au --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>aj.jp.nec.com</masterLabel>
+            <translation><!-- aj.jp.nec.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ak.jp.nec.com</masterLabel>
+            <translation><!-- ak.jp.nec.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>alibaba-inc.com</masterLabel>
+            <translation><!-- alibaba-inc.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>almapbbdo.com.br</masterLabel>
+            <translation><!-- almapbbdo.com.br --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>amazon.com</masterLabel>
+            <translation><!-- amazon.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>arise19.com</masterLabel>
+            <translation><!-- arise19.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>asus.com</masterLabel>
+            <translation><!-- asus.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>asusid.co.id</masterLabel>
+            <translation><!-- asusid.co.id --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>asusph.com</masterLabel>
+            <translation><!-- asusph.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>au.fujitsu.com</masterLabel>
+            <translation><!-- au.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>au.panasonic.com</masterLabel>
+            <translation><!-- au.panasonic.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>baidu.com</masterLabel>
+            <translation><!-- baidu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bbdo.co.kr</masterLabel>
+            <translation><!-- bbdo.co.kr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bbdomexico.com</masterLabel>
+            <translation><!-- bbdomexico.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bc.jp.nec.com</masterLabel>
+            <translation><!-- bc.jp.nec.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bdsmktg.com</masterLabel>
+            <translation><!-- bdsmktg.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bluefocus.com</masterLabel>
+            <translation><!-- bluefocus.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>br.fujitsu.com</masterLabel>
+            <translation><!-- br.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bx.jp.nec.com</masterLabel>
+            <translation><!-- bx.jp.nec.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ca.fujitsu.com</masterLabel>
+            <translation><!-- ca.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ca.panasonic.com</masterLabel>
+            <translation><!-- ca.panasonic.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>campaignsol.com</masterLabel>
+            <translation><!-- campaignsol.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>carolcreechpromotions.com</masterLabel>
+            <translation><!-- carolcreechpromotions.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>cisco.com</masterLabel>
+            <translation><!-- cisco.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>cn.fujitsu.com</masterLabel>
+            <translation><!-- cn.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>cohnwolfe.com</masterLabel>
+            <translation><!-- cohnwolfe.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>contax.com.br</masterLabel>
+            <translation><!-- contax.com.br --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>contractindia.co.in</masterLabel>
+            <translation><!-- contractindia.co.in --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>corp.ovh.com</masterLabel>
+            <translation><!-- corp.ovh.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>corp.ovh.us</masterLabel>
+            <translation><!-- corp.ovh.us --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>cray.com</masterLabel>
+            <translation><!-- cray.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>creativebank.co.jp</masterLabel>
+            <translation><!-- creativebank.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>da.jp.nec.com</masterLabel>
+            <translation><!-- da.jp.nec.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dbt.dynabook.com</masterLabel>
+            <translation><!-- dbt.dynabook.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dddmarcom.ch</masterLabel>
+            <translation><!-- dddmarcom.ch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dell.com</masterLabel>
+            <translation><!-- dell.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dellteam.com</masterLabel>
+            <translation><!-- dellteam.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dentsu.co.jp</masterLabel>
+            <translation><!-- dentsu.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dentsu.com.cn</masterLabel>
+            <translation><!-- dentsu.com.cn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dialoggroup.com</masterLabel>
+            <translation><!-- dialoggroup.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>digitalriver.com</masterLabel>
+            <translation><!-- digitalriver.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dwamedia.com</masterLabel>
+            <translation><!-- dwamedia.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dxglobal.com</masterLabel>
+            <translation><!-- dxglobal.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>dynabook.com</masterLabel>
+            <translation><!-- dynabook.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>e-graphics.com.mx</masterLabel>
+            <translation><!-- e-graphics.com.mx --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eclerx.com</masterLabel>
+            <translation><!-- eclerx.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>egplusww.com</masterLabel>
+            <translation><!-- egplusww.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>emc.com</masterLabel>
+            <translation><!-- emc.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>enfatico.com</masterLabel>
+            <translation><!-- enfatico.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>esg.us</masterLabel>
+            <translation><!-- esg.us --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>essencedigital.com</masterLabel>
+            <translation><!-- essencedigital.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eu.panasonic.com</masterLabel>
+            <translation><!-- eu.panasonic.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>event.co.kr</masterLabel>
+            <translation><!-- event.co.kr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>example.com</masterLabel>
+            <translation><!-- example.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>fireflyeducate.com</masterLabel>
+            <translation><!-- fireflyeducate.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>fitch.com</masterLabel>
+            <translation><!-- fitch.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>force-focus.com</masterLabel>
+            <translation><!-- force-focus.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>fujitsu.com</masterLabel>
+            <translation><!-- fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>fullid.co.kr</masterLabel>
+            <translation><!-- fullid.co.kr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>getitcomms.com</masterLabel>
+            <translation><!-- getitcomms.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>glb.toshiba.co.jp</masterLabel>
+            <translation><!-- glb.toshiba.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>gmail.com</masterLabel>
+            <translation><!-- gmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>go-yamamoto.com</masterLabel>
+            <translation><!-- go-yamamoto.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>gpr.lk</masterLabel>
+            <translation><!-- gpr.lk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>groupm.com</masterLabel>
+            <translation><!-- groupm.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>gyro.com</masterLabel>
+            <translation><!-- gyro.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>h3c.com</masterLabel>
+            <translation><!-- h3c.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>haier.com</masterLabel>
+            <translation><!-- haier.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hasee.com</masterLabel>
+            <translation><!-- hasee.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hds.com</masterLabel>
+            <translation><!-- hds.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hetzner.com</masterLabel>
+            <translation><!-- hetzner.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hitachi.com</masterLabel>
+            <translation><!-- hitachi.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hitachivantara.com</masterLabel>
+            <translation><!-- hitachivantara.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hk.fujitsu.com</masterLabel>
+            <translation><!-- hk.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hotmail.com</masterLabel>
+            <translation><!-- hotmail.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hp.co</masterLabel>
+            <translation><!-- hp.co --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hp.com</masterLabel>
+            <translation><!-- hp.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>hpe.com</masterLabel>
+            <translation><!-- hpe.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>huawei.com</masterLabel>
+            <translation><!-- huawei.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ibm.com</masterLabel>
+            <translation><!-- ibm.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>id.fujitsu.com</masterLabel>
+            <translation><!-- id.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>igamesinc.com</masterLabel>
+            <translation><!-- igamesinc.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>imd.dentsu.co.jp</masterLabel>
+            <translation><!-- imd.dentsu.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>in2ideas.com</masterLabel>
+            <translation><!-- in2ideas.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ingrammicro.com</masterLabel>
+            <translation><!-- ingrammicro.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>inspur.com</masterLabel>
+            <translation><!-- inspur.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ionos.com</masterLabel>
+            <translation><!-- ionos.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>it-comm.co.jp</masterLabel>
+            <translation><!-- it-comm.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>jd.com</masterLabel>
+            <translation><!-- jd.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>joysaloon.cn</masterLabel>
+            <translation><!-- joysaloon.cn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>jp.fujitsu.com</masterLabel>
+            <translation><!-- jp.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>jp.panasonic.com</masterLabel>
+            <translation><!-- jp.panasonic.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>jpik.com</masterLabel>
+            <translation><!-- jpik.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>kadaver.dk</masterLabel>
+            <translation><!-- kadaver.dk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>kd.jp.nec.com</masterLabel>
+            <translation><!-- kd.jp.nec.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>kingsoft.com</masterLabel>
+            <translation><!-- kingsoft.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>kr.fujitsu.com</masterLabel>
+            <translation><!-- kr.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>lenovo.com</masterLabel>
+            <translation><!-- lenovo.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>lge.com</masterLabel>
+            <translation><!-- lge.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mailinator.com</masterLabel>
+            <translation><!-- mailinator.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mbur.cn</masterLabel>
+            <translation><!-- mbur.cn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mecglobal.com</masterLabel>
+            <translation><!-- mecglobal.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mediacom.com</masterLabel>
+            <translation><!-- mediacom.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>medion.com</masterLabel>
+            <translation><!-- medion.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>microsoft.com</masterLabel>
+            <translation><!-- microsoft.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mirrorshow.com</masterLabel>
+            <translation><!-- mirrorshow.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mraservices.com</masterLabel>
+            <translation><!-- mraservices.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mrm-mccann.com</masterLabel>
+            <translation><!-- mrm-mccann.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mrpfd.com</masterLabel>
+            <translation><!-- mrpfd.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>msi.com</masterLabel>
+            <translation><!-- msi.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>my.fujitsu.com</masterLabel>
+            <translation><!-- my.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>navercorp.com</masterLabel>
+            <translation><!-- navercorp.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>necp.co.jp</masterLabel>
+            <translation><!-- necp.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>nelsonbostockunlimited.com</masterLabel>
+            <translation><!-- nelsonbostockunlimited.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>netnow.cl</masterLabel>
+            <translation><!-- netnow.cl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>newbetter.cn</masterLabel>
+            <translation><!-- newbetter.cn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>nextmarketing.com</masterLabel>
+            <translation><!-- nextmarketing.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>nomura-g.jp</masterLabel>
+            <translation><!-- nomura-g.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ogilvy.com</masterLabel>
+            <translation><!-- ogilvy.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>omd.com</masterLabel>
+            <translation><!-- omd.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>omd.lk</masterLabel>
+            <translation><!-- omd.lk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>omnicommediagroup.com</masterLabel>
+            <translation><!-- omnicommediagroup.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>omnicommediagroup.lk</masterLabel>
+            <translation><!-- omnicommediagroup.lk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>one1000.com</masterLabel>
+            <translation><!-- one1000.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>oracle.com</masterLabel>
+            <translation><!-- oracle.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>performics.com</masterLabel>
+            <translation><!-- performics.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ph.fujitsu.com</masterLabel>
+            <translation><!-- ph.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phase1world.com</masterLabel>
+            <translation><!-- phase1world.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phd.ik</masterLabel>
+            <translation><!-- phd.ik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phd.lk</masterLabel>
+            <translation><!-- phd.lk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phdmedia.com</masterLabel>
+            <translation><!-- phdmedia.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phdmeida.com</masterLabel>
+            <translation><!-- phdmeida.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phdnetwork.com</masterLabel>
+            <translation><!-- phdnetwork.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>position2.com</masterLabel>
+            <translation><!-- position2.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>positivo.com.br</masterLabel>
+            <translation><!-- positivo.com.br --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>powerleader.com.cn</masterLabel>
+            <translation><!-- powerleader.com.cn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ppr.com.au</masterLabel>
+            <translation><!-- ppr.com.au --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>public7.de</masterLabel>
+            <translation><!-- public7.de --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>publicismedia.com</masterLabel>
+            <translation><!-- publicismedia.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>qct.io</masterLabel>
+            <translation><!-- qct.io --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>qingcloud.com</masterLabel>
+            <translation><!-- qingcloud.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>qorvismsl.com</masterLabel>
+            <translation><!-- qorvismsl.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>quantacn.com</masterLabel>
+            <translation><!-- quantacn.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>quantatw.com</masterLabel>
+            <translation><!-- quantatw.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rackspace.com</masterLabel>
+            <translation><!-- rackspace.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>rationalagency.com</masterLabel>
+            <translation><!-- rationalagency.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>redbaron.in</masterLabel>
+            <translation><!-- redbaron.in --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>resolutionmedia.com</masterLabel>
+            <translation><!-- resolutionmedia.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>samsung.com</masterLabel>
+            <translation><!-- samsung.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sea.samsung.com</masterLabel>
+            <translation><!-- sea.samsung.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sezax.co.jp</masterLabel>
+            <translation><!-- sezax.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sg.fujitsu.com</masterLabel>
+            <translation><!-- sg.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sg.panasonic.com</masterLabel>
+            <translation><!-- sg.panasonic.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>shanghai.co.za</masterLabel>
+            <translation><!-- shanghai.co.za --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sparkfoundryww.com</masterLabel>
+            <translation><!-- sparkfoundryww.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>sugon.com</masterLabel>
+            <translation><!-- sugon.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>supermicro.com</masterLabel>
+            <translation><!-- supermicro.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>supermicro.com.tw</masterLabel>
+            <translation><!-- supermicro.com.tw --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>tbwabenchmark.com</masterLabel>
+            <translation><!-- tbwabenchmark.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>tencent.com</masterLabel>
+            <translation><!-- tencent.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>tengfei-ad.com</masterLabel>
+            <translation><!-- tengfei-ad.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>terracom.com.my</masterLabel>
+            <translation><!-- terracom.com.my --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>th.fujitsu.com</masterLabel>
+            <translation><!-- th.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>theaffiniti.com</masterLabel>
+            <translation><!-- theaffiniti.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>thtfpc.com</masterLabel>
+            <translation><!-- thtfpc.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>timeus.net</masterLabel>
+            <translation><!-- timeus.net --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>tmc-gmbh.de</masterLabel>
+            <translation><!-- tmc-gmbh.de --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toprankmarketing.com</masterLabel>
+            <translation><!-- toprankmarketing.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba-tap.com</masterLabel>
+            <translation><!-- toshiba-tap.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba-teg.com</masterLabel>
+            <translation><!-- toshiba-teg.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba-tsf.com</masterLabel>
+            <translation><!-- toshiba-tsf.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba.co.jp</masterLabel>
+            <translation><!-- toshiba.co.jp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba.co.uk</masterLabel>
+            <translation><!-- toshiba.co.uk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba.com</masterLabel>
+            <translation><!-- toshiba.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba.com.sg</masterLabel>
+            <translation><!-- toshiba.com.sg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba.es</masterLabel>
+            <translation><!-- toshiba.es --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>toshiba.nl</masterLabel>
+            <translation><!-- toshiba.nl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ts.fujitsu.com</masterLabel>
+            <translation><!-- ts.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>tw.fujitsu.com</masterLabel>
+            <translation><!-- tw.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ucloud.cn</masterLabel>
+            <translation><!-- ucloud.cn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>us.fujitsu.com</masterLabel>
+            <translation><!-- us.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>us.ibm.com</masterLabel>
+            <translation><!-- us.ibm.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>us.panasonic.com</masterLabel>
+            <translation><!-- us.panasonic.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vce.com</masterLabel>
+            <translation><!-- vce.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vml.com</masterLabel>
+            <translation><!-- vml.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vmlyr.com</masterLabel>
+            <translation><!-- vmlyr.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vn.fujitsu.com</masterLabel>
+            <translation><!-- vn.fujitsu.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>wavemc.com</masterLabel>
+            <translation><!-- wavemc.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>wearesocial.net</masterLabel>
+            <translation><!-- wearesocial.net --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>wunderman.com</masterLabel>
+            <translation><!-- wunderman.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>wundermanthompson.com</masterLabel>
+            <translation><!-- wundermanthompson.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>xiaomi.com</masterLabel>
+            <translation><!-- xiaomi.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yandex-team.ru</masterLabel>
+            <translation><!-- yandex-team.ru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>youngs-group.com</masterLabel>
+            <translation><!-- youngs-group.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yr.com</masterLabel>
+            <translation><!-- yr.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yunify.com</masterLabel>
+            <translation><!-- yunify.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>zengdesign.com</masterLabel>
+            <translation><!-- zengdesign.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>zenithoptimedia.com.cn</masterLabel>
+            <translation><!-- zenithoptimedia.com.cn --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AccountProgramInactiveInd --></label>
+        <name>Core_MDF_AccProgInactiveInd_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountIdGroupName --></label>
+        <name>Core_MDF_AccountIdGroupName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountProgramId --></label>
+        <name>Core_MDF_AccountProgramId_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Prime/Unified ID --></label>
+        <name>Core_MDF_Account_Prime_ID__c</name>
+    </fields>
+    <fields>
+        <label>계좌</label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Partner Group Mapping --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- All Access Group Id --></label>
+        <name>Core_MDF_All_Access_Group_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- All Access Group Name --></label>
+        <name>Core_MDF_All_Access_Group_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_BudgetType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Name --></label>
+        <name>Core_MDF_Channel_Program_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label>채널 프로그램</label>
+        <name>Core_MDF_Channel_Program__c</name>
+        <relationshipLabel><!-- Partner Group Mapping --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Co-Marketing Active Account Id --></label>
+        <name>Core_MDF_CoMarketingActiveAccount_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Co-Marketing Active Account Name --></label>
+        <name>Core_MDF_CoMarketingActiveAccount_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Co-Marketing Active --></label>
+        <name>Core_MDF_CoMarketingActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label>그룹 Id</label>
+        <name>Core_MDF_Group_Id__c</name>
+    </fields>
+    <fields>
+        <label>그룹 이름</label>
+        <name>Core_MDF_Group_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>Core_MDF_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Type --></label>
+        <name>Core_MDF_Payment_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer (Pass Through)</masterLabel>
+            <translation><!-- Customer (Pass Through) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor (Cash)</masterLabel>
+            <translation><!-- Distributor (Cash) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor (Credit Memo)</masterLabel>
+            <translation><!-- Distributor (Credit Memo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Customer</masterLabel>
+            <translation><!-- Non-Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_cd__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW</masterLabel>
+            <translation><!-- WW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>Core_MDF_Source_Txt__c</name>
+        <picklistValues>
+            <masterLabel>IUPGM</masterLabel>
+            <translation><!-- IUPGM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ProcessEntitlement</masterLabel>
+            <translation><!-- ProcessEntitlement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test</masterLabel>
+            <translation><!-- Test --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_MDF_Sub_Region_cd__c</name>
+    </fields>
+    <fields>
+        <label>액세스 유형</label>
+        <name>Core_MDF_Type_of_Access__c</name>
+        <picklistValues>
+            <masterLabel>External</masterLabel>
+            <translation>외부</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation>내부</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Virtual Corp Name --></label>
+        <name>Core_MDF_Virtual_Corp_nm__c</name>
+        <relationshipLabel><!-- Partner Group Mapping (Virtual Corp Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>그룹 이름</label>
+        <name>Core_MDF_Works_For__c</name>
+        <relationshipLabel><!-- Partner Group Mapping (Works For) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SAP Distributor for ALN --></label>
+        <lookupFilter>
+            <errorMessage><!-- Invalid SAP ALN Distributor  has been selected on PGM Record. Please select a valid SAP ALN Distributor --></errorMessage>
+        </lookupFilter>
+        <name>PSG_SAP_Distributor_for_ALN__c</name>
+        <relationshipLabel><!-- Partner Group Mapping (SAP Distributor for ALN) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SAP Distributor for DPA --></label>
+        <lookupFilter>
+            <errorMessage><!-- Invalid SAP DPA Distributor  has been selected on PGM Record. Please select a valid SAP DPA Distributor --></errorMessage>
+        </lookupFilter>
+        <name>PSG_SAP_Distributor_for_DPA__c</name>
+        <relationshipLabel><!-- Partner Group Mapping (SAP Distributor for DPA) --></relationshipLabel>
+    </fields>
+    <nameFieldLabel><!-- Partner Group Mapping Name --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- Co-marketing --></label>
+        <name>Core_MDF_Co_marketing</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Selected Payment Type is only applicable for Intel Partner Alliance Program. --></errorMessage>
+        <name>Core_MDF_IPA_PaymentTypeValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment Type is not applicable for the Selected Program. --></errorMessage>
+        <name>Core_MDF_PayTypeVal_ForOtherPrograms</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment Type is not applicable for the Agency Account. --></errorMessage>
+        <name>Core_MDF_PaymentTypeValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- AccountIdGroupName cannot be blank --></errorMessage>
+        <name>Core_MDF_RequiredAccountIdGroupName</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please use IUPGM for Internal PGM record creation. --></errorMessage>
+        <name>Core_MDF_Restrict_PGM_Internal_Creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to update PGM. --></errorMessage>
+        <name>Core_MDF_Update_PGM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Group Name entered is not valid. --></errorMessage>
+        <name>Core_MDF_Validate_Group_Name</name>
+    </validationRules>
+</CustomObjectTranslation>

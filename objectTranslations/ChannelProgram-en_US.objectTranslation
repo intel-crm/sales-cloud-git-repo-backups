@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Program</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Programs</value>
+    </caseValues>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Partner Program History</value>
+        </caseValues>
+        <name>channelprogram_history</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Unique Id --></label>
+        <name>Core_MDF_Channel_Program_Unique_Id_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project/Platform --></label>
+        <name>Core_MDF_Project_Platform__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Program Name --></label>
+        <name>Core_MDF_Technical_Program_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_inactind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Code --></label>
+        <name>PRM_programCode__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Channel Program Name and Technical Program Name should not be distinct --></errorMessage>
+        <name>Core_MDF_PrvntDistinctNameAndTchPrgmName</name>
+    </validationRules>
+</CustomObjectTranslation>

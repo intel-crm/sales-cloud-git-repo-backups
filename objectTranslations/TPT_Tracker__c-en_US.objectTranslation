@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>TPT Tracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>TPT Trackers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Accepted by --></label>
+        <name>Accepted_by__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver group --></label>
+        <name>Approver_group__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Name --></label>
+        <name>DR_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design-Deal Registration Product --></label>
+        <name>DealRegistrationProduct__c</name>
+        <relationshipLabel><!-- TPT Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Design-Deal Registration --></label>
+        <name>DealRegistration__c</name>
+        <relationshipLabel><!-- TPT Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- InnovationTracker --></label>
+        <name>InnovationTracker__c</name>
+        <relationshipLabel><!-- TPT Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner --></label>
+        <name>Opportunity_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- TPT Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity name --></label>
+        <name>Opportunity_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Name --></label>
+        <name>Partner_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Region --></label>
+        <name>Partner_Account_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product group --></label>
+        <name>Product_group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>Registration_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Change Date Time --></label>
+        <name>Status_Change_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Change Date and Time --></label>
+        <name>Status_Change_Date_and_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field stores the time difference between change in the status. --></help>
+        <label><!-- Time Taken To Process --></label>
+        <name>Time_Taken_To_Submit__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

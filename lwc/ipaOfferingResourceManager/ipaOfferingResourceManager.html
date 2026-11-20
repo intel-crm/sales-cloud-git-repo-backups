@@ -1,0 +1,56 @@
+<template>
+
+    <!-- <div class="resources-header slds-grid slds-wrap slds-p-bottom_medium">
+        <div class="slds-size_12-of-12 slds-medium-size_9-of-12 slds-grid slds-medium-grid_vertical-align-center">
+            <lightning-icon icon-name="utility:open_folder" size="small"></lightning-icon>
+            <span class="slds-m-left_small slds-m-bottom_medium">{labels.heading}</span>
+        </div>
+        <template if:false={loading}>
+            <div class="slds-size_12-of-12 slds-medium-size_3-of-12 slds-text-align_right">
+                <lightning-button
+                    label={labels.manageResources}
+                    onclick={handleButtonClick}>
+                </lightning-button>
+            </div>
+        </template>
+    </div>
+    
+    <div class="resources-container slds-p-vertical_medium slds-is-relative" style="min-height: 8rem;">
+        <template if:true={loading}> 
+            <lightning-spinner alternative-text={labels.loading}></lightning-spinner>
+        </template>
+        <template if:false={showNoResourcesText}>
+            <template for:each={readyResources} for:item="resource">
+                <div key={resource.title} class="resource-container bg-white slds-m-bottom_x-small">
+                    <c-ipa-offering-resource
+                        title={resource.title}
+                        description={resource.description}
+                        url={resource.url}
+                        preview={previewMode}
+                        resource-type={resource.resourceType}
+                        file-type={resource.fileType}
+                        file-size={resource.fileSize}   
+                        content-type={resource.contentType}
+                        download-url={resource.downloadUrl}
+                        video-type={resource.videoType}
+                        publish-date={resource.publishDate}
+                        alt-text={resource.altText}
+                        editor-option="true"
+                        >
+                    </c-ipa-offering-resource>
+                </div>
+            </template>
+        </template>
+        <template if:true={showNoResourcesText}>
+            <p>{labels.noResources}</p>
+        </template>
+    </div>
+
+    <c-ipa-offering-resource-modal
+        record-id={recordId}
+        heading={labels.manageResources}
+        resource-type-options={resourceTypeOptions}
+        onsave={handleSave}>
+    </c-ipa-offering-resource-modal> -->
+
+</template>

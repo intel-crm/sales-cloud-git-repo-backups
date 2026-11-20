@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Attached Result</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Attached Results</value>
+    </caseValues>
+    <fields>
+        <label><!-- Permanent Id --></label>
+        <name>CoveoV2__PermanentId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Record ID --></label>
+        <name>CoveoV2__RecordId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Result Url --></label>
+        <name>CoveoV2__ResultUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>CoveoV2__Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>CoveoV2__Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Uri Hash --></label>
+        <name>CoveoV2__UriHash__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,51 @@
+.custom-container{
+	color : black;
+}
+.strong-text {
+    font-weight: bold;
+}
+.pointercursor{
+    cursor: pointer;
+  }
+  .space-between {
+    margin-left: 50px;
+  }
+  .underlined-text {
+    text-decoration: underline;
+  }
+.clickable-text {
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.dropdown-container {
+    position: relative;
+}
+.dropdown {
+    position: absolute;;
+    top: 30px;
+    left: 30px;
+    width : 50%;
+    padding: 5px;
+    background-color: transparent;  
+    border: black;
+    box-shadow: transparent;
+    z-index: 1;
+}
+.hover-text {
+    cursor: pointer;
+    
+}
+.hover-text:hover {
+    text-decoration: underline;
+    color : rgb(121, 193, 255);
+}
+.auto-height{
+    height: fit-content;
+}
+.slds-box{
+    border: 0;
+    padding-bottom: 0px;
+    padding-left: 30px;
+    padding-top: 12px;
+}

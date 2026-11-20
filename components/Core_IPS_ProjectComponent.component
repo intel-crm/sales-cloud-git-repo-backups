@@ -1,0 +1,353 @@
+<apex:component controller="autoCompleteController">
+<apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+<apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery.dataTables.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery.dataTables.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+
+
+ <apex:attribute name="object_name" description="The object name you want to look for." assignTo="{!objectname}"  type="String" required="true"/>
+ <apex:attribute name="autocomplete_textbox" description="The ID for the Autocomplete List Textbox." assignTo="{!prodName}" type="String" required="true"/>
+  <apex:attribute name="additional_field" description="Any additional fields you'd like to search and include in the display." assignTo="{!additionalfield}" type="String" required="false"/>
+  <apex:attribute name="Section_title" description="fieldset Option in the table."  required="true"   type="String" />
+  <apex:attribute name="hiddenProductIdField" description="Assignment for Product Id." assignTo="{!hiddenProdIdField}" required="true" type="String" />
+  <apex:attribute name="fieldSet_Name" description="Field Set" assignTo="{!fieldSetName}" type="String" />
+  <apex:attribute name="related_Id" description="Field Set" assignTo="{!relatedId}" type="String" />
+   
+ <style>
+    .errorM4 .msgIcon, .errorSmall {
+        background-image: url(/img/samples/flag_red.gif) !important;
+    }
+    
+    .myCustomMessage .message {
+        background: none  !important;
+        border: none !important;
+    }
+    
+    /* Popcornapps table Style css */
+    .productTable {
+    margin:0px;padding:0px;
+    width:100%;
+    /*box-shadow: 10px 10px 5px #888888;
+    border:1px solid #9b9b9b;*/
+    
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+    
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+    
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+    
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}.productTable table{
+    border-collapse: collapse;
+        border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+}
+.productTable tr:last-child td:last-child {
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+}
+.productTable table tr:first-child th:first-child {
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}
+.productTable table tr:first-child td:last-child {
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+}
+.productTable tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+     border-bottom-left-radius:0px;
+}
+.productTable tr:hover td{
+    background-color: #E3F3FF;
+}
+.productTable tr:nth-child(odd){ background-color:#ffffff; }
+.productTable tr:nth-child(even)    { background-color:#ffffff; }
+.productTable td{
+    vertical-align:middle;    
+    
+    border:1px solid #ececec;
+    /*border-width:0px 1px 1px 0px;*/
+    text-align:left;
+    padding:10px;
+    font-size:13px;
+    font-family:Arial;
+    font-weight:normal;
+    color:#000000;
+}
+.productTable tr:last-child td{
+    border-width:0px 1px 0px 0px;
+}
+.productTable tr td:last-child{
+    border-width:0px 0px 1px 0px;
+}
+/*.productTable tr:last-child td:last-child{
+    border-width:0px 0px 0px 0px;
+}*/
+
+.productTable tr:first-child th{
+        background:-o-linear-gradient(bottom, #dbdad9 5%, #adadad 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dbdad9), color-stop(1, #adadad) );
+    background:-moz-linear-gradient( center top, #dbdad9 5%, #adadad 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbdad9", endColorstr="#adadad");  background: -o-linear-gradient(top,#dbdad9,adadad);
+
+    background-color:#dbdad9;
+    border:1px solid #ececec;
+    text-align:center;
+    border-width:0px 0px 1px 1px;
+    font-size:12px;
+    font-family:Arial;
+    font-weight:bold;
+    color:#ffffff;
+    
+}
+.productTable tr:first-child:hover th{
+    background:-o-linear-gradient(bottom, #dbdad9 5%, #adadad 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dbdad9), color-stop(1, #adadad) );
+    background:-moz-linear-gradient( center top, #dbdad9 5%, #adadad 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbdad9", endColorstr="#adadad");  background: -o-linear-gradient(top,#dbdad9,adadad);
+
+    background-color:#dbdad9;
+}
+.productTable tr:first-child td:first-child{
+    /*border-width:0px 0px 1px 0px;*/
+}
+.productTable tr:first-child td:last-child{
+    /*border-width:0px 0px 1px 1px;*/
+}
+.producthighlight{
+    background-color: #E3F3FF;
+}
+   .producthighlight td{
+    background-color: #E3F3FF;
+} 
+
+    /*
+    #productsList::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+    
+    #productsList::-webkit-scrollbar
+    {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+    */
+    #productsList::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        background-color: #003C71;
+    }
+    
+    #productsList{
+        height: auto;
+       overflow-y:scroll;
+    }
+
+
+    </style>
+ 
+ <script>
+  
+  var flagToAppendText = true;
+  var HiddenProductValue = "{!hiddenProdIdField}";
+function Init()
+    {    
+  $(document).on("keydown", function (e) {
+    /*if (e.which === 8 && $(e.target).is("input, textarea") && $(e.target).val().length==1) {
+        /$(e.target).val('');
+        $(e.target).focus();
+        e.preventDefault();
+    }*/
+});
+    $( document ).ready(function() {
+
+    
+
+  $("input[id*='{!autocomplete_textbox}'").on("blur",function(e){return  false;});
+   $("input[id*='{!autocomplete_textbox}'").on('keydown',function(e){
+    
+   if(e.which==13)
+   {
+   return false;
+  
+   }
+   
+    if (e.which == 8 && $(this).val().length==0) {
+        e.preventDefault();
+        
+        //$(this).focus();
+    
+    }
+   });
+   
+   $("input[id*='{!autocomplete_textbox}']").on('keyup change',function(e){
+   
+  
+  $("div[id*='{!Section_title}']").find('.pbSubsection').html('');
+  $("div[id*='{!Section_title}']").find('.pbSubsection').append("<span><img src=\'{!$Resource.Core_IPS_Typehead_Loader}\' alt=\'In progress\' /><span style='color:blue;font-size:15px;'>Please enter 3 or more characters of the product name or refer to the full list of products in the Intel Products tab. Wildcard search is not supported.</span>");
+    
+   if($(this).val().length > 2)
+   {            
+  if(e.type=='keyup')
+  {
+    $(this).off('change');  
+  }
+  if(e.type=='change')
+  {
+   $(this).off('keyup');
+  }
+    
+      CallRemoteAction(true);
+                        
+   }else if($(this).val().length ==0){
+       $("input[id*='{!hiddenProductIdField}'").val('');    
+       $("div[id*='{!Section_title}']").find('.pbSubsection').html('');
+       try
+       {
+          if(e.type=='keyup')
+          {
+            $(this).off('change');  
+          }
+          if(e.type=='change')
+          {
+           $(this).off('keyup');
+          }
+         RefreshData(this);
+       }
+       catch(err) {
+            console.log('>>>>>>>>>>>>>>>err' + err);
+        }
+   }
+   
+   });
+     
+});
+    }
+function createTable(result)
+    {
+       //$("div[id*='{!Section_title}']").show();
+    var cols = [{!ColumnsName}];
+    //console.log(cols);
+    $("div[id*='{!Section_title}']").find('.pbSubsection').html('');
+               var  strFinalTable ="";
+               
+               $("div[id*='{!Section_title}']").find(".pbSubsection").append("<table id='tblResult{!objectname}' class='productTable' width='100%'><thead></thead><tbody></tbody></table>");
+              
+               
+               $("#"+"tblResult{!objectname}").DataTable({
+               "bDestroy": true,
+               "bFilter": false, 
+               "bInfo": false,
+               "responsive": true,
+               "aaData": result,
+               "bPaginate": true,
+               "paging": false,
+               "aoColumns": cols
+               /*"fnDrawCallback" : function( oSettings ) {
+     BindDataEvent();
+    }*/
+               
+               });
+   //console.log($( "input[name='{!objectname}_group']" ) + '>>>>>>>>>>>>>>>>>>>>>>>>>>>>');  
+var  tblObj=$("#tblResult{!objectname}");   
+   BindDataEvent();
+               
+    }
+    
+function UpdateIdiNHidden(itm)
+{
+ console.log('@@@@@id only@@@@' + $(itm).find('td').eq(0).find('input').val());     
+ console.log('@@@@@name only@@@@' + $(itm).find('td').eq(0).find('input').attr('title'));
+ //$("input[type='hidden'][id*='{!hiddenProductIdField}']").val($(itm).find('td').eq(0).find('input').val());
+ //$("input[type='text'][id*='{!prodName}']").val($(itm).find('td').eq(1).html());
+ HiddenProductValue = $(itm).find('td').eq(0).find('input').val();
+ try
+ {
+   callback($(itm).find('td').eq(0).find('input').val(),$(itm).find('td').eq(0).find('input').attr('title'));
+ }
+ catch(err) {
+    console.log('>>>>>>>>>>>>>>>err' + err);
+}
+ 
+}
+ $(document).ready(function() {
+ 
+Init();
+});
+
+function CallRemoteAction(Flag)
+{
+
+ if(Flag)
+ {
+ 
+  
+   autoCompleteController.findSObjects('{!objectname}',$("input[id*='{!autocomplete_textbox}'").val() , '{!fieldSetName}', '{!relatedId}', function(result, event){
+                            console.log(JSON.stringify(result));
+                            if(event.type == 'exception') {
+                                  alert(event.message);
+                            } else { 
+                              
+                                    //sObjects = result;
+                                 
+                                 //setTimeout(responseHandler(sObjects),1);
+                                 createTable(result);
+                                 
+                            }
+                        });
+  }
+  else
+  {
+  
+     
+     autoCompleteController.findSObjects('{!objectname}','', '{!fieldSetName}', '{!relatedId}', function(result, event){
+                            console.log(JSON.stringify(result));
+                            if(event.type == 'exception') {
+                                  alert(event.message);
+                            } else { 
+                              
+                                    //sObjects = result;
+                                 
+                                 //setTimeout(responseHandler(sObjects),1);
+                                 createTable(result);
+                                 
+                            }
+                        });
+  }
+} 
+function BindDataEvent()
+{
+$("#tblResult{!objectname}").find("tr").each(function(){
+console.log($(this).find('td').eq(0).find('input').val());
+if($(this).find('td').eq(0).find('input').val()!= HiddenProductValue)
+{
+ $(this).find('td').eq(0).find('input').prop('checked',false);
+}
+
+});
+    $("input[name='{!objectname}_group']" ).click(function(){  
+            UpdateIdiNHidden($(this).parent().parent());   
+    });
+
+}
+     </script>
+ 
+</apex:component>

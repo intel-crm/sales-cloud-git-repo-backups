@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>End Customer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>End Customers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Pricing_Account_Nm__c</name>
+        <relationshipLabel><!-- End Customers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Pricing_Active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified EndCustomer Id --></label>
+        <name>Pricing_Unified_EndCustomer_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

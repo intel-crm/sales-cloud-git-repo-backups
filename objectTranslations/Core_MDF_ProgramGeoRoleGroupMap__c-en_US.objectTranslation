@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP ProgramGeoRoleGroupMap</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP ProgramGeoRoleGroupMap</value>
+    </caseValues>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Name --></label>
+        <name>Core_MDF_Group_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Core_MDF_Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Budget Type Applicable --></label>
+        <name>Core_MDF_Is_Budget_Type_Applicable_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is For IUPGM Monitor --></label>
+        <name>Core_MDF_Is_For_IUPGM_Monitor_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Primary Role --></label>
+        <name>Core_MDF_Is_Primary_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Core_MDF_Role_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

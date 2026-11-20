@@ -1,0 +1,78 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "8f9bfe37-1421-4d70-9a42-e5023e577fe9",
+  "label" : "Sales Details",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"SalesData\",\"title\":\"Sales Data\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Sales Data",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "#",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "",
+        "title" : ""
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "e375e107-9c4a-4085-8d8c-54b92998948b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ff3bd244-86ec-4c94-b839-973bf5970156",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_SalesDetailsParent",
+      "id" : "00710a1d-1186-48a9-bbef-53838803e14d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d5917e63-43a2-45d7-8bad-f345eb4d253e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "9c50fa12-e6e7-4040-8918-463f4aef59dc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e17a0156-e929-4db3-8a2c-6fffdf822b03",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Sales Data\"/>\n<meta name=\"pageType\" content=\"SalesData\"/>",
+        "description" : "",
+        "title" : "Sales Details"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "9a6d4eaa-7ef0-4299-a6ff-447bae966d63",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "661f0bbf-caa9-46ad-b364-c6a446cb88e7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-sales-details"
+}

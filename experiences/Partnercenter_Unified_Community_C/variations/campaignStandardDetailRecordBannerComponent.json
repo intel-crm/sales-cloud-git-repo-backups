@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "1968e180-ee6b-4437-b969-8ff82ba26dae",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "be2792cf-eff1-499c-8d77-7d676efb2d63",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Campaign_Standard_Detail_Record_Banner_Component",
+  "id" : "3a48354b-4a7f-47b8-9456-cf83ff0706cb",
+  "type" : "experienceVariation"
+}

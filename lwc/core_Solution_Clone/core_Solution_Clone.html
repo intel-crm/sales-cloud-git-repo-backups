@@ -1,0 +1,201 @@
+<!--
+  @description       : this is for cloning the solution
+  @author            : Shijas KM
+  @group             : 
+  @last modified on  : 03-15-2023
+  @last modified by  : shijas.km@intel.com
+-->
+<template>
+  <lightning-quick-action-panel class="slds-modal slds-fade-in-open slds-modal_medium" header="Clone Solution"   >
+  <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName} onsuccess={handleSuccess} onerror={handleError} >
+     <!--
+                <template if:true={showHideTab}>
+                <lightning-tabset variant="scoped" class="tab-active">
+                    <template if:true={showErrors}>
+                        <lightning-tab icon-name="utility:error" label={errorSize} class="slds-scrollable_y accordionClassError" data-id= "error">
+                            <ol class="slds-list_ordered">
+                                <template for:each={hardStopList} for:item="hs">
+                                    <li key={hs}>
+                                        {hs}
+                                    </li>
+                                </template>
+                            </ol>
+                        </lightning-tab>
+                    </template>
+                    <template if:true={showWarnings}>
+                        
+                        <lightning-tab icon-name="utility:warning" label={warningSize} class="slds-scrollable_y accordionClassWarning" data-id= "warning">
+                            
+                            <ol class="slds-list_ordered">
+                                <template for:each={softStopList} for:item="ss">
+                                    <li key={ss}>
+                                        {ss}
+                                    </li>
+                                </template>
+                            </ol>
+                        </lightning-tab>
+                    </template>
+                </lightning-tabset>
+            </template>
+-->
+    <div class="slds-p-horizontal_medium">      
+    
+          <div class="slds-scrollable_y accordionClassWarning">              
+                 
+        </div> 
+        <template if:true={showWarnings}>   
+            <!--         
+        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+            <h2> {Error_Message}  </h2> 
+            </div>      --> 
+        </template>
+        <div>
+            <lightning-input type="text" label="Solution" onchange={handle_Name} value= {SolutionData.Name} required></lightning-input>
+        </div>  
+         <template  if:true={TypeOptions_SolutionType}>
+          
+         <lightning-combobox name="TypeOptions_SolutionType" label="Solution Type" value={SolutionData.Core_Solution_Type__c} options={TypeOptions_SolutionType} onchange={handleChange_Solution_Type} required> </lightning-combobox> 
+         </template>
+        <div>
+            <lightning-input type="text" label="Solution Description" value={SolutionData.Core_Solution_Description__c} onchange={handle_Description} required></lightning-input>
+        </div>
+          <div>
+            <lightning-input type="text" label="Version" value={SolutionData.Core_Version__c} onchange={handle_Version} ></lightning-input>
+        </div>
+         <template  if:true={Options_EndCustomerSolution}>
+          
+         <lightning-combobox name="EndCustomerSolution" label="End Customer Solution" value={SolutionData.Core_End_Customer_Solution__c} options={Options_EndCustomerSolution} onchange={handle_EndCustomerSolution} required> </lightning-combobox> 
+         </template>
+          <div>
+            <lightning-input type="text" label="Solution Owner Email" value={SolutionData.Core_Solution_owner_email__c} onchange={handle_Solution_owner_email} required></lightning-input>
+        </div>  
+         <div>
+            <lightning-input type="text" label="Content Link" value={SolutionData.Core_Content_Link__c} onchange={handle_Content_Link}></lightning-input>
+        </div>          
+            <!--  
+		      <div class="slds-col slds-large-size_6-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+            <lightning-input-field field-name="Solution Owner" value="" required="true"></lightning-input-field>
+          </div> 
+         
+         <template  if:true={TypeOptions_AWL}>
+         <lightning-combobox name="TypeOptions_AWL" label="Application/Workload" value={allSV_Application_Workload} options={allSV_Application_Workload} onchange={handleChange_Solution_Type} required> </lightning-combobox> 
+         </template>
+         -->
+        
+          <template  if:true={TypeOptions_AWL}>
+          <lightning-dual-listbox
+              id="SelectOptions_AWL"
+              name="Select Options"
+              label="Application/Workload"
+              source-label="Available Options"
+              selected-label="Selected Options"
+              options={TypeOptions_AWL}
+              value={allSV_Application_Workload} 
+              onchange={handleChange_Application_Workload}             
+              required
+          >
+      </lightning-dual-listbox>
+      </template>
+      
+      <!--
+         required-options={allSV_Application_Workload}
+         <template  if:true={TypeOptions_IUC}>
+         <lightning-combobox name="TypeOptions_IUC" label="Industry Use Case(s)" value={TypeOptions_IUC} options={TypeOptions_IUC} onchange={handleChange_Solution_Type}> </lightning-combobox> 
+         </template>
+      -->
+   
+           <template  if:true={TypeOptions_IUC}>
+          <lightning-dual-listbox
+              id="selectOptions_IUC"
+              name="Select Options"
+              label="Industry Use Case(s)"
+              source-label="Available Options"
+              selected-label="Selected Options"
+              options={TypeOptions_IUC}
+              value={allSV_IndustryUseCase}
+              onchange={handle_IUC}
+          >
+      </lightning-dual-listbox>
+      </template>
+
+<!--
+         <template  if:true={TypeOptions_TE}>
+         <lightning-combobox name="TypeOptions_TE" label="Technology Enabled" value={TypeOptions_TE} options={TypeOptions_TE} onchange={handleChange_Solution_Type} required> </lightning-combobox> 
+         </template>
+-->
+
+             <template  if:true={TypeOptions_TE} >
+          <lightning-dual-listbox
+              id="selectOptions_TE"
+              name="Select Options"
+              label="Technology Enabled"
+              source-label="Available Options"
+              selected-label="Selected Options"
+              options={TypeOptions_TE}
+              value={allSV_Technology_Enabled}
+              onchange={handle_TE}              
+              required
+          >
+      </lightning-dual-listbox>
+      </template>
+
+   
+
+
+
+         <template  if:true={TypeOptions_Industry}>
+           <!--
+         <lightning-combobox name="TypeOptions_Industry" label="Industry" value={TypeOptions_Industry} options={TypeOptions_Industry} onchange={handleChange_Solution_Type}> </lightning-combobox> 
+          -->
+           <lightning-dual-listbox
+              id="Industry"
+              name="Select Options"
+              label="Industry"
+              source-label="Available Options"
+              selected-label="Selected Options"
+              options={TypeOptions_Industry}
+              value={allSV_Industry}
+              onchange={handleChange_Industry}              
+              
+          >
+           </lightning-dual-listbox>
+         </template>
+
+         <template  if:true={TypeOptions_RA}>
+        
+          <lightning-dual-listbox
+              id="RegionofAvailability"
+              name="Select Options"
+              label="Region of Availability"
+              source-label="Available Options"
+              selected-label="Selected Options"
+              options={TypeOptions_RA}
+              value={allSV_Region_Availability}
+              onchange={handle_RA}              
+              required
+          >
+           </lightning-dual-listbox>
+
+         </template>
+            <br/>           
+             <lightning-input type="checkbox" label="Deal Visible" checked={SolutionData.Core_Deal_Visible__c}  onchange={handle_DealVisible}></lightning-input><br/>
+             <lightning-input type="checkbox" label="Design Visible" checked={SolutionData.Core_Design_Visible__c}  onchange={handle_DesignVisible}></lightning-input><br/>
+         <template  if:true={TypeOptions_Status}>
+         <lightning-combobox name="TypeOptions_Status" label="Status" value={SolutionData.Core_Status__c} options={TypeOptions_Status} onchange={handleChange_Status} > </lightning-combobox> 
+         </template>
+        
+            <br/><br/>  <lightning-input type="checkbox" label="Clone Partners" checked={Clone_Partners}   onchange={handle_Partner}></lightning-input><br/>
+
+           
+    </div>
+    </lightning-record-edit-form>
+    <BR>
+     <div slot="footer">
+      <lightning-button variant="neutral" class="slds-m-left_x-small" label="Cancel" onclick={closeAction} disabled={disableButtonCancel}></lightning-button>
+      <lightning-button variant="brand" class="slds-m-left_x-small" label="Submit" onclick={handleSubmit} disabled={disableButton}></lightning-button>
+
+       
+    </div>
+
+    </lightning-quick-action-panel>
+</template>

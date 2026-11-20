@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>k_v_f_training_detail_sfdcs</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>k_v_f_training_detail_sfdcs</value>
+    </caseValues>
+    <fields>
+        <label><!-- business_organization_nbr --></label>
+        <name>business_organization_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- business_organization_party_id --></label>
+        <name>business_organization_party_id__c</name>
+        <relationshipLabel><!-- k_v_f_training_detail_sfdcs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- business_person_id --></label>
+        <name>business_person_id__c</name>
+        <relationshipLabel><!-- k_v_f_training_detail_sfdcs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- change_ts --></label>
+        <name>change_ts__c</name>
+    </fields>
+    <fields>
+        <label><!-- electronic_address_txt --></label>
+        <name>electronic_address_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- end_dt --></label>
+        <name>end_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- hash_id --></label>
+        <name>hash_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- login_id --></label>
+        <name>login_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- one_partner_customer_aggregation_id --></label>
+        <name>one_partner_customer_aggregation_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- start_dt --></label>
+        <name>start_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- training_complete_dt --></label>
+        <name>training_complete_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- training_credit_qty --></label>
+        <name>training_credit_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- training_id --></label>
+        <name>training_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- training_nm --></label>
+        <name>training_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- value_exchange_period_txt --></label>
+        <name>value_exchange_period_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

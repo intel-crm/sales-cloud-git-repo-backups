@@ -1,0 +1,435 @@
+.rectangle {
+  width: 1650px;
+  height: 38px;
+  margin: 1px 0 0;
+  padding: 9px 1565px 9px 33.9px;
+  background-color: #fff;
+}
+.mask {
+  height:100px;
+  width:100%;
+  background-color: #653171;
+  color: white;
+  font-size: x-large;
+  font-weight: 300;
+}
+th,td{
+  font-size: 10px;
+}
+.contactHeader{
+  background-color: #653171;
+  color: white;
+}
+.headline {
+  margin: 15px 0 16px 36px;
+  font-size: 22px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.27;
+  letter-spacing: normal;
+  color: #262626;
+}
+.headline1 {
+  margin: 0 0 16px 36px;
+  
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.27;
+  letter-spacing: normal;
+  color: #262626;
+}
+.subHeadline {
+  position: relative;
+  margin: 15px 15px 16px 36px;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  padding-top: 0;
+  letter-spacing: normal;
+  color: #262626;
+  text-align: left;
+}
+.casecreationvalign {
+  align-items: center;
+  margin-bottom: 10px;
+}
+.line {
+  height: 1px;
+  margin: 5px 0;
+  background-color: #e9e9e9;
+}
+.inputs{
+  width: 420px;
+  }
+.inputsTextarea{
+border: 1px solid RGB(113,113,113);
+/* width: 750px; */
+
+}
+.btn{
+  color:white;
+  border: 1px solid #ddd;
+  background-color: #0068b5;
+  padding: 4px 12px;
+  height:40px;
+  width:190px;
+  margin-left:0px;
+}
+.slider {
+  display: flex;
+  margin: 80 auto;       
+}
+.slider-item{
+  margin: 25px 57px 57px 57px;
+}
+.text{
+  color: white;
+  font-size: small;
+}
+.dot1 {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #653171;
+  margin: 9px;
+  border: 1px solid white;
+  background-clip:border-box;
+  padding: 0.5px;
+}
+.dot2 {
+  display:inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 8px;
+  border: 1px solid white;
+  background-clip: content-box;
+  padding: 1px;
+}
+label {
+  width: 120px;
+  display: block;
+  margin-bottom: -40%;
+  margin-left: -30%;    
+}
+.divclass{
+  background-color: #653171;
+  color: white;
+  /* font-size: x-large; */
+  font-weight: 300;
+  overflow-x: hidden;
+}
+.text{
+  color: white;
+  font-size: small;
+  font-weight: 300;
+  position: relative;
+  left: 80px;
+  top: 15px;
+}
+
+/* new css */
+.successIcon {
+  position: relative;
+  top: -6px;
+  right: 1px;
+}
+.barSize {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  flex: 1 1 auto;
+  margin: auto
+}  
+.barProgress {
+  width: 0%;
+}
+.pageBkGD{
+  text-align: right;
+}
+.barProgress1 {
+  width: 50%;
+  background: white;
+} 
+.barProgress2 {
+  width: 100%;
+  background: white;
+}  
+.barSize1 {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  flex: 1 1 auto;
+  margin: auto
+}  
+.barSize2 {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  flex: 1 1 auto;
+  margin: auto
+} 
+.progressbarIcon {
+  width: 18px; position: absolute; max-width: 24px; top: -2px; left: -2px;
+}
+.slds-icon-utility-success {
+  --sds-c-icon-color-foreground-default: #1570c7;
+}  
+.slds-progress__item.slds-is-active .slds-progress__marker {
+  border-color: #fff;
+  box-shadow: none;
+} 
+.progressActiveText {
+  font-weight: 900;
+}
+.productBg {
+  padding: 12px; background:#fff; margin: 40px 30px;
+}
+.back-button {
+  color: #1570c7;
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}  
+.addMem-button {
+  text-decoration: underline #1570c7;
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #1570c7;
+}  
+.selectpjt {
+  width: 506px;
+  height: 20px;
+  margin: 16px 15px 36px 36px;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #262626;
+  margin-top: 5px;
+  padding-top: 20px;
+  text-align: left;
+  left: 74px;
+} 
+.selectpjthead1 {
+  height: 20px;
+  margin: 30px 15px 20px 36px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #262626;
+  margin-top: 5px;
+  font-size: 18px;
+  text-align: left;
+} 
+.selectpjthead {
+  height: 20px;
+  margin: 16px 15px 36px 36px;
+  font-size: 24px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: white;
+  margin-top: 5px;
+  text-align: center;
+} 
+.divclass {
+  background-color: #653171;
+  color: white;
+  padding: 40px 80px;
+}
+.ProjectContainer {
+  text-align: center;
+  background-color: #f7f7f7;
+}
+.rectangle {
+  height: 38px;
+  margin: 1px 0 0;
+  padding: 0 0 10px 25px;
+  background-color: #fff;
+  padding-bottom: 10px;
+} 
+.selectProjOptions {
+  padding-left: 10%;
+  min-width: 90%;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+.selectProdOptions {
+  padding-left: 10%;
+  min-width: 90%;
+  align-items: center;
+  align-content: center;
+  align-self: center; 
+}  
+.inputsearchProj {
+  padding-left: 10%;
+  min-width: 35%;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+.firstLabel {
+  position: relative;
+  left: -45px;
+  top: 20px;
+}
+.lastLabel {
+  position: relative;
+  right: -45px;
+  top: 20px;
+}
+.middleLabel {
+  position: relative;
+  top: 20px;
+}
+.checkBox {
+  display: inline-block;
+  width: 20%;
+}
+.casecreationvalign {
+  align-items: center;
+  margin-bottom: 10px;
+}
+.desalign{
+  margin-top: -20rem;
+}
+.Edqbuttonwidth{
+  width: 60.5%;
+}
+.Severityalign{
+  padding-left: 0; 
+  padding-top: 0;
+  font-weight: bolder; 
+  position: absolute; 
+  right: -100px; 
+  top: 30px;
+}
+@media screen and (max-width: 1024px) {
+  .Severityalign{
+    right: 0px; 
+    top: 65px;
+  }
+  .headline1 {
+    margin: 0 0 0 0;
+     }
+  .Edqbuttonwidth{
+    width: 100%;
+  }
+  .subHeadline{
+      margin: 5px 15px 5px 0;    
+      font-size: 14px;
+  }
+  .projectName {
+      margin-bottom: 15px;
+      width: auto;
+    }
+    .desalign{
+      margin-top: 0rem;
+    }
+    .headline {
+      margin: 5px 0 10px 0;
+      font-size: 22px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.27;
+      letter-spacing: normal;
+      color: #262626;
+  }
+  .mobileCss {
+      margin: 15px;
+      padding-left: 10px;
+  }
+  .inputs{
+      width: 100%;
+  }
+  .divclass {
+    padding: 40px 15px;
+    overflow: hidden;
+}
+.firstLabel {
+    left: -10px;
+    font-size: 16px;
+}
+.progressActiveText {
+    font-size: 14px;
+}
+.middleLabel {
+    left: 40px;
+    font-size: 14px;
+}
+.lastLabel {
+    right: -60px;
+    font-size: 14px;
+}
+.subHeadline {
+    margin: 16px 15px 5px 0; 
+    width: 100%;
+}
+.casecatboxalign{
+  display: block;
+}
+.btn{
+    width:100%;
+}
+.inputsTextarea{
+  width: 100%;
+}
+}
+:host {
+--sds-c-textarea-sizing-min-height: 20em;
+}
+.helptext{
+padding-top: 5px;
+font-size: small;
+text-align: left;
+}
+
+.borderClass {
+  border: 1.5px solid #E62D03; /* Customize the border style as needed */
+}
+
+.requiredField{
+    display: block;
+    color: #cc0000;
+    font-size: 14px;
+    /* margin-left: -250px; */
+    padding-bottom: 10px;
+}
+.requiredsubcategory{
+  display: block;
+  color: #cc0000;
+  font-size: 14px;
+  /* margin-left: 34px;  */
+  padding-bottom: 10px;
+}
+
+.defaultForEditTool {
+  border: 1px solid #171616 !important;
+}
+
+.Descriptionborder {
+  border: 2px solid #cc0000;; /* Customize the border style as needed */
+}

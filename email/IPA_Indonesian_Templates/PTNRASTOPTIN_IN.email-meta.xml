@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PartnerAssist Opt-In Indonesian</name>
+    <style>none</style>
+    <subject>Pembaruan akun bisnis</subject>
+    <textOnly>Pembaruan Akun Bisnis
+
+
+!%UserFirstName%!,,
+
+Pemberitahuan ini dimaksudkan untuk memberi tahu Anda bahwa seseorang telah memilih untuk memulai membagikan informasi program Intel® Partner Alliance kepada Distributor Resmi Intel® dan/atau Pemasok Resmi Intel® (Penyedia Layanan) tertentu.
+
+Nama Akun Bisnis: !%AccountName%!
+Nomor Akun: !%AccountNumber%!
+Kontak Utama yang Membuat Pilihan: !%UserEmailAddr%!
+Tanggal: !%DateSigned%!
+Penyedia Layanan yang Dipilih: !%Distributors%!
+Otorisasi: saya dengan ini mengizinkan Intel untuk berbagi informasi dengan Penyedia Layanan tentang akun Program Intel® Technology Provider saya untuk membantu mengelola manfaat saya. Saya juga mengizinkan Intel untuk memungkinkan mereka melakukan penukaran poin atas nama saya (tidak tersedia di APJ).
+
+
+Jika Anda tidak menyetujui tindakan ini atau merasa ada kesalahan, Anda dapat mengubah pilihan atau memilih untuk tidak ikut serta.
+Jika ada pertanyaan, silakan hubungi kami di programs@intel.com.
+
+Terima kasih,
+Tim Intel® Partner Alliance Anda
+
+Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privasi | Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

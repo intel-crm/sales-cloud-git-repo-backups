@@ -1,0 +1,17 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-datatable key-field="Id"
+            data={records}
+            columns={responseColumns}
+            enable-infinite-loading
+            hide-checkbox-column="true">
+            </lightning-datatable> 
+        </div>
+        <template if:true={show}>
+            <div style='color:black; font-size:large; text-align:center'>
+                <h1>No records to display</h1>
+            </div>
+        </template>
+    </lightning-card>
+</template>

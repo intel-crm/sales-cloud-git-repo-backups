@@ -1,0 +1,12 @@
+<messaging:emailTemplate subject="Post Upgrade Data Changes" recipientType="User" relatedToType="AsyncApexJob">
+<messaging:htmlEmailBody >
+    <apex:outputText value="'The ‘MaritzCX for Salesforce’ package was upgraded successfully, however there were a few issues noticed in the post upgrade data changes. The technical details of the issues are included below."/>
+    <br/><br/>
+    <apex:outputText value="Job Id: {!relatedTo.Id}"/><br/>
+    <apex:outputText value="Job Status: {!relatedTo.Status}"/><br/>
+    <apex:outputText value="Total number of batches: {!relatedTo.TotalJobItems}"/><br/>
+    <apex:outputText value="Number of bacthes processed: {!relatedTo.JobItemsProcessed}"/><br/>
+    <apex:outputText value="Number of batches failed: {!relatedTo.NumberOfErrors}"/><br/>
+    <apex:outputText value="Status Details: {!relatedTo.ExtendedStatus}"/><br/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

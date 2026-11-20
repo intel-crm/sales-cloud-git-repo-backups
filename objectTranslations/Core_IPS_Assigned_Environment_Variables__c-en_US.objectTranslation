@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Environment Details Operational</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Environment Details Operational</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Environment Details Edit FieldSet --></label>
+        <name>Environment_Details_Edit_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <help><!-- If checked, the question is shown to Agents only &amp; not shown to customers. --></help>
+        <label><!-- Agent Only --></label>
+        <name>Core_Agent_Only__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environmental Detail Question --></label>
+        <name>Core_Environment_Variable__c</name>
+        <relationshipLabel><!-- Environment Details Operational --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Order No --></label>
+        <name>Core_IPS_Order_No__c</name>
+    </fields>
+    <fields>
+        <help><!-- Refer&apos;s Core Question Text --></help>
+        <label><!-- Environment Detail Question --></label>
+        <name>Core_IPS_Question_Text__c</name>
+    </fields>
+    <fields>
+        <help><!-- Refers Core Question --></help>
+        <label><!-- Question No --></label>
+        <name>Core_IPS_Question__c</name>
+        <relationshipLabel><!-- Environment Details Operational --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Supported Product Name --></label>
+        <name>Core_IPS_Supported_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Subcategory --></label>
+        <name>Core_Product_Issue_Sub_Category__c</name>
+        <relationshipLabel><!-- Environment Details Operational --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- If checked, the user must provide an answer on Case create. --></help>
+        <label><!-- Required --></label>
+        <name>Core_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Supported Product --></label>
+        <name>Core_Supported_Product__c</name>
+        <relationshipLabel><!-- Environment Details Operational --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_Type__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- To prevent discrepancies in Case data, reverting from Inactive to Active has been disabled. If needed, please contact Production Support to have the flag reset to Active.
+Press Cancel to exit. --></errorMessage>
+        <name>Core_IPS_EDO_Prevent_Reverting_2_Active</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,134 @@
+.THIS {
+}
+
+.THIS h4 {
+  color: t(darkGray);
+}
+
+
+@media (max-width: 767px) {
+  .THIS.borderTop {
+    position: relative;
+  }
+  .THIS.borderTop::before {
+    content: ' ';
+    border-top: 1px solid t(lightGray);
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 1em;
+    width: calc(100% - 2em);
+  }
+}
+
+@media (min-width: 768px) {
+  .THIS.borderBottom {
+    border-bottom: 1px solid t(lightGray);
+  }
+  .THIS.borderTop {
+    border-top: 1px solid t(lightGray);
+  }
+}
+
+.THIS .searchButton {
+  padding: 0.35em 0;
+  width: 100%;
+}
+
+.THIS .selectContainer, .THIS .buttonContainer {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .THIS .spaceBetween {
+    justify-content: space-between;
+  }
+  .THIS .selectContainer, .THIS .buttonContainer {
+    flex: 1;
+  }
+  .THIS .filterCount-4 .selectContainer, .THIS .filterCount-4 .buttonContainer,
+  .THIS .filterCount-5 .selectContainer, .THIS .filterCount-5 .buttonContainer {
+    /* flex: 0 0 calc(33.33% - 16px); /* adds margin for space-between IE 11 doesn't like shorthand with calc*/
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(33.33% - 16px);
+
+  }
+  .THIS .filterCount-6 .selectContainer, .THIS .filterCount-6 .buttonContainer,
+  .THIS .filterCount-7 .selectContainer, .THIS .filterCount-7 .buttonContainer {
+    /* flex: 0 0 calc(25% - 16px); /* adds margin for space-between */
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(25% - 16px);
+  }
+  .THIS .filterCount-6 .buttonContainer {
+    margin-right: calc(25% + 6px);
+  }
+  .THIS .selectContainer select {
+    line-height: 1.75;
+  }
+}
+@media (min-width: 1024px) {
+  .THIS .filterCount-4 .selectContainer, .THIS .filterCount-4 .buttonContainer {
+    /* flex: 0 0 calc(20% - 16px); /* adds margin for space-between */
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(20% - 16px);
+  }
+}
+@media (min-width: 1400px) {
+  .THIS .filterCount-5 .selectContainer, .THIS .filterCount-5 .buttonContainer {
+    /* flex: 0 0 calc(16.6666% - 16px); /* adds margin for space-between  */
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(16.6666% - 16px);
+  }
+}
+@media (min-width: 1600px) {
+  .THIS .filterCount-6 .selectContainer, .THIS .filterCount-6 .buttonContainer {
+    /* flex: 0 0 calc(14.285% - 16px); /* adds margin for space-between  */
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(14.285% - 16px);
+  }
+  .THIS .filterCount-6 .buttonContainer {
+    margin-right: 0;
+  }
+}
+
+
+.THIS .selectContainer select {
+  width: 100%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.THIS .selectContainer select::-ms-expand {
+    display: none;
+}
+
+.THIS .selectContainer select,
+.THIS .selectContainer select:focus,
+.THIS .selectContainer select:active  {
+  border: 1px solid t(lightGray);
+  background: t(white);
+  color: t(darkGray);
+  font-size: 0.813em;
+  border-radius: 4px;
+}
+
+.THIS .selectContainer {
+  position: relative;
+}
+
+.THIS .selectContainer::after {
+  content: ' ';
+  pointer-events: none;
+  border: solid ;
+  border: 6px solid transparent;
+  border-top: 6px solid t(darkGray);
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 42%;
+}

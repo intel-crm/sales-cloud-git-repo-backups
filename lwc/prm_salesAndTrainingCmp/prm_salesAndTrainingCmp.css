@@ -1,0 +1,46 @@
+.THIS .outer-div {
+  position: relative;
+}
+
+.THIS .spinner {
+  position: relative;
+}
+
+.my-icon {
+  padding: 0.3rem;
+  margin-left: -1rem;
+  margin-top: 4px;
+}
+
+.performance-header-text {
+font-weight: bold;
+padding-right: 2px;
+}
+
+.performace-alert-text {
+  font-weight: bold;
+  padding-right: 2px;
+  color:#ff0000;
+  }
+
+.performance-help {
+padding-right: 1px;
+position: relative;
+top: -3px;
+}
+
+.performance-refresh {
+position: relative;
+top: 4px;
+}
+
+.performance-value {
+padding-left: 5px;
+}
+
+.performance-value-text {
+padding-left: 2px;
+}
+.performance-template{
+text-align: justify;
+}

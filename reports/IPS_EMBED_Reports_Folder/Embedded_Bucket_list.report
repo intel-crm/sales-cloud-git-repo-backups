@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_54921733</developerName>
+        <masterLabel>Agents</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Mohamed Shaharris Mohd Tahir</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Choon Keat Tan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jobumon Purackyil Jose</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wei Keong Tan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arun Rajan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chew Lee Ooi</sourceValue>
+            </sourceValues>
+            <value>UST</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Alex Rojas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Antonio Meissimilly</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Carlos Aguilar</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>David Gamboa</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gabriel Salas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gabriel Thomas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Georgios Babos</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jimmy Manley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jorge Rojas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Josue Cubillo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Juan Nunez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marcelo Montero</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marco Flores</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tomas Evans</sourceValue>
+            </sourceValues>
+            <value>Sykes CR HW</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Bozhi Jiang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leon Alexis Meneses</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wenqiang Ding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Xiaole Shen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Xiaoling Zhou</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yangming Luo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alan Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Liangliang Yuan (Makers)</sourceValue>
+            </sourceValues>
+            <value>Sykes SH</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Adolfo Sanchez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>JaimeX A Lizarme</sourceValue>
+            </sourceValues>
+            <value>Sykes CR SW</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_88859687</developerName>
+        <masterLabel>Teleperformance</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Drenley Alvarado Martinez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Andres Carvajal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leonel Centeno</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Christopher Vargas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ernesto Diaz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emmanuel Aviles</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Luis Hernandez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jonathan Arroyo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Juan Pablo Alvarado</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Max Borbon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Noelia Avila</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Orlando Chavez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pablo Montero</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Rojas, Andres</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Diana Villanea</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DiegoX A Villalobos</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Juan Montero</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sergio Alvarado</sourceValue>
+            </sourceValues>
+            <value>Teleperformance</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_72124238</developerName>
+        <masterLabel>WWPSE</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Joseph Chai Boon Cheah</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Boon Jiuan Chong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>David Cox</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Casey Haas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stephen Jin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Clifford Mann Jr</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Joseph Moules Jr</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arun Preetham</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ali Rabbani</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Seah Heong Yeap</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Zachary N Kvick</sourceValue>
+            </sourceValues>
+            <value>WWPSE</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>BucketField_54921733</field>
+    </columns>
+    <columns>
+        <field>BucketField_72124238</field>
+    </columns>
+    <columns>
+        <field>BucketField_88859687</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Co_Owner__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Project_Case__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>PRIORITY</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Organization__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Platform_Name__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>CONTACT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_End_Customer__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Intel_Sup_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Issue_source__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Legacy_IPS_ID__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Self_Assigned__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_GEC_Case__c</field>
+    </columns>
+    <description>This report is a template with buckets setup for WWPSE&apos;s and Agents</description>
+    <filter>
+        <booleanFilter>1 AND (2 or 3)</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_Org1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>007</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_54921733</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>UST,Sykes CR HW,Sykes SH,Sykes CR SW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_72124238</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>WWPSE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ICS_Embedded_Bucket_list</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>LAST_FISCALWEEK</interval>
+    </timeFrameFilter>
+</Report>

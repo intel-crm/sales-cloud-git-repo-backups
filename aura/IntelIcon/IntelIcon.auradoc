@@ -1,0 +1,45 @@
+<aura:documentation>
+	<aura:description>
+    <p>ISGIcon Component Component</p>
+
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 6/24/2019</p>
+    <p>CurrentVersion: 1</p>
+
+		<p>4 icon types:</p>
+
+			<ul>
+				<li>lightning <br/>
+						<p>iconName: attribute to update the lightning icon name.</p>
+						<p>example: iconType="lightning" iconName="standard:avatar"</p>
+
+				</li>
+				<li>fontawesome <br/>
+					<p>iconName: attribute to update the fontawesome icon name.</p>
+					<p>example: iconType="fontawesome" iconName="fa-globe"</p>
+				</li>
+				<li>svg <br/>
+					<p>iconName: attribute to update the icon name.</p>
+					<p>iconColor: attribute to add a background color. Each new background color needs to be added to the ISGIcon.css .</p>
+					<p>svgResource: attribute to add a differnt static resource folder. By default it is using ISG_Resources</p>
+					<p>example: iconColor="blue" iconType="svg" iconName="/images/gauge/Gauge01_isolated.svg"</p>
+				</li>
+				<li>image <br/>
+					<p>imgUrl: attribute to add a static image url.</p>
+					<p>example: imgUrl="https://via.placeholder.com/50/1e2e43/FFFFFF"</p>
+
+				</li>
+			</ul>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p></p>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+
+
+</aura:documentation>

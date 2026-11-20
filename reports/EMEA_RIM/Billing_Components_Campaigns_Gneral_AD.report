@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Campaign.Core_MDF_Reimbursement_Amount_Amt__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Campaign.Core_MDF_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>IPA - Bristal org_CCPTest</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Campaign.Core_MDF_Host_Region_cd__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>START_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2025</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Completed,In Progress,Pending Approval,Planned,Proposal Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Campaign.Core_MDF_Budget_Type_txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Proposal I MDF,Proposal II MDF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Campaign.Core_MDF_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IPA - Stone,IPA - PC Components,IPA - Dante International,IPA - Scan Computers,IPA - VRS,IPA - NTT System,IPA - Action,IPA - BAB Distribution GmbH (DO NOT USE - EOL),IPA - Aseminfor,IPA - Komputronik,IPA - ITOPYA.COM,IPA - Kosatec Computer,IPA - Incehesap Sanal Magazacilik,IPA - X-KOM,IPA - PC Specialist,IPA - API Computerhandels,IPA - FOKUS,IPA - Nxpower,IPA - Tekno Service,IPA - Casper,IPA - Wortmann,IPA - Brevi,IPA - Bluechip,IPA - Megekko,IPA - Inet AB,IPA - Komplett,IPA - Ocuk,IPA - jpik,IPA - Technopc,IPA - Caseking,IPA - Golden Triangle Technology,IPA - Schenker Technologies,IPA - Boston,IPA - Groupe Cybertek</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Campaign.Core_MDF_Focus_Area_nm__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CAMPAIGN_STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Campaign.Core_MDF_Account__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Billing Components Campaigns Gneral (AD)</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignList</reportType>
+    <scope>orgAll</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+</Report>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SPECASGDADMIN</name>
+    <style>none</style>
+    <subject>New Accounts assigned Specialty or Select benefit</subject>
+    <textOnly>Hello,
+
+Here are the list of accounts assigned to %Specialty% .
+%account Name 1%
+
+If there are any questions, please contact IPA admin team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

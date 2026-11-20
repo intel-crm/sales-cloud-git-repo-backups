@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>OIR Config table</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>OIR Config tables</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Request Status --></label>
+        <name>PSS_Access_Request_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled Offer</masterLabel>
+            <translation><!-- Cancelled Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Team Review</masterLabel>
+            <translation><!-- Core Team Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pass Along</masterLabel>
+            <translation><!-- Pass Along --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RRK Enhancement</masterLabel>
+            <translation><!-- RRK Enhancement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RRK Submitted</masterLabel>
+            <translation><!-- RRK Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Application On --></label>
+        <name>PSS_Application_On_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+            <translation><!-- Asset &amp; Operations Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+            <translation><!-- Control Optimization &amp; Autonomy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+            <translation><!-- Energy Monitoring &amp; Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environment Monitoring</masterLabel>
+            <translation><!-- Environment Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Wellness Monitoring</masterLabel>
+            <translation><!-- Human Wellness Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Media</masterLabel>
+            <translation><!-- Interactive Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics &amp; Tracking</masterLabel>
+            <translation><!-- Logistics &amp; Tracking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machine Condition Monitoring</masterLabel>
+            <translation><!-- Machine Condition Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Inspection</masterLabel>
+            <translation><!-- Product Inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Situational Monitoring</masterLabel>
+            <translation><!-- Situational Monitoring --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Business Opportunity --></label>
+        <name>PSS_Business_Opportunity_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cloud Service Provider --></label>
+        <name>PSS_Cloud_Service_Provider_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Alibaba Cloud</masterLabel>
+            <translation><!-- Alibaba Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amazon Web Services</masterLabel>
+            <translation><!-- Amazon Web Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Google Cloud Platform</masterLabel>
+            <translation><!-- Google Cloud Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM Cloud</masterLabel>
+            <translation><!-- IBM Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JCloud/JD.com</masterLabel>
+            <translation><!-- JCloud/JD.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft Azure</masterLabel>
+            <translation><!-- Microsoft Azure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private/On-Premises</masterLabel>
+            <translation><!-- Private/On-Premises --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP Cloud Platform</masterLabel>
+            <translation><!-- SAP Cloud Platform --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>PSS_Company_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company URL --></label>
+        <name>PSS_Company_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- CreatedDate --></label>
+        <name>PSS_CreatedDate_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>PSS_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Date of Completion --></label>
+        <name>PSS_Expected_Date_of_Completion_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IOTG Business Unit --></label>
+        <name>PSS_IOTG_Business_Unit_Nm__c</name>
+        <picklistValues>
+            <masterLabel>ISD</masterLabel>
+            <translation><!-- ISD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RBHE</masterLabel>
+            <translation><!-- RBHE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMC</masterLabel>
+            <translation><!-- VMC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Internal Division Mapping --></label>
+        <name>PSS_Internal_Division_Mapping_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Aggregators</masterLabel>
+            <translation><!-- Aggregators --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP RRK</masterLabel>
+            <translation><!-- CSP RRK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSS-Video</masterLabel>
+            <translation><!-- DSS-Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISD</masterLabel>
+            <translation><!-- ISD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV</masterLabel>
+            <translation><!-- ISV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RSD</masterLabel>
+            <translation><!-- RSD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LastModifiedDate --></label>
+        <name>PSS_LastModifiedDate_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Value --></label>
+        <name>PSS_Market_Value_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>PSS_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Industry --></label>
+        <name>PSS_Other_Industry_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking/Financial Services</masterLabel>
+            <translation><!-- Banking/Financial Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming &amp; Entertainment</masterLabel>
+            <translation><!-- Gaming &amp; Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health &amp; Life Sciences</masterLabel>
+            <translation><!-- Health &amp; Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Type --></label>
+        <name>PSS_Partner_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>3rd Party</masterLabel>
+            <translation><!-- 3rd Party --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aggregators</masterLabel>
+            <translation><!-- Aggregators --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSS</masterLabel>
+            <translation><!-- DSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV</masterLabel>
+            <translation><!-- ISV --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>PSS_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Use Case --></label>
+        <name>PSS_Primary_Use_Case_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+            <translation><!-- Asset &amp; Operations Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+            <translation><!-- Control Optimization &amp; Autonomy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+            <translation><!-- Energy Monitoring &amp; Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environment Monitoring</masterLabel>
+            <translation><!-- Environment Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Wellness Monitoring</masterLabel>
+            <translation><!-- Human Wellness Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Media</masterLabel>
+            <translation><!-- Interactive Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics &amp; Tracking</masterLabel>
+            <translation><!-- Logistics &amp; Tracking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machine Condition Monitoring</masterLabel>
+            <translation><!-- Machine Condition Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Inspection</masterLabel>
+            <translation><!-- Product Inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Situational Monitoring</masterLabel>
+            <translation><!-- Situational Monitoring --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Prioritization --></label>
+        <name>PSS_Prioritization_Nm__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region For Solution --></label>
+        <name>PSS_Region_For_Solution_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Africa/Middle East</masterLabel>
+            <translation><!-- Africa/Middle East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas</masterLabel>
+            <translation><!-- Americas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia/Pacific/Japan</masterLabel>
+            <translation><!-- Asia/Pacific/Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia/New Zealand</masterLabel>
+            <translation><!-- Australia/New Zealand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Europe</masterLabel>
+            <translation><!-- Europe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Southeast Asia</masterLabel>
+            <translation><!-- Southeast Asia --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Id --></label>
+        <name>PSS_SolutionId_Id__c</name>
+        <relationshipLabel><!-- OIR Config tables --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Solution Description --></label>
+        <name>PSS_Solution_Description_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Provider Name --></label>
+        <name>PSS_Solution_Provider_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Title --></label>
+        <name>PSS_Solution_Title_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Vertical --></label>
+        <name>PSS_Solution_Vertical_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Industrial/Manufacturing</masterLabel>
+            <translation><!-- Industrial/Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart City</masterLabel>
+            <translation><!-- Smart City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video</masterLabel>
+            <translation><!-- Video --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Target Application On --></label>
+        <name>PSS_Target_Application_On_Txt__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

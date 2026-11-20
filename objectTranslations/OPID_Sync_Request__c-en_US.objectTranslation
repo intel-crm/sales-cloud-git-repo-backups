@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>OPID Sync Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>OPID Sync Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- OPID Account --></label>
+        <name>OPID_Account__c</name>
+        <relationshipLabel><!-- OPID Sync Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- OP_CIMID --></label>
+        <name>OP_CIMID__c</name>
+    </fields>
+    <fields>
+        <label><!-- RequestId --></label>
+        <name>RequestId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason --></label>
+        <name>Status_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sync Response Received</masterLabel>
+            <translation><!-- Sync Response Received --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

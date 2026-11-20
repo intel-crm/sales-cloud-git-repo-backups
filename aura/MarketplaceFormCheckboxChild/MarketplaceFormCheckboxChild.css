@@ -1,0 +1,52 @@
+.THIS.topLevel .checkboxPadding {
+    padding: 0;
+}
+
+.THIS.topLevel .THIS .checkboxPadding,
+.THIS:not(.topLevel) .checkboxPadding {
+    padding: 0 0 0 1.5em;
+}
+
+.THIS.topLevel .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel) .THIS .checkboxPadding {
+    padding: 0 0 0 3em;
+}
+
+.THIS.topLevel .THIS .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel) .THIS .THIS .checkboxPadding {
+    padding: 0 0 0 4.5em;
+}
+
+.THIS.topLevel .THIS .THIS .THIS .THIS .checkboxPadding,
+.THIS:not(.topLevel) .THIS .THIS .THIS .checkboxPadding {
+    padding: 0 0 0 6em;
+}
+
+.THIS .childTextInputPadding {
+    padding-left: 1.5em;
+}
+.THIS .childTextInputPadding > div > div {
+    padding-bottom: 0.5em;
+}
+
+.THIS .childRadioInputPadding {
+    padding-left: 1.5em;
+}
+.THIS .childRadioInputPadding > div > div {
+    padding-bottom: 0;
+}
+.THIS .prereleaseLabel {
+    display: inline-block;
+    background: t(blue);
+    color: t(white);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1rem;
+    padding: 0 .2rem;
+}
+
+.THIS .prerelease > [lightning-input_input-host],
+.THIS .prerelease .slds-form-element__control,
+.THIS .prerelease .slds-form-element__control .slds-checkbox {
+    display: inline;
+}

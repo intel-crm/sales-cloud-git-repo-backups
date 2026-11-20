@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_UK</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance Gold</subject>
+    <textOnly>Intel® Partner Alliance Gold
+
+
+{!Contact.FirstName},
+
+Congratulations! Your company has been upgraded to Intel® Partner Alliance Gold. Take advantage of these membership benefits:
+
+Enjoy invitations to partner-only events offering the latest product information
+Earn points on purchases and activities and redeem them for a range of business rewards
+Access professional web, social, and email marketing assets to generate demand
+
+Log in to access tools and resources.
+
+Get started today
+
+
+Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+
+Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

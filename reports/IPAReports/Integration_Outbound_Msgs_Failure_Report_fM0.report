@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Integration_Outbound_Message__c.PRM_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
+    </columns>
+    <columns>
+        <field>Core_Integration_Outbound_Message__c.Core_Tags__c</field>
+    </columns>
+    <columns>
+        <field>Core_Integration_Outbound_Message__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_Integration_Outbound_Message__c.Core_Status_Message__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>Core_Integration_Outbound_Message__c.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Failed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Integration_Outbound_Message__c.Core_MessageType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Integration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Integration_Outbound_Message__c.Core_MessageType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Contact Integration</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Integration Outbound Msgs Failure Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Integration_Outbound_Message__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Integration_Outbound_Message__c.Core_Created_Date_Time__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

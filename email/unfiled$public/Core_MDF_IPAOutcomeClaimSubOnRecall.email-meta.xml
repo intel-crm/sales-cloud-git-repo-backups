@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <available>true</available>
+    <description>This email is sent to IPA Claim Submitter when a claim is recall</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Email_IPAOutcomeClaimSubmitterOnRecall</name>
+    <style>none</style>
+    <subject>Claim Resubmission Required</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

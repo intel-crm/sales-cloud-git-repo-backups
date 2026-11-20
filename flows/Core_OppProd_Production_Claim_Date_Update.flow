@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_OppProd_Claim_Date_Clear</name>
+        <label>Core OppProd Claim Date Clear</label>
+        <locationX>520</locationX>
+        <locationY>357</locationY>
+        <defaultConnector>
+            <targetReference>Core_OppProd_Production_Claim_Date_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Cliam_Date_Clear</name>
+            <conditionLogic>(1 AND 2) OR (3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNewRecord</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Claim_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_DW_Claim_date_to_null</targetReference>
+            </connector>
+            <label>Core_Cliam_Date_Clear</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_OppProd_Production_Claim_Date_Clear_and_Populate</name>
+        <label>Core_OppProd_Production_Claim_Date_Clear and Populate</label>
+        <locationX>563</locationX>
+        <locationY>803</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_OppProd_Production_Claim_Date_Clear</name>
+            <conditionLogic>(1 AND 2) OR (3 AND (4 OR 5 OR 6) AND (7 OR 8 OR 9))</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNewRecord</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Production_Claim_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Win Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Win Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Claim_date_to_NULL</targetReference>
+            </connector>
+            <label>Core_OppProd_Production_Claim_Date_Clear</label>
+        </rules>
+        <rules>
+            <name>Core_OppProd_Production_Claim_Date_Population</name>
+            <conditionLogic>1 AND 2</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Win</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Production_Claim_Date_to_Current_date</targetReference>
+            </connector>
+            <label>Core_OppProd_Production_Claim_Date_Population</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_OppProd_Production_Claim_Date_Update</name>
+        <label>Core_OppProd_Production_Claim_Date_Update</label>
+        <locationX>373</locationX>
+        <locationY>525</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Production_Claim_Date_Update</name>
+            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Production</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Production_Claim_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_OppProd_Production_Claim_Date_Clear_and_Populate</targetReference>
+            </connector>
+            <label>Production Claim Date Update</label>
+        </rules>
+    </decisions>
+    <description>Merged two flows
+1.Core_OppProd_Claim_Date_Clear
+2.Core_OppProd_Production_Claim_Date_Update</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>IsNewRecord</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>v_currentdatetime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Core_OppProd_Production_Claim_Date_Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_OppProd_Production_Claim_Date_Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Production_Claim_Date_to_Current_date</name>
+        <label>Production Claim Date to Current date</label>
+        <locationX>853</locationX>
+        <locationY>795</locationY>
+        <inputAssignments>
+            <field>Core_Production_Claim_Date__c</field>
+            <value>
+                <elementReference>v_currentdatetime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Claim_date_to_NULL</name>
+        <label>Update Claim date to NULL</label>
+        <locationX>295</locationX>
+        <locationY>802</locationY>
+        <inputAssignments>
+            <field>Core_Production_Claim_Date__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_DW_Claim_date_to_null</name>
+        <label>Update DW Claim date to null</label>
+        <locationX>877</locationX>
+        <locationY>343</locationY>
+        <connector>
+            <targetReference>Core_OppProd_Production_Claim_Date_Update</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Claim_Date__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>401</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Core_OppProd_Claim_Date_Clear</targetReference>
+        </connector>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

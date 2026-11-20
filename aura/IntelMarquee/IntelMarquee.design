@@ -1,0 +1,9 @@
+<design:component>
+    <design:attribute name="heading" label="Heading (Note: On l2 Page type this is overridden custom labels and category data)"/>
+    <design:attribute name="text" label="Text (Note: On l2 Page type this is overridden by custom labels and category data)" />
+    <design:attribute name="showSignIn" label="Show Sign In (Not Used)" />
+    <design:attribute name="showBreadcrumbs" label="Show Breadcrumbs" />
+    <design:attribute name="size" label="Desktop min height" datasource="x-short, short, medium, tall" default="short"/>
+    <design:attribute name="type" label="Page Type (Determines breadcrumb data, as well as heading display if on L2search)" datasource="l0, l1, l2search, generic, partner, product, dashboard, partners, offerings, createOffering, submitOffering, leads, leadDetail, compareofferings" default="generic"/>
+	<design:attribute name="analyticsPageType" label="PageType for analytics" />
+</design:component>

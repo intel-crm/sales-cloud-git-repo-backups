@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Summary: Opportunities Requiring Review in Sales CRM</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+    
+    <!-- Header Section -->
+    <table style="background-color: #0071c5; width: 100%; border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td style="padding-left: 50px; border: none;">
+                    <div style="color: white;">
+                        <h1 style="margin: 20px 0; font-size: 24px;">Weekly Summary: Opportunities Requiring Review in Sales CRM</h1>
+                    </div>
+                </td>
+               <td style="border: none; padding-right: 20px; width: 100px;" align="right">
+				<img src="[LOGO_URL]" 
+					 width="50" 
+					 height="40" 
+					 style="width: 50px !important; height: 40px !important; min-width: 80px !important; min-height: 40px !important; max-width: 80px !important; max-height: 40px !important;" 
+					 alt="Intel Logo" />
+			  </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- Email Body -->
+    <div style="padding: 30px; background-color: #ffffff; color: #333333; line-height: 1.6;">
+        
+        <p>Hello [NAME] ,</p>
+        
+        <p>The following opportunities under your team have remained without updates for more than 14 days after an SLA breach in the Sales CRM.</p>
+        
+        <p>To ensure visibility and progress, please review the list below and work with the corresponding sellers to take the necessary action. If a listed seller is inactive, please help update the opportunity with the appropriate owner.</p>
+        
+        Opportunities Requiring Attention:<br/>
+            [REQUIRED_FIELDS]
+  
+        <p style="margin-top: 30px;">
+            You can view all opportunities currently breaching SLAs in the following report: 
+            <a href="[REPORT_LINK]" >Opportunity Report</a>
+        </p>
+        
+        <p>This is a visibility summary to support data quality and ensure timely updates across your team's pipeline.</p>
+        
+        <p style="margin-top: 40px;">
+            Sales Excellence
+        </p>
+        
+    </div>
+
+</body>
+</html>

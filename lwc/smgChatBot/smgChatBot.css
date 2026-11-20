@@ -1,0 +1,213 @@
+.smg-chatbot-iframe {
+  /* Calculate height: 75vh minus 16vh for tab navigation and spacing */
+  height: calc(80vh - 15vh);
+  min-height: 400px;
+  max-height: calc(90vh - 15vh);
+  width: 100%;
+  display: block;
+}
+
+/* Tab Container */
+.slds-tabs_scoped {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tab Navigation */
+.slds-tabs_scoped__nav {
+  background-color: #f3f2f2;
+  border-bottom: 1px solid #c9c7c5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  flex-shrink: 0; /* Prevent tab navigation from shrinking */
+}
+
+.slds-tabs_scoped__item {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.slds-tabs_scoped__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background-color: #c9c7c5;
+}
+
+/* Tab Links */
+.slds-tabs_scoped__link {
+  display: block;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: #3e3e3c;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  white-space: nowrap;
+  min-width: 120px;
+  text-align: center;
+}
+
+.slds-tabs_scoped__link:hover {
+  background-color: #ffffff;
+  color: #0176d3;
+  text-decoration: none;
+}
+
+.slds-tabs_scoped__link:focus {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px #0176d3;
+  z-index: 1;
+}
+
+.slds-tabs_scoped__link.slds-is-active {
+  background-color: #ffffff;
+  color: #0176d3;
+  font-weight: 600;
+  border-bottom: 3px solid #0176d3;
+  z-index: 1;
+}
+
+.slds-tabs_scoped__link.slds-is-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  right: -1px;
+  height: 3px;
+  background-color: #0176d3;
+}
+
+/* Tab Content */
+.slds-tabs_scoped__content {
+  background-color: #ffffff;
+  border: 0;
+  padding: 0;
+  position: relative;
+  flex: 1; /* Take remaining space after tab navigation */
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+.slds-show {
+  display: block !important;
+}
+
+.slds-hide {
+  display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slds-tabs_scoped__link {
+    padding: 0.75rem 1rem; /* 24px total height instead of 32px */
+    font-size: 0.8125rem;
+    min-width: 100px;
+  }
+  
+  .slds-tabs_scoped__nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1200px) {
+  .smg-chatbot-iframe {
+    height: calc(75vh - 15vh) !important;
+    max-height: calc(900px - 15vh) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .smg-chatbot-iframe {
+    height: calc(60vh - 8vh) !important; /* Mobile-optimized: 50vh content area with less overhead */
+    min-height: 300px !important;
+  }
+}
+
+/* Access Denied Styling */
+.access-denied-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+/* Centered Access Denied Styling */
+.access-denied-container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: calc(70vh);
+  padding: 2rem;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.access-denied-container .slds-illustration,
+.access-denied-container-centered .slds-illustration {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.access-denied-container .slds-illustration__svg,
+.access-denied-container-centered .slds-illustration__svg {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem auto;
+}
+
+.access-denied-container .slds-text-heading_medium,
+.access-denied-container-centered .slds-text-heading_medium {
+  color: #080707;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.access-denied-container .slds-text-body_regular,
+.access-denied-container-centered .slds-text-body_regular {
+  color: #706e6b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ViTA Link Styling */
+.vita-link {
+  color: #0176d3;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.vita-link:hover {
+  color: #014486;
+  text-decoration: none;
+  border-bottom: 1px solid #0176d3;
+}
+
+.vita-link:focus {
+  outline: 2px solid #0176d3;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

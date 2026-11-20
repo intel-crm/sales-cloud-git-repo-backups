@@ -1,0 +1,29 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="1" >
+<![CDATA[<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">A Customer Excellence Survey response has been received
+from your customer.&nbsp; <o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>Contact Name: </b>{!MaritzCX__Survey_Response__c.MaritzCX__Contact_Id__c}<b><o:p></o:p></b></p>
+
+<p class="MsoNoSpacing"><b>Account:</b>{!MaritzCX__Survey_Response__c.MaritzCX__Account__c}</p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b><u><span style="color: rgb(0, 112, 192);"><a href="https://intel.my.salesforce.com/{!MaritzCX__Survey_Response__c.Core_Contact_Id__c}">Click Here</a></span></u></b>&nbsp;to view their response.<o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">While your customer has not raised an issue on one of our
+Key Indicators (Delight, Velocity, Account Management, Partnership, Technical
+Expertise or Operations Support), be sure to review their feedback and take action where necessary.<o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p></o:p></p><p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">Your customer’s feedback on how we are doing and where we
+need to improve should be leveraged in discussions with internal business
+units, management teams and/or customer visits.</span></p><p class="MsoNoSpacing" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></p><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 7.5pt; background-color: rgb(255, 255, 255);">This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.&nbsp;<br><br>Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA&nbsp;</span><span style="font-family: Arial, sans-serif; font-size: 7.5pt; background-color: rgb(255, 255, 255);"><a href="http://www.intel.com/">www.intel.com</a></span><span style="color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 7.5pt; background-color: rgb(255, 255, 255);">&nbsp;(408) 765-8080</span></div>]]></td>
+</tr>
+</table>

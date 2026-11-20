@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IQR Products Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IQR Products Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- BU Operation Code --></label>
+        <name>Core_BU_Operation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Organization Name --></label>
+        <name>Core_Business_Org_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name EPM ID --></label>
+        <name>Core_Code_Name_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Core_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code Short Name --></label>
+        <name>Core_Division_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code --></label>
+        <name>Core_Division_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family Name --></label>
+        <name>Core_Family_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Product Name --></label>
+        <name>Core_Forecast_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code Short Name --></label>
+        <name>Core_Group_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code --></label>
+        <name>Core_Group_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>Core_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsLatest --></label>
+        <name>Core_IsLatest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Indicator --></label>
+        <name>Core_Is_Custom_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is IQR Visible --></label>
+        <name>Core_Is_IQR_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Id --></label>
+        <name>Core_Item_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Memory Capacity --></label>
+        <name>Core_Mem_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processing Status --></label>
+        <name>Core_Processing_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>Core_Processor_Number_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family EPM ID --></label>
+        <name>Core_Product_Family_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Core_Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group EPM ID --></label>
+        <name>Core_Product_Group_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Group --></label>
+        <name>Core_Product_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name EPM ID --></label>
+        <name>Core_Product_Name_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Core_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series EPM ID --></label>
+        <name>Core_Product_Series_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Core_Product_Series__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>Core_Product_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type EPM ID --></label>
+        <name>Core_Product_Type_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique ID --></label>
+        <name>Core_Unique_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,38 @@
+.popUpCustom {
+  padding-left: 50%;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 80px;
+}
+
+.hoverCss:hover {
+  background-color: inherit;
+}
+
+.div-color {
+  background-color: #c2dcf3;
+}
+
+.div-color:hover {
+  background-color: #c2dcf3;
+}
+
+.searchBar {
+  --slds-c-input-radius-border: 3rem;
+}
+
+.noRecordText{
+  font-size:140%;
+  padding-top:5%;
+  font-weight:400;
+  text-align:center
+}
+
+.Success{
+  color: green;
+}
+
+.Failed{
+  color:red;
+}

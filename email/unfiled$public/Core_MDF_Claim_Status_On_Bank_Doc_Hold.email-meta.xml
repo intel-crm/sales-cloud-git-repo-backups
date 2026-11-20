@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <available>true</available>
+    <description>Payment Admins will be notified when claim is on Bank Document Hold</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Claim_Status_On_Bank_Doc_Hold</name>
+    <style>none</style>
+    <subject>Claim #  is put on Bank Document Hold awaiting your action</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

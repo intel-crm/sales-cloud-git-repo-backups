@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ObjectRecType_Budget_FieldSetMap</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ObjectRecType_Budget_FieldSetMaps</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Close Days --></label>
+        <name>Core_MDF_Activity_Close_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Record Type Developer Name --></label>
+        <name>Core_MDF_Activity_RecordType_txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Co_GTM</masterLabel>
+            <translation><!-- Core_MDF_Co_GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Ecosystem_Extension_Fund</masterLabel>
+            <translation><!-- Core_MDF_Ecosystem_Extension_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_CoMarketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Allocation Record Type Developer Name --></label>
+        <name>Core_MDF_Allocation_RecordType_txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Co_GTM</masterLabel>
+            <translation><!-- Core_MDF_Co_GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Ecosystem_Extension_Fund</masterLabel>
+            <translation><!-- Core_MDF_Ecosystem_Extension_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_CoMarketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Budget Cap Record Type Developer Name --></label>
+        <name>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Budget_Cap</masterLabel>
+            <translation><!-- Core_MDF_CCP_Budget_Cap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Budget_Type_Cap</masterLabel>
+            <translation><!-- Core_MDF_IPA_Budget_Type_Cap --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Name --></label>
+        <name>Core_MDF_Channel_Program_Name_txt__c</name>
+        <picklistValues>
+            <masterLabel>Channel MDF</masterLabel>
+            <translation><!-- Channel MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client CoMarketing Fund</masterLabel>
+            <translation><!-- Client CoMarketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client CoMarketing Fund Boost</masterLabel>
+            <translation><!-- Client CoMarketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoGTM</masterLabel>
+            <translation><!-- CoGTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center CoMarketing Fund</masterLabel>
+            <translation><!-- Data Center CoMarketing Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecosystem Extension Fund</masterLabel>
+            <translation><!-- Ecosystem Extension Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider CoMarketing Fund</masterLabel>
+            <translation><!-- Service Provider CoMarketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Channel Program Name --></label>
+        <name>Core_MDF_Channel_Program_txt__c</name>
+        <picklistValues>
+            <masterLabel>Channel MDF</masterLabel>
+            <translation><!-- Channel MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+            <translation><!-- Client Co-Marketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-GTM</masterLabel>
+            <translation><!-- Co-GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter</masterLabel>
+            <translation><!-- Datacenter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecosystem Extension Fund</masterLabel>
+            <translation><!-- Ecosystem Extension Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+            <translation><!-- Service Provider Co-Marketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Claim Stage Record Type Developer Name --></label>
+        <name>Core_MDF_ClaimStage_RecordType_txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Claim_CCF_DCF_Batch_Record</masterLabel>
+            <translation><!-- Core_MDF_Claim_CCF_DCF_Batch_Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Claim_RMF_Batch_Record</masterLabel>
+            <translation><!-- Core_MDF_Claim_RMF_Batch_Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Claim_SPCF_Batch_Record</masterLabel>
+            <translation><!-- Core_MDF_Claim_SPCF_Batch_Record --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Claim Activity Name Swap --></label>
+        <name>Core_MDF_Claim_Activity_Name_Swap_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Record Type Developer Name --></label>
+        <name>Core_MDF_Claim_RecordType_txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_Co_Marketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_Co_Marketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_Co_Marketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_Co_Marketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Co_GTM</masterLabel>
+            <translation><!-- Core_MDF_Co_GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_Co_Marketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_Co_Marketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Ecosystem_Extension_Fund</masterLabel>
+            <translation><!-- Core_MDF_Ecosystem_Extension_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_IPA_Account_Based</masterLabel>
+            <translation><!-- Core_MDF_IPA_Account_Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_Co_Marketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_Co_Marketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Enable Fund Reservation --></label>
+        <name>Core_MDF_Enable_Fund_Reservation_chk__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Master Group Name --></label>
+        <name>Core_MDF_External_Master_Group_Name_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_CCFB_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_CCFB_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_CCF_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_CCF_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Channel_MDF_EXTERNAL_All</masterLabel>
+            <translation><!-- Core_MDF_CCP_Channel_MDF_EXTERNAL_All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Co_GTM_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_Co_GTM_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_DCF_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_DCF_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_EEF_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_EEF_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_IPA_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_IPA_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Retail_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_Retail_EXTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_SPCF_EXTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_SPCF_EXTERNAL_ALL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Internal Master Group Name --></label>
+        <name>Core_MDF_Internal_Master_Group_Name_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_CCFB_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_CCFB_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_CCF_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_CCF_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Channel_MDF_INTERNAL_All</masterLabel>
+            <translation><!-- Core_MDF_CCP_Channel_MDF_INTERNAL_All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_Co_GTM_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_DCF_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_DCF_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_EEF_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_EEF_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_IPA_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_IPA_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_Retail_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_Retail_INTERNAL_ALL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_CCP_SPCF_INTERNAL_ALL</masterLabel>
+            <translation><!-- Core_MDF_CCP_SPCF_INTERNAL_ALL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- POP Mandatory --></label>
+        <name>Core_MDF_POP_Mandatory_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Record Type Developer Name --></label>
+        <name>Core_MDF_Payment_RecordType_txt__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Channel_MDF_Account_Based</masterLabel>
+            <translation><!-- Core_MDF_Channel_MDF_Account_Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_Co_Marketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_Co_Marketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_Co_Marketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_Co_Marketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_Co_Marketing_Fund_MDF</masterLabel>
+            <translation><!-- Core_MDF_Client_Co_Marketing_Fund_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Co_GTM</masterLabel>
+            <translation><!-- Core_MDF_Co_GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_Co_Marketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_Co_Marketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Ecosystem_Extension_Fund</masterLabel>
+            <translation><!-- Core_MDF_Ecosystem_Extension_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Intel_Partner_Alliance</masterLabel>
+            <translation><!-- Core_MDF_Intel_Partner_Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_RMF_MD</masterLabel>
+            <translation><!-- Core_MDF_RMF_MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_RMF_MDF</masterLabel>
+            <translation><!-- Core_MDF_RMF_MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Retail_Marketing_Funds</masterLabel>
+            <translation><!-- Core_MDF_Retail_Marketing_Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_Co_Marketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_Co_Marketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_cd__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isProgramBased --></label>
+        <name>Core_MDF_isProgramBased_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- isProposalBased --></label>
+        <name>Core_MDF_isProposalBased__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

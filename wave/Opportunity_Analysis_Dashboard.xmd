@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <field>waterfal_detail_1.Opportunity.Account.Name</field>
+        <isDerived>false</isDerived>
+        <label>Account Name</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <measures>
+        <field>lost_cancelled_metrics.cancelled_percentage</field>
+        <formatCustomFormat>[&quot;#,###.#%&quot;,100]</formatCustomFormat>
+        <formatDecimalSeparator>.</formatDecimalSeparator>
+        <formatThousandsSeparator>,</formatThousandsSeparator>
+        <isDerived>false</isDerived>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>lost_cancelled_metrics.lost_percentage</field>
+        <formatCustomFormat>[&quot;#,###.#%&quot;,100]</formatCustomFormat>
+        <formatDecimalSeparator>.</formatDecimalSeparator>
+        <formatThousandsSeparator>,</formatThousandsSeparator>
+        <isDerived>false</isDerived>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_8.Win Rate</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_10.Sales Velocity</field>
+        <formatCustomFormat>[&quot;$#,###.00&quot;,1]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <sortIndex>3</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Opportunity_Analysis_Dashboard</waveVisualization>
+</WaveXmd>

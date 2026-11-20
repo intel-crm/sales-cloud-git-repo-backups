@@ -1,0 +1,26 @@
+<aura:component controller="Core_Reject_Prospect" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="public">
+	 <aura:attribute name="alertMessage" type="String"/>
+     <aura:attribute name="Spinner" type="Boolean" default ="false"/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+     <div class= "slds-spinner_container slds-is-relative">
+    <aura:if isTrue="{!v.Spinner}">
+       <lightning:spinner alternativeText="Loading" size="medium"/>
+        <aura:set attribute="else">
+            <aura:if isTrue="{!(v.alertMessage != null)}">
+               <!-- <div class="slds-text-heading_small">{!v.alertMessage}</div>-->
+                <div class="slds-text-heading_small" style="height: 120px;">
+                    {!v.alertMessage}
+                </div>
+                 <div style="float: right;margin-bottom: -246px;">
+                    <lightning:button label="Ok" variant="brand" onclick="{!c.cancelPopup}"/>
+                </div>
+
+            </aura:if>  
+            
+        </aura:set>
+    </aura:if>
+    
+    </div>
+</aura:component>

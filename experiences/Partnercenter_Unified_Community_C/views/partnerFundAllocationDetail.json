@@ -1,0 +1,111 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "94c2d2e0-3e60-469f-bda2-0275176e5f6a",
+  "label" : "Partner Fund Allocation Detail",
+  "regions" : [ {
+    "id" : "90ea5834-b843-47dd-a386-8db8b8eec1ac",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "8b9633b4-ab33-4014-8248-7cc88f075c36",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "eb347905-484e-4a74-bed3-9e339d5cbae8",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "523d7ab7-8a10-463a-9019-fc6972b5705b",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "f2a70343-924b-4083-b56e-4c56c82d4dd1",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "DETAILS"
+          }, {
+            "UUID" : "afa86cc0-dd3d-4036-b3b0-dc5f416f42cb",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "RELATED"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "523d7ab7-8a10-463a-9019-fc6972b5705b",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "ad7363ae-652a-4ddd-ab60-6e189064a42a",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "f2a70343-924b-4083-b56e-4c56c82d4dd1",
+        "regionLabel" : "DETAILS",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "fieldsToMask" : "",
+            "internalUserName" : "Intel System User",
+            "objectApiName" : "PartnerFundAllocation",
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "c:core_MDF_HistoryComponent",
+          "id" : "b9634311-90af-4c36-bfd8-721132bd21c7",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "afa86cc0-dd3d-4036-b3b0-dc5f416f42cb",
+        "regionLabel" : "RELATED",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e31c596c-3c31-423b-8591-e048081ec501",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "9d34b05f-ef67-4c0a-925f-d3f1a79c12df",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d3ce388c-b645-4fb2-9d04-6fbf05f91da7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-0R8"
+}

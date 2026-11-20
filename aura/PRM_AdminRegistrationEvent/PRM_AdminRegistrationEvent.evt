@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="Loading" type="Boolean"/>
+    <aura:attribute name="FinalMap" type="Object"/>
+</aura:event>

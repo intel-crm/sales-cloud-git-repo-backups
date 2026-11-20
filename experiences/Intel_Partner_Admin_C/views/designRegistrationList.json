@@ -1,0 +1,65 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "457ecb49-7aa9-4350-a94c-1b6e68ddd3a9",
+  "label" : "Design Registration List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p><br></p><p style=\"text-align: center;\"><strong style=\"color: rgb(230, 0, 0);\">Attention:</strong><span style=\"color: rgb(230, 0, 0);\"> If you are looking to access the Altera portal, please be aware that the website has moved. Use </span><a href=\"http://distributorportal.altera.com/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(0, 71, 178);\">distributorportal.altera.com</a><span style=\"color: rgb(230, 0, 0);\">&nbsp;going forward and follow login instructions.</span></p><p style=\"text-align: center;\"><br></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "258f0ed8-68e3-4146-b0cf-51222a33de40",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "2d229c68-7f8a-49c2-830f-feb3b78d2b3f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "71406fbe-ddbe-47ad-930a-383c0fa6ac99",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "27b009b0-d245-40de-a7bb-4a141993e7d4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "be479cc1-9958-4787-ac22-2234a2c096c2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "10265dec-19a8-4aa7-a9ba-608ad5e0c35f",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "type" : "view",
+  "viewType" : "list-a3D"
+}

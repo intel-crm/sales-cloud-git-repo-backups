@@ -1,0 +1,61 @@
+<apex:page controller="Core_CampaignWaveImportController" showHeader="true" sidebar="true" id="thePage"
+           applyHtmlTag="true" applyBodyTag="true" title="Campaign Member Import from Wave" tabStyle="Campaign" lightningStylesheets="true">
+    <script>
+      <!-- Kavyashree security scan fixes. -->
+        var globalSid = "{!JSENCODE(sid)}";
+    </script>
+    <header>
+        <apex:styleSheet value="{! $Resource.Core_CampaignWaveImportCSS }"/>
+        <apex:includeScript value="https://code.jquery.com/jquery-2.1.4.min.js"/>
+        <apex:includeScript value="{! $Resource.Core_CampaignWaveImportJS }"/>
+        <apex:includeScript value="{! $Resource.mathparser }"/>
+    </header>
+    
+    &nbsp;
+    <apex:pageMessages />
+    
+    <apex:form id="theForm" >
+        
+        <apex:pageBlock title="Import Campaign Target List from Wave" mode="view" id="pageBlock1">
+            
+            <span style="font-weight:bold">Select a Lens:</span>
+            <select id="lensList" size="1"></select>
+            
+            <span id="lensesLoading"></span>
+            
+            <!-- showData takes 2 parms: are we contructing the CSV format? and should we download it after we do? -->
+            <!--input type="button" id="btnShowLensData" onclick="showData(false,false)" value="Show Lens Data"/-->
+            <input type="button" id="btnPreviewData" onclick="showData(true,false)" value="Preview CSV"/>
+            
+            <!-- For the download, first check to see if we have results already. If so, just download. If not, get them, then D/L. -->
+            <input type="button" id="btnDownloadCSV" onclick="currResults?downloadResults():showData(true,true)" value="Download CSV"/>
+            
+            <div><p id="noteError" style="font-weight:bold;color:#ff0000"></p></div>
+            
+            <div id="resultsPane">
+                <div id="resultsLoading"></div>
+                <div id="lensAttributesContainer" style="margin:8px 2px 2px 2px">
+                    <div id="lensAttributes">
+                    </div>
+                </div>
+                <div id="resultsContainer">
+                    <div id="resultsHeader" style="margin:2px 2px 2px 2px">
+                        <div id="resultsTitle" style="font-weight:bold;font-size:1.2em">Data Preview</div>
+                    </div>
+                    <div id="tableContainer">
+                        
+                    </div>
+                </div>
+            </div>
+            <p>&nbsp;</p>
+            
+        </apex:pageBlock>
+        &nbsp;
+    </apex:form>
+    
+    <!-- Special iframe for taking a compact version of the query and parsing it to create actual SAQL. -->
+    <!-- Per Salesforce, this needs to be in an iframe so the code won't interfere with the rest of the page. -->
+    <div id="forIframe" style="display: none;">
+        <apex:iframe id="queryIFrame" src="{!URLFOR($Resource.queryParser, 'parser.html')}"/>
+    </div>
+</apex:page>

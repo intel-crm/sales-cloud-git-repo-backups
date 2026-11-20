@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Analytx Sdn Bhd Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Analytx Sdn Bhd Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11986553_Irene_Kan</parentRole>
+</Role>

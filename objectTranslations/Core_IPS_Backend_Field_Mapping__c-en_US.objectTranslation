@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Backend Field Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Backend Field Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Backend System --></label>
+        <name>Core_IPS_Backend_System__c</name>
+        <relationshipLabel><!-- Field Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Bi-Directional --></label>
+        <name>Core_IPS_Bi_Directional__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Core_IPS_Deactivated__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide the object which the custom field is part of. --></help>
+        <label><!-- Field Object Name --></label>
+        <name>Core_IPS_Field_Object_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please provide the salesforce custom field name only when support update field is checked. --></help>
+        <label><!-- Field Technical name --></label>
+        <name>Core_IPS_Field_Technical_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Pleae provide XML node name not any other field name for eg : issue_title is the xml node name which stores the case subjectin the integration layer but not subject field name in salesforce. So provide &quot;issue_title&quot; as Source Field --></help>
+        <label><!-- Source Field --></label>
+        <name>Core_IPS_Source_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System --></label>
+        <name>Core_IPS_Source_System__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this field,if this field update has to be sent to target system --></help>
+        <label><!-- Support Update --></label>
+        <name>Core_IPS_Support_Update__c</name>
+    </fields>
+    <fields>
+        <help><!-- Keep same as the source field if only value translation is required else provide the target name which the target system is expecting to send over in the xml.But field name translation is applicable only for few fields like environmental detail field --></help>
+        <label><!-- Target Field --></label>
+        <name>Core_IPS_Target_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target System --></label>
+        <name>Core_IPS_Target_System__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Identifier Key --></label>
+        <name>Core_IPS_Unique_Identifier_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Only --></label>
+        <name>Core_IPS_Update_Only__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Support Update field requires the source field, target field, technical object and field name to be supplied. --></errorMessage>
+        <name>Core_IPS_BK_SuppFldUpdate_Validate</name>
+    </validationRules>
+</CustomObjectTranslation>

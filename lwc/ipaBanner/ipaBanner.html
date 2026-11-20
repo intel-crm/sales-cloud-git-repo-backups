@@ -1,0 +1,15 @@
+<template>
+    <div class="banner-wrapper">
+        <div class="banner-img"> 
+            <img src={banner.image} alt={banner.imageAlt} onload={handleImageLoaded}>
+        </div>
+        <h4 class="intel-clear-light">{banner.title}</h4>
+        <div class="banner-link">
+            <c-ipa-link class-name="inverse"
+                label={banner.linkLabel}
+                external-url={banner.linkUrl} 
+                hide-icon>
+            </c-ipa-link>
+        </div>
+    </div>
+</template>

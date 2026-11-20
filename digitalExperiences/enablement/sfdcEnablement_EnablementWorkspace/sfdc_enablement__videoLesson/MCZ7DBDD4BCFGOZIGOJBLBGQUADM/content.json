@@ -1,0 +1,9 @@
+{
+  "type" : "sfdc_enablement__videoLesson",
+  "title" : "LVM demo - Large Video Model. RAG + LLM and computer vision (2:45 mins)",
+  "contentBody" : {
+    "description" : "Generative AI is finding a multitude of use cases at Enterprises worldwide. An LLM can offer a human like prompt and response derived from the training dataset. While LLMs, Large Language models started huge in training datasets and so huge in model size, the trend is smaller and smaller, focused applications where dataset and subesequent model size are getting smaller by the day. Here is a pretty compelling demo that combines existing deep learning computer vision and an LLM make for a cool video surveillance application for any brick and mortar environment. What other cool use cases can you imagine with this technology and apply to your customer? Watch this demo video by our NEX Sanjay Addicam",
+    "videoUrl" : "https://www.youtube.com/embed/C22NxiPANT8?si=R1ML8o-bSU2a3Cz-"
+  },
+  "urlName" : "lvm-demo---large-video-model-rag-llm-and-computer-vision-2-45-mins"
+}

@@ -1,0 +1,823 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 12-21-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box slds-theme_default">
+        <h2 style="color: #1796eaef;font-weight:bold;font-size:15px;"><u>Registration Tracker</u></h2>
+            <template if:true={hasData}>
+            <div class="slds-progress slds-progress_vertical">
+                <ol class="slds-progress__list">
+                    <!--Self Registration-->
+                    <!--Confirmation Mail Starts-->
+                    <li class="slds-progress__item" if:true={wrapper.regInitiated}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Registration Initiated
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Registration_Initiated}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Registration Initiated
+                        </div>
+                    </li>
+                    <!--Admin Registration-->
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Admin_Reg_Initiated}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Admin Reg Initiated
+                        </div>
+                    </li>
+                    <!--Partner Invite-->
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Partner_Invite_Initiated}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Partner Invite
+                            Initiated
+                        </div>
+                    </li>
+                    <!--External Partner Invite-->
+                    <li class="slds-progress__item slds-is-completed"
+                        if:true={wrapper.External_Partner_Invite_Initiated}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">External Partner
+                            Invite
+                            Initiated</div>
+                    </li>
+                    <!--Bulk Invite-->
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Bulk_Invite_Initiated}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Bulk Invite Initiated
+                        </div>
+                    </li>
+                    <!--AGS Indetity Creation start-->
+
+
+                    <li class="slds-progress__item" if:true={wrapper.agsid}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B Id Creation
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.Azure_B2B_ID_Creation_Failed}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Download" title="Download"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Error</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Failed
+                        </div>
+                    </li>
+
+
+                    <li class="slds-progress__item" if:true={wrapper.Azure_B2B_ID_Creation_Pending}>
+                        <div class="slds-progress__marker">
+                            <span class="slds-assistive-text">Active</span>
+                        </div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Pending
+                        </div>
+                    </li>
+
+                    <li class="slds-progress__item slds-is-completed"
+                        if:true={wrapper.Azure_B2B_ID_Creation_Successful}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Successful
+                        </div>
+                    </li>
+
+
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Azure_B2B_ID_Creation_Retried}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Retried
+                        </div>
+                    </li>
+
+                    <li class="slds-progress__item slds-is-completed"
+                        if:true={wrapper.Azure_B2B_ID_creation_Retry_Pending}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Retry Pending</div>
+                    </li>
+                    <li class="slds-progress__item slds-has-error"
+                        if:true={wrapper.Azure_B2B_ID_creation_Retry_Failure}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Download" title="Download"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Error</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Retry Failure</div>
+                    </li>
+
+                    <li class="slds-progress__item slds-is-completed"
+                        if:true={wrapper.Azure_B2B_ID_creation_Retry_Success}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Azure B2B ID Creation
+                            Retry Success</div>
+                    </li>
+
+                    <!--AGS IndeIdentity Creation Ends-->
+                    <!--Confirmation Mail Section Strats-->
+                    <span if:false={cidaasenabled}>
+                        <li class="slds-progress__item slds-has-error" if:true={wrapper.EV_UnSent}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                                title="Error">
+                                <lightning-icon icon-name="utility:error" alternative-text="Download" title="Download"
+                                    size="x-small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Error</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Unsent</div>
+                        </li>
+                        <!--Confirmation Mail Starts-->
+                        <li class="slds-progress__item" if:false={wrapper.EV_Sent}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Sent</div>
+                        </li>
+
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.EV_Sent}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Sent</div>
+                        </li>
+                        <!--Confirmation Mail Ends-->
+                        <!--Confirmation Mail Pending-->
+                        <li class="slds-progress__item" if:false={wrapper.EV_Pending}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Pending</div>
+                        </li>
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.EV_Pending}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Pending</div>
+                        </li>
+                        <!--Confirmation Mail Pending Ends-->
+                        <!--Confirmation Mail Complete Starts-->
+                        <li class="slds-progress__item" if:false={wrapper.EV_Completed}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Completed</div>
+                        </li>
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.EV_Completed}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">EV Completed</div>
+                        </li>
+
+                        <!--Confirmation Mail Section Ends-->
+                    </span>
+
+
+                    <!---Invite mail starts-->
+                    <span if:true={wrapper.admin}>
+                        <li class="slds-progress__item slds-has-error" if:true={wrapper.Invite_UnSent}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                                title="Error">
+                                <lightning-icon icon-name="utility:error" alternative-text="Download" title="Download"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Error</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Unsent
+                            </div>
+                        </li>
+                        <!--Confirmation Mail Starts-->
+                        <li class="slds-progress__item" if:false={wrapper.Invite_Sent}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Sent</div>
+                        </li>
+
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.Invite_Sent}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Sent</div>
+                        </li>
+                        <!--Invite Mail Ends-->
+                        <!--Invite Mail Pending-->
+                        <!-- <li class="slds-progress__item" if:false={wrapper.Invite_Pending}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Pending</div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Invite_Pending}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Pending</div>
+                    </li> -->
+                        <!-- Guest Redemption for Admin Invite -->
+                        <template if:true={wrapper.admin}>
+                            <template if:true={wrapper.Guest_redemption_pending}>
+                                <li class="slds-progress__item">
+                                    <div class="slds-progress__marker"></div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Guest
+                                        Redemption
+                                        Pending
+                                    </div>
+                                </li>
+                            </template>
+
+                            <template if:true={wrapper.Guest_redemption_complete}>
+                                <li class="slds-progress__item slds-is-completed">
+                                    <span
+                                        class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                        title="Complete">
+                                        <lightning-icon icon-name="utility:success" alternative-text="Completed"
+                                            title="success" size="x-small">
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text">Complete</span>
+                                    </span>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Guest
+                                        Redemption
+                                        Complete
+                                    </div>
+                                </li>
+                            </template>
+                        </template>
+                        <!--Invite Mail Pending Ends-->
+                    </span>
+                    <!---Invite mailends -->
+
+                    <!--getProfile starts-->
+
+                    <li class="slds-progress__item" if:false={wrapper.GetProfile}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">GetProfile</div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.GetProfile}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">GetProfile API</div>
+                    </li>
+                    <!--getProfile Ends-->
+                    <!--SBC Starts-->
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.SBC_Callout_Made}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">SBC Callout Made</div>
+                    </li>
+                    <!--SBC Ends-->
+
+                    <!--REgistration Submitted Starts-->
+                    <li class="slds-progress__item" if:false={wrapper.Registration_Submitted}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Registration Submitted
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Registration_Submitted}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Registration Submitted
+                        </div>
+                    </li>
+                    <!--Invite Mail Complete Starts-->
+                    <span if:true={wrapper.admin}>
+                        <li class="slds-progress__item" if:false={wrapper.Invite_Completed}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Completed
+                            </div>
+                        </li>
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.Invite_Completed}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Invite Completed
+                            </div>
+                        </li>
+                    </span>
+                    <!--invite Mail complete Section Ends-->
+                    <!--REgistration Submitted Ends-->
+
+                    <!-- DUP CHeck Starts-->
+                    <li class="slds-progress__item" if:true={wrapper.dupcheck}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">DUP Check</div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.DUP_Check_Pending}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">DUP Check Pending
+                        </div>
+                    </li>
+
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.DUP_Check_Success}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">DUP Check Success
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.DUP_Check_Failure}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">DUP Check Failure
+                        </div>
+                    </li>
+                    <!-- DUP CHeck ends-->
+                    <!--waiting Approval starts-->
+                    <li class="slds-progress__item" if:true={wrapper.manulApproval}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Waiting for Approval
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Waiting_for_Approval}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Waiting for Approval
+                        </div>
+
+                    </li>
+                    <!--waiting Approval Ends-->
+
+                    <!--Ack Approval starts-->
+                    <span if:true={wrapper.Waiting_for_Approval}>
+                        <li class="slds-progress__item slds-has-error" if:true={wrapper.Ack_Mail_UnSent}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                                title="Error">
+                                <lightning-icon icon-name="utility:error" alternative-text="Download" title="Download"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Error</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Ack Mail UnSent
+                            </div>
+                        </li>
+                        <!--Confirmation Mail Starts-->
+                        <li class="slds-progress__item" if:true={wrapper.ackmail}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Ack Mail Sent
+                            </div>
+                        </li>
+
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.Ack_Mail_Sent}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Ack Mail Sent
+                            </div>
+                        </li>
+
+                    </span>
+                    <!--Ack Approval Ends-->
+
+                    <!--Approved Admin Starts-->
+                    <span if:true={wrapper.admin}>
+                        <li class="slds-progress__item" if:false={wrapper.Approved}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Auto Approved
+                            </div>
+                        </li>
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.Approved}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Auto Approved
+                            </div>
+                        </li>
+                    </span>
+                    <!--Approved Ends-->
+
+                    <!--Approved Self Starts-->
+                    <span if:false={wrapper.admin}>
+                        <li class="slds-progress__item" if:false={wrapper.Approved}>
+                            <div class="slds-progress__marker"></div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Approved</div>
+                        </li>
+                        <li class="slds-progress__item slds-is-completed" if:true={wrapper.Approved}>
+                            <span
+                                class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                title="Complete">
+                                <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                    size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Complete</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Approved</div>
+                        </li>
+                    </span>
+                    <!--Approved Ends-->
+                    <!--ACR_Assigned  starts-->
+
+                    <li class="slds-progress__item" if:true={wrapper.ACR_Yet_to_Assign}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">ACR Yet to Assign
+                        </div>
+                    </li>
+
+
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.ACR_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">ACR Assigned</div>
+                    </li>
+                    <!--ACR_Assigned Ends-->
+                    <!--ACR_Not_Assigned  starts-->
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.ACR_Not_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">ACR Not Assigned</div>
+                    </li>
+                    <!--ACR_Not_Assigned  Ends-->
+
+
+                    <!--Subscription_Added  starts-->
+                    <li class="slds-progress__item" if:true={wrapper.Subscription_Yet_to_Assign}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Subscription Yet to
+                            Assign
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Subscription_Added}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Subscription Added
+                        </div>
+                    </li>
+                    <!--Subscription_Added  Ends-->
+
+                    <!--Subscription_Not_Added  starts-->
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.Subscription_Not_Added}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Subscription Not Added
+                        </div>
+                    </li>
+                    <!--Subscription_Not_Added  Ends-->
+
+                    <!--Entitlement_Assigned  starts--> <!--IPA 2.0 - TWC727-2852 -Changed position of Entitlement and Benefit Tracker -->
+                    <li class="slds-progress__item" if:true={wrapper.Entitlement_Yet_to_Assign}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Entitlement Yet to
+                            Assign
+                        </div>
+                    </li>
+
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Entitlement_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Entitlement Assigned
+                        </div>
+                    </li>
+                    <!--Entitlement_Assigned  Ends-->
+
+                    <!--Entitlement_Not_Assigned  starts-->
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.Entitlement_Not_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Entitlement Not
+                            Assigned
+                        </div>
+                    </li>   
+                    <!--Entitlement_Not_Assigned  Ends-->
+
+                     <!-- IPA 2.0 - TWC727-2852 - Start - New block for new OPID tracker -->
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.OPID_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">OPID Assigned</div>
+                    </li> 
+                   
+                    <li class="slds-progress__item" if:false={wrapper.OPID_Assigned}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">OPID Not Assigned
+                        </div>
+                    </li> 
+                    <!-- IPA 2.0 - TWC727-2852 - End - New block for new OPID tracker -->
+                
+                      <!--Benefit_Assigned  starts--> <!--IPA 2.0 - TWC727-2852 -Changed position of Entitlement and Benefit Tracker -->
+                    <li class="slds-progress__item" if:true={wrapper.Benefit_Yet_to_Assign}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Benefit Yet to Assign
+                        </div>
+                    </li>
+                    <!--Benefit_Assigned  starts--> 
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Benefit_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Benefit Assigned</div>
+                    </li>
+                    <!--Benefit_Assigned  Ends-->
+
+                    <!--Benefit_Not_Assigned  starts-->
+
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.Benefit_Not_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Benefit Not Assigned
+                        </div>
+                    </li>
+                    <!--Benefit_Not_Assigned  Ends-->
+
+                    <!-- Benefit Entitlement starts here IPA2.0 -->
+                     <li class="slds-progress__item" if:true={wrapper.Benefit_Entitlement_Yet_to_Assign}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Benefit Entitlement Yet to
+                            Assign
+                        </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Benefit_Entitlement_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Benefit_Entitlement Assigned
+                        </div>
+                    </li>
+                    <!-- Benefit_Entitlement_Assigned  Ends-->
+
+                    <!-- Benefit_Entitlement_Not_Assigned  starts-->
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.Benefit_Entitlement_Not_Assigned}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Benefit Entitlement Not
+                            Assigned
+                        </div>
+                    </li>   
+                    <!-- Benefit_Entitlement_Not_Assigned ends here-->
+                     <!-- IPA2.0 ends here -->
+
+                    <!--Welcome_Email_Sent  starts-->
+                    <li class="slds-progress__item" if:true={wrapper.Welcome_Email_Yet_to_Send}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Welcome Email Yet to
+                            Send
+                        </div>
+                    </li>
+
+
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.Welcome_Email_Sent}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Welcome Email Sent
+                        </div>
+                    </li>
+                    <!--Welcome_Email_Sent  Ends-->
+
+                    <!--Welcome_Email_Unsent  starts-->
+                    <li class="slds-progress__item slds-has-error" if:true={wrapper.Welcome_Email_Unsent}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-error slds-progress__marker slds-progress__marker_icon"
+                            title="Error">
+                            <lightning-icon icon-name="utility:error" alternative-text="Completed" title="success"
+                                size="x-small"></lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Welcome Email UnSent
+                        </div>
+                    </li>
+                    <!--Welcome_Email_Unsent  Ends-->
+                    <!-- Guest Redeemption START -->
+                    <template if:false={wrapper.admin}>
+                        <template if:true={wrapper.Guest_redemption_pending}>
+                            <li class="slds-progress__item">
+                                <div class="slds-progress__marker"></div>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Guest
+                                    Redemption
+                                    Pending
+                                </div>
+                            </li>
+                        </template>
+
+                        <template if:true={wrapper.Guest_redemption_complete}>
+                            <li class="slds-progress__item slds-is-completed">
+                                <span
+                                    class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                    title="Complete">
+                                    <lightning-icon icon-name="utility:success" alternative-text="Completed"
+                                        title="success" size="x-small">
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text">Complete</span>
+                                </span>
+                                <div class="slds-progress__item_content slds-grid slds-grid_align-spread">Guest
+                                    Redemption
+                                    Complete
+                                </div>
+                            </li>
+                        </template>
+                    </template>
+                    <!-- Guest Redeemption END -->
+                    <li class="slds-progress__item" if:false={wrapper.User_Logged_into_Partner_Portal}>
+                        <div class="slds-progress__marker"></div>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">User Yet to Login
+                        </div>
+                    </li>
+
+                    <!--User_Logged_into_Partner_Portal  starts-->
+                    <li class="slds-progress__item slds-is-completed" if:true={wrapper.User_Logged_into_Partner_Portal}>
+                        <span
+                            class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                            title="Complete">
+                            <lightning-icon icon-name="utility:success" alternative-text="Completed" title="success"
+                                size="x-small">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">Complete</span>
+                        </span>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread">User Logged into
+                            Partner
+                            Portal</div>
+                    </li>
+                    <!--User_Logged_into_Partner_Portal  Ends-->
+                </ol>
+
+            </div>
+        </template>
+        <!-- <template if:false={checkData}>
+            <p>Tracker milestones are not completed, please contact System Administrator.</p>
+        </template> -->
+    </div>
+</template>

@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Contracts Result">
+        <div if:true={showSpinner}>
+            <lightning-spinner variant="brand" 
+                               alternative-text="Fetching CNDA from LAWMAS">
+            </lightning-spinner>
+        </div>
+        <div>
+            <div class="slds-align_absolute-center slds-m-top_large" style ="font-size: medium;">If the below results are not relevant, enter a custom account name or CNDA number and click on search.</div>
+            <lightning-input class="slds-align_absolute-center" style="width: 50%; margin-bottom: 10px;" data-name="search" type="text" variant="standard" name="AccountName"  placeholder="Enter Search term here"></lightning-input>
+            <lightning-button  class="slds-align_absolute-center" variant="Neutral"
+                                label="Search"
+                                title="Search"
+                                onclick={getcndawithName} 
+                                slot="actions"
+                                icon-name="utility:search">
+            </lightning-button>
+        </div> 
+        <div></br></div>   
+    </br>   
+            <div>
+                <lightning-datatable
+                        key-field="contract_number"
+                        data={data}
+                        columns={columns}
+                        wrap-table-header = "all"
+                        column-widths-mode = "auto"
+                        max-column-width="425"
+                        min-column-width="100"
+                        wrap-text-max-lines="2"
+                        selected-rows={selectedRows}
+                        sorted-by={sortedBy}
+                        sorted-direction={sortedDirection}
+                        onsort={handleSort}>
+                </lightning-datatable>
+                <template lwc:if={empty}>              
+                    <div class="slds-align_absolute-center slds-m-top_xx-large" style ="font-size: medium;">No Data to Display</div>
+                </br>
+                </template>
+            </div>
+        
+            <lightning-button   variant="Neutral"
+                            label="Update Contracts"
+                            title="Update Contracts"
+                            onclick={getSelectedRec} 
+                            slot="actions"
+                            icon-name="utility:check">
+        </lightning-button>
+    </lightning-card>
+</template>

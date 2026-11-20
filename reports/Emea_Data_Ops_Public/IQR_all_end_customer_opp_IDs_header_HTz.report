@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SBQQ__Quote__c$Name</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$SBQQ__Status__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$SBQQ__Account__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$Pricing_Intel_Account_Exec_Email_Txt__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$Pricing_Account_Executive_Nm__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>SBQQ__Quote__c.Pricing_Tender_Quote_Create,SBQQ__Quote__c.Pricing_Tender_Quote_Edit,SBQQ__Quote__c.Pricing_Tender_Quote_ReadOnly,SBQQ__Quote__c.Pricing_Tender_Quote_Submitted,SBQQ__Quote__c.Pricing_Small_Volume_Quote_Create</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Small Volume Quotes - Data Center Xeon® CPU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Draft,New,In Progress,In Review,Pending,Approved,Denied,Presented,Accepted,Rejected,Submitted,Won,Lost,Cancelled,Recalled,Not Yet Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Draft,New,In Progress,In Review,Pending,Approved,Denied,Presented,Accepted,Rejected,Submitted,Won,Lost,Cancelled,Recalled,Not Yet Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c$Pricing_End_Customer_Opportunity_Txt__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>IQR - all end customer opp IDs (header)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Quote_with_Comments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SBQQ__Quote__c$Pricing_Bid_Dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

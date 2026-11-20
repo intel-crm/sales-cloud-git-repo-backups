@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Reminder: Edit Required for Your {!relatedTo.Name} Storefront" recipientType="User" relatedToType="PMP_Company__c">
+
+    <messaging:htmlEmailBody >
+    
+        <c:PMP_PartnerEditRequired_SecondReminder partnerRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

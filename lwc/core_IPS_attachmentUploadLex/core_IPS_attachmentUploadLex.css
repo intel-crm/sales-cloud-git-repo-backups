@@ -1,0 +1,27 @@
+.slds-page-header.flexipageHeader { 
+    display: none;
+}
+.greycolor{
+    background-color: white !important;
+    color:  black !important;
+    table-layout: fixed;
+    border: 1px;
+    width: 100%;
+}
+
+.accordionClass{
+    --sds-c-accordion-heading-font-size : 1.5rem;
+    --slds-c-accordion-heading-text-color: Black ;
+    font-weight: bold;
+}
+.retCaseBtn{
+    color:white;
+    border: 1px solid #ddd;
+    background-color: #5875aa;
+    padding: 4px 12px;
+    height:40px;
+    width:155px;
+    font-size: medium;
+    font-weight: bold;
+    margin-left:20px;
+}

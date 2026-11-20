@@ -1,0 +1,23 @@
+<template>
+  <c-core-intc-link
+    aria-label={ariaLabel}
+    aria-skip={ariaSkip}
+    class-name={className}
+    community-page={communityPage}
+    external-url={externalUrl}
+    hide-icon={hideIcon}
+    icon-name={anchorIconName}
+    inverse={inverse}
+    label={label}
+    object-page={objectPage}
+    oncorelinkclick={handleLinkClick}
+    page-reference={anchorPageReference}
+    params={anchorParams}
+    prevent={prevent}
+    preview={preview}
+    record-id={anchorRecordId}
+    target={anchorTarget}
+    >
+    <slot></slot>
+  </c-core-intc-link>
+</template>

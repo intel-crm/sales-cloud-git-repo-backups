@@ -1,0 +1,19 @@
+<template>
+    <template if:true={coMarketingRecordType}>
+        <div class="slds-card" style="padding: 4px;">
+            <div class="slds-page-header slds-page-header__title slds-var-p-around_x-small">        
+                <p class="slds-text-heading_small"><b>{label.accountsHierarchy}</b></p>
+            </div>
+            <div class="slds-var-p-top_small slds-var-p-left_xx-small" style="display: inline-block;">
+                <div style="float: left;padding-right: 4px;padding-top: 4px"><lightning-icon icon-name="utility:warning" class="icn" size="medium" variant="warning" style="background-position: left center;"></lightning-icon></div>           
+                <div style="float: left;width:90%"><span style="font-size: 12px">{label.nodeVisibilityWarningLabel}</span></div>
+                <div style="float: left;width:90%"><span style="font-size: 12px">{label.refreshButtonInfo}</span></div>
+            </div>            
+            <div style="padding-top:5px">
+                <lightning-button-icon  icon-name="utility:refresh" alternative-text="Refresh" class="slds-float_right" onclick={refreshGrid} icon-position="right"><label>{label.refreshButton}</label></lightning-button-icon>
+            </div>
+            <c-account-hierarchy_-tree-grid highlighted-row-id={recordId} ultimate-account-id={ultimateAccountId} ultimate-account-name={ultimateAccountName} salesforce-baseurl={salesforceBaseurl} enable-scroll = "true">                                        
+            </c-account-hierarchy_-tree-grid>            
+        </div>
+    </template>  
+</template>

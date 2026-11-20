@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BU Mapping Email recipients</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BU Mapping Email recipients</value>
+    </caseValues>
+    <fields>
+        <label><!-- User Ids --></label>
+        <name>Core_User_Ids__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive? --></label>
+        <name>Core_isActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

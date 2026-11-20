@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Set Export Compliance Block To False</description>
+        <name>Set_ECB_Flag_To_False</name>
+        <label>Set ECB Flag To False</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Export_Compliance_Block__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Export_Compliance_Block_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Set Export Compliance Block</description>
+        <name>Set_Export_Compliance_Block_To_True</name>
+        <label>Set Export Compliance Block To True</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Export_Compliance_Block__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Core_Export_Compliance_Block_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Label.UCD_ACM_Export_Compliance_Block_Reason</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Check if Export Compliance Block is set to True</description>
+        <name>Check_Account_ECB_Flag_is_Checked</name>
+        <label>Check Account ECB Flag is Checked</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IS_ECB_Checked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Export_Compliance_Block__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_ECB_Flag_To_False</targetReference>
+            </connector>
+            <label>IS ECB Checked</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check Account Export Compliance Block Is Set To False</description>
+        <name>Check_Account_ECB_Is_Unchecked</name>
+        <label>Check Account ECB Is Unchecked</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_ECB_UnChecked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Export_Compliance_Block__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Export_Compliance_Block_To_True</targetReference>
+            </connector>
+            <label>Is ECB UnChecked</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Compliance_Watchlist_Value_Is_Review_is_pending_or_not</name>
+        <label>Check Compliance Watchlist Value Is Review is pending or not</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Not_Review_is_pending</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Compliance_Watch_List_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>REVIEWWIP</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_For_Compliance_Watch_List_Type</targetReference>
+            </connector>
+            <label>Is Not Review is pending</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check For Compliance Watch List Type is Blocked Or Released.</description>
+        <name>Check_For_Compliance_Watch_List_Type</name>
+        <label>Check For Compliance Watch List Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Has_Blocked_CWL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Label.PerformScreeningFromCWLObject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Compliance_Watch_List_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ISBlockedCWL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_ECB_Is_Unchecked</targetReference>
+            </connector>
+            <label>Has Blocked CWL</label>
+        </rules>
+        <rules>
+            <name>Has_Non_Blocked_CWL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Label.PerformScreeningFromCWLObject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ISBlockedCWL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Compliance_Watch_List_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Account_ECB_Flag_is_Checked</targetReference>
+            </connector>
+            <label>Has Non Blocked CWL</label>
+        </rules>
+    </decisions>
+    <description>This Flow updates the Account Export Compliance Block And Reason Field Based on Compliance Watch List Code Is Blocked Or Not</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ISBlockedCWL</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOTRDOUT&quot;),
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOTRDIN&quot;),
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOPAYOUT&quot;),
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOPAYIN&quot;),
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;EC&quot;),
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;ECB&quot;),
+INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;TRDCOND&quot;)
+)</expression>
+    </formulas>
+    <interviewLabel>UCD ACM Process Account Export Compliance {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>UCD ACM Process Account Export Compliance</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Compliance_Watchlist_Value_Is_Review_is_pending_or_not</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>Core_Account_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Intel Account</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Account_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Inactive Account</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Compliance_Watch_List_Type__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

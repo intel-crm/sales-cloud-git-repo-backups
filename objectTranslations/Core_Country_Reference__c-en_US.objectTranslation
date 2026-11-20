@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Country Reference</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Country Reference</value>
+    </caseValues>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Has States --></label>
+        <name>Core_Has_States__c</name>
+    </fields>
+    <fields>
+        <label><!-- ISO Code --></label>
+        <name>Core_ISO_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Geo --></label>
+        <name>Core_Sub_Geo__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Registration_Request_Acknowledgement_Email_TUR</name>
+    <style>none</style>
+    <subject>Intel® Ortağı İş Birliği başvurunuz alındı</subject>
+    <textOnly>Başvurunuz İşleme Alınıyor
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+
+Başvuru yaptığınız için teşekkür ederiz. İsteğinizi üç iş günü içinde işleme alacağız.
+Sorularınız olursa bizimle şu bağlantıdan iletişime geçebilirsiniz: https://signin.intel.com/ContactUs?Culture=tr-tr.
+
+
+Teşekkür ederiz,
+Intel® Ortağı İş Birliği ekibiniz
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

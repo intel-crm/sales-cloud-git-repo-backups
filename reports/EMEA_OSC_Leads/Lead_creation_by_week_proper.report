@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <description>with filters on OSG</description>
+    <filter>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>OSC,Yulia Smelkova,Eran Gal,Marek Lesiewski,Dorian Witkowski,Marcin Majchrzak,Tobias Grimm,Gabor  Lochte,Dawid Studzinski,Bartosz Filipowicz,Mariusz Jadwiszczok,Aaron Voelker,Nick Christopher Day,Patrik Staaf,Vasily Lizunov,Marta Muszynska,Jean-Luc Momprive,Marco Iacopini,Lukasz Chrzanowski,Katarzyna Bielak,Nikolay Panov,Murat Simsek,Ariel Hako,Peters Edwin,Galyamov Edward,Williams Carey,Amr Mahmood Adam,Bernard Corentin,Dunska Magdalena,Dzul Gosia,Fedorov Vladimir,Juszczak Michal,Lipari Roberto,Matchin Dimitry,Holtom Jason,Kaczmarski Marcin,Osiecki Maciej</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>MALISZEWSKA BARUSOVA,TOMASZ CZEKAJ,ARKADIUSZ DRAZKOWSKI,MACIEJ NAROJCZYK,HESHAM AHMED,MICHAL POTEREK,MARCIN SOCHACKI,Marek Szarkowski,Pitre Julien,Lukina Anastasiia,Stackievic Diana,Grabovska Alina,Figarski Dariusz,Borkowski Jacek,Mazur Justyna,Bogucki Maciej,Danilowicz Mikołaj,Dopieralska Anna,Kargut Dominika,Mielińska Aleksanda,Brykner Karolina,Lewandowski Lukasz,Stefanov Miroslav,Siwek Pawel,Makowska Katarzyna,YAGANAH AMIRI,LORENZO BARABUCCI,GILBERT BARQUERO,RAFIQUL CHOWDHURY,VITAL DEHENN,NATALIA ENI,George Gagelea,COMIN GARCIA,STEFAN HESSLER,NOUHAD JABER,DOMINIC JERRIHO,SASCHA KLINGELHOFER,Ozcan Kucukbal,FRANK KUTH,RODRIGUEZ LEDESMA,ASTRID MADER,ANTOINE PERIGNON,HILDEGARD PISOKE,LUKAS PODSIEDLIK,FRANK REHBERG,Deniz Sahin,ABDALLAH SALIM,SERHAN SÖZMAN,KONSTANTINIDIS STEFANOS,MOHAMED ZAMIL,Abdullahi Mohamud,Amine Maaifi,Armando Mozo,Besime Ugurlu,Claudia Goergen,Cristiane Winkelhag,Dagmar Huerter,Tobias Hoffmann,Eric Yapi,Hann</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalWeek</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Lead creation  by week proper</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CURPREV1</interval>
+    </timeFrameFilter>
+</Report>

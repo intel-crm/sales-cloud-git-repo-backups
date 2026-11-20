@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Pricing_Integration_Staging__c</baseObject>
+    <category>quotes</category>
+    <deployed>false</deployed>
+    <description>Report type on PIS object for UCD requests</description>
+    <label>IQR UCD Requests</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Message_Type__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Payload__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Account Name</displayNameOverride>
+            <field>Pricing_RequestID__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SObject__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote ID</displayNameOverride>
+            <field>Pricing_SObjectId__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Status__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_UCD_Response_Type__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Survivor Account Name</displayNameOverride>
+            <field>Pricing_RequestID__c.Core_Survivor_Account_Id__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Request Rejection Notes</displayNameOverride>
+            <field>Pricing_RequestID__c.Core_Account_Request_Rejection_Notes__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Request Rejection Reason</displayNameOverride>
+            <field>Pricing_RequestID__c.Core_Account_Request_Rejection_Reason__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Record Type</displayNameOverride>
+            <field>Pricing_RequestID__c.RecordType</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Customer Country/Region</displayNameOverride>
+            <field>Pricing_QuoteID__c.Pricing_End_Customer_Country_Nm__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Unified Customer</displayNameOverride>
+            <field>Pricing_QuoteID__c.Pricing_IsUnifiedCustomer__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unified Global End Customer Name</displayNameOverride>
+            <field>Pricing_QuoteID__c.Pricing_Unified_Global_End_Customer_Nm__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>On Restricted Party List</displayNameOverride>
+            <field>Pricing_QuoteID__c.Pricing_Is_Sanctioned__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Request ID: Core Data Country Name</displayNameOverride>
+            <field>Pricing_RequestID__c.Core_Data_Country_Nm__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Is_Country_Mismatch_Request__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_QuoteID__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <masterLabel>Pricing Integration Stagings</masterLabel>
+    </sections>
+</ReportType>

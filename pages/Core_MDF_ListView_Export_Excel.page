@@ -1,0 +1,39 @@
+<apex:page Controller="Core_MDF_ExportToExcel"
+           showHeader="false" readOnly="true" cache="true" contentType="{!contentType}" renderAs="{!renderType}" 
+           applyHtmlTag="false">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    </head>   
+    <apex:outputPanel >
+        <apex:panelGrid columns="1">
+            <apex:outputPanel style="float:left">
+               
+                <apex:outputText value="Intel Confidential"/>
+                <br/>
+                <apex:outputText value="Export Date: {!reportDate}"/>
+                <br/>
+                <br/>
+                
+                <apex:outputText value="{!filterName}"/>                
+            </apex:outputPanel>
+        </apex:panelGrid>
+    </apex:outputPanel>   
+    <apex:pageBlock mode="detail">
+        <apex:pageBlockSection Columns="1" showHeader="false">
+            <apex:repeat value="{!lstlstObj}" var="block">
+                <apex:pageBlockTable value="{!block}" var="dataRecord" border="1" width="200%">                
+                    <apex:repeat value="{!lstColumn}" var="varfield" >
+                        <apex:column headerValue="{!varfield.label}">
+                            <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == False}"/>
+                            <apex:outputText value=" {!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == True}" />
+                        </apex:column>
+                    </apex:repeat>                                                                                    
+                 </apex:pageBlockTable>
+            </apex:repeat>
+         </apex:pageBlockSection>
+    </apex:pageBlock> 
+    <br/>                           
+    <br/>
+    <br/>                            
+    
+</apex:page>

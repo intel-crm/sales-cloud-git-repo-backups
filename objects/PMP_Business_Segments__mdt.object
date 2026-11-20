@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Contains the list of Business Segment Values from Category.</description>
+    <fields>
+        <fullName>Business_Segment_Values__c</fullName>
+        <description>The values which defines the Business Segment from Category.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Business Segment Values</label>
+        <length>60</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_Business Segments</label>
+    <pluralLabel>PMP_Business Segments</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

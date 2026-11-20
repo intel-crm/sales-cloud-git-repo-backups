@@ -1,0 +1,77 @@
+<aura:component
+  implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes,force:hasSObjectName"
+  access="global"
+  controller="Pricing_QuoteLineController"
+>
+  <aura:attribute name="recordId" type="String" />
+  <aura:attribute name="isSuccess" type="Boolean"/>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="messageNotification" type="String" />
+  <lightning:navigation aura:id="navService" />
+  <aura:html tag="style">
+    .slds-modal__content{ overflow-y:hidden !important; height:unset !important;
+    max-height:unset !important; }
+  </aura:html>
+  <div aura:id="spinner" class="slds-is-relative" style="height: max-content;">
+    <lightning:spinner
+      aura:id="mySpinner"
+      class="slds-hide"
+      size="medium"
+      variant="brand"
+      alternativeText="Please wait..."
+      style="min-height: 20vh;background-color:white;"
+    />
+
+    <!--Modal Body-->
+    <aura:if isTrue="{!v.isSuccess}">
+      <div
+        class="slds-modal__content slds-p-around--x-small slds-align_absolute-center slds-size_1-of-1 slds-is-relative">
+        <form class="slds-form--stacked">
+          Are you sure you want to delete this quote?
+        </form>
+      </div>
+      <!--End of Modal Body-->
+
+      <!--Modal Footer-->
+      <div class="slds-p-top_medium" style="text-align:center">
+        <lightning:button
+          variant="Brand"
+          class="slds-button"
+          label="OK"
+          onclick="{!c.deleteQuote}"
+        />
+        <lightning:button
+          variant="Neutral"
+          class="slds-button"
+          label="Cancel"
+          onclick="{!c.handleExit}"
+        />
+      </div>
+    </aura:if>
+    <aura:if isTrue="{!not(v.isSuccess)}">
+      <div class="slds-p-around_medium">
+        <div aura:id="errorMessage" style="height:4rem;">
+          <div class="slds-is-relative slds-align_absolute-center">
+            <div
+              class="slds-notify slds-notify_toast slds-theme_error"
+              role="status"
+            >
+              <span class="slds-assistive-text">error</span>
+              <div class="slds-notify__content">
+                <h2 class="slds-text-heading_small" style="text-align:center">
+                  {!v.messageNotification}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-p-around_medium" style="text-align:center">
+        <a href="javascript:void(0)" onclick="{!c.goBackLink}">
+          Click here to go back to the previous page
+        </a>
+      </div>
+    </aura:if>
+  </div>
+</aura:component>

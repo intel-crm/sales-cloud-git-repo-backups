@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>URL</field>
+    </columns>
+    <columns>
+        <field>Account.Core_User_Defined_Website__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CNDA_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sub_Industry__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Badge_Tier__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_One_Partner_Id__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF( AND(TODAY()-DUE_DATE &gt;=0 , TODAY()-DUE_DATE &lt;15),&quot;0-15&quot;,
+
+IF( AND(TODAY()-DUE_DATE &gt;=15 , TODAY()-DUE_DATE &lt;30),&quot;15-30&quot;,
+
+IF( AND(TODAY()-DUE_DATE &gt;=30 , TODAY()-DUE_DATE &lt;60),&quot;30-60&quot;,
+
+IF( AND(TODAY()-DUE_DATE &gt;=60 , TODAY()-DUE_DATE &lt;90),&quot;60-90&quot;,
+
+IF( AND(TODAY()-DUE_DATE &gt;=90 , TODAY()-DUE_DATE &lt;120),&quot;90-120&quot;,
+
+IF( TODAY()-DUE_DATE &gt;=120 ,&quot;x_120+&quot;, &quot;y_Never&quot;
+
+))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Last Activity Range</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Malhar Thakkar,Tonya DeGance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Telecommunications</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>AI Accounts Industry = telecommunication</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

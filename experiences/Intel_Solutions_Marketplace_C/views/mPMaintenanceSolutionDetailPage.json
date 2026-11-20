@@ -1,0 +1,49 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "ac0d9431-cbd6-45c9-928f-7a473c01b94c",
+  "label" : "MP Maintenance-Solution Detail Page",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "title" : "The Solution Submission website is currently unavailable due to scheduled maintenance. Solution Submission will be available again on the 19th February at 1:00am Pacific Standard"
+      },
+      "componentName" : "c:coreIntcMarquee",
+      "id" : "bc604ca9-3707-4ecb-a271-60f8ba96ded7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7bcec5d4-5949-4fa7-bd8a-971593383aba",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "bc4364ec-1183-424a-a17d-4113b73a8afb",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "7dfc8ffd-2ace-498b-af13-a0409af468e3",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Solution Detail Page\"/> \n<meta name=\"keywords\" content=\"sf,mp,solution detail page\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"SolutionDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "",
+        "title" : "Solution Detail Page - - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "401c031e-b294-4d92-a05a-a61b026b8ca8",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f5378d4f-e550-4f32-a117-1fe8c069711b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-solution-detail-page"
+}

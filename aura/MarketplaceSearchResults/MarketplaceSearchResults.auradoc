@@ -1,0 +1,29 @@
+<aura:documentation>
+	<aura:description>
+    <p>L2 Results Component</p>
+		<a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l2?language=en_US">
+			L2 Page - Search Results Area
+		</a>
+		<br />
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/12/2019</p>
+    <p>CurrentVersion: 2.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+		<p>1.3 - bug fix</p>
+		<p>Moved CardList Display type attribute to be set from external</p>
+    <p>BUG FIX w/ New SLDS Release TABS change</p>
+
+    <br/>
+    <p>2</p>
+    <p>768-1280 L2 Page ui update</p>
+    <p>2.1 - More bug fixes w/ tabs (REMOVED SLDS TABS)</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Bank Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Bank Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountIdBankIdMapping --></label>
+        <name>Core_MDF_AccountIdBankIdMapping__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Account Bank Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank --></label>
+        <lookupFilter>
+            <errorMessage><!-- Banks in Draft and Inactive status cannot be mapped. --></errorMessage>
+        </lookupFilter>
+        <name>Core_MDF_Bank__c</name>
+        <relationshipLabel><!-- Account Bank Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <sharingReasons>
+        <label><!-- AccountNodeGroup --></label>
+        <name>Core_MDF_AccountNodeGroup</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Select Bank with same program as of Account --></errorMessage>
+        <name>Core_MDF_Check_Bank_Program</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Account associated with Bank&apos;s Account --></errorMessage>
+        <name>Core_MDF_Check_for_account</name>
+    </validationRules>
+</CustomObjectTranslation>

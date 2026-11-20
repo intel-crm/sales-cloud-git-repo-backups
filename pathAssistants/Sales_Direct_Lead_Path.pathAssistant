@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Sales Direct Lead Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Core_Lead_Status__c</fieldNames>
+        <fieldNames>Core_Lead_State__c</fieldNames>
+        <picklistValueName>Contact - No Opportunity</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Lead_Status__c</fieldNames>
+        <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_State__c</fieldNames>
+        <info>&lt;p&gt;Overview: In the SAL stage a Sales Rep has accepted the qualified Lead with PACTT information. The Sales Rep continues to validate the Lead and if there is a high level to purchase an Intel Product/Solution, convert the Lead to on opportunity.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Actions:&lt;/p&gt;&lt;p&gt;1. Attempt to establish contact with the lead.&lt;/p&gt;&lt;p&gt;2. Determine if the lead is an ideal fit and project is ready for opportunity pursuit.&lt;/p&gt;&lt;p&gt;3. If so, mark SAL stage as complete in the status bar, there by converting the lead to an opportunity.&lt;/p&gt;&lt;p&gt;4. If lead is unfit after continued pursuit, change lead status to &amp;quot;Disqualified&amp;quot; and provide relevant sub-status.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Phone and email are required to convert a lead to SQL.&lt;/p&gt;</info>
+        <picklistValueName>Sales Accepted Lead</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Lead_Status__c</fieldNames>
+        <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_State__c</fieldNames>
+        <info>&lt;p&gt;Overview: In the SGL stage, assess if the lead is ready for sales pursuit. Gather PACTT info and confirm project start is within 6 months.&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;Actions:&lt;/p&gt;&lt;p&gt; 1. Attempt contacting the lead and log the activity.&lt;/p&gt;&lt;p&gt; 2. After engaging, set Sub Status to In Contact.&lt;/p&gt;&lt;p&gt; 3. Use PACTT methodology to assess and complete the Qualification section.&lt;/p&gt;&lt;p&gt; 4. If not worth pursuing, set Status to Disqualified and choose the right lead-sub-status reason.&lt;/p&gt;&lt;p&gt; 5. If worth pursuing, keep logging engagement activities.&lt;/p&gt;&lt;p&gt; 6. If the start date is beyond 6 months or not PACTT-qualified, disqualify the lead then set lead status to  &amp;quot;Disqualified&amp;quot; and mark lead sub-status with proper disqualification reason.&lt;/p&gt;&lt;p&gt; 7. When the lead shows strong buying intent, click Claim to move to SAL stage.&lt;/p&gt;</info>
+        <picklistValueName>Sales Generated Lead</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Lead_Status__c</fieldNames>
+        <fieldNames>Core_Lead_State__c</fieldNames>
+        <info>&lt;p&gt;Valid Status values for SQL are : &lt;/p&gt;&lt;p&gt; 1. Opportunity&lt;/p&gt;</info>
+        <picklistValueName>Sales Qualified Lead</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Sales_Lead</recordTypeName>
+</PathAssistant>

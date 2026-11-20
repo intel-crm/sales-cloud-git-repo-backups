@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Grant_Access__c",
+  "id" : "6de411c8-808e-4c15-913b-b6aa312b682e",
+  "label" : "Grant Access",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-grant-access",
+  "type" : "route",
+  "urlPrefix" : "grant-access"
+}

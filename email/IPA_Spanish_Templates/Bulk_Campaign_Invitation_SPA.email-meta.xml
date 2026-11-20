@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Bulk_Campaign_Invitation_SPA</name>
+    <style>none</style>
+    <subject>Como usuario de la Zona para desarrolladores Premier, ¡ya puede unirse a Intel Partner Alliance!</subject>
+    <textOnly>Como usuario de la Zona para desarrolladores Premier, ¡ya puede unirse a Intel® Partner Alliance!
+
+¡Obtenga beneficios adicionales además del valor que le otorga la Zona para desarrolladores Premier!
+
+Únase a Intel®
+Partner Alliance
+
+Nombre:  {!Contact.FirstName}
+
+Apellido:  {!Contact.LastName}
+
+Nombre de usuario (dirección de correo electrónico): {!Contact.Email}
+
+El contrato de la Zona para desarrolladores Premier permite el acceso a recursos confidenciales y a contenidos seguros de Intel, y ahora es un beneficio de Intel® Partner Alliance. Como usuario valioso de la Zona para desarrolladores Premier, puede unirse al programa Intel® Partner Alliance de inmediato.
+
+Su empresa ya es un miembro valioso de Intel® Partner Alliance. Esta es una oportunidad que le permitirá unirse a colegas que ya integran el programa y obtener acceso a beneficios exclusivos altamente valorados. Algunos ejemplos incluyen:
+
+Acceso a más de 800 cursos de primera clase y a más de 30 competencias y certificaciones, acceso a información del sector y a pronósticos empresariales: conocimientos vitales a través de Intel® Partner University.
+Obtenga Puntos mediante compras de Intel y actividades de creación empresarial aptas. Canjee puntos por necesidades empresariales valiosas.
+Zonas de activación seleccionadas, sobre temas del sector y centradas en tareas, con los recursos para crear, comercializar y vender productos y soluciones equipados con tecnología Intel®.
+Promocione sus soluciones en nuestra Intel® Partner Showcase a través de su tienda personalizada, que le permite conectarse con miles de socios y con sus clientes finales en todo el ecosistema.
+
+Inscríbase como contacto y obtendrá 100 puntos* para su empresa. Comience a experimentar todo lo que Intel® Partner Alliance y la Zona para desarrolladores Premier tienen para ofrecer.
+
+Siga estos pasos rápidos y fáciles:
+
+Haga clic en Unirse ahora y siga las indicaciones** para vincularse con la cuenta de su empresa.
+Una vez confirmado, recibirá un correo electrónico para iniciar sesión en Intel® Partner Alliance.
+
+Descubra todos los beneficios que ofrece el programa: únase a Intel® Partner Alliance ahora.
+
+Únase ahora
+
+
+¿Necesita ayuda para registrarse como socio? Comuníquese con asistencia al cliente.
+
+
+*Deben ser puntos elegibles para calificar. Consulte los requisitos de elegibilidad.
+
+*Ayuda de Azure Multi-Factor Authentication (MFA)
+
+Únase al grupo de Intel® Partner Alliance en LinkedIn
+
+© 2024 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, EE. UU. www.intel.com
+Privacidad &amp;verbar; Cookies &amp;verbar; *Marcas comerciales &amp;verbar; Cancelar suscripción</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Points Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Points Data</value>
+    </caseValues>
+    <fields>
+        <label><!-- DQ Flag --></label>
+        <name>DQ_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>PRM_Account_Id__c</name>
+        <relationshipLabel><!-- Points Data --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business Id --></label>
+        <name>PRM_Business_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Date Time --></label>
+        <name>PRM_Change_Date_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Inactive_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- Points Data (One Partner ID) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Points Current Balance --></label>
+        <name>PRM_Points_Balance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points External Id --></label>
+        <name>PRM_Points_ext_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- SalescloudAccountId --></label>
+        <name>PRM_SalescloudAccountId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Available --></label>
+        <name>PRM_Total_Points_Available_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Due to Expire --></label>
+        <name>PRM_Total_Points_Due_to_Expire_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Earned --></label>
+        <name>PRM_Total_Points_Earned_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Expired --></label>
+        <name>PRM_Total_Points_Expired_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Expiry Date --></label>
+        <name>PRM_Total_Points_Expiry_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Expiry Quarter --></label>
+        <name>PRM_Total_Points_Expiry_Quarter_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Expiry Year --></label>
+        <name>PRM_Total_Points_Expiry_Year_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Points Redeemed --></label>
+        <name>PRM_Total_Points_Redeemed_Nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

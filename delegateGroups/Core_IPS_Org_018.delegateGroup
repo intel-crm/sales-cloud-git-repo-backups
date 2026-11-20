@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>BCP - Unassigned</groups>
+    <groups>IPS - Org Admin - BCP</groups>
+    <label>IPS - Org Admin - BCP</label>
+    <loginAccess>false</loginAccess>
+    <roles>IPS Product OrgAdmin</roles>
+    <roles>EMP_11298293_Kenta_Ueda</roles>
+</DelegateGroup>

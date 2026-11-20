@@ -1,0 +1,6 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" Controller="Core_MDF_CommunityRedirectController">
+    <!--To hold full path url-->
+    <aura:attribute name="url" type="String"/>
+    <!--doInit-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+</aura:component>

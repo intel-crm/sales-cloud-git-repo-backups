@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Agent_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>User__r.FirstName +  User__r.LastName</formula>
+        <label>Agent Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Interested Parties</relationshipLabel>
+        <relationshipName>Interested_Parties</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Interested Parties</relationshipLabel>
+        <relationshipName>Interested_Parties1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Contact__r.Account.Name</formula>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Case_Remove_Notifi_Detail__c</fullName>
+        <description>This is use for Restricted Content on Email Notification.</description>
+        <formula>Case__r.Core_IPS_Restricted_Secret_Content__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Remove Notifi Detail</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Project_Interested_Party__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To distinguish the interested parties of the Support Premier Project object</description>
+        <label>Project Interested Party</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Contact__c)),Contact__r.Email,User__r.Email)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Contact__c)),Contact__r.FirstName,User__r.FirstName)</formula>
+        <label>First Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Contact__c)),Contact__r.LastName,User__r.LastName)</formula>
+        <label>Last Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Test__c</fullName>
+        <externalId>false</externalId>
+        <label>Test</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Type of Interested Party</description>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>External</fullName>
+                    <default>false</default>
+                    <label>External</label>
+                </value>
+                <value>
+                    <fullName>Internal</fullName>
+                    <default>false</default>
+                    <label>Internal</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Interested_Parties</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Interested Party</label>
+    <nameField>
+        <displayFormat>A-{0000000000}</displayFormat>
+        <label>Interested Party Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Interested Parties</pluralLabel>
+    <recordTypes>
+        <fullName>Cutomer</fullName>
+        <active>true</active>
+        <label>Cutomer</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Internal</fullName>
+        <active>true</active>
+        <label>Internal</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>IF_User_is_Blank_when_Contact_is_associa</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(NOT(ISNULL(Contact__c)), ISNULL(User__c))</errorConditionFormula>
+        <errorMessage>User should not be blank when Contact is Selected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>IPS_Altera_Go_Live_IntPort_Restriction</fullName>
+        <active>true</active>
+        <description>Restricting the user to add Interested Parties on a cases with Altera products during migration</description>
+        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
+        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/apex.js&quot;)} 
+
+var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
+IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
+var IPSCaseAttID = &apos;{!Case.Id}&apos;;
+var IPSCaseAttIPSPROJECT = &apos;{!Case.Core_IPS_Project_Case__c}&apos;;
+var IPSCaseAttACCOUNT = &apos;{!Case.Account}&apos;;
+var myURL = &apos;{!URLFOR($Site.Prefix+&apos;/apex/Core_IPS_Interested_Party_External?id=&apos;+Case.Id)}&apos;;
+if((IPSCaseAttIPSPROJECT == &apos;&apos;) &amp;&amp; (IPSCaseAttACCOUNT == &apos;&apos;)){
+alert(&apos;Can not proceed since Account Name and IPS Project&apos;);
+}
+else{
+window.open(myURL, &apos;_self&apos;); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_External_Interested_Party</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add External Interested Party</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)} 
+
+var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
+IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
+var IPSCaseAttID = &apos;{!Case.Id}&apos;; 
+console.log(&apos;-------&apos;, IPSCaseAttACCOUNT); 
+var IPSCaseAttIPSPROJECT = &quot;{!Case.Core_IPS_Project_Case__c}&quot;; 
+var IPSCaseAttACCOUNT = &apos;{!Case.AccountId}&apos;; 
+var iserror = false; 
+
+if ((IPSCaseAttIPSPROJECT == &apos;&apos;) &amp;&amp; (IPSCaseAttACCOUNT == &apos;&apos;)) { 
+alert(&apos;This is an IPS No Assigned Contact Case. Cannot assign External Interested Parties.&apos;); 
+iserror = true; 
+} 
+else if (&apos;{!Case.Core_IPS_Customer_Visible__c}&apos; == &apos;0&apos;) { 
+alert(&apos;Case is not visible to customers. Cannot assign External Interested Parties.&apos;); 
+iserror = true; 
+} 
+if (iserror == false) { 
+if ((&quot;{!$Profile.Name}&quot; == &quot;{!$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{ 
+window.open(&quot;/IPS/Core_IPS_Interested_Party_External&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+} 
+
+ 
+//Added by Aparna for DE36697-R4.2 
+
+else if(typeof(srcUp) == &apos;function&apos; &amp;&amp; (&quot;{$Profile.Name}&quot; != &quot;{$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{ 
+sforce.console.getEnclosingTabId(function(enclosingResult) { 
+sforce.console.getEnclosingPrimaryTabId(function(primaryResult) { 
+sforce.console.openPrimaryTab(primaryResult.id, &quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&quot; + IPSCaseAttID, true, &apos;Case: {!Case.CaseNumber}&apos;, null); 
+}); 
+}); 
+} 
+else { 
+window.open(&quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+}
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Manage_Interested_Parties_LWC</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Manage Interested Parties</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/lightning/n/Interested_Parties?c__recordId={!Case.Id}</url>
+    </webLinks>
+</CustomObject>

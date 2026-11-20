@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Account_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0011J00001AJ8poQAD,0011J00001BXqPjQAL,0011J00001BYlFPQA1,0013b00001yEIMdAAO,001o000000O651yAAB,001o000000O66SaAAJ,001o000000O66ujAAB,001o000000O66W6AAJ,001o000000O66XbAAJ,001o000000O66ZeAAJ,001o000000OSbVoAAL,001o000000OSo8vAAD,001o000000OSs1bAAD,001o000000OTsemAAD,001o000000OUrQmAAL,001o000000sXzGoAAK,001o0000011HkUfAAK,001o0000011HkV9AAK,001o0000011HmWsAAK,001o0000011HTQiAAO,001o0000011HVXUAA4,001o0000011ld9DAAQ,001o0000011lPkaAAE,001o0000011mKNjAAM,001o0000015AOfiAAG</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Altera Disty Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

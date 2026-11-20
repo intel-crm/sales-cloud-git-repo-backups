@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>3. MaritzCX: Configuration Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>3. MaritzCX: Configuration Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Configured Columns --></label>
+        <name>MaritzCX__Configured_Columns__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configured Questions on Account --></label>
+        <name>MaritzCX__Configured_Questions_on_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configured Questions on Case --></label>
+        <name>MaritzCX__Configured_Questions_on_Case__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configured Questions on Contact --></label>
+        <name>MaritzCX__Configured_Questions_on_Contact__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configured Questions on Feedback --></label>
+        <name>MaritzCX__Configured_Questions_on_Feedback__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configured Questions on Survey --></label>
+        <name>MaritzCX__Configured_Questions_on_Survey__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1- Goal --></label>
+        <name>MaritzCX__KM1_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1- Max --></label>
+        <name>MaritzCX__KM1_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1- Min --></label>
+        <name>MaritzCX__KM1_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2- Goal --></label>
+        <name>MaritzCX__KM2_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2- Max --></label>
+        <name>MaritzCX__KM2_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2- Min --></label>
+        <name>MaritzCX__KM2_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3- Goal --></label>
+        <name>MaritzCX__KM3_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3- Max --></label>
+        <name>MaritzCX__KM3_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3- Min --></label>
+        <name>MaritzCX__KM3_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4- Goal --></label>
+        <name>MaritzCX__KM4_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4- Max --></label>
+        <name>MaritzCX__KM4_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4- Min --></label>
+        <name>MaritzCX__KM4_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5- Goal --></label>
+        <name>MaritzCX__KM5_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5- Max --></label>
+        <name>MaritzCX__KM5_Max__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5- Min --></label>
+        <name>MaritzCX__KM5_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1 Chart --></label>
+        <name>MaritzCX__Key_Metric_1_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2 Chart --></label>
+        <name>MaritzCX__Key_Metric_2_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3 Chart --></label>
+        <name>MaritzCX__Key_Metric_3_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4 Chart --></label>
+        <name>MaritzCX__Key_Metric_4_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5 Chart --></label>
+        <name>MaritzCX__Key_Metric_5_Chart__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>MaritzCX__Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Trend --></label>
+        <name>MaritzCX__Time_Trend__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

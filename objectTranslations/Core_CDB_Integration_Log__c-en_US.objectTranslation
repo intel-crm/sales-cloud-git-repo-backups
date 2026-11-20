@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CDB Integration Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CDB Integration Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Integration Direction --></label>
+        <name>Core_Integration_Direction_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Integration Type --></label>
+        <name>Core_Integration_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Log Status --></label>
+        <name>Core_Log_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation><!-- Successful --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Id --></label>
+        <name>Core_Record_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Number --></label>
+        <name>Core_Retry_Number_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Code --></label>
+        <name>Core_Status_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Message --></label>
+        <name>Core_Status_Message__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>It contains mapping of biz org type and their respective partner role.</description>
+    <fields>
+        <fullName>Grouping_Method__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Grouping Method</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Biz_Org_Type__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Biz Org Type</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Role_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PRM Partner Role Label</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Role__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Role</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Segment__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Segment</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isDefault__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>set to True if the BizOrgType is the default one for the given partner role. Used in GetProfile API</description>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>isDefault</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isNotAutoApprove__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>isNotAutoApprove</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>PRM PartnerRoleType Mapping</label>
+    <listViews>
+        <fullName>IPA_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>PRM_Biz_Org_Type__c</columns>
+        <columns>PRM_Partner_Role__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>IPA View</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PRM PartnerRoleType Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

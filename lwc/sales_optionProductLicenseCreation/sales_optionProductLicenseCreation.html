@@ -1,0 +1,25 @@
+<template>
+	<div class="slds-m-around_small">
+			<template if:true={data}>
+					<lightning-datatable 
+															 data={data} 
+															 columns={columnsList} 
+															 key-field="Id" 
+															 onrowaction={callRowAction}>
+					</lightning-datatable>
+			</template>
+			<template if:true={noOptionAvailable}>
+					<div class="slds-text-color_error">{label.SalesoptionalHtml}</div>
+			</template>
+			
+			<template if:true={allOptionProcessed}>
+				<div class="slds-text-color_error">{label.SalesOptionalConfigurationHtml}</div>
+			</template>
+			<template if:true={noOfSeatError}>		
+				<div class="slds-text-color_error">{label.Sales_noOfseatErrorMsg}</div>
+			</template>
+			<template if:true={error}>
+					{error}
+			</template>
+	</div>
+</template>

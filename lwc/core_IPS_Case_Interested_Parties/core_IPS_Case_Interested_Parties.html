@@ -1,0 +1,91 @@
+<template>
+    <lightning-card title={searchCardTitle} icon-name={contactIconName}>
+        <div class="slds-grid slds-wrap slds-size_8-of-12 slds-grid--vertical-align-center ">
+          <div class="slds-size_3-of-12 slds-m-left_xxx-small slds-align-bottom">
+            <!-- <label class="slds-form-element__label slds-m-top_small slds-float_right ">Enter Search Text:</label> -->
+            <div class="slds-m-top_small slds-float_right">
+              <lightning-combobox
+                name="partyType"
+                variant="label-hidden"
+                value={interestedPartyType}
+                placeholder="Select Interested Party Type"
+                options={options}
+                onchange={handleChangeInterestedPartyType} >
+              </lightning-combobox>
+            </div>
+          </div>
+          <div class="slds-size_5-of-12 slds-m-left_x-small">
+            <c-core_-i-p-s_-lightning-input-utility placeholder={placeholder} onchange={handleSearchKey} value={searchKey} onenter={handleSearch}>
+            </c-core_-i-p-s_-lightning-input-utility>
+          </div>
+          <div class="slds-size_1-of-12 slds-m-left_x-small slds-align-bottom">
+            <lightning-button  disabled={isSearchBtnDisable} variant="brand" label="Search" onclick={handleSearch} title="Search">
+            </lightning-button>
+          </div>
+          <div class="slds-size_1-of-12 slds-float_left slds-m-left_x-small slds-align-middle">
+            <lightning-helptext content={helpText}></lightning-helptext>
+          </div>
+        </div>
+        <div class="slds-grid slds-wrap slds-size_8-of-12 slds-grid--vertical-align-center ">
+          <div class="slds-align_absolute-center slds-m-top_medium">
+            <lightning-button variant="brand" label="Cancel" onclick={handleCancel} title="Cancel">
+            </lightning-button>
+            <lightning-button disabled={isDoneBtnDisable} variant="brand" label="Done" onclick={handleSave} class="slds-m-left_medium"
+              title="Done">
+            </lightning-button>
+          </div>
+        </div>
+    </lightning-card>
+    <!-- <template if:true={islinkedInterestedPartiesPresent}>
+      <lightning-card title={selectedCardTitle} icon-name={contactIconName}>
+          <c-core_-i-p-s_-datatable-utility
+              hide-checkbox-column={hideCheckboxColumn} 
+              show-row-number-column={showRowNumberColumn} 
+              enable-infinite-loading={enableInfiniteLoading}
+              num-and-checkbox-both-cols={numAndCheckboxBothCols}
+              normal-data-table={normalDataTable}
+              records={linkedInterestedParties}
+              columns={columns}
+              number-of-rows-to-show={numberOfRowsToShow}
+              height-in-rem={heightInRem}
+              selected-rows={preSelectedRows}
+              onrowactions={handleRowActions}>
+          </c-core_-i-p-s_-datatable-utility>
+      </lightning-card>
+    </template> -->
+
+    <template if:true={selectedInterestedPartiesPresent}>
+      <lightning-card title={selectedCardTitle} icon-name={contactIconName}>
+        <lightning-datatable
+            key-field="Id"
+            data={selectedInterestedParties}
+            columns={columns}
+            selected-rows={preSelectedRows}
+            onrowselection={removeSelectedRows}>
+        </lightning-datatable>
+      </lightning-card>
+    </template>
+
+    <template if:true={isSearchResultPreset}>
+      <lightning-card title={searchResCardTitle} icon-name={contactIconName}>
+          <template if:true={isMoreThanThousandRes}>
+            <p>{isMoreThanThousandResMsg}</p>
+          </template>
+          <c-core_-i-p-s_-datatable-utility
+              hide-checkbox-column={hideCheckboxColumn} 
+              show-row-number-column={showRowNumberColumn} 
+              enable-infinite-loading={enableInfiniteLoading}
+              num-and-checkbox-both-cols={numAndCheckboxBothCols}
+              normal-data-table={normalDataTable}
+              records={searchResult}
+              columns={columns}
+              number-of-rows-to-show={numberOfRowsToShow}
+              height-in-rem={heightInRem}
+              onrecordselection={getSelectedRecords}>
+          </c-core_-i-p-s_-datatable-utility>
+      </lightning-card>
+    </template>
+  <template if:true={spinnerOn}>
+    <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+  </template>
+</template>

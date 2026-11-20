@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <dimensions>
+        <field>Bonus11A_10.OPPORTUNITY_NM</field>
+        <isDerived>false</isDerived>
+        <label>Opportunity Name</label>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Bonus11A_10.BONUS_CATEGORY_NM</field>
+        <isDerived>false</isDerived>
+        <label>Bonus Name</label>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Bonus11A_10.STAGE_NM</field>
+        <isDerived>false</isDerived>
+        <label>Stage</label>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>Bonus11A_10.STATUS_NM</field>
+        <isDerived>false</isDerived>
+        <label>Status</label>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+    <type>Asset</type>
+    <waveVisualization>X1H_24_Bonus_Tracking_Dashboard</waveVisualization>
+</WaveXmd>

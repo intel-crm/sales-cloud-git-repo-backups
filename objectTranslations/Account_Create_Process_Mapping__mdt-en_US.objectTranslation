@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Create Process Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Create Process Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Source Name --></label>
+        <name>Core_Account_Reference_Source_Name__c</name>
+        <picklistValues>
+            <masterLabel>Access &amp; Entitlement</masterLabel>
+            <translation><!-- Access &amp; Entitlement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoMarketing</masterLabel>
+            <translation><!-- CoMarketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IQR</masterLabel>
+            <translation><!-- IQR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MyDeals</masterLabel>
+            <translation><!-- MyDeals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Management</masterLabel>
+            <translation><!-- Opportunity Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SalesCRM Existing</masterLabel>
+            <translation><!-- SalesCRM Existing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UCD</masterLabel>
+            <translation><!-- UCD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Process Engagement Code --></label>
+        <name>Customer_Process_Engagement_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Process Engagement Name --></label>
+        <name>Customer_Process_Engagement_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate Rejected --></label>
+        <name>Duplicate_Rejected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Type Code --></label>
+        <name>Process_Type_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Type Name --></label>
+        <name>Process_Type_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordType Developer Name --></label>
+        <name>RecordType_Developer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordType Name --></label>
+        <name>RecordType_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Set MDM Name --></label>
+        <name>Set_MDM_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_IPS_Supported_Product__c$Core_Product_Organization__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c$Core_Supported_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_IPS_Question_Text__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_IPS_Question__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_Required__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_Agent_Only__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Supported_Product__c$LastModifiedBy</field>
+    </columns>
+    <description>Environment Details displayed on Case, per Supported Product.</description>
+    <format>Summary</format>
+    <name>Environment Details Opertnl - Supp Prod</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_IPS_EDO_Supported_Product__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_IPS_Supported_Product__c$Core_Supported_Product_Name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_IPS_Supported_Product__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

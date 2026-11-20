@@ -1,0 +1,46 @@
+lightning-input-field.Stage_name_hidden{
+    visibility: hidden;
+}
+
+:host {
+--slds-c-modal-sizing-border: 2px;
+--slds-c-modal-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+--slds-c-modal-radius-border: 0.5rem;
+}
+
+lightning-button.warButton{
+  --sds-c-button-brand-color-background:rgb(255, 187, 0);
+  --sds-c-button-brand-color-border:rgb(255, 187, 0);
+  --sds-c-button-brand-color-background-hover:rgb(255, 136, 0);
+  --sds-c-button-brand-color-background-active: rgb(255, 136, 0);
+}
+lightning-button.errButton{
+  --sds-c-button-brand-color-background: rgba(255, 0, 0, 0.726);
+  --sds-c-button-brand-color-border:rgba(255, 0, 0, 0.726);
+  --sds-c-button-brand-color-background-hover:rgba(255, 0, 0, 0.863);
+  --sds-c-button-brand-color-background-active: rgb(255, 0, 0);
+}
+.runtime_platform_actionsQuickActionWrapper .quick-actions-panel {
+    overflow-y: hidden;
+}
+/*table {
+  table-layout:fixed;
+  width:100%;
+}
+.mydiv{
+  display:inline-block;
+  overflow-y:hidden;
+  overflow-x: auto;
+}*/
+td, th {
+  white-space: normal; 
+  overflow-wrap: break-word;
+}
+
+/*.slds-button__icon {
+    display: none; /* Hides the help text icon */
+/*}*/
+
+/*.hide-help-text-icon .slds-form-element__help{
+    display: none; /* Hides the help text */
+    /*}*/

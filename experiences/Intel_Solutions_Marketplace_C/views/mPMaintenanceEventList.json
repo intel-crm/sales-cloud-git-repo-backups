@@ -1,0 +1,59 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "f2b1139e-e7bc-46f6-bf0e-1e7f6ce19e0c",
+  "label" : "MP Maintenance-Event List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "6baa6978-12e7-44d9-bb00-31f15be2f44a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "496c7b3a-1394-49b5-a5d7-9770ef354199",
+        "zh_cn" : "a2759f79-42ab-48c3-b019-eb31bae6d225"
+      },
+      "renditions" : [ {
+        "id" : "a2759f79-42ab-48c3-b019-eb31bae6d225",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "496c7b3a-1394-49b5-a5d7-9770ef354199",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "9f453b67-599b-4c7e-977b-e52a9511ba70",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "daf7bd78-d297-4046-889b-23f31d08a2ed",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "5fc72bd8-b7f5-4b8a-9faa-5889750e0fd8",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a6R"
+}

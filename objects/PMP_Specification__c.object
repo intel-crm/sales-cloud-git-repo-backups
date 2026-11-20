@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Specification object lists all the specifications that a product or offering can be mapped to.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>PMP_Active_Ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Shows if a specification is active or not</description>
+        <inlineHelpText>Shows if a specification is active or not</inlineHelpText>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Ancestor_Specification_Cd__c</fullName>
+        <description>Displays the Specification ancestor Id separated by &quot;|&quot; Symbol</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c)), PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c + &quot;|&quot; + PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c + &quot;|&quot; + PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c, 
+IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c)), PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c + &quot;|&quot; + PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c, 
+IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c)),PMP_Parent_Specification_Id__r.PMP_Partner_Product_Specification_Id__c, 
+&quot;&quot;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Displays the Specification ancestor Id separated by &quot;|&quot; Symbol</inlineHelpText>
+        <label>Ancestor Specification Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Ancestor_Specification_Nm__c</fullName>
+        <description>Displays the Ancestor Specification Names separated by &apos;|&quot;</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.Name)), PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.Name + &quot;|&quot; + PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.Name + &quot;|&quot; + PMP_Parent_Specification_Id__r.Name, 
+IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.Name)), PMP_Parent_Specification_Id__r.PMP_Parent_Specification_Id__r.Name + &quot;|&quot; + PMP_Parent_Specification_Id__r.Name, 
+IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.Name)),PMP_Parent_Specification_Id__r.Name, 
+&quot;&quot;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Displays the Ancestor Specification Names separated by &quot;|&quot;</inlineHelpText>
+        <label>Ancestor Specification Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Display_Type_Nm__c</fullName>
+        <description>Type of control to be displayed for the specification selection (Radio/Checkbox)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of control to be displayed for the specification selection (Radio/Checkbox)</inlineHelpText>
+        <label>Display Type</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Image_url__c</fullName>
+        <description>Image URL</description>
+        <label>Image URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Mandatory_Offering_Category_Nm__c</fullName>
+        <description>List of Categories for which the specification is mandatory</description>
+        <externalId>false</externalId>
+        <inlineHelpText>List of Categories for which the specification is mandatory</inlineHelpText>
+        <label>Mandatory Offering Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Mandatory_Specification_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To maintain if the specification value is mandatory</description>
+        <inlineHelpText>To maintain if the specification value is mandatory</inlineHelpText>
+        <label>Mandatory Specification</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Parent_Specification_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to the parent specification</description>
+        <inlineHelpText>Lookup to parent specification</inlineHelpText>
+        <label>Parent Specification</label>
+        <referenceTo>PMP_Specification__c</referenceTo>
+        <relationshipLabel>Specifications</relationshipLabel>
+        <relationshipName>Specifications</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Product_Display_Sequence_Nbr__c</fullName>
+        <description>Holds the sequence of the leaf node</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the sequence of the leaf node</inlineHelpText>
+        <label>Sequence</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Product_Specification_Id__c</fullName>
+        <description>Specification Id from PIM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specification Id from PIM</inlineHelpText>
+        <label>PIM Specification Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Product_Specification_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>holds a combination of PIM Specification Id and Locale</description>
+        <externalId>true</externalId>
+        <inlineHelpText>holds a combination of PIM Specification Id and Locale</inlineHelpText>
+        <label>PIM Spec External Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_Parent_Specification_Id__c</fullName>
+        <description>Holds the value of the Parent PIM Specification Id</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the value of the Parent PIM Specification Id</inlineHelpText>
+        <label>PIM Parent Specification Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Product_url__c</fullName>
+        <description>Product URL</description>
+        <label>Product Url</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Chinese_Nm__c</fullName>
+        <description>Name of specification in chinese</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of specification in chinese</inlineHelpText>
+        <label>Specification Name (Chinese)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Japanese_Nm__c</fullName>
+        <description>Name of specification in japanese</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of specification in japanese</inlineHelpText>
+        <label>Specification Name (Japanese)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Name__c</fullName>
+        <description>Field which hold Specification name</description>
+        <externalId>false</externalId>
+        <label>Specification Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Specification_Type_Nm__c</fullName>
+        <description>Type of Specification - either Processor /FPGA / Chipset / Other</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of Specification - either Processor /FPGA / Chipset / Other</inlineHelpText>
+        <label>Specification Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Specification</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Active_Ind__c</columns>
+        <columns>PMP_Partner_Product_Specification_Id__c</columns>
+        <columns>PMP_Display_Type_Nm__c</columns>
+        <columns>PMP_Parent_Specification_Id__c</columns>
+        <columns>PMP_Product_Parent_Specification_Id__c</columns>
+        <columns>PMP_Partner_Product_Specification_Key__c</columns>
+        <columns>PMP_Ancestor_Specification_Nm__c</columns>
+        <columns>PMP_Ancestor_Specification_Cd__c</columns>
+        <columns>PMP_Mandatory_Offering_Category_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Specification Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Specifications</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

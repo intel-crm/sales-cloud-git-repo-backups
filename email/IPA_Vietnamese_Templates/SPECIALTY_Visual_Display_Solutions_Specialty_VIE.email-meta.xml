@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Visual_Display_Solutions_Specialty_VIE</name>
+    <style>none</style>
+    <subject>Chuyên gia Giải pháp Hiển thị Hình ảnh trong Liên minh Đối tác Intel®</subject>
+    <textOnly>Chúc mừng bạn đã đủ điều kiện!
+
+
+{!Contact.FirstName},
+
+Chào mừng bạn đến với Chuyên gia Giải pháp Hiển thị Hình ảnh trong Liên minh Đối tác Intel®! Với tư cách là Chuyên gia IoT, bạn đủ điều kiện nhận thêm các lợi ích, được thiết kế để giúp bạn phát triển việc kinh doanh Giải pháp Hiển thị Hình ảnh IoT, bao gồm:
+
+Quỹ phát triển thị trường được chỉ định
+Cơ hội tham gia phát triển tiếp thị nội dung &amp; sách bán hàng
+Được mời tham dự sự kiện đặc biệt và cơ hội kết nối
+
+Lợi ích tiếp cận
+
+
+*Các lợi ích có thể khác nhau tùy theo khu vực địa lý.
+
+Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
+
+Truy cập https://www.intel.com/content/www/vn/vi/partner-alliance/help/overview.html để được giúp đỡ và hướng dẫn cách tối ưu hóa tư cách thành viên của bạn.
+
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

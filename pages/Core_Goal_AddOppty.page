@@ -1,0 +1,258 @@
+<apex:page id="goalPage" lightningStylesheets="true">
+    
+    <!--<script type="text/javascript">
+        function checkAll(cb){
+            var inputElem = document.getElementsByClassName("CheckBoxInfo");
+            for(var i=0; i<inputElem.length; i++)
+            {
+                if(inputElem[i].id.indexOf("checkedone")!=-1)
+                    inputElem[i].checked = cb.checked;
+            }
+        }    
+        function UncheckAll(){ 
+            var w = document.getElementById('goalPage:fm:pbId1:pbId2:pbs1:pbt1:checkBox1') ; 
+            console.log('***'+w.checked);
+            if(w.type=='checkbox' && w.checked){ 
+                w.checked = false; 
+                //checkAll(w);
+            }
+        } 
+        var currentQueueId;
+        var queueDelay = 500; // in ms
+        var queueSearch = function() {
+            // clear any old event
+           // window.clearTimeout(currentQueueId);
+           clearTimeout(currentQueueId);
+            
+
+            // add a new event
+            currentQueueId = setTimeout(doSearch, queueDelay);
+        };
+
+        
+        function doSearch() {
+            searchServer(
+                document.getElementById("firstName").value);
+                //document.getElementById("stageName").value,
+        }
+        
+        function reloadGoal(){
+         sforce.one.navigateToURL('/{!goalId}')
+        }
+    </script>
+    
+    <style type="text/css">
+        .col1 {width:10%; text-align:left;}
+        .col2 {width:8%; text-align:left;}
+        .col3 {width:15%; text-align:left;}        
+    </style>
+    
+    
+    
+   
+    <apex:form id="fm">
+    <apex:actionFunction name="refreshPageSize" action="{!refreshPageSize}" status="fetchStatus" reRender="pbId2,debug"/>
+    <apex:pageBlock title="Find Opportunity" id="pbId1" tabstyle="Opportunity">  
+        <table width="100%" border="0">
+            <tr>
+                <td width="200" valign="top">
+                    <apex:pageBlock title="Specify Filter Criteria:" id="criteria">
+                        <apex:outputLabel ><b>Filter By Owner:</b></apex:outputLabel>
+                        <apex:selectRadio value="{!selOwnerFilter}" layout="pageDirection">
+                            <apex:selectOptions value="{!items}"/>
+                            <apex:actionSupport event="onchange" rerender="out,pbId2,debug" status="status" action="{!changeQuery}" oncomplete="UncheckAll(); return true;"/>
+                        </apex:selectRadio><p/>
+                        <apex:outputPanel id="out">
+                            <apex:actionstatus id="status">
+                                <apex:facet name="start">
+                                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;">
+                                        <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                                            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                                            <span class="waitingDescription">Please Wait...</span>
+                                        </div>
+                                    </div>
+                                </apex:facet>
+                            </apex:actionstatus>
+                        </apex:outputPanel>
+                        <apex:outputLabel ><b>Filter By Additional Fields:</b></apex:outputLabel><br/><br/>
+                        <apex:outputPanel id="out1">
+                            <apex:panelGrid columns="4" id="png1" columnClasses="col1, col2, col3" width="50%"> 
+                                <apex:outputText value="Opportunity Name" style="margin-left: 9%;"/>
+                                <apex:selectList value="{!selOpptyNameOp}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!Operators}"/>
+                                </apex:selectList>
+                                <apex:inputText value="{!selOpptyName}" id="opptyNameInput" style="width: 100%;"/>
+                                <apex:outputText value="AND" style="margin-left: 9%;"/>
+                                
+                                <apex:outputText value="Opportunity Owner" style="margin-left: 9%;"/>
+                                <apex:selectList value="{!selOpptyOwnerOp}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!Operators}"/>
+                                </apex:selectList>
+                                <apex:inputText value="{!selOpptyOwner}" id="opptyOwnerInput" style="width: 100%;"/>
+                                <apex:outputText value="AND" style="margin-left: 9%;"/>
+                                
+                                <apex:outputText value="Technical Owner" style="margin-left: 9%;"/>
+                                <apex:selectList value="{!selTechOwnerOp}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!Operators}"/>
+                                </apex:selectList>
+                                <apex:inputText value="{!selTechOwner}" id="techOwnerInput" style="width: 100%;"/>
+                                <apex:outputText value="AND" style="margin-left: 9%;"/>
+                                
+                                <apex:outputText value="Account Name" style="margin-left: 9%;"/>
+                                <apex:selectList value="{!selAccNameOp}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!Operators}"/>
+                                </apex:selectList>
+                                <apex:inputText value="{!selAccName}" id="accNameInput" style="width: 100%;"/>
+                                <apex:outputText value="AND" style="margin-left: 9%;"/>
+                            </apex:panelGrid>                           
+                        </apex:outputPanel>
+                        <apex:pageBlockButtons location="bottom">
+                            <div draggable="false" >
+                                <apex:commandButton value="Search" action="{!searchMethod}" rerender="pbId2,errors,out" status="status"/>
+                            </div>
+                        </apex:pageBlockButtons>
+                        
+                        
+                    </apex:pageBlock>   
+
+                </td>
+            </tr>
+        </table>
+        <apex:pageBlock id="pbId2" tabstyle="Opportunity">
+            <apex:pageBlockSection id="pbs1" collapsible="false" columns="1" title="Opportunities" >
+                <!--<font>
+                    <apex:facet name="header">
+                        <span style="color:black;">Opportunities</span>
+                    </apex:facet>     
+                </font>-->
+                <!--<apex:pageMessages id="errors" />
+                <apex:pageBlockTable id="pbt1" value="{!QueriedOppty}" var="oppObj" width="100%" columnsWidth="5%,25%,10%,20%,20%,15%,20%">
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:inputCheckbox id="checkBox1">
+                                <apex:actionSupport event="onclick" onsubmit="checkAll(this)" action="{!getSelected}" reRender="debug"/>
+                            </apex:inputCheckbox>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!oppObj.selected}" id="checkedone" styleClass="CheckBoxInfo">
+                            <apex:actionSupport event="onclick" action="{!getSelected}" reRender="debug"/>
+                        </apex:inputCheckbox>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Opportunity Name" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:commandLink value="{!oppObj.opp.Name}" action="/{!oppObj.opp.Id}" target="_blank"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Stage" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="StageName" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputField value="{!oppObj.opp.StageName}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Owner Full Name" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="Owner.Name" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputField value="{!oppObj.opp.Owner.Name}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Technical Owner" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="Core_Technical_Owner__r.Name" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputField value="{!oppObj.opp.Core_Technical_Owner__r.Name}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Account Name" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="Account.Name" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputField value="{!oppObj.opp.Account.Name}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Decision Date" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="CloseDate" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputField value="{!oppObj.opp.CloseDate}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:commandLink value="Approved Date" action="{!toggleSort}" rerender="pbt1,debug">
+                                <apex:param name="sortField" value="Core_Approved_Date__c" assignTo="{!sortField}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                        <apex:outputField value="{!oppObj.opp.Core_Approved_Date__c}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:panelGrid columns="8">                  
+                    <apex:selectList value="{!size}" multiselect="false" size="1" onchange="refreshPageSize();">
+                        <apex:selectOptions value="{!paginationSizeOptions}"/>
+                    </apex:selectList>
+                     
+                    <apex:commandButton status="fetchStatus" reRender="pbId2" value="First" action="{!first}" disabled="{!!setCon.hasPrevious}" title="First Page" oncomplete="UncheckAll(); return true;"/> 
+
+                    <apex:commandButton status="fetchStatus" reRender="pbId2" value="Previous" action="{!previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page" oncomplete="UncheckAll(); return true;"/> 
+
+                    <apex:commandButton status="fetchStatus" reRender="pbId2" value="Next" action="{!next}" disabled="{!!setCon.hasNext}" title="Next Page" oncomplete="UncheckAll(); return true;"/>
+
+                    <apex:commandButton status="fetchStatus" reRender="pbId2" value="Last" action="{!last}" disabled="{!!setCon.hasNext}" title="Last Page" oncomplete="UncheckAll(); return true;"/> 
+
+                    <apex:outputText >{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,
+                         (setCon.pageNumber * size))} of {!noOfRecords}
+                    </apex:outputText> 
+                           
+                    <apex:outputPanel >                      
+                        <apex:actionStatus id="fetchStatus" >
+                            <apex:facet name="start" >
+                              <img src="/img/loading.gif" />                    
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:outputPanel>
+                </apex:panelGrid>  
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Selected Opportunities" id="debug" tabstyle="Opportunity">
+            <apex:pageMessages id="errors1"/>
+            <apex:outputPanel id="selected_Opps" rendered="{!selectedOppWrapList.size > 0}">
+                <div align="center" draggable="false" >
+                    <apex:commandButton value="Clear Table" action="{!clearTable}" rerender="debug,errors,pbId2" oncomplete="UncheckAll(); return true;"/>
+                </div>
+                <apex:pageBlockTable value="{!selectedOppWrapList1}" var="s" >
+                    <apex:column >
+                    <apex:inputCheckbox value="{!s.selected}" id="checkedone"/>
+                    </apex:column>
+                    <apex:column headervalue="Opportunity Name" value="{!s.opp.Name}" />
+                    <apex:column headervalue="Stage" value="{!s.opp.StageName}" />
+                    <apex:column headervalue="Owner Full Name" value="{!s.opp.Owner.Name}" />
+                    <apex:column headervalue="Technical Owner" value="{!s.opp.Core_Technical_Owner__r.Name}" />
+                    <apex:column headervalue="Account Name" value="{!s.opp.Account.Name}" />
+                    <apex:column headervalue="Decision Date" value="{!s.opp.CloseDate}" />
+                    <apex:column headervalue="Approved Date" value="{!s.opp.Core_Approved_Date__c}" />
+                </apex:pageBlockTable>
+                <div align="center" draggable="false">
+                    <apex:commandButton value="Add and Continue" action="{!addOpptytoGoal}" oncomplete="reloadGoal();" rerender="errors1"/>
+                    <apex:commandButton value="Cancel" action="{!cancelAdd}"/>
+                </div>
+            </apex:outputPanel>
+            <apex:outputPanel id="selected_Opps1" rendered="{!selectedOppWrapList.size == 0}">
+                <div align="center" draggable="false" >
+                    <apex:commandButton value="Cancel" action="{!cancelAdd}" />
+                </div>
+            </apex:outputPanel>
+        </apex:pageBlock>    
+
+    </apex:pageBlock>
+    </apex:form>    -->
+    
+</apex:page>

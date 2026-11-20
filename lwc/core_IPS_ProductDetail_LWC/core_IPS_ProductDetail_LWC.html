@@ -1,0 +1,108 @@
+<template>
+    <div class="pageBkGD">
+        <template if:true={showProdDetails}>
+            <div class="slds-p-around_medium">
+                <lightning-button onclick={handleNavigateBack} label="< Back" title="Back to dashboard">
+                </lightning-button>
+            </div>
+            <div class="Mask">
+                <div class="slds-p-around_large" style="color:white">
+                    <div style="font-size:28px"><template if:true={productData}>
+                            <div class="slds-truncate slds-p-right_small">{productData.Name}</div>
+                        </template>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap slds-p-left_large" style="color:white">
+                    <div class="slds-col slds-size_2-of-12" style="font-size:16px">
+                        <div style="font-weight:bold">Intel® Product Name</div>
+                        <template if:true={productData}>
+                            <div class="slds-truncate slds-p-right_small">{productData.Name}</div>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12" style="font-size:16px">
+                        <div style="font-weight:bold">Premier Support Project</div>
+                        <template if:true={productData}>
+                            <div class="slds-truncate slds-p-right_small">{productData.Core_IPS_Project_Name__c}</div>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12" style="font-size:16px">
+                        <div style="font-weight:bold">Product Focus Area</div>
+                        <template if:true={productData}>
+                            <div class="slds-truncate slds-p-right_small">{productData.core_Product_Application__c}
+                            </div>
+                        </template>
+
+                    </div>
+                    <div class="slds-col slds-size_1-of-12" style="font-size:16px">
+                        <div style="font-weight:bold">Status</div>
+                        <template if:true={productData}>
+                            <div class="slds-truncate slds-p-right_small">{productData.Status}</div>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12" style="font-size:16px">
+                        <div style="font-weight:bold">Support License</div>
+                        <template if:true={productData}>
+                            <div class="slds-truncate slds-p-right_small">{productData.Core_IPS_Support_License__c}
+                            </div>
+                        </template>
+                    </div>
+                    <div class="slds-float_right slds-p-top_xxx-small">
+                        <template if:true={showNewCase}>
+                            <input onclick={handleNewCaseCreate} type="button" class="caseBtn"
+                                value="Create New Case"></input>
+                        </template>
+                    </div>
+                    <br></br>
+                    <div style="margin-top: 5px; padding-left:15px;">
+                        <lightning-button-icon icon-name="utility:print" alternative-text="Print" title="Print"
+                            class="slds-m-left_xx-small" variant="border-inverse" onclick={getPrintView}>
+                        </lightning-button-icon>
+                    </div>
+                </div>
+            </div>
+            <template if:true={showTable}>
+                <div class="projectDeatilsBg">
+                    <div class="slds-p-bottom_small slds-p-top_medium " style="font-size:20px;">
+                        Cases
+                    </div>
+                    <lightning-datatable key-field="Id" data={totalCaseList} columns={columns}
+                        hide-checkbox-column="true" sorted-by={sortBy} sorted-direction={sortDirection}
+                        onsort={handleSorting}>
+                    </lightning-datatable>
+                    <div class="productpaginator">
+                        <c-core_-i-p-s_-paginator_-l-w-c records={data} total-records={data.length}
+                            show-search-box="true" onpaginatorchange={handleCasePaginationChange}>
+                        </c-core_-i-p-s_-paginator_-l-w-c>
+                    </div>
+                </div>
+            </template>
+            <template if:false={showTable}>
+                <div class="casesListHeader">
+                    No cases related to this product
+                </div>
+            </template>
+        </template>
+        <template if:true={isPrintClicked}>
+            <template if:true={applicationPageUrl}>
+                <div class="slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Cancel" onclick={closeModal} style="padding-top:5px;">
+                    </lightning-button>
+                </div>
+                <div class="slds-float_right slds-p-right_large slds-p-top_large">
+                    <lightning-button-icon class="slds-m-around_medium" style="background: white;"
+                        icon-name="utility:close" alternative-text="Close" onclick={closeModal} title="Close">
+                    </lightning-button-icon>
+                </div>
+                <div class="slds-p-bottom_large slds-p-top_large">
+                    <lightning-layout-item flexibility="auto" size="12" padding="around-large">
+                        <iframe height="600px" width="1210px" src={applicationPageUrl}></iframe>
+                    </lightning-layout-item>
+                </div>
+            </template>
+        </template>
+    </div>
+    <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+    <template if:true={isSpinner}>
+        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+    </template>
+</template>

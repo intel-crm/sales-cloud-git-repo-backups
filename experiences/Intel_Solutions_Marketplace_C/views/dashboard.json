@@ -1,0 +1,262 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceDashboardLayout",
+  "dataProviders" : [ ],
+  "id" : "c6ee4311-1a5e-4800-aa84-17826d3e5d12",
+  "label" : "Dashboard",
+  "regions" : [ {
+    "id" : "a5530d61-6615-4242-8ff9-37565a8a5382",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "64b58f48-dfa8-4799-861a-2d3165afc5a9",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "014fb6d1-090f-46c2-9da4-64ad40c3404f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Dashboard\"/> \n<meta name=\"keywords\" content=\"sf,mp,dashboard\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"Dashboard\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "View my dashboard to login for details on the on Intel® Solutions Marketplace.",
+        "title" : "Dashboard - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "440a64b6-44e4-4a06-bcb8-bd4070729217",
+      "renditionMap" : {
+        "ja" : "1121ecb3-2b6a-4a28-85e3-adcd3e015732",
+        "zh_cn" : "22dbc3f6-c99b-4cf1-8916-7a9c8e6e4973"
+      },
+      "renditions" : [ {
+        "id" : "22dbc3f6-c99b-4cf1-8916-7a9c8e6e4973",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1121ecb3-2b6a-4a28-85e3-adcd3e015732",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "2514bf3e-e472-4691-9946-da49aedce997",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : true,
+        "fullWidth" : false,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "c5eb8603-85d8-4cc3-934a-67631c8a7e9d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "",
+        "showBreadcrumbs" : true,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "8a48dfc8-dc8b-42bd-9ec5-8bcb8774aede",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "60b99a93-fbd8-4490-bbe2-c7290a224e0a",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "1b5c9009-0005-4cd1-9222-8efd7e451dc8",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "59a32e44-ba17-4643-88bb-3d340524cd9f",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1100",
+        "recordId" : "01Z0n0000009CCyEAM"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "87b5ec77-f17f-459c-a1ec-489dd6ebf50b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d011ecc2-65b7-4ff1-b2a0-22d96c1850e3",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1250",
+        "recordId" : "01Z0n0000000YReEAM"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "6fa5b2f4-c2b9-43c5-86d4-18b0b3aafd95",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6f649867-1fbd-4328-845a-409911338d7b",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1100",
+        "recordId" : "01Z0n0000009CG2EAM"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "ff8e5e9a-67d2-4756-a245-813bc4c83c5a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "97bc0e28-ea0a-49b3-be5e-22ac032ce125",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "pageType" : "marketplacedashboard",
+        "viewAll" : ""
+      },
+      "componentName" : "c:MarketplaceHelpAndTraining",
+      "id" : "50b525c1-99aa-43dd-abcc-886a3da64b1b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f966ece7-3707-4ae2-86e4-28f6b6e32704",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "faqTitle" : "Dashboard",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "6abca243-b3f2-4b82-9d40-65c8df9e289a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "410543f8-94c5-46c4-bffc-0b526f8af63e"
+      },
+      "renditions" : [ {
+        "id" : "410543f8-94c5-46c4-bffc-0b526f8af63e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "FAQ"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "63c2011b-fe64-45a3-b3e8-f09a691186e4",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "21d6c389-96ed-4fc3-9517-f30359992b56",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "d1ffc5d3-76a8-4237-a1c2-85a58a81fe79",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "d4e48982-7406-43f4-9657-b806351a2869",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "dd757ce4-2dca-4b99-91fb-e864a723c914",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "d1af55ef-4e7d-4f66-9d29-633986d5be84",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "0fed2712-c89a-412e-a9ce-6e0377e6c17e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c0cc0a65-7131-49f6-82c4-d5543162222f",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "56584586-39c9-4ad5-b4ce-9d335a1aaecc",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "4ecc81df-2772-433f-b28d-8b14d465dcb5",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1100",
+        "recordId" : "01Z0n0000009CJuEAM"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "18fde7fd-0452-4675-8f81-4fb9dae0fb6a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9187ef4f-f2cd-4802-b196-23f853ea5c35",
+    "regionName" : "tab4",
+    "type" : "region"
+  }, {
+    "id" : "d604bf45-71f6-48ef-a7c8-bd5b463ad1bd",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "485",
+        "recordId" : "01Z3b000001X1QAEA0"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "2686671b-e5dd-4bcb-b793-ab0d782ea128",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fedc94e9-bffd-4133-9960-98abbe64bf26",
+    "regionName" : "tab5",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-dashboard"
+}

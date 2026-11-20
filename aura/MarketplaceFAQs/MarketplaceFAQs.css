@@ -1,0 +1,9 @@
+.THIS .cMarketPlaceAccordion.accordionTheme-default .accordionSectionHeader.open {
+  background-color: transparent;
+}
+
+@media (max-width: 767px) {
+  .THIS .tabContent {
+    padding: 0 1rem;
+  }
+}

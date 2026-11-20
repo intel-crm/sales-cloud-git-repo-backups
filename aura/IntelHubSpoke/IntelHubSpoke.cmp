@@ -1,0 +1,27 @@
+<aura:component >
+	<aura:attribute name="headline" type="string" default="" />
+	<aura:attribute name="body" type="Aura.Component[]"/>
+	<aura:attribute name="class" type="string"/>
+	<aura:attribute name="modalOpen" type="Boolean" default="false" description="Internal component state"/>
+
+	<div>
+		<div class="{! v.class + ' headline'}">
+			<a class="open spoke  slds-p-around_medium" onclick="{!c.handleToggleSpoke}">
+				<h3 class="promo-heading">{! v.headline }</h3>
+				<lightning:icon iconName="utility:chevronright" class="shiftUp icon-white slds-m-left_medium" size="x-small"/>
+			</a>
+		</div>
+		<div class="overlay slds-hide" aura:id="overlay">
+			<div class="close-heading">
+				<a class="close spoke slds-p-around_large"  onclick="{!c.handleToggleSpoke}">
+					<h3 class="heading-20">{! v.headline }</h3>
+					<lightning:icon iconName="utility:chevronleft" class="shiftUp icon-white slds-m-left_medium" size="x-small"/>
+				</a>
+			</div>
+			<div class="body">
+				{!v.body}
+			</div>
+		</div>
+	</div>
+
+</aura:component>

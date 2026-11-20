@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PermissionSetAssignment$Assignee.Profile</field>
+    </columns>
+    <description>What perm sets are there?</description>
+    <filter>
+        <criteriaItems>
+            <column>PermissionSetAssignment$Assignee.LastName</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Kipps,Kaelin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PermissionSetAssignment$Assignee.Profile</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Partner</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>PermissionSetAssignment$Assignee</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PermissionSetAssignment$PermissionSet</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Permission Sets &amp; Counts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Permission_Set_Assignments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PermissionSetAssignment$Assignee.CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

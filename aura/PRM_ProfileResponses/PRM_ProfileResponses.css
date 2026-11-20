@@ -1,0 +1,12 @@
+.THIS {
+    background-color: white;
+}
+.THIS .slds-spinner_container  {
+    margin-top: 200px;
+    margin-bottom: 200px; 
+}
+.THIS .responseStyle{
+    font-size: medium;
+    font-weight: bold;
+    color:rgb(0,0,0);
+}

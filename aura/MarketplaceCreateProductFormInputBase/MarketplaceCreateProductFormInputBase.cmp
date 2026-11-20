@@ -1,0 +1,48 @@
+<aura:component extends="c:MarketplaceRedux" extensible="true" abstract="true">
+
+  <!-- Extend this component: see documentation for more -->
+  <aura:attribute name="formDataApiName" type="string" description="This is the field name on the record related to the input" />
+  <aura:attribute name="doNotSave" type="boolean" description="This field is true in the rare case where the value is ignored" />
+  <!-- IPA2.0 + US TWC4497-1631 -->
+  <!-- <aura:attribute name="isOfferingField" type="boolean" description="This field is true if the input matches a corresponding offering field" /> -->
+  <aura:attribute name="refreshDataOnChange" type="boolean" description="" />
+  <aura:attribute name="apiName" type="string" description="This is the object-level generic name on the record related to the input, ie. 'offering'" />
+  <aura:attribute name="fieldName" type="string" description="This is the field name on the record related to the input" />
+  <aura:attribute name="isEdit" type="boolean" description="This will be set to true if tab1 loads more than once. Used to show pop up for category change "/>	
+  <aura:attribute name="name" type="string" description="The input name for ADA" required="true"/>
+  <aura:attribute name="refId" type="string" description="Optional ID for tracking the input" />
+  <aura:attribute name="value" type="any" description="The value of the input" />
+  <aura:attribute name="type" type="string" default="text" description="See MPSubsection helper for map of input types (ie. 'text', 'date' ...)"/>
+  <aura:attribute name="userSelectedLanguage" type="string" />
+  <!-- IPA2.0 + US TWC4497-1631 -->
+  <!-- <aura:attribute name="offeringCreatedLanguage" type="string" />  -->
+  <aura:attribute name="required" type="boolean" default="false" description="A value is required for the input" />
+  <aura:attribute name="disabled" type="boolean" default="false" description="Input is disabled" />
+  <aura:attribute name="errorMessage" type="string" description="Error message text" />
+    <aura:attribute name="errorAnchorLabel" type="string" description="Name for error links"/><!--Added by raj as part of merge[03/26]-->
+  <aura:attribute name="isChildRequired" type="boolean" default="false" description="Error message text" /> <!--psg analysis should not go to devint-->
+  <aura:attribute name="layoutItemSize" type="integer" default="12" description="Flex layout size of input 1 - 12 (mobile, desktop)" />
+  <aura:attribute name="layoutItemMediumDeviceSize" type="integer" default="12" description="Flex layout size of input 1 - 12 (desktop only)" />
+
+  <aura:attribute name="class" type="string" description="Optional class for input container" />
+  
+  <aura:attribute name="notActive" type="boolean" default="true" />
+  <!-- Internal Attributes -->
+  <aura:attribute name="touched" type="boolean" default="false" description="Internal" />
+  <aura:attribute name="valid" type="boolean" default="false" description="Internal" />
+
+  <aura:attribute name="updateFormCallback" type="object" description="Internal" access="global" />
+
+  <aura:attribute name="searchTerm" type="string" default="" />
+  
+  <aura:attribute name="requireAllLevels" type="Boolean" default="false" description="If input is required and 'requireAllLevels' is set to true, input will only be valid if the selection extends to the lowest-most child." />   
+    <aura:attribute name="inputSpecId" type="string" description="to pass any other input filed param"/> 
+  <aura:attribute name="activeStep" type="integer"/>
+   <aura:method name="showErrorMessage" action="{!c.handleShowErrorMessage}" />
+    
+  <lightning:layoutItem class="{!join( 'inputBase', v.apiName !='categoryAndSubCategory' ? 'slds-p-around_medium' : ' ')}" size="{!v.layoutItemSize}" mediumDeviceSize="{!v.layoutItemMediumDeviceSize}">
+  <div id="{!v.name}" class="anchor"></div>
+      {!v.body}
+  </lightning:layoutItem>
+
+</aura:component>

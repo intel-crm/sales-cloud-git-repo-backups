@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_LINE1</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_ZIP</field>
+    </columns>
+    <description>Acccount list for Soumya  with HQ address 9.30.2024</description>
+    <filter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 7) AND 6</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Aflac,Amgen,Black Knight Financial,Global Payments,Jabil,LOWE&apos;S HOME IMPROVEMENT,SOUTHERN COMPANY,TIAA-CREF,Truist Bank (BB&amp;T/SunTrust),Royal Caribbean Cruise Lines,Virtue Financial,Automatic Data Processing,Inc.,Gartner,S&amp;P Global,UNITED PARCEL SERVICE,Albertson&apos;s,LLC,Cummins,Eli Lilly,HUMANA,KROGER,PROCTER &amp; GAMBLE,PROGRESSIVE,Marathon Petroleum,CAPITAL ONE FINANCIAL CORP,DELOITTE &amp; TOUCHE L.L.P.,ERNST &amp; YOUNG,LLP,FANNIE MAE,FREDDIE MAC,Hilton Worldwide Holdings Inc.,KPMG - USA,MARRIOTT INTERNATIONAL,PRICEWATERHOUSE COOPERS (HEADQUARTER) -,Geico,CARDINAL HEALTH,INC.,CLEVELAND CLINIC,FEDEX,HCA,Nationwide Insurance,American Electric Power,American International Group,JOHNSON &amp; JOHNSON (HEADQUARTER) - USA,MERCK &amp; COMPANY,MET LIFE,NEW YORK LIFE INSURANCE,PFIZER,INC. (HEADQUARTER) - USA,PRUDENTIAL FINANCIAL (HEADQUARTER) - USA,Bristol Myers Squib,Becktin Dickinson,Chubb,CIGNA,CVS CAREMARK CORPORATION,FIDELITY INVESTMENTS,LIBERTY MUTUAL INSURANCE COMPANY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>MASSMUTUAL,State Street,Partners Healthcare International,THE HARTFORD,Travelers,Moderna,BIOGEN,Citizens Bank,ALLSTATE,Archer Daniels Midland,EATON (OH),Fifth Third Bank,HCSC,Lexis Nexis,Northern Trust (IL),SHERWIN-WILLIAMS,UNITED AIRLINES UAL (IL),Johnson Controls,ABBOTT LABORATORIES,DEERE AND CO - HQ,FISERV,KIMBERLY-CLARK (WI),THE NORTHWESTERN MUTUAL LIFE INSURANCE COMPANY,INC.,ABBVIE,ANTHEM,CATERPILLAR,Headlands Technologies,Jump Trading,Radix Trading,CME Group,DAVITA,Intermountain Healthcare,BANK OF AMERICA MERRILL LYNCH,Mastercard Incorporated,MEMX,CARGILL - USA,TARGET CORPORATION,COSTCO,STARBUCKS CORPORATION,MILLENNIUM PARTNERS,Renaissance Technologies,Susquehanna International Group,LLP,CAESARS ENTERTAINMENT,KAISER PERMANENTE,SUTTER HEALTH,BP - USA,SHELL OIL - USA,Down Under Geo Solutions,EXXONMOBIL CORP - USA,GEORGIA PACIFIC,CARNIVAL CRUISE LINES HQ,CITADEL LLC,The Coca-Cola Company,RAYMOND JAMES FINANCIAL,EPIC SYSTEMS CORPORATION,MCDONALD&apos;S CORPORATION,Ford*,General Motors*</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Providence Health &amp; Services,AMERICAN AIRLINES,PEPSI (HEADQUARTER) - USA,Texas Instruments Incorporated,HOME DEPOT,WALMART,NBC UNIVERSAL,INC.,The Walt Disney Company,BLOOMBERG,MORGAN STANLEY DEAN WITTER,AMERICAN EXPRESS,Wells Fargo &amp; Company,THE BANK OF NEW YORK MELLON,CITIGROUP (HEADQUARTERS) - USA,D.E.Shaw,The Goldman Sachs Group Inc,JP MORGAN CHASE,NASDAQ - USA,Two Sigma,Point72,BlackRock,Hudson River Trading (HRT),INTERCONTINENTAL EXCHANGE,Jane Street Capital,BANNER HEALTH,H.E.B. GROCERY COMPANY,Technicolor,Expedient Communications,O&apos;Reilly Auto Parts,Panera Bread,Electronic Arts Inc.,StackPath,AT&amp;T (WB Studios),BEST BUY CO INC,Bungie,EDISON International,FARMERS INSURANCE,Fox Corp,Illumina,Medtronic,MICRON TECHNOLOGY,Scanline VFX,NIKE,Paramount (CBS,Viacom),QUALCOMM,R1 RCM,Samsung,Space Exploration Technologies Corp.,SPACEX,American Medical Response,Arthur J. Gallagher &amp; Company,Ascension Health,Athena Health,BOSTON CONSULTING GROUP,Circana,Circle K Stores Inc</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Cushman &amp; Wakefield,DUKE ENERGY INC.,FIDELITY NATIONAL INFORMATION SERVICES,INC.,FIS,Hertz,IQVIA,Mastec,Memorial Hermann,Mgm Resorts International,Navy Federal CC,NCR CORPORATION,Nextera Energy,PALO ALTO NETWORKS,PetSmart,Publix,TGS Management Corp.,TJX Companies,TRACTOR SUPPLY COMPANY,Unfi (United Natural Foods Inc),Wasabi Technologies,Inc.,Zoox,Intersystems,Siemens Digital Industries Software,Allied Universal,Fresnius,APPLIED MATERIALS,BLUE SHIELD,BROADCOM CORPORATION,Cadence Design Systems,CAPITAL GROUP,CHARLES SCHWAB,PACIFIC GAS &amp; ELECTRIC,SYNOPSYS,Visa U.S.A. Inc.,VMWARE,CBRE Enterprise,Kinder Morgan,NRG Energy,Quantlab Financial,RACKSPACE,RELIANT ENERGY,Sabre,Tenet Healthcare Corp,VALERO ENERGY CORP,BAKER HUGHES,Centerpoint Energy,CHEVRON U.S.A. INC.,ConocoPhillips,HALLIBURTON - USA,SCHLUMBERGER / WESTERNGECO,TGS-NOPEC,Google Client Sell To,Cisco IT,Centene Corp,Facebook IT,Oracle Client Sell-To,THERMOFISHER SCIENTIFIC INC.,EMERSON,Amazon Client Sell To</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EXPEDIA,INC.,Agilent technologies,inc,(enterprise),Arista Networks,Inc.,Concentrix Solutions Corp,DROPBOX,Juniper Networks,Nordstrom,NVIDIA (Client only),Seagate,The Gap,CommonSpirit Health,HONEYWELL INTERNATIONAL INC.,Sony Pictures Entertainment,Adobe Systems Incorporated,Crusoe Energy Systems Inc.,GILEAD SCIENCES,Honda North America,On Semiconductor Enterprise,Republic Services,Salt River Project Agricultura,TELEPERFORMANCE,SALT LAKE CITY,UTAH,TTEC,7-ELEVEN,MCKESSON CORPORATION,SOUTHWEST AIRLINES COMPANY,TEXTRON,TOYOTA MOTOR SALES U,USAA,3M Company,GENERAL MILLS,OPTUM,US BANCORP,Ally Financial,Ameriprise Financial,C.H. ROBINSON (MN),Enterprise Rent a Car,H&amp;R Block,Jack Henry &amp; Associates,PRINCIPAL FINANCIAL GROUP (IA),DELTA AIR LINES,Mayo Clinic,Microsoft Client Sell To</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>americas,global</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,albertson&apos;s,LLC,american international group,inc.,american medical response,Ascension health,At&amp;T,athena health,automatic data processing,becktin dickinson,black knight financial,black rock,bristol meyers squib,bungie,c.h. Robinson,cardinal health,carnival cruise lines,circle k stores inc.,cisco it,citizens bank,cme group,cummins,crusoe energy systems inc.,eaton</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Account List for Soumya</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2015-01-02</startDate>
+    </timeFrameFilter>
+</Report>

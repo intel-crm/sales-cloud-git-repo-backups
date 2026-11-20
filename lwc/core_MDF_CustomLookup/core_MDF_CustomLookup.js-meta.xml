@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="objName" type="String" label="Object API Name" />
+            <property name="label" type="String" label="Field Label" />
+            <property name="required" type="Boolean" label="Required" />
+            <property name="iconName" type="String" label="Icon Name" />
+            <property name="filter" type="String" label="Filter (WHERE clause fragment)" />
+            <property name="searchPlaceholder" type="String" label="Search Placeholder" />
+            <property name="disabled" type="Boolean" label="Disabled" />
+            <property name="bypassSharing" type="Boolean" label="Bypass Sharing (avoids Create access requirement)" />
+            <property name="selectedId" type="String" label="Selected Record Id" role="outputOnly" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check deal end customer is present on PDO record or removed.</description>
+        <name>Check_End_Customer_Account_Removed</name>
+        <label>Check End Customer Account Removed</label>
+        <locationX>669</locationX>
+        <locationY>411</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Removed</name>
+            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_End_Customer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_End_Customer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_End_Customer_Account__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.PRM_End_Customer_Account__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reset_Previous_End_Customer_Account_Flag</targetReference>
+            </connector>
+            <label>Account Removed</label>
+        </rules>
+    </decisions>
+    <description>This Flow updates deal end customer flag on account.</description>
+    <environments>Default</environments>
+    <interviewLabel>PRM_Update_EndCustomerFlag {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_Update_DealEndCustomerFlag</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update deal end customer flag to false.</description>
+        <name>Reset_Previous_End_Customer_Account_Flag</name>
+        <label>Reset Previous End Customer Account Flag</label>
+        <locationX>704</locationX>
+        <locationY>585</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.PRM_End_Customer_Account__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PRM_Is_Deal_End_Customer_Account__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Check_End_Customer_Account_Removed</targetReference>
+        </connector>
+        <object>PRM_Partner_Deal_Opportunity__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

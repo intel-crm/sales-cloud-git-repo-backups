@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Add Attachments</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/add-an-attachment-to-an-account/</actionButtonLink>
+        <body>&lt;p&gt;Please visit the&amp;nbsp;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/basic-functionality/notes-attachments/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Notes &amp;amp;amp; Attachments&lt;/a&gt;&amp;nbsp;training page for details about visibility and confidential requirements when attaching documents.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To add an attachment to an account,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;From the&amp;nbsp;&lt;em&gt;Account&lt;/em&gt;&amp;nbsp;details page of the account you want to add your attachment to, navigate to the&amp;nbsp;&lt;strong&gt;Notes &amp;amp; Attachments&lt;/strong&gt;&amp;nbsp;section, and click&amp;nbsp;&lt;strong&gt;Upload Files&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Select the file from your computer and click&amp;nbsp;&lt;strong&gt;Choose&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;You are asked to confirm the upload. Click&amp;nbsp;&lt;strong&gt;Done&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;You will now see your file attached in the&amp;nbsp;&lt;strong&gt;Notes &amp;amp; Attachments&lt;/strong&gt;&amp;nbsp;section. To add additional attachments, click the down arrow and select&lt;strong&gt;&amp;nbsp;Upload Files&lt;/strong&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Add Attachments</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Add Attachments</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Add Attachments</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

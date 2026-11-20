@@ -1,0 +1,268 @@
+:host {
+  display: flex;
+  flex: 1; /* full height */
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.bordered-top {
+  border-top: 1px solid var(--carbon-tint2);
+}
+
+.bordered-bottom {
+  border-bottom: 1px solid var(--carbon-tint2);
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-header {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.card-image-title-container {
+  display: flex;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.card-quick-view .card-image-title-container {
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.card-image-title-container .image-container {
+  align-items: center;
+
+  /* background-color: var(--carbon-tint2); */
+  display: flex;
+  flex: 0 0 5rem;
+  height: 5rem;
+  justify-content: center;
+  margin-right: .85rem;
+  padding: .25rem;
+}
+
+.image-container img {
+  max-height: 4.375rem;
+  max-width: 4.375rem;
+}
+
+.card-quick-view .image-container {
+  border: none;
+  flex: 0 0 100%;
+  height: 10rem;
+  margin: 0;
+  padding: .5rem 3rem;
+}
+
+.specialty img {
+  height: 1.5rem;
+}
+
+.card-quick-view .image-container img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.card-image-title-container .card-title {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: bold;
+  hyphens: auto;
+  word-break: break-word;
+}
+
+.card-quick-view .card-title {
+  font-size: 1.25rem;
+  padding-left: .85rem;
+  padding-top: 1rem;
+}
+
+.card-description {
+  margin: 0 .9rem;
+  padding: .5rem 0 .8rem 0;
+}
+
+.card-body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin: .5rem 1rem 0 1rem;
+}
+
+.card-quick-view .card-body {
+  margin: 0 .85rem 0 .85rem;
+  min-height: 3rem;
+}
+
+.partner-name-container c-ipa-link {
+  display: contents;
+}
+
+.card-attribute:not(:first-child) {
+  border-top: 1px solid var(--carbon-tint2);
+}
+
+.card-footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.card-footer .card-quick-view {
+  border-top: 1px solid var(--carbon-tint2);
+}
+
+.partner-status {
+  align-items: center;
+  display: flex;
+}
+
+.partner-status-label {
+  flex: 1;
+}
+
+.partner-status .intel-icon {
+  flex: 0 1 auto;
+  font-size: 1.15rem;
+  line-height: 1;
+  margin-left: -2px;
+}
+
+.intel-icon::before {
+  margin-left: 0 !important;
+}
+
+.specialty .intel-icon,
+.specialty lightning-icon {
+  min-width: 1.25rem;
+  --iconColor: var(--gray);
+}
+
+.specialty .intel-icon {
+  color: var(--gray);
+  font-size: .875rem;
+}
+
+.partner-status-gold .partner-status .intel-icon {
+  color: var(--gold);
+}
+
+.partner-status-titanium .partner-status .intel-icon {
+  color: var(--gray);
+}
+
+.specialty {
+  align-items: center;
+  display: flex;
+}
+
+/* Card eyebrow styles */
+.card-eyebrow {
+  background-color: var(--classic-blue-shade1);
+  padding: 0 1rem;
+}
+
+.card-eyebrow[data-has-eyebrow='false'] {
+  background-color: transparent;
+  visibility: hidden;
+}
+
+.card-quick-view .card-eyebrow {
+  padding: 10px 1rem;
+  text-align: left;
+}
+
+/* End card eyebrow styles */
+
+.view-website-container {
+  height: 2.5rem;
+}
+
+.view-website-container c-ipa-link {
+  /* display: flex !important; */
+  font-size: .90625rem;
+}
+
+.contact-partner-dropdown-container {
+  padding: .25rem 1rem 1.5rem 1rem;
+}
+
+[data-highlight='true'] {
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .contact-partner-dropdown-container {
+    margin-bottom: 5rem;
+  }
+
+  .card-image-title-container .card-title {
+    margin-left: 0;
+  }
+
+  .card-quick-view .card-title {
+    padding: 1.5rem .85rem .2rem .85rem;
+  }
+
+  .card-quick-view .card-eyebrow {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-image-title-container {
+    padding: 0;
+  }
+
+  .card-image-title-container .card-title {
+    padding: .5rem .9rem 0 0;
+  }
+
+  .card-quick-view .card-image-title-container .card-title {
+    padding: 1.5rem .85rem .1rem .85rem;
+  }
+
+  .card-image-title-container[data-image-hidden='true'] .card-title {
+    padding: .5rem .9rem 0 .9rem;
+  }
+
+  .card {
+    font-size: .875rem;
+  }
+
+  .card-quick-view {
+    font-size: 1rem;
+  }
+
+  .card-quick-view .card-image-title-container {
+    padding: 0;
+  }
+
+  .partner-status .intel-icon {
+    font-size: 1.125rem;
+  }
+
+  .card-quick-view .partner-status .intel-icon {
+    font-size: 1.15rem;
+  }
+
+  .view-website-container c-ipa-link {
+    font-size: .75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card-quick-view .image-container {
+    height: auto;
+    width: 100%;
+  }
+
+  .card-quick-view .image-container img {
+    width: 50%;
+  }
+}

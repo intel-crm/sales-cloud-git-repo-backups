@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Call Script Response</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Call Script Responses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account__c</name>
+        <relationshipLabel><!-- Call Script Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Answer 10 --></label>
+        <name>Core_Answer_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 11 --></label>
+        <name>Core_Answer_11__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 12 --></label>
+        <name>Core_Answer_12__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 13 --></label>
+        <name>Core_Answer_13__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 14 --></label>
+        <name>Core_Answer_14__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 15 --></label>
+        <name>Core_Answer_15__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 16 --></label>
+        <name>Core_Answer_16__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 17 --></label>
+        <name>Core_Answer_17__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 18 --></label>
+        <name>Core_Answer_18__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 19 --></label>
+        <name>Core_Answer_19__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 1 --></label>
+        <name>Core_Answer_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 20 --></label>
+        <name>Core_Answer_20__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 21 --></label>
+        <name>Core_Answer_21__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 2 --></label>
+        <name>Core_Answer_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 3 --></label>
+        <name>Core_Answer_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 4 --></label>
+        <name>Core_Answer_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 5 --></label>
+        <name>Core_Answer_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 6 --></label>
+        <name>Core_Answer_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 7 --></label>
+        <name>Core_Answer_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 8 --></label>
+        <name>Core_Answer_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer 9 --></label>
+        <name>Core_Answer_9__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Script --></label>
+        <name>Core_Call_Script__c</name>
+        <relationshipLabel><!-- Call Script Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_Campaign__c</name>
+        <relationshipLabel><!-- Call Script Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Core_Contact__c</name>
+        <relationshipLabel><!-- Call Script Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question 10 --></label>
+        <name>Core_Question_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 11 --></label>
+        <name>Core_Question_11__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 12 --></label>
+        <name>Core_Question_12__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 13 --></label>
+        <name>Core_Question_13__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 14 --></label>
+        <name>Core_Question_14__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 15 --></label>
+        <name>Core_Question_15__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 16 --></label>
+        <name>Core_Question_16__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 17 --></label>
+        <name>Core_Question_17__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 18 --></label>
+        <name>Core_Question_18__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 19 --></label>
+        <name>Core_Question_19__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 1 --></label>
+        <name>Core_Question_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 20 --></label>
+        <name>Core_Question_20__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 21 --></label>
+        <name>Core_Question_21__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 2 --></label>
+        <name>Core_Question_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 3 --></label>
+        <name>Core_Question_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 4 --></label>
+        <name>Core_Question_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 5 --></label>
+        <name>Core_Question_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 6 --></label>
+        <name>Core_Question_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 7 --></label>
+        <name>Core_Question_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 8 --></label>
+        <name>Core_Question_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question 9 --></label>
+        <name>Core_Question_9__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

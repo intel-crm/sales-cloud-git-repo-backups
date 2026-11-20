@@ -1,0 +1,76 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "a5f4b097-a34b-44a0-abee-79e863fa03e3",
+  "label" : "MP Maintenance-Offering Edit",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "64342913-8659-4065-915c-b6ec671e5b41",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "449d3486-9e18-43f7-bd6b-3ba38e112b57",
+        "zh_cn" : "ea76d78e-5df2-4249-ac8b-1512c09a23e7"
+      },
+      "renditions" : [ {
+        "id" : "449d3486-9e18-43f7-bd6b-3ba38e112b57",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。",
+            "showBreadcrumbs" : "false"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ea76d78e-5df2-4249-ac8b-1512c09a23e7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。",
+            "showBreadcrumbs" : "false"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a9001420-a645-46c5-b056-936adb62426c",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "d65a75fc-255c-4e24-9cbc-65818955835c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "32ab6027-85a9-4a41-a151-aa4d88b95aa7",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Offering Edit\"/> \n<meta name=\"keywords\" content=\"sf,mp,offering edit\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Edit your products and solution offerings on Intel® Solutions Marketplace.",
+        "title" : "Offering Edit -  Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d8879a3c-a2fd-4e64-a388-328b7bb75201",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f9279b11-831b-485d-9b4c-89fba24b68e1",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offering-edit"
+}

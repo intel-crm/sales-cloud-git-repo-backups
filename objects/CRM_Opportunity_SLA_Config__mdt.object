@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CRM_Opportunity_Coverage__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Opportunity Coverage</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Record_Type__c</fullName>
+        <description>Stores record type name of opportunity</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Required_Fields__c</fullName>
+        <description>Mandatory stage gate fields to be filled before moving to next stage</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Required Fields</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_SLA_Breach_1__c</fullName>
+        <description>No of days after which Opportunity owner receives an email after SLA Breach</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SLA Breach 1</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_SLA_Breach_2__c</fullName>
+        <description>No of days after which Opportunity Owner&apos;s Manager receives an email after SLA Breach1 + 14days</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SLA Breach 2</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Stage_Name__c</fullName>
+        <description>Field used to indicate Opportunity Stage name</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Stage Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Qualify</fullName>
+                    <default>true</default>
+                    <label>Qualify</label>
+                </value>
+                <value>
+                    <fullName>Define</fullName>
+                    <default>false</default>
+                    <label>Define</label>
+                </value>
+                <value>
+                    <fullName>Develop</fullName>
+                    <default>false</default>
+                    <label>Develop</label>
+                </value>
+                <value>
+                    <fullName>Design</fullName>
+                    <default>false</default>
+                    <label>Design</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Opportunity SLA Config</label>
+    <pluralLabel>Opportunity SLA Config</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,144 @@
+<aura:component controller="Core_MDF_SearchAccountController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"  access='global'>
+    
+    
+    <!--### declared attributes ###-->
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    <aura:attribute type="String" name="title"/>
+    <aura:attribute type="String" name="salutation"/>
+    <aura:attribute type="String" name="phone"/>
+    <aura:attribute type="String" name="first_name"/>
+    <aura:attribute type="String" name="last_name"/>
+    <aura:attribute type="String" name="mobile"/>
+    <aura:attribute type="String" name="email"/>
+    <aura:attribute type="String" name="country"/>
+    <aura:attribute type="String" name="region"/>
+    <aura:attribute type="Contact" name="contactRec"/>
+    <aura:attribute type="Account[]" name="accounList"/> 
+    <aura:attribute name="selectedAcc" type="String" access="PRIVATE"/>
+    <aura:attribute type="Boolean" name="isDisplayError"/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="salutationList" type="String[]" default="--None--"/>
+    <aura:attribute name="contryList" type="String[]" default="--None--"/>
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <ltng:require scripts="{!$Resource.jQuery_3_4_1}"/>
+    <aura:attribute type="String" name="contactRecId"/>
+    <aura:handler event="c:Core_Contact_Creation_Event" action="{!c.setContactId}" />
+    <aura:registerEvent name="loadContactRecordDisplayEvent" type="c:Core_Contact_Creation_DisplayEvent"/>
+    
+    <!-- Contact Creation Form -->
+    <div class="slds-m-around_xx-large">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">                    
+                    <div class="slds-text-heading_large slds-border_bottom NewCont">{!$Label.c.Core_MDF_New_Contact}</div>
+                    <form>
+                        <div id="errorMessageDiv" class='slds-grid slds-show slds-col slds-size_12-of-12'></div>
+                        <div class="slds-grid ContInfo slds-col  slds-size_12-of-12" style="background:#D3D3D3">
+                            <div class="slds-text-heading_medium" style="float:left;">{!$Label.c.Core_MDF_Contact_Information}</div>
+                        </div>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_Title_Contact_creation}" name="title" value="{!v.title}" />
+                            </div>
+                            <div class="slds-col slds-size_6-of-12" />
+                        </div>
+                        <div class="slds-grid ContName slds-text-title_bold ContName">
+                            {!$Label.c.Core_MDF_Name_Contact_Creation}
+                        </div>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_6-of-12 "> 
+  								<!--c:Core_CustomLookup objectAPIName="Contact" selectedRecord="{!v.selectedLookUpRecord}" label="Salutation"/-->
+                                <lightning:select name="select" label="{!$Label.c.Core_MDF_Salutation}" value="{!v.salutation}"> <!-- required="true" -->
+                                    <option value="">{!$Label.c.Core_MDF_None}</option>
+                                    <aura:iteration items="{!v.salutationList}" var="salutation">
+                                        <option value="{!salutation.value}" text="{!salutation.label}"></option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12" />
+                            <div class="slds-col slds-size_5-of-12 Contphone">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_Phone}" Name="Phone" value="{!v.phone}"/>
+                            </div>
+                        </div>
+                        <div class="slds-grid ContFields">
+                            <div class="slds-col slds-size_6-of-12 ">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_First_Name_Contact_Creation}" Name="first_name" required="true" value="{!v.first_name}" title="{!$Label.c.Core_MDF_Please_fill}"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12" />
+                            <div class="slds-col slds-size_5-of-12 ">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_Mobile_CC}" Name="mobile" value="{!v.mobile}"/>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-grid ">
+                            <div class="slds-col slds-size_6-of-12 ">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_Last_Name_cc}" Name="last_name" required="true" value="{!v.last_name}" title="{!$Label.c.Core_MDF_Please_fill}"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12" />
+                            <div class="slds-col slds-size_5-of-12 ">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_Business_Email}" Name="email" required="true" value="{!v.email}" title="{!$Label.c.Core_MDF_Please_fill}"/>
+                            </div>
+                        </div>
+                        <div class="slds-grid ">
+                            <div class="slds-col slds-size_6-of-12 CountryCon">
+                                <!--lightning:input aura:id="contactform" label="Country" Name="country" value="{!v.country}"/-->
+                                <lightning:select name="country" label="{!$Label.c.Core_MDF_Country_Region_cc}" aura:id="contactform" value="{!v.country}" required="true" title="{!$Label.c.Core_MDF_Please_fill}">
+                                        <option value="">{!$Label.c.Core_MDF_None}</option>
+                                    <aura:iteration items="{!v.contryList}" var="countryList">
+                                        <option value="{!countryList.value}" text="{!countryList.label}"></option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12" />
+                            <div class="slds-col slds-size_5-of-12 ">
+                                <lightning:input aura:id="contactform" label="{!$Label.c.Core_MDF_Region}" Name="region" value="{!v.region}"/>
+                            </div>
+                        </div>
+                        <div class="slds-grid AccCategory" style="background:#D3D3D3">
+                            <div class="slds-text-heading_medium" style="float:left;">{!$Label.c.Core_MDF_Account_Category}</div>
+                        </div>
+                        <div></div>
+                        <div class="slds-grid AccCategory">
+                            <span class="slds-checkbox radioBox">
+                                <ui:inputRadio aura:id="r0" text="Agency" name="AccountType" label="" change="{!c.onRadioSelect}"/>  {!$Label.c.Core_MDF_Agency_cc}   &nbsp;&nbsp;
+                                <ui:inputRadio aura:id="r1" text="Corporate" name="AccountType" label="" change="{!c.onRadioSelect}" value="true" /> {!$Label.c.Core_MDF_Corporate_cc}
+                            </span>
+                        </div>
+                        
+                        <div class="slds-grid">                
+                            <div class="slds-col slds-size_6-of-12 ContAcc">
+                                <!--lightning:input aura:id="contactform" label="Account Name" Name="account_name" required="true"/-->
+                                <lightning:select name="myAccSelect" label="{!$Label.c.Core_MDF_Account_Name_cc}" aura:id="myAccSelect" value="{!v.selectedAcc}" required="true">
+                                    <option text="{!$Label.c.Core_MDF_Search_Accounts_cc}" value="Search Accounts"/>
+                                    <aura:iteration items="{!v.accounList}" var="item">
+                                        <option text="{!item.Name}" value="{!item.Id}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12" />
+                        </div>
+                        
+                        <div class="exampleHolder">
+                            <aura:if isTrue="{! v.loaded }">
+                                <lightning:spinner alternativeText="Loading" />
+                            </aura:if>
+                        </div>
+                        
+                    </form>
+                    
+                    <div class="slds-text-heading_large slds-border_bottom divLine"></div>
+                <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_reverse" id="modal-content-id-1"> 
+                     <div class="slds-large-size_3-of-8 buttonsDiv" style="float:right;">
+                        <lightning:button class="slds-button slds-button_neutral" type="submit" label="{!$Label.c.Core_MDF_LWC_CancelButton}" onclick="{!c.cancel}"/>
+                        <lightning:button class="slds-button slds-button_brand" type="submit" label="{!$Label.c.Core_MDF_Save_Button}" onclick="{!c.save}"/>                   
+                    </div>
+                 </div>
+                     </header>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>            
+        
+    </div>
+
+</aura:component>

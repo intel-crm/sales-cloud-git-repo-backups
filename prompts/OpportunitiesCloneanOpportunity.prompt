@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities Clone an Opportunity</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/clone-an-opportunity/</actionButtonLink>
+        <body>&lt;p&gt;1.&amp;nbsp;Access the &lt;em&gt;Opportunity details&lt;/em&gt; page, and click the &lt;strong&gt;Clone &lt;/strong&gt;button.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2.&amp;nbsp;A&lt;em&gt; validation screen&lt;/em&gt; opens. Review the items highlighted in the &lt;em&gt;Opportunity Clone Mandatory Field &lt;/em&gt;section.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;For Design opportunities, select dates in the &lt;strong&gt;Decision Date an&lt;/strong&gt;d &lt;strong&gt;First Customer Ship Date&lt;/strong&gt; fields.&lt;/li&gt;&lt;li&gt;For Deal opportunities, enter information into the &lt;strong&gt;Decision Date&lt;/strong&gt; and &lt;strong&gt;Solution Area &lt;/strong&gt;fields.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;3.&amp;nbsp;Review items that will be cloned and Deselect any information you do not want copied.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Note: Attachments,&amp;nbsp;products, descriptive features, partners, and opportunity team members are not automatically cloned so select the checkbox if you want to clone.&amp;nbsp;&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;4.&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;Review the items that will NOT be cloned identified in the &lt;em&gt;NOT COPIED&lt;/em&gt; section. Information not copied to new opportunities include Partner Program, Joint Opportunity data fields, and Partners that equal “Vendor”.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;5.&amp;nbsp;After making your selections, click &lt;strong&gt;Save &amp;amp; Create&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;6.&amp;nbsp;A new Opportunity is created, click the &lt;strong&gt;Edit &lt;/strong&gt;button to update the core information such as &lt;strong&gt;Opportunity Name&lt;/strong&gt;, &lt;strong&gt;technical owner&lt;/strong&gt;, &lt;strong&gt;decision date&lt;/strong&gt;, etc.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Note: It&apos;s important to change the name of the cloned opportunity to a unique name.&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Opportunities Clone an Opportunity</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities Clone an Opportunity</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Clone an Opportunity</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327832689112</videoLink>
+    </promptVersions>
+</Prompt>

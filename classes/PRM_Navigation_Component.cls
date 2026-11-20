@@ -1,0 +1,6 @@
+public with sharing class PRM_Navigation_Component {
+    @AuraEnabled
+    public static void getAccountId(String acmId){
+        //return [select id, PRM_Account_Id__c from PRM_AccountChannelMembership__c where id = :acmId].PRM_Account_Id__c;
+    }
+}

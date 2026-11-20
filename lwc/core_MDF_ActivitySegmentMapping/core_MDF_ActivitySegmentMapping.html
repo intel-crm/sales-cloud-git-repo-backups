@@ -1,0 +1,170 @@
+<template>
+   <div if:true={isLoaded}>
+     <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+		<div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+  </div>
+   
+   <template if:false={showSegmentForm}>
+      <div class="slds-grid slds-gutters slds-wrap">
+         <div class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small">
+            <div class="slds-align_absolute-center">
+               <lightning-button variant="brand" label={addDetailBtnLabel} title={addDetailBtnLabel} disabled={addDetailsDisabled} onclick={segmentCreateForm} class="slds-var-m-left_x-small">
+               </lightning-button>   
+            </div>
+         </div>
+      </div>
+   </template>
+
+   <template if:true={showSegmentForm}>
+      <div class="slds-grid slds-gutters slds-wrap">
+
+         <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-var-p-around_xx-small">                 
+            <template if:false={isEdit}>
+               <lightning-combobox 
+                  name="Segment"
+                  label={segmentLabel} 
+                  value={selectedPicklist}
+                  placeholder={segmentPicklistPlaceholder} 
+                  options={segmentPicklistOptions} 
+                  onchange={handleChange}
+                  dropdown-alignment="auto"
+                  required="true">
+               </lightning-combobox>
+            </template>
+         </div>
+         <template if:true={noProductsErrFlag}>
+            <div class="slds-col slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_12-of-12 slds-var-p-around_xx-small">                 
+            <span style="color: red;">{noProductsErrorMsg}</span>
+            </div>
+         </template>
+         <template if:false={noProductsErrFlag}>
+            <div class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small">                   
+               <template if:true={isproductDataAvailable}>               
+                     <div class="slds-grid slds-gutters slds-wrap">
+                        <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
+                           <!-- <div class="slds-scrollable slds-border_top slds-border_right slds-border_bottom slds-border_left" style="height:17rem;overflow: auto;background-color: white;">                            -->
+                              <c-core_-m-d-f_custom-tree-grid 
+                                 columns={gridColumns} 
+                                 tree-data={productData} 
+                                 show-table-header={showTableHeader} 
+                                 show-checkbox={showCheckbox} 
+                                 onrecordselection={getSelectedRecords}
+                                 is-search-enabled={searchEnabled}
+                                 is-show-help-text={showHelpText}>
+                              </c-core_-m-d-f_custom-tree-grid>
+                           </div>
+                        <!-- </div>-->
+                        <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                           <div class="slds-scrollable slds-border_top slds-border_right slds-border_bottom slds-border_left" style="height:17rem;overflow: auto;background-color: white;" >
+                              <lightning-datatable
+                                    key-field="Id"
+                                    data={dataForTable}
+                                    columns={tableColumns}
+                                    hide-checkbox-column= "False">
+                              </lightning-datatable>
+                        </div> 
+                        </div>
+                     </div>               
+               </template>     
+               <template if:true={isproductDataNotAvailable}>  
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_12-of-12 slds-var-p-around_xx-small">                 
+                     <span style="color: red;">{prodsAlreadySelMsg}</span>
+                  </div>
+               </template>      
+            </div>
+         </template>
+         <div class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small">         
+             
+            <div class="slds-grid slds-gutters slds-wrap">
+               <template if:true={visibilityObj.Core_MDF_Minimum_Forecast_Volume_nbr__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="number" name="Core_MDF_Minimum_Forecast_Volume_nbr__c" data-id="Core_MDF_Minimum_Forecast_Volume_nbr__c" label={minimumForecastVolume} maxlength="18" min="1"
+                     message-when-range-underflow ={negativeInputWarningMsg} field-level-help={VolumeHelpText} value={inputValueObject.Core_MDF_Minimum_Forecast_Volume_nbr__c} onchange={calculateValue} required="true">
+                     </lightning-input>
+                  </div>
+               </template>
+               
+
+               <template if:true={visibilityObj.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="number" name="Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c" data-id="Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c" label={spifAmount} field-level-help={spifAmountHelpText} value={inputValueObject.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c}
+                     message-when-range-underflow ={decimalNegativeEntryMsg} step="0.01" maxlength="16" min ="0.1" onchange={calculateValue} required="true"></lightning-input>
+                  </div>           
+               </template>              
+
+               <template if:true={visibilityObj.Core_MDF_Maximum_Bundled_Volume_nbr__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="number" name="Core_MDF_Maximum_Bundled_Volume_nbr__c" data-id="Core_MDF_Maximum_Bundled_Volume_nbr__c" label={maximumBundledVolume} maxlength="18" min="1"
+                     message-when-range-underflow ={negativeInputWarningMsg} field-level-help={VolumeHelpText} value={inputValueObject.Core_MDF_Maximum_Bundled_Volume_nbr__c} onchange={calculateValue} required="true">
+                     </lightning-input>
+                  </div>
+               </template>
+
+               <template if:true={visibilityObj.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="number" name="Core_MDF_Maximum_Cost_of_Bundle_nbr__c" data-id="Core_MDF_Maximum_Cost_of_Bundle_nbr__c" label={maximumCostOfBundle} field-level-help={maximumCostOfBundleHelpText} value={inputValueObject.Core_MDF_Maximum_Cost_of_Bundle_nbr__c}
+                     message-when-range-underflow ={decimalNegativeEntryMsg} step="0.01" maxlength="16" min="0.1" onchange={calculateValue} required="true"></lightning-input>
+                  </div>
+               </template>
+
+               <template if:true={visibilityObj.Core_MDF_Estimated_Share_of_SPIF_amt__c}>
+                  <template if:true={disableInput}>
+                     <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                        <lightning-input type="number" maxlength="18" min="0.1" step="0.01" name="Core_MDF_Estimated_Share_of_SPIF_amt__c" data-id="Core_MDF_Estimated_Share_of_SPIF_amt__c" onchange={calculateValue} label={estimatedShareOfSPIF} 
+                        message-when-range-underflow ={decimalNegativeEntryMsg} field-level-help={estimatedShareOfSPIFActCat} value={inputValueObject.Core_MDF_Estimated_Share_of_SPIF_amt__c} disabled="true"></lightning-input>
+                     </div> 
+                  </template>
+                  <template if:false={disableInput}>
+                     <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                        <lightning-input type="number" maxlength="16" min="0.1" step="0.01" name="Core_MDF_Estimated_Share_of_SPIF_amt__c" data-id="Core_MDF_Estimated_Share_of_SPIF_amt__c" label={estimatedShareOfSPIF}
+                        message-when-range-underflow ={decimalNegativeEntryMsg} field-level-help={estimatedShareOfSPIFActCat} value={inputValueObject.Core_MDF_Estimated_Share_of_SPIF_amt__c} onchange={calculateValue} required="true"></lightning-input>
+                     </div>
+                  </template>
+               </template> 
+             <!--  <template if:true={visibilityObj.Core_MDF_Num_of_Potential_Winners__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="number" name="Core_MDF_Num_of_Potential_Winners__c" label={numberPotential} maxlength="16" 
+                     value={inputValueObject.Core_MDF_Num_of_Potential_Winners__c} onchange={calculateValue} required="true">
+                     </lightning-input>
+                  </div>
+               </template> 
+               <template if:true={visibilityObj.Core_MDF_Num_of_Expected_Participants__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="number" name="Core_MDF_Num_of_Expected_Participants__c" label={numberExpected} maxlength="16" 
+                     value={inputValueObject.Core_MDF_Num_of_Expected_Participants__c} onchange={calculateValue} required="true">
+                     </lightning-input>
+                  </div>
+               </template> -->
+               
+               <template if:true={visibilityObj.Core_MDF_SPIF_Notes_internal_only_txt__c}>
+                  
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="text" name="Core_MDF_SPIF_Notes_internal_only_txt__c" label="Incentive Notes (Internal only)" data-id="Core_MDF_SPIF_Notes_internal_only_txt__c" maxlength="500" onchange={calculateValue} value={inputValueObject.Core_MDF_SPIF_Notes_internal_only_txt__c}></lightning-input>
+                  </div>
+               </template>
+               
+               <template if:true={visibilityObj.Core_MDF_SPIF_Notes_txt__c}>
+                  <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-float_left slds-var-p-left_small">
+                     <lightning-input type="text" name="Core_MDF_SPIF_Notes_txt__c" data-id="Core_MDF_SPIF_Notes_txt__c" label={spifNotesStr} maxlength="500" onchange={calculateValue} value={inputValueObject.Core_MDF_SPIF_Notes_txt__c}></lightning-input>
+                  </div>
+               </template>
+            </div>
+         </div>
+         
+         <div class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small">
+            <div class="slds-align_absolute-center">               
+               <template if:true={isEdit}>
+                  <lightning-button name={selectedSegment.segmentId} label={cancelBtnLabel} title={cancelBtnLabel} onclick={closeEditSection}  class="slds-var-m-left_x-small"></lightning-button>
+                  <lightning-button name={selectedSegment.segmentId} label={saveBtnLabel} title={saveBtnLabel} onclick={addSegment}  class="slds-var-m-left_x-small"></lightning-button>  
+               </template>
+               <template if:false={isEdit}>                  
+                  <lightning-button label={cancelBtnLabel} title={cancelBtnLabel} onclick={closeModal} class="slds-var-m-left_x-small"></lightning-button>
+                  <lightning-button label={addBtnLabel} title={btnHelptxtActCat} onclick={addSegment} class="slds-var-m-left_x-small"></lightning-button>  
+
+               </template>
+            </div>
+         </div>
+
+      </div>    
+   </template>
+</template>

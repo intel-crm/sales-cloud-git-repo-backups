@@ -1,0 +1,179 @@
+<aura:component controller = "Core_MDF_CampGridController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" >
+    
+    <aura:handler name="closeModalEvent" event ="c:Core_MDF_closeModalEvent"  action="{!c.hideModalOnSave}"/>
+    <!-- <aura:handler event="force:refreshView" action="{!c.doInit}" /> -->
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="campRecord" type="Campaign"/>
+    <aura:attribute name="recordInfo" type="Object"/>
+    <aura:attribute name="cRecord" type="Campaign"/>
+    <aura:attribute name="showSaveCancelBtn" type="boolean" default="false" description="flag for rendered save and cancel buttons in aura:if "/>
+    <aura:attribute name="isDisabled" type="Boolean" default = "true"/>
+    <aura:attribute name="isCCF" type="Boolean" default = "false"/>
+    <aura:attribute name="isDCF" type="Boolean" default = "false"/>
+    <aura:attribute name="openCCFPopUp" type="Boolean" default = "false"/>
+    <aura:attribute name="openDCFPopUp" type="Boolean" default = "false"/>
+    <aura:attribute name="isSecondYearCampaign" type="Boolean" />
+    <aura:attribute name="regionEditable" type="Boolean" default = "false"/>
+    <aura:attribute name="categoryEditable" type="Boolean" default = "false"/>
+    <aura:attribute name="regionWiseRecords" type="Core_MDF_Regionwise_Campaign_Budget__c[]" />
+    <aura:attribute name="categoryWiseRecords" type="Core_MDF_Categorywise_Campaign_Budget__c[]" />
+    
+    <aura:handler name="change" value="{!v.campRecord}" action="{!c.doInit}"/>    
+    <!-- <aura:handler name="change" value="{!v.isSecondYearCampaign}" action="{!c.doInit}"/>-->
+    
+    <force:recordData aura:id="recordEditor"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      fields= "StartDate, EndDate, RecordTypeId,RecordType.DeveloperName,Core_MDF_Show_DCF_Modal__c"                    
+                      targetRecord="{!v.recordInfo}"
+                      targetFields="{!v.campRecord}" 
+                      mode="VIEW"
+                      />
+    
+    
+    
+    <aura:if isTrue = "{!v.openCCFPopUp}">
+        <div class="demo-only" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aura:id="Modalbox" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+
+                     <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.hideModal}">
+                        <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_CCF_Header}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <c:Core_MDF_Mandatory recordId = "{!v.recordId}"
+                                              regionWiseRecords="{!v.regionWiseRecords}"
+                                              isCCF = "true"
+                                              regionEditable="{!v.regionEditable}"
+                                              isSecondYearCampaign = "{!v.isSecondYearCampaign}"
+                                              />
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick="{!c.hideModal}">{!$Label.c.Core_MDF_CCF_DCF_Skip}</button>
+                        
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        
+        
+    </aura:if>
+    
+    <aura:if isTrue = "{!v.openDCFPopUp}">
+        <div class="demo-only" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aura:id="Modalbox" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick="{!c.hideModal}">
+                            <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!$Label.c.Core_MDF_DCF_Header}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <c:Core_MDF_Mandatory recordId = "{!v.recordId}"
+                                              isDCF = "true" 
+                                              categoryEditable = "{!v.categoryEditable}"
+                                              categoryWiseRecords="{!v.categoryWiseRecords}"
+                                              isSecondYearCampaign = "{!v.isSecondYearCampaign}"/>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick="{!c.hideModal}">{!$Label.c.Core_MDF_CCF_DCF_Skip}</button>
+                        
+                    </footer>
+                    
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        
+        
+    </aura:if>
+    
+    <!--CCF Table-->
+    <aura:if isTrue = "{!v.isCCF}">      
+        <div class="slds-page-header">
+            <h1 class="slds-page-header__title">{!$Label.c.Core_MDF_CCF_Header}</h1>
+        </div>
+        
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div class="slds-truncate">{!$Label.c.Core_MDF_CCF_Table_Region}</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="FY Q1" id="fyq1" >{!$Label.c.Core_MDF_Table_FYBudget}</div>
+                    </th>
+                    <aura:if isTrue = "{!v.isSecondYearCampaign}">
+                        <th scope="col">
+                            <div class="slds-truncate" title="FY Q2" id="fyq2">{!$Label.c.Core_MDF_Table_SYBudget}</div>
+                        </th>
+                    </aura:if>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Iterate the child Component for display Table rows 
+               -->        
+                <aura:iteration items="{!v.regionWiseRecords}" var="item" >
+                    <c:Core_MDF_GridViewRegionChild RegionwiseInstance="{!item}"
+                                                    regionEditable="{!v.regionEditable}"
+                                                    showSaveCancelBtn="{!v.showSaveCancelBtn}" 
+                                                    isSecondYearCampaign = "{!v.isSecondYearCampaign}"/>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </aura:if>    
+    <!-- DCF Table -->
+    <aura:if isTrue = "{!v.isDCF}">       
+        <div class="slds-page-header">
+            <h1 class="slds-page-header__title">{!$Label.c.Core_MDF_DCF_Header}</h1>
+        </div>
+        
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div class="slds-truncate">{!$Label.c.Core_MDF_DCF_Table_Activity_Category}</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="FY Q1" id="fyq1" >{!$Label.c.Core_MDF_Table_FYBudget}</div>
+                    </th>
+                    <aura:if isTrue = "{!v.isSecondYearCampaign}">
+                        <th scope="col">
+                            <div class="slds-truncate" title="FY Q2" id="fyq2">{!$Label.c.Core_MDF_Table_SYBudget}</div>
+                        </th>
+                    </aura:if>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Iterate the child Component for display Table rows 
+               -->        
+                <aura:iteration items="{!v.categoryWiseRecords}" var="item" >
+                    <c:Core_MDF_GridViewCategoryChild CategorywiseInstance="{!item}"
+                                                      categoryEditable = "{!v.categoryEditable}"
+                                                      showSaveCancelBtn="{!v.showSaveCancelBtn}"
+                                                      isSecondYearCampaign = "{!v.isSecondYearCampaign}"/>
+                </aura:iteration>
+            </tbody>
+        </table>
+        
+    </aura:if>
+    
+    <div class="slds-align_absolute-center">
+        <aura:if isTrue="{!v.showSaveCancelBtn}">
+            <!--button for save and cancel Record after Inline Edit-->
+            <lightning:buttonGroup class="slds-m-around_medium">
+                <!--<lightning:button label="Cancel" onclick="{!c.cancel}"/> -->
+                <lightning:button label="{!$Label.c.Core_MDF_CCF_DCF_Save}" onclick="{!c.Save}" variant="brand"/>
+            </lightning:buttonGroup>
+        </aura:if>
+    </div>
+    
+</aura:component>

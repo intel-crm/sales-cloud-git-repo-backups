@@ -1,0 +1,15 @@
+.bt{
+    color: var(--white, white);
+    font-size: 1rem;
+    line-height: 1.25rem;
+    border-radius: 4px;
+    transition: color 0.1s linear, background-color 0.1s linear !important;
+    padding: 0.625rem 1.5rem;
+    padding-top: 0.400rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0.400rem;
+    padding-left: 1.5rem;
+}
+.THIS .myUniqueTable th {
+    text-align: center !important;
+}

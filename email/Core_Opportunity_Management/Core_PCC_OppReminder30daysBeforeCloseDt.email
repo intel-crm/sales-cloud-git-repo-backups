@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Opportunity Decision Date Approaching within 30 Days" recipientType="User" relatedToType="Opportunity"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Core_PCC_OppReminder30daysBeforeCloseDt oppRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

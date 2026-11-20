@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Environment Detail Answer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Environment Detail Answers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Answer --></label>
+        <name>Core_IPS_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order No --></label>
+        <name>Core_IPS_Order_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Answer --></label>
+        <name>Core_IPS_Parent_Answer__c</name>
+        <relationshipLabel><!-- Child Answers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Text --></label>
+        <name>Core_IPS_Question_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Core_IPS_Question__c</name>
+        <relationshipLabel><!-- Environment Detail Answers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_IPS_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Environment Detail Questions that are Text can only have 1 Answer defined. --></errorMessage>
+        <name>Core_IPS_Validate_Answer_Creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Parent Answer should belong to the Parent Question identified at Core Question --></errorMessage>
+        <name>Core_IPS_Validate_Parent_Answer</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Manage_Dependent_Answers --></label>
+        <name>Manage_Dependent_Answers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Dependent_Answers_LEX --></label>
+        <name>Manage_Dependent_Answers_LEX</name>
+    </webLinks>
+</CustomObjectTranslation>

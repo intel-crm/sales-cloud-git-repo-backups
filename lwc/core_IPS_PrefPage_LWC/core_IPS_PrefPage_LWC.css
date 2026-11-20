@@ -1,0 +1,25 @@
+.line {
+    height: 2px;
+    background-color: black;
+}
+.preference {
+    color: #262626;
+}
+.backgrnd {
+    background-color: #653171;
+    height: 170px;
+}
+.prefPageContainer {
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+@media(max-width:767px) {
+    .prefPageContainer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+.bkgd {
+    background-color: #653171;
+    height: 10rem;
+}

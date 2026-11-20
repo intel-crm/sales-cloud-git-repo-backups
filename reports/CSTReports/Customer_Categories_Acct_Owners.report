@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SPM_Customer_Category__c.Customer_Detail__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Coverage__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Category__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Account_Owners__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Countries__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Core_Recommendation__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Customer_Category__c.Core_Explanation__c</field>
+    </columns>
+    <description>Displays initial customer data by category/region</description>
+    <filter>
+        <criteriaItems>
+            <column>SPM_Customer_Category__c.CRM_CST_Is_Active_Planning_Period__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Customer Categories - Acct Owners</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SPM_Customer_Category__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

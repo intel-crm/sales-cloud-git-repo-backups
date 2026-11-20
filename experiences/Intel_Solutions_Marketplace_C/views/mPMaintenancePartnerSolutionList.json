@@ -1,0 +1,49 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "65bfc90e-ba47-4cce-9b9a-745b491be8fe",
+  "label" : "MP Maintenance-Partner Solution List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "title" : "The Solution Submission website is currently unavailable due to scheduled maintenance. Solution Submission will be available again on the 19th February at 1:00am Pacific Standard"
+      },
+      "componentName" : "c:coreIntcMarquee",
+      "id" : "11431124-4ce7-4d30-a8a3-820c65f4ee01",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e645f291-fde2-4b9c-9537-3ab2846e0cac",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "116ec614-5d95-4dec-82bd-1b6e7b762253",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "a0651141-48fe-4ccd-a146-527ea51ed26a",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Partner Solution List"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6027fb15-3951-407c-9757-b7e6bf45879e",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "88a9fc0a-1d84-46c8-a8cc-89c5504ded39",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partner-solution-list"
+}

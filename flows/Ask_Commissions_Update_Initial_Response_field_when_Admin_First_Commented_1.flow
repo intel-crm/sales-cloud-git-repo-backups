@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the Ask Commissions - Update Initial Response field when Admin First Commented process using Ask Commissions - Update Initial Response field when Admin First Commented criteria.
+Ask Commissions - Update Initial Response field when Admin First Commented</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_1_myRule_1_A1_2385794531</name>
+        <dataType>DateTime</dataType>
+        <expression>now()</expression>
+    </formulas>
+    <label>Ask Commissions - Update Initial Response field when Admin First Commented_1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myRule_1_A1</name>
+        <label>UpdateInitialResponseTime&amp;Date</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Core_AAQC_Initial_Response_Date_Time__c</field>
+            <value>
+                <elementReference>formula_1_myRule_1_A1_2385794531</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <filterFormula>({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.RecordType.DeveloperName} ==&apos;Core_AAQC_Case_recordType&apos;) &amp;&amp;
+({!$Record.CreatedBy.Profile.Name} == &apos;Commissions Office Inquiries Admin User&apos;) &amp;&amp;
+((ISBLANK({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Initial_Response_Date_Time__c})) || 
+ISNULL({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Initial_Response_Date_Time__c}))</filterFormula>
+        <object>Core_AAQC_Case_Comments__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

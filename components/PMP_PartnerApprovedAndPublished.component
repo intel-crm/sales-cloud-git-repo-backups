@@ -1,0 +1,108 @@
+<apex:component access="global" controller="PMP_EmailTemplateController">
+    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            
+           <!-- h1{
+            font-family: Intel Clear !important;  
+            }-->
+        </style>
+        
+        <apex:attribute name="partnerRecordId" type="Id" description="Partner Record Id" assignTo="{!partnerId}"/>
+        
+        <apex:attribute name="partnerType" type="String" description="type of the partner in company"/>
+        <body>
+            <!-- Header Banner -->
+            <c:PMP_Global_Header message="Your Showcase storefront is now approved and published"/><!--IPA2.0 TWC729-8011-->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <table width="75%">    
+                <!-- Email Body -->
+                <tr>
+                    <td style="padding-left:50px;">
+                        <br/>Hello<br/><br/>
+                        Congratulations! Your Intel® Partner Showcase storefront has been approved, published, and is currently live.
+                        <br/><br/>
+                        <!--IPA 2.0 TWC729-8011 Use the link below to create Offering/s for your storefront. You can also view your dashboard and review leads while signed into the Partner Showcase.-->
+                        <!--IPA 2.0 TWC729-8011-->The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. You can view your dashboard and review leads while signed into the Partner Showcase. 
+                        <br/>Use the link below to see your Storefront
+                        <br/>
+                        <p><!--<apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">Create your offering/s</apex:outputLink>--></p><!--IPA2.0 TWC729-8011-->
+                            <p><apex:outputLink value="{!$Label.PMP_PartnerURLNEW}{!partnerData.PMP_Published_Copy_Id__c}.html" styleClass="intelBlue">View storefront</apex:outputLink></p><br/>
+                            <br/>
+                        <!--The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. Once your offerings are published, partners and enterprise users will be able to view them and connect with you.--><!--IPA 2.0-TWC729-8011-->
+                        <!--Remember to submit your offerings for Intel review and publishing.IPA 2.0 TWC729-8011-->
+                        Thanks for your prompt attention,<br/><br/>
+                        The Intel® Partner Showcase Team <br/><br/>
+               
+                    </td>
+                </tr>
+             
+                <tr>
+                    <td style="padding-left:50px;">  
+                        Questions? Reach out to the Showcase Admin Team at: <br/>
+                        <apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">
+                            {!$Label.PMP_MailTo}
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr>
+                <!-- Questions/Contact -->
+               
+            </table>                 
+            <!-- Email content -->
+            
+            <!-- Global Footer -->
+            <c:PMP_Global_Footer />
+            <!-- Global Footer -->
+            
+        </body>
+    </html>
+</apex:component>

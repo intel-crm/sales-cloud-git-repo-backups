@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used for Adding EDQ&apos;s for Supported Product in SP Detail Page</description>
+    <label>AddProductEDQ</label>
+    <lwcComponent>core_IPS_ProductAddEnvDetails_Lex</lwcComponent>
+    <motif>Custom7: Square</motif>
+</CustomTab>

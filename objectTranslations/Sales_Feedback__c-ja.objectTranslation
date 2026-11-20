@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Feedback --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Application --></label>
+        <name>Application__c</name>
+        <picklistValues>
+            <masterLabel>PSG Licensing</masterLabel>
+            <translation><!-- PSG Licensing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Quoting</masterLabel>
+            <translation><!-- PSG Quoting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Capability --></label>
+        <name>Capability__c</name>
+        <picklistValues>
+            <masterLabel>Apply Renewal</masterLabel>
+            <translation><!-- Apply Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation License/Employee License</masterLabel>
+            <translation><!-- Evaluation License/Employee License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generate License</masterLabel>
+            <translation><!-- Generate License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Merge Seats</masterLabel>
+            <translation><!-- Merge Seats --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New License Request</masterLabel>
+            <translation><!-- New License Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Re-host</masterLabel>
+            <translation><!-- Re-host --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Split Seats</masterLabel>
+            <translation><!-- Split Seats --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Chatbot Feedback --></label>
+        <name>Chatbot_Feedback__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Type --></label>
+        <name>Event_Type__c</name>
+        <picklistValues>
+            <masterLabel>Event Feedback</masterLabel>
+            <translation><!-- Event Feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non Event Feedback</masterLabel>
+            <translation><!-- Non Event Feedback --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Feedback Date --></label>
+        <name>Feedback_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback Month --></label>
+        <name>Feedback_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback Quarter --></label>
+        <name>Feedback_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Feedback Text --></label>
+        <name>Feedback_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Since Last Feedback Captured --></label>
+        <name>Last_Feedback_Captured__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rating --></label>
+        <name>Rating__c</name>
+        <picklistValues>
+            <masterLabel>Dissatisfied</masterLabel>
+            <translation>不満足</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extremely Satisfied</masterLabel>
+            <translation>とても満足</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extremely Unsatisfied</masterLabel>
+            <translation><!-- Extremely Unsatisfied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Neutral</masterLabel>
+            <translation>どちらとも言えない</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Rating</masterLabel>
+            <translation>評価しない</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Satisfied</masterLabel>
+            <translation>満足</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reference Id --></label>
+        <name>Reference_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Sales_Contact__c</name>
+        <relationshipLabel><!-- Feedbacks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Scale --></label>
+        <name>Scale__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Feedback</masterLabel>
+            <translation><!-- Feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Skipped</masterLabel>
+            <translation><!-- Skipped --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User Type --></label>
+        <name>User__c</name>
+        <picklistValues>
+            <masterLabel>External</masterLabel>
+            <translation><!-- External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+    </fields>
+    <nameFieldLabel><!-- Feedback Name --></nameFieldLabel>
+</CustomObjectTranslation>

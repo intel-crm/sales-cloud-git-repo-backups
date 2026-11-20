@@ -1,0 +1,13 @@
+<aura:documentation>
+	<aura:description>Documentation
+		<p>
+            This component contains the base framework of Claim Case Checklist.
+        	It comprises of the following tabs:
+        <p>
+            1. Branding
+        	2. Documentation
+        	3. Submission
+        </p>
+        </p>
+     </aura:description>
+</aura:documentation>

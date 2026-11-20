@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Retrigger Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRESEND_ZHO</name>
+    <style>none</style>
+    <subject>请完整填写您的英特尔® 合作伙伴联盟申请</subject>
+    <textOnly>您已经接近完成！
+
+
+
+
+尊敬的 {!PRM_Registration_Request__c.PRM_First_Name__c}：
+
+感谢您提交申请。系统已为{!PRM_Registration_Request__c.PRM_Email_ID__c} 创建个人资料，只需几个步骤，您就能成为英特尔® 合作伙伴联盟的会员了。
+
+
+要激活您的帐户，并开始享受您的权益，请填写您的帐户信息，并完成法律要求的部分。
+
+
+立即完成
+
+无法访问上面的链接？
+
+https://www.intel.com/content/www/cn/zh/secure/partner/forms/ipa-account-search.html。
+
+如有疑问，请发送邮件至 programs@intel.com 与我们联系。
+
+谢谢！
+英特尔® 合作伙伴联盟团队
+
+
+
+发送给您的此邮件，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隐私 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

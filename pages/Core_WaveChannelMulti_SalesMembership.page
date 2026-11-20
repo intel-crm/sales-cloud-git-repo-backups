@@ -1,0 +1,14 @@
+<apex:page ></apex:page>
+<!--<apex:page showheader="true" sidebar="false" applyHtmlTag="true" applyBodyTag="true" 
+           standardController="Account"
+           title="Channel Sales Multi Account Dashboard">-->
+    
+    <!--Note: VF buttons were removed after UX review, but keeping this line here in case we ever want to add them back in.
+		apex:include pageName="Core_WaveChannelDashboardMenu" /-->
+    
+    <!--<wave:dashboard dashboardId="{!$Label.Core_Wave_Channel_Multi_Sales_Membership_Dashboard_ID}" 
+                    showTitle="true"
+                    openLinksInNewWindow="false"
+                    height="1500" width="100%" />-->
+    
+<!--</apex:page>-->

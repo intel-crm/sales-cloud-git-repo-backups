@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the Core IPS Copy Owner Supp Org to Core Question process using Core_IPS_Check_Supp_Org_Owner_Change criteria.
+Copy owner from Support Org to related Core Question</description>
+    <environments>Default</environments>
+    <label>Core IPS Copy Owner Supp Org to Core Question_1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Environment_Detail_Question_OwnerId</name>
+        <label>Update Environment Detail Question OwnerId</label>
+        <locationX>917</locationX>
+        <locationY>282</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Core_IPS_Questions__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>445</locationX>
+        <locationY>39</locationY>
+        <connector>
+            <targetReference>Update_Environment_Detail_Question_OwnerId</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED({!$Record.OwnerId} )</filterFormula>
+        <object>Core_IPS_Product_Organization__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ListOfEnvironmentDetailQuestion</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_IPS_Question__c</objectType>
+    </variables>
+</Flow>

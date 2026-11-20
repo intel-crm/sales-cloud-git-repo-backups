@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>OLO welcome email English</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_OLOSOEM</name>
+    <style>none</style>
+    <subject>Verify your Intel® Online Label Orderer Email Address!</subject>
+    <textOnly>Intel® Online Label Ordering!
+
+Dear {!Contact.Name},
+Thank you for applying to Intel® Online Label Ordering (OLO) Tool. To complete the process please verify your email address by clicking here the link
+
+If you do not verify your email address, your account will remain pending for 30 days. After this time, we will remove you from our records.
+If you are an Intel® Inside Program User, please contact
+
+!%intel_logo%!
+Please note: This email has been automatically generated from an unmonitored mailbox. Please DO NOT reply directly to this message.
+
+!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

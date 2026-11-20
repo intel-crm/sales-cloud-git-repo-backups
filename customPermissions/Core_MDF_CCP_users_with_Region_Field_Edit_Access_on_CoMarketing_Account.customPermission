@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This custom permission will grant access to edit the region field on Co-Marketing Accounts.</description>
+    <isLicensed>false</isLicensed>
+    <label>CCP users with Region Field Edit Access on CoMarketing Account</label>
+</CustomPermission>

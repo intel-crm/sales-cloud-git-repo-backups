@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Core_MDF_ClaimRecovery__c",
+  "id" : "7492f32d-f251-4b39-9a26-1adb329e4a59",
+  "label" : "Claim Recovery",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-claim-recovery",
+  "type" : "route",
+  "urlPrefix" : "claim-recovery"
+}

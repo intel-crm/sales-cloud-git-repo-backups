@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>of Risk Status ( Core_At_Risk_Status__c )</description>
+        <name>Based_on_the_picklist_value</name>
+        <label>Based on the picklist value</label>
+        <locationX>314</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>if_Closed_Support_Not_Provided_selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Not Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_the_Support_Not_Provided_Date</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>if Closed: Support Not Provided selected</label>
+        </rules>
+        <rules>
+            <name>if_Closed_Support_Provided_selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_At_Risk_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Support Provided</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_the_Support_Provided_Date</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>if Closed: Support Provided selected</label>
+        </rules>
+    </decisions>
+    <description>Update date  for selected picklist values of risk status - Closed Support Provided , Closed Support not provided</description>
+    <environments>Default</environments>
+    <interviewLabel>Core Update date for selected risk status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Update date for selected risk status</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>update the Support Not Provided Date (Core_Support_Not_Provided_Date__c) field with the NOW() time</description>
+        <name>update_the_Support_Not_Provided_Date</name>
+        <label>update the Support Not Provided Date</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Support_Not_Provided_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update the Support Provided Date	(Core_Support_Provided_Not_Entrance_Date__c) field with the NOW() time</description>
+        <name>update_the_Support_Provided_Date</name>
+        <label>update the Support Provided Date</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Support_Provided_Not_Entrance_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Based_on_the_picklist_value</targetReference>
+        </connector>
+        <filterFormula>AND( ISCHANGED( {!$Record.Core_At_Risk_Status__c} ) = True, OR( ISPICKVAL({!$Record.Core_At_Risk_Status__c}, &quot;Closed: Support Provided&quot;) , ISPICKVAL({!$Record.Core_At_Risk_Status__c}, &quot;Closed: Support Not Provided&quot;) ))</filterFormula>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

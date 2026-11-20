@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Benefit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Benefits</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Type --></label>
+        <name>PRM_Account_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Both</masterLabel>
+            <translation><!-- Both --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Partner_Account_Group</masterLabel>
+            <translation><!-- Core_Partner_Account_Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mastered_Account</masterLabel>
+            <translation><!-- Mastered_Account --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefit Code --></label>
+        <name>PRM_Benefit_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefit Description --></label>
+        <name>PRM_Benefit_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefit Type Name --></label>
+        <name>PRM_Benefit_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial</masterLabel>
+            <translation><!-- Financial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation><!-- Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Partner Benefits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantitative Indicator --></label>
+        <name>PRM_Quantitative_Ind__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

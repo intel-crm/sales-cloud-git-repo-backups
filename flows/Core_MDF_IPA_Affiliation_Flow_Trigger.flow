@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Account_IPA_Affiliation_Details_Insert</name>
+        <label>Send Account IPA Affiliation Details - Insert</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>Core_MDF_Account_PGM_Sync</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__recordDetail</typeName>
+            <typeValue>PRM_IPA_Affiliation__c</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>dmlOperationType</name>
+            <value>
+                <stringValue>Insert</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>objectApiName</name>
+            <value>
+                <stringValue>PRM_IPA_Affiliation__c</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordDetail</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Account_PGM_Sync</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Account_IPA_Affiliation_Details_Update</name>
+        <label>Send Account IPA Affiliation Details - Update</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <actionName>Core_MDF_Account_PGM_Sync</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__recordDetail</typeName>
+            <typeValue>PRM_IPA_Affiliation__c</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>dmlOperationType</name>
+            <value>
+                <stringValue>Update</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>objectApiName</name>
+            <value>
+                <stringValue>PRM_IPA_Affiliation__c</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordDetail</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Account_PGM_Sync</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Filter_Records</name>
+        <label>Filter Records</label>
+        <locationX>314</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Account_IPA_Affiliation_Details_Insert</targetReference>
+            </connector>
+            <label>Is Insert?</label>
+        </rules>
+        <rules>
+            <name>Is_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_ActiveValueChanged</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Account_IPA_Affiliation_Details_Update</targetReference>
+            </connector>
+            <label>Is Update?</label>
+        </rules>
+    </decisions>
+    <description>IPA Affiliation flow trigger
+1. Added logic to sync mapped Account with PGM records.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Used to check the Active indicator value changed or not</description>
+        <name>forB_ActiveValueChanged</name>
+        <dataType>Boolean</dataType>
+        <expression>ISCHANGED({!$Record.PRM_Active__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Used to check the record is new or not</description>
+        <name>forB_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>IPA Affiliation Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IPA Affiliation Flow Trigger</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Filter_Records</targetReference>
+        </connector>
+        <filterFormula>AND(
+	{!$Record.PRM_Account__r.RecordType.DeveloperName} == {!$Label.Core_MDF_Intel_Account_Record_Type_Developer_Name},
+	{!$Record.PRM_Builder_Strategy__r.Name} == {!$Label.Core_MDF_ExcludedPartner}
+)</filterFormula>
+        <object>PRM_IPA_Affiliation__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

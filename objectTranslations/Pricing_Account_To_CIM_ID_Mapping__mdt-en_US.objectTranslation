@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Account To CIM ID Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Account To CIM ID Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- CIM Id --></label>
+        <name>CIM_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Days --></label>
+        <name>Pricing_Number_of_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Customer Aggregation Type --></label>
+        <name>Pricing_Unified_Customer_Aggregatio_Type__c</name>
+        <picklistValues>
+            <masterLabel>Global</masterLabel>
+            <translation><!-- Global --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intermediate</masterLabel>
+            <translation><!-- Intermediate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intermediate Level 2</masterLabel>
+            <translation><!-- Intermediate Level 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Pricing Unified Customer Type --></label>
+        <name>Pricing_Unified_Customer_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

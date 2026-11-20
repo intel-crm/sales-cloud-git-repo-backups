@@ -1,0 +1,49 @@
+<!-- Component Used to Show the Edit Button on the Community -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride"
+                access="global"
+                controller ="Core_MDF_checkSObjectCRUDPermission">
+    <!-- Handler function for fetching value on the load of the component -->
+    <aura:handler name="init" value="{!this}" action="{!c.checkObjectPermission}"/>
+    
+    <!-- Attribute Initialization -->
+    <aura:attribute type="Boolean" name="communityAttribute" Default="true" 
+                    description="Controls the Create Edit Component on the Record Type Selector Component" />
+    <aura:attribute type="Boolean" name="CheckEdit" Default="false"  
+                    description="Controls the rendering of the component on click of the button"/>
+    <aura:attribute type="Boolean" name="objectEditPermission" Default="false" 
+                    description="Checks the permission for the CRUD user" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default=""
+                    description="Stores the recordtypeName from the parent component" />
+    
+    <!--Onclick Of the Button To Open the Create Edit Component Page -->
+    <aura:if isTrue ="{!v.CheckEdit}" >
+        <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-slide-up-saving slds-modal_large"><!--class="slds-modal slds-fade-in-open slds-modal_large"-->
+            <div class="slds-modal__container">
+                <!-- Heading (Header of the Modal) -->
+                <div class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeModal }"  alternativeText="Close" />
+                    <!--<button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                    </button>-->
+                </div>
+                <div class="slds-modal__content slds-p-around--medium">
+                <!--<aura:if isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_Channel_MDF,v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType)}">-->
+                        <aura:if isTrue="{!v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType}">
+                   <c:Core_MDF_CreateEditActivity communityRecordId ="{!v.recordId}" checkCommunityAttribute ="{!v.communityAttribute}" /> 
+                  <aura:set attribute="else"> 
+                    <c:Core_Intel_createEditPFR communityRecordId ="{!v.recordId}" checkCommunityAttribute ="{!v.communityAttribute}" />
+                    </aura:set>
+                    </aura:if>
+                    </div>
+                <div class="slds-modal__footer"></div>
+            </div>
+        </div>
+        <div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+    <!-- Show New Button Only if the object has CRUD Permission -->
+    <aura:if isTrue ="{!v.objectEditPermission}" >
+        <div class="slds-float--right">
+            <lightning:button label="{!$Label.c.Core_MDF_Edit}" title="Edit" onclick="{! c.handleClick }"/>
+        </div>
+    </aura:if>
+</aura:component>

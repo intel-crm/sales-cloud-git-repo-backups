@@ -1,0 +1,38 @@
+<template>
+    <section class={sectionClass}>
+
+        <!-- SECTION HEADER (native SLDS pattern) -->
+        <h3 class="slds-section__title slds-theme_shade">
+            <button
+                class="slds-button slds-section__title-action"
+                onclick={toggleSection}
+                type="button"
+            >
+                <lightning-icon icon-name={chevronIcon} size="x-small" aria-hidden="true"
+                                    class="accordion-chevron-icon"></lightning-icon>
+
+                <span class="slds-truncate slds-m-left_x-small" title="RFP Summary">
+                    RFP Summary
+                </span>
+
+            </button>
+        </h3>
+
+        <!-- SECTION CONTENT -->
+        <div class="slds-section__content">
+            <lightning-record-view-form
+                record-id={recordId}
+                object-api-name={objectApiName}
+            >
+                <lightning-output-field
+                    field-name="Pricing_AI_RFP_Scraping_Status__c">
+                </lightning-output-field>
+
+                <lightning-output-field
+                    field-name="Pricing_AI_Scraping_Recommendation_Nm__c">
+                </lightning-output-field>
+            </lightning-record-view-form>
+        </div>
+
+    </section>
+</template>

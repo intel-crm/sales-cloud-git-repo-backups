@@ -1,0 +1,35 @@
+.custom-links {
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    width: 250px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+}
+
+.header{
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-bottom: 1px solid #dcdcdc;
+    background: #f8f8f8;
+    color: #333;
+}
+.link-item {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+    color: #0070d2;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+:host{
+    display : block;
+    margin-left: 0;
+    margin-right: 0;
+}

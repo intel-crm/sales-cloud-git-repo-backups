@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SECADD_ADMIN_NOTIFICATION_Chinese_Traditional</name>
+    <style>none</style>
+    <subject>審核您的 Intel® 夥伴聯盟申請</subject>
+    <textOnly>審核等待中的申請
+
+{!UserName} 您好，
+
+請審查以下申請：將 {{CONTACTEMAILID}} 新增至您的 {{ACCOUNTNAME}} 帳戶作為聯絡人。
+
+請登入核准或拒絕申請。
+
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel 公司，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

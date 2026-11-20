@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Category</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Categories</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category --></label>
+        <name>PMP_Category_Id__c</name>
+        <relationshipLabel><!-- Partner Categories --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

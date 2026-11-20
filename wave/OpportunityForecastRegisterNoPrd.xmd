@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataset>OpportunityForecastRegisterNoPrd</dataset>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>ForecastCategorySorted</field>
+        <fullyQualifiedName>Pipe-OppProd - OppForecastTransformation.ForecastCategorySorted</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>Forecast Category (Sorted)</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <members>
+            <color>#ff8600</color>
+            <label>Commit</label>
+            <member>1 - Commit</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <color>#fff286</color>
+            <label>Best Case</label>
+            <member>2 - Best Case</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <color>#4286ff</color>
+            <label>Low Certainty</label>
+            <member>3 - Low Certainty</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <color>#33cc00</color>
+            <label>Unforecasted</label>
+            <member>4 - Unforecasted</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <origin>ForecastCategorySorted</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <field>StageFunnel</field>
+        <fullyQualifiedName>OppForecastTransformationNoPrd</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>StageFunnel</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <members>
+            <color>#F96FB7</color>
+            <label>Cancelled</label>
+            <member>0 - Cancelled</member>
+            <sortIndex>0</sortIndex>
+        </members>
+        <members>
+            <color>#CCCCCC</color>
+            <label>Group</label>
+            <member>0 - Group</member>
+            <sortIndex>1</sortIndex>
+        </members>
+        <members>
+            <color>#CC0000</color>
+            <label>Lost</label>
+            <member>1 - Lost</member>
+            <sortIndex>2</sortIndex>
+        </members>
+        <members>
+            <color>#FF8600</color>
+            <label>Qualify</label>
+            <member>2 - Qualify</member>
+            <sortIndex>3</sortIndex>
+        </members>
+        <members>
+            <color>#FFF286</color>
+            <label>Define</label>
+            <member>3 - Define</member>
+            <sortIndex>4</sortIndex>
+        </members>
+        <members>
+            <color>#86FFFF</color>
+            <label>Develop</label>
+            <member>4 - Develop</member>
+            <sortIndex>5</sortIndex>
+        </members>
+        <members>
+            <color>#4286FF</color>
+            <label>Design</label>
+            <member>5 - Design</member>
+            <sortIndex>6</sortIndex>
+        </members>
+        <members>
+            <color>#33CC00</color>
+            <label>Design Win</label>
+            <member>6 - Design Win</member>
+            <sortIndex>7</sortIndex>
+        </members>
+        <members>
+            <color>#006600</color>
+            <label>Production Win</label>
+            <member>7 - Production Win</member>
+            <sortIndex>8</sortIndex>
+        </members>
+        <members>
+            <color>#009900</color>
+            <label>Production Lost</label>
+            <member>8 - Production Lost</member>
+            <sortIndex>9</sortIndex>
+        </members>
+        <members>
+            <color>#33ff33</color>
+            <label>Production Cancelled</label>
+            <member>9 - Production Cancelled</member>
+            <sortIndex>10</sortIndex>
+        </members>
+        <origin>StageFunnel</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityNm</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordIdField>Id</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+    <dimensions>
+        <field>OpportunityName</field>
+        <isDerived>false</isDerived>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <recordIdField>Id</recordIdField>
+        <salesforceActionsEnabled>false</salesforceActionsEnabled>
+        <sortIndex>3</sortIndex>
+    </dimensions>
+</WaveXmd>

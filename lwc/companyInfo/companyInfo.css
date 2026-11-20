@@ -1,0 +1,180 @@
+.mainDiv {
+	font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, "sans-serif";
+	margin-top: 20px;
+}
+
+.sectionInfo {
+	padding: 5px;
+	/* font-weight: 200; */
+	font-style: normal;
+	color: #555555;
+}
+
+.sectionHeading {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.sectionDetail {
+	font-size: 16px;
+	word-break:break-all;
+}
+
+.benefitSection {
+	font-size: 16px;
+	word-break:break-all;
+	font-weight: normal;
+}
+
+:sectionHeading .benefitSection{
+	font-size: 16px;
+	word-break:break-all;
+	font-weight: normal;
+}
+
+.cardHeading {
+	/* font-weight: 200;
+	font-style: normal; */
+	color: #555555;
+	font-size: 28px;
+	margin-left: 1.5rem;
+}
+
+.cardBody {
+	margin: 1rem 1rem 1rem 2.5rem;
+}
+
+.manageLinkColor {
+	color: #0071c5;
+	text-decoration: none;
+}
+
+.inputField {
+	top: -1rem;
+}
+
+.subHeading {
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-left: 1.7rem;
+}
+
+.subHeadingDiv {
+	justify-content: space-between;
+	padding-right: 2rem;
+	align-items: center;
+}
+
+.modalHeader {
+	border-bottom: 0px;
+	border-radius: 0px;
+}
+
+.modalBody {
+	border-radius: 0px;
+}
+
+.modalCloseButton {
+	top: 0.5rem;
+	right: 0.5rem;
+}
+
+.modalHeading {
+	/* font-weight: 400;
+	font-style: normal; */
+	font-size: 16px;
+	color: #555555;
+	text-align: left;
+}
+
+.modalDetail {
+	font-size: 16px;
+	color: #555555;
+	text-align: left;
+}
+
+.whiteListCss {
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 400; */
+	display: block;
+}
+
+.modalContainerCustom {
+	position: relative;
+	transform: translate(0, 0);
+	transition: transform 0.1s linear, opacity 0.1s linear;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	height: 100%;
+	padding: 3rem 0;
+	border-radius: 0.25rem;
+	width: 60%;
+}
+
+.footerModalCustom {
+	border-top: 2px solid rgb(217, 219, 221);
+	border-bottom-right-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+	padding: 0.75rem 1rem;
+	background-color: white;
+	text-align: center;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+	border-radius: 0px;
+}
+
+.slds-form-element__label {
+	color: rgb(194, 57, 52);
+}
+
+.selectClass {
+	width: 90%;
+	top: -1rem;
+}
+
+.form-inline span {
+	padding: 0px;
+	font-size: 16px;
+}
+
+.form-inline input {
+	vertical-align: middle;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	border: none;
+	outline: none;
+	width: 90%;
+	font-size: 16px;
+}
+
+.form-inline {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	border: 1px #888 solid;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 16px;
+}
+@media (max-width: 800px) {
+	.form-inline input {
+			margin: 10px 0;
+	}
+
+	.form-inline {
+			flex-direction: column;
+			align-items: stretch;
+	}
+}
+.btnGeneric {
+	font-size: 16px;
+}
+.errorMsg {
+	font-size: 16px;
+}
+.subHeadingPopUp {
+	font-size: 22px;
+	margin-top: 1rem;
+}

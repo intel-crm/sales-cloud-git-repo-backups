@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>CoveoV2__CurrentValue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Current Static Resource selected name</description>
+        <externalId>false</externalId>
+        <label>CurrentValue</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoveoV2__DefaultValue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Static Resource default name</description>
+        <externalId>false</externalId>
+        <label>DefaultValue</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoveoV2__Description__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CoveoV2__WarningMessage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Warning message to include with that Static Resource</description>
+        <label>WarningMessage</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>DynamicResources</label>
+    <visibility>Public</visibility>
+</CustomObject>

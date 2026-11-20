@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Intel® Partner Alliance Intel® Optane™ Technology Client Specialty</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_OPTANE_CLIENT_DEU</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance Client-Spezialisierung auf Intel® Optane™ Technik</subject>
+    <textOnly>Herzlichen Glückwunsch zu Ihrer Qua­li­fi­zie­rung!
+
+
+{!Contact.FirstName},
+
+Willkommen bei der Intel® Partner Alliance Client-Spezialisierung auf Intel® Optane™ Technik! Als qualifizierter Spezialist stehen Ihnen spezielle Leistungen* zu, die die Bereitstellung und Implementierung Ihrer Lösungen unterstützen sollen, z. B.:
+
+Auszeichnung als Intel® Optane™ Technik Client-Spezialist
+Intel fördert Ihr Unternehmen als Spezialist für Intel® Optane™ Technik
+Zusätzliche Verkaufsanreizpunkte
+Zugriff auf die Intel® Optane™ Technik Client-Ressourcen
+Bevorzugte Einladungen zu Branchenveranstaltungen und -schulungen
+Zugang zu Intel® Plattform Testing Services
+
+Senden Sie zunächst eine E-Mail mit folgenden Angaben an ITP-Optane@intel.com:
+
+
+Primärer Kontakt für die Kommunikation mit dem Spezialist für Intel® Optane™ Technik
+Name:
+E-Mail:
+
+
+Für zusätzliches Verkaufs- und Werbematerial
+Firmenanschrift:
+Telefon:
+
+Zu den Vorteilen
+
+
+*Leistungen können regional unterschiedlich sein.
+
+Intel Partner können auf eine lange Geschichte voller Innovationen zurückblicken – und mit der Intel® Partner Alliance können wir Ihnen nun dabei helfen, Lösungen für die datenorientierte Wirtschaft schneller bereitzustellen. Gemeinsam können wir uns vernetzen, Innovationen entwickeln und unser Geschäft ausbauen – und außergewöhnliche neue Möglichkeiten schaffen.
+
+Besuchen Sie https://www.intel.com/content/www/de/de/partner-alliance/help/overview.html für Hinweise und Orientierung, wie Sie Ihre Mitgliedschaft optimal nutzen können.
+
+
+Vielen Dank
+Ihr Intel® Partner Alliance Team
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Datenschutz | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

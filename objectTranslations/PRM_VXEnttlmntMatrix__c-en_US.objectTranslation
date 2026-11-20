@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Entitlement Matrix</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Entitlement Matrix</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business Types --></label>
+        <name>Business_Types__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Communities --></label>
+        <name>Communities__c</name>
+        <picklistValues>
+            <masterLabel>Intel® Cloud Insider Partner</masterLabel>
+            <translation><!-- Intel® Cloud Insider Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® FPGA Partner</masterLabel>
+            <translation><!-- Intel® FPGA Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® IOT Solution Partner</masterLabel>
+            <translation><!-- Intel® IOT Solution Partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AGS Role --></label>
+        <name>PRM_AGS_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Type --></label>
+        <name>PRM_Approval_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Automatic</masterLabel>
+            <translation><!-- Automatic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual</masterLabel>
+            <translation><!-- Manual --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Tier --></label>
+        <name>PRM_Channel_Program_Level_Id__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Relationship --></label>
+        <name>PRM_Contact_Relationship_Id__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Entitlement --></label>
+        <name>PRM_Entitlement_Id__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- IPA Refresh --></label>
+        <name>PRM_IPARefreshCheck__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_IPA_Partner_Role_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Builder</masterLabel>
+            <translation><!-- Builder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>PRM_IsActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Benefit --></label>
+        <name>PRM_Partner_Benefit_Id__c</name>
+        <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role Old --></label>
+        <name>PRM_Partner_Role_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Community Entitlements --></label>
+        <name>Community_Entitlements</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- To configure entitlements for Entitlements based programs based on business types and accounts --></description>
+        <label><!-- EBR Entitlements --></label>
+        <name>EBR_Entitlements</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- To configure entitlements for IQR program based on email domains and accounts --></description>
+        <label><!-- IQR Entitlements --></label>
+        <name>IQR_Entitlements</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- EntitlementWithBenefits --></label>
+        <name>PRM_EntitlementWithBenefits</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- EntitlementWithoutBenefits --></label>
+        <name>PRM_EntitlementWithoutBenefits</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

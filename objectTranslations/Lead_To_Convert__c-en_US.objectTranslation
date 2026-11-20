@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Lead To Convert</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Leads To Convert</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Id --></label>
+        <name>Contact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Owner Id --></label>
+        <name>Contact_Owner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conversion Error --></label>
+        <name>Conversion_Error__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsConverted --></label>
+        <name>IsConverted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Created Date --></label>
+        <name>Lead_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Email --></label>
+        <name>Lead_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Id --></label>
+        <name>Lead_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Owner Id --></label>
+        <name>Lead_Owner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Status --></label>
+        <name>Lead_Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

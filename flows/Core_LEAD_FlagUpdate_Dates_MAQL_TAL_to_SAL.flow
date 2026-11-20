@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for the LEAD WFs 
+
+Core_Dates_MAQL_to_SAL
+Core_Dates_TAL_to_SAL
+Core_Lead_Create_TQL</description>
+        <name>MAQ_TAL_to_SAL_TQL</name>
+        <label>MAQ/TAL to SAL/TQL</label>
+        <locationX>576</locationX>
+        <locationY>454</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Dates_MAQL_to_SAL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Dates_MAQL_to_SAL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_for_Core_Dates_MAQL_to_SAL</targetReference>
+            </connector>
+            <label>Core_Dates_MAQL_to_SAL</label>
+        </rules>
+        <rules>
+            <name>TAL_to_SAL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Dates_TAL_to_SAL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Updates_for_Core_Dates_TAL_to_SAL</targetReference>
+            </connector>
+            <label>Core_Dates_TAL_to_SAL</label>
+        </rules>
+    </decisions>
+    <description>for the Lead WFs &apos;-
+
+&apos;Core_Flag_Update&apos;
+&apos;Core_Dates_MAQL_to_SAL&apos;
+&apos;Core_Dates_TAL_to_SAL&apos;</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula for Lead WF &apos; Core_Dates_MAQL_to_SAL &apos;</description>
+        <name>F_Core_Dates_MAQL_to_SAL</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (  ISPICKVAL(PRIORVALUE({!$Record.Status}), &quot;Marketing Qualified Lead&quot;),  ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;),  {!$Record.RecordType.DeveloperName} =&apos;Lead&apos;, ISCHANGED({!$Record.Status} ), OR( ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;) ) )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Dates_TAL_to_SAL</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (  ISPICKVAL(PRIORVALUE({!$Record.Status}), &quot;Tele Accepted Lead&quot;),  ISPICKVAL({!$Record.Status}, &quot;Sales Accepted Lead&quot;),  {!$Record.RecordType.DeveloperName} =&apos;Sales_Lead&apos;, ISCHANGED({!$Record.Status} ), OR( ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;) ) )</expression>
+    </formulas>
+    <formulas>
+        <description>for the Lead &apos; Core_Lead_Create_TQL &apos;</description>
+        <name>F_Core_Lead_Create_TQL</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (  ISCHANGED({!$Record.Status})  , ISPICKVAL(  {!$Record.Status}, &quot;Tele Qualified Lead&quot; ),  {!$Record.RecordType.DeveloperName} =&apos;Prospect&apos;  )</expression>
+    </formulas>
+    <interviewLabel>old-Core_FlagUpdate&amp;Dates_MAQL/TAL_to_SAL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_LEAD_FlagUpdate&amp;Dates_MAQL/TAL_to_SAL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>for the Lead wf &quot; Core_Flag_Update &apos;</description>
+        <name>Core_Flag_Update</name>
+        <label>Core_Flag_Update</label>
+        <locationX>584</locationX>
+        <locationY>326</locationY>
+        <connector>
+            <targetReference>MAQ_TAL_to_SAL_TQL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Having_Tasks__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_for_Core_Dates_MAQL_to_SAL</name>
+        <label>Update for Core_Dates_MAQL_to_SAL</label>
+        <locationX>354</locationX>
+        <locationY>454</locationY>
+        <inputAssignments>
+            <field>Core_Entrance_Date_SAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Entrance_Date_TAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Entrance_Date_TAP__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Entrance_Date_TQL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_MAQL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_TAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_TQL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Status__c</field>
+            <value>
+                <stringValue>Accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Updates_for_Core_Dates_TAL_to_SAL</name>
+        <label>Updates for &apos;Core_Dates_TAL_to_SAL&apos;</label>
+        <locationX>827</locationX>
+        <locationY>452</locationY>
+        <inputAssignments>
+            <field>Core_Entrance_Date_SAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Entrance_Date_TQL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_TAL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Exit_Date_TQL__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Status__c</field>
+            <value>
+                <stringValue>Accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Core_Flag_Update</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

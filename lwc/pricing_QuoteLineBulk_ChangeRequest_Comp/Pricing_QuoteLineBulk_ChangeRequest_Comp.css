@@ -1,0 +1,42 @@
+.slds-modal__content {
+    overflow: initial;
+}
+.tableContentHide {
+    /* @sldsValidatorIgnore */
+    white-space: break-spaces;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th,
+td {
+    padding-left: 15px;
+
+}
+
+.THIS table td lightning-calendar td {
+    padding: 0px !important;
+    border-top: none !important;
+}
+
+.sldsspinnercontainer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: transparent;
+}
+
+.THIS table {
+    table-layout: fixed;
+}
+
+.readonly-input lightning-input {
+    opacity: 1; 
+    pointer-events: none;
+}
+
+
+/* Buttons inside the popup */

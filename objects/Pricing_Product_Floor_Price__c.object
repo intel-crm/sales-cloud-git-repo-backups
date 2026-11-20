@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Product_Floor_Price_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Product_Floor_Price_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Pricing_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Approval_Price_Rules__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Approval Price Rules</label>
+        <referenceTo>Pricing_Approval_Price_Rules__c</referenceTo>
+        <relationshipName>Product_Ecap</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Approved_ECAP_Price__c</fullName>
+        <label>Floor Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Product</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>4 AND (((2 AND 3 AND 7 AND (6 OR 5 OR 10 OR 1)) AND 8) OR 9)</booleanFilter>
+            <filterItems>
+                <field>Product2.Core_VerticalSegment__c</field>
+                <operation>contains</operation>
+                <value>Mobile,Desktop,Workstation,Embedded</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_Product_Type__c</field>
+                <operation>contains</operation>
+                <value>Processors,Partnered Products</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_Sales_Visible_Flag__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.IsActive</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_Group_Code_Short_Name__c</field>
+                <operation>contains</operation>
+                <value>CCG</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_Group_Code_Short_Name__c</field>
+                <operation>contains</operation>
+                <value>DCAI</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_Hierarchy_ID__c</field>
+                <operation>equals</operation>
+                <value>43</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Name</field>
+                <operation>notEqual</operation>
+                <value>Write In Product</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Core_IQR_Visible__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.Name</field>
+                <operation>contains</operation>
+                <value>Intel® Xeon®</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Product Floor Price</relationshipLabel>
+        <relationshipName>Product_Ecap</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Product Floor Price</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PFP-{00000}</displayFormat>
+        <label>Product Floor Price Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Product Floor Price</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Pricing_FloorPrice_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>Pricing_Approved_ECAP_Price__c &lt;= 0</errorConditionFormula>
+        <errorDisplayField>Pricing_Approved_ECAP_Price__c</errorDisplayField>
+        <errorMessage>Floor Price should be greater than 0</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Pricing_Restrict_Edit_Create_Record</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+OR(
+ISPICKVAL(
+Pricing_Approval_Price_Rules__r.Pricing_Approval_Status__c , &apos;Approved&apos;),
+ISPICKVAL(
+Pricing_Approval_Price_Rules__r.Pricing_Approval_Status__c , &apos;Rejected&apos;)
+), 
+OR(
+ISNEW(),
+ISCHANGED( Pricing_Product__c),
+ISCHANGED( Pricing_Approved_ECAP_Price__c),
+ISCHANGED(  Pricing_Active__c)
+)
+)</errorConditionFormula>
+        <errorMessage>After Approval or Rejection of Price Rule we cannot Insert or Update Record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Pricing_Restrict_ProductFloorPriceFields</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL(
+Pricing_Approval_Price_Rules__r.Pricing_Approval_Status__c , &apos;Submitted&apos;),
+OR(
+ISNEW(),
+ISCHANGED( Pricing_Product__c),
+ISCHANGED( Pricing_Approved_ECAP_Price__c),
+ISCHANGED( Pricing_Active__c)
+)
+)</errorConditionFormula>
+        <errorMessage>Product Floor Price cannot be created or updated when the price rule is in the Submitted state.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,29 @@
+.banner-wrapper {
+  display: flex;
+  padding: .5rem 1rem;
+}
+
+.banner-wrapper[data-banner-theme="none"] {
+  background-color: transparent;
+}
+
+.banner-wrapper[data-banner-theme="background"] {
+  background-color: var(--moss-tint1);
+}
+
+.banner-icon {
+  padding: 0 .5rem 0 0;
+}
+
+.banner-wrapper[data-banner-theme="none"] .banner-message,
+.banner-wrapper[data-banner-theme="none"] .banner-icon {
+  color: var(--coral-shade1);
+}
+
+.banner-icon-background {
+  --iconColor: var(--carbon-shade2);
+}
+
+.banner-icon-none {
+  --iconColor: var(--coral-shade1);
+}

@@ -1,0 +1,9 @@
+<apex:page standardcontroller="Opportunity_Solution_Area__c" lightningStylesheets="true"> 
+    <apex:form >
+         <apex:pageBlock title="{!$Label.Core_OverrideSolutionEditButton}">
+
+        <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

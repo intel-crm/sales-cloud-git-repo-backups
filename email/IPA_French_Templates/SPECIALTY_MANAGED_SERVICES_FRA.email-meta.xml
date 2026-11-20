@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_MANAGED_SERVICES_FRA</name>
+    <style>none</style>
+    <subject>Spécialité Services gérés de l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Félicitations, vous vous qualifiez !
+
+
+{!Contact.FirstName},
+
+Bienvenue dans la Spécialité Services gérés de l&apos;Alliance partenaire Intel® ! En tant que spécialiste des Services gérés, vous pouvez bénéficier d&apos;avantages spéciaux* destinés à vous aider à développer et à mettre en œuvre vos solutions, notamment :
+
+Désignation d&apos;un spécialiste des services gérés
+Promotion par Intel de votre entreprise en tant que Spécialiste des services gérés
+Points d&apos;incitation Intel supplémentaires
+Invitations prioritaires aux événements de l&apos;industrie et aux sessions de formation
+Accès aux services de test de la plateforme Intel
+
+Pour commencer, veuillez fournir les informations suivantes à ITP-MS@intel.com :
+
+
+Contact principal pour les communications envoyées aux spécialistes des services gérés
+Nom :
+E-mail :
+
+
+Pour obtenir du matériel de vente et de promotion supplémentaire
+Adresse postale :
+Téléphone :
+
+Accéder aux avantages
+
+
+*Les avantages peuvent varier d&apos;une région à l&apos;autre.
+
+Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
+
+Visitez le site https://www.intel.com/content/www/fr/fr/partner-alliance/help/overview.html pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion.
+
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Opt-out Thai</name>
+    <style>none</style>
+    <subject>อัปเดตบัญชีผู้ใช้ทางธุรกิจ</subject>
+    <textOnly>อัปเดตบัญชีผู้ใช้ทางธุรกิจ
+
+
+!%UserFirstName%!,,
+
+ประกาศนี้เป็นการแจ้งให้ทราบว่ามีบุคคลหนึ่งเลือกที่จะหยุดแบ่งปันข้อมูลโครงการผู้ให้บริการเทคโนโลยี Intel® กับผู้แทนจำหน่ายที่ได้รับอนุญาตจาก Intel® และ/หรือซัพพลายเออร์ที่ได้รับการรับรองจาก Intel® (ผู้ให้บริการ)
+
+ชื่อบัญชีผู้ใช้ทางธุรกิจ: !%AccountName%!
+หมายเลขบัญชี: !%AccountNumber%!
+ผู้ติดต่อหลักที่ทำการเลือก: !%UserEmailAddr%!
+วันที่: !%DateSigned%!
+ผู้ให้บริการที่เลือก: !%Distributors%!
+การอนุญาต: ฉันอนุญาตให้ Intel แบ่งปันข้อมูลเกี่ยวกับบัญชีในโครงการผู้ให้บริการเทคโนโลยี Intel® ของฉันกับผู้ให้บริการเพื่อช่วยจัดการสิทธิประโยชน์ของฉัน รวมถึงอนุญาตให้ Intel ยินยอมให้ผู้ให้บริการสามารถแลกรับคะแนนในนามของฉัน (ไม่มีใน APJ)
+
+
+หากคุณไม่อนุมัติการดำเนินการนี้หรือคิดว่ามีข้อผิดพลาดเกิดขึ้น คุณสามารถแก้ไขตัวเลือกหรือยกเลิกได้
+หากคุณมีคำถามใดๆ โปรดติดต่อเราได้ที่ programs@intel.com.
+
+ขอขอบคุณ
+ทีม Intel® Partner Alliance ของคุณ
+
+ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
+ความเป็นส่วนตัว | คุ้กกี้</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

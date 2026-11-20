@@ -1,0 +1,161 @@
+/* .slds-table td {
+    white-space: normal !important;
+} */
+
+.slds-table_bordered {
+    border-collapse: collapse !important;
+}
+
+.questions-table tbody tr {
+   height: 72px;
+}
+
+.questions-table tbody tr td {
+    white-space: normal !important;
+ }
+
+.document-type {
+    border-right: var(--lwc-borderWidthThin,1px) solid var(--lwc-colorBorder,rgb(229, 229, 229));
+}
+
+.documentTypeDetails{
+    border-top: 3px solid var(--lwc-colorBorder,rgb(229, 229, 229));
+}
+
+/*.slds-table:not(.slds-no-row-hover) tbody tr:hover>td{
+    background-color: rgb(255, 255, 255) !important;
+} */
+
+/*.slds-table_bordered:not(.slds-no-row-hover) tbody tr:hover>td:not(.slds-has-focus) {
+    box-shadow: none !important;
+} */
+
+.issueWithBackground {
+    background-color: var(--lwc-colorBackground, rgb(243, 243,243));
+}
+
+.truncate-fileNames {
+    text-overflow: ellipsis;
+    max-width: 33.33%;
+    overflow: hidden;
+    white-space: nowrap !important;
+}
+
+.confirmation-modal {
+    max-height: 1500px !important;
+}
+
+.confirmationPopup-table tbody tr td li {
+    list-style: none !important;
+}
+.submitButton{
+    width: fit-content;
+}
+.slds-table th.srNO-col {
+    width: 5%;  /* Adjust the percentage as per your needs */
+}
+.pill-text-ai-prediction {
+    font-weight: normal; /* Non-bold text */
+}
+.informative-text {
+    color:  #0176d3;
+    font-size: 0.8125rem;
+}
+.table-dropdown {
+   position: relative;
+   z-index: 10;
+}
+
+.comments {
+    overflow: visible;
+    position:relative;
+}
+
+.modal-popup {
+    position: relative;
+    z-index: 9999;
+}
+/* AI Response Color Coding */
+.ai-response-yes {
+    color:   #007744;
+    font-weight: bold;
+}
+
+.ai-response-no {
+    color: #ea0000;
+    font-weight: bold;
+}
+
+.ai-response-none {
+    color: #FFBF00;
+    font-weight: bold;
+}
+
+.ai-pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: white; /* keep identical to .pill */
+    padding: 5px 10px;
+    font-size: 10px; /* keep identical to .pill */
+    margin-top: 10px;
+    border-radius: 15px; /* keep identical to .pill */
+    position: relative; /* needed for pseudo-element positioning */
+    color: #4f4c4c; /* keep identical to .pill */
+     border: 2px solid #00d2ff;
+}
+
+/* Gradient border ring without negative z-index (works in LWC/SLDS tables) */
+.ai-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    padding: 1px; /* ring thickness */
+   
+     /*background: linear-gradient(45deg, #6a11cb, #2575fc, #00d2ff);
+    Create a ring by masking out the inner area 
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;*/
+    z-index: -1; 
+}
+
+/* Ensure inner content sits above the ring */
+.ai-pill > * {
+    position: relative;
+    z-index: 1;
+}
+
+.slds-table td.wrapword {
+    word-wrap: break-word;
+}
+
+.slds-tooltip-trigger .slds-popover {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+    width: 500px !important;
+    max-width: none !important;
+}
+
+.slds-tooltip-trigger:hover .slds-popover,
+.slds-tooltip-trigger:focus .slds-popover {
+    display: block;
+    opacity: 1;
+}
+
+/* Base class for the floating tooltip */
+.custom-scroll-popover {
+    z-index: 10000;
+    overflow-y: auto;
+    height: fit-content;
+    max-height: 250px;
+    word-wrap: break-word;
+    text-align: left;
+}

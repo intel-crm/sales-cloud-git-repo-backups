@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_Feature_Header__c.Core_Header_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_Feature_Set__c.Core_Feature_Type__c</field>
+    </columns>
+    <columns>
+        <field>Core_Feature_Set__c.Core_Feature_Value__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Core_Feature__c.Core_Feature_BU__c</field>
+    </columns>
+    <columns>
+        <field>Core_Feature_Header__c.Core_Header_Type__c</field>
+    </columns>
+    <columns>
+        <field>Core_Feature_Set__c.Core_Feature_BU__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Feature_Set__c.Core_Active__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Features &amp; Values</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Core_Feature_Header__c$Core_Feature_Set__c@Core_Feature_Set__c.Core_Feature__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_Feature_Set__c.Core_Feature_Type__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

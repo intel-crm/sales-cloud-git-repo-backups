@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Opt-out French</name>
+    <style>none</style>
+    <subject>Mise à jour du compte de l&apos;entreprise</subject>
+    <textOnly>Mise à jour du compte de l&apos;entreprise
+
+
+!%UserFirstName%!,,
+
+Cette notification a pour but de vous informer qu&apos;une personne a choisi d&apos;arrêter de partager les informations du programme Intel® Technology Provider avec les distributeurs Intel® agréés et/ou les fournisseurs Intel® agréés (fournisseurs de services) sélectionnés.
+
+Nom du compte d&apos;entreprise : !%AccountName%!
+Numéro de compte : !%AccountNumber%!
+Contact principal qui a effectué le ou les sélections : !%UserEmailAddr%!
+Date : !%DateSigned%!
+Fournisseur(s) de services sélectionné(s) : !%Distributors%!
+Autorisation : J&apos;autorise par la présente Intel à partager avec le(s) fournisseur(s) de services les informations relatives à mon compte du programme Intel® Technology Provider afin de faciliter la gestion de mes avantages. J&apos;autorise également Intel à leur permettre de faire des échanges de points en mon nom (non disponible dans APJ).
+
+
+Si vous n&apos;approuvez pas cette action ou si vous estimez qu&apos;une erreur a été commise, vous pouvez modifier les sélections ou vous désengager.
+Pour toute question, veuillez nous contacter à l&apos;adresse suivante : programs@intel.com.
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

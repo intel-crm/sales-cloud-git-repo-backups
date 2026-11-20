@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Partner_Account_Group_Members1__r$Core_Partner_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account$Core_IPA_One_Partner_Id__c</field>
+    </columns>
+    <description>Accounts under Global OPID Grouping Method with IPA and Inactive Indicators</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Partner_Account_Group_Members1__r$Core_Partner_Account_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Partner_Account_Group_Members1__r$Core_Partner_Account_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>ipatest,2test</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Copy of Accounts with Global OPIDs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_with_One_Partner_Group_member__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account.Partner_Account_Group_Members1__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

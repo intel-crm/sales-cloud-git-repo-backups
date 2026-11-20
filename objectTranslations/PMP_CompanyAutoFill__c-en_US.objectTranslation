@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Company Auto Fill</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Company Auto Fills</value>
+    </caseValues>
+    <fields>
+        <label><!-- Company Key Values --></label>
+        <name>Company_Key_Values__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applications --></label>
+        <name>PMP_Applications__c</name>
+    </fields>
+    <fields>
+        <label><!-- Autofill Status --></label>
+        <name>PMP_Autofill_Status__c</name>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LLM_Knowledge</masterLabel>
+            <translation><!-- LLM_Knowledge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mixed</masterLabel>
+            <translation><!-- Mixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Processed</masterLabel>
+            <translation><!-- Not Processed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scraped</masterLabel>
+            <translation><!-- Scraped --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Staged</masterLabel>
+            <translation><!-- Staged --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PMP_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industries --></label>
+        <name>PMP_Industries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company Name --></label>
+        <name>PMP_Partner_Id__c</name>
+        <relationshipLabel><!-- Company Auto Fills --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Regions --></label>
+        <name>PMP_Regions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resources JSON --></label>
+        <name>PMP_Resources_JSON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tagline --></label>
+        <name>PMP_Tagline__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>PMP_Website__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

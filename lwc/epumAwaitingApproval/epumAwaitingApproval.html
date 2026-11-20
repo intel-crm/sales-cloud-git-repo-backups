@@ -1,0 +1,11 @@
+<template>
+	<div class="mainDiv" if:true={isPrimary}>
+		
+				<div class="slds-grid slds-wrap">
+					<template if:true={isPrimary}>
+						<c-company-profile-data-grid-epum onupdateresponsibility={onRefreshResponsibilityData}> </c-company-profile-data-grid-epum>
+					</template>
+				</div>
+
+	</div>
+</template>

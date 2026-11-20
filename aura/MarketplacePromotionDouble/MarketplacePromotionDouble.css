@@ -1,0 +1,46 @@
+.THIS {
+    padding: 40px 0 ;
+}
+
+
+.THIS a .slds-icon use {
+  fill: t(paleBlue);
+}
+.THIS a {
+  color: t(paleBlue);
+}
+
+.THIS .bgImageContainer {
+  min-height: 200px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  text-align: center;
+  padding: 50px 30px;
+  height: 100%;
+}
+
+.THIS .bgImageContainer h3,
+.THIS .bgImageContainer p {
+  color: t(white);
+}
+
+.THIS .textContainer {
+  padding: 16px 16px 32px 16px;
+}
+@media (min-width: 768px) {
+  .THIS {
+    padding: 40px 0 50px 0 ;
+  }
+  .THIS .promo-0 .card{
+    padding-right: 15px;
+  }
+  .THIS .promo-1 .card{
+    padding-left: 15px;
+  }
+
+  .THIS .bgImageContainer a .slds-icon {
+    height: .6em;
+    width: .6em;
+  }
+}

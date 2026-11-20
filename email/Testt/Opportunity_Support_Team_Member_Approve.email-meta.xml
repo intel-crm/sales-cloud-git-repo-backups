@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <available>true</available>
+    <description>when Opportunity team member accept the request</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity Support Team Member Approve</name>
+    <style>none</style>
+    <subject>Assignment Opportunity Support Request ():  -</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

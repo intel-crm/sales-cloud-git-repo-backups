@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <classificationThreshold>0.4496499944747894</classificationThreshold>
+    <label>Maximize Risk Level</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Country/Region</label>
+        <name>Core_MDF_Country_Location_nm__c</name>
+        <type>Text</type>
+        <values>UNITED STATES</values>
+        <values>CHINA</values>
+        <values>GERMANY</values>
+        <values>INDIA</values>
+        <values>UNITED KINGDOM</values>
+        <values>BRAZIL</values>
+        <values>AUSTRALIA</values>
+        <values>JAPAN</values>
+        <values>SPAIN</values>
+        <values>FRANCE</values>
+        <values>INDONESIA</values>
+        <values>CANADA</values>
+        <values>TAIWAN</values>
+        <values>COLOMBIA</values>
+        <values>ITALY</values>
+        <values>PHILIPPINES</values>
+        <values>KOREA</values>
+        <values>UNITED ARAB EMIRATES</values>
+        <values>SINGAPORE</values>
+        <values>MEXICO</values>
+        <values>THAILAND</values>
+        <values>TURKEY</values>
+        <values>PERU</values>
+        <values>CHILE</values>
+        <values>VIETNAM</values>
+        <values>MALAYSIA</values>
+        <values>NETHERLANDS</values>
+        <values>POLAND</values>
+        <values>SAUDI ARABIA</values>
+        <values>ROMANIA</values>
+        <values>CZECH REPUBLIC</values>
+        <values>SWEDEN</values>
+        <values>SOUTH AFRICA</values>
+        <values>BELGIUM</values>
+        <values>NORWAY</values>
+        <values>HONG KONG</values>
+        <values>ARGENTINA</values>
+        <values>ISRAEL</values>
+        <values>SWITZERLAND</values>
+        <values>EGYPT</values>
+        <values>KAZAKHSTAN</values>
+        <values>HUNGARY</values>
+        <values>RUSSIAN FEDERATION</values>
+        <values>NIGERIA</values>
+        <values>AUSTRIA</values>
+        <values>GREECE</values>
+        <values>PORTUGAL</values>
+        <values>DENMARK</values>
+        <values>UKRAINE</values>
+        <values>NEW ZEALAND</values>
+        <values>FINLAND</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Type</label>
+        <name>Core_MDF_Activity_Types__c</name>
+        <type>Text</type>
+        <values>NonPartner.com</values>
+        <values>IndustryPartner.com</values>
+        <values>Member.com</values>
+        <values>In-Store Promotion</values>
+        <values>Joint Event</values>
+        <values>Third Party Event</values>
+        <values>Seller - Per Unit SPIF</values>
+        <values>Member Event</values>
+        <values>Training/Meeting</values>
+        <values>Television</values>
+        <values>Collateral</values>
+        <values>Billboard/Transit</values>
+        <values>Seed Unit</values>
+        <values>Personnel</values>
+        <values>Online Display</values>
+        <values>Demo Hardware</values>
+        <values>Seller - Contest SPIF</values>
+        <values>Proof of Concept</values>
+        <values>Telemarketing</values>
+        <values>Buyer - Bundle Offer</values>
+        <values>Magazine/Newspaper</values>
+        <values>Social Online Display</values>
+        <values>Online Video Spot</values>
+        <values>Text Ad</values>
+        <values>Streaming</values>
+        <values>Lead Generation</values>
+        <values>Radio</values>
+        <values>Video Screen</values>
+        <values>Other (Sales Readiness)</values>
+        <values>Member Owned Event</values>
+        <values>Seller - Target SPIF</values>
+        <values>Buyer - Sweepstakes</values>
+        <values>Graphic Ad</values>
+        <values>Channel Partner Website Online Ad</values>
+        <values>Case Study</values>
+        <values>Social Post</values>
+        <values>Member Participation in Third-Party Event</values>
+        <values>Out-of-Store Promotion</values>
+        <values>Buyer - Reward/Frequency</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Claim Budget Type</label>
+        <name>Core_MDF_Claim_Budget_Type</name>
+        <type>Text</type>
+        <values>OEM CMP</values>
+        <values>MDF</values>
+        <values>Retail MDF</values>
+        <values>RSA MD</values>
+        <values>MDF+</values>
+        <values>CCF 1.0</values>
+        <values>DCF 1.0</values>
+        <values>Service Provider CMP</values>
+        <values>CCFB</values>
+        <values>SPCF</values>
+        <values>SOEM Client MDF</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Created By ID</label>
+        <name>CreatedById</name>
+        <type>Text</type>
+        <values>0051J000006eNedQAE</values>
+        <values>0053b00000CI8H6AAL</values>
+        <values>0053b00000CC2zcAAD</values>
+        <values>0051J000006DL2iQAG</values>
+        <values>0053b00000BQn6VAAT</values>
+        <values>0051J000006CtIJQA0</values>
+        <values>0053b00000CIRIrAAP</values>
+        <values>0053b00000CJ5AEAA1</values>
+        <values>0053b00000CIh2fAAD</values>
+        <values>0051J000005UMoYQAW</values>
+        <values>0053b00000DQIapAAH</values>
+        <values>0051J000007NnOcQAK</values>
+        <values>0053b00000CIp6BAAT</values>
+        <values>0051J000007NkhaQAC</values>
+        <values>0053b00000BVAllAAH</values>
+        <values>0051J000006DIBXQA4</values>
+        <values>0051J000006DJz4QAG</values>
+        <values>0051J000006DKG5QAO</values>
+        <values>0053b00000CbL75AAF</values>
+        <values>0051J000005TT1MQAW</values>
+        <values>0051J000006ax1mQAA</values>
+        <values>0053b00000CI8KeAAL</values>
+        <values>0051J000006ecELQAY</values>
+        <values>0051J000006DL95QAG</values>
+        <values>0051J000006DMdLQAW</values>
+        <values>0053b00000CI7cDAAT</values>
+        <values>0053b00000CbHCkAAN</values>
+        <values>0051J000006DIPZQA4</values>
+        <values>0053b00000CCMEWAA5</values>
+        <values>0051J000006DF8pQAG</values>
+        <values>0053b00000DWTVsAAP</values>
+        <values>0051J000006fuJGQAY</values>
+        <values>0053b00000DAtwlAAD</values>
+        <values>0051J000007NkhkQAC</values>
+        <values>0053b00000BVIRoAAP</values>
+        <values>0053b00000CJ6DsAAL</values>
+        <values>0053b00000BQrE9AAL</values>
+        <values>0053b00000CBlZSAA1</values>
+        <values>0053b00000DhTZSAA3</values>
+        <values>0051J000006DKBAQA4</values>
+        <values>0053b00000CC297AAD</values>
+        <values>0053b00000CXPttAAH</values>
+        <values>0051J0000073G6KQAU</values>
+        <values>0051J000006DJeQQAW</values>
+        <values>0051J000006DL0IQAW</values>
+        <values>0051J000006DLDWQA4</values>
+        <values>0053b00000DQVpOAAX</values>
+        <values>0053b00000CI8HzAAL</values>
+        <values>0051J000006DL3CQAW</values>
+        <values>0053b00000CIRJVAA5</values>
+        <values>0053b00000CW9rVAAT</values>
+        <values>0051J000006DJYSQA4</values>
+        <values>0053b00000CBZ6YAAX</values>
+        <values>0053b00000CBL4nAAH</values>
+        <values>0053b00000DQCybAAH</values>
+        <values>0053b00000DQCylAAH</values>
+        <values>0053b00000CbU8gAAF</values>
+        <values>0053b00000CWBXhAAP</values>
+        <values>0053b00000CbHIiAAN</values>
+        <values>0053b00000CJ6E7AAL</values>
+        <values>0053b00000DpTa2AAF</values>
+        <values>0053b00000BUxRsAAL</values>
+        <values>0051J000006DEMqQAO</values>
+        <values>0053b00000Co1ElAAJ</values>
+        <values>0053b00000CtyzRAAR</values>
+        <values>0053b00000B35t7AAB</values>
+        <values>0053b00000CC7MzAAL</values>
+        <values>0051J000006DKw1QAG</values>
+        <values>0051J000006DJnSQAW</values>
+        <values>0053b00000CbU9UAAV</values>
+        <values>0053b00000BQaqVAAT</values>
+        <values>0053b00000CWVImAAP</values>
+        <values>0053b00000CICzRAAX</values>
+        <values>0053b00000BW4qrAAD</values>
+        <values>0051J000006DLCTQA4</values>
+        <values>0051J000005UaiUQAS</values>
+        <values>0051J000006DKBeQAO</values>
+        <values>0053b00000CCAS7AAP</values>
+        <values>0053b00000BQovPAAT</values>
+        <values>0053b00000CC5hvAAD</values>
+        <values>0053b00000CVqntAAD</values>
+        <values>0053b00000BUzDnAAL</values>
+        <values>0053b00000CbHsCAAV</values>
+        <values>0051J000006eNexQAE</values>
+        <values>0053b00000BV0fOAAT</values>
+        <values>0053b00000BWK7YAAX</values>
+        <values>0053b00000CJF0dAAH</values>
+        <values>0053b00000CBh8rAAD</values>
+        <values>0053b00000CIq1bAAD</values>
+        <values>0053b00000CBL4sAAH</values>
+        <values>0051J000005Tc9KQAS</values>
+        <values>0053b00000Cnlp2AAB</values>
+        <values>0053b00000DXKOLAA5</values>
+        <values>0053b00000CtzPyAAJ</values>
+        <values>0053b00000CbZHiAAN</values>
+        <values>0053b00000BVuL0AAL</values>
+        <values>0053b00000CByYSAA1</values>
+        <values>0053b00000BQl2HAAT</values>
+        <values>0051J000005UMtnQAG</values>
+        <values>0051J000006DDUtQAO</values>
+        <values>0053b00000CbRqBAAV</values>
+        <values>0051J000006g4v5QAA</values>
+        <values>0053b00000CnmkDAAR</values>
+        <values>0053b00000DQZq6AAH</values>
+        <values>0051J000006EGTbQAO</values>
+        <values>0053b00000CILUmAAP</values>
+        <values>0053b00000CIOwZAAX</values>
+        <values>0051J000006DJvlQAG</values>
+        <values>0053b00000BsEDuAAN</values>
+        <values>0053b00000BWKX2AAP</values>
+        <values>0051J000006DKCcQAO</values>
+        <values>0053b00000DAwJmAAL</values>
+        <values>0053b00000CBdqbAAD</values>
+        <values>0053b00000CCFhRAAX</values>
+        <values>0053b00000CCTLtAAP</values>
+        <values>0053b00000CHzusAAD</values>
+        <values>0051J000005UALUQA4</values>
+        <values>0053b00000CbIkxAAF</values>
+        <values>0053b00000CC71hAAD</values>
+        <values>0053b00000DXB18AAH</values>
+        <values>0053b00000CJE82AAH</values>
+        <values>0053b00000CoB6rAAF</values>
+        <values>0051J000005UMCtQAO</values>
+        <values>0053b00000CtzytAAB</values>
+        <values>0053b00000CWJc1AAH</values>
+        <values>0053b00000BVMw7AAH</values>
+        <values>0051J000006DKmfQAG</values>
+        <values>0051J000006DL87QAG</values>
+        <values>0051J000006DJuxQAG</values>
+        <values>0053b00000CVjUfAAL</values>
+        <values>0053b00000CCRpSAAX</values>
+        <values>0053b00000CBL4iAAH</values>
+        <values>0053b00000BWKPXAA5</values>
+        <values>0051J000006DIg1QAG</values>
+        <values>0053b00000CbU9ZAAV</values>
+        <values>0053b00000CbLZ4AAN</values>
+        <values>0053b00000CJAjxAAH</values>
+        <values>0053b00000CJ6J7AAL</values>
+        <values>0053b00000BQjA4AAL</values>
+        <values>0053b00000DW26bAAD</values>
+        <values>0053b00000BVIRAAA5</values>
+        <values>0051J000006DKOsQAO</values>
+        <values>0053b00000CIMSXAA5</values>
+        <values>0053b00000CBJ9qAAH</values>
+        <values>0053b00000D9EYWAA3</values>
+        <values>0053b00000CBRpaAAH</values>
+        <values>0053b00000Ct8cVAAR</values>
+        <values>0051J000006DJpsQAG</values>
+        <values>0051J000005UMD3QAO</values>
+        <values>0053b00000BWKfQAAX</values>
+        <values>0053b00000BQorXAAT</values>
+        <values>0051J000006DL9PQAW</values>
+        <values>0053b00000DQNufAAH</values>
+        <values>0051J000006DJhUQAW</values>
+        <values>0053b00000CnkLBAAZ</values>
+        <values>0053b00000CJ7ThAAL</values>
+        <values>0051J000006DJoLQAW</values>
+        <values>0053b00000BWKVaAAP</values>
+        <values>0053b00000CC7zmAAD</values>
+        <values>0053b00000CbMBwAAN</values>
+        <values>0051J000006DIM1QAO</values>
+        <values>0053b00000CIC7ZAAX</values>
+        <values>0051J000006DIOHQA4</values>
+        <values>0051J000006DKUqQAO</values>
+        <values>0051J000006f3kiQAA</values>
+        <values>0053b00000Cnu4tAAB</values>
+        <values>0051J000006DiweQAC</values>
+        <values>0053b00000CnlWFAAZ</values>
+        <values>0053b00000CIPWcAAP</values>
+        <values>0053b00000CJ04QAAT</values>
+        <values>0053b00000CBMnUAAX</values>
+        <values>0053b00000CBeH2AAL</values>
+        <values>0053b00000CBds2AAD</values>
+        <values>0053b00000CIEirAAH</values>
+        <values>0051J0000074GWZQA2</values>
+        <values>0051J000006DIoAQAW</values>
+        <values>0053b00000CC9inAAD</values>
+        <values>0053b00000CBeaiAAD</values>
+        <values>0051J000006DK4EQAW</values>
+        <values>0053b00000CBubcAAD</values>
+        <values>0053b00000CI8P0AAL</values>
+        <values>0051J000006DI7GQAW</values>
+        <values>0053b00000CBKK6AAP</values>
+        <values>0051J000007Kcq9QAC</values>
+        <values>0053b00000BQfZAAA1</values>
+        <values>0053b00000CI69oAAD</values>
+        <values>0053b00000BVJtjAAH</values>
+        <values>0053b00000Dh4SlAAJ</values>
+        <values>0053b00000DAuNhAAL</values>
+        <values>0051J000006DIRaQAO</values>
+        <values>0053b00000CbXlgAAF</values>
+        <values>0051J000006DixXQAS</values>
+        <values>0053b00000BQoKxAAL</values>
+        <values>0053b00000DQGNKAA5</values>
+        <values>0053b00000CBYNOAA5</values>
+        <values>0053b00000CIejCAAT</values>
+        <values>0053b00000CBdvpAAD</values>
+        <values>0051J000006DKmkQAG</values>
+        <values>0053b00000CBwFYAA1</values>
+        <values>0053b00000CHylBAAT</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Program</label>
+        <name>Core_MDF_Program__c</name>
+        <type>Text</type>
+        <values>Client Co-Marketing Fund</values>
+        <values>Retail Marketing Funds</values>
+        <values>Data Center Co-Marketing Fund</values>
+        <values>Client Co-Marketing Fund Boost</values>
+        <values>Intel Partner Alliance</values>
+        <values>Service Provider Co-Marketing Fund</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Region</label>
+        <name>Core_MDF_Region_Cd__c</name>
+        <type>Text</type>
+        <values>EMEA</values>
+        <values>ASMO</values>
+        <values>APJ</values>
+        <values>PRC</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Category</label>
+        <name>Core_MDF_Activity_Category__c</name>
+        <type>Text</type>
+        <values>Digital Media</values>
+        <values>Event</values>
+        <values>Sales Readiness</values>
+        <values>Sales Incentive</values>
+        <values>Tech Exploration</values>
+        <values>Broadcast</values>
+        <values>Print</values>
+        <values>Out of Home</values>
+        <values>Purchase Incentive</values>
+        <values>Paid Social Media</values>
+        <values>Search Engine Marketing (SEM)</values>
+        <values>Lead Management</values>
+        <values>Out of Home Media</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Requested Amount (USD)</label>
+        <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
+        <type>Number</type>
+        <values>0.14___5581.51</values>
+        <values>5581.51___9318.7</values>
+        <values>9318.7___13832.69</values>
+        <values>13832.69___20547.35</values>
+        <values>20547.35___30706.25</values>
+        <values>30706.25___44103.8</values>
+        <values>44103.8___63814.95</values>
+        <values>63814.95___107956.88</values>
+        <values>107956.88___195787.47</values>
+        <values>195787.47___1.08E7</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account (Company)</label>
+        <name>Core_MDF_AccountCompany__c</name>
+        <type>Text</type>
+        <values>Dell Technologies</values>
+        <values>Lenovo (Beijing) Limited</values>
+        <values>ASUSTEK COMPUTER INCORPORATION</values>
+        <values>MICRO-STAR INTERNATIONAL CO., LTD.</values>
+        <values>HP INC.</values>
+        <values>ACER INCORPORATED</values>
+        <values>Samsung Electronics (Computer Division)</values>
+        <values>HUAWEI HQ</values>
+        <values>Hewlett Packard Enterprise Company</values>
+        <values>Dynabook Inc.</values>
+        <values>Tmall Resellers</values>
+        <values>Euronics Eu+</values>
+        <values>Media-Saturn-Holding GmbH</values>
+        <values>Oracle Corporation</values>
+        <values>Currys Group Limited</values>
+        <values>Fujitsu Client Computing Limited (Lenovo/FCCL)</values>
+        <values>Jd.com, Inc</values>
+        <values>Expert International GmbH</values>
+        <values>Microsoft Corporation</values>
+        <values>QUANTA COMPUTER INC.</values>
+        <values>GIGA-BYTE TECHNOLOGY CO., LTD.</values>
+        <values>FLIPKART INDIA PRIVATE LIMITED</values>
+        <values>LG ELECTRONICS INC.</values>
+        <values>COLOMBIANA DE COMERCIO S.A.</values>
+        <values>Amazon Web Services, Inc.</values>
+        <values>COSTCO</values>
+        <values>Dell - Cn</values>
+        <values>Alphabet</values>
+        <values>Amazon - Emea</values>
+        <values>xFusion Digital Technologies Co., Ltd.</values>
+        <values>CISCO SYSTEMS INC.</values>
+        <values>Hp - Cn</values>
+        <values>Best Buy Canada Ltd</values>
+        <values>Panasonic Connect</values>
+        <values>Magazine Luiza S/a</values>
+        <values>SUPER MICRO COMPUTER, INC.</values>
+        <values>Fujitsu North America Holdings, Inc.</values>
+        <values>Notebookbilliger</values>
+        <values>INTERNATIONAL PRODUCTS SOURCING GROUP,INC.</values>
+        <values>FALABELLA</values>
+        <values>OFFICE DEPOT</values>
+        <values>WALMART</values>
+        <values>Lenovo - Cn</values>
+        <values>XIAOMI CORPORATION</values>
+        <values>INSPUR GROUP</values>
+        <values>Yoogalu Pty Limited  t/a Harvey Norman</values>
+        <values>Pt Global Digital Niaga</values>
+        <values>Falabella - Pe</values>
+        <values>Honor Device Co., Ltd.</values>
+        <values>B2w 3p - Br</values>
+        <values>Exito Calle 77 (Cv) Blla</values>
+        <values>IBM CORPORATION</values>
+        <values>VIA VAREJO</values>
+        <values>PC COMPONENTES Y MULTIMEDIA S.L.</values>
+        <values>Asus - Cn</values>
+        <values>Fast Shop S/A.</values>
+        <values>H3C Technologies Co., Limited</values>
+        <values>Positivo Tecnologia SA</values>
+        <values>Inretail</values>
+        <values>Groupe FNAC DARTY</values>
+        <values>HAIER</values>
+        <values>Cyberport</values>
+        <values>Tiendas por Departamento Ripley S.A.</values>
+        <values>Jd.id</values>
+        <values>Appario Retail Private Limited</values>
+        <values>RELIANCE RETAIL LTD.</values>
+        <values>gmarket</values>
+        <values>Lenovo Commercial - CN</values>
+        <values>JB HI-FI GROUP PTY LTD</values>
+        <values>TikTok Pte Ltd.</values>
+        <values>Agres</values>
+        <values>JARIR MARKETING COMPANY</values>
+        <values>AFT Corp / American Future Tech</values>
+        <values>11th Street</values>
+        <values>COOLBLUE</values>
+        <values>COM7 Pcl.</values>
+        <values>Pc Factory Antofagasta</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Risk Level</label>
+        <name>Core_MDF_Claim_Risk_Level</name>
+        <type>Text</type>
+        <values>HIGH RISK</values>
+        <values>LOW RISK</values>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Core_MDF_Claim_Risk_Level</predictedField>
+    <predictionType>Classification</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <trainingMetrics>{&quot;r2&quot;:0.2572858836518558,&quot;nobs&quot;:18294,&quot;nullDeviance&quot;:14063.865004116502,&quot;residualDegreesOfFreedom&quot;:16115,&quot;type&quot;:&quot;BinomialGLM&quot;,&quot;gini&quot;:0.7086012976892002,&quot;meanPerClassError&quot;:0.26805963661456905,&quot;logloss&quot;:0.27975378799153433,&quot;auc&quot;:0.8543006488446001,&quot;residualDeviance&quot;:10235.631595034256,&quot;confusionMatrices&quot;:{&quot;thresholds&quot;:[0.4496499944747894],&quot;tns&quot;:[15731],&quot;tps&quot;:[589],&quot;totalPositives&quot;:793,&quot;totalNegatives&quot;:17501},&quot;rmse&quot;:0.2888299125740831,&quot;aic&quot;:14593.631595034256,&quot;nullDegreesOfFreedom&quot;:18293,&quot;mse&quot;:0.08342271839755248}</trainingMetrics>
+</DiscoveryAIModel>

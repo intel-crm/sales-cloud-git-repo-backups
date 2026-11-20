@@ -1,0 +1,14 @@
+<template>
+  <template if:true={isGuestUser}>
+    <c-core-intc-cta-bar
+      cta-comm-page={ctaCommPage}
+      cta-label={labels.ctaLabel}
+      cta-label-aria={labels.ctaLabelAria}
+      cta-external-url={ctaUrlValue}
+      subtitle={labels.subtitle}
+      title={labels.title}
+      variation={theme}
+      oncorelinkclick={handleLinkClick}
+    ></c-core-intc-cta-bar>
+  </template>
+</template>

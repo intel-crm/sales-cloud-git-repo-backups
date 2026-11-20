@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>System Admin/IT Admin USER</audienceName>
+    <container>Partnercenter Unified Community</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>it admin</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>admin</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AnyCriterionMatches</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>61769fa4-956d-4b01-8fe7-e5fa8b5e243b$#$fe5fe779-7c03-4656-8a0a-493cae5171e9</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Newsletters_HTML_Editor_Component</targetValue>
+        </target>
+        <target>
+            <groupName>61769fa4-956d-4b01-8fe7-e5fa8b5e243b$#$9b54513a-423c-477a-a2ab-6a363f5b1c5d</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Newsletters_HTML_Editor_1_Component</targetValue>
+        </target>
+        <target>
+            <groupName>9c79fbf8-f999-4f12-96ba-72f6920eb245$#$fc4bef12-983e-4030-aa0e-27046a9949b6</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Home_core_MDF_dynamicURLsOnCommunity_1_Component</targetValue>
+        </target>
+    </targets>
+</Audience>

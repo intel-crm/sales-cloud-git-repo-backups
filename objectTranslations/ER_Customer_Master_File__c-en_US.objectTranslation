@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Customer Master File</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Customer Master Files</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Group --></label>
+        <name>ER_Account_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMFUnique --></label>
+        <name>ER_CMFUnique__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Address --></label>
+        <name>ER_CMF_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Name --></label>
+        <name>ER_CMF_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Central Block --></label>
+        <name>ER_Central_Block__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Customer Relationship Code --></label>
+        <name>ER_Direct_Customer_Relationship_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Customer Relationship Name --></label>
+        <name>ER_Direct_Customer_Relationship_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Area Order Block Code --></label>
+        <name>ER_SalesAreaOrderBlockCd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Area Order Block Name --></label>
+        <name>ER_SalesAreaOrderBlockNm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Disti Chnl Code --></label>
+        <name>ER_Sales_Disti_Chnl_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Disti Chnl Name --></label>
+        <name>ER_Sales_Disti_Chnl_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org Code --></label>
+        <name>ER_Sales_Org_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org Name --></label>
+        <name>ER_Sales_Org_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

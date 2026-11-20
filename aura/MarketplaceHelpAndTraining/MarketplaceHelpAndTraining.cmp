@@ -1,0 +1,32 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" >
+  <aura:attribute name="title" type="string" />
+  <aura:attribute name="subtitle" type="string" />
+  <aura:attribute name="CTA" type="string" description="Internal set from controller data"/>
+  <aura:attribute name="CTAUrl" type="string" description="Internal set from controller data" />
+  <aura:attribute name="viewAll" type="boolean" description="Internal component state"/>
+  <aura:attribute name="viewAllHeadline" type="String" description="Internal component state" />
+  <aura:attribute name="viewMoreLinkTitle" type="String" description="Internal component state" />  
+  <aura:attribute name="listing" type="Object[]" default="[]" description="Internal component state" />
+
+  <aura:attribute name="pageType" type="string" default="all" description="choose the page type to change the data of the component" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    {!listing}
+   <!-- <aura:iteration items="{!v.listing}" var="item" indexVar="i">
+        {!item.label}
+    	{Hello}
+    	{!item.title}
+    </aura:iteration-->  
+	
+  <c:MarketplaceSimpleCardListWrapper
+    title="{!v.title}"
+    subtitle="{!v.subtitle}"
+    CTA="{!v.CTA}"
+    CTAUrl="{!v.CTAUrl}"
+    viewAllHeadline="{!v.viewAllHeadline}"
+    viewMoreLinkTitle="{!v.viewMoreLinkTitle}"
+    listing="{!v.listing}"                                 
+    viewAll="{!v.viewAll}"
+    ctaTop="false"
+  />
+</aura:component>

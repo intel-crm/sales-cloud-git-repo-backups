@@ -1,0 +1,65 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "03a52eb1-78b6-4cdb-8d74-3b396b4aba95",
+  "label" : "Contact Detail",
+  "regions" : [ {
+    "id" : "6c749d04-a473-4746-ac61-9db86ace60b7",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "6b224e5d-dbcc-428b-b381-6510b04faf73",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "none",
+        "tab3Type" : "none",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "4cf75f05-343a-470e-bdf3-f512a3605af1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "aa3b612f-a9f7-430f-8009-f08bb2a4e5be",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "19e5619c-8b3e-4e1d-8c47-ce0ec5cb1a1d",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "7c83f07f-a1ba-4508-877c-a20a33bc91a8",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "26ec2efa-bec3-4c1a-b870-d76a9bc95fac",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-003"
+}

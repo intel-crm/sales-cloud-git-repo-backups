@@ -1,0 +1,82 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerSearchLayout",
+  "dataProviders" : [ ],
+  "id" : "c6ce8e9e-b80e-42bd-9fbd-842460afa1b9",
+  "label" : "Partner Search",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"Partner Search\",\"title\":\"Partner Search\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Partner Search",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "",
+        "title" : ""
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "1db7b0c6-7ee6-44df-989b-388586efd163",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b5800f9f-d658-49c0-b1b7-c76c8e0e3e11",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "26175ca8-6676-4d67-9a79-38266ea1183b",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_PartnerSearch",
+      "id" : "d0a03b77-f1e3-478f-9ed5-4ead31289ea9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5a787c30-0479-4b9b-8caf-6a0bd8a235c3",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "73ddd1d2-2917-43e0-84c0-abac980e296f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fd9c15ff-62b4-4f0e-8f79-90a86c055bd9",
+    "regionName" : "blade2white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Partner Search"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1d6e34c4-4ecd-422e-a9b6-6adec9957c05",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "49e12e94-ad9f-485d-a967-d39d53ae47af",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partner-search"
+}

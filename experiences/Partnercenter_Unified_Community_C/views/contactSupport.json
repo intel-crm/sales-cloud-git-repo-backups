@@ -1,0 +1,185 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "e6fde357-6903-4ea0-a7ce-a583a54eb066",
+  "label" : "Contact Support",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1000",
+        "recordId" : "YRZqqYEMuKbiXEjuNEeXfDPdRMPNNr"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "3f7b510d-de6a-49e7-98fc-656f66e6c6c3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "height" : "1000",
+        "recordId" : "RHVcVXrDLVJiPqwDTBRUznLvecvWzq2"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "f4d9c44d-1c85-4e70-871c-b16ddee50ce8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2608fa54-c42f-4495-9f05-d5ad93f5479a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "c132c00b-c75c-4812-a105-13a180e33b99",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "524bad77-2854-4fd9-8276-272e6031f22b",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "e6d566a5-c115-46d9-b2d8-d688333eefa3",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Contact Support"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4c945c3d-dabb-48d0-99d1-ad87723fc4c0",
+      "renditionMap" : {
+        "de" : "180d3557-a012-4878-ba01-78bf6f537f9b",
+        "es" : "4720d9aa-7a84-4b25-a51d-d5f2eeba647f",
+        "es_mx" : "e0c4bb3d-0ceb-4e4d-8f9e-1b0d04205c8a",
+        "fr" : "2664d1d7-1c8f-4f43-aaeb-19829beac49d",
+        "it" : "ef88e7e1-22f2-4835-8572-20d40d5e337f",
+        "ja" : "9a859d58-6780-45ac-bdcb-987004762c0b",
+        "ko" : "f2c07192-8ced-41bc-95a1-e8fe4c4d91b0",
+        "pt_br" : "1ca526ae-a537-40fd-86a2-e57d574b8c6b",
+        "pt_pt" : "8c4d14a9-74cb-4b04-8b10-35c2c34fdb9f",
+        "ru" : "b66bfa7d-ee25-4ca8-bdf5-ba7768c79f47",
+        "zh_cn" : "558f0b42-791a-4b45-b99b-f6ef594cb826",
+        "zh_tw" : "4298715a-478d-4277-8fed-580c171e1fe3"
+      },
+      "renditions" : [ {
+        "id" : "558f0b42-791a-4b45-b99b-f6ef594cb826",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b66bfa7d-ee25-4ca8-bdf5-ba7768c79f47",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8c4d14a9-74cb-4b04-8b10-35c2c34fdb9f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9a859d58-6780-45ac-bdcb-987004762c0b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ef88e7e1-22f2-4835-8572-20d40d5e337f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2664d1d7-1c8f-4f43-aaeb-19829beac49d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e0c4bb3d-0ceb-4e4d-8f9e-1b0d04205c8a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "180d3557-a012-4878-ba01-78bf6f537f9b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f2c07192-8ced-41bc-95a1-e8fe4c4d91b0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4720d9aa-7a84-4b25-a51d-d5f2eeba647f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1ca526ae-a537-40fd-86a2-e57d574b8c6b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4298715a-478d-4277-8fed-580c171e1fe3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Contact Support",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "15d01e60-df45-4d5e-bb80-68c6bbd3cc64",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "contactsupport"
+}

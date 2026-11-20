@@ -1,0 +1,106 @@
+.required::before {
+    content:"*";
+    color: red;
+  }
+  
+  .header {
+    background-color: #e6856d;
+    color: white;
+    padding: 15px;
+}
+
+.THIS .diet-veg{
+  background : yellowgreen;
+}
+.THIS .diet-nveg{
+  background : orangered;
+  color : white;
+}
+.THIS .working-true{
+  background : rebeccapurple;
+  color : white;
+}
+.THIS .working-false{
+  background : rebeccapurple;
+  color : white;
+}
+.THIS .color-blue{
+  background : deepskyblue;
+  color : white;
+}
+.THIS .color-grey{
+  background : lightgrey;
+  color : black;
+}
+.THIS .color-black{
+  background : black;
+  color : white;
+}
+.THIS .color-pink{
+  background : deeppink;
+  color : white;
+}
+.THIS .color-cyan{
+  background : lightcyan;
+  color : black;
+}
+.THIS .color-green{
+  background : orange;
+  color : black;
+}
+.THIS .color-orange{
+  background : green;
+  color : white;
+}
+.header {
+  background: #1a315b;
+  color: white;
+  padding: 15px;
+}
+.mainHeading{
+  background: #1a315b;
+  color: white;
+}
+.modalheader{
+  background: #1a315b;
+  color: white;
+  padding: 5px;
+
+}
+.slds-modal__container {
+  max-width: 1000rem !important;
+  width: 80% !important;
+
+}
+.modal-backdrop {
+  background-color: white;
+  font-size: x-large;
+  align-content: center;
+}
+/*.accordianColor{
+  --slds-c-accordion-summary-color-background:#dfdfa1;
+  --slds-c-accordion-heading-text-color:rgb(12, 12, 12);
+--slds-c-accordion-sizing-border:0.8px
+--slds-c-accordion-heading-font-size:1.5rem
+}*/
+.input-icon{
+  position: absolute;
+  bottom:0;
+  z-index:1;
+  display:flex;
+  left: 1px;
+  align-items:center;
+  justify-content:center;
+  height: 30px;
+  width: 30px;
+}
+.slds-accordion{
+	--slds-c-accordion-color-border:#1a315b;
+	--slds-c-accordion-heading-text-color:white;
+	--slds-c-accordion-heading-hover-text-color:white;
+	--slds-c-accordion-summary-color-background:rgb(88, 117, 170);
+	--slds-c-accordion-heading-font-size:17px;
+	--slds-c-accordion-section-spacing-block-start:2px;
+	--slds-c-accordion-section-spacing-block-end:2px;
+	width:100%;
+}

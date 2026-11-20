@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_IPS_Authored_By__c</fullName>
+        <description>Used for Reporting on comments-B2B Api</description>
+        <externalId>false</externalId>
+        <formula>IF(Core_IPS_Comment_Authored_By__c != null, Core_IPS_Comment_Authored_By__r.FirstName , CreatedBy_Name__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Authored By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_BES_ExtCommentID__c</fullName>
+        <externalId>true</externalId>
+        <label>External Comment ID</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_BES_Promote_Status__c</fullName>
+        <label>Promote Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                    <fullName>Done</fullName>
+                    <default>false</default>
+                    <label>Done</label>
+                </value>
+                <value>
+                    <fullName>Sent Successfully</fullName>
+                    <default>false</default>
+                    <label>Sent Successfully</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_BgColor__c</fullName>
+        <label>Background Color</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Case_Comment_ID__c</fullName>
+        <label>Case Comment ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Case_Comment_Source__c</fullName>
+        <description>This Filed is used to identify the comment source .</description>
+        <label>Case Comment Source</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer Portal</fullName>
+                    <default>false</default>
+                    <label>Customer Portal</label>
+                </value>
+                <value>
+                    <fullName>Internal Portal</fullName>
+                    <default>false</default>
+                    <label>Internal Portal</label>
+                </value>
+                <value>
+                    <fullName>Backend System</fullName>
+                    <default>false</default>
+                    <label>Backend System</label>
+                </value>
+                <value>
+                    <fullName>Data Migration</fullName>
+                    <default>false</default>
+                    <label>Data Migration</label>
+                </value>
+                <value>
+                    <fullName>B2B API</fullName>
+                    <default>false</default>
+                    <label>B2B API</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>API</fullName>
+                    <default>false</default>
+                    <label>API</label>
+                </value>
+                <value>
+                    <fullName>n/a</fullName>
+                    <default>false</default>
+                    <label>n/a</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Case_Comment_Type__c</fullName>
+        <description>This field captures the type of Comment made on the case and the visibility of the comment to different users.</description>
+        <inlineHelpText>Indicates the Visibility of the comment made on the case</inlineHelpText>
+        <label>Case Comment Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Private to Intel</fullName>
+                    <default>false</default>
+                    <label>Private to Intel</label>
+                </value>
+                <value>
+                    <fullName>Private to Agents</fullName>
+                    <default>false</default>
+                    <label>Private to Agents</label>
+                </value>
+                <value>
+                    <fullName>Public to Customers</fullName>
+                    <default>false</default>
+                    <label>Public to Customers</label>
+                </value>
+                <value>
+                    <fullName>Private to Partner</fullName>
+                    <default>false</default>
+                    <label>Private to Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Case__c</fullName>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>Case_RTFS</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment_Attachment_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Comment Attachment Id</label>
+        <referenceTo>Core_IPS_Case_Attachments__c</referenceTo>
+        <relationshipLabel>Case Comments</relationshipLabel>
+        <relationshipName>Case_Comments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment_Author_Type__c</fullName>
+        <label>Comment Author Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                    <label>Partner</label>
+                </value>
+                <value>
+                    <fullName>FAE</fullName>
+                    <default>false</default>
+                    <label>FAE</label>
+                </value>
+                <value>
+                    <fullName>Agent</fullName>
+                    <default>false</default>
+                    <label>Agent</label>
+                </value>
+                <value>
+                    <fullName>Backend Integration</fullName>
+                    <default>false</default>
+                    <label>Backend Integration</label>
+                </value>
+                <value>
+                    <fullName>Data Migration</fullName>
+                    <default>false</default>
+                    <label>Data Migration</label>
+                </value>
+                <value>
+                    <fullName>Partner - DFAE</fullName>
+                    <default>false</default>
+                    <label>Partner - DFAE</label>
+                </value>
+                <value>
+                    <fullName>Partner - Agent</fullName>
+                    <default>false</default>
+                    <label>Partner - Agent</label>
+                </value>
+                <value>
+                    <fullName>System</fullName>
+                    <default>false</default>
+                    <label>System</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment_Authored_By_Email__c</fullName>
+        <description>Holds the comment authored by users email id</description>
+        <externalId>false</externalId>
+        <label>Authored By Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment_Authored_By_FirstName__c</fullName>
+        <externalId>false</externalId>
+        <label>Authored By FirstName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment_Authored_By_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Authored By Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment_Authored_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Authored By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Case_Comments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Comment__c</fullName>
+        <inlineHelpText>Note : If you are pasting images into this field, the size limit is 1MB</inlineHelpText>
+        <label>Plain Comment</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_IsUpdated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsUpdated</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Legacy_Ext_ID__c</fullName>
+        <description>This field is to store legacy id of migrated Case Comments.</description>
+        <externalId>true</externalId>
+        <label>Legacy ID</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Migrated_Note_Type__c</fullName>
+        <description>This field will be used for migration processing to identify type of note migrated to allow Bulk Export/ Delete</description>
+        <label>Migrated Note Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Partner_Category_Info</fullName>
+                    <default>false</default>
+                    <label>Partner_Category_Info</label>
+                </value>
+                <value>
+                    <fullName>Env_Detail_Private</fullName>
+                    <default>false</default>
+                    <label>Env_Detail_Private</label>
+                </value>
+                <value>
+                    <fullName>Env_Detail_Public</fullName>
+                    <default>false</default>
+                    <label>Env_Detail_Public</label>
+                </value>
+                <value>
+                    <fullName>Comm_Log_Private</fullName>
+                    <default>false</default>
+                    <label>Comm_Log_Private</label>
+                </value>
+                <value>
+                    <fullName>Comm_Log_Public</fullName>
+                    <default>false</default>
+                    <label>Comm_Log_Public</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_NickName__c</fullName>
+        <label>NickName</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Note_From_Customer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is used as an indicator that the comment made is public and is either made by Customers or Sales profiles related users</description>
+        <label>Note from Customer</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Note_to_Customer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Note to Customer</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Notetype__c</fullName>
+        <label>Notetype</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Public__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Make Visible to External Users</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Rich_Comment__c</fullName>
+        <label>Rich Comment</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Promote_Status__c</fullName>
+        <label>Promote Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                    <fullName>Done</fullName>
+                    <default>false</default>
+                    <label>Done</label>
+                </value>
+                <value>
+                    <fullName>Sent Successfully</fullName>
+                    <default>false</default>
+                    <label>Sent Successfully</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CreatedBy_FirstName__c</fullName>
+        <description>This field is created to refer the First Name of case comment creator user. This field is specifically used for showing the first name of the Case Comment creator in commentScreen VF page in community.</description>
+        <externalId>false</externalId>
+        <formula>CreatedBy.FirstName</formula>
+        <label>CreatedBy FirstName</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CreatedBy_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.FirstName  &amp; &apos; &apos; &amp;  CreatedBy.LastName</formula>
+        <label>CreatedBy Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Test_for_Rich__c</fullName>
+        <label>Test for Rich</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Test_fro_plain__c</fullName>
+        <description>this is for testing, do not migrate this</description>
+        <label>Test for plain</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Case Comment</label>
+    <nameField>
+        <displayFormat>RTF-{000000000}</displayFormat>
+        <label>Case Comment Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Case Comments</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Case_comment</fullName>
+        <active>true</active>
+        <label>Case comment</label>
+        <picklistValues>
+            <picklist>Core_IPS_BES_Promote_Status__c</picklist>
+            <values>
+                <fullName>Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent Successfully</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Case_Comment_Source__c</picklist>
+            <values>
+                <fullName>API</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B2B API</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Backend System</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Migration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>n%2Fa</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Case_Comment_Type__c</picklist>
+            <values>
+                <fullName>Private to Agents</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private to Intel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public to Customers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Comment_Author_Type__c</picklist>
+            <values>
+                <fullName>Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Backend Integration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Migration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner - Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner - DFAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Migrated_Note_Type__c</picklist>
+            <values>
+                <fullName>Comm_Log_Private</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comm_Log_Public</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Env_Detail_Private</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Env_Detail_Public</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner_Category_Info</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Promote_Status__c</picklist>
+            <values>
+                <fullName>Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent Successfully</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Core_IPS_Case__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Comment__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER.ALIAS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>IPS_Altera_Go_Live_Comment_Restriction</fullName>
+        <active>true</active>
+        <description>Restricting the user to add comments on a cases with Altera products during migration</description>
+        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_IPS_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
+        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

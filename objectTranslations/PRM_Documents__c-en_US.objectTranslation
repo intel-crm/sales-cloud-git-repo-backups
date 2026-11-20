@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Terms and Condition Document</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Terms and Condition Documents</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Terms and Condition Documents --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Document Id --></label>
+        <name>Document_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Type --></label>
+        <name>Document_Type__c</name>
+        <picklistValues>
+            <masterLabel>Terms and Conditions</masterLabel>
+            <translation><!-- Terms and Conditions --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,65 @@
+.THIS .manage-info-text {
+    padding-right: 60px;
+    float: right;
+    color: t(blue);
+}
+.THIS {
+  padding: 0 1.5rem;
+  text-align: right;
+}
+.THIS .slds-icon-text-default {
+    fill: t(blue);
+}
+
+/* Tooltip */
+.THIS .tooltip {
+    position: relative;
+    display: inline-block;
+    outline: none;
+}
+.THIS .tooltip .tooltip-container {
+    display: none;
+    position: absolute;
+    bottom: 32px;
+    left: -27px;
+    width: 40em;
+}
+
+
+.THIS .tooltip .tooltip-content {
+    background-color: t(blue);
+    border-radius: 4px;
+    color: t(white);
+    font-size: 13px;
+}
+.THIS .tooltip .slds-icon {
+    margin-top: -3px;
+}
+.THIS .tooltip:hover .slds-icon use,
+.THIS .tooltip .slds-icon use,
+.THIS .tooltip .slds-icon-text-default {
+    fill: t(blue);
+}
+.THIS .tooltip .tooltip-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom: 0;
+    bottom: -10px;
+    left: 22px;
+    border-top-color: t(blue);
+    border-width: 16px;
+}
+.THIS .tooltip:focus .tooltip-container,
+.THIS .tooltip:hover .tooltip-container {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .THIS.manage-info-text {
+        padding-right: 10px;
+    }
+}

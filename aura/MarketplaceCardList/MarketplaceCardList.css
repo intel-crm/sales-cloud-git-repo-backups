@@ -1,0 +1,45 @@
+.THIS {
+  align-items: normal; /* IMPORTANT: fills vertical space for cards */
+  background: t(lightestGray);
+}
+
+/*Merge 16-Oct-2019*/
+/* Bug fix: ID-4080 */
+.THIS .cardListItem:first-child .list {
+  margin-top: 1rem;
+}
+.THIS .cardListItem:not(:first-child) .list {
+  margin-top: 0.5rem;
+}
+.THIS .cardListItem .list.productItem .intelOnlyFooter.inactive,
+.THIS .cardListItem .list.partnerItem .intelOnlyFooter {
+  display: none;
+}
+/*changes end*/
+
+.THIS .cardListItem {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.THIS .intelOnlyFooter {
+  background-color: t(lightestGray);
+  padding-top: 5px;
+  width: 100%;
+}
+
+.THIS .card {
+  padding: 1em 1em 0.5em 1em; 
+}
+
+.THIS .card, .THIS .list {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .THIS .cardListItem .card {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Core_MDF_Case_ID_Number_id__c</field>
+        <field>Core_MDF_Escalation_Name_txt__c</field>
+        <field>Core_MDF_Escalation_Status_nm__c</field>
+        <field>Core_MDF_Total_Dollar_Impact_amt__c</field>
+        <field>Core_MDF_Root_Cause_nm__c</field>
+        <field>Core_MDF_Issue_Description_txt__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Client Case route to Client FM Que L1</label>
+        <name>CCF_Case_route_to_CCF_FM_Que_L1</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Data Center CoMarketing Fund&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Datacenter Case route to Datacenter FM Que L1</label>
+        <name>DCF_Case_route_to_DCF_FM_Que_L1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag_EEF</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_EEF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Ecosystem Extension Fund&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>EEF Case route to EEF FM Que L1</label>
+        <name>Core_MDF_EEF_Case_route_to_EEF_FM_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), Core_MDF_Case_ID_Number_id__r.Core_Account_Geo__c = &apos;ASMO &apos;, Core_MDF_Case_ID_Number_id__r.Core_IPS_Account_Sub_Geo__c = &apos;LAR&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>RMF ASMO LAR Geo Lead Queue</label>
+        <name>RMF_ASMO_LAR_Geo_Lead_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_ASMONAR_Geo_Lead_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;),   Core_MDF_Case_ID_Number_id__r.Core_Account_Geo__c = &apos;ASMO &apos;,  Core_MDF_Case_ID_Number_id__r.Core_IPS_Account_Sub_Geo__c = &apos;NAR&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>RMF ASMO NAR Geo Lead Queue</label>
+        <name>RMF_ASMO_NAR_Geo_Lead_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_APJ_Geo_Lead_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), Core_MDF_Case_ID_Number_id__r.Core_Account_Geo__c = &apos;APJ &apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>RMF APJ Geo Lead Queue</label>
+        <name>RMF_APJ_Geo_Lead_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_EMEA_Geo_Lead_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), Core_MDF_Case_ID_Number_id__r.Core_Account_Geo__c = &apos;EMEA &apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>RMF EMEA Geo Lead Queue</label>
+        <name>RMF_EMEA_Geo_Lead_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_PRC_Geo_Lead_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;), Core_MDF_Case_ID_Number_id__r.Core_Account_Geo__c = &apos;PRC &apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>RMF PRC Geo Lead Queue</label>
+        <name>RMF_PRC_Geo_Lead_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Retail Marketing Funds&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>RMF Case route to Retail FM Que L2</label>
+        <name>RMF_Case_route_to_Retail_FM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Intel Partner Alliance&apos;), ISPICKVAL(Core_MDF_Case_ID_Number_id__r.Account.Core_Geo__c,&apos;APJ&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>IPA APJ Geo L1 Approver Queue</label>
+        <name>IPA_APJ_Geo_L1_Approver_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_IPA_EMEA_Escltns_L1_Apr_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Intel Partner Alliance&apos;), ISPICKVAL(Core_MDF_Case_ID_Number_id__r.Account.Core_Geo__c,&apos;EMEA&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>IPA EMEA Geo L1 Approver Queue</label>
+        <name>IPA_EMEA_Geo_L1_Approver_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_IPA_PRC_Escltns_L1_Apr_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Intel Partner Alliance&apos;), ISPICKVAL(Core_MDF_Case_ID_Number_id__r.Account.Core_Geo__c,&apos;PRC&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>IPA PRC Geo L1 Approver Queue</label>
+        <name>IPA_PRC_Geo_L1_Approver_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_IPA_ASMO_Esc_L1_Apr_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c,&apos;Intel Partner Alliance&apos;),
+ISPICKVAL(Core_MDF_Case_ID_Number_id__r.Account.Core_Geo__c,&apos;ASMO&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>IPA ASMO Geo L1 Approver Queue</label>
+        <name>IPA_ASMO_Geo_L1_Approver_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_IPA_Esc_L2_Apr_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Intel Partner Alliance&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>IPA  L2 Approver Queue</label>
+        <name>IPA_L2_Approver_Queue</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Service Provider CoMarketing Fund&apos;) &amp;&amp; 
+(
+(Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>SPCF Case route to SPCF FM Que L1</label>
+        <name>Core_MDF_SPCF_Case_Amt_100k_route_to_SPCF_FM_Que_L1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Service Provider CoMarketing Fund&apos;) &amp;&amp;
+(
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>SPCF Case route to SPCF FM, PM Que L2</label>
+        <name>SPCF_Case_route_to_SPCF_FM_PM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Fin_Mgr_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Service Provider CoMarketing Fund&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>SPCF Case Amt &gt; $1M route to SPCF FM, PM Que L3</label>
+        <name>Core_MDF_SPCF_Case_Amt_1M_route_to_SPCF_FM_PM_Que_L3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund Boost&apos;) &amp;&amp; 
+(
+(Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Boost Case route to CCF Boost FM Que L1</label>
+        <name>Core_MDF_CCFB_Case_Amt_100k_route_to_CCFB_FM_Que_L1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Prog_Admin_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund Boost&apos;) &amp;&amp;
+(
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Boost Case route to CCF Boost FM, PM Que L2</label>
+        <name>Core_MDF_CCFB_Case_Amt_100k_1M_route_to_CCFB_FM_PM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Set_Approval_Flag</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Prog_Admin_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund Boost&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)</formula>
+        </entryCriteria>
+        <label>CCF Boost Case Amt &gt; $1M route to CCF Boost FM, PM Que L3</label>
+        <name>Core_MDF_CCFB_Case_Amt_1M_route_to_CCFB_FM_PM_Que_L3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Escalation Approval flow for Claim Case Review Result Record Type</description>
+    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Escalation__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Claim Case Review Result</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Core_MDF_Status_to_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Core_MDF_Status_to_Denied</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Escalation Approval for Case</label>
+    <processOrder>2</processOrder>
+    <recallActions>
+        <action>
+            <name>Core_MDF_Cancel_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

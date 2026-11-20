@@ -1,0 +1,14 @@
+<apex:page standardController="Case" extensions="Core_IPS_CoveoPageController"  docType="html-5.0" action="{!coveoPagePanel}">  <!-- TWC745-8556 -IPS Salesforce Monthly Issues -Coveo page DML issue fix-->
+    <apex:outputPanel id="coveosearch" 
+                      rendered="{!$Setup.Coveo_User_Visibility__c.Visible__c}">
+        <CoveoV2:Box name="IPSAgentConsole" recordId="{!id}" userGroups="{!$Cache.Session.local.CoveoInfoCache.customGroup}"/>
+    </apex:outputPanel>  
+    <apex:outputPanel rendered="{!!$Setup.Coveo_User_Visibility__c.Visible__c}" id="message">
+        <div>    
+            <p style="text-align: center; color: #075fa7; border: dotted grey; padding: 40px;font-size: medium;font-weight: bold; line-height: 27px;" >
+              You do not have the necessary privileges to access this resource. Please contact your Support Org Admin for more information.
+            </p>
+        </div>
+    </apex:outputPanel>  
+    
+</apex:page>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>[{&quot;fieldName&quot;: &quot;accountURL&quot;, &quot;label&quot;: &quot;Account Name&quot;, &quot;typeAttributes&quot;: {&quot;label&quot;: {&quot;fieldName&quot;: &quot;accountName&quot;}, &quot;target&quot;: &quot;_blank&quot;}, &quot;type&quot;: &quot;url&quot;, &quot;sortable&quot;: &quot;true&quot;, &quot;cellAttributes&quot;: { &quot;wrapText&quot;:&quot;true&quot; }},{&quot;fieldName&quot;: &quot;role&quot;, &quot;label&quot;: &quot;Partner Role&quot; },{&quot;fieldName&quot;:&quot;tier&quot;, &quot;label&quot;: &quot;Tier&quot; },{ &quot;fieldName&quot;: &quot;missingBenefits&quot;, &quot;label&quot;: &quot;Missing Benefit&quot;, &quot;cellAttributes&quot;: { &quot;wrapText&quot;: &quot;true&quot; } },         { &quot;fieldName&quot;: &quot;extraBenefits&quot;, &quot;label&quot;: &quot;Extra Benefit&quot;, &quot;cellAttributes&quot;: { &quot;wrapText&quot;: &quot;true&quot; } },{ &quot;fieldName&quot;: &quot;recordTypeName&quot;, &quot;label&quot;: &quot;Record Type&quot;, &quot;sortable&quot;: &quot;true&quot; }]</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pagesize</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportdatasetname</name>
+                    <value>Account Benefit Mismatch Report</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportname</name>
+                    <value>Account Benefit Mismatch Report</value>
+                </componentInstanceProperties>
+                <componentName>pRM_CustomReportService</componentName>
+                <identifier>c_pRM_CustomReportService</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>[{&quot;type&quot;: &quot;button-icon&quot;,&quot;fixedWidth&quot;: 40,&quot;typeAttributes&quot;: {&quot;iconName&quot;: { &quot;fieldName&quot;: &quot;iconName&quot; },&quot;name&quot;: &quot;Expand&quot;,&quot;title&quot;: &quot;Expand&quot;,&quot;variant&quot;: &quot;bare&quot;,&quot;size&quot;: &quot;small&quot;,&quot;alternativeText&quot;: &quot;Expand&quot;,&quot;disabled&quot;: { &quot;fieldName&quot;: &quot;disableIcon&quot; }}},{&quot;fieldName&quot;: &quot;accountURL&quot;, &quot;label&quot;: &quot;OPID/Account Name&quot;, &quot;typeAttributes&quot;: {&quot;label&quot;: {&quot;fieldName&quot;: &quot;accountName&quot;}, &quot;target&quot;: &quot;_blank&quot;}, &quot;type&quot;: &quot;url&quot;, &quot;sortable&quot;: &quot;true&quot;, &quot;cellAttributes&quot;: { &quot;wrapText&quot;: &quot;true&quot; }},{ &quot;label&quot;: &quot;Points Opt-In&quot;, &quot;fieldName&quot;: &quot;ptsOptIn&quot; },{ &quot;label&quot;: &quot;Points Not Eligible&quot;, &quot;fieldName&quot;: &quot;ptsNotEligible&quot; },{ &quot;label&quot;: &quot;Branded Points&quot;, &quot;fieldName&quot;: &quot;brandedPtsEarningExl&quot; },{ &quot;label&quot;: &quot;Component Points&quot;, &quot;fieldName&quot;: &quot;cmpPtsEarningExl&quot; },{ &quot;label&quot;: &quot;ODM Points&quot;, &quot;fieldName&quot;: &quot;odmWhiteboxPtsEarningExl&quot; }]</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pagesize</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportdatasetname</name>
+                    <value>Account Profile Response Mismatch Report</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>reportname</name>
+                    <value>Account Profile Response Mismatch Report</value>
+                </componentInstanceProperties>
+                <componentName>pRM_ProfileResponseMismatchLWC</componentName>
+                <identifier>c_pRM_ProfileResponseMismatchLWC</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>DQ Report</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

@@ -1,0 +1,230 @@
+<template>
+    <template if:true={showdata}>
+        <template if:false={userPresent}>
+            
+            <lightning-card>
+                <div class="slds-text-heading_medium">
+                    <h1><b>Insufficient Privileges</b></h1></br>
+                </div>
+                <div class="slds-text-heading_small">
+                    <p>You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary. For more information, <a href="https://help.salesforce.com/s/login/?startURL=%2Fapex%2Fhtdoor%3Floc%3Dhelp%26target%3Dadmin_insufficient_privileges_flowchart.htm%26language%3Den_US%26release%3D236.18.1%26instance%3DCS92%26showSplash%3Dtrue&ec=302&inst=Hx" target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p>
+                </div>
+            </lightning-card>
+        </template>
+          <!-- loading spinner -->
+          <template if:true={userPresent}>
+          <template if:true={isLoading}>
+            <!--Spinner-->
+            <div >
+                <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+            </div>
+        </template>
+    
+        <div class="slds-align_absolute-center" style="background-color:#5875aa; height:50px;">
+    
+            <h1 style="color:white; font-size:1.5rem;"><b>Create Product Access</b></h1>
+    
+        </div>
+    
+      
+    
+        <template if:true={isFirstScreen}>
+            <lightning-layout style="background-color: White;">
+                <lightning-layout-item flexibility="auto" class="slds-grid_align-center" padding="around-small">
+                    <lightning-accordion>
+                        <lightning-accordion-section label=" Product Access Details">
+                            <lightning-input type="text" label="MAP Name" required="true" value={mapNameSearchText}
+                                onchange={handleMapChange}>
+                            </lightning-input>
+    
+                            <lightning-input type="text" value={accountSearchText} onkeyup={handleAccountSearch} label="Search Accounts">
+                            </lightning-input>
+    
+                            <div class="slds-align_absolute-center" style="padding-top: 20px;">
+                                <lightning-button label="Cancel" title="Cancel" class="slds-m-left_x-small"
+                                    onclick={handleCancel}>
+                                </lightning-button>
+                                <lightning-button type="Search" variant="brand" onclick={handleAccountSearchOnClick}
+                                    label="Search" title="Search" class="slds-m-left_x-small">
+                                </lightning-button>
+                            </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+    
+                    <template if:true={isResultsAvailable}>
+                        <lightning-accordion>
+                            <lightning-accordion-section label="Account Search Results">
+                                <div style="height: 300px;">
+                                <lightning-datatable data={listofAccounts} columns={columns} key-field="Id" enable-infinite-loading={enableAccountInfinite} onloadmore={handleLoadMore}
+                                    onrowselection={getSelectedRow} class="AccTable" data-id="account">
+                                </lightning-datatable>
+                            </div>
+    
+                            </lightning-accordion-section>
+    
+                            <div class="slds-align_absolute-center" style="padding-top: 20px;">
+                                <lightning-button type="Go to Products" variant="brand" label="Go to Products"
+                                    title="Go to Products" disabled={isAccRowsSelected} class="slds-m-left_x-small"
+                                    onclick={handleGoProducts}>
+                                </lightning-button>
+                            </div>
+                        </lightning-accordion>
+    
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+    
+        </template>
+    
+        <template if:true={isSecondScreen}>
+    
+            <lightning-layout style="background-color: White;">
+                <lightning-layout-item flexibility="auto" class="slds-grid_align-center" padding="around-small">
+                    
+    
+                    <lightning-input style="padding: 10px;" type="text" label="Search Product" value={searchProductValue}
+                        onkeyup={handleSearchProductChange}>
+                    </lightning-input>
+    
+                    <lightning-button type="Search" style="padding-top: 15px;" variant="brand"
+                        onclick={handleProductValueSearch} label="Search" title="Search" class="slds-m-left_x-small">
+                    </lightning-button>
+    
+                    <lightning-accordion active-section-name="A">
+                        <lightning-accordion-section name="A" label=" Product Access Details">
+                            <p>
+    
+                                <b> MAP Name: </b> {mapNameSearchText}
+                            </p>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+    
+                    <lightning-accordion active-section-name="B">
+                        <lightning-accordion-section name="B" label=" Product List">
+    
+                            <template if:true={isProdResultsAvailable}>
+                                <div style="height: 300px;">
+                                <lightning-datatable onrowselection={getSelectedProductRows} data={listofProducts} enable-infinite-loading={enableProductInfinite} onloadmore={handleLoadMoreProducts}
+                                    columns={columnsProd} key-field="Id" >
+                                </lightning-datatable>
+                                </div>
+                               
+                            </template>
+    
+                        </lightning-accordion-section>
+    
+                        <div class="slds-align_absolute-center" style="padding-top: 20px;">
+                            <lightning-button label="Back to Accounts" variant="brand" title="Back to Accounts"
+                                onclick={handleBackToAccounts} class="slds-m-left_x-small">
+                            </lightning-button>
+                            <lightning-button variant="brand" onclick={handleReviewSelections} label="Review Selections"
+                                title="Review Selection" disabled={isProdRowsSelected} class="slds-m-left_x-small">
+                            </lightning-button>
+    
+                        </div>
+                    </lightning-accordion>
+    
+                </lightning-layout-item>
+            </lightning-layout>
+    
+        </template>
+    
+        <template if:true={isThirdScreen}>
+    
+            <lightning-layout style="background-color: White;">
+                <lightning-layout-item flexibility="auto" class="slds-grid_align-center" padding="around-small">
+    
+                    <lightning-accordion active-section-name="A">
+                        <lightning-accordion-section name="A" label=" Product Access Details">
+    
+                            <Div>
+                                <br> <b> MAP Name: </b>{mapNameSearchText} </br>
+                            </Div>
+                            <br />
+                            <div>
+                                <b style="background-color:gold">Note: Below highlighted line items indicate existing
+                                    product access</b>
+                            </div>
+    
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+    
+                    <lightning-accordion active-section-name="B">
+    
+                        <lightning-accordion-section name="B" label="LineItems">
+    
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset slds-p-around_x-small">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Supported Product Name">Supported Product Name
+                                            </div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Account Name">Account Name</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Support Org Name">Support Org Name</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Approval Type">Approval Type</div>
+                                        </th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={slicedLineItems} for:item="item">
+                                        <tr key={item.keyId} style={item.color}>
+                                            <td>
+                                                <div class="slds-truncate" title={item.prodName}>{item.prodName}</div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" title={item.accName}>{item.accName}</div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" title={item.prodOrgName}>{item.prodOrgName}</div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" title={item.FlagStatus}>{item.FlagStatus}</div>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+    
+    
+    
+    
+    
+                            <div style="padding-top: 15px;">
+    
+                                <c-core_-i-p-s_-paginator_-l-w-c records={listOfLineItems}
+                                    total-records={listOfLineItems.length} show-search-box="true"
+                                    onpaginatorchange={handlePaginatorChangeofLineItem}>
+                                </c-core_-i-p-s_-paginator_-l-w-c>
+    
+                            </div>
+    
+                            <div class="slds-align_absolute-center" style="padding-top: 20px;">
+                                <lightning-button label="Back to Accounts" variant="brand" title="Back to Accounts"
+                                    onclick={handleBackToAccountsformScreenThree} class="slds-m-left_x-small">
+                                </lightning-button>
+                                <lightning-button variant="brand" onclick={handleSubmitProductAccess}
+                                    label="Submit Product Access" title="Submit Product Access" class="slds-m-left_x-small">
+                                </lightning-button>
+    
+                            </div>
+    
+    
+    
+                        </lightning-accordion-section>
+    
+                    </lightning-accordion>
+    
+                </lightning-layout-item>
+            </lightning-layout>
+    
+        </template>
+        </template>
+    </template>
+    </template>

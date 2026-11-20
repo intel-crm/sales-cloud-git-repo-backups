@@ -1,0 +1,20 @@
+<template>
+    <div class="compare-checkbox-container">
+        <lightning-input
+            aria-label={label}
+            data-variant={variant}
+            data-text-variant={textVariant}
+            type="checkbox"
+            checked={initChecked}
+            label={label}
+            onchange={handleCheckCompare}>
+        </lightning-input>
+        <template if:true={showCompareNow}>
+            <c-ipa-link
+                class-name={compareNowClasses}
+                community-page="Compare_Offerings__c"
+                label={labelCompareNow}>
+            </c-ipa-link>
+        </template>
+    </div>
+</template>

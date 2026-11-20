@@ -1,0 +1,187 @@
+<template>
+    <div if:true={spinnerOnSubmit}>
+        <lightning-spinner alternative-text="Loading" size="Medium"></lightning-spinner>
+    </div>
+    <template if:true={showData}>
+        <template if:false={isNDAPresent}>
+            <lightning-card>
+                <div class="slds-text-heading_medium slds-align_absolute-center">
+                    <h1>{label.Core_IPS_PAR_NON_NDA_Error_Msg}</h1>
+                </div>
+            </lightning-card>
+        </template>
+    <template if:true={isNDAPresent}>
+        <template if:true={isActive}>
+            <lightning-card>
+                <div class="slds-text-heading_medium slds-align_absolute-center">
+                    <h1>{label.Core_IPS_Non_IPS_Active_PAR}</h1>
+                </div>
+            </lightning-card>
+        </template>
+    
+<template if:false={isActive}>
+    <template if:false={userPresent}>
+        <lightning-card>
+            <div class="slds-text-heading_medium slds-align_absolute-center">
+                {label.Core_IPS_Insufficient_Privileges_PAR}
+            </div>
+        </lightning-card>
+    </template>
+<template if:true={userPresent}>
+    <template if:false={isActive}>
+    <div class="slds-align_absolute-center headerColor">
+        <h1>Request Product Access</h1>
+    </div>
+    <template if:true={firstScreen}>
+        <div class="slds-p-around_small bodyColor">
+            <br/>
+            <div class="slds-align_absolute-center bodyColor">
+                <lightning-button label="Review Selected" variant="brand" class="slds-m-left_x-small" disabled={ifData} onclick={gotoSecondScreen}></lightning-button>
+                <lightning-button label="Cancel" onclick={cancelbutton} class="slds-m-left_x-small"></lightning-button>
+            </div>
+            <br/> 
+            <div class="slds-align_absolute-center bodyColor">
+                <lightning-accordion allow-multiple-sections-open active-section-name= "{sections}">
+                    <lightning-accordion-section name="A" label="Product Access Details" class="slds-accordion">
+                        <div class="slds-p-around_small">
+                            <div class="slds-float_left">
+                                <b>Account Name :</b> {accName}
+                            </div> <br/><br/>
+                            <!--slds-p-bottom_large slds-p-right_large-->
+                            <div>
+                                <div class="slds-float_right " style="width:40rem">
+                                    <lightning-textarea label="Submitter Comments: " required="true" value={commentChngVal} max-length="70" onchange={subCommentsOnchng}></lightning-textarea>
+                                </div> <br/>
+                                <div class="slds-grid" >
+                                    <div></div><br/> <br/>
+                                    <lightning-input class="slds-p-left_x-small" type="text"  label="Search Supported Product..." onchange={handleKeyChange} style="width:300px;"></lightning-input> 
+                                    <div class="slds-p-top_large">    
+                                        <lightning-button class="slds-p-left_small" type="Search" variant="brand" onclick={handleAccountSearchOnClick}
+                                        label="Search"  title="Search"  disabled={isEnabled}>
+                                        </lightning-button>
+                                    </div>   
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-accordion-section> <br/>
+                    <lightning-accordion-section name="B" label="Supported Product List" class="slds-accordion">
+                        <br/>
+                        <label style="font-weight:bold; background-color:#F3D54E;">Highlighted cells indicate there are multiple values. Please click on edit icon and select the drop-down value that best aligns to your product application.
+                        </label> <br/>
+                        <div if:true={getData} class="slds-p-around_small" style="height: 1000px;">
+                            <c-custom-picklist-data-table
+                            key-field="Id"
+                            columns={columns}
+                            data={slicedSpList}
+                            onrowselection ={handleRowAction}
+                            suppress-bottom-bar="true"
+                            draft-values={draftValues}
+                            onpicklistchanged={picklistChanged}   
+                            oncancel={cancelHandleAction}
+                            onloadmore={loadMoreData} enable-infinite-loading>
+                            </c-custom-picklist-data-table>
+                        </div>
+                        <div if:true={NoData}>
+                            <b>No Records to Display</b>
+                        </div>
+                        <div if:true={spinner}>
+                            <lightning-spinner alternative-text="Loading" size="Medium"></lightning-spinner>
+                        </div>
+                        
+                    
+                    
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </div>
+    </template>
+    <template if:true={secondScreen}>
+        <div class="slds-p-around_small bodyColor">
+            <br/>
+            <div class="slds-align_absolute-center bodyColor">
+                <lightning-button label="Back to Products"  class="slds-m-left_x-small" onclick={gotoFirstScreen}></lightning-button>
+                <lightning-button label="Submit Product Access" variant="brand" onclick={navigateToRecordPage} class="slds-m-left_x-small"></lightning-button>
+            </div>
+            <br/>
+            <div class="slds-align_absolute-center bodyColor">
+                <lightning-accordion allow-multiple-sections-open active-section-name= "{sections1}">
+                    <lightning-accordion-section name="C" label="Product Access Details" class="slds-accordion">
+                        <div class="slds-p-around_small">
+                            <div class="slds-float_left">
+                                <b>Account Name :</b> {accName} <br/> <br/> <br/>
+                                <label style="font-weight:bold; background-color:#F3D54E;">Below highlighted items indicate existing product access.
+                                </label>
+                            </div>
+                            <div class="slds-float_right " style="width:40rem">
+                                <lightning-textarea label="Submitter Comments: " required="true" value={commentChngVal} max-length="70" onchange={subCommentsOnchng}></lightning-textarea>
+                            </div>  
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                </div>
+                <br/>
+                <div class="slds-align_absolute-center bodyColor">
+                <lightning-accordion allow-multiple-sections-open active-section-name= "{sections1}">
+                    <lightning-accordion-section name="D" label="Line Items" class="slds-accordion">
+                      
+                <div style="height: 300px;">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset slds-p-around_x-small">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="">
+                                </div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Supported Product Name">Supported Product Name
+                                </div>
+                            </th>
+                        
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Support Org Name">Support Org Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Product Focus Area">Product Focus Area</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Approval Type">Approval Type</div>
+                            </th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <template for:each={selectedRecords} for:item="item">
+                            <tr key={item.KeyId} style={item.color}> 
+                                <td>
+                                    <div class="slds-truncate"><lightning-input type="checkbox" value={item.Id} checked = {item.check} disabled = {item.disabled} onchange={onchangeLineItems}></lightning-input></div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate" title={item.name}>{item.name}</div>
+                                </td>
+                                 <td>
+                                    <div class="slds-truncate" title={item.prodOrgName}>{item.prodOrgName}</div>
+                                </td>
+                                 <td>
+                                    <div class="slds-truncate" title={item.prodOrgDescription}>{item.prodOrgDescription}</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate" title={item.FlagStatus}>{item.FlagStatus}</div>
+                                </td>
+                            </tr>
+                        </template>
+
+                    </tbody>
+                </table>
+                </div> 
+                </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </div>
+    </template>
+</template>
+</template>
+</template>
+</template>
+    </template>
+</template>

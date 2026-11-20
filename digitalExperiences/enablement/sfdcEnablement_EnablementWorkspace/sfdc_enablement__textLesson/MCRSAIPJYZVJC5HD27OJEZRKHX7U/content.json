@@ -1,0 +1,14 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Gaudi Questionnaire",
+  "contentBody" : {
+    "description" : "Ask these questions to your customer if Gaudi is a fit for their biz.",
+    "sections" : [ {
+      "content" : "<div>How are you doing?</div><div>What are you doing today?</div><div>What street are you on?</div><div><br /></div>",
+      "keyConcept" : "Gaudi Questionnaires",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1
+  },
+  "urlName" : "gaudi-questionnaire"
+}

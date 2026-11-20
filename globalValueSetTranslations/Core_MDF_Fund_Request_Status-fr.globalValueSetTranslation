@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Cancelled</masterLabel>
+        <translation>Annulé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Closed</masterLabel>
+        <translation>Clos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Declined</masterLabel>
+        <translation>Refusé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Draft</masterLabel>
+        <translation>Brouillon</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress</masterLabel>
+        <translation>En cours</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress Pending Approval</masterLabel>
+        <translation>En cours en attente d’approbation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress Pending Review</masterLabel>
+        <translation>En cours en attente d&apos;examen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Progress Revision Required</masterLabel>
+        <translation>En cours, révision requise</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pending Approval</masterLabel>
+        <translation>En attente d&apos;approbation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pending Review</masterLabel>
+        <translation>En attente d&apos;examen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Planned</masterLabel>
+        <translation>Planifié</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revision Required</masterLabel>
+        <translation>Révision requise</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

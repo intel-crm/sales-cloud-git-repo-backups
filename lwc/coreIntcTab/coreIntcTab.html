@@ -1,0 +1,10 @@
+<template>
+  <div role="tabpanel" tabindex={tabIndex} class="tab-container"
+    data-is-active={active}
+    data-stack-mobile={stackMobile}>
+      <template if:true={isActivated}>
+          <h2 class="stacked-heading">{heading}</h2>
+          <slot></slot>
+      </template>
+  </div>
+</template>

@@ -1,0 +1,127 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "8c74b1cd-6720-4438-b787-2ea7738e18d1",
+  "label" : "Points opportunity",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Points opportunity",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Points opportunity"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "e54978d9-decf-4658-9fb2-23f5e5c8982f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9aaa57f2-328a-4cb0-85b9-55d87d751798",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ReportId" : "",
+        "WorkspaceId" : "",
+        "configName" : "",
+        "embedPowerBIReport" : false
+      },
+      "componentName" : "c:pRM_ExternalAPIEmbedLWC",
+      "id" : "dbc9b622-5435-43a1-a81e-599c3e3bbae6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7b71f055-48ed-48b5-bddd-7a686945d415",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "70067cd1-60e0-4254-85e7-d14ea457d6dc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "19ef45ad-b539-4332-a30d-04cf70f26b24",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "26a62f9e-369d-4442-ae43-ffed7bab9119",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "6eba2803-f8ae-4b47-b591-6969ff662701",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "6a5244e3-a955-4bf9-9350-c5204d305ffa",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "33e192b5-71b8-4fac-a131-2237a4c28006",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "c388f2d6-9dae-47bc-a3da-81cc38557a7b",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "c2975b21-405f-4ebe-93ad-029144cc048a",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "7fe32ece-9ba7-4b22-89b3-98074918bcf2",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "5b163241-4352-4f58-a2bb-375db3c3c789",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "c1bbe4b3-11dd-4d48-827f-22e8d066850a",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "563e258b-5f14-46a2-8197-35953325d349",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "id" : "eb2b1b16-afaa-48d6-87b1-deb7a58ad294",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Points opportunity"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "8e3f5534-6405-4ffa-8964-afd8fd958c51",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "368913b2-3144-4e40-a05b-99a2b127141f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "type" : "view",
+  "viewType" : "custom-points-opportunity"
+}

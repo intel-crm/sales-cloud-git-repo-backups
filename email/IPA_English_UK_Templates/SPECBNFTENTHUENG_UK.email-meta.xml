@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SPECBNFTENTHUENG_UK</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance Enthusiast PC Specialty</subject>
+    <textOnly>Congratulations on Qualifying!
+
+
+{!Contact.FirstName},
+
+Congratulations on becoming an Intel® Technology Provider Enthusiast PC Specialist!
+
+With over one billion PC gamers in the world and a rapidly growing market, you&apos;re well-positioned to grow your customer base and drive more revenue with Intel.
+
+Take advantage of all the benefits available to you now, including:
+
+
+Additional points promotions on products with Intel® Core™ X-, K- and H-series processors
+Enthusiast PC Speciality designation and visibility on the Intel® Technology Provider webpage
+Technical webinars by Intel Experts
+World-class gaming and software packs
+Passes to local e-sports events
+
+To get started, please reply to enthusiast-pc@intel.com with the following information:
+
+
+Primary contact for Enthusiast PC Specialist communications
+Name:
+Email:
+
+
+For additional sales and promotion materials
+Physical Postal Address:
+Phone:
+
+Access benefits
+
+
+*Benefits may vary by geography.
+
+Intel partners have a long history of innovation, and with Intel® Partner Alliance, we’ll help you accelerate building solutions for the data-centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+
+Visit intel.com/partnerhelp for help and guidance on optimising your membership.
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

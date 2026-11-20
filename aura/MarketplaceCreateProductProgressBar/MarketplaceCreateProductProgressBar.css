@@ -1,0 +1,70 @@
+.THIS {
+}
+
+.THIS .slds-path__nav .slds-is-complete .slds-path__title,
+.THIS .slds-path__nav .slds-is-active .slds-path__title {
+  /* removes hidden state where only utility:check is visible */
+  transform: rotateX(0deg) !important;
+}
+
+.THIS .slds-path__nav .slds-is-current,
+.THIS .slds-path__nav .slds-is-current::before,
+.THIS .slds-path__nav .slds-is-current::after {
+  background: t(progressBarBlue) !important;
+  border-color: t(progressBarBlue) !important;
+}
+.THIS .slds-path__nav .slds-is-current .slds-path__title {
+  color: t(white) !important;
+}
+
+.THIS .slds-path__nav .slds-is-active,
+.THIS .slds-path__nav .slds-is-active::before,
+.THIS .slds-path__nav .slds-is-active::after {
+  background: t(progressBarBlue) !important;
+}
+
+.THIS .slds-path__nav .slds-is-active:not(.slds-is-current),
+.THIS .slds-path__nav .slds-is-active:not(.slds-is-current)::before,
+.THIS .slds-path__nav .slds-is-active:not(.slds-is-current)::after {
+  background: t(mediumBlue) !important;
+}
+.THIS .slds-path__nav .slds-is-active:not(.slds-is-current) .slds-path__title {
+  color: t(white) !important;
+}
+
+.THIS .slds-path__nav .slds-is-incomplete:not(.slds-is-current),
+.THIS .slds-path__nav .slds-is-incomplete:not(.slds-is-current)::before,
+.THIS .slds-path__nav .slds-is-incomplete:not(.slds-is-current)::after {
+  background: t(white) !important;
+}
+
+.THIS .slds-path__nav .slds-is-complete,
+.THIS .slds-path__nav .slds-is-complete::before,
+.THIS .slds-path__nav .slds-is-complete::after {
+  background: t(mediumBlue) !important;
+}
+
+.THIS .slds-path__nav .slds-is-complete .slds-path__title {
+  color: t(white) !important;
+}
+
+.THIS .slds-path__nav .slds-is-invalid {
+  border-color: t(red);
+}
+.THIS .slds-path__nav.ulInner {
+  overflow: visible;
+  transition: transform .2s ease-in-out;
+}
+.THIS button[disabled] {
+  background-color: t(lightGray);
+  color: t(grayButtonDisabled);
+}
+.THIS a {
+  font-size: 0.813em;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .THIS .slds-path__track.slds-has-overflow .slds-path__scroll-controls {
+    display: inline-flex;
+  }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>PSG_Sales_Chat_Queue</name>
+    <queueMembers>
+        <users>
+            <user>11854361@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>PSG_Sales_Chat_Queue</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

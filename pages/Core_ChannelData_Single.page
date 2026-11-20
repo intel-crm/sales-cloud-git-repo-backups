@@ -1,0 +1,447 @@
+<apex:page id="mainPage" Standardcontroller="Account" extensions="Core_ChannelData_Single_Controller" contentType="{!contentType1}" readOnly="true">
+
+    <script type="text/javascript" language="javascript">
+        jQuery.noConflict();
+    </script>
+
+    <style type = "text/css">
+        .colHeaderNumeric {
+            text-align:center;
+        }     
+        .colNumeric {
+            text-align:right;
+        }
+        .colNumericBold {
+            text-align:right;
+            font-weight:bold;
+        }
+    </style>
+
+    <br/>
+    <apex:outputPanel id="headerPanel" >
+        <apex:panelGrid columns="2">
+            <apex:outputPanel style="float:left">
+                <apex:image value="{!$Resource.Core_SearchIcon}" width="50px;" />
+            </apex:outputPanel>
+            <apex:outputPanel style="float:left">
+                <apex:outputText style="font-size:22px;" value="Channel Data"/>
+                <br/>
+                <apex:outputText style="font-weight:bold;" value="Salesout Detail"  rendered="{!!showSummary}"/>
+                <apex:outputText style="font-weight:bold;" value="Salesout Summary" rendered="{!showSummary}"/>
+            </apex:outputPanel>
+        </apex:panelGrid>
+        <br/>  
+    </apex:outputPanel>
+
+    <apex:pageMessages id="pageMessages"/>
+    <apex:form id="errorButtons" rendered="{!showError}" style="margin-left:20px">
+        <hr class="lightWeightDivider"/>            
+        <apex:outputPanel >
+            <br/>
+            <apex:outputText style="font-size:16px;"  Label="Account Name" value="{!selectedAccountName}"/>                        
+            <br/>
+            <br/>                           
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!showPeriod}">   
+            <apex:selectList size="1" value="{!soPeriod}" style="width:100px">
+                <apex:selectOptions value="{!lstPeriodRange}"/>
+            </apex:selectList>         
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!showExport}">   
+            <apex:commandLink value="Export to Excel" action="{!exportCSV}"     styleClass="btn" target="_blank" style="text-decoration:none" rendered="{!!showSummary}"/>
+            <apex:commandLink value="Export to Excel" action="{!exportSummary}" styleClass="btn" target="_blank" style="text-decoration:none" rendered="{!showSummary}"/>
+            <br/>
+            <br/>    
+            <hr class="lightWeightDivider"/>            
+            <br/>
+            <br/>                                          
+        </apex:outputPanel>
+
+        <apex:commandButton value="Return to Summary" action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+        <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />
+    </apex:form>
+    
+    <apex:tabPanel switchType="client" rendered="{!(NOT showError)}">
+        <apex:tab label="Sales Out" rendered="{!!showSummary}">
+            <apex:form >
+                <apex:pageBlock >
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputText style="font-size:16px;"  Label="Account Name" value="{!selectedAccountName}" rendered="{!showCSV}"/>                        
+                        <apex:outputText style="font-size:14px;" value="No Sales Out data found for Account {!selectedAccountName}" rendered="{!(NOT showCSV)}"/>                     
+                        <br/>
+                        <br/>                           
+                    </apex:outputPanel>
+                    <apex:pageBlockSection title="Channel Sales Data" Columns="1" rendered="{!showCSV}">
+                        <apex:pageBlockTable value="{!cdSalesoutRecord}"  var="lc" border="1" width="200%">                        
+                            <apex:column >
+                                <apex:facet name="header">Sales Type</apex:facet>
+                                <apex:outputText value="{!lc.salesType}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Business ID</apex:facet>
+                                <apex:outputText value="{!lc.businessID}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Invoice Quarter</apex:facet>
+                                <apex:outputText value="{!lc.invoiceQuarterText}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Form Factor</apex:facet>
+                                <apex:outputText value="{!lc.rptParentFormFactor}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Product Platform</apex:facet>
+                                <apex:outputText value="{!lc.productLevel4}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Product Level</apex:facet>
+                                <apex:outputText value="{!lc.productLevel1}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Product Family</apex:facet>
+                                <apex:outputText value="{!lc.productLevel2}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Product Code</apex:facet>
+                                <apex:outputText value="{!lc.processorNbr}"/>
+                            </apex:column>
+                            <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                <apex:facet name="header">Total Units</apex:facet>
+                                <apex:outputText value="{0, number, integer}">
+                                    <apex:param value="{!lc.componentUnits}"/>
+                                </apex:outputText>                                 
+                            </apex:column>                
+                            <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                <apex:facet name="header">Total $</apex:facet>
+                                <apex:outputText value="{0, number, currency}">
+                                    <apex:param value="{!lc.component}"/>
+                                </apex:outputText>                                
+                            </apex:column>                
+                            <apex:column >
+                                <apex:facet name="header">Distributor Name</apex:facet>
+                                <apex:outputText value="{!lc.distributorName}"/>
+                            </apex:column>
+                         </apex:pageBlockTable>
+                     </apex:pageBlockSection>
+                     <apex:outputPanel >
+                         <br/>
+                         <div align="Center">
+                            <apex:commandButton value="Summary"           action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+                            <apex:commandButton value="Detail"            action="{!displayDetail}"   immediate="true" rendered="{!showSummary}"/>                         
+                            <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />                                                          
+                            <apex:commandLink value="Export to Excel"   action="{!ExportCSV}"       styleClass="btn" rendered="{!!showSummary}" target="_blank" style="text-decoration:none"/>
+                            <apex:commandLink value="Export to Excel"   action="{!ExportSummary}"   styleClass="btn" rendered="{!showSummary}"  target="_blank" style="text-decoration:none"/>
+                         </div> 
+                     </apex:outputPanel>
+                </apex:pageBlock> 
+            </apex:form>
+        </apex:tab>
+
+        <apex:tab label="Summary" rendered="{!showSummary}">
+            <apex:form >
+                <apex:pageBlock >
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputText style="font-size:16px;"  Label="Account Name" value="{!selectedAccountName}" rendered="{!showCSV}"/>                        
+                        <apex:outputText style="font-size:14px;" value="No Sales Out data found for Account {!selectedAccountName}" rendered="{!(NOT showCSV)}"/>                     
+                        <br/>
+                        <br/>                           
+                    </apex:outputPanel>
+                    <apex:pageBlockSection title="Channel Sales Summary" Columns="1" rendered="{!showCSV}">
+                        <apex:pageBlockTable value="{!lstSalesoutSummary}"  var="lc" border="1" width="200%">                        
+                            <apex:column >                            
+                                <apex:facet name="header">Sales Type</apex:facet>
+                                <apex:outputText value="{!lc.salesType}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Invoice Quarter</apex:facet>
+                                <apex:outputText value="{!lc.invoiceQuarterText}"/>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Product Level</apex:facet>
+                                <apex:outputText value="{!lc.productLevel1}"/>
+                            </apex:column>
+                            <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric" rendered="{!lc.salesType != ''}">
+                                <apex:facet name="header">Total Units</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.componentUnits}"/>
+                                 </apex:outputText>                                   
+                            </apex:column>                
+                            <apex:column styleClass="colNumericBold" headerClass="colHeaderNumeric" rendered="{!lc.salesType == ''}">
+                                <apex:facet name="header">Total Units</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.componentUnits}"/>
+                                 </apex:outputText>                                   
+                            </apex:column>                
+                            <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric" rendered="{!lc.salesType != ''}">
+                                <apex:facet name="header">Total $</apex:facet>
+                                <apex:outputText value="{0, number, currency}">
+                                    <apex:param value="{!lc.component}"/>
+                                </apex:outputText>                                
+                            </apex:column>                
+                            <apex:column styleClass="colNumericBold" headerClass="colHeaderNumeric" rendered="{!lc.salesType == ''}">
+                                <apex:facet name="header">Total $</apex:facet>
+                                <apex:outputText value="{0, number, currency}">
+                                    <apex:param value="{!lc.component}"/>
+                                </apex:outputText>                                
+                            </apex:column>                
+                         </apex:pageBlockTable>
+                     </apex:pageBlockSection>
+                     <apex:outputPanel >
+                         <br/>
+                         <div align="Center">
+                            <apex:commandButton value="Summary"           action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+                            <apex:commandButton value="Detail"            action="{!displayDetail}"   immediate="true" rendered="{!showSummary}"/>                         
+                            <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />                                                          
+                            <apex:commandLink value="Export to Excel"   action="{!ExportCSV}"       styleClass="btn" rendered="{!!showSummary}" target="_blank" style="text-decoration:none"/>
+                            <apex:commandLink value="Export to Excel"   action="{!ExportSummary}"   styleClass="btn" rendered="{!showSummary}"  target="_blank" style="text-decoration:none"/>
+                         </div> 
+                     </apex:outputPanel>
+                </apex:pageBlock> 
+            </apex:form>
+        </apex:tab>
+
+        <apex:tab label="Program Membership">        
+            <apex:form >
+                <apex:pageBlock >
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputText style="font-size:16px;" Label="Account Name" value="{!selectedAccountName}" rendered="{!showCSV1}"/>
+                        <apex:outputText style="font-size:14px;" value="No Program MemberShip data found for Account {!selectedAccountName}" rendered="{!(NOT showCSV1)}"/>
+                        <br/>
+                        <br/>
+                     </apex:outputPanel>
+                    <apex:pageBlockSection title="Program MemberShip" Columns="1" rendered="{!showCSV1}">
+                         <apex:pageBlockTable value="{!cdMembershipRecord}"  var="lc" border="1" width="200%">
+                             <apex:column >
+                                 <apex:facet name="header">Business ID</apex:facet>
+                                 <apex:outputText value="{!lc.businessID}"/>
+                             </apex:column>
+                             <apex:column >
+                                 <apex:facet name="header">MemberShip</apex:facet>
+                                 <apex:outputText value="{!lc.currentMembershipTier}"/>
+                             </apex:column>
+                             <apex:column >
+                                 <apex:facet name="header">Renewal Status</apex:facet>
+                                 <apex:outputText value="{!lc.renewalStatus}"/>
+                             </apex:column>                                                           
+                             <apex:column >
+                                 <apex:facet name="header">Renewal Timestamp</apex:facet>
+                                 <apex:outputText value=" {!lc.renewalTimestamp}"/>
+                             </apex:column>                             
+                             <apex:column >
+                                 <apex:facet name="header">Status Date</apex:facet>
+                                 <apex:outputText value="{0, date, MM/dd/yyyy}">
+                                     <apex:param value="{!lc.statusDate}"/>
+                                 </apex:outputText>                              
+                             </apex:column>
+                         </apex:pageBlockTable>
+                     </apex:pageBlockSection>
+                     <apex:outputPanel >
+                         <br/>
+                         <div align="Center">
+                            <apex:commandButton value="Summary"           action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+                            <apex:commandButton value="Detail"            action="{!displayDetail}"   immediate="true" rendered="{!showSummary}"/>                         
+                            <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />                                                          
+                            <apex:commandLink value="Export to Excel"   action="{!ExportCSV}"       styleClass="btn" rendered="{!!showSummary}" target="_blank" style="text-decoration:none"/>
+                            <apex:commandLink value="Export to Excel"   action="{!ExportSummary}"   styleClass="btn" rendered="{!showSummary}"  target="_blank" style="text-decoration:none"/>
+                         </div>
+                    </apex:outputPanel> 
+                </apex:pageBlock> 
+            </apex:form>
+        </apex:tab>
+
+        <apex:tab label="Training">        
+            <apex:form >
+                <apex:pageBlock >
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputText style="font-size:16px;" Label="Account Name" value="{!selectedAccountName}" rendered="{!showCSV2}"/>
+                        <apex:outputText style="font-size:14px;" value="No Training data found for Account {!selectedAccountName}" rendered="{!(NOT showCSV2)}"/>
+                        <br/>
+                        <br/>
+                     </apex:outputPanel>
+                     <apex:pageBlockSection title="Training" Columns="1" rendered="{!showCSV2}">
+                         <apex:pageBlockTable value="{!cdTrainingRecord}"  var="lc" border="1" width="200%">
+                             <apex:column >
+                                 <apex:facet name="header">Business ID</apex:facet>
+                                 <apex:outputText value="{!businessID}"/>
+                             </apex:column>                         
+                             <apex:column >
+                                 <apex:facet name="header">Attendee</apex:facet>
+                                 <apex:outputText value="{!lc.firstName + ' ' + lc.lastName}"/>
+                             </apex:column>
+                             <apex:column >
+                                 <apex:facet name="header">Attendee Role</apex:facet>
+                                 <apex:outputText value="{!lc.roleCode}"/>
+                             </apex:column>
+                             <apex:column >
+                                 <apex:facet name="header">Training Completed Date</apex:facet>
+                                 <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                                     <apex:param value="{!lc.trainingCompleteDate}"/>
+                                 </apex:outputText>                                        
+                             </apex:column>
+                             <apex:column >
+                                 <apex:facet name="header">Training ID</apex:facet>
+                                 <apex:outputText value="{!lc.trainingID}"/>
+                             </apex:column>
+                             <apex:column >
+                                 <apex:facet name="header">Training Title</apex:facet>
+                                 <apex:outputText value="{!lc.trainingTitle}"/>
+                             </apex:column>
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Training Credits</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.trainingCredits}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                         </apex:pageBlockTable>
+                     </apex:pageBlockSection>
+                     <apex:outputPanel >
+                         <br/>
+                         <div align="Center">
+                            <apex:commandButton value="Summary"           action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+                            <apex:commandButton value="Detail"            action="{!displayDetail}"   immediate="true" rendered="{!showSummary}"/>                         
+                            <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />                                                          
+                            <apex:commandLink value="Export to Excel"   action="{!ExportCSV}"       styleClass="btn" rendered="{!!showSummary}" target="_blank" style="text-decoration:none"/>
+                            <apex:commandLink value="Export to Excel"   action="{!ExportSummary}"   styleClass="btn" rendered="{!showSummary}"  target="_blank" style="text-decoration:none"/>
+                         </div>
+                    </apex:outputPanel> 
+                </apex:pageBlock> 
+            </apex:form>
+        </apex:tab>        
+
+        <apex:tab label="Points Availability">        
+            <apex:form >
+                <apex:pageBlock >
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputText style="font-size:16px;" Label="Account Name" value="{!selectedAccountName}" rendered="{!showCSV4}"/>
+                        <apex:outputText style="font-size:14px;" value="No Points Availability data found for Account {!selectedAccountName}" rendered="{!(NOT showCSV4)}"/>
+                        <br/>
+                        <br/>
+                     </apex:outputPanel>
+                    <apex:pageBlockSection title="Points Availability" Columns="1" rendered="{!showCSV4}">
+                         <apex:pageBlockTable value="{!cdPointsRecord}"  var="lc" border="1" width="200%">
+                             <apex:column >
+                                 <apex:facet name="header">Business ID</apex:facet>
+                                 <apex:outputText value="{!businessID}"/>
+                             </apex:column>                         
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Total Available</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.totalAvailablePoints}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Total Balance</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.totalBalancePoints}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Total Earned</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.totalEarnedPoints}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>                                
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Total Expired</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.totalExpiredPoints}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Total Redeemed</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.totalRedeemedPoints}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                         </apex:pageBlockTable>
+                     </apex:pageBlockSection>
+                     <apex:outputPanel >
+                         <br/>
+                         <div align="Center">
+                            <apex:commandButton value="Summary"           action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+                            <apex:commandButton value="Detail"            action="{!displayDetail}"   immediate="true" rendered="{!showSummary}"/>                         
+                            <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />                                                          
+                            <apex:commandLink value="Export to Excel"   action="{!ExportCSV}"       styleClass="btn" rendered="{!!showSummary}" target="_blank" style="text-decoration:none"/>
+                            <apex:commandLink value="Export to Excel"   action="{!ExportSummary}"   styleClass="btn" rendered="{!showSummary}"  target="_blank" style="text-decoration:none"/>
+                         </div>
+                    </apex:outputPanel> 
+                </apex:pageBlock> 
+            </apex:form>
+        </apex:tab>
+        
+        <apex:tab label="Program Status">        
+            <apex:form >
+                <apex:pageBlock >
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputText style="font-size:16px;" Label="Account Name" value="{!selectedAccountName}" rendered="{!showCSV1}"/>
+                        <apex:outputText style="font-size:14px;" value="No Program Status data found for Account {!selectedAccountName}" rendered="{!(NOT showCSV1)}"/>
+                        <br/>
+                        <br/>
+                     </apex:outputPanel>
+                    <apex:pageBlockSection title="Program Status" Columns="1" rendered="{!showCSV1}">
+                         <apex:pageBlockTable value="{!cdMembershipRecord}"  var="lc" border="1" width="200%">
+                             <apex:column >
+                                 <apex:facet name="header">Business ID</apex:facet>
+                                 <apex:outputText value="{!businessID}"/>
+                             </apex:column>                         
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Points Due to Expire Next Qtr</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.pointsDuetoExpireNextQtr}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Points Expired in Current Qtr</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.pointsExpiredinCurrentQtr}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Sales Needed to Gold ($)</apex:facet>
+                                 <apex:outputText value="{0, number, currency}">
+                                     <apex:param value="{!lc.salesNeededtoGold}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>                                
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Sales Needed to Platinum ($)</apex:facet>
+                                 <apex:outputText value="{0, number, currency}">
+                                     <apex:param value="{!lc.salesNeededtoPlatinum}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>                                
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Training Needed to Gold</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.trainingNeededtoGold}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>                                
+                             <apex:column styleClass="colNumeric" headerClass="colHeaderNumeric">
+                                 <apex:facet name="header">Training Needed to Platinum</apex:facet>
+                                 <apex:outputText value="{0, number, integer}">
+                                     <apex:param value="{!lc.trainingNeededtoPlatinum}"/>
+                                 </apex:outputText>                                                                     
+                             </apex:column>                                
+                         </apex:pageBlockTable>
+                     </apex:pageBlockSection>
+                     <apex:outputPanel >
+                         <br/>
+                         <div align="Center">
+                            <apex:commandButton value="Summary"           action="{!displaySummary}"  immediate="true" rendered="{!!showSummary}"/>                         
+                            <apex:commandButton value="Detail"            action="{!displayDetail}"   immediate="true" rendered="{!showSummary}"/>                         
+                            <apex:commandButton value="Return to Account" action="{!ReturntoAccount}" immediate="true" />                                                          
+                            <apex:commandLink value="Export to Excel"   action="{!ExportCSV}"       styleClass="btn" rendered="{!!showSummary}" target="_blank" style="text-decoration:none"/>
+                            <apex:commandLink value="Export to Excel"   action="{!ExportSummary}"   styleClass="btn" rendered="{!showSummary}"  target="_blank" style="text-decoration:none"/>
+                         </div>
+                    </apex:outputPanel> 
+                </apex:pageBlock> 
+            </apex:form>
+        </apex:tab>
+    </apex:tabPanel>
+</apex:page>

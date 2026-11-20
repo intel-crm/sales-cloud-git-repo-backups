@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Profile Resource</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Profile Resources</value>
+    </caseValues>
+    <fields>
+        <help><!-- Master Detail  to the Company Information object --></help>
+        <label><!-- Marketing  Profile ID --></label>
+        <name>PMP_Company_Id__c</name>
+        <relationshipLabel><!-- Marketing  Profile Resources --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Marketing Profile Image --></label>
+        <name>PMP_Company_Image__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ordering Sequence --></label>
+        <name>PMP_Company_Resource_Sequence_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the type of the Company resource --></help>
+        <label><!-- Resource Type --></label>
+        <name>PMP_Company_Resource_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Articles</masterLabel>
+            <translation><!-- Articles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Study</masterLabel>
+            <translation><!-- Case Study --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Image</masterLabel>
+            <translation><!-- Image --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Brief</masterLabel>
+            <translation><!-- Product Brief --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Website</masterLabel>
+            <translation><!-- Product Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thumbnail Image</masterLabel>
+            <translation><!-- Thumbnail Image --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Case</masterLabel>
+            <translation><!-- Use Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>White Paper</masterLabel>
+            <translation><!-- White Paper --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Holds the URL link of the Company resources (Data Sheet/Product Brief) --></help>
+        <label><!-- Marketing  Profile Resource URL Text --></label>
+        <name>PMP_Company_Resource_URL_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

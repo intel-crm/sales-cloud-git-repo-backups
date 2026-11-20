@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>CoGTM User</audienceName>
+    <container>Partnercenter Unified Community</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <isEnabled>true</isEnabled>
+                <permissionName>Core_MDF_CCP_Co_Engineering</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$9d86eb9f-7f70-426e-99b1-f84a5eedb0b0</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Campaign_Custom_Detail_core_MDF_CampaignBudgets_Component</targetValue>
+        </target>
+        <target>
+            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$2cfb5c92-dd4c-4b60-9ca1-976d9b486fff</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Campaign_Custom_Detail_core_MDF_PFR_Grid_Component</targetValue>
+        </target>
+        <target>
+            <groupName>99faf351-5bdd-4de0-9021-77e8ce5ce7f7$#$33e4e3d7-77f5-4f64-976f-d6352f86c9a7</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Campaign_Custom_Detail_core_MDF_Custom_Related_List_2_Component</targetValue>
+        </target>
+    </targets>
+</Audience>

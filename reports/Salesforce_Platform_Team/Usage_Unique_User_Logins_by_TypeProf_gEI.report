@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_63048031</developerName>
+        <masterLabel>Profile Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>User.Core_User_Profile_Name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>A&amp;E User</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>A&amp;E User (Read Only)</sourceValue>
+            </sourceValues>
+            <value>A&amp;E</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CCP - Core Access</sourceValue>
+            </sourceValues>
+            <value>CCP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Data Ops</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>IPA A&amp;E User</sourceValue>
+            </sourceValues>
+            <value>IPA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>IPS Agent</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IPS Agent Enhanced</sourceValue>
+            </sourceValues>
+            <value>IPS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>IT Admin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Release and Checkout</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Support-Display</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Support-IPS</sourceValue>
+            </sourceValues>
+            <value>IT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sales Rep Dual Altera</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Rep-CW</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Rep-BB-Dual IPS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Rep-BB</sourceValue>
+            </sourceValues>
+            <value>Sales Reps</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sales Manager</sourceValue>
+            </sourceValues>
+            <value>Sales Managers</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SMG/GMC Read Only</sourceValue>
+            </sourceValues>
+            <value>SMG/GMC Read Only</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sales Ops</sourceValue>
+            </sourceValues>
+            <value>Sales Ops</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Unique</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>USER_ID</column>
+        </chartSummaries>
+        <chartType>LineGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>LOGIN_DATETIME</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_63048031</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>USER_ID</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>PROFILE</field>
+    </columns>
+    <columns>
+        <field>ACTIVE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>User.Core_User_License__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>analytics cloud,chatter free,customer community,sales insights,b2bma,guest,salesforceiq,partner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LOGIN_DATETIME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>LOGIN_DATETIME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_63048031</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Usage - Unique User Logins by Type/Prof</name>
+    <params>
+        <name>active</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>LOGIN_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
+    </timeFrameFilter>
+</Report>

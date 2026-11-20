@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>For the LEAD  WF  --  &quot; Core_Update_Lead_Status_onConvert &quot;</description>
+        <name>Core_Update_Lead_Status_onConvert</name>
+        <label>Core_Update_Lead_Status_onConvert</label>
+        <locationX>182</locationX>
+        <locationY>1223</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>on_Convert_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Qualified Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>on_Convert_Field_Update</targetReference>
+            </connector>
+            <label>on Convert True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the Lead WF  &quot; Core_Update_State_Terminated  &quot;</description>
+        <name>Core_Update_State_Terminated</name>
+        <label>Core_Update_State_Terminated</label>
+        <locationX>182</locationX>
+        <locationY>923</locationY>
+        <defaultConnector>
+            <targetReference>Core_Update_Lead_Status_onConvert</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>State_Terminated_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Update_State_Terminated</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>State_Terminated_Field_Update</targetReference>
+            </connector>
+            <label>State Terminated True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_Update_State_To_InPursuit</name>
+        <label>Core_Update_State_To_InPursuit</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Core_Update_Task_flag_on_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>In_Pursuit_true</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Update_State_To_InPursuit</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>In_Pursuit_Field_Update</targetReference>
+            </connector>
+            <label>In Pursuit true</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the LEAD WF &quot; Core_Update_Task_flag_on_Lead &quot;</description>
+        <name>Core_Update_Task_flag_on_Lead</name>
+        <label>Core_Update_Task_flag_on_Lead</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnector>
+            <targetReference>Core_Update_State_Terminated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Flag_On_LEAD_TRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Update_Task_flag_on_Lead</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Flag_on_Lead_Field_Update</targetReference>
+            </connector>
+            <label>Flag On LEAD TRUE</label>
+        </rules>
+    </decisions>
+    <description>Flow replacing these LEAD  WFs   :
+
+Core_Update_Lead_Status_onConvert
+Core_Update_State_Terminated
+Core_Update_State_To_InPursuit
+Core_Update_Task_flag_on_Lead</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>F_Core_Update_State_Terminated</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( ISCHANGED({!$Record.Core_Lead_Status__c}),ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Disqualified&apos;) ,
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos; , NOT(ISCHANGED({!$Record.OwnerId})) )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Update_State_To_InPursuit</name>
+        <dataType>Boolean</dataType>
+        <expression>OR( AND( ISCHANGED({!$Record.Core_Lead_Status__c}),OR(ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;), ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+  OR(ISPICKVAL((PRIORVALUE({!$Record.Core_Lead_Status__c})), &apos;New&apos;), ISPICKVAL((PRIORVALUE({!$Record.Core_Lead_Status__c})), &apos;Disqualified&apos;)), 
+  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;, NOT(ISCHANGED({!$Record.OwnerId})) ),  
+  
+  AND( ISCHANGED({!$Record.OwnerId}), LEFT(PRIORVALUE({!$Record.OwnerId}),3) == &apos;00G&apos; , LEFT({!$Record.OwnerId},3) == &apos;005&apos; , 
+  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos; )  )</expression>
+    </formulas>
+    <formulas>
+        <name>F_Core_Update_Task_flag_on_Lead</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  AND ( NOT(ISNULL({!$Record.Core_Entrance_Date_SAL__c})),  {!$Record.Core_Having_Tasks__c}=true, {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+  OR(ISPICKVAL(PRIORVALUE({!$Record.Status}), &apos;Marketing Qualified Lead&apos;),ISPICKVAL(PRIORVALUE({!$Record.Status}), &apos;Sales Generated Lead&apos;))), 
+  
+  AND ( {!$Record.Core_Having_Tasks__c}=true, ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;) ,
+  {!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;, ISPICKVAL(PRIORVALUE({!$Record.Core_Lead_Status__c}), &apos;Disqualified&apos;),
+  ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Qualified&apos;) ) 
+  )</expression>
+    </formulas>
+    <formulas>
+        <name>F_ONCOVERT_Core_SQL_Converted_UserFormula</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} +&apos; &apos;+{!$User.LastName}</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_Update_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Update_State_Status_Flag</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Flag_on_Lead_Field_Update</name>
+        <label>Flag on Lead Field Update</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <connector>
+            <targetReference>Core_Update_State_Terminated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Having_Tasks__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>In_Pursuit_Field_Update</name>
+        <label>In Pursuit Field Update</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Core_Update_Task_flag_on_Lead</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>In Pursuit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>on_Convert_Field_Update</name>
+        <label>on Convert Field Update</label>
+        <locationX>50</locationX>
+        <locationY>1331</locationY>
+        <inputAssignments>
+            <field>Core_SQL_Converted_User__c</field>
+            <value>
+                <elementReference>F_ONCOVERT_Core_SQL_Converted_UserFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>State_Terminated_Field_Update</name>
+        <label>State Terminated Field Update</label>
+        <locationX>50</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>Core_Update_Lead_Status_onConvert</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>Terminated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_Update_State_To_InPursuit</targetReference>
+        </connector>
+        <filterFormula>OR(ISCHANGED({!$Record.Core_Lead_Status__c}),ISCHANGED({!$Record.OwnerId}),{!$Record.IsConverted} = true)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

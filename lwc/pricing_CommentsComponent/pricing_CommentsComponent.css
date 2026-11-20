@@ -1,0 +1,15 @@
+.wrap {
+  white-space: pre-line;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.slds-table tbody tr {
+  vertical-align: top;
+}
+
+lightning-datatable > div:nth-child(3) > div > div > div > table > tbody > tr {
+  vertical-align: top;
+}

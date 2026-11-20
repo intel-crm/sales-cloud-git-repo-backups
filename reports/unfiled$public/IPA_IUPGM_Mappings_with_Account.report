@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_User_id__c</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Role_nm__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Region_cd__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_is_User_Active_ind__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Program_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>IPA IUPGM Mappings with Account</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_MDF_Int_Users_Partner_Geo_Mapping__c@Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Account_id__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

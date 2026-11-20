@@ -1,0 +1,268 @@
+<apex:component selfClosing="true">
+    
+    <!------------------------------------------------------------------------------------------------
+        *VF Component Name:  Core_IPS_Case_Creation_EDQ_Section
+        *Description:  Case Creation Page
+        *Modification Log :
+        * Developer                   Date                        Description
+        * ------------------------------------------------------------------------------------------------                 
+        * Ashutosh                    19/04/2018                  Modified(UserStory US102781 - Modified For changes on single column creation in EDQ section)
+        * Karthick                    03/09/2018                  Modified(UserStory US113683)
+		* Gourav Anand				  28/03/2019                  DE36223 - Added html name to input text tag
+        ----------------------------------------------------------------------------------------------------->
+    <style type="text/css">
+        .dropdown-display-label {
+        /*  Ashutosh - US102781 - 19/04/2018 - commenting the "max-width:300px !important;" here */
+            font-size: 12px;
+        }       
+        .dropdown-chose-list .dropdown-selected{
+            word-break: break-word;
+        }
+        /*Ashutosh - 12/04/2018 - US102781 --- changed max-width to 550 Px for select and commented textarea and added width to all text box*/
+        .environmentDetails select { max-width: 570px; }
+        .environmentDetails input[type=text] {width: 570px; } 
+        /*Ashutosh - 12/04/2018 - US102781 -- commented max-width: 450px !important; from dependent text area class */
+        .dependentTextArea{  
+            width : 100%;
+        }
+        
+    </style>
+      
+    <apex:attribute name="selectedProductId" description="Product Id" type="String"/>
+    <apex:attribute name="selectedSAProductId" description="Supported Product Id" type="String"/>    
+    <apex:attribute name="subCategorySelected" description="Sub Category Id" type="String" />
+    <!--apex:attribute name="caseId" description="Sub Category Id" type="Id" assignTo="{!selectedProductId}"/-->
+    <apex:attribute name="envDetails" type="Core_IPS_EnvironmentDetailQuestion[]" description="List of Env Detais"/>
+    <apex:attribute name="subCatenvDetList" type="Core_IPS_EnvironmentDetailQuestion[]" description="List of Env Detais"/>
+    <apex:attribute name="displayEnvDetails" type="Boolean" description="Boolean to display environment detais"/>
+    <!--Ashutosh - DE34860 - added columns attribute to component and added default value as 1 to fulfill the acceptence criteria-->
+    <apex:attribute name="columns" type="Integer" description="To dynamically manage column numbers of EDQ page block section" default="1"/>
+    
+    <apex:outputPanel id="environment1" styleClass="environmentDetails">
+        <apex:actionRegion >
+            <apex:outputPanel rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                <!--Ashutosh -US102781 - Remove output panel and moved page to single page block section-->
+        <apex:pageblockSection title="Environment Details" columns="{!columns}">  
+                   
+                        
+                        <!-- Sub Category Environment Details Section -->
+                        <!--Ashutosh -US102781 - Remove output panel and moved page to single page block section-->
+                       
+                            <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!subCatenvDetList!=null && subCategorySelected!=null}" id="EnvironmentDetails1">
+                                <!--Removed rendered="{!if(CONTAINS(env.type,'Text Area'),false,true)}" as part of US113683 by karthick -->
+                                <apex:pageblockSectionItem id="section" >
+                                    <apex:outputLabel value="{!JSENCODE(env.label)}" escape="true"></apex:outputLabel>
+                                    <apex:outputPanel id="panel">
+                                        <!-- Text -->
+                                        <apex:outputPanel rendered="{!if(JSENCODE(env.type)=='Text',true,false)}" id="panel1">
+                                            <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                                                <apex:inputText value="{!env.sPlaceHolder}">
+                                                </apex:inputText>
+                                            </apex:outputPanel>
+                                            <br/>
+                                        </apex:outputPanel>
+                                        <!-- Picklist -->
+                                        <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">                                    
+                                            <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                                                <apex:selectList value="{!env.selectedValue}" size="1" id="targetId" styleClass="cust-combobox">
+                                                    <!--<apex:selectList value="{!env.selectedValue}" size="1" required="true" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >-->
+                                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                                    <apex:actionSupport event="onchange" action="{!env.renderDependentQuestions}" rendered="{!env.hasChildQuestions}" reRender="environment1" status="status1" oncomplete="renderCombobox()"/>
+                                                </apex:selectList>
+                                            </apex:outputPanel>                                     
+                                            <br/>
+                                        </apex:outputPanel>
+                                        <!-- MultiSelect Pickist -->
+                                        <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                                            <apex:outputPanel styleClass="custom-multiselect {!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>                                                                                                                        
+                                                <apex:selectList value="{!env.selectedMValue}" size="3" styleClass="envClass" multiselect="true">                                           
+                                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                                </apex:selectList>
+                                            </apex:outputPanel>                                    
+                                            <br/>
+                                        </apex:outputPanel>
+                                        
+                                        <!-- Added Text Area component as part of US113683   -->
+                                        <apex:outputPanel rendered="{!if(env.type=='Text Area', true,false)}">
+                                            <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                                                <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" />
+                                                <br/>
+                                            </apex:outputPanel> 
+                                            
+                                        </apex:outputPanel>
+                                        
+                                    </apex:outputPanel>
+                                </apex:pageblockSectionItem>
+                                
+                                <!-- Dependent Details Section -->
+                <!--Ashutosh - US102781 - Added null check and rendered condition-->
+                                <apex:repeat value="{!env.childQuestions}" var="envDetail" rendered="{!env.childQuestions !=null}" id="dependentDetails">
+                                    <apex:pageblockSectionItem id="dependentsection" rendered="{!envDetail.isVisible}">
+                                        <apex:outputLabel value="{!envDetail.label}" escape="true"></apex:outputLabel>
+                                        <apex:outputPanel id="datapanel">                                             
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Picklist', true,false)}">
+                                                <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
+                                                    <apex:selectList value="{!envDetail.selectedValue}" size="1" id="targetId" styleClass="cust-combobox">
+                                                        <apex:selectOptions value="{!envDetail.pPlaceHolder}" />                                                
+                                                    </apex:selectList>
+                                                </apex:outputPanel>                                        
+                                                <br/>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Multiselect Picklist', true,false)}">
+                                                <apex:outputPanel styleClass="custom-multiselect {!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>                                       
+                                                    <apex:selectList value="{!envDetail.selectedMValue}" size="3" styleClass="envClass" multiselect="true">
+                                                        <apex:selectOptions value="{!envDetail.pPlaceHolder}"/>
+                                                    </apex:selectList>
+                                                </apex:outputPanel>                                        
+                                                <br/>
+                                            </apex:outputPanel>     
+                                            <!--Added by Karthick US101342 R4.2-- Start--->
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Text',true,false)}" id="panel1">
+                                                <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
+                                                    <apex:inputText value="{!envDetail.sPlaceHolder}">
+                                                    </apex:inputText>
+                                                </apex:outputPanel>
+                                                <br/>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Text Area',true,false)}" >
+                                                <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
+                                                    <!--Ashutosh - US-102781 - changing rows to 10 from 5 and also adding width:100%-->
+                                                    <apex:inputtextarea rows="10" cols="150" value="{!envDetail.tPlaceHolder}" styleClass="dependentTextArea"/>
+                                                </apex:outputPanel>                                  
+                                                <br/>
+                                            </apex:outputPanel>
+                                            <!--Added by Karthick US101342 R4.2-- End--->
+                                        </apex:outputPanel>
+                                    </apex:pageblockSectionItem>
+                                </apex:repeat>
+                            </apex:repeat>
+                        <!--Ashutosh - US102781 - removed page block section tag -->
+                        <!-- Removed separate Text Area Component as part of US113683 by karthick-->
+                        
+                        
+                        <!-- Environment Details for Supported Product -->
+                        <!--Ashutosh - US102781 - removed page block section tag -->
+                         
+                            <apex:repeat value="{!envDetails}" var="env" id="EnvironmentDetails">
+                                <!--Removed rendered="{!if(CONTAINS(env.type,'Text Area'),false,true)}" as part of US113683 by karthick -->
+                                <apex:pageblockSectionItem id="section" >
+                                    <apex:outputLabel value="{!JSENCODE(env.label)}" escape="true"></apex:outputLabel>
+                                    <apex:outputPanel id="panel">
+                                        <!-- Text -->
+                                        <apex:outputPanel rendered="{!if(JSENCODE(env.type)=='Text',true,false)}" id="panel1">
+                                            <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                                                <!-- changed sPlaceHolder to splaceholder Gourav: DE36223-->
+                                               <apex:inputText value="{!env.splaceholder}">
+                                                </apex:inputText>
+                                            </apex:outputPanel>                                    
+                                            <br/>
+                                        </apex:outputPanel>
+                                        <!-- Pickist -->
+                                        <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+                                            
+                                            <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                                                
+                                                <apex:selectList value="{!env.selectedValue}" size="1" id="targetId" styleClass="cust-combobox">
+                                                    <!--<apex:selectList value="{!env.selectedValue}" size="1" required="true" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >-->
+                                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                                    <apex:actionSupport event="onchange" action="{!env.renderDependentQuestions}" rendered="{!env.hasChildQuestions}" reRender="environment1" status="status1" oncomplete="renderCombobox()"/>
+                                                </apex:selectList>
+                                            </apex:outputPanel>                                                                        
+                                            <br/>
+                                        </apex:outputPanel>
+                                        <!-- MultiSelect Pickist -->
+                                        <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                                            <apex:outputPanel styleClass="custom-multiselect {!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>                                       
+                                                <!--Start of user story- changes made for user story-US61129 width was need to be increased-->                                        
+                                                <apex:selectList value="{!env.selectedMValue}" size="3" styleClass="envClass" multiselect="true">                                           
+                                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                                </apex:selectList>
+                                            </apex:outputPanel>                                    
+                                            <br/>
+                                        </apex:outputPanel>
+                                        
+                                        <!-- Added Text Area component as part of US113683 by karthick -->
+                                        <apex:outputPanel rendered="{!if(CONTAINS(env.type,'Text Area'),true,false)}">
+                                            <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                                                <!--<apex:inputtextarea value="{!env.tPlaceHolder}" required="true"/><br/>-->
+                                                <!-- changed sPlaceHolder to splaceholder Gourav: DE36223-->
+                                                <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" />
+                                                <br/>
+                                            </apex:outputPanel> 
+                                        </apex:outputPanel>
+                                        
+                                    </apex:outputPanel>
+                                </apex:pageblockSectionItem>
+                                
+                                <!-- Dependent Details Section -->
+                <!--Ashutosh - US102781 - added null check on rendered condition -->
+                                <apex:repeat value="{!env.childQuestions}" var="envDetail" id="dependentDetails" rendered="{!env.childQuestions != null}">
+                                    <apex:pageblockSectionItem id="dependentsection" rendered="{!envDetail.isVisible}">
+                                        <apex:outputLabel value="{!envDetail.label}" escape="true"></apex:outputLabel>
+                                        <apex:outputPanel id="datapanel"> 
+                                            <!-- Dependent Picklist -->
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Picklist', true,false)}">
+                                                <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
+                                                    <apex:selectList value="{!envDetail.selectedValue}" size="1" id="targetId" styleClass="cust-combobox">
+                                                        <apex:selectOptions value="{!envDetail.pPlaceHolder}" />                                                
+                                                    </apex:selectList>
+                                                </apex:outputPanel>                                        
+                                                <br/>
+                                            </apex:outputPanel>
+                                            <!-- Dependent Multi Picklist -->
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Multiselect Picklist', true,false)}">
+                                                <apex:outputPanel styleClass="custom-multiselect {!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>                                       
+                                                    <apex:selectList value="{!envDetail.selectedMValue}" size="3" styleClass="envClass" multiselect="true">
+                                                        <apex:selectOptions value="{!envDetail.pPlaceHolder}"/>
+                                                    </apex:selectList>
+                                                </apex:outputPanel>                                        
+                                                <br/>
+                                            </apex:outputPanel>    
+                                            <!-- Dependent Text -->
+                                            <!--Added by Karthick US101342 R4.2-- Start-->
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Text',true,false)}" id="panel1">
+                                                <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
+                                                    <apex:inputText value="{!envDetail.splaceholder}">
+                                                    </apex:inputText>
+                                                </apex:outputPanel>                                    
+                                                <br/>
+                                            </apex:outputPanel> 
+                                            <!-- Dependent Text Area -->
+                                            <apex:outputPanel rendered="{!if(envDetail.type=='Text Area',true,false)}" >
+                                                <apex:outputPanel styleClass="{!IF(envDetail.required,'requiredInput','')}" layout="block">
+                                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!envDetail.required}"/>
+                                                    <!--Ashutosh - US102781 - changed rows to 10 from 5 also added width:100%-->
+                                                    <apex:inputtextarea rows="10" cols="150" value="{!envDetail.tPlaceHolder}" styleClass="dependentTextArea"/>
+                                                </apex:outputPanel>                                    
+                                                <br/>
+                                            </apex:outputPanel>
+                                            <!--Added by Karthick US101342 R4.2-- End-->
+                                        </apex:outputPanel>
+                                    </apex:pageblockSectionItem>
+                                </apex:repeat>
+                            </apex:repeat>
+                        <!--Ashutosh - US102781 - removed page block section tag -->
+                        <!-- Removed Seperate Text Area component as part of US113683 by karthick -->
+                        
+                    <!--Ashutosh - US102781 - removed output panel to align -->
+                </apex:pageblockSection>
+            </apex:outputPanel>
+        </apex:actionRegion>
+    </apex:outputPanel>
+    
+</apex:component>

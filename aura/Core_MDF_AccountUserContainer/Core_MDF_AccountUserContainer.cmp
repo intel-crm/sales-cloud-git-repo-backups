@@ -1,0 +1,34 @@
+<aura:component controller="Core_MDF_LWC_AccountUserController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride" access="global">
+    <!--Style-->
+    <aura:html tag="style">
+        <!--To remove blue border-->
+        .slds-fade-in-open{
+        outline:none;
+        }
+    </aura:html>
+    <aura:attribute name="hasAccess" type="boolean" default="false" />
+    <aura:attribute name="accessErrorMsg" type="String" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.checkObjectPermission}" />
+    <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+      
+<!--Modified : Intel	Areefa		29-05-202
+	Component Starting If User Has Read & Edit Access -->
+    <aura:if isTrue ="{!v.hasAccess}" >
+         <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <c:core_MDF_LWC_AccountUser accountRecordId="{!v.recordId}"/>
+            </div>
+        </div>
+	<aura:set attribute="else">            
+         <div class = "slds-align_absolute-center">
+               <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                        {!v.accessErrorMsg}
+               </lightning:card>
+         </div>
+    </aura:set>        
+    </aura:if>   
+    
+    <aura:if isTrue="{!!v.recordId}">
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

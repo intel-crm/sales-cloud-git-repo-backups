@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Juan Casal</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11409026_Jayro_Navarro_Junior</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11824921_Juan_Casal</parentRole>
+</Role>

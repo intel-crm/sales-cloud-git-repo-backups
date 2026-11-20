@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Log Failed Callout Entry</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Log Failed Callout Entries</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Name --></label>
+        <name>Core_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entry Time --></label>
+        <name>Core_Entry_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exit Time --></label>
+        <name>Core_Exit_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Http Method --></label>
+        <name>Core_Http_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Core_Origin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Id --></label>
+        <name>Core_Parent_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Name --></label>
+        <name>Core_Parent_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Core_Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Body --></label>
+        <name>Core_Request_Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Body --></label>
+        <name>Core_Response_Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response code --></label>
+        <name>Core_Response_code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response status --></label>
+        <name>Core_Response_status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Count --></label>
+        <name>Core_Retry_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Email --></label>
+        <name>Core_Support_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_User__c</name>
+        <relationshipLabel><!-- Log Failed Callout Entries --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Failed record Id --></help>
+        <label><!-- Record Id --></label>
+        <name>Core_sObjectId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

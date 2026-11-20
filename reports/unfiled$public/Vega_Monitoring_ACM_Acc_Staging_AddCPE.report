@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_ACM_Account_Staging__c.AccountId__c</field>
+    </columns>
+    <columns>
+        <field>Core_ACM_Account_Staging__c.Core_Action__c</field>
+    </columns>
+    <columns>
+        <field>Core_ACM_Account_Staging__c.Account_Action_Refrence__c</field>
+    </columns>
+    <columns>
+        <field>Core_ACM_Account_Staging__c.Core_Retry_Counter__c</field>
+    </columns>
+    <columns>
+        <field>Core_ACM_Account_Staging__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_ACM_Account_Staging__c.Status_Details__c</field>
+    </columns>
+    <description>Status =Failed
+Action =Add CPE  or Remove CPE</description>
+    <filter>
+        <booleanFilter>1 AND (2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>Core_ACM_Account_Staging__c.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>FAILED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_ACM_Account_Staging__c.Core_Action__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ADD_CPE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_LAST_UPDATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_N_DAYS:3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_ACM_Account_Staging__c.Core_Action__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>REMOVE_CPE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Vega Monitoring:ACM Acc. Staging(CPE)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_ACM_Account_Staging__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

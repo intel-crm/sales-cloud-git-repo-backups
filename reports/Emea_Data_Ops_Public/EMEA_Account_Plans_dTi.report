@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_ACC_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Account_Plan__c.Plan_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account_Plan__c.Core_Document_Link__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>FK_$Account.Core_Unified_Global_Customer_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Maurits Tichelman&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Torsten Kahrmann&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Tal Elgar&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Simon Wilyman&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Elizabeth Collett&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Richard Peel&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Patricia Pozuelo Real&quot;,FK_Account.Core_Account_Owner_Manager__c=&quot;Norberto Carrascal&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Jost Henning Eid&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Christine Harrison&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Paolo Righi&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Tatiana Mingazova&quot;),
+&quot;Partners&quot;, 
+IF(OR(
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Sonja Pierer&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Stephanie Loock&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Simon Windsor&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Gosia Dzul&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Edwin Peters&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Katarzyna Bielak&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;GALIN DIMOV&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Kareem Eletreby&quot;),
+    &quot;Digital Sales&quot;,
+IF(OR(
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Javier Galiana&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Stephanie GOHIER&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Jesus Sanchez Paniagua&quot;),
+    &quot;Consumer&quot;,
+IF(OR(
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Steve Shakespeare&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Andreas Timm&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Ivana Jordanova&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Dieter Hoffend&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;ERWAN MONTAUX&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Helene De La Gastine&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Iain Beckingham&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Pippa Chick&quot;,
+    FK_Account.Core_Account_Owner_Manager__c=&quot;Sven Beckmann&quot;),
+    &quot;EPS&quot;, &quot;Other&quot;))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team (row-level formula)</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Hosted Sales Group,EMEA Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_Covered_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_ACC_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>A&amp;E Account Owner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Core_Unified_Global_Customer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>ZOIDBERG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account_Plan__c.Number_of_Attachments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Unified_Hierarchy_View__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Global</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Unified_Hierarchy_View__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Global</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Account.Core_Unified_Global_Customer_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account_Plan__c.Plan_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA Account Plans (in File format)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Plan__c@Account_Plan__c.Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

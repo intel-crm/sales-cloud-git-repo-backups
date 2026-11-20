@@ -1,0 +1,2323 @@
+{
+  "name" : "BVA_Lightning_Page_Views_and_Interactions",
+  "label" : "BVA Lightning Page Views and Interactions",
+  "scheduleExpression" : null,
+  "publishingTarget" : "DATASET",
+  "format" : "R3",
+  "scheduleType" : "EventDriven",
+  "recipeDefinition" : {
+    "version" : "60.0",
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "CLIENT_IP",
+            "PARENT_UI_ELEMENT",
+            "CONNECTION_TYPE",
+            "EVENT_TYPE",
+            "APP_NAME",
+            "USER_ID",
+            "UI_EVENT_TYPE",
+            "OS_NAME",
+            "CLIENT_GEO",
+            "ORGANIZATION_ID",
+            "PAGE_APP_NAME",
+            "CLIENT_ID",
+            "BROWSER_VERSION",
+            "DEVICE_PLATFORM",
+            "SDK_VERSION",
+            "TIMESTAMP",
+            "RECORD_ID",
+            "DEVICE_MODEL",
+            "USER_AGENT",
+            "PAGE_CONTEXT",
+            "TARGET_UI_ELEMENT",
+            "TIMESTAMP_DERIVED",
+            "UI_EVENT_ID",
+            "USER_TYPE",
+            "BROWSER_NAME",
+            "DEVICE_ID",
+            "SDK_APP_VERSION",
+            "UI_EVENT_SOURCE",
+            "RELATED_LIST",
+            "GRANDPARENT_UI_ELEMENT",
+            "REQUEST_ID",
+            "USER_ID_DERIVED",
+            "COMPONENT_NAME",
+            "PAGE_ENTITY_TYPE",
+            "SESSION_KEY",
+            "DEVICE_SESSION_ID",
+            "PAGE_URL",
+            "PAGE_ENTITY_ID",
+            "RECORD_TYPE",
+            "OS_VERSION",
+            "LOGIN_KEY",
+            "SDK_APP_TYPE",
+            "UI_EVENT_TIMESTAMP",
+            "PAGE_START_TIME",
+            "UI_EVENT_SEQUENCE_NUM",
+            "DURATION"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "LightningInteractionWithUsers",
+            "name" : "${Variables.LIDataset.datasetAlias}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "FILTER0" : {
+        "action" : "filter",
+        "sources" : [
+          "APPEND1"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "UI_EVENT_TYPE",
+              "operator" : "EQUAL",
+              "operands" : [
+                "user"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "TARGET_UI_ELEMENT",
+              "operator" : "NOT",
+              "operands" : [
+                "relatedListSingleContainer"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "EVENT_TYPE",
+              "operator" : "EQUAL",
+              "operands" : [
+                "LightningPageView"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "PARENT_UI_ELEMENT",
+              "operator" : "NOT",
+              "operands" : [
+                "process records"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "PAGE_URL",
+              "operator" : "NOT",
+              "operands" : [
+                ""
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "UI_EVENT_SOURCE",
+              "operator" : "EQUAL",
+              "operands" : [
+                "click",
+                "synthetic-change-split-view-mode",
+                "synthetic-click",
+                "synthetic-dragdrop"
+              ]
+            }
+          ],
+          "filterBooleanLogic" : "(1 AND 2 AND 4 AND 5 AND 6) OR 3"
+        }
+      },
+      "FORMULA0" : {
+        "action" : "formula",
+        "sources" : [
+          "APPEND3"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "PageName",
+              "label" : "PageName",
+              "formulaExpression" : "case\r\n\twhen (contains(PAGE_URL, '/lightning/n/') AND instr(PAGE_URL,'?') > 0) then substr(PAGE_URL,14,instr(PAGE_URL,'?')-14)\r\n\twhen (contains(PAGE_URL,'/lightning/n/') AND instr(PAGE_URL,'?') = 0) then substr(PAGE_URL,14)\r\n\twhen (contains(PAGE_URL,'/lightning/cmp/') AND instr(PAGE_URL,'?') > 0) then substr(PAGE_URL,16,instr(PAGE_URL,'?')-16)\r\n\twhen (contains(PAGE_URL,'/lightning/cmp/') AND instr(PAGE_URL,'?') = 0) then substr(PAGE_URL,16)\r\n\twhen (contains(PAGE_URL,'/s/') AND PAGE_ENTITY_TYPE = '') then substr(PAGE_URL,2,instr(PAGE_URL,'/s/')-2)\r\n\twhen (contains(PAGE_URL,'/lightning/page/pardot')) then 'Pardot'\r\n\twhen (contains(PAGE_URL,'/lightning/page/chatter')) then 'Chatter'\r\n\twhen (contains(PAGE_URL,'/lightning/page/home')) then 'Home'\r\n\twhen (contains(PAGE_URL,'/lightning/settings')) then 'Personal Settings'\r\n\twhen (contains(PAGE_URL,'/lightning/setup')) then 'Setup'\r\n\twhen (contains(PAGE_URL,'/one/one.app')) AND PAGE_ENTITY_TYPE is null then 'No Object' \r\n\twhen contains(PAGE_URL,'/lightning/page/home') then 'Lightning Homepage'\r\n\twhen contains(PAGE_URL,'/lightning/n/') then substr(PAGE_URL,instr(PAGE_URL,'/' ,1,3)+1)\r\n\twhen contains(PAGE_URL,'/lightning/o/') then substr(PAGE_URL,instr(PAGE_URL,'/' ,1,3)+1,instr(PAGE_URL,'/' ,1,4)-instr(PAGE_URL,'/' ,1,3)-1) \r\n\telse PAGE_ENTITY_TYPE \r\nend",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA1" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA0"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "UserSessionKey",
+              "label" : "UserSessionKey",
+              "formulaExpression" : "concat(USER_ID_DERIVED, SESSION_KEY)",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA2" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA1"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "SourceObjectType",
+              "label" : "SourceObjectType",
+              "formulaExpression" : "case \r\nwhen contains(PAGE_URL,'?ws=%') then substr(PAGE_URL,instr(PAGE_URL,'%2F',1,3)+3,instr(PAGE_URL,'%2F',1,4) - (instr(PAGE_URL,'%2F',1,3)+3))\r\nelse PAGE_ENTITY_TYPE\r\nend",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA3" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA2"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "SourceRecordId",
+              "label" : "SourceRecordId",
+              "formulaExpression" : "case \r\nwhen contains(PAGE_URL,'?ws=%') then substr(PAGE_URL,instr(PAGE_URL,'%2F',1,4)+3,18) else null end",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA4" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA3"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "DATETIME",
+              "name" : "InteractionDateTime",
+              "label" : "InteractionDateTime",
+              "formulaExpression" : "to_timestamp(from_unixtime(substr(UI_EVENT_TIMESTAMP/1000,0,13),'yyyy-MM-dd HH:mm:ss'),'yyyy-MM-dd HH:mm:ss')",
+              "format" : "yyyy-MM-dd HH:mm:ss",
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA5" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA4"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "ConcatComponentEvent",
+              "label" : "ConcatComponentEvent",
+              "formulaExpression" : "concat(PARENT_UI_ELEMENT,' - ',TARGET_UI_ELEMENT,' - ',COMPONENT_NAME,' - ',UI_EVENT_SOURCE)",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA19" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA26"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "ListViewId",
+              "label" : "ListViewId",
+              "formulaExpression" : "case when contains(PAGE_URL,'?filterName=') then substr(PAGE_URL, instr(PAGE_URL, '?filterName=')+12, 30)\r\nelse null\r\nend",
+              "precision" : 19,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA25" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA19"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "TEMP_PAGE_APP_NAME",
+              "label" : "TEMP_PAGE_APP_NAME",
+              "formulaExpression" : "case \r\n    when EVENT_TYPE = 'LightningLogger' AND (lag(EVENT_TYPE) = 'LightningPageView' OR lag(EVENT_TYPE) = 'LightningInteraction') then lag(PAGE_APP_NAME) \r\n    when EVENT_TYPE = 'LightningLogger' AND (lead(EVENT_TYPE) = 'LightningPageView' OR lead(EVENT_TYPE) = 'LightningInteraction') then lead(PAGE_APP_NAME) \r\n    else PAGE_APP_NAME \r\nend",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "DROP_FIELDS3" : {
+        "action" : "schema",
+        "sources" : [
+          "FORMULA25"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "PAGE_APP_NAME"
+            ]
+          }
+        }
+      },
+      "EDIT_ATTRIBUTES0" : {
+        "action" : "schema",
+        "sources" : [
+          "DROP_FIELDS3"
+        ],
+        "parameters" : {
+          "fields" : [
+            {
+              "name" : "TEMP_PAGE_APP_NAME",
+              "newProperties" : {
+                "label" : "PAGE_APP_NAME",
+                "name" : "PAGE_APP_NAME"
+              }
+            }
+          ]
+        }
+      },
+      "FORMULA26" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA5"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "CustomConcatComponentEvent",
+              "label" : "CustomConcatComponentEvent",
+              "formulaExpression" : "concat(PAGE_APP_NAME, ' - ', PAGE_ENTITY_TYPE, ' - ', PARENT_UI_ELEMENT,' - ',TARGET_UI_ELEMENT,' - ',COMPONENT_NAME,' - ',UI_EVENT_SOURCE)",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA6" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "JOIN1"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "TargetURL",
+              "label" : "TargetURL",
+              "formulaExpression" : "lead(PAGE_URL)",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA7" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA6"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "SequenceNumber",
+              "label" : "SequenceNumber",
+              "formulaExpression" : "row_number()",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA8" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA7"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "TotalSessionTime",
+              "label" : "TotalSessionTime",
+              "formulaExpression" : "(current(UI_EVENT_TIMESTAMP) - first_value(UI_EVENT_TIMESTAMP))/1000",
+              "precision" : 10,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA9" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA8"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "SequenceNumberS",
+              "label" : "SequenceNumberS",
+              "formulaExpression" : "string(format_number(SequenceNumber,'#0000'))",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA10" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA9"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "SessionEndFlag",
+              "label" : "SessionEndFlag",
+              "formulaExpression" : "lead(SESSION_KEY)",
+              "precision" : 255,
+              "defaultValue" : "End"
+            }
+          ]
+        }
+      },
+      "FORMULA14" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA10"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "PageChangeFlag",
+              "label" : "PageChangeFlag",
+              "formulaExpression" : "case when current(PageName) is not null AND current(PageName) != lag(PageName) then 1 else 0 end",
+              "precision" : 1,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA15" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA14"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "InteractionDateTime",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "PageChangeFlagDim",
+              "label" : "PageChangeFlagDim",
+              "formulaExpression" : "case when current(PageName) is not null AND current(PageName) != lag(PageName) then '1' else '0' end",
+              "precision" : 1,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "LOAD_DATASET1" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "TARGET_UI_ELEMENT",
+            "PARENT_UI_ELEMENT",
+            "ConcatComponentEvent",
+            "UI_EVENT_SOURCE",
+            "Description",
+            "Event_Label",
+            "Event",
+            "COMPONENT_NAME"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "Lightning Interaction Data Dictionary",
+            "name" : "${App.Datasets.LightningInteraction_Data_Dictionary.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN0" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN2",
+          "LOAD_DATASET1"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "DataDictionary.TARGET_UI_ELEMENT",
+              "DataDictionary.PARENT_UI_ELEMENT",
+              "DataDictionary.UI_EVENT_SOURCE",
+              "DataDictionary.COMPONENT_NAME",
+              "DataDictionary.Rank"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "ConcatComponentEvent"
+          ],
+          "rightQualifier" : "DataDictionary",
+          "rightKeys" : [
+            "ConcatComponentEvent"
+          ]
+        }
+      },
+      "FILTER1" : {
+        "action" : "filter",
+        "sources" : [
+          "FORMULA15"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "UI_EVENT_SOURCE",
+              "operator" : "NOT",
+              "operands" : [
+                "click"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "DataDictionary.Event",
+              "operator" : "NOT",
+              "operands" : [
+                "Click"
+              ]
+            }
+          ],
+          "filterBooleanLogic" : "1 AND 2"
+        }
+      },
+      "FILTER2" : {
+        "action" : "filter",
+        "sources" : [
+          "FORMULA15"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "UI_EVENT_SOURCE",
+              "operator" : "EQUAL",
+              "operands" : [
+                "click"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "DataDictionary.Event",
+              "operator" : "EQUAL",
+              "operands" : [
+                "Click"
+              ]
+            }
+          ],
+          "filterBooleanLogic" : "1 OR 2"
+        }
+      },
+      "FORMULA12" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FILTER2"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "UI_EVENT_TIMESTAMP",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "StallTime",
+              "label" : "Stall Time",
+              "formulaExpression" : "round((lead(UI_EVENT_TIMESTAMP) - current(UI_EVENT_TIMESTAMP))/1000, 2)",
+              "precision" : 16,
+              "scale" : 2,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA13" : {
+        "action" : "computeRelative",
+        "sources" : [
+          "FORMULA12"
+        ],
+        "parameters" : {
+          "partitionBy" : [
+            "UserSessionKey"
+          ],
+          "orderBy" : [
+            {
+              "fieldName" : "UI_EVENT_TIMESTAMP",
+              "direction" : "ASC"
+            }
+          ],
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "TimeToAction",
+              "label" : "Time To Action",
+              "formulaExpression" : "round((current(UI_EVENT_TIMESTAMP) - lag(UI_EVENT_TIMESTAMP))/1000,2)",
+              "precision" : 16,
+              "scale" : 2,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA16" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA13"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "NUMBER",
+              "name" : "ClickCount",
+              "label" : "ClickCount",
+              "formulaExpression" : "1",
+              "precision" : 1,
+              "scale" : 0,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "APPEND0" : {
+        "action" : "appendV2",
+        "sources" : [
+          "FORMULA16",
+          "FILTER1"
+        ],
+        "parameters" : {
+          "fieldMappings" : [
+            {
+              "top" : "CLIENT_IP",
+              "bottom" : "CLIENT_IP"
+            },
+            {
+              "top" : "PARENT_UI_ELEMENT",
+              "bottom" : "PARENT_UI_ELEMENT"
+            },
+            {
+              "top" : "CONNECTION_TYPE",
+              "bottom" : "CONNECTION_TYPE"
+            },
+            {
+              "top" : "EVENT_TYPE",
+              "bottom" : "EVENT_TYPE"
+            },
+            {
+              "top" : "APP_NAME",
+              "bottom" : "APP_NAME"
+            },
+            {
+              "top" : "USER_ID",
+              "bottom" : "USER_ID"
+            },
+            {
+              "top" : "UI_EVENT_TYPE",
+              "bottom" : "UI_EVENT_TYPE"
+            },
+            {
+              "top" : "OS_NAME",
+              "bottom" : "OS_NAME"
+            },
+            {
+              "top" : "CLIENT_GEO",
+              "bottom" : "CLIENT_GEO"
+            },
+            {
+              "top" : "ORGANIZATION_ID",
+              "bottom" : "ORGANIZATION_ID"
+            },
+            {
+              "top" : "CLIENT_ID",
+              "bottom" : "CLIENT_ID"
+            },
+            {
+              "top" : "BROWSER_VERSION",
+              "bottom" : "BROWSER_VERSION"
+            },
+            {
+              "top" : "DEVICE_PLATFORM",
+              "bottom" : "DEVICE_PLATFORM"
+            },
+            {
+              "top" : "SDK_VERSION",
+              "bottom" : "SDK_VERSION"
+            },
+            {
+              "top" : "TIMESTAMP",
+              "bottom" : "TIMESTAMP"
+            },
+            {
+              "top" : "RECORD_ID",
+              "bottom" : "RECORD_ID"
+            },
+            {
+              "top" : "DEVICE_MODEL",
+              "bottom" : "DEVICE_MODEL"
+            },
+            {
+              "top" : "USER_AGENT",
+              "bottom" : "USER_AGENT"
+            },
+            {
+              "top" : "PAGE_CONTEXT",
+              "bottom" : "PAGE_CONTEXT"
+            },
+            {
+              "top" : "TARGET_UI_ELEMENT",
+              "bottom" : "TARGET_UI_ELEMENT"
+            },
+            {
+              "top" : "TIMESTAMP_DERIVED",
+              "bottom" : "TIMESTAMP_DERIVED"
+            },
+            {
+              "top" : "UI_EVENT_ID",
+              "bottom" : "UI_EVENT_ID"
+            },
+            {
+              "top" : "USER_TYPE",
+              "bottom" : "USER_TYPE"
+            },
+            {
+              "top" : "BROWSER_NAME",
+              "bottom" : "BROWSER_NAME"
+            },
+            {
+              "top" : "DEVICE_ID",
+              "bottom" : "DEVICE_ID"
+            },
+            {
+              "top" : "SDK_APP_VERSION",
+              "bottom" : "SDK_APP_VERSION"
+            },
+            {
+              "top" : "UI_EVENT_SOURCE",
+              "bottom" : "UI_EVENT_SOURCE"
+            },
+            {
+              "top" : "RELATED_LIST",
+              "bottom" : "RELATED_LIST"
+            },
+            {
+              "top" : "GRANDPARENT_UI_ELEMENT",
+              "bottom" : "GRANDPARENT_UI_ELEMENT"
+            },
+            {
+              "top" : "REQUEST_ID",
+              "bottom" : "REQUEST_ID"
+            },
+            {
+              "top" : "USER_ID_DERIVED",
+              "bottom" : "USER_ID_DERIVED"
+            },
+            {
+              "top" : "COMPONENT_NAME",
+              "bottom" : "COMPONENT_NAME"
+            },
+            {
+              "top" : "PAGE_ENTITY_TYPE",
+              "bottom" : "PAGE_ENTITY_TYPE"
+            },
+            {
+              "top" : "SESSION_KEY",
+              "bottom" : "SESSION_KEY"
+            },
+            {
+              "top" : "DEVICE_SESSION_ID",
+              "bottom" : "DEVICE_SESSION_ID"
+            },
+            {
+              "top" : "PAGE_URL",
+              "bottom" : "PAGE_URL"
+            },
+            {
+              "top" : "PAGE_ENTITY_ID",
+              "bottom" : "PAGE_ENTITY_ID"
+            },
+            {
+              "top" : "RECORD_TYPE",
+              "bottom" : "RECORD_TYPE"
+            },
+            {
+              "top" : "OS_VERSION",
+              "bottom" : "OS_VERSION"
+            },
+            {
+              "top" : "LOGIN_KEY",
+              "bottom" : "LOGIN_KEY"
+            },
+            {
+              "top" : "SDK_APP_TYPE",
+              "bottom" : "SDK_APP_TYPE"
+            },
+            {
+              "top" : "UI_EVENT_TIMESTAMP",
+              "bottom" : "UI_EVENT_TIMESTAMP"
+            },
+            {
+              "top" : "PAGE_START_TIME",
+              "bottom" : "PAGE_START_TIME"
+            },
+            {
+              "top" : "UI_EVENT_SEQUENCE_NUM",
+              "bottom" : "UI_EVENT_SEQUENCE_NUM"
+            },
+            {
+              "top" : "DURATION",
+              "bottom" : "DURATION"
+            },
+            {
+              "top" : "EFFECTIVE_PAGE_TIME",
+              "bottom" : "EFFECTIVE_PAGE_TIME"
+            },
+            {
+              "top" : "PageName",
+              "bottom" : "PageName"
+            },
+            {
+              "top" : "UserSessionKey",
+              "bottom" : "UserSessionKey"
+            },
+            {
+              "top" : "SourceObjectType",
+              "bottom" : "SourceObjectType"
+            },
+            {
+              "top" : "SourceRecordId",
+              "bottom" : "SourceRecordId"
+            },
+            {
+              "top" : "InteractionDateTime",
+              "bottom" : "InteractionDateTime"
+            },
+            {
+              "top" : "ConcatComponentEvent",
+              "bottom" : "ConcatComponentEvent"
+            },
+            {
+              "top" : "PAGE_APP_NAME",
+              "bottom" : "PAGE_APP_NAME"
+            },
+            {
+              "top" : "DataDictionary.Description",
+              "bottom" : "DataDictionary.Description"
+            },
+            {
+              "top" : "DataDictionary.Event_Label",
+              "bottom" : "DataDictionary.Event_Label"
+            },
+            {
+              "top" : "DataDictionary.Event",
+              "bottom" : "DataDictionary.Event"
+            },
+            {
+              "top" : "CustomDataDictionary.Event_Label",
+              "bottom" : "CustomDataDictionary.Event_Label"
+            },
+            {
+              "top" : "ComponentName",
+              "bottom" : "ComponentName"
+            },
+            {
+              "top" : "User.ProfileId",
+              "bottom" : "User.ProfileId"
+            },
+            {
+              "top" : "User.UserRoleId",
+              "bottom" : "User.UserRoleId"
+            },
+            {
+              "top" : "User.FirstName",
+              "bottom" : "User.FirstName"
+            },
+            {
+              "top" : "User.Profile.Name",
+              "bottom" : "User.Profile.Name"
+            },
+            {
+              "top" : "User.Roles.Name",
+              "bottom" : "User.Roles.Name"
+            },
+            {
+              "top" : "User.Roles.ParentRoleMultiField",
+              "bottom" : "User.Roles.ParentRoleMultiField"
+            },
+            {
+              "top" : "User.Name",
+              "bottom" : "User.Name"
+            },
+            {
+              "top" : "User.Roles.Id",
+              "bottom" : "User.Roles.Id"
+            },
+            {
+              "top" : "User.Roles.ParentRolesPath",
+              "bottom" : "User.Roles.ParentRolesPath"
+            },
+            {
+              "top" : "User.Department",
+              "bottom" : "User.Department"
+            },
+            {
+              "top" : "User.Roles.ParentRoleId",
+              "bottom" : "User.Roles.ParentRoleId"
+            },
+            {
+              "top" : "User.Profile.UserType",
+              "bottom" : "User.Profile.UserType"
+            },
+            {
+              "top" : "User.Profile.Id",
+              "bottom" : "User.Profile.Id"
+            },
+            {
+              "top" : "User.Country",
+              "bottom" : "User.Country"
+            },
+            {
+              "top" : "User.Roles.DeveloperName",
+              "bottom" : "User.Roles.DeveloperName"
+            },
+            {
+              "top" : "User.Division",
+              "bottom" : "User.Division"
+            },
+            {
+              "top" : "User.Id",
+              "bottom" : "User.Id"
+            },
+            {
+              "top" : "TargetURL",
+              "bottom" : "TargetURL"
+            },
+            {
+              "top" : "SequenceNumber",
+              "bottom" : "SequenceNumber"
+            },
+            {
+              "top" : "TotalSessionTime",
+              "bottom" : "TotalSessionTime"
+            },
+            {
+              "top" : "SequenceNumberS",
+              "bottom" : "SequenceNumberS"
+            },
+            {
+              "top" : "SessionEndFlag",
+              "bottom" : "SessionEndFlag"
+            },
+            {
+              "top" : "PageChangeFlag",
+              "bottom" : "PageChangeFlag"
+            },
+            {
+              "top" : "PageChangeFlagDim",
+              "bottom" : "PageChangeFlagDim"
+            }
+          ]
+        }
+      },
+      "OUTPUT0" : {
+        "action" : "save",
+        "sources" : [
+          "FILTER5"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Lightning Page Views and Interactions Adoption",
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.Name}",
+            "folderName" : "${App.Folder.FullyQualifiedName}"
+          },
+          "measuresToCurrencies" : [ ]
+        }
+      },
+      "LOAD_DATASET2" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "ProfileId",
+            "UserRoleId",
+            "FirstName",
+            "Profile.Name",
+            "Roles.Name",
+            "Roles.ParentRoleMultiField",
+            "Name",
+            "Roles.Id",
+            "Roles.ParentRolesPath",
+            "Department",
+            "Roles.ParentRoleId",
+            "Profile.UserType",
+            "Profile.Id",
+            "Country",
+            "Roles.DeveloperName",
+            "Division",
+            "Id"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA_UsersProfilesRoles",
+            "name" : "${App.Datasets.BVA_UsersProfilesRoles_tp.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN1" : {
+        "action" : "join",
+        "sources" : [
+          "DROP_FIELDS2",
+          "LOAD_DATASET2"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [ ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "USER_ID_DERIVED"
+          ],
+          "rightQualifier" : "User",
+          "rightKeys" : [
+            "Id"
+          ]
+        }
+      },
+      "LOAD_DATASET3" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "CLIENT_IP",
+            "PARENT_UI_ELEMENT",
+            "CONNECTION_TYPE",
+            "PREVPAGE_ENTITY_ID",
+            "EVENT_TYPE",
+            "APP_NAME",
+            "PREVPAGE_ENTITY_TYPE",
+            "USER_ID",
+            "OS_NAME",
+            "CLIENT_GEO",
+            "ORGANIZATION_ID",
+            "EFFECTIVE_PAGE_TIME_DEVIATION_REASON",
+            "PAGE_APP_NAME",
+            "CLIENT_ID",
+            "BROWSER_VERSION",
+            "DEVICE_PLATFORM",
+            "SDK_VERSION",
+            "TIMESTAMP",
+            "DEVICE_MODEL",
+            "USER_AGENT",
+            "PAGE_CONTEXT",
+            "TARGET_UI_ELEMENT",
+            "PREVPAGE_CONTEXT",
+            "TIMESTAMP_DERIVED",
+            "EFFECTIVE_PAGE_TIME_DEVIATION_ERROR_TYPE",
+            "UI_EVENT_ID",
+            "USER_TYPE",
+            "BROWSER_NAME",
+            "DEVICE_ID",
+            "SDK_APP_VERSION",
+            "UI_EVENT_SOURCE",
+            "PREVPAGE_APP_NAME",
+            "GRANDPARENT_UI_ELEMENT",
+            "REQUEST_ID",
+            "PREVPAGE_URL",
+            "USER_ID_DERIVED",
+            "PAGE_ENTITY_TYPE",
+            "SESSION_KEY",
+            "DEVICE_SESSION_ID",
+            "EFFECTIVE_PAGE_TIME_DEVIATION",
+            "PAGE_URL",
+            "PAGE_ENTITY_ID",
+            "OS_VERSION",
+            "LOGIN_KEY",
+            "SDK_APP_TYPE",
+            "UI_EVENT_TIMESTAMP",
+            "EFFECTIVE_PAGE_TIME",
+            "PAGE_START_TIME",
+            "UI_EVENT_SEQUENCE_NUM",
+            "DURATION"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "LightningPageViewWithUsers",
+            "name" : "${Variables.LPVDataset.datasetAlias}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "APPEND1" : {
+        "action" : "appendV2",
+        "sources" : [
+          "LOAD_DATASET0",
+          "LOAD_DATASET3"
+        ],
+        "parameters" : {
+          "fieldMappings" : [
+            {
+              "top" : "BROWSER_NAME",
+              "bottom" : "BROWSER_NAME"
+            },
+            {
+              "top" : "BROWSER_VERSION",
+              "bottom" : "BROWSER_VERSION"
+            },
+            {
+              "top" : "DEVICE_PLATFORM",
+              "bottom" : "DEVICE_PLATFORM"
+            },
+            {
+              "top" : "CLIENT_GEO",
+              "bottom" : "CLIENT_GEO"
+            },
+            {
+              "top" : "PARENT_UI_ELEMENT",
+              "bottom" : "PARENT_UI_ELEMENT"
+            },
+            {
+              "top" : "UI_EVENT_SOURCE",
+              "bottom" : "UI_EVENT_SOURCE"
+            },
+            {
+              "top" : "EVENT_TYPE",
+              "bottom" : "EVENT_TYPE"
+            },
+            {
+              "top" : "GRANDPARENT_UI_ELEMENT",
+              "bottom" : "GRANDPARENT_UI_ELEMENT"
+            },
+            {
+              "top" : "APP_NAME",
+              "bottom" : "APP_NAME"
+            },
+            {
+              "top" : "USER_ID",
+              "bottom" : "USER_ID"
+            },
+            {
+              "top" : "OS_NAME",
+              "bottom" : "OS_NAME"
+            },
+            {
+              "top" : "REQUEST_ID",
+              "bottom" : "REQUEST_ID"
+            },
+            {
+              "top" : "ORGANIZATION_ID",
+              "bottom" : "ORGANIZATION_ID"
+            },
+            {
+              "top" : "PAGE_APP_NAME",
+              "bottom" : "PAGE_APP_NAME"
+            },
+            {
+              "top" : "TIMESTAMP",
+              "bottom" : "TIMESTAMP"
+            },
+            {
+              "top" : "USER_ID_DERIVED",
+              "bottom" : "USER_ID_DERIVED"
+            },
+            {
+              "top" : "PAGE_ENTITY_TYPE",
+              "bottom" : "PAGE_ENTITY_TYPE"
+            },
+            {
+              "top" : "SESSION_KEY",
+              "bottom" : "SESSION_KEY"
+            },
+            {
+              "top" : "PAGE_URL",
+              "bottom" : "PAGE_URL"
+            },
+            {
+              "top" : "TARGET_UI_ELEMENT",
+              "bottom" : "TARGET_UI_ELEMENT"
+            },
+            {
+              "top" : "TIMESTAMP_DERIVED",
+              "bottom" : "TIMESTAMP_DERIVED"
+            },
+            {
+              "top" : "UI_EVENT_ID",
+              "bottom" : "UI_EVENT_ID"
+            },
+            {
+              "top" : "PAGE_ENTITY_ID",
+              "bottom" : "PAGE_ENTITY_ID"
+            },
+            {
+              "top" : "USER_TYPE",
+              "bottom" : "USER_TYPE"
+            },
+            {
+              "top" : "UI_EVENT_TIMESTAMP",
+              "bottom" : "UI_EVENT_TIMESTAMP"
+            },
+            {
+              "top" : "UI_EVENT_SEQUENCE_NUM",
+              "bottom" : "UI_EVENT_SEQUENCE_NUM"
+            },
+            {
+              "bottom" : "EFFECTIVE_PAGE_TIME"
+            }
+          ]
+        }
+      },
+      "DROP_FIELDS1" : {
+        "action" : "schema",
+        "sources" : [
+          "APPEND0"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "UIEventTimeStampRequestId"
+            ]
+          }
+        }
+      },
+      "LOAD_DATASET5" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "Id",
+            "Name",
+            "SobjectType"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "ListView",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "ListView"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN2" : {
+        "action" : "join",
+        "sources" : [
+          "EDIT_ATTRIBUTES0",
+          "LOAD_DATASET5"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [ ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "ListViewId"
+          ],
+          "rightQualifier" : "ListView",
+          "rightKeys" : [
+            "Id"
+          ]
+        }
+      },
+      "FORMULA20" : {
+        "action" : "formula",
+        "sources" : [
+          "JOIN3"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "ComponentName",
+              "label" : "Component Name",
+              "formulaExpression" : "case \r\nwhen \"CustomDataDictionary.Event_Label\" != '' then \"CustomDataDictionary.Event_Label\"  \r\nwhen EVENT_TYPE = 'LightningPageView' AND \"ListView.Name\" != '' then concat(PageName, ' - ', \"ListView.Name\")  \r\nwhen EVENT_TYPE = 'LightningPageView' then PageName \r\nwhen \"DataDictionary.Event_Label\" != '' AND \"ListView.Name\" != '' then concat(\"ListView.Name\",' - ' ,\"DataDictionary.Event_Label\") \r\nwhen COMPONENT_NAME != '' AND \"ListView.Name\" != '' then concat(\"ListView.Name\",' - ' ,COMPONENT_NAME) \r\nwhen \"DataDictionary.Event_Label\" != '' then \"DataDictionary.Event_Label\" \r\nwhen COMPONENT_NAME != '' then COMPONENT_NAME \r\nwhen ConcatComponentEvent != '' AND \"ListView.Name\" != '' then concat(ConcatComponentEvent, ' - ', \"ListView.Name\") \r\nwhen ConcatComponentEvent != '' then ConcatComponentEvent \r\nelse 'Unknown' \r\nend",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "DROP_FIELDS2" : {
+        "action" : "schema",
+        "sources" : [
+          "FORMULA20"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "DataDictionary.ConcatComponentEvent",
+              "ListViewId",
+              "ListView.Id",
+              "ListView.Name",
+              "ListView.SobjectType",
+              "CustomConcatComponentEvent"
+            ]
+          }
+        }
+      },
+      "LOAD_DATASET6" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "CLIENT_IP",
+            "SDK_APP_VERSION",
+            "CONNECTION_TYPE",
+            "EVENT_TYPE",
+            "APP_NAME",
+            "USER_ID",
+            "OS_NAME",
+            "REQUEST_ID",
+            "CLIENT_GEO",
+            "ORGANIZATION_ID",
+            "MESSAGE",
+            "CLIENT_ID",
+            "BROWSER_VERSION",
+            "DEVICE_PLATFORM",
+            "SDK_VERSION",
+            "DEVICE_MODEL",
+            "USER_ID_DERIVED",
+            "PAGE_ENTITY_TYPE",
+            "SESSION_KEY",
+            "PAGE_CONTEXT",
+            "DEVICE_SESSION_ID",
+            "PAGE_URL",
+            "TIMESTAMP_DERIVED",
+            "PAGE_ENTITY_ID",
+            "USER_TYPE",
+            "BROWSER_NAME",
+            "OS_VERSION",
+            "LOGIN_KEY",
+            "SDK_APP_TYPE",
+            "UI_EVENT_TIMESTAMP",
+            "UI_EVENT_RELATIVE_TIMESTAMP",
+            "TIMESTAMP"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "LightningLogger",
+            "name" : "${App.Datasets.LightningLogger.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "FILTER4" : {
+        "action" : "filter",
+        "sources" : [
+          "LOAD_DATASET6"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "ORGANIZATION_ID",
+              "operator" : "NOT",
+              "operands" : [
+                "sample"
+              ]
+            }
+          ]
+        }
+      },
+      "FORMULA21" : {
+        "action" : "formula",
+        "sources" : [
+          "FILTER4"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "UI_EVENT_SOURCE",
+              "label" : "UI_EVENT_SOURCE",
+              "formulaExpression" : "substr(MESSAGE, instr(MESSAGE, ':',1,1)+2, instr(MESSAGE, ',', 1, 1)-2-instr(MESSAGE, ':',1,1)-1)",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA22" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA21"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "COMPONENT_NAME",
+              "label" : "COMPONENT_NAME",
+              "formulaExpression" : "substr(MESSAGE, instr(MESSAGE, ':',1,2)+2, instr(MESSAGE, '}', 1, 1)-2-instr(MESSAGE, ':',1,2)-1)",
+              "precision" : 255,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "FORMULA24" : {
+        "action" : "formula",
+        "sources" : [
+          "FORMULA22"
+        ],
+        "parameters" : {
+          "expressionType" : "SQL",
+          "fields" : [
+            {
+              "type" : "TEXT",
+              "name" : "UI_EVENT_TYPE",
+              "label" : "UI_EVENT_TYPE",
+              "formulaExpression" : "'user'",
+              "precision" : 4,
+              "defaultValue" : ""
+            }
+          ]
+        }
+      },
+      "APPEND3" : {
+        "action" : "appendV2",
+        "sources" : [
+          "FILTER0",
+          "FORMULA24"
+        ],
+        "parameters" : {
+          "fieldMappings" : [
+            {
+              "top" : "CLIENT_IP",
+              "bottom" : "CLIENT_IP"
+            },
+            {
+              "top" : "CONNECTION_TYPE",
+              "bottom" : "CONNECTION_TYPE"
+            },
+            {
+              "top" : "EVENT_TYPE",
+              "bottom" : "EVENT_TYPE"
+            },
+            {
+              "top" : "APP_NAME",
+              "bottom" : "APP_NAME"
+            },
+            {
+              "top" : "USER_ID",
+              "bottom" : "USER_ID"
+            },
+            {
+              "top" : "UI_EVENT_TYPE",
+              "bottom" : "UI_EVENT_TYPE"
+            },
+            {
+              "top" : "OS_NAME",
+              "bottom" : "OS_NAME"
+            },
+            {
+              "top" : "CLIENT_GEO",
+              "bottom" : "CLIENT_GEO"
+            },
+            {
+              "top" : "ORGANIZATION_ID",
+              "bottom" : "ORGANIZATION_ID"
+            },
+            {
+              "top" : "CLIENT_ID",
+              "bottom" : "CLIENT_ID"
+            },
+            {
+              "top" : "BROWSER_VERSION",
+              "bottom" : "BROWSER_VERSION"
+            },
+            {
+              "top" : "DEVICE_PLATFORM",
+              "bottom" : "DEVICE_PLATFORM"
+            },
+            {
+              "top" : "SDK_VERSION",
+              "bottom" : "SDK_VERSION"
+            },
+            {
+              "top" : "TIMESTAMP",
+              "bottom" : "TIMESTAMP"
+            },
+            {
+              "top" : "DEVICE_MODEL",
+              "bottom" : "DEVICE_MODEL"
+            },
+            {
+              "top" : "PAGE_CONTEXT",
+              "bottom" : "PAGE_CONTEXT"
+            },
+            {
+              "top" : "TIMESTAMP_DERIVED",
+              "bottom" : "TIMESTAMP_DERIVED"
+            },
+            {
+              "top" : "USER_TYPE",
+              "bottom" : "USER_TYPE"
+            },
+            {
+              "top" : "BROWSER_NAME",
+              "bottom" : "BROWSER_NAME"
+            },
+            {
+              "top" : "SDK_APP_VERSION",
+              "bottom" : "SDK_APP_VERSION"
+            },
+            {
+              "top" : "UI_EVENT_SOURCE",
+              "bottom" : "UI_EVENT_SOURCE"
+            },
+            {
+              "top" : "REQUEST_ID",
+              "bottom" : "REQUEST_ID"
+            },
+            {
+              "top" : "USER_ID_DERIVED",
+              "bottom" : "USER_ID_DERIVED"
+            },
+            {
+              "top" : "COMPONENT_NAME",
+              "bottom" : "COMPONENT_NAME"
+            },
+            {
+              "top" : "PAGE_ENTITY_TYPE",
+              "bottom" : "PAGE_ENTITY_TYPE"
+            },
+            {
+              "top" : "SESSION_KEY",
+              "bottom" : "SESSION_KEY"
+            },
+            {
+              "top" : "DEVICE_SESSION_ID",
+              "bottom" : "DEVICE_SESSION_ID"
+            },
+            {
+              "top" : "PAGE_URL",
+              "bottom" : "PAGE_URL"
+            },
+            {
+              "top" : "PAGE_ENTITY_ID",
+              "bottom" : "PAGE_ENTITY_ID"
+            },
+            {
+              "top" : "OS_VERSION",
+              "bottom" : "OS_VERSION"
+            },
+            {
+              "top" : "LOGIN_KEY",
+              "bottom" : "LOGIN_KEY"
+            },
+            {
+              "top" : "SDK_APP_TYPE",
+              "bottom" : "SDK_APP_TYPE"
+            },
+            {
+              "top" : "UI_EVENT_TIMESTAMP",
+              "bottom" : "UI_EVENT_TIMESTAMP"
+            }
+          ]
+        }
+      },
+      "FILTER5" : {
+        "action" : "filter",
+        "sources" : [
+          "DROP_FIELDS1"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "DATETIME",
+              "field" : "InteractionDateTime",
+              "operator" : "IN_RANGE",
+              "operands" : [
+                {
+                  "argument" : -365,
+                  "type" : "N_DAYS"
+                },
+                {
+                  "argument" : 0,
+                  "type" : "N_DAYS"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "LOAD_DATASET7" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "TARGET_UI_ELEMENT",
+            "PAGE_ENTITY_TYPE",
+            "PARENT_UI_ELEMENT",
+            "ConcatComponentEvent",
+            "UI_EVENT_SOURCE",
+            "Event_Label",
+            "PAGE_APP_NAME",
+            "Event",
+            "Event_Description",
+            "COMPONENT_NAME"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "CustomDataDictionary",
+            "name" : "${App.Datasets.CustomDataDictionary.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN3" : {
+        "action" : "join",
+        "sources" : [
+          "JOIN0",
+          "LOAD_DATASET7"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "CustomDataDictionary.TARGET_UI_ELEMENT",
+              "CustomDataDictionary.PAGE_ENTITY_TYPE",
+              "CustomDataDictionary.PARENT_UI_ELEMENT",
+              "CustomDataDictionary.ConcatComponentEvent",
+              "CustomDataDictionary.UI_EVENT_SOURCE",
+              "CustomDataDictionary.PAGE_APP_NAME",
+              "CustomDataDictionary.Event",
+              "CustomDataDictionary.Event_Description",
+              "CustomDataDictionary.COMPONENT_NAME"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "CustomConcatComponentEvent"
+          ],
+          "rightQualifier" : "CustomDataDictionary",
+          "rightKeys" : [
+            "ConcatComponentEvent"
+          ]
+        }
+      }
+    },
+    "ui" : {
+      "nodes" : {
+        "LOAD_DATASET0" : {
+          "label" : "LightningInteractionWithUsers",
+          "type" : "LOAD_DATASET",
+          "top" : 112,
+          "left" : 112,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "FILTER0" : {
+          "label" : "FilterUserInteractions",
+          "description" : "We filter on user-driven events only, as well as general page views and Apex executions.",
+          "type" : "FILTER",
+          "top" : 112,
+          "left" : 392
+        },
+        "TRANSFORM0" : {
+          "label" : "ComputeLightningInteractions1",
+          "description" : "A series of transformatinos to the LightningInteraction event logs.  Some columns are used directly in the dashboards; some are used in later compute expressions.",
+          "type" : "TRANSFORM",
+          "top" : 112,
+          "left" : 672,
+          "graph" : {
+            "FORMULA0" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "PageName"
+            },
+            "FORMULA1" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "User and Session Key"
+            },
+            "FORMULA2" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Source Object Type"
+            },
+            "FORMULA3" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Source Record Id"
+            },
+            "FORMULA4" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Interaction Date Time"
+            },
+            "FORMULA5" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Concatenate UI Elements"
+            },
+            "FORMULA19" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "ComputeListViewId"
+            },
+            "FORMULA25" : {
+              "label" : "TEMP_PAGE_APP_NAME"
+            },
+            "DROP_FIELDS3" : {
+              "label" : "Drop PAGE_APP_NAME"
+            },
+            "EDIT_ATTRIBUTES0" : {
+              "label" : "Edit Page_APP_NAME"
+            },
+            "FORMULA26" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "CustomConcatComponentEvent"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA0",
+              "target" : "FORMULA1"
+            },
+            {
+              "source" : "FORMULA1",
+              "target" : "FORMULA2"
+            },
+            {
+              "source" : "FORMULA2",
+              "target" : "FORMULA3"
+            },
+            {
+              "source" : "FORMULA3",
+              "target" : "FORMULA4"
+            },
+            {
+              "source" : "FORMULA4",
+              "target" : "FORMULA5"
+            },
+            {
+              "source" : "FORMULA19",
+              "target" : "FORMULA25"
+            },
+            {
+              "source" : "FORMULA25",
+              "target" : "DROP_FIELDS3"
+            },
+            {
+              "source" : "DROP_FIELDS3",
+              "target" : "EDIT_ATTRIBUTES0"
+            },
+            {
+              "source" : "FORMULA26",
+              "target" : "FORMULA19"
+            },
+            {
+              "source" : "FORMULA5",
+              "target" : "FORMULA26"
+            }
+          ]
+        },
+        "TRANSFORM1" : {
+          "label" : "ComputeRelativeLightningInteraction1",
+          "description" : "Compute some additional values using the multi-row (windowing) functions, based on both the Data Dictionary and previous Compute node.\nNo real logic to Component Name with respect to Apex classes and Page Views.",
+          "type" : "TRANSFORM",
+          "top" : 112,
+          "left" : 1512,
+          "graph" : {
+            "FORMULA6" : {
+              "label" : "Target URL"
+            },
+            "FORMULA7" : {
+              "label" : "Row Number"
+            },
+            "FORMULA8" : {
+              "label" : "Total Session Time"
+            },
+            "FORMULA9" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Sequence Number String"
+            },
+            "FORMULA10" : {
+              "label" : "Session End Flag"
+            },
+            "FORMULA14" : {
+              "label" : "PageChangeFlag"
+            },
+            "FORMULA15" : {
+              "label" : "PageChangeFlagDim"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA6",
+              "target" : "FORMULA7"
+            },
+            {
+              "source" : "FORMULA7",
+              "target" : "FORMULA8"
+            },
+            {
+              "source" : "FORMULA8",
+              "target" : "FORMULA9"
+            },
+            {
+              "source" : "FORMULA9",
+              "target" : "FORMULA10"
+            },
+            {
+              "source" : "FORMULA14",
+              "target" : "FORMULA15"
+            },
+            {
+              "source" : "FORMULA10",
+              "target" : "FORMULA14"
+            }
+          ]
+        },
+        "LOAD_DATASET1" : {
+          "label" : "Lightning Interaction Data Dictionary",
+          "type" : "LOAD_DATASET",
+          "top" : 252,
+          "left" : 952,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN0" : {
+          "label" : "JoinDataDictionary",
+          "description" : "Joins the LightningInteractionDataDictionary custom object entries to the event logs so as to label them better.\nSince this operates on the daily delta, some entries may be historical or out-of-date.",
+          "type" : "JOIN",
+          "top" : 112,
+          "left" : 952
+        },
+        "FILTER1" : {
+          "label" : "FilterNonUserClicks",
+          "description" : "Temporarily filter out the non-user clicks events.",
+          "type" : "FILTER",
+          "top" : 252,
+          "left" : 1652
+        },
+        "FILTER2" : {
+          "label" : "FilterUserClicks",
+          "description" : "Filter the user-driven click events, page views and Apex executions.",
+          "type" : "FILTER",
+          "top" : 112,
+          "left" : 1652
+        },
+        "TRANSFORM2" : {
+          "label" : "ComputerleativeLightningInteraction2",
+          "description" : "We compute the time taken to perform a click (Time to Action) and the time spent before another click was made (Stall Time).",
+          "type" : "TRANSFORM",
+          "top" : 112,
+          "left" : 1792,
+          "graph" : {
+            "FORMULA12" : {
+              "label" : "Stall Time"
+            },
+            "FORMULA13" : {
+              "label" : "Time to Action"
+            },
+            "FORMULA16" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Click Count"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA13",
+              "target" : "FORMULA16"
+            },
+            {
+              "source" : "FORMULA12",
+              "target" : "FORMULA13"
+            }
+          ]
+        },
+        "APPEND0" : {
+          "label" : "JoinClicksAndNonClicks",
+          "description" : "Bring all the Lightning Interactions back together.",
+          "type" : "APPEND",
+          "top" : 112,
+          "left" : 1932
+        },
+        "OUTPUT0" : {
+          "label" : "RegisterUnionLogs",
+          "description" : "",
+          "type" : "OUTPUT",
+          "top" : 112,
+          "left" : 2352
+        },
+        "LOAD_DATASET2" : {
+          "label" : "BVA_UsersProfilesRoles",
+          "type" : "LOAD_DATASET",
+          "top" : 252.10000000000002,
+          "left" : 1372,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN1" : {
+          "label" : "JoinInteractionsAndUsers",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 112,
+          "left" : 1372
+        },
+        "LOAD_DATASET3" : {
+          "label" : "LightningPageViewWithUsers",
+          "type" : "LOAD_DATASET",
+          "top" : 252,
+          "left" : 112,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "APPEND1" : {
+          "label" : "AppendPageViewsAndClicks",
+          "description" : "Joining the LightningPageView and LightningInteraction log types together.  This is easy, most columns will auto-match.",
+          "type" : "APPEND",
+          "top" : 112,
+          "left" : 252
+        },
+        "TRANSFORM4" : {
+          "label" : "DropColumns",
+          "description" : "Removing fields for duplicate calculations",
+          "type" : "TRANSFORM",
+          "top" : 112,
+          "left" : 2072,
+          "graph" : {
+            "DROP_FIELDS1" : {
+              "label" : "Drop Columns"
+            }
+          },
+          "connectors" : [ ]
+        },
+        "LOAD_DATASET5" : {
+          "label" : "ListView",
+          "type" : "LOAD_DATASET",
+          "top" : 252,
+          "left" : 811.9,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN2" : {
+          "label" : "JoinInteractionsListViews",
+          "description" : "Add List View Names to LightningPageView logs",
+          "type" : "JOIN",
+          "top" : 112,
+          "left" : 812
+        },
+        "TRANSFORM5" : {
+          "label" : "ComputeLightningInteractions2",
+          "description" : "Includes dropping ListView properties as they are embedded in ComponentName",
+          "type" : "TRANSFORM",
+          "top" : 112,
+          "left" : 1232,
+          "graph" : {
+            "FORMULA20" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "Component Name"
+            },
+            "DROP_FIELDS2" : {
+              "label" : "Drop Columns"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA20",
+              "target" : "DROP_FIELDS2"
+            }
+          ]
+        },
+        "LOAD_DATASET6" : {
+          "label" : "LightningLogger",
+          "type" : "LOAD_DATASET",
+          "top" : 392,
+          "left" : 112,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "FILTER4" : {
+          "label" : "FilterSample",
+          "description" : "Remove sample row from placeholder dataset",
+          "type" : "FILTER",
+          "top" : 391.6,
+          "left" : 252.10000000000002
+        },
+        "TRANSFORM6" : {
+          "label" : "MapLightningInteraction",
+          "description" : "Generate same UI_EVENT_TYPE an UI_EVENT_SOURCE columns from MESSAGE so we can append to LightningInteraction dataset.",
+          "type" : "TRANSFORM",
+          "top" : 392.2,
+          "left" : 392,
+          "graph" : {
+            "FORMULA21" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "UI_EVENT_SOURCE"
+            },
+            "FORMULA22" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "COMPONENT_NAME"
+            },
+            "FORMULA24" : {
+              "parameters" : {
+                "type" : "BASE_FORMULA_UI"
+              },
+              "label" : "UI_EVENT_TYPE"
+            }
+          },
+          "connectors" : [
+            {
+              "source" : "FORMULA21",
+              "target" : "FORMULA22"
+            },
+            {
+              "source" : "FORMULA22",
+              "target" : "FORMULA24"
+            }
+          ]
+        },
+        "APPEND3" : {
+          "label" : "AppendPageViewsIntsLogger",
+          "description" : "",
+          "type" : "APPEND",
+          "top" : 112,
+          "left" : 532
+        },
+        "FILTER5" : {
+          "label" : "FilterTime",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 112,
+          "left" : 2212
+        },
+        "LOAD_DATASET7" : {
+          "label" : "CustomDataDictionary",
+          "type" : "LOAD_DATASET",
+          "top" : 252.10000000000002,
+          "left" : 1092,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN3" : {
+          "label" : "CustomDataDictionary",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 112,
+          "left" : 1092
+        }
+      },
+      "connectors" : [
+        {
+          "source" : "TRANSFORM5",
+          "target" : "JOIN1"
+        },
+        {
+          "source" : "JOIN2",
+          "target" : "JOIN0"
+        },
+        {
+          "source" : "APPEND3",
+          "target" : "TRANSFORM0"
+        },
+        {
+          "source" : "LOAD_DATASET1",
+          "target" : "JOIN0"
+        },
+        {
+          "source" : "TRANSFORM1",
+          "target" : "FILTER1"
+        },
+        {
+          "source" : "TRANSFORM1",
+          "target" : "FILTER2"
+        },
+        {
+          "source" : "FILTER2",
+          "target" : "TRANSFORM2"
+        },
+        {
+          "source" : "TRANSFORM2",
+          "target" : "APPEND0"
+        },
+        {
+          "source" : "FILTER1",
+          "target" : "APPEND0"
+        },
+        {
+          "source" : "FILTER5",
+          "target" : "OUTPUT0"
+        },
+        {
+          "source" : "LOAD_DATASET2",
+          "target" : "JOIN1"
+        },
+        {
+          "source" : "LOAD_DATASET0",
+          "target" : "APPEND1"
+        },
+        {
+          "source" : "APPEND1",
+          "target" : "FILTER0"
+        },
+        {
+          "source" : "LOAD_DATASET3",
+          "target" : "APPEND1"
+        },
+        {
+          "source" : "TRANSFORM0",
+          "target" : "JOIN2"
+        },
+        {
+          "source" : "LOAD_DATASET5",
+          "target" : "JOIN2"
+        },
+        {
+          "source" : "JOIN3",
+          "target" : "TRANSFORM5"
+        },
+        {
+          "source" : "APPEND0",
+          "target" : "TRANSFORM4"
+        },
+        {
+          "source" : "LOAD_DATASET6",
+          "target" : "FILTER4"
+        },
+        {
+          "source" : "FILTER4",
+          "target" : "TRANSFORM6"
+        },
+        {
+          "source" : "FILTER0",
+          "target" : "APPEND3"
+        },
+        {
+          "source" : "TRANSFORM6",
+          "target" : "APPEND3"
+        },
+        {
+          "source" : "TRANSFORM4",
+          "target" : "FILTER5"
+        },
+        {
+          "source" : "JOIN0",
+          "target" : "JOIN3"
+        },
+        {
+          "source" : "LOAD_DATASET7",
+          "target" : "JOIN3"
+        },
+        {
+          "source" : "JOIN1",
+          "target" : "TRANSFORM1"
+        }
+      ],
+      "hiddenColumns" : [ ]
+    },
+    "runMode" : "full"
+  },
+  "lastTime" : null
+}

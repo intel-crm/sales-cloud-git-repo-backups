@@ -1,0 +1,22 @@
+<aura:documentation>
+	<aura:description>
+
+    <p>Card Carousel Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/15/2019</p>
+    <p>CurrentVersion: 1.2</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.1 - Updating Card Carousel so it can be reused in L0</p>
+    <p>1.2 - bug fix for tablet view</p>
+
+    <!-- CHANGELOG -->
+
+  </aura:description>
+</aura:documentation>

@@ -1,0 +1,49 @@
+<apex:page Controller="jiffle.JNEventMeetingList" standardStylesheets="false" showHeader="true" sidebar="false" tabStyle="Jifflenow_Meetings__tab">
+    <apex:include pageName="jiffle__JNSFClassicCSSReset" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.JNStylesheet, 'application.css')}" />
+    <html lang="en">
+    <apex:include pageName="jiffle__JNGlobals" />
+    <div id="sf-app" class="jiffle-meeting-list {!IF(ecsConfigValue,'left-nav-enabled with-left-nav','')}">
+        <div id="iris-main-container" style="display: flex">
+            <div class="selfserve-ui">
+                <apex:outputPanel id="left-nav-container" html-class="left-nav-container" layout="block" rendered="{!ecsConfigValue}"></apex:outputPanel>
+            </div>
+            <div class="iris-react" style="width:100%">
+                <apex:outputPanel layout="block" html-class="event-name-top-heading" rendered="{!ecsConfigValue}"></apex:outputPanel>
+                <div id="root"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        ((function containerForModals() {
+            const ele = document.createElement('div')
+            ele.setAttribute('id', 'sfdc-jiffle-container')
+            ele.setAttribute('class', 'jiffle-meeting-list')
+            const child = document.createElement('div')
+            child.setAttribute('id', 'sfdc-styles')
+            child.setAttribute('class', 'iris-react')
+            ele.appendChild(child)
+            document.body.prepend(ele)
+        })());
+    </script>
+    <script>
+        window.CKEDITOR_BASEPATH = "{!URLFOR($Resource.JNCKeditor, 'ckeditor/')}";
+
+        // set the css class to identify classic env
+		if(!window.isLightningExperience()){
+			document.querySelector('.left-nav-enabled.with-left-nav')?.classList.add('sf-classic')
+		}
+    </script>
+    <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNCKeditor, 'ckeditor/ckeditor.js')}"></script>
+    <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNResources, 'application.js')}"></script>
+    <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNCommons)}"></script>
+    <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNNewMeetingList)}"></script>
+    <script language="javascript" type="text/javascript" src="{!URLFOR($Resource.JNJqueryMigrate)}"></script>
+    <script type="text/javascript">
+        Visualforce.remoting.timeout = 120000;
+    </script>
+
+    </html>
+
+</apex:page>

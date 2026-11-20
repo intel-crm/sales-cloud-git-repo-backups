@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP_EmailContentTranslationMap</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP_EmailContentTranslationMaps</value>
+    </caseValues>
+    <fields>
+        <label><!-- LocaleKey --></label>
+        <name>Core_MDF_LocaleKey__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody1 --></label>
+        <name>Core_MDF_MailBody1__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody2 --></label>
+        <name>Core_MDF_MailBody2__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody3 --></label>
+        <name>Core_MDF_MailBody3__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody4 --></label>
+        <name>Core_MDF_MailBody4__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody5 --></label>
+        <name>Core_MDF_MailBody5__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody6 --></label>
+        <name>Core_MDF_MailBody6__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody7 --></label>
+        <name>Core_MDF_MailBody7__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody8_1 --></label>
+        <name>Core_MDF_MailBody8_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody8 --></label>
+        <name>Core_MDF_MailBody8__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailBody9 --></label>
+        <name>Core_MDF_MailBody9__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter1 --></label>
+        <name>Core_MDF_MailFooter1__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter2 --></label>
+        <name>Core_MDF_MailFooter2__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter3 --></label>
+        <name>Core_MDF_MailFooter3__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter4 --></label>
+        <name>Core_MDF_MailFooter4__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailFooter5 --></label>
+        <name>Core_MDF_MailFooter5__c</name>
+    </fields>
+    <fields>
+        <label><!-- MailSubject --></label>
+        <name>Core_MDF_MailSubject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Translated Program --></label>
+        <name>Core_MDF_Translated_Program__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

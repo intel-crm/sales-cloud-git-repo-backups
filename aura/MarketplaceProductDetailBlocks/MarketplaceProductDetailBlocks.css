@@ -1,0 +1,29 @@
+/* .THIS .break-word {
+  word-break: break-all;
+}
+
+.THIS .specification a {
+  line-height: 1.63;
+}
+.THIS .cIntelButton.inline button.has-body:not(.has-icon) {
+  min-width: 100%;
+}
+.THIS .metriccValues{
+    font-weight: bold;
+    color: blue;
+}
+.THIS .otherText{
+    text-align: justify;
+    font-weight: bold;
+}
+.THIS .entry{
+    border-bottom: 2px solid #bbb;
+}
+.THIS .spacing{
+    line-height: 2;
+}
+@media (min-width: 768px) {
+  .THIS .cIntelButton.inline button.has-body:not(.has-icon) {
+    min-width: 155px;
+  }
+} */

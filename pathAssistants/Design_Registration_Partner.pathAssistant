@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Core_Design_Registration__c</entityName>
+    <fieldName>Workflow_Status__c</fieldName>
+    <masterLabel>Design Registration - Partner</masterLabel>
+    <recordTypeName>Core_Design_Registration_Partner</recordTypeName>
+</PathAssistant>

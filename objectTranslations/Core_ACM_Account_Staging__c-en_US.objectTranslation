@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ACM Account Staging</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ACM Account Staging</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>AccountId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Action Refrence --></label>
+        <name>Account_Action_Refrence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Action --></label>
+        <name>Core_Action__c</name>
+        <picklistValues>
+            <masterLabel>Add CPE</masterLabel>
+            <translation><!-- Add CPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deactivate</masterLabel>
+            <translation><!-- Deactivate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPSECBFlagCheck</masterLabel>
+            <translation><!-- IPSECBFlagCheck --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDMUpdate</masterLabel>
+            <translation><!-- MDMUpdate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REMOVE_MPSHARE</masterLabel>
+            <translation><!-- REMOVE_MPSHARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reactivate</masterLabel>
+            <translation><!-- Reactivate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remove CPE</masterLabel>
+            <translation><!-- Remove CPE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Retry Counter --></label>
+        <name>Core_Retry_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status Details --></label>
+        <name>Status_Details__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

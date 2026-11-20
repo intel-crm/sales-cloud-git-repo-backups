@@ -1,0 +1,48 @@
+<template>
+  <div class="allContent">
+    
+     <div  style="background-color:white;">
+      <lightning-layout multiple-rows >
+        
+        <lightning-layout-item class ="content"  size="12" medium-device-size="6" large-device-size="6">
+            <div> 
+           </br> </br>
+					<div class="vl" ></div> 
+            <h1 style= "font-size: x-large;">Sign In</h1> 
+            
+            </div>
+            <br>
+          </br></br>
+            <span class="slds-icon_container slds-icon-standard-macros" style="background-color: #00aeef;">
+                <lightning-icon icon-name="utility:chevronright"  size="small" inverse variant="inverse"></lightning-icon></span>&nbsp;
+                <a href={label.signInURl} style="text-decoration:underline;color: #0071c5;
+    font-size: medium;" >&nbsp;Already enrolled ? - Sign In here </a>
+    </br>
+    </br>
+       <a href={label.chatSupport} style="text-decoration:underline;color: #0071c5;
+    font-size: medium;">Contact customer support </a>
+    </br></br>
+    <a href={label.faqLink} style="text-decoration:underline;color: #0071c5;
+    font-size: medium;">Frequently Asked Questions </a>
+        </lightning-layout-item>
+        <lightning-layout-item class ="content" size="12" medium-device-size="6" large-device-size="6">
+            <div>
+            </br></br>
+             <h1 style= "font-size: x-large;">Enroll</h1>
+
+             </div>
+             <br>
+             <h1>If you don't already have access to the Intel® FPGA Self Service Licensing Center</br> (SSLC), <b>enroll</b> to get an account.</h1>
+             </br></br>
+              <span class="slds-icon_container slds-icon-standard-macros" style="background-color: #00aeef;">
+                <lightning-icon icon-name="utility:chevronright"  size="small" inverse variant="inverse"></lightning-icon></span>&nbsp;
+                <a href={label.regLink} style="color: #0071c5;
+    font-size: medium;" >&nbsp;Enroll for Intel® FPGA Self Service Licensing </br>Center (SSLC) </a>
+  </br> </br>
+  <h1>This enrollment form is specific to external users only and not for Intel employees.Please refer to the<a href={label.accDenied} style="color: #0071c5;" >&nbsp; help document &nbsp; </a> for further details.</h1>
+        </lightning-layout-item>
+     
+      </lightning-layout>
+    </div>
+    </div>
+</template>

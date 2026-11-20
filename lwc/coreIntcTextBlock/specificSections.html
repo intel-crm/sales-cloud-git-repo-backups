@@ -1,0 +1,11 @@
+<template>
+  <div class="text-block-container" data-expanded={expanded} data-contained={contained}>
+      <div class="text-block-content" data-size={size}>
+          <lightning-formatted-rich-text value={specificFormattedText}></lightning-formatted-rich-text>
+      </div>
+      <button class="link-text" onclick={handleMoreClick} expanded={expanded} tabindex="0" aria-label={ariaLabel}>
+          <span>{label}</span>
+          <lightning-icon icon-name={iconName} class="slds-m-left_x-small" size="x-small"></lightning-icon>
+      </button>
+  </div>
+</template>

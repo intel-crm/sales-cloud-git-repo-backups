@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This custom permission will allow users to release claim from Criteria and Manual Hold.</description>
+    <isLicensed>false</isLicensed>
+    <label>Permission to Release Criteria and Manual Hold</label>
+</CustomPermission>

@@ -1,0 +1,43 @@
+<aura:documentation>
+  <aura:description>
+    <p>IPA Sticky Tabset Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 6/05/2020</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr />
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+    <p>Sticky Tabset Component is responsible for calculating the heights and offsets of the IPAStickyTab contained
+      within this component. It will generate the floating navigation on data update.
+      It will then be responsible for showing the floating navigation as well as selecting which title is within the
+      viewing area.
+    </p>
+    <p>
+      This can be found in L3-partner detail and Marketplace FAQ.
+    </p>
+<pre>
+&lt;c:IPAStickyTabset aura:id="isgtabs"&gt;
+  &lt;c:IPAStickyTab label="Label 1"&gt;
+    &lt;h2&gt;Tab Heading 3&lt;/h2&gt;
+    Tab Content 3
+  &lt;/c:IPAStickyTab&gt;
+  &lt;c:IPAStickyTab label="Label 2"&gt;
+    &lt;h2&gt;Tab Heading 2&lt;/h2&gt;
+    Tab Content 3
+  &lt;/c:IPAStickyTab&gt;
+  &lt;c:IPAStickyTab label="Label 1"&gt;
+    &lt;h2&gt;Tab Heading 3&lt;/h2&gt;
+    Tab Content 3
+  &lt;/c:IPAStickyTab&gt;
+&lt;/c:IPAStickyTabset&gt;
+</pre>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr />
+    <p>Change Log</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

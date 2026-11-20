@@ -1,0 +1,40 @@
+<aura:component extensible="true" abstract="true">
+
+  <!-- DO NOT CHANGE -->
+  <ltng:require scripts="{!$Resource.PMP_Resources + '/libraries/redux.js'}"
+      afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+
+  <aura:attribute name="__debugMode" type="boolean" description="Toggle logging debug info to the console. (Turn off for production)"/>
+
+  <!-- DEFAULT ATTRIBUTES - DO NOT CHANGE OR OVERRIDE -->
+  <aura:attribute name="appState" type="object"
+    description="This represents the UI state of the application" />
+  <aura:attribute name="state" type="object"
+    description="This represents a slice of the app state based on the storeName" />
+
+  <!-- SUBCOMPONENT ATTRIBUTES - DO NOT CHANGE HERE -->
+  <!-- THESE ARE SET/OVERRIDDEN IN SUBCOMPONENTS -->
+  <aura:attribute name="storeName" type="string"
+    description="Optional - used to specify a storeName or slice of the app state within a subcomponent" />
+  <aura:attribute name="mapStateToAttributes" type="object" />
+
+  <!-- DO NOT CHANGE -->
+  {!v.body}
+
+
+  <!-- BELOW CAN BE MODIFIED -->
+
+  <!-- ADD REDUX ACTION COMPONENTS HERE (with aura:id="actions") -->
+  <c:MarketplaceActionsCompareTray  aura:id="actions" />
+  <c:MarketplaceActionsSearch       aura:id="actions" />
+  <c:MarketplaceActionsSettings     aura:id="actions" />
+
+  <!-- ADD ALL REDUCER SUBCOMPONENTS HERE -->
+  <!-- THESE MANAGE SPECIFIC STORES / SLICES OF THE APP STATE -->
+  <!-- (include aura:id="reducer", storeName=string and optional cache=boolean)-->
+  <c:MarketplaceReducerCompareTray  aura:id="reducer"   storeName="CompareTray"   cache="true" />
+  <c:MarketplaceReducerSearch       aura:id="reducer"   storeName="Search"        cache="false" />
+  <c:MarketplaceReducerSettings     aura:id="reducer"   storeName="Settings"      cache="false" />
+
+
+</aura:component>

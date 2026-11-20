@@ -1,0 +1,15 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="theme" type="string" default="default" description="Currently there are three themes: default, cards, and highlight" />
+  <aura:attribute name="class" type="string" description="Optional class value" />
+
+  <aura:attribute name="activeSectionName" type="string" description="Internal"/>
+  <aura:attribute name="allowMultipleSectionsOpen" type="boolean" default="true" description="Allows multiple sections to be open at once" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div class="{!'accordionTheme-' + v.theme + ' ' + v.class}">
+    {!v.body}
+  </div>
+
+</aura:component>

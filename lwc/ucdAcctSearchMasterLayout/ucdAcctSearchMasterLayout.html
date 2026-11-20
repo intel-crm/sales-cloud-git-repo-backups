@@ -1,0 +1,14 @@
+<template>
+    <div class="background">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <template if:true={acctCreateStep}>
+                    <c-ucd-create-account onacctcreatebackclick={acctCreateBackClickHandler}
+                        acctformdetails={acctDetails}>
+                    </c-ucd-create-account>
+                </template>
+                
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

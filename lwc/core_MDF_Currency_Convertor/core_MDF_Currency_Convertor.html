@@ -1,0 +1,93 @@
+<template>
+    <!-- Width control wrapper -->
+    <div class="slds-grid slds-grid_align-center">
+        <div class="slds-size_8-of-12">
+
+            <lightning-card>
+
+                <!-- Header -->
+                <div slot="title" class="header-center">
+                    <span class="header-text">
+                        {currencyConverterHeader}
+                    </span>
+                    <lightning-helptext
+                        content={currencyConverterHelp}
+                        class="header-help">
+                    </lightning-helptext>
+                </div>
+
+                <div class="slds-p-around_x-small">
+                    <div class="slds-grid slds-gutters_x-small slds-align-top">
+
+                        <!-- Left Column -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-combobox
+                                label={currencyLabel}
+                                value={selectedCurrency}
+                                options={currencyOptions}
+                                onchange={handleCurrencyChange}
+                                class="large-input">
+                            </lightning-combobox>
+
+                            <lightning-input
+                                label={currencyLabel}
+                                class="large-input slds-m-top_small"
+                                value={usdLabel}
+                                disabled>
+                            </lightning-input>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="slds-col slds-size_1-of-2">
+
+                            <!-- Input Amount -->
+                            <lightning-input
+                                type="number"
+                                label={amountLabel}
+                                class="large-input"
+                                min="0"
+                                step="0.01"
+                                value={amount}
+                                onchange={handleAmountChange}>
+                            </lightning-input>
+
+                            <!-- Converted Amount + Copy Button in same line -->
+                            <div class="slds-m-top_small amount-with-copy">
+                                <!-- Converted Amount -->
+                                <div class="amount-field">
+                                    <lightning-input
+                                        label={amountLabel}
+                                        class="large-input"
+                                        value={convertedAmount}
+                                        disabled>
+                                    </lightning-input>
+                                </div>
+
+                                <!-- Copy Button with Copy Icon First -->
+                                <div class="copy-button-container">
+                                    <div class="custom-button-wrapper">
+                                        <button 
+                                            class="slds-button slds-button_outline-brand copy-btn-custom"
+                                            onclick={handleCopyAmount}
+                                            title={copyAmountTooltipLabel}>
+                                            <lightning-icon 
+                                                icon-name={copyIcon} 
+                                                size="x-small" 
+                                                class="copy-icon-inline">
+                                            </lightning-icon>
+                                            <span class="button-text">{copyAmountLabel}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </lightning-card>
+
+        </div>
+    </div>
+</template>

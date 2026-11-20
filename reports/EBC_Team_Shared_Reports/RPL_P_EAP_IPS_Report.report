@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_CUSTENT_ID</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Case.Core_IPS_Age__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <description>to build Transition file!</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_CUSTENT_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>a2B3b00000BEvIL,a2B3b00000BEvIB,a2B3b00000BEvIG,a2B3b00000BEvIQ,a2B3b00000BEvIV,a2B3b00000BEvIa,a2B3b00000BEvIf,a2B3b00000BEvkF,a2B3b00000BEvIz,a2B3b00000BEvIp,a2B3b00000BEvIu,a2B3b00000BEvJ4,a2B3b00000BEvJ9,a2B3b00000BEvJE,a2B3b00000BEvJJ,a2B3b00000BEvJO,a2B3b00000BEvJT,a2B3b00000BEvJY,a2B3b00000BEvJd,a2B3b00000BEvJi,a2B3b00000BEvJn,a2B3b00000BEvJs,a2B3b00000BEvJx,a2B3b00000BEvK2,a2B3b00000BEvKC,a2B3b00000BEvK7,a2B3b00000BEvKH,a2B3b00000BEvJK,a2B3b00000BEvKM,a2B3b00000BEvKR,a2B3b00000BEvKb,a2B3b00000BEvKW,a2B3b00000BEvKg,a2B3b00000BEvKl,a2B3b00000BEvKq,a2B3b00000BEvL0,a2B3b00000BEvLF,a2B3b00000BEvL5,a2B3b00000BEvLK,a2B3b00000BEvLP,a2B3b00000BEvLU,a2B3b00000BEvKI,a2B3b00000BEvLZ,a2B3b00000BEvLe,a2B3b00000BEvLj,a2B3b00000BEvLo,a2B3b00000BEvLt,a2B3b00000BEvM3,a2B3b00000BEvLy,a2B3b00000BEvM8,a2B3b00000BEvMD,a2B3b00000BEvMI,a2B3b00000BEvLA,a2B3b00000BEvMw,a2B3b00000BEvMr,a2B3b00000BEvOn</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>RPL-P EAP IPS Report</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList@Case.Core_IPS_Project_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

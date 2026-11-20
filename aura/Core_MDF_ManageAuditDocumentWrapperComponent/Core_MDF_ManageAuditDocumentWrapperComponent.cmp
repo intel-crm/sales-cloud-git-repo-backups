@@ -1,0 +1,148 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+    access="global" controller="Core_MDF_AuditDocumentHelper_Revamp">
+    <aura:attribute name="isCoGtm" type="Boolean" default="false" /> 
+    <aura:attribute name="openManageAuditDocPopup" type="Boolean" default="false"
+        description="Flag to open and close the popup" />
+    <aura:attribute name="claimTitle" type="String" description="It holds the title of the claim" />
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="isDocSubmissionPopupVisible" type="Boolean" default="false"
+        description="Flag to open and close the doc submission confirmation popup" />
+    <aura:attribute name="claimDetails" type="PartnerFundClaim"
+        description="Holds the claim details sent from parent wrapper" />
+    <aura:attribute name="isPOPMandatory" type="Boolean" default="false"
+        description="Differeniates legacy/non-legacy claim" />
+    <aura:attribute name="existingAuditDocuments" type="List" description="Holds the audit document list" />
+    <aura:attribute name="auditDocumentListToInsertOrUpdate" type="Object[]" />
+    <aura:attribute name="spinner" type="Boolean" default="false" />
+    <aura:attribute name="showConfirmationPopupForPIC" type="boolean" default="false"
+        description="Boolean value used to display the PIC confirmation popup" />
+    <aura:attribute name="switchClaimStatusToPICPending" type="boolean" default="false"
+        description="set to true when yes is selected from PIC confirmation popup" />
+    <aura:attribute name="isClaimEligibleForPICReview" type="Boolean" default="false" />
+    <aura:attribute name="actyPOPDescReq" type="Boolean" default="false" />
+    <aura:attribute name="budgetType" type="String" default=""
+        description="Stores the value of budget type from the parent component" />
+    <aura:attribute name="programName" type="String" description="to store the program value in case of bulk claim" />
+    <aura:attribute name="claimRefName" type="string" description="Holds the claim batch record claim name" />
+    <aura:attribute name="auditDocumentList" type="List" default="[]" />
+    <aura:attribute name="isBulkClaim" type="Boolean" default="false" />
+    <aura:attribute name="showCloseConfirmationPopup" type="Boolean" default="false" />
+    <aura:attribute name="isThirdPartyClaim" type="Boolean" default="false"
+        description="indicates whether the claim belongs to 3rd party or not" />
+    <aura:attribute name="isDocSubmissionMandatory" type="Boolean" default="false" />
+    <aura:attribute name="thirdPartyWrapper" type="Object" />
+    <aura:attribute name="isAllMandatoryDocumentTypesSubmitted" type="Boolean" default="false" />
+    <aura:attribute name="disableSubmitButton" type="Boolean" default="true" />
+    <aura:attribute name="isLegacyClaim" type="Boolean" default="false"
+        description="Indicates whether the claim is legacy or not" />
+    <aura:attribute name="isOutcomeBasedAccountBasedAct" type="Boolean" default="false" />
+
+    <!--Aura Handlers-->
+    <!--To handle the submit and close from document submission confirmation popup-->
+    <aura:handler name="popSubmitEvent" event="c:popSubmitEvent" action="{!c.handlePopSubmitEvent}" />
+    <aura:handler name="popCloseEvent" event="c:popCloseEvent" action="{!c.handlePopCloseEvent}" />
+    <!--To get the 3rd party detail(fired from Core_MDF_ManageAuditDocument_Revamp)-->
+    <aura:handler event="c:Core_MDF_ThirdPartyPOPEvent" action="{!c.handle3rdPartyPOPEvent}" />
+    <!--Used to enable/disable button(fired from Core_MDF_ManageAuditDocument_Revamp)-->
+    <aura:handler name="enableSubmitButtonEvent" event="c:Core_MDF_EnableSubmitbuttonEvent"
+        action="{!c.handleSubmitButtonEvent}" />
+    <!--Register Event-->
+    <!--To set the 3rd detail on claim stage record when claim is created from Bulk claim-->
+    <aura:registerEvent name="bulkPOPUploadEvent" type="c:Core_MDF_BulkPOPUploadEvent" />
+    <!--Modal Popup implementation-->
+    <aura:if isTrue="{!v.openManageAuditDocPopup}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-modal_medium slds-fade-in-open ManageAuditDocumentWrapper">
+            <!--Spinner Implementation-->
+            <aura:if isTrue="{!v.spinner}">
+                <lightning:spinner alternativeText="Loading" size="medium" class="spnr" />
+            </aura:if>
+            <!--Manage Audit Document Wrapper Popup-->>
+            <div class="slds-modal__container">
+                <!--Header-->
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        {!$Label.c.Core_MDF_Upload_Documents}</h1>
+                    <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeManageAuditDocPopup }"
+                        alternativeText="close" variant="bare" class="slds-button slds-button_icon slds-modal__close"
+                        size="small" />
+                </div>
+                <div class="slds-modal__content slds-var-p-around_medium manageAuditDocumentPopup_modalContent"
+                    id="modal-content-id-1">
+                    <!--Render Manage Audit document section within the content/body of the manage audit document wrapper popup-->
+                    <c:Core_MDF_ManageAuditDocument_Revamp isOutcomeBasedAccountBasedAct = "{!v.isOutcomeBasedAccountBasedAct}" recordIdForPop="{!v.recordId}" budgetType="{!v.budgetType}"
+                        programName="{!v.programName}" aura:id="manageAuditComponent" claimRefName="{!v.claimRefName}"
+                        actyPOPDescReq="{!v.actyPOPDescReq}" simpleNewClaim="{!v.claimDetails}"
+                        existingAuditDocuments="{!v.existingAuditDocuments}" />
+                </div>
+                <!--footer-->
+                <div class="slds-modal__footer">
+                                            
+                    <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Close}"
+                        title="{!$Label.c.Core_MDF_Close}" onclick="{!c.closeManageAuditDocPopup}" />
+                        <lightning:button variant="Brand" 
+                        label="{!v.isCoGtm ? $Label.c.Core_MDF_Save_Button : (and(v.isOutcomeBasedAccountBasedAct, v.claimDetails.Core_MDF_Status__c != 'Pending Account Manager Clarification') ? $Label.c.Core_MDF_Save_Button : $Label.c.Core_MDF_Submit_Button_Label)}"
+                        title="{!v.isCoGtm ? $Label.c.Core_MDF_Save_Button : (and(v.isOutcomeBasedAccountBasedAct, v.claimDetails.Core_MDF_Status__c != 'Pending Account Manager Clarification') ? $Label.c.Core_MDF_Save_Button : $Label.c.Core_MDF_Submit_Button_Label)}" onclick="{!c.handleClickOnSubmit}"
+                        disabled="{!v.disableSubmitButton}" /> <!--Ajinkya TWC3117-16656 TWC3117-18655 added isCoGtm -->
+                        
+                </div>
+            </div>
+            <!--Confirm upload Modal - Document Submission confirmation popup-->
+            <aura:if isTrue="{!v.isDocSubmissionPopupVisible}">
+                <c:Core_MDF_UploadDocConfirmation
+                    isThirdParty="{!v.isThirdPartyClaim}"
+                    isCoGtm="{!v.isCoGtm}"
+                    isOutcomeBasedAccountBasedAct="{!v.isOutcomeBasedAccountBasedAct}"
+                    claimStatus="{!v.claimDetails.Core_MDF_Status__c}"/> <!--Ajinkya TWC3117-16656-->
+            </aura:if>
+
+            <!--Confirmation popup  to set the claim for PIC Review - Submit for PIC popup -->
+            <aura:if isTrue="{!v.showConfirmationPopupForPIC}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
+                    aria-describedby="modal-content-id-2"
+                    class="slds-modal slds-fade-in-open slds-modal_small slds-text-align_center">
+                    <div class="slds-modal__container submitForPIC-modal">
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
+                            	{! if(v.isOutcomeBasedAccountBasedAct, $Label.c.Core_MDF_Submit_For_Payment_Clearance, $Label.c.Core_MDF_Submit_For_PIC )}    
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                            <div>{! if(v.isOutcomeBasedAccountBasedAct, $Label.c.Core_MDF_Submit_For_Payment_Confirmation_Message, $Label.c.Core_MDF_Submit_For_PIC_Confirmation_Message )}</div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_DQNo}"
+                                title="{!$Label.c.Core_MDF_DQNo}" onclick="{!c.closePICConfirmationPopup}" />
+                            <lightning:button variant="brand" label="{!$Label.c.Core_MDF_DQYes}"
+                                title="{!$Label.c.Core_MDF_DQYes}" onclick="{!c.updateClaimStatusToPICPending}" />
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+            <!--close upload Modal - Close confirmation popup on click of close-->
+            <aura:if isTrue="{!v.showCloseConfirmationPopup}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true"
+                    aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container" id="confirmation-modal">
+                        <header class="slds-modal__header">
+                            <h2 class="slds-text-heading_medium">{!$Label.c.Core_MDF_Close}</h2>
+                        </header>
+                        <div class="slds-modal__content slds-var-p-around_medium slds-text-align_center">
+                            <aura:unescapedHtml value="{!v.isCoGtm ? $Label.c.Core_MDF_DocUploadClose : $Label.c.Core_MDF_DocUploadCancel}"></aura:unescapedHtml> <!--TWC3117-18655 added isCoGtm -->
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="Brand" class="slds-var-m-right_small" label="{!$Label.c.Core_OK}"
+                                onclick="{! c.closeManageAuditDocPopupFromCloseConfModal }" />
+                            <lightning:button variant="neutral" label="{!$Label.c.Core_Cancel_Button}"
+                                onclick="{! c.reopenManageAuditDocPopup}" />
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" aura:id="backdropForUploadcancelPopup"></div>
+            </aura:if>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+</aura:component>

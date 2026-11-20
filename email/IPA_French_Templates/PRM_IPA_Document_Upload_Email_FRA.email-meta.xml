@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload Email_FRA</name>
+    <style>none</style>
+    <subject>Alliance partenaire Intel® : licence commerciale requise</subject>
+    <textOnly>Nous vous remercions d&apos;avoir posé votre candidature à l&apos;Alliance partenaire Intel®!
+
+
+Nous vous remercions d&apos;avoir posé votre candidature à l&apos;Alliance partenaire Intel®.
+
+Lors du traitement de votre demande, nous n&apos;avons pas été en mesure de vérifier les informations relatives à votre entreprise sur la base des données fournies.Par conséquent, nous vous prions de bien vouloir répondre à ce courriel en joignant l&apos;un des documents suivants au format PDF, JPEG ou PNG afin de compléter cette vérification :
+
+Certificat de l&apos;entreprise (indiquant que l&apos;adresse de votre entreprise correspond à celle de votre demande)
+Certificat fiscal (indiquant que l&apos;adresse de votre entreprise correspond à celle de votre demande)
+Site Web de l&apos;entreprise (indiquant que l&apos;adresse de votre entreprise correspond à celle de votre demande)
+
+Veuillez répondre à cet e-mail avec le ou les documents ci-joints dans les 7 jours pour éviter le rejet automatique de votre demande. Une fois votre réponse reçue, nous demanderons à notre équipe de réexaminer votre demande.
+
+En vous remerciant de votre coopération,
+
+
+
+
+L&apos;équipe de l&apos;Alliance partenaire Intel®
+
+Veuillez noter que cette boîte de réception est traitée et surveillée automatiquement.
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© 2026 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
+Confidentialité &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

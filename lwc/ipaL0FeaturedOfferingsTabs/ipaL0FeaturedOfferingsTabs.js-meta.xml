@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <masterLabel>IPA Featured Offerings Tabs</masterLabel>
+    <description>Featured Offerings Tabs for the L0 Marketplace Page</description>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Loading Heading (First Tab)" description="While the tabs are loading, since they are dynamic, set the first tab heading text." name="loadingFirstTabHeading" type="String" default="First Tab"/>
+            <property label="Lazy Render Cards" description="Lazy render cards for increased performance (Tabs are lazy rendered by default). NOTE: Cards can have variable height, so lazy rendering may result in the page jumping w/ recalculated height." name="lazyRender" default="false" type="Boolean"/>
+            <property label="Auto Scroll Delay (ms) - DEACTIVATED" description="To turn off autoscroll, set this value to 0." name="autoScroll" type="Integer"/>
+            <property label="Deprecated Attribute" name="mainHeading" type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

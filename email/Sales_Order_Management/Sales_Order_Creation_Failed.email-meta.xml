@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Sales Order Creation Failed</name>
+    <style>none</style>
+    <subject>Order Creation Failed</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Your new order has been created successfully. Please refer to {!Order.OrderNumber} for order number.
+
+Thanks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

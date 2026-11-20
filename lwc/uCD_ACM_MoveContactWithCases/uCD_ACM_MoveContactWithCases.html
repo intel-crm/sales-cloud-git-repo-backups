@@ -1,0 +1,217 @@
+<template>
+  <div class="slds-page-header">
+    <div class="slds-page-header__row">
+      <div class="slds-page-header__col-title">
+        <div class="slds-media">
+          <div class="slds-media__figure">
+            <lightning-icon icon-name="standard:contact" alternative-text="Contact Move"
+              title="Contact Move"></lightning-icon>
+          </div>
+          <div class="slds-media__body">
+            <div class="slds-page-header__name">
+              <div class="slds-page-header__name-title">
+                <h1>
+                  <span class="slds-page-header__title slds-truncate"
+                    title="Account : CompuCom Canada">{accountName}</span>
+                </h1>
+              </div>
+            </div>
+            <p class="slds-page-header__name-meta">{recordName}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <lightning-card>
+      <template if:true={userAccess}>
+      <div class="spinner">
+        <template if:true={isLoading}>
+          <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+          </lightning-spinner>
+        </template>
+      </div>
+      <template if:true={hidePopUpWarning}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+          aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container">
+            <!-- Modal/Popup Box LWC header here -->
+            <header class="slds-modal__header">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                onclick={handleCloseModalPopup}>
+                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                  size="small"></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+              </button>
+              <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{popUpHeading}</h2>
+            </header>
+            <!-- Modal/Popup Box LWC body starts here -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+              <p><b>{moveAccoutWarningMessage1}
+                </b></p>
+              <p><b>{moveAccoutWarningMessage2}
+                </b></p>
+            </div>
+            <!-- Modal/Popup Box LWC footer starts here -->
+            <footer class="slds-modal__footer">
+              <button class="slds-button slds-button_neutral" onclick={handleCloseModalPopup}
+                title="Cancel">Cancel</button>
+              <button class="slds-button slds-button_brand" onclick={submitDetailsPopup} title="OK">OK</button>
+            </footer>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </template>
+      <template if:false={gecCaseFound}>
+        <div class="slds slds-grid slds-wrap slds-p-around_medium slds-align_absolute-center">
+          <!-- Heading -->
+          <div class="slds-form-element fields-lable-inline">
+            <div class="slds-page-header__name-meta">
+              Identify the Account to move the selected Contact to:
+            </div>
+          </div>
+          <lightning-record-edit-form object-api-name="Contact">
+            <lightning-input-field class="search-box" field-name="AccountId" data-type="input-field" value={accountId}
+              name="accountId" onchange={handleChangeAction}></lightning-input-field>
+          </lightning-record-edit-form>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="fields-lable-inline">
+            <lightning-input type="checkbox" label="Keep Entitlements intact with transfer"
+              disabled={enabledEntiSelected} onchange={handleEntitlementChange}>></lightning-input>
+          </div>
+          <div class="fields-lable-inline">
+            <lightning-button variant="brand" label="Save" onclick={handleSaveClick} class="slds-m-right_small">
+            </lightning-button>
+            <lightning-button variant="neutral" label="Cancel" onclick={backToContact}>
+            </lightning-button>
+          </div>
+        </div>
+      </template>
+      <div class="warning-text">
+        <lightning-icon class="blue-non-utility-icon" icon-name="utility:warning" size="small"
+          alternative-text="warning" style="font-size: 20px;"></lightning-icon>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>Warning : Note that if Cases or Accounts are on GEC hold then no movement can happen.</span>
+      </div>
+      <br>
+      <template if:true={gecCaseFound}>
+        <div class="error-text">
+          <lightning-icon class="blue-non-utility-icon" icon-name="utility:error" size="small" alternative-text="error"
+            style="font-size: 20px;"></lightning-icon>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>Error : GEC Case Found, moving contact is not allowed.</span>
+        </div>
+        <br>
+      </template>
+      <div class="custom-header slds-p-around_medium">
+        <h2 class="headers">Partner Contact Relationship</h2>
+      </div>
+      <br>
+      <template if:true={PCRelationshipData}>
+        <div class="datatable-box">
+          <lightning-datatable key-field="Id" data={PCRelationshipData} columns={PCRelationshipColumns}
+            hide-checkbox-column onrowaction={handleRowAction} sorted-by={sortedBy} sorted-direction={sortedDirection}
+            onsort={handleSort} class="frozen-header-table">
+          </lightning-datatable>
+        </div>
+      </template>
+      <br>
+      <div class="custom-header slds-p-around_medium">
+        <h2 class="headers">Subscriptions</h2>
+      </div>
+      <br>
+      <template if:true={subscriptionsData}>
+        <div class="datatable-box">
+          <lightning-datatable key-field="Id" data={subscriptionsData} columns={subscriptionsColumns}
+            hide-checkbox-column onrowaction={handleRowAction} sorted-by={sortedBy} sorted-direction={sortedDirection}
+            onsort={handleSort} class="frozen-header-table">
+          </lightning-datatable>
+        </div>
+      </template>
+      <br>
+      <div class="custom-header slds-p-around_medium">
+        <h2 class="headers">Entitlements</h2>
+      </div>
+      <br>
+      <div class="datatable-box">
+        <lightning-datatable key-field="Id" data={entitlementData} columns={entiColumns} hide-checkbox-column
+          onrowaction={handleRowAction} sorted-by={sortedBy} sorted-direction={sortedDirection} onsort={handleSort}
+          class="frozen-header-table">
+        </lightning-datatable>
+      </div>
+
+      <br>
+
+      <div class="slds slds-grid slds-wrap slds-p-around_medium">
+        <!-- Heading -->
+        <div class="slds-form-element" style="margin-top: 2.2%;">
+          <div class="slds-page-header__name-meta">
+            Select to transfer Cases to another Contact (on the original Account) :
+          </div>
+        </div>
+        <div style="margin-top: 2.2%;">
+          <lightning-input type="checkbox" onchange={handleCaseContChecked}></lightning-input>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="margin-top: 2%;">
+          <span class="slds-form-element__label"> Identify the Contact to transfer the Cases to: </span>
+        </div>
+        
+<c-core_-m-d-f_-searchable_-dropdownlist
+    place-holder="Search Contact...."
+    input-data-list={contactsListforCaseMove}
+    field-disabled={disableDropdown}
+    onselecteditem={handleSelectContCase}
+    >
+</c-core_-m-d-f_-searchable_-dropdownlist>
+
+      </div>
+
+      <template if:true={casewithoutProjData}>
+        <div class="custom-header slds-p-around_medium">
+          <h2 class="headers">Cases without Projects that can remain with the orginal Account:</h2>
+        </div>
+        <br>
+        <div class="datatable-box">
+          <lightning-datatable key-field="Id" data={casewithoutProjData} columns={caseswithoutProdColumns}
+            hide-checkbox-column onrowaction={handleRowAction} sorted-by={sortedBy} sorted-direction={sortedDirection}
+            onsort={handleSort} class="frozen-header-table">
+          </lightning-datatable>
+        </div>
+      </template>
+
+      <br>
+      <template if:true={caseswithProjData}>
+        <div class="custom-header slds-p-around_medium">
+          <h2 class="headers">Cases with Projects that require manual intervention to move to new Account or Contact:
+          </h2>
+        </div>
+        <br>
+
+        <div class="datatable-box">
+          <lightning-datatable key-field="Id" data={caseswithProjData} columns={caseswithProdColumns}
+            hide-checkbox-column onrowaction={handleRowAction} sorted-by={sortedBy} sorted-direction={sortedDirection}
+            onsort={handleSort} class="frozen-header-table">
+          </lightning-datatable>
+        </div>
+      </template>
+      <br>
+      <div class="custom-header slds-p-around_medium">
+        <h2 class="headers">Premier Support Projects: </h2>
+      </div>
+      <br>
+      <div class="datatable-box">
+        <lightning-datatable key-field="Id" data={ipsProjectData} columns={ipsProjectColumns} hide-checkbox-column
+          onrowaction={handleRowAction} sorted-by={sortedBy} sorted-direction={sortedDirection} onsort={handleSort}
+          class="frozen-header-table">
+        </lightning-datatable>
+      </div>
+    </template>
+    <template if:false={userAccess}>
+        <h2 class="slds-text-align_center slds-text-heading_large slds-p-around_medium">Insufficient Privileges</h2>
+          <p class="slds-text-align_center"><span class=" slds-text-color_error">You do not have the level of access necessary to perform the operation you requested. 
+            Please contact the owner of the record or your administrator if access is necessary.</span>
+        </p>
+    </template>
+    </lightning-card>
+  </div>
+</template>

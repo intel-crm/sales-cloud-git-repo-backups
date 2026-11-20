@@ -1,0 +1,107 @@
+/* Search */
+.THIS {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid t(gray);
+    background: white;
+}
+.THIS input {
+    border-color: transparent;
+    width: calc(100%);
+}
+.THIS input[type="text"] {
+    font-size: 0.875em;
+}
+.THIS .searchLabel {
+    display: inline-block;
+    margin-left: 30px;
+    padding: 3px 0;
+    width: calc(100% - 30px);
+}
+.THIS .searchClear,
+.THIS .searchButton {
+    position: absolute;
+    border: 0 none;
+    background: none;
+    display: inline-block;
+}
+.THIS .searchButton {
+    left: 0;
+}
+.THIS .searchClear {
+    position: absolute;
+    right: 0;
+}
+.THIS .slds-icon_container {
+    line-height: 26px;
+}
+.THIS .slds-icon-text-default {
+    fill: t(gray);
+}
+
+.THIS .typeAheadOptions {
+    position: absolute;
+    top: 30px;
+    left: -1px;
+    background: white;
+    border: 1px solid t(gray);
+    border-radius: 0 0 2px 2px;
+    min-width: calc(100% + 2px);
+    z-index: 50; /* Changed via merge : previous value (3000) - Prabuddh */
+    padding: 0.75rem;
+    max-height: 25rem;
+    overflow-y: scroll;
+    min-height: 3rem;
+}
+.THIS .anchorCls {
+    color: #0071c5 !important;
+    margin-bottom: 0.5rem;
+    margin-left: -0.5rem;
+}
+.THIS .typeAheadOptions a {
+    white-space: nowrap;
+    display: block;
+    padding: 6px 3px 6px 10px;
+    color: t(black);
+    transition: none; /*Added after 10/11 Merge - Previously no transition - Manjula*/
+    color: #555555; /*Added by Ashish */
+    font-weight: 400; /* Added by Ashish */
+}
+.THIS .typeAheadOptions a:active,
+.THIS .typeAheadOptions a:focus {
+    color: t(white);
+    background-color: t(digitalBlue);
+}
+.THIS .typeAheadOptions .typeAheadIndent {
+    padding-left: 15px;
+}
+.THIS input[type="search"] {
+    -webkit-appearance: searchfield;
+}
+.THIS input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
+.THIS input[type="text"]::-ms-clear {
+    display: none;
+}
+
+.THIS .searchLabel input,
+.THIS .searchLabel {
+    color: t(darkGray);
+}
+
+@media (max-width: 767px) {
+    
+    .THIS {
+        margin: 1rem;
+        padding: .563rem 0;
+    }
+    .THIS button {
+        padding: 0 .8rem;
+    }
+    
+    .THIS .typeAheadOptions {
+        top: 47px;
+    }
+    
+}

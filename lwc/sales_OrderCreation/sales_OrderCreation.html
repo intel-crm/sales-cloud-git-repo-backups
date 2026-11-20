@@ -1,0 +1,337 @@
+<template>
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+    <div class="slds-modal__container" style= "padding:var(--lwc-squareIconLargeBoundary,3rem) 0 !important;">
+      <!-- modal header start -->
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+          onclick={navigateToObjectHome}>
+          <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+          </lightning-icon>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.SalesNewOrderHTML}</h2>
+      </header>
+      <!-- modal body start -->
+      <div class="slds-modal__content slds-p-around_medium">
+        <lightning-record-edit-form object-api-name="Order" onsuccess={handleSuccess} onsubmit={handleSubmit}
+          onerror={handleError}>
+          <!--<div class="slds-modal__content slds-p-around_medium" style="height: 300px;">-->
+          <div data-id="focusOnErrorBannerId">
+            <lightning-messages></lightning-messages>
+          </div>
+
+          <!--Order Information Section-->
+          <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesOrderInfoHTML}</span>
+          </h3>
+
+          <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+              <lightning-input-field field-name='Status' required="true" disabled="true"></lightning-input-field>
+              <lightning-input-field field-name='Type' required="true" onchange={handleChange}></lightning-input-field>
+              <lightning-input-field field-name='Sales_Req_Ship_Date_Dt__c'></lightning-input-field>
+              <lightning-input-field field-name='Sales_PO_Number_Txt__c'></lightning-input-field>
+              <lightning-input-field field-name='SBQQ__Quote__c'></lightning-input-field>
+              <lightning-input-field field-name='Sales_Cost_Center__c' disabled={costCenterRequired}></lightning-input-field>
+            </div>
+
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+              <br>
+              <br>
+              <br>
+              <lightning-input-field field-name='Sales_Order_Sub_Type__c' required={subTypeRequired}
+                disabled={isNonCommercial} onchange={handleChangeVal} width='200px' ></lightning-input-field>
+              <!--Custom lookup-->
+              <template if:true={isPartner}>
+                <!--  <div class="slds-form-element" >  
+                                  <label class="slds-form-element__label" for="combobox-id-2">{lookupLabel}</label>  
+                                  <div class="slds-form-element__control">  
+                                    <div class="slds-combobox_container">  
+                                      <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">  
+                                        <template if:true={selectedValue}>  
+                                          <div data-key="pilldiv" class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">  
+                                            <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title="object">  
+                                              <div class="slds-icon slds-icon_small" aria-hidden="true">  
+                                                <lightning-icon icon-name={iconName} size="small"></lightning-icon>  
+                                              </div>  
+                                              <span class="slds-assistive-text">Record</span>  
+                                            </span>  
+                                            <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-5" aria-controls="listbox-id-5" role="textbox" placeholder="Select an Option" readonly value={selectedValue} />  
+                                            <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" onclick={removeRecordOnLookup}  
+                                              title="Remove selected option">  
+                                              <span class="slds-button__icon" aria-hidden="true" >  
+                                                <lightning-icon icon-name="utility:close"   
+                                                size="xx-Small" class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true"></lightning-icon>  
+                                              </span>  
+                                              <span class="slds-assistive-text">Remove selected record</span>  
+                                            </button>  
+                                          </div>  
+                                        </template>  
+                                        <template if:false={selectedValue}>  
+                                          <div data-key="searchdiv" class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"> 
+                                        
+                                            <input type="text" onfocusout={onLeave} value={searchKey} onkeyup={handleKeyChange} onchange={handleKeyChange}  class="slds-input slds-combobox__input slds-has-focus" id="combobox-id-2" aria-autocomplete="list" aria-controls="listbox-id-2" role="textbox" placeholder="Search..." />  
+                                         
+                                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">  
+                                              <lightning-icon icon-name="utility:search" size="xx-Small" class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true"></lightning-icon>  
+                                            </span>  
+                                          </div>  
+                                  
+                                          <template if:true={recordsList}>  
+                                            <div id="listbox-id-2-venu" data-key="dropdownresult" class="slds-show slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">  
+                                              <ul class="slds-listbox slds-listbox_vertical" role="presentation" >  
+                                                <template if:true={message}>  
+                                                  <h2> {message}</h2>  
+                                                </template>  
+                                                <template for:each={recordsList} for:item="record">  
+                                                  <li id={record.Id} key={record.Id} onclick={onRecordSelection} role="presentation" class="slds-listbox__item">  
+                                                    <div data-key={record.Id} data-name={record.Name} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">  
+                                                      <span class="slds-media__figure slds-listbox__option-icon">  
+                                                        <span class="slds-icon_container">  
+                                                          <lightning-icon icon-name={iconName} size="small"></lightning-icon>  
+                                                        </span>  
+                                                      </span> 
+                                                      <span></span> 
+                                                      <span class="slds-media__body">  
+                                                        <span data-key={record.Id} data-name={record.Name} class="slds-listbox__option-text slds-listbox__option-text_entity">{record.Name} </span>  
+                                                      </span>  
+                                                    </div>  
+                                                  </li>  
+                                                </template>  
+                                              </ul>  
+                                            </div>  
+                                          </template>  
+                                        </template>  
+                                      </div>  
+                                    </div>  
+                                  </div>  
+                                </div>      -->
+
+                <!-- Standard Account Field on Order -->
+                <lightning-input-field field-name='AccountId' value={accountVal} required="true">
+                </lightning-input-field>
+
+              </template>
+
+              <!--   <lightning-input-field field-name='AccountId' class="slds-hide" disabled="true"  ></lightning-input-field> 
+                                 -->
+
+              <template if:true={isAccounthidden}>
+                <lightning-output-field field-name='AccountId' value={accountVal} required="true">
+                </lightning-output-field>
+              </template>
+
+              <!-- Custom Picklist For Order Reason -->
+              <div class="slds-form-element slds-m-right_xx-small slds-m-left_xx-small">
+                <label class="slds-form-element__label">
+                  <template if:true={isAttributeRequired}>
+                    <abbr title="required" class="requiredFont">* </abbr>
+                  </template>
+                  <span class="">{fieldLabelName}</span>
+                </label>
+                <div class="slds-form-element__control">
+                  <div class="slds-select_container">
+                    <select class="slds-select" onchange={handleOrderReasonChange} required="True"
+                      disabled={isNonStocking}>
+                      <!-- <option key={option.label} value={option.value}>{option.value}</option>  -->
+                      <template for:each={options} for:item="option">
+                        <option key={option.label} class="uiInputSelectOption" value={option.value}>{option.value}
+                        </option>
+                      </template>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Custom Picklist Ends Here -->
+              <div if:true={reasonCheck}>
+                <lightning-input-field field-name='Sales_Order_Reason__c' value={reason}
+                  onchange={handleOrderReasonChange} required="true"></lightning-input-field>
+              </div>
+              <lightning-input-field field-name='Sales_End_Cust_PO_Txt__c'></lightning-input-field>
+              <!-- Commented as part of user story US1005384-->
+              <!--<lightning-input-field field-name='Pricebook2Id'></lightning-input-field>-->
+              <lightning-input-field field-name='Sales_Header_Special_Instructions_Dsc__c'></lightning-input-field>
+            </div>
+          </div>
+
+          <!--Sold to Account Information Section-->
+          <!--  <template if:false={isPartner}>  -->
+          <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesSoldToAccInfoHTML}</span>
+          </h3>
+
+          <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+              <lightning-input-field field-name='Sales_Sold_To_Account__c' class="soldcmp" data-id="soldto"
+                onchange={handleSoldChange} required={makeSoldTorequired}></lightning-input-field>
+              <template if:true={isSoldToPresent}>
+                <lightning-input-field field-name='Sales_SoldTo_Account_2_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.Name}></lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_Street_Dsc__c' data-id="soldto" disabled="true"
+                  value={soldAccount.BillingStreet}></lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_City_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.BillingCity}></lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_Province_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.BillingState}></lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_Country_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.BillingCountryCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_Disty_Channel_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.Core_Direct_Distributor_Channel_Nm__c}></lightning-input-field>
+              </template>
+            </div>
+
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+
+              <template if:true={isSoldToPresent}>
+                <lightning-input-field field-name='Sales_Sold_To_Acct_Id__c' data-id="soldto" disabled="true"
+                  value={soldAccount.Core_Direct_Account_Id__c}></lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_Street2_Dsc__c' data-id="soldto" disabled="true">
+                </lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_State_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.BillingStateCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_SoldTo_Zip_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.BillingPostalCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_Sales_Org_Txt__c' data-id="soldto" disabled="true"
+                  value={soldAccount.Core_Direct_Sales_Organization_Nm__c}></lightning-input-field>
+                <lightning-input-field field-name='Sales_Payment_Terms__c' data-id="soldto" disabled="true"
+                  value={soldAccount.Core_Direct_Payment_Term_Nm__c}></lightning-input-field>
+              </template>
+            </div>
+          </div>
+
+          <!--Ship to Account Information Section-->
+          <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesShipToAccInfoHTML}</span>
+          </h3>
+
+          <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+              <lightning-input-field field-name='Sales_Ship_To_Account__c' class="shipcmp" data-id="shipto"
+                onchange={handleShipChange}></lightning-input-field>
+
+              <template if:true={isShipToPresent}>
+                <lightning-input-field field-name='Sales_ShipTo_Account_2_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.Name}></lightning-input-field>
+                <lightning-input-field field-name='Sales_ShipTo_Street_Dsc__c' data-id="shipto" disabled="true"
+                  value={shipAccount.BillingStreet}></lightning-input-field>
+                <lightning-input-field field-name='Sales_ShipTo_City_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.BillingCity}></lightning-input-field>
+                <lightning-input-field field-name='Sales_ShipTo_Province_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.BillingState}></lightning-input-field>
+                <lightning-input-field field-name='Sales_ShipTo_Country_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.BillingCountryCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_Shipping_Condition_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.Core_Direct_Shipping_Condition_Nm__c}></lightning-input-field>
+              </template>
+            </div>
+
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+
+              <template if:true={isShipToPresent}>
+                <lightning-input-field field-name='Sales_Ship_To_Acct_Id__c' data-id="shipto" disabled="true"
+                  value={shipAccount.Core_Direct_Account_Id__c}></lightning-input-field>
+              </template>
+              <br>
+              <br>
+              <br>
+              <template if:true={isShipToPresent}>
+                <lightning-input-field field-name='Sales_ShipTo_Street2_Dsc__c' disabled="true"></lightning-input-field>
+                <lightning-input-field field-name='Sales_ShipTo_State_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.BillingStateCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_ShipTo_Zip_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.BillingPostalCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_Incoterms_Txt__c' data-id="shipto" disabled="true"
+                  value={shipAccount.Core_Direct_Incoterm_Dsc__c}></lightning-input-field>
+                <lightning-input-field field-name='Sales_Shipping_Instructions_Dsc__c' data-id="shipto"
+                  disabled={checkorderType} value={shipAccount.Core_Direct_Shipping_Instruction_Txt__c}>
+                </lightning-input-field>
+              </template>
+            </div>
+          </div>
+
+          <!--End Customer Account Information Section-->
+          <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">{label.SalesEndCustInfoHTML}</span>
+          </h3>
+
+          <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+
+              <lightning-input-field field-name='Sales_End_Customer_Account__c' class="endcmp" disabled={isSampleOrd}
+                required={endRequired} value={endCustAccId} data-id="endCust" onchange={handleEndChange}>
+              </lightning-input-field>
+
+              <template if:true={isEndCustPresent}>
+                <lightning-input-field field-name='Sales_End_Customer_Account_2_Txt__c' data-id="endCust"
+                  disabled="true" value={endAccount.Name}></lightning-input-field>
+                <lightning-input-field field-name='Sales_End_Customer_Street_Dsc__c' data-id="endCust" disabled="true"
+                  value={endAccount.BillingStreet}></lightning-input-field>
+                <lightning-input-field field-name='Sales_End_Customer_City_Txt__c' data-id="endCust" disabled="true"
+                  value={endAccount.BillingCity}></lightning-input-field>
+                <lightning-input-field field-name='Sales_End_Customer_Province_Txt__c' data-id="endCust" disabled="true"
+                  value={endAccount.BillingState}></lightning-input-field>
+                <lightning-input-field field-name='Sales_End_Customer_Country_Txt__c' data-id="endCust" disabled="true"
+                  value={endAccount.BillingCountryCode}></lightning-input-field>
+              </template>
+            </div>
+
+            <div class="slds-size_1-of-2 slds-p-around_medium">
+              <template if:true={isEndCustPresent}>
+                <lightning-input-field field-name='Sales_End_Cust_Acct_Id__c' data-id="endCust" disabled="true"
+                  value={endAccount.Core_Direct_Account_Id__c}></lightning-input-field>
+              </template>
+              <br>
+              <br>
+              <br>
+              <template if:true={isEndCustPresent}>
+                <lightning-input-field field-name='Sales_End_Customer_Street2_Dsc__c' disabled="true">
+                </lightning-input-field>
+                <lightning-input-field field-name='Sales_End_Customer_State_Txt__c' data-id="endCust" disabled="true"
+                  value={endAccount.BillingStateCode}></lightning-input-field>
+                <lightning-input-field field-name='Sales_End_Customer_Zip_Txt__c' data-id="endCust" disabled="true"
+                  value={endAccount.BillingPostalCode}></lightning-input-field>
+              </template>
+            </div>
+          </div>
+            <!--  Added as part of US1016244-->
+          <template if:true={loading}>
+
+             <!-- <div class="demo-only" style="height:6rem;position:relative">
+                <div class="slds-spinner_container">
+                  <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                  </div>
+                </div>
+              </div>-->
+
+
+            <div class= "spinner" >
+                  <lightning-spinner alternative-text="Loading" variant="brand">
+                  </lightning-spinner>
+              </div>
+            </template>
+
+
+          <!--</div>-->
+          <!-- modal footer start-->
+          <footer class="slds-docked-form-footer">
+          <!--<footer class="slds-modal__footer">-->
+            <!--<div class="slds-docked-form-footer">-->
+            <!--<button class="slds-button slds-button_neutral"  onclick={navigateToObjectHome}>Cancel</button>&nbsp;-->
+            <lightning-button label="Cancel" title="Cancel" onclick={navigateToObjectHome} class="slds-m-left_x-small">
+            </lightning-button>
+            <!--<button class="slds-button slds-button_neutral"  onclick={saveAndNewClick}>Save & New</button>&nbsp;-->
+            <lightning-button label="Save & New" title="Save & New" onclick={saveAndNewClick}
+              class="slds-m-left_x-small"></lightning-button>&nbsp;&nbsp;
+            <button class="slds-button slds-button_brand" type="submit">{label.SalesSaveOrderHTML}</button>
+          </footer>
+          <!--</div>-->
+        </lightning-record-edit-form>
+      </div>
+    </div>
+  </section>
+  <!--<div class="slds-backdrop slds-backdrop_open"></div>-->
+</template>

@@ -1,0 +1,144 @@
+<!---------------------------------------------------------------------------------
+* Visualforce Name: Core_IPS_AddProjSupportOwner
+* Function       : This Page alows to updates the Intel Support Owner and Partner Support Owner in Project
+* Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Amritesh                    09/10/2018             Created
+------------------------------------------------------------------------------->
+<apex:page standardController="Core_IPS_Project__c" extensions="Core_IPS_AddProjSupportOwner_Controller" id="page" showHeader="false" title="Project Support Owners">
+    
+    <style>
+        .pbSubheader { text-align: center; padding: 6px; font-size: 100%; }
+        .helpOrb{ position: relative !important; right:0 !important; }
+        .nodata { background-color:#fff; border: 1px solid #ccc; padding: 5px; }
+    </style>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.js')}"/>
+    
+    <script type="text/javascript">    
+    function searchOnEnter(type, ev)
+    {
+        if (window.event)
+            ev=window.event;
+        
+        var keyCode;
+        if (ev.keyCode)
+            keyCode=ev.keyCode;
+        else
+            keyCode=ev.charCode;
+        
+        if (keyCode == 13)
+        {
+            var elem_class;
+            if(type=='iso') elem_class = '.srchISOButton';
+            else if(type=='pso') elem_class = '.srchPSOButton';
+            $(elem_class).click();
+            return false;
+        }
+        else
+            return true;
+    }    
+    function select_iso(isoid) {
+        //document.getElementById("page:form:seliso").value = isoid;        
+        $("[id$='seliso']").val(isoid);        
+    }
+    function select_pso(psoid) {
+        //document.getElementById("page:form:selpso").value = psoid;  
+        $("[id$='selpso']").val(psoid);      
+    }
+    </script>
+    <div class="splashStatus" id="splashDiv">
+        <div class="circle"><img src="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.gif')}"/></div>
+        <div class="txt">{!$Label.Core_IPS_Load_gif_Text}</div>
+    </div>
+    <div class="lightbox"></div>
+    <!--apex:sectionHeader subtitle="Project - {!Core_IPS_Project__c.Name}" title="Update Support Owners"/-->
+    <apex:form id="form">
+                
+        <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>
+        
+        <apex:pageBlock rendered="{!!renderPage}">
+            <apex:pageMessage title="{!renderMessage}" severity="ERROR"></apex:pageMessage>
+            <apex:commandButton value="Go Back" action="{!cancel}" rendered="{!$CurrentPage.Parameters.id!=null}"/>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Project - {!Core_IPS_Project__c.Name}" rendered="{!renderPage}">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!SaveRedirect}" status="splashStatus"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" status="splashStatus"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageMessages id="pgmsg"/>
+            
+            <apex:pageBlockSection >
+                <!-- ISO Search -->
+                <apex:outputPanel layout="block" id="isosection">
+                    <apex:pageBlockSection title="Select Intel Support Owner" collapsible="false" columns="1" >
+                        <apex:pageBlockSectionItem >                            
+                            <apex:outputLabel >Enter Search Text</apex:outputLabel>
+                            <apex:outputPanel >                                
+                                <span class="helpButton">
+                                    <img src="/s.gif" class="helpOrb" title="Search by user name or email"/>                        
+                                </span> 
+                                <apex:inputText style="min-width:200px;" value="{!strISOUserSearch}" onkeypress="return searchOnEnter('iso')" id="isosearchinput"/>
+                                &nbsp;&nbsp;
+                                <apex:commandButton value="Search" action="{!searchISO}" styleClass="srchISOButton" reRender="isotable" status="splashStatus"/>
+                                &nbsp;&nbsp;
+                                <apex:commandButton value="Reset" action="{!ResetISOSearch}" reRender="isotable,isosearchinput" status="splashStatus"/>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>                        
+                        <apex:outputPanel id="isotable">
+                            <apex:inputHidden value="{!selISOId}" id="seliso"/>
+                            <apex:pageBlockTable value="{!lstUser4ISO}" var="usr" rendered="{!lstUser4ISO!=null && lstUser4ISO.size>0}">
+                                <apex:column width="20">
+                                    <input type="radio" name="usriso" value="{!usr.userId}" onclick="select_iso('{!usr.userId}');" />
+                                </apex:column>
+                                <apex:column value="{!usr.FirstName}" headerValue="FirstName"/>
+                                <apex:column value="{!usr.LastName}" headerValue="LastName"/>
+                                <apex:column value="{!usr.Email}" headerValue="Email"/>
+                            </apex:pageBlockTable>
+                            <apex:outputPanel layout="block" rendered="{!lstUser4ISO==null || lstUser4ISO.size==0}" styleClass="nodata">
+                                No data found
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                <!-- PSO Search -->
+                <apex:outputPanel layout="block" id="psosection">
+                    <apex:pageBlockSection title="Select Partner Support Owner" collapsible="false" columns="1" >
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel >Enter Search Text</apex:outputLabel>                            
+                            <apex:outputPanel >
+                                <span class="helpButton">
+                                    <img src="/s.gif" class="helpOrb" title="Search by user name or email"/>                        
+                                </span> 
+                                <apex:inputText style="min-width:200px;" value="{!strPSOUserSearch}" onkeypress="return searchOnEnter('pso')" id="psosearchinput"/>
+                                &nbsp;&nbsp;
+                                <apex:commandButton value="Search" action="{!searchPSO}" styleClass="srchPSOButton" reRender="psotable" status="splashStatus"/>
+                                &nbsp;&nbsp;
+                                <apex:commandButton value="Reset" action="{!ResetPSOSearch}" reRender="psotable,psosearchinput" status="splashStatus"/>                                
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>     
+                        <apex:outputPanel id="psotable">
+                            <apex:inputHidden value="{!selPSOId}" id="selpso"/>
+                            <apex:pageBlockTable value="{!lstUser4PSO}" var="usr" rendered="{!lstUser4PSO!=null && lstUser4PSO.size>0}">
+                                <apex:column width="20">
+                                    <input type="radio" name="usrpso" value="{!usr.userId}" onclick="select_pso('{!usr.userId}');" />
+                                </apex:column>
+                                <apex:column value="{!usr.FirstName}" headerValue="FirstName"/>
+                                <apex:column value="{!usr.LastName}" headerValue="LastName"/>
+                                <apex:column value="{!usr.Email}" headerValue="Email"/>
+                            </apex:pageBlockTable>
+                            <apex:outputPanel layout="block" rendered="{!lstUser4PSO==null || lstUser4PSO.size==0}" styleClass="nodata">
+                                No data found
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

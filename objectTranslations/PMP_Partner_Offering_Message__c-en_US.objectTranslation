@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Offering Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Offering Messages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Internal Message --></label>
+        <name>PMP_Internal_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- User --></help>
+        <label><!-- Message By User Id --></label>
+        <name>PMP_Message_By_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message By User Name --></label>
+        <name>PMP_Message_By_User_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Offering Message Date --></help>
+        <label><!-- Message Date --></label>
+        <name>PMP_Message_Dtm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Offering Message --></help>
+        <label><!-- Message --></label>
+        <name>PMP_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Message Type --></help>
+        <label><!-- Message Type --></label>
+        <name>PMP_Message_Type__c</name>
+        <picklistValues>
+            <masterLabel>Message</masterLabel>
+            <translation><!-- Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Status</masterLabel>
+            <translation><!-- Status --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Partner Offering Id --></help>
+        <label><!-- Partner Offering --></label>
+        <name>PMP_Partner_Offering_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Messages --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Partner Offering Status --></help>
+        <label><!-- Partner Offering Status --></label>
+        <name>PMP_Partner_Offering_Status_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

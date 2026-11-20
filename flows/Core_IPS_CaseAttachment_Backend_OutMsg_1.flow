@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>myRule_1_A1</name>
+        <label>Calling apex</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>IPS_APIGEE_Backend_Integration_Queueable</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>getCaseAttachmentIds</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>IPS_APIGEE_Backend_Integration_Queueable</nameSegment>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the Core IPS CaseAttachment Backend OutMsg process using outbound message for a case attachment criteria.
+ve6</description>
+    <label>Core IPS CaseAttachment Backend OutMsg_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <filterFormula>AND(
+{!$Record.Core_Case__r.Core_IPS_Backend_ID__c} &lt;&gt; null, 
+{!$Record.Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, 
+{!$Record.Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false , 
+{!$Record.Core_Is_Migrated__c} = false,
+(ISPICKVAL({!$Record.Core_Promote_Status__c} , &apos;&apos; ) || 
+ISPICKVAL( {!$Record.Core_Promote_Status__c} , &apos;In Progress&apos; )),
+( ISPICKVAL({!$Record.Core_Upload_Status__c}, &apos;Complete&apos;)), 
+( ({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;) || CONTAINS({!$User.Username}, &apos;ips.file.integrationuser&apos;) || CONTAINS({!$User.Username}, &apos;ips.backend.integrationuser&apos;))
+)</filterFormula>
+        <object>Core_IPS_Case_Attachments__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

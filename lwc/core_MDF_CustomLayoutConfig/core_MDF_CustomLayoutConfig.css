@@ -1,0 +1,43 @@
+.lightninginput {
+    pointer-events: none !important;
+}
+
+.textWrap{
+    word-wrap: break-word;
+}
+
+.inputValue{
+    padding-left: 4px;
+    padding-bottom: 6px;
+}
+
+.blankInputValue{
+    padding-top: 25.5px;
+}
+
+.customAccordion {
+    margin-top: -20px;
+    width: 100%;
+    --slds-c-accordion-heading-text-color: black;
+   --slds-c-accordion-summary-color-background:rgb(243, 243, 243); 
+}
+.errorMessageColor {
+    color: red;
+}
+lightning-layout-item.standard-align-left{
+    padding-left: 28px;
+    margin-left: 0px;
+}
+lightning-layout-item.standard-align-right{
+    padding-right: 28px;
+    margin-left: 0px;
+}
+lightning-layout-item.standard-align-left-camp {
+    padding-left: 12px;
+    margin-left: 0px;
+}
+lightning-layout-item.standard-align-right-camp{
+    padding-right: 10px;
+    margin-left: -4px;
+    padding-left: 0px;
+}

@@ -1,0 +1,85 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <!-- <ltng:require scripts="{!
+  $Resource.ISG_Resources + '/libraries/intel.brightcove.js' }"
+  afterScriptsLoaded="{!c.afterScriptsLoaded}" /> -->
+    <aura:attribute name="touchDevice" type="boolean" default="false" description="Internal component state"/>
+    
+    <aura:attribute name="animating" type="boolean" default="false" description="Internal component state"/>
+    <aura:attribute name="currentIndex" type="integer" default="0" description="Internal component state"/>
+    <aura:attribute name="offsetIndex" type="integer" default="0" description="Internal component state"/>
+    <aura:attribute name="count" type="integer" default="0" description="Internal component state"/>
+    <aura:attribute name="modalOpen" type="Boolean" default="false" description="Internal component state"/>
+    <aura:attribute name="prefixUrl" type="string" default="file-asset/"/>
+    <aura:attribute name="suffixUrl" type="string" default="?isOptimized=false"/>
+    <aura:attribute name="galleryData" type="Object[]" default="[]" description="data array that contains the images/video entries. please see documentation tab for data structure" />
+    <aura:attribute name="test" type="string" default=""/>
+    <aura:attribute name="showPanel" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.galleryData}" action="{!c.doInit}" />
+
+    <div aura:id="product-offering-gallery">
+         
+        <a href="javascript: void(0);" class="toggleOverlay" data-toggle="true" onclick="{!c.handleToggleOverlay}">
+             
+            <aura:iteration items="{!v.galleryData}" var="galleryItem" indexVar="idx" > 
+                <aura:if isTrue="{! ''+v.currentIndex == ''+idx }">
+                    <div  class="media-item media-image" data-item-index="{!idx}" >
+                        <!-- style="{! 'order:' + galleryItem.order + '; width: ' + v.itemWidth + 'px'}" -->
+                        <figure class="blade-image">
+                              <img src="{!v.prefixUrl + galleryItem.thumbnailURL}" alt="{!v.prefixUrl + galleryItem.thumbnailURL}"/>
+                           <!--<img src="{!galleryItem.imageURL}" alt="{!galleryItem.imgAlt}"/>-->
+                        </figure>
+                    </div>
+                </aura:if>
+            </aura:iteration>
+        </a>
+        <a class="galleryToggle" data-toggle="true"  onclick="{!c.handleToggleOverlay}" href="javascript: void(0);">{!format($Label.c.PMP_Image_X_of_Y, v.currentIndex +1, v.count)}</a>
+        <div class="modalBackground slds-hide" aura:id="modal-background"></div>
+        <aura:if isTrue="{!v.showPanel}">
+        <div class="mediaOverlay slds-hide" aura:id="media-overlay" onkeydown="{!c.handleKeyDown}" >
+            <a class="close" href="#" aria-label="Close" data-toggle="false"  onclick="{!c.handleToggleOverlay}"><lightning:icon class="icn" iconName="utility:close" size="x-large" /></a>
+            <div class="product-media-gallery" >
+                <div class="carousel noanimate" aura:id="carousel" >
+                    <div class="innerCarousel" aura:id="inner-carousel" >
+                        <aura:iteration items="{!v.galleryData}" var="galleryItem" indexVar="idx" >
+                            
+                            <div aura:id="media-item" class="{! galleryItem.type + ' media-item media-image' }" data-item-index="{!idx}" >
+                                <figure class="blade-image">
+                                    <aura:if isTrue="{!galleryItem.type == 'Image' }">
+                                        <img src="{!v.prefixUrl + galleryItem.imageURL}" alt="{!v.prefixUrl + galleryItem.imageURL}"/>
+                                       <!-- <img src="{!galleryItem.imageURL}" alt="{!galleryItem.imgAlt}"/>-->
+                                    </aura:if>
+                                    <aura:if isTrue="{! galleryItem.type == 'video'}">
+                                        <c:IntelVideoPlayer aura:id="video" videoResource="{! galleryItem.videoURL}" />
+                                    </aura:if>
+                                </figure>
+                            </div>
+                        </aura:iteration> 
+                        
+                    </div>
+                </div>
+                <aura:if isTrue="{! !v.touchDevice }">
+                    <a class="previous slidingPaddlePrev" onclick="{!c.handlePrevButton}" data-direction="prev" title="{!$Label.c.Core_PMP_Previous}" aria-title="{!$Label.c.Core_PMP_Previous}">
+                        <span>{!$Label.c.Core_PMP_Previous}</span>
+                    </a>
+                    <a class="next slidingPaddleNext" onclick="{!c.handleNextButton}" data-direction="next" title="{!$Label.c.Core_PMP_Next}" aria-title="{!$Label.c.Core_PMP_Next}">
+                        <span>{!$Label.c.Core_PMP_Next}</span>
+                    </a>
+                </aura:if>
+                
+                <div class="jumpList slds-p-top_large" aura:id="jump-list">
+                    <aura:iteration items="{!v.galleryData}" var="galleryItem" indexVar="idx" >
+                        <div class="jumplistItem" data-item-index="{!idx}" >
+                            <a href="javascript:void(0);" data-index="{!idx}" class="{! ''+v.currentIndex == ''+idx ? 'selected': ''}" onclick="{!c.handleGoTo}">
+                                <img src="{!v.prefixUrl + galleryItem.imageURL}" alt="{!v.prefixUrl + galleryItem.imageURL}"/>
+                               <!-- <img src="{!galleryItem.thumbnailURL}" alt="{!galleryItem.imgAlt}"/>-->
+                            </a>
+                        </div>
+                    </aura:iteration>
+                </div>
+                
+            </div>
+        </div>
+      </aura:if>
+    </div>
+</aura:component>

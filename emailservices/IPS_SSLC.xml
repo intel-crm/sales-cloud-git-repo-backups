@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailServicesFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apexClass>Core_IPS_SSLCCase_EmailHandler</apexClass>
+    <attachmentOption>None</attachmentOption>
+    <authenticationFailureAction>Discard</authenticationFailureAction>
+    <authorizationFailureAction>Discard</authorizationFailureAction>
+    <authorizedSenders>nocontactcase.sslc@intel.com,tanvi.chauhan@intel.com</authorizedSenders>
+    <emailServicesAddresses>
+        <authorizedSenders>nocontactcase.sslc@intel.com,
+tanvi.chauhan@intel.com</authorizedSenders>
+        <developerName>IPS_SSLC</developerName>
+        <isActive>true</isActive>
+        <localPart>ips_sslc</localPart>
+        <runAsUser>integration.user@intel.com.crm</runAsUser>
+    </emailServicesAddresses>
+    <errorRoutingAddress>anuj.k.hissaria@intel.com</errorRoutingAddress>
+    <functionInactiveAction>Discard</functionInactiveAction>
+    <functionName>IPS_SSLC</functionName>
+    <isActive>true</isActive>
+    <isAuthenticationRequired>false</isAuthenticationRequired>
+    <isErrorRoutingEnabled>true</isErrorRoutingEnabled>
+    <isTextAttachmentsAsBinary>false</isTextAttachmentsAsBinary>
+    <isTlsRequired>false</isTlsRequired>
+    <overLimitAction>Discard</overLimitAction>
+</EmailServicesFunction>

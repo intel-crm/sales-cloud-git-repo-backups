@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Tracy Xu</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11229630_Xuemei_Gong</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>A_E_Users_do_not_nest_users</parentRole>
+</Role>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customMetadataTypeRecord>Core_IPS_APIAuthSettingPlugin__mdt.Core_IPS_Backend_System_Integrat</customMetadataTypeRecord>
+    <executionUser>ips.pam.integration.user@intel.com.crm</executionUser>
+    <friendlyName>Core_IPS_Backend_System_Integrat</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
+    <plugin>Core_IPS_AuthProviderHandler_Plugin</plugin>
+    <providerType>Custom</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>false</sendSecretInApis>
+</AuthProvider>

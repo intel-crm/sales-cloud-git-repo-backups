@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Specialty Qualitative Criteria</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Specialty Qualitative Criteria</value>
+    </caseValues>
+    <fields>
+        <label><!-- Criteria --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select Qualitative Criteria Record Type --></errorMessage>
+        </lookupFilter>
+        <name>PRM_Criteria_Id__c</name>
+        <relationshipLabel><!-- Specialty Qualitative Criteria --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Inactive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty --></label>
+        <name>PRM_Specialty_Id__c</name>
+        <relationshipLabel><!-- Specialty Qualitative Criteria --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

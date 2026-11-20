@@ -1,0 +1,163 @@
+<template>
+  <!--<lightning-quick-action-panel class="slds-modal-medium" header="Edit Dependencies" style="height: 100vh; overflow-y: hidden !important;">-->
+  <div class="slds-card slds-m-around_xx-small">
+
+    
+
+    <lightning-layout horizontal-align="center" multiple-rows="true">
+      <lightning-layout-item flexibility="grow" size="12" small-device-size="12" medium-device-size="10" large-device-size="10" padding="around-small">
+        <h2 style="text-align: center;font-size: 20px;">Edit Dependencies</h2> 
+      </lightning-layout-item>
+    </lightning-layout>
+    <hr style='margin:-0.5px -1px -9px -1px;border-top: 2.3px solid #ccc'/>
+  </div>
+  <div class="slds-is-relative slds-p-around_medium">
+    <div class="slds-is-relative">
+      <template if:true={bypassExecuting}>
+        <lightning-spinner alternative-text="Loading" variant="brand" size="large"></lightning-spinner>
+      </template>
+      <lightning-record-edit-form record-id={recordId} object-api-name="Opportunity" onsuccess={handleSuccess} onerror={handleError} onsubmit={handleSubmit}>
+        <lightning-messages></lightning-messages>
+
+       <!-- <template if:true={loaded}>      
+          <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+      </template>       
+          <template lwc:if={isPartnerOppty}>
+              <label for="reasonId">Loss/ Cancel Reason</label>
+              <label for="detailsId">Loss/ Cancel Details</label>
+          </template>
+          <template lwc:if={isIntelOppty}>
+              <label for="reasonId">Loss Reason</label>
+              <label for="detailsId">Loss Details</label>
+          </template>         --> 
+
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-p-horizontal_xx-small slds-large-size_6-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+           <lightning-combobox name="progress"   label="Stage" options={options} value={value} placeholder="Select Stage" type="button" onchange={handleChange} required="true" field-level-help="Identifies the opportunity progress, as defined by the SMG Deal and Design Sales Stages. For more information, goto/SMGStages.">
+            </lightning-combobox>
+            
+          </div>
+          <div class="slds-col slds-large-size_6-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+
+           <!-- <template lwc:if={isPartnerOppty}>
+              <label for="reasonId" style="font-size: 12px;">Loss/ Cancel Reason</label>
+            </template>
+            <template lwc:if={isIntelOppty}>
+              <label for="reasonId" style="font-size: 12px;" >Loss Reason</label>
+            </template>-->
+            <span>
+            <lightning-input-field field-name="Core_Loss_Cancel_Reason__c" id="reasonId"  value="" required="true" onchange={handleLossCancelReason} ></lightning-input-field>
+            </span>
+          </div>
+          <div class="slds-col slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+
+           <!-- <template lwc:if={isPartnerOppty}>
+              <label for="detailsId"  style="font-size: 12px;">Loss/ Cancel Details</label>
+            </template>
+            <template lwc:if={isIntelOppty}>
+              <label for="detailsId"  style="font-size: 12px;">Loss Details</label>
+            </template>  -->
+            <span>
+            <lightning-input-field field-name="Core_Loss_Cancel_Details__c" class="detailsId" required="true" onchange={handleLossCancelDetails}  ></lightning-input-field>
+            </span>
+          </div>
+          
+          
+          
+          <div class="slds-col slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-size_12-of-12" style="height:5px;">
+            <lightning-input-field class="Stage_name_hidden" field-name="StageName" value={StageValue}></lightning-input-field>
+            <lightning-input-field class="Stage_name_hidden" field-name="Core_System_Prod_Competitor_Empty_Count__c" value={Core_System_Prod_Competitor_Empty_Count__c}></lightning-input-field>
+          </div>
+        </div>
+      </lightning-record-edit-form>
+
+      <template if:true={competitorCount}>
+      <template if:true={isCompetitorDisabled}>
+           <div class="slds-size_1-of-2">
+            <lightning-combobox
+                    name="Competitor"
+                    label="Competitor"
+                    value={competitorValue}
+                    placeholder="--Select--"
+                    options={compOptions}
+                    onchange={competitorChangeHandler} 
+                    required={isCompetitorDisabled}
+                     class="competitorTag"
+                    >
+            </lightning-combobox>   
+            </div>
+            <div class="slds-size_1-of-2">
+            <lightning-combobox
+                    name="Competitor Product"
+                    label="Competitor Product"
+                    value={competitorProdValue}
+                    placeholder="--Select--"
+                    options={compProdOptions}
+                    onchange={competitorProdChangeHandler} 
+                    required={isCompetitorDisabled}
+                    disabled = {disableComboBox}
+                    class="competitorProduct"
+                    >
+            </lightning-combobox> 
+            </div>
+            <div class="slds-size_1-of-2">
+            <lightning-input type="text" label ="Other Competitor/Product" value={textvalue} onchange={handleCompetitorText} maxlength="255"></lightning-input>
+            </div>
+        </template>
+</template>
+    </div>
+
+    <div class="slds-col slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-size_12-of-12" style="height:20px;">
+            
+    </div>
+
+
+    <div class="slds-is-relative slds-p-horizontal_x-small slds-size_12-of-12 mydiv">
+          <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+              <thead>
+                    <tr scope="row">
+                        <th scope="col" style="width:35%;">Lost Opportunity Reasons</th>
+                        <th scope="col">When To Use</th>
+                    </tr>
+              </thead>
+              <tbody>
+                  <tr class="slds-hint-parent" scope="row">
+                      <td>Another IA Selected </td><td>Customer chose another Intel based product/solution. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                      <td>Feature/Performance </td><td>Feature or performance did not meet customer expectations. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                      <td>Intel No Longer Pursuing </td><td>Intel withdrew sales resources or customer withdrew resources to support OR Intel did not commit technical resources needed or relationship was damaged OR Intel was not included in the RFP. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                      <td>Other </td><td>No other Lost Opportunity Reasons are applicable, refer to Lost Details. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                      <td>Price </td><td>Lost to competitor due to price. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                      <td>Product Schedule </td><td>Issue with product/solution/feature readiness, missed market window. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                    <td>Supply </td><td>Product not available. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                    <td>Customer Discontinued Project </td><td>Customer budget cuts, legal or policy changes. </td>
+                  </tr>
+                  <tr class="slds-hint-parent" scope="row">
+                   <td>Entered in Error </td><td>Opportunity entered by mistake or duplicate. </td>   
+                  </tr> 
+                  <tr class="slds-hint-parent" scope="row">
+                   <td>POP Unobtainable </td><td>Could not secure POP and exception was denied. </td>  
+                  </tr>    
+              </tbody>
+          </table>
+      </div>
+  </div>
+    <footer slot="footer" class='slds-modal__footer slds-p-vertical_small'>
+      <lightning-button variant="neutral" class="slds-m-left_x-small" label="Cancel" onclick={closeAction} disabled={disableButton}></lightning-button>
+      <lightning-button variant="brand" class="slds-m-left_x-small" label="Submit" onclick={handleSubmit} disabled={disableButton}></lightning-button>
+    </footer>
+  <!--</lightning-quick-action-panel>style="display:inline-block;overflow-y:hidden;" -->
+</template>

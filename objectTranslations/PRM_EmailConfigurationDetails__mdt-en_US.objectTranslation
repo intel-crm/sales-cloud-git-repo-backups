@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Email Configuration Details</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Email Configuration Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Event --></label>
+        <name>PRM_BusinessEvent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>PRM_ChannelProgram__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>PRM_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Folder Name --></label>
+        <name>PRM_FolderName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>PRM_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Input Parameter --></label>
+        <name>PRM_InputParameter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>PRM_Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Letterhead Template --></label>
+        <name>PRM_Letterhead_Template__c</name>
+    </fields>
+    <fields>
+        <label><!-- Merge Field --></label>
+        <name>PRM_MergeField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Type --></label>
+        <name>PRM_PartnerType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recipient Logic --></label>
+        <name>PRM_RecipientLogic__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recipient --></label>
+        <name>PRM_Recipient__c</name>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Primary Contact</masterLabel>
+            <translation><!-- Contact Relationship: Primary Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Primary Contact,Trainee</masterLabel>
+            <translation><!-- Contact Relationship: Primary Contact,Trainee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Primary Contact,Works for</masterLabel>
+            <translation><!-- Contact Relationship: Primary Contact,Works for --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Primary Contact,Works for,Trainee</masterLabel>
+            <translation><!-- Contact Relationship: Primary Contact,Works for,Trainee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Trainee</masterLabel>
+            <translation><!-- Contact Relationship: Trainee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Works for</masterLabel>
+            <translation><!-- Contact Relationship: Works for --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Relationship: Works for,Trainee</masterLabel>
+            <translation><!-- Contact Relationship: Works for,Trainee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Emails</masterLabel>
+            <translation><!-- External Emails --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner User</masterLabel>
+            <translation><!-- Partner User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: AGS_1PID IPA Admin Group</masterLabel>
+            <translation><!-- Public Group: AGS_1PID IPA Admin Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: AGS_IPA Registration Approvers</masterLabel>
+            <translation><!-- Public Group: AGS_IPA Registration Approvers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: CIMPRIME Support and admin group</masterLabel>
+            <translation><!-- Public Group: CIMPRIME Support and admin group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: IPA - All Intel Admin Users</masterLabel>
+            <translation><!-- Public Group: IPA - All Intel Admin Users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: L2 IPA Support</masterLabel>
+            <translation><!-- Public Group: L2 IPA Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: PMP - All Intel Admin Users</masterLabel>
+            <translation><!-- Public Group: PMP - All Intel Admin Users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: PRM - MP Admin Temp</masterLabel>
+            <translation><!-- Public Group: PRM - MP Admin Temp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Group: PRM Tech Email Recipient</masterLabel>
+            <translation><!-- Public Group: PRM Tech Email Recipient --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PRM_Specialty --></label>
+        <name>PRM_Specialty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Template Name --></label>
+        <name>PRM_TemplateName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Template Unique Name --></label>
+        <name>PRM_TemplateUniqueName__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

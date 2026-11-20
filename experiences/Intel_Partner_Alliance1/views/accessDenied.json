@@ -1,0 +1,102 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "f7051307-2faf-4561-87bc-646ff446251f",
+  "label" : "AccessDenied",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaIntelAccessDenied",
+      "id" : "7acad77c-636d-42c0-86cf-75e6f48d9702",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d046eed7-7685-4b49-b00f-8f733e0a02c2",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "94102883-b3bc-4801-9c21-65301af18cd5",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "41223b77-97b4-41fa-ac1b-5f8cbba7a79b",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "b38eead8-a62f-4375-95fb-eac31a38009d",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "22d21e6b-3f97-4d80-9bb8-e93aef282d9f",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "6712fd8f-aa72-48df-a8b8-818d7803c712",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "a1c76f29-c156-4187-b209-779f417799c6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "af588ad9-289a-435a-8dc2-b069cfff6e75",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "11734875-bf12-4024-98e9-0873a8211545",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "5ab42974-eda0-4e22-9ce0-952d492ad261",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "e00a82e0-fc72-45c9-afdd-9e1e5367e98e",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "807f94d6-9724-42d1-ab92-375a3b6d51ba",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Action Required"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "a15f560b-b657-48ba-b6b8-84f738fd935b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d0bafd7e-4a3e-4457-ae75-c9dfda7900d5",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "b043d795-7470-4dae-917a-878dd8798533",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "2bc7b5cb-8e8f-4bab-8672-edc7e16f9db5",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "323fbfcb-5e99-4df3-9c29-ad10cbaeadb5",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "354f196d-931a-4fcb-9d07-f939ece44ca9",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "4e717d11-df07-47dd-b05b-6c9a9a77514d",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-accessdenied"
+}

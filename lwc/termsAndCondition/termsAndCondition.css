@@ -1,0 +1,70 @@
+.mainDiv {
+	font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, "sans-serif";
+	margin-top: 5px;
+	margin-left: -1.9rem;	
+}
+.cardHeading {
+	/* font-weight: 200; */
+	/* font-style: normal; */
+	/*color: #555555;
+	font-size: 28px;*/
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-left: 1.1rem;
+}
+
+.cardHolder {
+	background: #fff;
+	padding: 1rem 2rem;
+	font-family: intel-clear, tahoma, Helvetica, helvetica, Arial, "sans-serif";
+	border: 1px solid #dddbda;
+	width: auto;
+	height: auto;
+	margin: 20px;
+	margin-left: 1.2rem;
+	display: inline-block;
+}
+
+.docHolder {
+	background: #fff;
+	padding: 1rem 2rem;
+	font-family: intel-clear, tahoma, Helvetica, helvetica, Arial, "sans-serif";
+	border: 1px solid #dddbda;
+	width: auto;
+	height: auto;
+	margin: 20px;
+	margin-left: 1.2rem;
+}
+
+.cardBody {
+	margin: 2rem 2rem 2rem 2rem;
+}
+
+.divFirst {
+	/* font-weight: 200; */
+	font-style: normal;
+	font-size: 16px;
+	color: #0071c5;
+}
+.divFirst:hover{
+	text-decoration: underline;
+}
+
+.divSecond {
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 900; */
+	/* font-style: normal; */
+}
+
+.divThird {
+	/* font-weight: 400; */
+	font-size: 16px;
+	color: #555555;
+}
+
+.error {
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align: center;
+}

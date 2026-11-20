@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_49916781</developerName>
+        <masterLabel>Area</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_External_Issue_Subcategory__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Transceiver</sourceValue>
+            </sourceValues>
+            <value>HSIO</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SDI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CPRI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HDMI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>jesd204b</sourceValue>
+            </sourceValues>
+            <value>Other IP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>100G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>10G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>1G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>25GEthernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>40G/100G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>50GEthernet</sourceValue>
+            </sourceValues>
+            <value>Ethernet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PCI Express</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-MM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-MM with DMA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-ST</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-ST with SR-IOV</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe – MCDMA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe – Switch</sourceValue>
+            </sourceValues>
+            <value>PCIe</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DDR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DDR2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DDR3/DDR3L</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DDR4</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HBM2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other External Memory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other (Ext Mem I/F IP)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>QDR IV</sourceValue>
+            </sourceValues>
+            <value>EMIF</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnGrouped</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATEONLY</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_49916781</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Opened Cases by Month per Area</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PSG-ASMO-EMIF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PSG-ASMO-HSIO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PSG-ASMO-IP</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_49916781</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Systems Team Cases per SubArea</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CURY</interval>
+    </timeFrameFilter>
+</Report>

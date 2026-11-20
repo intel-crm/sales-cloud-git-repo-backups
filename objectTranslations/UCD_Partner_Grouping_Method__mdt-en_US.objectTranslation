@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Grouping Method</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Grouping Methods</value>
+    </caseValues>
+    <fields>
+        <label><!-- Partner Grouping Method --></label>
+        <name>UCD_PAG_Grouping_Method__c</name>
+        <picklistValues>
+            <masterLabel>Global</masterLabel>
+            <translation><!-- Global --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Line of Business</masterLabel>
+            <translation><!-- Line of Business --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

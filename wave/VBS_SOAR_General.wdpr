@@ -1,0 +1,693 @@
+{
+  "version" : "62.0",
+  "nodes" : {
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "JOIN5", "LOAD_DATASET7" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LOOKUP",
+        "leftKeys" : [ "OPPORTUNITY_ID" ],
+        "rightQualifier" : "Opportunity",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA23" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "VBS_SOAR",
+          "name" : "VBS_SOAR",
+          "folderName" : "VBS"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "JOIN6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Account_Sales_Group",
+          "label" : "Account Sales Group",
+          "formulaExpression" : "case \r\n\twhen contains(\"Opportunity.Account.Core_Sales_Groups__c\", 'PRC')\r\n\tthen 'PRC'\r\n\twhen contains(\"Opportunity.Account.Core_Sales_Groups__c\", 'America')\r\n\tthen 'AMR'\r\n    when contains(\"Opportunity.Account.Core_Sales_Groups__c\", 'EMEA')\r\n\tthen 'EMEA'\r\n    when contains(\"Opportunity.Account.Core_Sales_Groups__c\", 'APJ')\r\n\tthen 'APJ'\r\n\telse\r\n\t'GSS' \r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA6" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Stage",
+          "label" : "Stage",
+          "formulaExpression" : "\"Opportunity.StageName\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA7" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Opportunity_Name",
+          "label" : "Opportunity Name",
+          "formulaExpression" : "\"Opportunity.Name\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA8" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Account_nm",
+          "label" : "Account Name",
+          "formulaExpression" : "\"Opportunity.Account.Name\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA9" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA8" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Owner_nm",
+          "label" : "Owner Name",
+          "formulaExpression" : "\"Opportunity.User.Name\"",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA10" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA9" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "VBS_Quarter",
+          "label" : "VBS Quarter",
+          "formulaExpression" : "substr(\"VBS_QUARTER_DSC\", 2, 6)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA11" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "VBS_Month",
+          "label" : "VBS Month",
+          "formulaExpression" : "substr(\"VBS_MONTH_DSC\", 0, 6)",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA12" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "VBS_Year",
+          "label" : "VBS Year",
+          "formulaExpression" : "substr(VBS_Quarter, 0, 4)",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA13" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Primary_VBS_Offering_Category",
+          "label" : "Primary VBS Offering Category",
+          "formulaExpression" : "case \r\n    when \"CRM_VBS_SO.CRM_VBS_Primary_VBS_Offering_Category__c\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"CRM_VBS_SO.CRM_VBS_Primary_VBS_Offering_Category__c\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA14" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "VBS_Status",
+          "label" : "VBS Status",
+          "formulaExpression" : "case \r\n    when \"CRM_VBS_SO.CRM_VBS_SOAR_VBS_Decision__c\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"CRM_VBS_SO.CRM_VBS_SOAR_VBS_Decision__c\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA15" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA14" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Vertical_Market",
+          "label" : "Vertical Market",
+          "formulaExpression" : "case \r\n    when \"Opportunity.op.Core_Vertical_Market__c\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"Opportunity.op.Core_Vertical_Market__c\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA16" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA15" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Opportunity_Status",
+          "label" : "Opportunity_Status",
+          "formulaExpression" : "case \r\n    when \"Opportunity.op.Core_Status__c\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"Opportunity.op.Core_Status__c\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA17" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Opportunity_Name_ARR",
+          "label" : "Opportunity_Name_ARR",
+          "formulaExpression" : "case \r\n    when \"Opportunity_Name\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"Opportunity_Name\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA18" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA17" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Account_nm_ARR",
+          "label" : "Account_nm_ARR",
+          "formulaExpression" : "case \r\n    when \"Opportunity.Account.Name\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"Opportunity.Account.Name\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA19" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA18" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Owner_nm_ARR",
+          "label" : "Owner_nm_ARR",
+          "formulaExpression" : "case \r\n    when \"Owner_nm\" is null\r\n    then 'Unidentified'\r\n    else\r\n    \"Owner_nm\"\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA20" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA19" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "StageSorted",
+          "label" : "StageSorted",
+          "formulaExpression" : "case\r\n    when \"Opportunity.StageName\" = 'Qualify' then '1 - Qualify' \r\n    when \"Opportunity.StageName\" = 'Define' then '2 - Define'\r\n    when \"Opportunity.StageName\" = 'Develop' then '3 - Develop'\r\n    when \"Opportunity.StageName\" = 'Design' then '4 - Design'\r\n    when \"Opportunity.StageName\" = 'Design Win' then '5 - Design Win'\r\n    when \"Opportunity.StageName\" = 'Production Win' then '6 - Production Win'\r\n    when \"Opportunity.StageName\" = 'Production Lost' then '7 - Production Lost'\r\n    when \"Opportunity.StageName\" = 'Production Cancelled' then '8 - Production Cancelled'\r\n    when \"Opportunity.StageName\" = 'Lost' then '9 - Lost'\r\n    when \"Opportunity.StageName\" = 'Cancelled' then '91 - Cancelled'\r\nelse '99 - No Match'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA21" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA20" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "DATETIME",
+          "name" : "Contract_Start_Date",
+          "label" : "Contract Start Date",
+          "formulaExpression" : "VBS_CONTRACT_START_DT",
+          "format" : "dd/MM/yyyy",
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA22" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA21" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "stage_mapping",
+          "label" : "stage_mapping",
+          "formulaExpression" : "case \r\n    when \"Opportunity.StageName\" = 'Design Win'\r\n    then 'Won'\r\n    when \"Opportunity.StageName\" ='Production Win'\r\n    then 'Won'\r\n    when \"Opportunity.StageName\" ='Production Cancelled'\r\n    then 'Won'\r\n    when \"Opportunity.StageName\" = 'Production Lost'\r\n    then 'Won'\r\n    when \"Opportunity.StageName\" ='Qualify' then 'Open'\r\n    when \"Opportunity.StageName\" = 'Define' then 'Open'\r\n    when \"Opportunity.StageName\" = 'Develop' then 'Open'\r\n    when \"Opportunity.StageName\" = 'Design' then 'Open'\r\n    else\r\n    'Lost'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA23" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA22" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "SOAR_VBS_Renewal",
+          "label" : "SOAR_VBS_Renewal",
+          "formulaExpression" : "case when VBS_NM like '%Renewal%' then 'Renewal' else SOAR_VBS_DECISION_DSC end",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET10", "LOAD_DATASET6" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "SOAR_VBS_ID" ],
+        "rightQualifier" : "CRM_VBS_SO",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "OwnerId", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "LastActivityDate", "LastViewedDate", "LastReferencedDate", "CRM_VBS_Primary_VBS_Offering_Category__c", "CRM_VBS_QB_Resource__c", "CRM_VBS_SOAR_Opportunity__c", "CRM_VBS_SOAR_Stage__c", "CRM_VBS_SOAR_VBS_Decision__c", "CRM_VBS_Annual_Recurring_Revenue__c", "CRM_VBS_Contract_Lifetime_in_Months__c", "CRM_VBS_Contract_Start_Date__c", "CRM_VBS_Total_Contract_Value__c", "CRM_VBS_VBS_Explore_Re_Use__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "CRM_VBS_SOAR__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "CRM_VBS_SOAR__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET7" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OpportunityProducts.Opportunity.Core_Sales_Groups__c", "OpportunityProducts.Opportunity.Account.Owner.Country", "CloseDate_YearQuarter", "OpportunityProducts.Opportunity.Account.DirectTerritoryRoles.Role.Roles", "op.Product2Id", "OpportunityProducts.Opportunity.HasOverdueTask", "op.Name", "OpportunityProducts.Opportunity.HasOpenActivity", "Account.Core_Unified_Intermediate_Customer_Name__c", "CloseDate", "OpportunityProducts.Opportunity.RecordTypeId", "OpportunityProducts.FiscalProductionClaimDate.dayofmonth", "OpportunityProducts.Opportunity.Security.Role.Roles", "OpportunityProducts.Core_Competitor__c", "op.Core_At_Risk_Status__c", "OpportunityProducts.Opportunity.Core_Operating_System__c", "User.Username", "OpportunityProducts.Opportunity.Security.Id", "op.Core_KPI_Date__c", "Product2.Core_Product_Family__c", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Name", "OpportunityProducts.OpportunityProductsHierarchy.TEAMMEMBER_HIERARCHY_TXT_MvHierarchy", "OpportunityProducts.Opportunity.AccountTeamMember.Security.Role.Roles", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.ManagerId", "op.Core_KPI_Product_Group__c", "op.Core_Vertical_Market__c", "Core_Opportunity_Owner__c", "CloseDate_YearNumber", "sales_group", "OpportunityProducts.Opportunity.Core_Wireless_WAN__c", "User.Name", "Partner.Partner.Core_Partner__c", "OpportunityProducts.Core_Operating_Systems__c", "op.Id", "OpportunityProducts.OpportunityProductsHierarchy.TEAMMEMBER_ID", "op.ProductCode", "Account.Core_Unified_Global_Customer_Name__c", "OpportunityProducts.GroupMemberRoles.Role.Roles", "OpportunityProducts.Opportunity.Account.Owner.Name", "OpportunityProducts.Opportunity.AccountTeamMember.OpportunityAccessLevel", "Partner.OwnerId", "OpportunityProducts.Opportunity.Core_Cellular_Reqs__c", "Account.OwnerId", "OpportunityProducts.Opportunity.Core_Opportunity_Team_Geo_ASMO__c", "OpportunityProducts.OpportunityProductsHierarchy.OWNER_HIERARCHY_TXT", "OpportunityProducts.OpportunityProductsHierarchy.TEAMMEMBER_HIERARCHY_TXT", "Id", "op.Core_Status__c", "Core_Opportunity_ID__c", "Account.Core_Sales_Groups__c", "Core_Product_Segment__c", "StageName", "OpportunityProducts.FiscalKPIDate.fiscalmonthnumber", "OpportunityProducts.Opportunity.AccountTeamMember.UserId", "AccountId", "Name", "OpportunityProducts.Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "op.Core_BU_Short_Name__c", "OpportunityProducts.OpptyProductsWithModifyAllData.ModifyAllData.AssigneeId", "OpportunityProducts.Opportunity.Account.ParentTerritoryRoles.Role.Roles", "OpportunityProducts.Opportunity.Group.Security.UserOrGroupId", "op.Core_Product_Type__c", "OpportunityProducts.Opportunity.SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "OpportunityProducts.GroupMember.UserOrGroupId", "OpportunityProducts.Opportunity.Owner.Name", "Account.Name", "OpportunityProducts.Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "Core_Opp_Strategic_Opportunity__c", "Probability" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityWithNoProd",
+          "name" : "OpportunityWithNoProd"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "JOIN2", "LOAD_DATASET9" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OPPORTUNITY_ID" ],
+        "rightQualifier" : "Security",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET9" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "SecurityAugment.GroupMemberRoles1.Role.Roles", "SecurityAugment.GroupMember1.UserOrGroupId", "SecurityAugment.GroupMember1.GroupId", "Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "Account.ParentTerritoryRoles.Role.Roles", "Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "Account.DirectTerritoryRoles.Role.Roles", "SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "AccountTeamMember.Security.Role.RolePath", "AccountTeamMember.Security.Name", "AccountTeamMember.Security.Role.Roles", "AccountTeamMember.Security.Id", "AccountTeamMember.UserId", "Group.Security.UserOrGroupId", "Security.Name", "Security.Role.Roles", "Security.Role.RolePath", "Security.Id", "Id" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "Security_Register",
+          "name" : "Security_Register"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET10" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "VBS_NM", "OPPORTUNITY_ID", "VBS_CONTRACT_START_DT", "VBS_START_DT", "VBS_END_DT", "VBS_ARR_DT", "VBS_ARR_YEAR_DSC", "TOTAL_CONTRACT_VALUE_NBR", "CTV_MONTHLY_NBR", "CONTRACT_LIFETIME_MONTHS_NBR", "VBS_QUARTER_DSC", "VBS_MONTH_DSC", "MVIEW_TS", "SOAR_VBS_ID", "VBS_YEAR_DSC", "PRIMARY_VBS_OFFERING_CATEGORY_DSC", "QUARTER_BACK_DSC", "SOAR_STAGE_DSC", "SOAR_VBS_DECISION_DSC", "VBS_EXPLORE_RE_USE_IND", "ANNUAL_RECURRING_REVENUE_NBR", "SOAR_CREATED_BY_NM", "SOAR_CREATED_BY_ALIAS_NM", "SOAR_CREATED_DT", "SOAR_OWNER_NM", "SOAR_OWNER_ALIAS_NM", "SOAR_OWNER_ROLE_NM", "PRIMARY_LAWYER_TXT", "OPPVBSTYPE" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "FACT_SOAR_VBS",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "FACT_SOAR_VBS"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "JOIN2" : {
+        "label" : "Join 2",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 530.2
+      },
+      "OUTPUT0" : {
+        "label" : "VBS_SOAR",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 114,
+        "left" : 1092.4
+      },
+      "TRANSFORM0" : {
+        "label" : "Transform 0",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 812,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Formula"
+          },
+          "FORMULA6" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Stage"
+          },
+          "FORMULA7" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opportunity_Name"
+          },
+          "FORMULA8" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Account_nm"
+          },
+          "FORMULA9" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opp_Owner_nm"
+          },
+          "FORMULA10" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "VBS_Quarter"
+          },
+          "FORMULA11" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "VBS Month"
+          },
+          "FORMULA12" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "VBS Year"
+          },
+          "FORMULA13" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Primary VBS Offering Category"
+          },
+          "FORMULA14" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "VBS Status"
+          },
+          "FORMULA15" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Vertical Market"
+          },
+          "FORMULA16" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opportunity_Status"
+          },
+          "FORMULA17" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opportunity_Name_ARR"
+          },
+          "FORMULA18" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Account_nm_ARR"
+          },
+          "FORMULA19" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Owner_nm_ARR"
+          },
+          "FORMULA20" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "StageSorted"
+          },
+          "FORMULA21" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Contract Start Date"
+          },
+          "FORMULA22" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "stage_mapping"
+          },
+          "FORMULA23" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "SOAR_VBS_Renewal"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA6",
+          "target" : "FORMULA7"
+        }, {
+          "source" : "FORMULA7",
+          "target" : "FORMULA8"
+        }, {
+          "source" : "FORMULA8",
+          "target" : "FORMULA9"
+        }, {
+          "source" : "FORMULA9",
+          "target" : "FORMULA10"
+        }, {
+          "source" : "FORMULA10",
+          "target" : "FORMULA11"
+        }, {
+          "source" : "FORMULA11",
+          "target" : "FORMULA12"
+        }, {
+          "source" : "FORMULA12",
+          "target" : "FORMULA13"
+        }, {
+          "source" : "FORMULA13",
+          "target" : "FORMULA14"
+        }, {
+          "source" : "FORMULA14",
+          "target" : "FORMULA15"
+        }, {
+          "source" : "FORMULA15",
+          "target" : "FORMULA16"
+        }, {
+          "source" : "FORMULA16",
+          "target" : "FORMULA17"
+        }, {
+          "source" : "FORMULA17",
+          "target" : "FORMULA18"
+        }, {
+          "source" : "FORMULA18",
+          "target" : "FORMULA19"
+        }, {
+          "source" : "FORMULA19",
+          "target" : "FORMULA20"
+        }, {
+          "source" : "FORMULA20",
+          "target" : "FORMULA21"
+        }, {
+          "source" : "FORMULA0",
+          "target" : "FORMULA6"
+        }, {
+          "source" : "FORMULA21",
+          "target" : "FORMULA22"
+        }, {
+          "source" : "FORMULA22",
+          "target" : "FORMULA23"
+        } ]
+      },
+      "JOIN5" : {
+        "label" : "Join 5",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 390.2
+      },
+      "LOAD_DATASET6" : {
+        "label" : "CRM_VBS_SOAR__c",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 250.3,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET7" : {
+        "label" : "OpportunityWithNoProd",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 530.2,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN6" : {
+        "label" : "Join 6",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 670.2
+      },
+      "LOAD_DATASET9" : {
+        "label" : "Security_Register",
+        "type" : "LOAD_DATASET",
+        "top" : 391.8,
+        "left" : 672.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET10" : {
+        "label" : "FACT_SOAR_VBS",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 391.7,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "LOAD_DATASET10",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN5",
+      "target" : "JOIN2"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN5"
+    }, {
+      "source" : "LOAD_DATASET7",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN6",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET9",
+      "target" : "JOIN6"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

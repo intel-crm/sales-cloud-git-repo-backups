@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL</name>
+        <label>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL_TRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdatesCore_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</targetReference>
+            </connector>
+            <label>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL_TRUE</label>
+        </rules>
+        <rules>
+            <name>Ownership_change_within_one_day_of_SGL1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Ownership_change_within_one_day_of_SGL</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_ownership_change_in_SGL_field</targetReference>
+            </connector>
+            <label>Ownership_change_within_one_day_of_SGL</label>
+        </rules>
+    </decisions>
+    <description>For LEAD WFs
+
+&apos; Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL &apos;  
+&apos; Core_Lead_Reset_Lead_State_New &apos;</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>for the LEAD WF
+&apos;Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL&apos;</description>
+        <name>F_Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(  
+{!$Record.RecordType.DeveloperName} = &quot;Lead&quot;, ISCHANGED({!$Record.OwnerId}), ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;), ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Qualified&apos;) 
+ )</expression>
+    </formulas>
+    <formulas>
+        <name>F_NULLDATETIME</name>
+        <dataType>DateTime</dataType>
+        <expression>NULL</expression>
+    </formulas>
+    <formulas>
+        <name>Ownership_change_within_one_day_of_SGL</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(  
+{!$Record.RecordType.DeveloperName} = &quot;Sales_Lead&quot;, ISCHANGED({!$Record.OwnerId}), ISPICKVAL({!$Record.Status}, &apos;Sales Generated Lead&apos;), ISPICKVAL({!$Record.Core_Lead_Status__c}, &apos;Accepted&apos;) 
+ )</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_ResetStateNew_OwnershipChangeMQL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_ResetStateNew_OwnershipChangeMQL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>for the Lead WF 
+
+&apos; Core_Lead_Reset_Lead_State_New &apos;</description>
+        <name>FieldUpdatesCore_Lead_Reset_Lead_State_New</name>
+        <label>FieldUpdatesCore_Lead_Reset_Lead_State_New</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <connector>
+            <targetReference>Core_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_MQL</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Accepted__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Engaged__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_OnHold__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Open__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_State_Entrance_Date_Rejected__c</field>
+            <value>
+                <elementReference>F_NULLDATETIME</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdatesCore_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</name>
+        <label>FieldUpdatesCore_Ownership_Change_Within_One_Business_Day_of_Meeting_Task_TQL</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Core_Ownership_change_in_one_day_MQL__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_ownership_change_in_SGL_field</name>
+        <label>Update ownership change in SGL field</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>SWS_Ownership_change_in_one_day_of_SGL__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>FieldUpdatesCore_Lead_Reset_Lead_State_New</targetReference>
+        </connector>
+        <filterFormula> AND( {!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,  ISCHANGED({!$Record.OwnerId} ))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

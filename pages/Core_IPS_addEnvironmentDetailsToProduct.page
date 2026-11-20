@@ -1,0 +1,89 @@
+<apex:page id="page" standardController="Core_IPS_Supported_Product__c" extensions="Core_IPS_EnvironmentVariablesController">
+    <script> var previousOnload = window.onload; window.onload = function() { if (previousOnload) { previousOnload(); } 
+        checkboxes = document.getElementsByTagName("input");
+       
+        size = (checkboxes.length-6)/3;
+        
+        for(i=0;i<size;i++){
+                checkbox2 = "page:form:pageSection:table:"+i+":checkbox2";
+                checkbox3 = "page:form:pageSection:table:"+i+":checkbox3";
+                document.getElementById(checkbox2).disabled=true;
+                document.getElementById(checkbox3).disabled=true;
+                
+            } } </script>
+    <script language="javascript">
+        
+        function enableRequiredAndAgentOnly(val1,val2,val3) {
+            if(document.getElementById(val1).checked){
+                document.getElementById(val2).disabled=false;
+                document.getElementById(val3).disabled=false;
+            }else{
+                document.getElementById(val2).disabled=true;
+                document.getElementById(val3).disabled=true;
+            }
+        }
+    </script> 
+     
+   <apex:form id="form">
+   <apex:pageblock id="ErrMessSec" rendered="{!(ErrorMessage != null)}">
+   <div align="center">
+   <apex:commandButton action="{!cancel}" value="Exit" />
+   </div>
+   <div align="center">
+   <apex:outputLabel value="{!ErrorMessage}" style="font-weight:bold"/> 
+   </div>
+   
+   </apex:pageblock>
+   
+   <apex:panelGrid columns="2" rendered="{!(ErrorMessage == null)}">
+       <apex:inputText value="{!searchText}"/>
+       <apex:commandButton value="Search" action="{!getEnvironmentVariables_SupProd}" rerender="form" status="status"/>
+        <apex:actionStatus id="status" startText="loading.."> 
+            <apex:facet name="start" >
+                <span class="loadingCont"><img  src="/img/loading.gif" size="200px;" class="loadingImg" />Loading..</span>
+            </apex:facet>
+        </apex:actionStatus>
+   </apex:panelGrid>
+   
+  <apex:pageblock id="pageSection" rendered="{!(ErrorMessage == null)}">
+      <apex:pageblockButtons >
+          <!-- Modified label (Add Environment Details) By Karthick - US104260 - R4.2 I10 -->  
+          <apex:commandButton action="{!addEnvironmentVariables}" value="Add Environment Details"/>
+          <apex:commandButton action="{!cancel}" value="Exit"/>
+      </apex:pageblockButtons>
+      
+      <apex:pageBlockTable id="table" value="{!envDetails}" var="env1">
+          <apex:column id="col1" width="40px">
+              <apex:inputCheckbox id="checkbox1" value="{!env1.selected}" onclick="enableRequiredAndAgentOnly('{!$Component.checkbox1}','{!$Component.checkbox2}','{!$Component.checkbox3}');"/>
+              
+          </apex:column>
+          
+          <!--Added by Aparna for US108518-R4.3 on 21/6/2018-->
+          <apex:column id="col5" headerValue="Question No">
+                <apex:outputText value="{!env1.env.Name}"></apex:outputText>
+          </apex:column>
+          <!--end-->
+          
+          <!-- Added By Yogesh Sharma -->  
+          <apex:column id="col2" value="{!env1.env.Core_IPS_Question__c}"/>       
+          <!-- <apex:column id="col2" value="{!env1.env.Name}"/> -->
+           
+          <apex:column id="col3" headerValue="Required">
+              <apex:inputCheckbox id="checkbox2" value="{!env1.required}"/>
+          </apex:column>
+          <apex:column id="col4" headerValue="Agent Only">
+              <apex:inputCheckbox id="checkbox3" value="{!env1.agentOnly}"/>
+          </apex:column>
+          
+           <!--Added by Aparna for US108518-R4.3 on 21/6/2018-->
+          <apex:column id="col6" headerValue="Parent Question">
+                <apex:outputText value="{!env1.env.Core_IPS_Parent_Question__r.Core_IPS_Question__c}"></apex:outputText>
+          </apex:column>
+          <!--end-->
+          
+      </apex:pageBlockTable>
+  </apex:pageblock>
+  
+  </apex:form>
+  
+</apex:page>

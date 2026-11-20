@@ -1,0 +1,52 @@
+public class PMP_SearchCreatePartnerWorkCopy implements Queueable{
+    List<PMP_Company__c> newcompanies;
+    List<PMP_Company__c> createworkcopies = new List<PMP_Company__c>();
+    List<PMP_Company__c> updatepublished = new List<PMP_Company__c>();    
+    public PMP_SearchCreatePartnerWorkCopy(List<PMP_Company__c> newcompanies) {
+        this.newcompanies = newcompanies;
+        this.createworkcopies = new List<PMP_Company__c>();
+        this.updatepublished = new List<PMP_Company__c>(); 
+    }
+    public void execute(QueueableContext context) {
+        for(PMP_Company__c partner : newcompanies){
+            PMP_Company__c partner_wc                      		= new PMP_Company__c();
+            partner_wc.Name                                		= partner.Name;
+          //  partner_wc.PMP_Account_Id__c                   		= partner.PMP_Account_Id__c;
+            partner_wc.PMP_Company_Lifecycle_Status_Nm__c  		= PMP_StaticConstants_Partner.Draft;            
+            partner_wc.PMP_Account_Website__c              		= partner.PMP_Account_Website__c;
+            partner_wc.PMP_Account_Program_Membership__c		= partner.PMP_Account_Program_Membership__c;
+            partner_wc.PMP_Partner_Program_nm__c 				= partner.PMP_Partner_Program_nm__c;                
+            partner_wc.PMP_Account_Specialty__c 				= partner.PMP_Account_Specialty__c;		
+            partner_wc.PMP_Is_Published_Ind__c             		= false;                        
+            partner_wc.PMP_Is_Working_Copy_Ind__c          		= true;            
+            partner_wc.PMP_Company_Status_Update_Dt__c     		= Date.today();
+            partner_wc.PMP_Published_Copy_Id__c					= partner.Id;
+            partner_wc.PMP_One_Partner_ID__c 					= partner.PMP_One_Partner_ID__c;
+            partner_wc.PMP_Partner_Benefit_Type__c				= partner.PMP_Partner_Benefit_Type__c;
+            partner_wc.PMP_IPA_Badge_Tier_Txt__c                = partner.PMP_IPA_Badge_Tier_Txt__c;
+            partner_wc.PMP_Partner_Segment_Nm__c                = partner.PMP_Partner_Segment_Nm__c;
+            createworkcopies.add(partner_wc);
+            
+        }
+        if(!createworkcopies.isEmpty()){
+            //Insert(createworkcopies);
+            Database.SaveResult[] cwcList = Database.insert(createworkcopies, false);
+			PMP_Utility.logDmlErrors((Object[]) cwcList, 'PMP_SearchCreatePartnerWorkCopy-execute');
+
+            
+            //Set<Id> partnerIdsCreated = new Set<Id>();
+            for(PMP_Company__c wc : createworkcopies) {
+                PMP_Company__c pc = new PMP_Company__c();
+                pc.Id = wc.PMP_Published_Copy_Id__c;
+                pc.PMP_Working_Copy_Id__c = wc.Id;
+                updatepublished.add(pc);
+            }
+            if(!updatepublished.isEmpty()){
+                //update(updatepublished);
+                Database.SaveResult[] upList = Database.update(updatepublished, false);
+				PMP_Utility.logDmlErrors((Object[]) upList, 'PMP_SearchCreatePartnerWorkCopy-execute');
+            }                    
+        }
+    }
+   
+}

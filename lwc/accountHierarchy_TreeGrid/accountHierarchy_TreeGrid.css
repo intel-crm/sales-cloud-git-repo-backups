@@ -1,0 +1,13 @@
+.scrollableSection {
+    background-color:white; border-style: ridge; /*overflow-x: hidden;*/ height: auto; overflow: auto; max-height: 400px;
+}
+
+.nonScrollableSection {
+  background-color:white; border-style: ridge; overflow-x: hidden;
+}
+
+/*.fixHeader th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}*/

@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-is-relative"><div if:true={spinner}></div></div>
+    <div if:false={spinner}>
+    <lightning-card><br/>
+        <div if:true={errorMsg} align="center" class="error">
+            <p>Project is already Submitted. Do not try to Re-Submit. Refer to the Project Status value before Submitting</p>
+        </div>
+        <div if:true={errMsg} align="center" class="error">
+            <p>Project cannot be submitted without atleast one account and one Product and one Project Member</p>
+        </div>
+        <div if:true={submit} class="submit">
+            <p>Project submitted successfully</p>
+        </div><br/><br/>
+        <div align="center"><lightning-button label="Go Back" onclick={cancel} class="slds-m-left_x-small"></lightning-button></div><br/>
+    </lightning-card>
+</div>
+</template>

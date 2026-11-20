@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Premier_Support_Project_Product_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Premier_Support_Project_Product_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>false</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>false</enableSharing>
+    <enableStreamingApi>false</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Core_IPS_IsAutoApprove__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is to check if the Product is of type Auto Approve</description>
+        <label>IsAutoApprove</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Prod_Def_Case_Owner_ID__c</fullName>
+        <description>Contains the ID of the Product Default Case Owner text field.</description>
+        <externalId>false</externalId>
+        <label>Product Default Case Owner ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Prod_Default_Case_Owner__c</fullName>
+        <description>This field determines the default case owner if a case has been created on the Supported Project Product .</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Default case owner for Project Product.</inlineHelpText>
+        <label>Product Default Case Owner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Prodcut_Org__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Supported_Product__r.Core_Product_Organization__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Support Org</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Product_Status__c</fullName>
+        <label>Product Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>true</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Project__c</fullName>
+        <label>Premier Support Project</label>
+        <referenceTo>Core_IPS_Project__c</referenceTo>
+        <relationshipName>IPS_Products</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_Product_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text(Core_Intel_Product__r.Status)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Intel Product Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Intel Product</label>
+        <referenceTo>Asset</referenceTo>
+        <relationshipName>IPS_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_IsSubmitted_Header__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsSubmitted-Header</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Supported_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Supported_Product__r.Core_Supported_Product_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Supported Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Supported_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Preventing PAR Hidden Or EOIS Products from being selected on Project</description>
+        <label>Supported Product</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Core_IPS_Supported_Product__c.Core_Product__c</field>
+                <operation>notEqual</operation>
+                <value></value>
+            </filterItems>
+            <infoMessage>1. Please select All fields radio button for proper search
+2. Do not select EOIS or PAR Hidden products.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Core_IPS_Supported_Product__c</referenceTo>
+        <relationshipLabel>Premier Support Project Products</relationshipLabel>
+        <relationshipName>IPS_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Is_Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Approved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Product_Application__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Supported_Product__r.Core_Product_Organization__r.Core_Organization_Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Focus Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Not Approved</fullName>
+                    <default>false</default>
+                    <label>Not Approved</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Premier Support Project Product</label>
+    <nameField>
+        <displayFormat>PN-{0000000}</displayFormat>
+        <label>Project Product Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Premier Support Project Products</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_IPS_Project_Product</fullName>
+        <active>true</active>
+        <description>This is to display the page layout that do not have the approval history related list</description>
+        <label>IPS Project Product(Basic)</label>
+        <picklistValues>
+            <picklist>Core_IPS_Product_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_IPS_Project_Product_Approval</fullName>
+        <active>true</active>
+        <description>This is to display the page layout that have the approval history related list</description>
+        <label>IPS Project Product(Approval)</label>
+        <picklistValues>
+            <picklist>Core_IPS_Product_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Core_IPS_PreventParHidden</fullName>
+        <active>false</active>
+        <description>This is to prevent PAR Hidden type Supported Products from being added</description>
+        <errorConditionFormula>OR(ISPICKVAL(Core_Supported_Product__r.Core_Flag_Status__c, &quot;Par Hidden&quot;),  Core_Supported_Product__r.Core_EOIS__c )</errorConditionFormula>
+        <errorMessage>Cannot Add Par Hidden or EOIS Type Supported Product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_PreventProductLookupChange</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED(Core_Supported_Product__c)</errorConditionFormula>
+        <errorMessage>Changes to Supported Product Lookup are not allowed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Prevent_ParHidden_and_EOIS</fullName>
+        <active>true</active>
+        <description>This is to prevent PAR Hidden type Supported Products from being added</description>
+        <errorConditionFormula>OR(
+	AND(
+		ISPICKVAL( Core_IPS_Product_Status__c , &quot;Active&quot;),
+		ISPICKVAL(Core_Supported_Product__r.Core_Flag_Status__c, &quot;Par Hidden&quot;), 
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Interested_Parties_Internal_Admin,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Interested_Parties_Internal_Agent,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Agent_Enhanced_Profile,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Partner_AE_ProfileName,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_External_Customer_Profile,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Partner_Profile_Name,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_System_Admin_Profile_Name,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_IT_Admin_Profile ,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Production_Support_IPS_Profile,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name			
+	), 
+	AND(
+		ISPICKVAL( Core_IPS_Product_Status__c , &quot;Active&quot;), 
+		Core_Supported_Product__r.Core_EOIS__c = TRUE,
+		$Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name
+	)
+)</errorConditionFormula>
+        <errorMessage>Cannot Add Par Hidden Type Supported Product or EOIS type Supported Products</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>IPS_Altera_Go_Live_Project_Restriction</fullName>
+        <active>true</active>
+        <description>Restricting the user to add Altera Products on an existing Project during migration</description>
+        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_Supported_Product__r.Core_Support_Org_Name__c = &apos;Programmable Solutions Group&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
+        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_default_case_owner</fullName>
+        <availability>online</availability>
+        <description>Custom button that adds default case owner for a project product</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add / Remove Default Case Owner</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/support/console/41.0/integration.js&apos;)}
+if(sforce.console.isInConsole()){ //Checks that it is in console
+window.open(&quot;apex/Core_IPS_AddDefaultCaseOwner?isdtp=vw&amp;productId={!Core_IPS_Product__c.Id}&quot;,&apos;_self&apos;);
+}else{
+window.open(&quot;/apex/Core_IPS_AddDefaultCaseOwner?productId={!Core_IPS_Product__c.Id}&quot;,&apos;_self&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Approval Price Rules</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Approval Price Rules</value>
+    </caseValues>
+    <fields>
+        <help><!-- Name of the customer for which the price rule will apply. --></help>
+        <label><!-- Account --></label>
+        <name>Pricing_Account__c</name>
+        <relationshipLabel><!-- Approval Price Rules --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approval/Rejection Comments --></label>
+        <name>Pricing_Approval_Rejection_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>Pricing_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Country/Region in which the End Customer is located, for which the price rule will apply. --></help>
+        <label><!-- End Customer Country/Region --></label>
+        <name>Pricing_End_Customer_Country__c</name>
+    </fields>
+    <fields>
+        <help><!-- The customer&apos;s requested Pricing End Date in the quote header must be less than or equal to this date, for the price rules to run on the quote line. --></help>
+        <label><!-- Pricing End Date --></label>
+        <name>Pricing_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Form Factor that must be indicated in the quote line, in order for the rule to run. --></help>
+        <label><!-- Form Factor --></label>
+        <name>Pricing_Form_Factor__c</name>
+        <picklistValues>
+            <masterLabel>2 in 1</masterLabel>
+            <translation><!-- 2 in 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIO</masterLabel>
+            <translation><!-- AIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Client</masterLabel>
+            <translation><!-- Cloud Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Desktop</masterLabel>
+            <translation><!-- Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Desktop Workstation</masterLabel>
+            <translation><!-- Desktop Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Workstation</masterLabel>
+            <translation><!-- Mobile Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notebook</masterLabel>
+            <translation><!-- Notebook --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Email address for the Intel employee who is covering the end customer. If this field is populated, the price rule will run ONLY on quote lines that meet the price rule criteria, which have this representative listed on the quote. --></help>
+        <label><!-- Intel Account Executive Email --></label>
+        <name>Pricing_Intel_Account_Exec_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Sales Rep (ex. Sales Dev Mgr (SDM) or Field Sales Engineer (FSE)) at Intel who will be actioning the quote in Tenders IQR. If this field is populated, the price rule will run ONLY on quote lines that meet the price rule criteria, which have this representative listed on the quote. --></help>
+        <label><!-- Intel Sales Rep Email --></label>
+        <name>Pricing_Intel_Sales_Rep_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Pricing_Is_Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if the price rule will become active immediately upon approval. To be designated by the RPM. --></help>
+        <label><!-- Is Enabled --></label>
+        <name>Pricing_Is_Enabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Market Segment that must be indicated in the quote line, in order for the rule to run. --></help>
+        <label><!-- Market Segment --></label>
+        <name>Pricing_Market_Segment_values_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Communications</masterLabel>
+            <translation><!-- Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer No Pull</masterLabel>
+            <translation><!-- Consumer No Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Retail Pull</masterLabel>
+            <translation><!-- Consumer Retail Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corp</masterLabel>
+            <translation><!-- Corp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:DSS</masterLabel>
+            <translation><!-- Embedded:DSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:EBM (Embedded Board Manufacturer)</masterLabel>
+            <translation><!-- Embedded:EBM (Embedded Board Manufacturer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Energy</masterLabel>
+            <translation><!-- Embedded:Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Gaming</masterLabel>
+            <translation><!-- Embedded:Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Industrial</masterLabel>
+            <translation><!-- Embedded:Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:MAG (Military Aerospace Govt)</masterLabel>
+            <translation><!-- Embedded:MAG (Military Aerospace Govt) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Medical</masterLabel>
+            <translation><!-- Embedded:Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Other</masterLabel>
+            <translation><!-- Embedded:Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Print Imaging</masterLabel>
+            <translation><!-- Embedded:Print Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Thin Client</masterLabel>
+            <translation><!-- Embedded:Thin Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transactional Retail</masterLabel>
+            <translation><!-- Embedded:Transactional Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transportation</masterLabel>
+            <translation><!-- Embedded:Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Visual Retail</masterLabel>
+            <translation><!-- Embedded:Visual Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAD</masterLabel>
+            <translation><!-- LAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB</masterLabel>
+            <translation><!-- SMB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The customer&apos;s requested Quantity in the quote line must be less than or equal to this value, in order for the price rule to run. --></help>
+        <label><!-- Maximum Quantity --></label>
+        <name>Pricing_Maximum_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- The customer&apos;s Requested Unit Price in the quote line must be less than or equal to this value, in order for the price rule to run. --></help>
+        <label><!-- Maximum Requested Unit Price --></label>
+        <name>Pricing_Maximum_Requested_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- The customer&apos;s requested Quantity in the quote line must be greater than or equal to this value, in order for the price rule to run. --></help>
+        <label><!-- Minimum Quantity --></label>
+        <name>Pricing_Minimum_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- The customer&apos;s Requested Unit Price in the quote line must be greater than or equal to this value, in order for the price rule to run. --></help>
+        <label><!-- Minimum Requested Unit Price --></label>
+        <name>Pricing_Minimum_Requested_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- PriceRule Id --></label>
+        <name>Pricing_PriceRule_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- The quote type for which the price rule will apply. --></help>
+        <label><!-- Quote Type --></label>
+        <name>Pricing_Quote_Type__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RPM Email --></label>
+        <name>Pricing_RPM_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Sales Geography in which the End Customer is located, for which the price rule will apply. --></help>
+        <label><!-- End Customer Sales Geography --></label>
+        <name>Pricing_Region_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date which the price rule becomes invalid and will no longer run against quote lines in Tenders IQR. --></help>
+        <label><!-- Rule End Date --></label>
+        <name>Pricing_Rule_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rule Name --></label>
+        <name>Pricing_Rule_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date which the price rule becomes valid and will run against quote lines in Tenders IQR. --></help>
+        <label><!-- Rule Start Date --></label>
+        <name>Pricing_Rule_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Application that must be indicated in the quote line, in order for the rule to run. --></help>
+        <label><!-- Application --></label>
+        <name>Pricing_Server_Deal_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP</masterLabel>
+            <translation><!-- CoSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstations</masterLabel>
+            <translation><!-- Workstations --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Pricing Approval Price Rules - Edit --></label>
+        <name>Pricing_Approval_Price_Rules_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pricing Approval Price Rules - Read Only --></label>
+        <name>Pricing_Approval_Price_Rules_Read_Only</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Pricing End Date should be today or in future. --></errorMessage>
+        <name>Pricing_EndDateCannotBePast_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Minimum Quantity should be greater than or equal to 0 and Maximum Quantity should be greater than 0. --></errorMessage>
+        <name>Pricing_MinMax_Quantity_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Minimum Requested Unit Price should be greater than or equal to 0 and Maximum Requested Unit Price should be greater than 0. --></errorMessage>
+        <name>Pricing_MinMax_RestrictedUnitPrice_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Minimum Quantity is greater than Maximum Quantity. Please enter a Maximum Quantity greater than Minimum Quantity. --></errorMessage>
+        <name>Pricing_Quantity_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Minimum Requested Unit Price is greater than Maximum Requested Unit Price. Please enter a Maximum Requested Unit Price greater than Minimum Requested Unit Price. --></errorMessage>
+        <name>Pricing_RequestedUnitPrice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Data Center quote types, Application is a required field and Form Factor should be blank. For Client quote types, Form Factor is a required field and Application should be blank. --></errorMessage>
+        <name>Pricing_RestrictFormFactorORApplication</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Rule Start or Rule End Date Cannot be blank. --></errorMessage>
+        <name>Pricing_RestrictRuleStartAnd_EndDateNull</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Rule End Date is before Rule Start Date. Please enter a Rule End Date that is after the Rule Start Date. --></errorMessage>
+        <name>Pricing_RuleEndDate_Before_RuleStartDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Either Rule Start Date or Rule End Date has already passed. Please ensure both dates are in the future. --></errorMessage>
+        <name>Pricing_RuleStartAndEndDate_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>IPA_AGS_IdentityFail</name>
+    <style>none</style>
+    <subject>Identity creation failure for your Intel® Partner Alliance invite</subject>
+    <textOnly>Hello,
+
+There was a system glitch in initiating the IPA invite for user- %%email Id%% and invite email could not be generated due to identity creation failure. Follow the link below to re-initiate identity creation.
+%link%</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

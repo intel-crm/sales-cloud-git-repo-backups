@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Translated & Published: Your {!relatedTo.Name} Storefront" recipientType="User" relatedToType="PMP_Company__c">
+
+    <messaging:htmlEmailBody >
+    
+        <c:PMP_PartnerTranslatedAndPublished partnerRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

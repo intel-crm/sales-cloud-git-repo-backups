@@ -1,0 +1,26 @@
+<aura:component extends="c:MarketplaceRedux"  >
+    <aura:set attribute="storeName" value="Search" /><!--Added as part of code merge [09/15]-->
+    <!--<aura:attribute name="storeName" type="string" default="Search" />--><!--Commented as part of code merge [09/15]-->
+	<aura:attribute name="tags" type="object[]" default="[]"/>
+	<aura:attribute name="tagGrouping" type="object[]" default="[]"/>
+	<aura:attribute name="toggledTags" type="object" default="{}"/>
+
+
+	<aura:attribute name="tagset" type="object" default="{}" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<aura:handler name="change" value="{!v.tags}" action="{!c.handleTagsUpdate}" />
+
+	<div class="level1">
+		<aura:if isTrue="{! !empty(v.tagGrouping)}">
+			<aura:iteration items="{!v.tagGrouping}" var="tagGroup" indexVar="i">
+				<c:MarketplacePartnerListGroupingNode
+					children="{!tagGroup.tags}"
+					label="{!tagGroup.label}"
+					contextualFilterId="{!v.tagset.name}"
+					id="{!tagGroup.id}" />
+			 </aura:iteration>
+		</aura:if>
+	</div>
+</aura:component>

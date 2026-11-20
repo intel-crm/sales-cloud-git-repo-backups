@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Device</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Devices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Processor Brand --></label>
+        <name>Core_Brand_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Calculated Model name --></label>
+        <name>Core_Calculated_Model_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Connectivity --></label>
+        <name>Core_Connectivity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Focused SKU --></label>
+        <name>Core_DBM_focus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Device Id --></label>
+        <name>Core_Device_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form Factor Category --></label>
+        <name>Core_Form_Factor_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form Factor --></label>
+        <name>Core_Form_Factor__c</name>
+    </fields>
+    <fields>
+        <label><!-- 2 in 1 --></label>
+        <name>Core_Intel_2_in_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Name --></label>
+        <name>Core_Internal_Model_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- MFPN --></label>
+        <name>Core_MFPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Memory (RAM) --></label>
+        <name>Core_Memory_size__c</name>
+    </fields>
+    <fields>
+        <label><!-- System version name --></label>
+        <name>Core_OEM_System_version_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM --></label>
+        <name>Core_OEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operating System Version --></label>
+        <name>Core_OS_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operating System --></label>
+        <name>Core_OS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processor number --></label>
+        <name>Core_Processor_number__c</name>
+        <relationshipLabel><!-- Devices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Public Model Name --></label>
+        <name>Core_Public_Model_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Real Sense --></label>
+        <name>Core_Real_Sense__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entry SPP (US$) --></label>
+        <name>Core_SPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- SSD --></label>
+        <name>Core_SSD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Screen Size --></label>
+        <name>Core_Screen_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>Core_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Touch --></label>
+        <name>Core_Touch__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

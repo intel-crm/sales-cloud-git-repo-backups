@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Create a Push Task for Opportunity Owner whenever Push counter is incremented
+Added Push counter check for NULL or ISBLANK for Clone opportunities
+Added code to run for Internal users only and set task as Completed with Due Date today</description>
+    <environments>Default</environments>
+    <interviewLabel>Push Task Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Push Task Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Task</name>
+        <label>Create Task</label>
+        <locationX>584</locationX>
+        <locationY>371</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Activity_Source__c</field>
+            <value>
+                <stringValue>Automated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Task_Type__c</field>
+            <value>
+                <stringValue>Push Reason</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Push Reason</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Create_Task</targetReference>
+        </connector>
+        <filterFormula>TEXT({!$Record.Core_Opportunity_Coverage_Nm__c}) != &apos;Partner-Led Opportunity&apos; &amp;&amp;
+TEXT({!$Record.Core_Coverage_Type_Nm__c}) != &apos;Deal Registration&apos; &amp;&amp; 
+ISCHANGED({!$Record.Core_Push_Counter__c}) &amp;&amp;
+( 
+	({!$Record.Core_Push_Counter__c} &gt; {!$Record__Prior.Core_Push_Counter__c}) || 
+	ISBLANK({!$Record__Prior.Core_Push_Counter__c}) || 
+	ISNULL({!$Record__Prior.Core_Push_Counter__c}) 
+) 
+&amp;&amp;  {!$Record.Core_Push_Counter__c} &gt; 0
+&amp;&amp; {!$User.Core_User_Type__c} == &quot;Internal User&quot;</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

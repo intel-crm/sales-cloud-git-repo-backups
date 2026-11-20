@@ -1,0 +1,37 @@
+<aura:component>
+
+    <aura:attribute name="radio" type="Object" />
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="onchange" type="Object" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <aura:attribute name="isChildRequired" type="boolean" default="false" description="Internal" /> <!--psg analysis-->
+    <aura:attribute name="radioFieldName" type="string" description="label of Radio field" /> <!--psg analysis-->
+    <aura:attribute name="isL3Selected" type="boolean" default="false"/><!--added for PSG POC-->
+    <aura:attribute name="errorMessage" type="string" description="Error message text" />
+    
+   <!-- <aura:if isTrue="{!and(and(v.radio.isSelected, v.isChildRequired), !v.isL3Selected)}">
+    <span  class="{!join(' ', 'slds-text-color_error', v.radio.isSelected ? 'label slds-m-bottom_xx-small' : 'slds-m-bottom_xx-small')}">Please select a value under {!v.radio.label}</span>
+    </aura:if>-->  
+           <lightning:input aura:id="input"
+                             class= "{!join(' ', 'slds-p-vertical_xxx-small', 'slds-m-vertical_xxx-small', v.radio.highlight ? 'highlight' : '')}"
+                             name="{!v.name}"
+                             checked="{!v.radio.isSelected}"
+                             disabled="{!or(v.disabled, v.radio.disabled)}"
+                             type="radio"
+                             label="{!v.radio.label}"
+                             value="{!v.radio.value}"
+                             onchange="{!c.handleChange}" />
+      
+    
+    <aura:iteration items="{!v.radio.children}" var="child" indexVar="i">
+        <div class="slds-p-left_large">
+            <c:MarketplaceFormRadioChild name="{!v.name + '__child'}"
+                                 disabled="{!v.disabled}"
+                                 radio="{!child}"
+                                 onchange="{!v.onchange}"
+                                 isL3Selected="{!v.isL3Selected}"/>
+        </div>
+
+    </aura:iteration>
+      
+</aura:component>

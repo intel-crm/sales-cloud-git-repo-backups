@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_ZHO</name>
+    <style>none</style>
+    <subject>验证您的电子邮件地址</subject>
+    <textOnly>验证您的电子邮件并设置密码
+
+
+
+尊敬的 {!PRM_Registration_Request__c.PRM_First_Name__c}：
+
+感谢您开始注册英特尔® 合作伙伴联盟！
+请点击以下链接继续
+
+
+验证您的电子邮件并设置密码
+
+
+请注意此链接 24 小时后失效要完成下一步并设置您的密码，请使用下面列出的用户名
+用户名： {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+无法访问上面的链接？
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=zh&amp;target=https://wcm-ciqa.intel.com/content/www/cn/zh/secure/partner/forms/ipa-account-search.html
+
+
+衷心期待您参加本计划！
+顺祝商祺！
+英特尔® 合作伙伴联盟团队
+
+本邮件是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} 英特尔公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+隐私&amp;verbar;Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

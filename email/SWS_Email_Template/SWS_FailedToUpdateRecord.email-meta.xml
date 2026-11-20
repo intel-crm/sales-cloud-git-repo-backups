@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <available>true</available>
+    <description>Inform IT Team that records are getting failed to update</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SWS_FailedToUpdateRecord</name>
+    <style>none</style>
+    <subject>IDC Coupon Generation Request Complete. [TOTAL_NUMBER] requests were processed.</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

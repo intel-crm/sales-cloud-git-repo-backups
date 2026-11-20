@@ -1,0 +1,51 @@
+.THIS {
+}
+
+.THIS .container {
+  max-width: 1650px;
+}
+/*Refactor css to use h3 heading - Merge[US611347]*/
+.THIS h3 {
+  width: 80%;
+  font-size: 3.25em;
+  letter-spacing: .029em;
+
+}
+.THIS p {
+  width: 80%;
+}
+
+/* Theming */
+.THIS.primary {
+  background-color: t(blue);
+}
+
+.THIS.primary h3,
+.THIS.primary p {
+  color: t(white);
+}
+
+.THIS.dark {
+  background-color: t(darkBlue);
+}
+
+.THIS.dark h3,
+.THIS.dark p {
+  color: t(lightestGray);
+}
+
+.THIS.light {
+  background-color: t(lightestGray);
+}
+
+.THIS.light h3,
+.THIS.light p {
+  color: t(darkGray);
+}
+
+
+@media (max-width: 767px) {
+  .THIS h3 {
+    font-size: 2.625em;
+  }
+}

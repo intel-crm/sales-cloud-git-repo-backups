@@ -1,0 +1,534 @@
+<!--
+  @description       : 
+  @author            : Sandeep Chamate
+  @group             : 
+  @last modified on  : 02-13-2025
+  @last modified by  : Vrushabh Uprikar
+-->
+<aura:component controller="Pricing_QuoteLineCloneController"
+    implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="quoteLine" type="SBQQ__QuoteLine__c" />
+    <aura:attribute name="oldQuoteLine" type="SBQQ__QuoteLine__c" default="{sobjectType:'SBQQ__QuoteLine__c'}" />
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="errors" type="List" />
+    <aura:attribute name="action" type="String" />
+    <aura:attribute name="isSpinner" type="boolean" default="false" />
+    <aura:attribute name="showPrice" type="boolean" default="true" />
+    <aura:attribute name="isRPM" type="boolean" default="false" />
+    <aura:attribute name="backDateReason" type="String[]" />
+    <aura:attribute name="isBakcDateReasonChanged" type="boolean" default="false" />
+    <aura:attribute name="enableBackDateReason" type="boolean" default="false" />
+    <aura:attribute name="backDateReasonSelectedValue" type="String" default="" />
+    <aura:attribute name="disableBackDateReason" type="boolean" default="true" />
+    <aura:attribute name="backDateReasonValue" type="String" default="" />
+    <aura:attribute name="isPastDeal" type="boolean" default="false" />
+    <aura:attribute name="isApprovedCR" type="boolean" default="false" />
+    <aura:attribute name="effectivePricingDate" type="date" default="" />
+    <aura:attribute name="isInflightFutureDeal" type="boolean" default="false" />
+    <aura:attribute name="isInflightDeal" type="boolean" default="false" />
+    <aura:attribute name="approvedStartDateChange" type="boolean" default="false" />
+    <aura:attribute name="buttonLabel" type="String" default="Submit Change Request" />
+    <aura:attribute name="refreshParentComponent" type="Boolean" default="false" />
+    <aura:attribute name="currentDate" type="Date" />
+    <aura:attribute name="toastLineId" type="Id" default="" />
+    <aura:attribute name="isValidAddComment" type="Boolean" default="false" />
+    <aura:attribute name="isValidDealDesc" type="Boolean" default="false" />
+    <aura:attribute name="isValidAdditionalTc" type="Boolean" default="false" />
+    <aura:attribute name="isValidRecipients" type="Boolean" default="false" />
+    <aura:attribute name="isMeetCompMandatory" type="Boolean" default="true" />
+    <aura:attribute name="hide" type="String" default="slds-hide" />
+    <lightning:input name="scroll" class="{!v.hide}" aura:id="scrollHelper" />
+    <aura:attribute name="hasApprovedStartDateInPast" type="boolean" default="false" />
+    <aura:attribute name="quoteId" type="Id" />
+    <aura:attribute name="isLoad" type="boolean" default="false" />
+    <aura:attribute name="isWriteInProduct" type="Boolean" default="false" />
+    <aura:attribute name="isFieldEnabled" type="Boolean" default="false" />
+    <aura:attribute name="disableNewProduct" type="Boolean" default="true" />
+    <aura:attribute name="isFIPM" type="boolean" default="false" />
+
+    <!-- Attributes that can be set while component calling-->
+    <aura:attribute name="selectedProductId" type="String" default="" description="To pre-populate a product value" />
+    <aura:attribute name="oldProductId" type="String" default="" description="Old Product Value" />
+    <aura:attribute name="oldWIPName" type="String" default="" description="Old Product Name" />
+    <aura:attribute name="recordCount" type="string" default="5" description="Product visible at once" />
+    <aura:attribute name="searchKey" type="string" default="" description="String to search" />
+    <aura:attribute name="selectedProduct" type="Object" default="" description="selected Record Details" />
+    <aura:attribute name="productList" type="List" description="List of Products having data" />
+    <aura:attribute name="message" type="String" default="" />
+    <aura:attribute name="quoteLineType" type="String" default="" />
+    <aura:attribute name="platformOptions" type="String[]" />
+    <aura:attribute name="salesGeoOptions" type="String[]" />
+    <aura:attribute name="segmentOptions" type="String[]" />
+    <aura:attribute name="payableQuantityDisabled" type="Boolean" default="false"/>
+    
+    <!-- Added By Suraj -->
+    <aura:attribute name="qliSoftWarning" type="boolean" default="false" />
+    <aura:attribute name="qliSoftWarningApprovedECAP" type="boolean" default="false" />
+    <aura:attribute name="continueSoftWarningLabel" type="string" default="" />
+
+    <lightning:overlayLibrary aura:id="requestChangeOverlay" />
+    <div aura:id="spinner" class="slds-is-relative">
+        <lightning:spinner aura:id="mySpinner" class="slds-hide" size="medium" variant="brand"
+            alternativeText="Please wait..." style="min-height: 20vh; background-color: transparent;" />
+        
+        <!-- Added by Suraj -->
+        
+        <aura:if isTrue="{!or(v.qliSoftWarning, v.qliSoftWarningApprovedECAP)}">
+            <section role="dialog" tabindex="0" aria-modal="true" aria-labelledby="alert-heading-id"
+                     aria-describedby="alert-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt" >
+                <div class="slds-modal__container" style="min-width: 35rem;">
+                    <div class="slds-modal__header slds-theme_alert-texture slds-theme_warning slds-p-around_small">
+                        <div class="slds-align_absolute-center">
+                            <ul class="slds-list_horizontal">
+                                <li class="slds-p-right_small">
+                                    <lightning:icon iconName="utility:warning" alternative-text="Warning!" variant="warning"
+                                                    title="warning variant small" size="small" />
+                                </li>
+                                <li>
+                                    <h1 style="font-size: 1.5em;">Warning!</h1>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_small" id="alert-message-wrapper">
+                        <aura:if isTrue="{!v.qliSoftWarning}">
+                            <p>
+                                {!$Label.c.Pricing_Tender_Soft_Warning_for_Large_Enterprise}
+                            </p>
+                        </aura:if>
+                        <aura:if isTrue="{!v.qliSoftWarningApprovedECAP}">
+                            <p>
+                                {!$Label.c.Pricing_Tender_Approved_ECAP}
+                            </p>
+                        </aura:if>
+                    </div>
+                    <div class="slds-modal__footer slds-theme_default">
+                        <lightning:button variant="neutral" label="Cancel" disabled="{!v.isSpinner}" title="Cancel"
+                                          onclick="{!c.closeModel}" />
+                        <lightning:button variant="brand" label="{!v.continueSoftWarningLabel}"
+                                          title="{!v.continueSoftWarningLabel}" onclick="{!c.handleContinueSoftWarning}" />
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </aura:if>
+        
+        <lightning:card>
+            <!-- error -->
+            <aura:if isTrue="{!v.errors.length > 0}">
+                <div class="slds-var-p-around_small slds-p-top_none">
+                    <div aura:id="errorMessage" class="slds-text-longform">
+                        <div class="slds-is-relative slds-align_absolute-center">
+                            <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                                <span class="slds-assistive-text">Error</span>
+                                <div class="slds-notify__content">
+                                    <ul>
+                                        <aura:iteration items="{!v.errors}" var="item">
+                                            <li class="slds-text-heading_small">{!item}</li>
+                                        </aura:iteration>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <label class="slds-form-element__label" style="margin-right: 0.5rem;">Quote Line Number
+                    </label>
+                    <div>
+                        {!v.quoteLine.Pricing_Quote_Line_Number__c}
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <label class="slds-form-element__label" style="margin-right: 0.5rem;">Product
+                    </label>
+                    <div>
+                        {!v.quoteLine.SBQQ__ProductName__c == null ?
+                        v.quoteLine.Pricing_Other_Product_Nm__c :
+                        v.quoteLine.SBQQ__ProductName__c}
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+
+            <aura:if isTrue="{!AND(v.isRPM == false, AND(v.isFIPM == false, v.quoteLine.Pricing_Program_Type_Nm__c != $Label.c.Pricing_Tender_FinancialIncentive_Quote))}">
+                <lightning:layout multipleRows="true">
+                    <!-- New field Quote Line Pricing Start Date-->
+                     
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>Quote Line Pricing Start Date
+                        </label>
+                        <!--lightning help text for input field-->
+                        <lightning:helptext content="{!$Label.c.Pricing_Start_Date_HelpText}" class="customIcon" />
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="date" aura:id="reqChangeFieldOEM" required="true"
+                            label="Shipment Start Date" value="{!v.quoteLine.Pricing_Start_Date_dt__c}"
+                            dateStyle="short" variant="label-hidden" disabled="{!v.hasApprovedStartDateInPast}" />
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>Quote Line Pricing End Date
+                        </label>
+                        <!--lightning help text for input field-->
+                        <lightning:helptext content="{!$Label.c.Pricing_Tender_QuoteLine_ShipmentEndDate_HelpText}"
+                            class="customIcon" />
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="date" aura:id="reqChangeFieldOEM" required="true"
+                            label="Shipment End Date" value="{!v.quoteLine.Pricing_End_Date_dt__c}" dateStyle="short"
+                            variant="label-hidden" />
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>New Quantity
+                        </label>
+                        <!--lightning help text for input field-->
+                        <lightning:helptext content="{!$Label.c.Pricing_Tender_QuoteLine_NewQty_Helptext}"
+                            class="customIcon" />
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="number" name="lName" required="true" aura:id="reqChangeFieldOEM"
+                            label="New Quantity" value="{!v.quoteLine.Pricing_New_Quantity_qty__c}"
+                            variant="label-hidden" />
+
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>New Requested Price
+                        </label>
+                        <!--lightning help text for input field-->
+                        <lightning:helptext content="{!$Label.c.Pricing_New_Requested_Discount_unit_Price_Help_text}"
+                            class="customIcon" />
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="number" aura:id="reqChangeFieldOEM" required="true" formatter="currency"
+                            step=".01" label="Discount Unit Price"
+                            value="{!v.quoteLine.Pricing_Request_Discount_Unit_Price_qty__c}" dateStyle="short"
+                            variant="label-hidden" disabled="{!v.isPastDeal}" />
+                    </lightning:layoutItem>
+
+                </lightning:layout>
+            </aura:if>
+            <!--Start - added By ANushaM for US835690 -->
+            <aura:if isTrue="{!OR(v.isRPM == true, AND(v.isFIPM == true, v.quoteLine.Pricing_Program_Type_Nm__c == $Label.c.Pricing_Tender_FinancialIncentive_Quote))}">
+                <aura:if isTrue="{!v.isWriteInProduct}">
+                    <lightning:layout multipleRows="true">
+
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" style="margin-right: 0.5rem;">Change Write In
+                                Product </label>
+                            <lightning:input type="checkbox" aura:id="chnageWIPBox" onchange="{!c.onChangeWIPBox}"
+                                variant="label-hidden" checked="{v.isFieldEnabled}" />
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" style="margin-right: 0.5rem;">New Product
+                            </label>
+                            <!-- custom componenet -->
+                            <div class="slds-combobox_container">
+                                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                                    aura:id="productDiv" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                        role="none">
+                                        <div aura:id="lookup-pill"
+                                            class="{! 'slds-pill-container ' + if(v.selectedProduct == '','slds-hide','') }">
+                                            <!-- Selected Value Pill -->
+                                            <lightning:pill class="fullWidth" label="{!v.selectedProduct.Name}"
+                                                name="{!v.selectedProduct.Id}" onremove="{! c.removeItem }">
+                                                <aura:set attribute="media">
+                                                    <lightning:icon iconName="standard:product" size="small" />
+                                                </aura:set>
+                                            </lightning:pill>
+                                        </div>
+                                        <div aura:id="productField"
+                                            class="{! if(v.selectedProduct == '','slds-show','slds-hide') }">
+                                            <!-- Icon, Search Bar, Search Icon -->
+                                            <lightning:icon class="slds-combobox__input-entity-icon"
+                                                iconName="standard:product" size="large" alternativeText="icon" />
+                                            <lightning:input aura:id="inputProduct" class="slds-input-has-icon slds-input-has-icon_left"
+                                                placeholder="Search Products..." onblur="{!c.onBlurEvent}"
+                                                onclick="{!c.showProducts}" onkeyup="{!c.searchProducts}"
+                                                value="{!v.searchKey}" autoComplete="off" variant="label-hidden"
+                                                disabled="{!not(v.isFieldEnabled)}" />
+                                            <lightning:icon class="slds-input__icon" iconName="utility:search"
+                                                size="x-small" alternativeText="search" />
+                                            <lightning:spinner class="slds-hide" aura:id="Spinner"
+                                                alternativeText="Loading" size="small" variant="brand" />
+                                        </div>
+                                    </div>
+                                    <!-- Dropdown List -->
+                                    <div id="listbox-id-1"
+                                        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                        style="{! 'max-height:' + (8 + (v.recordCount * 40)) + 'px' }">
+                                        <ul class="slds-listbox slds-listbox_vertical productListBox"
+                                            role="presentation">
+                                            <aura:if isTrue="{!empty(v.message)}">
+                                                <!-- To display Drop down List -->
+                                                <aura:iteration items="{!v.productList}" var="prod">
+                                                    <li id="{!prod.Id}" class="slds-listbox__item eachItem"
+                                                        onmousedown="{!c.selectedProd}">
+                                                        <div class="slds-media slds-listbox__option_entity">
+                                                            <lightning:icon iconName="standard:product"
+                                                                size="small" />
+                                                            <span
+                                                                class="verticalAlign slds-truncate">{!prod.Name}</span>
+                                                        </div>
+                                                    </li>
+                                                </aura:iteration>
+                                                <!-- To display Error Message -->
+                                                <aura:set attribute="else">
+                                                    <li class="slds-listbox__item">
+                                                        <span
+                                                            class="slds-media slds-listbox__option_entity">{!v.message}</span>
+                                                    </li>
+                                                </aura:set>
+                                            </aura:if>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning:layoutItem>
+
+                    </lightning:layout>
+                </aura:if>
+
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>Approved Pricing Start Date
+                        </label>
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="date" aura:id="reqChangeField" required="true"
+                            label="Approved Pricing Start Date" value="{!v.quoteLine.Pricing_Approved_Start_Date_Dt__c}"
+                            dateStyle="short" variant="label-hidden" onchange="{!c.onApprovedStartChange}"
+                            disabled="{!or(v.isPastDeal,and(v.isInflightDeal,(v.quoteLine.Pricing_Status_Nm__c == 'Won')))}" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>Approved Pricing End Date
+                        </label>
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="date" required="true" aura:id="reqChangeField"
+                            label="Approved Pricing End Date" value="{!v.quoteLine.Pricing_Approved_End_Date_Dt__c}"
+                            dateStyle="short" variant="label-hidden" />
+                    </lightning:layoutItem>
+						<aura:if isTrue="{!OR(AND(v.isRPM == true,v.isFIPM == false),  v.quoteLine.Pricing_Program_Type_Nm__c != $Label.c.Pricing_Tender_FinancialIncentive_Quote)}">
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" for="text-input-id-1">
+                                Effective Pricing Start Date
+                            </label>
+                            <!--lightning help text for input field-->
+                            <lightning:helptext content="{!$Label.c.Pricing_Effective_Pricing_Start_Date_Help_Text}"
+                                class="customIcon" />
+                            <!-- use variant="label-hidden" for hide standard label-->
+                            <lightning:input type="date" aura:id="reqChangeField" label="Effective Pricing Start Date"
+                                value="{!v.effectivePricingDate}" dateStyle="short" variant="label-hidden"
+                                onchange="{!c.onEffectiveDateChange}" disabled="{!or(v.isPastDeal, v.isApprovedCR)}" />
+                        </lightning:layoutItem>
+                        <!-- <aura:if isTrue="{!v.showPrice}"> -->
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" for="text-input-id-1">
+                                <abbr class="slds-required" title="required">* </abbr>Approved ECAP Price
+                            </label>
+                            <!-- use variant="label-hidden" for hide standard label-->
+                            <lightning:input type="number" required="true" aura:id="reqChangeField" formatter="currency"
+                                step=".01" label="ECAP Price" value="{!v.quoteLine.Pricing_ECAP_Price_Amt__c}"
+                                variant="label-hidden" disabled="{!v.isPastDeal}" />
+                        </lightning:layoutItem>
+                        <!-- </aura:if> -->
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>Billing Start Date (for consumption)
+                            </label>
+                            <!--lightning help text for input field-->
+                        <lightning:helptext content="{!$Label.c.Pricing_Billing_Start_Date_for_consumption_help_text}"
+                                class="customIcon" />
+                            <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="date" required="true" aura:id="reqChangeField" label="Billing Start Date"
+                            value="{!v.quoteLine.Pricing_Billing_Start_Date_Dt__c}" dateStyle="short"
+                            variant="label-hidden" />
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" for="text-input-id-1">
+                                <abbr class="slds-required" title="required">* </abbr>Billing End Date (for consumption)
+                            </label>
+                            <!--lightning help text for input field-->
+                            <lightning:helptext content="{!$Label.c.Pricing_Billing_End_Date_for_consumption_help_Text}"
+                                class="customIcon" />
+                            <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="date" required="true" aura:id="reqChangeField" label="Billing End Date"
+                            value="{!v.quoteLine.Pricing_Billing_End_Date_Dt__c}" dateStyle="short"
+                            variant="label-hidden" />
+                        </lightning:layoutItem>
+                    </aura:if>
+                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <abbr class="slds-required" title="required">* </abbr>Approved Quantity
+                        </label>
+                        <!-- use variant="label-hidden" for hide standard label-->
+                        <lightning:input type="number" required="true" aura:id="reqChangeField"
+                            label="Approved Quantity" value="{!v.quoteLine.Pricing_Approved_Unit_Qty__c}"
+                            variant="label-hidden" maxlength="18" oncommit="{!c.onAprovedQuantityChange}"/>
+                    </lightning:layoutItem>
+                    <aura:if isTrue="{!OR(AND(v.isRPM == true,v.isFIPM == false), v.quoteLine.Pricing_Program_Type_Nm__c != $Label.c.Pricing_Tender_FinancialIncentive_Quote)}">
+                        <aura:if isTrue="{!v.quoteLine.Pricing_Status_Nm__c == $Label.c.Pricing_Tender_QuoteLine_Status_Won}">
+                            <aura:if isTrue="{!v.isFieldEnabled == true}">
+                                <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                                    <label class="slds-form-element__label" for="text-input-id-1">
+                                        <abbr class="slds-required" title="required">* </abbr>Payable Quantity
+                                    </label>
+                                    <!-- use variant="label-hidden" for hide standard label-->
+                                    <lightning:input type="number" required="true" aura:id="reqChangeField"
+                                        label="Payable Quantity" value="null"
+                                        variant="label-hidden" maxlength="18" disabled="{!(v.isFieldEnabled)}"/>
+                                </lightning:layoutItem>
+                                <aura:set attribute="else">
+                                    <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                                        <label class="slds-form-element__label" for="text-input-id-1">
+                                            <abbr class="slds-required" title="required">* </abbr>Payable Quantity
+                                        </label>
+                                        <!-- use variant="label-hidden" for hide standard label-->
+                                        <lightning:input type="number" required="true" aura:id="reqChangeField"
+                                            label="Payable Quantity" value="{!v.quoteLine.Pricing_Payable_Quantity__c}"
+                                            variant="label-hidden" maxlength="18" disabled="{!v.payableQuantityDisabled}"/>
+                                    </lightning:layoutItem>
+                                </aura:set>
+                            </aura:if>  
+                        </aura:if>
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <label class="slds-form-element__label" for="text-input-id-1">Backdate Reason</label>
+                            <lightning:helptext content="{!$Label.c.Pricing_Backdate_Reason_help_text}"
+                                class="customIcon" />
+                            <ui:inputSelect aura:id="levels" change="{!c.onBackDateReasonChange}"
+                                disabled="{!v.disableBackDateReason}" value="{!v.backDateReasonValue}">
+                                <ui:inputSelectOption text="" label="" />
+                                <aura:iteration items="{!v.backDateReason}" var="backDateReasonvalue">
+                                <ui:inputSelectOption text="{!backDateReasonvalue}" label="{!backDateReasonvalue}" />
+                                </aura:iteration>
+                            </ui:inputSelect>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                            <aura:if isTrue="{!v.isMeetCompMandatory}">
+                                <label class="slds-form-element__label" for="text-input-id-1">
+                                    <abbr class="slds-required" title="required">* </abbr>My Deals Meet Comp Price
+                                </label>
+                                <!-- use variant="label-hidden" for hide standard label-->
+                            <lightning:input type="number" required="true" aura:id="reqChangeField" formatter="currency"
+                                step=".01" label="ECAP Price" value="{!v.quoteLine.Pricing_Meet_Comp_Price_Amt__c}"
+                                variant="label-hidden" />
+                                <aura:set attribute="else">
+                                    <label class="slds-form-element__label" for="text-input-id-1">My Deals Meet Comp
+                                        Price</label>
+                                <lightning:input type="number" aura:id="reqChangeField" formatter="currency" step=".01"
+                                    label="ECAP Price" value="{!v.quoteLine.Pricing_Meet_Comp_Price_Amt__c}"
+                                    variant="label-hidden" />
+                                </aura:set>
+                            </aura:if>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem >
+                            <aura:if isTrue="{!v.isLoad}">
+                                <c:pricing_ConsumptionAttributesComponent quoteLineId="{!v.recordId}"
+                                    quoteId="{!v.quoteId}" isChangeStyle="{!v.isLoad}"
+                                    onconsumptionvaluechange="{!c.handleConsumptionValueChange}"/>
+                            </aura:if>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small" size="12" smallDeviceSize="12"
+                            mediumDeviceSize="12">
+                            <label class="slds-form-element__label" for="text-input-id-1">Deal Description</label>
+                        <lightning:textarea aura:id="dealDes" onchange="{!c.onDealDescChange}" name="dealDescription"
+                            label="Deal Description" variant="label-hidden"
+                                value="{!v.quoteLine.Pricing_Deal_Description__c}" maxlength="255">
+                            </lightning:textarea>
+                            <aura:if isTrue="{!v.quoteLine.Pricing_Deal_Description__c.length}">
+                                <span class="floatToRight">{!255 - v.quoteLine.Pricing_Deal_Description__c.length}
+                                    characters
+                                    remaining</span>
+                            </aura:if>
+                        </lightning:layoutItem>
+                    </aura:if>
+                    <lightning:layoutItem padding="around-small" size="12" smallDeviceSize="12" mediumDeviceSize="12">
+                        <label class="slds-form-element__label" for="text-input-id-1">Additional T's and C's</label>
+                        <lightning:helptext content="{!$Label.c.Pricing_Additional_T_s_C_s_Help_text}"
+                            class="customIcon" />
+                        <lightning:textarea aura:id="addTCs" onchange="{!c.onAdditionalTcChange}" name="addComments"
+                            label="Additional T's and C's" variant="label-hidden"
+                            value="{!v.quoteLine.Pricing_Additional_T_C_s_Txt__c}" maxlength="1000">
+                        </lightning:textarea>
+                        <aura:if isTrue="{!v.quoteLine.Pricing_Additional_T_C_s_Txt__c.length}">
+                            <span class="floatToRight">{!1000 - v.quoteLine.Pricing_Additional_T_C_s_Txt__c.length}
+                                characters
+                                remaining</span>
+                        </aura:if>
+                    </lightning:layoutItem>
+                </lightning:layout>
+
+            </aura:if>
+
+            <!--End - added By ANushaM for US835690 -->
+            <lightning:layout>
+
+                <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12">
+                    <aura:if isTrue="{!AND(v.isRPM == false,v.isFIPM == false)}">
+                        <aura:if isTrue="{!v.isLoad}">
+                            <c:pricing_ConsumptionAttributesComponent quoteLineId="{!v.recordId}" quoteId="{!v.quoteId}"
+                                isChangeStyle="{!v.isLoad}" onconsumptionvaluechange="{!c.handleConsumptionValueChange}"/>
+                        </aura:if>
+                    </aura:if>
+
+                    <div class="slds-p-around_small ">
+                        <label class="slds-form-element__label" for="text-input-id-1">Additional Comments</label>
+                        <lightning:helptext content="{!$Label.c.Pricing_Tender_ToolTip_Additional_Comments}"
+                            class="customIcon" />
+                        <lightning:textarea aura:id="addCmp" onchange="{!c.onAdditionalCommentsChange}" name="addComments"
+                            label="Additional Comments" variant="label-hidden"
+                            value="{!v.quoteLine.Pricing_Additional_Comments_Txt__c}" maxlength="1500">
+                        </lightning:textarea>
+                        <aura:if isTrue="{!v.quoteLine.Pricing_Additional_Comments_Txt__c.length}">
+                            <span class="floatToRight">{!1500 - v.quoteLine.Pricing_Additional_Comments_Txt__c.length}
+                                characters remaining</span>
+                        </aura:if>
+                    </div>
+                    
+                </lightning:layoutItem>
+            </lightning:layout>
+            <aura:if isTrue="{!v.isRPM}">
+            <lightning:layout>
+            <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12">
+
+                    <div class="slds-p-around_small ">
+                        <label class="slds-form-element__label" for="text-input-id-1">Additional RPM Notification Recipients</label>
+                        <lightning:helptext content="{!$Label.c.Pricing_Tender_ToolTip_Additional_RPM_Notification_Recipients}"
+                            class="customIcon" />
+                        <lightning:textarea aura:id="addRecipientsCmp" onchange="{!c.onAdditionalRecipientsChange}" name="addRecipients"
+                            label="Additional RPM Notification Recipients" variant="label-hidden"
+                            value="{!v.quoteLine.Pricing_Additional_RPM_Notify_Recipients__c}" maxlength="255">
+                        </lightning:textarea>
+                        <aura:if isTrue="{!v.quoteLine.Pricing_Additional_RPM_Notify_Recipients__c.length}">
+                            <span class="floatToRight">{!255 - v.quoteLine.Pricing_Additional_RPM_Notify_Recipients__c.length}
+                                characters remaining</span>
+                        </aura:if>
+                    </div>
+                    
+                </lightning:layoutItem>
+             </lightning:layout>
+             </aura:if>
+
+            <!-- footer -->
+            <div class="slds-float_right slds-p-around_small" slot="footer">
+                <lightning:button variant="Neutral" label="Cancel" title="Cancel" disabled="{!v.isSpinner}"
+                    onclick="{!c.handleCancel}" class="slds-m-left_x-small" />
+                <lightning:button variant="brand" label="{!v.isSpinner ? 'Saving...' : v.buttonLabel}"
+                    title="{!v.buttonLabel}" disabled="{!v.isSpinner}" onclick="{!c.handleSave}"
+                    class="slds-m-left_x-small" />
+            </div>
+        </lightning:card>
+
+    </div>
+</aura:component>

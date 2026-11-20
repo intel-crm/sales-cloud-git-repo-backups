@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This custom metadata saves the list of possible A&amp;E Integration Failures and if it needs to be notified by Alerts to Support Team</description>
+    <fields>
+        <fullName>Core_Error_Group__c</fullName>
+        <description>This field will store the group in which error is categorized</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Error Group</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Error_Source__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Error Source</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AGS</fullName>
+                    <default>true</default>
+                    <label>AGS</label>
+                </value>
+                <value>
+                    <fullName>ERPM</fullName>
+                    <default>false</default>
+                    <label>ERPM</label>
+                </value>
+                <value>
+                    <fullName>Salesforce</fullName>
+                    <default>false</default>
+                    <label>Salesforce</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Error_Text__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Error Text</label>
+        <required>true</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Is Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Minimum_count_for_Alert__c</fullName>
+        <description>This field will store the minimum count of error that must happen for it to be eligible to send Alert to the support team. Can keep as 0 as least value.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Minimum count for Alert</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsIgnore__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This checkbox signifies if the error listed in the record has to be ignored from Proactive Alert</description>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>IsIgnore</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Proactive Alert on A&amp;E Integration</label>
+    <pluralLabel>Proactive Alerts on A&amp;E Integration</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <booleanFilter>(1 AND 2) or (2 AND 3 AND 4 and 5)</booleanFilter>
+    <name>EMEA INF SPG</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Christian Blaim,Julian Roldan Ramos,Jaime Sanz,Sertac Bircan,Stephen Paper,William Crowe,Thierry Marseille,Paul Harris,Ian Bartlett,Fredrik Tjernberg,Carlos Pelaez,Carlo Grilli,Glenn Harris,Jani Heikkinen</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Sales_Segment__c</field>
+        <operation>includes</operation>
+        <value>Influencer</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Geo__c</field>
+        <operation>contains</operation>
+        <value>EMEA</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Industry</field>
+        <operation>contains</operation>
+        <value>Telecommunications</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>notEqual</operation>
+        <value>uncovered account,integration user</value>
+    </ruleItems>
+</Territory2Rule>

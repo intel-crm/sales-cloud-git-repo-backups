@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Account_Plan_for_Account_360_ELT</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Account Plan Read access for Account 360</description>
+        <label>Account Plan for Account 360 ELT</label>
+        <sharedTo>
+            <group>Account_360_PG_READ</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

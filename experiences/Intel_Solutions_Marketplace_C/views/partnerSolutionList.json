@@ -1,0 +1,132 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceProductListLayout",
+  "dataProviders" : [ ],
+  "id" : "b8ed5fec-af6b-4139-bd9b-23f9c1e4a428",
+  "label" : "Partner Solution List",
+  "regions" : [ {
+    "id" : "3d7f2a3e-b843-4cb0-9795-b60daa193a46",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "blue-steel-solid",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : false,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "My Solutions"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "45e7b2d8-4873-439f-ae66-1726a8a10109",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ba58adbb-417e-4711-b687-2e2eb8543e00",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "e4ef4094-b879-486f-a4e9-cde4f2dbee7a",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "a1cdc56b-44a2-492a-b130-a95f435ed943",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "da0fddd5-417b-4dd3-8e5c-8630ea28d74a",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "bf061774-5eed-494c-b93e-86c36d0d3b73",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "fad9707c-c1f6-4ce7-b8dc-d09724e0e08a",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "18ca001e-6f43-4552-9cd7-f5cefe43678e",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "2cf08d73-f564-4e90-8aec-ad22f92f3737",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "6a0ea51e-b358-418c-947a-6154e23728b1",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "7da23f87-8879-473a-a5fc-6d1e08dfb0a6",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "636d00bb-d1c8-4e22-b2e1-d4e57e0a5f14",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "d1484208-14a7-4bd0-b879-2f1b39bd869a",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Partner Solution List"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f7bc4f7c-318e-431c-aeb0-ad72c7c966a6",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "371c1cf8-32c1-40d3-a342-baba30a6cac7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "dc290074-876a-4c1c-9e08-f34eb47b5628",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c4847f3c-0cba-4e65-b9f0-dcf8dc103bf4",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "id" : "95431867-81b4-4be5-83b0-5e2a99255e78",
+    "regionName" : "recordList",
+    "type" : "region"
+  }, {
+    "id" : "30134e19-f3b1-4049-a733-3ef4b3f543fa",
+    "regionName" : "createOfferingButton",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-partner-solution-list"
+}

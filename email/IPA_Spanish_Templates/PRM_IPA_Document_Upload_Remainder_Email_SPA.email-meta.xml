@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA Document Upload Remainder Email_SPA</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance: Business License requerida</subject>
+    <textOnly>Gracias por solicitar unirse al programa Intel® Partner Alliance!
+
+
+Gracias por solicitar unirse al programa Intel® Partner Alliance.
+
+Al procesar su aplicación, no pudimos verificar la información de su empresa en base a los datos proporcionados.Por lo tanto, le solicitamos amablemente que responda a este correo electrónico adjuntando uno de los siguientes documentos en formato PDF, JPEG o PNG para completar esta verificación:
+
+Certificado empresarial (indica que la dirección de su empresa coincide con la aplicación)
+Certificado fiscal (que indica que la dirección de su empresa coincide con la aplicación)
+Sitio web de la empresa (la dirección de su empresa coincide con la aplicación)
+
+Responda a este correo electrónico con los documentos adjuntos en el transcurso de 4 días para evitar el rechazo automático de su solicitud.Una vez que hayamos recibido su respuesta, le indicaremos al equipo que vuelva a revisar su aplicación.
+
+Gracias por su cooperación para resolver este asunto,
+
+
+
+
+El equipo de Intel® Partner Alliance
+
+Tenga en cuenta que esta bandeja de entrada de correo electrónico se procesa y supervisa automáticamente.
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© 2026 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, EE. UU. www.intel.la
+Privacidad &amp;verbar; Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

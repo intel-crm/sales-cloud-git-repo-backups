@@ -1,0 +1,566 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "94881ef4-8c65-4685-9112-0f1f079acf1d",
+  "label" : "MDF and Coop",
+  "regions" : [ {
+    "id" : "7719870e-36e5-4c1f-aa0e-976a7dc22eba",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p>                 <span style=\"font-size: 20px;\">Request and Manage your Market Developments Funds.</span>             </p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "d0894239-196a-4065-aeb0-35bc3b3cc1d4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "e09019b4-edfc-435e-9f72-3e84719b84e8",
+        "es" : "4222345d-50c3-4b07-9434-402e0fa4d48d",
+        "es_mx" : "958d0218-4a7c-43b7-9a7e-ed747010acb6",
+        "fr" : "902b764d-8c7c-4992-97f2-008a8c07b1cc",
+        "it" : "5f5c43bd-094c-4713-87f4-3a4dd86485e5",
+        "ja" : "bf583545-b520-489b-93d9-e38ca4f64492",
+        "ko" : "d3047862-c0e8-4bbb-bf37-0b60ab75e7ae",
+        "pt_br" : "98ba9e90-0361-400a-8d1a-17e55768f4ed",
+        "pt_pt" : "7a7e854c-5169-4d16-8403-20c2a8cf81c8",
+        "ru" : "ae9a4666-6edf-4c7e-b5d0-dbfec20e4aef",
+        "zh_cn" : "e1c72797-4569-411c-9b44-9b3a2df13d4d",
+        "zh_tw" : "e66e4428-2577-4e6a-9e6a-3791c2638738"
+      },
+      "renditions" : [ {
+        "id" : "e1c72797-4569-411c-9b44-9b3a2df13d4d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">申请和管理您的市场开发基金</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ae9a4666-6edf-4c7e-b5d0-dbfec20e4aef",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Запрашивайте и управляйте своими фондами развития рынка.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7a7e854c-5169-4d16-8403-20c2a8cf81c8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Solicite e gerencie seus Fundos de Desenvolvimento de Mercado.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bf583545-b520-489b-93d9-e38ca4f64492",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">市場開発基金の申請と管理</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5f5c43bd-094c-4713-87f4-3a4dd86485e5",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Richiedete e gestite i vostri Market Development Funds.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "902b764d-8c7c-4992-97f2-008a8c07b1cc",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Demandez et g&eacute;rez vos fonds de d&eacute;veloppement de march&eacute;.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "958d0218-4a7c-43b7-9a7e-ed747010acb6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Solicite y administre sus fondos de desarrollo de mercadeo.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e09019b4-edfc-435e-9f72-3e84719b84e8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Hier k&ouml;nnen Sie Ihre Fondsmittel f&uuml;r die Marktentwicklung beantragen und verwalten.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d3047862-c0e8-4bbb-bf37-0b60ab75e7ae",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">시장 개발 기금을 요청하고 관리합니다.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4222345d-50c3-4b07-9434-402e0fa4d48d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Solicite y gestione sus fondos de desarrollo de mercado.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "98ba9e90-0361-400a-8d1a-17e55768f4ed",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">Solicite e gerencie seus Fundos de Desenvolvimento de Mercado.</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e66e4428-2577-4e6a-9e6a-3791c2638738",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<p><span style=\"font-size: 20px;\">請求和管理您的市場開發基金。</span></p>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "b8c4f7a3-296c-479b-abbd-ed4fdbc64ee6",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "a973c3bd-e553-48dc-bdff-5fc85a342a41",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Fund Allocations"
+          }, {
+            "UUID" : "10e6bd73-628f-4cdb-91dc-3ac69fe6d909",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Fund Requests"
+          }, {
+            "UUID" : "9fcb5e5a-8712-4956-8a70-00dab8b27a04",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "3",
+            "tabName" : "Fund Claims"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "b8c4f7a3-296c-479b-abbd-ed4fdbc64ee6",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "filterName" : "Recently_Viewed_Partner_Fund_Allocations",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "PartnerFundAllocation",
+            "showDisplay" : "showall"
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "a9fc88ab-cbcb-4a0e-935f-8fe5127a50b3",
+          "renditionMap" : {
+            "de" : "48a2d240-c048-484a-8a67-f673c1f1f0bb",
+            "es" : "510c703d-ef42-412a-8b56-18fb4bcf9707",
+            "es_mx" : "d00bad98-78f1-48f2-915d-d6f90e1dcfbd",
+            "fr" : "6e8ddb50-bd82-4b45-885d-22df4e84a22b",
+            "it" : "204fd82e-d6e4-426f-8917-c083d73c80d8",
+            "ja" : "cf4b1510-fdfa-499c-bbb7-522d96c8f0d4",
+            "ko" : "f4ba87c4-861a-47b9-99fa-3282d097e6df",
+            "pt_br" : "b9ec3910-d965-45df-b782-d4b2cef1a86e",
+            "pt_pt" : "988807f3-7ec7-4310-b59a-8fdca8258b57",
+            "ru" : "bd3fea90-c09d-4164-8eff-412311177199",
+            "zh_cn" : "5fd342c9-4108-4bb9-8cdf-84b9f2336b18",
+            "zh_tw" : "ed4b2d58-1ffc-4dda-9324-a5c5d428104b"
+          },
+          "renditions" : [ {
+            "id" : "5fd342c9-4108-4bb9-8cdf-84b9f2336b18",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "bd3fea90-c09d-4164-8eff-412311177199",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "988807f3-7ec7-4310-b59a-8fdca8258b57",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "cf4b1510-fdfa-499c-bbb7-522d96c8f0d4",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "204fd82e-d6e4-426f-8917-c083d73c80d8",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "6e8ddb50-bd82-4b45-885d-22df4e84a22b",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "d00bad98-78f1-48f2-915d-d6f90e1dcfbd",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "48a2d240-c048-484a-8a67-f673c1f1f0bb",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "f4ba87c4-861a-47b9-99fa-3282d097e6df",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "510c703d-ef42-412a-8b56-18fb4bcf9707",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "b9ec3910-d965-45df-b782-d4b2cef1a86e",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "ed4b2d58-1ffc-4dda-9324-a5c5d428104b",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          } ],
+          "type" : "component"
+        } ],
+        "id" : "a973c3bd-e553-48dc-bdff-5fc85a342a41",
+        "regionLabel" : "Fund Allocations",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "filterName" : "Recently_Viewed_Partner_Fund_Requests",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "PartnerFundRequest",
+            "showDisplay" : "showall"
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "7e46700a-9e62-4d25-b58d-31273280e8c6",
+          "renditionMap" : {
+            "de" : "5f36f7b7-bc92-4371-a98a-4fcbeeadd853",
+            "es" : "b150d265-3f71-4672-a302-66228d1a6f91",
+            "es_mx" : "f6f4e102-ee1b-41f9-9325-7f6823489685",
+            "fr" : "88ec86cc-0130-416e-b3d8-664115ce3542",
+            "it" : "77cad3a8-9e3b-4b7b-8425-ac5c2b54db58",
+            "ja" : "02889d12-1404-4461-82d4-c639f0a89064",
+            "ko" : "66e7427f-67da-4750-a283-383a179edd30",
+            "pt_br" : "76174085-f05c-4870-85e6-013c06df95cc",
+            "pt_pt" : "7772595e-68ac-47d9-8d3f-525af1cadacb",
+            "ru" : "f21906e7-cb8f-4e79-8e91-9ba0ee7ce39a",
+            "zh_cn" : "87cedfea-db26-4b14-8ed7-66a586438769",
+            "zh_tw" : "4dd78e46-3a0d-4e17-9ec7-d66510e8c388"
+          },
+          "renditions" : [ {
+            "id" : "87cedfea-db26-4b14-8ed7-66a586438769",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "f21906e7-cb8f-4e79-8e91-9ba0ee7ce39a",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "7772595e-68ac-47d9-8d3f-525af1cadacb",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "02889d12-1404-4461-82d4-c639f0a89064",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "77cad3a8-9e3b-4b7b-8425-ac5c2b54db58",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "88ec86cc-0130-416e-b3d8-664115ce3542",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "f6f4e102-ee1b-41f9-9325-7f6823489685",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "5f36f7b7-bc92-4371-a98a-4fcbeeadd853",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "66e7427f-67da-4750-a283-383a179edd30",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "b150d265-3f71-4672-a302-66228d1a6f91",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "76174085-f05c-4870-85e6-013c06df95cc",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "4dd78e46-3a0d-4e17-9ec7-d66510e8c388",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          } ],
+          "type" : "component"
+        } ],
+        "id" : "10e6bd73-628f-4cdb-91dc-3ac69fe6d909",
+        "regionLabel" : "Fund Requests",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "filterName" : "Recently_Viewed_Partner_Fund_Claims",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "PartnerFundClaim",
+            "showDisplay" : "showall"
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "77f2b35d-93e1-4286-9996-ee476aada7f1",
+          "renditionMap" : {
+            "de" : "8e320a25-a7bd-453c-a425-040dd4ab0c0a",
+            "es" : "2d0550f8-4ba4-45f9-8734-5c32717c32b7",
+            "es_mx" : "26a87523-36b0-4147-b35b-63fc3108871c",
+            "fr" : "b704f053-247e-4344-9f59-a7a4ac963ddb",
+            "it" : "99d34d08-f394-43a9-9a55-cc98b39eeaf0",
+            "ja" : "694f9a3e-9d70-4bf0-a538-da21a898df60",
+            "ko" : "f65e6e32-de2a-4e29-a846-fe10cb5cbfbd",
+            "pt_br" : "9ec9188b-ec20-496f-81b2-8190922cb638",
+            "pt_pt" : "c1c8d94d-73cc-4a07-9efb-add8c5189a56",
+            "ru" : "29474705-99c2-48fc-8bf6-18e7b0f4a5de",
+            "zh_cn" : "99b089a1-5403-49d8-99ee-2c602981d503",
+            "zh_tw" : "4ee5cb59-9099-4158-8e05-376d72abd7ad"
+          },
+          "renditions" : [ {
+            "id" : "99b089a1-5403-49d8-99ee-2c602981d503",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "29474705-99c2-48fc-8bf6-18e7b0f4a5de",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "c1c8d94d-73cc-4a07-9efb-add8c5189a56",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "694f9a3e-9d70-4bf0-a538-da21a898df60",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "99d34d08-f394-43a9-9a55-cc98b39eeaf0",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "b704f053-247e-4344-9f59-a7a4ac963ddb",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "26a87523-36b0-4147-b35b-63fc3108871c",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "8e320a25-a7bd-453c-a425-040dd4ab0c0a",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "f65e6e32-de2a-4e29-a846-fe10cb5cbfbd",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "2d0550f8-4ba4-45f9-8734-5c32717c32b7",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "9ec9188b-ec20-496f-81b2-8190922cb638",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          }, {
+            "id" : "4ee5cb59-9099-4158-8e05-376d72abd7ad",
+            "renditionValue" : {
+              "componentAttributes" : {
+                "layout" : "FULL"
+              }
+            },
+            "type" : "renditionComponent"
+          } ],
+          "type" : "component"
+        } ],
+        "id" : "9fcb5e5a-8712-4956-8a70-00dab8b27a04",
+        "regionLabel" : "Fund Claims",
+        "regionName" : "3",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5fade05a-01de-40a5-9b38-b0afb3648286",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "0db1230b-e851-4696-8a6c-dce7fb8bc94a",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "mdf"
+}

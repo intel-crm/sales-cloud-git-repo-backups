@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>Core_Custom_Object_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to capture cross opportunity Expert engagements</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_Engagement_Date__c</fullName>
+        <label>Engagement Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Expert_Engagement_Geo__c</fullName>
+        <label>Expert Engagement Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>HQ</fullName>
+                    <default>false</default>
+                    <label>HQ</label>
+                </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INDIA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Expert_Engagement_Type__c</fullName>
+        <label>Expert Engagement Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>5GIC</fullName>
+                    <default>false</default>
+                    <label>5GIC</label>
+                </value>
+                <value>
+                    <fullName>A2E-Access to Expert Program</fullName>
+                    <default>false</default>
+                    <label>A2E-Access to Expert Program</label>
+                </value>
+                <value>
+                    <fullName>APJ IoT Lab</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>APJ IoT Lab</label>
+                </value>
+                <value>
+                    <fullName>ASMO IoT Lab</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ASMO IoT Lab</label>
+                </value>
+                <value>
+                    <fullName>CQ&amp;R</fullName>
+                    <default>false</default>
+                    <label>CQ&amp;R</label>
+                </value>
+                <value>
+                    <fullName>CQ&amp;R EMEA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CQ&amp;R EMEA</label>
+                </value>
+                <value>
+                    <fullName>CRT-Customer Response Team</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CRT-Customer Response Team</label>
+                </value>
+                <value>
+                    <fullName>DCG/NPG Front End Process Resource</fullName>
+                    <default>false</default>
+                    <label>DCG/NPG Front End Process Resource</label>
+                </value>
+                <value>
+                    <fullName>DesignInTools.Intel.com</fullName>
+                    <default>false</default>
+                    <label>DesignInTools.Intel.com</label>
+                </value>
+                <value>
+                    <fullName>DPGS Labs</fullName>
+                    <default>false</default>
+                    <label>DPGS Labs</label>
+                </value>
+                <value>
+                    <fullName>EBC-Executive Briefing Center</fullName>
+                    <default>false</default>
+                    <label>EBC-Executive Briefing Center</label>
+                </value>
+                <value>
+                    <fullName>EMEA IoT Lab</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>EMEA IoT Lab</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab</fullName>
+                    <default>false</default>
+                    <label>IoT Lab</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab APJ</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoT Lab APJ</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab ASMO</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoT Lab ASMO</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab EMEA</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoT Lab EMEA</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab-HQ (TEG/IPS)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoT Lab-HQ (TEG/IPS)</label>
+                </value>
+                <value>
+                    <fullName>IoT Lab PRC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IoT Lab PRC</label>
+                </value>
+                <value>
+                    <fullName>IT@Intel</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IT@Intel</label>
+                </value>
+                <value>
+                    <fullName>IT @ Intel</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IT @ Intel</label>
+                </value>
+                <value>
+                    <fullName>l39-EMEA</fullName>
+                    <default>false</default>
+                    <label>l39-EMEA</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>PRC IoT Lab</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PRC IoT Lab</label>
+                </value>
+                <value>
+                    <fullName>Supply Chain@Intel</fullName>
+                    <default>false</default>
+                    <label>Supply Chain@Intel</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Expert_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Expert Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Feedback_Comments__c</fullName>
+        <label>Feedback/ Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Interaction_Type__c</fullName>
+        <label>Interaction Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Video Conference</fullName>
+                    <default>false</default>
+                    <label>Video Conference</label>
+                </value>
+                <value>
+                    <fullName>In Person</fullName>
+                    <default>false</default>
+                    <label>In Person</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity Name</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Expert Engagements</relationshipLabel>
+        <relationshipName>Expert_Engagements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Rate_Engagement__c</fullName>
+        <label>Rate Engagement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Poor</fullName>
+                    <default>false</default>
+                    <label>1 - Poor</label>
+                </value>
+                <value>
+                    <fullName>2 - Fair</fullName>
+                    <default>false</default>
+                    <label>2 - Fair</label>
+                </value>
+                <value>
+                    <fullName>3 - Good</fullName>
+                    <default>false</default>
+                    <label>3 - Good</label>
+                </value>
+                <value>
+                    <fullName>4 - Very Good</fullName>
+                    <default>false</default>
+                    <label>4 - Very Good</label>
+                </value>
+                <value>
+                    <fullName>5 - Excellent</fullName>
+                    <default>false</default>
+                    <label>5 - Excellent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Status__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Expert_Engagement_Country__c</fullName>
+        <label>Expert Engagement Country/Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Country</valueSetName>
+        </valueSet>
+    </fields>
+    <label>Expert Engagement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>EE-{0000000}</displayFormat>
+        <label>Engagement ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Expert Engagements</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>Core_Engagement_Type_pick_Geo</fullName>
+        <active>true</active>
+        <description>If a user selects IoT Lab, Expert Engagement Region field should be required</description>
+        <errorConditionFormula>ISPICKVAL(Core_Expert_Engagement_Type__c, &quot;IoT Lab&quot;) &amp;&amp;  ISBLANK(Text(Core_Expert_Engagement_Geo__c))</errorConditionFormula>
+        <errorDisplayField>Core_Expert_Engagement_Geo__c</errorDisplayField>
+        <errorMessage>Expert Engagement Region field is required for Engagement Type &quot;IoT Lab&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_ExpertEngagmentType_CQR</fullName>
+        <active>true</active>
+        <description>Expert Engagement Region field is required for Engagement Type &quot;CQ&amp;R&quot;</description>
+        <errorConditionFormula>ISPICKVAL(Core_Expert_Engagement_Type__c, &quot;CQ&amp;R&quot;) &amp;&amp; ISBLANK(Text(Core_Expert_Engagement_Geo__c))</errorConditionFormula>
+        <errorDisplayField>Core_Expert_Engagement_Geo__c</errorDisplayField>
+        <errorMessage>Expert Engagement Region field is required for Engagement Type &quot;CQ&amp;R&quot;</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_New_IT_Intel_Engagement</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>IT@Intel Engagement - Use Sales Support</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>alert(&quot;For IT@Intel, please use the sales support tab or button below&quot;);</url>
+    </webLinks>
+</CustomObject>

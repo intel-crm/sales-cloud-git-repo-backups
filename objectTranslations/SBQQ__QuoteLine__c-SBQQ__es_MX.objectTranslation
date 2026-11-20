@@ -1,0 +1,3688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partida de presupuesto</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partidas de presupuesto</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Client-Additional Details --></label>
+        <name>Pricing_Client_Additional_Details</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client-Competitor Product Info --></label>
+        <name>Pricing_Client_Competitor_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client-Intel Product Info --></label>
+        <name>Pricing_Client_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client-MyDeals-Int --></label>
+        <name>Pricing_Client_MyDeals_Int</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client-Performance Metric --></label>
+        <name>Pricing_Client_Performance_Metric</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client RPM-Approved Details --></label>
+        <name>Pricing_Client_RPM_Approved_Details</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Client RPM-MyDeals Section --></label>
+        <name>Pricing_Client_RPM_MyDeals_Section</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Consumption Parameter --></label>
+        <name>Pricing_Consumption_Parameter</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Center-GPU Competitor Product Info --></label>
+        <name>Pricing_Data_Center_GPU_Comp_Prod_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Data Center-GPU Intel Prod Info --></label>
+        <name>Pricing_Data_Center_GPU_Intel_Prod_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Approved-Ext --></label>
+        <name>Pricing_Default_Approved_Ext</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Approved-Int --></label>
+        <name>Pricing_Default_Approved_Int</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-MyDeals-Int --></label>
+        <name>Pricing_Default_MyDeals_Int</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Payment --></label>
+        <name>Pricing_Default_Payment</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- NIC-AdditionalDetails --></label>
+        <name>Pricing_NIC_AdditionalDetails</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- NIC-Competitor Product Info --></label>
+        <name>Pricing_NIC_Competitor_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- NIC-Intel Product Info --></label>
+        <name>Pricing_NIC_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PMem-AdditionalDetails --></label>
+        <name>Pricing_PMem_AdditionalDetails</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PMem-Competitor Product Info --></label>
+        <name>Pricing_PMem_Competitor_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- PMem-Intel Product Info --></label>
+        <name>Pricing_PMem_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- RPM-Approved Details --></label>
+        <name>Pricing_RPM_Approved_Details</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- RPM-MyDeals Section --></label>
+        <name>Pricing_RPM_MyDeals_Section</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SSD-AdditionalDetails --></label>
+        <name>Pricing_SSD_AdditionalDetails</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SSD-Competitor Product Info --></label>
+        <name>Pricing_SSD_Competitor_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SSD-Intel Product Info --></label>
+        <name>Pricing_SSD_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SVD-AdditionalDetails --></label>
+        <name>Pricing_SVD_AdditionalDetails</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SVD-Competitor Product Info --></label>
+        <name>Pricing_SVD_Competitor_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SVD-Intel Product Info --></label>
+        <name>Pricing_SVD_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Pricing_SW QL Line Editor --></label>
+        <name>Pricing_SW_QL_Line_Editor</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Standard-AdditionalDetails --></label>
+        <name>Pricing_Standard_AdditionalDetails</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Standard-Competitor Product Info --></label>
+        <name>Pricing_Standard_Competitor_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Standard-Intel Product Info --></label>
+        <name>Pricing_Standard_Intel_Product_Info</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Related List on Opportunity --></label>
+        <name>RelatedListonOpportunity</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Related List on Opportunity Partners --></label>
+        <name>Related_List_on_Opportunity_Partners</name>
+    </fieldSets>
+    <fieldSets>
+        <label>ConsumptionSchedule</label>
+        <name>SBQQ__ConsumptionSchedule</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Editor de partidas</label>
+        <name>SBQQ__LineEditor</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Campos bloqueados de partida de presupuesto no actuales</label>
+        <name>SBQQ__NonCurrentQuoteLineLockedFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Editor de partidas segmentadas</label>
+        <name>SBQQ__SegmentedLineEditor</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Resumen de Editor de partidas segmentadas</label>
+        <name>SBQQ__SegmentedLineEditorSummary</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Cajón de partidas estándar</label>
+        <name>SBQQ__StandardLineItemDrawer</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Campos de resumen</label>
+        <name>SBQQ__SummaryFields</name>
+    </fieldSets>
+    <fields>
+        <label><!-- OPN --></label>
+        <name>Core_OPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Revision Count --></label>
+        <name>Customer_Revision_Count_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delete OPN --></label>
+        <name>Delete_OPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Revision Count --></label>
+        <name>Field_Revision_Count_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- test_t --></label>
+        <name>PSG_Disty_Cost_nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Selecting an Account Division limits the billings that can be used for this quote to those of the account divisions selected. Leaving Account Divisions blank means all billings are eligible for this quote. --></help>
+        <label><!-- Account Division --></label>
+        <name>Pricing_Account_Division_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Account Executive --></label>
+        <name>Pricing_Account_Executive_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional comments for the quote line. --></help>
+        <label><!-- Additional Comments --></label>
+        <name>Pricing_Additional_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Any additional OEM investment needed to win the bid. This is the total discount (in US Dollars), not amount per system. --></help>
+        <label><!-- Additional Discount --></label>
+        <name>Pricing_Additional_OEM_Discount_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- List of RPM email addresses who should receive notifications in addition to the RPM actioning the quote line. --></help>
+        <label><!-- Additional RPM Notification Recipients --></label>
+        <name>Pricing_Additional_RPM_Notify_Recipients__c</name>
+    </fields>
+    <fields>
+        <help><!-- Terms and conditions put in place in addition to the standard T’s&amp;C’s available in Intel Quote Request or on the quote letter. --></help>
+        <label><!-- Additional T&apos;s &amp; C&apos;s --></label>
+        <name>Pricing_Additional_T_C_s_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Application Agent Status --></label>
+        <name>Pricing_Application_Agent_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approval Price Rule Name --></label>
+        <name>Pricing_Approval_Price_Rule_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Approved end date of the tender pricing and last date consumption can happen. --></help>
+        <label><!-- Approved Pricing End Date --></label>
+        <name>Pricing_Approved_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Approved end date of the tender pricing and last date consumption can happen. --></help>
+        <label><!-- Approved Pricing End Date --></label>
+        <name>Pricing_Approved_End_Date_Dup_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved/Rejected Month --></label>
+        <name>Pricing_Approved_Rejected_Month_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved/Rejected Month --></label>
+        <name>Pricing_Approved_Rejected_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved/Rejected Quarter --></label>
+        <name>Pricing_Approved_Rejected_Quarter__c</name>
+    </fields>
+    <fields>
+        <help><!-- Approved date on which the tender pricing goes into effect and consumption of the product begins. --></help>
+        <label><!-- Approved Pricing Start Date --></label>
+        <name>Pricing_Approved_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Approved date on which the tender pricing goes into effect and consumption of the product begins. --></help>
+        <label><!-- Approved Pricing Start Date --></label>
+        <name>Pricing_Approved_Start_Date_Dup_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of units of the Intel component approved for the quote line. --></help>
+        <label><!-- Approved Quantity --></label>
+        <name>Pricing_Approved_Unit_Dup_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of units of the Intel component approved for the quote line. --></help>
+        <label><!-- Approved Quantity --></label>
+        <name>Pricing_Approved_Unit_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- The reason why we are backdating this deal. This field is required if Approved Pricing Start Date is in the past. --></help>
+        <label><!-- Backdate Reason --></label>
+        <name>Pricing_Backdate_Reason_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Data Entry Error</masterLabel>
+            <translation><!-- Data Entry Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Extension</masterLabel>
+            <translation><!-- Deal Extension --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Late Tender Request</masterLabel>
+            <translation><!-- Late Tender Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Change</masterLabel>
+            <translation><!-- Price Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product SKU(s) Not Available</masterLabel>
+            <translation><!-- Product SKU(s) Not Available --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Errors or Synch Issues</masterLabel>
+            <translation><!-- System Errors or Synch Issues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Volume Increase</masterLabel>
+            <translation><!-- Volume Increase --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The latest invoice date(CDD) that is eligible to be claimed against this quote. --></help>
+        <label><!-- Billing End Date (for consumption) --></label>
+        <name>Pricing_Billing_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The earliest invoice date(CDD) that is eligible to be claimed against this quote. --></help>
+        <label><!-- Billing Start Date (for consumption) --></label>
+        <name>Pricing_Billing_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of CPUs in one server. Should align with the number of sockets. --></help>
+        <label><!-- No. of CPUs per System --></label>
+        <name>Pricing_CPU_Quantity_per_System_qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- CPU that pairs with the PMem DIMMs. --></help>
+        <label><!-- Paired CPU --></label>
+        <name>Pricing_CPU_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of CPUs that will be used in each system. --></help>
+        <label><!-- No. of CPUs per system --></label>
+        <name>Pricing_CPUs_per_system_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Date --></label>
+        <name>Pricing_Cancellation_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Of Change Request ? --></label>
+        <name>Pricing_Change_Request_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request Type --></label>
+        <name>Pricing_Change_Request_Type__c</name>
+        <picklistValues>
+            <masterLabel>Consumption Reason Change</masterLabel>
+            <translation><!-- Consumption Reason Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Date Change</masterLabel>
+            <translation><!-- Date Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payable Quantity Change</masterLabel>
+            <translation><!-- Payable Quantity Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Change</masterLabel>
+            <translation><!-- Price Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Volume Change</masterLabel>
+            <translation><!-- Volume Change --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If checked, quote line is an active request to change the quantity and/or the end date. This box will no longer be checked once the change request has been approved or rejected. --></help>
+        <label><!-- Pending Change Request --></label>
+        <name>Pricing_Change_Request_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Unit Price/GB --></label>
+        <name>Pricing_CompUnitPricePerGB_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Additional Discount --></label>
+        <name>Pricing_Comp_Additional_OEM_Disc_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Assumed number of competitor units in one server. For a CPU quote this is CPUs per system, and for an Optane™ PMem quote this is DRAM per system. --></help>
+        <label><!-- Competitor No. of Units per System --></label>
+        <name>Pricing_Comp_CPUs_per_system_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Density in gigabytes of the competitor product. --></help>
+        <label><!-- Competitor Density (GB) --></label>
+        <name>Pricing_Comp_Density_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor No. of GPUs per System --></label>
+        <name>Pricing_Comp_No_of_GPUs_per_Sys__c</name>
+    </fields>
+    <fields>
+        <help><!-- Assumed competitor solution. --></help>
+        <label><!-- Competitor Product --></label>
+        <name>Pricing_Comp_Product_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comp Score --></label>
+        <name>Pricing_Comp_SKU_Performance_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Assumed price of one competitor system with all components included (in US Dollars). --></help>
+        <label><!-- Competitor Single System Price --></label>
+        <name>Pricing_Comp_Single_System_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Competitor Single System Price x Competitor No. of Systems (in US Dollars). --></help>
+        <label><!-- Competitor Total without discount --></label>
+        <name>Pricing_Comp_Total_without_discount_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Assumed price of one competitor system with all the components included (in US Dollars). --></help>
+        <label><!-- Competitor Single System Price Point --></label>
+        <name>Pricing_Comp_Unit_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total assumed competitive number of units. --></help>
+        <label><!-- Competitor Quantity --></label>
+        <name>Pricing_Comp_Units_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Begin typing product to be used in system for assumed competitive offering. Hit enter for more options. If product is not listed, select the &apos;Write In Product&apos; option and type the name of unlisted product in the &apos;Write In Competitor Product&apos; field. --></help>
+        <label><!-- Competitor Product --></label>
+        <name>Pricing_Competetor_Product__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Competitor Additional Discount/Competitor Total without discount --></help>
+        <label><!-- Competitive Bid Discount --></label>
+        <name>Pricing_Competitive_Bid_Discount_Pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor No. of GPUs --></label>
+        <name>Pricing_Competitor_No_of_GPUs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor OEM Name --></label>
+        <name>Pricing_Competitor_OEM_Name_FI_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of competing system vendor (OEM, ODM, etc.). --></help>
+        <label><!-- Competitor Name --></label>
+        <name>Pricing_Competitor_OEM_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Paired CPU --></label>
+        <name>Pricing_Competitor_Paired_CPU_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total assumed competitive number of units. --></help>
+        <label><!-- Competitor Quantity --></label>
+        <name>Pricing_Competitor_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Competitor platform into which the product will be integrated. --></help>
+        <label><!-- Competitor System Model --></label>
+        <name>Pricing_Competitor_System_Model_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Assumed number of competitor servers. --></help>
+        <label><!-- Competitor No. of Systems --></label>
+        <name>Pricing_Competitor_Systems_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Country/Region in which the product must be consumed in. If a selection is made in Consumption Country/Region, a selection cannot be made in Customer Sales Geography. --></help>
+        <label><!-- Consumption Country --></label>
+        <name>Pricing_Consumption_Country__c</name>
+    </fields>
+    <fields>
+        <help><!-- Platform in which the product is integrated into. This field lists OEM specific platforms. To add a new value, reach out to your Sales Rep. --></help>
+        <label><!-- Consumption Platform --></label>
+        <name>Pricing_Consumption_Platform__c</name>
+    </fields>
+    <fields>
+        <help><!-- Country/Region in which the product must be consumed in. If a selection is made in Consumption Country/Region, a selection cannot be made in Customer Sales Geography. --></help>
+        <label><!-- Consumption Region --></label>
+        <name>Pricing_Consumption_Region__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- OEM specific sales geography in which the product must be consumed in. If a selection is made in Customer Sales Geography, a selection cannot be made in Consumption Country/Region. To add a new value, reach out to your Sales Rep. --></help>
+        <label><!-- Consumption Sales Geo --></label>
+        <name>Pricing_Consumption_Sale_Geo__c</name>
+    </fields>
+    <fields>
+        <help><!-- Segment in which the product is integrated. To add a new value, reach out to your Sales Rep. --></help>
+        <label><!-- Consumption Segment --></label>
+        <name>Pricing_Consumption_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Create Deal Actor --></label>
+        <name>Pricing_Create_Deal_Actor_Id__c</name>
+        <relationshipLabel><!-- Quote Lines (Create Deal Actor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Dollar amount of rebates already credited to the customer (in US Dollars). --></help>
+        <label><!-- Credit Dollars --></label>
+        <name>Pricing_Credit_Dollars_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of units credited to the customer. --></help>
+        <label><!-- Credit Volume --></label>
+        <name>Pricing_Credit_Volume_qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- An internal reference number (e.g. ARR, rebate request ID, pricing request ID, internal reference). --></help>
+        <label><!-- Reference Request ID --></label>
+        <name>Pricing_Customer_Reference_txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Density in Gigabytes per DRAM. --></help>
+        <label><!-- DRAM Density (GB) --></label>
+        <name>Pricing_DRAM_Density_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of DRAM in one server. --></help>
+        <label><!-- No. of DRAM per System --></label>
+        <name>Pricing_DRAM_per_System_qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- The product code for the selected Intel product. --></help>
+        <label><!-- Forecast Product Name --></label>
+        <name>Pricing_DealProduct_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Description --></label>
+        <name>Pricing_Deal_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Intel deal number assigned to this quote line. --></help>
+        <label><!-- Deal ID --></label>
+        <name>Pricing_Deal_RFQ_Dup_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Intel deal number assigned to this quote line. --></help>
+        <label><!-- Deal ID --></label>
+        <name>Pricing_Deal_RFQ_Id_Link__c</name>
+    </fields>
+    <fields>
+        <help><!-- Intel deal number assigned to this quote line. --></help>
+        <label><!-- Deal ID --></label>
+        <name>Pricing_Deal_RFQ_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Status --></label>
+        <name>Pricing_Deal_RFQ_Status_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Dollar amount of rebates already debited to the customer (in US Dollars). --></help>
+        <label><!-- Debit Dollars --></label>
+        <name>Pricing_Debit_Dollars_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of units debited to the customer. --></help>
+        <label><!-- Debit Volume --></label>
+        <name>Pricing_Debit_Volume_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>Pricing_Decision_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Density in gigabytes of the Intel product. --></help>
+        <label><!-- Density (GB) --></label>
+        <name>Pricing_Density__c</name>
+    </fields>
+    <fields>
+        <help><!-- Discount percentage from CAP. Defined as 100*(CAP - Recommended Price)/CAP. --></help>
+        <label><!-- Discount --></label>
+        <name>Pricing_Discount_Pct__c</name>
+    </fields>
+    <fields>
+        <help><!-- Approved price of one unit of the Intel component (in US Dollars). --></help>
+        <label><!-- Approved ECAP Price --></label>
+        <name>Pricing_ECAP_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Approved price of one unit of the Intel component (in US Dollars). --></help>
+        <label><!-- Approved ECAP Price --></label>
+        <name>Pricing_ECAP_Price_Dup_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Name --></label>
+        <name>Pricing_EndCustomer_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Country/Region in which end customer is located. If multi-country/region or worldwide, select the primary country/region. --></help>
+        <label><!-- End Customer Country/Region --></label>
+        <name>Pricing_End_Customer_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Write In End Customer --></label>
+        <name>Pricing_End_Customer_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Pricing end date for this quote line. Can be different than the Pricing End Date for the quote. --></help>
+        <label><!-- Quote Line Pricing End Date --></label>
+        <name>Pricing_End_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Messages --></label>
+        <name>Pricing_Error_Messages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rebate Per Unit --></label>
+        <name>Pricing_FI_Net_RPU_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM Name test --></label>
+        <name>Pricing_FI_OEM_Name_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Acer</masterLabel>
+            <translation><!-- Acer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple</masterLabel>
+            <translation><!-- Apple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asus</masterLabel>
+            <translation><!-- Asus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell</masterLabel>
+            <translation><!-- Dell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HP</masterLabel>
+            <translation><!-- HP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lenovo</masterLabel>
+            <translation><!-- Lenovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM Name 2</masterLabel>
+            <translation><!-- OEM Name 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Write In OEM Name</masterLabel>
+            <translation><!-- Write In OEM Name --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Write In OEM Name --></label>
+        <name>Pricing_FI_Write_In_OEM_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Net price needed to win the bid and when the response is due by. --></help>
+        <label><!-- What Is Needed To Win Bid? --></label>
+        <name>Pricing_FSE_Recommended_Price_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Series of Optane™ SSD, e.g., P4800X, P5800X. --></help>
+        <label><!-- Family Name --></label>
+        <name>Pricing_Family_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Write In Competitor OEM Name --></label>
+        <name>Pricing_Fl_CompWriteInOEMName_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor OEM Name test --></label>
+        <name>Pricing_Fl_Competitor_OEM_Name_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Acer</masterLabel>
+            <translation><!-- Acer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apple</masterLabel>
+            <translation><!-- Apple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asus</masterLabel>
+            <translation><!-- Asus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor OEM Name 2</masterLabel>
+            <translation><!-- Competitor OEM Name 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell</masterLabel>
+            <translation><!-- Dell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HP</masterLabel>
+            <translation><!-- HP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lenovo</masterLabel>
+            <translation><!-- Lenovo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Write In Competitor OEM Name</masterLabel>
+            <translation><!-- Write In Competitor OEM Name --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- My Deals Folio ID --></label>
+        <name>Pricing_Folio_ID_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The type of device into which the product is integrated in --></help>
+        <label><!-- Form Factor --></label>
+        <name>Pricing_Form_Factor_Nm__c</name>
+        <picklistValues>
+            <masterLabel>2 in 1</masterLabel>
+            <translation><!-- 2 in 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AIO</masterLabel>
+            <translation><!-- AIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Client</masterLabel>
+            <translation><!-- Cloud Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Desktop</masterLabel>
+            <translation><!-- Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Desktop Workstation</masterLabel>
+            <translation><!-- Desktop Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Workstation</masterLabel>
+            <translation><!-- Mobile Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notebook</masterLabel>
+            <translation><!-- Notebook --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- For the purpose of PCT, indicates whether quote line can be used in conjunction with other pricing offerings. --></help>
+        <label><!-- Group Type --></label>
+        <name>Pricing_Group_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Mutually Exclusive</masterLabel>
+            <translation><!-- Mutually Exclusive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non Additive</masterLabel>
+            <translation><!-- Non Additive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Displays the approved pricing range for HPC based on HPC historical pricing and applicable CAP/YCS2 ceiling thresholds. --></help>
+        <label><!-- HPC Eligible Pricing Envelope --></label>
+        <name>Pricing_HPC_Eligible_Pricing_Envelope__c</name>
+    </fields>
+    <fields>
+        <help><!-- (Total Bid without Discount - Net Intel Bid Price) / Total Bid without Discount --></help>
+        <label><!-- Intel Bid Discount --></label>
+        <name>Pricing_IA_Bid_Discount_Pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Status --></label>
+        <name>Pricing_Integration_Status_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Time Stamp --></label>
+        <name>Pricing_Integration_Time_Stamp__c</name>
+    </fields>
+    <fields>
+        <help><!-- (Customer Standard Unit Price - Requested Discount Price) / Customer Standard Unit Price --></help>
+        <label><!-- Intel Discount --></label>
+        <name>Pricing_Intel_Discount_Pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Response Requested By Date --></label>
+        <name>Pricing_Intel_Response_Requested_By_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Score --></label>
+        <name>Pricing_Intel_SKU_Performance_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Additional T&apos;s &amp; C&apos;s Not Blank --></label>
+        <name>Pricing_Is_Additional_T_C_Not_Blank_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- On Restricted Party List --></label>
+        <name>Pricing_Is_Sanctioned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved/Rejected Date --></label>
+        <name>Pricing_Last_Approved_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date on which the last credit or debit transaction occurred. --></help>
+        <label><!-- Last Credit/Debit Date --></label>
+        <name>Pricing_Last_Credit_Debit_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Submitted By --></label>
+        <name>Pricing_Last_Submitted_By_Id__c</name>
+        <relationshipLabel><!-- Quote Lines (Last Submitted By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Last Submitted Date --></label>
+        <name>Pricing_Last_Submitted_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lost Reason --></label>
+        <name>Pricing_Lost_Reason_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Cost/Price Not Competitive</masterLabel>
+            <translation><!-- Cost/Price Not Competitive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End Customer Postponed/Cancelled</masterLabel>
+            <translation><!-- End Customer Postponed/Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feature/Performance</masterLabel>
+            <translation><!-- Feature/Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incumbent Selected/Customer Preference</masterLabel>
+            <translation><!-- Incumbent Selected/Customer Preference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Issues</masterLabel>
+            <translation><!-- Supply Issues --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Pricing System --></label>
+        <name>Pricing_MMBP_System_Nm__c</name>
+        <picklistValues>
+            <masterLabel>MyDeals</masterLabel>
+            <translation><!-- MyDeals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebQuote</masterLabel>
+            <translation><!-- WebQuote --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Regional Pricing Manager who processed the quote line. --></help>
+        <label><!-- Pricing Manager --></label>
+        <name>Pricing_Manager__c</name>
+        <relationshipLabel><!-- Quote Lines (Pricing Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Market Segment Type --></label>
+        <name>Pricing_Market_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Embedded</masterLabel>
+            <translation><!-- Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non Embedded</masterLabel>
+            <translation><!-- Non Embedded --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Market Segment --></label>
+        <name>Pricing_Market_Segment_values_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Communications</masterLabel>
+            <translation><!-- Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Electronics(SPD)</masterLabel>
+            <translation><!-- Consumer Electronics(SPD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer No Pull</masterLabel>
+            <translation><!-- Consumer No Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Retail Pull</masterLabel>
+            <translation><!-- Consumer Retail Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corp</masterLabel>
+            <translation><!-- Corp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:DSS</masterLabel>
+            <translation><!-- Embedded:DSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:EBM (Embedded Board Manufacturer)</masterLabel>
+            <translation><!-- Embedded:EBM (Embedded Board Manufacturer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Energy</masterLabel>
+            <translation><!-- Embedded:Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Gaming</masterLabel>
+            <translation><!-- Embedded:Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Industrial</masterLabel>
+            <translation><!-- Embedded:Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:MAG (Military Aerospace Govt)</masterLabel>
+            <translation><!-- Embedded:MAG (Military Aerospace Govt) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Medical</masterLabel>
+            <translation><!-- Embedded:Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Other</masterLabel>
+            <translation><!-- Embedded:Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Print Imaging</masterLabel>
+            <translation><!-- Embedded:Print Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Thin Client</masterLabel>
+            <translation><!-- Embedded:Thin Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transactional Retail</masterLabel>
+            <translation><!-- Embedded:Transactional Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Transportation</masterLabel>
+            <translation><!-- Embedded:Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded:Visual Retail</masterLabel>
+            <translation><!-- Embedded:Visual Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAD</masterLabel>
+            <translation><!-- LAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB</masterLabel>
+            <translation><!-- SMB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- My Deals Meet Comp Price --></label>
+        <name>Pricing_Meet_Comp_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Competitor Total without Discount - Customer Discount (in US Dollars). --></help>
+        <label><!-- Net Competitor Bid Price --></label>
+        <name>Pricing_Net_Comp_Bid_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Bid without Discount - Total Requested Discounted - Additional Discount (in US Dollars). --></help>
+        <label><!-- Net Intel Bid Price --></label>
+        <name>Pricing_Net_IA_Bid_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked, quote line represents a request to change the quantity, end date, and/or price. --></help>
+        <label><!-- Change Request --></label>
+        <name>Pricing_New_Change_Request_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total quantity of units if different than the current approved quantity. --></help>
+        <label><!-- New Quantity --></label>
+        <name>Pricing_New_Quantity_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of GPUs --></label>
+        <name>Pricing_No_of_GPUs__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of GPUs per system --></label>
+        <name>Pricing_No_of_GPUs_per_system_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Pricing_OEM_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional Discount / (Total Bid without Discount-(Customer Standard Unit Price x Quantity)) --></help>
+        <label><!-- Customer Discount --></label>
+        <name>Pricing_OEM_Discount_Pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- OEM Name --></label>
+        <name>Pricing_OEM_Name_FI_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing FI OEM Name --></label>
+        <name>Pricing_OEM_Name_FI__c</name>
+    </fields>
+    <fields>
+        <help><!-- Current OEM standard CPU price (in US Dollars) --></help>
+        <label><!-- Customer Standard Unit Price --></label>
+        <name>Pricing_OEM_Standard_Unit_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Platform into which the product will be integrated. --></help>
+        <label><!-- System Model --></label>
+        <name>Pricing_OEM_System_Model_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original Submitted By --></label>
+        <name>Pricing_Original_Submitted_By_Id__c</name>
+        <relationshipLabel><!-- Quote Lines (Original Submitted By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- First Submitted Date --></label>
+        <name>Pricing_Original_Submitted_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &apos;Write In Product&apos; is selected in the Competitor Product field, please enter the name of the unlisted product. If &apos;Write In Product&apos; is not selected, leave this field blank. --></help>
+        <label><!-- Write In Competitor Product --></label>
+        <name>Pricing_Other_Competitor_Product_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &apos;Write In Product&apos; is selected in the Product field, please enter the name of the unlisted product. If &apos;Write In Product&apos; is not selected, leave this field blank. --></help>
+        <label><!-- Write In Product --></label>
+        <name>Pricing_Other_Product_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Expected improvement by either performance or cost-savings. --></help>
+        <label><!-- POC testing results (performance) --></label>
+        <name>Pricing_POC_testing_results_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Paired CPU --></label>
+        <name>Pricing_Paired_CPU_Nm__c</name>
+        <relationshipLabel><!-- Quote Lines (Paired CPU) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Number of units of the Intel Component approved for payment on the quote line --></help>
+        <label><!-- Payable Quantity --></label>
+        <name>Pricing_Payable_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Performance Metric Used --></label>
+        <name>Pricing_Performance_Metric_Nm__c</name>
+        <picklistValues>
+            <masterLabel>ChromeXPRT</masterLabel>
+            <translation><!-- ChromeXPRT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cinebench</masterLabel>
+            <translation><!-- Cinebench --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crossmark</masterLabel>
+            <translation><!-- Crossmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MobileMark</masterLabel>
+            <translation><!-- MobileMark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PCmark10</masterLabel>
+            <translation><!-- PCmark10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passmark</masterLabel>
+            <translation><!-- Passmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Procyon</masterLabel>
+            <translation><!-- Procyon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sysmark</masterLabel>
+            <translation><!-- Sysmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Write In Performance Metric</masterLabel>
+            <translation><!-- Write In Performance Metric --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Previous Inbound Msg Number --></label>
+        <name>Pricing_Previous_Inbound_Msg_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous MyDeal Action --></label>
+        <name>Pricing_Previous_MyDeal_Action_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Status --></label>
+        <name>Pricing_Previous_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Displays the approved pricing range based on historical pricing and applicable CAP/YCS2 ceiling thresholds. --></help>
+        <label><!-- Eligible Pricing Envelope --></label>
+        <name>Pricing_Price_Interval_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reason the quote line could not utilize a Price Rule. --></help>
+        <label><!-- Price Rule Error Message --></label>
+        <name>Pricing_Price_Rule_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Contact --></label>
+        <name>Pricing_Primary_Contact_Nm__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Processor Number --></label>
+        <name>Pricing_Processor_Number_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Pricing_Product_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Begin typing the Intel product to be used in the system. Hit enter for more options. If product is not listed (ex. future SKU), select the &apos;Write In Product&apos; option and type the name of the unlisted product in the &apos;Write In Product&apos; field below. --></help>
+        <label><!-- Product --></label>
+        <name>Pricing_Product_Nm__c</name>
+        <relationshipLabel><!-- Quote Lines (Product) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Pricing_Product_Series_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Pricing_Product_Series__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Segment --></label>
+        <name>Pricing_Product_VerticalSegment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Type --></label>
+        <name>Pricing_Program_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center GPU</masterLabel>
+            <translation><!-- Data Center GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Data Center Xeon® CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet</masterLabel>
+            <translation><!-- Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Incentive</masterLabel>
+            <translation><!-- Financial Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ PMem</masterLabel>
+            <translation><!-- Optane™ PMem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ SSD</masterLabel>
+            <translation><!-- Optane™ SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Volume Quotes - Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Small Volume Quotes - Data Center Xeon® CPU --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Project Name --></label>
+        <name>Pricing_Project_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposal Due Date --></label>
+        <name>Pricing_Proposal_Due_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line --></label>
+        <name>Pricing_QuoteLineField__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line ID --></label>
+        <name>Pricing_QuoteLine_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- QuoteLine Won Prediction --></label>
+        <name>Pricing_QuoteLine_Won_Prediction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Number --></label>
+        <name>Pricing_Quote_Line_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Number --></label>
+        <name>Pricing_Quote_Line_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Status Number --></label>
+        <name>Pricing_Quote_Line_Status_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indication of whether bid for this specific quote line was won or lost. --></help>
+        <label><!-- Won/Lost Status --></label>
+        <name>Pricing_Quote_Line_Won_Lost_Status__c</name>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Available</masterLabel>
+            <translation><!-- Not Available --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Won</masterLabel>
+            <translation><!-- Won --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Program --></label>
+        <name>Pricing_Quote_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Total Requested Quantity --></label>
+        <name>Pricing_Quote_Total_Requested_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Explanation for the recommended price and eligible pricing envelope. Data and deals referenced --></help>
+        <label><!-- Rationale for Pricing --></label>
+        <name>Pricing_Rationale_for_Pricing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ready for QuoteLetter T&amp;C --></label>
+        <name>Pricing_Ready_for_QuoteLetter_T_C_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ready for QuoteLetter --></label>
+        <name>Pricing_Ready_for_QuoteLetter_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- For companies that have a review process prior to submitting to Intel, indicates quote line is ready for internal review. --></help>
+        <label><!-- Ready for Review --></label>
+        <name>Pricing_Ready_for_Review_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- Feedback to help the Pricing AI team understand why the AI model’s recommendation was or was not used. --></help>
+        <label><!-- Reason for Feedback --></label>
+        <name>Pricing_Reason_for_FeedBack_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Feedback to help the Pricing AI team understand why the AI model&apos;s recommendation was or was not used. If feedback reason is not listed, select &apos;Other&apos; option and type the feedback in the Reason for Feedback field. --></help>
+        <label><!-- User Feedback on Agent Recommended Price --></label>
+        <name>Pricing_Recommendation_FeedBack_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Aligning to historical customer pricing</masterLabel>
+            <translation><!-- Aligning to historical customer pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple sku alignment</masterLabel>
+            <translation><!-- Multiple sku alignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other – Please provide comments</masterLabel>
+            <translation><!-- Other – Please provide comments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing Application Agent recommendation too high/low</masterLabel>
+            <translation><!-- Pricing Application Agent recommendation too high/low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sku not in scope</masterLabel>
+            <translation><!-- Sku not in scope --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic deal/Pricing influenced by AE or market insights</masterLabel>
+            <translation><!-- Strategic deal/Pricing influenced by AE or market insights --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Recommended ECAP generated by AI model (in US Dollars). --></help>
+        <label><!-- Recommended Price --></label>
+        <name>Pricing_Recommended_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Parent quote line from which change request was created.  --></help>
+        <label><!-- Reference Quote Line Number --></label>
+        <name>Pricing_Reference_QuoteLine_Link_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reference Quote Line Number --></label>
+        <name>Pricing_Reference_Quote_Line_Nbr__c</name>
+        <relationshipLabel><!-- Quote Lines (Reference Quote Line Number) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The region for which billed units will be eligible for rebate if consumed within quote line parameters. If billings from all regions are eligible, select Worldwide. --></help>
+        <label><!-- Region --></label>
+        <name>Pricing_RegionQL_Nm__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Worldwide</masterLabel>
+            <translation><!-- Worldwide --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Dependent on the End Customer Country/Region selected. --></help>
+        <label><!-- End Customer Sales Geography --></label>
+        <name>Pricing_Region_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Explanation of why quote line was rejected. Comments may be included in rejection notification sent to OEM and will be visible to the OEM on the quote. --></help>
+        <label><!-- Rejection/Cancellation Comments --></label>
+        <name>Pricing_Rejection_Comments_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rejection Reason --></label>
+        <name>Pricing_Rejection_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Duplicate Request</masterLabel>
+            <translation><!-- Duplicate Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inconsistent Comp System Performance</masterLabel>
+            <translation><!-- Inconsistent Comp System Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Quote Type</masterLabel>
+            <translation><!-- Incorrect Quote Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OEM Request to Reject</masterLabel>
+            <translation><!-- OEM Request to Reject --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (Comments required)</masterLabel>
+            <translation><!-- Other (Comments required) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outside of current pricing strategy</masterLabel>
+            <translation><!-- Outside of current pricing strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Request does not meet the minimum volume threshold</masterLabel>
+            <translation><!-- Request does not meet the minimum volume threshold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SKU not supported for PDI</masterLabel>
+            <translation><!-- SKU not supported for PDI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SKU not supported for Tender Pricing</masterLabel>
+            <translation><!-- SKU not supported for Tender Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submission Partner Request to Reject/Withdraw</masterLabel>
+            <translation><!-- Submission Partner Request to Reject/Withdraw --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Use Standard MCP/Framework Pricing</masterLabel>
+            <translation><!-- Use Standard MCP/Framework Pricing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Requested Discount Unit Price/GB --></label>
+        <name>Pricing_ReqDiscUnitPricePerGB_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Requested discount price of one unit of the Intel component (in US Dollars). --></help>
+        <label><!-- Requested Unit Price --></label>
+        <name>Pricing_Req_Discounted_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Requested discount price of one unit of the Intel component if different than the current Approved ECAP Price (in US Dollars). --></help>
+        <label><!-- New Requested Price --></label>
+        <name>Pricing_Request_Discount_Unit_Price_qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date latest pricing becomes effective. --></help>
+        <label><!-- Effective Pricing Start Date --></label>
+        <name>Pricing_Revised_Pricing_Start_Date_D_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date latest pricing becomes effective. --></help>
+        <label><!-- Effective Pricing Start Date --></label>
+        <name>Pricing_Revised_Pricing_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if the quote line is eligible for SDM Fast Track. To be checked by the SDM. --></help>
+        <label><!-- SDM Fast Track --></label>
+        <name>Pricing_SDM_Fast_Track__c</name>
+    </fields>
+    <fields>
+        <help><!-- Intel® Stable IT Platform Program --></help>
+        <label><!-- SIPP --></label>
+        <name>Pricing_SIPP_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Disc. (%) --></label>
+        <name>Pricing_SW_Additional_Disc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Pricing_SW_Description_hyperlink__c</name>
+    </fields>
+    <fields>
+        <label><!-- Monthly Price --></label>
+        <name>Pricing_SW_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Rep Approver --></label>
+        <name>Pricing_Sales_Rep_Approver__c</name>
+        <relationshipLabel><!-- Quote Lines (Sales Rep Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Rep --></label>
+        <name>Pricing_Sales_Rep__c</name>
+        <relationshipLabel><!-- Quote Lines (Sales Rep) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Prevent Save After Calculation --></label>
+        <name>Pricing_Save_After_Calculation_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Application --></label>
+        <name>Pricing_Server_Deal_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>CSP</masterLabel>
+            <translation><!-- CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CoSP</masterLabel>
+            <translation><!-- CoSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstations</masterLabel>
+            <translation><!-- Workstations --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is the cluster Virtualized or Bare Metal servers? --></help>
+        <label><!-- Server Integration --></label>
+        <name>Pricing_Server_Integration_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Bare Metal</masterLabel>
+            <translation><!-- Bare Metal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtualized</masterLabel>
+            <translation><!-- Virtualized --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Price of one system with all components included (in US Dollars) --></help>
+        <label><!-- Single System Price Point --></label>
+        <name>Pricing_Single_System_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Pricing start date for this quote line. If currently approved pricing start date is in the future, a change to the pricing start date can be requested. --></help>
+        <label><!-- Quote Line Pricing Start Date --></label>
+        <name>Pricing_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Status --></label>
+        <name>Pricing_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Further Intel Review</masterLabel>
+            <translation><!-- Pending Further Intel Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Intel Field Review</masterLabel>
+            <translation><!-- Pending Intel Field Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revised</masterLabel>
+            <translation><!-- Revised --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Won</masterLabel>
+            <translation><!-- Won --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Number of servers (nodes). --></help>
+        <label><!-- No. of Systems --></label>
+        <name>Pricing_Systems_qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated ECAP. Used to access how the model influenced the Approved ECAP (in US Dollars). --></help>
+        <label><!-- Tentative ECAP Price --></label>
+        <name>Pricing_Tentative_ECAP_Price_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Single System Price Point  x No. of Systems (in US Dollars). --></help>
+        <label><!-- Total Bid without Discount --></label>
+        <name>Pricing_Total_Bid_without_Discount_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- (Customer Standard Unit Price - Requested Discount Price) x Quantity (in US Dollars). --></help>
+        <label><!-- Total Intel Discount --></label>
+        <name>Pricing_Total_Intel_Discount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Product Rebate --></label>
+        <name>Pricing_Total_Product_Rebate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total number of units. --></help>
+        <label><!-- Quantity --></label>
+        <name>Pricing_Total_Volume_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Global End Customer Name --></label>
+        <name>Pricing_UnifiedEndCustomer__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total number of units. --></help>
+        <label><!-- Quantity --></label>
+        <name>Pricing_Unit_Qty__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of modules in one server. --></help>
+        <label><!-- No. of Units per system --></label>
+        <name>Pricing_Units_per_system_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Status to Rejected --></label>
+        <name>Pricing_Update_Status_to_Rejected_cb__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total volume needed by quarter and rationale of the ask. --></help>
+        <label><!-- Volume by Quarter AND Reasoning --></label>
+        <name>Pricing_VolumeByQuarterAndReasoning_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Commentary about why the bid was either won or lost. --></help>
+        <label><!-- Won/Lost Comments --></label>
+        <name>Pricing_Won_Lost_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- When the Application is CoSP, Workload/BU Segment must be selected. This represents the type of workload or network segment in which the product is used. --></help>
+        <label><!-- Workload/BU Segment --></label>
+        <name>Pricing_Workload_Nm__c</name>
+        <picklistValues>
+            <masterLabel>AI / GPU - GPU / AI Workloads</masterLabel>
+            <translation><!-- AI / GPU - GPU / AI Workloads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSP/Cloud – Telco doing CSP type workloads</masterLabel>
+            <translation><!-- CSP/Cloud – Telco doing CSP type workloads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECND – Enterprise &amp; Cloud Network Division (Network &amp; security, routers, switchers)</masterLabel>
+            <translation><!-- ECND – Enterprise &amp; Cloud Network Division (Network &amp; security, routers, switchers) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECVD – Edge Cloud Video Division (Media)</masterLabel>
+            <translation><!-- ECVD – Edge Cloud Video Division (Media) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT – Traditional enterprise type workloads (Non Networking workloads)</masterLabel>
+            <translation><!-- IT – Traditional enterprise type workloads (Non Networking workloads) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WAND – Wireless Access Network Division</masterLabel>
+            <translation><!-- WAND – Wireless Access Network Division --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WCND – Wireline &amp; Core Network Division</masterLabel>
+            <translation><!-- WCND – Wireline &amp; Core Network Division --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Primary function of the server cluster (ex. VDI, SAP Hana). --></help>
+        <label><!-- Workload --></label>
+        <name>Pricing_Workload_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Write In Paired CPU --></label>
+        <name>Pricing_Write_In_Paired_CPU_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Write In Performance Metric --></label>
+        <name>Pricing_Write_In_Performance_Metric_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product Provider --></label>
+        <name>Pricing_comp_Product_Provider_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Explanation of why quote line was approved. --></help>
+        <label><!-- Approval Comments --></label>
+        <name>Pricing_pm_approval_comments_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box to prevent this quote line from running through price rules when the deal is created in My Deals. --></help>
+        <label><!-- Exclude from Price Rules --></label>
+        <name>Pricng_Exclude_from_Price_Approval_Rules__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional customer discount extended on this line item in the form of an absolute amount. --></help>
+        <label>Descuento adicional (importe)</label>
+        <name>SBQQ__AdditionalDiscountAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total additional discounts extended to this line item. Additional discount is defined as discount extended on top of volume discount or negotiated prices. --></help>
+        <label>Descuento adicional</label>
+        <name>SBQQ__AdditionalDiscount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional quantity for this product that contributes to volume discount calculations --></help>
+        <label>Cantidad adicional</label>
+        <name>SBQQ__AdditionalQuantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether the asset represented by this line may be refunded. --></help>
+        <label>Permitir reembolsos de activos</label>
+        <name>SBQQ__AllowAssetRefund__c</name>
+    </fields>
+    <fields>
+        <help><!-- If products are sold in batches, this stores the quantity in each batch, defaulted from the product. --></help>
+        <label>Cantidad de lotes</label>
+        <name>SBQQ__BatchQuantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Defines the billing frequency. --></help>
+        <label>Frecuencia de facturación</label>
+        <name>SBQQ__BillingFrequency__c</name>
+    </fields>
+    <fields>
+        <help><!-- The billing type that defines when the billing occurs. Billing in advance lets you bill your customers for products or services before you provide them; Billing in arrears lets you bill your customers after the products or services are provided. --></help>
+        <label>Tipo de facturación</label>
+        <name>SBQQ__BillingType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Assign a fixed price to a product based on quantity and quantity range. This overrides the automatic calculation of quantity * unit price. --></help>
+        <label>Precio de bloque</label>
+        <name>SBQQ__BlockPrice__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether this line item represents a package; meaning, it includes other line items in this quote. --></help>
+        <label>Paquete</label>
+        <name>SBQQ__Bundle__c</name>
+    </fields>
+    <fields>
+        <help><!-- For items with calculated quantities this field holds the original quantity entered by the user. --></help>
+        <label>Cantidad original</label>
+        <name>SBQQ__BundledQuantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates the product on this line item is bundled (included) by another product in this quote. Bundled lines items have a zero price and do not allow price or quantity to be edited. --></help>
+        <label>Aparejado</label>
+        <name>SBQQ__Bundled__c</name>
+    </fields>
+    <fields>
+        <help><!-- Denotes this line as an auto-selected option of an upgrade bundle. --></help>
+        <label>Partida de arrastre</label>
+        <name>SBQQ__CarryoverLine__c</name>
+    </fields>
+    <fields>
+        <help><!-- The type of the product charge.  This is a system field that is derived from the associated product. --></help>
+        <label>Tipo de cargo</label>
+        <name>SBQQ__ChargeType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total cost of components in this package. --></help>
+        <label>Costo de componentes</label>
+        <name>SBQQ__ComponentCost__c</name>
+    </fields>
+    <fields>
+        <help><!-- Fixes additional discount for this component to the parent package discount. --></help>
+        <label>Componente con descuento por paquete</label>
+        <name>SBQQ__ComponentDiscountedByPackage__c</name>
+    </fields>
+    <fields>
+        <help><!-- List total of components in this configuration. This field is only populated if this line item references a configurable product. --></help>
+        <label>Total de lista de componentes</label>
+        <name>SBQQ__ComponentListTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Percent of Total scope set at the component level. This field overrides the Percent of Total scope copied from the Product Option. --></help>
+        <label>Ámbito porcentaje componentes del total</label>
+        <name>SBQQ__ComponentSubscriptionScope__c</name>
+        <picklistValues>
+            <masterLabel>Components</masterLabel>
+            <translation><!-- Components --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entire Hierarchy</masterLabel>
+            <translation><!-- Entire Hierarchy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Package</masterLabel>
+            <translation><!-- Package --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Package &amp; Components</masterLabel>
+            <translation><!-- Package &amp; Components --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Sum total of components in this configuration. This field is only populated if this line item references a configurable product. --></help>
+        <label>Total de neto de componentes</label>
+        <name>SBQQ__ComponentTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Fixes uplift for this component to the parent package uplift. Uplift only applies to multi-segmented products. --></help>
+        <label>Componente incrementado por paquete</label>
+        <name>SBQQ__ComponentUpliftedByPackage__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates the visibility of the component line item. --></help>
+        <label>Visibilidad de componentes</label>
+        <name>SBQQ__ComponentVisibility__c</name>
+    </fields>
+    <fields>
+        <help><!-- Discount rate compounded by quantity (historic). --></help>
+        <label>Descuento compuesto (%)</label>
+        <name>SBQQ__CompoundDiscountRate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flag that marks this quote line as requiring configuration. Can be used by custom code to request this product be re-configured. --></help>
+        <label>Configuración requerida</label>
+        <name>SBQQ__ConfigurationRequired__c</name>
+    </fields>
+    <fields>
+        <help><!-- Contracted price if the product has negotiated pricing for the opportunity&apos;s account. Contracted Prices are available on the Account and can be applied to any product in any price book. --></help>
+        <label>Precio contratado</label>
+        <name>SBQQ__ContractedPrice__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Specifies whether cost can be edited on this line item. --></help>
+        <label>Costo modificable</label>
+        <name>SBQQ__CostEditable__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cost record for this line item. --></help>
+        <label>Costo</label>
+        <name>SBQQ__Cost__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Customer unit price for the product quoted by this line item. This is the Net Unit Price excluding any partner discounts. --></help>
+        <label>Precio unitario de cliente</label>
+        <name>SBQQ__CustomerPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer total price for this quote line item. This is the Net Total excluding any partner discounts. --></help>
+        <label>Total de cliente</label>
+        <name>SBQQ__CustomerTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Term length of the subscription, which only applies if the product is a subscription. It is copied from the Subscription Term of the related product when the line item is first generated. --></help>
+        <label>Plazo de suscripción predeterminado</label>
+        <name>SBQQ__DefaultSubscriptionTerm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Description for this line item. --></help>
+        <label>Descripción</label>
+        <name>SBQQ__Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Dimensions within an MDQ Product that all each segment to be priced independently. Each Product may contain several Price Dimensions. Yearly Price Dimensions are treated as Subscriptions. --></help>
+        <label>Dimensión de precios</label>
+        <name>SBQQ__Dimension__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Discount schedule type. Copied from Type field in associated discount schedule. --></help>
+        <label>Tipo de programación de descuentos</label>
+        <name>SBQQ__DiscountScheduleType__c</name>
+        <picklistValues>
+            <masterLabel>Range</masterLabel>
+            <translation><!-- Range --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slab</masterLabel>
+            <translation><!-- Slab --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Specify discounts in terms of % or Amt to be discounted off the product&apos;s price using quantity purchased or term. Set quantity/term ranges in tiers of different discount %. Discount is applied to List Price &amp; resulting total is stored in the Regular Price --></help>
+        <label>Programación de descuentos</label>
+        <name>SBQQ__DiscountSchedule__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Discount tier used by this line item. This field is only populated if a volume discount was applied and the discount schedule is of type &quot;Range&quot;. --></help>
+        <label>Nivel de descuentos</label>
+        <name>SBQQ__DiscountTier__c</name>
+        <relationshipLabel>Partidas de presupuesto (Con descuento por volumen)</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Additional customer discount extended to this line item expressed in form of a percentage. --></help>
+        <label>Descuento adicional (%)</label>
+        <name>SBQQ__Discount__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is a discount that is applied to partner price and reflected in the net price. --></help>
+        <label>Descuento de distribuidor</label>
+        <name>SBQQ__DistributorDiscount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Identifies feature and dynamic option for this line. --></help>
+        <label>Id. de Opción dinámica</label>
+        <name>SBQQ__DynamicOptionId__c</name>
+    </fields>
+    <fields>
+        <help><!-- The earliest valid start date for this amendment quote line. --></help>
+        <label>Fecha inicio corrección válida reciente</label>
+        <name>SBQQ__EarliestValidAmendmentStartDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Effective end date for this subscription. --></help>
+        <label>Fecha de finalización de vigencia</label>
+        <name>SBQQ__EffectiveEndDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Effective quantity used in computing totals. Same as quantity unless the product is block priced, covered by &quot;Slab&quot; discount schedule, or an existing subscription. --></help>
+        <label>Cantidad vigente</label>
+        <name>SBQQ__EffectiveQuantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Effective start date for this subscription. --></help>
+        <label>Fecha de inicio de vigencia</label>
+        <name>SBQQ__EffectiveStartDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Effective term for this subscription. --></help>
+        <label>Plazo de suscripción vigente</label>
+        <name>SBQQ__EffectiveSubscriptionTerm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date the service represented by this line item will end (only applies if product is a subscription). --></help>
+        <label>Fecha de finalización</label>
+        <name>SBQQ__EndDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates the customer already owns this product. This is typically used for products with options during add-on quoting. The product is on the quote solely to drive the Configurator. --></help>
+        <label>Existente</label>
+        <name>SBQQ__Existing__c</name>
+    </fields>
+    <fields>
+        <help><!-- Favorite to which this Quote Line belongs. --></help>
+        <label>Favorito</label>
+        <name>SBQQ__Favorite__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Will generate a contracted price based on the adjusted quote line if flagged. --></help>
+        <label>Generar precio contratado</label>
+        <name>SBQQ__GenerateContractedPrice__c</name>
+        <picklistValues>
+            <masterLabel>Discount Schedule</masterLabel>
+            <translation><!-- Discount Schedule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do Not Generate</masterLabel>
+            <translation><!-- Do Not Generate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price</masterLabel>
+            <translation><!-- Price --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Gross profit amount on this line item. --></help>
+        <label>Beneficio bruto</label>
+        <name>SBQQ__GrossProfit__c</name>
+    </fields>
+    <fields>
+        <help><!-- Group to which this line belongs, if any. --></help>
+        <label>Grupo</label>
+        <name>SBQQ__Group__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Ideal low-range discount based on past sales. If sales reps accept this pricing guidance, Salesforce CPQ applies a discount to reach this price. --></help>
+        <label>Orientación</label>
+        <name>SBQQ__Guidance__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if this line has at least one consumption schedule --></help>
+        <label>Tiene programaciones de consumo</label>
+        <name>SBQQ__HasConsumptionSchedule__c</name>
+    </fields>
+    <fields>
+        <help><!-- Denotes whether this line item is hidden in generated PDF documents. --></help>
+        <label>Oculta</label>
+        <name>SBQQ__Hidden__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flag set internally by application logic when a line is saved to an incomplete database. This may happen when price rules are evaluated. Test this field in validation rules to avoid them firing prematurely. Do NOT add to page layout or otherwise update. --></help>
+        <label>Incompleta</label>
+        <name>SBQQ__Incomplete__c</name>
+    </fields>
+    <fields>
+        <help><!-- List unit price for the product quoted by this line item. List Price originates from the price book. --></help>
+        <label>Precio unitario de lista</label>
+        <name>SBQQ__ListPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- List total price for this quote line item. --></help>
+        <label>Total de lista</label>
+        <name>SBQQ__ListTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Markup amount for this line item. --></help>
+        <label>Sobreprecio (importe)</label>
+        <name>SBQQ__MarkupAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Markup on this line item expressed as a percentage. --></help>
+        <label>Sobreprecio (%)</label>
+        <name>SBQQ__MarkupRate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Markup amount on this item. This value is automatically calculated by applying markup rate or absolute amount to the product cost. --></help>
+        <label>Marcado</label>
+        <name>SBQQ__Markup__c</name>
+    </fields>
+    <fields>
+        <help><!-- Maximum list unit price for this product. Used to enforce list price ceiling for products with dynamically calculated list prices. --></help>
+        <label>Precio unitario de lista máximo</label>
+        <name>SBQQ__MaximumPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Minimum list unit price for this product. Used to enforce list price floor for products with dynamically calculated list prices. --></help>
+        <label>Precio unitario de lista mínimo</label>
+        <name>SBQQ__MinimumPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Net unit price for the product quoted by this line item. --></help>
+        <label>Precio unitario neto</label>
+        <name>SBQQ__NetPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Net total price for this quote line item. --></help>
+        <label>Total neto</label>
+        <name>SBQQ__NetTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Marks this line item as non-discountable. --></help>
+        <label>Sin descuento</label>
+        <name>SBQQ__NonDiscountable__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the checkbox to make this line item non discountable for partners. --></help>
+        <label>Sin descuento de socio</label>
+        <name>SBQQ__NonPartnerDiscountable__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number indicating this line&apos;s position within its group or quote. --></help>
+        <label>Número</label>
+        <name>SBQQ__Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Discount extended on this product because it&apos;s part of a package. --></help>
+        <label>Descuento de opción (importe)</label>
+        <name>SBQQ__OptionDiscountAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- If this line is for an optional SKU, this field captures any discount given to the package and extended to the option. --></help>
+        <label>Descuento de opción (%)</label>
+        <name>SBQQ__OptionDiscount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates nest level of this option (only applies to lines that are generated from options). --></help>
+        <label>Nivel de opción</label>
+        <name>SBQQ__OptionLevel__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates the Option Type, which is copied from related Product Option. Determines how quantity is calculated. --></help>
+        <label>Tipo de opción</label>
+        <name>SBQQ__OptionType__c</name>
+        <picklistValues>
+            <masterLabel>Accessory</masterLabel>
+            <translation><!-- Accessory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Component</masterLabel>
+            <translation><!-- Component --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Related Product</masterLabel>
+            <translation><!-- Related Product --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Marks this line as optional. Optional line items don&apos;t contribute to quote totals and are not transferred to the Opportunity. --></help>
+        <label>Opcional</label>
+        <name>SBQQ__Optional__c</name>
+    </fields>
+    <fields>
+        <help><!-- The original unit price for the product quoted by this line item.  Original Price originates from the price book. --></help>
+        <label>Precio original</label>
+        <name>SBQQ__OriginalPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- The id of the original quote line which this line was derived from. --></help>
+        <label>Id. de Partida de presupuesto original</label>
+        <name>SBQQ__OriginalQuoteLineId__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cost for one unit of product quoted on this line item if Cost Schedules were not applied. --></help>
+        <label>Costo unitario original</label>
+        <name>SBQQ__OriginalUnitCost__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total cost for this package including the cost of its components. --></help>
+        <label>Costo de paquete</label>
+        <name>SBQQ__PackageCost__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total list price of this package including its components. --></help>
+        <label>Total de lista de paquete</label>
+        <name>SBQQ__PackageListTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- A code listing each of this package&apos;s components based on their component codes. --></help>
+        <label>Código de producto del paquete</label>
+        <name>SBQQ__PackageProductCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- A description of each component in this package. --></help>
+        <label>Descripción de producto del paquete</label>
+        <name>SBQQ__PackageProductDescription__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total price of this package including its components. --></help>
+        <label>Total de paquete</label>
+        <name>SBQQ__PackageTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- If your organization sells through a channel/VARI, a Partner Discount on a quote or individual product line item can be given. Partner discounts are applied after all automatic and discretionary discounts. --></help>
+        <label>Descuento de socio</label>
+        <name>SBQQ__PartnerDiscount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner unit price. Price after partner discount but before distributor discount. --></help>
+        <label>Precio unitario de socios</label>
+        <name>SBQQ__PartnerPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total of the Partner Discount. --></help>
+        <label>Total de socios</label>
+        <name>SBQQ__PartnerTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- When set, this value takes the place of the previous segment&apos;s regular price when calculating Uplift for this segment. --></help>
+        <label>Precio normal de segmento anterior</label>
+        <name>SBQQ__PreviousSegmentPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- When set, this value takes the place of the previous segment&apos;s uplift amount when calculating Uplift for this segment. --></help>
+        <label>Incremento de segmento anterior</label>
+        <name>SBQQ__PreviousSegmentUplift__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flag that indicates if price is editable for this line item. --></help>
+        <label>Precio modificable</label>
+        <name>SBQQ__PriceEditable__c</name>
+    </fields>
+    <fields>
+        <label>Id. de Entrada de lista de precios</label>
+        <name>SBQQ__PricebookEntryId__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flag indicating if this line item&apos;s price is editable. --></help>
+        <label>Método de precios modificable</label>
+        <name>SBQQ__PricingMethodEditable__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates how the price for this line item is calculated. &quot;List&quot; = subtracting discount from list price. &quot;Cost&quot; = adding markup to cost. --></help>
+        <label>Método de precios</label>
+        <name>SBQQ__PricingMethod__c</name>
+        <picklistValues>
+            <masterLabel>Block</masterLabel>
+            <translation><!-- Block --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost</masterLabel>
+            <translation><!-- Cost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom</masterLabel>
+            <translation><!-- Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>List</masterLabel>
+            <translation><!-- List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percent Of Total</masterLabel>
+            <translation><!-- Percent Of Total --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Combined quantity of this product from prior purchases. --></help>
+        <label>Cantidad anterior</label>
+        <name>SBQQ__PriorQuantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Code for the product referenced by this line. --></help>
+        <label>Código del producto</label>
+        <name>SBQQ__ProductCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- How you would categorize/group/organize this within Salesforce (whether it&apos;s a new or existing Product Family). Additionally, this field can be used during product selection to filter to the correct product or product SKU. --></help>
+        <label>Familia de productos</label>
+        <name>SBQQ__ProductFamily__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name for the product referenced by this line item. --></help>
+        <label>Nombre del producto</label>
+        <name>SBQQ__ProductName__c</name>
+    </fields>
+    <fields>
+        <help><!-- Product option that generated this line (if any). --></help>
+        <label>Opción de producto</label>
+        <name>SBQQ__ProductOption__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Set the quote line&apos;s product subscription type. --></help>
+        <label>Tipo de suscripción de producto</label>
+        <name>SBQQ__ProductSubscriptionType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Product quoted by this line item. --></help>
+        <label>Producto</label>
+        <name>SBQQ__Product__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Calculated ratio used to compute Prorated Price. --></help>
+        <label>Multiplicador de prorrateo</label>
+        <name>SBQQ__ProrateMultiplier__c</name>
+    </fields>
+    <fields>
+        <help><!-- Prorated list unit price. --></help>
+        <label>Precio de lista prorrateado</label>
+        <name>SBQQ__ProratedListPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Prorated price for the product quoted by this line item. This price will only differ from Special Price if the product is a subscription and the line item is being prorated. --></help>
+        <label>Precio unitario prorrateado</label>
+        <name>SBQQ__ProratedPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quantity being quoted. --></help>
+        <label>Cantidad</label>
+        <name>SBQQ__Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Quote to which this line item belongs. --></help>
+        <label>Presupuesto</label>
+        <name>SBQQ__Quote__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Unit price before additional discount. --></help>
+        <label>Precio unitario normal</label>
+        <name>SBQQ__RegularPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unit price before additional discount multiplied by quantity. --></help>
+        <label>Total normal</label>
+        <name>SBQQ__RegularTotal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates this line item represents a product being renewed. This field should not be modified. --></help>
+        <label>Renovación</label>
+        <name>SBQQ__Renewal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Asset being renewed if this line item represents product renewal. --></help>
+        <label>Activo renovado</label>
+        <name>SBQQ__RenewedAsset__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Subscription being renewed by this quote line. --></help>
+        <label>Suscripción renovada</label>
+        <name>SBQQ__RenewedSubscription__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Indicates which other product on this quote requires it. --></help>
+        <label>Requerido por</label>
+        <name>SBQQ__RequiredBy__c</name>
+        <relationshipLabel>Partidas de presupuesto</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- For multi-segmented Products, Index representing this Quote Line&apos;s position in the segment table. --></help>
+        <label>Índice de segmento</label>
+        <name>SBQQ__SegmentIndex__c</name>
+    </fields>
+    <fields>
+        <help><!-- For multi-segmented Products, this is a shared key used to group multi-dimensional Quote Lines together. --></help>
+        <label>Clave de segmento</label>
+        <name>SBQQ__SegmentKey__c</name>
+    </fields>
+    <fields>
+        <help><!-- For multi-segmented Products, this is the Column header label (e.g. &quot;Year 1&quot;) associated with this line. --></help>
+        <label>Etiqueta de segmento</label>
+        <name>SBQQ__SegmentLabel__c</name>
+    </fields>
+    <fields>
+        <help><!-- Source of cloned quote line. --></help>
+        <label>Origen</label>
+        <name>SBQQ__Source__c</name>
+        <relationshipLabel>Partidas de presupuesto (Origen)</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Name of the Discount Tier or Contacted Price applied to achieve the special price for this line item. --></help>
+        <label>Descripción de precio especial</label>
+        <name>SBQQ__SpecialPriceDescription__c</name>
+    </fields>
+    <fields>
+        <help><!-- Stores the type of special price offered on this line item. Null value indicates there is no special pricing. --></help>
+        <label>Tipo de precio especial</label>
+        <name>SBQQ__SpecialPriceType__c</name>
+        <picklistValues>
+            <masterLabel>Contracted Price</masterLabel>
+            <translation><!-- Contracted Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom</masterLabel>
+            <translation><!-- Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation><!-- Renewal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Special unit price for this line item, such as volume discount or contracted price. --></help>
+        <label>Precio especial</label>
+        <name>SBQQ__SpecialPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the subscription for this product begins. --></help>
+        <label>Fecha de inicio</label>
+        <name>SBQQ__StartDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- List of assets covered by this subscription line item. Do not update unless instructed. --></help>
+        <label>Identificadores de activos suscritos</label>
+        <name>SBQQ__SubscribedAssetIds__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines whether Percent of Total is calculated off List or Net product prices. --></help>
+        <label>Base del porcentaje del total</label>
+        <name>SBQQ__SubscriptionBase__c</name>
+    </fields>
+    <fields>
+        <help><!-- Category defined on the product to limit percent-of-total calculations to certain products. Copied from the product record. --></help>
+        <label>Porcentaje del total de categoría</label>
+        <name>SBQQ__SubscriptionCategory__c</name>
+        <picklistValues>
+            <masterLabel>Hardware</masterLabel>
+            <translation><!-- Hardware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software</masterLabel>
+            <translation><!-- Software --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Percent of Total to be used when calculating this line item price. --></help>
+        <label>Porcentaje del total (%)</label>
+        <name>SBQQ__SubscriptionPercent__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates how the subscription price is calculated. If this is blank, the line items is not a subscription product. --></help>
+        <label>Precio de suscripción</label>
+        <name>SBQQ__SubscriptionPricing__c</name>
+        <picklistValues>
+            <masterLabel>Fixed Price</masterLabel>
+            <translation><!-- Fixed Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percent Of Total</masterLabel>
+            <translation><!-- Percent Of Total --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Indicates how percent of total prices are calculated: Quote uses all the non-subscription and include in percent of total products in the quote while Group uses only non-subscription products and include in percent of total products in the same group. --></help>
+        <label>Ámbito de porcentaje del total</label>
+        <name>SBQQ__SubscriptionScope__c</name>
+        <picklistValues>
+            <masterLabel>Group</masterLabel>
+            <translation><!-- Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote</masterLabel>
+            <translation><!-- Quote --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Price of the target product on which percent of total should calculate. --></help>
+        <label>Porcentaje de total de precio de destino</label>
+        <name>SBQQ__SubscriptionTargetPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Term for this subscription. If this product is not a subscription this value has no effect. --></help>
+        <label>Plazo de suscripción</label>
+        <name>SBQQ__SubscriptionTerm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates the subscription type to determine contract&apos;s pricing. --></help>
+        <label>Tipo de suscripción</label>
+        <name>SBQQ__SubscriptionType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specifies the tax code for taxation rules. --></help>
+        <label>Código impositivo</label>
+        <name>SBQQ__TaxCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if the line item is taxable --></help>
+        <label>Imponible</label>
+        <name>SBQQ__Taxable__c</name>
+    </fields>
+    <fields>
+        <help><!-- Schedule for discounts based on subscription term. Setting this to &quot;Group&quot; applies the discount rate for the group term, while setting it to &quot;Quote&quot; applies the discount rate for the entire quote term, regardless of the different terms in your groups. --></help>
+        <label>Programación de descuentos por plazo</label>
+        <name>SBQQ__TermDiscountSchedule__c</name>
+        <relationshipLabel>Partidas de presupuesto (Con descuento por plazo)</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Tier within the term discount schedule used to discount this line item. --></help>
+        <label>Nivel de descuentos por plazo</label>
+        <name>SBQQ__TermDiscountTier__c</name>
+        <relationshipLabel>Partidas de presupuesto (Con descuento por plazo)</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Discount calculated by applying subscription term against term discount schedule. --></help>
+        <label>Descuento por plazo</label>
+        <name>SBQQ__TermDiscount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total discount amount for this line item including volume discount, contracted discount, and additional discount. --></help>
+        <label>Descuento total (importe)</label>
+        <name>SBQQ__TotalDiscountAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total discount for this line item including volume discount, contracted discount, and additional discount. --></help>
+        <label>Descuento total (%)</label>
+        <name>SBQQ__TotalDiscountRate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cost for one unit of product quoted on this line item. --></help>
+        <label>Costo unitario</label>
+        <name>SBQQ__UnitCost__c</name>
+    </fields>
+    <fields>
+        <help><!-- The full term net price for individual line. --></help>
+        <label>Precio neto sin prorratear</label>
+        <name>SBQQ__UnproratedNetPrice__c</name>
+    </fields>
+    <fields>
+        <help><!-- Asset being upgraded by this quote line. When the quote is contracted this asset will have its Usage End Date populated to indicate it&apos;s retired. --></help>
+        <label>Activo mejorado</label>
+        <name>SBQQ__UpgradedAsset__c</name>
+        <relationshipLabel>Partidas de presupuesto (Mejora)</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Portion of this line&apos;s Prior Quantity being upgraded to another product. --></help>
+        <label>Cantidad mejorada</label>
+        <name>SBQQ__UpgradedQuantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Subscription being upgraded by this quote line. When the quote is contracted this subscription will have its Terminated Date field populated. --></help>
+        <label>Suscripción mejorada</label>
+        <name>SBQQ__UpgradedSubscription__c</name>
+        <relationshipLabel>Partidas de presupuesto (Mejora)</relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Uplift (Amt) is measured as a currency amount. This is a system-calculated field, as Uplift can only be applied to MDQ segments in percent. --></help>
+        <label>Incremento (Importe)</label>
+        <name>SBQQ__UpliftAmount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Uplift is applied as a % against the previous year&apos;s price; the resulting price is entered into the Regular Price field on top of Special or Contracted Prices. Uplifts compound year after year. Uplift cannot be applied to the 1st Year of any Subscription. --></help>
+        <label>Incremento</label>
+        <name>SBQQ__Uplift__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specify volume discounts based on a % of the product&apos;s price to be discounted using the quantity purchased or term. You can set the quantity or term ranges in tiers of different discount %. You can also apply discount schedules to Subscription Term. --></help>
+        <label>Descuento por volumen</label>
+        <name>SBQQ__VolumeDiscount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Broken Cost Check --></label>
+        <name>core_cpq_Broken_Cost_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last DM% Refresh Date --></label>
+        <name>core_cpq_Last_DM_Refresh_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN Concatenation --></label>
+        <name>core_cpq_OPN_Concatenation_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Restricted Product --></label>
+        <name>core_cpq_PSG_Restricted_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Quote Flag for quote documents --></label>
+        <name>core_cpq_Parent_Quote_Flag_for_documen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>core_cpq_Tool_Type__c</name>
+        <picklistValues>
+            <masterLabel>ADD SEAT</masterLabel>
+            <translation><!-- ADD SEAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BASE</masterLabel>
+            <translation><!-- BASE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BUNDLE</masterLabel>
+            <translation><!-- BUNDLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORPORATE</masterLabel>
+            <translation><!-- CORPORATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HARD ALLOCATION</masterLabel>
+            <translation><!-- HARD ALLOCATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP</masterLabel>
+            <translation><!-- IP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PACKAGE</masterLabel>
+            <translation><!-- PACKAGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RENEWAL</masterLabel>
+            <translation><!-- RENEWAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOC</masterLabel>
+            <translation><!-- SOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOFT ALLOCATION</masterLabel>
+            <translation><!-- SOFT ALLOCATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOFTWARE</masterLabel>
+            <translation><!-- SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Above MSVP L2 --></label>
+        <name>core_cpq_above_msvp_l2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>core_cpq_account_nm__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Action --></label>
+        <name>core_cpq_action_txt__c</name>
+        <picklistValues>
+            <masterLabel>Add</masterLabel>
+            <translation><!-- Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delete</masterLabel>
+            <translation><!-- Delete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edit</masterLabel>
+            <translation><!-- Edit --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Active Pricing --></label>
+        <name>core_cpq_active_Pricing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Altera Internal Comments --></label>
+        <name>core_cpq_altera_internal_comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reg # --></label>
+        <name>core_cpq_altera_reg_number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel PSG Registration Number --></label>
+        <name>core_cpq_altera_reg_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- AuthCode Product --></label>
+        <name>core_cpq_authcode_product_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- $Change flag --></label>
+        <name>core_cpq_change_flag_for_reporting__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments for Customer --></label>
+        <name>core_cpq_comments_for_customer_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments for Disty --></label>
+        <name>core_cpq_comments_for_disty_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Comments --></label>
+        <name>core_cpq_comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor --></label>
+        <name>core_cpq_competitor_name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Part --></label>
+        <name>core_cpq_competitor_part_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Price --></label>
+        <name>core_cpq_competitor_price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product --></label>
+        <name>core_cpq_competitor_product_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Config Disty Margin% --></label>
+        <name>core_cpq_config_dm_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract End Date --></label>
+        <name>core_cpq_contract_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Start Date --></label>
+        <name>core_cpq_contract_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contracted Price_t --></label>
+        <name>core_cpq_contracted_price__c</name>
+        <relationshipLabel><!-- Quote Lines (Contracted Price) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Design Reg No --></label>
+        <name>core_cpq_design_reg_no_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Reg Status --></label>
+        <name>core_cpq_design_reg_status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Product --></label>
+        <lookupFilter>
+            <errorMessage><!-- Invalid Design Registration Product has been selected on QL. Please select a valid Design Registration Product. --></errorMessage>
+        </lookupFilter>
+        <name>core_cpq_design_registration_product__c</name>
+        <relationshipLabel><!-- Quote Lines --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Price Guidance: DWIN Convertibility? --></label>
+        <name>core_cpq_design_win_convertible__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason For Not Using Price Guidance --></label>
+        <name>core_cpq_disregarding_price_guidance__c</name>
+        <picklistValues>
+            <masterLabel>Competitor pricing</masterLabel>
+            <translation><!-- Competitor pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not suitable for this OPN/QL type</masterLabel>
+            <translation><!-- Not suitable for this OPN/QL type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Guidance inconsistency</masterLabel>
+            <translation><!-- Price Guidance inconsistency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Guidance is too high</masterLabel>
+            <translation><!-- Price Guidance is too high --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Guidance is too low</masterLabel>
+            <translation><!-- Price Guidance is too low --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disti Margin Changed --></label>
+        <name>core_cpq_disti_margin_changed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Margin % OnLoad --></label>
+        <name>core_cpq_disti_margin_onload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti % --></label>
+        <name>core_cpq_disti_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Margin % --></label>
+        <name>core_cpq_distributor_margin_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor Margin Type --></label>
+        <name>core_cpq_distributor_margin_type__c</name>
+        <picklistValues>
+            <masterLabel>Farmer</masterLabel>
+            <translation><!-- Farmer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hunter</masterLabel>
+            <translation><!-- Hunter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual</masterLabel>
+            <translation><!-- Manual --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disty Margin Difference --></label>
+        <name>core_cpq_disty_margin_difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Value Add --></label>
+        <name>core_cpq_disty_value_add_dpa__c</name>
+    </fields>
+    <fields>
+        <label><!-- $ Change Flag --></label>
+        <name>core_cpq_dollar_change_flag_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- EOL Flag --></label>
+        <name>core_cpq_eol_flag_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments from Disty --></label>
+        <name>core_cpq_external_comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- FollowOnProcess --></label>
+        <name>core_cpq_follow_on_process_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Price --></label>
+        <name>core_cpq_goal_price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- GP - MSVPL2 --></label>
+        <name>core_cpq_gp_msvpl2_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>core_cpq_inactive_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Margin Difference --></label>
+        <name>core_cpq_intel_margin_difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Margin % --></label>
+        <name>core_cpq_intel_margin_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Routing --></label>
+        <name>core_cpq_intel_rounting_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Comments --></label>
+        <name>core_cpq_internal_comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Justification --></label>
+        <name>core_cpq_justification_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- QL # --></label>
+        <name>core_cpq_line_name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Low Yield --></label>
+        <name>core_cpq_low_yield_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lower Bound Qty --></label>
+        <name>core_cpq_lower_bound_qty_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Margin Exception --></label>
+        <name>core_cpq_margin_exception_txt__c</name>
+        <picklistValues>
+            <masterLabel>Budgetary</masterLabel>
+            <translation><!-- Budgetary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Exception</masterLabel>
+            <translation><!-- Channel Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Supply Program</masterLabel>
+            <translation><!-- Direct Supply Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Margin Plan Compliance</masterLabel>
+            <translation><!-- Margin Plan Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TQ DDR Transfer</masterLabel>
+            <translation><!-- TQ DDR Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Master DDR# --></label>
+        <name>core_cpq_master_ddr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum Qty --></label>
+        <name>core_cpq_minimum_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSVP L2 - approvals --></label>
+        <name>core_cpq_msvpl2_approval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multiple Qty --></label>
+        <name>core_cpq_multiple_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Quote Number --></label>
+        <name>core_cpq_navigate_to_dw__c</name>
+    </fields>
+    <fields>
+        <label><!-- Part Number --></label>
+        <name>core_cpq_opn__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPN Active --></label>
+        <name>core_cpq_opn_active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Orderable_t --></label>
+        <name>core_cpq_orderable_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Orderable Flag --></label>
+        <name>core_cpq_orderable_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>core_cpq_origin_txt__c</name>
+        <picklistValues>
+            <masterLabel>BulkUpload</masterLabel>
+            <translation><!-- BulkUpload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dataload</masterLabel>
+            <translation><!-- Dataload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct</masterLabel>
+            <translation><!-- Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disty</masterLabel>
+            <translation><!-- Disty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oppty</masterLabel>
+            <translation><!-- Oppty --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Parent Quote --></label>
+        <name>core_cpq_parent_quote__c</name>
+        <relationshipLabel><!-- Quote Lines (PSG Parent Quote) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Quote Active Flag --></label>
+        <name>core_cpq_parent_quote_active_flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Quote_t --></label>
+        <name>core_cpq_parent_quote_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Peak Annual Resale calculation --></label>
+        <name>core_cpq_peak_annual_resale_calculation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Peak Annual Resale Difference --></label>
+        <name>core_cpq_peak_annual_resale_difference__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG % --></label>
+        <name>core_cpq_percentage_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous PRID --></label>
+        <name>core_cpq_previous_PRID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Distributor Margin % --></label>
+        <name>core_cpq_previous_distributor_margin_pct__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Lower Bound Qty --></label>
+        <name>core_cpq_previous_lower_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Disty Margin Exception --></label>
+        <name>core_cpq_previous_margin_exception_txt__c</name>
+        <picklistValues>
+            <masterLabel>Budgetary</masterLabel>
+            <translation><!-- Budgetary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Exception</masterLabel>
+            <translation><!-- Channel Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Supply Program</masterLabel>
+            <translation><!-- Direct Supply Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Margin Plan Compliance</masterLabel>
+            <translation><!-- Margin Plan Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TQ DDR Transfer</masterLabel>
+            <translation><!-- TQ DDR Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Previous Quantity --></label>
+        <name>core_cpq_previous_quantity_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Upper Bound Qty --></label>
+        <name>core_cpq_previous_upper_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Eligibility Date --></label>
+        <name>core_cpq_price_eligibility_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price End Date --></label>
+        <name>core_cpq_pricing_end_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Parent Account Id --></label>
+        <name>core_cpq_pricing_parent_account_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Start Date --></label>
+        <name>core_cpq_pricing_start_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Change Alert  --></label>
+        <name>core_cpq_prid_alert__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family_t --></label>
+        <name>core_cpq_product_family_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>core_cpq_product_family_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Hierarchy --></label>
+        <name>core_cpq_product_hierarchy_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>core_cpq_product_nm__c</name>
+        <relationshipLabel><!-- Quote Lines (Product) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Production Date --></label>
+        <name>core_cpq_production_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- QCP Error --></label>
+        <name>core_cpq_qcp_error_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>core_cpq_quantity_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Active --></label>
+        <name>core_cpq_quote_active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- QL type --></label>
+        <name>core_cpq_quote_line_type_document__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Line Type --></label>
+        <name>core_cpq_quote_line_type_txt__c</name>
+        <picklistValues>
+            <masterLabel>Flat</masterLabel>
+            <translation><!-- Flat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prototype</masterLabel>
+            <translation><!-- Prototype --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qty Limited</masterLabel>
+            <translation><!-- Qty Limited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Step</masterLabel>
+            <translation><!-- Step --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Time Limited</masterLabel>
+            <translation><!-- Time Limited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VTP</masterLabel>
+            <translation><!-- VTP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Type --></label>
+        <name>core_cpq_quote_type__c</name>
+        <picklistValues>
+            <masterLabel>Contract Pricing</masterLabel>
+            <translation><!-- Contract Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Win</masterLabel>
+            <translation><!-- Design Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer Pricing</masterLabel>
+            <translation><!-- Transfer Pricing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reg Number --></label>
+        <name>core_cpq_reg_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reg Status --></label>
+        <name>core_cpq_reg_status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retired</masterLabel>
+            <translation><!-- Retired --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Registerable Flag --></label>
+        <name>core_cpq_registerable_flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested Qty --></label>
+        <name>core_cpq_requested_qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resale Guidance --></label>
+        <name>core_cpq_resale_guidance__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Review Date --></label>
+        <name>core_cpq_review_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRID Reviewer --></label>
+        <name>core_cpq_reviewer__c</name>
+        <relationshipLabel><!-- Quote Lines (PRID Reviewer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Revision Number --></label>
+        <name>core_cpq_revision_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision reason --></label>
+        <name>core_cpq_revision_reason_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revision Request --></label>
+        <name>core_cpq_revision_request_category_nm__c</name>
+        <picklistValues>
+            <masterLabel>Add</masterLabel>
+            <translation><!-- Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change</masterLabel>
+            <translation><!-- Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Choose Category</masterLabel>
+            <translation><!-- Choose Category --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Loss</masterLabel>
+            <translation><!-- Loss --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Altera Part</masterLabel>
+            <translation><!-- Other Altera Part --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win</masterLabel>
+            <translation><!-- Win --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Visible --></label>
+        <name>core_cpq_sales_visible_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Parent Name --></label>
+        <name>core_cpq_sap_ecp_nm__c</name>
+        <relationshipLabel><!-- Quote Lines (SAP End Customer Parent) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Select QL --></label>
+        <name>core_cpq_select_ql_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Start Date --></label>
+        <name>core_cpq_ship_start_for_dpa__c</name>
+    </fields>
+    <fields>
+        <label><!-- Low Yield --></label>
+        <name>core_cpq_smi_flag_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Date --></label>
+        <name>core_cpq_status_date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sum of IM-DM-PAS Diff --></label>
+        <name>core_cpq_sum_dm_im_pas_diff__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tools NC BM Routing Check --></label>
+        <name>core_cpq_tools_nc_bm_routing_check__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Id --></label>
+        <name>core_cpq_unique_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Dist % --></label>
+        <name>core_cpq_update_dist_percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upper Bound Qty --></label>
+        <name>core_cpq_upper_bound_qty_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Years --></label>
+        <name>core_cpq_years_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Quote Line Type --></label>
+        <name>previous_core_cpq_quote_line_type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Broken Cost --></label>
+        <name>price_broken_cost_cp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Broken Cost --></label>
+        <name>price_brokencost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Cost --></label>
+        <name>price_disty_cost_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disty Margin $ --></label>
+        <name>price_disty_margin_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Price --></label>
+        <name>price_goal_price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Margin $ --></label>
+        <name>price_intel_margin_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSVP L1 --></label>
+        <name>price_msvp_l1_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSVP L2 --></label>
+        <name>price_msvp_l2_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Peak Annual Resale --></label>
+        <name>price_peak_annual_resale_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous BrokenCost Amt --></label>
+        <name>price_previous_brokencost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Goal Price --></label>
+        <name>price_previous_goal_price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Suggested Resale --></label>
+        <name>price_previous_suggested_resale_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested Resale --></label>
+        <name>price_requested_resale_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fwd Cost --></label>
+        <name>price_std_fwd_cost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suggested Resale --></label>
+        <name>price_suggested_resale_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- TDP --></label>
+        <name>pricing_TDP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Count --></label>
+        <name>pricing_core_count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System Id --></label>
+        <name>src_sys_id__c</name>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Nombre de partida</nameFieldLabel>
+    <recordTypes>
+        <description><!-- PSG records types for new quote line --></description>
+        <label><!-- PSG Quote Line - Create --></label>
+        <name>PSG_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- PSG records types for read only fields --></description>
+        <label><!-- PSG Quote Line - Read Only --></label>
+        <name>PSG_Quote_Line_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents PSG Quotes lines in submitted state. --></description>
+        <label><!-- PSG Quote Line - Submitted --></label>
+        <name>PSG_Quote_Line_Submitted</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Client Quote Line in Create Status --></description>
+        <label><!-- Client --></label>
+        <name>Pricing_Client_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Data Center GPU Quote Line in Create Status --></description>
+        <label><!-- Data Center GPU --></label>
+        <name>Pricing_Data_Center_GPU_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Financial IncentiveTender Quote Line in Edit Status --></description>
+        <label><!-- Pricing Financial Incentive Quote Line - Edit --></label>
+        <name>Pricing_Financial_Incentive_Quote_Line_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Financial Incentive Tender Quote Line in ReadOnly Status --></description>
+        <label><!-- Pricing Financial Incentive Quote Line - Read Only --></label>
+        <name>Pricing_Financial_Incentive_Quote_Line_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Ethernet Quote Line in Create Status --></description>
+        <label><!-- Ethernet --></label>
+        <name>Pricing_NIC_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Optane™ PMem Quote Line in Create Status --></description>
+        <label><!-- Optane™ PMem --></label>
+        <name>Pricing_PMem_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Optane™ SSD Quote Line in Create Status --></description>
+        <label><!-- Optane™ SSD --></label>
+        <name>Pricing_SSD_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender SVD Quote Line in Create Status --></description>
+        <label><!-- Small Volume Quote Line --></label>
+        <name>Pricing_SVD_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender SVD Quote Line in Edit Status --></description>
+        <label><!-- Pricing SVD Quote Line - Edit --></label>
+        <name>Pricing_SVD_Quote_Line_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender SVD Quote Line in ReadOnly Status --></description>
+        <label><!-- Pricing SVD Quote Line - Read Only --></label>
+        <name>Pricing_SVD_Quote_Line_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender SVD Quote Line in Submitted Status --></description>
+        <label><!-- Pricing SVD Quote Line - Submitted --></label>
+        <name>Pricing_SVD_Quote_Line_Submitted</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote Line in Create Status --></description>
+        <label><!-- Standard Quote Line --></label>
+        <name>Pricing_Tender_Quote_Line_Create</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote Line in Edit Status --></description>
+        <label><!-- Pricing Tender Quote Line - Edit --></label>
+        <name>Pricing_Tender_Quote_Line_Edit</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote Line in ReadOnly Status --></description>
+        <label><!-- Pricing Tender Quote Line - ReadOnly --></label>
+        <name>Pricing_Tender_Quote_Line_ReadOnly</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Tender Quote Line in Submitted Status --></description>
+        <label><!-- Pricing Tender Quote Line - Submitted --></label>
+        <name>Pricing_Tender_Quote_Line_Submitted</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Software CPQ Quote Line --></description>
+        <label><!-- Software &amp; Services --></label>
+        <name>Software_Services_Quote_Line</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Contract Pricing for PSG Program. --></description>
+        <label><!-- PSG CP Quote Line --></label>
+        <name>psg_cp_quote_line</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing End Date has already passed. Please enter a Quote Line Pricing End Date in the future. --></errorMessage>
+        <name>End_date_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In Product&apos; is selected in the Competitor Product field, the name of the other product must be provided in the Write In Competitor Product field. --></errorMessage>
+        <name>Other_Competitor_Product_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for a Contract Pricing Quote. (Active = X, Quotable = X, Orderable = X, FPGA Product Type = &apos;Component&apos;) --></errorMessage>
+        <name>PSG_CP_Quote_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product Selected - DDR Product Density and Product Density is not matching --></errorMessage>
+        <name>PSG_DDR_Product_Density_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Lines cannot be edited for Approved or Inactive quotes. --></errorMessage>
+        <name>PSG_Disable_Edit_On_QLE_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a reason from Disty Margin Exception and proceed --></errorMessage>
+        <name>PSG_Distymarginexception_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product/Device  is not valid. Product/Device might be Inactive or may not be available for Quoting --></errorMessage>
+        <name>PSG_Orderable_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for Contract Pricing Quote (Active = X, Quotable = X, Orderable = X) 
+(Note: The only Tools product that can be added to Design Win Quotes are specific PAC Cards) --></errorMessage>
+        <name>PSG_Post_Release_Prod_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for Budgetary Quote (Active = X,  Quotable = X) --></errorMessage>
+        <name>PSG_Pre_Release_Prod_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Back Date cannot be set for Price Start Date --></errorMessage>
+        <name>PSG_Price_Start_Date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select PRID/Quote Line Type for the selected OPN --></errorMessage>
+        <name>PSG_Pricing_Type_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Device is not Quotable --></errorMessage>
+        <name>PSG_Quotable_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Record cannot be created or edited during Freeze Period! --></errorMessage>
+        <name>PSG_Restrict_Quote_Line_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You Don&apos;t Have Edit Permission for Quotes in &apos;In Review&apos; Status. Recall the Quote to proceed. --></errorMessage>
+        <name>PSG_SOS_IN_Review_Disable_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Product selected for Tools Quote(Active = X,  Quotable = X, Orderable = X, FPGA Product Type = &apos;Tool&apos;) --></errorMessage>
+        <name>PSG_Tools_Prod_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Transfer pricing quote should have a Parent Quote  associated  with it --></errorMessage>
+        <name>PSG_Transferpricing_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Price Eligibility Date for a product cannot be set with the past date. --></errorMessage>
+        <name>PSG_Validate_PED</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote line cannot be Edited while Quote is On Hold --></errorMessage>
+        <name>Preventing_Editing_of_Hold_QL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Market Segment Type, Market Segment, Group Type and Region cannot be edited after deal is created in My Deals. --></errorMessage>
+        <name>Pricing_AfterDeal_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Pricing Start Date cannot be edited for Won quote lines that are active (i.e. today is between Approved Pricing Start Date and Approved Pricing End Date) or  for a Approved/Won Past Deal. --></errorMessage>
+        <name>Pricing_ApprStartDtPastInflightWon_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Back Date Reason is mandatory when Approved Pricing Start Date is in the past. --></errorMessage>
+        <name>Pricing_ApproStartDtInflightFuture_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Pricing End Date cannot be earlier than Approved Pricing Start Date nor earlier than today. --></errorMessage>
+        <name>Pricing_ApproveEndDtInflightFuture_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Pricing End Date for a past deal must be the same as the reference quote line&apos;s Approved Pricing End Date or later. --></errorMessage>
+        <name>Pricing_ApproveEndDtPast_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved ECAP Price for a past deal cannot be edited. --></errorMessage>
+        <name>Pricing_ApprovedECAPPricePastDeal_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved ECAP Price cannot be less than or equal to zero. --></errorMessage>
+        <name>Pricing_ApprovedECAPprice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Pricing End Date has already passed. Please enter Approved Pricing End Date in the future. --></errorMessage>
+        <name>Pricing_ApprovedEndDate_Past_FI_Validate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Quantity must be greater than zero. --></errorMessage>
+        <name>Pricing_ApprovedQuantity_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Start Date, Approved End Date, Approved Quantity, Approved ECAP Price, Effective Pricing Start Date and Region cannot be edited except when quote line status is Pending Further Intel Review. --></errorMessage>
+        <name>Pricing_Approved_Field_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Back Date Reason can only be edited when Approved Pricing Start Date is in the past. --></errorMessage>
+        <name>Pricing_BackdateReason_Field_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Billing End Date must be greater than Billing Start Date. --></errorMessage>
+        <name>Pricing_BillingDate_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Billing End Date cannot be later than the Approved Pricing End Date. --></errorMessage>
+        <name>Pricing_Billing_End_Date_Error</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Billing Start Date cannot be later than Approved Pricing Start Date. --></errorMessage>
+        <name>Pricing_Billing_Start_Date_Error</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In Competitor Product field is used to provide the name of a product missing from the Competitor Product field. It must be blank unless the &apos;Write In Product&apos; option is selected in the Competitor Product field. --></errorMessage>
+        <name>Pricing_Comp_Write_In_Product_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Competitor Density must be greater than zero. --></errorMessage>
+        <name>Pricing_Competitor_Density_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Competitor Product is inactive. Please select a valid product. --></errorMessage>
+        <name>Pricing_Competitor_Product_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A selection can be made in either Consumption Country/Region or Customer Sales Geography, but cannot be both. Please correct --></errorMessage>
+        <name>Pricing_Consumption_Parameter_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- DRAM Density cannot be less than or equal to zero. --></errorMessage>
+        <name>Pricing_DRAM_Density_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective Pricing Start Date must be between Approved Pricing Start Date and Approved Pricing End Date and cannot be earlier than the Effective Pricing Start Date of the reference quote line. --></errorMessage>
+        <name>Pricing_EffPricingStartDtOnChange_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- My Deals Meet Comp Price and Effective Pricing Start Date cannot be modified without also modifying at least one of the following fields: Approved Pricing Start Date, Approved Pricing End Date, Approved ECAP Price, Approved Quantity, Payable Quantity. --></errorMessage>
+        <name>Pricing_EffStartDateMeetPriceOnCR_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective Pricing Start Date for a past deal cannot be edited. --></errorMessage>
+        <name>Pricing_EffectPricingStartDatePast_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective Pricing Start Date cannot be blank. --></errorMessage>
+        <name>Pricing_EffectiveStartDate_RequiredCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing End Date cannot be earlier than the Pricing Start Date. --></errorMessage>
+        <name>Pricing_End_date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In Competitor OEM Name&apos; is selected in the Competitor OEM Name field, the name of the unlisted Competitor OEM Name must be provided in the  Write In Competitor OEM Name field. --></errorMessage>
+        <name>Pricing_FI_Competitor_Product_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In OEM Name&apos; is selected in the OEM Name field, the name of the unlisted OEM Name must be provided in the Write In OEM Name field. --></errorMessage>
+        <name>Pricing_FI_Other_Product_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing Start Date has already passed. Please enter a Quote Line Pricing Start Date in the future. --></errorMessage>
+        <name>Pricing_FI_QL_Start_Date_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Line Pricing End Date cannot be Earlier than Quote Line Pricing Start Date. --></errorMessage>
+        <name>Pricing_FI_QuoteLine_End_Date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In Competitor OEM Name field is used to provide the name of a Competitor OEM missing from the Competitor OEM Name field. It must be blank unless the &apos; Write In Competitor OEM Name&apos; option is selected in the Competitor OEM Name field. --></errorMessage>
+        <name>Pricing_FI_WriteIn_OEMComp_Name_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In OEM Name field is used to provide the name of an OEM missing from the OEM Name field. It must be blank unless the &apos;Write In OEM Name&apos; option is selected in the OEM Name field. --></errorMessage>
+        <name>Pricing_FI_WriteIn_OEM_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Other&apos; is selected in the AI Recommendation Feedback field, feedback must be entered in the Reason for Feedback field. --></errorMessage>
+        <name>Pricing_FeedbackReason_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Intel Score and Comp Score must be greater than 0 --></errorMessage>
+        <name>Pricing_IntelScore_CompScore_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Write In Product field is used to provide the name of a product missing from the Product field. It must be blank unless the &apos;Write In Product&apos; option is selected in the Product field. --></errorMessage>
+        <name>Pricing_Intel_Write_In_Product_Restrict</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lost Reason can only be edited when Won/Lost Status is set to Lost. --></errorMessage>
+        <name>Pricing_LostReason_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- My Deals Meet Comp Price must be greater than $0. --></errorMessage>
+        <name>Pricing_MyDealsMeetCompPrice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No. of CPUs per system cannot be less than or equal to zero. --></errorMessage>
+        <name>Pricing_NumberofCPUperSystem_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No. of DRAM per System cannot be less than or equal to zero. --></errorMessage>
+        <name>Pricing_NumberofDRAMperSystem_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No. of Systems cannot be less than or equal to zero. --></errorMessage>
+        <name>Pricing_NumberofSystems_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No. of Units per system cannot be less than or equal to zero. --></errorMessage>
+        <name>Pricing_NumberofUnitperSystem_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos;Write In Product&apos; is selected in the Product field, the name of the unlisted product must be provided in the Write In Product field. --></errorMessage>
+        <name>Pricing_Other_Product_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Rebate Per Unit must be greater than 0. --></errorMessage>
+        <name>Pricing_Rebate_Per_Unit_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Requested Unit Price must be greater than zero. --></errorMessage>
+        <name>Pricing_ReqDiscountUnitPrice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Small Volume Quote Line creation is no longer supported. --></errorMessage>
+        <name>Pricing_Restrict_New_SVD_QuoteLines</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity must be greater than zero. --></errorMessage>
+        <name>Pricing_SSD_Quantity_Validate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Update List Unit Price --></errorMessage>
+        <name>Pricing_SW_List_Unit_Price_update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Tentative ECAP Price must be greater than $0. --></errorMessage>
+        <name>Pricing_TentativeECAPPrice_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- When &apos; Write In Performance Metric&apos; is selected in the Performance Metric Used field then the name must be provided in the &apos;Write In Performance Metric&apos;. --></errorMessage>
+        <name>Pricing_Write_in_performance_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product cannot be edited after deal is created in My Deals. --></errorMessage>
+        <name>Pricing_editProductRestrictAfterDealSent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>No puede especificar descuentos adicionales como porcentajes e importes absolutos conjuntamente.</errorMessage>
+        <name>SBQQ__Additional_discount_percent_or_amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>El plazo de la suscripción debe ser un número positivo.</errorMessage>
+        <name>SBQQ__Invalid_Subscription_Term</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>No puede especificar sobreprecios como porcentajes e importes absolutos conjuntamente.</errorMessage>
+        <name>SBQQ__Markup_percent_or_amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Cuando el Tipo de cargo es Recurrente, debe seleccionarse un Tipo de facturación.</errorMessage>
+        <name>SBQQ__RecurringChargeTypeMustHaveBillingType</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Cuando el Tipo de cargo es Puntual, no puede seleccionarse un valor de Frecuencia de facturación.</errorMessage>
+        <name>SBQQ__Validate_billing_frequency</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Cuando el Tipo de cargo es Puntual o Uso, no puede seleccionarse un valor de Tipo de facturación.</errorMessage>
+        <name>SBQQ__Validate_billing_type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Transfer pricing quote should have a Parent Quote  associated  with it --></errorMessage>
+        <name>core_cpq_transferpricing_val</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Pricing_QL_Export_List_View --></label>
+        <name>Pricing_QL_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label>Calcular presupuesto</label>
+        <name>SBQQ__CalculateQuoteFromQuoteLine</name>
+    </webLinks>
+</CustomObjectTranslation>

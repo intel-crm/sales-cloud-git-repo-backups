@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Partnership Score Detail --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_MDF_Account_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Balance Amount --></label>
+        <name>Core_MDF_Balance_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Balance Amount --></label>
+        <name>Core_MDF_Balance_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Carry Over Amt Mismatch --></label>
+        <name>Core_MDF_Carry_Over_Amt_Mismatch_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Carry Over Amount --></label>
+        <name>Core_MDF_Carry_Over_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>Core_MDF_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node Account --></label>
+        <name>Core_MDF_Node_Account_Id__c</name>
+        <relationshipLabel><!-- Partnership Score Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Offset Comment Detail --></label>
+        <name>Core_MDF_Offset_Comment_Details_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Qtr Partnership Score Detail --></label>
+        <name>Core_MDF_Partnership_Score_Detail_Id__c</name>
+        <relationshipLabel><!-- Partnership Score Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partnership Score --></label>
+        <name>Core_MDF_Partnership_Score_Id__c</name>
+        <relationshipLabel><!-- Partnership Score Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarter Year --></label>
+        <name>Core_MDF_Quarter_Year_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovered Amount --></label>
+        <name>Core_MDF_Recovered_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovery Account Name --></label>
+        <name>Core_MDF_Recovery_Account_nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Payment Admin can set Recovery Offset for PRC RSA MD Recoveries only --></help>
+        <label><!-- Recovery Offset Amount (USD) --></label>
+        <name>Core_MDF_Recovery_Offset_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recovery Offset Comments --></label>
+        <name>Core_MDF_Recovery_Offset_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Region_Cd__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW</masterLabel>
+            <translation><!-- WW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Recovery Amount --></label>
+        <name>Core_MDF_Total_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Claim Amount --></label>
+        <name>Core_MDF_Total_Claim_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Manual Recovery Amount --></label>
+        <name>Core_MDF_Total_Manual_Recovery_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV0 Amount --></label>
+        <name>Core_MDF_Total_PV0_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV1 Amount --></label>
+        <name>Core_MDF_Total_PV1_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total PV2 Amount --></label>
+        <name>Core_MDF_Total_PV2_Amt__c</name>
+    </fields>
+    <fields>
+        <label>合計回収額</label>
+        <name>Core_MDF_Total_Recovery_Amt__c</name>
+    </fields>
+    <nameFieldLabel><!-- PS Detail --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Fields cannot be updated (Budget Type, Region) --></errorMessage>
+        <name>Core_MDF_Non_Editable_Fields_on_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required Fields (Region, Budget Type) --></errorMessage>
+        <name>Core_MDF_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- External Id is INVALID --></errorMessage>
+        <name>Core_MDF_Validate_External_Id</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>CSA TSS Opportunity Support</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/cloud-solutions-architect-technical-solutions-specialist-support/</actionButtonLink>
+        <body>&lt;p&gt;&lt;strong&gt;Cloud Solutions Architect &amp;amp; Technical Solutions Specialist Support&lt;/strong&gt; (CSS/TSS) allows you to create an Opportunity Support request for global assistance from Cloud Specialist Architects and Technical Solution Specialists. This new process will help identify support resources and help improve opportunity win rates.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Requests are submitted through Sales CRM. To submit a request,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Open the Opportunity you want support with and click the &lt;strong&gt;Opportunity Support &lt;/strong&gt;button.&lt;/li&gt;&lt;li&gt;Select whether you are requesting &lt;strong&gt;CSA &lt;/strong&gt;or &lt;strong&gt;TSS &lt;/strong&gt;support.&lt;/li&gt;&lt;li&gt;An Opportunity Support Request popup window is provided and is pre-populated with information from the Opportunity.&lt;/li&gt;&lt;li&gt;Complete the bottom 4 text boxes (free form text) and click &lt;strong&gt;Save&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;A popup message will prepare you to review the changes before Submission. Click &lt;strong&gt;OK &lt;/strong&gt;if all information is in good order.&lt;/li&gt;&lt;li&gt;The Opportunity Support record is identified in the &lt;strong&gt;Opportunity Supports&lt;/strong&gt; section where you can track the status(es).&lt;/li&gt;&lt;li&gt;Within the Opportunity Support record, refer to the &lt;strong&gt;Approval History&lt;/strong&gt; section to see the assigners managing your request. You can see their contact information by clicking into their names under the &lt;strong&gt;Assigned To&lt;/strong&gt; column. Refer to the &lt;strong&gt;Opportunity Support Team&lt;/strong&gt; section to see the resource(s) assigned to your request.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Once your support request is approved by the technical resource manager, a resource is assigned, and the resource has accepted the assignment, the technical resource will automatically be added onto the opportunity team and you will receive an email notification. You can begin collaboration with the technical resource by responding to the Email notification.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To track your request,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Open the &lt;strong&gt;Reports &lt;/strong&gt;tab and search and select the &lt;strong&gt;My Opportunity Support Requests &lt;/strong&gt;report.&lt;/li&gt;&lt;li&gt;Within the report, view the status of your requests.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Training for CSA/TSS Opportunity Support</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>CSA TSS Opportunity Support</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-23</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>10</timesToDisplay>
+        <title>CSA/TSS Opportunity Support</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

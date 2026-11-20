@@ -1,0 +1,58 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e92726f6-e033-4321-b5d8-2d1d48da78a5",
+  "label" : "Search",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "5c829e24-fd92-4de5-bd7a-529f04bdd523",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6f4f213c-2d7f-4756-b0c4-0cbeb032f279",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "scopes" : [ {
+          "isPublic" : true,
+          "name" : "Core_Design_Registration__c"
+        }, {
+          "isPublic" : true,
+          "name" : "Core_Design_Registration_Product__c"
+        }, {
+          "isPublic" : true,
+          "name" : "Opportunity"
+        }, {
+          "isPublic" : true,
+          "name" : "PCC_DDR_L5_Product_Mapping__c"
+        } ],
+        "searchResultFiltering" : true,
+        "searchTerm" : "{!term}",
+        "showTopResults" : true
+      },
+      "componentName" : "forceCommunity:search",
+      "id" : "5636da59-5271-4e86-b46d-c0e18b53c644",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "82bea256-6a98-4212-ac9b-6f9c881b5459",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3a98ede6-02b4-4ab0-aa0d-d337478114b4",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "global-search"
+}

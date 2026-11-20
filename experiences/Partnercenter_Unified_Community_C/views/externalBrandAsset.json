@@ -1,0 +1,48 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "92dbee10-64f7-48e0-8ae3-dc710d9a14c1",
+  "label" : "External Brand Asset",
+  "regions" : [ {
+    "id" : "0060bd2f-5b46-4833-87ea-6f4dad5edf67",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "target" : "https://intelinside.intel.com/branding?CCP=true"
+      },
+      "componentName" : "c:CCP_ExternalContentPullerSpike",
+      "id" : "a4b1a46b-cf71-407d-ac6f-c05774db6939",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4f906e1a-7711-4872-a331-b41657758104",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "5f850f33-a817-47c7-97e6-5cb2caa496f1",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "External Brand Asset"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1417869c-4583-4d57-9075-d2511a9b2676",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "645c5130-8c33-4918-a80d-58e59314e179",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-external-brand-asset"
+}

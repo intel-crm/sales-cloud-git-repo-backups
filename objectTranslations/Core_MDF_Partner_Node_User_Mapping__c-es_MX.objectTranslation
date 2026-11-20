@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Usuarios de cuenta</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Usuarios de cuenta</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountIdUserId --></label>
+        <name>Core_MDF_AccountIdUserId__c</name>
+    </fields>
+    <fields>
+        <label>Cuenta</label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Account Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Action Needed --></label>
+        <name>Core_MDF_Action_Needed_nm__c</name>
+        <picklistValues>
+            <masterLabel>Owner Update</masterLabel>
+            <translation><!-- Owner Update --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Activo</label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Details --></label>
+        <name>Core_MDF_Error_Details_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Usuario</label>
+        <name>Core_MDF_User__c</name>
+        <relationshipLabel><!-- Account Users --></relationshipLabel>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel><!-- Account User Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage>El campo Usuario o el campo de Cuenta no deben estar vacíos</errorMessage>
+        <name>Core_MDF_CCP_User_Should_not_be_empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have permission to create an Account User for the selected Program. --></errorMessage>
+        <name>Core_MDF_IPA_Program_Admin_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>El usuario seleccionado ha sido desactivado. Seleccione un usuario que tenga un estatus activo.</errorMessage>
+        <name>Core_MDF_InActiveUserValidation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_Japanese</name>
+    <style>none</style>
+    <subject>インテル® パートナー・アライアンスの登録完了に必要なアクション</subject>
+    <textOnly>インテル® パートナー・アライアンスの登録完了に必要なアクション
+
+
+
+
+{!Contact.FirstName} 様、
+
+おめでとうございます。管理者またはインテルの担当者により、インテル® パートナー・アライアンスのアカウントへ追加されました。わずか数ステップで、登録が完了します。
+
+お客様向けに、以下のプロファイル情報が作成されました。
+
+電子メールアドレス: {!Contact.Email}
+会社名: {{ACCOUNTNAME}}
+インテル® パートナー・アライアンス・ビジネス ID: {{ACCOUNTNUMBER}}
+
+
+次のリンクをクリックして、登録を完了してください
+
+
+{{ButtonText}}
+
+
+上のリンクにアクセスできない場合
+{{EVLINK}}
+ご質問がある場合は {{SUPPORTLINK}} (英語) までお問い合わせください。
+プログラムにご参加いただけることを楽しみにしております。
+よろしくお願い申し上げます。
+インテル® パートナー・アライアンス
+
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!$Label.PRM_CurrentYear} Intel Corporation
+インテル株式会社 〒 100-0005 東京都千代田区丸の内 3-1-1 www.intel.com
+プライバシー | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

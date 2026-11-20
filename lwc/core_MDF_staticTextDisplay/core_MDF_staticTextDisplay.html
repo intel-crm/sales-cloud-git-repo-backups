@@ -1,0 +1,8 @@
+<template>
+    <div if:true={isVisible} class="text-container" style={containerStyles}>
+        <template if:true={showIcon}>
+            <lightning-icon icon-name={iconName} size={iconSize} variant={iconVariant} class={iconClass}></lightning-icon>
+        </template>
+            <lightning-formatted-rich-text value={displayText} class="rich-text-content"></lightning-formatted-rich-text>
+    </div>
+</template>

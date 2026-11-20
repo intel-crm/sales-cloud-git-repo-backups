@@ -1,0 +1,91 @@
+<!--
+  @description       : LWC to show quotelines which are overlapping with mentioned quoteline number
+  @author            : Sandeep
+  @group             : Accenture
+  @last modified on  : 01-08-2025
+  @last modified by  : Vrushabh Uprikar
+-->
+<template>
+    <template if:true={showSpinner}>
+        <div>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    <lightning-card>
+        <div>
+            <label class="slds-form-element__label gridElement" for="text-input-id-1">Enter Quote Line Number</label>
+            <div class="slds-grid slds-grid--wrap gridElement gridBox">
+                <div class="slds-col slds-size_4-of-12">
+                    <lightning-input variant="label-hidden" label="Quote Line" value={searchKey} type="text"
+                        placeholder="Type quote line number here" onchange={handleChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-12 gridElement">
+                    <lightning-button class="slds-button" label="Search..." variant="brand"
+                        onclick={handleClick}></lightning-button>
+                </div>
+                <template if:true={showDetails}>
+                    <div class="slds-col slds-size_4-of-12 slds-text-align_right gridfilter">Filter By:
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 gridText">
+                        <lightning-input variant="label-hidden" label="Search Text" value={search} type="search"
+                            placeholder="Type here..." onchange={handleSearchChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-12 gridText">
+                        <lightning-button icon-name="utility:download" class="slds-button" label="Export"
+                            variant="brand" onclick={handleExport}></lightning-button>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <template if:true={showDetails}>
+            <lightning-card>
+                <template if:true={isSpinner}>
+                    <div>
+                        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                    </div>
+                </template>
+                <div class="dataTabletoDisplay">
+                    <lightning-datatable key-field="id" data={columnData} columns={columnList} hide-checkbox-column
+                        default-sort-direction={defaultSortDirection} sorted-direction={sortDirection}
+                        sorted-by={sortedBy} onsort={onHandleSort}></lightning-datatable>
+                </div>
+
+                <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread"
+                    style="padding-top: 0.5em;">
+
+                    <div class="slds-col">
+                        <div class="slds-list_inline slds-p-bottom_xx-small">
+                            <div class="slds-p-left_small">
+                                <lightning-combobox label="Page Size:" id="recordsPerPage" name="recordsPerPage"
+                                    value={pageSize} options={pageSizeOptions} onchange={handleRecordsPerPage}>
+                                </lightning-combobox>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slds-align_absolute-center" style="height:5rem">
+                        <lightning-button disabled={bDisableFirst} icon-name="utility:left" label="First"
+                            class="slds-p-horizontal_x-small" alternative-text="first page"
+                            onclick={firstPage}></lightning-button>
+                        <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous"
+                            class="slds-p-right_x-small" alternative-text="Previous"
+                            onclick={previousPage}></lightning-button>
+
+                        <span class="slds-badge">Showing {pageNumber} of {totalPages} Page(s)</span>
+
+                        <span class="slds-badge"> Total Records: {totalRecords}</span>
+                        <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next"
+                            alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small"
+                            icon-position="right"></lightning-button>
+                        <lightning-button disabled={bDisableLast} icon-name="utility:right" label="Last"
+                            alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+                    </div>
+                </div>
+            </lightning-card>
+
+        </template>
+    </lightning-card>
+</template>

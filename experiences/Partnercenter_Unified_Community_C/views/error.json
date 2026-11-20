@@ -1,0 +1,280 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "83f1ff13-6e40-45de-b087-adf23bcc2543",
+  "label" : "Error",
+  "regions" : [ {
+    "id" : "3248e913-4cab-40ae-8406-6434605579b9",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'>   <div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'>      <img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/>   </div>   <h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>Page not available</h4>    <p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Maybe the page was deleted, the URL is incorrect, or something else went wrong. If you know the page exists but you still can’t get to it, please ask the community administrator for help.</p>  </div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "a40d3ea7-3b6a-4372-9c29-1bed9f172e5a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "83ab1b98-fa0a-4293-a5d2-91269f7b69fa",
+        "es" : "d5fc4aba-e6a4-4463-bf29-179d8bc5998a",
+        "es_mx" : "c7b530fb-7959-4365-a191-e1359309e040",
+        "fr" : "8b022260-0693-4085-8835-f3fa6907f462",
+        "it" : "c4704d07-a164-4ff3-86d6-30bf451e4e4b",
+        "ja" : "b828aad1-4182-45fe-83cd-31216bbaf571",
+        "ko" : "31645a30-053f-4f2d-8ee5-49196535e985",
+        "pt_br" : "b83a5061-700f-4a3d-b61c-4d94ca8d0430",
+        "pt_pt" : "12ca16b7-25b4-4dac-af3e-61cab5db93ae",
+        "ru" : "4aa77ec0-3c56-4160-958d-3f6b85f0d912",
+        "zh_cn" : "6c3bae88-42bc-439a-b257-ee6a6eada571",
+        "zh_tw" : "3ef3ffe7-19a4-40c6-b683-333b7eb7cfcb"
+      },
+      "renditions" : [ {
+        "id" : "6c3bae88-42bc-439a-b257-ee6a6eada571",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>此页不可用</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>可能此页已被删除、URL 不正确、或者发生其他错误。如果您知道该页存在，但仍无法访问，请向社区管理员求助。</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4aa77ec0-3c56-4160-958d-3f6b85f0d912",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>Страница недоступна</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Возможно страница была удалена, введен неверный URL, или что-то пошло не так. Если вы знаете, что страница точно существует, и вы не можете ее открыть, обратитесь за помощью к администратору сообщества.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "12ca16b7-25b4-4dac-af3e-61cab5db93ae",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>P&aacute;gina n&atilde;o dispon&iacute;vel</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>A p&aacute;gina pode ter sido exclu&iacute;da, a URL pode estar incorreta ou pode ter ocorrido algum outro erro. Se voc&ecirc; sabe que a p&aacute;gina existe, mas ainda assim n&atilde;o consegue acess&aacute;-la, pe&ccedil;a ajuda ao administrador da comunidade.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b828aad1-4182-45fe-83cd-31216bbaf571",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>ページを表示できません</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>ページが削除されている、URL に間違いがある、またはそのほかの問題がある可能性があります。確実にページが存在しているにもかかわらず表示されない場合、コミュニティーの管理者にお問い合わせください。</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c4704d07-a164-4ff3-86d6-30bf451e4e4b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>Pagina non disponibile</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>La pagina potrebbe essere stata eliminata, l&apos;URL potrebbe essere sbagliato o qualcos&apos;altro &egrave; andato storto. Se si &egrave; certi che la pagina esiste ma non si riesce ad accedervi, contattare l&rsquo;amministratore della community per assistenza.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8b022260-0693-4085-8835-f3fa6907f462",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>Page non disponible</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Il est possible que la page ait &eacute;t&eacute; supprim&eacute;e, que l&apos;URL soit incorrecte, ou que quelque chose d&apos;autre se soit pass&eacute;. Si vous ne parvenez toujours pas &agrave; acc&eacute;der &agrave; la page alors que vous savez qu&apos;elle existe, demandez de l&apos;aide &agrave; l&apos;administrateur de la communaut&eacute;.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c7b530fb-7959-4365-a191-e1359309e040",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>P&aacute;gina no disponible</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Tal vez la p&aacute;gina se elimin&oacute;, la URL es incorrecta, o algo m&aacute;s sali&oacute; mal. Si sabe que la p&aacute;gina existe pero aun as&iacute; no puede llegar a ella, por favor p&iacute;dale ayuda al administrador de la comunidad.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "83ab1b98-fa0a-4293-a5d2-91269f7b69fa",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>Seite nicht verf&uuml;gbar</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Es k&ouml;nnte sein, dass die Seite gel&ouml;scht wurde, der URL nicht stimmt oder etwas anderes nicht funktioniert hat. Wenn Sie sicher wissen, dass die Seite existiert und Sie k&ouml;nnen immer noch nicht darauf zugreifen, dann fragen Sie bitte den Community-Administrator nach Hilfe.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "31645a30-053f-4f2d-8ee5-49196535e985",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>페이지를 사용할 수 없습니다</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>페이지가 삭제되었거나, URL이 잘못되었거나, 기타 다른 문제가 있는 것 같습니다. 페이지가 있는데도 가져올 수 없는 경우에는 커뮤니티 관리자에게 도움을 요청하십시오.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d5fc4aba-e6a4-4463-bf29-179d8bc5998a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>P&aacute;gina no disponible</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>Tal vez la p&aacute;gina se elimin&oacute;, la URL es incorrecta o algo sali&oacute; mal. Si sabe que la p&aacute;gina existe pero todav&iacute;a no puede llegar a ella, solicite ayuda al administrador de la comunidad.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b83a5061-700f-4a3d-b61c-4d94ca8d0430",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>P&aacute;gina n&atilde;o dispon&iacute;vel</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>A p&aacute;gina pode ter sido exclu&iacute;da, a URL pode estar incorreta ou pode ter ocorrido algum outro erro. Se voc&ecirc; sabe que a p&aacute;gina existe, mas ainda assim n&atilde;o consegue acess&aacute;-la, pe&ccedil;a ajuda ao administrador da comunidade.</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3ef3ffe7-19a4-40c6-b683-333b7eb7cfcb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'><div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'><img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/></div><h4 class='slds-text-align--center slds-text-heading--large slds-text-color--weak slds-m-bottom--small'>此頁面不提供使用</h4><p class='slds-text-align--center slds-text-heading--medium slds-text-color--weak'>可能此頁面已被刪除、URL 不正確、或者發生其它錯誤。如果您知道此頁面確實存在但卻無法存取，請要求社區管理員協助。</p></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "7aea8793-391e-4028-ac5c-65519519e290",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "c6687d2c-d002-42d3-9eaf-d32a5c5b5822",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Error"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c625e3d2-7b3d-42d4-97f3-84e5c01e74b0",
+      "renditionMap" : {
+        "de" : "fe34b414-d3a3-43b6-ae54-017b22b5f968",
+        "es" : "b2e970a4-a32e-49b1-a29d-2c5cfbb49e42",
+        "es_mx" : "bd90531c-6881-4489-8e5b-66db473a4016",
+        "fr" : "e2950841-8319-4fad-bc3e-e9f69c1e481d",
+        "it" : "6911e30a-3f43-4531-823c-9332970400fd",
+        "ja" : "c64bfab7-43db-4c70-ac8a-208abda0e1dd",
+        "ko" : "9b6fa49c-8b6f-454c-9de0-ff1d3286a059",
+        "pt_br" : "ee72639b-9ca4-44f9-a2b3-e23525957b8c",
+        "pt_pt" : "1f9d2c45-9cc4-4f93-870c-099fa525beac",
+        "ru" : "39f4ce9e-72d8-4e9d-b9b6-195416b49bfe",
+        "zh_cn" : "db17fcff-b208-44dd-b13c-ad8f0fd12c74",
+        "zh_tw" : "69ca10a3-73a7-4917-b014-3dc5953b8789"
+      },
+      "renditions" : [ {
+        "id" : "db17fcff-b208-44dd-b13c-ad8f0fd12c74",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "39f4ce9e-72d8-4e9d-b9b6-195416b49bfe",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1f9d2c45-9cc4-4f93-870c-099fa525beac",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c64bfab7-43db-4c70-ac8a-208abda0e1dd",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6911e30a-3f43-4531-823c-9332970400fd",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e2950841-8319-4fad-bc3e-e9f69c1e481d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bd90531c-6881-4489-8e5b-66db473a4016",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fe34b414-d3a3-43b6-ae54-017b22b5f968",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9b6fa49c-8b6f-454c-9de0-ff1d3286a059",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b2e970a4-a32e-49b1-a29d-2c5cfbb49e42",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ee72639b-9ca4-44f9-a2b3-e23525957b8c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "69ca10a3-73a7-4917-b014-3dc5953b8789",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Error",
+            "title" : "Error"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "ae0c417f-f0fc-4ece-94d6-5ac9dbd4e88c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "error"
+}

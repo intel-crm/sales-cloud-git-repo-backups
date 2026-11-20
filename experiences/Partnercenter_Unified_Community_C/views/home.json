@@ -1,0 +1,612 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "9c79fbf8-f999-4f12-96ba-72f6920eb245",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<h2>Intel Co-Marketing Portal</h2>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "939e3f9b-ab89-42a9-8f6e-4b7f90ec8c4c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "fc4fd19e-9a53-4da2-a5fc-084cc7fdd37d",
+        "es" : "47b4b8aa-89c1-4105-9878-3aa40a19dd0a",
+        "es_mx" : "8e7ec04d-96cf-41a0-9d77-bd1dbfb2df6d",
+        "fr" : "9b445880-481e-49d6-8680-ae0649e66da1",
+        "it" : "e6a3a78a-f485-45d1-a8a5-0c16e7d2c2a4",
+        "ja" : "fa7b9e1b-7424-46b2-ab43-a9f765a7b3d3",
+        "ko" : "77846a13-d2f5-4659-a06b-e3af3c93560d",
+        "pt_br" : "c1108db8-a055-45cd-86fa-4b6fbc122a4b",
+        "ru" : "ef82c2bd-26db-491a-86e8-a6475c995ba7",
+        "zh_cn" : "9807da72-cb2b-42bf-9adf-d273a9e6446e",
+        "zh_tw" : "35ccdab6-17ed-4c4b-8847-2527b650dc55"
+      },
+      "renditions" : [ {
+        "id" : "9807da72-cb2b-42bf-9adf-d273a9e6446e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>英特尔联合市场推广门户网站</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fa7b9e1b-7424-46b2-ab43-a9f765a7b3d3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>インテルの共同マーケティング・ポータル</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9b445880-481e-49d6-8680-ae0649e66da1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portail de co-marketing Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fc4fd19e-9a53-4da2-a5fc-084cc7fdd37d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Intel Co-Marketing-Portal</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "77846a13-d2f5-4659-a06b-e3af3c93560d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>인텔 공동 마케팅 포털</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "47b4b8aa-89c1-4105-9878-3aa40a19dd0a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portal de marketing conjunto de Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8e7ec04d-96cf-41a0-9d77-bd1dbfb2df6d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portal de mercadeo conjunto de Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "35ccdab6-17ed-4c4b-8847-2527b650dc55",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Intel 共同行銷入口</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e6a3a78a-f485-45d1-a8a5-0c16e7d2c2a4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portale di co-marketing Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ef82c2bd-26db-491a-86e8-a6475c995ba7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Портал совместного маркетинга Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c1108db8-a055-45cd-86fa-4b6fbc122a4b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portal de Marketing Conjunto da Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "e29a2473-20c1-4b88-a4e5-7854b46a824a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "project" : "CCP",
+        "type" : "Community Home"
+      },
+      "componentName" : "c:core_MDF_Notification",
+      "id" : "fb9433f1-cdec-4778-9f2c-eeee5ebe09e7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"height:1em;\"></div>\n<img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\">\n<div style=\"height:1em;\"></div>\n\n<div>\n    <p>Welcome Co-Marketing Partners!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>From managing your budget and planning campaigns to executing activities and submitting for reimbursement, here you can access resources needed to effectively co-market with Intel. Reference materials and program expertise are clicks away. You’ll find guides, training, program tools, and access to support that will help you get the most from your co-marketing partnership with Intel</p>\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "b7c9a94a-3f61-4b05-88dc-e7f909d37809",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "d9c42053-73db-48a5-a1de-3b85012ff49d",
+        "es" : "ab42b95f-e08d-4b66-8d8d-fcb03ed9d7b3",
+        "es_mx" : "60d86891-4fc3-4c24-94fe-05e0c9714733",
+        "fr" : "309b9608-44ba-4b08-835d-4b9dfeda3abe",
+        "it" : "bb39f495-e707-4b2f-b0ce-2b19100b473d",
+        "ja" : "9746ace3-c739-4808-999a-75f403d7b15f",
+        "ko" : "4f306458-38d1-464e-8390-0bfc6c9d7fe7",
+        "pt_br" : "fdb041ad-9a09-4dc9-a9b1-090a79726982",
+        "pt_pt" : "a7dd3860-a044-4ded-871f-cb6575b392ed",
+        "ru" : "bd2f9e0b-c8a6-4fe2-a36a-437602338898",
+        "zh_cn" : "702ed0cf-1b37-4730-81bf-d1a9ea72a346",
+        "zh_tw" : "990f611d-5ca2-4aa1-adc6-83ce3ff7e8f8"
+      },
+      "renditions" : [ {
+        "id" : "702ed0cf-1b37-4730-81bf-d1a9ea72a346",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>欢迎联合市场推广合作伙伴！</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>从管理您的预算和规划项目到执行活动和提交报销申请等，这些资源可帮助您与英特尔之间进行有效的共同营销。您只需轻点鼠标，便可查看参考材料和计划专门知识。您将找到指南、培训、项目工具，并获得支持，以帮助您最大程度地从您与英特尔的联合市场推广合作伙伴关系中获益。</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bd2f9e0b-c8a6-4fe2-a36a-437602338898",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>Добро пожаловать, партнеры совместного маркетинга!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>На портале вы можете получить доступ к ресурсам, необходимым для эффективной совместной работы с Intel, от управления бюджетом и планирования кампаний до проведения мероприятий и запроса на возмещение. Быстрый доступ к справочным материалам и экспертизе программы. Вы найдете руководства, учебные материалы, программные средства и доступ к поддержке, чтобы обеспечить максимальную эффективность сотрудничества в области совместного маркетинга с корпорацией Intel</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a7dd3860-a044-4ded-871f-cb6575b392ed",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"https://crmdevmktg-intelcloudcrm.cs70.force.com/Partnercenter/resource/1539040415000/CCP_Home_Banner\" alt=\"\"></div>\n\n<div>\n    <p>Welcome Members of the Client Co-Marketing Fund (CCF) and Data Center Co-Marketing Fund (DCF).</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>From managing your budget and planning campaigns to executing activities and submitting for reimbursement, here you can access resources needed to effectively co-market with Intel. Reference materials and program expertise are clicks away. You’ll find guides, training, program tools, and access to support that will help you create, execute and get reimbursed for your activities.</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n    <p>This site also contains useful information to help you stay connected with your global and local Partner Marketing Strategists for updates to programs and assist you with your planning cycles.</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9746ace3-c739-4808-999a-75f403d7b15f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>共同マーケティング・パートナーの皆様へ</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>このサイトでは、予算の管理やキャンペーンの計画から活動の実施、償還申請の提出まで、インテルとの効果的な共同マーケティングに必要な資料にアクセスできます。参考資料やプログラムの専門知識もクリックするだけで手に入ります。インテルとの共同マーケティング・パートナーシップを最大限に活用するためのガイド、トレーニング、プログラムツールの入手や、サポートへのアクセスも可能です。</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bb39f495-e707-4b2f-b0ce-2b19100b473d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>Benvenuti ai partner di co-marketing.</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>Dalla gestione del budget e dalla pianificazione di campagne all&apos;esecuzione di attivit&agrave; e all&rsquo;invio di richieste di rimborso, da qui potete accedere alle risorse necessarie per effettuare in modo efficace attivit&agrave; di co-marketing con Intel. I materiali di riferimento e maggiori informazioni sul programma sono disponibili con un clic. Troverete guide, training, strumenti del programma e accesso al supporto per aiutarvi ad ottenere il massimo dalla vostra partnership di co-marketing con Intel.</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "309b9608-44ba-4b08-835d-4b9dfeda3abe",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>Bienvenue aux partenaires de co-marketing&nbsp;!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>De la gestion de votre budget et de la planification des campagnes &agrave; l&apos;ex&eacute;cution des activit&eacute;s et &agrave; la soumission des demandes de remboursement, c&apos;est ici que vous pouvez acc&eacute;der aux ressources n&eacute;cessaires pour r&eacute;aliser un co-marketing efficace avec Intel. Des documents de r&eacute;f&eacute;rence et l&apos;expertise du programme sont accessibles en quelques clics. Vous y trouverez des guides, des formations, des outils du programme et un acc&egrave;s &agrave; l&apos;assistance, qui vous aideront &agrave; tirer le maximum de votre partenariat de co-marketing avec Intel.</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "60d86891-4fc3-4c24-94fe-05e0c9714733",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>¡Bienvenidos socios de mercadeo conjunto!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>Desde la administraci&oacute;n de su presupuesto y la planificaci&oacute;n de las campa&ntilde;as hasta la ejecuci&oacute;n de las actividades y la presentaci&oacute;n para el reembolso, aqu&iacute; puede acceder a los recursos necesarios para un eficaz mercadeo conjunto con Intel. Con tan solo unos clics acceder&aacute; a materiales de referencia y conocimiento especializado sobre el programa. Encontrar&aacute; gu&iacute;as, entrenamiento, herramientas del programa y acceso a la asistencia que le ayudar&aacute;n aprovechar al m&aacute;ximo su asociaci&oacute;n para mercadeo conjunto con Intel</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d9c42053-73db-48a5-a1de-3b85012ff49d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>Willkommen Co-Marketing-Partner!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>Von hier aus k&ouml;nnen Sie auf Ressourcen zugreifen, die Sie von der Verwaltung Ihres Budgets und der Planung von Kampagnen bis hin zur Durchf&uuml;hrung von Werbema&szlig;nahmen und der Beantragung von Kostenerstattungen beim effektiven Co-Marketing mit Intel unterst&uuml;tzen. Mit wenigen Klicks k&ouml;nnen Sie Referenzmaterial und Wissen rund um das Programm abrufen. Leitf&auml;den, Schulungsangebote, Programmtools und der Zugang zum Support stehen Ihnen zur Verf&uuml;gung, um aus Ihrer Co-Marketing-Partnerschaft mit Intel den gr&ouml;&szlig;ten Nutzen zu ziehen.</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4f306458-38d1-464e-8390-0bfc6c9d7fe7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>공동 마케팅 파트너 여러분 환영합니다!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>예산 및 계획 캠페인 관리부터 활동 실행과 환급 자료 제출까지, 이 포털에서 인텔과의 효과적인 공동 마케팅에 필요한 리소스에 액세스할 수 있습니다. 몇 번의 클릭만으로 참고 자료와 프로그램 전문 정보도 확인이 가능합니다. 인텔과의 공동 마케팅 제휴를 최대로 활용하는 데 도움이 되는 가이드와 교육, 프로그램 도구 및 지원 정보를 제공합니다</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ab42b95f-e08d-4b66-8d8d-fcb03ed9d7b3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>¡Bienvenidos, socios del marketing conjunto!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>Desde la gesti&oacute;n de presupuestos y la planificaci&oacute;n de campa&ntilde;as a la ejecuci&oacute;n de actividades y el env&iacute;o de solicitudes de reembolso, aqu&iacute; puede acceder a los recursos necesarios para realizar marketing conjunto con Intel de manera eficaz. Los materiales de referencia y el conocimiento experto del programa est&aacute;n a unos pocos clics de distancia. Encontrar&aacute; gu&iacute;as, formaci&oacute;n, herramientas del programa y acceso a soporte que le ayudar&aacute;n a obtener el m&aacute;ximo de su asociaci&oacute;n para marketing conjunto con Intel</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fdb041ad-9a09-4dc9-a9b1-090a79726982",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>Sejam Bem-vindos, Parceiros de Marketing Conjunto!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>Desde o gerenciamento do or&ccedil;amento e o planejamento das suas campanhas at&eacute; a execu&ccedil;&atilde;o de atividades e o envio de solicita&ccedil;&otilde;es de reembolso, aqui voc&ecirc; pode acessar os recursos necess&aacute;rios para efetivamente realizar um marketing conjunto com a Intel. Bastam alguns cliques para ter acesso a materiais de refer&ecirc;ncia e especialistas no programa. Voc&ecirc; encontrar&aacute; guias, treinamento, ferramentas do programa e acesso a suporte que ajudar&aacute; voc&ecirc; a aproveitar ao m&aacute;ximo a sua parceria de marketing conjunto com a Intel.</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "990f611d-5ca2-4aa1-adc6-83ce3ff7e8f8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div><img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\"><div style=\"height:1em;\"></div>\n\n<div>\n    <p>歡迎共同行銷夥伴！</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>如果您要管理預算和準備企畫案來進行活動並申請報銷，這些的資源可幫助您與 Intel 之間進行有效的共同行銷。點擊即可獲得參考資料和計劃專業知識。這邊有指南、訓練工具、計畫工具、和支援可幫助您充分利用與 Intel 進行行銷合作的優勢</p>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "uniqueNameOrId" : "{!topicId}"
+      },
+      "componentName" : "forceCommunity:breadcrumbs",
+      "id" : "01682f61-d3fd-4e30-9c12-b4248c6d876c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:core_MDF_SiteAdobeAnalyticsSupport",
+      "id" : "14131b6f-a069-47c4-9344-4cc2b647b8c1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b8266e01-7035-4d38-8029-1186b06a4ea2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Training Resources</a>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "988c43f9-4fa7-4be9-8235-da72b184eb17",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "f3913b1c-49b2-4e9a-86aa-0ee8df444b82",
+        "es" : "b54c4947-f0d4-49ef-9766-bb43b1887a0d",
+        "es_mx" : "faa31646-9abb-4184-b615-385d7d2fee0d",
+        "fr" : "617d2ffd-3c86-420a-b6cc-586135b31088",
+        "it" : "4b7eb0eb-dda9-4c63-9a70-68d5fc0da40d",
+        "ja" : "44fef65b-6c94-4164-b404-5ac2c4d2e7b1",
+        "ko" : "573a6284-2377-4293-b5bc-1f7d925228ca",
+        "pt_br" : "2c44c06d-2b19-4363-b6aa-0597f785d5b1",
+        "ru" : "293bc88a-d011-4168-a95e-37ece390fd5d",
+        "zh_cn" : "42315430-93b9-4dd5-803c-2daaefc100af",
+        "zh_tw" : "3f394c98-1f9c-4805-bc95-8c0ddfafadda"
+      },
+      "renditions" : [ {
+        "id" : "42315430-93b9-4dd5-803c-2daaefc100af",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">培训资源</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "44fef65b-6c94-4164-b404-5ac2c4d2e7b1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">トレーニング・リソース</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "617d2ffd-3c86-420a-b6cc-586135b31088",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Ressources de formation</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f3913b1c-49b2-4e9a-86aa-0ee8df444b82",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Schulungsressourcen</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "573a6284-2377-4293-b5bc-1f7d925228ca",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">교육 리소스</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3f394c98-1f9c-4805-bc95-8c0ddfafadda",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">訓練資源</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4b7eb0eb-dda9-4c63-9a70-68d5fc0da40d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Risorse di formazione</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "293bc88a-d011-4168-a95e-37ece390fd5d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Ресурсы для обучения</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2c44c06d-2b19-4363-b6aa-0597f785d5b1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Recursos de treinamento</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b54c4947-f0d4-49ef-9766-bb43b1887a0d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Recursos de formación</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "faa31646-9abb-4184-b615-385d7d2fee0d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Recursos de entrenamiento</a>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_EEF"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "335b9f58-7a11-4c0c-b7a3-0aecd09c3428",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_SPCF"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "dfc22d5f-840f-46a5-aa9d-df2c2fcd0360",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_SysAdmin_ITAdmin"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "fc4bef12-983e-4030-aa0e-27046a9949b6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_CCF_DCF"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "929006da-8633-4a4a-b3a9-4a6ba5a03b71",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_IPS"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "e5a9fe3f-49fa-40b7-b07a-2ba93b1bebc0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_Retail"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "44cbd9a6-28c4-470c-81e8-666e96274276",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_IPA"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "7b50f61d-8db4-4e72-becb-04e9e77a4cd9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Home",
+        "sectionCode" : "Home_KeyResources_CMDF"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "786f3736-9869-49bc-87a4-c02f6203cf56",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8f2a2f11-73f3-4d5f-bf4a-d6fff722c90c",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "b5bdaaa7-1ed4-4247-bd59-24643e80c6d8",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<script>\n</script>",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b272a4f8-10df-4fb5-a224-ce14553808f8",
+      "renditionMap" : {
+        "de" : "06b8034d-1149-4614-8bc4-bbc18e3a91f5",
+        "es" : "d1f80960-e74a-4ba7-9610-e2622025c3ca",
+        "es_mx" : "e6a8e152-4c3e-4a28-948e-f7ee1457bc25",
+        "fr" : "145772af-ced0-48ee-97c1-33aba0d0bfc0",
+        "it" : "3b791db3-881d-43d7-a5f2-fe213f1cb8be",
+        "ja" : "3e246e88-45d0-46e3-969f-ba9e048f5f7c",
+        "ko" : "c17559ae-b8ee-4a07-83a4-ecb82c49d699",
+        "pt_br" : "b584a44e-f340-4e0c-accc-b33f9a725231",
+        "pt_pt" : "dae1cb8d-4660-4a35-8065-37e625e6f224",
+        "ru" : "d8db75e3-1fc1-4bc3-a8a1-f6e786547975",
+        "zh_cn" : "48fd0e2b-a555-445a-b62a-ee68dcc50a1d",
+        "zh_tw" : "4210da3e-db67-41ed-bd26-35b63048f777"
+      },
+      "renditions" : [ {
+        "id" : "48fd0e2b-a555-445a-b62a-ee68dcc50a1d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d8db75e3-1fc1-4bc3-a8a1-f6e786547975",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "dae1cb8d-4660-4a35-8065-37e625e6f224",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3e246e88-45d0-46e3-969f-ba9e048f5f7c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3b791db3-881d-43d7-a5f2-fe213f1cb8be",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "145772af-ced0-48ee-97c1-33aba0d0bfc0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e6a8e152-4c3e-4a28-948e-f7ee1457bc25",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "06b8034d-1149-4614-8bc4-bbc18e3a91f5",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c17559ae-b8ee-4a07-83a4-ecb82c49d699",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d1f80960-e74a-4ba7-9610-e2622025c3ca",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b584a44e-f340-4e0c-accc-b33f9a725231",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4210da3e-db67-41ed-bd26-35b63048f777",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Home",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "87d4e126-43a9-465c-a354-71485503ee8b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

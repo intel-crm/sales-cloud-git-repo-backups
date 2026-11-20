@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Approval Request: IQR Approval Price Rules" recipientType="User" relatedToType="Pricing_Approval_Price_Rules__c" renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_ApprovalPriceRuleNotification approvalPriceRuleRecord="{!relatedTo}" approvalPriceRuleRecordId="{!relatedTo.id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

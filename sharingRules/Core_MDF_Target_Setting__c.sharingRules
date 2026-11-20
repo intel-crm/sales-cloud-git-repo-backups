@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Target_Setting_Sharing_for_CCF_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Target Setting Sharing for CCF All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Target_Setting_Sharing_for_DCF_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Target Setting Sharing for DCF All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Corer_MDF_Target_Setting_Sharing_for_IPA_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing to IPA All public group</description>
+        <label>Target Setting Sharing for IPA All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

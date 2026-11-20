@@ -1,0 +1,556 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "33377e4b-1257-47dc-b86f-398bbcddd619",
+  "label" : "Resources",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<h2>Resources</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "60044bad-013e-44a0-aa5b-c15fd50d93b9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "43bfe35b-3dd6-46db-bd20-0a009e5ba215",
+        "es" : "0103a74d-8aba-4f1f-962e-3d563c79f76a",
+        "es_mx" : "9eba2f87-af9e-477b-a49f-e12fc0b3de2d",
+        "fr" : "fd9ccdb6-ac0a-4ed3-8abe-3d1b6fca2e0a",
+        "it" : "4afbd72c-a880-43f8-8ba7-42bff762848d",
+        "ja" : "20f31daa-4ef4-484e-9ca1-3db264c7d672",
+        "ko" : "8ffe71da-6a05-4030-9c61-fd42dd7480c0",
+        "pt_br" : "6205e5f9-5e3b-4cd6-9eca-b4927c890924",
+        "ru" : "810002b9-161d-4c59-9c26-a10f026813e8",
+        "zh_cn" : "1c96272b-71c8-4df0-ae14-a89506fd8480",
+        "zh_tw" : "51040ce8-91de-4ca4-8a5d-aa9a2c4a7ba7"
+      },
+      "renditions" : [ {
+        "id" : "0103a74d-8aba-4f1f-962e-3d563c79f76a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Recursos</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "43bfe35b-3dd6-46db-bd20-0a009e5ba215",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Ressourcen</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9eba2f87-af9e-477b-a49f-e12fc0b3de2d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Recursos</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fd9ccdb6-ac0a-4ed3-8abe-3d1b6fca2e0a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Ressources</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4afbd72c-a880-43f8-8ba7-42bff762848d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Risorse</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "20f31daa-4ef4-484e-9ca1-3db264c7d672",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>参考資料</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8ffe71da-6a05-4030-9c61-fd42dd7480c0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>리소스</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6205e5f9-5e3b-4cd6-9eca-b4927c890924",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Recursos</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "810002b9-161d-4c59-9c26-a10f026813e8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Ресурсы</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1c96272b-71c8-4df0-ae14-a89506fd8480",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>资源</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "51040ce8-91de-4ca4-8a5d-aa9a2c4a7ba7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>資源</h2>\n<div style=\"height:1em;\"></div>\n<p>We are excited to announce that the MDF Partner Sales & Marketing Resources page has successfully transitioned to Intel.com and its content management platform, UAM. This change is designed to significantly enhance both user-friendliness and functionality.</p>\n<p>You can access the new page here:<a href=\"https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">\n    https://intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html</a>\n</p>\n<p>This update is part of our ongoing commitment to streamline navigation and ensure consistency across Intel.com. We appreciate your attention to this important update.</p>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "23659990-7047-4e2f-8117-102143b827ec",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_EEF_Activating"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "95943db0-3bd5-4974-91fa-17fb0ad0b31f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_EEF_Both"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "35be1650-f54b-4836-bb21-a4aa0aebb892",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_EEF_Primary"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "f9ce07e6-3b44-459b-a553-d972a105ec74",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_SPCF"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "228b9c5a-4ce8-4892-8f00-ce6d23f2c8e5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_CoMarketingAlignment"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "8100d782-6985-40ba-998d-317be9605ab2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_CCFResources"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "ff2340f2-3a5f-4a39-b160-93ea4e0742aa",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_DCFResources"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "7870b774-9542-47f2-a83a-375d8251752e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_IPA_Acct"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "d193b2c2-33b8-4abf-a05b-4d4f40583275",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_IPA_Prop"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "450e800c-59cf-42f4-8356-a9fb9ddb8b96",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_IPA_Both"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "9d43b530-ebb5-44f4-8634-f927c7f59db1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_RMF"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "559386b9-a333-4348-a43a-43fb5e77a2d5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_CCF_LegacyResources"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "adae0ec6-1095-419b-b7b6-f7dfbaeefe55",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_DCF_LegacyResources"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "f2a75083-576a-4dd8-8daa-6c0c08ec6a50",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_CCFBResources"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "28813983-ab6b-4595-b85e-cd2ba9056979",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_CMDF_Resources1"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "2fab2b7d-1d09-4c9a-bd0f-41c8c3c081c5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "currentPage" : "Resources",
+        "sectionCode" : "Resources_CMDF_Resources2"
+      },
+      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
+      "id" : "7913d841-6092-479d-ab63-90ee9ca96e20",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e6c4d6c6-934a-4f0a-acaa-c8a53cee39f1",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "title" : "Popular Now"
+      },
+      "componentName" : "forceChatter:recommendationsBig",
+      "id" : "c2e7b9cf-cf27-4163-844b-b9bf6ef7528c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "16bd0c96-2c13-496c-8efa-fd5056e67e6c",
+        "es" : "eeab4ac4-8388-4946-bb7d-1adbd25f5e22",
+        "es_mx" : "e184b3d9-21ee-431e-a178-4302f80ebc0e",
+        "fr" : "48658739-763c-45ed-8a26-9ad05bcba9ce",
+        "it" : "0b433d2c-5bf5-4cf2-98d9-e5726410f26e",
+        "ja" : "3bcc1d07-97c8-4bb6-9448-5fd0c7179df4",
+        "ko" : "088a7970-2080-4392-b769-d8e3d167cdeb",
+        "pt_br" : "3ddf49d2-e493-431e-be99-c0c666667340",
+        "pt_pt" : "273b78f5-c3cf-4b0c-99f8-d3589a2c0103",
+        "ru" : "c4c5dca7-b9c3-44c3-8b61-b64fba3e25bb",
+        "zh_cn" : "dfdd94fe-ef83-4e41-9a8b-67892c24a7b1",
+        "zh_tw" : "5e4de198-1b16-49f8-adaf-6dc8f7bec45c"
+      },
+      "renditions" : [ {
+        "id" : "dfdd94fe-ef83-4e41-9a8b-67892c24a7b1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "现在流行"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c4c5dca7-b9c3-44c3-8b61-b64fba3e25bb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Популярные сейчас"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "273b78f5-c3cf-4b0c-99f8-d3589a2c0103",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Popular agora"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3bcc1d07-97c8-4bb6-9448-5fd0c7179df4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "トレンド"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0b433d2c-5bf5-4cf2-98d9-e5726410f26e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "In voga ora"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "48658739-763c-45ed-8a26-9ad05bcba9ce",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Populaire maintenant"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e184b3d9-21ee-431e-a178-4302f80ebc0e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Popular ahora"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "16bd0c96-2c13-496c-8efa-fd5056e67e6c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Im Blickpunkt"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "088a7970-2080-4392-b769-d8e3d167cdeb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "인기 콘텐츠"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "eeab4ac4-8388-4946-bb7d-1adbd25f5e22",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Popular ahora"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3ddf49d2-e493-431e-be99-c0c666667340",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Popular agora"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5e4de198-1b16-49f8-adaf-6dc8f7bec45c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "熱門項目"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a0c6fdfe-4bed-41aa-a81d-045f03211901",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "6b465ba4-9445-4118-b36c-517f50fd70df",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Resources"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "76ebf03e-c042-4e2f-b2fa-579f79950df0",
+      "renditionMap" : {
+        "de" : "247f6db3-4bf6-480a-bb21-443bc704bc5b",
+        "es" : "aebf2a2a-b8a1-4407-8c2c-0c9a2f1de7ab",
+        "es_mx" : "6410675a-2f3b-4497-af24-d05b02f299eb",
+        "fr" : "06055d54-9781-45b9-b3ff-46e12bdd9bb8",
+        "it" : "d792ffea-5943-40e3-a325-5e5368d7c219",
+        "ja" : "6c27529c-1593-4cd4-8078-a8f79315a152",
+        "ko" : "26ba1cec-5def-41c7-9961-31c6ca63985a",
+        "pt_br" : "57d7ae86-f332-4b12-a311-f51407d489d4",
+        "pt_pt" : "b1e1cbcb-7577-472f-bd7f-448afb5b4bd4",
+        "ru" : "84851fd8-2d1c-4b66-b515-2749efc9a7b0",
+        "zh_cn" : "3173f893-25a9-4371-8bcf-447746c548a0",
+        "zh_tw" : "480bfcef-30a4-4e50-9fdb-df8202137802"
+      },
+      "renditions" : [ {
+        "id" : "3173f893-25a9-4371-8bcf-447746c548a0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "84851fd8-2d1c-4b66-b515-2749efc9a7b0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b1e1cbcb-7577-472f-bd7f-448afb5b4bd4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6c27529c-1593-4cd4-8078-a8f79315a152",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d792ffea-5943-40e3-a325-5e5368d7c219",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "06055d54-9781-45b9-b3ff-46e12bdd9bb8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6410675a-2f3b-4497-af24-d05b02f299eb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "247f6db3-4bf6-480a-bb21-443bc704bc5b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "26ba1cec-5def-41c7-9961-31c6ca63985a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "aebf2a2a-b8a1-4407-8c2c-0c9a2f1de7ab",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "57d7ae86-f332-4b12-a311-f51407d489d4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "480bfcef-30a4-4e50-9fdb-df8202137802",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "Resources",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "c86f0c41-842f-40de-89e3-2c65236edd4c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "files"
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <measures>
+        <field>aggregateflex.A</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunities Q2</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>aggregateflex.B</field>
+        <isDerived>false</isDerived>
+        <label>Updated Opportunities -May 2025</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>aggregateflex.C</field>
+        <isDerived>false</isDerived>
+        <label>Updated Opportunities -April 2025</label>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Oppty_Updates_Snapshots_Validation</waveVisualization>
+</WaveXmd>

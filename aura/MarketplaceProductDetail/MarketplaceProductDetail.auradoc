@@ -1,0 +1,26 @@
+<aura:documentation>
+	<aura:description>
+    <p>Offering Detail</p>
+
+    <a href="https://nppdevpmp-intelcloudcrm.cs67.force.com/styleguide/s/l3-offering-detail?language=en_US">
+      Preview in L3 Offering page 
+    </a>
+    <br/>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 7/24/2019</p>
+    <p>CurrentVersion: 1.21</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+    <p>Responsible for rendering the Offering Details content. The do init should be update to actually retrieve the offering details given a record id.</p>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.11 - Update css</p>
+		<p>1.1 - Updated Resource list rendering to not use accordion but an ISGResourceList component</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

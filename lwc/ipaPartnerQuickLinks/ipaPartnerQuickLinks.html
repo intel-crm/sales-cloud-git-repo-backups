@@ -1,0 +1,12 @@
+<template>
+    <template if:true={ifs.hasLinks}>
+        <h3 class="slds-m-bottom_medium">{title}</h3>
+        <div class="simple-card-list-container">
+            <template for:each={cards} for:item="card">
+                <div class="simple-card-list-item" key={card.id}>
+                    <c-core-intc-simple-card card={card} card-template-type={cardTemplateType} theme="gray"></c-core-intc-simple-card>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

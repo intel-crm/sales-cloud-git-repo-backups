@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>IQR Release Notification WW39 2022</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>What&apos;s New</actionButtonLabel>
+        <actionButtonLink>https://salescrm.intel.com/ww39-2022-release-update/</actionButtonLink>
+        <body>&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;That on 20&lt;/span&gt;&lt;sup style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;th&lt;/sup&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt; September, IQR will be launching for CCG! &lt;/span&gt;&lt;a href=&quot;https://intel.sharepoint.com/:w:/s/MeetComp/EUCIh7DIqFFCj1twxtGY4dIBA74ZOQ-txji4tkuA5bWWxw?e=Mk40kC&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;Learn more&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;The latest Tenders IQR release included the following enhancements:&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;Customizable homepages for Regional Pricing Managers &amp;amp; Account Executives&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;New Change Request notification for Account Executives &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;Approved Quantity added to the email notification sent when a quote line is changed to Won&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;T&amp;amp;Cs and Account Division sections moved positions on the quote layout &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;Ability to search for Ethernet products by MMID &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;Multi-select available for Account Division&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif;&quot;&gt;And much more…&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;IntelOne Text&amp;quot;, sans-serif; color: rgb(59, 56, 56);&quot;&gt;To get a detailed understanding of each change, click the What’s New button.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;</body>
+        <customApplication>Pricing_Intel_Quote_Request</customApplication>
+        <delayDays>1</delayDays>
+        <displayType>DockedComposer</displayType>
+        <endDate>2022-12-01</endDate>
+        <header>Welcome to Intel Quote Request</header>
+        <isPublished>false</isPublished>
+        <masterLabel>IQR Release Notification WW39 2022</masterLabel>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2022-09-16</startDate>
+        <targetPageKey1>SBQQ__Quote__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Did you know…</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

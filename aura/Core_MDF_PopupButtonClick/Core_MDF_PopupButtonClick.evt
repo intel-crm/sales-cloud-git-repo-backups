@@ -1,0 +1,5 @@
+<aura:event type="Component" description="On the click of yes or no in Core_MDF_ELCpopup component it passes value to parent component">
+    <aura:attribute name="ButtonClick" type="boolean" description="This stores the input given by user in event popup"/>
+   <!-- <aura:attribute name="ELCButtonClick" type="boolean" description="This stores the input given by user in elc popup"/>-->
+    <aura:attribute name="popupName" type="string" description="This stores the input given by user in elc popup"/>
+</aura:event>

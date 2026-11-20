@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Message Contact Group Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Message Contact Group Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact Group --></label>
+        <name>PRM_Contact_Group_Id__c</name>
+        <relationshipLabel><!-- Message Contact Group Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>PRM_Message_Id__c</name>
+        <relationshipLabel><!-- Message Contact Group Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

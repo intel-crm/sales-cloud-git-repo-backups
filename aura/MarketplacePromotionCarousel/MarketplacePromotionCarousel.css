@@ -1,0 +1,71 @@
+.THIS {
+  position: relative;
+  min-height: 150px;
+}
+
+.THIS h3 {
+  font-size: 1.500em;
+  line-height: 1.167;
+  font-weight: 300;
+  color: t(blue);
+}
+
+.THIS .imageContainer img {
+  width: 100%;
+}
+
+.THIS h4 {
+  color: t(darkGray);
+}
+
+.THIS .hideOverflow {
+  overflow: hidden;
+}
+
+.THIS .carouselPosition {
+  transition: transform 0.4s linear;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+
+.THIS .carouselCard {
+  width: 100%;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+    .THIS .imageContainer {
+      text-align: center;
+      border-bottom: 1px solid t(lightGray);
+    }
+    .THIS .textContainer {
+      padding: 24px;
+    }
+    .THIS .carouselCard {
+      padding: 0 16px;
+    }
+    .THIS .innerCard {
+      background: t(bladeBackground); /*Changed the background*/
+    }
+
+}
+@media (min-width: 768px) {
+  .THIS .imageContainer.imgleft {
+    padding: 0 26px 0 16px;
+  }
+  .THIS .imageContainer.imgright {
+    padding: 0 16px 0 26px;
+  }
+  .THIS .textContainer {
+    padding: 0 16px;
+  }
+  .THIS .hideOverflow {
+    background: t(bladeBackground);/*Changed the background*/
+  }
+  .THIS .carouselIndicatorWrap {
+    padding: 1em 0;
+  }
+
+}

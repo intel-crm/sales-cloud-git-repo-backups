@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_42835502</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OpportunityTeamMember.Core_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Description_of_Contribution__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_Opportunity_Support__c.Core_CSA_RecordType,Core_Opportunity_Support__c.Core_TSS_Request</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>Core_Opportunity_Support__c</relatedTable>
+        <relatedTableJoinColumn>Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    OWNER_MANAGER=&quot;Maurits Tichelman&quot;,
+    OWNER_MANAGER=&quot;Torsten Kahrmann&quot;,
+    OWNER_MANAGER=&quot;Tal Elgar&quot;,
+    OWNER_MANAGER=&quot;Simon Wilyman&quot;,
+    OWNER_MANAGER=&quot;Elizabeth Collett&quot;,
+    OWNER_MANAGER=&quot;Richard Peel&quot;,
+    OWNER_MANAGER=&quot;Patricia Pozuelo Real&quot;,
+    OWNER_MANAGER=&quot;Georgios Kardaras&quot;,
+    OWNER_MANAGER=&quot;Norberto Carrascal&quot;,
+    OWNER_MANAGER=&quot;Jost Henning Eid&quot;,
+    OWNER_MANAGER=&quot;Christine Harrison&quot;,
+    OWNER_MANAGER=&quot;Paolo Righi&quot;,
+    OWNER_MANAGER=&quot;Tatiana Mingazova&quot;),
+    &quot;Partners&quot;, 
+IF(OR(
+    OWNER_MANAGER=&quot;Sonja Pierer&quot;,
+    OWNER_MANAGER=&quot;Stephanie Loock&quot;,
+    OWNER_MANAGER=&quot;Simon Windsor&quot;,
+    OWNER_MANAGER=&quot;Gosia Dzul&quot;,
+    OWNER_MANAGER=&quot;Katarzyna Bielak&quot;,
+    OWNER_MANAGER=&quot;GALIN DIMOV&quot;,
+    OWNER_MANAGER=&quot;Edwin Peters&quot;,
+    OWNER_MANAGER=&quot;Kareem Eletreby&quot;),
+    &quot;Digital Sales&quot;,
+IF(OR(
+    OWNER_MANAGER=&quot;Javier Galiana&quot;,
+    OWNER_MANAGER=&quot;Stephanie GOHIER&quot;,
+    OWNER_MANAGER=&quot;Jesus Sanchez Paniagua&quot;),
+    &quot;Consumer&quot;,
+IF(OR(
+    OWNER_MANAGER=&quot;Steve Shakespeare&quot;,
+    OWNER_MANAGER=&quot;Ivana Jordanova&quot;,
+    OWNER_MANAGER=&quot;Andreas Timm&quot;,
+    OWNER_MANAGER=&quot;Dieter Hoffend&quot;,
+    OWNER_MANAGER=&quot;ERWAN MONTAUX&quot;,
+    OWNER_MANAGER=&quot;Iain Beckingham&quot;,
+    OWNER_MANAGER=&quot;Sven Beckmann&quot;),
+    &quot;EPS&quot;, &quot;Other&quot;))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <booleanFilter>1 AND (2 OR 4 OR 5 OR 6 OR 10) AND 3 AND (7 OR 8 OR 9)</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityTeamMember.Core_Date_Added__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>6/20/2023 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Andy Green,Illyse Sheaffer,Jason Lamb,Jim Triestman,Justin Elkow,Phil King,Sachin Handa,Antonino Albarran,Markus Leberecht,Mohamed Elsaid,Thomas Melzer,Gianluca Cecchi,Xiaojun Zhang,Feng Gao,Taka Matsuda,Otto Chow,Peter Huang,Jackie Lee,Naoyuki Mori,Dave Buchholz,Marcelo Bertolami,Eric Chong,Traci Taylor,Matthew Harrison,Tristian Turner,Karie Gardner,Rafael Escalante Alfonso,Federico Canete,German Loureiro,Joab Paiva,Afshin Abadi,Dmitry Artyukhin,Pamina Karvela,Enrique Castera Garcia,Claude Chauvet,Martin Lloydy,Jimmy Wai,Darek Wittek,Congchao Cheng,Michael BQ Yao,Rajender Bedi,Kiyoshi Sakon,Kiran Shimoga,Mattur Mattur,Steven Chang</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Tammi Westall,Rob Marsh​,Oliver Heard​,Jason Fedder,Rob Sornson,Manav Bhalla,Gabriel Torres Chico,Kevin Reinert,Leila Sabeti,Ahmed Abourehab,Prashant Agarwal,Hind Azegrouz,Rory Browne,Michael Burkardsmaier,Thomas Dietrich,Stevan Dragas,Horst Katter,Patrik Lautin,Krzysztof Ornoch,Jari Pietila,Sarah Robinson,Fotios Samelis,Alastair Sands,Danai Skournetou,Tomas Stralman,Ananthakrishnan Vr,Congchao Cheng,Lan Ding,Donghao Zhang,Rajender Bedi,Thomas Sennhauser,Jeff Chang,Wei Xian,Xing Yow,Harri Reddy,Daniel Seo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Rob Marsh​,Shane Bower,Fred Moses,Jason Leighton,Aysha Malik,Jeff Jackson,Manan Kathuria,Gopi Agrawal,Mike Skymba,Carter K Green,Gary Gumanow,Henry Sun,Joel Madrigal,Ritsuka Kawakubo,Ross Corfield,Aurelio Prado,Thomas Metzger,Chris Allison,Robert Gaines,Keith Gray,Everton Paulino,Adam Roe,Ahmed Al-jeshi,Fouzhan Hosseini,Frank Vigilant,Andrea Luiselli,Gilles Civario,Andrew Mironov,Congchao Cheng,Feng Gao,Seetha Nookala,Nachiket Kumar M,Natsuki Hosono,Nomura Kentaro,Stephen Holt,Leila Sabeti,Grethen Stewart,William Fowler,Michael Spinali,Emmanuel Rochette,Sumesh Sukumar,Rajiv Mandal,Chris Ah-Siong</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jeff Jackson,Manan Kathuria,Gopi Agrawal,Mike Skymba,Carter K Green,Gary Gumanow,Henry Sun,Joel Madrigal,Ritsuka Kawakubo,Ross Corfield,Aurelio Prado,Thomas Metzger,Chris Allison,Robert Gaines,Keith Gray,Everton Paulino,Adam Roe,Ahmed Al-jeshi,Fouzhan Hosseini,Frank Vigilant,Andrea Luiselli,Gilles Civario,Andrew Mironov,Congchao Cheng,Feng Gao,Seetha Nookala,Nachiket Kumar M,Natsuki Hosono,Nomura Kentaro,Stephen Holt,Leila Sabeti,Grethen Stewart,William Fowler,Michael Spinali,Emmanuel Rochette,Sumesh Sukumar,Rajiv Mandal,Chris Ah-SiongTomas Stralman,Ahmed Abourehab,Hind Azegrouz,Michael Burkardsmaier,Enrique Castera Garcia,Mohamed Elsaid,Pamina Karvela,Thomas Melzer,Vsevolod Semouchin,Danai Skournetou,Can Yurtseven,Wei Wen,Chaoqing Zhao,Yu-Ping Zhao,Wei Yu,Wei Yang,Huipeng Deng,Jianqian Zhou,Yang Lu,Jiang Chen,Lei Xia,Taka Matsuda,Thomas Sennhauser,Merritte Stidston,Oliver Heard,Thomas Dietrich,Rob Marsh,Jason Fedder,Sarah Robinson,Joshua Segovia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001KLNeqAAH,0063b00001KVXsWAAX,0063b00001KVJOTAA5,0063b00001FRGu3AAH,0063b00001JT93jAAD,0063b00001FROMbAAP,0063b00001JT943AAD,0063b00001K8XQmAAN,0063b00001KVVMxAAP,0063b00001KVVNWAA5,0063b00001JTInWAAX,0063b00001KVVOPAA5,0063b00001IuNC8AAN,0063b00001KLAkWAAX,0063b00001KKzupAAD,0063b00001KL6bhAAD,0063b00001Im3GUAAZ,0063b00001IuviFAAR,0063b00001HWnfqAAD,0063b00001GK81TAAT,006Ho00000UzFJ0IAN,0063b00001KVT5fAAH,0063b00001KVL25AAH,0063b00001JSNLnAAP,0063b00001Iu63gAAB,0063b00001KVTuJAAX,0063b00001IuQZQAA3,0063b00001K8VWWAA3,006Ho00000UzgT9IAJ,0063b00001K8LQyAAN,0063b00001KVFFDAA5,0063b00001HHOlJAAX,0063b00001KLKNfAAP,0063b00001IlnOIAAZ,0063b00001JTZJvAAP,0063b00001JTN0XAAX,0063b00001KLPHWAA5,0063b00001HxGgDAAV,0063b00001GJ2NZAA1,006o000000P0e0CAAR,0063b00001KLOJ6AAP,0063b00001KVJJOAA5,0063b00001KVXsgAAH,006Ho00000UkYoXIAV,0063b00001KVWVHAA5,0063b00001IlsYXAAZ,0063b00001FFJJxAAP,0063b00001IunIMAAZ,0063b00001Iuhn7AAB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001KLNeqAAH,0063b00001KVXsWAAX,0063b00001KVJOTAA5,0063b00001FRGu3AAH,0063b00001JT93jAAD,0063b00001FROMbAAP,0063b00001JT943AAD,0063b00001K8XQmAAN,0063b00001KVVMxAAP,0063b00001KVVNWAA5,0063b00001JTInWAAX,0063b00001KVVOPAA5,0063b00001IuNC8AAN,0063b00001KLAkWAAX,0063b00001KKzupAAD,0063b00001KL6bhAAD,0063b00001Im3GUAAZ,0063b00001IuviFAAR,0063b00001HWnfqAAD,0063b00001GK81TAAT,006Ho00000UzFJ0IAN,0063b00001KVT5fAAH,0063b00001KVL25AAH,0063b00001JSNLnAAP,0063b00001Iu63gAAB,0063b00001KVTuJAAX,0063b00001IuQZQAA3,0063b00001K8VWWAA3,006Ho00000UzgT9IAJ,0063b00001K8LQyAAN,0063b00001KVFFDAA5,0063b00001HHOlJAAX,0063b00001KLKNfAAP,0063b00001IlnOIAAZ,0063b00001JTZJvAAP,0063b00001JTN0XAAX,0063b00001KLPHWAA5,0063b00001HxGgDAAV,0063b00001GJ2NZAA1,006o000000P0e0CAAR,0063b00001KLOJ6AAP,0063b00001KVJJOAA5,0063b00001KVXsgAAH,006Ho00000UkYoXIAV,0063b00001KVWVHAA5,0063b00001IlsYXAAZ,0063b00001FFJJxAAP,0063b00001IunIMAAZ,0063b00001Iuhn7AAB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0063b00001Ilz7nAAB,0063b00001KL9lwAAD,0063b00001KL3AWAA1,0063b00001JTByYAAX,0063b00001KVFKIAA5,0063b00001IunMOAAZ,006Ho00000UzIzqIAF,0063b00001Iurg5AAB,0063b00001KVDBEAA5,0063b00001KVWDwAAP,0063b00001JTDRTAA5,0063b00001JTDRYAA5,0063b00001JTDRJAA5,0063b00001KVLtdAAH,0063b00001KL3BtAAL,0063b00001KVIOrAAP,006Ho00000V8o6JIAR,006Ho00000V8kZzIAJ,006Ho00000Uzk5xIAB,006Ho00000UzoUqIAJ,0063b00001KVQZhAAP,0063b00001K8frPAAR,0063b00001KVScEAAX,0063b00001KLUw9AAH,006Ho00000UzMZsIAN,0063b00001JSI7vAAH,0063b00001KKztwAAD,0063b00001KLXqGAAX,0063b00001KVXrsAAH,0063b00001KKyJIAA1,0063b00001KL1khAAD,0063b00001KVF1QAAX,0063b00001KLGJ9AAP,0063b00001KLKMcAAP,0063b00001KLKN6AAP,0063b00001KLGKlAAP,0063b00001IlyBZAAZ,0063b00001KLMntAAH,0063b00001KVEGwAAP,0063b00001KL0jkAAD,0063b00001K8eurAAB,0063b00001HxW6UAAV</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Steve Stavros Stavropoulos,Marcelo Bertolami,Rafael Escalante Alfonso,Sarah Musick,Keith Sundberg,Gopal Kandhasamy,Brian Caddell,Kiran Agrahara,Vijay Bandari,Nishikant Singh,Vivek Kulkarni,Miguel Soto Cortes,David Rhoades,Antonino Albarran,Volga Simsek,Bhavani Salunkhe,Vsevolod Semouchin,Marcel Brueckner,Ali Can Yurtseven,Marco Righini,Pedro Benito Mendoza,Swapnil Shah,Xiaojun Zhang,Feng Gao,Jimin Cai,Qingfeng Zhang,Marty Liang,Lianghou Xu,Emily Zhou,Tong Chen,Xingxian Luo,Yuan Xu,Xiaobao Gu,Myles Hu,Taka Matsuda,Mousumi Dash,Prabhas Harlapur,Beny Ibrani,Jackie Lee,Naoyuki Mori</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER_MANAGER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CSA/TSS to Opp Teams w/out SRR_Reg Bonus</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

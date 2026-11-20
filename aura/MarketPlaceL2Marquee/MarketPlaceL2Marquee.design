@@ -1,0 +1,7 @@
+<design:component label="Marketplace L2 Marquee">
+  <design:attribute name="headingLabel" label="Heading-- deprecated design attribute -- now using Custom Label" />
+  <design:attribute name="textLabel" label="Text-- deprecated design attribute -- now using Custom Label" />
+  <design:attribute name="showBreadcrumbs" label="Show Breadcrumbs" />
+  <design:attribute name="showSignIn" label="Show Sign In" />
+  <design:attribute name="analyticsPageType" label="PageType for analytics" />
+</design:component>

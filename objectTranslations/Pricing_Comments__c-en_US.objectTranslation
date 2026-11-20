@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Comment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Comments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Answer --></label>
+        <name>Pricing_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Ref Id --></label>
+        <name>Pricing_Comment_Ref_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Pricing_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>Pricing_Quote__c</name>
+        <relationshipLabel><!-- Comments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Required --></label>
+        <name>Pricing_Required_Ind__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- The comment with this record type represents the communication between the pricing managers --></description>
+        <label><!-- Pricing Manager Comment --></label>
+        <name>Pricing_Manager_Comment</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This comment type is created at quote level at the time of quote creation --></description>
+        <label><!-- Quote Comment --></label>
+        <name>Pricing_Quote_Comment</name>
+    </recordTypes>
+    <sharingReasons>
+        <label><!-- Account Team Group --></label>
+        <name>Pricing_Account_Team_Group</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- Partner Group Mapping --></label>
+        <name>Pricing_Partner_Group_Mapping</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

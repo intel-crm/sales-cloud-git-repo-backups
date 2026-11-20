@@ -1,0 +1,24 @@
+<template>
+    <template if:true={ifs.isNotActive}>
+        <c-ipa-partner-welcome-tile
+        is-first={step.isFirst}
+        is-last={step.isLast}
+        title={title}
+        description={description}
+        type={step.stepStatus}
+        >
+        </c-ipa-partner-welcome-tile>
+    </template>
+    <template if:false={ifs.isNotActive}>
+        <c-ipa-partner-onboarding-sub-component step={step} onmarkstepcomplete={markStepComplete}>
+            <div slot="tile">
+                <c-ipa-partner-welcome-tile
+                is-first={step.isFirst}
+                is-last={step.isLast}
+                title={title}
+                description={description}
+                type={step.stepStatus} ></c-ipa-partner-welcome-tile>
+            </div>
+        </c-ipa-partner-onboarding-sub-component>
+    </template>
+</template>

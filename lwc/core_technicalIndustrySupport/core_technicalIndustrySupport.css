@@ -1,0 +1,19 @@
+.custom-textarea-container {  
+
+    position: relative;
+
+}
+.custom-textarea {
+
+    background-color: lightgray;
+
+    width: 100%;
+
+    border-radius: 5px;
+
+    height:150px;
+}
+.custom-textarea:disabled {
+    background-color: #f3f3f3; /* Desired color for disabled-like state */
+    color: black; /* Adjust text color for better visibility */
+}

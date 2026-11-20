@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Add Object Name to which Feed Item creation is restricted in Portal</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Feed Item Create Restriction</label>
+    <visibility>Public</visibility>
+</CustomObject>

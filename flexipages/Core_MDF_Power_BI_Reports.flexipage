@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://sqlbiprd.intel.com/reports/browse/Co-Marketing/Partner%20Investment%20Center&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Co-Marketing Power BI Reports (&lt;/a&gt;&lt;a href=&quot;https://ags.intel.com/identityiq/ui/rest/redirect?rp1=/accessRequest/accessRequest.jsf&amp;amp;rp2=accessRequest/manageAccess/add?filterKeyword=%22Co%2DMarketing%20%2D%20Power%20BI%20%2D%20Production%20%2D%20CCP%20Reports%20%2D%20Viewer%22&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;request access&lt;/a&gt;&lt;a href=&quot;https://sqlbiprd.intel.com/Reports/browse/Co-Marketing/CCP&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;)&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://intel.sharepoint.com/:b:/r/sites/ccptrainingandcommunications/Training%20Presentations/Reporting/internal_reporting.pdf?csf=1&amp;amp;web=1&amp;amp;e=V1xU60&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Co-Marketing Power BI Reports Training&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Power BI Reports</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

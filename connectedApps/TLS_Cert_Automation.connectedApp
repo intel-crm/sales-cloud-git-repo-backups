@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sankarshanax.murali@intel.com</contactEmail>
+    <description>Connected App used to authenticate pre-authorized admin users to allow for automation of the TLS Certificate renewals.</description>
+    <label>TLS Cert Automation</label>
+    <oauthConfig>
+        <callbackUrl>sfdc://oauth/jwt/success</callbackUrl>
+        <certificate>MIIDezCCAmMCFCLX0YnyukdnXoFlbnhpmw05NxgDMA0GCSqGSIb3DQEBCwUAMHox
+CzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmEx
+GjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMQ4wDAYDVQQLDAVTYWxlczEcMBoG
+A1UEAwwTVExTX0NlcnRfQXV0b21hdGlvbjAeFw0yNTEyMjAxODU2MjlaFw0zMDEy
+MTkxODU2MjlaMHoxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwL
+U2FudGEgQ2xhcmExGjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMQ4wDAYDVQQL
+DAVTYWxlczEcMBoGA1UEAwwTVExTX0NlcnRfQXV0b21hdGlvbjCCASIwDQYJKoZI
+hvcNAQEBBQADggEPADCCAQoCggEBALzqMAMB1Z9hbtviihNhD/aABJTfF56NnraC
+4XEF5SiPLm5PJPbYynGtURjofu3zSsjbFtiLJdPvP3tMpdK7Wq6/7PG8EmhTLekE
+kzvniH7SIWSSeddS+RgziKRmIms5Nvi6kBBFpY2G4+3HTs/3663BVcMuyhTcVopY
+V1TLth3Qf568/XBBKeRzvzQkC2M8mY3jVEPATx+2hV0kMMBGXs4J6oW/ZaWQRFiC
+5gOPQjb1+gy6IG2yLIvJcvRfx+N3ql5TrocC0ZlSqoVw8iyydRwxDC+IlklkgDgg
+KNrQYpFIMb4jYr7RJ6PzXpPDNhM1ae7X4hLQ4I/18S+0LSbhJ3kCAwEAATANBgkq
+hkiG9w0BAQsFAAOCAQEARF8lDsHbItGqGv2dgcpdcGGRMz9N76zQELediw18y5TD
+NbHy2uSjHBLgISg3wm59X5iITM8C5d9Nm5ruAfbx5D7diVlGSeqO1DJE5+egosEX
+BQXoHr54i9E/8Aqdp1hhwSQNs6vCT6qzjEWzTHxqCbNmy6H+P96PHsNMIqT+wgFC
+ACth5FZb4y+/f1+vjpRim93Nv5soMgBNzQEc0ZkgsX3qw71gD4zHJRf651V1iiB2
+ZiOkr7AmSTsEOKbfN2PEWCm0yk0cEX3QmogV6ZqX6FKj0UejLHkrWDl40S0UzIJw
+UgcZqulGheGxtmgi7ovJIBlBHZD6qLUt0VAJsOdy4g==</certificate>
+        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6iqAYiZ0fiYLzRuMsDcrGtJ5djpgDcYfdiN.ahomlTSs3GlRcwjO48RHg0HS</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>true</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>specific_inactivity:90:DAYS</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>TLS Cert Renewal Auth User</permissionSetName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

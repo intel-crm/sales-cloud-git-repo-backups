@@ -1,0 +1,22 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Intel optimized AI Model resources",
+  "contentBody" : {
+    "description" : "A resource for finding Intel based Generative AI models",
+    "sections" : [ {
+      "content" : "<div><a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://huggingface.co/Intel\">https://huggingface.co/Intel</a></div><div><br /></div><div><a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://github.com/intel\">https://github.com/intel</a></div><div><br /></div><div><a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://www.intel.com/content/www/us/en/artificial-intelligence/generative-ai.html\">https://www.intel.com/content/www/us/en/artificial-intelligence/generative-ai.html</a></div>",
+      "keyConcept" : "Generative AI models optimized for Intel",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div><a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://huggingface.co/docs/optimum/habana/index\">https://huggingface.co/docs/optimum/habana/index</a></div>",
+      "keyConcept" : "Hugging Face - Optimum for Intel Gaudi",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div><a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://developer.habana.ai/get-started/habana-models-performance/#performance\">https://developer.habana.ai/get-started/habana-models-performance/#performance</a></div>",
+      "keyConcept" : "Intel® Gaudi® AI accelerators Model Performance Data",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 3.0
+  },
+  "urlName" : "intel-optimized-ai-model-resources"
+}

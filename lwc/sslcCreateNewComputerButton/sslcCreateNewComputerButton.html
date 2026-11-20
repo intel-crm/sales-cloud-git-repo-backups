@@ -1,0 +1,143 @@
+<template>
+  <!--div class="container"-->
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+    <!--Changes Made By Bishal Singh-->  
+    <div class="slds-modal__container">
+        <template if:false={recordEditFormSpinner}>
+            <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+        </template>
+          <div if:true={isspinnerOn}>
+              <lightning-spinner
+                  alternative-text="Loading..." variant="brand">
+              </lightning-spinner>
+          </div>
+          <lightning-record-edit-form object-api-name="Sales_Host__c" record-id={recordId} onload={handleOnLoad}  onsuccess={handleSuccess} onerror = {handleError} onsubmit={handleSubmit}>
+            <template if:true={recordEditFormSpinner}>
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.Sales_CreateComputerConfirmationPage} </h2>
+                </header>
+            <div class="slds-modal__content slds-p-around--medium">
+                  <!--css for proper footer-->
+                  <div data-id="focusOnErrorBannerId">
+                      <lightning-messages></lightning-messages>
+                  </div>
+                  <div class="slds-grid slds-wrap">
+                      <div class="slds-size_1-of-2 slds-p-around_medium">
+                          <div class="newHostDisplay">
+                              <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr>
+                              <label for="SalesComputerText" class="newHostFormat" style="flex-basis: 35%;">{label.Sales_ComputerNameConfirmationPage}</label>
+                              <lightning-helptext content={label.Sales_ComputerNameHelpText} style="flex-basis: 13%;"></lightning-helptext>
+                              <lightning-input-field id="SalesComputerText" field-name='Sales_Computer_Name_Txt__c' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                          </div>
+                          <br>
+                          <div class="newHostDisplay">
+                                  <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr>         
+                                  <label for="SalesComputerText" class="newHostFormat" style="flex-basis: 35%;">{label.Sales_LicenseTypeConfirmationPage}</label>
+                                  <lightning-helptext content={label.Sales_LicenseTypeToolTipComputerPage} style="flex-basis: 13%;margin-top:-2px;"></lightning-helptext>
+                                  <lightning-input-field field-name='Sales_License_Type__c' value={toollicensetype} onchange={handleOnChange} disabled={validateLicenseType} variant="label-hidden" class="newHostInputFieldFormat">
+                                          </lightning-input-field>
+                          </div>
+                          <br>
+                          <template if:true={isfloatRecord}>
+                              <template if:false={isfixedRecord}>
+                                  <div class="newHostDisplay">
+                                    <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle"> </abbr>
+                                    <label for="SalesComputerText" class="newHostFormat1" style="flex-basis: 35%;">{label.Sales_RedundantServer1ConfirmationPage}</label>
+                                    <lightning-helptext content={label.Sales_RedundantServerHelpText} style="flex-basis: 13%;"></lightning-helptext>
+                                    <lightning-input-field field-name='Sales_Redundant_Server1_Txt__c' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                                  </div>
+                              </template>
+                          </template>
+                          <template if:true={isfixedRecord}>
+                              <template if:false={isfloatRecord}>
+                                <div class="newHostDisplay">
+                                    <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle"> </abbr>
+                                    <label for="SalesComputerText" class="newHostFormat1" style="flex-basis: 35%;">{label.Sales_CompanionComputerId1ConfirmationPage}</label>
+                                    <lightning-helptext content={label.Sales_CompanionComputerIdHelpText} style="flex-basis: 13%;"></lightning-helptext>
+                                    <lightning-input-field field-name='Sales_Companion_Server1_Txt__c' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                                </div>
+                              </template>
+                          </template>
+                          <br>
+                          <div class="newHostDisplay">
+                            <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr>
+                            <label for="SalesComputerText" class="newHostFormat">{label.Sales_PrimaryAdminConfirmationPage}</label>
+                            <lightning-input-field field-name='Sales_Contact__c' onchange={onchangePrimaryAdmin} value={getContactValue} disabled={disablePrimaryAdmin} required='true' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                          </div>
+                      </div>
+                      <div class="slds-size_1-of-2 slds-p-around_medium">
+                        <div class="newHostDisplay">
+                            <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr>
+                            <label for="SalesComputerText" class="newHostFormat" style="flex-basis: 35%;">{label.Sales_ComputerTypeConfirmationPage}</label>
+                            <lightning-helptext content={label.Sales_ComputertypeTooltipText} style="flex-basis: 13%;"></lightning-helptext>
+                            <lightning-input-field field-name='Sales_Computer_Type__c' field-level-help='Enter computer type' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                        </div>
+                          <div class="slds-form-element slds-form-element_horizontal">
+                              <p>
+                                  <lightning-icon icon-name="utility:info" size="xx-small"></lightning-icon>
+                                  &nbsp;
+                                  <lightning-formatted-url label={label.Sales_DetermineCompType} value="https://www.intel.com/content/www/us/en/support/programmable/licensing/support-center.html#editorialtable_383134519" target="_blank"></lightning-formatted-url>
+                              </p>
+                          </div>
+                          <div class="newHostDisplay">
+                              <abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr> 
+                              <lightning-formatted-text value="Primary Computer ID" class="newHostFormat" required="true" style="flex-basis: 35%;"></lightning-formatted-text>
+                              <!--div class="lpg-tooltip"-->
+                              <lightning-helptext content={label.Sales_ComputerTypeHelpText} style="flex-basis: 13%;"></lightning-helptext>
+                              <!--/div-->
+                              <lightning-input-field field-name='Name' onchange={onchangeNICId} variant="label-hidden" class="newHostInputFieldFormat" required='true'></lightning-input-field>
+                          </div>
+                          <br>
+                          <template if:true={isfloatRecord}>
+                              <template if:false={isfixedRecord}>
+                                <div class="newHostDisplay">
+                                    <!--abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr-->
+                                    <label for="SalesComputerText" class="newHostFormat2" style="flex-basis: 35%;">{label.Sales_RedundantServerId2ConfirmationPage}</label>
+                                    <lightning-helptext content={label.Sales_RedundantServerHelpText} style="flex-basis: 13%;"></lightning-helptext>
+                                    <lightning-input-field field-name='Sales_Redundant_Server2_Txt__c' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                                </div>
+                              </template>
+                          </template>
+                          <template if:true={isfixedRecord}>
+                              <template if:false={isfloatRecord}>
+                                <div class="newHostDisplay">
+                                    <!--abbr title="required" class="slds-float_left slds-required newHostAbbrStyle">*</abbr-->
+                                    <label for="SalesComputerText" class="newHostFormat2" style="flex-basis: 35%;">{label.Sales_CompanionComputerId2ConfirmationPage}</label>
+                                    <lightning-helptext content={label.Sales_CompanionComputerIdHelpText} style="flex-basis: 13%;"></lightning-helptext>
+                                    <lightning-input-field field-name='Sales_Companion_Server2_Txt__c' variant="label-hidden" class="newHostInputFieldFormat"></lightning-input-field>
+                                </div>
+                              </template>
+                          </template>
+                      </div>
+                  </div>
+              </div>
+              <!-- Modal Footer start-->
+              <footer class="slds-modal__footer">
+                  <!--template>
+                      <template if:true={fromlicensegenerate}>
+                          <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+                          <button class="slds-button slds-button_brand slds-m-left_x-small" disabled={buttonClicked} title="Generate License">Generate License</button>
+                          </template-->
+                  <!--template if:false={fromlicensegenerate}-->
+                  <lightning-button variant="neutral" label={label.Sales_Cancel} title="Cancel" onclick={handleCancelNew} class="slds-m-left_x-small"></lightning-button>
+                  &nbsp;&nbsp;
+                  <!--button class="slds-button slds-button_brand slds-m-left_x-small" disabled={buttonClicked} title="Save">Save</button-->
+                  <lightning-button variant="brand" type="submit" label={label.Sales_SaveConfirmationPage}></lightning-button>
+              </footer>
+            </template>
+          </lightning-record-edit-form>
+      </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+  <template if:true={enableFeedback}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+          aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+          <div class="slds-modal__container">
+              <!--c-sales_-event-feedback rec-id={licneserecordid} capablity={capablity}>
+                  </c-sales_-event-feedback-->
+          </div>
+      </section>
+  </template>
+  <!--/div-->
+</template>

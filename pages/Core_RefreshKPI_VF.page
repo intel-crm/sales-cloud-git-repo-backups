@@ -1,0 +1,15 @@
+<!--<apex:page standardController="Core_Oppty_KPI_New__c" extensions="Core_RefreshKPI"  recordSetVar="oppkpi" >-->
+<apex:page standardController="Core_Oppty_KPI_New__c" extensions="Core_RefreshKPI"  recordSetVar="oppkpi" lightningStylesheets="true" action="{!autoRun}" >
+    <apex:form >  
+        <apex:pageBlock >
+            
+            <apex:pageMessages />
+            <apex:outputText escape="false" value="{!$Label.Core_KPI_Refresh_Started}" rendered="{!ShowpageStartMsg}"/>
+            <apex:outputText escape="false" value="{!$Label.Core_KPI_Refresh_On}" rendered="{!ShowpageProgressMsg}"/>
+            
+            <apex:pageBlockButtons location="bottom">  
+                <apex:commandButton value="Ok" action="{!back}" status="pageStatus"/>  
+            </apex:pageBlockButtons>  
+        </apex:pageBlock>  
+    </apex:form>  
+</apex:page>

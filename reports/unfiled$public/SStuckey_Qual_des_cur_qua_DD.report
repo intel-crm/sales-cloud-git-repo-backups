@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>HASOPPLINEITEM</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>partner holding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Define,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to,Design: Original,Design: Secondary,Design: Software-enable</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AMAZON,AMAZON LAB 126,AMAZON.COM,APPLE INC,APPLE INC.,alphabet,Amazon Web Services,Inc.,Apple B.V. &amp; Co KG,Apple Computer Inc,Apple GmbH,CISCO PHOTONICS ITALY SRL,CISCO SYSTEMS INC,CISCO SYSTEMS INC.,CISCO SYSTEMS,INC.,CISCO SYSTEMS NORWAY AS,CISCO Systems (China) Research &amp; Development Co.,Ltd.,Cisco Systems; Cisco Systems Israel Ltd,Cisco Systems Italy Srl,Cisco Systems,DELL (XIAMEN) COMPANY LIMITED,DELL COMPUTER,DELL U S A CORPORATION,Dell Canada,Dell Inc.,Dell Japan,Dell Technologies,Dell,Inc. OEM Solutions,HP Enterprise; HP Inc,HP Inc.,LENOVO INTERNATIONAL (TAIWAN),Lenovo (Beijing) Limited,Lenovo (united states) Inc.,META PLATFORMS INC,MICROSOFT,MICROSOFT CORPORATION,MICROSOFT RESEARCH,MICROSOFT UK,Meta; Microsoft Corporation (India) Pvt. Ltd.,SUPER MICRO COMPUTERS</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>SStuckey- Qual/des cur qua DD</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

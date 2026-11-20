@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>FlexQueuedata</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>FlexQueuedata</value>
+    </caseValues>
+    <fields>
+        <label><!-- AsyncApexClassId --></label>
+        <name>espy__AsyncApexClassId__c</name>
+    </fields>
+    <fields>
+        <label><!-- AsyncApexClassName --></label>
+        <name>espy__AsyncApexClassName__c</name>
+    </fields>
+    <fields>
+        <label><!-- AsyncApexJobId --></label>
+        <name>espy__AsyncApexJobId__c</name>
+    </fields>
+    <fields>
+        <label><!-- FlexQueueItemId --></label>
+        <name>espy__FlexQueueItemId__c</name>
+    </fields>
+    <fields>
+        <label><!-- JobPosition --></label>
+        <name>espy__JobPosition__c</name>
+    </fields>
+    <fields>
+        <label><!-- JobType --></label>
+        <name>espy__JobType__c</name>
+        <picklistValues>
+            <masterLabel>ApexToken</masterLabel>
+            <translation><!-- ApexToken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BatchApex</masterLabel>
+            <translation><!-- BatchApex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BatchApexWorker</masterLabel>
+            <translation><!-- BatchApexWorker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Future</masterLabel>
+            <translation><!-- Future --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queueable</masterLabel>
+            <translation><!-- Queueable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ScheduledApex</masterLabel>
+            <translation><!-- ScheduledApex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SharingRecalculation</masterLabel>
+            <translation><!-- SharingRecalculation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TestRequest</masterLabel>
+            <translation><!-- TestRequest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TestWorker</masterLabel>
+            <translation><!-- TestWorker --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- UniqueId --></label>
+        <name>espy__UniqueId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

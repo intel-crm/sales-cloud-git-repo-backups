@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Metadata used to manage VAT Program, Country ,Budget Type, VAT Enable</description>
+    <fields>
+        <fullName>Core_MDF_BudgetType__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>BudgetType</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Country__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Country</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UNITED KINGDOM</fullName>
+                    <default>true</default>
+                    <label>UNITED KINGDOM</label>
+                </value>
+                <value>
+                    <fullName>JAPAN</fullName>
+                    <default>false</default>
+                    <label>JAPAN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Invoice_Number_Optional__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Invoice Number Optional</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Legal_Entity__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Legal Entity</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Retail Marketing Funds</fullName>
+                    <default>true</default>
+                    <label>Retail Marketing Funds</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Channel MDF</fullName>
+                    <default>false</default>
+                    <label>Channel MDF</label>
+                </value>
+                <value>
+                    <fullName>CoGTM</fullName>
+                    <default>false</default>
+                    <label>CoGTM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Show_Applicable_VAT_Percentage__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To show or Hide the Applicable VAT Percentage field</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Show Applicable VAT Percentage</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_VAT_Enable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>VAT Enable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_VAT_File_Size__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>VAT File Size</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_VAT_Mandatory__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>VAT Mandatory</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_VAT_Opt_in_Option_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>VAT Opt-in Option Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>CCP VAT Config</label>
+    <listViews>
+        <fullName>All_Fields</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <columns>Core_MDF_VAT_File_Size__c</columns>
+        <columns>Core_MDF_Legal_Entity__c</columns>
+        <columns>Core_MDF_Invoice_Number_Optional__c</columns>
+        <columns>Core_MDF_Is_Active__c</columns>
+        <columns>Core_MDF_VAT_Mandatory__c</columns>
+        <columns>Core_MDF_VAT_Opt_in_Option_Required__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Fields</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>CCP VAT Configs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

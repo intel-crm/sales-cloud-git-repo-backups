@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Design Registrations Bulk Upload</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Design Registrations Bulk Upload</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- CSV Column Name --></label>
+        <name>Core_CSV_Column_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design API Field Name --></label>
+        <name>Core_Design_API_Field_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Required --></label>
+        <name>Core_Design_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Data Type --></label>
+        <name>Core_Field_Data_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Header/ Product --></label>
+        <name>Core_Header_Or_Product_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage API Field Name --></label>
+        <name>Core_Stage_API_Field_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- During csv or json import, for staging object, is this field value is required or not. --></help>
+        <label><!-- Stage Required --></label>
+        <name>Core_Stage_Required_Ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

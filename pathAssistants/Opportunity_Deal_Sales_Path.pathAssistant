@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Opportunity Deal Sales Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Core_Product_Segment__c</fieldNames>
+        <fieldNames>Core_Product_Application__c</fieldNames>
+        <fieldNames>Core_Consumption_Market__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;Stage Gates: Opportunity Contact &amp;amp; Role, Product Application, Product Segment, Vertical Market, &lt;/strong&gt;&lt;strong&gt;Opportunity Products&lt;/strong&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;(Deal: Sell-To/Deal: Sell-through)&lt;/strong&gt;&lt;strong&gt;, Business Decision Maker&lt;/strong&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;(Deal: Sell-To/Deal: Sell-through)&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Discover&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Clear understanding &amp;amp; documentation of problem statement, gaps /needs, desired business results, decision criteria/product requirements (including product application/segment / vertical market)&lt;/li&gt;&lt;li&gt;Confirm customer budget, resources, timeline + key customer contacts&lt;/li&gt;&lt;li&gt;Understand competitive landscape&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Define</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Stage Gates: Business Decision Maker, Manager Approves POP&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Design&lt;/a&gt; &lt;/li&gt;&lt;li&gt;Successful pilot/POC (&lt;em&gt;if desired by customer&lt;/em&gt;)&lt;/li&gt;&lt;li&gt;Customer confirms Intel-based solution fulfills business &amp;amp; technical requirements; issues identified &amp;amp; resolved (or resolution path identified)&lt;/li&gt;&lt;li&gt;Opportunity team documents final products / volume / vendor / partners&lt;/li&gt;&lt;li&gt;Primary customer contact documented &amp;amp; confirmed &lt;/li&gt;&lt;li&gt;Obtain formal commitment to purchase from a fellow traveler (POP); submit POP &amp;amp; receive manager approval &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Design</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Scale&lt;/a&gt; &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Design Win</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Competitive_Architecture__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;Stage Gates: Competitive Architecture &amp;amp; Opportunity Products&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Design&lt;/a&gt; &lt;/li&gt;&lt;li&gt;Propose Solution (including Intel products) &amp;amp; define fellow travelers / partners&lt;/li&gt;&lt;li&gt;Customer confirms Intel&amp;#39;s solution could address need; initiates pilot/POC (&lt;em style=&quot;font-size: 13px;&quot;&gt;if desired by customer&lt;/em&gt;)&lt;/li&gt;&lt;li&gt;Identify / anticipate risks, work to alleviate&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Develop</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Description</fieldNames>
+        <fieldNames>Core_Status_Update__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;To Create: Opportunity Name, Account, Opportunity Type, Decision Date&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;Stage Gates: Description, Status Update&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/sales-pipeline-stages/&quot; target=&quot;_blank&quot;&gt;ADDS Stage: Assess&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Identify customer business challenge/needs + technical environment&lt;/li&gt;&lt;li&gt;Identify customer influencers/decision makers + sponsor if possible&lt;/li&gt;&lt;li&gt;CNDA in place&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Qualify</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Core_Deal_Opportunity</recordTypeName>
+</PathAssistant>

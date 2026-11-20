@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>check_for_OppProd_Clear_Approval_BU_Fields</name>
+        <label>check for OppProd_Clear_Approval_BU_Fields</label>
+        <locationX>322</locationX>
+        <locationY>298</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_OppProd_Clear_Approval_BU_Fields</name>
+            <conditionLogic>(1 AND (2 OR 3 OR 4 OR 5)) OR ( 6 AND NOT(2 OR 3 OR 4 ) )</conditionLogic>
+            <conditions>
+                <leftValueReference>f_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Win</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Approved_Quantity__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>mainUpdate</targetReference>
+            </connector>
+            <label>Core_OppProd_Clear_Approval_BU_Fields</label>
+        </rules>
+        <rules>
+            <name>Clear_PW_Approval_Section</name>
+            <conditionLogic>(1 AND 2 AND 3) OR (4 OR 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Win Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Win Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reset_PW_Approval_section</targetReference>
+            </connector>
+            <label>Clear PW Approval Section</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>f_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Core_OppProd_Clear_Approval_Fields_BU_Fields-v1 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_OppProd_Clear_Approval_Fields_BU_Fields-v1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Clears the value in the Approved By field
+Clears the value in the Approved Decision Date field
+Clears the value in the Approved List Price field
+Clears the value in the Approved Opportunity Owner field
+Clears the value in the Approved Quantity field
+Clears the value in the Approved Sales Price
+Clears the value in the Approved Technical Owner field
+Clears the value in the Approved Total Price field
+Clears the value in the Manager Approved Date field
+Reset the &apos;Approved Commissionable?&apos; field.</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>588</locationX>
+        <locationY>419</locationY>
+        <inputAssignments>
+            <field>Core_Approved_BU_Product_Segment__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_BU_Short_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_By__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Commissionable__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Date__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Decision_Date__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_List_Price__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Opportunity_Owner__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Quantity__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Sales_Price__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Technical_Owner__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_Total_Price__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Reset_PW_Approval_section</name>
+        <label>Reset PW Approval section</label>
+        <locationX>59</locationX>
+        <locationY>420</locationY>
+        <inputAssignments>
+            <field>CRM_PW_App_UCD_Customer_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_BU_Product_Segment__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_BU_Short_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_By__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_Commissionable__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_KPI_Product_Group__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_Prime_Account_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_Quantity__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_Sales_Group__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_Sales_Price__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Approved_Total_Price__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Manager_Approved_Date__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Production_Claim_Date__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>402</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>check_for_OppProd_Clear_Approval_BU_Fields</targetReference>
+        </connector>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

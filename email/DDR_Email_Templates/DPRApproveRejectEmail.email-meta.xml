@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This Email will be sent to DR owners when last DPR will approve or reject</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>DPRApproveRejectEmail</name>
+    <style>freeForm</style>
+    <subject>Review your Design Registration Product status</subject>
+    <textOnly>Hello (Core_Design_Registration__c.Core_Owner_Nm__c),
+
+Please note the status for the following products on your Design Registration
+
+Registration Number: (Core_Design_Registration__c.Name)
+Design Registration Name: (Core_Design_Registration__c.Core_Design_Registration_Nm__c)
+
+Temp table
+
+It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.
+
+For more details, you can access it by logging into Portal.
+
+Thank you.
+
+
+_______________________________________________________________________
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,36 @@
+<template>
+        <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium">{Open_Activity_To_Claim_Label}</h2>
+        </header>
+
+        <template if:false={isShowContent}>
+                <div role="status" class="slds-spinner slds-spinner_brand slds-spinner_medium">
+                        <span class="slds-assistive-text"></span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                </div>
+        </template>
+
+        <template if:true={isShowContent}>
+                <div class="slds-modal__content">
+                        <div class="slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+                                <br>
+                                <div style="display: inline-block;font-size:medium">{message_Label_1} <p
+                                                style="display: inline-block;font-weight:bold"
+                                                class="slds-text-color_success">{activityIntelContributionUI}</p> {message_Label_2} <p style="display: inline-block;font-weight:bold"
+                                                class="slds-text-color_success">{claimedAmountUI}</p> {message_Label_3} <p style="display: inline-block;font-weight:bold"
+                                                class="slds-text-color_success">{activityPendingClaimAmountUI}</p> {message_Label_4}
+                                      
+                                </div>
+                        </div>
+                </div>
+                <br>
+                <div style="text-align: left;">{button_HelpText_label_1} <p style="font-weight:bold;display: inline-block;">{button_HelpText_label_2}</p> {button_HelpText_label_3} <p style="font-weight:bold;display: inline-block;">{button_HelpText_label_4}</p> {button_HelpText_label_5}</div><br>
+
+                <div style="text-align:center">
+                        <lightning-button variant="brand-outline" label={No_Label} title={No_Label} onclick={handleCloseModal}
+                                style="padding-right: 5px;"></lightning-button>
+                        <lightning-button variant="brand" label={Yes_Label} title={Yes_Label} onclick={handleSave}></lightning-button>
+                </div>
+        </template>
+</template>

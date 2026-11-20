@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_MANAGED_SERVICES_SPA_ES</name>
+    <style>none</style>
+    <subject>¡Enhorabuena por ser apto!</subject>
+    <textOnly>¡Enhorabuena por ser apto!
+
+
+{!Contact.FirstName}:
+
+Le damos la bienvenida a la Especialización en servicios administrados de la Alianza Intel® para socios. Como Especialista cualificado en servicios administrados, usted reúne las condiciones para acceder a ventajas de la especialización* diseñadas para ayudarle a ofrecer e implementar sus soluciones, entre ellas:
+
+Designación como Especialista en servicios administrados
+Promoción de Intel de su empresa como Especialista en servicios administrados
+Puntos de incentivo de Intel adicionales
+Invitaciones prioritarias a sesiones de formación y eventos del sector
+Acceso a los servicios Intel® Platform Testing Services
+
+Para empezar, responda a ITP-MS@intel.com con la siguiente información:
+
+
+Contacto principal para las comunicaciones sobre la Especialización en servicios administrados
+Nombre:
+Correo electrónico:
+
+
+Para materiales adicionales de venta y promoción
+Dirección postal:
+Teléfono:
+
+Acceder a las ventajas
+
+
+*Las ventajas pueden variar según la ubicación.
+
+Los socios de Intel tienen una larga trayectoria de innovación y, gracias a la Alianza Intel® para socios, le ayudaremos a acelerar la creación de soluciones para la economía centrada en los datos. Juntos, podremos conectarnos, innovar y crecer, haciendo posible oportunidades extraordinarias.
+
+Visite https://wcm-ciqa.intel.com/content/www/es/es/partner-alliance/help/overview.html para obtener ayuda y orientación para optimizar su membresía.
+
+
+Gracias,
+su equipo de la Alianza Intel® para socios
+
+Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
+
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,61 @@
+<template>
+  <div if:true={showTacticMetrics}>
+    <div class="slds-p-top_medium">
+      <div class="slds-box slds-theme_default custom-box">
+        <lightning-card title={tactic_Metrics}>
+          <div class="slds-scrollable_x">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+              <thead>
+                <tr>
+                  <th>
+                      {tactics}
+                  </th>
+                  <th>
+                     <div class="slds-grid slds-grid_vertical-align-center">
+                      {tactic_Metrics}
+                    <lightning-helptext content={tactic_metrics_help_text} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                  </div>
+                  </th>
+                  <th>
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                      {goal_Values}
+                    <lightning-helptext content={GoalValue_for_Claim_Help_Text} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                  </div>
+                  </th>
+                  <th>
+                     <div class="slds-grid slds-grid_vertical-align-center">
+                    <span>
+                      <abbr class="slds-required" title="required" style="padding: 2px;">*</abbr>
+                      {Values_to_Date}
+                    </span>
+                    <lightning-helptext content={Values_to_Date_Help_Text} class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                  </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={data} for:item="item" for:index="itemIndex">
+                  <template for:each={item.kpis} for:item="kpi" for:index="index">
+                    <tr key={item.label}>
+                      <template if:true={kpi.isFirstRow}>
+                        <td rowspan={item.kpis.length}>{item.tactic}</td>
+                      </template>
+                      <td style="padding-left:0.4rem;">{kpi.tacticMetrics}</td>
+                      <td style="padding-left:1.5rem;">{kpi.activityAttributevalue}</td>
+                      <td if:true={editable}>
+                        <lightning-input type="number" step="1" min="0" data-item={itemIndex} data-kpi={index}
+                          value={kpi.claimAttributeValue} onchange={handleInputChange} variant="label-hidden" required>
+                        </lightning-input>
+                      </td>
+                      <td if:false={editable} style="padding-left:50px;">{kpi.claimAttributeValue}</td>
+                    </tr>
+                  </template>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </lightning-card>
+      </div>
+    </div>
+  </div>
+</template>

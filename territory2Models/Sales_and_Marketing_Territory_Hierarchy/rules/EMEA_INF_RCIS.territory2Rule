@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9) AND 10</booleanFilter>
+    <name>EMEA INF RCIS</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Pawel Plotitsyn</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Maka Makhatadze</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Rinat Khabirov</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Aida Darmenova</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Alexander Pashkevich</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Olena Kornienko</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Alexander Gerasimenko</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Irina Pak</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>Dmitry V Kornev</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.Core_Sales_Segment__c</field>
+        <operation>equals</operation>
+        <value>Influencer</value>
+    </ruleItems>
+</Territory2Rule>

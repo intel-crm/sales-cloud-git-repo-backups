@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionSubtype>Action</actionSubtype>
+    <description>Action used to Resubmit the UCD request for a PIS Request with a Rejected Account Record Type.</description>
+    <label>Resubmit UCD Request</label>
+    <lightningWebComponent>pricing_ResubmitUCDRequest_Component</lightningWebComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningWebComponent</type>
+</QuickAction>

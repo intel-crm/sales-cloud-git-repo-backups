@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" controller="PRM_Navigation_Component" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="accountId" type="string"></aura:attribute>
+    <aura:attribute name="recordId" type="String" />
+   <!-- <button  class="slds-button" onclick="{! c.redirect }"  >
+        <span class="slds-badge"><lightning:Icon iconName="utility:back" size="xx-small"/>&nbsp;&nbsp;Go Back</span>
+    </button> -->
+</aura:component>

@@ -1,0 +1,66 @@
+<aura:component implements="forceCommunity:layout" description="coreIntc Full Page Layout" access="global">
+
+  <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade5" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade6" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade7" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade8" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade9" type="Aura.Component[]" required="false"></aura:attribute>
+  <aura:attribute name="blade10" type="Aura.Component[]" required="false"></aura:attribute>
+
+  <div>
+    <div class="core-intc-blade-container-1">
+      <div class="core-intc-blade-container core-intc-blade-container-1-width">
+        {!v.blade1}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-2">
+      <div class="core-intc-blade-container core-intc-blade-container-2-width">
+        {!v.blade2}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-3">
+      <div class="core-intc-blade-container core-intc-blade-container-3-width">
+        {!v.blade3}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-4">
+      <div class="core-intc-blade-container core-intc-blade-container-4-width">
+        {!v.blade4}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-5">
+      <div class="core-intc-blade-container core-intc-blade-container-5-width">
+        {!v.blade5}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-6">
+      <div class="core-intc-blade-container core-intc-blade-container-6-width">
+        {!v.blade6}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-7">
+      <div class="core-intc-blade-container core-intc-blade-container-7-width">
+        {!v.blade7}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-8">
+      <div class="core-intc-blade-container core-intc-blade-container-8-width">
+        {!v.blade8}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-9">
+      <div class="core-intc-blade-container core-intc-blade-container-9-width">
+        {!v.blade9}
+      </div>
+    </div>
+    <div class="core-intc-blade-container-10">
+      <div class="core-intc-blade-container core-intc-blade-container-10-width">
+        {!v.blade10}
+      </div>
+    </div>
+  </div>
+</aura:component>

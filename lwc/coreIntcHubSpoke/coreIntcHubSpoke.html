@@ -1,0 +1,48 @@
+<template>
+
+  <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+
+  <template if:true={isButton}>
+    <div class={classes.headline} onclick={handleToggle} data-desktop-heading-size={desktopHeadingSize} data-variant={variant}>
+      <slot name="link">
+        <button id="core-intc-hs-accordion" aria-expanded={modalOpen} class="spoke-open" aria-controls="core-intc-hs-headline" data-no-border-top={noBorderTop}>
+          <h2 class="truncate-1 h4 text-normal">{ headline }</h2>
+          <span data-open={modalOpen} class="accordion-icon fa-angle-right"></span>
+        </button>
+      </slot>
+    </div>
+  </template>
+
+  <template if:false={isButton}>
+    <div class={classes.headline} data-desktop-heading-size={desktopHeadingSize} data-variant={variant}>
+      <slot name="link">
+        <div class="spoke-open" data-no-border-top={noBorderTop} data-no-accordion={noAccordion}>
+          <h2 class="truncate-1 h4 text-normal">{ headline }</h2>
+        </div>
+      </slot>
+    </div>
+  </template>
+
+  <div class={classes.overlay} data-open={modalOpen} aria-labelledby={overlayAriaLabelledby} role={overlayRole} >
+    <template if:true={modalOpen}>
+      <h2 id="core-intc-hs-modal-title" class="slds-assistive-text">{ headline }</h2>
+    </template>
+    <div class="spoke-close-container" data-color-scheme={colorScheme}>
+      <a class="spoke-close" href="#" onclick={handleToggle} role="button" aria-label={labels.hideContent}>
+        <slot name="header">
+            <div class="spoke-header-container">
+              <template if:true={ifs.isDefault}>
+                <h3 class="text-light truncate-1 color-charcoal"><span class="fa-angle-left"></span>{ headline }</h3>
+              </template>
+              <template if:true={ifs.isBlue}>
+                <h3 class="text-light truncate-1 color-white"><span class="fa-angle-left"></span>{ headline }</h3>
+              </template>
+          </div>
+        </slot>
+      </a>
+    </div>
+    <div class="spoke-content-container" id="core-intc-hs-headline" role="region" aria-labelledby="core-intc-hs-accordion" data-color-scheme={colorScheme}>
+      <slot name="content"></slot>
+    </div>
+  </div>
+</template>

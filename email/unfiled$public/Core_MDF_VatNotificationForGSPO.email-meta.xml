@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>This will notify GSPO of EMEA MDF payment records when status of payment run is changed to completed</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_VatNotificationForGSPO</name>
+    <style>none</style>
+    <subject>Claim #  VAT invoice submitted for review</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

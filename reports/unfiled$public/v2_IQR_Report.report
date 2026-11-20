@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Account_Simplified_Name__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Deal_Type_Nm__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Folio_ID_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_My_Deals_Folio_Name_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Unified_Global_End_Customer_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Customer_Reference_Id__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Intel_Sales_Rep_Email_Txt__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.Pricing_Intel_Account_Exec_Email_Txt__c</field>
+    </columns>
+    <description>IQR report to help quickly link the field connect to unify the respective deal.</description>
+    <format>Tabular</format>
+    <name>Kyryl IQR Report v3</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$SBQQ__Quote__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SBQQ__Quote__c.Pricing_Created_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

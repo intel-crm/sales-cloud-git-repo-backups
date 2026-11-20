@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="IQR {!relatedTo.Pricing_Status_Nm__c}: {!relatedTo.Pricing_OEM_Account_Nm__c} / {!relatedTo.Pricing_EndCustomer_Nm__c} / Deal {!relatedTo.Pricing_Deal_RFQ_Id__c}" recipientType="User" relatedToType="SBQQ__QuoteLine__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_QuoteLineApproveRPMNotification quoteLineRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

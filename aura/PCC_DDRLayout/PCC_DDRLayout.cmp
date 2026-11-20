@@ -1,0 +1,77 @@
+<aura:component
+    implements="forceCommunity:layout"
+    description="IPA Web Benefits Layout with built in sticky tabs"
+    access="global"
+>
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="navigationMenu" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="leftSection" type="Aura.Component[]" access="public" />
+    <aura:attribute name="rightSection" type="Aura.Component[]" access="public" />
+    <aura:attribute name="tab3" type="Aura.Component[]" required="false"></aura:attribute>
+
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1white" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade5" type="Aura.Component[]" required="false" />
+    <div>
+        <div class="marquee">
+          {!v.navigationMenu}
+      </div>
+      
+        <div class="marquee">
+          {!v.marquee}
+      </div>
+
+      <div class="container">
+        <div class="contentPanel">
+            {!v.main}
+        </div>
+    </div> 
+    <div class="slds-grid slds-gutters" style="padding-left: 3rem; padding-right: 3rem;">
+        <div class="slds-col slds-size_3-of-4">
+            {!v.leftSection}
+        </div>
+        <div class="slds-col slds-size_1-of-4">
+            {!v.rightSection}
+        </div>
+    </div>     
+      <div class="bg-blade-even">
+          {!v.mainFullWidth}
+      </div>
+      <div class="bg-blade-odd">
+          <div class="container">
+              {!v.blade1}
+          </div>
+      </div>
+      <div class="bg-white">
+          <div class="container">
+              {!v.blade1white}
+          </div>
+      </div>
+      <div class="bg-blade-even">
+          <div class="container">
+              {!v.blade2}
+          </div>
+      </div>
+      <div class="bg-blade-odd">
+          <div class="container">
+              {!v.blade3}
+          </div>
+      </div>
+      <div class="bg-blade-even">
+          <div class="container">
+              {!v.blade4}
+          </div>
+      </div>
+      <div class="bg-white">
+        <div class="container">
+            {!v.blade5}
+        </div>
+    </div>
+
+    </div>
+</aura:component>

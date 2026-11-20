@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Decision to Check if Email is personal or Official</description>
+        <name>EmailCheck</name>
+        <label>EmailCheck</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Personal_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Decision_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isPersonalEmailOff</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Official_Email</targetReference>
+            </connector>
+            <label>Outcome 1 of Decision 1</label>
+        </rules>
+    </decisions>
+    <description>Deselects the &quot;Personal Email Indicator&quot; checkbox when a contact&apos;s email address is updated to one that doesn&apos;t containing a domain on our list of custom email domains</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Check if the email is personal</description>
+        <name>isPersonalEmailOff</name>
+        <dataType>Boolean</dataType>
+        <expression>!(CONTAINS({!$Label.Core_Personal_Email_Domains_01},    RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_02},    RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_03},    RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_04},    RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_05},    RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1))  )</expression>
+    </formulas>
+    <interviewLabel>ACM_Core_Contact_Update_Personal_Email_Off {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ACM_Core_Contact_Update_Personal_Email_Off</label>
+    <migratedFromWorkflowRuleName>Core_Contact_Update_Personal_Email_Off</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>If the email is Official Email</description>
+        <name>Official_Email</name>
+        <label>Official Email</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Core_Personal_Email_Indicator__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>If the email is Personal Email</description>
+        <name>Personal_Email</name>
+        <label>Personal Email</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Core_Personal_Email_Indicator__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>EmailCheck</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED({!$Record.Email}) || ISNEW()</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

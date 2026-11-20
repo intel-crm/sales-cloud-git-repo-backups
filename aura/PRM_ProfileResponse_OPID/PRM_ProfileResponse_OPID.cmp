@@ -1,0 +1,51 @@
+<aura:component Controller="PRM_ProfileResponseOPIDCtlr" implements="force:appHostable,force:hasRecordId,flexipage:availableForAllPageTypes,force:lightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!--attributes used in the component -->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="accId" type="String" />
+    <aura:attribute name="ChannelProgram" type="String" />
+    <aura:attribute name="AccountId" type="String" />
+    <aura:attribute name="response" type="List" />
+    <aura:attribute name="saveResponse" type="List" />
+    <aura:attribute name="loadChildopid" type="Boolean" />
+    <aura:attribute name="deleteResponse" type="List" />
+    <aura:attribute name="isDisable" type="Boolean" default="false"/>
+    <!--aura:attribute name="disableButton" type="Boolean" default="false"/>-->
+    <!--handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!--DOM starts here -->
+    <div class="slds-is-relative">
+        <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="medium" class="slds-hide"/>
+    </div>
+    <lightning:tile label="" ><span class = "responseStyle">Partner Profile Responses at OPID</span>
+        <aura:set attribute="media">
+            <lightning:icon iconName="standard:groups" size = "small"/>
+        </aura:set>
+    </lightning:tile><br/>
+    
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="question">Question</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Answer">Answer</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:if isTrue="{!v.loadChildopid}">
+                <aura:iteration items="{!v.response}" var="res">
+                    <c:PRM_ProfileResponseRow_OPID res="{!res}" saveResponse="{!v.saveResponse}" recordId="{!v.accId}" deleteResponse="{!v.deleteResponse}" isDisable="{v.isDisable}"/>
+                </aura:iteration>
+            </aura:if>
+        </tbody>
+        <center style="margin-top:10px;"> 
+            <lightning:button variant="brand" label="Save" onclick="{! c.saveResp }"/>
+            <lightning:button variant="brand" label="Cancel" onclick="{! c.clearResponse }"/>
+        </center> 
+    </table>
+    <!--DOM ends here -->
+</aura:component>

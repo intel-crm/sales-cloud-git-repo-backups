@@ -1,0 +1,83 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceProductListLayout",
+  "dataProviders" : [ ],
+  "id" : "84c06bf0-7577-478a-a250-15ed648148b9",
+  "label" : "Solution-submit",
+  "regions" : [ {
+    "id" : "f5c1d738-c890-4b47-8a5c-74f73dd40110",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "blue-steel-solid",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : true,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : true,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "Your Solution has been Submitted"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "090a342a-7844-4ff9-94d4-9dd8c01fe56e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "041e2ede-df87-4448-9a9c-8d143cd9424f",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "5c46f5f8-7ece-4151-8423-fde6b927a315",
+    "regionName" : "recordList",
+    "type" : "region"
+  }, {
+    "id" : "f0531e8f-25b3-4fb7-b179-c6deba3d6834",
+    "regionName" : "createOfferingButton",
+    "type" : "region"
+  }, {
+    "id" : "977395aa-3fc4-48ef-8baa-b8e80ed8c10e",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "9849f762-fee7-441d-9845-6e8ff10facdd",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "39514c4d-ec6a-4793-9157-c71ebccac715",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "7a9eca3c-8556-42ae-8dc8-b305f58f0170",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Solution-submit"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d48ceef3-ffee-4d34-8166-576646e3df94",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6e17ae26-ae26-4883-9ea2-f552acec0de4",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-solution-submit-1"
+}

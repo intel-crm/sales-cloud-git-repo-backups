@@ -1,0 +1,12 @@
+Hi {!Core_Oppty_Team_Access__c.OwnerFirstName},
+<br/><br/>
+
+{!Core_Oppty_Team_Access__c.User__c} has approved your request for the following item.<br/>
+
+{!Core_Oppty_Team_Access__c.Link}<br/><br/>
+
+For the below opportunity -<br/>
+
+{!Opportunity.Link} <br/><br/>
+
+Thank you!

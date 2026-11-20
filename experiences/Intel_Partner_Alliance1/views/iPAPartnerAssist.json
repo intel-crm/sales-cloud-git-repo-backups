@@ -1,0 +1,78 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6ae37ce3-dcee-4ff1-bd1d-a8d7822e52f3",
+  "label" : "IPA Partner Assist",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"ReleaseInformation\",\"title\":\"IPA Release of Information\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Release of Information",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "",
+        "title" : ""
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "8c021604-3874-42a9-b7bc-f5d4dd7f2c8c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9e51bc29-b485-4a12-99d3-66b9fdd645d1",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_PartnerAssistUIForm",
+      "id" : "4608bfba-aa81-48bb-8fbf-7f62b3be4929",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "42e78b8b-29a4-45cb-a483-aae7ac4afb8a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "3ddd6c10-ed48-46e2-ae2a-f1557b0d6eaa",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1cc566db-9957-4061-b353-0c00130724e9",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"IPA Release of Information\"/>\n<meta name=\"pageType\" content=\"ReleaseInformation\"/>",
+        "description" : "",
+        "title" : "IPA Release of Information"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6782607e-c587-4a33-b8f5-fb19954a9521",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3c99222d-3d6f-477c-9376-a716ee264bab",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "lTMY7AzHP7mIPP0c3BvVWYdEproBMk",
+  "type" : "view",
+  "viewType" : "custom-ipa-partner-assist"
+}

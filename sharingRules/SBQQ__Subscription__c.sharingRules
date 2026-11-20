@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>PSGInternal_ReadEdit_Subscription</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSGInternal_ReadEdit_Subscription</label>
+        <sharedTo>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Internal_Read_Subscription</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PSG Internal Subscription</label>
+        <sharedTo>
+            <group>ags_internal_sos</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Internal_Subscription</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PSG Internal Subscription</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

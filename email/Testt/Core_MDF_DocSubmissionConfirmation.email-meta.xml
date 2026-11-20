@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Email will be sent to Partners if required documents are submitted by them</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_DocSubmissionConfirmation</name>
+    <style>none</style>
+    <subject>Proof of Performance received for Claim #</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

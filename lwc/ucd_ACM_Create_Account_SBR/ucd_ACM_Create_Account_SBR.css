@@ -1,0 +1,137 @@
+.my-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.inlineFooter {
+    border-top: var(--lwc-borderWidthThick,2px) solid var(--lwc-colorBorder,rgb(221, 219, 218));
+    padding: 10px;
+}
+
+.button-container{
+    width: 100%; 
+    background: rgba(255, 255, 255, 0.9);
+    padding: var(--lwc-spacingMedium,1rem) 0;
+    margin: auto;
+    display: flex;
+}
+
+.genericNotification {
+    font-weight: var(--lwc-fontWeightLight,300);
+    border-radius: var(--lwc-borderRadiusMedium,0.50rem);
+    background-color: #cc0d0d;
+    background-image: linear-gradient(to right, #c20f0f 0%, #c01111 100%);
+    font-size: medium;  
+    padding: 5px;  
+    color: aliceblue;
+}
+.background-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(101, 94, 94, 0.5);
+    z-index: 999;
+}
+.long-sentence{
+    text-indent:0;
+}
+/*.button-group{
+    border-radius:0.25rem;
+}*/
+/*.slds-modal__container{
+    width:90%;
+}
+@media (min-width:768px){
+    .slds-modal__container{
+        width:100%;
+    }
+}*/
+.highlight {
+    background-color: #fff2ac;
+    background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
+}
+
+.address-box {
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.address-box:hover {
+    border-color: #1b96ff;
+    box-shadow: 0 0 3px #1b96ff;
+}
+
+.address-box_selected {
+    border: 2px solid #1b96ff;
+    box-shadow: 0 0 5px #1b96ff;
+    background-color: #eef4ff;
+}
+.custom-container {
+    max-width: 600px;
+    border-radius: 12px;
+}
+
+.custom-header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon {
+    --sds-c-icon-color-foreground-default: #f5a623;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f3f8ff;
+    border: 1px solid #d8e6ff;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.info-box lightning-icon {
+    --sds-c-icon-color-foreground-default: #0176d3;
+}
+
+
+.resource-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #d8dde6;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.resource-left {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.resource-icon {
+    background: #edf4ff;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.resource-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.resource-description {
+    margin-top: 4px;
+    color: #444;
+}

@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.scrollable-table {
+    overflow-x: auto;
+    max-width: 100%;
+}
+.header-title {
+    font-weight: 700; /* extra bold if needed */
+        font-size: .8rem;   /* increase size */
+    /* border-bottom: 2px solid #d8dde6; */
+    padding-bottom: 0.25rem;
+}
+.small-input {
+    width: 100px;       
+}
+/*.small-input .slds-input {
+    height: 28px;       
+    padding: 0 6px;
+    font-size: 12px;
+}*/
+.combobox-fix {
+    width: 320px;      
+}

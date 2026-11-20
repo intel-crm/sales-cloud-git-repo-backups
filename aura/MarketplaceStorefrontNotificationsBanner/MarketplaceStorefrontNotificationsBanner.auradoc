@@ -1,0 +1,21 @@
+<aura:documentation>
+	<aura:description>
+    <p>Detail Page Banner Notification Component</p>
+	<br/>
+	<p>NOTE: This is used both on Partner detail and Offering detail.</p>
+	<p>TODO: It could be renamed to include more than just "Storefront".</p>
+	<br/>
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 5/15/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>S_Doc_license-Sales Demo, please do not use,  this PS created for business demo, will be deleted after demo</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>S-Doc license-Temp-Sales Demo</label>
+</PermissionSet>

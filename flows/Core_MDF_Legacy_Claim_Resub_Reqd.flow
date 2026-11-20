@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_MDF_Legacy_Document_Submission_Window_Closed</name>
+        <label>Core_MDF_Legacy_Document_Submission_Window_Closed</label>
+        <locationX>314</locationX>
+        <locationY>408</locationY>
+        <actionName>PartnerFundClaim.Core_MDF_Legacy_Document_Submission_Window_Closed</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PartnerFundClaim.Core_MDF_Legacy_Document_Submission_Window_Closed</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_MDF_Legacy_Claim_Resub_Reqd workflow rule
+Workflow rule description: This workflow rule is used to update Claim status as &apos;Denied&apos; after 30 days time period.&quot;</description>
+    <environments>Default</environments>
+    <label>Core_MDF_Legacy_Claim_Resub_Reqd</label>
+    <migratedFromWorkflowRuleName>Core_MDF_Legacy_Claim_Resub_Reqd</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Claim_Status_to_Denied</name>
+        <label>Update Claim Status to Denied</label>
+        <locationX>314</locationX>
+        <locationY>288</locationY>
+        <connector>
+            <targetReference>Core_MDF_Legacy_Document_Submission_Window_Closed</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_MDF_Status__c</field>
+            <value>
+                <stringValue>Denied</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Legacy reminder field as &apos;Reminder 3&apos;</description>
+        <name>Update_Legacy_Reminder_as_Reminder_3</name>
+        <label>Update Legacy Reminder as Reminder 3</label>
+        <locationX>578</locationX>
+        <locationY>288</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Legacy_Reminder_txt__c</field>
+            <value>
+                <stringValue>Reminder 3</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Legacy reminder field as &apos;Reminder 2&apos;</description>
+        <name>Update_Legacy_reminder_field_as_Reminder_2</name>
+        <label>Update Legacy reminder field as &apos;Reminder 2&apos;</label>
+        <locationX>50</locationX>
+        <locationY>288</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Legacy_Reminder_txt__c</field>
+            <value>
+                <stringValue>Reminder 2</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Resubmission Required</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Legacy_Claim_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>PartnerFundClaim</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Core_MDF_15_Days_Before_Doc_Sub_Due_Date</name>
+            <connector>
+                <targetReference>Update_Legacy_reminder_field_as_Reminder_2</targetReference>
+            </connector>
+            <label>15 Days Before Doc Sub Due Date</label>
+            <offsetNumber>-15</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Core_MDF_0_Hours_After_Doc_Sub_Due_Date</name>
+            <connector>
+                <targetReference>Update_Claim_Status_to_Denied</targetReference>
+            </connector>
+            <label>0 Hours After Doc Sub Due Date</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Core_MDF_5_Days_Before_Doc_Sub_Due_Date</name>
+            <connector>
+                <targetReference>Update_Legacy_Reminder_as_Reminder_3</targetReference>
+            </connector>
+            <label>5 Days Before Doc Sub Due Date</label>
+            <offsetNumber>-5</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

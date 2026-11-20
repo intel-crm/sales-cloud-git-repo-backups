@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<table class="MsoNormalTable" border="1" cellpadding="0" width="720" style="width: 7.5in; mso-cellspacing: 1.5pt; background: white; border: solid #E5E5E5 1.0pt; mso-border-alt: solid #E5E5E5 .75pt; mso-yfti-tbllook: 1184; mso-padding-alt: 10.5pt 5.4pt 0in 5.4pt;">
+<tbody>
+<tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
+<td style="border: none; padding: 9.0pt .75pt 3.75pt 35.25pt;">
+<p class="MsoNormal"><span style="font-size: 24pt; font-family: Tahoma, 'sans-serif'; color: #086db6;"><span>Welcome: </span>verify your email address</span></p>
+</td>
+</tr>
+<tr>
+<td style="border: none; padding: 10.5pt 30.0pt .75pt 27.75pt;"></td>
+</tr>
+<tr>
+<td style="border: none; padding: 10.5pt .75pt .75pt 33.0pt;" id="emailMainDiv">
+<table style="width: 670.333px;">
+<tbody>
+<tr style="height: 41px;">
+<td style="height: 41px; width: 666.333px;">
+<p><span style="font-family: calibri; font-size: 12pt; color: #666666;"><strong>Action Required</strong></span></p>
+</td>
+</tr>
+<tr style="height: 93px;">
+<td style="height: 93px; width: 666.333px;">
+<p><span style="font-size: 11pt; color: #666666;">This notice is to inform you that a profile has been created for you by an Intel</span></p>
+<p><span style="font-size: 11pt;"><span style="color: #666666;">Account Representative so you may participate in the</span> <span style="color: #086db6;"><a href="https://partnercenter.intel.com" style="color: #086db6;">Intel<sup>®</sup> Partner Investment Center</a></span> <span style="color: #666666;">for your company.</span></span></p>
+<p><span style="font-size: 11pt; color: #666666;">With the log in information below you can access the web portal at:</span></p>
+<p><span style="font-size: 11pt; color: #086db6;"><a href="https://partnercenter.intel.com" style="color: #086db6;">https://partnercenter.intel.com</a>.</span></p>
+<p><span style="font-size: 11pt; color: #666666;">Please retain this e-mail for future reference.</span></p>
+</td>
+</tr>
+<tr style="height: 41px;">
+<td style="height: 41px; width: 666.333px;">
+<p><span style="font-family: calibri; font-size: 12pt; color: #666666;"><strong>Email ID:<span> </span></strong>{!Contact.Email}</span>
+<br/><span style="font-family: calibri; font-size: 12pt; color: #666666;"><span><strong>Intel Business Account Name</strong>: </span><span>{!Account.Name}</span></span></p>
+<br/><span style="font-family: calibri; font-size: 12pt; color: #666666;"><span><strong>Program</strong>:</span><span> Co-GTM </span></span></p>
+</td>
+</tr>
+<tr style="height: 41px;">
+<td style="height: 41px; width: 666.333px;">
+<p><span style="font-size: 11pt; color: #666666;"><strong>What you need to do:</strong></span></p>
+<p><span style="font-size: 11pt;"><span style="color: #666666;">Complete your set up by clicking this</span> <span style="color: #086db6;"><a href="https://partnercenter.intel.com/login?so=00Do0000000aRcf" style="color: #086db6;">link</a> </span><span style="color: #666666;">or by copying the URL into your browser.</span></span></p>
+<p><span style="font-size: 11pt;"><span style="color: #666666;">If you feel you’ve received this e-mail in error, please contact</span> <span style="color: #086db6;"><a href="https://intelinside.intel.com/support" style="color: #086db6;">Intel Customer Support</a>.</span></span></p>
+<p><span style="font-size: 11pt; color: #666666;">Thank you for your interest! Please follow this link to complete your set up.</span></p>
+<p><span style="font-size: 11pt;"><span style="color: #666666;">Visit</span> <span style="color: #086db6;"><a href="https://www-ssl.intel.com/content/www/us/en/my-intel/manage-profile.html" style="color: #086db6;">My Intel</a></span> <span style="color: #666666;">any time to manage your profile.</span></span></p>
+</td>
+</tr>
+<tr style="height: 96px;">
+<td style="height: 96px; width: 666.333px;">
+<p><span style="font-size: 10pt;"><span style="font-family: calibri;"><span style="color: #666666;">Please DO NOT reply to this e-mail message. This is an automated response.</span></span><span style="font-family: calibri;"> </span></span></p>
+<p><span style="font-family: calibri; font-size: 10pt; color: #666666;">To ensure that you continue receiving our e-mails, please add us to your address book. </span><br><span style="font-family: calibri; font-size: 12pt;"><span style="color: #666666;">                                                             </span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style="border: none; text-align: left;"><footer><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png"   height="42" width="64" /></span></footer></td>
+</tr>
+<tr>
+<td style="border: none; padding: 10.5pt .75pt 10.5pt 33.0pt;">
+<p style="line-height: 15.0pt;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

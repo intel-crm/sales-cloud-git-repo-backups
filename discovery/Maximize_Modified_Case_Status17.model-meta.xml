@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiscoveryAIModel xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <content xsi:nil="true"/>
+    <algorithmType>Glm</algorithmType>
+    <classificationThreshold>0.5084336008923802</classificationThreshold>
+    <label>Maximize Modified Case Status</label>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Duration</label>
+        <name>Core_MDF_Activity_Start_Date__c_formula</name>
+        <type>Number</type>
+        <values>0.0___17.0</values>
+        <values>17.0___45.0</values>
+        <values>45.0___74.0</values>
+        <values>74.0___113.0</values>
+        <values>113.0___166.0</values>
+        <values>166.0___244.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Brand</label>
+        <name>Core_MDF_Brand__c</name>
+        <type>Text</type>
+        <values>Intel® Core™ i7 Processor</values>
+        <values>Intel® Core™ i5 Processor</values>
+        <values>Intel® Corporate Logo</values>
+        <values>Intel® Xeon® Platinum Processor</values>
+        <values>Intel® Core™ i9 Processor</values>
+        <values>Intel® Core™ Processor Family</values>
+        <values>Intel® Core™ i7 vPro® Processor</values>
+        <values>Intel® Xeon® Gold Processor</values>
+        <values>Intel® Evo™ powered by Core™ i7 processor</values>
+        <values>Intel® Xeon® Processor</values>
+        <values>Intel® Evo™ platform</values>
+        <values>Intel® Core™ i3 Processor</values>
+        <values>Intel vPro® platform</values>
+        <values>Intel® Core™ i5 vPro® Processor</values>
+        <values>Intel® 11ᵗʰ Gen</values>
+        <values>Intel® 10ᵗʰ Gen</values>
+        <values>Intel® Evo™ powered by Core™ i5 processor</values>
+        <values>Intel® Xeon® Silver Processor</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Ad Run Duration</label>
+        <name>Core_MDF_Ad_Run_Start_Date__c_formula</name>
+        <type>Number</type>
+        <values>0.0___10.0</values>
+        <values>10.0___18.0</values>
+        <values>18.0___22.0</values>
+        <values>22.0___39.0</values>
+        <values>39.0___52.0</values>
+        <values>52.0___67.0</values>
+        <values>67.0___83.0</values>
+        <values>83.0___157.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>CPI</label>
+        <name>CountryCPI.CPI</name>
+        <type>Number</type>
+        <values>0.0___11.0</values>
+        <values>11.0___49.0</values>
+        <values>49.0___57.0</values>
+        <values>57.0___88.0</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Requested Amount (USD)</label>
+        <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
+        <type>Number</type>
+        <values>3.67___40507.84</values>
+        <values>40507.84___217345.71</values>
+        <values>217345.71___274647.82</values>
+        <values>274647.82___352894.15</values>
+        <values>352894.15___480312.69</values>
+        <values>480312.69___689045.2</values>
+        <values>689045.2___1.892050399E7</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Program</label>
+        <name>Core_MDF_Program__c</name>
+        <type>Text</type>
+        <values>Client Co-Marketing Fund</values>
+        <values>Data Center Co-Marketing Fund</values>
+        <values>Client Co-Marketing Fund Boost</values>
+        <values>Service Provider Co-Marketing Fund</values>
+        <values>Retail Marketing Funds</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Account (Company)</label>
+        <name>Core_MDF_AccountCompany__c</name>
+        <type>Text</type>
+        <values>DELL INC.</values>
+        <values>HP INC.</values>
+        <values>Lenovo (Beijing) Limited</values>
+        <values>ASUSTEK COMPUTER INCORPORATION</values>
+        <values>ACER INCORPORATED</values>
+        <values>Hewlett Packard Enterprise Company</values>
+        <values>MICRO-STAR INTERNATIONAL CO., LTD.</values>
+        <values>INSPUR GROUP</values>
+        <values>Oracle Corporation</values>
+        <values>Samsung Electronics (Computer Division)</values>
+        <values>HUAWEI HQ</values>
+        <values>Fujitsu Client Computing Limited (Lenovo/FCCL)</values>
+        <values>NEC PERSONAL COMPUTERS,LTD.</values>
+        <values>CISCO SYSTEMS INC.</values>
+        <values>Alibaba</values>
+        <values>TONGFANG HONG KONG LIMITED</values>
+        <values>Dynabook Inc.</values>
+        <values>HAIER</values>
+        <values>SUPER MICRO COMPUTER, INC.</values>
+        <values>ShenZhen Hasee Innovation Co.,ltd</values>
+        <values>Fujitsu North America Holdings, Inc.</values>
+        <values>QUANTA COMPUTER INC.</values>
+        <values>PANASONIC CORPORATION</values>
+        <values>LG ELECTRONICS INC.</values>
+        <values>1&amp;1 Ionos SE</values>
+        <values>Positivo Tecnologia SA</values>
+        <values>Suning Commerce Group Co.,Ltd.</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Media Vehicle</label>
+        <name>Core_MDF_Media_Vehicle__c</name>
+        <type>Text</type>
+        <values>google</values>
+        <values>event</values>
+        <values>online display</values>
+        <values>facebook</values>
+        <values>null</values>
+        <values>online</values>
+        <values>mediacom</values>
+        <values>collateral</values>
+        <values>digital media</values>
+        <values>ooh</values>
+        <values>shutterfly</values>
+        <values>idg</values>
+        <values>linkedin</values>
+        <values>television</values>
+        <values>print</values>
+        <values>billboard/transit</values>
+        <values>digital</values>
+        <values>member owned event</values>
+        <values>amobee</values>
+        <values>amazon</values>
+        <values>guangheying</values>
+        <values>twitch</values>
+        <values>gdn</values>
+        <values>youtube</values>
+        <values>adobe</values>
+        <values>channel partner website online display</values>
+        <values>social online display</values>
+        <values>twitter</values>
+        <values>promotion</values>
+        <values>zol</values>
+        <values>tv</values>
+        <values>midas exchange</values>
+        <values>lead management</values>
+        <values>tubemogul</values>
+        <values>yahoo</values>
+        <values>online video spot</values>
+        <values>kiosk</values>
+        <values>telemarketing</values>
+        <values>performics</values>
+        <values>broadcast</values>
+        <values>户外</values>
+        <values>quantcast</values>
+        <values>tencent</values>
+        <values>online banners on 3rd party websites</values>
+        <values>dbm</values>
+        <values>newspaper</values>
+        <values>blue 449</values>
+        <values>paid social media</values>
+        <values>b2w</values>
+        <values>mrp</values>
+        <values>out of home</values>
+        <values>google asia pacific pte. ltd.</values>
+        <values>tx</values>
+        <values>events</values>
+        <values>digital video screen</values>
+        <values>radio</values>
+        <values>Other</values>
+        <values>null_1</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Target Audience</label>
+        <name>Core_MDF_Target_Audience__c</name>
+        <type>Text</type>
+        <values>Consumer</values>
+        <values>Small Business</values>
+        <values>IT Decision Maker</values>
+        <values>Gaming</values>
+        <values>Large Business</values>
+        <values>Mid Market</values>
+        <values>Creator</values>
+        <values>All</values>
+        <values>C-Suite</values>
+        <values>Line of Business</values>
+        <values>Developer</values>
+        <values>Mainstream Consumer (Overwhelmed)</values>
+        <values>Modern Consumer (Knowledgeable)</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Activity Type</label>
+        <name>Core_MDF_Activity_Types__c</name>
+        <type>Text</type>
+        <values>Online Display</values>
+        <values>Text Ad</values>
+        <values>Social Online Display</values>
+        <values>Billboard/Transit</values>
+        <values>Member Owned Event</values>
+        <values>Online Video Spot</values>
+        <values>Television</values>
+        <values>Member Participation in Third-Party Event</values>
+        <values>Lead Generation</values>
+        <values>Promotion</values>
+        <values>Lead Nurturing</values>
+        <values>Magazine/Newspaper</values>
+        <values>Channel Partner Website Online Ad</values>
+        <values>Digital Video Screen</values>
+        <values>Graphic Ad</values>
+        <values>Collateral - Other</values>
+        <values>Radio</values>
+        <values>Catalog/Brochure</values>
+        <values>Insert/Outsert/Flyer</values>
+        <values>Social Post</values>
+        <values>Member.com</values>
+        <values>Direct Mail</values>
+        <values>Email</values>
+        <values>Cinema</values>
+        <values>Other</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Region</label>
+        <name>Core_MDF_Region_Cd__c</name>
+        <type>Text</type>
+        <values>ASMO</values>
+        <values>EMEA</values>
+        <values>APJ</values>
+        <values>PRC</values>
+    </modelFields>
+    <modelFields>
+        <isDisparateImpact>false</isDisparateImpact>
+        <isSensitive>false</isSensitive>
+        <label>Modified Case Status</label>
+        <name>Core_MDF_AccountCompany__c_formula</name>
+        <type>Text</type>
+        <values>Non-compliant</values>
+        <values>Compliant</values>
+    </modelFields>
+    <modelRuntimeType>Discovery</modelRuntimeType>
+    <predictedField>Core_MDF_AccountCompany__c_formula</predictedField>
+    <predictionType>Classification</predictionType>
+    <sourceType>Discovery</sourceType>
+    <status>Enabled</status>
+    <trainingMetrics>{&quot;r2&quot;:0.3940770404091406,&quot;nobs&quot;:9934,&quot;nullDeviance&quot;:10976.074182644996,&quot;residualDegreesOfFreedom&quot;:8035,&quot;type&quot;:&quot;BinomialGLM&quot;,&quot;gini&quot;:0.7564992906280963,&quot;meanPerClassError&quot;:0.21096300724077582,&quot;logloss&quot;:0.3573904444839377,&quot;auc&quot;:0.8782496453140481,&quot;residualDeviance&quot;:7100.633351006874,&quot;confusionMatrices&quot;:{&quot;thresholds&quot;:[0.5084336008923802],&quot;tns&quot;:[7258],&quot;tps&quot;:[1177],&quot;totalPositives&quot;:1457,&quot;totalNegatives&quot;:8477},&quot;rmse&quot;:0.3330090392992502,&quot;aic&quot;:10898.633351006874,&quot;nullDegreesOfFreedom&quot;:9933,&quot;mse&quot;:0.11089502025500954}</trainingMetrics>
+</DiscoveryAIModel>

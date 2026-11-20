@@ -1,0 +1,64 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="storeName" type="string" default="Search" />
+
+  <aura:attribute name="headingLabel" type="string" default="{!$Label.c.PMP_L2_Marquee_All_Heading}" />
+  <aura:attribute name="textLabel" type="string" default="{!$Label.c.PMP_L2_Marquee_ALL_Subheading}" />
+  <aura:attribute name="learnMoreLink" type="string" default="" />
+  <aura:attribute name="breadcrumbData" type="object[]" />
+  <aura:attribute name="showBreadcrumbs" type="boolean" default="true" />
+  <aura:attribute name="showSignIn" type="boolean" default="true" />
+
+  <!-- Analytics -->
+  <aura:attribute name="analyticsPageType" type="string" description="PageType for analytics" /> 
+  <c:MarketplaceAnalyticsLibrary aura:id="analyticsLibrary" />
+    
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <!-- Offering Detail -->
+  <div>
+    <div class="container fill-height">
+      <lightning:layout class="fill-height" multipleRows="true">
+        <aura:if isTrue="{!v.showBreadcrumbs}">
+          <lightning:layoutItem size="12">
+            <div class="slds-show_medium position-absolute-center breadCrumb">
+              <c:MarketplaceBreadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" />
+            </div>
+            <div class="slds-hide_medium slds-m-top_medium">
+              <c:MarketplaceBreadcrumb breadcrumbData="{!v.breadcrumbData}" theme="dark" />
+            </div>
+          </lightning:layoutItem>
+        </aura:if>
+
+        <aura:if isTrue="{!v.showSignIn}">
+          <div class="slds-show_large slds-text-align_right signIn">
+            {!$Label.c.PMP_L2_Marquee_Intel_Prartner_Program_Member}<br/>
+            <a class="color-pale-blue" 
+               href="{!$Label.c.PMP_SSO_MP_Login_URL}">{!$Label.c.PMP_Sign_In}</a> | <a class="color-pale-blue">{!$Label.c.PMP_Learn_More}</a>
+          </div>
+          <div class="slds-hide_large slds-m-left_large signIn slds-m-top_x-small" >Shelby Li
+            <lightning:icon class="icon-white slds-m-left_small pointer" iconName="utility:switch" size="x-small"/>
+          </div>
+        </aura:if>
+
+        <lightning:layoutItem size="12" class=" slds-p-horizontal_large slds-text-align_left">
+          <lightning:layout class="" verticalAlign="center" multipleRows="true">
+            <lightning:layoutItem size="12" class="slds-text-align_center">
+              <h1 class="h2">{!v.headingLabel}</h1>
+              <p class="slds-m-top_medium slds-show_medium color-white">{!v.textLabel}</p>
+              <aura:if isTrue="{! !empty(v.learnMoreLink) }">
+                <div class="slds-m-top_medium">
+                  <c:IntelLink class="color-pale-blue" url="{!v.learnMoreLink}" openInBlank="true">{!$Label.c.PMP_Learn_More}<lightning:icon iconName="utility:chevronright"
+                    class="cursor icon-xx-small slds-m-left_xxx-small link-caret"
+                    size="x-small"/></c:IntelLink>
+                </div>
+              </aura:if>                
+                
+            </lightning:layoutItem>
+          </lightning:layout>
+        </lightning:layoutItem>
+      </lightning:layout>
+    </div>
+  </div>
+
+</aura:component>

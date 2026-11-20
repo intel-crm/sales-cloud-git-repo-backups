@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Share_with_partners_PLP</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share with partners PLP</label>
+        <sharedTo>
+            <group>Core_DDR_Partner_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>PCC_Material_Master__c</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

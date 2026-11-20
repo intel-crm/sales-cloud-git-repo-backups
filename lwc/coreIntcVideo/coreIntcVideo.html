@@ -1,0 +1,16 @@
+<template>
+  <div class="video-container">
+    <template if:false={errors}>
+      <template if:true={videoTypes.isBrightcove}>
+        <iframe src={brightcoveIFrameSrc} allow={iframeAllow} title={title}></iframe>
+      </template>
+  
+      <template if:true={videoTypes.isYouTube}>
+        <iframe src={youtubeIFrameSrc} frameborder="0" allow={iframeAllow} title={title}></iframe>
+      </template>
+    </template>
+    <template if:true={errors}>
+      <p class="text-bold color-red">{errors}</p>
+    </template>
+  </div>
+</template>

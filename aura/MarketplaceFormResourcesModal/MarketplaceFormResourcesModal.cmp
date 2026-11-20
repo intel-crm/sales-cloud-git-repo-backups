@@ -1,0 +1,176 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+	<aura:attribute name="body" type="Aura.Component[]" description="Internal"/>
+	<aura:attribute name="errorMessage" type="string" />
+	<aura:attribute name="modalResourceLabel" type="string" default="{!$Label.c.PMP_Edit_Storefront_Resources_Top}" />
+	<aura:attribute name="disabled" type="boolean" default="false" />
+	<aura:attribute name="isFormValid" type="boolean" default="false" />
+	<aura:attribute name="emptyCallback" type="object" />
+	<aura:attribute name="maxResources" type="integer" default="5" />
+    <aura:attribute name="errorNameMessage" type="string" />
+    <aura:attribute name="errorUrlMessage" type="string" />
+    <aura:attribute name="hasError" type="boolean" default="false"/>
+	<!--Attributes for inputs-->
+	<aura:attribute name="required" type="boolean" default="true" />
+	<aura:attribute name="formatter" type="string" description="Attribute corresponds to same on lightning:input."/>
+	<aura:attribute name="pattern" type="string" description="Attribute corresponds to same on lightning:input."/>
+	<aura:attribute name="max" type="object" description="Attribute corresponds to same on lightning:input."/>
+   	<aura:attribute name="min" type="object" description="Attribute corresponds to same on lightning:input."/>
+	<aura:attribute name="title" type="string" />
+    <aura:attribute name="url" type="string" />
+    <aura:attribute name="type" type="string" />
+    <aura:attribute name="hideButton" type="boolean" default="false" />
+    
+    <aura:attribute name="options" type="string[]" description="List of option values." 
+	default='[
+	{ value: "", label: "Choose one..." },
+    { value: "Type1", label: "type1" },
+    { value: "Type2", label: "type2" },
+    { value: "Type3", label: "type3" }
+	]'/>
+	<aura:attribute name="typeOptions" type="object[]" default='[
+	{ value: "", label: "Choose one..." },
+    { value: "Type1", label: "type1" },
+    { value: "Type2", label: "type2" },
+    { value: "Type3", label: "type3" }
+	]'/>
+	<aura:attribute name="_value" type="string" description="Internal"/>
+
+	<aura:attribute name="rows" type="object[]"/>
+	<aura:attribute name="_rows" type="object[]"/>
+    
+    // Added by Sandhya 
+    <aura:attribute name="maxlength" default="50" type="string" description="Attribute corresponds to same on lightning:input."/>
+	<aura:attribute name="isValid" type="boolean" default="false" />
+	
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="slds-m-around_xx-large">
+        <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <div class="create-offering close-heading">
+                            <a class="close" href="javascript:void(0)" aria-label="Close" onclick="{!c.closeModal}">
+                                    <lightning:icon class="icn" iconName="utility:close" size="medium" />
+                            </a>
+                        </div>
+                        <h2 id="modal-heading-01">{!$Label.c.PMP_New_Resources}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+						<p>{!v.modalResourceLabel}<span> {!$Label.c.PMP_Indicates_Required_Field}</span></p>
+						
+                        <div class="resource-wrapper slds-p-around_medium">
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem size="12" largeDeviceSize="6">
+									<form aura:id="resourceForm">
+										<aura:iteration items="{!v._rows}" var="row" indexVar="index">
+														<div class="horizontal-border"></div>
+														<div class="resource-header">
+															<h4>{!$Label.c.PMP_Edit_Storefront_Resources_Res} {!index + 1}
+																<span data-idx="{!index}" class="delete-wrapper" onclick="{!c.handleDelete}">
+																		<lightning:icon iconName="utility:delete" size="xx-small" alternativeText="delete"/>
+																</span>
+															</h4>
+														</div>
+                                            
+														<lightning:layout multipleRows="false">
+															<lightning:layoutItem size="12" largeDeviceSize="6">
+																	<lightning:input aura:id="input"
+																		type="text"
+																		label="{!$Label.c.PMP_Edit_Storefront_Resources_Name_Label}"
+																		value="{!row.title}"
+																		required="{!v.required}"
+																		onblur="{!c.handleBlur}"
+																		onchange="{!c.handleChange}"
+																		formatter="{!v.formatter}"
+																		pattern="{!$Label.c.PMP_RegexOfferingNamePattern}"
+																		max="{!v.max}"
+																		min="{!v.min}"
+                                                                        maxlength="{!v.maxlength}"
+																	/>
+															</lightning:layoutItem>
+                                                             
+														</lightning:layout>
+                                            
+                                         
+														<lightning:layout multipleRows="true">
+															<lightning:layoutItem size="12" largeDeviceSize="6">
+																<div data-idx="{!index}" onclick="{!c.handleClick}">
+																	<lightning:select
+																	aura:id="dropdown"
+																	label="{!$Label.c.PMP_Edit_Storefront_Resources_Type_Label}" 
+																	required="true"
+																	messageWhenValueMissing="{!$Label.c.PMP_RequiredDropdownField}"
+																	value="{! row.type }"
+																	onchange="{!c.handleDropdownChange}">
+																		<option value="">{!$Label.c.PMP_Edit_Storefront_Resources_Type_Placeholder}</option>
+																		<aura:iteration var="option" items="{! v.options }">
+																			<option value="{! option.value }">{! option.label }</option>
+																		</aura:iteration>
+																	</lightning:select>
+																</div>
+															</lightning:layoutItem>
+															<lightning:layoutItem size="12" largeDeviceSize="6" class="input-url">
+																	<lightning:input aura:id="inputUrl"
+																		type="url"
+																		label="URL"
+																		value="{!row.url}"
+																		required="{!v.required}"
+																		onblur="{!c.handleBlur}"
+																		onchange="{!c.handleChange}"
+																		formatter="{!v.formatter}"
+																		pattern="{!$Label.c.PMP_RegexURLPattern}"
+                                                                        messageWhenPatternMismatch="{!$Label.c.PMP_Invalid_Url_Error}"
+																		max="{!v.max}"
+																		min="{!v.min}"
+                                                                        maxlength="255"
+                                                                                     
+																	/>
+                                                                <div class="disclaimer-text slds-p slds-text-body_small">{!format($Label.c.PMP_Maximum_Character_Limit_Msg,255)}</div>
+                                                                <aura:if isTrue="{!v.hasError}">
+                                                                
+                                                                    <span class="error">{!v.errorUrlMessage}</span>
+                                                                </aura:if>
+                                                                </lightning:layoutItem>
+                                                            
+														</lightning:layout>
+                                          
+										</aura:iteration>
+									</form>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <lightning:layoutItem size="12" largeDeviceSize="6">
+                                    <div class="horizontal-border"></div>
+							</lightning:layoutItem>
+							<aura:if isTrue="{!v._rows.length lt v.maxResources}">
+								<div class="resource-button-wrapper" onclick="{! c.handleAddResource }">
+									<c:IntelButton disabled="{!v.hideButton}" class="gray inline" aura:id="addResourceBtn">
+										{!$Label.c.PMP_Edit_Storefront_Resources_Add_Btn}
+									</c:IntelButton>
+								</div>
+							</aura:if>
+							<span class="error">{!v.errorMessage}</span>
+                            <aura:if isTrue="{! v.appState.Settings.currentSldsBreakPoint == 'small' || v.appState.Settings.currentSldsBreakPoint == 'x-small'}">
+                                <div class="horizontal-border-light"></div>
+                            </aura:if>
+						</div>
+						
+                        <div class="button-wrapper">
+                            <span class="slds-m-right_medium" onclick="{! c.closeModal}">
+                                <c:IntelButton class="gray inline">
+                                    {!$Label.c.Core_PMP_Cancel}
+                                </c:IntelButton>
+                            </span>
+							<span onclick="{! c.saveModal }">
+                                    <c:IntelButton class="inline" disabled="{!!v.isFormValid}">{!$Label.c.Core_PMP_Save}</c:IntelButton>
+                                </span>
+						</div>
+						
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+</aura:component>

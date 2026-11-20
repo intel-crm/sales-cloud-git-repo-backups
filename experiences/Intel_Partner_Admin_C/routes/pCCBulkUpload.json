@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "bb31ac21-75c2-4f75-876d-e287d42b3008",
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "configurationTags" : [ ],
+  "devName" : "PCC_BulkUpload__c",
+  "id" : "eeff672f-04b5-475f-9d66-a8fcc10b53cf",
+  "label" : "PCC_BulkUpload",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-pcc-bulkupload",
+  "type" : "route",
+  "urlPrefix" : "pcc-bulkupload"
+}

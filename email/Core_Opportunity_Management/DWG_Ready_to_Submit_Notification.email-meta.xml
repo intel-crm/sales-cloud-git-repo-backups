@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send notification when the KPI associated with the DWG has been achieved on the opportunity</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_SMG_2019</letterhead>
+    <name>DWG Ready to Submit Notification</name>
+    <style>freeForm</style>
+    <subject>ALERT: Your Deal Win Goal is Ready to Submit for Approval</subject>
+    <textOnly>Dear {!Core_Goal__c.OwnerFullName},
+
+ 
+
+The KPI associated to your Deal Win Goal has been achieved and the goal is ready to submit for approval.
+
+ 
+
+Deal Win Goal Name: {!Core_Goal__c.Name}
+
+Category: {!Core_Goal__c.Core_Goal_Category__c}
+
+KPI Name: {!Core_Goal__c.Core_Goal_BU_Focus_Area__c}
+
+
+
+Click Here{!Core_Goal__c.Link} to submit your Deal Win Goal.
+
+
+
+
+Thankyou!
+
+_______________________________________________________________________
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

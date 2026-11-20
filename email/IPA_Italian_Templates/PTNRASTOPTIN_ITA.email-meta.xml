@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PartnerAssist Opt-In Italian</name>
+    <style>none</style>
+    <subject>Aggiornamento account aziendale</subject>
+    <textOnly>Aggiornamento account aziendale
+
+
+!%UserFirstName%!,,
+
+Con il presente messaggio ti informiamo che sei stato selezionato per iniziare a condividere le informazioni relative al programma Intel® Partner Alliance con i distributori autorizzati Intel® e/o i fornitori Intel® approvati (provider di servizi) selezionati.
+
+Nome account aziendale: !%AccountName%!
+Numero account: !%AccountNumber%!
+Contatto principale che ha eseguito la selezione: !%UserEmailAddr%!
+Data: !%DateSigned%!
+Fornitore/i di servizi selezionato/i: !%Distributors%!
+Autorizzazione: con la presente autorizzo Intel a condividere con il fornitore/i fornitori di servizi informazioni relative al mio account associato al programma Intel® Technology Provider per ricevere aiuto nella gestione dei vantaggi. Autorizzo inoltre Intel a fornire il consenso per il riscatto di punti a mio nome (opzione non disponibile per l&apos;Asia, il Pacifico e il Giappone).
+
+
+Se non autorizzi questa azione o ritieni che ci sia stato un errore, puoi modificare le selezioni o non aderire.
+In caso di domande, contattaci all&apos;indirizzo programs@intel.com.
+
+Grazie.
+Il tuo team Intel® Partner Alliance
+
+Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

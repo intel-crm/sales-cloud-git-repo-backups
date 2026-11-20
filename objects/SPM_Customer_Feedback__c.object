@@ -1,0 +1,1974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Account_Feedback_Present__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Account Feedback Present</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BU__c</fullName>
+        <label>BU</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCG</fullName>
+                    <default>false</default>
+                    <label>CCG</label>
+                </value>
+                <value>
+                    <fullName>DCAI</fullName>
+                    <default>false</default>
+                    <label>DCAI</label>
+                </value>
+                <value>
+                    <fullName>NEX</fullName>
+                    <default>false</default>
+                    <label>NEX</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CM_Feedback__c</fullName>
+        <label>Country Manager Feedback</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_CST_Is_Active_Planning_Period__c</fullName>
+        <formula>Customer_ID__r.CRM_CST_Active_Planning_Period__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Active Planning Period</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CRM_CST_Planning_Period__c</fullName>
+        <formula>Customer_ID__r.CRM_CST_IsActive_Planning_Period__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Inactive Planning Period</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CST_Back_Propagation_By_TA__c</fullName>
+        <externalId>false</externalId>
+        <label>Back Propagation By VP/TA</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Coverage_Type__c</fullName>
+        <label>Account Primary Coverage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intel Led</fullName>
+                    <default>false</default>
+                    <label>Intel-led Account</label>
+                </value>
+                <value>
+                    <fullName>Partner Led</fullName>
+                    <default>false</default>
+                    <label>Partner-led Account</label>
+                </value>
+                <value>
+                    <fullName>Other-led Account</fullName>
+                    <default>false</default>
+                    <label>Other-led Account</label>
+                </value>
+                <value>
+                    <fullName>Uncovered</fullName>
+                    <default>false</default>
+                    <label>Not Covered Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Creator_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(TEXT(DR_Feedback__c) == &apos;&apos; &amp;&amp; TEXT(VP_Feedback__c) != &apos;&apos;,&apos;VP&apos;,&apos;DR&apos;)</formula>
+        <label>Creator Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_User__c</fullName>
+        <formula>if($User.Id== Feedback_By__r.Id ,true,false)</formula>
+        <label>Current User</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Customer_ID__c</fullName>
+        <label>Customer Name</label>
+        <referenceTo>SPM_Customer_Detail__c</referenceTo>
+        <relationshipLabel>Customer Feedbacks</relationshipLabel>
+        <relationshipName>Customer_Feedbacks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Customer_Name_Formula__c</fullName>
+        <description>Stores the Customer Name as a hyperlink</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; &amp; Customer_ID__c, Customer_ID__r.SPM_Customer_Name__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_ID__r.SPM_Customer_Name__c</formula>
+        <label>Customer Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DR_Feedback__c</fullName>
+        <label>Director Feedback</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Add to Intel led</fullName>
+                    <default>false</default>
+                    <label>Add to Intel led</label>
+                </value>
+                <value>
+                    <fullName>Change GTM Model Only</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Change GTM Model Only</label>
+                </value>
+                <value>
+                    <fullName>Change Ownership</fullName>
+                    <default>false</default>
+                    <label>Change Ownership</label>
+                </value>
+                <value>
+                    <fullName>Change to Other Led</fullName>
+                    <default>false</default>
+                    <label>Change to Other Led</label>
+                </value>
+                <value>
+                    <fullName>Change to Partner</fullName>
+                    <default>false</default>
+                    <label>Change to Partner</label>
+                </value>
+                <value>
+                    <fullName>Change to Uncovered</fullName>
+                    <default>false</default>
+                    <label>Change to Uncovered</label>
+                </value>
+                <value>
+                    <fullName>Partial</fullName>
+                    <default>false</default>
+                    <label>Partial</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Feedback_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Feedback By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Customer_Feedbacks1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Feedback_Type__c</fullName>
+        <label>Feedback Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Country Manager</fullName>
+                    <default>false</default>
+                    <label>Country Manager</label>
+                </value>
+                <value>
+                    <fullName>DR</fullName>
+                    <default>false</default>
+                    <label>DR</label>
+                </value>
+                <value>
+                    <fullName>VP</fullName>
+                    <default>false</default>
+                    <label>VP</label>
+                </value>
+                <value>
+                    <fullName>GM</fullName>
+                    <default>false</default>
+                    <label>GM</label>
+                </value>
+                <value>
+                    <fullName>BU</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>BU</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Feedback__c</fullName>
+        <label>Feedback</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Coverage_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Change to Partner</fullName>
+                    <default>false</default>
+                    <label>Change to Partner</label>
+                </value>
+                <value>
+                    <fullName>Change to Uncovered</fullName>
+                    <default>false</default>
+                    <label>Change to Uncovered</label>
+                </value>
+                <value>
+                    <fullName>Change Ownership</fullName>
+                    <default>false</default>
+                    <label>Change Ownership</label>
+                </value>
+                <value>
+                    <fullName>Partial</fullName>
+                    <default>false</default>
+                    <label>Partial</label>
+                </value>
+                <value>
+                    <fullName>Add to Intel led</fullName>
+                    <default>false</default>
+                    <label>Add to Intel led</label>
+                </value>
+                <value>
+                    <fullName>Change to Other Led</fullName>
+                    <default>false</default>
+                    <label>Change to Other Led</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Change GTM Model Only</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Change GTM Model Only</label>
+                </value>
+                <value>
+                    <fullName>Keep as is</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Keep as is</label>
+                </value>
+                <value>
+                    <fullName>Not-Approved</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Not-Approved</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Intel Led</controllingFieldValue>
+                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <valueName>Change to Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Led</controllingFieldValue>
+                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <valueName>Change to Uncovered</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Led</controllingFieldValue>
+                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <valueName>Change Ownership</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Led</controllingFieldValue>
+                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <valueName>Partial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Led</controllingFieldValue>
+                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <valueName>Add to Intel led</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Intel Led</controllingFieldValue>
+                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <valueName>Change to Other Led</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GM_Feedback__c</fullName>
+        <label>GM Feedback</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GTM_Model__c</fullName>
+        <label>GTM Model</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core</fullName>
+                    <default>true</default>
+                    <label>Core</label>
+                </value>
+                <value>
+                    <fullName>Growth</fullName>
+                    <default>false</default>
+                    <label>Growth</label>
+                </value>
+                <value>
+                    <fullName>Growth-VBS</fullName>
+                    <default>false</default>
+                    <label>Growth-VBS</label>
+                </value>
+                <value>
+                    <fullName>Growth/VBS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Growth/VBS</label>
+                </value>
+                <value>
+                    <fullName>Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Specialty</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Lock_Decision__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Lock Decision</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>New_Account_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>New Account Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Customer_Feedbacks</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Sales_Group__c</fullName>
+        <label>New Sales Group</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>DR_Feedback__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Global Solutions &amp; Services Sales Group</fullName>
+                    <default>false</default>
+                    <label>Global Solutions &amp; Services Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas US Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas US Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Brazil Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Brazil Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Mexico Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Mexico Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Canada Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Canada Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas ELAR Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas ELAR Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>Americas Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ India Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ India Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Japan Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Japan Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Korea Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Korea Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Taiwan Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Taiwan Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Southeast Asia Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Southeast Asia Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Australia &amp; New Zealand Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Australia &amp; New Zealand Sales Group</label>
+                </value>
+                <value>
+                    <fullName>APJ Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>APJ Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>EMEA Sales Group</fullName>
+                    <default>false</default>
+                    <label>EMEA Sales Group</label>
+                </value>
+                <value>
+                    <fullName>EMEA Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>EMEA Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>PRC Hosted Sales Group</fullName>
+                    <default>false</default>
+                    <label>PRC Hosted Sales Group</label>
+                </value>
+                <value>
+                    <fullName>PRC Sales Group</fullName>
+                    <default>false</default>
+                    <label>PRC Sales Group</label>
+                </value>
+                <value>
+                    <fullName>Americas Partner Led</fullName>
+                    <default>false</default>
+                    <label>Americas Partner Led</label>
+                </value>
+                <value>
+                    <fullName>EMEA Partner Led</fullName>
+                    <default>false</default>
+                    <label>EMEA Partner Led</label>
+                </value>
+                <value>
+                    <fullName>APJ Partner Led</fullName>
+                    <default>false</default>
+                    <label>APJ Partner Led</label>
+                </value>
+                <value>
+                    <fullName>PRC Partner Led</fullName>
+                    <default>false</default>
+                    <label>PRC Partner Led</label>
+                </value>
+                <value>
+                    <fullName>Undefined</fullName>
+                    <default>false</default>
+                    <label>Undefined</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas Partner Led</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>EMEA Partner Led</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Partner Led</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>PRC Partner Led</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change to Uncovered</controllingFieldValue>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Undefined</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Global Solutions &amp; Services Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas US Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas Brazil Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas Mexico Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas Canada Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas ELAR Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>Americas Hosted Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ India Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Japan Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Korea Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Taiwan Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Southeast Asia Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Australia &amp; New Zealand Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>APJ Hosted Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>EMEA Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>EMEA Hosted Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>PRC Hosted Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel led</controllingFieldValue>
+                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <valueName>PRC Sales Group</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <label>Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Reason_for_change__c</fullName>
+        <description>Enter your reason to change the status of this account</description>
+        <label>Reason for change</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Recommendation__c</fullName>
+        <label>Recommendation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_ID__r.Core_Region__c</formula>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Members__c</fullName>
+        <label>Team Members</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>VP_Feedback__c</fullName>
+        <label>VP Feedback</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Change to Partner</fullName>
+                    <default>false</default>
+                    <label>Change to Partner</label>
+                </value>
+                <value>
+                    <fullName>Change to Uncovered</fullName>
+                    <default>false</default>
+                    <label>Change to Uncovered</label>
+                </value>
+                <value>
+                    <fullName>Change Ownership</fullName>
+                    <default>false</default>
+                    <label>Change Ownership</label>
+                </value>
+                <value>
+                    <fullName>Partial</fullName>
+                    <default>false</default>
+                    <label>Partial</label>
+                </value>
+                <value>
+                    <fullName>Add to Intel led</fullName>
+                    <default>false</default>
+                    <label>Add to Intel led</label>
+                </value>
+                <value>
+                    <fullName>Change to Other Led</fullName>
+                    <default>false</default>
+                    <label>Change to Other Led</label>
+                </value>
+                <value>
+                    <fullName>Change GTM Model Only</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Change GTM Model Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Customer Feedback</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Customer_ID__c</columns>
+        <columns>DR_Feedback__c</columns>
+        <columns>VP_Feedback__c</columns>
+        <columns>CM_Feedback__c</columns>
+        <columns>GM_Feedback__c</columns>
+        <columns>NAME</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Creator_Role__c</columns>
+        <columns>Feedback_By__c</columns>
+        <columns>Reason_for_change__c</columns>
+        <columns>New_Account_Owner__c</columns>
+        <columns>Team_Members__c</columns>
+        <columns>New_Sales_Group__c</columns>
+        <columns>Lock_Decision__c</columns>
+        <columns>Account_Feedback_Present__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Your Customer Feedback</label>
+    </listViews>
+    <listViews>
+        <fullName>Your_Feedbacks</fullName>
+        <columns>Customer_ID__c</columns>
+        <columns>DR_Feedback__c</columns>
+        <columns>VP_Feedback__c</columns>
+        <columns>CM_Feedback__c</columns>
+        <columns>GM_Feedback__c</columns>
+        <columns>NAME</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Creator_Role__c</columns>
+        <columns>Feedback_By__c</columns>
+        <columns>Lock_Decision__c</columns>
+        <columns>Reason_for_change__c</columns>
+        <columns>New_Account_Owner__c</columns>
+        <columns>Team_Members__c</columns>
+        <columns>New_Sales_Group__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Current_User__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Your Feedback</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CUF-{000000}</displayFormat>
+        <label>Customer Feedback ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer Feedback</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>DR_Feedback</fullName>
+        <active>true</active>
+        <label>DR Feedback</label>
+        <picklistValues>
+            <picklist>BU__c</picklist>
+            <values>
+                <fullName>CCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCAI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Coverage_Type__c</picklist>
+            <values>
+                <fullName>Intel Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Led</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DR_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback_Type__c</picklist>
+            <values>
+                <fullName>DR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GTM_Model__c</picklist>
+            <values>
+                <fullName>Core</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Growth</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Sales_Group__c</picklist>
+            <values>
+                <fullName>APJ Australia %26 New Zealand Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ India Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Japan Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Korea Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Southeast Asia Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Taiwan Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Brazil Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Canada Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas ELAR Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Mexico Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas US Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Solutions %26 Services Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Undefined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>VP_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>GM_Feedback</fullName>
+        <active>true</active>
+        <label>GM Feedback</label>
+        <picklistValues>
+            <picklist>BU__c</picklist>
+            <values>
+                <fullName>CCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCAI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Coverage_Type__c</picklist>
+            <values>
+                <fullName>Intel Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Led</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DR_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback_Type__c</picklist>
+            <values>
+                <fullName>DR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GTM_Model__c</picklist>
+            <values>
+                <fullName>Core</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Growth</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Sales_Group__c</picklist>
+            <values>
+                <fullName>APJ Australia %26 New Zealand Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ India Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Japan Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Korea Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Southeast Asia Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Taiwan Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Brazil Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Canada Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas ELAR Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Mexico Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas US Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Solutions %26 Services Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Undefined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>VP_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>VP_Feedback</fullName>
+        <active>true</active>
+        <label>VP Feedback</label>
+        <picklistValues>
+            <picklist>BU__c</picklist>
+            <values>
+                <fullName>CCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCAI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Coverage_Type__c</picklist>
+            <values>
+                <fullName>Intel Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Led</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DR_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback_Type__c</picklist>
+            <values>
+                <fullName>DR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GTM_Model__c</picklist>
+            <values>
+                <fullName>Core</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Growth</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Sales_Group__c</picklist>
+            <values>
+                <fullName>APJ Australia %26 New Zealand Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ India Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Japan Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Korea Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Southeast Asia Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ Taiwan Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Brazil Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Canada Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas ELAR Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Mexico Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas US Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Solutions %26 Services Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Hosted Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC Sales Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Undefined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>VP_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Uncovered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <listViewButtons>Submit_Feedback</listViewButtons>
+        <massQuickActions>Approve</massQuickActions>
+        <massQuickActions>Reject</massQuickActions>
+        <searchResultsAdditionalFields>Customer_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DR_Feedback__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VP_Feedback__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CM_Feedback__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GM_Feedback__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Feedback_By__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Reason_for_change__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Lock_Decision__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_Feedback_Present__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Approved_as_Starting_Feedback</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(TEXT(DR_Feedback__c) == &apos;&apos; &amp;&amp; OR(TEXT(VP_Feedback__c) == &apos;Approved&apos;,TEXT(VP_Feedback__c) == &apos;Rejected&apos;), TRUE,FALSE)</errorConditionFormula>
+        <errorMessage>You cannot enter Approved/Rejected as the Starting feedback. Kindly enter a valid feedback.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_VBS_No_Null_GTM_Model_Field</fullName>
+        <active>false</active>
+        <description>The GTM Model field cannot be null</description>
+        <errorConditionFormula>ISCHANGED(GTM_Model__c) &amp;&amp; (ISBLANK(TEXT(GTM_Model__c)) || ISBLANK(TEXT(GTM_Model__c)))</errorConditionFormula>
+        <errorMessage>GTM Model cannot be None.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cannot_Modify_Others_Feedback</fullName>
+        <active>true</active>
+        <description>Should not be able to modify other Customer Feedback records.</description>
+        <errorConditionFormula>OR(IF(Customer_ID__r.RCStage__c == &apos;DR&apos; &amp;&amp; ISCHANGED(DR_Feedback__c) &amp;&amp; NOT(OR( $Permission.CST_Director ,$Permission.CST_Super_Admin,$Permission.CST_Regional_Admin)),TRUE,FALSE),
+IF(Customer_ID__r.RCStage__c == &apos;VP&apos; &amp;&amp; ISCHANGED(VP_Feedback__c) &amp;&amp; NOT(OR($Permission.CST_Vice_President,$Permission.CST_Super_Admin,$Permission.CST_Regional_Admin)),TRUE,FALSE),
+IF(Customer_ID__r.RCStage__c == &apos;Country Manager&apos; &amp;&amp; NOT(OR($Permission.CST_Country_Manager,$Permission.CST_Super_Admin,$Permission.CST_Regional_Admin)),TRUE,FALSE),
+IF(Customer_ID__r.RCStage__c == &apos;GM&apos; &amp;&amp; NOT(OR($Permission.CST_General_Manager,$Permission.CST_Super_Admin,$Permission.CST_Regional_Admin)),TRUE,FALSE))</errorConditionFormula>
+        <errorMessage>You cannot edit other&apos;s feedback.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Feedback_Stage_Different</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(Customer_ID__r.RCStage__c !=  TEXT(Feedback_Type__c),TRUE,FALSE)</errorConditionFormula>
+        <errorMessage>You are trying to enter feedback for a different stage. Please refresh and try!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>If_DR_trying_to_Approve</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( Customer_ID__r.RCStage__c==&apos;DR&apos; &amp;&amp; ( ISCHANGED(VP_Feedback__c) &amp;&amp; (ISPICKVAL(VP_Feedback__c, &apos;Approved&apos;)|| ISPICKVAL(VP_Feedback__c, &apos;Rejected&apos;))),TRUE,FALSE )</errorConditionFormula>
+        <errorMessage>You cannot Approve/Reject in DR stage.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_edit_once_record_locked</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(IF( (Lock_Decision__c == true &amp;&amp; NOT(OR( $Permission.CST_Super_Admin , $Permission.CST_Regional_Admin )))&amp;&amp; ISCHANGED( DR_Feedback__c ),true,false),
+IF( (Lock_Decision__c == true &amp;&amp; NOT(OR( $Permission.CST_Super_Admin , $Permission.CST_Regional_Admin )))&amp;&amp; (ISCHANGED(VP_Feedback__c) &amp;&amp;  NOT( ISPICKVAL(VP_Feedback__c , &apos;Approved&apos;) || ISPICKVAL(VP_Feedback__c , &apos;Rejected&apos;))),true,false),
+IF( (Lock_Decision__c == true &amp;&amp; NOT(OR( $Permission.CST_Super_Admin , $Permission.CST_Regional_Admin )))&amp;&amp; (ISCHANGED(GM_Feedback__c) &amp;&amp;  NOT(ISPICKVAL(GM_Feedback__c , &apos;Approved&apos;) || ISPICKVAL(GM_Feedback__c , &apos;Rejected&apos;))),true,false),
+IF( (Lock_Decision__c == true &amp;&amp; NOT(OR( $Permission.CST_Super_Admin , $Permission.CST_Regional_Admin )))&amp;&amp; (ISCHANGED(CM_Feedback__c) &amp;&amp;  NOT(ISPICKVAL(CM_Feedback__c , &apos;Approved&apos;) || ISPICKVAL(CM_Feedback__c , &apos;Rejected&apos;))),true,false))</errorConditionFormula>
+        <errorMessage>You can only Approve/Reject the feedbacks once locked. No other action allowed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prevent_Feedback_Edit</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+IF( Customer_ID__r.RCStage__c == &apos;DR&apos; &amp;&amp; ((ISNEW()) || ISCHANGED( DR_Feedback__c ) || ISCHANGED(Lock_Decision__c)) &amp;&amp; (NOT(OR($Permission.CST_Super_Admin, $Permission.CST_Regional_Admin))) &amp;&amp; Feedback_By__c != $User.Id,TRUE,FALSE),
+IF( Customer_ID__r.RCStage__c == &apos;VP&apos; &amp;&amp; (ISNEW() || ISCHANGED( VP_Feedback__c ) || ISCHANGED(Lock_Decision__c)) &amp;&amp; (NOT(OR($Permission.CST_Super_Admin, $Permission.CST_Regional_Admin))) &amp;&amp; IF(Feedback_By__c != $User.Id,IF(ISCHANGED(CST_Back_Propagation_By_TA__c),false, true),false) &amp;&amp; NOT( ISPICKVAL(VP_Feedback__c , &apos;Approved&apos;) || ISPICKVAL(VP_Feedback__c , &apos;Rejected&apos;)),TRUE,FALSE),
+IF( Customer_ID__r.RCStage__c == &apos;Country Manager&apos; &amp;&amp; (ISNEW() || ISCHANGED( CM_Feedback__c ) || ISCHANGED(Lock_Decision__c)) &amp;&amp; (NOT(OR($Permission.CST_Super_Admin, $Permission.CST_Regional_Admin))) &amp;&amp; Feedback_By__c != $User.Id &amp;&amp; NOT( ISPICKVAL(CM_Feedback__c , &apos;Approved&apos;) || ISPICKVAL(CM_Feedback__c , &apos;Rejected&apos;)),TRUE,FALSE),
+IF( Customer_ID__r.RCStage__c == &apos;GM&apos; &amp;&amp; (ISNEW() || ISCHANGED( GM_Feedback__c ) || ISCHANGED(Lock_Decision__c)) &amp;&amp; (NOT(OR($Permission.CST_Super_Admin, $Permission.CST_Regional_Admin))) &amp;&amp; Feedback_By__c != $User.Id &amp;&amp; NOT( ISPICKVAL(GM_Feedback__c , &apos;Approved&apos;) || ISPICKVAL(GM_Feedback__c , &apos;Rejected&apos;)),TRUE,FALSE)
+)</errorConditionFormula>
+        <errorMessage>You are not authorized to edit this feedback.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_Group_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISCHANGED(  VP_Feedback__c ) &amp;&amp;  (ISPICKVAL(VP_Feedback__c, &apos;Change to Partner&apos;)&amp;&amp; !(ISPICKVAL(New_Sales_Group__c,&apos;Americas Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;EMEA Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;APJ Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;PRC Partner Led&apos;) ) ),
+IF(ISCHANGED(  VP_Feedback__c ) &amp;&amp;  (ISPICKVAL(VP_Feedback__c, &apos;Change to Uncovered&apos;)&amp;&amp; !(ISPICKVAL(New_Sales_Group__c,&apos;Undefined&apos;))),true,false),false)</errorConditionFormula>
+        <errorDisplayField>New_Sales_Group__c</errorDisplayField>
+        <errorMessage>You can only select Americas Partner Led, EMEA Partner Led, APJ Partner Led, PRC Partner Led for Change to Partner feedback option and you can only select Undefined for Change to Uncovered feedback option.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CRM_Update</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>CRM Update</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/CST_Account_Update</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Submit_Feedback</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Submit Feedback</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Lock_Cst_Feedback?retUrl=/aAw?fcf=00BD3000001u7LqMAI</url>
+    </webLinks>
+</CustomObject>

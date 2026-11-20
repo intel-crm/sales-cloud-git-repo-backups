@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_12963760</developerName>
+        <masterLabel>Global Buckets</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Named_Strategic__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Apple</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Cisco</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global DELL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global HPE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global HPI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Hewitt Packard</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Hewlett Packard</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Lenovo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Samsung</sourceValue>
+            </sourceValues>
+            <value>Global OEM Group</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global GE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Appliances &amp; Lighting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Aviation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Capital</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Energy Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Healthcare</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Intelligent Platforms</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Oil &amp; Gas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Power &amp; Water</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Research</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global GE Transportation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Honeywell</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Honeywell Aerospace</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Honeywell Automation &amp; Control Solutions (ACS)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Honeywell IT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Bosch</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Siemens</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global BMW</sourceValue>
+            </sourceValues>
+            <value>Global IOT Group</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Alibaba</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Alphabet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Amazon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Facebook</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Google</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Huawei</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Tencent</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Baidu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Microsoft</sourceValue>
+            </sourceValues>
+            <value>Global CSP Group</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <description>This report shows the where the stratetic territy is blank or not one of CJ&apos;s account territories.</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales,Regional Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Named_Strategic__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Sales_Group__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_12963760</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Named_Strategic__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sales Group where Territory is not a GA</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-20</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-20</startDate>
+    </timeFrameFilter>
+</Report>

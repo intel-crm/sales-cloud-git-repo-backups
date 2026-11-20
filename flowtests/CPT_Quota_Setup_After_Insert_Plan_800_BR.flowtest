@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>CPT_Quota_Setup_After_Insert</flowApiName>
+    <label>Plan_800_BR</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;CPT_BR_All_Assigned__c&quot;:&quot;35%&quot;,&quot;CPT_BR_CCG_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_CSV_AMS_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_DCAI_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_DCAI_DAIS_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_Intel_AI_PC_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_NEX_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_NEX_Ethernet_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_BR_SATG_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_CR_CCG_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_CR_DCAI_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_CR_NEX_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_CR_OEM_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_CR_Partner_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_CR_Retail_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_DR_AXG_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_DR_CCG_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_DR_DCAI_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_DR_NEX_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_Effective_Month__c&quot;:&quot;Nov 2025&quot;,&quot;CPT_Employee__c&quot;:&quot;aCKWA0000001Q5J4AU&quot;,&quot;CPT_Inaccurate_Data__c&quot;:false,&quot;CPT_MarVol_Margin_CCG__c&quot;:false,&quot;CPT_MarVol_Margin_DCG__c&quot;:false,&quot;CPT_MarVol_NextGen_CCG_LNL__c&quot;:false,&quot;CPT_MarVol_NextGen_CCG_PTL__c&quot;:false,&quot;CPT_MarVol_NextGen_CCG_WCL__c&quot;:false,&quot;CPT_MarVol_NextGen_DCG_GNR__c&quot;:false,&quot;CPT_Margin_Account_Assigned__c&quot;:&quot;0%&quot;,&quot;CPT_Overlay__c&quot;:false,&quot;CPT_Plan__c&quot;:&quot;800&quot;,&quot;CPT_Sales_OKR__c&quot;:&quot;Sales OKR&quot;,&quot;CPT_Sales_Team_Goal__c&quot;:&quot;&quot;,&quot;CPT_Stage__c&quot;:&quot;In-Progress&quot;,&quot;CPT_Unique_Identifier__c&quot;:&quot;aCYDf0000008eV7OAI - aCKWA0000001Q5J4AU&quot;,&quot;CPT_Vol_Next_Gen_Assigned__c&quot;:&quot;0%&quot;,&quot;OwnerId&quot;:&quot;005Df000009EObaIAG&quot;,&quot;XX_CPT_Complete__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>Assign_BR_All_Default_Value</leftValueReference>
+                <operator>WasVisited</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

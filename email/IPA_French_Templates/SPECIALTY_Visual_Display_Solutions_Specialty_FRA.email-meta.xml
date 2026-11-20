@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_Visual_Display_Solutions_Specialty_FRA</name>
+    <style>none</style>
+    <subject>Spécialité Solutions d&apos;affichage visuel de l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Félicitations, vous vous qualifiez !
+
+
+{!Contact.FirstName},
+
+Bienvenue dans la spécialité Solutions d&apos;affichage visuel de l&apos;Alliance partenaire Intel® ! En votre qualité de spécialiste de l&apos;IoT, vous pouvez bénéficier d&apos;avantages supplémentaires destinés à vous aider à développer votre activité spécialisée dans les solutions d&apos;affichage visuel IoT, notamment :
+
+Fonds de développement pour des marchés désignés
+Possibilité d&apos;inclusion dans le guide de marketing et de vente de contenu
+Invitation à des événements spéciaux et à des rencontres
+
+Accéder aux avantages
+
+
+*Les avantages peuvent varier d&apos;une région à l&apos;autre.
+
+Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
+
+Visitez le site https://www.intel.com/content/www/fr/fr/partner-alliance/help/overview.html pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion.
+
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

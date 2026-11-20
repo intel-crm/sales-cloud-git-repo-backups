@@ -1,0 +1,180 @@
+<apex:page controller="CoveoV2.SetupController" sidebar="false" standardstylesheets="false">
+  <c:AdminCheck >
+    <apex:stylesheet value="{!URLFOR($Resource.CoveoV2__styleguide, 'css/CoveoStyleGuide.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CoveoV2__assets, 'legacy/css/style.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CoveoV2__assets, 'legacy/css/setup.css')}" />
+
+    <apex:form >
+      <div id="CoveoConfiguration">
+        <div class="coveo-content bg-pure-white shadow-card">
+          <img id="CoveoLogo" src="{!URLFOR($Resource.CoveoV2__assets, 'legacy/img/panel/CoveoLogo.png')}" width="156"/>
+          <div class="coveo-message">
+            <div>
+              <div class="coveo-header">Select Your Coveo Platform</div>
+              <script type="text/javascript">
+                $(function () {
+                  var platform = '{!JSENCODE(getPlatform)}';
+                  var env = '{!JSENCODE(getEnv)}';
+
+                  if (platform == 'V1') {
+                    switch (env) {
+                      case "DEV": {
+                        $('#platform_cloudplatform').prop('checked', true);
+                        break;
+                      }
+                      case "QA": {
+                        $('#platform_cloudplatformstaging').prop('checked', true);
+                        break;
+                      }
+                      case "PROD": {
+                        $('#platform_cloudplatform').prop('checked', true);
+                        break;
+                      }
+                    }
+                  } else if (platform == 'V2') {
+                    switch (env) {
+                      case "DEV": {
+                        $('#platform_cloudplatformstratusdev').prop('checked', true);
+                        break;
+                      }
+                      case "QA": {
+                        $('#platform_cloudplatformstratusstaging').prop('checked', true);
+                        break;
+                      }
+                      case "PROD": {
+                        $('#platform_cloudplatformstratus').prop('checked', true);
+                        break;
+                      }
+                      case "HIPAA": {
+                        $('#platform_cloudplatformstratushipaa').prop('checked', true);
+                        break;
+                      }
+                    }
+                  }
+
+                  var radioChange = function () {
+                    var value = $(this).val();
+                    var platform = value.split('-')[0];
+                    var env = value.split('-')[1];
+
+                    $('[id*="CoveoPlatform"]').val(platform);
+                    $('[id*="CoveoEnv"]').val(env);
+                  }
+
+                  $('[name=platform]:radio').change(radioChange);
+                  radioChange.apply($('[name=platform]:radio:checked')[0]);
+                });
+
+              </script>
+              <p>Select the platform to connect to Coveo Search.</p>
+              <div class="section">
+                <apex:inputHidden value="{!getPlatform}" id="CoveoPlatform" />
+                <apex:inputHidden value="{!getEnv}" id="CoveoEnv" />
+                <div>
+                  <div>
+                    <input id="platform_cloudplatform" name="platform" type="radio" value="V1-PROD" />
+                    <label for="platform_cloudplatform">{!dict.Production}</label>
+                  </div>
+                  <div class="info">{!dict.SelectPlatformProductionDescription}</div>
+                  <div>
+                    <input id="platform_cloudplatformstaging" name="platform" type="radio" value="V1-QA" />
+                    <label for="platform_cloudplatformstaging">{!dict.Staging}</label>
+                  </div>
+                  <div class="info">{!dict.SelectPlatformStagingDescription}</div>
+                  <div>
+                    <input id="platform_cloudplatformdev" name="platform" type="radio" value="V1-DEV" />
+                    <label for="platform_cloudplatformdev">{!dict.Development}</label>
+                  </div>
+                  <div class="info">{!dict.SelectPlatformDevelopmentDescription}</div>
+                  <div>
+                    <input id="platform_cloudplatformstratushipaa" name="platform" type="radio" value="V2-HIPAA" />
+                    <label for="platform_cloudplatformstratushipaa">Cloud V2 (HIPAA compliant)</label>
+                  </div>
+                  <div class="info">{!dict.SelectPlatformHipaaDescription}</div>
+                  <div>
+                    <input id="platform_cloudplatformstratus" name="platform" type="radio" value="V2-PROD" />
+                    <label for="platform_cloudplatformstratus">Cloud V2 (Production)</label>
+                  </div>
+                  <div class="info">The second version of Coveo Cloud.</div>
+                  <div>
+                    <input id="platform_cloudplatformstratusstaging" name="platform" type="radio" value="V2-QA" />
+                    <label for="platform_cloudplatformstratusstaging">Cloud V2 (QA)</label>
+                  </div>
+                  <div class="info">The QA environment of the second Coveo Cloud.</div>
+                  <div>
+                    <input id="platform_cloudplatformstratusdev" name="platform" type="radio" value="V2-DEV" />
+                    <label for="platform_cloudplatformstratusdev">Cloud V2 (Development)</label>
+                  </div>
+                  <div class="info">The development environment of the second Coveo Cloud.</div>
+                </div>
+                <apex:commandLink styleclass="btn mod-primary coveo-button-accept" value="Apply Changes" action="{!saveplatform}" />
+              </div>
+              <div class="section">
+                <h4>Related action:</h4>
+                <apex:outputPanel layout="block" rendered="{!NOT(searchPageUri == null || searchPageUri == '')}">
+                  <a href="{!searchPageUri}" target="_top">{!dict.GoToSearch}</a>
+                </apex:outputPanel>
+                <c:ResetConfiguration />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <apex:includeScript value="{!URLFOR($Resource.CoveoV2__jquery, 'jquery.min.js')}" />
+      <style type="text/css">
+
+        body {
+          background-color: var(--grey-20);
+        }
+        .coveo-message .coveo-header {
+          font-size: 18px;
+          font-weight: normal;
+          display: block;
+          margin: 24px 0 16px;
+        }
+
+        #CoveoConfiguration h3 {
+          display: block;
+          font-size: 16px;
+          font-weight: normal;
+          margin: 16px 0 4px;
+          border-bottom: 1px solid #999;
+          padding: 4px 8px;
+        }
+
+        #CoveoConfiguration p {
+          display: block;
+          font-size: 12px;
+          font-weight: normal;
+          margin: 8px;
+        }
+
+        #CoveoConfiguration label {
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        #CoveoConfiguration .info {
+          color: #868686;
+          padding-left: 24px;
+        }
+
+        .coveo-message .section {
+          padding: 0 8px;
+          overflow: hidden;
+          line-height: 18px;
+        }
+
+        .btn {
+          line-height: 18px;
+          padding: 8px 16px;
+          margin: 15px 10px 10px 0;
+        }
+
+        .shadow-card {
+          padding: 2rem;
+        }
+      </style>
+    </apex:form>
+  </c:AdminCheck>
+</apex:page>

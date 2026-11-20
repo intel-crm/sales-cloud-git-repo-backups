@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>3rd party software</masterLabel>
+        <translation>第三方软件</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ACPC</masterLabel>
+        <translation><!-- ACPC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI for Media Enhancement</masterLabel>
+        <translation>用于增强媒体的 AI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Advanced 360 Library</masterLabel>
+        <translation>Advanced 360 Library</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Advanced Volumetric Library</masterLabel>
+        <translation>Advanced Volumetric Library</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Alder Lake (ADL)</masterLabel>
+        <translation><!-- Alder Lake (ADL) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Alder Lake - 12th Gen Core</masterLabel>
+        <translation>Alder Lake - 第 12 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Alder Lake - 12th Gen Core K-SKU</masterLabel>
+        <translation>Alder Lake - 第 12 代酷睿 K-SKU</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Alder Lake - N</masterLabel>
+        <translation><!-- Alder Lake - N --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Alder Lake-N - 12th Gen Core</masterLabel>
+        <translation>Alder Lake-N - 第 12 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Amber</masterLabel>
+        <translation><!-- Amber --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Amber Lake</masterLabel>
+        <translation><!-- Amber Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Amber Lake - 8th Gen Core</masterLabel>
+        <translation>Amber Lake - 第 8 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apollo Lake</masterLabel>
+        <translation><!-- Apollo Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arrow Lake (ARL) - HX/S Refresh Core Ultra Series 2</masterLabel>
+        <translation>Arrow Lake (ARL) - HX/S Refresh - 英特尔 酷睿 Ultra 第二代</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arrow Lake (ARL) Intel Core Ultra (Series 2)</masterLabel>
+        <translation>Arrow Lake（ARL）英特尔 Core Ultra（系列 2）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arrow Lake (ARL) Series 2</masterLabel>
+        <translation><!-- Arrow Lake (ARL) Series 2 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Bay Trail</masterLabel>
+        <translation><!-- Bay Trail --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadwell</masterLabel>
+        <translation><!-- Broadwell --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Broadwell DE</masterLabel>
+        <translation><!-- Broadwell DE --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cascade Lake</masterLabel>
+        <translation><!-- Cascade Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Celeron</masterLabel>
+        <translation><!-- Celeron --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ci3</masterLabel>
+        <translation><!-- Ci3 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ci5</masterLabel>
+        <translation><!-- Ci5 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ci7</masterLabel>
+        <translation><!-- Ci7 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ci9</masterLabel>
+        <translation><!-- Ci9 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Clearwater Forest</masterLabel>
+        <translation><!-- Clearwater Forest --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake</masterLabel>
+        <translation><!-- Coffee Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake - 8th Gen Core</masterLabel>
+        <translation>Coffee Lake - 第 8 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake - H</masterLabel>
+        <translation><!-- Coffee Lake - H --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake - S</masterLabel>
+        <translation><!-- Coffee Lake - S --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake Refresh - 8th Gen Core</masterLabel>
+        <translation>Coffee Lake Refresh - 第 8 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake – H - 8th Gen Core</masterLabel>
+        <translation>Coffee Lake – H - 第 8 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Coffee Lake – S - 8th Gen Core</masterLabel>
+        <translation>Coffee Lake – S - 第 8 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Comet Lake</masterLabel>
+        <translation><!-- Comet Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Comet Lake - 10th Gen Core</masterLabel>
+        <translation>Comet Lake - 第 10 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Converged Edge Media Platform</masterLabel>
+        <translation>融合边缘媒体平台</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Core on Chrome OS*</masterLabel>
+        <translation><!-- Core on Chrome OS* --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Crypto-Acceleration (AES-NI)</masterLabel>
+        <translation>加密加速 (AES-NI)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DATA STREAMING ACCELERATOR (INTEL® DSA)</masterLabel>
+        <translation>Data Streaming Accelerator（英特尔® DSA）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DFX</masterLabel>
+        <translation><!-- DFX --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Denverton</masterLabel>
+        <translation><!-- Denverton --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Denverton - Atom C3xxx</masterLabel>
+        <translation>Denverton - 凌动 C3xxx</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Diamond Rapids/16-ch</masterLabel>
+        <translation>Diamond Rapids/16-通道</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Diamond Rapids/8-ch</masterLabel>
+        <translation>Diamond Rapids/8-通道</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Discrete graphics</masterLabel>
+        <translation><!-- Discrete graphics --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Dynamic Device Personalization (DDP)</masterLabel>
+        <translation><!-- Dynamic Device Personalization (DDP) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Dynamic Load Balancer (DLB)</masterLabel>
+        <translation><!-- Dynamic Load Balancer (DLB) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Control</masterLabel>
+        <translation>边缘控制</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Insights</masterLabel>
+        <translation>边缘洞见</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Elkhart Lake</masterLabel>
+        <translation><!-- Elkhart Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Emerald Rapids</masterLabel>
+        <translation><!-- Emerald Rapids --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Endpoint Management Assistant (EMA)</masterLabel>
+        <translation><!-- Endpoint Management Assistant (EMA) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ethernet</masterLabel>
+        <translation>以太网</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA</masterLabel>
+        <translation><!-- FPGA --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA IPU</masterLabel>
+        <translation><!-- FPGA IPU --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gemini Lake</masterLabel>
+        <translation><!-- Gemini Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Geti™ Software</masterLabel>
+        <translation><!-- Geti™ Software --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Granite Rapids</masterLabel>
+        <translation><!-- Granite Rapids --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Granite Rapids-AP</masterLabel>
+        <translation><!-- Granite Rapids-AP --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Granite Rapids-SP</masterLabel>
+        <translation><!-- Granite Rapids-SP --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Granulate</masterLabel>
+        <translation><!-- Granulate --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HDDL</masterLabel>
+        <translation><!-- HDDL --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HX/S Refresh Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
+        <translation><!-- HX/S Refresh Core™ Ultra Series 2 (Arrow Lake) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Habana Gaudi</masterLabel>
+        <translation><!-- Habana Gaudi --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Habana® Gaudi®</masterLabel>
+        <translation><!-- Habana® Gaudi® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IPU (Ingregrated Processor Unit)</masterLabel>
+        <translation>IPU（集成处理器单元）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ice Lake</masterLabel>
+        <translation><!-- Ice Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ice Lake - 10th Gen Core</masterLabel>
+        <translation>Ice Lake - 第 10 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Integrated Graphics</masterLabel>
+        <translation>集成显卡</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Geti</masterLabel>
+        <translation>英特尔 Geti</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Geti™</masterLabel>
+        <translation><!-- Intel Geti™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Libraries / Tools</masterLabel>
+        <translation>英特尔库/工具</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Power Management</masterLabel>
+        <translation>英特尔电源管理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel vPro</masterLabel>
+        <translation><!-- Intel vPro --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel vPro Essentials</masterLabel>
+        <translation>英特尔 vPro Essentials</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel vPro®</masterLabel>
+        <translation><!-- Intel vPro® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel(R) Graphics</masterLabel>
+        <translation>英特尔(R) 显卡</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® 4th Generation Xeon® Scalable Processors</masterLabel>
+        <translation><!-- Intel® 4th Generation Xeon® Scalable Processors --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® AMX (Advanced Matrix Extensions)®</masterLabel>
+        <translation>英特尔® AMX (Advanced Matrix Extensions)®</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® AVX (Advanced Vector Extensions)®</masterLabel>
+        <translation>英特尔® AVX (Advanced Vector Extensions)®</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Advanced Encryption Standard New Instructions (Intel® AES‑NI™)</masterLabel>
+        <translation><!-- Intel® Advanced Encryption Standard New Instructions (Intel® AES‑NI™) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Agilex™</masterLabel>
+        <translation>英特尔® Agilex™</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Arc™ A-series Graphics</masterLabel>
+        <translation>英特尔® Arc™ A系列显卡</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Arc™ Pro B50 graphics</masterLabel>
+        <translation>英特尔锐炫™ 专业版 B50 显卡</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Arc™ Pro B60 Graphics</masterLabel>
+        <translation>英特尔锐炫™ 专业版 B60 显卡</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Arc™ graphics</masterLabel>
+        <translation><!-- Intel® Arc™ graphics --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Aria® 10 PFGAs</masterLabel>
+        <translation><!-- Intel® Aria® 10 PFGAs --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Arria® 10 PFGAs</masterLabel>
+        <translation>英特尔® Arria® 10 FPGA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Atom Processor</masterLabel>
+        <translation><!-- Intel® Atom Processor --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Atom® x7000 Series processors</masterLabel>
+        <translation>英特尔凌动® x7000 系列处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Series 1</masterLabel>
+        <translation><!-- Intel® Core™ Series 1 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Series 3 (Wildcat Lake)</masterLabel>
+        <translation>英特尔®核心™系列3（Wildcat Lake）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Series 3 processors</masterLabel>
+        <translation>英特尔® 酷睿™ 处理器（第三代）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra 200S series processors</masterLabel>
+        <translation>英特尔® 酷睿™ Ultra 200S 系列处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra 200V Series processor</masterLabel>
+        <translation><!-- Intel® Core™ Ultra 200V Series processor --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra Series 1</masterLabel>
+        <translation><!-- Intel® Core™ Ultra Series 1 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra Series 1 (Meteor Lake)</masterLabel>
+        <translation>第一代英特尔® 酷睿™ Ultra (Meteor Lake)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
+        <translation><!-- Intel® Core™ Ultra Series 2 (Arrow Lake) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra Series 2 (Lunar Lake)</masterLabel>
+        <translation><!-- Intel® Core™ Ultra Series 2 (Lunar Lake) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ Ultra Series 3 (Panther Lake)</masterLabel>
+        <translation><!-- Intel® Core™ Ultra Series 3 (Panther Lake) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i3‑N300 processor</masterLabel>
+        <translation><!-- Intel® Core™ i3‑N300 processor --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ processors (13th Gen)</masterLabel>
+        <translation><!-- Intel® Core™ processors (13th Gen) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ processors (14th Gen)</masterLabel>
+        <translation><!-- Intel® Core™ processors (14th Gen) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ processors (Series 2)</masterLabel>
+        <translation>英特尔® 酷睿™ 处理器（第二代）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Cyclone®</masterLabel>
+        <translation>英特尔® Cyclone®</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Data Center GPU Flex</masterLabel>
+        <translation><!-- Intel® Data Center GPU Flex --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Dynamic Device Personalization (DDP)</masterLabel>
+        <translation><!-- Intel® Dynamic Device Personalization (DDP) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Ethernet Network Adapters</masterLabel>
+        <translation><!-- Intel® Ethernet Network Adapters --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Ethernet Solutions®</masterLabel>
+        <translation>英特尔® 以太网解决方案®</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® MAX®</masterLabel>
+        <translation>英特尔® MAX®</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Media Transport Library (IMTL)</masterLabel>
+        <translation>英特尔® Media Transport Library (IMTL)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Movidius™</masterLabel>
+        <translation>英特尔® Movidius™</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Omni-Path Fabric</masterLabel>
+        <translation><!-- Intel® Omni-Path Fabric --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® OpenVINO™</masterLabel>
+        <translation>英特尔® OpenVINO™</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ DC Persistent Memory</masterLabel>
+        <translation><!-- Intel® Optane™ DC Persistent Memory --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ DC SSD</masterLabel>
+        <translation><!-- Intel® Optane™ DC SSD --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ Memory</masterLabel>
+        <translation><!-- Intel® Optane™ Memory --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ Memory H10 w/SSD</masterLabel>
+        <translation><!-- Intel® Optane™ Memory H10 w/SSD --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ Memory M10</masterLabel>
+        <translation><!-- Intel® Optane™ Memory M10 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ Memory w SSD</masterLabel>
+        <translation><!-- Intel® Optane™ Memory w SSD --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Pentium® P6000 processor</masterLabel>
+        <translation>英特尔® 奔腾® P6000 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Processor N Series processors</masterLabel>
+        <translation>英特尔® N 系列处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® QuickAssist Technology (Intel® QAT)</masterLabel>
+        <translation><!-- Intel® QuickAssist Technology (Intel® QAT) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® RealSense™</masterLabel>
+        <translation>英特尔® 实感™</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Silicon Photonics</masterLabel>
+        <translation>英特尔® Silicon Photonics</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Software Guard Extensions (Intel® SGX™)</masterLabel>
+        <translation><!-- Intel® Software Guard Extensions (Intel® SGX™) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Stratix® 10 FPGAs</masterLabel>
+        <translation><!-- Intel® Stratix® 10 FPGAs --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xe</masterLabel>
+        <translation>英特尔® Xe</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon®  600 Processors</masterLabel>
+        <translation>英特尔® 至强® 600 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 4th Generation</masterLabel>
+        <translation><!-- Intel® Xeon® 4th Generation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 5th Generation (Emerald Rapids)</masterLabel>
+        <translation><!-- Intel® Xeon® 5th Generation (Emerald Rapids) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 5th Generation Scalable Processors (Emerald Rapids)</masterLabel>
+        <translation><!-- Intel® Xeon® 5th Generation Scalable Processors (Emerald Rapids) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6 (E‑core) Processors (Granite Rapids)</masterLabel>
+        <translation>英特尔® 至强® 6（E-core（能效核））处理器 (Granite Rapids)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6 (P‑core) Processors (Granite Rapids)</masterLabel>
+        <translation><!-- Intel® Xeon® 6 (P‑core) Processors (Granite Rapids) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids E-Core)</masterLabel>
+        <translation>英特尔® 至强® 6 处理器 (Granite Rapids 能效核)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids P-Core)</masterLabel>
+        <translation>英特尔® 至强® 6 处理器（Granite Rapids 性能核）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6 SoC (Granite Rapids-D)</masterLabel>
+        <translation>英特尔®至强® 6 SoC（花岗岩急流-D）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6 W Processors</masterLabel>
+        <translation>英特尔®至强® 6W处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6300 Processors</masterLabel>
+        <translation>英特尔® 至强® 6300 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6500P Processors</masterLabel>
+        <translation>英特尔® 至强® 6500P 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6500P-B Processors</masterLabel>
+        <translation>英特尔® 至强® 6500P-B 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6700P processors</masterLabel>
+        <translation>英特尔® 至强® 6700P 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6700P-B Processors</masterLabel>
+        <translation>英特尔® 至强® 6700P-B 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® 6900P Processors</masterLabel>
+        <translation>英特尔® 至强® 6900P 处理器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon® Max Series</masterLabel>
+        <translation><!-- Intel® Xeon® Max Series --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® vPro™</masterLabel>
+        <translation>英特尔® vPro™</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® vRAN AI Development Kit™</masterLabel>
+        <translation>英特尔® vRAN AI Development Kit™</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® vRAN Boost</masterLabel>
+        <translation><!-- Intel® vRAN Boost --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Iris Graphics</masterLabel>
+        <translation><!-- Iris Graphics --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Kaby Lake</masterLabel>
+        <translation><!-- Kaby Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Kaby Lake - R</masterLabel>
+        <translation><!-- Kaby Lake - R --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Kaby Lake - Y</masterLabel>
+        <translation><!-- Kaby Lake - Y --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lunar Lake (LNL) Intel Core Ultra (Series 2)</masterLabel>
+        <translation>Lunar Lake（LNL）英特尔 Core Ultra（系列 2）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Lunar Lake (LNL) Series 2</masterLabel>
+        <translation><!-- Lunar Lake (LNL) Series 2 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Meteor Lake (MTL)</masterLabel>
+        <translation><!-- Meteor Lake (MTL) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Devices</masterLabel>
+        <translation><!-- Modern Devices --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Moon Lake</masterLabel>
+        <translation><!-- Moon Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Movidius VPU</masterLabel>
+        <translation>Movidius™ VPU</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Movidius VPU - Keem Bay</masterLabel>
+        <translation>Movidius 视觉处理器 - Keem Bay</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Movidius VPU - Other</masterLabel>
+        <translation>Movidius 视觉处理器 - 其他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Movius VPU - Other</masterLabel>
+        <translation><!-- Movius VPU - Other --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi-Cloud NAT (MC-NAT)</masterLabel>
+        <translation>多云 NAT (MC-NAT)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multicore</masterLabel>
+        <translation><!-- Multicore --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NPU (Neural Processor Unit)</masterLabel>
+        <translation>NPU（神经处理器单元）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC Board</masterLabel>
+        <translation>NUC 迷你电脑主板</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC Element</masterLabel>
+        <translation>NUC 迷你电脑元件</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC Enthusiast/Extreme</masterLabel>
+        <translation>NUC 迷你电脑发烧友版/至尊版</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC Mini PC Kit</masterLabel>
+        <translation>NUC 迷你电脑套件</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC Mini PC/Kit</masterLabel>
+        <translation>NUC 迷你电脑/套件</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Network &amp; Cloud Edge Reference System Architecture</masterLabel>
+        <translation>网络和云边缘参考系统架构</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>None</masterLabel>
+        <translation><!-- None --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Nova Lake</masterLabel>
+        <translation><!-- Nova Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Open Visual Cloud</masterLabel>
+        <translation><!-- Open Visual Cloud --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>其它</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>P4</masterLabel>
+        <translation><!-- P4 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Panther Lake</masterLabel>
+        <translation><!-- Panther Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Panther Lake (PTL) Intel Core Ultra Series 2</masterLabel>
+        <translation>Panther Lake (PTL) - 英特尔 酷睿 Ultra 第二代</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Panther Lake (PTL) Intel Core Ultra Series 3</masterLabel>
+        <translation>Panther Lake (PTL) - 英特尔 酷睿 Ultra 第三代</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Parker Ridge - Atom C5xxx</masterLabel>
+        <translation>Parker Ridge - 凌动 C5xxx</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pentium</masterLabel>
+        <translation><!-- Pentium --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purley</masterLabel>
+        <translation><!-- Purley --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purley - 1st/2nd Gen Xeon Scalable</masterLabel>
+        <translation>Purley - 第一/第二代至强可扩展</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>QuickAssist Technology (QAT)</masterLabel>
+        <translation>通信加速技术 (QAT)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rangeley</masterLabel>
+        <translation><!-- Rangeley --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rangeley - Atom C2xxx</masterLabel>
+        <translation>Rangeley - 凌动 C2xxx</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Raptor Lake (RPL)</masterLabel>
+        <translation><!-- Raptor Lake (RPL) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Raptor Lake (RPL) - 13th Gen Core</masterLabel>
+        <translation>Raptor Lake (RPL) - 第 13 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Raptor Lake - 13th Gen Core</masterLabel>
+        <translation>Raptor Lake - 第 13 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Raptor Lake - 13th Gen Core K-SKU</masterLabel>
+        <translation>Raptor Lake - 第 13 代酷睿 K-SKU</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Raptor Lake – HX/S (RPL) 14th Gen</masterLabel>
+        <translation>Raptor Lake – HX/S (RPL) 第 14 代</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Raptor Lake – U (RPL)</masterLabel>
+        <translation>Raptor Lake – U (RPL)  </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Razor Lake</masterLabel>
+        <translation><!-- Razor Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rendering Toolkit &amp; Deep Neural Network Library </masterLabel>
+        <translation>Rendering Toolkit 和 Deep Neural Network Library </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retail Edge</masterLabel>
+        <translation><!-- Retail Edge --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rocket Lake (RKL)</masterLabel>
+        <translation><!-- Rocket Lake (RKL) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rocket Lake (RKL) - 11th Gen Core</masterLabel>
+        <translation>Rocket Lake (RKL) - 第 11 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rocket Lake - 11th Gen Core</masterLabel>
+        <translation>Rocket Lake - 第 11 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SGX</masterLabel>
+        <translation><!-- SGX --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SGX™</masterLabel>
+        <translation><!-- SGX™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sapphire Rapids</masterLabel>
+        <translation><!-- Sapphire Rapids --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sapphire Rapids - 4th Gen Xeon Scalable</masterLabel>
+        <translation>Sapphire Rapids - 第四代至强可扩展</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sapphire Rapids - HBM</masterLabel>
+        <translation><!-- Sapphire Rapids - HBM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Scalable Video Technology (SVT)</masterLabel>
+        <translation>可伸缩视频技术 (SVT)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SigOpt</masterLabel>
+        <translation><!-- SigOpt --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Skylake</masterLabel>
+        <translation><!-- Skylake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SmartEdge</masterLabel>
+        <translation><!-- SmartEdge --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SmartNIC</masterLabel>
+        <translation><!-- SmartNIC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software Guard Extension (SGX)</masterLabel>
+        <translation><!-- Software Guard Extension (SGX) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Structured ASICs</masterLabel>
+        <translation>结构化 ASIC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thunderbolt</masterLabel>
+        <translation><!-- Thunderbolt --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tiger Lake</masterLabel>
+        <translation><!-- Tiger Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tiger Lake - 11th Gen Core</masterLabel>
+        <translation>Tiger Lake - 第 11 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tiger Lake - 11th Gen Core K-SKU</masterLabel>
+        <translation>Tiger Lake - 第 11 代酷睿 K-SKU</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Tiger Lake - Intel® 11th Gen</masterLabel>
+        <translation>Tiger Lake - 英特尔® 第 11 代</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Twin Lake</masterLabel>
+        <translation><!-- Twin Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>VPU (Video Processor Unit)</masterLabel>
+        <translation>VPU（视觉处理器单元）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Whiskey Lake</masterLabel>
+        <translation><!-- Whiskey Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Whiskey Lake - 8th Gen Core</masterLabel>
+        <translation>Whiskey Lake - 第 8 代酷睿</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wi-Fi 6</masterLabel>
+        <translation><!-- Wi-Fi 6 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wi-Fi 7</masterLabel>
+        <translation><!-- Wi-Fi 7 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wifi6</masterLabel>
+        <translation><!-- Wifi6 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wifi7</masterLabel>
+        <translation><!-- Wifi7 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wildcat Lake</masterLabel>
+        <translation><!-- Wildcat Lake --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wildcat Lake (WCL) Intel Core Series 3</masterLabel>
+        <translation>Wildcat Lake (WCL) 英特尔酷睿（第三代）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wildcat Lake (WCL) Intel Core Ultra Series 3</masterLabel>
+        <translation>Wildcat Lake (WCL) - 英特尔 酷睿 Ultra 第三代</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Wildcat Lake Refresh</masterLabel>
+        <translation><!-- Wildcat Lake Refresh --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>X Series</masterLabel>
+        <translation><!-- X Series --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Xeon</masterLabel>
+        <translation><!-- Xeon --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>cnvrg.io</masterLabel>
+        <translation><!-- cnvrg.io --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>dGPU Flex (ATS-M)</masterLabel>
+        <translation><!-- dGPU Flex (ATS-M) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>dGPU Flex (PVC)</masterLabel>
+        <translation><!-- dGPU Flex (PVC) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>oneAPI</masterLabel>
+        <translation><!-- oneAPI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>oneAPI™</masterLabel>
+        <translation><!-- oneAPI™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vPro</masterLabel>
+        <translation><!-- vPro --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vPro Essentials</masterLabel>
+        <translation><!-- vPro Essentials --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vPro Fleet Services</masterLabel>
+        <translation>vPro车队服务</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>vRAN Boost</masterLabel>
+        <translation><!-- vRAN Boost --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>xPU Manager</masterLabel>
+        <translation><!-- xPU Manager --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

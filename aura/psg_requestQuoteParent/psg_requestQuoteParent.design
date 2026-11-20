@@ -1,0 +1,3 @@
+<design:component>
+    <design:attribute name="recordId" label="recordId" description="The Object that contains your field to update." />
+</design:component>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Map_Par_Line_Item__c.Core_Line_Item_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Map_Par_Line_Item__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>CHILD_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_ID</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Line_Item_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Pending,Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>PENDING,INACTIVE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_MAP_PAR__c.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-006</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Intel_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® Tofino™</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Intel_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® Tofino™ 2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Intel_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® P4 Studio</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Intel_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® P4 Insight</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_Map_Par_Line_Item__c.Core_Intel_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel® Deep Insight Network Analytics Software</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>BXD Accounts with IPS Product Access 2.0</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Core_IPS_MAP_PAR__c$Core_IPS_Map_Par_Line_Item__c@Core_IPS_Map_Par_Line_Item__c.Core_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

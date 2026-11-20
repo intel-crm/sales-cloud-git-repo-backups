@@ -1,0 +1,34 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="PMP_SearchMarketplaceController">
+    <aura:attribute name="title" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="subtitle" type="string" description="Internal set from controller data" />
+    <aura:attribute name="CTA" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="CTAUrl" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="viewAll" type="boolean" default="true" description="Design Item"/>
+    <aura:attribute name="pageType" type="string" default="all" description="Design Item, change in data based on page type" />
+    <aura:attribute name="listing" type="Object[]" default="[]" description="Internal set from controller data" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	
+    
+    <!-- SEO Friendly URL attribute -->
+    <aura:attribute name="isSpecialtyPage" type="boolean" default="false" description="For identifying Specialty pages for creating SEO Friendly URL" />   
+    <aura:attribute name="isSeoPage" type="boolean" default="false"  />
+    
+    <c:MarketplaceSimpleCardListWrapper isSpecialtyPage="true"
+                                        isSeoPage="true"
+                                        title="{!v.title}"
+                                        subtitle="{!v.subtitle}"
+                                        CTA="{!v.CTA}"
+                                        CTAUrl="{!v.CTAUrl}"
+                                        viewAllHeadline=""
+                                        viewMoreLinkTitle="{!$Label.c.PMP_ViewAll}"
+                                        listing="{!v.listing}"
+                                        viewAll="{!v.viewAll}"
+                                        ctaTop="true"
+                                        showOnlyFirst="6"
+                                        showOnlyFirstMobile="6"
+                                        objectApiName="PMP_Partner_Specialty__c"
+                                        />
+    
+
+    
+</aura:component>

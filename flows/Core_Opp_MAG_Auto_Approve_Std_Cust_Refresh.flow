@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Core_Opp_MAG_Auto_Approve_Std_Cust_Refresh {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Opp_MAG_Auto_Approve_Std_Cust_Refresh</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Compliance_Status_and_Sub_Status</name>
+        <label>Update Compliance Status and Sub Status</label>
+        <locationX>583</locationX>
+        <locationY>338</locationY>
+        <inputAssignments>
+            <field>Core_Compliance_Status__c</field>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Compliance_Sub_Status__c</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>455</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_Compliance_Status_and_Sub_Status</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>(ISPICKVAL({!$Record.Core_Military_Aerospace_Govmt_End_Use__c},&apos;Yes&apos;) || {!$Record.Account.Core_Military_Aerospace_and_Government__c}=True)  &amp;&amp;
+({!$Record.Core_Standard_Customer_Refresh__c}=True)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

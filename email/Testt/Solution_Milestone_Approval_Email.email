@@ -1,0 +1,5 @@
+{!Approval_Requesting_User.Name} has requested your approval for the following Solution Milestone: {!Core_Solution_Milestone__c.Link}
+
+Milestone ID: {!Core_Solution_Milestone__c.Name}
+
+Please click this link to approve or reject this record.

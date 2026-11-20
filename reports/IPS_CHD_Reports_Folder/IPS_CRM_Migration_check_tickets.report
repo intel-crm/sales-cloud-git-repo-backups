@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_83795067</developerName>
+        <masterLabel>Product</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® SOCRATES™ Products</sourceValue>
+            </sourceValues>
+            <value>SHDSL</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® DUSLIC™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® ISAC™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® SICOFI™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® VINETIC™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ SmartSLIC SLIC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ SmartSLICP SLIC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ SmartSLICT16 SLIC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ SmartSLICR SLIC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® INCA™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ SLICE SLIC</sourceValue>
+            </sourceValues>
+            <value>Voice</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ PHY11G Gigabit PHY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ FLOW25G Gigabit Switches</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® XWAY™ FLOW24S Gigabit Switches</sourceValue>
+            </sourceValues>
+            <value>Ethernet 1G</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX300 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX330 Network Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX350 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX550 Network Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® AnyWAN™ GRX750 Network Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® 10G PON</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FALC™ ONT Chipsets</sourceValue>
+            </sourceValues>
+            <value>Telco</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Puma™ 6 Networking Gateways</sourceValue>
+            </sourceValues>
+            <value>Cable</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Ethernet Network Connection GPY211 - 2.5G PHY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Ethernet Network Connection GPY212 - 2.5G PHY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Ethernet Network Connection GPY215 - 2.5G PHY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Ethernet Network Connection GPY241 - 2.5G PHY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Ethernet Network Connection GPY115 - 1G PHY</sourceValue>
+            </sourceValues>
+            <value>Ethernet 2.5G</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® CONVERGATE™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Atom™ CE4100 Series Media Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Atom™ CE4200 Series Media Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Atom™ CE5000 Series Media Processors</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® COSIC™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® OCTALFALC™ Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FALC™ Products</sourceValue>
+            </sourceValues>
+            <value>Others (Core, DECT, CVG, ...)</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_83795067</field>
+    </columns>
+    <columns>
+        <field>CASE_ID</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <description>required for IPS-CRM transition</description>
+    <filter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Connected Home Division</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>1/1/2020 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Media</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <name>IPS-CRM Migration check - tickets</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

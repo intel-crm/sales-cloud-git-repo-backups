@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email sent to PAR submitter upon submission - 1 per header</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>IPS_Letterhead</letterhead>
+    <name>Core IPS PAR Internal Created</name>
+    <style>freeForm</style>
+    <subject>PAR {!Core_IPS_MAP_PAR__c.Name} successfully submitted for Support Org: {!Core_IPS_MAP_PAR__c.Core_Support_Org_Name__c}</subject>
+    <textOnly>Dear {!Core_IPS_MAP_PAR__c.CreatedBy},
+
+You have successfully submitted the following Product Access Request (PAR):
+
+PAR #: {!Core_IPS_MAP_PAR__c.Name}
+PAR Approval Org: {!Core_IPS_MAP_PAR__c.Core_Support_Org_Name__c}
+PAR Submitter: {!Core_IPS_MAP_PAR__c.CreatedBy}
+PAR Submitter Comments: {!Core_IPS_MAP_PAR__c.Core_Submitter_Comments__c}
+
+Each PAR can have multiple Line Items and each Line Item may or may not require approval.  To review your Product Access Request and the approval status for each Line Item please follow the link: {!$Label.Core_IPS_Notification_Internal_URL}/{!Core_IPS_MAP_PAR__c.Id}
+
+Note if you have created a PAR that was submitted to multiple Product Support Organizations you will receive multiple PAR notifications, one for each Organization.
+
+_______________________________________________________________
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

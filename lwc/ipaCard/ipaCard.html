@@ -1,0 +1,269 @@
+<template>
+    <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    <div class="text-small text-bold color-white text-upcase card-eyebrow truncate-1" data-has-eyebrow={eyebrow} title={eyebrowTagline}>{eyebrowTagline}</div>
+    <div class={cardClasses}>
+        <div class="card-header">
+            <div class="card-image-title-container" data-image-hidden={hideImageVariation}>
+                <template if:false={hideImageVariation}>
+                    <div class="image-container">
+                        <template if:false={ifs.isMemberPartner}>
+                            <c-ipa-link object-page={objectName} record-id={card.id} label={title} aria-skip>
+                                <img class="slds-align_absolute-center" alt={title} src={imageUrl} />
+                            </c-ipa-link>
+                        </template>
+                        <template if:true={ifs.isMemberPartner}>
+                            <img class="slds-align_absolute-center" alt={title} src={imageUrl} />
+                        </template>
+                    </div>
+                </template>
+                <template if:false={ifs.isMemberPartner}>
+                    <c-ipa-link object-page={objectName} record-id={card.id} label={title}>
+                        <div class="card-title truncate-3">
+                            <lightning-formatted-rich-text value={title}></lightning-formatted-rich-text>
+                        </div>
+                    </c-ipa-link>
+                </template>
+                <template if:true={ifs.isMemberPartner}>
+                    <div class="card-title truncate-3">
+                        <lightning-formatted-rich-text value={title}></lightning-formatted-rich-text>
+                    </div>
+                </template>
+            </div>
+            <div class="card-description bordered-bottom">
+                <template if:false={ifs.isMemberPartner}>
+                    <p class="truncate-3">{description}</p>
+                </template>
+                <template if:true={ifs.showWebsite}>
+                    <div class="website-container">
+                        <c-ipa-link external-url={website} label={websiteLabel}></c-ipa-link>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="card-body slds-p-bottom_medium ">
+            <template if:false={ifs.isMemberPartner}>
+                <template if:true={ifs.isProductCard}>
+                    <div class="slds-p-vertical_xx-small partner-name-container">
+                        <span class="text-lower">{labels.by}&nbsp;</span>
+                        <c-ipa-link object-page="PMP_Company__c" record-id={card.partnerId} label={partnerName}></c-ipa-link>
+                    </div>
+                </template>
+                <template if:true={categoryL1}>
+                    <div class="slds-p-vertical_xx-small" data-highlight={categoryL1.highlight}>{categoryL1.Name}</div>
+                </template>
+                <template if:true={categoryL2.length}>
+                    <div class="slds-p-vertical_xx-small">
+                        <template iterator:it={categoryL2}>
+                            <span key={it.value.Id}>
+                                <span data-highlight={it.value.highlight}>{it.value.Name}</span>
+                                <template if:false={it.last}>
+                                    <span>,&nbsp;</span>
+                                </template>
+                            </span>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={categoryL3.length}>
+                    <div class="slds-p-vertical_xx-small">
+                        <template iterator:it={categoryL3}>
+                            <span key={it.value.Id}>
+                                <span data-highlight={it.value.highlight}>{it.value.Name}</span>
+                                <template if:false={it.last}>
+                                    <span>,&nbsp;</span>
+                                </template>
+                            </span>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={distributorTagline}>
+                    <lightning-formatted-rich-text class="slds-p-vertical_xx-small slds-show" value={distributorTagline}></lightning-formatted-rich-text>
+                </template>
+                <template if:true={distributorWebsite}>
+                    <c-ipa-link class-name="link-text slds-p-vertical_xx-small" label={distributorWebsiteLabel} external-url={distributorWebsite}></c-ipa-link>
+                </template>
+                <template if:true={partnerByLine}>
+                    <div class="slds-p-vertical_xx-small">{partnerByLine}</div>
+                </template>
+                <template if:true={partnerStatusLabel}>
+                    <div class="slds-p-vertical_xx-small partner-status">
+                        <span class="intel-icon fa-bookmark"></span>
+                        <span class="partner-status-label slds-m-left_xx-small truncate-1">{partnerStatusLabel}</span>
+                    </div>
+                </template>
+            </template>
+            <template if:true={ifs.isMemberPartner}>
+                <div class="slds-p-vertical_xx-small partner-status">
+                  <span class="intel-icon fa-bookmark"></span>
+                    <span class="partner-status-label slds-m-left_xx-small truncate-1">{partnerStatusLabel}</span>
+                </div>
+            </template>
+            <template if:false={ifs.isMemberPartner}>
+                <template if:true={partnerRole}>
+                    <div class="slds-p-vertical_xx-small">{partnerRole}</div>
+                </template>
+            </template>
+        </div>
+        <div class="card-footer">
+            <template if:true={ifs.isProductCard}>
+                <template if:false={hideAddToCompare}>
+                    <div class="slds-align_absolute-center slds-m-bottom_medium slds-m-top_small">
+                        <c-ipa-compare-checkbox size={addToCompareSize} product={compareProductData} aria-label={title}></c-ipa-compare-checkbox>
+                    </div>
+                </template>
+            </template>
+            
+            <div class="card-quick-view" role="note" aria-label={title}>
+
+                <template if:true={ifs.showWebsite}>
+                    <div class="view-website-container slds-align_absolute-center" aria-label={title}>
+                        <c-ipa-link class-name="link-text text-bold text-upcase" external-url={website} hide-icon>
+                            <span>{labels.viewWebsite}</span>
+                            <span class="icon fa-link-ext slds-m-left_x-small"></span>
+                        </c-ipa-link>
+                    </div>
+                </template>
+
+                <template if:false={ifs.isMemberPartner}>
+                    <c-ipa-quick-view is-slim is-quick-view onopen={handleOpenQuickView} onclose={handleCloseQuickView} has-eyebrow={eyebrow}>
+                        <template if:true={eyebrow}>
+                            <div slot="header">
+                                <div class="text-small text-upcase text-bold color-white card-eyebrow" data-has-eyebrow={eyebrow}>{eyebrowTagline}</div>
+                            </div>
+                        </template>
+                        <div class="slds-is-relative" slot="body">
+                            <div class="card-header">
+                                <div class="card-image-title-container">
+                                    <div class="image-container">
+                                        <img class="slds-align_absolute-center" src={imageUrl} alt={title}/>
+                                    </div>
+                                    <c-ipa-link object-page={objectName} record-id={card.id} label={title}>
+                                        <div class="card-title truncate-3">{title}</div>
+                                    </c-ipa-link>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <template if:true={ifs.isProductCard}>
+                                    <div class="slds-p-vertical_xx-small partner-name-container">
+                                        <span class="text-lower">{labels.by}&nbsp;</span>
+                                        <c-ipa-link object-page="PMP_Company__c" record-id={card.partnerId} label={partnerName}></c-ipa-link>
+                                    </div>
+                                </template>
+                                <template if:true={partnerByLine}>
+                                    <div class="slds-p-vertical_xx-small">{partnerByLine}</div>
+                                </template>
+                                <template if:true={distributorTagline}>
+                                    <lightning-formatted-rich-text class="slds-p-vertical_xx-small slds-show" value={distributorTagline}></lightning-formatted-rich-text>
+                                </template>
+                                <template if:true={distributorWebsite}>
+                                    <c-ipa-link class-name="link-text slds-p-vertical_xx-small" label={distributorWebsiteLabel} external-url={distributorWebsite}></c-ipa-link>
+                                </template>
+                                <template if:true={ifs.showLazyLoadSpinner}>
+                                    <div class="slds-is-relative" style="height: 3rem;">
+                                        <lightning-spinner alternative-text="Loading product details" size="small"></lightning-spinner>
+                                    </div>
+                                </template>
+                                <template if:false={ifs.showLazyLoadSpinner}>
+                                    <template if:true={partnerStatusLabel}>
+                                        <div class="slds-p-top_xx-small partner-status">
+                                            <span class="intel-icon fa-bookmark"></span>
+                                            <span class="partner-status-label slds-m-left_xx-small truncate-1">{partnerStatusLabel}</span>
+                                        </div>
+                                    </template>
+                                    <template if:true={partnerRole}>
+                                        <div class="slds-p-vertical_xx-small">{partnerRole}</div>
+                                    </template>
+                                    <template for:each={partnerSpecialties} for:item="specialty">
+                                        <div class="slds-p-vertical_xx-small specialty" key={specialty.title}>
+                                            <template if:true={specialty.icon}>
+                                                <span class={specialty.iconClass}></span>
+                                            </template>
+                                            <template if:true={specialty.sfIcon}>
+                                                <lightning-icon icon-name={specialty.sfIcon} size="x-small"></lightning-icon>
+                                            </template>
+                                            <template if:true={specialty.iconImgUrl}>
+                                                <img src={specialty.iconImgUrl}>
+                                            </template>
+                                            <span class="slds-m-left_small">{specialty.title}</span>
+                                        </div>
+                                    </template>
+                                    <div class="card-attributes slds-m-top_xx-small">
+                                        <template if:true={ifs.isProductCard}>
+                                            <div class="slds-p-vertical_medium card-attribute">
+                                                <div>
+                                                    <template if:true={categoryL1.Name}>
+                                                        <span data-highlight={categoryL1.highlight}>{categoryL1.Name}</span>
+                                                    </template>
+                                                    <template iterator:it={categoryL2}>
+                                                        <span key={it.value.Id}>
+                                                            <span>,&nbsp;</span>
+                                                            <span data-highlight={it.value.highlight}>{it.value.Name}</span>
+                                                        </span>
+                                                    </template>
+                                                    <template iterator:it={categoryL3}>
+                                                        <span key={it.value.Id}>
+                                                            <span>,&nbsp;</span>
+                                                            <span data-highlight={it.value.highlight}>{it.value.Name}</span>
+                                                        </span>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <template if:true={partnerAttributes}>
+                                            <template for:each={partnerAttributes} for:item="attribute">
+                                                <div class="slds-p-vertical_medium card-attribute" key={attribute.title}>
+                                                    <div class="text-bold">{attribute.title}</div>
+                                                    <c-core-intc-text-block intro-section={attribute.sample} more-section={attribute.all}></c-core-intc-text-block>
+                                                </div>
+                                            </template>
+                                        </template>
+                                    </div>
+                                    <template if:true={description}>
+                                        <div class="card-description-long slds-p-vertical_medium bordered-top">
+                                            <p class="truncate-3">{description}</p>
+                                        </div>
+                                    </template>
+                                </template>
+                            </div>
+                            <div class="card-footer bordered-top">
+                                <template if:true={ifs.isProductCard}>
+                                    <template if:false={hideAddToCompare}>
+                                        <div class="slds-align_absolute-center slds-p-top_large">
+                                            <c-ipa-compare-checkbox product={compareProductData}></c-ipa-compare-checkbox>
+                                        </div>
+                                    </template>
+                                    <div class="slds-align_absolute-center slds-p-vertical_medium">
+                                        <c-ipa-link object-page={objectName} record-id={card.id} label={labels.viewFullOfferingDetails} caret></c-ipa-link>
+                                    </div>
+                                    <template if:true={contactPartnerVisible}>
+                                        <div class="contact-partner-dropdown-container">
+                                            <c-ipa-contact-partner-button auto-scroll
+                                                analytics-details={contactPartnerAnalyticsDetails}
+                                                modal-data={contactPartnerModalData}
+                                                onaction={handleContactAction}>
+                                            </c-ipa-contact-partner-button>
+                                        </div>
+                                    </template>
+                                </template>
+                                <template if:true={ifs.isPartnerCard}>
+                                    <div class="slds-align_absolute-center slds-p-vertical_medium">
+                                        <c-ipa-link object-page={objectName} record-id={card.id} label={labels.viewFullPartnerDetails} caret></c-ipa-link>
+                                    </div>
+                                    <template if:true={contactPartnerVisible}>
+                                        <div class="contact-partner-dropdown-container">
+                                            <c-ipa-contact-partner-button auto-scroll
+                                                analytics-details={contactPartnerAnalyticsDetails}
+                                                modal-data={contactPartnerModalData}
+                                                onaction={handleContactAction}>
+                                            </c-ipa-contact-partner-button>
+                                        </div>
+                                    </template>
+                                </template>
+                            </div>
+                        </div>
+                    </c-ipa-quick-view>
+                </template>
+            </div>
+        </div>
+    </div>
+
+</template>

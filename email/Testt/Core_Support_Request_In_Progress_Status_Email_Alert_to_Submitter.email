@@ -1,0 +1,11 @@
+Your Salesforce question {!Core_Ask_A_Question__c.Name} is In Progress and being worked on.
+
+I Need Assistance With:  {!Core_Ask_A_Question__c.Core_I_Need_Assistance_With__c}
+Subject:  {!Core_Ask_A_Question__c.Core_Subject__c}
+Severity Level:  {!Core_Ask_A_Question__c.Core_Severity_Level__c}
+
+Resolution: {!Core_Ask_A_Question__c.Core_Resolution__c}
+
+Detail Link:  {!Core_Ask_A_Question__c.Link}
+
+Please note that the Sales Enablement team may update the Severity Level.

@@ -1,0 +1,67 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "db484635-ca28-445e-8fe9-352b3b55bc57",
+  "label" : "Search",
+  "regions" : [ {
+    "id" : "b7277641-09b0-4a23-89d7-ddf4ee7f9417",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "9db1e3ff-4fd6-4ab2-9a07-59e3b4a6ac60",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "52d39459-12b3-4e24-8d72-9c2876ffc548",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "db61a3a6-87d5-4f79-9f26-ec8c207cc2e0",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "e08b5048-f5e0-455c-bd40-061ae15fea57",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "ef87b755-35ca-4cce-9fbd-c9cf5e0f7e16",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "9eb79d0c-778d-45a5-91f4-e0b220a87a78",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "4285692a-3a90-494b-86b3-933095e3d5f4",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "b1b04385-d96d-4909-8e15-2bdef7fb210d",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "a2e4106f-ce33-4ffa-8c3a-1062bbb6682a",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "71702425-ab73-4be4-a4b5-9660f1d8ddc4",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "5cdc0844-8fc1-42b0-bf4e-9f27aca3f6b3",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "ea44be8c-7258-4e5e-a78b-62589073ba81",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "id" : "97b5387f-1766-4088-bc27-06fa26f606cb",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "global-search"
+}

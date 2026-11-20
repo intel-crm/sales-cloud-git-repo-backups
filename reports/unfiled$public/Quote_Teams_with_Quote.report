@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Pricing_Quote_Team__c.Pricing_Role_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Pricing_Quote_Team__c.Pricing_Quote_Team_Member_Id__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Pricing_Quote_Team__c.Pricing_Grant_Access_Ind__c</field>
+    </columns>
+    <columns>
+        <field>FK_$SBQQ__Quote__c.Pricing_End_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_$SBQQ__Quote__c.Pricing_End_Customer_Country_Nm__c</field>
+    </columns>
+    <columns>
+        <field>FK_$SBQQ__Quote__c.Pricing_Region_Nm__c</field>
+    </columns>
+    <description>Shows Quote Team members</description>
+    <filter>
+        <criteriaItems>
+            <column>Pricing_Quote_Team__c.Pricing_Role_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>FSE/SDM</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Quote Teams with Quote</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Pricing_Quote_Team__c@Pricing_Quote_Team__c.Pricing_Quote_Id__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

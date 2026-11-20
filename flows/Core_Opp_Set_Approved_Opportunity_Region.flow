@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Opp_Set_Approved_Opportunity_Region workflow rule
+Workflow rule description: Sets the &apos;Approved Opportunity Region&apos; to the Region of the Opportunity Owner when the Opportunity goes into any of these Stages for the first time - Design Win, Production Win, Lost, Cancelled. The field will not be updated once set.&quot;</description>
+    <environments>Default</environments>
+    <label>Core_Opp_Set_Approved_Opportunity_Region</label>
+    <migratedFromWorkflowRuleName>Core_Opp_Set_Approved_Opportunity_Region</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Sets the value of &apos;Approved Opportunity Region&apos; to the Region of the current Opportunity Owner.</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Core_Approved_Opportunity_Region__c</field>
+            <value>
+                <elementReference>$Record.Owner.Core_User_Geo__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND  (  ISCHANGED({!$Record.StageName}), OR ( ISPICKVAL({!$Record.StageName}, &apos;Design Win&apos;), ISPICKVAL({!$Record.StageName}, &apos;Production Win&apos;), ISPICKVAL({!$Record.StageName}, &apos;Lost&apos;), ISPICKVAL({!$Record.StageName}, &apos;Cancelled&apos;) ) )</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Accommodation and Food Services</masterLabel>
+        <translation>Services d&apos;hébergement et de restauration</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Agriculture</masterLabel>
+        <translation><!-- Agriculture --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Amusement and Gambling</masterLabel>
+        <translation>Amusement et jeux d’argent</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arts and Entertainment</masterLabel>
+        <translation>Arts et divertissement</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+        <translation>Arts, spectacles et loisirs</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive</masterLabel>
+        <translation>Automobile</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive (Non Manufacturing)</masterLabel>
+        <translation>Automobile (non manufacturière)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B2B general</masterLabel>
+        <translation>B2B général</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B2C, no industry</masterLabel>
+        <translation>B2C, pas d&apos;industrie</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Communications</masterLabel>
+        <translation><!-- Communications --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Construction</masterLabel>
+        <translation><!-- Construction --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Defense and Space</masterLabel>
+        <translation>Défense et espace</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Education</masterLabel>
+        <translation>Éducation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy and Utilities</masterLabel>
+        <translation>Énergie et services publics</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Finance and Insurance</masterLabel>
+        <translation>Finance et assurance</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>Jeux vidéo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Government</masterLabel>
+        <translation>Secteur public</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Health &amp; Life Sciences</masterLabel>
+        <translation>Santé et sciences de la vie</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Healthcare</masterLabel>
+        <translation>Santé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manufacturing</masterLabel>
+        <translation>Industrie</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Media</masterLabel>
+        <translation>Support</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NA</masterLabel>
+        <translation>S/O</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Not For Profit</masterLabel>
+        <translation>À but non lucratif</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Autres</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Professional and Business Services</masterLabel>
+        <translation>Services professionnels et commerciaux</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+        <translation>Immobilier, location et crédit-bail</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Retail</masterLabel>
+        <translation>Grande distribution</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Robotics</masterLabel>
+        <translation>Robotique</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software</masterLabel>
+        <translation>Logiciels</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software and Services</masterLabel>
+        <translation>Logiciels et services</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telecommunications</masterLabel>
+        <translation>Télécommunications</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Transportation and Warehouse</masterLabel>
+        <translation>Transports et entrepôts</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Transportation, Travel and Warehousing</masterLabel>
+        <translation>Transports, voyages et entreposage</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

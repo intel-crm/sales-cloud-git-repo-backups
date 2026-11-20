@@ -1,0 +1,27 @@
+<aura:component controller="Core_Claim_Lead_Ctrl" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="isUnclaimed" type="boolean" default="false"/>
+    <aura:attribute name="isRejected" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    
+    <div style="padding-top: 32px">
+        <aura:if isTrue="{!v.isRejected}">
+            <div style="text-align:center; padding-bottom: 30px;">
+                <div class="slds-notify slds-notify_toast slds-theme_warning" role="status">
+                    <lightning:icon iconName="utility:warning" alternativeText="Information"/>
+                    <div class="slds-notify__content" style="padding-left:3%;width: fit-content;">
+                        <h2 class="slds-text-heading_medium" style="font-weight:bold;font-size:x-large;font-family:intel-clear;">{!$Label.c.Core_PartnerLead_Rejected}</h2>
+                    </div>
+                </div>
+            </div>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.isUnclaimed}">
+                    <div class="forceCommunityRichText forceCommunityRichTextInline" data-aura-class="forceCommunityRichText forceCommunityRichTextInline">
+                        <p style="text-align: center; padding-bottom: 32px;"><b style="font-family:intel-clear;font-size: 22px; color: rgb(230, 0, 0);">{!$Label.c.Core_Unclaimed_Lead_Message}</b></p>
+                    </div>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+    </div>
+    
+</aura:component>

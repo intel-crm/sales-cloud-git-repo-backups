@@ -1,0 +1,435 @@
+{
+	"constants": [
+	  {
+		  "name": "hasSales",
+		  "value": "${Variables.Sales == 'Yes'}"
+	  },
+	  {
+		  "name": "hasService",
+		  "value": "${Variables.Service == 'Yes'}"
+	  },
+	  {
+		  "name": "hasCustomer",
+		  "value": "${Variables.Customer == 'Yes'}"
+	  },
+	  {
+		  "name": "hasLead",
+		  "value": "${Variables.Lead == 'Yes'}"
+	  },
+	  {
+		  "name": "hasRisk",
+		  "value": "${Variables.RevenueRisk == 'Yes'}"
+	  }
+	  ],
+	"macros" : [ ],
+	"rules" : [
+		{
+			"name" : "TechDebtDashboard2",
+			"appliesTo" : [ {
+			"type" : "dashboard",
+			"name" : "Tech_Debt_Counter_tp"
+			} ],
+			"actions" : [ {
+			"action" : "replace",
+			"description" : "Ensure the dataset name is always the dataset alias in steps",
+			"key":"VisualforceRequestWithUsers",
+			"value" : "${Variables.VFDataset.datasetAlias}"
+			} ]
+		},
+		{
+			"name": "Add Sales Value Labels",
+			"condition": "${Constants.hasSales}",
+			"appliesTo": [
+			  {
+				"type": "dashboard",
+				"name": "Sales_Value_Analytics_tp"
+			  }
+			],
+			"actions": [
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[0]",
+				"key": "label",
+				"value": "Avg Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[1]",
+				"key": "label",
+				"value": "Avg Time"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[2]",
+				"key": "label",
+				"value": "Avg UI Features"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[8]",
+				"key": "label",
+				"value": "Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[9]",
+				"key": "label",
+				"value": "Closed"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[10]",
+				"key": "label",
+				"value": "Amount"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[11]",
+				"key": "label",
+				"value": "Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[12]",
+				"key": "label",
+				"value": "Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[13]",
+				"key": "label",
+				"value": "UI Features"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[14]",
+				"key": "label",
+				"value": "Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[15]",
+				"key": "label",
+				"value": "Closed"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[16]",
+				"key": "label",
+				"value": "Amount"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[17]",
+				"key": "label",
+				"value": "Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[18]",
+				"key": "label",
+				"value": "Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[19]",
+				"key": "label",
+				"value": "UI Features"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[20]",
+				"key": "label",
+				"value": "Total Amount"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[21]",
+				"key": "label",
+				"value": "Total Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[22]",
+				"key": "label",
+				"value": "Total Time (s)"
+			  }
+			]
+		  },{
+			"name": "Add Service Value Labels",
+			"condition": "${Constants.hasService}",
+			"appliesTo": [
+			  {
+				"type": "dashboard",
+				"name": "Service_Value_Analytics_tp"
+			  }
+			],
+			"actions": [
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[0]",
+				"key": "label",
+				"value": "Cases"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[1]",
+				"key": "label",
+				"value": "Avg Stall Time"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[2]",
+				"key": "label",
+				"value": "Avg Action Time"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[3]",
+				"key": "label",
+				"value": "Total Stall Time"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[4]",
+				"key": "label",
+				"value": "Total Action Time"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[5]",
+				"key": "label",
+				"value": "Avg Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[6]",
+				"key": "label",
+				"value": "Total Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[7]",
+				"key": "label",
+				"value": "Avg Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[8]",
+				"key": "label",
+				"value": "Total Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[9]",
+				"key": "label",
+				"value": "Avg Agent Count"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[10]",
+				"key": "label",
+				"value": "Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[11]",
+				"key": "label",
+				"value": "Closed"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[12]",
+				"key": "label",
+				"value": "Age"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[13]",
+				"key": "label",
+				"value": "Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[14]",
+				"key": "label",
+				"value": "Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[15]",
+				"key": "label",
+				"value": "UI Features"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[16]",
+				"key": "label",
+				"value": "Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[17]",
+				"key": "label",
+				"value": "Closed"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[18]",
+				"key": "label",
+				"value": "Age"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[19]",
+				"key": "label",
+				"value": "Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[20]",
+				"key": "label",
+				"value": "Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[21]",
+				"key": "label",
+				"value": "UI Features"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[22]",
+				"key": "label",
+				"value": "Total Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[23]",
+				"key": "label",
+				"value": "Total Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[24]",
+				"key": "label",
+				"value": "Total Age"
+			  }
+			]
+		  },
+		  {
+			"name": "Add Lead Value Labels",
+			"condition": "${Constants.hasLead}",
+			"appliesTo": [
+			  {
+				"type": "dashboard",
+				"name": "Lead_Value_Analytics_tp"
+			  }
+			],
+			"actions": [
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[3]",
+				"key": "label",
+				"value": "Total Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[4]",
+				"key": "label",
+				"value": "New Opportunities"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[5]",
+				"key": "label",
+				"value": "Total Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[6]",
+				"key": "label",
+				"value": "UI Features"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[7]",
+				"key": "label",
+				"value": "Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[8]",
+				"key": "label",
+				"value": "Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[9]",
+				"key": "label",
+				"value": "Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[10]",
+				"key": "label",
+				"value": "Data Quality"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[11]",
+				"key": "label",
+				"value": "Opportunies"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[12]",
+				"key": "label",
+				"value": "Converted"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[13]",
+				"key": "label",
+				"value": "Converted"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[14]",
+				"key": "label",
+				"value": "Opportunies"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[15]",
+				"key": "label",
+				"value": "Data Quality"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[16]",
+				"key": "label",
+				"value": "Clicks"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[17]",
+				"key": "label",
+				"value": "Time (s)"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[18]",
+				"key": "label",
+				"value": "Sessions"
+			  },
+			  {
+				"action": "put",
+				"path": "$.xmd.measures[19]",
+				"key": "label",
+				"value": "UI Features"
+			  }
+			]
+		  }
+	]
+  }

@@ -1,0 +1,456 @@
+<template>
+	
+	   
+	<div if:true={isLoaded}>
+		<lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+		<div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+	</div>
+
+	<div if:false={isLoaded}>
+		<div class="slds-grid slds-wrap custom-container">
+			<div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+			<div class="slds-size_3-of-5 slds-max-small-size_1-of-1">
+				<header class="slds-text-heading--large slds-align--absolute-center header" style="background-color: #5875aa;color:white">
+					<h2>{modeType}</h2>
+				</header> 
+				<lightning-card>
+					<!-- <div class="" style="margin-left:35%;">
+						<lightning-button variant="brand" label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+						<lightning-button variant="brand" label="Submit" title="Submit" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>                       
+					</div> -->
+					<div class="" style="margin-left:5%;margin-right:5%;">
+						<lightning-accordion allow-multiple-sections-open active-section-name={activeSection}>
+							<lightning-accordion-section name="A" label="Case Information" class="accordianColor" >
+								<!-- Customer Visible -->
+				
+								<template if:false={nacRecType}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										
+											<template if:false={isCustomerVisibleTrue}>
+												<lightning-input type="checkbox" label="Customer Visible"
+													onchange={handleCustomerVisibleChange} disabled={disableEdit}></lightning-input>
+											</template>
+											<template if:true={isCustomerVisibleTrue}>
+												<lightning-input type="checkbox" label="Customer Visible" checked
+													onchange={handleCustomerVisibleChange} disabled={disableEdit}></lightning-input>
+											</template>
+										
+										<div class="slds-size_3-of-12">
+											<lightning-helptext content="Check this box to make Case customer visible.">
+											</lightning-helptext>
+									</div>
+									</div>
+								</template>
+								<!-- Customer Visible -->
+
+								<!-- Contact Name -->
+								
+								<template if:false={nacRecType}>
+									<template if:true={isLookupQueryPresentContact}>
+										<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+											<div class="slds-size_1-of-12"></div>
+											<div class="slds-size_9-of-12">
+												<c-core_-i-p-s_-custom-lookup onselectedrec={handleContactChange}
+													iconname={lookupIconName} label="Contact Name" 
+													selected-record={contact}
+													is-required-field="true"
+													searchfield-name={lookupSearchFieldName}
+													query-string={lookupQueryStringContact}
+													is-sosl="true"
+													count-query-string={lookupCountQueryStringContact}
+													query-execution-required=true extra-field1-label="Account"
+													extra-field1="Account.Name"
+													is-read-only={disableEdit}>
+												</c-core_-i-p-s_-custom-lookup>
+											</div>
+											<div class="slds-size_2-of-12"></div>
+										</div>
+									</template>
+								</template>
+								<!-- Contact Name -->
+	
+								<!-- Project -->
+								
+								<template if:true={isLookupQueryPresentProject}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<div if:true={newCase}>
+											<template if:true={isSelectedProjectPresent}>
+												<c-core_-i-p-s_-custom-lookup 
+													selected-record={project}
+													onselectedrec={handleChangeProject}
+													iconname={lookupIconNameProject} label="Project"
+													searchfield-name={lookupSearchFieldNameProject}
+													query-string={lookupQueryStringProject}
+													is-sosl="true"
+													count-query-string={lookupCountQueryStringProject}
+													query-execution-required=true
+													extra-field1-label="Premier Support Project ID"
+													extra-field1="Core_IPS_Project_ID__c"
+													is-read-only={disableProjectEdit}
+													data-id="project">
+												</c-core_-i-p-s_-custom-lookup>
+											</template>
+											<template if:false={isSelectedProjectPresent}>
+												
+												<c-core_-i-p-s_-custom-lookup 
+													onselectedrec={handleChangeProject}
+													iconname={lookupIconNameProject} label="Project"
+													searchfield-name={lookupSearchFieldNameProject}
+													query-string={lookupQueryStringProject}
+													is-sosl="true"
+													count-query-string={lookupCountQueryStringProject}
+													query-execution-required=true
+													extra-field1-label="Premier Support Project ID"
+													extra-field1="Core_IPS_Project_ID__c"
+													is-read-only={disableProjectEdit}
+													data-id="project">
+												</c-core_-i-p-s_-custom-lookup>
+											</template></div>
+											<div if:false={newCase} class="slds-var-p-around-medium">
+												<!--<lightning-icon icon-name="utility:email" size="x-small" alternative-text="icon" class="input-icon"></lightning-icon>-->
+												<lightning-input label="Project" value={assetProjName}  disabled="true"></lightning-input>
+											</div>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Project -->
+	
+								
+								<!-- MINDS Section -->
+								<template if:true={showMindSection}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-accordion active-section-name="D">
+												<lightning-accordion-section name="D" label="MINDS (military, intelligence, nuclear/biochemical, defense, or space) information:" class="accordianColor">
+													<c-core_-i-p-s_-m-i-n-d_-section contact-id={conid} ongetdefaultcountryselection={handleDefaultCountrySelection} ongetdefaultstateselection={handleDefaultstateSelection} onisminds={handleIsMinds} noassignedcase={nacCase} casecountryselected={countrySelected} modetype={mode}
+													oncountryselect={handleCountrySelection} ongetmindsvalue={handleMindsValue} onstateselect={handleStateSelection}></c-core_-i-p-s_-m-i-n-d_-section>
+												</lightning-accordion-section>
+											</lightning-accordion>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- MINDS Section -->
+	
+								<!-- Product -->
+								<template if:true={isLookupQueryPresentProduct}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<div if:true={newCase}>
+											<c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeProduct}
+												iconname={lookupIconNameProduct} label="Product"
+												is-required-field="true"
+												searchfield-name={lookupSearchFieldNameProduct}
+												query-string={lookupQueryStringProduct}
+												is-sosl="true"
+												count-query-string={lookupCountQueryStringProduct}
+												selected-record={asset}
+												selected-record-fieldlabel={caseProductEdit} 
+												query-execution-required=true
+												extra-field1-label="Product Focus Area"
+												extra-field1= {productFocusAreaLabel}
+												extra-field2-label="Premier Support Project"
+												extra-field2="Core_IPS_Project_Name__c"
+												is-read-only={disableEdit}
+												data-id="product">
+											</c-core_-i-p-s_-custom-lookup></div>
+											<div if:false={newCase}><lightning-input label="Product" value={assetProdName} icon-name={Product} size="x-small" disabled="true" required="true"></lightning-input></div>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Product -->
+	
+								<!-- Product Variant -->
+								<template if:true={renderProductVariant}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Product Variant" value={productVariant}
+												placeholder="-Select Variant-" options={records}
+												onchange={handleChangeProductVariant} disabled={disableEdit}>
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Product Variant -->
+	
+								<!-- Platform -->
+								<template if:true={showplatform}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Platform" value={value3}
+												placeholder="-Select Platform-" options={platformoptions}
+												onchange={handleChangeplatform} disabled={disableEdit}>
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Platform -->
+	
+								<!-- Case Source -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<lightning-combobox name="progress" label="Case Source" value={caseSource}
+											title="This is automated based on certain creation systems and manual for others when created manually"
+											placeholder="-Select Case Source-" options={sourceValues}
+											onchange={handleChangecaseSource} required disabled={disableEdit}>
+										</lightning-combobox>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- Case Source -->
+	
+								<!-- Case Type -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<lightning-combobox name="progress" label="Case Type"
+											field-level-help="Please indicate the type of support you are requesting."
+											title="Please indicate the type of support you are requesting."
+											value={caseTypeEdit} placeholder="-None-" options={typeValues}
+											onchange={handleChangecaseType} required disabled={disableEdit}> 
+										</lightning-combobox>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- Case Type -->
+	
+	
+	
+							</lightning-accordion-section>
+	
+							<lightning-accordion-section name="B" label="Case Details" class="accordianColor">
+								<!-- Subject -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<div if:false={disableSubject}>
+										    <lightning-input type="text" label="Subject" name="subject" value={caseSubjectEdit}
+											  onchange={handleChangeSubject} required disabled={disableEdit} maxlength="255"></lightning-input>
+										</div>
+										<div if:true={disableSubject}>
+											<lightning-input type="text" label="Subject" name="subject" value={caseSubjectEdit}
+											  onchange={handleChangeSubject} required disabled="true" maxlength="255"></lightning-input>
+										</div>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- Subject -->
+	
+								<!-- Case Description -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<div style="font-size: 0.75rem;"><span style="color:red;">* </span>Case Description &nbsp;&nbsp;
+											<lightning-helptext content="Note : If you are pasting images into this field, the size limit is 100KB.">
+											</lightning-helptext>
+										</div>
+										<lightning-input-rich-text class="inputRichText" label="Case Description"
+										    title="Note : If you are pasting images into this field, the size limit is 100KB."
+											value={caseDescriptionEdit}
+											onchange={handleChangeDescription} disabled={disableEdit}></lightning-input-rich-text>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- Case Description -->
+	
+								<!-- Severity -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<div if:false={editFlag}>
+										    <lightning-combobox name="progress" label="Severity" value={caseSeverity}
+											   placeholder="-Select Severity-" options={severityValues}
+											   onchange={handleChangecaseSeverity} required disabled={disableEdit}>
+										    </lightning-combobox>
+									    </div>
+										<div if:true={editFlag}>
+                                            <lightning-input label="Severity" value={caseSeverity} disabled="true" required="true"></lightning-input>
+										</div>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- Severity -->
+	
+								<!-- Severity Reason -->
+								<template if:true={showPriority}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-textarea label="Severity Reason"  value={caseSeverityReason} 
+											onchange={handleChangecaseSeverityReason} required disabled={disableEdit}></lightning-textarea>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Severity Reason -->
+	
+								<!-- Customer Reference ID -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<lightning-input type="text" label="Customer Reference ID" value={customerRefIdEdit}
+											field-level-help="If you have already entered this case in your internal case management tool, you can use your internal identification to track your case by entering it here."
+											name="input1" onchange={handlecustomerrefidchange} disabled={disableEdit}></lightning-input>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- Customer Reference ID -->
+	
+								<!-- End Customer -->
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<lightning-input type="text" label="End Customer" value={endCustomerEdit}
+											field-level-help="If you are submitting the case on behalf of another company, please fill in the company's name here."
+											name="input2" onchange={handleendcustomerchange} disabled={disableEdit}></lightning-input>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+								<!-- End Customer -->
+								<!-- PSO  -->
+
+									<template if:true={displayPSO}>
+										<!--<template if:true={PSOisLookupQueryPresent}>-->
+										<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+											<div class="slds-size_1-of-12"></div>
+											<div class="slds-size_9-of-12">
+												<c-core_-i-p-s_-custom-lookup onselectedrec={handlePSOChange}
+													iconname={PSOlookupIconName} 
+													label="Partner Support Owner"
+													 is-required-field="false"
+													 selected-record={PSOSelected}
+													searchfield-name={PSOlookupSearchFieldName}
+													query-string={PSOlookupQueryString}
+													count-query-string={PSOlookupCountQueryStringUser}
+													query-execution-required=true 
+													is-read-only={disableEdit}
+													is-sosl="true"
+													data-id="partnersupportowner">
+												</c-core_-i-p-s_-custom-lookup>
+											</div>
+											<div class="slds-size_2-of-12"></div>
+										</div>
+									   <!-- </template>-->
+										<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+											<div class="slds-size_1-of-12"></div>
+											<div class="slds-size_9-of-12">
+												<lightning-combobox name="PSA" label="Partner Support Account" value={PSASelected}
+													placeholder="-Select Partner Support Account-" options={PSAOptions}
+													onchange={handlePSAChange}  disabled={disableEdit}>
+												</lightning-combobox>
+											</div>
+											<div class="slds-size_2-of-12"></div>
+										</div>
+									</template>
+								
+								<!-- PSO  -->
+
+								<!-- Category -->
+								<template if:true={renderProductCategory}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Category" value={caseCategory}
+												placeholder="-Select Category-" options={categoryoptions} required
+												onchange={handleChangeSubCategory} disabled={disableEdit}> 
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Category -->
+	
+								<!-- Sub Category -->
+								<template if:true={renderProductSubCategory}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Sub Category" value={caseSubCategory}
+												placeholder="-Select Sub Category-" options={subcategoryoptions}
+												onchange={handleChangeRenderSubCategoryedq} required disabled={disableEdit}>
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Sub Category -->
+							</lightning-accordion-section>
+	
+							<template if:true={showProductSection}>
+								<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+									<div class="slds-size_1-of-12"></div>
+									<div class="slds-size_9-of-12">
+										<lightning-accordion active-section-name="C">
+											<lightning-accordion-section name="C" label="Environment Details" class="accordianColor">
+												<template if:true={showProductEDQ}>
+	
+													<c-core_-i-p-s_dynamicformbuilder fields={recordsedq} data-id="prodEDQ" execution-mode ={mode} case-id={recordId} supported-product-id={passSupportedProductID}>
+													</c-core_-i-p-s_dynamicformbuilder>
+												</template>
+												<template if:true={showSubCatEDQ}>
+	
+													<c-core_-i-p-s_dynamicformbuilder fields={subsCatedqi} data-id="subCatEDQ" execution-mode={mode} case-id={recordId} supported-product-id={passSupportedProductID}>
+													</c-core_-i-p-s_dynamicformbuilder>
+												</template>
+			
+											</lightning-accordion-section>
+										</lightning-accordion>
+									</div>
+									<div class="slds-size_2-of-12"></div>
+								</div>
+							</template>
+						</lightning-accordion>
+					</div>
+					<div class="" style="margin-left:35%;margin-top:2%;">
+						<lightning-button variant="Neutral" label="Cancel" title="Cancel" onclick={cancelHandler}
+							class="slds-m-left_x-small"></lightning-button>
+						<lightning-button variant="brand" label="Submit" title="Submit" onclick={saveHandler}
+							class="slds-m-left_x-small"></lightning-button>
+					</div>
+				</lightning-card>
+			</div>
+			<div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+		</div>
+		<template if:true={openConfirmPopup}>
+			<c-core_-i-p-s_modal-utility
+				modal-header="Confirmation"
+				is-modal-header-required="true"
+				icon-name="utility:warning"
+				body-content="You will lose all your changes. Are you sure you want to Cancel?"
+				true-btn-label="Ok" 
+				false-btn-label="Cancel"
+				ontrueclick={handleTrue} 
+				onfalseclick={handleFalse}>
+			</c-core_-i-p-s_modal-utility>
+		</template>
+		<template if:true={showProductInfoDialog}>
+			<c-core_-i-p-s_modal-utility
+				modal-header="Confirmation"
+				is-modal-header-required={setClose}
+				icon-name="utility:warning"
+				body-content="The Project you selected is not associated to the Product on your Case. If you continue to update to this Project, you will need to update the Product, Category, Sub-Category, and any Environment Detail Question values.Do you want to continue?"
+				true-btn-label="Yes" 
+				false-btn-label="No"
+				ontrueclick={handleRemoveProduct} 
+				onfalseclick={handleRemoveProject}>
+			</c-core_-i-p-s_modal-utility>
+		</template>
+
+		<template if:true={spinnerOn}>
+			<c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+		</template>
+	</div>
+
+</template>

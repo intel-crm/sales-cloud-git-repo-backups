@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Template for Resubmitted Scenario to Owner</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP Company Resubmit Template for Owner</name>
+    <style>none</style>
+    <subject>Edit Submitted: Your  Storefront</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

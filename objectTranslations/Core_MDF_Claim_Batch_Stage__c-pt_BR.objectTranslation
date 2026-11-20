@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Registros de lotes de solicitações</value>
+    </caseValues>
+    <fields>
+        <label><!-- 3rd Party POP Documentation Required --></label>
+        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_ActivityCategory__c</name>
+    </fields>
+    <fields>
+        <label>Atividade</label>
+        <name>Core_MDF_Activity_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Subtipo da atividade</label>
+        <name>Core_MDF_Activity_SubType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label>Data de término da execução</label>
+        <name>Core_MDF_Ad_Run_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Data de início da execução</label>
+        <name>Core_MDF_Ad_Run_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <help>Percentagem aplicável do IVA</help>
+        <label>Percentagem de IVA Aplicável</label>
+        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
+        <picklistValues>
+            <masterLabel>0%</masterLabel>
+            <translation><!-- 0% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>O número da conta bancária é uma informação confidencial. Insira somente os 4 últimos dígitos do número da conta bancária. O número completo está armazenado no banco de dados de fornecedores corporativos.</help>
+        <label>N. da conta bancária (últimos 4 dígitos)</label>
+        <name>Core_MDF_Bank_Account_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>ID do banco</label>
+        <name>Core_MDF_Bank_Id__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Banco</label>
+        <name>Core_MDF_Bank_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>ID de lote de solicitações</label>
+        <name>Core_MDF_Batch_ID__c</name>
+        <relationshipLabel>Registros de lotes de solicitações</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <label>Comentários sobre a solicitação</label>
+        <name>Core_MDF_Claim_Comment_txt__c</name>
+    </fields>
+    <fields>
+        <label>Nome de solicitação no registro em lote</label>
+        <name>Core_MDF_Claim_Nm__c</name>
+    </fields>
+    <fields>
+        <label>No. de referência de solicitações</label>
+        <name>Core_MDF_Claim_Reference_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>País/Região</label>
+        <name>Core_MDF_Country_Location_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country_nm__c</name>
+    </fields>
+    <fields>
+        <label>Criar uma duplicata</label>
+        <name>Core_MDF_Create_Duplicate_ind__c</name>
+    </fields>
+    <fields>
+        <label>Criado por</label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failure Reason --></label>
+        <name>Core_MDF_Failure_Reason_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Nº de impressões</label>
+        <name>Core_MDF_Impressions_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>Moeda da prova de custos</label>
+        <name>Core_MDF_Inv_Receipt_Cur_Cd__c</name>
+    </fields>
+    <fields>
+        <label>Data da prova de custo</label>
+        <name>Core_MDF_Inv_Receipt_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Número da prova de custo</label>
+        <name>Core_MDF_Inv_Receipt_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>está duplicado</label>
+        <name>Core_MDF_Is_Duplicate_ind__c</name>
+    </fields>
+    <fields>
+        <label>Modificado pela última vez por</label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Log Info --></label>
+        <name>Core_MDF_Log_Info_txt__c</name>
+    </fields>
+    <fields>
+        <label>Veículo de mídia</label>
+        <name>Core_MDF_Media_Vehicle_txt__c</name>
+    </fields>
+    <fields>
+        <label>Mensagem</label>
+        <name>Core_MDF_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label>Nº de engajamentos</label>
+        <name>Core_MDF_NoOfEngagements_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Nº de potenciais clientes</label>
+        <name>Core_MDF_NoOfLeads_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Nº de tentativas de ativação</label>
+        <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node Account --></label>
+        <name>Core_MDF_Node_Account_Txt__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Custos não reembolsáveis (local)</label>
+        <name>Core_MDF_Non_Reimbursable_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Status do registro, lote de solicitações</label>
+        <name>Core_MDF_Processing_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation>Falhou</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>Documentos pendentes</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>Enviado</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation>Bem-sucedido</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate (%) --></label>
+        <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate (%) --></label>
+        <name>Core_MDF_Reimbursement_Percent__c</name>
+    </fields>
+    <fields>
+        <label>ID da solicitação</label>
+        <name>Core_MDF_Request_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Count --></label>
+        <name>Core_MDF_Retry_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Hold Rule --></label>
+        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Impostos (Local)</label>
+        <name>Core_MDF_Taxes_Local_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Valor total (Local)</label>
+        <name>Core_MDF_Total_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account ID --></label>
+        <name>Core_MDF_Ultimate_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account --></label>
+        <name>Core_MDF_Ultimate_Account_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload POP Document --></label>
+        <name>Core_MDF_Upload_POP_Document__c</name>
+    </fields>
+    <fields>
+        <label>Tipo de fatura</label>
+        <name>Core_MDF_VAT_Opt_In__c</name>
+        <picklistValues>
+            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
+            <translation>Solicitação de reembolso para pagamento de terceiros (apenas custo líquido)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
+            <translation>Fatura de serviço para a Intel (o VAT pode ser aplicado)</translation>
+        </picklistValues>
+    </fields>
+    <gender>Feminine</gender>
+    <nameFieldLabel>ID de registro em lote de solicitações</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Record Type for Client and Datacenter Claims --></description>
+        <label><!-- Claim Client Datacenter Batch Record --></label>
+        <name>Core_MDF_Claim_CCF_DCF_Batch_Record</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- claim batch records of RMF program --></description>
+        <label><!-- Claim RMF Batch Record --></label>
+        <name>Core_MDF_Claim_RMF_Batch_Record</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for SPCF Claims --></description>
+        <label><!-- Claim SPCF Batch Record --></label>
+        <name>Core_MDF_Claim_SPCF_Batch_Record</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage>A solicitação não pode ser editada no status atual</errorMessage>
+        <name>Core_MDF_Succesful_StageCannot_Be_Edited</name>
+    </validationRules>
+</CustomObjectTranslation>

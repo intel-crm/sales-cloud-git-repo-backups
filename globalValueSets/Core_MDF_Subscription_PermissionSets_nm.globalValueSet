@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Retail_Account_Manager</fullName>
+        <default>false</default>
+        <label>CCP Internal RMF Account Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_RMF_PRC_Claim_Operations</fullName>
+        <default>false</default>
+        <label>CCP RMF PRC Claim Operations</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_CSC_Claim_Submitter</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_CSC_Claim_Submitter</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_Claim_Case_Reviewer</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_Co_GTM_Business_Approver</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_IPA_Acct_Mgr</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_IPA_Acct_Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_CCF_Acct_Mgr</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_CCF_Acct_Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_DCF_Acct_Mgr</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_DCF_Acct_Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</fullName>
+        <default>false</default>
+        <label>Core_MDF_CCP_Internal_DCF_Field_Acct_Mgr</label>
+    </customValue>
+    <customValue>
+        <fullName>Core_MDF_Internal_CSC_User</fullName>
+        <default>false</default>
+        <label>Core_MDF_Internal_CSC_User</label>
+    </customValue>
+    <description>Applicable Roles for subscription based notification.</description>
+    <masterLabel>Subscription Permission Sets</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

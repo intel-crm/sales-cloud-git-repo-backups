@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>予算パートナー</value>
+        </caseValues>
+        <name>partnerfundallocation_channelpartner</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>パートナー基金配分名</value>
+        </caseValues>
+        <name>partnerfundallocation_name</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>承認済み基金請求額の合計</value>
+        </caseValues>
+        <name>partnerfundallocation_totalapprovedfcs</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>承認済み基金申請額の合計</value>
+        </caseValues>
+        <name>partnerfundallocation_totalapprovedfrs</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>償還済み基金請求額の合計</value>
+        </caseValues>
+        <name>partnerfundallocation_totalreimbursedfcs</name>
+    </fields>
+    <fields>
+        <help>活動作成に使用可能な金額</help>
+        <label>活動に使用可能な金額</label>
+        <name>Core_MDF_Available_Activity_Alloc_Amt__c</name>
+    </fields>
+    <fields>
+        <help>請求作成に使用可能な金額</help>
+        <label>請求に使用可能な金額</label>
+        <name>Core_MDF_Available_Allocation_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- BudgetIdNodeAccountId --></label>
+        <name>Core_MDF_BudgetIdNodeAccountId_txt__c</name>
+    </fields>
+    <fields>
+        <label>予算タイプ</label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <help>既存の請求に消費された金額 (アクティブのみ)</help>
+        <label>請求予約金額</label>
+        <name>Core_MDF_Claim_Reserved_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_MDF_End_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Account Name --></label>
+        <name>Core_MDF_Intel_Account_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_MDF_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help>既存活動で消費した金額 (アクティブのみ)</help>
+        <label>活動予約金額</label>
+        <name>Core_MDF_Total_Activity_Allocated_Amount__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- This is the Record type for Channel MDF program --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <label>クライアント共同マーケティング・ファンド</label>
+        <name>Core_MDF_Client_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client CoMarketing Fund Boost --></label>
+        <name>Core_MDF_Client_CoMarketing_Fund_Boost</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-GTM --></description>
+        <label><!-- Co-GTM --></label>
+        <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <label>データセンター共同マーケティング・ファンド</label>
+        <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Ecosystem Extension Fund --></description>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Intel Partner Alliance --></description>
+        <label><!-- Intel Partner Alliance --></label>
+        <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Retail Marketing Funds Record Type --></description>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Service Provider CoMarketing Fund --></label>
+        <name>Core_MDF_Service_Provider_CoMarketing_Fund</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Allocation Amount Cannot be lesser than 0 --></errorMessage>
+        <name>Core_MDF_AllocAmt_Cannot_be_lesserthan_0</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

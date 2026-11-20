@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Core_IPS_By_Pass_Validation</name>
+        <label>Check Core IPS By Pass Validation</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_Core_IPS_Emplyee_Customer</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_validation_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_IPS_By_Pass_Validation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Validation_to_false</targetReference>
+            </connector>
+            <label>If validation True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Core_IPS_Emplyee_Customer</name>
+        <label>Check Core IPS Emplyee Customer</label>
+        <locationX>182</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_formula_evaluate_to_true</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CheckCoreIPSEmployeeCustomer</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>mainUpdate</targetReference>
+            </connector>
+            <label>If formula evaluate to true</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the: Core_IPS_Update_ERPM_Status_For_Employee_Customer workflow rule
+Workflow rule description: Update ERPM status to blank for Employee Customer.&quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CheckCoreIPSEmployeeCustomer</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( {!$Record.Core_IPS_Employee_Customer__c} ,  OR( NOT(ISBLANK(TEXT({!$Record.Core_ERPM_Integration_Status__c}))),      NOT(ISNULL({!$Record.Core_ERPM_Status_Change_Date_Time__c} )),  NOT(ISBLANK(TEXT({!$Record.Core_AGS_Integration_Status__c}))),      NOT(ISNULL({!$Record.Core_AGS_Status_Change_Date_Time__c} )) ))</expression>
+    </formulas>
+    <formulas>
+        <name>DateTimeNull</name>
+        <dataType>DateTime</dataType>
+        <expression>Null</expression>
+    </formulas>
+    <label>Core_IPS_Update_ERPM_Status_For_Employee_Customer</label>
+    <migratedFromWorkflowRuleName>Core_IPS_Update_ERPM_Status_For_Employee_Customer</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update ERPM Status to blank for Employee Customer.
+Update ERPM Status change date to blank for Employee Customer
+Used to update AGS status chnaged date to blank for Employee Customer.
+To update AGS status to blank for Employee Customer.</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>50</locationX>
+        <locationY>731</locationY>
+        <inputAssignments>
+            <field>Core_AGS_Integration_Status__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_AGS_Status_Change_Date_Time__c</field>
+            <value>
+                <elementReference>DateTimeNull</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_ERPM_Integration_Status__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_ERPM_Status_Change_Date_Time__c</field>
+            <value>
+                <elementReference>DateTimeNull</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Validation_to_false</name>
+        <label>Update Validation to false</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Check_Core_IPS_Emplyee_Customer</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_By_Pass_Validation__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Core_IPS_By_Pass_Validation</targetReference>
+        </connector>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

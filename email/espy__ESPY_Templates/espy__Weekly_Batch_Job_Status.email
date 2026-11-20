@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Weekly Batch Job Status" recipientType="User" >
+<messaging:htmlEmailBody >
+ <c:EspyWeeklyStatusEmail ></c:EspyWeeklyStatusEmail>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

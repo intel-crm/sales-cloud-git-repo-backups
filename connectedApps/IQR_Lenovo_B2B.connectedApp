@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>Tender.Tech.Team@intel.com</contactEmail>
+    <label>IQR Lenovo B2B</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIID3TCCAsWgAwIBAgIUalu8P6jCYs7VTVclAdVeYLjFvD4wDQYJKoZIhvcNAQELBQAwfjELMAkGA1UEBhMCTVgxCzAJBgNVBAgMAk5MMQwwCgYDVQQHDANNVFkxDzANBgNVBAoMBkxlbm92bzEMMAoGA1UECwwDSVNHMREwDwYDVQQDDAhsZW5zY2FkZDEiMCAGCSqGSIb3DQEJARYTbGVuc2NhZGRAbGVub3ZvLmNvbTAeFw0yMjAxMTExNjU1MzRaFw0yMzAxMTExNjU1MzRaMH4xCzAJBgNVBAYTAk1YMQswCQYDVQQIDAJOTDEMMAoGA1UEBwwDTVRZMQ8wDQYDVQQKDAZMZW5vdm8xDDAKBgNVBAsMA0lTRzERMA8GA1UEAwwIbGVuc2NhZGQxIjAgBgkqhkiG9w0BCQEWE2xlbnNjYWRkQGxlbm92by5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSYAvd+DrRUpoTNOVEe7UoCGZuCIwHiiXEIkAHH9LLNdx2Zl9F1ujF4ScDUNx+h3rWOqKVkoiR/7CX5YuXtT7z9HXfdWgc5dgcOUYCenjfMHWWjs6c0FusXuYbnF4fEp5WrplfqrHR/Zp9BYdzTWnp+BlHDjCFF6F2BHsFqA91Y7l90cILy+u2ebRb86lBCmMyS5PcsX8dG5Sx9hV1yAUX30EdJ7r4gt9R3KuyevzF4O7ksCkIdd/P3r1HjDpH/s+J7SmB6BwyRSonhmmkkgR6fRYWi3RqhX5nRq4qMs6dt7mYfwdWxwFwFlpAqx52BUY8awKHcfDFf9R7rWss1/KdAgMBAAGjUzBRMB0GA1UdDgQWBBRfohzr3u295uCV7BbmP3UKEwpiyzAfBgNVHSMEGDAWgBRfohzr3u295uCV7BbmP3UKEwpiyzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCrvetwpP9SeStNpdWYQQrfqr6+cLvQO0Z/cQxh3iEbvTAlhFvYEUIzVlXnzlb21wwM0Yq5smh1hECqFY29Rdo9DMSdFuSmrj6s1IqUN9sNPByIKG6l0+bPtkguZn5v1cxMLJl+PFXSRlCkyhGVQCqzEplj7Ji77bChOr2whjxGB+obUaKLztwW/KB8SyZEhAm6Cm5JpjR6xoc5jyra9YW5xcHhaVmLu+nN5XkLti1ZZvn7G5YA8J9FEQIodJEy/Vh6gUgBBSCsL4bbm/ZJAPwU0Pnj7hO8exZU796boj5de83LWZd1B2VJvcDny19Lffj/8axG6pD911k62IxfdjcF</certificate>
+        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6uoPzMYF7N6Y35Un79.SAO2NE9gJEHDbtS2WWnvHiItngPAtD_awt5HSs7bo</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Pricing IQR Lenovo B2B</permissionSetName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

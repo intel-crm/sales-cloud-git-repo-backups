@@ -1,0 +1,12 @@
+<aura:component controller="Core_BannerDisplay" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="bannerText" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div aura:id="text">
+        <lightning:card title="Important Information:">
+            <p class="slds-p-horizontal_medium">
+                <aura:unescapedHtml value="{!v.bannerText}"/>
+            </p>
+        </lightning:card>
+    </div>
+</aura:component>

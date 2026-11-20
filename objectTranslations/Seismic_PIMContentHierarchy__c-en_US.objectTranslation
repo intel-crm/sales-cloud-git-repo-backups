@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Seismic_PIMContentHierarchy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Seismic_PIMContentHierarchies</value>
+    </caseValues>
+    <fields>
+        <label><!-- DisplayName --></label>
+        <name>DisplayName__c</name>
+    </fields>
+    <fields>
+        <label><!-- GUID --></label>
+        <name>GUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- HierarchyID --></label>
+        <name>HierarchyID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy Name --></label>
+        <name>Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIMTimestamp --></label>
+        <name>PIMTimestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Seismic Hierarchy Name --></label>
+        <name>Seismic_Hierarchy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- TaggingPath --></label>
+        <name>TaggingPath__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

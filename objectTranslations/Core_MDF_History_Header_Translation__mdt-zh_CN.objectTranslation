@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- History Header Translation --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_MDF_History_Header_Translation --></label>
+        <name>Core_MDF_History_Header_Translation_nm__c</name>
+        <picklistValues>
+            <masterLabel>ACTUAL METRICS</masterLabel>
+            <translation>实际指标</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Transfer Logs History</masterLabel>
+            <translation>帐户转帐日志历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account User History</masterLabel>
+            <translation>账户用户历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budget History</masterLabel>
+            <translation>预算历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Adjustment Requests History</masterLabel>
+            <translation>报销申请调整请求历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim History</masterLabel>
+            <translation>申请历史</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Offsets History</masterLabel>
+            <translation>报销抵消历史</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity History</masterLabel>
+            <translation>联合市场推广活动历史</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disbursement Status</masterLabel>
+            <translation>分配状况</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Criteria List History</masterLabel>
+            <translation>保留标准列表历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>METRICS</masterLabel>
+            <translation>指标</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLANNED METRICS</masterLabel>
+            <translation>计划指标</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP Requirements</masterLabel>
+            <translation>POP 要求</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Fund Allocations History</masterLabel>
+            <translation>合作伙伴资金分配历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Group Mapping History</masterLabel>
+            <translation>合作伙伴组合映射历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Breakdown</masterLabel>
+            <translation>付款细分</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Details</masterLabel>
+            <translation>付款详情</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment History</masterLabel>
+            <translation>付款历史记录</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Run History</masterLabel>
+            <translation>付款运行历史记录</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please provide the Object&apos;s API name. --></help>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_obj_nm__c</name>
+    </fields>
+</CustomObjectTranslation>

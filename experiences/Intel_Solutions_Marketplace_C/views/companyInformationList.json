@@ -1,0 +1,225 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceProductListLayout",
+  "dataProviders" : [ ],
+  "id" : "afe57a30-3a0a-40ac-8ae8-bad1610d784d",
+  "label" : "Company Information List",
+  "regions" : [ {
+    "id" : "9b767bfd-d8f2-4a82-88a4-dd7e16ec0895",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showDisplay" : "showall",
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "cb0518cb-4e42-46e8-8977-196fd877291a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4b342a02-e395-4686-99c4-0c9c7a3f6bc2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "1c9532e2-6360-415e-9812-26af4606cfee",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManagedMPPartners" : true,
+        "disableViewDashboard" : false,
+        "fullWidth" : true
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "bae1557c-0131-4086-8a3f-0b8f51ba14fe",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3141cdfd-3a04-4401-98b0-df475438a1aa",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "6a9e5067-10ce-4cb8-95a5-08e73e7bc9fe",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:PMP_ExportListView",
+      "id" : "a108ce46-46ee-4b85-8e03-a62beff3647b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5465f6dc-ad93-4c97-b5c3-79c3759d04a6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "objectInfo" : "PMP_Company__c"
+      },
+      "componentName" : "c:PSS_SolutionListView",
+      "id" : "545d2b21-53af-431d-aa1b-31382b623059",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dce15783-44f5-450d-8ad0-b719d600c6bd",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "bb120376-387b-454d-ad15-9fb30ca97069",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "5e66966b-3f6c-4788-bd71-2227455f649b",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "e34906bd-f387-40c8-b868-2a020ea8bfda",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : false,
+        "filterName" : "00B0n0000010Rw0EAE",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "PMP_Company__c",
+        "showActionBar" : true,
+        "showChartsPanel" : false,
+        "showDisplay" : "grid",
+        "showFilterPanel" : true,
+        "showImageIcon" : false,
+        "showManualRefreshButton" : true,
+        "showObjectName" : false,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "13fa3443-ce62-428f-b887-1c2e53c90a67",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "04db4319-7bb0-4c48-b6f9-d072dbed146c",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "04f4e01c-0763-4e1d-be00-b24b08a0c860",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "afadc5cc-186d-4f97-a7e9-1976882da024",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "All Partners",
+        "showBreadcrumbs" : true,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "b2f6885e-51a0-4984-8b6d-3af9067bb4e3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a0a6c12d-ac80-4fe2-b82b-2f75c47f859e",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "e33399ff-0d72-4fbf-b64e-2b39f86da319",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "c1c56919-0c76-47bf-a105-2ed3e0d15b71",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "aa6da86f-4fc9-4476-8b65-557caf18220e",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "blue-steel-solid",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : false,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Partner",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "All Partners"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "34b7eb0d-2f91-40db-a269-dabcfab754bd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d52045d5-d6ea-47eb-ad3f-f36eadb0fcdc",
+    "regionName" : "recordList",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "left",
+        "analyticsPageType" : "{\"pageType\": \"PartnerListPage\",\"title\":\"PartnerListPage\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "All Partners"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "62240e8d-ff46-48af-b1b2-ed035c783299",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:PMP_ExportListView",
+      "id" : "2d068d70-e5ea-4e4c-b174-58fd8661b92f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "01ab35ad-122f-4708-96ab-e9be516d1082",
+    "regionName" : "createOfferingButton",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "list-a5S"
+}

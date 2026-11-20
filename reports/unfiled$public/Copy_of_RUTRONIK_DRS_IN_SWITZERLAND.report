@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_End_Customer_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Opportunity_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Owner_Nm__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 AND 2) OR (2 AND 3)</booleanFilter>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Switzerland</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>RUTRONIK ELEKTRONISCHE BAUELEMENTE GMBH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_End_Customer_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>SYSTEM INDUSTRIE ELECTRONIC GMBH</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Copy of RUTRONIK DRS IN SWITZERLAND</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Design_Registration__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_Design_Registration__c.Core_End_Customer_Account_Id__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_Design_Registration__c.Core_Opportunity_Decision_Dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

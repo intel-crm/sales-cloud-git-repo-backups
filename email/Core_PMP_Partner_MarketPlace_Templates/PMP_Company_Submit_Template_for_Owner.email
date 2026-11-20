@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Submitted: Your {!relatedTo.PMP_Published_Copy_Id__r.Name} Storefront" recipientType="User" relatedToType="PMP_Company__c">
+
+    <messaging:htmlEmailBody >
+    
+        <c:PMP_PartnerSubmitted partnerRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

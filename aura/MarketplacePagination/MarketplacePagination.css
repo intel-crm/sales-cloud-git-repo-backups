@@ -1,0 +1,12 @@
+.THIS .pageDisplayInput {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+}
+.THIS .pageDisplayLeftStatus {
+  float: left;
+  padding-top: 8px;
+}
+.THIS .pageDisplayRightStatus {
+  float: right;
+}

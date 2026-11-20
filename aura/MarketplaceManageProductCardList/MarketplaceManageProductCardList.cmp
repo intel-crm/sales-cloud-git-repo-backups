@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="title" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="subtitle" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="CTA" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="CTAUrl" type="string" description="Internal set from controller data"/>
+    <aura:attribute name="viewAll" type="boolean" description="Design Item"/>
+    <aura:attribute name="listing" type="Object[]" default="[]" description="Internal set from controller data"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <c:MarketplaceSimpleCardListWrapper title="{!v.title}" subtitle="{!v.subtitle}" CTA="{!v.CTA}" CTAUrl="{!v.CTAUrl}"
+        viewAllHeadline="" viewMoreLinkTitle="" listing="{!v.listing}" viewAll="{!v.viewAll}" ctaTop="true" />
+
+</aura:component>

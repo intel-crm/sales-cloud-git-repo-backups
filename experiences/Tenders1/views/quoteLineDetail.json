@@ -1,0 +1,67 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "cd677ffc-dd4c-4283-bc5a-85089f689b49",
+  "label" : "Quote Line Detail",
+  "regions" : [ {
+    "id" : "bc003038-1339-4c66-bab8-247517e59cb5",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "9999644e-046a-4ea4-8b45-5b6f8867a6db",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:Pricing_QuoteLineDetail_Page_cmp",
+      "id" : "53f38583-455c-4011-b98f-a16b549235c6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "392914fe-0691-4892-8c50-df4e8e9aad6f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d2817f0a-5d6c-4538-832a-1cf6cd3599dd",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "19a33af7-26ed-439b-87f6-553cca3d8696",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "14b89bea-03a6-4dfb-933d-7c05957e369d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Pricing_PerformanceMetrics",
+      "id" : "3a2e196c-b2c7-45a9-a9a7-ee957c212d89",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ea542df6-28ca-42bc-b8de-29dc40939562",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a81"
+}

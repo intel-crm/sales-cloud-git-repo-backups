@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Deployments</masterLabel>
+        <translation>Déploiements</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Leads</masterLabel>
+        <translation>Prospects</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Others</masterLabel>
+        <translation>Autres</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

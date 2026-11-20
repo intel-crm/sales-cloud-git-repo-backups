@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Deal_Reg_for_External_Users</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Sharing rule to share Product Additional Attribute records with Deal Reg external users</description>
+        <label>Deal Reg for External Users</label>
+        <sharedTo>
+            <group>PCC_Deal_Reg_Partner_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Eligible_for_Deal_Reg__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Deal_Internal_User_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all the records with internal users with Read/Write Access</description>
+        <label>Internal User sharing</label>
+        <sharedTo>
+            <group>PCC_Deal_Internal_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

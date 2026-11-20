@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Portal Role sharing when Account Owners are updated</description>
+        <name>Portal_Role_Sharing</name>
+        <label>Portal Role Sharing</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <actionName>Core_OpportunityHandler_2</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>accOwnerId</name>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>priorAccountOwnerId</name>
+            <value>
+                <elementReference>$Record__Prior.OwnerId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_OpportunityHandler_2</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>To add Account360 Objects sharing for the new Owner</description>
+        <name>To_add_sharing_for_the_new_Owner</name>
+        <label>To add sharing for the new Owner</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <actionName>Account360_SharingForOwnerChange</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Portal_Role_Sharing</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accList</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Account360_SharingForOwnerChange</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>To delete the Account360 Objects sharing for the old Owner</description>
+        <name>To_delete_the_sharing_for_the_old_Owner</name>
+        <label>To delete the sharing for the old Owner</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>Account360_DeleteSharing</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>To_add_sharing_for_the_new_Owner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accountId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>userId</name>
+            <value>
+                <elementReference>$Record__Prior.Owner.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Account360_DeleteSharing</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Account360 sharing for Account Owner change</description>
+    <environments>Default</environments>
+    <interviewLabel>Account360 sharing for Account Owner change {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account360 sharing for Account Owner change</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>To_delete_the_sharing_for_the_old_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

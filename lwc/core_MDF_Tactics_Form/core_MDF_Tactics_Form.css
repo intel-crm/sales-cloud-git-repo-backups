@@ -1,0 +1,60 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+.kpi-value-column {
+    width: 150px;
+    padding: 8px;
+}
+
+.percentage-value-column {
+    width: 150px;
+    padding: 8px;
+}
+
+.tight-row td{
+    padding: 2px 4px;
+    line-height: 1.2;
+}
+
+.amount-input,
+.percentage-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.currency-symbol,
+.percentage-symbol{
+    margin-left: 4px;
+    font-size: 15px;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.amount-input .currency-symbol {
+    margin-right: 4px;
+    margin-left: 0;
+}
+
+.amount-input .currency-symbol,
+.percentage-input .percentage-symbol {
+    padding-top: 12px;
+}
+
+.scrollable-table {
+    overflow-x: auto;
+    max-width: 100%;
+}

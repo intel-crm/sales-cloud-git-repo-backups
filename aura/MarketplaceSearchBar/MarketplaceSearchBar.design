@@ -1,0 +1,5 @@
+<design:component>
+    
+    <design:attribute name="searchType" label="Search Type" datasource="all,product,partner" default="all"/>
+    
+</design:component>

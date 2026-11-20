@@ -1,0 +1,89 @@
+<aura:documentation>
+	<aura:description>
+    <p>Card Attributes Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/30/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>Structure of Card Attribute items:</p>
+		<pre>
+[
+{
+name: 'Competencies', // Section Title
+types: [ // Links Entries separated by pipe if multiple`
+ {
+   id: '1',
+   name: 'Competency 1', // link title`
+   searchParams: '#Competency 1' // link url
+ },
+ {
+   id: '2',
+   name: 'Competency 2',
+   searchParams: '#Competency 2'
+ }
+ ],
+ // Optional
+ cta: {
+	 link: "#",
+	 name: "Learn more about these designations"
+ }
+},
+{	name: 'Geographical Regional Coverage',
+	editButton: { // Optional for partner detail
+		currentStep: '2'
+	},
+	typeGroupings: [
+		{
+			name: 'Asia-Pacific-Japan',
+			types: [
+				{
+					id: '1',
+					name: 'All Asia-Pacific-Japan Countries',
+					searchParams: '#All Asia-Pacific-Japan Countries'
+				}
+			]
+		},
+		{
+			name: 'Americas',
+			types: [
+				{
+					id: '2',
+					name: 'Canada',
+					searchParams: 'Canada'
+				},
+				{
+					id: '3',
+					name: 'United States',
+					searchParams: '#United States'
+				},
+				{
+					id: '4',
+					name: 'Mexico',
+					searchParams: '#Mexico'
+				}
+			]
+		},
+	],
+	cta: {
+		"link": "#",
+		"label" "Learn more about these designations"
+	}
+},
+{
+  name: 'Address', // Section Title
+  textBlock: 'Pyramid Computer Gmbh Botzinger Strasse 60, D-79111 Freigburg,Germany' // Text block display accepts rich text
+}
+
+]
+		</pre>
+		<p>The card attribute items are displayed in order of the array. It currently accepts 2 different types of entries. The regular attribue entries separated by | or the textBlock type which can have a richtext data display.</p>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>Added text block display option</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

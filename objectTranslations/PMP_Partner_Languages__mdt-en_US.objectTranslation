@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_Partner_Language</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_Partner_Languages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Language Code --></label>
+        <name>Language_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locale Name --></label>
+        <name>Locale_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Target Language for the the translation --></help>
+        <label><!-- Target Locale --></label>
+        <name>PMP_Target_Locale_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

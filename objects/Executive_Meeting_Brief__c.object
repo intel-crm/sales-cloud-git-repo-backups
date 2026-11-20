@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Executive_Meeting_Brief_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <inlineHelpText>The customer or partner organization name. This must match the Salesforce account record to ensure data links correctly.</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Executive Meeting Briefs</relationshipLabel>
+        <relationshipName>Executive_Meeting_Briefs</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Brief_Status__c</fullName>
+        <label>Brief Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Ready for Review</fullName>
+                    <default>false</default>
+                    <label>Ready for Review</label>
+                </value>
+                <value>
+                    <fullName>Final</fullName>
+                    <default>false</default>
+                    <label>Final</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_Additional_Legal_Guidance__c</fullName>
+        <label>Additional Legal Guidance</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Agentic_Account_EmailIds__c</fullName>
+        <description>Field to store the email Ids which CDB team is fetching from Account and Opportunity</description>
+        <label>Agentic Account EmailIds</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Agentic_Attendee_Bio__c</fullName>
+        <label>Agentic Attendee Bio(s)</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Agentic_Drafting_Status__c</fullName>
+        <label>Agentic Drafting Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_Attendee_Bio_s__c</fullName>
+        <label>Attendee Bio(s)</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Brief_Requestor_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The email of the person who initiated the request for the executive brief. Typically, the TA or meeting organizer. This field determines where the completed brief will be emailed once finalized.</inlineHelpText>
+        <label>Brief Requestor Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Brief_Reviewer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>The name of the manager or reviewer responsible for approving the brief before TA or leadership review.</inlineHelpText>
+        <label>Brief Reviewer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Executive_Meeting_Briefs3</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Dress_Code__c</fullName>
+        <label>Dress Code</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business Casual</fullName>
+                    <default>false</default>
+                    <label>Business Casual</label>
+                </value>
+                <value>
+                    <fullName>Formal</fullName>
+                    <default>false</default>
+                    <label>Formal</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_Intels_Meeting_Objectives__c</fullName>
+        <inlineHelpText>Clearly outline what Intel aims to achieve in this meeting. Focus on desired outcomes, not discussion topics.</inlineHelpText>
+        <label>Intel’s Meeting Objectives</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Investor_Scouting_Report__c</fullName>
+        <inlineHelpText>Summarize the sentiment around the company. Highlight trends, or leadership statements relevant to Intel&apos;s relationship.</inlineHelpText>
+        <label>Investor Scouting Report</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Location__c</fullName>
+        <description>The meeting location</description>
+        <inlineHelpText>The meeting location</inlineHelpText>
+        <label>Location</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Address</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Most_Critical_Messages_to_Get_Across__c</fullName>
+        <inlineHelpText>Identify the three to five key messages Intel leadership must communicate. Example: &quot;Emphasize Intel&apos;s competitive edge in power efficiency; reaffirm support for their data center expansion; position Lunar Lake as the platform for sustainability.&quot;</inlineHelpText>
+        <label>Most Critical Messages to Get Across</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Other_Partys_Meeting_Objectives__c</fullName>
+        <inlineHelpText>Describe what the customer or partner is likely seeking based on previous interactions or known goals.</inlineHelpText>
+        <label>Other Party’s Meeting Objectives</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_PDF_URL__c</fullName>
+        <label>PDF URL</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CRM_PreparedBy__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Prepared by</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Executive_Meeting_Briefs</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Rating__c</fullName>
+        <description>Field to populate rating based on agentic response</description>
+        <label>Rating</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Recommendation__c</fullName>
+        <label>Recommendation</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Scheduled_End_Date__c</fullName>
+        <description>The end date of the customer meeting for the selected time zone corresponding to the meeting location</description>
+        <inlineHelpText>The end date of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
+        <label>Scheduled End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Scheduled_End_Time_Only__c</fullName>
+        <description>The end time of the customer meeting for the selected time zone corresponding to the meeting location</description>
+        <inlineHelpText>The end time of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
+        <label>Scheduled End Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Scheduled_End_Time_txt__c</fullName>
+        <description>The date and end time of the customer meeting in the local time zone corresponding to the meeting location</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date and end time of the customer meeting in the local time zone corresponding to the meeting location</inlineHelpText>
+        <label>Scheduled End Time (MM/dd/YYYY HH:mm)</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Scheduled_Start_Time_txt__c</fullName>
+        <description>The date and start time of the customer meeting in the local time zone corresponding to the meeting location</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date and start time of the customer meeting in the local time zone corresponding to the meeting location</inlineHelpText>
+        <label>Scheduled Start Time (MM/dd/YYYY HH:mm)</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Start_Date__c</fullName>
+        <description>The start date of the customer meeting for the selected time zone corresponding to the meeting location</description>
+        <inlineHelpText>The start date of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
+        <label>Scheduled Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Start_Time__c</fullName>
+        <description>The start time of the customer meeting for the selected time zone corresponding to the meeting location</description>
+        <inlineHelpText>The start time of the customer meeting for the selected time zone corresponding to the meeting location</inlineHelpText>
+        <label>Scheduled Start Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Technical_Assistant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>The name of the Technical Assistant (TA) supporting the Exec  or meeting. The TA helps facilitate content accuracy and coordinates with Executives.</inlineHelpText>
+        <label>Technical Assistant</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Executive_Meeting_Briefs4</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Time_Zone__c</fullName>
+        <inlineHelpText>Timezone for the customer meeting corresponding to the meeting location</inlineHelpText>
+        <label>Meeting Timezone</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Document_Link__c</fullName>
+        <label>Document Link</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Core_Executive_Meeting_Brief_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The official title of the meeting. A short, descriptive phrase that is recognizable.</inlineHelpText>
+        <label>Executive Meeting Brief Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_They_Buy_Sell__c</fullName>
+        <inlineHelpText>Describe the customer&apos;s buying or selling model. Explain whether they buy directly, through OEMs, or via partners, and note any internal procurement or budget cycle details relevant to Intel engagement.</inlineHelpText>
+        <label>How They Buy/Sell</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Industry_Insights_Political_Climate__c</fullName>
+        <inlineHelpText>Provide a concise summary of current industry or geopolitical factors affecting the account&apos;s business. Focus on market shifts, regulatory changes, or macroeconomic events that could impact decision-making.</inlineHelpText>
+        <label>Industry Insights/Political Climate</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Quip_Document_URL__c</fullName>
+        <label>Quip_Document_URL</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <label>Executive Meeting Brief</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Executive_Meeting_Brief_List_View</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Executive_Meeting_Brief_Name__c</columns>
+        <columns>Brief_Status__c</columns>
+        <columns>Account__c</columns>
+        <columns>CRM_Start_Date__c</columns>
+        <columns>CRM_Start_Time__c</columns>
+        <columns>CRM_Scheduled_End_Date__c</columns>
+        <columns>CRM_Scheduled_End_Time_Only__c</columns>
+        <columns>CRM_Time_Zone__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</value>
+        </filters>
+        <label>Agentic Executive Meeting Brief</label>
+    </listViews>
+    <nameField>
+        <displayFormat>EX-{0000}</displayFormat>
+        <label>Executive Meeting Brief ID</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Executive Meeting Briefs</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>CRM_New_Executive_Meeting_Brief</fullName>
+        <active>true</active>
+        <description>AI-curated brief with synthesized insights and recommendations.</description>
+        <label>Agentic Executive Meeting Brief</label>
+        <picklistValues>
+            <picklist>Brief_Status__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ready for Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CRM_Agentic_Drafting_Status__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CRM_Dress_Code__c</picklist>
+            <values>
+                <fullName>Business Casual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Formal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Executive_Meeting_Brief</fullName>
+        <active>true</active>
+        <description>Manually curated meeting brief and account details.</description>
+        <label>Executive Meeting Brief</label>
+        <picklistValues>
+            <picklist>Brief_Status__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CRM_Agentic_Drafting_Status__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CRM_Dress_Code__c</picklist>
+            <values>
+                <fullName>Business Casual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Formal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>CRM_Agentic_Brief_Generation_Check</fullName>
+        <active>true</active>
+        <description>Validation rule to check agentic brief generation before Status Update to Ready for Review or Final</description>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(Brief_Status__c, &quot;Ready for Review&quot;),
+        ISPICKVAL(Brief_Status__c, &quot;Final&quot;)
+    ),
+    RecordType.DeveloperName = &quot;CRM_New_Executive_Meeting_Brief&quot;,
+    ISBLANK(CRM_Rating__c)
+)</errorConditionFormula>
+        <errorMessage>Agentic Brief Generation must be completed before updating status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_StartDate_EndDate_Validation</fullName>
+        <active>true</active>
+        <description>Validation to check the Endate &amp; Startdate</description>
+        <errorConditionFormula>OR(
+    CRM_Scheduled_End_Date__c &lt; CRM_Start_Date__c,
+    AND(
+        CRM_Scheduled_End_Date__c = CRM_Start_Date__c,
+        CRM_Scheduled_End_Time_Only__c &lt;= CRM_Start_Time__c
+    )
+)</errorConditionFormula>
+        <errorMessage>Scheduled Start Date and Time must not be greater than Scheduled End Date and Time.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CRM_Timezone_Validation</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+NOT(ISNEW()),
+OR(ISCHANGED(CRM_Start_Time__c),ISCHANGED(CRM_Scheduled_End_Time_Only__c), ISCHANGED(CRM_Start_Date__c), ISCHANGED(CRM_Scheduled_End_Date__c)),
+RecordType.DeveloperName = &apos;CRM_New_Executive_Meeting_Brief&apos;,
+$Permission.CRM_New_Executive_Meeting_Brief_Custom_Permission,
+ISBLANK(CRM_Time_Zone__c)
+)</errorConditionFormula>
+        <errorMessage>Please select the Meeting Timezone</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

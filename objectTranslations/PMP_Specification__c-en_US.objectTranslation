@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Specification</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Specifications</value>
+    </caseValues>
+    <fields>
+        <help><!-- Shows if a specification is active or not --></help>
+        <label><!-- Is Active --></label>
+        <name>PMP_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays the Specification ancestor Id separated by &quot;|&quot; Symbol --></help>
+        <label><!-- Ancestor Specification Id --></label>
+        <name>PMP_Ancestor_Specification_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Displays the Ancestor Specification Names separated by &quot;|&quot; --></help>
+        <label><!-- Ancestor Specification Name --></label>
+        <name>PMP_Ancestor_Specification_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type of control to be displayed for the specification selection (Radio/Checkbox) --></help>
+        <label><!-- Display Type --></label>
+        <name>PMP_Display_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Image URL --></label>
+        <name>PMP_Image_url__c</name>
+    </fields>
+    <fields>
+        <help><!-- List of Categories for which the specification is mandatory --></help>
+        <label><!-- Mandatory Offering Category --></label>
+        <name>PMP_Mandatory_Offering_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- To maintain if the specification value is mandatory --></help>
+        <label><!-- Mandatory Specification --></label>
+        <name>PMP_Mandatory_Specification_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Lookup to parent specification --></help>
+        <label><!-- Parent Specification --></label>
+        <name>PMP_Parent_Specification_Id__c</name>
+        <relationshipLabel><!-- Specifications --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Holds the sequence of the leaf node --></help>
+        <label><!-- Sequence --></label>
+        <name>PMP_Partner_Product_Display_Sequence_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specification Id from PIM --></help>
+        <label><!-- PIM Specification Id --></label>
+        <name>PMP_Partner_Product_Specification_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- holds a combination of PIM Specification Id and Locale --></help>
+        <label><!-- PIM Spec External Key --></label>
+        <name>PMP_Partner_Product_Specification_Key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Holds the value of the Parent PIM Specification Id --></help>
+        <label><!-- PIM Parent Specification Id --></label>
+        <name>PMP_Product_Parent_Specification_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Url --></label>
+        <name>PMP_Product_url__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of specification in chinese --></help>
+        <label><!-- Specification Name (Chinese) --></label>
+        <name>PMP_Specification_Chinese_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of specification in japanese --></help>
+        <label><!-- Specification Name (Japanese) --></label>
+        <name>PMP_Specification_Japanese_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specification Name --></label>
+        <name>PMP_Specification_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Type of Specification - either Processor /FPGA / Chipset / Other --></help>
+        <label><!-- Specification Type --></label>
+        <name>PMP_Specification_Type_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

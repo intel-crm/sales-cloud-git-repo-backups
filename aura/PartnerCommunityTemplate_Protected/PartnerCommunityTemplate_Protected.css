@@ -1,0 +1,204 @@
+.THIS .intel-content-area {
+    position: relative;
+    z-index: 1;
+}
+.THIS .forceSearchInputDesktop .slds-input__icon.inputIcon {
+    z-index : 0;
+}
+
+/* The below CSS is used to set the can be used  to hide the Home button which is the first menu element */
+.THIS .forceCommunityGlobalNavigation {
+    min-height: 40px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;    
+}
+
+.THIS .forceCommunityRichText h2 {
+    font-size:28px;
+    font-weight:100;
+}
+
+.THIS .forceCommunityRichText h4 {
+    font-size:16px;
+    font-weight:100;
+}
+
+.THIS .forceCommunityRichText h3 {
+    font-size:24px;
+    font-weight:100;
+}
+
+/* The below CSS is used for Search box */
+.THIS .intel-searcharea{
+    
+    margin-top:38px;
+    margin-bottom:38px;
+    font-family: intel-clear;
+    border: 0px solid #0071c5;  
+}
+
+.THIS .intel-blue{
+    color: #0071c5;  
+}
+
+/* The below CSS is used for Search box Height without impacting the search results */
+/*.THIS .slds-input {
+    line-height: 2.875rem;
+}*/
+
+.THIS .forceCommunityHeadline .headlineTitle{
+    text-transform:none !important;
+    font-family : intel-clear-headline !important;
+    font-weight:100;
+    font-size:70px;
+    padding-top:0px;
+    color : #003c71;
+    background:white;
+    margin-top:-35px;
+    padding-bottom : 8px;
+}
+
+.THIS .forceCommunityRichText 
+{
+    font-family : intel-clear;
+    font-size: 16px;
+}
+
+.THIS .forceCommunityHtmlBlock 
+{
+    font-family : intel-clear;
+    font-size: 16px;
+}
+
+
+.THIS .forceCommunityCreateRecordButton button {
+    width: 250px;
+    padding: 5px;
+}
+
+.THIS .btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 2px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+   }
+
+.THIS .btn:focus, .THIS .btn.focus, .THIS .btn:active:focus, .THIS .btn:active.focus, .THIS .btn.active:focus, .THIS .btn.active.focus 
+  {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; 
+	}
+.THIS .btn:hover, .THIS .btn:focus, .THIS .btn.focus 
+  {
+    color: #333;
+    text-decoration: none; 	
+	}
+.THIS .btn:active, .THIS .btn.active 
+  {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); 
+	}
+.THIS .btn.disabled, .THIS .btn[disabled], .THIS fieldset[disabled] .btn 
+  {
+    cursor: not-allowed;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none; 
+}
+
+.THIS .btn-primary {
+  color: #fff;
+  background-color: #0071c5;
+  border-color: #0062ac; 
+  margin-right : 5px;
+}
+
+.THIS .btn-primary:focus, .THIS .btn-primary.focus 
+  {
+    color: #fff;
+    background-color: #005492;
+    border-color: #00192c; 
+	}
+
+.THIS .btn-primary:hover
+  {
+    color: #fff;
+    background-color: #005492;
+    border-color: #003f6e; 
+	}
+
+.THIS .btn-primary:active, .THIS .btn-primary.active,
+ .THIS .open > .THIS .btn-primary.dropdown-toggle 
+  {
+    color: #fff;
+    background-color: #005492;
+    border-color: #003f6e;
+	}
+.THIS .btn-primary:active:hover, .THIS .btn-primary:active:focus, .THIS  .btn-primary:active.focus, .THIS  .btn-primary.active:hover, .THIS  .btn-primary.active:focus, .THIS  .btn-primary.active.focus
+   .THIS .open > .THIS .btn-primary.dropdown-toggle:hover,
+   .THIS .open > .THIS .btn-primary.dropdown-toggle:focus,
+   .THIS .open > .THIS .btn-primary.dropdown-toggle.focus 
+	{
+      color: #fff;
+      background-color: #003f6e;
+      border-color: #00192c;
+	  }
+.THIS .btn-primary:active, .THIS  .btn-primary.active,
+ .THIS .open > .THIS .btn-primary.dropdown-toggle 
+  {
+    background-image: none; 
+	}
+.THIS .btn-primary.disabled:hover, .THIS  .btn-primary.disabled:focus, .THIS  .btn-primary.disabled.focus, .THIS  .btn-primary[disabled]:hover, .THIS  .btn-primary[disabled]:focus, .THIS  .btn-primary[disabled].focus,
+ .THIS fieldset[disabled] .btn-primary:hover,
+ .THIS fieldset[disabled] .btn-primary:focus,
+ .THIS fieldset[disabled] .btn-primary.focus 
+  {
+    background-color: #0071c5;
+    border-color: #0062ac; 
+	}
+.THIS .btn-primary .badge 
+  {
+    color: #0071c5;
+    background-color: #fff;
+	}
+.THIS .text:link {
+  text-decoration: none;
+}
+
+.THIS .text:visited {
+  text-decoration: none;
+}
+
+.THIS .text:hover {
+  text-decoration: underline;
+}
+
+.THIS .text:active {
+  text-decoration: underline;
+}
+
+
+
+/* The below CSS can be used  to hide the Home button which is the first menu element
+.THIS .slds-is-relative:first-child { 
+  display: none;
+  visibility: hidden;
+}
+*/

@@ -1,0 +1,72 @@
+<template>
+  <template if:true={showUploadLWC}>
+    <article class="slds-card">
+      <div class="slds-box slds-p-bottom_none slds-p-left_none slds-p-top_x-small slds-theme_shade">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-has-flexi-truncate">
+            <div class="slds-media__figure slds-p-left_medium">
+              <lightning-icon class="my-icon" icon-name="doctype:attachment" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <strong>{labels.AttachDocuments}</strong>
+              </h2>
+            </div>
+          </header>
+        </div>
+      </div>
+    </article>
+    <lightning-layout class="slds-box slds-p-bottom_small slds-p-top_none slds-theme_default">
+
+      <lightning-button label="Upload Documents" icon-name="utility:upload" class="slds-p-top_large"
+        onclick={showPopUp}></lightning-button>
+
+      <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+          class="slds-modal slds-fade-in-open slds-modal_small">
+          <div class="slds-modal__container">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+              onclick={closeModal}>
+              <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+              </lightning-icon>
+              <span class="slds-assistive-text">{labels.Close}</span>
+            </button>
+            <div class="slds-modal__header">
+              <div id="modal-heading-01" class="header slds-modal__title slds-hyphenate">{labels.TypeofAttachment}</div>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium optionText hovereffect" id="modal-content-id-1">
+              <a onclick={handleClick} style="color: rgb(0, 0, 0);">{labels.TermsAndConditions}</a>
+            </div>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+      </template>
+
+      <template if:true={showUploader}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+          class="slds-modal slds-fade-in-open slds-modal_small">
+          <div class="slds-modal__container">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+              onclick={closeUploader}>
+              <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+              </lightning-icon>
+              <span class="slds-assistive-text">{labels.Close}</span>
+            </button>
+            <div class="slds-modal__header">
+              <div id="modal-heading-02" class="slds-modal__title slds-hyphenate header">
+                {labels.AttachTermsAndConditions}</div>
+            </div>
+            <div class="slds-modal__content slds-p-bottom_large" id="modal-content-id-2">
+              <lightning-file-upload name="fileUploader" accept={acceptedFormats} record-id={RecordId}
+                onuploadfinished={handleUploadFinished} multiple>
+              </lightning-file-upload>
+            </div>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+      </template>
+      <!-- </lightning-card> -->
+    </lightning-layout>
+
+  </template>
+</template>

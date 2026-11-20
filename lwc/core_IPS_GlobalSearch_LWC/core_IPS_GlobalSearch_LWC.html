@@ -1,0 +1,73 @@
+<template>
+    <div class="Mask">
+        <div class="IntelUser">
+            <lightning-formatted-rich-text value={userWelcomMsg}></lightning-formatted-rich-text>
+        </div>
+        <div class="slds-align_absolute-center buttonIn">
+            <lightning-input type="search" class="SearchBox" placeholder="Search Cases, Projects and Products"
+                onkeyup={searchKeyword}></lightning-input>
+            <lightning-button-icon icon-name="utility:slider" onclick={AdvhandleClick} variant="bare"
+                alternative-text="Advanced Search" class="slds-m-left_xx-small advancedsearchbutton"
+                title="Advanced Search"></lightning-button-icon>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap " style="background:#f7f7f7;">
+        <div class="slds-col slds-size_12-of-12 slds-medium-size--2-of-12">
+        </div>
+        <!-- Display three messages -->
+        <template if:true={booleanThree}>
+            <div class="slds-col slds-size_12-of-12 slds-medium-size--10-of-12">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-3">
+                        <div class="slds-align_absolute-center slds-p-around_small Notification slds-m-around_small">
+                            <lightning-formatted-rich-text value={bannerMsgOne}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <div class="slds-align_absolute-center slds-p-around_small banNotification slds-m-around_small">
+                            <lightning-formatted-rich-text value={bannerMsgTwo}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <div class="slds-align_absolute-center slds-p-around_small Notification slds-m-around_small">
+                            <lightning-formatted-rich-text value={bannerMsgThree}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!--Display Two Messages-->
+        <template if:true={booleanTwo}>
+            <div class="slds-col slds-size_12-of-12 slds-medium-size--10-of-12 bannersection">
+                <div class="slds-grid slds-wrap mvalign">
+                    <div class="slds-col slds-size_1-of-2 mvalignleft">
+                        <div class="slds-align_absolute-center slds-p-around_small Notification slds-m-around_small">
+                            <lightning-formatted-rich-text value={bannerMsgOne}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 mvalignright">
+                        <div class="slds-align_absolute-center slds-p-around_small banNotification slds-m-around_small">
+                            <lightning-formatted-rich-text value={bannerMsgTwo}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+        <!--Display One Message-->
+        <template if:true={booleanOne}>
+            <div class="slds-col slds-size_12-of-12 slds-medium-size--10-of-12">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_3-of-3">
+                        <div class="slds-align_absolute-center slds-p-around_small Notification slds-m-around_small">
+                            <lightning-formatted-rich-text value={bannerMsgOne}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <template if:true={searchdata}>
+        <c-core_-i-p-s_-body_-l-w-c search-value={searchValue}></c-core_-i-p-s_-body_-l-w-c>
+    </template>
+</template>

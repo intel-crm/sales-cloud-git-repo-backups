@@ -1,0 +1,15 @@
+<template>
+    <lightning-card >
+        <template if:true={isDataAvailable}>
+        <div class="slds-p-around_small" style="height: 300px;">
+            <lightning-datatable key-field="Id" data={milestoneData} hide-checkbox-column show-row-number-column
+                columns={columns}>
+            </lightning-datatable>
+        </div>  
+        </template>  
+        
+    </lightning-card>
+    <template if:false={isDataAvailable}>
+            <p>No records to display</p>
+        </template>
+</template>

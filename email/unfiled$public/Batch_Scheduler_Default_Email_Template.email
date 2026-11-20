@@ -1,0 +1,25 @@
+<messaging:emailTemplate subject="Batch Job {!relatedTo.Core_MDF_Status_Txt__c}" recipientType="User" relatedToType="Core_MDF_Batch_Scheduler_Line_Item__c">
+<messaging:htmlEmailBody >
+        <html>
+            <body>
+                <!-- Header -->
+                <p>Hi,</p>
+
+                <!-- Body Content -->
+                <p>Batch Job Has Been {!relatedTo.Core_MDF_Status_Txt__c}.</p>
+                <p>Please Find The Summary Below :</p>
+                <ul>
+                    <li>Status: {!relatedTo.Core_MDF_Status_Txt__c}</li>
+                    <li>Scheduler Line Item: {!relatedTo.Id}</li>
+                    <li>Job Id: {!relatedTo.Core_MDF_Job_Id_Txt__c}</li>
+                    <li>Number Of Errors: {!relatedTo.Core_MDF_Number_of_errors__c}</li>
+                    <li>Status Detail: {!relatedTo.Core_MDF_Status_Detail__c}</li>
+                </ul>
+
+                <!-- Signature -->
+                <p>Thanks,</p>
+
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

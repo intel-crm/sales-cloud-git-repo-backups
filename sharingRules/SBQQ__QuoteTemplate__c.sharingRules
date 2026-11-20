@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>IQR_Quote_Templates</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>IQR Quote Templates</label>
+        <sharedTo>
+            <group>Pricing_All_Internal_Tender_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>startsWith</operation>
+            <value>IQR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IQR_Software_Quote_Template</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>&apos;IQR Software Quote Template&apos; Read Only for &apos;AGS_Software CPQ All Internal Users&apos; Public Group</description>
+        <label>IQR Software Quote Template</label>
+        <sharedTo>
+            <group>Pricing_SW_CPQ_All_Internal_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>IQR Software Quote Template</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PSG_Quote_Templates_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Used to share the PSG Quote templates with PSG internal users</description>
+        <label>PSG Quote Templates Sharing</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>startsWith</operation>
+            <value>PSG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

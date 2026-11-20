@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Claim Payment Link</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Claim Payment Links</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_Id__c</name>
+        <relationshipLabel><!-- Claim Payment Links --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_MDF_Account_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank --></label>
+        <name>Core_MDF_Bank_Id__c</name>
+        <relationshipLabel><!-- Claim Payment Links --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Bank Name --></label>
+        <name>Core_MDF_Bank_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim Hold Type(s) --></label>
+        <name>Core_MDF_Claim_Hold_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Claim Payment Links --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Status --></label>
+        <name>Core_MDF_Claim_Status_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Type --></label>
+        <name>Core_MDF_Invoice_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment --></label>
+        <name>Core_MDF_Payment_Id__c</name>
+        <relationshipLabel><!-- Claim Payment Links --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment Run Number --></label>
+        <name>Core_MDF_Payment_Run_Number_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursable Amount (Local) --></label>
+        <name>Core_MDF_Reimbursable_Local_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Amount (USD) --></label>
+        <name>Core_MDF_Reimbursement_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested Amount (USD) --></label>
+        <name>Core_MDF_Requested_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Claim --></label>
+        <name>Core_MDF_Sub_Claim_Id__c</name>
+        <relationshipLabel><!-- Claim Payment Links (Sub Claim) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Unique Key --></label>
+        <name>Core_MDF_Unique_Key_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

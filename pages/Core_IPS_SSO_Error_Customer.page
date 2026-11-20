@@ -1,0 +1,29 @@
+<apex:page showHeader="false">
+<style>
+.container {
+    background:white;
+    width:349px;
+    height:138px;
+    font-size:17px;
+    color:#555;
+    font-color:#555;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid grey;
+    padding-left: 12px;
+    align-content: center;
+}
+</style> 
+    <apex:form >
+         <div style="padding-left: 36%;padding-top: 10%;">
+             <apex:image value="{!$Resource.SSOErrorLog}" style=" align-content: center; width=50"/>
+         </div>
+        <br/>
+        <div style="postion:center;padding-left: 35%">
+        <div class="container">
+                <apex:outputText value="{!$Label.Core_IPS_SSO_Error_Message_Customer}" escape="false"/>            
+        </div>
+        </div> 
+    </apex:form>
+</apex:page>

@@ -1,0 +1,40 @@
+<p>Hello Team,</p>
+
+<p>
+This is an <strong>automated alert</strong> to notify you that one or more
+<strong>Batch Apex jobs have exceeded their configured execution time limit</strong>
+in the Salesforce org.
+</p>
+
+<p>Below are the details:</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse;">
+<tr>
+<th align="left">Batch Name</th>
+<th align="left">Job Id</th>
+<th align="left">Start Time</th>
+<th align="left">Running Duration (Minutes)</th>
+<th align="left">Threshold (Minutes)</th>
+<th align="left">Status</th>
+</tr>
+{!BATCH_TABLE}
+</table>
+
+<br/>
+
+<p><strong>Recommended Actions:</strong></p>
+<ul>
+    <li>Navigate to <strong>Setup → Apex Jobs</strong></li>
+    <li>Review batch logs and SOQL selectivity</li>
+    <li>Abort and reschedule the batch if required</li>
+</ul>
+
+<p>
+This notification is generated automatically based on
+<strong>Custom Metadata batch thresholds</strong>.
+</p>
+
+<p>
+Regards,<br/>
+<strong>Salesforce Automation System</strong>
+</p>

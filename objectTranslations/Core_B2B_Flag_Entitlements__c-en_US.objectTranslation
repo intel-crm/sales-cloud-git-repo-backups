@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>B2B Flag Entitlements</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>B2B Flag Entitlements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Entitlement Display Name --></label>
+        <name>Entitlement_Display_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

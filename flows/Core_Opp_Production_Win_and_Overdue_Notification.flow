@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_Opp_Production_Win_Notification_Email_Alert_Flow</name>
+        <label>Core_Opp_Production_Win_Notification Email Alert Flow</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <actionName>Opportunity.Core_Opp_Send_Production_Win_EmailAlert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Opportunity.Core_Opp_Send_Production_Win_EmailAlert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert_Flow</name>
+        <label>Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert  Flow</label>
+        <locationX>1018</locationX>
+        <locationY>384</locationY>
+        <actionName>Opportunity.Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Opportunity.Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check if the opportunity&apos;s owner&apos;s manager&apos;s email is null</description>
+        <name>Check_for_Owner_Manager_Email</name>
+        <label>Check for Owner Manager Email</label>
+        <locationX>182</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>OwnerManger</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Opp_Set_Owners_Manager_Email</targetReference>
+            </connector>
+            <label>is Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if the opportunity&apos;s owner&apos;s manager&apos;s email is null</description>
+        <name>Check_for_Owner_Manager_Email_1</name>
+        <label>Check for Owner Manager Email 1</label>
+        <locationX>710</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_is_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>OwnerManger</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Opp_Production_Win_Notification_Email_Alert_Flow</targetReference>
+            </connector>
+            <label>is Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if the opportunity&apos;s owner&apos;s manager&apos;s email is null</description>
+        <name>Check_for_Owner_Manager_Email_2</name>
+        <label>Check for Owner Manager Email 2</label>
+        <locationX>1150</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_2_of_is_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>OwnerManger</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Opportunity_Owner__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Opp_Send_Production_Win_Overdue_Notification_EmailAlert_Flow</targetReference>
+            </connector>
+            <label>is Present</label>
+        </rules>
+    </decisions>
+    <description>Added null check for Owner.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Opportunity Owner&apos;s Manager</description>
+        <name>OwnerManger</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Owner.ManagerId}</expression>
+    </formulas>
+    <interviewLabel>Core_Opp_Production_Win_and_Overdue_Notification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Opp_Production_Win_and_Overdue_Notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Updates the &quot;System Owners Manager&quot; field with the email of Owner&apos;s Manager.</description>
+        <name>Core_Opp_Set_Owners_Manager_Email</name>
+        <label>Core_Opp_Set_Owners_Manager_Email</label>
+        <locationX>50</locationX>
+        <locationY>384</locationY>
+        <inputAssignments>
+            <field>Core_System_Owners_Manager__c</field>
+            <value>
+                <elementReference>$Record.Owner.Manager.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>540</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_for_Owner_Manager_Email</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(AND(AND(ISPICKVAL({!$Record.StageName}, &apos;Design Win&apos;),CONTAINS(TEXT({!$Record.Core_Product_Segment__c}), &apos;Embedded&apos;)),CONTAINS(TEXT({!$Record.Core_Opportunity_Type__c}), &apos;Design&apos;)))</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Core_Opp_Production_Win_Notification</name>
+            <connector>
+                <targetReference>Check_for_Owner_Manager_Email_1</targetReference>
+            </connector>
+            <label>Core_Opp_Production_Win_Notification</label>
+            <offsetNumber>-14</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_First_Customer_Ship_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Core_Opp_Production_Win_Overdue_Notification</name>
+            <connector>
+                <targetReference>Check_for_Owner_Manager_Email_2</targetReference>
+            </connector>
+            <label>Core_Opp_Production_Win_Overdue_Notification</label>
+            <offsetNumber>7</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_First_Customer_Ship_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

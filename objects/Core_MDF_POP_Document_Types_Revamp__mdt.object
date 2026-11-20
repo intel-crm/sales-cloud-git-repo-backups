@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Holds the POP Doc Types Configuration based on Program and Budget Type</description>
+    <fields>
+        <fullName>Core_MDF_Active_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Displays whether the record is active or not</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ApplicableToAll_BudgetTypes_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator to represent that the document type is applicable to all budget types of a specific program</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Applicable to all Budget types?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_txt__c</fullName>
+        <description>Holds the Budget Type Value</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Budget Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCF 1.0</fullName>
+                    <default>true</default>
+                    <label>CCF 1.0</label>
+                </value>
+                <value>
+                    <fullName>DCF 1.0</fullName>
+                    <default>false</default>
+                    <label>DCF 1.0</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF+</fullName>
+                    <default>false</default>
+                    <label>MDF+</label>
+                </value>
+                <value>
+                    <fullName>OEM CMP</fullName>
+                    <default>false</default>
+                    <label>OEM CMP</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CMP</fullName>
+                    <default>false</default>
+                    <label>Service Provider CMP</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Co-Engineering</fullName>
+                    <default>false</default>
+                    <label>Co-Engineering</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Document_Type_nm__c</fullName>
+        <description>Holds the Document Type of record</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Document Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Proof of Cost</fullName>
+                    <default>false</default>
+                    <label>Proof of Cost</label>
+                </value>
+                <value>
+                    <fullName>Proof of Attribution</fullName>
+                    <default>false</default>
+                    <label>Proof of Attribution</label>
+                </value>
+                <value>
+                    <fullName>Proof of Execution</fullName>
+                    <default>false</default>
+                    <label>Proof of Execution</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Order_nbr__c</fullName>
+        <description>Holds the Order of Doc Types to be displayed</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_nm__c</fullName>
+        <description>Holds the Program Value</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Channel MDF</fullName>
+                    <default>true</default>
+                    <label>Channel MDF</label>
+                </value>
+                <value>
+                    <fullName>Client</fullName>
+                    <default>false</default>
+                    <label>Client</label>
+                </value>
+                <value>
+                    <fullName>Client Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Client Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Client Co-Marketing Fund Boost</fullName>
+                    <default>false</default>
+                    <label>Client Co-Marketing Fund Boost</label>
+                </value>
+                <value>
+                    <fullName>Co-GTM</fullName>
+                    <default>false</default>
+                    <label>Co-GTM</label>
+                </value>
+                <value>
+                    <fullName>Datacenter</fullName>
+                    <default>false</default>
+                    <label>Datacenter</label>
+                </value>
+                <value>
+                    <fullName>Data Center Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Data Center Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Ecosystem Extension Fund</fullName>
+                    <default>false</default>
+                    <label>Ecosystem Extension Fund</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Alliance</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Alliance</label>
+                </value>
+                <value>
+                    <fullName>Retail Marketing Funds</fullName>
+                    <default>false</default>
+                    <label>Retail Marketing Funds</label>
+                </value>
+                <value>
+                    <fullName>Service Provider Co-Marketing Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider Co-Marketing Fund</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_RecordType_DeveloperName_txt__c</fullName>
+        <description>Recordtype</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>RecordType DeveloperName</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Req_Doc_Types_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Are documents required during claim creation ?</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Docs Required During Claim Creation?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ReqforPOPSubmission_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Required For POP Submission?</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>POP Document Type Revamp</label>
+    <pluralLabel>POP Document Types Revamp</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,21 @@
+.core-link {
+  word-break: break-word;
+}
+
+.core-link-icon {
+  font-size: 12px;
+}
+
+.core-link-icon-wrapper {
+  position: relative;
+  white-space: pre;
+}
+
+.core-link-preview {
+  cursor: default !important;
+}
+
+.core-link-salesforce-icon {
+  position: relative;
+  top: -2px;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Change Account Ownership</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/add-remove-account-team-members/</actionButtonLink>
+        <body>&lt;p&gt;&lt;strong&gt;&lt;em&gt;IMPORTANT - 2H’23 Account Selection Window Closed&lt;/em&gt;&lt;/strong&gt;&lt;em&gt;: There will be no account changes into and out of the Intel-led categorization between account selection cycles (Note: the cycle starts back up in October). More information on the Midyear Account Selection process can be found on the &lt;/em&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-practices-policies/account-coverage/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Account Coverage training page&lt;/em&gt;&lt;/a&gt;&lt;em&gt;.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;--&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;With the exception of Data Ops, please use &lt;a href=&quot;https://salescrm.intel.com/support-and-help-2/#tab-id-6&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ask a Question&lt;/a&gt; for account owner changes on accounts that have open Opportunities. If you make account owner changes on these types of accounts, any open Opportunities will be impacted.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Note that only account owners can transfer or change the account ownership.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To change account ownership,&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;From the &lt;strong&gt;Account&lt;/strong&gt; &lt;em&gt;details&lt;/em&gt; page, click the change icon next to your name In the &lt;strong&gt;Account Owner&lt;/strong&gt; field. The &lt;em&gt;Change Account Owner &lt;/em&gt;window opens.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Use the &lt;strong&gt;Search People&lt;/strong&gt; field to locate the person you want to transfer ownership to.&lt;/li&gt;&lt;li&gt;Choose the appropriate checkboxes that apply to ensure that opportunity and account teams are accurately transferred for the new owner to access required information. See &lt;strong&gt;Transfer Options&lt;/strong&gt; below.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Change Owner&lt;/strong&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Transfer Options:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Transfer open opportunities owned by others&lt;/strong&gt;:&amp;nbsp;NEVER use this option.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Transfer account owner’s closed opportunities&lt;/strong&gt;:&amp;nbsp;NEVER use this option.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Transfer account owner’s open cases/all cases&lt;/strong&gt;:&amp;nbsp;These options are rarely used as account owners normally do not own cases.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Keep account team&lt;/strong&gt;:&amp;nbsp;Keep the account team intact and transfer account roles and access.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Send notification email&lt;/strong&gt;:&amp;nbsp;Send a notification email to the new owner to make him or her aware of the change in ownership.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Change Account Ownership</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Change Account Ownership</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Change Account Ownership</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

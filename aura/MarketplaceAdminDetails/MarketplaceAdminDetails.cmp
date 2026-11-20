@@ -1,0 +1,163 @@
+<aura:component extends="c:MarketplaceBaseComponent" 
+    implements="forceCommunity:availableForAllPageTypes,force:hasRecordId">
+<!--controller="MarketplaceCreateProductController"-->
+    <!-- <aura:attribute name="data" type="Object" />
+    <aura:attribute name="offeringId" type="Id" />
+    <aura:attribute name="loggedInAdmin" type="String" />
+    <aura:attribute name="admins" type="Object[]" />
+    <aura:attribute name="offerinStatusList" type="Object[]" />
+    <aura:attribute name="selectedAdmin" type="Id" />
+    <aura:attribute name="selectedOfferingStatus" type="String" />
+    <aura:attribute name="isOpen" type="Boolean" default="false" />
+    <aura:attribute name="disable" type="Boolean" default="false" /> 
+    <aura:attribute name="businessSegmentList" type="Object[]"  />
+    <aura:attribute name="showSpinner" type="boolean" default="false" />
+    <aura:attribute name="showRetiredComments" type="Boolean" default="false" />
+    <aura:attribute name="RetiredRequired" type="Boolean" default="false" />
+    <aura:attribute name="RetiredComments" type="String" default="" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> -->
+    
+    <!-- <div class="slds-theme_default">
+        <lightning:layout>
+            <lightning:layoutItem flexibility="auto">
+                <div>
+                    <div class="heading-24 slds-m-horizontal_medium slds-p-top_small borderBottom">
+                        {!$Label.c.PMP_Admin_Review}
+                    </div>
+
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <div> -->
+
+            <!-- <lightning:layout already commented>
+            <lightning:layoutItem  flexibility="auto" padding="horizontal-large">
+                <p class="slds-text-heading_small admin-partner-font">{!$Label.c.PMP_Admin_Partners_Iteration}</p>
+                <hr/>
+            </lightning:layoutItem>
+        </lightning:layout> -->
+
+            <!--Added for US535344-->
+            <!-- <aura:if isTrue="{!v.showSpinner}">
+                <lightning:spinner class="mainSpinner" alternativeText="..." />
+            </aura:if>
+           
+            <lightning:layout class="padding-mobile-vertical-medium padding-desktop-vertical-x-large">
+                <lightning:layoutItem size="12">
+                    <lightning:layout multipleRows="true"> -->
+                        <!-- Ashish Changes -->
+                        <!-- <lightning:layoutItem size="8">
+                       <lightning:layout  multipleRows="true" >-->
+                        <!-- <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                           <aura:if isTrue="{!$Label.c.PMP_Assigned_to_Admin}">
+                              <lightning:input aura:id="input"
+                                               disabled="true"
+                                label="{!$Label.c.PMP_Assigned_to_Admin}"
+                                value="{!v.loggedInAdmin}" />
+                           </aura:if>
+                            
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 adminBChnage">
+                            <div>
+                                <span onclick="{!c.toggleModal}">
+                                    <c:IntelButton class="button inline largeMobile">
+                                        {!$Label.c.PMP_Select_Admin}
+                                    </c:IntelButton>
+                                </span>
+                            </div>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                 <lightning:layout  multipleRows="true">
+                     <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                                <aura:if isTrue="{!not(empty(v.offerinStatusList))}">
+                                    <lightning:select class="width other-admin-font" aura:id="adminOfferingStatus"
+                                        name="select" label="{!$Label.c.PMP_Offering_Status}" required="false"
+                                        onchange="{! c.offeringStatusChange }">
+                                        <aura:iteration items="{!v.offerinStatusList}" var="offerinStatus">
+                                            <option text="{!offerinStatus.label}" value="{!offerinStatus.value}"
+                                                selected="{!offerinStatus.selected}"></option>
+                                        </aura:iteration>
+                                    </lightning:select> 
+                                </aura:if>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                     <lightning:layout  multipleRows="true">
+        	 <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 "> -->
+               <!--  <div class="slds-grid slds-wrap slds-list_horizontal slds-p-left_medium">  -->
+                 <!-- <aura:if isTrue="{!v.showRetiredComments}">
+                     <div class="row">
+                    
+                    <lightning:input aura:id="comments" required="{!v.showRetiredComments}" name="input1" value="{!v.RetiredComments}" maxlength="255" label="Comments" />
+           
+                    </div>
+                 </aura:if>  
+                 
+                 <div class="slds-grid slds-wrap">
+                    <p class="slds-p-right_medium"><b>{!$Label.c.PMP_Business_Segments} : </b></p>
+                        <div class="segment-font">
+                            <aura:iteration items="{!v.businessSegmentList}" var="businessSegmentValue">
+                                <p> {!businessSegmentValue}</p> 
+                            </aura:iteration>
+                        </div>
+                     
+                     
+                </div>
+                    
+              </lightning:layoutItem>
+              
+             </lightning:layout>
+                </lightning:layoutItem>
+            </lightning:layout>
+
+            <lightning:layout>
+                <lightning:layoutItem>
+                    <aura:if isTrue="{!v.isOpen}"> -->
+                        <!--<div style="height:500px">-->
+                        <!-- <div>
+                            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium"
+                                aria-labelledby="modal-heading-01" aria-modal="true"
+                                aria-describedby="modal-content-id-1">
+                                <div class="slds-modal__container adminSelectBtn">
+                                    <header class="slds-modal__header adminPopUpBtn"> -->
+                                        <!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                                <lightning:icon iconName="utility:close" alternativeText="Close" />
+                                <span class="slds-assistive-text">Close</span>
+                            </button>-->
+                                        <!-- <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                            {!$Label.c.PMP_Select_Admin}</h2>
+                                    </header>
+                                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                        <lightning:select class="width" aura:id="adminModal" name="select"
+                                            label="{!$Label.c.PMP_Admin}" required="false"
+                                            onchange="{! c.handleChange }">
+                                            <aura:iteration items="{!v.admins}" var="admin">
+                                                <option text="{!admin.Name}" value="{!admin.Id}"></option>
+                                            </aura:iteration>
+                                        </lightning:select>
+
+                                    </div>
+
+                                    <footer class="slds-modal__footer">
+                                        <button class="slds-button slds-button_neutral"
+                                            onclick="{!c.toggleModal}">{!$Label.c.Core_PMP_Cancel}</button>
+                                        <button class="slds-button slds-button_brand"
+                                            onclick="{!c.modalSave}">{!$Label.c.Core_PMP_Save}</button>
+                                    </footer>
+                                </div>
+                            </section>
+                            <div class="slds-backdrop slds-backdrop_open"></div>
+                        </div>
+                    </aura:if>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </div> -->
+          <!-- <div class="slds-p-top_x-large padding-mobile-horizontal-medium">
+           <span class="mobileFloatRight desktopFloatRight" onclick="{!c.saveAdminChanges}">
+                            <c:IntelButton class="button inline largeMobile submit" disabled="{! v.disable}">
+                                {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
+                            </c:IntelButton>
+            </span>
+          </div> -->
+</aura:component>

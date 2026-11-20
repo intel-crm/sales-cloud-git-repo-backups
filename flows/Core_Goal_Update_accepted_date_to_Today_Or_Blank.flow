@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Update_Accept_Date</name>
+        <label>Update Accept Date</label>
+        <locationX>477</locationX>
+        <locationY>338</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_status_is_Accepted</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Goal_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_accepted_date_as_today</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If status is Accepted</label>
+        </rules>
+        <rules>
+            <name>If_status_is_Cancelled_or_Draft</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Goal_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Goal_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_accepted_Date_to_NULL</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If status is Cancelled or Draft</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Update accepted date to Today Or Blank {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Goal Update accepted date to Today Or Blank</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_accepted_date_as_today</name>
+        <label>Update accepted date as today</label>
+        <locationX>246</locationX>
+        <locationY>472</locationY>
+        <inputAssignments>
+            <field>Core_Goal_Accept_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_accepted_Date_to_NULL</name>
+        <label>Update accepted Date to NULL</label>
+        <locationX>755</locationX>
+        <locationY>502</locationY>
+        <inputAssignments>
+            <field>Core_Goal_Accept_Date__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>332</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_Accept_Date</targetReference>
+        </connector>
+        <filterFormula>IF(OR(ISNEW(),ISCHANGED({!$Record.Core_Goal_Status__c})),true, false)</filterFormula>
+        <object>Core_Goal__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,17 @@
+<!-- Pdf Download Example -->
+<template>
+  
+    <template if:true={tableData}>
+      <div class="myTable" >
+      <lightning-datatable column-widths-mode='auto'
+      key-field="id"
+      data={tableData}
+      columns={columns}
+      hide-checkbox-column
+      onrowaction={callRowAction}
+      >
+    </lightning-datatable>
+  </div>
+  </template>
+
+</template>

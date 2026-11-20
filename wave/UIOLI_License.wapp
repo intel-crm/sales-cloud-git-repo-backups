@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folder>UIOLI_License</folder>
+    <masterLabel>DP_UIOLI_License App</masterLabel>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10557526@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11034919@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10631344@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>12124706@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+</WaveApplication>

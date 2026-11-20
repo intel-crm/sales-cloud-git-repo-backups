@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Approval Criteria</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Approval Criteria</value>
+    </caseValues>
+    <fields>
+        <help><!-- At least one active approver record should be created to make approval criteria active. --></help>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Criteria Description --></label>
+        <name>Core_MDF_Approval_Criteria_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Criteria Automation Refer Code --></label>
+        <name>Core_MDF_Approval_Criteria_Ref_Code_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Process --></label>
+        <name>Core_MDF_Approval_Process__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Type --></label>
+        <name>Core_MDF_Approval_Type__c</name>
+        <picklistValues>
+            <masterLabel>Multiple</masterLabel>
+            <translation><!-- Multiple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single</masterLabel>
+            <translation><!-- Single --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approvers Count --></label>
+        <name>Core_MDF_Approvers_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 10 --></label>
+        <name>Core_MDF_Field_Name_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 1 --></label>
+        <name>Core_MDF_Field_Name_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 2 --></label>
+        <name>Core_MDF_Field_Name_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 3 --></label>
+        <name>Core_MDF_Field_Name_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 4 --></label>
+        <name>Core_MDF_Field_Name_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 5 --></label>
+        <name>Core_MDF_Field_Name_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 6 --></label>
+        <name>Core_MDF_Field_Name_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 7 --></label>
+        <name>Core_MDF_Field_Name_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 8 --></label>
+        <name>Core_MDF_Field_Name_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Name 9 --></label>
+        <name>Core_MDF_Field_Name_9__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Steps --></label>
+        <name>Core_MDF_Number_Of_Steps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Type --></label>
+        <name>Core_MDF_Object_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operator 10 --></label>
+        <name>Core_MDF_Operator_10__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 1 --></label>
+        <name>Core_MDF_Operator_1__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 2 --></label>
+        <name>Core_MDF_Operator_2__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 3 --></label>
+        <name>Core_MDF_Operator_3__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 4 --></label>
+        <name>Core_MDF_Operator_4__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 5 --></label>
+        <name>Core_MDF_Operator_5__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 6 --></label>
+        <name>Core_MDF_Operator_6__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 7 --></label>
+        <name>Core_MDF_Operator_7__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 8 --></label>
+        <name>Core_MDF_Operator_8__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Operator 9 --></label>
+        <name>Core_MDF_Operator_9__c</name>
+        <picklistValues>
+            <masterLabel>Equal</masterLabel>
+            <translation><!-- Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than</masterLabel>
+            <translation><!-- Greater Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater Than or Equal</masterLabel>
+            <translation><!-- Greater Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In</masterLabel>
+            <translation><!-- In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than</masterLabel>
+            <translation><!-- Less Than --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Less Than or Equal</masterLabel>
+            <translation><!-- Less Than or Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Equal</masterLabel>
+            <translation><!-- Not Equal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not In</masterLabel>
+            <translation><!-- Not In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_MDF_Sub_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 10 --></label>
+        <name>Core_MDF_Value_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 1 --></label>
+        <name>Core_MDF_Value_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 2 --></label>
+        <name>Core_MDF_Value_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 3 --></label>
+        <name>Core_MDF_Value_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 4 --></label>
+        <name>Core_MDF_Value_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 5 --></label>
+        <name>Core_MDF_Value_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 6 --></label>
+        <name>Core_MDF_Value_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 7 --></label>
+        <name>Core_MDF_Value_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 8 --></label>
+        <name>Core_MDF_Value_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value 9 --></label>
+        <name>Core_MDF_Value_9__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Active Approval Criteria must have at least one active approver. Please uncheck Active checkbox. --></errorMessage>
+        <name>Active_Approver_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Operator cannot be blank. --></errorMessage>
+        <name>Operator_Cannot_be_blank</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Impact Path Scoring Criteria</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Impact Path Scoring Criterias</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>PSS_Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Unique Key --></label>
+        <name>PSS_Question_Unique_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Category --></label>
+        <name>PSS_Solution_Category__c</name>
+        <picklistValues>
+            <masterLabel>DCG</masterLabel>
+            <translation><!-- DCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOTG</masterLabel>
+            <translation><!-- IOTG --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Survey Result Field Name --></label>
+        <name>PSS_Survey_Result_Field_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weightage --></label>
+        <name>PSS_Weightage__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

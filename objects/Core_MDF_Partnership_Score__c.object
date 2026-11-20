@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_MDF_Partnership_Score_Detail_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_Account_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>Account.Core_MDF_CoMarketingActive__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Partnership Score</relationshipLabel>
+        <relationshipName>Partnership_Grade_Maintenance</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AggregateClaimScore_Nbr__c</fullName>
+        <description>Calculate Aggregate Claim score</description>
+        <externalId>false</externalId>
+        <formula>(( Core_MDF_Total_PV8_Amt__c / Core_MDF_Total_Claim_Amt__c) * 8) + (( Core_MDF_Total_PV4_Amt__c / Core_MDF_Total_Claim_Amt__c) * 4) + (( Core_MDF_Total_PV2_Amt__c / Core_MDF_Total_Claim_Amt__c) * 2) + (( Core_MDF_Total_PV1_Amt__c / Core_MDF_Total_Claim_Amt__c) * 1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Aggregate Claim Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Aggregate_Claim_Score_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Aggregate Claim Score</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Balance_Amount_Amt__c</fullName>
+        <description>Final Recovery Amount - Recovered Amount</description>
+        <formula>Core_MDF_Final_Recovery_Amount_Amt__c - (Core_MDF_Recovered_Amt__c + Core_MDF_Recovery_Offset_Amt__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Final Recovery Amount - Recovered Amount</inlineHelpText>
+        <label>Balance Unrecovered</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Balance_Amt__c</fullName>
+        <description>Final Recovery Amount - Recovered Amount</description>
+        <formula>Core_MDF_Final_Recovery_Amt__c - (Core_MDF_Recovered_Amt__c + Core_MDF_Recovery_Offset_Amt__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Final Recovery Amount - Recovered Amount</inlineHelpText>
+        <label>Balance Unrecovered Old</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_CarryOver_Amt__c</fullName>
+        <label>Carry Over Amount</label>
+        <summarizedField>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Carry_Over_Amt__c</summarizedField>
+        <summaryForeignKey>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Carry_Over_Amt__c</fullName>
+        <label>Carry Over Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program_Display__c</fullName>
+        <description>Channel Program Display only field</description>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Channel_Program_Id__r.Name</formula>
+        <inlineHelpText>Channel Program Display only field</inlineHelpText>
+        <label>Channel Program Display</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Channel Program</label>
+        <referenceTo>ChannelProgram</referenceTo>
+        <relationshipLabel>Partnership Score</relationshipLabel>
+        <relationshipName>Partnership_Score</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program_txt__c</fullName>
+        <description>Channel Program Display only field</description>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Channel_Program_Id__r.Name</formula>
+        <inlineHelpText>Channel Program Display only field</inlineHelpText>
+        <label>Channel Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Final_Recovery_Amount_Amt__c</fullName>
+        <description>Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters</description>
+        <formula>Core_MDF_Total_Recovery_Amount_Amt__c + Core_MDF_CarryOver_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters</inlineHelpText>
+        <label>Final Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Final_Recovery_Amt__c</fullName>
+        <description>Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters</description>
+        <formula>Core_MDF_Total_Recovery_Amt__c + Core_MDF_CarryOver_Amt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters</inlineHelpText>
+        <label>Final Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IsRecordShared_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsRecordShared</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Manual_Recovery_Amt__c</fullName>
+        <description>Manual Recovery Amount data at Program Account and Quarter Level From IAH</description>
+        <label>Manual Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV1_Percentage_nbr__c</fullName>
+        <description>Used to hold the PV1 percentage based on effective quarter from Core_MDF_Partner_Response_Zone__mdt metadata</description>
+        <externalId>false</externalId>
+        <label>PV1 Percentage</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PV2_Percentage_nbr__c</fullName>
+        <description>Used to hold the PV2 percentage based on effective quarter from Core_MDF_Partner_Response_Zone__mdt metadata</description>
+        <externalId>false</externalId>
+        <label>PV2 Percentage</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PartialValueScore_Nbr__c</fullName>
+        <description>Used to calculate Partial value score</description>
+        <externalId>false</externalId>
+        <formula>( Core_MDF_Total_Weighted_PV_Amt__c / Core_MDF_Total_Max_Possible_Amt__c ) * 8</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partial Value Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partial_Value_Score_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Partial Value Score</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_PartnershipScore_Nbr__c</fullName>
+        <description>Used to calculate Partnership score</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Core_MDF_Partnership_Grade_Nbr__c),
+((Core_MDF_AggregateClaimScore_Nbr__c * 0.75) + (Core_MDF_PartialValueScore_Nbr__c * 0.25)),
+((Core_MDF_Partnership_Grade_Nbr__c * 0.25) + (Core_MDF_AggregateClaimScore_Nbr__c * 0.50) + (Core_MDF_PartialValueScore_Nbr__c * 0.25)))</formula>
+        <label>Partnership Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partnership_Grade_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Partnership Grade</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partnership_Score_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Self lookup on Partnership Score</description>
+        <label>Previous Quarter Partnership Score</label>
+        <referenceTo>Core_MDF_Partnership_Score__c</referenceTo>
+        <relationshipLabel>Partnership Score (Partnership Score)</relationshipLabel>
+        <relationshipName>Partnership_Score</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Partnership_Score_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Partnership Score</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Petty_Rule_Applied_Ind__c</fullName>
+        <description>Used to identify the petty rule that is applied to Partnership score record or not</description>
+        <formula>(( Core_MDF_Total_PV1_Amt__c *  Core_MDF_PV1_Percentage_nbr__c /100) + ( Core_MDF_Total_PV2_Amt__c *  Core_MDF_PV2_Percentage_nbr__c /100)) &lt;  Core_MDF_Total_Claim_Amt__c / 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Petty Rule Applied?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program_nm__c</fullName>
+        <label>Program</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Technical_Program_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Quarter_Year_Nm__c</fullName>
+        <label>Quarter Year</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Quarter_Year</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Quarter_nm__c</fullName>
+        <label>Quarter</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Quarter</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Recovered_Amt__c</fullName>
+        <description>This is a roll up summanry of the Partnership Score Detail Recovered Amount</description>
+        <label>Recovered Amount</label>
+        <summarizedField>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Recovered_Amt__c</summarizedField>
+        <summaryForeignKey>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Recovery_Amt__c</fullName>
+        <description>Only recovery Amount without the manual Recovery Amount from IAH</description>
+        <label>Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Recovery_Offset_Amt__c</fullName>
+        <description>Used to hold Offset amount that&apos;s entered by Payment Admin in Claim Recovery page. Currently allowed only for RMF PRC region</description>
+        <inlineHelpText>Payment Admin can set Recovery Offset for PRC RSA MD Recoveries only</inlineHelpText>
+        <label>Recovery Offset Amount (USD)</label>
+        <summarizedField>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Recovery_Offset_Amt__c</summarizedField>
+        <summaryForeignKey>Core_MDF_Partnership_Score_Detail__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_Claim_Amt__c</fullName>
+        <description>Sum of Claim Amount  with Active Indicator as TRUE</description>
+        <label>Total Claim Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Claim_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_Manual_Recovery_Amt__c</fullName>
+        <description>Sum of Manual Recovery Amount other than Score 0 with Active Indicator as TRUE</description>
+        <label>Total Manual Recovery Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Manual_Recovery_Amount_USD_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Score_Nbr__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_Max_Possible_Amt__c</fullName>
+        <description>Rollup summary field to calculate Max Possible Amount</description>
+        <label>Total Max Possible Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Max_Possible_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Max_Possible_Amt__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_PV0_Amt__c</fullName>
+        <description>Sum of Score 0 records with active indicator as TRUE</description>
+        <label>Total PV0 Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Claim_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Score_Nbr__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_PV1_Amt__c</fullName>
+        <description>Sum of Score 1 records with active indicator as TRUE</description>
+        <label>Total PV1 Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Claim_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Score_Nbr__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_PV2_Amt__c</fullName>
+        <description>Sum of Score 2 records with active indicator as TRUE</description>
+        <label>Total PV2 Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Claim_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Score_Nbr__c</field>
+            <operation>equals</operation>
+            <value>2</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_PV4_Amt__c</fullName>
+        <description>Used to sum the Claim amount where the score is 4</description>
+        <label>Total PV4 Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Claim_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Score_Nbr__c</field>
+            <operation>equals</operation>
+            <value>4</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_PV8_Amt__c</fullName>
+        <description>Used to sum the claim amount where the score is 8</description>
+        <label>Total PV8 Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Claim_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Score_Nbr__c</field>
+            <operation>equals</operation>
+            <value>8</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_Recovery_Amount_Amt__c</fullName>
+        <description>Manual Recovery Amount + PV 0 Amount + Pv1 and PV2 Amount based on Petty Rule Indicator</description>
+        <formula>Core_MDF_Total_Manual_Recovery_Amt__c + Core_MDF_Total_PV0_Amt__c + IF( Core_MDF_Petty_Rule_Applied_Ind__c , 0 , (Core_MDF_Total_PV1_Amt__c * Core_MDF_PV1_Percentage_nbr__c /100) + (Core_MDF_Total_PV2_Amt__c * Core_MDF_PV2_Percentage_nbr__c /100))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Recovery Amount for the Quarter + Manual Recovery Amount for the Quarter. Applies Petty Rule logic to reduce nonmaterial recoveries on Partial Value claims.</inlineHelpText>
+        <label>Total Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_Recovery_Amt__c</fullName>
+        <description>Recovery Amount for the Quarter + Manual Recovery Amount for the Quarter. Applies Petty Rule logic to reduce nonmaterial recoveries on Partial Value claims.</description>
+        <inlineHelpText>Recovery Amount for the Quarter + Manual Recovery Amount for the Quarter. Applies Petty Rule logic to reduce nonmaterial recoveries on Partial Value claims.</inlineHelpText>
+        <label>Total Recovery Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Total_Weighted_PV_Amt__c</fullName>
+        <description>Rollup summary field to calculate Total Weighted PV Amount</description>
+        <label>Total Weighted PV Amount</label>
+        <summarizedField>Core_MDF_Recovery_Dashboard__c.Core_MDF_Weighted_PV_Amt__c</summarizedField>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Is_Active_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Core_MDF_Recovery_Dashboard__c.Core_MDF_Weighted_PV_Amt__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_MDF_Recovery_Dashboard__c.Core_MDF_Partnership_Score_Id__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Trend_Difference_Score_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Trend Difference Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Trend_Value_Nm__c</fullName>
+        <label>Trend Value</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A(&gt;-5%)</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B(+-5)</label>
+                </value>
+                <value>
+                    <fullName>C</fullName>
+                    <default>false</default>
+                    <label>C (&gt;+5)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Virtual_Corp_Account_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Used to map the Virtual Corp Account</description>
+        <label>Virtual Corp Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Partnership Score (Virtual Corp Account)</relationshipLabel>
+        <relationshipName>Partnership_Score</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Year_nm__c</fullName>
+        <description>Holds the year</description>
+        <label>Year</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2021</fullName>
+                    <default>false</default>
+                    <label>2021</label>
+                </value>
+                <value>
+                    <fullName>2022</fullName>
+                    <default>false</default>
+                    <label>2022</label>
+                </value>
+                <value>
+                    <fullName>2023</fullName>
+                    <default>false</default>
+                    <label>2023</label>
+                </value>
+                <value>
+                    <fullName>2024</fullName>
+                    <default>false</default>
+                    <label>2024</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Zone_nm__c</fullName>
+        <label>Zone</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Zone_cd</valueSetName>
+        </valueSet>
+    </fields>
+    <label>Partnership Score</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Channel_Program_txt__c</columns>
+        <columns>Core_MDF_Partnership_Score_Nbr__c</columns>
+        <columns>Core_MDF_Zone_nm__c</columns>
+        <columns>Core_MDF_Year_nm__c</columns>
+        <columns>Core_MDF_Quarter_nm__c</columns>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PM-{000}</displayFormat>
+        <label>Partnership Score Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Partnership Scores</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Core_MDF_Non_Editable_Fields_on_Update</fullName>
+        <active>false</active>
+        <errorConditionFormula>OR(ISCHANGED(  Core_MDF_Quarter_Year_Nm__c  ),ISCHANGED(   Core_MDF_Account_Id__c   ),ISCHANGED(   Core_MDF_Channel_Program_Id__c   )) &amp;&amp; NOT(ISNEW())</errorConditionFormula>
+        <errorMessage>Fields cannot be Updated (Account, program, Quarter Year)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Program_cannot_be_updated</fullName>
+        <active>false</active>
+        <errorConditionFormula>NOT(ISNEW()) &amp;&amp;  OR((!ISBLANK(Core_MDF_Channel_Program_Id__c) &amp;&amp;(ISCHANGED(Core_MDF_Channel_Program_Id__c))), (!ISBLANK( TEXT(Core_MDF_Program_nm__c) ) &amp;&amp; ISCHANGED(Core_MDF_Program_nm__c )))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Channel_Program_Id__c</errorDisplayField>
+        <errorMessage>Program cannot be updated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Quarter_Year_Not_Editable</fullName>
+        <active>false</active>
+        <errorConditionFormula>NOT(ISNEW()) &amp;&amp; ISCHANGED( Core_MDF_Quarter_Year_Nm__c )</errorConditionFormula>
+        <errorMessage>Quarter Year value cannot be updated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Quarter_value_cannot_be_updated</fullName>
+        <active>false</active>
+        <errorConditionFormula>ISCHANGED( Core_MDF_Quarter_nm__c )&amp;&amp; NOT(ISNEW())</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Quarter_nm__c</errorDisplayField>
+        <errorMessage>Quarter value cannot be updated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Required_Fields</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISNEW(), OR( ISBLANK( Core_MDF_Account_Id__c ) , ISBLANK( Core_MDF_Channel_Program_Id__c ),  ISPICKVAL( Core_MDF_Quarter_Year_Nm__c , &apos;&apos;) ))</errorConditionFormula>
+        <errorMessage>Mandatory Fields (Account, Program, Quarter Year )</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Score_value_validation</fullName>
+        <active>false</active>
+        <errorConditionFormula>Core_MDF_Partnership_Score_Nbr__c &lt;0 || Core_MDF_Partnership_Score_Nbr__c &gt;8</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Partnership_Score_Nbr__c</errorDisplayField>
+        <errorMessage>Score cannot exceed 8 and should not be less than zero</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Validate_External_Id</fullName>
+        <active>false</active>
+        <errorConditionFormula>Core_MDF_External_Id__c &lt;&gt; CASESAFEID(Core_MDF_Channel_Program_Id__c) + 
+CASESAFEID(Core_MDF_Account_Id__c)  +  
+text(Core_MDF_Quarter_Year_Nm__c)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_External_Id__c</errorDisplayField>
+        <errorMessage>External Id is Invalid</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Year_cannot_be_updated</fullName>
+        <active>false</active>
+        <errorConditionFormula>ISCHANGED(  Core_MDF_Year_nm__c  )&amp;&amp; NOT(ISNEW())</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Year_nm__c</errorDisplayField>
+        <errorMessage>Year cannot be updated</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

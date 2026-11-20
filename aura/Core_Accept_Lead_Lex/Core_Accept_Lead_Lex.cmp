@@ -1,0 +1,8 @@
+<aura:component controller="Core_AcceptReject_Lead_LexController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="alertMessage" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!(v.alertMessage != null)}">
+        <div class="slds-text-heading_small">{!v.alertMessage}</div>
+    </aura:if>
+</aura:component>

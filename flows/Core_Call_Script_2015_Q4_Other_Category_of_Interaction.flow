@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>Account_Grouping_Profiling</name>
+        <choiceText>Account Grouping / Profiling</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Account Grouping / Profiling</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Follow_up_call</name>
+        <choiceText>Follow-up call</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Follow-up call</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>General</name>
+        <choiceText>General</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>General</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>ITP_Membership</name>
+        <choiceText>ITP Membership</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>ITP Membership</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Promotion</name>
+        <choiceText>Promotion</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Promotion</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Sales_call</name>
+        <choiceText>Sales call</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Sales call</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Training_Webinar</name>
+        <choiceText>Training / Webinar</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Training / Webinar</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Warranty</name>
+        <choiceText>Warranty</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Warranty</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X1_Interested_purchase_intended</name>
+        <choiceText>1. Interested - purchase intended</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>1. Interested - purchase intended</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X2_Interested_in_product</name>
+        <choiceText>2. Interested in product</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>2. Interested in product</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X3_Interested_in_campaign</name>
+        <choiceText>3. Interested in campaign</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>3. Interested in campaign</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X4_Not_interested_in_general</name>
+        <choiceText>4. Not interested in general</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>4. Not interested in general</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X5_Not_interested_no_demand</name>
+        <choiceText>5. Not interested - no demand</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>5. Not interested - no demand</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <interviewLabel>Call Script 2015 Q4 Other - Category of Interaction {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Call Script 2015 Q4 Other - Category of Interaction</label>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_Response</name>
+        <label>Update Response</label>
+        <locationX>289</locationX>
+        <locationY>210</locationY>
+        <connector>
+            <targetReference>Call_Script_Complete</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>callScriptResponseId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Answer_1__c</field>
+            <value>
+                <elementReference>What_is_the_type_of_Interaction_with_customers</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Answer_2__c</field>
+            <value>
+                <elementReference>What_is_the_outcome_of_the_call</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Question_1__c</field>
+            <value>
+                <stringValue>What is the type of interaction with customers?</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Question_2__c</field>
+            <value>
+                <stringValue>What is the outcome of the call?</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Call_Script_Response__c</object>
+    </recordUpdates>
+    <screens>
+        <name>Call_Script_Complete</name>
+        <label>Call Script Complete</label>
+        <locationX>112</locationX>
+        <locationY>332</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Thank_You</name>
+            <fieldText>Thank you for completing the call script questionnaire! Responses have been saved. You may close this window.</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Category_of_Interaction</name>
+        <label>Category of Interaction</label>
+        <locationX>105</locationX>
+        <locationY>207</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Response</targetReference>
+        </connector>
+        <fields>
+            <name>What_is_the_type_of_Interaction_with_customers</name>
+            <choiceReferences>Account_Grouping_Profiling</choiceReferences>
+            <choiceReferences>General</choiceReferences>
+            <choiceReferences>Promotion</choiceReferences>
+            <choiceReferences>Training_Webinar</choiceReferences>
+            <choiceReferences>Follow_up_call</choiceReferences>
+            <choiceReferences>ITP_Membership</choiceReferences>
+            <choiceReferences>Sales_call</choiceReferences>
+            <choiceReferences>Warranty</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>What is the type of Interaction with customers?</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Blank2</name>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>What_is_the_outcome_of_the_call</name>
+            <fieldText>What is the outcome of the call?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Create_Response_Record_if_Necessary</startElementReference>
+    <status>Active</status>
+    <subflows>
+        <name>Create_Response_Record_if_Necessary</name>
+        <label>Create Response Record if Necessary</label>
+        <locationX>94</locationX>
+        <locationY>100</locationY>
+        <connector>
+            <targetReference>Category_of_Interaction</targetReference>
+        </connector>
+        <flowName>Core_Call_Script_Response_Creation_if_None_Exists</flowName>
+        <inputAssignments>
+            <name>campaignId</name>
+            <value>
+                <elementReference>campaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>contactId</name>
+            <value>
+                <elementReference>contactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>callScriptId</name>
+            <value>
+                <elementReference>callScriptId</elementReference>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>callScriptResponseId</assignToReference>
+            <name>callScriptResponseId</name>
+        </outputAssignments>
+    </subflows>
+    <variables>
+        <name>callScriptId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>callScriptResponseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>campaignId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>contactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

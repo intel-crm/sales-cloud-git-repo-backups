@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Email will be sent to IPA Claim Submitter when more docs is requested</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Imm_NotifyDocumentUpload_IPA_External</name>
+    <style>none</style>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

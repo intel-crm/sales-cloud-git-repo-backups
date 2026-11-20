@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Sales Desk will click this button and status will change to &apos;Deal accepted For Review&apos; from &apos;Pre Check Complete&apos;. Field Accepted by will updated with the name of the user who has clicked the button.</description>
+    <flowDefinition>PCC_Deal_Accepted_By_Sales_Desk</flowDefinition>
+    <label>Accept Deal</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

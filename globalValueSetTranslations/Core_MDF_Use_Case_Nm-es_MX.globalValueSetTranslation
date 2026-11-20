@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+        <translation>Optimización de activos y operaciones</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+        <translation>Optimización de control y autonomía</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+        <translation>Monitoreo y administración de energía</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Environment Monitoring</masterLabel>
+        <translation>Monitoreo ambiental</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>General Purpose</masterLabel>
+        <translation>Propósito general.</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Human Wellness Monitoring</masterLabel>
+        <translation>Monitoreo de bienestar humano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Interactive Media</masterLabel>
+        <translation>Medios interactivos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Logistics &amp; Tracking</masterLabel>
+        <translation>Logística y seguimiento</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Condition Monitoring</masterLabel>
+        <translation>Monitoreo de estado de máquinas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Inspection</masterLabel>
+        <translation>Inspección de productos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Situational Monitoring</masterLabel>
+        <translation>Monitoreo situacional</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

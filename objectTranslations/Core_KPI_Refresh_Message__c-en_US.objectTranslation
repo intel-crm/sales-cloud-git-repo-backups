@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>KPI Refresh Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>KPI Refresh Message</value>
+    </caseValues>
+    <fields>
+        <label><!-- KPI Retry Failed UserEmails --></label>
+        <name>Core_KPI_Retry_Failed_UserEmails__c</name>
+    </fields>
+    <fields>
+        <label><!-- LastModifiedDate --></label>
+        <name>Core_LastModifiedDate__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

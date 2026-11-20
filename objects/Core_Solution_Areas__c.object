@@ -1,0 +1,2117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_Application_Workload__c</fullName>
+        <label>Application/Workload</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>AI Inference</fullName>
+                    <default>false</default>
+                    <label>AI Inference</label>
+                </value>
+                <value>
+                    <fullName>AI PC</fullName>
+                    <default>false</default>
+                    <label>AI PC</label>
+                </value>
+                <value>
+                    <fullName>AI Training</fullName>
+                    <default>false</default>
+                    <label>AI Training</label>
+                </value>
+                <value>
+                    <fullName>Analytics &amp; Data Science</fullName>
+                    <default>false</default>
+                    <label>Analytics &amp; Data Science</label>
+                </value>
+                <value>
+                    <fullName>ASIL B</fullName>
+                    <default>false</default>
+                    <label>ASIL B</label>
+                </value>
+                <value>
+                    <fullName>ASIL D</fullName>
+                    <default>false</default>
+                    <label>ASIL D</label>
+                </value>
+                <value>
+                    <fullName>Blockchain</fullName>
+                    <default>false</default>
+                    <label>Blockchain</label>
+                </value>
+                <value>
+                    <fullName>Cloud Resource Optimization</fullName>
+                    <default>false</default>
+                    <label>Cloud Resource Optimization</label>
+                </value>
+                <value>
+                    <fullName>Compilers</fullName>
+                    <default>false</default>
+                    <label>Compilers</label>
+                </value>
+                <value>
+                    <fullName>CPU Host for GPU</fullName>
+                    <default>false</default>
+                    <label>CPU Host for GPU</label>
+                </value>
+                <value>
+                    <fullName>Database: In Memory</fullName>
+                    <default>false</default>
+                    <label>Database: In Memory</label>
+                </value>
+                <value>
+                    <fullName>Database: Streaming</fullName>
+                    <default>false</default>
+                    <label>Database: Streaming</label>
+                </value>
+                <value>
+                    <fullName>Database: Structured</fullName>
+                    <default>false</default>
+                    <label>Database: Structured</label>
+                </value>
+                <value>
+                    <fullName>Database: Unstructured</fullName>
+                    <default>false</default>
+                    <label>Database: Unstructured</label>
+                </value>
+                <value>
+                    <fullName>Data Processing &amp; Query</fullName>
+                    <default>false</default>
+                    <label>Data Processing &amp; Query</label>
+                </value>
+                <value>
+                    <fullName>DevOps /Developer Tools</fullName>
+                    <default>false</default>
+                    <label>DevOps /Developer Tools</label>
+                </value>
+                <value>
+                    <fullName>Document Processing</fullName>
+                    <default>false</default>
+                    <label>Document Processing</label>
+                </value>
+                <value>
+                    <fullName>Edge Computing</fullName>
+                    <default>false</default>
+                    <label>Edge Computing</label>
+                </value>
+                <value>
+                    <fullName>Edge Computing (AI)</fullName>
+                    <default>false</default>
+                    <label>Edge Computing (AI)</label>
+                </value>
+                <value>
+                    <fullName>Education: SFI Module</fullName>
+                    <default>false</default>
+                    <label>Education: SFI Module</label>
+                </value>
+                <value>
+                    <fullName>Frameworks</fullName>
+                    <default>false</default>
+                    <label>Frameworks</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Provider: Electronic Medical Record</fullName>
+                    <default>false</default>
+                    <label>Healthcare Provider: Electronic Medical Record</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Provider: Medical Imaging Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Healthcare Provider: Medical Imaging Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Provider: Population Health</fullName>
+                    <default>false</default>
+                    <label>Healthcare Provider: Population Health</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Provider: Telehealth</fullName>
+                    <default>false</default>
+                    <label>Healthcare Provider: Telehealth</label>
+                </value>
+                <value>
+                    <fullName>HPC - High Performance Compute</fullName>
+                    <default>false</default>
+                    <label>HPC - High Performance Compute</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure as Code</fullName>
+                    <default>false</default>
+                    <label>Infrastructure as Code</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Bare Metal</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Bare Metal</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Cloud Stack</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Cloud Stack</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Compute</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Compute</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Compute Virtualization/Hypervisor</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Compute Virtualization/Hypervisor</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Containers</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Containers</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure DaaS/VDI</fullName>
+                    <default>false</default>
+                    <label>Infrastructure DaaS/VDI</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure HCI</fullName>
+                    <default>false</default>
+                    <label>Infrastructure HCI</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Hybrid and Multicloud</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Hybrid and Multicloud</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Network</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Network</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Other</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Other</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure SDI</fullName>
+                    <default>false</default>
+                    <label>Infrastructure SDI</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure - Serverless Computing</fullName>
+                    <default>false</default>
+                    <label>Infrastructure - Serverless Computing</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Storage Array</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Storage Array</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things (IoT)</fullName>
+                    <default>false</default>
+                    <label>Internet of Things (IoT)</label>
+                </value>
+                <value>
+                    <fullName>Libraries &amp; Toolkits</fullName>
+                    <default>false</default>
+                    <label>Libraries &amp; Toolkits</label>
+                </value>
+                <value>
+                    <fullName>Management Tools</fullName>
+                    <default>false</default>
+                    <label>Management Tools</label>
+                </value>
+                <value>
+                    <fullName>Migration &amp; Transfer</fullName>
+                    <default>false</default>
+                    <label>Migration &amp; Transfer</label>
+                </value>
+                <value>
+                    <fullName>Migration Assesment</fullName>
+                    <default>false</default>
+                    <label>Migration Assesment</label>
+                </value>
+                <value>
+                    <fullName>Networking</fullName>
+                    <default>false</default>
+                    <label>Networking</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Operating System</fullName>
+                    <default>false</default>
+                    <label>Operating System</label>
+                </value>
+                <value>
+                    <fullName>Performance Analysis &amp; Tuning</fullName>
+                    <default>false</default>
+                    <label>Performance Analysis &amp; Tuning</label>
+                </value>
+                <value>
+                    <fullName>Policy as Code</fullName>
+                    <default>false</default>
+                    <label>Policy as Code</label>
+                </value>
+                <value>
+                    <fullName>Programming Language</fullName>
+                    <default>false</default>
+                    <label>Programming Language</label>
+                </value>
+                <value>
+                    <fullName>Provisioning and Orchestration</fullName>
+                    <default>false</default>
+                    <label>Provisioning and Orchestration</label>
+                </value>
+                <value>
+                    <fullName>Security: Endpoint</fullName>
+                    <default>false</default>
+                    <label>Security: Endpoint</label>
+                </value>
+                <value>
+                    <fullName>Security: Identity</fullName>
+                    <default>false</default>
+                    <label>Security: Identity</label>
+                </value>
+                <value>
+                    <fullName>Security: Network</fullName>
+                    <default>false</default>
+                    <label>Security: Network</label>
+                </value>
+                <value>
+                    <fullName>Security: Workload Protection</fullName>
+                    <default>false</default>
+                    <label>Security: Workload Protection</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Video Optimization</fullName>
+                    <default>false</default>
+                    <label>Video Optimization</label>
+                </value>
+                <value>
+                    <fullName>Video Processing (non-AI)</fullName>
+                    <default>false</default>
+                    <label>Video Processing (non-AI)</label>
+                </value>
+                <value>
+                    <fullName>Workload Optimization</fullName>
+                    <default>false</default>
+                    <label>Workload Optimization</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Concatenated_Solution_Partners__c</fullName>
+        <label>Solution Partners</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Content_Link__c</fullName>
+        <label>Content Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Core_Deal_Visible__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Deal Visible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Design_Visible__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Design Visible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_End_Customer_Solution__c</fullName>
+        <label>End Customer Solution</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Industry_Use_Case__c</fullName>
+        <label>Industry Use Case(s)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Accessibility-Sign Language to Text</fullName>
+                    <default>false</default>
+                    <label>Accessibility-Sign Language to Text</label>
+                </value>
+                <value>
+                    <fullName>ADAS</fullName>
+                    <default>false</default>
+                    <label>ADAS</label>
+                </value>
+                <value>
+                    <fullName>Ad Serving</fullName>
+                    <default>false</default>
+                    <label>Ad Serving</label>
+                </value>
+                <value>
+                    <fullName>Anti-Money Laundering</fullName>
+                    <default>false</default>
+                    <label>Anti-Money Laundering</label>
+                </value>
+                <value>
+                    <fullName>Application Development</fullName>
+                    <default>false</default>
+                    <label>Application Development</label>
+                </value>
+                <value>
+                    <fullName>Applied Sciences-Computational Chemistry</fullName>
+                    <default>false</default>
+                    <label>Applied Sciences-Computational Chemistry</label>
+                </value>
+                <value>
+                    <fullName>Applied Sciences-Geophysics</fullName>
+                    <default>false</default>
+                    <label>Applied Sciences-Geophysics</label>
+                </value>
+                <value>
+                    <fullName>Applied Sciences-Material Sciences</fullName>
+                    <default>false</default>
+                    <label>Applied Sciences-Material Sciences</label>
+                </value>
+                <value>
+                    <fullName>Applied Sciences-Molecular Dynamics</fullName>
+                    <default>false</default>
+                    <label>Applied Sciences-Molecular Dynamics</label>
+                </value>
+                <value>
+                    <fullName>Applied Sciences-Physics</fullName>
+                    <default>false</default>
+                    <label>Applied Sciences-Physics</label>
+                </value>
+                <value>
+                    <fullName>AR/VR</fullName>
+                    <default>false</default>
+                    <label>AR/VR</label>
+                </value>
+                <value>
+                    <fullName>Asset &amp; Operations Optimization-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Asset &amp; Operations Optimization-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Audit</fullName>
+                    <default>false</default>
+                    <label>Audit</label>
+                </value>
+                <value>
+                    <fullName>Bioinformatics</fullName>
+                    <default>false</default>
+                    <label>Bioinformatics</label>
+                </value>
+                <value>
+                    <fullName>Biz Assistant (NLP, STT, etc.)</fullName>
+                    <default>false</default>
+                    <label>Biz Assistant (NLP, STT, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Blockchain</fullName>
+                    <default>false</default>
+                    <label>Blockchain</label>
+                </value>
+                <value>
+                    <fullName>Branch Automation</fullName>
+                    <default>false</default>
+                    <label>Branch Automation</label>
+                </value>
+                <value>
+                    <fullName>Claims Automation</fullName>
+                    <default>false</default>
+                    <label>Claims Automation</label>
+                </value>
+                <value>
+                    <fullName>Claims Processing</fullName>
+                    <default>false</default>
+                    <label>Claims Processing</label>
+                </value>
+                <value>
+                    <fullName>Cloud Gaming</fullName>
+                    <default>false</default>
+                    <label>Cloud Gaming</label>
+                </value>
+                <value>
+                    <fullName>Computer Vision</fullName>
+                    <default>false</default>
+                    <label>Computer Vision</label>
+                </value>
+                <value>
+                    <fullName>Content Delivery Network</fullName>
+                    <default>false</default>
+                    <label>Content Delivery Network</label>
+                </value>
+                <value>
+                    <fullName>Control Optimization &amp; Autonomy-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Control Optimization &amp; Autonomy-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Conversational/Chat Bot</fullName>
+                    <default>false</default>
+                    <label>Conversational/Chat Bot</label>
+                </value>
+                <value>
+                    <fullName>Cyber Security</fullName>
+                    <default>false</default>
+                    <label>Cyber Security</label>
+                </value>
+                <value>
+                    <fullName>Data Warehouse</fullName>
+                    <default>false</default>
+                    <label>Data Warehouse</label>
+                </value>
+                <value>
+                    <fullName>Dedicated Deep Learning</fullName>
+                    <default>false</default>
+                    <label>Dedicated Deep Learning</label>
+                </value>
+                <value>
+                    <fullName>Deep Learning</fullName>
+                    <default>false</default>
+                    <label>Deep Learning</label>
+                </value>
+                <value>
+                    <fullName>Document Processing</fullName>
+                    <default>false</default>
+                    <label>Document Processing</label>
+                </value>
+                <value>
+                    <fullName>Driver/Occupant Monitoring</fullName>
+                    <default>false</default>
+                    <label>Driver/Occupant Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Driver Information (Regulatory Compliant)</fullName>
+                    <default>false</default>
+                    <label>Driver Information (Regulatory Compliant)</label>
+                </value>
+                <value>
+                    <fullName>E-Commerce</fullName>
+                    <default>false</default>
+                    <label>E-Commerce</label>
+                </value>
+                <value>
+                    <fullName>Edge Manageability/Security</fullName>
+                    <default>false</default>
+                    <label>Edge Manageability/Security</label>
+                </value>
+                <value>
+                    <fullName>Electronic Design Automation (EDA)</fullName>
+                    <default>false</default>
+                    <label>Electronic Design Automation (EDA)</label>
+                </value>
+                <value>
+                    <fullName>Electronic Medical Record</fullName>
+                    <default>false</default>
+                    <label>Electronic Medical Record</label>
+                </value>
+                <value>
+                    <fullName>Encryption</fullName>
+                    <default>false</default>
+                    <label>Encryption</label>
+                </value>
+                <value>
+                    <fullName>Energy Monitoring &amp; Management-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Energy Monitoring &amp; Management-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Environment Monitoring-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Environment Monitoring-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>ERM</fullName>
+                    <default>false</default>
+                    <label>ERM</label>
+                </value>
+                <value>
+                    <fullName>Fraud Detection</fullName>
+                    <default>false</default>
+                    <label>Fraud Detection</label>
+                </value>
+                <value>
+                    <fullName>Gaming Solution</fullName>
+                    <default>false</default>
+                    <label>Gaming Solution</label>
+                </value>
+                <value>
+                    <fullName>Generative AI (LLM)</fullName>
+                    <default>false</default>
+                    <label>Generative AI (LLM)</label>
+                </value>
+                <value>
+                    <fullName>Generative AI (non-LLM)</fullName>
+                    <default>false</default>
+                    <label>Generative AI (non-LLM)</label>
+                </value>
+                <value>
+                    <fullName>Genomics</fullName>
+                    <default>false</default>
+                    <label>Genomics</label>
+                </value>
+                <value>
+                    <fullName>Human Wellness Monitoring-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Human Wellness Monitoring-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Hybrid Learning</fullName>
+                    <default>false</default>
+                    <label>Hybrid Learning</label>
+                </value>
+                <value>
+                    <fullName>Immersive Media</fullName>
+                    <default>false</default>
+                    <label>Immersive Media</label>
+                </value>
+                <value>
+                    <fullName>Interactive Media-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Interactive Media-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Life Sciences-Cryo-EM</fullName>
+                    <default>false</default>
+                    <label>Life Sciences-Cryo-EM</label>
+                </value>
+                <value>
+                    <fullName>Life Sciences-Molecular Dynamics</fullName>
+                    <default>false</default>
+                    <label>Life Sciences-Molecular Dynamics</label>
+                </value>
+                <value>
+                    <fullName>LoB Applications (compliant)</fullName>
+                    <default>false</default>
+                    <label>LoB Applications (compliant)</label>
+                </value>
+                <value>
+                    <fullName>Logistics &amp; Tracking-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Logistics &amp; Tracking-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Machine Condition Monitoring-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Machine Condition Monitoring-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Managebility-EMA Integration</fullName>
+                    <default>false</default>
+                    <label>Managebility-EMA Integration</label>
+                </value>
+                <value>
+                    <fullName>Medical Imaging Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Medical Imaging Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Model Development and Optimization</fullName>
+                    <default>false</default>
+                    <label>Model Development and Optimization</label>
+                </value>
+                <value>
+                    <fullName>Network-5G</fullName>
+                    <default>false</default>
+                    <label>Network-5G</label>
+                </value>
+                <value>
+                    <fullName>Network-cRAN/FlexRAN/vRAN/oRAN</fullName>
+                    <default>false</default>
+                    <label>Network-cRAN/FlexRAN/vRAN/oRAN</label>
+                </value>
+                <value>
+                    <fullName>Network-Datacenter Network: application delivery and load balancing</fullName>
+                    <default>false</default>
+                    <label>Network-Datacenter Network: application delivery and load balancing</label>
+                </value>
+                <value>
+                    <fullName>Network-Datacenter Network: packet switching/routing/duplication/inspection</fullName>
+                    <default>false</default>
+                    <label>Network-Datacenter Network: packet switching/routing/duplication/inspection</label>
+                </value>
+                <value>
+                    <fullName>Network-Datacenter Network: security functions (firewall, content security, DDOS, Access Control, anti-malware)</fullName>
+                    <default>false</default>
+                    <label>Network-Datacenter Network: security functions (firewall, content security, DDOS, Access Control, anti-malware)</label>
+                </value>
+                <value>
+                    <fullName>Network-Datacenter Network: Whitebox switches/routers</fullName>
+                    <default>false</default>
+                    <label>Network-Datacenter Network: Whitebox switches/routers</label>
+                </value>
+                <value>
+                    <fullName>Network-Infra SW Layer (OS/VMM/VIM, Scheduler, Cluster Manager, SDN Controller)</fullName>
+                    <default>false</default>
+                    <label>Network-Infra SW Layer (OS/VMM/VIM, Scheduler, Cluster Manager, SDN Controller)</label>
+                </value>
+                <value>
+                    <fullName>Network-MEC-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Network-MEC-OneEdge</label>
+                </value>
+                <value>
+                    <fullName>Network-Mobile Packet Core Network</fullName>
+                    <default>false</default>
+                    <label>Network-Mobile Packet Core Network</label>
+                </value>
+                <value>
+                    <fullName>Network-OT: BSS/Digital-BSS</fullName>
+                    <default>false</default>
+                    <label>Network-OT: BSS/Digital-BSS</label>
+                </value>
+                <value>
+                    <fullName>Network-OT: Network Service Assurance, FCAPS, vProbes, Network Advanced Analytics with AI/ML/DL</fullName>
+                    <default>false</default>
+                    <label>Network-OT: Network Service Assurance, FCAPS, vProbes, Network Advanced Analytics with AI/ML/DL</label>
+                </value>
+                <value>
+                    <fullName>Network-OT: OSS/Service-Orchestration-automation</fullName>
+                    <default>false</default>
+                    <label>Network-OT: OSS/Service-Orchestration-automation</label>
+                </value>
+                <value>
+                    <fullName>Network-Private Wireless Network-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Network-Private Wireless Network-OneEdge</label>
+                </value>
+                <value>
+                    <fullName>Network-SD-WAN connection/access/integrated-security/SASE-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Network-SD-WAN connection/access/integrated-security/SASE-OneEdge</label>
+                </value>
+                <value>
+                    <fullName>Network-SP-Edge: Fixed Access Functions (Fiber, Copper, Cable)</fullName>
+                    <default>false</default>
+                    <label>Network-SP-Edge: Fixed Access Functions (Fiber, Copper, Cable)</label>
+                </value>
+                <value>
+                    <fullName>Network-SP-Edge: Wireless Access Functions</fullName>
+                    <default>false</default>
+                    <label>Network-SP-Edge: Wireless Access Functions</label>
+                </value>
+                <value>
+                    <fullName>Network-Traditional/Physical RAN</fullName>
+                    <default>false</default>
+                    <label>Network-Traditional/Physical RAN</label>
+                </value>
+                <value>
+                    <fullName>Network-uCPE/vCPE-Enterprise-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Network-uCPE/vCPE-Enterprise-OneEdge</label>
+                </value>
+                <value>
+                    <fullName>Network-vCPE Residential (vHOME)</fullName>
+                    <default>false</default>
+                    <label>Network-vCPE Residential (vHOME)</label>
+                </value>
+                <value>
+                    <fullName>Offshore Developers</fullName>
+                    <default>false</default>
+                    <label>Offshore Developers</label>
+                </value>
+                <value>
+                    <fullName>Parallel Compute</fullName>
+                    <default>false</default>
+                    <label>Parallel Compute</label>
+                </value>
+                <value>
+                    <fullName>Patient Care/Precision Medicine</fullName>
+                    <default>false</default>
+                    <label>Patient Care/Precision Medicine</label>
+                </value>
+                <value>
+                    <fullName>Population Health</fullName>
+                    <default>false</default>
+                    <label>Population Health</label>
+                </value>
+                <value>
+                    <fullName>Portfolio Optimzation</fullName>
+                    <default>false</default>
+                    <label>Portfolio Optimzation</label>
+                </value>
+                <value>
+                    <fullName>Product Inspection-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Product Inspection-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Productivity-AI Personal Assistant</fullName>
+                    <default>false</default>
+                    <label>Productivity-AI Personal Assistant</label>
+                </value>
+                <value>
+                    <fullName>Productivity-Power Consumption Monitoring</fullName>
+                    <default>false</default>
+                    <label>Productivity-Power Consumption Monitoring</label>
+                </value>
+                <value>
+                    <fullName>Real-Time Dense Video</fullName>
+                    <default>false</default>
+                    <label>Real-Time Dense Video</label>
+                </value>
+                <value>
+                    <fullName>Recommendation Engines (360)</fullName>
+                    <default>false</default>
+                    <label>Recommendation Engines (360)</label>
+                </value>
+                <value>
+                    <fullName>Recommender Engine</fullName>
+                    <default>false</default>
+                    <label>Recommender Engine</label>
+                </value>
+                <value>
+                    <fullName>Regulatory Reporting (FRTB)</fullName>
+                    <default>false</default>
+                    <label>Regulatory Reporting (FRTB)</label>
+                </value>
+                <value>
+                    <fullName>Remote Workers</fullName>
+                    <default>false</default>
+                    <label>Remote Workers</label>
+                </value>
+                <value>
+                    <fullName>Risk Management</fullName>
+                    <default>false</default>
+                    <label>Risk Management</label>
+                </value>
+                <value>
+                    <fullName>Risk Management (CCAR)</fullName>
+                    <default>false</default>
+                    <label>Risk Management (CCAR)</label>
+                </value>
+                <value>
+                    <fullName>Safety and Security-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Safety and Security-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Securities Pricing (xVA)</fullName>
+                    <default>false</default>
+                    <label>Securities Pricing (xVA)</label>
+                </value>
+                <value>
+                    <fullName>Security-Anti-Phishing Detection</fullName>
+                    <default>false</default>
+                    <label>Security-Anti-Phishing Detection</label>
+                </value>
+                <value>
+                    <fullName>Security-Data</fullName>
+                    <default>false</default>
+                    <label>Security-Data</label>
+                </value>
+                <value>
+                    <fullName>Security-Endpoint</fullName>
+                    <default>false</default>
+                    <label>Security-Endpoint</label>
+                </value>
+                <value>
+                    <fullName>Security-Identity</fullName>
+                    <default>false</default>
+                    <label>Security-Identity</label>
+                </value>
+                <value>
+                    <fullName>Security-Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Security-Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Security-Memory Scanning</fullName>
+                    <default>false</default>
+                    <label>Security-Memory Scanning</label>
+                </value>
+                <value>
+                    <fullName>Security-Network</fullName>
+                    <default>false</default>
+                    <label>Security-Network</label>
+                </value>
+                <value>
+                    <fullName>Security-Ransomware Detection</fullName>
+                    <default>false</default>
+                    <label>Security-Ransomware Detection</label>
+                </value>
+                <value>
+                    <fullName>Security–Workload Protection</fullName>
+                    <default>false</default>
+                    <label>Security–Workload Protection</label>
+                </value>
+                <value>
+                    <fullName>Situational Monitoring-Chessboard</fullName>
+                    <default>false</default>
+                    <label>Situational Monitoring-Chessboard</label>
+                </value>
+                <value>
+                    <fullName>Software Defined Infrastructure-SDI</fullName>
+                    <default>false</default>
+                    <label>Software Defined Infrastructure-SDI</label>
+                </value>
+                <value>
+                    <fullName>Speech Recognition</fullName>
+                    <default>false</default>
+                    <label>Speech Recognition</label>
+                </value>
+                <value>
+                    <fullName>Streaming Data/Analytics</fullName>
+                    <default>false</default>
+                    <label>Streaming Data/Analytics</label>
+                </value>
+                <value>
+                    <fullName>Supercompute Analytics</fullName>
+                    <default>false</default>
+                    <label>Supercompute Analytics</label>
+                </value>
+                <value>
+                    <fullName>Sustainability</fullName>
+                    <default>false</default>
+                    <label>Sustainability</label>
+                </value>
+                <value>
+                    <fullName>Telehealth</fullName>
+                    <default>false</default>
+                    <label>Telehealth</label>
+                </value>
+                <value>
+                    <fullName>Telework</fullName>
+                    <default>false</default>
+                    <label>Telework</label>
+                </value>
+                <value>
+                    <fullName>Time-Series</fullName>
+                    <default>false</default>
+                    <label>Time-Series</label>
+                </value>
+                <value>
+                    <fullName>Trading Desk</fullName>
+                    <default>false</default>
+                    <label>Trading Desk</label>
+                </value>
+                <value>
+                    <fullName>Video Analytics</fullName>
+                    <default>false</default>
+                    <label>Video Analytics</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-CDN/vCDN-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-CDN/vCDN</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Cloud Gaming-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Cloud Gaming</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Graphics</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Graphics</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Immersive Media-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Immersive Media</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Media Analytics-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Media Analytics</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Media Processing &amp; Delivery-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Media Processing &amp; Delivery</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Media Services (DVR, Cloud DVR, etc.)-OneEdge</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Media Services (DVR, Cloud DVR, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud-Video Production</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud-Video Production</label>
+                </value>
+                <value>
+                    <fullName>Weather Forecasting</fullName>
+                    <default>false</default>
+                    <label>Weather Forecasting</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Industry__c</fullName>
+        <label>Industry</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Agriculture</fullName>
+                    <default>false</default>
+                    <label>Agriculture</label>
+                </value>
+                <value>
+                    <fullName>Arts, Entertainment and Recreation</fullName>
+                    <default>false</default>
+                    <label>Arts, Entertainment and Recreation</label>
+                </value>
+                <value>
+                    <fullName>Automotive</fullName>
+                    <default>false</default>
+                    <label>Automotive</label>
+                </value>
+                <value>
+                    <fullName>Cloud Service Providers</fullName>
+                    <default>false</default>
+                    <label>Cloud Service Providers</label>
+                </value>
+                <value>
+                    <fullName>Comms Service Providers</fullName>
+                    <default>false</default>
+                    <label>Comms Service Providers</label>
+                </value>
+                <value>
+                    <fullName>Construction</fullName>
+                    <default>false</default>
+                    <label>Construction</label>
+                </value>
+                <value>
+                    <fullName>Consumer</fullName>
+                    <default>false</default>
+                    <label>Consumer</label>
+                </value>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Energy and Utilities</fullName>
+                    <default>false</default>
+                    <label>Energy and Utilities</label>
+                </value>
+                <value>
+                    <fullName>Enterprise</fullName>
+                    <default>false</default>
+                    <label>Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Federal and Aerospace</fullName>
+                    <default>false</default>
+                    <label>Federal and Aerospace</label>
+                </value>
+                <value>
+                    <fullName>Financial Services Industry</fullName>
+                    <default>false</default>
+                    <label>Financial Services Industry</label>
+                </value>
+                <value>
+                    <fullName>Gaming</fullName>
+                    <default>false</default>
+                    <label>Gaming</label>
+                </value>
+                <value>
+                    <fullName>Government</fullName>
+                    <default>false</default>
+                    <label>Government</label>
+                </value>
+                <value>
+                    <fullName>Health and Life Sciences</fullName>
+                    <default>false</default>
+                    <label>Health and Life Sciences</label>
+                </value>
+                <value>
+                    <fullName>Hospitality</fullName>
+                    <default>false</default>
+                    <label>Hospitality</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Media</fullName>
+                    <default>false</default>
+                    <label>Media</label>
+                </value>
+                <value>
+                    <fullName>Professional and Business Services</fullName>
+                    <default>false</default>
+                    <label>Professional and Business Services</label>
+                </value>
+                <value>
+                    <fullName>Real Estate, Rental and Leasing</fullName>
+                    <default>false</default>
+                    <label>Real Estate, Rental and Leasing</label>
+                </value>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>Small Medium Business</fullName>
+                    <default>false</default>
+                    <label>Small Medium Business</label>
+                </value>
+                <value>
+                    <fullName>Smart Cities</fullName>
+                    <default>false</default>
+                    <label>Smart Cities</label>
+                </value>
+                <value>
+                    <fullName>Software and Services</fullName>
+                    <default>false</default>
+                    <label>Software and Services</label>
+                </value>
+                <value>
+                    <fullName>Sports</fullName>
+                    <default>false</default>
+                    <label>Sports</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
+                <value>
+                    <fullName>Travel and Warehousing</fullName>
+                    <default>false</default>
+                    <label>Travel and Warehousing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Most_Recent_Status_Change_Date__c</fullName>
+        <description>Most Recent Status change Date</description>
+        <label>Most Recent Status Change Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Region_Deployed__c</fullName>
+        <label>Region Deployed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Region_of_availability__c</fullName>
+        <label>Region of Availability</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>ASMO</fullName>
+                    <default>false</default>
+                    <label>ASMO</label>
+                </value>
+                <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>PRC</fullName>
+                    <default>false</default>
+                    <label>PRC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Areas__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Solutions</label>
+        <referenceTo>Core_Solution_Areas__c</referenceTo>
+        <relationshipLabel>Solutions</relationshipLabel>
+        <relationshipName>Solution_Areas</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Description__c</fullName>
+        <label>Solution Description</label>
+        <length>131000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Long__c</fullName>
+        <label>Solution Field Values</label>
+        <length>131000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Outcome__c</fullName>
+        <label>Solution Outcome</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Test 1</fullName>
+                    <default>false</default>
+                    <label>Test 1</label>
+                </value>
+                <value>
+                    <fullName>Test 2</fullName>
+                    <default>false</default>
+                    <label>Test 2</label>
+                </value>
+                <value>
+                    <fullName>Test 3</fullName>
+                    <default>false</default>
+                    <label>Test 3</label>
+                </value>
+                <value>
+                    <fullName>Test 4</fullName>
+                    <default>false</default>
+                    <label>Test 4</label>
+                </value>
+                <value>
+                    <fullName>Test 5</fullName>
+                    <default>false</default>
+                    <label>Test 5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Partners_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Partners</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Title__c</fullName>
+        <label>Solution Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_Type__c</fullName>
+        <label>Solution Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>S1: Product</fullName>
+                    <default>false</default>
+                    <label>S1: Product</label>
+                </value>
+                <value>
+                    <fullName>S2: Platform/System</fullName>
+                    <default>false</default>
+                    <label>S2: Platform/System</label>
+                </value>
+                <value>
+                    <fullName>S3: Application/ Workload</fullName>
+                    <default>false</default>
+                    <label>S3: Application/ Workload</label>
+                </value>
+                <value>
+                    <fullName>S4: Industry Use Case(s)</fullName>
+                    <default>false</default>
+                    <label>S4: Industry Use Case(s)</label>
+                </value>
+                <value>
+                    <fullName>S5: End Customer Solution</fullName>
+                    <default>false</default>
+                    <label>S5: End Customer Solution</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Solution_owner_email__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Owner Email</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Status__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>true</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>EOL</fullName>
+                    <default>false</default>
+                    <label>EOL</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Technology_Enabled__c</fullName>
+        <label>Technology Enabled</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>AI Suites</fullName>
+                    <default>false</default>
+                    <label>AI Suites</label>
+                </value>
+                <value>
+                    <fullName>AMT</fullName>
+                    <default>false</default>
+                    <label>AMT</label>
+                </value>
+                <value>
+                    <fullName>AMX (TMUL)</fullName>
+                    <default>false</default>
+                    <label>AMX (TMUL)</label>
+                </value>
+                <value>
+                    <fullName>AVX-2</fullName>
+                    <default>false</default>
+                    <label>AVX-2</label>
+                </value>
+                <value>
+                    <fullName>AVX-512</fullName>
+                    <default>false</default>
+                    <label>AVX-512</label>
+                </value>
+                <value>
+                    <fullName>BFloat16</fullName>
+                    <default>false</default>
+                    <label>BFloat16</label>
+                </value>
+                <value>
+                    <fullName>Blockscale</fullName>
+                    <default>false</default>
+                    <label>Blockscale</label>
+                </value>
+                <value>
+                    <fullName>Camera &amp; Graphics DX12</fullName>
+                    <default>false</default>
+                    <label>Camera &amp; Graphics DX12</label>
+                </value>
+                <value>
+                    <fullName>CET</fullName>
+                    <default>false</default>
+                    <label>CET</label>
+                </value>
+                <value>
+                    <fullName>CNDP</fullName>
+                    <default>false</default>
+                    <label>CNDP</label>
+                </value>
+                <value>
+                    <fullName>Crypto NI</fullName>
+                    <default>false</default>
+                    <label>Crypto NI</label>
+                </value>
+                <value>
+                    <fullName>Custom Code Optimization</fullName>
+                    <default>false</default>
+                    <label>Custom Code Optimization</label>
+                </value>
+                <value>
+                    <fullName>DDIO</fullName>
+                    <default>false</default>
+                    <label>DDIO</label>
+                </value>
+                <value>
+                    <fullName>DLB</fullName>
+                    <default>false</default>
+                    <label>DLB</label>
+                </value>
+                <value>
+                    <fullName>DL Boost</fullName>
+                    <default>false</default>
+                    <label>DL Boost</label>
+                </value>
+                <value>
+                    <fullName>DPE</fullName>
+                    <default>false</default>
+                    <label>DPE</label>
+                </value>
+                <value>
+                    <fullName>DSA</fullName>
+                    <default>false</default>
+                    <label>DSA</label>
+                </value>
+                <value>
+                    <fullName>Edge AI Libraries</fullName>
+                    <default>false</default>
+                    <label>Edge AI Libraries</label>
+                </value>
+                <value>
+                    <fullName>Geti</fullName>
+                    <default>false</default>
+                    <label>Geti</label>
+                </value>
+                <value>
+                    <fullName>Habana</fullName>
+                    <default>false</default>
+                    <label>Habana</label>
+                </value>
+                <value>
+                    <fullName>HBM</fullName>
+                    <default>false</default>
+                    <label>HBM</label>
+                </value>
+                <value>
+                    <fullName>HFNI</fullName>
+                    <default>false</default>
+                    <label>HFNI</label>
+                </value>
+                <value>
+                    <fullName>HGS</fullName>
+                    <default>false</default>
+                    <label>HGS</label>
+                </value>
+                <value>
+                    <fullName>IAA</fullName>
+                    <default>false</default>
+                    <label>IAA</label>
+                </value>
+                <value>
+                    <fullName>IAX</fullName>
+                    <default>false</default>
+                    <label>IAX</label>
+                </value>
+                <value>
+                    <fullName>Intel Automation Tool-OCM</fullName>
+                    <default>false</default>
+                    <label>Intel Automation Tool-OCM</label>
+                </value>
+                <value>
+                    <fullName>Intel Automation Tool-OCR</fullName>
+                    <default>false</default>
+                    <label>Intel Automation Tool-OCR</label>
+                </value>
+                <value>
+                    <fullName>Intel DAOS</fullName>
+                    <default>false</default>
+                    <label>Intel DAOS</label>
+                </value>
+                <value>
+                    <fullName>Intel GPU Flex Series</fullName>
+                    <default>false</default>
+                    <label>Intel GPU Flex Series</label>
+                </value>
+                <value>
+                    <fullName>Intel GPU Max Series</fullName>
+                    <default>false</default>
+                    <label>Intel GPU Max Series</label>
+                </value>
+                <value>
+                    <fullName>Intel IPU</fullName>
+                    <default>false</default>
+                    <label>Intel IPU</label>
+                </value>
+                <value>
+                    <fullName>Intel Neural Compressor</fullName>
+                    <default>false</default>
+                    <label>Intel Neural Compressor</label>
+                </value>
+                <value>
+                    <fullName>Intel PMT</fullName>
+                    <default>false</default>
+                    <label>Intel PMT</label>
+                </value>
+                <value>
+                    <fullName>Intel RHOC</fullName>
+                    <default>false</default>
+                    <label>Intel RHOC</label>
+                </value>
+                <value>
+                    <fullName>IPEX</fullName>
+                    <default>false</default>
+                    <label>IPEX</label>
+                </value>
+                <value>
+                    <fullName>ISA-Library</fullName>
+                    <default>false</default>
+                    <label>ISA-Library</label>
+                </value>
+                <value>
+                    <fullName>ITEX</fullName>
+                    <default>false</default>
+                    <label>ITEX</label>
+                </value>
+                <value>
+                    <fullName>LAM</fullName>
+                    <default>false</default>
+                    <label>LAM</label>
+                </value>
+                <value>
+                    <fullName>MEP for iVPU</fullName>
+                    <default>false</default>
+                    <label>MEP for iVPU</label>
+                </value>
+                <value>
+                    <fullName>Modern Standby Telemetry</fullName>
+                    <default>false</default>
+                    <label>Modern Standby Telemetry</label>
+                </value>
+                <value>
+                    <fullName>MRS/RRK WIP</fullName>
+                    <default>false</default>
+                    <label>MRS/RRK WIP</label>
+                </value>
+                <value>
+                    <fullName>Network Certified Solutions (latest IA compute)</fullName>
+                    <default>false</default>
+                    <label>Network Certified Solutions (latest IA compute)</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>OneAPI AI Analytics Toolkit</fullName>
+                    <default>false</default>
+                    <label>OneAPI AI Analytics Toolkit</label>
+                </value>
+                <value>
+                    <fullName>OneAPI Base Toolkit</fullName>
+                    <default>false</default>
+                    <label>OneAPI Base Toolkit</label>
+                </value>
+                <value>
+                    <fullName>OneAPI HPC Toolkit</fullName>
+                    <default>false</default>
+                    <label>OneAPI HPC Toolkit</label>
+                </value>
+                <value>
+                    <fullName>OneAPI IoT Toolkit</fullName>
+                    <default>false</default>
+                    <label>OneAPI IoT Toolkit</label>
+                </value>
+                <value>
+                    <fullName>OneAPI Rendering Toolkit</fullName>
+                    <default>false</default>
+                    <label>OneAPI Rendering Toolkit</label>
+                </value>
+                <value>
+                    <fullName>Open Edge Software</fullName>
+                    <default>false</default>
+                    <label>Open Edge Software</label>
+                </value>
+                <value>
+                    <fullName>OpenVINO</fullName>
+                    <default>false</default>
+                    <label>OpenVINO</label>
+                </value>
+                <value>
+                    <fullName>Optane PMEM</fullName>
+                    <default>false</default>
+                    <label>Optane PMEM</label>
+                </value>
+                <value>
+                    <fullName>PMU</fullName>
+                    <default>false</default>
+                    <label>PMU</label>
+                </value>
+                <value>
+                    <fullName>PSG-FPGA BBU</fullName>
+                    <default>false</default>
+                    <label>PSG-FPGA BBU</label>
+                </value>
+                <value>
+                    <fullName>PSG-FPGA RU</fullName>
+                    <default>false</default>
+                    <label>PSG-FPGA RU</label>
+                </value>
+                <value>
+                    <fullName>PSG-SmartNIC-FPGA Acceleration NCLG board</fullName>
+                    <default>false</default>
+                    <label>PSG-SmartNIC-FPGA Acceleration NCLG board</label>
+                </value>
+                <value>
+                    <fullName>PSG - SmartNIC - FPGA Acceleration Partner board</fullName>
+                    <default>false</default>
+                    <label>PSG - SmartNIC - FPGA Acceleration Partner board</label>
+                </value>
+                <value>
+                    <fullName>QAT</fullName>
+                    <default>false</default>
+                    <label>QAT</label>
+                </value>
+                <value>
+                    <fullName>Quick Sync Technology</fullName>
+                    <default>false</default>
+                    <label>Quick Sync Technology</label>
+                </value>
+                <value>
+                    <fullName>RDT</fullName>
+                    <default>false</default>
+                    <label>RDT</label>
+                </value>
+                <value>
+                    <fullName>Security TPR &amp; ACM Support</fullName>
+                    <default>false</default>
+                    <label>Security TPR &amp; ACM Support</label>
+                </value>
+                <value>
+                    <fullName>SGX</fullName>
+                    <default>false</default>
+                    <label>SGX</label>
+                </value>
+                <value>
+                    <fullName>SIOV</fullName>
+                    <default>false</default>
+                    <label>SIOV</label>
+                </value>
+                <value>
+                    <fullName>Smart Edge (Commercial, Open and Experience Kits)</fullName>
+                    <default>false</default>
+                    <label>Smart Edge (Commercial, Open and Experience Kits)</label>
+                </value>
+                <value>
+                    <fullName>SMM</fullName>
+                    <default>false</default>
+                    <label>SMM</label>
+                </value>
+                <value>
+                    <fullName>SST Speed Select</fullName>
+                    <default>false</default>
+                    <label>SST Speed Select</label>
+                </value>
+                <value>
+                    <fullName>TADK</fullName>
+                    <default>false</default>
+                    <label>TADK</label>
+                </value>
+                <value>
+                    <fullName>TDT</fullName>
+                    <default>false</default>
+                    <label>TDT</label>
+                </value>
+                <value>
+                    <fullName>TDX</fullName>
+                    <default>false</default>
+                    <label>TDX</label>
+                </value>
+                <value>
+                    <fullName>Thunderbolt 4</fullName>
+                    <default>false</default>
+                    <label>Thunderbolt 4</label>
+                </value>
+                <value>
+                    <fullName>TME</fullName>
+                    <default>false</default>
+                    <label>TME</label>
+                </value>
+                <value>
+                    <fullName>VMD/VROC</fullName>
+                    <default>false</default>
+                    <label>VMD/VROC</label>
+                </value>
+                <value>
+                    <fullName>VNNI</fullName>
+                    <default>false</default>
+                    <label>VNNI</label>
+                </value>
+                <value>
+                    <fullName>vPro</fullName>
+                    <default>false</default>
+                    <label>vPro</label>
+                </value>
+                <value>
+                    <fullName>vRAN Boost</fullName>
+                    <default>false</default>
+                    <label>vRAN Boost</label>
+                </value>
+                <value>
+                    <fullName>Wi-Fi 7</fullName>
+                    <default>false</default>
+                    <label>Wi-Fi 7</label>
+                </value>
+                <value>
+                    <fullName>Windows Hello Sensors</fullName>
+                    <default>false</default>
+                    <label>Windows Hello Sensors</label>
+                </value>
+                <value>
+                    <fullName>xPDK (DPDK, IPDK, SPDK, etc)</fullName>
+                    <default>false</default>
+                    <label>xPDK (DPDK, IPDK, SPDK, etc)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Version</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isDeleted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Mark for Delete</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Solution</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Application_Workload__c</columns>
+        <columns>Core_Industry_Use_Case__c</columns>
+        <columns>Core_Technology_Enabled__c</columns>
+        <columns>Core_Solution_Description__c</columns>
+        <columns>Core_Solution_Type__c</columns>
+        <columns>Core_Version__c</columns>
+        <columns>Core_End_Customer_Solution__c</columns>
+        <columns>Core_Industry__c</columns>
+        <columns>Core_Solution_owner_email__c</columns>
+        <columns>Core_Region_of_availability__c</columns>
+        <columns>Core_Deal_Visible__c</columns>
+        <columns>Core_Design_Visible__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Solution</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Solutions</pluralLabel>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Sales Insights Integration User</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>SMG/GMC Read Only</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Data Ops</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Sales Rep-BB-Dual IPS</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Sales Rep-CW</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Sales Rep-BB</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Reporting Admin</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Sales Ops</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Solution_Description__c</fields>
+        <fields>Core_Solution_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_owner_email__c</fields>
+        <profileName>Sales Manager</profileName>
+    </profileSearchLayouts>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Core_Solution_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Version__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_End_Customer_Solution__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Solution_owner_email__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Application_Workload__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Industry_Use_Case__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Technology_Enabled__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Industry__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Region_of_availability__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>EOL_Solutions_EDIT</fullName>
+        <active>true</active>
+        <description>EOL Solutions are not allowed to edit</description>
+        <errorConditionFormula>OR(
+ISCHANGED(Core_Status__c) &amp;&amp; (($Profile.Name &lt;&gt; &apos;Data Ops&apos;) &amp;&amp; (NOT($Permission.Core_CRM_Special_Access))) &amp;&amp; ISPICKVAL(PRIORVALUE(Core_Status__c ), &quot;EOL&quot;),
+(!ISCHANGED(Core_Status__c)) &amp;&amp; ISPICKVAL(PRIORVALUE(Core_Status__c ), &quot;EOL&quot;)
+)</errorConditionFormula>
+        <errorMessage>Solution is already EOL’d. Cannot make further changes.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

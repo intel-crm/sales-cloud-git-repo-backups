@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AI Recommendation Tracking</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>AI Recommendation Trackings</value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Confidence Score --></label>
+        <name>Core_MDF_AI_Confidence_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Recommendation Details --></label>
+        <name>Core_MDF_AI_Recommendation_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Recommendation --></label>
+        <name>Core_MDF_AI_Recommendation__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Source Files --></label>
+        <name>Core_MDF_AI_Source_Files__c</name>
+    </fields>
+    <fields>
+        <label><!-- AI Source Type --></label>
+        <name>Core_MDF_AI_Source_Type__c</name>
+        <picklistValues>
+            <masterLabel>Approval Process</masterLabel>
+            <translation><!-- Approval Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Combined</masterLabel>
+            <translation><!-- Combined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Description</masterLabel>
+            <translation><!-- Description --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>File</masterLabel>
+            <translation><!-- File --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IUPGM Chatbot</masterLabel>
+            <translation><!-- IUPGM Chatbot --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Suggested Value --></label>
+        <name>Core_MDF_AI_Suggested_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Last Modified Date --></label>
+        <name>Core_MDF_Activity_Last_Modified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>Core_MDF_Activity__c</name>
+        <relationshipLabel><!-- AI Recommendation Trackings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approval Stage --></label>
+        <name>Core_MDF_Approval_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>Core_MDF_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Saved Value --></label>
+        <name>Core_MDF_Final_Saved_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Error Detail --></label>
+        <name>Core_MDF_IUPGM_Error_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Program --></label>
+        <name>Core_MDF_IUPGM_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Response Time (ms) --></label>
+        <name>Core_MDF_IUPGM_Response_Time_ms__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Role Requested --></label>
+        <name>Core_MDF_IUPGM_Role_Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- IUPGM Staging Record --></label>
+        <name>Core_MDF_IUPGM_Staging_Record__c</name>
+        <relationshipLabel><!-- AI Chatbot Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recommendation Used --></label>
+        <name>Core_MDF_Recommendation_Used__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Decision --></label>
+        <name>Core_MDF_User_Decision__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_MDF_User__c</name>
+        <relationshipLabel><!-- AI Recommendation Trackings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

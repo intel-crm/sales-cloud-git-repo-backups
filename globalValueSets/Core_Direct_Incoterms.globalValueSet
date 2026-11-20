@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>EXW</fullName>
+        <default>false</default>
+        <label>Ex Works</label>
+    </customValue>
+    <customValue>
+        <fullName>CIF</fullName>
+        <default>false</default>
+        <label>Costs, insurance &amp; freight</label>
+    </customValue>
+    <customValue>
+        <fullName>AM1</fullName>
+        <default>false</default>
+        <label>Internal code to allow CI outp</label>
+    </customValue>
+    <customValue>
+        <fullName>N/A</fullName>
+        <default>false</default>
+        <label>NOT APPLICABLE / SERVICES</label>
+    </customValue>
+    <customValue>
+        <fullName>PCT</fullName>
+        <default>false</default>
+        <label>Per Contract Term</label>
+    </customValue>
+    <customValue>
+        <fullName>DAT</fullName>
+        <default>false</default>
+        <label>Seller pays frt not duty Trmnl</label>
+    </customValue>
+    <customValue>
+        <fullName>Delivered ex ship</fullName>
+        <default>false</default>
+        <label>Delivered ex ship</label>
+    </customValue>
+    <customValue>
+        <fullName>Delivered ex quay (duty paid)</fullName>
+        <default>false</default>
+        <label>Delivered ex quay (duty paid)</label>
+    </customValue>
+    <customValue>
+        <fullName>Delivered Duty Unpaid</fullName>
+        <default>false</default>
+        <label>Delivered Duty Unpaid</label>
+    </customValue>
+    <customValue>
+        <fullName>Deliverd at Place</fullName>
+        <default>false</default>
+        <label>Deliverd at Place</label>
+    </customValue>
+    <customValue>
+        <fullName>Costs and freight</fullName>
+        <default>false</default>
+        <label>Costs and freight</label>
+    </customValue>
+    <customValue>
+        <fullName>DDP</fullName>
+        <default>false</default>
+        <label>Delivered Duty Paid</label>
+    </customValue>
+    <customValue>
+        <fullName>DAP</fullName>
+        <default>false</default>
+        <label>Seller pays frt not duty Place</label>
+    </customValue>
+    <customValue>
+        <fullName>CIP</fullName>
+        <default>false</default>
+        <label>Carriage and Insurance Paid to</label>
+    </customValue>
+    <customValue>
+        <fullName>CPT</fullName>
+        <default>false</default>
+        <label>Carriage Paid to</label>
+    </customValue>
+    <customValue>
+        <fullName>FOB</fullName>
+        <default>false</default>
+        <label>Free on board</label>
+    </customValue>
+    <customValue>
+        <fullName>FCA</fullName>
+        <default>false</default>
+        <label>Free Carrier</label>
+    </customValue>
+    <customValue>
+        <fullName>Hand Carry</fullName>
+        <default>false</default>
+        <label>Hand Carry</label>
+    </customValue>
+    <customValue>
+        <fullName>FAS</fullName>
+        <default>false</default>
+        <label>Free Alongside Ship</label>
+    </customValue>
+    <customValue>
+        <fullName>Carriage and insurance paid to</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Carriage and insurance paid to</label>
+    </customValue>
+    <customValue>
+        <fullName>Carriage paid to</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Carriage paid to</label>
+    </customValue>
+    <customValue>
+        <fullName>Delivered Duty Paid</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Delivered Duty Paid</label>
+    </customValue>
+    <customValue>
+        <fullName>Ex Works</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ex Works</label>
+    </customValue>
+    <masterLabel>Incoterms</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

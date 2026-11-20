@@ -1,0 +1,66 @@
+.THIS {
+  overflow: hidden;
+}
+.THIS h4 {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.625;
+  border-bottom: 1px solid t(lightGray);
+  margin-bottom: 5px;
+}
+.THIS h5 {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.625;
+  margin-bottom: 5px;
+  color: t(darkGray);
+}
+
+.THIS li {
+  /* display: inline-block; */
+  display: inline;
+  line-height: 1.625rem;
+  padding-bottom: 6px;
+  word-break: break-word;
+}
+
+@supports (-ms-accelerator:true) or (-ms-ime-align:auto) {
+  /*IE Edge Override since it doesnt have break word*/
+  .THIS li {
+    word-break: break-all; 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+.THIS li a {
+  padding: 0 0.5rem 0 0;
+  font-weight: 400;
+  color: t(blue);
+}
+.THIS li .staticLabel {
+  padding-right: 0.5rem;
+}
+
+.THIS li:first-child a {
+  padding-left: 0;
+}
+.THIS li .separator {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 1.25rem;
+  border-left: 1px solid t(lightGray);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  width: 1px;
+}
+
+.THIS li:last-child .separator {
+  display: none;
+}
+
+
+.THIS .editLabel {
+  display:inline-block;
+  width: calc( 100% - 30px);
+}

@@ -1,0 +1,90 @@
+.THIS {
+    font-family: intel-clear;
+}
+
+.THIS .intel-content-area {
+  position: relative;
+  z-index: 1;
+}
+.THIS .forceSearchInputDesktop .slds-input__icon.inputIcon {
+  z-index: 0;
+}
+
+/* The below CSS is used to set the can be used  to hide the Home button which is the first menu element */
+.THIS .forceCommunityGlobalNavigation {
+  min-height: 40px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.THIS .forceCommunityRichText h2 {
+  font-size: 28px;
+  font-weight: 100;
+}
+
+.THIS .forceCommunityRichText h4 {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.THIS .forceCommunityRichText h3 {
+  font-size: 24px;
+  font-weight: 100;
+}
+
+/* The below CSS is used for Search box */
+.THIS .intel-searcharea {
+  margin-top: 38px;
+  margin-bottom: 38px;
+  font-family: intel-clear;
+  border: 0px solid #0071c5;
+}
+
+.THIS .intel-blue {
+  color: #0071c5;
+}
+
+/* The below CSS is used for Search box Height without impacting the search results */
+.THIS .uiInputTextForAutocomplete {
+  line-height: 2.875rem;
+}
+
+.THIS .forceCommunityHeadline .headlineTitle {
+  text-transform: none !important;
+  font-family: intel-clear-headline !important;
+  font-weight: 100;
+  font-size: 70px;
+  padding-top: 0px;
+  color: #003c71;
+  background: white;
+  margin-top: -35px;
+  padding-bottom: 8px;
+}
+
+.THIS .forceCommunityRichText {
+  font-family: intel-clear;
+  font-size: 16px;
+}
+
+.THIS .uiTooltip.tooltip-trigger{
+  padding-left: 0.5rem;
+}
+
+.THIS .forceCommunityCreateRecordButton button {
+  width: 250px;
+  padding: 5px;
+}
+
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator{
+  max-width: none;
+}
+
+.THIS .forceCommunityGlobalNavigation .slds-list_horizontal>.slds-list__item>.comm-navigation__item>a.slds-is-active:not([data-type="home"]){
+	background-color: #1e2443 !important;
+}
+/* The below CSS can be used  to hide the Home button which is the first menu element
+.THIS .slds-is-relative:first-child { 
+  display: none;
+  visibility: hidden;
+}
+*/

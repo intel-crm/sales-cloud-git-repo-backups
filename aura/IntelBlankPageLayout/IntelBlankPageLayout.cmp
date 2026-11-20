@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:layout" description="Empty page layout" access="global">
+
+    <aura:attribute name="content" description="Main content" type="Aura.Component[]" required="false"></aura:attribute>
+
+    <div>
+        {!v.content}
+    </div>
+
+</aura:component>

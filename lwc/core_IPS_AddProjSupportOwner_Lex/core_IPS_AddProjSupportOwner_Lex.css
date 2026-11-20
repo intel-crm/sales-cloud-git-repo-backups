@@ -1,0 +1,45 @@
+.header {
+    background: #41619B;
+    color: white;
+    padding: 10px 30px;
+}
+.borders {
+    padding:10px 30px;
+}
+.styleButtons{
+    padding-top:20px;
+    border-top:1px solid #ccc;
+}
+.error{
+	color:red;
+	font-weight:bold;
+}
+.slds-modal__container {
+    max-width: 1000rem !important;
+    width: 80% !important;
+  
+  }
+.tooltip{
+    position:relative;
+    display:inline-block;
+}
+.tooltip .tooltiptext{
+    visibility: hidden;
+    width:200px;
+    background-color: white;
+    color:black;
+    text-align : center;
+    font-size: 14px;
+    padding: 6px 0;
+    border-top:1px solid;
+    border-left:1px solid;
+    border-color: black;
+    position:absolute;
+    z-index:1;
+    top:180%;
+    left:50%;
+    margin-left:-60px;
+}
+.tooltip:hover .tooltiptext{
+    visibility:visible;
+}

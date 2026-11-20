@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_Tier_1_KPI_Sharing_Rule</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Tier 1 KPI Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>SMG</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_TIER__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Tier_2_KPI_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Tier 2 KPI Sharing Rule</label>
+        <sharedTo>
+            <group>core_Tier_2_Opportunity_KPI_Access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_TIER__c</field>
+            <operation>equals</operation>
+            <value>2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SWS_KPI_6Sense_sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>SWS KPI 6Sense sharing</description>
+        <label>SWS KPI 6Sense sharing</label>
+        <sharedTo>
+            <group>SWS_6Sense_Admin_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,29 @@
+<!--------------------------------------------------------------------------------------------------------
+Description - Generic Custom Toast LWC (Sales CRM)
+Used in - Crm_VBS_SOAR_AddProducts
+---------------------------------------------------------------------------------------------------------->
+<template>
+    <template if:true={showToastBar}>
+      <div class="slds-notify_container">
+        <div class={topClass} role="status">
+          <span class="slds-assistive-text">{notificationType}</span>
+          <span class={innerClass}>
+                <lightning-icon icon-name={iconName} size="small" variant="inverse" alternative-text={notificationType} title={notificationType}></lightning-icon>
+          </span>
+          <div class="slds-notify__content" style="padding-left: 10px;">
+            <div class="toastTitle slds-text-heading--small">{headerMessage}</div>
+            <template for:each={messageList} for:item="item" for:index="index" >
+                <li class="toastTitle slds-text-heading_x-small" key={item.keyIndex}>{item}</li>
+            </template>
+          </div>
+          <div class="slds-notify__close">
+            <!--<lightning-button-icon icon-name="utility:close" size="small" variant="inverse" class="slds-button slds-button_icon slds-button_icon-inverse" alternative-text="Close" title="Close" onclick={closeWarningComp}></lightning-button-icon>-->
+            <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" onclick={closeComp}>
+                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+</template>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Reltio Sync Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reltio Sync Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Auth URL --></label>
+        <name>rtsync__Auth_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Authentication Method --></label>
+        <name>rtsync__Authentication_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Connector Environment --></label>
+        <name>rtsync__Connector_Environment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Connector Name --></label>
+        <name>rtsync__Connector_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Console Name --></label>
+        <name>rtsync__Console_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Wizard Completed --></label>
+        <name>rtsync__Is_Wizard_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Id --></label>
+        <name>rtsync__Profile_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Optimal size is between 200 and 1000. If a request fails to finish, set a lower batch size. --></help>
+        <label><!-- Resync Batch Size --></label>
+        <name>rtsync__Resync_batch_size__c</name>
+    </fields>
+    <fields>
+        <label><!-- SBC Environment --></label>
+        <name>rtsync__SBC_Environment__c</name>
+    </fields>
+    <fields>
+        <label><!-- SBC Name --></label>
+        <name>rtsync__SBC_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tenant Environment --></label>
+        <name>rtsync__Tenant_Environment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tenant Id --></label>
+        <name>rtsync__Tenant_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Triggers Are Enabled --></label>
+        <name>rtsync__Triggers_Are_Enabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use Reltio Certificate for Authorization --></help>
+        <label><!-- Use Certificate Authorization --></label>
+        <name>rtsync__Use_Certificate_Authorization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Username --></label>
+        <name>rtsync__Username__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

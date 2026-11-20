@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLRDEU</name>
+    <style>none</style>
+    <subject>Intel®Cloud Insider-Teilnahmeantrag</subject>
+    <textOnly>E-Mail-Adresse bestätigen
+
+Vielen Dank für Ihren Teilnahmeantrag für Intel® Cloud Insider. Bevor der Antrag bearbeitet werden kann, möchten wir Ihre E-Mail-Adresse bestätigen. Wenn Ihre E-Mail-Adresse in den kommenden 30 Tagen nicht bestätigt werden kann, wird Ihr Antrag aus unserem System gelöscht und Sie müssen einen neuen Antrag stellen.
+
+
+Jetzt bestätigen
+
+Fragen? Wenden Sie sich bitte unter programs@intel.com an den Support für Intel® Cloud Insider oder hier
+
+Copyright © {!$Label.PRM_CurrentYear} Intel Corporation. Alle Rechte vorbehalten. Intel und das Intel-Logo sind Marken der Intel Corporation oder ihrer Tochtergesellschaften in den USA und/oder anderen Ländern.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Sie können sich jederzeit abmelden, indem Sie Ihre Profileinstellungen unter  {!$Label.PRM_MyIntelProfileURL} aktualisieren.
+Datenschutz | Cookies | *Marken</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

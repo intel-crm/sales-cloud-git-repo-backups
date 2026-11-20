@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata to store dashboard tabs which will be shown in Marketplace Dashboard Page</description>
+    <fields>
+        <fullName>PMP_Benefit_Code_Txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Benefit Code</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Permission_Set_Name_Txt__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Permission Set Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Entitlement_Txt__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Role_Txt__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Role</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Profile_Txt__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Profile</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <label>PMP_Dashboard_Tab</label>
+    <pluralLabel>PMP_Dashboard_Tabs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

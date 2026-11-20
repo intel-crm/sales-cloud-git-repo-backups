@@ -1,0 +1,107 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component access="global"></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            } -->
+            
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+            
+        <!-- </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Please Update Your Submitted Solution"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        Hello, <br/><br/>
+                        Thank you again for submitting your solution, {!solutionData.PSS_Proposal_Name_Txt__c}. Before it can move forward to the next stage, your action is required. Use the link below and follow the instructions to add additional information to your submission.<br/><br/>
+                        Someone submitting a solution to Intel can share the solution with others in their organization. Anyone copied on this email can view and edit the solution.
+                    </td>
+                </tr> -->
+                
+                <!-- Email Body -->
+                
+                <!-- CTA -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">      
+                        <p><apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}" styleClass="intelBlue">Edit and resubmit solution</apex:outputLink></p>
+                    </td>
+                </tr> -->
+                <!-- CTA -->      
+                
+                <!-- Next Best Step -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        <b>INSTRUCTIONS</b><br/><br/>
+                        <b>NOTE:</b> Your solution page may take a few seconds to load.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left:65px;">
+                        1.	Click the ‘Edit Solution’ button. <br/>
+                        2.	Go to the ‘Messages about your Solution’ box (upper right-hand of page).  <br/>
+                        3.	Review the message from your Intel® Showcase Admin about the edit(s) required to your Solution <b>NOTE:</b> This messaging system can also be used to communicate additional questions and/or concerns you have about your solution submission.<br/>  
+                        4.	Select ‘Preview’ to review and verify the edit(s) have been made. <br/>
+                        5.	Resubmit your solution to the Intel® Partner Showcase team for review.. <br/><br/>
+                    </td>       
+                </tr>   
+                <tr>
+                    <td style="padding-left:50px;">      
+                        Thank you, <br/><br/>
+                        Your Intel® Partner Alliance team <br/><br/> 
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+                 <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        This email may be shared with others in your organization. You may see the full list of who the solution is shared with in the Solution Summary page.<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink>
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+                
+                <!-- Next Best Step -->
+                
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

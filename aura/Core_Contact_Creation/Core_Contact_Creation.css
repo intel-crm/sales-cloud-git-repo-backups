@@ -1,0 +1,57 @@
+/*
+
+.THIS .ContFields{
+    margin-top:-35px;
+}
+.THIS .Contphone{
+    margin-top:-7px;
+}
+.THIS .ContAcc{
+   margin-top:10px; 
+}
+.THIS .ContName{
+    margin-top:10px;
+}
+*/
+.THIS .radioBox{
+    margin-bottom:5px;
+}
+.THIS .ContInfo{
+    margin-top:20px; 
+}
+.THIS .AccCategory{
+    margin-top:15px;
+}
+.THIS .NewCont{
+    border-bottom-color:lightgray;
+    border-bottom-width :inherit;
+}
+.THIS .divLine{
+    /*border-bottom-color:lightgray;*/
+    border-bottom-width :inherit;
+     margin-top:15px;
+}
+.THIS .slds-col span, .THIS .slds-col label{
+    float : left;
+    /*color: red;*/
+}
+.THIS #errorMessageDiv{
+    color: red;
+    float : left;
+    text-align: left;
+}
+
+.THIS .ContAcc label.slds-form-element__label abbr.slds-required{
+   float : left;
+}
+
+.THIS .CountryCon label.slds-form-element__label abbr.slds-required{
+    float : left;
+ }
+/*.THIS .slds-form-element__label{
+    margin-right:200px;
+}*/
+
+/*.THIS .slds-form-element__label slds-no-flex{
+        margin-right: 178px;
+}*/

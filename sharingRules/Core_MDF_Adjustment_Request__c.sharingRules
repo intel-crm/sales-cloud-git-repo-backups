@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Claim_Adjustment_Request_Sharing_with_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Claim Adjustment Request Sharing with CCP Claim Case Reviewer Internal</description>
+        <label>Claim Adjustment Request Sharing with CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>[empty]</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Claim_Adjustment_Request_Sharing_with_All_Users_CCP_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Claim Adjustment Request Sharing with All Users CCP Internal</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

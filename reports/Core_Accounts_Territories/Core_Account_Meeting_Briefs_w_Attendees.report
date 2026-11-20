@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account_Meeting_Brief__c$Name</field>
+    </columns>
+    <columns>
+        <field>Account_Meeting_Brief__c.Customer_Attendees__r$Core_Attendee_Meeting_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account_Meeting_Brief__c.Customer_Attendees__r$Core_Attendee_Meeting_Customer_Title__c</field>
+    </columns>
+    <columns>
+        <field>Account_Meeting_Brief__c.Customer_Attendees__r$Core_Account_Meeting_Brief_Attendee_Type__c</field>
+    </columns>
+    <description>Used to download information as a merged template into Conga for meeting attendees</description>
+    <filter>
+        <criteriaItems>
+            <column>Account_Meeting_Brief__c$Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Account Meeting Briefs w Attendees</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Account_Meeting_Briefs_with_Attendees__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account_Meeting_Brief__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

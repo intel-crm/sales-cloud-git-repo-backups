@@ -1,0 +1,29 @@
+<template>
+    <div style="width: 100%; overflow-x: hidden" class="fixHeader">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text={label.loadingLabel}></lightning-spinner>
+        </template>
+        <template if:true={showGridData}>
+            <template if:false={showSpinner}>
+                <!--Tree Grid View To SHow Account hierarchy -->
+                <div class={dynamicStyling}>
+                    <lightning-tree-grid class="treegrid" columns={gridColumns} data={gridData} key-field="Id"
+                        expanded-rows={gridExpandedRows} hide-checkbox-column="true" selected-rows={selectedRecords}
+                        ontoggle={handleToggle}>
+                    </lightning-tree-grid>
+                </div>
+                <!-- Export Button at bottom right of Component is-loading={gridLoadingState}-->
+                <div style="padding-top:5px">
+                    <lightning-button class="slds-float_right" variant="brand" onclick={exportToExcel}
+                        label={label.exportExcel}>
+                    </lightning-button>
+                </div>
+            </template>
+        </template>
+        <template if:false={showGridData}>
+            <template if:false={showSpinner}>
+                <p style="text-align: center;">{label.noRecordsToDisplay}</p>
+             </template>
+        </template>
+    </div>
+</template>

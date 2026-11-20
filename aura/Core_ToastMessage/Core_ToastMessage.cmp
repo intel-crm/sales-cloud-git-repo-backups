@@ -1,0 +1,6 @@
+<aura:component controller="Core_ToastMessageController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute name="isOpen" type="boolean" default="true"/> 
+    <aura:attribute name="recordId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.refreshView}" />
+    <aura:handler event="force:refreshView" action="{!c.refreshView}" />
+</aura:component>

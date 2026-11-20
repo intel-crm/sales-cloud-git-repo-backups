@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "bd078734-e7dd-4ad5-b63a-563ad50c51ee",
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "configurationTags" : [ ],
+  "devName" : "psg_downlaod_price_books__c",
+  "id" : "0aca8e96-d7a7-417a-856f-84fcdcccab63",
+  "label" : "Download Price Books",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-psg-download-price-books",
+  "type" : "route",
+  "urlPrefix" : "psg-download-price-books"
+}

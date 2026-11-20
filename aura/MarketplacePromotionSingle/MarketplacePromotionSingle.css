@@ -1,0 +1,29 @@
+.THIS {
+  background: t(bladeBackground);
+}
+
+@media (max-width: 767px) {
+    .THIS .textContainer {
+      padding: 16px 16px 0 16px;
+    }
+    .THIS .container {
+      padding: 40px 0;
+    }
+    .THIS h3.heading-28 {
+      font-size: 1.500em;
+      line-height: 1.08;
+    }
+}
+
+@media (min-width: 768px) {
+    .THIS .imageContainer {
+      /* padding-left: 12px; */
+    }
+    .THIS .textContainer {
+      padding-left: 52px;
+      padding-right: 12px;
+    }
+    .THIS .container {
+        padding: 52px 0;
+    }
+}

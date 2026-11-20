@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_DAAS_POL</name>
+    <style>none</style>
+    <subject>Specjalizacja Urządzenie jako usługa programu Intel® Partner Alliance</subject>
+    <textOnly>Gratulujemy zakwalifikowania się!
+
+
+{!Contact.FirstName},
+
+Witamy w specjalizacji Urządzenie jako usługa programu Intel® Partner Alliance! Jako wykwalifikowany specjalista ds. modelu „urządzenie jako usługa” uprawniony jesteś do uzyskania specjalnych korzyści*, których celem jest pomoc w dostarczaniu i wdrażaniu Twoich rozwiązań. Obejmują one:
+
+Tytuł specjalisty ds. modelu „urządzenie jako usługa”
+Promowanie Twojej firmy jako specjalisty ds. modelu „urządzenie jako usługa” przez firmę Intel
+Dodatkowe punkty motywacyjne firmy Intel
+Priorytetowe zaproszenia na imprezy branżowe i szkolenia
+Dostęp do usług testowania platform Intel®
+
+Aby rozpocząć, wyślij wiadomość na adres ITP-DaaS@intel.com zawierającą następujące informacje:
+
+
+Główna osoba kontaktowa do komunikacji ze specjalistami ds. modelu „urządzenie jako usługa”
+Nazwa:
+E-mail:
+
+
+W celu przesyłania dodatkowych materiałów handlowych i promocyjnych
+Adres pocztowy:
+Telefon:
+
+Dostęp do korzyści
+
+
+*Korzyści mogą się różnić w zależności od regionu.
+
+Historia partnerów firmy Intel w zakresie innowacji jest długa. Za pomocą programu Intel® Partner Alliance pomożemy Ci przyspieszyć opracowywanie rozwiązań dla gospodarki opartej na danych. Razem możemy stwarzać nowe, niezwykłe możliwości dzięki połączeniu sił, wprowadzaniu innowacji i wspólnemu rozwojowi.
+
+Odwiedź stronę https://www.intel.com/content/www/pl/pl/partner-alliance/help/overview.html, by uzyskać pomoc i wskazówki dotyczące optymalizacji Twojego uczestnictwa w programie.
+
+
+Dziękujemy.
+Twój zespół Intel® Partner Alliance
+
+Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Ochrona danych | Pliki cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

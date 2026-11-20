@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Created for Bulk CR functionality</description>
+    <fields>
+        <fullName>User_WWID__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>User WWID</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Pricing Bulk Change Request</label>
+    <pluralLabel>Pricing Bulk Change Request</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

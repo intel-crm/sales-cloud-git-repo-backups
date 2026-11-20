@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundAllocation$Amount</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>PartnerFundAllocation$Core_MDF_Available_Allocation_Amount__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims$Core_MDF_Budget_Type_Options_Nm__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims$Core_MDF_Program__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundAllocation$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundAllocation.PartnerFundRequests$Name</field>
+    </columns>
+    <columns>
+        <field>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims$Name</field>
+    </columns>
+    <description>Records having negative Allocation Amount</description>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundAllocation$Core_MDF_Available_Allocation_Amount__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessThan</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundAllocation$Amount</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessThan</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PartnerFundAllocation.PartnerFundRequests$Core_MDF_Program__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Allocation with -veAllocation Monitoring</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Allocations_with_Acitvity_and_Claims__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PartnerFundAllocation$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

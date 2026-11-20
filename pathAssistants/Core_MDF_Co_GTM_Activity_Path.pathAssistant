@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>PartnerFundRequest</entityName>
+    <fieldName>Core_MDF_Fund_Request_Status__c</fieldName>
+    <masterLabel>Co-GTM Activity Path</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;The Activity has been cancelled by Intel or Partner.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Cancelled</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;No Additional Claims can be submitted against the Activity.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Closed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Intel has reviewed this proposal and has decided not to move forward at this time.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Declined</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity is part of a Proposal, it has just been created and yet to be submitted for Approval.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Draft</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;At least one Claim has been submitted against the Activity.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>In-Progress</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity is pending Partner approval.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Pending Approval</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity was submitted and assigned to Intel approval queue.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Pending Review</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity was created, approved by Intel, and accepted by Partner. Activity is now ready for execution.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Planned</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;Activity was declined by either Intel or Partner and is now ready to be edited and resubmitted.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Revision Required</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Core_MDF_Co_GTM</recordTypeName>
+</PathAssistant>

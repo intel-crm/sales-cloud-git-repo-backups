@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ACM Change Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ACM Change Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Channel Membership --></label>
+        <name>PRM_Account_Channel_Membership__c</name>
+        <relationshipLabel><!-- ACM Change Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>PRM_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>PRM_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Record Type --></label>
+        <name>PRM_Account_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>PRM_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Partner Role --></label>
+        <name>PRM_Old_Partner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Partner Tier --></label>
+        <name>PRM_Old_Partner_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prestige</masterLabel>
+            <translation><!-- Prestige --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Tier --></label>
+        <name>PRM_Partner_Tier__c</name>
+        <relationshipLabel><!-- ACM Change Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed with errors</masterLabel>
+            <translation><!-- Completed with errors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Error summary --></label>
+        <name>prm_error_summary__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please select IPA specific Partner tier --></errorMessage>
+        <name>PRM_IPA_Tier_Selection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The request cannot be submitted as the Location account is a part of 1PID. --></errorMessage>
+        <name>PRM_PartOf_1PID</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Partner Role and Partner tier Combination already exist. --></errorMessage>
+        <name>PRM_Partner_Role_Tier_Combination</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select either Partner/Prestige tier --></errorMessage>
+        <name>PRM_Validate_Tier</name>
+    </validationRules>
+</CustomObjectTranslation>

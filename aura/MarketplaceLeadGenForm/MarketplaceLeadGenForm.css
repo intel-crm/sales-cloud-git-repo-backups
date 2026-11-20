@@ -1,0 +1,151 @@
+.THIS {
+  color: t(darkGray);
+}
+
+.THIS .fullWidth {
+  width: 100%;
+}
+
+.THIS .fullHeight {
+  min-height: 100%;
+}
+
+.THIS .bgGray {
+  background-color: t(lightestGray);
+}
+
+.THIS .bgDarkestGray {
+  background-color: t(darkestGray);
+}
+
+.THIS .bgWhite {
+  background-color: t(white);
+}
+
+.THIS .textColorRed {
+  color: t(sfRedError);
+}
+.THIS .heading-13.bold {
+  font-weight: bold;
+}
+
+.THIS p {
+  margin-bottom: .5em;
+}
+.THIS .notice p {
+  margin-bottom: 1.5em;
+}
+/* INPUTS */
+/* .THIS .slds-textarea,
+.THIS .slds-input,
+.THIS .uiInput--checkbox input,
+.THIS .slds-select,
+.THIS .slds-select:focus,
+.THIS .slds-select:active {
+  background: transparent;
+} */
+.THIS .slds-textarea {
+  min-height: 130px;
+}
+.THIS .uiInput--checkbox .uiLabel{
+  line-height: 2rem;
+}
+
+.THIS label.slds-form-element__label {
+  font-size: 1em;
+}
+.THIS .uiInput--radio input[type="radio"] {
+  float: left;
+  margin-top: 0.2rem;
+}
+.THIS .uiInput--checkbox input,
+.THIS input.uiInput--checkbox {
+  float: left;
+  margin-right: 10px;
+}
+.THIS .error-asterisk {
+  position: absolute;
+  left: -0.5em;
+  top: -2px;
+  color: t(sfRedError);
+}
+.THIS lightning-datepicker .slds-input__icon_right {
+  margin-top: -0.65rem;
+}
+
+/* --- */
+
+.THIS .modalContainer {
+  min-height: 100%;
+}
+
+.THIS button.blue {
+  background-color: t(buttonPrimary);
+  border: 1px solid transparent;
+  color: t(buttonPrimaryText);
+  font-size: 1em;
+  border-radius: 4px;
+  min-width: 96px;
+  padding: .3em 4em;
+}
+.THIS .non-bold {
+  font-weight: normal;
+}
+.THIS button.blue:hover {
+  background-color: t(buttonPrimaryHover);
+}
+.THIS button.blue:focus {
+  border-color: t(buttonPrimaryFocusBorder);
+}
+.THIS .slds-has-error > .uiInputCheckbox input {
+  border-color: rgb(194, 57, 52);
+  border-width: 2px;
+}
+
+/* Main desktop styles */
+@media (max-width: 767px) {
+  .THIS .modalContainer {
+    padding-bottom: 10rem;
+  }
+  .THIS .uiInputCheckbox .text {
+    display: inline-block;
+    width: 80%;
+  }
+  
+}
+@media (min-width: 768px) {
+  .THIS .modalContainer {
+    padding: 0;
+  }
+  .THIS .requestQuoteTop {
+    padding-top: 2rem;
+  }
+  .THIS .contactTop {
+    padding-top: 2rem;
+  }
+}
+
+/* Container width spacing on larger desktop sizes */
+@media (min-width: 992px) {
+  .THIS .modalContainer {
+    width: 780px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .THIS .modalContainer {
+    width: 960px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1650px) {
+  .THIS .modalContainer {
+    width: 1320px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

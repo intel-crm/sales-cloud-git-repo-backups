@@ -1,0 +1,170 @@
+<template>
+  <header class="slds-text-heading--large slds-align--absolute-center header">
+    <h2>Product Access Search</h2>
+</header>
+
+  <template if:true={openmodel}>
+      <div class="demo-only" style="height: 640px;">
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+              <div class="slds-modal__container">
+                <header class="slds-modal__header mainHeading">
+                  <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                  </button>
+                  <h2 id="modal-heading-01" class="slds-text-heading--large slds-align--absolute-center modalheader">Product Access Details</h2>
+                </header>
+                  <div class="slds-modal__content" id="modal-content-id-1">
+                      <lightning-card >
+                          <div class="slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-6"></div>
+                              <div class="slds-col slds-size_4-of-6 slds-p-left_x-large">
+                                <!-- <lightning-record-form
+                                    object-api-name="Core_IPS_MAP_PAR__c"
+                                    columns=1
+                                    mode="edit"
+                                    fields={fields}
+                                    onsubmit={handleSubmit}
+                                    oncancel={handleCancel}
+                                    onsuccess={handleSuccess}
+                                    onerror={handleError}>
+                                </lightning-record-form> -->
+                                <lightning-record-edit-form object-api-name="Core_IPS_MAP_PAR__c" onsubmit={handleSubmit} oncancel={handleCancel}  onsuccess={handleSuccess} onerror={handleError}>
+                                  <lightning-messages></lightning-messages>
+                                  <lightning-input-field field-name={mapNameField} required></lightning-input-field>
+                                  <lightning-input-field field-name={descriptionField}></lightning-input-field>
+                                  <lightning-input-field field-name={supportOrgField} required></lightning-input-field>
+                                  <div class="slds-align_absolute-center">  
+                                    <lightning-button
+                                          class="slds-button slds-m-top_small "
+                                          type="submit"
+                                          label="Cancel">
+                                      </lightning-button>
+                                      <lightning-button
+                                          class="slds-button slds-m-top_small"
+                                          variant="brand"
+                                          type="submit"
+                                          label="Save">
+                                      </lightning-button>
+                                    </div>
+                              </lightning-record-edit-form>
+                              </div>  
+                              <div class="slds-col slds-size_1-of-6"></div>
+                            </div>
+                        </lightning-card>
+                  </div>
+              </div>
+              <template if:true={modelSpinnerOn}>
+                <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+              </template>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+      </div>
+      </template>
+  <lightning-card>
+    <div class="slds-align_absolute-center">
+      <div class="slds-col slds-size_8-of-12">
+        <lightning-card >
+          <lightning-button disabled={isVisible} slot="actions" variant="brand" label="New MAP" title="New MAP" onclick={createNewMap}>
+          </lightning-button>
+          <div class="slds-m-left_medium">
+            <!--<span class="slds-text-heading_small">Search</span>-->
+            <div class="slds-m-left_xxx-small slds-grid slds-wrap slds-size_1-of-1 slds-gutters">
+              <div class="  slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center ">
+
+                <div class="slds-size_4-of-12">
+                  <label class="slds-form-element__label slds-m-top_small">By Supported Product:</label>
+                </div>
+                <div class="slds-size_8-of-12">
+                  <c-core_-i-p-s_-lightning-input-utility  onchange={handleSearchProductText} value={searchProductText} onenter={handleSearch}>
+                  </c-core_-i-p-s_-lightning-input-utility>
+                </div>
+
+              </div>
+              <div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center ">
+
+                <div class="slds-size_4-of-12">
+                  <label class="slds-form-element__label slds-m-left_medium slds-m-top_small">By Account:</label>
+                </div>
+                <div class="slds-size_8-of-12">
+                  <c-core_-i-p-s_-lightning-input-utility onchange={handleSearchAccountText} value={searchAccountText} onenter={handleSearch}>
+                  </c-core_-i-p-s_-lightning-input-utility>
+                </div>
+
+              </div>
+            </div>
+            <div class="slds-m-left_xxx-small slds-grid slds-wrap slds-size_1-of-1 slds-gutters">
+              <div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center ">
+
+                <div class="slds-size_4-of-12">
+                  <label class="slds-form-element__label slds-m-top_small">By Org Name:</label>
+                </div>
+                <div class="slds-size_8-of-12">
+                  <c-core_-i-p-s_-lightning-input-utility onchange={handleSearchOrgName} value={searchOrgName} onenter={handleSearch}>
+                  </c-core_-i-p-s_-lightning-input-utility>
+                </div>
+
+              </div>
+              <div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center ">
+
+                <div class="slds-size_4-of-12">
+                  <label class="slds-form-element__label slds-m-left_medium slds-m-top_small">By MAP Name:</label>
+                </div>
+                <div class="slds-size_8-of-12">
+                  <c-core_-i-p-s_-lightning-input-utility onchange={handleSearchMapName} value={searchMapName} onenter={handleSearch}>
+                  </c-core_-i-p-s_-lightning-input-utility>
+                </div>
+
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="slds-form slds-grid slds-gutters">
+            <div class="slds-align_absolute-center slds-m-top_medium">
+
+              <lightning-button variant="brand" label="Search" onclick={handleSearch} title="Search">
+              </lightning-button>
+              <lightning-button variant="brand" label="Clear" onclick={handleClear} class="slds-m-left_medium"
+                title="Clear">
+              </lightning-button>
+
+            </div>
+          </div>
+      <div class="slds-col slds-size_4-of-12">
+      </div>
+    </lightning-card>
+  </div>
+    </div>
+  <div class="slds-grid slds-wrap">
+      <div class="slds-col slds-size_12-of-12">
+            <!-- <template if:true={isQueryStrPresent}>
+                <div class="slds-grid slds-wrap slds-grid--vertical-align-center">
+                    <div class="slds-col slds-size_4-of-4">
+                <c-core_-i-p-s_-search-result-utility enable-infinite-loading={enableInfiniteLoading}
+                  no-of-records={recordsToDisplay} query-string={queryStr} columns={column}>
+                </c-core_-i-p-s_-search-result-utility>
+                </div>
+                </div>
+            </template> -->
+            <template if:true={isMapResultPresent}>
+              <c-core_-i-p-s_-datatable-utility
+                  hide-checkbox-column=true
+                  show-row-number-column=true
+                  enable-infinite-loading=true
+                  num-and-checkbox-both-cols=false
+                  normal-data-table=false
+                  records={mapRecords}
+                  columns={column}
+                  height-in-rem="20"
+                  number-of-rows-to-show={recordsToDisplay}>
+              </c-core_-i-p-s_-datatable-utility>
+            </template>
+      </div>
+      </div>
+  </lightning-card>
+
+  <template if:true={spinnerOn}>
+    <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+  </template>
+</template>

@@ -1,0 +1,47 @@
+<template>
+    <div class="social-share-container">
+        <button 
+            class="link-text link-no-underline" 
+            id="share-button" 
+            data-id="shareButton" 
+            title={labels.share} 
+            aria-label={labels.share} 
+            onclick={handleToggleShare}
+            onkeyup={handleCloseShare}
+            aria-controls="share-button_content"
+            aria-expanded={expanded}>
+            <template if:true={showLabel}>
+                <div class="slds-align-text_left slds-m-right_x-small">{labels.sharePage}</div>
+            </template>
+            <lightning-icon 
+                icon-name="utility:socialshare" 
+                alternative-text={labels.share} 
+                title={labels.share} 
+                class="cursor" 
+                size="x-small">
+            </lightning-icon>
+        </button>
+        <div class="share-overlay" data-show-label={showLabel} data-expanded={expanded}>
+            <button class="close" onclick={handleToggleShare}>
+                {labels.close}
+                <span class="intel-icon fa-angle-up"></span>
+            </button>
+            <div class="slds-p-horizontal_medium slds-p-top_medium" id="share-button_content" role="region">
+                <ul>
+                    <li>
+                        <button class="link-text" onclick={handleCopy}>
+                            <span class="intel-icon fa-docs slds-m-right_x-small"></span>
+                            {labels.copy}
+                        </button>
+                    </li>
+                    <li>
+                        <a class="link-text" href={email}>
+                            <span class="intel-icon fa-mail slds-m-right_x-small"></span>
+                            {labels.email}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

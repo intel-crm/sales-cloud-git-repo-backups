@@ -1,0 +1,4 @@
+<design:component>
+    <!--design attribute to hold full path url from various source (community, record page..)-->
+    <design:attribute name="url" label="URL" description="Provide fully qualified url"/>
+</design:component>

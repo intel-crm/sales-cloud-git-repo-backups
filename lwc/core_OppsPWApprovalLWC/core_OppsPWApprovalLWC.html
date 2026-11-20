@@ -1,0 +1,79 @@
+<template>
+    <lightning-quick-action-panel header="Submit for Approval">
+            <template if:true={showHideTab}>
+                <lightning-tabset variant="scoped" class="tab-active">
+                    <template if:true={showErrors}>
+                        <lightning-tab icon-name="utility:error" label={errorSize} class="slds-scrollable_y accordionClassError" data-id= "error">
+                            <ol class="slds-list_ordered">
+                                <template for:each={hardStopList} for:item="hs">
+                                    <li key={hs}>
+                                        {hs}
+                                    </li>
+                                </template>
+                            </ol>
+                        </lightning-tab>
+                    </template>
+                    <template if:true={showWarnings}>
+                        <lightning-tab icon-name="utility:warning" label={warningSize} class="slds-scrollable_y accordionClassWarning" data-id= "warning">
+                            <ol class="slds-list_ordered">
+                                <template for:each={softStopList} for:item="ss">
+                                    <li key={ss}>
+                                        {ss}
+                                    </li>
+                                </template>
+                            </ol>
+                        </lightning-tab>
+                    </template>
+                </lightning-tabset>
+            </template>
+        <!--<template if:true={showErrorButton}>
+            <lightning-button variant="brand" class="slds-m-left_x-small errButton" label={errorSize} onclick={handleErrorDisplay} disabled={errorButtonDisabled}></lightning-button>
+        </template>
+        <template if:true={showWarningButton}>
+            <lightning-button variant="brand" class="slds-m-left_x-small warButton" label={warningSize} onclick={handleWarningDisplay} disabled={warningButtonDisabled}></lightning-button>
+        </template>
+        <template if:true={showErrors}>
+                <div class="slds-scrollable_y" style="height:8rem;width:100%">
+                    <lightning-card class="accordionClassError" variant="Narrow">
+                        <ol class="slds-list_ordered">
+                            <template for:each={hardStopList} for:item="hs">
+                                <li key={hs}>
+                                    {hs}
+                                </li>
+                            </template>
+                        </ol>
+                    </lightning-card>
+                </div>
+            </template>
+            
+            <template if:true={showWarnings}>
+                <div class="slds-scrollable_y" style="height:8rem;width:54rem">
+                    <lightning-card class="accordionClassWarning" variant="Narrow">
+                        <ol class="slds-list_ordered">
+                            <template for:each={softStopList} for:item="ss">
+                                <li key={ss}>
+                                    {ss}
+                                </li>
+                            </template>
+                        </ol>
+                    </lightning-card>
+                </div>
+            </template>-->
+            
+            <!--<template if:true={showCheckList}>
+                <lightning-card variant="Narrow">
+                   <p>Please refer to Pre-Submit Checklist prior to Submitting for Approval.</p>
+                    <lightning-button variant="neutral" class="slds-m-left_x-small" label="Click to Review All Errors" onclick={navigateToCheckListVF}></lightning-button>
+                </lightning-card>
+            </template>-->
+            
+        <lightning-textarea label="Comments" value={comments} onchange={commentChange} class="textAreaBody"></lightning-textarea>
+        <div slot="footer">
+                <lightning-button variant="neutral" class="slds-m-left_x-small" label="Cancel" onclick={closeAction}></lightning-button>
+                <lightning-button variant="brand" class="slds-m-left_x-small" label="Submit" onclick={handleSubmitClick} disabled={submitDisabled}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+    <template if:true={loaded}>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </template>
+</template>

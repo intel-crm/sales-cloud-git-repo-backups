@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Cannot_delete_Renewal_linked_records</name>
+        <label>Cannot delete Renewal linked records</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <customErrorMessages>
+            <errorMessage>You cannot modify this record since it is created through Renewal.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <description>Restrict deletion of linked records that are created through Renewal.</description>
+    <environments>Default</environments>
+    <interviewLabel>Restrict Deletion for Renewal records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Restrict Deletion for Renewal records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Cannot_delete_Renewal_linked_records</targetReference>
+        </connector>
+        <filterFormula>ISPICKVAL({!$Record.CRM_Link_Reason__c},&apos;VBS Original -&gt;VBS Renewal&apos;) || ISPICKVAL({!$Record.CRM_Link_Reason__c},&apos;SW &amp; Services Original -&gt;SW &amp; Services Renewal&apos;)</filterFormula>
+        <object>CRM_Linked_Opportunities__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

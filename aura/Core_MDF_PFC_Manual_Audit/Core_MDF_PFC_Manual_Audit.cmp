@@ -1,0 +1,124 @@
+<aura:component controller="Core_MDF_PFC_ManualAudit" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	    
+    <aura:attribute name="showManualAudit" type="Boolean" default="false"/>
+    <aura:attribute name="accessErrorMsg" type="String" default=""/>
+    <aura:attribute name="fadeTimeout" type="Integer" default="5000"/>
+    <aura:attribute name="errorMsg" type="String" access="public"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="isPICReviewCompleted" type="boolean" default="false"/>
+    <!--Spinner attribute-->
+    <aura:attribute name="Spinner" type="boolean" default="false"/>    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.isRefreshed}" />
+
+    <aura:attribute name="isCustomComp" type="boolean" default="false"/>
+    <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/>
+    
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.Spinner}">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>
+            </div>
+        </aura:if>
+
+        <aura:if isTrue="{!v.isCustomComp}"> 
+            <div class="slds-modal__header custom-header">
+                <h2 class="slds-text-heading_medium">{!$Label.c.Core_MDF_Manual_Audit}</h2>
+            </div>
+        </aura:if>
+        
+        <!-- <lightning:layout class="slds-page-header slds-page-header-object-home" > -->
+        <lightning:icon iconName="utility:warning" alternativeText="Warning!" variant="warning"/>
+        <aura:if isTrue="{!v.showManualAudit}"> 
+            <div>
+                <div class="slds-card">
+                    <div class="slds-p-around_medium slds-align_absolute-center">{!$Label.c.Core_MDF_Manual_Audit_Confirmation_Message}</div>
+                </div>
+                <div class="slds-card">
+                    <div class="slds-p-around_medium slds-align_absolute-center">
+                        <lightning:button aura:id="yesButton" variant="brand" label="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" title="{!$Label.c.Core_MDF_Cancel_Claim_Yes}" onclick="{!c.manuallyAuditClaim }"/>
+                        <lightning:button aura:id="noButton" variant="neutral" label="{!$Label.c.Core_MDF_Cancel_Claim_No}" title="{!$Label.c.Core_MDF_Cancel_Claim_No}" onclick="{!c.closeModel }"/>   
+                    </div>
+                </div>
+            </div>   
+
+            <aura:if isTrue="{!v.isCustomComp}"> 
+                <footer class="slds-modal__footer">
+                    <div class="slds-grid slds-grid_align-end">
+                        <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Button}" title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeModel}" class="slds-m-left_x-small"/>
+                    </div>
+                </footer>
+            </aura:if>
+            
+            
+            <!--    </lightning:layout> -->
+            <aura:set attribute="else">
+                <div class = "slds-align_absolute-center">
+                    <lightning:card title="" class="{!if(v.accessErrorMsg != '' ,'slds-show slds-text-heading_small','slds-hide')}">
+                        {!v.accessErrorMsg}
+                    </lightning:card>
+                </div>
+            </aura:set> 
+        </aura:if>
+    </div>
+    <lightning:layoutItem>
+        
+        <div class="slds-hide" aura:id="toast" style="height:4rem;">
+            <div class="slds-notify_container slds-is-absolute ">
+                <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
+                    <span class="slds-assistive-text">{!$Label.c.Core_MDF_Success}</span>
+                    
+                    <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" >
+                        <c:svg class="slds-icon slds-icon_small" aria-hidden="true"
+                               xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#success'}" /> 
+                        
+                    </span>
+                    <aura:if isTrue="{!v.isPICReviewCompleted}">
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small ">{!$Label.c.Core_MDF_Manual_Audit_Successful}</h2>
+                        </div>
+                        <aura:set attribute="else">
+                            <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small ">{!$Label.c.Core_MDF_ClaimSelectedForManualAuditToastMsg}</h2>
+                            </div>
+                        </aura:set> 
+                    </aura:if>
+                    <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}" 
+                            onclick="{!c.CloseToast}">
+                        <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
+                               xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                    </button>
+                </div>
+            </div>
+        </div>            
+    </lightning:layoutItem>
+    <lightning:layoutItem>
+        <div class="slds-hide" aura:id="errorToast" style="height: 4rem;">
+            <div class="slds-notify_container slds-is-absolute">
+                <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">{!$Label.c.Core_MDF_Error}</span>
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" >
+                        <c:svg class="slds-icon slds-icon_small" aria-hidden="true"
+                               xlinkHref="{!$Resource.Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#error'}" /> 
+                        
+                        
+                    </span>
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small ">{!v.errorMsg}</h2>
+                    </div>
+                    <button class="slds-button slds-button_icon slds-notify__close" title="{!$Label.c.Core_MDF_Close}"
+                            onclick="{!c.CloseErrorToast}"
+                            >
+                        <c:svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"
+                               xlinkHref="{!$Resource.	Core_MDF_SLDS262 + '/icons/utility-sprite/svg/symbols.svg#close'}" /> 
+                        
+                        
+                        <span class="slds-assistive-text">{!$Label.c.Core_MDF_Close}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </lightning:layoutItem>
+</aura:component>

@@ -1,0 +1,22 @@
+.sectionHeading {
+	color: #555555;
+	font-size: 22px;
+}
+
+.subHeading {
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-left: 1.7rem;
+}
+
+.subHeadingComp {
+	font-size: 22px;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.dataTableScale {
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 400; */
+}

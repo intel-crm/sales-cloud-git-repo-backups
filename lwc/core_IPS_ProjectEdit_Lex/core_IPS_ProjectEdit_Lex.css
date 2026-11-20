@@ -1,0 +1,18 @@
+.header {
+    background: #41619B;
+    color: white;
+    padding: 10px 30px;
+}
+
+.accessMsg{
+    margin-left:30px;
+    margin-right:20px;
+    font-size: 15px;
+}
+
+.privilegeMsg{
+    margin-left:30px;
+    font-size: 22px;
+    font-weight:bold;
+
+}

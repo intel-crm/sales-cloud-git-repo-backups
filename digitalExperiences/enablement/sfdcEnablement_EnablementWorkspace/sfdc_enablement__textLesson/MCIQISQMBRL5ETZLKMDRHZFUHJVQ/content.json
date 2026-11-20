@@ -1,0 +1,30 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Initial Customer Discovery",
+  "contentBody" : {
+    "description" : "Understand the customer's AI initative and goals. Define the customers future state & what is the driving need for change. Identify the customer's workload",
+    "sections" : [ {
+      "content" : "<div>The first step of the ADDS methodology is Assess. Here are some questions to frame your initial approach with your customer to determine what a Gen AI engagement might entail.</div><div><br /></div><div><strong style=\"font-size: 13px;\"><u>Assess the opportunity with more general AI questions like the below to understand customer goals and objectives:</u></strong></div><div><br /></div><ul><li>What opportunities or business challenges do they face?</li><li>What AI analytics like machine learning or computer vision or natural language have they implemented before?</li><li>Do they want to build it themselves or buy an AI application?</li><li>Are they interested in LLM/GenAI? What use case? Customer service, summarization or other?</li><li>Are they using large AI applications requiring heavy duty training or iterative training of model(s)?</li><li>Are they wanting to improve customer service (like a chat interface)? Or is the GenAI application for product recommendation and upsell to a customer?</li><li>Is an LLM needed for internal use like summarizing their enterprise data, LLM assistant to their workforce?</li><li> Have they used tools like Chat GPT?</li></ul>",
+      "keyConcept" : "Leading questions for the Assess phase (more general AI)",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Familiarize yourself with and ask the below questions while starting to think about which of our Intel technologies would be the best product for this use case and customer.</div><div><br /></div><ol><li>Discuss our enterprise strength in Intel Xeon and Core Processors. Most AI Inference has deployed on a CPU. Assess with questions of what opportunities or business challenges do they face?</li><li>Are they interest in LLM / Gen AI? What use case? Customer service, summarization or other? Are they using large AI applications requiring heavy duty training or iterative training of model(s)? Gaudi can be a great performant in Deep Learning and Generative AI applications</li><li>Identify Visual Computing Workloads: Media streaming / Transcoding and Media Analytics / AI Inference at your customer. Flex GPU is competitive and could be a better price and TCO over competition</li></ol><div><br /></div><div>Link to detailed ADDS AI COE Primer: <a style=\"font-family: &#34;Source Sans Pro&#34;, &#34;Segoe UI&#34;, Frutiger, Helvetica, Arial; color: rgb(51, 51, 51); font-size: 14px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DC9fBCGP2fgDmGMW76JBGphfcF98\">https://intel.seismic.com/Link/Content/DC9fBCGP2fgDmGMW76JBGphfcF98</a></div>",
+      "keyConcept" : "More specific AI Assess questions and discussion topics",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Below is a template you can choose to use to keep track of your discussions with customer.</div><div><br /></div><div><img alt=\"Current State Factor Analysis\" src=\"/cms/media/MC7ARD73ASV5BYBHFYT6XIT5OTPE\" /></div>",
+      "keyConcept" : "Optional: Template to evaluate Current State Assessment Resource",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Below is a template you can choose to use to keep track of your discussions with customer.</div><div><br /></div><div><br /></div><div><img alt=\"Future State Factor Assessment\" src=\"/cms/media/MCYGRFWVECTZDOLBV6TTEP6YJ6D4\" /></div>",
+      "keyConcept" : "Optional: Template to evaluate Future State Assessment Resource",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div><a style=\"color: rgb(51, 51, 51); font-family: &#34;Source Sans Pro&#34;, &#34;Segoe UI&#34;, Frutiger, Helvetica, Arial; font-size: 14px;\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DCfCPm9XC8CGpGMCHH4Bb7BRGJqd\">https://intel.seismic.com/Link/Content/DCfCPm9XC8CGpGMCHH4Bb7BRGJqd</a></div>",
+      "keyConcept" : "Download questions list here",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 4.0
+  },
+  "urlName" : "initial-customer-discovery"
+}

@@ -1,0 +1,216 @@
+// feedback.js
+import { LightningElement, api, track, wire } from 'lwc';
+
+import communityUI from './core_MDF_External_Feedback.html';
+import internalUI from './core_MDF_Feedback.html';
+
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
+import { CurrentPageReference } from 'lightning/navigation';
+
+import submitScoreAction from '@salesforce/apex/Core_MDF_FeedbackController.submitScoreAction';
+import getQuestions from '@salesforce/apex/Core_MDF_FeedbackController.fetchRecords';
+import isExternalPortal from '@salesforce/apex/Core_MDF_FeedbackController.isCommunity';
+import getFirstLoginHistory from '@salesforce/apex/Core_MDF_FeedbackController.getFirstLoginHistory';
+
+import Core_MDF_Submit_Feedback from '@salesforce/label/c.Core_MDF_Submit_Feedback';
+import Core_MDF_Submit_Button_Label from '@salesforce/label/c.Core_MDF_Submit_Button_Label';
+import Core_MDF_Cancel from '@salesforce/label/c.Core_MDF_Cancel';
+import Core_MDF_Close from '@salesforce/label/c.Core_MDF_Close';
+import Core_MDF_Additional_Comments from '@salesforce/label/c.Core_MDF_Additional_Comments';
+import Core_MDF_Optional_Feedback from '@salesforce/label/c.Core_MDF_Optional_Feedback';
+import Core_MDF_SuccessToastTitle from '@salesforce/label/c.Core_MDF_SuccessToastTitle';
+import Core_MDF_Feedback_Success_Msg from '@salesforce/label/c.Core_MDF_Feedback_Success_Msg';
+import APPLICATION_ERROR from '@salesforce/label/c.Core_MDF_ApplicationErrorMessage';
+import Core_MDF_Strongly_Agree from '@salesforce/label/c.Core_MDF_Strongly_Agree';
+import Core_MDF_Strongly_Disagree from '@salesforce/label/c.Core_MDF_Strongly_Disagree';
+
+
+
+
+export default class Core_MDF_Feedback extends LightningElement {
+  @track isModalOpen = false;
+  @track optionalFeedback;
+  @track surveyLog;
+  @track questionList = [];
+  @track questionSets = [];
+  @track ratingMap = new Map();
+  @track isCommunity = false;
+  @track isQuestionAvailable = false;
+  @track isSubmitDisabled = true;
+  @track pageRef = '';
+
+  currentPageReference = null;
+  closeButton = Core_MDF_Close;
+  submitFeedback = Core_MDF_Submit_Feedback;
+  submitButton = Core_MDF_Submit_Button_Label;
+  cancelButton = Core_MDF_Cancel;
+  additionalComments = Core_MDF_Additional_Comments;
+  optionalFeedback = Core_MDF_Optional_Feedback;
+  stronglyAgree = Core_MDF_Strongly_Agree;
+  stronglyDisagree = Core_MDF_Strongly_Disagree;
+
+
+  render() {
+    return this.isCommunity == true ? communityUI : internalUI;
+  }
+
+  getSurveyQuestions() {
+    getQuestions().then(result => {
+      this.questionList = result;
+      if (this.questionList != undefined && this.questionList != null && this.questionList.length > 0) {
+        this.isQuestionAvailable = true;
+        this.generateQuestionSets();
+
+      }
+    })
+      .catch(error => {
+        this.showToastMessage('Error', APPLICATION_ERROR, 'error', 'sticky');
+      });
+  }
+
+  getIsCommunity() {
+    isExternalPortal().then(result => {
+      this.isCommunity = result;
+    })
+      .catch(error => {
+        this.showToastMessage('Error', APPLICATION_ERROR, 'error', 'sticky');
+      });
+  }
+
+  connectedCallback() {
+    this.getSurveyQuestions();
+    this.getIsCommunity();
+    this.getloginHistory();
+  }
+
+  @wire(CurrentPageReference)
+  getPageReferenceParameters(currentPageReference) {
+    if (currentPageReference) {
+      this.surveyLog = currentPageReference.attributes;
+      this.pageRef = currentPageReference.attributes.name;
+    }
+  }
+
+    getloginHistory() {
+      getFirstLoginHistory().then(result => {
+        console.log('Result->', result);
+        if(result){
+          // Need to show Feedback Popup only on Homepage so adding check for pageReference = Home as Home is the API Name of Homepage on community   
+          if(this.pageRef != null && this.pageRef != '' && this.pageRef == 'Home'){
+            this.isModalOpen = true;
+          }
+        }
+        
+      })
+        .catch(error => {
+          this.showToastMessage('Error', APPLICATION_ERROR, 'error', 'sticky');
+        });
+    }
+
+  generateQuestionSets() {
+    for (let index = 0; index < this.questionList.length; index++) {
+      let ratingNumbers = [];
+      ratingNumbers = this.generateRadioButtons(index + 1);
+      this.questionSets.push({
+        label: this.questionList[index].question,
+        quesOrder: this.questionList[index].order,
+        quesId: this.questionList[index].questionId,
+        radioBtn: ratingNumbers
+      });
+    }
+
+
+  }
+
+  generateRadioButtons(index) {
+    var ratingArray = [];
+    for (let counter = 1; counter <= 5; counter++) {
+
+      var radioBtn = {
+        id: 'ques' + index + '-radio' + counter,
+        name: 'ques' + index,
+        value: counter,
+        //displayLabel:'Rating'+counter
+      }
+      ratingArray.push(radioBtn)
+    }
+    return ratingArray;
+  }
+
+  rating(event) {
+    var question = event.target.name;  //question
+    var response = event.target.value; //response 
+    var data = event.target.getAttribute("data-id");  //questionId
+    var questionDetails;
+    if (question != "OptionalFeedback") {
+      questionDetails = data;
+    }
+    else {
+      questionDetails = question;
+    }
+
+    this.ratingMap.set(questionDetails, response);  // questionId / optionalFeedback to response map
+    if (this.ratingMap !== undefined && this.ratingMap !== null && this.ratingMap !== '' && this.ratingMap.size > 0) {
+      if(this.ratingMap.has(data)){
+        this.isSubmitDisabled = false;
+      }
+    }
+
+  }
+
+  openFeedbackPopup() {
+    this.isModalOpen = true;
+  }
+
+  closeFeedbackPopup() {
+    this.isModalOpen = false;
+    this.ratingMap.clear();
+    this.isSubmitDisabled = true;
+  }
+
+
+  submitAction() {
+    var questionRating = [];
+    var recordDetails;
+    var surveyMapDetails = {};
+    if (this.ratingMap !== undefined && this.ratingMap !== null && this.ratingMap !== '' && this.ratingMap.size > 0) {
+      for (const [key, value] of this.ratingMap.entries()) {
+        recordDetails = key != 'OptionalFeedback' ? key : '';
+        questionRating.push({
+          'questionId': recordDetails,
+          'rating': value
+        });
+        surveyMapDetails.pageRef = JSON.stringify(this.surveyLog);
+        surveyMapDetails.SurveyDetailsWrapperList = questionRating;
+      }
+      submitScoreAction({ surveyMap: surveyMapDetails })
+        .then(result => {
+
+          if (result != null && result != undefined) {
+            this.showToastMessage(Core_MDF_SuccessToastTitle, Core_MDF_Feedback_Success_Msg, 'success', 'sticky');
+            this.closeFeedbackPopup();
+          }
+          else{
+            this.showToastMessage('Error', APPLICATION_ERROR, 'error', 'sticky');
+          }
+        })
+        .catch(error => {
+          this.showToastMessage('Error', APPLICATION_ERROR, 'error', 'sticky');
+        });
+    }
+  }
+
+  showToastMessage(title, message, variant, mode) {
+    this.dispatchEvent(
+      new ShowToastEvent({
+        title: title,
+        message: message,
+        variant: variant,
+        mode: mode
+      })
+    );
+  }
+
+
+}

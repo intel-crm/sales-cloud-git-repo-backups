@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>Page_Header_Label</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Please enter the Rejection Reason</stringValue>
+        </value>
+    </constants>
+    <dynamicChoiceSets>
+        <name>DR_Reject_Reason</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Core_Rejection_Reason_Nm__c</picklistField>
+        <picklistObject>Core_Design_Registration__c</picklistObject>
+    </dynamicChoiceSets>
+    <interviewLabel>Reject Design Registration {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reject Design Registration</label>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>DR_Update_with_Reject_Reason</name>
+        <label>DR Update with Reject Reason</label>
+        <locationX>459</locationX>
+        <locationY>241</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>vaDRID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Design_Registration_Status_Nm__c</field>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Rejection_Comment_Txt__c</field>
+            <value>
+                <elementReference>Rejection_Comments</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Rejection_Reason_Nm__c</field>
+            <value>
+                <elementReference>Reject_Reason</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Design_Registration__c</object>
+    </recordUpdates>
+    <screens>
+        <name>DR_Rejection_Screen</name>
+        <label>DR Rejection Screen</label>
+        <locationX>459</locationX>
+        <locationY>122</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>DR_Update_with_Reject_Reason</targetReference>
+        </connector>
+        <fields>
+            <name>Page_Header</name>
+            <fieldText>{!Page_Header_Label}</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Reject_Reason</name>
+            <choiceReferences>DR_Reject_Reason</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Reject Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Rejection_Comments</name>
+            <fieldText>Rejection Comments</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>DR_Rejection_Screen</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>vaDRID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

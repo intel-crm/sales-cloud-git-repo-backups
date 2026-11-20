@@ -1,0 +1,37 @@
+<aura:component >
+    <aura:attribute name="tagline" type="string" />
+	<aura:attribute name="introSection" type="string"/>
+	<aura:attribute name="moreSection" type="string"/>
+	<aura:attribute name="displaySection" type="string"/>
+    <aura:attribute name="showMoreSection" type="boolean" default="false"/><!--Added for US600134 by Megha-->
+    <aura:attribute name="showMoreSectionforEnhanced" type="boolean" default="true"/><!--Added for US600134 by Megha-->
+	<aura:attribute name="class" type="string"/>
+	<aura:attribute name="showMore" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+	<div class="{! v.class}">
+		<aura:if isTrue="{!not(empty(v.tagline))}">
+        <h4><lightning:formattedRichText value="{!v.tagline}" disableLinkify = "true" /></h4>
+        </aura:if>
+		<lightning:formattedRichText value="{!v.displaySection}"/>
+
+		<aura:if isTrue="{! !empty(v.moreSection)}">
+			<div>
+                <aura:if isTrue="{!v.showMoreSectionforEnhanced}"><!--Added for US600134 by Megha-->
+                 <aura:if isTrue="{! !v.showMore}">
+					<a onclick="{!c.handleMoreClick}" href="" class="control">{!$Label.c.PMP_More}<lightning:icon iconName="utility:chevrondown" class="shiftUp icon-white slds-m-left_x-small" size="x-small"/></a>
+				</aura:if>
+				<aura:if isTrue="{! v.showMore}">
+					<a onclick="{!c.handleMoreClick}" href="" class="control">{!$Label.c.PMP_Show_Less}<lightning:icon iconName="utility:chevronup" class="shiftUp icon-white slds-m-left_x-small" size="x-small"/></a>
+				
+             </aura:if>
+                
+                </aura:if>
+              
+			</div>
+		
+        </aura:if>
+        
+    
+	</div>
+</aura:component>

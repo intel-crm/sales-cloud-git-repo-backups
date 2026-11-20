@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting is being used to store level 1 product ids</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Active?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Level_1_Id__c</fullName>
+        <label>Level  1 Id</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>Core Level 1 Products</label>
+    <listViews>
+        <fullName>Product_Integration</fullName>
+        <columns>NAME</columns>
+        <columns>Is_Active__c</columns>
+        <columns>Level_1_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Product Integration`</label>
+        <language>en_US</language>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

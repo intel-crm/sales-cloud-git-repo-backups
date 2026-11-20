@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP Language to Field API Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP Language to Field API Mappings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Enter Field API name here --></help>
+        <label><!-- Field API Name --></label>
+        <name>PMP_Field_APINm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Field Name here --></help>
+        <label><!-- Field Name --></label>
+        <name>PMP_Field_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Language code here --></help>
+        <label><!-- Language Code --></label>
+        <name>PMP_Language_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Object Name here --></help>
+        <label><!-- Object Name --></label>
+        <name>PMP_Object_Nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,62 @@
+<template>
+    
+    <div class="carousel-wrapper" onkeydown={handleKeydown}>
+        <div class="carousel-container" id={name} data-loading={loadingPageSpinner}>
+            <template if:true={loadingPageSpinner}>
+                <lightning-spinner alternative-text={labels.loadingPage}></lightning-spinner>
+            </template>
+            <div class="carousel-content-container" data-speed={speed}
+                ontouchstart={handleTouchStart}
+                ontouchend={handleTouchEnd}
+                onhover={handleStopAutoScroll}
+                onclick={handleStopAutoScroll}>
+                <div class="carousel-autoscroll-prescroll" lwc:dom="manual"></div>
+                <div class="carousel-content">
+                    <slot name="content" onslotchange={handleSlotChange}></slot>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-indicators-container slds-grid slds-wrap slds-p-bottom_x-large"
+            data-page-count={pageCount}
+            data-breakpoint={breakpoint.name}
+            data-keep-indicator-spacing={keepIndicatorSpacing}>
+            <div class="footer-content-left">
+                <slot name="footer-left"></slot>
+            </div>
+            <ul class="indicators slds-carousel__indicators" role="tablist">
+                <template for:each={indicators} for:item="page">
+                    <li class="slds-carousel__indicator" role="presentation" key={page.key}>
+                        <a data-page={page.page}
+                            onclick={handleChangePage}
+                            class={page.class}
+                            href="javascript:void(0);"
+                            role="tab"
+                            aria-selected={page.ariaSelected}
+                            aria-controls={page.ariaControls}
+                            title={page.title}>
+                            <span class="slds-assistive-text">{page.assistiveText}</span>
+                        </a>
+                    </li>
+                </template>
+                <template if:true={autoScroll}>
+                    <li class="autoscroll-play-pause slds-m-left_large"
+                        tabindex="0"
+                        aria-controls={name}
+                        aria-label={labels.playPause}
+                        onkeydown={handleClickAutoScrollPlayPauseAccessibility}
+                        onclick={handleClickAutoScrollPlayPause}>
+                        <lightning-icon
+                            class="slds-icon-light-gray slds-icon-size-em"
+                            icon-name={autoScrollIcon}>
+                        </lightning-icon>
+                    </li>
+                </template>
+            </ul>
+            <div class="footer-content-right">
+                <slot name="footer-right"></slot>
+            </div>
+        </div>
+    </div>
+    
+</template>

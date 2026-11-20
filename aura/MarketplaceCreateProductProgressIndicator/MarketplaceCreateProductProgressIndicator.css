@@ -1,0 +1,121 @@
+/* IPA2.0 + US TWC4497-1631 */
+/* .THIS .slds-icon-utility-success {
+    position: absolute;
+    top: -1px;
+    left: 46%;
+}
+
+.THIS .slds-icon.slds-icon-text-default {
+    fill: #00aeef;
+    width: 20px;
+    height: 20px;
+}
+
+.THIS.slds-progress-wrapper {
+    margin: 100px 0 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.THIS .progressbar {
+    display: inline-block;
+}
+
+.THIS .progressbar li {
+    list-style-type: none;
+    width: 16%;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+.THIS .progressbar li.active p {
+    padding-top: 0;
+}
+.THIS .progressbar li p {
+    color: t(darkGray);
+    padding-top: 5px;
+}
+.THIS .progressbar li.checkmark:before {
+        border: 3px solid transparent;
+}
+.THIS .progressbar li:before {
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border: 3px solid t(lightGray);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: transparent;
+    content: ' \25CF';
+    font-size: 0px;
+}
+.THIS .progressbar li:after {
+    width: 80%;
+    height: 4px;
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -39%;
+    background-color: t(lightGray);
+}
+.THIS .progressbar li.progressbar-success:after {
+    background-color: #00aeef;
+}
+.THIS .progressbar li:first-child:after {
+    content: none;
+}
+.THIS .progressbar li.active:before {
+    background-color: #00aeef;
+    margin-top: -5px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    transform: translateX(2px);
+}
+
+.THIS.slds-progress_vertical .slds-progress__item_content {
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .THIS .slds-icon-utility-success {
+        position: absolute;
+        top: -5px;
+        left: -4px;
+    }
+
+    .THIS .slds-progress__item.slds-is-active .slds-progress__marker {
+        box-shadow: none;
+        background: t(lightGray);
+        border-color: t(lightGray);
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 0.5em;
+        transform: translateX(-3px);
+    }
+
+    .THIS .slds-progress__item .slds-progress__marker {
+        border-color: t(lightGray);
+        background: t(lightestGray);
+    }
+
+    .THIS .slds-progress__item .slds-progress__marker.checkmark {
+        border-color: transparent;
+        background: transparent;
+    }
+
+    .THIS.slds-progress_vertical .slds-progress__item.slds-is-active:before {
+        background-color: t(lightGray);
+    }
+
+    .THIS.slds-progress_vertical .slds-progress__item:before {
+        bottom: 80%;
+    }
+    .THIS.slds-progress_vertical .slds-progress__item:after {
+        top: 80%;
+    }
+} */

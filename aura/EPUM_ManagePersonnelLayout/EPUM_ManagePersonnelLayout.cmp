@@ -1,0 +1,87 @@
+<aura:component
+                implements="forceCommunity:layout"
+                description="IPA Web Benefits Layout with built in sticky tabs"
+                access="global"
+                >
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab3" type="Aura.Component[]" required="false"></aura:attribute>
+    
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1white" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade5" type="Aura.Component[]" required="false" />
+    <!-- Uses Static Resource For Styleshseets: IpaResources -->
+    
+    <ltng:require styles="{!join(',',
+                          $Resource.IpaResources + '/styles/animations.css',
+                          $Resource.IpaResources + '/styles/alerts.css',
+                          $Resource.IpaResources + '/styles/buttons.css',
+                          $Resource.IpaResources + '/styles/colors.css',
+                          $Resource.IpaResources + '/styles/force-overrides.css',
+                          $Resource.IpaResources + '/styles/headings.css',
+                          $Resource.IpaResources + '/styles/icons.css',
+                          $Resource.IpaResources + '/styles/inputs.css',
+                          $Resource.IpaResources + '/styles/links.css',
+                          $Resource.IpaResources + '/styles/responsive.css',
+                          $Resource.IpaResources + '/styles/tabs.css',
+                          $Resource.IpaResources + '/styles/typography.css',
+                          $Resource.IpaResources + '/styles/variables.css'
+                          )}" />
+    
+    <div>
+        
+        <c:IntelHeader/>
+        
+        <div class="marquee">
+            {!v.marquee}
+        </div>
+        <div class="container">
+            <div class="contentPanel">
+                {!v.main}
+            </div>
+        </div>      
+        <div class="bg-blade-even">
+            {!v.mainFullWidth}
+        </div>
+        <div class="bg-blade-odd">
+            <div class="container">
+                {!v.blade1}
+            </div>
+        </div>
+        <div class="bg-white">
+            <div class="container">
+                {!v.blade1white}
+            </div>
+        </div>
+        <div class="bg-blade-even">
+            <div class="container">
+                {!v.blade2}
+            </div>
+        </div>
+        <div class="bg-blade-odd">
+            <div class="container">
+                {!v.blade3}
+            </div>
+        </div>
+        <div class="bg-blade-even">
+            <div class="container">
+                {!v.blade4}
+            </div>
+        </div>
+        <div class="bg-white">
+            <div class="container">
+                {!v.blade5}
+            </div>
+        </div>
+        
+        <c:IntelFooter/>
+        
+        
+    </div>
+</aura:component>

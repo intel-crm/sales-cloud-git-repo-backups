@@ -1,0 +1,76 @@
+<aura:component extends="c:MarketplaceRedux" description="Partner List Modal, that appears on desktop only" >
+    <aura:set attribute="storeName" value="Search" /><!--Added as part of code merge [09/15]-->
+	<!--<aura:attribute name="storeName" type="string" default="Search" />--><!--Commented as part of code merge [09/15]-->
+	<aura:attribute name="tags" type="object[]" default="[]" description="Partner Tagset"/>
+	<aura:attribute name="tagset" type="object" default="{}" description="Partner Tags Children" />
+
+	<aura:attribute name="tagGrouping" type="object[]" default="[]" description="Internal Component Setting "/>
+	<aura:attribute name="toggledTags" type="object" default="{}" description="Internal Component Setting "/>
+	<aura:attribute name="onclick" type="object" default="" description="Optional on Click Callback"/>
+
+	<aura:attribute name="onApplyClick" type="Object" description="Internal Component Setting "/>
+	<aura:attribute name="onCancelClick" type="Object" description="Internal Component Setting "/>
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<aura:handler name="change" value="{!v.tags}" action="{!c.handleTagsUpdate}" />
+
+	<div>
+		<div class="modalTitle marquee">
+			<span class="intel-clear-pro">{!$Label.c.PMP_L2_Tab_Partners}&nbsp;({!v.tagset.count})</span> <!-- mgdanies: force migration update 5/4/20 -->
+			<a class="close" href="#" aria-label="{!$Label.c.Core_PMP_Close}" onclick="{!c.handleToggleOverlay}"><lightning:icon class="icn" iconName="utility:close" size="medium" /></a>
+		</div>
+		<div class="modalNav">
+			<aura:iteration items="{!v.tagGrouping}" var="tagGroup" indexVar="i">
+				<aura:if isTrue="{! !empty(tagGroup.tags)}">
+					<a class="jumpLinks" data-jump-id="{!tagGroup.id}" onclick="{! c.handleJumpScroll}">{!tagGroup.label}</a>
+					<aura:set attribute="else">
+						<span class="jumpLinks">{!tagGroup.label}</span>
+					</aura:set>
+				</aura:if>
+                <aura:if isTrue="{!tagGroup.separator}"><span class="separator">{!tagGroup.separator}</span></aura:if><!--Added as part of code Merge [9/20]--> 
+			</aura:iteration>
+		</div>
+		<div class="modalBody" aura:id="modalBody">
+			<aura:if isTrue="{! !empty(v.tagGrouping)}">
+				<aura:iteration items="{!v.tagGrouping}" var="tagGroup" indexVar="i">
+					<aura:if isTrue="{! !empty(tagGroup.tags)}">
+						<div class="heading heading-24" aura:id="jumpHeading"  id="{!'jump-link-'+tagGroup.id}" data-jump-id="{!tagGroup.id}">{!tagGroup.label}</div>
+						<div class="sectionBody" aura:id="{!'jump' + tagGroup.id}">
+							<lightning:layout class="fill-height" multipleRows="true">
+
+								<aura:iteration items="{!tagGroup.tags}" var="item" indexVar="i">
+									<lightning:layoutItem size="4" >
+										<c:MarketplaceSearchContextualFilter
+												id="{!item.value}"
+												name="{!item.label}"
+												count="{!item.count}"
+												children="{!item.children}"
+												selectedList="{!v.state.selectedDraftFilters}"
+												selectedListId="{!v.tagset.name}"
+												applyToDraft="true"
+												display="checkbox"
+											/>
+									</lightning:layoutItem>
+								</aura:iteration>
+							</lightning:layout>
+						</div>
+					</aura:if>
+
+				 </aura:iteration>
+			</aura:if>
+		</div>
+		<div class="modalFooter">
+
+			<c:IntelButton class="gray slds-m-right_medium" onclick="{! v.onCancelClick}">
+					{!$Label.c.Core_PMP_Cancel}
+			</c:IntelButton>
+			<c:IntelButton onclick="{! v.onApplyClick}">
+					{!$Label.c.PMP_Apply}
+			</c:IntelButton>
+		</div>
+	</div>
+
+
+
+</aura:component>

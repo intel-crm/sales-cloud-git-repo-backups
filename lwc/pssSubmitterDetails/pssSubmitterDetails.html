@@ -1,0 +1,58 @@
+<!--IPA2.0: US-TWC729-7976-->
+<template>
+  <!-- <template if:true={objects}>
+    <template for:each={objects} for:item="object">
+      <div key={object.key}>
+        <table>
+          <tr class="widthtd">
+            <td>{object.key}:</td>
+            <td class="widthtd">
+              <template if:true={object.isFormattedText}>
+                <lightning-formatted-rich-text value={object.value}></lightning-formatted-rich-text>
+              </template>
+              <template if:false={object.isFormattedText}>
+                <template if:true={object.isLogDetailsText}>
+                  <p class="logDetailsText">{object.value}</p>
+                </template>
+                <template if:false={object.isLogDetailsText}>
+                  <template if:true={object.isPartnerExists}>
+                    <div class="text-link" role="link" tabindex="0" onclick={navigateToPartnerPage}
+                      onkeydown={handleKeyDownOnPartner}>
+                      {object.value}
+                    </div>
+                  </template>
+                  <template if:false={object.isPartnerExists}>
+                    <template if:false={object.isSolutionShared}>
+                      <template if:false={object.activationCall}>
+                        {object.value}
+                      </template>
+                    </template>
+                  </template>
+                </template>
+                <template if:true={object.isSolutionShared}>
+                  <div class="text-link" role="link" tabindex="0" aria-label={object.value} onclick={openPopUp}
+                    onkeydown={handleKeyDown}>
+                    {object.value}
+                  </div>
+                  <template if:true={viewSharedContacts}>
+                    <c-pss-contact-share-on-solution solution-id={resultRecord.Id} onclosemodal={closeModal}>
+                    </c-pss-contact-share-on-solution>
+                  </template>
+                </template>
+              </template>
+              <template if:true={object.activationCall}>
+                <div class="text-link" role="link" tabindex="0" onclick={openActivationPopUp} onkeydown={handleKeyDown}>
+                  {object.value}
+                </div>
+                <template if:true={isActivationDetails}>
+                  <c-pss-activation-call-on-approval solution-id={resultRecord.Id} is-link="true"
+                    onactivation={closeActivationPopUp}></c-pss-activation-call-on-approval>
+                </template>
+              </template>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </template>
+  </template> -->
+</template>

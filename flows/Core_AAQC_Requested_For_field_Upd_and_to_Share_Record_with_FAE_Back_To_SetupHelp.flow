@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Ask_Commissions_Notification_to_Owner_Requester_on_New_case</name>
+        <label>Ask Commissions-Notification to Owner/Requester on New case</label>
+        <locationX>1117</locationX>
+        <locationY>576</locationY>
+        <actionName>Case.Core_AAQC_Notification_to_Owner_Requester_on_New_case</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_AAQC_Notification_to_Owner_Requester_on_New_case</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Ask_Commissions_Updating_Fields_based_on_Record_Types</name>
+        <label>Ask Commissions-Updating Fields based on Record Types</label>
+        <locationX>771</locationX>
+        <locationY>407</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Record_type_is_Core_AAQC_Case_recordType</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Ask Commissions Case</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case_Record</targetReference>
+            </connector>
+            <label>If Record type is Core AAQC Case recordType</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Core AAQC Requested For field Upd and to Share Record with FAE Back To SetupHelp {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core AAQC Requested For field Upd and to Share Record with FAE Back To SetupHelp</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Case_Record</name>
+        <label>Update Case Record</label>
+        <locationX>645</locationX>
+        <locationY>588</locationY>
+        <connector>
+            <targetReference>Core_AAQC_Case_Team_Creation</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_AAQC_Requested_for__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_AAQC_Requested_for__c</field>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Ask_Commissions_Updating_Fields_based_on_Record_Types</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Core_AAQC_Case_Team_Creation</name>
+        <label>Core AAQC Case Team Creation</label>
+        <locationX>895</locationX>
+        <locationY>605</locationY>
+        <connector>
+            <targetReference>Ask_Commissions_Notification_to_Owner_Requester_on_New_case</targetReference>
+        </connector>
+        <flowName>Core_AAQC_Case_Team_Cretion</flowName>
+        <inputAssignments>
+            <name>CaseId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>RequestedFor</name>
+            <value>
+                <elementReference>$Record.Core_AAQC_Requested_for__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>TeamRole</name>
+            <value>
+                <stringValue>Ask Commissions</stringValue>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+</Flow>

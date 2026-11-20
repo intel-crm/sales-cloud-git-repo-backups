@@ -1,0 +1,48 @@
+<template>
+
+<template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading.." size="medium" variant="brand"></lightning-spinner>
+</template>
+<template if:false={showSpinner}>
+        <div class="slds-box slds-theme_default" style="height:20%">
+                <template if:true={hasContentsToDisplay}>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right" style="border-collapse: collapse;" role="grid" cellspacing="0" >
+                                <thead>
+                                        <tr class="slds-line-height_reset">
+                                        <th class="" scope="col" style="border:1px solid;">
+                                        <div class="slds-truncate" title="Type of Records to Approve">{HOME_PAGE_DASHBBOARD_COL_HEADER1}</div>
+                                        </th>
+                                        <th class="" scope="col" style="border:1px solid;text-align:center">
+                                        <div class="slds-truncate" title="# of Records to Approve">{HOME_PAGE_DASHBBOARD_COL_HEADER2}</div>
+                                        </th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                
+                                        <template for:each={approvalRequestJson} for:item="obj">
+                                                <tr class="slds-hint-parent" style="border:1px solid;" key={obj.objectName}>
+                                                        <td data-label="Records pending for Approval" style="border:1px solid;" scope="row">
+                                                                <div class="slds-cell-wrap">{obj.objectName} </div> 
+                                                        </td>
+                                                        <td data-label="Count" style="border:1px solid;" scope="row">
+                                                                <div class="slds-text-link slds-cell-wrap" style="cursor:pointer;text-align:center"  onclick={handleNavigate}>
+                                                                        {obj.count}</div>  
+                                                        </td>
+                                                        </tr>
+
+                                        </template>
+                                                
+                                </tbody>
+                                
+                </table>       
+                </template>  
+                <template if:false={hasContentsToDisplay}>
+                        
+                        <p>{showMessage}</p> 
+                        
+                        
+                </template>
+
+        </div>
+</template>
+</template>

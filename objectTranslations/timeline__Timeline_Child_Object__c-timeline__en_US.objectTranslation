@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Timeline Child Object</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Timeline Child Objects</value>
+    </caseValues>
+    <fields>
+        <help><!-- Will determine if the data is being fetched from a related record or a delegated apex class. --></help>
+        <label><!-- Data Provider Type --></label>
+        <name>timeline__Data_Provider_Type__c</name>
+        <picklistValues>
+            <masterLabel>Apex class</masterLabel>
+            <translation><!-- Apex class --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Related Record</masterLabel>
+            <translation><!-- Related Record --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Field API Name that will be used to date and time part of the timeline. Created Date will be used as the default if this field isn&apos;t specified. --></help>
+        <label><!-- Date Field --></label>
+        <name>timeline__Date_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Object Name --></label>
+        <name>timeline__Display_Object_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use the External Key to set a fixed unique key for this record. This can be used to load data into Salesforce. --></help>
+        <label><!-- External Key --></label>
+        <name>timeline__External_Key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Common separated list of fields to display in the detail section of the timeline component. --></help>
+        <label><!-- Fields to Display --></label>
+        <name>timeline__Fields_to_Display__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter Criteria Config --></label>
+        <name>timeline__Filter_Criteria_Config__c</name>
+    </fields>
+    <fields>
+        <help><!-- Image url that represents the child object. --></help>
+        <label><!-- Icon Image Url --></label>
+        <name>timeline__Icon_Image_Url__c</name>
+    </fields>
+    <fields>
+        <help><!-- Standard Icon name (mainly used for standard objects) that have a corresponding icon at https://lightningdesignsystem.com/icons/#standard --></help>
+        <label><!-- Icon Name --></label>
+        <name>timeline__Icon_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field doesn&apos;t have a function. If you are planning to include archived activities, please refer to the documentation to implement an Apex dataprovider. --></help>
+        <label><!-- Include All Records --></label>
+        <name>timeline__Include_All_Records__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field indicates that this object isn&apos;t supported via the LWC UI API and hence will need special handling that can&apos;t use outputField LWC component. --></help>
+        <label><!-- LWC Ui Api Not Supported --></label>
+        <name>timeline__LWC_Ui_Api_Not_Supported__c</name>
+    </fields>
+    <fields>
+        <help><!-- Theme color for the child object. --></help>
+        <label><!-- Object Color --></label>
+        <name>timeline__Object_Color__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>timeline__Object__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field that denotes if a child object record is overdue. This will be used to display the record in the &quot;Upcoming and overdue&quot; section. --></help>
+        <label><!-- Overdue Field --></label>
+        <name>timeline__Overdue_Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Apex class name in case the data provider is &apos;Apex class&apos; --></help>
+        <label><!-- Provider Apex Classname --></label>
+        <name>timeline__Provider_Apex_Classname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reference Field Name --></label>
+        <name>timeline__Reference_Field_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the relationship for the child object. --></help>
+        <label><!-- Relationship Name --></label>
+        <name>timeline__Relationship_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- A field to hold the fields to display on sub title --></help>
+        <label><!-- Sub Title Fields --></label>
+        <name>timeline__Sub_Title_Fields__c</name>
+    </fields>
+    <fields>
+        <help><!-- A label that goes in front of the sub title field --></help>
+        <label><!-- Subtitle Label --></label>
+        <name>timeline__Subtitle_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timeline Configuration --></label>
+        <name>timeline__Timeline_Configuration__c</name>
+        <relationshipLabel><!-- Timeline Child Objects --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Field that will be used as the title of the activity timeline. --></help>
+        <label><!-- Title Field --></label>
+        <name>timeline__Title_Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determine the behaviour of the hyperlink when displaying the timeline. --></help>
+        <label><!-- Title link Navigate to --></label>
+        <name>timeline__Title_link_Navigate_to__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Record Detail</masterLabel>
+            <translation><!-- Record Detail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Where Clause --></label>
+        <name>timeline__Where_Clause__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Object Color required with Icon Image --></errorMessage>
+        <name>timeline__Object_Color_required_with_Icon_Image</name>
+    </validationRules>
+</CustomObjectTranslation>

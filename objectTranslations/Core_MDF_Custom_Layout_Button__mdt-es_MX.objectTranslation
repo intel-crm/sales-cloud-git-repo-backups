@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Custom Layout Button --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Button Name --></label>
+        <name>Core_MDF_Button_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Cancel Campaign</masterLabel>
+            <translation>Cancelar campaña</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancel Claim</masterLabel>
+            <translation>Cancelar reclamación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Owner</masterLabel>
+            <translation><!-- Change Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clone</masterLabel>
+            <translation>Clon</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clone Claim</masterLabel>
+            <translation>Clonar reclamación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close</masterLabel>
+            <translation>Cerrar</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete PIC Review</masterLabel>
+            <translation><!-- Complete PIC Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete Payment Clearance Processing</masterLabel>
+            <translation><!-- Complete Payment Clearance Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Activity</masterLabel>
+            <translation>Crear actividad</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Claim</masterLabel>
+            <translation>Crear reclamación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edit</masterLabel>
+            <translation>Modificar</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Claim</masterLabel>
+            <translation>Retener reclamación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual Audit</masterLabel>
+            <translation><!-- Manual Audit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notify Partner</masterLabel>
+            <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release Hold</masterLabel>
+            <translation>Liberar retención</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reopen for Claiming</masterLabel>
+            <translation>Reabrir para reclamación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submit For Approval</masterLabel>
+            <translation>Enviar para su aprobación</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submit For PIC</masterLabel>
+            <translation>Enviar para PIC</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submit for Payment Clearance</masterLabel>
+            <translation>Enviar para Autorización de pago</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Button Type --></label>
+        <name>Core_MDF_Button_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>LightningComponent</masterLabel>
+            <translation><!-- LightningComponent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update a Record</masterLabel>
+            <translation><!-- Update a Record --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Filter Criteria Field --></label>
+        <name>Core_MDF_Filter_Criteria_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation><!-- Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundClaim</masterLabel>
+            <translation><!-- PartnerFundClaim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PartnerFundRequest</masterLabel>
+            <translation><!-- PartnerFundRequest --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_Name_nm__c</name>
+        <picklistValues>
+            <masterLabel>Campaign</masterLabel>
+            <translation>Campaña</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim</masterLabel>
+            <translation><!-- Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Marketing Activity</masterLabel>
+            <translation>Actividad de marketing conjunto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outcome-Based Campaign</masterLabel>
+            <translation>Campaña basada en resultados</translation>
+        </picklistValues>
+    </fields>
+    
+</CustomObjectTranslation>

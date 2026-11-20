@@ -1,0 +1,123 @@
+.messaging-container {
+  background: var(--white, white);
+  border-bottom: 1px solid var(--lightestGray, #f7f7f7);
+  display: block;
+  padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+}
+
+.messaging-heading span:first-child {
+  flex: 1;
+}
+
+.chat-accordion {
+  color: var(--classic-blue);
+  padding: .5rem .5rem .75rem .5rem;
+}
+
+.messaging-container[data-collapsed="true"] .messaging-heading {
+  padding-bottom: 0;
+}
+
+.messaging-container[data-collapsed="true"] .chat-accordion {
+  transform: rotate(180deg);
+}
+
+.messaging-container[data-collapsed="true"] .messaging-collapse {
+  display: none;
+}
+
+lightning-spinner {
+  opacity: .5;
+}
+
+.chat-container {
+  border: 1px solid var(--lightGray, #e9e9e9);
+  height: 15.5rem;
+  margin-bottom: .75rem;
+  overflow-y: auto;
+  padding-bottom: .5rem;
+  position: relative;
+}
+
+.message-history {
+  background: var(--carbon--tint3, #f7f7f7);
+  display: block;
+  padding: .5rem;
+  text-align: center;
+}
+
+.message-history::before {
+  font-size: 1.2rem;
+}
+
+.message-history[data-enabled="false"] {
+  pointer-events: none;
+  --link: var(--gray, #959595);
+  --linkHover: var(--gray, #959595);
+}
+
+/* Chat (SLDS Overrides) */
+.chat-msg-txt-inbound,
+.chat-event {
+  color: var(--darkGray, #262626);
+}
+
+.chat-msg-txt-outbound {
+  background: var(--blue, #0071c5);
+}
+
+.chat-msg-li-outbound {
+  padding-left: 1rem;
+}
+
+.chat-msg-li-inbound {
+  padding-right: 1rem;
+}
+
+.chat-body,
+.chat-msg-meta {
+  margin-left: 0;
+}
+
+.chat-msg-txt-inbound {
+  /* Added as part of US613071 */
+  background-color: var(--lightestGray, #f7f7f7);
+}
+
+.chat-msg-li-inbound + .chat-msg-li-inbound,
+.chat-msg-li-outbound + .chat-msg-li-outbound {
+  margin-top: 1rem;
+}
+
+.chat-input {
+  flex: 1 1 auto;
+  padding-right: 1.25rem;
+}
+
+.slds-chat-message__text,
+.chat-event,
+.slds-chat-message__meta {
+  font-size: .875rem; /* accessibility action item */
+}
+
+@media only screen and (min-width: 768px) {
+  .chat-accordion {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .messaging-container {
+    padding: 1.25rem 1.25rem .75rem 1.25rem;
+  }
+
+  .chat-input-container {
+    flex-wrap: wrap;
+  }
+
+  .chat-input,
+  .chat-input-container lightning-button {
+    flex: 0 0 100%;
+    padding: 0 0 .75rem 0;
+  }
+}

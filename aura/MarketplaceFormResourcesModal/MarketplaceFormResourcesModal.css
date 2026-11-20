@@ -1,0 +1,160 @@
+.THIS .create-offering a.close {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.THIS .slds-modal {
+    position: absolute;
+}
+
+.THIS .create-offering a .slds-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.THIS .create-offering a .slds-icon use {
+    fill: t(white);
+}
+
+.THIS .slds-modal__header {
+    background-color: t(darkBlue);
+    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v3.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.THIS .slds-modal__header h2 {
+    color: t(white);
+    font-size: 40px;
+}
+
+.THIS .slds-modal__content {
+    background-color: t(white);
+    padding-top: 4rem;
+    position: relative;
+    scroll-behavior: smooth;
+    height: calc(80vh - 80px);
+    overflow: auto;
+}
+
+.THIS .slds-modal__content p {
+    font-size: 16px;
+    font-weight: 200;
+    margin: 10px 20px;
+}
+
+.THIS .resource-wrapper label {
+    font-size: 16px;
+    padding-top: 20px;
+}
+
+.THIS .resource-wrapper label span {
+    color: t(darkGray);
+}
+
+.THIS .slds-modal__content span {
+    color: t(red);
+}
+
+.THIS .slds-modal__container {
+    /* display: block;
+    width: 90%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: 0px auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    top: 20px;
+    right: 0; */
+    display: block;
+    height: 80vh;
+    padding: 0;
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    overflow:hidden;
+    z-index: 5555;
+    transition: 0.3s ease-out;
+    transform: translate(0);
+    max-width: unset;
+    min-width: unset;
+}
+
+.THIS .slds-modal__container .button-wrapper {
+    text-align: right;
+}
+
+.THIS .horizontal-border {
+    border: 1px solid t(lightGray);
+    margin: 30px 0;
+}
+
+.THIS .horizontal-border:first-child {
+    margin: 0 0 30px 0;
+}
+
+.THIS .horizontal-border:only-child {
+    margin: 30px 0;
+}
+
+.THIS .delete-wrapper {
+    float: right;
+    padding-right: 10px;
+}
+
+.THIS .delete-wrapper .slds-icon {
+    width: 16px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.THIS .cISGFormInputText .slds-form-element {
+    margin-left: 0;
+}
+
+.THIS .input-url {
+    padding-left: 25px;
+}
+
+.THIS .resource-button-wrapper {
+    display: inline-block;
+}
+
+@media only screen and (max-width: 768px) {
+    .THIS .slds-modal__header {
+        background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v3.jpg');
+    }
+
+    .THIS .input-url {
+        padding-left: 0px;
+    }
+
+    .THIS .slds-modal__container {
+        height: 100vh;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        top: 0;
+        padding: 0;
+    }
+
+    .THIS .slds-modal__content {
+        height: calc(100vh - 80px);
+    }
+    
+    .THIS .horizontal-border-light {
+        border: 1px solid t(veryLightGray);
+        margin: 30px 0;
+    }
+
+    .THIS .slds-modal__content p {
+        margin-bottom: 0;
+    }
+}

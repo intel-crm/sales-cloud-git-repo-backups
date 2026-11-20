@@ -1,0 +1,72 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "38044af2-4852-435e-a25f-9063be4211d4",
+  "label" : "ExperianceBundle",
+  "regions" : [ {
+    "id" : "7925f001-def5-4ded-a926-c01408cdfda4",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Pricing_Quote_Comments",
+      "id" : "53b2afad-abca-444a-85b8-850fb5495d90",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:Pricing_QuoteLineDetails_Component",
+      "id" : "da21fc67-3ff3-4f3b-ae2e-c5c390d247fd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "60ac1cd1-a585-439f-a13d-f773e7d7dc20",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Pricing_TermsAndCondition",
+      "id" : "b9ea35d6-11b3-476a-8b20-a1ca0b5f8e1b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:Pricing_QuoteLineDetails_Component",
+      "id" : "c88f220e-2a06-4dec-8cf1-0606b0884a4b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4f4fd844-27dc-4175-aeb4-6dc6567953ec",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "dbf9bfd5-ca34-41d9-9b28-d5b3b3c34e26",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "ExperianceBundle"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "87cf5680-1689-4108-b42c-16fb12b3b695",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "99f171e2-4ecd-43e1-938a-eada88431eb9",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-experiancebundle"
+}

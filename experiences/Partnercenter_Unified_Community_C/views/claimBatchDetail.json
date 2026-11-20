@@ -1,0 +1,81 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "60e07316-9ea4-458e-8a16-30f7593f105f",
+  "label" : "Claim Batch Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "be61ae03-2535-4d13-8297-16d7a6ae6dfa",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9d62c49e-6cce-4214-a7f6-17e0eaa218e4",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "5a113883-57d1-487c-9500-e66f20976a56",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a3fdfaff-96bd-4e61-9864-a86b9e13087c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "0c7b99ff-d4a2-41f5-969d-01d95b4c38eb",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1bef0ed6-1366-4be5-8ffa-e6fe00ca9172",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9c8fca3b-907c-4634-a585-c5b7971311cc",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_MDF_BulkClaimRefreshMessage",
+      "id" : "8992b0aa-985a-43db-b5eb-87825029054d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "relatedListApiName" : "Claim_Batch_Stage__r",
+        "relatedListComponentOverride" : "ADVGRID",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:responsiveRelatedListSingle",
+      "id" : "c393c884-f53f-4477-8f7a-f531956e481e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8a7de047-e9b4-46ab-b369-7dc57469807d",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a4O"
+}

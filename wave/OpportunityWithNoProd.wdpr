@@ -1,0 +1,879 @@
+{
+  "version" : "63.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ForecastCategory", "ForecastCategoryName", "Id", "AccountId", "Name", "Description", "StageName", "Amount", "Probability", "CloseDate", "Type", "OwnerId", "LastViewedDate", "LastReferencedDate", "PartnerAccountId", "ContractId", "Core_Consumption_Market__c", "Core_Opportunity_ID__c", "Core_Product_Application__c", "Core_Product_Segment__c", "Core_Technical_Owner__c", "Core_Product_Count__c", "Core_Opportunity_Owner__c", "Core_Opportunity_Type__c", "Core_Push_Counter__c", "Core_Past_Due__c", "Core_Sales_Groups__c", "Core_Opportunity_Coverage_Nm__c", "Core_Coverage_Type_Nm__c", "Core_At_Risk__c", "Core_Exclude_from_Confidence__c", "Core_Low_pipeline_confidence__c", "Core_Opp_Strategic_Opportunity__c", "Opportunity_Focus__c", "Core_VBS_Status__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Opportunity",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Opportunity"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Core_Vertical_Market__c", "Id", "OpportunityId", "SortOrder", "Product2Id", "ProductCode", "Name", "Core_At_Risk_Status__c", "Core_KPI_Date__c", "Core_KPI_Total_Price__c", "Core_Product_Type__c", "Core_Status__c", "Core_KPI_Product_Group__c", "Core_BU_Short_Name__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "OpportunityLineItem",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "OpportunityLineItem"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "FORMULA17", "FORMULA3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "op",
+        "rightKeys" : [ "OpportunityId" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "FORMULA15" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityWithNoProd",
+          "name" : "OpportunityWithNoProd",
+          "folderName" : "Pipeline_Management"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "JOIN0", "LOAD_DATASET2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "AccountId" ],
+        "rightQualifier" : "Account",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "Industry", "OwnerId", "Core_Account_ID__c", "Core_Sales_Groups__c", "Core_Unified_Global_Customer_Name__c", "Core_Unified_Intermediate_Customer_Name__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Account",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Account"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET2", "LOAD_DATASET3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "RIGHT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Partner",
+        "rightKeys" : [ "Core_Partner__c" ]
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Name", "Core_Opportunity__c", "Core_Partner__c", "Core_Partner_Role__c", "Core_Partner_Type__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Opportunity_Partner__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Opportunity_Partner__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "JOIN4", "JOIN2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Partner",
+        "rightKeys" : [ "Partner.Core_Opportunity__c" ]
+      }
+    },
+    "FORMULA0" : {
+      "action" : "formula",
+      "sources" : [ "JOIN6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "sales_group",
+          "label" : "sales_group",
+          "formulaExpression" : "(case\r\n      when contains(upper(\"Account.Core_Sales_Groups__c\"), 'INDIA')\r\n      then 'India'\r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'EMEA') \r\n      then 'EMEA'\r\n      when \"Account.Core_Sales_Groups__c\" = 'Global Solutions & Services Sales Group' then 'GSS'\r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'APJ') then 'APJ' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'Americas' ) then 'Americas' \r\n      when startsWith(\"Account.Core_Sales_Groups__c\", 'PRC') then 'PRC' \r\n      else 'Other'\r\nend)\r\n",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA6" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "ProductCodeName",
+          "label" : "ProductCodeName",
+          "formulaExpression" : "upper(\"Product2.Core_Code_Name__c\")",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA7" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA6" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Opportunity_Focus",
+          "label" : "Opportunity_Focus",
+          "formulaExpression" : "case \r\n    when Opportunity_Focus__c is null\r\n    then 'Other'\r\n    else\r\n    Opportunity_Focus__c\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA9" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA7" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "strategic_opportunity",
+          "label" : "strategic_opportunity",
+          "formulaExpression" : "case \r\n    when Core_Opp_Strategic_Opportunity__c = 'true'\r\n    then 'true'\r\n    else\r\n    'false'\r\nend",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA10" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA11" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy",
+          "label" : "unhealthy",
+          "formulaExpression" : "case \r\n    when Core_Product_Count__c = 0\r\n    then 1\r\n    when StageName = 'Qualify' || StageName = 'Define' then 1\r\n    when Core_Past_Due__c = 'true' and StageName in ('Define','Design','Develop','Group','Qualify') then 1 \r\n    when Core_Push_Counter__c > 3 and \"OpportunityProducts.Opportunity.CreatedDate\" >= '2023-01-01' then 1\r\n    else\r\n    0\r\nend",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA11" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA9" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_noproducts",
+          "label" : "unhealthy_noproducts",
+          "formulaExpression" : "case \r\n    when Core_Product_Count__c = 0 \r\n    then 1\r\n    else\r\n    0\r\nend",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA12" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA10" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_stage",
+          "label" : "unhealthy_stage",
+          "formulaExpression" : "case \r\n    when StageName = 'Qualify' or StageName = 'Define' then 1 \r\n    else\r\n    0\r\nend",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA13" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA12" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_pastdue",
+          "label" : "unhealthy_pastdue",
+          "formulaExpression" : "case \r\n    when Core_Past_Due__c = 'true' and StageName in ('Define','Design','Develop','Group','Qualify')\r\n    then 1\r\n    else\r\n    0\r\nend",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA14" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA13" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "NUMBER",
+          "name" : "unhealthy_pushes",
+          "label" : "unhealthy_pushes",
+          "formulaExpression" : "case \r\n    when Core_Push_Counter__c > 3 and \"OpportunityProducts.Opportunity.CreatedDate\" >= '2023-01-01'\r\n    then 1\r\n    else\r\n    0\r\nend",
+          "precision" : 1,
+          "scale" : 0,
+          "defaultValue" : "0"
+        } ]
+      }
+    },
+    "FORMULA15" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA14" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_mmddyyyy",
+          "label" : "CloseDate_mmddyyyy",
+          "formulaExpression" : "concat(string(substr(CloseDate, 6, 2)), '/',string(substr(CloseDate, 9, 2)), '/' ,string(substr(CloseDate, 1, 4)))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA1" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_KPI_Date__c_Quarte",
+          "label" : "Core_KPI_Date__c_Quarter",
+          "formulaExpression" : "string(quarter(Core_KPI_Date__c))",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA2" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA1" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "Core_KPI_Date__c_Yea",
+          "label" : "Core_KPI_Date__c_Year",
+          "formulaExpression" : "string(year(Core_KPI_Date__c))",
+          "precision" : 255,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA3" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA2" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CoreKPIDateYearQuarter",
+          "label" : "CoreKPIDateYearQuarter",
+          "formulaExpression" : "concat(Core_KPI_Date__c_Yea,string('0'),Core_KPI_Date__c_Quarte)",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA4" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET0" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_YearNumber",
+          "label" : "CloseDate_YearNumber",
+          "formulaExpression" : "string(year(CloseDate))",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA5" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA4" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_YearQuarter",
+          "label" : "CloseDate_YearQuarter",
+          "formulaExpression" : "concat(string(year(CloseDate)), string('0'), string(quarter(CloseDate)))\r\n",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA16" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA5" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_MonthNumber",
+          "label" : "CloseDate_MonthNumber",
+          "formulaExpression" : "string(month(CloseDate))",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "FORMULA17" : {
+      "action" : "formula",
+      "sources" : [ "FORMULA16" ],
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "CloseDate_DayNumber",
+          "label" : "CloseDate_DayNumber",
+          "formulaExpression" : "string(day(CloseDate))",
+          "precision" : 10,
+          "defaultValue" : ""
+        } ]
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "JOIN1", "LOAD_DATASET4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "OwnerId" ],
+        "rightQualifier" : "User",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Username", "Name", "Core_Manager__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "LOAD_DATASET5" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "op.Product2Id" ],
+        "rightQualifier" : "Product2",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "ProductCode", "Core_Code_Name__c", "Core_Product_Family__c", "Core_Product_Type__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Product2",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Product2"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN6" : {
+      "action" : "join",
+      "sources" : [ "JOIN5", "LOAD_DATASET6" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id", "op.Product2Id", "op.Id" ],
+        "rightQualifier" : "OpportunityProducts",
+        "rightKeys" : [ "OpportunityId", "Product2Id", "Id" ]
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Opportunity.Core_Pushes__c", "FiscalKPIDate.fiscalmonthnumber", "Opportunity.TeamMembersNoOwners.User.Manager.ManagerId", "Opportunity.RecordTypeId", "Opportunity.AccountTeamMember.OpportunityAccessLevel", "Opportunity.Core_Cellular_Reqs__c", "Opportunity.TeamMembersNoOwners.UserId", "Opportunity.Core_Chipset__c", "Opportunity.Core_Wireless_Charge__c", "Opportunity.Core_WiFi__c", "Opportunity.TeamMembersNoOwners.User.Manager.Name", "CoreKPIDateQuarter", "Opportunity.Core_CPU__c", "Core_Competitor__c", "FiscalProductionDate.fiscalyearnumber", "Opportunity.AccountTeamMember.Security.Role.RolePath", "FiscalCreatedDate.fiscalmonthname", "Pipe-OppProdPartner.Core_Partner_Role__c", "Opportunity.Account.Core_Account_Legal_Name__c", "Core_Status__c", "Opportunity.TeamMembers.User.Name", "Opportunity.Core_Z_Height__c", "Opportunity.Account.Owner.Country", "Core_Design_Product_Category__c", "Core_KPI_Date__c", "Opportunity.Core_Opportunity_Team_Geo_ASMO__c", "Core_KPI_Production_Date__c", "Opportunity.Core_Operating_System__c", "Opportunity.Owner.ManagerId", "PriorStageFunnel", "Core_Operating_Systems__c", "Opportunity.Core_Form_Factor__c", "Opportunity.Core_Crystal_Ridge__c", "Opportunity.Core_Sales_Group__c", "Opportunity.Core_LAN__c", "OpportunityId", "Opportunity.LastStageChangeDate", "Opportunity.Core_Wireless_WAN__c", "Opportunity.HasOpenActivity", "Opportunity.CloseDate", "Core_Production_Claim_Date__c", "Opportunity.Account.Industry", "core_kpi_date_short", "Opportunity.Core_Geographical_Territory__c", "Opportunity.HasOverdueTask", "Opportunity.Core_IoT__c", "FiscalProductionClaimDate.dayofmonth", "Opportunity.Account.Core_Sales_Segment__c", "Opportunity.CreatedDate", "Opportunity.OwnerId", "OpportunityProductsHierarchy.TEAMMEMBER_HIERARCHY_TXT", "OpportunityProductsHierarchy.OWNER_NM", "Opportunity.TeamMembersNoOwners.User.Name", "Opportunity.Core_Sales_Groups__c", "Opportunity.AccountTeamMember.UserId", "StageDurationString", "Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "OpportunityProductsHierarchy.ID", "Id", "Opportunity.Account.DirectTerritoryRoles.Role.Roles", "Core_Risk_Priority__c", "OpportunityProductsHierarchy.TEAMMEMBER_ID", "GroupMember.UserOrGroupId", "OpportunityProductsHierarchy.OWNER_HIERARCHY_TXT_MvHierarchy", "StageFunnel", "OpportunityProductsHierarchy.TECHICALOWNER_HIERARCHY_TXT", "Opportunity.SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "Opportunity.TechOwner.Name", "Opportunity.StageFunnel", "OpportunityProductsHierarchy.TECHICALOWNER_ID", "OpportunityProductsHierarchy.TEAMMEMBER_HIERARCHY_TXT_MvHierarchy", "Opportunity.Account.Owner.Name", "Opportunity.Group.Security.UserOrGroupId", "Opportunity.TechOwner.Manager.ManagerId", "Opportunity.Security.Id", "Opportunity.Core_At_Risk__c", "Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "OpportunityProductsHierarchy.TEAMMEMBER_NM", "Product2Id", "OpportunityProductsHierarchy.ANYOFABOVE_HIERARCHY_NM", "Opportunity.AccountTeamMember.Security.Role.Roles", "Opportunity.Core_Risk_Reason__c", "Opportunity.Core_At_Risk_Created_Date__c", "Opportunity.Owner.Name", "Core_At_Risk_Status__c", "OpportunityProductsHierarchy.OWNER_HIERARCHY_TXT", "OpportunityProductsHierarchy.ANYOFABOVE_HIERARCHY_NM_MvHierarchy", "OpportunityProductsHierarchy.TECHICALOWNER_NM", "Core_Risk_Create_Date__c", "Opportunity.Core_Low_pipeline_confidence__c", "OpportunityProductsHierarchy.TECHICALOWNER_HIERARCHY_TXT_MvHierarchy", "Opportunity.Security.Role.Roles", "Opportunity.TechOwner.ManagerId", "GroupMemberRoles.Role.Roles", "OpportunityProductsHierarchy.OWNER_ID", "OpptyProductsWithModifyAllData.ModifyAllData.AssigneeId", "Opportunity.Account.ParentTerritoryRoles.Role.Roles", "Opportunity.Amount", "Opportunity.Core_Push_Counter__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityProducts",
+          "name" : "OpportunityProducts"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "Opportunity",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET1" : {
+        "label" : "OpportunityLineItem",
+        "type" : "LOAD_DATASET",
+        "top" : 252.2,
+        "left" : 112,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN0" : {
+        "label" : "Oppty",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 250.60000000000002,
+        "left" : 392
+      },
+      "OUTPUT0" : {
+        "label" : "OpportunityWithNoProd",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252,
+        "left" : 1372
+      },
+      "JOIN1" : {
+        "label" : "Account",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 392.6,
+        "left" : 532
+      },
+      "LOAD_DATASET2" : {
+        "label" : "Account",
+        "type" : "LOAD_DATASET",
+        "top" : 531.7,
+        "left" : 531.9,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN2" : {
+        "label" : "Partner",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 531.5,
+        "left" : 672.3
+      },
+      "LOAD_DATASET3" : {
+        "label" : "Core_Opportunity_Partner__c",
+        "type" : "LOAD_DATASET",
+        "top" : 671.7,
+        "left" : 672.2,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN3" : {
+        "label" : "Op",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 812
+      },
+      "TRANSFORM0" : {
+        "label" : "OpptyTrans",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 252,
+        "left" : 1232,
+        "graph" : {
+          "FORMULA0" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "sales_group"
+          },
+          "FORMULA6" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "ProductCodeName"
+          },
+          "FORMULA7" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Opportunity_Focus"
+          },
+          "FORMULA9" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "strategic_opportunity"
+          },
+          "FORMULA10" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy"
+          },
+          "FORMULA11" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_noproducts"
+          },
+          "FORMULA12" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_stage"
+          },
+          "FORMULA13" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_pastdue"
+          },
+          "FORMULA14" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "unhealthy_pushes"
+          },
+          "FORMULA15" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_mmddyyyy"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA0",
+          "target" : "FORMULA6"
+        }, {
+          "source" : "FORMULA6",
+          "target" : "FORMULA7"
+        }, {
+          "source" : "FORMULA7",
+          "target" : "FORMULA9"
+        }, {
+          "source" : "FORMULA11",
+          "target" : "FORMULA10"
+        }, {
+          "source" : "FORMULA9",
+          "target" : "FORMULA11"
+        }, {
+          "source" : "FORMULA10",
+          "target" : "FORMULA12"
+        }, {
+          "source" : "FORMULA12",
+          "target" : "FORMULA13"
+        }, {
+          "source" : "FORMULA13",
+          "target" : "FORMULA14"
+        }, {
+          "source" : "FORMULA14",
+          "target" : "FORMULA15"
+        } ]
+      },
+      "TRANSFORM1" : {
+        "label" : "Transform 1",
+        "type" : "TRANSFORM",
+        "top" : 251.89999999999998,
+        "left" : 252,
+        "graph" : {
+          "FORMULA1" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Core_KPI_Date__c_Quarter"
+          },
+          "FORMULA2" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "Core_KPI_Date__c_Year"
+          },
+          "FORMULA3" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CoreKPIDateYearQuarter"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA1",
+          "target" : "FORMULA2"
+        }, {
+          "source" : "FORMULA2",
+          "target" : "FORMULA3"
+        } ]
+      },
+      "TRANSFORM2" : {
+        "label" : "Transform 2",
+        "type" : "TRANSFORM",
+        "top" : 112.19999999999999,
+        "left" : 392,
+        "graph" : {
+          "FORMULA4" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_YearNumber"
+          },
+          "FORMULA5" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_YearQuarter"
+          },
+          "FORMULA16" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_MonthNumber"
+          },
+          "FORMULA17" : {
+            "parameters" : {
+              "type" : "BASE_FORMULA_UI"
+            },
+            "label" : "CloseDate_DayNumber"
+          }
+        },
+        "connectors" : [ {
+          "source" : "FORMULA4",
+          "target" : "FORMULA5"
+        }, {
+          "source" : "FORMULA5",
+          "target" : "FORMULA16"
+        }, {
+          "source" : "FORMULA16",
+          "target" : "FORMULA17"
+        } ]
+      },
+      "JOIN4" : {
+        "label" : "User",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 672
+      },
+      "LOAD_DATASET4" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 112.19999999999999,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN5" : {
+        "label" : "Product",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 952
+      },
+      "LOAD_DATASET5" : {
+        "label" : "Product2",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 952,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN6" : {
+        "label" : "OpportunityProducts",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 1092
+      },
+      "LOAD_DATASET6" : {
+        "label" : "OpportunityProducts",
+        "type" : "LOAD_DATASET",
+        "top" : 391.7,
+        "left" : 1092,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      }
+    },
+    "connectors" : [ {
+      "source" : "TRANSFORM2",
+      "target" : "JOIN0"
+    }, {
+      "source" : "TRANSFORM1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN2",
+      "target" : "JOIN3"
+    }, {
+      "source" : "JOIN6",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "TRANSFORM1"
+    }, {
+      "source" : "LOAD_DATASET0",
+      "target" : "TRANSFORM2"
+    }, {
+      "source" : "JOIN1",
+      "target" : "JOIN4"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN4"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN5"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN5",
+      "target" : "JOIN6"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN6"
+    } ],
+    "hiddenColumns" : [ {
+      "fieldName" : "Id",
+      "objectType" : "connectedDataset",
+      "objectName" : "SFDC_LOCAL$Opportunity"
+    } ]
+  },
+  "runMode" : "full"
+}

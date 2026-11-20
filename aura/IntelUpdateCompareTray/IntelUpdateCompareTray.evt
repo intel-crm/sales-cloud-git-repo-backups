@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Notify page of changes to footer compare tray">
+  <aura:attribute name="items" type="object[]"/>
+</aura:event>

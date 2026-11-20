@@ -1,0 +1,14 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes"></aura:component> 
+<!-- IPA2.0 + US TWC4497-1631 -->
+<!-- controller="MarketplaceCreateProductController"  extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+        <lightning:navigation aura:id="navService"/>
+        <c:MarketplaceCreateProductProgressIndicator></c:MarketplaceCreateProductProgressIndicator>
+        <div class="button-wrapper">
+            <span onclick="{!c.handleNextStep}">
+                <c:IntelButton onclick="{!c.handleNextStep}">{!$Label.c.PMP_View_All_Offerings}</c:IntelButton>
+            </span>
+            <span onclick="{!c.handleCreateNewRecord}">
+                <c:IntelButton>{!$Label.c.PMP_Createanotheroffering}</c:IntelButton>
+            </span>
+        </div>
+</aura:component> -->

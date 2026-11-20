@@ -1,0 +1,25 @@
+.sticky-content {
+  left: 50%;
+  position: fixed;
+  top: 0;
+  transform: translate3d(-5000px, 0, 0);
+  visibility: hidden;
+  z-index: var(--zIndexStandardPageHigher);
+}
+
+.sticky-content[data-full-width="true"] {
+  width: 100%;
+}
+
+.sticky-content[data-stuck="true"] {
+  transform: translate3d(-50%, 0, 0);
+  visibility: visible;
+}
+
+.main-content {
+  overflow: visible;
+}
+
+.sticky-content[data-stuck="true"] + .main-content {
+  visibility: hidden;
+}

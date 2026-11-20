@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Manager_Email__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Email__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(Account.Core_Account_Owner_Manager__c = &apos;Todd Phillips&apos;, &apos; Southeast&apos;, IF(Account.Core_Account_Owner_Manager__c = &apos;Christopher Haynes&apos;, &apos;Southwest&apos;, IF(Account.Core_Account_Owner_Manager__c = &apos;Ken Constantino&apos;, &apos;Northeast&apos;, If (Account.Core_Account_Owner_Manager__c = &apos;Tim Wood&apos;, &apos;Northwest&apos;, If (Account.Core_Account_Owner_Manager__c = &apos;Vince Curella&apos;, &apos;Telco&apos;, If (Account.Core_Account_Owner_Manager__c = &apos;Asma Aziz&apos;,&apos;Canada&apos;, IF (Account.Core_Account_Owner_Manager__c = &apos;Cormack Glass&apos;,&apos;Midwest/Mid-Atlantic&apos;, &apos;Jeff&apos;) ))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Region</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>cormack glass,Vince Curella,christopher haynes,todd phillips,tim wood,ken constantino</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>USES Accounts ALL</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>scopingRule</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

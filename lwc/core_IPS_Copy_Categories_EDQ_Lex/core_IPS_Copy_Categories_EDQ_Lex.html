@@ -1,0 +1,59 @@
+<template>
+    <div if:false={showmsg}>
+        <div class="slds-align_absolute-center headercolor" >
+            <h1 style="color:white; font-size:1.5rem;"><b>Select Supported Product to copy Categories & EDQs to</b></h1>
+        </div>
+        <div class="slds-p-around_small" style="background-color:white;">
+        <lightning-layout>
+            <lightning-layout-item class="slds-p-around_small">
+        <!-- <div class="slds-p-around_small whitecolor" > -->
+            <lightning-input type="search" onchange={spsearchbox}
+                class="slds-m-bottom_small attachmentSearch" placeholder="Search Supported Product" maxlength="70"
+                style="width: 300px;"></lightning-input>
+            </lightning-layout-item>
+            <!-- <div class="slds-align_absolute-center"> -->
+                <lightning-layout-item class="slds-align_absolute-center" >
+                <lightning-button label="Copy" onclick={copyCatEDQ} disabled={disabledCopyCat}></lightning-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <lightning-button label="Cancel" onclick={navigateToRecordPage}></lightning-button>
+            </lightning-layout-item>
+            <!-- </div>
+        </div> -->
+    </lightning-layout>
+        <div class="slds-p-around_small whitecolor"  >
+            <div if:true={switchView} style="height: 25rem;">
+                <div class="datatableheight">
+                    <lightning-datatable key-field="Id" 
+                    data={splist} max-row-selection="1"
+                    columns ={columns} onloadmore={handleLoadMore} onrowselection={handleRowActions} 
+                    min-column-width="200px" enable-infinite-loading></lightning-datatable>
+                </div>    
+            </div>
+            <div if:false={switchView} style="height: 25rem;">
+                <div class="datatableheight">
+                    <lightning-datatable key-field="Id" 
+                    data={spsearchchlist} max-row-selection="1"
+                    columns ={columns}  onrowselection={handleRowActions}
+                    ></lightning-datatable>
+                </div>    
+            </div>
+        </div>
+        <div if:true={spinner}>
+            <lightning-spinner alternative-text="Loading" size="Medium"></lightning-spinner>
+        </div>
+    </div>
+</div>
+    <div if:true={showmsg}>
+        <div class="slds-align_absolute-center headercolor" >
+                <h1 style="color:white; font-size:1.5rem;"><b>Copy Categories AND Environment Detail Questions</b></h1>
+        </div>
+        <div class="whitecolor">
+            <br/>
+            <div class="slds-align_absolute-center">
+                <lightning-button label="cancel" onclick={navigateToRecordPage}></lightning-button>
+            </div><br/>
+            <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                <h1><b>{message}</b></h1>
+            </div>
+        </div>                  
+    </div>
+</template>

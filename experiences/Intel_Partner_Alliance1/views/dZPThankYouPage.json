@@ -1,0 +1,86 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "f983257b-b73f-4dc1-acef-467b887d0916",
+  "label" : "DZPThankYouPage",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pCC_DZPThankYouPage",
+      "id" : "92dcdc91-685b-4f77-a37f-27505b636e10",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "56bc18f2-a525-442d-bb8e-185e1452624e",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "0a8153ae-7b76-414e-8fc1-79a2f5c2fade",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "eee8b266-53f1-48dc-ab3d-6223fc12ed4b",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "0633fe3b-1004-4cdd-b99f-2bb6d9f45039",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "bc73fca1-26c6-4b08-96b9-ccb7068fab72",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "764ac83d-2949-4931-8408-2d41ca9a6e0a",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "74ce82f8-69f8-4a8f-8ed3-a0667e2e8a7f",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "1fdb57c8-db2f-4ada-a1fe-84e07cffcf25",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "4f20c7c0-983a-4dad-9f8c-c40969b5a74e",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "7f6bb304-2a69-44d5-99ec-c3d4f3837a46",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "8b1e8af4-1913-4840-9229-0c6d7dc3e509",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "55006fca-fb6f-4c34-9a91-14a5acffad26",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "4d67e765-6480-4ae6-b8dd-1ad1970632ee",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "DZPThankYouPage"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d722f0ee-4097-4446-b59b-ad6219fcfe27",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6e96e4b5-e8b5-4d27-9399-ae0fb99760f6",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-thankyoupage"
+}

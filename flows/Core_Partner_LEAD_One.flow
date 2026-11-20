@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Error_Message</name>
+        <label>Error Message</label>
+        <locationX>314</locationX>
+        <locationY>1355</locationY>
+        <customErrorMessages>
+            <errorMessage>{!$Flow.FaultMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>for the Lead WF 
+
+&apos;Core_Partner_Claim&apos;</description>
+        <name>Core_Partner_Claim</name>
+        <label>Core_Partner_Claim</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Core_Reject_PartnerLead_On_Terminated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Partner_ClaimTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_PartnerClaim</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Partner_Claim</targetReference>
+            </connector>
+            <label>Core_Partner_ClaimTRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the LEAD WF 
+
+&apos; Core_Reject_PartnerLead_On_Terminated&apos;</description>
+        <name>Core_Reject_PartnerLead_On_Terminated</name>
+        <label>Core_Reject_PartnerLead_On_Terminated</label>
+        <locationX>314</locationX>
+        <locationY>731</locationY>
+        <defaultConnector>
+            <targetReference>Bypass_Validation_False</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_Reject_PartnerLead_On_TerminatedTRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_State__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Terminated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_State__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FieldUpdateCore_Reject_PartnerLead_On_Terminated</targetReference>
+            </connector>
+            <label>Core_Reject_PartnerLead_On_TerminatedTRUE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Partner_Lead_status_Qualified</name>
+        <label>Partner Lead status Qualified</label>
+        <locationX>314</locationX>
+        <locationY>1139</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Qualified</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead</targetReference>
+            </connector>
+            <label>Qualified</label>
+        </rules>
+    </decisions>
+    <description>For the LEAD WFs 
+
+1.Core_Partner_Claim
+2.Core_Reject_PartnerLead_On_Terminated</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>the Entry Condition for the Lead WF 
+
+&apos; Core_Partner_Claim &apos;</description>
+        <name>F_PartnerClaim</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(  {!$Record.RecordType.Name} = &apos;Partner Lead&apos;,  ISCHANGED({!$Record.Core_Partner_Lead_Owner__c}),  PRIORVALUE({!$Record.Core_Partner_Lead_Owner__c})=Null,  {!$Record.Core_Partner_Lead_Owner__c} &lt;&gt; Null, ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;), NOT(ISPICKVAL({!$Record.Core_Lead_State__c} , &quot;Terminated&quot;)) )</expression>
+    </formulas>
+    <interviewLabel>Core_Partner_LEAD_One {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Partner_LEAD_One</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Bypass_Validation_False</name>
+        <label>Bypass Validation False</label>
+        <locationX>314</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>Partner_Lead_status_Qualified</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Bypass__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Validation_Bypass_for_Flow__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Bypass_Validation_True</name>
+        <label>Bypass Validation True</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Core_Partner_Claim</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Bypass__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Validation_Bypass_for_Flow__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdateCore_Partner_Claim</name>
+        <label>FieldUpdateCore_Partner_Claim</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Core_Reject_PartnerLead_On_Terminated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>In Pursuit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_Status__c</field>
+            <value>
+                <stringValue>Accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PAL_Entry_Dt__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PRL_Exit_Dt__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>PAL</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>FieldUpdateCore_Reject_PartnerLead_On_Terminated</name>
+        <label>FieldUpdateCore_Reject_PartnerLead_On_Terminated</label>
+        <locationX>182</locationX>
+        <locationY>839</locationY>
+        <connector>
+            <targetReference>Bypass_Validation_False</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_Rejected_Dt__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>50</locationX>
+        <locationY>1247</locationY>
+        <faultConnector>
+            <targetReference>Error_Message</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>SWS_Partner_Qualified_Status__c</field>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Bypass_Validation_True</targetReference>
+        </connector>
+        <filterFormula>AND({!$Record.RecordType.Name} = &apos;Partner Lead&apos;,OR(ISCHANGED({!$Record.Core_Lead_State__c}),ISCHANGED({!$Record.Core_Partner_Lead_Owner__c}), 
+ISCHANGED({!$Record.Core_Lead_Status__c})))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

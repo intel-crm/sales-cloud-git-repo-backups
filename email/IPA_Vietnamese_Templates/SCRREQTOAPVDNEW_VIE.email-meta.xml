@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_VIE</name>
+    <style>none</style>
+    <subject>Chào mừng bạn đến với Liên minh Đối tác Intel®</subject>
+    <textOnly>Chào mừng bạn đến với Liên minh Đối tác Intel®
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Chào mừng bạn đến với trang web! {!Account.Name} hiện đã trở thành đối tác trong Liên minh Đối tác Intel®.
+Bắt đầu phát triển kinh doanh bằng cách tận dụng lợi ích của chương trình, bao gồm:
+
+Hỗ trợ khách hàng của Intel với trợ giúp toàn cầu cho tất cả các vấn đề về kỹ thuật, bảo hành và các vấn đề về chương trình đối tác.
+Đào tạo trực tuyến và hội thảo qua mạng của Đại học Đối tác Intel® với giáo đào tạo đầu ngành
+Mạng lưới đối tác và thị trường rộng khắp để hợp tác trong các giải pháp hướng dữ liệu
+Tiếp thị dễ dàng với các tài liệu và công cụ bán hàng tùy chỉnh
+Truy cập vào Intel® Developer Zone
+
+
+Đăng nhập vào https://crmqa3-intelcloudcrm.cs37.force.com/ipa để xem và quản lý các lợi ích của bạn.
+
+Đăng nhập vào https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary để xem vai trò của bạn.
+
+
+Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
+Truy cập https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html để giúp bạn bắt đầu.
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

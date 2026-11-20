@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Business_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>User.Core_User_Geo__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Tier__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 or  2 or 3 or 4 or 5 or 6</booleanFilter>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Scott Overson,Iain Beckingham,Taylor Deakyne,Yalim Eristiren,Georgios Kardaras,Thomas Kellerer,Stan Odinot,Przemek Papuzynski,Carlo Parmeggiani,Ygal Sameach,Nadine St Gemme,Igor Sysoev,Konstantin Zamkov,Vasily Boyarinov,Robert Adamski,Dmitry Beloshitskiy,Yulia Gontar,Romana Kanova,Alexey Karpukhin,Nikolay Mester,Igor Rudym,Alexander M Sorkin,Mikhail Tsvetkov,Mikhail Vilkov,Norberto Carrascal,Joachim Aertebjerg,Jurgen Eijmberts,Andrea Luiselli,Nathan Reddy,Toby Smith,Sven Beckmann,Susanna Ackermann,Hisam Advan,Majed Al-Elaiwi,Hasan Bilgin,Joao Fidalgo,Eyad Halawani,Iyad Malaeb,Aissa Sow,Twino Twinomugisha,Sergey Zhukov,Tatiana Bugrezova,Tatiana Kisel,Maksim Popov,Anna Shkurova,Natalia Zaitseva,Dragan Jaksic,Claudio Bellini,Alexandre Chauvin,Thor Dahlstedt,Marc Dollfus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Heli Liebelt,Robert Maskell,Romeo Merli,Andy Richardson,Cristel Saudemont,Thorsten Schmidt,Hannes Steyn,Ian Jones,Kike Celma,Heiner Genzken,Tomasz Hodakowski,Anders Huge,Silvia Invernici,Helene Marchi,Marie Pinon,Stuart Walker,Stu White,Cd Norenberg,Tommi Raitio,Isabelle Flory,Henrike Boehme,Peter Coe,Gilles Karolkowski,Vladimir Kostarev,Nadia MANDICH,ERWAN MONTAUX,Carlos Piqueras,Hemesh Prag,Dinesh Kumar Ramdin,Simon Vinals,Jochen Glaser,Gerald Grattoni,Paul Duff,Ahmed El Zoghby,Laetitia Faucon,Jaime Forero,Ian Lloyd,Martin Lloyd,Simon Morse,Paolo Ossola,Natalia Poliakova,Patricia Pozuelo Real,Bruno Riva,Alexey Rogachkov,Vladimir V Slinko,Stephanie Weber,Daniel Kraus-Ihlow,Colin MacHale,Emmaliese Baldwin,Marc Beckers</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Nisrine Belhaj Soulami,Chris Emerson,Jorgen Forsberg,Johan Liden,Patrick Messmer,COSTAS STYLIANOU,Carlos Villacastin,Markus Widmer,Graham Palmer,Valnea Andriani,Christian Ekenberg,Stefan Englet,Robyn Shean,Matty Bakkeren,Jorge Lang Palmero,Avi Mistry,Kim Sterkendries,Rich Sutherland,Patricia Vandenplas,Arnold Verhoeven,David Wilton,Karl Silhanek,Milan Spalevic,Dariusz Balcerzak,Uri C Baron,Dmitry Kornev,Michal Kowalik,Kristin Lampka,Tasso Panagou,Robert Prince,Nacho Astilleros Diez,Arnaud Chezeaud,David Fraser,Christian Blaim,William Crowe,Axel Fritz,Paul Harris,Ahmed Ibrahim,Zap Marseille,Julian Roldan Ramos,Jaime Sanz,Tani Singh,Alex Gledhill,Glenn Harris,Nadine Arnold,Oliver Freundel,Carlo Grilli,Jani Heikkinen,Christopher Horner,Frank Lafos</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Hadi Mitri,Toby Onabu,Roark Raman,Fredrik Tjernberg,Maneesh Kumar,Eric Mazieres,Carlos Pelaez,Alexander Roessler,Videsha Proothveerajh,Nico Beukes,Mohammed Bhyat,Djamal-Eddine Bourouba,Frederico Carvalho,Said El Mouden,Sameh Elmallah,Terad Halawani,Sameh Helmy,Cemal Kayacan,Gary Martin,Andy Nehme,Tunc Ozgul,Goker Ozturk,Vince Resente,Tobi Shada,Nemer Yousef,Matthias Scharer,Erio Bagnato,Loubna Berkani,Anne Bonnier,Zaid Ghattas,Ulrich Hoffmann,Florence Peutin,Emiliano Politano,Dave Rogers,Lars SandrÃ©n,Michael Sommer,Martin Strobel,Hannes Schwaderer,Yves Aillerie,Aj Alabduljabbar,Claude Chauvet,Christian Donitzky,Mark Green,Guy Janssens,Marcello Marino,Oliver Roos,sylvain sauty,Nina Woolvett,Astrid Steingrueber,Helene De La Gastine</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Anne Mieke Driessen,David Farrow,Olaf Hoehne,Tomas Letko,eudes moulanier,Florian Ranner,Christian Roth,Noemi Szigeti,Patrick Zahedi,Andreas Timm,Cameron Fariba,Henk Van Den Eeckhout,Sara Bodin,Felipe Augusto Chies,Stijn Derache,Visa Jarvinen,Thomas Melzer,Andreas Nordin,Monica Terren</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Maciek Osiecki,Jason Holtom,Bruno Le Gallou,Fabio Marri,Joe Martin,Olga Meshinovich,Pawel Walczysko</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>EMEA_ISG_Scott_&amp;_Maciek</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>USERS.NAME</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

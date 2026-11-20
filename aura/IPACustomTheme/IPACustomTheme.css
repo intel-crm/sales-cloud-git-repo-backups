@@ -1,0 +1,32 @@
+.THIS {
+    background-color: var(--lightestGray);
+    color: var(--darkGray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hack on IntelFooter -- attempt to remove horizontal scrollbar that appears at 1200px and 1650px */
+.THIS #recode50footer footer {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.THIS #recode50footer {
+    padding-top: 0 !important; /* override intel.com code */
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* Move header down to make space for text */
+    .THIS .recode50 .header-simplify nav.global-menu-simplify {
+        margin-top: 40px;
+    }
+}
+
+@media all and (-ms-high-contrast: none) {
+    .THIS [class*="slds-size_"],
+    .THIS [class*="slds-size--"] {
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: auto;
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Internal Notes</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Internal Notes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Activity_id__c</name>
+        <relationshipLabel><!-- Internal Notes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim --></label>
+        <name>Core_MDF_Claim_id__c</name>
+        <relationshipLabel><!-- Internal Notes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Core_MDF_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_MDF_Program_Name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Core_MDF_Title_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please select either Activity or Claim to create/edit a Note. --></errorMessage>
+        <name>Core_MDF_Check_Notes_without_actiorclaim</name>
+    </validationRules>
+</CustomObjectTranslation>

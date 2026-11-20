@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Titanium_Upgrade_RUS</name>
+    <style>none</style>
+    <subject>Ваш новый уровень Intel® Partner Alliance Titanium</subject>
+    <textOnly>Intel® Partner Alliance Titanium
+
+
+{!Contact.FirstName},
+
+Поздравляем! Ваша компания перешла на уровень Intel® Partner Alliance Titanium. Теперь вы можете воспользоваться следующими преимуществами участия в программе:
+
+Начисление большего количества баллов за покупку компонентов и систем
+Приглашение на главное событие года для партнеров Intel: Intel® Partner Connect
+Приветственное письмо о партнере со статусом Titanium от руководства Intel для ваших потенциальных клиентов
+
+Войдите на сайт, чтобы получить доступ к инструментальным средствам и ресурсам.
+
+Начните прямо сейчас
+
+
+Партнеры Intel разрабатывают инновации на протяжении долгого времени. Благодаря Intel® Partner Alliance мы поможем вам ускорить создание решений для экономики, ориентированной на данные. Вместе мы можем сотрудничать, разрабатывать инновации и развиваться, создавая невероятные возможности.
+
+Посетите сайт intel.com/partnerhelp для получения помощи и рекомендаций по оптимизации вашего участия в программе.
+
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!$Label.PRM_CurrentYear} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

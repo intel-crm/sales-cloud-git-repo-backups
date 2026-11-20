@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Coupon_Created_On__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Event_Name__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Event_Start_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Coupon_Value__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SWS_Cloud_Credit_Request__c$SWS_No_Of_User__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Intel_BU_Field_Sales_Contact__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Coupon_Code__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Number_of_Redemptions__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Coupon_Status__c</field>
+    </columns>
+    <description>Intel Tiber Dev Cloud credits issued: date created, number of coupons/participants issued, active or expired, Value, coupon Code</description>
+    <format>Tabular</format>
+    <name>ITDC Credits Issued LT</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Credit_requests_with_lead_and_opportunities__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>SWS_Cloud_Credit_Request__c$SWS_Coupon_Created_On__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>SWS_Cloud_Credit_Request__c$SWS_Coupon_Created_On__c</dateColumn>
+        <endDate>2024-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

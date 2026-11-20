@@ -1,0 +1,65 @@
+<aura:component implements="force:lightningQuickAction,force:hasRecordId,lightning:isUrlAddressable" access="global"
+  controller="Core_MDF_CloseActivity">
+  <aura:attribute name="userEligible" type="Boolean" default="false" />
+  <aura:attribute name="serverFilure" type="Boolean" default="false" />
+  <aura:attribute name="activityNotEligibleToClose" type="Boolean" default="false" />
+  <aura:attribute name="activeClaimsAvbl" type="Boolean" default="false" />
+  <aura:attribute name="errorMsg" type="String" />
+  <aura:attribute name="errorDetail" type="String" />
+  <aura:attribute name="userperMap" type="Map" default="{}" />
+  <aura:attribute name="activityhasActiveClaim" type="String" default="" />
+  <aura:attribute name="countOfClaimRecords" type="Integer" default="0" />
+  <aura:attribute name="activityerrors" type="String" default="" />
+  <aura:attribute name="pageReference" type="Object"/>
+	<aura:attribute name="isOutcomeBased" type="Boolean" default="false"/>
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div class="c-container">
+    <lightning:layout>
+      <aura:if isTrue="{!v.userEligible}">
+        <lightning:layoutItem padding="around-small">
+          <div>
+            <div class="slds-card slds-align_absolute-center">
+              <lightning:icon iconName="utility:warning" variant="warning" />
+              <div class="slds-p-around_medium slds-align_absolute-center">
+                {!$Label.c.Core_MDF_Close_Activity_Warning_Message}</div>
+            </div>
+            <div class="slds-card">
+              <div class="slds-p-around_medium slds-align_absolute-center">
+                <lightning:button aura:id="yesButton" variant="brand" label="{!$Label.c.Core_MDF_DQYes}"
+                  title="{!$Label.c.Core_MDF_DQYes}" onclick="{!c.activityEligibiltyForClose}" />
+                <lightning:button aura:id="noButton" variant="neutral" label="{!$Label.c.Core_MDF_DQNo}"
+                  title="{!$Label.c.Core_MDF_DQNo}" onclick="{!c.closeModel }" />
+              </div>
+            </div>
+          </div>
+        </lightning:layoutItem>
+      </aura:if>
+    </lightning:layout>
+  </div>
+  <aura:if isTrue="{!or(v.serverFilure,v.activityNotEligibleToClose)}">
+    <div class="slds-card slds-align_absolute-center">
+      <p>{!v.errorMsg}</p>
+    </div><br />
+    <div class="slds-card slds-align_absolute-center slds-text-color_error">
+      <p>{!v.errorDetail}</p>
+    </div>
+  </aura:if>
+  <!--<aura:if isTrue="{!v.activityNotEligibleToClose}">
+    <div class="slds-card slds-align_absolute-center">
+      <p>{!v.errorMsg}</p>
+    </div><br />
+    <div class="slds-card slds-align_absolute-center slds-text-color_error">
+      <p>{!v.errorDetail}</p>
+    </div>
+  </aura:if>-->
+  <aura:if isTrue="{!not(empty(v.activityhasActiveClaim))}">
+    {!format(v.activityhasActiveClaim, v.countOfClaimRecords)}
+    <br /><br />
+  </aura:if>
+  <aura:if isTrue="{!not(empty(v.activityerrors))}">
+    {!format(v.activityerrors)}
+    <br /><br />
+  </aura:if>
+</aura:component>

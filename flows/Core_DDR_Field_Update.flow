@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>To update the fields in DDR</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>HighTouch_LowTouch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+        ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp;
+        ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;APJ&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;PRC&apos;),
+        &apos;Disti Design Registration High&apos;,
+        IF(
+            ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp;
+            ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;ASMO&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;EMEA&apos;),
+            NULL,
+IF(
+NOT(ISBLANK(TEXT({!$Record__Prior.Core_Intel_Support_Status__c}))) &amp;&amp;
+(ISPICKVAL({!$Record__Prior.Core_Product_Group_Nm__c},&apos;Embedded/IOT&apos;) || ISPICKVAL({!$Record__Prior.Core_Product_Group_Nm__c},&apos;FPGA/Power&apos;)),
+	NULL,
+     TEXT({!$Record.Core_Intel_Support_Status__c})
+)
+       
+        )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>IsFpga</name>
+        <dataType>Boolean</dataType>
+        <expression>if((ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;FPGA/Power&apos;) || ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp; ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;APJ&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;PRC&apos;)), true,false )</expression>
+    </formulas>
+    <interviewLabel>Core DDR Field Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core DDR Field Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>High_Low</name>
+        <label>High/Low</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Core_Intel_Support_Status__c</field>
+            <value>
+                <elementReference>HighTouch_LowTouch</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>High_Low</targetReference>
+        </connector>
+        <filterFormula>AND (
+OR ( ISBLANK(text({!$Record.Core_Intel_Support_Status__c} )) ,
+ISCHANGED({!$Record.Core_Product_Group_Nm__c}) ) ,
+{!$Permission.PCC_Bypass_Automation} = False  )</filterFormula>
+        <object>Core_Design_Registration__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>DDrRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_Design_Registration__c</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,150 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    <div class="slds-box slds-theme--default">
+        <div style="width: 100%;">
+                <lightning-combobox name="programFilter" data-id="program" label={programLabel} placeholder={selectProgram} style="display: inline-block;width:23%"
+                    value={programSelected} options={programOptions} onchange={handleProgramFilterChange}
+                    class="slds-p-horizontal_medium">
+                </lightning-combobox>
+                <div data-id="account" class="slds-col slds-size_9-of-12" style="display: inline-block;width:23%;top: -25px;position: relative">
+	                <c-core_-m-d-f_-custom-lookup label={accountLabel}  obj-name="Account" data-id="account"
+	                                                search-placeholder="Search Accounts..." filter={accountQueryFilter}  
+	                                                onlookupselected={handleAccountFilterChange}
+	                                                selected-record={accValueSelected}
+	                                                value={accValueSelected}
+                                                    bypass-sharing={bypassSharing}
+	                                                disabled={accountNotLoaded}>
+	                </c-core_-m-d-f_-custom-lookup>
+                </div>
+
+                <lightning-combobox name="quarterFilter" data-id="quarter" label={quarterLabel} placeholder={selectQuarter} style="display: inline-block;width:20%"
+                    value={quarterSelected} options={quarterOptions} onchange={handleQuarterFilterChange}
+                    class="slds-p-horizontal_medium" disabled={quarterNotLoaded}>
+                </lightning-combobox>
+
+                <lightning-button variant="brand" icon-name="utility:download" style="display: inline-block;padding-left:2%"
+                label={getDataLabel} onclick={getData}
+                disabled={allOptionsNotSelected}>
+                </lightning-button>
+                <lightning-button variant="brand" label={saveLabel} onclick={handleSave} style="display: inline-block;padding-left:2%" disabled={isDisableButton}></lightning-button>
+                <lightning-button variant="brand" label={resetToDefault} onclick={handleResetToOriginal} style="display: inline-block;padding-left:1%" disabled={isDisableButton}></lightning-button> 
+                <template if:true={showRecoveryClaimsBtn}>
+                    <lightning-button variant="brand" label='Recover Claims' onclick={recoverClaims} style="display: inline-block;padding-left:1%" disabled={isRecoveryDisabled}></lightning-button>   
+                </template>
+        </div>
+    </div>
+    <template if:true={isShowResetConfirmation}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirmation</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <template if:true={popupMsgFromSave}>
+                        <p>{defaultRecoveryMsg}</p>
+                    </template>
+                    <template if:false={popupMsgFromSave}>
+                        <p>{resetToDefaultMsg}</p>
+                    </template>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" title="No" onclick={closeModal} class="slds-m-left_x-small">
+                    </lightning-button>
+                    <lightning-button variant="Brand" label="Yes" title="Yes" onclick={handleResetRecovery}
+                        class="slds-m-left_x-small"></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showRecoverClaims}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                        size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Select Budget Type</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-scrollable" style="height:180px;" id="modal-content-id-2">
+                <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
+                    <lightning-combobox
+      label="Budget Type"
+      name="Budget Type"
+      options={picklistOptions}
+      value={value}
+      dropdown-alignment="auto"
+      onchange={handleBTSelect}
+      placeholder='Select Budget Type'
+      required></lightning-combobox></lightning-layout-item>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning-button label="Cancel" title="Cancel" onclick={closeModal} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="Brand" label="Confirm" title="Confirm" onclick={confirmRecovery} disabled={disableConfirm} class="slds-m-left_x-small"></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showRecoveryConf}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                        size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Recovery Execution Confirmation</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                <p>Are you sure you want to execute the recovery for the selection?</p>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning-button label="No" title="No" onclick={closeModal} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="Brand" label="Yes" title="Yes" onclick={handleRecovery} class="slds-m-left_x-small"></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showRecoveryResult}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                        size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate">Confirmation</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-4">
+                <template if:true={popupMsgFromRecoveryBatch}>
+                    <p>Recovery run will take a few minutes to complete execution. Please refresh your screen after clicking on "OK".</p>
+                </template>
+                <template if:false={popupMsgFromRecoveryBatch}>
+                    <p>Recovery did not run.</p>
+                </template>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning-button label="Ok" title="Ok" onclick={closeModal} class="slds-m-left_x-small"></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

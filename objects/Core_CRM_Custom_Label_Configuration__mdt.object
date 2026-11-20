@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Helps in storing the Custom Metadata related to CRM</description>
+    <fields>
+        <fullName>CRM_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_CRM_Value_Txt__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Values should be seperated by a colon</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Value</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>CRM Custom Label Configuration</label>
+    <pluralLabel>CRM Custom Label Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

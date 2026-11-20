@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Employee_Name__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Employee_WWID__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Manager__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Manager_WWID__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Plan_Name__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Org__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Group__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Team__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Job_Role__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Inaccurate_Data_Comments__c</field>
+    </columns>
+    <description>Returns all commissioned employees with a given plan Desc</description>
+    <format>Tabular</format>
+    <name>Copy of Employees by Manager - DT</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$CPT_Quota_Setup__c@CPT_Quota_Setup__c.CPT_Employee__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CPT_Quota_Setup__c.CPT_Manager__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

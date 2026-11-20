@@ -1,0 +1,68 @@
+.slds-modal__header,
+.slds-modal__content,
+.slds-modal__footer {
+    border-radius: 0;
+    border-bottom: 0;
+    border-top: 0;
+}
+
+.slds-modal__header {
+    background-color: var(--blue);
+}
+
+.slds-modal__footer {
+    background-color: var(--lightestGray);
+    text-align: center;
+}
+
+.slds-modal > .slds-modal__container {
+    display: block;
+    height: 80vh;
+    padding: 0;
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    overflow:visible;
+    z-index: 1000;
+    transition: 0.3s ease-out;
+    transform: translate(0);
+    max-width: unset;
+    min-width: unset;
+}
+
+a.modal.close {
+    position: absolute;
+    right: 16px;
+    top: 30px;
+    transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 767px) {
+    .slds-modal > .slds-modal__container {
+        height: 100vh;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        top: 0;
+        padding: 0;
+    }
+
+    .slds-modal__header {
+        height: 100%;
+        position: fixed;
+    }
+    
+    .slds-modal__footer {
+        bottom: 0;
+        position: fixed;
+    }
+
+    /* .slds-m-top_x-large {
+
+    } */
+
+    .slds-modal__footer p {
+        color: var(--white);
+    }
+}

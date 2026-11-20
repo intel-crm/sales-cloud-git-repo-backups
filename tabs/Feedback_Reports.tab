@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Navigate to CST Feedback Reports Folder</description>
+    <flexiPage>Feedback_Reports</flexiPage>
+    <label>Reports</label>
+    <motif>Custom18: Form</motif>
+</CustomTab>

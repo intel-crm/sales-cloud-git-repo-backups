@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Core_Inquiry_CNDA_Contact_Request</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_Inquiry_CNDA_Contact_Request</name>
+    <style>none</style>
+    <subject>New Inquiry: {!Core_Inquiry__c.Core_First_Name_Txt__c} {!Core_Inquiry__c.Core_Last_Name_Txt__c} at {!Core_Inquiry__c.Core_AcccountName__c} has requested CNDA verification</subject>
+    <textOnly>Hi {!Core_Inquiry__c.OwnerFirstName},
+You are receiving this alert because this person has requested access to the Resource and Design Center and needs CNDA verification/creation. Please take a look at the details below and reach out within three business days to enable access (if applicable).
+
+Click here to see this person’s full profile in Salesforce CRM »
+
+Here are the person’s details: First Name: {!Core_Inquiry__c.Core_First_Name_Txt__c} Last Name: {!Core_Inquiry__c.Core_Last_Name_Txt__c} Company: {!Core_Inquiry__c.Core_Company_Txt__c} Job Title: {!Core_Inquiry__c.Core_Title_Txt__c} Phone Number: {!Core_Inquiry__c.Core_Phone_Txt__c} Email: {!Core_Inquiry__c.Core_Email_Txt__c} How they found us originally: {!Core_Inquiry__c.Core_Contact_Lead_Source__c} Some details about their Inquiry: Area of Interest: {!Core_Inquiry__c.Core_Product_Interest_Txt__c}
+Purchase Timeframe: {!Core_Inquiry__c.Core_Project_Timeframe__c} Project Details: {!Core_Inquiry__c.Core_Inquiry_Notes_Txt__c} Please remember to log any calls or emails you make when engaging with this person. If you have questions regarding how to manage any Lead/Inquiry assigned to you, please visit our Sales CRM training website Sincerely, Your Marketing Automation Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

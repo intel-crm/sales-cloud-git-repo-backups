@@ -1,0 +1,21 @@
+<aura:documentation>
+	<aura:description>
+    <p>Offering Detail</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/7/2019</p>
+    <p>CurrentVersion: 1.11</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+		<p>1.11 - Update css</p>
+		<p>1.1 - Updated Resource list rendering to not use accordion but an ISGResourceList component</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

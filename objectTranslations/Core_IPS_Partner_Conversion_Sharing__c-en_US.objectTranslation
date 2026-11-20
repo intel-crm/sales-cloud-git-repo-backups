@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Conversion - Sharing</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Conversion - Sharings</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccessLevel --></label>
+        <name>Core_IPS_AccessLevel__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Id --></label>
+        <name>Core_IPS_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer User Id/Group Id --></label>
+        <name>Core_IPS_Customer_User_Id_Group_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field1 --></label>
+        <name>Core_IPS_Generic_Field1_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field2 --></label>
+        <name>Core_IPS_Generic_Field2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generic Field3 --></label>
+        <name>Core_IPS_Generic_Field3_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Unique Id --></label>
+        <name>Core_IPS_Partner_Unique_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shared Object Id --></label>
+        <name>Core_IPS_Shared_Object_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shared Object --></label>
+        <name>Core_IPS_Shared_Object__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>L2_IPA_Support_Users_Marketplace_Dashboard_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all Marketplace Dashboard records to all members of  L2 IPA Support public group</description>
+        <label>L2 IPA Support Users - Marketplace Dashboard Sharing</label>
+        <sharedTo>
+            <group>Core_L2_IPA_Support</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>MP_Dashboard_Share</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>MP Dashboard Share</label>
+        <sharedTo>
+            <group>PMP_All_Partner_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Activity Purpose --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Activity Purpose --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Description --></label>
+        <name>Core_MDF_Activity_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Co-Marketing Activity --></label>
+        <name>Core_MDF_Activity_Id__c</name>
+        <relationshipLabel><!-- Activity Purposes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Baseline Period --></label>
+        <name>Core_MDF_Baseline_Period_nm__c</name>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one half before</masterLabel>
+            <translation>Même période que cette campagne, un semestre avant le</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
+            <translation>Même période que cette campagne, un trimestre avant le</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one year before</masterLabel>
+            <translation>Même période que cette campagne, un an avant le</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Baseline Value --></label>
+        <name>Core_MDF_Baseline_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Value --></label>
+        <name>Core_MDF_Goal_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Metric --></label>
+        <name>Core_MDF_Outcome_Metric_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Result value --></label>
+        <name>Core_MDF_Result_Value_nbr__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Activity Outcome Name --></nameFieldLabel>
+    
+</CustomObjectTranslation>

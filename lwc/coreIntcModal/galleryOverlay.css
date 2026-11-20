@@ -1,0 +1,61 @@
+/* Gallery Overlay Styles */
+[data-is-gallery='true'] .slds-modal {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+[data-is-gallery='true'] .slds-modal > .slds-modal__container {
+  left: unset;
+  top: unset;
+}
+
+[data-is-gallery='true'] .modal-content {
+  align-items: center;
+  background-color: transparent;
+  flex: unset;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  width: 100vw;
+}
+
+[data-is-gallery='true'] .modal-close-body {
+  background-color: rgba(0, 0, 0, .5);
+  color: var(--white, white) !important;
+  top: .5rem;
+}
+
+@media (max-width: 767px) {
+  [data-is-gallery='true'] .modal-content {
+    width: 100vw;
+  }
+
+  [data-is-gallery='true'] .slds-backdrop {
+    background-color: black;
+  }
+}
+
+@media (min-width: 768px) {
+  [data-is-gallery='true'] .modal-content {
+    width: 80vw;
+  }
+}
+
+@media (min-width: 980px) {
+  [data-is-gallery='true'] .modal-content {
+    width: 70vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  [data-is-gallery='true'] .modal-content {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 1610px) {
+  [data-is-gallery='true'] .modal-content {
+    width: 50vw;
+  }
+}

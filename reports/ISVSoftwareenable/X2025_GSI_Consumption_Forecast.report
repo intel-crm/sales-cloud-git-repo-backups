@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_10153033</developerName>
+        <masterLabel>Forecast Revenue Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Approved</sourceValue>
+            </sourceValues>
+            <value>Approved</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_44274911</developerName>
+        <masterLabel>GSI Name</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ACCENTURE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ACCENTURE PTE LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Accenture LLC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ACCENTURE - WORLDWIDE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ACCENTURE APJ</sourceValue>
+            </sourceValues>
+            <value>Accenture</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DELOITTE, TN</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELOITTE &amp; TOUCHE L.L.P.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deloitte Canada</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deloitte Consulting LLP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deloitte EMEA</sourceValue>
+            </sourceValues>
+            <value>Deloitte</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Capgemini Engineering</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CAPGEMINI GROUP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CAPGEMINI NA</sourceValue>
+            </sourceValues>
+            <value>Capgemini</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Wipro-EMEA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WIPRO LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wipro-USA</sourceValue>
+            </sourceValues>
+            <value>Wipro</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_86050704</developerName>
+        <masterLabel>Opportunity Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal: Partner Scale-enable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-through</sourceValue>
+            </sourceValues>
+            <value>Influencer Consumption</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Design: Original</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design: Secondary</sourceValue>
+            </sourceValues>
+            <value>Design</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Design: Software-enable</sourceValue>
+            </sourceValues>
+            <value>Software Enable</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_10153033</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>BucketField_44274911</field>
+    </columns>
+    <columns>
+        <field>PARENT_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <description>GSI Consumption Revenue Forecast Report for 2025</description>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Accenture,Deloitte,Capgemini,Wipro,infosys,HCL,Tech Mahindra,TCS,Tata,Kyndryl,Cognizant</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Define,Design,Design Win,Develop,Group,Group Closed,Group Open,Production Win,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Approved,Pending,Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Partner Scale-enable,Deal: Sell-through</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_BU_Focus__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Influencer-GSI,Channel-NSP/NSI,DCAI-Channel</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>sons,elxsi,tata technologies</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Application__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_10153033</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2025 GSI Consumption Forecast</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Core_Opp_FC_Prod_Schedule__c@Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Product__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
+    </timeFrameFilter>
+</Report>

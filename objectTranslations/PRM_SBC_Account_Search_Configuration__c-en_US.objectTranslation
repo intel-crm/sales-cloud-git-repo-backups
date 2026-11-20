@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPA Admin Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPA Admin Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- IPA Admin Configurations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Domain --></label>
+        <name>Email_Domain__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>PRM_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_Contact__c</name>
+        <relationshipLabel><!-- IPA Admin Configurations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- RegContactEmail --></label>
+        <name>PRM_RegContactEmail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type__c</name>
+        <picklistValues>
+            <masterLabel>Account_Blocked</masterLabel>
+            <translation><!-- Account_Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact_Blocked</masterLabel>
+            <translation><!-- Contact_Blocked --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- duplicateCheck --></label>
+        <name>PRM_duplicateCheck__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>PRM_isActive__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- BlockedAccountContacts --></label>
+        <name>PRM_BlockedAccountContacts</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- SBC Top Accounts --></label>
+        <name>PRM_SBC_Top_Accounts</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The Contact should be blank as Account is blocked --></errorMessage>
+        <name>PRM_AccountBlocked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select an account --></errorMessage>
+        <name>PRM_ContactBlocked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Duplicate record found --></errorMessage>
+        <name>isDuplicateFound</name>
+    </validationRules>
+</CustomObjectTranslation>

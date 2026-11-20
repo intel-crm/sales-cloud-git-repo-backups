@@ -1,0 +1,20 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_LateClaimEscApprovalBody6} {!RelatedTo.Name} {!$Label.Core_MDF_LateClaimEscApprovalBody7}" 
+                         recipientType="User" 
+                         renderUsingSystemContextWithoutSharing="true"
+                         language="{!recipient.LanguageLocaleKey}"
+                         relatedToType="Core_MDF_Escalation__c">
+<messaging:htmlEmailBody >
+<html>
+    <body>
+
+{!$Label.Core_MDF_LateClaimEscApprovalBody1}&nbsp; <apex:outputLink rendered="{!IF(recipient.UserType != 'PowerPartner',true,false)}"
+                                value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!RelatedTo.Name}      
+      </apex:outputLink> {!$Label.Core_MDF_LateClaimEscApprovalBody2} <br/><br/>
+      
+{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/>
+{!$Label.Core_MDF_Email_Signature}
+                            
+</body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

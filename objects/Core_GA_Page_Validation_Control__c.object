@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting is used to control the suppressing of Pop-ups and Hard Validation on the Grant Access Page</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Core_Entitlement_Display_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Name of the entitlement for which you want to suppress popup or hard validation</description>
+        <externalId>false</externalId>
+        <label>Entitlement Display Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Suppress_Popup__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Check this box to suppress the popup (Soft Validation) on Grant Access Page</description>
+        <label>Suppress Popup</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>cCore_Suppress_Hard_Validation__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Check this box to suppress the Hard Validation on Grant Access Page</description>
+        <label>Suppress Hard Validation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Grant Access Page Validation Control</label>
+    <visibility>Public</visibility>
+</CustomObject>

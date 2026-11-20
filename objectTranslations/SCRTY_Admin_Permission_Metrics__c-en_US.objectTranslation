@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Admin Permission Metrics</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Admin Permission Metrics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Permission Name --></label>
+        <name>SCRTY_Permission_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permission Sets(With Permission Enabled) --></label>
+        <name>SCRTY_Permission_Set_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profiles (Having Permission Enabled) --></label>
+        <name>SCRTY_Profile_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Users (Having Permission Enabled) --></label>
+        <name>SCRTY_User_Cnt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This Record can not be edited --></errorMessage>
+        <name>Restrict_Access_To_Edit_The_Records</name>
+    </validationRules>
+</CustomObjectTranslation>

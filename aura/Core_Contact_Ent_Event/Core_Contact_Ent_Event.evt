@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="contactId" type="String"/>
+    <aura:attribute name="isClearEntitlements" type="Boolean"/>
+</aura:event>

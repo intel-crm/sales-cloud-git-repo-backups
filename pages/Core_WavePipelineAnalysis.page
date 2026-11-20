@@ -1,0 +1,5 @@
+<apex:page showheader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" tabStyle="Core_Channel_Sales_Analysis__tab" standardStylesheets="false"
+           controller="Core_WavePipelineAnalysis_Controller" action="{!init}"
+           title="Pipeline Analysis Dashboard" lightningStylesheets="True">
+   
+</apex:page>

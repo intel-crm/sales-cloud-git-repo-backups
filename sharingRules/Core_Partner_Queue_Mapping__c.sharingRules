@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>PMP_Internal_Intel_Admin_Users_Partner_Queue_Mapping</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all Partner-Queue Mapping records to all MP Internal Admin Users</description>
+        <label>PMP Internal - Intel Admin Users - Partner-Queue Mapping</label>
+        <sharedTo>
+            <group>PMP_All_Intel_Admin_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

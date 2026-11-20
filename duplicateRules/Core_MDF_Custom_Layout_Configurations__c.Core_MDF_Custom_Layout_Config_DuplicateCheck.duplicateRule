@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Block</actionOnInsert>
+    <actionOnUpdate>Block</actionOnUpdate>
+    <alertText>Record already exist for given Program , Budget Type and Field Details</alertText>
+    <description>Restrict user from entering the details on the combination of Object Name, Program, Budget type and Field Api Name</description>
+    <duplicateRuleFilter xsi:nil="true"/>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Core_MDF_Custom_Layout_Configurations__c</matchRuleSObjectType>
+        <matchingRule>Core_MDF_Custom_Layout_Config_DuplicateCheck</matchingRule>
+        <objectMapping xsi:nil="true"/>
+    </duplicateRuleMatchRules>
+    <isActive>false</isActive>
+    <masterLabel>Core_MDF_Custom_Layout_Config_DuplicateCheck</masterLabel>
+    <securityOption>EnforceSharingRules</securityOption>
+    <sortOrder>1</sortOrder>
+</DuplicateRule>

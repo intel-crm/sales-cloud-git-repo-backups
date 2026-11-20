@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Rebate Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Rebate Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is SIPP Product --></label>
+        <name>Pricing_Is_SIPP_Product_Cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Type --></label>
+        <name>Pricing_Partner_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Partner Deal Incentive–NSI_CCG partner</masterLabel>
+            <translation><!-- Partner Deal Incentive–NSI_CCG partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Deal Incentive–NSP_CCG partner</masterLabel>
+            <translation><!-- Partner Deal Incentive–NSP_CCG partner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Pricing_Product_Family_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Series --></label>
+        <name>Pricing_Product_Series_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rebate Amount --></label>
+        <name>Pricing_Rebate_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Segment --></label>
+        <name>Pricing_Vertical_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Desktop</masterLabel>
+            <translation><!-- Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded</masterLabel>
+            <translation><!-- Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG</masterLabel>
+            <translation><!-- PSG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server</masterLabel>
+            <translation><!-- Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation</masterLabel>
+            <translation><!-- Workstation --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

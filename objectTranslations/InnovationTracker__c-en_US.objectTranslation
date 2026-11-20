@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>InnovationTracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>InnovationTrackers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Abandoned</masterLabel>
+            <translation><!-- Abandoned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal accepted</masterLabel>
+            <translation><!-- Deal accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design accepted</masterLabel>
+            <translation><!-- Design accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expired</masterLabel>
+            <translation><!-- Expired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending with Partner</masterLabel>
+            <translation><!-- Pending with Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pre-Approved</masterLabel>
+            <translation><!-- Pre-Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Precheck Pending</masterLabel>
+            <translation><!-- Precheck Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Re-Submitted</masterLabel>
+            <translation><!-- Re-Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

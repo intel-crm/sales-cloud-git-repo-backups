@@ -1,0 +1,34 @@
+<template>
+    <template if:true={showSpinner}>
+        <div class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template> 
+    
+    <div class="slds-grid slds-wrap slds-p-left_small slds-p-right_small">
+        <div class="slds-col slds-size_12-of-12">
+            <div class="slds-form-element">
+                <!-- Create an Input Field where user can enter text to find the
+                Records-->
+                <label class="slds-form-element__label" for="text-input-id-1" >{header}</label>
+                <div class="slds-form-element__control">
+                    <lightning-input variant="label-hidden"
+                        label="Quote Line" value={searchKey} type="search"
+                        onkeydown={handleKeyDown} onkeyup={handleKeyUp} placeholder="Type quote line number here">
+                    </lightning-input>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+        <template if:true={results.isSuccess}>            
+            <div class="slds-grid slds-wrap slds-p-left_small slds-p-right_small dropdown-box">        
+                <div class="slds-col slds-size_12-of-12 slds-box slds-box_small">
+                    <template for:each={results.searchResults} for:item="record">
+                        <c-pricing-search-item-cmp key={record.recordId} iconname={iconname} record={record} onselect={handleSelect}></c-pricing-search-item-cmp>
+                    </template>
+                </div> 
+            </div>         
+        </template>    
+</template>

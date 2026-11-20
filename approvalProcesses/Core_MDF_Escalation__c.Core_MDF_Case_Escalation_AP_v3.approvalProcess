@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Core_MDF_Case_ID_Number_id__c</field>
+        <field>Core_MDF_Escalation_Name_txt__c</field>
+        <field>Core_MDF_Escalation_Status_nm__c</field>
+        <field>Core_MDF_Total_Dollar_Impact_amt__c</field>
+        <field>Core_MDF_Root_Cause_nm__c</field>
+        <field>Core_MDF_Issue_Description_txt__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;) &amp;&amp; 
+((Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Case route to CCF FM Que L1</label>
+        <name>Core_MDF_CCF_Case_Amt_100k_route_to_CCF_FM_Que_L1</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Data Center CoMarketing Fund&apos;) &amp;&amp; 
+(
+(Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>DCF Case route to DCF FM Que L1</label>
+        <name>Core_MDF_DCF_Case_Amt_100k_route_to_DCF_FM_Que_L1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Service Provider CoMarketing Fund&apos;) &amp;&amp; 
+(
+(Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>SPCF Case route to SPCF FM Que L1</label>
+        <name>Core_MDF_SPCF_Case_Amt_100k_route_to_SPCF_FM_Que_L1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L1_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund Boost&apos;) &amp;&amp; 
+(
+(Core_MDF_Total_Dollar_Impact_amt__c &lt;= 100000) || 
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Boost Case route to CCF Boost FM Que L1</label>
+        <name>Core_MDF_CCFB_Case_Amt_100k_route_to_CCFB_FM_Que_L1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Prog_Admin_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;) &amp;&amp;
+(
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Case route to CCF FM, PM Que L2</label>
+        <name>Core_MDF_CCF_Case_Amt_100k_1M_route_to_CCF_FM_PM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Prog_Admin_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Data Center CoMarketing Fund&apos;) &amp;&amp;
+(
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>DCF Case route to DCF FM, PM Que L2</label>
+        <name>Core_MDF_DCF_Case_Amt_100k_1M_route_to_DCF_FM_PM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Service Provider CoMarketing Fund&apos;) &amp;&amp;
+(
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>SPCF Case route to SPCF FM, PM Que L2</label>
+        <name>Core_MDF_SPCF_Case_Amt_100k_1M_route_to_SPCF_FM_PM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Prog_Admin_Escl_L2_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund Boost&apos;) &amp;&amp;
+(
+((Core_MDF_Total_Dollar_Impact_amt__c &gt; 100000) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &lt;= 1000000)) ||
+(Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Boost Case route to CCF Boost FM, PM Que L2</label>
+        <name>Core_MDF_CCFB_Case_Amt_100k_1M_route_to_CCFB_FM_PM_Que_L2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Fin_Mgr_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_CCF_Prog_Admin_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>CCF Case Amt &gt; $1M route to CCF FM, PM Que L3</label>
+        <name>Core_MDF_CCF_Case_Amt_1M_route_to_CCF_FM_PM_Que_L3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Fin_Mgr_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_DCF_Prog_Admin_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Data Center CoMarketing Fund&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>DCF Case Amt &gt; $1M route to DCF FM, PM Que L3</label>
+        <name>Core_MDF_DCF_Case_Amt_1M_route_to_DCF_FM_PM_Que_L3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Fin_Mgr_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Service Provider CoMarketing Fund&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>SPCF Case Amt &gt; $1M route to SPCF FM, PM Que L3</label>
+        <name>Core_MDF_SPCF_Case_Amt_1M_route_to_SPCF_FM_PM_Que_L3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Fin_Mgr_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Core_MDF_CCP_CCFB_Prog_Admin_Escl_L3_Que</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c, &apos;Client CoMarketing Fund Boost&apos;) &amp;&amp; (Core_MDF_Total_Dollar_Impact_amt__c &gt; 1000000)</formula>
+        </entryCriteria>
+        <label>CCF Boost Case Amt &gt; $1M route to CCF Boost FM, PM Que L3</label>
+        <name>Core_MDF_CCFB_Case_Amt_1M_route_to_CCFB_FM_PM_Que_L3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Escalation Approval flow for Claim Case Review Result Record Type</description>
+    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Status_nm__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Escalation__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Claim Case Review Result</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Core_MDF_Notify_the_Escalation_Submitter_when_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Core_MDF_Status_to_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Core_MDF_Notify_the_Escalation_Submitter_when_Denied</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Core_MDF_Status_to_Denied</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Escalation Approval for Case</label>
+    <processOrder>1</processOrder>
+    <recallActions>
+        <action>
+            <name>Core_MDF_Cancel_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

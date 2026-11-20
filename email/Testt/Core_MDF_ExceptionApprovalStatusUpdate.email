@@ -1,0 +1,12 @@
+<messaging:emailTemplate subject="Exception #{!RelatedTo.Name} is completed." 
+                         recipientType="User" relatedToType="Core_MDF_Exception__c">
+    <messaging:htmlEmailBody >
+        <html>
+             <body>  <div style="font-size:14px;font-family:Calibri"> 
+                No Action Required<br/><br/>
+                The review for Exception #<a href="{!RelatedTo.Core_MDF_Exception_Detail_Link_txt__c}">{!RelatedTo.Name}</a> has been completed. Please click on the Exception link to view the final decision.
+                  </div>
+             </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>License</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Licenses</value>
+    </caseValues>
+    <fields>
+        <label><!-- License Id --></label>
+        <name>License_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Text feild to store license user email address --></help>
+        <label><!-- Licensed User Email Address --></label>
+        <name>Licensed_User_Email_Address_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maintenance Ended in last 365 days --></label>
+        <name>Maintenance_Ended_in_last_365_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maintenance ending in next 90 days --></label>
+        <name>Maintenance_ending_in_next_90_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Do not contact for feedback --></label>
+        <name>Opt_in_out__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributed Quantity --></label>
+        <name>Sales_Distributed_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legacy License Id --></label>
+        <name>Sales_Legacy_License_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Licensed User Text --></label>
+        <name>Sales_Lic_User_Contact_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Sales_License_Account_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Sales_License_Account__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- License Activation Code --></label>
+        <name>Sales_License_Activation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available Temporary Licenses --></label>
+        <name>Sales_License_Available_Temp_Licenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available Quantity --></label>
+        <name>Sales_License_Avbl_Qty_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available Rehosts --></label>
+        <name>Sales_License_Avbl_Rehost_Nbr__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field should not be used for internal comments. --></help>
+        <label><!-- Comments --></label>
+        <name>Sales_License_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Computer Name --></label>
+        <name>Sales_License_Computer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Text --></label>
+        <name>Sales_License_Contract_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract --></label>
+        <name>Sales_License_Contract__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Delegate Admins of Primary Admin --></label>
+        <name>Sales_License_DelegateNames_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Expiration Date --></label>
+        <name>Sales_License_Expiration_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Flag --></label>
+        <name>Sales_License_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host/Node Id --></label>
+        <name>Sales_License_Host_Node_Id_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Computer --></label>
+        <name>Sales_License_Host_Node_Id__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Primary Computer ID</label>
+        <name>Sales_License_Host_Node_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is meant only for internal comments and will not be visible to external users --></help>
+        <label><!-- Internal Comments --></label>
+        <name>Sales_License_Internal_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Licensed User --></label>
+        <name>Sales_License_Lic_User_Contact_ID__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- LoggedIn User --></label>
+        <name>Sales_License_LoggedIn_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maintenance Expiration Date --></label>
+        <name>Sales_License_Maintenance_Exp_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PO # --></label>
+        <name>Sales_License_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Product ID --></label>
+        <name>Sales_License_Order_Product_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field should be populated for License Record Type “Original” --></help>
+        <label><!-- Order Product --></label>
+        <name>Sales_License_Order_Product__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Order ID --></label>
+        <name>Sales_License_Order_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field should be populated for License Record Type “Original” --></help>
+        <label><!-- Order --></label>
+        <name>Sales_License_Order__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Email Address --></label>
+        <name>Sales_License_PriAdm_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Contact Name --></label>
+        <name>Sales_License_Primary_Admin_Contact_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Admin Contact --></label>
+        <name>Sales_License_Primary_Admin_Contact__c</name>
+        <relationshipLabel><!-- Licenses (Primary Admin Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Sales_License_Product_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Part Number</label>
+        <name>Sales_License_Product_OPN__c</name>
+    </fields>
+    <fields>
+        <help><!-- Product used to sell this subscription. --></help>
+        <label><!-- Product --></label>
+        <name>Sales_License_Product__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- # of Seats --></label>
+        <name>Sales_License_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Stage --></label>
+        <name>Sales_License_Renewal_Stage_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Renewal Status --></label>
+        <name>Sales_License_Renewal_Status__c</name>
+        <picklistValues>
+            <masterLabel>License Expired</masterLabel>
+            <translation><!-- License Expired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>License Renewed</masterLabel>
+            <translation><!-- License Renewed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- License Renewed Date --></label>
+        <name>Sales_License_Renewed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Renewed Expired Date --></label>
+        <name>Sales_License_Renewed_Expired_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Renewed Quarter --></label>
+        <name>Sales_License_Renewed_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Renewed Year --></label>
+        <name>Sales_License_Renewed_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Row Number --></label>
+        <name>Sales_License_Row_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>SAP Line Number</label>
+        <name>Sales_License_SAPLine_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Sales_License_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Sales_License_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Licensed</masterLabel>
+            <translation><!-- Licensed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Merged</masterLabel>
+            <translation><!-- Merged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewals Applied</masterLabel>
+            <translation><!-- Renewals Applied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unlicensed</masterLabel>
+            <translation><!-- Unlicensed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscription --></label>
+        <name>Sales_License_SubscriptionId__c</name>
+        <relationshipLabel><!-- Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Subscription Name --></label>
+        <name>Sales_License_Subscription_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- For License Record Type “Original” mandatorily populate “Order” and “Order Product” fields. --></help>
+        <label>License Record Type</label>
+        <name>Sales_License_Type__c</name>
+        <picklistValues>
+            <masterLabel>Add Seat</masterLabel>
+            <translation><!-- Add Seat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amend Contract - Qty Decrease</masterLabel>
+            <translation><!-- Amend Contract - Qty Decrease --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee</masterLabel>
+            <translation><!-- Employee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation</masterLabel>
+            <translation><!-- Evaluation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optional</masterLabel>
+            <translation><!-- Optional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original</masterLabel>
+            <translation><!-- Original --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renew Contract - Qty Decrease</masterLabel>
+            <translation><!-- Renew Contract - Qty Decrease --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation><!-- Renewal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Web Display Flag --></label>
+        <name>Sales_License_Web_Display_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Licensed User Email Address --></label>
+        <name>Sales_Licensed_User_Email_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Linux URL --></label>
+        <name>Sales_Linux_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent License Name --></label>
+        <name>Sales_Parent_License_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent License --></label>
+        <name>Sales_Parent_License__c</name>
+        <relationshipLabel><!-- Option Licenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Processed --></label>
+        <name>Sales_Processed__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is a Renewal License. Please apply for renewal. --></help>
+        <label><!-- Renewal License --></label>
+        <name>Sales_Renewal_License__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewed Description --></label>
+        <name>Sales_Renewed_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- SessionId Bot --></label>
+        <name>Sales_SessionId_Bot__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool License Type --></label>
+        <name>Sales_Tool_License_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Windows URL --></label>
+        <name>Sales_Windows_URL__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard license --></label>
+        <name>Standard_license</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot associate a License record to an Inactive Computer. --></errorMessage>
+        <name>Sales_ActiveComputerAllowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>The product associated with this license does not allow a temporary license to be created.</errorMessage>
+        <name>Sales_Avbl_Temp_Lic_Not_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>The number of available temporary licenses cannot be greater than the number of seats.</errorMessage>
+        <name>Sales_Avlbl_Temp_Lic_Cannot_Be_Greater</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>The license type of the computer selected is not compatible with the license product.</errorMessage>
+        <name>Sales_Cannot_Change_Host_As_Diff_Lic_Typ</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot update this license at the moment. Please reach out to IT Team for support --></errorMessage>
+        <name>Sales_ExtUsr_Cannot_Update_PrimaryAdmin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a valid Intel Account --></errorMessage>
+        <name>Sales_Validate_Account</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Generate_License_by_Activation_Code --></label>
+        <name>Generate_License_by_Activation_Code</name>
+    </webLinks>
+</CustomObjectTranslation>

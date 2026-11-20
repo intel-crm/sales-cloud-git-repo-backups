@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-section">
+        <h2 class="slds-section__title slds-theme_shade slds-p-around_xxx-small"
+            onclick={toggleSection}
+            style="cursor:pointer; display:flex; align-items:center;">
+            <lightning-icon icon-name={arrowIcon}
+                            size="x-small"
+                            class="slds-m-right_x-small slds-p-left_x-small">
+            </lightning-icon>
+            <span class="slds-truncate" title="Custom Links">Custom Links</span>
+        </h2>
+        
+        <template if:true={isOpen}>
+            <div class="slds-grid slds-wrap slds-p-around_small">
+                <div class="slds-col slds-p-right_large">
+                    <a href={googleMapUrl} target="_blank" rel="noopener noreferrer" 
+                        class="slds-text-body_regular">Google Maps</a>
+                </div>
+                <div class="slds-col slds-p-right_large">
+                    <a href={googleSearchUrl} target="_blank" rel="noopener noreferrer" 
+                        class="slds-text-body_regular">Google Search</a>
+                </div>
+                <div class="slds-col slds-p-right_large">
+                    <a href={financial} target="_blank" rel="noopener noreferrer" 
+                        class="slds-text-body_regular">Financials</a>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

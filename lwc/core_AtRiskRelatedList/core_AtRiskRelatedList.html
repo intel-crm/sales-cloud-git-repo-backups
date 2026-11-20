@@ -1,0 +1,107 @@
+<!---------------------------------------------------------------------------------------------------------------------------------------
+* Class Name  : core_AtRisk RelatedList
+* Version     : Original
+* Created Date: 15-11-2023
+* Modification Log :
+* Developer                         Date               Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* Hira Khan(Accenture - Unicorn)    15-11-2023         LWC to show At Risk Products on Opportunity Support Status Tab(TWC3123-5311)
+---------------------------------------------------------------------------------------------------------------------------------------
+-->
+<template>
+ <div class="slds-page-header" style="border: 1px solid #D3D3D3;">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <lightning-icon
+                style="--slds-c-icon-color-background:rgb(255, 93, 45);"
+                icon-name="standard:product"
+                title="products"
+                size="small"
+              ></lightning-icon>
+            </div>
+            <div class="slds-media__body slds-p-top_xx-small">
+              <div class="slds-page-header__name slds-page-header__name-title">
+                <h1>
+                  <span class="strong-text" style="font-size:16px;"
+                    >Product At Risk {countRiskProds}</span>
+                </h1>
+              </div>
+            </div>
+            <template if:false={noData}>
+              <div class="slds-page-header__control">
+                <lightning-button-icon icon-name="utility:refresh"  variant="border-filled" alternative-text="Refresh" title="Refresh" onclick={refresh}></lightning-button-icon>
+              </div>
+            </template>
+          </div>
+          <template if:false={noData}>
+            <p class="slds-page-header__name-meta">
+              {itemCount} •  Filtered by At Risk 
+            </p>
+          </template>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!--Error if data is not returned start-->
+     <template if:true={errorflag}>
+        <template if:false={spinner}>
+      <div class="slds-box">
+        <div class="slds-align_absolute-center">
+          <div
+            class="slds-notify slds-notify_alert slds-alert_error"
+            style="--slds-c-alert-color-background: #cc0000;"
+            role="alert"
+          >
+            <lightning-icon
+              icon-name="utility:error"
+              alternative-text="Error"
+              title="Error"
+              size="small"
+              style="--slds-c-icon-color-foreground: white;"
+            ></lightning-icon>
+            &nbsp;
+            <h2 style="text-align: left;">
+              <p class="strong-text">Error :</p>
+                Unexpected error occurred, please contact your system administrator!
+            </h2>
+            <br />
+          </div>
+          <br/>
+        </div>
+      </div>
+        </template>
+    </template>
+    <!--Error if data is not returned end-->
+
+    <!--Spinner while data is fetched -start-->
+      <template if:true={spinner}>
+        <div class="slds-box">
+        <div class="exampleHolder slds-align_absolute-center">
+        <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+        </div>
+        </div>
+      </template>
+    <!--Spinner while data is fetched -end-->
+    
+    <!--When Data is successfully fetched-start-->
+    <template if:false={noData}>
+      <template if:false={spinner}>
+      <div style="border: 1px solid #D3D3D3;">
+        <lightning-datatable
+          key-field="id"
+          hide-checkbox-column="true"
+          show-row-number-column
+          data={OpportunityLineItems}
+          columns={columns}
+          column-widths-mode="auto"
+        >
+        </lightning-datatable>
+      </div>
+      </template>
+    </template>
+    <!--When Data is successfully fetched-end-->
+
+</template>

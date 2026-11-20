@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>8</activeVersionNumber>
+    <description>Flow to Reject a Lead used by Partner Users. It asks for Rejection Reason, Rejection Comments. Updates Lead Stage to &apos;Rejected&apos;, Lead State to &apos;Terminated&apos;, Rejection Reason, Rejection Comments on the Lead record.</description>
+    <masterLabel>Reject Partner Lead</masterLabel>
+</FlowDefinition>

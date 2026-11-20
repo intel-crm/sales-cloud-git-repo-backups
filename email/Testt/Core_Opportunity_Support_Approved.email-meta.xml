@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to owner when Opportunity Support is approved</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity Support Approved</name>
+    <style>none</style>
+    <subject>Opportunity Support Request Approved</subject>
+    <textOnly>Hello {!Core_Opportunity_Support__c.OwnerFullName},
+
+ 
+Your Opportunity Support Request is Approved
+
+ 
+
+Please let us know if you have any questions or concerns.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

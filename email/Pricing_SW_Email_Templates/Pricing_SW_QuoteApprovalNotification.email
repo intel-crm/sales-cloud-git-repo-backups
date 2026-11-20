@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Approval Needed for Quote: {!relatedTo.Quote__r.Name}" recipientType="User" relatedToType="sbaa__Approval__c">
+   <messaging:htmlEmailBody >
+       <c:Pricing_SW_QuoteApprovalNotification quoteRecordId="{!relatedTo.Quote__r.Id}" quoteApprovalRecordId="{!relatedTo.Id}"/>    
+   </messaging:htmlEmailBody>
+   
+</messaging:emailTemplate>

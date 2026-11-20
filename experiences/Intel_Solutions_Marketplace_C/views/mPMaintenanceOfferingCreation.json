@@ -1,0 +1,74 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "474b34b7-e6e1-49ca-9ada-11d1eac8918d",
+  "label" : "MP Maintenance-Offering Creation",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
+        "showBreadcrumbs" : false,
+        "showSignIn" : false,
+        "size" : "short",
+        "text" : "",
+        "type" : "generic"
+      },
+      "componentName" : "c:IntelMarquee",
+      "id" : "4652d4bf-48d1-448c-8514-9fe485e450a1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "6b6f412b-1035-4c7a-bbec-925bd4660f4d",
+        "zh_cn" : "76b47b1e-5f08-475b-bf13-5990286d4076"
+      },
+      "renditions" : [ {
+        "id" : "76b47b1e-5f08-475b-bf13-5990286d4076",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6b6f412b-1035-4c7a-bbec-925bd4660f4d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "d94d9b89-b393-4aa2-b53c-c1eb09e44523",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "ca655bed-75cc-4a07-aeba-fb39432fbef2",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "db70a42a-bcde-4d0b-b0e8-4b572f48a831",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\" Offering Creation\"/> \n<meta name=\"keywords\" content=\"sf,mp,offering creation\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"OfferingDetailPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "Create your products and solution offerings on Intel® Solutions Marketplace.",
+        "title" : "Offering Creation - - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "cee476b0-6470-4956-ba33-6dbaf7f2c8b1",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "36e98b41-2c74-442f-8a37-be943c083ff8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offering-create"
+}

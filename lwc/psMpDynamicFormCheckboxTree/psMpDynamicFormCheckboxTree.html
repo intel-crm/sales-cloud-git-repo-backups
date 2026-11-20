@@ -1,0 +1,98 @@
+<template>
+  <template if:false={isChild}>
+    <div class={classes.parentHost} >
+        <template if:true={ifs.hasLabel}>
+          <label for={name} class="topLabel slds-p-bottom_medium">{label}</label>
+          <input type="hidden" id={name} name={name} value={value} /><!-- for accessibility -->
+        </template>
+
+        <div onkeydown={handleSearchKeydown}>
+          <lightning-input class="slds-p-bottom_small" disabled={disabled}
+              type="search" is-loading={_searching} value={searchString} onchange={handleSearchChange}
+              ></lightning-input>
+        </div>
+
+        <div class="tree-container slds-p-vertical_medium" >
+          <template for:each={checkboxes} for:item="checkbox" >
+              <c-ps-mp-dynamic-form-checkbox-tree
+              key={checkbox.value}
+              checkbox={checkbox}
+              disabled={disabled}
+              top-level="true"
+              collapsible={collapsible}
+              expanded-child-sections={expandedSections}
+              theme={theme}
+              type={type}
+              highlight={checkbox.highlight}
+              onchildevent={handleChildEvent}
+              is-child="true"
+            >
+            </c-ps-mp-dynamic-form-checkbox-tree>
+
+          </template>
+        </div>
+        <template if:true={ifs.showErrorMessage}>
+          <p class="errorMessage slds-m-vertical_x-small">{errorMessage}</p>
+        </template>
+    </div>
+  </template>
+  <template if:true={isChild}>
+    <div class={classes.childHost} data-uniqid={checkbox.uniqId}>
+      <div class={classes.checkboxContainerClass}>
+        <template if:true={ifs.toggleCollapse}>
+          <a class="color-dark-gray toggle" onclick={handleAction} data-type="togglesection">
+            <span class="toggleIcon">
+              <div class={classes.toggleClass}>
+                <lightning-icon icon-name={classes.toggleIcon} alternative-text={classes.toggleAlternativeText} title={classes.toggleTitle}></lightning-icon>
+              </div>
+            </span>
+          </a>  
+        </template>
+        <span class="slds-checkbox">
+          <label class="slds-checkbox__label">
+            <input
+              type="checkbox"
+              onchange={handleAction}
+              data-type="checkboxchange"
+              value={checkbox.value}
+              checked={checkbox.checked}
+            />
+            <span class="slds-checkbox_faux"></span>
+            <span class="slds-form-element__label">{checkbox.label}</span>
+          </label>
+        </span>
+        <template if:true={ifs.hasChildren}>
+
+          <span class="filterOptions slds-m-left_medium">
+            <a class="filter selectFilter" onclick={handleAction} data-type="selectallfilter">{labelSelectAll}</a> | 
+            <a class="filter clearFilter" onclick={handleAction} data-type="clearallfilter"> {labelDeslectAll}</a>
+          </span>
+        </template>
+        <template if:true={ifs.showTotalSelected}>
+          <span class="count">{checkbox.totalSelected}</span>
+        </template>
+      </div>
+      <div class={classes.childrenVisible}>
+        <template if:true={_hasBeenRendered}>
+          <template for:each={children} for:item="child">
+            <c-ps-mp-dynamic-form-checkbox-tree
+              key={child.name}
+              checkbox={child}
+              disabled={disabled}
+              top-level="false"
+              collapsible={collapsible}
+              clear-filters={clearFilters}
+              expanded-child-sections={expandedChildSections}
+              onchildevent={handleChildEvent}
+              theme={theme}
+              type={type}
+              highlight={child.highlight}
+              is-child="true"
+            >
+            </c-ps-mp-dynamic-form-checkbox-tree>
+          </template>
+        </template>
+      </div>
+    </div>
+  </template>
+  </template>

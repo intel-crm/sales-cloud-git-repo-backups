@@ -1,0 +1,82 @@
+<template>
+    <!-- Role - application is used to resolve onkeydown not working with screen reader -->
+    <div onkeydown={handleKeyDown} role="application">
+        <template if:false={thumbnailOnCover}>
+            <div class="gallery-cover slds-is-relative" onclick={handleOpen} data-fixed-height={fixedHeight}>
+                <img src={currentImage.url} alt={currentImage.alt}>
+                <button class="gallery-counter slds-grid slds-grid_vertical-align-center" 
+                    onkeydown={handleOpen} data-show={hasImages} aria-label={labels.open}>
+                    <lightning-icon icon-name="utility:photo" size="small"></lightning-icon>
+                    <span class="slds-m-left_x-small">{counterText}</span>
+                </button>
+            </div>
+        </template>
+        <template if:true={thumbnailOnCover}>
+            <div class="cover-carousel-wrapper">
+                <c-core-intc-carousel name="image-gallery" indicator-images={thumbnails}
+                    with-paddles onpagechange={handlePageChange} class="cover-carousel" variant="gallery"
+                    indicator-assistive-text={indicatorAssistiveTexts}>
+                    <div class="gallery-images-container" slot="content" data-has-indicators={hasIndicators} data-fixed-height={fixedHeight}>
+                        <template for:each={formattedImages} for:item="image" for:index="idx">
+                            <div key={image.key} data-carousel-item={idx} class="gallery-image-container" data-video={image.videoType}
+                            data-processing={image.isProcessing}>
+                                <template if:true={image.videoType}>
+                                    <template if:true={image.isProcessing}>
+                                        <img src={image.placeholderImg} alt={image.alt} id={image.key} onclick={handleOpen}
+                                        tabindex="0" onfocus={handleGalleryItemFocus} data-navigate={idx}>
+                                    </template>
+                                    <template if:false={image.isProcessing}>
+                                        <c-core-intc-video class="cover-video" video-type={image.videoType} account={image.accountId} 
+                                        video-id={image.videoId} width="100%" height="100%" title={image.title} tabindex="0"
+                                        onfocus={handleGalleryItemFocus} data-navigate={idx}></c-core-intc-video>
+                                    </template>
+                                </template>
+                                <template if:false={image.videoType}>
+                                    <button class="expand-icon-wrapper" onclick={handleOpen} tabindex="0" aria-label={labels.open} 
+                                      data-navigate={idx} aria-describedby={image.key} onfocus={handleGalleryItemFocus}>
+                                        <span class="fa-expand-arrrows" tabindex="-1"></span>
+                                    </button>
+                                    <img src={image.url} alt={image.alt} id={image.key} onclick={handleOpen}>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </c-core-intc-carousel>
+            </div>
+        </template>
+        <c-core-intc-modal is-gallery-overlay has-body modal-title={labels.modalTitle} onclose={handleModalClose}>
+            <div slot="body">
+                <div role="alert" aria-live="polite">{ariaMessage}</div>
+                <div class="gallery-container slds-is-relative">
+                    <c-core-intc-carousel name="image-gallery" indicator-images={thumbnails}
+                        with-paddles onpagechange={handlePageChange} class="modal-carousel" variant="gallery" 
+                        is-modal="true" indicator-assistive-text={indicatorAssistiveTexts} onpaddleclick={focusVideo}
+                        onindicatorclick={focusModalClose}>
+                        <div class="gallery-images-container" slot="content" data-has-indicators={hasIndicators}>
+                            <template for:each={formattedImages} for:item="image" for:index="idx">
+                                <div key={image.key} data-carousel-item={idx}
+                                    class="gallery-image-container" data-video={image.videoType}> 
+                                    <template if:true={image.videoType}>
+                                        <template if:true={image.isProcessing}>
+                                            <img src={image.placeholderImg} alt={image.alt} id={image.key} onclick={handleOpen}
+                                            tabindex="0" onfocus={handleGalleryItemFocus} data-navigate={idx}>
+                                        </template>
+                                        <template if:false={image.isProcessing}>
+                                            <c-core-intc-video class="modal-video" video-type={image.videoType} account={image.accountId} 
+                                            video-id={image.videoId} width="100%" height="100%" title={image.title} onfocus={handleGalleryItemFocus}
+                                            data-navigate={idx} data-modal="true"></c-core-intc-video>
+                                            <label class="hidden" id={image.key}>{image.title}</label>
+                                        </template>
+                                    </template>
+                                    <template if:false={image.videoType}>
+                                        <img src={image.url} alt={image.alt} id={image.key}>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </c-core-intc-carousel>
+                </div>
+            </div>
+        </c-core-intc-modal>
+    </div>
+</template>

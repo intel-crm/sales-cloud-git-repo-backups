@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is sent to Opportunity PAR submitter when an Opportunity PAR is Approved or Rejected</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>IPS_Letterhead</letterhead>
+    <name>Core IPS Opportunity PAR For Submitter</name>
+    <style>freeForm</style>
+    <subject>{!Core_IPS_Opportunity_PAR__c.Name} {!Core_IPS_Opportunity_PAR__c.Core_IPS_Approval_Status__c}</subject>
+    <textOnly>Dear {!Core_IPS_Opportunity_PAR__c.CreatedBy},
+
+Your Opportunity Premier Support Request has been {!Core_IPS_Opportunity_PAR__c.Core_IPS_Approval_Status__c}.
+
+
+Opportunity Request: {!Core_IPS_Opportunity_PAR__c.Name}
+
+Opportunity Name: {!Core_IPS_Opportunity_PAR__c.Opportunity__c}
+
+Approval Status: {!Core_IPS_Opportunity_PAR__c.Core_IPS_Approval_Status__c}
+
+Account: {!Core_IPS_Opportunity_PAR__c.Core_IPS_Account_Name__c}
+
+Region: {!Core_IPS_Opportunity_PAR__c.Core_IPS_Account_Region__c}
+
+Sub Region: {!Core_IPS_Opportunity_PAR__c.Core_IPS_Account_Sub_Region__c}
+
+Supported Product(s): {!Core_IPS_Opportunity_PAR__c.Core_IPS_Supported_ProductsName__c}
+
+Requester: {!Core_IPS_Opportunity_PAR__c.CreatedBy}
+
+Justification: {!Core_IPS_Opportunity_PAR__c.Core_IPS_Request_Justification__c}
+
+Approver: {!Core_IPS_Opportunity_PAR__c.Email_Template_Approved_By__c}
+
+
+To review this Opportunity Premier Support Request please: Click Here
+
+
+_______________________________________________________________
+
+
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+
+
+
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

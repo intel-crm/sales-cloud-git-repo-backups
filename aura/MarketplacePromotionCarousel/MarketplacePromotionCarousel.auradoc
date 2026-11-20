@@ -1,0 +1,44 @@
+<aura:documentation>
+	<aura:description>
+    <p>Promotion Carousel</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/11/2019</p>
+    <p>CurrentVersion: 1.1</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>Structure of promotionData items:</p>
+<pre>[
+	{
+		imageUrl: 'https://via.placeholder.com/350x197/0071C5/FFFFFF?text=Promotion 1', // optional image
+		imagePosition: 'left', // image position left or right
+		title: 'Promotion offering product name',
+		body: 'Mauris condimentum, sem vehicula ullamcorper porttitor, nisi leo laoreet urna, vel sodales libero elit non purus. Morbi eget arcu dictum, pretium nulla a, convallis ipsum. Donec volutpat consectetur convallis. Suspendisse tortor turpis, molestie nec erat sit amet, hendrerit lacinia turpis. Nunc sodales urna ac justo condimentum laoreet. Cras in dui arcu. Mauris id fringilla sapien, id scelerisque lectus.',
+		ctaLink: '#',
+		ctaLabel: 'Request a Quote'
+	},
+	{
+		imageUrl: 'https://via.placeholder.com/350x197/0071C5/FFFFFF?text=Promotion 2',
+		imagePosition: 'right',
+		title: 'Promotion offering product name',
+		body: 'Mauris condimentum, sem vehicula ullamcorper porttitor, nisi leo laoreet urna, vel sodales libero elit non purus. Morbi eget arcu dictum, pretium nulla a, convallis ipsum. Donec volutpat consectetur convallis. Suspendisse tortor turpis, molestie nec erat sit amet, hendrerit lacinia turpis. Nunc sodales urna ac justo condimentum laoreet. Cras in dui arcu. Mauris id fringilla sapien, id scelerisque lectus.',
+		ctaLink: '#',
+		ctaLabel: 'Request a Quote'
+	},
+	{
+		imageUrl: '',
+		imagePosition: 'left',
+		title: 'Promotion offering product name',
+		body: 'Mauris condimentum, sem vehicula ullamcorper porttitor, nisi leo laoreet urna, vel sodales libero elit non purus. Morbi eget arcu dictum, pretium nulla a, convallis ipsum. Donec volutpat consectetur convallis. Suspendisse tortor turpis, molestie nec erat sit amet, hendrerit lacinia turpis. Nunc sodales urna ac justo condimentum laoreet. Cras in dui arcu. Mauris id fringilla sapien, id scelerisque lectus.',
+		ctaLink: '#',
+		ctaLabel: 'Request a Quote'
+	},
+]
+	</pre>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

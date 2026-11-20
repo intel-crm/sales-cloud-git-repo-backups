@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bank</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Banks</value>
+    </caseValues>
+    <fields>
+        <label><!-- AP_SYS_CD --></label>
+        <name>Core_MDF_AP_SYS_CD__c</name>
+    </fields>
+    <fields>
+        <label>Compte</label>
+        <name>Core_MDF_Account__c</name>
+        <relationshipLabel><!-- Banks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- BNK_ACCT_NBR --></label>
+        <name>Core_MDF_BNK_ACCT_NBR__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_ADDR_1_TXT --></label>
+        <name>Core_MDF_BNK_ADDR_1_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_ADDR_2_TXT --></label>
+        <name>Core_MDF_BNK_ADDR_2_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_ADDR_3_TXT --></label>
+        <name>Core_MDF_BNK_ADDR_3_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_ADDR_4_TXT --></label>
+        <name>Core_MDF_BNK_ADDR_4_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_ADDR_5_TXT --></label>
+        <name>Core_MDF_BNK_ADDR_5_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_CTY_NM --></label>
+        <name>Core_MDF_BNK_CTY_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_NBR --></label>
+        <name>Core_MDF_BNK_NBR__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_NM --></label>
+        <name>Core_MDF_BNK_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_POST_CD --></label>
+        <name>Core_MDF_BNK_POST_CD__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNK_ST_NM --></label>
+        <name>Core_MDF_BNK_ST_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR_NBR --></label>
+        <name>Core_MDF_BR_NBR__c</name>
+    </fields>
+    <fields>
+        <label><!-- BR_NM --></label>
+        <name>Core_MDF_BR_NM__c</name>
+    </fields>
+    <fields>
+        <help>Le numéro de compte bancaire est une information confidentielle.  Veuillez entrer uniquement les 4 derniers chiffres du numéro de compte bancaire.  Le numéro complet est stocké dans la base de données des entreprises fournisseuses.</help>
+        <label>N° compte bancaire (4 derniers chiffres)</label>
+        <name>Core_MDF_Bank_Account_Number__c</name>
+    </fields>
+    <fields>
+        <help>Le nom de la banque est montré à l&apos;utilisateur lors de la soumission des demandes de remboursement. Ce champ peut être modifié par un membre doté du rôle Administrateur de comptes.</help>
+        <label>Alias de la banque</label>
+        <name>Core_MDF_Bank_Alias_Name__c</name>
+    </fields>
+    <fields>
+        <help>Titulaire du compte bancaire d&apos;après les données des entreprises fournisseuses pour le numéro de fournisseur correspondant.</help>
+        <label>Nom de la banque bénéficiaire</label>
+        <name>Core_MDF_Bank_Beneficiary_Name__c</name>
+    </fields>
+    <fields>
+        <label>Emplacement de la banque</label>
+        <name>Core_MDF_Bank_Location__c</name>
+    </fields>
+    <fields>
+        <label>Nom de la banque</label>
+        <name>Core_MDF_Bank_Name__c</name>
+    </fields>
+    <fields>
+        <label>État de la banque</label>
+        <name>Core_MDF_Bank_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold</masterLabel>
+            <translation><!-- Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CHK_RCPNT_NM --></label>
+        <name>Core_MDF_CHK_RCPNT_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The currency used by Supplier database for this bank. --></help>
+        <label><!-- Supplier Currency --></label>
+        <name>Core_MDF_Currency_cd__c</name>
+    </fields>
+    <fields>
+        <help>Système de numérotation universel des données, régi par Dun and Bradstreet (D&amp;B) qui affecte un identifiant numérique unique par entité commerciale.  Ce numéro des données des fournisseurs permet la correspondance avec le numéro de fournisseur.</help>
+        <label><!-- DUNS --></label>
+        <name>Core_MDF_DUNS__c</name>
+    </fields>
+    <fields>
+        <help>État de la banque d&apos;après les données des entreprises fournisseuses.  Si Oui, toutes les demandes de remboursement impayées affectées à cette banque sont placées dans l&apos;état Bloqué.</help>
+        <label>Indicateur de blocage des données fourni</label>
+        <name>Core_MDF_ESD_Hold_Indicator__c</name>
+    </fields>
+    <fields>
+        <label>Mise à jour ESD</label>
+        <name>Core_MDF_ESD_Update__c</name>
+    </fields>
+    <fields>
+        <help>La date à laquelle la banque peut être sélectionnée pour une demande de remboursement.</help>
+        <label>Date d&apos;entrée en vigueur</label>
+        <name>Core_MDF_Effective_Date__c</name>
+    </fields>
+    <fields>
+        <help>Indique si toutes les demandes pendantes pour la banque doivent ne pas figurer sur le prochain fichier des dettes. Celles concernant une banque bloquée le seront aussi. Si Bloqué est désélectionné, banque et demandes reviennent à leurs états précédents. </help>
+        <label>Bloquer paiemts du fich. des créditeurs?</label>
+        <name>Core_MDF_Hold_Payments_from_AP_file_ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Raison du blocage</label>
+        <name>Core_MDF_Hold_Reason_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_MDF_IIM_Name_txt --></label>
+        <name>Core_MDF_IIM_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_ADDR_1_TXT --></label>
+        <name>Core_MDF_INTRMD_BNK_ADDR_1_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_ADDR_2_TXT --></label>
+        <name>Core_MDF_INTRMD_BNK_ADDR_2_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_ADDR_3_TXT --></label>
+        <name>Core_MDF_INTRMD_BNK_ADDR_3_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_ADDR_4_TXT --></label>
+        <name>Core_MDF_INTRMD_BNK_ADDR_4_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_ADDR_5_TXT --></label>
+        <name>Core_MDF_INTRMD_BNK_ADDR_5_TXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_CD --></label>
+        <name>Core_MDF_INTRMD_BNK_CD__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_CTY_NM --></label>
+        <name>Core_MDF_INTRMD_BNK_CTY_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_NM --></label>
+        <name>Core_MDF_INTRMD_BNK_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_POST_CD --></label>
+        <name>Core_MDF_INTRMD_BNK_POST_CD__c</name>
+    </fields>
+    <fields>
+        <label><!-- INTRMD_BNK_ST_NM --></label>
+        <name>Core_MDF_INTRMD_BNK_ST_NM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive by Program --></label>
+        <name>Core_MDF_Inactive_by_Program_nm__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+            <translation><!-- Client Co-Marketing Fund Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter</masterLabel>
+            <translation><!-- Datacenter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+            <translation><!-- Service Provider Co-Marketing Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Une fois inactive, la banque ne peut plus être sélectionnée pour une demande de remboursement. Le système n&apos;autorisera pas la désactivation de la banque si des demandes actives sont en cours. </help>
+        <label>Date de fin d&apos;application</label>
+        <name>Core_MDF_Ineffective_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label>Sélection inopérante</label>
+        <name>Core_MDF_Ineffective_Selection_ind__c</name>
+    </fields>
+    <fields>
+        <help>L&apos;entité financière Intel à laquelle est facturée le paiement.</help>
+        <label>Code de société Intel</label>
+        <name>Core_MDF_Intel_Company_Code__c</name>
+        <picklistValues>
+            <masterLabel>100</masterLabel>
+            <translation><!-- 100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>150</masterLabel>
+            <translation><!-- 150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>220</masterLabel>
+            <translation><!-- 220 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>420</masterLabel>
+            <translation><!-- 420 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>650</masterLabel>
+            <translation><!-- 650 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>760</masterLabel>
+            <translation><!-- 760 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Indicateur d&apos;intermédiaire</label>
+        <name>Core_MDF_Intermediary_Indicator__c</name>
+    </fields>
+    <fields>
+        <label>Remarque</label>
+        <name>Core_MDF_Note__c</name>
+    </fields>
+    <fields>
+        <label><!-- OLD_AP_VNDR_NBR --></label>
+        <name>Core_MDF_OLD_AP_VNDR_NBR__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORIG_APP_SYS_CD --></label>
+        <name>Core_MDF_ORIG_APP_SYS_CD__c</name>
+    </fields>
+    <fields>
+        <help>La devise dans laquelle les paiements seront effectués au client.</help>
+        <label>Devise de paiement</label>
+        <name>Core_MDF_Payment_Currency_Cd__c</name>
+    </fields>
+    <fields>
+        <label>Code de mode de paiement</label>
+        <name>Core_MDF_Payment_Method_Code__c</name>
+        <picklistValues>
+            <masterLabel>C</masterLabel>
+            <translation><!-- C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Value__c</name>
+    </fields>
+    <fields>
+        <label>Programme</label>
+        <name>Core_MDF_Program__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation>Fonds de co-marketing Client</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
+            <translation>Soutien au fonds de co-marketing pour client</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-GTM</masterLabel>
+            <translation><!-- Co-GTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacenter</masterLabel>
+            <translation>Fonds de co-marketing Centre de données</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecosystem Extension Fund</masterLabel>
+            <translation><!-- Ecosystem Extension Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance</masterLabel>
+            <translation><!-- Intel Partner Alliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Marketing Funds</masterLabel>
+            <translation><!-- Retail Marketing Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
+            <translation>Fonds de co-marketing pour Fournisseur de services</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Numéro d&apos;acheminement de la banque d&apos;après les données des entreprises fournisseuses pour le numéro de fournisseur correspondant.</help>
+        <label>Numéro d&apos;acheminement</label>
+        <name>Core_MDF_Routing_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier City --></label>
+        <name>Core_MDF_Supplier_City_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Country --></label>
+        <name>Core_MDF_Supplier_Country_txt__c</name>
+    </fields>
+    <fields>
+        <label>Nom du fournisseur</label>
+        <name>Core_MDF_Supplier_Name__c</name>
+    </fields>
+    <fields>
+        <label>Numéro du fournisseur</label>
+        <name>Core_MDF_Supplier_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Postal Code --></label>
+        <name>Core_MDF_Supplier_Postal_Code_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier Region --></label>
+        <name>Core_MDF_Supplier_Region_txt__c</name>
+    </fields>
+    <fields>
+        <help>Code SWIFT de la banque d&apos;après les données des entreprises fournisseuses pour le numéro de fournisseur correspondant.</help>
+        <label>Code SWIFT</label>
+        <name>Core_MDF_Swift_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tax codes --></label>
+        <name>Core_MDF_Tax_codes_cd__c</name>
+        <picklistValues>
+            <masterLabel>I0</masterLabel>
+            <translation><!-- I0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I1</masterLabel>
+            <translation><!-- I1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UB</masterLabel>
+            <translation><!-- UB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UD</masterLabel>
+            <translation><!-- UD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UY</masterLabel>
+            <translation><!-- UY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UZ</masterLabel>
+            <translation><!-- UZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V3</masterLabel>
+            <translation><!-- V3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V6</masterLabel>
+            <translation><!-- V6 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- VAT % --></label>
+        <name>Core_MDF_VAT_pct__c</name>
+        <picklistValues>
+            <masterLabel>0%</masterLabel>
+            <translation><!-- 0% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20%</masterLabel>
+            <translation><!-- 20% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21%</masterLabel>
+            <translation><!-- 21% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8%</masterLabel>
+            <translation><!-- 8% --></translation>
+        </picklistValues>
+    </fields>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nom de la banque</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Record Type when bank status is Active --></description>
+        <label><!-- Bank Status Active --></label>
+        <name>Core_MDF_Bank_Status_Active</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type when bank status is non-draft --></description>
+        <label><!-- Bank Status Non-Draft --></label>
+        <name>Core_MDF_Bank_Status_Non_Draft</name>
+    </recordTypes>
+    <sharingReasons>
+        <label><!-- AccountBudgetAdmin --></label>
+        <name>AccountBudgetAdmin</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- AccountNodeGroup --></label>
+        <name>Core_MDF_AccountNodeGroup</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Can only Edit Bank Account field when it&apos;s in initial Draft Status. --></errorMessage>
+        <name>Core_MDF_Bank_Account_Not_Editable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a supplier currency. --></errorMessage>
+        <name>Core_MDF_Bank_Blank_Currency</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a payment currency. --></errorMessage>
+        <name>Core_MDF_Bank_Blank_Payment_Currency</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot edit this field at this time --></errorMessage>
+        <name>Core_MDF_Bank_Name_Non_Editable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select valid program --></errorMessage>
+        <name>Core_MDF_CheckUserPermission</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a Hold Reason --></errorMessage>
+        <name>Core_MDF_EnterHoldReason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This bank is in Inactive status and cannot currently be edited --></errorMessage>
+        <name>Core_MDF_InactiveBank_Uneditable_AP_Hold</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Client/Datacenter/SPCF/CCFB can only select Legal Entity 100. --></errorMessage>
+        <name>Core_MDF_LegalEntityForCCFDCFSPCFCCFB</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- IPA cannot select Legal Entity 220. --></errorMessage>
+        <name>Core_MDF_LegalEntityForIPA</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- RMF cannot select Legal Entity 100/220. --></errorMessage>
+        <name>Core_MDF_LegalEntityForRMF</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Co-GTM cannot select Legal Entity 220. --></errorMessage>
+        <name>Core_MDF_LegalEntityFor_Co_GTM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Tax Code is not valid with the Intel Company Code selected. --></errorMessage>
+        <name>Core_MDF_LegalEntity_TaxCode_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CCF/DCF/SPCF/CCFB cannot select Tax Code. --></errorMessage>
+        <name>Core_MDF_NoTaxCodeForCCFDCFSPCFCCFB</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Client/Datacenter/SPCF/CCFB/EEF cannot select Tax Code. --></errorMessage>
+        <name>Core_MDF_NoTaxCodeForCCFDCFSPCFCCFBEEF</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select valid program --></errorMessage>
+        <name>Core_MDF_Paymentadmin_UserPermission</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only one Program value --></errorMessage>
+        <name>Core_MDF_Restrict_MultipleProgSelection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This payment currency is not valid for the program selected. --></errorMessage>
+        <name>Core_MDF_Restrict_PaymtCurrency_ReadOnly</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot use the same bank for the IPA and RMF Programs. Please create a new bank. --></errorMessage>
+        <name>Core_MDF_Restrict_Program_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Tax Code is mandatory for RMF/IPA/Channel MDF --></errorMessage>
+        <name>Core_MDF_TaxCodeMandatoryForRMF</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Selected Account is not a Comarketing Account. --></errorMessage>
+        <name>Core_MDF_ValidateAccountOnBank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter Valid Account Number --></errorMessage>
+        <name>Core_MDF_errorIfNotNumberAN</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter Valid Supplier Number --></errorMessage>
+        <name>Core_MDF_errorIfNotNumberSN</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

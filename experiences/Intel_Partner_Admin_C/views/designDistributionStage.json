@@ -1,0 +1,71 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "535fdbc5-8f89-4ddc-b2f3-938b26465b25",
+  "label" : "Design Distribution Stage",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "8d32d789-d324-42dc-8321-999756e01b59",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "53991dad-3f5a-4403-9521-435b33d78892",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "All",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Core_Design_Registration_Stage__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "fc1bd6b6-e969-46be-b10b-0630e2752683",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0061a6f7-68b8-4e5e-8b01-3ce217fa5967",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "2e2b67d5-6341-46d9-af0b-870f451c6eb3",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Design Registration Stage"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "11f26940-f757-4dcf-8f67-2e18d5cfa3ff",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "159882d7-526b-44ab-99de-eeec899607f5",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "type" : "view",
+  "viewType" : "custom-design-distribution-stage"
+}

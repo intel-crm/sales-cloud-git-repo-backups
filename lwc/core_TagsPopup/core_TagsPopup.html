@@ -1,0 +1,51 @@
+<template>
+<lightning-modal-header label = "All Tags"></lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-grid slds-text-align_left">
+            <div class = "slds-col">
+                <lightning-input type="search" placeholder="Search by Tag Name" onchange={handleSearch}>
+
+                </lightning-input>
+            </div>
+            <!--
+            <div class="slds-col slds-text-align_right">
+                <lightning-button label="Refresh" icon-name="utility:refresh" onclick ={handleRefresh}>
+                </lightning-button>
+            </div>
+            -->
+        </div>
+
+        <template if:true = {isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+
+        <template if:true={hasData}>
+            <div class = "table-container">
+                <lightning-datatable 
+                key-field="Id" 
+                data={tagDetails} 
+                columns={columns}
+                hide-checkbox-column
+                wrap-text-max-lines = "7">
+                </lightning-datatable>
+            </div>
+        </template>
+
+        <template if:false={hasData}>
+            <div class = "slds-text-align_center slds-m-top_medium">
+                <lightning-icon icon-name = "utility:search" size="small" ></lightning-icon>
+                <p class="slds-m-top_small">No tags found with the name searched. Please check the Tag name.</p>
+            </div>
+        </template>
+
+
+        <div class="slds-m-top_medium slds-align_absolute-center">
+            <lightning-button variant="brand-outline" label="<" onclick={handleBack} disabled={disableBack} class = "slds-m-right_small"></lightning-button>
+            <lightning-button variant="brand-outline" label=">" onclick={handleNext} disabled={disableNext} class = "slds-m-left_small"></lightning-button>
+        </div>
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+        <lightning-button label="Close" onclick={close}></lightning-button>
+    </lightning-modal-footer>
+</template>

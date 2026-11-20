@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Log Entry</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Log Entries</value>
+    </caseValues>
+    <fields>
+        <label><!-- Details --></label>
+        <name>Core_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>Core_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Scheduled Run --></label>
+        <name>Core_Next_Scheduled_Run__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Link --></label>
+        <name>Core_Object_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Core_Origin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Core_Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry_Counter --></label>
+        <name>Core_Retry_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scope --></label>
+        <name>Core_Scope__c</name>
+    </fields>
+    <fields>
+        <label><!-- Severity --></label>
+        <name>Core_Severity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Email --></label>
+        <name>Core_Support_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Link --></label>
+        <name>Core_Support_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tags --></label>
+        <name>Core_Tags__c</name>
+    </fields>
+    <fields>
+        <label><!-- When --></label>
+        <name>Core_When__c</name>
+    </fields>
+    <fields>
+        <label><!-- XID --></label>
+        <name>Core_XID__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectId --></label>
+        <name>Core_sObjectId__c</name>
+    </fields>
+    <fields>
+        <label><!-- sObjectType --></label>
+        <name>Core_sObjectType__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Name --></label>
+        <name>File_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Status --></label>
+        <name>Review_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed</masterLabel>
+            <translation><!-- Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investigating</masterLabel>
+            <translation><!-- Investigating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reviewed</masterLabel>
+            <translation><!-- Reviewed --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_IPS_Reprocess_Failed_CasePromotes --></label>
+        <name>Core_IPS_Reprocess_Failed_CasePromotes</name>
+    </webLinks>
+</CustomObjectTranslation>

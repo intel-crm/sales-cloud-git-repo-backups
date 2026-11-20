@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Event Offering</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Event Offerings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Lookup to Marketplace Event. --></help>
+        <label><!-- Marketplace Event Id --></label>
+        <name>PMP_Event_Id__c</name>
+        <relationshipLabel><!-- Marketplace Event Offerings --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Lookup to Partner Offering. --></help>
+        <label><!-- Partner Offering Id --></label>
+        <name>PMP_Offering_Id__c</name>
+        <relationshipLabel><!-- Marketplace Event Offerings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" description="Determines redirect process when SSO fails">
+    <aura:attribute name="lstLines" type="List" default="[ 'Access Denied', 'Access Denied', 'Access Denied' ]"/>
+    <aura:attribute name="blShowError" type="Boolean" default="false"/>
+    <c:coreIntcSso aura:id="ssoLibrary" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.blShowError}">
+        <div>
+            <aura:iteration items="{!v.lstLines}" var="strLine">
+                <aura:unescapedHTML value="{!strLine}"/>
+                <br/>
+            </aura:iteration>    
+        </div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Claim Offset</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Claim Offsets</value>
+    </caseValues>
+    <fields>
+        <help><!-- Unique identifier of Claim created based on the Adjustment Request --></help>
+        <label><!-- Adjustment Claim Name --></label>
+        <name>Core_MDF_Adjustment_Claim_Nbr__c</name>
+        <relationshipLabel><!-- Claim Offsets (Adjustment Claim) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Amount in US Dollars that was used to offset a Claim --></help>
+        <label><!-- Offset Amount (USD) --></label>
+        <name>Core_MDF_Offset_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Claim that was offset by an Adjustment Claim --></help>
+        <label><!-- Offset Claim Name --></label>
+        <name>Core_MDF_Offset_Claim_Nbr__c</name>
+        <relationshipLabel><!-- Claim Offsets --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sub Claim --></label>
+        <name>Core_MDF_Sub_Claim_Id__c</name>
+        <relationshipLabel><!-- Claim Offsets (Sub Claim) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

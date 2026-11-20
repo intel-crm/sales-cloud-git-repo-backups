@@ -1,0 +1,101 @@
+<template>
+<template if:true={isSubmissionPage}>
+    <lightning-card>
+        <div class="slds-grid" style='padding-left:10%; padding-right: 5%;'>
+        <lightning-layout multiple-rows='true'>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='8' padding='around-small'>
+                <p style="font-size: 30px;">{releaseInfoTitle}</p><br/>
+                <lightning-formatted-rich-text value={releaseInfoTermsAndConditions}></lightning-formatted-rich-text>
+                <!-- <p>{releaseInfoTermsAndConditions}</p> -->
+            </lightning-layout-item>
+            <lightning-layout-item size='3'></lightning-layout-item>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='8'>
+                <hr style="height:4px;border-width:0;color:gray;background-color:dodgerblue">
+            </lightning-layout-item>
+            <lightning-layout-item size='3'></lightning-layout-item>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='8' padding='around-small'>
+                <p style="font-size: 30px;color:dodgerblue">{intelDistributorsTitle}</p><br/>
+                <p style="font-size: 20px;">{optInTitle}</p>      
+            </lightning-layout-item>
+            <lightning-layout-item size='3'></lightning-layout-item>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='4' padding='around-small'>
+                <div class="slds-size_2-of-2">
+                    <lightning-combobox name="progress" label="" value={firstPicklistValue} placeholder={select1} options={firstPicklistOptions} onchange={handleChange} ></lightning-combobox>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size='4' padding='around-small'>
+                <div class="slds-size_2-of-2">
+                    <lightning-combobox name="progress" label="" value={secondPicklistValue} placeholder={select2} options={secondPicklistOptions} onchange={handleSecPicValChange}></lightning-combobox>
+                </div> 
+            </lightning-layout-item>
+            <lightning-layout-item size='3'></lightning-layout-item><br/>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='2' medium-device-size='1' padding='around-small'>
+                    <lightning-button-icon-stateful icon-name={iconName} selected={isChecked} onclick={handleCheck} alternative-text="Accept"></lightning-button-icon-stateful>
+            </lightning-layout-item>
+            <lightning-layout-item size='6' medium-device-size='7' padding='around-small'>
+                    <lightning-formatted-rich-text value={authorisedTermsAndConditions}></lightning-formatted-rich-text> <br/>  
+                <div class="slds-clearfix"> 
+                    <div class="slds-float_right">
+                        <lightning-button variant="brand" label={submitButtonLabel} onclick={handleClick} class="slds-m-left_x-small" disabled={isDasabled} ></lightning-button>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    </lightning-card>
+</template>
+
+<template if:true={isConfirmPage}>
+    <lightning-card>
+        <lightning-layout multiple-rows='true'>
+            <div class="slds-grid" style='padding-left:10%; padding-right: 5%;'>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='2' medium-device-size='1' padding='around-small'>
+                <lightning-icon icon-name={iconApproval} alternative-text="Submitted" title="Submitted"></lightning-icon>
+            </lightning-layout-item>
+            <lightning-layout-item size='9' medium-device-size='10' padding='around-small'>
+                    <p style="font-size: 25px;">{confirmMessage}</p>
+            </lightning-layout-item>
+            </div>
+        </lightning-layout> 
+    </lightning-card>
+</template>
+
+<template if:true={isAlreadySubmitted}>
+    <lightning-card>
+        
+        <lightning-layout multiple-rows='true'>
+            <div class="slds-grid" style='padding-left:10%; padding-right: 5%;'>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='2' medium-device-size='1' padding='around-small'>
+                <lightning-icon icon-name={iconApproval} alternative-text="Submitted" title="Submitted"></lightning-icon>
+            </lightning-layout-item>
+            <lightning-layout-item size='9' medium-device-size='10' padding='around-small'>
+                    <p style="font-size: 25px;">{alreadySubmittedMessage}</p>
+            </lightning-layout-item>
+            </div>
+        </lightning-layout>   
+    </lightning-card>
+</template>
+
+<template if:true={isNotAuthorised}>
+    <lightning-card>
+        <lightning-layout multiple-rows='true'>
+            <div class="slds-grid" style='padding-left:10%; padding-right: 5%;'>
+            <lightning-layout-item size='1'></lightning-layout-item>
+            <lightning-layout-item size='2' medium-device-size='1' padding='around-small'>
+                <lightning-icon icon-name={iconClose} alternative-text="Not Allowed" title="Not Allowed"></lightning-icon>
+            </lightning-layout-item>
+            <lightning-layout-item size='9' medium-device-size='10' padding='around-small'>
+                <p style="font-size: 25px;">{notAuthorisedMessage}</p>
+            </lightning-layout-item>
+            </div>
+        </lightning-layout> 
+    </lightning-card>
+</template> 
+</template>

@@ -1,0 +1,445 @@
+{
+  "version" : "63.0",
+  "nodes" : {
+    "LOAD_DATASET0" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "Name", "RecordTypeId", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "Opportunity__c", "Core_Additional_Support_Needed__c", "Core_Approved_By_c__c", "Core_Approved_Date__c", "Core_Approver_1__c", "Core_Approver_2__c", "Core_Approver_3__c", "Core_Approver_4__c", "Core_Approver_5__c", "Core_Opportunity_Description__c", "Core_PrimaryBlockers__c", "Core_Status__c", "Core_background_info_on_architecture__c", "Core_Account_Name__c", "Core_Amount__c", "Core_Decision_Date__c", "Core_Opportunity_Name__c", "Core_Opportunity_Owner__c", "Core_Product_Application__c", "Core_Product_Segment__c", "Core_Region__c", "Core_Sales_Stages__c", "Core_Technical_Owner__c", "Core_Vertical_Market__c", "Sales_Group__c", "Core_Opportunity_Support_Team_Count__c", "Core_Approval_Comments__c", "Core_Submitted_Date__c", "Core_TSS_Support_Type__c", "Core_Age__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Opportunity_Support__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Opportunity_Support__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET1" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "IsDeleted", "Name", "CreatedDate", "CreatedById", "LastModifiedDate", "LastModifiedById", "SystemModstamp", "Core_Opportunity_Support__c", "Core_Opportunity_Support_Team_Member__c", "Core_Status__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "Core_Opportunity_Support_Team__c",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "Core_Opportunity_Support_Team__c"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET2" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "OpportunityProducts.OpptyProductsWithModifyAllData.ModifyAllData.AssigneeId", "OpportunityProducts.Opportunity.SetupEntityAccess.ViewAllAnalyticsData.PermissionSet.ProfileId", "OpportunityProducts.Opportunity.Account.DirectTerritoryRoles.Role.Roles", "OpportunityProducts.Opportunity.Security.Role.Roles", "OpportunityProducts.Opportunity.AccountTeamMember.Security.Role.Roles", "OpportunityProducts.GroupMemberRoles.Role.Roles", "OpportunityProducts.Opportunity.Account.ParentTerritoryRoles.Role.Roles", "OpportunityProducts.Opportunity.AccountTeamMember.UserId", "OpportunityProducts.Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritory.UserTerritory.UserId", "OpportunityProducts.Opportunity.Account.TerritoryAndParentTerritoryUsers.FlatTerritoryParent.UserTerritory.UserId", "OpportunityProducts.GroupMember.UserOrGroupId", "OpportunityProducts.Opportunity.Group.Security.UserOrGroupId", "CloseDate_YearQuarter", "OpportunityProducts.Core_Risk_Priority__c", "Core_Technical_Owner__c", "CloseDate", "OpportunityProducts.FiscalDecisionDate.dayofmonth", "OpportunityProducts.Opportunity.Security.Id", "OpportunityProducts.Push", "Core_Low_stage_progression__c", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Name", "OpportunityProducts.StageSorted", "Core_Opportunity_Owner__c", "OpportunityProducts.Opportunity.OpportunityPartner.Name", "OpportunityProducts.Core_At_Risk__c", "OpportunityPartner.AccountPartner.Name", "OppAccountUser.Name", "Core_Opportunity_Past_Due__c", "OpportunityProducts.FiscalDecisionDate.fiscalyearquarternumber", "Id", "Core_Low_pipeline_confidence__c", "OpportunityProducts.Opportunity.StageName", "Core_Technical_Owner_Manager__c", "Core_Opportunity_Type__c", "OpportunityProducts.Core_BU_Short_Name__c", "OppAccountUser.Id", "OpportunityProducts.Opportunity.CreatedDate", "OpportunityProducts.Opportunity.Owner.Manager.Manager.Name", "OpportunityAccount.Core_Unified_Intermediate_Customer_Name__c", "OpportunityProducts.Opportunity.Core_Named_Strategic__c", "CloseDate_mmddyyyy", "OwnerId", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Manager.Manager.Name", "OpportunityProducts.Opportunity.TechOwner.Manager.Manager.Name", "OpportunityProducts.Opportunity.Account.Core_Prime_Account_Name__c", "OpportunityProducts.Opportunity.TeamMembersNoOwners.User.Name", "StageName", "OpportunityProducts.Opportunity.TeamMembers.User.Manager.Name", "OpportunityProducts.opportunityDecisionDateQuarter", "OpportunityProducts.Product2Id", "OpportunityProducts.Name", "OpportunityAccount.Core_Unified_Global_Customer_Name__c", "OpportunityProducts.Core_Status__c", "OpportunityProducts.Core_KPI_Total_Price__c" ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "OpportunityWithNoPrd",
+          "name" : "OpportunityWithNoPrd"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN0" : {
+      "action" : "join",
+      "sources" : [ "JOIN2", "LOAD_DATASET1" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Id" ],
+        "rightQualifier" : "Core_Opportunity_Support_Team",
+        "rightKeys" : [ "Core_Opportunity_Support__c" ]
+      }
+    },
+    "JOIN1" : {
+      "action" : "join",
+      "sources" : [ "JOIN0", "LOAD_DATASET2" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "RIGHT_OUTER",
+        "leftKeys" : [ "Opportunity__c" ],
+        "rightQualifier" : "OpportunityProdWithNoPrd",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "OUTPUT0" : {
+      "action" : "save",
+      "sources" : [ "JOIN5" ],
+      "parameters" : {
+        "fields" : [ ],
+        "dataset" : {
+          "type" : "analyticsDataset",
+          "label" : "TechResourceDataset_UAT",
+          "name" : "TechResourceDataset_UAT",
+          "folderName" : "Bug_Fix"
+        },
+        "measuresToCurrencies" : [ ]
+      }
+    },
+    "JOIN2" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET0", "LOAD_DATASET3" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "RecordTypeId" ],
+        "rightQualifier" : "RecordType",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET3" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Name", "DeveloperName" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "RecordType",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "RecordType"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN3" : {
+      "action" : "join",
+      "sources" : [ "JOIN1", "LOAD_DATASET4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "Core_Opportunity_Support_Team.Core_Opportunity_Support_Team_Member__c" ],
+        "rightQualifier" : "User",
+        "rightKeys" : [ "Id" ]
+      }
+    },
+    "LOAD_DATASET4" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "Id", "Username", "LastName", "FirstName", "Name", "CompanyName", "Division", "Department", "Title", "Street", "City", "State", "PostalCode", "Country", "Email", "Alias", "CommunityNickname", "IsActive", "UserRoleId", "ReceivesInfoEmails", "ProfileId", "UserType", "ManagerId", "LastLoginDate", "CreatedDate", "LastModifiedDate", "UserPermissionsMarketingUser", "UserPermissionsOfflineUser", "UserPermissionsAvantgoUser", "UserPermissionsCallCenterAutoLogin", "UserPermissionsSFContentUser", "UserPermissionsKnowledgeUser", "UserPermissionsInteractionUser", "UserPermissionsSupportUser", "UserPermissionsLiveAgentUser", "UserPermissionsChatterAnswersUser", "AccountId", "FullPhotoUrl", "SmallPhotoUrl", "Core_User_Geo__c", "Core_WWID__c", "Core_User_Sub_Geo__c", "Core_Manager__c", "Core_User_License__c" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "User",
+          "connectionName" : "SFDC_LOCAL",
+          "sourceObjectName" : "User"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET5" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "ROOT_PERSON_ROLE_TYPE_CD", "PERSON_ROLE_TYPE_CD", "WWID", "FIRST_NM", "MIDDLE_NM", "MIDDLE_INITIAL_TXT", "LAST_NM", "FULL_NM", "LEGAL_FIRST_NM", "LEGAL_MIDDLE_NM", "LEGAL_MIDDLE_INITIAL_TXT", "LEGAL_LAST_NM", "LEGAL_FULL_NM", "LEGAL_NM_INITIALS_TXT", "LOCAL_FIRST_NM", "LOCAL_MIDDLE_NM", "LOCAL_MIDDLE_INITIAL_TXT", "LOCAL_LAST_NM", "LOCAL_FULL_NM", "LOCAL_NM_INITIALS_TXT", "ACTIVE_DIRECTORY_MAIL_NM", "AUTHENTICATION_DOMAIN_TXT", "IDS_ID", "MAIL_STOP_TXT", "OFFICE_LOCATION_TXT", "CORPORATE_EMAIL_TXT", "WORK_PHONE_NBR", "WORK_INET_NBR", "MOBILE_PHONE_NBR", "WORK_PHONE_FAX_NBR", "WORK_PHONE_PAGER_NBR", "ASSISTANT_CONTACT_TXT", "WORK_MODEL_ELIGIBILITY_TXT", "WORK_LOCATION_TXT", "WORK_LOCATION_BUILDING_CD", "WORK_LOCATION_BUILDING_NM", "WORK_LOCATION_CAMPUS_CD", "WORK_LOCATION_CAMPUS_NM", "WORK_LOCATION_SITE_CD", "WORK_LOCATION_SITE_NM", "WORK_LOCATION_COUNTRY_SUBDIVISION_CD", "WORK_LOCATION_COUNTRY_NM", "REGULATORY_COUNTRY_CD", "TIME_ZONE_CD", "EMPLOYEE_STATUS_CD", "EXPORT_COUNTRY_STATUS_CD", "EXPORT_COUNTRY_GROUP_DSC", "EMPLOYEE_CLASS_CD", "EMPLOYMENT_TYPE_CD", "MANAGER_IND", "SPONSOR_IND", "JOB_TYPE_CD", "JOB_TYPE_NM", "JOB_TRACK_NM", "JOB_FUNCTION_NM", "WORK_SHIFT_CD", "DIRECT_LABOR_IND", "DEPARTMENT_CD", "NEXT_LEVEL_TYPE_CD", "NEXT_LEVEL_WWID", "NEXT_LEVEL_NM", "NEXT_LEVEL_CORPORATE_EMAIL_TXT", "COST_CENTER_CD", "COST_CENTER_NM" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "ENTERPRISE_WORKER",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "ENTERPRISE_WORKER"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "LOAD_DATASET6" : {
+      "action" : "load",
+      "sources" : [ ],
+      "parameters" : {
+        "fields" : [ "DEPARTMENT_CD", "DEPARTMENT_NM", "TREE_LEVEL_NBR", "DEPARTMENT_ACTIVATION_DT", "MANAGER_WWID", "MANAGER_NM", "BUSINESS_PARTNER_WWID", "BUSINESS_PARTNER_NM", "PARENT_DEPARTMENT_NM", "PARENT_DEPARTMENT_CD", "DEPARTMENT_LEVEL_ONE_NM", "DEPARTMENT_LEVEL_ONE_CD", "DEPARTMENT_LEVEL_TWO_NM", "DEPARTMENT_LEVEL_TWO_CD", "DEPARTMENT_LEVEL_TWENTY_NM", "DEPARTMENT_LEVEL_TWENTY_CD", "DEPARTMENT_LEVEL_TWELVE_NM", "DEPARTMENT_LEVEL_TWELVE_CD", "DEPARTMENT_LEVEL_THREE_NM", "DEPARTMENT_LEVEL_THREE_CD", "DEPARTMENT_LEVEL_THIRTHEEN_NM", "DEPARTMENT_LEVEL_THIRTHEEN_CD", "DEPARTMENT_LEVEL_TEN_NM", "DEPARTMENT_LEVEL_TEN_CD", "DEPARTMENT_LEVEL_SIXTEEN_NM", "DEPARTMENT_LEVEL_SIXTEEN_CD", "DEPARTMENT_LEVEL_SIX_NM", "DEPARTMENT_LEVEL_SIX_CD", "DEPARTMENT_LEVEL_SEVENTEEN_NM", "DEPARTMENT_LEVEL_SEVENTEEN_CD", "DEPARTMENT_LEVEL_SEVEN_NM", "DEPARTMENT_LEVEL_SEVEN_CD", "DEPARTMENT_LEVEL_NINETEEN_NM", "DEPARTMENT_LEVEL_NINETEEN_CD", "DEPARTMENT_LEVEL_NINE_NM", "DEPARTMENT_LEVEL_NINE_CD", "DEPARTMENT_LEVEL_FOURTEEN_NM", "DEPARTMENT_LEVEL_FOURTEEN_CD", "DEPARTMENT_LEVEL_FOUR_NM", "DEPARTMENT_LEVEL_FOUR_CD", "DEPARTMENT_LEVEL_FIVE_NM", "DEPARTMENT_LEVEL_FIVE_CD", "DEPARTMENT_LEVEL_FIFTEEN_NM", "DEPARTMENT_LEVEL_FIFTEEN_CD", "DEPARTMENT_LEVEL_ELEVEN_NM", "DEPARTMENT_LEVEL_ELEVEN_CD", "DEPARTMENT_LEVEL_EIGHTEEN_NM", "DEPARTMENT_LEVEL_EIGHTEEN_CD", "DEPARTMENT_LEVEL_EIGHT_NM", "DEPARTMENT_LEVEL_EIGHT_CD" ],
+        "dataset" : {
+          "type" : "connectedDataset",
+          "label" : "WORKER_DEPARTMENT_HIERARCHY_SNAPSHOT",
+          "connectionName" : "SNOWFLAKE_SMG_CONNECTION",
+          "sourceObjectName" : "WORKER_DEPARTMENT_HIERARCHY_SNAPSHOT"
+        },
+        "sampleDetails" : {
+          "type" : "TopN",
+          "sortBy" : [ ]
+        }
+      }
+    },
+    "JOIN4" : {
+      "action" : "join",
+      "sources" : [ "LOAD_DATASET6", "TRIM0" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "RIGHT_OUTER",
+        "leftKeys" : [ "DEPARTMENT_CD" ],
+        "rightQualifier" : "ENTERPRISE",
+        "rightKeys" : [ "DEPARTMENT_CD" ]
+      }
+    },
+    "JOIN5" : {
+      "action" : "join",
+      "sources" : [ "JOIN3", "JOIN4" ],
+      "schema" : {
+        "fields" : [ ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ ]
+        }
+      },
+      "parameters" : {
+        "joinType" : "LEFT_OUTER",
+        "leftKeys" : [ "User.Core_WWID__c" ],
+        "rightQualifier" : "worker",
+        "rightKeys" : [ "ENTERPRISE.WWID" ]
+      }
+    },
+    "TRIM0" : {
+      "action" : "formula",
+      "sources" : [ "LOAD_DATASET5" ],
+      "schema" : {
+        "fields" : [ {
+          "name" : "JOB_TYPE_NM_trim",
+          "newProperties" : {
+            "name" : "JOB_TYPE_NM"
+          }
+        } ],
+        "slice" : {
+          "mode" : "DROP",
+          "ignoreMissingFields" : true,
+          "fields" : [ "JOB_TYPE_NM" ]
+        }
+      },
+      "parameters" : {
+        "expressionType" : "SQL",
+        "fields" : [ {
+          "type" : "TEXT",
+          "name" : "JOB_TYPE_NM_trim",
+          "label" : "JOB_TYPE_NM",
+          "formulaExpression" : "trim(JOB_TYPE_NM)",
+          "precision" : 255
+        } ]
+      }
+    }
+  },
+  "ui" : {
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "label" : "Core_Opportunity_Support__c",
+        "type" : "LOAD_DATASET",
+        "top" : 531.1,
+        "left" : 252.10000000000002,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET1" : {
+        "label" : "Core_Opportunity_Support_Team__c",
+        "type" : "LOAD_DATASET",
+        "top" : 532,
+        "left" : 532.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET2" : {
+        "label" : "OpportunityWithNoPrd",
+        "type" : "LOAD_DATASET",
+        "top" : 252.2,
+        "left" : 112.30000000000001,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN0" : {
+        "label" : "Join_Support_Team",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 392,
+        "left" : 532
+      },
+      "JOIN1" : {
+        "label" : "Join_OppWithNoPrd",
+        "description" : "",
+        "type" : "JOIN",
+        "top" : 252.2,
+        "left" : 532.1
+      },
+      "OUTPUT0" : {
+        "label" : "TechResourceDataset",
+        "description" : "",
+        "type" : "OUTPUT",
+        "top" : 252.10000000000002,
+        "left" : 1231.8
+      },
+      "JOIN2" : {
+        "label" : "Join 2",
+        "type" : "JOIN",
+        "top" : 391.1,
+        "left" : 392
+      },
+      "LOAD_DATASET3" : {
+        "label" : "RecordType",
+        "type" : "LOAD_DATASET",
+        "top" : 390.9,
+        "left" : 252,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN3" : {
+        "label" : "Join 3",
+        "type" : "JOIN",
+        "top" : 252.10000000000002,
+        "left" : 812
+      },
+      "LOAD_DATASET4" : {
+        "label" : "User",
+        "type" : "LOAD_DATASET",
+        "top" : 392,
+        "left" : 812.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET5" : {
+        "label" : "ENTERPRISE_WORKER",
+        "type" : "LOAD_DATASET",
+        "top" : 112,
+        "left" : 672,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "LOAD_DATASET6" : {
+        "label" : "WORKER_DEPARTMENT_HIERARCHY_SNAPSHOT",
+        "type" : "LOAD_DATASET",
+        "top" : 112.1,
+        "left" : 1092.1,
+        "parameters" : {
+          "sampleSize" : 2000
+        }
+      },
+      "JOIN4" : {
+        "label" : "Join 4",
+        "type" : "JOIN",
+        "top" : 112.30000000000001,
+        "left" : 952.1
+      },
+      "JOIN5" : {
+        "label" : "Join 5",
+        "type" : "JOIN",
+        "top" : 252,
+        "left" : 952.1
+      },
+      "TRANSFORM0" : {
+        "label" : "TRIM",
+        "description" : "",
+        "type" : "TRANSFORM",
+        "top" : 112.4,
+        "left" : 812,
+        "graph" : {
+          "TRIM0" : {
+            "parameters" : {
+              "type" : "TRIM_UI"
+            },
+            "label" : "Trim"
+          }
+        },
+        "connectors" : [ ]
+      }
+    },
+    "connectors" : [ {
+      "source" : "JOIN2",
+      "target" : "JOIN0"
+    }, {
+      "source" : "LOAD_DATASET1",
+      "target" : "JOIN0"
+    }, {
+      "source" : "JOIN0",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET2",
+      "target" : "JOIN1"
+    }, {
+      "source" : "LOAD_DATASET0",
+      "target" : "JOIN2"
+    }, {
+      "source" : "LOAD_DATASET3",
+      "target" : "JOIN2"
+    }, {
+      "source" : "JOIN1",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET4",
+      "target" : "JOIN3"
+    }, {
+      "source" : "LOAD_DATASET6",
+      "target" : "JOIN4"
+    }, {
+      "source" : "JOIN3",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN4",
+      "target" : "JOIN5"
+    }, {
+      "source" : "JOIN5",
+      "target" : "OUTPUT0"
+    }, {
+      "source" : "LOAD_DATASET5",
+      "target" : "TRANSFORM0"
+    }, {
+      "source" : "TRANSFORM0",
+      "target" : "JOIN4"
+    } ],
+    "hiddenColumns" : [ ]
+  },
+  "runMode" : "full"
+}

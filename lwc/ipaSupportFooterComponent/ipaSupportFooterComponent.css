@@ -1,0 +1,54 @@
+.component-wrap {
+  padding: 0;
+  /*margin: 2.5rem 0;*/
+  position: relative;
+}
+
+
+h3 {
+  padding-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d7d7d7;
+  font-weight: 200;
+  
+}
+
+
+@media screen and (max-width: 767px) {
+  .component-wrap {
+    padding: 0 1rem;
+  }  
+}
+
+@media screen and (min-width: 768px) {
+  .component-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+  }
+ /* .comp-item {
+    width: 50%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: none;
+  }*/
+}
+@media screen and (min-width: 992px) {
+  .comp-item {
+    width: 33.33%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .comp-item {
+    width: 25%;
+  }
+}
+.component-content {
+  padding-left: 2rem;
+}
+.component-footer {
+  width: 100%;
+}

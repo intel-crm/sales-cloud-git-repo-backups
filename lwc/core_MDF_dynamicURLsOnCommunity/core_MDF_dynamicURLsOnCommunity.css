@@ -1,0 +1,25 @@
+.content{
+	font-size: 16px;
+}
+
+.layout{
+	height:1em;
+}
+
+.headerCss{
+	color:#0071c5;
+	font-size:24px;
+	font-weight: 100;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+.subHeader{
+	color:#222222;
+	font-size:24px;
+	font-weight: 100;
+}
+
+.lineItemCss{
+	padding: 10px;
+}

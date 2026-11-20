@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "15bb93a4-7841-4159-9033-6ccb6ac2a9e2",
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "configurationTags" : [ ],
+  "devName" : "Post_Launch_non_primary__c",
+  "id" : "624c3137-4c42-401e-b0aa-5c1039ec7ed0",
+  "label" : "Post Launch - non primary",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-post-launch-non-primary",
+  "type" : "route",
+  "urlPrefix" : "post-launch-non-primary"
+}

@@ -1,0 +1,51 @@
+/* duplicated from c/ipaSearchHeader ... css sharing not working */
+
+.sort-by-select {
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.sort-by-select select {
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    height: 3rem;
+}
+
+.sort-by-select select:disabled {
+    background: transparent;
+    color: var(--gray);
+    border-color: var(--gray);
+    cursor: not-allowed;
+}
+
+.sort-by-select select::-ms-expand {
+    display: none;
+}
+
+.sort-by-select select,
+.sort-by-select select:focus,
+.sort-by-select select:active {
+    border: 1px solid var(--lightGray);
+    background: var(--white);
+    color: var(--darkGray);
+    font-size: 0.813rem;
+    border-radius: 0.25rem;
+}
+
+.sort-by-select {
+    position: relative;
+}
+
+.sort-by-select::after {
+    content: " ";
+    pointer-events: none;
+    border: 6px solid transparent;
+    border-top: 6px solid var(--darkGray);
+    display: inline-block;
+    position: absolute;
+    right: 0.625rem;
+    top: 42%;
+}

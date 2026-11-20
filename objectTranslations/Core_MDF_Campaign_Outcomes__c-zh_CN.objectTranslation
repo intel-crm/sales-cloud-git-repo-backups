@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>活动目的</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- IPA Campaign Purpose FieldSet --></label>
+        <name>Core_MDF_IPA_Campaign_Purpose_FieldSet</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <help>基线期描述了本次活动之前的某个时间点，当时基准值被捕获或估算。举例：如果本次活动将在八月结束，且基线值是在前一个八月被捕获的，请选择第一个选项。如果基准值为零，选择第一个选项。</help>
+        <label>基线期</label>
+        <name>Core_MDF_Baseline_Period_nm__c</name>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one half before</masterLabel>
+            <translation>与这次战役同期，比这场战役早了一半</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one quarter before</masterLabel>
+            <translation>与本次战役同期，前一个季度</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same period as this campaign, one year before</masterLabel>
+            <translation>与这次运动同期，一年前</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Core_MDF_Campaign_Id__c</name>
+        <relationshipLabel><!-- Campaign Purposes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Campaign Purpose Description --></label>
+        <name>Core_MDF_Campaign_Purpose_Desc_txt__c</name>
+    </fields>
+    <fields>
+        <help>我们定义为成功的结果指标的项目后价值。在执行之前输入。</help>
+        <label>目标值</label>
+        <name>Core_MDF_Goal_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>在没有此项目的情况下，结果指标的预期值。在执行之前输入。</help>
+        <label>基准值</label>
+        <name>Core_MDF_Initial_Baseline_Quantity_nbr__c</name>
+    </fields>
+    <fields>
+        <help>为结果指标增加具体细节（例如，“与去年同期相比，基于第 4、第 5 和第 6 代英特尔至强处理器的服务器产品”）。在执行之前输入。</help>
+        <label>结果标准</label>
+        <name>Core_MDF_Outcome_Criteria_txt__c</name>
+    </fields>
+    <fields>
+        <label>结果指标</label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
+        <help>项目后结果指标的价值。将在项目完成后进行更新。</help>
+        <label>结果值</label>
+        <name>Core_MDF_Quantity_nbr__c</name>
+    </fields>
+    <nameFieldLabel><!-- Campaign Outcome Name --></nameFieldLabel>
+</CustomObjectTranslation>

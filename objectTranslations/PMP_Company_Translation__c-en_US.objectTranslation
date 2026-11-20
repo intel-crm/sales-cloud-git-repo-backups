@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Profile Translation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Profile Translations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Chinese Static Text --></label>
+        <name>PMP_Chinese_Static_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Chinese Text --></help>
+        <label><!-- Chinese Text --></label>
+        <name>PMP_Chinese_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Profile ID --></label>
+        <name>PMP_Company_Information_Id__c</name>
+        <relationshipLabel><!-- Marketing  Profile Translations --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- English Text --></help>
+        <label><!-- English Text --></label>
+        <name>PMP_English_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field Name --></help>
+        <label><!-- Field Name --></label>
+        <name>PMP_Field_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Japanese Text --></help>
+        <label><!-- Japanese Text --></label>
+        <name>PMP_Japanese_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

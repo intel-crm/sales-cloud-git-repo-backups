@@ -1,0 +1,53 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes" description="2 Level Contextual Filter Node in L2 Search left sidebar">
+  <aura:set attribute="storeName" value="Search" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:handler name="change" value="{!v.selectedList}" action="{!c.handleStateChange}" />
+
+  <aura:attribute name="id" type="string" description="Node Value ID"/>
+  <aura:attribute name="name" type="string" description="Node Label"/>
+  <aura:attribute name="count" type="string" description="Node Count"/>
+  <aura:attribute name="selectedList" type="object" default="{}" description="Combined Selected Filters"/>
+  <aura:attribute name="selectedListId" type="string" default="" description="Contextual List Set ID"/>
+  <aura:attribute name="selected" type="boolean" default="false" description="Internal Component setting"/>
+
+  <aura:attribute name="applyToDraft" type="boolean" default="false"  description="If True, do not automatically perform search on change"/>
+
+  <aura:attribute name="children" type="object[]" default="[]" description="Node Children"/>
+  <aura:attribute name="parent" type="string" default="" description="Node Parent ID"/>
+  <aura:attribute name="display" type="string" default="checkbox" description="Display checkbox style"/>
+
+
+     <div class="{!(v.count + '' == '0' ? 'disabledTag ' : '') + v.display}">
+         
+          <ui:inputCheckbox
+            aura:id="checkboxTag"
+            class="slds-m-bottom_x-small"
+            disabled="{!v.count + '' == '0'}"
+            name="{!v.name}"
+            label="{!v.name + if(v.count != null, ' (' + v.count + ')', '')}"
+            value="{!v.selected}"
+            change="{!c.handleSelectTag}"/>
+   
+          <aura:if isTrue="{!v.children.length > 0}">
+            <div class="level2">
+              <aura:iteration items="{!v.children}" var="tag" >
+                <c:MarketplaceSearchContextualFilter
+                  id="{!tag.value}"
+                  name="{!tag.label}"
+                  count="{!tag.count}"
+                  children="{!tag.children}"
+                  parent="{!v.id}"
+                  selectedList="{!v.selectedList}"                                  
+                  selectedListId="{!v.selectedListId}"
+                  applyToDraft="{! v.applyToDraft }"
+                  />
+              </aura:iteration>
+            </div>
+          </aura:if>
+
+          <aura:if isTrue="{!and(v.selected, !empty(v.body))}">
+              {!v.body}
+          </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bulk Upload Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bulk Upload Batch</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch ID --></label>
+        <name>core_cpq_batch_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failure Count --></label>
+        <name>core_cpq_failure_count_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>core_cpq_object_name_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>core_cpq_quoteId_Id__c</name>
+        <relationshipLabel><!-- Bulk Upload Batch --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Link --></label>
+        <name>core_cpq_quote_link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Success Count --></label>
+        <name>core_cpq_success_count_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Rows --></label>
+        <name>core_cpq_total_rows_Nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

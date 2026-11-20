@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Display Blank Line with the Text</description>
+        <name>BlankDisplayLine</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>&lt;br&gt;&lt;/br&gt;</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>LoginFlow_Banner</description>
+        <name>LoginFlow_Banner</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>&lt;img src=&quot;/servlet/servlet.ImageServer?id=0151J000002ZLNd&amp;oid=00Do0000000aRcf&amp;lastMod=1509033151000&quot; width=&quot;700&quot;&gt;</stringValue>
+        </value>
+    </constants>
+    <description>SMG Sales CRM Banner (Splash Screen during User Login)</description>
+    <formulas>
+        <description>Login_UserName</description>
+        <name>Login_UserName</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} + &apos; &apos; + {!$User.LastName}</expression>
+    </formulas>
+    <interviewLabel>SMG Sales CRM Banner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SMG Sales CRM Banner</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <description>SMG Sales CRM Banner (Splash Screen during User Login)</description>
+        <name>SMG_Sales_CRM_Banner</name>
+        <label>SMG Sales CRM Banner</label>
+        <locationX>343</locationX>
+        <locationY>109</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>SalesCRMBanner</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px;&quot;&gt;{!LoginFlow_Banner}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px;&quot;&gt; Hi {!Login_UserName} , &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: white; font-family: sans-serif; font-size: 14px;&quot;&gt;!&amp;nbsp;&amp;nbsp;R E M I N D E R&amp;nbsp;&amp;nbsp;F O R&amp;nbsp;&amp;nbsp;M A N A G E R S&amp;nbsp;&amp;nbsp;!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: white; color: black; font-family: sans-serif; font-size: 14px;&quot;&gt;Friday, January 10th&lt;/b&gt;&lt;span style=&quot;background-color: white; color: black; font-family: sans-serif; font-size: 14px;&quot;&gt;, 2020 is the December 2019 deadline to:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: white; font-family: sans-serif; font-size: 14px;&quot;&gt;Approve Design Win Revenue in Sales CRM (SMG Salesforce)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: white; font-family: sans-serif; font-size: 14px;&quot;&gt;Approve Deal Win Goals in Sales CRM (SMG Salesforce)&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b style=&quot;background-color: white; color: black; font-family: sans-serif; font-size: 14px;&quot;&gt;Wednesday, January 15th&lt;/b&gt;&lt;span style=&quot;background-color: white; color: black; font-family: sans-serif; font-size: 14px;&quot;&gt;, 2020 is the December 2019 deadline to:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: white; font-family: sans-serif; font-size: 14px;&quot;&gt;Enter Manual Results for Consumption Revenue&amp;nbsp;in Commissions Cloud&lt;/span&gt;&lt;span style=&quot;font-family: sans-serif; font-size: 14px;&quot;&gt; &lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: sans-serif; font-size: 14px;&quot;&gt;﻿More deadline details here:&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/2019deadlines&quot; target=&quot;_blank&quot; style=&quot;font-family: sans-serif; font-size: 14px;&quot;&gt;goto.intel.com/2019deadlines&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>SMG_Sales_CRM_Banner</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

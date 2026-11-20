@@ -1,0 +1,183 @@
+<template>
+  <header class="slds-text-heading--large slds-align--absolute-center header">
+    <h2>Opportunity Premier Support Request</h2>
+  </header>
+
+
+    
+  <lightning-card>
+    <c-core_-i-p-s_-custom-toast title={title} message={message} variant={variant} auto-close="true"
+      auto-close-error-warning="true"></c-core_-i-p-s_-custom-toast>
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-var-p-around_medium">
+      <div class="slds-size_1-of-5 textbox">
+        <label class="slds-float_right slds-p-left_xx-small">Opportunity Name:</label>
+      </div>
+      <div class="slds-size_1-of-5 textbox">
+        <div class="slds-float_left slds-p-left_xx-small">
+          <lightning-formatted-text value={oppotunityName}></lightning-formatted-text>
+        </div>
+      </div>
+      <div class="slds-size_1-of-5  textbox" >
+        <div class="slds-float_right  ">
+          <lightning-formatted-url 
+          value={Core_IPS_Project_DetailsLink} 
+          tooltip={Core_IPS_Project_DetailsTooltip}
+            label="IPS Project:"
+           
+             target="_blank"></lightning-formatted-url>
+              &nbsp;
+            <lightning-icon  icon-name="utility:info" alternative-text="Info" size="x-small"
+            title={Core_IPS_Project_ToolTip}></lightning-icon>
+
+        </div>        
+      </div>
+      <div class="slds-size_1-of-3 slds-float_right slds-m-left_medium  textbox" >
+        <lightning-input 
+          class="slds-p-left_x-large"
+          name = "createNewProject"
+          type="checkbox" 
+          label="Create New Premier Support Project after approval"
+          onchange={handleChangeNewProj} 
+          checked={checkBoolean} 
+        ></lightning-input> 
+      </div>
+    </div>    
+    <div class="slds-size_1-of-1 slds-float_right ">
+      <div class="slds-clearfix">
+      
+      <div class="slds-size_4-of-12 slds-float_right ">
+        <div class="slds-size_9-of-12">
+          <template if:true={show}>      
+            <c-core_-i-p-s_-custom-lookup selected-record={projectid} onselectedrec={handleChangeProject} class="lookup"
+              query-string={lookupQueryStringProject} searchfield-name={lookupSearchFieldNameProject} is-sosl="false"
+              label="" query-execution-required="true" is-read-only={disableProjectEdit} disabled={disableProjectEdit}>
+            </c-core_-i-p-s_-custom-lookup>         
+          </template>
+    
+          <template if:false={show}>
+            <div class="slds-form-element__control">
+              <div class="slds-combobox_container">
+                <lightning-input 
+                  autocomplete="off"
+                  role="textbox"
+                  type="text"
+                  disabled>
+                </lightning-input>
+              </div>
+            </div>         
+          </template>   
+        </div>
+     </div>
+
+    </div>
+    </div>
+    
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-var-p-around_medium	">
+      <div class="slds-size_1-of-5 textbox">
+        <div class="slds-float_right slds-p-left_xx-small"> <abbr class="slds-required" title="required">*
+          </abbr>Request Justification:</div>
+      </div>
+      <div class="slds-size_1-of-4 slds-float_left textbox">
+
+        <lightning-textarea name="justification" onchange={handleChange} id="textarea-id-01" variant="no-label"
+          placeholder="Request Justification" message-when-value-missing="This field is required.">
+        </lightning-textarea>
+      </div>
+    </div>
+
+  </lightning-card>
+  <!-- Search Starts-->
+  <div class="slds-m-top_medium">
+    <lightning-card>
+      <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-var-p-around_medium	">
+        <div class="slds-size_1-of-5  textbox">
+          <div class="slds-float_right slds-text-title_bold">Supported Product(s) Required</div>
+        </div>&nbsp;
+        <lightning-icon  icon-name="utility:info" alternative-text="Info" size="x-small"
+            title={Core_IPS_Supported_Product_HelpText}></lightning-icon>
+        <div class="slds-size_2-of-5 slds-float_right textbox">
+          <c-core_-i-p-s_-lightning-input-utility placeholder={placeholder} onchange={handleSearchKey} value={searchKey}
+            onenter={handleSearch}>
+          </c-core_-i-p-s_-lightning-input-utility>
+          <template if:true={noRecordsFound}> 
+            <p style="color:Red">No Records Found.</p>
+          </template>
+        </div>
+        <div class="slds-size_1-of-5 slds-float_right textbox">
+          <lightning-button disabled={isSearchBtnDisable} variant="brand" label="Search" class="slds-m-left_small"
+            onclick={handleSearch} title="Search">
+          </lightning-button>
+        </div>
+      </div>
+      <!-- Search Ends-->
+      <!-- Supported Product Table after Search Starts-->
+
+      <template if:true={dataselected}>
+        <lightning-card title="Selected Products" icon-name="Selected Records">
+          <lightning-datatable key-field="Id" hide-checkbox-column=true data={selectedSupportedProducts}
+            columns={columns} show-row-number-column="true">
+          </lightning-datatable>
+        </lightning-card>
+      </template>
+
+
+      <lightning-messages></lightning-messages>
+      <template if:true={showSupportedProducts}>
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_12-of-12">
+            <c-core_-i-p-s_-datatable-utility hide-checkbox-column={hideCheckboxColumn}
+              show-row-number-column={showRowNumberColumn} enable-infinite-loading={enableInfiniteLoading}
+              num-and-checkbox-both-cols={numAndCheckboxBothCols} normal-data-table={normalDataTable}
+              records={showSearchRecords} columns={columns} number-of-rows-to-show={numberOfRowsToShow}
+              height-in-rem={heightInRem} onrecordselection={getSelectedRecords}>
+            </c-core_-i-p-s_-datatable-utility>
+          </div>
+        </div>
+      </template>
+    </lightning-card>
+  </div>
+  <!-- Supported Product Table after Search Ends-->
+  <!-- Opportunity Teams Table Starts-->
+  <template if:true={showOppTable}>
+    <!-- Opportunity Teams Additions checkbox Starts-->
+    <div class="slds-m-top_medium">
+
+      <template if:true={teamAddCheckBox}>
+        <lightning-card>
+          <!-- Opportunity Teams Additions checkbox Ends-->
+          <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12">
+              <div class="slds-m-left_large slds-text-heading_medium slds-text-title_bold">Opportunity Team Additions
+              </div>
+              <c-core_-i-p-s_-datatable-utility hide-checkbox-column=false show-row-number-column={showRowNumberColumn}
+                enable-infinite-loading=true normal-data-table=true records={oppTeamTable} columns={oppColumns}
+                number-of-rows-to-show=10 height-in-rem={heightInRem} onrecordselection={getSelectedRecords}>
+              </c-core_-i-p-s_-datatable-utility>
+            </div>
+          </div>
+        </lightning-card>
+        <!-- checkbox start-->
+        <lightning-card>
+          <div class="slds-clearfix">
+            <div class="slds-float_right">
+              <lightning-input type="checkbox" label="Confirm Opportunity Team Additions" name="teamAdditionCheckbox"
+                onchange={enableSubmit} required slot="actions"></lightning-input>
+            </div>
+          </div>
+        </lightning-card>
+        <!-- checkbox end-->
+      </template>
+    </div>
+  </template>
+  <template if:true={spinnerOn}>
+    <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+  </template>
+
+  <lightning-card>
+    <lightning-button disabled={disableSubmit} slot="actions" variant="brand" label="Submit" title="Submit"
+      onclick={submit} style="margin:5px;">
+    </lightning-button>
+    <lightning-button slot="actions" variant="brand" label="Cancel" title="Cancel" onclick={cancel} style="margin:5px;">
+    </lightning-button>
+  </lightning-card>
+</template>

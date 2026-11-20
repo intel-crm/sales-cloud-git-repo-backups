@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Gold_Upgrade_Chinese_ZHO</name>
+    <style>none</style>
+    <subject>英特尔® 合作伙伴联盟 Gold 会员</subject>
+    <textOnly>英﻿特﻿尔﻿® 合作伙伴联盟黄金会员
+
+
+
+尊敬的{!Contact.FirstName}：
+
+您好！我们近期对英﻿特﻿尔﻿® 合作伙伴联盟计划进行了一些调整，修改了计划条件，丰富了会员权益，有助于满足您的业务需求。借此机会，贵公司已升级为英﻿特﻿尔﻿® 合作伙伴联盟黄金会员。恭喜！
+
+以下是黄金会员获享的一些附加权益：
+
+黄金会员徽章
+优先保修更换
+更多积分活动，更多兑换机会
+访问解决方案市场店面，上架产品/服务
+访问 Developer Zone - 高级与受安全保护文档（需要发起请求）
+
+
+全新的英﻿特﻿尔﻿® 合作伙伴培训计划体验有许多亮点，其中包括：
+
+数字体验全面升级
+个性化培训途径
+全新的内容评分系统，可帮助合作伙伴查找并查看同行评分最高的内容。
+
+
+此外，我们现在为我们的合作伙伴提供精选的行业趋势和洞察，由英特尔市场规模估算和预测团队的数据科学家为您呈现。
+
+敬请期待英﻿特﻿尔﻿® 解决方案市场用户体验的全新功能和改进功能：
+
+全新外观，简化网站导航体验
+改进了在合作伙伴之间建立联系和开发潜在客户的体验
+全面改进了搜索功能
+
+
+英﻿特﻿尔﻿® 合作伙伴联盟不断努力提供更多价值和权益，助您的企业在当今环境中繁荣发展。详细了解英﻿特﻿尔﻿® 合作伙伴联盟能够为您带来哪些权益，帮助您推动业务发展。
+
+
+立即开始
+
+
+
+顺祝商祺！
+英﻿特﻿尔﻿® 合作伙伴联盟团队
+
+
+本邮件是有关您与英﻿特﻿尔﻿® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} 英特尔公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+隐私条款 &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

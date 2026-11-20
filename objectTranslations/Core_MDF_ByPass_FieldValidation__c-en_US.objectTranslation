@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_MDF_ByPass_FieldValidation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_MDF_ByPass_FieldValidation</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- ByPass Validation Date --></label>
+        <name>Core_MDF_ByPass_Validation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- ByPass for All Program --></label>
+        <name>Core_MDF_ByPass_for_All_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Api Name --></label>
+        <name>Core_MDF_Field_Api_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Core_MDF_Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Release --></label>
+        <name>Core_MDF_Release__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

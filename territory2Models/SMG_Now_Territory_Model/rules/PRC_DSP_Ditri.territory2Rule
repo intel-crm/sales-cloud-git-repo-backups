@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <name>PRC-DSP-Ditri</name>
+    <objectType>Account</objectType>
+    <ruleItems>
+        <field>Account.Core_Sales_Groups__c</field>
+        <operation>equals</operation>
+        <value>PRC Sales Group</value>
+    </ruleItems>
+    <ruleItems>
+        <field>Account.OwnerId</field>
+        <operation>equals</operation>
+        <value>,Ye Zong,Stephanie Wong,Andrew Jiang,Guoji Chang,Qing Yan,Alcina Lam,Wenbo Tang,Ge Lin Ge,Kareny Yang,Eric Cheng,Alan Bao,Alex Liu,Jun Xu,Ling Lu,Jun Liu,Sophia Zhang Zhang,Yong zhou Chen,Heaven Zhang,Bo Pu,Kai Cao,Peng Ji,bao liu,yuan wu</value>
+    </ruleItems>
+</Territory2Rule>

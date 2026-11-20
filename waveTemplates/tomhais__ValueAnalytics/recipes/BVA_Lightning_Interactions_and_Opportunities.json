@@ -1,0 +1,827 @@
+{
+  "name" : "BVA_Lightning_Interactions_and_Opportunities",
+  "label" : "BVA Lightning Interactions and Opportunities",
+  "scheduleExpression" : null,
+  "publishingTarget" : "DATASET",
+  "format" : "R3",
+  "scheduleType" : null,
+  "recipeDefinition" : {
+    "version" : "60.0",
+    "nodes" : {
+      "LOAD_DATASET0" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "PARENT_UI_ELEMENT",
+            "User.Country",
+            "User.FirstName",
+            "EVENT_TYPE",
+            "SessionEndFlag",
+            "APP_NAME",
+            "USER_ID",
+            "User.Roles.ParentRolesPath",
+            "UI_EVENT_TYPE",
+            "OS_NAME",
+            "DataDictionary.Event",
+            "ORGANIZATION_ID",
+            "PAGE_APP_NAME",
+            "User.Department",
+            "TIMESTAMP",
+            "RECORD_ID",
+            "ConcatComponentEvent",
+            "User.Name",
+            "TargetURL",
+            "TARGET_UI_ELEMENT",
+            "TIMESTAMP_DERIVED",
+            "UI_EVENT_ID",
+            "SequenceNumberS",
+            "USER_TYPE",
+            "BROWSER_NAME",
+            "User.Roles.DeveloperName",
+            "UI_EVENT_SOURCE",
+            "User.Roles.Id",
+            "RELATED_LIST",
+            "User.Roles.ParentRoleId",
+            "User.UserRoleId",
+            "GRANDPARENT_UI_ELEMENT",
+            "PageChangeFlagDim",
+            "PageName",
+            "REQUEST_ID",
+            "SourceObjectType",
+            "User.Division",
+            "User.Profile.Name",
+            "User.Roles.ParentRoleMultiField",
+            "InteractionDateTime",
+            "ComponentName",
+            "User.Profile.Id",
+            "User.Profile.UserType",
+            "USER_ID_DERIVED",
+            "COMPONENT_NAME",
+            "PAGE_ENTITY_TYPE",
+            "User.ProfileId",
+            "SESSION_KEY",
+            "DataDictionary.Event_Label",
+            "PAGE_URL",
+            "User.Id",
+            "User.Roles.Name",
+            "DataDictionary.Description",
+            "PAGE_ENTITY_ID",
+            "RECORD_TYPE",
+            "UserSessionKey",
+            "SourceRecordId",
+            "UI_EVENT_TIMESTAMP",
+            "EFFECTIVE_PAGE_TIME",
+            "TotalSessionTime",
+            "SequenceNumber",
+            "PageChangeFlag",
+            "StallTime",
+            "TimeToAction",
+            "UI_EVENT_SEQUENCE_NUM",
+            "ClickCount"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Lightning Page Views and Interactions Adoption",
+            "name" : "${App.Datasets.BVA_LightningPageViewsAndInteractionsAdoption_tp.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "LOAD_DATASET1" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "IsWon",
+            "Id",
+            "Name",
+            "StageName",
+            "Amount",
+            "CloseDate",
+            "Type",
+            "IsClosed",
+            "OwnerId",
+            "CreatedDate",
+            "CreatedById",
+            "LastModifiedDate",
+            "LastActivityDate",
+            "LastStageChangeDate",
+            "LastViewedDate",
+            "LastReferencedDate"
+          ],
+          "dataset" : {
+            "type" : "connectedDataset",
+            "label" : "Opportunity",
+            "connectionName" : "SFDC_LOCAL",
+            "sourceObjectName" : "Opportunity"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN1" : {
+        "action" : "join",
+        "sources" : [
+          "LOAD_DATASET1",
+          "AGGREGATE1"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Interactions.CLIENT_IP",
+              "Interactions.PARENT_UI_ELEMENT",
+              "Interactions.CONNECTION_TYPE",
+              "Interactions.EVENT_TYPE",
+              "Interactions.APP_NAME",
+              "Interactions.USER_ID",
+              "Interactions.UI_EVENT_TYPE",
+              "Interactions.OS_NAME",
+              "Interactions.CLIENT_GEO",
+              "Interactions.ORGANIZATION_ID",
+              "Interactions.PAGE_APP_NAME",
+              "Interactions.CLIENT_ID",
+              "Interactions.BROWSER_VERSION",
+              "Interactions.DEVICE_PLATFORM",
+              "Interactions.SDK_VERSION",
+              "Interactions.TIMESTAMP",
+              "Interactions.RECORD_ID",
+              "Interactions.DEVICE_MODEL",
+              "Interactions.DataDictionary.Event__c",
+              "Interactions.ConcatComponentEvent",
+              "Interactions.DataDictionary.COMPONENT_NAME__c",
+              "Interactions.USER_AGENT",
+              "Interactions.PAGE_CONTEXT",
+              "Interactions.TargetURL",
+              "Interactions.DataDictionary.TARGET_UI_ELEMENT__c",
+              "Interactions.TARGET_UI_ELEMENT",
+              "Interactions.DataDictionary.UI_EVENT_SOURCE__c",
+              "Interactions.DataDictionary.ConcatComponentEvent__c",
+              "Interactions.TIMESTAMP_DERIVED",
+              "Interactions.UI_EVENT_ID",
+              "Interactions.SequenceNumberS",
+              "Interactions.USER_TYPE",
+              "Interactions.BROWSER_NAME",
+              "Interactions.DEVICE_ID",
+              "Interactions.SDK_APP_VERSION",
+              "Interactions.UI_EVENT_SOURCE",
+              "Interactions.RELATED_LIST",
+              "Interactions.GRANDPARENT_UI_ELEMENT",
+              "Interactions.PageName",
+              "Interactions.REQUEST_ID",
+              "Interactions.DataDictionary.Description__c",
+              "Interactions.SourceObjectType",
+              "Interactions.InteractionDateTime",
+              "Interactions.ComponentName",
+              "Interactions.USER_ID_DERIVED",
+              "Interactions.COMPONENT_NAME",
+              "Interactions.PAGE_ENTITY_TYPE",
+              "Interactions.DataDictionary.Name",
+              "Interactions.SESSION_KEY",
+              "Interactions.DataDictionary.PARENT_UI_ELEMENT__c",
+              "Interactions.DEVICE_SESSION_ID",
+              "Interactions.DataDictionary.Event_Label__c",
+              "Interactions.PAGE_URL",
+              "Interactions.PAGE_ENTITY_ID",
+              "Interactions.RECORD_TYPE",
+              "Interactions.OS_VERSION",
+              "Interactions.LOGIN_KEY",
+              "Interactions.UserSessionKey",
+              "Interactions.SourceRecordId",
+              "Interactions.SDK_APP_TYPE",
+              "Interactions.UI_EVENT_TIMESTAMP",
+              "Interactions.SessionEndFlag",
+              "Interactions.TotalSessionTime",
+              "Interactions.SequenceNumber",
+              "Interactions.PAGE_START_TIME",
+              "Interactions.UI_EVENT_SEQUENCE_NUM",
+              "Interactions.DURATION"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "MULTI_VALUE_LOOKUP",
+          "leftKeys" : [
+            "Id"
+          ],
+          "rightQualifier" : "Interactions",
+          "rightKeys" : [
+            "PAGE_ENTITY_ID"
+          ]
+        }
+      },
+      "FILTER1" : {
+        "action" : "filter",
+        "sources" : [
+          "LOAD_DATASET0"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "ClickCount",
+              "operator" : "EQUAL",
+              "operands" : [
+                "1"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "PAGE_ENTITY_TYPE",
+              "operator" : "EQUAL",
+              "operands" : [
+                "Opportunity"
+              ]
+            },
+            {
+              "type" : "TEXT",
+              "field" : "PAGE_ENTITY_ID",
+              "operator" : "NOT",
+              "operands" : [
+                ""
+              ]
+            }
+          ]
+        }
+      },
+      "EXTRACT0" : {
+        "action" : "extractGrains",
+        "sources" : [
+          "FILTER1"
+        ],
+        "parameters" : {
+          "grainExtractions" : [ ]
+        }
+      },
+      "AGGREGATE1" : {
+        "action" : "aggregate",
+        "sources" : [
+          "EXTRACT0"
+        ],
+        "schema" : {
+          "fields" : [
+            {
+              "name" : "AvgStallTime",
+              "newProperties" : {
+                "typeProperties" : {
+                  "type" : "NUMBER",
+                  "scale" : 2,
+                  "precision" : 16
+                }
+              }
+            },
+            {
+              "name" : "AvgTimeToAction",
+              "newProperties" : {
+                "typeProperties" : {
+                  "type" : "NUMBER",
+                  "scale" : 2,
+                  "precision" : 16
+                }
+              }
+            },
+            {
+              "name" : "SumStallTime",
+              "newProperties" : {
+                "typeProperties" : {
+                  "type" : "NUMBER",
+                  "scale" : 2,
+                  "precision" : 16
+                }
+              }
+            },
+            {
+              "name" : "SUMTimeToAction",
+              "newProperties" : {
+                "typeProperties" : {
+                  "type" : "NUMBER",
+                  "scale" : 2,
+                  "precision" : 16
+                }
+              }
+            }
+          ]
+        },
+        "parameters" : {
+          "aggregations" : [
+            {
+              "action" : "SUM",
+              "source" : "ClickCount",
+              "name" : "TotalClicks",
+              "label" : "Total Clicks"
+            },
+            {
+              "action" : "AVG",
+              "source" : "StallTime",
+              "name" : "AvgStallTime",
+              "label" : "Average Stall Time"
+            },
+            {
+              "action" : "AVG",
+              "source" : "TimeToAction",
+              "name" : "AvgTimeToAction",
+              "label" : "Average Time To Action"
+            },
+            {
+              "action" : "SUM",
+              "source" : "StallTime",
+              "name" : "SumStallTime",
+              "label" : "Sum of Stall Time"
+            },
+            {
+              "action" : "SUM",
+              "source" : "TimeToAction",
+              "name" : "SUMTimeToAction",
+              "label" : "Sum of Time To Action"
+            },
+            {
+              "action" : "AVG",
+              "source" : "SequenceNumber",
+              "name" : "AvgSequenceNumber",
+              "label" : "Average Sequence Number"
+            },
+            {
+              "action" : "UNIQUE",
+              "source" : "USER_ID_DERIVED",
+              "name" : "UniqueUserCount",
+              "label" : "User Count"
+            },
+            {
+              "action" : "UNIQUE",
+              "source" : "SESSION_KEY",
+              "name" : "UniqueSessionKey",
+              "label" : "Total Sessions"
+            },
+            {
+              "action" : "UNIQUE",
+              "source" : "ComponentName",
+              "name" : "UNIQUE_ComponentName",
+              "label" : "UI Features Used"
+            }
+          ],
+          "groupings" : [
+            "PAGE_ENTITY_ID"
+          ],
+          "pivots" : [ ],
+          "nodeType" : "STANDARD"
+        }
+      },
+      "OUTPUT1" : {
+        "action" : "save",
+        "sources" : [
+          "JOIN3"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Opportunities And Interactions Adoption",
+            "name" : "${App.Datasets.BVA_OpportunitiesAndInteractionsAdoption_tp.Name}",
+            "folderName" : "${App.Folder.FullyQualifiedName}"
+          },
+          "measuresToCurrencies" : [ ]
+        }
+      },
+      "LOAD_DATASET2" : {
+        "action" : "load",
+        "sources" : [ ],
+        "parameters" : {
+          "fields" : [
+            "ProfileId",
+            "UserRoleId",
+            "FirstName",
+            "Profile.Name",
+            "Roles.Name",
+            "Roles.ParentRoleMultiField",
+            "Name",
+            "Roles.Id",
+            "Roles.ParentRolesPath",
+            "Department",
+            "Roles.ParentRoleId",
+            "Profile.UserType",
+            "Profile.Id",
+            "Country",
+            "Roles.DeveloperName",
+            "Division",
+            "Id"
+          ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA_UsersProfilesRoles",
+            "name" : "${App.Datasets.BVA_UsersProfilesRoles_tp.FullyQualifiedName}"
+          },
+          "sampleDetails" : {
+            "type" : "TopN",
+            "sortBy" : [ ]
+          }
+        }
+      },
+      "JOIN3" : {
+        "action" : "join",
+        "sources" : [
+          "FILTER2",
+          "LOAD_DATASET2"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Owner.Roles.Id",
+              "Owner.Profile.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "OwnerId"
+          ],
+          "rightQualifier" : "Owner",
+          "rightKeys" : [
+            "Id"
+          ]
+        }
+      },
+      "FILTER2" : {
+        "action" : "filter",
+        "sources" : [
+          "JOIN1"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "NUMBER",
+              "field" : "Interactions.TotalClicks",
+              "operator" : "GREATER_THAN",
+              "operands" : [
+                "0"
+              ]
+            }
+          ]
+        }
+      },
+      "FILTER3" : {
+        "action" : "filter",
+        "sources" : [
+          "FILTER2"
+        ],
+        "parameters" : {
+          "filterExpressions" : [
+            {
+              "type" : "TEXT",
+              "field" : "IsClosed",
+              "operator" : "EQUAL",
+              "operands" : [
+                "true",
+                "false"
+              ]
+            }
+          ]
+        }
+      },
+      "EXTRACT1" : {
+        "action" : "extractGrains",
+        "sources" : [
+          "FILTER3"
+        ],
+        "parameters" : {
+          "grainExtractions" : [ ]
+        }
+      },
+      "AGGREGATE3" : {
+        "action" : "aggregate",
+        "sources" : [
+          "EXTRACT1"
+        ],
+        "parameters" : {
+          "aggregations" : [
+            {
+              "action" : "SUM",
+              "source" : "Interactions.TotalClicks",
+              "name" : "SUM_Interactions.TotalClicks",
+              "label" : "Sum of Total Clicks"
+            },
+            {
+              "action" : "SUM",
+              "source" : "Interactions.UniqueSessionKey",
+              "name" : "SUM_Interactions.UniqueSessionKey",
+              "label" : "Sum of Total Sessions"
+            },
+            {
+              "action" : "SUM",
+              "source" : "Interactions.UNIQUE_ComponentName",
+              "name" : "SUM_Interactions.UNIQUE_ComponentName",
+              "label" : "Sum of UI Features Used"
+            },
+            {
+              "action" : "SUM",
+              "source" : "Interactions.SumStallTime",
+              "name" : "SUM_Interactions.SumStallTime",
+              "label" : "Sum of Sum of Stall Time"
+            },
+            {
+              "action" : "COUNT",
+              "name" : "COUNT_Rows",
+              "label" : "ClosedOpps"
+            },
+            {
+              "action" : "SUM",
+              "source" : "Amount",
+              "name" : "SUM_Amount",
+              "label" : "Sum of Amount"
+            },
+            {
+              "action" : "SUM",
+              "source" : "Interactions.UniqueUserCount",
+              "name" : "SUM_Interactions.UniqueUserCount",
+              "label" : "Sum Collaboration Count"
+            }
+          ],
+          "groupings" : [
+            "OwnerId"
+          ],
+          "pivots" : [ ],
+          "nodeType" : "STANDARD"
+        }
+      },
+      "CLUSTERING0" : {
+        "action" : "clustering",
+        "sources" : [
+          "AGGREGATE3"
+        ],
+        "parameters" : {
+          "clusterCount" : 3,
+          "sourceFields" : [
+            "SUM_Interactions.TotalClicks",
+            "SUM_Interactions.UniqueSessionKey",
+            "SUM_Interactions.UNIQUE_ComponentName",
+            "SUM_Interactions.SumStallTime",
+            "COUNT_Rows",
+            "SUM_Amount",
+            "SUM_Interactions.UniqueUserCount"
+          ],
+          "targetField" : {
+            "name" : "OwnerId_clustering",
+            "label" : "Cluster"
+          },
+          "findOptimalClusters" : false,
+          "targetScaledFields" : [ ]
+									   
+        }
+      },
+      "OUTPUT2" : {
+        "action" : "save",
+        "sources" : [
+          "JOIN4"
+        ],
+        "parameters" : {
+          "fields" : [ ],
+          "dataset" : {
+            "type" : "analyticsDataset",
+            "label" : "BVA Opportunity And Interactions User Clusters",
+            "name" : "${App.Datasets.BVAOpportunityAndInteractionsUserClusters_tp.Name}",
+            "folderName" : "${App.Folder.FullyQualifiedName}"
+          },
+          "measuresToCurrencies" : [ ]
+        }
+      },
+      "JOIN4" : {
+        "action" : "join",
+        "sources" : [
+          "CLUSTERING0",
+          "LOAD_DATASET2"
+        ],
+        "schema" : {
+          "fields" : [ ],
+          "slice" : {
+            "mode" : "DROP",
+            "ignoreMissingFields" : true,
+            "fields" : [
+              "Owner.Roles.Id",
+              "Owner.Profile.Id"
+            ]
+          }
+        },
+        "parameters" : {
+          "joinType" : "LOOKUP",
+          "leftKeys" : [
+            "OwnerId"
+          ],
+          "rightQualifier" : "Owner",
+          "rightKeys" : [
+            "Id"
+          ]
+        }
+      }
+    },
+    "ui" : {
+      "nodes" : {
+        "LOAD_DATASET0" : {
+          "label" : "BVA Lightning Page Views and Interactions Adoption",
+          "type" : "LOAD_DATASET",
+          "top" : 112,
+          "left" : 112,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "LOAD_DATASET1" : {
+          "label" : "Opportunity",
+          "type" : "LOAD_DATASET",
+          "top" : 252,
+          "left" : 392,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN1" : {
+          "label" : "JoinOpportunitiesAndInteractions",
+          "description" : "Augment Opportunities (left) with some of the adoption and productivity data from Lightning Interaction event logs (right).  We can sum the total number of clicks, action time and stall time per opportunity.",
+          "type" : "JOIN",
+          "top" : 112,
+          "left" : 532
+        },
+        "FILTER1" : {
+          "label" : "FilterOnlyClicksOnOpportunities",
+          "description" : "Filter on interactions that were user clicks on opportunities.",
+          "type" : "FILTER",
+          "top" : 112,
+          "left" : 252
+        },
+        "AGGREGATE0" : {
+          "label" : "CalculateProductivity",
+          "description" : "Sum the total number of clicks and average stall and action times, grouped by Case Record Id.",
+          "type" : "AGGREGATE",
+          "top" : 112,
+          "left" : 392,
+          "graph" : {
+            "EXTRACT0" : null,
+            "AGGREGATE1" : null
+          },
+          "connectors" : [
+            {
+              "source" : "EXTRACT0",
+              "target" : "AGGREGATE1"
+            }
+          ]
+        },
+        "OUTPUT1" : {
+          "label" : "RegisterOpportunitiesAndInteractions",
+          "description" : "Creates a dataset of opportuities viewed, created, closed or view in the last 30 days, with aggregated sales metrics.",
+          "type" : "OUTPUT",
+          "top" : 252,
+          "left" : 952
+        },
+        "LOAD_DATASET2" : {
+          "label" : "BVA_UsersProfilesRoles",
+          "type" : "LOAD_DATASET",
+          "top" : 392,
+          "left" : 672,
+          "parameters" : {
+            "sampleSize" : 2000
+          }
+        },
+        "JOIN3" : {
+          "label" : "JoinOpportunitiesWithOwners",
+          "description" : "",
+          "type" : "JOIN",
+          "top" : 252,
+          "left" : 812
+        },
+        "FILTER2" : {
+          "label" : "OnlyInteractedWithOpps",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 112,
+          "left" : 672
+        },
+        "FILTER3" : {
+          "label" : "ClosedOpps",
+          "description" : "",
+          "type" : "FILTER",
+          "top" : 112,
+          "left" : 812
+        },
+        "AGGREGATE2" : {
+          "label" : "Aggregate User Productivity",
+          "description" : "",
+          "type" : "AGGREGATE",
+          "top" : 112,
+          "left" : 952,
+          "graph" : {
+            "EXTRACT1" : null,
+            "AGGREGATE3" : null
+          },
+          "connectors" : [
+            {
+              "source" : "EXTRACT1",
+              "target" : "AGGREGATE3"
+            }
+          ]
+        },
+        "TRANSFORM0" : {
+          "label" : "Cluster",
+          "description" : "",
+          "type" : "TRANSFORM",
+          "top" : 112,
+          "left" : 1092,
+          "graph" : {
+            "CLUSTERING0" : {
+              "label" : "Cluster"
+            }
+          },
+          "connectors" : [ ]
+        },
+        "OUTPUT2" : {
+          "label" : "OutputOpportunityCohorts",
+          "description" : "",
+          "type" : "OUTPUT",
+          "top" : 112,
+          "left" : 1372
+        },
+        "JOIN4" : {
+          "label" : "JoinOpportunitiesWithOwners2",
+          "description" : "We do a separate join with the closed opportunities so we do not have secondary Owner column and prefix.",
+          "type" : "JOIN",
+          "top" : 112,
+          "left" : 1232
+        }
+      },
+      "connectors" : [
+        {
+          "source" : "LOAD_DATASET1",
+          "target" : "JOIN1"
+        },
+        {
+          "source" : "AGGREGATE0",
+          "target" : "JOIN1"
+        },
+        {
+          "source" : "LOAD_DATASET0",
+          "target" : "FILTER1"
+        },
+        {
+          "source" : "FILTER1",
+          "target" : "AGGREGATE0"
+        },
+        {
+          "source" : "JOIN3",
+          "target" : "OUTPUT1"
+        },
+        {
+          "source" : "FILTER2",
+          "target" : "JOIN3"
+        },
+        {
+          "source" : "LOAD_DATASET2",
+          "target" : "JOIN3"
+        },
+        {
+          "source" : "JOIN1",
+          "target" : "FILTER2"
+        },
+        {
+							 
+							  
+		  
+		 
+          "source" : "FILTER3",
+          "target" : "AGGREGATE2"
+        },
+        {
+          "source" : "FILTER2",
+          "target" : "FILTER3"
+        },
+        {
+          "source" : "AGGREGATE2",
+          "target" : "TRANSFORM0"
+        },
+        {
+          "source" : "TRANSFORM0",
+          "target" : "JOIN4"
+        },
+        {
+          "source" : "LOAD_DATASET2",
+          "target" : "JOIN4"
+        },
+        {
+          "source" : "JOIN4",
+          "target" : "OUTPUT2"
+        }
+      ],
+      "hiddenColumns" : [ ]
+    },
+    "runMode" : "full"
+  },
+  "lastTime" : null
+}

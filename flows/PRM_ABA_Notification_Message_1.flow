@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_ABA_Notification_Messages</name>
+        <label>Send ABA Notification Messages</label>
+        <locationX>668</locationX>
+        <locationY>405</locationY>
+        <actionName>PRM_SendNotificationMessages</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>accountId</name>
+            <value>
+                <elementReference>$Record.PRM_Account_Id__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>msgCd</name>
+            <value>
+                <elementReference>SendABANotificationMessages</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PRM_SendNotificationMessages</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Send Notofocation messages to contacts when Solution Marketplace Enhanced Benefit/Solution Marketplace Basic Profile Benefit is provided to the OPID Account</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>SendABANotificationMessages</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.PRM_Partner_Benefit_Id__r.Name}={!$Label.PRM_Solutions_Marketplace_Enhanced}, {!$Label.PRM_Msgcd_Store_Front} ,{!$Label.PRM_Msgcd_Market})</expression>
+    </formulas>
+    <interviewLabel>PRM_ABA_Notification_Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_ABA_Notification_Message</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>544</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Send_ABA_Notification_Messages</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>If(OR({!$Record.PRM_Partner_Benefit_Id__r.Name} = {!$Label.PRM_Solutions_Marketplace_Enhanced}, {!$Record.PRM_Partner_Benefit_Id__r.Name} = {!$Label.PRM_Solutions_Marketplace_Basic_Profile}),AND({!$Record.PRM_Account_Id__r.RecordType.DeveloperName} = {!$Label.PRM_Partner_Account_Group_Record_Type},ISPICKVAL({!$Record.PRM_Status_Nm__c} ,&quot;Active&quot;)),False)</filterFormula>
+        <object>PRM_AccountBenefitAssociation__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

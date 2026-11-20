@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-grid slds-wrap slds-p-vertical_small">
+        <template for:each={contractLineItemsList} for:item="detail" for:index="index">
+            <div key={detail.tempKey} class="slds-size_1-of-1 slds-m-bottom_x-small">
+                <lightning-textarea maxlength="5000" data-index={index} value={detail.value}
+                    label={newContractSectionLabel} onchange={handleContractLineItemChange}
+                    disabled={disableContractLineItems}>
+                </lightning-textarea>
+            </div>
+        </template>
+        <template if:true={showAddContractButton}>
+            <div class="slds-m-top_small">
+                <lightning-button-icon icon-name="utility:add" alternative-text="Add New Contract Section" variant="brand"
+                    class="slds-m-right_x-small round-button" onclick={handleAddContractLineItem}>
+                </lightning-button-icon>
+                <span class="slds-m-left_x-small">{addNewContractSectionLabel}</span>
+            </div>
+    
+        </template>
+    </div>
+</template>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Redemption Point</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Redemption Points</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_Account__c</name>
+        <relationshipLabel><!-- Redemption Points --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business ID --></label>
+        <name>Core_Business_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Name --></label>
+        <name>Core_Business_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Enrollment Status --></label>
+        <name>Core_Current_Enrollment_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Tier --></label>
+        <name>Core_Current_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate SFAccount --></label>
+        <name>Core_Duplicate_SFAccount__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>Core_External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fulfilment Method --></label>
+        <name>Core_Fulfilment_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Core_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gold L1 Status --></label>
+        <name>Core_Gold_L1_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Description --></label>
+        <name>Core_Order_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order ID --></label>
+        <name>Core_Order_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ordered By --></label>
+        <name>Core_Ordered_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platinum L1 Status --></label>
+        <name>Core_Platinum_L1_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platinum L2 Status --></label>
+        <name>Core_Platinum_L2_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Value CMS --></label>
+        <name>Core_Points_Value_CMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prcp Cont Email --></label>
+        <name>Core_Prcp_Cont_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prcp Cont Login --></label>
+        <name>Core_Prcp_Cont_Login__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prcp Cont Number --></label>
+        <name>Core_Prcp_Cont_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pts Rdmd on Reward --></label>
+        <name>Core_Pts_Rdmd_on_Reward__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rdm Order Ref No --></label>
+        <name>Core_Rdm_Order_Ref_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Partner --></label>
+        <name>Core_Redemption_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Qty --></label>
+        <name>Core_Redemption_Qty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Status Cmmts --></label>
+        <name>Core_Redemption_Status_Cmmts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Status --></label>
+        <name>Core_Redemption_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Type CMS --></label>
+        <name>Core_Redemption_Type_CMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Redemption Type --></label>
+        <name>Core_Redemption_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Attribute --></label>
+        <name>Core_Reward_Attribute__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Category CMS --></label>
+        <name>Core_Reward_Category_CMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Category Group --></label>
+        <name>Core_Reward_Category_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Category --></label>
+        <name>Core_Reward_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Description --></label>
+        <name>Core_Reward_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward ID --></label>
+        <name>Core_Reward_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Quantity CMS --></label>
+        <name>Core_Reward_Quantity_CMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Variation ID --></label>
+        <name>Core_Reward_Variation_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reward Variation Title --></label>
+        <name>Core_Reward_Variation_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Date --></label>
+        <name>Core_Ship_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_Sub_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Date --></label>
+        <name>Core_Transaction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unit Point Cost --></label>
+        <name>Core_Unit_Point_Cost__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

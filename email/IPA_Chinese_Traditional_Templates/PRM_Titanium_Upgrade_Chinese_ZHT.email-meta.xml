@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Titanium_Upgrade_Chinese_ZHT</name>
+    <style>none</style>
+    <subject>歡迎加入英特爾® 合作夥伴聯盟 Prestige</subject>
+    <textOnly>Intel® 夥伴聯盟白金級
+
+
+{!Contact.FirstName}您好，
+
+恭喜！貴公司已升等為 Intel® 夥伴聯盟的白金級。會員獨享的好處包括：
+
+購買元件和系統可獲得更多點數
+受邀參加年度的頂級 Intel 夥伴活動：Intel® Partner Connect
+由 Intel 管理階層提供給您的潛在客戶的白金介紹信
+
+登入即可存取工具和資源。
+
+馬上開始
+
+
+Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
+
+請造訪 intel.com/partnerhelp 取得將您的會員資格效益最大化的協助與說明。
+
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel 公司， 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

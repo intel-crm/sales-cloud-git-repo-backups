@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>IPA Account External User</audienceName>
+    <container>Partnercenter Unified Community</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <isEnabled>true</isEnabled>
+                <permissionName>Core_MDF_CCP_External_IPA_Account_Based_User</permissionName>
+                <permissionType>Custom</permissionType>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Permission</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <profile>admin</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+    </criteria>
+    <formula>1 OR 2</formula>
+    <formulaFilterType>CustomLogicMatches</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>3192f2b7-60ce-4b36-8365-09db423eaed6</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Outcomebased_Campaigns_list_view_Outcomebased_Campaigns_list_view_Page</targetValue>
+        </target>
+        <target>
+            <groupName>ba0b79b3-a345-4b4c-b472-c0a4f282f88c</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Outcomebased_Campaign_Details_Outcomebased_Campaign_Details_Page</targetValue>
+        </target>
+    </targets>
+</Audience>

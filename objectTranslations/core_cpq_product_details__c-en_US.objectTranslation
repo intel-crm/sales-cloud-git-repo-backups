@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Business Unit Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Business Unit Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>core_cpq_active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>core_cpq_business_unit_nm__c</name>
+        <picklistValues>
+            <masterLabel>ASIC Proto</masterLabel>
+            <translation><!-- ASIC Proto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Access</masterLabel>
+            <translation><!-- Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application</masterLabel>
+            <translation><!-- Application --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcast</masterLabel>
+            <translation><!-- Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial</masterLabel>
+            <translation><!-- Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure</masterLabel>
+            <translation><!-- Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical</masterLabel>
+            <translation><!-- Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military</masterLabel>
+            <translation><!-- Military --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline</masterLabel>
+            <translation><!-- Wireline --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Application --></label>
+        <name>core_cpq_product_application_nm__c</name>
+        <picklistValues>
+            <masterLabel>AR/VR/MR - Commercial</masterLabel>
+            <translation><!-- AR/VR/MR - Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Emulation</masterLabel>
+            <translation><!-- ASIC Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Prototyping/Emulation</masterLabel>
+            <translation><!-- ASIC Prototyping/Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATE &amp; Semiconductor Tester</masterLabel>
+            <translation><!-- ATE &amp; Semiconductor Tester --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATM</masterLabel>
+            <translation><!-- ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerospace/Avionics</masterLabel>
+            <translation><!-- Aerospace/Avionics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive - Other</masterLabel>
+            <translation><!-- Automotive - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive_1</masterLabel>
+            <translation><!-- Automotive_1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driving - Other</masterLabel>
+            <translation><!-- Autonomous Driving - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Desktop</masterLabel>
+            <translation><!-- Business Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Mobility</masterLabel>
+            <translation><!-- Business Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Test &amp; Measuring Equipment</masterLabel>
+            <translation><!-- Comms Test &amp; Measuring Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Transportation and Solutions</masterLabel>
+            <translation><!-- Connected Transportation and Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Desktop</masterLabel>
+            <translation><!-- Consumer Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Mobility</masterLabel>
+            <translation><!-- Consumer Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drives, Motor Control, Encoders</masterLabel>
+            <translation><!-- Drives, Motor Control, Encoders --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronic Gaming Machines</masterLabel>
+            <translation><!-- Electronic Gaming Machines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy - Other</masterLabel>
+            <translation><!-- Energy - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming &amp; Lottery Machines</masterLabel>
+            <translation><!-- Gaming &amp; Lottery Machines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gateway_1</masterLabel>
+            <translation><!-- Gateway_1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health: Diagnostic/Therapeutic/Remote/Clinical Equipment</masterLabel>
+            <translation><!-- Health: Diagnostic/Therapeutic/Remote/Clinical Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imaging / EOIR</masterLabel>
+            <translation><!-- Imaging / EOIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial - Test &amp; Measuring Equipment</masterLabel>
+            <translation><!-- Industrial - Test &amp; Measuring Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Gateways</masterLabel>
+            <translation><!-- Industrial Gateways --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial PCs</masterLabel>
+            <translation><!-- Industrial PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Ruggedized Servers</masterLabel>
+            <translation><!-- Industrial Ruggedized Servers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure (e.g., Roadside, Rail, etc.)</masterLabel>
+            <translation><!-- Infrastructure (e.g., Roadside, Rail, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Flatpanel Displays / Whiteboards</masterLabel>
+            <translation><!-- Interactive Flatpanel Displays / Whiteboards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lottery</masterLabel>
+            <translation><!-- Lottery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEC/Edge Cloud</masterLabel>
+            <translation><!-- MEC/Edge Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military/Defense</masterLabel>
+            <translation><!-- Military/Defense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motion Control and CNC</masterLabel>
+            <translation><!-- Motion Control and CNC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motion Controllers &amp; CNC&apos;s</masterLabel>
+            <translation><!-- Motion Controllers &amp; CNC&apos;s --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFVi / OssBss / Mano</masterLabel>
+            <translation><!-- NFVi / OssBss / Mano --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance: Other</masterLabel>
+            <translation><!-- Network Appliance: Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance: Security</masterLabel>
+            <translation><!-- Network Appliance: Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Demarcation CPE</masterLabel>
+            <translation><!-- Network Demarcation CPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Media</masterLabel>
+            <translation><!-- Network Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLC &amp; PAC</masterLabel>
+            <translation><!-- PLC &amp; PAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POS / ATM</masterLabel>
+            <translation><!-- POS / ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Sector - Ruggedized PCs</masterLabel>
+            <translation><!-- Public Sector - Ruggedized PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAN/Edge</masterLabel>
+            <translation><!-- RAN/Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar</masterLabel>
+            <translation><!-- Radar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar/ Electronic Warfare</masterLabel>
+            <translation><!-- Radar/ Electronic Warfare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar/EW/Cyber</masterLabel>
+            <translation><!-- Radar/EW/Cyber --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC</masterLabel>
+            <translation><!-- Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics</masterLabel>
+            <translation><!-- Robotics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Routers</masterLabel>
+            <translation><!-- Routers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Routers	Routers</masterLabel>
+            <translation><!-- Routers	Routers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruggedized/Industrial/Vertical Grade PCs</masterLabel>
+            <translation><!-- Ruggedized/Industrial/Vertical Grade PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sensor Platform</masterLabel>
+            <translation><!-- Sensor Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server</masterLabel>
+            <translation><!-- Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Home</masterLabel>
+            <translation><!-- Smart Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Places Compute</masterLabel>
+            <translation><!-- Smart Places Compute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage	Storage</masterLabel>
+            <translation><!-- Storage	Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Studio Cameras, Multi-viewers, Editors</masterLabel>
+            <translation><!-- Studio Cameras, Multi-viewers, Editors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switches</masterLabel>
+            <translation><!-- Switches --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thin Client, Cloud Client</masterLabel>
+            <translation><!-- Thin Client, Cloud Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thin Client, Cloud Client, Edge Client</masterLabel>
+            <translation><!-- Thin Client, Cloud Client, Edge Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</masterLabel>
+            <translation><!-- Vehicles - Non-Automotive (e.g. Trains, Ships, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video NVR / Recorder / Gateway / Server</masterLabel>
+            <translation><!-- Video NVR / Recorder / Gateway / Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud Media</masterLabel>
+            <translation><!-- Visual Cloud Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud Media	Visual</masterLabel>
+            <translation><!-- Visual Cloud Media	Visual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless &amp; Wireline Core</masterLabel>
+            <translation><!-- Wireless &amp; Wireline Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Access CRAN/VRAN</masterLabel>
+            <translation><!-- Wireless Access CRAN/VRAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Access Macro/Micro BTS/Small</masterLabel>
+            <translation><!-- Wireless Access Macro/Micro BTS/Small --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Backhaul/Transport</masterLabel>
+            <translation><!-- Wireless Backhaul/Transport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Baseband</masterLabel>
+            <translation><!-- Wireless Baseband --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Fronthaul</masterLabel>
+            <translation><!-- Wireless Fronthaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Radio</masterLabel>
+            <translation><!-- Wireless Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Radio	Wireless Ra</masterLabel>
+            <translation><!-- Wireless Radio	Wireless Ra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Remote Radio Head</masterLabel>
+            <translation><!-- Wireless Remote Radio Head --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline &amp; Broadband Access</masterLabel>
+            <translation><!-- Wireline &amp; Broadband Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline &amp; Cable Access</masterLabel>
+            <translation><!-- Wireline &amp; Cable Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation</masterLabel>
+            <translation><!-- Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vCPE/uCPE/SD-WAN premises</masterLabel>
+            <translation><!-- vCPE/uCPE/SD-WAN premises --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Segment --></label>
+        <name>core_cpq_product_segment_nm__c</name>
+        <picklistValues>
+            <masterLabel>Automotive / Transportation</masterLabel>
+            <translation><!-- Automotive / Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Infra. / Networking</masterLabel>
+            <translation><!-- Comms Infra. / Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Computing</masterLabel>
+            <translation><!-- Data Center Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded / IOT</masterLabel>
+            <translation><!-- Embedded / IOT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>core_cpq_segment_nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Inference</masterLabel>
+            <translation><!-- AI Inference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Training</masterLabel>
+            <translation><!-- AI Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Prototyping</masterLabel>
+            <translation><!-- ASIC Prototyping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATE &amp; Semiconductor Tester</masterLabel>
+            <translation><!-- ATE &amp; Semiconductor Tester --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Acceleration</masterLabel>
+            <translation><!-- Application Acceleration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application-Other</masterLabel>
+            <translation><!-- Application-Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Backhaul</masterLabel>
+            <translation><!-- Backhaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baseband</masterLabel>
+            <translation><!-- Baseband --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blockchain</masterLabel>
+            <translation><!-- Blockchain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMM Test Equipment</masterLabel>
+            <translation><!-- COMM Test Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cable Access</masterLabel>
+            <translation><!-- Cable Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Carrier Access</masterLabel>
+            <translation><!-- Carrier Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coherent</masterLabel>
+            <translation><!-- Coherent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comp Storage</masterLabel>
+            <translation><!-- Comp Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computing and Storage</masterLabel>
+            <translation><!-- Computing and Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE - Head-end</masterLabel>
+            <translation><!-- DO NOT USE - Head-end --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-ASIC Prototyping &amp; Emulation</masterLabel>
+            <translation><!-- DO NOT USE-ASIC Prototyping &amp; Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-Access</masterLabel>
+            <translation><!-- DO NOT USE-Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-Core</masterLabel>
+            <translation><!-- DO NOT USE-Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-Home Appliance</masterLabel>
+            <translation><!-- DO NOT USE-Home Appliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-Point of Sale</masterLabel>
+            <translation><!-- DO NOT USE-Point of Sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-Surveillance/Building Automation</masterLabel>
+            <translation><!-- DO NOT USE-Surveillance/Building Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO NOT USE-Video Display</masterLabel>
+            <translation><!-- DO NOT USE-Video Display --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Analytics</masterLabel>
+            <translation><!-- Data Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diagnostic Imaging</masterLabel>
+            <translation><!-- Diagnostic Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Gaming</masterLabel>
+            <translation><!-- Digital Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver Assistance</masterLabel>
+            <translation><!-- Driver Assistance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-Vehicle</masterLabel>
+            <translation><!-- E-Vehicle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ElectroMedical</masterLabel>
+            <translation><!-- ElectroMedical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emulation</masterLabel>
+            <translation><!-- Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FSI</masterLabel>
+            <translation><!-- FSI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fronthaul</masterLabel>
+            <translation><!-- Fronthaul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Analytics</masterLabel>
+            <translation><!-- Government Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guidance &amp; Control</masterLabel>
+            <translation><!-- Guidance &amp; Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC</masterLabel>
+            <translation><!-- HPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home Audio/Video</masterLabel>
+            <translation><!-- Home Audio/Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imaging/EOIR</masterLabel>
+            <translation><!-- Imaging/EOIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Networking</masterLabel>
+            <translation><!-- Industrial Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Other</masterLabel>
+            <translation><!-- Industrial Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infotainment</masterLabel>
+            <translation><!-- Infotainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Acceleration</masterLabel>
+            <translation><!-- Infrastructure Acceleration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy</masterLabel>
+            <translation><!-- Legacy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing/Control</masterLabel>
+            <translation><!-- Manufacturing/Control --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Devices</masterLabel>
+            <translation><!-- Mobile Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFV</masterLabel>
+            <translation><!-- NFV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking</masterLabel>
+            <translation><!-- Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Access</masterLabel>
+            <translation><!-- Other Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Broadcast</masterLabel>
+            <translation><!-- Other Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Computer &amp; Storage</masterLabel>
+            <translation><!-- Other Computer &amp; Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Consumer</masterLabel>
+            <translation><!-- Other Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Medical Products</masterLabel>
+            <translation><!-- Other Medical Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Military/Aero/Defense/Gov</masterLabel>
+            <translation><!-- Other Military/Aero/Defense/Gov --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Test Equipment</masterLabel>
+            <translation><!-- Other Test Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Wireless</masterLabel>
+            <translation><!-- Other Wireless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Wireline</masterLabel>
+            <translation><!-- Other Wireline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform Mgmt</masterLabel>
+            <translation><!-- Platform Mgmt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ProAV</masterLabel>
+            <translation><!-- ProAV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar/EW</masterLabel>
+            <translation><!-- Radar/EW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation><!-- Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secure Communications</masterLabel>
+            <translation><!-- Secure Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SmartNIC</masterLabel>
+            <translation><!-- SmartNIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Studio</masterLabel>
+            <translation><!-- Studio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surveillance</masterLabel>
+            <translation><!-- Surveillance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transmission</masterLabel>
+            <translation><!-- Transmission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation Data Center</masterLabel>
+            <translation><!-- Transportation Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation as a Service</masterLabel>
+            <translation><!-- Transportation as a Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vision Fog Server</masterLabel>
+            <translation><!-- Vision Fog Server --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unique Id --></label>
+        <name>core_cpq_unique_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Market --></label>
+        <name>core_cpq_vertical_market_nm__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Service Providers</masterLabel>
+            <translation><!-- Cloud Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Service Providers</masterLabel>
+            <translation><!-- Comms Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy and Utilities</masterLabel>
+            <translation><!-- Energy and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Federal and Aerospace</masterLabel>
+            <translation><!-- Federal and Aerospace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Services Industry</masterLabel>
+            <translation><!-- Financial Services Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Life Sciences</masterLabel>
+            <translation><!-- Health and Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Medium Business</masterLabel>
+            <translation><!-- Small Medium Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Cities</masterLabel>
+            <translation><!-- Smart Cities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sports</masterLabel>
+            <translation><!-- Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

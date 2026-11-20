@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Marquee Marketplace Search Box</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <!--<targetConfigs>
+        The below attributes are "Not In Use" attributes 
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="showSearch" type="Boolean" default="false" label="Show search?"/>
+            <property name="isHomePage" type="Boolean" default="false" label="Is Home Page ?"/>
+            <property name="isOfferingPage" type="Boolean" default="true" label="Is Offering Page?"/>
+            <property name="isPartnerPage" type="Boolean" default="false" label="Is Partner Page?"/>
+            <property name="alignment" type="String" label="Select content alignment" datasource="left,center"/>
+            <property name="typeaheadNoResults" type="String" />
+        </targetConfig>
+    </targetConfigs>-->
+</LightningComponentBundle>

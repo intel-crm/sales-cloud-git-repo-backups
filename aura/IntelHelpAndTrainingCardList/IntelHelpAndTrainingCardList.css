@@ -1,0 +1,29 @@
+.THIS .product-category-name {
+    padding: 0;
+    width: 100%;
+}
+
+.THIS .product-category-name span.h5 {
+    font-size: 20px;
+}
+
+.THIS .simple-card-list-image-wrapper {
+    width: auto;
+    margin: 0 28px;
+}
+
+.THIS .list-card-parent-cta {
+    margin-top: 45px;
+}
+
+.THIS .list-card-parent-title {
+    margin-bottom: 25px;
+}
+
+.THIS .cISGSimpleCard p {
+    font-weight: 300;
+}
+
+@media (max-width: 767px) {
+/*small*/
+}

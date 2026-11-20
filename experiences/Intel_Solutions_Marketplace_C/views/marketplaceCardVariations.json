@@ -1,0 +1,82 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "9225b365-e718-4b21-a803-17905b4a7352",
+  "label" : "Marketplace Card Variations",
+  "regions" : [ {
+    "id" : "b1823720-0d48-455a-8b36-8ecdf4cd603c",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "92c882a4-4237-43b9-9443-ebd8bb2f18ec",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "04d998f3-5d35-415c-8842-8eca574e0a82",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "a5bacd43-d074-4aca-94c1-63fc59988949",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "c4e7dd8a-f928-44b9-b87d-77ee5c940d20",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "22550e6a-4013-4b2a-9cd1-bad819ef821c",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Marketplace Card Variations"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b1aebae0-fcef-4559-bd12-c794ef23a6b6",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d13471df-0dee-41f0-a76e-c126736072be",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "e9324356-f743-4c32-8c8d-718aa622071b",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "2922f25e-b74c-4d9c-acae-47d407bfb249",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "f57d5448-11ab-4bec-8ed8-e5db4814b053",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "79fe33e0-8c1a-4049-82c4-dcf4c0630d0f",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "e9d2eddc-4a39-4238-95cf-190835706607",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "f64a21ef-af02-4647-a5b2-fb7ffae3de25",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "2ed37041-c8ca-43f2-b47e-40f5ab2853b3",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "611279bc-fb6c-4002-a996-b8e5a3f0652f",
+    "regionName" : "blade10",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "custom-marketplace-card-variations"
+}

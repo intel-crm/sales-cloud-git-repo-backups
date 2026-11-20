@@ -1,0 +1,108 @@
+<template>
+    <div if:true={isLoaded}>
+        <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+        <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    <template if:true={isError}>
+        <div class="slds-box slds-theme--error" align="center">
+            <lightning-icon icon-name="utility:error" alternative-text="error"></lightning-icon>
+            <span class="slds-text-body–regular">
+                <lightning-formatted-text value={errorMessage}></lightning-formatted-text>
+            </span>
+        </div>
+    </template>
+    <template if:false={isError}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_10-of-12 slds-small-size_10-of-12 slds-medium-size_10-of-12 slds-large-size_10-of-12">
+                <lightning-card icon-name="standard:account" title="Price Review Maintenance">
+                    <lightning-layout>
+                        <lightning-layout-item size="12" small-device-size="12" medium-device-size="4" large-device-size="4" padding="around-small">
+                            <lightning-combobox name="Program" 
+                                label={programFieldLabel} 
+                                options={programFieldValues}
+                                value={selectedProg} 
+                                required="true" 
+                                onchange={handleSelctedProgram}>
+                            </lightning-combobox>
+                        </lightning-layout-item>
+                        <template if:true= {allAccountVisible}>
+                            <div class="slds-form-element slds-var-p-top_small slds-var-p-right_large slds-var-p-left_xx-small">
+                                <label class="slds-form-element__label" for="checkbox-unique-id-81">All Accounts</label>
+                                <div class="slds-form-element__control">
+                                  <span class="slds-checkbox slds-checkbox_standalone">
+                                    <input type="checkbox" id="checkbox-unique-id-81" name="label" value="option" onchange={handleAllAccount} />
+                                    <span class="slds-checkbox_faux"></span>
+                                  </span>
+                                </div>
+                              </div>
+                          </template>
+                        
+                    <template if:true={showAccount}>
+                        <lightning-layout-item size="12" small-device-size="12" medium-device-size="4" large-device-size="4" padding="around-small">
+                            <c-core_-m-d-f_-parent-account-lookup 
+                                label="Account" 
+                                required="true" 
+                                obj-name="Account"
+                                search-placeholder={searchAccountsLabel} 
+                                icon-name="standard:account"
+                                onlookupselected={handleSelectedAccount} 
+                                filter={accountQueryFilter}
+                                selected-record={selectedAccount}>
+                            </c-core_-m-d-f_-parent-account-lookup>
+                        </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                    <template if:true={showProducts}>
+                        <div class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small">
+                            <lightning-layout>
+                                <div class="slds-align_absolute-center" style="padding-bottom: 1rem;"
+                                    horizontal-align="center" multiple-rows="true">
+                                    <lightning-button variant="brand" label={saveBtnLabelTxt} title={saveBtnLabelTxt}
+                                        class="slds-var-m-left_x-small" onclick={customSave} disabled={disableAll}>
+                                    </lightning-button>
+                                    <lightning-button label={cancelBtnLabelTxt} title={cancelBtnLabelTxt}
+                                        class="slds-var-m-left_x-small" onclick={handleCancel}></lightning-button>
+                                </div>
+                                <lightning-button-icon icon-name="utility:edit" variant="brand" alternative-text="Edit"
+                                    class="slds-m-left_xx-small" title="Edit" onclick={handleEdit}
+                                    style="float: right;">
+                                </lightning-button-icon><br /><br />
+                            </lightning-layout>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small"
+                            style="overflow-y:auto; height:30rem">
+                            <div class="slds-grid slds-gutters slds-wrap">
+                                <div
+                                    class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
+                                    <c-core_-m-d-f_custom-tree-grid 
+                                        columns={gridColumns} 
+                                        tree-data={productData}
+                                        show-table-header={showTableHeader} 
+                                        show-checkbox={showCheckbox}
+                                        disable-all={disableAll} 
+                                        onrecordselection={getSelectedRecords}
+                                        is-search-enabled={searchEnabled}
+                                        screen="reviewScreen">
+                                    </c-core_-m-d-f_custom-tree-grid>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                                    <div class="slds-scrollable slds-border_top slds-border_right slds-border_bottom slds-border_left"
+                                        style="height:33rem;overflow: auto;background-color: white;">
+                                        <lightning-datatable 
+                                            key-field="name" 
+                                            data={dataForTable} 
+                                            columns={tableColumns}
+                                            hide-checkbox-column="False">
+                                        </lightning-datatable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <div if:false={showProducts} style="height:40rem;"></div>
+                </lightning-card>
+            </div>            
+        </div>
+    </template>
+</template>

@@ -1,0 +1,337 @@
+<apex:page controller="CRM_GenerateWord_EMBController"
+           showHeader="false"
+           sidebar="false"
+           applyHtmlTag="false"
+           applyBodyTag="false"
+           contentType="application/msword;charset=Windows-1252#">
+    
+    <html xmlns:v="urn:schemas-microsoft-com:vml"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:w="urn:schemas-microsoft-com:office:word"
+          xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+          xmlns="http://www.w3.org/TR/REC-html40">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <head>
+            <style>
+                @page Section1 {
+                size: A4;
+                margin: 0.75in;
+                mso-footer: footer1;
+                }
+                img { max-width: 100%; }
+                div.Section1 {
+                page: Section1;
+                }           
+                body {
+                font-family: Arial, sans-serif;
+                font-size: 11pt;
+                }
+
+            </style>
+        </head>
+        
+        <body>
+            
+            <div class="Section1">
+                <div class="header" style="text-align:left;;color: #87CEFA;font-weight: bold;padding: 6px 0;">
+                    <strong>BRIEFING DOCUMENT</strong>
+                </div> 
+                <div class = "content">
+                    <table border="1" cellpadding="5" cellspacing="0">
+                        <tbody>
+                            <tr style="background-color: #0066cc; color: white;">
+                                <td width="50%" class="value">
+                                    {!record.Core_Executive_Meeting_Brief_Name__c}
+                                </td>
+                                <td width="50%" class="value">
+                                      {!formattedSchedule}
+                                      <!--{!record.CRM_Start_Date__c} {!record.CRM_Start_Time__c} - {!record.CRM_Scheduled_End_Date__c} {!record.CRM_Scheduled_End_Time_Only__c}-->                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div class="no-break">
+                        <table>
+                            <caption class="tableheader" style="text-align:left;;color: #0066cc;font-style: italic;font-weight: bold;padding: 6px 0;"><strong>MEETING OBJECTIVES &amp; KEY MESSAGES:</strong></caption>
+                            <tbody class="pageContent">
+                                <table border="1" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <td width="113" class="label" style="background-color: #f0f0f0">
+                                            <span><strong>Intel&rsquo;s Meeting Objectives</strong></span>
+                                        </td>
+                                        <td width="567" class="value">
+                                            <apex:outputText value="{!formatted_CRM_Intels_Meeting_Objectives}" escape="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="113" class="label" style="background-color: #f0f0f0">
+                                            <span><strong>Other Party&rsquo;s Meeting Objectives</strong></span>
+                                        </td>
+                                        <td width="567" class="value">
+                                            <apex:outputText value="{!formatted_CRM_Other_Partys_Meeting_Objectives}" escape="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="113" class="label" style="background-color: #f0f0f0">
+                                            <span><strong>Most Critical Messages to Get Across</strong></span>
+                                        </td>
+                                        <td width="567" style=" text-align: left;border: 1px solid black;  ">
+                                            <apex:outputText value="{!formatted_CRM_Most_Critical_Messages_to_Get_Across}" escape="false" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </tbody>
+                        </table> 
+                    </div>
+                    <br/>
+                    <div class="no-break">
+                        <table>
+                            <caption class="tableheader" style="text-align:left;;color: #0066cc;font-style: italic;font-weight: bold;padding: 6px 0;"><strong>LOGISTICS, MEETING CONTACTS &amp; SALESFORCE LINKS:</strong></caption>
+                            <tbody>
+                                <table border="1" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <th width="151" class="label" style="background-color: #f0f0f0">
+                                            <span>Prepared By</span>
+                                        </th>
+                                        <td width="529" class="value">
+                                            <span>{!record.CRM_PreparedBy__r.Name}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="151" class="label" style="background-color: #f0f0f0">
+                                            <span>Reviewed By</span>
+                                        </th>
+                                        <td width="529" class="value" style="background-color: #f0f0f0">
+                                            <span>{!record.CRM_Brief_Reviewer__r.Name}</span>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <th width="151" class="label" style="background-color: #f0f0f0">
+                                            <span>Salesforce Account Link</span>
+                                        </th>
+                                        <td width="529" class="value" style="background-color: #f0f0f0">
+                                            <span>
+                                                <a href="{!accountUrl}" target="_blank">{!relatedAccount.Name}</a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="151" class="label" style="background-color: #f0f0f0">
+                                            <span>Location</span>
+                                        </th>
+                                        <td width="529" class="value">
+                                            <span>{!formattedLocation}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="151" class="label" style="background-color: #f0f0f0">
+                                            <span>Dress Code</span>
+                                        </th>
+                                        <td width="529" class="value">
+                                            <span>{!record.CRM_Dress_Code__c}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <div class="no-break">
+                        <table>
+                            <caption class="tableheader" style="text-align:left;;color: #0066cc;font-style: italic;font-weight: bold;padding: 6px 0;"><strong>ATTENDEES:</strong></caption>
+                            <tbody>
+                                <table border="1" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <th width="340" class="label" style="background-color: #f0f0f0">
+                                            <span>Intel Attendees</span>
+                                        </th>
+                                        <th width="340" class="label" style="background-color: #f0f0f0">
+                                            <span>External Attendees</span>
+                                        </th>
+                                    </tr>
+                                    <apex:repeat value="{!internalExternalAttendes}" var="extIntAttendes">
+                                        <tr>
+                                            <td width="340" class="value">
+                                                <span>{!extIntAttendes[1]}</span>
+                                            </td>
+                                            <td width="340" class="value">
+                                                <span>{!extIntAttendes[0]}</span>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                            </tbody>
+                        </table> 
+                    </div>
+                    <br/>
+                    <div class="no-break">
+                        <table>
+                            <caption class="tableheader" style="text-align:left;;color: #0066cc;font-style: italic;font-weight: bold;padding: 6px 0;"><strong>AGENDA:</strong></caption>
+                            <tbody>
+                                <table border="1" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <th width="113" class="label" style="background-color: #f0f0f0">
+                                            <span>Time Period</span>
+                                        </th>
+                                        <th width="378" class="label" style="background-color: #f0f0f0">
+                                            <span>Meeting Agenda Items</span>
+                                        </th>
+                                        <th width="196" class="label" style="background-color: #f0f0f0">
+                                            <span>Presenters/Conversation Lead</span>
+                                        </th>
+                                    </tr>
+                                    <apex:repeat value="{!agenda}" var="age">
+                                        <tr>
+                                            <td width="113" class="value">
+                                                <span>
+                                                    {!age[0]}
+                                                </span>
+                                            </td>
+                                            <td width="378" class="value">
+                                                <span>{!age[2]}</span>
+                                            </td>
+                                            <td width="196" class="value">
+                                                <span>{!age[1]}</span>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <div class="no-break">
+                        <table>
+                            <caption class="tableheader" style="text-align:left;color: #0066cc;font-style: italic;font-weight: bold;padding: 6px 0;"><strong>BACKGROUND &amp; TALKING POINTS:</strong></caption>
+                            <apex:repeat value="{!background_talking_point}" var="row">
+                                <table border="1" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <th rowspan="3" style="width:25%; font-weight:bold; background-color:#f0f0f0; vertical-align:top;">
+                                            <span>{!row[0]}</span>
+                                        </th>
+                                        <td style="width:75%; padding:5px; vertical-align:top;">
+                                            <span class="displayasblockele" style="color:#0176d3; font-weight: bold; "><strong>Background:</strong></span>
+                                            <apex:outputText escape="false" value="{!row[1]}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:5px; vertical-align:top;">
+                                            <span class="displayasblockele" style="color:#0176d3; font-weight: bold;"><strong>Proactive Talking Points:</strong></span>
+                                            <apex:outputText escape="false" value="{!row[2]}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:5px; vertical-align:top;">
+                                            <span class="displayasblockele" style="color:#0176d3; font-weight: bold;"><strong>Reactive Talking Points:</strong></span>
+                                            <apex:outputText escape="false" value="{!row[3]}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </apex:repeat>
+                        </table>
+                    </div>
+                    <br/>
+                    <div class="no-break">
+                        
+                <div style="color:#0066cc;font-style:italic;font-weight:bold;padding:6px 0;">
+                    ADDITIONAL INFORMATION:
+                </div>
+
+                       <table border="1" cellpadding="5" cellspacing="0" width="650" style="table-layout:fixed;mso-table-layout-alt:fixed;">
+    <colgroup>
+        <col width="170"/>
+        <col width="510"/>
+    </colgroup>
+
+    <tr>
+        <td style="text-align:center; font-weight:bold; background-color:#f0f0f0; vertical-align:top;width:25%;">
+            Additional Info
+        </td>
+        <td>
+            <div  style="word-break:break-all">
+                <strong style="color:#0176d3;">Industry Insights / Political Climate</strong><br/>
+            <apex:outputText value="{!formatted_Industry_Insights_Political_Climate}" escape="false"/>
+            </div>
+            
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;background-color:#f0f0f0;"></td>
+        <td >
+            <div style="word-break:break-all;">
+            <strong style="color:#0176d3;">How They Buy / Sell</strong><br/>
+            <apex:outputText value="{!formatted_How_They_Buy_Sell}" escape="false"/>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;background-color:#f0f0f0;"></td>
+        <td>
+            <div style="word-break:break-all;">
+            <strong style="color:#0176d3;">Investor Scouting Report</strong><br/>
+            <apex:outputText value="{!formatted_CRM_Investor_Scouting_Report}" escape="false"/>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;background-color:#f0f0f0;"></td>
+        <td>
+            <div style="word-break:break-all;">
+            <strong style="color:#0176d3;">Additional Legal Guidance</strong><br/>
+            <apex:outputText value="{!formatted_CRM_Additional_Legal_Guidance}" escape="false"/>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="font-weight:bold; background-color:#f0f0f0; text-align:center; vertical-align:top;">
+            Attendee Bio(s)
+        </td>
+        <td style="padding:5px; vertical-align:top;">
+            <apex:outputText value="{!formatted_CRM_Attendee_Bio}" escape="false"/>
+        </td>
+    </tr>
+     <!--tr>
+         <th width="151" class="label" style="background-color: #f0f0f0">
+             <span>Agentic Attendee Bio(s)</span>
+         </th>
+         <td width="529" class="value">
+             <span>{!record.CRM_Agentic_Attendee_Bio__c}</span>
+         </td>
+      </tr-->
+</table>
+                    </div>
+                    <br/>
+                </div>
+                
+                <!-- ========================= -->
+                <!-- WORD FOOTER (DO NOT TOUCH STRUCTURE) -->
+                <!-- ========================= -->
+                
+                <div id="footer1" style="mso-element:footer">
+                    <table width="100%" style="font-size:10pt;">
+                        <tr>
+                            <td align="left">
+                                <strong>Intel Confidential</strong>
+                            </td>
+                            <td align="right">
+                                Page 
+                                <span style="mso-field-code:PAGE"></span>
+                                of 
+                                <span style="mso-field-code:NUMPAGES"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div>
+            
+        </body>
+    </html>
+    
+</apex:page>

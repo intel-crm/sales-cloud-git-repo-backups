@@ -1,0 +1,10 @@
+{
+  "type" : "sfdc_enablement__videoLesson",
+  "title" : "Gaudi Product Introduction",
+  "contentBody" : {
+    "description" : "The Intel Gaudi 3 AI accelerator delivers greater speed, scalability, and developer productivity. Designed at the inception to meet the demands of data center AI compute to meet the demands of data center AI compute.",
+    "time" : 2.0,
+    "videoUrl" : "https://www.youtube.com/embed/L5kmfRnO-M8?si=ZJ_YXee9mGqqOob2"
+  },
+  "urlName" : "gaudi-product-introduction"
+}

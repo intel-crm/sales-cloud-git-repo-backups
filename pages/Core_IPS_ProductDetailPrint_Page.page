@@ -1,0 +1,115 @@
+<apex:page Controller="Core_IPS_ProductDetailPrint_Ctrl" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" renderAs="pdf">
+    <head style="padding-right: 200px">    
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />    
+        <style type="text/css" media="print">
+            html{
+            font-family: Arial, Helvetica, sans-serif;
+            }
+            @page {
+            size: A6 landscape;
+            }
+            .toolbar{
+            padding-right: 200px;
+            }
+            body{
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+            /*line-height:1rem;*/
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:13px;
+            padding-right: 200px
+            }
+            td span div{
+            white-space: pre-line !important;
+            padding-right: 20px;
+            }
+            
+        </style>
+        <style> 
+       		.ProduSpace{
+            display:inline-block;
+            width:150px;
+            padding-bottom:10px;
+            }
+            .ProduSpacenext{
+            display:inline-block;
+            
+            }
+        
+        </style>
+    </head>
+    <div style="font-family: Arial Unicode MS; font-size:10px;  padding-right: 20px"> 
+        
+        <apex:form >    
+            <apex:pageBlock title="Product Detials">
+                <apex:pageBlockSection >
+                <!--    <table style="table-layout: fixed; width: 60%;">
+                        <tr>
+                            <td style="width: 1px;"><apex:outputfield value="{!assetObj.Name}"/></td>            
+                        </tr>
+                        <tr>
+                            <td><apex:outputfield value="{!assetObj.Core_IPS_Project_Name__c}"/></td>
+                        </tr>
+                        <tr>
+                            <td><apex:outputfield value="{!assetObj.core_Product_Application__c}"/></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><apex:outputfield value="{!assetObj.Core_IPS_Support_License__c}"/></td>
+                            
+                        </tr>
+                        <tr>
+                            <td><apex:outputfield value="{!assetObj.Core_IPS_Project_Id__c}"/></td>
+                        </tr>
+                        <tr>
+                            <td><apex:outputfield value="{!assetObj.Status}"/></td>
+                        </tr>
+                    </table> -->
+                    <div>
+                        <span class="ProduSpace">Intel® Product Name:</span> <span class="ProduSpacenext">{!assetObj.Name}</span> <br/>
+                    </div>
+                    <div>
+                        <span class="ProduSpace">Premier Support Project: </span>  <span class="ProduSpacenext"> {!assetObj.Core_IPS_Project_Name__c}   </span>
+                    </div>
+                    <div>
+                        <span class="ProduSpace">Product Focus Area: </span>  <span class="ProduSpacenext"> {!assetObj.core_Product_Application__c}   </span>
+                    </div>
+                    <div>
+                        <span class="ProduSpace">Support License: </span>  <span class="ProduSpacenext"> {!assetObj.Core_IPS_Support_License__c}   </span>
+                    </div>
+                    <div>
+                        <span class="ProduSpace">Project Id: </span>  <span class="ProduSpacenext"> {!assetObj.Core_IPS_Project_Id__c}   </span>
+                    </div>
+                    <div>
+                        <span class="ProduSpace">Status: </span>  <span class="ProduSpacenext"> {!assetObj.Status}   </span>
+                    </div>
+                    <!-- <apex:outputfield value="{!assetObj.Name}" label="Intel® Product Name: "/><br/>
+                    <apex:outputfield value="{!assetObj.Core_IPS_Project_Name__c}" label="Premier Support Project: "/><br/>
+                    <apex:outputfield value="{!assetObj.core_Product_Application__c}" label="Product Focus Area: "/><br/>
+                    <apex:outputfield value="{!assetObj.Core_IPS_Support_License__c}" label="Support License: "/><br/>
+                    <apex:outputfield value="{!assetObj.Core_IPS_Project_Id__c}" label="Project Id: "/><br/>
+                    <apex:outputfield value="{!assetObj.Status}" label="Status: "/>-->
+
+
+                    
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            
+            <apex:pageBlock title="Cases">
+                <apex:dataTable value="{!AllCases}" var="cs" style="table-layout: fixed;">
+                    <apex:column style="overflow: hidden; text-overflow: ellipsis; padding-right: 20px; padding-top: 10px; padding-bottom: 20px" value="{!cs.CaseNumber}" headerValue="Case Number"/>
+                     <apex:column style="overflow: hidden; text-overflow: ellipsis; padding-right: 20px; padding-bottom: 20px" value="{!cs.Core_Contact_Name__c}" headerValue="Contact Name"/>
+                    <apex:column style="overflow: hidden; width: 280px; text-overflow: ellipsis; padding-right: 20px; padding-bottom: 20px" value="{!cs.Subject}" headerValue="Subject"/>
+                    <apex:column style="overflow: hidden; width:100px; text-overflow: ellipsis; padding-right: 20px; padding-left: 30px; padding-bottom: 20px" value="{!cs.CreatedDate}" headerValue="Created Date"/>
+                    <apex:column style="overflow: hidden; width:100px; text-overflow: ellipsis; padding-right: 20px; padding-left: 30px; padding-bottom: 20px" value="{!cs.Status}" headerValue="Status"/>
+                </apex:dataTable>
+            </apex:pageBlock>
+              
+            
+              
+
+        </apex:form>
+    </div>   
+</apex:page>

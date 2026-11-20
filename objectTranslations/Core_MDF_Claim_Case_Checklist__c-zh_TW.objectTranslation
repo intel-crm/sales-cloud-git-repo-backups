@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Claim Case Checklist --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AI Checklist Status --></label>
+        <name>Core_MDF_AI_Checklist_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation><!-- Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Compliant</masterLabel>
+            <translation><!-- Non-Compliant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AI Generated Comments --></label>
+        <name>Core_MDF_AI_Generated_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case_ID --></label>
+        <name>Core_MDF_Case_ID__c</name>
+        <relationshipLabel><!-- Claim Case Checklists --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Review Findings --></label>
+        <name>Core_MDF_Case_Review_Findings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Category --></label>
+        <name>Core_MDF_Checklist_Category__c</name>
+        <picklistValues>
+            <masterLabel>Attribution</masterLabel>
+            <translation><!-- Attribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branding</masterLabel>
+            <translation><!-- Branding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documentation</masterLabel>
+            <translation><!-- Documentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engagement</masterLabel>
+            <translation><!-- Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP</masterLabel>
+            <translation><!-- POP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submission</masterLabel>
+            <translation><!-- Submission --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Checklist Description --></label>
+        <name>Core_MDF_Checklist_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Item --></label>
+        <name>Core_MDF_Checklist_Item__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Line Number --></label>
+        <name>Core_MDF_Checklist_Line_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Checklist Status --></label>
+        <name>Core_MDF_Checklist_Status__c</name>
+        <picklistValues>
+            <masterLabel>Compliant</masterLabel>
+            <translation><!-- Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Compliant</masterLabel>
+            <translation><!-- Non-Compliant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Claim Case Review Findings --></label>
+        <name>Core_MDF_Claim_Case_Review_Findings__c</name>
+        <picklistValues>
+            <masterLabel>Activity date mismatch</masterLabel>
+            <translation>活動日期不相符</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Activity not completely delivered/partially delivered</masterLabel>
+            <translation>活動未完全執行/僅部分執行</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anti-corruption policy not met</masterLabel>
+            <translation>不符合反腐敗政策規定</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balanced branding not met</masterLabel>
+            <translation>沒有達到平衡品牌設定需求</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boost Ad Tagline not met</masterLabel>
+            <translation>「促銷廣告標語」不符</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brand image violation</masterLabel>
+            <translation>品牌形象違規</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branding documents altered</masterLabel>
+            <translation>品牌設定文件被修改過</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims outside of 6 months claiming window</masterLabel>
+            <translation>超過 6 個月範圍的報銷</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims outside of claiming window</masterLabel>
+            <translation>索賠時段外的索賠</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitive element violation</masterLabel>
+            <translation>違反競爭要素</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consistency Issue</masterLabel>
+            <translation>一致性問題</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost documents altered</masterLabel>
+            <translation>費用證明文件被修改過</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cost documents altered/not valid</masterLabel>
+            <translation>成本文件已變更/無效</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate claims</masterLabel>
+            <translation>重複申請</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible Product/Solution Not Prominent/Missing</masterLabel>
+            <translation>合格產品/解決方案不顯著/遺漏</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible ad space error</masterLabel>
+            <translation>合格的廣告空間錯誤</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embargo countries</masterLabel>
+            <translation>禁止的國家/地區</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event prior approval violation</masterLabel>
+            <translation>違反批准前活動規定</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event prior approval violation. Pre-review documentation violation</masterLabel>
+            <translation>事件預先批准違規。審核前文件違規</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exceeds Gift &amp; Entertainment guide</masterLabel>
+            <translation>超出「禮品和娛樂」規範</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution date mismatch</masterLabel>
+            <translation>執行日期不相符</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel Mention</masterLabel>
+            <translation>不正確的 Intel 提及</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel Processor Brands</masterLabel>
+            <translation>Intel 處理器品牌有誤</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Intel logo/sig ID</masterLabel>
+            <translation>Intel 圖誌/簽名 ID 使用不正確</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect LED selection</masterLabel>
+            <translation>不正確的 LED 選項</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Product Executed</masterLabel>
+            <translation>執行錯誤產品</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect Program Selected</masterLabel>
+            <translation>選取了不正確的方案</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect activity type/category</masterLabel>
+            <translation>活動類型/類別不正確</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect country submission</masterLabel>
+            <translation>所提交的國家有誤</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect country submission/ Multiple countries submission</masterLabel>
+            <translation>送交的國名不正確/送交數個國名</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect/missing Additional Attribution</masterLabel>
+            <translation>不正確/遺漏的額外屬性</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect/missing Intel mention</masterLabel>
+            <translation>不正確/缺少 Intel 品牌提及</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Artwork Violation</masterLabel>
+            <translation>違反 Intel 藝術圖案</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel code name violation</masterLabel>
+            <translation>違反 Intel 代碼名稱</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel logo/sig ID altered</masterLabel>
+            <translation>Intel 圖誌/簽名 ID 已被修改</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid POC amount</masterLabel>
+            <translation>POC 金額無效</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid POC currency</masterLabel>
+            <translation>POC 貨幣無效</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid rate card/calculation</masterLabel>
+            <translation>費率卡/計算無效</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Intel Presence</masterLabel>
+            <translation>缺乏 Intel 存在感</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Landing Page Branding violation</masterLabel>
+            <translation>「登陸頁品牌設定」違規</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal Review violation</masterLabel>
+            <translation>「法律審查」違規</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing documents</masterLabel>
+            <translation>缺少文件</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple invoices submission in one claim</masterLabel>
+            <translation>一次報銷送交多個發票</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Negative brand impact</masterLabel>
+            <translation>對品牌產生負面影響</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-eligible Intel product brand</masterLabel>
+            <translation>不合格的 Intel 產品品牌</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-eligible product/solution</masterLabel>
+            <translation>不合格的產品/解決方案</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-reimbursable costs</masterLabel>
+            <translation>不可報銷的花費</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not promoting brand in positive manner</masterLabel>
+            <translation>沒有以正面的方式來宣傳品牌</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation>其他</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC date mismatch</masterLabel>
+            <translation>POC 日期不符合</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC detail submission error</masterLabel>
+            <translation>送交的 POC 細節錯誤</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POE documents altered</masterLabel>
+            <translation>POE 文件已變更</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP contain redaction</masterLabel>
+            <translation>POP 包含修訂</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POP not in acceptable format</masterLabel>
+            <translation>POP 格式不可接受</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Path to Purchase prerequisite not met</masterLabel>
+            <translation>未達到購買路徑的先決條件要求</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promoting Non-Intel Product</masterLabel>
+            <translation>推廣非 Intel 產品</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Execution altered</masterLabel>
+            <translation>執行證明已變更</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualified Processor Brands violation</masterLabel>
+            <translation>「合格處理器品牌」違規</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPIF underperformed</masterLabel>
+            <translation>SPIF 表現不佳</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Third-party logos violation</masterLabel>
+            <translation>違反第三方圖誌</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trademark infringement</masterLabel>
+            <translation>侵犯商標</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Underperformed metrics/Not Meeting FMV</masterLabel>
+            <translation>未達成計量指標/未達成 FMV</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unsupported domains</masterLabel>
+            <translation>不受支援的網域</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_MDF_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completion Percentage --></label>
+        <name>Core_MDF_Completion_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact Amount Summation --></label>
+        <name>Core_MDF_Impact_Amount_Summation_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact Amount(Local) --></label>
+        <name>Core_MDF_Impact_Amount__c</name>
+    </fields>
+    <nameFieldLabel><!-- Claim Case Checklist Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Enter Impact Amount (local) greater than or equal to 0 --></errorMessage>
+        <name>Core_MDF_Validate_NonCompliant_Responses</name>
+    </validationRules>
+</CustomObjectTranslation>

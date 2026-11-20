@@ -1,0 +1,50 @@
+.share-overlay {
+  background: var(--white);
+  border: 1px solid var(--carbon-tint1);
+  border-radius: 0;
+  min-width: 145px;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  top: 1.75rem;
+  transition: .3s ease-out;
+  z-index: 2;
+}
+
+.share-overlay[data-expanded="true"] {
+  display: block;
+}
+
+.share-overlay[data-expanded="false"] {
+  display: none;
+}
+
+.share-overlay li {
+  padding-bottom: 1rem;
+}
+
+.social-share-container {
+  display: inline-block;
+  position: relative;
+}
+
+.social-share-container lightning-icon {
+  --iconColor: var(--classic-blue);
+}
+
+.social-share-container button div {
+  display: inline-block;
+}
+
+.social-share-container button lightning-icon {
+  display: inline-block;
+}
+
+.close {
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid var(--carbon-tint1);
+  padding: .5rem;
+  text-align: right;
+  width: 100%;
+}

@@ -1,0 +1,79 @@
+<apex:component access="global" >
+ <html>
+     <style>
+        
+         
+         table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          border-left: 1px solid #dddddd;
+          border-right: 1px solid #dddddd;
+          border-top: 0px;
+          border-bottom: 1px solid #dddddd;
+        }
+        
+        
+        
+        .intelBlue{
+            color:#0071c5;
+        }
+
+        </style>
+<!--<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.text{
+  padding-left: 20px;
+  background: #DCDCDC;
+}
+
+.boxed1 {
+  border: 1px solid black ;
+  background: #C0C0C0;
+}
+.buttonStyle {
+    //background: url(/img/forcecom/btn_sprite1.png) repeat-x scroll right top #65a612;
+    font-weight: bold;
+    margin: 1px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-position: right -120px;
+    padding: 4px 40px;
+    border: 2px solid #fff;
+    color: #00aeef;
+    text-decoration: none;
+    white-space: nowrap;
+}
+</style>-->
+
+
+    <table width="75%">
+    <tr>    
+            <td style="text-align:center">
+            For FAQs and pro-tips on using Intel Solutions Marketplace, please visit 
+            <apex:outputLink value="{!$Label.MarketPlace_Help_Url}" >
+            Marketplace Help
+            </apex:outputLink>
+            </td>
+        </tr>
+    <tr>
+            <td style="text-align:center">
+                <div style="font-size:10px">
+                    You have received this email as a member of Intel Solutions Marketplace.<br/>
+                <apex:outputLink value="{!$Label.Legal_Information_Url}">Legal Information</apex:outputLink> | <apex:outputLink value="{!$Label.Privacy_Policy_Url}">Privacy Policy</apex:outputLink> | <apex:outputLink value="{!$Label.Trademarks_Url}">Trademarks</apex:outputLink> |  © {!$Label.Year} Intel Corporation
+          </div>  
+        </td>
+        </tr>
+    </table>
+
+</html>
+</apex:component>

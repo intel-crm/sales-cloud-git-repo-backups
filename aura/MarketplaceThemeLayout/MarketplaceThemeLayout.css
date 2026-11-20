@@ -1,0 +1,39 @@
+.THIS {
+  background-color: var(--lightestGray);
+  color: var(--darkGray);
+  font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.THIS .rightAlign {
+  text-align: right;
+}
+
+.THIS .full-width {
+  width: 100%;
+}
+
+/* Hack on IntelFooter -- attempt to remove horizontal scrollbar that appears at 1200px and 1650px */
+.THIS #recode50footer footer {
+  max-width: 100%;
+  overflow: hidden;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* Move header down to make space for text */
+  .THIS .recode50 .header-simplify nav.global-menu-simplify {
+      margin-top: 40px;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .THIS [class*="slds-size_"],
+  .THIS [class*="slds-size--"] {
+      flex-shrink: 0;
+      flex-grow: 0;
+      flex-basis: auto;
+  }
+}

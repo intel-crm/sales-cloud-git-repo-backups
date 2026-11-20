@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Partner_Assist_Consent__r$PRM_Choice_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Partner_Assist_Consent__r$PRM_Distributor_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Partner_Assist_Consent__r$PRM_Consent_Provided_By_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$Email</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Partner_Assist_Consent__r$PRM_Consent_Provided_Date_Dt__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(AND
+(!ISBLANK(PRM_Partner_Assist_Consent__c.PRM_Start_Date_Dt__c),
+ISBLANK(PRM_Partner_Assist_Consent__c.PRM_End_Date_Dt__c)),&apos;YES&apos;, &apos;NO&apos;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>True false</description>
+        <developerName>CDF1</developerName>
+        <label>Consent Provided</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$AccountNumber</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Partner Assist</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_with_Contact_Partner_Assist_Consent_Custom__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

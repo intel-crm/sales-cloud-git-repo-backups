@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SOAR Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SOAR Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>CRM_VBS_Opportunity_Product__c</name>
+        <relationshipLabel><!-- SOAR Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>CRM_VBS_Product__c</name>
+        <relationshipLabel><!-- SOAR Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>CRM_VBS_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- SOAR Product Name --></label>
+        <name>CRM_VBS_SOAR_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- SOAR --></label>
+        <name>CRM_VBS_SOAR__c</name>
+        <relationshipLabel><!-- SOAR Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>CRM_VBS_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delete In Progress (&lt;15 min)</masterLabel>
+            <translation><!-- Delete In Progress (&lt;15 min) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Post-Win</masterLabel>
+            <translation><!-- Post-Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Cancelled</masterLabel>
+            <translation><!-- Production Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production Lost</masterLabel>
+            <translation><!-- Production Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win Submitted</masterLabel>
+            <translation><!-- Win Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Price --></label>
+        <name>CRM_VBS_TotalPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Price --></label>
+        <name>CRM_VBS_Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Price --></label>
+        <name>CRM_VBS_UnitPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor --></label>
+        <name>CRM_VBS_Vendor__c</name>
+        <relationshipLabel><!-- SOAR Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Write In Product Name --></label>
+        <name>CRM_VBS_Write_In_Product_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Required for write in products --></errorMessage>
+        <name>CRM_OppProd_Write_In_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity field only supports whole numbers. Edit Quantity field(s) by removing the decimal/negative value to enable saving. --></errorMessage>
+        <name>CRM_Quantity_only_supports_whole_numbers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please input non-negative value for Sales Price --></errorMessage>
+        <name>CRM_SalesPrice_NonNegative</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SOAR Products/Team cannot be modified after SOAR VBS Decision is SOAR3 Approved. --></errorMessage>
+        <name>CRM_VBS_Product_Update_SOAR3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SOAR Cannot be modified Once Contract is Signed or Opportunity is Closed. --></errorMessage>
+        <name>CRM_VBS_SOAR_Product_Update_Other</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Products --></label>
+        <name>Add_Products</name>
+    </webLinks>
+</CustomObjectTranslation>

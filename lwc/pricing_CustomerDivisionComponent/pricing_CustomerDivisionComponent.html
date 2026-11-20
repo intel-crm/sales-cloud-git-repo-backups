@@ -1,0 +1,63 @@
+<template>
+    <lightning-card title="Account Division" icon-name="standard:question_feed">
+
+        <div class="slds-p-bottom_x-small slds-p-left_x-small slds-p-right_x-small">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">{label}</label>
+                <lightning-helptext content={helptext}></lightning-helptext>
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                            aria-expanded="true" aria-haspopup="listbox" role="combobox" onmouseleave={handleBlur}>
+
+                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                <lightning-input title={showTitle} disabled={disabled} class="inputBox"
+                                    onclick={showOptions} value={displayText} variant="label-hidden" id="combobox-id-1"
+                                    readonly>
+                                </lightning-input>
+                                <lightning-icon class="slds-input__icon" icon-name="utility:down" size="x-small"
+                                    alternative-text="downicon"></lightning-icon>
+                            </div>
+
+                            <template if:true={showDropdown}>
+                                <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid">
+                                    <ul class="slds-listbox slds-listbox_vertical recordListBox" role="presentation">
+
+                                        <template for:each={optionData} for:item="option">
+                                            <li key={option.value} data-id={option.value} onmousedown={selectItem}
+                                                class="slds-listbox__item eachItem">
+                                                <template if:true={option.selected}>
+                                                    <lightning-icon icon-name="utility:check" size="x-small" alternative-text="icon">
+                                                    </lightning-icon>
+                                                </template>
+                                                <span class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{option.label}</span>
+                                            </li>
+                                        </template>
+
+                                    </ul>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-align_absolute-center">
+            <template if:false={disabled}>
+                <lightning-button variant="brand" type="submit" label={saveLabel} title="Save" disabled={disableButton}
+                    onclick={handleSave} class="buttonPadding"></lightning-button>
+
+                <lightning-button variant="neutral" label="Reset" disabled={disableButton} onclick={handleReset}
+                    class="buttonPadding">
+                </lightning-button>
+            </template>
+        </div>
+
+        <template if:true={loadSpinner}>
+            <lightning-spinner alternative-text="Loading..." size="medium">
+            </lightning-spinner>
+        </template>
+
+    </lightning-card>
+</template>

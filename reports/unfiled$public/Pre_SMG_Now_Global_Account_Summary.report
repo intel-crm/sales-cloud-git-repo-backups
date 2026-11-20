@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_29275340</developerName>
+        <masterLabel>Pre SMG Now Global Accounts</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.Core_Global_MNC_ODM_Account__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Global Apple</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Acer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Amazon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Asustek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Cisco</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global DELL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Foxconn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Fujitsu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Google</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Hewlett Packard</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Hitachi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Huawei</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global IBM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Lenovo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Microsoft</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Oracle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Quanta Computer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Samsung</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Global Toshiba</sourceValue>
+            </sourceValues>
+            <value>Pre SMG Now Global Accounts</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_57830587</developerName>
+        <masterLabel>SMG BU or Not BU</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OpportunityLineItem.Core_BU_Short_Name_Old__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>DCG</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>IOTG</sourceValue>
+            </sourceValues>
+            <value>IOTG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NSG</sourceValue>
+            </sourceValues>
+            <value>NSG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NTG</sourceValue>
+            </sourceValues>
+            <value>NTG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CCG</sourceValue>
+            </sourceValues>
+            <value>CCG</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <description>summarizes results by BU by old model</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Global_MNC_ODM_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>global</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Win Approved</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_57830587</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pre SMG Now Global Account Summary</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>closedwon</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

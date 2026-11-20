@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>VF page that shows product recommendations for an account, and takes input from the user on usefulness (for SMART What integration)</description>
+    <label>Account Recommendations</label>
+</ApexPage>

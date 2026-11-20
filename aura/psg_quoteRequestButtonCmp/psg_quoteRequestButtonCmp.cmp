@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-14-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component controller="Pricing_QuoteLineController"
+  implements="forceCommunity:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName,lightning:isUrlAddressable" access="global" description="Sample Component">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:handler event="force:refreshView" action="{!c.doInit}" />	
+  <aura:attribute name="recordId" type="String" />
+
+  <aura:attribute name="isTender" type="Boolean" default="false" />
+
+    
+    <br/>
+        <div class="slds-align_absolute-center">
+            <lightning:buttonGroup>
+				<aura:if isTrue="{!v.isTender}">
+                    <c:pricing_Manage_New_Quote/>
+                </aura:if>
+            </lightning:buttonGroup>
+        </div>
+</aura:component>

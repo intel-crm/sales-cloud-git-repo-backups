@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Long Running Batches Alert Email</name>
+    <style>none</style>
+    <subject>⚠ Alert: Long Running Batch Jobs Detected</subject>
+    <textOnly>Hello Team,
+
+This is an automated alert to notify you that one or more Batch Apex jobs have exceeded their configured execution time limit in the Salesforce org.
+
+Below are the details:
+
+Batch Name Job Id Start Time Running Duration (Minutes) Threshold (Minutes) Status
+{!BATCH_TABLE}
+
+
+Recommended Actions:
+
+Navigate to Setup → Apex Jobs
+Review batch logs and SOQL selectivity
+Abort and reschedule the batch if required
+
+This notification is generated automatically based on Custom Metadata batch thresholds.
+
+Regards,
+Salesforce Automation System</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

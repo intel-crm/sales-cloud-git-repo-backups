@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MaritzCX Response</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Survey Responses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact Id --></label>
+        <name>Core_Contact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- ALG Response Id --></label>
+        <name>MaritzCX__ALG_Response_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- ALG Survey Id --></label>
+        <name>MaritzCX__ALG_Survey_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>MaritzCX__Account__c</name>
+        <relationshipLabel><!-- MaritzCX Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>MaritzCX__Case_Id__c</name>
+        <relationshipLabel><!-- MaritzCX Response --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments 1 --></label>
+        <name>MaritzCX__Comments_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments 2 --></label>
+        <name>MaritzCX__Comments_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>MaritzCX__Contact_Id__c</name>
+        <relationshipLabel><!-- MaritzCX Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1 --></label>
+        <name>MaritzCX__Key_Metric_1_Bar__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 1 --></label>
+        <name>MaritzCX__Key_Metric_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2 --></label>
+        <name>MaritzCX__Key_Metric_2_Bar__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 2 --></label>
+        <name>MaritzCX__Key_Metric_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3 --></label>
+        <name>MaritzCX__Key_Metric_3_Bar__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 3 --></label>
+        <name>MaritzCX__Key_Metric_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4 --></label>
+        <name>MaritzCX__Key_Metric_4_Bar__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 4 --></label>
+        <name>MaritzCX__Key_Metric_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5 --></label>
+        <name>MaritzCX__Key_Metric_5_Bar__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Metric 5 --></label>
+        <name>MaritzCX__Key_Metric_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 1 --></label>
+        <name>MaritzCX__Metric_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 2 --></label>
+        <name>MaritzCX__Metric_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 3 --></label>
+        <name>MaritzCX__Metric_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 4 --></label>
+        <name>MaritzCX__Metric_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 5 --></label>
+        <name>MaritzCX__Metric_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 6 --></label>
+        <name>MaritzCX__Metric_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 7 --></label>
+        <name>MaritzCX__Metric_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric 8 --></label>
+        <name>MaritzCX__Metric_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Completed Date --></label>
+        <name>MaritzCX__Response_Completed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- View Response --></label>
+        <name>MaritzCX__Response_View_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Survey --></label>
+        <name>MaritzCX__Survey_Id__c</name>
+        <relationshipLabel><!-- MaritzCX Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>MaritzCX__respondent_email__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Dashboard --></label>
+        <name>MaritzCX__Dashboard</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Response --></label>
+        <name>MaritzCX__View_Response</name>
+    </webLinks>
+</CustomObjectTranslation>

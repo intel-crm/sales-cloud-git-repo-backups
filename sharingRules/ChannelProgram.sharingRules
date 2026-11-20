@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Channel_Program_Share_for_Internal_IPA_Read_Only_Grps</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program Share for Internal IPA Read Only Grps</label>
+        <sharedTo>
+            <group>Core_MDF_IPA_Internal_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Channel_Program_All_Users_CCP_Internal_Read_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Channel Program All Users - CCP Internal Read Write</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ChannelProgram_CCFB_Payment_Admin</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>ChannelProgram CCFB Payment Admin</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFB_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ChannelProgram_CCF_Payment_Admin</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>ChannelProgram CCF Payment Admin</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ChannelProgram_DCF_Payment_Admin</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>ChannelProgram DCF Payment Admin</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_ChannelProgram_SPCF_Payment_Admin</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>ChannelProgram SPCF Payment Admin</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-Marketing Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_CCFB_EXTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP CCFB EXTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCFB_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_CCFB_INTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP CCFB INTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCFB_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client Co-Marketing Fund Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_CCF_EXTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP CCF EXTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_CCF_INTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP CCF INTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_Claim_Case_Reviewer_Internal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Channel Program - CCP Claim Case Reviewer Internal</description>
+        <label>Channel Program - CCP Claim Case Reviewer Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_DCF_EXTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP DCF EXTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_DCF_INTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP DCF INTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_DCF_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Datacenter</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_Payment_Admin_Manager</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program - AGS_CCP Payment Admin Manager</description>
+        <label>Channel Program - CCP Payment Admin Manager</label>
+        <sharedTo>
+            <group>AGS_CCP_Payment_Admin_Manager</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_SPCF_EXTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP SPCF EXTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-Marketing Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_SPCF_INTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP SPCF INTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Service Provider Co-Marketing Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_EEF_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for EEF External</description>
+        <label>Channel Program Share for EEF External</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_EEF_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Ecosystem Extension Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_EEF_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for EEF Internal</description>
+        <label>Channel Program Share for EEF Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_EEF_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Ecosystem Extension Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_IPA_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for IPA All</description>
+        <label>Channel Program Share for IPA All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_IPA_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for IPA External</description>
+        <label>Channel Program Share for IPA External</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_IPA_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for IPA Internal</description>
+        <label>Channel Program Share for IPA Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_IPA_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_Internal_IPA_Geo_Grps</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program Share for Internal IPA Geo Grps</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Internal_IPA_Geo_Groups</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_Internal_Read_Only_Grps</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for Internal Read Only Groups</description>
+        <label>Channel Program Share for Internal Read Only Grps</label>
+        <sharedTo>
+            <group>Core_MDF_Retail_Int_All_Geo_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_RetailGeoGrps</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for Internal Retail Geo Grps</description>
+        <label>Channel Program Share for Internal Retail Geo Grps</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_Retail_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for Retail All</description>
+        <label>Channel Program Share for Retail All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_Retail_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for Retail External</description>
+        <label>Channel Program Share for Retail External</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_Retail_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Share for Retail Internal</description>
+        <label>Channel Program Share for Retail Internal</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Retail_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Sharing_for_NRE_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program Sharing for NRE All</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Co_GTM_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-GTM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_sharing_for_NRE_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel program sharing for NRE program for external users</description>
+        <label>Channel Program sharing for NRE External</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_Co_GTM_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-GTM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_Mdf_Channel_Program_Share_for_Co_GTM_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Sharing rule to share Co-GTM with Internal Group</description>
+        <label>Channel Program Share for Co-GTM Internal</label>
+        <sharedTo>
+            <group>Core_MDF_Int_Co_GTM_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-GTM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Channel_Program</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PCC Channel Program</label>
+        <sharedTo>
+            <group>PCC_B2B_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Partner Covers Customer (PCC)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

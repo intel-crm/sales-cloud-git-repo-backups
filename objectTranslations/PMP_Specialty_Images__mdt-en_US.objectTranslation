@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_Specialty_Images</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_Specialty_Images</value>
+    </caseValues>
+    <fields>
+        <label><!-- Grey Image URL --></label>
+        <name>Grey_Image_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP Account Specialty Name --></label>
+        <name>PMP_Account_Specialty_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter chinese value --></help>
+        <label><!-- PMP Specialty Name Chinese --></label>
+        <name>PMP_Specialty_Name_Chinese__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Japanese value --></help>
+        <label><!-- PMP Specialty Name Japanese --></label>
+        <name>PMP_Specialty_Name_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

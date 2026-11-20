@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Reminder: Don’t Forget to Login to Intel® Partner Showcase" recipientType="User">
+<messaging:htmlEmailBody >
+   
+        <c:PMP_Partner_OnGoingVisit_45days />
+   
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

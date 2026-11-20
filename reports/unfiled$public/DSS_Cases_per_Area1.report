@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_77548942</developerName>
+        <masterLabel>Area2</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.Core_External_Issue_Subcategory__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Quality / Reliability Process</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Quality/Reliability</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Package/Manufacturing</sourceValue>
+            </sourceValues>
+            <value>ERMA</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_49916781</developerName>
+        <masterLabel>Specialty Areas</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_External_Issue_Subcategory__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-MM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-MM with DMA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-ST</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PCIe - Avalon-ST with SR-IOV</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Comm, Interface &amp; Peripherals</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>--</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>N/A</sourceValue>
+            </sourceValues>
+            <value>PCIe</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Qsys System Design</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Board Test, Design and Layout</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>I/O</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>I/O Device</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Power</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PLL/Clock Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Configuration (FPGA)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Download Cables</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Programming/Configuration</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design Entry/Synthesis &amp; Netlist Viewers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Implementation/Optimization</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Project Management/Scripting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simulation/Formal Verification</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>TimeQuest Timing Analyzer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG Development Kits</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>On-Chip Debug</sourceValue>
+            </sourceValues>
+            <value>SW &amp; Components</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>100G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>10G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>1G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethernet Adapter</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethernet Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethernet/Wired LAN</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>2.5G Ethernet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>40G/100G Ethernet</sourceValue>
+            </sourceValues>
+            <value>Ethernet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>DDR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DDR2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DDR3/DDR3L</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DDR4</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HBM2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LPDDR2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Memory DRAM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other External Memory</sourceValue>
+            </sourceValues>
+            <value>EMIF</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Quality / Reliability Process</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Package/Manufacturing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Electrical Failure /Visual Defect</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other (Devices)</sourceValue>
+            </sourceValues>
+            <value>ERMA</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_49916781</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Opened Cases by Month per Area</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <filter>
+        <booleanFilter>((1 OR 2) AND 3) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>MICROSOFT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_End_Customer__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Microsoft</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>PSG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Marcos,Hector,Caro,Seng Kok Lim,Khai Chein Yeoh,Mildred,Enya,Soon Kock,Paveetirra Srie</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_49916781</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <name>DSS Cases per Area</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2022-02-16</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2022-01-01</startDate>
+    </timeFrameFilter>
+</Report>

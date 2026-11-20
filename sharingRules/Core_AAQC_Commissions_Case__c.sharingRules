@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_AAQC_Commissions_Inquiry_Details_Sharing_with_Admins</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Commissions Inquiry Details object Sharing with All Admins with R/W access</description>
+        <label>Commissions Inquiry Details Sharing with Admins</label>
+        <sharedTo>
+            <group>Core_AAQC_Admin_Group_for_All_Admins</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_AAQC_Subject__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

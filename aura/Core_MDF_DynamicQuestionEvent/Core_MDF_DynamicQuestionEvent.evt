@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Fired once the questions are answered" >
+	<aura:attribute name="valueOfDynamicQ" type="PartnerFundRequest" 
+                    description="Stores the values of all question fields"/>
+  
+</aura:event>

@@ -1,0 +1,27 @@
+<apex:component access="global" controller="PMP_GlobalFooterController">
+  <table width="75%">
+    <tr>    
+        <td style="text-align:center">
+            <div>
+                For FAQs and helpful information about using Intel® Partner Showcase, please visit&nbsp;
+                <apex:outputLink value="{!communityHelpURL}" styleClass="intelBlue">{!$Label.PMP_EmailTemplate_Help}
+                </apex:outputLink><br/><br/>
+            </div>
+            <div style="font-size:10px">
+                <!--You have received this email as a member of the Intel Solutions Marketplace<br/>
+                <apex:outputLink value="www.intel.com" styleClass="intelBlue">Legal Information</apex:outputLink> | &nbsp;
+                <apex:outputLink value="www.intel.com" styleClass="intelBlue">Privacy Policy</apex:outputLink> | &nbsp;
+                <apex:outputLink value="www.intel.com" styleClass="intelBlue">Trademarks</apex:outputLink> | &nbsp;
+                ©2019 Intel Corporation --> 
+                This message was sent to you as an important business communication related to your current relationship with Intel® Partner Showcase.<br/><br/>
+                © {!year(today())} Intel Corporation <br/>
+                Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.&nbsp;
+                <apex:outputLink value="www.intel.com" styleClass="intelBlue">www.intel.com</apex:outputLink><br/><br/>
+                <apex:outputLink value="www.intel.com/privacy" styleClass="intelBlue">Privacy</apex:outputLink> | &nbsp;
+                <apex:outputLink value="www.intel.com/cookies" styleClass="intelBlue">Cookies</apex:outputLink>
+            </div>
+        </td>
+    </tr>
+   </table>
+    
+</apex:component>

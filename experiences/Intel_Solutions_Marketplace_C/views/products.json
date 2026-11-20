@@ -1,0 +1,230 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "f4d7b3f2-14dd-4b7f-82a0-bd79292a23eb",
+  "label" : "Products",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : false,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "4de2bb5c-5306-44a3-988f-8dd0331d4101",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"Offerings\",\"title\":\"Offerings\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "www.intel.com",
+        "ctaLabel" : "Intel Home",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "505af906-1365-4902-b096-90c8091f9f31",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "106d9745-b291-4607-bfd9-5ea87723b892",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "debugMode" : true,
+        "displayType" : "all",
+        "searchAllMarketplaceLabel" : "in All Marketplace",
+        "searchAllPartnersLabel" : "in All Marketplace > All Partners",
+        "searchAllProductsLabel" : "in All Marketplace > All Offerings",
+        "searchPlaceholderTextOverride" : "",
+        "showKeywordInDropdown" : true,
+        "showSearchAllMarketplace" : true,
+        "showSearchAllPartners" : true,
+        "showSearchAllProducts" : true
+      },
+      "componentName" : "c:MarketplaceSearchBarFullWidth",
+      "id" : "93432398-99bf-423a-8c7c-526b46b61368",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "debugMode" : false,
+        "searchType" : "product",
+        "showSeparator" : true
+      },
+      "componentName" : "c:MarketplaceQuickSearch",
+      "id" : "1b4684f0-2c4f-478a-b007-ced9ddd5a442",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "viewAll" : ""
+      },
+      "componentName" : "c:MarketplaceProductCategoryList",
+      "id" : "3bbd1240-f797-49eb-9359-13ee622205d2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0d8b50d6-e4aa-4d35-8e37-7af400bcfac9",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "23328f25-ec48-4ab7-90a0-734b43d3ac64",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaExternalURL" : "https://www.intel.com",
+        "theme" : "primary"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "005a851a-7c2e-42dc-89a4-d3a946bc7865",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4b8c802a-fc04-400b-9fc1-634eb191a469",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "14b45d83-41f3-4fea-851c-c9800bb58872",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "27030b89-aa1a-457a-8270-656a332f414b",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "compareLabel" : "Compare",
+        "maxItemsToCompare" : 4,
+        "ofLabel" : "of"
+      },
+      "componentName" : "c:MarketplaceCompareTray",
+      "id" : "24f0edde-d05e-4be9-89f8-5c55893b3ad8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "876f132b-e0e1-4e2f-ab81-474219898974",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Offerings\"/> \n<meta name=\"keywords\" content=\"offering catalog, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"Offerings\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"View the entire offerings catalog product on the Intel® Solutions Marketplace discover top industry leading innovation.\"/>",
+        "description" : "View the entire offerings catalog product on the Intel® Solutions Marketplace discover top industry leading innovation.",
+        "title" : "Offering Catalog - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "362c876d-5ef3-4572-8e49-b138a38161e0",
+      "renditionMap" : {
+        "ja" : "54c31195-76c4-44b7-a09b-773a2054c950",
+        "zh_cn" : "1fd3ee09-6da2-4934-9427-f7b6f9167ca4"
+      },
+      "renditions" : [ {
+        "id" : "1fd3ee09-6da2-4934-9427-f7b6f9167ca4",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "54c31195-76c4-44b7-a09b-773a2054c950",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5f13085e-9ea1-407b-938f-f8e4e488b0a8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "839f5b6b-5a86-4b17-b8de-d6026de78683",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "883811c9-9ae6-4ed2-8cf8-b28c5f0decdd",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "8fb1fda8-ae94-47d9-9b9a-123908ed1a3f",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "headingLabel" : "FAQs"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "bb009f8b-eb90-4c38-93e8-c6c9ef759ddf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "181badda-f7eb-4149-9c55-a30d5e8575d8",
+        "zh_cn" : "dba775fb-347b-4710-aa1b-f2ab60b89041"
+      },
+      "renditions" : [ {
+        "id" : "181badda-f7eb-4149-9c55-a30d5e8575d8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "FAQ"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "dba775fb-347b-4710-aa1b-f2ab60b89041",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "常见问题解答"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "8d46ec3a-37f2-4738-a82c-2da057e15c28",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "e3b6cba5-d45a-4d8e-b585-bf181557f6db",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "1b3c39c5-e8f7-476d-9ad4-357f06aaec04",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "740a6ce9-4546-4799-a411-e8f3961de769",
+    "regionName" : "blade1white",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-products"
+}

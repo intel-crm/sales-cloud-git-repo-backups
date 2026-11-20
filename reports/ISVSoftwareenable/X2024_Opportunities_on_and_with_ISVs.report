@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_76173597</developerName>
+        <masterLabel>Opportunity Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Design: Original</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design: Secondary</sourceValue>
+            </sourceValues>
+            <value>Design</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal: Sell-through</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Partner Scale-enable</sourceValue>
+            </sourceValues>
+            <value>Scale Enable/Sell Through</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Deal: Sell-to</sourceValue>
+            </sourceValues>
+            <value>Sell To</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_38154464</developerName>
+        <masterLabel>Stage</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Design Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <value>Win</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Qualify</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Define</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Develop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design</sourceValue>
+            </sourceValues>
+            <value>Pipeline</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Cancelled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Group Cancelled</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Role__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_38154464</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <description>Opportunities that include solutions for ISV partner, includes Foundational ISVs, Cloud ISV and AI ISV and where ISV is the partner</description>
+    <filter>
+        <booleanFilter>(1 OR (4 AND 6) OR 5) AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>SUSE,VMWare,Red Hat,SAS,SAP,Cloudera,kylinos,uniontech,aerospike,aible,altair,ansys,databricks,dassault,dremio,exasol,genetec,hazelcast,hashicorp,intelligent security systems,mariadb,minio,mvtec,navori labs,redis,rescale,scylladb,spectro cloud,workspot,cadence,comsol,convergent,smartx,jellox,a.i. tech,A2 Technology,tensorflow,aimall,allgovision,anodot,Awiros,axxonsoft,baidu,bravent,cvedia,d8ai,deci.ai,deep edge,disrupt-x,expert.ai,geovision,graphene services,i2v systems,icuro,iomniscient,kloudspot,lilt,meldcx,minds.db,Hoobox,Jian24,precitaste,Relimetrics,Thundersoft,vehant,videonetics,Neuroo,nodeweaver,adlink,Meldcx,skylab,seasoon,simbo ai,simplify360,sharemedix,vixvizion,waittime,Zeblok,Jellox,Airaface,Disrupt x,eigen innovations,epic io,gorilla technology</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to,Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Define,Design,Design Win,Develop,Production Win,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_BU_Focus__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Influencer-ISV,NEX CG,IOTG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_IPA_Partner_Role__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Independent Software Vendor</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>amazon,google,microsoft,alphabet</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>2024 Opportunities on and with ISVs</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Opportunity_Solution_Area__c@Opportunity_Solution_Area__c.Core_Solution_Areas__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

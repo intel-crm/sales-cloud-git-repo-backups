@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Quote Generation History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Quote Generation History</value>
+    </caseValues>
+    <fields>
+        <label><!-- Error Code --></label>
+        <name>Core_Error_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Core_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message Status --></label>
+        <name>Core_Message_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- PSG Quote Generation History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote URL --></label>
+        <name>Core_Quote_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- RFQ ID --></label>
+        <name>Core_RFQ_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

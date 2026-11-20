@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunities Add Opportunity Team Members</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/add-opportunity-team-members/</actionButtonLink>
+        <body>&lt;p&gt;The Opportunity Team should include people who are working with you to close the opportunity which includes people such as Sellers, SPMs, ITSs, etc.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;From the opportunity, locate the &lt;em&gt;Opportunity Team &lt;/em&gt;section and click down arrow.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Add Opportunity Team Member&lt;/strong&gt;. &lt;strong&gt;NOTE&lt;/strong&gt;: If your sales group has a default team set up and you want to use that for this opportunity, simply click &lt;strong&gt;Add Default Team&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Search for your team member by typing in their name.&amp;nbsp;Predictive text provides a list of options as you type.&amp;nbsp;If the name you are searching for doesn’t appear in the list, click the magnifying glass to view more. &lt;strong&gt;NOTE&lt;/strong&gt;: It’s important that ONLY Internal Users are added to your Opportunity Team.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Select the &lt;strong&gt;new team member’s role and access &lt;/strong&gt;to the opportunity. &lt;strong&gt;NOTE&lt;/strong&gt;: There should only be one Technical Owner, per opportunity.&amp;nbsp;The Customer Access &amp;amp; Entitlement role is not a valid role and should not be selected.&lt;/li&gt;&lt;li&gt;Provide a &lt;strong&gt;Description of Contribution&lt;/strong&gt; for any team member, not including Opportunity Owner or Technical Owner.&amp;nbsp;&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save &lt;/strong&gt;to save your changes.&amp;nbsp;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Notifications are sent to the people added to an Opportunity Team, providing the Opportunity Name, Member Role, and Access Level.&amp;nbsp;Refer to the&lt;a href=&quot;https://salescrm.intel.com/training-and-help/opportunity-management/add-opportunity-team-membersadd/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt; Opportunity Team Member training&lt;/a&gt; for specific guidelines and information regarding Default Opportunity Teams.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>How to add Opportunity Team Members</description>
+        <displayType>DockedComposer</displayType>
+        <header>Opportunities</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Opportunities Add Opportunity Team Members</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Opportunity</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Add Opportunity Team Members</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

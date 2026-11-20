@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Agreement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Agreements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Legal Agreement Category --></label>
+        <name>PRM_Agreement_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Intel Insider Cloud All Agreements</masterLabel>
+            <translation><!-- Intel Insider Cloud All Agreements --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Legal Agreement Code --></label>
+        <name>PRM_Agreement_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agreement Description --></label>
+        <name>PRM_Agreement_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Partner Agreements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language Code --></label>
+        <name>PRM_Language_Codes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legal Agreement link --></label>
+        <name>PRM_Legal_Agreement_link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

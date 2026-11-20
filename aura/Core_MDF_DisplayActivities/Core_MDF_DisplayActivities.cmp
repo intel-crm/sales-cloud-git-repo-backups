@@ -1,0 +1,186 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride"
+                access="global"  
+                controller="Core_MDF_CampaignPFR_Controller">
+    
+    <aura:attribute name = "pfrList" type="PartnerFundRequest[]" default="{'sobjectType':'PartnerFundRequest'}"/>    
+    <aura:attribute name = "wrapperClassVar" type = "Core_MDF_CampaignPFR_Controller"/> 
+    <aura:attribute name = "isInternalUser" type = "Boolean"/>
+    <aura:attribute name = "isActivityEditable" type = "Boolean"/>
+    <aura:attribute name = "CheckEdit" type = "Boolean" Default="false"/>
+    <aura:attribute name = "CheckEditActivity" type = "Boolean" Default="false"/>
+    <aura:attribute name = "communityAttribute" type = "Boolean" Default="true"/>
+    <aura:attribute name = "requestId" type = "Id"/>
+    <aura:attribute name = "isClaimCreatable" type = "Boolean"/>
+    <aura:attribute name = "CheckClaimCreate" type = "Boolean" Default="false"/>
+    <aura:attribute name = "isPFRAvailable" type = "Boolean" Default="false"/>
+    <aura:attribute name = "isProposalBased" type = "Boolean" Default="false"/>
+    <aura:attribute name="hasIPAAccountManagerPS" type="Boolean" default="false"/>
+    <aura:attribute name="programName" type="String" default='' Description="This field is to hold the program name"/>
+   
+   <aura:handler event="force:showToast" action="{!c.handleToastEvent}"/>
+    
+    <aura:handler name = "init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:if isTrue="{!v.isProposalBased}">
+    <h1 id="standard" class="slds-box slds-theme_shade slds-text-heading_small">
+        <lightning:icon iconName="standard:partner_fund_request" class="icn" alternativeText="My Activities" />
+        <span class="slds-p-left_small"> <b>{!$Label.c.Core_MDF_Activities}</b></span>
+    </h1>
+    
+    <div>
+        <div class="slds-box slds-theme_default">
+            <aura:if isTrue="{!v.isPFRAvailable}">
+                <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
+                    <aura:iteration items="{!v.pfrList}" var="pfr" indexVar="indx">
+                        <lightning:accordionSection name="{!pfr.Title}" label="{!pfr.Core_MDF_Activity_Number__c +' '+':'+' '+ pfr.Title +' '+':'+' '+ pfr.activityStatus}">
+                            
+                        
+                        <div class="add-margin">
+
+                            <!-- <force:recordView recordId="{!pfr.Id}"/> -->
+                            <aura:if isTrue="{!and(pfr.RecordType.DeveloperName == 'Core_MDF_Intel_Partner_Alliance', pfr.Core_MDF_Proposal_Based_Ind__c == True )}">
+                                    <c:core_MDF_CustomLayoutConfig recordId="{!pfr.Id}" objAPIName="PartnerFundRequest"
+                                     fieldAPIName="Core_MDF_Proposal_Based_Ind__c" 
+                                     isSectionVisible="Yes" isCompactLayout="No" standardFieldAlign="No"/>
+                            </aura:if>
+                        </div>
+                        
+                            <aura:set attribute="actions">
+                                
+                                <br/> 
+                                <aura:if isTrue="{!v.isInternalUser}">
+                                    <div class="slds-p-around_medium">
+                                        <p><lightning:formattedUrl class="buttonWrap" label = "{!$Label.c.Core_MDF_View_Activity}" value= "{!pfr.Core_MDF_PFRDetailLink__c}" target="_blank" /></p>
+                                    </div>
+                                    
+                                    <aura:set attribute="else">
+                                        <div class="slds-p-around_medium">
+                                            <p><lightning:formattedUrl class="buttonWrap" label = "{!$Label.c.Core_MDF_View_Activity}" value= "{!pfr.Core_MDF_PFRRecordCommunityLink__c}" target="_blank" /></p>
+                                        </div>
+                                    </aura:set>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!(v.isActivityEditable)}">
+                                    <aura:if isTrue="{!(pfr.Core_MDF_Fund_Request_Status__c == 'Draft' || pfr.Core_MDF_Fund_Request_Status__c == 'Pending Review' ||
+                                                     and(pfr.Core_MDF_Fund_Request_Status__c == 'Planned',!pfr.Campaign.Core_MDF_Claims_Created_Ind__c) ||
+                                                     pfr.Core_MDF_Fund_Request_Status__c == 'Revision Required' || and(pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress Pending Review',v.hasIPAAccountManagerPS )||
+                                                     and(pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress Revision Required',v.hasIPAAccountManagerPS) || and(pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress',v.hasIPAAccountManagerPS))}">
+                                       <aura:if isTrue="{!(pfr.RecordType.DeveloperName=='Core_MDF_Intel_Partner_Alliance')}">
+                                       
+                                        <div class="slds-p-around_medium">
+                                            	<lightning:button class="buttonWrap"
+                                                              value = "{!pfr.Id}"
+                                                              variant="neutral"
+                                                              label="{!$Label.c.Core_MDF_Edit_Activity}"
+                                                              title="{!$Label.c.Core_MDF_Edit_Activity}"
+                                                              onclick="{!c.callCreateEditActivity}" />                                    
+                                       		 </div> 
+                                            <aura:set attribute="else">
+                                            <div class="slds-p-around_medium">
+                                            	<lightning:button class="buttonWrap"
+                                                              value = "{!pfr.Id}"
+                                                              variant="neutral"
+                                                              label="{!$Label.c.Core_MDF_Edit_Activity}"
+                                                              title="{!$Label.c.Core_MDF_Edit_Activity}"
+                                                              onclick="{!c.callCreateEditPFR}" />                                    
+                                       		 </div> 
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:if>
+                                </aura:if>
+                                
+                                
+                                <aura:if isTrue="{!and(v.isClaimCreatable, or (pfr.Core_MDF_Fund_Request_Status__c == 'Planned',
+                                                 pfr.Core_MDF_Fund_Request_Status__c == 'In-Progress'))}">
+                                    <div class="slds-p-around_medium">
+                                        <lightning:button class="buttonWrap"
+                                                          value = "{!pfr.Id}"
+                                                          variant="neutral"
+                                                          label="{!$Label.c.Core_MDF_CreateClaim}"
+                                                          title="{!$Label.c.Core_MDF_CreateClaim}"
+                                                          onclick="{!c.callCreatePFC}" />                                    
+                                    </div>
+                                </aura:if>
+                               
+                            </aura:set>   
+                            
+                            <c:Core_MDF_Activity_Upload_File recordId="{!pfr.Id}"/>
+                            <br/>
+                            <c:core_MDF_Tactics_Form  recordId="{!pfr.Id}" isDetail= "true" programName = "{!v.programName}"/> 
+                            <br/>                   
+                            <c:core_MDF_KPIDetailSection recordIdinput="{!pfr.Id}" 
+                                                         objectApiNameinput ="PartnerFundRequest"
+                                                         displayHeader = "Metrics"/>                            
+                            <br/>                              
+                            <c:core_MDF_DisplayProducts recordId="{!pfr.Id}"/>                            
+                            <br/>                            
+                            <c:core_MDF_POP_Details recordIdinput = "{!pfr.Id}" objectApiNameinput = "PartnerFundRequest" displayLabel="POP"/>
+                            
+                        </lightning:accordionSection>
+                    </aura:iteration> 
+                </lightning:accordion>
+            </aura:if>
+            
+            <aura:if isTrue ="{!v.CheckEdit}" >
+                <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-slide-up-saving slds-modal_large">
+                    <div class="slds-modal__container">
+                        <div class="slds-modal__header">
+                            <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{! c.closeModal }"  alternativeText="Close" /> -->
+                            <button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeModal}">
+                                <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                                <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                            </button>
+                        </div>
+                        <aura:if isTrue ="{!v.isInternalUser}" >
+                            <div class="slds-modal__content slds-p-around--medium">
+                                <c:Core_Intel_createEditPFR recordId ="{!v.requestId}"/> 
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="slds-modal__content slds-p-around--medium">
+                                       <c:Core_Intel_createEditPFR communityRecordId ="{!v.requestId}" 
+                                                                checkCommunityAttribute ="{!v.communityAttribute}" />
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                        <div class="slds-modal__footer"></div>
+                    </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop--open" id="backdrop"></div>  
+            </aura:if>
+            
+            <aura:if isTrue ="{!v.CheckEditActivity}" >
+                <div aura:id="modalIdForCommuntityRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-slide-up-saving slds-modal_large">
+                    <div class="slds-modal__container">
+                        <div class="slds-modal__header">
+                            <!-- <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{!c.closeModal}"  alternativeText="Close" /> -->
+                            <button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeModal}">
+                                <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+                                <span class="slds-assistive-text">{!$Label.c.Core_MDF_Cancel}</span>
+                            </button>
+                        </div>
+                        <aura:if isTrue ="{!v.isInternalUser}" >
+                            <div class="slds-modal__content slds-p-around--medium">
+                                <c:Core_MDF_CreateEditActivity recordId ="{!v.requestId}"/> 
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="slds-modal__content slds-p-around--medium">
+                                       <c:Core_MDF_CreateEditActivity communityRecordId ="{!v.requestId}" 
+                                                                checkCommunityAttribute ="{!v.communityAttribute}" />
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                        <div class="slds-modal__footer"></div>
+                    </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop--open" id="backdrop"></div>  
+            </aura:if>
+            
+            <aura:if isTrue ="{!v.CheckClaimCreate}" >
+                <div class="slds-modal__content slds-p-around--medium">
+                    <c:Core_MDF_PFC_Create activityId ="{!v.requestId}" isNewClaimCreate="{!v.CheckClaimCreate}" isProposalbasedInd="{!v.isProposalBased}"/>
+                </div> 
+            </aura:if>
+            
+        </div>        
+    </div>
+</aura:if>
+</aura:component>

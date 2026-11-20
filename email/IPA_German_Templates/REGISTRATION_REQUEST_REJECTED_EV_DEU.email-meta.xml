@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>REGISTRATION_REQUEST_REJECTED_EV_DEU</name>
+    <style>none</style>
+    <subject>Aufnahmeantrag ist abgelehnt</subject>
+    <textOnly>Aufnahmeantrag ist abgelehnt
+
+
+
+Hallo, {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+Wir haben Ihren Registrierungsantrag für das Intel® Partner Alliance-Programm erhalten. Nach seiner Verifizierung wurde der Antrag aus den folgenden Gründen abgelehnt:
+
+{!PRM_Registration_Request__c.PRM_Reject_Reason__c}
+
+Falls Sie meinen, dass diese Entscheidung fälschlicherweise getroffen wurde, oder Sie uns weitere Informationen zukommen lassen möchten, wenden Sie sich bitte unter programs@intel.com an uns.
+
+
+Mit freundlichen Grüßen,
+Ihr Intel® Partner Alliance Team
+
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, USA. www.intel.de
+Datenschutz | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

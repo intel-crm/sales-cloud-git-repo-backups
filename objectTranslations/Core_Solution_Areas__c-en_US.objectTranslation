@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solutions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Application/Workload --></label>
+        <name>Core_Application_Workload__c</name>
+        <picklistValues>
+            <masterLabel>AI Inference</masterLabel>
+            <translation><!-- AI Inference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI PC</masterLabel>
+            <translation><!-- AI PC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Training</masterLabel>
+            <translation><!-- AI Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIL B</masterLabel>
+            <translation><!-- ASIL B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIL D</masterLabel>
+            <translation><!-- ASIL D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analytics &amp; Data Science</masterLabel>
+            <translation><!-- Analytics &amp; Data Science --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blockchain</masterLabel>
+            <translation><!-- Blockchain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPU Host for GPU</masterLabel>
+            <translation><!-- CPU Host for GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Resource Optimization</masterLabel>
+            <translation><!-- Cloud Resource Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compilers</masterLabel>
+            <translation><!-- Compilers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Processing &amp; Query</masterLabel>
+            <translation><!-- Data Processing &amp; Query --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database: In Memory</masterLabel>
+            <translation><!-- Database: In Memory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database: Streaming</masterLabel>
+            <translation><!-- Database: Streaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database: Structured</masterLabel>
+            <translation><!-- Database: Structured --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database: Unstructured</masterLabel>
+            <translation><!-- Database: Unstructured --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DevOps /Developer Tools</masterLabel>
+            <translation><!-- DevOps /Developer Tools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Document Processing</masterLabel>
+            <translation><!-- Document Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Computing</masterLabel>
+            <translation><!-- Edge Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Computing (AI)</masterLabel>
+            <translation><!-- Edge Computing (AI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education: SFI Module</masterLabel>
+            <translation><!-- Education: SFI Module --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Frameworks</masterLabel>
+            <translation><!-- Frameworks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPC - High Performance Compute</masterLabel>
+            <translation><!-- HPC - High Performance Compute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Provider: Electronic Medical Record</masterLabel>
+            <translation><!-- Healthcare Provider: Electronic Medical Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Provider: Medical Imaging Infrastructure</masterLabel>
+            <translation><!-- Healthcare Provider: Medical Imaging Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Provider: Population Health</masterLabel>
+            <translation><!-- Healthcare Provider: Population Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare Provider: Telehealth</masterLabel>
+            <translation><!-- Healthcare Provider: Telehealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure - Serverless Computing</masterLabel>
+            <translation><!-- Infrastructure - Serverless Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Bare Metal</masterLabel>
+            <translation><!-- Infrastructure Bare Metal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Cloud Stack</masterLabel>
+            <translation><!-- Infrastructure Cloud Stack --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Compute</masterLabel>
+            <translation><!-- Infrastructure Compute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Compute Virtualization/Hypervisor</masterLabel>
+            <translation><!-- Infrastructure Compute Virtualization/Hypervisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Containers</masterLabel>
+            <translation><!-- Infrastructure Containers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure DaaS/VDI</masterLabel>
+            <translation><!-- Infrastructure DaaS/VDI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure HCI</masterLabel>
+            <translation><!-- Infrastructure HCI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Hybrid and Multicloud</masterLabel>
+            <translation><!-- Infrastructure Hybrid and Multicloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Network</masterLabel>
+            <translation><!-- Infrastructure Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Other</masterLabel>
+            <translation><!-- Infrastructure Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure SDI</masterLabel>
+            <translation><!-- Infrastructure SDI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure Storage Array</masterLabel>
+            <translation><!-- Infrastructure Storage Array --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure as Code</masterLabel>
+            <translation><!-- Infrastructure as Code --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things (IoT)</masterLabel>
+            <translation><!-- Internet of Things (IoT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Libraries &amp; Toolkits</masterLabel>
+            <translation><!-- Libraries &amp; Toolkits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management Tools</masterLabel>
+            <translation><!-- Management Tools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Migration &amp; Transfer</masterLabel>
+            <translation><!-- Migration &amp; Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Migration Assesment</masterLabel>
+            <translation><!-- Migration Assesment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking</masterLabel>
+            <translation><!-- Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operating System</masterLabel>
+            <translation><!-- Operating System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance Analysis &amp; Tuning</masterLabel>
+            <translation><!-- Performance Analysis &amp; Tuning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Policy as Code</masterLabel>
+            <translation><!-- Policy as Code --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programming Language</masterLabel>
+            <translation><!-- Programming Language --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Provisioning and Orchestration</masterLabel>
+            <translation><!-- Provisioning and Orchestration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security: Endpoint</masterLabel>
+            <translation><!-- Security: Endpoint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security: Identity</masterLabel>
+            <translation><!-- Security: Identity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security: Network</masterLabel>
+            <translation><!-- Security: Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security: Workload Protection</masterLabel>
+            <translation><!-- Security: Workload Protection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Optimization</masterLabel>
+            <translation><!-- Video Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Processing (non-AI)</masterLabel>
+            <translation><!-- Video Processing (non-AI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workload Optimization</masterLabel>
+            <translation><!-- Workload Optimization --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Partners --></label>
+        <name>Core_Concatenated_Solution_Partners__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Link --></label>
+        <name>Core_Content_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Visible --></label>
+        <name>Core_Deal_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Visible --></label>
+        <name>Core_Design_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Solution --></label>
+        <name>Core_End_Customer_Solution__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Industry Use Case(s) --></label>
+        <name>Core_Industry_Use_Case__c</name>
+        <picklistValues>
+            <masterLabel>ADAS</masterLabel>
+            <translation><!-- ADAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AR/VR</masterLabel>
+            <translation><!-- AR/VR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Accessibility-Sign Language to Text</masterLabel>
+            <translation><!-- Accessibility-Sign Language to Text --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ad Serving</masterLabel>
+            <translation><!-- Ad Serving --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anti-Money Laundering</masterLabel>
+            <translation><!-- Anti-Money Laundering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Development</masterLabel>
+            <translation><!-- Application Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied Sciences-Computational Chemistry</masterLabel>
+            <translation><!-- Applied Sciences-Computational Chemistry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied Sciences-Geophysics</masterLabel>
+            <translation><!-- Applied Sciences-Geophysics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied Sciences-Material Sciences</masterLabel>
+            <translation><!-- Applied Sciences-Material Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied Sciences-Molecular Dynamics</masterLabel>
+            <translation><!-- Applied Sciences-Molecular Dynamics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied Sciences-Physics</masterLabel>
+            <translation><!-- Applied Sciences-Physics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asset &amp; Operations Optimization-Chessboard</masterLabel>
+            <translation><!-- Asset &amp; Operations Optimization-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Audit</masterLabel>
+            <translation><!-- Audit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bioinformatics</masterLabel>
+            <translation><!-- Bioinformatics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biz Assistant (NLP, STT, etc.)</masterLabel>
+            <translation><!-- Biz Assistant (NLP, STT, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blockchain</masterLabel>
+            <translation><!-- Blockchain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Branch Automation</masterLabel>
+            <translation><!-- Branch Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims Automation</masterLabel>
+            <translation><!-- Claims Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims Processing</masterLabel>
+            <translation><!-- Claims Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Gaming</masterLabel>
+            <translation><!-- Cloud Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer Vision</masterLabel>
+            <translation><!-- Computer Vision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content Delivery Network</masterLabel>
+            <translation><!-- Content Delivery Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Control Optimization &amp; Autonomy-Chessboard</masterLabel>
+            <translation><!-- Control Optimization &amp; Autonomy-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conversational/Chat Bot</masterLabel>
+            <translation><!-- Conversational/Chat Bot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyber Security</masterLabel>
+            <translation><!-- Cyber Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Warehouse</masterLabel>
+            <translation><!-- Data Warehouse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dedicated Deep Learning</masterLabel>
+            <translation><!-- Dedicated Deep Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deep Learning</masterLabel>
+            <translation><!-- Deep Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Document Processing</masterLabel>
+            <translation><!-- Document Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver Information (Regulatory Compliant)</masterLabel>
+            <translation><!-- Driver Information (Regulatory Compliant) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver/Occupant Monitoring</masterLabel>
+            <translation><!-- Driver/Occupant Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-Commerce</masterLabel>
+            <translation><!-- E-Commerce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERM</masterLabel>
+            <translation><!-- ERM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Manageability/Security</masterLabel>
+            <translation><!-- Edge Manageability/Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronic Design Automation (EDA)</masterLabel>
+            <translation><!-- Electronic Design Automation (EDA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronic Medical Record</masterLabel>
+            <translation><!-- Electronic Medical Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Encryption</masterLabel>
+            <translation><!-- Encryption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy Monitoring &amp; Management-Chessboard</masterLabel>
+            <translation><!-- Energy Monitoring &amp; Management-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environment Monitoring-Chessboard</masterLabel>
+            <translation><!-- Environment Monitoring-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fraud Detection</masterLabel>
+            <translation><!-- Fraud Detection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming Solution</masterLabel>
+            <translation><!-- Gaming Solution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generative AI (LLM)</masterLabel>
+            <translation><!-- Generative AI (LLM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generative AI (non-LLM)</masterLabel>
+            <translation><!-- Generative AI (non-LLM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Genomics</masterLabel>
+            <translation><!-- Genomics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Wellness Monitoring-Chessboard</masterLabel>
+            <translation><!-- Human Wellness Monitoring-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hybrid Learning</masterLabel>
+            <translation><!-- Hybrid Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Immersive Media</masterLabel>
+            <translation><!-- Immersive Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Media-Chessboard</masterLabel>
+            <translation><!-- Interactive Media-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life Sciences-Cryo-EM</masterLabel>
+            <translation><!-- Life Sciences-Cryo-EM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life Sciences-Molecular Dynamics</masterLabel>
+            <translation><!-- Life Sciences-Molecular Dynamics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LoB Applications (compliant)</masterLabel>
+            <translation><!-- LoB Applications (compliant) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics &amp; Tracking-Chessboard</masterLabel>
+            <translation><!-- Logistics &amp; Tracking-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machine Condition Monitoring-Chessboard</masterLabel>
+            <translation><!-- Machine Condition Monitoring-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managebility-EMA Integration</masterLabel>
+            <translation><!-- Managebility-EMA Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical Imaging Infrastructure</masterLabel>
+            <translation><!-- Medical Imaging Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Model Development and Optimization</masterLabel>
+            <translation><!-- Model Development and Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-5G</masterLabel>
+            <translation><!-- Network-5G --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Datacenter Network: Whitebox switches/routers</masterLabel>
+            <translation><!-- Network-Datacenter Network: Whitebox switches/routers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Datacenter Network: application delivery and load balancing</masterLabel>
+            <translation><!-- Network-Datacenter Network: application delivery and load balancing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Datacenter Network: packet switching/routing/duplication/inspection</masterLabel>
+            <translation><!-- Network-Datacenter Network: packet switching/routing/duplication/inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Datacenter Network: security functions (firewall, content security, DDOS, Access Control, anti-malware)</masterLabel>
+            <translation><!-- Network-Datacenter Network: security functions (firewall, content security, DDOS, Access Control, anti-malware) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Infra SW Layer (OS/VMM/VIM, Scheduler, Cluster Manager, SDN Controller)</masterLabel>
+            <translation><!-- Network-Infra SW Layer (OS/VMM/VIM, Scheduler, Cluster Manager, SDN Controller) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-MEC-OneEdge</masterLabel>
+            <translation><!-- Network-MEC-OneEdge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Mobile Packet Core Network</masterLabel>
+            <translation><!-- Network-Mobile Packet Core Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-OT: BSS/Digital-BSS</masterLabel>
+            <translation><!-- Network-OT: BSS/Digital-BSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-OT: Network Service Assurance, FCAPS, vProbes, Network Advanced Analytics with AI/ML/DL</masterLabel>
+            <translation><!-- Network-OT: Network Service Assurance, FCAPS, vProbes, Network Advanced Analytics with AI/ML/DL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-OT: OSS/Service-Orchestration-automation</masterLabel>
+            <translation><!-- Network-OT: OSS/Service-Orchestration-automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Private Wireless Network-OneEdge</masterLabel>
+            <translation><!-- Network-Private Wireless Network-OneEdge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-SD-WAN connection/access/integrated-security/SASE-OneEdge</masterLabel>
+            <translation><!-- Network-SD-WAN connection/access/integrated-security/SASE-OneEdge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-SP-Edge: Fixed Access Functions (Fiber, Copper, Cable)</masterLabel>
+            <translation><!-- Network-SP-Edge: Fixed Access Functions (Fiber, Copper, Cable) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-SP-Edge: Wireless Access Functions</masterLabel>
+            <translation><!-- Network-SP-Edge: Wireless Access Functions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-Traditional/Physical RAN</masterLabel>
+            <translation><!-- Network-Traditional/Physical RAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-cRAN/FlexRAN/vRAN/oRAN</masterLabel>
+            <translation><!-- Network-cRAN/FlexRAN/vRAN/oRAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-uCPE/vCPE-Enterprise-OneEdge</masterLabel>
+            <translation><!-- Network-uCPE/vCPE-Enterprise-OneEdge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-vCPE Residential (vHOME)</masterLabel>
+            <translation><!-- Network-vCPE Residential (vHOME) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offshore Developers</masterLabel>
+            <translation><!-- Offshore Developers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parallel Compute</masterLabel>
+            <translation><!-- Parallel Compute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patient Care/Precision Medicine</masterLabel>
+            <translation><!-- Patient Care/Precision Medicine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Population Health</masterLabel>
+            <translation><!-- Population Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portfolio Optimzation</masterLabel>
+            <translation><!-- Portfolio Optimzation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Inspection-Chessboard</masterLabel>
+            <translation><!-- Product Inspection-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Productivity-AI Personal Assistant</masterLabel>
+            <translation><!-- Productivity-AI Personal Assistant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Productivity-Power Consumption Monitoring</masterLabel>
+            <translation><!-- Productivity-Power Consumption Monitoring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real-Time Dense Video</masterLabel>
+            <translation><!-- Real-Time Dense Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommendation Engines (360)</masterLabel>
+            <translation><!-- Recommendation Engines (360) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recommender Engine</masterLabel>
+            <translation><!-- Recommender Engine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regulatory Reporting (FRTB)</masterLabel>
+            <translation><!-- Regulatory Reporting (FRTB) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remote Workers</masterLabel>
+            <translation><!-- Remote Workers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Management</masterLabel>
+            <translation><!-- Risk Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Management (CCAR)</masterLabel>
+            <translation><!-- Risk Management (CCAR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Safety and Security-Chessboard</masterLabel>
+            <translation><!-- Safety and Security-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Securities Pricing (xVA)</masterLabel>
+            <translation><!-- Securities Pricing (xVA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Anti-Phishing Detection</masterLabel>
+            <translation><!-- Security-Anti-Phishing Detection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Data</masterLabel>
+            <translation><!-- Security-Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Endpoint</masterLabel>
+            <translation><!-- Security-Endpoint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Identity</masterLabel>
+            <translation><!-- Security-Identity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Infrastructure</masterLabel>
+            <translation><!-- Security-Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Memory Scanning</masterLabel>
+            <translation><!-- Security-Memory Scanning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Network</masterLabel>
+            <translation><!-- Security-Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security-Ransomware Detection</masterLabel>
+            <translation><!-- Security-Ransomware Detection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security–Workload Protection</masterLabel>
+            <translation><!-- Security–Workload Protection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Situational Monitoring-Chessboard</masterLabel>
+            <translation><!-- Situational Monitoring-Chessboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Defined Infrastructure-SDI</masterLabel>
+            <translation><!-- Software Defined Infrastructure-SDI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Speech Recognition</masterLabel>
+            <translation><!-- Speech Recognition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streaming Data/Analytics</masterLabel>
+            <translation><!-- Streaming Data/Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supercompute Analytics</masterLabel>
+            <translation><!-- Supercompute Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sustainability</masterLabel>
+            <translation><!-- Sustainability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telehealth</masterLabel>
+            <translation><!-- Telehealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telework</masterLabel>
+            <translation><!-- Telework --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Time-Series</masterLabel>
+            <translation><!-- Time-Series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trading Desk</masterLabel>
+            <translation><!-- Trading Desk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Analytics</masterLabel>
+            <translation><!-- Video Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-CDN/vCDN</masterLabel>
+            <translation><!-- Visual Cloud-CDN/vCDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Cloud Gaming</masterLabel>
+            <translation><!-- Visual Cloud-Cloud Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Graphics</masterLabel>
+            <translation><!-- Visual Cloud-Graphics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Immersive Media</masterLabel>
+            <translation><!-- Visual Cloud-Immersive Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Media Analytics</masterLabel>
+            <translation><!-- Visual Cloud-Media Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Media Processing &amp; Delivery</masterLabel>
+            <translation><!-- Visual Cloud-Media Processing &amp; Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Media Services (DVR, Cloud DVR, etc.)</masterLabel>
+            <translation><!-- Visual Cloud-Media Services (DVR, Cloud DVR, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud-Video Production</masterLabel>
+            <translation><!-- Visual Cloud-Video Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Weather Forecasting</masterLabel>
+            <translation><!-- Weather Forecasting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Core_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+            <translation><!-- Arts, Entertainment and Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Service Providers</masterLabel>
+            <translation><!-- Cloud Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Service Providers</masterLabel>
+            <translation><!-- Comms Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy and Utilities</masterLabel>
+            <translation><!-- Energy and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Federal and Aerospace</masterLabel>
+            <translation><!-- Federal and Aerospace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Services Industry</masterLabel>
+            <translation><!-- Financial Services Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming</masterLabel>
+            <translation><!-- Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Life Sciences</masterLabel>
+            <translation><!-- Health and Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Professional and Business Services</masterLabel>
+            <translation><!-- Professional and Business Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+            <translation><!-- Real Estate, Rental and Leasing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Medium Business</masterLabel>
+            <translation><!-- Small Medium Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Cities</masterLabel>
+            <translation><!-- Smart Cities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software and Services</masterLabel>
+            <translation><!-- Software and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sports</masterLabel>
+            <translation><!-- Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Travel and Warehousing</masterLabel>
+            <translation><!-- Travel and Warehousing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Most Recent Status Change Date --></label>
+        <name>Core_Most_Recent_Status_Change_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region Deployed --></label>
+        <name>Core_Region_Deployed__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region of Availability --></label>
+        <name>Core_Region_of_availability__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solutions --></label>
+        <name>Core_Solution_Areas__c</name>
+        <relationshipLabel><!-- Solutions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Solution Description --></label>
+        <name>Core_Solution_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Field Values --></label>
+        <name>Core_Solution_Long__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Outcome --></label>
+        <name>Core_Solution_Outcome__c</name>
+        <picklistValues>
+            <masterLabel>Test 1</masterLabel>
+            <translation><!-- Test 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 2</masterLabel>
+            <translation><!-- Test 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 3</masterLabel>
+            <translation><!-- Test 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 4</masterLabel>
+            <translation><!-- Test 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 5</masterLabel>
+            <translation><!-- Test 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Partners --></label>
+        <name>Core_Solution_Partners_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Title --></label>
+        <name>Core_Solution_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Type --></label>
+        <name>Core_Solution_Type__c</name>
+        <picklistValues>
+            <masterLabel>S1: Product</masterLabel>
+            <translation><!-- S1: Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S2: Platform/System</masterLabel>
+            <translation><!-- S2: Platform/System --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S3: Application/ Workload</masterLabel>
+            <translation><!-- S3: Application/ Workload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S4: Industry Use Case(s)</masterLabel>
+            <translation><!-- S4: Industry Use Case(s) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S5: End Customer Solution</masterLabel>
+            <translation><!-- S5: End Customer Solution --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Solution Owner Email --></label>
+        <name>Core_Solution_owner_email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EOL</masterLabel>
+            <translation><!-- EOL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Technology Enabled --></label>
+        <name>Core_Technology_Enabled__c</name>
+        <picklistValues>
+            <masterLabel>AI Suites</masterLabel>
+            <translation><!-- AI Suites --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMT</masterLabel>
+            <translation><!-- AMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMX (TMUL)</masterLabel>
+            <translation><!-- AMX (TMUL) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AVX-2</masterLabel>
+            <translation><!-- AVX-2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AVX-512</masterLabel>
+            <translation><!-- AVX-512 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BFloat16</masterLabel>
+            <translation><!-- BFloat16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blockscale</masterLabel>
+            <translation><!-- Blockscale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CET</masterLabel>
+            <translation><!-- CET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNDP</masterLabel>
+            <translation><!-- CNDP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Camera &amp; Graphics DX12</masterLabel>
+            <translation><!-- Camera &amp; Graphics DX12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crypto NI</masterLabel>
+            <translation><!-- Crypto NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Code Optimization</masterLabel>
+            <translation><!-- Custom Code Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DDIO</masterLabel>
+            <translation><!-- DDIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DL Boost</masterLabel>
+            <translation><!-- DL Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DLB</masterLabel>
+            <translation><!-- DLB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DPE</masterLabel>
+            <translation><!-- DPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSA</masterLabel>
+            <translation><!-- DSA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge AI Libraries</masterLabel>
+            <translation><!-- Edge AI Libraries --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geti</masterLabel>
+            <translation><!-- Geti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HBM</masterLabel>
+            <translation><!-- HBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HFNI</masterLabel>
+            <translation><!-- HFNI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HGS</masterLabel>
+            <translation><!-- HGS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Habana</masterLabel>
+            <translation><!-- Habana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IAA</masterLabel>
+            <translation><!-- IAA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IAX</masterLabel>
+            <translation><!-- IAX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPEX</masterLabel>
+            <translation><!-- IPEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA-Library</masterLabel>
+            <translation><!-- ISA-Library --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITEX</masterLabel>
+            <translation><!-- ITEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Automation Tool-OCM</masterLabel>
+            <translation><!-- Intel Automation Tool-OCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Automation Tool-OCR</masterLabel>
+            <translation><!-- Intel Automation Tool-OCR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel DAOS</masterLabel>
+            <translation><!-- Intel DAOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel GPU Flex Series</masterLabel>
+            <translation><!-- Intel GPU Flex Series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel GPU Max Series</masterLabel>
+            <translation><!-- Intel GPU Max Series --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel IPU</masterLabel>
+            <translation><!-- Intel IPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Neural Compressor</masterLabel>
+            <translation><!-- Intel Neural Compressor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel PMT</masterLabel>
+            <translation><!-- Intel PMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel RHOC</masterLabel>
+            <translation><!-- Intel RHOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAM</masterLabel>
+            <translation><!-- LAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEP for iVPU</masterLabel>
+            <translation><!-- MEP for iVPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MRS/RRK WIP</masterLabel>
+            <translation><!-- MRS/RRK WIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Modern Standby Telemetry</masterLabel>
+            <translation><!-- Modern Standby Telemetry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Certified Solutions (latest IA compute)</masterLabel>
+            <translation><!-- Network Certified Solutions (latest IA compute) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneAPI AI Analytics Toolkit</masterLabel>
+            <translation><!-- OneAPI AI Analytics Toolkit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneAPI Base Toolkit</masterLabel>
+            <translation><!-- OneAPI Base Toolkit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneAPI HPC Toolkit</masterLabel>
+            <translation><!-- OneAPI HPC Toolkit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneAPI IoT Toolkit</masterLabel>
+            <translation><!-- OneAPI IoT Toolkit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OneAPI Rendering Toolkit</masterLabel>
+            <translation><!-- OneAPI Rendering Toolkit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Edge Software</masterLabel>
+            <translation><!-- Open Edge Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OpenVINO</masterLabel>
+            <translation><!-- OpenVINO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane PMEM</masterLabel>
+            <translation><!-- Optane PMEM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PMU</masterLabel>
+            <translation><!-- PMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG - SmartNIC - FPGA Acceleration Partner board</masterLabel>
+            <translation><!-- PSG - SmartNIC - FPGA Acceleration Partner board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-FPGA BBU</masterLabel>
+            <translation><!-- PSG-FPGA BBU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-FPGA RU</masterLabel>
+            <translation><!-- PSG-FPGA RU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG-SmartNIC-FPGA Acceleration NCLG board</masterLabel>
+            <translation><!-- PSG-SmartNIC-FPGA Acceleration NCLG board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QAT</masterLabel>
+            <translation><!-- QAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quick Sync Technology</masterLabel>
+            <translation><!-- Quick Sync Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RDT</masterLabel>
+            <translation><!-- RDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGX</masterLabel>
+            <translation><!-- SGX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SIOV</masterLabel>
+            <translation><!-- SIOV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMM</masterLabel>
+            <translation><!-- SMM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SST Speed Select</masterLabel>
+            <translation><!-- SST Speed Select --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security TPR &amp; ACM Support</masterLabel>
+            <translation><!-- Security TPR &amp; ACM Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Edge (Commercial, Open and Experience Kits)</masterLabel>
+            <translation><!-- Smart Edge (Commercial, Open and Experience Kits) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TADK</masterLabel>
+            <translation><!-- TADK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TDT</masterLabel>
+            <translation><!-- TDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TDX</masterLabel>
+            <translation><!-- TDX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TME</masterLabel>
+            <translation><!-- TME --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thunderbolt 4</masterLabel>
+            <translation><!-- Thunderbolt 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VMD/VROC</masterLabel>
+            <translation><!-- VMD/VROC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VNNI</masterLabel>
+            <translation><!-- VNNI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wi-Fi 7</masterLabel>
+            <translation><!-- Wi-Fi 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Windows Hello Sensors</masterLabel>
+            <translation><!-- Windows Hello Sensors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vPro</masterLabel>
+            <translation><!-- vPro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vRAN Boost</masterLabel>
+            <translation><!-- vRAN Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>xPDK (DPDK, IPDK, SPDK, etc)</masterLabel>
+            <translation><!-- xPDK (DPDK, IPDK, SPDK, etc) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Version --></label>
+        <name>Core_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mark for Delete --></label>
+        <name>isDeleted__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Solution is already EOL’d. Cannot make further changes. --></errorMessage>
+        <name>EOL_Solutions_EDIT</name>
+    </validationRules>
+</CustomObjectTranslation>

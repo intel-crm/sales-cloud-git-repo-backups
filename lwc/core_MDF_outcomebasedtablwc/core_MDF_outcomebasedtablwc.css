@@ -1,0 +1,202 @@
+/* Filter section styles */
+.filter-section {
+    background-color: #f3f3f3;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Compact filter section styles */
+.compact-header {
+    padding: 0.5rem 1rem;
+    min-height: auto;
+}
+
+.compact-filter-body-tight {
+    padding: 0.25rem 1rem 0.75rem 1rem;
+}
+
+/* Reduce spacing in filter inputs */
+.compact-filter-body-tight .slds-form-element {
+    margin-bottom: 0;
+}
+
+/* Ensure all filter inputs are aligned properly */
+.compact-filter-body-tight .slds-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure form elements have consistent height */
+.compact-filter-body-tight .slds-form-element__control,
+.compact-filter-body-tight .slds-combobox,
+.compact-filter-body-tight .slds-input {
+    height: 2.25rem;
+}
+
+/* Align labels consistently */
+.compact-filter-body-tight .slds-form-element__label {
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+/* Search help text styling */
+.search-help-text {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    font-style: italic;
+    animation: fadeIn 0.2s ease-in;
+}
+
+/* Account lookup dropdown styles */
+.slds-dropdown {
+    background: white;
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+    margin-top: 0.125rem;
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+.slds-dropdown__link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: #181818;
+    text-decoration: none;
+}
+
+.slds-dropdown__link:hover {
+    background-color: #f3f2f2;
+    text-decoration: none;
+}
+
+.slds-dropdown__link:focus {
+    background-color: #0176d3;
+    color: white;
+    outline: none;
+}
+
+/* Clear button styling for account filter - CENTERED */
+.clear-button {
+    position: absolute;
+    right: 0.75rem;
+    top: 68%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    padding: 0.25rem !important;
+    cursor: pointer !important;
+    border-radius: 0.25rem;
+    transition: background-color 0.1s ease;
+    z-index: 10;
+}
+
+.clear-button:hover {
+    background-color: #f3f2f2 !important;
+}
+
+.clear-button:active {
+    background-color: #e5e5e5 !important;
+}
+
+.clear-button:focus {
+    outline: 2px solid #0176d3;
+    outline-offset: 2px;
+}
+
+/* X icon size */
+.clear-button .slds-icon_x-small {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+}
+
+/* Search icon positioning for account filter */
+.searchicon {
+    position: absolute;
+    right: 0.75rem;
+    top: 68%;
+    transform: translateY(-50%);  
+}
+
+/* Search icon size remains the same */
+.searchicon .slds-icon_x-small {
+    width: 0.975rem !important;
+    height: 0.975rem !important;
+}
+
+/* Card body styles */
+.slds-card__body_inner {
+    min-height: 200px;
+}
+
+/* No records message */
+.no-records-message {
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    margin: 1rem;
+    padding: 2rem;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+.pagination-bar {
+    gap: 0.75rem;
+}
+
+.datatable-scroll {
+    max-height: 42rem;
+    overflow: auto;
+    width: 100%;
+}
+
+.datatable-scroll lightning-datatable {
+    min-width: 72rem;
+}
+
+/* Enhanced focus states */
+.slds-button:focus,
+.slds-input:focus,
+.slds-combobox__input:focus {
+    outline: 2px solid #0176d3;
+    outline-offset: 2px;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .compact-filter-body-tight .slds-grid {
+        flex-direction: column;
+    }
+    
+    .compact-filter-body-tight .slds-col {
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+    
+    .search-input-container {
+        margin-top: 0;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .search-help-text {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .slds-card {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}

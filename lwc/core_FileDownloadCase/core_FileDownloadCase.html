@@ -1,0 +1,25 @@
+<template>
+	<lightning-card>
+		<div if:true={isFiles}>
+			<template for:each={filesList} for:item="file">
+				<div key={file.value} class="slds-box slds-theme_shade slds-box_small">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col slds-size_2-of-3">
+							<lightning-icon icon-name="utility:file" alternative-text="File" size="medium" variant="success" title="File"></lightning-icon>
+							<strong>&nbsp;Name :&nbsp; </strong>{file.label}
+						</div>
+						<div class="slds-col slds-size_1-of-3" style="display: flex;align-items: center;justify-content: center;">
+							<lightning-button label="Preview/Download" variant="brand" icon-name="action:preview" icon-position="right" data-id={file.value} data-type={file.type} data-filename={file.label} onclick={previewHandler}></lightning-button>
+						</div>
+					</div>
+				</div>
+			</template>
+		</div>
+		<div if:false={isFiles}>
+			<article class="slds-card">
+				<div class="slds-card__body slds-card__body_inner" style="display: flex;justify-content: center;font-weight: 700;">No files to display</div>
+			</article>
+		</div>
+		<c-core_previewfilemodal url={downloadUrl} extension={extension} download-link={downloadElement} document-label={downloadLabel} onprogressvaluechange={hanldeProgressValueChange}></c-core_previewfilemodal>
+	</lightning-card>
+</template>

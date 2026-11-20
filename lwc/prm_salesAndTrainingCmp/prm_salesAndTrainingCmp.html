@@ -1,0 +1,129 @@
+<template>
+  <article class="slds-card">
+    <div class="slds-box slds-theme_shade">
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-has-flexi-truncate">
+          <div class="slds-media__figure ">
+            <lightning-icon class="my-icon" icon-name="custom:custom109" size="x-small"></lightning-icon>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+              <a href="#" class="slds-card__header-link slds-truncate" title="Points">
+                <span><strong>{metricLabel}</strong>{metric}
+                </span>
+              </a>
+            </h2>
+            <p>{IPAClickLabel}<a href={IPAmetricLinkLabel}>&nbsp;{IPAhereLabel}&nbsp;</a>{IPAInstructionLabel}</p>
+          </div>
+          <div class="slds-no-flex">
+            <lightning-button variant="brand" label="Refresh" title="Primary action" onclick={refreshAction}
+              class="slds-m-left_x-small performance-refresh"></lightning-button>
+          </div>
+        </header>
+      </div>
+    </div>
+
+  </article>
+
+
+  <lightning-layout class="slds-box slds-p-top_none slds-theme_default">
+
+    <template if:true={isLoaded}>
+        <span class="performance-template">
+          <br/>
+          <div class="'slds-col">
+            <span class="performace-alert-text">{alert_Message}</span>
+          </div>
+          <br/>
+          <div class="slds-col">
+            <span class="performance-header-text">{totalPointsBalance}</span>
+            <lightning-helptext class="performance-help" content={IPAHelpTextPointsCurrentBalance}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_PointsBalancenbr.value} format-style="decimal" maximum-fraction-digits={total_PointsBalancenbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{total_PointsBalancenbr.text}</span>
+          </div>
+          <div class="slds-col">
+            <span class="performance-header-text">{totalPointsExpired}</span>
+            <lightning-helptext class="performance-help" content={IPAAWRHelptextPointsExpiringLabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_PointsExpirednbr.value} format-style="decimal" maximum-fraction-digits={total_PointsExpirednbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{total_PointsExpirednbr.text}</span>
+          </div>
+          <div class="slds-col">
+            <span class="performance-header-text">{totalSalesData}</span>
+            <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_SalesDatanbr.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbr.decimals} minimum-fraction-digits={total_SalesDatanbr.decimals}></lightning-formatted-number>
+            <span class="performance-value-text">{total_SalesDatanbr.text}</span>
+          </div>
+
+          <div class="slds-col">
+            <span class="performance-header-text">{totalSalesDataPrev}</span>
+            <lightning-helptext class="performance-help" content={IPAHelptextvaluePrevPeriod}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_SalesDatanbrPrev.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbrPrev.decimals} minimum-fraction-digits={total_SalesDatanbrPrev.decimals}></lightning-formatted-number>
+            <span class="performance-value-text">{total_SalesDatanbrPrev.text}</span>
+          </div>
+
+          <div class="slds-col">
+            <span class="performance-header-text">{totalTrainingCredits}</span>
+            <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_TrainingCreditsnbr.value} format-style="decimal" maximum-fraction-digits={total_TrainingCreditsnbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{total_TrainingCreditsnbr.text}</span>
+          </div>
+
+          <div class="slds-col">
+            <span class="performance-header-text">{totalTrainingCreditsPrev}</span>
+            <lightning-helptext class="performance-help" content={IPAHelptextvaluePrevPeriod}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_TrainingCreditsnbrPrev.value} format-style="decimal" maximum-fraction-digits={total_TrainingCreditsnbrPrev.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{total_TrainingCreditsnbrPrev.text}</span>
+          </div>
+          <div class="slds-col">
+            <span class="performance-header-text">{totalAWRallocated}</span>
+            <lightning-helptext class="performance-help" content={IPAAWRHelptextvaluelabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_AWR_allocatednbr.value} format-style="decimal" maximum-fraction-digits={total_AWR_allocatednbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{total_AWR_allocatednbr.text}</span>
+          </div>
+          <div class="slds-col">
+            <span class="performance-header-text">{totalAWRremaining}</span>
+            <lightning-helptext class="performance-help" content={IPAAWRHelptextvaluelabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={total_AWR_remainingnbr.value} format-style="decimal" maximum-fraction-digits={total_AWR_remainingnbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{total_AWR_remainingnbr.text}</span>
+          </div>
+          <!-- <div class="slds-col">
+            <span class="performance-header-text">{TotalApprovedOffering}</span> :
+           <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={totalApprovedOffering.value} format-style="decimal" maximum-fraction-digits={totalApprovedOffering.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{totalApprovedOffering.text}</span>
+          </div> -->
+          <!-- IPA2.0 TWC727-3228-->
+          <div class="slds-col">
+            <span class="performance-header-text">{NumberOfEmployees}</span>
+            <lightning-helptext class="performance-help" content={IPAHelptextvaluePrevPeriod}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={totalTrainedResourcesnbr.value} format-style="decimal" maximum-fraction-digits={totalTrainedResourcesnbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{totalTrainedResourcesnbr.text}</span>
+          </div>
+          <!-- <div class="slds-col">
+            <span class="performance-header-text">{publishedStorefrontText}</span> :
+           <lightning-formatted-text class="performance-value" value={isPublishedText}></lightning-formatted-text>  
+           <template if:true={isPublishedStorefront}>                    
+            <span class="performance-value">{label.ispublished}</span>                 
+            </template>
+            <template if:false={isPublishedStorefront}>                    
+            <span class="performance-value">{label.isNotpublished}</span>                   
+            </template>                  
+          </div> -->
+          <!-- //IPA2.0 TWC727-3228-->
+          <!-- <div class="slds-col">
+            <span class="performance-header-text">{TotalApprovedSolutions}</span> :
+           <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
+            <lightning-formatted-number class="performance-value" value={totalApprovedSolutions.value} format-style="decimal" maximum-fraction-digits={totalApprovedSolutions.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+            <span class="performance-value-text">{totalApprovedSolutions.text}</span>
+          </div> -->
+          <!-- IPA2.0 TWC727-3228 -->
+        </span>
+    </template>
+    <div if:false={isLoaded}>
+      <!-- <div class="outer-div">
+        <lightning-spinner alternative-text="Loading..." class="spinner" size="medium">
+        </lightning-spinner>
+      </div> -->
+    </div>
+  </lightning-layout>
+</template>

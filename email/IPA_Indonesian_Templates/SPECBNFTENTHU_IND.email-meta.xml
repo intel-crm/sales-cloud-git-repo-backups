@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECBNFTENTHU_IND</name>
+    <style>none</style>
+    <subject>Spesialisasi PC Penggemar Intel® Partner Alliance</subject>
+    <textOnly>Selamat Anda Memenuhi Syarat!
+
+
+{!Contact.FirstName},
+
+Selamat Anda telah menjadi Spesialis PC Penggemar Intel® Technology Provider!
+
+Dengan lebih dari satu miliar gamer PC di dunia dan pasar yang berkembang sangat cepat, Anda berada di posisi yang tepat untuk mengembangkan basis pelanggan Anda dan meningkatkan pendapatan bersama Intel.
+
+Ambil keuntungan dari semua manfaat yang tersedia untuk Anda sekarang juga, termasuk:
+
+
+Promosi poin tambahan untuk produk prosesor Intel® Core™ Seri X, K, dan H
+Gelar Spesialisasi PC Penggemar dan visibilitas di halaman web Intel® Technology Provider
+Webinar teknis oleh Pakar Intel
+Paket gaming dan perangkat lunak berkelas dunia
+Akses ke acara s-sports setempat
+
+Untuk memulai, silakan balas ke enthusiast-pc@intel.com  dengan informasi berikut:
+
+
+Kontak utama untuk komunikasi Spesialis PC Penggemar
+Nama:
+Email:
+
+
+Untuk materi penjualan dan promosi tambahan
+Alamat Pos Fisik:
+Telepon:
+
+Manfaat akses
+
+
+*Manfaat dapat berbeda berdasarkan lokasi geografis.
+
+Mitra Intel memiliki sejarah inovasi yang panjang, dan bersama Intel® Partner Alliance, kami akan membantu Anda mengakselerasi pengembangan solusi untuk ekonomi yang berpusat pada data. Bersama, kita dapat terhubung, berinovasi, dan berkembang untuk mewujudkan berbagai peluang luar biasa.
+
+Kunjungi https://www.intel.com/content/www/id/id/partner-alliance/help/overview.html untuk mendapat bantuan dan panduan tentang cara mengoptimalkan keanggotaan Anda.
+
+
+Terima kasih,
+Tim Intel® Partner Alliance Anda
+
+Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privasi | Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

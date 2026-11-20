@@ -1,0 +1,16 @@
+<template>
+   <section aria-labelledby="panel-heading-id" class="slds-popover" style="position:fixed; right:0%;bottom: 0%; width:0%;" role="dialog">
+      <div class="slds-popover__body  section" style="position:fixed; right:-4%;top:15%;width: 23%;">
+         <lightning-button type="submit" name="givefeedback"  title={label.give_nonfeedback} variant="Brand" label={label.givefeedback} onclick={extendFeedback} class="button"> </lightning-button>
+      </div>
+</section>  
+     <template if:true={isButtonClicked}>
+         <template if:true={iscapability}>
+       <section aria-labelledby="panel-heading-id" class="slds-popover" style="position: fixed; right:0%;bottom: 0%; width:0%;" role="dialog">
+              <div class="slds-popover__body  section" style="position: fixed; right:1%;top: 17%;width:23%;"  id="dialog-body-id-98">
+                <c-sales_-rating-feedback capability={capabilityvalue} onclose={closeFeedback}></c-sales_-rating-feedback>  
+             </div>
+        </section>  
+   </template>
+  </template> 
+  </template>

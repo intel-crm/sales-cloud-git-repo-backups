@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Pricing_Refresh_Client_Decision_Table</name>
+        <label>Refresh Client Decision Table</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <actionName>refreshDecisionTable</actionName>
+        <actionType>refreshDecisionTable</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>DecisionTableApiName</name>
+            <value>
+                <stringValue>Pricing_Approvals_Rules_Criteria</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>refreshDecisionTable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Pricing_Refresh_Data_Center_Decision_Table</name>
+        <label>Refresh Data Center Decision Table</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>refreshDecisionTable</actionName>
+        <actionType>refreshDecisionTable</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>DecisionTableApiName</name>
+            <value>
+                <stringValue>Pricing_Approval_Price_Rules_Criteria_DataCenter</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>refreshDecisionTable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Pricing_Check_Quote_Type</name>
+        <label>Check Quote Type</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Pricing_Refresh_Client_Decision_Table</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Is Client Quote Line?</defaultConnectorLabel>
+        <rules>
+            <name>Pricing_Is_Data_Center_Quote_Line</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Quote_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Data Center</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pricing_Refresh_Data_Center_Decision_Table</targetReference>
+            </connector>
+            <label>Is Data Center Quote Line?</label>
+        </rules>
+    </decisions>
+    <description>Flow used to refresh Data Center and Client Decision Tables for Approval Price Rules</description>
+    <environments>Default</environments>
+    <interviewLabel>Pricing Refresh Decision Table for Approval Price Rules {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pricing Refresh Decision Table for Approval Price Rules</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Pricing_Check_Quote_Type</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND (3 OR 4 OR 5)</filterLogic>
+        <filters>
+            <field>Pricing_Quote_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Client</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Quote_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Data Center</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Approval_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Approval_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Is_Active__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Pricing_Approval_Price_Rules__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -1,0 +1,15 @@
+.scrollable-table {
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.title-container {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.title-container h2 {
+    margin: 0;
+}

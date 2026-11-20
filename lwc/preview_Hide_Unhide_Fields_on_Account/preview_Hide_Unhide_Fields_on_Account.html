@@ -1,0 +1,204 @@
+<template>
+    <template if:true={valueFromAPex}>
+        <lightning-record-view-form record-id={recordId} object-api-name="Account">
+        <lightning-card>
+           
+            <div style="padding: 5px;">
+                <div class="slds-text-heading_small" style="margin-top: -1em;margin-top: -1em;
+        margin-left: 0.55em;">
+
+                    Preview Fields </div>
+                <div style="margin-top: -1.7em;
+            margin-left: 9em;"> <lightning-helptext content={previewFieldSectionText}></lightning-helptext>
+                </div>
+            </div>
+         
+              
+                <!-- 1st Row -->
+                <lightning-layout multiple-rows="true" style="margin-top: 0.45em;padding: 0px 4px 0px 14px;">
+                <lightning-layout-item   size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <div class="slds-form-element__static">
+                               <lightning-output-field field-name="Core_Sales_Group_Preview__c"></lightning-output-field>
+                                <template if:true={salesGroupPreviewBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon></template>
+                         
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+
+                    <div class="slds-form-element slds-form-element_readonly">
+                         
+                        <div class="slds-form-element__static">
+                            <lightning-output-field field-name="Core_Account_Owner_Preview__c"></lightning-output-field>  
+                                <template if:true={accountOwnerPreviewBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
+                           
+                        </div>
+                    </div>
+                </lightning-layout-item> 
+               <!-- <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+
+                 <div class="slds-form-element slds-form-element_readonly">
+                         <lightning-output-field field-name="Core_Sales_Group_Preview__c"></lightning-output-field>
+                                <template if:true={salesGroupPreviewBool}><lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 19px 14px 0px 14px;" size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+                     <div class="slds-form-element slds-form-element_readonly">
+                      
+                            <div class="slds-form-element__static" style="height: 0em;margin-top: 0.3em;">
+                    <lightning-output-field field-name="Core_Account_Owner_Preview__c"></lightning-output-field>
+                 
+                                <template if:true={accountOwnerPreviewBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;    margin-top: -2.8em;"></lightning-button-icon></template>
+                            </div>
+                       
+                    </div>
+                </lightning-layout-item>-->
+
+                <!-- 2nd row-->  
+                <lightning-layout-item   size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <div class="slds-form-element__static">
+                               <lightning-output-field field-name="Core_Account_Category_Preview__c"></lightning-output-field>
+                                <template if:true={accountCategoryPreviewBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon></template>
+                         
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 13px 0px 14px;" size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+
+                    <div class="slds-form-element slds-form-element_readonly">
+                         
+                        <div class="slds-form-element__static">
+                            <lightning-output-field field-name="Core_Account_Primary_Coverage_Preview__c"></lightning-output-field>  
+                                <template if:true={accountPrimaryCoverageBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
+                           
+                        </div>
+                    </div>
+                </lightning-layout-item>
+
+                <!-- 3rd row-->  
+                <lightning-layout-item   size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <div class="slds-form-element__static">
+                               <lightning-output-field field-name="Core_Account_Level_Preview__c"></lightning-output-field>
+                                <template if:true={accountLevelPreviewBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon></template>
+                         
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 13px 0px 14px;" size="6" large-device-size="6"
+                    medium-device-size="6" small-device-size="12">
+
+                    <div class="slds-form-element slds-form-element_readonly">
+                         
+                        <div class="slds-form-element__static">
+                            <lightning-output-field field-name="Core_Comment_Preview__c"></lightning-output-field>  
+                                <template if:true={accountCommentPreviewBool}> <lightning-button-icon variant="bare"
+                                        icon-name="utility:edit" alternative-text="Edit" title="Edit"
+                                        onclick={handleEdit} style="float:right;margin-top: -1.9em;"></lightning-button-icon> </template>
+                           
+                        </div>
+                    </div>
+                </lightning-layout-item>
+          </lightning-layout></div>
+       </lightning-card> </lightning-record-view-form> </template>
+
+    <template if:true={valueOnClickOfEdit}>
+
+        <lightning-card>
+            <lightning-spinner if:true={isLoading} alternative-text="Processing" size="medium"></lightning-spinner>
+            <lightning-record-edit-form record-id={recordId} object-api-name="Account" onsuccess={handleSuccess}>
+                <lightning-messages></lightning-messages>
+                <div style="padding: 5px;">
+                    <div class="slds-text-heading_small" style="margin-top: -1em;margin-top: -1em;
+    margin-left: 0.55em;">
+
+                        Preview Fields </div>
+                    <div style="margin-top: -1.7em;
+        margin-left: 9em;"> <lightning-helptext content={previewFieldSectionText}></lightning-helptext>
+                    </div>
+                </div>
+
+                <lightning-layout multiple-rows="true" style="margin-top: -0.45em;">
+                    <!-- 1st Row -->
+                    <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6"
+                        medium-device-size="6" small-device-size="12">
+
+                        <lightning-input-field field-name="Core_Sales_Group_Preview__c"></lightning-input-field>
+
+                    </lightning-layout-item>
+                    <lightning-layout-item style="padding: 13px 14px 0px 14px;" size="6" large-device-size="6"
+                        medium-device-size="6" small-device-size="12">
+
+                        <lightning-input-field field-name="Core_Account_Owner_Preview__c"></lightning-input-field>
+
+                    </lightning-layout-item>
+
+                    <!-- 2nd row-->
+                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
+                        medium-device-size="6" small-device-size="12">
+
+                        <lightning-input-field field-name="Core_Account_Category_Preview__c" style="
+                        padding-right: 5em;"></lightning-input-field>
+
+                    </lightning-layout-item>
+                     
+                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
+                        medium-device-size="6" small-device-size="12">
+
+                        <lightning-input-field
+                            field-name="Core_Account_Primary_Coverage_Preview__c" ></lightning-input-field>
+
+                    </lightning-layout-item>
+
+                    <!-- 3rd row-->
+                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
+                        medium-device-size="6" small-device-size="12">
+
+                        <lightning-input-field field-name="Core_Account_Level_Preview__c" style="
+                        padding-right: 5em;"></lightning-input-field>
+
+                    </lightning-layout-item>
+                     
+                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6"
+                        medium-device-size="6" small-device-size="12">
+
+                        <lightning-input-field
+                            field-name="Core_Comment_Preview__c" ></lightning-input-field>
+
+                    </lightning-layout-item>
+                </lightning-layout>
+                <div class="slds-m-top_medium" style="text-align: center;">
+                    <lightning-button variant="neutral" type="cancel" label="Cancel" onclick={backToFirstPage}>
+                    </lightning-button>
+
+                    <lightning-button variant="brand" type="submit" label="Save" style="margin-left: 2%;"
+                        onclick={handleSubmit}>
+                    </lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </lightning-card>
+    </template>
+</template>

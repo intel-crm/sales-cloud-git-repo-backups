@@ -1,0 +1,8 @@
+.clearSearch{
+    width: max-content;
+    border: 1px solid var(--blue, #0071C5);
+    font-size: 0.8rem;
+    height: 2rem;
+   
+    /*margin-left: 10px !important;*/
+}

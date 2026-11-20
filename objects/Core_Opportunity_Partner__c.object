@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>Core_Custom_Object_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Partner related to an Opportunity</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Core_OpportunityPartnerSearch</fullName>
+        <description>Opportunity Partner Search</description>
+        <displayedFields>
+            <field>Core_Partner__r.Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Partner_Role__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Partner_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Core_OpportunityPartnerSearch</label>
+    </fieldSets>
+    <fields>
+        <fullName>CORE_PRIME_ACC_NAME__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Partner__r.Core_Prime_Account_Name__c</formula>
+        <label>Partner Prime Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Unified_Global_Opportunity_Partner__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Partner__r.Core_Unified_Global_Customer_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Unified Global Opportunity Partner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_3rd_Party__c</fullName>
+        <description>3rd Party related to the Opportunity Partner</description>
+        <externalId>false</externalId>
+        <label>3rd Party</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Fulfillment_Company__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Fulfillment company related to the Opportunity Partner</description>
+        <inlineHelpText>A third party such as systems integrator, distributor, contract manufacturer purchasing from the Partner on behalf of the Customer. Used to track shipments.</inlineHelpText>
+        <label>Fulfillment Company</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.Name</field>
+                <operation>notEqual</operation>
+                <value>Direct Account</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Opportunity Partners (Fulfillment Company)</relationshipLabel>
+        <relationshipName>Opportunity_Partners1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Joint_Opportunity__c</fullName>
+        <inlineHelpText>Editable by an admin only, used for tracking activities from joint partner programs or initiatives such as ISA Co-Selling</inlineHelpText>
+        <label>Joint Opportunity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>true</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Action to Partner</fullName>
+                    <default>false</default>
+                    <label>Action to Partner</label>
+                </value>
+                <value>
+                    <fullName>Action to Intel</fullName>
+                    <default>false</default>
+                    <label>Action to Intel</label>
+                </value>
+                <value>
+                    <fullName>Action to Admin</fullName>
+                    <default>false</default>
+                    <label>Action to Admin</label>
+                </value>
+                <value>
+                    <fullName>Yes, Lost</fullName>
+                    <default>false</default>
+                    <label>Yes, Lost</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity_Partner_Prime__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Partner__r.Core_Prime_Account_Name__c</formula>
+        <label>Opportunity Partner Prime</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Look up to an Opportunity record</description>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunity Partners</relationshipLabel>
+        <relationshipName>Opportunity_Partners</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Country__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Core_Partner__r.Core_Account_Country__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partner Country/Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Led_External_Opportunity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <inlineHelpText>IOTG Solution Scale Only. Partner fully owns the End Customer demand creation and engagement. Checking this flag automatically assigns the “Channel Opportunity” flag.</inlineHelpText>
+        <label>Partner Led External Opportunity</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Notes__c</fullName>
+        <inlineHelpText>Free text field for recording remarks concerning the particular partner</inlineHelpText>
+        <label>Partner Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Part_Number__c</fullName>
+        <description>Part Number of the Partner on the Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the part number of the product that the Partner ships with the Intel content. This is required by some partners but helps in all instances to track the co-selling revenue. Please complete this field when claiming the Design Win.</inlineHelpText>
+        <label>Partner Part Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Program__c</fullName>
+        <description>Partner Program</description>
+        <inlineHelpText>Refers to the recognized, strategic Intel programs engaging with partners supporting and driving Intel opportunities.</inlineHelpText>
+        <label>Partner Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Accenture JI Solutions Program</fullName>
+                    <default>false</default>
+                    <label>Accenture JI Solutions Program</label>
+                </value>
+                <value>
+                    <fullName>Intel Partner Summit</fullName>
+                    <default>false</default>
+                    <label>Intel Partner Summit</label>
+                </value>
+                <value>
+                    <fullName>IoTG ISV Share Program</fullName>
+                    <default>false</default>
+                    <label>IoTG ISV Share Program</label>
+                </value>
+                <value>
+                    <fullName>IoTG Market Ready Solutions Program</fullName>
+                    <default>false</default>
+                    <label>IoTG Market Ready Solutions Program</label>
+                </value>
+                <value>
+                    <fullName>ISA Co-Selling</fullName>
+                    <default>false</default>
+                    <label>ISA Co-Selling</label>
+                </value>
+                <value>
+                    <fullName>Tata Consultancy - SI - GTM</fullName>
+                    <default>false</default>
+                    <label>Tata Consultancy - SI - GTM</label>
+                </value>
+                <value>
+                    <fullName>TFS Tier 1</fullName>
+                    <default>false</default>
+                    <label>TFS Tier 1</label>
+                </value>
+                <value>
+                    <fullName>TFS Tier 2</fullName>
+                    <default>false</default>
+                    <label>TFS Tier 2</label>
+                </value>
+                <value>
+                    <fullName>TFS Tier 3</fullName>
+                    <default>false</default>
+                    <label>TFS Tier 3</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Role__c</fullName>
+        <inlineHelpText>Refers to the primary activity: how the partner is engaging on the opportunity</inlineHelpText>
+        <label>Partner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Co-Design</fullName>
+                    <default>false</default>
+                    <label>Co-Design</label>
+                </value>
+                <value>
+                    <fullName>Co-Selling</fullName>
+                    <default>false</default>
+                    <label>Co-Selling</label>
+                </value>
+                <value>
+                    <fullName>End Customer</fullName>
+                    <default>false</default>
+                    <label>End Customer</label>
+                </value>
+                <value>
+                    <fullName>Fulfillment</fullName>
+                    <default>false</default>
+                    <label>Fulfillment</label>
+                </value>
+                <value>
+                    <fullName>Solution Scale</fullName>
+                    <default>false</default>
+                    <label>Solution Scale</label>
+                </value>
+                <value>
+                    <fullName>Vendor</fullName>
+                    <default>false</default>
+                    <label>Vendor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Salesperson__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Partner salesperson related to the Opportunity Partner</description>
+        <inlineHelpText>The name of the salesperson at the partner with whom you are co-selling. This is required by some partners and helps with co-selling approval at all partners. Please complete this field when adding the Partner to the opportunity.</inlineHelpText>
+        <label>Partner Salesperson</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Opportunity Partners</relationshipLabel>
+        <relationshipName>Opportunity_Partners</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Partner_Type__c</fullName>
+        <description>Type of Partner on the Opportunity</description>
+        <inlineHelpText>Refers to the type of the business model classification of the partner on the opportunity similarly to the Account Type, for example OEM, ODM, ISV, Design House, Cloud Service Provider.</inlineHelpText>
+        <label>Partner Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Academia &amp; research institutions</fullName>
+                    <default>false</default>
+                    <label>Academia &amp; research institutions</label>
+                </value>
+                <value>
+                    <fullName>Branded Value Added Reseller (bVAR)</fullName>
+                    <default>false</default>
+                    <label>Branded Value Added Reseller (bVAR)</label>
+                </value>
+                <value>
+                    <fullName>Cloud Service Provider (CSP)</fullName>
+                    <default>false</default>
+                    <label>Cloud Service Provider (CSP)</label>
+                </value>
+                <value>
+                    <fullName>Comm Service Provider (CoSP)</fullName>
+                    <default>false</default>
+                    <label>Comm Service Provider (CoSP)</label>
+                </value>
+                <value>
+                    <fullName>Contract Manufacturer (CM)</fullName>
+                    <default>false</default>
+                    <label>Contract Manufacturer (CM)</label>
+                </value>
+                <value>
+                    <fullName>Digital Services (Social Media, Streaming, eWallet)</fullName>
+                    <default>false</default>
+                    <label>Digital Services (Social Media, Streaming, eWallet)</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>Domain Expert Integrator</fullName>
+                    <default>false</default>
+                    <label>Domain Expert Integrator</label>
+                </value>
+                <value>
+                    <fullName>Electronic Manufacturing Services (EMS)</fullName>
+                    <default>false</default>
+                    <label>Electronic Manufacturing Services (EMS)</label>
+                </value>
+                <value>
+                    <fullName>Embedded Board Manufacturer (EBM)</fullName>
+                    <default>false</default>
+                    <label>Embedded Board Manufacturer (EBM)</label>
+                </value>
+                <value>
+                    <fullName>End Customer</fullName>
+                    <default>false</default>
+                    <label>End Customer</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Influencer</fullName>
+                    <default>false</default>
+                    <label>Enterprise Influencer</label>
+                </value>
+                <value>
+                    <fullName>FPGA Design Services</fullName>
+                    <default>false</default>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
+                    <fullName>Global System Integrator (GSI)</fullName>
+                    <default>false</default>
+                    <label>Global System Integrator (GSI)</label>
+                </value>
+                <value>
+                    <fullName>Hardware System Integrator (HSI)</fullName>
+                    <default>false</default>
+                    <label>Hardware System Integrator (HSI)</label>
+                </value>
+                <value>
+                    <fullName>Independent Design House</fullName>
+                    <default>false</default>
+                    <label>Independent Design House</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor (ISV)</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor (ISV)</label>
+                </value>
+                <value>
+                    <fullName>Intel Approved Component Supplier (IACS)</fullName>
+                    <default>false</default>
+                    <label>Intel Approved Component Supplier (IACS)</label>
+                </value>
+                <value>
+                    <fullName>Intel Authorized Distributor (IAD)</fullName>
+                    <default>false</default>
+                    <label>Intel Authorized Distributor (IAD)</label>
+                </value>
+                <value>
+                    <fullName>Local Original Design Manufacturer (LODM)</fullName>
+                    <default>false</default>
+                    <label>Local Original Design Manufacturer (LODM)</label>
+                </value>
+                <value>
+                    <fullName>Local Original Equipment Manufacturer (LOEM)</fullName>
+                    <default>false</default>
+                    <label>Local Original Equipment Manufacturer (LOEM)</label>
+                </value>
+                <value>
+                    <fullName>Managed Service Provider (MSP)</fullName>
+                    <default>false</default>
+                    <label>Managed Service Provider (MSP)</label>
+                </value>
+                <value>
+                    <fullName>National Solution Integrator (NSI)</fullName>
+                    <default>false</default>
+                    <label>National Solution Integrator (NSI)</label>
+                </value>
+                <value>
+                    <fullName>National Solution Provider (NSP)</fullName>
+                    <default>false</default>
+                    <label>National Solution Provider (NSP)</label>
+                </value>
+                <value>
+                    <fullName>Intel Approved Device Supplier (IADS)</fullName>
+                    <default>false</default>
+                    <label>Intel Approved Device Supplier (IADS)</label>
+                </value>
+                <value>
+                    <fullName>Operational Technology System Integrator (OTSI)</fullName>
+                    <default>false</default>
+                    <label>Operational Technology System Integrator (OTSI)</label>
+                </value>
+                <value>
+                    <fullName>Original Design Manufacturer (ODM)</fullName>
+                    <default>false</default>
+                    <label>Original Design Manufacturer (ODM)</label>
+                </value>
+                <value>
+                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
+                    <default>false</default>
+                    <label>Original Equipment Manufacturer (OEM)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>PSG Team</fullName>
+                    <default>false</default>
+                    <label>PSG Team</label>
+                </value>
+                <value>
+                    <fullName>Reseller</fullName>
+                    <default>false</default>
+                    <label>Reseller</label>
+                </value>
+                <value>
+                    <fullName>Retailer</fullName>
+                    <default>false</default>
+                    <label>Retailer</label>
+                </value>
+                <value>
+                    <fullName>Telco Equipment Manufacturer (TEM)</fullName>
+                    <default>false</default>
+                    <label>Telco Equipment Manufacturer (TEM)</label>
+                </value>
+                <value>
+                    <fullName>Value Added Reseller (VAR)</fullName>
+                    <default>false</default>
+                    <label>Value Added Reseller (VAR)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Look up to an Account (Partner)</description>
+        <inlineHelpText>3rd party involved in the opportunity, for example co-selling, co-design, fulfillment, or end customer</inlineHelpText>
+        <label>Partner</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Partner Account Group, Intel Account</value>
+            </filterItems>
+            <infoMessage>Intel ultimate and Inactive accounts have been excluded from the below-listed accounts as they should not be selected. Please DO NOT OVERRIDE the filter criteria by clicking on &quot;Search All&quot; link below and only select an account from the ones listed below.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Partner Opportunities</relationshipLabel>
+        <relationshipName>Opportunity_Partners</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Role__c</fullName>
+        <description>Role of the Partner on the Opportunity</description>
+        <inlineHelpText>Role of the Partner on the Opportunity</inlineHelpText>
+        <label>Partner Role(Do Not Use)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cloud Service Provider</fullName>
+                    <default>false</default>
+                    <label>Cloud Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Design House</fullName>
+                    <default>false</default>
+                    <label>Design House</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>DMR</fullName>
+                    <default>false</default>
+                    <label>DMR</label>
+                </value>
+                <value>
+                    <fullName>Embedded Board Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Embedded Board Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>EMS</fullName>
+                    <default>false</default>
+                    <label>EMS</label>
+                </value>
+                <value>
+                    <fullName>End Customer</fullName>
+                    <default>false</default>
+                    <label>End Customer</label>
+                </value>
+                <value>
+                    <fullName>ESF Firm</fullName>
+                    <default>false</default>
+                    <label>ESF Firm</label>
+                </value>
+                <value>
+                    <fullName>ISV/OSV</fullName>
+                    <default>false</default>
+                    <label>ISV/OSV</label>
+                </value>
+                <value>
+                    <fullName>ITO</fullName>
+                    <default>false</default>
+                    <label>ITO</label>
+                </value>
+                <value>
+                    <fullName>LOEM</fullName>
+                    <default>false</default>
+                    <label>LOEM</label>
+                </value>
+                <value>
+                    <fullName>ODM</fullName>
+                    <default>false</default>
+                    <label>ODM</label>
+                </value>
+                <value>
+                    <fullName>OEM</fullName>
+                    <default>false</default>
+                    <label>OEM</label>
+                </value>
+                <value>
+                    <fullName>Publisher</fullName>
+                    <default>false</default>
+                    <label>Publisher</label>
+                </value>
+                <value>
+                    <fullName>Reseller</fullName>
+                    <default>false</default>
+                    <label>Reseller</label>
+                </value>
+                <value>
+                    <fullName>Retailer</fullName>
+                    <default>false</default>
+                    <label>Retailer</label>
+                </value>
+                <value>
+                    <fullName>Service Providers/Telco</fullName>
+                    <default>false</default>
+                    <label>Service Providers/Telco</label>
+                </value>
+                <value>
+                    <fullName>Solution Provider</fullName>
+                    <default>false</default>
+                    <label>Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>System Integrator</fullName>
+                    <default>false</default>
+                    <label>System Integrator</label>
+                </value>
+                <value>
+                    <fullName>TEM</fullName>
+                    <default>false</default>
+                    <label>TEM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_UCD_Partner_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Partner__r.Core_Data_Simplified_Account_Nm__c</formula>
+        <label>Unified Partner Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Decision_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_Opportunity__r.Decision_Date__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Decision Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OpportunityStage__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Core_Opportunity__r.StageName)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Owner_Full_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity__r.Owner.FirstName &amp;&quot; &quot;&amp; Core_Opportunity__r.Owner.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner Full Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Record_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Record Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Technical_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity__r.Core_Technical_Owner__r.FirstName &amp;&quot; &quot;&amp; Core_Opportunity__r.Core_Technical_Owner__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Technical Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Opportunity Partner</label>
+    <nameField>
+        <displayFormat>OP-{00000000}</displayFormat>
+        <label>Opportunity Partner ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Opportunity Partners</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Core_OppPartner_Prevent_Account</fullName>
+        <active>true</active>
+        <description>Allow only Intel and Partner Account Record Types.</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+Core_Partner__c != &apos;&apos;,
+Core_Partner__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;,
+Core_Partner__r.RecordType.DeveloperName != &apos;Core_Partner_Account_Group&apos;
+)
+)</errorConditionFormula>
+        <errorDisplayField>Core_3rd_Party__c</errorDisplayField>
+        <errorMessage>The account you are attempting to relate this Opportunity Partner to is not an Intel or Partner Account. Please choose an Intel or Partner Account</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Partner_Led_External_Opp_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, ($Profile.Name &lt;&gt; $Label.Core_System_Admin_Profile_Name &amp;&amp; ISCHANGED(Core_Partner_Led_External_Opportunity__c) &amp;&amp; Core_Partner_Led_External_Opportunity__c = false))</errorConditionFormula>
+        <errorDisplayField>Core_Partner_Led_External_Opportunity__c</errorDisplayField>
+        <errorMessage>Partner Led External Opportunity cannot be deselected.  Please submit an AAQ to request removal of this flag</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

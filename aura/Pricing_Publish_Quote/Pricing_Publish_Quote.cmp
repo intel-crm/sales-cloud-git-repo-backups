@@ -1,0 +1,100 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-27-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component
+	implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes,force:hasSObjectName"
+	access="global" controller="Pricing_Publish_Quote">
+
+	<!-- Attributes -->
+	<aura:attribute name="recordId" type="String" />
+	<aura:attribute name="quoteId" type="String" />	
+	<aura:attribute name="messageNotification" type="String[]" default="[]" />
+	<aura:attribute name="isSuccess" type="Boolean" />
+	<aura:attribute name="isProcessing" type="Boolean" default="false" />
+	<aura:attribute name="isQuoteLineApproval" type="Boolean" default="false" />
+	<aura:attribute name="sObjectName" type="String" />	
+	<aura:attribute name="isModelOpen" type="Boolean" default="false" />
+	<aura:attribute name="method" type="Aura.action" />
+	<aura:attribute name="errorMsg" type="String" />
+	<aura:attribute name="isSVDActive" type="Boolean" />
+	<aura:attribute name="isLoad" type="Boolean" default="false" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<!-- Styles -->
+	<aura:html tag="style">
+		.slds-modal__content {
+		overflow-y: hidden !important;
+		height: unset !important;
+		max-height: unset !important;
+		<!-- min-height: 20vh; -->
+		}
+	</aura:html>
+
+	<!-- Spinner -->
+	<div aura:id="spinner" class="slds-is-relative" style="height: 0.5rem;">
+		<lightning:spinner aura:id="mySpinner" class="slds-hide" size="medium" variant="brand"
+			alternativeText="Please wait..." style="background-color:white;" />
+	</div>
+
+	<!-- Main Content -->
+	<aura:if isTrue="{!v.isLoad}">
+		<!-- Display Error Message -->
+		<aura:if isTrue="{!v.isSVDActive}">
+			<div style="color: red; padding-left: 20px; text-align: center;">{!v.errorMsg}</div>
+		<aura:set attribute="else">
+			<!-- Notifications -->
+			<aura:if isTrue="{!and(v.messageNotification.length > 0, v.isSuccess)}">
+					<div class="slds-p-around_medium slds-scrollable_y" style="height: 8rem;">
+						<div aura:id="successMessage" style="height: 5rem;">
+							<div class="slds-is-relative slds-align_absolute-center">
+								<div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+									<span class="slds-assistive-text">Success</span>
+									<div class="slds-notify__content">
+										<aura:iteration items="{!v.messageNotification}" var="item">
+											<h2 class="slds-text-heading_small" style="text-align: left;">{!item}</h2>
+										</aura:iteration>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slds-p-top_medium" style="text-align: center">
+						<a href="javascript:void(0)" onclick="{!c.goBackLink}">
+							Go Back to Previous Page
+						</a>
+					</div>
+			</aura:if>
+			<!-- Error Notifications -->
+			<aura:if isTrue="{!and(v.messageNotification.length > 0, not(v.isSuccess))}">
+					<div class="slds-p-around_medium">
+						<div aura:id="errorMessage" class="slds-text-longform">
+							<div class="slds-is-relative slds-align_absolute-center">
+								<div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+									<span class="slds-assistive-text">Error</span>
+									<div class="slds-notify__content">
+										<ul>
+											<aura:iteration items="{!v.messageNotification}" var="item">
+												<li class="slds-text-heading_small">{!item}</li>
+											</aura:iteration>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Go Back Link -->
+					<div class="slds-p-top_medium" style="text-align: center;">
+						<a href="javascript:void(0);" onclick="{!c.goBackLink}">
+							Go Back to Previous Page
+						</a>
+					</div>
+			</aura:if>
+			</aura:set>
+		</aura:if>
+	</aura:if>
+</aura:component>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User$Profile</field>
+    </columns>
+    <columns>
+        <field>User$Department</field>
+    </columns>
+    <columns>
+        <field>User*User$Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>User$Email</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User$IsActive</field>
+    </columns>
+    <columns>
+        <field>User.UserTerritory2Associations$Name</field>
+    </columns>
+    <columns>
+        <field>User.UserTerritory2Associations$RoleInTerritory2</field>
+    </columns>
+    <columns>
+        <field>User$Manager</field>
+    </columns>
+    <columns>
+        <field>User$LastLoginDate</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <column>User$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Rick Lisa,Hugues Morin,Marie Théry,Balaji Srinivasan,Lauren Tippets,Karsten Fels,Robert Prince,Steven Netter,Cigdem Ertem,Ediz Altun,Mike Bates,Joe Jankosky,Nicolas Robin,Mike Blalock,Bruno Domingues,ARTUR DERWISZYŃSKI,Faisal Qamar,Fernando Zaldivar Oca,Christian Donitzky,Jesse Schrater,Rhett Livengood,Alex Liu,Chris Gough,Edward Buffone,David Dobson,Marta Muszynska,Sales Rep1 Test,Bharath Indla,Hannah Kemp,Tony Moglione,Anna Scott,Oliver Heard,Ken Furnanz,Sarah Musick,Steve Stavros Stavropoulos,Dave Buchholz,Marcelo Bertolami,Rafael Escalante Alfonso,Rob Sornson,Tammi Westall,Rob Marsh</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Oliver Heard,Jason Fedder,Aurelio Prado,Thomas Metzger,Rafael Escalante Alfonso,Marcelo Bertolami,Keith Sundberg,Stephen Holt,Leila Sabeti,Jesse Schrater,Kevin Bleckmann,Dave Shrestha,Josh Hilliker,Lucas Melo,Taka Matsuda,Rajender Bedi,Kiyoshi Sakon,Thomas Sennhauser,Ichang2 Chang,Seetha Nookala,Nachiket Kumar M,Sales Rep1 Test,Antonino Albarran,VOLGA NAZIM SIMSEK,Sarah Robinson,Dmitry Artyukhin,Pamina Karvela,Markus Leberecht,Thomas Dietrich,Rob Marsh,Adam Roe,Ahmed Al-Jeshi,Tomas Stralman,Hind Azegrouz,Xiaojun Zhang,Feng Gao,Congchao Cheng,Xia Lei Xia,Diana Li</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>COE, CSA, TSS EXPORT LIST</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Core_Users_with_Territory_Assignments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

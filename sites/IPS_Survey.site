@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomSite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowGuestPaymentsApi>false</allowGuestPaymentsApi>
+    <allowHomePage>false</allowHomePage>
+    <allowStandardAnswersPages>false</allowStandardAnswersPages>
+    <allowStandardIdeasPages>false</allowStandardIdeasPages>
+    <allowStandardLookups>false</allowStandardLookups>
+    <allowStandardPortalPages>true</allowStandardPortalPages>
+    <allowStandardSearch>false</allowStandardSearch>
+    <authorizationRequiredPage>Core_IPS_Survey_Generic_Page</authorizationRequiredPage>
+    <bandwidthExceededPage>Core_IPS_Survey_Generic_Page</bandwidthExceededPage>
+    <browserXssProtection>false</browserXssProtection>
+    <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
+    <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
+    <contentSniffingProtection>false</contentSniffingProtection>
+    <description>To display the survey page for IPS Closed Case.</description>
+    <enableAuraRequests>true</enableAuraRequests>
+    <fileNotFoundPage>Core_IPS_Survey_Generic_Page</fileNotFoundPage>
+    <genericErrorPage>Core_IPS_Survey_Generic_Page</genericErrorPage>
+    <inMaintenancePage>Core_IPS_Survey_Generic_Page</inMaintenancePage>
+    <inactiveIndexPage>Core_IPS_Survey_Generic_Page</inactiveIndexPage>
+    <indexPage>Core_IPS_Survey</indexPage>
+    <masterLabel>IPS Survey</masterLabel>
+    <redirectToCustomDomain>false</redirectToCustomDomain>
+    <referrerPolicyOriginWhenCrossOrigin>false</referrerPolicyOriginWhenCrossOrigin>
+    <siteAdmin>10714779@intel.com.crm</siteAdmin>
+    <siteGuestRecordDefaultOwner>10714779@intel.com.crm</siteGuestRecordDefaultOwner>
+    <siteType>Visualforce</siteType>
+    <subdomain>intelpresalesinternal</subdomain>
+    <urlPathPrefix>survey</urlPathPrefix>
+</CustomSite>

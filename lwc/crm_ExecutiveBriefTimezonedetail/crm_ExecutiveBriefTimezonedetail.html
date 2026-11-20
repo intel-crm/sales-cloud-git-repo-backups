@@ -1,0 +1,80 @@
+<template>
+    <div class="slds-p-horizontal_small slds-p-bottom_small">
+        <div class="slds-grid slds-wrap">
+
+            <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+
+                <!-- ✅ WRAPPER (IMPORTANT) -->
+                <div class="timezone-wrapper">
+
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">
+                            <abbr class="slds-required" title="required">*</abbr>
+                            Meeting Timezone
+                        </label>
+
+                        <div class="slds-form-element__control">
+                            <div class={comboboxClass} role="combobox">
+
+                                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right">
+
+                        <!-- Search Input styled like combobox -->
+                        <input
+                            type="text"
+                            class="slds-input slds-combobox__input"
+                            value={searchKey}
+                            placeholder="Select Timezone"
+                            onfocus={handleFocus}
+                            onkeyup={handleSearch}
+                            onmousedown={handleInputMouseDown}
+                        />
+
+                        <!-- Dropdown Icon -->
+                        <span class="slds-icon_container slds-input__icon slds-input__icon_right">
+                            <lightning-icon icon-name="utility:down" size="x-small"></lightning-icon>
+                        </span>
+
+                    </div>
+
+                                <!-- Dropdown -->
+                                <template if:true={showDropdown}>
+                                    <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid">
+                                        <ul class="slds-listbox slds-listbox_vertical">
+
+                                            <template for:each={filteredOptions} for:item="item">
+                                                <li key={item.value} class="slds-listbox__item">
+                                                    <div
+                                                        class="slds-listbox__option slds-listbox__option_plain"
+                                                        data-value={item.value}
+                                                        onclick={handleSelect}
+                                                        onmousedown={handleItemMouseDown}>
+                                                        {item.label}
+                                                    </div>
+                                                </li>
+                                            </template>
+
+                                            <template if:true={noResults}>
+                                                <li class="slds-listbox__item">
+                                                    <div class="slds-text-body_small slds-p-around_small">
+                                                        No results found
+                                                    </div>
+                                                </li>
+                                            </template>
+
+                                        </ul>
+                                    </div>
+                                </template>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- ✅ END WRAPPER -->
+
+            </div>
+
+            <div class="slds-col slds-size_1-of-2"></div>
+
+        </div>
+    </div>
+</template>

@@ -1,0 +1,187 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+access="global" Controller="Core_MDF_PFR_Approval">
+<aura:attribute name="buttonName" type="String" />
+<aura:attribute name="disablebuttonName" type="Boolean" default="false"/>
+<aura:attribute name="buttonValue" type="String" />
+<aura:attribute name="externalUser" type="Boolean" default="false" />
+<aura:attribute name="recordId" type="Id" />
+<aura:attribute name="buttonToBeVisible" type="Boolean" default="false" />
+<aura:attribute name="showRecallOnly" type="Boolean" default="false" />    
+    <aura:attribute name="commentsMandatory" type="Boolean" default="true" />
+<aura:attribute name="pfrMapInstance" type="Map" default="{}" />
+<aura:attribute name="statusMapInstance" type="Map" default="{}" />    
+<aura:attribute name="rejectInternalVisble" type="Boolean" default="false" />
+<!--Approval Comments-->
+<aura:attribute name="showApprovalCommentSection" type="Boolean" default="false" />
+<aura:attribute name="approvalComments" type="String" default="" />
+<aura:attribute name="btnValue" type="String" />
+<aura:attribute name="commentType" type="String" />
+<aura:attribute name="isOpalActApprovalRequired" type="Boolean" default="false" />
+<aura:attribute name="isSaveDisable" type="Boolean" default="false"/>
+    
+<!--TWC702-1949: [Technical] [X-Platform] - Account Based PCT approvers-->
+<aura:attribute name="isPCTReviewer" type="Boolean" default="false" />
+<aura:attribute name="isLevel1Approver" type="Boolean" default="false" />
+<aura:attribute name="isLevel2Approver" type="Boolean" default="false" />
+<aura:attribute name="isPORApprover" type="Boolean" default="false" />
+<aura:attribute name="isGeoLeadApprover" type="Boolean" default="false" />
+    <aura:attribute name="isAdditionalReviewer" type="Boolean" default="false" />
+<aura:attribute name="isL1ActivatingPartnerApprover" type="Boolean" default="false" />
+<aura:attribute name="isL1PrimaryPartnerApprover" type="Boolean" default="false" />
+<aura:attribute name="isL2PrimaryApprover" type="Boolean" default="false" />
+<aura:attribute name="isPrimaryPartnerApprover" type="Boolean" default="false" />
+<aura:attribute name="isActivatingPartnerApprover" type="Boolean" default="false" />
+<aura:attribute name="userId" type="String" />
+    
+<aura:attribute name="isOutcomebaseActivity" type="Boolean" default="false"/> <!--Rishabh-->
+
+<aura:attribute name="isApprovalCommentsRequired" type="Boolean" default="false" 
+                description="This attribute controls the required tag of comment section (lightning:text)" />    
+<aura:attribute name="isIPAAccountMgrAndPCTApprover" type="Boolean" default="false" /> 
+
+<!-- Smart Assist Popup Attributes -->
+<aura:attribute name="showSmartAssistPopup" type="Boolean" default="false"/>
+<aura:attribute name="aiSuggestionText" type="String" default=""/>
+<aura:attribute name="isLoadingAISuggestion" type="Boolean" default="false"/>
+<!-- NEW: AI Decision and Status attributes -->
+<aura:attribute name="aiDecision" type="String" default=""/>
+<aura:attribute name="showAIDisclaimer" type="Boolean" default="false"/>
+<aura:attribute name="currentPFRStatus" type="String" default=""/>
+<aura:attribute name="hasApprovalPermissions" type="Boolean" default="false"/>
+<!-- NEW: Email whitelist access attribute -->
+<aura:attribute name="hasEmailWhitelistAccess" type="Boolean" default="false"/>
+    
+<!-- Onload of the Page the values to be loaded  -->
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<aura:if isTrue="{!v.buttonToBeVisible}">
+<lightning:layout horizontalAlign="spread" multipleRows="true">
+	<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3"
+	largeDeviceSize="3"></lightning:layoutItem>
+	<lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6"
+	largeDeviceSize="6">
+	
+	<div align="center">
+<!-- The button dynamically sets value as Submit for Approval (for Internal user for Emea Activity ) or Approve button(for External Activity Approver)-->
+		<lightning:button variant="Neutral" disabled="{!v.isSaveDisable}" label="{!v.buttonName}"
+			value="{!v.buttonValue}" onclick="{!c.approvalAction}" />
+      
+			<aura:if isTrue="{!or(and(v.externalUser,not(v.showRecallOnly)),or(v.isGeoLeadApprover,or(v.isPCTReviewer,or(v.isLevel1Approver,or(v.isLevel2Approver,or(v.isPORApprover,or(v.isOpalActApprovalRequired,or(v.isL1PrimaryPartnerApprover,or(v.isL2PrimaryApprover,or(v.isL1ActivatingPartnerApprover,or(v.isPrimaryPartnerApprover,or(v.isActivatingPartnerApprover,v.isIPAAccountMgrAndPCTApprover))))))))))))}">							
+
+            <lightning:button variant="Neutral"
+				label="{!$Label.c.Core_MDF_Retail_Reject}" value="Reject" onclick="{!c.approvalAction}" />
+		</aura:if>
+	</div>
+	
+	<!-- UPDATED: AI Disclaimer Message with colored decision text and clickable "View details" -->
+	<!-- NEW: Check for email whitelist access along with approval permissions -->
+	<aura:if isTrue="{!and(and(v.showAIDisclaimer, v.hasApprovalPermissions), v.hasEmailWhitelistAccess)}">
+		<div class="slds-text-align_center slds-m-top_small" style="white-space: nowrap;">
+			<span class="slds-text-body_small slds-text-color_weak">Disclaimer: AI recommendation is </span>
+			
+			<!-- Green for Approve (case insensitive) -->
+			<aura:if isTrue="{!or(equals(v.aiDecision, 'Approve'), or(equals(v.aiDecision, 'APPROVE'), equals(v.aiDecision, 'approve')))}">
+				<span style="color: #04844b; font-weight: bold;" class="slds-text-body_small">"Approve"</span>
+			</aura:if>
+			
+			<!-- Red for Reject (case insensitive) -->
+			<aura:if isTrue="{!or(equals(v.aiDecision, 'Reject'), or(equals(v.aiDecision, 'REJECT'), equals(v.aiDecision, 'reject')))}">
+				<span style="color: #c23934; font-weight: bold;" class="slds-text-body_small">"Reject"</span>
+			</aura:if>
+			
+			<!-- Yellow for Request Clarification (case insensitive) -->
+			<aura:if isTrue="{!or(or(equals(v.aiDecision, 'Request Clarification'), equals(v.aiDecision, 'REQUEST CLARIFICATION')), or(equals(v.aiDecision, 'request clarification'), or(equals(v.aiDecision, 'Request_Clarification'), equals(v.aiDecision, 'REQUEST_CLARIFICATION'))))}">
+				<span style="color: #fe9339; font-weight: bold;" class="slds-text-body_small">"Request Clarification"</span>
+			</aura:if>
+			
+			<!-- Default for any other values -->
+			<aura:if isTrue="{!and(and(not(equals(v.aiDecision, 'Approve')), and(not(equals(v.aiDecision, 'APPROVE')), not(equals(v.aiDecision, 'approve')))), and(and(not(equals(v.aiDecision, 'Reject')), and(not(equals(v.aiDecision, 'REJECT')), not(equals(v.aiDecision, 'reject')))), and(and(not(equals(v.aiDecision, 'Request Clarification')), and(not(equals(v.aiDecision, 'REQUEST CLARIFICATION')), not(equals(v.aiDecision, 'request clarification')))), and(not(equals(v.aiDecision, 'Request_Clarification')), not(equals(v.aiDecision, 'REQUEST_CLARIFICATION'))))))}">
+				<span style="color: #706e6b; font-weight: bold;" class="slds-text-body_small">"{!v.aiDecision}"</span>
+			</aura:if>
+			
+			<a href="javascript:void(0);" onclick="{!c.handleAIDecisionClick}" class="slds-text-link slds-text-body_small slds-m-left_x-small">
+				View details
+			</a>
+		</div>
+	</aura:if>
+	
+	<!-- FALLBACK: Show loading message when AI is being processed -->
+	<!-- NEW: Check for email whitelist access along with other conditions -->
+	<aura:if isTrue="{!and(and(v.isLoadingAISuggestion, and(v.currentPFRStatus == 'Pending Review', v.hasApprovalPermissions)), v.hasEmailWhitelistAccess)}">
+		<div class="slds-text-align_center slds-m-top_small">
+			<p class="slds-text-body_small slds-text-color_weak">
+				<lightning:spinner size="x-small" class="slds-m-right_x-small"/>
+				Loading AI recommendation...
+			</p>
+		</div>
+	</aura:if>
+	
+	</lightning:layoutItem>
+	<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3"
+	largeDeviceSize="3"></lightning:layoutItem>
+</lightning:layout>
+</aura:if>
+<aura:if isTrue="{!v.showApprovalCommentSection}">
+<div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-modal_small slds-slide-up-saving">
+	<div class="slds-modal__container">
+	<!-- Heading (Header of the Modal) -->
+		<div class="slds-modal__header">
+			<button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeModal}">
+                <lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+				<span class="slds-assistive-text"></span>
+			</button>
+			<h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.commentType}
+			</h1>
+		</div>
+		<div class="slds-modal__content slds-p-around--medium">
+			<!-- <lightning:textarea required="true" value="{!v.approvalComments}" /> -->
+            <lightning:textarea required="{!v.isApprovalCommentsRequired}" maxlength ="1000" value="{!v.approvalComments}" />
+               <p class="slds-text-heading--small comments_charlimit_for_color">{!$Label.c.Core_MDF_Comments_CharLimit}</p>
+		</div>
+		<div class="slds-modal__footer">
+			<lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">{!$Label.c.Core_MDF_Cancel}</lightning:button>
+			<lightning:button class="slds-button slds-button--brand" onclick="{!c.callApprovalProcessAndUpdateField}" disabled="{!v.disablebuttonName}">{!$Label.c.Core_MDF_Save}</lightning:button>
+		</div>
+	</div>
+</div>
+<div aura:id="backdropIdForNewRecord" class="slds-backdrop slds-backdrop--open"></div>
+</aura:if>
+
+<!-- Smart Assist Popup Modal -->
+<aura:if isTrue="{!v.showSmartAssistPopup}">
+<div role="dialog" tabindex="-1" aria-labelledby="smart-assist-header" class="slds-modal slds-fade-in-open slds-modal_medium">
+	<div class="slds-modal__container">
+		<div class="slds-modal__header">
+			<button class="slds-button slds-modal__close slds-button_icon" title="Close" onclick="{!c.closeSmartAssistPopup}">
+				<lightning:icon iconName="utility:close" alternativeText="Close" size="small" />
+				<span class="slds-assistive-text">Close</span>
+			</button>
+			<h2 id="smart-assist-header" class="slds-modal__title slds-hyphenate">
+				Smart Assist Recommendation
+			</h2>
+		</div>
+		<div class="slds-modal__content slds-p-around_medium">
+			<aura:if isTrue="{!v.isLoadingAISuggestion}">
+				<div class="slds-align_absolute-center slds-p-around_large">
+					<lightning:spinner alternativeText="Loading AI Recommendation..." size="medium" />
+					<p class="slds-text-heading_small slds-m-top_medium">Analyzing activity against approval rules...</p>
+				</div>
+			</aura:if>
+			<aura:if isTrue="{!and(not(v.isLoadingAISuggestion), not(empty(v.aiSuggestionText)))}">
+				<div class="slds-card">
+					<div class="slds-card__body slds-card__body_inner">
+						<div class="slds-text-longform" style="max-height: 400px; overflow-y: auto;">
+							<lightning:formattedRichText value="{!v.aiSuggestionText}"/>
+						</div>
+					</div>
+				</div>
+			</aura:if>
+		</div>
+		<div class="slds-modal__footer">
+			<lightning:button variant="neutral" label="Close" onclick="{!c.closeSmartAssistPopup}"/>
+		</div>
+	</div>
+</div>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</aura:if>
+
+</aura:component>

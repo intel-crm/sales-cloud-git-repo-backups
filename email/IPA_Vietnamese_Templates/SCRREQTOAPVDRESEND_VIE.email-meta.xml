@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Retrigger Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDRESEND_VIE</name>
+    <style>none</style>
+    <subject>Hoàn thành Đơn xin tham gia Liên minh Đối tác Intel® của bạn</subject>
+    <textOnly>Bạn đã gần đến đích rồi!
+
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Cảm ơn bạn đã gửi đơn. Một hồ sơ đã được tạo cho {!PRM_Registration_Request__c.PRM_Email_ID__c} và chỉ còn vài bước nữa là bạn sẽ trở thành một đối tác trong Liên minh Đối tác Intel®.
+
+
+Để kích hoạt tài khoản của bạn và bắt đầu tận hưởng các lợi ích, vui lòng điền thông tin tài khoản và hoàn thành phần yêu cầu pháp lý.
+
+
+Hoàn thành ngay
+
+Không thể truy cập liên kết trên?
+
+https://www.intel.com/content/www/vn/vi/secure/partner/forms/ipa-account-search.html.
+
+Nếu bạn có bất cứ câu hỏi nào, hãy liên hệ với chúng tôi theo địa chỉ programs@intel.com.
+
+Xin cám ơn bạn!
+Nhóm Liên minh Đối tác Intel® của bạn
+
+
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Bảo mật | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

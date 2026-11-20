@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Digital Media</fullName>
+        <default>false</default>
+        <label>Digital Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Legacy Media</fullName>
+        <default>false</default>
+        <label>Legacy Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Cultivation</fullName>
+        <default>false</default>
+        <label>Lead Cultivation</label>
+    </customValue>
+    <customValue>
+        <fullName>Training</fullName>
+        <default>false</default>
+        <label>Training</label>
+    </customValue>
+    <customValue>
+        <fullName>Funded Headcount</fullName>
+        <default>false</default>
+        <label>Funded Headcount</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Activation</fullName>
+        <default>false</default>
+        <label>Technical Activation</label>
+    </customValue>
+    <customValue>
+        <fullName>Incentive</fullName>
+        <default>false</default>
+        <label>Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Retail Activation</fullName>
+        <default>false</default>
+        <label>Retail Activation</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Services</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Technical Services</label>
+    </customValue>
+    <description>Store Tactics Picklist Values</description>
+    <masterLabel>Tactics</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

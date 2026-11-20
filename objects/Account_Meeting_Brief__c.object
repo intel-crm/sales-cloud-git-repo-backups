@@ -1,0 +1,1761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Meeting_Brief_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Associated to Account for tracking Executive Meeting Briefs</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Parent Account for Executive Meeting Brief</description>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Core_Covered_Account__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Intel Account</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Meeting Briefs</relationshipLabel>
+        <relationshipName>Account_Meeting_Briefs</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Brief_Event__c</fullName>
+        <description>List of events for typed to the account brief</description>
+        <inlineHelpText>Select the appropriate event. If no match,  select Other and provide details in the Other Event field</inlineHelpText>
+        <label>Event</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Board of Advisors</fullName>
+                    <default>false</default>
+                    <label>Board of Advisors</label>
+                </value>
+                <value>
+                    <fullName>Computex</fullName>
+                    <default>false</default>
+                    <label>Computex</label>
+                </value>
+                <value>
+                    <fullName>Consumer Electronics Show (CES)</fullName>
+                    <default>false</default>
+                    <label>Consumer Electronics Show (CES)</label>
+                </value>
+                <value>
+                    <fullName>Executive Business Review</fullName>
+                    <default>false</default>
+                    <label>Executive Business Review</label>
+                </value>
+                <value>
+                    <fullName>Intel 360 (Keynotes/Showcase/ISMC)</fullName>
+                    <default>false</default>
+                    <label>Intel 360</label>
+                </value>
+                <value>
+                    <fullName>Intel Extreme Masters (IEM)</fullName>
+                    <default>false</default>
+                    <label>Intel Extreme Masters (IEM)</label>
+                </value>
+                <value>
+                    <fullName>International Science &amp; Engineering Fair (ISEF)</fullName>
+                    <default>false</default>
+                    <label>International Science &amp; Engineering Fair (ISEF)</label>
+                </value>
+                <value>
+                    <fullName>Mobile World Congress (MWC)</fullName>
+                    <default>false</default>
+                    <label>Mobile World Congress (MWC)</label>
+                </value>
+                <value>
+                    <fullName>National Retail Federation (NRF)</fullName>
+                    <default>false</default>
+                    <label>National Retail Federation (NRF)</label>
+                </value>
+                <value>
+                    <fullName>Other (describe in Other Event Field)</fullName>
+                    <default>false</default>
+                    <label>Other (describe in Other Event Field)</label>
+                </value>
+                <value>
+                    <fullName>Partner Connect</fullName>
+                    <default>false</default>
+                    <label>Partner Connect</label>
+                </value>
+                <value>
+                    <fullName>Retail Executive Conference (REC)</fullName>
+                    <default>false</default>
+                    <label>Retail Executive Conference (REC)</label>
+                </value>
+                <value>
+                    <fullName>Supercomputing</fullName>
+                    <default>false</default>
+                    <label>Supercomputing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Brief_Grid_PPT__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;https://composer.congamerge.com&quot; 
++ &quot;?SessionId=&quot; + $Api.Session_ID 
++ &quot;&amp;ServerUrl=&quot; + $Api.Partner_Server_URL_290 
++ &quot;&amp;Id=&quot; + Id 
++ &quot;&amp;QueryId=[Attendees]a0ho0000001kgmL?pv0=&quot; + Id 
++ &quot;&amp;QueryId=[Agenda]a0ho0000001kgmQ?pv0=&quot; + Id 
++ &quot;&amp;QueryId=[Objectives]a0ho0000001kgmV?pv0=&quot; + Id 
++ &quot;&amp;TemplateId=a0io0000004Dc4Q&quot; 
+
++ &quot;&amp;OFN= Account Brief for &quot; + SUBSTITUTE(Account__r.Name, &quot;&amp;&quot;, &quot;{~~~}&quot; ) + &quot;-&quot; + &quot; published for &quot; + 
+
+CASE( MONTH(TODAY()) , 
+1, &quot;Jan&quot;, 
+2, &quot;Feb&quot;, 
+3, &quot;Mar&quot;, 
+4, &quot;Apr&quot;, 
+5, &quot;May&quot;, 
+6, &quot;Jun&quot;, 
+7, &quot;Jul&quot;, 
+8, &quot;Aug&quot;, 
+9, &quot;Sep&quot;, 
+10, &quot;Oct&quot;, 
+11, &quot;Nov&quot;, 
+12, &quot;Dec&quot;, 
+&quot;None&quot;) 
+
++ text(DAY(TODAY()))+ &quot;,&quot; + text(YEAR(TODAY())) 
++ &quot;&amp;SC0=1&quot; 
++ &quot;&amp;SC1=Attachments&quot; 
++ &quot;&amp;DS7=13&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Brief Grid PPT</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Brief_Word_GridAction__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;https://composer.congamerge.com&quot; 
++ &quot;?SessionId=&quot; + $Api.Session_ID 
++ &quot;&amp;ServerUrl=&quot; + $Api.Partner_Server_URL_290 
++ &quot;&amp;Id=&quot; + Id 
++ &quot;&amp;QueryId=[Attendees]a0ho0000001kgmL?pv0=&quot; + Id 
++ &quot;&amp;QueryId=[Agenda]a0ho0000001kgmQ?pv0=&quot; + Id 
++ &quot;&amp;QueryId=[Objectives]a0ho0000001kgmV?pv0=&quot; + Id 
++ &quot;&amp;TemplateId=a0io0000004DbxQ&quot; 
+
++ &quot;&amp;OFN= Account Brief for &quot; + SUBSTITUTE(Account__r.Name, &quot;&amp;&quot;, &quot;{~~~}&quot; ) + &quot;-&quot; + &quot; published for &quot; + 
+
+CASE( MONTH(TODAY()) , 
+1, &quot;Jan&quot;, 
+2, &quot;Feb&quot;, 
+3, &quot;Mar&quot;, 
+4, &quot;Apr&quot;, 
+5, &quot;May&quot;, 
+6, &quot;Jun&quot;, 
+7, &quot;Jul&quot;, 
+8, &quot;Aug&quot;, 
+9, &quot;Sep&quot;, 
+10, &quot;Oct&quot;, 
+11, &quot;Nov&quot;, 
+12, &quot;Dec&quot;, 
+&quot;None&quot;) 
+
++ text(DAY(TODAY()))+ &quot;,&quot; + text(YEAR(TODAY())) 
++ &quot;&amp;SC0=1&quot; 
++ &quot;&amp;SC1=Attachments&quot; 
++ &quot;&amp;DS7=13&quot;</formula>
+        <label>Account Brief Grid Word</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Background_Meeting__c</fullName>
+        <description>Brief Account Background  &amp; Recent meeting history</description>
+        <inlineHelpText>Recent history of customer’s business  in relation to the meeting (e.g. cultural points, initiatives, info and products).</inlineHelpText>
+        <label>Background &amp; Recent Meeting History</label>
+        <length>2000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Business_Summary__c</fullName>
+        <description>Intel Business Summary (revenue, design win $ or MSS, CPU net ASP, CPU Vol [KU] etc.)</description>
+        <inlineHelpText>Intel Business Summary (revenue, design win $ or MSS, CPU net ASP, CPU Vol [KU] etc.)</inlineHelpText>
+        <label>Intel Business Summary</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Customer_Contact__c</fullName>
+        <description>Customer contact for the account meeting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer contact for the account meeting</inlineHelpText>
+        <label>Main Customer Contact</label>
+        <length>100</length>
+        <required>true</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Date__c</fullName>
+        <description>When the account meeting happened</description>
+        <inlineHelpText>The date of the event</inlineHelpText>
+        <label>Meeting Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Dress__c</fullName>
+        <description>Dress Type for the account meeting</description>
+        <inlineHelpText>Suggested dress code for the event</inlineHelpText>
+        <label>Dress Code</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business Attire</fullName>
+                    <default>false</default>
+                    <label>Business Attire</label>
+                </value>
+                <value>
+                    <fullName>Business Casual</fullName>
+                    <default>false</default>
+                    <label>Business Casual</label>
+                </value>
+                <value>
+                    <fullName>Other attire ( include details in &apos;Other Event&apos; field)</fullName>
+                    <default>false</default>
+                    <label>Other attire ( include details in &apos;Other Event&apos; field)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_End_Time__c</fullName>
+        <description>When is the meeting ending</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The end time of the event</inlineHelpText>
+        <label>End Time</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Exec_Summary__c</fullName>
+        <description>High-level overview of current engagement, what’s happening, what we are going to focus on etc.)</description>
+        <inlineHelpText>High-level overview of current engagement (e.g what&apos;s happening, what we are going to focus on)</inlineHelpText>
+        <label>Executive Summary</label>
+        <length>2000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Hot_Button_Issue_1__c</fullName>
+        <description>Customer Hot Button Issue 1</description>
+        <inlineHelpText>Customer Hot Button Issue 1</inlineHelpText>
+        <label>Hot Button Issue 1</label>
+        <length>2000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Hot_Button_Issue_2__c</fullName>
+        <description>Customer Hot Button Issue 2</description>
+        <inlineHelpText>Customer Hot Button Issue 2</inlineHelpText>
+        <label>Hot Button Issue 2</label>
+        <length>2000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Hot_Button_Issue_3__c</fullName>
+        <description>Customer Hot Button Issue 3</description>
+        <inlineHelpText>Customer Hot Button Issue 3</inlineHelpText>
+        <label>Hot Button Issue 3</label>
+        <length>2000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Intel_Contact__c</fullName>
+        <description>Intel contact for the account brief meeting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The main Intel employee that is chairing/organzing the meeting.</inlineHelpText>
+        <label>Intel Main Contact/Meeting Chair</label>
+        <length>100</length>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Language__c</fullName>
+        <description>Language the meeting will be held for the meeting</description>
+        <inlineHelpText>Select the primary language that will be used during the event</inlineHelpText>
+        <label>Language</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>true</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+                <value>
+                    <fullName>Korean</fullName>
+                    <default>false</default>
+                    <label>Korean</label>
+                </value>
+                <value>
+                    <fullName>Spanish</fullName>
+                    <default>false</default>
+                    <label>Spanish</label>
+                </value>
+                <value>
+                    <fullName>French</fullName>
+                    <default>false</default>
+                    <label>French</label>
+                </value>
+                <value>
+                    <fullName>Italian</fullName>
+                    <default>false</default>
+                    <label>Italian</label>
+                </value>
+                <value>
+                    <fullName>German</fullName>
+                    <default>false</default>
+                    <label>German</label>
+                </value>
+                <value>
+                    <fullName>Russian</fullName>
+                    <default>false</default>
+                    <label>Russian</label>
+                </value>
+                <value>
+                    <fullName>Portuguese</fullName>
+                    <default>false</default>
+                    <label>Portuguese</label>
+                </value>
+                <value>
+                    <fullName>Vietnamese</fullName>
+                    <default>false</default>
+                    <label>Vietnamese</label>
+                </value>
+                <value>
+                    <fullName>Chinese Simplified</fullName>
+                    <default>false</default>
+                    <label>Chinese Simplified</label>
+                </value>
+                <value>
+                    <fullName>Chinese Traditional</fullName>
+                    <default>false</default>
+                    <label>Chinese Traditional</label>
+                </value>
+                <value>
+                    <fullName>English (Canada)</fullName>
+                    <default>false</default>
+                    <label>English (Canada)</label>
+                </value>
+                <value>
+                    <fullName>English (Great Britain)</fullName>
+                    <default>false</default>
+                    <label>English (Great Britain)</label>
+                </value>
+                <value>
+                    <fullName>English (Ireland)</fullName>
+                    <default>false</default>
+                    <label>English (Ireland)</label>
+                </value>
+                <value>
+                    <fullName>French (Canada)</fullName>
+                    <default>false</default>
+                    <label>French (Canada)</label>
+                </value>
+                <value>
+                    <fullName>Spanish (LAR)</fullName>
+                    <default>false</default>
+                    <label>Spanish (LAR)</label>
+                </value>
+                <value>
+                    <fullName>Spanish (Spain)</fullName>
+                    <default>false</default>
+                    <label>Spanish (Spain)</label>
+                </value>
+                <value>
+                    <fullName>Hebrew</fullName>
+                    <default>false</default>
+                    <label>Hebrew</label>
+                </value>
+                <value>
+                    <fullName>Indonesian</fullName>
+                    <default>false</default>
+                    <label>Indonesian</label>
+                </value>
+                <value>
+                    <fullName>Polish</fullName>
+                    <default>false</default>
+                    <label>Polish</label>
+                </value>
+                <value>
+                    <fullName>Thai</fullName>
+                    <default>false</default>
+                    <label>Thai</label>
+                </value>
+                <value>
+                    <fullName>Turkish</fullName>
+                    <default>false</default>
+                    <label>Turkish</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Location__c</fullName>
+        <description>Location of the Meeting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide as much detail as necessary to find the location:  e.g. Address, City, State/Province Postal Code, Country and/or building/conference room number.</inlineHelpText>
+        <label>Location</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Response_1__c</fullName>
+        <label>Hot Button Issue Response 1</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Response_2__c</fullName>
+        <label>Hot Button Issue Response 2</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Response_3__c</fullName>
+        <label>Hot Button Issue Response 3</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Time__c</fullName>
+        <description>When is the meeting happening</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The start time of the event</inlineHelpText>
+        <label>Start Time</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Meeting_Tone__c</fullName>
+        <description>Tone for the Account meeting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tone of the meeting (e.g. bridge building, hostile, friendly, exploratory, etc.)</inlineHelpText>
+        <label>Tone</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Existing_Opportunity_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Allows user to link to existing opportunities</description>
+        <inlineHelpText>Allows user to link to existing opportunities</inlineHelpText>
+        <label>Opportunity 1</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Account Meeting Briefs</relationshipLabel>
+        <relationshipName>Account_Meeting_Briefs</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Existing_Opportunity_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity 2</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Account Meeting Briefs (Existing Opportunity 2)</relationshipLabel>
+        <relationshipName>Account_Meeting_Briefs_2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Existing_Opportunity_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity 3</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Account Meeting Briefs (Existing Opportunity 3)</relationshipLabel>
+        <relationshipName>Account_Meeting_Briefs3</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Existing_Opportunity_Note_1__c</fullName>
+        <description>Used for notes on the opportunity</description>
+        <inlineHelpText>Used for notes on the opportunity</inlineHelpText>
+        <label>Opportunity 1 - Notes</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Existing_Opportunity_Note_2__c</fullName>
+        <description>Notes for existing opportunity</description>
+        <inlineHelpText>Notes for existing opportunity</inlineHelpText>
+        <label>Opportunity 2 - Notes</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Existing_Opportunity_Note_3__c</fullName>
+        <description>Notes for existing opportunities</description>
+        <inlineHelpText>Notes for existing opportunities</inlineHelpText>
+        <label>Opportunity 3 - Notes</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Brief_Geo__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Account__r.Core_Geo__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Executive_Brief_Title__c</fullName>
+        <description>Title of the Account Executive Brief</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An identifiable and unique name containing the date of the meeting and the account name. Do not include confidential information.</inlineHelpText>
+        <label>Account Meeting Brief Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Executive_Name__c</fullName>
+        <label>Executive Name</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alex Grbic</fullName>
+                    <default>false</default>
+                    <label>Alex Grbic</label>
+                </value>
+                <value>
+                    <fullName>Amir Faintuch</fullName>
+                    <default>false</default>
+                    <label>Amir Faintuch</label>
+                </value>
+                <value>
+                    <fullName>Ann B. Kelleher</fullName>
+                    <default>false</default>
+                    <label>Ann B. Kelleher</label>
+                </value>
+                <value>
+                    <fullName>Brian Krzanich</fullName>
+                    <default>false</default>
+                    <label>Brian Krzanich</label>
+                </value>
+                <value>
+                    <fullName>Christian Morales</fullName>
+                    <default>false</default>
+                    <label>Christian Morales</label>
+                </value>
+                <value>
+                    <fullName>Christin Eisenschmid</fullName>
+                    <default>false</default>
+                    <label>Christin Eisenschmid</label>
+                </value>
+                <value>
+                    <fullName>CJ Bruno</fullName>
+                    <default>false</default>
+                    <label>CJ Bruno</label>
+                </value>
+                <value>
+                    <fullName>Dan McNamara</fullName>
+                    <default>false</default>
+                    <label>Dan McNamara</label>
+                </value>
+                <value>
+                    <fullName>Diane Bryant</fullName>
+                    <default>false</default>
+                    <label>Diane Bryant</label>
+                </value>
+                <value>
+                    <fullName>Doug Davis</fullName>
+                    <default>false</default>
+                    <label>Doug Davis</label>
+                </value>
+                <value>
+                    <fullName>Doug Fisher</fullName>
+                    <default>false</default>
+                    <label>Doug Fisher</label>
+                </value>
+                <value>
+                    <fullName>Erhaan Shaikh</fullName>
+                    <default>false</default>
+                    <label>Erhaan Shaikh</label>
+                </value>
+                <value>
+                    <fullName>Frank Jones</fullName>
+                    <default>false</default>
+                    <label>Frank Jones</label>
+                </value>
+                <value>
+                    <fullName>Greg Baur</fullName>
+                    <default>false</default>
+                    <label>Greg Baur</label>
+                </value>
+                <value>
+                    <fullName>Gregory M. Bryant</fullName>
+                    <default>false</default>
+                    <label>Gregory M. Bryant</label>
+                </value>
+                <value>
+                    <fullName>Greg Pearson</fullName>
+                    <default>true</default>
+                    <label>Greg Pearson</label>
+                </value>
+                <value>
+                    <fullName>Jason Grebe</fullName>
+                    <default>false</default>
+                    <label>Jason Grebe</label>
+                </value>
+                <value>
+                    <fullName>Jeff McCrea</fullName>
+                    <default>false</default>
+                    <label>Jeff McCrea</label>
+                </value>
+                <value>
+                    <fullName>Jeff Tripaldi</fullName>
+                    <default>false</default>
+                    <label>Jeff Tripaldi</label>
+                </value>
+                <value>
+                    <fullName>John Sakamoto</fullName>
+                    <default>false</default>
+                    <label>John Sakamoto</label>
+                </value>
+                <value>
+                    <fullName>John Vossoughi</fullName>
+                    <default>false</default>
+                    <label>John Vossoughi</label>
+                </value>
+                <value>
+                    <fullName>Jonathan Ballon</fullName>
+                    <default>false</default>
+                    <label>Jonathan Ballon</label>
+                </value>
+                <value>
+                    <fullName>Josh M. Walden</fullName>
+                    <default>false</default>
+                    <label>Josh M. Walden</label>
+                </value>
+                <value>
+                    <fullName>Mark Nelson</fullName>
+                    <default>false</default>
+                    <label>Mark Nelson</label>
+                </value>
+                <value>
+                    <fullName>Maurits Tichelman</fullName>
+                    <default>false</default>
+                    <label>Maurits Tichelman</label>
+                </value>
+                <value>
+                    <fullName>Michelle Johnston</fullName>
+                    <default>false</default>
+                    <label>Michelle Johnston</label>
+                </value>
+                <value>
+                    <fullName>Naveen G. Rao</fullName>
+                    <default>false</default>
+                    <label>Naveen G. Rao</label>
+                </value>
+                <value>
+                    <fullName>Navin Shenoy</fullName>
+                    <default>false</default>
+                    <label>Navin Shenoy</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Ravishankar Kuppuswamy</fullName>
+                    <default>false</default>
+                    <label>Ravishankar Kuppuswamy</label>
+                </value>
+                <value>
+                    <fullName>Rebecca Brown</fullName>
+                    <default>false</default>
+                    <label>Rebecca Brown</label>
+                </value>
+                <value>
+                    <fullName>Robby Swinnen</fullName>
+                    <default>false</default>
+                    <label>Robby Swinnen</label>
+                </value>
+                <value>
+                    <fullName>Rob Crooke</fullName>
+                    <default>false</default>
+                    <label>Rob Crooke</label>
+                </value>
+                <value>
+                    <fullName>Rose Schooler</fullName>
+                    <default>false</default>
+                    <label>Rose Schooler</label>
+                </value>
+                <value>
+                    <fullName>Rupal Shah</fullName>
+                    <default>false</default>
+                    <label>Rupal Shah</label>
+                </value>
+                <value>
+                    <fullName>Sandra Rivera</fullName>
+                    <default>false</default>
+                    <label>Sandra Rivera</label>
+                </value>
+                <value>
+                    <fullName>Shannon Poulin</fullName>
+                    <default>false</default>
+                    <label>Shannon Poulin</label>
+                </value>
+                <value>
+                    <fullName>Sohail U. Ahmed</fullName>
+                    <default>false</default>
+                    <label>Sohail U. Ahmed</label>
+                </value>
+                <value>
+                    <fullName>Stacy J. Smith</fullName>
+                    <default>false</default>
+                    <label>Stacy J. Smith</label>
+                </value>
+                <value>
+                    <fullName>Steven A. Long</fullName>
+                    <default>false</default>
+                    <label>Steven A. Long</label>
+                </value>
+                <value>
+                    <fullName>Steven L. Fund</fullName>
+                    <default>false</default>
+                    <label>Steven L. Fund</label>
+                </value>
+                <value>
+                    <fullName>Thomas P. Lantzsch</fullName>
+                    <default>false</default>
+                    <label>Thomas P. Lantzsch</label>
+                </value>
+                <value>
+                    <fullName>Venkata Murthy Renduchintala</fullName>
+                    <default>false</default>
+                    <label>Venkata Murthy Renduchintala</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Executive_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Executive - Other</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Intel_Contact_Mobile_Number__c</fullName>
+        <description>Intel Contact Mobile Phone number</description>
+        <inlineHelpText>Number of Intel Main Contact</inlineHelpText>
+        <label>Intel Main Contact Mobile Number</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Core_New_Opportunities_Notes__c</fullName>
+        <description>Allows users to capture new opportunities in a free form text</description>
+        <inlineHelpText>Capture new opportunities in a free form text</inlineHelpText>
+        <label>New Opportunities (Notes)</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_Time_Zone__c</fullName>
+        <inlineHelpText>Select the time zone for this event</inlineHelpText>
+        <label>Time Zone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>(GMT-12:00) Dateline</fullName>
+                    <default>false</default>
+                    <label>(GMT-12:00) Dateline</label>
+                </value>
+                <value>
+                    <fullName>(GMT-11:00) Samoa</fullName>
+                    <default>false</default>
+                    <label>(GMT-11:00) Samoa</label>
+                </value>
+                <value>
+                    <fullName>(GMT-10:00) Hawaii</fullName>
+                    <default>false</default>
+                    <label>(GMT-10:00) Hawaii</label>
+                </value>
+                <value>
+                    <fullName>(GMT-09:00) Alaska</fullName>
+                    <default>false</default>
+                    <label>(GMT-09:00) Alaska</label>
+                </value>
+                <value>
+                    <fullName>(GMT-08:00) Pacific [US &amp; Canada]</fullName>
+                    <default>false</default>
+                    <label>(GMT-08:00) Pacific [US &amp; Canada]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-07:00) Mountain [US &amp; Canada]</fullName>
+                    <default>false</default>
+                    <label>(GMT-07:00) Mountain [US &amp; Canada]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-07:00) Mountain [Mexico]</fullName>
+                    <default>false</default>
+                    <label>(GMT-07:00) Mountain [Mexico]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-07:00) Arizona</fullName>
+                    <default>false</default>
+                    <label>(GMT-07:00) Arizona</label>
+                </value>
+                <value>
+                    <fullName>(GMT-06:00) Central [US &amp; Canada]</fullName>
+                    <default>false</default>
+                    <label>(GMT-06:00) Central [US &amp; Canada]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-06:00) Saskatchewan</fullName>
+                    <default>false</default>
+                    <label>(GMT-06:00) Saskatchewan</label>
+                </value>
+                <value>
+                    <fullName>(GMT-06:00) Mexico</fullName>
+                    <default>false</default>
+                    <label>(GMT-06:00) Mexico</label>
+                </value>
+                <value>
+                    <fullName>(GMT-06:00) Central America</fullName>
+                    <default>false</default>
+                    <label>(GMT-06:00) Central America</label>
+                </value>
+                <value>
+                    <fullName>(GMT-05:00) Eastern [US &amp; Canada]</fullName>
+                    <default>false</default>
+                    <label>(GMT-05:00) Eastern [US &amp; Canada]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-05:00) Indiana [East]</fullName>
+                    <default>false</default>
+                    <label>(GMT-05:00) Indiana [East]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-05:00) SA Pacific</fullName>
+                    <default>false</default>
+                    <label>(GMT-05:00) SA Pacific</label>
+                </value>
+                <value>
+                    <fullName>(GMT-04:00) Venezuela</fullName>
+                    <default>false</default>
+                    <label>(GMT-04:00) Venezuela</label>
+                </value>
+                <value>
+                    <fullName>(GMT-04:00) Atlantic [Canada]</fullName>
+                    <default>false</default>
+                    <label>(GMT-04:00) Atlantic [Canada]</label>
+                </value>
+                <value>
+                    <fullName>(GMT-04:00) Western SA</fullName>
+                    <default>false</default>
+                    <label>(GMT-04:00) Western SA</label>
+                </value>
+                <value>
+                    <fullName>(GMT-04:00) Pacific SA</fullName>
+                    <default>false</default>
+                    <label>(GMT-04:00) Pacific SA</label>
+                </value>
+                <value>
+                    <fullName>(GMT-03:30) Newfoundland</fullName>
+                    <default>false</default>
+                    <label>(GMT-03:30) Newfoundland</label>
+                </value>
+                <value>
+                    <fullName>(GMT-03:00) Brasilia</fullName>
+                    <default>false</default>
+                    <label>(GMT-03:00) Brasilia</label>
+                </value>
+                <value>
+                    <fullName>(GMT-03:00) Eastern SA</fullName>
+                    <default>false</default>
+                    <label>(GMT-03:00) Eastern SA</label>
+                </value>
+                <value>
+                    <fullName>(GMT-03:00) Greenland</fullName>
+                    <default>false</default>
+                    <label>(GMT-03:00) Greenland</label>
+                </value>
+                <value>
+                    <fullName>(GMT-02:00) Mid-Atlantic</fullName>
+                    <default>false</default>
+                    <label>(GMT-02:00) Mid-Atlantic</label>
+                </value>
+                <value>
+                    <fullName>(GMT-01:00) Azores</fullName>
+                    <default>false</default>
+                    <label>(GMT-01:00) Azores</label>
+                </value>
+                <value>
+                    <fullName>(GMT-01:00) Cape Verde</fullName>
+                    <default>false</default>
+                    <label>(GMT-01:00) Cape Verde</label>
+                </value>
+                <value>
+                    <fullName>(GMT) GMT</fullName>
+                    <default>false</default>
+                    <label>(GMT) GMT</label>
+                </value>
+                <value>
+                    <fullName>(GMT+01:00) Greenwich (London)</fullName>
+                    <default>false</default>
+                    <label>(GMT+01:00) Greenwich (London)</label>
+                </value>
+                <value>
+                    <fullName>(GMT+01:00) Europe Central</fullName>
+                    <default>false</default>
+                    <label>(GMT+01:00) Europe Central</label>
+                </value>
+                <value>
+                    <fullName>(GMT+01:00) Romance</fullName>
+                    <default>false</default>
+                    <label>(GMT+01:00) Romance</label>
+                </value>
+                <value>
+                    <fullName>(GMT+01:00) Europe Western</fullName>
+                    <default>false</default>
+                    <label>(GMT+01:00) Europe Western</label>
+                </value>
+                <value>
+                    <fullName>(GMT+01:00) Africa West Central</fullName>
+                    <default>false</default>
+                    <label>(GMT+01:00) Africa West Central</label>
+                </value>
+                <value>
+                    <fullName>(GMT+02:00) Europe Eastern</fullName>
+                    <default>false</default>
+                    <label>(GMT+02:00) Europe Eastern</label>
+                </value>
+                <value>
+                    <fullName>(GMT+02:00) Egypt</fullName>
+                    <default>false</default>
+                    <label>(GMT+02:00) Egypt</label>
+                </value>
+                <value>
+                    <fullName>(GMT+02:00) FLE</fullName>
+                    <default>false</default>
+                    <label>(GMT+02:00) FLE</label>
+                </value>
+                <value>
+                    <fullName>(GMT+02:00) GTB</fullName>
+                    <default>false</default>
+                    <label>(GMT+02:00) GTB</label>
+                </value>
+                <value>
+                    <fullName>(GMT+02:00) Israel</fullName>
+                    <default>false</default>
+                    <label>(GMT+02:00) Israel</label>
+                </value>
+                <value>
+                    <fullName>(GMT+02:00) Africa South</fullName>
+                    <default>false</default>
+                    <label>(GMT+02:00) Africa South</label>
+                </value>
+                <value>
+                    <fullName>(GMT+03:00) Russian</fullName>
+                    <default>false</default>
+                    <label>(GMT+03:00) Russian</label>
+                </value>
+                <value>
+                    <fullName>(GMT+03:00) Arab</fullName>
+                    <default>false</default>
+                    <label>(GMT+03:00) Arab</label>
+                </value>
+                <value>
+                    <fullName>(GMT+03:00) Africa Eastern</fullName>
+                    <default>false</default>
+                    <label>(GMT+03:00) Africa Eastern</label>
+                </value>
+                <value>
+                    <fullName>(GMT+03:00) Arabic</fullName>
+                    <default>false</default>
+                    <label>(GMT+03:00) Arabic</label>
+                </value>
+                <value>
+                    <fullName>(GMT+03:30) Iran</fullName>
+                    <default>false</default>
+                    <label>(GMT+03:30) Iran</label>
+                </value>
+                <value>
+                    <fullName>(GMT+04:00) Arabian</fullName>
+                    <default>false</default>
+                    <label>(GMT+04:00) Arabian</label>
+                </value>
+                <value>
+                    <fullName>(GMT+04:00) Caucasus</fullName>
+                    <default>false</default>
+                    <label>(GMT+04:00) Caucasus</label>
+                </value>
+                <value>
+                    <fullName>(GMT+04:30) Afghanistan</fullName>
+                    <default>false</default>
+                    <label>(GMT+04:30) Afghanistan</label>
+                </value>
+                <value>
+                    <fullName>(GMT+05:00) Ekaterinburg</fullName>
+                    <default>false</default>
+                    <label>(GMT+05:00) Ekaterinburg</label>
+                </value>
+                <value>
+                    <fullName>(GMT+05:00) Asia Western</fullName>
+                    <default>false</default>
+                    <label>(GMT+05:00) Asia Western</label>
+                </value>
+                <value>
+                    <fullName>(GMT+05:30) India</fullName>
+                    <default>false</default>
+                    <label>(GMT+05:30) India</label>
+                </value>
+                <value>
+                    <fullName>(GMT+05:45) Nepal</fullName>
+                    <default>false</default>
+                    <label>(GMT+05:45) Nepal</label>
+                </value>
+                <value>
+                    <fullName>(GMT+06:00) Asia Central</fullName>
+                    <default>false</default>
+                    <label>(GMT+06:00) Asia Central</label>
+                </value>
+                <value>
+                    <fullName>(GMT+05:30) Sri Lanka</fullName>
+                    <default>false</default>
+                    <label>(GMT+05:30) Sri Lanka</label>
+                </value>
+                <value>
+                    <fullName>(GMT+06:00) Asia North Central</fullName>
+                    <default>false</default>
+                    <label>(GMT+06:00) Asia North Central</label>
+                </value>
+                <value>
+                    <fullName>(GMT+06:30) Myanmar</fullName>
+                    <default>false</default>
+                    <label>(GMT+06:30) Myanmar</label>
+                </value>
+                <value>
+                    <fullName>(GMT+07:00) Asia South East</fullName>
+                    <default>false</default>
+                    <label>(GMT+07:00) Asia South East</label>
+                </value>
+                <value>
+                    <fullName>(GMT+07:00) Asia North</fullName>
+                    <default>false</default>
+                    <label>(GMT+07:00) Asia North</label>
+                </value>
+                <value>
+                    <fullName>(GMT+08:00) China</fullName>
+                    <default>false</default>
+                    <label>(GMT+08:00) China</label>
+                </value>
+                <value>
+                    <fullName>(GMT+08:00) Malay Peninsula</fullName>
+                    <default>false</default>
+                    <label>(GMT+08:00) Malay Peninsula</label>
+                </value>
+                <value>
+                    <fullName>(GMT+08:00) Taipei</fullName>
+                    <default>false</default>
+                    <label>(GMT+08:00) Taipei</label>
+                </value>
+                <value>
+                    <fullName>(GMT+08:00) AUS Western</fullName>
+                    <default>false</default>
+                    <label>(GMT+08:00) AUS Western</label>
+                </value>
+                <value>
+                    <fullName>(GMT+08:00) Asia North East</fullName>
+                    <default>false</default>
+                    <label>(GMT+08:00) Asia North East</label>
+                </value>
+                <value>
+                    <fullName>(GMT+09:00) Korea</fullName>
+                    <default>false</default>
+                    <label>(GMT+09:00) Korea</label>
+                </value>
+                <value>
+                    <fullName>(GMT+09:00) Tokyo</fullName>
+                    <default>false</default>
+                    <label>(GMT+09:00) Tokyo</label>
+                </value>
+                <value>
+                    <fullName>(GMT+09:00) Yakutsk</fullName>
+                    <default>false</default>
+                    <label>(GMT+09:00) Yakutsk</label>
+                </value>
+                <value>
+                    <fullName>(GMT+09:30) AUS Central [Darwin]</fullName>
+                    <default>false</default>
+                    <label>(GMT+09:30) AUS Central [Darwin]</label>
+                </value>
+                <value>
+                    <fullName>(GMT+09:30) AUS Central [Adelaide]</fullName>
+                    <default>false</default>
+                    <label>(GMT+09:30) AUS Central [Adelaide]</label>
+                </value>
+                <value>
+                    <fullName>(GMT+10:00) AUS Eastern [Brisbane]</fullName>
+                    <default>false</default>
+                    <label>(GMT+10:00) AUS Eastern [Brisbane]</label>
+                </value>
+                <value>
+                    <fullName>(GMT+10:00) AUS Eastern [Sydney]</fullName>
+                    <default>false</default>
+                    <label>(GMT+10:00) AUS Eastern [Sydney]</label>
+                </value>
+                <value>
+                    <fullName>(GMT+10:00) Tasmania</fullName>
+                    <default>false</default>
+                    <label>(GMT+10:00) Tasmania</label>
+                </value>
+                <value>
+                    <fullName>(GMT+10:00) Vladivostok</fullName>
+                    <default>false</default>
+                    <label>(GMT+10:00) Vladivostok</label>
+                </value>
+                <value>
+                    <fullName>(GMT+10:00) West Pacific</fullName>
+                    <default>false</default>
+                    <label>(GMT+10:00) West Pacific</label>
+                </value>
+                <value>
+                    <fullName>(GMT+11:00) Central Pacific</fullName>
+                    <default>false</default>
+                    <label>(GMT+11:00) Central Pacific</label>
+                </value>
+                <value>
+                    <fullName>(GMT+12:00) Fiji</fullName>
+                    <default>false</default>
+                    <label>(GMT+12:00) Fiji</label>
+                </value>
+                <value>
+                    <fullName>(GMT+12:00) New Zealand</fullName>
+                    <default>false</default>
+                    <label>(GMT+12:00) New Zealand</label>
+                </value>
+                <value>
+                    <fullName>(GMT+13:00) Tonga</fullName>
+                    <default>false</default>
+                    <label>(GMT+13:00) Tonga</label>
+                </value>
+                <value>
+                    <fullName>Coordinated Universal Time (UTC)</fullName>
+                    <default>false</default>
+                    <label>Coordinated Universal Time (UTC)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_Overview__c</fullName>
+        <description>Brief company description, revenue, key partners, latest news, press releases etc.)</description>
+        <inlineHelpText>Brief company description (e.g.  revenue, key partners, latest news, press releases)</inlineHelpText>
+        <label>Customer Overview</label>
+        <length>2000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity1_Risk_Created_Date__c</fullName>
+        <formula>Core_Brief_Existing_Opportunity_1__r.Core_At_Risk_Created_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity1 Risk Created Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_1_Risk_Reason__c</fullName>
+        <description>US71113 - Update Account Briefs with At Risk Info</description>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Application Enablement/Software Tuning&quot;), &quot;Application Enablement/Software Tuning&quot; + BR(), NULL) +
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Competition&quot;), &quot;Competition&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Legal&quot;), &quot;Legal&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;MAG Account Escalation&quot;), &quot;MAG Account Escalation&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Other&quot;), &quot;Other&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Pricing&quot;), &quot;Pricing&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Product Mod/Special SKU&quot;), &quot;Product Mod/Special SKU&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Supply&quot;), &quot;Supply&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Supply with adjacency impact&quot;), &quot;Supply with adjacency impact&quot; + BR(), NULL)    + 
+
+IF(INCLUDES( Core_Brief_Existing_Opportunity_1__r.Core_Risk_Reason__c , &quot;Technical Expertise&quot;), &quot;Technical Expertise&quot; + BR(), NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This is the Risk Reason for the Selected Opportunity</inlineHelpText>
+        <label>Opportunity 1 Risk Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_1_Support_Completed__c</fullName>
+        <formula>Core_Brief_Existing_Opportunity_1__r.Core_Support_Completed__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 1 Support Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_1_Support_Requested__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Brief_Existing_Opportunity_1__r.Core_Support_Requested__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 1 Support Requested</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_2_Risk_Created_Date__c</fullName>
+        <formula>Core_Brief_Existing_Opportunity_2__r.Core_At_Risk_Created_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 2 Risk Created Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_2_Risk_Reason__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Application Enablement/Software Tuning&quot;), &quot;Application Enablement/Software Tuning&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Competition&quot;), &quot;Competition&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Legal&quot;), &quot;Legal&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;MAG Account Escalation&quot;), &quot;MAG Account Escalation&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Other&quot;), &quot;Other&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Pricing&quot;), &quot;Pricing&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Product Mod/Special SKU&quot;), &quot;Product Mod/Special SKU&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Supply&quot;), &quot;Supply&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Supply with adjacency impact&quot;), &quot;Supply with adjacency impact&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_2__r.Core_Risk_Reason__c  , &quot;Technical Expertise&quot;), &quot;Technical Expertise&quot; + BR(), NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 2 Risk Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_2_Support_Completed__c</fullName>
+        <formula>Core_Brief_Existing_Opportunity_2__r.Core_Support_Completed__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 2 Support Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_2_Support_Requested__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Brief_Existing_Opportunity_2__r.Core_Support_Requested__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 2 Support Requested</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_3_Risk_Created_Date__c</fullName>
+        <formula>Core_Brief_Existing_Opportunity_3__r.Core_At_Risk_Created_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 3 Risk Created Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_3_Risk_Reason__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Application Enablement/Software Tuning&quot;), &quot;Application Enablement/Software Tuning&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Competition&quot;), &quot;Competition&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Legal&quot;), &quot;Legal&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;MAG Account Escalation&quot;), &quot;MAG Account Escalation&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Other&quot;), &quot;Other&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Pricing&quot;), &quot;Pricing&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Product Mod/Special SKU&quot;), &quot;Product Mod/Special SKU&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Supply&quot;), &quot;Supply&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Supply with adjacency impact&quot;), &quot;Supply with adjacency impact&quot; + BR(), NULL) + 
+
+IF(INCLUDES(  Core_Brief_Existing_Opportunity_3__r.Core_Risk_Reason__c   , &quot;Technical Expertise&quot;), &quot;Technical Expertise&quot; + BR(), NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 3 Risk Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_3_Support_Completed__c</fullName>
+        <formula>Core_Brief_Existing_Opportunity_3__r.Core_Support_Completed__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 3 Support Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Opportunity_3_Support_Requested__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Brief_Existing_Opportunity_3__r.Core_Support_Requested__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity 3 Support Requested</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Event__c</fullName>
+        <description>US71113 - Update Account Briefs with At Risk Info</description>
+        <inlineHelpText>If you select &apos;Other&apos; for Event, please provide event details in this field, including dress code.</inlineHelpText>
+        <label>Other Event</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <label>Account Meeting Brief</label>
+    <nameField>
+        <displayFormat>AMB-{00000}</displayFormat>
+        <label>Account Meeting Brief ID</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Meeting Briefs</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Account_Meeting_Customer_Contact__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_Account_Meeting_Date__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_Account_Meeting_Customer_Contact__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_Account_Meeting_Customer_Contact__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Account_Meeting_Customer_Contact__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>Account_Team_Member__c</fullName>
+        <label>Account Team Member</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Check_Time_format</fullName>
+        <active>true</active>
+        <description>checks for time format</description>
+        <errorConditionFormula>NOT(
+   OR(
+     REGEX( Core_Account_Meeting_Time__c , &quot;[\\d]{1,2}:[0-5]{1}[0-9] [APap][mM]{1}&quot;)
+     ,
+     REGEX( Core_Account_Meeting_Time__c , &quot;[\\d]{1,2}:[0-5]{1}[0-9][APap][mM]{1}&quot;)
+     )
+)</errorConditionFormula>
+        <errorDisplayField>Core_Account_Meeting_Time__c</errorDisplayField>
+        <errorMessage>Time format need to be HH:MM AM/PM.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_if_event_is_empty</fullName>
+        <active>true</active>
+        <description>Checks to see if an event drop down is empty and tells user to fill in other location</description>
+        <errorConditionFormula>ISBLANK(TEXT(Core_Account_Brief_Event__c ))= TRUE</errorConditionFormula>
+        <errorDisplayField>Core_Account_Meeting_Location__c</errorDisplayField>
+        <errorMessage>Please fill in the location for this meeting.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Check_time</fullName>
+        <active>true</active>
+        <description>This is used to formate the end time in HH:MM AM/PM</description>
+        <errorConditionFormula>NOT(
+OR(
+REGEX( Core_Account_Meeting_End_Time__c, &quot;[\\d]{1,2}:[0-5]{1}[0-9] [APap][mM]{1}&quot;)
+,
+REGEX( Core_Account_Meeting_End_Time__c, &quot;[\\d]{1,2}:[0-5]{1}[0-9][APap][mM]{1}&quot;)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Core_Account_Meeting_End_Time__c</errorDisplayField>
+        <errorMessage>Time format need to be HH:MM AM/PM.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Prevent_Account_AMB</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND(
+Account__c != &apos;&apos;,
+Account__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;
+)
+)</errorConditionFormula>
+        <errorMessage>Only Intel Account is permitted on this field. Please select Intel Account and retry again.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_Lex_AccMeetingBrief_Share</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Sharing</masterLabel>
+        <openType>noSidebar</openType>
+        <page>Core_Lex_AccMeetingBrief_Share</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

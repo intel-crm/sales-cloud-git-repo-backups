@@ -1,0 +1,6 @@
+<template>
+    <!--If user has create access on account object, display the new button-->
+    <template if:true={hasCreateAccess}>
+        <lightning-button class="slds-float_right" label={customLabels.newButtonLabel} onclick={handleNewButonClick}></lightning-button>
+    </template>
+</template>

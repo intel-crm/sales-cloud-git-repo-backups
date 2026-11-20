@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+	<aura:attribute name="analyticsPageType" type="string" description="PageType for analytics" />
+    <c:MarketplaceAnalyticsLibrary aura:id="analyticsLibrary" />
+</aura:component>

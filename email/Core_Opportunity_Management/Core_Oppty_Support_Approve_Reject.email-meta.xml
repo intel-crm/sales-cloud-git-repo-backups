@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <available>true</available>
+    <description>When the Opportunity Request is Approved/Rejected notify the approvers</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_Oppty_Support_Approve_Reject</name>
+    <style>none</style>
+    <subject>Opportunity Support Request ():  -</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

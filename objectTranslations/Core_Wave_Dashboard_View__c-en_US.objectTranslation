@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Wave Dashboard View</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Wave Dashboard Views</value>
+    </caseValues>
+    <fields>
+        <label><!-- Dashboard Page --></label>
+        <name>Core_Dashboard_Page__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_User__c</name>
+        <relationshipLabel><!-- Wave Dashboard Views --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- View Date/Time --></label>
+        <name>Core_View_Date_Time__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

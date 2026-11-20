@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>EmailLog</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>EmailLogs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Email_Reminder --></label>
+        <name>Email_Reminder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Template ID --></label>
+        <name>Email_Template_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Template Name --></label>
+        <name>Email_Template_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Profile Information --></label>
+        <name>PMP_Company__c</name>
+        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Offering --></label>
+        <name>PMP_Partner_Offering__c</name>
+        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>PRM_Contact__c</name>
+        <relationshipLabel><!-- Partner Email Log --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- EmailContent --></label>
+        <name>PRM_EmailContent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Deliverability Status --></label>
+        <name>PRM_EmailDeliverabilityStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_EmailHTMLContent --></label>
+        <name>PRM_EmailHTMLContent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email API Response --></label>
+        <name>PRM_Email_API_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- EnterpriseId --></label>
+        <name>PRM_EnterpriseId__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Registration Request --></label>
+        <name>PRM_IPA_Registration_Request__c</name>
+        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- IsEmailPublished --></label>
+        <name>PRM_IsEmailPublished__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Deleted --></label>
+        <name>PRM_Is_Deleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Read --></label>
+        <name>PRM_Read__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>PRM_Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timestamp --></label>
+        <name>PRM_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- ToEmailIDCompleteValue --></label>
+        <name>PRM_ToEmailIDCompleteValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- ToEmailID --></label>
+        <name>PRM_ToEmailID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type__c</name>
+        <picklistValues>
+            <masterLabel>IPA</masterLabel>
+            <translation><!-- IPA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Updated By API --></label>
+        <name>PRM_Updated_By_API__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>PRM_User__c</name>
+        <relationshipLabel><!-- EmailLogs --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,140 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:layout" description="Marquee w/ full body content area"
+    access="global" controller="PMP_SearchMarketplaceController">
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="manageOfferingBar" type="Aura.Component[]" required="false"></aura:attribute>  -->
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab5" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade2" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="blade4" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="sidebar" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="ctabar" type="Aura.Component[]" required="false" />
+    <aura:attribute name="faq" type="Aura.Component[]" required="false" />
+    <aura:attribute name="faqWhite" type="Aura.Component[]" required="false" />
+    <aura:attribute name="compareTray" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="partnerList" type="Object[]"/>
+    <aura:attribute name="showSpinner" type="boolean" default = "false"/>
+    <!--Created by Megha as part of US528777-->
+    <aura:attribute name="showLeadTab" type="boolean" default="true"/>
+    <aura:attribute name="showTabs" type="boolean" default="false"/>
+    <!-- Created by Manjula as part of US528775/US602030-->
+    <aura:attribute name="showPartnerKeyMetricsTab" type="boolean" default="true"/>
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="showOfferingTab" type="boolean" default="true"/> -->
+    <aura:attribute name="showPartnerTab" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div>
+        <!-- IPA2.0 + US TWC4497-1631 -->
+        <!-- <div class="manageOfferingBar">
+            {!v.manageOfferingBar}
+        </div>         -->
+        <div class="marquee">
+            {!v.marquee}
+        </div>
+        <div class="container">
+            <div class="contentPanel">
+                {!v.main}
+            </div>
+        </div>
+        <div class="container">
+            <div class="{!join(' ', (v.state.currentScreenSize == 'mobile' ? '' : 'slds-p-around_medium'), 'bgWhite')}">
+                <form>
+                    <lightning:layout horizontalAlign="left" verticalAlign="start" >
+                        <lightning:layoutItem flexibility="auto" padding="around-medium">
+                        <!--    <div class="other-admin-font"> POC to fetch report based on selected Partner - please ignore while testing:
+                                <lightning:select label="Select Partner" aura:id="selectPartner" onchange="{!c.onPartnerSelection}">
+                                    <aura:if isTrue="{!v.showSpinner}">                                                  
+                                        <lightning:spinner class="mainSpinner" alternativeText="Loading..."/>                                                   
+                                    </aura:if> 
+                                    	<option value="Admin">Admin</option>
+                                    <aura:iteration items="{!v.partnerList}" var="partner">
+                                        <option value="{!partner.value}">{!partner.label}</option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>	-->
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </form>
+            </div>
+           	 <aura:if isTrue="{!v.showTabs}">
+             <c:MarketplaceTabset aura:id="isgtabs" class="lightestGrayBg slds-m-vertical_xx-large">
+           
+                  <!--Created by Megha as part of US528775-->
+                <aura:if isTrue="{!v.showPartnerKeyMetricsTab}">
+                      <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_KeyMetrics}" renderOnFirstOpen="true">
+                      <div class="slds-p-vertical_small">{!v.tab1}</div>
+                      </c:MarketplaceTab>
+                </aura:if>
+                 <!--Added by Manjula as part of US528777-->
+                <aura:if isTrue="{!v.showLeadTab}">
+                   <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Leads}" renderOnFirstOpen="true">
+                    <div class="slds-p-vertical_small">{!v.tab2}</div>
+                   </c:MarketplaceTab>
+                </aura:if>
+                  <!--Added by Manjula as part of US528775-->
+                  <!-- IPA2.0 + US TWC4497-1631 -->
+                <!-- <aura:if isTrue="{!v.showOfferingTab}">
+                   <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Offerings}" renderOnFirstOpen="true">
+                    <div class="slds-p-vertical_small">{!v.tab3}</div>
+                   </c:MarketplaceTab>
+                <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Offerings_KeyMetrics}" renderOnFirstOpen="true">
+                    <div class="slds-p-vertical_small">{!v.tab4}</div>
+                </c:MarketplaceTab>
+                </aura:if> -->
+                 <!--Added by Manjula as part of US602030-->
+                 <aura:if isTrue="{!v.showPartnerTab}">
+                <c:MarketplaceTab label="{!$Label.c.PMP_Marketplace_Partners}" renderOnFirstOpen="true">
+                    <div class="slds-p-vertical_small">{!v.tab5}</div>
+                </c:MarketplaceTab>
+                 </aura:if>
+            </c:MarketplaceTabset>
+            </aura:if>    
+        </div>
+        <div class="bg-blade-even">
+            {!v.mainFullWidth}
+        </div>
+        <div class="bg-blade-odd">
+            <div class="container">
+                {!v.blade1}
+            </div>
+        </div>
+        <div class="bg-blade-even">
+            <div class="container">
+                {!v.blade2}
+            </div>
+        </div>
+        <div class="bg-blade-odd">
+            <div class="container">
+                {!v.blade3}
+            </div>
+        </div>
+        <div class="bg-blade-even">
+            <div class="container">
+                {!v.blade4}
+            </div>
+        </div>
+        <div>
+            {!v.ctabar}
+        </div>
+        <div class="bg-white">
+            <div class="container">
+                {!v.faqWhite}
+            </div>
+        </div>
+        <div class="container">
+            {!v.faq}
+        </div>
+
+        <div class="compareTray">
+            {!v.compareTray}
+        </div>
+    </div>
+</aura:component>

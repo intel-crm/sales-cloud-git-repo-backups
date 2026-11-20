@@ -1,0 +1,25 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.custom-button {
+    margin-top: 10px; /* Adjust the value as needed */
+    margin-bottom: 10px; /* Adjust the value as needed */
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* Optional: Add border radius if desired */
+    display: inline-block;
+    text-align: center;
+    line-height: normal;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.custom-button:hover {
+    background-color: #005999;
+}

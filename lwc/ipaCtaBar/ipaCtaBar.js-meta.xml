@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA CTA Blade</masterLabel>
+    <description>Full Width CTA Bar</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Color Variation" name="theme" type="String" datasource="primary,dark,light"/>
+            <property label="Title" name="title" type="String" description="DEPRECATED (This value is defined in the component)"/>
+            <property label="Subtitle (Rich Text)" name="subtitle" type="String" description="DEPRECATED (This value is defined in the component)"/>
+            <property label="CTA Label" name="ctaLabel" type="String" description="DEPRECATED (This value is defined in the component)"/>
+            <property label="CTA Community Page (API Name)" name="ctaCommPage" type="String" description="DEPRECATED (This value is defined in the component)"/>
+            <property label="CTA External URL" name="ctaExternalURL" type="String" description="DEPRECATED (This value is defined in the component)"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

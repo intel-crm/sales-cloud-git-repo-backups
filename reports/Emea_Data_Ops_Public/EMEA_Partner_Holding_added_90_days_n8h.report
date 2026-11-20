@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22081012</developerName>
+        <masterLabel>Data Ops or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>MICHAEL SWEET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paulo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonia Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Herman Wynn</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Jolin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Kline</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Julia Sallaiova</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Amber Tsai</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Simon Lee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindy Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sylvia Saw Ai Ong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yu Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LINDA LEE NORTH</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NHAT THANH NGUYEN</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>CREATED</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>OLDVAL</field>
+    </columns>
+    <columns>
+        <field>NEWVAL</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>field_key</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Deactivated__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(ACCOUNT_OWNER = &quot;Jakub Rak&quot;, &quot;DR&quot;, 
+IF(Account.Core_Account_Owner_Manager__c = &quot;Malhar Thakkar&quot;, &quot;ISV Strategy Partner&quot;,
+ IF(Account.Core_Account_Owner_Manager__c = &quot;Ryan Olson&quot;, &quot;INB Intel Network Builder&quot;,
+ IF(AND(OR(Account.Core_Account_Owner_Manager__c = &quot;Gosia Dzul&quot;, Account.Core_Account_Owner_Manager__c = &quot;Christine Harrison&quot;), TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Partner-Led Account&quot;), &quot;DR&quot;,
+  IF(AND(OR(Account.Core_Account_Owner_Manager__c = &quot;Gosia Dzul&quot;, Account.Core_Account_Owner_Manager__c = &quot;Christine Harrison&quot;), TEXT(Account.Core_Account_Primary_Coverage__c)!=&quot;Partner-Led Account&quot;), &quot;DR team - not Partner Led&quot;,
+ IF(Account.Core_Account_Owner_Manager__c = &quot;Simon Windsor&quot;, &quot;EMEA Inside Scale program&quot;,
+ IF(OR(Account.Core_Account_Owner_Manager__c = &quot;Simon Wilyman&quot;, Account.Core_Account_Owner_Manager__c = &quot;Paolo Righi&quot;), &quot;EMEA NEX Longtail&quot;,
+ IF(OR(CONTAINS(Account.Core_Account_Owner_Department__c, &quot;PSG&quot;),CONTAINS(Account.Core_Account_Owner_Department__c, &quot;Altera&quot;)), &quot;PSG&quot;,  
+ IF(CONTAINS(Account.Core_Account_Owner_Department__c, &quot;RealSense&quot;), &quot;RealSense&quot;,
+ IF(ACCOUNT_OWNER = &quot;Alexey Ivanov&quot;, &quot;Alexey Ivanov&quot;,
+ IF(ACCOUNT_OWNER = &quot;Uncovered Account&quot;, &quot;Uncovered&quot;, 
+ IF(ACCOUNT_OWNER = &quot;A&amp;E Account Owner&quot;, &quot;A&amp;E Account Owner&quot;,
+ IF(TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Partner-led Account&quot;, &quot;Other Partner-led&quot;, 
+ IF(TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Other-led Account&quot;, &quot;Other Other-led&quot;,
+ IF(TEXT(Account.Core_Account_Primary_Coverage__c)=&quot;Not Covered Account&quot;, &quot;Other Not Covered&quot;, &quot;Other&quot;)))))))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Explanation</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>NEWVAL</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Partner Holding,EMEA Partner Led</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA Partner Led</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CREATED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EMEA Partner Holding added - 90 days</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST90</interval>
+    </timeFrameFilter>
+</Report>

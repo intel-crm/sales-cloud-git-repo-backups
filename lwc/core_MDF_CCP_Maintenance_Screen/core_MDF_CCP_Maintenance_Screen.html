@@ -1,0 +1,206 @@
+<template>
+    <div class="slds-page-header">
+        <lightning-layout horizontal-align="center">
+        <h1 class="slds-text-heading--label"><b>CCP Maintenance Screen</b></h1>
+    </lightning-layout>
+    </div>
+    <lightning-card>
+    <div style="align-content: center;">
+    <lightning-tabset active-tab-value="one">
+        <lightning-tab label="Bulk Data Update" value="one">
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                <div class="slds-size_1-of-4">
+                   
+                </div>
+                <div class="slds-size_2-of-4">
+                    
+                        <lightning-input type="text" label="Incident No"  required="true" onchange={storefield}  placeholder="Enter Incident No" value={valueIncident} field-level-help="Please enter Incident Number of length 11 Digits" ></lightning-input>
+                  
+                    </div>
+            </div>
+        </br>
+
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                <div class="slds-size_1-of-4">
+                   
+                </div>
+               
+                       <div class="slds-size_2-of-4">
+            <lightning-combobox
+                    name="progress"
+                    label="Select Object"
+                    field-level-help="Select your preferred object"
+                    required="true"
+                    value={objectName}
+                    placeholder="Select Object"
+                    options={objectDropdownvalues}
+                    onchange={handleChange} >
+            </lightning-combobox>
+        </div>
+        </div>
+        
+           <!-- <p>Selected value is: {result}</p> -->
+        </br>
+           <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+            <div class="slds-size_1-of-4">
+               
+            </div>
+           
+                   <div class="slds-size_2-of-4">
+          
+            <lightning-dual-listbox name="languages"
+                                    label="Select Fields"
+                                    source-label="Available"
+                                    required="true"
+                                    selected-label="Selected"
+                                    field-level-help="Select your preferred fields to edit"
+                                    options={final}
+                                    onchange={handleChange2}>
+            </lightning-dual-listbox>
+        </div>
+        <!-- <p>Selected values are: {_selected}</p>-->
+    
+    </div>
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+        <div class="slds-size_1-of-4">
+           
+        </div>
+        <div class="slds-size_2-of-4">
+            <template if:true={showFilter}>
+         <c-core_-m-d-f_-c-c-p_filter-component objectname={objectName}  onpassquery={filterEvent}  onpasstable={showTableEvent}></c-core_-m-d-f_-c-c-p_filter-component>
+        </template>
+        <template if:false={showFilter}>
+            <c-core_-m-d-f_-c-c-p_filter-component objectname={objectName}  onpassquery={filterEvent}  onpasstable={showTableEvent}></c-core_-m-d-f_-c-c-p_filter-component>
+           </template>
+        </div>
+    </div>
+    
+  <!-- <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+        <div class="slds-size_1-of-4">
+           
+        </div>
+        <div class="slds-size_2-of-4">
+                <div class="slds-form-element">
+    
+                    <div class="slds-form-element__control">
+                        <div class="slds-combobox_container">
+                        </br>
+                
+                            <div class={dynamiClassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox" >
+                                <div class="slds-form-element__control slds-input-has-icon  slds-input-has-icon_right" role="none">
+                                    
+                                    <lightning-input type="search" required="true" data-id="userinput" label="Search Records" name="searchText" onchange={searchField}  disabled={disableInputField} field-level-help="Enter 15/18 digit recordId to search by Id" 
+                    placeholder="Search by recordId/recordName"></lightning-input>
+                </div>
+        
+                                  
+                             
+            </br>
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                    <template for:each={selectedRecords} for:item="serecord">
+                                        <span key={serecord.recId}>
+                                        <lightning-pill label={serecord.recName} name={serecord.recId} onremove={removeRecord}>
+                                                <lightning-icon icon-name="standard:account"  alternative-text={serecord.recName}></lightning-icon>
+                                            </lightning-pill>
+                                        </span>
+                                    </template>
+                                </div>
+    
+                              
+                                <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                        <template for:each={searchRecords} for:item="serecord">
+                                            <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+    
+                                                <div data-id={serecord.recId} data-name={serecord.recName} onclick={setSelectedRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                    <div class="slds-media slds-media_center">
+                                                    <span class="slds-media__figure">
+                                                        <span class="slds-icon_container slds-icon-standard-account">
+                                                            <lightning-icon icon-name="standard:account" ></lightning-icon>
+                                                        </span>
+                                                    </span>
+    
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+                                                        <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{objectName} • {serecord.recName}</span>
+                                                    </span>
+                                                </div>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                <div if:true={messageFlag}>
+                                    No result found.
+                                </div>
+                                <div if:true={LoadingText}>
+                                    Loading...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            </div> -->
+        </br>
+
+        <template if:true={noRecord}>
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                <div class="slds-size_1-of-4">
+                </div>
+                <div class="slds-size_2-of-4" style="padding-bottom: 2%;color: red">
+                    {errorRecord}
+                </div>
+            </div>    
+       </template>
+      
+            <!--Buttons to getRecords / DownloadRecords-->
+
+            <lightning-layout horizontal-align="center">
+               <!-- <lightning-layout-item size = "3"  alignment-bump="center" padding = "around-small" class = "slds-align_absolute-center">
+                    <div>
+                        <lightning-button variant = "success"  label="Get Records" onclick={getRecords} ></lightning-button>
+                    </div>
+                </lightning-layout-item>-->
+               
+        
+                <lightning-layout-item padding="horizontal-small">
+                    <lightning-button icon-name="utility:download" 
+                                      label="Get Records" 
+                                      title="Get Records"
+                                      onclick={getRecords} variant="brand" disabled={disableResultButton}></lightning-button>
+                </lightning-layout-item>
+    
+                <!--<lightning-layout-item size = "3" alignment-bump="center" padding = "around-small" class = "slds-var-p-bottom_x-small">
+                    <div >
+                        <lightning-button variant = "brand"  label="Download Records" ></lightning-button>
+                    </div>
+                </lightning-layout-item>
+                -->
+            </br>
+        </br>
+            </lightning-layout>
+            <!--calling Extended dataTable-->
+            <template if:true={showTable}>
+                <c-core_-m-d-f_-c-c-p_extended-data-table 
+                object-name ={objectName}
+                selected-fields ={selectedFields}
+                selected-ids ={selectedIds}
+                incident={incident}
+                >
+                </c-core_-m-d-f_-c-c-p_extended-data-table>
+           </template>
+        </lightning-tab>
+     <!--   <lightning-tab label="Bulk Owner Update" value="two">
+            <c-core_-m-d-f_-c-c-p_-owner_-transfer_-screen></c-core_-m-d-f_-c-c-p_-owner_-transfer_-screen>
+        </lightning-tab>
+        <lightning-tab label="Batch Run" value="three">
+            <c-core_-m-d-f_-c-c-p_-batch-execution></c-core_-m-d-f_-c-c-p_-batch-execution>
+        </lightning-tab>-->
+    </lightning-tabset>
+
+
+</div>
+    </lightning-card>
+</template>
+</template>

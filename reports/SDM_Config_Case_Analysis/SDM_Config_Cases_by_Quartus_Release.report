@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>LineGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATEONLY</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>CDF1</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_EDQ_Filtering_Answer__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Issue_Description__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Organization__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;18.1&quot;), &quot;18.1&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;18.2&quot;), &quot;18.2&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;18.3&quot;), &quot;18.3&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;18.4&quot;), &quot;18.4&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;19.1&quot;), &quot;19.1&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;19.2&quot;), &quot;19.2&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;19.3&quot;), &quot;19.3&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;19.4&quot;), &quot;19.4&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;20.1&quot;), &quot;20.1&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;20.2&quot;), &quot;20.2&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;20.3&quot;), &quot;20.3&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;20.4&quot;), &quot;20.4&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;21.1&quot;), &quot;21.1&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;21.2&quot;), &quot;21.2&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;21.3&quot;), &quot;21.3&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;21.4&quot;), &quot;21.4&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;22.1&quot;), &quot;22.1&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;22.2&quot;), &quot;22.2&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;22.3&quot;), &quot;22.3&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;22.4&quot;), &quot;22.4&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;23.1&quot;), &quot;23.1&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;23.2&quot;), &quot;23.2&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;23.3&quot;), &quot;23.3&quot;,
+   IF(CONTAINS(Case.Core_IPS_EDQ_Filtering_Answer__c, &quot;23.4&quot;), &quot;23.4&quot;, &quot;Unknown&quot; ))))))))))))))))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Version of Quartus used when case was opened</description>
+        <developerName>CDF1</developerName>
+        <label>Quartus Version</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <booleanFilter>1 AND 2 AND ((3 OR 4) OR (5 OR 6) OR (7 OR 8)) AND 9</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Programmable Solutions Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>configuration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Stratix® 10</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Stratix® 10</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Agilex</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>agilex</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>n5x</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>n5x</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CDF1</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Unknown</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CREATED_DATEONLY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SDM Config Cases by Quartus Release</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
+    </timeFrameFilter>
+</Report>

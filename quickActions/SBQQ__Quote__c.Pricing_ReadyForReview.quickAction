@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Icon for external standard user to submit the quote to Consolidator for review.</description>
+    <height>200</height>
+    <label>Ready for Review</label>
+    <lightningComponent>Pricing_SubmitForReview</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

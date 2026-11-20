@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Status</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Status</value>
+    </caseValues>
+    <fields>
+        <label><!-- AR Tracking URL --></label>
+        <name>AR_Tracking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Account Status --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CX Report URL --></label>
+        <name>CX_Insight_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Status Name --></label>
+        <name>Core_Account_Status_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date --></label>
+        <name>Core_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Update --></label>
+        <name>Status_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>AR Tracking</masterLabel>
+            <translation><!-- AR Tracking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Status</masterLabel>
+            <translation><!-- Account Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CX Report</masterLabel>
+            <translation><!-- CX Report --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

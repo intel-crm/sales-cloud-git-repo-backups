@@ -1,0 +1,57 @@
+import { LightningElement, api, track } from 'lwc';
+
+export default class ProductHierarchyItem extends LightningElement {
+    @track isExpanded;
+    @api nameVisible;
+    @api levelVisible;
+    @api item;
+
+    get hasChildItems() {
+        return this.item.items && this.item.items.length > 0;
+    }
+    get btncls(){
+        let classCSS='';
+        if(this.item.found){
+            classCSS=classCSS+' '+'mybutton1';
+        }
+        else if(this.item.levelfound){
+            classCSS=classCSS+' '+'mybutton';
+        }
+        else{
+            classCSS=classCSS+' '+'mybutton2';
+        }
+        return classCSS;
+    }
+get toggleIconClass(){
+    let classCSS='slds-m-bottom_xxx-small ';
+    if(this.item.active){
+        classCSS+='toggle-icon-active';
+    }
+    else if(!this.item.active){
+        classCSS+='toggle-icon-inactive';
+    }
+   
+    return classCSS;
+}
+    toggleNode() {
+    this.isExpanded = !this.isExpanded;
+    }
+
+    handleSelected(event) {
+        this.dispatchEvent(new CustomEvent('selected', { detail: { selectedKeys: this.item.label,level: this.item.level,lastlevel:this.item.items.length==0 },bubbles:true,composed:true }));
+    }
+    get ToggleIconName() {
+        return this.isExpanded ? 'utility:chevrondown' : 'utility:chevronright';
+    }
+    get expand(){
+        if(this.item.level==0){
+            return true;
+        }
+        return this.isExpanded;
+    }
+    get isRoot(){
+        if(this.item.level==0){
+            return true;
+        }
+    }
+}

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_47339422</developerName>
+        <masterLabel>Opportunity Conversion Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Design</sourceValue>
+            </sourceValues>
+            <value>Converted</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design Win</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>Cancelled</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_46369145</developerName>
+        <masterLabel>Owner Manager</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Robert Prince</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Evzen Pavlovsky</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Krzysztof Jonak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Astrid Steingrueber</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Christian Lamprechter</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Dieter Hoffend</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chezeaud, Arnaud</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Fabien Esdourubail</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Isabelle Flory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Stephane Negre</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Anne Mieke Driessen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Henk Van Den Eeckhout</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Predrag Jaksic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Fabian De Pasquale</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Razzouk, Carol</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Helene De La Gastine</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Norberto M Carrascal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Carmine Stragapede</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Carlos Clerencia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Erwan Montaux</sourceValue>
+            </sourceValues>
+            <value>Peter Gleissner</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Bar-Ner, Guy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Guy Bar-Ner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Markus Gabler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Simon Wilyman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Louise Summerton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Eric Levander</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Azmy, Khaled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Dietmar Rohlf</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Firas Alfanney</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of frans j pieterse</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Mediha Kayacan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Christoph Johann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Matthias Todd</sourceValue>
+            </sourceValues>
+            <value>Rod Oshea</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Lead.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>LEAD_OWNER</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY_ACCT</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Qualified Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_ROLE_DISPLAY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>Smelkova,Gal,Williams,Czekaj,szman,Drazkowski,Garcia Comin,Peters,Galyamov,Osiecki,Carrera,Huzjak,VSC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LEAD_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>OSC,iotg</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_46369145</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPP_OWNER_ROLE_DISP</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name># Open Leads by Field Manager</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityLead</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>FIRST_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>LAST_ACTIVITY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

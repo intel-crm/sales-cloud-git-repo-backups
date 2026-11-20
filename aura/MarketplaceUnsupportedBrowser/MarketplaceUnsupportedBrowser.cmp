@@ -1,0 +1,41 @@
+<aura:component>
+    <aura:attribute name="modalOpen" type="Boolean" default="false" description="Internal component state" />
+    <aura:attribute name="bodyText" type="string" default="{!$Label.c.PMP_UnsupportedIE11_Body}"
+        description="Internal component state" />
+    <aura:attribute name="_bodyText" type="string" default="" description="Internal component state" />
+    <aura:attribute name="isIE11" type="Boolean" default="false" description="Internal component state" />
+    <aura:handler name="change" value="{!v.bodyText}" action="{!c.handleTextChange}" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:if isTrue="{!v.isIE11}">
+        <div class="unsupportedIE11">
+            <div class="ie11-note slds-p-horizontal_medium">
+                <lightning:icon iconName="utility:warning" size="xx-small" alternativeText="edit" />&nbsp;
+                {!$Label.c.PMP_UnsupportedIE11_BrowserNotSupported}&nbsp;<a href="#"
+                    onclick="{!c.handleOpenOverlay}">{!$Label.c.PMP_UnsupportedIE11_MoreInformation}</a>
+            </div>
+            <aura:if isTrue="{!v.modalOpen}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.handleCloseOverlay }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                        </header>
+                        <div class="slds-modal__content slds-p-around_xx-large" id="modal-content-id-1">
+                            <h4 class="color-white slds-p-bottom_medium">{!$Label.c.PMP_UnsupportedIE11_Heading}</h4>
+                            <div class="slds-p-bottom_medium">
+                                <lightning:formattedRichText value="{!v._bodyText}" />
+                            </div>
+                            <div onclick="{! c.handleCloseOverlay }">
+                                <c:IntelButton class="largeMobile">{!$Label.c.PMP_UnsupportedIE11_CloseAndContinue}
+                                </c:IntelButton>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+        </div>
+    </aura:if>
+</aura:component>

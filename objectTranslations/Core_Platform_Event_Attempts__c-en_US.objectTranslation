@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core Platform Event Attributes</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core Platform Event Attempt</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>Core_Batch_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Days To Purge Until --></label>
+        <name>Core_Days_To_Purge_Until__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Support Email Address --></label>
+        <name>Core_IPA_Support_Email_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Attempts --></label>
+        <name>Core_Number_Of_Attempts__c</name>
+    </fields>
+    <fields>
+        <help><!-- In case of more than one email address enter using comma separated --></help>
+        <label><!-- Support Email Address --></label>
+        <name>Core_Support_Email_Address__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

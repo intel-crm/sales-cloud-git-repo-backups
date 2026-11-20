@@ -1,0 +1,37 @@
+<template>
+    <div class="slds-modal__content slds-p-around--large slds-p-top_none">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label id="selectProgramField" class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+                font-size: small;">{label.programFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup-program onprogram={programSelected} onfocus={focusedMethod}>
+                </c-lwc-custom-lookup-program>
+            </div>
+            <div class="slds-col slds-size_2-of-6 slds-p-around_small">
+                <label style="color:red;font-size: large;">*</label>
+                <label id="selectUser" class="slds-form-element__label" for="unique-id-of-input" style="font-weight: bold;
+                font-size: small;">{label.userFieldLabel}</label>
+            </div>
+            <div class="slds-col slds-size_4-of-6 slds-p-around_small slds-p-bottom_none slds-p-top_none">
+                <c-lwc-custom-lookup-user onremove={selectedRecord} onselected={selectedRecord} program={program}>
+                </c-lwc-custom-lookup-user>
+            </div>
+            <template if:false={spinner}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <div class="slds-col slds-size_6-of-6 slds-p-around_small">
+                <lightning-input id="accountSearch" value={accountSearchKey} onchange={onAccountSearch} type="search"
+                    placeholder={label.searchLabel} disabled={inputDisable}>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-6 slds-p-around_small slds-p-top_none">
+                <lightning-dual-listbox id="dualListBox" name="accounts" disable-reordering="True" source-label={label.availableLabel}
+                    selected-label={label.selectedLabel} options={allAvailableAccounts} value={allAvailableMappedAccounts} onchange={handleChange}>
+                </lightning-dual-listbox>
+            </div>
+        </div>
+    </div>
+</template>

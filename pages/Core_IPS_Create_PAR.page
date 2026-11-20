@@ -1,0 +1,203 @@
+<!------------------------------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_Create_PAR
+*Description:  Product Access Screen For PAR
+*Modification Log :
+* Developer                   Date                        Description
+* ------------------------------------------------------------------------------------------------                 
+* Sugandha                    13/08/2018                  Modified(Defect DE15670 Iteration 15)
+----------------------------------------------------------------------------------------------------->
+<apex:page standardController="Account"  extensions="Core_IPS_PARCreationController" sidebar="false" tabStyle="Core_IPS_MAP_PAR__c" standardStylesheets="{!$User.UITheme == 'Theme3'}" lightningStylesheets="{!$User.UITheme != 'Theme3'}">
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.js')}"/>
+    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
+        <apex:slds />
+    </apex:outputPanel>
+    
+    <script type="text/javascript">
+        function selectAllCheckboxes(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");
+            for(var i=0; i<inputCheckBox.length; i++){
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+        function loadMessage(){
+            confirmed = window.confirm("Click OK to continue- Click Cancel to stop");
+            if (confirmed){
+                refreshPageSize();
+            } 
+            else{
+                window.alert("You clicked Cancel- No Changes occur");
+            }
+        }
+        function noenterproduct(ev)  {
+            if (window.event && window.event.keyCode == 13 || ev.which == 13) {
+                doSearchProducts();
+                return false;
+             } else {
+                  return true;
+             }
+         }
+    </script>
+    <div class="splashStatus slds" id="splashDiv">
+        <div class="circle"><img src="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.gif')}"/></div>
+        <div class="txt">{!$Label.Core_IPS_Load_gif_Text}</div>
+    </div>
+    <apex:form >
+        <apex:outputPanel rendered="{!!Userpresent}">          
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel style="font-weight:bold; font-style: Italic; font-size:20px" value="{!$Label.Core_IPS_Insufficient_Privileges_PAR}" />
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>  
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!!IPSActiveAccount}">  
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel style="font-weight:bold; font-style: Italic; font-size:20px" value="{!$Label.Core_IPS_Non_IPS_Active_PAR}" />
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>  
+        </apex:outputPanel> 
+        <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>
+        <apex:outputPanel id="totalPanel" rendered="{!AND(Userpresent,IPSActiveAccount)}">
+            <apex:actionFunction name="refreshPageSize" action="{!refreshPageSize}" status="fetchStatus" reRender="pg3"/>
+            <apex:actionFunction name="doSearchProducts" action="{!searchProducts}" status="splashStatus"  rerender="pg3" />
+            <apex:pageBlock id="pg3" rendered="{!showProductFlag}">
+                <apex:pageBlockButtons >
+                    <div class="slds-p-horizontal--small slds-m-top--medium slds-size--1-of-1 slds-align--absolute-center">                    
+                        <apex:commandButton value="Review Selected" action="{!showLineItemPage}" reRender="totalPanel" styleClass="slds-button slds-button_neutral" disabled="{!disablebutton}"/>
+                    </div>
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection title="Product Access Details">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel >
+                            <b><apex:outputLabel value="Account Name: "/></b>&nbsp;&nbsp;
+                            <i><apex:outputText >{!accname}</apex:outputText></i><br/><br/><br/><br/><br/><br/>                                  
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.inlineHelpText}">                  {!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.label} 
+                            <apex:outputPanel >
+                            <div class="requiredInput">
+                             <div class="requiredBlock"></div>    
+                            <apex:inputTextarea id="submitterComments"  value="{!submitterCommentsText}" style="height:50px;width:300px" html-placeholder="Please enter the comments.." />
+                            </div> 
+                           <!-- <apex:pageBlockSection id="pbS1" columns="1">
+                            <apex:pageBlockSectionItem >
+                                <font color="#ff0000">Please Enter the submitter Comments ! </font>
+                            </apex:pageBlockSectionItem> 
+                            <apex:inputTextarea style="width:300px;height:100px" id="submittercomments" required="true" value="{!submitterCommentsText}" />
+                            </apex:pageBlockSection> -->
+                            </apex:outputPanel>
+                    </apex:pageBlockSectionItem> 
+                </apex:pageBlockSection>
+                
+                <b><apex:outputLabel >Search Supported Product:</apex:outputLabel></b>&nbsp;&nbsp;
+                <apex:inputText value="{!searchTextProd}" onkeypress="return noenterproduct(event);"/>
+                <apex:commandButton value="Search" action="{!searchProducts}" reRender="pg3" status="splashStatus" styleClass="slds-button slds-button_neutral"/>
+                
+                <apex:pageBlockSection title="Supported Products List" columns="1"> <!--rendered="{!IF(productList.size()>0,true,false)}"--><!--rendered="{!(productListvalue)}"-->
+                    <apex:outputlabel value="{!$Label.Core_IPS_PARPage_PicklistNote}" style="font-weight:bold;background-color: Yellow"/> <br/><br/>
+                    <apex:variable value="{!0}" var="rowNum"/>
+                    <apex:pageBlockTable value="{!productList}" var="prod" columnsWidth="2%,15%,55%,13%,15%">
+                        <apex:column >
+                            <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                            </apex:facet>
+                            <apex:inputcheckbox value="{!prod.selected}" id="inputId2">
+                            </apex:inputCheckbox>
+                        </apex:column>
+                        <apex:column headerValue="Supported Product Name" value="{!prod.relatedSupProduct}"/>
+                        <apex:repeat value="{!$ObjectType.Product2.fieldsets.Map_Prod_FieldSet}" var="prodField">
+                            <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                            <apex:column value="{!prod.prod[prodField]}"/>
+                        </apex:repeat>
+                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_Organization_Description__c.label}" rendered="{!IF(engagementType=='Par',true,false)}"><!--{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_IPS_Support_Org_Name__c.label}-->
+                            <apex:selectList value="{!prod.selectedProductOrganization}" size="1"  style="{!prod.color}" ><!--disabled="{!prod.ProductOrgOneSize}"-->
+                                <apex:selectOptions value="{!prod.prodOrgs}"  />
+                            </apex:selectList>
+                        </apex:column>
+                    </apex:pageBlockTable><br/>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="No Search Results found" style="font-weight:bold;" rendered="{!!productListvalue}"/><br/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                    
+                    </apex:pageBlockSectionItem>
+                    <apex:panelGrid columns="8">                  
+                        <apex:selectList value="{!size}" multiselect="false" size="1" onchange="loadMessage();" disabled="{!disablebutton}">
+                            <apex:selectOptions value="{!paginationSizeOptions}"/>
+                        </apex:selectList>  
+                        <apex:commandButton reRender="pg3" value="First Page" action="{!prodFirstPage}" rendered="{!standardSetproduct.hasprevious}"  title="FirstPage"/>    
+                        <apex:commandButton reRender="pg3" value="Previous Page" action="{!prodPrevPage}" rendered="{!standardSetproduct.hasprevious}"  title="PreviousPage"/>  
+                        <apex:commandButton reRender="pg3" value="Next Page" action="{!prodNextPage}" rendered="{!standardSetproduct.hasNext}"  title="NextPage"/> 
+                        <apex:commandButton reRender="pg3" value="Last Page" action="{!prodLastPage}" rendered="{!standardSetproduct.hasNext}"  title="lASTPage"/>  
+                        <apex:outputText >
+                            {!(standardSetproduct.pageNumber * size)+1-size} - {!IF(standardSetproduct.pageNumber * size!=null && standardSetproduct.pageNumber * size > noOfpRecords, noOfpRecords, (standardSetproduct.pageNumber * size))} of {!noOfpRecords}
+                        </apex:outputText>                    
+                    </apex:panelGrid>                   
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+
+            <apex:pageBlock id="pg4" rendered="{!showLineItemFlag}">
+                <apex:pageBlockButtons >
+                    <div class="slds-p-horizontal--small slds-m-top--medium slds-size--1-of-1 slds-align--absolute-center">
+                        <apex:commandButton value="Back to Products" immediate="true" action="{!backToProductScreen}" reRender="totalPanel" styleClass="slds-button slds-button_neutral"/>
+                        <!-- Added Status attribute to avoid multiple clicks at a time for DE15670 by Sugandha --> 
+                        <apex:commandButton value="Submit Product Access" action="{!createParRequest_New}"  disabled="{!IF(!lineItemListvalue,true,false)}" styleClass="slds-button slds-button_neutral" status="splashStatus" reRender="pg4"/>
+                    </div>
+                </apex:pageBlockButtons>
+                <apex:pageMessages ></apex:pageMessages>
+                <apex:pageBlockSection title="Product Access Details" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel >
+                            <apex:outputLabel value="Account Name:" style="font-weight:bold"/>&nbsp;&nbsp;
+                            <apex:outputText style="font:style=italic">{!accname}</apex:outputText><br/><br/><BR/>  
+                            <apex:outputlabel value="Note: Below highlighted line items indicate existing product access" style="font-weight:bold;background-color: Yellow"/> <br/><br/>                              
+                        </apex:outputPanel>                         
+                    </apex:pageBlockSectionItem>
+                    <!-- added by Manoj-->
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.inlineHelpText}"> {!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.label} 
+                            <apex:outputPanel >
+                             <div class="requiredInput">
+                             <div class="requiredBlock"></div>    
+                            <apex:inputtextarea value="{!submitterCommentsText}" style="height:50px;width:300px" html-placeholder="Please enter the comments.."/>
+                            </div>
+                            </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <!-- added by Manoj End-->                    
+                </apex:pageBlockSection>
+               <apex:pageBlockSection title="LineItems" rendered="{!lineItemListvalue}" columns="1">
+                    <apex:pageBlockTable value="{!LineItemlist}" var="prod1" columnsWidth="2%,30%,22%,24%,22%"> 
+                        <apex:column >
+                            <apex:inputcheckbox value="{!prod1.selected}" id="inputId2" disabled="{!IF(!prod1.colorvalue,false,true)}"/>
+                        </apex:column> 
+                        <apex:column headerValue="Supported Product Name" value="{!prod1.SupProduct.Core_Supported_Product_Name__c}" style="{!JSINHTMLENCODE(prod1.color)}"/> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_IPS_Support_Org_Name__c.label}" value="{!prod1.prodOrgName}" style="{!JSINHTMLENCODE(prod1.color)}" /> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_Organization_Description__c.label}" value="{!prod1.prodOrgDescription}" style="{!HTMLENCODE(prod1.color)}" /> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                        <apex:column headerValue="Approval Type" value="{!prod1.FlagStatus}" style="{!JSINHTMLENCODE(prod1.color)}" /> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection Title="LineItems" rendered="{!NOT(lineItemListvalue)}" columns="1">
+                  <apex:pageBlockSectionItem >
+                      <apex:outputLabel value="No Results to Display"/>
+                  </apex:pageBlockSectionItem>
+              </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+   <div class="lightbox"></div>
+  <!--  <script>
+   $j = jQuery.noConflict();
+   $j(document).ready(function() {
+       console.log('Inside Jquery');
+       $('#submitterComments').css("color",'grey');
+      });
+   </script>-->
+
+</apex:page>

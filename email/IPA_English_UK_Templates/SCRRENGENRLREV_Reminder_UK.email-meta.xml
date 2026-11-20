@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_Reminder_UK</name>
+    <style>none</style>
+    <subject>Reminder: Verify Your Email &amp; Set Your Password</subject>
+    <textOnly>Reminder: Verify Your Email &amp; Set Your Password
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Thank you for starting your Intel® Partner Alliance registration!
+Please click on the link below to continue
+
+
+Verify Your Email &amp; Set Your Password
+
+To complete the next step and Set Your Password, please use the username listed below
+Username: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+Can&apos;t access the link above?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-ciqa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner/forms/ipa-account-search.html
+
+
+We look forward to having you in the program!
+Sincerely,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

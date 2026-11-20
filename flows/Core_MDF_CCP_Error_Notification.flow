@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Core_MDF_Trigger_Error_Notification</name>
+        <label>Trigger_Error_Notification</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>Core_Log_Entry__c.Core_MDF_Trigger_Error_Notification</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_Log_Entry__c.Core_MDF_Trigger_Error_Notification</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_MDF_CCP_Error_Notification workflow rule
+Trigger error notification email on creation of Log entry for CCP.</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_MDF_CCP_Error_Notification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_MDF_CCP_Error_Notification</label>
+    <migratedFromWorkflowRuleName>Core_MDF_CCP_Error_Notification</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_MDF_Trigger_Error_Notification</targetReference>
+        </connector>
+        <filterLogic>1 AND 2</filterLogic>
+        <filters>
+            <field>Core_Project__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Consolidated Co-Marketing Program (CCP)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Severity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Critical</stringValue>
+            </value>
+        </filters>
+        <object>Core_Log_Entry__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

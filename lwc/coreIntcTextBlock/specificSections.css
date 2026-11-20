@@ -1,0 +1,16 @@
+lightning-formatted-rich-text {
+  line-height: 1.3;
+}
+
+.slds-rich-text-editor__output p {
+  margin-bottom: .5rem;
+}
+
+.text-block-container[data-contained="true"] .text-block-content::after,
+.text-block-content[data-expanded="true"]::after {
+  display: none;
+}
+
+.text-block-container[data-contained="true"] .link-text {
+  display: none;
+}

@@ -1,0 +1,62 @@
+<template>
+    <div class="CardTable">
+        <lightning-card>
+            <div class="slds-clearfix slds-Tableborder">
+                <div class="slds-float_left slds-p-left_medium slds-p-bottom_medium">
+                    <div class="slds-clearfix">
+                        <div class="slds-float_left">
+                            <lightning-combobox class="combo" name="listviewoptions" value={Selectedcasevalue}
+                                placeholder="Select List view" options={caseoptions}
+                                onchange={handleChangeCaseListView}>
+                            </lightning-combobox>
+                        </div>
+
+                        <div class="slds-float_right slds-p-right_medium" style="padding-top:20px;">
+                            <lightning-button variant="brand" label="Case List Export" title="Primary action"
+                                onclick={downloadCSVFile} class="slds-m-left_x-small">
+                            </lightning-button>
+                          
+
+                        </div>
+                    </div>
+
+                </div>
+                <div if:true={showLoadingSpinner}>
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </div>
+               
+            </div>
+            <template if:true={ShowCseTable}>
+                <template if:true={showTable}>
+
+                    <div class="myTable">
+
+                      
+                        <lightning-datatable key-field="CaseNumber" data={paginatedCases} columns={columnsDynamic}
+                    hide-checkbox-column="true" min-column-width="130" ></lightning-datatable>
+
+                
+
+                        <template if:false={isrefreshPageination}>
+                            <c-core_-i-p-s_-paginator_-l-w-c records={finalRecords} total-records={finalRecords.length}
+                                show-search-box="true" onpaginatorchange={handleCasePaginatorChange}>
+                            </c-core_-i-p-s_-paginator_-l-w-c>
+                        </template>
+                        <template if:true={isrefreshPageination}>
+                            <c-core_-i-p-s_-paginator_-l-w-c records={finalRecords} total-records={finalRecords.length}
+                                show-search-box="true" onpaginatorchange={handleCasePaginatorChange}>
+                            </c-core_-i-p-s_-paginator_-l-w-c>
+                        </template>
+                    </div>
+                </template>
+            </template>
+            <template if:false={ShowCseTable}>
+                <div class="slds-p-left_medium">
+
+                    <h2> No Records to display</h2>
+                </div>
+            </template>
+        </lightning-card>
+    </div>
+
+</template>

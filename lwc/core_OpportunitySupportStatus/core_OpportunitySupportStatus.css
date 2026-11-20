@@ -1,0 +1,53 @@
+.strong-text {
+    font-weight: bold;
+}
+
+.pointercursor{
+    cursor: pointer;
+}
+
+.btn {
+    outline : none ;
+    box-shadow: none;
+    background-color:white;
+}
+
+th{
+    background-color: #ececec;
+    border-color: grey;
+    border-right:  0.5px solid;
+}
+
+th, td {
+    padding: 5px;
+  }
+
+.my-chevron-button {
+    --slds-c-button-color-border: bare;
+     box-shadow:none;
+}
+
+.focusEffect:hover {
+    background-color:#ececec;
+}
+
+.HeaderBar{
+    height:40px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    background-color:#ececec;
+    color:rgb(255, 255, 255);
+    font-size:16px;
+    color: rgb(40, 39, 39);
+  /*text-shadow:
+    -1px -1px 0 #c9c9c9,
+     0   -1px 0 #c9c9c9,
+     1px -1px 0 #c9c9c9,
+     1px  0   0 #c9c9c9,
+     1px  1px 0 #c9c9c9,
+     0    1px 0 #c9c9c9,
+    -1px  1px 0 #c9c9c9,
+    -1px  0   0 #c9c9c9;
+    font-weight: bold;*/
+    /*width:1920px;*/
+}

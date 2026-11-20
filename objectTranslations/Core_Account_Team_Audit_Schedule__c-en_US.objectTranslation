@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Team Audit Schedule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Team Audit Schedule</value>
+    </caseValues>
+    <fields>
+        <label><!-- Email Template --></label>
+        <name>Core_Email_Template__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalation Level --></label>
+        <name>Core_Escalation_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Execution Month Day --></label>
+        <name>Core_Execution_Month_Day__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

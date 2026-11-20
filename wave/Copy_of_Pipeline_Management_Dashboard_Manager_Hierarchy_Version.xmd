@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataset xsi:nil="true"/>
+    <measures>
+        <field>lens_2_1.opps_unhealthy</field>
+        <isDerived>false</isDerived>
+        <label>Total Low Confidence Opportunities</label>
+        <sortIndex>0</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_2_1.confidence</field>
+        <formatCustomFormat>[&quot;#,###.##%&quot;,100]</formatCustomFormat>
+        <isDerived>false</isDerived>
+        <label>Confidence</label>
+        <sortIndex>1</sortIndex>
+    </measures>
+    <measures>
+        <field>lens_2_1.count_opps</field>
+        <isDerived>false</isDerived>
+        <label>Total Opportunities</label>
+        <sortIndex>2</sortIndex>
+    </measures>
+    <type>Asset</type>
+    <waveVisualization>Copy_of_Pipeline_Management_Dashboard_Manager_Hierarchy_Version</waveVisualization>
+</WaveXmd>

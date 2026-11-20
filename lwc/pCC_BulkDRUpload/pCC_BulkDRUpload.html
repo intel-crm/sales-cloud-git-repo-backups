@@ -1,0 +1,7 @@
+<template>
+    <div class="slds-m-around_small attachmentStyle">
+        <lightning-input type="file" accept=".xlsx, .xls, .csv, .png, .doc, .docx, .pdf" label="Attachment" onchange={handleFilesChange}></lightning-input>
+    </div>
+    <div class="slds-text-body_small slds-text-color_error">{fileName}</div>
+    <button class = "slds-button slds-button_brand clearSearch buttonStyle" onclick={handleSave}>Upload</button>
+</template>

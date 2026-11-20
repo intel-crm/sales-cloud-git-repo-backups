@@ -1,0 +1,34 @@
+.THIS .table-test thead th span {
+background-color: #1589ee;
+color: white;
+}
+.THIS a{
+    color: red; 
+} 
+.THIS s{
+   	color: yellow;
+}
+.THIS u{
+    color: green;
+} 
+
+.THIS .slds-button_icon-bare{  
+    display: none;
+}
+.THIS .table-test{
+    width: 800px;
+    height: 800px;
+}
+
+.THIS .Red{
+    background-color: #FF0000;
+    color: #FF0000;
+}
+.THIS .Green{
+    background-color: #008000;
+    color: #008000;
+}
+.THIS .Yellow{
+    background-color: #FFFF00;
+    color: #FFFF00;
+}

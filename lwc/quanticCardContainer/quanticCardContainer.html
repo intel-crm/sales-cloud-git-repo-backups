@@ -1,0 +1,21 @@
+<template>
+  <host>
+    <article class="card" style="padding-left: 0">
+      <header class="slds-grid slds-p-horizontal_x-small slds-has-flexi-truncate" style="padding-left: 0;">
+        <div class="slds-media__body card_focusable-header" onclick={handleHeaderClick} onkeydown={handleHeaderKeyDown}
+          role="button" tabindex="0">
+          <h2 class="slds-grid">
+            <span class="slds-text-heading_small slds-truncate" style="font-weight: normal;">{title}</span>
+          </h2>
+        </div>
+        <div class="slds-no-flex">
+          <slot name="actions"></slot>
+        </div>
+      </header>
+      <div>
+        <slot></slot>
+      </div>
+    </article>
+    <hr style="margin: 0; border-top: 1px solid #8c8b8b;"></hr>
+  </host>
+</template>

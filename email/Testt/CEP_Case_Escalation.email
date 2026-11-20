@@ -1,0 +1,10 @@
+This is a reminder that you have a CEP Case in an Open status.   It has been 3 Business days since the case has been created.  The purpose of this communication is to thank the customer for taking the survey, to follow up on areas of dissatisfaction, and create an action plan to resolve the issue. Please document your follow-up activities and action plans discussed with the customer within Salesforce.  
+
+To access the customer's alert details and update your action plan, please log into Salesforce and reference the case number above. 
+
+
+Case details
+{!Case.00No000000DVoPz}
+Contact: {!Case.00No000000DVoQ2}
+Case Opened:{!Case.CreatedDate}
+Case last modified on:{!Case.LastModifiedDate}

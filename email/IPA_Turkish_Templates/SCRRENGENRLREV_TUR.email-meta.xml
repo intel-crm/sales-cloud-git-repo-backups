@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_TUR</name>
+    <style>none</style>
+    <subject>E-posta adresinizi doğrulayın</subject>
+    <textOnly>E-posta Adresinizi Doğrulayın
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Intel® Ortağı İş Birliği başvurunuz için teşekkür ederiz.
+İsteğinizi işleme almadan önce bu e-posta adresinin size ait olduğundan emin olmak istiyoruz. E-posta adresinizi 30 gün içinde doğrulamazsanız başvurunuz sistemimizden silinir ve yeniden başvuruda bulunmanız gerekir.
+
+
+Şimdi doğrulayın
+
+Yukarıdaki bağlantıya erişemiyor musunuz?
+https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;target=https://ciqa.intel.com/content/www/us/en/secure/partner/forms/ipa-account-search.html
+
+
+Teşekkür ederiz,
+Intel® Ortağı İş Birliği ekibiniz
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

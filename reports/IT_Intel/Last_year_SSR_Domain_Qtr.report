@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_49463732</developerName>
+        <masterLabel>Domain roll-up</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Cloud Journey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cloud</sourceValue>
+            </sourceValues>
+            <value>Cloud Journey</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>IT Leadership / Biz Value</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IT Leadership and Strategy</sourceValue>
+            </sourceValues>
+            <value>IT Leadership &amp; Strategy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Security &amp; Privacy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Security</sourceValue>
+            </sourceValues>
+            <value>Security &amp; Privacy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Workplace of the Future</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Innovative Workplace</sourceValue>
+            </sourceValues>
+            <value>Workplace of the Future</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Datacenter and Infrastructure</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Data Center</sourceValue>
+            </sourceValues>
+            <value>Datacenter &amp; Infrastructure</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Data, Analytics and AI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Analytics and Data Architecture</sourceValue>
+            </sourceValues>
+            <value>AI and Data Architecture</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Industry 4.0</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manufacturing and Industrial</sourceValue>
+            </sourceValues>
+            <value>Industry 4.0</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Enterprise Applications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software and Enterprise Applications</sourceValue>
+            </sourceValues>
+            <value>Software and Enterprise Apps</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sustainability</sourceValue>
+            </sourceValues>
+            <value>Sustainability</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_49463732</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Sales_Support_Request__c.Core_IT_Geo_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Core_Sales_Support_Request__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_Sales_Support_Request__c.Core_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_OPP_WON</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>CUST_RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_Sales_Support_Request__c.Core_DS_IT_Intel</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Sales_Support_Request__c.Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled,Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_49463732</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Last year SSR Domain Qtr</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Sales_Support_Request__c@Core_Sales_Support_Request__c.Core_Opportunity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
+        <endDate>2023-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2023-01-01</startDate>
+    </timeFrameFilter>
+</Report>

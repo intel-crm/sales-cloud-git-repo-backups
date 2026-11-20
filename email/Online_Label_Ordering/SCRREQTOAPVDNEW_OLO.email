@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Intel® Online Label Ordering!</title>
+    
+</head>
+<body>
+<div>
+<div></div>
+<div class="FirstLastName" style="font-family: Calibri (Body), Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;font-weight: bold;font-size: 11pt;color: #0860a8;"><span style="color: #0866b6;">Dear</span> {!Contact.Name},</div>
+<div></div>
+<div class="ParaFont ParaFontNew" style="font-family: Calibri (Body), Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;font-size: 13px;font-style: normal;font-variant: normal;font-weight: 500;line-height: 20.4px;">Thank you for applying to Intel® Online Label Ordering (OLO) Tool. To complete the process please verify your email address by clicking the <span style="color: #0866b6;"><a class="ParaFont" href="https://intelinside.intel.com/labels" style="color: #0866b6;font-family: Calibri (Body), Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;font-size: 13px;font-style: normal;font-variant: normal;font-weight: 500;line-height: 30.4px;">link</a>.</span></div>
+<section>
+</section><p class="ParaFont" style="font-family: Calibri (Body), Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;font-size: 13px;font-style: normal;font-variant: normal;font-weight: 500;line-height: 30.4px;">If you do not verify your email address, your account will remain pending for 30 days. After this time, we will remove you from our records. <br> If you are an Intel® Inside Program User, please contact</p>
+
+<div class="disclaimer" style="font-family: Calibri (Body), Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;font-weight: normal;font-size: 8pt;font-style: italic;">Please note: This email has been automatically generated from an unmonitored mailbox. Please DO NOT reply directly to this message.</div>
+</div>
+<p class="IntelLogo" style="border: none; text-align: right;"><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png"   height="42" width="64" /> </span></p>
+</body>
+
+</html>

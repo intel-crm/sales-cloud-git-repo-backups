@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CRM Timezone Values</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CRM Timezone Values</value>
+    </caseValues>
+    <fields>
+        <label><!-- Country Code --></label>
+        <name>CRM_Country_Code_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>CRM_Country_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- State Code --></label>
+        <name>CRM_State_Code_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>CRM_State_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timezone --></label>
+        <name>CRM_Timezone_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

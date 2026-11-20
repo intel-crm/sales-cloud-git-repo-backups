@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_MDF_ActualApprover_Alias__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actual Approver Alias</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ActualApprover_LastName__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actual Approver Last Name</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ActualApprover_Masked_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actual Approver Masked Label</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ActualApprover_Masked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actual Approver Masked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ActualApprover_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Actual Approver</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AssignedTo_Alias__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Assigned To Alias</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AssignedTo_LastName__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Assigned To Last Name</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AssignedTo_Masked_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Assigned To Masked Label</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AssignedTo_Masked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Assigned To Masked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AssignedTo_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Assigned To</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Column_order__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>holds ; seperated values of column names in order they need to be displayed</inlineHelpText>
+        <label>Column order</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comment_Filter_Reference_txt__c</fullName>
+        <description>Reference should be a constant variable from class or custom label or custom metadata</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>JSON Sample - [ {&quot;record&quot;:[{
+&quot;step_Name&quot;: &quot;Price Reviewer&quot;,
+&quot;comments_masked&quot;: &quot;true&quot;,
+&quot;comments_desc&quot;:&quot;Generic&quot;}],
+&quot;ps_name&quot;:&quot;Core_MDF_CCP_
+Ext_IPA_Proposal_Manager&quot;}]</inlineHelpText>
+        <label>Class Constant</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments_Masked_Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Comments Masked Label</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments_Masked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Comments Masked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Comments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Comments</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_CreatedDate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Date</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Custom_Label_Configration__c</fullName>
+        <description>To select different JSON file for comment filter reference</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>JSON Sample - [ {&quot;record&quot;:[{
+&quot;step_Name&quot;: &quot;Price Reviewer&quot;,
+&quot;comments_masked&quot;: &quot;true&quot;,
+&quot;comments_desc&quot;:&quot;Generic&quot;}],
+&quot;ps_name&quot;:&quot;Core_MDF_CCP_
+Ext_IPA_Proposal_Manager&quot;}]</inlineHelpText>
+        <label>Custom Label Configration</label>
+        <referenceTo>Core_MDF_Custom_Label_Configration__mdt</referenceTo>
+        <relationshipLabel>Custom Approval History Configs</relationshipLabel>
+        <relationshipName>Custom_Approval_History_Configs</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_External_User__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>For External User</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_CheckboxField1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier Checkbox Field1</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_CheckboxField2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier Checkbox Field2</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_TextField1__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier TextField1</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Identifier_TextField2__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Identifier TextField2</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_API_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object API Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Order_By__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Order By</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_StepStatus__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Status</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Title__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Table Title</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Custom Approval History Config</label>
+    <pluralLabel>Custom Approval History Configs</pluralLabel>
+    <validationRules>
+        <fullName>Core_MDF_Comment_Filer_Reference</fullName>
+        <active>true</active>
+        <description>to select a single comment field reference value at a time</description>
+        <errorConditionFormula>AND(!ISBLANK(Core_MDF_Custom_Label_Configration__c),!ISBLANK( Core_MDF_Comment_Filter_Reference_txt__c))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Custom_Label_Configration__c</errorDisplayField>
+        <errorMessage>You can select only one comment field reference at a time</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Masked_label_reqd</fullName>
+        <active>true</active>
+        <description>Masked Label should not be empty if masked checkbox is selected</description>
+        <errorConditionFormula>OR(
+AND(Core_MDF_AssignedTo_Masked__c,ISBLANK( Core_MDF_AssignedTo_Masked_Label__c )),
+AND( Core_MDF_ActualApprover_Masked__c ,ISBLANK(Core_MDF_ActualApprover_Masked_Label__c)),
+AND(  Core_MDF_Comments_Masked__c  ,ISBLANK( Core_MDF_Comments_Masked_Label__c )))</errorConditionFormula>
+        <errorMessage>Masked label should not be empty if corresponding masked Checkbox is selected</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

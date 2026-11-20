@@ -1,0 +1,10 @@
+.THIS {
+}
+
+.THIS li {
+  border-bottom: 1px solid t(lightGray);
+}
+
+.THIS li:last-child {
+  border-bottom-color: transparent;
+}

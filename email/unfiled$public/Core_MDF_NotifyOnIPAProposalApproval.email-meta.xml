@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>IPA-MDF Manager and External IPA Proposal Manager will be notified when proposal is Approved</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyOnIPAProposalApproval</name>
+    <style>none</style>
+    <subject>Proposal Approved</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

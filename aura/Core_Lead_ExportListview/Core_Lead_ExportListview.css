@@ -1,0 +1,9 @@
+.THIS .CustomCss {
+    padding-bottom: 1%;
+    padding-left: 2%;
+    font-weight: 600;
+}
+
+.THIS .slds-form-element__control .slds-radio {
+    display: inline-block;
+}

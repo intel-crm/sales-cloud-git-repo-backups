@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the Ask Commissions-Changing Status to assigned when comment created by End user process using Ask Commissions-Changing Status to assigned when comment created by End user criteria.
+Ask Commissions-Changing Status to assigned when comment created by End user</description>
+    <environments>Default</environments>
+    <label>Ask Commissions-Changing Status to assigned when comment created by End user_1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myRule_1_A1</name>
+        <label>Ask Commissions-Changing Status to assigned when comment created by End user</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <filterFormula>(ISPICKVAL({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Status}  , &apos;Awaiting Requestor’s Info&apos;) || ISPICKVAL({!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Status} , &apos;Awaiting Resolution Confirmation&apos;))
+&amp;&amp;({!$Record.CreatedById} =={!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Requested_for__r.Id} &amp;&amp;{!$Record.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.RecordType.DeveloperName} ==&apos;Core_AAQC_Case_recordType&apos;)</filterFormula>
+        <object>Core_AAQC_Case_Comments__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

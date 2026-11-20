@@ -1,0 +1,7 @@
+<apex:page controller="Core_CampaignTaskGeneration_Controller" showHeader="true" sidebar="true"
+           applyHtmlTag="true" applyBodyTag="true" action="{!generateTasks}" title="Campaign Task Generation" tabStyle="Campaign">
+    
+    &nbsp;
+    <apex:pageMessages escape="false" />
+    
+</apex:page>

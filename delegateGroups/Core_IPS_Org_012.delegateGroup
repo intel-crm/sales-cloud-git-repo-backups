@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>IPS - Org Admin - HPC</groups>
+    <groups>HPC - Knights Corner Unassigned</groups>
+    <groups>HPC - Groveport BIOS Unassigned</groups>
+    <groups>HPC - Knights Landing Unassigned</groups>
+    <groups>HPC - Omni Path Arch</groups>
+    <groups>HPC - Bull Support</groups>
+    <groups>HPC - Taiwan Support</groups>
+    <groups>HPC - Dell Support</groups>
+    <groups>HPC - Supermicro Support</groups>
+    <groups>HPC - PRC Support</groups>
+    <groups>HPC - Google Support</groups>
+    <groups>HPC - HP Support</groups>
+    <groups>HPC - SGI Support</groups>
+    <groups>HPC - Fujitsu Support</groups>
+    <groups>HPC - Wistron Support</groups>
+    <groups>HPC - Cray Support</groups>
+    <groups>HPC - Eurotech Support</groups>
+    <groups>HPC - Unassigned</groups>
+    <label>IPS - Org Admin - HPC</label>
+    <loginAccess>false</loginAccess>
+    <roles>IPS Product OrgAdmin</roles>
+    <roles>EMP_11298293_Kenta_Ueda</roles>
+</DelegateGroup>

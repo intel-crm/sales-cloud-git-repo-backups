@@ -1,0 +1,13 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item padding="around-mediam" flexibility="no-flex" > <!--size="11"-->
+            <template if:true={displayPOPMessage}>
+            <div class="slds-align_absolute-center"> <!-- class="slds-float_none"  -->
+                <lightning-icon class="warning" icon-name="utility:warning" alternative-text="Info!" variant="warning"
+                size="small"></lightning-icon>&nbsp;
+                <font color="red"><lightning-formatted-text value={message}></lightning-formatted-text> </font> 
+            </div>  
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

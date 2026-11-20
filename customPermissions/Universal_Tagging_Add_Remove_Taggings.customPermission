@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used to limit visibility of Universal Tagging functionality in Lightning Pages to users with the Universal Tagging Add Remove Taggings perm set.</description>
+    <isLicensed>false</isLicensed>
+    <label>Universal Tagging Add Remove Taggings</label>
+</CustomPermission>

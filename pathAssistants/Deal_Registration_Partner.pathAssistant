@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Core_Design_Registration__c</entityName>
+    <fieldName>Workflow_Status__c</fieldName>
+    <masterLabel>Deal Registration - Partner</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;At this Stage, the Pre check from the Approver is completed&lt;/p&gt;</info>
+        <picklistValueName>Pre-Approved</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;At this stage, the Deal form is Submitted and ready for the Approval&lt;/p&gt;</info>
+        <picklistValueName>Submitted</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>PCC_Deal_Registration_Partner</recordTypeName>
+</PathAssistant>

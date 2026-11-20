@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>true</plural>
+        <value>Восстановление</value>
+    </caseValues>
+    <fields>
+        <label>Сумма (долл. США)</label>
+        <name>Core_MDF_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Заявка</label>
+        <name>Core_MDF_Claim_Id__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Рейтинг партнерства</label>
+        <name>Core_MDF_PartnershipGradeMaintenance_Nbr__c</name>
+        <relationshipLabel><!-- Recoveries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Recovered Budget --></label>
+        <name>Core_MDF_Recovered_Budget_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Урегулирование &gt; получение оплаты</label>
+        <name>Core_MDF_Sure_Pay_Ind__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
+</CustomObjectTranslation>

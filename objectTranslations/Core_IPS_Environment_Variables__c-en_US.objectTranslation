@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Environmental Detail Master</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Environmental Details Master</value>
+    </caseValues>
+    <fields>
+        <label><!-- Answers --></label>
+        <name>Core_Answers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Datatype --></label>
+        <name>Core_Datatype__c</name>
+        <picklistValues>
+            <masterLabel>Multiselect Picklist</masterLabel>
+            <translation><!-- Multiselect Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text (255)</masterLabel>
+            <translation><!-- Text (255) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text Area (5000)</masterLabel>
+            <translation><!-- Text Area (5000) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Product Organization --></label>
+        <name>Core_Product_Organization__c</name>
+        <relationshipLabel><!-- Environmental Details Master --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- To prevent discrepancies in Case data, reverting from Inactive to Active has been disabled. If needed, please contact Production Support to have the flag reset to Active. --></help>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_Type__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Once set to Inactive, the Status cannot be reset to Active. This is to prevent inconsistencies in Case usage of the Environment Detail Question. --></errorMessage>
+        <name>Core_IPS_EnvDtlsMaster_Cant_Revert_2_Act</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot change the datatype of an existing Environment Detail. Create a new record with the correct datatype if needed. --></errorMessage>
+        <name>Core_IPS_EnvDtlsMstr_No_Change_Datatype</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter at least 1 row of text when Datatype is &apos;Picklist&apos; or &apos;Multiselect Picklist&apos;. --></errorMessage>
+        <name>Core_IPS_Env_Dtls_Master_Ans_No_Blanks</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_IPS_Add_To_Products --></label>
+        <name>Core_IPS_Add_To_Products</name>
+    </webLinks>
+</CustomObjectTranslation>

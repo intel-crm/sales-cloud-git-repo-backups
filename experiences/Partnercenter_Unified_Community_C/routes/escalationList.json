@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "c22e263e-a3d0-41ff-9ab4-180eba5bd05c",
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Escalation_List__c",
+  "id" : "e4f094c9-8743-4db1-89ac-085bf955e4d3",
+  "label" : "Escalation List",
+  "objectApiName" : "Core_MDF_Escalation__c",
+  "routeType" : "list-a4S",
+  "type" : "route",
+  "urlPrefix" : "core-mdf-escalation"
+}

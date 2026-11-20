@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores all the languages supported. Will refer these values while calling the external service for localization</description>
+    <fields>
+        <fullName>Language_Code__c</fullName>
+        <description>Stories the country code</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Language Code</label>
+        <length>6</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Locale_Nm__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Locale Name</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PIM_Language_Code__c</fullName>
+        <description>To Store Language Code to be sent to PIM</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PIM Language Code</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PIM_Locale_Name__c</fullName>
+        <description>To Store Locale Name to be sent to PIM</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PIM Locale Name</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Target_Locale_Nm__c</fullName>
+        <description>This field holds the target language for the translation</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Target Language for the the translation</inlineHelpText>
+        <label>Target Locale</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_Language</label>
+    <listViews>
+        <fullName>All_Columns</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Language_Code__c</columns>
+        <columns>Locale_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Columns</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PMP_Languages</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

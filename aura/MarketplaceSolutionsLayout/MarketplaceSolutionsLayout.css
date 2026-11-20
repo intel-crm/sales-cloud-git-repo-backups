@@ -1,0 +1,132 @@
+.THIS .marquee {
+    background-color: t(darkBlue);
+}
+
+.THIS .contentPanel {
+    /* min-height: 500px;*/ 
+}
+
+.THIS .container {
+    width: 100%;
+}
+
+
+.THIS .compareTray {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: t(zIndexModal);
+}
+
+/*STYLES FOR RECORD LIST */
+.THIS .forceEntityIcon {
+    display: none;
+  }
+  
+.THIS .forceCommunityRecordListDesktop .slds-page-header__title {
+font-size: 2em;
+}
+
+.THIS .forceListViewManagerHeader .forceListViewPicker .triggerLinkText {
+color: t(darkGray);
+font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+font-size: 28px;
+font-weight: 200;
+line-height: 1.3;
+}
+
+.THIS .triggerLinkTextAndIconWrapper a .slds-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.THIS .triggerLinkTextAndIconWrapper a .slds-icon use {
+fill: t(darkestGray);
+}
+
+.THIS .slds-media__figure {
+margin: 0;
+}
+
+.THIS .forceListViewManager {
+    margin: 0 60px 60px 60px;
+}
+
+/*END STYLES FOR RECORD LIST*/
+
+@media (min-width: 768px)
+    {
+    .THIS .padding-medium {
+      padding: 1em;
+    }
+    .THIS .container {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 100%;
+    }
+    .THIS .inner {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 90%;
+    }
+    
+}
+
+@media (min-width: 992px)
+    {
+    .THIS .container {
+        width: 970px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 100%;
+    }
+    .THIS .inner {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 90%;
+    }
+    .THIS .banner{
+    	min-width: 90% !important;
+	}
+}
+
+@media (min-width: 1200px)
+{
+    .THIS .container {
+        width: 1170px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 100%;
+    }
+    .THIS .inner {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 90%;
+    }
+    .THIS .banner{
+    	min-width: 90% !important;
+	}
+}
+
+@media (min-width: 1650px)
+    {
+    .THIS .container {
+        width: 1610px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 100%;
+    }
+    .THIS .inner {
+        width: 750px;
+        max-width: 100%;
+        margin: 0 auto;
+        min-width: 90%;
+    }
+    .THIS .banner{
+    	min-width: 90% !important;
+	}
+}

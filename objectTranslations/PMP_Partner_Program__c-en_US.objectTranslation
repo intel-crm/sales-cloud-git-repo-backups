@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Partner Program</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Partner Programs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PMP_Is_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Description Chinese --></label>
+        <name>PMP_Partner_Program_Desc_Chinese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Description Japanese --></label>
+        <name>PMP_Partner_Program_Desc_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Description --></label>
+        <name>PMP_Partner_Program_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Name Chinese --></label>
+        <name>PMP_Partner_Program_Name_Chinese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Name Japanese --></label>
+        <name>PMP_Partner_Program_Name_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program Value --></label>
+        <name>PMP_Partner_Program_Value_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role Parent --></label>
+        <name>PMP_Partner_Role_Parent_Id__c</name>
+        <relationshipLabel><!-- Marketplace Partner Programs --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

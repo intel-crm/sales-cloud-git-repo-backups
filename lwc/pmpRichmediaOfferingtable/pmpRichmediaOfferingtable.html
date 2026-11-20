@@ -1,0 +1,22 @@
+<!-- sldsValidatorIgnore -->
+<template>
+<lightning-card title="Partner Offerings">
+  <lightning-button slot="actions" label="Add Asset" onclick={handleSave}></lightning-button>
+  <template if:false={offeringdata}>
+    <lightning-spinner alternative-text="Loading" size="large">
+    </lightning-spinner>
+  </template>
+  <template if:true={offeringdata}>
+    <template if:false={showSpinner}>
+      <div class="slds-box">
+        <lightning-datatable data={offeringdata} columns={cols} key-field="Id">
+        </lightning-datatable>
+      </div>
+    </template>
+    <template if:true={showSpinner}>
+      <lightning-spinner alternative-text="Loading" size="large">
+      </lightning-spinner>
+    </template>
+  </template>
+</lightning-card>
+</template>

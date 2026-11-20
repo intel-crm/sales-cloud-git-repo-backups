@@ -1,0 +1,270 @@
+<apex:page docType="html-5.0" sidebar="false" showHeader="false" manifest="/apex/CacheManifest" standardStylesheets="false">
+ <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js" />
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" />
+
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"/>
+    <apex:includeScript value="https://www.google.com/jsapi"/>
+    <apex:includeScript value="https://www.gstatic.com/charts/loader.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css"/>  
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <body>
+        <div id="wrapper" class="active">
+            <div class ="tour1 tour8"></div>
+                <!-- Sidebar 
+                <c:BM_sidepane />-->
+                <!-- Page content -->
+                <c:BM_header />
+            <div class="page-content inset" data-spy="scroll" data-target="#spy">
+                <div class="row">
+                    <div class="col-md-12 nopadding">
+                        <div class="col-md-4 nopadding">
+                            <div class="col-md-12 nopadding">
+                                <div class="panel panel-default tour2">
+                                    <div id="title_bar">
+                                        <button type="button" class="button" id="minimButton">
+                                            <i class='fa fa-minus'/>
+                                        </button>
+                                    </div>
+                                    <div class="panel-heading panel-header" >
+                                        <h3 class="panel-title">Current Status</h3>
+                                    </div>
+                                    <div class="panel-body">                                    
+                                        <c:BM_batchstatus />                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 nopadding">
+                                <div class="panel panel-default tour5" >
+                                    <div id="title_bar">
+                                        <button type="button" class="button" id="minimButton">
+                                            <i class='fa fa-minus'/>
+                                        </button>                                          
+                                    </div>
+                                    <div class="panel-heading panel-header">
+                                        <h3 class="panel-title">Daily Batch Frequency</h3>
+                                    </div>
+                                    <div class="panel-body" >
+                                        <!-- panel2: Batch freq. in a day -->
+                                        <c:BM_DailyBatchfrequencyCmp />
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 nopadding">
+                            <div class="col-md-12 nopadding">
+                                <div class="panel panel-default tour3">
+                                    <div id="title_bar">
+                                        <button type="button" class="button" id="minimButton">
+                                            <i class='fa fa-minus'/>
+                                        </button>
+                                    </div>
+                                    <div class="panel-heading panel-header" >
+                                        <h3 class="panel-title">Jobs In Progress</h3>
+                                    </div>
+                                    <div class="panel-body" style="max-height: 234px; overflow-y:auto;">
+                                        <c:BM_batchprogress />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 nopadding ">
+                                <div class="panel panel-default tour6">
+                                    <div id="title_bar">
+                                        <button type="button" class="button" id="minimButton">
+                                            <i class='fa fa-minus'/>
+                                        </button>                                          
+                                    </div>
+                                    <div class="panel-heading panel-header">
+                                        <h3 class="panel-title">Long Running Batches </h3>
+                                    </div>
+                                    <div class="panel-body" >                                  
+                                        <c:BM_LongRunningBatchesCmp />
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 nopadding">
+                            <div class="col-md-12 nopadding">
+                                <div class="panel panel-default tour4">
+                                    <div id="title_bar">
+                                        <button type="button" class="button" id="minimButton">
+                                            <i class='fa fa-minus'/>
+                                        </button>                                          
+                                    </div>
+                                    <div class="panel-heading panel-header">
+                                        <h3 class="panel-title">Flex Queue Holding</h3>
+                                    </div>
+                                    <div class="panel-body" >                                  
+                                        <c:BM_flexholding />
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="col-md-12 nopadding">
+                                <div class="panel panel-default tour7">
+                                    <div id="title_bar">
+                                        <button type="button" class="button" id="minimButton">
+                                            <i class='fa fa-minus'/>
+                                        </button>                                          
+                                    </div>
+                                    <div class="panel-heading panel-header">
+                                        <h3 class="panel-title">Error Out Batches</h3>
+                                    </div>
+                                    <div class="panel-body" >                                  
+                                       <c:BM_erroroutbatchesCmp />
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    
+    <style>
+            .panel-body{height:234px;overflow:auto;}
+            .panel-bodyInline{flex: 1;min-height: 234px}
+            .panel panel-default{display: flex}
+            .nopadding{ padding: 5px !important; margin: 0 !important;}
+            .up-arrow-active{color: #13be13 !important;font-weight: bolder}
+            .down-arrow-active{content: "\21C2";color: red;font-weight: bolder}
+            .up-arrow-inactive{content: "\21BF";color: #ccc;font-weight: bolder}
+            .down-arrow-inactive{content: "\21C2";color: #ccc;font-weight: bolder}
+            .no-padding{padding: 0px}
+            .no-padding-right{padding-right: 0px}
+            .border-right{border-right-width: thin;border-right-color: #ccc;border-right-style: solid}
+            .chart-legend li span{display: inline-block;width: 12px;height: 12px;margin-right: 5px}
+            .chart-legend ul{list-style: none !important}
+            .panel-header{font-family: 'Roboto', sans-serif;font-size: 20px;color: #6b6b6b}
+            .inset{
+                padding: 15px 10px 10px 15px;
+                }
+            #wrapper{
+                padding-left: 250px;transition: all 0.4s ease 0s;
+                background-color: #fff;
+            }
+            #wrapper.active{padding-left: 0}
+            #wrapper.active #sidebar-wrapper{left: 0}@media (max-width:767px){
+            #wrapper{padding-left: 0}
+            #wrapper.active{left: 250px}
+            #wrapper.active{left: 250px;transition: all 0.4s ease 0s}
+            .inset{padding: 15px}}
+            svg{width:100%;height:100%;}
+
+            .panel-default > .panel-heading{
+                color: #0c0577;
+                background-color: #ccd3ff;
+                border-color: #ddd;
+                font-size: 18px;
+                font-weight: bolder;
+            }
+            .panel-default{
+                box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2) !important;
+            }
+            #status-info{
+                font-size: 12px;
+            }
+            .modal-transparent{
+                opacity: 1.8 !important;
+            }
+            .modal{
+                font-size: 12px;
+            }
+            .modal-header{
+                color: #fff;
+                background-color: #2260c2;
+                font-size: 14px;
+                font-weight: 600;
+            }
+            .slds-scope body, .slds-scope {
+                font-size: 12px !important;
+            }
+            #mainNavBar a.navbar-tiles{
+                color: #fff !important;
+            }
+            .page-content{
+            background: linear-gradient(to right bottom,#f4effe 50%,#fff 50%);
+            }
+    </style>
+    
+    <script>
+            /* Maximize and minimize logic*/
+            $('.button').click(function() {
+                //$(this).closest('div').siblings(".panel-heading").slideToggle();
+                $(this).closest('div').siblings(".panel-body").slideToggle();
+                $("i", this).toggleClass("fa fa-minus fa fa-clone");
+            });
+    </script>
+    
+    <!-- script code for Page Tour -->
+    <script>    
+    // Instance the tour
+        var tour = new Tour({
+        steps: [
+          {
+            element: ".tour1",
+            placement: 'bottom',
+            backdrop:   false,
+            title: "Advance Batch Engine",
+            content: "Welcome to Advance Batch Engine, take this tour to be familirized with it."
+          },
+          {
+            element: ".tour2",
+            placement: 'bottom',
+            title: "Current Stauts",
+            content: "Information about Current Stauts."
+          },
+          {
+            element: ".tour3",
+            placement: 'bottom',
+            title: "Jobs In Progress",
+            content: "Information about Jobs In Progress."
+          },
+          {
+            element: ".tour4",
+            placement: 'bottom',
+            title: "Flex Holding",
+            content: "Information about Flex Holding."
+          },
+          {
+            element: ".tour5",
+            placement: 'top',
+            title: "Daily Batch frequency",
+            content: "Information about Daily Batch frequency."             
+          },
+          {
+            element: ".tour6",
+            placement: 'top',
+            title: "Long running batches",
+            content: "Information about Long running batches."              
+          },
+          {
+            element: ".tour7",
+            placement: 'top',
+            title: "Errored Out Batches",
+            content: "Information about Errored Out Batches."
+          },
+          {
+            element: ".tour8",
+            title: "Scheduled  Batches",
+            content: "Scheduled Batches Page",
+            path: "/apex/ScheduledApexDetails"
+          }
+        ],
+          backdrop: true,
+          backdropPadding: 1,
+          storage: window.localStorage // change it to false to always display the tour
+        });
+        
+        tour.init();
+        tour.start();
+    </script>
+</apex:page>

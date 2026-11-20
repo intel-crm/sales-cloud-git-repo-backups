@@ -1,0 +1,12 @@
+<template>
+  <lightning-card>
+    <template if:true={isaccessible}>
+      <div data-id="embed-container" style="height: 580px"></div>
+    </template>
+    <template if:false={isaccessible}>
+      <template if:true={loaded}>
+        <div class="slds-align_absolute-center">{accesserror}</div>
+      </template>
+    </template>
+  </lightning-card>
+</template>

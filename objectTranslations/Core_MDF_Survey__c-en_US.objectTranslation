@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Survey</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Surveys</value>
+    </caseValues>
+    <fields>
+        <label><!-- Comment --></label>
+        <name>Core_MDF_Comment_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted By --></label>
+        <name>Core_MDF_Submitted_By_id__c</name>
+        <relationshipLabel><!-- Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submitted On --></label>
+        <name>Core_MDF_Submitted_On_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Survey CapturedOn Page --></label>
+        <name>Core_MDF_Survey_CapturedOn_Page_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Account --></label>
+        <name>Core_MDF_User_Account__c</name>
+        <relationshipLabel><!-- Surveys --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- To store User&apos;s Program --></help>
+        <label><!-- User Program --></label>
+        <name>Core_MDF_User_Program_nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

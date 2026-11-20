@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>FC_Product_Schedule_Permission</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>FC_Product_Schedule_Permission</value>
+    </caseValues>
+    <fields>
+        <label><!-- Add Quarter --></label>
+        <name>Core_Add_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approve Scheduled Quarter --></label>
+        <name>Core_Approve_Scheduled_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Edit All Scheduled Quantity --></label>
+        <name>Core_Edit_All_Scheduled_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsAdmin --></label>
+        <name>Core_IsAdmin__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recall Last Approval --></label>
+        <name>Core_Recall_Last_Approval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reject Scheduled Quarter --></label>
+        <name>Core_Reject_Scheduled_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Scheduling --></label>
+        <name>Core_Start_Scheduling__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submit For Scheduled Quarter --></label>
+        <name>Core_Submit_For_Scheduled_Quarter__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

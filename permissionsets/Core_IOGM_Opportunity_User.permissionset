@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows users to check the IOGM Opportunity flag on certain opportunity records to be sent over to the Gov CRM instance.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Core_IOGM_Opportunity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>IOGM Opportunity User</label>
+</PermissionSet>

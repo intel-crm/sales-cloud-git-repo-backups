@@ -1,0 +1,200 @@
+.THIS {
+  z-index: t(zIndexCompareTray);
+}
+
+.THIS.hidden {
+  visibility: hidden;
+}
+
+.THIS .compareTray, .THIS .compareButton, .THIS .notificationMessage {
+  background-color: t(black);
+}
+
+.THIS .compareTray.open {
+  height: 340px;
+}
+
+.THIS .compareTray {
+  height: 0px;
+  transition: height 0.2s linear;
+  width: 100%;
+}
+
+.THIS .itemInTray {
+  background-color: t(white);
+  position: relative;
+  min-height: 260px;
+  width: 100%;
+}
+.THIS .itemInTray img {
+  max-height:150px;
+}
+
+.THIS .itemInTray.placeholder {
+  background-color: transparent;
+  border: 1px solid t(gray);
+}
+
+.THIS .compareTray .visibleTopSection {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  transform: translateY(-100%);
+  width: 100%;
+}
+
+.THIS .compareTray .compareButton {
+  border-radius: 2px 2px 0 0;
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.THIS .cursor {
+  cursor: pointer;
+}
+
+.THIS .smallSeparatorBottom {
+  border-color: t(lightestGray);
+  border-style: solid;
+  border-width: 0 0 1px 0;
+}
+
+.THIS .removeIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.THIS .slds-icon use {
+  fill: t(lightGray);
+}
+.THIS .slds-icon {
+  height: 0.8em;
+  width: 0.8em;
+}
+
+.THIS .textProductTitle {
+  font-weight: 300;
+}
+
+.THIS .textNotificationMsg {
+  align-self: center;
+  color: t(white);
+  text-align: center;
+}
+
+.THIS .notificationCloseIcon .slds-icon {
+  cursor: pointer;
+  padding: 1px;
+  transform: translateY(-1px);
+  height: 1em;
+  width: 1em;
+}
+
+.THIS .notificationCloseIcon .slds-icon use {
+  fill: t(white);
+}
+
+.THIS .mobileClose {
+  display: none;
+}
+@media (max-width: 767px) {
+  .THIS {
+    z-index: t(zIndexModal);
+  }
+  .THIS .mobileTray button,
+  .THIS .compareButton {
+    width: 100%;
+  }
+  .THIS .compareTray .notificationMessage {
+    display: none;
+  }
+  .THIS .compareTray.open .notificationMessage {
+    display: block;
+  }
+  .THIS .compareButton button.has-body:not(.has-icon),
+  .THIS .compareButton button {
+    min-width: calc(100% - 30px);
+  }
+  .THIS .compareTray.open .mobileClose {
+    display: block;
+    padding: 1em 1em 0 0;
+    text-align: right;
+    width: 100%;
+  }
+  .THIS .compareTray.open .compareButton {
+    display: none;
+  }
+  .THIS .compareTray.open {
+    height: calc(100vh);
+    transition-duration: 0.2s;
+    overflow: hidden;
+  }
+  .THIS .compareTray.open .visibleTopSection {
+    transform: none;
+  }
+  .THIS .compareTray.open .notificationMessage {
+    padding: 5px;
+  }
+  .THIS .compareTray.open .textNotificationMsg {
+    padding: 10px 5px;
+  }
+  .THIS .compareTray.open .textNotificationBtn {
+    text-align: center;
+  }
+  .THIS .compareTray.open .compareButton {
+    display: none;
+  }
+
+  .THIS .compareTray.open .tray-content {
+    position: absolute;
+    bottom: 0;
+  }
+  .THIS .compareList {
+    padding: 5px 10px;
+  }
+  .THIS .itemInTray {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 60px;
+    align-items: center;
+    padding-left: 10px;
+  }
+  .THIS .item-image {
+    flex: 0 0 50px;
+    justify-content: center;
+  }
+  .THIS .item-label {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% - 65px);
+    padding: 5px;
+  }
+  .THIS .removeIcon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 3px;
+    border: 0;
+    height: 25px;
+    width: 25px;
+  }
+
+}
+
+@keyframes notify {
+  0% {
+    background-color: none;
+  }
+
+  50% {
+    background-color: t(white);
+  }
+
+  100% {
+    background-color: none;
+  }
+}

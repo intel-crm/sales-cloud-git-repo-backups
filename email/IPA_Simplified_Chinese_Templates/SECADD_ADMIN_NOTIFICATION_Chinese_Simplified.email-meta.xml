@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SECADD_ADMIN_NOTIFICATION_Chinese_Simplified</name>
+    <style>none</style>
+    <subject>审核您的英特尔® 合作伙伴联盟申请</subject>
+    <textOnly>审核待定申请
+
+尊敬的{!UserName}：
+
+请审核以下申请：将{{CONTACTEMAILID}} 以帐户形式添加至您的帐户{{ACCOUNTNAME}}。
+
+请登录以批准或拒绝申请。
+
+
+谢谢！
+英特尔® 合作伙伴联盟团队
+
+发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} 英特尔公司版权所有
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隐私 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

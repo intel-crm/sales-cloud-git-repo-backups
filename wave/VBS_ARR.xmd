@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WaveXmd xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataset>VBS_ARR</dataset>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <description>VBS_Year</description>
+        <field>VBS_ARR_YEAR_DSC</field>
+        <fullyQualifiedName>VBS_ARR_YEAR_DSC</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>VBS Year</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <origin>VBS_ARR_YEAR_DSC</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>0</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <description>VBS_Quater</description>
+        <field>VBS_ARR_QUARTER_DSC</field>
+        <fullyQualifiedName>VBS_ARR_QUARTER_DSC</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>VBS Quarter</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <origin>VBS_ARR_QUARTER_DSC</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>1</sortIndex>
+    </dimensions>
+    <dimensions>
+        <customActionsEnabled>true</customActionsEnabled>
+        <description>VBS_Month</description>
+        <field>VBS_ARR_MONTH_DSC</field>
+        <fullyQualifiedName>VBS_ARR_MONTH_DSC</fullyQualifiedName>
+        <isDerived>false</isDerived>
+        <label>VBS Month</label>
+        <linkTemplateEnabled>true</linkTemplateEnabled>
+        <origin>VBS_ARR_MONTH_DSC</origin>
+        <salesforceActionsEnabled>true</salesforceActionsEnabled>
+        <showInExplorer>true</showInExplorer>
+        <sortIndex>2</sortIndex>
+    </dimensions>
+</WaveXmd>

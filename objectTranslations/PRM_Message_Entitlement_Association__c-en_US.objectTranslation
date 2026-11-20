@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Message Entitlement Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Message Entitlement Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Entitlement Detail --></label>
+        <name>PRM_Entitlement_Detail_Id__c</name>
+        <relationshipLabel><!-- Message Entitlement Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>PRM_Message_Id__c</name>
+        <relationshipLabel><!-- Message Entitlement Associations --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

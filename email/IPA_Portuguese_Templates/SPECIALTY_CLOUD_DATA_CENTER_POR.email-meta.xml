@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Intel® Partner Alliance Cloud Data Center Specialty</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SPECIALTY_CLOUD_DATA_CENTER_POR</name>
+    <style>none</style>
+    <subject>Especialização da Intel® Partner Alliance em data center em nuvem</subject>
+    <textOnly>Parabéns por sua qualificação!
+
+
+{!Contact.FirstName},
+
+Bem-vindo aos Benefícios de especialização Intel® Partner Alliance em data center em nuvem! Como um Especialista em data center em nuvem qualificado, você pode usufruir dos benefícios exclusivos* que foram preparados para ajudar você a aumentar seus negócios em nuvem, incluindo:
+
+Designação de Especialista em Centro de Dados em Nuvem
+Promoção da sua empresa realizada pela Intel como um Especialista em Nuvem
+Oportunidades de mediação com o cliente
+Pontos adicionais na compra de Produtos para servidor Intel® para nuvem
+Acesso aos recursos de Cloud Computing Intel®
+Convites prioritários para sessões de treinamento e eventos do setor
+Acesso aos Intel® Platform Testing Services
+
+Para dar início ao processo, envie um e-mail de resposta para ITP-CLOUD@intel.com, com as seguintes informações:
+
+
+Contato primário para comunicações de especialistas em nuvem
+Nome:
+E-mail:
+
+
+Para materiais adicionais de vendas e promoção
+Endereço de correspondência físico:
+Telefone:
+
+Acesse as vantagens
+
+
+*As vantagens podem variar de acordo com a região.
+
+Os parceiros da Intel têm um longo histórico de inovação e, com a Intel® Partner Alliance, nós ajudaremos você a acelerar a criação de soluções para a economia centrada em dados. Juntos, podemos nos conectar, inovar e crescer, possibilitando oportunidades extraordinárias.
+
+Acesse https://www.intel.com/content/www/br/pt/partner-alliance/help/overview.html para ajuda e orientações sobre como otimizar sua parceria.
+
+
+Obrigado,
+Sua equipe Intel® Partner Alliance
+
+Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacidade | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

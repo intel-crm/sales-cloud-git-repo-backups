@@ -1,0 +1,323 @@
+.THIS {
+  background: t(white);
+}
+.THIS .blue {
+  background-color: t(darkBlue);
+  color: t(white);
+}
+.THIS .blue a {
+  color: t(white);
+  text-decoration: underline;
+}
+.THIS .small {
+  display: block;
+  font-weight: 200;
+  margin-top: 6px;
+}
+.THIS .slds-checkbox_toggle {
+  justify-content: flex-end;
+  margin-top: .5rem;
+}
+.THIS .leadGenBox {
+  position: relative;
+}
+.THIS .alignCenter {
+  text-align: center;
+}
+.THIS.noAccess .leadGenBox {
+  pointer-events: none;
+  opacity: .5;
+}
+.THIS .disableSection {
+  pointer-events: none;
+  opacity: .5;
+}
+.THIS .cIntelButton.inline button {
+  width: 80%;
+}
+.THIS .slds-icon-action-approval {
+  background-color: t(green);
+  float:right;
+  margin-top: -10px;
+}
+
+
+.THIS .slds-checkbox_toggle .slds-checkbox_on,
+.THIS .slds-checkbox_toggle .slds-checkbox_off  {
+  text-align: center;
+  font-size: 0.750rem;
+  line-height: 1.33;
+
+}
+.THIS .slds-checkbox_toggle .slds-checkbox_faux,
+.THIS .slds-checkbox_toggle .slds-checkbox--faux {
+  background-color: #979797;
+  border-color: #979797
+}
+.THIS .slds-checkbox_toggle [type="checkbox"]:checked + .slds-checkbox_faux,
+.THIS .slds-checkbox_toggle [type="checkbox"]:checked ~ .slds-checkbox_faux,
+.THIS .slds-checkbox_toggle [type="checkbox"]:checked + .slds-checkbox_faux_container .slds-checkbox_faux {
+  background-color: t(digitalBlue);
+  border-color: t(digitalBlue);
+}
+.THIS .cMarketplaceFormDropdown .slds-form-element__label {
+  display: none;
+}
+
+.THIS .slds-p-around_medium.inputBase {
+  padding: 0;
+}
+
+.THIS .cMarketplaceFormDropdown .pillContainer:not(:first-child) {
+    margin-left: 0;
+}
+.THIS .cMarketplaceFormDropdown .pillContainer {
+    margin-right: .5em;
+}
+/*Modal settings */
+.THIS .modal-overlay {
+  max-height: 80vh;
+  padding: 0;
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  width: 80vw;
+  overflow:hidden;
+  background: t(white);
+  z-index: t(zIndexModal+ 1);
+  transition: 0.3s ease-out;
+  transform: translate(0,-200%);
+}
+
+.THIS .modal-overlay.slds-show {
+  transform: translate(0);
+}
+
+.THIS .storeFrontAdminModalBackdrop {
+  height: 100vh;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  overflow:auto;
+  opacity: 0;
+  background: t(charcoal);
+  z-index: 900;
+  transition: 0.3s ease-out;
+}
+
+.THIS .storeFrontAdminModalBackdrop.slds-show {
+  opacity: .45;
+}
+
+.THIS .modalTitle a {
+  float: right;
+}
+.THIS .modalTitle {
+  text-align: center;
+  color: t(white);
+}
+.THIS  .modalTitle a:hover .slds-icon use,
+.THIS .modalTitle a .slds-icon use {
+  fill: t(white);
+}
+
+.THIS .border-bottom {
+  border-bottom: 1px solid t(lightGray);
+}
+.THIS .modalBody {
+  padding-top: 4rem;
+  position: relative;
+  scroll-behavior: smooth;
+  max-height: calc(80vh - 72px);
+  overflow: auto;
+  padding: 4rem ;
+}
+@media (max-width: 767px) {
+
+  .THIS .modalTitle.marquee,
+  .THIS .modalTitle {
+    background: t(blue);
+    padding: 10px;
+    height: 50px;
+
+  } 
+  .THIS .modalTitle > span {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;    
+    font-size: 1.625em;
+    font-weight: 200;
+    line-height: 1.154;    
+    width: calc(100% - 22px);
+  }
+  .THIS .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .THIS .modal-overlay  {
+    height: 100vh;
+    max-height: 100vh;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow:auto;
+    transition: 0.3s ease-out;
+  }
+  .THIS .storeFrontAdminModalBackdrop {
+    z-index: -1;
+  }
+  .THIS .modalBody {
+    max-height: calc(100vh - 72px);
+    padding: 1rem;
+  }
+
+}
+
+.THIS .slds-icon-utility-success {
+  position: absolute;
+  top: -1px;
+  left: 46%;
+}
+.THIS .modalTitle .slds-icon.slds-icon-text-default {
+  width: 24px;
+  height: 24px;
+}
+.THIS .slds-icon.slds-icon-text-default {
+  width: 20px;
+  height: 20px;
+}
+.THIS .modal .slds-icon.slds-icon-text-default {
+  width: 10px;
+  height: 10px;
+}
+.THIS.slds-progress-wrapper {
+  margin: 100px 0 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.THIS .progressbar {
+  display: inline-block;
+}
+
+.THIS .progressbar li {
+  list-style-type: none;
+  width: 16%;
+  float: left;
+  position: relative;
+  text-align: center;
+}
+.THIS .progressbar li.active p {
+  padding-top: 0;
+}
+.THIS .progressbar li p {
+  color: t(darkGray);
+  padding-top: 5px;
+}
+.THIS .progressbar li.checkmark:before {
+      border: 3px solid transparent;
+}
+.THIS .progressbar li:before {
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  border: 3px solid t(lightGray);
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: transparent;
+  content: ' \25CF';
+  font-size: 0px;
+}
+.THIS .progressbar li:after {
+  width: 80%;
+  height: 4px;
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -39%;
+  background-color: t(lightGray);
+}
+.THIS .progressbar li:first-child:after {
+  content: none;
+}
+.THIS .progressbar li.active:before {
+  background-color: t(lightGray);
+  margin-top: -5px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.THIS.slds-progress_vertical .slds-progress__item_content {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.THIS .break-word {
+  word-break: break-word; 
+}
+@media (min-width: 768px) {
+  .THIS .close {
+    margin-top: -10px;
+  }
+
+  .THIS .modalTitle {
+    font-size: 2.500rem;
+    font-family: "intel-clear-headline",impact,sans-serif;
+    font-weight: 200;
+    line-height: 1;
+    text-align: center;
+    padding: 1rem;
+    height: 72px;
+  }
+
+}
+@media (max-width: 1024px) {
+  .THIS .slds-icon-utility-success {
+      position: absolute;
+      top: -5px;
+      left: -4px;
+  }
+
+  .THIS .modalBody {
+    max-height: calc(80vh - 80px);
+    padding: 1rem;
+  }
+
+  .THIS .slds-progress__item.slds-is-active .slds-progress__marker {
+      box-shadow: none;
+      background: t(lightGray);
+      border-color: t(lightGray);
+  }
+
+  .THIS .slds-progress__item .slds-progress__marker {
+      border-color: t(lightGray);
+      background: t(lightestGray);
+  }
+
+  .THIS .slds-progress__item .slds-progress__marker.checkmark {
+      border-color: transparent;
+      background: transparent;
+  }
+
+  .THIS.slds-progress_vertical .slds-progress__item.slds-is-active:before { 
+      background-color: t(lightGray);
+  }
+
+  .THIS.slds-progress_vertical .slds-progress__item:before {
+      bottom: 80%;
+  }
+  .THIS.slds-progress_vertical .slds-progress__item:after {
+      top: 80%;
+  }
+ 
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+        <translation>资料和运营优化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+        <translation>控制优化与自主性</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+        <translation>能源监测和管理</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Environment Monitoring</masterLabel>
+        <translation>环境监测</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>General Purpose</masterLabel>
+        <translation>通用</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Human Wellness Monitoring</masterLabel>
+        <translation>人体健康监测</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Interactive Media</masterLabel>
+        <translation>互动媒体</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Logistics &amp; Tracking</masterLabel>
+        <translation>物流跟踪</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Condition Monitoring</masterLabel>
+        <translation>机器状态监测</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Inspection</masterLabel>
+        <translation>产品检查</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Situational Monitoring</masterLabel>
+        <translation>情景监测</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

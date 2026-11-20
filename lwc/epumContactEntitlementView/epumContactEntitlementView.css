@@ -1,0 +1,80 @@
+.entitlmentload {
+    background-color: white;
+}
+.layoutClass:hover {
+    background-color:#eee;
+}
+.table-header {
+    background: #0e63ac;
+    color: #fff;
+}
+.slds-spinner:before, .slds-spinner:after, .slds-spinner__dot-a:before, .slds-spinner__dot-b:before, .slds-spinner__dot-a:after, .slds-spinner__dot-b:after {
+    background: #0e63ac;
+}
+.areyousure{
+    /*font-family: "intel-clear" !important;*/
+    font-size: 2rem !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+}
+.error{
+    color:red !important;
+}
+.selectedConName{
+    /*font-family: intel-clear;*/
+}
+
+.bgWhite{
+    background-color: white;
+}
+
+.vAlign{
+    vertical-align: bottom;
+}
+
+.overflowDataClass{
+    overflow-x: hidden;
+}
+
+.dataWidthFixClass{
+    width:auto;
+}
+
+.cancelbutton{
+    border-color: #d4d4d4;
+}
+
+.cancelbuttonborder{
+    border: 1px solid var(--blue, #0071C5);
+}
+
+.saveCancelButtons{
+    padding: 0.625rem 1.5rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .overflowDataClass{
+        overflow-x: auto;
+    }
+    .dataWidthFixClass{
+        width:44rem;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .saveCancelButtons{
+        padding: 0.625rem 0.5rem;
+    }
+
+    h1{
+        font-size: 23px;
+    }
+}
+
+.opClass{
+    opacity: 0.4;
+    pointer-events: none;
+}

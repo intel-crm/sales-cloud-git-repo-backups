@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Triggers when a record is inserted into PIS object with Message Type as &apos;Financial Incentive&apos; or &apos;Financial Incentive Update&apos;.</description>
+    <environments>Default</environments>
+    <interviewLabel>Pricing FI Quote and QL Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pricing FI Quote and QL Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Publishing Platform Event Message to create Financial Incentive Quote and Quote Lines.</description>
+        <name>Create_Quote_and_QL</name>
+        <label>Create Quote and QL</label>
+        <locationX>456</locationX>
+        <locationY>467</locationY>
+        <inputAssignments>
+            <field>Pricing_FI_Opportunity_IDs_txt__c</field>
+            <value>
+                <elementReference>$Record.Pricing_SObjectId__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Pricing_FI_Quote_and_QL_Creation__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Create_Quote_and_QL</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>Pricing_Message_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Financial Incentive</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Message_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Financial Incentive Update</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </filters>
+        <object>Pricing_Integration_Staging__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

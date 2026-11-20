@@ -1,0 +1,12 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "configurationTags" : [ ],
+  "devName" : "Batch_Claim_Upload__c",
+  "id" : "78c2cfe5-5c61-4206-8e43-d84347a7a146",
+  "label" : "Batch Claim Upload",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-batch-claim-upload",
+  "type" : "route",
+  "urlPrefix" : "batch-claim-upload"
+}

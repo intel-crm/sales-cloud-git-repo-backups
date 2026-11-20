@@ -1,0 +1,71 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6c04f998-82e4-4170-8db1-282847e4d968",
+  "label" : "Deal Reg List View",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "7f1855a7-32a5-4d79-867c-0174d2981b29",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9f56a2cd-e188-4546-827d-17a16def4201",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "Deal_Registrations_Draft",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Core_Design_Registration__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "d18dda91-a296-48f4-bcc3-993692865d6e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3a1dc748-94e2-47e5-8bdf-d808561134af",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "0eb000a7-79b9-4713-bf6b-5f98a126e1f4",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Deal Reg List View"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "a7bcd410-3503-4624-bc0f-9e9522e30b7d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b6b2037c-9bbd-446d-be13-8da790d65d3d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "mrADB4cVNfBuNaXAvRkcedX6SGlRqE",
+  "type" : "view",
+  "viewType" : "custom-deal-reg-list-view"
+}

@@ -1,0 +1,31 @@
+.THIS {
+  font-size: 0.813em;
+}
+
+/* Bug fix with position of checkbox not staying top left with long labels... */
+.THIS .uiInput.uiInputCheckbox {
+  position: relative;
+}
+.THIS .uiInput.uiInputCheckbox label {
+  margin-left: 28px;
+  display: inline-block;
+}
+.THIS .uiInput.uiInputCheckbox input {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.THIS .disabledTag {
+  opacity: 0.5;
+}
+
+@media (max-width: 1279px) {
+  .THIS {
+    font-size: 1em;
+  }
+
+  .THIS .uiInput.uiInputCheckbox input {
+    top: 6px;
+  }
+}

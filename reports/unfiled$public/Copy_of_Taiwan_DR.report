@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Partner_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_End_Customer_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Product_Segment_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Product_Application_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Intel_Platform_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration_Product__c.Core_Product_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Owner_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Last_Status_Change_Dt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Opportunity_Decision_Dt__c</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration_Product__c.Core_Full_Year_Value_Amt__c</field>
+    </columns>
+    <description>Country: Taiwan
+Partner Account Region: APJ
+
+Include Approved DR.</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>Synnex Technology International Corp,WORLD PEACE INDUSTRIAL CO.,LTD.,WT MICROELECTRONICS CO.,SERTEK INCORPORATED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>SYNNEX TECHNOLOGY INTERNATIONAL CORP. (HONG KONG BRANCH)</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Copy of Taiwan DR</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Core_Design_Registration__c$Core_Design_Registration_Product__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_LAST_UPDATE</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

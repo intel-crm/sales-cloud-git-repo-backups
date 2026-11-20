@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "be30a154-a27c-4322-80ca-770e57f4de79",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "2cfb5c92-dd4c-4b60-9ca1-976d9b486fff",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Campaign_Custom_Detail_core_MDF_PFR_Grid_Component",
+  "id" : "3db5a7fa-dd15-42e4-811d-5fcbfe520309",
+  "type" : "experienceVariation"
+}

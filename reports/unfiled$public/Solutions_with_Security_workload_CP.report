@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Areas__c.Core_Application_Workload__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Areas__c.Core_Technology_Enabled__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Areas__c.Core_Industry_Use_Case__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Solution_Areas__c.Core_Deal_Visible__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Solution_Areas__c.Core_Design_Visible__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Areas__c.Core_Solution_Type__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Areas__c.Core_Solution_owner_email__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Areas__c.Core_Content_Link__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <criteriaItems>
+            <column>Core_Solution_Areas__c.Core_Application_Workload__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Security: Endpoint</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Solution_Areas__c.Core_Application_Workload__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Security: Workload Protection</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Solution_Areas__c.Core_Application_Workload__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Security: Network</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Solution_Areas__c.Core_Application_Workload__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Security: Identity</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Solutions with Security workload - CP</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Solution_Areas__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>CUST_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

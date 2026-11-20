@@ -1,0 +1,330 @@
+<template>
+    <template if:true={hasAccess}>
+        <div class="pageBkGD">
+            <template if:true={showProjDetails}>
+                <template if:true={isModalOpen}>
+                    <!-- Modal/Popup Box LWC starts here -->
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- Modal/Popup Box LWC header here -->
+                            <header class="slds-modal__header editProjHeader">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close" onclick={handleCancel}>
+                                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                        size="small"></lightning-icon>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate textColor">Edit
+                                    Project
+                                    Details
+                                </h2>
+                            </header>
+                            <!-- Modal/Popup Box LWC body starts here -->
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <p class="subHeadline">Project Name</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                        <lightning-input class="inputs validateProject" value={currentCaseData.Name} name="projectName"
+                                            onchange={doSomething}
+                                            max-length="80">
+                                        </lightning-input>
+                                <template if:true={isProjectRequired}>
+                                <span class="requiredField"> {label.Core_IPS_Required} </span>
+                                </template>
+
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <p class="subHeadline">Project Description <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span></p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                        <lightning-input class="inputs"
+                                            value={currentCaseData.Core_Project_Description__c} name="projDescription"
+                                            onchange={doSomething}></lightning-input>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <p class="subHeadline">MPNDA <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                                            <lightning-helptext
+                                                content="An MultiParty Non-Disclosure Agreement is mandatory when more than one Account is Added to a Project use N/A when only one Account is Added">
+                                            </lightning-helptext>
+                                        </p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+
+                                        <lightning-input class="inputs" value={currentCaseData.Core_MPNDA__c}
+                                            name="MPNDA" onchange={doSomething} disabled="true"></lightning-input>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <p class="subHeadline">Remove Notification Details <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                                            <lightning-helptext
+                                                content="This will Strip text within emails for Case Subject, Description and Comments">
+                                            </lightning-helptext>
+                                        </p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                        <lightning-input style="padding-top:16px;" type="checkbox"
+                                            onchange={doSomething}
+                                            checked={currentCaseData.Core_IPS_Remove_Notification_Details__c}
+                                            name="removeNotiy">
+                                        </lightning-input>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <p class="subHeadline"> Project Id <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span></p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                        <lightning-input class="inputs" value={currentCaseData.Core_IPS_Project_ID__c}
+                                            name="projectId" onchange={doSomething} disabled="true"></lightning-input>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <p class="subHeadline">Status</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                        <lightning-combobox class="inputs validateStatus" value={currentCaseData.Core_Status__c}
+                                            name="status" options={projTypeOptions} onchange={doSomething}>
+                                        </lightning-combobox>
+                                <template if:true={isProjectStatusRequired}>
+                                <span class="statusRequiredField"> Project Status value cannot be changed to Draft once the project is active </span>
+                                </template>
+
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <span class="subHeadline">Enable Members as Interested <p class="subHeadline">Parties <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)
+                                             <lightning-helptext
+                                                  content="Note: If You have opted out of email notifications, this check box will be disabled">
+                                             </lightning-helptext></span></p> 
+                                        </span> 
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                                        <template if:false={gradeout}>
+                                            <lightning-input style="padding-top:16px;" type="checkbox"
+                                                name="enableMembers" onchange={doSomething}
+                                                checked={currentCaseData.Core_IPS_EnableMemberasInterestedParties__c}>
+                                            </lightning-input>
+                                        </template>
+                                        <template if:true={gradeout}>
+                                            <lightning-input type="checkbox" name="enableMembers" onchange={doSomething}
+                                                checked={currentCaseData.Core_IPS_EnableMemberasInterestedParties__c}
+                                                disabled="true"></lightning-input>
+                                        </template>
+                                    </div>
+                                </div>
+                                <div class="line"> </div>
+                                <div class="slds-align_absolute-center slds-m-around_medium">
+                                    <template if:true={hideButton}>
+                                        <input onclick={handleEditProject} type="button" class="saveproject"
+                                            value="Save "></input>
+                                    </template>
+                                    <input onclick={closeEditModal} type="button" class="cancelproject"
+                                        value="Cancel"></input>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!--Project Detail Starts-->
+    <template if:true={showmaincmp}>
+        <div class="slds-p-around_medium">
+            <lightning-button onclick={handleNavigateBack} label="< Back" title="Back to dashboard" class="noBorder">
+            </lightning-button>
+        </div>
+        <div class="Mask">
+            <div class="slds-p-around_large" style="color:white">
+
+                <template if:true={currentCaseData}>
+                    <div class="slds-truncate" style="font-size:28px">{currentCaseData.Name}</div>
+                    <div class="slds-truncate" style="font-size:16px">{currentCaseData.Core_Project_Description__c}
+                    </div>
+                </template>
+            </div>
+            <div class="slds-grid slds-wrap slds-p-left_large" style="color:white">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12" style="font-size:16px">
+
+                    <div style="font-weight:bold">MPNDA</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.Core_MPNDA__c}</div>
+                    </template>
+                </div>
+                &nbsp;&nbsp;
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Project Id</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.Core_IPS_Project_ID__c}</div>
+                    </template>
+                </div>
+                &nbsp;&nbsp;
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Status</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.Core_Status__c}</div>
+                    </template>
+                </div>
+                &nbsp;
+                <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12" style="font-size:16px">
+                    <template if:true={currentCaseData}>
+                        <lightning-input type="checkbox"
+                            checked={currentCaseData.Core_IPS_EnableMemberasInterestedParties__c}
+                            style="--lwc-colorTextLabel:#fff" label="Enable members as Interested parties" disabled>
+                        </lightning-input>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12" style="font-size:16px">
+                    <template if:true={currentCaseData}>
+                        <lightning-input type="checkbox" name="input3"
+                            checked={currentCaseData.Core_IPS_Remove_Notification_Details__c}
+                            style="--lwc-colorTextLabel:#fff" label="Remove Notification Details" disabled>
+                        </lightning-input>
+                    </template>
+                </div>
+                <div class="slds-float_right slds-p-top_xxx-small">
+                    <input onclick={openEditModal} type="button" class="caseEditBtn" value="Edit Project"></input>
+                </div>
+                <br></br>
+                <div style="margin-top: 5px; padding-left:15px;">
+                    <lightning-button-icon icon-name="utility:print" alternative-text="Print" title="Print"
+                        class="slds-m-left_xx-small" variant="border-inverse" onclick={getPrintView}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </div>
+    </template>
+    <br></br>
+    <div class="projectDeatilsBg">
+        <template if:true={showTable}>
+            <div class="slds-p-bottom_small slds-p-top_medium " style="font-size:20px;">
+                Cases
+            </div>
+            <lightning-datatable key-field="Id" data={totalCaseList} columns={columns} hide-checkbox-column="true"
+                class="casesList" sorted-by={sortBy} sorted-direction={sortDirection} onsort={handleSorting}>
+            </lightning-datatable>
+            <template if:false={isrefreshPageination}>
+            <div class="productpaginator">
+                <c-core_-i-p-s_-paginator_-l-w-c records={casesList} total-records={casesList.length}
+                    show-search-box="true" onpaginatorchange={handleCasePaginationChangeInProject}>
+                </c-core_-i-p-s_-paginator_-l-w-c>
+            </div>
+            </template>
+            <template if:true={isrefreshPageination}>
+            <div class="productpaginator">
+                <c-core_-i-p-s_-paginator_-l-w-c records={casesList} total-records={casesList.length}
+                    show-search-box="true" onpaginatorchange={handleCasePaginationChangeInProject}>
+                </c-core_-i-p-s_-paginator_-l-w-c>
+            </div>
+            </template>
+        </template>
+        <template if:false={showTable}>
+            <div class="casesListHeader">
+                No cases related to this project
+            </div>
+        </template>
+    </div>
+    <template if:true={showproducts}>
+        <div class="intelProducts">
+            <h1 class="IntelProductsHeader">Intel Products</h1>
+            <lightning-layout>
+                <div class="inputsearchProj">
+                    <lightning-layout-item>
+                        <lightning-input placeholder="Filter Products" id='projSearch' type="search"
+                            onchange={prodSearchChangeHandler}></lightning-input>
+                    </lightning-layout-item>
+                </div>
+            </lightning-layout>
+            <div style="display: block;">
+                <lightning-dual-listbox class="selectProdOptions" name="Select Options" source-label="Intel Products"
+                    options={availableProductOptions} selected-label="Included in Project" id="dualbox"
+                    onchange={handleChangeProducts} value={defalutprodvalues}  size=10 disable-reordering>
+                </lightning-dual-listbox>
+                <p class="slds-m-top_small slds-m-bottom_small">You can select multiple products at a time</p>
+                <template if:true={showaddProd}>
+                    <lightning-button
+                        class="slds-m-bottom_large slds-m-top_large slds-m-right_medium back-button projectdetailbtn"
+                        variant="brand" id='addorremove' name='addorremove' label='Add / Remove Products'
+                        onclick={handleAddOrRemoveProd}>
+                    </lightning-button>
+                </template>
+            </div>
+        </div>
+    </template>
+    <template if:true={showprojMem}>
+        <div class="intelProducts">
+            <h1 class="preimerSuppHeader">Premier Support Project Members</h1>
+            <lightning-layout>
+                <div class="inputsearchProj" style="min-width: 48.2%;">
+                    <lightning-layout-item>
+                        <lightning-input placeholder="Filter Members" id='proSearch' type="search"
+                            onchange={projMemSearchChangeHandler}></lightning-input>
+                    </lightning-layout-item>
+                </div>
+            </lightning-layout>
+            <div class="slds-grid">
+                <lightning-dual-listbox add-button-label="Add" remove-button-label="Remove" name="Select Options"
+                    source-label="Available Project Members" options={tempProjMembersOptions}
+                    selected-label="Included in Project" onchange={handleChangeProjectmembers}
+                    onclick={handleClickProjectmembers} class="selectProjOptions"
+                    value={defalutprojvalues} size=5 disable-reordering>
+                </lightning-dual-listbox>
+            </div>
+            <template if:true={showProjectMemberOwnerNote}>
+                <p class="projectMemberOwnerNote">{projectMemberOwnerNote}</p>
+            </template>
+
+            <p class="slds-m-top_small slds-m-bottom_small">You can select multiple members at a time</p>
+            <template if:true={showaddProj}>
+                <lightning-button
+                    class="slds-m-bottom_large slds-m-top_large slds-m-right_medium back-button projectdetailbtn"
+                    variant="brand" name='Add / Remove Members' label='Add / Remove Members'
+                    onclick={handleSaveMemeber}>
+                </lightning-button>
+            </template>
+        </div>
+    </template>
+</template>
+<template if:true={isPrintClicked}>
+    <template if:true={applicationPageUrl}>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand" label="Cancel" onclick={closeModal} style="padding-top:5px;">
+            </lightning-button>
+        </div>
+        <div class="slds-p-bottom_large slds-p-top_large">
+            <lightning-layout-item flexibility="auto" size="12" padding="around-large" style="padding-top:5px;">
+                <iframe height="600px" width="1210px" src={applicationPageUrl}></iframe>
+            </lightning-layout-item>
+        </div>
+    </template>
+</template>
+<br></br>
+<br></br>
+<c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+</div>
+<template if:true={isSpinner}>
+    <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+</template>
+</template>
+<template if:false={hasAccess}>
+    <div class="privilegeMsg">
+        <p>Insufficient Privileges</p>
+    </div><br />
+    <div class="accessMsg">
+        <p>You do not have the level of access necessary to perform the operation you requested. Please contact the
+            owner of the record or your administrator if access is necessary.</p>
+    </div><br />
+    <div align="center">
+        <lightning-button label="Go Back" onclick={handlePrevligeCancel} class="slds-m-left_x-small"></lightning-button>
+    </div><br /><br />
+</template>
+</template>

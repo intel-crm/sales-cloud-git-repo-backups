@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>All_Internal_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>All Internal Read</label>
+        <sharedTo>
+            <group>Pricing_All_Internal_Tender_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Deal_Competitor_Product_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Deal Competitor Product External</label>
+        <sharedTo>
+            <group>PCC_Deal_Reg_Partner_Group</group>
+        </sharedTo>
+        <booleanFilter>1 OR ( 2 AND 3 )</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Write In Product</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PCC_Deal_Competitor_Product_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Deal Competitor Product Internal</label>
+        <sharedTo>
+            <group>PCC_Deal_Internal_Users</group>
+        </sharedTo>
+        <booleanFilter>1 OR ( 2 AND 3 )</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Write In Product</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_All_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing All External</label>
+        <sharedTo>
+            <group>Pricing_All_External_Tender_Partners</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Divisional_Pricing_Manager_Edit</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Divisional Pricing Manager Edit</label>
+        <sharedTo>
+            <group>Pricing_Div_Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Fin_Inct_Pricing_Manager_Group_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Fin Inct Pricing Manager Group Read</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Fin_Inct_Reabate_Analyst_Group_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Fin Inct Reabate Analyst Group Read</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Rebate_Analyst_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Fin_Inct_Read_Only_Group_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Fin Inct Read Only Group Read</label>
+        <sharedTo>
+            <group>Pricing_Fin_Incntv_Read_Only_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Pricing_Manager_Edit</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Pricing Manager Edit</label>
+        <sharedTo>
+            <group>Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

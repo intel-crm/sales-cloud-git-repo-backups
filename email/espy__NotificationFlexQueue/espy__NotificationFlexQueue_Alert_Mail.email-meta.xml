@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>espy__Batch_Monitoring_Letterhead</letterhead>
+    <name>NotificationFlexQueue Alert Mail</name>
+    <style>freeForm</style>
+    <subject>Notification for Flex Queue Limit</subject>
+    <textOnly>Hi Team,
+
+The flex queue will only hold up to 100 jobs at a time. Current Jobs are in holding status above threshold range. You will see this error when a batch apex job is submitted.
+
+Thank you !!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

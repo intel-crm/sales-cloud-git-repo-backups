@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity KPI Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity KPI Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opp_KPI_Oppty_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Id --></label>
+        <name>Core_Opp_KPI_Oppty_Product_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product Name --></label>
+        <name>Core_Opp_KPI_Oppty_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_Opp_KPI_Product__c</name>
+        <relationshipLabel><!-- Opportunity KPI Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity KPI --></label>
+        <name>Core_Opp_KPI__c</name>
+        <relationshipLabel><!-- Opportunity KPI Products --></relationshipLabel>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

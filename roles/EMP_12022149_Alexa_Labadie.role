@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Annie Chamberlin</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_12022149_Alexa_Labadie</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10673104_Annie_Chamberlin</parentRole>
+</Role>

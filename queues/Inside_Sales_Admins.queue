@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Inside Sales Admins</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Inside_Sales_Admins</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PRM_Registration_Request__c</sobjectType>
+    </queueSobject>
+</Queue>

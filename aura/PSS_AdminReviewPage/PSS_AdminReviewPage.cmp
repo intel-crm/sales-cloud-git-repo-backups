@@ -1,0 +1,244 @@
+<!--IPA2.0: US-TWC729-7976-->
+<aura:component >
+</aura:component>
+<!-- <aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="PSS_AdminDetailsController">
+    
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="offeringId" type="Id" />
+    <aura:attribute name="SurveyId" type="Id" />
+    <aura:attribute name="Survey" type="Object" />
+    <aura:attribute name="loggedInAdmin" type="String" />
+    <aura:attribute name="admins" type="Object[]" />
+    <aura:attribute name="offerinStatusList" type="Object[]" />
+    <aura:attribute name="benefitsList" type="Object[]" />
+    <aura:attribute name="selectedAdmin" type="Id" />
+    <aura:attribute name="selectedOfferingStatus" type="String" />
+    <aura:attribute name="selectedBenefitStatus" type="String" />
+    <aura:attribute name="systemSuggestedBenefit" type="String" />
+    <aura:attribute name="isOpen" type="Boolean" default="false" />
+    <aura:attribute name="isTouched" type="Boolean" default="false" />
+    <aura:attribute name="disable" type="Boolean" default="false" /> 
+    <aura:attribute name="businessSegmentList" type="Object[]"  />
+    <aura:attribute name="showSpinner" type="boolean" default="false" />
+    <aura:attribute name="valid" type="boolean" default="true" />
+    <aura:attribute name="required" type="boolean" default="false" />
+    <aura:attribute name="GenreList" type="List" default="[]" description="Genre Picklist Values"/>
+    <aura:attribute name="selectedGenreList" type="List" default="[]" description="Selected Genre Picklist Values"/>
+    <aura:attribute name="attributeList" type="List" default="[]" description="Genre Picklist Values"/>
+    <aura:attribute name="selectedAttributeList" type="List" default="[]" description="Selected Genre Picklist Values"/>
+    
+    <aura:attribute name="finalAttribute" type="String" />
+    <aura:attribute name="finalGenre" type="String" />
+    
+    <aura:attribute name="ActivationCall" type="Boolean" default="false" />
+    
+    <aura:attribute name="convertToOffering" type="Boolean" default="true" />
+    <aura:attribute name="errorLogDetail" type="String" />
+    <aura:attribute name="isMpAdmin" type="Boolean" default="false" />
+    <aura:attribute name="solutionList" type="object"  />
+    <aura:attribute name="aiipWarning" type="Boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-theme_default">
+        <lightning:layout>
+            <lightning:layoutItem flexibility="auto">
+                <div>
+                    <div class="heading-24 slds-m-horizontal_medium slds-p-top_small borderBottom">
+                        {!$Label.c.PMP_Admin_Review}
+                    </div>
+                    
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+             <aura:if isTrue="{!v.showSpinner}">
+                <lightning:spinner class="mainSpinner" alternativeText="Loading.."/>
+            </aura:if>
+        <div>
+            <lightning:layout class="padding-mobile-vertical-medium padding-desktop-vertical-x-large">
+                <lightning:layoutItem size="12">
+                    <lightning:layout multipleRows="true">
+                        
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                            <aura:if isTrue="{!$Label.c.PMP_Assigned_to_Admin}">
+                                <lightning:input aura:id="input"
+                                                 disabled="true"
+                                                 label="{!$Label.c.PMP_Assigned_to_Admin}"
+                                                 value="{!v.loggedInAdmin}" />
+                            </aura:if>
+                            
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 adminBChnage">
+                            <div>
+                                <span onclick="{!c.toggleModal}">
+                                    <c:IntelButton class="inline largeMobile">
+                                        {!$Label.c.PMP_Select_Admin}
+                                    </c:IntelButton>
+                                </span>
+                            </div>
+                        </lightning:layoutItem>
+                    </lightning:layout> -->
+    <!--        <aura:if isTrue="{!v.showSpinner}">
+                <lightning:spinner class="mainSpinner" alternativeText="Loading.." style="position: fixed;"/>
+            </aura:if> -->
+                    <!--<lightning:layout  multipleRows="true">
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                            
+                            <lightning:select class="width other-admin-font" aura:id="adminOfferingStatus"
+                                              name="select" label="Solution Status" required="false"
+                                              onchange="{! c.offeringStatusChange }" value="{!v.Survey.PSS_Partner_Solution_Lifecycle_Status_Nm__c}">
+                                <aura:iteration items="{!v.offerinStatusList}" var="offerinStatus" indexVar="key">
+                                    
+                                    <option text="{!offerinStatus.label}" value="{!offerinStatus.value}"
+                                            selected="{!offerinStatus.selected}"></option>
+                                </aura:iteration>
+                            </lightning:select> 
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                        <lightning:input type="text" label="{!$Label.c.PSS_Consolidated_Score}" name="consolidatedscore" value="{!v.Survey.PSS_Impact_Path_Score__c}" disabled="true"/>
+                    </lightning:layoutItem>
+                    
+                    <aura:if isTrue="{! v.selectedOfferingStatus == 'Cancelled' }">
+                        <lightning:layout>
+                            <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                                <lightning:input type="text" name="cancelreason" label="Cancel Reason" value="{!v.Survey.PSS_Cancel_Reason_Txt__c}"/>
+                            </lightning:layoutItem>
+                        </lightning:layout> 
+                    </aura:if>-->
+                    <!-- if status=rejected show optional rejection reason text box-->
+                    <!-- <aura:if isTrue="{! v.selectedOfferingStatus == 'Rejected' }">
+                        <lightning:layout>
+                            <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                                <lightning:input type="text" name="rejectreason" label="Rejection Reason" value="{!v.Survey.PSS_Rejection_Reason_Txt__c}" maxlength="32000"/>
+                            </lightning:layoutItem>
+                        </lightning:layout> 
+                    </aura:if>
+                    <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">          
+                        
+                        <lightning:input aura:id="date1" type="date" onchange="{! c.dateChange }" required="{!v.required}" name="input2" label="On Hold Follow Up Date" value="{!v.Survey.PSS_Follow_up_Date_Dt__c}"/>
+                        
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">          
+                        
+                    <lightning:input type="date" aura:id="dateReviewScheduled" onchange="{! c.dateChange }"  name="input2" label="Review Scheduled Date" value="{!v.Survey.PSS_Review_Scheduled_Date_dt__c}"/>
+                        
+                    </lightning:layoutItem>     
+                    <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">              
+                        <lightning:dualListbox aura:id="selectGenre"
+                                               name="Genre"
+                                               label="Solutions Applicable"
+                                               sourceLabel="Available Solutions"
+                                               selectedLabel="Selected Solutions"
+                                               options="{!v.GenreList }"
+                                               value="{!v.selectedGenreList}"
+                                               onchange="{!c.handleGenreChange}"/>
+                    </lightning:layoutItem> 
+                    
+                    <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">              
+                        <lightning:dualListbox aura:id="selectGenre"
+                                               name="Genre"
+                                               label="Strategic Attributes"
+                                               sourceLabel="Available Attributes"
+                                               selectedLabel="Selected Attributes"
+                                               options="{!v.attributeList }"
+                                               value="{!v.selectedAttributeList}"
+                                               onchange="{!c.handleAttributeChange}"/>
+                    </lightning:layoutItem> 
+                             <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12">
+                            <div class="slds-grid slds-gutters fontFamily" >
+                                <div class="slds-col slds-size_2-of-3 reCalButton">
+                                    <span>
+                                        {!$Label.c.PSS_Re_evaluate_button_description}
+                                    </span>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3 reCalButton1">
+                                    <span onclick="{!c.calculateImpactpathScore}">
+                                        <c:IntelButton class="button inline largeMobile"  disabled="{! v.disable}">
+                                            {!$Label.c.PSS_Re_evelute}
+                                        </c:IntelButton>
+                                    </span>
+                                </div>
+                            </div>
+                    </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                            
+                            <lightning:select class="width other-admin-font" aura:id="survey"
+                                              name="select" label="Admin suggested Benefit Level" required="false"
+                                              onchange="{! c.surveyStatusChange }">                                         
+                                <aura:iteration items="{!v.benefitsList}" var="offerinStatus" indexVar="key">
+                                    <option text="{!offerinStatus.label}" value="{!offerinStatus.value}"
+                                            selected="{!offerinStatus.value==v.selectedBenefitStatus}"></option> 
+                                </aura:iteration>
+                            </lightning:select> 
+                            
+                        </lightning:layoutItem>
+                        
+                        <lightning:layoutItem class="slds-p-around_medium slds-size_12-of-12 slds-medium-size_6-of-12 ">
+                            
+                            <div class="slds-grid slds-wrap">
+                                <p class="slds-p-right_medium"><b>System Suggested Benefit Level : </b></p>
+                                <div class="segment-font">
+                                    <p>{!v.systemSuggestedBenefit} </p> 
+                                </div>
+                            </div>
+                        </lightning:layoutItem>
+                        
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem>
+                        <aura:if isTrue="{!v.isOpen}">
+                            <div>
+                                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium"
+                                         aria-labelledby="modal-heading-01" aria-modal="true"
+                                         aria-describedby="modal-content-id-1">
+                                    <div class="slds-modal__container adminSelectBtn">
+                                        <header class="slds-modal__header adminPopUpBtn">
+                                            
+                                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                                {!$Label.c.PMP_Select_Admin}</h2>
+                                        </header>
+                                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                            <lightning:select class="width" aura:id="adminModal" name="select"
+                                                              label="{!$Label.c.PMP_Admin}" required="false" onchange="{!c.handleChange }">
+                                                <aura:iteration items="{!v.admins}" var="admin">
+                                                    <option text="{!admin.Name}" value="{!admin.Id}"></option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                            
+                                        </div>
+                                        
+                                        <footer class="slds-modal__footer">
+                                            <button class="slds-button slds-button_neutral"
+                                                    onclick="{!c.toggleModal}">{!$Label.c.Core_PMP_Cancel}</button>
+                                            <button class="slds-button slds-button_brand"
+                                                    onclick="{!c.modalSave}">{!$Label.c.Core_PMP_Save}</button>
+                                        </footer>
+                                    </div>
+                                </section>
+                                <div class="slds-backdrop slds-backdrop_open"></div>
+                            </div>
+                        </aura:if>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+        </div> -->
+        
+        <!--updated for Activation call US985712-->
+        <!-- <aura:if isTrue="{!v.ActivationCall == true }">
+            <c:pssActivationCallOnApproval onactivation="{!c.activationcallChanges}" oncancelActivation="{!c.cancelActivationChanges}">
+            </c:pssActivationCallOnApproval>
+        </aura:if>
+        
+        <div class="slds-p-top_x-large padding-mobile-horizontal-medium">
+            <span class="mobileFloatRight desktopFloatRight" onclick="{!c.saveAdminChanges}">
+                <c:IntelButton class="inline largeMobile" disabled="{! v.disable}">
+                    {!$Label.c.PMP_Edit_Storefront_Submit_Btn}
+                </c:IntelButton>
+            </span>
+            
+        </div>
+    </aura:component> -->

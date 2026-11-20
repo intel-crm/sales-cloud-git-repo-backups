@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Personalize Your Sales CRM Experience</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;This walkthrough will show you how to personalize your Sales CRM experience. You&apos;ll learn how to customize your navigation tabs and other user settings. Select &lt;strong&gt;Next&lt;/strong&gt; to view the steps. You can &lt;strong&gt;Dismiss&lt;/strong&gt; the walkthrough at any time.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <experience>Lightning</experience>
+        <isPublished>false</isPublished>
+        <masterLabel>Personalize Your Sales CRM Experience Step 1</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2026-09-09</startDate>
+        <stepNumber>1</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme1</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Customize Your Sales CRM Experience</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Click the &lt;strong&gt;Pencil icon&lt;/strong&gt; (🖉) on the top-right corner of the menu bar. A pop-up window (Edit Sales App Navigation Items) will open.&lt;/p&gt;&lt;p&gt;From this window, you can add, reorder, rename, or remove tabs to create a navigation experience that works best for you.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <experience>Lightning</experience>
+        <isPublished>false</isPublished>
+        <masterLabel>Personalize Your Sales CRM Experience Step 2</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>2</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Customize Your Tabs</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;ul&gt;&lt;li&gt;On the pop-up window, click &lt;strong&gt;Add More Items.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;Select &quot;&lt;strong&gt;All&lt;/strong&gt;&quot; from the left side menu to browse available tabs.&lt;/li&gt;&lt;li&gt;Locate the tab(s) you want and click the (&lt;strong&gt;+&lt;/strong&gt;) icon to add them. You can select &lt;strong&gt;multiple tabs&lt;/strong&gt; at once.&lt;/li&gt;&lt;li&gt;After selecting the tabs, click &lt;strong&gt;Add Nav Item(s) &lt;/strong&gt;at the bottom right.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Organize Your Navigation&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Click the&lt;strong&gt; ☰ icon&lt;/strong&gt; next to a tab to drag and drop it into your preferred position.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;x symbol &lt;/strong&gt;to&lt;strong&gt; &lt;/strong&gt;remove a custom tab (only those you have manually added). &lt;strong&gt;Standard tabs&lt;/strong&gt;&lt;em&gt; that are default in the menu cannot be removed&lt;/em&gt;&lt;strong&gt;&lt;em&gt;.&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt; to apply your changes.&lt;/li&gt;&lt;/ul&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <displayType>DockedComposer</displayType>
+        <experience>Lightning</experience>
+        <header>Add, Remove and Reorder Tabs</header>
+        <isPublished>false</isPublished>
+        <masterLabel>Personalize Your Sales CRM Experience Step 3</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>3</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Add Tabs</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Click the &lt;strong&gt;Profile&lt;/strong&gt; icon to open the pop-up window. Select &lt;strong&gt;Settings&lt;/strong&gt; to manage your password, language, time zone, navigation, page layouts, email, calendar, and other CRM preferences, or click your &lt;strong&gt;User Name&lt;/strong&gt; to view basic profile information.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <experience>Lightning</experience>
+        <isPublished>false</isPublished>
+        <masterLabel>Personalize Your Sales CRM Experience Step 4</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;6332093bf0f54b1a82a9d31e88ac87bb&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>4</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Personalize Your Profile</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;Click the profile icon and select your &lt;strong&gt;Username &lt;/strong&gt;from the pop-up window to open your full profile. Click the camera icon to update your profile picture. Select Edit in the top-right corner to update profile details such as your name, email address and phone number.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayType>Targeted</displayType>
+        <experience>Lightning</experience>
+        <isPublished>false</isPublished>
+        <masterLabel>Personalize Your Sales CRM Experience Step 5</masterLabel>
+        <referenceElementContext>{&quot;scope&quot;:{&quot;attributes&quot;:{&quot;id&quot;:&quot;6332093bf0f54b1a82a9d31e88ac87bb&quot;}},&quot;version&quot;:2}</referenceElementContext>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>5</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Update Profile Information</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+    <promptVersions>
+        <body>&lt;p&gt;You’re now ready to personalize your Sales CRM experience. Use profile and settings options to manage your preferences, and customize navigation tabs for quick access to the tools you use most.&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <dismissButtonLabel>Dismiss</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <experience>Lightning</experience>
+        <isPublished>false</isPublished>
+        <masterLabel>Personalize Your Sales CRM Experience Step 6</masterLabel>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <stepNumber>6</stepNumber>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <title>Start Customizing</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

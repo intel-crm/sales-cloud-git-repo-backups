@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CST New Customer Account Sync</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CST New Customer Account Sync</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Value --></label>
+        <name>Account_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Customer Value --></label>
+        <name>New_Customer_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

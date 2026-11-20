@@ -1,0 +1,164 @@
+.THIS {
+  --coreIntcFullBladeEvenBackgroundColorLayout: var(--coreIntcFullBladeEvenBackgroundColor, var(--carbon-tint3));
+  --coreIntcFullBladeOddBackgroundColorLayout: var(--coreIntcFullBladeOddBackgroundColor, var(--white));
+  --coreIntcFullXssWidthLayout: var(--coreIntcFullXsstWidth, 100%);
+  --coreIntcFullXsWidthLayout: var(--coreIntcFullXsWidth, 750px);
+  --coreIntcFullSmallWidthLayout: var(--coreIntcFullSmallWidth, 980px);
+  --coreIntcFullMediumWidthLayout: var(--coreIntcFullMediumWidth, 1200px);
+  --coreIntcFullLargeWidthLayout: var(--coreIntcFullLargeWidth, 1610px);
+  --coreIntcFullBlade1WidthLayout: var(--coreIntcFullBlade1XssWidth, var(--coreIntcFullBlade1Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade2WidthLayout: var(--coreIntcFullBlade2XssWidth, var(--coreIntcFullBlade2Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade3WidthLayout: var(--coreIntcFullBlade3XssWidth, var(--coreIntcFullBlade3Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade4WidthLayout: var(--coreIntcFullBlade4XssWidth, var(--coreIntcFullBlade4Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade5WidthLayout: var(--coreIntcFullBlade5XssWidth, var(--coreIntcFullBlade5Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade6WidthLayout: var(--coreIntcFullBlade6XssWidth, var(--coreIntcFullBlade6Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade7WidthLayout: var(--coreIntcFullBlade7XssWidth, var(--coreIntcFullBlade7Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade8WidthLayout: var(--coreIntcFullBlade8XssWidth, var(--coreIntcFullBlade8Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade9WidthLayout: var(--coreIntcFullBlade9XssWidth, var(--coreIntcFullBlade9Width, var(--coreIntcFullXssWidthLayout)));
+  --coreIntcFullBlade10WidthLayout: var(--coreIntcFullBlade10XssWidth, var(--coreIntcFullBlade10Width, var(--coreIntcFullXssWidthLayout)));
+}
+
+.THIS .core-intc-blade-container-1 {
+  background-color: var(--coreIntcFullBlade1BackgroundColor, var(--coreIntcFullBladeOddBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-1-width {
+  width: var(--coreIntcFullBlade1WidthLayout);
+}
+
+.THIS .core-intc-blade-container-2 {
+  background-color: var(--coreIntcFullBlade2BackgroundColor, var(--coreIntcFullBladeEvenBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-2-width {
+  width: var(--coreIntcFullBlade2WidthLayout);
+}
+
+.THIS .core-intc-blade-container-3 {
+  background-color: var(--coreIntcFullBlade3BackgroundColor, var(--coreIntcFullBladeOddBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-3-width {
+  width: var(--coreIntcFullBlade3WidthLayout);
+}
+
+.THIS .core-intc-blade-container-4 {
+  background-color: var(--coreIntcFullBlade4BackgroundColor, var(--coreIntcFullBladeEvenBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-4-width {
+  width: var(--coreIntcFullBlade4WidthLayout);
+}
+
+.THIS .core-intc-blade-container-5 {
+  background-color: var(--coreIntcFullBlade5BackgroundColor, var(--coreIntcFullBladeOddBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-5-width {
+  width: var(--coreIntcFullBlade5WidthLayout);
+}
+
+.THIS .core-intc-blade-container-6 {
+  background-color: var(--coreIntcFullBlade6BackgroundColor, var(--coreIntcFullBladeEvenBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-6-width {
+  width: var(--coreIntcFullBlade6WidthLayout);
+}
+
+.THIS .core-intc-blade-container-7 {
+  background-color: var(--coreIntcFullBlade7BackgroundColor, var(--coreIntcFullBladeOddBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-7-width {
+  width: var(--coreIntcFullBlade7WidthLayout);
+}
+
+.THIS .core-intc-blade-container-8 {
+  background-color: var(--coreIntcFullBlade8BackgroundColor, var(--coreIntcFullBladeEvenBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-8-width {
+  width: var(--coreIntcFullBlade8WidthLayout);
+}
+
+.THIS .core-intc-blade-container-9 {
+  background-color: var(--coreIntcFullBlade9BackgroundColor, var(--coreIntcFullBladeOddBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-9-width {
+  width: var(--coreIntcFullBlade9WidthLayout);
+}
+
+.THIS .core-intc-blade-container-10 {
+  background-color: var(--coreIntcFullBlade10BackgroundColor, var(--coreIntcFullBladeEvenBackgroundColorLayout));
+}
+
+.THIS .core-intc-blade-container-10-width {
+  width: var(--coreIntcFullBlade10WidthLayout);
+}
+
+@media (min-width: 768px) {
+  .THIS .core-intc-blade-container {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .THIS {
+    --coreIntcFullBlade1WidthLayout: var(--coreIntcFullBlade1XsWidth, var(--coreIntcFullBlade1Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade2WidthLayout: var(--coreIntcFullBlade2XsWidth, var(--coreIntcFullBlade2Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade3WidthLayout: var(--coreIntcFullBlade3XsWidth, var(--coreIntcFullBlade3Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade4WidthLayout: var(--coreIntcFullBlade4XsWidth, var(--coreIntcFullBlade4Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade5WidthLayout: var(--coreIntcFullBlade5XsWidth, var(--coreIntcFullBlade5Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade6WidthLayout: var(--coreIntcFullBlade6XsWidth, var(--coreIntcFullBlade6Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade7WidthLayout: var(--coreIntcFullBlade7XsWidth, var(--coreIntcFullBlade7Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade8WidthLayout: var(--coreIntcFullBlade8XsWidth, var(--coreIntcFullBlade8Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade9WidthLayout: var(--coreIntcFullBlade9XsWidth, var(--coreIntcFullBlade9Width, var(--coreIntcFullXsWidthLayout)));
+    --coreIntcFullBlade10WidthLayout: var(--coreIntcFullBlade10XsWidth, var(--coreIntcFullBlade10Width, var(--coreIntcFullXsWidthLayout)));
+  }
+}
+
+@media (min-width: 1024px) {
+  .THIS {
+    --coreIntcFullBlade1WidthLayout: var(--coreIntcFullBlade1SmallWidth, var(--coreIntcFullBlade1Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade2WidthLayout: var(--coreIntcFullBlade2SmallWidth, var(--coreIntcFullBlade2Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade3WidthLayout: var(--coreIntcFullBlade3SmallWidth, var(--coreIntcFullBlade3Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade4WidthLayout: var(--coreIntcFullBlade4SmallWidth, var(--coreIntcFullBlade4Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade5WidthLayout: var(--coreIntcFullBlade5SmallWidth, var(--coreIntcFullBlade5Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade6WidthLayout: var(--coreIntcFullBlade6SmallWidth, var(--coreIntcFullBlade6Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade7WidthLayout: var(--coreIntcFullBlade7SmallWidth, var(--coreIntcFullBlade7Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade8WidthLayout: var(--coreIntcFullBlade8SmallWidth, var(--coreIntcFullBlade8Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade9WidthLayout: var(--coreIntcFullBlade9SmallWidth, var(--coreIntcFullBlade9Width, var(--coreIntcFullSmallWidthLayout)));
+    --coreIntcFullBlade10WidthLayout: var(--coreIntcFullBlade10SmallWidth, var(--coreIntcFullBlade10Width, var(--coreIntcFullSmallWidthLayout)));
+  }
+}
+
+@media (min-width: 1280px) {
+  .THIS {
+    --coreIntcFullBlade1WidthLayout: var(--coreIntcFullBlade1MediumWidth, var(--coreIntcFullBlade1Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade2WidthLayout: var(--coreIntcFullBlade2MediumWidth, var(--coreIntcFullBlade2Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade3WidthLayout: var(--coreIntcFullBlade3MediumWidth, var(--coreIntcFullBlade3Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade4WidthLayout: var(--coreIntcFullBlade4MediumWidth, var(--coreIntcFullBlade4Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade5WidthLayout: var(--coreIntcFullBlade5MediumWidth, var(--coreIntcFullBlade5Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade6WidthLayout: var(--coreIntcFullBlade6MediumWidth, var(--coreIntcFullBlade6Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade7WidthLayout: var(--coreIntcFullBlade7MediumWidth, var(--coreIntcFullBlade7Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade8WidthLayout: var(--coreIntcFullBlade8MediumWidth, var(--coreIntcFullBlade8Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade9WidthLayout: var(--coreIntcFullBlade9MediumWidth, var(--coreIntcFullBlade9Width, var(--coreIntcFullMediumWidthLayout)));
+    --coreIntcFullBlade10WidthLayout: var(--coreIntcFullBlade10MediumWidth, var(--coreIntcFullBlade10Width, var(--coreIntcFullMediumWidthLayout)));
+  }
+}
+
+@media (min-width: 1680px) {
+  .THIS {
+    --coreIntcFullBlade1WidthLayout: var(--coreIntcFullBlade1LargeWidth, var(--coreIntcFullBlade1Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade2WidthLayout: var(--coreIntcFullBlade2LargeWidth, var(--coreIntcFullBlade2Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade3WidthLayout: var(--coreIntcFullBlade3LargeWidth, var(--coreIntcFullBlade3Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade4WidthLayout: var(--coreIntcFullBlade4LargeWidth, var(--coreIntcFullBlade4Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade5WidthLayout: var(--coreIntcFullBlade5LargeWidth, var(--coreIntcFullBlade5Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade6WidthLayout: var(--coreIntcFullBlade6LargeWidth, var(--coreIntcFullBlade6Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade7WidthLayout: var(--coreIntcFullBlade7LargeWidth, var(--coreIntcFullBlade7Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade8WidthLayout: var(--coreIntcFullBlade8LargeWidth, var(--coreIntcFullBlade8Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade9WidthLayout: var(--coreIntcFullBlade9LargeWidth, var(--coreIntcFullBlade9Width, var(--coreIntcFullLargeWidthLayout)));
+    --coreIntcFullBlade10WidthLayout: var(--coreIntcFullBlade10LargeWidth, var(--coreIntcFullBlade10Width, var(--coreIntcFullLargeWidthLayout)));
+  }
+}

@@ -1,0 +1,125 @@
+<template>
+    <!--text-->
+    <div class="slds-m-top_x-small slds-m-bottom_x-small"> <!-- slds-m-bottom_x-large -->
+        <!-- <h2 class="slds-text-heading_medium slds-m-bottom_medium"></h2>-->
+        <div class="slds-p-around_x-small" if:false={commcheck}> <!-- slds-p-around_medium lgc-bg -->
+            <div class="main" data-id={fieldid}>
+                <template if:true={textcheck}>
+                    <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                             <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    <lightning-input type="text"  onchange={handleTextChange} variant="label-hidden" class="inputdat" value={value} name={fieldid}
+                        required={isrequiredfield} >
+                    </lightning-input>
+                </template>
+                    <template if:true={piclistcheck}>
+                    <div if:true={fromDependentField}>
+                        <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                             <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                        <lightning-combobox class="inputdat"  onchange={handleTextChange} variant="label-hidden" name={fielditself.questionId}
+                            value={fielditself.selectedValue} required={fielditself.required}  placeholder="-Select Options-" options={fielditself.lwcplaceholder}>
+                        </lightning-combobox>
+                    </div>
+                    <div if:false={fromDependentField}>
+                          <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                             <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                        <lightning-combobox class="inputdat" onchange={handleTextChange}  variant="label-hidden" required={fielditself.required} name={fielditself.id}
+                            value={picklistValue} placeholder="-Select Options-" options={fielditself.lovs}>
+                        </lightning-combobox>   
+                    </div>
+                    </template>
+              
+               
+                <template if:true={multiselectpiclistcheck}>
+                    <!--MultiSelect-->
+                    <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={isrequiredfield}>
+                             <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    <lightning-dual-listbox  variant="label-hidden" name={fieldid} required={isrequiredfield} class="inputdat"
+                         source-label="Available"  onchange={handleChange} selected-label="Selected" value={mvalue}
+                        field-level-help="" options={lovs} disable-reorderings>
+                    </lightning-dual-listbox>
+                </template>
+                <template if:true={textareacheck}>
+                    <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={isrequiredfield}>
+                             <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    <lightning-textarea  variant="label-hidden" name={fieldid} onchange={handleTextChange} value={value} class="inputdat"
+                        placeholder={placeholdertext} required={isrequiredfield}>
+                    </lightning-textarea>
+                </template>
+		<!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
+                   <template if:true={islengtherr}>
+                        <span class="lengtherr"> {label.Core_IPS_Exceeding_the_char_length}</span>
+                     </template>
+		<!-- Sowmya end-->
+                
+            </div> 
+        </div>
+
+        <div class="slds-p-around_x-small" if:true={commcheck}> 
+            <div class="main dynamicField" data-id={fieldid}>
+                <template if:true={textcheck}>
+                    <div>
+                        <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                            <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    </div>
+                    <lightning-input variant="label-hidden" type="text" required={isrequiredfield} 
+                     class="inputdat" value={value} name={fieldid} onchange={handleTextChange}>
+                    </lightning-input>
+                </template>
+                <template if:true={piclistcheck}>
+                    <div>
+                        <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                            <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    </div>
+                    <lightning-combobox variant="label-hidden" class="inputdat" onchange={handleTextChange} required={fielditself.required} name={fielditself.id}
+                            label={fielditself.label} value={picklistValue} placeholder="-Select Options-" options={fielditself.lovs}>
+                    </lightning-combobox>
+
+                </template>
+                <template if:true={multiselectpiclistcheck}>
+                    <div>
+                        <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                            <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    </div>
+                    <lightning-dual-listbox name={fieldid} class="inputdat" variant="label-hidden"
+                        source-label="Available" selected-label="Selected" onchange={handleChange} value={mvalue} required={isrequiredfield}
+                        field-level-help="" options={lovs} disable-reordering>
+                    </lightning-dual-listbox>
+                </template>
+                <template if:true={textareacheck}>
+                    <div>
+                         <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
+                        <template if:false={fielditself.required}>
+                            <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
+                        </template>
+                    </div>
+                    <lightning-textarea variant="label-hidden" onchange={handleTextChange} required={isrequiredfield} name={fieldid} value={value} class="inputdat"
+                        placeholder={placeholdertext} >
+                    </lightning-textarea>
+                </template>
+		 <!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
+                   <template if:true={islengtherr}>
+                        <span class="lengtherr"> {label.Core_IPS_Exceeding_the_char_length}</span>
+                     </template>
+		<!--Sowmya end-->
+            </div> 
+        </div>
+       
+
+    </div>
+</template>

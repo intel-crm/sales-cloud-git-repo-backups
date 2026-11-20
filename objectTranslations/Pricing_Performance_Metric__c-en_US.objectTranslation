@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Performance Metric</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Performance Metrics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Comp Score --></label>
+        <name>Pricing_Comp_SKU_Performance_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Score --></label>
+        <name>Pricing_Intel_SKU_Performance_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Text --></label>
+        <name>Pricing_Other_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Performance Metrics Used --></label>
+        <name>Pricing_Performance_Metric_Nm__c</name>
+        <picklistValues>
+            <masterLabel>ANSYS Fluent</masterLabel>
+            <translation><!-- ANSYS Fluent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ansys Mechanical</masterLabel>
+            <translation><!-- Ansys Mechanical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CP2K</masterLabel>
+            <translation><!-- CP2K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FSI Kernels</masterLabel>
+            <translation><!-- FSI Kernels --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GROMACS</masterLabel>
+            <translation><!-- GROMACS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Genomics</masterLabel>
+            <translation><!-- Genomics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HOMME</masterLabel>
+            <translation><!-- HOMME --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HPCG</masterLabel>
+            <translation><!-- HPCG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Linpack (HPL)</masterLabel>
+            <translation><!-- High Performance Linpack (HPL) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAMMPS</masterLabel>
+            <translation><!-- LAMMPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LS Dyna</masterLabel>
+            <translation><!-- LS Dyna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MILC</masterLabel>
+            <translation><!-- MILC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAMD</masterLabel>
+            <translation><!-- NAMD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OpenFOAM</masterLabel>
+            <translation><!-- OpenFOAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPEC MPI 2017</masterLabel>
+            <translation><!-- SPEC MPI 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPECfp_rate_base2006</masterLabel>
+            <translation><!-- SPECfp_rate_base2006 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPECint_rate_base2006</masterLabel>
+            <translation><!-- SPECint_rate_base2006 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPECrate2017_fp_base</masterLabel>
+            <translation><!-- SPECrate2017_fp_base --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPECrate2017_int_base</masterLabel>
+            <translation><!-- SPECrate2017_int_base --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPECvirt</masterLabel>
+            <translation><!-- SPECvirt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STREAM OMP</masterLabel>
+            <translation><!-- STREAM OMP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>StarCCM++</masterLabel>
+            <translation><!-- StarCCM++ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TPC-C</masterLabel>
+            <translation><!-- TPC-C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VASP</masterLabel>
+            <translation><!-- VASP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WRF</masterLabel>
+            <translation><!-- WRF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YASK</masterLabel>
+            <translation><!-- YASK --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Line --></label>
+        <name>Pricing_Quote_Line__c</name>
+        <relationshipLabel><!-- Performance Metrics --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Percent of weight used by the selected performance metric. --></help>
+        <label><!-- Weighting(%) --></label>
+        <name>Pricing_Weighting_Pct__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

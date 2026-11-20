@@ -1,0 +1,75 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_File_Upload_Admin
+Version     : 1.0 
+Created Date: 23 Sept 2015
+Function    : Visualforce Page IPS Admin File Upload 
+Modification Log :
+* Developer                  Date                   Description
+* ----------------------------------------------------------------------------                 
+* Malhotra, Abhimanyu S      09/23/2015             Created
+------------------------------------------------------------------------------------------------------------>
+<apex:page showHeader="true" sidebar="false" standardStylesheets="false" controller="Core_IPS_FileUpload_Controller" >
+    
+    <apex:includeScript value="{!$Resource.Core_IPS_cometd}"/>
+    <apex:includeScript value="{!$Resource.Core_IPS_jquery}"/>
+    <apex:includeScript value="{!$Resource.Core_IPS_json2}"/>
+    <apex:includeScript value="{!$Resource.Core_IPS_jquery_cometd}"/>
+    
+    <script type="text/javascript">
+    (function($){
+        $(document).ready(function() {
+            // Connect to the CometD endpoint
+            $.cometd.init({
+                url: window.location.protocol+'//'+window.location.hostname+'/cometd/34.0/',
+                requestHeaders: { Authorization: 'OAuth {!$Api.Session_ID}'}
+            });
+            
+            // Subscribe to a topic. JSON-encoded update will be returned
+            // in the callback
+            $.cometd.subscribe('/topic/IPSFileUpload', function(message) {
+                findFileDetails(message.data.sobject.Id);          
+            });
+        });
+    })(jQuery)
+    function disconnect() {
+        $.cometd.disconnect();
+    }
+    window.onbeforeunload = disconnect;
+    </script> 
+    
+    <apex:form id="navigate" >   
+        <apex:pageBlock title="{!$Label.Core_IPS_File_AdmnFlUpldPgTitle}" mode="maindetail"> 
+            <apex:pageBlockButtons location="top" >
+                <div class="center"> 
+                    <apex:commandButton onclick="window.open('{!URL}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgSCFTLnk}"/>
+                    <apex:commandButton onclick="window.open('{!fUpldmMasterPrefix}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgListView}"/>
+                    <apex:commandButton onclick="window.open('{!fAssignPrefix}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgRptAAF}"/>
+                </div>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form id="stream">
+        <apex:pageMessages />
+        <apex:actionFunction action="{!addfileId}" name="findFileDetails" rerender="stream">
+            <apex:param name="fileId" assignTo="{!fileId}" value="" />
+        </apex:actionFunction>
+        <apex:pageBlock mode="maindetail" >
+            <apex:outputLabel rendered="{!noDataFlag}">No Uploads currently detected for {!$User.FirstName} {!$User.LastName}</apex:outputLabel>
+            
+            <apex:outputLabel rendered="{!noDataFlag}"><br>{!$Label.Core_IPS_File_AdmnFlUpldPgStrmMsg}</br></apex:outputLabel>
+            <apex:pageBlockTable id="Feed" value="{!uploadedFiles}" var="fupld">
+                <apex:column headerValue="File Upload Number" >
+                    <apex:outputlink onclick="window.open('/{!fupld.Id}','_blank','width=800,height=700,toolbar=0,status=1,scrollbars=1,resizable=yes',!1);return false;">{!fupld.Name}</apex:outputlink>
+                </apex:column>
+                <apex:repeat var="f" value="{!$ObjectType.Core_IPS_File_Upload_Master__c.FieldSets.Core_Admin_Upload_Screen}">
+                    <apex:column headerValue="{!f.label}" value="{!fupld[f]}"/>
+                </apex:repeat>         
+            </apex:PageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:outputPanel layout="block" id="responseErrors"></apex:outputPanel>
+        
+    </apex:form>
+    
+</apex:page>

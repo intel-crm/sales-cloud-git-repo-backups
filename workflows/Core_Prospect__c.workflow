@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Core_Assign_to_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Core_Prospects_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Core_Assign_to_Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Core_Update_Revive_Flag</fullName>
+        <field>Core_Revive_Prospect_Flag__c</field>
+        <literalValue>0</literalValue>
+        <name>Core_Update_Revive_Flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Core_Assign_Prospect_To_Queue</fullName>
+        <actions>
+            <name>Core_Assign_to_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <failedMigrationToolVersion>238.8.2</failedMigrationToolVersion>
+        <formula>ISNEW()</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Update_Flag_On_Revive</fullName>
+        <actions>
+            <name>Core_Update_Revive_Flag</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND( TEXT(PRIORVALUE(Core_Status_Pkt__c)) = &apos;Disqualified&apos;, ISPICKVAL(Core_Status_Pkt__c, &apos;Accepted&apos;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

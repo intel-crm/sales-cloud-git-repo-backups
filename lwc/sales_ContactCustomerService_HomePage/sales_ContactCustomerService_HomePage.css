@@ -1,0 +1,66 @@
+.How{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-bottom:-15px
+}
+.Frequently{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-top:-15px
+}
+.Add{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-top:-15px
+    
+}
+.Renewal{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-bottom:-15px
+}
+.days{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-bottom:-15px
+}
+.Quartus{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-top:-15px;
+    margin-bottom:-15px
+}
+.Maxplus{
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    padding-left: 4em;
+    margin-top:-15px
+}
+.radiobutton{
+    padding-left: 4em;
+    --sds-c-button-line-height: 10rem;
+
+}
+.my-radio-group {
+    --sds-c-button-line-height: 50%;
+  }
+.main{
+    padding-left: 2em;
+    padding-top: 0em;
+    padding-bottom: 0m;
+    padding-right: 2em;
+   
+}

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Записи партии заявки</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Записи партии заявки</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Записи партии заявки</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Записи партии заявки</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value>Записи партии заявки</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value>Claim Batch Record</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>true</plural>
+        <value>Записи партии заявки</value>
+    </caseValues>
+    <fields>
+        <label><!-- 3rd Party POP Documentation Required --></label>
+        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Category --></label>
+        <name>Core_MDF_ActivityCategory__c</name>
+    </fields>
+    <fields>
+        <label>Маркетинговое действие</label>
+        <name>Core_MDF_Activity_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Подвид действия</label>
+        <name>Core_MDF_Activity_SubType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Core_MDF_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label>Дата окончания исполнения</label>
+        <name>Core_MDF_Ad_Run_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Дата начала исполнения</label>
+        <name>Core_MDF_Ad_Run_Start_Dt__c</name>
+    </fields>
+    <fields>
+        <help>Применимый процент НДС</help>
+        <label>Применимый процент НДС</label>
+        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
+        <picklistValues>
+            <masterLabel>0%</masterLabel>
+            <translation><!-- 0% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Номер банковского счета — это конфиденциальная информация. Введите только последние четыре цифры номера банковского счета. Полный номер хранится в базе данных предприятия поставщика.</help>
+        <label>Номер банковского счета (посл. 4 цифры)</label>
+        <name>Core_MDF_Bank_Account_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Идентификационный номер банка</label>
+        <name>Core_MDF_Bank_Id__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Банк</label>
+        <name>Core_MDF_Bank_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Идентификатор партии заявки</label>
+        <name>Core_MDF_Batch_ID__c</name>
+        <relationshipLabel>Записи партии заявки</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type --></label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <label>Примечания к заявке</label>
+        <name>Core_MDF_Claim_Comment_txt__c</name>
+    </fields>
+    <fields>
+        <label>Название заявки записи партии заявки</label>
+        <name>Core_MDF_Claim_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Справочный номер заявки</label>
+        <name>Core_MDF_Claim_Reference_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Страна/регион</label>
+        <name>Core_MDF_Country_Location_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country_nm__c</name>
+    </fields>
+    <fields>
+        <label>Создать дубликат</label>
+        <name>Core_MDF_Create_Duplicate_ind__c</name>
+    </fields>
+    <fields>
+        <label>Автор:</label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failure Reason --></label>
+        <name>Core_MDF_Failure_Reason_Txt__c</name>
+    </fields>
+    <fields>
+        <label>Количество показов</label>
+        <name>Core_MDF_Impressions_Cnt__c</name>
+    </fields>
+    <fields>
+        <label>Подтверждение валюты затрат</label>
+        <name>Core_MDF_Inv_Receipt_Cur_Cd__c</name>
+    </fields>
+    <fields>
+        <label>Дата подтверждения затрат</label>
+        <name>Core_MDF_Inv_Receipt_Dt__c</name>
+    </fields>
+    <fields>
+        <label>Номер подтверждения затрат</label>
+        <name>Core_MDF_Inv_Receipt_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>является дубликатом</label>
+        <name>Core_MDF_Is_Duplicate_ind__c</name>
+    </fields>
+    <fields>
+        <label>Автор последнего изменения</label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Log Info --></label>
+        <name>Core_MDF_Log_Info_txt__c</name>
+    </fields>
+    <fields>
+        <label>Средство маркетинга</label>
+        <name>Core_MDF_Media_Vehicle_txt__c</name>
+    </fields>
+    <fields>
+        <label>Сообщение</label>
+        <name>Core_MDF_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label>Количество взаимодействий</label>
+        <name>Core_MDF_NoOfEngagements_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Количество потенциальных клиентов</label>
+        <name>Core_MDF_NoOfLeads_Nbr__c</name>
+    </fields>
+    <fields>
+        <label>Количество пробных активаций</label>
+        <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node Account --></label>
+        <name>Core_MDF_Node_Account_Txt__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Невозмещаемые расходы (в местной валюте)</label>
+        <name>Core_MDF_Non_Reimbursable_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Статус записи партии заявки</label>
+        <name>Core_MDF_Processing_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation>Сбой</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Documents</masterLabel>
+            <translation>Ожидающие проверку документы</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>Отправлено</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation>Успешно</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate (%) --></label>
+        <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reimbursement Rate (%) --></label>
+        <name>Core_MDF_Reimbursement_Percent__c</name>
+    </fields>
+    <fields>
+        <label>Идентификационный номер запроса</label>
+        <name>Core_MDF_Request_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Count --></label>
+        <name>Core_MDF_Retry_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Review Hold Rule --></label>
+        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
+    </fields>
+    <fields>
+        <label>Налоги (местные)</label>
+        <name>Core_MDF_Taxes_Local_Amt__c</name>
+    </fields>
+    <fields>
+        <label>Общая сумма (в местной валюте)</label>
+        <name>Core_MDF_Total_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account ID --></label>
+        <name>Core_MDF_Ultimate_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ultimate Account --></label>
+        <name>Core_MDF_Ultimate_Account_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upload POP Document --></label>
+        <name>Core_MDF_Upload_POP_Document__c</name>
+    </fields>
+    <fields>
+        <label>Тип счета-фактуры</label>
+        <name>Core_MDF_VAT_Opt_In__c</name>
+        <picklistValues>
+            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
+            <translation>Заявка на возмещение для оплаты третьей стороны (только чистые расходы)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
+            <translation>Счет-фактура на обслуживание корпорации Intel (может применяться НДС)</translation>
+        </picklistValues>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Идентификатор записи партии заявки</nameFieldLabel>
+    <recordTypes>
+        <description><!-- Record Type for Client and Datacenter Claims --></description>
+        <label><!-- Claim Client Datacenter Batch Record --></label>
+        <name>Core_MDF_Claim_CCF_DCF_Batch_Record</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- claim batch records of RMF program --></description>
+        <label><!-- Claim RMF Batch Record --></label>
+        <name>Core_MDF_Claim_RMF_Batch_Record</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for SPCF Claims --></description>
+        <label><!-- Claim SPCF Batch Record --></label>
+        <name>Core_MDF_Claim_SPCF_Batch_Record</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage>Текущий статус заявки не допускает редактирования записи партии заявки</errorMessage>
+        <name>Core_MDF_Succesful_StageCannot_Be_Edited</name>
+    </validationRules>
+</CustomObjectTranslation>

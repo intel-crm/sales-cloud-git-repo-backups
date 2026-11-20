@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Brand Awareness</masterLabel>
+        <translation><!-- Brand Awareness --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consideration</masterLabel>
+        <translation><!-- Consideration --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Design Wins</masterLabel>
+        <translation>Vitórias de Projeto</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Outro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Preference</masterLabel>
+        <translation><!-- Preference --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Purchase Intent</masterLabel>
+        <translation><!-- Purchase Intent --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Billings</masterLabel>
+        <translation>Receita - Faturamentos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Consumption / ARR</masterLabel>
+        <translation>Receita - Consumo / ARR</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Deal Wins</masterLabel>
+        <translation>Receita - Acordos ganhos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Revenue - Pipelines/Opportunities</masterLabel>
+        <translation>Receita - Pipelines/Oportunidades</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Share of Voice</masterLabel>
+        <translation><!-- Share of Voice --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Deal Wins</masterLabel>
+        <translation>Volume - Acordos ganhos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Leads</masterLabel>
+        <translation><!-- Volume - Leads --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Pipeline/Opportunities</masterLabel>
+        <translation>Volume - Pipeline/Oportunidades</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Volume - Units</masterLabel>
+        <translation>Volume - Unidades</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

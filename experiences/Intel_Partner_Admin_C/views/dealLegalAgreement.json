@@ -1,0 +1,46 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "f841be62-58e1-47b8-a081-5b7e5e2de925",
+  "label" : "Deal Legal Agreement",
+  "regions" : [ {
+    "id" : "bc423201-59fc-4f33-85d0-31f424c8fb99",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pCC_DealReg_TermsAndConditions",
+      "id" : "4719a85f-b4ea-4d1d-a1dc-1718f5f18e95",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fa99ced7-91d5-44f4-b1b0-7e56256cc945",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6da42922-1c31-4d1b-8eea-4039f275070f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Deal Legal Agreement"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e6477fda-bf95-4f52-b914-e2f8e2bc4e37",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1b42de0b-3a62-4cdd-839f-874628f3549d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-deal-legal-agreement"
+}

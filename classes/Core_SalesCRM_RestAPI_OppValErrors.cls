@@ -1,0 +1,1 @@
+public interface Core_SalesCRM_RestAPI_OppValErrors {}

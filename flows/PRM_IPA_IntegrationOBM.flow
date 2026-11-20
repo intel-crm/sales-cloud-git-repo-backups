@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>IPA_Integration_OBM_Messsage</name>
+        <label>IPA_Integration_OBM_Messsage</label>
+        <locationX>694</locationX>
+        <locationY>432</locationY>
+        <actionName>Core_Integration_Outbound_Message__c.PRM_IPA_IntegrationOBM</actionName>
+        <actionType>outboundMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Core_Integration_Outbound_Message__c.PRM_IPA_IntegrationOBM</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Message sent to Mulesoft System when message Type = Account Inegration / COntact Integration&quot;</description>
+    <environments>Default</environments>
+    <interviewLabel>PRM_IPA_IntegrationOBM {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_IPA_IntegrationOBM</label>
+    <migratedFromWorkflowRuleName>PRM_IPA_IntegrationOBM</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>IPA_Integration_OBM_Messsage</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2)</filterLogic>
+        <filters>
+            <field>Core_MessageType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account Integration</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MessageType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Contact Integration</stringValue>
+            </value>
+        </filters>
+        <object>Core_Integration_Outbound_Message__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

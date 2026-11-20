@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Partner- OEM</fullName>
+        <default>false</default>
+        <label>Partner- OEM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - ISV</fullName>
+        <default>false</default>
+        <label>Partner - ISV</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - VAR</fullName>
+        <default>false</default>
+        <label>Partner - VAR</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - MSP/SI</fullName>
+        <default>false</default>
+        <label>Partner - MSP/SI</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - OSV</fullName>
+        <default>false</default>
+        <label>Partner - OSV</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - ODM</fullName>
+        <default>false</default>
+        <label>Partner - ODM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - Distributer</fullName>
+        <default>false</default>
+        <label>Partner - Distributer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - CSP</fullName>
+        <default>false</default>
+        <label>Partner - CSP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner - Engineering Services</fullName>
+        <default>false</default>
+        <label>Partner - Engineering Services</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+</StandardValueSet>

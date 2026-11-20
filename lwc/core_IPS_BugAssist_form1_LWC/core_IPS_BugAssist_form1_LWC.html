@@ -1,0 +1,72 @@
+<template>
+    <hr />
+    <div style="background-color: white;">
+        <div class="slds-grid slds-wrap casecreationvalign">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12 validateLogFile">
+                <p class="subHeadline">{bugAssistSSTLog}</p>
+              
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_7-of-12" style="=margin-bottom:50px;">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_3-of-6 slds-large-size_1-of-6">
+                        <lightning-input type="checkbox" label="Yes" name="yeschecked" onchange={handleChange} checked={showboolean1}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_3-of-6 slds-large-size_1-of-6">
+                        <lightning-input type="checkbox" label="No" name="nochecked" onchange={handleChange} checked={showboolean2}></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-p-top_medium">
+                    <template if:true={isLogFileValueRequired}> <span class="comboRequiredField ">{requiredLabel}</span></template>
+                </div>
+            </div>
+             <div class="slds-m-left_x-small">
+                    <!-- <template if:true={hasSSTLogFile}> -->
+                     <lightning-formatted-rich-text value={toggleMessage}> </lightning-formatted-rich-text> 
+                    <!-- </template> -->
+                </div> 
+        </div>
+        <div class="slds-m-left_xxx-small">
+            <template if:true={isFileNameExists}>
+                <p class="uploadedFileDetails"><b>{uploadedFileLabel}</b>{uploadedFileName} </p>
+            </template>
+        </div>
+
+        <!-- if Yes -->
+        <template if:true={showboolean1}>   
+            <div class="slds-p-around_medium">
+                <div class="slds-p-around_medium slds-is-relative" >
+                    <template if:false={isIframeLoaded}>
+                        <!-- <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner> -->
+                        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+                    </template>
+                </div>
+                <div>
+                    <iframe id="frameId" src={attachurl} scrolling="no" frameborder="0" height="400px" width="100%" style="overflow:hidden" onload={handleIframeURL}></iframe>
+                </div>
+            </div>
+        </template>
+        
+        <!-- if No -->
+        <div class="slds-grid slds-wrap casecreationvalign" if:true={showboolean2}>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12">
+                <p class="subHeadline">{bugAssistReason}</p>
+            </div>
+            <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                <!-- <span style="width: 100%;"> -->
+                    <div class="slds-grid slds-wrap">
+                        <template if:true={showboolean2}>
+                            <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                                <lightning-combobox name="Reason" value={selectedReason}
+                                    placeholder="-Select Reason-" options={reasonOptions}
+                                    onchange={handleSelectReason} class="inputs validateReasonForNotProvidingLogFile">
+                                </lightning-combobox>
+                            </div>
+                            <!-- <div class="slds-p-top_x-large"> -->
+                        </template>
+                    </div>
+            <template if:true={isReasonRequired}> <span class="slds-p-top_large comboRequiredField "> {requiredLabel}</span></template>
+            </div>
+        </div>
+    </div>
+</template>

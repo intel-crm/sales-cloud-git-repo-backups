@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Offering Category</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Offering Categories</value>
+    </caseValues>
+    <fields>
+        <help><!-- Holds the Ancestor Category Id of the selected Category. --></help>
+        <label><!-- Ancestor Category Id --></label>
+        <name>PMP_Ancestor_Category_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reference to the selected category --></help>
+        <label><!-- Category --></label>
+        <name>PMP_Category_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Categories --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Localized category name holds combination of English name , Japanese Name, Chinese Name separated by pipe symbol --></help>
+        <label><!-- Localized Category Name --></label>
+        <name>PMP_Localized_Category_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Stores the English Category Id of Category --></help>
+        <label><!-- PIM Category Id --></label>
+        <name>PMP_Offering_Category_External_Key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Master detail  to Offering record --></help>
+        <label><!-- Offering --></label>
+        <name>PMP_Offering_Id__c</name>
+        <relationshipLabel><!-- Partner Offering Categories --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

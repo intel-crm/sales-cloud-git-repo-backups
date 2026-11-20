@@ -1,0 +1,257 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "385157d9-a655-4009-86b8-50fae32e1b7f",
+  "label" : "Dashboard Detail",
+  "regions" : [ {
+    "id" : "e7c3f388-2741-4388-8872-9735950969e4",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1065",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "86d9f591-761e-416b-b334-0761add00399",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "37450a1a-aa4d-42ab-863f-6d7caedcea0f",
+        "es" : "0496b6c2-c77a-4800-9904-ef000f1895a2",
+        "es_mx" : "cda70f92-f3bd-48db-b680-ce0c0dc410eb",
+        "fr" : "7f217ab6-9716-4f9f-8325-cfee5489b568",
+        "it" : "71a72692-d4ce-4809-b86e-002a87c07190",
+        "ja" : "54f89d34-1151-4b87-937e-eb0d8c8961b7",
+        "ko" : "12ae5606-ab34-4d6e-ba2c-a3c32eb14e75",
+        "pt_br" : "f14be8ee-4668-416e-af17-70bbc471efc4",
+        "pt_pt" : "e34431d0-0d78-4c40-bab9-90f0a52d22c6",
+        "ru" : "18519a8c-1c7d-47f9-b9c8-21e42cfb2c99",
+        "zh_cn" : "567d6cd4-8c39-42fc-84c7-20bac33c2959",
+        "zh_tw" : "26d2c137-3f44-45fe-93ac-4547ddff9abe"
+      },
+      "renditions" : [ {
+        "id" : "567d6cd4-8c39-42fc-84c7-20bac33c2959",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "18519a8c-1c7d-47f9-b9c8-21e42cfb2c99",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e34431d0-0d78-4c40-bab9-90f0a52d22c6",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "54f89d34-1151-4b87-937e-eb0d8c8961b7",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "71a72692-d4ce-4809-b86e-002a87c07190",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7f217ab6-9716-4f9f-8325-cfee5489b568",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "cda70f92-f3bd-48db-b680-ce0c0dc410eb",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "37450a1a-aa4d-42ab-863f-6d7caedcea0f",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "12ae5606-ab34-4d6e-ba2c-a3c32eb14e75",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0496b6c2-c77a-4800-9904-ef000f1895a2",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f14be8ee-4668-416e-af17-70bbc471efc4",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "26d2c137-3f44-45fe-93ac-4547ddff9abe",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "333534e5-35ab-4be1-90fc-35f983acb5b9",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fe182901-7786-4a9f-9fc6-203ef81a073a",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "89cd8d8f-932b-4e5f-b47d-8ce90d06cf8f",
+      "renditionMap" : {
+        "de" : "208c54d0-971f-43e1-a43b-b30eb5d08957",
+        "es" : "3ce4e598-70b2-465c-8507-56e0de194ad3",
+        "es_mx" : "ba770bb1-5caa-4b6a-9bfc-0ffbc1fad070",
+        "fr" : "d7c2c316-1f0d-4273-b8e3-9f06c84addba",
+        "it" : "a17b3b65-b8a4-437e-84a2-d531849e537f",
+        "ja" : "d4e8eb2d-f638-4d98-8ac4-b73f9fae07b9",
+        "ko" : "48244f85-dbbf-4144-8249-b004c6be0aef",
+        "pt_br" : "747fc543-fa81-4f9e-a4fc-7dd0fa3825e7",
+        "pt_pt" : "82e8a812-7324-454a-af5a-dccb257d4ffb",
+        "ru" : "d91eba2b-40d2-4825-b5a9-0434f3f84039",
+        "zh_cn" : "c63fc20a-04c1-4060-b58b-46810cdb9afa",
+        "zh_tw" : "24837354-bc50-4d5c-8248-7a366fcdc47e"
+      },
+      "renditions" : [ {
+        "id" : "c63fc20a-04c1-4060-b58b-46810cdb9afa",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d91eba2b-40d2-4825-b5a9-0434f3f84039",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "82e8a812-7324-454a-af5a-dccb257d4ffb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d4e8eb2d-f638-4d98-8ac4-b73f9fae07b9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a17b3b65-b8a4-437e-84a2-d531849e537f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d7c2c316-1f0d-4273-b8e3-9f06c84addba",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ba770bb1-5caa-4b6a-9bfc-0ffbc1fad070",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "208c54d0-971f-43e1-a43b-b30eb5d08957",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "48244f85-dbbf-4144-8249-b004c6be0aef",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "3ce4e598-70b2-465c-8507-56e0de194ad3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "747fc543-fa81-4f9e-a4fc-7dd0fa3825e7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "24837354-bc50-4d5c-8248-7a366fcdc47e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "{!Record._Object}: {!Record._Title}",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "d0b220e6-9b02-45b0-afa5-5caceab1a97d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-01Z"
+}

@@ -1,0 +1,72 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_OpportunityProduct
+Version     : 1.0 
+Created Date: 21 OCT 2014
+Function    : Visualforce Page for updating division and group details on opportunity product records 
+Modification Log :
+* Developer                  Date                   Description
+* ----------------------------------------------------------------------------                 
+* Harshith M L             10/10/2014              Original Version
+* Ashwin Dash              01/11/2018              US90519 - Remove the "Advanced Technology" field on Opportunity Products
+------------------------------------------------------------------------------------------------------------>
+<apex:page standardController="OpportunityLineItem" extensions="Core_OpportunityProductController" tabStyle="Opportunity">
+    <apex:form id="theForm">
+        
+        <apex:pageMessages rendered="{!NOT(bNoRecords)}"></apex:pageMessages>
+        
+        <!-- Populating the section header with the opprtunity name -->
+        <apex:sectionHeader subtitle="{!selectedOpportunity.Name}" title="{!$Label.Core_Product_Edit}" id="theSectionHeader" />
+        <apex:outputText rendered="{!NOT(bNoRecords)}" value="{!$Label.Core_OpportunityProductEdit}"/>
+        <apex:outputPanel layout="block">
+            <br/>
+        </apex:outputPanel>
+        <apex:outputLink style="text-decoration: none;" value="{!opportunityURL}" rendered="{!bNoRecords}">{!$Label.Core_Back_To_Opportunity}</apex:outputLink>
+        <apex:outputPanel layout="block">
+            <br/>
+        </apex:outputPanel>
+        
+        <!-- Render the pageblock if there are Opportunity Product records for the opportunity -->
+        <apex:pageBlock id="thePageBlock"  >
+            
+            
+            <!-- Block of section which shows an error message if there are no Opportunity Product records related to Opportunity -->
+            <apex:outputPanel rendered="{!bNoRecords}">
+                    <apex:outputPanel layout="block">
+                        <br/>
+                        <apex:pageMessage escape="true" rendered="{!bNoRecords}" severity="info" strength="1" title="{!$Label.Core_NoOpportunityProductRecords}">
+                        </apex:pageMessage>
+                        <br/>
+                    </apex:outputPanel>
+            </apex:outputPanel>
+            
+            <!-- Block to render Buttons -->
+            <apex:pageBlockButtons rendered="{!NOT(bNoRecords)}">
+              <apex:commandButton value="{!$Label.Core_Save_Button}" action="{!saveDetails}" rerender="theForm"/>
+              <apex:commandButton value="{!$Label.Core_Cancel_Button}" action="{!URLFOR($Action.Opportunity.view, selectedOpportunity.id)}"/>
+          </apex:pageBlockButtons>
+          
+          <!-- Table to render opportunity product details related to product -->
+          <apex:pageBlockTable value="{!lstOpportunityProductsWrapper}" var="OpportunityProductsWrapperInstance" rendered="{!NOT(bNoRecords)}" >
+              <apex:column headerValue="{!LEFT($ObjectType.OpportunityLineItem.fields.Product2Id.Label,7)}" width="60%">
+                  <apex:outputText value="{!OpportunityProductsWrapperInstance.opportunityLineItemInstance.Product2.Name}" style="font-weight: bold;"/>
+              </apex:column>
+              <apex:column headerValue="{!$ObjectType.OpportunityLineItem.fields.Core_Group__c.Label}" width="10%">
+                  <apex:selectList value="{!OpportunityProductsWrapperInstance.sSelectedGroup}" size="1" disabled="{!OpportunityProductsWrapperInstance.bIsSingleGroupCode}">
+                      <apex:selectOptions value="{!OpportunityProductsWrapperInstance.lstGroupShortNames}"/>
+                  </apex:selectList>
+              </apex:column>
+              <apex:column headerValue="{!$ObjectType.OpportunityLineItem.fields.Core_Division__c.Label}" width="10%">
+                  <apex:selectList value="{!OpportunityProductsWrapperInstance.sSelectedDivision}" size="1" disabled="{!OpportunityProductsWrapperInstance.bIsSingleDivisionCode}">
+                      <apex:selectOptions value="{!OpportunityProductsWrapperInstance.lstDivisionShortNames}"/>
+                  </apex:selectList>
+              </apex:column>
+              <!--US90519 - Remove the "Advanced Technology" field on Opportunity Products -- Ashwin -->
+              <!--<apex:column headerValue="{!$ObjectType.OpportunityLineItem.fields.Core_Advanced_Technology__c.Label}" width="10%">
+                  <apex:inputField value="{!OpportunityProductsWrapperInstance.opportunityLineItemInstance.Core_Advanced_Technology__c}"/>
+              </apex:column>-->
+          </apex:pageBlockTable>
+          
+          
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

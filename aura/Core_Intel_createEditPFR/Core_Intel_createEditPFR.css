@@ -1,0 +1,30 @@
+.THIS.icn svg {
+    fill : blue !important;
+ }
+.THIS.input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+.THIS .topPaddingClass{
+    padding-top: 4.5px !important;
+}
+.THIS .slds-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+.THIS .red-fc{
+    color:red ;
+}
+.THIS .blue-fc{
+    color: blue;
+}
+
+.THIS .text-left{
+    padding-left: 0.6rem;
+}
+
+.THIS .text-right-180{
+    color:red ;
+    padding-right:180px;
+}

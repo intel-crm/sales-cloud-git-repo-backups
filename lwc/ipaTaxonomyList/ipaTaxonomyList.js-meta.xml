@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Taxonomy List</masterLabel>
+    <description>List of Taxonomy and Child Records in different variations</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Taxonomy" description="This is the 'name' of the taxonomy. ie. 'Partner_Directory' or PIM ID." name="taxonomy" type="String"/>
+            <property label="Limit number of records" name="limitRecordsValue" type="String" default="All" datasource="All, 5, 10, 15"/>
+            <property label="Show Featured Records Only" description="This flag is only for category record lists that implement a 'featured' boolean flag. It works in conjunction with the limit. (ie. to show all featured, select 'All' from the limit dropdown, and check this 'featured' box.)" name="showFeaturedOnly" type="Boolean" default="true"/>
+            <property label="Is this a recursive list of children taxonomy data?" name="listOfLists" type="Boolean"/>
+            <property label="Record Id" name="recordId" type="String"/>
+            <property label="Show Icon" name="showIcon" type="boolean" default="true"/>
+            <property label="Show Heading" name="showHeading" type="boolean" default="true"/>
+            <property label="Show View All Link" name="showViewAllLink" type="boolean" default="true"/>
+            <property label="View All Link Community Page (API Name)" name="viewAllCommunityPage" type="String" default="Home"/>
+            <property label="Card Style" name="cardStyle" type="String" datasource="No Icon,Icon Horizontal,Icon Vertical,Icon Body"/>
+            <property label="Add Separator Above Component" name="separatorAbove" type="Boolean"/>
+            <property label="Add Separator Below Component" name="separatorBelow" type="Boolean"/>
+            <property label="Add Padding Above Component" name="paddingAbove" type="Boolean"/>
+            <property label="Add Padding Below Component" name="paddingBelow" type="Boolean"/>
+            <property label="Heading Override (overrides dynamic heading from taxonomy data)" name="headingOverride" type="String"/>
+            <property label="Theme Variation" name="theme" type="String" datasource="default,inverse"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

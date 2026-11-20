@@ -1,0 +1,33 @@
+.ipa-file-card {
+  width: 12.5rem;
+}
+
+.ipa-file-card__figure {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 9rem;
+}
+
+.ipa-file__title {
+  align-self: flex-end;
+  background-color: var(--lightestGray);
+  border-top: var(--lwc-borderWidthThin, 1px) solid rgba(0, 0, 0, .16);
+  width: 100%;
+}
+
+.ipa-file-card__body {
+  font-size: .875rem;
+}
+
+.ipa-file-card__icon {
+  margin-right: .25rem;
+}
+
+.ipa-file__icon {
+  width: .687rem;
+}
+
+.ipa-file-card__actions-menu {
+  bottom: .6rem;
+}

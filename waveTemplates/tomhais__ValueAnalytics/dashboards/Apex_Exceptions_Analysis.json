@@ -1,0 +1,4424 @@
+{
+  "name" : "Apex_Exceptions_Analysis_tp",
+  "label" : "Apex Exceptions",
+  "description" : "Which Classes are generating the most amount of errors, by type, over time.",
+  "folder" : {
+    "id" : "${App.Folder.Id}"
+  },
+  "dateVersion" : 1,
+  "mobileDisabled" : false,
+  "xmd" : {
+    "measures" : [
+      {
+        "conditionalFormatting" : {
+          "chartColor" : {
+            "referenceField" : "A",
+            "type" : "gradient",
+            "parameters" : {
+              "bins" : [
+                {
+                  "formatValue" : "#E8963B"
+                },
+                {
+                  "formatValue" : "#B50E03"
+                }
+              ]
+            }
+          }
+        },
+        "field" : "ExceptionsGrid_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeater_1.F",
+        "format" : {
+          "delimiters" : { },
+          "customFormat" : "[\"#,###.##%\",100]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeater_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeater_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeater_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeater_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeater_1.C",
+        "format" : {
+          "delimiters" : { },
+          "customFormat" : "[\"#,###.##%\",100]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeaterDebug_1.C",
+        "format" : {
+          "delimiters" : { },
+          "customFormat" : "[\"#,###.##%\",100]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeaterDebug_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeaterDebug_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeaterDebug_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeaterDebug_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "SummaryRepeaterDebug_1.F",
+        "format" : {
+          "delimiters" : { },
+          "customFormat" : "[\"#,###.##%\",100]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "RequestsExceptionsSu_1.C",
+        "format" : {
+          "delimiters" : {
+            "thousands" : ",",
+            "decimal" : "."
+          },
+          "customFormat" : "[\"#,###%\",100]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "RequestsExceptionsSu_1.B",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "RequestsExceptionsSu_1.A",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "RequestsExceptionsSu_1.F",
+        "format" : {
+          "delimiters" : {
+            "thousands" : ",",
+            "decimal" : "."
+          },
+          "customFormat" : "[\"#,###%\",100]"
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "RequestsExceptionsSu_1.E",
+        "format" : {
+          "delimiters" : { }
+        }
+      },
+      {
+        "conditionalFormatting" : { },
+        "field" : "RequestsExceptionsSu_1.D",
+        "format" : {
+          "delimiters" : { }
+        }
+      }
+    ],
+    "derivedDimensions" : [ ],
+    "organizations" : [ ],
+    "showDetailsDefaultFields" : [ ],
+    "dates" : [ ],
+    "derivedMeasures" : [ ],
+    "dimensions" : [
+      {
+        "recordDisplayFields" : [ ],
+        "conditionalFormatting" : {
+          "chartColor" : {
+            "referenceField" : "A",
+            "type" : "gradient",
+            "parameters" : {
+              "bins" : [
+                {
+                  "formatValue" : "#E8963B"
+                },
+                {
+                  "formatValue" : "#B50E03"
+                }
+              ]
+            }
+          }
+        },
+        "salesforceActions" : [ ],
+        "field" : "ExceptionsGrid_1.ALL",
+        "members" : [ ],
+        "customActions" : [ ]
+      }
+    ]
+  },
+  "state" : {
+    "dataSourceLinksInfo" : {
+      "enableAutomaticLinking" : false,
+      "excludeRelationships" : [ ],
+      "links" : [
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "User.Profile.Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Users.Profile.Name"
+            }
+          ],
+          "label" : "Profile",
+          "name" : "Link_5452"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "TIMESTAMP_DERIVED"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "TIMESTAMP_DERIVED"
+            }
+          ],
+          "label" : "Date",
+          "name" : "Link_5481"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "REQUEST_ID"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "REQUEST_ID"
+            }
+          ],
+          "label" : "RequestID",
+          "name" : "Link_5511"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "User_User_Role_Name"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Users.Role.Name"
+            }
+          ],
+          "label" : "Role",
+          "name" : "Link_5553"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "User.Username"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Username"
+            }
+          ],
+          "label" : "User Name",
+          "name" : "Link_5594"
+        },
+        {
+          "fields" : [
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "USER_ID_DERIVED"
+            },
+            {
+              "dataSourceName" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}",
+              "dataSourceNamespace" : "${Org.Namespace}",
+              "dataSourceType" : "dataset",
+              "fieldName" : "Source.USER_ID_DERIVED"
+            }
+          ],
+          "label" : "User ID",
+          "name" : "Link_5660"
+        }
+      ]
+    },
+    "filters" : [
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "TIMESTAMP_DERIVED"
+        ],
+        "label" : "Date",
+        "locked" : false,
+        "operator" : ">=<="
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "EXCEPTION_TYPE"
+        ],
+        "label" : "Type",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "EXCEPTION_MESSAGE"
+        ],
+        "label" : "Message",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "STACK_TRACE"
+        ],
+        "label" : "Stack Trace",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "REQUEST_ID"
+        ],
+        "label" : "Request ID",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Users.Profile.Name"
+        ],
+        "label" : "Profile",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "User_User_Role_Name"
+        ],
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Users.Division"
+        ],
+        "label" : "Divsion",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Users.Country"
+        ],
+        "label" : "Country",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Source.User_Username"
+        ],
+        "label" : "Username",
+        "locked" : false,
+        "operator" : "in"
+      },
+      {
+        "dataset" : {
+          "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+        },
+        "dependent" : true,
+        "fields" : [
+          "Source.USER_ID_DERIVED"
+        ],
+        "label" : "User ID",
+        "locked" : false,
+        "operator" : "in"
+      }
+    ],
+    "gridLayouts" : [
+      {
+        "maxWidth" : 1600,
+        "name" : "D",
+        "numColumns" : 49,
+        "pages" : [
+          {
+            "label" : "Details Page 4",
+            "name" : "1e3e4ca5-2a09-4ca1-aa0f-d4db2245c7f7",
+            "navigationHidden" : false,
+            "widgets" : [
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_1",
+                "row" : 0,
+                "rowspan" : 4,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "rgb(0, 112, 210)",
+                  "borderEdges" : [
+                    "bottom"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 4
+                }
+              },
+              {
+                "colspan" : 21,
+                "column" : 1,
+                "name" : "text_1",
+                "row" : 1,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "rgba(255, 255, 255, 0)",
+                  "borderEdges" : [
+                    "left"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 8
+                }
+              },
+              {
+                "colspan" : 18,
+                "column" : 17,
+                "name" : "text_17",
+                "row" : 10,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "left"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 31,
+                "column" : 17,
+                "name" : "chart_9",
+                "row" : 13,
+                "rowspan" : 31,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "left"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 31,
+                "column" : 17,
+                "name" : "chart_11",
+                "row" : 44,
+                "rowspan" : 44,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_34",
+                "row" : 124,
+                "rowspan" : 38,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 11,
+                "column" : 1,
+                "name" : "table_1",
+                "row" : 97,
+                "rowspan" : 24,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 13,
+                "column" : 1,
+                "name" : "text_5",
+                "row" : 92,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#FFFFFF",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 34,
+                "column" : 12,
+                "name" : "chart_14",
+                "row" : 97,
+                "rowspan" : 24,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 49,
+                "column" : 0,
+                "name" : "container_10",
+                "row" : 91,
+                "rowspan" : 74,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#C6D3E1",
+                  "borderEdges" : [
+                    "top"
+                  ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "filterpanel_1",
+                "row" : 5,
+                "rowspan" : 5,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 45,
+                "column" : 1,
+                "name" : "text_8",
+                "row" : 162,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 45,
+                "column" : 1,
+                "name" : "text_9",
+                "row" : 121,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 16,
+                "column" : 1,
+                "name" : "chart_2",
+                "row" : 44,
+                "rowspan" : 44,
+                "widgetStyle" : {
+                  "borderEdges" : [
+                    "top"
+                  ]
+                }
+              },
+              {
+                "colspan" : 9,
+                "column" : 14,
+                "name" : "listselector_1",
+                "row" : 92,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [
+                    "all"
+                  ],
+                  "borderRadius" : 4,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 10,
+                "column" : 1,
+                "name" : "text_37",
+                "row" : 10,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "backgroundColor" : "rgba(255, 255, 255, 0)",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              {
+                "colspan" : 16,
+                "column" : 1,
+                "name" : "repeater_2",
+                "row" : 13,
+                "rowspan" : 30,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 47,
+                "column" : 1,
+                "name" : "table_5",
+                "row" : 174,
+                "rowspan" : 34,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              },
+              {
+                "colspan" : 9,
+                "column" : 1,
+                "name" : "text_23",
+                "row" : 171,
+                "rowspan" : 3,
+                "widgetStyle" : {
+                  "borderEdges" : [ ]
+                }
+              }
+            ]
+          }
+        ],
+        "rowHeight" : "fine",
+        "selectors" : [ ],
+        "style" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "backgroundColor" : "#FFFFFF",
+          "cellSpacingX" : 0,
+          "cellSpacingY" : 0,
+          "fit" : "original",
+          "gutterColor" : "rgb(240, 244, 247)"
+        },
+        "version" : 1.0
+      }
+    ],
+    "layouts" : [ ],
+    "steps" : {
+      "SummaryRepeater_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "SummaryRepeater",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "C",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "RowCount"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "unique",
+                    "Source.USER_ID_DERIVED"
+                  ],
+                  "name" : "D"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "Users.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "unique",
+                    "Source.USER_ID_DERIVED"
+                  ],
+                  "name" : "E"
+                }
+              ],
+              "filters" : [
+                [
+                  "RowCount",
+                  [
+                    0
+                  ],
+                  ">"
+                ]
+              ],
+              "groups" : [
+                "Users.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "formula" : "B/A",
+                  "name" : "C"
+                },
+                {
+                  "formula" : "E/D",
+                  "name" : "F"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ]
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "hbar",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "trellis" : [ ],
+              "dimensionAxis" : [
+                "Users.Profile.Name"
+              ],
+              "plots" : [
+                "A",
+                "C",
+                "F"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "compactNumber",
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "ApexExceptions_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "BVAApexUnexpectedExceptionWithUsers",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "groups" : [
+              [
+                "TIMESTAMP_DERIVED_Year",
+                "TIMESTAMP_DERIVED_Month",
+                "TIMESTAMP_DERIVED_Day"
+              ],
+              "Users.Profile.Name"
+            ],
+            "filters" : [
+              [
+                "RowCount",
+                [
+                  [
+                    1
+                  ]
+                ],
+                "=="
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "showPoints" : false,
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "sync",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "time",
+            "missingValue" : "cumulative",
+            "dashLine" : {
+              "measures" : "",
+              "showDashLine" : false
+            },
+            "timeAxis" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Date / Hour"
+            },
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "fillArea" : true,
+            "columnMap" : {
+              "split" : [
+                "Users.Profile.Name"
+              ],
+              "timeAxis" : [
+                "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "count"
+              ]
+            },
+            "showActionMenu" : true,
+            "showZero" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : true,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "none",
+            "theme" : "wave",
+            "applyConditionalFormatting" : true,
+            "drawArea" : {
+              "measure" : "",
+              "showDrawArea" : false,
+              "bounding1" : "",
+              "bounding2" : ""
+            }
+          },
+          "type" : "chart"
+        }
+      },
+      "RequestsExceptionsSu_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          },
+          {
+            "name" : "${App.Datasets.BVAApexExecutionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "RequestsExceptionsSummary",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "C",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "cogroupType" : "full",
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "unique",
+                    "Source.USER_ID_DERIVED"
+                  ],
+                  "name" : "D"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "Users.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "unique",
+                    "USER_ID_DERIVED"
+                  ],
+                  "name" : "E"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "User.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexExecutionWithUsers_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "formula" : "coalesce(A/B,0)",
+                  "name" : "C"
+                },
+                {
+                  "formula" : "coalesce(D/E,0)",
+                  "name" : "F"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ]
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "A",
+              "Users.Profile.Name",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "ExceptionsBarChart_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ExceptionsBarChart",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "TIMESTAMP_DERIVED_Year",
+              "filters" : [ ],
+              "ascending" : true
+            },
+            {
+              "name" : "TIMESTAMP_DERIVED_Month",
+              "filters" : [ ],
+              "ascending" : true
+            },
+            {
+              "name" : "TIMESTAMP_DERIVED_Day",
+              "filters" : [ ],
+              "ascending" : true
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : {
+            "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}" : {
+              "filters" : [
+                [
+                  "RowCount",
+                  [
+                    1
+                  ],
+                  "=="
+                ]
+              ]
+            }
+          },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "TIMESTAMP_DERIVED_Year",
+                "TIMESTAMP_DERIVED_Month",
+                "TIMESTAMP_DERIVED_Day"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "time-bar",
+            "timeAxis" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "timeAxis" : [
+                "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "A"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "compactNumber",
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "ApexExceptions_2" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "BVAApexUnexpectedExceptionWithUsers",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*",
+                "A"
+              ],
+              [
+                "count",
+                "*",
+                "B"
+              ],
+              [
+                "count",
+                "*",
+                "C"
+              ],
+              [
+                "count",
+                "*",
+                "D"
+              ],
+              [
+                "count",
+                "*",
+                "E"
+              ],
+              [
+                "count",
+                "*",
+                "F"
+              ],
+              [
+                "count",
+                "*",
+                "G"
+              ],
+              [
+                "count",
+                "*",
+                "H"
+              ]
+            ],
+            "columns" : [
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "UNABLE_TO_LOCK"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "RowLocks"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "Too many query rows"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Too Many Rows"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "CPU Time"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Apex CPU Timeout"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "Too many queueable"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Too Many Queued Jobs"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "Too Many SOQL Queries"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Too Many Queries"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "Read timed out"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Read Time-Out"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "connection was cancelled"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Connection Cancelled"
+              },
+              {
+                "query" : {
+                  "measures" : [
+                    [
+                      "count",
+                      "*"
+                    ]
+                  ],
+                  "groups" : [
+                    [
+                      "TIMESTAMP_DERIVED_Year",
+                      "TIMESTAMP_DERIVED_Month",
+                      "TIMESTAMP_DERIVED_Day",
+                      "TIMESTAMP_DERIVED_Hour"
+                    ]
+                  ],
+                  "filters" : [
+                    [
+                      "EXCEPTION_MESSAGE",
+                      [
+                        "Too many DML rows"
+                      ],
+                      "matches"
+                    ]
+                  ]
+                },
+                "header" : "Too Many DMLs"
+              }
+            ],
+            "groups" : [
+              [
+                "TIMESTAMP_DERIVED_Year",
+                "TIMESTAMP_DERIVED_Month",
+                "TIMESTAMP_DERIVED_Day",
+                "TIMESTAMP_DERIVED_Hour"
+              ]
+            ],
+            "filters" : [
+              [
+                "RowCount",
+                [
+                  [
+                    1
+                  ]
+                ],
+                "=="
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "start" : [ ],
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "showPoints" : false,
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : false,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "sync",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "time",
+            "missingValue" : "cumulative",
+            "dashLine" : {
+              "measures" : "",
+              "showDashLine" : false
+            },
+            "timeAxis" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "Date / Hour"
+            },
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "Contention Leaders",
+              "align" : "center",
+              "subtitleLabel" : "Exceptions that indicate the org is under stress due to competing, long-running or intensive operations."
+            },
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnProperties" : { },
+            "fillArea" : true,
+            "columnMap" : {
+              "split" : [ ],
+              "timeAxis" : [
+                "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day~~~TIMESTAMP_DERIVED_Hour"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H"
+              ]
+            },
+            "showActionMenu" : true,
+            "showZero" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : true,
+              "showTitle" : false,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "none",
+            "theme" : "wave",
+            "applyConditionalFormatting" : true,
+            "drawArea" : {
+              "measure" : "",
+              "showDrawArea" : false,
+              "bounding1" : "",
+              "bounding2" : ""
+            }
+          },
+          "type" : "chart"
+        }
+      },
+      "Exceptions_Exception_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ExceptionSelector",
+        "query" : {
+          "query" : {
+            "measures" : [
+              [
+                "count",
+                "*"
+              ]
+            ],
+            "groups" : [
+              "ExceptionMessageDetail"
+            ],
+            "filters" : [
+              [
+                "RowCount",
+                [
+                  [
+                    1
+                  ]
+                ],
+                "=="
+              ]
+            ],
+            "order" : [
+              [
+                "count",
+                {
+                  "ascending" : false
+                }
+              ]
+            ]
+          },
+          "version" : -1.0
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "hbar",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "trellis" : [ ],
+              "dimensionAxis" : [
+                "ExceptionMessageDetail"
+              ],
+              "plots" : [
+                "count"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "valueType" : "compactNumber",
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      },
+      "lens_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "lens_1",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "EXCEPTION_TYPE",
+              "filters" : [ ],
+              "ascending" : true
+            },
+            {
+              "name" : "TIMESTAMP_DERIVED_Year",
+              "filters" : [ ],
+              "ascending" : true
+            },
+            {
+              "name" : "TIMESTAMP_DERIVED_Month",
+              "filters" : [ ],
+              "ascending" : true
+            },
+            {
+              "name" : "TIMESTAMP_DERIVED_Day",
+              "filters" : [ ],
+              "ascending" : true
+            },
+            {
+              "name" : "TIMESTAMP_DERIVED_Hour",
+              "filters" : [ ],
+              "ascending" : true
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "EXCEPTION_TYPE",
+                "TIMESTAMP_DERIVED_Year",
+                "TIMESTAMP_DERIVED_Month",
+                "TIMESTAMP_DERIVED_Day",
+                "TIMESTAMP_DERIVED_Hour"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "showPoints" : false,
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : "auto",
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "visualizationType" : "time",
+            "missingValue" : "connect",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "showZero" : true,
+            "valueType" : "none",
+            "theme" : "wave",
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true,
+            "drawArea" : {
+              "measure" : "",
+              "showDrawArea" : false,
+              "bounding1" : "",
+              "bounding2" : ""
+            },
+            "autoFitMode" : "keepLabels",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "dashLine" : {
+              "measures" : "",
+              "showDashLine" : false
+            },
+            "timeAxis" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "fillArea" : true,
+            "columnMap" : {
+              "split" : [
+                "EXCEPTION_TYPE"
+              ],
+              "timeAxis" : [
+                "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day~~~TIMESTAMP_DERIVED_Hour"
+              ],
+              "trellis" : [ ],
+              "plots" : [
+                "A"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "compactDecimalDigits" : -1
+          },
+          "type" : "chart"
+        }
+      },
+      "DetailsTable_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "DetailsTable",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 100,
+          "orders" : [ ],
+          "rowTotals" : [ ],
+          "sourceFilters" : {
+            "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}" : {
+              "filters" : [
+                [
+                  "RowCount",
+                  [
+                    1
+                  ],
+                  "=="
+                ]
+              ]
+            }
+          },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : "STACK_TRACE",
+                  "name" : "STACK_TRACE"
+                },
+                {
+                  "field" : "ClassName",
+                  "name" : "ClassName"
+                },
+                {
+                  "field" : "Source.ClassTriggerPage",
+                  "name" : "Source.ClassTriggerPage"
+                },
+                {
+                  "field" : "ExceptionMessageDetail",
+                  "name" : "ExceptionMessageDetail"
+                },
+                {
+                  "field" : "EXCEPTION_MESSAGE",
+                  "name" : "EXCEPTION_MESSAGE"
+                },
+                {
+                  "field" : "EXCEPTION_CATEGORY",
+                  "name" : "EXCEPTION_CATEGORY"
+                },
+                {
+                  "field" : "EXCEPTION_TYPE",
+                  "name" : "EXCEPTION_TYPE"
+                },
+                {
+                  "field" : "Source.Method",
+                  "name" : "Source.Method"
+                },
+                {
+                  "field" : "Users.Name",
+                  "name" : "Users.Name"
+                },
+                {
+                  "field" : "Users.Profile.Name",
+                  "name" : "Users.Profile.Name"
+                },
+                {
+                  "field" : "Users.Division",
+                  "name" : "Users.Division"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e1e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#f2f6fa",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "Source.ClassTriggerPage",
+              "Source.Method",
+              "ClassName",
+              "ExceptionMessageDetail",
+              "STACK_TRACE",
+              "EXCEPTION_MESSAGE",
+              "EXCEPTION_CATEGORY",
+              "EXCEPTION_TYPE",
+              "Users.Name",
+              "Users.Profile.Name",
+              "Users.Division"
+            ],
+            "customBulkActions" : [ ],
+            "evenRowColor" : "#f2f6fa",
+            "header" : {
+              "backgroundColor" : "#e4ecf2",
+              "fontColor" : "#5c7a99",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a9b7c7",
+            "innerMinorBorderColor" : "#e1e5ee",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "oddRowColor" : "#ffffff",
+            "showActionMenu" : true,
+            "showRowIndexColumn" : true,
+            "totals" : true,
+            "verticalPadding" : 4
+          },
+          "type" : "table"
+        }
+      },
+      "ClassErrorCount_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ClassErrorCount",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [
+            "ClassName"
+          ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "A",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : {
+            "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}" : {
+              "filters" : [
+                [
+                  "RowCount",
+                  [
+                    1
+                  ],
+                  "=="
+                ]
+              ]
+            }
+          },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "ClassName"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "ClassName",
+              "A"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "mode" : "fittocontainer",
+            "numberOfLines" : 1,
+            "pivoted" : false,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 4
+          },
+          "type" : "table"
+        }
+      },
+      "SummaryRepeaterDebug_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "SummaryRepeaterDebug",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [
+            "Users.Profile.Name"
+          ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "C",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : { },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                },
+                {
+                  "field" : [
+                    "sum",
+                    "RowCount"
+                  ],
+                  "name" : "B"
+                },
+                {
+                  "field" : [
+                    "unique",
+                    "Source.USER_ID_DERIVED"
+                  ],
+                  "name" : "D"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "Users.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "unique",
+                    "Source.USER_ID_DERIVED"
+                  ],
+                  "name" : "E"
+                }
+              ],
+              "filters" : [
+                [
+                  "RowCount",
+                  [
+                    0
+                  ],
+                  ">"
+                ]
+              ],
+              "groups" : [
+                "Users.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            },
+            {
+              "columns" : [
+                {
+                  "formula" : "B/A",
+                  "name" : "C"
+                },
+                {
+                  "formula" : "E/D",
+                  "name" : "F"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [ ],
+              "joins" : [ ]
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "options" : { },
+          "parameters" : {
+            "borderColor" : "#e0e5ee",
+            "borderWidth" : 1,
+            "cell" : {
+              "backgroundColor" : "#ffffff",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "columnProperties" : { },
+            "columns" : [
+              "Users.Profile.Name",
+              "A",
+              "B",
+              "C",
+              "E",
+              "D",
+              "F"
+            ],
+            "customBulkActions" : [ ],
+            "header" : {
+              "backgroundColor" : "#f4f6f9",
+              "fontColor" : "#16325c",
+              "fontSize" : 12,
+              "textWrap" : true
+            },
+            "innerMajorBorderColor" : "#a8b7c7",
+            "innerMinorBorderColor" : "#e0e5ee",
+            "interactions" : [ ],
+            "maxColumnWidth" : 300,
+            "minColumnWidth" : 40,
+            "mode" : "variable",
+            "numberOfLines" : 1,
+            "showActionMenu" : true,
+            "showRowIndexColumn" : false,
+            "totals" : true,
+            "verticalPadding" : 8
+          },
+          "type" : "table"
+        }
+      },
+      "ExceptionsGrid_1" : {
+        "broadcastFacet" : true,
+        "datasets" : [
+          {
+            "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.Name}"
+          }
+        ],
+        "isGlobal" : false,
+        "label" : "ExceptionsGrid",
+        "query" : {
+          "aggregateFilters" : [ ],
+          "columnGroups" : [ ],
+          "columnTotals" : [ ],
+          "limit" : 2000,
+          "orders" : [
+            {
+              "name" : "A",
+              "filters" : [ ],
+              "ascending" : false
+            }
+          ],
+          "rowTotals" : [ ],
+          "sourceFilters" : {
+            "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}" : {
+              "filters" : [
+                [
+                  "RowCount",
+                  [
+                    1
+                  ],
+                  "=="
+                ]
+              ]
+            }
+          },
+          "sources" : [
+            {
+              "columns" : [
+                {
+                  "field" : [
+                    "count",
+                    "*"
+                  ],
+                  "name" : "A"
+                }
+              ],
+              "filters" : [ ],
+              "groups" : [
+                "ClassName",
+                "Users.Profile.Name"
+              ],
+              "joins" : [ ],
+              "name" : "${App.Datasets.BVAApexUnexpectedExceptionWithUsers_tp.FullyQualifiedName}"
+            }
+          ]
+        },
+        "receiveFacetSource" : {
+          "mode" : "all",
+          "steps" : [ ]
+        },
+        "selectMode" : "single",
+        "type" : "aggregateflex",
+        "useGlobal" : true,
+        "visualizationParameters" : {
+          "parameters" : {
+            "autoFitMode" : "none",
+            "bins" : {
+              "breakpoints" : {
+                "high" : 100,
+                "low" : 0
+              },
+              "bands" : {
+                "high" : {
+                  "color" : "#008000",
+                  "label" : ""
+                },
+                "low" : {
+                  "color" : "#B22222",
+                  "label" : ""
+                },
+                "medium" : {
+                  "color" : "#ffa500",
+                  "label" : ""
+                }
+              }
+            },
+            "legend" : {
+              "descOrder" : false,
+              "showHeader" : true,
+              "show" : true,
+              "customSize" : 10,
+              "position" : "right-top",
+              "inside" : false
+            },
+            "axisMode" : "multi",
+            "highColor" : "#009DDF",
+            "tooltip" : {
+              "content" : {
+                "legend" : {
+                  "showBinLabel" : true,
+                  "measures" : [ ],
+                  "showNullValues" : true,
+                  "customizeLegend" : false,
+                  "showPercentage" : true,
+                  "showDimensions" : true,
+                  "showMeasures" : true,
+                  "dimensions" : [ ]
+                }
+              }
+            },
+            "lowColor" : "#E2F4FC",
+            "visualizationType" : "heatmap",
+            "title" : {
+              "fontSize" : 14,
+              "subtitleFontSize" : 11,
+              "label" : "",
+              "align" : "center",
+              "subtitleLabel" : ""
+            },
+            "binValues" : false,
+            "trellis" : {
+              "flipLabels" : false,
+              "showGridLines" : true,
+              "size" : [
+                100,
+                100
+              ],
+              "enable" : false,
+              "type" : "x",
+              "chartsPerLine" : 4
+            },
+            "columnMap" : {
+              "color" : [
+                "A"
+              ],
+              "x" : [
+                "Users.Profile.Name"
+              ],
+              "y" : [
+                "ClassName"
+              ]
+            },
+            "showActionMenu" : true,
+            "measureAxis2" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "measureAxis1" : {
+              "sqrtScale" : false,
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : "",
+              "customDomain" : {
+                "showDomain" : false
+              }
+            },
+            "x" : {
+              "showTitle" : false,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "y" : {
+              "showTitle" : true,
+              "showAxis" : true,
+              "title" : ""
+            },
+            "theme" : "wave",
+            "compactDecimalDigits" : -1,
+            "dimensionAxis" : {
+              "showTitle" : true,
+              "customSize" : "auto",
+              "showAxis" : true,
+              "title" : "",
+              "icons" : {
+                "useIcons" : false,
+                "iconProps" : {
+                  "fit" : "cover",
+                  "column" : "",
+                  "type" : "round"
+                }
+              }
+            },
+            "applyConditionalFormatting" : true
+          },
+          "type" : "chart"
+        }
+      }
+    },
+    "widgetStyle" : {
+      "backgroundColor" : "rgba(255, 255, 255, 0)",
+      "borderColor" : "#E6ECF2",
+      "borderEdges" : [ ],
+      "borderRadius" : 0,
+      "borderWidth" : 1
+    },
+    "widgets" : {
+      "text_18" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Metric 1"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_17" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "16px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Apex Exceptions By Profile Over Time"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_19" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Chart Tiltle"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_14" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "16px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Section Details"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_13" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "All Page Views"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "link_10" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "112df963-8b04-4a03-abc1-0cc174a9e255"
+          },
+          "destinationType" : "page",
+          "fontSize" : 18,
+          "includeState" : false,
+          "text" : "X",
+          "textAlignment" : "right",
+          "textColor" : "#7D98B3"
+        },
+        "type" : "link"
+      },
+      "text_37" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "16px",
+                  "color" : "#54698d"
+                },
+                "insert" : "Exceptions by Business Area"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_12" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Summary Data Table"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "table_34" : {
+        "parameters" : {
+          "borderColor" : "#e1e5ee",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#f2f6fa",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "Source.ClassTriggerPage",
+            "Method",
+            "ClassName",
+            "ExceptionMessageDetail",
+            "STACK_TRACE",
+            "EXCEPTION_MESSAGE",
+            "EXCEPTION_CATEGORY",
+            "EXCEPTION_TYPE",
+            "Users.Name",
+            "Users.Profile.Name",
+            "Users.Division"
+          ],
+          "customBulkActions" : [ ],
+          "evenRowColor" : "#f2f6fa",
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#e4ecf2",
+            "fontColor" : "#5c7a99",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#a9b7c7",
+          "innerMinorBorderColor" : "#e1e5ee",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "oddRowColor" : "#ffffff",
+          "showActionMenu" : true,
+          "showRowIndexColumn" : true,
+          "step" : "DetailsTable_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "container_1" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "chart_9" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "showPoints" : false,
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : true,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "sync",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [ ],
+                "showNullValues" : true,
+                "customizeLegend" : false,
+                "showPercentage" : true,
+                "showDimensions" : true,
+                "showMeasures" : true,
+                "dimensions" : [ ]
+              }
+            }
+          },
+          "visualizationType" : "time",
+          "missingValue" : "connect",
+          "dashLine" : {
+            "measures" : "",
+            "showDashLine" : false
+          },
+          "exploreLink" : true,
+          "timeAxis" : {
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "Date / Hour"
+          },
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "fillArea" : true,
+          "columnMap" : {
+            "split" : [
+              "Users.Profile.Name"
+            ],
+            "timeAxis" : [
+              "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day"
+            ],
+            "trellis" : [ ],
+            "plots" : [
+              "count"
+            ]
+          },
+          "showActionMenu" : true,
+          "showZero" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : true,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "valueType" : "none",
+          "theme" : "colorblindEnhanced",
+          "step" : "ApexExceptions_1",
+          "applyConditionalFormatting" : true,
+          "drawArea" : {
+            "measure" : "",
+            "showDrawArea" : false,
+            "bounding1" : "",
+            "bounding2" : ""
+          }
+        },
+        "type" : "chart"
+      },
+      "container_3" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_4" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "container_5" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "text_3" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Long Running Requests (>5s)"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "chart_6" : {
+        "parameters" : {
+          "showActionMenu" : true
+        },
+        "type" : "chart"
+      },
+      "text_2" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "16px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Visualforce"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "chart_5" : {
+        "parameters" : {
+          "showActionMenu" : true
+        },
+        "type" : "chart"
+      },
+      "container_8" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "text_5" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#54698d",
+                  "size" : "16px"
+                },
+                "insert" : "Investigate Details by Day - Select an Exception Type:"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_4" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Pages > 5s"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "chart_2" : {
+        "parameters" : {
+          "autoFitMode" : "none",
+          "bins" : {
+            "breakpoints" : {
+              "high" : 100,
+              "low" : 0
+            },
+            "bands" : {
+              "high" : {
+                "color" : "#008000",
+                "label" : ""
+              },
+              "low" : {
+                "color" : "#B22222",
+                "label" : ""
+              },
+              "medium" : {
+                "color" : "#ffa500",
+                "label" : ""
+              }
+            }
+          },
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : true,
+            "customSize" : 10,
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "multi",
+          "highColor" : "#009DDF",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [ ],
+                "showNullValues" : true,
+                "customizeLegend" : false,
+                "showPercentage" : true,
+                "showDimensions" : true,
+                "showMeasures" : true,
+                "dimensions" : [ ]
+              }
+            }
+          },
+          "lowColor" : "#E2F4FC",
+          "visualizationType" : "heatmap",
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "binValues" : false,
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "columnMap" : {
+            "color" : [
+              "A"
+            ],
+            "x" : [
+              "Users.Profile.Name"
+            ],
+            "y" : [
+              "ClassName"
+            ]
+          },
+          "showActionMenu" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "x" : {
+            "showTitle" : false,
+            "showAxis" : true,
+            "title" : ""
+          },
+          "y" : {
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : ""
+          },
+          "theme" : "colorblindEnhanced",
+          "step" : "ExceptionsGrid_1",
+          "compactDecimalDigits" : -1,
+          "dimensionAxis" : {
+            "showTitle" : true,
+            "customSize" : "auto",
+            "showAxis" : true,
+            "title" : "",
+            "icons" : {
+              "useIcons" : false,
+              "iconProps" : {
+                "fit" : "cover",
+                "column" : "",
+                "type" : "round"
+              }
+            }
+          },
+          "applyConditionalFormatting" : true
+        },
+        "type" : "chart"
+      },
+      "chart_1" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "showPoints" : false,
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : false,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "multi",
+          "tooltip" : { },
+          "visualizationType" : "line",
+          "dashLine" : {
+            "measures" : "",
+            "showDashLine" : false
+          },
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "trellis" : {
+            "flipLabels" : false,
+            "size" : [
+              100,
+              100
+            ],
+            "showGridLines" : true,
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "columnMap" : {
+            "split" : [ ],
+            "trellis" : [ ],
+            "dimensionAxis" : [
+              "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day"
+            ],
+            "plots" : [
+              "count"
+            ]
+          },
+          "fillArea" : true,
+          "showActionMenu" : true,
+          "showZero" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "Count",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "applyConditionalFormatting" : true,
+          "drawArea" : {
+            "measure" : "",
+            "showDrawArea" : false,
+            "bounding1" : "",
+            "bounding2" : ""
+          }
+        },
+        "type" : "chart"
+      },
+      "text_6" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Long Running Requests (>5s)"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "chart_4" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "showPoints" : false,
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : false,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "multi",
+          "tooltip" : { },
+          "visualizationType" : "line",
+          "dashLine" : {
+            "measures" : "",
+            "showDashLine" : false
+          },
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "trellis" : {
+            "flipLabels" : false,
+            "size" : [
+              100,
+              100
+            ],
+            "showGridLines" : true,
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "columnMap" : {
+            "split" : [ ],
+            "trellis" : [ ],
+            "dimensionAxis" : [
+              "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day"
+            ],
+            "plots" : [
+              "count"
+            ]
+          },
+          "fillArea" : true,
+          "showActionMenu" : true,
+          "showZero" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "Count",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "applyConditionalFormatting" : true,
+          "drawArea" : {
+            "measure" : "",
+            "showDrawArea" : false,
+            "bounding1" : "",
+            "bounding2" : ""
+          }
+        },
+        "type" : "chart"
+      },
+      "text_9" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#ffffff",
+                  "size" : "12px"
+                },
+                "insert" : "After selecting a class and date, you will have a timestamp and a stack trace detail to report to the relevant class or method owner to investigate further.  If you do not know who owns this code in the codebase, contain the person listed as the Last Modified By on the Apex Class Detail page in Setup."
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "repeater_2" : {
+        "parameters" : {
+          "cardProperties" : {
+            "cellSpacingX" : 1,
+            "cellSpacingY" : 1,
+            "numColumns" : 12,
+            "rowHeight" : "normal",
+            "selectedStyles" : {
+              "backgroundColor" : "#FFFFFF",
+              "borderColor" : "#0070D2",
+              "borderEdges" : [
+                "all"
+              ],
+              "borderRadius" : 4,
+              "borderWidth" : 1
+            },
+            "styles" : {
+              "backgroundColor" : "#FFFFFF",
+              "borderColor" : "#E6ECF2",
+              "borderEdges" : [
+                "all"
+              ],
+              "borderRadius" : 4,
+              "borderWidth" : 1,
+              "bottomPadding" : 6,
+              "leftPadding" : 2,
+              "rightPadding" : 4,
+              "topPadding" : 5
+            }
+          },
+          "cellProperties" : {
+            "text_16" : {
+              "parameters" : {
+                "content" : {
+                  "richTextContent" : [
+                    {
+                      "attributes" : {
+                        "color" : "#16325c"
+                      },
+                      "insert" : "[User_Impact_Rate]"
+                    },
+                    {
+                      "attributes" : {
+                        "align" : "center"
+                      },
+                      "insert" : "\n"
+                    },
+                    {
+                      "attributes" : {
+                        "color" : "#7d98b3",
+                        "size" : "10px"
+                      },
+                      "insert" : "User Impact"
+                    },
+                    {
+                      "attributes" : {
+                        "align" : "center"
+                      },
+                      "insert" : "\n"
+                    }
+                  ],
+                  "values" : {
+                    "User_Impact_Rate" : {
+                      "compact" : false,
+                      "field" : "F",
+                      "noResultsLabel" : "No Users Impacted",
+                      "sourceType" : "result",
+                      "step" : "RequestsExceptionsSu_1"
+                    }
+                  }
+                }
+              },
+              "position" : {
+                "colspan" : 2,
+                "column" : 10,
+                "row" : 0,
+                "rowspan" : 1,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              "type" : "text"
+            },
+            "text_10" : {
+              "parameters" : {
+                "content" : {
+                  "richTextContent" : [
+                    {
+                      "attributes" : {
+                        "color" : "#16325c"
+                      },
+                      "insert" : "[Source_User_Profile_]"
+                    },
+                    {
+                      "attributes" : {
+                        "align" : "left"
+                      },
+                      "insert" : "\n"
+                    },
+                    {
+                      "attributes" : {
+                        "color" : "#7d98b3",
+                        "size" : "12px"
+                      },
+                      "insert" : "[Exceptions] errors | [Executions] executions | [Users] users impacted"
+                    },
+                    {
+                      "attributes" : {
+                        "align" : "left"
+                      },
+                      "insert" : "\n"
+                    }
+                  ],
+                  "values" : {
+                    "Executions" : {
+                      "compact" : false,
+                      "field" : "B",
+                      "sourceType" : "result",
+                      "step" : "RequestsExceptionsSu_1"
+                    },
+                    "Source_User_Profile_" : {
+                      "field" : "Users.Profile.Name",
+                      "sourceType" : "result",
+                      "step" : "RequestsExceptionsSu_1"
+                    },
+                    "Exceptions" : {
+                      "compact" : false,
+                      "field" : "A",
+                      "sourceType" : "result",
+                      "step" : "RequestsExceptionsSu_1"
+                    },
+                    "Users" : {
+                      "compact" : false,
+                      "field" : "E",
+                      "sourceType" : "result",
+                      "step" : "RequestsExceptionsSu_1"
+                    }
+                  }
+                }
+              },
+              "position" : {
+                "colspan" : 8,
+                "column" : 0,
+                "row" : 0,
+                "rowspan" : 1,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              "type" : "text"
+            },
+            "text_11" : {
+              "parameters" : {
+                "content" : {
+                  "richTextContent" : [
+                    {
+                      "attributes" : {
+                        "color" : "#16325c"
+                      },
+                      "insert" : "[Error_Rate]"
+                    },
+                    {
+                      "attributes" : {
+                        "align" : "center"
+                      },
+                      "insert" : "\n"
+                    },
+                    {
+                      "attributes" : {
+                        "size" : "10px",
+                        "color" : "#7d98b3"
+                      },
+                      "insert" : "Error Rate"
+                    },
+                    {
+                      "attributes" : {
+                        "align" : "center"
+                      },
+                      "insert" : "\n"
+                    }
+                  ],
+                  "values" : {
+                    "Error_Rate" : {
+                      "compact" : false,
+                      "field" : "C",
+                      "noResultsLabel" : "No Errors",
+                      "sourceType" : "result",
+                      "step" : "RequestsExceptionsSu_1"
+                    }
+                  }
+                }
+              },
+              "position" : {
+                "colspan" : 2,
+                "column" : 8,
+                "row" : 0,
+                "rowspan" : 1,
+                "widgetStyle" : {
+                  "backgroundColor" : "#FFFFFF",
+                  "borderColor" : "#E6ECF2",
+                  "borderEdges" : [ ],
+                  "borderRadius" : 0,
+                  "borderWidth" : 1
+                }
+              },
+              "type" : "text"
+            }
+          },
+          "exploreLink" : true,
+          "interactions" : [ ],
+          "itemsPerRow" : 1,
+          "showActionMenu" : true,
+          "sortableColumns" : "all",
+          "step" : "RequestsExceptionsSu_1"
+        },
+        "type" : "repeater"
+      },
+      "text_8" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#ffffff",
+                  "size" : "12px"
+                },
+                "insert" : "The table above is limited to return 100 rows. You can edit the table using the 'Advanced Query Editor' and changed the limit clause at the end of the query to more than 100.  However, it is important to tackle issues on a class-by-class basis."
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_1" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#54698d"
+                },
+                "insert" : "Apex Exception Analysis"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "link_4" : {
+        "parameters" : {
+          "destinationType" : "lens",
+          "fontSize" : 14,
+          "includeState" : false,
+          "text" : "Show More",
+          "textAlignment" : "center",
+          "textColor" : "#0D34B6"
+        },
+        "type" : "link"
+      },
+      "filterpanel_1" : {
+        "parameters" : {
+          "filterItemOptions" : {
+            "backgroundColor" : "#FFFFFF",
+            "borderColor" : "#E6ECF2",
+            "borderRadius" : 4,
+            "borderWidth" : 1,
+            "propertyColor" : "#54698D",
+            "valueColor" : "#16325C"
+          },
+          "filters" : [ ],
+          "itemsPerRow" : 9,
+          "showAllFilters" : true,
+          "title" : {
+            "separatorColor" : "#E6ECF2",
+            "text" : {
+              "align" : "left",
+              "color" : "#091A3E",
+              "fontSize" : 16,
+              "label" : "Filters"
+            },
+            "visible" : false
+          }
+        },
+        "type" : "filterpanel"
+      },
+      "link_1" : {
+        "parameters" : {
+          "destinationLink" : {
+            "name" : "77332a9f-061f-4d3c-acfd-71d66eb9b4a4"
+          },
+          "destinationType" : "page",
+          "fontSize" : 14,
+          "includeState" : false,
+          "text" : "Show More",
+          "textAlignment" : "center",
+          "textColor" : "#E6ECF2"
+        },
+        "type" : "link"
+      },
+      "text_21" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Metric 1"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_20" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "16px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Section Details"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_23" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "color" : "#091a3e",
+                  "size" : "16px"
+                },
+                "insert" : "Summary Debug Table"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "text_22" : {
+        "parameters" : {
+          "content" : {
+            "richTextContent" : [
+              {
+                "attributes" : {
+                  "size" : "14px",
+                  "color" : "#e6ecf2"
+                },
+                "insert" : "Chart Tiltle"
+              },
+              {
+                "attributes" : {
+                  "align" : "left"
+                },
+                "insert" : "\n"
+              }
+            ]
+          },
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "text"
+      },
+      "number_5" : {
+        "parameters" : {
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "number"
+      },
+      "table_1" : {
+        "parameters" : {
+          "borderColor" : "#e0e5ee",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#ffffff",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "ClassName",
+            "A"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#f4f6f9",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#a8b7c7",
+          "innerMinorBorderColor" : "#e0e5ee",
+          "interactions" : [ ],
+          "mode" : "fittocontainer",
+          "numberOfLines" : 1,
+          "pivoted" : false,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "ClassErrorCount_1",
+          "totals" : true,
+          "verticalPadding" : 4
+        },
+        "type" : "table"
+      },
+      "number_4" : {
+        "parameters" : {
+          "interactions" : [ ],
+          "showActionMenu" : true
+        },
+        "type" : "number"
+      },
+      "table_5" : {
+        "parameters" : {
+          "borderColor" : "#e0e5ee",
+          "borderWidth" : 1,
+          "cell" : {
+            "backgroundColor" : "#ffffff",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "columnProperties" : { },
+          "columns" : [
+            "A",
+            "Users.Profile.Name",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "customBulkActions" : [ ],
+          "exploreLink" : true,
+          "header" : {
+            "backgroundColor" : "#f4f6f9",
+            "fontColor" : "#16325c",
+            "fontSize" : 12,
+            "textWrap" : true
+          },
+          "innerMajorBorderColor" : "#a8b7c7",
+          "innerMinorBorderColor" : "#e0e5ee",
+          "interactions" : [ ],
+          "maxColumnWidth" : 300,
+          "minColumnWidth" : 40,
+          "mode" : "variable",
+          "numberOfLines" : 1,
+          "pivoted" : false,
+          "showActionMenu" : true,
+          "showRowIndexColumn" : false,
+          "step" : "RequestsExceptionsSu_1",
+          "totals" : true,
+          "verticalPadding" : 8
+        },
+        "type" : "table"
+      },
+      "link_5" : {
+        "parameters" : {
+          "destinationType" : "lens",
+          "fontSize" : 14,
+          "includeState" : false,
+          "text" : "Show More",
+          "textAlignment" : "center",
+          "textColor" : "#0D34B6"
+        },
+        "type" : "link"
+      },
+      "container_10" : {
+        "parameters" : {
+          "alignmentX" : "left",
+          "alignmentY" : "top",
+          "fit" : "original",
+          "interactions" : [ ]
+        },
+        "type" : "container"
+      },
+      "listselector_1" : {
+        "parameters" : {
+          "compact" : false,
+          "displayMode" : "filter",
+          "exploreLink" : false,
+          "filterStyle" : {
+            "titleColor" : "#54698D",
+            "valueColor" : "#16325C"
+          },
+          "instant" : true,
+          "measureField" : "count",
+          "showActionMenu" : true,
+          "step" : "Exceptions_Exception_1",
+          "title" : ""
+        },
+        "type" : "listselector"
+      },
+      "chart_14" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "bins" : {
+            "breakpoints" : {
+              "high" : 100,
+              "low" : 0
+            },
+            "bands" : {
+              "high" : {
+                "color" : "#008000",
+                "label" : ""
+              },
+              "low" : {
+                "color" : "#B22222",
+                "label" : ""
+              },
+              "medium" : {
+                "color" : "#ffa500",
+                "label" : ""
+              }
+            }
+          },
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : true,
+            "show" : true,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "multi",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [ ],
+                "showNullValues" : true,
+                "customizeLegend" : false,
+                "showPercentage" : true,
+                "showDimensions" : true,
+                "showMeasures" : true,
+                "dimensions" : [ ]
+              }
+            }
+          },
+          "visualizationType" : "time-bar",
+          "timeAxis" : {
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : ""
+          },
+          "exploreLink" : true,
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "",
+            "align" : "center",
+            "subtitleLabel" : ""
+          },
+          "binValues" : false,
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "columnMap" : {
+            "timeAxis" : [
+              "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day"
+            ],
+            "trellis" : [ ],
+            "plots" : [
+              "A"
+            ]
+          },
+          "showActionMenu" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "valueType" : "compactNumber",
+          "measureAxis1" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "theme" : "colorblindEnhanced",
+          "step" : "ExceptionsBarChart_1",
+          "compactDecimalDigits" : -1,
+          "dimensionAxis" : {
+            "showTitle" : true,
+            "customSize" : "auto",
+            "showAxis" : true,
+            "title" : "",
+            "icons" : {
+              "useIcons" : false,
+              "iconProps" : {
+                "fit" : "cover",
+                "column" : "",
+                "type" : "round"
+              }
+            }
+          },
+          "applyConditionalFormatting" : true
+        },
+        "type" : "chart"
+      },
+      "chart_11" : {
+        "parameters" : {
+          "autoFitMode" : "keepLabels",
+          "showPoints" : false,
+          "legend" : {
+            "descOrder" : false,
+            "showHeader" : false,
+            "show" : true,
+            "customSize" : "auto",
+            "position" : "right-top",
+            "inside" : false
+          },
+          "axisMode" : "sync",
+          "tooltip" : {
+            "content" : {
+              "legend" : {
+                "showBinLabel" : true,
+                "measures" : [ ],
+                "showNullValues" : true,
+                "customizeLegend" : false,
+                "showPercentage" : true,
+                "showDimensions" : true,
+                "showMeasures" : true,
+                "dimensions" : [ ]
+              }
+            }
+          },
+          "visualizationType" : "time",
+          "missingValue" : "connect",
+          "dashLine" : {
+            "measures" : "",
+            "showDashLine" : false
+          },
+          "exploreLink" : true,
+          "timeAxis" : {
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "Date / Hour"
+          },
+          "title" : {
+            "fontSize" : 14,
+            "subtitleFontSize" : 11,
+            "label" : "Contention Leaders",
+            "align" : "center",
+            "subtitleLabel" : "Exceptions that indicate the org is under stress due to competing, long-running or intensive operations."
+          },
+          "trellis" : {
+            "flipLabels" : false,
+            "showGridLines" : true,
+            "size" : [
+              100,
+              100
+            ],
+            "enable" : false,
+            "type" : "x",
+            "chartsPerLine" : 4
+          },
+          "columnProperties" : { },
+          "fillArea" : true,
+          "columnMap" : {
+            "split" : [ ],
+            "timeAxis" : [
+              "TIMESTAMP_DERIVED_Year~~~TIMESTAMP_DERIVED_Month~~~TIMESTAMP_DERIVED_Day~~~TIMESTAMP_DERIVED_Hour"
+            ],
+            "trellis" : [ ],
+            "plots" : [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H"
+            ]
+          },
+          "showActionMenu" : true,
+          "showZero" : true,
+          "measureAxis2" : {
+            "sqrtScale" : false,
+            "showTitle" : true,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "measureAxis1" : {
+            "sqrtScale" : true,
+            "showTitle" : false,
+            "showAxis" : true,
+            "title" : "",
+            "customDomain" : {
+              "showDomain" : false
+            }
+          },
+          "valueType" : "none",
+          "theme" : "colorblindEnhanced",
+          "step" : "ApexExceptions_2",
+          "applyConditionalFormatting" : true,
+          "drawArea" : {
+            "measure" : "",
+            "showDrawArea" : false,
+            "bounding1" : "",
+            "bounding2" : ""
+          }
+        },
+        "type" : "chart"
+      }
+    }
+  }
+}

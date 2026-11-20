@@ -1,0 +1,246 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceLeftNavLayout",
+  "dataProviders" : [ ],
+  "id" : "88fb5063-064c-4d76-835a-4a679738d629",
+  "label" : "SearchAll",
+  "regions" : [ {
+    "id" : "a9b9456e-6c5a-434a-b560-8182b2998372",
+    "regionName" : "demoWidget",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : false,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "52bdf42b-d47c-43de-bc82-ba2fd043cb4c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "ctaCommPage" : "Home",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "Marketplace Home",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Connect with Intel® partners and discover products and solutions to solve your business needs.",
+        "title" : "Intel® Solutions Marketplace"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "ad5c5893-2fb9-4df0-bd97-75acbdaf70b2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "8e065532-3e40-4434-9e87-bf1c0a39bfd0",
+        "zh_cn" : "c11cad61-1571-4cce-b050-01759a9fbc46"
+      },
+      "renditions" : [ {
+        "id" : "c11cad61-1571-4cce-b050-01759a9fbc46",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "与英特尔® 合作伙伴建立联系，发现可以满足业务需求的产品和解决方案。",
+            "title" : "英特尔® 解决方案市场搜索"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8e065532-3e40-4434-9e87-bf1c0a39bfd0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "subtitle" : "インテル® のパートナーとつながって、ビジネスニーズを解決してくれる製品やソリューションを見つけましょう。",
+            "title" : "インテル® ソリューション・マーケットプレースの検索"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "706ebaba-d5b2-4a92-ad26-4f75681d565a",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSearchHeader",
+      "id" : "bbb42125-1390-4e86-8110-6a83273d2277",
+      "renderPriority" : "HIGHEST",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "56c0e22a-deb7-423e-bf5a-64cc12f3ce5b",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "78aa1cbb-eabb-4583-b396-1b8ec6107694",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pmpSearchRedirect",
+      "id" : "f9f89284-c009-457e-a01f-2cc8a92a02ec",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "95cd0fce-e5c4-457c-acc1-16053222ca5c",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "26667ccf-eae9-4da8-9d6a-02d87f6f0483",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaExternalURL" : "https://www.intel.com",
+        "theme" : "primary"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "4102ad39-9327-4c18-8b9d-6472930a5312",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0cef55dc-2655-4010-9466-ab216b86253a",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "83d24c6e-fd12-4405-bbc9-606744c4f7e6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "153a34f3-3cc4-43f2-a27b-e3c23a18dff9",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "compareLabel" : "Compare",
+        "maxItemsToCompare" : 4,
+        "ofLabel" : "of"
+      },
+      "componentName" : "c:MarketplaceCompareTray",
+      "id" : "86d9618c-1fa1-4f10-9b24-6bac11684e23",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5af156e4-db5d-4642-a6bf-59b7394d795a",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Search All\"/> \n<meta name=\"keywords\" content=\"sf,mp,searchall\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"SearchAll\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "View marketplace solutions and search the offering your looking for on the Intel® Solutions Marketplace.",
+        "title" : "Search - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "bdafb438-4b60-4187-8b8d-34886156cf03",
+      "renditionMap" : {
+        "ja" : "c24693ee-b11b-4e32-8e23-9ef034baed31",
+        "zh_cn" : "b0ea1218-e230-4f66-9ca5-cd46377dd92b"
+      },
+      "renditions" : [ {
+        "id" : "b0ea1218-e230-4f66-9ca5-cd46377dd92b",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c24693ee-b11b-4e32-8e23-9ef034baed31",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "c0b28344-5ca8-4a04-9e7c-c4b654f1cbcb",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "b065b0c2-dcd6-4f59-b012-7ceb18ddd9fc",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "id" : "8c7a77b2-9c6f-4aa2-aa38-478c4751605c",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "b87887e6-7957-400b-b6e3-5aa9c94d6d6a",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "8d325438-8cca-4fdb-a763-bbd9eed59b2a",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "fe47e9ab-c589-478b-823b-de51c5e49924",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "c46c6069-c3ae-44b2-9395-725905bddb02",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "b77b934c-2f4b-4848-a0c3-773f3c265169",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "headingLabel" : "FAQs",
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "34b4eea3-dff7-4748-85aa-b12fedd50125",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "0e11ddb6-c345-4567-81f9-42006e9717f1",
+        "zh_cn" : "81b714d7-c33b-48ab-9dc7-ae46f113a528"
+      },
+      "renditions" : [ {
+        "id" : "0e11ddb6-c345-4567-81f9-42006e9717f1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "FAQ"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "81b714d7-c33b-48ab-9dc7-ae46f113a528",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "headingLabel" : "常见问题解答"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5c4a0357-0803-4723-b8d4-dae04fd5c59f",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-search"
+}

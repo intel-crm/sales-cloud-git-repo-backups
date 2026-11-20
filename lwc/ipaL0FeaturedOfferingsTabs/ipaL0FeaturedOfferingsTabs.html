@@ -1,0 +1,69 @@
+<template>
+
+  <c-core-intc-utilities onscreenchange={handleScreenChange}></c-core-intc-utilities>
+    
+  <c-ipa-error-component-marketplace></c-ipa-error-component-marketplace>
+	<div class="featured-offerings-container">
+
+        <c-ipa-contact-partner-form></c-ipa-contact-partner-form>
+
+        <template if:true={labels.heading}>
+            <h3 class="heading h4">{labels.heading}</h3>
+        </template>
+
+        <c-core-intc-tabset name="featured" ontabchange={handleTabChange} initial-active-tab={activeTab}>
+            <template for:each={tabs} for:item="tab">
+                <c-core-intc-tab heading={tab.heading} key={tab.heading} link={tab.link}>
+                    <c-core-intc-carousel name={tab.heading}
+                        items-per-page-mobile="1"
+                        items-per-page-tablet="2"
+                        items-per-page-desktop="4"
+                        show-edge-overlap-mobile
+                        show-edge-overlap-tablet
+                        keep-indicator-spacing
+                        loading-page-spinner={showLoadingSpinner}
+                        onpagechange={handlePageChange}>
+                        <template if:true={tab.prescrollActive}>
+                            <div slot="prescroll">
+                                <template for:each={tab.prescroll} for:item="card" for:index="idx">
+                                    <div data-carousel-item={idx} key={card.id}>
+                                        <c-ipa-card
+                                            card={card}
+                                            lazyload
+                                            is-loading={card.isLoading}>
+                                        </c-ipa-card>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <div slot="content" data-active-tab={activeTab}>
+                            <template for:each={tab.renderedCards} for:item="card" for:index="idx">
+                                <div key={card.id} data-carousel-item={idx}>
+                                    <c-ipa-card
+                                        key={card.id}
+                                        card={card}
+                                        lazyload
+                                        is-loading={card.isLoading}
+                                        role="group"
+                                        aria-label={card.title}>
+                                    </c-ipa-card>
+                                </div>
+                            </template>
+                        </div>
+                        <template if:true={tab.ctaLabel}>
+                            <div slot="footer-right">
+                                <c-ipa-link
+                                    label={tab.ctaLabel}
+                                    object-page="PMP_Category__c"
+                                    record-id={tab.categoryId}
+                                    caret>
+                                </c-ipa-link>
+                            </div>
+                        </template>
+                    </c-core-intc-carousel>
+                </c-core-intc-tab>
+            </template>
+        </c-core-intc-tabset>
+    </div>
+
+</template>

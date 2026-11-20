@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Industry Application</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Industry Applications</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category --></label>
+        <name>PMP_Category_Id__c</name>
+        <relationshipLabel><!-- Partner Industry Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Marketplace Partner --></label>
+        <name>PMP_Partner_Id__c</name>
+        <relationshipLabel><!-- Partner Industry Applications --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

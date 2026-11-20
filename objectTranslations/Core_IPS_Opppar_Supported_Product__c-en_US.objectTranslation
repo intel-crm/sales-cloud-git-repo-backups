@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Par Supported Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Par Supported Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- Access Flag --></label>
+        <name>Core_IPS_Flag_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity PAR --></label>
+        <name>Core_IPS_Opportunity_PAR__c</name>
+        <relationshipLabel><!-- Opportunity Par Supported Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product EPM ID --></label>
+        <name>Core_IPS_Product_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Launch Date --></label>
+        <name>Core_IPS_Product_Launch_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Launch Date --></label>
+        <name>Core_IPS_Support_Launch_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org ID --></label>
+        <name>Core_IPS_Support_Org_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Product Name --></label>
+        <name>Core_IPS_Supported_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supported Product --></label>
+        <name>Core_IPS_Supported_Product__c</name>
+        <relationshipLabel><!-- Opportunity Par Supported Products --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="public" >
+    <aura:attribute name="alertMessage" type="String" default="If you are trying to Clone an existing record of 'Lead' recordtype, please switch back to Classic."/>
+    
+    <div class="slds-text-heading_small">{!v.alertMessage}</div>
+    <div style="float: right;padding-top: 2%;">
+        <lightning:button label="OK" variant="brand" onclick="{!c.cancelPopup}"/>
+    </div>
+</aura:component>

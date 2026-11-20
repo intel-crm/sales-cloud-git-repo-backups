@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Pat Gelsinger</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_10666414_Rachel_Engedal</name>
+    <opportunityAccessLevel>Read</opportunityAccessLevel>
+    <parentRole>Executive_Leadership_Team</parentRole>
+</Role>

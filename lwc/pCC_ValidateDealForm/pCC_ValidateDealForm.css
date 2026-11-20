@@ -1,0 +1,17 @@
+.toastMessage {
+    white-space: pre-line !important;
+}
+.lisize{
+    font-size:0.7rem
+}
+.fontbold{
+    font-weight: bold;
+}
+.spanux{
+    color:red;
+    font-weight: bold;
+    font-size:0.8rem
+}
+.paddingleft{
+    padding-left:1rem
+}

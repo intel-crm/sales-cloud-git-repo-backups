@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Entitlement_Rank__c</fullName>
+        <description>To set entitlement based on relationship sent from ERPM</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Entitlement Rank</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mappting_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Mappting_Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tier</fullName>
+                    <default>true</default>
+                    <label>Tier</label>
+                </value>
+                <value>
+                    <fullName>Relationships</fullName>
+                    <default>false</default>
+                    <label>Relationships</label>
+                </value>
+                <value>
+                    <fullName>Partner Role</fullName>
+                    <default>false</default>
+                    <label>Partner Role</label>
+                </value>
+                <value>
+                    <fullName>EngagementStatus</fullName>
+                    <default>false</default>
+                    <label>EngagementStatus</label>
+                </value>
+                <value>
+                    <fullName>Benefit</fullName>
+                    <default>false</default>
+                    <label>Benefit</label>
+                </value>
+                <value>
+                    <fullName>Address</fullName>
+                    <default>false</default>
+                    <label>Address</label>
+                </value>
+                <value>
+                    <fullName>Biz Org Type</fullName>
+                    <default>false</default>
+                    <label>Biz Org Type</label>
+                </value>
+                <value>
+                    <fullName>IPA Partner Specialty</fullName>
+                    <default>false</default>
+                    <label>IPA Partner Specialty</label>
+                </value>
+                <value>
+                    <fullName>Relationship_Entitlement</fullName>
+                    <default>false</default>
+                    <label>Relationship_Entitlement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SF_KeyValue__c</fullName>
+        <description>This is to define the SF key values</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SF-KeyValue</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>eRPM_EngagementCodes__c</fullName>
+        <description>This is define the list of erpm engagements</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>eRPM-EngagementCodes</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CSPx2</fullName>
+                    <default>true</default>
+                    <label>CSPx2</label>
+                </value>
+                <value>
+                    <fullName>ISA</fullName>
+                    <default>false</default>
+                    <label>ISA</label>
+                </value>
+                <value>
+                    <fullName>ITP</fullName>
+                    <default>false</default>
+                    <label>ITP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>eRPM_KeyValue__c</fullName>
+        <description>This field to define the eRPM key value for both tier &amp; relationships</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>eRPM-KeyValue</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>ERPM-SF-MAPPING SETTING</label>
+    <pluralLabel>ERPM-SF-MAPPING SETTINGS</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

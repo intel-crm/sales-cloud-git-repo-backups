@@ -1,0 +1,205 @@
+.THIS {
+    padding: 0;
+    background: t(white);
+}
+.THIS .itemWrap2 {
+  width: 100%;
+}
+.THIS .relative {
+  position: relative;
+}
+
+.THIS .partnerTag {
+  background: t(digitalBlue);
+  color: t(white);
+  /*padding: 0 .25em;
+  letter-spacing: 1px;
+  width: 100%;*/
+    /*Changed as part of US613071*/
+    padding: .3em .2em .2em .3em;
+  width: 100%;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.THIS .offeringTag {
+  background: t(digitalBlue);
+  color: t(white);
+}
+.THIS .indent {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.THIS h3 {
+  font-size: 1.500em;
+  line-height: 1.084;
+  font-weight: normal;
+  word-break: normal;
+  color: t(blue);
+}
+.THIS .mediaWrap {
+  text-align: center;
+}
+.THIS .mediaWrap a {
+  width: 100%;
+  display: block;
+}
+
+.THIS.card  {
+  background: t(lightestGray);
+}
+
+.THIS.card .partnerTag {
+  position: absolute;
+  z-index:1;
+}
+
+.THIS.card .itemWrap  {
+  background: t(white);
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  height: calc(100% - 1.3em - 5px) !important;
+  }
+  
+  .THIS .intelOnlyFooter {
+   background: transparent;
+   height: calc(1.3em + 5px);
+   }
+   
+   /* Added to remove Javascript for equalizing heights in card list */
+   .THIS.flexCol, .THIS .flexCol {
+    display: flex;
+    flex-direction: column;
+    }
+.THIS.flexCol:not(.list), .THIS:not(.list) .flexCol {
+  height: 100%;
+}
+.THIS.card .itemWrap2 {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+.THIS.card .buttonFooter {
+  width: 100%;
+}
+
+.THIS.list  {
+  margin: 0 15px 20px;
+  background: t(white);
+}
+
+.THIS.list .itemWrap2  {
+  padding: 20px 15px;
+}
+
+
+.THIS.card .addToCompare {
+  text-align: center;
+}
+
+.THIS.card .addToCompare {
+  text-align: center;
+}
+
+.THIS.card .mediaWrap{
+  border-bottom: 1px solid t(lightGray);
+  /* min-height: 150px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.THIS.list .mediaWrap {
+  border: 1px solid t(lightGray);
+}
+
+.THIS.list .addToCompare {
+  text-align: left;
+}
+
+.THIS .imageContainer {
+  position: relative;
+  overflow: hidden;
+}
+.THIS .imageContainer:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.THIS .imageContainer.stretchWidth > img {
+  width: 100%;
+  height: auto;
+}
+.THIS .imageContainer.stretchHeight > img {
+  width: auto;
+  height: 100%;
+  padding:1.5em;
+}
+
+.THIS .imageContainer > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  transform: translate( -50%, -50% );
+}
+.THIS .descriptionBlock .slds-rich-text-editor__output,
+.THIS .slds-rich-text-editor__output {
+  overflow-wrap: normal;
+  word-wrap: normal;
+  hyphens: none;
+}
+.THIS .hideTextOverflow {
+  overflow: hidden;
+  display: block;
+}
+
+.THIS .featureList ul {
+  overflow: hidden;
+  line-height: 1.5em;
+  position: relative; 
+}
+.THIS .featureList li {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+.THIS .descriptionBlock {
+  overflow: hidden;
+  position: relative; 
+  line-height: 1.5rem;
+  max-height: 6rem; 
+  /* text-align: justify;   */
+  padding-right: 1rem;
+}
+/* create the ... */
+.THIS .descriptionBlock:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  top: 4.5rem;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.THIS .descriptionBlock ul:after,
+.THIS .descriptionBlock:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -1rem;
+  background: white;
+}
+
+@media (min-width: 768px) {
+  .THIS.list .mediaWrap img,
+  .THIS.card .mediaWrap img{
+    max-height: none;
+    /* width: 100%; */
+  }
+}

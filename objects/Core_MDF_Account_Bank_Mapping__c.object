@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>It is a junction object which maps the Co-Marketing record Type Account with the Banks.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_AccountIdBankIdMapping__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>It is a back end field which we will use to check on duplicate creation of mapping record.</description>
+        <externalId>false</externalId>
+        <label>AccountIdBankIdMapping</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>It shows up the account with Co-Marketing Recordtype.</description>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>&apos;Core_MDF_Co_Marketing&apos;</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_MDF_Active_Ind__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Bank Mappings</relationshipLabel>
+        <relationshipName>Account_Bank_Mappings</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Active_ind__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Field to identify whether ABM is active or inactive.</description>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Bank__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>It displays all the banks to map it with account.</description>
+        <label>Bank</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Banks in Draft and Inactive status cannot be mapped.</errorMessage>
+            <filterItems>
+                <field>Core_MDF_Bank__c.Core_MDF_Bank_Status__c</field>
+                <operation>notEqual</operation>
+                <value>Draft, Inactive</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Core_MDF_Bank__c</referenceTo>
+        <relationshipLabel>Account Bank Mappings</relationshipLabel>
+        <relationshipName>Account_Bank_Mappings</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>Program</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Account Bank Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Bank__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Map-{0000}</displayFormat>
+        <label>Map Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Bank Mappings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>Core_MDF_AccountNodeGroup__c</fullName>
+        <label>AccountNodeGroup</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Core_MDF_Check_Bank_Program</fullName>
+        <active>true</active>
+        <description>This validation rule is used to make sure that the Account program matches to Bank Program.</description>
+        <errorConditionFormula>IF(
+	AND(
+		Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c == Core_MDF_Bank__r.Core_MDF_Account__c, Core_MDF_Active_ind__c
+	),
+	IF(
+		OR(
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c,&apos;Client;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Client&apos;
+				)
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Datacenter;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Datacenter&apos;
+				) 
+			), 
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Service Provider Co-Marketing Fund;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Service Provider Co-Marketing Fund&apos;
+				) 
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Client Co-Marketing Fund Boost;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Client Co-Marketing Fund Boost&apos;
+				) 
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Retail Marketing Funds;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Retail Marketing Funds&apos;
+				) 
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Intel Partner Alliance;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Intel Partner Alliance&apos;
+				) 
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Ecosystem Extension Fund;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Ecosystem Extension Fund&apos;
+				) 
+			),
+			( 
+				AND( 
+					CONTAINS(Core_MDF_Bank__r.Core_MDF_Program_Value__c, &apos;Co-GTM;&apos;) , 
+					Core_MDF_Account__r.Core_MDF_Channel_Program__r.Name = &apos;Co-GTM&apos;
+				) 
+			)
+		) 
+	,FALSE,TRUE)
+	,FALSE
+	)</errorConditionFormula>
+        <errorMessage>Select Bank with same program as of Account</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Check_for_account</fullName>
+        <active>true</active>
+        <description>Account should be checked with the Bank account.</description>
+        <errorConditionFormula>Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c !=  Core_MDF_Bank__r.Core_MDF_Account__c</errorConditionFormula>
+        <errorMessage>Select Account associated with Bank&apos;s Account</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>4G/5G Core</masterLabel>
+        <translation><!-- 4G/5G Core --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>5G Infrastructure</masterLabel>
+        <translation>Infraestrutura 5G </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>5G Network Transformation</masterLabel>
+        <translation><!-- 5G Network Transformation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>5G/RAN</masterLabel>
+        <translation><!-- 5G/RAN --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI &amp; Machine Learning</masterLabel>
+        <translation><!-- AI &amp; Machine Learning --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI / Big Data</masterLabel>
+        <translation>Inteligência Artificial / Big Data</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Commercial</masterLabel>
+        <translation>Comercial IA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Consumer</masterLabel>
+        <translation>Consumidor IA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI PC &amp; Consumer</masterLabel>
+        <translation>PC com IA - Consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI PC - Commercial</masterLabel>
+        <translation>PC com IA - Comercial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI </masterLabel>
+        <translation>IA </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Advanced Analytics</masterLabel>
+        <translation>Análise avançada</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Always Connected PC</masterLabel>
+        <translation>PC sempre conectado</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Analytics</masterLabel>
+        <translation>Análise</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apple Compete Commercial</masterLabel>
+        <translation>Comercial competitivo da Apple</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apple Compete Consumer</masterLabel>
+        <translation>Consumidor competitivo da Apple</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apple Compete Workstation</masterLabel>
+        <translation>Workstation competitivo da Apple</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Architectural Conversion</masterLabel>
+        <translation>Conversão arquitetônica</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Artificial Intelligence</masterLabel>
+        <translation>Inteligência artificial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive</masterLabel>
+        <translation>Automotivo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud</masterLabel>
+        <translation>Nuvem</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud (Public, Private, hybrid, multi)</masterLabel>
+        <translation>Nuvem (pública, privada, híbrida, multi)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Services</masterLabel>
+        <translation>Serviços em Nuvem</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial</masterLabel>
+        <translation>Comercial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial - Education</masterLabel>
+        <translation>Comercial - Educação</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial - Government</masterLabel>
+        <translation>Comercial - Governo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial - SMB</masterLabel>
+        <translation>Comercial - PME</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial Evo (non-vPro)</masterLabel>
+        <translation>Evo Comercial (não-vPro)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial non-vPro</masterLabel>
+        <translation>Comercial não-vPro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial vPro</masterLabel>
+        <translation>Comercial vPro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial vPro Evo</masterLabel>
+        <translation>Comercial vPro Evo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial​ - Large enterprise</masterLabel>
+        <translation>Comercial - Grande Empresa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connectivity</masterLabel>
+        <translation>Conectividade</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer</masterLabel>
+        <translation>Consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Mainstream/Essential</masterLabel>
+        <translation>Consumidor - Convencional/Essencial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Premium</masterLabel>
+        <translation>Consumidor - Premium</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Chromebook</masterLabel>
+        <translation>Chromebook para consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Client</masterLabel>
+        <translation>Cliente consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Evo</masterLabel>
+        <translation>Consumidor Evo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Intel Optane</masterLabel>
+        <translation>Consumidor Intel Optane</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Modern PCs</masterLabel>
+        <translation>PCs modernos para consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer non-Evo</masterLabel>
+        <translation>Consumidor não-Evo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer refresh of latest gen processors</masterLabel>
+        <translation>Atualização dos novos processadores</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer​ - Enthusiast</masterLabel>
+        <translation>Consumidor - Entusiasta</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer​ - Mainstream</masterLabel>
+        <translation>Consumidor - Convencional</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator marketing</masterLabel>
+        <translation>Criador de marketing</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Datacenter Modernization</masterLabel>
+        <translation>Modernização de datacenter</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Design Win vs. Comp</masterLabel>
+        <translation>Ganhe projeto em comparação com Comp</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Transformation</masterLabel>
+        <translation>Transformação digital</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Workplace</masterLabel>
+        <translation>Local de trabalho digital</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge</masterLabel>
+        <translation>Borda </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Computing</masterLabel>
+        <translation><!-- Edge Computing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Infrastructure Platforms/MEC</masterLabel>
+        <translation><!-- Edge Infrastructure Platforms/MEC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge/ IOT Digital Transformation</masterLabel>
+        <translation>Transformação digital de borda/IOT</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise AI</masterLabel>
+        <translation>IA empresarial</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise Cloud Networking &amp; Security</masterLabel>
+        <translation><!-- Enterprise Cloud Networking &amp; Security --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise IT</masterLabel>
+        <translation>TI corporativa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Extend Platform Leadership</masterLabel>
+        <translation><!-- Extend Platform Leadership --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA</masterLabel>
+        <translation><!-- FPGA --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA Accelerators</masterLabel>
+        <translation>Aceleradores FPGA</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Fixed/Wireless Access</masterLabel>
+        <translation><!-- Fixed/Wireless Access --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>Jogos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming marketing</masterLabel>
+        <translation>Marketing de jogos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gen-Over-Gen Ramp</masterLabel>
+        <translation>Rampa de geração a geração</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HPC </masterLabel>
+        <translation><!-- HPC  --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Performance Computing</masterLabel>
+        <translation>Computação de alto desempenho</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IOT Digital Transformation</masterLabel>
+        <translation>Transformação digital de IOT</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IREP</masterLabel>
+        <translation><!-- IREP --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Memory Database/Optane Pmem</masterLabel>
+        <translation>Banco de dados em memória/Optane Pmem</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Infrastructure Modernization</masterLabel>
+        <translation>Modernização da infraestrutura</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Infrastructure Optimization</masterLabel>
+        <translation>Otimização da infraestrutura</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Instore innovation</masterLabel>
+        <translation>Inovação na loja</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Instore merchandise</masterLabel>
+        <translation>Merchandise na loja</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel/RSP Advocacy</masterLabel>
+        <translation><!-- Intel/RSP Advocacy --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Internet of Things</masterLabel>
+        <translation>Internet das coisas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Learning</masterLabel>
+        <translation><!-- Machine Learning --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream PCs</masterLabel>
+        <translation>PCs convencionais</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Biz vPro</masterLabel>
+        <translation>Empresas Gerenciadas vPro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Business Intel Optane</masterLabel>
+        <translation>Intel Optane para empresas gerenciado</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed SMB/Large Enterprise</masterLabel>
+        <translation>PME/Grande Empresa Gerenciada</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Media Services</masterLabel>
+        <translation>Serviços de mídia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Mobile Devices</masterLabel>
+        <translation>Dispositivos modernos portáteis</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi-Access Edge Computing</masterLabel>
+        <translation><!-- Multi-Access Edge Computing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Consumer</masterLabel>
+        <translation>NP-Consumidor</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Gaming</masterLabel>
+        <translation>NP-Jogos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Managed SMB/Large Enterprise</masterLabel>
+        <translation>NP-</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Small Business</masterLabel>
+        <translation>NP-Pequenas empresas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Network Cloud (NFV/SDN)</masterLabel>
+        <translation>Nuvem de rede (NFV/SDN)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Network Transformation</masterLabel>
+        <translation>Transformação de redes</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>New Business Models</masterLabel>
+        <translation>Novos modelos de negócio</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Next Gen IaaS</masterLabel>
+        <translation>IaaS de Próxima Geração</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>None</masterLabel>
+        <translation><!-- None --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>On Prem</masterLabel>
+        <translation>No Local</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Performance</masterLabel>
+        <translation>Desempenho online</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Outro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Private Wireless Networks</masterLabel>
+        <translation><!-- Private Wireless Networks --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RXT engagement</masterLabel>
+        <translation>Interação com RXT</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks</masterLabel>
+        <translation><!-- Radio Access Networks --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks (RAN)</masterLabel>
+        <translation><!-- Radio Access Networks (RAN) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ramping Adjacencies</masterLabel>
+        <translation>Adjacências em crescimento</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Refresh for vPro</masterLabel>
+        <translation>Atualizar para vPro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Research &amp; Incubation</masterLabel>
+        <translation>Pesquisa e Incubação</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Security</masterLabel>
+        <translation>Segurança</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small Business</masterLabel>
+        <translation>Pequenas empresas</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Storage</masterLabel>
+        <translation>Armazenamento</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Systems - NUC</masterLabel>
+        <translation>Sistemas - NUC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Target demand gen</masterLabel>
+        <translation>Geração de demanda de público-alvo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technology Adoption</masterLabel>
+        <translation>Adoção de tecnologia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telecom Transformation</masterLabel>
+        <translation><!-- Telecom Transformation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Unite</masterLabel>
+        <translation><!-- Unite --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Vision</masterLabel>
+        <translation>Visão</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Visual Cloud</masterLabel>
+        <translation>Nuvem visual</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Intel Preference</masterLabel>
+        <translation><!-- Win Intel Preference --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Performance &amp; Sell Up</masterLabel>
+        <translation><!-- Win Performance &amp; Sell Up --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Screen w IPOS</masterLabel>
+        <translation>Tela Win com IPOS</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Volume</masterLabel>
+        <translation><!-- Win Volume --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Windows 10 Refresh</masterLabel>
+        <translation>Atualização do Windows 10</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workload Consolidation</masterLabel>
+        <translation>Consolidação de carga de trabalho</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workplace Transformation </masterLabel>
+        <translation>Transformação do ambiente de trabalho </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation</masterLabel>
+        <translation><!-- Workstation --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

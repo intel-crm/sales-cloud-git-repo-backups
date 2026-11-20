@@ -1,0 +1,26 @@
+.THIS .cursor {
+  cursor: pointer;
+}
+.THIS .toggleIcon {
+  opacity: 0.8;
+
+}
+.THIS .toggleIcon .slds-icon_container {
+  border: 1px solid t(lightGray);
+  border-radius: 0;
+  line-height: .60rem;
+  padding: 1px;
+}
+
+.THIS .slds-icon_container .slds-icon {
+  color: t(lightGray);
+  opacity: 1;
+  height: 0.65rem;
+  width: 0.65rem;
+}
+
+@media (max-width: 1279px) {
+  .THIS {
+    padding: 1rem 0;
+  }
+}

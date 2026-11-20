@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Escalation</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Escalations</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Escalation</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Escalations</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Escalation</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Escalations</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Escalation</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Escalations</value>
+    </caseValues>
+    <fields>
+        <label>Aktionsname</label>
+        <name>Core_MDF_Activity_Name_url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Flag --></label>
+        <name>Core_MDF_Approval_Flag_ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Amount approved for reimbursement after escalation review --></help>
+        <label>Genehmigter Betrag</label>
+        <name>Core_MDF_Approved_Amount_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 1 Comments --></label>
+        <name>Core_MDF_Approver_1_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 1 Name --></label>
+        <name>Core_MDF_Approver_1_Name_Id__c</name>
+        <relationshipLabel><!-- Escalations (Approver 1 Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 Comments --></label>
+        <name>Core_MDF_Approver_2_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 2 Name --></label>
+        <name>Core_MDF_Approver_2_Name_Id__c</name>
+        <relationshipLabel><!-- Escalations (Approver 2 Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 Comments --></label>
+        <name>Core_MDF_Approver_3_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 3 Name --></label>
+        <name>Core_MDF_Approver_3_Name_Id__c</name>
+        <relationshipLabel><!-- Escalations (Approver 3 Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 4 Comments --></label>
+        <name>Core_MDF_Approver_4_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 4 Name --></label>
+        <name>Core_MDF_Approver_4_Name_Id__c</name>
+        <relationshipLabel><!-- Escalations (Approver 4 Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approver 5 Comments --></label>
+        <name>Core_MDF_Approver_5_Comments_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approver 5 Name --></label>
+        <name>Core_MDF_Approver_5_Name_Id__c</name>
+        <relationshipLabel><!-- Escalations (Approver 5 Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Budget Name --></label>
+        <name>Core_MDF_Budget_ID_Number_id__c</name>
+        <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Budgettyp</label>
+        <name>Core_MDF_Budget_Type_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case ID Number --></label>
+        <lookupFilter>
+            <errorMessage><!-- Invalid Case ID Number. Please enter valid Co-Marketing Claim Review Case ID Number --></errorMessage>
+        </lookupFilter>
+        <name>Core_MDF_Case_ID_Number_id__c</name>
+        <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Review Findings --></label>
+        <name>Core_MDF_Case_Review_Findings_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_MDF_Channel_Program_id__c</name>
+        <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Antragsbezeichnung</label>
+        <name>Core_MDF_Claim_Number_id__c</name>
+        <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Claim Review Closure Note --></label>
+        <name>Core_MDF_Claim_Review_Closure_Note_txt__c</name>
+    </fields>
+    <fields>
+        <label>Antragsteller</label>
+        <name>Core_MDF_Claim_Submitter_Id__c</name>
+        <relationshipLabel><!-- Escalations (Claim Submitter) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Bezeichnung der Werbemaßnahme</label>
+        <name>Core_MDF_Co_Marketing_Activity_id__c</name>
+        <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_MDF_Country_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current - Attribution Score --></label>
+        <name>Core_MDF_Current_Attribution_Score_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current - Engagement Score --></label>
+        <name>Core_MDF_Current_Engagement_Score_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current - Manual Recovery --></label>
+        <name>Core_MDF_Current_Manual_Recovery_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current - POP Score --></label>
+        <name>Core_MDF_Current_POP_Score_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Do not Auto Create Claim --></label>
+        <name>Core_MDF_Do_not_Auto_Create_Claim_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalation Submission End Date --></label>
+        <name>Core_MDF_Esc_Submission_End_Date_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Escalation Detail Link --></label>
+        <name>Core_MDF_Escalation_Detail_Link_txt__c</name>
+    </fields>
+    <fields>
+        <label>Escalation-Bezeichnung</label>
+        <name>Core_MDF_Escalation_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label>Escalation-Status</label>
+        <name>Core_MDF_Escalation_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Genehmigt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>Storniert</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation>Abgelehnt</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expired</masterLabel>
+            <translation>Abgelaufen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Review</masterLabel>
+            <translation>Prüfung noch nicht erfolgt</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Escalation-Typ</label>
+        <name>Core_MDF_Escalation_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- First - Attribution Score --></label>
+        <name>Core_MDF_First_Attribution_Score_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- First - Engagement Score --></label>
+        <name>Core_MDF_First_Engagement_Score_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- First - Manual Recovery --></label>
+        <name>Core_MDF_First_Manual_Recovery_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- First - POP Score --></label>
+        <name>Core_MDF_First_POP_Score_txt__c</name>
+    </fields>
+    <fields>
+        <label>Problembeschreibung</label>
+        <name>Core_MDF_Issue_Description_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- PGM Internal Group Id --></label>
+        <name>Core_MDF_PGM_Internal_Group_Id_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_txt__c</name>
+    </fields>
+    <fields>
+        <label>Region</label>
+        <name>Core_MDF_Region_txt__c</name>
+    </fields>
+    <fields>
+        <label>Ursache</label>
+        <name>Core_MDF_Root_Cause_nm__c</name>
+        <picklistValues>
+            <masterLabel>Account Manager Process Awareness</masterLabel>
+            <translation><!-- Account Manager Process Awareness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Appeal of Budget</masterLabel>
+            <translation><!-- Appeal of Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Case Review Process Awareness</masterLabel>
+            <translation><!-- Claim Case Review Process Awareness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claim Score Appeal</masterLabel>
+            <translation><!-- Claim Score Appeal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Creative</masterLabel>
+            <translation><!-- Creative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Awareness of Process</masterLabel>
+            <translation><!-- Intel Awareness of Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Support Process Awareness</masterLabel>
+            <translation><!-- Intel Support Process Awareness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Process Awareness</masterLabel>
+            <translation><!-- Member Process Awareness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mergers &amp; Acquisitions</masterLabel>
+            <translation><!-- Mergers &amp; Acquisitions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Awareness of Process</masterLabel>
+            <translation><!-- Partner Awareness of Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Branding Submission Issues</masterLabel>
+            <translation><!-- Proof of Branding Submission Issues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Cost Submission Issues</masterLabel>
+            <translation><!-- Proof of Cost Submission Issues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Execution Submission Issues</masterLabel>
+            <translation><!-- Proof of Execution Submission Issues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tools and Systems</masterLabel>
+            <translation><!-- Tools and Systems --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Scorecard --></label>
+        <name>Core_MDF_Scorecard_id__c</name>
+        <relationshipLabel><!-- Escalations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Gesamte finanzielle Auswirkung</label>
+        <name>Core_MDF_Total_Dollar_Impact_amt__c</name>
+    </fields>
+    <fields>
+        <label>Unternehmen Virtuelles-Account-Name</label>
+        <name>Core_MDF_Virtual_Corp_Account_Name_nm__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Escalation-ID</nameFieldLabel>
+    <recordTypes>
+        <label><!-- Budget --></label>
+        <name>Core_MDF_Budget</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Claim Case Review Result --></label>
+        <name>Core_MDF_Claim_Case_Review_Result</name>
+    </recordTypes>
+    <recordTypes>
+        <label>Test German</label>
+        <name>Core_MDF_Late_Claim</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Approved Amount cannot be negative. --></errorMessage>
+        <name>Core_MDF_Approved_Amount_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Escalation cannot be created for an inactive Account. --></errorMessage>
+        <name>Core_MDF_Check_Account_Active</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required Fields:	
+Escalation Name, Root Cause, Case ID Number, 
+Claim Submitter --></errorMessage>
+        <name>Core_MDF_Claim_Case_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Edit is not enabled in this status --></errorMessage>
+        <name>Core_MDF_ErrorOnEditingAmount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved amount cannot be edited in this status. --></errorMessage>
+        <name>Core_MDF_ErrorOnEditingApprovedAmount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Claim Submitter cannot be edited when a claim is already created. --></errorMessage>
+        <name>Core_MDF_LateClaim_ClaimSubUserCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Required Fields:	
+Escalation Name,  Activity Name,
+Claim Submitter --></errorMessage>
+        <name>Core_MDF_Late_Claim_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Escalations can only be created for Outcome Based Campaign records. --></errorMessage>
+        <name>Core_MDF_Prevent_Sub_Activity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Escalation cannot be created on an Activity that is not Approved and Closed. --></errorMessage>
+        <name>Core_MDF_RestrictMissedApprovalActivity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Dollar Impact cannot be negative or zero. --></errorMessage>
+        <name>Core_MDF_Total_Dollar_Impact_Check</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

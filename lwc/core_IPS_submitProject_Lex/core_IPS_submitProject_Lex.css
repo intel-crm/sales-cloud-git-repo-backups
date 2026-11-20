@@ -1,0 +1,14 @@
+.error{
+    font-size:16px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color:red;
+    font-weight:bold;
+}
+.submit{
+    font-size:18px;
+    margin-left: 30px;
+    margin-right: 30px;
+    color:green;
+    font-weight:bold; 
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Relationship</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Relationship</value>
+    </caseValues>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>PRM_Channel_Program_Id__c</name>
+        <relationshipLabel><!-- Contact Relationship --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Relationship Code --></label>
+        <name>PRM_Contact_Relationship_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PRM_Contact_Relationship_Dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Relationship --></label>
+        <name>PRM_Default_Relationship_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mandatory Relationship --></label>
+        <name>PRM_Mandatory_Relationship_Ind__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

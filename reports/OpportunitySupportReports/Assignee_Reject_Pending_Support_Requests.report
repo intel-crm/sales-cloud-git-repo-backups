@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Opportunity_Support_Team_Member__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$RecordType</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <description>Opportunity Support Requests where Assignees have Rejected or have not responded to their assignments.</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Denied,Pending</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Assignee Reject/Pending Support Requests</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Opportunity_Supports_with_Opportunity_Support_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_Opportunity_Supports__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

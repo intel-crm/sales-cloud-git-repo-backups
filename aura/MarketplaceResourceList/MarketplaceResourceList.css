@@ -1,0 +1,18 @@
+.THIS {
+}
+
+.THIS li {
+  border-bottom: 1px solid t(lightGray);
+}
+
+.THIS li:last-child {
+  border-bottom-color: transparent;
+}
+
+@supports (-ms-accelerator:true) or (-ms-ime-align:auto) {
+  /*IE Edge Override since pre EdgeHTML 18 versions do not support overflow-wrap*/
+  .THIS .resource-wrap {
+    word-break: break-all; 
+    word-wrap: break-word;
+  }
+}

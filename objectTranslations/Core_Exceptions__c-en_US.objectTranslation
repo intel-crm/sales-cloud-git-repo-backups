@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core Exception</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core Exceptions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Class Name --></label>
+        <name>Core_Class_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception --></label>
+        <name>Core_Exception__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_IPS_Object_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Login User Id --></label>
+        <name>Core_Login_User_Id__c</name>
+        <relationshipLabel><!-- Core Exceptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Method Name --></label>
+        <name>Core_Method_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Scheduled Run --></label>
+        <name>Core_Next_Scheduled_Run__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id --></label>
+        <name>Core_Record_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retry Counter --></label>
+        <name>Core_Retry_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

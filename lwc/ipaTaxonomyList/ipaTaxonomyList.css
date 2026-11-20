@@ -1,0 +1,43 @@
+img {
+  height: 1.75rem;
+  margin-right: 1rem;
+}
+
+.taxonomy-list-container {
+  min-height: 8rem; /* loading */
+}
+
+.taxonomy-list-container[data-border-bottom="true"] {
+  border-bottom: 1px solid var(--carbon-tint2);
+}
+
+.taxonomy-list-container[data-border-top="true"] {
+  border-top: 1px solid var(--carbon-tint2);
+}
+
+.taxonomy-list-container[data-padding-bottom="true"] {
+  padding-bottom: 1.5rem;
+}
+
+.taxonomy-list-container[data-padding-top="true"] {
+  padding-top: 2.5rem;
+}
+
+.taxonomy-list-container[data-has-header="false"][data-padding-top="true"] {
+  padding-top: 1.5rem;
+}
+
+.taxonomy-list-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .taxonomy-list-container {
+    padding: 1rem;
+  }
+
+  .taxonomy-list-container[data-padding-bottom="true"] {
+    padding-bottom: 1.5rem;
+  }
+}

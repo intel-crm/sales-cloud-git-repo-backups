@@ -1,0 +1,10 @@
+.THIS .slds-textarea {
+    height:200px !important;
+}
+.THIS .headings{
+    color: rgb(1, 118, 211);
+    font-size: medium;
+}
+.THIS .commentsLimitColor{
+    color: rgb(1, 118, 211);
+}

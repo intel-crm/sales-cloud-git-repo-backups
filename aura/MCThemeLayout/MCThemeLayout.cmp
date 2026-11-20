@@ -1,0 +1,54 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Meetcomp Custom Theme Layout">
+  <aura:attribute name="navBar" type="Aura.Component[]" required="false" />
+  <aura:attribute name="userInfo" type="Aura.Component[]" required="false" />
+  <aura:attribute name="search" type="Aura.Component[]" required="false" />
+  <aura:attribute name="profileMenu" type="Aura.Component[]" required="false" />
+  <aura:attribute name="newHeader" type="Aura.Component[]" required="false" />
+  <aura:attribute name="portal" type="String" access="global" />
+  <aura:attribute name="templateHeader" type="Aura.Component[]" required="false" />
+  <aura:attribute name="templateFooter" type="Aura.Component[]" required="false" />
+
+  <div id="recode50header" class="no-animate"></div>
+  <c:IntelHeader />
+  <c:pricing_NotificationBanner />
+  <div>
+    <lightning:layout>
+      <lightning:layoutItem size="12">
+        <div class="intel-navigation">
+          {!v.navBar}
+        </div>
+      </lightning:layoutItem>
+    </lightning:layout>
+
+    <lightning:layout>
+     <lightning:layoutItem size="12">
+        <div class="intel-navigation">
+          {!v.userInfo}
+        </div>
+      </lightning:layoutItem>
+    </lightning:layout>
+
+    <lightning:layout class="search-panel">
+      <lightning:layoutItem size="4"></lightning:layoutItem>
+      <lightning:layoutItem size="4" class="intel-searcharea">
+        <div class="searchArea">
+          {!v.search}
+        </div>
+      </lightning:layoutItem>
+      <lightning:layoutItem size="4"></lightning:layoutItem>
+    </lightning:layout>
+
+    <lightning:layout>
+      <lightning:layoutItem size="1"></lightning:layoutItem>
+      <lightning:layoutItem size="10">
+        <div class="intel-content-area"> 
+          {!v.body}
+        </div>
+      </lightning:layoutItem>
+      <lightning:layoutItem size="1"></lightning:layoutItem>
+    </lightning:layout>
+  </div>
+
+  <c:IntelFooter />
+  <div id="recode50footer"></div>
+</aura:component>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Backend System</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Backend Systems</value>
+    </caseValues>
+    <fields>
+        <help><!-- Check if it does not support restricted content sync requirement --></help>
+        <label><!-- No Restricted Secret Content --></label>
+        <name>Core_IPS_BKSys_No_Restricted_Secret_Cont__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend Connection String --></label>
+        <name>Core_IPS_Backend_Connection_String__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System Name --></label>
+        <name>Core_IPS_Backend_System_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backend System URL --></label>
+        <name>Core_IPS_Backend_System_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPS Cloud Internal URL --></label>
+        <name>Core_IPS_Cloud_Internal_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consider Field Mapping --></label>
+        <name>Core_IPS_Consider_Field_Mapping__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Core_IPS_Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ignore Attachement Type --></label>
+        <name>Core_IPS_Ignore_Attachement_Type__c</name>
+        <picklistValues>
+            <masterLabel>Private to Intel</masterLabel>
+            <translation><!-- Private to Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private to Partner</masterLabel>
+            <translation><!-- Private to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public to Customers</masterLabel>
+            <translation><!-- Public to Customers --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Ignore Comment Type --></label>
+        <name>Core_IPS_Ignore_Comment__c</name>
+        <picklistValues>
+            <masterLabel>Private to Agents</masterLabel>
+            <translation><!-- Private to Agents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private to Intel</masterLabel>
+            <translation><!-- Private to Intel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private to Partner</masterLabel>
+            <translation><!-- Private to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public to Customers</masterLabel>
+            <translation><!-- Public to Customers --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Mandate Case Owner for Promotion --></label>
+        <name>Core_IPS_Mandate_Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- RTF Support --></label>
+        <name>Core_IPS_RTF_Support__c</name>
+    </fields>
+    <fields>
+        <label><!-- Routing Technique --></label>
+        <name>Core_IPS_Routing_Technique__c</name>
+        <picklistValues>
+            <masterLabel>Product</masterLabel>
+            <translation><!-- Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queue</masterLabel>
+            <translation><!-- Queue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Support Case Field Update --></label>
+        <name>Core_IPS_Support_Case_Field_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Organization Name --></label>
+        <name>Core_IPS_Support_Org_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org --></label>
+        <name>Core_IPS_Support_Org__c</name>
+        <relationshipLabel><!-- Backend Systems --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Support Physical File Sync --></label>
+        <name>Core_IPS_Support_Physical_File_Sync__c</name>
+    </fields>
+    <fields>
+        <label><!-- Async Flow Support --></label>
+        <name>Core_IPS_async_flow_support__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Email --></label>
+        <name>Core_Support_Email__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Duplicate Backend System Definition. Please choose another name. --></errorMessage>
+        <name>Core_IPS_BackendSystem_Def_Dup_Check</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Reprocess_Failed_IPSCasePromotes --></label>
+        <name>Reprocess_Failed_IPSCasePromotes</name>
+    </webLinks>
+</CustomObjectTranslation>

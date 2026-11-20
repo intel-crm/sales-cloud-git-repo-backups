@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Opportunity_Type</name>
+        <label>Check Opportunity Type</label>
+        <locationX>380</locationX>
+        <locationY>623</locationY>
+        <defaultConnector>
+            <targetReference>Core_OppTM_Set_Values_Upon_Creation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_Opportunity_RecordType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Core_Design_Opportunity</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Production_Win_Member_Role_For_Design_Opp</targetReference>
+            </connector>
+            <label>Opportunity Type</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_VBS_Opportunity</name>
+        <label>Check VBS Opportunity</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_Opportunity_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_VBS</name>
+            <conditionLogic>1 AND 2 AND 5 AND (3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.Core_VBS_Potential__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.Core_Opportunity_Coverage_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Intel-Led Opportunity</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.Core_VBS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SOAR1 Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity.CRM_VBS_Opp_Owner_Changed_For_VBS__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_VBS_Owner_Change_Flag</targetReference>
+            </connector>
+            <label>If VBS</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for this &quot; Core_OppTM_Set_Values_Upon_Creation &quot;</description>
+        <name>Core_OppTM_Set_Values_Upon_Creation</name>
+        <label>Core_OppTM_Set_Values_Upon_Creation</label>
+        <locationX>380</locationX>
+        <locationY>923</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>When_user_is_Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FSE_user</targetReference>
+            </connector>
+            <label>When  user is  Active</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Set the Prod win Member role for FSE</description>
+        <name>FSE_user</name>
+        <label>FSE User Prod win Member role</label>
+        <locationX>182</locationX>
+        <locationY>1031</locationY>
+        <defaultConnector>
+            <targetReference>set_Opportunity_Team_Member_Org</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>FSE_USER_PROD_WIN_Member</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Account Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FSE_Prod_win_Mamber</targetReference>
+            </connector>
+            <label>FSE USER PROD WIN Member</label>
+        </rules>
+    </decisions>
+    <description>TWC3123-4020</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Opportunity_RecordType</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Opportunity.RecordType.DeveloperName}</expression>
+    </formulas>
+    <formulas>
+        <description>formula for field update of &quot; Core_OppTeamMember_OSC_Update &quot;</description>
+        <name>F_Core_Opp_TM_OSC_UpdateFormula</name>
+        <dataType>Number</dataType>
+        <expression>IF($Record.User.Core_Is_OSC__c , 1,0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>formula for &quot; Core_OppTeamMember_Notify_Member_On_Addition &quot;</description>
+        <name>F_Core_OppTeamMember_Notify_Member_On_Addition</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.CreatedById}  &lt;&gt;  {!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>has the formula for &quot;Core_OppTeamMember_OSC_Update&quot;</description>
+        <name>F_Core_OppTeamMember_OSC_Update</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNULL( {!$Record.Core_OSC_Snapshot__c} )</expression>
+    </formulas>
+    <interviewLabel>Core_OppTM_Set_Values_Upon_Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_OppTM_Set_Values_Upon_Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Prod win Member Update for FSE user</description>
+        <name>FSE_Prod_win_Mamber</name>
+        <label>FSE Prod win Member Update</label>
+        <locationX>50</locationX>
+        <locationY>1139</locationY>
+        <inputAssignments>
+            <field>Core_Production_Win_Member_Role__c</field>
+            <value>
+                <stringValue>Sales Account Manager</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sets the Org on the Opportunity Team Member as the value of the Department on the User field</description>
+        <name>set_Opportunity_Team_Member_Org</name>
+        <label>set Opportunity Team Member: Org</label>
+        <locationX>314</locationX>
+        <locationY>1139</locationY>
+        <inputAssignments>
+            <field>Core_Org__c</field>
+            <value>
+                <elementReference>$User.Department</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Production_Win_Member_Role_For_Design_Opp</name>
+        <label>Update Production Win Member Role For Design Opp</label>
+        <locationX>248</locationX>
+        <locationY>731</locationY>
+        <connector>
+            <targetReference>Core_OppTM_Set_Values_Upon_Creation</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Technical Owner (100%)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Opportunity Owner (100%)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Sales Account Manager</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Production_Win_Member_Role__c</field>
+            <value>
+                <stringValue>Viewer (0%)</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_VBS_Owner_Change_Flag</name>
+        <label>Update VBS Owner Change Flag</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Check_Opportunity_Type</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CRM_VBS_Opp_Owner_Changed_For_VBS__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Opportunity</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_VBS_Opportunity</targetReference>
+        </connector>
+        <object>OpportunityTeamMember</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

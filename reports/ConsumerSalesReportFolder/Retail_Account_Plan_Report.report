@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account_Plan__c.Plan_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account_Plan__c.Account__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Account_Plan__c.Plan_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account_Plan__c.Core_Document_Link__c</field>
+    </columns>
+    <description>Shows which RSMs have account plans loaded</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jafar Naim Abdelhamid,Nitesh  Doolabh,Raul  Iglesias Camara,Serkan  Civlik,Ledda  Valdivieso,Kareem Eletreby.Kris  Rodolf,Francesco  Brogi,Dustin  Dietze,Matthieu  Granier,Eddie Morris,Pavel  Plotitsyn,Victor  LAVARDE,Lutz  Grunert,OLEKSANDR  PASHKEVYCH,Martin  Varbuchta,Andrzej  Galan,Kris Rodolf,Eric Lagrand,Svetlana Barnes,Boy Rouy-aree,Vorachai Rouy-aree,Jennifer Lee,Jade Moon,Emile Perez,Kareem Eletreby,Chery Gao,Lily Yan,Ignacio Jimenez,Ewan Wishart,Gregory Thomson,Adam Malone,Eric Pozin,Ryan Haugen,Darlene Carson,Jessica Luyendyk,Eric Eshaghoff,Lenny Pienta Iii,Dennis Domanick Jr,Tim Clark,Ashley Marino,Sharon Taylor,Barbara Toledo,Vadim Couthon,Erwin van Meer,Cornelia Fetzer,Priscilla Lepore,Beatriz Adriana Andrade,Ruby Pei,Deepak Sharma,Duc The Vinh Nguyen,Gabriel Paolo Padit,Hao Zhang,Hiroyuki Tamura,Jieun Kim,Kazuhisa Kurihara,Ke Chen,Li Yan,Liang Huo,Lidan Xu,Liuhua Bai,Mingxia Gao,Nan Xu,Peijun Fu,Prasoon Sharma,Pratiwi Winata,Rachana Raghuvanshi,Ricardo wells-jansz,Shashank Jain,Sherry Chen,Soyeon Lee,Sunanda Yadav,Terence Ng,Tetsuo Fukushima,Vorchai Rouy-aree,Xiaoyang Yang,Xue Wang,Yashasvi Verma,Yixiao Chen,Yu Fan,Yue Hui Low,Yuki Higuchi,Zhiyuan Bai</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Retail Account Plan Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Plan__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CUST_LAST_UPDATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,90 @@
+.THIS {
+    background-color: t(white);
+    flex-direction: column;
+}
+
+.THIS .lightningLink {
+    display: flex;
+}
+
+
+
+.THIS .simple-card-list-image-wrapper {
+    align-items: center;
+    display: flex;
+    height: 7em;
+    width: 7em; /* BUG ID-4007 */
+    justify-content: center;
+}
+
+.THIS .simple-card-list-image-wrapper.isIcon {
+    padding: 1.5em;
+}
+
+.THIS .simple-card-list-image-wrapper.isIcon .recode50 .icon {
+    font-size: 3em;
+    line-height: 4rem;
+}
+
+.THIS .simple-card-list-image-wrapper + div {
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+}
+.THIS .simple-card-list-image-wrapper.isIcon + div {
+    padding-left: 0;
+}
+
+.THIS .simple-card-list-image-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.THIS .product-category-name {
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    padding: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 75%;
+    /* padding: 0 0 0 20px; */
+}
+
+.THIS p,
+.THIS .product-category-name .h5 {
+    color: t(darkGray);
+}
+
+.THIS a p,
+.THIS a .product-category-name .h5 {
+    color: t(blue);
+}
+
+.THIS .horizontal-border {
+    border: 1px solid t(veryLightGray);
+    width: 100%;
+}
+
+.THIS .description-wrapper {
+    padding: 20px 15px 20px 28px;
+}
+
+.THIS .description-wrapper p {
+    padding-bottom: 10px;
+}
+
+.THIS p {
+    color: t(darkestGray);
+    /* padding-bottom: 10px; */
+}
+/* No hover for icons */
+.THIS a.lightningLink:active .isgIcon .slds-icon use,
+.THIS a.lightningLink:hover .isgIcon .slds-icon use {
+  fill: t(blue);
+}
+
+@media (max-width: 768px) {
+    .THIS {
+        /* margin: 5px 0; */
+    }
+}

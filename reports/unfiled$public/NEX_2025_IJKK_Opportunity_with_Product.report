@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_82776715</developerName>
+        <masterLabel>&gt;=75%</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>PROBABILITY</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>74</to>
+            </sourceValues>
+            <value>(2)&lt;75%</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>74</from>
+            </sourceValues>
+            <value>(1)&gt;=75%</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_60470561</developerName>
+        <masterLabel>Account</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Fujitsu Client Computing Limited (Lenovo/FCCL)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU FRONTECH LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJITSU LIMITED</sourceValue>
+            </sourceValues>
+            <value>(1) FUJITSU</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>NEC CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEC Platforms Ltd.</sourceValue>
+            </sourceValues>
+            <value>(2) NEC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Panasonic Connect</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>i-PRO Co., Ltd.</sourceValue>
+            </sourceValues>
+            <value>(3) PANASONIC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>HITACHI, LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HITACHI HIGH-TECHNOLOGIES</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hitachi Industrial Products, Ltd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hitachi Industry &amp; Control Solutions, Ltd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hitachi Channel Solutions, Corp</sourceValue>
+            </sourceValues>
+            <value>(4) Hitachi</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>RICOH COMPANY,LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RICOH INDUSTRIAL SOLUTIONS INC</sourceValue>
+            </sourceValues>
+            <value>(5) RICOH</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CANON ELECTRONICS INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CANON INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CANON MEDICAL SYSTEMS CORPORATION</sourceValue>
+            </sourceValues>
+            <value>(6) CANON</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>OKI ELECTRIC INDUSTRY COMPANY,LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>OKI NEXTECH CO., LTD.</sourceValue>
+            </sourceValues>
+            <value>(7) OKI</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>TOSHIBA CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>TOSHIBA TEC CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Toshiba Infrastructure Systems &amp; Solutions Corporation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>TOSHIBA DIGITAL SOLUTIONS CORPORATION</sourceValue>
+            </sourceValues>
+            <value>(8) Toshiba</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Fujifilm Business Innovation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FUJIFILM CORPORATION</sourceValue>
+            </sourceValues>
+            <value>(9) Fujifilm</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_94735793</developerName>
+        <masterLabel>Approval status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Approval_Status__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Approved</sourceValue>
+            </sourceValues>
+            <value>1. Approved</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Submitted</sourceValue>
+            </sourceValues>
+            <value>2. Submitted</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Not Submitted</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Recalled</sourceValue>
+            </sourceValues>
+            <value>3. Not submitted</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_78759719</developerName>
+        <masterLabel>Decision date</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>13</to>
+            </sourceValues>
+            <value>Q1/Q2</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>13</from>
+            </sourceValues>
+            <value>Q3/Q4</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_60470561</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Exclude_From_KPIs__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Architecture_Conversion__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner_Email_Txt__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(MONTH(CLOSE_DATE)=1, &quot;Q1&quot;, IF(MONTH(CLOSE_DATE)=2, &quot;Q1&quot;, IF(MONTH(CLOSE_DATE)=3, &quot;Q1&quot;, IF(MONTH(CLOSE_DATE)=4, &quot;Q2&quot;, IF(MONTH(CLOSE_DATE)=5, &quot;Q2&quot;, IF(MONTH(CLOSE_DATE)=6, &quot;Q2&quot;, IF(MONTH(CLOSE_DATE)=7, &quot;Q3&quot;, IF(MONTH(CLOSE_DATE)=8, &quot;Q3&quot;, IF(MONTH(CLOSE_DATE)=9, &quot;Q3&quot;, &quot;Q4&quot;)))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>DW quarter</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sub_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IJKK</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled,Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>PSG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Japan</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>2025 IJKK Opportunity with Product</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CLOSE_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
+    </timeFrameFilter>
+</Report>

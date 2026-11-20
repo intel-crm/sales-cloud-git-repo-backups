@@ -1,0 +1,217 @@
+<template>
+    <!--div class={flexipageRegionWidth}-->
+
+    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout" role="grid"
+        id="tableId">
+        <thead>
+            <template if:false={index}>
+                <tr class="slds-line-height_reset">
+
+                    <template if:true={showcheckbox}>
+
+                        <th class="slds-text-align_right" width="3%" scope="col">
+                            <span id="column-group-header" class="slds-assistive-text">Choose a row</span>
+                            <div class="slds-th__action slds-th__action_form">
+                                <div class="slds-checkbox">
+                                    <input type="checkbox" name="options" checked={checked} id="checkbox-unique-id-293"
+                                        onchange={handleAllCheckboxValChange} value="checkbox-unique-id-293"
+                                        tabindex="0" aria-labelledby="check-select-all-label column-group-header" />
+                                    <label class="slds-checkbox__label" for="checkbox-unique-id-293"
+                                        id="check-select-all-label">
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label slds-assistive-text">Select All</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </th>
+
+                    </template>
+
+
+                    <th aria-label="Account Name" aria-sort="none" class="slds-is-resizable slds-is-sortable"
+                        scope="col" width="20%">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Account Name">Account Name</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th aria-label="Account Number" aria-sort="none" class="slds-is-resizable slds-is-sortable"
+                        scope="col" width="8%">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Account Number">Account Number</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th width="12%" aria-label="Partner Role" aria-sort="none"
+                        class="slds-is-resizable slds-is-sortable" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Role">Partner Role</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th width="9%" aria-label="Tier" aria-sort="none" class="slds-is-resizable slds-is-sortable"
+                        scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Tier">Tier</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th width="7%" aria-label="Business Unit" aria-sort="none"
+                        class="slds-is-resizable slds-is-sortable" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Business Unit">Business Unit</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th width="15%" aria-label="Specialty Criteria" aria-sort="none"
+                        class="slds-is-resizable slds-is-sortable" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Specialty Criteria">Specialty Criteria</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th width="7%" aria-label="Training Credits" aria-sort="none"
+                        class="slds-is-resizable slds-is-sortable" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Training Credits">Training Credits</span>
+
+                            </div>
+                        </a>
+                    </th>
+
+                    <th width="12%" aria-label="Trained Employee Number" aria-sort="none"
+                        class="slds-is-resizable slds-is-sortable" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                            tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Trained Employee Number">Trained Employee
+                                    Number</span>
+
+                            </div>
+                        </a>
+                    </th>
+                    <template if:true={confirmscreen}>
+                        <th scope="col" width="7%">
+                            <div title="Value">Comments</div>
+                        </th>
+                    </template>
+                    <template if:true={confirmscreen}>
+                    <th width="7%" aria-label="Suppress Email" aria-sort="none"
+                    class="slds-is-resizable slds-is-sortable" scope="col">
+                    <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                        tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                            <span class="slds-truncate" title="Suppress Email">Suppress Email</span>
+
+                        </div>
+                    </a>
+                </th>
+            </template>
+                </tr>
+            </template>
+        </thead>
+
+        <tbody>
+
+            <tr aria-selected="false" class="slds-hint-parent" id='Selected_{sobKey.id}'>
+                <template if:true={showcheckbox}>
+                    <td class="slds-text-align_right" role="gridcell" width="3%">
+                        <div class="slds-checkbox">
+                            <input type="checkbox" name="options" id="checkbox-01" value="checkbox-01" tabindex="0"
+                                checked={singleRecChecked} onchange={handleCheckboxValue}
+                                aria-labelledby="check-button-label-01 column-group-header" />
+                            <label class="slds-checkbox__label" for="checkbox-01" id="check-button-label-01">
+                                <span class="slds-checkbox_faux"></span>
+                                <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
+                            </label>
+                        </div>
+                    </td>
+                </template>
+
+                <td role="gridcell" width="20%">
+                    <div class="slds-truncate customstyle" title={sobKey.accountName}>{sobKey.accountName}</div>
+                </td>
+                <td role="gridcell" width="8%">
+                    <div class="slds-truncate customstyle">{sobKey.accountNum}</div>
+                </td>
+                <td role="gridcell" width="12%">
+                    <div class="slds-truncate customstyle">{sobKey.acmpartnerRole}</div>
+                </td>
+                <td role="gridcell" width="9%">
+                    <div class="slds-truncate customstyle">{sobKey.channelProgLevelName}</div>
+                </td>
+                <td role="gridcell" width="7%">
+                    <div class="slds-truncate customstyle">{sobKey.accountBuFocus}</div>
+                </td>
+                <td role="gridcell" width="15%">
+                    <div class="slds-truncate customstyle">
+                        <lightning-accordion allow-multiple-sections-open={multiple}>
+                            <template if:true={specialty}>
+                                <lightning-checkbox-group name="Select Criteria" options={options} value={value}
+                                    onchange={handleChange}></lightning-checkbox-group>
+                            </template>
+                        </lightning-accordion>
+                    </div>
+                </td>
+                <td role="gridcell" width="7%">
+                    <div class="slds-truncate customstyle">{sobKey.spTrainingCredits}</div>
+                </td>
+                <td role="gridcell" width="12%">
+                    <div class="slds-truncate customstyle">{sobKey.noOfTrainedEmployee}</div>
+                </td>
+                <template if:true={confirmscreen}>
+                    <td width="7%">
+                        <lightning-input type="text" value={myValue} onchange={handleCommentChange}>
+                        </lightning-input>
+                    </td>
+                </template>
+                <template if:true={confirmscreen}>    
+            <td role="gridcell" width="7%">
+                <!--<lightning-input  type="checkbox" label="" checked={supChecked} onchange={handleSuppressEmailChange} ></lightning-input> -->
+                <lightning-input type="checkbox" label="" onchange={handleSuppressEmailChange}
+                     checked={supChecked}>
+    </lightning-input>								
+                </td>
+            </template>   
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!--/div-->
+</template>

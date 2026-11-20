@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Competitor Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Competitor Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Pricing_Active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product Provider --></label>
+        <name>Pricing_Competitor_Product_Provider_Nm__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Client --></label>
+        <name>Pricing_Client</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Data Center --></label>
+        <name>Pricing_Data_Center</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents GPU Competitor Products --></description>
+        <label><!-- Graphics --></label>
+        <name>Pricing_GPU</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Write In Product cannot be renamed. --></errorMessage>
+        <name>Block_Write_In_Product_Rename</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Write In competitor product cannot be inactivated. --></errorMessage>
+        <name>Pricing_Inactive_Checkbox_For_DPM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record Type cannot be changed for Competitor Product. --></errorMessage>
+        <name>Pricing_Restrict_RecordType_Change</name>
+    </validationRules>
+</CustomObjectTranslation>

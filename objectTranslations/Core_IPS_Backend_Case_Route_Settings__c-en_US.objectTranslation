@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPS_Backend_Case_Route_Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPS_Backend_Case_Route_Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- IPS Help Link --></label>
+        <name>Core_IPS_Help_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Link --></label>
+        <name>Core_IPS_Object_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Email --></label>
+        <name>Core_IPS_Support_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Name --></label>
+        <name>Core_IPS_User_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

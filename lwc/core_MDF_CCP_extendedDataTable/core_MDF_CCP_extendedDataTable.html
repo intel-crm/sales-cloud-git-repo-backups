@@ -1,0 +1,162 @@
+<template>
+   
+    <lightning-spinner if:true={isLoadingTable} alternative-text="Loading" size="large"></lightning-spinner>
+    <template if:false={isLoadingTable}>
+    <lightning-card title="Existing Details">
+        
+
+    <lightning-layout>
+    
+        <lightning-layout-item  size="12" padding="horizontal-medium">
+          
+            <div class=" slds-scrollable slds-border_top slds-border_right slds-border_bottom slds-border_left" >
+                <lightning-datatable
+                key-field="Id"
+                data={readOnlyfinalSObjectDataList}
+                columns={readOnlydataCols}
+                hide-checkbox-column=true
+                onrowaction={callRowActionReadOnly}>
+            </lightning-datatable> 
+           
+        </div>
+        </lightning-layout-item>
+    </lightning-layout>
+    <!--Sharing readonly datatable-->
+</br>
+<lightning-layout horizontal-align="center">
+<lightning-layout-item padding="horizontal-small">
+<lightning-button icon-name="utility:download" 
+                  label="Download Result" 
+                  title="Download Result"
+                  onclick={handleDownloadClick} variant="brand" disabled={disableResultButton}></lightning-button>
+</lightning-layout-item>
+<lightning-layout-item padding="horizontal-small">
+    <lightning-button icon-name="utility:download" 
+                      label="Download Sharing Details" 
+                      title="Download Sharing Details"
+                      onclick={handleDownloadClickSave} variant="brand" disabled={disableResultButton}></lightning-button>
+</lightning-layout-item>
+</lightning-layout>
+</br>
+</br>
+    <template if:true={isShowReadOnly}>
+            <div class="slds-text-heading_medium"><div class="slds-text-align_center"><b>Sharing Details : {rowId}</b></div></div>
+    </br>
+    
+        <lightning-layout horizontal-align="center">
+            <lightning-layout-item padding="horizontal-medium">
+            <div class=" slds-scrollable slds-border_top slds-border_right slds-border_bottom slds-border_left" style="height: 200px;width: 800px;" >
+                 <lightning-datatable
+                    key-field="Id"
+                    data={sharingReadOnlyData}
+                    columns={columnsSharingTable}
+                    hide-checkbox-column=true>
+                 </lightning-datatable>
+           </div>
+        </lightning-layout-item>
+    </br>
+</br>
+
+
+    </lightning-layout>
+
+    </template> 
+
+</lightning-card>
+    <lightning-card title="Modify Details">
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="large"></lightning-spinner>
+    <template if:false={isLoading}>
+        <lightning-layout>
+            <lightning-layout-item size="12" padding="horizontal-medium">
+                <div class=" slds-scrollable slds-border_top slds-border_right slds-border_bottom slds-border_left" >
+                    <c-core_-m-d-f_-c-c-p_lwc-datatable key-field="Id"
+                        
+                            oncellchange={handleCellChange} 
+                            data={finalSObjectDataList}
+                            columns={dataCols}
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onsort={onHandleSort}
+                            onsave={handleSave}
+                            draft-values={draftValues}
+                            suppress-bottom-bar = {suppressFlag}
+                            onpicklistchanged={handlePickListChanged}
+                            onmultiselectpicklistchanged={handleMultiselectPicklistChanged}
+                            onvalueselect={handleSelection}
+                            onlookup={handleLookup}
+                            onrowaction={callRowAction}
+                            show-row-number-column={showRowNumberCol}
+                        
+                        >
+                    </c-core_-m-d-f_-c-c-p_lwc-datatable>
+                </div>
+           
+              <!-- Error Box-->
+            <template if:true={isError}>
+                <div class="slds-box">
+                    <p style="color: red;">{errorMessageOnUpdate}</p>
+                </div>
+            </template>
+        </br>
+        <!-- </lightning-layout-item>-->
+                <lightning-layout horizontal-align="center">
+                        <lightning-layout-item padding="horizontal-small">
+                            
+                            <lightning-button icon-name="utility:save" 
+                                              label="Save" 
+                                              title="Save"
+                                              onclick={handleSave} variant="brand" disabled={disableResultButton}></lightning-button>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="horizontal-small">
+                            <lightning-button icon-name="utility:download" 
+                                              label="Download Result" 
+                                              title="Download Result"
+                                              onclick={handleDownloadEdit} variant="brand" disabled={disableResultButton}></lightning-button>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small">
+                                <lightning-button icon-name="utility:download" 
+                                                  label="Download Sharing Details" 
+                                                  title="Download Sharing Details"
+                                                  onclick={handleDownloadEditSave} variant="brand" disabled={disableResultButton}></lightning-button>
+                            </lightning-layout-item>
+                </lightning-layout>
+        </lightning-layout-item>
+
+        </lightning-layout>
+    </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+        <!--Sharing Editonly datatable-->
+       
+        <template if:true={isShowEditOnly}>
+            <div class="slds-text-heading_medium"><div class="slds-text-align_center"><b>Updated Sharing Details :{rowId}</b></div></div>
+        </br>
+            <lightning-layout horizontal-align="center">
+            <div  class="slds-border_top slds-border_right slds-border_bottom slds-border_left" style="height: 200px;width: 800px;">
+                <lightning-datatable
+                        key-field="Id"
+                        data={sharingEditData}
+                        columns={columnsSharingTable}
+                        hide-checkbox-column=true>
+                </lightning-datatable>
+            </div>
+        </br>
+    </br>
+   
+        </lightning-layout>
+    
+        </template> 
+ 
+    </template>
+</lightning-card> 
+</template>
+</template>

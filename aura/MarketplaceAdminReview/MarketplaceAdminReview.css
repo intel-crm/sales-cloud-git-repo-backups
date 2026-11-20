@@ -1,0 +1,74 @@
+/* .THIS .create-offering-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: t(lightestGray);
+  z-index: t(zIndexModal);
+  transition: 0.6s ease-out;
+  transform: translate(-200%, 0);
+}
+.THIS .create-offering-overlay.slds-show {
+  transform: translate(0);
+}
+
+.THIS .create-offering a {
+  padding-left: 20px;
+}
+
+.THIS .create-offering a.close {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.THIS .create-offering a .slds-icon {
+  width: 2rem;
+  height: 2rem;
+}
+.THIS .create-offering a .slds-icon use {
+  fill: t(white);
+}
+.THIS .create-offering {
+  color: t(white);
+  background: t(blue);
+  min-height: 60px;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.THIS .body {
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+.THIS  {
+  max-width: 100%;
+  margin: 0 auto;
+}
+.THIS .scaledInnerContainer {
+  transform-origin: top left;
+}
+.THIS .outerContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.THIS a.lightningLink {
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .THIS  .largeMobile button {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .THIS  {
+    border: 1px solid t(lightGray);
+  }
+} */

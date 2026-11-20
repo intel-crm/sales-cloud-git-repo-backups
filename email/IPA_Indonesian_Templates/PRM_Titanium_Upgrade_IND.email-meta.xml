@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Titanium_Upgrade_IND</name>
+    <style>none</style>
+    <subject>Selamat datang di Intel® Partner Alliance Titanium</subject>
+    <textOnly>Intel® Partner Alliance Titanium
+
+
+
+{!Contact.FirstName},
+
+Kami telah membuat beberapa perubahan menarik dan mengubah kriteria program Intel® Partner Alliance serta meningkatkan manfaat yang mendukung kebutuhan bisnis Anda. Hasilnya, perusahaan Anda telah diupgrade ke Intel® Partner Alliance Titanium. Selamat!
+
+Berikut beberapa manfaat tambahan untuk Titanium:
+
+Lencana Titanium
+Jumlah Penggantian Jaminan Lanjutan yang lebih banyak
+Batas poin paling tinggi
+
+
+Ada banyak hal yang sangat menarik pada pengalaman Intel® Partner University baru, termasuk:
+
+Peningkatan penuh dalam pengalaman digital
+Jalur pelatihan yang dipersonalisasi
+Sistem rating konten baru untuk membantu mitra menemukan dan mengonsumsi konten dengan rating tertinggi dari rekan sejawat.
+
+
+Selain itu, sekarang kami menyediakan tren dan wawasan industri terkurasi kepada mitra yang disajikan oleh ilmuwan data di Tim Penentuan Ukuran dan Perkiraan Pasar Intel.
+
+Nantikan pengalaman pengguna Intel® Solutions Marketplace yang baru dan ditingkatkan:
+
+Tampilan dan nuansa baru serta navigasi situs yang lebih mudah
+Pengalaman yang ditingkatkan untuk menghasilkan koneksi dan prospek antar-mitra
+Peningkatan fungsi pencarian secara keseluruhan
+
+
+Intel® Partner Alliance terus berusaha untuk menghadirkan lebih banyak nilai dan manfaat agar bisnis Anda dapat berkembang pesat di lingkungan saat ini. Ketahui lebih lanjut tentang apa yang disediakan Intel® Partner Alliance untuk membantu Anda memajukan bisnis Anda.
+
+
+Mulai sekarang
+
+
+
+Terima kasih,
+Tim Intel® Partner Alliance Anda
+
+
+Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
+© 2023 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privasi &amp;verbar; Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

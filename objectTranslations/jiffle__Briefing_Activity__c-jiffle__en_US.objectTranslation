@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Jifflenow Briefing Activity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Jifflenow Briefing Activities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Master --></label>
+        <name>jiffle__Activity_Master__c</name>
+        <relationshipLabel><!-- Jifflenow Briefing Activities (Activity Master) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Activity UUID --></label>
+        <name>jiffle__Activity_UUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>jiffle__Activity__c</name>
+        <relationshipLabel><!-- Jifflenow Briefing Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Additional Information --></label>
+        <name>jiffle__Additional_Info__c</name>
+    </fields>
+    <fields>
+        <label><!-- Briefing --></label>
+        <name>jiffle__Briefing__c</name>
+        <relationshipLabel><!-- Jifflenow Briefing Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>jiffle__Opportunity__c</name>
+        <relationshipLabel><!-- Jifflenow Briefing Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Topic --></label>
+        <name>jiffle__Topic__c</name>
+        <relationshipLabel><!-- Jifflenow Briefing Activities (Topic) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

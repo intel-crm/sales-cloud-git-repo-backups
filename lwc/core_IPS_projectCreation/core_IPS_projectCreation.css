@@ -1,0 +1,462 @@
+.barSize {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    flex: 1 1 auto;
+    margin: auto
+}
+
+.barProgress {
+    width: 0%;
+}
+
+.pageBkGD {
+    text-align: left;
+    padding-left: 33.4%;
+    padding-top: 20px;
+}
+
+.barProgress1 {
+    width: 50%;
+    background: white;
+}
+
+.barProgress2 {
+    width: 100%;
+    background: white;
+}
+
+.barSize1 {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    flex: 1 1 auto;
+    margin: auto
+}
+
+.barSize2 {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    flex: 1 1 auto;
+    margin: auto
+}
+
+.slds-icon-utility-success {
+    --sds-c-icon-color-foreground-default: #1570c7;
+}
+
+.progressbarIcon {
+    width: 18px;
+    position: absolute;
+    max-width: 24px;
+    top: -2px;
+    left: -2px;
+}
+
+.slds-progress__item.slds-is-active .slds-progress__marker {
+    border-color: #fff;
+    box-shadow: none;
+}
+
+.progressActiveText {
+    font-weight: 900;
+}
+
+.productBg {
+    padding: 12px;
+    background: #fff;
+    margin: 40px 30px 0px 30px;
+}
+
+.back-button {
+    color: #1570c7;
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+}
+
+.addMem-button {
+    text-decoration: underline #1570c7;
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    color: #1570c7;
+}
+
+.selectpjt {
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;
+    margin-top: 5px;
+    padding-top: 20px;
+    text-align: left;
+    left: 74px;
+}
+
+.selectpjthead1 {
+    height: 20px;
+    margin: 30px 15px 20px 36px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;
+    margin-top: 5px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.selectpjthead {
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: white;
+    margin-top: 5px;
+}
+
+.subHeadline {
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    padding-top: 20px;
+    letter-spacing: normal;
+    color: #262626;
+    text-align: left;
+}
+
+.divclass {
+    background-color: #653171;
+    color: white;
+    padding: 40px 80px;
+}
+
+.ProjectContainer {
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.rectangle {
+    height: 38px;
+    margin: 1px 0 0;
+    padding: 0 0 10px 25px;
+    background-color: #fff;
+    padding-bottom: 10px;
+}
+
+.selectProjOptions {
+    padding-left: 5%;
+    min-width: 100%;
+    padding-right: 5%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.selectProdOptions {
+    padding-left: 10%; 
+    padding-right: 10%;
+    min-width: 100%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.inputsearchProj {
+    padding-left: 5%;
+    min-width: 35%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.inputsearchProd {
+    padding-left: 10%;
+    min-width: 35%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.firstLabel {
+    position: relative;
+    left: -45px;
+    top: 20px;
+}
+
+.lastLabel {
+    position: relative;
+    right: -45px;
+    top: 20px;
+}
+
+.middleLabel {
+    position: relative;
+    top: 20px;
+}
+
+.checkBox {
+    display: inline-block;
+    width: 20%;
+}
+
+.Notificationalign {
+    text-align: left;
+    padding-top: 40px;
+}
+
+.productpagebuttons {
+    text-align: left;
+    padding-left: 10%;
+}
+
+.customprodbutton {
+    background-color: #0054ae;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    height: 41.5px;
+    margin-right: 15px;
+}
+
+.buttonpadding {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+@media all and (max-width: 1023px) {
+    .selectpjthead1 {
+        height: 20px;
+        margin: 16px 15px 36px 25px;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        color: #262626;
+        font-size: 14px;
+    }
+    .helptext {
+        padding-left: 20px;
+    }
+    .divclass {
+        padding: 30px 15px;
+    }
+    .projectCreation.slds-grid {
+        display: block;
+    }
+    .selectpjt {
+        width: 100%;
+        margin: 0;
+        padding-left: 20px;
+        padding-top: 0;
+    }
+    .projectCreation.slds-grid .slds-form-element {
+        margin: 0 20px;
+    }
+    .subHeadline {
+        margin: 20px 0 0 0;
+        width: 100%;
+        padding-left: 20px;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .customprodbutton {
+        width: 100%;
+        margin-bottom: 0px;
+        margin-right: 0;
+    }
+    .productpagebuttons {
+        text-align: left;
+        padding-left: 0;
+    }
+    .Notificationalign {
+        padding-top: 0px;
+    }
+    .pageMargins {
+        margin-left: 20%;
+        margin-right: 20%
+    }
+    .pageBkGD {
+        padding-left: 0px;
+        padding-top: 20px;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+    .productBg {
+        padding: 12px;
+        background: #fff;
+        margin: 0;
+    }
+    .inputsearchProj {
+        padding-left: 5%;
+        min-width: 90%;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+    }
+    .selectProjOptions {
+        padding-left: 3%;
+        min-width: 90%;
+    }
+    .requiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -120px;
+    padding-bottom: 10px;
+
+}
+}
+
+.exampleHolder {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.helptext {
+    padding-top: 5px;
+    font-size: small;
+    text-align: left;
+}
+
+.htext {
+    padding-top: 5px;
+    font-size: small;
+    text-align: left;
+}
+
+.mandate {
+    color: var(--redError);
+    content: "*";
+    position: absolute;
+    left: 4.5rem;
+    visibility: visible;
+}
+
+.Ptext {
+    padding-top: 5px;
+    font-size: small;
+    text-align: left;
+}
+/* .showRequired{
+    border: 2px solid red;
+} */
+.requiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    /* margin-left: -269px; */
+    padding-bottom: 10px;
+    text-align: left;
+
+}
+.productRequiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -250px;
+    position: absolute;
+    right: px;
+    top: 860px;
+}
+@media all and (max-width: 760px) {
+     .requiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -100px;
+    padding-bottom: 10px;
+
+}
+.productRequiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -250px;
+    position: absolute;
+    right: 10px;
+    top: 910px;
+}
+
+
+
+}/* .showRequired{
+    border: 2px solid red;
+} */
+.requiredField{
+    display: block;
+    color: #cc0000;
+    font-size: 14px;
+    padding-bottom: 10px;
+    padding-top: 1%;
+
+}
+.productRequiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -250px;
+    position: absolute;
+    right: 159px;
+    top: 900px;
+}
+@media all and (max-width: 760px) {
+     .requiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -100px;
+    padding-bottom: 10px;
+
+}
+.productRequiredField{
+    display: block;
+    /* padding-top: 5px; */
+    color: #cc0000;
+    font-size: 14px;
+    margin-left: -250px;
+    position: absolute;
+    right: 10px;
+    top: 910px;
+}
+
+
+
+}

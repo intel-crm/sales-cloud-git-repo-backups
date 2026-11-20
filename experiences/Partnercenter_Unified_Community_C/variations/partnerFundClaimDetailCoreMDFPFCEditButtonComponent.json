@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "d23ac26c-30be-45a9-aeb5-538e4a3ddaa0",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "c80f70dd-e404-44e2-a846-b714f02d3e1e",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Partner_Fund_Claim_Detail_Core_MDF_PFC_EditButton_Component",
+  "id" : "d2b96f9c-1d6b-45c7-9c95-58c7ed52e8c2",
+  "type" : "experienceVariation"
+}

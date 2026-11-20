@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Accounts Add/Edit/Delete Account Team Members</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/add-remove-account-team-members/</actionButtonLink>
+        <body>&lt;p&gt;&lt;strong&gt;Add an Account Team Member&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;In addition to adding a team member to an account, a user can &lt;a href=&quot;https://salescrm.intel.com/account-and-contact-management/account-team-change-requests/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;request to be part of an Account Team&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To add a team member to an Account,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Access the &lt;strong&gt;Account &lt;/strong&gt;&lt;em&gt;detail &lt;/em&gt;page, and navigate to the &lt;strong&gt;Account Team&lt;/strong&gt; section. Click the drop-down menu arrow and select &lt;strong&gt;Add Team Members&lt;/strong&gt;. The &lt;em&gt;Add Account Team Members&lt;/em&gt; window opens.&amp;nbsp;&lt;/li&gt;&lt;li&gt;In the &lt;strong&gt;User &lt;/strong&gt;field, type the first or last name of the person you want to add. If you don’t see the name listed, click the search icon in the drop-down menu below the field in which you’re typing.&lt;/li&gt;&lt;li&gt;Make selections from the &lt;strong&gt;Team Role&lt;/strong&gt;, &lt;strong&gt;Account Access&lt;/strong&gt;, &lt;strong&gt;Case Access&lt;/strong&gt;, and &lt;strong&gt;Opportunity Access&lt;/strong&gt; drop-down menus.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt;. A confirmation message appears and the new account team members will be listed.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Edit/Delete Account Team Members&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To edit an Account team member, or remove a team member from an Account,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Access the &lt;strong&gt;Account&lt;/strong&gt; &lt;em&gt;detail&lt;/em&gt; page, and navigate to the &lt;strong&gt;Account Team&lt;/strong&gt; section. Click the drop-down menu arrow next to the member name and select &lt;strong&gt;Edit&lt;/strong&gt; or &lt;strong&gt;Delete&lt;/strong&gt;. If you don’t see the member name listed, click &lt;strong&gt;View All&lt;/strong&gt; to see a list of all team members.&lt;/li&gt;&lt;li&gt;In the next window, either edit the account access or confirm the deletion for the team member.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt; if editing the account team member.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Accounts Add/Edit/Delete Account Team Members</description>
+        <displayType>DockedComposer</displayType>
+        <header>Accounts</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Accounts Add/Edit/Delete Account Team Members</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>Account</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Add/Edit/Delete Account Team Members</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6327691947112</videoLink>
+    </promptVersions>
+</Prompt>

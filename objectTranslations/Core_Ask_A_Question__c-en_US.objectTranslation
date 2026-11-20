@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Ask a Question (Do Not Use - EOL)</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Ask a Question (Do Not Use - EOL)</value>
+    </caseValues>
+    <fields>
+        <help><!-- Used to calculate the age of a ticket --></help>
+        <label><!-- Age (Days) --></label>
+        <name>Core_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Functional Area(Optional) --></label>
+        <name>Core_Functional_Area__c</name>
+        <picklistValues>
+            <masterLabel>Accounts</masterLabel>
+            <translation><!-- Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contacts</masterLabel>
+            <translation><!-- Contacts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Support</masterLabel>
+            <translation><!-- Deal Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leads</masterLabel>
+            <translation><!-- Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunities</masterLabel>
+            <translation><!-- Opportunities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products</masterLabel>
+            <translation><!-- Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_Geo__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW</masterLabel>
+            <translation><!-- WW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Support Org Number --></label>
+        <name>Core_IPS_Support_Org_Name__c</name>
+        <relationshipLabel><!-- Ask a Question (Do Not Use - EOL) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Support Org Name --></label>
+        <name>Core_IPS_Support_Org_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- I Need Assistance With --></label>
+        <name>Core_I_Need_Assistance_With__c</name>
+        <picklistValues>
+            <masterLabel>Account &amp; Contacts</masterLabel>
+            <translation><!-- Account &amp; Contacts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bug/Issue</masterLabel>
+            <translation><!-- Bug/Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data/ Visibility</masterLabel>
+            <translation><!-- Data/ Visibility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhancement</masterLabel>
+            <translation><!-- Enhancement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS Case</masterLabel>
+            <translation><!-- IPS Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Support</masterLabel>
+            <translation><!-- PSG Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Permission</masterLabel>
+            <translation><!-- Permission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product/Price</masterLabel>
+            <translation><!-- Product/Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products</masterLabel>
+            <translation><!-- Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Projects</masterLabel>
+            <translation><!-- Projects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Access</masterLabel>
+            <translation><!-- System Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training Materials</masterLabel>
+            <translation><!-- Training Materials --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Internal Comments --></label>
+        <name>Core_Internal_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- On Hold Reason --></label>
+        <name>Core_On_Hold_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Focus Area --></label>
+        <name>Core_Organization_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution Type --></label>
+        <name>Core_Resolution_Type__c</name>
+        <picklistValues>
+            <masterLabel>Account/Contact</masterLabel>
+            <translation><!-- Account/Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add User</masterLabel>
+            <translation><!-- Add User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add/Update Price</masterLabel>
+            <translation><!-- Add/Update Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add/Update Product</masterLabel>
+            <translation><!-- Add/Update Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Answered</masterLabel>
+            <translation><!-- Answered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conga</masterLabel>
+            <translation><!-- Conga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create / Change Dashboard</masterLabel>
+            <translation><!-- Create / Change Dashboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create / Change Folder</masterLabel>
+            <translation><!-- Create / Change Folder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create / Change Report</masterLabel>
+            <translation><!-- Create / Change Report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Updates</masterLabel>
+            <translation><!-- Data Updates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delete User</masterLabel>
+            <translation><!-- Delete User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate</masterLabel>
+            <translation><!-- Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dynamic Dashboard</masterLabel>
+            <translation><!-- Dynamic Dashboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhancement Logged</masterLabel>
+            <translation><!-- Enhancement Logged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Folder Access</masterLabel>
+            <translation><!-- Folder Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General</masterLabel>
+            <translation><!-- General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leads</masterLabel>
+            <translation><!-- Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logged with TAC</masterLabel>
+            <translation><!-- Logged with TAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSBI</masterLabel>
+            <translation><!-- MSBI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opptortunity</masterLabel>
+            <translation><!-- Opptortunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other  (Explain Below)</masterLabel>
+            <translation><!-- Other  (Explain Below) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outlook</masterLabel>
+            <translation><!-- Outlook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSO</masterLabel>
+            <translation><!-- SSO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unanswered</masterLabel>
+            <translation><!-- Unanswered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Account/Sales Team</masterLabel>
+            <translation><!-- Update Account/Sales Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Address</masterLabel>
+            <translation><!-- Update Address --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Owner</masterLabel>
+            <translation><!-- Update Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Profile</masterLabel>
+            <translation><!-- Update Profile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Territory</masterLabel>
+            <translation><!-- Update Territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Training</masterLabel>
+            <translation><!-- User Training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Resolution --></label>
+        <name>Core_Resolution__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Duration --></label>
+        <name>Core_SLA_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Indicator --></label>
+        <name>Core_SLA_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Status --></label>
+        <name>Core_SLA_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Now Ticket ID --></label>
+        <name>Core_Service_Now_Ticket_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Critical – affects all users with no workaround.
+High – issue affects many users with no workaround.
+Medium – bug affects some users and short-term workaround.
+Low – regarding a routine issue --></help>
+        <label><!-- Severity Level --></label>
+        <name>Core_Severity_Level__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subcategory --></label>
+        <name>Core_Subcategory__c</name>
+        <picklistValues>
+            <masterLabel>Accounts</masterLabel>
+            <translation><!-- Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add a Product to SFDC</masterLabel>
+            <translation><!-- Add a Product to SFDC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add/Modify Case Category</masterLabel>
+            <translation><!-- Add/Modify Case Category --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Attachments</masterLabel>
+            <translation><!-- Attachments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cases</masterLabel>
+            <translation><!-- Cases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comments</masterLabel>
+            <translation><!-- Comments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Access/Visibility</masterLabel>
+            <translation><!-- Contact Access/Visibility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Emulation</masterLabel>
+            <translation><!-- Contact Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Tool Access</masterLabel>
+            <translation><!-- Contact Tool Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Feedback</masterLabel>
+            <translation><!-- Customer Feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ensure Product cannot be supported out of SFDC</masterLabel>
+            <translation><!-- Ensure Product cannot be supported out of SFDC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interested Parties</masterLabel>
+            <translation><!-- Interested Parties --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Licensed Products</masterLabel>
+            <translation><!-- Licensed Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSBI</masterLabel>
+            <translation><!-- MSBI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Make a Product IPS Visible</masterLabel>
+            <translation><!-- Make a Product IPS Visible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Members</masterLabel>
+            <translation><!-- Members --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PAR/MAP</masterLabel>
+            <translation><!-- PAR/MAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Access</masterLabel>
+            <translation><!-- Product Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products</masterLabel>
+            <translation><!-- Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project</masterLabel>
+            <translation><!-- Project --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFDC</masterLabel>
+            <translation><!-- SFDC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SLA/Case Milestones</masterLabel>
+            <translation><!-- SLA/Case Milestones --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Core_Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter Profile --></label>
+        <name>Core_Submitter_Profile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter&apos;s Cell --></label>
+        <name>Core_Submitter_s_Cell__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter&apos;s Department --></label>
+        <name>Core_Submitter_s_Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter&apos;s Email --></label>
+        <name>Core_Submitter_s_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter&apos;s Name --></label>
+        <name>Core_Submitter_s_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitter&apos;s Work Phone --></label>
+        <name>Core_Submitter_s_Work_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Owner --></label>
+        <name>Core_Support_Owner__c</name>
+        <relationshipLabel><!-- Ask a Question (Do Not Use - EOL) --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <description><!-- This is for the IPS functionality used by Agents, Support Org Admins and Field Application Engineers working on Intel Premier Support case management --></description>
+        <label><!-- Ask A Question Intel Premier Support --></label>
+        <name>CoreAsk_A_Question_IPS</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Sales AAQ --></description>
+        <label><!-- Ask A Question Sales --></label>
+        <name>Core_Ask_A_Question_Sales</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot change the Submitter. Please change Support Owner for any owner changes. --></errorMessage>
+        <name>Core_Question_Do_Not_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A value for On Hold Reason is required if Status equals On Hold. --></errorMessage>
+        <name>Core_Support_Request_On_Hold_Reason_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A value for Resolution is required if Status equals Closed. --></errorMessage>
+        <name>Core_Support_Request_Resolution_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

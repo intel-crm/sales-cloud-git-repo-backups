@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Asset &amp; Operations Optimization</masterLabel>
+        <translation>Otimização de ativos e operações</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Control Optimization &amp; Autonomy</masterLabel>
+        <translation>Otimização e autonomia de controle</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Energy Monitoring &amp; Management</masterLabel>
+        <translation>Monitoramento e gerenciamento remotos de energia</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Environment Monitoring</masterLabel>
+        <translation>Monitoramento do ambiente</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>General Purpose</masterLabel>
+        <translation>Uso geral</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Human Wellness Monitoring</masterLabel>
+        <translation>Monitoramento do bem-estar humano</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Interactive Media</masterLabel>
+        <translation>Mídia interativa</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Logistics &amp; Tracking</masterLabel>
+        <translation>Logística e rastreamento</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Condition Monitoring</masterLabel>
+        <translation>Monitoramento de condição de máquina</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Inspection</masterLabel>
+        <translation>Inspeção de produtos</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Situational Monitoring</masterLabel>
+        <translation>Monitoramento de situação</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

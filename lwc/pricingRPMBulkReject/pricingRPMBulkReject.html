@@ -1,0 +1,198 @@
+<!--
+  @description       : LWC for Bulk Reject For Tender QuoteLines RPM.
+  @author            : Vrushabh
+  @group             : Accenture
+  @last modified on  : 05-30-2024
+  @last modified by  : Vrushabh
+-->
+<template>
+
+    <lightning-button data-name="bulkReject" label="Bulk Reject" onclick={openRejectDataTable}>
+    </lightning-button>
+
+    <template if:true={openBulkRejectModal}>
+
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true"
+            aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open slds-modal_medium">
+
+            <div class="slds-modal__container"> <!-- Close button -->
+
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-04" class="slds-modal__title slds-hyphenate"> Bulk Reject </h1>
+                </div>
+
+                <div class="slds-modal__content" id="modal-content-id-2" style="overflow-x: scroll">
+                    <!-- Spinner -->
+
+                    <template if:true={isSpinner}>
+                        <div class="sldsspinnercontainer">
+                            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                <span class="slds-assistive-text">Loading..</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </template>
+
+                    <!-- table -->
+                    <template if:false={isSpinner}>
+
+                        <template if:true={noRecords}>
+                            <div class="slds-table_edit_container" style="text-align: center; color: red"> {msg}</div>
+                        </template> <template if:false={noRecords}>
+
+                            <div class="slds-table_edit_container table-responsive" style="height: 300px">
+                                <table aria-multiselectable="true"
+                                    class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_resizable-cols"
+                                    role="grid">
+
+                                    <thead>
+                                        <tr style="height: 30px">
+                                            <th scope="col" style="width:3rem; padding-left: 15px">
+                                                <lightning-input onchange={allSelected} type="checkbox"
+                                                    variant="label-hidden"
+                                                    data-id="selectAllCheckBox"></lightning-input>
+                                            </th>
+
+                                            <th scope="col" class="tableContentHide"
+                                                style="width: 3rem; padding-left: 15px">
+                                                <lightning-icon icon-name="utility:shield" alternative-text="shield"
+                                                    variant="success" size="x-small" title="Validation">
+                                                </lightning-icon>
+                                            </th>
+
+                                            <th class="slds-is-resizable tableContentHide field" scope="col"
+                                                style="width: 8rem;">
+                                                <span title="Quote Line Number">Quote Line Number</span>
+                                                <div class="slds-resizable">
+                                                    <input type="text" class="slds-resizable__input slds-assistive-text"
+                                                        tabindex="0" />
+                                                    <span class="slds-resizable__handle" onmousedown={calculateWidth}
+                                                        ondrag={setNewWidth} draggable="true">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+
+                                            <th class="slds-is-resizable tableContentHide field" scope="col">
+                                                <span title="Product">Product</span>
+                                                <div class="slds-resizable p-left-1rem">
+                                                    <input type="text" class="slds-table_resizable-cols slds-assistive-text"
+                                                        tabindex="0" />
+                                                    <span class="slds-resizable__handle" onmousedown={calculateWidth}
+                                                        ondrag={setNewWidth} draggable="true">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+
+                                            <th class="slds-is-resizable tableContentHide field" scope="col"
+                                                style="width: 12rem; ">
+                                                <span class="" title="Rejection Reason">Rejection Reason</span>
+                                                <div class="slds-resizable">
+                                                    <input type="text" class="slds-resizable__input slds-assistive-text"
+                                                        tabindex="0" />
+                                                    <span class="slds-resizable__handle" onmousedown={calculateWidth}
+                                                        ondrag={setNewWidth} draggable="true">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+
+                                            <th class="slds-is-resizable tableContentHide field" scope="col"
+                                                style=" width: 12rem;">
+                                                <span class="" title="Rejection Comments">Rejection Comments</span>
+                                                <div class="slds-resizable">
+                                                    <input type="text" class="slds-resizable__input slds-assistive-text"
+                                                        tabindex="0" />
+                                                    <span class="slds-resizable__handle" onmousedown={calculateWidth}
+                                                        ondrag={setNewWidth} draggable="true">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <template for:each={quoteLineData} for:item="qli">
+                                            <tr key={qli.Id} aria-selected="false" class="slds-hint-parent"
+                                                style="height: 1rem">
+                                                <!-- checkbox -->
+                                                <td scope="qli" role="gridcell" style="padding-left: 1rem">
+                                                    <lightning-input class="checkBoxForUpdate" type="checkbox"
+                                                        value={qli.Id} data-id={qli.Id} onchange={handleCheckBox}
+                                                        variant="label-hidden">
+                                                    </lightning-input>
+                                                </td>
+
+                                                <!-- Error Box -->
+                                                <td scope="qli" class="tableContentHide centerText">
+                                                    <template if:true={qli.isError}>
+                                                        <lightning-icon icon-name="utility:error" variant="error"
+                                                            size="x-small" title={qli.errorMsg}></lightning-icon>
+                                                    </template>
+                                                </td>
+
+                                                <!-- Read-Only STRAT -->
+                                                <td scope="col" class="slds-size_3-of-10 centerText">
+                                                    <lightning-formatted-text title={qli.Pricing_Quote_Line_Number__c}
+                                                        data-id={qli.Id} value={qli.Pricing_Quote_Line_Number__c}>
+                                                    </lightning-formatted-text>
+                                                </td>
+
+                                                <td scope="col" class="slds-size_3-of-10 centerText trimLength">
+                                                    <lightning-formatted-text title={qli.Pricing_Product_Nm__r.Name}
+                                                        value={qli.Pricing_Product_Nm__r.Name}>
+                                                    </lightning-formatted-text>
+                                                </td>
+
+                                                <td scope="col" class="">
+                                                    <div style="overflow: overlay;">
+                                                        <lightning-combobox title={qli.Pricing_Rejection_Reason__c}
+                                                            dropdown-alignment="auto"
+                                                            value={qli.Pricing_Rejection_Reason__c}
+                                                            placeholder="Select Rejection Reason"
+                                                            options={picklistOptions} data-id={qli.Id}
+                                                            variant="label-hidden" onchange={rejectionReasonsChange}>
+                                                        </lightning-combobox>
+                                                    </div>
+                                                </td>
+
+                                                <td scope="col" class="slds-size_3-of-10 centerText">
+                                                    <lightning-input type="text" title={qli.approveRejectComments}
+                                                        value={qli.approveRejectComments} data-id={qli.Id}
+                                                        maxlength="1000" onchange={handleApproveRejectComments}
+                                                        variant="label-hidden">
+                                                    </lightning-input>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </template>
+                    </template>
+
+                </div>
+
+                <div class="slds-modal__footer">
+                    <template if:false={noRecords}>
+                        <button class="slds-button slds-button_brand" type="submit" onclick={handleAction}
+                            data-name="Rejected" disabled={disabledBtn}> Reject
+                        </button>
+                    </template>
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} data-name="Cancel"> Cancel
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+    </template>
+</template>

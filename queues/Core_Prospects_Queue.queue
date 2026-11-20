@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>UnCovered</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_PG_Account_Brief_Team</publicGroup>
+            <publicGroup>Core_PG_Data_Ops</publicGroup>
+            <publicGroup>Core_PG_Eloqua_Integrator</publicGroup>
+            <publicGroup>Core_PG_Finance_Program_Team</publicGroup>
+            <publicGroup>Core_PG_Integration</publicGroup>
+            <publicGroup>Core_PG_Integration_IAH</publicGroup>
+            <publicGroup>Core_PG_Marketing_Development_Manager</publicGroup>
+            <publicGroup>Core_PG_Production_Support</publicGroup>
+            <publicGroup>Core_PG_Production_Support_Display</publicGroup>
+            <publicGroup>Core_PG_Production_Support_IPS</publicGroup>
+            <publicGroup>Core_PG_Program_Core_Team</publicGroup>
+            <publicGroup>Core_PG_Reporting_Admin</publicGroup>
+            <publicGroup>Core_PG_Sales_Manager</publicGroup>
+            <publicGroup>Core_PG_Sales_Ops</publicGroup>
+            <publicGroup>Core_PG_Sales_Rep_BB</publicGroup>
+            <publicGroup>Core_PG_Sales_Rep_BB_Dual_IPS</publicGroup>
+            <publicGroup>Core_PG_Sales_Rep_CW</publicGroup>
+            <publicGroup>Core_PG_SMG_GMC_Read_Only</publicGroup>
+            <publicGroup>Core_PG_System_Administrator</publicGroup>
+        </publicGroups>
+        <users>
+            <user>salesrep1.test@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_Prospect__c</sobjectType>
+    </queueSobject>
+</Queue>

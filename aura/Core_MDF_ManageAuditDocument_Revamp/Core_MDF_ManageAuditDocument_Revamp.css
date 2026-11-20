@@ -1,0 +1,20 @@
+.THIS .table-align td .truncate-filename {
+    text-overflow: ellipsis;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+ 
+
+.THIS .spnr{
+    Z-index : 10000 !important;
+}
+
+.THIS .documentTypeSelectionPopup {
+    max-height: 550px !important;
+    overflow-y:auto !important;
+}
+.THIS .deletePopup {
+    width:auto !important;
+    max-width: 50% !important;
+}

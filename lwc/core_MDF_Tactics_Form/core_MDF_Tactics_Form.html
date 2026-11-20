@@ -1,0 +1,118 @@
+<template>
+    <template if:true={isMetricsVisible}>
+    <lightning-layout class="slds-page-header slds-page-header--object-home">
+        <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+          <div class="page-section page-header">
+            <h1 class="slds-text-heading_label">{metrics}</h1>
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    <!--<lightning-card title="Details">-->
+        <div class="slds-p-around_medium scrollable-table">
+
+            <table class="slds-table slds-table_bordered slds-m-top_medium">
+                <thead>
+                    <tr>
+                        <th style="vertical-align: middle; background-color: #f3f3f3">
+                            <div style="display: flex; align-items: center;">
+                                {tactics}
+                                <lightning-helptext content={tactics_help_text} class="slds-m-left_xx-small"></lightning-helptext>
+                            </div>
+                        </th>
+                        <th style="vertical-align: middle; background-color: #f3f3f3">
+                            <div style="display: flex; align-items: center;">
+                                {tactic_Metrics} 
+                                <lightning-helptext content={tactic_metrics_help_text} class="slds-m-left_xx-small"></lightning-helptext>
+                            </div>
+                        </th>
+                        <th style="vertical-align: middle; background-color: #f3f3f3">
+                            <div style="display: flex; align-items: center;">
+                                {goal_Values}
+                                <lightning-helptext content={goal_Values_Help_Text} class="slds-m-left_xx-small"></lightning-helptext>
+                            </div>
+                        </th>
+                        <th style="vertical-align: middle; background-color: #f3f3f3">
+                            <div style="display: flex; align-items: center;">
+                                {spendingAmountLabel}
+                                <lightning-helptext content={spendingamountHelpTextLabel} 
+                                                    class="slds-m-left_xx-small"></lightning-helptext>
+                            </div>
+                        </th>
+                        <th style="vertical-align: middle; background-color: #f3f3f3">
+                            <div style="display: flex; align-items: center;">
+                                {spending_Percentage}
+                                <lightning-helptext content={spending_Percentage_Help_Text} class="slds-m-left_xx-small"></lightning-helptext>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template lwc:if ={isDetail}>
+                        <template for:each={data} for:item="item">
+                            <tr key={item.id}>
+                                <td style = 'padding: 8px;' rowspan={item.rowspan}>{item.tactic.label}</td>
+                                <td style = 'white-space: normal; word-break: break-word;'>{item.firstKpi.label}</td>
+                                <td style = 'padding: 8px; width: 150px;'>{item.firstKpi.value}
+                                </td>
+                                <td rowspan={item.rowspan} style = 'padding: 8px; width: 150px;'>
+                                    <span class="currency-symbol">$</span>{item.intelContri}
+                                </td>
+                                <td rowspan={item.rowspan} style = 'padding: 8px; width: 150px;'>
+                                    {item.percentageValue}<span class="percentage-symbol">%</span>
+                                </td>
+                            </tr>
+                            <template for:each={item.otherKpis} for:item="kpi" for:index="kpiIndex">
+                                <tr key={kpi.label}>
+                                    <td>{kpi.label}</td>
+                                    <td style = 'padding: 8px; width: 150px; white-space: normal; word-break: break-word;'>{kpi.value}
+                                    </td>
+                                </tr>
+                            </template>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                    <template for:each={data} for:item="item">
+                        <tr key={item.id}>
+                            <td style = 'padding: 8px;' rowspan={item.rowspan}>{item.tactic.label}</td>
+                            <td style = 'white-space: normal; word-break: break-word;'>{item.firstKpi.label}</td>
+                            <td style = 'padding: 8px; width: 150px;'>
+                                <lightning-input type="number" step="0.01" min="0" formatter="decimal" value={item.firstKpi.value} onchange={handleKpiChange} data-id={item.id} 
+                                                 data-kpi-index="first" onkeypress={isNumericOnly} message-when-step-mismatch={goal_Value_Decimal_Error}></lightning-input>
+                            </td>
+                            <td rowspan={item.rowspan} style='padding: 8px; width: 150px;'>
+                                <div class="amount-input">
+                                    <span class="currency-symbol">$</span>
+                                    <lightning-input type="number" step="0.01" min="0" formatter="decimal"
+                                        value={item.intelContri} onchange={handleAmountChange} data-id={item.id}
+                                        message-when-step-mismatch={spending_Value_Decimal_Error}
+                                        onkeypress={isNumericOnly}></lightning-input>
+                                </div>
+                            </td>
+                            <td rowspan={item.rowspan} style = 'padding: 8px; width: 150px;'>
+                                <div class="percentage-input">
+                                    <lightning-input type="number" step="0.01" min="0" max ="100" onkeypress={isNumericOnly} 
+                                        message-when-step-mismatch={spending_Value_Decimal_Error} formatter="decimal" 
+                                        value={item.percentageValue} onchange={handlePercentageChange} data-id={item.id} disabled>
+                                    </lightning-input>
+                                    <span class="percentage-symbol">%</span>
+                                </div>
+                                <!--<div style="color: blue;">Amount: ${item.intelContri}</div>-->
+                            </td>
+                        </tr>
+                        <template for:each={item.otherKpis} for:item="kpi" for:index="kpiIndex">
+                            <tr key={kpi.label}>
+                                <td>{kpi.label}</td>
+                                <td style = 'padding: 8px; width: 150px; white-space: normal; word-break: break-word;'>
+                                    <lightning-input type="number" step="0.01" min="0" formatter="decimal" value={kpi.value} onchange={handleKpiChange} data-id={item.id} 
+                                                     data-kpi-index={kpiIndex} onkeypress={isNumericOnly} message-when-step-mismatch={goal_Value_Decimal_Error}></lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                </template>
+                </tbody>
+            </table>
+        </div>
+    <!--</lightning-card>-->
+    </template>
+</template>

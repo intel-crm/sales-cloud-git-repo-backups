@@ -1,0 +1,7 @@
+<apex:component controller="Core_MDF_GenericClassToSendMail" access="global">
+<apex:attribute name="reportName" description="Report Name" type="String" assignTo="{!varReportName}" access="global"/>
+<apex:attribute name="isExternalUser" description="External User check" type="Boolean" assignTo="{!isExternal}" access="global"/>
+ <!--To get "Link" as report label when reportUrlLabel attribute is not Empty -->
+ <apex:attribute name="reportUrlLabel" description="Report URL Label" type="String"  access="global"/>
+   <a href="{!UrlStr}">{!if(reportUrlLabel!=null,$Label.Core_MDF_Link,$Label.Core_MDF_Click_here)}</a>&nbsp;
+</apex:component>

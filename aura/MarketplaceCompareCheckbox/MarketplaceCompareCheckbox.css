@@ -1,0 +1,65 @@
+.THIS {
+  position: relative;
+  cursor: pointer;
+}
+.THIS  span.check-box{
+  width: 25px;
+  height: 25px;
+  margin-right: .5em;
+  border: 1px solid #e2e2e2;
+  border-radius: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: white;
+}
+.THIS  input[type="checkbox"]  {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  margin: 0;
+  vertical-align: top;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+}
+.THIS  input[type="checkbox"]:hover + span,
+.THIS  input[type="checkbox"]:focus + span,
+.THIS input[type="checkbox"]:checked + span,
+.THIS input[type="checkbox"].checked + span {
+  background-image: url(/s/sfsites/c/resource/PMP_Resources/images/sprite-icons.png);
+  width: 25px;
+  height: 25px;
+}
+
+.THIS  input[type="checkbox"]:hover + span,
+.THIS  input[type="checkbox"]:focus + span {
+  border: 1px solid t(lightGray);
+  background-color: t(white);
+  background-position: -414px -96px;
+}
+
+.THIS input[type="checkbox"]:checked + span,
+.THIS input[type="checkbox"].checked + span {
+  border: 1px solid t(digitalBlue);
+  background-color: t(digitalBlue);
+  background-position: -414px -56px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .THIS input[type="checkbox"]:hover + span,
+  .THIS input[type="checkbox"]:focus + span{
+    background-image: url(/s/sfsites/c/resource/PMP_Resources/images/sprite-icons-retina.png);
+    background-size: 646px 615px;
+  }
+
+  .THIS input[type="checkbox"]:checked + span,
+  .THIS input[type="checkbox"].checked + span {
+    background-image: url(/s/sfsites/c/resource/PMP_Resources/images/sprite-icons-retina.png);
+    background-size: 646px 615px;
+  }
+}

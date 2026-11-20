@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quota Setup (Transposed)</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quota Setup (Transposed)</value>
+    </caseValues>
+    <fields>
+        <label><!-- Effective_End --></label>
+        <name>CPT_Effective_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective_Start --></label>
+        <name>CPT_Effective_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- ElementID --></label>
+        <name>CPT_ElementID__c</name>
+    </fields>
+    <fields>
+        <label><!-- PlanID --></label>
+        <name>CPT_PlanID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quota Setup --></label>
+        <name>CPT_Quota_Setup__c</name>
+        <relationshipLabel><!-- Quota Setup (Transposed) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quota --></label>
+        <name>CPT_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- SubElementID --></label>
+        <name>CPT_SubElementID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weight(%) --></label>
+        <name>CPT_Weight_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weight --></label>
+        <name>CPT_Weight__c</name>
+    </fields>
+    <fields>
+        <label><!-- PayeeID --></label>
+        <name>PayeeID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

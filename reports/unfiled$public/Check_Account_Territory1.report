@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>TERR2_NAME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>TERR2_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>psg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0013b00001vZQSrAAO,001o000000OSFRCAA5,001o000000mhAEYAA2,001o000000OSwsmAAD,001o000000OWB4TAAX,0013b00001zuI5AAAU,0013b000025agKbAAI,001o000000ORXrIAAX,0013b000020WNiiAAG,0013b00001zNX28AAG,0013b000020YOdEAAW,0013b00001se1ccAAA,0013b00001ph933AAA,001o000000OSvMlAAL,0013b000020XPh4AAG,0011J00001QXcTaQAL,0013b000020XThxAAG,001o000000O6LEdAAN,0013b0000261WIiAAM,001o000000OSwtuAAD,0013b00001uEB1zAAG,001o000000O64zLAAR,001o0000011ltNeAAI,001o000000OTMO0AAP,001o000000OSk2uAAD,001o000000OSXTnAAP,001o000000OSwiAAAT,001o000000OSmJ6AAL,001o000000OSaKeAAL,001o000000O66toAAB</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Check Account Territory</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Account.Core_Account_ID__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

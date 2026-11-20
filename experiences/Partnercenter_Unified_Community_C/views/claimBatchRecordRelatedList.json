@@ -1,0 +1,39 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e85a3f6e-9dd1-4fa4-87f5-37eb9aa6609a",
+  "label" : "Claim Batch Record Related List",
+  "regions" : [ {
+    "id" : "e0629896-99bb-4f17-a302-939c97a32cbe",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "2826dfe6-76a4-4cc2-b7dd-e51ef97c9e44",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5e7f27e8-e2f2-47fc-bc5d-740c87078f1f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b5acf99b-e3e9-4911-bb57-43724e5aa648",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a4N"
+}

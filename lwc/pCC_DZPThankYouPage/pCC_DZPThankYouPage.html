@@ -1,0 +1,13 @@
+<template>
+  <div class="allContent">
+      <div class="ad-inner-container">
+        <h4 class="header-content">{label.HeaderHome}</h4>
+      </div>                 
+      <div class="content-container">
+        <h5 class="thank-you-container">{label.DZPThankYou}</h5>
+         <!--...<p class="disclaimer-content">{label.DZPDisclaimerContent1} <lightning-formatted-url value={label.TandCLink} label={label.TandCText} target="_blank"></lightning-formatted-url> {label.DZPDisclaimerContent2}</p>
+        -->
+        <p class="disclaimer-content"><lightning-formatted-rich-text value={DZPDisclaimerContent}></lightning-formatted-rich-text></p>
+      </div>  
+  </div>
+</template>

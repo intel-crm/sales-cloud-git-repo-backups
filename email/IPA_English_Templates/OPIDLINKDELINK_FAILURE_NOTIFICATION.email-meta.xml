@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>OPIDLINKDELINK_FAILURE_NOTIFICATION</name>
+    <style>none</style>
+    <subject>1PID association/Delinking Failed</subject>
+    <textOnly>{!job_subject}
+
+
+Hi,
+This is to inform that for the 1PID(s) listed below there are failed to {!JOB_LINK} account . If this is not expected, please raise a ticket in production support.
+{!JOB_MESSAGE}
+
+
+Thank you,
+Your Intel® Partner Alliance team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

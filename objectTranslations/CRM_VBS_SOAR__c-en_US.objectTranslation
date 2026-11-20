@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SOAR</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SOARs</value>
+    </caseValues>
+    <fields>
+        <help><!-- The sum of the highest rolling 12 month period of committed/guaranteed revenue (if there is a convenience clause, only amounts up to convenience clause date are includable). --></help>
+        <label><!-- Annual Recurring Revenue --></label>
+        <name>CRM_VBS_Annual_Recurring_Revenue__c</name>
+    </fields>
+    <fields>
+        <help><!-- Contract duration --></help>
+        <label><!-- Contract Lifetime in Months --></label>
+        <name>CRM_VBS_Contract_Lifetime_in_Months__c</name>
+    </fields>
+    <fields>
+        <help><!-- Contract Start Date --></help>
+        <label><!-- Contract Start Date --></label>
+        <name>CRM_VBS_Contract_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Region --></label>
+        <name>CRM_VBS_Opportunity_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Notes --></label>
+        <name>CRM_VBS_Other_Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- SOAR-1 qualified deals must add a lawyer to core team. Please connect with an Intel lawyer and select the lawyer that you are working with.  If you need help getting connected to a lawyer, select: “Unknown (I don’t know who my legal partner is)” --></help>
+        <label><!-- Primary Lawyer --></label>
+        <name>CRM_VBS_Primary_Lawyer__c</name>
+        <picklistValues>
+            <masterLabel>APJ Legal - Arpita Sen</masterLabel>
+            <translation><!-- APJ Legal - Arpita Sen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Hilbert Lee</masterLabel>
+            <translation><!-- APJ Legal - Hilbert Lee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Karol Goh</masterLabel>
+            <translation><!-- APJ Legal - Karol Goh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Mary Kwok</masterLabel>
+            <translation><!-- APJ Legal - Mary Kwok --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Puja Malhotra</masterLabel>
+            <translation><!-- APJ Legal - Puja Malhotra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Sridhar HN</masterLabel>
+            <translation><!-- APJ Legal - Sridhar HN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Troy Van Orman</masterLabel>
+            <translation><!-- APJ Legal - Troy Van Orman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ Legal - Wei-Chi Chen</masterLabel>
+            <translation><!-- APJ Legal - Wei-Chi Chen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Legal - Adam Kaplan</masterLabel>
+            <translation><!-- CCG Legal - Adam Kaplan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Legal - Amy Saack</masterLabel>
+            <translation><!-- CCG Legal - Amy Saack --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Legal - Dave McAbee</masterLabel>
+            <translation><!-- CCG Legal - Dave McAbee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Legal - Kelly Kozich</masterLabel>
+            <translation><!-- CCG Legal - Kelly Kozich --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Legal - Kevin Brady</masterLabel>
+            <translation><!-- CCG Legal - Kevin Brady --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCG Legal - Miriam Ezrachi</masterLabel>
+            <translation><!-- CCG Legal - Miriam Ezrachi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Barry Fang</masterLabel>
+            <translation><!-- China Legal - Barry Fang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Betty Li</masterLabel>
+            <translation><!-- China Legal - Betty Li --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Dimo Wang</masterLabel>
+            <translation><!-- China Legal - Dimo Wang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Flora Jiang</masterLabel>
+            <translation><!-- China Legal - Flora Jiang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Liang Wang</masterLabel>
+            <translation><!-- China Legal - Liang Wang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Mile Zhao</masterLabel>
+            <translation><!-- China Legal - Mile Zhao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Oliver Lin</masterLabel>
+            <translation><!-- China Legal - Oliver Lin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Quan Zhou</masterLabel>
+            <translation><!-- China Legal - Quan Zhou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Xin Xiang</masterLabel>
+            <translation><!-- China Legal - Xin Xiang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China Legal - Xuan Zheng</masterLabel>
+            <translation><!-- China Legal - Xuan Zheng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Andrea Watson</masterLabel>
+            <translation><!-- DCAI Legal - Andrea Watson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Jim Glore</masterLabel>
+            <translation><!-- DCAI Legal - Jim Glore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Jinelle Yien</masterLabel>
+            <translation><!-- DCAI Legal - Jinelle Yien --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Kim Peterson Evans</masterLabel>
+            <translation><!-- DCAI Legal - Kim Peterson Evans --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Lilian Yen</masterLabel>
+            <translation><!-- DCAI Legal - Lilian Yen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Mark Fahey</masterLabel>
+            <translation><!-- DCAI Legal - Mark Fahey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Matt Hulse</masterLabel>
+            <translation><!-- DCAI Legal - Matt Hulse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Mike Labbee</masterLabel>
+            <translation><!-- DCAI Legal - Mike Labbee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Sonoo Ching</masterLabel>
+            <translation><!-- DCAI Legal - Sonoo Ching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCAI Legal - Theresa Ravelo</masterLabel>
+            <translation><!-- DCAI Legal - Theresa Ravelo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Alex Duterque</masterLabel>
+            <translation><!-- EMEA Legal - Alex Duterque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Anna Stupiggia</masterLabel>
+            <translation><!-- EMEA Legal - Anna Stupiggia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Celia Nash</masterLabel>
+            <translation><!-- EMEA Legal - Celia Nash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Claudia Schulke</masterLabel>
+            <translation><!-- EMEA Legal - Claudia Schulke --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Dana Zloof</masterLabel>
+            <translation><!-- EMEA Legal - Dana Zloof --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - David Rose</masterLabel>
+            <translation><!-- EMEA Legal - David Rose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Giuseppe Daurelio</masterLabel>
+            <translation><!-- EMEA Legal - Giuseppe Daurelio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Sergey Morozov</masterLabel>
+            <translation><!-- EMEA Legal - Sergey Morozov --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Steffi Pors</masterLabel>
+            <translation><!-- EMEA Legal - Steffi Pors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Valerie Dupre</masterLabel>
+            <translation><!-- EMEA Legal - Valerie Dupre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA Legal - Victoria Hair</masterLabel>
+            <translation><!-- EMEA Legal - Victoria Hair --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LatAm Legal - Ivan Mora</masterLabel>
+            <translation><!-- LatAm Legal - Ivan Mora --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LatAm Legal - Rocio Madrigal Salazar</masterLabel>
+            <translation><!-- LatAm Legal - Rocio Madrigal Salazar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Legal - Brian Dietzel</masterLabel>
+            <translation><!-- NEX Legal - Brian Dietzel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Legal - Jocelyn De Grandpre</masterLabel>
+            <translation><!-- NEX Legal - Jocelyn De Grandpre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Legal - Jonna Anderson</masterLabel>
+            <translation><!-- NEX Legal - Jonna Anderson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Legal - Morgan Wiest</masterLabel>
+            <translation><!-- NEX Legal - Morgan Wiest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEX Legal - Romy Drysdale</masterLabel>
+            <translation><!-- NEX Legal - Romy Drysdale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SATG Legal - Brian Dietzel</masterLabel>
+            <translation><!-- SATG Legal - Brian Dietzel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SATG Legal - Clarita Uchendu</masterLabel>
+            <translation><!-- SATG Legal - Clarita Uchendu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SATG Legal - Katia Gondarenko</masterLabel>
+            <translation><!-- SATG Legal - Katia Gondarenko --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SATG Legal - Mike Proksch</masterLabel>
+            <translation><!-- SATG Legal - Mike Proksch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SATG Legal - Pam Clark-Meister</masterLabel>
+            <translation><!-- SATG Legal - Pam Clark-Meister --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Adrian Fontecilla</masterLabel>
+            <translation><!-- SMG Legal - Adrian Fontecilla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Chad Brooker</masterLabel>
+            <translation><!-- SMG Legal - Chad Brooker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Heather Bell</masterLabel>
+            <translation><!-- SMG Legal - Heather Bell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Joel Willard</masterLabel>
+            <translation><!-- SMG Legal - Joel Willard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Katie Glynn</masterLabel>
+            <translation><!-- SMG Legal - Katie Glynn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Kristina Holm</masterLabel>
+            <translation><!-- SMG Legal - Kristina Holm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Lindsay Lutz</masterLabel>
+            <translation><!-- SMG Legal - Lindsay Lutz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Melissa Boge</masterLabel>
+            <translation><!-- SMG Legal - Melissa Boge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Parrish Pynn</masterLabel>
+            <translation><!-- SMG Legal - Parrish Pynn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Rob Kim</masterLabel>
+            <translation><!-- SMG Legal - Rob Kim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Roisin Comerford</masterLabel>
+            <translation><!-- SMG Legal - Roisin Comerford --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Sergio Gonzalez</masterLabel>
+            <translation><!-- SMG Legal - Sergio Gonzalez --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Stacy Ruegilin</masterLabel>
+            <translation><!-- SMG Legal - Stacy Ruegilin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMG Legal - Taryn Williams</masterLabel>
+            <translation><!-- SMG Legal - Taryn Williams --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Fed Legal - Dave Yee</masterLabel>
+            <translation><!-- U.S. Fed Legal - Dave Yee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Fed Legal - Jesse Williams</masterLabel>
+            <translation><!-- U.S. Fed Legal - Jesse Williams --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Fed Legal - John Williamson</masterLabel>
+            <translation><!-- U.S. Fed Legal - John Williamson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown - I don’t know who my legal partner is</masterLabel>
+            <translation><!-- Unknown - I don’t know who my legal partner is --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Choose the appropriate Primary category this VBS offering belongs to --></help>
+        <label><!-- Primary VBS Offering Category --></label>
+        <name>CRM_VBS_Primary_VBS_Offering_Category__c</name>
+        <picklistValues>
+            <masterLabel>Managed Services</masterLabel>
+            <translation><!-- Managed Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On-demand</masterLabel>
+            <translation><!-- On-demand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optimization Software</masterLabel>
+            <translation><!-- Optimization Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid Support Services</masterLabel>
+            <translation><!-- Paid Support Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform Software</masterLabel>
+            <translation><!-- Platform Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Semi-custom</masterLabel>
+            <translation><!-- Semi-custom --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Owner leading the VBS SOAR Process --></help>
+        <label><!-- Quarter Back --></label>
+        <name>CRM_VBS_QB_Resource__c</name>
+        <relationshipLabel><!-- SOARs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>CRM_VBS_SOAR_Opportunity__c</name>
+        <relationshipLabel><!-- SOARs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SOAR Stage --></label>
+        <name>CRM_VBS_SOAR_Stage__c</name>
+        <picklistValues>
+            <masterLabel>SOAR1 - Qualification/Sign-On</masterLabel>
+            <translation><!-- SOAR1 - Qualification/Sign-On --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR2 - Strategize &amp; Build The Bid</masterLabel>
+            <translation><!-- SOAR2 - Strategize &amp; Build The Bid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR3 - Gain Intel Approval</masterLabel>
+            <translation><!-- SOAR3 - Gain Intel Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR4 - Present to Customer</masterLabel>
+            <translation><!-- SOAR4 - Present to Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR5 - Lessons Learned</masterLabel>
+            <translation><!-- SOAR5 - Lessons Learned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Key Decisions at various SOAR Stages --></help>
+        <label><!-- SOAR VBS Decision --></label>
+        <name>CRM_VBS_SOAR_VBS_Decision__c</name>
+        <picklistValues>
+            <masterLabel>SOAR1 Qualified</masterLabel>
+            <translation><!-- SOAR1 Qualified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR1 Un-qualified</masterLabel>
+            <translation><!-- SOAR1 Un-qualified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR3 Approved</masterLabel>
+            <translation><!-- SOAR3 Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR3 Denied</masterLabel>
+            <translation><!-- SOAR3 Denied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR4 Contract Not Signed</masterLabel>
+            <translation><!-- SOAR4 Contract Not Signed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOAR4 Contract Signed</masterLabel>
+            <translation><!-- SOAR4 Contract Signed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Intel Committed/guaranteed revenue over the lifetime of contract --></help>
+        <label><!-- Total Contract Value --></label>
+        <name>CRM_VBS_Total_Contract_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- VBS Offering that could be re-used as a template for future similar VBS Opportunities --></help>
+        <label><!-- VBS Explore Re-Use --></label>
+        <name>CRM_VBS_VBS_Explore_Re_Use__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Annual Recurring Revenue should be always less than or equal to Total Contract Revenue --></errorMessage>
+        <name>CRM_VBS_Annual_Recurring_Revenue</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SOAR VBS Decision can be set as SOAR3 Approved only in SOAR3 stage. --></errorMessage>
+        <name>CRM_VBS_Approved_Stage3_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SOAR4 Contract Signed/Not Signed status applicable only for SOAR3 Approved. --></errorMessage>
+        <name>CRM_VBS_Approved_to_Contract_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to change the contract information. Only the assigned Quarter Back/SOAR Committee/Data Ops can do it. --></errorMessage>
+        <name>CRM_VBS_Check_Perm_For_Contract_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select SOAR VBS Decision as either &quot;Contract Signed&quot; or &quot;Contract Not Signed&quot;. --></errorMessage>
+        <name>CRM_VBS_Contract_Fields_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- SOAR4 Contract Signed/Not Signed can be set only in SOAR4 stage. --></errorMessage>
+        <name>CRM_VBS_Contract_Signed_Not_Signed_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Contract Start Date should be greater than opportunity decision date. --></errorMessage>
+        <name>CRM_VBS_Contract_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Total Contract Value should be greater than Design Win Amount for Contracts greater than 12months lifetime. --></errorMessage>
+        <name>CRM_VBS_Contract_Value_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quarter Back must be assigned before setting SOAR VBS Decision as SOAR1 Qualified --></errorMessage>
+        <name>CRM_VBS_QB_Resource_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to change the Primary Lawyer. Only the assigned Quarter Back/ SOAR Committee/ Data Ops can do it. --></errorMessage>
+        <name>CRM_VBS_Restrict_Primary_Lawyer_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to change the Stage or VBS decision. Only the assigned Quarter Back/ SOAR Committee/ Data Ops can do it. --></errorMessage>
+        <name>CRM_VBS_Restrict_Stage_Decision_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only SOAR1 Qualified records can be set as SOAR3 Approved. --></errorMessage>
+        <name>CRM_VBS_SOAR1_to_Approved_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot update stage for Un-qualified record --></errorMessage>
+        <name>CRM_VBS_StageChange</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have access to modify the Stage. Only SOAR Committee/ Data Ops can do it. --></errorMessage>
+        <name>CRM_VBS_Stage_Restriction_Opp_Lost</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Opportunity is currently in the &apos;Closed&apos; stage. To revert it to a different SOAR stage, please change the status of the opportunity back to an &apos;Open&apos; stage. --></errorMessage>
+        <name>CRM_VBS_Stage_Updation_Restrcit_For_DW</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a valid amount. --></errorMessage>
+        <name>CRM_VBS_Valid_ARR_Contract_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a numeric value. --></errorMessage>
+        <name>CRM_VBS_Valid_Contract_Lifetime</name>
+    </validationRules>
+</CustomObjectTranslation>

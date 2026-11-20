@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_14050514</developerName>
+        <masterLabel>Accounts</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>VMWARE, INC. (CSP)</sourceValue>
+            </sourceValues>
+            <value>VMware</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SAP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAP AMERICAS, INC.</sourceValue>
+            </sourceValues>
+            <value>SAP</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sas Institute Inc.</sourceValue>
+            </sourceValues>
+            <value>SAS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>RED HAT, INC. (HEADQUARTER) - USA</sourceValue>
+            </sourceValues>
+            <value>Red Hat</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CITRIX SYSTEMS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CITRIX SYSTEMS, INC.</sourceValue>
+            </sourceValues>
+            <value>Citrix</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Apcera</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Couchbase</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HYTRUST</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NUTANIX, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ORACLE CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Oracle America, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Atlantis Computing Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maxta</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Metaswitch Networks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mirantis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NUTANIX INC</sourceValue>
+            </sourceValues>
+            <value>Tier 2</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_66033227</developerName>
+        <masterLabel>BU</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Product_Segment__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Data Center Computing</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Client Computing</sourceValue>
+            </sourceValues>
+            <value>CCG</value>
+        </values>
+        <values>
+            <value>IOTG</value>
+        </values>
+        <values>
+            <value>NSG</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Carl Brown,Mats Clarhamn,Amy Doescher,Don Snyder,Roxana Nava</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Apcera,Mirantis,Nutanix,SAP,Red Hat,VMware,Oracle,HyTrust,SAS,Atlantis,Citrix,Couchbase,Maxta,Metaswitch</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_66033227</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2017 AMR ISV Revenue by BU</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

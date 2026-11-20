@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_FRA</name>
+    <style>none</style>
+    <subject>Vérifiez votre adresse e-mail.</subject>
+    <textOnly>Vérifiez votre messagerie et définissez votre mot de passe
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Nous vous remercions d&apos;avoir commencé votre inscription à l&apos;Alliance partenaire Intel® !
+Veuillez cliquer sur le lien ci-dessous pour continuer.
+
+
+Vérifiez votre messagerie et définissez votre mot de passe.
+
+
+Veuillez noter que ce lien expirera dans 24 heures.Pour terminer l&apos;étape suivante et définir votre mot de passe, veuillez utiliser le nom d&apos;utilisateur indiqué ci-dessous.
+Nom d&apos;utilisateur : {!PRM_Registration_Request__c.PRM_Email_ID__c}
+
+Vous ne parvenez pas à accéder au lien ci-dessus ?
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=fr&amp;target=https://wcm-ciqa.intel.com/content/www/fr/fr/secure/partner/forms/ipa-account-search.html
+
+
+Nous avons hâte de vous accueillir au sein du programme !
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Confidentialité&amp;verbar;Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

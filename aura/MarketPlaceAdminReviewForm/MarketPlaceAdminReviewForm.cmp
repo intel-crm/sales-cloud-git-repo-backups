@@ -1,0 +1,253 @@
+<aura:component  ></aura:component>
+<!--controller="MarketplaceCreateProductController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="recordId" type="String" default="{!recordId}" description="Internal"/>
+    <aura:attribute name="category" type="string" description="Internal"/>
+    <aura:attribute name="_category" type="string" description="Internal"/>
+    <aura:attribute name="formData" type="Map" description="Internal"/>
+    <aura:attribute name="_formData" type="Map" description="Internal"/>
+    <aura:attribute name="formSections" type="Aura.Component[]" description="Internal" />
+    <aura:attribute name="recordListViewId" type="String" description="This is used to build a link back to the record list page." />
+    <aura:attribute name="debugMode" type="boolean" default="true" />
+    <aura:attribute name="deleteOffSpec" type="boolean" default="false"/>
+    <aura:attribute name="visibilityChanged" type="boolean" default="false" />
+    
+    <aura:attribute name="cancelButtonText" type="string" default="Cancel"/>
+    <aura:attribute name="saveButtonText" type="string" default="Save"/>
+    <aura:attribute name="changesSavedText" type="string" default="Changes saved"/>
+    <aura:attribute name="showSavedMessage" type="boolean" default="false" description="Internal"/>
+    <aura:attribute name="firstTimePageLoad" type="Boolean" default="true" description="Internal"/>
+    
+    <aura:attribute name="activeStep" type="Integer" default="0" description="Internal"/>
+    <aura:attribute name="currentStep" type="Integer" default="0" description="Internal"/>
+    <aura:attribute name="currentStepValid" type="boolean" default="false" description="Internal"/>
+    <aura:attribute name="currentStepTouched" type="boolean" default="false" description="Internal"/>
+    
+    <aura:attribute name="wizardSteps" type="Object[]" description="Internal"/>
+    <aura:attribute name="currentWizardStep" type="object" description="Internal"/>
+    
+    <aura:attribute name="showSpinner" type="boolean" default="true" description="Internal"/>
+    <aura:attribute name="modalInfo" type="object" description="Internal"/>
+    <aura:attribute name="showModal" type="boolean" default="false" description="Internal"/>
+    <aura:attribute name="modalCallback" type="object" description="Internal"/>
+    <aura:attribute name="updateFormCallback" type="object" description="Internal"/>
+    
+    <aura:attribute name="pageSearchTerm" type="string" default="" description="Internal"/>
+    
+    <aura:attribute name="offeringStrength" type="Integer" default="1" />
+    <aura:attribute name="waysToImprove" type="Object[]" />
+    
+    <aura:attribute name="responseData" type="Object" />  
+    <aura:attribute name="hideButtons" type="boolean" default="false" description="Internal"/>
+    <aura:attribute name="clickNext" type="boolean" default="false" description="Internal"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.currentStep}" action="{!c.handleStepChange}" />
+    <aura:handler name="change" value="{!v.category}" action="{!c.handleCategoryChange}" /> -->
+
+    
+    <!-- <div>
+        <aura:if isTrue="{!!v.recordId}">
+            <h4 class="slds-p-around_medium">{!$Label.c.PMP_Create_Offering_Form_No_Record_Found}</h4>
+            
+            <aura:set attribute="else"> -->
+            <!--  <aura:if isTrue="{!and(!v.showSpinner, !v.category)}">
+                    {!v.category}
+                    <c:MarketplaceCreateProductModal category="{!v.category}"/>
+                </aura:if> 
+                <aura:if isTrue="{!v.currentStep lt (v.wizardSteps.length - 1)}">
+                    <div class="slds-m-bottom_large slds-hide_medium">
+                        <c:MarketplaceMessaging aura:id="messaging" heading="{!$Label.c.PMP_Messaging_MessagesAboutOffering}" recordId="{! v.recordId }" />
+                    </div>
+                </aura:if>   -->      
+<!--                 
+                <div class="{!join(' ', 'slds-is-relative', 'slds-m-vertical_x-large', (v.currentStepValid ? 'valid' : 'invalid'), (v.category ? '' : 'slds-hide'))}">
+                    
+                    <aura:if isTrue="{!v.showSpinner}">
+                        <lightning:spinner class="mainSpinner" alternativeText="..." />
+                    </aura:if>
+                    
+                    <div class="padding-desktop-horizontal-large">
+                        <c:MarketplaceCreateProductProgressBar aura:id="progress"
+                                                               activeStep="{!v.activeStep}"
+                                                               currentStep="{!v.currentStep}"
+                                                               currentStepValid="{!v.currentStepValid}" />
+                    </div>
+                    
+                    <lightning:layout class="padding-mobile-vertical-medium padding-desktop-vertical-x-large padding-desktop-horizontal-large">
+                        <lightning:layoutItem size="12" mediumDeviceSize="{!v.currentStep eq (v.wizardSteps.length - 1) ? 12 : 9}">
+                            
+                            <aura:if isTrue="{!v.wizardSteps.length > 0}">
+                                <div class="slds-p-bottom_medium padding-mobile-horizontal-medium">  
+                                   
+                                        <span class="slds-m-right_medium" onclick="{!c.handleCancel}">
+                                            <c:IntelButton class="gray inline largeMobile">
+                                                {!v.cancelButtonText}
+                                            </c:IntelButton>
+                                        </span>
+                                        <span onclick="{!c.handleSaveAsDraft}">
+                                            <c:IntelButton disabled="{!!v.currentStepTouched}" class="gray inline largeMobile mobileFloatRight">
+                                                {!v.saveButtonText}
+                                            </c:IntelButton>
+                                        </span>
+                                    
+                                    
+                                    <aura:if isTrue="{!v.showSavedMessage}">
+                                        <span class="slds-m-left_medium changesSaved">
+                                            <lightning:icon class="slds-m-right_x-small" iconName="utility:check"/>
+                                            {!v.changesSavedText}
+                                        </span>
+                                    </aura:if>
+                                    
+                                    <div class="slds-show_medium desktopFloatRight">
+                                        
+                                            <aura:if isTrue="{!v.currentStep > 0}">
+                                                
+                                                <span class="slds-m-right_medium" onclick="{!c.handlePrevStep}">
+                                                    <c:IntelButton class="gray inline largeMobile">
+                                                        {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Back_Button : $Label.c.PMP_Create_Offering_Form_Back_Edit_Offering}
+                                                    </c:IntelButton>
+                                                </span>
+                                            </aura:if>
+                                            <span onclick="{!c.handleNextStep}">
+                                                <c:IntelButton disabled="{!!v.currentStepValid}" class="inline largeMobile">
+                                                    {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Next_Button : $Label.c.PMP_Create_Offering_Form_Submit_Intel}
+                                                </c:IntelButton>
+                                            </span>
+                                           
+                                    </div>
+                                </div>
+                                 -->
+                                <!-- TODO aura if currentStep.enabledPageSearch -->
+                                <!-- <lightning:input type="search" onchange="{!c.handlePageSearch}" value="{!v.pageSearchTerm}" /> -->
+                                
+                            <!-- </aura:if>
+                            <aura:if isTrue="{!and(v.currentWizardStep, v.currentStep lt (v.wizardSteps.length - 1))}">
+                                <div class="slds-p-vertical_small padding-mobile-horizontal-medium">
+                                    <span class="color-red slds-m-right_xxx-small" >*</span>&nbsp;{!$Label.c.PMP_Create_Offering_Form_Required}
+                                </div>
+                                 -->
+                                
+                                
+                                <!-- Commented out summary tab (preview step) and related buttons/messages for offerings -->
+                                <!--
+                                <aura:if isTrue="{!and(v.currentStep eq 4, v.wizardSteps.length eq 6)}">
+                                    <div class="container">
+                                        <h4 class="padding-mobile-horizontal-medium">{!$Label.c.PMP_Create_Offering_Form_Preview}</h4>
+                                        <c:MarketplaceCreateProductPreview aura:id="offeringPreview" offeringId="{!v.recordId}"/>
+                                    </div>
+                                    
+                                    <div class="slds-p-top_large desktopAlignRight padding-mobile-horizontal-medium padding-desktop-horizontal-large">
+                                        
+                                            <span class="slds-m-right_medium" onclick="{!c.handlePrevStep}">
+                                                <c:IntelButton disabled="{!v.currentStep == 0}" class="gray inline largeMobile">
+                                                    {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Back_Button : $Label.c.PMP_Create_Offering_Form_Back_Edit}
+                                                </c:IntelButton>
+                                            </span>
+                                            <span onclick="{!c.handleNextStep}" class="mobileFloatRight">
+                                                <c:IntelButton disabled="{!!v.currentStepValid}" class="inline largeMobile">
+                                                    {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Next_Button : $Label.c.PMP_Create_Offering_Form_Submit}
+                                                </c:IntelButton>
+                                            </span>
+                                       
+                                    </div>
+                                </aura:if>
+                                -->
+                                <!-- <div class="slds-p-top_x-large padding-mobile-horizontal-medium">
+                                    
+                                        <span class="slds-m-right_medium slds-hide_medium" onclick="{!c.handlePrevStep}" >
+                                            <c:IntelButton disabled="{!v.currentStep == 0}" class="gray inline largeMobile">
+                                                {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Back_Button : $Label.c.PMP_Create_Offering_Form_Back_Edit_Offering}
+                                            </c:IntelButton>
+                                        </span>
+                                        <span onclick="{!c.handleNextStep}" class="mobileFloatRight desktopFloatRight">
+                                            <c:IntelButton disabled="{!!v.currentStepValid}" class="inline largeMobile">
+                                                {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Next_Button : $Label.c.PMP_Create_Offering_Form_Submit_Intel}
+                                            </c:IntelButton>
+                                        </span>
+                                       
+                                </div>
+                            </aura:if>
+                            
+                        </lightning:layoutItem>
+                        
+                        <aura:if isTrue="{!or(and(v.currentStep lt (v.wizardSteps.length - 2), v.wizardSteps.length eq 6),
+                                         and(v.currentStep lt (v.wizardSteps.length - 1), v.wizardSteps.length eq 5))}">
+                            <lightning:layoutItem size="3" class="slds-show_medium">
+                                
+                                <div class="slds-m-left_large">
+                                    <div class="slds-m-bottom_large slds-show_medium"> -->
+                                       <!-- <c:MarketplaceMessaging aura:id="messaging" heading="{!$Label.c.PMP_Messaging_MessagesAboutOffering}" recordId="{! v.recordId }" />-->
+                                    <!-- </div> -->
+                                    
+                                    
+                                    <!-- TODO WIRE UP DATA -->
+                                    <!-- <c:MarketplaceCreateProductDetails aura:id='details' percent="{! (v.currentStep / (v.wizardSteps.length - 1)) * 100 }" offeringDetails="{!v.formData}"/>
+                                </div>
+                                
+                            </lightning:layoutItem>
+                        </aura:if>
+                    </lightning:layout> -->
+                    <!--<aura:if isTrue="{!and(v.currentStep gt 0, v.currentStep eq (v.wizardSteps.length - 1))}">-->
+                    <!--Duplicate code, need to revise-->
+                    <!-- <aura:if isTrue="{!and(v.currentStep eq 4, not(v.wizardSteps.length eq 6))}">                     -->
+                       <!-- <c:MarketplaceProductStrengthBanner strength="{!v.offeringStrength}" waysToImprove="{!v.waysToImprove}" />
+                        -->
+                        <!-- demo only (Remove) -->
+                        <!--<c:MarketplaceProductStrengthBanner strength="2" waysToImprove="{!v.waysToImprove}" />
+                        <c:MarketplaceProductStrengthBanner strength="3" waysToImprove="{!v.waysToImprove}" />
+                        -->
+                        <!-- <div class="container">
+                            <h4 class="padding-mobile-horizontal-medium">{!$Label.c.PMP_Create_Offering_Form_Preview}</h4>
+                            <c:MarketplaceCreateProductPreview aura:id="offeringPreview" offeringId="{!v.recordId}"/>
+                        </div>
+                        
+                        <div class="slds-p-top_large desktopAlignRight padding-mobile-horizontal-medium padding-desktop-horizontal-large">
+                            
+                                <span class="slds-m-right_medium" onclick="{!c.handlePrevStep}">
+                                    <c:IntelButton disabled="{!v.currentStep == 0}" class="gray inline largeMobile">
+                                        {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Back_Button : $Label.c.PMP_Create_Offering_Form_Back_Edit}
+                                    </c:IntelButton>
+                                </span>
+                                <span onclick="{!c.handleNextStep}" class="mobileFloatRight">
+                                    <c:IntelButton disabled="{!!v.currentStepValid}" class="inline largeMobile">
+                                        {!v.currentStep lt (v.wizardSteps.length - 1) ? $Label.c.PMP_Create_Offering_Form_Next_Button : $Label.c.PMP_Create_Offering_Form_Submit}
+                                    </c:IntelButton>
+                                </span>
+                               
+                        </div> -->
+                    <!-- </aura:if> -->
+                    <!--Gireesh:US371910:Admin Review tab and Messaging tab-->
+                    <!-- <aura:if isTrue="{!and(v.wizardSteps.length eq 6, v.currentStep eq 5)}">
+                        <lightning:layout>
+                            <lightning:layoutItem size="9" class="slds-show_medium">
+                                <c:MarketplaceAdminReview offeringId="{!v.recordId}"/>
+                            </lightning:layoutItem> -->
+                            <!--<lightning:layoutItem size="3" class="slds-show_medium">
+                                
+                                <div class="slds-m-left_large">
+                                    <div class="slds-m-bottom_large slds-show_medium">
+                                        <c:MarketplaceMessaging heading="{!$Label.c.PMP_Messaging_MessagesAboutOffering}" recordId="{! v.recordId }" />
+                                    </div>
+                                </div>
+                                
+                            </lightning:layoutItem>-->
+                        <!-- </lightning:layout>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.showModal}">
+                        <c:IntelDialog
+                                       modalHeader="{!v.modalInfo.header}"
+                                       modalMessage="{!v.modalInfo.message}"
+                                       onclose="{!v.modalCallback}"
+                                       showCancelButton="{!v.modalInfo.showCancelButton}"
+                                       />
+                    </aura:if>
+                    
+                </div>
+                
+            </aura:set>
+        </aura:if>
+    </div>
+     -->
+<!-- </aura:component> -->

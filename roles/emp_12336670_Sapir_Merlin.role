@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>emp of Joachim Aertebjerg</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>emp_12336670_Sapir Merlin</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10004492_Joachim_Aertebjerg</parentRole>
+</Role>

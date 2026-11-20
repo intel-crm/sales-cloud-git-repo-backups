@@ -1,0 +1,8 @@
+<design:component>
+	<design:attribute name="imageUrl" label="Image Url" />
+	<design:attribute name="title" label="Title" />
+	<design:attribute name="subTitle" label="Text" />
+	<design:attribute name="ctaLink" label="Link Url" />
+	<design:attribute name="ctaLabel" label="Link Label" />
+
+</design:component>

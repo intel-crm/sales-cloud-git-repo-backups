@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRRENGENRLREV_Reminder_2_RUS</name>
+    <style>none</style>
+    <subject>Напоминание: Подтвердите, пока ссылка еще действительна</subject>
+    <textOnly>Требуется действие
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Для получения доступа к преимуществам программы Intel® Partner Alliance вам необходимо подтвердить ваш адрес электронной почты.
+
+
+Подтвердить сейчас
+
+Не удается получить доступ к приведенной выше ссылке?
+https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=ru&amp;target=https://ciqa.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.html
+Если у вас возникли вопросы или вы считаете, что получили это сообщение по ошибке, свяжитесь с нами по адресу  https://signin.intel.com/ContactUs?Culture=ru-ru.
+
+
+С уважением,
+Команда Intel® Partner Alliance
+
+Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!$Label.PRM_CurrentYear} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Covered Account</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Lead_Intel</letterhead>
+    <name>Core_CoveredAccount_Notification</name>
+    <style>freeForm</style>
+    <subject>New lead assigned to you: {!Lead.Name} from {!Lead.Company}</subject>
+    <textOnly>Dear {!Lead.OwnerFirstName},
+
+The lead {!Lead.Name} from {!Lead.Company} has been assigned to you as the Account Owner or Team Member. Be sure to follow the “Guidance for Success”. If this is an Unclaimed Lead be sure to Claim it and start attempting to contact the Lead.
+
+Click here to visit this lead record in SFDC
+
+If the Lead has been Qualified, be sure to read the notes, PACTT information and activities to familiarize yourself with the Lead.
+
+Actions upon receipt of this notification:
+1. Claim the Lead to change sales stage to “Sales Accepted Lead”.
+2. A call or email must be logged within 1 business day of receipt of this notification.
+3. If contact is established and the lead is considered to have an Opportunity project to enter the Sales Process
+a. Be sure to convert the Opportunity into the existing Account.
+4. If an Opportunity for Sales is not established, disposition the Lead with the proper Sub Status.
+
+If not an opportunity at this time, and if desired, you can convert this lead to a contact for potential contact in the future.
+Leads move to a terminated state if there is no activity for 30 days and 90 days since the creation date.
+
+Good Luck!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>PMP_External_Partner_Users_Partner_Tier</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all Partner Tier records to all Partner Users</description>
+        <label>PMP External - Partner Users - Partner Tier</label>
+        <sharedTo>
+            <group>PMP_All_Partner_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

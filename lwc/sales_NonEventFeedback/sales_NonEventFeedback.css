@@ -1,0 +1,24 @@
+.button{
+    transform: rotate(-90.0deg);
+    border: none;
+    padding: 5px 12px;
+    margin: 0;
+    box-shadow: none;
+    background-color: var(--lwc-colorBackgroundButtonBrand,#0E63AC);
+    font-size: 1em;
+    font-weight: var(--lwc-fontWeightBold,700);
+    color: var(--lwc-colorTextButtonBrand,#FFFFFF);
+    text-shadow: none;
+    line-height: 50px;
+    font-family: inherit;
+    transition: background .8s ease;
+    display: flex;
+    align-content: space-around;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    height: 48px;
+    position: fixed;
+    right: -55px;
+    top: 90px;
+    
+}

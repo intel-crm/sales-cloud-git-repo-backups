@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Comment JSON</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Comment JSON</value>
+    </caseValues>
+    <fields>
+        <label><!-- Comment Author By --></label>
+        <name>Comment_Author_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Author Email --></label>
+        <name>Comment_Author_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Author Name --></label>
+        <name>Comment_Author_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Author Type --></label>
+        <name>Comment_Author_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Source --></label>
+        <name>Comment_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comment Type --></label>
+        <name>Comment_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

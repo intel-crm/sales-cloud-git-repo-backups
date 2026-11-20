@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This Email Template is used to send mails to L2 team .</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>PCC_DRRNotifyBatchFailure_MailToL2</name>
+    <style>freeForm</style>
+    <subject>Failure in DDR Notify Approver Batch.</subject>
+    <textOnly>Hi Team,
+
+Below Design Registration(s) encountered an issue in sending mail to the respective DDR Approver Group. Please find the details below:
+(Core_Design_Registration__c.Name)
+
+Thank You.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

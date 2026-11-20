@@ -1,0 +1,126 @@
+/*IPA2.0: US-TWC729-7976*/
+/*.THIS .slds-popover__body,
+.THIS .slds-popover__footer,
+.THIS .slds-popover__header {
+    position: relative;
+    padding: .5rem .75rem;
+    word-wrap: break-word
+}
+
+.THIS .slds-popover {
+    position: relative;
+    border-radius: .25rem;
+    min-height: 2rem;
+    z-index: 6000;
+    display: inline-block;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .16);
+    border: 1px solid #d9dbdd
+}
+
+.THIS .slds-popover--tooltip,
+.THIS .slds-popover_tooltip {
+    background: #16325c;
+    border: 0
+}
+
+.THIS .slds-popover--tooltip .slds-popover__body,
+.THIS .slds-popover_tooltip .slds-popover__body {
+    font-size: .75rem;
+}
+
+.THIS .slds-fall-into-ground {
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(0, 0);
+    transition: opacity .1s linear, visibility .1s linear, transform .1s linear;
+    will-change: transform
+}
+
+.THIS .slds-nubbin--bottom-left:before,
+.THIS .slds-nubbin_bottom-left-corner:before,
+.THIS .slds-nubbin_bottom-left:before {
+    position: absolute;
+    transform: rotate(45deg);
+    content: '';
+    background-color: inherit;
+    bottom: -.5rem;
+    margin-left: -.5rem
+}
+
+.THIS .slds-nubbin--bottom-left:after,
+.THIS .slds-nubbin--bottom-left:before,
+.THIS .slds-nubbin_bottom-left-corner:after,
+.THIS .slds-nubbin_bottom-left-corner:before,
+.THIS .slds-nubbin_bottom-left:after,
+.THIS .slds-nubbin_bottom-left:before {
+    left: 1.5rem;
+    top: 100%;
+    margin-top: -.5rem
+}
+
+.THIS .slds-nubbin--bottom-left:after,
+.THIS .slds-nubbin_bottom-left-corner:after,
+.THIS .slds-nubbin_bottom-left:after {
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, .16);
+    z-index: -1
+}
+
+.THIS .slds-popover :last-child {
+    margin-bottom: 0
+}
+
+.THIS .color-white {
+    font-size: 1.75rem !important;
+}
+
+.THIS .slds-scope a:hover, .THIS .slds-scope a:focus {
+    text-decoration: none !important;
+}
+
+.THIS .slds-radio_button__label {
+    margin-bottom: 0 !important;
+}
+
+.THIS .messaging-container {
+    padding-top: 0rem !important;
+}
+
+.THIS .slds-scope, .THIS .slds-is-relative {
+    padding-left: 1rem !important;
+}
+
+.THIS .search-icon[c-coreIntcSearch_coreIntcSearch] {
+    left: 1.5rem !important;
+    top: .8rem !important;
+}
+
+.THIS .contactsButton[c-pssContactShareOnSolution_pssContactShareOnSolution] {
+    padding-left: 10px !important;
+}
+
+.THIS .slds-text-heading_small[ArdiraSurvey-customToast_customToast] {
+    color: white !important;
+}
+
+.THIS .addContBtn {
+    padding-left: 1.3rem !important;
+    --sds-c-button-brand-color-background: #0071c5;
+}
+
+.THIS .showmodal_top[ArdiraSurvey-surveyResponder_surveyResponder] {
+    justify-content: center !important;
+    display: flex !important;
+}
+
+.THIS .solutionSubmitCard {
+    --slds-c-card-color-border: white !important;
+}
+
+.THIS .sr-view .slds-has-error .slds-input {
+    border-color: rgb(234, 0, 30) !important;
+    box-shadow:  rgb(234 0 30) 0 0 0 1px inset !important;
+}
+
+.THIS #ArdiraSurvey_SurveyResponder .button, .THIS #ArdiraSurvey_SurveyResponder .slds-button {
+    color: #0071c5;
+}*/

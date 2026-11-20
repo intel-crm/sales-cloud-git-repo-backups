@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>主机信息</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Sales_Account__c</name>
+        <relationshipLabel><!-- Host Information --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>输入计算机类型</label>
+        <name>Sales_CompType_URL_del__c</name>
+    </fields>
+    <fields>
+        <help>辅助计算机 ID 只能是防护 ID（T 或 S 加 9 位数字）或 NIC ID（12 十六进制字符）</help>
+        <label>辅助计算机 ID 1</label>
+        <name>Sales_Companion_Server1_Txt__c</name>
+    </fields>
+    <fields>
+        <help>辅助计算机 ID 只能是防护 ID（T 或 S 加 9 位数字）或 NIC ID（12 十六进制字符）</help>
+        <label>辅助计算机 ID 2</label>
+        <name>Sales_Companion_Server2_Txt__c</name>
+    </fields>
+    <fields>
+        <label>计算机名称</label>
+        <name>Sales_Computer_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label>计算机类型</label>
+        <name>Sales_Computer_Type__c</name>
+        <picklistValues>
+            <masterLabel>GUARD ID</masterLabel>
+            <translation><!-- GUARD ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HOST ID</masterLabel>
+            <translation><!-- HOST ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NIC ID</masterLabel>
+            <translation><!-- NIC ID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>主管理员</label>
+        <name>Sales_Contact__c</name>
+        <relationshipLabel>主机信息</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Host Is Created From Custom Page --></label>
+        <name>Sales_Host_Is_Created_From_Custom_Page__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsTemporaryLicense --></label>
+        <name>Sales_IsTemporaryLicense__c</name>
+    </fields>
+    <fields>
+        <label>主计算机 ID</label>
+        <name>Sales_Legacy_Host_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Altera Software Licenses (intel.com) --></help>
+        <label>输入计算机类型</label>
+        <name>Sales_LicenseType_URL_del__c</name>
+    </fields>
+    <fields>
+        <label>许可证类型</label>
+        <name>Sales_License_Type__c</name>
+        <picklistValues>
+            <masterLabel>FIXED</masterLabel>
+            <translation><!-- FIXED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOAT</masterLabel>
+            <translation><!-- FLOAT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>主管理员电子邮件</label>
+        <name>Sales_Primary_Admin_Email__c</name>
+    </fields>
+    <fields>
+        <label>主管理员姓名</label>
+        <name>Sales_Primary_Admin_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Computer ID - Dont Use --></label>
+        <name>Sales_Primary_Computer_ID_Txt__c</name>
+    </fields>
+    <fields>
+        <label>冗余服务器 ID 1</label>
+        <name>Sales_Redundant_Server1_Txt__c</name>
+    </fields>
+    <fields>
+        <label>冗余服务器 ID 2</label>
+        <name>Sales_Redundant_Server2_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Sales_Type__c</name>
+    </fields>
+    <fields>
+        <help>请在右上角下拉菜单中使用“激活/停用主机”来激活或停用计算机。</help>
+        <label>主动</label>
+        <name>Sales_isActiveHost__c</name>
+    </fields>
+    <fields>
+        <label>临时 NIC ID</label>
+        <name>Temporary_NIC_ID__c</name>
+    </fields>
+    <nameFieldLabel>主计算机 ID</nameFieldLabel>
+    <recordTypes>
+        <label>新电脑</label>
+        <name>Sales_NewHost</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Please enter the Computer Name --></errorMessage>
+        <name>Sales_EnterComputerNameOnHostCreation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>针对固定许可类型计算机，计算机类型可以是防护 ID 或 NIC ID。</errorMessage>
+        <name>Sales_Fixed_GUARD_NIC_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>针对使用固定许可的计算机，您将不能添加冗余服务器。您可以添加辅助计算机。</errorMessage>
+        <name>Sales_Fixed_Lic_Red_Server_NotAllowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>针对使用浮动许可的计算机，计算机类型可以是 NIC ID 或主机 ID。</errorMessage>
+        <name>Sales_Float_HOST_NIC_Allowed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>您必须同时指定两个冗余服务器 ID。</errorMessage>
+        <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>您无权从此屏幕添加新主机。</errorMessage>
+        <name>Sales_HostCreation_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>辅助计算机 ID 的计算机类型无效</errorMessage>
+        <name>Sales_Valid_Companion_Server_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>无效的主计算机 ID。主机 ID：八位十六进制数字 - 12345678/NIC ID：12 位十六进制数字 - 123456789101/防护 ID（加密狗）：T 或 S 前缀加九位数字 - T000000001</errorMessage>
+        <name>Sales_Valid_PrimaryComputerID</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>冗余服务器 ID 的计算机类型无效</errorMessage>
+        <name>Sales_Valid_Redundant_Server_Id</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>不得使用固定许可为计算机设置临时 NIC ID。</errorMessage>
+        <name>Temporary_NIC_ID_Validation_Fixed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>临时 NIC ID 应包含 12 位十六进制字符。</errorMessage>
+        <name>Temporary_NIC_ID_Validation_Float</name>
+    </validationRules>
+</CustomObjectTranslation>

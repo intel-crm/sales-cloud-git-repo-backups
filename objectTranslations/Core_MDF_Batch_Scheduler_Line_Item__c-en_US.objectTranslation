@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Scheduler Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Scheduler Line Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Scheduler --></label>
+        <name>Core_MDF_Batch_Scheduler__c</name>
+        <relationshipLabel><!-- Batch Scheduler Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Core_MDF_Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Execution Time --></label>
+        <name>Core_MDF_Execution_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Job Id --></label>
+        <name>Core_MDF_Job_Id_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of Errors/Failures from Async Apex Job --></help>
+        <label><!-- Number of errors --></label>
+        <name>Core_MDF_Number_of_errors__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scheduled Time --></label>
+        <name>Core_MDF_Scheduled_Time_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Status Detail from Async Apex job --></help>
+        <label><!-- Status Detail --></label>
+        <name>Core_MDF_Status_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

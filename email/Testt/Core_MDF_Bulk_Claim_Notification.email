@@ -1,0 +1,42 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_Claim_Batch_Subject} {!relatedTo.Name}" 
+                         recipientType="User"
+                         relatedToType="Core_MDF_Claim_Batch__c"
+                         language="{!relatedTo.createdby.LanguageLocaleKey}" renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-size:14px;font-family:Calibri">          
+                    <p>      
+                        {!$Label.Core_MDF_EmailTemp_DearIntelPartner} <br/>
+                    </p>
+                    
+                    <p>{!$Label.Core_MDF_Claim_Batch_Subject} {!relatedTo.Name}</p>
+                           <li>{!$Label.Core_MDF_Claim_Batch_Name} : <a href="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}"> {!relatedTo.Name} </a></li><br/>
+                           <li>{!$Label.Core_MDF_Claim_Batch_Status} : {!relatedTo.Core_MDF_ClaimBatch_Status_Nm__c}</li><br/>
+                           <li>{!$Label.Core_MDF_Claim_Batch_Total_Count} : {!FLOOR(relatedTo.Core_MDF_Claim_Total_Cnt__c)}</li><br/>
+                           <li>{!$Label.Core_MDF_Claim_Batch_Pass_Count}: {!FLOOR(relatedTo.Core_MDF_Claim_Pass_Cnt__c)}</li><br/>
+                           <li>{!$Label.Core_MDF_Claim_Batch_Fail_Count} : {!FLOOR(relatedTo.Core_MDF_Claim_Fail_Cnt__c)}</li><br/>
+                           <li> {!$Label.Core_MDF_Upload_Date} : <apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!relatedTo.createdDate}"/> </apex:outputText></li><br/>
+                </div>
+                <br/>
+                <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+                <p>{!$Label.Core_MDF_Email_Signature}</p> 
+                <div style="font-size:11px;font-family:Calibri">
+                    <p>
+                        <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/>
+                        </i>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                    </p>
+                </div>  
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

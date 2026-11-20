@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>espy__Batch_Monitoring_Letterhead</letterhead>
+    <name>Batch Monitoring Email Notification Record Number</name>
+    <style>freeForm</style>
+    <subject>&apos;More than average job items is being processed by : &apos;+{!espy__Batch_Monitoring__c.Name}</subject>
+    <textOnly>Hi Team,
+
+Please find the details of the Class [{!espy__Batch_Monitoring__c.Name}] as below 
+Weekly Processed Job Items - {!espy__Batch_Monitoring__c.espy__WeeklyProcessedJobItems__c}
+Current Processed Job Items -  {!espy__Batch_Monitoring__c.espy__CurrentTotalJobItems__c}
+
+Kindly look into the issue.
+
+
+Regards
+Support  Team.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

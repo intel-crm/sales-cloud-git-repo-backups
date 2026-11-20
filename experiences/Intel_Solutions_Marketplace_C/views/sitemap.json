@@ -1,0 +1,140 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceFullWidthLayout",
+  "dataProviders" : [ ],
+  "id" : "010e3b53-ea6e-4600-9121-7e37703a6409",
+  "label" : "sitemap",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "{\"pageType\": \"Sitemap\",\"title\":\"Sitemap\"}",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "dynamicMarquee" : false,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "SITE MAP",
+        "title" : "Intel® Partner Showcase"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "4a30451d-a297-4746-b562-42f18d5f45f2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "ja" : "39384288-a591-484f-b270-246623ee10eb",
+        "zh_cn" : "66e7b19c-d481-48e3-9bb3-e8fa25f24cbf"
+      },
+      "renditions" : [ {
+        "id" : "66e7b19c-d481-48e3-9bb3-e8fa25f24cbf",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "ctaLabel" : "",
+            "subtitle" : "网站地图",
+            "title" : "英特尔® 解决方案市场"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "39384288-a591-484f-b270-246623ee10eb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "ctaLabel" : "",
+            "subtitle" : "サイトマップ",
+            "title" : "インテル® ソリューション・マーケットプレース "
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "7e7c7198-ffcf-4154-8a92-9d918d75de98",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "6d5ae237-edc4-41ae-a22f-7b4fafbba693",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSiteMap",
+      "id" : "e6a551f2-acc8-4f4e-a836-c6fb97a18318",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6f599e24-1d7c-4c56-a038-eba7f51f14a7",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "43bf4fcf-f46e-4393-bd16-a1eeb2bf63f4",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "76a7a66c-17ed-4ba4-8cda-c4cdddb0a769",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "c30bb8ce-ab14-4829-8ff9-48f686d0e8f5",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "597a4779-85e6-48c0-a069-bcf0ddb3c652",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "31397472-cc8b-4c66-aacb-5a6f227c46a3",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "54cdc2fe-a7b0-4eac-baf8-2c9880bf303d",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaExternalURL" : "",
+        "theme" : "primary"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "2f40e918-e0d2-40fa-8ad4-f3d38e48b733",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e2cd43b0-afea-4807-b615-4a4e5ffab831",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "2f525be1-605d-4a6e-b3c9-2e2c8a084b3c",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "id" : "910f760d-f252-4465-ba0f-4b56e9784db4",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "0d011db2-da17-440a-8c0e-d74a8d965c61",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Sitemap - Intel® Solutions Marketplace\"/> \n<meta name=\"keywords\" content=\"sitemap, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"Sitemap\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"View the sitemap on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "Sitemap - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "8a8f3bb0-ea4f-47b3-8db1-04ae03a45859",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "da777012-63e6-40c9-baa9-5baab46d6f5a",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-sitemap"
+}

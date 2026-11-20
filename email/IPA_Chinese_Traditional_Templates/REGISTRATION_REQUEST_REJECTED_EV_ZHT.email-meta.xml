@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>REGISTRATION_REQUEST_REJECTED_EV_ZHT</name>
+    <style>none</style>
+    <subject>註冊申請遭拒</subject>
+    <textOnly>註冊申請遭拒
+
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c}，您好：
+
+我們已經收到您最近提出的 Intel® 夥伴聯盟計畫註冊申請。經過驗證後，我們基於下列理由拒絕您的申請：
+
+{!PRM_Registration_Request__c.PRM_Reject_Reason__c}
+
+如果您認為這項決定有誤，或想為我們提供額外資訊，請來信至 programs@intel.com 與我們聯絡。
+
+
+敬祝時祺，
+您的 Intel® 夥伴聯盟團隊
+
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
+隱私權 | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

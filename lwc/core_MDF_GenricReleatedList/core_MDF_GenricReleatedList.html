@@ -1,0 +1,21 @@
+<template>
+    <article class="slds-card">
+        <!-- Header -->
+        <div class="slds-card__header slds-grid slds-grid_align-spread">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <span>{title} ({records.length})</span>
+                    </h2>
+                </div>
+            </header>
+        </div>
+
+        <!-- Table to display Claim records-->
+        <div class="slds-card__body slds-card__body_inner">
+            <lightning-datatable key-field="Id" data={records} columns={columns} hide-checkbox-column
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+    </article>
+</template>

@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "d98fc222-86be-4f7d-baa5-f98adc31ced6",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "9d86eb9f-7f70-426e-99b1-f84a5eedb0b0",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Campaign_Custom_Detail_core_MDF_CampaignBudgets_Component",
+  "id" : "98769120-5bb9-4a1e-ab68-be0da3896802",
+  "type" : "experienceVariation"
+}

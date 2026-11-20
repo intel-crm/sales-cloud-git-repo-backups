@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Smartsheet URL Form</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Smartsheet URL Form</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Geo --></label>
+        <name>Account_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Design Win $ --></label>
+        <name>Expected_Design_Win__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Opportunity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requestor Email --></label>
+        <name>Requestor_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFDC CRM Oppty ID --></label>
+        <name>SFDC_CRM_Oppty_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Group --></label>
+        <name>Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Market --></label>
+        <name>Vertical_Market__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

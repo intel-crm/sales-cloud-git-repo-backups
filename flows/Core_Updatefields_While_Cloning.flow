@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>To update Lead Priority, Lead State and Record Type for Sales Lead</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_Updatefields_While_Cloning {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Updatefields_While_Cloning</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Sales Lead Record Type Id</description>
+        <name>Get_Sales_Lead_Record_Type_Id</name>
+        <label>Get Sales Lead Record Type Id</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>FieldUpdatesCore_Updatefields_While_Cloning</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sales Lead</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>SalesLeadRecordTypeId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <description>For the Lead WF 
+
+&apos;Core_Updatefields_While_Cloning&apos;</description>
+        <name>FieldUpdatesCore_Updatefields_While_Cloning</name>
+        <label>FieldUpdatesCore_Updatefields_While_Cloning</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Lead_Priority__c</field>
+            <value>
+                <stringValue>Warm</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>In Pursuit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>SalesLeadRecordTypeId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SWS_Claimed_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Sales_Lead_Record_Type_Id</targetReference>
+        </connector>
+        <filterFormula>OR( AND( ISCLONE(), NOT(CONTAINS(LOWER({!$User.Username}), &quot;marketo&quot;)) , {!$Profile.Name} &lt;&gt; &quot;Integration&quot; ,{!$Profile.Name} &lt;&gt; &quot;Core Integration&quot;, {!$Profile.Name} &lt;&gt; &quot;Core_Integration_Minimal&quot;), AND( OR(ISNEW(),ISCLONE()), {!$Record.RecordType.Name} = &quot;Sales Lead&quot; ) )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>SalesLeadRecordTypeId</description>
+        <name>SalesLeadRecordTypeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

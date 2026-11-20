@@ -1,0 +1,76 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component access="global"></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            table {
+            font-family: sans-serif; /*arial, sans-serif ;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            } -->
+            
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+            
+        <!-- </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Require TCS assistance on this solution"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        Hello, <br/><br/>
+                        {!solutionData.PSS_Proposal_Name_Txt__c} created by {!solutionData.PSS_Submitted_by_Txt__c} from {!solutionData.PSS_Partner_Name__c} did not qualify for any solutions applicable and require your assistance.<br/><br/> 
+                                              
+                        Thank you,<br/><br/>
+                        
+                        <b>Solution Name:</b>{!solutionData.PSS_Proposal_Name_Txt__c}<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">Solution Details Page</apex:outputLink><br/>
+                        Your Intel® Partner Alliance team <br/><br/>
+                    </td>
+                </tr> -->
+                
+                <!-- Email Body -->
+				<!-- Email shared with -->
+                
+                <!-- Email shared with -->
+                
+                
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink><br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+                  <!-- <c:PSS_Global_Footer />  -->
+
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

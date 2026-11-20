@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_2572062</developerName>
+        <masterLabel>Role - GMP Germany or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Torsten Kahrmann</sourceValue>
+            </sourceValues>
+            <value>Torsten Kahrmann Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Markus Seifert</sourceValue>
+            </sourceValues>
+            <value>Markus Seifert Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Markus Gabler</sourceValue>
+            </sourceValues>
+            <value>Markus Gabler Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Hannes Schwaderer</sourceValue>
+            </sourceValues>
+            <value>Hannes Schwaderer Direct</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Franzi Divis</sourceValue>
+            </sourceValues>
+            <value>Franzi Divis Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Christoph Johann</sourceValue>
+            </sourceValues>
+            <value>Christoph Johann Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Christian Roth</sourceValue>
+            </sourceValues>
+            <value>Christian Roth Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Christian Ganz</sourceValue>
+            </sourceValues>
+            <value>Christian Ganz Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Christian Anderka</sourceValue>
+            </sourceValues>
+            <value>Christian Anderka Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Andreas Timm</sourceValue>
+            </sourceValues>
+            <value>Andreas Timm Team</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_51868361</developerName>
+        <masterLabel>Teams - by Owner Role</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLLUP_DESCRIPTION</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Helene De La Gastine</sourceValue>
+            </sourceValues>
+            <value>Disti&amp;Scale (H d.l. Gastine)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of ERWAN MONTAUX</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMP of J.F Mukumbi</sourceValue>
+            </sourceValues>
+            <value>BizCon (E Montaux)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMP of Fabien Esdourubail</sourceValue>
+            </sourceValues>
+            <value>France accounts (F Esdourubail)</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>FULL_NAME</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP France Sales Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_51868361</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <aggregateType>Sum</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortByName>AMOUNT</sortByName>
+        <sortOrder>Asc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GMP France Open Opps Value  Team/Owner</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

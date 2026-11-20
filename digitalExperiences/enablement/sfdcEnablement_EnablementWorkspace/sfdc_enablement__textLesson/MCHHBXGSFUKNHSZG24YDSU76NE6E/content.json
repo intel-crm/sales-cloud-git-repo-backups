@@ -1,0 +1,34 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Gaudi POC on ITDC",
+  "contentBody" : {
+    "description" : "Your customer has decided to run their POC on Intel Tiber Developer Cloud. Follow the below steps to have a successful POC.",
+    "sections" : [ {
+      "content" : "<div>The first step to request access for your customer on ITDC is to complete one of the following forms:</div><div><br /></div><div class=\"ql-indent-1\">If your customer would like to run their POC for Gaudi2 on a Dell PowerEdge Server in ITDC, complete this interest form for Access to Dell Gaudi2 Nodes - <a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://app.smartsheet.com/b/form/52a813980947494ca4698eec1a5497d1\">Link here</a></div><div class=\"ql-indent-1\"><br /></div><div class=\"ql-indent-1\">If your customer is a startup, you can apply to Intel Liftoff program - <a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://www.intel.com/content/www/us/en/developer/tools/oneapi/liftoff.html\">Link here</a></div><div class=\"ql-indent-1\"><br /></div><div class=\"ql-indent-1\"><span style=\"font-size: 13px;\">If your customer would like to be on ITDC and does not fall into either of the top two statements, complete the ITDC onboarding survey - </span><a style=\"font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(0, 102, 204);\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.az1.qualtrics.com/jfe/form/SV_9YqFUqwZSvPxnUi\">Link here</a></div><div class=\"ql-indent-1\"><br /></div><div>Each of these forms is sent directly to the Intel Category team focused on these areas. The category team receives the requests and reviews for prioritization. </div>",
+      "keyConcept" : "Customer Access Requests Through ITDC",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>The category team will review all the ITDC requests through the onboarding forms. They will assess customer workload and configuration requirements. They will confirm that workloads are within Gaudi capabilities or within their plans. </div><div><br /></div><div>Every week, the category team prioritizes the requests that were sent through the above forms. The category team will reach out to you if your customer has made the prioritized list or if they have not for that week. </div><div><br /></div><div>If an escalation is needed, please reach out to your designated category team member that you have been working with through your solution building process with you customer in the prior steps. </div>",
+      "keyConcept" : "Category Team Prioritizes ITDC Onboarding",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>The Category sales team will provide the green light that there is an available instance to assign based on priority</div><div><br /></div><div>The Habana BU team will provide a green light on system readiness for your POC and will assign a POC experience manager to your customer </div><div><br /></div><div><span style=\"font-size: 13px;\">After review of the workloads and prioritization schedule, you will receive a &#34;go&#34; decision from the proper teams. They will then begin to assign available instances to your customer. </span></div>",
+      "keyConcept" : "Green Light by teams to assign your customer an Instance",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>The next step is to get logged into ITDC with the help of your POC Experience Manager who has been assigned to you through the Habana BU team. They will ensure your customer has access to ITDC and will be in contact with the POC experience manager.</div>",
+      "keyConcept" : "Account Provisioning in ITDC",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>Utilizing Intel Tiber Developer Cloud may be a new experience for your customer. Please have them visit our <a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://console.cloud.intel.com/docs/guides/get_started.html\">Intel Tiber Developer Cloud site </a>to learn more about how to utilize ITDC so they can have a simplified, successful experience for the POC.</div><div><br /></div><div>Now that your customers have access and know how to utilize ITDC, they need to know how to develop with Gaudi. Here is the link to the <a target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://docs.habana.ai/en/latest/index.html\">Habana Developer site</a> for them to learn and walk through all the details on getting started to optimizations on Gaudi.</div><div><br /></div><div><span style=\"font-size: 13px;\">Additionally, there are many validated software models on Gaudi today. For support throughout the POC, here is the </span><a style=\"font-size: 13px; background-color: rgb(255, 255, 255); color: rgb(0, 102, 204);\" target=\"_blank\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\" href=\"https://intel.seismic.com/Link/Content/DCGHMFMjqHfVG8HP6MJ6b4XBm7pG\">Gaudi Software Roadmap</a><span style=\"font-size: 13px;\"> that lists the current validated models as well as upcoming optimized models and updates. </span></div>",
+      "keyConcept" : "Customer Materials for ITDC POC",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div>From here, your POC should be off and running! Your customer and yourself will have support managed throughout the lifespan of the POC through your POC Experience Manager within the Habana BU. As questions occur, feel free to reach out to the Category sales team again for support as well.</div><div><br /></div><div>Once your POC ends, the goal is for it to be successful and your customer is aligned to move forward on the next steps of discussions on how to add Gaudi into their infrastructure.</div>",
+      "keyConcept" : "Complete your POC",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 1.0
+  },
+  "urlName" : "gaudi-poc-on-itdc"
+}

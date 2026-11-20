@@ -1,0 +1,65 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "4fccfe61-9677-4bfa-8c5e-38a39b0963cd",
+  "label" : "Approver Detail",
+  "regions" : [ {
+    "id" : "bed852d3-094d-42dd-96d7-9390e8d8bdb0",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "914c9ba3-576c-45b5-8455-a0606189c761",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "5aa1377b-327c-4cac-a91c-d00c49af83a0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "40a56e66-313e-45b2-a760-a5a53c854841",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "4249725c-8902-4e19-915f-321a1c10fa8d",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f2c3a75a-a613-4245-b7bb-7196c87c938d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8cf59b5f-8e70-4be1-b6e1-a22c289aac12",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a3f"
+}

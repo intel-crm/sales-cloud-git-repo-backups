@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_70346225</developerName>
+        <masterLabel>HQ, Data Ops , ICS or other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CREATED</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Sales.CRM.WW. Data.Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jeffrey Peet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Herman Wynn</sourceValue>
+            </sourceValues>
+            <value>HQ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ron-Ron Cadabuna</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ma. Asuncion Nafarrete</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shenie Espedion</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kevin Li</sourceValue>
+            </sourceValues>
+            <value>ICS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Nhat Nguyen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Sweet</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Meico Hsiao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Richard Jolin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Paulo Quaresma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheron Hu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yue Xin Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sandy Villagran</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ke Xin Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gabriella Dolores Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sonia Mejia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>LINDA LEE NORTH</sourceValue>
+            </sourceValues>
+            <value>Data Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ashton Baker</sourceValue>
+            </sourceValues>
+            <value>Ashton</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_70346225</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>CONTACT_ACCOUNT</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_ID__c</field>
+    </columns>
+    <columns>
+        <field>OLDVAL</field>
+    </columns>
+    <columns>
+        <field>NEWVAL</field>
+    </columns>
+    <description>Account transfers, bucketed by who</description>
+    <filter>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Name</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_70346225</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Contact moves - last year</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_PREVY</interval>
+    </timeFrameFilter>
+</Report>

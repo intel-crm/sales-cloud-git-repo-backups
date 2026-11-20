@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Registration_Request_Acknowledgement_Email_SPA_ES</name>
+    <style>none</style>
+    <subject>Su solicitud está siendo procesada</subject>
+    <textOnly>Su solicitud está siendo procesada
+
+{!PRM_Registration_Request__c.PRM_First_Name__c}:
+
+
+Gracias por enviar su solicitud. Necesitamos tres días hábiles para procesar su solicitud.
+Si tiene alguna duda, póngase en contacto con nosotros a través de https://signin.intel.com/ContactUs?Culture=es-es.
+
+
+Gracias,
+su equipo de la Alianza Intel® para socios
+
+Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
+Privacidad | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

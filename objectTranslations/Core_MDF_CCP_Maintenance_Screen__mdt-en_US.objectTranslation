@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CCP Maintenance Screen</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CCP Maintenance Screens</value>
+    </caseValues>
+    <fields>
+        <label><!-- Column Fields --></label>
+        <name>Core_MDF_Column_Fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Type Values --></label>
+        <name>Core_MDF_Data_Type_Values__c</name>
+        <picklistValues>
+            <masterLabel>boolean</masterLabel>
+            <translation><!-- boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>currency</masterLabel>
+            <translation><!-- currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>date</masterLabel>
+            <translation><!-- date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>email</masterLabel>
+            <translation><!-- email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>lookup</masterLabel>
+            <translation><!-- lookup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>multiselectPicklist</masterLabel>
+            <translation><!-- multiselectPicklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>number</masterLabel>
+            <translation><!-- number --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>phone</masterLabel>
+            <translation><!-- phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>picklist</masterLabel>
+            <translation><!-- picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>text</masterLabel>
+            <translation><!-- text --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field API Name --></label>
+        <name>Core_MDF_Field_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Label --></label>
+        <name>Core_MDF_Field_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fields Editable --></label>
+        <name>Core_MDF_Fields_Editable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object API Name --></label>
+        <name>Core_MDF_Object_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Label --></label>
+        <name>Core_MDF_Object_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Record Name --></label>
+        <name>Core_MDF_Object_Record_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- ShareObjectFields --></label>
+        <name>Core_MDF_ShareObjectFields__c</name>
+    </fields>
+    <fields>
+        <label><!-- LookupNameQuery --></label>
+        <name>LookupNameQuery__c</name>
+    </fields>
+    <fields>
+        <label><!-- LookupToObjectName --></label>
+        <name>LookupToObjectName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ShareObject --></label>
+        <name>ShareObject__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

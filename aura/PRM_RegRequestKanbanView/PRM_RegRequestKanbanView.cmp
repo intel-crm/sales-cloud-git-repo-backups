@@ -1,0 +1,87 @@
+<!--*********************************************************************************************************************
+Component Name : PRM_RegRequestKanbanView
+Version        : 1.0
+Created Date   : OCT 2018
+Function       : Displays 'Kanban View' for a picklist field
+
+Modification Log :
+* Developer                 Date                    Description
+* Kushal Soni               10/15/2018              Displays 'Kanban View' for a picklist field
+
+*********************************************************************************************************************-->
+<aura:component controller="PRM_RegRequestKanbanView" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="regRequest" type="PRM_Registration_Request__c"/>
+    <aura:attribute name="fielLabel" type="String[]"/>
+    <aura:attribute name="strList"  type="String[]" />
+    <aura:attribute name="fieldList" type="object[]"/>
+    <aura:attribute name="fieldMap" type="Map"/>
+    <aura:attribute name="isMatchingContact" type="Boolean" default="false"/>
+	<aura:attribute name="displayStatus" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    <article class="slds-card">
+        <div class="slds-path">
+            <div class="slds-grid slds-path__track">
+                <div class="slds-grid slds-path__scroller-container">
+                    <div class="slds-path__scroller" role="application">
+                        <div class="slds-path__scroller_inner">
+                            <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+                                <aura:iteration items="{!v.fieldList}" var="obj" indexVar="ind">
+                                    <aura:if isTrue="{!(obj.result == $Label.c.PRM_Success)}">
+                                        <li id="{!ind+'green'}" class="slds-path__item slds-is-won" role="presentation" onmouseover="{!c.handleMouseEnter}" onmouseout="{!c.handleMouseLeave}">
+                                            <a aria-selected="false" class="slds-path__link" role="option" tabindex="-1">
+                                                <span class="slds-path__title displayWhite">{!obj.label}</span>
+                                                <div id="{!ind}" class="slds-popover slds-popover_tooltip slds-nubbin_left-top customTooltip slds-hide" role="tooltip" aria-live="polite">
+                                                    <div class="slds-popover__body">
+                                                        {!$Label.c.PRM_Success}
+                                                    </div>
+                                                </div> 
+                                           </a>
+                                        </li>
+                                    </aura:if>
+									<aura:if isTrue="{!(obj.result == $Label.c.PRM_Pending)}">
+                                        <li id="{!ind+'blue'}" class="slds-path__item slds-is-current slds-is-active" role="presentation" onmouseover="{!c.handleMouseEnter}" onmouseout="{!c.handleMouseLeave}"> 
+                                            <a aria-selected="false" class="slds-path__link" role="option" tabindex="-1">
+                                                <span class="slds-path__title displayWhite">{!obj.label}</span>
+												<div id="{!ind}" class="slds-popover slds-popover_tooltip slds-nubbin_left-top slds-hide customTooltip"  role="tooltip" aria-live="polite">
+                                                    <div class="slds-popover__body">
+                                                       {!$Label.c.PRM_Pending}
+                                                    </div>
+										        </div>
+                                            </a>
+                                        </li>
+                                    </aura:if>
+									<aura:if isTrue="{!(obj.result == $Label.c.PRM_Fail)}">
+                                        <li id="{!ind+'red'}" class="slds-path__item slds-is-lost" onmouseover="{!c.handleMouseEnter}" onmouseout="{!c.handleMouseLeave}" role="presentation">
+                                            <a aria-selected="false" class="slds-path__link" role="option" tabindex="-1" >
+                                                <span class="slds-path__title displayWhite">{!obj.label}</span>
+                                                <div id="{!ind}" class="slds-popover slds-popover_tooltip slds-nubbin_left-top customTooltip slds-hide"  role="tooltip" aria-live="polite">
+                                                    <div class="slds-popover__body">
+                                                       {!$Label.c.PRM_Fail}
+                                                    </div>
+										        </div>
+                                            </a>
+                                        </li>
+                                    </aura:if>
+                                    
+                                </aura:iteration>
+                                <aura:if isTrue="{!v.isMatchingContact}">
+                                    <li class="slds-path__item slds-is-lost" onmouseover="{!c.handleMouseEnter}" onmouseout="{!c.handleMouseLeave}" role="presentation">
+                                        <a aria-selected="false" class="slds-path__link" role="option" tabindex="-1" >
+                                            <span class="slds-path__title displayWhite">{!$Label.c.PRM_Duplicate_Contact_Check}</span>
+                                            <div id="{!ind}" class="slds-popover slds-popover_tooltip slds-nubbin_left-top customTooltip slds-hide"  role="tooltip" aria-live="polite">
+                                                <div class="slds-popover__body">
+                                                    {!$Label.c.PRM_Duplicate_Contact}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </aura:if>
+                             </ul>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </article>
+</aura:component>

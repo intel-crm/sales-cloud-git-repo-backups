@@ -1,0 +1,153 @@
+<template>
+    <div style="border-radius: 0; border: none; background: #f7f7f7; min-height: 90vh;">
+        <div class="slds-p-around_medium">
+            <lightning-button onclick={handleNavigateBack} label="< Back" title="Back to dashboard" class="noBorder">
+            </lightning-button>
+        </div>
+        <div class="backgrnd" style="height: 6rem;">
+            <h1 class="slds-p-around_x-large" style="font-size: large; color: white;">Advanced Search</h1>
+        </div>
+        <div class="slds-grid slds-wrap advanceMainSearch">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12">
+                <div>
+                    <lightning-input type="search" variant="standard" name="allfieldSearch" placeholder="Search cases"
+                        min-length="2" message-when-range-underflow="Type min 2 chars" value={searchAllValue}
+                        onchange={advhandleSearchAll} onkeypress={handleEnterKeyPress}
+                        class="slds-m-bottom_small projectSearch" maxlength="50">
+                    </lightning-input>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12 advancedSearchContainer">
+                <lightning-accordion class="example-accordion advancedSerachBtn" onsectiontoggle={handleToggleSection}
+                    active-section-name="A" allow-multiple-sections-open>
+                    <lightning-accordion-section name="A" label="Advanced Search "
+                        style="font-weight: bold; font-size: 12px; padding: 0 12px; background: #fff;">
+                        <div class="slds-grid slds-wrap" style="margin-bottom: 10px;">
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12 advancedLabel">
+                                Case Number
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+                                <div style="width: 100%; ">
+                                    <lightning-input class="inputs" name="caseNumber" value={advCaseNum}
+                                        onchange={advCaseNumOnchange} onkeypress={handleEnterKeyPress}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12 advancedLabel">
+                                Status
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+
+                                <lightning-checkbox-group checked="true" options={options} value={value}
+                                    onchange={handleChange} onkeypress={handleEnterKeyPress}></lightning-checkbox-group>
+                                <!--  onkeypressAdded newly-->
+
+                            </div>
+
+                        </div>
+                        <div class="slds-grid slds-wrap" style="margin-bottom: 10px;">
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12"></div>
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+                                <template if:true={openchek}>
+
+                                    <lightning-combobox options={option1} onchange={handleChange1} style="width: 100%;">
+                                    </lightning-combobox>
+
+                                </template>
+<template if:true={closechek}>
+                                    <lightning-combobox options={option2} onchange={handleChange2} style="width: 100%;">
+                                    </lightning-combobox>
+
+                                </template>
+</div>
+</div>
+<div class="slds-grid slds-wrap" style="margin-bottom: 10px;">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12 advancedLabel">
+        Customer Reference Id
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+        <div style="width: 100%; ">
+            <lightning-input class="inputs" name=" Customer Reference Id" value={advCustomerRefrenceid} onchange={advCustomerRefrenceid} onkeypress={handleEnterKeyPress}>
+            </lightning-input>
+        </div>
+    </div>
+</div>
+<div class="slds-grid slds-wrap" style="margin-bottom: 10px;">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12 advancedLabel">
+        Product Name
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+        <div style="width: 100%; ">
+            <lightning-input class="inputs" name=" Product Name" value={Productname} onchange={advProductOnChange} onkeypress={handleEnterKeyPress}>
+            </lightning-input>
+        </div>
+    </div>
+</div>
+
+<div class="slds-grid slds-wrap" style="margin-bottom: 10px;">
+    <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12 advancedLabel">
+        Case Created Date
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_6-of-12">
+                <lightning-input type="Date" name="From" value={FromDate} label="From" onchange={fromDateOnChange} onkeypress={handleEnterKeyPress} style="display: flex;"></lightning-input>
+            </div>
+            <div class="slds-col slds-grid slds-size_6-of-12">
+                <lightning-input type="Date" name="To" value={ToDate} label="To" onchange={toDateOnChange} onkeypress={handleEnterKeyPress}>
+                </lightning-input>
+            </div>
+
+        </div>
+    </div>
+</div>
+</lightning-accordion-section>
+</lightning-accordion>
+<lightning-button label="Search" variant="brand" title="Non-primary action" onclick={advhandleSearchKeyword} class="slds-m-left_x-small" style="padding-top: 25px;">
+</lightning-button>
+</div>
+
+</div>
+<div class="slds-p-around_large">
+
+    <template if:true={showDataTable}>
+                <div class="AdvancedCaseDetails">
+                    <lightning-datatable key-field="Id" data={AdvpaginatedCases} columns={advCaseColumns}
+                        hide-checkbox-column="true" column-widths-mode="auto" sorted-direction={AdvSortDirection}
+                        onsort={doAdvSorting} sorted-by={AdvSortedBy} min-column-width="75"
+                        onrowaction={AdvanceSearchCase}>
+                    </lightning-datatable>
+                    <template if:false={isrefreshPageination}>
+                        <c-core_-i-p-s_-paginator_-l-w-c records={advDataTable} total-records={advDataTable.length}
+                            show-search-box="true" onpaginatorchange={handleTablePaginationChange}>
+                        </c-core_-i-p-s_-paginator_-l-w-c>
+                    </template>
+    <template if:true={isrefreshPageination}>
+
+                        <c-core_-i-p-s_-paginator_-l-w-c records={advDataTable} total-records={advDataTable.length}
+                            show-search-box="true" onpaginatorchange={handleTablePaginationChange}>
+                        </c-core_-i-p-s_-paginator_-l-w-c>
+
+                    </template>
+</div>
+</template>
+<div style="padding-top: 50px;font-weight:bold;font-size: larger; " class="slds-align_absolute-center slds-m-around_medium">
+    <template if:true={norecordsToDisplay}>
+                    <div class="AdvancedCaseDetailstext">No Records To Display</div>
+                </template>
+</div>
+</div>
+
+
+</div>
+<div>
+    <c-core_-i-p-s_-footer_-l-w-c></c-core_-i-p-s_-footer_-l-w-c>
+</div>
+<template if:true={isSpinner}>
+        <c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+
+    </template>
+
+</template>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores all the languages supported for partner. Will refer these values while calling the external service for localization</description>
+    <fields>
+        <fullName>Language_Code__c</fullName>
+        <description>Stores the country language code</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Language Code</label>
+        <length>6</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Locale_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Locale Name</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Target_Locale_Nm__c</fullName>
+        <description>This field holds the target language for the translation</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Target Language for the the translation</inlineHelpText>
+        <label>Target Locale</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_Partner_Language</label>
+    <listViews>
+        <fullName>All_Column</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Language_Code__c</columns>
+        <columns>Locale_Name__c</columns>
+        <columns>PMP_Target_Locale_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Column</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>PMP_Partner_Languages</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

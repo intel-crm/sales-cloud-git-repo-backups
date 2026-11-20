@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Monitor Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Monitor Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account_ID__c</name>
+        <relationshipLabel><!-- Monitor Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Apex Class --></label>
+        <name>Apex_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Error_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Type --></label>
+        <name>Integration_Type__c</name>
+        <picklistValues>
+            <masterLabel>Batch Failure</masterLabel>
+            <translation><!-- Batch Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIM Dup Failure</masterLabel>
+            <translation><!-- CIM Dup Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Inbound Failure</masterLabel>
+            <translation><!-- OPID Inbound Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OPID Not Received</masterLabel>
+            <translation><!-- OPID Not Received --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Job Id --></label>
+        <name>Job_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Registration --></label>
+        <name>New_Registration__c</name>
+        <relationshipLabel><!-- Monitor Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Number Of Errors --></label>
+        <name>Number_Of_Errors__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID Recommendation --></label>
+        <name>OPID_Recommendation__c</name>
+        <relationshipLabel><!-- Monitor Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- One Partner Inbound Message --></label>
+        <name>One_Partner_Inbound_Message__c</name>
+        <relationshipLabel><!-- Monitor Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queued</masterLabel>
+            <translation><!-- Queued --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reprocessed</masterLabel>
+            <translation><!-- Reprocessed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submitted Date Time --></label>
+        <name>Submitted_Date_Time__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

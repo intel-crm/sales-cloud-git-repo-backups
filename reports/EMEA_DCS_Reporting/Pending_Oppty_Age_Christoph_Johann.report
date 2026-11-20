@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_94942460</developerName>
+        <masterLabel>DCS Regions</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Louise Summerton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Anna Hermansson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MATTHEW BIRCH</sourceValue>
+            </sourceValues>
+            <value>DCS NEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Guy Bar-Ner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jorge Cordova</sourceValue>
+            </sourceValues>
+            <value>DCS SEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Christoph Johann</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dietmar Rohlf</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Markus Gabler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Matthias Todd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mike H Cato</sourceValue>
+            </sourceValues>
+            <value>DCS CEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eric Levander</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jon Jadersten</sourceValue>
+            </sourceValues>
+            <value>DCS Services Providers</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Fabian De Pasquale</sourceValue>
+            </sourceValues>
+            <value>DCS WEUR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Artur Dlugosz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robert Szekely</sourceValue>
+            </sourceValues>
+            <value>DCS HPC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Alexey Ivanov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Valery Bochkaryov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Victoria Yevtoushenko</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>eugene bakunov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>natalia galyan</sourceValue>
+            </sourceValues>
+            <value>DCS RCIS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Simon Wilyman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>luca romani</sourceValue>
+            </sourceValues>
+            <value>DCS Channels &amp; Platforms</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ediz Altun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Firas Alfanney</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mediha Kayacan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>frans j pieterse</sourceValue>
+            </sourceValues>
+            <value>DCS META</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Edward R Galyamov</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Edwin Peters</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Eran Gal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maciej Osiecki</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Uros Huzjak</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yulia Smelkova</sourceValue>
+            </sourceValues>
+            <value>DCS OSC</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Oppty_Count__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Christoph Johann</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Christoph Johann</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pending Oppty Age - Christoph Johann</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>salesteamteam</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

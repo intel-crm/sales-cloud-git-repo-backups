@@ -1,0 +1,122 @@
+.THIS .list.productItem h3 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.125;
+  margin-bottom: .5em;
+}
+.THIS .list.productItem h3 a {
+  font-weight: bold;
+}
+.THIS .cardList {
+  background: t(white);
+}
+.THIS .cISGHubSpoke .cardList {
+  background: none;
+}
+
+.THIS .cardListItem .list .mediaWrap  {
+  border: 0 none;
+}
+
+.THIS .borderBottom {
+  border-bottom: 1px solid t(lightGray);
+}
+.THIS .borderTop {
+  border-top: 1px solid t(lightGray);
+}
+.THIS .noBorderTop {
+  border-top: 0 none;
+}
+.THIS .whiteBg {
+  background-color: t(white);
+}
+.THIS .lightestGrayBg {
+  background-color: t(lightestGray);
+}
+
+.THIS .disclaimer {
+  max-height: 5em;
+  overflow: hidden;
+  font-size: 0.8em; 
+  margin: 0em;
+  font-weight: 100;
+  line-height: 1.1;
+  text-align: left;
+  box-sizing: border-box; 
+    
+}
+
+.THIS .isg-tab-content,
+.THIS .slds-tabs_default__content {
+  padding: 0;
+  margin-top: 28px;
+  background: t(white);
+}
+.THIS .list.productItem {
+  margin: 0;
+  padding-bottom: 0;
+}
+.THIS .list.productItem {
+  margin: 0;
+  padding-bottom: 0;
+}
+.THIS .list.productItem .itemWrap {
+  padding-bottom: 20px;
+}
+.THIS .cardListItem .list.productItem .itemWrap  {
+  border-bottom: 1px solid t(lightGray);
+}
+.THIS .cardListItem:last-child .list.productItem .itemWrap  {
+  border-bottom: 0 none;
+}
+
+.THIS .card.productItem {
+  background: transparent;
+}
+.THIS.notificationLink:first-of-type .notificationBanner {
+  margin-top: 35px;
+}
+.THIS.notificationLink .notificationBanner {
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .THIS .cardListItem .card {
+
+  }
+  .THIS .cISGPromotionCarousel .carouselCard {
+    padding: 0;
+  }
+  .THIS .cISGOfferingDetail .cardListItem .card.productItem {
+    border-bottom: 0 none;
+  }
+  .THIS .cISGOfferingDetail .cardListItem{
+    border-bottom: 1px solid t(lightGray);
+  } 
+}
+@media (min-width: 768px) {
+  .THIS .editOfferingLockedModal .slds-progress {
+    padding: 2rem 1rem;
+  }
+}
+.THIS .cIntelButton button.has-body:not(.has-icon) {
+   padding: 7px 43px;
+    margin: 2px;
+}
+.THIS .cloneBtnView{
+  float: right;
+}
+.THIS .sectionFooter {
+  padding: 20px 0 20px 0;
+}
+.THIS .intelOnlyFooter {
+  display: none;
+}
+ /*  paddingtop created as part of the US-US788273*/
+.THIS.paddingtop{
+    padding-top: 10px;
+}
+ /*created as part of the US-US788273*/
+.THIS.top-padding-if-no-banner{
+        padding-top: 1.75rem;
+}

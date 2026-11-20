@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MDF Document</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MDF Document</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity --></label>
+        <name>Core_MDF_Activity_id__c</name>
+        <relationshipLabel><!-- MDF Document --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- App Document Types --></label>
+        <name>Core_MDF_App_Document_Types_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- App File Id --></label>
+        <name>Core_MDF_App_File_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContentVersion ID --></label>
+        <name>Core_MDF_ContentVersion_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Id --></label>
+        <name>Core_MDF_Document_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Title --></label>
+        <name>Core_MDF_Document_Title_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Download Document Title --></label>
+        <name>Core_MDF_Download_Document_Title_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Encoded Document Title --></label>
+        <name>Core_MDF_Encoded_Document_Title_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ext Document Name --></label>
+        <name>Core_MDF_Ext_Document_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Salesforce File Download URL --></label>
+        <name>Core_MDF_External_SF_File_Download_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Extension --></label>
+        <name>Core_MDF_File_Extension_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- File Size --></label>
+        <name>Core_MDF_File_Size_num__c</name>
+    </fields>
+    <fields>
+        <label><!-- Document Name --></label>
+        <name>Core_MDF_Int_Document_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Salesforce File Download URL --></label>
+        <name>Core_MDF_Internal_SF_File_Download_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Deleted --></label>
+        <name>Core_MDF_Is_Deleted_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFT File Available Indicator --></label>
+        <name>Core_MDF_SFT_File_Available_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFT File Download URL --></label>
+        <name>Core_MDF_SFT_File_Download_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selected Document Types --></label>
+        <name>Core_MDF_Selected_Document_Types_nm__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

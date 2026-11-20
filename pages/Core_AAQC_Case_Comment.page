@@ -1,0 +1,58 @@
+<apex:page standardController="Core_AAQC_Case_Comments__c" extensions="Core_AAQC_Case_Comment_Controller">
+    <apex:sectionHeader title="Commissions Case Comment Edit" subtitle="{!if((caseCommentId != null),objCaseComment.Name,$Label.Core_AAQC_New_Commissions_Case_Comment)}"/>
+    <apex:pageMessages id="theMsg"></apex:pageMessages>
+    <apex:form id="theForm">
+    <apex:pageBlock title="Commissions Case Comment Edit">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}" id="saveButton" />
+            <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />           
+        </apex:pageBlockButtons>
+      
+        <apex:pageBlockSection showHeader="false" columns="1">
+            
+            <apex:inputField value="{!objCaseComment.Core_AAQC_Commissions_Case__c}" required="true"/>
+            
+            <apex:outputField value="{!objCommissionsInquiry.Core_AAQC_Case_Detail__c}" />
+            
+            <apex:inputField value="{!objCaseComment.Core_AAQC_Comment__c}" required="true" style="width:240px"/>
+            
+            <apex:inputField value="{!objCase.Status}" rendered="{!if((blnCheckAccess),TRUE,FALSE)}"/>
+            <apex:outputField value="{!objCase.Status}" rendered="{!if((blnCheckAccess),FALSE,TRUE)}"/>
+            
+            <apex:inputField value="{!objCase.Core_AAQC_Resolution_Type__c}" rendered="{!if((blnCheckAccess),TRUE,FALSE)}"/>
+            <apex:outputField value="{!objCase.Core_AAQC_Resolution_Type__c}" rendered="{!if((blnCheckAccess),FALSE,TRUE)}"/>
+            
+            <apex:inputField value="{!objCase.Core_AAQC_Resolution_Training_Sub_Type__c}" rendered="{!if((blnCheckAccess),TRUE,FALSE)}"/>
+            <apex:outputField value="{!objCase.Core_AAQC_Resolution_Training_Sub_Type__c}" rendered="{!if((blnCheckAccess),FALSE,TRUE)}"/>
+            
+            <apex:inputField value="{!objCase.Core_AAQC_Resolution_CE_Sub_type__c}" rendered="{!if((blnCheckAccess),TRUE,FALSE)}"/>
+            <apex:outputField value="{!objCase.Core_AAQC_Resolution_CE_Sub_type__c}" rendered="{!if((blnCheckAccess),FALSE,TRUE)}"/>
+            
+            <apex:inputField value="{!objCase.Core_AAQC_Cancellation_Reason__c}" rendered="{!if((blnCheckAccess),TRUE,FALSE)}"/>
+            <apex:outputField value="{!objCase.Core_AAQC_Cancellation_Reason__c}" rendered="{!if((blnCheckAccess),FALSE,TRUE)}"/>
+            
+            <apex:inputField value="{!objCase.Core_AAQC_Root_Cause_Category__c}" rendered="{!if((blnCheckAccess),TRUE,FALSE)}"/>
+            <apex:outputField value="{!objCase.Core_AAQC_Root_Cause_Category__c}" rendered="{!if((blnCheckAccess),FALSE,TRUE)}"/>
+            
+            
+            
+            
+         </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:pageBlock title="Case Comments" id="thePageBlock" rendered="{!if((lstOfCaseComment!= null && lstOfCaseComment.size>0),TRUE,FALSE)}"> 
+            <apex:pageBlockTable value="{!lstOfCaseComment}" var="record" id="thePageBlockTable"> 
+                <apex:column >
+                    <b>
+                    <apex:outputText value="{!'Created By: ' + record.CreatedBy.Name}"  id="CaseComment" />
+                    <apex:outputText value="{0,date,' ('MM'/'dd'/'yyyy hh:mm a')'}">
+                            <apex:param value="{!record.CreatedDate}"/>
+                    </apex:outputText>
+                    </b><br/>
+                    <apex:outputField value="{!record.Core_AAQC_Comment__c}" id="CaseCommentName" /> 
+                    <apex:facet name="header">Comment</apex:facet>
+                </apex:column>
+               
+            </apex:pageBlockTable> 
+        </apex:pageBlock> 
+     </apex:form>
+</apex:page>

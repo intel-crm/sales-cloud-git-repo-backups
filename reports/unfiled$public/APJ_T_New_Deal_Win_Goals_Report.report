@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_Goal__c.Core_Goal_BU_Focus_Area__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Category__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Oppty_Decision_Date__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Oppty_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Match_Opportunity_KPI__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_Goal__c.Core_Goal_BU_Focus_Area__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,CCG Gateway Deal #,CCG Partner Enablement Deal #,CCG Partner-Led Deal #,CCG Performance Deal #,CCG Public Sector Deal #,CCG Unite Deal #,CCG vPro Adoption Technologies Deal #,CCG vPro Deal #,DCG/NSG Optane Persistent Memory &amp; SSD Deal #,DCG AI on Intel for Deep Learning Deal #,DCG Cloud Infra &amp; App Acceleration Deal #,DCG Cloud New Services Deal #,DCG Comms Infrastructure Deal #,DCG Enterprise &amp; Gov&apos;t Deal #,DCG Partner Enablement Deal #,DCG SiPH Deal #,IOTG All Deal #,NSG NAND Datacenter Deal #,PSG All Deal #</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Goal__c.Core_Goal_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sachin Anand,Siew May Cheow,Alastair Duncan,Swee Hoon Chan,Vineet Giri,Andrew Ridley,Hc Hwang,Fransiskus Leonardus,Avinash Rajah,Jovern Lim,Paul Haines,Patricia Dy Lee,Nileshni Santiago,Duc Dang</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>APJ-T New Deal Win Goals Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Goal__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Modify Turkish</name>
+    <style>none</style>
+    <subject>Şirket hesabı güncellemesi</subject>
+    <textOnly>Şirket Hesabı Güncellemesi
+
+
+!%UserFirstName%!,,
+
+Bu bildirim, bir kişinin Intel® Ortağı İş Birliği program bilgilerini seçilen Intel® Yetkili Distribütörleri ve/veya Intel® Approved Suppliers (Hizmet Sağlayıcıları) ile paylaşma seçeneklerini değiştirdiğini size bildirmek için gönderilmiştir.
+
+Şirket Hesabı Adı: !%AccountName%!
+Hesap Numarası: !%AccountNumber%!
+Seçimleri Yapan Birincil İrtibat Kişisi: !%UserEmailAddr%!
+Tarih: !%DateSigned%!
+Seçilen Hizmet Sağlayıcıları: !%Distributors%!
+Yetkilendirme: Avantajlarımı yönetmeye yardımcı olması için Intel&apos;e, Intel® Teknoloji Sağlayıcısı Programı hesap bilgilerimi Hizmet Sağlayıcılarla paylaşma izni veriyorum. Ayrıca Intel&apos;e şahsım adına puan kullanma yetkisi veriyorum (APJ&apos;de kullanılamaz).
+
+
+Bu işlemi onaylamıyorsanız veya bir hata yapıldığını düşünüyorsanız seçimleri düzenleyebilir veya programdan ayrılabilirsiniz.
+Sorularınız olursa bizimle programs@intel.com adresinden iletişime geçebilirsiniz.
+
+Teşekkür ederiz,
+Intel® Ortağı İş Birliği ekibiniz
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

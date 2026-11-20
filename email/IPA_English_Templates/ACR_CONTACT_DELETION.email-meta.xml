@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACR_CONTACT_DELETION</name>
+    <style>none</style>
+    <subject>Intel® Partner Alliance account update</subject>
+    <textOnly>User Removed
+
+{!UserName},
+
+
+A change has been made to your Intel® Partner Alliance account. {!ContactEmail} has been removed from your company&apos;s account.
+
+Company Name: {!Account.Name}
+Business ID:{!Account.AccountNumber}
+Contact Removed: E-mail {!ContactEmail}
+Relationship (Role): {!AcrRoles}
+
+If this change was not authorized, log in to update your account.
+If you have any questions, please contact us at https://signin.intel.com/ContactUs?Culture={!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}-{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}.
+
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {{!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

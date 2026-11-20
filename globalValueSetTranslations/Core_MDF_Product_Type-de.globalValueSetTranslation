@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>2-in-1</masterLabel>
+        <translation>2in1</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ACPC</masterLabel>
+        <translation>ACPC (immer verbundener PC)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AIO</masterLabel>
+        <translation>AiO</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>All-in-One Desktop</masterLabel>
+        <translation><!-- All-in-One Desktop --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>All-in-one</masterLabel>
+        <translation>All-in-One-PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Altera®</masterLabel>
+        <translation><!-- Altera® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Appliance</masterLabel>
+        <translation><!-- Appliance --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Athena</masterLabel>
+        <translation><!-- Athena --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Chromebook</masterLabel>
+        <translation><!-- Chromebook --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Client</masterLabel>
+        <translation><!-- Client --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud</masterLabel>
+        <translation><!-- Cloud --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Instance Consumption</masterLabel>
+        <translation>Verbrauch von Cloud-Instanzen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Communications</masterLabel>
+        <translation>Kommunikation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Component</masterLabel>
+        <translation>Komponente</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Data Center DGPU</masterLabel>
+        <translation><!-- Data Center DGPU --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Desktop</masterLabel>
+        <translation>Desktop-Proz.</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Gateway</masterLabel>
+        <translation>Edge-Gateway</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge/IOT</masterLabel>
+        <translation><!-- Edge/IOT --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA Programmable Solution</masterLabel>
+        <translation>FPGA programmierbare Lösung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HPC</masterLabel>
+        <translation><!-- HPC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Handheld</masterLabel>
+        <translation><!-- Handheld --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hyper Converged Solutions</masterLabel>
+        <translation>Hyper-Converged-Lösungen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel Unite®</masterLabel>
+        <translation><!-- Intel Unite® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel vPro®</masterLabel>
+        <translation><!-- Intel vPro® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intelligent Edge/IoT</masterLabel>
+        <translation>Intelligente Edge/IoT</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i3</masterLabel>
+        <translation><!-- Intel® Core™ i3 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i5</masterLabel>
+        <translation>Intel® Core™ i5</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i7</masterLabel>
+        <translation>Intel® Core™ i7</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Core™ i9</masterLabel>
+        <translation><!-- Intel® Core™ i9 --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Enpirion®</masterLabel>
+        <translation><!-- Intel® Enpirion® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Movidius™</masterLabel>
+        <translation><!-- Intel® Movidius™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Nervana™</masterLabel>
+        <translation><!-- Intel® Nervana™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™</masterLabel>
+        <translation><!-- Intel® Optane™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Optane™ DC</masterLabel>
+        <translation><!-- Intel® Optane™ DC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® RealSense™</masterLabel>
+        <translation><!-- Intel® RealSense™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Xeon®</masterLabel>
+        <translation><!-- Intel® Xeon® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Laptop</masterLabel>
+        <translation>Notebook</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mini PC</masterLabel>
+        <translation>Mini-PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mini PC w/NUC</masterLabel>
+        <translation>Mini-PC mit NUC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mini PC/NUC</masterLabel>
+        <translation>Mini-PC/NUC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
+        <translation><!-- Modern Notebook (2-in-1/T+L) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Motherboard</masterLabel>
+        <translation>Mainboard</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NUC</masterLabel>
+        <translation><!-- NUC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking &amp; Telecommunications</masterLabel>
+        <translation>Netzwerk und Telekommunikation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Networking/Ethernet</masterLabel>
+        <translation>Netzwerk/Ethernet</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Notebook</masterLabel>
+        <translation>Notebooks</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>OpenVINO™</masterLabel>
+        <translation><!-- OpenVINO™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Andere</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Programmable Solution</masterLabel>
+        <translation>Programmierbare Lösung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server</masterLabel>
+        <translation><!-- Server --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (AI/GPU)</masterLabel>
+        <translation>Server (KI/GPU)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (Cloud)</masterLabel>
+        <translation><!-- Server (Cloud) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (ESMB)</masterLabel>
+        <translation><!-- Server (ESMB) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (HPC)</masterLabel>
+        <translation><!-- Server (HPC) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Server (non-HPC)</masterLabel>
+        <translation>Server (nicht HPC)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Service</masterLabel>
+        <translation>Dienst</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Software</masterLabel>
+        <translation><!-- Software --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Solution</masterLabel>
+        <translation>Lösung</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Storage</masterLabel>
+        <translation><!-- Storage --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telco</masterLabel>
+        <translation>Telekommunikationsunternehmen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Thin &amp; Light</masterLabel>
+        <translation>Flach und leicht</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traditional Desktop</masterLabel>
+        <translation><!-- Traditional Desktop --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Traditional Notebook</masterLabel>
+        <translation>Traditioneller Laptop</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation</masterLabel>
+        <translation><!-- Workstation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation - Desktop</masterLabel>
+        <translation>Workstation – Desktop</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation - Fixed</masterLabel>
+        <translation>Workstation – stationär</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation - Mobile</masterLabel>
+        <translation>Workstation – mobil</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Xeon</masterLabel>
+        <translation><!-- Xeon --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,15 @@
+<messaging:emailTemplate subject="Late Claim Escalation Request ID {!RelatedTo.Name} is approved to take action on Claim" 
+                         recipientType="User" 
+                         relatedToType="Core_MDF_Escalation__c">
+                         
+<messaging:htmlEmailBody >
+    <html>
+        <body>
+        <div>
+           Escalation request ID: <a href ="{!RelatedTo.Core_MDF_Escalation_Detail_Link_txt__c}">{!RelatedTo.Name}</a> for Late Claim Escalation is approved.<br/>
+           Please create Claim 
+        </div>
+        </body>
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

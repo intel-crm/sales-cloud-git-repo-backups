@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+
+  <aura:attribute name="headingLabel" type="string" />
+
+  <div class="container fill-height">
+    <lightning:layout class="fill-height" verticalAlign="center">
+      <lightning:layoutItem size="12" class="slds-text-align_center">
+        <h1 class="h2 color-white intel-clear-pro slds-p-bottom_x-small">{!v.headingLabel}</h1>
+      </lightning:layoutItem>
+    </lightning:layout>
+  </div>
+
+</aura:component>

@@ -1,0 +1,55 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="Search Bar - Full width with typeahead">
+    
+    <aura:attribute name="displayType" type="string" default="all" />
+    <aura:attribute name="searchPlaceholderTextOverride" type="string" />
+    
+    <aura:attribute name="debugMode" type="boolean" default="true" />
+    <aura:attribute name="showKeywordInDropdown" type="boolean" default="true" />
+    <aura:attribute name="showSearchAllMarketplace" type="boolean" default="true" />
+    <aura:attribute name="showSearchAllProducts" type="boolean" default="true" />
+    <aura:attribute name="showSearchAllPartners" type="boolean" default="true" />
+    <aura:attribute name="searchAllMarketplaceLabel" type="string" default="in All Marketplace" />
+    <aura:attribute name="searchAllProductsLabel" type="string" default="in All Marketplace > All Offerings" />
+    <aura:attribute name="searchAllPartnersLabel" type="string" default="in All Marketplace > All Partners" />
+    <!-- <aura:attribute name="searchAllMarketplaceLabel" type="string" default="{!$Label.c.PMP_In_All_Marketplace}" />
+  <aura:attribute name="searchAllProductsLabel" type="string" default="{!$Label.c.PMP_In_All_Marketplace_All_Products}" />
+  <aura:attribute name="searchAllPartnersLabel" type="string" default="{!$Label.c.PMP_In_All_Marketplace_All_Partners}" />-->
+    
+    <aura:attribute name="viewAllLabel" type="string" />
+    <aura:attribute name="viewAllSearchParams" type="object" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Lightning tags changed with div tags US622399 prabuddh -->
+    <div class="bgCharcoal slds-grid slds-grid_vertical-align-center" > <!-- <lightning:layout class="bgCharcoal" verticalAlign="center"> -->
+        <div class="slds-size_12-of-12 slds-text-align_center" > <!--  <lightning:layoutItem size="12" class="slds-text-align_center"> -->
+            <span class="searchBar">
+                <c:MarketplaceSearchBar
+                                        debugMode="{!v.debugMode}"
+                                        refreshPageOnSearch="true"
+                                        searchType="{!v.displayType}"
+                                        searchPlaceholderTextOverride="{!v.searchPlaceholderTextOverride}"
+                                        showKeywordInDropdown="{!v.showKeywordInDropdown}"
+                                        showSearchAllMarketplace="{!v.showSearchAllMarketplace}"
+                                        showSearchAllProducts="{!v.showSearchAllProducts}"
+                                        showSearchAllPartners="{!v.showSearchAllPartners}"
+                                        searchAllMarketplaceLabel="{!v.searchAllMarketplaceLabel}"
+                                        searchAllProductsLabel="{!v.searchAllProductsLabel}"
+                                        searchAllPartnersLabel="{!v.searchAllPartnersLabel}"/>
+            </span>
+            
+            <aura:if isTrue="{!v.displayType != 'all'}">
+                <span class="slds-m-left_medium slds-show_medium">
+                    <c:IntelLink class="skyBlue" page="search" label="{!v.viewAllLabel}" searchParams="{!v.viewAllSearchParams}"/>
+                </span>
+                <div class="slds-m-top_small slds-hide_medium">
+                    <c:IntelLink class="skyBlue" page="search" label="{!v.viewAllLabel}" searchParams="{!v.viewAllSearchParams}"/>
+                </div>
+            </aura:if>
+            
+        </div> <!--   </lightning:layoutItem>	-->
+    </div> <!-- </lightning:layout> -->
+    
+    
+    
+    
+</aura:component>

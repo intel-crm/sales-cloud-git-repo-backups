@@ -1,0 +1,45 @@
+<messaging:emailTemplate subject="Your Intel® Tiber™ AI Cloud ${!relatedTo.SWS_Coupon_Amount__c} Promo Code" recipientType="User" relatedToType="SWS_Cloud_Credit_Request__c">
+   <messaging:htmlEmailBody >
+      <html>
+         <body>
+            <p style="text-align: center;">
+               <b>Your Intel® Tiber™ AI Cloud Credit</b><br></br>
+               <b>Coupon Code:</b> {!relatedTo.SWS_Coupon_Code__c}
+               </p>               
+            <p>
+               <p>Thanks for your interest in <a href="https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html" style="color:#0563C1;">Intel® Tiber™ AI Cloud</a>. Intel® Tiber™ AI Cloud can help you scale up production workloads without risk to your infrastructure. Get started easily on this platform by using your special:
+               <br></br><p style ="text-align: center;"><b>$<apex:outputText value="{0, number, ###,###.##}"><apex:param value="{!relatedTo.SWS_Coupon_Amount__c}" /></apex:outputText> Cloud Credit Coupon Code: {!relatedTo.SWS_Coupon_Code__c}</b></p><br></br>
+               <p>With this coupon, get complementary access to the latest Intel® architecture in Intel® Tiber™ AI Cloud.<b>{!IF(relatedTo.SWS_Is_Standard__c, 'This is a Standard Cloud Credit Coupon.','This is a Premium Cloud Credit Coupon.')}</b></p><br></br>
+               <br></br>Steps to Redeem Coupon: 
+            </p>
+            <ol>
+               <li>Visit <a href="https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html" style="color:#0563C1"><b>cloud.intel.com</b></a> > <b><i>Get Started</i></b></li>
+               <li>Subscribe to <b><i>{!IF(relatedTo.SWS_Is_Standard__c, 'Standard','Premium')}</i></b> <b><i>Account</i></b> and complete registration</li>
+               <li>Enter your business email, company…</li>
+               <li>Select <b><i>Cloud Credits</i></b> > <b><i>Redeem coupon</i></b></li>
+               <li>Enter your coupon code: {!relatedTo.SWS_Coupon_Code__c}</li>
+            </ol>
+            <br></br>
+            
+            Available to the first <apex:outputText value="{0, number, 0}"><apex:param value="{!relatedTo.SWS_No_Of_User__c}"/></apex:outputText> unique users (business email required). Expires {!CASE(MONTH(DATEVALUE(relatedTo.SWS_Coupon_Expiration_Date__c)),1, "January",2, "February",3, "March",4, "April",5, "May",6, "June",7, "July",8, "August",9, "September",10, "October",11, "November","December")} {!DAY(DATEVALUE(relatedTo.SWS_Coupon_Expiration_Date__c))}, {!YEAR(DATEVALUE(relatedTo.SWS_Coupon_Expiration_Date__c))}. $<apex:outputText value="{0, number, ###,###.##}"><apex:param value="{!relatedTo.SWS_Coupon_Amount__c}"/></apex:outputText> value is in cloud credits toward a time limit of usage. It is not legal tender. Cash value of $0.001. Coupon code is only for this email recipient. Do not forward to others.
+            <br></br>
+            <h4 style="color:#0563C1">About Intel® Tiber™ AI Cloud</h4>
+            Intel® Tiber™ AI Cloud is a development environment providing access to Intel hardware and software innovations to build and test AI, machine learning, and HPC applications for cloud, enterprise, client, and edge deployments.<br></br> Users can:
+            <ul>
+               <li>Evaluate Intel CPUs, GPUs and other accelerators to find which combinations work best.</li>
+               <li>Build, optimize and scale applications on Intel hardware and multiarchitecture systems. </li>
+               <li>Accelerate AI—Run small and large-scale AI training, model optimization, and inference workloads, deploy with optimized costs and performance. </li>
+               <li>Expedite development cycles—Save time using pre-configured compute environments to run the most popular workloads and use cases reducing setup complexities and streamlining code creation. </li>
+            </ul>
+            <h4 style="color:#0563C1">Learn More</h4>
+            <ul>
+               <li><a href="https://www.youtube.com/watch?v=QFR3SvcTikY" style="color:#0563C1">Watch the Intel® Tiber™ AI Cloud Getting Started video <img src="https://images.plan.intel.com/EloquaImages/clients/IntelCorporation/%7Bc054784c-25ad-4375-800a-72225d53db68%7D_arrow_email_blue.png"/></a></li>
+               <li>Need help? <a href="mailto:IDC.Getting.Started@intel.com?subject=Help%20Using%20KubeCon%20Intel%20Developer%20Cloud%20Coupon%20Credits">Contact our developer cloud experts</a> </li>
+               <li><a href="https://www.intel.com/content/www/us/en/software/software-overview.html" style="color:#0563C1">Intel Enterprise Services</a></li>
+               <li>Stay updated on the latest technologies—<a href="https://software.seek.intel.com/LP=38013" style="color:#0563C1">sign up for our newsletter</a>. </li>
+            </ul>
+            </p>
+         </body>
+      </html>
+   </messaging:htmlEmailBody>
+</messaging:emailTemplate>

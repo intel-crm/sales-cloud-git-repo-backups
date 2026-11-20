@@ -1,0 +1,75 @@
+<template>
+    <div class="slds-is-relative slds-form-element">
+        <input role="search" id="search"
+            aria-expanded={showTypeahead}
+            aria-activedescendant={ariaIds.activeDescendant}
+            aria-describedby={ariaIds.description}
+            aria-label={placeholder}
+            aria-owns={ariaIds.owns}
+            aria-autocomplete={ariaIds.autoComplete}
+            autocomplete="off"
+            autocapitalize="off"
+            class="search-keyword slds-input"
+            disabled={disabled}
+            maxlength="255"
+            placeholder={placeholder}
+            value={keywordValue}
+            type="search"
+            onchange={handleSearchByKeyword}
+            oninput={handleSearchInput}
+            onkeydown={handleKeyAccessibility}>
+        <template if:true={showFilterSearchInputSpinnerIcon}>
+            <lightning-icon
+                icon-name="utility:spinner"
+                class="search-spinner-icon"
+                size="x-small">
+            </lightning-icon>
+        </template>
+        <template if:true={showSearchInputClearIcon}>
+            <lightning-icon
+                icon-name="utility:clear"
+                role="button"
+                tabindex="0"
+                aria-label={ariaClearSearchLabel}
+                class="search-clear-icon"
+                size="x-small"
+                onmousedown={handleClearKeywordMousedown}
+                onclick={handleClearKeyword}
+                onkeydown={handleClearKeywordAccessibility}>
+            </lightning-icon>
+        </template>
+        <a href="#" onclick={handleSearchButtonClick}
+            aria-label={ariaSearchLabel}
+            class="search-icon"
+            role="button">
+            <span class="fa-global-search"></span>
+        </a>
+    </div>
+
+    <template if:true={showTypeahead}>
+        <ul id={ariaIds.owns} class="typeahead" role="listbox" tabindex="-1"
+            onmouseout={handleMouseoutTypeaheadOptions}>
+            <template if:true={typeaheadNoResults}>
+                <li class="typeahead-option no-results">{typeaheadNoResults}</li>
+            </template>
+            <template for:each={formattedTypeaheadOptions} for:item="opt">
+                <li class="typeahead-option truncate-1"
+                    key={opt.key}
+                    role="option"
+                    id={opt.id}
+                    aria-selected={opt.selected}
+                    onclick={handleClickTypeaheadOption}
+                    onmouseover={handleMouseoverTypeaheadOption}
+                    data-value={opt.value}
+                    data-idx={opt.idx}
+                    value={opt.ariaValue}>
+                    <lightning-formatted-rich-text value={opt.label}></lightning-formatted-rich-text>
+                </li>
+            </template>
+        </ul>
+        <span id={ariaIds.description} style="display: none;">
+            {ariaTypeaheadInstructions}
+        </span>
+    </template>
+
+</template>

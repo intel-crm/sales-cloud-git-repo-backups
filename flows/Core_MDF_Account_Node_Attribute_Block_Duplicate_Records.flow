@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assigning_External_ID_to_a_variable</name>
+        <label>Assigning External ID to a variable</label>
+        <locationX>476</locationX>
+        <locationY>316</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Core_MDF_External_ID__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GeneratedExternalID</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_External_Id_Changed</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Error_message</name>
+        <label>Error message</label>
+        <locationX>339</locationX>
+        <locationY>767</locationY>
+        <customErrorMessages>
+            <errorMessage>GL Record already exists for the selected Account.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_Existing_records</name>
+        <label>Check Existing records</label>
+        <locationX>471</locationX>
+        <locationY>659</locationY>
+        <defaultConnector>
+            <targetReference>Update_External_Id</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Duplicate_External_Id_exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>existingRecordId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_message</targetReference>
+            </connector>
+            <label>Duplicate External Id exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_External_Id_Changed</name>
+        <label>Is External Id Changed</label>
+        <locationX>736</locationX>
+        <locationY>389</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Co_Marketing_Node_Attribute</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_External_ID__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_existing_attributes_by_external_Id</targetReference>
+            </connector>
+            <label>Co-Marketing Node Attribute</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>GeneratedExternalID</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.RecordTypeId}&amp;{!$Record.Core_MDF_Program_id__c}&amp;{!$Record.Core_MDF_Account_id__c}</expression>
+    </formulas>
+    <interviewLabel>Account Node Attribute Block Duplicate Records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Node Attribute Block Duplicate Records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_existing_attributes_by_external_Id</name>
+        <label>Get existing attributes by external Id</label>
+        <locationX>471</locationX>
+        <locationY>551</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Existing_records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_External_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Core_MDF_External_ID__c</elementReference>
+            </value>
+        </filters>
+        <object>Core_MDF_Account_Node_Attributes__c</object>
+        <outputAssignments>
+            <assignToReference>existingRecordId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_External_Id</name>
+        <label>Update External Id</label>
+        <locationX>603</locationX>
+        <locationY>767</locationY>
+        <inputAssignments>
+            <field>Core_MDF_External_ID__c</field>
+            <value>
+                <elementReference>GeneratedExternalID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Assigning_External_ID_to_a_variable</targetReference>
+        </connector>
+        <object>Core_MDF_Account_Node_Attributes__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>existingRecordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

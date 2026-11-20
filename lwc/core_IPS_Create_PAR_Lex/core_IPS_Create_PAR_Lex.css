@@ -1,0 +1,24 @@
+.headerColor{
+    background-color:#5875aa; 
+    height:50px;
+    color:white; 
+    font-size:1.5rem;
+    font-weight: bold;
+}
+.datatableHeight{
+    height: 15rem;
+}
+.bodyColor{
+    background-color: white;
+}
+.slds-accordion{
+	--slds-c-accordion-color-border:#1a315b;
+	--slds-c-accordion-heading-text-color:white;
+	--slds-c-accordion-heading-text-color-hover:white;
+	--slds-c-accordion-summary-color-background:#4c6ca4;
+    --slds-c-accordion-summary-hover-color:white;
+	--slds-c-accordion-heading-font-size:17px;
+	--slds-c-accordion-section-spacing-block-start:2px;
+	--slds-c-accordion-section-spacing-block-end:2px;
+    width:100%;
+}

@@ -1,0 +1,118 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:true={showSelect}>
+        <lightning-card >
+            <lightning-layout>
+                    <template lwc:if={showStandardSelection}>
+                        <lightning-layout-item class="slds-m-top_large">
+                            <select class="slds-select" onchange={selectionChangeHandler}>
+                                <template for:each={options} for:item="option">
+                                    <option key={option.Id} class="uiInputSelectOption" value={option.Id}>{option.PicklistValue}</option>
+                                </template>
+                            </select>
+                        </lightning-layout-item>
+                    </template>
+                    <template lwc:else>
+                        <lightning-layout-item class="slds-card slds-m-top_xx-small">
+                            <span class="slds-card slds-p-around_medium">
+                                <span class="slds-form-element">
+                                    <span class="slds-form-element__control">
+                                        <lightning-input type="search" onfocus={showPicklistOptions}
+                                            onchange={search} value={selectedValue}>
+                                        </lightning-input>
+                                        <span if:true={searchResults} class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                            role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <template for:each={searchResults} for:item="option">
+                                                    <li key={option.PicklistValue} data-value={option.PicklistValue} role="presentation"
+                                                        onclick={selectSearchResult} class="slds-listbox__item">
+                                                        <span class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small "
+                                                            role="option">
+                                                            <span class="slds-media__body">
+                                                                <span class="slds-truncate" title={option.PicklistValue}>
+                                                                    {option.PicklistValue}
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>
+                    </lightning-layout-item>
+                    </template>
+                    
+                
+                <lightning-layout-item class="slds-m-top_large slds-m-left_medium">
+                    <template lwc:if={showStandardSelection}>
+                        <lightning-button
+                        class="slds-m-top_small"
+                        variant="brand"
+                        type="submit"
+                        name="Switch to Search"
+                        label="Switch to Search"
+                        onclick={switchToSearch}></lightning-button>
+                    </template>
+                    <template lwc:else>
+                        <lightning-button
+                        class="slds-m-top_small"
+                        variant="brand"
+                        type="submit"
+                        name="Back to picklist selection"
+                        label="Back to picklist selection"
+                        onclick={switchToStd}></lightning-button>
+                    </template>
+                
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-m-top_large slds-m-left_medium">
+                        <lightning-button
+                            class="slds-m-top_small"
+                            variant="brand"
+                            type="submit"
+                            name="Update All Related Records"
+                            label="Update All Related Records"
+                            onclick={showAllChildrenMethod}></lightning-button>
+            </lightning-layout-item>
+            </lightning-layout>
+            <br />
+            <b>Total related records:</b> {options.length}
+            <br /><br />
+        </lightning-card>
+    </template>
+    <template if:true={showRecord}>
+        <lightning-card title={labl} variant="base" icon-name={iconName}>
+            <lightning-record-form
+                record-id={relatedRecordId}
+                record-type-id={relatedRTId}
+                object-api-name={relatedObjectApiName}
+                layout-type={selectedLayoutType}
+                mode={mode}
+                columns="2"
+                fields={fieldsArray}
+                onsuccess={handleSuccess}>
+        </lightning-record-form>
+        </lightning-card>
+    </template>
+    <template if:true={error}>Please re-check the design parameters in the builder</template>
+    <template if:true={noChild}>No related records found</template>
+   <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <template if:true={showAllChildren}>
+            <lightning-card>
+                <c-dynamic-custom-data-table records={relatedRcs} field-set={fieldSet} related-object-api-name={relatedObjectApiName} onrecordssaved={refreshRecords} records-changed={recordsChanged} page-size={pageSize}></c-dynamic-custom-data-table>
+            </lightning-card>
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <lightning-button
+                                variant="brand"
+                                type="submit"
+                                name="Back"
+                                label="Back"
+                                onclick={hideAllChildrenMethod}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+</template>

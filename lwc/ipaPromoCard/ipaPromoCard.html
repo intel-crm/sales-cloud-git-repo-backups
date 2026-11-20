@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <div class="promo-card-container" data-display-type={displayType}>
+            <div class="promo-card-image" data-display-type={displayType}>
+                <img src={promo.image} alt="Campaign Image" onload={handleImageLoaded}/>
+            </div>
+            <div class="promo-card-body">
+                <c-ipa-link class-name="h4 color-blue"
+                    label={promo.title}
+                    aria-label={promo.ariaLabel}
+                    external-url={promo.linkExternalUrl}
+                    record-id={promo.linkRecordId}
+                    object-page={promo.linkObjectPage}
+                    community-page={promo.linkCommunityPage}
+                    hide-icon>
+                </c-ipa-link>
+                <p class="promo-card-body-description">
+                    <lightning-formatted-rich-text value={promo.description}></lightning-formatted-rich-text>
+                </p>
+                <template if:false={hideLearnMoreLink}>
+                    <div class="promo-card-cta">
+                        <c-ipa-link class-name={learnMoreLinkClasses}
+                            label={learnMoreLinkLabel}
+                            aria-label={promo.ariaLabel}
+                            external-url={promo.linkExternalUrl}
+                            record-id={promo.linkRecordId}
+                            object-page={promo.linkObjectPage}
+                            community-page={promo.linkCommunityPage}>
+                        </c-ipa-link>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

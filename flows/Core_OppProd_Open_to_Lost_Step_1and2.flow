@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Status_of_Product</name>
+        <label>Check Status of Product</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Assigning_PW_and_Unit_Price_as_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Checking_Status_of_Product</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lost_Price_Salesprice</targetReference>
+            </connector>
+            <label>Checking Status of Product</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_OppProd_Open_to_Lost_Step_2</name>
+        <label>Core_OppProd_Open_to_Lost_Step_2</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_if_SalesLostPrice_is_updated</name>
+            <conditionLogic>(1 AND 2 ) OR  3 OR 4</conditionLogic>
+            <conditions>
+                <leftValueReference>f_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lost_Sales_Price__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Lost_Sales_Price__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_PW_Lost_Price__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Status_of_Product</targetReference>
+            </connector>
+            <label>Check if SalesLostPrice is updated</label>
+        </rules>
+    </decisions>
+    <description>for the followin Opp Prod Wfs 
+
+1.Core_OppProd_Open_to_Lost_Step_1
+2.Core_OppProd_Open_to_Lost_Step_2</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>f_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Core_OppProd_Open_to_Lost_Step_1and2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_OppProd_Open_to_LostOrPW_Step_1and2</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Assigning_PW_and_Unit_Price_as_0</name>
+        <label>Assigning PW and Unit Price as 0</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_PW_Sales_Price__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UnitPrice</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sets Lost Sales Price to Sales Price</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Core_OppProd_Open_to_Lost_Step_2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lost_Sales_Price__c</field>
+            <value>
+                <elementReference>$Record__Prior.UnitPrice</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Lost_Price__c</field>
+            <value>
+                <elementReference>$Record__Prior.Core_PW_Sales_Price__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lost_Price_Salesprice</name>
+        <label>Update Lost Price = Salesprice</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Core_PW_Sales_Price__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UnitPrice</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>IF(ISNEW() = True, OR( ISPICKVAL({!$Record.Core_Status__c}, &quot;Lost&quot;), ISPICKVAL({!$Record.Core_Status__c}, &quot;Cancelled&quot;), ISPICKVAL({!$Record.Core_Status__c}, &quot;Deleted&quot;),ISPICKVAL({!$Record.Core_Status__c}, &quot;Production Lost&quot;),ISPICKVAL({!$Record.Core_Status__c}, &quot;Production Cancelled&quot;)),  AND( ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Lost&quot;) = False,  ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Cancelled&quot;) = False,  ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Deleted&quot;) = False,ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Production Lost&quot;) = False,ISPICKVAL(PRIORVALUE ({!$Record.Core_Status__c}),  &quot;Production Cancelled&quot;) = False,  OR( ISPICKVAL({!$Record.Core_Status__c}, &quot;Lost&quot;), ISPICKVAL({!$Record.Core_Status__c}, &quot;Cancelled&quot;), ISPICKVAL({!$Record.Core_Status__c}, &quot;Deleted&quot;),ISPICKVAL({!$Record.Core_Status__c}, &quot;Production Lost&quot;),ISPICKVAL({!$Record.Core_Status__c}, &quot;Production Cancelled&quot;))))</filterFormula>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

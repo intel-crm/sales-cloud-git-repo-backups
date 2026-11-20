@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessMappings>
+        <accessLevel>Read</accessLevel>
+        <object>Pricing_UnifiedEndCustomerAccountMapping__c</object>
+        <objectField>Pricing_Account_Nm__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <description>Pricing End Customers Sharing</description>
+    <name>Unified End Customer Account Sharing</name>
+</SharingSet>

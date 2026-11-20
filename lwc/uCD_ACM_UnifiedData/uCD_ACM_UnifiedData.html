@@ -1,0 +1,286 @@
+<template>
+    <template if:true={isDisplayPage}>
+        <lightning-card>
+            <div class=" slds-theme--shade" style="padding: 5px;">
+                <div class="slds-text-heading_small">
+                    <b>Account Record Unified Customer Data</b>
+                </div>
+            </div>
+            <lightning-layout multiple-rows="true">
+                <!-- 1st Row -->
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;"  size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                   <!-- <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Simplified Account Name *English Only" value={MasterAccountName} read-only="true"></lightning-input>-->
+                   <div class="slds-form-element slds-form-element_readonly">
+                        <label class="slds-form-element__label">Simplified Account Name *English Only</label>
+                        <div class="slds-form-element__control">
+                            <label class="test-id__field-value slds-form-element__static slds-grow word-break-ie11 is-read-only">{MasterAccountName}
+                            </label>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                   <!-- <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Simplified Local Language Name" value={localName} readonly="true"></lightning-input>-->
+                   <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Simplified Local Language Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{localName}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+
+                <!-- 2nd row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <!--  <lightning-input  class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Hierarchy" value={unifiedHierarchy} readonly="true" ></lightning-input>-->
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Unified Hierarchy</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{unifiedHierarchy}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Customer Type" value={customerAggType} readonly="true"></lightning-input>-->
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Unified Customer Type</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{customerAggType}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+
+                <!-- 3rd row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                    <!-- <lightning-input  class = "slds-form-element slds-form-element_readonly" type="text" label="Unified ID" value={bpId} readonly="true" ></lightning-input>-->
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Unified ID</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{bpId}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Country Name" value={countryName} readonly="true"></lightning-input>-->
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Country/Region Name</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{countryName}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+
+                <!-- 4th row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                    <!-- <lightning-input  class = "slds-form-element slds-form-element_readonly" type="text" label="Unified ID" value={bpId} readonly="true" ></lightning-input>-->
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Unified Customer URL</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{unifiedWebsite}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Country Name" value={countryName} readonly="true"></lightning-input>-->
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Requested Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{requestedName} </div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+
+                <!-- 5th Row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <!--  <lightning-input type="text" label="Customer Process Engagement" value={cpe} readonly="true"></lightning-input> -->
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Customer Process Engagement</span>
+                        <div class="slds-form-element__control">
+                            <label class="slds-form-element__static">{cpe}
+                            </label>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                
+                <template if:false={isPeromScreeingFromCwlObj}>
+                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <span class="slds-form-element__label">Compliance Watch Lists</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{compliancewatchListLabels}
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+
+                <template if:true={isPeromScreeingFromCwlObj}>
+                    <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                    small-device-size="12">
+                        <div class="slds-form-element">
+                            <span class="slds-form-element__label">Compliance Watch List</span>
+                            <div class="slds-form-element__control slds-border_bottom">
+                            <div class="slds-form-element__static">
+                                <div>{cwl}</div>
+                            </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+
+
+            </lightning-layout>
+
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            <div class=" slds-theme--shade" style="padding: 5px;">
+                <div class="slds-text-heading_small">
+                    <b>Associated Unified Customer Hierarchy</b>
+                </div>
+            </div>
+
+            <lightning-layout multiple-rows="true">
+                <!-- 6th Row -->
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Global ID" value={unifiedGlobalId1} readonly="true"></lightning-input>-->
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Unified Global ID</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{unifiedGlobalId1}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Unified Intermediate Level1 ID</span>
+                      <div class="slds-form-element__control">
+                          <div class="slds-form-element__static">{unifiedInterId2}
+                          </div>
+                      </div>
+                 </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                   <!-- <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Intermediate ID" value={unifiedInterId2} readonly="true" ></lightning-input>-->
+                   <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Global Name" value={unifiedGlobalName} readonly="true"></lightning-input>-->
+                   <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Unified Global Name</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{unifiedGlobalName}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+            
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                    <!--<lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="Unified Intermediate Name" value={unifiedInterName2} readonly="true" ></lightning-input>-->
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Unified Intermediate Level1 Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{unifiedInterName2}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+
+
+                
+                <!--
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">-->
+                  <!--  <lightning-input class = "slds-form-element slds-form-element_readonly" type="text" label="CRM Global Customer Name" value={unifiedGlobal} readonly="true"></lightning-input>-->
+                   <!-- <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">CRM Global Customer Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{unifiedGlobal}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>-->
+             <!--   <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12"> -->
+                  <!--  <lightning-input type="text" label="CRM Intermediate Customer Name" value={unifiedInter} readonly="true" ></lightning-input>-->
+                  <!--  <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">CRM Intermediate Customer Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{unifiedInter}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+            -->
+                
+             
+                    
+                <!--8th row-->
+              <!--  <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12"> -->
+                   <!-- <lightning-input type="text" label="CRM Intermediate Child Customer Name" value={unifiedInter2} readonly="true"></lightning-input>-->
+                  <!--   <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">CRM Intermediate Child Customer Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{unifiedInter2}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item> -->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                </lightning-layout-item>
+
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12"> 
+                   <!-- <lightning-input type="text" label="CRM Intermediate Child Customer Name" value={unifiedInter2} readonly="true"></lightning-input>-->
+                   <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Unified Intermediate Level2 ID</span>
+                        <div class="slds-form-element__control">
+                            <label class="slds-form-element__static">{unifiedInterLevel2Id}
+                            </label>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                  
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                </lightning-layout-item>
+                
+                 <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12"> 
+                   <!-- <lightning-input type="text" label="CRM Intermediate Child Customer Name" value={unifiedInter2} readonly="true"></lightning-input>-->
+                   <div class="slds-form-element slds-form-element_readonly">
+                 <!--         <span class="slds-form-element__label">CRM Intermediate Child Customer Name</span> -->
+                 <span class="slds-form-element__label">Unified Intermediate Level2 Name</span>
+                        <div class="slds-form-element__control">
+                            <label class="slds-form-element__static">{unifiedInter2}
+                            </label>
+                        </div>
+                   </div>
+                </lightning-layout-item> 
+
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                    <!--<lightning-input type="text" label="CRM Country Customer Name" value={unifiedCountry} disabled></lightning-input>-->
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+    </template> 
+</template>

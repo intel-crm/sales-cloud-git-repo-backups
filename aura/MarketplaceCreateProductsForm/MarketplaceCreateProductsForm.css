@@ -1,0 +1,92 @@
+/* IPA2.0 + US TWC4497-1631 */
+/* .THIS {
+  min-height: 300px;
+}
+
+.THIS .bgWhite {
+  background-color: t(white);
+}
+
+.THIS form {
+  background-color: t(white);
+}
+
+.THIS form.formLoading {
+  filter: blur(3px);
+}
+
+.THIS button[disabled],
+.THIS.invalid .slds-path__item.slds-is-current ~ .slds-path__item,
+.THIS.invalid .slds-path__item.slds-is-current ~ .slds-path__item a,
+.THIS .slds-path__item.slds-is-incomplete ~ .slds-path__item.slds-is-incomplete,
+.THIS .slds-path__item.slds-is-incomplete ~ .slds-path__item.slds-is-incomplete a {
+  cursor: not-allowed;
+}
+
+.THIS label.slds-form-element__label {
+  font-size: 1em;
+}
+
+.THIS .mainSpinner .slds-spinner {
+  top: 15em;
+}
+
+.THIS .show-next-page-message{
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.THIS .changesSaved {
+  color: t(blue);
+  font-size: 0.9em;
+}
+.THIS .changesSaved .slds-icon {
+  height: 0.9em;
+  width: 0.9em;
+}
+.THIS .changesSaved .slds-icon use {
+  fill: t(blue);
+}
+
+.THIS .textGray {
+  color: t(gray);
+}
+
+.THIS .error-link {
+  text-decoration: underline;
+}
+
+.THIS .error-container p {
+  font-weight: bold;
+}
+
+.THIS .error-container a {
+  color: t(redError);
+}
+
+@media (max-width: 767px) {
+  .THIS .mobileFloatRight {
+    float: right;
+  }
+  .THIS .mobileAlignRight {
+    text-align: right;
+  }
+}
+
+@media (min-width: 768px) {
+  .THIS .desktopFloatRight {
+    float: right;
+  }
+  .THIS .desktopAlignRight {
+    text-align: right;
+  }
+}
+
+
+ @media only screen and (min-width:600px) {
+         .THIS .hide-on-desktop {
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+            }
+        } */

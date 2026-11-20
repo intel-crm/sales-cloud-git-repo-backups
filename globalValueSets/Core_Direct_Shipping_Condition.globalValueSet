@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>1Q</fullName>
+        <default>false</default>
+        <label>3PC DTD</label>
+    </customValue>
+    <customValue>
+        <fullName>1P</fullName>
+        <default>false</default>
+        <label>3PC DTP</label>
+    </customValue>
+    <customValue>
+        <fullName>6R</fullName>
+        <default>false</default>
+        <label>OriginBasedIMF &amp; CRF</label>
+    </customValue>
+    <customValue>
+        <fullName>3C</fullName>
+        <default>false</default>
+        <label>APAC Spcl Project</label>
+    </customValue>
+    <customValue>
+        <fullName>6C</fullName>
+        <default>false</default>
+        <label>Apple - Hon Hai</label>
+    </customValue>
+    <customValue>
+        <fullName>1Z</fullName>
+        <default>false</default>
+        <label>BCP Shipping Cndn</label>
+    </customValue>
+    <customValue>
+        <fullName>Y4</fullName>
+        <default>false</default>
+        <label>Capital Air</label>
+    </customValue>
+    <customValue>
+        <fullName>Y7</fullName>
+        <default>false</default>
+        <label>Capital Ocean</label>
+    </customValue>
+    <customValue>
+        <fullName>Y5</fullName>
+        <default>false</default>
+        <label>Capital Rail</label>
+    </customValue>
+    <customValue>
+        <fullName>Y6</fullName>
+        <default>false</default>
+        <label>Capital Truck</label>
+    </customValue>
+    <customValue>
+        <fullName>6B</fullName>
+        <default>false</default>
+        <label>Channel IMF via LX</label>
+    </customValue>
+    <customValue>
+        <fullName>3A</fullName>
+        <default>false</default>
+        <label>CL X Trk &amp; DomAir</label>
+    </customValue>
+    <customValue>
+        <fullName>3B</fullName>
+        <default>false</default>
+        <label>CN X-Trk &amp; DomTrk</label>
+    </customValue>
+    <customValue>
+        <fullName>5A</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF</label>
+    </customValue>
+    <customValue>
+        <fullName>5B</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF 1Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5C</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF 2Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5D</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF 3Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5E</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF 4Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5F</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF 5Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5G</fullName>
+        <default>false</default>
+        <label>CRF 6 day TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>5H</fullName>
+        <default>false</default>
+        <label>CRF 7 day TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>5J</fullName>
+        <default>false</default>
+        <label>CRF 8 day TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>5K</fullName>
+        <default>false</default>
+        <label>Hybrid IMF/CRF 9Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5M</fullName>
+        <default>false</default>
+        <label>CRF direct</label>
+    </customValue>
+    <customValue>
+        <fullName>4C</fullName>
+        <default>false</default>
+        <label>CRF Ocean</label>
+    </customValue>
+    <customValue>
+        <fullName>6E</fullName>
+        <default>false</default>
+        <label>Customer Programs</label>
+    </customValue>
+    <customValue>
+        <fullName>6J</fullName>
+        <default>false</default>
+        <label>D/EPSD BRDS DDU</label>
+    </customValue>
+    <customValue>
+        <fullName>2N</fullName>
+        <default>false</default>
+        <label>Delivery before Noon</label>
+    </customValue>
+    <customValue>
+        <fullName>6Y</fullName>
+        <default>false</default>
+        <label>DELL NB C/O HK</label>
+    </customValue>
+    <customValue>
+        <fullName>3D</fullName>
+        <default>false</default>
+        <label>Disti IMF Billbck</label>
+    </customValue>
+    <customValue>
+        <fullName>5N</fullName>
+        <default>false</default>
+        <label>DMF 2.0</label>
+    </customValue>
+    <customValue>
+        <fullName>0</fullName>
+        <default>false</default>
+        <label>DO NOT SHIP!</label>
+    </customValue>
+    <customValue>
+        <fullName>1M</fullName>
+        <default>false</default>
+        <label>DTA Addl TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>1K</fullName>
+        <default>false</default>
+        <label>DTP DS w inv swap</label>
+    </customValue>
+    <customValue>
+        <fullName>6N</fullName>
+        <default>false</default>
+        <label>DTD(Arr/Pion/GW)</label>
+    </customValue>
+    <customValue>
+        <fullName>1N</fullName>
+        <default>false</default>
+        <label>Std DTD Addl TPT 3</label>
+    </customValue>
+    <customValue>
+        <fullName>1R</fullName>
+        <default>false</default>
+        <label>DTD-Customer Broker</label>
+    </customValue>
+    <customValue>
+        <fullName>3J</fullName>
+        <default>false</default>
+        <label>DTD D/S CDDSW</label>
+    </customValue>
+    <customValue>
+        <fullName>1J</fullName>
+        <default>false</default>
+        <label>DTD DS w inv swap</label>
+    </customValue>
+    <customValue>
+        <fullName>6W</fullName>
+        <default>false</default>
+        <label>DTD srv for SHBLP</label>
+    </customValue>
+    <customValue>
+        <fullName>3G</fullName>
+        <default>false</default>
+        <label>DTD via CDDSW</label>
+    </customValue>
+    <customValue>
+        <fullName>1T</fullName>
+        <default>false</default>
+        <label>DTD via ET +1 day</label>
+    </customValue>
+    <customValue>
+        <fullName>3E</fullName>
+        <default>false</default>
+        <label>Economy DTD via XD</label>
+    </customValue>
+    <customValue>
+        <fullName>3K</fullName>
+        <default>false</default>
+        <label>DTP D/S CDDSW</label>
+    </customValue>
+    <customValue>
+        <fullName>6X</fullName>
+        <default>false</default>
+        <label>DTP srvc for SHFTZ</label>
+    </customValue>
+    <customValue>
+        <fullName>3H</fullName>
+        <default>false</default>
+        <label>DTP via CDDSW</label>
+    </customValue>
+    <customValue>
+        <fullName>3F</fullName>
+        <default>false</default>
+        <label>DTP via XD</label>
+    </customValue>
+    <customValue>
+        <fullName>Y2</fullName>
+        <default>false</default>
+        <label>Economy 1-8 days</label>
+    </customValue>
+    <customValue>
+        <fullName>3W</fullName>
+        <default>false</default>
+        <label>Economy WT</label>
+    </customValue>
+    <customValue>
+        <fullName>3</fullName>
+        <default>false</default>
+        <label>EMERY EXP - C</label>
+    </customValue>
+    <customValue>
+        <fullName>2A</fullName>
+        <default>false</default>
+        <label>Express DTD IMF</label>
+    </customValue>
+    <customValue>
+        <fullName>2E</fullName>
+        <default>false</default>
+        <label>Exp DTD BLP</label>
+    </customValue>
+    <customValue>
+        <fullName>2B</fullName>
+        <default>false</default>
+        <label>Express DTP IMF</label>
+    </customValue>
+    <customValue>
+        <fullName>2F</fullName>
+        <default>false</default>
+        <label>Exp DTP BLP</label>
+    </customValue>
+    <customValue>
+        <fullName>Y1</fullName>
+        <default>false</default>
+        <label>Expedite 1-3days</label>
+    </customValue>
+    <customValue>
+        <fullName>2W</fullName>
+        <default>false</default>
+        <label>Express WT IMF</label>
+    </customValue>
+    <customValue>
+        <fullName>4A</fullName>
+        <default>false</default>
+        <label>virtual shipping</label>
+    </customValue>
+    <customValue>
+        <fullName>4B</fullName>
+        <default>false</default>
+        <label>Fax A-Lot Ocean</label>
+    </customValue>
+    <customValue>
+        <fullName>6V</fullName>
+        <default>false</default>
+        <label>Frys</label>
+    </customValue>
+    <customValue>
+        <fullName>6H</fullName>
+        <default>false</default>
+        <label>HP Consignment</label>
+    </customValue>
+    <customValue>
+        <fullName>1G</fullName>
+        <default>false</default>
+        <label>JP DS DTD ppr swp</label>
+    </customValue>
+    <customValue>
+        <fullName>6T</fullName>
+        <default>false</default>
+        <label>Latin Am via MI XD</label>
+    </customValue>
+    <customValue>
+        <fullName>6K</fullName>
+        <default>false</default>
+        <label>LG Consignment</label>
+    </customValue>
+    <customValue>
+        <fullName>6M</fullName>
+        <default>false</default>
+        <label>Motorola Consgnmt</label>
+    </customValue>
+    <customValue>
+        <fullName>6G</fullName>
+        <default>false</default>
+        <label>Nokia Consignment</label>
+    </customValue>
+    <customValue>
+        <fullName>Y3</fullName>
+        <default>false</default>
+        <label>Ocean</label>
+    </customValue>
+    <customValue>
+        <fullName>4W</fullName>
+        <default>false</default>
+        <label>Ocean WH Transfer</label>
+    </customValue>
+    <customValue>
+        <fullName>5L</fullName>
+        <default>false</default>
+        <label>Orgn Based FlxTPT</label>
+    </customValue>
+    <customValue>
+        <fullName>62</fullName>
+        <default>false</default>
+        <label>RU via CH add TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>61</fullName>
+        <default>false</default>
+        <label>RU via FI Add TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>6P</fullName>
+        <default>false</default>
+        <label>SEMC Consignment</label>
+    </customValue>
+    <customValue>
+        <fullName>6A</fullName>
+        <default>false</default>
+        <label>Ship to Rus via AT</label>
+    </customValue>
+    <customValue>
+        <fullName>6S</fullName>
+        <default>false</default>
+        <label>Ship to CH</label>
+    </customValue>
+    <customValue>
+        <fullName>6F</fullName>
+        <default>false</default>
+        <label>Ship to RUS via FI</label>
+    </customValue>
+    <customValue>
+        <fullName>6L</fullName>
+        <default>false</default>
+        <label>Ship to Rus via LT</label>
+    </customValue>
+    <customValue>
+        <fullName>6D</fullName>
+        <default>false</default>
+        <label>Ship to RUS via DE</label>
+    </customValue>
+    <customValue>
+        <fullName>6U</fullName>
+        <default>false</default>
+        <label>Ship to UAE</label>
+    </customValue>
+    <customValue>
+        <fullName>4S</fullName>
+        <default>false</default>
+        <label>Software &amp; Services</label>
+    </customValue>
+    <customValue>
+        <fullName>63</fullName>
+        <default>false</default>
+        <label>Sold To</label>
+    </customValue>
+    <customValue>
+        <fullName>Y0</fullName>
+        <default>false</default>
+        <label>Standard 1-7days</label>
+    </customValue>
+    <customValue>
+        <fullName>4</fullName>
+        <default>false</default>
+        <label>STANDARD AIR</label>
+    </customValue>
+    <customValue>
+        <fullName>6</fullName>
+        <default>false</default>
+        <label>STANDARD AIR-EXP</label>
+    </customValue>
+    <customValue>
+        <fullName>1D</fullName>
+        <default>false</default>
+        <label>Std DTD Drop Ships</label>
+    </customValue>
+    <customValue>
+        <fullName>1E</fullName>
+        <default>false</default>
+        <label>Std DTDExt TPT 1</label>
+    </customValue>
+    <customValue>
+        <fullName>1F</fullName>
+        <default>false</default>
+        <label>Std DTDExt TPT 2</label>
+    </customValue>
+    <customValue>
+        <fullName>1L</fullName>
+        <default>false</default>
+        <label>Std DTP Addl TPT 1</label>
+    </customValue>
+    <customValue>
+        <fullName>3L</fullName>
+        <default>false</default>
+        <label>SZX BLC</label>
+    </customValue>
+    <customValue>
+        <fullName>1</fullName>
+        <default>false</default>
+        <label>UPS BLUE - C</label>
+    </customValue>
+    <customValue>
+        <fullName>2</fullName>
+        <default>false</default>
+        <label>UPS BROWN - C</label>
+    </customValue>
+    <customValue>
+        <fullName>1W</fullName>
+        <default>false</default>
+        <label>Warehse Xfers</label>
+    </customValue>
+    <customValue>
+        <fullName>5</fullName>
+        <default>false</default>
+        <label>WILL CALL</label>
+    </customValue>
+    <customValue>
+        <fullName>2C</fullName>
+        <default>false</default>
+        <label>Xp DS DTD inv swp</label>
+    </customValue>
+    <customValue>
+        <fullName>2D</fullName>
+        <default>false</default>
+        <label>Xp DS DTP inv swp</label>
+    </customValue>
+    <customValue>
+        <fullName>U00 UPS GROUND</fullName>
+        <default>false</default>
+        <label>U00 UPS GROUND</label>
+    </customValue>
+    <customValue>
+        <fullName>U01 UPS WORLDWIDE EXPRESS</fullName>
+        <default>false</default>
+        <label>U01 UPS WORLDWIDE EXPRESS</label>
+    </customValue>
+    <customValue>
+        <fullName>U02 UPS 2 DAY AIR</fullName>
+        <default>false</default>
+        <label>U02 UPS 2 DAY AIR</label>
+    </customValue>
+    <customValue>
+        <fullName>U03 UPS NEXT DAY AIR</fullName>
+        <default>false</default>
+        <label>U03 UPS NEXT DAY AIR</label>
+    </customValue>
+    <customValue>
+        <fullName>A00 DHL-DANZAS</fullName>
+        <default>false</default>
+        <label>A00 DHL-DANZAS</label>
+    </customValue>
+    <customValue>
+        <fullName>H26 HCT TRANSPORTATION</fullName>
+        <default>false</default>
+        <label>H26 HCT TRANSPORTATION</label>
+    </customValue>
+    <customValue>
+        <fullName>H00 HAND CARRY</fullName>
+        <default>false</default>
+        <label>H00 HAND CARRY</label>
+    </customValue>
+    <customValue>
+        <fullName>K20 KWE</fullName>
+        <default>false</default>
+        <label>K20 KWE</label>
+    </customValue>
+    <customValue>
+        <fullName>K10 KAMINO INTERNATIONAL</fullName>
+        <default>false</default>
+        <label>K10 KAMINO INTERNATIONAL</label>
+    </customValue>
+    <customValue>
+        <fullName>U10 U-FREIGHT</fullName>
+        <default>false</default>
+        <label>U10 U-FREIGHT</label>
+    </customValue>
+    <customValue>
+        <fullName>U16 U-FREIGHT TAIWAN</fullName>
+        <default>false</default>
+        <label>U16 U-FREIGHT TAIWAN</label>
+    </customValue>
+    <customValue>
+        <fullName>Y07 YUSEN AIR &amp; SEA SERVICE CO LTD</fullName>
+        <default>false</default>
+        <label>Y07 YUSEN AIR &amp; SEA SERVICE CO</label>
+    </customValue>
+    <customValue>
+        <fullName>U08 UPS WORLDWIDE SAVER</fullName>
+        <default>false</default>
+        <label>U08 UPS WORLDWIDE SAVER</label>
+    </customValue>
+    <customValue>
+        <fullName>U07 UPS SUPPLY CHAIN SOLUTIONS</fullName>
+        <default>false</default>
+        <label>U07 UPS SUPPLY CHAIN SOLUTIONS</label>
+    </customValue>
+    <customValue>
+        <fullName>T36 TISCO CUSTOMS SERVICE CO LTD</fullName>
+        <default>false</default>
+        <label>T36 TISCO CUSTOMS SERVICE CO L</label>
+    </customValue>
+    <customValue>
+        <fullName>99</fullName>
+        <default>false</default>
+        <label>99-DO NOT USE</label>
+    </customValue>
+    <customValue>
+        <fullName>70</fullName>
+        <default>false</default>
+        <label>PSG - CRF 0 Day</label>
+    </customValue>
+    <customValue>
+        <fullName>5O</fullName>
+        <default>false</default>
+        <label>Direct CRF No TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>6Z</fullName>
+        <default>false</default>
+        <label>IMF/CRF Flex</label>
+    </customValue>
+    <customValue>
+        <fullName>6Q</fullName>
+        <default>false</default>
+        <label>Local Hero DTD</label>
+    </customValue>
+    <customValue>
+        <fullName>F00 FEDEX STANDARD OVERNIGHT</fullName>
+        <default>false</default>
+        <label>F00 FEDEX STANDARD OVERNIGHT</label>
+    </customValue>
+    <customValue>
+        <fullName>S50 SECURITY EXPRESS</fullName>
+        <default>false</default>
+        <label>S50 SECURITY EXPRESS</label>
+    </customValue>
+    <customValue>
+        <fullName>1S</fullName>
+        <default>false</default>
+        <label>Sample Shipments</label>
+    </customValue>
+    <customValue>
+        <fullName>F02 FEDEX EXPRESS SAVER</fullName>
+        <default>false</default>
+        <label>F02 FEDEX EXPRESS SAVER</label>
+    </customValue>
+    <customValue>
+        <fullName>D00 DHL AIR</fullName>
+        <default>false</default>
+        <label>D00 DHL AIR</label>
+    </customValue>
+    <customValue>
+        <fullName>64</fullName>
+        <default>false</default>
+        <label>Intel paid (PSG)</label>
+    </customValue>
+    <customValue>
+        <fullName>U05 UPS NEXT DAY AIR SAVER</fullName>
+        <default>false</default>
+        <label>U05 UPS NEXT DAY AIR SAVER</label>
+    </customValue>
+    <customValue>
+        <fullName>1A</fullName>
+        <default>false</default>
+        <label>Std DTD</label>
+    </customValue>
+    <customValue>
+        <fullName>D01 DHL GROUND</fullName>
+        <default>false</default>
+        <label>D01 DHL GROUND</label>
+    </customValue>
+    <customValue>
+        <fullName>1B</fullName>
+        <default>false</default>
+        <label>Std IMF DTP</label>
+    </customValue>
+    <customValue>
+        <fullName>2S</fullName>
+        <default>false</default>
+        <label>Samples Exp</label>
+    </customValue>
+    <customValue>
+        <fullName>1H</fullName>
+        <default>false</default>
+        <label>JP via X-Dock</label>
+    </customValue>
+    <customValue>
+        <fullName>3M</fullName>
+        <default>false</default>
+        <label>DTD from XD +1B TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>ZZZ DEFAULT FREIGHT METHOD</fullName>
+        <default>false</default>
+        <label>ZZZ DEFAULT FREIGHT METHOD</label>
+    </customValue>
+    <customValue>
+        <fullName>Y00 YELLOW FREIGHT</fullName>
+        <default>false</default>
+        <label>Y00 YELLOW FREIGHT</label>
+    </customValue>
+    <customValue>
+        <fullName>U06 UPS WORLDWIDE EXPEDITED</fullName>
+        <default>false</default>
+        <label>U06 UPS WORLDWIDE EXPEDITED</label>
+    </customValue>
+    <customValue>
+        <fullName>U04 UPS 3 DAY SELECT</fullName>
+        <default>false</default>
+        <label>U04 UPS 3 DAY SELECT</label>
+    </customValue>
+    <customValue>
+        <fullName>T70 TEAM AIRFREIGHT CORP</fullName>
+        <default>false</default>
+        <label>T70 TEAM AIRFREIGHT CORP</label>
+    </customValue>
+    <customValue>
+        <fullName>T25 TRUCK</fullName>
+        <default>false</default>
+        <label>T25 TRUCK</label>
+    </customValue>
+    <customValue>
+        <fullName>SCHENKER</fullName>
+        <default>false</default>
+        <label>SCHENKER</label>
+    </customValue>
+    <customValue>
+        <fullName>M30 MARINE-LAND-AIR TRANSPORTATION</fullName>
+        <default>false</default>
+        <label>M30 MARINE-LAND-AIR TRANSPORTA</label>
+    </customValue>
+    <customValue>
+        <fullName>K00 KINTETSU</fullName>
+        <default>false</default>
+        <label>K00 KINTETSU</label>
+    </customValue>
+    <customValue>
+        <fullName>G15 GREAT WORLD EXPRESS</fullName>
+        <default>false</default>
+        <label>G15 GREAT WORLD EXPRESS</label>
+    </customValue>
+    <customValue>
+        <fullName>FEDEX INTERNATIONAL ECONOMY</fullName>
+        <default>false</default>
+        <label>FEDEX INTERNATIONAL ECONOMY</label>
+    </customValue>
+    <customValue>
+        <fullName>F06 FEDEX INT&apos;L PRIORITY</fullName>
+        <default>false</default>
+        <label>F06 FEDEX INT&apos;L PRIORITY</label>
+    </customValue>
+    <customValue>
+        <fullName>F05 FEDEX GROUND U.S</fullName>
+        <default>false</default>
+        <label>F05 FEDEX GROUND U.S</label>
+    </customValue>
+    <customValue>
+        <fullName>F04 FEDEX 2DAY</fullName>
+        <default>false</default>
+        <label>F04 FEDEX 2DAY</label>
+    </customValue>
+    <customValue>
+        <fullName>F01 FEDEX PRIORITY OVERNIGHT</fullName>
+        <default>false</default>
+        <label>F01 FEDEX PRIORITY OVERNIGHT</label>
+    </customValue>
+    <customValue>
+        <fullName>D20 DIMERCO EXPRESS</fullName>
+        <default>false</default>
+        <label>D20 DIMERCO EXPRESS</label>
+    </customValue>
+    <customValue>
+        <fullName>D04 DACHAIN INTL EXP</fullName>
+        <default>false</default>
+        <label>D04 DACHAIN INTL EXP</label>
+    </customValue>
+    <customValue>
+        <fullName>A56 AIR &amp; GROUND WORLD TRANSPORT</fullName>
+        <default>false</default>
+        <label>A56 AIR &amp; GROUND WORLD TRANSPO</label>
+    </customValue>
+    <customValue>
+        <fullName>A25 AIR PARCEL POST</fullName>
+        <default>false</default>
+        <label>A25 AIR PARCEL POST</label>
+    </customValue>
+    <customValue>
+        <fullName>A15 AIR CARGO</fullName>
+        <default>false</default>
+        <label>A15 AIR CARGO</label>
+    </customValue>
+    <customValue>
+        <fullName>A10 ACE CARGO EXP</fullName>
+        <default>false</default>
+        <label>A10 ACE CARGO EXP</label>
+    </customValue>
+    <customValue>
+        <fullName>1C</fullName>
+        <default>false</default>
+        <label>Std DTP Drop Ship</label>
+    </customValue>
+    <customValue>
+        <fullName>3U</fullName>
+        <default>false</default>
+        <label>HKG U-turn 1</label>
+    </customValue>
+    <customValue>
+        <fullName>2U</fullName>
+        <default>false</default>
+        <label>Expr U Turn DTD</label>
+    </customValue>
+    <customValue>
+        <fullName>1U</fullName>
+        <default>false</default>
+        <label>HK U Turn DTD</label>
+    </customValue>
+    <customValue>
+        <fullName>1V</fullName>
+        <default>false</default>
+        <label>HK U Turn DTP</label>
+    </customValue>
+    <customValue>
+        <fullName>3V</fullName>
+        <default>false</default>
+        <label>HKG U-turn 2</label>
+    </customValue>
+    <customValue>
+        <fullName>5V</fullName>
+        <default>false</default>
+        <label>Hybrid US-Non US</label>
+    </customValue>
+    <customValue>
+        <fullName>7L</fullName>
+        <default>false</default>
+        <label>Origin based flx TPT</label>
+    </customValue>
+    <customValue>
+        <fullName>2Z</fullName>
+        <default>false</default>
+        <label>UK BCP</label>
+    </customValue>
+    <customValue>
+        <fullName>IA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>IA</label>
+    </customValue>
+    <masterLabel>Shipping Condition</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

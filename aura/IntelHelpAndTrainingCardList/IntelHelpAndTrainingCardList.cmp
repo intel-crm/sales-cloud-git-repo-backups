@@ -1,0 +1,27 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+<aura:attribute name="title" type="string" />
+<aura:attribute name="subtitle" type="string" />
+<aura:attribute name="CTA" type="string" />
+<aura:attribute name="CTAUrl" type="string" />
+<aura:attribute name="viewAll" type="boolean" />
+<aura:attribute name="listing" type="Object[]" default="[]" />
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<lightning:layout horizontalAlign="spread" multipleRows="true" class="slds-p-vertical_x-large padding-mobile-horizontal-medium list-card-parent">
+    <lightning:layoutItem size="12" mediumDeviceSize="9" class="list-card-parent-title">
+            <h4>{!v.title}</h4>
+    </lightning:layoutItem>
+    <aura:if isTrue="{! !empty(v.subtitle)}">
+        <lightning:layoutItem size="12" mediumDeviceSize="12" class="list-card-parent-subtitle">
+                <p class="slds-p-top_x-small">{!v.subtitle}</p>
+        </lightning:layoutItem>
+    </aura:if>
+    <c:MarketplaceSimpleCardList  data="{!v.listing}" viewAll="{!v.viewAll}"/>
+    <lightning:layoutItem size="12" mediumDeviceSize="3" class="list-card-parent-cta">
+        <aura:if isTrue="{!or(v.CTAUrl,v.CTA)}">
+            <a onclick="{!c.handleClick}" href="{!v.CTAUrl}">{!v.CTA} <lightning:icon iconName="utility:chevronright"
+            class="cursor icon-xx-small slds-m-left_xxx-small link-caret"
+            size="x-small"/></a>
+        </aura:if>
+    </lightning:layoutItem>
+</lightning:layout>
+</aura:component>

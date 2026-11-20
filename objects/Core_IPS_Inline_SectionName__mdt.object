@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Fields_Name__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Fields Name</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Core_IPS_Inline_SectionName</label>
+    <pluralLabel>Core_IPS_Inline_SectionNames</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,19 @@
+<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes"
+                controller="PMP_SearchProductController">
+
+    <aura:attribute name="storeName" type="string" default="CompareTray" />
+    <aura:attribute name="checked" type="boolean" default="false" />
+    <aura:attribute name="item" type="object" />
+    <aura:attribute name="checkedProductInfo" type="boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Select 'Add to Compare' on load Gireesh:US519754 -->
+    <aura:handler name="change" value="{!v.item}" action="{!c.handleItemChange}"/>
+    <label>
+        <input onchange="{!c.handleCheckCompare}" type="checkbox" name="compare" checked="{!v.checked}" />
+      <span class="check-box"></span>
+      {!$Label.c.PMP_Add_To_Compare}
+    </label>
+
+
+</aura:component>

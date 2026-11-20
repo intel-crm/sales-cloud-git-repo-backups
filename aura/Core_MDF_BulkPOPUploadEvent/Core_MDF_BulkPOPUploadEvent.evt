@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Core_MDF_BulkPOPUploadEvent">
+    <aura:attribute name="auditDocumentList" type="List"/>
+    <aura:attribute name="thirdPartyWrapper" type="Object"/>
+</aura:event>

@@ -1,0 +1,18 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Learn more details about Gen AI + Computer Vision for Surveillance Demo (",
+  "contentBody" : {
+    "description" : "The demo you just watched features video summarization with CV and RAG-LLM - now known as a language vision model (LVM).  This demo is running on an Intel® Xeon® Scalable server with an Intel® Datacenter GPU Flex 170. \n\nFind the following assets at this link:\n1. PPT outlining visual RAG (retrieval augmented generation)\n2. Sample code for a large vision model (Video-LLaVA)\n3. Detailed step-by-step instructions.",
+    "sections" : [ {
+      "content" : "<div><span style=\"font-size: 12px; font-family: &#34;Segoe UI&#34;, &#34;Segoe UI Web&#34;, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);\">https://github.com/PKU-YuanGroup/Video-LLaVA/tree/main</span></div>",
+      "keyConcept" : "Sample code for large vision model (Video-LLaVA)",
+      "sectionTime" : 1.0
+    }, {
+      "content" : "<div><span style=\"font-size: 12px; font-family: &#34;Segoe UI&#34;, &#34;Segoe UI Web&#34;, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);\">https://github.com/dhandhalyabhavik/model_server/tree/visual-rag/demos/python_demos/visual_rag</span></div>",
+      "keyConcept" : "Detailed step-by-step instructions",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 2
+  },
+  "urlName" : "learn-more-details-about-gen-ai-computer-vision-for-surveillance-demo"
+}

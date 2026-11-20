@@ -1,0 +1,113 @@
+div[data-expanded="false"] {
+  display: none;
+}
+
+div[data-expanded="true"] {
+  display: block;
+}
+
+.filter-grouping-container {
+  border-bottom: 1px solid var(--lightGray);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.filter-grouping-right-container {
+  align-items: center;
+  display: flex;
+  font-size: 1.5rem;
+  line-height: 1rem;
+  margin-right: -.5rem; /* pull to edge */
+  padding-left: 1rem;
+}
+
+.selected-filters-count {
+  border: 1px solid var(--carbon-shade1);
+  border-radius: 0;
+  font-size: .75rem;
+  height: 1.27rem;
+  margin-left: .5rem;
+  padding: .125rem .38rem .125rem .35rem;
+}
+
+.selected-filters-count[data-count="0"] {
+  display: none;
+}
+
+.filter-label-container {
+  align-items: end;
+  display: flex;
+}
+
+.search-filter-nodes {
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+.search-filter lightning-icon {
+  left: 0;
+  position: absolute;
+  top: .0625rem;
+  --iconBorderColor: var(--lightGray);
+  --iconBorderWidth: .0625rem;
+  --iconPadding: .0625rem;
+  --iconSize: .75rem;
+}
+
+.show-more-filters lightning-icon {
+  --iconColor: var(--blue);
+  --iconSize: .5rem;
+}
+
+.filters-small-text {
+  font-size: .75rem;
+  padding: 0 .0625rem;
+}
+
+.ipaSearchFilters-footer-container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.25rem .5rem;
+}
+
+.ipaSearchFilters-footer-container lightning-button {
+  margin-right: 1rem;
+}
+
+.ipaSearchFilters-apply-button {
+  align-content: space-between;
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.ipaSearchFilters-apply-button .selected-filters-count {
+  align-items: center;
+  border: 1px solid var(--white);
+  border-radius: 0;
+  display: flex;
+  height: 20px;
+  margin-left: .5rem;
+}
+
+.ipaSearchFilters-apply-button .selected-filters-count[data-count="0"] {
+  display: none;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button[data-enabled="false"] {
+  background-color: var(--buttonPrimaryDisabled, transparent) !important;
+  border: 1px dashed var(--carbon-shade1);
+  color: var(--buttonPrimaryDisabledText, #525252) !important;
+  pointer-events: none;
+}
+
+.button[data-enabled="false"].ipaSearchFilters-apply-button .selected-filters-count {
+  border: 1px solid var(--darkGray);
+}

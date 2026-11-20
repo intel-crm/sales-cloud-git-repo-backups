@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BES Error Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BES Error Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- BES Inbound Message --></label>
+        <name>Core_BES_Inbound_Message__c</name>
+        <relationshipLabel><!-- BES Error Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Eligible for retry --></label>
+        <name>Core_IPS_Eligible_for_retry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Code --></label>
+        <name>Core_IPS_Error_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Description --></label>
+        <name>Core_IPS_Error_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Id (S) --></label>
+        <name>Core_IPS_ObjectIds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outbound Message Id --></label>
+        <name>Core_IPS_Outbound_Message_Id__c</name>
+        <relationshipLabel><!-- BES Error Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Retry Count --></label>
+        <name>Core_IPS_Retry_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Time --></label>
+        <name>Core_IPS_Schedule_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_IPS_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Track Status --></label>
+        <name>Transaction_Track_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Successfully</masterLabel>
+            <translation><!-- Sent Successfully --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

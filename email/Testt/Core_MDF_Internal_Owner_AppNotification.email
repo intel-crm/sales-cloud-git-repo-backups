@@ -1,0 +1,54 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true"
+                         subject="Activity #{!RelatedTo.Core_MDF_Activity_Number__c} is in Pending Review status and is ready for your review"
+                         relatedToType="PartnerFundRequest" language="en_US" recipientType="User">
+                         
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-size:14px;font-family:Calibri">
+                    <p><span style="color: #ff0000;"><strong>Action Required</strong></span></p>
+    
+                    <p>Dear Intel employee,</p>
+                    
+                    <p>{!RelatedTo.LastModifiedBy.Name}&nbsp;has requested your approval for the following item:&nbsp;</p>
+                    
+                    &nbsp; &nbsp; &nbsp; Member Name: {!RelatedTo.Core_MDF_Ultimate_Account_Name__c}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Campaign Name: {!RelatedTo.Core_MDF_UpdateCampaign__c}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Activity Name: {!RelatedTo.Title}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Activity Number: {!RelatedTo.Core_MDF_Activity_Number__c}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Budget Type: {!RelatedTo.Core_MDF_Budget_Type_nm__c}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Activity Type: {!RelatedTo.Core_MDF_Activity_Types__c}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Status History: {!RelatedTo.Core_MDF_Fund_Request_Status__c}<br /><br />
+                    &nbsp; &nbsp; &nbsp; Countries/Locations: {!RelatedTo.Core_MDF_Country_nm__c}
+     
+                    <p><span>
+                       {!$Label.Core_MDF_RMF_EmailTemp_StatusUpdate_Body5} 
+                       <apex:outputText value="{0, date, MMMM d','  yyyy}"> <apex:param value="{!RelatedTo.Core_MDF_ToBeClosedDate__c}" /> </apex:outputText> .
+                    </span></p>  
+                    
+                    <p><strong><a href="{!RelatedTo.Core_MDF_PFRDetailLink__c}">{!$Label.Core_MDF_IPA_EmailTemp_Link1}</a></strong> </p>
+                    <p>{!$Label.Core_MDF_IPA_EmailTemp_Body7} </p> 
+                    
+                    <p>Thank you,</p>
+                    <p><span>Intel® Partner Investment Center</span></p>
+                </div>
+                <div style="font-size:11px;font-family:Calibri">
+                    <p>
+                        <i> 
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/>
+                        </i>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                        {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                        <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                    </p>
+                </div>    
+            </body>
+        </html>    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

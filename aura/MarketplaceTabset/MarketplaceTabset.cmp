@@ -1,0 +1,62 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="PMP_SearchMarketplaceController">
+
+	<aura:attribute name="allTabLabels" type="string[]"  description="Internal component state"/>
+	<aura:attribute name="allTabs" type="Object[]"  description="Internal component state"/>
+
+	<aura:attribute name="initialTab" type="integer" />
+	<aura:attribute name="currentTabIndex" type="integer" default="0"  description="Internal component state"/>
+	<aura:attribute name="currentTab" type="Object"  description="Internal component state"/>
+
+	<aura:attribute name="onTabChange" type="Object" description="tab change event handler" />
+
+	<aura:attribute name="scrollOffset" type="integer" default="0"  description="Internal component state"/>
+
+	<aura:attribute name="paddlePrevVisible" type="boolean" default="true"  description="Internal component state"/>
+	<aura:attribute name="paddleNextVisible" type="boolean" default="true"  description="Internal component state"/>
+
+	<aura:attribute name="screenResizeHandler" type="boolean" default="false" description="Internal component state"/>
+
+	<aura:attribute name="class" type="String" default=""/>
+    <aura:attribute name="isFeaturedTabSet" type="boolean" default="false" />
+    <c:MarketplaceAnalyticsData aura:id="analyticsData" /><!-- component having the Web analytics logic -->
+
+	<aura:attribute name="onActive" type="object" default="" />
+	<aura:method name="changeTab" action="{!c.handleChangeTabMethod}">
+		<aura:attribute name="tabIndex" type="string" />
+	</aura:method>
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<div class="{! v.class + ' tabSet'}">
+		<div class="tabNavContainer">
+			<aura:if isTrue="{!v.paddlePrevVisible}">
+				<div class="sliderButton slds-text-align_center slds-hide_medium" onclick="{!c.handlePaddleClick}" data-direction="prev">
+					<lightning:icon iconName="utility:chevronleft" />
+				</div>
+			</aura:if>
+
+			<div aura:id="navigation" class="linkList">
+				<div aura:id="inner-carousel" class="innerLinkList">
+						<aura:iteration items="{!v.allTabLabels}" var="label" indexVar="i">
+								<a aura:id="navItem" data-index="{!i}" onclick="{!c.handleChangeTab}" onfocus="{!c.handleFocusTabMethod}"
+									class="linkItem pointer slds-tabs_default__link slds-p-horizontal_small ">
+									<span>{!label}</span>
+								</a>
+						</aura:iteration>
+				</div>
+			</div>
+			<aura:if isTrue="{!v.paddleNextVisible}">
+				<div class="sliderButton slds-text-align_center slds-hide_medium" onclick="{!c.handlePaddleClick}" data-direction="next">
+					<lightning:icon iconName="utility:chevronright" />
+				</div>
+			</aura:if>
+
+		</div>
+
+		<div>
+			{!v.body}
+		</div>
+	</div>
+
+
+</aura:component>

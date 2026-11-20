@@ -1,0 +1,93 @@
+.slds-backdrop_open {
+   background-color: transparent; /* Make the backdrop transparent */
+    //background-color: var(--light-theme-backgroud-color, lightcyan);
+    
+}
+div.box{
+    height: 400px; 
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
+    font-size: 14px;
+}
+.box-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+.card-container {
+    flex: 0 0 auto;
+}
+.table {
+    display: flex;
+}
+
+.column {
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.row {
+    border: 1px black solid;
+    height: 3em;
+    margin: auto;
+    width: 100%;
+}
+
+.slds-modal__header{
+    padding : var(--lwc-spacingXSmall,0.5rem);
+}
+div.itemColor {
+    color: var(--itemColor);
+}
+div.mybox{
+    width: 1200px !important;
+}
+div.errorColor{
+    fill:#EA001E !important;
+}
+section.slds-popover { 
+    z-index: 9000;
+    background-color: #EA001E; 
+}
+.float{
+    float:left;
+}
+.flex-container {
+    float: right;
+    width: 20%;
+    display: flex;
+} 
+.flex-child{
+    flex: 1;
+}
+.flex-child:first-child {
+    margin-right: 10px;
+}
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+.exampleHolder{
+    width: 80px !important;
+    height: 80px !important;
+}
+.hiden{
+    visibility: hidden;
+}
+
+.slds-backdrop {
+transition-duration: var(--lwc-durationSlowly,0.4s);
+width: 100%;
+height: 100%;
+opacity: 0;
+visibility: hidden;
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: white;
+/* background: var(--sds-c-backdrop-color-background, var(--lwc-colorBackgroundTempModalTint,rgba(8, 7, 7, 0.6))); */
+z-index: var(--lwc-zIndexModal,9000);
+}

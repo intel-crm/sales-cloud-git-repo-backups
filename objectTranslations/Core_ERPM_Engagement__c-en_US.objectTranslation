@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ERPM Engagement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ERPM Engagements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Core_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Type --></label>
+        <name>Core_Engagement_Type__c</name>
+        <picklistValues>
+            <masterLabel>SEC</masterLabel>
+            <translation><!-- SEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFT</masterLabel>
+            <translation><!-- SFT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMP</masterLabel>
+            <translation><!-- SMP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Change Agent --></label>
+        <name>Core_Technical_Change_Agent_Id__c</name>
+        <relationshipLabel><!-- ERPM Engagements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Technical DeDup Number --></label>
+        <name>Core_Technical_DeDup_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Email --></label>
+        <name>Core_Technical_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Engagement Code --></label>
+        <name>Core_Technical_Engagement_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Member Type --></label>
+        <name>Core_Technical_Member_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Name --></label>
+        <name>Core_Technical_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Publish --></label>
+        <name>Core_Technical_Publish__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Tier Code --></label>
+        <name>Core_Technical_Tier_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

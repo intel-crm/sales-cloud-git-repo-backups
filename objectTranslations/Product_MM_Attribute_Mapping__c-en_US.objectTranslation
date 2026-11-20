@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product MM Attribute Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product MM Attribute Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- BU Operation Code --></label>
+        <name>BU_Operation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Customer Code --></label>
+        <name>Custom_Customer_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Indicator --></label>
+        <name>Custom_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- DDI Program Pay Rate(NAR/EMEA) --></label>
+        <name>DDI_focused__c</name>
+        <picklistValues>
+            <masterLabel>Tier 1</masterLabel>
+            <translation><!-- Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 2</masterLabel>
+            <translation><!-- Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 3</masterLabel>
+            <translation><!-- Tier 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Division Code Short Name --></label>
+        <name>Division_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division Code --></label>
+        <name>Division_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- DDI Program Payment Eligible --></label>
+        <name>Eligible_for_DDI_Payment__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Family Name --></label>
+        <name>Family_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code Short Name --></label>
+        <name>Group_Code_Short_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Code --></label>
+        <name>Group_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 Product Available --></label>
+        <name>L4ProductAvailable__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 Product Name --></label>
+        <name>L4ProductName__c</name>
+    </fields>
+    <fields>
+        <label><!-- L4 Product --></label>
+        <name>L4_Product__c</name>
+        <relationshipLabel><!-- Product MM Attribute Mapping --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- L5 Product Available --></label>
+        <name>L5ProductAvailable__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 Product Name --></label>
+        <name>L5_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- L5 Product --></label>
+        <name>L5_Product__c</name>
+        <relationshipLabel><!-- Product MM Attribute Mapping (L5 Product) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Level 1 EPM ID --></label>
+        <name>Level_1_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 1 EPM Name --></label>
+        <name>Level_1_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 2 EPM ID --></label>
+        <name>Level_2_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 2 EPM Name --></label>
+        <name>Level_2_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 3 EPM ID --></label>
+        <name>Level_3_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 3 EPM Name --></label>
+        <name>Level_3_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 4 EPM ID --></label>
+        <name>Level_4_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 4 EPM Name --></label>
+        <name>Level_4_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 5 EPM ID --></label>
+        <name>Level_5_EPM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level 5 EPM Name --></label>
+        <name>Level_5_EPM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old MMID --></label>
+        <name>MMID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Code Name --></label>
+        <name>Market_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ordering Code --></label>
+        <name>Ordering_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- DDI Program Pay Rate(APJ/PRC) --></label>
+        <name>PCC_DDI_Program_Pay_Rate_APJ_PRC__c</name>
+        <picklistValues>
+            <masterLabel>Tier 1</masterLabel>
+            <translation><!-- Tier 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 2</masterLabel>
+            <translation><!-- Tier 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 3</masterLabel>
+            <translation><!-- Tier 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- L4 &amp; L5 Available For New Design --></label>
+        <name>PCC_L4_L5_Available_For_New_Design__c</name>
+    </fields>
+    <fields>
+        <label><!-- DDI Program Payment Expiration Date --></label>
+        <name>Payment_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Class --></label>
+        <name>Product_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Description --></label>
+        <name>Product_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>Product_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProfitCenter --></label>
+        <name>Profit_Center__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restriction Level --></label>
+        <name>Restriction_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- SpecCode --></label>
+        <name>Spec_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Component Category --></label>
+        <name>Sub_Component_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique ID --></label>
+        <name>Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPaaS Load ID --></label>
+        <name>iPaaS_Load_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

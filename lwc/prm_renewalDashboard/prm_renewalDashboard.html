@@ -1,0 +1,90 @@
+<template>
+     <lightning-layout>
+     <template if:true={valueexdata.Total_Sales}>
+     <lightning-layout-item class="slds-box boxsizing styleBox">
+          <template if:true={showsalesLink}>
+               <div class="truncation gridHeader slds-p-top_medium">
+                    <a class="hoverComp linkStyle" href={pageUrlSales}  target="_blank">{headerSalesLbl}</a>
+                    <a class="hide slds-box">{label.ClickHereForInfo}</a> 
+               </div>
+          </template>
+          <template if:false={showsalesLink}>
+          <p class="truncation gridHeader slds-p-top_medium">{headerSalesLbl}</p>   
+          </template>
+          <h2 class="contentBox">
+               <span class="fontDollar">{totalsaleswithDollar}</span>
+               <lightning-formatted-number class="fontColor" value={total_SalesDatanbr}></lightning-formatted-number>
+               <p if:true={isLoading} class="exampleHolder">
+                    <lightning-spinner variant="brand" alternative-text="Loading Data" size="small">
+                    </lightning-spinner>
+               </p>
+          </h2>
+     </lightning-layout-item>
+     </template>
+     <template if:true={valueexdata.Total_Training}>
+          <lightning-layout-item class="slds-box boxsizing styleBox">
+          <div class="truncation gridHeader slds-p-top_medium">
+               <a class="hoverComp linkStyle" href={pageUrl} target="_blank">{headerLbl}</a>
+               <a class="hide slds-box">{label.ClickHereForInfo}</a>
+          </div>
+          <h2 class="contentBox">
+                    <lightning-formatted-number class="fontColor" value={total_TrainingCreditsnbr}></lightning-formatted-number>  
+                    
+                    <p if:true={isLoading} class="exampleHolder">
+                         <lightning-spinner variant="brand" alternative-text="Loading Data" size="small">
+                         </lightning-spinner>
+                    </p>
+          </h2>
+     
+          </lightning-layout-item>
+          </template>
+          <template if:true={valueexdata.Total_Approved_Solutions}>
+               <lightning-layout-item class="slds-box boxsizing styleBox"> 
+                    <p class="truncation gridHeader slds-p-top_medium">{totalApprovedSol}</p>
+                    <h2 class="contentBox">
+                         <lightning-formatted-number class="fontColor" value={totalApprovedSolutions}></lightning-formatted-number>
+                         <p if:true={isLoading} class="exampleHolder">
+                              <lightning-spinner variant="brand" alternative-text="Loading Data" size="small">
+                              </lightning-spinner>
+                         </p>
+                    </h2>
+               </lightning-layout-item>
+               </template>
+          </lightning-layout>    
+     </template>
+     <!-- <template if:true={valueexdata.Total_Approved_Offerings}>
+     <lightning-layout-item class="slds-box boxsizing styleBox"> 
+          <p class="truncation gridHeader slds-p-top_medium">{publishedStorefrontText}</p>
+          <h2 class="contentBox">
+              28,29wascommentedbefore <lightning-formatted-number class="fontColor" value={total_ApprovedOffering.value}  maximum-fraction-digits={total_ApprovedOffering.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+               <span class="performance-value-text">{total_ApprovedOffering.text}</span>
+               <template if:false={showSpinner}>
+               <template if:true={ispublishedStorefront}>                    
+               <div class="fontColor">{label.ispublished}</div>                 
+               </template>
+               <template if:false={ispublishedStorefront}>                    
+               <div class="fontColor">{label.isNotpublished}</div>                   
+               </template> 
+             </template>
+               <p if:true={isLoading} class="exampleHolder">
+               <lightning-spinner variant="brand" alternative-text="Loading Data" size="small">
+                    </lightning-spinner>
+               </p>
+          
+          </h2>
+     </lightning-layout-item> 
+     </template> -->
+    
+     <!-- <template if:true={valueexdata.Number_of_employees_trained}>
+     <lightning-layout-item class="slds-box boxsizing styleBox"> 
+          <p class="truncation gridHeader slds-p-top_medium">{NumberOfEmployees}</p>
+          <h2 class="contentBox">
+               <lightning-formatted-number class="fontColor" value={total_TrainedResource.value}  maximum-fraction-digits={total_TrainedResource.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+               <span class="performance-value-text">{total_TrainedResource.text}</span>
+               <p if:true={isLoading} class="exampleHolder">
+                    <lightning-spinner variant="brand" alternative-text="Loading Data" size="small">
+                    </lightning-spinner>
+               </p>
+          </h2>
+     </lightning-layout-item>
+     </template> -->

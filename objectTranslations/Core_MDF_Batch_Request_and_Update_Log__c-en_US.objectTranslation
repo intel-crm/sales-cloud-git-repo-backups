@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch Request and Update Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batch Request and Update Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Action --></label>
+        <name>Core_MDF_Action_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Core_MDF_Error_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- JSON String --></label>
+        <name>Core_MDF_JSON_String_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>Core_MDF_Object_apiName_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Ids --></label>
+        <name>Core_MDF_Record_Ids_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <description><!-- Recordtype for Mass Owner Update tool --></description>
+        <label><!-- Mass Owner Update --></label>
+        <name>Core_MDF_Mass_Owner_Update</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Recordtype for Payment Share Insertion --></description>
+        <label><!-- Payment Share --></label>
+        <name>Core_MDF_Payment_Share</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Recordtype for Process Entitlement batch process --></description>
+        <label><!-- Process Entitlement --></label>
+        <name>Core_MDF_Process_Entitlement</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

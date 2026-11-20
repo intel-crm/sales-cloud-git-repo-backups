@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        
+        <div class="slds-p-around_small slds-size_12-of-12">
+            <div class="slds-progress-wrapper slds-show_medium">
+                <ul class="progressbar">
+                    <template for:each={formattedSteps} for:item="step">
+                        <li key={step.key} class={step.class}>
+                            <template if:true={step.checked}>
+                                <span class="progress-icon fa-ok-circled"></span>
+                            </template>
+                            <p>{step.label}</p>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <div class="slds-progress slds-p-horizontal_medium slds-progress_vertical slds-hide_medium">
+                <ol class="slds-progress__list">
+                    <template for:each={formattedSteps} for:item="step">
+                        <li key={step.key} class={step.mobileClass}>
+                            <div class="slds-progress__marker">
+                                <template if:true={step.checked}>
+                                    <span class="progress-icon fa-ok-circled"></span>
+                                </template>
+                            </div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                                {step.label}
+                            </div>
+                        </li>
+                    </template> 
+                </ol>
+            </div>
+        </div>
+    </div>
+</template>

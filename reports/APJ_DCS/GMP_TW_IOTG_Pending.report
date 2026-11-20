@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_94591725</developerName>
+        <masterLabel>Account Grouping</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ADVANTECH CO., LTD.</sourceValue>
+            </sourceValues>
+            <value>Advantech</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ADLINK TECHNOLOGY INC.</sourceValue>
+            </sourceValues>
+            <value>Adlink</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ASROCK INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COMPAL ELECTRONICS, INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FOXCONN TECHNOLOGY CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GIGA-BYTE TECHNOLOGY CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MICRO-STAR INTERNATIONAL CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PEGATRON CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>QUANTA COMPUTER INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WISTRON CORPORATION</sourceValue>
+            </sourceValues>
+            <value>PC-ODM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ENNOCONN CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GETAC CORP.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IBASE TECHNOLOGY INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IEI INTEGRATION CORP.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>NEXCOM INTERNATIONAL CO., LTD.</sourceValue>
+            </sourceValues>
+            <value>TW eODM</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <filter>
+        <booleanFilter>(((1 OR 3) AND 2)) AND 4</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>gmp taiwan sales group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Win Submitted,Pending,On Hold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;advantech co., ltd.&quot;,adlink technology inc.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_94591725</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>TW IOTG Pending</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>OPPORTUNITY_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

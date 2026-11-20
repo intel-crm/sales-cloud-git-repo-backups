@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c:AVG</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Net Promoter Score</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>NPS</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_86665547</developerName>
+        <masterLabel>Detail Device Variants</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 MX FPGA</sourceValue>
+            </sourceValues>
+            <value>S10 MX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
+            </sourceValues>
+            <value>S10 TX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <value>S10 GX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <value>S10 SX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
+            </sourceValues>
+            <value>Agilex F</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
+            </sourceValues>
+            <value>Agilex I</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
+            </sourceValues>
+            <value>Agilex M</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cyclone® V SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V SE FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone V SoC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Arria® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
+            </sourceValues>
+            <value>PAC Arria 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Stratix® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
+            </sourceValues>
+            <value>PAC Stratix 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 LP FPGA</sourceValue>
+            </sourceValues>
+            <value>Cylcone 10 GX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Stratix® V E FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GS FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix V</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Arria® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GZ FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria V</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Arria® V SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V ST FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria V SoC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cyclone® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V E FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone V</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
+            </sourceValues>
+            <value>S10 DX</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
+            </sourceValues>
+            <value>S10 NX</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22042681</developerName>
+        <masterLabel>Product Family</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Cyclone® V SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V SE FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyclone® V E FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone V</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Arria® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series FPGAs and SoC FPGAs</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series SoC FPGAs</sourceValue>
+            </sourceValues>
+            <value>Agilex</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 MX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® MAX® 10 FPGA</sourceValue>
+            </sourceValues>
+            <value>MAX10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Cyclone® 10 LP FPGA</sourceValue>
+            </sourceValues>
+            <value>Cyclone 10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Stratix® V GX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GT FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V GS FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stratix® V E FPGA</sourceValue>
+            </sourceValues>
+            <value>Stratix V</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Arria® V SX FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V ST FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GZ FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arria® V GX FPGA</sourceValue>
+            </sourceValues>
+            <value>Arria V</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATE</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>IPS Cases by Quartus Type</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>BucketField_22042681</field>
+    </columns>
+    <columns>
+        <field>BucketField_86665547</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Bug_Doc_Fix_ID__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Knowledge_Base_Link__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Resolution_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Case_Closure__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Variant__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_Org1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-025</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>IPS Test Account</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MIPS Export 2</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseCustomEntity$Core_IPS_Response__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Case.Core_IPS_Assigned_Queue__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2024-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2021-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>CCP Retail ASMO LAR Geo Lead Que</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Grp</publicGroup>
+        </publicGroups>
+        <users>
+            <user>11568755@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_MDF_Escalation__c</sobjectType>
+    </queueSobject>
+</Queue>

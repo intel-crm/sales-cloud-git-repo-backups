@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Update the Opp Geo Checkbox for the respective region [ APJ, ASMO , EMEA , PRC  ]
+Updated the new design and deal record types for APJ section</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>F_APJ_Condition</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(   ( {!$Record.RecordType.DeveloperName} = &quot;Core_Design_Opportunity&quot; || {!$Record.RecordType.DeveloperName} = &quot;Core_Deal_Opportunity&quot;  ||   {!$Record.RecordType.DeveloperName} = &quot;Core_Solution_Group&quot; )  &amp;&amp;  ({!$Record.Core_Opportunity_Geo__c} = &quot;APJ&quot;  || {!$Record.Owner.Core_User_Geo__c} = &quot;APJ&quot;  || TEXT({!$Record.Account.Core_Geo__c}) = &quot;APJ&quot;  || {!$Record.Account.Owner.Core_User_Geo__c} = &quot;APJ&quot; || {!$Record.Core_Opportunity_Team_Geo_APJ__c} = true), TRUE, FALSE )</expression>
+    </formulas>
+    <formulas>
+        <name>F_ASMO_Condition</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( {!$Record.Core_Opportunity_Geo__c} = &quot;ASMO&quot; || {!$Record.Owner.Core_User_Geo__c} = &quot;ASMO&quot; || TEXT({!$Record.Account.Core_Geo__c}) = &quot;ASMO&quot; || {!$Record.Account.Owner.Core_User_Geo__c} = &quot;ASMO&quot; || {!$Record.Core_Opportunity_Team_Geo_ASMO__c} = true, TRUE, FALSE)</expression>
+    </formulas>
+    <formulas>
+        <name>F_EMEA_Condition</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( {!$Record.Core_Opportunity_Geo__c} = &quot;EMEA&quot; || {!$Record.Owner.Core_User_Geo__c} = &quot;EMEA&quot; || TEXT({!$Record.Account.Core_Geo__c}) = &quot;EMEA&quot; || {!$Record.Account.Owner.Core_User_Geo__c} = &quot;EMEA&quot; || {!$Record.Core_Opportunity_Team_Geo_EMEA__c} = true, TRUE, FALSE)</expression>
+    </formulas>
+    <formulas>
+        <name>F_PRC_Condition</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( {!$Record.Core_Opportunity_Geo__c} = &quot;PRC&quot; || {!$Record.Owner.Core_User_Geo__c} = &quot;PRC&quot; || TEXT({!$Record.Account.Core_Geo__c}) = &quot;PRC&quot; || {!$Record.Account.Owner.Core_User_Geo__c} = &quot;PRC&quot; || {!$Record.Core_Opportunity_Team_Geo_PRC__c}, TRUE, FALSE)</expression>
+    </formulas>
+    <interviewLabel>Core {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core Update Opp Geo APJ ASMO EMEA PRC</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update the Opportunity Region (EMEA ASMO APJ PRC ) Geo Checkbox field to be TRUE</description>
+        <name>Region_CheckBox_Update</name>
+        <label>Region CheckBox Update</label>
+        <locationX>593</locationX>
+        <locationY>457</locationY>
+        <inputAssignments>
+            <field>Core_Opportunity_Geo_APJ__c</field>
+            <value>
+                <elementReference>F_APJ_Condition</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Geo_ASMO__c</field>
+            <value>
+                <elementReference>F_ASMO_Condition</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Geo_EMEA__c</field>
+            <value>
+                <elementReference>F_EMEA_Condition</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Opportunity_Geo_PRC__c</field>
+            <value>
+                <elementReference>F_PRC_Condition</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>64</locationY>
+        <connector>
+            <targetReference>Region_CheckBox_Update</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

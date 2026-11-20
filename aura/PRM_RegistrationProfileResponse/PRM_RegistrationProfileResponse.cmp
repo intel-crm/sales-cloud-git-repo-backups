@@ -1,0 +1,86 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" controller="PRM_RegistrationProfileResponse" access="global" >
+    
+    <aura:attribute name="questionAnswerObject" type="List"/>
+    <aura:attribute name="select" type="String"/>
+    <aura:attribute name="selectpicklist" type="String"/>
+    <aura:attribute name="picklistType" type="String" default="{!$Label.c.PRM_Picklist}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="options" type="List" default="[]"/>
+    <aura:attribute name="values" type="List" default="[]"/>
+    
+    <lightning:layout>
+        <lightning:layoutItem alignmentBump="left">
+            <lightning:button class="buttonWidth" label="{!$Label.c.PRM_RETRIGGEREV}" name="Retrigger" onclick="{! c.handleEv }" disabled="false"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+   <aura:if isTrue="{!v.questionAnswerObject.length }">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout">
+                
+                <thead>
+                     
+                    <tr>
+                        <th scope="col">
+                            <div class="slds-truncate">{!$Label.c.PRM_Question}</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate">{!$Label.c.PRM_Answer}</div>
+                        </th>
+                    </tr>
+                         
+                </thead>
+                
+                <tbody>
+                    <aura:iteration items="{!v.questionAnswerObject}" var="item">
+                        <tr>
+                            <td style="width:50%;white-space:normal">
+                                {!item.q.PRM_Question_Display_Txt__c}    
+                            </td>
+                            <td style="width:50%">
+                                <aura:if isTrue="{!item.q.PRM_Question_Type_Nm__c == $Label.c.PRM_Text}">
+                                    <aura:iteration items="{!item.selectedResults}" var = "u">
+                                        <lightning:formattedText value ="{!u.PRM_Answer_Display_Txt__c}"/>
+                                    </aura:iteration>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!item.q.PRM_Question_Type_Nm__c  == $Label.c.PRM_Picklist}">
+                                    <div style="padding-bottom:18px;">
+                                        <lightning:select value="{!v.selectpicklist}">
+                                            <option text="--None--"/>
+                                            <aura:iteration items="{!item.listofans}" var = "u">
+                                                <option text = "{!u.PRM_Answer_Display_Txt__c}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!item.q.PRM_Question_Type_Nm__c == $Label.c.PRM_TextArea}">
+                                    <aura:iteration items="{!item.selectedResults}" var="u">
+                                        <lightning:formattedText value ="{!u.PRM_Answer_Display_Txt__c}"/>
+                                    </aura:iteration>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!item.q.PRM_Question_Type_Nm__c == $Label.c.PRM_Boolean}">
+                                    <aura:iteration items="{!item.selectedResults}" var="u">
+                                        <lightning:input type="checkbox" value="{!u.PRM_Answer_Display_Txt__c}" readonly="true"/>
+                                    </aura:iteration>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!item.q.PRM_Question_Type_Nm__c == $Label.c.PRM_Multiselect}">
+                                    <lightning:dualListbox aura:id="dualSelect"
+                                                           name="multipleOptions"
+                                                           readonly="true" 
+                                                           value="{!v.values}" 
+                                                           options="{!v.options}" 
+                                                           disableReordering="true" 
+                                                           removeButtonLabel="Remove" 
+                                                           addButtonLabel="Add" style="max-width:50rem;padding-bottom:8px;"
+                                                           />
+                               </aura:if>
+                            </td>
+                        </tr> 
+                    </aura:iteration>
+                </tbody>
+                
+            </table>
+       </aura:if>
+</aura:component>

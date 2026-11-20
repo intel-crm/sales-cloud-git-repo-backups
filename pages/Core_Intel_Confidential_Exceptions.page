@@ -1,0 +1,20 @@
+<apex:page showHeader="false" sidebar="false" lightningStylesheets="true" >   
+<apex:slds /> 
+    <div style="font-size:12px">
+        <p>
+            <b>Account and Opportunity</b> content <u>including all notes and attachments</u> in Salesforce are only approved
+            for information classified <u><b>Intel Confidential</b></u>.  Please use Microsoft Teams to store account and
+            opportunity content classified <b style="Color:Red">Intel Top Secret.</b> 
+         </p>
+        <p>
+            Remember documents are classified at the highest classification level of content in the presentation.
+        </p>
+        <p>
+            Controlled Technology may <b>not</b> be placed in Salesforce.
+        </p>
+        <p>
+            <b>Intel Premier Support (IPS)</b><br/>
+            Please note IPS in Salesforce is <b>NOT</b> approved for Controlled Technology nor Intel Top Secret Information<br/>
+        </p>
+    </div>
+</apex:page>

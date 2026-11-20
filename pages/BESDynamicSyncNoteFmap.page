@@ -1,0 +1,23 @@
+<apex:page standardController="Core_IPS_Backend_Field_Map__c" extensions="Core_IPS_New_Backend_System_Handler">
+    <style>
+        div {
+        	border-top	:2px solid red;
+        	border-bottom	:2px solid red;
+        	border-left	:2px solid red;
+        	border-right	:2px solid red;
+        	background-color:yellow;
+        	width: 90%;
+        	height: 50%
+        }
+        h3 {
+		color:blue;
+        }
+    </style>
+   	<apex:outputText rendered="{!IF(show,true,false)}">
+       	<div align ="center">
+           	<h3>
+                <apex:outputText value="{!$Label.Core_IPS_BES_FeildMap_Message}" />
+            </h3> 
+        </div>
+     </apex:outputText>
+</apex:page>

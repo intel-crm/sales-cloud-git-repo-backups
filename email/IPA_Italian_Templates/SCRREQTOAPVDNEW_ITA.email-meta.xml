@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_ITA</name>
+    <style>none</style>
+    <subject>Benvenuto a Intel® Partner Alliance</subject>
+    <textOnly>Benvenuto a Intel® Partner Alliance
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+ti diamo il benvenuto! {!Account.Name} è ora un partner Intel® Partner Alliance.
+Inizia a far crescere la tua azienda, sfruttando i vantaggi del programma, tra cui:
+
+Assistenza clienti Intel con assistenza globale per tutti i problemi tecnici, di garanzia e del programma partner
+Formazione online e webinar Intel® Partner University con piani di studio all&apos;avanguardia
+Un&apos;ampia rete di partner e un mercato per una collaborazione con soluzioni incentrate sui dati
+Il marketing reso semplice grazie ai materiali personalizzabili e agli strumenti di vendita
+Accesso a Intel® Developer Zone
+
+
+Accedi a https://crmqa3-intelcloudcrm.cs37.force.com/ipa per visualizzare e gestire i vantaggi.
+
+Accedi a https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary per visualizzare il tuo ruolo.
+
+
+I partner di Intel hanno una lunga tradizione di innovazione e con Intel® Partner Alliance saremo in grado di aiutarti a realizzare più rapidamente soluzioni per l&apos;economia incentrata sui dati. Insieme possiamo collaborare, incentivare innovazione e sviluppo e cogliere opportunità straordinarie.
+Per ottenere maggiore assistenza per iniziare, visita il sito https://intel.it/content/www/it/it/secure/partner-alliance/help/overview.html.
+
+Grazie.
+Il tuo team Intel® Partner Alliance
+
+Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

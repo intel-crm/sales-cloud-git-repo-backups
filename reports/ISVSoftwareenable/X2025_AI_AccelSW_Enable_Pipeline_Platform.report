@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_47547924</developerName>
+        <masterLabel>Intel Platform</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Intel_Platform__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Sapphire Rapids D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAPPHIRE RAPIDS SP</sourceValue>
+            </sourceValues>
+            <value>SAPPHIRE RAPIDS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ALDER LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alder Lake D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alder Lake M</sourceValue>
+            </sourceValues>
+            <value>ALDER LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cascade Lake SP</sourceValue>
+            </sourceValues>
+            <value>CASCADE LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>TIGER LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tiger Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>TIGER LAKE R</sourceValue>
+            </sourceValues>
+            <value>TIGER LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ICE LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ice Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ice Lake SP</sourceValue>
+            </sourceValues>
+            <value>ICE LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>COMET LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Comet Lake D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Comet Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COMET LAKE R</sourceValue>
+            </sourceValues>
+            <value>COMET LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Coffee Lake D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake D R</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake M R</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COFFEE LAKE R</sourceValue>
+            </sourceValues>
+            <value>COFFEE LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eagle Stream</sourceValue>
+            </sourceValues>
+            <value>EAGLE STREAM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>METEOR LAKE M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>METEOR LAKE PS</sourceValue>
+            </sourceValues>
+            <value>METEOR LAKE</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_85599878</developerName>
+        <masterLabel>Platform</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Core_Intel_Platform__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Sapphire Rapids D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SAPPHIRE RAPIDS SP</sourceValue>
+            </sourceValues>
+            <value>SAPPHIRE RAPIDS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Raptor Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RAPTOR LAKE PS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Raptor Lake Refresh D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Raptor Lake Refresh M</sourceValue>
+            </sourceValues>
+            <value>RAPTOR LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ALDER LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alder Lake D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alder Lake M</sourceValue>
+            </sourceValues>
+            <value>ALDER LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Coffee Lake D</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake D R</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Coffee Lake M R</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>COFFEE LAKE R</sourceValue>
+            </sourceValues>
+            <value>COFFEE LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ICE LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ice Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ice Lake SP</sourceValue>
+            </sourceValues>
+            <value>ICE LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>TIGER LAKE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tiger Lake M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>TIGER LAKE R</sourceValue>
+            </sourceValues>
+            <value>TIGER LAKE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>METEOR LAKE M</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>METEOR LAKE PS</sourceValue>
+            </sourceValues>
+            <value>METEOR LAKE</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Segment__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Intel_Platform__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_BU_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <description>2025 - Report on Products and Platforms for Design and Production Wins for AI Accelerator</description>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Define,Design,Design Win,Develop,Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Software-enable</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Concatenated_Application_workload__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>AI Inference,AI Training,AI PC</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_47547924</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2025 AI AccelSW Enable Pipeline Platform</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_First_Customer_Ship_Date__c</dateColumn>
+        <endDate>2024-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

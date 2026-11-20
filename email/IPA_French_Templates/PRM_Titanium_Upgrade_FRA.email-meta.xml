@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Titanium_Upgrade_FRA</name>
+    <style>none</style>
+    <subject>Bienvenue dans le niveau Prestige de l&apos;Alliance partenaire Intel®</subject>
+    <textOnly>Niveau Prestige de l&apos;Alliance partenaire Intel®
+
+
+{!Contact.FirstName},
+
+Félicitations ! Votre entreprise est passée au niveau Prestige de l&apos;Alliance partenaire Intel®. Profitez des avantages offerts par ce niveau d&apos;adhésion :
+
+Gagner davantage de points sur les composants et les systèmes
+Invitation à l&apos;événement Intel le plus important de l&apos;année destiné aux partenaires : l&apos;Intel® Partner Connect
+Lettre de recommandation Prestige adressée par la direction d&apos;Intel à vos clients potentiels
+
+Connectez-vous pour accéder aux outils et ressources.
+
+Lancez-vous dès aujourd&apos;hui
+
+
+Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
+
+Visitez le site intel.com/partnerhelp pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion.
+
+
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
+Confidentialité | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,112 @@
+<aura:component controller="PMP_SearchMarketplaceController" extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">     <!--Controller added by Nikhil-->
+    
+    <aura:attribute name="debugMode" type="boolean" default="true" />
+    <aura:attribute name="changed" type="boolean" default="false" />
+    <aura:set attribute="storeName" value="Search" />
+    <aura:attribute name="searchFilters" type="object[]" />
+    <aura:attribute name="searchType" type="string" description="Can be 'partner' or 'product'"/>
+    <aura:attribute name="selectedFilters" type="object" />
+    <aura:attribute name="loading" type="boolean" default="true" />
+    <aura:attribute name="showSeparator" type="boolean" default="true" />
+    <aura:attribute name="showSeparatorTop" type="boolean" default="true" />
+    <aura:attribute name="categoryType" type="boolean" />
+    <aura:attribute name="_href" type="string" />
+    <lightning:navigation aura:id="navService"/>
+    <aura:attribute name="selected" type="String" />
+    <aura:attribute name="catType" type="String"/>
+    <aura:attribute name="isPartnerType" type="boolean" />
+    <aura:attribute name="analyticsDetail" type="string[]" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <c:MarketplaceAnalyticsData aura:id="analyticsData" /><!-- component having the Web analytics logic -->
+    
+    <div class="{! 'slds-p-bottom_large padding-desktop-top-small padding-mobile-top-x-large padding-mobile-horizontal-medium' + (v.showSeparator ? ' borderBottom' : '') + (v.showSeparatorTop ? ' borderTop' : '') }">
+        
+        <h4 class="slds-m-bottom_small slds-hide_medium">
+            {!$Label.c.PMP_Quick_Search_Heading}
+        </h4>
+        <h4 class="slds-m-vertical_medium slds-show_medium">
+            {!$Label.c.PMP_Quick_Search_Heading}
+        </h4>
+        <!-- Lightning tags changed with div tags US622399 prabuddh -->
+        <div class="{!join(' ','slds-grid slds-wrap' , ' spaceBetween filterCount-' + v.searchFilters.length )}"> <!--   <lightning:layout multipleRows="true" class="{!'spaceBetween filterCount-' + v.searchFilters.length}"> -->
+        	<aura:if isTrue="{!v.loading}">
+                <div> <!-- <lightning:layoutItem> -->
+                    <lightning:spinner alternativeText="{!$Label.c.PMP_Quick_Search_Loading}" size="small"/>
+                </div> <!-- </lightning:layoutItem> -->
+                
+                <aura:set attribute="else">
+                    <aura:iteration items="{!v.searchFilters}" var="filter">
+                        
+                        <!-- MOBILE -->
+                        <div class="selectContainer slds-m-bottom_medium slds-hide_medium" > <!--	<lightning:layoutItem class="selectContainer slds-m-bottom_medium slds-hide_medium"> -->
+                            <label aria-label="{!filter.label}">
+                                <!-- data-filter changed to value->label by Nikhil -->
+                                
+                                <select
+                                        id="{!'filter' + filter.value}"
+                                        name="{!filter.label+filter.value}"
+                                        data-filter="{!filter.value}"
+                                        aura:id="searchFilter"
+                                        onchange="{!c.handleSelectFilter}"
+                                        class="slds-p-vertical_small slds-p-horizontal_small"
+                                        value="{!filter.selectedValue}">
+                                    <option value="">{!filter.label}</option>
+                                    <aura:iteration items="{!filter.options}" var="option">
+                                        <option value="{!option.value}">{!option.label}</option>
+                                    </aura:iteration>
+                                </select>
+                            </label>
+                        </div> <!--	</lightning:layoutItem> -->
+                        
+                        <!-- DESKTOP -->
+                        <div class="selectContainer slds-m-vertical_small slds-show_medium" > <!--	<lightning:layoutItem class="selectContainer slds-m-vertical_small slds-show_medium"> -->
+                            <label aria-label="{!filter.label}">
+                                <!-- data-filter changed to value->label by Nikhil -->
+                                <select
+                                        id="{!'filter' + filter.value}"
+                                        name="{!filter.label+filter.value}"
+                                        data-filter="{!filter.value}"
+                                        aura:id="searchFilter"
+                                        onchange="{!c.handleSelectFilter}"
+                                        class="slds-p-vertical_xx-small slds-p-horizontal_small"
+                                        value="{!filter.selectedValue}">
+                                    <option value="">{!filter.label}</option>
+                                    <aura:iteration items="{!filter.options}" var="option">
+                                        <option value="{!option.value}">{!option.label}</option>
+                                    </aura:iteration>
+                                </select>
+                            </label>
+                        </div> <!-- </lightning:layoutItem> -->
+                        
+                    </aura:iteration>
+                </aura:set>
+            </aura:if>
+            
+            <!-- MOBILE -->
+            <div class="buttonContainer slds-hide_medium slds-m-bottom_large"> <!-- <lightning:layoutItem class="buttonContainer slds-hide_medium slds-m-bottom_large"> -->
+                <div onclick="{!c.handleSearch}">
+                    <!--$Label.c.PMP_Quick_Search_Button_products-->
+                    <c:IntelButton buttonClass="searchButton"
+                                   label="{!v.searchType == 'product' ? $Label.c.PMP_Quick_Search_Button_products : $Label.c.PMP_Quick_Search_Button_partners}"/>
+                </div>
+            </div>	<!-- </lightning:layoutItem> -->
+            
+            <!-- DESKTOP -->
+            <div class="buttonContainer slds-m-vertical_small slds-show_medium" > <!-- <lightning:layoutItem class="buttonContainer slds-m-vertical_small slds-show_medium">	-->
+                <div onclick="{!c.handleSearch}">
+                    <c:IntelButton buttonClass="searchButton"
+                                   label="{$Label.c.PMP_Quick_Search_Button_partners}"/>
+                    <!-- IPA2.0 + US TWC4497-1631 -->
+                    <!-- label="{!v.searchType == 'product' ? $Label.c.PMP_Quick_Search_Button_Offerings : $Label.c.PMP_Quick_Search_Button_partners}"/> -->
+                </div>
+            </div> <!--</lightning:layoutItem> -->
+        </div> <!--  </lightning:layout> -->
+     
+            
+            
+       
+    </div>
+    
+    
+</aura:component>

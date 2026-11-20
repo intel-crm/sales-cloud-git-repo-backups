@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Pipeline How to Create a Custom Tab</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>More Information</actionButtonLabel>
+        <actionButtonLink>https://salescrmtraining.intel.com/sales-tools/sales-crm/basic-functionality/customize-your-sales-crm/customize-your-sales-crm-tabs/</actionButtonLink>
+        <body>&lt;p&gt;Creating a custom tab allows you to easily access commonly accessed functionality within Sales CRM.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Click the &lt;strong&gt;Pencil icon &lt;/strong&gt;to the right of the tabs to open the Edit Salesforce App Navigation Items window. A list of your current tabs is provided.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Add More Items&lt;/strong&gt;.&lt;/li&gt;&lt;li&gt;Select either from your &lt;strong&gt;Favorites &lt;/strong&gt;list or search in the &lt;strong&gt;All &lt;/strong&gt;list to find the tab or tabs you’d like to add. Click the &lt;strong&gt;plus icon&lt;/strong&gt; to select one or more tabs.&amp;nbsp;You’ll see the tabs listed under the search bar as you select them.&lt;/li&gt;&lt;li&gt;Once you’ve made your selections, click the&lt;strong&gt; Add “X” Nav Item(s) &lt;/strong&gt;button.&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Save&lt;/strong&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You can drag and drop them into the order you want by clicking on the 3 lines in front. You can edit tab names by clicking the pencil icon on the right or remove tabs by clicking the X.&amp;nbsp;Remember to Save your changes.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://goto.intel.com/in-app-feedback&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;Feedback and additional training topic suggestions&lt;/em&gt;&lt;/a&gt;&lt;em&gt; are always welcome and reviewed quarterly.&lt;/em&gt;&lt;/p&gt;</body>
+        <customApplication>standard__LightningSales</customApplication>
+        <delayDays>1</delayDays>
+        <description>Pipeline How to Create a Custom Tab</description>
+        <displayType>DockedComposer</displayType>
+        <header>Pipeline</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Pipeline How to Create a Custom Tab</masterLabel>
+        <publishedDate>2024-02-01</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2023-05-10</startDate>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <themeColor>Theme2</themeColor>
+        <themeSaturation>Dark</themeSaturation>
+        <timesToDisplay>1</timesToDisplay>
+        <title>How to Create a Custom Tab</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+        <videoLink>https://players.brightcove.net/4090876643001/syp9wqx20_default/index.html?videoId=6329504927112</videoLink>
+    </promptVersions>
+</Prompt>

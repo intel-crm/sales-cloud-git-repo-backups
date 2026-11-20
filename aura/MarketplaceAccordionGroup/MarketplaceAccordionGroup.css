@@ -1,0 +1,114 @@
+.THIS .h4 {
+  color: t(blue);
+}
+
+.THIS .highlight {
+  background-color: rgb(213, 239, 235);
+}
+
+.THIS .whiteBg {
+  background-color: t(white);
+}
+
+.THIS .fullHeight {
+  height: 100%;
+}
+
+.THIS .fullWidth {
+  width: 100%;
+}
+
+.THIS .compareCard {
+}
+
+.THIS .col {
+  flex: 1 0 150px;
+}
+
+.THIS .innerCard {
+  background-color: t(white);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.THIS .innerCard .top {
+  flex: 0 0 130px;
+}
+
+.THIS .innerCard .content {
+  border-top: 1px solid t(lightGray);
+  flex: 0 0 130px;
+  padding-bottom: 90px;
+}
+
+.THIS .innerCard .footer {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.THIS .compareCard .iconMediumTransparent {
+  opacity: 0.25;
+}
+
+.THIS .compareCard img {
+  width: 100px;
+}
+
+.THIS .sectionContent .col {
+  border: 1px solid t(lightestGray);
+  color: t(darkGray);
+}
+.THIS .tooltip {
+  position: relative;
+  display: inline-block;
+}
+.THIS .tooltip .tooltip-container {
+  display: none;
+  position: absolute;
+  bottom: 27px;
+  left: -32px;
+  width: 40em;
+}
+.THIS .addCard {
+  display:block;
+  height: 100%;
+}
+.THIS .addCard .slds-icon{
+  width: 4rem;
+  height: 4rem;
+}
+.THIS .addCard .slds-icon use{
+  fill: t(lightGray);
+}
+.THIS .tooltip .tooltip-content {
+  background-color: t(blue);
+  border-radius: 4px;
+  color: t(white);
+}
+.THIS .tooltip .slds-icon-text-default {
+  fill: t(blue);
+}
+
+
+.THIS .tooltip .tooltip-content::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom: 0;
+  bottom: -15px;
+  left: 24px;
+  border-top-color: t(blue);
+  border-width: 16px;
+}
+
+.THIS .tooltip:hover .tooltip-container {
+  display: flex;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Core Entitlement Email Template</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Core Entitlement Email Template</name>
+    <style>none</style>
+    <subject>Salesforce Contact {!Contact.Email} - E-Mail Address Change Notification</subject>
+    <textOnly>Hi   {!Contact.LastName} 
+
+Below Are the name of entitlements is inactive Due to email change
+ {!myCustomString} 
+
+Thanks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

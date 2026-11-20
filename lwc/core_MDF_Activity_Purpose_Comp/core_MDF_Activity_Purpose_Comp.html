@@ -1,0 +1,124 @@
+<template>
+
+    <template if:true={isOutcomeBasedActivityVisible}>
+        <div>
+            <lightning-layout class="slds-page-header slds-page-header--object-home">
+                <lightning-layout-item padding="horizontal-small" size="12" style="width:inherit;">
+                    <div class="page-section page-header">
+                        <h1 class="header-title">
+                            {CampaignPurposeHeader}
+                        </h1>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+            <div class={divClass}>
+
+                <table class="slds-table slds-table_bordered slds-m-top_medium">
+                    <thead>
+                        <tr>
+                            <th style="vertical-align: middle; background-color: #f3f3f3">{OutComeMetric}</th>
+                            <th style="vertical-align: middle; background-color: #f3f3f3">
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    {BaslineValue}
+                                    <lightning-helptext content={BaseLineHexlpText}
+                                        class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                </div>
+                            </th>
+                            <th style="vertical-align: middle; background-color: #f3f3f3">
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    {GoalValue}
+                                    <lightning-helptext content={GoalValueHexlpText}
+                                        class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                </div>
+                            </th>
+                            <th style="vertical-align: middle; background-color: #f3f3f3">
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    {BaselinePeriod}
+                                    <lightning-helptext content={BaselinePeriodHelptxt}
+                                        class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                </div>
+                            </th>
+                            <th style="vertical-align: middle; background-color: #f3f3f3">
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    {ResultValue}
+                                    <lightning-helptext content={ResultValueHelptxt}
+                                        class="slds-p-bottom_xx-small slds-m-left_xx-small"></lightning-helptext>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <!-- Editable Mode -->
+                    <template if:false={isReadOnly}>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>{outcomeLabel}</p>
+                                </td>
+                                <td>
+                                    <lightning-input type="number" step="1" min="0" value={selectedBaselineValue}
+                                        onchange={handleInputChangeBaselineValue} data-id="baselineValue"
+                                        disabled={editable} variant="label-hidden" required>
+                                    </lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input type="number" step="1" min="0" value={selectedGoalValue}
+                                        onchange={handleInputChangeGoalValue} disabled={editable} variant="label-hidden"
+                                        required>
+                                    </lightning-input>
+                                </td>
+                                <td style="width: 100px;">
+                                    <div class="combobox-fix">
+                                        <lightning-combobox class="responsive-input" name="baseline"
+                                            data-id="baselineInputBox" value={selectedBaseline} variant="label-hidden"
+                                            options={baselineOptions} onchange={handleInputChangeBaseline}
+                                            disabled={editable}>
+                                        </lightning-combobox>
+                                    </div>
+                                </td>
+                                <td>
+                                    <lightning-input class="small-input" type="number" step="1" min="0"
+                                        value={selectedResult} data-id="optionalValue" data-ignore="true"
+                                        onchange={handleResultChanged} disabled={isDisabled} variant="label-hidden"
+                                        required>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </template>
+
+                    <!-- Read-Only Mode -->
+                    <template if:true={isReadOnly}>
+                        <tbody>
+                            <template for:each={outcomes} for:item="o">
+                                <tr key={o.outcomeMetric}>
+                                    <td>{o.outcomeMetric}</td>
+                                    <td>{o.baselineValue}</td>
+                                    <td>{o.goalValue}</td>
+                                    <td>{o.baseLinePeriod}</td>
+                                    <td>{o.resultValue}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </template>
+                </table>
+
+            </div>
+            <!-- Description -->
+            <template if:true={isReadOnly}>
+                <div class="slds-p-left_medium slds-p-top_small">{description}</div>
+            </template>
+
+            <!-- Summary Section -->
+            <template if:true={isAllFieldsPopulated}>
+                <div class="slds-p-top_small slds-p-left_medium">
+                    {prepareIncreaseDecreaseLabel}{From} {selectedBaselineValue} {To} {selectedGoalValue}{ClosedBracket}
+                    {selectedBaselineLabel} {For} {selectedBrandLabels} {And} {selectedTechnologyLabels}
+                </div>
+            </template>
+
+        </div>
+
+    </template>
+
+</template>

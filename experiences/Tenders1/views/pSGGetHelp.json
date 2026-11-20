@@ -1,0 +1,48 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d72e494f-76f6-4fc8-a105-aced52ec7d97",
+  "label" : "PSG Get Help",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<h1><b style=\"color: rgb(68, 68, 68); background-color: inherit;\">Need Help?</b><b style=\"color: rgb(68, 68, 68);\">&nbsp;</b></h1><p><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYGAAAAAFAAGKM+MAAAAAAElFTkSuQmCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==\" alt=\"Shape\">&nbsp;&nbsp;</p><p><span style=\"color: rgb(64, 64, 64);\"> Answers to many of your questions may be found in the Training tab above</span></p><p><br></p><ul><li><span style=\"color: rgb(64, 64, 64);\">For business related questions, please contact your local Intel representative:</span></li><li class=\"ql-indent-1\"><span style=\"color: rgb(64, 64, 64);\">APJ:&nbsp;</span><a href=\"mailto:apssd@intel.com\" rel=\"noopener noreferrer\" target=\"null\" style=\"color: rgb(64, 64, 64);\">apssd@intel.com</a></li><li class=\"ql-indent-1\">Japan: <a href=\"mailto:japanssd@intel.com\" rel=\"noopener noreferrer\" target=\"null\" style=\"color: rgb(64, 64, 64);\">japanssd@intel.com</a></li><li class=\"ql-indent-1\"><span style=\"color: rgb(64, 64, 64);\">ASMO:&nbsp;</span><a href=\"mailto:cmquotes@intel.com\" rel=\"noopener noreferrer\" target=\"null\" style=\"color: rgb(64, 64, 64);\">cmquotes@intel.com</a></li><li class=\"ql-indent-1\"><span style=\"color: rgb(64, 64, 64);\">EMEA:&nbsp;</span><a href=\"mailto:eurossd@intel.com\" rel=\"noopener noreferrer\" target=\"null\" style=\"color: rgb(64, 64, 64);\">eurossd@intel.com</a></li><li class=\"ql-indent-1\"><span style=\"color: rgb(64, 64, 64);\">PRC:&nbsp;</span><a href=\"mailto:apssd@intel.com\" rel=\"noopener noreferrer\" target=\"null\" style=\"color: rgb(64, 64, 64);\">apssd@intel.com</a></li></ul><p><br></p><ul><li><span style=\"color: rgb(64, 64, 64);\">For IT related support, please contact the Intel Quote Request support team by clicking below link:</span></li></ul><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"https://intelinside.intel.com/support?appgroup=IQR\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(102, 163, 224);\">https://intelinside.intel.com/support?appgroup=IQR</a></p><p><br></p><p>&nbsp;</p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "94707b33-514c-4248-a125-0084f8677936",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0038a9d3-71df-4ee2-8174-dde047f75150",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "8201d4f5-b37d-4d9e-a025-e45a92dcc39d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6a8df0eb-e179-4a11-af3c-aa12be402d32",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "PSG Get Help"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0bf6ad08-5d78-43a1-81b9-efa276b26c02",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6b74f4c5-159d-4266-abdb-f7b97069d45b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-psg-get-help"
+}

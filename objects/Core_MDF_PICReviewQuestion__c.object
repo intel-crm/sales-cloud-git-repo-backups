@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Core_MDF_All_Budget_Types_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Applicable to All Budget Types</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_All_Programs_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Applicable to all Programs</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Budget_Type_nm__c</fullName>
+        <label>Budget Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Channel_Program__c</fullName>
+        <label>Channel Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Technical_Program_Name</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_EffectiveDate_dt__c</fullName>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_IneffectiveDate_dt__c</fullName>
+        <label>Ineffective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Is_Active_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_French_txt__c</fullName>
+        <label>Issue(French)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_Mexican_Spanish_txt__c</fullName>
+        <label>Issue(Mexican Spanish)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_Portuguese_txt__c</fullName>
+        <label>Issue (Portuguese) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_Russian_txt__c</fullName>
+        <label>Issue (Russian) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_Simplified_Chinese_txt__c</fullName>
+        <label>Issue (Simplified Chinese) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_Traditional_Chinese__c</fullName>
+        <label>Issue (Traditional Chinese) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ed_2_txt__c</fullName>
+        <label>Issue (German) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ed_3_txt__c</fullName>
+        <label>Issue (German) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ed_4_txt__c</fullName>
+        <label>Issue (German) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ed_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_German_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ed_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ed_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ed_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (German)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_en_US_External_2_txt__c</fullName>
+        <label>Issue (External) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_en_US_External_3_txt__c</fullName>
+        <label>Issue (External) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_en_US_External_4_txt__c</fullName>
+        <label>Issue (External) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_en_US_External_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_English_External_txt__c  &amp; BR() &amp;  
+Core_MDF_Issue_en_US_External_2_txt__c &amp; BR() &amp; 
+Core_MDF_Issue_en_US_External_3_txt__c &amp; BR() &amp; 
+Core_MDF_Issue_en_US_External_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue(External)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_2_txt__c</fullName>
+        <label>Issue (Spanish) -  2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_3_txt__c</fullName>
+        <label>Issue (Spanish)  -  3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_4_txt__c</fullName>
+        <label>Issue (Spanish)  - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_MX_2_txt__c</fullName>
+        <label>Issue (Mexican Spanish) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_MX_3_txt__c</fullName>
+        <label>Issue (Mexican Spanish) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_MX_4_txt__c</fullName>
+        <label>Issue (Mexican Spanish) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_MX_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_Mexican_Spanish_txt__c &amp; BR() &amp;
+Core_MDF_Issue_es_MX_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_es_MX_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_es_MX_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Mexican Spanish)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_es_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_Spanish_txt__c &amp; BR() &amp;
+Core_MDF_Issue_es_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_es_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_es_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Spanish)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_fr_2_txt__c</fullName>
+        <label>Issue (French) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_fr_3_txt__c</fullName>
+        <label>Issue (French) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_fr_4_txt__c</fullName>
+        <label>Issue (French) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_fr_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_French_txt__c &amp; BR() &amp;
+Core_MDF_Issue_fr_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_fr_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_fr_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (French)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_it_2_txt__c</fullName>
+        <label>Issue (Italian) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_it_3_txt__c</fullName>
+        <label>Issue (Italian) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_it_4_txt__c</fullName>
+        <label>Issue (Italian) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_it_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_Italian_txt__c &amp; BR() &amp;
+Core_MDF_Issue_it_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_it_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_it_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Italian)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ja_2_txt__c</fullName>
+        <label>Issue (Japanese) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ja_3_txt__c</fullName>
+        <label>Issue (Japanese) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ja_4_txt__c</fullName>
+        <label>Issue (Japanese) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ja_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_Japanese_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ja_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ja_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ja_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Japanese)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ko_2_txt__c</fullName>
+        <label>Issue (Korean) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ko_3_txt__c</fullName>
+        <label>Issue (Korean) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ko_4_txt__c</fullName>
+        <label>Issue (Korean) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ko_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Question_Korean_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ko_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ko_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ko_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Korean)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_pt_BR_2_txt__c</fullName>
+        <label>Issue (Portuguese) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_pt_BR_3_txt__c</fullName>
+        <label>Issue (Portuguese) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_pt_BR_4_txt__c</fullName>
+        <label>Issue (Portuguese) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_pt_BR_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Issue_Portuguese_txt__c &amp; BR() &amp;
+Core_MDF_Issue_pt_BR_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_pt_BR_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_pt_BR_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Portuguese)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ru_2_txt__c</fullName>
+        <label>Issue (Russian) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ru_3_txt__c</fullName>
+        <label>Issue (Russian) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ru_4_txt__c</fullName>
+        <label>Issue (Russian) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_ru_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Issue_Russian_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ru_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ru_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_ru_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Russian)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_CN_2_txt__c</fullName>
+        <label>Issue (Simplified Chinese) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_CN_3_txt__c</fullName>
+        <label>Issue (Simplified Chinese) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_CN_4_txt__c</fullName>
+        <label>Issue (Simplified Chinese) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_CN_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Issue_Simplified_Chinese_txt__c &amp; BR() &amp;
+Core_MDF_Issue_zh_CN_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_zh_CN_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_zh_CN_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Simplified Chinese)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_TW_2_txt__c</fullName>
+        <label>Issue (Traditional Chinese) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_TW_3_txt__c</fullName>
+        <label>Issue (Traditional Chinese) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_TW_4_txt__c</fullName>
+        <label>Issue (Traditional Chinese) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Issue_zh_TW_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_MDF_Issue_Traditional_Chinese__c &amp; BR() &amp;
+Core_MDF_Issue_zh_TW_2_txt__c &amp; BR() &amp;
+Core_MDF_Issue_zh_TW_3_txt__c &amp; BR() &amp;
+Core_MDF_Issue_zh_TW_4_txt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Issue (Traditional Chinese)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Outcome_Based_Indicator_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Shows whether the question is for outcome based claims or not.</description>
+        <label>Outcome Based Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Parent_Question__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Parent Question</label>
+        <referenceTo>Core_MDF_PICReviewQuestion__c</referenceTo>
+        <relationshipLabel>PIC Review Questions</relationshipLabel>
+        <relationshipName>PIC_Review_Questions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_English_External_txt__c</fullName>
+        <label>Issue (External) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_English_txt__c</fullName>
+        <label>Question (English) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_File_Type_nm__c</fullName>
+        <label>Question File Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Proof of Cost</fullName>
+                    <default>false</default>
+                    <label>Proof of Cost</label>
+                </value>
+                <value>
+                    <fullName>Proof of Attribution</fullName>
+                    <default>false</default>
+                    <label>Proof of Attribution</label>
+                </value>
+                <value>
+                    <fullName>Proof of Execution</fullName>
+                    <default>false</default>
+                    <label>Proof of Execution</label>
+                </value>
+                <value>
+                    <fullName>General</fullName>
+                    <default>false</default>
+                    <label>General</label>
+                </value>
+                <value>
+                    <fullName>Proof of Branding</fullName>
+                    <default>false</default>
+                    <label>Proof of Branding</label>
+                </value>
+                <value>
+                    <fullName>Third Party</fullName>
+                    <default>false</default>
+                    <label>Third Party</label>
+                </value>
+                <value>
+                    <fullName>NEX</fullName>
+                    <default>false</default>
+                    <label>NEX</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_French_txt__c</fullName>
+        <label>Issue (French) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_German_txt__c</fullName>
+        <label>Issue (German) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_Italian_txt__c</fullName>
+        <label>Issue (Italian) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_Japanese_txt__c</fullName>
+        <label>Issue (Japanese) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_Korean_txt__c</fullName>
+        <label>Issue (Korean) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_Mexican_Spanish_txt__c</fullName>
+        <label>Issue (Mexican Spanish) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_Spanish_txt__c</fullName>
+        <label>Issue (Spanish) - 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_en_US_2_txt__c</fullName>
+        <label>Question (English) - 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_en_US_3_txt__c</fullName>
+        <label>Question (English) - 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_en_US_4_txt__c</fullName>
+        <label>Question (English) - 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Question_en_US_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(NOT(ISBLANK( Core_MDF_Question_English_txt__c )), Core_MDF_Question_English_txt__c &amp; BR(),&quot;&quot;)&amp;
+If(NOT(ISBLANK( Core_MDF_Question_en_US_2_txt__c )), Core_MDF_Question_en_US_2_txt__c &amp; BR(),&quot;&quot;)&amp;
+If(NOT(ISBLANK( Core_MDF_Question_en_US_3_txt__c )), Core_MDF_Question_en_US_3_txt__c &amp; BR(),&quot;&quot;)&amp;
+If(NOT(ISBLANK( Core_MDF_Question_en_US_4_txt__c )), Core_MDF_Question_en_US_4_txt__c &amp; BR(),&quot;&quot;)</formula>
+        <label>Question (English)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Sort_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Sub_Question_Ind__c</fullName>
+        <description>to identify that the question is a sub-question.</description>
+        <formula>IF( ISBLANK(Core_MDF_Parent_Question__c  ),false,true)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sub Question Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Third_Party_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Third Party Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>PIC Review Question</label>
+    <nameField>
+        <displayFormat>QC-{0000}</displayFormat>
+        <label>Question Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>PIC Review Questions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

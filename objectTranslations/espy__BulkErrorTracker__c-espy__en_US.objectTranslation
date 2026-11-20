@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BulkErrorTracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BulkErrorTrackers</value>
+    </caseValues>
+    <fields>
+        <label><!-- ErrorClass Last modified By Id --></label>
+        <name>espy__ErrorClass_Last_modified_By_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>espy__Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- classId --></label>
+        <name>espy__classId__c</name>
+    </fields>
+    <fields>
+        <label><!-- className --></label>
+        <name>espy__className__c</name>
+    </fields>
+    <fields>
+        <label><!-- errorCount --></label>
+        <name>espy__errorCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- extendedErrorStatus --></label>
+        <name>espy__extendedErrorStatus__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

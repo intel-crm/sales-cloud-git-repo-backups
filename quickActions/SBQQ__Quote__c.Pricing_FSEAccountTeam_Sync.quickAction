@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionSubtype>Action</actionSubtype>
+    <description>Action to Sync Quote Team FSEs with Public Group.</description>
+    <label>Sync SDM/FSE Access</label>
+    <lightningWebComponent>pricing_FSEAccountTeamSyncComponent</lightningWebComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningWebComponent</type>
+</QuickAction>

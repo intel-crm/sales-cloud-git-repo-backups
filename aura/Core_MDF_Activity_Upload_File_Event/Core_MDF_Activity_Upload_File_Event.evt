@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" description="Fired once the upload of the file is completed" >
+	<aura:attribute name="uploadFilesIds" type="String[]" 
+                    description="Stores the File Ids of all the uploaded document"/>
+    <aura:attribute name="fileUploaded" type="Boolean" 
+                    description="Comfirms whether the Files have been uploaded or not"/>
+</aura:event>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ServiceNow Field Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ServiceNow Field Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- assignment_group --></label>
+        <name>assignment_group__c</name>
+    </fields>
+    <fields>
+        <label><!-- business_service --></label>
+        <name>business_service__c</name>
+    </fields>
+    <fields>
+        <label><!-- cmdb_ci --></label>
+        <name>cmdb_ci__c</name>
+    </fields>
+    <fields>
+        <label><!-- service_offering --></label>
+        <name>service_offering__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Outcome-Based Account Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Outcome-Based Account Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_AccountId__c</name>
+        <relationshipLabel><!-- Outcome-Based Account Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Core_MDF_Amount_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome-Based Sub Activity --></label>
+        <name>Core_MDF_OutcomeBased_SubAct_Id__c</name>
+        <relationshipLabel><!-- Outcome-Based Account Mappings (Core_MDF_Outcome_Based_SubActId__c) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Outcome-Based Campaign --></label>
+        <name>Core_MDF_Outcome_Based_CampaignId__c</name>
+        <relationshipLabel><!-- Outcome-Based Account Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Percentage --></label>
+        <name>Core_MDF_Percentage_pct__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

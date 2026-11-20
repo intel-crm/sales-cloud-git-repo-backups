@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FULL_DESCRIPTION</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <column>ASSIGNED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Natalia Radtke,Andrzej Taraszkiewicz,Antoine Guinebault,Barbara Barusova Maliszewska,Bene Cazzamali,Bruno Le Gallou,Dawid Studzinski,Dilip James,Dmitry Matchin,Dorian Witkowski,Dorota Prokopowicz,Ekaterina Kotelnikova,Emmanuel Le Roux,Hesham Elsaid,Joe Martin,Karim Ghatwary,Katarzyna Makowska,Korcan Erguder,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Marcin Sochacki,Marek Lesiewski,Marta Muszynska,Martin Opara,Michela Adamo,Milosz Cieszynski,Nikolay Panov,Ozkan Ozdikici,Roberto Lipari,Roksana Dylewska,Stephy Savier,Tomasz Czajko,Vladimir Fedorov,Aaron Voelker,Alexey Belogortsev,Ariel Hako,Bartlomiej Olik-Gajewski,Bartłomiej Olik-Gajewski,Kamil Guzik,Michal Nowak,Tim Olszewski,Blazej Matusik,Arndt Mitwer,Leszek Grzywacz,Jacek Hadryś</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>competition,amd,competitive,feedback,sentiment</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Competitive &amp; Feedback</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountActivity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>FULL_DESCRIPTION</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2019-07-18</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-07-01</startDate>
+    </timeFrameFilter>
+</Report>

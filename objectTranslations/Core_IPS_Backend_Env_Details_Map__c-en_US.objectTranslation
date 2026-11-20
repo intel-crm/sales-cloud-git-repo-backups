@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Backend Env Details Map</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Backend Env Details Maps</value>
+    </caseValues>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Core_IPS_Backend_EnvQuestion__c</name>
+        <relationshipLabel><!-- Environmental Details Filter --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Backend System --></label>
+        <name>Core_IPS_Backend_System__c</name>
+        <relationshipLabel><!-- Environmental Details Filter --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deactivated --></label>
+        <name>Core_IPS_Deactivated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environment Variable Answer --></label>
+        <name>Core_IPS_Environment_Variable_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environment Variable Question --></label>
+        <name>Core_IPS_Environment_Variable_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environmental Variable Name --></label>
+        <name>Core_IPS_Environmental_Variable_Name__c</name>
+        <relationshipLabel><!-- Backend Env Details Maps --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Select Environmental Variable which is defined for the Support Organization --></errorMessage>
+        <name>Core_IPS_Backend_Validate_EnvVar_Name</name>
+    </validationRules>
+</CustomObjectTranslation>

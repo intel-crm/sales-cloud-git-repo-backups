@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Seismic_DOV</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Seismic_DOVs</value>
+    </caseValues>
+    <fields>
+        <label><!-- DOV ID --></label>
+        <name>DOV_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Sync --></label>
+        <name>Date_Sync__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIM GUID --></label>
+        <name>PIM_GUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Property Name --></label>
+        <name>Property_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

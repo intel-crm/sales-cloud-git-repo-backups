@@ -1,0 +1,6 @@
+<apex:page id="WPaiCanvasAccount360" standardController="Account" sidebar="false" docType="html-5.0" standardStylesheets="false" tabStyle="pai_ss__PeopleAiAppTab__tab"  applyBodyTag="false">
+    <c:LOutWrap cmpName="WPaiCanvasAccount360" cmpArgs="{recordId:'{!Account.Id}', isClassic:true}" />
+
+    <!-- Dev Test with extenral ID specified -->
+    <!-- <c:LOutWrap cmpName="WPaiCanvasAccount360" cmpArgs="{recordId:'{!Account.Id}', eidFieldApiName:'AccountNumber', isClassic:true}"/> -->
+</apex:page>

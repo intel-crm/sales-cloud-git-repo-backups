@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Importo</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>partnerfundallocation_amount</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Partner del budget</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>partnerfundallocation_channelpartner</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Nome dell&apos;allocazione fondi del Partner</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Nomi allocazione dei fondi per partner</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>partnerfundallocation_name</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Totale rivendicazioni fondi approvato</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>partnerfundallocation_totalapprovedfcs</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Totale richieste fondi approvato</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>partnerfundallocation_totalapprovedfrs</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Totale rivendicazioni fondi rimborsato</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>partnerfundallocation_totalreimbursedfcs</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <help>Importo disponibile per la creazione di attività</help>
+        <label>Imp. disp. per le attività</label>
+        <name>Core_MDF_Available_Activity_Alloc_Amt__c</name>
+    </fields>
+    <fields>
+        <help>Importo disponibile per la creazione di richieste di rimborso</help>
+        <label>Imp. disp. per le richieste di rimborso</label>
+        <name>Core_MDF_Available_Allocation_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- BudgetIdNodeAccountId --></label>
+        <name>Core_MDF_BudgetIdNodeAccountId_txt__c</name>
+    </fields>
+    <fields>
+        <label>Tipo di budget</label>
+        <name>Core_MDF_Budget_Type__c</name>
+    </fields>
+    <fields>
+        <help>Importo utilizzato per le richieste già in corso (solo attive)</help>
+        <label>Imp. riserv. alle richieste di rimborso</label>
+        <name>Core_MDF_Claim_Reserved_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>Core_MDF_CreatedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>Core_MDF_End_Date_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Account Name --></label>
+        <name>Core_MDF_Intel_Account_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By --></label>
+        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner --></label>
+        <name>Core_MDF_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Core_MDF_Start_Date_dt__c</name>
+    </fields>
+    <fields>
+        <help>Importo utilizzato per le attività già in corso (solo attive)</help>
+        <label>Imp. riserv. alle attività</label>
+        <name>Core_MDF_Total_Activity_Allocated_Amount__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- This is the Record type for Channel MDF program --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <label>Fondo di co-marketing per i clienti</label>
+        <name>Core_MDF_Client_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client CoMarketing Fund Boost --></label>
+        <name>Core_MDF_Client_CoMarketing_Fund_Boost</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-GTM --></description>
+        <label><!-- Co-GTM --></label>
+        <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <label>Fondo di co-marketing per data center</label>
+        <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Ecosystem Extension Fund --></description>
+        <label><!-- Ecosystem Extension Fund --></label>
+        <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Intel Partner Alliance --></description>
+        <label><!-- Intel Partner Alliance --></label>
+        <name>Core_MDF_Intel_Partner_Alliance</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Retail Marketing Funds Record Type --></description>
+        <label><!-- Retail Marketing Funds --></label>
+        <name>Core_MDF_Retail_Marketing_Funds</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Service Provider CoMarketing Fund --></label>
+        <name>Core_MDF_Service_Provider_CoMarketing_Fund</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Allocation Amount Cannot be lesser than 0 --></errorMessage>
+        <name>Core_MDF_AllocAmt_Cannot_be_lesserthan_0</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_MDF_Export_List_View --></label>
+        <name>Core_MDF_Export_List_View</name>
+    </webLinks>
+</CustomObjectTranslation>

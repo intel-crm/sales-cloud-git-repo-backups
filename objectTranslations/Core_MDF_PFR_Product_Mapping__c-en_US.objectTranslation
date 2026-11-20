@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Criteria for Product --></label>
+        <name>Core_MDF_Criteria_For_Product_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>Core_MDF_IsActive_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product EPM ID --></label>
+        <name>Core_MDF_Product_EPM_ID_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Segment Product Type --></label>
+        <name>Core_MDF_Segment_ProductType_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show All Products --></label>
+        <name>Core_MDF_Show_All_Products_ind__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

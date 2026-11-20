@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>MDF Boost welcome email English</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_MDF</name>
+    <style>none</style>
+    <subject>Welcome to Client Co-Marketing Fund (Channel MDF)</subject>
+    <textOnly>Welcome to OLO</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

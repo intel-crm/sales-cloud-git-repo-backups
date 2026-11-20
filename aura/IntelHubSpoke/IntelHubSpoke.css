@@ -1,0 +1,62 @@
+.THIS {
+}
+
+.THIS .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background: t(white);
+  z-index: t(zIndexModal);
+  transition: 0.6s ease-out;
+  transform: translate(-200%, 0);
+}
+.THIS .overlay.slds-show {
+  transform: translate(0);
+}
+.THIS .headline {
+  background: t(white);
+}
+.THIS a.spoke {
+  display: block;
+  position: relative;
+}
+
+.THIS a.open {
+  padding-right: 30px;
+}
+.THIS a.close {
+  padding-left: 20px;
+}
+.THIS .spoke .slds-icon_container{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.THIS .spoke.open .slds-icon_container {
+  right: 20px;
+}
+.THIS .spoke.close .slds-icon_container {
+  left: 0;
+}
+.THIS a.spoke.close h3 {
+  margin-left: 30px;
+  color: t(darkGray);
+}
+.THIS .close-heading {
+  border-bottom: 1px solid t(lightGray);
+  min-height: 80px;
+}
+.THIS .body {
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.THIS a.spoke h3,
+.THIS a.spoke {
+  color: t(blue);
+}

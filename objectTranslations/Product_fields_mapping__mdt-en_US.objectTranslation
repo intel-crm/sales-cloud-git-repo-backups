@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product fields mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product fields mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Enable --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow empty MMID records? --></label>
+        <name>Allow_empty_MMID_records__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPH Field --></label>
+        <name>FPH_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hierarchy ID --></label>
+        <name>Hierarchy_ID__c</name>
+        <picklistValues>
+            <masterLabel>43</masterLabel>
+            <translation><!-- 43 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>59</masterLabel>
+            <translation><!-- 59 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPS Visible Flag - External --></label>
+        <name>IPS_Visible_Flag_External__c</name>
+    </fields>
+    <fields>
+        <label><!-- IQR Visible? --></label>
+        <name>IQR_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inbound staging field WOR --></label>
+        <name>Inbound_staging_field_WOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inbound staging field WR --></label>
+        <name>Inbound_staging_field_WR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inbound staging field --></label>
+        <name>Inbound_staging_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is L4 Mapping Field --></label>
+        <name>Is_L4_Mapping_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is MMID Blank --></label>
+        <name>Is_MMID_Blank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is four levels available --></label>
+        <name>Is_four_levels_available__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is one level available --></label>
+        <name>Is_one_level_available__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is three levels available --></label>
+        <name>Is_three_levels_available__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is two levels available --></label>
+        <name>Is_two_levels_available__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product2 field --></label>
+        <name>Product2_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Org --></label>
+        <name>Product_Org__c</name>
+        <picklistValues>
+            <masterLabel>FPH</masterLabel>
+            <translation><!-- FPH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPS</masterLabel>
+            <translation><!-- IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation><!-- Sales --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Type EMP Id --></label>
+        <name>Product_Type_EMP_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product staging field --></label>
+        <name>Product_staging_field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restriction Code --></label>
+        <name>Restriction_Code__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sales Visible? --></label>
+        <name>Sales_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Level Configuration</masterLabel>
+            <translation><!-- Level Configuration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MMID Attribute</masterLabel>
+            <translation><!-- MMID Attribute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mapping</masterLabel>
+            <translation><!-- Mapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rollup</masterLabel>
+            <translation><!-- Rollup --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to make changes on configurations --></errorMessage>
+        <name>Level_configuration_modification_rule</name>
+    </validationRules>
+</CustomObjectTranslation>

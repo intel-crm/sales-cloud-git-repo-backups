@@ -1,0 +1,56 @@
+<messaging:emailTemplate subject="The Payment Run {!IF(relatedTo.Core_MDF_Status_Txt__c == 'Completed','Completed',IF(relatedTo.Core_MDF_Status_Txt__c == 'Error','Failed',relatedTo.Core_MDF_Status_Txt__c) )}. Payment Run Number: {!RelatedTo.Name}" 
+                         recipientType="User" renderUsingSystemContextWithoutSharing="True" 
+                         relatedToType="Core_MDF_Payment_Run__c" 
+                         language="en_US">
+    <messaging:htmlEmailBody >
+        <html>
+            <body>
+                <div style="font-size:14px;font-family:Calibri">              
+                    <p>      
+                       {!$Label.Core_MDF_EmailTemp_DearIntelemployee}<br/>
+                    </p>
+                    <p>The payment run is {!IF(relatedTo.Core_MDF_Status_Txt__c == 'Completed','completed',IF(relatedTo.Core_MDF_Status_Txt__c == 'Error','Failed',relatedTo.Core_MDF_Status_Txt__c) )}. <br/> 
+                    <p>Please find the details:</p> 
+                        <ul>
+                            <li>Payment Run Number&nbsp;: {!relatedTo.Name}</li>
+                            <apex:outputPanel rendered="{!relatedTo.Core_MDF_Geo_Txt__c!=null}">
+                                 <li>Geo&nbsp;: {!relatedTo.Core_MDF_Geo_Txt__c}</li>                                
+                            </apex:outputPanel>
+                            
+                            <li>Status&nbsp;: {!relatedTo.Core_MDF_Status_Txt__c}</li>
+                            <apex:outputPanel rendered="{!relatedTo.Core_MDF_Account_Id__c!=null}">
+                                <li>Account Name&nbsp;: {!relatedTo.Core_MDF_Account_Id__r.name}</li>                                
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!relatedTo.Core_MDF_Account_Names__c!=null}">
+                                <li>Account Names&nbsp;: {!relatedTo.Core_MDF_Account_Names__c}</li>                                
+                            </apex:outputPanel> 
+                            <li>Program&nbsp;: {!relatedTo.Core_MDF_Program_Id__r.Name}</li>
+                            <apex:outputPanel rendered="{!relatedTo.Core_MDF_Budget_Type_nm__c!=null}">
+                                <li>Budget Type&nbsp;: {!relatedTo.Core_MDF_Budget_Type_nm__c}</li>                                
+                            </apex:outputPanel>  
+                            <apex:outputPanel rendered="{!AND(relatedTo.Core_MDF_Status_Txt__c == 'Completed',relatedTo.Core_MDF_Files_Name_Txt__c!=null,OR((relatedTo.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'),
+                            (relatedTo.Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c == 'Intel Partner Alliance')))}">
+                                <li>Files&nbsp;: <ul>
+                                                    <li><apex:outputText value="{!HTMLENCODE(relatedTo.Core_MDF_Files_Name_Txt__c)}" 
+                                                                         style="white-space:pre;" 
+                                                                         escape="false"/>
+                                                    </li>
+                                                </ul>
+                                </li>
+                            </apex:outputPanel>                            
+                        </ul>                        
+                    </P>
+                    <p>
+                         Please click <a href="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">here</a> to view the Payment Run Record.
+                    </p>
+                    <p> 
+                        {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/><br/>
+                        {!$Label.Core_MDF_Email_Signature} <br/>                       
+                    </p>
+                </div>            
+            
+            
+    </body>         
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

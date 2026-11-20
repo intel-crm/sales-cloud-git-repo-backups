@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Assist Opt-out KOR</name>
+    <style>none</style>
+    <subject>비즈니스 계정 업데이트</subject>
+    <textOnly>비즈니스 계정 업데이트
+
+
+!%UserFirstName%!,,
+
+이 안내는 자신의 인텔® 기술 공급자 프로그램 정보를 인텔® 공인 디스트리뷰터 및/또는 인텔® 공식 공급업체(서비스 공급자)와 공유를 중단하기로 선택했음을 알리기 위해 발송되었습니다.
+
+비즈니스 계정 이름: !%AccountName%!
+계정 번호: !%AccountNumber%!
+선택자의 기본 연락처: !%UserEmailAddr%!
+날짜: !%DateSigned%!
+선택된 서비스 공급자: !%Distributors%!
+허가: 나는 나의 이익을 관리하기 위해 나의 인텔® 기술 공급자 프로그램 계정에 대한 정보를 서비스 공급업체와 공유할 수 있는 권한을 인텔에 부여한다. 또한 인텔이 나를 대신해서 포인트를 적립할 수 있도록 허가한다(아시아 태평양 및 일본 지역(APJ)에서는 사용 불가).
+
+
+만약 이를 승인하지 않거나 오류가 있다고 생각되는 경우 여기를 클릭하여 선택 항목을 수정 또는 취소하십시오.
+질문이 있는 경우, programs@intel.com에 문의하십시오.
+
+감사합니다.
+인텔® 파트너 얼라이언스 팀
+
+이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+개인정보 처리방침 | 쿠키</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

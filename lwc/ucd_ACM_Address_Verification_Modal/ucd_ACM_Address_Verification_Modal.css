@@ -1,0 +1,16 @@
+.address-box {
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.address-box:hover {
+    border-color: #1b96ff;
+    box-shadow: 0 0 3px #1b96ff;
+}
+
+.address-box_selected {
+    border: 2px solid #1b96ff;
+    box-shadow: 0 0 5px #1b96ff;
+    background-color: #eef4ff;
+}

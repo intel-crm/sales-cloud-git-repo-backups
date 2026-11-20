@@ -1,0 +1,642 @@
+<template>
+    <div class="mainCompMargin">
+            <div class="pageTitle">
+                <h3>{label.EPUM_ManagePersonnel}</h3>
+                <div if:true={showMoreVisibility}> 
+                    <p>{label.EPUM_ManagePersonnel_SubTittle}
+                    <button class="slds-button" onclick={handleShowMoreClick}> &nbsp; {clickedButtonLabel}</button>        
+                </p> </div>
+                <div if:false={showMoreVisibility}> 
+                    <p>{label.EPUM_ManagePersonnel_SubTittle}</p> 
+                </div>
+                <template if:true={boolVisible}>  
+                    <template if:true={showMore_A}>  
+                        <div>{label.EPUM_ShowMoreText_A}</div>
+                    </template>  
+                    <template if:true={showMore_B}>  
+                        <div>{label.EPUM_ShowMoreText_B}</div>
+                    </template>
+                    <template if:true={showMore_C}>  
+                        <div>{label.EPUM_ShowMoreText_C}</div>
+                    </template>
+                </template>  
+            </div>
+        <div>
+            <div class="slds-grid slds-wrap slds-m-left_large">
+                <h3 class="icon-container">
+                    <span class="fa-users-1 icon slds-m-right_medium"></span>
+                </h3>
+                <h3 class="label">{label.EPUM_ContactRolesResTitle1}</h3>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div
+                    class="slds-size_6-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12  slds-p-top--small">
+                    <input name="conEmail" placeholder={label.EPUM_SearchByEmail} onchange={searchTextChange}
+                        class="slds-input searchInput searchTextInput" value={searchKeyword}></input>
+                </div>
+                <div
+                    class="slds-size_3-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12 slds-p-top--small searchContactDiv">
+                    <button class="slds-button slds-button_brand clearSearch" title={label.EPUM_SearchContact}
+                        onclick={searchContact}>{label.EPUM_SearchContact}</button>
+                </div>
+                <div
+                    class="slds-size_3-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12 slds-p-top--small clearSearchDiv">
+                    <button class="slds-button slds-button_outline-brand clearSearch" title={label.EPUM_ClearSearch}
+                        onclick={clearSearch}>{label.EPUM_ClearSearch}</button>
+                </div>
+            </div>
+        </div>
+        
+        <br><br>
+        <div if:true={validationmsg} class="slds-text-color_error validationmsg">
+            {validationmsg}
+        </div>
+        <div if:true={blockedDomain} class="slds-text-color_error validationmsg" style="margin-top:auto;"> 
+            {label.PRM_BlockedDomainError}<a href={label.IPA_Request_Support_URL}> {label.PRM_BlockedDomainErrorLabel}</a>
+        </div>
+        <div if:true={blockedContact} class="slds-text-color_error validationmsg" style="margin-top:auto;"> 
+           <p>blocked</p>
+        </div>
+        <div if:true={message} class="slds-m-left--large slds-grid slds-wrap slds-m-right--large">
+            <template if:true={getValidationMsg}>
+                <div
+                    class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg ">
+                    <lightning-formatted-rich-text value={message}>
+                    </lightning-formatted-rich-text>
+                </div>
+            </template>
+            <template if:false={getValidationMsg}>
+                <div
+                    class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg">
+                    <lightning-formatted-rich-text value={message}>
+                    </lightning-formatted-rich-text>
+                </div>
+            </template>
+            <!-- <div if:true={isDisplayChatWithIntelLink}
+                class="slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                <a href={label.EPUM_ChatWithIntelLink} target="_blank"
+                    class="slds-text-heading_medium slds-p-right_x-small slds-m-bottom_medium parRole validationMsg"><u>{label.EPUM_ChatWithIntel}</u></a>
+            </div> -->
+            <div if:true={createNew}
+                class=" slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                <button class="slds-button slds-button_brand inviteAUserClass" onclick={showInviteUser}>
+                    <lightning-icon size="x-small" class="slds-p-right_x-small" 
+                        icon-name="utility:add">
+                    </lightning-icon>
+                    {label.EPUM_InviteAUser}
+                </button>
+            </div>
+            <div if:true={sendInvite}
+                class="slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                <button class="slds-button slds-button_brand inviteAUserClass" onclick={sendInviteToUser}>
+                    {label.EPUM_SendInvite}
+                </button>
+                <!--lightning-button variant="brand" label={label.EPUM_SendInvite} onclick={sendInviteToUser}></lightning-button-->
+            </div>
+        </div>
+       
+        <hr>
+        <div class="slds-grid slds-wrap slds-m-left_large">
+            <h3 class="icon-container">
+                <span class="fa-users-1 icon slds-m-right_medium"></span>
+            </h3>   
+            <h3 class="label">{label.PRM_Invite_Member_Title}</h3>
+            <c-prm_bulk-Invite-Parent></c-prm_bulk-Invite-Parent> 
+            <p style="font-weight: bold;">For any issues, please contact <a href={label.PRM_Customer_support_link} target="_blank"> support</a></p>
+        </div>
+        <br><hr>
+        <!--<c-company-profile-data-grid-epum> </c-company-profile-data-grid-epum> -->
+    
+        <div class="slds-p-top_large bgWhite">
+            <div class="slds-grid slds-wrap slds-m-left_large">
+                <h3 class="icon-container">
+                    <span class="fa-users-1 icon slds-m-right_medium"></span>
+                </h3>
+                <div
+                    class="slds-size_9-of-12 slds-medium-size_9-of-12 slds-medium-size_9-of-12 slds-large-size_9-of-12">
+                    <!--<h3 class="label">{label.EPUM_ContactRolesResTitle} / {label.EPUM_ContactRolesResTitle1}</h3>-->
+                    <h3 class="label">{label.EPUM_manageTeamMember}</h3>
+                    <p class="slds-m-top_xx-small">
+                        {label.EPUM_PartnerRoleTitle}/{label.EPUM_Tier} - {partnerRole}/{partnerTier}
+                    </p>
+                </div>
+                <!--<div
+                    class=" slds-m-bottom_medium inviteUserDiv slds-size_2-of-12 slds-small-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                    <button class="slds-button slds-button_brand inviteAUserClass slds-float_right"
+                        onclick={showInviteUser}>
+                        <lightning-icon size="x-small" class="slds-p-right_x-small" 
+                            icon-name="utility:add"></lightning-icon>
+                        {label.EPUM_InviteAUser}
+                    </button>
+                </div>-->
+            </div>
+            </br>
+            <!--<p class="slds-m-top_x-small  slds-m-left_large">
+    {label.EPUM_ContactRolesResSubTitle}
+    </p>-->
+    
+    
+            <!--<templete class="slds-m-around--large slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12  slds-p-top--small">
+                    <input name="conEmail" placeholder={label.EPUM_SearchByEmail} onchange={searchTextChange}
+                        class="slds-input searchInput searchTextInput" value={searchKeyword}></input>
+                </div>
+                <div
+                    class="slds-size_1-of-2 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-p-top--small searchContactDiv">
+                    <button class="slds-button slds-button_brand searchContact" title={label.EPUM_SearchContact}
+                        onclick={searchContact}>{label.EPUM_SearchContact}</button>
+                </div>
+                <div
+                    class="slds-size_1-of-2 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-p-top--small clearSearchDiv">
+                    <button class="slds-button slds-button_neutral clearSearch" title={label.EPUM_ClearSearch}
+                        onclick={clearSearch}>{label.EPUM_ClearSearch}</button>
+                </div>
+            </templete>-->
+    
+    
+    
+            <!--<div if:true={validationmsg} class="slds-text-color_error validationmsg">
+                {validationmsg}
+            </div>-->
+    
+    
+            <!--Subhadeep Chnages: START-->
+    
+            <div if:false={message}>
+                <lightning-button variant="neutral" label={label.PRM_Filter_Button} title={label.PRM_Filter_Button} onclick={popUpFilter}
+                    style="margin-left: 23px;" class="slds-m-left_x-small"></lightning-button>
+
+
+                    <lightning-button variant="neutral" label={label.PRM_Export_Button} onclick={exportHandler}
+                    style="margin-left: 23px;" class="slds-m-left_x-small"></lightning-button> 
+
+                       
+    
+                <div style="display:flex;flex-direction:row;justify-content: flex-start;"
+                    class="slds-m-horizontal_x-small slds-m-top_small">
+    
+                    <div style="margin-left: 14px;" if:true={showFNamePill}>
+                        <lightning-pill label={fNamePillText} onremove={handlePillRemove} id='fNamePill'>
+                        </lightning-pill>
+                    </div>
+    
+                    <div style="margin-left: 14px;" if:true={showLNamePill}>
+                        <lightning-pill label={lNamePillText} onremove={handlePillRemove} id='lNamePill'>
+                        </lightning-pill>
+                    </div>
+    
+                    <div style="margin-left: 14px;" if:true={showEmailPill}>
+                        <lightning-pill label={emailPillText} onremove={handlePillRemove} id='emailPill'>
+                        </lightning-pill>
+    
+                    </div>
+    
+    
+    
+                    <template iterator:it={allStatus}>
+                        <div style="margin-left: 14px;" key={it.value.Id}>
+                            <lightning-pill label={it.value} onremove={handlePillRemove} id={it.value}></lightning-pill>
+                        </div>
+                    </template>
+                    <!-- <div style="margin-left: 14px;" if:true={showAcStatusPill}>
+                    <lightning-pill label={statusPillTextAc} onremove={handlePillRemove} id='statusPillAc'></lightning-pill>
+                </div>
+                <div style="margin-left: 14px;" if:true={showInStatusPill}>
+                    <lightning-pill label={statusPillTextIn} onremove={handlePillRemove} id='statusPillIn'></lightning-pill>
+                </div>
+                <div style="margin-left: 14px;" if:true={showSuStatusPill}>
+                    <lightning-pill label={statusPillTextSu} onremove={handlePillRemove} id='statusPillSu'></lightning-pill>
+                </div>-->
+    
+    
+                    <template iterator:it={allLocation}>
+                        <div style="margin-left: 14px;" key={it.value.Id}>
+                            <lightning-pill label={it.value} onremove={handlePillRemove} id={it.value}></lightning-pill>
+                        </div>
+                    </template>
+    
+                    <!--<div style="margin-left: 14px;" if:true={showLocationPill}>
+                    <lightning-pill label={locationPillText} onremove={handlePillRemove} id='locationPill'>
+                    </lightning-pill>
+                </div>-->
+    
+    
+                    <template iterator:it={allRoles}>
+                        <div style="margin-left: 14px;" key={it.value.Id}>
+                            <lightning-pill label={it.value} onremove={handlePillRemove} id={it.value}></lightning-pill>
+                        </div>
+                    </template>
+    
+                    <!--<div style="margin-left: 14px;" if:true={showRes1Pill}>
+                    <lightning-pill label={rep1PillText} onremove={handlePillRemove} id='rep1Pill'>
+                    </lightning-pill>
+                </div>-->
+    
+                    <div style="margin-left: 14px;" if:true={showRes2Pill}>
+                        <lightning-pill label={rep2PillText} onremove={handlePillRemove} id='rep2Pill'>
+                        </lightning-pill>
+                    </div>
+    
+                </div>
+    
+                <div if:true={showModalWindow}>
+                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small"
+                        aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close" onclick={closeModal} id="clModal">
+                                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                                        size="small">
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text">{label.EPUM_Close}</span>
+                                </button>
+                                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{label.EPUM_SelectFilter}
+                                </h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <ul>
+                                    <li>
+                                        <div if:true={firstNameButton}>
+                                            <button class="slds-button " onclick={enterFilterText}
+                                                id="firstName">{label.EPUM_name}</button>
+                                        </div>
+    
+                                        <div if:true={firstNameField}>
+                                            <lightning-input id="firstNameText" type="text" name="firstName" label=""
+                                                placeholder={label.EPUM_namePH} onchange={searchFilterText}>
+                                            </lightning-input>
+                                        </div>
+                                    </li>
+                                    <!-- <li>
+                                    <div if:true={lastNameButton}>
+                                        <button class="slds-button " onclick={enterFilterText}
+                                            id="lastName">Last Name</button>
+                                    </div>
+    
+                                    <div if:true={lastNameField}>
+                                        <lightning-input id="lastNameText" type="text" name="lastName" label=""
+                                            placeholder="Enter Last Name" onchange={searchFilterText}></lightning-input>
+                                    </div>
+                                </li>-->
+                                    <li>
+                                        <div if:true={emailButton}>
+                                            <button class="slds-button " onclick={enterFilterText}
+                                                id="emailId">{label.EPUM_EmailId}</button>
+                                        </div>
+                                        <div if:true={emailField}>
+                                            <lightning-input id="emailText" type="text" name="email" label=""
+                                                placeholder={label.EPUM_emailPH} onchange={searchFilterText}></lightning-input>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div if:true={statusButton}>
+                                            <button class="slds-button " onclick={enterFilterText}
+                                                id="status">{label.EPUM_Status}</button>
+                                        </div>
+                                        <div if:true={statusField}>
+                                            <b>{label.EPUM_Status}</b>
+                                            <template iterator:it={statusArr}>
+                                    <li key={it.value.Id}>
+                                        <lightning-input type="checkbox" checked={it.value.isStatChecked}
+                                            data-id={it.value.name} label={it.value.name} name="input1"
+                                            id={it.value.name} onclick={searchFilterText}></lightning-input>
+                                    </li>
+    </template>
+    
+    <!--<lightning-input id="statusText" type="text" name="status" label=""
+                                            placeholder="Enter Status" onchange={searchFilterText}></lightning-input>-->
+    </div>
+    </li>
+    <li>
+    <div if:true={locationButton}>
+        <button class="slds-button " onclick={enterFilterText} id="location" data-id="locationC">{label.PRM_Country}</button>
+    </div>
+    <div if:true={locationField}>
+        <b>{label.PRM_Country}</b>
+        <!--<template iterator:it={locationSet}>
+                                            <li key={it.value.Id}>
+                                                <lightning-input type="checkbox" label={it.value} name="input1" id={it.value} onclick={searchFilterText}></lightning-input>
+                                            </li>                                            
+                                        </template>-->
+    
+        <lightning-combobox name="location" placeholder={label.EPUM_locationPH} options={acctLocationList}
+            onchange={searchFilterText}></lightning-combobox>
+    
+        <!--<lightning-input id="locationText" type="text" name="location" label=""
+                                            placeholder="Enter Location" onchange={searchFilterText}></lightning-input>-->
+    </div>
+    </li>
+    <li>
+    <div if:true={res1Button}>
+        <button class="slds-button " onclick={enterFilterText} id="res1">{label.EPUM_ResponsibilityName}</button>
+    </div>
+    
+    <div if:true={res1Field}>
+        <b>{label.EPUM_ResponsibilityName}</b>
+        <template iterator:it={roleList}>
+    <li key={it.value.Id}>
+    <lightning-input type="checkbox" checked={it.value.isResChecked} label={it.value.name} name="role"
+        id={it.value.name} onclick={searchFilterText}></lightning-input>
+    </li>
+    </template>
+    </div>
+    
+    <!--<div if:true={res1Field}>
+                                        <lightning-input id="res1Text" type="text" name="Res1" label=""
+                                            placeholder="Enter Responsibility 1" onchange={searchFilterText}>
+                                        </lightning-input>
+                                    </div>-->
+    </li>
+    <!--  <li>
+                                    <div if:true={res2Button}>
+                                        <button class="slds-button " onclick={enterFilterText}
+                                            id="res2">Responsibility 2</button>
+                                    </div>
+                                    <div if:true={res2Field}>
+                                        <lightning-input id="res2Text" type="text" name="Res2" label=""
+                                            placeholder="Enter Responsibility 2" onchange={searchFilterText}>
+                                        </lightning-input>
+                                    </div>
+                                </li>-->
+    <!-- <button class="slds-button slds-button_neutral" onclick={closeModal}>First name</button>
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Last Name</button>
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Email</button>
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Status</button>
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Location</button>
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Res 1</button>
+            <button class="slds-button slds-button_neutral" onclick={closeModal}>Res 2</button>-->
+    </ul>
+    
+    </div>
+    <footer class="slds-modal__footer">
+    <button class="slds-button slds-button_neutral" onclick={closeModal} id="cancelModal">{label.EPUM_Cancel}</button>
+    <button class="slds-button slds-button_brand" id="applyFilter" onclick={showFilterdData}>{label.EPUM_apply}</button>
+    </footer>
+    </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    
+    </div>
+    </div>
+    <!--Subhadeep Chnages: END-->
+    
+    
+    <!--<div if:true={message} class="slds-m-left--large slds-grid slds-wrap slds-m-right--large">
+    <template if:true={getValidationMsg}>
+        <div
+            class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg ">
+            <lightning-formatted-rich-text value={message}>
+            </lightning-formatted-rich-text>
+        </div>
+    </template>
+    <template if:false={getValidationMsg}>
+        <div
+            class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg slds-order_1">
+            <lightning-formatted-rich-text value={message}>
+            </lightning-formatted-rich-text>
+        </div>
+    </template>
+    <div if:true={isDisplayChatWithIntelLink}
+        class="slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+        <a href={label.EPUM_ChatWithIntelLink} target="_self"
+            class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg"><u>{label.EPUM_ChatWithIntel}</u></a>
+    </div>
+    <div if:true={createNew}
+        class=" slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+        <button class="slds-button slds-button_brand inviteAUserClass" onclick={showInviteUser}>
+            <lightning-icon size="x-small" class="slds-p-right_x-small" icon-name="utility:add">
+            </lightning-icon>
+            {label.EPUM_InviteAUser}
+        </button>
+    </div>
+    <div if:true={sendInvite}
+        class="slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+        <button class="slds-button slds-button_brand inviteAUserClass" onclick={sendInviteToUser}>
+            {label.EPUM_SendInvite}
+        </button>-->
+    <!--lightning-button variant="brand" label={label.EPUM_SendInvite} onclick={sendInviteToUser}></lightning-button-->
+    <!--</div>
+    </div>-->
+    
+    <div if:false={message} class="slds-m-around--large" data-id="redDiv">
+    <div class="overflowDataClass">
+        <div class="dataWidthFixClass">
+            <lightning-layout class="table-header">
+                <lightning-layout-item class="slds-text-align_center selectRadio" size="1" padding="around-small"
+                    title={label.EPUM_Select}><b>{label.EPUM_Select}</b>
+                </lightning-layout-item>
+                <lightning-layout-item class="" size="2" padding="around-small" title={label.EPUM_name}>
+                    <b>{label.EPUM_name}</b>
+                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:arrowup"
+                        variant="bare-inverse" alternative-text="Ascending" title="Ascending" onclick={handleNameSort}>
+                    </lightning-button-icon>
+                </lightning-layout-item>
+                <lightning-layout-item class="" size="3" padding="around-small" title={label.EPUM_EmailId}>
+                    <b>{label.EPUM_EmailId}</b>
+                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:arrowup"
+                        variant="bare-inverse" alternative-text="Ascending" title="Ascending" onclick={handleEmailSort}>
+                    </lightning-button-icon>
+                </lightning-layout-item>
+                <!--<lightning-layout-item size="2" padding="around-small" title='Last Signin'>
+                    <b>{label.EPUM_LastSignIn}</b>
+                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:arrowup"
+                        variant="bare-inverse" alternative-text="Ascending" title="Ascending"
+                        onclick={handleSigninSort}></lightning-button-icon>
+                </lightning-layout-item> -->
+                <lightning-layout-item size="2" padding="around-small" title={label.EPUM_Status}>
+                    <b>{label.EPUM_Status}</b>
+                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:arrowup"
+                        variant="bare-inverse" alternative-text="Ascending" title="Ascending"
+                        onclick={handleStatusSort}></lightning-button-icon>
+                </lightning-layout-item>
+                <lightning-layout-item size="2" padding="around-small" title='Contact Country'>
+                    <b>{label.PRM_Country}</b>
+                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:arrowup"
+                        variant="bare-inverse" alternative-text="Ascending" title="Ascending" onclick={handleOPIDSort}>
+                    </lightning-button-icon>
+                </lightning-layout-item>
+                <lightning-layout-item class="wrapDataClass" size="2" padding="around-small"
+                    title={label.EPUM_ResponsibilitiesAssigned}>
+                    <b>{label.EPUM_ResponsibilitiesAssigned}</b>
+                </lightning-layout-item>
+            </lightning-layout>
+            <template iterator:con={paginationlistRows}>
+                <lightning-layout class="table-body-row" key={con.value.Id}>
+                    <lightning-layout-item class="slds-text-align_center" size="1" padding="around-small">
+                        <div class="radio slds-text-align_center">
+                            <label><input type="radio" id={con.value.Id} name="optradio" data-myid={con.value.Id}
+                                    onclick={getRowId} /></label>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="wrapDataClass" size="2" padding="around-small" title={con.value.Name}>
+                        {con.value.Name}
+                    </lightning-layout-item>
+                    <lightning-layout-item class="wrapDataClass" size="3" padding="around-small"
+                        title={con.value.Email}>
+                        {con.value.Email}
+                    </lightning-layout-item>
+                    <!-- <lightning-layout-item class="wrapDataClass" size="2" padding="around-small"
+                        title={con.value.LastUserLogin}>
+                        <lightning-formatted-time value={con.value.LastUserLogin}></lightning-formatted-time>
+                    </lightning-layout-item> -->
+                    <lightning-layout-item class="wrapDataClass" size="2" padding="around-small"
+                        title={con.value.activeStatus}>
+                        {con.value.activeStatus}
+                    </lightning-layout-item>
+                    <lightning-layout-item class="wrapDataClass" size="2" padding="around-small"
+                        title={con.value.ContactOPID_Name}>
+                        {con.value.OPIDCountry}
+                    </lightning-layout-item>
+                    <lightning-layout-item class="wrapDataClass" size="2" padding="around-small"
+                        title={con.value.Roles}>
+                        <template for:each={con.value.Roles} for:item="crole">
+                            <p key={crole} class={con.value.classVar}>{crole}</p>
+                        </template>
+                    </lightning-layout-item>
+                    <!--</lightning-layout>-->
+                </lightning-layout>
+            </template>
+        </div>
+    </div>
+    <!--
+                <div style="height: 300px;">
+                    <lightning-datatable
+                        key-field="id"
+                        columns={DTcolumns}
+                        data={DTdata}
+                        enable-infinite-loading
+                        hide-checkbox-column
+                        show-row-number-column
+                        default-sort-direction={defaultSortDirection}
+                        sorted-direction={sortDirection}
+                        sorted-by={sortedBy}
+                        onsort={onHandleSort}>
+                    </lightning-datatable>
+                </div> 
+        -->
+    <lightning-layout class="slds-p-bottom_medium slds-m-top_small slds-grid_vertical-align-center">
+        <div class="slds-grid slds-wrap" style="width: 100%;">
+    
+            <!--Akshay Number of Records Dropdown menu - START**************************************-->
+            <lightning-layout-item class="centerAlign totalNoClass" size="3" medium-device-size="3"
+                large-device-size="3">
+                {label.EPUM_RowsPerPage} : {rowsPerPage}
+                <lightning-button-menu alternative-text="Show menu" variant="container"
+                    onselect={handleOnselect_recPerPg}>
+                    <lightning-menu-item value="5" label="5"></lightning-menu-item>
+                    <lightning-menu-item value="10" label="10"></lightning-menu-item>
+                    <lightning-menu-item value="25" label="25"></lightning-menu-item>
+                    <lightning-menu-item value="50" label="50"></lightning-menu-item>
+                    <lightning-menu-item value="100" label="100"></lightning-menu-item>
+                </lightning-button-menu>
+            </lightning-layout-item>
+            <!--Akshay Number of Records Dropdown menu - END**************************************-->
+    
+            <!--Akshay Page Navigation - START**************************************-->
+            <lightning-layout-item class="slds-text-align_center  prevNextButton" size="6" medium-device-size="6"
+                large-device-size="6">
+                <button class="slds-button slds-button_brand slds-m-right_xx-small prevNextButtonClass"
+                    disabled={validFirst} onclick={firstButton}>
+                    <template if:true={validFirst}>
+                        <lightning-icon size="x-small" class="slds-p-right_x-small" icon-name="utility:arrow_left">
+                        </lightning-icon><span class="disblePrevNextButton">
+                        </span>
+                    </template>
+                    <template if:false={validFirst}>
+                        <lightning-icon size="x-small" class="slds-p-right_x-small"
+                            icon-name="utility:arrow_left">
+                        </lightning-icon>
+                    </template>
+                </button>
+                <button class="slds-button slds-button_brand slds-m-right_xx-small prevNextButtonClass"
+                    disabled={validPrevious} onclick={previousButton}>
+                    <template if:true={validPrevious}>
+                        <lightning-icon size="x-small" class="slds-p-right_x-small" icon-name="utility:back">
+                        </lightning-icon><span class="disblePrevNextButton">
+                        </span>
+                    </template>
+                    <template if:false={validPrevious}>
+                        <lightning-icon size="x-small" class="slds-p-right_x-small"
+                            icon-name="utility:back">
+                        </lightning-icon>
+                    </template>
+                </button>
+                <lightning-layout-item class="pageNoClass centerAlign slds-text-align_right" padding="around-small">
+                    {label.EPUM_Page} : {startPageNo}
+                    <lightning-button-menu alternative-text="Show menu" variant="container" onselect={handleJumpToPage}>
+                        <template for:each={jumpToPageArray} for:item="pageItem">
+                            <lightning-menu-item label={pageItem} value={pageItem} key={pageItem}>
+                            </lightning-menu-item>
+                        </template>
+                    </lightning-button-menu>
+                    {label.EPUM_of} {totalPageNo}
+                </lightning-layout-item>
+    
+                <button class="slds-button slds-button_brand slds-m-left_xx-small prevNextButtonClass"
+                    disabled={validNext} onclick={nextButton}>
+                    <template if:true={validNext}><span class="disblePrevNextButton">
+                        </span>
+                        <lightning-icon size="x-small" class="slds-p-left_x-small" icon-name="utility:forward">
+                        </lightning-icon>
+                    </template>
+                    <template if:false={validNext}>
+                        <lightning-icon size="x-small" class="slds-p-left_x-small"
+                            icon-name="utility:forward">
+                        </lightning-icon>
+                    </template>
+                </button>
+            </lightning-layout-item>
+            <lightning-layout-item class="centerAlign totalNoClass" size="3" medium-device-size="3"
+                large-device-size="3" padding="around-small">
+                {label.EPUM_TotalUser} : {totalNoOfContacts}
+            </lightning-layout-item>
+            <!--Akshay Page Navigation - END**************************************-->
+        </div>
+    </lightning-layout>
+    </div>
+    </div>
+    
+    <div if:true={inviteUser}>
+    <c-e-p-u-m-invite-user-l-w-c show-modal={inviteUser} searched-email={searchKeyword}
+        onclosemodalevent={closehandler}></c-e-p-u-m-invite-user-l-w-c>
+    </div>
+    
+    <div if:false={showConDeatils} class="slds-m-bottom_large slds-m-top_medium">
+    <c-epum-contact-entitlement-view scontact-id={selectedContactId} selectedconname={selectConName}
+        onunsavedcustomevent={handleunsavedevent} onhidelistview={handleHideConList}></c-epum-contact-entitlement-view>
+    </div>
+    
+    </div>
+    
+    
+    
+    <template if:true={parentunsavedChangesModal}>
+    <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container ">
+            <div class="slds-is-relative">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-parent" class="slds-text-heading_medium areyousure">
+                        {label.EPUM_AreYouSure}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>{label.EPUEPUM_DoYouWantToSave}</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral slds-p-right_small saveDiscardButton"
+                        onclick={onParentReject}>
+                        {label.EPUM_Discard}
+                    </button>
+                    <button class="slds-button slds-button_brand saveDiscardButton" onclick={onParentAccept}>
+                        {label.EPUM_Save}
+                    </button>
+                </footer>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={isLoading}>
+    <c-epum-spinner></c-epum-spinner>
+    </template>
+    </template>

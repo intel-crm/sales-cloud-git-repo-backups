@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PRM_Titanium_Upgrade_Chinese_ZHO</name>
+    <style>none</style>
+    <subject>欢迎成为英特尔® 合作伙伴联盟 Prestige 会员</subject>
+    <textOnly>英特尔® 合作伙伴联盟 Titanium 会员
+
+
+尊敬的{!Contact.FirstName}：
+
+恭喜！贵公司已升级为英特尔® 合作伙伴联盟 Titanium 会员。请畅享下列会员权益：
+
+获得更多组件和系统积分
+获邀参加英特尔年度合作伙伴盛会：英特尔® Partner Connect
+英特尔管理层出具致贵公司潜在客户的 Titanium 会员介绍信
+
+登录以访问工具和资源。
+
+立即行动吧！
+
+
+英特尔的合作伙伴总是在不断创新，而英特尔® 合作伙伴联盟的出现将为您的创新提供鼎力支持，帮助您加速构建创新解决方案，在以数据为中心的经济大潮中乘风破浪。我们将与您携手共同创造非凡机遇，实现连接、创新与成长。
+
+访问 intel.com/partnerhelp，获取关于如何优化会员状态的帮助和指导。
+
+
+谢谢！
+英特尔® 合作伙伴联盟团队
+
+发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!$Label.PRM_CurrentYear} 英特尔公司版权所有
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+隐私 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

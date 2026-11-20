@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CDF1</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Opportunity_Support_Team_Member__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Supports__r$Core_Opportunity_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.Email</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    OR(
+        CONTAINS(Opportunity.Owner.Department,&quot;PRC Enterprise&quot;),
+        CONTAINS(Opportunity.Owner.Department,&quot;PRC Manufacture&quot;),
+		CONTAINS(Opportunity.Owner.Department,&quot;PRC Transportation &amp; Retail&quot;)),&quot;CISG-Enterprise&quot;,
+
+	IF(
+		OR(CONTAINS(Opportunity.Owner.Department,&quot;CISG PUBLIC SECTOR RBD&quot;),
+		CONTAINS(Opportunity.Owner.Department,&quot;CISG RBD&quot;),
+		CONTAINS(Opportunity.Owner.Department,&quot;Healthcare Industry Sales&quot;),
+		CONTAINS(Opportunity.Owner.Department,&quot;Education Industry Sales&quot;)),&quot;CISG-Public&quot;,
+		
+		IF(		    
+		    CONTAINS(Opportunity.Owner.Department,&quot;PRC Cloud Service Providers&quot;),&quot;CISG-NWCSP&quot;,
+		
+			IF(
+		    	OR(
+		        	CONTAINS(Opportunity.Owner.Department,&quot;Alibaba&quot;),
+					CONTAINS(Opportunity.Owner.Department,&quot;Tencent&quot;),
+					CONTAINS(Opportunity.Owner.Department,&quot;Toutiao&quot;),
+					CONTAINS(Opportunity.Owner.Department,&quot;Baidu&quot;)),&quot;TABB&quot;,
+		
+				IF(
+				    OR(
+				        CONTAINS(Opportunity.Owner.Department,&quot;H3C&quot;),
+						CONTAINS(Opportunity.Owner.Department,&quot;inspur&quot;),
+						CONTAINS(Opportunity.Owner.Department,&quot;xFusion&quot;),
+						CONTAINS(Opportunity.Owner.Department,&quot;ZTE&quot;)),&quot;DCAI OEM&quot;,
+		
+					IF(
+					    OR(
+					        CONTAINS(Opportunity.Owner.Department,&quot;CMCC&quot;),
+							CONTAINS(Opportunity.Owner.Department,&quot;CTC&quot;),
+							CONTAINS(Opportunity.Owner.Department,&quot;CUC&quot;)),&quot;Telco&quot;,
+		
+						IF(
+						    OR(
+						        CONTAINS(Opportunity.Owner.Department,&quot; IOT Sales&quot;),
+								CONTAINS(Opportunity.Owner.Department,&quot;HEC Sales&quot;),
+								CONTAINS(Opportunity.Owner.Department,&quot;Industrial Sales&quot;),
+								CONTAINS(Opportunity.Owner.Department,&quot;Disti FSE&quot;),
+								CONTAINS(Opportunity.Owner.Department,&quot;IOT Channel&quot;),
+								CONTAINS(Opportunity.Owner.Department,&quot;DATA CENTER DISTRICT&quot;)),&quot;NEX&quot;,
+
+							IF(
+							    OR(
+							        CONTAINS(Opportunity.Owner.Department,&quot;STSG ITS Team&quot;),
+									CONTAINS(Opportunity.Owner.Department,&quot;Infrastructure Software Team&quot;),
+									CONTAINS(Opportunity.Owner.Department,&quot;Application Software Team&quot;)),&quot;STSG&quot;,
+		
+								IF(
+								    OR(
+										CONTAINS(Opportunity.Owner.Department,&quot;Inside&quot;),
+										CONTAINS(Opportunity.Owner.Department,&quot;PRC  Developer 2&quot;)),&quot;ISG&quot;,
+
+								IF(
+								    OR(
+										CONTAINS(Opportunity.Owner.Department,&quot;PRC TEG&quot;)),&quot;TEG&quot;,							
+								
+									&quot;Other&quot;))))))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>CSAs/TSSs accepting Opportunity Support requests last month by Sales Group</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$LastModifiedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r$RecordType</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_Opportunity_Support__c.Core_CSA_RecordType,Core_Opportunity_Support__c.Core_TSS_Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Supports__r$Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Owner.Department</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>3_CSA/TSS Accepting Requests last month</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Opportunity_Supports_with_Opportunity_Support_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Opportunity.Core_Opportunity_Supports__r.Core_Opportunity_Support_Team__r$Core_Opportunity_Support_Team_Member__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Core_Opportunity_Supports__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

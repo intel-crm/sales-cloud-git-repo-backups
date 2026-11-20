@@ -1,0 +1,152 @@
+<!--
+  @description       : 
+  @author            : Siddharth Kant
+  @group             : 
+  @last modified on  : 01-05-2024
+  @last modified by  : Siddharth Kant
+-->
+<apex:component access="global" controller="Pricing_QuoteEmailAlertController">
+
+<html>
+<style>
+/* Regular */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: normal;
+font-weight: 400;
+font-style: normal;
+}
+
+/* Light */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: 200;
+font-style: normal;
+}
+    
+/* Bold */
+@font-face{
+font-family: 'Intel Clear','Intel Clear Pro';
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+    url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+font-weight: bold;
+font-weight: 700;
+font-style: normal;
+}
+    
+table {
+  font-family: Intel Clear; /*arial, sans-serif;*/
+  border-collapse: collapse;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 0px;
+  border-bottom: 1px solid #dddddd;
+}
+
+td, th {
+  padding: 8px;
+}
+
+.intelBlue{
+  color:#0071c5;
+}
+
+h1{
+  font-family: Intel Clear Pro !important;
+}
+.uppercase{
+  text-transform: uppercase;   
+}
+</style>
+ 
+<apex:attribute name="quoteLineRecordId" type="Id" description="Tender Quote Line Id" assignTo="{!quoteLineId}"/>
+
+<body>
+    
+    <!-- Header Banner -->    
+    <table style="background-color:#0168B5;" width="75%">
+    <tr>
+        <td style="padding-left:50px;border: 0px;border:none;" >
+           <div style="color:white;"><h1>A {!IF(quoteLineData.Pricing_New_Change_Request_cb__c == true,"change request","quote line")} has been submitted for the following {!IF(quoteLineData.Pricing_New_Change_Request_cb__c == true,"quote line","quote")} in the Intel Quote Request (IQR) Tool.</h1></div>
+        </td>
+        <td style="border:none;padding-right:20px;" align="right">
+            <apex:image url="{!headerURL}" width="100" height="80" alt="Intel Logo"/>
+        </td>
+    </tr>
+   </table> 
+    <!-- Header Banner -->
+    <!-- Email Body -->
+    
+    <table width="75%">    
+        <tr>
+            <td style="padding-left:50px;">
+                
+                <b>Quote:</b>&nbsp;<apex:outputLink value="{!domainName}/{!quoteLineData.SBQQ__Quote__r.Id}" >{!quoteLineData.SBQQ__Quote__r.Name}</apex:outputLink><br/>
+                <b>Quote Line:</b>&nbsp;{!quoteLineData.Pricing_Quote_Line_Number__c} : {!IF(quoteLineData.SBQQ__ProductName__c == null , quoteLineData.Pricing_Other_Product_Nm__c , IF(quoteLineData.SBQQ__ProductName__c == $Label.Pricing_Write_In_Product , quoteLineData.SBQQ__ProductName__c +' ('+quoteLineData.Pricing_Other_Product_Nm__c+')' , quoteLineData.SBQQ__ProductName__c))}<br/>
+                <b>End Customer:</b>&nbsp;{!quoteLineData.Pricing_EndCustomer_Nm__c}<br/>
+                <b>Project:</b>&nbsp;{!quoteLineData.Pricing_Project_Nm__c}<br/>
+                <apex:outputPanel rendered="{!IF(quoteLineData.Pricing_New_Change_Request_cb__c == true,True,False)}">
+                    <apex:outputText value="{0, date, MM-dd-yyyy}"><b>Quote Line Pricing Start Date:</b>&nbsp;<apex:param value="{!quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Start_Date_Dt__c}" /></apex:outputText><br/>
+                    <apex:outputText value="{0, date, MM-dd-yyyy}"><b>Quote Line Pricing End Date:</b>&nbsp;<apex:param value="{!quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_End_Date_Dt__c}" /></apex:outputText><br/>
+                    <apex:outputText ><b>Quantity:</b>&nbsp;{!quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Unit_Qty__c}</apex:outputText><br/>
+                
+                    <apex:outputText ><b>Approved ECAP Price:</b>&nbsp;{!quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_ECAP_Price_Amt__c}</apex:outputText><br/>
+                    <b>Original Quote Line:</b>&nbsp;<apex:outputLink value="{!domainName}/{!quoteLineData.Pricing_Reference_Quote_Line_Nbr__c}" >{!quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Quote_Line_Number__c}</apex:outputLink><br/>           
+                    <b>Deal ID:</b>&nbsp;{!quoteLineData.Pricing_Deal_RFQ_Id__c}<br/><br/>
+                 </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(quoteLineData.Pricing_New_Change_Request_cb__c == true,True,False)}">
+                            <b>Change Requested:</b>&nbsp;{!changedFields}<br/>
+                        </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Start_Date_Dt__c != quoteLineData.Pricing_Start_Date_dt__c,True,False)}">
+                    <apex:outputText value="{0, date, MM-dd-yyyy}"> <b>New Quote Line Pricing Start Date:</b>&nbsp;<apex:param value="{!quoteLineData.Pricing_Start_Date_dt__c}" /></apex:outputText><br/>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_End_Date_Dt__c != quoteLineData.Pricing_End_Date_dt__c && quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_End_Date_dt__c != null && quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_End_Date_dt__c != quoteLineData.Pricing_End_Date_dt__c,True,False)}">
+                    <apex:outputText value="{0, date, MM-dd-yyyy}"><b>New Quote Line Pricing End Date:</b>&nbsp;<apex:param value="{!quoteLineData.Pricing_End_Date_dt__c}" /></apex:outputText><br/>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_Approved_Unit_Qty__c != quoteLineData.Pricing_New_Quantity_qty__c,True,False)}">
+                    <apex:outputText ><b>New Quantity:</b>&nbsp;{!quoteLineData.Pricing_New_Quantity_qty__c}</apex:outputText><br/>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(quoteLineData.Pricing_Reference_Quote_Line_Nbr__r.Pricing_ECAP_Price_Amt__c != quoteLineData.Pricing_Request_Discount_Unit_Price_qty__c,True,False)}">
+                    <apex:outputText ><b>New Requested Price:</b>&nbsp;${!quoteLineData.Pricing_Request_Discount_Unit_Price_qty__c}</apex:outputText><br/><br/>
+                </apex:outputPanel>
+                
+                <b>Additional Comments:</b>&nbsp;{!quoteLineData.Pricing_Additional_Comments_Txt__c}<br/><br/>
+                
+                Click the link below to view the quote.<br/>                
+                <apex:outputLink value="{!domainName}/{!quoteLineData.SBQQ__Quote__r.Id}" >{!domainName}/{!quoteLineData.SBQQ__Quote__r.Id}</apex:outputLink><br/><br/>
+                Best Regards,<br/>
+                Intel Corporation
+                
+               <!-- <b>QuoteLine Name:</b>&nbsp;<apex:outputLink value="{!domainName}/{!quoteLineData.SBQQ__Quote__r.Id}" >{!quoteLineData.Name}</apex:outputLink><br/> -->
+            </td>
+          </tr>             
+       </table>
+    <!-- Email Body -->  
+    <!-- Global Footer -->
+    <table width="75%">
+    <tr>    
+        <td style="text-align:center">
+            <div style="font-size:10px">
+                This message was sent to you as an important business communication related to your current relationship with Intel Quote Request (IQR)<br/>
+                ©{!year(today())} Intel Corporation <br/>
+                Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.
+                <apex:outputLink value="www.intel.com" styleClass="intelBlue"> www.intel.com</apex:outputLink><br/>
+                <apex:outputLink value="www.intel.com/privacy" styleClass="intelBlue">Privacy</apex:outputLink> | &nbsp;
+                <apex:outputLink value="www.intel.com/cookies" styleClass="intelBlue">Cookies</apex:outputLink>
+            </div>
+        </td>
+    </tr>
+   </table>
+    <!-- Global Footer -->
+</body>
+
+</html>
+
+</apex:component>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDEXT_TUR</name>
+    <style>none</style>
+    <subject>Intel® Ortağı İş Birliği&apos;ne hoş geldiniz</subject>
+    <textOnly>Şirketiniz Zaten Kayıtlı
+
+
+{!PRM_Registration_Request__c.PRM_First_Name__c},
+
+Tebrikler, Intel® Ortağı İş Birliği iş ortağı oldunuz! Şirketinizin bilgileri mevcut bir hesapla aynı olduğundan profiliniz şu Intel® Ortağı İş Birliği şirket profiline eklendi:
+Şirket Adı: {!Account.Name}
+Şirket Kimliği: {!Account.AccountNumber}
+
+Intel® Ortağı İş Birliği profil bilgilerinizi incelemek için giriş yapın.
+
+Intel iş ortakları köklü bir inovasyon geçmişine sahiptir. Intel® Ortağı İş Birliği sayesinde, veri merkezli ekonomide çözüm oluşturma sürecini hızlandırmanıza yardımcı olabiliriz. Birlikte bağlantı kurabilir, yeniliklere imza atabilir ve büyüyebiliriz. Sıradışı fırsatları gerçeğe dönüştürebiliriz.
+
+Başlama konusunda daha fazla yardım almak için https://www.intel.com/content/www/tr/tr/partner-alliance/help/overview.html adresini ziyaret edin.
+
+Teşekkür ederiz,
+Intel® Ortağı İş Birliği ekibiniz
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!$Label.PRM_CurrentYear} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

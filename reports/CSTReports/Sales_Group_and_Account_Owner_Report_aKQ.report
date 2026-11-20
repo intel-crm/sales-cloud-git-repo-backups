@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SPM_Account_Feedback__c$Name</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Core_Sales_Group_Preview__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Core_Account_Owner_Preview__c</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Owner</field>
+    </columns>
+    <columns>
+        <field>SPM_Account_Feedback__c$New_Account_Owner__c</field>
+    </columns>
+    <description>Displays all account feedback with sales group and account owners</description>
+    <filter>
+        <criteriaItems>
+            <column>SPM_Account_Feedback__c$CRM_CST_Is_Active_Planning_Period__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Sales Group and Account Owner Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_Feedback_with_Lookup_Fields__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>SPM_Account_Feedback__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

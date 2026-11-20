@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketing Activity Opportunity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketing Activity Opportunities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Marketing Activity --></label>
+        <name>Core_Marketing_Activity__c</name>
+        <relationshipLabel><!-- Marketing Activity Opportunities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Account --></label>
+        <name>Core_Opportunity_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Amount --></label>
+        <name>Core_Opportunity_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Decision Date --></label>
+        <name>Core_Opportunity_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner Geo --></label>
+        <name>Core_Opportunity_Owner_Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Stage --></label>
+        <name>Core_Opportunity_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Volume --></label>
+        <name>Core_Opportunity_Volume__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opportunity__c</name>
+        <relationshipLabel><!-- Marketing Activity Opportunities --></relationshipLabel>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

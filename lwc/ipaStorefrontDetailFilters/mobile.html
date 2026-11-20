@@ -1,0 +1,147 @@
+<template>
+  
+  <div class="slds-p-top_medium"></div>
+
+  <c-ipa-sticky full-width position="2">
+    <div slot="sticky">
+      <div class="filter-button-sticky-container bg-white slds-p-bottom_medium slds-p-horizontal_medium">
+        <button class="filter-button button button-secondary button-full-width slds-is-relative"
+          onclick={handleOpenMobile}>
+          {labels.filter}
+          <template if:true={totalCount}>
+            <span class="filter-button-count text-bold">
+              {totalCount}
+            </span>
+          </template>
+        </button>
+      </div>
+    </div>
+    <div slot="content">
+      <div>
+        <button class="filter-button button button-secondary button-full-width slds-is-relative"
+          onclick={handleOpenMobile}>
+          {labels.filter}
+          <template if:true={totalCount}>
+            <span class="filter-button-count text-bold">
+              {totalCount}
+            </span>
+          </template>
+        </button>
+      </div>
+    </div>
+  </c-ipa-sticky>
+
+  <template if:true={showClear}>
+    <div class="slds-p-top_x-small slds-text-align_center">
+      <button class="text-upcase link-text text-bold text-small"
+        onclick={handleClearAllFilters}>
+        {labels.clearAllFilters}
+      </button>
+    </div>
+  </template>
+  <div class="slds-p-bottom_large"></div>
+
+  <c-core-intc-modal is-open="false" full-screen onclose={handleCloseMobile}>
+    <div slot="header">
+      <h3 class="color-white slds-text-align_left">{labels.mobileHeading}</h3>
+    </div>
+    <div slot="body" class="bg-lightest-gray slds-is-relative fill-modal-height slds-p-bottom_large">
+      <div class="mobile-modal-buttons-container bg-white slds-grid slds-p-around_medium">
+        <lightning-button class="button-full-width slds-size_1-of-2 slds-p-right_medium"
+          label={labels.mobileCancel}
+          onclick={handleCancelMobile}>
+        </lightning-button>
+        <button disabled={filtersUnmodified}
+          class="slds-size_1-of-2 button button-primary slds-is-relative"
+          onclick={handleApplyFiltersMobile}>
+            {labels.mobileApply}
+            <template if:true={totalCount}>
+              <span class="filter-button-count text-bold">{totalCount}</span>
+            </template>
+        </button>
+      </div>
+
+      <div class="storefront-detail-filters-container slds-p-around_medium">
+        <h3 class="slds-p-bottom_x-small">{labels.offeringFilters}</h3>
+        <div class="slds-p-top_small"></div>
+        <div class="p text-bold slds-p-vertical_xx-small">{labels.offeringsByCategory}</div>
+        <div class="storefront-filters-categories slds-p-bottom_x-small">
+          <template for:each={categoryFilters} for:item="catFilter">
+            <div key={catFilter.id} class="slds-p-vertical_xx-small">
+              <a role="button" tabindex="0" class="p text-bold link-text"
+                data-filter-name={CATEGORIES}
+                data-filter-id={catFilter.id}
+                data-selected={catFilter.selected}
+                data-is-draft="true"
+                onclick={handleClick}
+                onkeydown={handleAccessibility}>
+                {catFilter.label}
+              </a>
+            </div>
+            <template for:each={catFilter.children} for:item="catFilterL2">
+              <div key={catFilterL2.id} class="slds-m-left_x-small slds-p-vertical_xx-small">
+                <a role="button" tabindex="0" class="p link-text"
+                  data-filter-name={CATEGORIES}
+                  data-filter-id={catFilterL2.id}
+                  data-selected={catFilterL2.selected}
+                  data-is-draft="true"
+                  onclick={handleClick}
+                  onkeydown={handleAccessibility}>
+                    {catFilterL2.label}
+                </a>
+              </div>
+              <template for:each={catFilterL2.children} for:item="catFilterL3">
+                <div key={catFilterL3.id} class="slds-m-left_medium slds-p-vertical_xx-small">
+                  <a role="button" tabindex="0" class="p link-text"
+                    data-filter-name={CATEGORIES}
+                    data-filter-id={catFilterL3.id}
+                    data-selected={catFilterL3.selected}
+                    data-is-draft="true"
+                    onclick={handleClick}
+                    onkeydown={handleAccessibility}>
+                    {catFilterL3.label}
+                  </a>
+                </div>
+              </template>
+            </template>
+          </template>
+        </div>
+  
+        <div class="storefront-filters">
+          <template for:each={otherFilters} for:item="filter">
+            <div key={filter.label} class="slds-p-bottom_x-small">
+              <div class="slds-p-top_small slds-p-bottom_xx-small">
+                <div class="p text-bold slds-p-vertical_xx-small">{filter.label}</div>
+              </div>
+              <template for:each={filter.children} for:item="filterChild">
+                <div key={filterChild.id} class="slds-m-left_x-small">
+                  <lightning-input class="slds-p-vertical_xx-small"
+                    type="checkbox" label={filterChild.label}
+                    checked={filterChild.selected}
+                    data-filter-name={filter.filterName}
+                    data-filter-id={filterChild.id}
+                    data-is-draft="true"
+                    onchange={handleClick}>
+                  </lightning-input>
+                  <template for:each={filterChild.children} for:item="filterGrandChild">
+                    <div key={filterGrandChild.id} class="slds-m-left_x-small">
+                      <lightning-input class="slds-p-vertical_xx-small"
+                        type="checkbox" label={filterGrandChild.label}
+                        checked={filterGrandChild.selected}
+                        data-filter-name={filter.filterName}
+                        data-filter-id={filterGrandChild.id}
+                        data-is-draft="true"
+                        onchange={handleClick}>
+                      </lightning-input>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </c-core-intc-modal>
+
+</template>

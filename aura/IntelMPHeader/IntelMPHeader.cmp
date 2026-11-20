@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <c:coreIntcSso aura:id="ssoLibrary" />
+    <aura:handler name="init" value="{!this}" action="{!c.setUserLangLocale}"/>
+</aura:component>

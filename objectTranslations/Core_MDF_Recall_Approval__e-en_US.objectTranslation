@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Recall Approval</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Recall Approval</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Editor --></label>
+        <name>Core_MDF_Activity_Editor_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closure Type --></label>
+        <name>Core_MDF_Closure_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_MDF_Program_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Status --></label>
+        <name>Core_MDF_Request_Status_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Object Id --></label>
+        <name>Core_MDF_Target_Object_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

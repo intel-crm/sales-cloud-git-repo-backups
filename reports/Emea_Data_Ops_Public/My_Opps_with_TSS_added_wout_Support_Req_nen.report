@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_64746760</developerName>
+        <masterLabel>Sales Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Americas US Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Canada Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas ELAR Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Americas Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>AMER</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>EMEA</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>APJ Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Southeast Asia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Australia &amp; New Zealand Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>APJ Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <value>APJ</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>PRC Hosted Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PRC Sales Group</sourceValue>
+            </sourceValues>
+            <value>PRC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OpportunityTeamMember.Core_Account_Name__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityTeamMember.Core_Description_of_Contribution__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Opportunity_Count__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Core_Opportunity_Support__c.Core_TSS_Request</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>Core_Opportunity_Support__c</relatedTable>
+        <relatedTableJoinColumn>Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <customDetailFormulas>
+        <calculatedFormula>IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Maurits Tichelman&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Torsten Kahrmann&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Tal Elgar&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Simon Wilyman&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Elizabeth Collett&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Richard Peel&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Patricia Pozuelo Real&quot;,Account.Core_Account_Owner_Manager__c=&quot;Norberto Carrascal&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Jost Henning Eid&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Christine Harrison&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Paolo Righi&quot;),
+&quot;Partners&quot;, 
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Sonja Pierer&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Stephanie Loock&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Simon Windsor&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Gosia Dzul&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Katarzyna Bielak&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;GALIN DIMOV&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Edwin Peters&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Kareem Eletreby&quot;),
+    &quot;Digital Sales&quot;,
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Javier Galiana&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Stephanie GOHIER&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Jesus Sanchez Paniagua&quot;),
+    &quot;Consumer&quot;,
+IF(OR(
+    Account.Core_Account_Owner_Manager__c=&quot;Steve Shakespeare&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Andreas Timm&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Dieter Hoffend&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;ERWAN MONTAUX&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Helene De La Gastine&quot;,Account.Core_Account_Owner_Manager__c=&quot;Iain Beckingham&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Pippa Chick&quot;,
+    Account.Core_Account_Owner_Manager__c=&quot;Sven Beckmann&quot;),
+    &quot;EPS&quot;, &quot;Other&quot;))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Team</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Manual name filter of TSSs needs to be maintained</description>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3) AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <column>OpportunityTeamMember.Core_Date_Added__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>LAST_MONTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Eric Chong,Traci Taylor,Matthew Harrison,Tristian Turner,Karie Gardner,Rafael Escalante,Ruben Gomez,Federico Canete,German Loureiro,Pamina Karvela,Enrique Castera Garcia,Claude Chauvet,Martin Lloydy,Jimmy Wai,Darek Wittek,Shuangfei Yu,Michael BQ Yao,Kiyoshi Sakon,Kiran Shimoga,Shantappa Mattur,Steven Chang,David Rhoades,Illyse Sheaffer,Jason Lamb,Jim Triestman,Justin Long,Merritte Stidston,Phil King,Sachin Handa,Markus Leberecht,Mohamed Elsaid,Thomas Melzer,Gianluca Cecchi,Xiaojun1 Zhang,Yuan Xu,Xiaolei Ren,Xiaobao Gu,Yang Lu,Chaoqing Zhao,Xingxian Luo,Yu-Ping Zhao,Huipeng Deng,Otto Chow,Peter Huang,Thomas Metzger,Chris Allison,Robert Gaines,Keith Gray,Everton Paulino,Emmanuel Rochette,Michael Spinali,Ahmed Al-jeshi,Manav Bhalla,Gabriel Torres Chico,Kevin Reinert,Leila Sabeti,Fouzhan Hosseini,Frank Vigilant,Wei Wen,Wei Yu,Wei Yang,Jianqian Zhou,Jiang Chen,Nachiket Kumar M,Oliver Heard,Tomas Stralman,Chloe Lewis,Rory Browne,Lan Ding,Jeff Chang,Shane Bower,Fred Moses,Jason Leighton,Aysha Malik,Jeff Jackson,Manan Kathuria,Gopi Agrawal,Carter K Green,Gary Gumanow,Henry Sun,Joel Madrigal,Ritsuka Kawakubo,Ross Corfield,Thom Defranco,Weiyu Wang,Zhiping Li,Andrew Schwenk,Donghao Zhang,Richard Zhang,Steven Rawleigh,Sunil Krishnamurthy Dandina,Susmita Adhikari Joshi,Diego Mottarella</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Manan Kathuria,Gopi Agrawal,Mike Skymba,Carter Green,Gary Gumanow,Henry Sun,Joel Madrigal,Ritsuka Kawakubo,Ross Corfield,Thom Defranco,Weiyu Wang,Zhiping Li,Brian Mulroe,Andrew Schwenk,Donghao Zhang,Richard Zhang,Steven Rawleigh,Sunil Krishnamurthy Dandi,Susmita Adhikari Joshi,Diego Mottarella,Rob Sornson,Manav Bhalla,Gabriel Torres Chico,Kevin Reinert,Leila Sabeti,Tammi Westall,Oliver Heard​,Thomas Dietrich,Federico Canete,Rafael Escalante Alfonso,Chaoqing Zhao,Myles Hu,Xingxian Luo,Yu-Ping Zhao,Joab Paiva,Karie Gardner,Marty Liang,Matthew Harrison,Wei Yu,Abhishek Kumar Singh,Mattur Mattur,Ahmed Al-Jeshi,Chloe Lewis,Darek Wittek,Fouzhan Hosseini,Franck Vigilant,Oliver Heard,Emily ZHOU,Feng Gao,Huipeng Deng,Jiang Chen,Jianqian Zhou,Jimin Cai,Lan Ding,Lianghou Xu,Michael BQ Yao,Qingfeng Zhang,Tong Chen,Wei Wen,Wei Yang,Ananthakrishnan vasantha rajendran,Andrea Luiselli,Danai Skournetou,Dmitry Artyukhin,Fotios Samelis,Hind Azegrouz,Jari Pietila,Marco Righini,Volga Simsek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Week</dateGranularity>
+        <field>OpportunityTeamMember.Core_Date_Added__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityTeamMember.Core_Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>My Opps with TSS added w/out Support Req</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>team</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

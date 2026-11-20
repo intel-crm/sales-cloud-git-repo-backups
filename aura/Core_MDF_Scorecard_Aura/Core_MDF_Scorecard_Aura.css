@@ -1,0 +1,15 @@
+.THIS .buttonWrap {
+  white-space: nowrap !important;
+}
+
+.THIS .borderedTable {
+    border-collapse: collapse;
+    border: 1px solid;
+    border-color: #c9c9c9;
+    padding: 0.5rem;
+}
+
+.THIS .columnPadding{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}

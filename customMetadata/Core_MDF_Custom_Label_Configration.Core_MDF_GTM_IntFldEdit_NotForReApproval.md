@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Core_MDF_GTM_IntFldEdit_NotForReApproval</label>
+    <protected>false</protected>
+    <values>
+        <field>Core_MDF_Category_Txt__c</field>
+        <value xsi:type="xsd:string">Campaign</value>
+    </values>
+    <values>
+        <field>Core_MDF_Org_Specific_Ind__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Core_MDF_Value2_Txt__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Core_MDF_Value3_Txt__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Core_MDF_Value4_Txt__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Core_MDF_Value5_Txt__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Core_MDF_Value_Txt__c</field>
+        <value xsi:type="xsd:string">Core_MDF_Volume_txt__c;Core_MDF_PCT_Notes_txt__c;Core_MDF_OEM_Platform_End_Date_Dt__c;Core_MDF_OEM_Platform_Start_Date_Dt__c</value>
+    </values>
+</CustomMetadata>

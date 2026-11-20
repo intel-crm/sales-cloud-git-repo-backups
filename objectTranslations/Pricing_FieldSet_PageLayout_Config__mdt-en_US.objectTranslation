@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing FieldSet PageLayout Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing FieldSet PageLayout Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field Set Name --></label>
+        <name>Pricing_Field_Set_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hide Blank Fields? --></label>
+        <name>Pricing_Hide_Blank_Fields_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- IQR Product Type --></label>
+        <name>Pricing_IQR_Product_Type_Pkl__c</name>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center GPU</masterLabel>
+            <translation><!-- Data Center GPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Data Center Xeon® CPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Default</masterLabel>
+            <translation><!-- Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethernet</masterLabel>
+            <translation><!-- Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ PMem</masterLabel>
+            <translation><!-- Optane™ PMem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optane™ SSD</masterLabel>
+            <translation><!-- Optane™ SSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Volume Quotes - Data Center Xeon® CPU</masterLabel>
+            <translation><!-- Small Volume Quotes - Data Center Xeon® CPU --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is RPM User --></label>
+        <name>Pricing_IsRPM_User__c</name>
+        <picklistValues>
+            <masterLabel>Default</masterLabel>
+            <translation><!-- Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>False</masterLabel>
+            <translation><!-- False --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>True</masterLabel>
+            <translation><!-- True --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>Pricing_Is_Active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Internal User --></label>
+        <name>Pricing_Is_Internal_User_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Partner User --></label>
+        <name>Pricing_Is_Partner_User_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section Label --></label>
+        <name>Pricing_Section_Label_Pkl__c</name>
+        <picklistValues>
+            <masterLabel>Additional Details</masterLabel>
+            <translation><!-- Additional Details --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assumed Competitive Offering</masterLabel>
+            <translation><!-- Assumed Competitive Offering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumption Parameters</masterLabel>
+            <translation><!-- Consumption Parameters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>My Deals</masterLabel>
+            <translation><!-- My Deals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment</masterLabel>
+            <translation><!-- Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance Metric</masterLabel>
+            <translation><!-- Performance Metric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proposed Intel Solution</masterLabel>
+            <translation><!-- Proposed Intel Solution --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Section Order --></label>
+        <name>Pricing_Section_Order__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

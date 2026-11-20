@@ -1,0 +1,6 @@
+<apex:page controller="Core_IPS_EoisErrorController" action="{!PageInit}">
+<apex:form >
+  <span style="color:red;font-size:16px">{!ErrorMsg}</span><br/>  
+  <apex:commandButton Value="Go Back" action="{!goBack}" />  
+</apex:form>  
+</apex:page>

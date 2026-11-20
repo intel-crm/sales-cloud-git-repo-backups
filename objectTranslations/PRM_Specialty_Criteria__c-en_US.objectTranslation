@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Requirement Criteria</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Requirement Criteria</value>
+    </caseValues>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Indicator --></label>
+        <name>PRM_InActive_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Qualitative</masterLabel>
+            <translation><!-- Qualitative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quantitative</masterLabel>
+            <translation><!-- Quantitative --></translation>
+        </picklistValues>
+    </fields>
+    <recordTypes>
+        <label><!-- Qualitative --></label>
+        <name>PRM_Qualitative</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Quantitative --></label>
+        <name>PRM_Quantitative</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,22 @@
+<template>
+        <div>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_right"
+                            role="none">
+                            <lightning-combobox
+                                id="comboBox"
+                                onfocus={focusEvent}
+                                name="progress"
+                                value={selectedValue}
+                                placeholder={label.defaultSelectValue}
+                                options={availableProgramMap}
+                                onchange={handleChange} >
+                            </lightning-combobox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>

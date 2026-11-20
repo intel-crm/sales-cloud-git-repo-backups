@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="labl" type="String" label="Enter the label for section" default=""/>
+            <property name="iconName" type="String" label="Enter an icon name" description="Enter a valid icon name to display from SLDS"/>
+            <property name="relatedObjectApiName" default="" type="String" required="true" label="Enter the api name of child object"/>
+            <property name="parenIdApi" type="String" default="" required="true" label="Enter the api name of relationship field"/>
+            <property name="picklistFieldApiName" type="String" default="" required="true" label="Enter the api name of the field should appear in the picklist"/>
+            <property name="sortBy" type="String" default="LastModifiedDate DESC" required="true" datasource="LastModifiedDate DESC,LastModifiedDate ASC,CreatedDate DESC,CreatedDate ASC" label="Enter the sort option for the picklist field"/>
+            <property name="layoutType" type="String" datasource="Full,Compact,fieldset" label="Enter the layout type"/>
+            <property name="mode" type="String" datasource="view,edit" default="view" label="Enter the mode"/>
+            <property name="fieldSet" type="String" required="true" default="" label="Enter Field set api name of related object"/>
+            <property name="pageSize" type="Integer" required="false" label="Enter the number of records per page on table"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

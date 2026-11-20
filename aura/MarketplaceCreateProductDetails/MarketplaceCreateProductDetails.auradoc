@@ -1,0 +1,53 @@
+<aura:documentation>
+	<aura:description>
+    <p>Create Offering Details Component</p>
+
+		<a href="https://quoterequest.intel.com/--nppdevpmp--sitepreview.cs67.force.com/styleguide/s/pmp-partner-offering/a3s0n000000A8p5AAC/a3s0n000000a8p5?language=en_US">
+			Create/Edit Offering - Right Rail 
+		</a>
+    <br />
+    <a href="https://d.pr/i/8E67AJ">
+			Example Create Offering Screenshot Right Bar
+		</a>
+		<br />
+
+
+    <p>Structure of Offering Detail items:</p>
+		<pre>
+[
+{
+  categoryLabel: 'Offering Name',
+  value: 'Inspiron 2-in-1 Laptop'
+},
+{
+  categoryLabel: 'Offering Details',
+  listing: [
+    { label: 'Category', value: 'System' },
+    { label: 'Sub-Category', value: 'Laptop' },
+    { label: 'Industries', value: 'Communication and Networking, Industrial Automation and Energy' },
+    { label: 'Application(s)', value: 'Digital Security Surveillance' },
+    { label: 'Country', value: 'Rest of Asia Pacific' },
+    { label: 'End Customer Type', value: 'Enterprise' },
+  ]
+},
+{
+  categoryLabel: 'Intel Technologies',
+  listing: [
+    { label: 'Processor', value: '8th Gen Intel Core' }
+  ]
+}]
+		</pre>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 4/4/2019</p>
+    <p>CurrentVersion: 0</p>
+    <hr/>
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+		<p>Moved to batch 4</p>
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr/>
+    <p>Change Log</p>
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

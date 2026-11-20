@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_8781301</developerName>
+        <masterLabel>Global Account Name</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ALCATEL-LUCENT FRANCE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent USA (IL)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent USA (MA)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent USA (NJ)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALCATEL-LUCENT CANADA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALCATEL-LUCENT ENTERPRISE</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALCATEL-LUCENT SHANGHAI BELL CO., LTD.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent Israel</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent USA (Mountain View)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent USA (NC)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>alcatel-lucent</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alcatel-Lucent, Usa, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALCATEL-LUCENT INTERNATIONAL</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ALCATEL-LUCENT GTM</sourceValue>
+            </sourceValues>
+            <value>Alcatel Lucent</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ERICSSON AB</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON INC</sourceValue>
+            </sourceValues>
+            <value>Ericsson</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Nokia Networks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia OYJ</sourceValue>
+            </sourceValues>
+            <value>Nokia</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <description>Co-sales oppty with EMEA TEMs.</description>
+    <filter>
+        <booleanFilter>(((1 OR 2 OR 3) OR 5) AND 4) AND 6</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Alcatel</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Ericsson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Nokia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>includes</operator>
+            <value>Influencer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Alcatel,Ericsson,Nokia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notContain</operator>
+            <value>Lost,Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_8781301</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>NIS TEM GTM Funnel</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

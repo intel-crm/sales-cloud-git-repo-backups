@@ -1,0 +1,35 @@
+.row-color {
+  color: red;
+}
+
+.selected-row-color {
+  color: #0176d3;
+  font-weight: 600;
+}
+
+table {
+  counter-reset: rowNumber;
+}
+
+table tr > td:first-child {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
+}
+
+.recovery-amount {
+  display: inline-block;
+  font-weight: bold;
+  padding-left: 30px;
+  font-size: 15px;
+  font-variant: small-caps;
+}
+
+.custom-width {
+  max-width: 80rem !important;
+  width: 80% !important;
+}

@@ -1,0 +1,126 @@
+.THIS {
+    height: 100%;
+}
+
+.THIS .close {
+    position: absolute;
+    top: 25px;
+    right: 16px;
+    transform: translateY(-50%);
+}
+
+.THIS .close .slds-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.THIS .modalTitle {
+    font-size: 1em;
+    text-align: center;
+    padding: 1rem;
+}
+.THIS .modalTitle a:hover .slds-icon use,
+.THIS .modalTitle a .slds-icon use {
+    fill: t(white);
+}
+.THIS .marquee {
+    background-color: #003c71;
+    background-image: url(/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v3.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+}
+.THIS .modalNav {
+    height: 66px;
+    background: t(lightestGray);
+    z-index: 1;
+    padding: 36px 0 10px 0;
+    text-align: center;
+}
+.THIS .modalNav .jumpLinks,
+.THIS .modalNav a {
+    margin: 0 8px;
+}
+
+.THIS .modalBody {
+    position: relative;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    padding: 0 0 1rem 0;  
+}
+
+.THIS .heading {
+    border-bottom: 1px solid #dddbda;
+    margin-bottom: 2rem;
+}
+.THIS .sectionBody {
+    margin-bottom: 2rem;
+}
+.THIS .modalFooter {
+    height: 60px;
+    padding: 14px 20px;
+    bottom: 0;
+    /* background: t(lightestGray); */
+    z-index: 1;
+    text-align: right;
+    position: absolute;
+    width: 100%;
+}
+.THIS .cISG_Button button.has-body:not(.has-icon) {
+    width: 98%;
+}
+@media (max-width: 1279px) {
+    .THIS .modalFooter {
+        padding-bottom: 10rem;
+        position: unset;
+    }
+    .THIS .inputBase.slds-p-around_medium {
+        padding-top: 0;
+    }
+    .THIS .inputBase input[type="search"] {
+        color: t(darkGray);
+    }
+    .THIS .inputBase .checkboxAccordionSection .slds-form-element__label {
+        color: t(white);
+    }
+    .THIS .inputBase .checkboxAccordionSection .highlight .slds-form-element__label {
+        color: t(darkGray);
+    }
+    
+    .THIS .checkboxAccordionSectionContent .checkboxPadding {
+        margin-bottom: 20px;
+    }
+    .THIS .checkboxAccordionSection .checkboxAccordionSectionHeader .accordionIcon  .icon .slds-icon use {
+        fill: t(white);
+    }
+    .THIS .theme-filter  .checkboxAccordionSectionHeader a.accordionIcon {
+        left: 5px;
+    }
+    .THIS .modalTitle {
+        display: none;
+    }
+    .THIS .tree-container a{	
+        text-decoration: underline;	
+    }
+}
+@media (min-width: 1280px) {
+    .THIS .modalBody {
+        padding: .5rem 2rem 2rem 2rem;
+        height: calc(80vh - 120px);
+    }
+    .THIS .modalFooter {
+        background: t(white);
+    }
+    .THIS .checkboxAccordionSection .checkboxAccordionSectionHeader .accordionIcon  .icon .slds-icon use {
+        fill: t(darkGray);
+    }
+    .THIS .theme-filter  .checkboxAccordionSection {
+        background: t(white);
+    }
+    .THIS .tree-container {	
+        text-decoration: underline;	
+        padding-left: 1rem;	
+    }
+}

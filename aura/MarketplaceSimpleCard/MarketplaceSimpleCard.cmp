@@ -1,0 +1,150 @@
+<aura:component>
+    
+    <aura:attribute name="class" type="String" />
+    <aura:attribute name="label" type="string" />
+    <aura:attribute name="imgUrl" type="string" />
+    <aura:attribute name="iconType" type="string" default="image" />
+    <aura:attribute name="iconName" type="string" />
+    <aura:attribute name="iconBG" type="string" />
+    <aura:attribute name="isIcon" type="Boolean" default="true" />
+    <aura:attribute name="linkIsVideo" type="Boolean" default="false" />
+    <aura:attribute name="showVideo" type="Boolean" default="false" />
+    <aura:attribute name="description" type="string" />
+    <aura:attribute name="descriptionLinkText" type="string" />
+    <aura:attribute name="descriptionLinkTarget" type="string" default="_self" />
+    <aura:attribute name="descriptionLink" type="string" />
+    <aura:attribute name="page" type="string" />
+    <aura:attribute name="link" type="string" description="Optional Link URL" />
+    <aura:attribute name="searchParams" type="string" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="isSeoReady" type="boolean" default="false" />
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="objectAPiName" type="string" />
+    <aura:attribute name="isSeoPage" type="boolean" default="false" />	
+    <!-- SEO Friendly URL attribute -->
+    <aura:attribute name="isCategoryPage" type="boolean" default="false" description="For identifying Category pages for creating SEO Friendly URL" />
+    <!-- SEO Friendly URL attribute for specialty -->
+    <aura:attribute name="isSpecialtyPage" type="boolean" default="false" description="For identifying Specialty pages for creating SEO Friendly URL" />
+    <aura:attribute name="isPartnerPage" type="boolean" default="false" description="For identifying Partner program pages for creating SEO Friendly URL" />
+
+    <lightning:layout class="{!v.class}">
+        <lightning:layoutItem>
+            <!-- If clause added for "SEO freindly Category page IntelLink" -->
+            <aura:if isTrue="{!and(v.isSeoPage, or(or(v.isCategoryPage, v.isSpecialtyPage), v.isPartnerPage))}">
+                <c:IntelLink class="full-width" recordId="{!v.searchParams.cat}" objectApiName="{!v.objectApiName}">
+                    <lightning:layout class="full-width">
+                        <lightning:layoutItem size="3" flexibility="shrink" class="{!'simple-card-list-image-wrapper' + (or(v.iconType, v.isIcon) ? ' isIcon' : '')}">
+                            <aura:if isTrue="{!v.body.length > 0}">
+                                {!v.body}
+                                <aura:set attribute="else">
+                                    <c:IntelIcon imgUrl="{!v.imgUrl}" iconType="{!v.iconType}" iconName="{!v.iconName}" iconColor="{!v.iconBG}" />
+                                </aura:set>
+                            </aura:if>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="9" class="product-category-name">
+                            <div>
+                                <p>
+                                    <span class="h5">{!v.label}</span>
+                                </p>
+                                <aura:set attribute="else">
+                                    <p>{!v.label}</p>
+                                </aura:set>
+                            </div>
+                        </lightning:layoutItem>   
+                    </lightning:layout>
+                </c:IntelLink>
+                <aura:set attribute="else">
+                    
+                    <aura:if isTrue="{! or(!empty(v.page), !empty(v.link)) }">
+                        <c:IntelLink class="full-width" page="{!v.page}" searchParams="{!v.searchParams}">
+                            <lightning:layout class="full-width">
+                                <lightning:layoutItem size="3" flexibility="shrink" class="{!'simple-card-list-image-wrapper' + (or(v.iconType, v.isIcon) ? ' isIcon' : '')}">
+                                    <aura:if isTrue="{!v.body.length > 0}">
+                                        {!v.body}
+                                        <aura:set attribute="else">
+                                            <c:IntelIcon imgUrl="{!v.imgUrl}" iconType="{!v.iconType}" iconName="{!v.iconName}" iconColor="{!v.iconBG}"/>
+                                            </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="9" class="product-category-name">
+                                    <div>
+                                        <p>
+                                            <span class="h5">{!v.label}</span>
+                                        </p>
+                                        <aura:set attribute="else">
+                                            <p>{!v.label}</p>
+                                        </aura:set>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </c:IntelLink>
+                        <aura:set attribute="else">
+                            <lightning:layout class="full-width">
+                                <lightning:layoutItem size="3" flexibility="shrink" class="{!'simple-card-list-image-wrapper' + (or(v.iconType, v.isIcon) ? ' isIcon' : '')}">
+                                    <aura:if isTrue="{!v.body.length > 0}">
+                                        {!v.body}
+                                        <aura:set attribute="else">
+                                            <c:IntelIcon imgUrl="{!v.imgUrl}" iconType="{!v.iconType}" iconName="{!v.iconName}" iconColor="{!v.iconBG}" />
+                                        </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="9" class="product-category-name">
+                                    <div>
+                                        <p>
+                                            <span class="h5">{!v.label}</span>
+                                        </p>
+                                        <aura:set attribute="else">
+                                            <p>{!v.label}</p>
+                                        </aura:set>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:set>    
+                    </aura:if>
+                    
+                </aura:set> 
+            </aura:if>  
+            
+            
+            
+            
+            
+            
+        </lightning:layoutItem>
+        
+        
+        <aura:if isTrue="{!v.description}">
+            <lightning:layoutItem>
+                <div class="horizontal-border"></div>
+                <div class="description-wrapper">
+                    <p>{!v.description}</p>
+                    <a onclick="{!c.handleLinkClick}" href="{!'/'+ v.descriptionLink}" target="{!v.descriptionLinkTarget}">
+                        {!v.descriptionLinkText}
+                    </a>
+                </div>
+            </lightning:layoutItem>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.showVideo}">
+            <c:IntelVideoPlayer modalIsOpen="{!v.showVideo}" modal="true"
+                                videoResource= "{!v.descriptionLink}" />
+            
+            <!--            <c:IntelVideoPlayer modalIsOpen="{!v.showVideo}" modal="true"
+                                videoResource= "//players.brightcove.net/734546229001/default_default/index.html?videoId=6009714825001" />-->
+        </aura:if>
+        
+    </lightning:layout>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</aura:component>

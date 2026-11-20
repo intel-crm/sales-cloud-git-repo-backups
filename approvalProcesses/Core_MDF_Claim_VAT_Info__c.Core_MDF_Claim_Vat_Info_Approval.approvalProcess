@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <submitter>Core_MDF_CCP_Retail_EXTERNAL_ALL</submitter>
+        <type>group</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Core_MDF_Status_Txt__c</field>
+        <field>Core_MDF_Claim_Id__c</field>
+        <field>Name</field>
+        <field>Core_MDF_VAT_Amt__c</field>
+        <field>Core_MDF_VAT_Invoice_Number_Txt__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_Pay_Admin_APJ</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>VAT info created for APJ</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>VAT Approval Process</label>
+        <name>VAT_Approval_Process_APJ</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_Pay_Admin_EMEA</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>VAT info created for EMEA</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>VAT Approval Process</label>
+        <name>VAT_Approval_Process_EMEA</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_Pay_Admin_PRC</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>VAT info created for PRC</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>VAT Approval Process</label>
+        <name>VAT_Approval_Process_PRC</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_Pay_Admin_ASMO_LAR</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>VAT info created for ASMO LAR</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Sub_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>LAR</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>VAT Approval Process</label>
+        <name>VAT_Approval_Process_ASMO_LAR</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_CCP_Retail_Pay_Admin_ASMO_NAR</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>VAT info created for ASMO NAR</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PartnerFundClaim.Core_MDF_Sub_Region_Cd__c</field>
+                <operation>equals</operation>
+                <value>NAR</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>VAT Approval Process</label>
+        <name>VAT_Approval_Process_ASMO_NAR</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>This approval process to approve the claim vat info records by payment admins based on the geo</description>
+    <emailTemplate>unfiled$public/Core_MDF_NotifyPaymentAdminsOnVATInvoice</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Core_MDF_Claim_VAT_Info__c.Core_MDF_Status_Txt__c</field>
+            <operation>equals</operation>
+            <value>Pending Documents</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundClaim.Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Claim_VAT_Info__c.Core_MDF_Status_Txt__c</field>
+            <operation>equals</operation>
+            <value>Revision Required</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Core_MDF_Claim_VAT_Approve_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Core_MDF_Claim_VAT_Reject_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Core_MDF_Claim_VAT_Review_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Claim Vat Info Approval</label>
+    <processOrder>1</processOrder>
+    <recallActions>
+        <action>
+            <name>Core_MDF_VAT_Recall_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

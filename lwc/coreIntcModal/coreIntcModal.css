@@ -1,0 +1,92 @@
+@import './animations';
+@import './quickView';
+@import './galleryOverlay';
+
+/* z-index values override native salesforce z-index values needed to fix z-index stacking bug w/ fade animation */
+.modal-main-container {
+  position: absolute;
+  z-index: 9001;
+}
+
+.slds-modal {
+  position: fixed;
+}
+
+.slds-modal > .slds-modal__container {
+  border-radius: 0;
+  display: flex;
+  height: 90vh;
+  left: 7vw;
+  max-width: unset;
+  min-width: unset;
+  padding: 0;
+  position: fixed;
+  top: 5vh;
+  transform: translate(0);
+  transition: .3s ease-out;
+  width: 86vw;
+  z-index: var(--zIndexModal);
+}
+
+.modal-content {
+  background-color: var(--white);
+  min-height: 3rem;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background-color: var(--classic-blue-shade1, #004a86);
+  color: var(--white, #ffffff);
+  padding: 1.40625rem 2.5rem 1.40625rem 1rem;
+  position: relative;
+  text-align: center;
+  transition: min-height .2s;
+  width: 100%;
+  z-index: var(--zIndexModal);
+}
+
+.fa-cancel-thin::before {
+  margin: 0;
+}
+
+footer {
+  background-color: var(--white);
+  border-top: 1px solid var(--lightGray);
+  padding-top: 0;
+  z-index: var(--zIndexModal);
+}
+
+.modal-close {
+  color: var(--darkGray);
+  cursor: pointer;
+  padding: .5rem;
+  position: absolute;
+  right: .5rem;
+  top: 0;
+  z-index: 9051; /* over spinner layers */
+}
+
+.modal-close-body {
+  right: .75rem;
+}
+
+@media only screen and (max-width: 1023px) {
+  .slds-modal > .slds-modal__container {
+    height: 100vh;
+    left: 0;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  header {
+    text-align: left;
+  }
+
+  .modal-content {
+    flex: 1;
+  }
+}

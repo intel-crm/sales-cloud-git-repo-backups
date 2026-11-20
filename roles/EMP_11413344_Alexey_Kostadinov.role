@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Catalina Varela Sierra</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11413344_Alexey_Kostadinov</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11491713_Catalina_Varela_Sierra</parentRole>
+</Role>

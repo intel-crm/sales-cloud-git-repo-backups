@@ -1,0 +1,141 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component access="global"></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            } -->
+            
+            <!--  h1{
+font-family: Intel Clear Pro !important;  
+}  -->
+            
+        <!-- </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body> -->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Reminder: Please Update Your Solution Submission"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        <br/>Hello,<br/><br/>
+                        Thank you again for submitting your solution, {!solutionData.PSS_Proposal_Name_Txt__c}. Before it can move forward to the next stage, your action is required to update your submission. Use the link below and follow the instructions to make the necessary edit(s).<br/>
+                    </td>
+                </tr> -->
+                
+                <!-- Email Body -->
+                
+                <!-- CTA -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">      
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}" styleClass="intelBlue">Edit and resubmit solution</apex:outputLink>
+                    </td>
+                </tr> -->
+                <!-- CTA -->      
+                
+                <!-- Next Best Step -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        <b>INSTRUCTIONS</b><br/><br/>
+                        <b>NOTE:</b> Your solution page may take a few seconds to load.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left:65px;">
+                        1.	Click the ‘Edit Solution’ button. <br/>
+                        2.	Go to the ‘Messages about your Solution’ box (upper right-hand of page).  <br/>
+                        3.	Review the message from your Intel® Showcase Admin about the edit(s) required to your Solution <b>NOTE:</b> This messaging system can also be used to communicate additional questions and/or concerns you have about your solution submission.<br/>  
+                        4.	Select ‘Preview’ to review and verify the edit(s) have been made. <br/>
+                        5.	Resubmit your solution to the Intel® Partner Showcase team for review. <br/><br/>
+                    </td>       
+                </tr>   
+                <tr>
+                    <td style="padding-left:50px;">      
+                        Thank you, <br/><br/>
+                        Your Intel® Partner Alliance team   <br/> 
+                    </td>
+                </tr> -->
+                
+                <!-- Next Best Step -->
+                
+                <!-- Email shared with -->
+                 <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        This email may be shared with others in your organization. You may see the full list of who the solution is shared with in the Solution Summary page.<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink>
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+                
+
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body>
+        
+    </html>
+    
+</apex:component> -->

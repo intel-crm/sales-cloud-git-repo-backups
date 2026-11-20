@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>User Group Mapping Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UserGroupMapping Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_id__c</name>
+        <relationshipLabel><!-- UserGroupMapping Logs (Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Action --></label>
+        <name>Core_MDF_Action_nm__c</name>
+        <picklistValues>
+            <masterLabel>Action Required</masterLabel>
+            <translation><!-- Action Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add</masterLabel>
+            <translation><!-- Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing User Update</masterLabel>
+            <translation><!-- Marketing User Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGM Activate</masterLabel>
+            <translation><!-- PGM Activate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGM Inactivate</masterLabel>
+            <translation><!-- PGM Inactivate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGM Initial Log</masterLabel>
+            <translation><!-- PGM Initial Log --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGM User Addition</masterLabel>
+            <translation><!-- PGM User Addition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGM User Removal</masterLabel>
+            <translation><!-- PGM User Removal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PNUM Addition</masterLabel>
+            <translation><!-- PNUM Addition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PNUM Deletion</masterLabel>
+            <translation><!-- PNUM Deletion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remove</masterLabel>
+            <translation><!-- Remove --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Channel Program --></label>
+        <name>Core_MDF_Channel_Program_id__c</name>
+        <relationshipLabel><!-- UserGroupMapping Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Core_MDF_Contact_id__c</name>
+        <relationshipLabel><!-- UserGroupMapping Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Error Message --></label>
+        <name>Core_MDF_Error_Message_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group --></label>
+        <name>Core_MDF_Group_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processed Datetime --></label>
+        <name>Core_MDF_Processed_dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_MDF_Status_nm__c</name>
+        <picklistValues>
+            <masterLabel>Action Required</masterLabel>
+            <translation><!-- Action Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>Core_MDF_User_id__c</name>
+        <relationshipLabel><!-- UserGroupMapping Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Virtual Account --></label>
+        <name>Core_MDF_Virtual_Account_id__c</name>
+        <relationshipLabel><!-- UserGroupMapping Logs (Virtual Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Works For Account --></label>
+        <name>Core_MDF_Works_For_Account_id__c</name>
+        <relationshipLabel><!-- UserGroupMapping Logs (Works For Account) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,10 @@
+.slds-spinner_container  {
+
+padding-top: 58%;
+-ms-overflow-style: none; 
+  scrollbar-width: none; 
+
+}
+.slds-spinner_container::-webkit-scrollbar {
+    display: none;
+}

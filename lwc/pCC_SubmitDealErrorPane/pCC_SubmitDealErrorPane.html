@@ -1,0 +1,45 @@
+<template>
+     
+                <template if:true={isSubmit}>
+                    <div class="slds-modal__header"><h2 class="slds-modal__title">Submit Deal Registration</h2></div>
+                </template>
+                <div class="slds-is-relative paddingTop" if:true={loading} >
+                    
+                    <div class="slds-spinner_container">
+                        <div class="slds-spinner--brand  slds-spinner slds-spinner--medium">
+                          <span class="slds-assistive-text">Loading</span>
+                          <div class="slds-spinner__dot-a"></div>
+                          <div class="slds-spinner__dot-b"></div>
+                          <template if:true={isSubmit}>
+                          <!-- additional element to show the text under the spinner -->
+                          <p class="slds-spinner-text">Please wait while the system is processing your submit request...</p>
+                          </template>
+                        </div>
+                      </div>
+                </div>
+           
+                <template if:true={errorWrapperListSize}>
+                    <div class={backgroundval}>
+                <div class="slds-clearfix">
+                <span class="header slds-float_left slds-p-bottom_x-small">Please review the following error(s) before you submit the Deal Reg </span>
+                <template if:false={isSubmit}>
+                <lightning-button-icon class="slds-float_right slds-p-left_x-small" icon-name="utility:refresh" alternative-text="refresh" title="refresh" onclick={refresh}></lightning-button-icon>
+                </template>
+            </div>
+            <div class={scrollme}>
+            <template for:each={errorWrapperList} for:item="errorWrapperItem">
+                <div key={errorWrapperItem.label} class="slds-m-bottom_x-small">
+                    <lightning-icon icon-name="utility:error" variant="error" size="xx-small"> </lightning-icon> <span class="spanux"  > {errorWrapperItem.label}</span>
+                    <ul class="slds-p-left_medium">
+                        <template for:each={errorWrapperItem.value} for:item="fieldValueItem">
+                    <li class="lisize" key={fieldValueItem}>{fieldValueItem}</li> 
+                    </template>
+                    </ul>
+                </div>        
+            </template> 
+            </div>
+        </div>
+    </template> 
+
+                    
+</template>

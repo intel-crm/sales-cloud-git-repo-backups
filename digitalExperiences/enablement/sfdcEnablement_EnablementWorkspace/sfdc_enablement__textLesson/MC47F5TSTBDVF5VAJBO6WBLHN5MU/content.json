@@ -1,0 +1,13 @@
+{
+  "type" : "sfdc_enablement__textLesson",
+  "title" : "Gaudi Fit Questionnaire",
+  "contentBody" : {
+    "sections" : [ {
+      "content" : "<div>Link to Seismic Questionnaire</div>",
+      "keyConcept" : "DOWNLOAD THIS WORD DOCUMENT FOR FILLING OUT",
+      "sectionTime" : 1.0
+    } ],
+    "totalTime" : 2.0
+  },
+  "urlName" : "gaudi-fit-questionnaire"
+}

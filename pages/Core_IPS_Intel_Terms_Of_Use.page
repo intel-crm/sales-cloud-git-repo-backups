@@ -1,0 +1,10 @@
+<apex:page >
+  <h1 style="font-size:20px;">The Intel Sales CRM on Salesforce Privacy Notice </h1>
+  <ol>
+      <li style="font-size:12px">Privacy is an important issue for all of us. With Intel Sales CRM on Salesforce, as with many collaborative platforms, there is an inherent sharing of information with a broad audience.</li>
+      <li style="font-size:12px">Use of Intel Sales CRM – Intel Premier Support on Salesforce and the posting of any personal information is subject to Intel's <a href="/servlet/servlet.FileDownload?file=015o0000001vYD4">privacy guidelines.</a></li>
+      <li style="font-size:12px">Do not post personal information on Intel Sales CRM on Salesforce or use it without the consent of the person.</li>
+      <li style="font-size:12px">Transactional data (user interactions within the system) are collected for analysis purposes to determine how the system is being used and to assess patterns of user adoption. While personal information is collected as part of this process, that personal information shall not be used for individual user monitoring or targeting.</li>
+      <li style="font-size:12px">The Intel Global Employee and Contingent Worker Privacy Notice at <a href="https://employeecontent.intel.com/content/corp/Global_Employee_and_Global_Contingent_Worker_Privacy.html">https://employeecontent.intel.com/content/corp/Global_Employee_and_Global_Contingent_Worker_Privacy.html</a> outlines Intel's practices for the handling of employee and contingent worker personal information and is applicable worldwide.  This Notice is applicable to employees and contingent workers in lieu of, and not in addition to, the external Intel Privacy Notice at <a href="http://www.intel.com/privacy">http://www.intel.com/privacy.</a></li>
+  </ol>  
+</apex:page>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>PMP_LTOutboundMsg_0</name>
+        <label>PMP_LTOutboundMsg</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>Core_Integration_Outbound_Message__c.PMP_LTOutboundMsg</actionName>
+        <actionType>outboundMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Core_Integration_Outbound_Message__c.PMP_LTOutboundMsg</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>PMP_Partner_LTOutboundMsg</description>
+        <name>PMP_Partner_LTOutboundMsg</name>
+        <label>PMP_Partner_LTOutboundMsg</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <actionName>Core_Integration_Outbound_Message__c.PMP_Partner_LTOutboundMsg</actionName>
+        <actionType>outboundMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Core_Integration_Outbound_Message__c.PMP_Partner_LTOutboundMsg</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Marketplace Translation - Partner</description>
+        <name>MarketplaceTranslationPartner</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Marketplace Translation - Partner</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>it stores the message type Marketplace_Translation</description>
+        <name>PMP_Marketplace_Translation</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Marketplace_Translation</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>If the Message Type equal to Marketplace Translation - Partner</description>
+        <name>If_the_Message_Type_equal_to_Marketplace_Translation_Partner</name>
+        <label>If the Message Type equal to Marketplace Translation - Partner</label>
+        <locationX>446</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Marketplace_Translation_Partner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MessageType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>MarketplaceTranslationPartner</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PMP_Partner_LTOutboundMsg</targetReference>
+            </connector>
+            <label>Marketplace Translation - Partner</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If the message type is equal to Marketplace_Translation</description>
+        <name>If_the_message_type_is_equal_to_Marketplace_Translation</name>
+        <label>If the message type is equal to Marketplace_Translation</label>
+        <locationX>248</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>If_the_Message_Type_equal_to_Marketplace_Translation_Partner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Marketplace_Translation_Offering</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MessageType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>PMP_Marketplace_Translation</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PMP_LTOutboundMsg_0</targetReference>
+            </connector>
+            <label>Marketplace_Translation_Offering</label>
+        </rules>
+    </decisions>
+    <description>this is the flow  on the object Core_Integration_Outbound_Message__c</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_Outbound_Integration_Msg_Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Outbound_Integration_Msg_Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_the_message_type_is_equal_to_Marketplace_Translation</targetReference>
+        </connector>
+        <object>Core_Integration_Outbound_Message__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

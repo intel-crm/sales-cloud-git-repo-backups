@@ -1,0 +1,69 @@
+<!--
+  @description       : 
+  @author            : Sandeep Chamate
+  @group             : 
+  @last modified on  : 10-15-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-form-element input-container">
+        <div class="slds-form-element__control">
+
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                    aria-expanded="true" aria-haspopup="listbox" role="combobox" onmouseleave={handleBlur}>
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <lightning-input label={label} title={displayText} field-level-help={helpText}
+                            disabled={isDisabled} class="inputBox" onclick={showOptions} value={displayText}
+                            style="cursor: pointer;" readonly>
+                        </lightning-input>
+                        <lightning-icon class="slds-input__icon" style="margin-top:0px" icon-name="utility:down"
+                            size="x-small" alternative-text="downicon"></lightning-icon>
+                    </div>
+
+                    <template lwc:if={showDropdown}>
+                        <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid">
+                            <ul class="slds-listbox slds-listbox_vertical recordListBox" role="presentation">
+                                <li class="slds-listbox__item eachItem">
+                                    <span class="slds-grow ">
+                                        <lightning-input type="search" onchange={handleSearch} value={searchKey}
+                                            placeholder="Search">
+                                        </lightning-input>
+                                    </span>
+                                </li>
+
+                                <template for:each={optionDataCopy} for:item="option">
+                                    <li key={option.value} data-id={option.value} onmousedown={selectItem}
+                                        class="slds-listbox__item eachItem">
+                                        <template lwc:if={option.selected}>
+                                            <lightning-icon icon-name="utility:check" size="x-small"
+                                                alternative-text="icon">
+                                            </lightning-icon>
+                                        </template>
+                                        <span
+                                            class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{option.label}</span>
+                                    </li>
+                                </template>
+
+                                <template lwc:if={noSearchResult}>
+                                    <li class="slds-listbox__item eachItem">
+                                        <span
+                                            class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">No
+                                            results for "{searchKey}"</span>
+                                    </li>
+                                </template>
+
+                            </ul>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
+
+            <template lwc:if={isDisabledTxt}>
+                <div class="help-text">{NoConsumptionValuesMessage}</div>
+            </template>
+
+        </div>
+    </div>
+</template>

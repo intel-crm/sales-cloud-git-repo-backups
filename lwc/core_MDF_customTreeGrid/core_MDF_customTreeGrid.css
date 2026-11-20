@@ -1,0 +1,11 @@
+.reviewScreen{
+    height:30.5rem;
+    overflow: auto;
+    background-color: white;
+}
+
+.spifScreen{
+    height:17rem;
+    overflow: auto;
+    background-color: white;
+}

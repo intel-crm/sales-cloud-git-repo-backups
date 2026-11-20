@@ -1,0 +1,15 @@
+.slds-row-number{
+        display: none;
+}
+
+.modal-bg {
+        background-color: rgba(0, 0, 0, 0.5);  
+}
+.button-width {
+        width: 80px;
+}
+.campaign-window {
+        max-width: 112rem !important; 
+        width: 100% !important;
+        padding: 15px 15px 15px 15px;
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Stamp_Coverage_For_Stage_SQL_TQL workflow rule
+Workflow rule description: &quot;</description>
+    <formulas>
+        <name>Core_Update_SQLFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL($Record.Status,&apos;Sales Qualified Lead&apos;), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))), $Record.Core_Locked_SQL_Coverage__c)</expression>
+    </formulas>
+    <formulas>
+        <name>Core_Update_TQLFormula</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL($Record.Status,&apos;Tele Qualified Lead&apos;), (IF(ISBLANK (TEXT($Record.Owner:User.Core_User_Coverage__c)),&apos;Other&apos;,TEXT($Record.Owner:User.Core_User_Coverage__c))), $Record.Core_Locked_TQL_Coverage__c)</expression>
+    </formulas>
+    <label>Core_Stamp_Coverage_For_Stage_SQL_TQL</label>
+    <migratedFromWorkflowRuleName>Core_Stamp_Coverage_For_Stage_SQL_TQL</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_Locked_SQL_Coverage__c</field>
+            <value>
+                <elementReference>Core_Update_SQLFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Locked_TQL_Coverage__c</field>
+            <value>
+                <elementReference>Core_Update_TQLFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND( OR(  ISNEW(),  ISCHANGED({!$Record.IsConverted})  ),  {!$Record.IsConverted} = True, LEFT({!$Record.Owner:User.Id} , 3) = &apos;005&apos;, OR( ISPICKVAL({!$Record.Status},&quot;Sales Qualified Lead&quot;), ISPICKVAL({!$Record.Status},&quot;Tele Qualified Lead&quot;) )  )</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

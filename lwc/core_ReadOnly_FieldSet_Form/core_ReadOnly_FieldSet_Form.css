@@ -1,0 +1,87 @@
+details > summary {
+    padding: 2px;
+    background-color:whitesmoke;
+    outline: none;
+    font-size: 15px;
+    height: 35px;
+    border-radius: 0.25rem;
+}
+
+
+.style {
+    background-color: white;
+    border-radius: 0.30rem;
+}
+
+
+.slds-wrap {
+    flex-wrap: wrap;
+    align-items: flex-end;
+    background-color: white
+}
+
+.right-side{
+    float:right;
+    padding-top: 1px;
+}
+
+.spinnerStyle{
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+.underline-text* {
+     text-decoration: underline;
+}
+
+.underline-text-field {
+    border: none;
+    border-bottom: 1px dotted #000; /* Change the color as needed */
+    outline: none;
+    width: fit-content;
+}
+.underline-field{
+    border: none;
+    border-bottom: 1px solid grey; /* Change the color as needed */
+    outline: none;
+    width: 100%;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(8, 7, 7, 0.5); /* background color while spinner onscreen */
+  z-index: 15000; /* set z-index always high */
+}
+
+.spinshow::after {
+  position: absolute;
+  content: "Please wait while loading";
+  width: 100%;
+  text-align: center;
+  top: calc(8% + 3em);
+  font-weight: bold;
+}
+.quantity-link {
+  color: #0176d3;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.quantity-link:hover {
+  color: #014486;
+  text-decoration: none;
+  border-bottom: 1px solid #0176d3;
+}
+
+.quantity-link:focus {
+  outline: 2px solid #0176d3;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

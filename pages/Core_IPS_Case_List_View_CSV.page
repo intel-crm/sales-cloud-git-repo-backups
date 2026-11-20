@@ -1,0 +1,18 @@
+<apex:page Standardcontroller="Case" recordSetVar="placeholderRecordSetVar" extensions="Core_IPS_Case_List_View_Export" 
+           showHeader="false" readOnly="true" cache="true" contentType="{!contentType}" renderAs="{!renderType}" 
+           applyHtmlTag="false">{!BOM}Intel Confidential
+{!reportDate}{!newLine}         
+Case List Export
+{!filterName}{!newLine}{!newLine}
+    <apex:repeat value="{!lstColumn}" var="varfield">                     
+        <apex:outputText value="{!varField.label}"/>,
+    </apex:repeat>{!newline}
+    <apex:repeat value="{!lstlstObj}" var="block">
+        <apex:repeat value="{!block}" var="dataRecord">
+            <apex:repeat value="{!lstColumn}" var="varfield">
+                <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == False}"/>
+                <apex:outputText value=" {!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == True}"/>,
+            </apex:repeat>{!newline}
+        </apex:repeat>                                                                                    
+    </apex:repeat>
+</apex:page>

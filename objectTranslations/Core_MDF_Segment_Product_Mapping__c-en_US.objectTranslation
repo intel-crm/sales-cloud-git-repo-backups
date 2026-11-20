@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Activity Segment Product Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Activity Segment Product Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Segment Mapping --></label>
+        <name>Core_MDF_Activity_Segment_Mapping_id__c</name>
+        <relationshipLabel><!-- Activity Segment Product Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Core_MDF_Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Core_MDF_Product_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Core_MDF_Product_id__c</name>
+        <relationshipLabel><!-- Activity Segment Product Mappings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

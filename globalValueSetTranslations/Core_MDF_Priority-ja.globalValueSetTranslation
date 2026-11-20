@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>4G/5G Core</masterLabel>
+        <translation><!-- 4G/5G Core --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>5G Infrastructure</masterLabel>
+        <translation>5G インフラストラクチャー </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>5G Network Transformation</masterLabel>
+        <translation><!-- 5G Network Transformation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>5G/RAN</masterLabel>
+        <translation><!-- 5G/RAN --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI &amp; Machine Learning</masterLabel>
+        <translation><!-- AI &amp; Machine Learning --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI / Big Data</masterLabel>
+        <translation>AI / ビッグデータ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Commercial</masterLabel>
+        <translation>ビジネス向け AI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI Consumer</masterLabel>
+        <translation>コンシューマー向け AI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI PC &amp; Consumer</masterLabel>
+        <translation>AI PC およびコンシューマー向け</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI PC - Commercial</masterLabel>
+        <translation>AI PC - 商業向け</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AI </masterLabel>
+        <translation><!-- AI  --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Advanced Analytics</masterLabel>
+        <translation>高度な分析</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Always Connected PC</masterLabel>
+        <translation>常時接続 PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Analytics</masterLabel>
+        <translation>分析</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apple Compete Commercial</masterLabel>
+        <translation>Apple コンペティション・ビジネス向け製品</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apple Compete Consumer</masterLabel>
+        <translation>Apple コンペティション・コンシューマー向け製品</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Apple Compete Workstation</masterLabel>
+        <translation>Apple コンペティション・ワークステーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Architectural Conversion</masterLabel>
+        <translation>アーキテクチャーの変更</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Artificial Intelligence</masterLabel>
+        <translation>人工知能 (AI)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automotive</masterLabel>
+        <translation>自動車</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud</masterLabel>
+        <translation>クラウド</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud (Public, Private, hybrid, multi)</masterLabel>
+        <translation>クラウド (パブリック、プライベート、ハイブリッド、マルチ)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cloud Services</masterLabel>
+        <translation>クラウドサービス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial</masterLabel>
+        <translation>ビジネス向け</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial - Education</masterLabel>
+        <translation>商業向け - 教育</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial - Government</masterLabel>
+        <translation>商業向け - 政府</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial - SMB</masterLabel>
+        <translation>商業向け - 中小規模ビジネス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial Evo (non-vPro)</masterLabel>
+        <translation>ビジネス向け インテル® Evo™ (vPro® プラットフォーム非対応)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial non-vPro</masterLabel>
+        <translation>ビジネス向け vPro 非対応</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial vPro</masterLabel>
+        <translation>ビジネス向け vPro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial vPro Evo</masterLabel>
+        <translation>ビジネス向け インテル® Evo™ vPro® プラットフォーム</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial​ - Large enterprise</masterLabel>
+        <translation>商業向け - 大企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Connectivity</masterLabel>
+        <translation>接続性</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer</masterLabel>
+        <translation>コンシューマー向け</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Mainstream/Essential</masterLabel>
+        <translation>コンシューマー - メインストリーム / エッセンシャル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer - Premium</masterLabel>
+        <translation>コンシューマー - プレミアム</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Chromebook</masterLabel>
+        <translation>消費者ユーザー向け Chromebook*</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Client</masterLabel>
+        <translation>個人クライアント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Evo</masterLabel>
+        <translation>個人ユーザー向け Evo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Intel Optane</masterLabel>
+        <translation>消費者ユーザー向けインテル® Optane™ メモリー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer Modern PCs</masterLabel>
+        <translation>コンシューマー向けの最新 PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer non-Evo</masterLabel>
+        <translation>個人ユーザー向け Evo 非対応</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer refresh of latest gen processors</masterLabel>
+        <translation>消費者向け最新世代プロセッサーの更新</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer​ - Enthusiast</masterLabel>
+        <translation>コンシューマー - エンスージアスト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Consumer​ - Mainstream</masterLabel>
+        <translation>コンシューマー - メインストリーム</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Creator marketing</masterLabel>
+        <translation>クリエイター市場向けのマーケティング</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Datacenter Modernization</masterLabel>
+        <translation>データセンターの最新化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Design Win vs. Comp</masterLabel>
+        <translation>デザインウィン vs. コンプ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Transformation</masterLabel>
+        <translation>デジタル・トランスフォーメーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Digital Workplace</masterLabel>
+        <translation>デジタル・ワークスペース</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge</masterLabel>
+        <translation>エッジ </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Computing</masterLabel>
+        <translation><!-- Edge Computing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge Infrastructure Platforms/MEC</masterLabel>
+        <translation><!-- Edge Infrastructure Platforms/MEC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Edge/ IOT Digital Transformation</masterLabel>
+        <translation>エッジ/ IOT デジタル・トランスフォーメーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise AI</masterLabel>
+        <translation>エンタープライズ AI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise Cloud Networking &amp; Security</masterLabel>
+        <translation><!-- Enterprise Cloud Networking &amp; Security --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Enterprise IT</masterLabel>
+        <translation>エンタープライズ IT</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Extend Platform Leadership</masterLabel>
+        <translation><!-- Extend Platform Leadership --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA</masterLabel>
+        <translation><!-- FPGA --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FPGA Accelerators</masterLabel>
+        <translation>FPGA アクセラレーター</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Fixed/Wireless Access</masterLabel>
+        <translation><!-- Fixed/Wireless Access --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming</masterLabel>
+        <translation>ゲーム用 PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gaming marketing</masterLabel>
+        <translation>ゲーミング市場向けのマーケティング</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gen-Over-Gen Ramp</masterLabel>
+        <translation>世代間の成長促進</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HPC </masterLabel>
+        <translation><!-- HPC  --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>High Performance Computing</masterLabel>
+        <translation>ハイパフォーマンス・コンピューティング</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IOT Digital Transformation</masterLabel>
+        <translation>IoT デジタル・トランスフォーメーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IREP</masterLabel>
+        <translation><!-- IREP --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In-Memory Database/Optane Pmem</masterLabel>
+        <translation>インメモリー・データベース / Optane™ パーシステント・メモリー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Infrastructure Modernization</masterLabel>
+        <translation>インフラストラクチャー最新化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Infrastructure Optimization</masterLabel>
+        <translation>インフラストラクチャーの最適化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Instore innovation</masterLabel>
+        <translation>店内イノベーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Instore merchandise</masterLabel>
+        <translation>店内販促物</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel/RSP Advocacy</masterLabel>
+        <translation><!-- Intel/RSP Advocacy --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Internet of Things</masterLabel>
+        <translation>モノのインターネット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Machine Learning</masterLabel>
+        <translation><!-- Machine Learning --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mainstream PCs</masterLabel>
+        <translation>メインストリーム PC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Biz vPro</masterLabel>
+        <translation>マネージド・ビジネス vPro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed Business Intel Optane</masterLabel>
+        <translation>管理者在籍企業向けインテル® Optane™ メモリー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Managed SMB/Large Enterprise</masterLabel>
+        <translation>管理対象の中小企業 / 大企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Media Services</masterLabel>
+        <translation>メディアサービス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Modern Mobile Devices</masterLabel>
+        <translation>最新のモバイルデバイス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multi-Access Edge Computing</masterLabel>
+        <translation><!-- Multi-Access Edge Computing --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Consumer</masterLabel>
+        <translation>NP - コンシューマー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Gaming</masterLabel>
+        <translation>NP - ゲーム</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Managed SMB/Large Enterprise</masterLabel>
+        <translation>NP - 管理対象の中小企業 / 大企業</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NP-Small Business</masterLabel>
+        <translation>NP - 小規模ビジネス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Network Cloud (NFV/SDN)</masterLabel>
+        <translation>ネットワーク・クラウド (NFV/SDN)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Network Transformation</masterLabel>
+        <translation>ネットワーク・トランスフォーメーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>New Business Models</masterLabel>
+        <translation>新しいビジネスモデル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Next Gen IaaS</masterLabel>
+        <translation>次世代 IaaS</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>None</masterLabel>
+        <translation><!-- None --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>On Prem</masterLabel>
+        <translation>オンプレミス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online Performance</masterLabel>
+        <translation>オンラインのパフォーマンス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>その他</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Private Wireless Networks</masterLabel>
+        <translation><!-- Private Wireless Networks --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RXT engagement</masterLabel>
+        <translation>RXT のエンゲージメント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks</masterLabel>
+        <translation><!-- Radio Access Networks --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Radio Access Networks (RAN)</masterLabel>
+        <translation><!-- Radio Access Networks (RAN) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ramping Adjacencies</masterLabel>
+        <translation>隣接効果を高める</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Refresh for vPro</masterLabel>
+        <translation>インテル® Core™ vPro™ プロセッサー・ファミリーの更新</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Research &amp; Incubation</masterLabel>
+        <translation>リサーチ &amp; インキュベーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Security</masterLabel>
+        <translation>セキュリティー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small Business</masterLabel>
+        <translation>小規模ビジネス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Storage</masterLabel>
+        <translation>ストレージ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Systems - NUC</masterLabel>
+        <translation>システム - NUC</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Target demand gen</masterLabel>
+        <translation>ターゲットの需要創出</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Technology Adoption</masterLabel>
+        <translation>テクノロジーの採用</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Telecom Transformation</masterLabel>
+        <translation><!-- Telecom Transformation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Unite</masterLabel>
+        <translation>Intel Unite®</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Vision</masterLabel>
+        <translation>ビジョン</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Visual Cloud</masterLabel>
+        <translation>ビジュアルクラウド</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Intel Preference</masterLabel>
+        <translation><!-- Win Intel Preference --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Performance &amp; Sell Up</masterLabel>
+        <translation><!-- Win Performance &amp; Sell Up --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Screen w IPOS</masterLabel>
+        <translation>Win Screen と IPOS</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Win Volume</masterLabel>
+        <translation><!-- Win Volume --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Windows 10 Refresh</masterLabel>
+        <translation>Windows 10 のリフレッシュ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workload Consolidation</masterLabel>
+        <translation>ワークロードの統合</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workplace Transformation </masterLabel>
+        <translation>職場改革 </translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workstation</masterLabel>
+        <translation>ワークステーション</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>xOpportunity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>xOpportunities</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Core_Goal_Add_Opportunity --></label>
+        <name>Core_Goal_Add_Opportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Goal_Remove_Opportunity --></label>
+        <name>Core_Goal_Remove_Opportunity</name>
+    </webLinks>
+</CustomObjectTranslation>

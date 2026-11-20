@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FULL_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Activity.Core_Subtype_of_Activity__c</field>
+    </columns>
+    <columns>
+        <field>Activity.Core_Type_of_Activity__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <description>NASS Seeds Report  Activity Report</description>
+    <filter>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <column>Activity.Core_Subtype_of_Activity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>seed,sample</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_BY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Andrew Meyer,Angelo Correa-Denoncourt,Ashley Rodrigue,Austin Davis,Brian Highland,Brian Hurrell,Cameron Allen,Camille Cudaback,Chelsea Brooks,Colin Crawford,Craig Hulcy,Curt Equi,Daniel Tozzi,Darrell Van Dyken,Devlin Norris,Don Nuyen,Edgar Zapata,Emily Schumacher,Erick Mayoral,Gary Dalton,Gerry Gonzalez,Hemant Patel,Jason Gauthier,Jesse Jensen,Jordan Peters,Jose Monroy,Joseph Pryszlak,Kim Goodrich,Kimberly Kelly,Kristen Call,Lucas Kennedy,Mary Eaves,Matt Pavlovic,Matthew Pearson,Melisa Endler,Navi Saini,Nick J Finamore,Paul Baines,Phil Vokins,Rachid Lahbabi,Rajiv Jain,Rajnish Chandra,Rebecca Forsbrey,Richard Piper,Robert Lacomble,Ron Simon,Ryan Finkelstein,Sam Saif,Sheldon Prince,Valerie Espinoza,Vijay Ramasami,VINICIO ENRIQUEZ,Wendy Tolls</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SUBJECT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>seed,sample</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>NASS Seed Units</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>te</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

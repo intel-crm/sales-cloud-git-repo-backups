@@ -1,0 +1,46 @@
+<apex:page sidebar="false" lightningStylesheets="true" showHeader="false">
+<apex:slds />
+
+<br></br>
+      <DIV>
+      <Span><h1><b>Post Installation Script</b></h1></Span>
+      <div>
+   <p> 
+   
+<br></br>   
+1)  Add the value in "Scheduler_Detail__c" custom setting as below :<br></br> 
+    Name='Id of Scheduler Classes present in Org'<br></br> 
+    Batch_Class_id__c='Id of Batch Class present in Org'<br></br> 
+    Batch_Class_Name__c='Name of Batch Class present in Org'<br></br> 
+    Batch_Size__c='Batch Size'<br></br> 
+    Schedular_class_Name__c='Name of scheduler Class present in Org'<br></br> 
+    Run the below script :<br></br> 
+    
+    List/<Scheduler_Detail__c/> SDLIst=new List/<Scheduler_Detail__c/>();<br></br> 
+    SDLIst.add(new Scheduler_Detail__c(Name='01p6F00000AVejcQAD',Batch_Class_id__c='01p6F00000AVejaQAD',Batch_Class_Name__c='batchStatusUpdate',Batch_Size__c='10',Schedular_class_Name__c='batchStatusUpdateScheduler'));<br></br> 
+    insert SDLIst;<br></br> 
+<br></br><br></br> <br></br> 
+2) Run Below custom setting script :<br></br> 
+
+    List/<BatchCreatedDate__c/> bcdList=new List/<BatchCreatedDate__c/>();<br></br> 
+    bcdList.add(new BatchCreatedDate__c(Name='Previous Created Date',BatchSize__c=10,JobType__c='ScheduledApex'));<br></br> 
+    insert bcdList;<br></br> 
+
+    List/<BatchNextFireTimeAlert__c/> bnftList=new List/<BatchNextFireTimeAlert__c/>();<br></br> 
+    bnftList.add(new BatchNextFireTimeAlert__c(Name='global',Threshold_Value__c=0.0));<br></br> 
+    insert bnftList;<br></br> 
+  <br></br> <br></br> <br></br>      
+3) Once after performing above steps use below script and run<br></br> 
+/*To schedule the ESPY Batch*/<br></br> 
+
+system.schedule('batchStatusUpdateScheduler','0 42 * * * ?',new batchStatusUpdateScheduler()); <br></br> 
+<br></br><br></br> <br></br> 
+4) Add the Email Address in "ESPY_Group" to get the email notification.<br></br> 
+<br></br><br></br> <br></br> 
+
+</P>
+      </div>
+      
+      </DIV>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+    <certificate>MIICwjCCAaoCCQDLMAzuR9S9VjANBgkqhkiG9w0BAQsFADAjMSEwHwYDVQQDDBhT
+YWlsUG9pbnQtU2FsZXNmb3JjZS1KV1QwHhcNMjYxMTA5MTA0MDI0WhcNMjcxMTA5
+MTA0MDI0WjAjMSEwHwYDVQQDDBhTYWlsUG9pbnQtU2FsZXNmb3JjZS1KV1QwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDID+/nalsmZSX/G+D1JBn3bsw9
++mxhb82RvrF5j+H8ezjkmeE51pXPOxKqLnxdXi+44OOxQTCBqyLg+lJW/fjR+Gfp
+i5bFeFNyn4+GvSL76GJ5X0IKYIXUsvHmW2EXHidHXOyccDkoEqjxtWv8PwHlKneI
+wJ7XBY7xmBMklU2CxqutaoWSpiM+SS9y2qaHUcxoWfDocsVGvTdbzeB0CZKKpzoT
+1VIGiiYoueLtZVQMOtj4UaqsV/OF/bS5z9zRNP/T25UdbtrPpHpAAYpd053Tob4b
+iyRFrqE6zFbWMRSsKbyny8cr1VUwVfAKyCLOOpwBStkuJJQbnsr7fE03N6zfAgMB
+AAEwDQYJKoZIhvcNAQELBQADggEBACq1bjkzQPJwqbgu0Gqaa4aZNbeCFoiwzQJ7
+MKxCnj9sece7QC/JSEzE9+bL8fIyvJa6SUQbboWoagNz+QazG3MZegIqurbRzPU9
+NxZ9U/6uam09TegacZbP29QpLEzI8ht9+j8SOFW96N7/DKt83s5T4G1a1vbg52ZK
+jtvm5ArexqciY6GGwL/1Vr1iDgzy3UPc8bF9zw5Q1P7lPVYPGIUPiHrwbr4mVPS3
+Ht52RVFZrT+Qh48vGtNBOs1+D0MvnQu8uDcp++VjT1+h/yOdP9V76nSVYbiBBU/3
+UHEymeFR4xEyyDpJu0lKa75w1jJjMa2V4bh/Md4EA2yXPbljjtw=</certificate>
+    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hyE0Fz9REi4GubP4nM1EkzNUPetXSUL5b2Ag5NiJefGpI.wEiW10YXOSuoQ</consumerKey>
+    <externalClientApplication>Draco_AGS_JWT_Integration_App</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>true</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Draco_AGS_JWT_Integration_App_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>
